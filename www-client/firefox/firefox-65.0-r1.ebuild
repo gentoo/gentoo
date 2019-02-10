@@ -468,9 +468,9 @@ src_configure() {
 	# disable webrtc for now, bug 667642
 	use arm && mozconfig_annotate 'broken on arm' --disable-webrtc
 
-	# https://bugzilla.mozilla.org/show_bug.cgi?id=1423822
-	# bug #669382 #676908
-	mozconfig_annotate 'elf-hack is broken' --disable-elf-hack
+	# allow elfhack to work in combination with unstripped binaries
+	# when they would normally be larger than 2GiB.
+	append-ldflags "-Wl,--compress-debug-sections=zlib"
 
 	echo "mk_add_options MOZ_OBJDIR=${BUILD_OBJ_DIR}" >> "${S}"/.mozconfig
 	echo "mk_add_options XARGS=/usr/bin/xargs" >> "${S}"/.mozconfig
