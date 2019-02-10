@@ -53,7 +53,6 @@ net-irc/kvirc kde
 
 # Davide Pesavento <pesa@gentoo.org> (06 Jun 2016)
 # Requires unkeyworded dev-qt/qtmultimedia:5
-media-plugins/audacious-plugins qt5
 net-analyzer/wireshark qt5
 
 # James Le Cuirot <chewi@gentoo.org> (30 Jan 2016)

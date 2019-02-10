@@ -171,11 +171,6 @@ dev-vcs/git mediawiki mediawiki-experimental
 # Mask because Boost.Context library does not work on most of arches
 dev-libs/boost context
 
-# Jeff Horelick <jdhore@gentoo.org> (1 Sep 2013)
-# Dependency (media-libs/libsidplayfp) only keyworded
-# on x86 and amd64. Will unmask there.
->=media-plugins/audacious-plugins-3.4 sid
-
 # Tim Harder <radhermit@gentoo.org> (13 Aug 2013)
 # Related deps dev-lang/luajit and dev-scheme/racket are not keyworded by most arches.
 app-editors/vim luajit racket

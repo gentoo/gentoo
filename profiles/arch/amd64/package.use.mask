@@ -199,11 +199,6 @@ dev-libs/boost	-context
 # only.
 games-emulation/mupen64plus-core new-dynarec
 
-# Jeff Horelick <jdhore@gentoo.org> (1 Sep 2013)
-# Dependency (media-libs/libsidplayfp) only keyworded
-# on x86 and amd64. (masked in base)
->=media-plugins/audacious-plugins-3.4 -sid
-
 # Tim Harder <radhermit@gentoo.org> (13 Aug 2013)
 # dev-lang/luajit keyworded for amd64 (masked in base)
 # dev-scheme/racket keyworded for amd64 (masked in base)
