@@ -86,7 +86,7 @@ www-client/seamonkey ipc
 sys-auth/polkit kde
 
 # Samuli Suominen <ssuominen@gentoo.org> (21 Jun 2010)
-# These need stable kdelibs-4.
+# These need stable KDE Frameworks 5
 app-arch/p7zip kde
 dev-vcs/subversion kwallet
 net-libs/libproxy kde
