@@ -198,28 +198,6 @@ gnome2_gconf_uninstall() {
 	fi
 }
 
-# @FUNCTION: gnome2_icon_savelist
-# @DESCRIPTION:
-# Find the icons that are about to be installed and save their location
-# in the GNOME2_ECLASS_ICONS environment variable. This is only
-# necessary for eclass implementations that call
-# gnome2_icon_cache_update conditionally.
-# This function should be called from pkg_preinst.
-gnome2_icon_savelist() {
-	has ${EAPI:-0} 0 1 2 && ! use prefix && ED="${D}"
-	pushd "${ED}" > /dev/null || die
-	export GNOME2_ECLASS_ICONS=$(find 'usr/share/icons' -maxdepth 1 -mindepth 1 -type d 2> /dev/null)
-	popd > /dev/null || die
-}
-
-# @FUNCTION: gnome2_icon_cache_update
-# @DESCRIPTION:
-# Updates Gtk+ icon cache files under /usr/share/icons.
-# Deprecated. Please use xdg_icon_cache_update from xdg-utils.eclass
-gnome2_icon_cache_update() {
-	xdg_icon_cache_update
-}
-
 # @FUNCTION: gnome2_omf_fix
 # @DESCRIPTION:
 # Workaround applied to Makefile rules in order to remove redundant
@@ -472,3 +450,31 @@ gnome2_disable_deprecation_warning() {
 		ewarn "Failed to disable deprecation warnings in ${makefile}"
 	done
 }
+
+case ${EAPI:-0} in
+0|1|2|3|4|5|6)
+
+# @FUNCTION: gnome2_icon_savelist
+# @DESCRIPTION:
+# Find the icons that are about to be installed and save their location
+# in the GNOME2_ECLASS_ICONS environment variable. This is only
+# necessary for eclass implementations that call
+# gnome2_icon_cache_update conditionally.
+# This function should be called from pkg_preinst.
+gnome2_icon_savelist() {
+	has ${EAPI:-0} 0 1 2 && ! use prefix && ED="${D}"
+	pushd "${ED}" > /dev/null || die
+	export GNOME2_ECLASS_ICONS=$(find 'usr/share/icons' -maxdepth 1 -mindepth 1 -type d 2> /dev/null)
+	popd > /dev/null || die
+}
+
+# @FUNCTION: gnome2_icon_cache_update
+# @DESCRIPTION:
+# Updates Gtk+ icon cache files under /usr/share/icons.
+# Deprecated. Please use xdg_icon_cache_update from xdg-utils.eclass
+gnome2_icon_cache_update() {
+	xdg_icon_cache_update
+}
+
+;;
+esac
