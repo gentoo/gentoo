@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Bernard Cafarelli <voyageur@gentoo.org> (14 Jan 2019)
@@ -498,17 +498,9 @@ app-admin/packagekit-base entropy
 # Remove this for your arch after you keyword dev-utils/google-perftools and virtual/gsasl (bug #381737)
 dev-libs/libmemcached sasl
 
-# Markus Meier <maekke@gentoo.org> (13 Mar 2011)
-# needs stable kde stuff
-sys-auth/polkit kde
-
 # Sebastian Pipping <sping@gentoo.org> (22 Feb 2011)
 # No media-sound/lilypond here, yet (bug #356069)
 app-text/asciidoc test
-
-# Michael Weber <xmw@gentoo.org> (10 Feb 2011)
-# kde-frameworks/kconfig is not stable for arm
-net-libs/libproxy kde
 
 # Raúl Porcel <armin76@gentoo.org> (28 Mar 2010)
 # Needs kde-frameworks/kwallet, kde-frameworks/ki18n and kde-frameworks/kconfig stable

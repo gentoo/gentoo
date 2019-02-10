@@ -1,5 +1,13 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Andreas Sturmlechner <asturm@gentoo.org> (10 Feb 2019)
+# kde-frameworks/kconfig is not stable for arm
+net-libs/libproxy kde
+
+# Andreas Sturmlechner <asturm@gentoo.org> (10 Feb 2019)
+# kde-plasma/polkit-kde-agent is not stable for arm
+sys-auth/polkit kde
 
 # Andreas Sturmlechner <asturm@gentoo.org> (04 Nov 2018)
 # media-libs/libmtp stabilisation timeout, bug #661162
