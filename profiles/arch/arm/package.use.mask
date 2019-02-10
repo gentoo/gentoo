@@ -271,10 +271,6 @@ www-client/chromium widevine
 # Unkeyworded deps, bug #536226
 net-vpn/strongswan strongswan_plugins_unbound
 
-# Markus Meier <maekke@gentoo.org> (17 Jan 2015)
-# Unkeyworded deps, bug #533404
-net-im/gajim jingle gnome kde
-
 # Alexis Ballier <aballier@gentoo.org> (06 Jan 2015)
 # sci-libs/xkaapi does not build here on armv7
 sci-libs/vtk kaapi
