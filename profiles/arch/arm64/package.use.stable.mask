@@ -1,5 +1,13 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+# Andreas Sturmlechner <asturm@gentoo.org> (10 Feb 2019)
+# kde-frameworks/kconfig is not stable for arm64
+net-libs/libproxy kde
+
+# Andreas Sturmlechner <asturm@gentoo.org> (10 Feb 2019)
+# kde-plasma/polkit-kde-agent is not stable for arm64
+sys-auth/polkit kde
 
 # Mart Raudsepp <leio@gentoo.org> (18 Jan 2019)
 # Respective x11-drivers/ not tested and stable yet
