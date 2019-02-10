@@ -293,10 +293,6 @@ dev-ruby/rack-test test
 # Does not work on ppc/ppc64
 net-vpn/tor tor-hardening
 
-# Brent Baude <ranger@gentoo.org> (06 Mar 2012)
-# masking kde on gajim
-net-im/gajim kde
-
 # Pacho Ramos <pacho@gentoo.org> (07 May 2012)
 # libhid is not keyworded
 app-misc/lcdproc hid lcd_devices_mdm166a
