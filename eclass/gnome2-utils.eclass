@@ -76,8 +76,6 @@ esac
 # @DESCRIPTION:
 # List of gdk-pixbuf loaders provided by the package
 
-DEPEND=">=sys-apps/sed-4"
-
 
 # @FUNCTION: gnome2_environment_reset
 # @DESCRIPTION:
