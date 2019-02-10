@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -41,7 +41,6 @@ BDEPEND="virtual/pkgconfig"
 
 src_configure() {
 	local emesonargs=(
-		--libdir=/usr/$(get_libdir)
 		-Denable-magic=$(usex magic true false)
 		-Denable-seccomp=$(usex seccomp true false)
 		-Denable-sqlite=$(usex sqlite true false)
