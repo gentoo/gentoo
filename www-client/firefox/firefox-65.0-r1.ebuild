@@ -119,6 +119,7 @@ DEPEND="${CDEPEND}
 	clang? (
 		>=sys-devel/llvm-4.0.1[gold]
 		>=sys-devel/lld-4.0.1
+		pgo? ( >=sys-libs/compiler-rt-sanitizers-4.0.1[profile] )
 	)
 	pulseaudio? ( media-sound/pulseaudio )
 	>=virtual/cargo-1.30.0
