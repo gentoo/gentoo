@@ -533,7 +533,7 @@ app-doc/selflinux 0.13.0: german-language hypertext tutorial about Linux
 app-doc/single-unix-specification 4_p2: The Single UNIX Specification, Version 4, 2016 Edition
 app-doc/tldp-howto 20120707: The Linux Documentation Project HOWTOs
 app-doc/vilearn 1.0: An interactive vi tutorial comprised of 5 tutorials for the vi-impaired
-app-doc/xmltoman 0.4 0.4-r1: Simple scripts for converting xml to groff or html
+app-doc/xmltoman 0.4-r1: Simple scripts for converting xml to groff or html
 app-doc/zsh-lovers 0.9.0: Tips, tricks and examples for the Z shell
 app-editors/adie 1.7.54: Text editor based on the FOX Toolkit
 app-editors/aee 2.2.15b: An easy to use text editor
@@ -3033,7 +3033,7 @@ dev-libs/ivykis 0.42.2 0.42.3-r1: Library for asynchronous I/O readiness notific
 dev-libs/jansson 2.10 2.11: C library for encoding, decoding and manipulating JSON data
 dev-libs/jemalloc 3.6.0: Jemalloc is a general-purpose scalable concurrent allocator
 dev-libs/jerasure 2.0.0-r1: A Library in C Facilitating Erasure Coding for Storage Applications
-dev-libs/json-c 0.12 0.13.1-r1: A JSON implementation in C
+dev-libs/json-c 0.13.1-r1: A JSON implementation in C
 dev-libs/json-glib 1.4.4: Library providing GLib serialization and deserialization for the JSON format
 dev-libs/jsoncpp 1.8.4: C++ JSON reader and writer
 dev-libs/jthread 1.3.3: JThread provides some classes to make use of threads easy on different platforms
@@ -7489,7 +7489,7 @@ media-gfx/xli 1.17.0-r5: X Load Image: view images or load them to root window
 media-gfx/xloadimage 4.1-r11: utility to view many different types of images under X11
 media-gfx/xpaint 2.9.10.2: Image editor with tiff, jpeg and png support
 media-gfx/xsane 0.999-r2: graphical scanning frontend
-media-gfx/xv 3.10a-r17: Interactive image manipulation program supporting a wide variety of formats
+media-gfx/xv 3.10a-r19: Interactive image manipulation program supporting a wide variety of formats
 media-gfx/xzgv 0.9.1: Fast and simple GTK+ image viewer
 media-gfx/zbar 0.20.1: Library and tools for reading barcodes from images or video
 media-libs/Field3D 1.7.2: A library for storing voxel data
