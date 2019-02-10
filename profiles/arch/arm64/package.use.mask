@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Davide Pesavento <pesa@gentoo.org> (27 Dec 2018)
@@ -538,10 +538,6 @@ app-text/asciidoc test
 # Michael Weber <xmw@gentoo.org> (10 Feb 2011)
 # kde-frameworks/kconfig is not stable for arm
 net-libs/libproxy kde
-
-# Raúl Porcel <armin76@gentoo.org> (28 Mar 2010)
-# Needs kde-frameworks/kwallet, kde-frameworks/ki18n and kde-frameworks/kconfig stable
-dev-vcs/subversion kwallet
 
 # Jim Ramsay <lack@gentoo.org> (5 Nov 2008)
 # app-admin/gkrellm may pull in net-libs/libntlm, which is not keyworded
