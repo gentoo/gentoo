@@ -12,7 +12,7 @@
 # This eclass provides a set of auxiliary functions needed by most XDG
 # compliant packages.
 # It provides XDG stack related functions such as:
-#  * Gtk+ icon cache management
+#  * GTK/Qt5 icon theme cache management
 #  * XDG .desktop files cache management
 #  * XDG mime information database management
 
@@ -72,7 +72,7 @@ xdg_desktop_database_update() {
 
 # @FUNCTION: xdg_icon_cache_update
 # @DESCRIPTION:
-# Updates Gtk+ icon cache files under /usr/share/icons.
+# Updates icon theme cache files under /usr/share/icons.
 # This function should be called from pkg_postinst and pkg_postrm.
 xdg_icon_cache_update() {
 	if [[ ${EBUILD_PHASE} != post* ]] ; then
