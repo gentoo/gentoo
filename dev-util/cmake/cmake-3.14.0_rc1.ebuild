@@ -50,12 +50,13 @@ SITEFILE="50${PN}-gentoo.el"
 PATCHES=(
 	# prefix
 	"${FILESDIR}"/${PN}-3.4.0_rc1-darwin-bundle.patch
-	"${FILESDIR}"/${PN}-3.13.4-prefix-dirs.patch
-	"${FILESDIR}"/${PN}-3.1.0-darwin-isysroot.patch
+	"${FILESDIR}"/${PN}-3.14.0_rc1-prefix-dirs.patch
+	# Next patch requires new work from prefix people
+	#"${FILESDIR}"/${PN}-3.1.0-darwin-isysroot.patch
 
 	# handle gentoo packaging in find modules
-	"${FILESDIR}"/${PN}-3.11.0_rc2-FindBLAS.patch
-	"${FILESDIR}"/${PN}-3.0.2-FindLAPACK.patch
+	"${FILESDIR}"/${PN}-3.14.0_rc1-FindBLAS.patch
+	"${FILESDIR}"/${PN}-3.14.0_rc1-FindLAPACK.patch
 	"${FILESDIR}"/${PN}-3.5.2-FindQt4.patch
 
 	# respect python eclasses
