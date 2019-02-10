@@ -2,16 +2,14 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Andreas Sturmlechner <asturm@gentoo.org> (10 Feb 2019)
-# Needs kde-frameworks/kwallet, kde-frameworks/ki18n and kde-frameworks/kconfig stable
+# Needs kde-frameworks/{kwallet,ki18n,kconfig} stable
 dev-vcs/subversion kwallet
-
-# Andreas Sturmlechner <asturm@gentoo.org> (10 Feb 2019)
-# kde-frameworks/kconfig is not stable for arm
 net-libs/libproxy kde
 
 # Andreas Sturmlechner <asturm@gentoo.org> (10 Feb 2019)
-# kde-plasma/polkit-kde-agent is not stable for arm
+# Needs kde-plasma/{polkit-kde-agent,plasma-workspace stable
 sys-auth/polkit kde
+virtual/notification-daemon kde
 
 # Andreas Sturmlechner <asturm@gentoo.org> (04 Nov 2018)
 # media-libs/libmtp stabilisation timeout, bug #661162
@@ -119,10 +117,6 @@ media-video/mpv raspberry-pi
 # Brian Evans <grknight@gentoo.org> (08 Jan 2016)
 # net-misc/libteam is not yet stable on arm
 net-misc/networkmanager teamd
-
-# Michael Palimaka <kensington@gentoo.org> (28 Oct 2015)
-# KDE is not stable on arm
-virtual/notification-daemon kde
 
 # Pacho Ramos <pacho@gentoo.org> (03 Oct 2015)
 # Missing stable, bug #529462
