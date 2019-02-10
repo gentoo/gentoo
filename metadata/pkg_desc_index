@@ -9251,7 +9251,7 @@ sci-astronomy/erfa 1.2.0 1.4.0: Essential Routines for Fundamental Astronomy
 sci-astronomy/kstars 2.9.5: Desktop Planetarium
 sci-astronomy/predict 2.2.3-r2: Satellite tracking and orbital prediction
 sci-astronomy/pyephem 3.7.5.3 3.7.6.0: Astronomical routines for the python programming language
-sci-astronomy/stellarium 0.16.0-r1: 3D photo-realistic skies in real time
+sci-astronomy/stellarium 0.16.0-r1 0.18.2: 3D photo-realistic skies in real time
 sci-astronomy/wcslib 5.15: Astronomical World Coordinate System transformations library
 sci-astronomy/xephem 3.7.7: Interactive tool for astronomical ephemeris and sky simulation
 sci-biology/augustus 2.5.5: Eukaryotic gene predictor
