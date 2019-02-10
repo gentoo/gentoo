@@ -3113,7 +3113,7 @@ dev-libs/libical 2.0.0-r3 3.0.4: An implementation of basic iCAL protocols
 dev-libs/libiconv 1.14 1.14-r1: GNU charset conversion library for libc which doesn't implement it
 dev-libs/libindicate 12.10.1-r3: Library to raise flags on DBus for other components of the desktop
 dev-libs/libindicator 12.10.1-r201 12.10.1-r301: A set of symbols and convience functions that all indicators would like to use
-dev-libs/libinput 1.11.3: Library to handle input devices in Wayland
+dev-libs/libinput 1.11.3 1.12.6: Library to handle input devices in Wayland
 dev-libs/libintl 0.19.7: the GNU international library (split out of gettext)
 dev-libs/libisoburn 1.4.8-r1 1.5.0: Creation/expansion of ISO-9660 filesystems on CD/DVD media supported by libburn
 dev-libs/libisofs 1.4.8 1.5.0: Open-source library for reading, mastering and writing optical discs
@@ -3251,7 +3251,7 @@ dev-libs/protobuf 3.5.1.1 3.5.2 3.6.1: Google's Protocol Buffers - Extensible me
 dev-libs/protobuf-c 1.3.0-r1: Protocol Buffers implementation in C
 dev-libs/pslib 0.4.5: pslib is a C-library to create PostScript files on the fly
 dev-libs/ptexenc 1.3.4_p20160523 1.3.5_p20170524: Library for Japanese pTeX providing a better way of handling character encodings
-dev-libs/pugixml 1.9: Light-weight, simple, and fast XML parser for C++ with XPath support
+dev-libs/pugixml 1.9 1.9-r1: Light-weight, simple, and fast XML parser for C++ with XPath support
 dev-libs/qcustomplot 2.0.0: Qt C++ widget for plotting and data visualization
 dev-libs/qoauth 2.0.1_pre20160315-r3: Qt-based library for OAuth support
 dev-libs/qof 0.8.8-r1: A Query Object Framework
@@ -4759,7 +4759,7 @@ dev-python/colorlog 2.7.0: Log formatting with colors
 dev-python/colorspacious 1.1.0: Powerful, accurate, and easy-to-use Python library for colorspace conversions
 dev-python/columnize 0.3.5-r1: Format a simple (i.e. not nested) list into aligned columns
 dev-python/common 0.1.2: Common tools and data structures implemented in pure python
-dev-python/commonmark 0.5.4: Python parser for the CommonMark Markdown spec
+dev-python/commonmark 0.5.4 0.8.1: Python parser for the CommonMark Markdown spec
 dev-python/configargparse 0.11.0: Drop-in replacement for argparse supporting config files and env variables
 dev-python/configclass 0.1.0: A Python to class to hold configuration values
 dev-python/configobj 5.0.6: Simple config file reader and writer
@@ -5539,7 +5539,7 @@ dev-python/rarfile 3.0: Module for RAR archive reading
 dev-python/rdflib 4.2.1 4.2.2: RDF library containing a triple store and parser/serializer
 dev-python/readme 0.6.0: a library for rendering "readme" descriptions for Warehouse
 dev-python/rebulk 0.9.0: Python library that performs advanced searches in strings
-dev-python/recommonmark 0.4.0: Python docutils-compatibility bridge to CommonMark
+dev-python/recommonmark 0.4.0 0.5.0_pre20181012: Python docutils-compatibility bridge to CommonMark
 dev-python/redis-py 2.9.1 2.10.5: Python client for Redis key-value store
 dev-python/rednose 0.4.1: coloured output for nosetests
 dev-python/regendoc 0.5: Check/update simple file/shell examples in documentation
@@ -5624,7 +5624,7 @@ dev-python/sphinx-bootstrap-theme 0.4.9: Sphinx theme integrates the Bootstrap C
 dev-python/sphinx-gallery 0.1.12: Sphinx extension to automatically generate an examples gallery
 dev-python/sphinx-py3doc-enhanced-theme 2.3.2: Enhanced Sphinx theme (based on Python 3 docs)
 dev-python/sphinx_celery 1.3.1: Celery Sphinx Theme and Utilities
-dev-python/sphinx_rtd_theme 0.1.9: ReadTheDocs.org theme for Sphinx
+dev-python/sphinx_rtd_theme 0.1.9 0.2.4: ReadTheDocs.org theme for Sphinx
 dev-python/sphinxcontrib-github-alt 1.0: Link to GitHub issues, pull requests, commits and users from Sphinx docs
 dev-python/sphinxcontrib-googleanalytics 0.1-r1: Sphinx extension googleanalytics
 dev-python/sphinxcontrib-httpdomain 1.4.0: Extension providing a Sphinx domain for describing RESTful HTTP APIs
@@ -10768,7 +10768,7 @@ x11-drivers/xf86-input-elographics 1.4.1: Elographics input driver
 x11-drivers/xf86-input-evdev 2.10.6: Generic Linux input driver
 x11-drivers/xf86-input-joystick 1.6.3: X.Org driver for joystick input devices
 x11-drivers/xf86-input-keyboard 1.9.0: Keyboard input driver
-x11-drivers/xf86-input-libinput 0.28.1: X.org input driver based on libinput
+x11-drivers/xf86-input-libinput 0.28.1 0.28.2: X.org input driver based on libinput
 x11-drivers/xf86-input-mouse 1.9.3: X.Org driver for mouse input devices
 x11-drivers/xf86-input-mtrack 0.5.0: Xorg Driver for Multitouch Trackpads
 x11-drivers/xf86-input-synaptics 1.9.0 1.9.1: Driver for Synaptics touchpads
