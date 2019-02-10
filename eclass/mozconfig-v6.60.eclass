@@ -114,7 +114,10 @@ RDEPEND=">=app-text/hunspell-1.5.4:=
 	system-jpeg? ( >=media-libs/libjpeg-turbo-1.2.1 )
 	system-libevent? ( >=dev-libs/libevent-2.0:0= )
 	system-sqlite? ( >=dev-db/sqlite-3.23.1:3[secure-delete,debug=] )
-	system-libvpx? ( >=media-libs/libvpx-1.5.0:0=[postproc] )
+	system-libvpx? (
+		>=media-libs/libvpx-1.5.0:0=[postproc]
+		<media-libs/libvpx-1.8
+	)
 	system-harfbuzz? ( >=media-libs/harfbuzz-1.4.2:0= >=media-gfx/graphite2-1.3.9-r1 )
 "
 
