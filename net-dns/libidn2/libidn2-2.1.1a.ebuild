@@ -23,6 +23,7 @@ BDEPEND="
 	dev-lang/perl
 	sys-apps/help2man
 "
+S=${WORKDIR}/${P/a/}
 
 src_prepare() {
 	default
