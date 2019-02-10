@@ -41,9 +41,10 @@ KEYWORDS="~amd64 ~x86"
 
 SLOT="0"
 LICENSE="MPL-2.0 GPL-2 LGPL-2.1"
-IUSE="bindist clang dbus debug eme-free geckodriver +gmp-autoupdate hardened hwaccel
-	jack lto neon pgo pulseaudio +screenshot selinux startup-notification
-	+system-harfbuzz +system-icu +system-jpeg +system-libevent +system-sqlite
+IUSE="bindist clang cpu_flags_x86_avx2 dbus debug eme-free geckodriver
+	+gmp-autoupdate hardened hwaccel jack lto neon pgo pulseaudio
+	+screenshot selinux startup-notification +system-harfbuzz
+	+system-icu +system-jpeg +system-libevent +system-sqlite
 	+system-libvpx +system-webp test wayland wifi"
 RESTRICT="!bindist? ( bindist )"
 
@@ -123,8 +124,13 @@ DEPEND="${CDEPEND}
 	amd64? ( >=dev-lang/yasm-1.1 virtual/opengl )
 	x86? ( >=dev-lang/yasm-1.1 virtual/opengl )"
 
+# Due to a bug in GCC, profile guided optimization will produce
+# AVX2 instructions, bug #677052
 REQUIRED_USE="wifi? ( dbus )
-	pgo? ( lto )"
+	pgo? (
+		lto
+		!clang? ( cpu_flags_x86_avx2 )
+	)"
 
 S="${WORKDIR}/firefox-${PV%_*}"
 
