@@ -126,16 +126,11 @@ dev-python/PyQt5 bluetooth location networkauth webengine
 # Michael Palimaka <kensington@gentoo.org> (07 Jul 2016)
 # Requires unkeyworded dependencies
 dev-vcs/subversion kwallet
-games-arcade/jumpnbump kde
-net-irc/quassel kde
+net-irc/quassel kde snorenotify
 net-libs/libproxy kde
 sys-auth/polkit kde
 sys-block/gparted kde
 virtual/notification-daemon kde
-
-# Johannes Huber <johu@gentoo.org> (26 Mar 2016)
-# Unkeyworded dependency x11-libs/snorenotify
-net-irc/quassel snorenotify
 
 # Justin Lecher <jlec@gentoo.org> (22 Feb 2016)
 # Missing test deps keyword #575366

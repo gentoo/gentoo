@@ -81,10 +81,6 @@ gnome-extra/sushi office
 # Mask www-client/seamonkey[ipc] on ppc64 wrt #381191
 www-client/seamonkey ipc
 
-# Kacper Kowalik <xarthisius@gentoo.org> (22 Mar 2011)
-# Mask polkit[kde] wrt #354509
-sys-auth/polkit kde
-
 # Samuli Suominen <ssuominen@gentoo.org> (21 Jun 2010)
 # These need stable KDE Frameworks 5
 app-arch/p7zip kde
