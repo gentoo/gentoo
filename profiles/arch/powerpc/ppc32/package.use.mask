@@ -51,11 +51,6 @@ net-irc/kvirc kde
 # Missing keywords on app-text/gspell - bug #587368
 >=app-editors/gedit-3.20 spell
 
-# Davide Pesavento <pesa@gentoo.org> (06 Jun 2016)
-# Requires unkeyworded dev-qt/qtmultimedia:5
-media-plugins/audacious-plugins qt5
-net-analyzer/wireshark qt5
-
 # James Le Cuirot <chewi@gentoo.org> (30 Jan 2016)
 # scrollview requires Java, which is unsupported on ppc.
 app-text/tesseract scrollview

@@ -161,10 +161,6 @@ sys-devel/llvm ocaml
 # net-libs/dleyna-connector-dbus lack ppc/ppc64 keyword, bug #551634
 >=media-plugins/grilo-plugins-0.2.14 upnp-av
 
-# Justin Lecher <jlec@gentoo> (18 May 2015)
-# missing keywords
-dev-python/matplotlib qt5 test
-
 # Pacho Ramos <pacho@gentoo.org> (15 May 2015)
 # Missing keywords
 net-dns/unbound dnstap
