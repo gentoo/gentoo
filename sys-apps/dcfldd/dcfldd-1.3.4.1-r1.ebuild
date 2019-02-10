@@ -11,6 +11,6 @@ SRC_URI="mirror://sourceforge/dcfldd/${PN}-${My_PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 
 S="${WORKDIR}/${PN}-${My_PV}"
