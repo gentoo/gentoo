@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=2
+EAPI=7
 
 inherit toolchain-funcs
 
@@ -11,12 +11,14 @@ SRC_URI="http://code.fluffytapeworm.com/projects/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ppc ppc64 sparc x86"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86"
 
-DEPEND="sys-libs/ncurses
-	sys-libs/readline"
+DEPEND="sys-libs/ncurses:0=
+	sys-libs/readline:0="
+RDEPEND="${DEPEND}"
 
 src_prepare() {
+	default
 	sed -i \
 		-e '/install/s:-s::' \
 		-e 's:$(CXX) $(CXXFLAGS):$(CXX) $(LDFLAGS) $(CXXFLAGS):' \
@@ -29,6 +31,5 @@ src_compile() {
 
 src_install() {
 	dodir /usr/bin /usr/share/man/man1
-	emake DESTDIR="${D}" install || die
-	dodoc README || die
+	default
 }

@@ -74,10 +74,6 @@ media-video/vlc opencv
 # Dependencies not stable
 app-arch/p7zip kde
 dev-vcs/subversion kwallet
-games-arcade/jumpnbump kde
-net-irc/quassel kde
-net-libs/libproxy kde
-sys-auth/polkit kde
 x11-misc/xscreensaver new-login
 
 # Pacho Ramos <pacho@gentoo.org> (06 Sep 2015)

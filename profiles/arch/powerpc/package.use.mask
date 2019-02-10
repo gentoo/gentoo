@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # Alon Bar-Lev <alonbl@gentoo.org> (21 Dec 2018)
@@ -126,16 +126,11 @@ dev-python/PyQt5 bluetooth location networkauth webengine
 # Michael Palimaka <kensington@gentoo.org> (07 Jul 2016)
 # Requires unkeyworded dependencies
 dev-vcs/subversion kwallet
-games-arcade/jumpnbump kde
-net-irc/quassel kde
+net-irc/quassel kde snorenotify
 net-libs/libproxy kde
 sys-auth/polkit kde
 sys-block/gparted kde
 virtual/notification-daemon kde
-
-# Johannes Huber <johu@gentoo.org> (26 Mar 2016)
-# Unkeyworded dependency x11-libs/snorenotify
-net-irc/quassel snorenotify
 
 # Justin Lecher <jlec@gentoo.org> (22 Feb 2016)
 # Missing test deps keyword #575366
@@ -226,10 +221,6 @@ sys-block/fio rbd
 # dependency sci-libs/vtk not keyworded on ppc yet
 media-libs/opencv vtk
 
-# Johannes Huber <johu@gentoo.org> (16 Apr 2014)
-# unkeyworded deps
-kde-apps/gwenview semantic-desktop
-
 # Pacho Ramos <pacho@gentoo.org> (22 Feb 2013)
 # Missing keywords, bug #495250
 >=gnome-base/gnome-extra-apps-3.10 tracker
@@ -292,10 +283,6 @@ dev-ruby/rack-test test
 # Anthony G. Basile <blueness@gentoo.org> (21 Aug 2012)
 # Does not work on ppc/ppc64
 net-vpn/tor tor-hardening
-
-# Brent Baude <ranger@gentoo.org> (06 Mar 2012)
-# masking kde on gajim
-net-im/gajim kde
 
 # Pacho Ramos <pacho@gentoo.org> (07 May 2012)
 # libhid is not keyworded

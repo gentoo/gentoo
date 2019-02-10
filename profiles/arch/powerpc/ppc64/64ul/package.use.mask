@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # Michał Górny <mgorny@gentoo.org> (07 Aug 2017)
@@ -16,7 +16,3 @@ media-video/mplayer toolame
 # Brent Baude <ranger@gentoo.org> (31 Dec 2009)
 # Masking for bug 274847
 app-admin/conky apcupsd
-
-# Brent Baude <ranger@gentoo.org> (6  Feb 2009)
-# Masking solver/ocaml USE from kalzium to fix tree borkage
-kde-apps/kalzium solver
