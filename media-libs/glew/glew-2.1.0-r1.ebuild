@@ -99,6 +99,6 @@ multilib_src_install() {
 	dodoc README.md
 	if use doc; then
 		docinto html
-		dodoc doc/*
+		dodoc -r doc
 	fi
 }
