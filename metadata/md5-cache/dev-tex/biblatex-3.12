@@ -1,14 +1,15 @@
+BDEPEND=virtual/latex-base >=sys-apps/texinfo-4.2-r5
 DEFINED_PHASES=compile install postinst postrm
-DEPEND=dev-texlive/texlive-bibtexextra dev-texlive/texlive-latexextra dev-texlive/texlive-plaingeneric virtual/latex-base >=sys-apps/texinfo-4.2-r5
+DEPEND=dev-texlive/texlive-bibtexextra dev-texlive/texlive-latexextra dev-texlive/texlive-plaingeneric
 DESCRIPTION=Reimplementation of the bibliographic facilities provided by LaTeX
-EAPI=6
+EAPI=7
 HOMEPAGE=http://www.ctan.org/tex-archive/macros/latex/contrib/biblatex https://github.com/plk/biblatex/
 IUSE=+biber doc examples
 KEYWORDS=~amd64 ~arm ~arm64 ~x86
 LICENSE=LPPL-1.3
-PDEPEND=biber? ( ~dev-tex/biber-2.10 )
+PDEPEND=biber? ( ~dev-tex/biber-2.12 )
 RDEPEND=dev-texlive/texlive-bibtexextra dev-texlive/texlive-latexextra dev-texlive/texlive-plaingeneric virtual/latex-base
 SLOT=0
-SRC_URI=mirror://sourceforge/biblatex/biblatex-3.10.tds.tgz
+SRC_URI=mirror://sourceforge/biblatex/biblatex-3.12.tds.tgz
 _eclasses_=latex-package	17f13abe0de88340745e52e6b627aee7
-_md5_=4b55ef7f80e52036c2ee5054d5b0e7cb
+_md5_=a187ce898310385ceb55e8d13de7b9c1

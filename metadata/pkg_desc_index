@@ -1261,7 +1261,7 @@ app-shells/dsh 0.25.10-r1: Distributed Shell
 app-shells/esh 0.8.5-r2: A UNIX Shell with a simplified Scheme syntax
 app-shells/fish 2.7.1: Friendly Interactive SHell
 app-shells/fzy 1.0: Fuzzy text selector (interactive grep) for console
-app-shells/gentoo-bashcomp 20140911 20180302: Gentoo-specific bash command-line completions (emerge, ebuild, equery, etc)
+app-shells/gentoo-bashcomp 20180302: Gentoo-specific bash command-line completions (emerge, ebuild, equery, etc)
 app-shells/gentoo-zsh-completions 20150103 20180228: Gentoo specific zsh completion support (includes emerge and ebuild commands)
 app-shells/hstr 2.0: Shell history suggest box
 app-shells/ksh 93.20140625: The Original Korn Shell, 1993 revision (ksh93)
@@ -1540,7 +1540,7 @@ app-vim/cmdalias 3.0-r1: vim plugin: library for alias creation
 app-vim/colorschemes 20140623-r1: vim plugin: a collection of color schemes from vim.org
 app-vim/colorsel 20100406: vim plugin: RGB / HSV color selector
 app-vim/colorv 3.0.2-r1: vim plugin: a color tool for vim
-app-vim/conque 2.3: vim plugin: Run interactive commands inside a Vim buffer
+app-vim/conque 2.3-r1: vim plugin: Run interactive commands inside a Vim buffer
 app-vim/cream 0.43: An easy-to-use configuration of the GVim text editor
 app-vim/csound-syntax 20160804: vim plugin: set of tools for editing Csound files with vim
 app-vim/csscomplete 1.0: vim plugin: CSS 3 omni complete function
@@ -1561,10 +1561,10 @@ app-vim/emmet 0.85-r1: vim plugin: HTML and CSS hi-speed coding
 app-vim/enhancedcommentify 2.3-r1: vim plugin: enhanced comment creation
 app-vim/errsign 0.1-r1: vim plugin: display marks on lines with errors
 app-vim/eruby-syntax 2.0-r2: vim plugin: syntax highlighting for eruby
-app-vim/eselect-syntax 20070506: vim plugin: Eselect syntax highlighting, filetype and indent settings
+app-vim/eselect-syntax 20070506-r1: vim plugin: eselect syntax highlighting, filetype and indent settings
 app-vim/extra-syntax 4-r2: vim plugin: metapackage for all extra syntax packages
 app-vim/ferret 3.0: vim plugin: enhanced multi-file search
-app-vim/fluxbox-syntax 1.5: vim plugin: fluxbox files syntax and indent
+app-vim/fluxbox-syntax 1.5-r1: vim plugin: fluxbox files syntax and indent
 app-vim/foldutil 3.0-r1: vim plugin: fold creation utility
 app-vim/frawor 0.2.3: vim plugin: modular vim framework
 app-vim/fugitive 2.4: vim plugin: a git wrapper for vim
@@ -3189,7 +3189,7 @@ dev-libs/libtubo 5.0.15: small and simple interprocess communication library
 dev-libs/libunibreak 4.0: Line and word breaking library
 dev-libs/libunicode 0.4-r2: Unicode library
 dev-libs/libunique 1.1.6-r2 3.0.2-r1: A library for writing single instance application
-dev-libs/libunistring 0.9.7 0.9.10: Library for manipulating Unicode and C strings according to Unicode standard
+dev-libs/libunistring 0.9.10: Library for manipulating Unicode and C strings according to Unicode standard
 dev-libs/libusb 1.0.19-r1 1.0.21: Userspace access to USB devices
 dev-libs/libusb-compat 0.1.5-r2: Userspace access to USB devices (libusb-0.1 compat wrapper)
 dev-libs/libutf8proc 2.2.0_p1-r1: mapping tool for UTF-8 strings
