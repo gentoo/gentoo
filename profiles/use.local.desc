@@ -1696,6 +1696,7 @@ dev-libs/poco:crypto - Encryption and digital signing classes
 dev-libs/poco:data - Database abstraction layer to easily send/retrieve data to/from various databases
 dev-libs/poco:file2pagecompiler - Utility to convert ordinary files to Page Compiler source files
 dev-libs/poco:json - Add JSON support
+dev-libs/poco:mariadb - Prefer dev-db/mariadb-connector-c over dev-db/mysql-connector-c
 dev-libs/poco:mongodb - Add dev-db/mongodb support
 dev-libs/poco:net - Classes to write network clients & servers
 dev-libs/poco:pagecompiler - Simple compiler translating HTML pages containing embedded C++ code into HTTPRequestHandler classes
