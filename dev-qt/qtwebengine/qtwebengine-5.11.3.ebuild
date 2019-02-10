@@ -38,6 +38,7 @@ RDEPEND="
 	media-libs/libjpeg-turbo:=
 	media-libs/libpng:0=
 	>=media-libs/libvpx-1.5:=[svc]
+	<media-libs/libvpx-1.8
 	media-libs/libwebp:=
 	media-libs/mesa[egl]
 	media-libs/opus
