@@ -4,7 +4,7 @@
 # @ECLASS: gnome2-utils.eclass
 # @MAINTAINER:
 # gnome@gentoo.org
-# @SUPPORTED_EAPIS: 0 1 2 3 4 5 6
+# @SUPPORTED_EAPIS: 0 1 2 3 4 5 6 7
 # @BLURB: Auxiliary functions commonly used by Gnome packages.
 # @DESCRIPTION:
 # This eclass provides a set of auxiliary functions needed by most Gnome
@@ -19,7 +19,7 @@
 inherit xdg-utils
 
 case "${EAPI:-0}" in
-	0|1|2|3|4|5|6) ;;
+	0|1|2|3|4|5|6|7) ;;
 	*) die "EAPI=${EAPI} is not supported" ;;
 esac
 
