@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # Alon Bar-Lev <alonbl@gentoo.org> (21 Dec 2018)
@@ -225,10 +225,6 @@ sys-block/fio rbd
 # Andreas K. Huettel <dilfridge@gentoo.org> (14 Jun 2014)
 # dependency sci-libs/vtk not keyworded on ppc yet
 media-libs/opencv vtk
-
-# Johannes Huber <johu@gentoo.org> (16 Apr 2014)
-# unkeyworded deps
-kde-apps/gwenview semantic-desktop
 
 # Pacho Ramos <pacho@gentoo.org> (22 Feb 2013)
 # Missing keywords, bug #495250

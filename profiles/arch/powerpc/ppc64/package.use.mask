@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # Thomas Deutschmann <whissi@gentoo.org> (10 Dec 2018)
@@ -54,10 +54,6 @@ dev-java/ant-apache-bsf python
 # Mask until >sys-cluster/ceph-0.94 goes stable
 net-analyzer/rrdtool rados
 
-# Justin Lecher <jlec@gentoo.org> (3 Dec 2015)
-# Missing keywords on deps #567458
-kde-apps/kalzium editor
-
 # Ben de Groot <yngwin@gentoo.org> (20 Jul 2015)
 # missing keywords
 media-sound/audacity midi soundtouch
@@ -88,10 +84,6 @@ www-client/seamonkey ipc
 # Kacper Kowalik <xarthisius@gentoo.org> (22 Mar 2011)
 # Mask polkit[kde] wrt #354509
 sys-auth/polkit kde
-
-# Alexey Shvetsov <alexxy@gentoo.org> (26 Jan 2011)
-# Mask gps for marble
-kde-apps/marble	gps
 
 # Samuli Suominen <ssuominen@gentoo.org> (21 Jun 2010)
 # These need stable kdelibs-4.
