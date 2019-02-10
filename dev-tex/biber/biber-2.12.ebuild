@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -51,9 +51,9 @@ RDEPEND=">=dev-lang/perl-5.26
 	dev-perl/XML-LibXML-Simple
 	dev-perl/XML-LibXSLT
 	dev-perl/XML-Writer
-	~dev-tex/biblatex-3.10
+	~dev-tex/biblatex-3.12
 	virtual/perl-IPC-Cmd
-	>=virtual/perl-Unicode-Collate-1.210.0"
+	>=virtual/perl-Unicode-Collate-1.250.0"
 DEPEND="${RDEPEND}
 	dev-perl/Config-AutoConf
 	dev-perl/Module-Build

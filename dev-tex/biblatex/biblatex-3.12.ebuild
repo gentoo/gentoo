@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit latex-package
 
@@ -18,7 +18,7 @@ DEPEND="dev-texlive/texlive-bibtexextra
 	dev-texlive/texlive-latexextra
 	dev-texlive/texlive-plaingeneric"
 RDEPEND="${DEPEND}"
-PDEPEND="biber? ( ~dev-tex/biber-2.10 )"
+PDEPEND="biber? ( ~dev-tex/biber-2.12 )"
 
 S="${WORKDIR}"
 TEXMF=/usr/share/texmf-site
