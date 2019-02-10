@@ -498,10 +498,6 @@ dev-libs/libmemcached sasl
 # No media-sound/lilypond here, yet (bug #356069)
 app-text/asciidoc test
 
-# Raúl Porcel <armin76@gentoo.org> (28 Mar 2010)
-# Needs kde-frameworks/kwallet, kde-frameworks/ki18n and kde-frameworks/kconfig stable
-dev-vcs/subversion kwallet
-
 # Jim Ramsay <lack@gentoo.org> (5 Nov 2008)
 # app-admin/gkrellm may pull in net-libs/libntlm, which is not keyworded
 app-admin/gkrellm ntlm

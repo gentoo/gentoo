@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Andreas Sturmlechner <asturm@gentoo.org> (10 Feb 2019)
+# Needs kde-frameworks/kwallet, kde-frameworks/ki18n and kde-frameworks/kconfig stable
+dev-vcs/subversion kwallet
+
+# Andreas Sturmlechner <asturm@gentoo.org> (10 Feb 2019)
 # kde-frameworks/kconfig is not stable for arm
 net-libs/libproxy kde
 
