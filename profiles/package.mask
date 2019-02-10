@@ -29,6 +29,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Miroslav Šulc <fordfrog@gentoo.org> (10 Dwb 2019)
+# Depends on >=virtual/{jdk,jre}-11 which is masked
+=www-servers/tomcat-9.0.16
+
 # Brian Evans <grknight@gentoo.org> (7 Feb 2019)
 # These packages will not build properly under the new split
 # library package easily and have no maintainer.
