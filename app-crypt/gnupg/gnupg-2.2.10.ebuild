@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -28,7 +28,7 @@ COMMON_DEPEND_LIBS="
 	ldap? ( net-nds/openldap )
 	bzip2? ( app-arch/bzip2 )
 	readline? ( sys-libs/readline:0= )
-	smartcard? ( usb? ( virtual/libusb:0 ) )
+	smartcard? ( usb? ( virtual/libusb:1 ) )
 	tofu? ( >=dev-db/sqlite-3.7 )
 	virtual/mta
 	"
