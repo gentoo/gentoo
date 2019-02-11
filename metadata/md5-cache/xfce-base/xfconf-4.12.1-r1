@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=>=dev-libs/dbus-glib-0.98 >=dev-libs/glib-2.30 >=xfce-base/libxfce4util-4.10 perl? ( dev-lang/perl:=[-build(-)] dev-perl/glib-perl )
 SLOT=0
 SRC_URI=https://archive.xfce.org/src/xfce/xfconf/4.12/xfconf-4.12.1.tar.bz2
-_eclasses_=virtualx	401b718cc14d43a5a7fbe062c4851ba5	xdg-utils	93b2dfbb00a09161e1e7f6360c0f7f6b
+_eclasses_=virtualx	401b718cc14d43a5a7fbe062c4851ba5	xdg-utils	14d00d009167652b1fa363e55effe213
 _md5_=48096ef5a07590e500f4315ff8393c03
