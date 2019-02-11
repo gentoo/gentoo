@@ -131,10 +131,7 @@ DEPEND="${CDEPEND}
 # Due to a bug in GCC, profile guided optimization will produce
 # AVX2 instructions, bug #677052
 REQUIRED_USE="wifi? ( dbus )
-	pgo? (
-		lto
-		!clang? ( cpu_flags_x86_avx2 )
-	)"
+	pgo? ( lto )"
 
 S="${WORKDIR}/firefox-${PV%_*}"
 
@@ -319,6 +316,15 @@ src_configure() {
 		else
 			if [[ $(gcc-major-version) -lt 8 ]] ; then
 				show_old_compiler_warning=1
+			fi
+
+			if ! use cpu_flags_x86_avx2 ; then
+				# due to a GCC bug, GCC will produce AVX2 instructions
+				# even if the CPU doesn't support AVX2, https://gcc.gnu.org/ml/gcc-patches/2018-12/msg01142.html
+				einfo "Disable IPA cdtor due to bug in GCC and missing AVX2 support -- triggered by USE=lto"
+				append-ldflags -fdisable-ipa-cdtor
+			else
+				einfo "No GCC workaround required, system supports AVX2"
 			fi
 
 			# Linking only works when using ld.gold when LTO is enabled
