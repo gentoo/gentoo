@@ -15,10 +15,12 @@ SLOT="0"
 #KEYWORDS="~amd64 ~x86"
 IUSE="+etc_profile +gc doc s3 sodium"
 
+# sys-apps/busybox is needed for sandbox mount of /bin/sh
 RDEPEND="
 	app-arch/brotli
 	app-arch/bzip2
 	app-arch/xz-utils
+	sys-apps/busybox[static]
 	dev-db/sqlite
 	dev-libs/editline:0=
 	dev-libs/openssl:0=
@@ -83,8 +85,6 @@ src_prepare() {
 }
 
 src_configure() {
-	local econf_args=()
-
 	if ! use s3; then
 		# Disable automagic depend: bug #670256
 		export ac_cv_header_aws_s3_S3Client_h=no
@@ -92,7 +92,7 @@ src_configure() {
 	econf \
 		--localstatedir="${EPREFIX}"/nix/var \
 		$(use_enable gc) \
-		"${args[@]}"
+		--with-sandbox-shell=/bin/busybox
 }
 
 src_compile() {
