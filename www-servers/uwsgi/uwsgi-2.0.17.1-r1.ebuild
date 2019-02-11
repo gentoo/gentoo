@@ -12,7 +12,7 @@ USE_RUBY="ruby23 ruby24 ruby25"
 PHP_EXT_INI="no"
 PHP_EXT_NAME="dummy"
 PHP_EXT_OPTIONAL_USE="php"
-USE_PHP="php5-6 php7-0 php7-1 php7-2" # deps must be registered separately below
+USE_PHP="php5-6 php7-1 php7-2 php7-3" # deps must be registered separately below
 
 MY_P="${P/_/-}"
 
@@ -117,9 +117,9 @@ CDEPEND="
 	perl? ( dev-lang/perl:= )
 	php? (
 		php_targets_php5-6? ( dev-lang/php:5.6[embed] )
-		php_targets_php7-0? ( dev-lang/php:7.0[embed] )
 		php_targets_php7-1? ( dev-lang/php:7.1[embed] )
 		php_targets_php7-2? ( dev-lang/php:7.2[embed] )
+		php_targets_php7-3? ( dev-lang/php:7.3[embed] )
 	)
 	pypy? ( virtual/pypy )
 	python? ( ${PYTHON_DEPS} )
