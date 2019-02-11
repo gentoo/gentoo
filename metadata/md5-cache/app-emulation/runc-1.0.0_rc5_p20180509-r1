@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile install test unpack
+DEFINED_PHASES=compile install prepare test unpack
 DEPEND=>=dev-lang/go-1.10
 DESCRIPTION=runc container cli tools
 EAPI=6
@@ -11,4 +11,4 @@ RESTRICT=strip
 SLOT=0
 SRC_URI=https://github.com/opencontainers/runc/archive/69663f0bd4b60df09991c08812a60108003fa340.tar.gz -> runc-1.0.0_rc5_p20180509.tar.gz
 _eclasses_=golang-base	c57d2c3f9e1a02d0feb8b87c7b689892	golang-build	dc25bafa8fc1305a4de66a0a448472e7	golang-vcs-snapshot	12177e83bede6f7fb87eae383864b40b
-_md5_=c05a7c91549fd621506f6bf304ee03c8
+_md5_=5b66d80f4efca7ebfe2acf9a532b6c80
