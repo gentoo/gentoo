@@ -1,13 +1,12 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 GNOME2_LA_PUNT="yes"
-GNOME2_EAUTORECONF="yes"
 PYTHON_COMPAT=( python2_7 )
 VALA_USE_DEPEND="vapigen"
 
-inherit db-use eutils flag-o-matic gnome2 java-pkg-opt-2 python-single-r1 vala
+inherit autotools db-use eutils flag-o-matic gnome2 java-pkg-opt-2 python-single-r1 vala
 
 DESCRIPTION="GNOME database access library"
 HOMEPAGE="http://www.gnome-db.org/"
@@ -47,21 +46,19 @@ RDEPEND="
 	json? ( dev-libs/json-glib )
 	ldap? ( net-nds/openldap:= )
 	mdb? ( >app-office/mdbtools-0.5:= )
-	mysql? ( virtual/mysql:= )
+	mysql? ( dev-db/mysql-connector-c:0= )
 	postgres? ( dev-db/postgresql:= )
 	reports? (
 		${PYTHON_DEPS}
 		dev-java/fop
 		dev-python/reportlab )
-	ssl? ( dev-libs/openssl:0= )
-	>=dev-db/sqlite-3.10.2:3=
+	ssl? ( <dev-libs/openssl-1.1:0= )
+	>=dev-db/sqlite-3.6.22:3=
 	vala? ( dev-libs/libgee:0.8 )
 "
 
 # java dep shouldn't rely on slots, bug #450004
-# TODO: libgee shouldn't be needed at build with USE=-vala, but needs build system fixes - bug 674066
 DEPEND="${RDEPEND}
-	dev-libs/libgee:0.8
 	>=app-text/gnome-doc-utils-0.9
 	app-text/yelp-tools
 	dev-util/glib-utils
@@ -87,6 +84,13 @@ pkg_setup() {
 src_prepare() {
 	# Fix compilation with -Werror=format-security (from 'master')
 	eapply "${FILESDIR}"/${PN}-5.2.4-format-security.patch
+
+	# Support JRE 1.8 (from Fedora)
+	eapply "${FILESDIR}"/${PN}-5.2.4-jre18.patch
+
+	# Fix vala test,
+	# https://bugzilla.gnome.org/show_bug.cgi?id=761424
+	eapply "${FILESDIR}"/${PN}-5.2.4-vala-check.patch
 
 	use berkdb && append-cppflags "-I$(db_includedir)"
 
@@ -114,18 +118,25 @@ src_prepare() {
 			die "mv ${f} failed"
 	done
 
+	eautoreconf
 	gnome2_src_prepare
 	java-pkg-opt-2_src_prepare
 	use vala && vala_src_prepare
-
-	# Support JRE 1.8 (from Fedora) - patches configure, so applied AFTER gnome2_src_prepare runs eautoreconf
-	eapply "${FILESDIR}"/${PN}-5.2.4-jre18.patch
-
 }
 
 src_configure() {
-	# Upstream broken configure handling for UI library introspection and vala bindings if passing a choice with use_enable - https://gitlab.gnome.org/GNOME/libgda/issues/158
-	# But if we don't pass an explicit choice, it behaves as we need (only enable them if --enable-ui AND the appropriate --enable-introspection or --enable-vala)
+	local myconf=( )
+	if use introspection ; then
+		myconf+=( $(use_enable gtk gdaui-gi) )
+	else
+		myconf+=( --disable-gdaui-gi )
+	fi
+	if use vala ; then
+		myconf+=( $(use_enable gtk gdaui-vala) )
+	else
+		myconf+=( --disable-gdaui-vala )
+	fi
+
 	gnome2_src_configure \
 		--with-help \
 		--disable-default-binary \
@@ -140,17 +151,19 @@ src_configure() {
 		$(use_with gtk ui) \
 		$(use_with http libsoup) \
 		$(use_enable introspection) \
+		$(use_enable introspection gda-gi) \
 		"$(use_with java java $JAVA_HOME)" \
 		$(use_enable json) \
 		$(use_with ldap) \
-		--with-ldap-libdir-name="$(get_libdir)" \
 		$(use_with mdb mdb /usr) \
 		$(use_with mysql mysql /usr) \
 		$(use_with oci8 oracle) \
 		$(use_with postgres postgres /usr) \
 		$(use_enable ssl crypto) \
 		$(use_with sourceview gtksourceview) \
-		$(use_enable vala)
+		$(use_enable vala) \
+		$(use_enable vala vala-extensions) \
+		${myconf[@]}
 }
 
 pkg_preinst() {
