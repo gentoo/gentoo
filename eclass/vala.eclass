@@ -32,7 +32,7 @@ VALA_MIN_API_VERSION=${VALA_MIN_API_VERSION:-0.32}
 # @ECLASS-VARIABLE: VALA_MAX_API_VERSION
 # @DESCRIPTION:
 # Maximum vala API version (e.g. 0.32).
-VALA_MAX_API_VERSION=${VALA_MAX_API_VERSION:-0.36}
+VALA_MAX_API_VERSION=${VALA_MAX_API_VERSION:-0.44}
 
 # @ECLASS-VARIABLE: VALA_USE_DEPEND
 # @DEFAULT_UNSET
@@ -59,16 +59,33 @@ vala_api_versions() {
 	done
 }
 
+# Outputs VALA_USE_DEPEND as a a USE-dependency string
+_vala_use_depend() {
+	local u="" vala_use
+
+	if [[ -n ${VALA_USE_DEPEND} ]]; then
+		for vala_use in ${VALA_USE_DEPEND}; do
+			case ${vala_use} in
+				vapigen) u="${u},${vala_use}(+)" ;;
+				valadoc) u="${u},${vala_use}(-)" ;;
+			esac
+		done
+		u="[${u#,}]"
+	fi
+
+	echo -n "${u}"
+}
+
 # @FUNCTION: vala_depend
 # @DESCRIPTION:
 # Outputs a ||-dependency string on vala from VALA_MAX_API_VERSION down to
 # VALA_MIN_API_VERSION
 vala_depend() {
-	local u v versions=$(vala_api_versions)
-	[[ ${VALA_USE_DEPEND} ]] && u="[${VALA_USE_DEPEND}(+)]"
+	local u v
+	u=$(_vala_use_depend)
 
 	echo -n "|| ("
-	for v in ${versions}; do
+	for v in $(vala_api_versions); do
 		echo -n " dev-lang/vala:${v}${u}"
 	done
 	echo " )"
@@ -80,7 +97,8 @@ vala_depend() {
 # VALA_MAX_API_VERSION, VALA_MIN_API_VERSION, and VALA_USE_DEPEND.
 vala_best_api_version() {
 	local u v
-	[[ ${VALA_USE_DEPEND} ]] && u="[${VALA_USE_DEPEND}(+)]"
+	u=$(_vala_use_depend)
+
 	for v in $(vala_api_versions); do
 		has_version "dev-lang/vala:${v}${u}" && echo "${v}" && return
 	done
@@ -129,6 +147,9 @@ vala_src_prepare() {
 
 	valafoo=$(type -P vapigen-${version})
 	[[ ${valafoo} ]] && export VAPIGEN="${valafoo}"
+
+	valafoo=$(type -P valadoc-${version})
+	[[ ${valafoo} ]] && has valadoc ${VALA_USE_DEPEND} && export VALADOC="${valafoo}"
 
 	valafoo="${EPREFIX}/usr/share/vala/Makefile.vapigen"
 	[[ -e ${valafoo} ]] && export VAPIGEN_MAKEFILE="${valafoo}"

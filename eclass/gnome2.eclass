@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: gnome2.eclass
@@ -316,7 +316,6 @@ gnome2_src_install() {
 gnome2_pkg_preinst() {
 	xdg_pkg_preinst
 	gnome2_gconf_savelist
-	gnome2_icon_savelist
 	gnome2_schemas_savelist
 	gnome2_scrollkeeper_savelist
 	gnome2_gdk_pixbuf_savelist
@@ -338,9 +337,6 @@ gnome2_pkg_preinst() {
 gnome2_pkg_postinst() {
 	xdg_pkg_postinst
 	gnome2_gconf_install
-	if [[ -n ${GNOME2_ECLASS_ICONS} ]]; then
-		gnome2_icon_cache_update
-	fi
 	if [[ -n ${GNOME2_ECLASS_GLIB_SCHEMAS} ]]; then
 		gnome2_schemas_update
 	fi
@@ -362,9 +358,6 @@ gnome2_pkg_postinst() {
 # Handle scrollkeeper, GSettings, Icons, desktop and mime database updates.
 gnome2_pkg_postrm() {
 	xdg_pkg_postrm
-	if [[ -n ${GNOME2_ECLASS_ICONS} ]]; then
-		gnome2_icon_cache_update
-	fi
 	if [[ -n ${GNOME2_ECLASS_GLIB_SCHEMAS} ]]; then
 		gnome2_schemas_update
 	fi
