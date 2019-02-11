@@ -18,7 +18,7 @@ IUSE="doc"
 
 RDEPEND="
 	!dev-python/mysql-python
-	virtual/mysql"
+	dev-db/mysql-connector-c:0="
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )"
