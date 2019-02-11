@@ -10,6 +10,8 @@ RUBY_FAKEGEM_EXTRADOC="CHANGELOG.md README.md"
 RUBY_FAKEGEM_DOCDIR="doc"
 RUBY_FAKEGEM_TASK_DOC=""
 
+RUBY_FAKEGEM_GEMSPEC="simplecov.gemspec"
+
 inherit ruby-fakegem
 
 DESCRIPTION="Code coverage with a configuration library and merging across test suites"
