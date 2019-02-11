@@ -1,13 +1,19 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
+
+inherit kde5 toolchain-funcs
 
 if [[ ${KDE_BUILD_TYPE} != live ]]; then
-	KDE_HANDBOOK="true"
-	KDE_TEST="true"
+	MY_PV=${PV/_/-}
+	MY_P=${PN}-${MY_PV}
+	SRC_BRANCH=stable
+	[[ ${PV} =~ beta[0-9]$ ]] && SRC_BRANCH=unstable
+	SRC_URI="mirror://kde/${SRC_BRANCH}/digikam/${MY_P}.tar.xz"
+	KEYWORDS="~amd64 ~x86"
+	S="${WORKDIR}/${MY_P}"
 fi
-inherit kde5 toolchain-funcs
 
 DESCRIPTION="Digital photo management application"
 HOMEPAGE="https://www.digikam.org/"
@@ -15,16 +21,13 @@ HOMEPAGE="https://www.digikam.org/"
 LICENSE="GPL-2"
 IUSE="addressbook calendar gphoto2 jpeg2k +lensfun libav marble mediaplayer mysql opengl openmp +panorama scanner semantic-desktop vkontakte webkit X"
 
-if [[ ${KDE_BUILD_TYPE} != live ]]; then
-	KEYWORDS="~amd64 ~x86"
-	MY_PV=${PV/_/-}
-	MY_P=${PN}-${MY_PV}
-	SRC_BRANCH=stable
-	[[ ${PV} =~ beta[0-9]$ ]] && SRC_BRANCH=unstable
-	SRC_URI="mirror://kde/${SRC_BRANCH}/digikam/${MY_P}.tar.xz"
-	S="${WORKDIR}/${MY_P}"
-fi
-
+BDEPEND="
+	sys-devel/gettext
+	panorama? (
+		sys-devel/bison
+		sys-devel/flex
+	)
+"
 COMMON_DEPEND="
 	$(add_frameworks_dep kconfig)
 	$(add_frameworks_dep kconfigwidgets)
@@ -83,7 +86,7 @@ COMMON_DEPEND="
 	semantic-desktop? ( $(add_frameworks_dep kfilemetadata) )
 	vkontakte? ( net-libs/libkvkontakte:5 )
 	!webkit? ( $(add_qt_dep qtwebengine 'widgets') )
-	webkit? ( $(add_qt_dep qtwebkit) )
+	webkit? ( >=dev-qt/qtwebkit-5.212.0_pre20180120:5 )
 	X? (
 		$(add_qt_dep qtx11extras)
 		x11-libs/libX11
@@ -92,11 +95,6 @@ COMMON_DEPEND="
 DEPEND="${COMMON_DEPEND}
 	dev-cpp/eigen:3
 	dev-libs/boost[threads]
-	sys-devel/gettext
-	panorama? (
-		sys-devel/bison
-		sys-devel/flex
-	)
 "
 RDEPEND="${COMMON_DEPEND}
 	mysql? ( virtual/mysql[server] )
