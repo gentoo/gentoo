@@ -201,7 +201,7 @@ RDEPEND="
 	vdpau? ( x11-libs/libvdpau:0 )
 	vnc? ( net-libs/libvncserver:0 )
 	vorbis? ( media-libs/libvorbis:0 )
-	vpx? ( media-libs/libvpx:0= )
+	vpx? ( <media-libs/libvpx-1.8:0= )
 	wayland? (
 		>=dev-libs/wayland-1.15
 		dev-libs/wayland-protocols

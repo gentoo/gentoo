@@ -842,6 +842,11 @@ glibc_do_configure() {
 
 	if version_is_at_least 2.25 ; then
 		case ${CTARGET} in
+			m68k*)
+				# setjmp() is not compatible with stack protection:
+				# https://sourceware.org/PR24202
+				myconf+=( --enable-stack-protector=no )
+				;;
 			mips*)
 				# dlopen() detects stack smash on mips n32 ABI.
 				# Cause is unknown: https://bugs.gentoo.org/640130

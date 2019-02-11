@@ -809,6 +809,11 @@ glibc_do_configure() {
 	local myconf=()
 
 	case ${CTARGET} in
+		m68k*)
+			# setjmp() is not compatible with stack protection:
+			# https://sourceware.org/PR24202
+			myconf+=( --enable-stack-protector=no )
+			;;
 		powerpc-*)
 			# Currently gcc on powerpc32 generates invalid code for
 			# __builtin_return_address(0) calls. Normally programs

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,7 +15,11 @@ KEYWORDS="~amd64 ~x86"
 
 IUSE="cpu_flags_x86_sse debug dssi libsamplerate mad osc rubberband vorbis zlib"
 
-RDEPEND="
+BDEPEND="
+	dev-qt/linguist-tools:5
+	virtual/pkgconfig
+"
+DEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtwidgets:5
@@ -36,18 +40,17 @@ RDEPEND="
 	vorbis? ( media-libs/libvorbis )
 	zlib? ( sys-libs/zlib )
 "
-DEPEND="${RDEPEND}
-	dev-qt/linguist-tools:5
-	virtual/pkgconfig
-"
+RDEPEND="${DEPEND}"
+
+PATCHES=(
+	"${FILESDIR}/${P}-dont-compress-manpages.patch"
+)
 
 src_configure() {
 	append-cxxflags -std=c++11
 	econf \
 		--enable-ladspa \
 		--enable-lilv \
-		--disable-qt4 \
-		--with-qt5=$(qt5_get_libdir)/qt5 \
 		$(use_enable debug) \
 		$(use_enable dssi) \
 		$(use_enable libsamplerate) \
