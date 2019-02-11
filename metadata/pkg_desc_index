@@ -3273,7 +3273,7 @@ dev-libs/snowball-stemmer 0.20140325: All you need to include the snowball stemm
 dev-libs/socketstream 0.7.0-r1: C++ Streaming sockets library
 dev-libs/sord 0.16.0-r1: Library for storing RDF data in memory
 dev-libs/spdlog 1.2.1: Very fast, header only, C++ logging library
-dev-libs/starpu 1.1.5: Unified runtime system for heterogeneous multicore architectures
+dev-libs/starpu 1.1.5 1.2.6: Unified runtime system for heterogeneous multicore architectures
 dev-libs/stfl 0.24: A library which implements a curses-based widget set for text terminals
 dev-libs/svrcore 4.0.4-r1: Mozilla LDAP C SDK
 dev-libs/tinyxml 2.6.2-r2: Simple and small C++ XML parser
@@ -6455,7 +6455,7 @@ dev-vcs/colorcvs 1.4-r2: A tool based on colorgcc to beautify cvs output
 dev-vcs/colorsvn 0.3.3: Subversion output colorizer
 dev-vcs/cssc 1.4.0: The GNU Project's replacement for SCCS
 dev-vcs/cvs 1.12.12-r12: Concurrent Versions System - source code revision control tools
-dev-vcs/cvs2cl 2.71: produces a GNU-style ChangeLog for CVS-controlled sources
+dev-vcs/cvs2cl 2.71-r1: produces a GNU-style ChangeLog for CVS-controlled sources
 dev-vcs/cvs2svn 2.4.0-r1: Convert a CVS repository to a Subversion repository
 dev-vcs/cvsd 1.0.17: CVS pserver daemon
 dev-vcs/cvsgraph 1.7.0: CVS/RCS repository grapher
@@ -10581,7 +10581,7 @@ www-apache/mod_bw 0.9.2-r1: Bandwidth Management Module for Apache2
 www-apache/mod_common_redirect 0.1.1: mod_common_redirect implements common redirects without mod_rewrite overhead
 www-apache/mod_dnssd 0.6-r1: mod_dnssd is an Apache module which adds Zeroconf support via DNS-SD using Avahi
 www-apache/mod_extract_forwarded 2.0.3_pre2015052015: Rewrites X-Forwarded-For to REMOTE_ADDR for reverse proxy configurations
-www-apache/mod_fcgid 2.3.9: Binary-compatible alternative to mod_fastcgi with better process management
+www-apache/mod_fcgid 2.3.9-r1: Binary-compatible alternative to mod_fastcgi with better process management
 www-apache/mod_gnutls 0.8.2-r1: mod_gnutls uses GnuTLS for SSL/TLS encryption in Apache2 (compare to mod_ssl)
 www-apache/mod_jk 1.2.42: JK module for connecting Tomcat and Apache using the ajp13 protocol
 www-apache/mod_ldap_userdir 1.1.19: Look up Apache ~user directories in an LDAP directory
