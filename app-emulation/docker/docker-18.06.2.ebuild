@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,7 +17,7 @@ else
 	else
 		MY_PV="$PV-ce"
 	fi
-	DOCKER_GITCOMMIT="e68fc7a"
+	DOCKER_GITCOMMIT="6247962"
 	EGIT_COMMIT="v${MY_PV}"
 	SRC_URI="https://${EGO_PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="amd64 ~arm ~arm64"
@@ -63,6 +63,7 @@ RDEPEND="
 	dev-libs/libltdl
 	~app-emulation/containerd-1.1.2
 	~app-emulation/runc-1.0.0_rc5_p20180509[apparmor?,seccomp?]
+	>=app-emulation/runc-1.0.0_rc5_p20180509-r1
 	~app-emulation/docker-proxy-0.8.0_p20180626
 	container-init? ( >=sys-process/tini-0.18.0[static] )
 "

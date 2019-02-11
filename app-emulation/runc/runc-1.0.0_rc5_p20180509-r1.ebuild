@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -27,6 +27,14 @@ RDEPEND="
 	seccomp? ( sys-libs/libseccomp )
 	!app-emulation/docker-runc
 "
+
+PATCHES=( "${FILESDIR}"/runc-fix-cve.patch )
+
+src_prepare() {
+	pushd src/${EGO_PN} || die
+	default
+	popd || die
+}
 
 src_compile() {
 	# Taken from app-emulation/docker-1.7.0-r1
