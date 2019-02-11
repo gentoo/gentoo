@@ -56,7 +56,7 @@ DEPEND="${RDEPEND}
 S=${WORKDIR}/${MY_P}/source
 S_TEST=${WORKDIR}/${MY_P}_test/source
 PATCHES=(
-	"${FILESDIR}"/${PN}-0.20.1-rltiles-ldflags-libs.patch
+	"${FILESDIR}"/rltiles-ldflags-libs.patch
 )
 
 pkg_setup() {

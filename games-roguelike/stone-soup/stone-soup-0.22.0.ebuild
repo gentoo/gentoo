@@ -23,7 +23,7 @@ SRC_URI="
 # MIT: json.cc/json.h, some .js files in webserver/static/scripts/contrib/
 LICENSE="GPL-2 BSD BSD-2 public-domain CC0-1.0 MIT"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="debug luajit ncurses test +tiles"
 # test is broken
 # see https://crawl.develz.org/mantis/view.php?id=6121
@@ -56,7 +56,7 @@ DEPEND="${RDEPEND}
 S=${WORKDIR}/${MY_P}/source
 S_TEST=${WORKDIR}/${MY_P}_test/source
 PATCHES=(
-	"${FILESDIR}"/${PN}-0.20.1-rltiles-ldflags-libs.patch
+	"${FILESDIR}"/rltiles-ldflags-libs.patch
 )
 
 pkg_setup() {
