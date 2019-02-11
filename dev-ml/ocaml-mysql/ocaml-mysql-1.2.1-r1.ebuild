@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit findlib eutils
+inherit findlib
 
 IUSE="+ocamlopt"
 
@@ -13,7 +13,7 @@ HOMEPAGE="http://ocaml-mysql.forge.ocamlcore.org/"
 
 DEPEND=">=dev-lang/ocaml-3.10.2:=[ocamlopt?]
 	sys-libs/zlib
-	>=virtual/mysql-4.0"
+	dev-db/mysql-connector-c:0="
 
 RDEPEND="$DEPEND"
 
@@ -25,7 +25,7 @@ src_compile()
 {
 	emake all
 	if use ocamlopt; then
-		emake -j1 opt
+		emake opt
 	fi
 }
 
@@ -34,5 +34,5 @@ src_install()
 	findlib_src_preinst
 	emake install
 
-	dodoc CHANGES README VERSION || die
+	dodoc CHANGES README VERSION
 }
