@@ -10,7 +10,7 @@ SRC_URI="http://getpopfile.org/downloads/${P}.zip"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="cjk ipv6 libressl mysql ssl xmlrpc"
 
 RDEPEND="virtual/perl-Digest-MD5
