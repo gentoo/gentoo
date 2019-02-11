@@ -10,7 +10,7 @@ else
 	MY_PV="${PV/_/-}"
 	RUNC_COMMIT="96ec2177ae841256168fcf76954f7177af9446eb" # Change this when you update the ebuild
 	SRC_URI="https://${EGO_PN}/archive/${RUNC_COMMIT}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64"
+	KEYWORDS="amd64 ~arm ~arm64 ~ppc64"
 	inherit golang-build golang-vcs-snapshot
 fi
 
@@ -27,13 +27,17 @@ RDEPEND="
 	!app-emulation/docker-runc
 "
 
+PATCHES=( "${FILESDIR}/${PN}-fix-cve.patch" )
+
 src_prepare() {
+	pushd src/${EGO_PN}
 	default
 	sed -i -e "/^GIT_BRANCH/d"\
 		-e "/^GIT_BRANCH_CLEAN/d"\
 		-e "/^COMMIT_NO/d"\
 		-e "s/COMMIT :=.*/COMMIT := ${RUNC_COMMIT}/"\
-		src/${EGO_PN}/Makefile || die
+		Makefile || die
+	popd || die
 }
 
 src_compile() {
