@@ -23,7 +23,7 @@ HOMEPAGE="https://www.freedesktop.org/wiki/Software/systemd"
 
 LICENSE="GPL-2 LGPL-2.1 MIT public-domain"
 SLOT="0/2"
-IUSE="acl apparmor audit build cryptsetup curl elfutils +gcrypt gnuefi http idn importd +kmod libidn2 +lz4 lzma nat pam pcre policykit qrcode +resolvconf +seccomp selinux +split-usr ssl +sysv-utils test vanilla xkb"
+IUSE="acl apparmor audit build cryptsetup curl elfutils +gcrypt gnuefi +gnutls http idn importd +kmod libidn2 +lz4 lzma nat pam pcre policykit qrcode +resolvconf +seccomp selinux +split-usr ssl +sysv-utils test vanilla xkb"
 
 REQUIRED_USE="importd? ( curl gcrypt lzma )"
 RESTRICT="!test? ( test )"
@@ -40,9 +40,12 @@ COMMON_DEPEND=">=sys-apps/util-linux-2.30:0=[${MULTILIB_USEDEP}]
 	curl? ( net-misc/curl:0= )
 	elfutils? ( >=dev-libs/elfutils-0.158:0= )
 	gcrypt? ( >=dev-libs/libgcrypt-1.4.5:0=[${MULTILIB_USEDEP}] )
+	ssl? (
+		gnutls? ( >=net-libs/gnutls-3.5.3 )
+		!gnutls? ( >=dev-libs/openssl-1.1.0:= )
+	)
 	http? (
 		>=net-libs/libmicrohttpd-0.9.33:0=
-		ssl? ( >=net-libs/gnutls-3.1.4:0= )
 	)
 	idn? (
 		libidn2? ( net-dns/libidn2:= )
@@ -230,7 +233,6 @@ multilib_src_configure() {
 		-Dgnu-efi=$(meson_multilib_native_use gnuefi)
 		-Defi-libdir="${EPREFIX}/usr/$(get_libdir)"
 		-Dmicrohttpd=$(meson_multilib_native_use http)
-		$(usex http -Dgnutls=$(meson_multilib_native_use ssl) -Dgnutls=false)
 		-Dimportd=$(meson_multilib_native_use importd)
 		-Dbzip2=$(meson_multilib_native_use importd)
 		-Dzlib=$(meson_multilib_native_use importd)
@@ -275,6 +277,19 @@ multilib_src_configure() {
 		-Dtmpfiles=$(meson_multilib)
 		-Dvconsole=$(meson_multilib)
 	)
+
+	if multilib_is_native_abi && use ssl; then
+		myconf+=(
+			-Ddns-over-tls=$(usex gnutls gnutls openssl)
+			-Dgnutls=$(usex gnutls true false)
+			-Dopenssl=$(usex gnutls false true)
+		)
+	else
+		myconf+=(
+			-Dgnutls=false
+			-Dopenssl=false
+		)
+	fi
 
 	if multilib_is_native_abi && use idn; then
 		myconf+=(
@@ -441,6 +456,13 @@ pkg_postinst() {
 		ebegin "Reexecuting system manager"
 		systemctl daemon-reexec
 		eend $?
+	fi
+
+	if use http && use ssl && ! use gnutls; then
+		ewarn "You have enabled USE='http' and USE='ssl', but disabled USE='gnutls'.  The"
+		ewarn "embedded HTTP server curently depends on GnuTLS, and does not support HTTPS"
+		ewarn "via other libraries.  If you need HTTPS support in journald, please re-enable"
+		ewarn "USE='gnutls'."
 	fi
 
 	if [[ ${FAIL} ]]; then
