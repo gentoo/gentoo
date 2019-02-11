@@ -6114,7 +6114,7 @@ dev-tcltk/expect-lite 4.6.1: quick and easy command line automation tool built o
 dev-tcltk/itcl 3.4.1 4.0.3: Object Oriented Enhancements for Tcl/Tk
 dev-tcltk/itk 3.4.1 4.0.1: Object Oriented Enhancements for Tcl/Tk
 dev-tcltk/iwidgets 4.0.1: Widget collection for incrTcl/incrTk
-dev-tcltk/mysqltcl 3.05: TCL MySQL Interface
+dev-tcltk/mysqltcl 3.052-r1: TCL MySQL Interface
 dev-tcltk/scwoop 4.1: Simple Composite Widget Object Oriented Package
 dev-tcltk/snack 2.2.10-r6: The Snack Sound Toolkit (Tcl)
 dev-tcltk/tablelist 5.8: Multi-Column Listbox Package
