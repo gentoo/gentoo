@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -15,7 +15,7 @@ if [[ "${PV}" = "9999" ]]; then
 	ESVN_REPO_URI="http://subversion.ffado.org/ffado/trunk/${PN}"
 else
 	SRC_URI="http://www.ffado.org/files/${P}.tgz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 fi
 
 LICENSE="GPL-2 GPL-3"
