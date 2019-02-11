@@ -8,5 +8,5 @@ KEYWORDS=~amd64 ~x86
 LICENSE=BSD
 RDEPEND=git? ( dev-vcs/git ) !dev-vcs/blogc-git-receiver !www-servers/blogc-runserver
 SLOT=0
-SRC_URI=https://github.com/blogc/blogc/releases/download/v0.14.1/blogc-0.14.1.tar.xz
+SRC_URI=https://github.com/blogc/blogc/releases/download/v0.15.0/blogc-0.15.0.tar.xz
 _md5_=728a43cf652b4ac908a08e5cb5e9b991
