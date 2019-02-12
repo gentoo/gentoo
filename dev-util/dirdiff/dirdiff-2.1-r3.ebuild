@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit flag-o-matic multilib toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="A tool for differing and merging directories"
 SRC_URI="https://www.samba.org/ftp/paulus/${P}.tar.gz"
