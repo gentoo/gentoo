@@ -59,13 +59,8 @@ app-admin/syslog-ng spoof-source
 app-portage/layman cvs subversion test
 app-text/xmlto latex
 dev-libs/apr-util freetds odbc
-gnome-base/dconf test
-gnome-base/librsvg tools
-net-dns/avahi bookmarks gtk3 utils
-net-misc/openssh X
-sys-apps/dbus test
 sys-apps/man-pages l10n_fr
-sys-apps/systemd cryptsetup policykit qrcode xkb
+sys-apps/systemd cryptsetup policykit qrcode
 sys-auth/pambase consolekit pam_krb5 pam_ssh passwdqc
 sys-block/thin-provisioning-tools test
 sys-devel/distcc gssapi
@@ -73,11 +68,10 @@ sys-devel/gettext cvs
 
 # Michał Górny <mgorny@gentoo.org> (03 Mar 2018)
 # Requires masked dependent flags.
-net-dns/avahi howl-compat python
+net-dns/avahi python
 
 # Michał Górny <mgorny@gentoo.org> (28 Feb 2018)
 # Requires masked dependent flags.
-net-dns/avahi mdnsresponder-compat
 net-fs/samba ads
 
 # Michał Górny <mgorny@gentoo.org> (19 Feb 2018)
@@ -86,7 +80,6 @@ dev-db/redis tcmalloc
 dev-python/hgdistver test
 dev-python/pycurl test
 dev-python/pyopenssl test
-dev-python/pyyaml libyaml
 dev-python/setuptools_scm mercurial test
 dev-python/sphinx latex test
 dev-python/twisted-core gtk serial
