@@ -1,0 +1,14 @@
+BDEPEND=|| ( dev-lang/python:3.7 dev-lang/python:3.6 dev-lang/python:3.5 ) >=kde-plasma/breeze-5.15.0:5 || ( ( dev-lang/python:3.7 dev-python/pycairo[python_targets_python3_7(-),python_single_target_python3_7(+)] ) ( dev-lang/python:3.6 dev-python/pycairo[python_targets_python3_6(-),python_single_target_python3_6(+)] ) ( dev-lang/python:3.5 dev-python/pycairo[python_targets_python3_5(-),python_single_target_python3_5(+)] ) ) dev-ruby/sass dev-util/ninja >=dev-util/cmake-3.9.6 >=kde-frameworks/extra-cmake-modules-5.54.0:5
+DEFINED_PHASES=compile configure install nofetch postinst postrm preinst prepare setup test unpack
+DEPEND=>=dev-qt/qtcore-5.11.1:5 dev-util/desktop-file-utils app-arch/xz-utils
+DESCRIPTION=Official GTK+ port of Plasma's Breeze widget style
+EAPI=7
+HOMEPAGE=https://cgit.kde.org/breeze-gtk.git
+IUSE=debug
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=LGPL-2.1+
+RDEPEND=>=kde-frameworks/kf-env-4 || ( >=kde-frameworks/breeze-icons-5.54.0:5 kde-frameworks/oxygen-icons:* ) >=dev-qt/qtcore-5.11.1:5
+SLOT=5
+SRC_URI=mirror://kde/stable/plasma/5.15.0/breeze-gtk-5.15.0.tar.xz
+_eclasses_=cmake-utils	ab10bd85e5d38e2a32077bcd91faa1b6	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	55aaa148741116aa54ad0d80e361818e	kde5	1349a105b08a8bb265c1d22984d0dad2	kde5-functions	1236edc19d52100e99be7dc2fc91db0a	multilib	b2f01ad412baf81650c23fcf0975fa33	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-any-r1	4900ae970f827a22d33d41bd8b8f9ace	python-utils-r1	12114a2a9aab35b93efc037a196b3234	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	virtualx	401b718cc14d43a5a7fbe062c4851ba5	xdg-utils	14d00d009167652b1fa363e55effe213
+_md5_=de297295e520434156d0793eff1765f5
