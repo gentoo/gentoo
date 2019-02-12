@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -79,7 +79,8 @@ RDEPEND="
 		xml? ( dev-libs/expat )
 		sys-libs/zlib
 	)"
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	app-arch/xz-utils
 	sys-apps/texinfo
 	client? (

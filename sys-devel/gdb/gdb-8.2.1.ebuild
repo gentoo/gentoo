@@ -79,7 +79,8 @@ RDEPEND="
 		xml? ( dev-libs/expat )
 		sys-libs/zlib
 	)"
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	app-arch/xz-utils
 	sys-apps/texinfo
 	client? (
