@@ -7,6 +7,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Mart Raudsepp <leio@gentoo.org> (12 Feb 2019)
+# nautilus-tracker-tags is last rited
+app-misc/tracker nautilus
+
 # Georgy Yakovlev <gyakovlev@gentoo.org> (17 Jan 2019 )
 # Mask openjdk:8 for use as system java-vm until it's proven to work
 dev-java/openjdk:8 gentoo-vm
