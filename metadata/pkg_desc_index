@@ -1056,7 +1056,7 @@ app-misc/logitech-applet 0.4_pre1-r3: Control utility for some special features 
 app-misc/logserial 0.4.2: A tool for logging raw data from a serial device
 app-misc/lsx 0.1-r1: list executables
 app-misc/lxsplit 0.2.4-r1: Command-line file splitter/joiner for Linux
-app-misc/mc 4.8.20-r1: GNU Midnight Commander is a text based file manager
+app-misc/mc 4.8.20-r1 4.8.22: GNU Midnight Commander is a text based file manager
 app-misc/media-player-info 23: A repository of data files describing media player capabilities
 app-misc/mencal 3.0: Calendar to track menstruation cycles
 app-misc/mepl 0.45-r1: Self-employed-mode software for 3COM/USR message modems
@@ -4838,7 +4838,7 @@ dev-python/docker-pycreds 0.2.1 0.3.0: Python bindings for the docker credential
 dev-python/dockerpty 0.4.1: Python library to use the pseudo-tty of a docker container
 dev-python/docopt 0.6.2-r2: Pythonic argument parser, that will make you smile
 dev-python/doctest-ignore-unicode 0.1.2: Add flag to ignore unicode literal prefixes in doctests
-dev-python/docutils 0.12 0.13.1: Python Documentation Utilities
+dev-python/docutils 0.12 0.13.1 0.14: Python Documentation Utilities
 dev-python/docutils-glep 0.4-r1 1.1: Gentoo GLEP support for docutils
 dev-python/dogpile-cache 0.6.4: A locking API for expiring values while a single thread generates a new value.
 dev-python/dogpile-core 0.4.1: A lock which allows a thread to generate an expensive resource while other threads use the old value
@@ -5539,7 +5539,7 @@ dev-python/rarfile 3.0: Module for RAR archive reading
 dev-python/rdflib 4.2.1 4.2.2: RDF library containing a triple store and parser/serializer
 dev-python/readme 0.6.0: a library for rendering "readme" descriptions for Warehouse
 dev-python/rebulk 0.9.0: Python library that performs advanced searches in strings
-dev-python/recommonmark 0.4.0 0.5.0_pre20181012: Python docutils-compatibility bridge to CommonMark
+dev-python/recommonmark 0.4.0 0.5.0_pre20181012 0.5.0_pre20181012-r1: Python docutils-compatibility bridge to CommonMark
 dev-python/redis-py 2.9.1 2.10.5: Python client for Redis key-value store
 dev-python/rednose 0.4.1: coloured output for nosetests
 dev-python/regendoc 0.5: Check/update simple file/shell examples in documentation
@@ -9925,7 +9925,7 @@ sys-apps/osinfo-db-tools 1.2.0: Tools for managing the osinfo database
 sys-apps/paxctl 0.7-r2 0.9: Manages various PaX related program header flags for Elf32, Elf64, binaries
 sys-apps/pciutils 3.5.6: Various utilities dealing with the PCI bus
 sys-apps/pcmciautils 018_p8-r1: PCMCIA userspace utilities for Linux
-sys-apps/pcsc-lite 1.8.23: PC/SC Architecture smartcard middleware library
+sys-apps/pcsc-lite 1.8.23 1.8.24: PC/SC Architecture smartcard middleware library
 sys-apps/pmount 0.9.99_alpha-r3: Policy based mounter that gives the ability to mount removable devices as a user
 sys-apps/policycoreutils 2.7 2.8: SELinux core utilities
 sys-apps/portage 2.3.8 2.3.40-r1 2.3.49 2.3.51-r1: Portage is the package management and distribution system for Gentoo
