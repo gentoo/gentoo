@@ -11003,7 +11003,7 @@ x11-misc/qlipper 5.0.0: Lightweight and cross-platform clipboard history applet
 x11-misc/qps 1.10.18: Visual process manager - Qt version of ps/top
 x11-misc/qt5ct 0.35: Qt5 configuration tool, similar to qtconfig for Qt4
 x11-misc/qterm 0.7.1: A BBS client based on Qt
-x11-misc/qtfm 5.9-r1 6.1.5: A small, lightweight file manager for desktops based on pure Qt
+x11-misc/qtfm 6.1.5: A small, lightweight file manager for desktops based on pure Qt
 x11-misc/read-edid 1.4.2 3.0.2: Program that can get information from a PnP monitor
 x11-misc/redshift 1.12: A screen color temperature adjusting software
 x11-misc/rendercheck 1.5 1.5-r1: Tests for compliance with X RENDER extension
