@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -22,7 +22,7 @@ COMMON_DEPEND="
 	>=x11-libs/gtk+-3.22.10:3[introspection]
 	>=net-libs/libsoup-2.41.3:2.4
 	gnome-base/gnome-desktop:3=[introspection]
-	>=app-misc/tracker-1:=[miner-fs]
+	>=app-misc/tracker-1:0/100[miner-fs]
 	>=x11-libs/cairo-1.14
 	>=dev-libs/libgdata-0.13.3:=[crypt,gnome-online-accounts,introspection]
 	x11-libs/gdk-pixbuf:2[introspection]
