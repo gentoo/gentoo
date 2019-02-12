@@ -9,11 +9,6 @@ media-libs/x265 power8
 # The dependency is not keyworded
 net-analyzer/wireshark bcg729
 
-# Andreas Sturmlechner <asturm@gentoo.org> (29 Jan 2018)
-# Requires media-libs/libffado, which requires dev-python/PyQt5,
-# which is not keyworded.
-media-sound/jack2 ieee1394
-
 # Sergei Trofimovich <slyfox@gentoo.org> (3 Oct 2017)
 # Incomplete support, bug #605878.
 net-vpn/tor seccomp
