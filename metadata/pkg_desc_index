@@ -2915,7 +2915,7 @@ dev-lang/mercury-extras 14.01.1: Additional libraries and tools that are not par
 dev-lang/mmix 20131017 20160804: Donald Knuth's MMIX Assembler and Simulator
 dev-lang/mono 4.4.1.0 4.8.0.524: Mono runtime and class libraries, a C# compiler/interpreter
 dev-lang/mono-basic 4.6-r1: Visual Basic Compiler and Runtime
-dev-lang/mujs 1.0.4 1.0.5: An embeddable Javascript interpreter in C.
+dev-lang/mujs 1.0.5: An embeddable Javascript interpreter in C.
 dev-lang/nasm 2.13.01 2.14.02: groovy little assembler
 dev-lang/ocaml 4.04.2-r1: Type-inferring functional programming language descended from the ML family
 dev-lang/orc 0.4.28-r1: The Oil Runtime Compiler, a just-in-time compiler for array operations
