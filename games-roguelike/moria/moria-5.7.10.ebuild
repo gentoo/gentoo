@@ -21,7 +21,10 @@ BDEPEND="virtual/pkgconfig"
 
 S="${WORKDIR}/umoria-${PV}"
 
-PATCHES=( "${FILESDIR}/${P}-gentoo-paths.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-gentoo-paths.patch"
+	"${FILESDIR}/${P}-tinfo.patch"
+)
 
 pkg_setup(){
 	enewgroup gamestat 36
