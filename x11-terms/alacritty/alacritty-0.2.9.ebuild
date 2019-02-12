@@ -105,7 +105,7 @@ h2-0.1.16
 http-0.1.15
 httparse-1.3.3
 humantime-1.2.0
-hyper-0.12.23
+hyper-0.12.24
 hyper-tls-0.3.1
 idna-0.1.5
 image-0.20.1
@@ -157,7 +157,7 @@ num-iter-0.1.37
 num-rational-0.2.1
 num-traits-0.1.43
 num-traits-0.2.6
-num_cpus-1.9.0
+num_cpus-1.10.0
 objc-0.2.5
 objc-foundation-0.1.1
 objc_id-0.1.1
