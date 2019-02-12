@@ -50,14 +50,6 @@ vala
 gnome-keyring
 
 # Michał Górny <mgorny@gentoo.org> (19 Feb 2018)
-# net-dns/avahi is not stable here (not even GTK+).
-zeroconf
-
-# Michał Górny <mgorny@gentoo.org> (19 Feb 2018)
-# GNOME is not stable here (not even GTK+).
-gnome
-
-# Michał Górny <mgorny@gentoo.org> (19 Feb 2018)
 # virtual/{jdk,jre} are not stable here.
 java
 
@@ -72,10 +64,6 @@ tk
 # Mart Raudsepp <leio@gentoo.org> (24 Dec 2017)
 # dev-libs/libressl not marked stable yet
 libressl
-
-# Hans de Graaff <graaff@gentoo.org> (17 Apr 2017)
-# Temporary mask to support stable bug 615818
-ruby_targets_ruby22
 
 # Mart Raudsepp <leio@gentoo.org> (04 Feb 2017)
 # dev-vcs/subversion not marked stable yet
