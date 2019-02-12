@@ -21,6 +21,8 @@ SLOT="0"
 IUSE=""
 
 BDEPEND="
+	dev-util/intltool
+	sys-devel/gettext
 	virtual/pkgconfig
 "
 RDEPEND="
@@ -29,8 +31,6 @@ RDEPEND="
 "
 DEPEND="
 	${LIVE_DEPEND}
-	dev-util/intltool
-	sys-devel/gettext
 "
 
 src_prepare() {
