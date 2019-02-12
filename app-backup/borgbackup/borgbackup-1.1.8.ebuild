@@ -26,6 +26,7 @@ IUSE="libressl"
 RDEPEND="
 	!!app-office/borg
 	app-arch/lz4
+	virtual/acl
 	dev-python/llfuse[${PYTHON_USEDEP}]
 	dev-python/msgpack[${PYTHON_USEDEP}]
 	dev-python/pyzmq[${PYTHON_USEDEP}]
