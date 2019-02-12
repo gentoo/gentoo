@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 #
 # System-wide defaults for the Portage system
@@ -51,6 +51,9 @@ ELIBC="glibc"
 KERNEL="linux"
 USERLAND="GNU"
 INPUT_DEVICES="keyboard mouse"
+
+# Accept any license except those in the EULA license group.
+ACCEPT_LICENSE="* -@EULA"
 
 # Tomáš Chvátal <scarabeus@gentoo.org> (23 Mar 2013)
 # By default enable libreoffice implementation only.
