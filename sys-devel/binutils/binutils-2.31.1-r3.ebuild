@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,7 +8,8 @@ inherit eutils libtool flag-o-matic gnuconfig multilib versionator
 DESCRIPTION="Tools necessary to build programs"
 HOMEPAGE="https://sourceware.org/binutils/"
 LICENSE="GPL-3+"
-IUSE="+cxx doc multitarget +nls static-libs test"
+IUSE="+cxx default-gold doc multitarget +nls static-libs test"
+REQUIRED_USE="default-gold? ( cxx )"
 
 # Variables that can be set here:
 # PATCH_VER          - the patchset version
@@ -179,6 +180,9 @@ src_configure() {
 	if use cxx ; then
 		myconf+=( --enable-gold )
 		myconf+=( --enable-plugins )
+		if use default-gold; then
+			myconf+=( --enable-gold=default )
+		fi
 	fi
 
 	if use nls ; then
