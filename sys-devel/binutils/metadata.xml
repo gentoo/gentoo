@@ -6,6 +6,7 @@
 		<name>Gentoo Toolchain Project</name>
 	</maintainer>
 	<use>
+		<flag name="default-gold">Set ld to point to ld.gold instead of ld.bfd</flag>
 		<flag name="multitarget">Adds support to binutils for cross compiling (does not work with gas)</flag>
 	</use>
 	<upstream>

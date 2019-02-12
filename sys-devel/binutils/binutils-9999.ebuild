@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -178,6 +178,9 @@ src_configure() {
 	if use cxx ; then
 		myconf+=( --enable-gold )
 		myconf+=( --enable-plugins )
+		if use default-gold; then
+			myconf+=( --enable-gold=default )
+		fi
 	fi
 
 	if use nls ; then
