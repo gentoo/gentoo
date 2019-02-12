@@ -11,7 +11,7 @@ HOMEPAGE="https://www.samba.org/ftp/paulus/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~mips ppc ~x86"
+KEYWORDS="amd64 ~mips ppc x86"
 
 DEPEND="
 	dev-lang/tk:0=
