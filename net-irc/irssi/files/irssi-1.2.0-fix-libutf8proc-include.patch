@@ -1,0 +1,25 @@
+From 138596d84dfa060b5d035b96e7d1a57a7cbcd7b0 Mon Sep 17 00:00:00 2001
+From: Mikle Kolyada <zlogene@gentoo.org>
+Date: Tue, 12 Feb 2019 19:38:36 +0300
+Subject: [PATCH] wcwidth-wrapper.c: fix libutf8proc include path
+
+---
+ src/core/wcwidth-wrapper.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/core/wcwidth-wrapper.c b/src/core/wcwidth-wrapper.c
+index 03d0dc0c..b0df662f 100644
+--- a/src/core/wcwidth-wrapper.c
++++ b/src/core/wcwidth-wrapper.c
+@@ -27,7 +27,7 @@
+ #include "utf8.h"
+ 
+ #ifdef HAVE_LIBUTF8PROC
+-#include <utf8proc.h>
++#include <libutf8proc/utf8proc.h>
+ #endif
+ 
+ /* wcwidth=2 since unicode 5.2.0 */
+-- 
+2.19.2
+
