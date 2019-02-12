@@ -297,7 +297,7 @@ app-cdr/daa2iso 0.1.7e: Program for converting the DAA and GBI files to ISO
 app-cdr/disc-cover 1.5.6-r1: Creates CD-Covers via LaTeX by fetching cd-info from freedb.org or local file
 app-cdr/dvd+rw-tools 7.1-r3: A set of tools for DVD+RW/-RW drives
 app-cdr/dvdisaster 0.72.4 0.79.5: Tool for creating error correction data (ecc) for optical media (DVD, CD, BD)
-app-cdr/extract-xiso 2.5: Tool for extracting and creating optimised Xbox ISO images
+app-cdr/extract-xiso 2.7.1: Tool for extracting and creating optimised Xbox ISO images
 app-cdr/gaffitter 0.6.0-r1: Genetic Algorithm File Fitter
 app-cdr/gcdemu 3.2.0: Gtk+ GUI for controlling cdemu-daemon
 app-cdr/graveman 0.3.12_p5-r2: Graphical frontend for cdrecord, mkisofs, readcd and sox using GTK+2
@@ -391,7 +391,7 @@ app-dicts/aspell-da 1.7.42: Danish language dictionary for aspell
 app-dicts/aspell-de 0.60_pre20030222: German and Swiss-German language dictionary for aspell
 app-dicts/aspell-de-alt 2.1.1-r1: German (traditional orthography) language dictionary for aspell
 app-dicts/aspell-el 0.50.3: Greek language dictionary for aspell
-app-dicts/aspell-en 2016.11.20.0: English (US, British, Canadian) language dictionary for aspell
+app-dicts/aspell-en 2016.11.20.0 2018.04.16.0: English (US, British, Canadian) language dictionary for aspell
 app-dicts/aspell-eo 2.1.20000225.2: Esperanto language dictionary for aspell
 app-dicts/aspell-es 1.9a: Spanish language dictionary for aspell
 app-dicts/aspell-et 0.1.21.1: Estonian language dictionary for aspell
@@ -6299,7 +6299,7 @@ dev-util/diffball 1.0.1: Delta compression suite for using/generating binary pat
 dev-util/difffilter 0.3.3: Filter files out of unified diffs using POSIX extended regular expressions
 dev-util/diffstat 1.60: Display a histogram of diff changes
 dev-util/diffuse 0.4.8: A graphical tool to compare and merge text files
-dev-util/dirdiff 2.1-r2 2.1-r3: A tool for differing and merging directories
+dev-util/dirdiff 2.1-r3: A tool for differing and merging directories
 dev-util/distro-info 0.14: Provides information about the Debian distributions' releases
 dev-util/distro-info-data 0.29: Information about the Debian distributions' releases (data files)
 dev-util/dmake 4.12.2: Improved make
