@@ -84,6 +84,13 @@ src_configure() {
 	econf "${myeconfargs[@]}"
 }
 
+src_install() {
+	# address parallel build issue, bug 677566
+	MAKEOPTS=-j1
+
+	default
+}
+
 pkg_preinst() {
 	gnome2_gdk_pixbuf_savelist
 }
