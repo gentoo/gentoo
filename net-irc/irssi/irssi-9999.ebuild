@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -14,12 +14,14 @@ HOMEPAGE="https://irssi.org/"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="+perl selinux socks5 +proxy libressl"
+IUSE="otr +perl selinux socks5 +proxy libressl"
 
 CDEPEND="sys-libs/ncurses:0=
 	>=dev-libs/glib-2.6.0
 	!libressl? ( dev-libs/openssl:= )
 	libressl? ( dev-libs/libressl:= )
+	otr? ( >=dev-libs/libgcrypt-1.2.0:0=
+			>=net-libs/libotr-4.1.0 )
 	perl? ( dev-lang/perl:= )
 	socks5? ( >=net-proxy/dante-1.1.18 )"
 
@@ -49,6 +51,7 @@ src_configure() {
 	econf \
 		--with-perl-lib=vendor \
 		--enable-true-color \
+		$(use_with otr) \
 		$(use_with proxy) \
 		$(use_with perl) \
 		$(use_with socks5 socks)
