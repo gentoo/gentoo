@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -33,7 +33,7 @@ COMMON_DEPEND="
 
 	exif? ( >=media-libs/libexif-0.6.20:= )
 	introspection? ( >=dev-libs/gobject-introspection-0.6.4:= )
-	tracker? ( >=app-misc/tracker-0.12:= )
+	tracker? ( >=app-misc/tracker-0.12:0/100 )
 	xmp? ( >=media-libs/exempi-2.2.0:= )
 	sys-libs/libselinux
 "

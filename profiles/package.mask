@@ -225,11 +225,6 @@ dev-db/pgadmin3
 # Masked for more testing especially of reverse-deps.
 >=dev-games/ogre-1.11.2
 
-# Mart Raudsepp <leio@gentoo.org> (06 Oct 2018)
-# Netspeed applet moved into mate-base/mate-applets since v1.14,
-# use that instead. Bug #667910
-net-analyzer/mate-netspeed
-
 # Thomas Deutschmann <whissi@gentoo.org> (06 Oct 2018)
 # Outdated and vulnerable snapshot; libav-12.3 is the better
 # version for now
