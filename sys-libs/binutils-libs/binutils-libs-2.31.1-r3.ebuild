@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 PATCH_VER=5
 PATCH_DEV=dilfridge
 
-inherit eutils toolchain-funcs multilib-minimal
+inherit eutils libtool toolchain-funcs multilib-minimal
 
 MY_PN="binutils"
 MY_P="${MY_PN}-${PV}"
@@ -45,6 +45,10 @@ src_prepare() {
 		einfo "Applying binutils-${PATCH_BINUTILS_VER} patchset ${PATCH_VER}"
 		eapply "${WORKDIR}/patch"/*.patch
 	fi
+
+	# Fix cross-compile relinking issue.
+	elibtoolize
+
 	default
 }
 
