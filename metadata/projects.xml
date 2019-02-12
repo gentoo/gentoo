@@ -1882,6 +1882,11 @@
     <url>https://wiki.gentoo.org/wiki/Project-3AKernel_Security</url>
     <description>The Gentoo Linux Kernel Security Project handles patching our many kernel sources and informing our users about global kernel security status.</description>
     <member>
+      <email>alicef@gentoo.org</email>
+      <name>Alice Ferrazzi</name>
+      <role>Member</role>
+    </member>
+    <member>
       <email>blueknight@gentoo.org</email>
       <name>Yury German</name>
       <role>Member</role>
