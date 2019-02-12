@@ -16,7 +16,7 @@ SRC_URI="https://github.com/${PN}/${PN}/releases/download/${PV/_/-}/${MY_P}.tar.
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="otr +perl selinux socks5 +proxy libressl"
 
 COMMON_DEPEND="
@@ -35,7 +35,6 @@ DEPEND="
 
 RDEPEND="
 	${COMMON_DEPEND}
-	dev-libs/libutf8proc
 	selinux? ( sec-policy/selinux-irc )
 	perl? ( !net-im/silc-client )"
 
@@ -45,20 +44,24 @@ S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
 	default
-	eapply "${FILESDIR}"/${P}-fix-libutf8proc-include.patch
-	if has_version '>=dev-libs/libressl-2.7.3'; then
-	eapply "${FILESDIR}"/libressl.patch
+	if has_version '>=dev-libs/libressl-2.7.3' ; then
+		eapply "${FILESDIR}"/libressl.patch
 	fi
 }
 
 src_configure() {
-	econf \
-		--with-perl-lib=vendor \
-		--enable-true-color \
-		$(use_with otr) \
-		$(use_with proxy) \
-		$(use_with perl) \
+	# Disable automagic dependency on dev-libs/libutf8proc (bug #677804)
+	export ac_cv_lib_utf8proc_utf8proc_version=no
+
+	local myeconfargs=(
+		--with-perl-lib=vendor
+		--enable-true-color
+		$(use_with otr)
+		$(use_with proxy)
+		$(use_with perl)
 		$(use_with socks5 socks)
+	)
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {

@@ -20,8 +20,10 @@ CDEPEND="sys-libs/ncurses:0=
 	>=dev-libs/glib-2.6.0
 	!libressl? ( dev-libs/openssl:= )
 	libressl? ( dev-libs/libressl:= )
-	otr? ( >=dev-libs/libgcrypt-1.2.0:0=
-			>=net-libs/libotr-4.1.0 )
+	otr? (
+		>=dev-libs/libgcrypt-1.2.0:0=
+		>=net-libs/libotr-4.1.0
+	)
 	perl? ( dev-lang/perl:= )
 	socks5? ( >=net-proxy/dante-1.1.18 )"
 
@@ -43,18 +45,23 @@ src_prepare() {
 	sed -i -e /^autoreconf/d autogen.sh || die
 	NOCONFIGURE=1 ./autogen.sh || die
 
-	eapply_user
+	default
 	eautoreconf
 }
 
 src_configure() {
-	econf \
-		--with-perl-lib=vendor \
-		--enable-true-color \
-		$(use_with otr) \
-		$(use_with proxy) \
-		$(use_with perl) \
+	# Disable automagic dependency on dev-libs/libutf8proc (bug #677804)
+	export ac_cv_lib_utf8proc_utf8proc_version=no
+
+	local myeconfargs=(
+		--with-perl-lib=vendor
+		--enable-true-color
+		$(use_with otr)
+		$(use_with proxy)
+		$(use_with perl)
 		$(use_with socks5 socks)
+	)
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {
