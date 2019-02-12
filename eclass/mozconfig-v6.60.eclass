@@ -221,6 +221,11 @@ mozconfig_config() {
 	# Must pass release in order to properly select linker
 	mozconfig_annotate 'Enable by Gentoo' --enable-release
 
+	# Set correct update channel, bug 677722
+	if [[ -n "${MOZ_ESR}" ]] ; then
+		mozconfig_annotate 'set update channel to ESR' --enable-update-channel=esr
+	fi
+
 	# Avoid auto-magic on linker
 	if use clang ; then
 		# This is upstream's default
