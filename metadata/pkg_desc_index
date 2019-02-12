@@ -238,7 +238,7 @@ app-backup/backup-manager 0.7.14: Backup Manager is a command line backup tool f
 app-backup/backupninja 1.0.1: lightweight, extensible meta-backup system
 app-backup/backuppc 3.3.1-r5: High-performance backups to a server's disk
 app-backup/bacula 9.0.8-r1: Featureful client/server network backup suite
-app-backup/borgbackup 1.1.6: Deduplicating backup program with compression and authenticated encryption
+app-backup/borgbackup 1.1.6 1.1.8: Deduplicating backup program with compression and authenticated encryption
 app-backup/btrbk 0.24.0-r1 0.25.1-r1 0.27.0: Tool for creating snapshots and remote backups of btrfs subvolumes
 app-backup/burp 2.1.32: Network backup and restore client and server for Unix and Windows
 app-backup/ccollect 0.8: Pseudo incremental backup with different exclude lists using hardlinks and rsync
