@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,14 +13,14 @@ MY_P=sip-${PV/_pre/.dev}
 if [[ ${PV} == *_pre* ]]; then
 	SRC_URI="https://dev.gentoo.org/~pesa/distfiles/${MY_P}.tar.gz"
 else
-	SRC_URI="mirror://sourceforge/pyqt/${MY_P}.tar.gz"
+	SRC_URI="https://www.riverbankcomputing.com/static/Downloads/sip/${MY_P}.tar.gz"
 fi
 
 # Sub-slot based on SIP_API_MAJOR_NR from siplib/sip.h
 SLOT="0/12"
 LICENSE="|| ( GPL-2 GPL-3 SIP )"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
-IUSE="debug"
+IUSE=""
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -54,8 +54,8 @@ src_configure() {
 		local myconf=(
 			"${PYTHON}"
 			"${S}"/configure.py
-			$(usex debug --debug '')
 			--sip-module PyQt5.sip
+			--sysroot="${ESYSROOT}/usr"
 			--no-tools
 			AR="$(tc-getAR) cqs"
 			CC="$(tc-getCC)"
