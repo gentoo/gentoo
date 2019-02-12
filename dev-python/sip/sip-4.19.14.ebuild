@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,14 +13,14 @@ MY_P=${P/_pre/.dev}
 if [[ ${PV} == *_pre* ]]; then
 	SRC_URI="https://dev.gentoo.org/~pesa/distfiles/${MY_P}.tar.gz"
 else
-	SRC_URI="mirror://sourceforge/pyqt/${MY_P}.tar.gz"
+	SRC_URI="https://www.riverbankcomputing.com/static/Downloads/${PN}/${MY_P}.tar.gz"
 fi
 
 # Sub-slot based on SIP_API_MAJOR_NR from siplib/sip.h
 SLOT="0/12"
 LICENSE="|| ( GPL-2 GPL-3 SIP )"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
-IUSE="debug doc"
+IUSE="doc"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -49,12 +49,11 @@ src_prepare() {
 
 src_configure() {
 	configuration() {
-		local incdir=$(python_get_includedir)
-
 		if ! python_is_python3; then
 			local CFLAGS="${CFLAGS} -fno-strict-aliasing"
 		fi
 
+		local incdir=$(python_get_includedir)
 		local myconf=(
 			"${PYTHON}"
 			"${S}"/configure.py
@@ -62,7 +61,6 @@ src_configure() {
 			--bindir="${EPREFIX}/usr/bin"
 			--destdir="$(python_get_sitedir)"
 			--incdir="${incdir#${SYSROOT}}"
-			$(usex debug --debug '')
 			AR="$(tc-getAR) cqs"
 			CC="$(tc-getCC)"
 			CFLAGS="${CFLAGS}"
