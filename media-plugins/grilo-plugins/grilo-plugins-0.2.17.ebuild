@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -41,7 +41,7 @@ RDEPEND="
 	thetvdb? (
 		app-arch/libarchive
 		dev-libs/libxml2 )
-	tracker? ( >=app-misc/tracker-0.10.5:= )
+	tracker? ( >=app-misc/tracker-0.10.5:0/100 )
 	youtube? (
 		>=dev-libs/libgdata-0.9.1:=
 		>=dev-libs/totem-pl-parser-3.4.1 )
