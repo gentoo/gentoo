@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 inherit cmake-utils eutils flag-o-matic gnome2-utils pax-utils toolchain-funcs xdg-utils
 
-DOC_PV="2.4.0"
+DOC_PV="2.6.0"
 MY_PV="${PV/_/}"
 MY_P="${P/_/.}"
 
