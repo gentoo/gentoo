@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit systemd
 
@@ -11,7 +11,7 @@ SRC_URI="ftp://ftp.suse.com/pub/projects/snapper/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="lvm pam xattr"
 
 RDEPEND="dev-libs/boost:=[threads]
