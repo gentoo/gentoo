@@ -1,6 +1,6 @@
-BDEPEND=virtual/pkgconfig
+BDEPEND=dev-util/intltool sys-devel/gettext virtual/pkgconfig
 DEFINED_PHASES=configure prepare
-DEPEND=dev-util/intltool sys-devel/gettext
+DEPEND=
 DESCRIPTION=X keyboard configuration database
 EAPI=7
 HOMEPAGE=https://www.freedesktop.org/wiki/Software/XKeyboardConfig
@@ -9,4 +9,4 @@ LICENSE=MIT
 RDEPEND=!<x11-apps/xkbcomp-1.2.3 !<x11-libs/libX11-1.4.3
 SLOT=0
 SRC_URI=mirror://xorg/data/xkeyboard-config/xkeyboard-config-2.26.tar.bz2
-_md5_=6bcf931c5c3f63a61f9e01fa38e8232c
+_md5_=ceaee05b0584beb44f0de439b562406f
