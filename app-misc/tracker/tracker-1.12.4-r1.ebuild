@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,9 +12,7 @@ HOMEPAGE="https://wiki.gnome.org/Projects/Tracker"
 
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="0/100"
-IUSE="cue elibc_glibc exif ffmpeg firefox-bookmarks flac gif gsf gstreamer
-gtk iptc +iso +jpeg libav +miner-fs mp3 nautilus networkmanager pdf playlist
-rss seccomp stemmer test thunderbird +tiff upnp-av upower +vorbis +xml xmp xps"
+IUSE="cue elibc_glibc exif ffmpeg firefox-bookmarks flac gif gsf gstreamer gtk iptc +iso +jpeg libav +miner-fs mp3 networkmanager pdf playlist rss seccomp stemmer test thunderbird +tiff upnp-av upower +vorbis +xml xmp xps"
 
 KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc x86"
 
@@ -98,7 +96,6 @@ DEPEND="${RDEPEND}
 		>=dev-libs/dbus-glib-0.82-r1
 		>=sys-apps/dbus-1.3.1[X] )
 "
-PDEPEND="nautilus? ( ~gnome-extra/nautilus-tracker-tags-${PV} )"
 
 function inotify_enabled() {
 	if linux_config_exists; then
@@ -150,7 +147,6 @@ src_configure() {
 	# unicode-support: libunistring, libicu or glib ?
 	# According to NEWS, introspection is required
 	# is not being generated
-	# nautilus extension is in a separate package, nautilus-tracker-tags
 	# miner-evolution disabled as it's incompatible with current eds
 	gnome2_src_configure \
 		--disable-hal \
