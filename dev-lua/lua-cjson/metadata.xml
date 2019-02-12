@@ -5,7 +5,14 @@
 		<email>gyakovlev@gentoo.org</email>
 		<name>Georgy Yakovlev</name>
 	</maintainer>
+	<longdescription lang="en">
+			Fork of mpx/lua-cjson is included in the OpenResty bundle and includes a few bugfixes and improvements,
+			especially to facilitate the encoding of empty tables as JSON Arrays.
+	</longdescription>
+	<use>
+		<flag name="internal-fpconv">Enable internal number conversion routines, can increase overall performance by up to 50%</flag>
+	</use>
 	<upstream>
-		<remote-id type="github">mpx/lua-cjson</remote-id>
+		<remote-id type="github">openresty/lua-cjson</remote-id>
 	</upstream>
 </pkgmetadata>
