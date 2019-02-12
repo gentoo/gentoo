@@ -33,7 +33,7 @@ src_install() {
 	use amd64 && doexe opt/MegaRAID/perccli/perccli64 && \
 		dosym perccli64 /opt/MegaRAID/perccli/perccli
 	newexe opt/MegaRAID/perccli/perccli perccli32
-	use x86 && dosym perccli opt/MegaRAID/perccli/perccli
+	use x86 && dosym perccli opt/MegaRAID/perccli/perccli32
 	dosym ../MegaRAID/perccli/perccli /opt/bin/perccli
 	if use efi; then
 		exeinto /boot/efi/
