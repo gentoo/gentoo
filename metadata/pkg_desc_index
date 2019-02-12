@@ -761,7 +761,7 @@ app-emulation/qemu 2.12.1 3.1.0: QEMU + Kernel-based Virtual Machine userland to
 app-emulation/qemu-guest-agent 2.12.0-r1 3.1.0: QEMU Guest Agent (qemu-ga) for use when running inside a VM
 app-emulation/runc 1.0.0_rc5-r1 1.0.0_rc5_p20180509-r1 1.0.0_rc6_p20181203-r1: runc container cli tools
 app-emulation/simh 3.9.0-r1: a simulator for historical computers such as Vax, PDP-11 etc.)
-app-emulation/spectemu 0.99.3: 48k ZX Spectrum Emulator
+app-emulation/spectemu 0.99.3-r1: 48k ZX Spectrum Emulator
 app-emulation/spice 0.14.0-r2: SPICE server
 app-emulation/spice-protocol 0.12.13 0.12.14: Headers defining the SPICE protocol
 app-emulation/spice-vdagent 0.17.0_p20180319-r1: SPICE VD Linux Guest Agent
@@ -6299,7 +6299,7 @@ dev-util/diffball 1.0.1: Delta compression suite for using/generating binary pat
 dev-util/difffilter 0.3.3: Filter files out of unified diffs using POSIX extended regular expressions
 dev-util/diffstat 1.60: Display a histogram of diff changes
 dev-util/diffuse 0.4.8: A graphical tool to compare and merge text files
-dev-util/dirdiff 2.1-r2: A tool for differing and merging directories
+dev-util/dirdiff 2.1-r2 2.1-r3: A tool for differing and merging directories
 dev-util/distro-info 0.14: Provides information about the Debian distributions' releases
 dev-util/distro-info-data 0.29: Information about the Debian distributions' releases (data files)
 dev-util/dmake 4.12.2: Improved make
