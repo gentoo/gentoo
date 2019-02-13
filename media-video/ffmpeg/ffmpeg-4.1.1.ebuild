@@ -349,7 +349,7 @@ multilib_src_configure() {
 	done
 
 	# Outdevs
-	for i in alsa oss sdl ; do
+	for i in alsa oss ; do
 		use ${i} || myconf+=( --disable-outdev=${i} )
 	done
 
