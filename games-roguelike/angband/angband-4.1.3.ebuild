@@ -62,7 +62,6 @@ src_configure() {
 		myconf="--disable-sdl-mixer"
 	fi
 
-	ac_cv_path_NCURSES_CONFIG="pkg-config ncursesw" \
 	econf \
 		--bindir="${EPREFIX}"/usr/bin \
 		--with-private-dirs \
