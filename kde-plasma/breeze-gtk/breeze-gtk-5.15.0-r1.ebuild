@@ -17,7 +17,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 BDEPEND="${PYTHON_DEPS}
 	$(add_plasma_dep breeze)
 	dev-python/pycairo[${PYTHON_USEDEP}]
-	dev-ruby/sass
+	dev-lang/sassc
 "
 
 pkg_setup() {
