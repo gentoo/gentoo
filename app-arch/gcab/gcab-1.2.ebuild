@@ -4,7 +4,7 @@
 EAPI=6
 VALA_USE_DEPEND="vapigen"
 
-inherit gnome.org meson vala
+inherit gnome.org meson vala xdg
 
 DESCRIPTION="Library and tool for working with Microsoft Cabinet (CAB) files"
 HOMEPAGE="https://wiki.gnome.org/msitools"
@@ -35,8 +35,8 @@ RESTRICT="!test? ( test )"
 PATCHES=( "${FILESDIR}"/${PV}-optional-vapi.patch ) # https://gitlab.gnome.org/GNOME/gcab/merge_requests/1
 
 src_prepare() {
+	xdg_src_prepare
 	use vala && vala_src_prepare
-	default
 }
 
 src_configure() {
