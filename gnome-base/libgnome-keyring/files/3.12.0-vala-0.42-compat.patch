@@ -1,0 +1,25 @@
+From 3766bcc482f9e02fb5f9c183e814833ad1fbf08a Mon Sep 17 00:00:00 2001
+From: Rico Tzschichholz <ricotz@ubuntu.com>
+Date: Tue, 8 Jan 2019 12:19:36 +0100
+Subject: [PATCH] Fix vapi build with vala 0.42
+
+---
+ library/GnomeKeyring-1.0.metadata | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/library/GnomeKeyring-1.0.metadata b/library/GnomeKeyring-1.0.metadata
+index 04662fb..d8451b9 100644
+--- a/library/GnomeKeyring-1.0.metadata
++++ b/library/GnomeKeyring-1.0.metadata
+@@ -54,7 +54,7 @@ set_info skip=false
+ set_network_password skip=false
+ store_password skip=false
+ store_password_sync skip=false
+-unlock skip=false
++@unlock skip=false
+ 
+ find_items*.callback type_arguments="GnomeKeyring.Found"
+ find_network_password*.callback type_arguments="GnomeKeyring.NetworkPasswordData"
+-- 
+2.18.1
+
