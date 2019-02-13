@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,7 +7,8 @@ inherit cmake-utils flag-o-matic
 
 DESCRIPTION="Hot backup utility for MySQL based servers"
 HOMEPAGE="https://www.percona.com/software/mysql-database/percona-xtrabackup"
-SRC_URI="https://www.percona.com/downloads/XtraBackup/Percona-XtraBackup-${PV}/source/tarball/${P}.tar.gz"
+SRC_URI="https://www.percona.com/downloads/XtraBackup/Percona-XtraBackup-${PV}/source/tarball/${P}.tar.gz
+	mirror://sourceforge/boost/boost_1_59_0.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -16,9 +17,8 @@ KEYWORDS="~amd64 ~x86"
 DEPEND="
 	app-arch/lz4:0=
 	app-editors/vim-core
-	<dev-libs/boost-1.65.0:=
 	dev-libs/libaio
-	<dev-libs/libedit-20170329.3.1
+	dev-libs/libedit
 	dev-libs/libev
 	dev-libs/libevent:0=
 	dev-libs/libgcrypt:0=
@@ -44,7 +44,6 @@ src_prepare() {
 	# just to be safe...
 	# We keep lz4 directory because we use extra/lz4/xxhash.c in cmake/libutils.cmake
 	rm -rv \
-		include/boost_1_59_0 \
 		cmd-line-utils/libedit \
 		libevent \
 		zlib || die
@@ -63,6 +62,7 @@ src_configure() {
 
 	local mycmakeargs=(
 		-DBUILD_CONFIG=xtrabackup_release
+		-DWITH_BOOST="${WORKDIR}/boost_1_59_0"
 		-DWITH_EDITLINE=system
 		-DWITH_LIBEVENT=system
 		-DWITH_LZ4=system

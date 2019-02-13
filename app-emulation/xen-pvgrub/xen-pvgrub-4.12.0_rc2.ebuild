@@ -17,7 +17,7 @@ UPSTREAM_VER=
 	UPSTREAM_PATCHSET_URI="https://dev.gentoo.org/~dlan/distfiles/${P/-pvgrub/}-upstream-patches-${UPSTREAM_VER}.tar.xz
 		https://github.com/hydrapolic/gentoo-dist/raw/master/xen/${P/-pvgrub/}-upstream-patches-${UPSTREAM_VER}.tar.xz"
 
-MY_PV=${PV/_/-}
+MY_PV=${PV/.0_/-}
 
 SRC_URI="
 		https://downloads.xenproject.org/release/xen/${MY_PV}/xen-${MY_PV}.tar.gz
