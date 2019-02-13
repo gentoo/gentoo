@@ -1881,7 +1881,7 @@ dev-db/kdb 3.1.0-r2: Database connectivity and creation framework for various ve
 dev-db/kyotocabinet 1.2.76-r1: A straightforward implementation of DBM
 dev-db/libdbi 0.9.0: A database-independent abstraction layer in C
 dev-db/libdbi-drivers 0.9.0: The libdbi-drivers project maintains drivers for libdbi
-dev-db/libiodbc 3.52.8-r2: ODBC Interface for Linux
+dev-db/libiodbc 3.52.8-r2 3.52.12: ODBC Interface for Linux
 dev-db/libzdb 2.11.1 2.12 3.1: A thread safe high level multi-database connection pool library
 dev-db/lmdb 0.9.18 0.9.22: An ultra-fast, ultra-compact key-value embedded data store
 dev-db/m17n-db 1.7.0: Database for the m17n library
@@ -8726,7 +8726,7 @@ net-libs/libgadu 1.11.4 1.12.2: This library implements the client side of the G
 net-libs/libgfbgraph 0.2.3-r1: A GObject library for Facebook Graph API
 net-libs/libgrss 0.5.0-r1 0.7.0: LibGRSS is a library for easy management of RSS/Atom/Pie feeds
 net-libs/libgsasl 1.8.0-r1: The GNU SASL library
-net-libs/libgssglue 0.4: exports a gssapi interface which calls other random gssapi libraries
+net-libs/libgssglue 0.4 0.4-r1: Exports a gssapi interface which calls other random gssapi libraries
 net-libs/libhubbub 0.3.3: HTML5 compliant parsing library, written in C
 net-libs/libident 0.32-r1: A small library to interface to the Ident protocol server
 net-libs/libircclient 1.8: Small but powerful library implementing the client-server IRC protocol
