@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit toolchain-funcs
 
@@ -26,6 +26,9 @@ DEPEND="${RDEPEND}
 src_prepare() {
 	default
 	mv Makefile.linux Makefile || die
+
+	# Prevent gzipping manpage.
+	sed -i -e '/gzip/d' Makefile || die
 }
 
 src_configure() {
