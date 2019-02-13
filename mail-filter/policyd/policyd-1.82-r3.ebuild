@@ -1,9 +1,9 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI="7"
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="Policy daemon for postfix and other MTAs"
 HOMEPAGE="http://policyd.sf.net/"
@@ -14,15 +14,19 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~hppa ~x86"
 IUSE="libressl"
-DEPEND="virtual/mysql
+DEPEND="dev-db/mysql-connector-c:0=
 	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:= )"
 RDEPEND="${DEPEND}"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-post182.patch"
+	"${FILESDIR}/${PN}-makefile.patch"
+)
+
 src_prepare() {
-	epatch "${FILESDIR}/${PN}-post182.patch"
-	epatch "${FILESDIR}/${PN}-makefile.patch"
-	sed -i -e "s/gcc/$(tc-getCC)/" Makefile
+	default
+	sed -i -e 's/@${CC}/${CC}/' -e 's/@$(CC)/$(CC)/' Makefile
 
 	ebegin "Applying config patches"
 	sed -i -e s:UID=0:UID=65534:g \
@@ -35,7 +39,7 @@ src_prepare() {
 }
 
 src_compile() {
-	emake build || die "emake build failed"
+	emake CC=$(tc-getCC) build
 }
 
 src_install() {
