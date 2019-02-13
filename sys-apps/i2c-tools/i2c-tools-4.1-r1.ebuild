@@ -36,6 +36,17 @@ src_prepare() {
 
 src_configure() {
 	use python && distutils-r1_src_configure
+
+	# Always build & use dynamic libs if possible.
+	if tc-is-static-only ; then
+		export BUILD_DYNAMIC_LIB=0
+		export USE_STATIC_LIB=1
+		export BUILD_STATIC_LIB=1
+	else
+		export BUILD_DYNAMIC_LIB=1
+		export USE_STATIC_LIB=0
+		export BUILD_STATIC_LIB=$(usex static-libs 1 0)
+	fi
 }
 
 src_compile() {
@@ -66,9 +77,5 @@ src_install() {
 		docinto py-smbus
 		dodoc README*
 		distutils-r1_src_install
-	fi
-
-	if ! use static-libs; then
-		rm -rf "${D}"/usr/$(get_libdir)/libi2c.a || die
 	fi
 }
