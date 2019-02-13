@@ -88,6 +88,7 @@ DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
 	$(vala_depend)
 	dev-util/gdbus-codegen
+	dev-util/glib-utils
 	>=dev-util/gtk-doc-am-1.8
 	>=dev-util/intltool-0.40.0
 	>=sys-devel/gettext-0.17
