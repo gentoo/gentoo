@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,17 +15,22 @@ SRC_URI="https://github.com/pwsafe/pwsafe/archive/${MY_PV}.tar.gz -> ${P}.tar.gz
 LICENSE="Artistic-2"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="minimal test qr yubikey +xml"
+IUSE="libressl minimal test qr yubikey +xml xvkbd"
 
-RDEPEND="xml? ( dev-libs/xerces-c )
+COMMON_DEPEND="xml? ( dev-libs/xerces-c )
 	qr? ( media-gfx/qrencode )
+	net-misc/curl
+	!libressl? ( dev-libs/openssl:0= )
+	libressl? ( dev-libs/libressl:0= )
 	sys-apps/util-linux
 	x11-libs/libXt
 	x11-libs/libXtst
 	x11-libs/wxGTK:${WX_GTK_VER}[X]
 	!minimal? ( !!app-misc/pwsafe )
 	yubikey? ( sys-auth/ykpers )"
-DEPEND="${RDEPEND}
+RDEPEND="${COMMON_DEPEND}
+	xvkbd? ( x11-misc/xvkbd )"
+DEPEND="${COMMON_DEPEND}
 	app-arch/zip
 	sys-devel/gettext
 	test? ( dev-cpp/gtest )"
