@@ -1,0 +1,169 @@
+From 43b10233d4cce38230c357d885662291d2e5e978 Mon Sep 17 00:00:00 2001
+From: Iain Lane <iainl@gnome.org>
+Date: Mon, 11 Feb 2019 15:42:14 +0000
+Subject: [PATCH 4/5] libtracker-data: Don't rely on hash table iteration order
+ being stable
+
+This is the same problem that was fixed by
+c58f7aa419e2c3a69fa7fe583a1fd5e0b9bd0839 on master. Instead of relying
+on hash table iteration being stable, pass the GVariantBuilder down and
+add directly to it in the right order.
+
+Forwarded: https://gitlab.gnome.org/GNOME/tracker/merge_requests/55
+---
+ .../tracker-sparql-pattern.vala               |  4 +--
+ src/libtracker-data/tracker-sparql-query.vala | 31 ++++++++++++-------
+ 2 files changed, 21 insertions(+), 14 deletions(-)
+
+diff --git a/src/libtracker-data/tracker-sparql-pattern.vala b/src/libtracker-data/tracker-sparql-pattern.vala
+index e03ed6f16..033b138a5 100644
+--- a/src/libtracker-data/tracker-sparql-pattern.vala
++++ b/src/libtracker-data/tracker-sparql-pattern.vala
+@@ -542,7 +542,7 @@ class Tracker.Sparql.Pattern : Object {
+ 		} else if (accept (SparqlTokenType.BLANK_NODE)) {
+ 			// _:foo
+ 			expect (SparqlTokenType.COLON);
+-			result = query.generate_bnodeid (get_last_string ().substring (1));
++			result = query.generate_bnodeid (get_last_string ().substring (1), null);
+ 		} else if (current () == SparqlTokenType.STRING_LITERAL1) {
+ 			result = expression.parse_string_literal ();
+ 		} else if (current () == SparqlTokenType.STRING_LITERAL2) {
+@@ -569,7 +569,7 @@ class Tracker.Sparql.Pattern : Object {
+ 		} else if (current () == SparqlTokenType.OPEN_BRACKET) {
+ 			next ();
+ 
+-			result = query.generate_bnodeid (null);
++			result = query.generate_bnodeid (null, null);
+ 
+ 			string old_subject = current_subject;
+ 			bool old_subject_is_var = current_subject_is_var;
+diff --git a/src/libtracker-data/tracker-sparql-query.vala b/src/libtracker-data/tracker-sparql-query.vala
+index 7944e78e5..69a7e9eba 100644
+--- a/src/libtracker-data/tracker-sparql-query.vala
++++ b/src/libtracker-data/tracker-sparql-query.vala
+@@ -284,7 +284,7 @@ public class Tracker.Sparql.Query : Object {
+ 			sha1, sha1.substring (8), sha1.substring (12), sha1.substring (16), sha1.substring (20));
+ 	}
+ 
+-	internal string generate_bnodeid (string? user_bnodeid) {
++	internal string generate_bnodeid (string? user_bnodeid, GLib.VariantBuilder? builder) {
+ 		// user_bnodeid is NULL for anonymous nodes
+ 		if (user_bnodeid == null) {
+ 			return ":%d".printf (++bnodeid);
+@@ -310,6 +310,9 @@ public class Tracker.Sparql.Query : Object {
+ 				}
+ 
+ 				blank_nodes.insert (user_bnodeid, uri);
++
++				if (builder != null)
++					builder.add ("{ss}", user_bnodeid, uri);
+ 			}
+ 
+ 			return uri;
+@@ -774,7 +777,7 @@ public class Tracker.Sparql.Query : Object {
+ 			for (int i = 0; i < n_solutions; i++) {
+ 				solution.solution_index = i;
+ 				set_location (delete_location);
+-				parse_construct_triples_block (solution, UpdateType.DELETE);
++				parse_construct_triples_block (solution, UpdateType.DELETE, null);
+ 				data_update.update_buffer_might_flush ();
+ 			}
+ 
+@@ -790,16 +793,20 @@ public class Tracker.Sparql.Query : Object {
+ 			for (int i = 0; i < n_solutions; i++) {
+ 				uuid_generate (base_uuid);
+ 				blank_nodes = new HashTable<string,string>.full (str_hash, str_equal, g_free, g_free);
++				if (update_blank_nodes != null)
++					update_blank_nodes.open (new GLib.VariantType("a{ss}"));
++
+ 				solution.solution_index = i;
+ 
+ 				set_location (insert_location);
+ 				parse_construct_triples_block (solution,
+ 							       insert_is_update ?
+ 							       UpdateType.UPDATE :
+-							       UpdateType.INSERT);
++							       UpdateType.INSERT,
++							       update_blank_nodes);
+ 
+ 				if (blank && update_blank_nodes != null) {
+-					update_blank_nodes.add_value (blank_nodes);
++					update_blank_nodes.close ();
+ 				}
+ 
+ 				data_update.update_buffer_might_flush ();
+@@ -870,7 +877,7 @@ public class Tracker.Sparql.Query : Object {
+ 		}
+ 	}
+ 
+-	private void parse_construct_triples_block (Solution var_value_map, UpdateType type) throws Sparql.Error, DateError {
++	private void parse_construct_triples_block (Solution var_value_map, UpdateType type, GLib.VariantBuilder? builder) throws Sparql.Error, DateError {
+ 		expect (SparqlTokenType.OPEN_BRACE);
+ 
+ 		while (current () != SparqlTokenType.CLOSE_BRACE) {
+@@ -878,7 +885,7 @@ public class Tracker.Sparql.Query : Object {
+ 
+ 			if (accept (SparqlTokenType.GRAPH)) {
+ 				var old_graph = current_graph;
+-				current_graph = parse_construct_var_or_term (var_value_map, type, out is_null);
++				current_graph = parse_construct_var_or_term (var_value_map, type, out is_null, builder);
+ 
+ 				if (is_null) {
+ 					throw get_error ("'null' not supported for graph");
+@@ -887,7 +894,7 @@ public class Tracker.Sparql.Query : Object {
+ 				expect (SparqlTokenType.OPEN_BRACE);
+ 
+ 				while (current () != SparqlTokenType.CLOSE_BRACE) {
+-					current_subject = parse_construct_var_or_term (var_value_map, type, out is_null);
++					current_subject = parse_construct_var_or_term (var_value_map, type, out is_null, builder);
+ 
+ 					if (is_null) {
+ 						throw get_error ("'null' not supported for subject");
+@@ -906,7 +913,7 @@ public class Tracker.Sparql.Query : Object {
+ 
+ 				optional (SparqlTokenType.DOT);
+ 			} else {
+-				current_subject = parse_construct_var_or_term (var_value_map, type, out is_null);
++				current_subject = parse_construct_var_or_term (var_value_map, type, out is_null, builder);
+ 
+ 				if (is_null) {
+ 					throw get_error ("'null' not supported for subject");
+@@ -925,7 +932,7 @@ public class Tracker.Sparql.Query : Object {
+ 
+ 	bool anon_blank_node_open = false;
+ 
+-	private string? parse_construct_var_or_term (Solution var_value_map, UpdateType type, out bool is_null) throws Sparql.Error, DateError {
++	private string? parse_construct_var_or_term (Solution var_value_map, UpdateType type, out bool is_null, GLib.VariantBuilder? builder) throws Sparql.Error, DateError {
+ 		string result = "";
+ 		is_null = false;
+ 		if (current () == SparqlTokenType.VAR) {
+@@ -947,7 +954,7 @@ public class Tracker.Sparql.Query : Object {
+ 		} else if (accept (SparqlTokenType.BLANK_NODE)) {
+ 			// _:foo
+ 			expect (SparqlTokenType.COLON);
+-			result = generate_bnodeid (get_last_string ().substring (1));
++			result = generate_bnodeid (get_last_string ().substring (1), builder);
+ 		} else if (current () == SparqlTokenType.MINUS) {
+ 			next ();
+ 			if (current () == SparqlTokenType.INTEGER ||
+@@ -994,7 +1001,7 @@ public class Tracker.Sparql.Query : Object {
+ 			anon_blank_node_open = true;
+ 			next ();
+ 
+-			result = generate_bnodeid (null);
++			result = generate_bnodeid (null, builder);
+ 
+ 			string old_subject = current_subject;
+ 			bool old_subject_is_var = current_subject_is_var;
+@@ -1061,7 +1068,7 @@ public class Tracker.Sparql.Query : Object {
+ 
+ 	private void parse_construct_object (Solution var_value_map, UpdateType type) throws Sparql.Error, DateError {
+ 		bool is_null = false;
+-		string object = parse_construct_var_or_term (var_value_map, type, out is_null);
++		string object = parse_construct_var_or_term (var_value_map, type, out is_null, null);
+ 		var data = manager.get_data ();
+ 		if (current_subject == null || current_predicate == null || object == null) {
+ 			// the SPARQL specification says that triples containing unbound variables
+-- 
+2.17.0
+
