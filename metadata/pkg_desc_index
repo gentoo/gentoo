@@ -8918,7 +8918,7 @@ net-misc/cni-plugins 0.7.4: Standard networking plugins for container networking
 net-misc/connect 1.103: network connection relaying command (proxy)
 net-misc/connman 1.35-r1: Provides a daemon for managing internet connections
 net-misc/connman-gtk 1.1.1: GTK GUI for Connman
-net-misc/curl 7.62.0 7.64.0: A Client that groks URLs
+net-misc/curl 7.64.0: A Client that groks URLs
 net-misc/dahdi 2.10.0.1 2.10.1 2.10.2-r2: Kernel modules for Digium compatible hardware (formerly known as Zaptel)
 net-misc/dahdi-tools 2.6.2 2.8.0 2.9.0.1 2.10.0 2.10.1: Userspace tools to configure the kernel modules from net-misc/dahdi
 net-misc/dhcp 4.3.6_p1 4.4.1: ISC Dynamic Host Configuration Protocol (DHCP) client/server
@@ -9046,6 +9046,7 @@ net-misc/s3cmd 1.6.1 2.0.0: Command line client for Amazon S3
 net-misc/scponly 4.8-r5: A tiny pseudoshell which only permits scp and sftp
 net-misc/secpanel 0.6.1-r1: Graphical frontend for managing and running SSH and SCP connections
 net-misc/sendfile 2.1b-r1: SAFT implementation for asynchronous sending of files in the Internet
+net-misc/ser2net 2.10.0: Serial To Network Proxy
 net-misc/shmux 1.0 1.0.2: Program for executing the same command on many hosts in parallel
 net-misc/sipcalc 1.1.6: Sipcalc is an advanced console-based IP subnet calculator
 net-misc/sitecopy 0.16.6-r1: Maintain remote web sites with ease
