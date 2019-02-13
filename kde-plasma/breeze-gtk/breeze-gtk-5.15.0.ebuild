@@ -18,6 +18,10 @@ BDEPEND="${PYTHON_DEPS}
 	dev-ruby/sass
 "
 
+python_check_deps() {
+	has_version "dev-python/pycairo[${PYTHON_USEDEP}]"
+}
+
 pkg_setup() {
 	python-any-r1_pkg_setup
 	kde5_pkg_setup
