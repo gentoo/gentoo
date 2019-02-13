@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,6 +15,10 @@ IUSE="static-libs"
 
 DEPEND=">=sys-kernel/linux-headers-3.17"
 RDEPEND=""
+
+PATCHES=(
+	"${FILESDIR}/${P}-missing-header.patch"
+)
 
 pkg_setup() {
 	local f="${EROOT}/usr/$(get_libdir)/${PN}.a"
