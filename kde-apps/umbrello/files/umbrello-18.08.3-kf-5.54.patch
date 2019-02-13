@@ -1,0 +1,32 @@
+From 62a9e5e6afdd920779f1211afb0381857659e578 Mon Sep 17 00:00:00 2001
+From: Ralf Habacker <ralf.habacker@freenet.de>
+Date: Thu, 6 Dec 2018 13:36:34 +0100
+Subject: Fix KDE CI compile error with Qt 5.10 on linux
+
+The error was "specialization of template<class T>
+struct QMetaTypeId in different namespace [-fpermissive]"
+
+The Qt 5.10 related issue is fixed by using another approach
+to exclude KF5 class KAboutData.
+---
+ umbrello/main.cpp | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/umbrello/main.cpp b/umbrello/main.cpp
+index e3315fa..9d2acd8 100644
+--- a/umbrello/main.cpp
++++ b/umbrello/main.cpp
+@@ -19,9 +19,8 @@
+ 
+ // kde includes
+ #if QT_VERSION > 0x050000
+-namespace dummy {
+-#include <kaboutdata.h>
+-}
++// prevent including of <kaboutdata.h>
++#define KABOUTDATA_H
+ #include <k4aboutdata.h>
+ #define KAboutData K4AboutData
+ #include <KCrash>
+-- 
+cgit v1.1
