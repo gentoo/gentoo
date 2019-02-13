@@ -86,6 +86,10 @@ src_configure() {
 		emesonargs+=("-Dgdk-pixbuf=disabled")
 	fi
 
+	if [[ ${PV} != 9999 ]]; then
+		emesonargs+=("-Dsway-version=${MY_PV}")
+	fi
+
 	meson_src_configure
 }
 

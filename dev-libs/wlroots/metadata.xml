@@ -9,7 +9,7 @@
 		<email>speedjack95@gmail.com</email>
 		<name>Niccolò Scatena</name>
 	</maintainer>
-	<longdescription>
+	<longdescription lang="en">
 		Pluggable, composable, unopinionated modules for building a Wayland
 		compositor.
 
