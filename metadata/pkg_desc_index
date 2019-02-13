@@ -5704,7 +5704,7 @@ dev-python/twisted-pair 13.2.0: Twisted low-level networking
 dev-python/twisted-runner 13.2.0: Twisted Runner is a process management library and inetd replacement
 dev-python/twisted-web 13.2.0: Twisted web server, programmable in Python
 dev-python/twisted-words 13.2.0: Twisted Words contains Instant Messaging implementations
-dev-python/twitter 1.17.1: An API and command-line toolset for Twitter (twitter.com)
+dev-python/twitter 1.18.0: An API and command-line toolset for Twitter (twitter.com)
 dev-python/twython 3.3.0: An easy (and up to date) way to access Twitter data with Python
 dev-python/txAMQP 0.6.2: Python library for communicating with AMQP peers using Twisted
 dev-python/txaio 2.7.1: Compatibility API between asyncio/Twisted/Trollius
