@@ -32,9 +32,9 @@ src_configure() {
 }
 
 src_compile() {
-	emake  AR=$(tc-getAR) CC=$(tc-getCC) all-lib # parallel make
-	emake CC=$(tc-getCC)
-	emake -C eepromer CC=$(tc-getCC) CFLAGS="${CFLAGS}"
+	emake AR="$(tc-getAR)" CC="$(tc-getCC)" all-lib # parallel make
+	emake CC="$(tc-getCC)"
+	emake -C eepromer CC="$(tc-getCC)" CFLAGS="${CFLAGS}"
 
 	if use python ; then
 		cd py-smbus || die
@@ -50,8 +50,8 @@ src_install() {
 	dodoc CHANGES README
 	local d
 	for d in eeprom eepromer ; do
-		docinto ${d}
-		dodoc ${d}/README*
+		docinto "${d}"
+		dodoc "${d}"/README*
 	done
 
 	if use python ; then
