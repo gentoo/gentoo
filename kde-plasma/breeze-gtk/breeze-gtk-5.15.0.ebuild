@@ -15,7 +15,7 @@ IUSE=""
 BDEPEND="${PYTHON_DEPS}
 	$(add_plasma_dep breeze)
 	$(python_gen_any_dep 'dev-python/pycairo[${PYTHON_USEDEP}]')
-	dev-ruby/sass
+	dev-lang/sassc
 "
 
 python_check_deps() {
