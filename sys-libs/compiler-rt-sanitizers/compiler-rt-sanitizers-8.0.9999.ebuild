@@ -82,8 +82,7 @@ src_prepare() {
 		# remove tests that are (still) broken by new glibc
 		# https://bugs.llvm.org/show_bug.cgi?id=36065
 		if use elibc_glibc && has_version '>=sys-libs/glibc-2.25'; then
-			rm test/lsan/TestCases/Linux/use_tls_dynamic.cc || die
-			rm test/msan/dtls_test.c || die
+			rm test/lsan/TestCases/Linux/fork_and_leak.cc || die
 		fi
 	fi
 }
