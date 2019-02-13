@@ -31,7 +31,9 @@ DEPEND="${RDEPEND}
 	>=dev-util/intltool-0.35
 	sys-devel/gettext
 	virtual/pkgconfig
-	test? ( ${PYTHON_DEPS} )
+	test? ( $(python_gen_any_dep '
+		dev-python/pygobject:2[${PYTHON_USEDEP}]
+		dev-python/dbus-python[${PYTHON_USEDEP}]') )
 	vala? ( $(vala_depend) )
 "
 
