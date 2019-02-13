@@ -2,27 +2,32 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools eapi7-ver eutils gnome2-utils
+
+inherit autotools eapi7-ver gnome2-utils
 
 MAJOR_PV=$(ver_cut 1-2)
 
 DESCRIPTION="A roguelike dungeon exploration game based on the books of J.R.R. Tolkien"
-HOMEPAGE="http://rephial.org/"
-SRC_URI="http://rephial.org/downloads/${MAJOR_PV}/${P}.tar.gz"
+HOMEPAGE="https://rephial.org/"
+SRC_URI="https://rephial.org/downloads/${MAJOR_PV}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="ncurses sdl +sound X"
 
-RDEPEND="X? ( x11-libs/libX11 )
-	!ncurses? ( !X? ( !sdl? ( sys-libs/ncurses:0=[unicode] ) ) )
+RDEPEND="!ncurses? ( !X? ( !sdl? ( sys-libs/ncurses:0=[unicode] ) ) )
 	ncurses? ( sys-libs/ncurses:0=[unicode] )
-	sdl? ( media-libs/libsdl[video,X]
+	sdl? (
+		media-libs/libsdl[video,X]
 		media-libs/sdl-image
 		media-libs/sdl-ttf
-		sound? ( media-libs/libsdl[sound] )
-			media-libs/sdl-mixer[mp3] )"
+		sound? (
+			media-libs/libsdl[sound]
+			media-libs/sdl-mixer[mp3]
+		)
+	)
+	X? ( x11-libs/libX11 )"
 DEPEND="${RDEPEND}
 	dev-python/docutils
 	virtual/pkgconfig"
@@ -70,43 +75,24 @@ src_configure() {
 }
 
 src_install() {
-	DOCS="changes.txt faq.txt readme.txt thanks.txt" \
-		default
+	default
 
-	dodoc doc/manual.html
+	dodoc changes.txt faq.txt readme.txt thanks.txt doc/manual.html
 	doenvd "${T}"/99${PN}
 
 	if use X || use sdl ; then
-		if use X; then
-			make_desktop_entry "angband -mx11" "Angband (X11)" "${PN}"
-		fi
-
-		if use sdl; then
-			make_desktop_entry "angband -msdl" "Angband (SDL)" "${PN}"
-		fi
+		use X && make_desktop_entry "angband -mx11" "Angband (X11)" "${PN}"
+		use sdl && make_desktop_entry "angband -msdl" "Angband (SDL)" "${PN}"
 
 		local s
-		for s in 16 32 128 256 512
-		do
+		for s in 16 32 128 256 512; do
 			newicon -s ${s} lib/icons/att-${s}.png "${PN}.png"
 		done
 		newicon -s scalable lib/icons/att.svg "${PN}.svg"
 	fi
 }
 
-pkg_preinst() {
-	if use X || use sdl ; then
-		gnome2_icon_savelist
-	fi
-}
-
 pkg_postinst() {
-	echo
-	elog "Angband now uses private savefiles instead of system-wide ones."
-	elog "This version of Angband is not compatible with the save files"
-	elog "of previous versions."
-	echo
-
 	if use X || use sdl ; then
 		gnome2_icon_cache_update
 	fi
