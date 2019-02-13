@@ -169,7 +169,7 @@ src_prepare() {
 	cmake-utils_src_prepare
 
 	if use system-boost; then
-		eapply "${FILESDIR}/ceph-12.2.5-boost-sonames.patch"
+		eapply "${FILESDIR}/ceph-12.2.11-boost-sonames.patch"
 	fi
 
 	# remove tests that need root access
