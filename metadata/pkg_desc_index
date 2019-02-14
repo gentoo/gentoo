@@ -7075,7 +7075,6 @@ mail-client/claws-mail 3.17.3: An email client (and news reader) based on GTK+
 mail-client/clawsker 0.7.8: Applet to edit Claws Mail's hidden preferences
 mail-client/cone 0.92: CONE: COnsole News reader and Emailer
 mail-client/evolution 3.24.6: Integrated mail, addressbook and calendaring functionality
-mail-client/geary 0.12.3: A lightweight, easy-to-use, feature-rich email client
 mail-client/mail-notification 5.4-r10: Status icon informing about new mail
 mail-client/mailx 8.1.2.20160123: The $ mail program, which is used to send mail via shell scripts
 mail-client/mailx-support 20060102-r1 20060102-r2: Provides lockspool utility
