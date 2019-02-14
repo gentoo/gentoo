@@ -48,7 +48,7 @@ COMMON_DEPEND="
 	pci? ( sys-apps/pciutils )
 	lm_sensors? ( sys-apps/lm_sensors )
 	netlink? ( dev-libs/libnl:3 )
-	mysql? ( virtual/mysql )
+	mysql? ( dev-db/mysql-connector-c:0= )
 	perl? ( dev-lang/perl:= )
 "
 DEPEND="
