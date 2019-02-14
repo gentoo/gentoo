@@ -37,6 +37,7 @@ RDEPEND="${DEPEND}
 # gnome-doc-utils for xml2po for TRANSLATE_HELP option
 DEPEND="${DEPEND}
 	sys-devel/gettext
+	dev-util/intltool
 	app-text/gnome-doc-utils
 	dev-util/desktop-file-utils
 	virtual/pkgconfig
