@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools eutils
+inherit autotools
 
 MY_P=${PN}-${PV/_p/-}
 
@@ -16,8 +16,8 @@ KEYWORDS="~alpha ~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
 
 CDEPEND="
 	dev-libs/openssl:*
-	net-analyzer/net-snmp:=
-	virtual/mysql
+	net-analyzer/net-snmp
+	dev-db/mysql-connector-c:0=
 "
 DEPEND="
 	${CDEPEND}
