@@ -3075,7 +3075,6 @@ media-libs/sge:image - enable sdl-image support
 media-libs/spandsp:fixed-point - Enable fixed point support
 media-libs/speex:utils - Enables speex commandline utilities (speexenc, speexdec).
 media-libs/speex:vbr - Enable VBR support.
-media-libs/taglib:boost - Use dev-libs/boost instead of GCC built-ins
 media-libs/tiff:zstd - Enable zstd compression support.
 media-libs/tremor:low-accuracy - enable 32bit only multiply operations
 media-libs/urt:tools - Install tools

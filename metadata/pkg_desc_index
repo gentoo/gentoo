@@ -5786,57 +5786,57 @@ dev-python/zope-deprecation 4.2.0: Zope Deprecation Infrastructure
 dev-python/zope-event 4.2.0: Event publishing / dispatch, used by Zope Component Architecture
 dev-python/zope-interface 4.1.1 4.3.2 4.4.3: Interfaces for Python
 dev-python/zsi 2.1_alpha1-r1: Web Services for Python
-dev-qt/assistant 5.11.1 5.11.3: Tool for viewing on-line documentation in Qt help file format
-dev-qt/designer 5.11.1 5.11.3: WYSIWYG tool for designing and building Qt-based GUIs
-dev-qt/linguist 5.11.1 5.11.3: Graphical tool for translating Qt applications
-dev-qt/linguist-tools 5.11.1 5.11.3: Tools for working with Qt translation data files
-dev-qt/pixeltool 5.11.1 5.11.3: Qt screen magnifier
-dev-qt/qdbus 5.11.1 5.11.3: Interface to Qt applications communicating over D-Bus
-dev-qt/qdbusviewer 5.11.1 5.11.3: Graphical tool that lets you introspect D-Bus objects and messages
-dev-qt/qdoc 5.11.1 5.11.3: Qt documentation generator
+dev-qt/assistant 5.11.3: Tool for viewing on-line documentation in Qt help file format
+dev-qt/designer 5.11.3: WYSIWYG tool for designing and building Qt-based GUIs
+dev-qt/linguist 5.11.3: Graphical tool for translating Qt applications
+dev-qt/linguist-tools 5.11.3: Tools for working with Qt translation data files
+dev-qt/pixeltool 5.11.3: Qt screen magnifier
+dev-qt/qdbus 5.11.3: Interface to Qt applications communicating over D-Bus
+dev-qt/qdbusviewer 5.11.3: Graphical tool that lets you introspect D-Bus objects and messages
+dev-qt/qdoc 5.11.3: Qt documentation generator
 dev-qt/qt-creator 4.6.2: Lightweight IDE for C++/QML development centering around Qt
-dev-qt/qt-docs 5.11.1_p201806180847 5.11.3_p201811291914: Qt5 documentation, for use with Qt Creator and other tools
-dev-qt/qt3d 5.11.1 5.11.3: The 3D module for the Qt5 framework
-dev-qt/qtbluetooth 5.11.1 5.11.3: Bluetooth support library for the Qt5 framework
+dev-qt/qt-docs 5.11.3_p201811291914: Qt5 documentation, for use with Qt Creator and other tools
+dev-qt/qt3d 5.11.3: The 3D module for the Qt5 framework
+dev-qt/qtbluetooth 5.11.3: Bluetooth support library for the Qt5 framework
 dev-qt/qtchooser 0_p20170803: Qt4/Qt5 version chooser
-dev-qt/qtconcurrent 5.11.1 5.11.3: Multi-threading concurrence support library for the Qt5 framework
-dev-qt/qtcore 5.11.1-r1 5.11.3-r2: Cross-platform application development framework
-dev-qt/qtdbus 5.11.1 5.11.3: Qt5 module for inter-process communication over the D-Bus protocol
-dev-qt/qtdeclarative 5.11.1 5.11.3: The QML and Quick modules for the Qt5 framework
-dev-qt/qtgraphicaleffects 5.11.1 5.11.3: Set of QML types for adding visual effects to user interfaces
-dev-qt/qtgui 5.11.1 5.11.3: The GUI module and platform plugins for the Qt5 framework
-dev-qt/qthelp 5.11.1 5.11.3: Qt5 module for integrating online documentation into applications
-dev-qt/qtimageformats 5.11.1 5.11.3: Additional format plugins for the Qt image I/O system
-dev-qt/qtlocation 5.11.1 5.11.3-r1: The Location module for the Qt5 framework
+dev-qt/qtconcurrent 5.11.3: Multi-threading concurrence support library for the Qt5 framework
+dev-qt/qtcore 5.11.3-r2: Cross-platform application development framework
+dev-qt/qtdbus 5.11.3: Qt5 module for inter-process communication over the D-Bus protocol
+dev-qt/qtdeclarative 5.11.3: The QML and Quick modules for the Qt5 framework
+dev-qt/qtgraphicaleffects 5.11.3: Set of QML types for adding visual effects to user interfaces
+dev-qt/qtgui 5.11.3: The GUI module and platform plugins for the Qt5 framework
+dev-qt/qthelp 5.11.3: Qt5 module for integrating online documentation into applications
+dev-qt/qtimageformats 5.11.3: Additional format plugins for the Qt image I/O system
+dev-qt/qtlocation 5.11.3-r1: The Location module for the Qt5 framework
 dev-qt/qtlockedfile 2.4.1_p20171024: QFile extension with advisory locking functions
-dev-qt/qtmultimedia 5.11.1 5.11.3: Multimedia (audio, video, radio, camera) library for the Qt5 framework
-dev-qt/qtnetwork 5.11.1 5.11.3: Network abstraction library for the Qt5 framework
-dev-qt/qtopengl 5.11.1 5.11.3: OpenGL support library for the Qt5 framework (deprecated)
-dev-qt/qtpaths 5.11.1 5.11.3: Command line client to QStandardPaths
-dev-qt/qtpositioning 5.11.1 5.11.3: Physical position determination library for the Qt5 framework
-dev-qt/qtprintsupport 5.11.1 5.11.3: Printing support library for the Qt5 framework
-dev-qt/qtquickcontrols 5.11.1 5.11.3: Set of controls used in conjunction with Qt Quick to build complete interfaces
-dev-qt/qtquickcontrols2 5.11.1 5.11.3: Set of next generation Qt Quick controls for the Qt5 framework
-dev-qt/qtscript 5.11.1 5.11.3: Application scripting library for the Qt5 framework (deprecated)
-dev-qt/qtscxml 5.11.1 5.11.3: State Chart XML (SCXML) support library for the Qt5 framework
-dev-qt/qtsensors 5.11.1 5.11.3: Hardware sensor access library for the Qt5 framework
-dev-qt/qtserialport 5.11.1 5.11.3: Serial port abstraction library for the Qt5 framework
+dev-qt/qtmultimedia 5.11.3: Multimedia (audio, video, radio, camera) library for the Qt5 framework
+dev-qt/qtnetwork 5.11.3: Network abstraction library for the Qt5 framework
+dev-qt/qtopengl 5.11.3: OpenGL support library for the Qt5 framework (deprecated)
+dev-qt/qtpaths 5.11.3: Command line client to QStandardPaths
+dev-qt/qtpositioning 5.11.3: Physical position determination library for the Qt5 framework
+dev-qt/qtprintsupport 5.11.3: Printing support library for the Qt5 framework
+dev-qt/qtquickcontrols 5.11.3: Set of controls used in conjunction with Qt Quick to build complete interfaces
+dev-qt/qtquickcontrols2 5.11.3: Set of next generation Qt Quick controls for the Qt5 framework
+dev-qt/qtscript 5.11.3: Application scripting library for the Qt5 framework (deprecated)
+dev-qt/qtscxml 5.11.3: State Chart XML (SCXML) support library for the Qt5 framework
+dev-qt/qtsensors 5.11.3: Hardware sensor access library for the Qt5 framework
+dev-qt/qtserialport 5.11.3: Serial port abstraction library for the Qt5 framework
 dev-qt/qtsingleapplication 2.6.1_p20171024: Qt library to start applications only once per user
-dev-qt/qtspeech 5.11.1 5.11.3: Text-to-speech library for the Qt5 framework
-dev-qt/qtsql 5.11.1-r1 5.11.3: SQL abstraction library for the Qt5 framework
-dev-qt/qtsvg 5.11.1 5.11.3: SVG rendering library for the Qt5 framework
-dev-qt/qttest 5.11.1 5.11.3: Unit testing library for the Qt5 framework
-dev-qt/qttranslations 5.11.1 5.11.3: Translation files for the Qt5 framework
-dev-qt/qtvirtualkeyboard 5.11.1 5.11.3: Virtual keyboard plugin for the Qt5 framework
-dev-qt/qtwayland 5.11.1 5.11.3: Wayland platform plugin for Qt
-dev-qt/qtwebchannel 5.11.1 5.11.3: Qt5 module for integrating C++ and QML applications with HTML/JavaScript clients
-dev-qt/qtwebengine 5.11.1 5.11.3: Library for rendering dynamic web content in Qt5 C++ and QML applications
+dev-qt/qtspeech 5.11.3: Text-to-speech library for the Qt5 framework
+dev-qt/qtsql 5.11.3: SQL abstraction library for the Qt5 framework
+dev-qt/qtsvg 5.11.3: SVG rendering library for the Qt5 framework
+dev-qt/qttest 5.11.3: Unit testing library for the Qt5 framework
+dev-qt/qttranslations 5.11.3: Translation files for the Qt5 framework
+dev-qt/qtvirtualkeyboard 5.11.3: Virtual keyboard plugin for the Qt5 framework
+dev-qt/qtwayland 5.11.3: Wayland platform plugin for Qt
+dev-qt/qtwebchannel 5.11.3: Qt5 module for integrating C++ and QML applications with HTML/JavaScript clients
+dev-qt/qtwebengine 5.11.3: Library for rendering dynamic web content in Qt5 C++ and QML applications
 dev-qt/qtwebkit 5.212.0_pre20180120: WebKit rendering library for the Qt5 framework (deprecated)
-dev-qt/qtwebsockets 5.11.1 5.11.3: Implementation of the WebSocket protocol for the Qt5 framework
-dev-qt/qtwidgets 5.11.1 5.11.3: Set of components for creating classic desktop-style UIs for the Qt5 framework
-dev-qt/qtx11extras 5.11.1 5.11.3: Linux/X11-specific support library for the Qt5 framework
-dev-qt/qtxml 5.11.1 5.11.3: Implementation of SAX and DOM for the Qt5 framework
-dev-qt/qtxmlpatterns 5.11.1 5.11.3: XPath, XQuery, XSLT, and XML Schema validation library for the Qt5 framework
+dev-qt/qtwebsockets 5.11.3: Implementation of the WebSocket protocol for the Qt5 framework
+dev-qt/qtwidgets 5.11.3: Set of components for creating classic desktop-style UIs for the Qt5 framework
+dev-qt/qtx11extras 5.11.3: Linux/X11-specific support library for the Qt5 framework
+dev-qt/qtxml 5.11.3: Implementation of SAX and DOM for the Qt5 framework
+dev-qt/qtxmlpatterns 5.11.3: XPath, XQuery, XSLT, and XML Schema validation library for the Qt5 framework
 dev-ruby/GeoRuby 2.5.2: Ruby data holder for OGC Simple Features
 dev-ruby/abstract 1.0.0-r3: Library which enable you to define abstract method in Ruby
 dev-ruby/actionpack 5.1.6.1: Eases web-request routing, handling, and response
@@ -7809,7 +7809,7 @@ media-libs/sratom 0.6.0-r1: Library for serialising LV2 atoms to/from RDF, parti
 media-libs/stimg 0.1.0: Simple and tiny image loading library
 media-libs/stops 0.3.0: Organ stops for aeolus by Fons Adriaensen <fons.adriaensen@skynet.be>
 media-libs/t1lib 5.1.2-r2: A Type 1 Font Rasterizer Library for UNIX/X11
-media-libs/taglib 1.11.1-r1 1.11.1_p20181028: A library for reading and editing audio meta data
+media-libs/taglib 1.11.1_p20181028: A library for reading and editing audio meta data
 media-libs/taglib-extras 1.0.1-r1: Unofficial taglib plugins maintained by the Amarok team
 media-libs/tiff 3.9.7-r1 4.0.9-r4: Tag Image File Format (TIFF) library
 media-libs/tremor 0_pre20130223-r1: A fixed-point version of the Ogg Vorbis decoder (also known as libvorbisidec)
@@ -9251,7 +9251,7 @@ sci-astronomy/erfa 1.2.0 1.4.0: Essential Routines for Fundamental Astronomy
 sci-astronomy/kstars 2.9.5: Desktop Planetarium
 sci-astronomy/predict 2.2.3-r2: Satellite tracking and orbital prediction
 sci-astronomy/pyephem 3.7.5.3 3.7.6.0: Astronomical routines for the python programming language
-sci-astronomy/stellarium 0.16.0-r1 0.18.2: 3D photo-realistic skies in real time
+sci-astronomy/stellarium 0.18.2: 3D photo-realistic skies in real time
 sci-astronomy/wcslib 5.15: Astronomical World Coordinate System transformations library
 sci-astronomy/xephem 3.7.7: Interactive tool for astronomical ephemeris and sky simulation
 sci-biology/augustus 2.5.5: Eukaryotic gene predictor
@@ -10886,7 +10886,7 @@ x11-libs/pango 1.40.14-r1 1.42.4: Internationalized text layout and rendering li
 x11-libs/pangox-compat 0.0.2 0.0.2-r1: PangoX compatibility library
 x11-libs/pixman 0.36.0: Low-level pixel manipulation routines
 x11-libs/qscintilla 2.10.8: A Qt port of Neil Hodgson's Scintilla C++ editor class
-x11-libs/qtermwidget 0.7.1 0.9.0: Qt terminal emulator widget
+x11-libs/qtermwidget 0.9.0: Qt terminal emulator widget
 x11-libs/qwt 6.1.3-r2: 2D plotting library for Qt5
 x11-libs/qwtpolar 1.1.1-r2: Library for displaying values on a polar coordinate system
 x11-libs/rep-gtk 0.90.8.1 0.90.8.3: GTK+/libglade/GNOME bindings for the librep Lisp environment
@@ -11230,7 +11230,7 @@ x11-terms/mate-terminal 1.18.2: The MATE Terminal
 x11-terms/mlterm 3.8.4: A multi-lingual terminal emulator
 x11-terms/mrxvt 0.5.4: Multi-tabbed rxvt clone with XFT, transparent background and CJK support
 x11-terms/multi-aterm 0.2.1-r1: rxvt compatible terminal emulator with transparency and tab support
-x11-terms/qterminal 0.7.1 0.9.0: Qt-based multitab terminal emulator
+x11-terms/qterminal 0.9.0: Qt-based multitab terminal emulator
 x11-terms/root-tail 1.2-r3: Terminal to display (multiple) log files on the root window
 x11-terms/roxterm 3.1.5-r1: A terminal emulator designed to integrate with the ROX environment
 x11-terms/rxvt-unicode 9.21: rxvt clone with xft and unicode support
