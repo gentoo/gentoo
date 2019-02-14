@@ -19,8 +19,9 @@ IUSE="doc examples test"
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? ( dev-python/pytest[${PYTHON_USEDEP}] )
-	doc? ( dev-python/sphinx[${PYTHON_USEDEP}]
-		dev-python/pallets-sphinx-themes[${PYTHON_USEDEP}] )"
+	doc? ( >=dev-python/docutils-0.14[${PYTHON_USEDEP}]
+		dev-python/pallets-sphinx-themes[${PYTHON_USEDEP}]
+		>=dev-python/sphinx-1.7.5-r1[${PYTHON_USEDEP}] )"
 
 python_prepare_all() {
 	# Prevent un-needed d'loading
