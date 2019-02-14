@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -22,7 +22,7 @@ ARGUS_CDEPEND="
 	sys-libs/zlib
 	ft? ( net-analyzer/flow-tools )
 	geoip? ( dev-libs/geoip )
-	mysql? ( virtual/mysql )
+	mysql? ( dev-db/mysql-connector-c:0= )
 	sasl? ( dev-libs/cyrus-sasl )
 "
 RDEPEND="
@@ -56,7 +56,7 @@ src_configure() {
 		$(use_with geoip GeoIP /usr/) \
 		$(use_with sasl) \
 		$(use_with tcpd wrappers) \
-		$(use_with mysql)
+		$(use_with mysql mysql /usr)
 }
 
 src_compile() {
