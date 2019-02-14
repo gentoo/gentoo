@@ -45,7 +45,7 @@ BDEPEND="
 	virtual/pkgconfig
 	nls? ( dev-util/intltool )
 "
-RDEPEND="
+DEPEND="
 	app-arch/unzip
 	dev-libs/dbus-glib
 	dev-libs/glib
