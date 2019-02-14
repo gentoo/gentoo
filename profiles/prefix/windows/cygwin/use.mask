@@ -4,8 +4,7 @@
 # Re-add Cygwin's libc
 -elibc_Cygwin
 
-# we do not have python-3 cygwin ready yet
+# we do have only python-3.6 ready on cygwin
 python_targets_python3_4
 python_targets_python3_5
-python_targets_python3_6
 python_targets_python3_7
