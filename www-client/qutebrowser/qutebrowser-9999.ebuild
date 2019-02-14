@@ -19,7 +19,7 @@ HOMEPAGE="https://www.qutebrowser.org/ https://github.com/qutebrowser/qutebrowse
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="test"
+IUSE="scripts test"
 
 COMMON_DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 DEPEND="${COMMON_DEPEND}
@@ -54,6 +54,17 @@ python_install_all() {
 	doman doc/${PN}.1
 	domenu misc/org.${PN}.${PN}.desktop
 	doicon -s scalable icons/${PN}.svg
+
+	if use scripts; then
+		# Install only those userscripts that have an explicit license header
+		exeinto /usr/share/qutebrowser/userscripts/
+		doexe misc/userscripts/dmenu_qutebrowser
+		doexe misc/userscripts/openfeeds
+		doexe misc/userscripts/qute-keepass
+		doexe misc/userscripts/qute-pass
+		doexe misc/userscripts/rss
+		doexe misc/userscripts/tor_identity
+	fi
 
 	distutils-r1_python_install_all
 }
