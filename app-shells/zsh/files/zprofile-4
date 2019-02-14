@@ -25,7 +25,7 @@ umask 022
 if [ "$EUID" = "0" ] || [ "$USER" = "root" ] ; then
 	# Check to make sure ROOTPATH is sane before we use it.
 	# https://bugs.gentoo.org/656400
-	if [[ :${ROOTPATH}: == *:@GENTOO_PORTAGE_EPREFIX@/usr/sbin:* ]]; then
+	if [[ :${ROOTPATH}: == *:/usr/sbin:* ]]; then
 		PATH="${ROOTPATH}"
 	fi
 fi
