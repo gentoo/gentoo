@@ -204,13 +204,13 @@ src_install() {
 	dosym ../VBoxXPCOM.so /opt/VirtualBox/components/VBoxXPCOM.so
 
 	local each
-	for each in VBox{Manage,SVC,XPCOMIPCD,Tunctl,TestOGL,ExtPackHelperApp} VirtualBox ; do
+	for each in VBox{Manage,SVC,XPCOMIPCD,Tunctl,TestOGL,ExtPackHelperApp} $(usex headless '' VirtualBox) ; do
 		fowners root:vboxusers /opt/VirtualBox/${each}
 		fperms 0750 /opt/VirtualBox/${each}
 		pax-mark -m "${ED%/}"/opt/VirtualBox/${each}
 	done
 	# VBoxNetAdpCtl and VBoxNetDHCP binaries need to be suid root in any case..
-	for each in VBoxNet{AdpCtl,DHCP,NAT} VirtualBoxVM ; do
+	for each in VBoxNet{AdpCtl,DHCP,NAT} $(usex headless '' VirtualBoxVM) ; do
 		fowners root:vboxusers /opt/VirtualBox/${each}
 		fperms 4750 /opt/VirtualBox/${each}
 		pax-mark -m "${ED%/}"/opt/VirtualBox/${each}
