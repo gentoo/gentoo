@@ -26,6 +26,13 @@ src_prepare() {
 }
 
 multilib_src_compile() {
+	# Use reallocarray() from libc if available.
+	if $(tc-getCC) ${CPPFLAGS} ${CFLAGS} ${LDFLAGS} -D_GNU_SOURCE -o "${T}/reallocarray_test" -x c - <<< $'#include <stdlib.h>\nint main() {void *p = reallocarray(NULL, 0, 0);}' 2> /dev/null; then
+		local -x CPPFLAGS="${CPPFLAGS} -D_GNU_SOURCE -DHAVE_REALLOCARRAY"
+		sed -e "s/ openbsd-reallocarray\.c//" -i Makefile || die
+		rm openbsd-reallocarray.c || die
+	fi
+
 	emake \
 		CC="$(tc-getCC)" \
 		CFLAGS="${CFLAGS} -std=gnu99 -fPIC -Wno-format-truncation" \
