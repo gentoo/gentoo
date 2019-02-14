@@ -1,10 +1,10 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 # eutils inherit required for make_wrapper call
-inherit desktop eutils multilib versionator xdg-utils
+inherit desktop eutils multilib xdg-utils
 
 DESCRIPTION="ICA Client for Citrix Presentation servers"
 HOMEPAGE="https://www.citrix.com/"
@@ -13,7 +13,7 @@ SRC_URI="amd64? ( linuxx64-${PV}.tar.gz )
 
 LICENSE="icaclient"
 SLOT="0"
-KEYWORDS="-* amd64 x86"
+KEYWORDS="-* ~amd64 ~x86"
 IUSE="nsplugin l10n_de l10n_es l10n_fr l10n_ja l10n_zh_CN"
 RESTRICT="mirror strip userpriv fetch"
 
@@ -63,7 +63,7 @@ DEPEND=""
 
 pkg_nofetch() {
 	elog "Download the client file ${A} from
-	https://www.citrix.com/downloads/citrix-receiver.html"
+	https://www.citrix.com/downloads/workspace-app/"
 	elog "and place it in ${DISTDIR:-/usr/portage/distfiles}."
 }
 
@@ -89,7 +89,7 @@ src_prepare() {
 }
 
 src_install() {
-	local tmpl dest
+	local bin tmpl dest
 
 	dodir "${ICAROOT}"
 
@@ -118,7 +118,7 @@ src_install() {
 	for tmpl in {appsrv,wfclient}.template ; do
 		newins nls/en/${tmpl} ${tmpl/template/ini}
 	done
-	touch "${ED%/}/${ICAROOT}"/config/.server || die
+	touch "${ED}/${ICAROOT}"/config/.server || die
 
 	insinto "${ICAROOT}"/gtk
 	doins gtk/*
@@ -155,8 +155,8 @@ src_install() {
 		dosym UTF-8 "${ICAROOT}"/nls/${lang}/utf8
 
 		for tmpl in {appsrv,wfclient}.template ; do
-			cp "${ED%/}/${ICAROOT}"/nls/${lang}/${tmpl} \
-				"${ED%/}/${ICAROOT}"/nls/${lang}/${tmpl/template/ini} \
+			cp "${ED}/${ICAROOT}"/nls/${lang}/${tmpl} \
+				"${ED}/${ICAROOT}"/nls/${lang}/${tmpl/template/ini} \
 				|| die
 		done
 	done
@@ -174,7 +174,7 @@ src_install() {
 	dosym /etc/ssl/certs "${ICAROOT}"/keystore/cacerts
 
 	exeinto "${ICAROOT}"/util
-	doexe util/{configmgr,conncenter,gst_play1.0,gst_read1.0,hdxcheck.sh,icalicense.sh,libgstflatstm1.0.so}
+	doexe util/{configmgr,conncenter,gst_play1.0,gst_read1.0,hdxcheck.sh,icalicense.sh,libgstflatstm1.0.so,webcontainer,ctxwebhelper,ctx_rehash,ctx_app_bind}
 	doexe util/{lurdump,new_store,nslaunch,pnabrowse,storebrowse,sunraymac.sh,what,xcapture}
 
 	# https://bugs.gentoo.org/655922
@@ -184,14 +184,20 @@ src_install() {
 
 	doenvd "${FILESDIR}"/10ICAClient
 
-	make_wrapper wfica "${ICAROOT}"/wfica . "${ICAROOT}"
+	for bin in configmgr conncenter new_store ; do
+		make_wrapper ${bin} "${ICAROOT}"/util/${bin} . "${ICAROOT}"/util
+	done
+
+	for bin in selfservice wfica ; do
+		make_wrapper ${bin} "${ICAROOT}"/${bin} . "${ICAROOT}"
+	done
 
 	dodir /etc/revdep-rebuild/
 	echo "SEARCH_DIRS_MASK=\"${ICAROOT}\"" \
-		> "${ED%/}"/etc/revdep-rebuild/70icaclient
+		> "${ED}"/etc/revdep-rebuild/70icaclient
 
 	# 651926
-	domenu "${FILESDIR}"/wfica.desktop
+	domenu "${FILESDIR}"/*.desktop
 }
 
 pkg_preinst() {
