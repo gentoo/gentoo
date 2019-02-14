@@ -21,7 +21,7 @@ BRANDING="${PN}-branding-gentoo-0.8.tar.xz"
 PATCHSET="${PN}-6.2.0.3-patchset-02.tar.xz"
 
 [[ ${MY_PV} == *9999* ]] && inherit git-r3
-inherit autotools bash-completion-r1 check-reqs eapi7-ver flag-o-matic gnome2-utils java-pkg-opt-2 multiprocessing pax-utils python-single-r1 qmake-utils toolchain-funcs xdg-utils
+inherit autotools bash-completion-r1 check-reqs eapi7-ver flag-o-matic java-pkg-opt-2 multiprocessing pax-utils python-single-r1 qmake-utils toolchain-funcs xdg
 
 DESCRIPTION="A full office productivity suite"
 HOMEPAGE="https://www.libreoffice.org"
@@ -286,7 +286,6 @@ pkg_pretend() {
 pkg_setup() {
 	java-pkg-opt-2_pkg_setup
 	python-single-r1_pkg_setup
-	xdg_environment_reset
 
 	[[ ${MERGE_TYPE} != binary ]] && _check_reqs pkg_setup
 }
@@ -310,7 +309,7 @@ src_unpack() {
 }
 
 src_prepare() {
-	default
+	xdg_src_prepare
 
 	# sandbox violations on many systems, we don't need it. Bug #646406
 	sed -i \
@@ -570,14 +569,7 @@ src_install() {
 	pax-mark -m "${ED%/}"/usr/$(get_libdir)/libreoffice/program/unopkg.bin
 }
 
-pkg_postinst() {
-	gnome2_icon_cache_update
-	xdg_desktop_database_update
-	xdg_mimeinfo_database_update
-}
-
-pkg_postrm() {
-	gnome2_icon_cache_update
-	xdg_desktop_database_update
-	xdg_mimeinfo_database_update
+pkg_preinst() {
+	java-utils-2_pkg_preinst
+	xdg_pkg_preinst
 }
