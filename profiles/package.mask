@@ -29,6 +29,16 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (14 Feb 2019)
+# Upstream switched install paths, and we no longer use Gentoo patches
+# for that.  Masked for testing, and for binary package builds.
+=dev-python/pypy-7.0.0
+=dev-python/pypy-bin-7.0.0
+=dev-python/pypy3-7.0.0
+=dev-python/pypy3-bin-7.0.0
+=virtual/pypy-7.0.0
+=virtual/pypy3-7.0.0
+
 # Mart Raudsepp <leio@gentoo.org> (13 Feb 2019)
 # Ongoing preparations for clean tracker-2 bumps
 >=app-misc/tracker-2.1.7
