@@ -580,16 +580,7 @@ app-misc/freemind:pdf - Build plugin for exporting mindmaps to SVG and PDF
 app-misc/freemind:svg - Build plugin for exporting mindmaps to SVG and PDF
 app-misc/gcstar:stats - Enable statistics reporting
 app-misc/gcstar:tellico - Enable support for kde-misc/tellico files
-app-misc/geoclue:geonames - Install geonames.org provider
-app-misc/geoclue:gsmloc - Install GSM location provider
-app-misc/geoclue:gtk - Install gtk-based geoclue-test-gui
-app-misc/geoclue:hostip - Install hostip.info provder
-app-misc/geoclue:manual - Install manual provider
 app-misc/geoclue:modemmanager - Enable geolocation through 3G or GPS enabled hardware through net-misc/modemmanager.
-app-misc/geoclue:nominatim - Install openstreetmap.org provider
-app-misc/geoclue:plazes - Install plazes.com provider
-app-misc/geoclue:skyhook - Install skyhookwireless.com provider
-app-misc/geoclue:yahoo-geo - Install Yahoo geolocation provider
 app-misc/geoclue:zeroconf - Enable retrieval of GPS location from Android devices with https://wiki.gnome.org/Apps/GeoclueShare
 app-misc/gourmet:i18n - Enable support for i18n through elib.intl
 app-misc/gourmet:ipython - Enable support for the interactive Python console plugin
