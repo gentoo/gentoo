@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit cmake-utils xdg-utils
 [[ ${PV} = 9999 ]] && inherit subversion
@@ -34,6 +34,7 @@ RDEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5
+	dev-qt/qtsql:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtx11extras:5
 	media-libs/taglib
@@ -61,7 +62,10 @@ RDEPEND="
 		media-sound/jack-audio-connection-kit
 	)
 	ladspa? ( media-libs/ladspa-cmt )
-	mad? ( media-libs/libmad )
+	mad? ( || (
+		media-libs/libmad
+		media-sound/mpg123
+	) )
 	midi? ( media-sound/wildmidi )
 	mms? ( media-libs/libmms )
 	modplug? ( >=media-libs/libmodplug-0.8.4 )
@@ -92,6 +96,10 @@ DEPEND="${RDEPEND}
 "
 
 DOCS=( AUTHORS ChangeLog README )
+
+PATCHES=(
+	"${FILESDIR}"/${P}-projectm-3.1.patch
+)
 
 src_prepare() {
 	if has_version dev-libs/libcdio-paranoia; then

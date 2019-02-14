@@ -18,7 +18,7 @@ SRC_URI="
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
-IUSE="-dmalloc ldap +libtirpc mount-locking sasl"
+IUSE="-dmalloc ldap +libtirpc mount-locking sasl systemd"
 
 # USE="sasl" adds SASL support to the LDAP module which will not be build. If
 # SASL support should be available, please add "ldap" to the USE flags.
@@ -34,6 +34,7 @@ RDEPEND=">=sys-apps/util-linux-2.20
 			virtual/krb5
 		)
 	)
+	systemd? ( sys-apps/systemd )
 	libtirpc? ( net-libs/libtirpc )
 	!libtirpc? ( elibc_glibc? ( sys-libs/glibc[rpc(-)] ) )
 "
@@ -73,12 +74,12 @@ src_configure() {
 		$(use_with libtirpc)
 		$(use_with sasl)
 		$(use_enable mount-locking)
+		$(use_with systemd systemd $(systemd_get_systemunitdir)) #bug #479492
 		--without-hesiod
 		--disable-ext-env
 		--enable-sloppy-mount # bug #453778
 		--enable-force-shutdown
 		--enable-ignore-busy
-		--with-systemd="$(systemd_get_systemunitdir)" #bug #479492
 		RANLIB="$(type -P $(tc-getRANLIB))" # bug #483716
 	)
 	econf "${myeconfargs[@]}"

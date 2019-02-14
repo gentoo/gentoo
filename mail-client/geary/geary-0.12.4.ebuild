@@ -1,7 +1,8 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+VALA_MIN_API_VERSION="0.40"
 # Keep cmake-utils at the end
 inherit gnome2 vala cmake-utils
 
@@ -10,7 +11,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Geary"
 
 LICENSE="LGPL-2.1+ BSD-2 CC-BY-3.0 CC-BY-SA-3.0" # code is LGPL-2.1+, BSD-2 for bundled snowball-stemmer, CC licenses for some icons
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 
 DEPEND="
 	>=dev-libs/glib-2.42:2
@@ -36,6 +37,7 @@ RDEPEND="${DEPEND}
 # gnome-doc-utils for xml2po for TRANSLATE_HELP option
 DEPEND="${DEPEND}
 	sys-devel/gettext
+	dev-util/intltool
 	app-text/gnome-doc-utils
 	dev-util/desktop-file-utils
 	virtual/pkgconfig
@@ -43,6 +45,9 @@ DEPEND="${DEPEND}
 "
 
 src_prepare() {
+	eapply "${FILESDIR}"/geary-0.12-libdir.patch
+	eapply "${FILESDIR}"/geary-0.12-use-upstream-jsc.patch
+	eapply "${FILESDIR}"/${PV}-fix-cancellable.patch
 	# https://bugzilla.gnome.org/show_bug.cgi?id=751557
 	sed -i -e 's/vapigen --library/${VAPIGEN} --library/' src/CMakeLists.txt || die
 
