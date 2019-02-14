@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 MY_P="${P/_/-}"
 
@@ -12,7 +12,7 @@ else
 	SRC_URI="https://distfiles.audacious-media-player.org/${MY_P}.tar.bz2"
 	KEYWORDS="~amd64 ~x86"
 fi
-inherit gnome2-utils xdg-utils
+inherit xdg
 
 DESCRIPTION="Lightweight and versatile audio player"
 HOMEPAGE="https://audacious-media-player.org/"
@@ -22,7 +22,11 @@ LICENSE="BSD-2"
 SLOT="0"
 IUSE="nls qt5"
 
-RDEPEND="
+BDEPEND="
+	virtual/pkgconfig
+	nls? ( dev-util/intltool )
+"
+DEPEND="
 	>=dev-libs/dbus-glib-0.60
 	>=dev-libs/glib-2.28
 	>=x11-libs/cairo-1.2.6
@@ -35,10 +39,7 @@ RDEPEND="
 		dev-qt/qtwidgets:5
 	)
 "
-DEPEND="${RDEPEND}
-	virtual/pkgconfig
-	nls? ( dev-util/intltool )
-"
+RDEPEND="${DEPEND}"
 PDEPEND="~media-plugins/audacious-plugins-${PV}"
 
 S="${WORKDIR}/${MY_P}"
@@ -78,14 +79,4 @@ src_install() {
 	doins -r "${WORKDIR}"/gentoo_ice/.
 	docinto gentoo_ice
 	dodoc "${WORKDIR}"/README
-}
-
-pkg_postinst() {
-	xdg_desktop_database_update
-	gnome2_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_desktop_database_update
-	gnome2_icon_cache_update
 }

@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 MY_P="${P/_/-}"
 
@@ -40,7 +40,12 @@ REQUIRED_USE="
 #   hotkey
 #   notify
 #   statusicon
-RDEPEND="
+BDEPEND="
+	dev-util/gdbus-codegen
+	virtual/pkgconfig
+	nls? ( dev-util/intltool )
+"
+DEPEND="
 	app-arch/unzip
 	dev-libs/dbus-glib
 	dev-libs/glib
@@ -100,11 +105,7 @@ RDEPEND="
 	)
 	wavpack? ( >=media-sound/wavpack-4.50.1-r1 )
 "
-DEPEND="${RDEPEND}
-	dev-util/gdbus-codegen
-	virtual/pkgconfig
-	nls? ( dev-util/intltool )
-"
+RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${MY_P}"
 

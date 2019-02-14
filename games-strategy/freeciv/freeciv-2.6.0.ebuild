@@ -1,35 +1,43 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit flag-o-matic gnome2-utils xdg-utils
+EAPI=7
 
 MY_PV="${PV/_beta/-beta}"
 MY_PV="${MY_PV/_rc/-RC}"
 MY_P="${PN}-${MY_PV}"
+inherit desktop flag-o-matic xdg
 
 DESCRIPTION="multiplayer strategy game (Civilization Clone)"
 HOMEPAGE="http://www.freeciv.org/"
-SRC_URI="mirror://sourceforge/freeciv/${MY_P}.tar.bz2"
+
+if [[ ${PV} != *_beta* ]] && [[ ${PV} != *_rc* ]] ; then
+	SRC_URI="mirror://sourceforge/freeciv/${MY_P}.tar.bz2"
+	KEYWORDS="~amd64 ~x86"
+fi
 
 LICENSE="GPL-2+"
 SLOT="0"
-if [[ ${PV} != *_beta* ]] && [[ ${PV} != *_rc* ]] ; then
-	KEYWORDS="~amd64 ~x86"
-fi
-IUSE="auth aimodules dedicated +gtk ipv6 mapimg modpack mysql nls qt5 readline sdl +server +sound sqlite system-lua"
+IUSE="aimodules auth dedicated +gtk ipv6 mapimg modpack mysql nls qt5 readline sdl +server +sound sqlite system-lua"
 
 # postgres isn't yet really supported by upstream
-RDEPEND="app-arch/bzip2
+BDEPEND="
+	virtual/pkgconfig
+	!dedicated? (
+		x11-base/xorg-proto
+		nls? ( sys-devel/gettext )
+	)
+"
+DEPEND="
+	app-arch/bzip2
 	app-arch/xz-utils
 	net-misc/curl
 	sys-libs/zlib
 	auth? (
+		!mysql? ( ( !sqlite? ( virtual/mysql ) ) )
 		mysql? ( virtual/mysql )
 		sqlite? ( dev-db/sqlite:3 )
-		!mysql? ( ( !sqlite? ( virtual/mysql ) ) )
 	)
-	readline? ( sys-libs/readline:0= )
 	dedicated? ( aimodules? ( dev-libs/libltdl:0 ) )
 	!dedicated? (
 		media-libs/libpng:0
@@ -42,6 +50,7 @@ RDEPEND="app-arch/bzip2
 			dev-qt/qtgui:5
 			dev-qt/qtwidgets:5
 		)
+		!sdl? ( !gtk? ( x11-libs/gtk+:2 ) )
 		sdl? (
 			media-libs/libsdl2[video]
 			media-libs/sdl2-gfx
@@ -53,15 +62,11 @@ RDEPEND="app-arch/bzip2
 			media-libs/libsdl2[sound]
 			media-libs/sdl2-mixer[vorbis]
 		)
-		!sdl? ( !gtk? ( x11-libs/gtk+:2 ) )
 	)
-	system-lua? ( >=dev-lang/lua-5.3 )"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig
-	!dedicated? (
-		x11-base/xorg-proto
-		nls? ( sys-devel/gettext )
-	)"
+	readline? ( sys-libs/readline:0= )
+	system-lua? ( >=dev-lang/lua-5.3:= )
+"
+RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${MY_P}"
 
@@ -152,8 +157,8 @@ src_install() {
 	default
 
 	if use dedicated ; then
-		rm -rf "${ED%/}/usr/share/pixmaps"
-		rm -f "${ED%/}"/usr/share/man/man6/freeciv-{client,gtk2,gtk3,modpack,qt,sdl,xaw}*
+		rm -rf "${ED}"/usr/share/pixmaps
+		rm -f "${ED}"/usr/share/man/man6/freeciv-{client,gtk2,gtk3,modpack,qt,sdl,xaw}*
 	else
 		if use server ; then
 			# Create and install the html manual. It can't be done for dedicated
@@ -168,24 +173,12 @@ src_install() {
 		if use sdl ; then
 			make_desktop_entry freeciv-sdl "Freeciv (SDL)" freeciv-client
 		else
-			rm -f "${ED%/}"/usr/share/man/man6/freeciv-sdl*
+			rm -f "${ED}"/usr/share/man/man6/freeciv-sdl*
 		fi
-		rm -f "${ED%/}"/usr/share/man/man6/freeciv-xaw*
+		rm -f "${ED}"/usr/share/man/man6/freeciv-xaw*
 	fi
 	find "${ED}" -name "freeciv-manual*" -delete
 
-	rm -f "${ED%/}/usr/$(get_libdir)"/*.a
+	rm -f "${ED}/usr/$(get_libdir)"/*.a
 	find "${ED}" -name "*.la" -delete || die
-}
-
-pkg_preinst() {
-	gnome2_icon_savelist
-}
-
-pkg_postinst() {
-	gnome2_icon_cache_update
-}
-
-pkg_postrm() {
-	gnome2_icon_cache_update
 }
