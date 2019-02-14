@@ -3,7 +3,7 @@
 
 EAPI=7
 
-KDE_HANDBOOK="forceoptional"
+KDE_HANDBOOK="optional" # see src/apps/marble-kde/CMakeLists.txt
 KDE_SUBSLOT="true"
 KDE_TEST="forceoptional"
 VIRTUALX_REQUIRED="test"

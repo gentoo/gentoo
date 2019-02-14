@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 MY_PV="${PV/_/-}"
 MY_PV="${MY_PV/-beta/-test}"
@@ -12,7 +12,7 @@ if [[ ${PV} = *9999 ]] ; then
 	else
 		EGIT_REPO_URI="https://git.videolan.org/git/vlc.git"
 	fi
-	SCM="git-r3"
+	inherit git-r3
 else
 	if [[ ${MY_P} = ${P} ]] ; then
 		SRC_URI="https://download.videolan.org/pub/videolan/${PN}/${PV}/${P}.tar.xz"
@@ -21,7 +21,7 @@ else
 	fi
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 -sparc ~x86 ~x86-fbsd"
 fi
-inherit autotools flag-o-matic gnome2-utils toolchain-funcs virtualx xdg-utils ${SCM}
+inherit autotools flag-o-matic toolchain-funcs virtualx xdg
 
 DESCRIPTION="Media player and framework with support for most multimedia files and streaming"
 HOMEPAGE="https://www.videolan.org/vlc/"
@@ -52,7 +52,14 @@ REQUIRED_USE="
 	vaapi? ( ffmpeg X )
 	vdpau? ( ffmpeg X )
 "
-RDEPEND="
+BDEPEND="
+	>=sys-devel/gettext-0.19.8:*
+	virtual/pkgconfig:*
+	amd64? ( dev-lang/yasm:* )
+	x86? ( dev-lang/yasm:* )
+	X? ( x11-base/xorg-proto )
+"
+DEPEND="
 	net-dns/libidn:=
 	sys-libs/zlib:0[minizip]
 	virtual/libintl:0
@@ -218,13 +225,7 @@ RDEPEND="
 	zeroconf? ( net-dns/avahi:0[dbus] )
 	zvbi? ( media-libs/zvbi )
 "
-DEPEND="${RDEPEND}
-	>=sys-devel/gettext-0.19.8:*
-	virtual/pkgconfig:*
-	amd64? ( dev-lang/yasm:* )
-	x86? ( dev-lang/yasm:* )
-	X? ( x11-base/xorg-proto )
-"
+RDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.1.0-fix-libtremor-libs.patch # build system
@@ -237,7 +238,7 @@ DOCS=( AUTHORS THANKS NEWS README doc/fortunes.txt )
 S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
-	default
+	xdg_src_prepare # bug 608256
 
 	has_version '>=net-libs/libupnp-1.8.0' && \
 		eapply "${FILESDIR}"/${PN}-2.2.8-libupnp-slot-1.8.patch
@@ -436,8 +437,6 @@ src_configure() {
 	# FIXME: Needs libresid-builder from libsidplay:2 which is in another directory...
 	append-ldflags "-L/usr/$(get_libdir)/sidplay/builders/"
 
-	xdg_environment_reset # bug 608256
-
 	if use truetype || use bidi; then
 		myeconfargs+=( --enable-freetype )
 	else
@@ -454,7 +453,7 @@ src_configure() {
 		)
 	fi
 
-	econf ${myeconfargs[@]}
+	econf "${myeconfargs[@]}"
 
 	# _FORTIFY_SOURCE is set to 2 in config.h, which is also the default value on Gentoo.
 	# Other values may break the build (bug 523144), so definition should not be removed.
@@ -472,7 +471,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	if [[ "$ROOT" = "/" ]] && [[ -x "/usr/$(get_libdir)/vlc/vlc-cache-gen" ]] ; then
+	if [[ -z ${ROOT} ]] && [[ -x "/usr/$(get_libdir)/vlc/vlc-cache-gen" ]] ; then
 		einfo "Running /usr/$(get_libdir)/vlc/vlc-cache-gen on /usr/$(get_libdir)/vlc/plugins/"
 		"/usr/$(get_libdir)/vlc/vlc-cache-gen" "/usr/$(get_libdir)/vlc/plugins/"
 	else
@@ -481,9 +480,7 @@ pkg_postinst() {
 		ewarn "If you do not do it, vlc will take a long time to load."
 	fi
 
-	gnome2_icon_cache_update
-	xdg_mimeinfo_database_update
-	xdg_desktop_database_update
+	xdg_pkg_postinst
 }
 
 pkg_postrm() {
@@ -491,7 +488,5 @@ pkg_postrm() {
 		rm /usr/$(get_libdir)/vlc/plugins/plugins.dat || die "Failed to rm plugins.dat"
 	fi
 
-	gnome2_icon_cache_update
-	xdg_mimeinfo_database_update
-	xdg_desktop_database_update
+	xdg_pkg_postrm
 }

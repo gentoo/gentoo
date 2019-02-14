@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="tk?"
 CMAKE_MAKEFILE_GENERATOR=ninja
 COMMIT=1ed85778dd55bcbcfad2bbc276fd4c97f43ad965
-inherit cmake-utils desktop flag-o-matic gnome2-utils python-single-r1 xdg-utils
+inherit cmake-utils desktop flag-o-matic python-single-r1 xdg
 
 DESCRIPTION="Desktop publishing (DTP) and layout program"
 HOMEPAGE="https://www.scribus.net/"
@@ -210,18 +210,6 @@ src_install() {
 	newicon -s 64 resources/iconsets/artwork/icon_32x32@2x.png scribus.png
 	doicon resources/iconsets/*/scribus.png
 	domenu scribus.desktop
-}
-
-pkg_postinst() {
-	xdg_desktop_database_update
-	xdg_mimeinfo_database_update
-	gnome2_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_desktop_database_update
-	xdg_mimeinfo_database_update
-	gnome2_icon_cache_update
 }
 
 safe_delete () {

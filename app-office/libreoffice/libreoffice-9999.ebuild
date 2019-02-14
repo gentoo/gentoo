@@ -21,7 +21,7 @@ BRANDING="${PN}-branding-gentoo-0.8.tar.xz"
 # PATCHSET="${P}-patchset-01.tar.xz"
 
 [[ ${MY_PV} == *9999* ]] && inherit git-r3
-inherit autotools bash-completion-r1 check-reqs eapi7-ver flag-o-matic gnome2-utils java-pkg-opt-2 multiprocessing pax-utils python-single-r1 qmake-utils toolchain-funcs xdg-utils
+inherit autotools bash-completion-r1 check-reqs eapi7-ver flag-o-matic java-pkg-opt-2 multiprocessing pax-utils python-single-r1 qmake-utils toolchain-funcs xdg
 
 DESCRIPTION="A full office productivity suite"
 HOMEPAGE="https://www.libreoffice.org"
@@ -63,7 +63,7 @@ unset ADDONS_SRC
 LO_EXTS="nlpsolver scripting-beanshell scripting-javascript wiki-publisher"
 
 IUSE="accessibility bluetooth +branding coinmp +cups dbus debug eds firebird
-googledrive gstreamer +gtk gtk2 kde +mariadb odk pdfimport postgres test vlc
+googledrive gstreamer +gtk gtk2 kde ldap +mariadb odk pdfimport postgres test vlc
 $(printf 'libreoffice_extensions_%s ' ${LO_EXTS})"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
@@ -133,7 +133,6 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	media-libs/libzmf
 	net-libs/neon
 	net-misc/curl
-	net-nds/openldap
 	sci-mathematics/lpsolve
 	sys-libs/zlib
 	virtual/glu
@@ -185,6 +184,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		kde-frameworks/kio:5
 		kde-frameworks/kwindowsystem:5
 	)
+	ldap? ( net-nds/openldap )
 	libreoffice_extensions_scripting-beanshell? ( dev-java/bsh )
 	libreoffice_extensions_scripting-javascript? ( dev-java/rhino:1.6 )
 	mariadb? ( dev-db/mariadb-connector-c )
@@ -282,7 +282,6 @@ pkg_pretend() {
 pkg_setup() {
 	java-pkg-opt-2_pkg_setup
 	python-single-r1_pkg_setup
-	xdg_environment_reset
 
 	[[ ${MERGE_TYPE} != binary ]] && _check_reqs pkg_setup
 }
@@ -306,7 +305,7 @@ src_unpack() {
 }
 
 src_prepare() {
-	default
+	xdg_src_prepare
 
 	# sandbox violations on many systems, we don't need it. Bug #646406
 	sed -i \
@@ -442,6 +441,7 @@ src_configure() {
 		$(use_enable gtk2 gtk)
 		$(use_enable kde kde5)
 		$(use_enable kde qt5)
+		$(use_enable ldap)
 		$(use_enable odk)
 		$(use_enable pdfimport)
 		$(use_enable postgres postgresql-sdbc)
@@ -565,14 +565,7 @@ src_install() {
 	pax-mark -m "${ED%/}"/usr/$(get_libdir)/libreoffice/program/unopkg.bin
 }
 
-pkg_postinst() {
-	gnome2_icon_cache_update
-	xdg_desktop_database_update
-	xdg_mimeinfo_database_update
-}
-
-pkg_postrm() {
-	gnome2_icon_cache_update
-	xdg_desktop_database_update
-	xdg_mimeinfo_database_update
+pkg_preinst() {
+	java-utils-2_pkg_preinst
+	xdg_pkg_preinst
 }

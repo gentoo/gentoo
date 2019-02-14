@@ -1,10 +1,10 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 PLOCALES="cs da de en_GB es fr hu it ja ko pl pt_BR ru zh_CN"
-inherit cmake-utils gnome2-utils l10n qmake-utils xdg-utils
+inherit cmake-utils l10n qmake-utils xdg
 
 DESCRIPTION="Featureful and configurable Qt client for the music player daemon (MPD)"
 HOMEPAGE="https://github.com/CDrummond/cantata"
@@ -24,6 +24,9 @@ REQUIRED_USE="
 	replaygain? ( taglib )
 "
 
+BDEPEND="
+	dev-qt/linguist-tools:5
+"
 COMMON_DEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
@@ -59,7 +62,6 @@ RDEPEND="${COMMON_DEPEND}
 "
 DEPEND="${COMMON_DEPEND}
 	dev-qt/qtconcurrent:5
-	dev-qt/linguist-tools:5
 "
 
 # cantata has no tests
@@ -105,8 +107,7 @@ src_configure() {
 }
 
 pkg_postinst() {
-	gnome2_icon_cache_update
-	xdg_desktop_database_update
+	xdg_pkg_postinst
 
 	has_version media-sound/mpd || \
 		elog "An instance of media-sound/mpd, local or remote, is required to set up Cantata."
@@ -115,9 +116,4 @@ pkg_postinst() {
 		elog "Install app-misc/media-player-info to enable identification"
 		elog "and querying of portable media players"
 	fi
-}
-
-pkg_postrm() {
-	gnome2_icon_cache_update
-	xdg_desktop_database_update
 }
