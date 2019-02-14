@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 MY_PV="${PV/_/-}"
 MY_PV="${MY_PV/-beta/-test}"
@@ -52,7 +52,14 @@ REQUIRED_USE="
 	vaapi? ( ffmpeg X )
 	vdpau? ( ffmpeg X )
 "
-RDEPEND="
+BDEPEND="
+	>=sys-devel/gettext-0.19.8:*
+	virtual/pkgconfig:*
+	amd64? ( dev-lang/yasm:* )
+	x86? ( dev-lang/yasm:* )
+	X? ( x11-base/xorg-proto )
+"
+DEPEND="
 	net-dns/libidn:=
 	sys-libs/zlib:0[minizip]
 	virtual/libintl:0
@@ -218,13 +225,7 @@ RDEPEND="
 	zeroconf? ( net-dns/avahi:0[dbus] )
 	zvbi? ( media-libs/zvbi )
 "
-DEPEND="${RDEPEND}
-	>=sys-devel/gettext-0.19.8:*
-	virtual/pkgconfig:*
-	amd64? ( dev-lang/yasm:* )
-	x86? ( dev-lang/yasm:* )
-	X? ( x11-base/xorg-proto )
-"
+RDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.1.0-fix-libtremor-libs.patch # build system
@@ -452,7 +453,7 @@ src_configure() {
 		)
 	fi
 
-	econf ${myeconfargs[@]}
+	econf "${myeconfargs[@]}"
 
 	# _FORTIFY_SOURCE is set to 2 in config.h, which is also the default value on Gentoo.
 	# Other values may break the build (bug 523144), so definition should not be removed.
@@ -470,7 +471,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	if [[ "$ROOT" = "/" ]] && [[ -x "/usr/$(get_libdir)/vlc/vlc-cache-gen" ]] ; then
+	if [[ -z ${ROOT} ]] && [[ -x "/usr/$(get_libdir)/vlc/vlc-cache-gen" ]] ; then
 		einfo "Running /usr/$(get_libdir)/vlc/vlc-cache-gen on /usr/$(get_libdir)/vlc/plugins/"
 		"/usr/$(get_libdir)/vlc/vlc-cache-gen" "/usr/$(get_libdir)/vlc/plugins/"
 	else
