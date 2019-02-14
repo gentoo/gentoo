@@ -1,13 +1,13 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="Advanced parallized login hacker"
 HOMEPAGE="https://www.thc.org/thc-hydra/"
 SRC_URI="
-	https://github.com/vanhauser-thc/thc-${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/vanhauser-thc/thc-${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 "
 
 LICENSE="GPL-3"
@@ -26,8 +26,8 @@ RDEPEND="
 		x11-libs/gdk-pixbuf:2
 		x11-libs/gtk+:2
 	)
-	idn? ( net-dns/libidn )
-	mysql? ( virtual/mysql )
+	idn? ( net-dns/libidn:0= )
+	mysql? ( dev-db/mysql-connector-c:0= )
 	ncp? ( net-fs/ncpfs )
 	oracle? ( dev-db/oracle-instantclient-basic )
 	pcre? ( dev-libs/libpcre )
