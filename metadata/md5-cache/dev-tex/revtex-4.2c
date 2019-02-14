@@ -1,0 +1,14 @@
+BDEPEND=virtual/latex-base >=sys-apps/texinfo-4.2-r5
+DEFINED_PHASES=compile install postinst postrm prepare
+DEPEND=>=dev-texlive/texlive-latex-2012 app-arch/unzip
+DESCRIPTION=LaTeX2e macros to prepare manuscripts for the journals of the APS and AIP
+EAPI=7
+HOMEPAGE=https://journals.aps.org/revtex
+IUSE=doc
+KEYWORDS=~amd64 ~x86
+LICENSE=LPPL-1.3c
+RDEPEND=>=dev-texlive/texlive-latex-2012 virtual/latex-base
+SLOT=0
+SRC_URI=http://mirrors.ctan.org/macros/latex/contrib/revtex.zip -> revtex-4.2c.zip
+_eclasses_=latex-package	17f13abe0de88340745e52e6b627aee7
+_md5_=082dc563b190fda3432bc33d219fd437
