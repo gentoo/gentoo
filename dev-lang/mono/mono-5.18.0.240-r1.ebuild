@@ -22,9 +22,7 @@ COMMONDEPEND="
 	ia64? ( sys-libs/libunwind )
 	nls? ( sys-devel/gettext )
 "
-RDEPEND="${COMMONDEPEND}
-	|| ( www-client/links www-client/lynx )
-"
+RDEPEND="${COMMONDEPEND}"
 DEPEND="${COMMONDEPEND}
 	sys-devel/bc
 	virtual/yacc
