@@ -41,7 +41,10 @@ PDEPEND="
 
 DOCS=( src/libelogind/sd-bus/GVARIANT-SERIALIZATION )
 
-PATCHES=( "${FILESDIR}/${PN}-238.1-docs.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-238.1-docs.patch"
+	"${FILESDIR}/${P}-broken-test.patch" # bug 669862
+)
 
 pkg_setup() {
 	local CONFIG_CHECK="~CGROUPS ~EPOLL ~INOTIFY_USER ~SIGNALFD ~TIMERFD"
