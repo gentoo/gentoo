@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,7 +17,7 @@ DESCRIPTION="Client library for accessing NFS shares over a network"
 HOMEPAGE="https://github.com/sahlberg/libnfs"
 
 LICENSE="LGPL-2.1 GPL-3"
-SLOT="0/12"  # sub-slot matches SONAME major
+SLOT="0/13"  # sub-slot matches SONAME major
 IUSE="examples static-libs utils"
 
 RDEPEND=""
