@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit gnome2-utils qmake-utils xdg-utils
+inherit qmake-utils xdg
 
-DESCRIPTION="A jigsaw puzzle game that uses tetrominoes for the pieces"
+DESCRIPTION="Jigsaw puzzle game that uses tetrominoes for the pieces"
 HOMEPAGE="https://gottcode.org/tetzle/"
 SRC_URI="https://gottcode.org/${PN}/${P}-src.tar.bz2"
 
@@ -14,14 +14,15 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-RDEPEND="
+BDEPEND="
+	dev-qt/linguist-tools:5
+"
+DEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtwidgets:5
 "
-DEPEND="${RDEPEND}
-	dev-qt/linguist-tools:5
-"
+RDEPEND="${DEPEND}"
 
 PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
 
@@ -32,16 +33,4 @@ src_configure() {
 src_install(){
 	emake DESTDIR="${D}" INSTALL_ROOT="${ED}" install
 	einstalldocs
-}
-
-pkg_postinst() {
-	gnome2_icon_cache_update
-	xdg_desktop_database_update
-	xdg_mimeinfo_database_update
-}
-
-pkg_postrm() {
-	gnome2_icon_cache_update
-	xdg_desktop_database_update
-	xdg_mimeinfo_database_update
 }
