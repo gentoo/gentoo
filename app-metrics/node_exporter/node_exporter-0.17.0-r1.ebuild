@@ -33,7 +33,7 @@ src_prepare() {
 src_compile() {
 	pushd src/${EGO_PN} || die
 	mkdir -p bin || die
-	GO111MODULE=on GOPATH="${S}" promu build -v --prefix node_exporter || die
+	GO111MODULE=on GOPATH="${S}" GOCACHE="${T}"/go-cache promu build -v --prefix node_exporter || die
 	popd || die
 }
 
