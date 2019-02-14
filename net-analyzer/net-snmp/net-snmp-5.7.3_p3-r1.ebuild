@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -47,7 +47,7 @@ COMMON_DEPEND="
 	pci? ( sys-apps/pciutils )
 	lm_sensors? ( sys-apps/lm_sensors )
 	netlink? ( dev-libs/libnl:3 )
-	mysql? ( virtual/mysql )
+	mysql? ( dev-db/mysql-connector-c:0= )
 	perl? ( dev-lang/perl:= )
 "
 DEPEND="
