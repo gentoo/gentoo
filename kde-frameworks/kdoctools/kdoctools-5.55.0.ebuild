@@ -35,3 +35,12 @@ src_configure() {
 
 	kde5_src_configure
 }
+
+src_test() {
+	# bug 665622
+	local myctestargs=(
+		-E "(kdoctools_install)"
+	)
+
+	kde5_src_test
+}
