@@ -12,7 +12,7 @@ if [[ ${PV} = *9999 ]] ; then
 	else
 		EGIT_REPO_URI="https://git.videolan.org/git/vlc.git"
 	fi
-	SCM="git-r3"
+	inherit git-r3
 else
 	if [[ ${MY_P} = ${P} ]] ; then
 		SRC_URI="https://download.videolan.org/pub/videolan/${PN}/${PV}/${P}.tar.xz"
@@ -21,7 +21,7 @@ else
 	fi
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 -sparc ~x86 ~x86-fbsd"
 fi
-inherit autotools flag-o-matic gnome2-utils toolchain-funcs virtualx xdg-utils ${SCM}
+inherit autotools flag-o-matic toolchain-funcs virtualx xdg
 
 DESCRIPTION="Media player and framework with support for most multimedia files and streaming"
 HOMEPAGE="https://www.videolan.org/vlc/"
@@ -243,7 +243,7 @@ DOCS=( AUTHORS THANKS NEWS README doc/fortunes.txt )
 S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
-	default
+	xdg_src_prepare # bug 608256
 
 	has_version '>=net-libs/libupnp-1.8.0' && \
 		eapply "${FILESDIR}"/${P}-libupnp-slot-1.8.patch
@@ -445,8 +445,6 @@ src_configure() {
 	# FIXME: Needs libresid-builder from libsidplay:2 which is in another directory...
 	append-ldflags "-L/usr/$(get_libdir)/sidplay/builders/"
 
-	xdg_environment_reset # bug 608256
-
 	if use truetype || use bidi; then
 		myeconfargs+=( --enable-freetype )
 	else
@@ -490,9 +488,7 @@ pkg_postinst() {
 		ewarn "If you do not do it, vlc will take a long time to load."
 	fi
 
-	gnome2_icon_cache_update
-	xdg_mimeinfo_database_update
-	xdg_desktop_database_update
+	xdg_pkg_postinst
 }
 
 pkg_postrm() {
@@ -500,7 +496,5 @@ pkg_postrm() {
 		rm /usr/libexec/vlc/plugins/plugins.dat || die "Failed to rm plugins.dat"
 	fi
 
-	gnome2_icon_cache_update
-	xdg_mimeinfo_database_update
-	xdg_desktop_database_update
+	xdg_pkg_postrm
 }
