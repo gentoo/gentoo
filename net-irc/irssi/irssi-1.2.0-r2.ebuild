@@ -25,7 +25,8 @@ COMMON_DEPEND="
 	!libressl? ( dev-libs/openssl:= )
 	libressl? ( dev-libs/libressl:= )
 	otr? ( >=dev-libs/libgcrypt-1.2.0:0=
-	       >=net-libs/libotr-4.1.0 )
+		>=net-libs/libotr-4.1.0
+		!net-irc/irssi-otr )
 	perl? ( dev-lang/perl:= )
 	socks5? ( >=net-proxy/dante-1.1.18 )"
 
