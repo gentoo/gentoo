@@ -23,7 +23,7 @@ CDEPEND="sys-libs/ncurses:0=
 	otr? (
 		>=dev-libs/libgcrypt-1.2.0:0=
 		>=net-libs/libotr-4.1.0
-		!met-irc/irssi-otr
+		!net-irc/irssi-otr
 	)
 	perl? ( dev-lang/perl:= )
 	socks5? ( >=net-proxy/dante-1.1.18 )"
