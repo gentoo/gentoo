@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 
 MY_PN="${PN%-bin}"
 MY_P="${MY_PN}-${PV}"
@@ -28,7 +28,8 @@ RDEPEND="dev-libs/libaio
 	dev-libs/libgpg-error
 	dev-perl/DBD-mysql
 	sys-libs/zlib
-	sys-process/numactl"
+	sys-process/numactl
+	!dev-db/percona-xtrabackup"
 
 QA_PREBUILT="usr/bin/*"
 

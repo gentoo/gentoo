@@ -29,7 +29,7 @@ DEPEND="
 
 RDEPEND="
 	${DEPEND}
-	!dev-db/xtrabackup-bin
+	!dev-db/percona-xtrabackup-bin
 	dev-perl/DBD-mysql"
 
 PATCHES=(
