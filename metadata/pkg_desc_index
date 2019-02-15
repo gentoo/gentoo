@@ -358,7 +358,7 @@ app-crypt/monkeysphere 0.37 0.41: Leverage the OpenPGP web of trust for OpenSSH 
 app-crypt/openpgp-keys-gentoo-release 20180706 20190102: OpenPGP keys used for Gentoo releases (snapshots, stages)
 app-crypt/openssl-blacklist 0.5.3: Detection of weak ssl keys produced by certain debian versions in 2006-2008
 app-crypt/p11-kit 0.23.12: Provides a standard configuration setup for installing PKCS#11
-app-crypt/paperkey 1.5: OpenPGP key archiver
+app-crypt/paperkey 1.5 1.6: OpenPGP key archiver
 app-crypt/pgpdump 0.30 0.33: A PGP packet visualizer
 app-crypt/pinentry 1.0.0-r2 1.1.0-r2: Simple passphrase entry dialogs which utilize the Assuan protocol
 app-crypt/qca 2.1.3-r2: Qt Cryptographic Architecture (QCA)
