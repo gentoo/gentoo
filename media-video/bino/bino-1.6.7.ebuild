@@ -11,7 +11,7 @@ SRC_URI="https://bino3d.org/releases/${P}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 IUSE="debug doc libav lirc video_cards_nvidia"
 
 RDEPEND="
