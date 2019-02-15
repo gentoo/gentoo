@@ -53,13 +53,12 @@ REQUIRED_USE="
 	vdpau? ( ffmpeg X )
 "
 BDEPEND="
-	>=sys-devel/gettext-0.19.8:*
-	virtual/pkgconfig:*
-	amd64? ( dev-lang/yasm:* )
-	x86? ( dev-lang/yasm:* )
-	X? ( x11-base/xorg-proto )
+	>=sys-devel/gettext-0.19.8
+	virtual/pkgconfig
+	amd64? ( dev-lang/yasm )
+	x86? ( dev-lang/yasm )
 "
-DEPEND="
+RDEPEND="
 	net-dns/libidn:=
 	sys-libs/zlib:0[minizip]
 	virtual/libintl:0
@@ -225,7 +224,9 @@ DEPEND="
 	zeroconf? ( net-dns/avahi:0[dbus] )
 	zvbi? ( media-libs/zvbi )
 "
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}
+	X? ( x11-base/xorg-proto )
+"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.1.0-fix-libtremor-libs.patch # build system
