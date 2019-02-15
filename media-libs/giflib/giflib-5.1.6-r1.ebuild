@@ -47,7 +47,7 @@ multilib_src_compile() {
 
 multilib_src_install() {
 	emake \
-		DESTDIR="${ED}" \
+		DESTDIR="${D}" \
 		PREFIX="${EPREFIX}/usr" \
 		LIBDIR="${EPREFIX}/usr/$(get_libdir)" \
 		MANDIR="${EPREFIX}/usr/share/man/man1" \

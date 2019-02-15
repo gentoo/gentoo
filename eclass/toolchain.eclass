@@ -1278,7 +1278,8 @@ toolchain_src_configure() {
 	if in_iuse vtv ; then
 		confgcc+=(
 			$(use_enable vtv vtable-verify)
-			$(use_enable vtv libvtv)
+			# See Note [implicitly enabled flags]
+			$(usex vtv '' --disable-libvtv)
 		)
 	fi
 
@@ -2514,7 +2515,9 @@ toolchain_death_notice() {
 #
 # GCC does not follow this pattern and instead overrides autodetection
 # of the feature and enables it unconditionally.
-# See https://gcc.gnu.org/PR85663
+# See bugs:
+#    https://gcc.gnu.org/PR85663 (libsanitizer on mips)
+#    https://bugs.gentoo.org/661252 (libvtv on powerpc64)
 #
 # Thus safer way to enable/disable the feature is to rely on implicit
 # enabled-by-default state:
