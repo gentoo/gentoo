@@ -7,7 +7,7 @@ DESCRIPTION="Serial To Network Proxy"
 SRC_URI="mirror://sourceforge/ser2net/${P}.tar.gz"
 HOMEPAGE="https://sourceforge.net/projects/ser2net"
 
-KEYWORDS="amd64 ppc ~x86"
+KEYWORDS="amd64 ppc x86"
 SLOT="0"
 LICENSE="GPL-2"
 
