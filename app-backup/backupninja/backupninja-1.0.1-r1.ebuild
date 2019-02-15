@@ -13,7 +13,7 @@ SRC_URI="https://labs.riseup.net/code/attachments/download/${NODE_NUMBER}/${P}.t
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND="dev-util/dialog"
 DEPEND=""
