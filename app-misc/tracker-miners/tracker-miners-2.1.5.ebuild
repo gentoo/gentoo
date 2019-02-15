@@ -69,6 +69,7 @@ DEPEND="${RDEPEND}
 PATCHES=(
 	"${FILESDIR}"/${PV}-meson-fixes.patch # https://gitlab.gnome.org/GNOME/tracker-miners/merge_requests/49
 	"${FILESDIR}"/${PV}-test-fix.patch # https://gitlab.gnome.org/GNOME/tracker-miners/merge_requests/50
+	"${FILESDIR}"/${PV}-seccomp.patch # https://gitlab.gnome.org/GNOME/tracker-miners/merge_requests/51
 )
 
 pkg_setup() {
