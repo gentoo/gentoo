@@ -1,7 +1,7 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 inherit toolchain-funcs flag-o-matic webapp
 
@@ -18,16 +18,18 @@ REQUIRED_USE="server? ( mysql )"
 
 WEBAPP_MANUAL_SLOT="yes"
 
-DEPEND="
-	app-arch/unzip
+RDEPEND="
+	dev-libs/openssl:0=
+	media-libs/libpng:0=
 	!<sci-biology/ucsc-genome-browser-223
-	mysql? ( virtual/mysql )
+	mysql? ( dev-db/mysql-connector-c:0= )
 	server? ( virtual/httpd-cgi )" # TODO: test with other webservers
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND} app-arch/unzip"
 
 S="${WORKDIR}/kent"
 
 src_prepare() {
+	default
 	use server && webapp_src_preinst
 	sed \
 		-e 's/-Werror//' \
