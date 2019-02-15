@@ -6,7 +6,7 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6,3_7} )
 
 inherit gnome.org gnome2-utils meson python-any-r1 systemd xdg
 
-DESCRIPTION="A tagging metadata database, search tool and indexer"
+DESCRIPTION="Collection of data extractors for Tracker/Nepomuk"
 HOMEPAGE="https://wiki.gnome.org/Projects/Tracker"
 
 LICENSE="GPL-2+ LGPL-2.1+"

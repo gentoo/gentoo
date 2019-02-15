@@ -25,7 +25,6 @@ KEYWORDS="~amd64"
 #        vala deps like live ebuild has.
 # FIXME: qemu probably needs to depend on spice[smartcard]
 #        directly with USE=spice
-# tracker-2 is supported, but we don't have the USE=iso replacement in main tree yet to depend on
 RDEPEND="
 	>=app-arch/libarchive-3:=
 	>=dev-libs/glib-2.52:2
@@ -42,7 +41,7 @@ RDEPEND="
 	>=net-misc/spice-gtk-0.32[gtk3(+),smartcard,usbredir]
 	virtual/libusb:1
 
-	app-misc/tracker:0/100[iso]
+	app-misc/tracker:=
 
 	>=net-libs/libsoup-2.44:2.4
 
@@ -58,6 +57,12 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 "
 # eautoreconf needs yelp-tools
+RDEPEND="${RDEPEND}
+	|| (
+		>=app-misc/tracker-1[iso(-)]
+		>=app-misc/tracker-miners-2[iso]
+	)
+"
 
 DISABLE_AUTOFORMATTING="yes"
 DOC_CONTENTS="Before running gnome-boxes, you will need to load the KVM modules.

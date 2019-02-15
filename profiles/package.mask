@@ -43,6 +43,7 @@
 # Ongoing preparations for clean tracker-2 bumps
 >=app-misc/tracker-2.1.7
 >=app-misc/tracker-miners-2.1.5
+>=net-misc/gnome-online-miners-3.26.0
 
 # Michał Górny <mgorny@gentoo.org> (13 Feb 2019)
 # Release candidate, masked for testing.
