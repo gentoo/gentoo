@@ -1,13 +1,13 @@
-DEFINED_PHASES=compile install postinst postrm prepare unpack
-DEPEND=>=x11-libs/gtk+-2.12:2 media-libs/imlib2[X] exif? ( media-libs/libexif ) lcms? ( media-libs/lcms:2 media-libs/tiff:0 virtual/jpeg:0 ) magic? ( sys-apps/file ) virtual/pkgconfig
+DEFINED_PHASES=compile install postinst postrm preinst prepare unpack
+DEPEND=media-libs/imlib2[X] >=x11-libs/gtk+-2.12:2 exif? ( media-libs/libexif ) lcms? ( media-libs/lcms:2 media-libs/tiff:0 virtual/jpeg:0 ) magic? ( sys-apps/file ) virtual/pkgconfig dev-util/desktop-file-utils x11-misc/shared-mime-info
 DESCRIPTION=Quick Image Viewer
 EAPI=6
 HOMEPAGE=http://spiegl.de/qiv/ https://bitbucket.org/ciberandy/qiv
 IUSE=exif lcms magic
 KEYWORDS=~amd64 ~mips ~x86
 LICENSE=GPL-2
-RDEPEND=>=x11-libs/gtk+-2.12:2 media-libs/imlib2[X] exif? ( media-libs/libexif ) lcms? ( media-libs/lcms:2 media-libs/tiff:0 virtual/jpeg:0 ) magic? ( sys-apps/file )
+RDEPEND=media-libs/imlib2[X] >=x11-libs/gtk+-2.12:2 exif? ( media-libs/libexif ) lcms? ( media-libs/lcms:2 media-libs/tiff:0 virtual/jpeg:0 ) magic? ( sys-apps/file )
 SLOT=0
 SRC_URI=https://bitbucket.org/ciberandy/qiv/get/v2.3.2.tar.gz -> qiv-2.3.2.tar.gz
-_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	gnome2-utils	532371cfcba45b2ab0d2950547c97d95	ltprune	08f9e1d9ee0af8f5d9a7854efbcd8c0e	multilib	b2f01ad412baf81650c23fcf0975fa33	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	vcs-snapshot	b77011b62e2053c646ad720defe6d921	xdg-utils	14d00d009167652b1fa363e55effe213
-_md5_=ddf6df198f4f1016bd7200a7b1075aae
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	vcs-snapshot	b77011b62e2053c646ad720defe6d921	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	14d00d009167652b1fa363e55effe213
+_md5_=18d15ab6a984b8401b21d49d56b57601
