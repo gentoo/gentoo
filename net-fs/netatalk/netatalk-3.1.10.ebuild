@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 )
 
 AUTOTOOLS_AUTORECONF=yes
 
-inherit autotools-utils flag-o-matic multilib pam python-r1 systemd versionator
+inherit autotools-utils eapi7-ver flag-o-matic multilib pam python-r1 systemd versionator
 
 DESCRIPTION="Open Source AFP server"
 HOMEPAGE="http://netatalk.sourceforge.net/"
@@ -98,7 +98,7 @@ src_configure() {
 		$(use_with ssl ssl-dir)
 		$(use_with tracker)
 		$(use_with tracker dbus-daemon "${EPREFIX}/usr/bin/dbus-daemon")
-		$(use_with tracker tracker-pkgconfig-version $(get_version_component_range 1-2 $(best_version app-misc/tracker | sed 's:app-misc/tracker-::g')))
+		$(use_with tracker tracker-pkgconfig-version $(ver_cut 1 $(best_version app-misc/tracker | sed 's:app-misc/tracker-::g')).0)
 		--enable-overwrite
 		--disable-krb4-uam
 		--disable-afs
