@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,17 +14,15 @@ IUSE="pcre unicode"
 
 DEPEND=">=app-misc/editor-wrapper-3
 	>=sys-libs/ncurses-5.2:0=
-	pcre? ( dev-libs/libpcre2 )"
+	pcre? ( dev-libs/libpcre )"
 RDEPEND="${DEPEND}"
 
 src_configure() {
 	export ac_cv_lib_ncursesw_initscr=$(usex unicode)
 	export ac_cv_lib_ncurses_initscr=$(usex !unicode)
-	local myeconfargs=(
-		--with-regex=$(usex pcre pcre2 posix)
+	econf \
+		--with-regex=$(usex pcre pcre posix) \
 		--with-editor="${EPREFIX}"/usr/libexec/editor
-	)
-	econf "${myeconfargs[@]}"
 }
 
 src_install() {
