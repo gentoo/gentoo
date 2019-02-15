@@ -1,0 +1,33 @@
+From d7e31d6940efdb6716689136774a94cfdfd83189 Mon Sep 17 00:00:00 2001
+From: Carlos Garnacho <carlosg@gnome.org>
+Date: Mon, 17 Dec 2018 13:34:23 +0100
+Subject: [PATCH] libtracker-data: Update FTS if base tables were altered
+
+That will issue an update of all tables, so the FTS view might be
+affected. This is not caught by ontology change tests, as this
+is a situation that can only happen when migrating from 1.x databases
+ATM.
+
+(cherry picked from commit 70758fc059e91936e88d5264b195ac291e995144)
+---
+ src/libtracker-data/tracker-data-manager.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/libtracker-data/tracker-data-manager.c b/src/libtracker-data/tracker-data-manager.c
+index f2addd0df..05a96b4dd 100644
+--- a/src/libtracker-data/tracker-data-manager.c
++++ b/src/libtracker-data/tracker-data-manager.c
+@@ -3701,8 +3701,8 @@ tracker_data_ontology_import_into_db (TrackerDataManager  *manager,
+ 	}
+ 
+ #if HAVE_TRACKER_FTS
+-	if (in_update) {
+-		update_fts = tracker_data_manager_fts_changed (manager);
++	if (base_tables_altered || in_update) {
++		update_fts = base_tables_altered | tracker_data_manager_fts_changed (manager);
+ 
+ 		if (update_fts)
+ 			tracker_db_interface_sqlite_fts_delete_table (iface);
+-- 
+2.17.0
+
