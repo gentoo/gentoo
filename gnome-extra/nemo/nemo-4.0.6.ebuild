@@ -65,7 +65,7 @@ DEPEND="${COMMON_DEPEND}
 # For eautoreconf
 #	gnome-base/gnome-common, dev-util/gtk-doc (not only -am!)
 
-PATCHES=( "${FILESDIR}"/tracker-2.patch )
+PATCHES=( "${FILESDIR}"/tracker-2.patch ) # https://github.com/linuxmint/nemo/issues/2065
 
 src_prepare() {
 	gnome2_src_prepare
