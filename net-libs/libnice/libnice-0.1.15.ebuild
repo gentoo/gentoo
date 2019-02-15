@@ -28,6 +28,8 @@ DEPEND="${RDEPEND}
 	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]
 "
 
+PATCHES=( "${FILESDIR}/${P}-libressl.patch" ) # https://gitlab.freedesktop.org/libnice/libnice/merge_requests/50
+
 multilib_src_configure() {
 	# gstreamer plugin split off into media-plugins/gst-plugins-libnice
 	ECONF_SOURCE=${S} \
