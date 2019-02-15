@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit cmake-utils eutils flag-o-matic git-r3 gnome2-utils pax-utils toolchain-funcs versionator xdg-utils
+inherit cmake-utils flag-o-matic git-r3 gnome2-utils pax-utils toolchain-funcs versionator xdg-utils
 
 EGIT_REPO_URI="https://github.com/darktable-org/${PN}.git"
 
