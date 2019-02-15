@@ -1,34 +1,31 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 inherit eutils toolchain-funcs
 
 MY_P="IRCStats-${PV}"
 
-DESCRIPTION="IRCStats tries to be a log analyzer for Linux similar to mIRCStats"
+DESCRIPTION="IRCStats is a Linux log analyzer"
 HOMEPAGE="https://humdi.net/ircstats/"
 SRC_URI="https://humdi.net/ircstats/${MY_P}.tgz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-IUSE=""
-
 S="${WORKDIR}"/${MY_P}
 
 src_compile() {
-	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS}" || die "emake failed"
+	default
+	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS}"
 }
 
 src_install() {
-	dobin ircstats || die "dobin failed"
-
+	dobin ircstats
 	insinto /usr/share/ircstats
-	doins -r html languages colors || die "doins failed"
-
-	dodoc CHANGES README TODO ircstats.cfg || die "dodoc failed"
+	doins -r html languages colors
+	dodoc CHANGES README TODO ircstats.cfg
 }
 
 pkg_postinst() {

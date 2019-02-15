@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit gnome2-utils qmake-utils xdg-utils
+inherit qmake-utils xdg
 
 DESCRIPTION="A Qt-based RSS/Atom feed reader"
 HOMEPAGE="https://quiterss.org"
@@ -20,7 +20,10 @@ LICENSE="GPL-3"
 SLOT="0"
 IUSE=""
 
-RDEPEND="
+BDEPEND="
+	virtual/pkgconfig
+"
+DEPEND="
 	>=dev-db/sqlite-3.11.1:3
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
@@ -33,15 +36,16 @@ RDEPEND="
 	dev-qt/qtwidgets:5
 	dev-qt/qtxml:5
 "
-DEPEND="${RDEPEND}
-	virtual/pkgconfig
-"
+RDEPEND="${DEPEND}"
 
-DOCS=( AUTHORS CHANGELOG README.md )
+src_prepare() {
+	default
+	sed -e "s/exists(.git)/0/" -i QuiteRSS.pro || die
+}
 
 src_configure() {
 	local myqmakeargs=(
-		PREFIX="${EPREFIX%/}/usr"
+		PREFIX="${EPREFIX}/usr"
 		SYSTEMQTSA=1
 	)
 	eqmake5 "${myqmakeargs[@]}"
@@ -50,14 +54,4 @@ src_configure() {
 src_install() {
 	emake INSTALL_ROOT="${D}" install
 	einstalldocs
-}
-
-pkg_postinst() {
-	gnome2_icon_cache_update
-	xdg_desktop_database_update
-}
-
-pkg_postrm() {
-	gnome2_icon_cache_update
-	xdg_desktop_database_update
 }
