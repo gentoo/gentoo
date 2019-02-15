@@ -6,7 +6,6 @@
 		<name>Gentoo Video project</name>
 	</maintainer>
 	<use>
-		<flag name="10bit">Enable H264 10-bit encoding support with <pkg>media-libs/x264</pkg></flag>
 		<flag name="aom">Enable experimental support for AV1 codec</flag>
 		<flag name="archive">Enable support for libarchive stream extractor</flag>
 		<flag name="aribsub">Enable support for decoding ARIB STD-B24 subtitles</flag>

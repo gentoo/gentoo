@@ -29,7 +29,7 @@ HOMEPAGE="https://www.videolan.org/vlc/"
 LICENSE="LGPL-2.1 GPL-2"
 SLOT="0/5-9" # vlc - vlccore
 
-IUSE="10bit a52 alsa altivec aom archive aribsub bidi bluray cddb chromaprint chromecast
+IUSE="a52 alsa altivec aom archive aribsub bidi bluray cddb chromaprint chromecast
 	dav1d dbus dc1394 debug directx dts +dvbpsi dvd +encode faad fdk +ffmpeg flac
 	fluidsynth fontconfig +gcrypt gme gnome-keyring gstreamer ieee1394 jack jpeg kate
 	libass libav libcaca libnotify +libsamplerate libtar libtiger linsys lirc live lua
@@ -218,10 +218,7 @@ RDEPEND="
 		x11-libs/xcb-util
 		x11-libs/xcb-util-keysyms
 	)
-	x264? (
-		!10bit? ( >=media-libs/x264-0.0.20160712:= )
-		10bit? ( >=media-libs/x264-9999:= )
-	)
+	x264? ( >=media-libs/x264-0.0.20190214:= )
 	x265? ( media-libs/x265:= )
 	xml? ( dev-libs/libxml2:2 )
 	zeroconf? ( net-dns/avahi[dbus] )
@@ -392,6 +389,7 @@ src_configure() {
 		$(use_enable X xcb)
 		$(use_enable X xvideo)
 		$(use_enable x264)
+		$(use_enable x264 x26410b)
 		$(use_enable x265)
 		$(use_enable xml libxml2)
 		$(use_enable zeroconf avahi)
@@ -423,12 +421,6 @@ src_configure() {
 		--disable-wasapi
 	)
 	# ^ We don't have these disabled libraries in the Portage tree yet.
-
-	if use x264; then
-		myeconfargs+=( $(use_enable 10bit x26410b) )
-	else
-		myeconfargs+=( --disable-x26410b )
-	fi
 
 	# Compatibility fix for Samba 4.
 	use samba && append-cppflags "-I/usr/include/samba-4.0"
