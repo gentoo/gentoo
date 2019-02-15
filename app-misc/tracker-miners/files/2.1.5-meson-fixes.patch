@@ -1,0 +1,322 @@
+From 5bb0709044fabe496601277ab5ba11a03500babe Mon Sep 17 00:00:00 2001
+From: Mart Raudsepp <leio@gentoo.org>
+Date: Fri, 15 Feb 2019 00:15:08 +0200
+Subject: [PATCH 1/5] build: Add feature options for all external deps
+
+Automagic dependencies are bad for distributions. Add feature options
+for all of them that didn't have it before. If no options are specified,
+the behavior matches with before, but now it's possible to specify
+exactly what is linked to and what isn't.
+
+Fixes: #39
+---
+ meson.build       | 40 +++++++++++++++++++++-------------------
+ meson_options.txt | 37 +++++++++++++++++++++++++++++++++++++
+ 2 files changed, 58 insertions(+), 19 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index fd536f2e6..4f0e9a968 100644
+--- a/meson.build
++++ b/meson.build
+@@ -1,4 +1,6 @@
+-project('tracker-miners', 'c', 'vala', version: '2.1.5')
++project('tracker-miners', 'c', 'vala',
++        version: '2.1.5',
++        meson_version: '>=0.47')
+ 
+ gnome = import('gnome')
+ i18n = import('i18n')
+@@ -57,9 +59,9 @@ avcodec = dependency('libavcodec', version: '>= 0.8.4', required: false)
+ avformat = dependency('libavformat', version: '>= 0.8.4', required: false)
+ avutil = dependency('libavutil', version: '>= 0.8.4', required: false)
+ dbus = dependency('dbus-1', version: '> 1.3.1')
+-exempi = dependency('exempi-2.0', version: '> 2.1.0', required: false)
+-flac = dependency('flac', version: '> 1.2.1', required: false)
+-gexiv2 = dependency('gexiv2', required: false)
++exempi = dependency('exempi-2.0', version: '> 2.1.0', required: get_option('xmp'))
++flac = dependency('flac', version: '> 1.2.1', required: get_option('flac'))
++gexiv2 = dependency('gexiv2', required: get_option('raw'))
+ gio = dependency('gio-2.0', version: '>' + glib_required)
+ gio_unix = dependency('gio-unix-2.0', version: '>' + glib_required)
+ glib = dependency('glib-2.0', version: '>' + glib_required)
+@@ -72,25 +74,25 @@ gupnp_dlna = dependency('gupnp-dlna-2.0', version: '> 0.9.4', required: false)
+ gupnp_dlna_gst = dependency('gupnp-dlna-gst-2.0', version: '> 0.9.4', required: false)
+ icu_i18n = dependency('icu-i18n', version: '> 4.8.1.1', required: false)
+ icu_uc = dependency('icu-uc', version: '> 4.8.1.1', required: false)
+-libcue = dependency('libcue', required: false)
+-libexif = dependency('libexif', version: '> 0.6', required: false)
+-libgsf = dependency('libgsf-1', version: '> 1.14.24', required: false)
+-libgxps = dependency('libgxps', required: false)
+-libiptcdata = dependency('libiptcdata', required: false)
+-libjpeg = dependency('libjpeg', required: false)
+-libosinfo = dependency('libosinfo-1.0', version: '> 0.2.9', required: false)
+-libpng = dependency('libpng', version: '> 0.89', required: false)
++libcue = dependency('libcue', required: get_option('cue'))
++libexif = dependency('libexif', version: '> 0.6', required: get_option('exif'))
++libgsf = dependency('libgsf-1', version: '> 1.14.24', required: get_option('gsf'))
++libgxps = dependency('libgxps', required: get_option('xps'))
++libiptcdata = dependency('libiptcdata', required: get_option('iptc'))
++libjpeg = dependency('libjpeg', required: get_option('jpeg'))
++libosinfo = dependency('libosinfo-1.0', version: '> 0.2.9', required: get_option('iso'))
++libpng = dependency('libpng', version: '> 0.89', required: get_option('png'))
+ libseccomp = dependency('libseccomp', version: '>= 2.0', required: false)
+-libtiff = dependency('libtiff-4', required: false)
+-libxml2 = dependency('libxml-2.0', version: '> 2.6')
+-libvorbis = dependency('vorbisfile', version: '> 0.22')
+-poppler = dependency('poppler-glib', version: '> 0.16.0', required: false)
+-taglib = dependency('taglib_c', version: '> 1.6', required: false)
+-totem_plparser = dependency('totem-plparser', required: false)
++libtiff = dependency('libtiff-4', required: get_option('tiff'))
++libxml2 = dependency('libxml-2.0', version: '> 2.6', required: get_option('xml'))
++libvorbis = dependency('vorbisfile', version: '> 0.22', required: get_option('vorbis'))
++poppler = dependency('poppler-glib', version: '> 0.16.0', required: get_option('pdf'))
++taglib = dependency('taglib_c', version: '> 1.6', required: get_option('taglib'))
++totem_plparser = dependency('totem-plparser', required: get_option('playlist'))
+ upower = dependency('upower-glib', version: '> 0.9.0', required: false)
+ zlib = dependency('zlib')
+ 
+-libgif = cc.find_library('gif', required: false)
++libgif = cc.find_library('gif', required: get_option('gif'))
+ libmath = cc.find_library('m', required: false)
+ 
+ # FIXME: here we work around a quirk todo with Meson and Vala: the 'uuid'
+diff --git a/meson_options.txt b/meson_options.txt
+index a91ac6c0f..5fce7a529 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -35,6 +35,43 @@ option('text', type: 'boolean', value: 'true',
+ option('unzip_ps_gz_files', type: 'boolean', value: 'true',
+        description: 'Enable extractor for PS.GZ metadata')
+ 
++option('cue', type: 'feature', value: 'auto',
++       description: 'Support cue sheet parsing')
++option('exif', type: 'feature', value: 'auto',
++       description: 'Support EXIF metadata')
++option('flac', type: 'feature', value: 'auto',
++       description: 'Support extracting metadata from Flac audio')
++option('gif', type: 'feature', value: 'auto',
++       description: 'Support extracting metadata from GIF images')
++option('gsf', type: 'feature', value: 'auto',
++       description: 'Support extracting metadata from MS & Open Office documents')
++option('iptc', type: 'feature', value: 'auto',
++       description: 'Support IPTC photo metadata')
++option('iso', type: 'feature', value: 'auto',
++       description: 'Support ISO image parsing')
++option('jpeg', type: 'feature', value: 'auto',
++       description: 'Support extracting metadata from JPEG images')
++option('pdf', type: 'feature', value: 'auto',
++       description: 'Support extracting metadata from PDF documents')
++option('playlist', type: 'feature', value: 'auto',
++       description: 'Support extracting metadata from playlists (w/ Totem)')
++option('png', type: 'feature', value: 'auto',
++       description: 'Support extracting metadata from PNG images')
++option('raw', type: 'feature', value: 'auto',
++       description: 'Support extracting metadata from RAW photos')
++option('taglib', type: 'feature', value: 'auto',
++       description: 'Support writeback for audio files using Taglib')
++option('tiff', type: 'feature', value: 'auto',
++       description: 'Support extracting metadata from TIFF images')
++option('vorbis', type: 'feature', value: 'auto',
++       description: 'Support extracting metadata from Vorbis (ogg/etc) files')
++option('xml', type: 'feature', value: 'auto',
++       description: 'Support extracting metadata from XML and HTML documents')
++option('xmp', type: 'feature', value: 'auto',
++       description: 'Support XMP metadata')
++option('xps', type: 'feature', value: 'auto',
++       description: 'Support extracting metadata from XPS documents')
++
+ option('battery_detection', type: 'combo', choices: ['auto', 'hal', 'upower', 'none'], value: 'auto',
+        description: 'Enable upower or HAL for battery/mains power detection')
+ option('charset_detection', type: 'combo', choices: ['auto', 'enca', 'icu', 'none'], value: 'auto',
+-- 
+2.17.0
+
+
+From b8c1768696c13275f5896374907fa192140ec922 Mon Sep 17 00:00:00 2001
+From: Mart Raudsepp <leio@gentoo.org>
+Date: Fri, 15 Feb 2019 00:18:09 +0200
+Subject: [PATCH 2/5] build: Fix minimum dep checks to allow the specified
+ version too
+
+Many of the minimum deps were expressed as "> x.y", but were meant to
+allow x.y itself as well. Change all to ">= x.y". This seems to be
+what was intended and was the case with autotools.
+---
+ meson.build | 44 ++++++++++++++++++++++----------------------
+ 1 file changed, 22 insertions(+), 22 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index 4f0e9a968..4263faf95 100644
+--- a/meson.build
++++ b/meson.build
+@@ -58,38 +58,38 @@ endif
+ avcodec = dependency('libavcodec', version: '>= 0.8.4', required: false)
+ avformat = dependency('libavformat', version: '>= 0.8.4', required: false)
+ avutil = dependency('libavutil', version: '>= 0.8.4', required: false)
+-dbus = dependency('dbus-1', version: '> 1.3.1')
+-exempi = dependency('exempi-2.0', version: '> 2.1.0', required: get_option('xmp'))
+-flac = dependency('flac', version: '> 1.2.1', required: get_option('flac'))
++dbus = dependency('dbus-1', version: '>= 1.3.1')
++exempi = dependency('exempi-2.0', version: '>= 2.1.0', required: get_option('xmp'))
++flac = dependency('flac', version: '>= 1.2.1', required: get_option('flac'))
+ gexiv2 = dependency('gexiv2', required: get_option('raw'))
+-gio = dependency('gio-2.0', version: '>' + glib_required)
+-gio_unix = dependency('gio-unix-2.0', version: '>' + glib_required)
+-glib = dependency('glib-2.0', version: '>' + glib_required)
+-gmodule = dependency('gmodule-2.0', version: '>' + glib_required)
+-gobject = dependency('gobject-2.0', version: '>' + glib_required)
++gio = dependency('gio-2.0', version: '>=' + glib_required)
++gio_unix = dependency('gio-unix-2.0', version: '>=' + glib_required)
++glib = dependency('glib-2.0', version: '>=' + glib_required)
++gmodule = dependency('gmodule-2.0', version: '>=' + glib_required)
++gobject = dependency('gobject-2.0', version: '>=' + glib_required)
+ gstreamer = dependency('gstreamer-1.0', required: false)
+ gstreamer_pbutils = dependency('gstreamer-pbutils-1.0', required: false)
+ gstreamer_tag = dependency('gstreamer-tag-1.0', required: false)
+-gupnp_dlna = dependency('gupnp-dlna-2.0', version: '> 0.9.4', required: false)
+-gupnp_dlna_gst = dependency('gupnp-dlna-gst-2.0', version: '> 0.9.4', required: false)
+-icu_i18n = dependency('icu-i18n', version: '> 4.8.1.1', required: false)
+-icu_uc = dependency('icu-uc', version: '> 4.8.1.1', required: false)
++gupnp_dlna = dependency('gupnp-dlna-2.0', version: '>= 0.9.4', required: false)
++gupnp_dlna_gst = dependency('gupnp-dlna-gst-2.0', version: '>= 0.9.4', required: false)
++icu_i18n = dependency('icu-i18n', version: '>= 4.8.1.1', required: false)
++icu_uc = dependency('icu-uc', version: '>= 4.8.1.1', required: false)
+ libcue = dependency('libcue', required: get_option('cue'))
+-libexif = dependency('libexif', version: '> 0.6', required: get_option('exif'))
+-libgsf = dependency('libgsf-1', version: '> 1.14.24', required: get_option('gsf'))
++libexif = dependency('libexif', version: '>= 0.6', required: get_option('exif'))
++libgsf = dependency('libgsf-1', version: '>= 1.14.24', required: get_option('gsf'))
+ libgxps = dependency('libgxps', required: get_option('xps'))
+ libiptcdata = dependency('libiptcdata', required: get_option('iptc'))
+ libjpeg = dependency('libjpeg', required: get_option('jpeg'))
+-libosinfo = dependency('libosinfo-1.0', version: '> 0.2.9', required: get_option('iso'))
+-libpng = dependency('libpng', version: '> 0.89', required: get_option('png'))
++libosinfo = dependency('libosinfo-1.0', version: '>= 0.2.9', required: get_option('iso'))
++libpng = dependency('libpng', version: '>= 0.89', required: get_option('png'))
+ libseccomp = dependency('libseccomp', version: '>= 2.0', required: false)
+ libtiff = dependency('libtiff-4', required: get_option('tiff'))
+-libxml2 = dependency('libxml-2.0', version: '> 2.6', required: get_option('xml'))
+-libvorbis = dependency('vorbisfile', version: '> 0.22', required: get_option('vorbis'))
+-poppler = dependency('poppler-glib', version: '> 0.16.0', required: get_option('pdf'))
+-taglib = dependency('taglib_c', version: '> 1.6', required: get_option('taglib'))
++libxml2 = dependency('libxml-2.0', version: '>= 2.6', required: get_option('xml'))
++libvorbis = dependency('vorbisfile', version: '>= 0.22', required: get_option('vorbis'))
++poppler = dependency('poppler-glib', version: '>= 0.16.0', required: get_option('pdf'))
++taglib = dependency('taglib_c', version: '>= 1.6', required: get_option('taglib'))
+ totem_plparser = dependency('totem-plparser', required: get_option('playlist'))
+-upower = dependency('upower-glib', version: '> 0.9.0', required: false)
++upower = dependency('upower-glib', version: '>= 0.9.0', required: false)
+ zlib = dependency('zlib')
+ 
+ libgif = cc.find_library('gif', required: get_option('gif'))
+@@ -143,7 +143,7 @@ elif get_option('battery_detection') == 'upower'
+ endif
+ 
+ if battery_detection_library_name == ''
+-  hal = dependency('hal', version: '> 0.5', required: false)
++  hal = dependency('hal', version: '>= 0.5', required: false)
+ 
+   if hal.found()
+     battery_detection_library = hal
+-- 
+2.17.0
+
+
+From 6a215b9088abb9df4a837c1b74f281454f286ddf Mon Sep 17 00:00:00 2001
+From: Mart Raudsepp <leio@gentoo.org>
+Date: Fri, 15 Feb 2019 01:11:23 +0200
+Subject: [PATCH 3/5] build: Remove unnecessary vala language dependency
+
+tracker-miners doesn't use any vala, but due to vala declared as
+a used language it does error out if valac isn't found. Remove the
+language and unused vapi helper variable.
+---
+ meson.build | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index 4263faf95..bfd2d624b 100644
+--- a/meson.build
++++ b/meson.build
+@@ -1,4 +1,4 @@
+-project('tracker-miners', 'c', 'vala',
++project('tracker-miners', 'c',
+         version: '2.1.5',
+         meson_version: '>=0.47')
+ 
+@@ -385,7 +385,6 @@ tracker_writeback_modules_dir = join_paths(get_option('prefix'), get_option('lib
+ tracker_uninstalled_extract_rules_dir = join_paths(meson.current_build_dir(), 'src', 'tracker-extract')
+ 
+ gsettings_schema_dir = join_paths(get_option('prefix'), get_option('datadir'), 'glib-2.0', 'schemas')
+-vapi_dir = join_paths(get_option('prefix'), get_option('datadir'), 'vala', 'vapi')
+ 
+ glib_mkenums = find_program('glib-mkenums')
+ 
+-- 
+2.17.0
+
+
+From a163936b590184291c6ac6b8365eb5f7e9bf3474 Mon Sep 17 00:00:00 2001
+From: Mart Raudsepp <leio@gentoo.org>
+Date: Fri, 15 Feb 2019 01:12:25 +0200
+Subject: [PATCH 4/5] build: Remove unnecessary uuid util-linux hard dependency
+
+tracker core might use uuid, but nothing in tracker-miners needs it
+---
+ meson.build | 8 --------
+ 1 file changed, 8 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index bfd2d624b..8d23a1157 100644
+--- a/meson.build
++++ b/meson.build
+@@ -95,14 +95,6 @@ zlib = dependency('zlib')
+ libgif = cc.find_library('gif', required: get_option('gif'))
+ libmath = cc.find_library('m', required: false)
+ 
+-# FIXME: here we work around a quirk todo with Meson and Vala: the 'uuid'
+-# pkg-config component corresponds to 'libuuid.vapi', but Meson assumes that
+-# .vapi name always matches pkg-config name, and will add `--pkg uuid` to the
+-# Vala commandline. By finding 'uuid' using find_library() instead, we get
+-# a dependency object back that won't cause any `--pkg` arguments to be added
+-# to the Vala commandline, but still works as expected for C code.
+-uuid = cc.find_library('uuid')
+-
+ have_tracker_extract = get_option('extract')
+ have_tracker_miner_apps = get_option('miner_apps')
+ have_tracker_miner_fs = get_option('miner_fs')
+-- 
+2.17.0
+
+
+From cc87c22592868e700333f31f333bf850c89f0135 Mon Sep 17 00:00:00 2001
+From: Sam Thursfield <sam@afuera.me.uk>
+Date: Sun, 7 Oct 2018 23:42:28 +0200
+Subject: [PATCH 5/5] build: Fix breakage when libcue isn't found
+
+Commit 6e281037a5f0abc introduced a regression on systems where libcue
+is not available.
+
+Fixes https://gitlab.gnome.org/GNOME/tracker-miners/issues/33
+
+(cherry picked from commit fd0eb3cd98f279591cbe8635eadf42027dd5ddae)
+---
+ meson.build | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/meson.build b/meson.build
+index 8d23a1157..d69588435 100644
+--- a/meson.build
++++ b/meson.build
+@@ -303,7 +303,7 @@ conf.set('GSTREAMER_BACKEND_DISCOVERER', gstreamer_backend_name == 'Discoverer')
+ conf.set('GSTREAMER_BACKEND_GUPNP_DLNA', gstreamer_backend_name == 'GUPnP-DLNA')
+ conf.set('HAVE_HAL', battery_detection_library_name == 'hal')
+ conf.set('HAVE_LIBCUE', libcue.found())
+-conf.set('HAVE_LIBCUE2', libcue.version() >= '2.0.0')
++conf.set('HAVE_LIBCUE2', libcue.found() and libcue.version().version_compare('>= 2.0.0'))
+ conf.set('HAVE_LIBICU_CHARSET_DETECTION', charset_library_name == 'icu')
+ conf.set('HAVE_LIBEXIF', libexif.found())
+ conf.set('HAVE_LIBIPTCDATA', libiptcdata.found())
+-- 
+2.17.0
+

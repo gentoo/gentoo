@@ -42,6 +42,7 @@
 # Mart Raudsepp <leio@gentoo.org> (13 Feb 2019)
 # Ongoing preparations for clean tracker-2 bumps
 >=app-misc/tracker-2.1.7
+>=app-misc/tracker-miners-2.1.5
 
 # Michał Górny <mgorny@gentoo.org> (13 Feb 2019)
 # Release candidate, masked for testing.
