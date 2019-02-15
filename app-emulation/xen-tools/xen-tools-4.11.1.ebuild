@@ -439,6 +439,11 @@ src_install() {
 	# Remove files failing QA AFTER emake installs them, avoiding seeking absent files
 	find "${D}" \( -name openbios-sparc32 -o -name openbios-sparc64 \
 		-o -name openbios-ppc -o -name palcode-clipper \) -delete || die
+
+	keepdir /var/lib/xen/dump
+	keepdir /var/lib/xen/xenpaging
+	keepdir /var/lib/xenstored
+	keepdir /var/log/xen
 }
 
 pkg_postinst() {
@@ -446,7 +451,7 @@ pkg_postinst() {
 	elog "https://wiki.gentoo.org/wiki/Xen"
 	elog "https://wiki.xen.org/wiki/Main_Page"
 	elog ""
-	elog "Recommended to utilise the xencommons script to config sytem At boot"
+	elog "Recommended to utilise the xencommons script to config system at boot"
 	elog "Add by use of rc-update on completion of the install"
 
 	if ! use hvm; then
