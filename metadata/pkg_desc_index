@@ -552,7 +552,7 @@ app-editors/emacs 18.59-r12 23.4-r18 24.5-r5 24.5-r7 25.3-r4 25.3-r6 26.1-r1 26.
 app-editors/emact 2.58.0: EmACT, a fork of Conroy's MicroEmacs
 app-editors/ersatz-emacs 20060515: A very minimal imitation of the famous GNU Emacs editor
 app-editors/fe 1.9 2.0: A small and easy to use folding editor
-app-editors/focuswriter 1.6.13 1.6.16: A fullscreen and distraction-free word processor
+app-editors/focuswriter 1.6.16: A fullscreen and distraction-free word processor
 app-editors/fte 20110708-r1: Lightweight text-mode editor
 app-editors/gedit 3.28.1: A text editor for the GNOME desktop
 app-editors/gedit-plugins 3.28.1: Official plugins for gedit
@@ -7440,7 +7440,7 @@ media-gfx/optipng 0.7.6-r2: Compress PNG files without affecting image quality
 media-gfx/pdf2svg 0.2.3: pdf2svg is based on poppler and cairo and can convert pdf to svg files
 media-gfx/peps 2.0-r1: Preprocess and convert EPS files to bitmap with Ghostscript
 media-gfx/photopc 3.07: Utility to control digital cameras based on Sierra Imaging firmware
-media-gfx/photoqt 1.5.1-r1 1.7.1 1.7.1-r1: Simple but powerful Qt-based image viewer
+media-gfx/photoqt 1.7.1 1.7.1-r1: Simple but powerful Qt-based image viewer
 media-gfx/pinta 1.6-r2: Simple Painting for Gtk
 media-gfx/pixie 2.2.6-r1: RenderMan like photorealistic renderer
 media-gfx/pngcheck 2.3.0: Verifies the integrity of PNG, JNG and MNG files with internal checksums
@@ -9251,7 +9251,7 @@ perl-core/Time-Local 1.230.0-r1: Implements timelocal() and timegm()
 perl-core/Unicode-Collate 1.250.0: Unicode Collate Algorithm
 sci-astronomy/celestia 1.6.1-r1: OpenGL 3D space simulator
 sci-astronomy/erfa 1.2.0 1.4.0: Essential Routines for Fundamental Astronomy
-sci-astronomy/kstars 2.9.5 3.0.0: Desktop Planetarium
+sci-astronomy/kstars 3.0.0: Desktop Planetarium
 sci-astronomy/predict 2.2.3-r2: Satellite tracking and orbital prediction
 sci-astronomy/pyephem 3.7.5.3 3.7.6.0: Astronomical routines for the python programming language
 sci-astronomy/stellarium 0.18.2: 3D photo-realistic skies in real time
