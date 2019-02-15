@@ -3601,7 +3601,6 @@ media-video/vdr:ttxtsubs - support for media-plugins/vdr-ttxtsubs
 media-video/vdr:vasarajanauloja - replacement for the liemikuutio patch, adds some nice must haves features
 media-video/vdr:wareagleicon - Replace original icon set in menu
 media-video/vdr:yaepg - Enables support for the vdr-yaepg plugin
-media-video/vlc:10bit - Enable H264 10-bit encoding support with media-libs/x264
 media-video/vlc:X - Enable support for e.g. fullscreen mode via X and the X C-language binding. It does not build a graphical interface
 media-video/vlc:aom - Enable experimental support for AV1 codec
 media-video/vlc:archive - Enable support for libarchive stream extractor
