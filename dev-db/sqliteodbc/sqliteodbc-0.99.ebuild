@@ -11,7 +11,7 @@ SRC_URI="http://www.ch-werner.de/sqliteodbc/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ppc x86"
+KEYWORDS="amd64 ~arm ppc x86"
 IUSE=""
 
 DEPEND=">=dev-db/sqlite-3.6
