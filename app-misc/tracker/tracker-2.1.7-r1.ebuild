@@ -52,6 +52,7 @@ PATCHES=(
 	"${FILESDIR}"/${PV}-prevent-stack-smashing.patch
 	"${FILESDIR}"/${PV}-glib-2.60-compat.patch
 	"${FILESDIR}"/${PV}-fix-library-symlinks.patch
+	"${FILESDIR}"/${PV}-upgrade-path-fix.patch
 )
 
 function inotify_enabled() {
