@@ -8,7 +8,7 @@ inherit gnome2
 DESCRIPTION="GObject based library for handling and rendering epub documents"
 HOMEPAGE="https://git.gnome.org/browse/libgepub"
 
-LICENSE="LGPL-2"
+LICENSE="LGPL-2+"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="+introspection"
