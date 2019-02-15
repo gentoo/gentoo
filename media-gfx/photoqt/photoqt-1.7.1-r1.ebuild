@@ -11,7 +11,7 @@ SRC_URI="https://photoqt.org/pkgs/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 x86"
 IUSE="devil exif freeimage graphicsmagick pdf raw"
 
 RDEPEND="
