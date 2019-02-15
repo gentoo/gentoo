@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,7 +16,7 @@ else
 		SRC_URI="mirror://gentoo/${P}.tar.gz"
 		S="${WORKDIR}"
 	fi
-	KEYWORDS="~amd64 ~hppa ~ia64 ~x86"
+	KEYWORDS="~amd64 ~arm64 ~hppa ~ia64 ~x86"
 fi
 
 DESCRIPTION="Alliance for Open Media AV1 Codec SDK"
