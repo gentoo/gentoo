@@ -5473,6 +5473,7 @@ dev-python/python-fastimport 0.9.2-r1 0.9.6: Library for parsing the fastimport 
 dev-python/python-fchksum 1.7.1-r1: Python module to find the checksum of files
 dev-python/python-gflags 3.1.1: Google's Python argument parsing library
 dev-python/python-glanceclient 2.13.1: A client for the OpenStack Glance API
+dev-python/python-gnupg 0.4.3: A Python wrapper for GnuPG
 dev-python/python-gtkmvc 1.99.1: model-view-controller (MVC) implementation for pygtk
 dev-python/python-gudev 147.2-r1: Python binding to the GUDev udev helper library
 dev-python/python-heatclient 1.8.2 1.11.1: OpenStack Orchestration API Client Library
