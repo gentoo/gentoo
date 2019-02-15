@@ -39,15 +39,6 @@
 =virtual/pypy-7.0.0
 =virtual/pypy3-7.0.0
 
-# Mart Raudsepp <leio@gentoo.org> (13 Feb 2019)
-# Ongoing preparations for clean tracker-2 bumps
->=app-misc/tracker-2.1.7
->=app-misc/tracker-miners-2.1.5
->=net-misc/gnome-online-miners-3.26.0
->=gnome-extra/gnome-documents-3.26
->=app-text/libgepub-0.5
->=media-sound/gnome-music-3.26
-
 # Michał Górny <mgorny@gentoo.org> (13 Feb 2019)
 # Release candidate, masked for testing.
 =sys-devel/llvm-common-8.0.0_rc*
