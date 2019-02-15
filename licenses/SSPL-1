@@ -9,7 +9,7 @@
                        TERMS AND CONDITIONS
 
   0. Definitions.
-  
+
   “This License” refers to Server Side Public License.
 
   “Copyright” also means copyright-like laws that apply to other kinds of
@@ -173,7 +173,7 @@
   access or legal rights of the compilation's users beyond what the
   individual works permit. Inclusion of a covered work in an aggregate does
   not cause this License to apply to the other parts of the aggregate.
-  
+
   6. Conveying Non-Source Forms.
 
   You may convey a covered work in object code form under the terms of
@@ -185,7 +185,7 @@
     (including a physical distribution medium), accompanied by the
     Corresponding Source fixed on a durable physical medium customarily
     used for software interchange.
-   
+
     b) Convey the object code in, or embodied in, a physical product
     (including a physical distribution medium), accompanied by a written
     offer, valid for at least three years and valid for as long as you
@@ -196,12 +196,12 @@
     for software interchange, for a price no more than your reasonable cost
     of physically performing this conveying of source, or (2) access to
     copy the Corresponding Source from a network server at no charge.
-   
+
     c) Convey individual copies of the object code with a copy of the
     written offer to provide the Corresponding Source. This alternative is
     allowed only occasionally and noncommercially, and only if you received
     the object code with such an offer, in accord with subsection 6b.
-   
+
     d) Convey the object code by offering access from a designated place
     (gratis or for a charge), and offer equivalent access to the
     Corresponding Source in the same way through the same place at no
@@ -214,7 +214,7 @@
     Regardless of what server hosts the Corresponding Source, you remain
     obligated to ensure that it is available for as long as needed to
     satisfy these requirements.
-   
+
     e) Convey the object code using peer-to-peer transmission, provided you
     inform other peers where the object code and Corresponding Source of
     the work are being offered to the general public at no charge under
@@ -496,7 +496,7 @@
   application program interfaces, automation software, monitoring software,
   backup software, storage software and hosting software, all such that a
   user could run an instance of the service using the Service Source Code
-  you make available.  
+  you make available.
 
   14. Revised Versions of this License.
 
@@ -532,9 +532,9 @@
   PURPOSE. THE ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE PROGRAM
   IS WITH YOU. SHOULD THE PROGRAM PROVE DEFECTIVE, YOU ASSUME THE COST OF
   ALL NECESSARY SERVICING, REPAIR OR CORRECTION.
-  
+
   16. Limitation of Liability.
-  
+
   IN NO EVENT UNLESS REQUIRED BY APPLICABLE LAW OR AGREED TO IN WRITING
   WILL ANY COPYRIGHT HOLDER, OR ANY OTHER PARTY WHO MODIFIES AND/OR CONVEYS
   THE PROGRAM AS PERMITTED ABOVE, BE LIABLE TO YOU FOR DAMAGES, INCLUDING
@@ -544,7 +544,7 @@
   OR THIRD PARTIES OR A FAILURE OF THE PROGRAM TO OPERATE WITH ANY OTHER
   PROGRAMS), EVEN IF SUCH HOLDER OR OTHER PARTY HAS BEEN ADVISED OF THE
   POSSIBILITY OF SUCH DAMAGES.
-  
+
   17. Interpretation of Sections 15 and 16.
 
   If the disclaimer of warranty and limitation of liability provided above
@@ -553,5 +553,5 @@
   waiver of all civil liability in connection with the Program, unless a
   warranty or assumption of liability accompanies a copy of the Program in
   return for a fee.
-  
+
                         END OF TERMS AND CONDITIONS

@@ -1,0 +1,51 @@
+From a5ba6f9bb7665040045dc0f8087407096630ad7b Mon Sep 17 00:00:00 2001
+From: Raphael Kubo da Costa <raphael.kubo.da.costa@intel.com>
+Date: Fri, 8 Feb 2019 02:57:28 +0000
+Subject: [PATCH] color_utils: Use std::sqrt() instead of std::sqrtf()
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+This fixes the build with libstdc++:
+
+    ../../ui/gfx/color_utils.cc: In function ‘SkColor color_utils::SetDarkestColorForTesting(SkColor)’:
+    ../../ui/gfx/color_utils.cc:434:12: error: ‘sqrtf’ is not a member of ‘std’
+           std::sqrtf((dark_luminance + 0.05f) * (kWhiteLuminance + 0.05f)) - 0.05f;
+                ^~~~~
+    ../../ui/gfx/color_utils.cc:434:12: note: suggested alternative: ‘sqrt’
+           std::sqrtf((dark_luminance + 0.05f) * (kWhiteLuminance + 0.05f)) - 0.05f;
+                ^~~~~
+                sqrt
+
+sqrtf() is not formally part of C++14 as far as I can see even though libc++
+has it in <cmath>. Additionally, we're only dealing with floats in all parts
+of the expression above, so using the float sqrt() overload should be
+harmless anyway.
+
+Bug: 819294
+Change-Id: If6c7bf31819df97a761e6963def6d6506154c34d
+Reviewed-on: https://chromium-review.googlesource.com/c/1458193
+Auto-Submit: Raphael Kubo da Costa <raphael.kubo.da.costa@intel.com>
+Reviewed-by: Peter Kasting <pkasting@chromium.org>
+Commit-Queue: Raphael Kubo da Costa <raphael.kubo.da.costa@intel.com>
+Cr-Commit-Position: refs/heads/master@{#630140}
+---
+ ui/gfx/color_utils.cc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/ui/gfx/color_utils.cc b/ui/gfx/color_utils.cc
+index c868cd54bac3..92ba1407d594 100644
+--- a/ui/gfx/color_utils.cc
++++ b/ui/gfx/color_utils.cc
+@@ -431,7 +431,7 @@ SkColor SetDarkestColorForTesting(SkColor color) {
+   // GetContrastRatio(kWhiteLuminance, g_luminance_midpoint).  The formula below
+   // can be verified by plugging it into how GetContrastRatio() operates.
+   g_luminance_midpoint =
+-      std::sqrtf((dark_luminance + 0.05f) * (kWhiteLuminance + 0.05f)) - 0.05f;
++      std::sqrt((dark_luminance + 0.05f) * (kWhiteLuminance + 0.05f)) - 0.05f;
+ 
+   return previous_darkest_color;
+ }
+-- 
+2.20.1
+
