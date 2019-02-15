@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -32,7 +32,7 @@ COMMON_DEPEND="
 	bluetooth? ( >=net-wireless/bluez-5 )
 	eds? ( >=gnome-extra/evolution-data-server-3.13.90:=[vala] )
 	telepathy? ( >=net-libs/telepathy-glib-0.19.9[vala] )
-	tracker? ( >=app-misc/tracker-1:0= )
+	tracker? ( >=app-misc/tracker-1:0/100 )
 "
 # telepathy-mission-control needed at runtime; it is used by the telepathy
 # backend via telepathy-glib's AccountManager binding.
