@@ -15,9 +15,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="flickr test upnp-av"
 
-# tracker-2 is supported, but we need to pull in tracker-miners for that, which we didn't have in main tree yet
 COMMON_DEPEND="
-	app-misc/tracker:0/100[miner-fs]
+	app-misc/tracker:=
 	>=dev-libs/glib-2.44:2
 	gnome-base/gsettings-desktop-schemas
 	>=dev-libs/libgdata-0.15.2:0=[gnome-online-accounts]
@@ -50,6 +49,12 @@ DEPEND="${COMMON_DEPEND}
 	test? ( $(python_gen_any_dep 'dev-util/dogtail[${PYTHON_USEDEP}]') )
 "
 # app-text/yelp-tools needed for eautoreconf; otherwise probably just itstool
+RDEPEND="${RDEPEND}
+	|| (
+		>=app-misc/tracker-1[miner-fs(-)]
+		>=app-misc/tracker-miners-2
+	)
+"
 
 PATCHES=(
 	"${FILESDIR}"/${PV}-support-tracker1.patch # requires eautoreconf
