@@ -40,7 +40,7 @@ app-admin/chroot_safe 1.4-r1: Chroot any dynamically linked application in a saf
 app-admin/chrootuid 1.3-r1: Run a network service at low privilege level and restricted file system access
 app-admin/chrpath 0.13-r2: chrpath can modify the rpath and runpath of ELF executables
 app-admin/clsync 0.4.2: Live sync tool based on inotify, written in GNU C
-app-admin/clustershell 1.6: Python framework for efficient cluster administration
+app-admin/clustershell 1.6 1.7.3: Python framework for efficient cluster administration
 app-admin/conky 1.10.8-r1 1.10.8-r4: An advanced, highly configurable system monitor for X
 app-admin/conserver 8.1.18-r1: Serial Console Manager
 app-admin/cpulimit 1.8: Limits the CPU usage of a process
@@ -291,7 +291,7 @@ app-cdr/cdemu-daemon 3.2.1: Daemon of the CDEmu optical media image mounting sui
 app-cdr/cdlabelgen 4.3.0: CD cover, tray card and envelope generator
 app-cdr/cdrdao 1.2.4: Burn CDs in disk-at-once mode -- with optional GUI frontend
 app-cdr/cdrtools 3.02_alpha09: A set of tools for CD/DVD reading and recording, including cdrecord
-app-cdr/cdw 0.8.0: An ncurses based console frontend for cdrtools and dvd+rw-tools
+app-cdr/cdw 0.8.0 0.8.1: An ncurses based console frontend for cdrtools and dvd+rw-tools
 app-cdr/cuetools 1.4.1: Utilities to manipulate and convert cue and toc files
 app-cdr/daa2iso 0.1.7e: Program for converting the DAA and GBI files to ISO
 app-cdr/disc-cover 1.5.6-r1: Creates CD-Covers via LaTeX by fetching cd-info from freedb.org or local file
@@ -3344,7 +3344,7 @@ dev-lua/luadoc 3.0.1: LuaDoc is a documentation tool for Lua source code
 dev-lua/luaevent 0.4.4: libevent bindings for Lua
 dev-lua/luaexpat 1.2.0-r1 1.3.0-r1: LuaExpat is a SAX XML parser based on the Expat library
 dev-lua/luafilesystem 1.5.0 1.6.3: File System Library for the Lua Programming Language
-dev-lua/luajson 1.3.2: JSON Parser/Constructor for Lua
+dev-lua/luajson 1.3.3: JSON Parser/Constructor for Lua
 dev-lua/luarocks 2.2.0: A deployment and management system for Lua modules
 dev-lua/luasec 0.5.1: Lua binding for OpenSSL library to provide TLS/SSL communication
 dev-lua/luasocket 3.0_rc1-r3 3.0_rc1-r4: Networking support library for the Lua language
@@ -5521,7 +5521,7 @@ dev-python/pytools 2016.2.6-r1 2017.4-r1: Collection of tools missing from the P
 dev-python/pytrie 0.3: A pure Python implementation of the trie data structure.
 dev-python/pytz 2016.3 2017.2 2018.4: World timezone definitions for Python
 dev-python/pyudev 0.20.0-r1 0.21.0: Python binding to libudev
-dev-python/pyutil 2.0.0: A collection of utilities for Python programmers
+dev-python/pyutil 2.0.0-r1: A collection of utilities for Python programmers
 dev-python/pyvorbis 1.4-r4: Python bindings for the ogg.vorbis library
 dev-python/pyx 0.12.1-r1 0.14.1: Python package for the generation of encapsulated PostScript figures
 dev-python/pyxattr 0.6.0-r1: Python interface to xattr
@@ -5550,7 +5550,7 @@ dev-python/reno 2.7.0: Release notes manager, storing release notes in a git rep
 dev-python/reportlab 3.3.0-r2: Tools for generating printable PDF documents from any data source
 dev-python/repoze-lru 0.6-r2: A tiny LRU cache implementation and decorator
 dev-python/repoze-who 2.2: repoze.who is an identification and authentication framework for WSGI
-dev-python/requests 2.18.4-r1: HTTP library for human beings
+dev-python/requests 2.18.4-r1 2.21.0-r1: HTTP library for human beings
 dev-python/requests-cache 0.4.12: Persistent cache for requests library
 dev-python/requests-mock 1.2.0 1.5.2: Mock out responses from the requests package
 dev-python/requests-oauthlib 0.7.0: This project provides first-class OAuth library support for Requests
@@ -7123,7 +7123,7 @@ mail-filter/pypolicyd-spf 2.0.1: Python-based policy daemon for Postfix SPF veri
 mail-filter/razor 2.85-r3: Distributed, collaborative spam detection and filtering network
 mail-filter/rblcheck 1.5-r2: Perform lookups in RBL-styles services
 mail-filter/scmail 1.3: a mail filter written in Scheme
-mail-filter/sieve-connect 0.87: Sieve Command Line Interface
+mail-filter/sieve-connect 0.87-r1: Sieve Command Line Interface
 mail-filter/spamass-milter 0.3.2: A milter for SpamAssassin
 mail-filter/spamassassin 3.4.2-r2: An extensible mail filter which can identify and tag spam
 mail-filter/spamdyke 4.3.0: A drop-in connection-time spam filter for qmail
@@ -7955,7 +7955,7 @@ media-plugins/mediastreamer-amr 0.0.1: mediastreamer plugin: add AMR Narrow Band
 media-plugins/mediastreamer-bcg729 1.0.0: Backported G729 implementation for Linphone
 media-plugins/mediastreamer-ilbc 2.0.3: mediastreamer plugin: add iLBC support
 media-plugins/mediastreamer-x264 1.4.1: mediastreamer plugin: add H264 support
-media-plugins/qmmp-plugin-pack 1.2.2: A set of extra plugins for Qmmp
+media-plugins/qmmp-plugin-pack 1.2.2 1.2.4: A set of extra plugins for Qmmp
 media-plugins/rev-plugins 0.7.1: REV LADSPA plugins package. A stereo reverb plugin based on the well-known greverb
 media-plugins/swh-lv2 1.0.16: Large collection of LV2 audio plugins/effects
 media-plugins/swh-plugins 0.4.15-r3: Large collection of LADSPA audio plugins/effects
@@ -8184,7 +8184,7 @@ media-sound/pympd 0.08.1-r1: a Rhythmbox-like PyGTK+ client for Music Player Dae
 media-sound/qastools 0.21.0: Qt5 GUI ALSA tools: mixer, configuration browser
 media-sound/qjackctl 0.4.5: Qt GUI to control the JACK Audio Connection Kit and ALSA sequencer connections
 media-sound/qmidiroute 0.4.0: QMidiRoute is a filter/router for MIDI events
-media-sound/qmmp 1.2.3: Qt5-based audio player with winamp/xmms skins support
+media-sound/qmmp 1.2.3 1.2.6: Qt5-based audio player with winamp/xmms skins support
 media-sound/qsynth 0.5.0: A Qt application to control FluidSynth
 media-sound/qtscrobbler 0.11_pre20130123: Updates last.fm profiles using information from supported portable music players
 media-sound/quimup 1.4.3: A Qt5 client for the music player daemon (MPD) written in C++
@@ -8277,7 +8277,7 @@ media-video/aegisub 3.2.2_p20160518-r2: Advanced subtitle editor
 media-video/atomicparsley 0.9.0: command line program for reading, parsing and setting iTunes-style metadata in MPEG4 files
 media-video/baka-mplayer 2.0.4: Cross-platform libmpv-based multimedia player with uncluttered design
 media-video/binkplayer 1.99w: Bink Video! Player
-media-video/bino 1.6.6: Stereoscopic and multi-display media player
+media-video/bino 1.6.6 1.6.7: Stereoscopic and multi-display media player
 media-video/blinkensim 2.7-r1: Graphical Blinkenlights simulator with networking support
 media-video/blinkenthemes 0.10: Themes for blinkensim
 media-video/ccextractor 0.59: Extract closed captioning subtitles from video to SRT
