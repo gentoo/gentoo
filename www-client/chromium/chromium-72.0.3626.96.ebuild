@@ -141,10 +141,6 @@ GTK+ icon theme.
 PATCHES=(
 	"${FILESDIR}/chromium-compiler-r7.patch"
 	"${FILESDIR}/chromium-widevine-r4.patch"
-	"${FILESDIR}/chromium-webrtc-r0.patch"
-	"${FILESDIR}/chromium-memcpy-r0.patch"
-	"${FILESDIR}/chromium-math.h-r0.patch"
-	"${FILESDIR}/chromium-stdint.patch"
 )
 
 pre_build_checks() {
