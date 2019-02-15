@@ -13,7 +13,7 @@ if [[ ${PV} == *9999* ]]; then
 else
 	COMMIT=610566d25271c67d1625fd62041f6a27435b0a9d
 	SRC_URI="https://github.com/${PN}-player/${PN^}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 x86"
 fi
 inherit cmake-utils flag-o-matic l10n virtualx xdg
 
