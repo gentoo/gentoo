@@ -1,9 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=2
+EAPI=7
 
-inherit toolchain-funcs eutils
+inherit toolchain-funcs
 
 DESCRIPTION="Credential Validation Modules by Bruce Guenter"
 HOMEPAGE="http://untroubled.org/cvm/"
@@ -17,16 +17,16 @@ IUSE="mysql postgres test vpopmail"
 RDEPEND="dev-db/cdb"
 DEPEND="${RDEPEND}
 		>=dev-libs/bglibs-1.041
-		mysql? ( virtual/mysql )
+		mysql? ( dev-db/mysql-connector-c:0= )
 		postgres? ( dev-db/postgresql[server] )
 		vpopmail? ( net-mail/vpopmail )
-		test? ( app-editors/vim )"
-# some of the testcases use ex/vi/xxd
+		test? ( app-editors/vim dev-db/cdb )"
+# some of the testcases use ex/vi/xxd and cdbmake
 
 MAKEOPTS="${MAKEOPTS} -j1" #310843
 
-src_unpack() {
-	unpack ${A}
+src_prepare() {
+	default
 	# disable this test, as it breaks under Portage
 	# and there is no easy fix
 	sed -i.orig \
@@ -47,35 +47,39 @@ src_unpack() {
 		|| die "Failed to fix vpopmail compiling parts of Makefile"
 }
 
-src_compile() {
+src_configure() {
 	echo "/usr/include/bglibs" > conf-bgincs
-	echo "/usr/lib/bglibs" > conf-bglibs
+	echo "/usr/$(get_libdir)/bglibs" > conf-bglibs
 	echo "/usr/include" > conf-include
-	echo "/usr/lib" > conf-lib
+	echo "/usr/$(get_libdir)" > conf-lib
 	echo "/usr/bin" > conf-bin
 	echo "$(tc-getCC) ${CFLAGS}" > conf-cc
 	echo "$(tc-getCC) ${LDFLAGS} -lcrypt" > conf-ld
-	emake || die
+}
+
+src_compile() {
+	emake
 
 	if use mysql; then
 		einfo "Building MySQL support"
-		emake mysql || die "making mysql support failed"
+		emake mysql
 	fi
 
 	if use postgres; then
 		einfo "Building Postgresql support"
-		emake pgsql || die "making postgres support failed"
+		emake pgsql
 	fi
 
 	if use vpopmail; then
 		einfo "Building vpopmail support"
-		emake cvm-vchkpw || die "making vpopmail support failed"
+		emake cvm-vchkpw
 	fi
 }
 
 src_install() {
 	# Upstreams installer is incredibly broken
-	dolib .libs/*.a .libs/*.so.*
+	dolib.a .libs/*.a
+	dolib.so .libs/*.so.*
 	for i in a so ; do
 		dosym libcvm-v2client.${i} /usr/$(get_libdir)/libcvm-client.${i}
 	done
@@ -97,7 +101,8 @@ src_install() {
 	dodoc ANNOUNCEMENT NEWS{,.sql,.vmailmgr}
 	dodoc README{,.vchkpw,.vmailmgr}
 	dodoc TODO VERSION ChangeLog*
-	dohtml *.html
+	docinto html
+	dodoc *.html
 }
 
 src_test() {
