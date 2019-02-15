@@ -686,6 +686,7 @@ app-misc/tracker:gsf - Enable gnome-extra/libgsf based data extractor and for OD
 app-misc/tracker:iptc - Enable extraction of IPTC data from pictures
 app-misc/tracker:iso - Enable extraction of metadata from ISO disk images
 app-misc/tracker:miner-fs - Enable tracker-miner-fs (required for filesystem indexing)
+app-misc/tracker:miners - Install the app-misc/tracker-miners package for actual data mining support for tracker
 app-misc/tracker:playlist - Add support for playlists
 app-misc/tracker:stemmer - Add word stemming via dev-libs/snowball-stemmer.
 app-misc/tracker:thunderbird - Install email data miner plugin for mail-client/thunderbird and mail-client/thunderbird-bin
