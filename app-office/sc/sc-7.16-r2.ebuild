@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils multilib toolchain-funcs
+
+inherit toolchain-funcs
 
 DESCRIPTION="Spreadsheet Calculator"
 SRC_URI="ftp://ibiblio.org/pub/Linux/apps/financial/spreadsheet/${P}.tar.gz"
@@ -10,7 +11,7 @@ HOMEPAGE="http://ibiblio.org/pub/Linux/apps/financial/spreadsheet/"
 
 SLOT="0"
 LICENSE="public-domain"
-KEYWORDS="~amd64 ppc sparc x86"
+KEYWORDS="amd64 ppc sparc x86"
 
 COMMON_DEPEND="
 	>=sys-libs/ncurses-5.2
