@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/ed2k-tools/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ppc ~sparc ~x86"
+KEYWORDS="~amd64 ppc ~sparc x86"
 IUSE="" # fltk support is broken, bug #359643
 
 DEPEND=""
