@@ -103,6 +103,7 @@ mail-filter/dovecot-antispam
 # Depends on =dev-libs/openssl-1.1.1*
 # bug #670574
 =net-libs/nodejs-11.9*
+=net-libs/nodejs-11.10*
 
 # Andreas Sturmlechner <asturm@gentoo.org> (30 Jan 2019)
 # Dead upstream, breaks every other poppler release due to private
