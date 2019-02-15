@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -18,7 +18,7 @@ DESCRIPTION="A high-performance, open source, schema-free document-oriented data
 HOMEPAGE="https://www.mongodb.com"
 SRC_URI="https://fastdl.mongodb.org/src/${MY_P}.tar.gz"
 
-LICENSE="Apache-2.0 SSPL"
+LICENSE="Apache-2.0 SSPL-1"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="debug kerberos libressl mms-agent ssl test +tools"
