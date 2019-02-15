@@ -4,11 +4,11 @@ DESCRIPTION=Tools and library for reading Outlook files (.pst format)
 EAPI=6
 HOMEPAGE=http://www.five-ten-sg.com/libpst/
 IUSE=debug dii doc python static-libs python_targets_python2_7
-KEYWORDS=~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86
+KEYWORDS=~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc x86
 LICENSE=GPL-2
 RDEPEND=dii? ( media-gfx/imagemagick:=[png] ) python? ( >=dev-libs/boost-1.48:=[python] python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),-python_single_target_python3_7(-),python_single_target_python2_7(+)] ) gnome-extra/libgsf:=
 REQUIRED_USE=python? ( python_targets_python2_7 )
 SLOT=0
 SRC_URI=http://www.five-ten-sg.com/libpst/packages/libpst-0.6.66.tar.gz
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	b2f01ad412baf81650c23fcf0975fa33	python-single-r1	3a0fc81f484bfdbd9c2b7448015a36e4	python-utils-r1	12114a2a9aab35b93efc037a196b3234	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
-_md5_=40dbcb550f7172083effdc679d5b8538
+_md5_=193b7cd668f26cf72750c58e6773eecb

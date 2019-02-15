@@ -4,10 +4,10 @@ DESCRIPTION=Distribute hardware interrupts across processors on a multiprocessor
 EAPI=6
 HOMEPAGE=https://github.com/Irqbalance/irqbalance
 IUSE=caps +numa selinux tui kernel_linux
-KEYWORDS=~amd64 ~ppc ~x86
+KEYWORDS=~amd64 ~ppc x86
 LICENSE=GPL-2
 RDEPEND=dev-libs/glib:2 caps? ( sys-libs/libcap-ng ) numa? ( sys-process/numactl ) tui? ( sys-libs/ncurses:0=[unicode] ) selinux? ( sec-policy/selinux-irqbalance )
 SLOT=0
 SRC_URI=https://github.com/Irqbalance/irqbalance/archive/v1.5.0.tar.gz -> irqbalance-1.5.0.tar.gz
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	libtool	f143db5a74ccd9ca28c1234deffede96	linux-info	953c3b1c472dcadbf62098a9301327f2	multilib	b2f01ad412baf81650c23fcf0975fa33	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
-_md5_=a9be3bc617efa5acaab671e367363d44
+_md5_=3d6b0017fbcc1d4eace2663978a3c29c

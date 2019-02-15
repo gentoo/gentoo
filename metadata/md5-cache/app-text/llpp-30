@@ -4,11 +4,11 @@ DESCRIPTION=graphical PDF viewer which aims to superficially resemble less(1)
 EAPI=6
 HOMEPAGE=https://github.com/moosotc/llpp
 IUSE=+ocamlopt static
-KEYWORDS=~amd64 ~ppc ~x86
+KEYWORDS=~amd64 ~ppc x86
 LICENSE=GPL-3
 RDEPEND=x11-misc/xsel !static? ( >=app-text/mupdf-1.12.0:0= media-libs/openjpeg:2 media-libs/fontconfig:1.0 media-libs/freetype:2 media-libs/jbig2dec sys-libs/zlib virtual/jpeg:0 x11-libs/libX11 )
 RESTRICT=!ocamlopt? ( strip )
 SLOT=0
 SRC_URI=https://github.com/moosotc/llpp/archive/v30.tar.gz -> llpp-30.tar.gz
 _eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	xdg-utils	14d00d009167652b1fa363e55effe213
-_md5_=3424f888964c66b49122f383e86ed250
+_md5_=dc0f5522983ef77f7c06768d8c71776c
