@@ -44,6 +44,8 @@
 >=app-misc/tracker-2.1.7
 >=app-misc/tracker-miners-2.1.5
 >=net-misc/gnome-online-miners-3.26.0
+>=gnome-extra/gnome-documents-3.26
+>=app-text/libgepub-0.5
 
 # Michał Górny <mgorny@gentoo.org> (13 Feb 2019)
 # Release candidate, masked for testing.
@@ -371,10 +373,6 @@ sys-devel/automake:1.8
 # Gilles Dartiguelongue <eva@gentoo.org> (04 Sep 2017)
 # Incompatible changes in API in Enchant 2. Bug #629838.
 >=app-text/enchant-2
-
-# Gilles Dartiguelongue <eva@gentoo.org> (2 Sep 1017)
-# Gnome 3.26 package mask
->=app-text/libgepub-0.5
 
 # Sébastien Fabbro <bicatali@gentoo.org> (19 Aug 2017)
 # ipython-6 is python-3 only and causes circular dependencies
