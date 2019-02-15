@@ -10,4 +10,4 @@ RDEPEND=>=dev-libs/glib-2.48:2[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi
 SLOT=0
 SRC_URI=https://nice.freedesktop.org/releases/libnice-0.1.15.tar.gz
 _eclasses_=multibuild	40fe59465edacd730c644ec2bc197809	multilib	b2f01ad412baf81650c23fcf0975fa33	multilib-build	b42436dc1260f475af229754c165cb6b	multilib-minimal	8bddda43703ba94d8341f4e247f97566	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	14d00d009167652b1fa363e55effe213
-_md5_=ca4987e5cc3a65e88b2a48a5343d3c96
+_md5_=50c54608eb19650429abd7b2ea554a55
