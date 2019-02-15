@@ -99,7 +99,7 @@ src_configure() {
 		$(use_with ssl ssl-dir)
 		$(use_with tracker)
 		$(use_with tracker dbus-daemon "${EPREFIX}/usr/bin/dbus-daemon")
-		$(use_with tracker tracker-pkgconfig-version $(ver_cut 1-2 $(best_version app-misc/tracker | sed 's:app-misc/tracker-::g')))
+		$(use_with tracker tracker-pkgconfig-version $(ver_cut 1 $(best_version app-misc/tracker | sed 's:app-misc/tracker-::g')).0)
 		--enable-overwrite
 		--disable-krb4-uam
 		--disable-afs
