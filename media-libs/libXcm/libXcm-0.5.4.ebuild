@@ -17,7 +17,7 @@ SRC_URI="https://github.com/oyranos-cms/${PN,,}/archive/${PV}.tar.gz -> ${P}.tar
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ppc ~x86"
+KEYWORDS="~amd64 ppc x86"
 IUSE="static-libs X"
 
 RDEPEND="
