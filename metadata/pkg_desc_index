@@ -7555,7 +7555,7 @@ media-libs/glyr 1.0.10: Music related metadata searchengine, both with commandli
 media-libs/gmtk 1.0.8 1.0.9: GTK+ widget and function libraries for gnome-mplayer
 media-libs/gnonlin 0.10.17 1.4.0-r1: Set of GStreamer elements to ease the creation of non-linear multimedia editors
 media-libs/graphene 1.8.2: A thin layer of types for graphic libraries
-media-libs/grilo 0.2.15 0.3.6: A framework for easy media discovery and browsing
+media-libs/grilo 0.3.6: A framework for easy media discovery and browsing
 media-libs/gsound 1.0.2-r1: Thin GObject wrapper around the libcanberra sound event library
 media-libs/gst-plugins-bad 0.10.23-r4 1.14.3: Less plugins for GStreamer
 media-libs/gst-plugins-base 0.10.36-r2 1.14.4-r1: Basepack of plugins for gstreamer
@@ -7858,7 +7858,7 @@ media-plugins/gmpc-mmkeys 11.8.16: Bind multimedia keys via gnome settings daemo
 media-plugins/gmpc-playlistsort 0.20.0: This plugin adds a dialog to sort the current playlist
 media-plugins/gmpc-shout 0.20.0: This plugin calls ogg123 and points it at mpd's shoutstream
 media-plugins/gmpc-tagedit 11.8.16: This plugin allows you to edit tags in your library
-media-plugins/grilo-plugins 0.2.17 0.3.7: A framework for easy media discovery and browsing
+media-plugins/grilo-plugins 0.3.7: A framework for easy media discovery and browsing
 media-plugins/gst-plugins-a52dec 0.10.19-r1 1.14.3: ATSC A/52 audio decoder plugin for GStreamer
 media-plugins/gst-plugins-alsa 0.10.36-r1: plugin for gstreamer
 media-plugins/gst-plugins-amr 0.10.19-r1 1.14.3: AMRNB encoder/decoder and AMRWB decoder plugin for GStreamer
