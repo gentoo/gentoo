@@ -9,7 +9,7 @@ SRC_URI="https://github.com/harningt/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~mips ppc ppc64 sparc x86"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ~mips ppc ppc64 sparc x86"
 IUSE="test"
 
 RDEPEND="|| ( >=dev-lang/lua-5.1 dev-lang/luajit:2 )
