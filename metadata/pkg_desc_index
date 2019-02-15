@@ -7438,7 +7438,7 @@ media-gfx/optipng 0.7.6-r2: Compress PNG files without affecting image quality
 media-gfx/pdf2svg 0.2.3: pdf2svg is based on poppler and cairo and can convert pdf to svg files
 media-gfx/peps 2.0-r1: Preprocess and convert EPS files to bitmap with Ghostscript
 media-gfx/photopc 3.07: Utility to control digital cameras based on Sierra Imaging firmware
-media-gfx/photoqt 1.5.1-r1 1.7.1: Simple but powerful Qt-based image viewer
+media-gfx/photoqt 1.5.1-r1 1.7.1 1.7.1-r1: Simple but powerful Qt-based image viewer
 media-gfx/pinta 1.6-r2: Simple Painting for Gtk
 media-gfx/pixie 2.2.6-r1: RenderMan like photorealistic renderer
 media-gfx/pngcheck 2.3.0: Verifies the integrity of PNG, JNG and MNG files with internal checksums
