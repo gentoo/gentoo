@@ -38,7 +38,10 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
-DOCS=( AUTHORS CHANGELOG README.md )
+src_prepare() {
+	default
+	sed -e "s/exists(.git)/0/" -i QuiteRSS.pro || die
+}
 
 src_configure() {
 	local myqmakeargs=(
