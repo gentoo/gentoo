@@ -1137,7 +1137,7 @@ app-misc/wcd 5.2.7: Wherever Change Directory
 app-misc/webcomics-collector 0.7.3-r1: python script for downloading webcomics
 app-misc/when 1.1.36: Minimalistic personal calendar program
 app-misc/wipe 2.3.1: Secure file wiping utility based on Peter Gutman's patterns
-app-misc/worker 2.19.6: Worker Filemanager: Amiga Directory Opus 4 clone
+app-misc/worker 3.8.3: Worker Filemanager: Amiga Directory Opus 4 clone
 app-misc/workrave 1.10.20: Helpful utility to attack Repetitive Strain Injury (RSI)
 app-misc/xmind 3.5.3.201506180105-r2: A brainstorming and mind mapping software tool
 app-misc/yagtd 0.3.4-r1: CLI todo list manager based on the 'Getting Things Done' philosophy
@@ -1926,7 +1926,7 @@ dev-db/sqlcipher 3.4.1 3.4.2: Full Database Encryption for SQLite
 dev-db/sqldeveloper 4.2.0.17.089.1709: Oracle SQL Developer is a graphical tool for database development
 dev-db/sqlite 3.23.1 3.24.0 3.25.3: SQL database engine
 dev-db/sqliteman 1.2.2-r4: Powerful GUI manager for the Sqlite3 database
-dev-db/sqliteodbc 0.96: ODBC driver to access local SQLite database files
+dev-db/sqliteodbc 0.99: ODBC driver to access local SQLite database files
 dev-db/tinycdb 0.77-r2: A very fast and simple package for creating and reading constant data bases
 dev-db/tokyocabinet 1.4.48-r1: A library of routines for managing a database
 dev-db/unixODBC 2.3.5-r1: A complete ODBC driver manager
@@ -3283,7 +3283,7 @@ dev-libs/totem-pl-parser 3.10.8: Playlist parsing library
 dev-libs/tre 0.8.0-r1: Lightweight, robust, and efficient POSIX compliant regexp matching library
 dev-libs/tvision 2.1.0_pre2-r4: Text User Interface that implements the well known CUA widgets
 dev-libs/ucl 1.03-r1: the UCL Compression Library
-dev-libs/ucommon 6.0.3: Portable C++ runtime for threads and sockets
+dev-libs/ucommon 6.0.3 7.0.0: Portable C++ runtime for threads and sockets
 dev-libs/udis86 1.7-r2: Disassembler library for the x86/-64 architecture sets
 dev-libs/unibilium 1.2.1: A very basic terminfo library
 dev-libs/unittest++ 2.0.0: A lightweight unit testing framework for C++
@@ -7779,7 +7779,7 @@ media-libs/raul 0.8.0-r1: C++ utility library primarily aimed at audio/musical a
 media-libs/resid 0.16_p2-r1: C++ library to emulate the C64 SID chip
 media-libs/rtaudio 4.1.2: A set of cross-platform C++ classes for realtime audio I/O
 media-libs/rubberband 1.8.2: An audio time-stretching and pitch-shifting library and utility program
-media-libs/sampleicc 1.6.6: C++ library for reading, writing, manipulating, and applying ICC profiles
+media-libs/sampleicc 1.6.8: C++ library for reading, writing, manipulating, and applying ICC profiles
 media-libs/sbc 1.3: Audio codec to connect bluetooth HQ audio devices as headphones or loudspeakers
 media-libs/sdif 3.8.6: The Sound Description Interchange Format Library deals with audio and wave processing
 media-libs/sdl-gfx 2.0.25: Graphics drawing primitives library for SDL
@@ -8737,7 +8737,7 @@ net-libs/libktorrent 2.1-r1: BitTorrent library based on KDE Frameworks
 net-libs/liblockfile 1.09: Implements functions designed to lock the standard mailboxes
 net-libs/libmbim 1.6.0 1.10.0 1.14.0 1.16.2: Mobile Broadband Interface Model (MBIM) modem protocol helper library
 net-libs/libmicrodns 0.0.9: Minimal mDNS resolver (and announcer) library
-net-libs/libmicrohttpd 0.9.59: Small C library to run an HTTP server as part of another application
+net-libs/libmicrohttpd 0.9.59 0.9.62: Small C library to run an HTTP server as part of another application
 net-libs/libmnl 1.0.3-r1 1.0.4: Minimalistic netlink library
 net-libs/libmrss 0.19.2: A C-library for parsing and writing RSS 0.91/0.92/1.0/2.0 files or streams
 net-libs/libnatpmp 20130911: An alternative protocol to UPnP IGD specification
@@ -11031,7 +11031,7 @@ x11-misc/synergy 2.0.0: Lets you easily share a single mouse and keyboard betwee
 x11-misc/tint2 16.2: tint2 is a lightweight panel/taskbar for Linux.
 x11-misc/tintwizard 0.3.4-r2: GUI wizard which generates config files for tint2 panels
 x11-misc/touchcal 0.80: Touchscreen calibration utility
-x11-misc/trayer 1.0-r2: Lightweight GTK+ based systray for UNIX desktop
+x11-misc/trayer 1.0-r3: Lightweight GTK+ based systray for UNIX desktop
 x11-misc/trayer-srg 1.1.6-r1: trayer fork with multi monitor support and cleaned up codebase
 x11-misc/unclutter 8-r4: Hides mouse pointer while not in use
 x11-misc/unclutter-xfixes 1.5: A rewrite of unclutter using the x11-xfixes extension
