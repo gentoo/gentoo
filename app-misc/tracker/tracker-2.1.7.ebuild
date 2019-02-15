@@ -4,16 +4,18 @@
 EAPI=6
 PYTHON_COMPAT=( python3_{4,5,6,7} )
 
-inherit bash-completion-r1 gnome.org linux-info meson python-any-r1 systemd vala xdg
+inherit bash-completion-r1 eapi7-ver gnome.org linux-info meson python-any-r1 systemd vala xdg
 
 DESCRIPTION="A tagging metadata database, search tool and indexer"
 HOMEPAGE="https://wiki.gnome.org/Projects/Tracker"
 
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="0/2.0"
-IUSE="gtk-doc networkmanager stemmer"
+IUSE="gtk-doc +miners networkmanager stemmer"
 
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+
+PV_SERIES=$(ver_cut 1-2)
 
 # In 2.2.0 util-linux should only be necessary if glib is older than 2.52 at compile-time
 RDEPEND="
@@ -40,6 +42,9 @@ DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
 " # g-ir-merge needs py3; functional tests need py2, so disabled for now due to mixup
 # intltool-merge manually called in meson.build in 2.1.7; properly gone by 2.2.0
+RDEPEND="${RDEPEND}
+	miners? ( >=app-misc/tracker-miners-${PV_SERIES} )
+"
 
 PATCHES=(
 	"${FILESDIR}"/${PV}-doc-options.patch # https://gitlab.gnome.org/GNOME/tracker/merge_requests/58

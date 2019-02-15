@@ -1,0 +1,50 @@
+From 02a54749117d609d75bad80331024661c2e598ce Mon Sep 17 00:00:00 2001
+From: Mart Raudsepp <leio@gentoo.org>
+Date: Fri, 15 Feb 2019 12:20:39 +0200
+Subject: [PATCH] libtracker-miners-common: improve path_evaluate_name
+ environment handling
+
+Under some environments $PWD might not point where we expect, so simply
+use g_get_current_dir() instead.
+g_getenv() is documented to return a pointer that may get overwritten
+by subsequent calls to g_getenv, g_setenv of g_unsetenv. As even after
+removing the second g_getenv, there's still g_setenv calls, take a copy.
+---
+ .../libtracker-miners-common/tracker-file-utils-test.c | 10 ++++++----
+ 1 file changed, 6 insertions(+), 4 deletions(-)
+
+diff --git a/tests/libtracker-miners-common/tracker-file-utils-test.c b/tests/libtracker-miners-common/tracker-file-utils-test.c
+index 93b94472c..3f86a0cdc 100644
+--- a/tests/libtracker-miners-common/tracker-file-utils-test.c
++++ b/tests/libtracker-miners-common/tracker-file-utils-test.c
+@@ -134,14 +134,14 @@ test_path_list_filter_duplicates_with_exceptions ()
+ static void
+ test_path_evaluate_name (void)
+ {
+-	gchar *result, *expected;
+-
+-	const gchar *home = g_getenv ("HOME");
+-	const gchar *pwd = g_getenv ("PWD");
++	gchar *result, *expected, *home, *pwd;
+ 
+ 	const gchar *test = "/one/two";
+ 	gchar *parent_dir;
+ 
++	home = g_strdup (g_getenv ("HOME"));
++	pwd = g_get_current_dir ();
++
+ 	g_setenv ("TEST_TRACKER_DIR", test, TRUE);
+ 
+ 
+@@ -219,6 +219,8 @@ test_path_evaluate_name (void)
+ 	result = tracker_path_evaluate_name (tracker_test_helpers_get_nonutf8 ());
+ 	g_assert_cmpstr (result, ==, tracker_test_helpers_get_nonutf8 ());
+ 
++	g_free (home);
++	g_free (pwd);
+ 	g_unsetenv ("TEST_TRACKER_DIR");
+ }
+ 
+-- 
+2.17.0
+
