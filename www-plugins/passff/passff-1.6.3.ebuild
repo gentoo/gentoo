@@ -3,8 +3,6 @@
 
 EAPI=7
 
-inherit mozextension
-
 MY_XPINAME="${P}-fx"
 
 DESCRIPTION="zx2c4 pass manager extension for Firefox"
@@ -14,26 +12,19 @@ SRC_URI="https://addons.mozilla.org/firefox/downloads/file/1681210/${MY_XPINAME}
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="firefox firefox-bin"
+IUSE=""
 
 RDEPEND="www-plugins/passff-host[firefox]"
-REQUIRED_USE="|| ( firefox firefox-bin )"
 
 S="${WORKDIR}"
 
 src_unpack() {
-	xpi_unpack "${MY_XPINAME}.xpi"
+	cp "${DISTDIR}/${MY_XPINAME}.xpi" . || die
 }
 
 src_install() {
-	local MOZILLA_FIVE_HOME
-	if use firefox; then
-		MOZILLA_FIVE_HOME="/usr/$(get_libdir)/firefox"
-		xpi_install "${MY_XPINAME}"
-	fi
-
-	if use firefox-bin; then
-		MOZILLA_FIVE_HOME="/opt/firefox"
-		xpi_install "${MY_XPINAME}"
-	fi
+	# See https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Distribution_options/Sideloading_add-ons#Installation_using_the_standard_extension_folders
+	insinto "/usr/share/mozilla/extensions/{ec8030f7-c20a-464f-9b0e-13a3a9e97384}/"
+	# passff@invicem.pro is the extension id found in the manifest.json
+	newins "${MY_XPINAME}.xpi" "passff@invicem.pro.xpi"
 }
