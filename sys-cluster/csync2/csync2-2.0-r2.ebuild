@@ -1,11 +1,13 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
+
+inherit autotools
 
 DESCRIPTION="Cluster synchronization tool"
-HOMEPAGE="http://oss.linbit.com/csync2/"
-SRC_URI="http://oss.linbit.com/${PN}/${P}.tar.gz"
+HOMEPAGE="https://github.com/LINBIT/csync2"
+SRC_URI="https://github.com/LINBIT/${PN}/archive/${P}.tar.gz -> ${P}-github.tar.gz"
 
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~arm ~x86"
@@ -13,7 +15,7 @@ KEYWORDS="~amd64 ~arm ~x86"
 IUSE="mysql postgres sqlite ssl xinetd"
 
 RDEPEND=">=net-libs/librsync-0.9.5
-	mysql? ( virtual/mysql )
+	mysql? ( dev-db/mysql-connector-c:0= )
 	postgres? ( dev-db/postgresql:= )
 	sqlite? ( >=dev-db/sqlite-3.0 )
 	ssl? ( >=net-libs/gnutls-2.7.3 )
@@ -24,9 +26,15 @@ DEPEND="${RDEPEND}
 REQUIRED_USE="|| ( mysql postgres sqlite )"
 SLOT="0"
 
+S="${WORKDIR}/${PN}-${P}"
+
+src_prepare() {
+	default
+	eautoreconf
+}
+
 src_configure() {
 	econf \
-		--docdir=/usr/share/doc/${P} \
 		--localstatedir=/var \
 		--sysconfdir=/etc/csync2 \
 		$(use_enable mysql) \
