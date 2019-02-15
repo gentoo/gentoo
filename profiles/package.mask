@@ -46,6 +46,7 @@
 >=net-misc/gnome-online-miners-3.26.0
 >=gnome-extra/gnome-documents-3.26
 >=app-text/libgepub-0.5
+>=media-sound/gnome-music-3.26
 
 # Michał Górny <mgorny@gentoo.org> (13 Feb 2019)
 # Release candidate, masked for testing.
