@@ -1,0 +1,39 @@
+From 191a67bae395eab322f1adc000c95d35b1a60c71 Mon Sep 17 00:00:00 2001
+From: Jeremy Bicha <jbicha@ubuntu.com>
+Date: Sun, 18 Nov 2018 16:42:53 -0500
+Subject: [PATCH 2/2] meson: fix bashism in equality check
+
+Thanks https://rgeissert.blogspot.com/2012/12/a-bashism-week-testing-for-equality.html
+
+and checkbashisms from Debian's devscripts
+
+Closes: https://gitlab.gnome.org/GNOME/tracker-miners/issues/38
+(cherry picked from commit 0304f28a9963bff0c5b029d88dc36f91f53dcf65)
+---
+ src/create-miner-symlinks.sh | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/create-miner-symlinks.sh b/src/create-miner-symlinks.sh
+index 9d8ded2fb..3ed270bca 100644
+--- a/src/create-miner-symlinks.sh
++++ b/src/create-miner-symlinks.sh
+@@ -13,13 +13,13 @@ have_tracker_miner_fs="$4"
+ have_tracker_miner_rss="$5"
+ 
+ mkdir -p ${DESTDIR}/${tracker_miner_services_dir}
+-if [[ "$have_tracker_miner_apps" == "true" ]]; then
++if ([ "$have_tracker_miner_apps" = "true" ]); then
+   ln -sf "${dbus_services_dir}/org.freedesktop.Tracker1.Miner.Applications.service" "${DESTDIR}/${tracker_miner_services_dir}/"
+ fi
+ ln -sf "${dbus_services_dir}/org.freedesktop.Tracker1.Miner.Extract.service" "${DESTDIR}/${tracker_miner_services_dir}/"
+-if [[ "$have_tracker_miner_fs" == "true" ]]; then
++if ([ "$have_tracker_miner_fs" = "true" ]); then
+   ln -sf "${dbus_services_dir}/org.freedesktop.Tracker1.Miner.Files.service" "${DESTDIR}/${tracker_miner_services_dir}/"
+ fi
+-if [[ "$have_tracker_miner_rss" == "true" ]]; then
++if ([ "$have_tracker_miner_rss" = "true" ]); then
+   ln -sf "${dbus_services_dir}/org.freedesktop.Tracker1.Miner.RSS.service" "${DESTDIR}/${tracker_miner_services_dir}/"
+ fi
+-- 
+2.17.0
+

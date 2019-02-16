@@ -70,6 +70,7 @@ PATCHES=(
 	"${FILESDIR}"/${PV}-meson-fixes.patch # https://gitlab.gnome.org/GNOME/tracker-miners/merge_requests/49
 	"${FILESDIR}"/${PV}-test-fix.patch # https://gitlab.gnome.org/GNOME/tracker-miners/merge_requests/50
 	"${FILESDIR}"/${PV}-seccomp.patch # https://gitlab.gnome.org/GNOME/tracker-miners/merge_requests/51
+	"${FILESDIR}"/${PV}-rss-symlink-fix{1,2}.patch # tracker-2.1 branch, will be included in 2.1.6
 )
 
 pkg_setup() {

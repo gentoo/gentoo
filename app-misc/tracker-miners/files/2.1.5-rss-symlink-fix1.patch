@@ -1,0 +1,42 @@
+From 0d8b3388c415edebc75268358bab4ec2408d5685 Mon Sep 17 00:00:00 2001
+From: Sam Thursfield <sam@afuera.me.uk>
+Date: Sun, 18 Nov 2018 20:33:51 +0100
+Subject: [PATCH 1/2] meson: Fix bad string comparisons in
+ create-miner-symlinks.sh script
+
+This script creates symlinks from $prefix/share/tracker/miners to the
+real D-Bus .service files, which usually live in /usr/share/dbus-1.
+
+The script was comparing strings incorrectly, leading to misbehaviour.
+
+See https://gitlab.gnome.org/GNOME/tracker-miners/issues/38
+
+(cherry picked from commit 949e7003c7027a9946b751c73e1e030d35c78bd7)
+---
+ src/create-miner-symlinks.sh | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/create-miner-symlinks.sh b/src/create-miner-symlinks.sh
+index 114cc54c8..9d8ded2fb 100644
+--- a/src/create-miner-symlinks.sh
++++ b/src/create-miner-symlinks.sh
+@@ -13,13 +13,13 @@ have_tracker_miner_fs="$4"
+ have_tracker_miner_rss="$5"
+ 
+ mkdir -p ${DESTDIR}/${tracker_miner_services_dir}
+-if [[ "$have_tracker_miner_apps" -eq "true" ]]; then
++if [[ "$have_tracker_miner_apps" == "true" ]]; then
+   ln -sf "${dbus_services_dir}/org.freedesktop.Tracker1.Miner.Applications.service" "${DESTDIR}/${tracker_miner_services_dir}/"
+ fi
+ ln -sf "${dbus_services_dir}/org.freedesktop.Tracker1.Miner.Extract.service" "${DESTDIR}/${tracker_miner_services_dir}/"
+-if [[ "$have_tracker_miner_fs" -eq "true" ]]; then
++if [[ "$have_tracker_miner_fs" == "true" ]]; then
+   ln -sf "${dbus_services_dir}/org.freedesktop.Tracker1.Miner.Files.service" "${DESTDIR}/${tracker_miner_services_dir}/"
+ fi
+-if [[ "$have_tracker_miner_rss" -eq "true" ]]; then
++if [[ "$have_tracker_miner_rss" == "true" ]]; then
+   ln -sf "${dbus_services_dir}/org.freedesktop.Tracker1.Miner.RSS.service" "${DESTDIR}/${tracker_miner_services_dir}/"
+ fi
+-- 
+2.17.0
+

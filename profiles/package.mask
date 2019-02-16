@@ -197,7 +197,8 @@ dev-go/sarama
 # Andreas Sturmlechner <asturm@gentoo.org> (03 Nov 2018)
 # Breaks revdeps (GDir and GDirEntry split from gfile.h into new gdir.h)
 # See tracker: https://bugs.gentoo.org/670222
->=app-text/poppler-0.71.0
+=app-text/poppler-0.71.0
+=app-text/poppler-0.72.0
 
 # Pacho Ramos <pacho@gentoo.org> (01 Nov 2018)
 # All this packages are broken and need major version bumps to fix them. See
