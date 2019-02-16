@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -31,7 +31,7 @@ fi
 # 3-clause BSD license
 LICENSE="ISC BSD"
 SLOT="0"
-IUSE="gcrypt ldap nls offensive openssl pam sasl selinux +sendmail skey sssd"
+IUSE="gcrypt ldap nls offensive openssl pam sasl +secure-path selinux +sendmail skey sssd"
 
 CDEPEND="
 	sys-libs/zlib:=
@@ -138,6 +138,7 @@ src_configure() {
 		--with-env-editor
 		--with-plugindir="${EPREFIX}"/usr/$(get_libdir)/sudo
 		--with-rundir="${EPREFIX}"/run/sudo
+		$(use_with secure-path secure-path ${SECURE_PATH})
 		--with-secure-path="${SECURE_PATH}"
 		--with-vardir="${EPREFIX}"/var/db/sudo
 		--without-linux-audit

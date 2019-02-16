@@ -20,6 +20,8 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE="doc debug examples blocking-stdio-hack +xml +yaml"
 
+RESTRICT=test # not stable for day-to-day runs
+
 # Not compatible with llvm-7
 LLVM_MAX_SLOT=6
 
