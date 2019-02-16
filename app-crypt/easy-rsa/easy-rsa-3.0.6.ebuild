@@ -12,8 +12,8 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 IUSE="libressl"
 
-DEPEND="!libressl? ( >=dev-libs/openssl-0.9.6:0 )
-	libressl? ( dev-libs/libressl )"
+DEPEND="!libressl? ( >=dev-libs/openssl-0.9.6:0= )
+	libressl? ( dev-libs/libressl:0= )"
 RDEPEND="${DEPEND}
 	!<net-vpn/openvpn-2.3"
 
