@@ -1,9 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-
-inherit multilib
 
 DESCRIPTION="An RVP (Microsoft Exchange Instant Messaging) plugin for Pidgin"
 HOMEPAGE="https://www.waider.ie/hacks/workshop/c/rvp/"

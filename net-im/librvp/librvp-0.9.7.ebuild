@@ -3,8 +3,6 @@
 
 EAPI=7
 
-inherit multilib
-
 DESCRIPTION="An RVP (Microsoft Exchange Instant Messaging) plugin for Pidgin"
 HOMEPAGE="https://www.waider.ie/hacks/workshop/c/rvp/"
 SRC_URI="https://www.waider.ie/hacks/workshop/c/rvp/${P}.tar.gz"
