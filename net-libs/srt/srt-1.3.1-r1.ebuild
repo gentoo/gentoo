@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,11 +18,8 @@ fi
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-IUSE="gnutls libressl test"
+IUSE="gnutls libressl"
 
-BDEPEND="
-	test? ( dev-cpp/gtest )
-"
 DEPEND="
 	gnutls? ( net-libs/gnutls:=[${MULTILIB_USEDEP}] )
 	!gnutls? (
@@ -32,12 +29,12 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
-RESTRICT="!test? ( test )"
-
 DOCS=( README.md )
 
 PATCHES=(
 	"${FILESDIR}/${PN}-always-GNUInstallDirs.patch"
+	"${FILESDIR}/${P}-no-rpath.patch"
+	"${FILESDIR}/${P}-use-destdir-for-symlinks-09afc227e0880b12a98e18ee8182f89c3a80e3a6.patch"
 )
 
 src_prepare() {
@@ -49,7 +46,6 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=(
 		-DUSE_GNUTLS=$(usex gnutls)
-		-DENABLE_UNITTESTS=$(usex test)
 	)
 	cmake-multilib_src_configure
 }
