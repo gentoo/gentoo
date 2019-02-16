@@ -7408,7 +7408,7 @@ media-gfx/iscan 2.30.2.2: EPSON Image Scan! for Linux (including sane-epkowa bac
 media-gfx/iscan-data 1.36.0.1: Image Scan! for Linux data files
 media-gfx/iscan-plugin-gt-f720 0.0.1.2: Epson Perfection V300 PHOTO scanner plugin for SANE 'epkowa' backend
 media-gfx/jhead 2.97: Exif Jpeg camera setting parser and thumbnail remover
-media-gfx/jigl 2.0.1: Jason's Image Gallery
+media-gfx/jigl 2.0.1-r1: Jason's Image Gallery
 media-gfx/jp2a 1.0.6-r1: JPEG image to ASCII art converter
 media-gfx/jpeg2ps 1.9-r1: Converts JPEG images to Postscript using a wrapper
 media-gfx/jpeginfo 1.6.1: Prints information and tests integrity of JPEG/JFIF files
