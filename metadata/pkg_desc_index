@@ -3201,7 +3201,7 @@ dev-libs/libwbxml 0.11.2: Library and tools to parse, encode and handle WBXML do
 dev-libs/libx86 1.1-r4: A hardware-independent library for executing real-mode x86 code
 dev-libs/libx86emu 1.1: A library for emulating x86
 dev-libs/libxdg-basedir 1.2.0-r1: Small library to access XDG Base Directories Specification paths
-dev-libs/libxdiff 0.23-r1: Library for creating diff files
+dev-libs/libxdiff 0.23-r2: Library for creating diff files
 dev-libs/libxls 1.4.0-r1: A library which can read Excel (xls) files
 dev-libs/libxml2 2.9.8: XML C parser and toolkit
 dev-libs/libxslt 1.1.32: XSLT libraries and tools
@@ -8357,7 +8357,7 @@ media-video/totem 3.24.0: Media player for GNOME
 media-video/tovid 0.35.2-r1: A collection of DVD authoring tools
 media-video/transcode 1.1.7-r3: A suite of utilities for transcoding video and audio codecs in different containers
 media-video/ttcut 0.19.6_p1: Tool for cutting MPEG files especially for removing commercials
-media-video/ushare 1.1a-r6: uShare is a UPnP (TM) A/V & DLNA Media Server
+media-video/ushare 1.1a-r8: uShare is a UPnP (TM) A/V & DLNA Media Server
 media-video/vamps 0.99.2: Very fast requantisizing tool for backup DVDs
 media-video/vcdimager 0.7.24 2.0.1: GNU VCDimager
 media-video/vdr 2.0.6-r1 2.2.0-r1: Video Disk Recorder - turns a pc into a powerful set top box for DVB
