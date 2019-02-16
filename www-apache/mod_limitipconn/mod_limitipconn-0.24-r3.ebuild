@@ -1,8 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-
+EAPI=5
 inherit apache-module
 
 DESCRIPTION="Limit the number of simultaneous apache connections"
@@ -15,7 +14,7 @@ KEYWORDS="~amd64 ~ppc ~x86"
 IUSE=""
 
 DEPEND=""
-RDEPEND="=www-servers/apache-2*[apache2_modules_status]"
+RDEPEND="www-servers/apache[apache2_modules_status]"
 need_apache2
 
 RESTRICT="test"
