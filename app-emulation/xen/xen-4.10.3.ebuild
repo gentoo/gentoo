@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,8 +15,8 @@ if [[ $PV == *9999 ]]; then
 	EGIT_REPO_URI="git://xenbits.xen.org/xen.git"
 	SRC_URI=""
 else
-	KEYWORDS="amd64 ~arm -x86"
-	UPSTREAM_VER=1
+	KEYWORDS="~amd64 ~arm -x86"
+	UPSTREAM_VER=0
 	SECURITY_VER=
 	GENTOO_VER=
 

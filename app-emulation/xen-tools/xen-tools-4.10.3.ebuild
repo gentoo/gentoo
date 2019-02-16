@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,7 +17,7 @@ if [[ $PV == *9999 ]]; then
 	S="${WORKDIR}/${REPO}"
 else
 	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
-	UPSTREAM_VER=2
+	UPSTREAM_VER=
 	SECURITY_VER=
 	# xen-tools's gentoo patches tarball
 	GENTOO_VER=14
@@ -139,9 +139,7 @@ QA_PREBUILT="
 	usr/libexec/xen/bin/ivshmem-server
 	usr/libexec/xen/bin/qemu-img
 	usr/libexec/xen/bin/qemu-io
-	usr/libexec/xen/bin/qemu-keymap
 	usr/libexec/xen/bin/qemu-nbd
-	usr/libexec/xen/bin/qemu-pr-helper
 	usr/libexec/xen/bin/qemu-system-i386
 	usr/libexec/xen/bin/virtfs-proxy-helper
 	usr/libexec/xen/libexec/xen-bridge-helper
@@ -398,8 +396,12 @@ src_install() {
 	# Remove RedHat-specific stuff
 	rm -rf "${D}"tmp || die
 
-	emake DESTDIR="${D}" DOCDIR="/usr/share/doc/${PF}" install-docs
-	use doc && dodoc -r docs/{pdf,txt}
+	if use doc; then
+		emake DESTDIR="${D}" DOCDIR="/usr/share/doc/${PF}" install-docs
+		dodoc -r docs/{pdf,txt}
+	else
+		emake -C docs DESTDIR="${D}" DOCDIR="/usr/share/doc/${PF}" install-man-pages # Bug 668032
+	fi
 	dodoc ${DOCS[@]}
 
 	newconfd "${FILESDIR}"/xendomains.confd xendomains
@@ -431,6 +433,11 @@ src_install() {
 	# Remove files failing QA AFTER emake installs them, avoiding seeking absent files
 	find "${D}" \( -name openbios-sparc32 -o -name openbios-sparc64 \
 		-o -name openbios-ppc -o -name palcode-clipper \) -delete || die
+
+	keepdir /var/lib/xen/dump
+	keepdir /var/lib/xen/xenpaging
+	keepdir /var/lib/xenstored
+	keepdir /var/log/xen
 }
 
 pkg_postinst() {
@@ -438,7 +445,7 @@ pkg_postinst() {
 	elog "https://wiki.gentoo.org/wiki/Xen"
 	elog "https://wiki.xen.org/wiki/Main_Page"
 	elog ""
-	elog "Recommended to utilise the xencommons script to config sytem At boot"
+	elog "Recommended to utilise the xencommons script to config system at boot"
 	elog "Add by use of rc-update on completion of the install"
 
 	if ! use hvm; then
