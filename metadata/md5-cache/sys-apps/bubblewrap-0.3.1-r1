@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure setup
-DEPEND=app-text/docbook-xml-dtd:4.3 app-text/docbook-xsl-stylesheets dev-libs/libxslt virtual/pkgconfig
+DEPEND=sys-libs/libseccomp sys-libs/libcap selinux? ( >=sys-libs/libselinux-2.1.9 ) app-text/docbook-xml-dtd:4.3 app-text/docbook-xsl-stylesheets dev-libs/libxslt virtual/pkgconfig
 DESCRIPTION=Unprivileged sandboxing tool, namespaces-powered chroot-like solution
 EAPI=7
 HOMEPAGE=https://github.com/projectatomic/bubblewrap
@@ -11,4 +11,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/projectatomic/bubblewrap/releases/download/v0.3.1/bubblewrap-0.3.1.tar.xz
 _eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	linux-info	953c3b1c472dcadbf62098a9301327f2	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
-_md5_=5336df9a8db74df88b0582a78f53a733
+_md5_=ad1b7395f6fbd0d3ecafce9c8596c694
