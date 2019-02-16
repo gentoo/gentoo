@@ -810,7 +810,7 @@ app-eselect/eselect-package-manager 20110108-r1: Manages PACKAGE_MANAGER environ
 app-eselect/eselect-pdftex 0.3: pdftex module for eselect
 app-eselect/eselect-php 0.9.4-r5: PHP eselect module
 app-eselect/eselect-pinentry 0.7: Manage /usr/bin/pinentry symlink
-app-eselect/eselect-postgresql 2.3 2.4: Utility to select the default PostgreSQL slot
+app-eselect/eselect-postgresql 2.4: Utility to select the default PostgreSQL slot
 app-eselect/eselect-python 20160516 20171204: Eselect module for management of multiple Python versions
 app-eselect/eselect-rails 0.23: Manages Ruby on Rails symlinks
 app-eselect/eselect-renpy 0.7: Manages renpy symlink
