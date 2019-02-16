@@ -3,6 +3,7 @@
 
 EAPI=7
 
+CMAKE_MAKEFILE_GENERATOR="emake" # keep until CMAKE_MIN_VERSION=3.13.4
 inherit kde5 toolchain-funcs
 
 if [[ ${KDE_BUILD_TYPE} != live ]]; then
