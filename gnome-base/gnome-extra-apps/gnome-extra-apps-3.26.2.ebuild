@@ -71,6 +71,6 @@ RDEPEND="
 		>=app-misc/tracker-miners-2.0.2
 		>=media-gfx/gnome-photos-${PV}
 		>=media-sound/gnome-music-3.26.1 )
-" # tracker and gnome-music versions kept back for now, to handle tracker-2 migration separately
+"
 DEPEND=""
 S=${WORKDIR}
