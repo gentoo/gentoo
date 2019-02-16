@@ -29,10 +29,6 @@
 
 #--- END OF EXAMPLES ---
 
-# Lars Wendler <polynomial-c@gentoo.org> (16 Feb 2019)
-# Masked because of broken mouse behavior (bug #678102)
-=sys-apps/less-549
-
 # Michał Górny <mgorny@gentoo.org> (13 Feb 2019)
 # Release candidate, masked for testing.
 =sys-devel/llvm-common-8.0.0_rc*
