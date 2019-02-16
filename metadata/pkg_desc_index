@@ -249,7 +249,7 @@ app-backup/dirvish 1.2.1: Dirvish is a fast, disk based, rotating network backup
 app-backup/duplicity 0.7.10: Secure backup system using gnupg to encrypt data
 app-backup/duply 1.9.2: A shell frontend for duplicity
 app-backup/flexbackup 1.2.1-r13: Flexible backup script using perl
-app-backup/fsarchiver 0.8.4: Flexible filesystem archiver for backup and deployment tool
+app-backup/fsarchiver 0.8.5: Flexible filesystem archiver for backup and deployment tool
 app-backup/furball 0.5: A small perl script utilizing tar
 app-backup/kfoldersync 3.4.1: Folder synchronization and backup tool based on KDE Frameworks
 app-backup/luckybackup 0.4.9: Powerful and flexible backup (and syncing) tool, using RSync and Qt
@@ -391,7 +391,7 @@ app-dicts/aspell-da 1.7.42: Danish language dictionary for aspell
 app-dicts/aspell-de 0.60_pre20030222: German and Swiss-German language dictionary for aspell
 app-dicts/aspell-de-alt 2.1.1-r1: German (traditional orthography) language dictionary for aspell
 app-dicts/aspell-el 0.50.3: Greek language dictionary for aspell
-app-dicts/aspell-en 2016.11.20.0 2018.04.16.0: English (US, British, Canadian) language dictionary for aspell
+app-dicts/aspell-en 2018.04.16.0: English (US, British, Canadian) language dictionary for aspell
 app-dicts/aspell-eo 2.1.20000225.2: Esperanto language dictionary for aspell
 app-dicts/aspell-es 1.9a: Spanish language dictionary for aspell
 app-dicts/aspell-et 0.1.21.1: Estonian language dictionary for aspell
@@ -1329,7 +1329,7 @@ app-text/docbook-sgml 1.0-r1: A helper package for sgml docbook
 app-text/docbook-sgml-dtd 3.0-r3 3.1-r3 4.0-r3 4.1-r3 4.2-r2 4.3-r2 4.4 4.5: Docbook SGML DTD 4.5
 app-text/docbook-sgml-utils 0.6.14-r2: Shell scripts to manage DocBook documents
 app-text/docbook-xml-dtd 4.1.2-r6 4.2-r2 4.3-r1 4.4-r2 4.5-r1: Docbook DTD for XML
-app-text/docbook-xml-simple-dtd 1.0-r1 1.0-r2 4.1.2.4-r2 4.1.2.4-r3 4.1.2.5-r2: Simplified Docbook DTD for XML
+app-text/docbook-xml-simple-dtd 1.0-r2 4.1.2.4-r3 4.1.2.5-r2: Simplified Docbook DTD for XML
 app-text/docbook-xsl-ns-stylesheets 1.78.0: XSL Stylesheets for Docbook
 app-text/docbook-xsl-stylesheets 1.79.1-r2: XSL Stylesheets for Docbook
 app-text/docbook2X 0.8.8-r4: Tools to convert docbook to man and info
@@ -1416,7 +1416,7 @@ app-text/namazu 2.0.21: Namazu is a full-text search engine
 app-text/o3read 0.0.4: Converts OpenOffice formats to text or HTML
 app-text/ocrad 0.22: GNU Ocrad is an OCR (Optical Character Recognition) program
 app-text/odt2txt 0.4-r1 0.5: A simple converter from OpenDocument Text to plain text
-app-text/openjade 1.3.2-r7 1.3.2-r8: Jade is an implementation of DSSSL for formatting SGML and XML documents
+app-text/openjade 1.3.2-r8: Jade is an implementation of DSSSL for formatting SGML and XML documents
 app-text/opensp 1.5.2-r3: A free, object-oriented toolkit for SGML parsing and entity management
 app-text/ots 0.5.0-r1: Open source Text Summarizer, as used in newer releases of abiword and kword
 app-text/pandoc 1.15.0.6 1.19.2.1-r1: Conversion between markup formats
@@ -1881,7 +1881,7 @@ dev-db/kdb 3.1.0-r2: Database connectivity and creation framework for various ve
 dev-db/kyotocabinet 1.2.76-r1: A straightforward implementation of DBM
 dev-db/libdbi 0.9.0: A database-independent abstraction layer in C
 dev-db/libdbi-drivers 0.9.0: The libdbi-drivers project maintains drivers for libdbi
-dev-db/libiodbc 3.52.8-r2 3.52.12: ODBC Interface for Linux
+dev-db/libiodbc 3.52.12: ODBC Interface for Linux
 dev-db/libzdb 2.11.1 2.12 3.1: A thread safe high level multi-database connection pool library
 dev-db/lmdb 0.9.18 0.9.22: An ultra-fast, ultra-compact key-value embedded data store
 dev-db/m17n-db 1.7.0: Database for the m17n library
@@ -3273,7 +3273,7 @@ dev-libs/snowball-stemmer 0.20140325: All you need to include the snowball stemm
 dev-libs/socketstream 0.7.0-r1: C++ Streaming sockets library
 dev-libs/sord 0.16.0-r1: Library for storing RDF data in memory
 dev-libs/spdlog 1.2.1: Very fast, header only, C++ logging library
-dev-libs/starpu 1.1.5 1.2.6: Unified runtime system for heterogeneous multicore architectures
+dev-libs/starpu 1.2.6: Unified runtime system for heterogeneous multicore architectures
 dev-libs/stfl 0.24: A library which implements a curses-based widget set for text terminals
 dev-libs/svrcore 4.0.4-r1: Mozilla LDAP C SDK
 dev-libs/tinyxml 2.6.2-r2: Simple and small C++ XML parser
@@ -6474,7 +6474,7 @@ dev-vcs/gitolite 2.3.1-r1 3.6.6: Highly flexible server for git directory versio
 dev-vcs/gitolite-gentoo 2.3.1-r1: Highly flexible server for git directory version tracker, Gentoo fork
 dev-vcs/guilt 0.36: A series of bash scripts which add a quilt-like interface to git
 dev-vcs/hg-git 0.8.8: push to and pull from a Git repository using Mercurial
-dev-vcs/hgsubversion 1.8.6: hgsubversion is a Mercurial extension for working with Subversion repositories
+dev-vcs/hgsubversion 1.9.2: hgsubversion is a Mercurial extension for working with Subversion repositories
 dev-vcs/kdesvn 2.0.0: A frontend to the subversion vcs
 dev-vcs/mercurial 4.5.2 4.6.2: Scalable distributed SCM
 dev-vcs/mr 1.20170129 1.20171231: Multiple Repository management tool
@@ -8700,7 +8700,7 @@ net-libs/dleyna-connector-dbus 0.2.0: utility library for higher level dLeyna li
 net-libs/dleyna-core 0.5.0: utility library for higher level dLeyna libraries
 net-libs/dleyna-renderer 0.5.0: library implementing services that allow clients to discover and manipulate DLNA renderers
 net-libs/dslib 3.0-r1: Library to access Czech eGov system "Datove schranky"
-net-libs/enet 1.2.2-r1 1.3.7 1.3.13: relatively thin, simple and robust network communication layer on top of UDP
+net-libs/enet 1.2.2-r1 1.3.13: relatively thin, simple and robust network communication layer on top of UDP
 net-libs/farstream 0.1.2-r2 0.2.8-r1: Audio/video conferencing framework specifically designed for instant messengers
 net-libs/ftplib 3.1.1: A set of routines that implement the FTP protocol
 net-libs/glib-networking 2.50.0: Network-related giomodules for glib
@@ -8729,7 +8729,7 @@ net-libs/libgadu 1.11.4 1.12.2: This library implements the client side of the G
 net-libs/libgfbgraph 0.2.3-r1: A GObject library for Facebook Graph API
 net-libs/libgrss 0.5.0-r1 0.7.0: LibGRSS is a library for easy management of RSS/Atom/Pie feeds
 net-libs/libgsasl 1.8.0-r1: The GNU SASL library
-net-libs/libgssglue 0.4 0.4-r1: Exports a gssapi interface which calls other random gssapi libraries
+net-libs/libgssglue 0.4-r1: Exports a gssapi interface which calls other random gssapi libraries
 net-libs/libhubbub 0.3.3: HTML5 compliant parsing library, written in C
 net-libs/libident 0.32-r1: A small library to interface to the Ident protocol server
 net-libs/libircclient 1.8: Small but powerful library implementing the client-server IRC protocol
@@ -8836,7 +8836,7 @@ net-mail/dot-forward 0.71-r3: reads sendmail's .forward files under qmail
 net-mail/dovecot 2.2.34 2.3.2.1: An IMAP and POP3 server written with security primarily in mind
 net-mail/email 3.1.3: Advanced CLI tool for sending email
 net-mail/ezmlm-idx 6.0.0: Simple yet powerful mailing list manager for qmail
-net-mail/fdm 1.7: fetch, filter and deliver mail
+net-mail/fdm 1.9: fetch, filter and deliver mail
 net-mail/fetchmail 6.3.26-r2 6.3.26-r3: the legendary remote-mail retrieval and forwarding utility
 net-mail/getmail 5.6: A mail retriever with reliable Maildir and mbox delivery
 net-mail/gnubiff 2.2.15-r3 2.2.17-r1: A mail notification program
@@ -9114,7 +9114,7 @@ net-nds/yp-tools 4.2.3: Network Information Service tools
 net-news/liferea 1.12.3: News Aggregator for RDF/RSS/CDF/Atom/Echo feeds
 net-news/newsboat 2.13: An RSS/Atom feed reader for text terminals
 net-news/quiterss 0.18.12: A Qt-based RSS/Atom feed reader
-net-news/rawdog 2.19 2.22-r1: Rawdog, RSS Aggregator Without Delusions Of Grandeur
+net-news/rawdog 2.22-r1: Rawdog, RSS Aggregator Without Delusions Of Grandeur
 net-news/rsstail 1.8: A tail-like RSS-reader
 net-news/rsstool 1.0.1_rc2: cmdline tool to read, parse, merge, and write RSS (and Atom) feeds
 net-news/snownews 1.5.12-r1: Snownews, a text-mode RSS/RDF newsreader
@@ -9182,7 +9182,7 @@ net-proxy/3proxy 0.8.9: A really tiny cross-platform proxy servers set
 net-proxy/adzapper 20110915-r2: Redirector for squid to intercept advertising, page counters and web bugs
 net-proxy/bfilter 1.1.4-r4: Ad-filtering web proxy featuring an effective heuristic ad-detection algorithm
 net-proxy/dante 1.4.1-r1: A free socks4,5 and msproxy implementation
-net-proxy/dnsproxy 1.16-r2: The dnsproxy daemon is a proxy for DNS queries
+net-proxy/dnsproxy 1.17: The dnsproxy daemon is a proxy for DNS queries
 net-proxy/haproxy 1.6.11-r2 1.7.10 1.8.9 1.8.13: A TCP/HTTP reverse proxy for high availability environments
 net-proxy/havp 0.92a-r2: HTTP AntiVirus Proxy
 net-proxy/http-replicator 3.0-r7: Proxy cache for Gentoo packages
