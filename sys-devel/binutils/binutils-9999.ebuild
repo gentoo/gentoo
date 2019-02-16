@@ -20,9 +20,8 @@ REQUIRED_USE="cxx? ( gold plugins ) default-gold? ( gold )"
 #                    - Default: PV
 # PATCH_DEV          - Use download URI https://dev.gentoo.org/~{PATCH_DEV}/distfiles/...
 #                      for the patchsets
-#                      Default: dilfridge :)
 
-PATCH_VER=2
+PATCH_VER=3
 PATCH_BINUTILS_VER=9999
 
 case ${PV} in
