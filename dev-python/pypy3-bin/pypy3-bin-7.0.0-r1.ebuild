@@ -61,8 +61,8 @@ DEPEND="${RDEPEND}
 S=${WORKDIR}/${MY_P}-src
 
 QA_PREBUILT="
-	usr/lib*/pypy3/pypy3-c
-	usr/lib*/pypy3/libpypy3-c.so"
+	usr/lib/pypy3.5/pypy3-c
+	usr/lib/pypy3.5/libpypy3-c.so"
 
 src_prepare() {
 	eapply "${FILESDIR}/7.0.0-gentoo-path.patch"
