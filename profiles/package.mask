@@ -287,8 +287,6 @@ media-libs/libglvnd
 
 # Aaron Bauman <bman@gentoo.org> (30 Apr 2018)
 # Masked for testing
-=dev-libs/libressl-2.7*
-=dev-libs/libressl-2.8*
 =dev-libs/libressl-2.9*
 
 # Brian Evans <grknight@gentoo.org> (20 Apr 2018)
