@@ -83,6 +83,14 @@ src_configure() {
 	econf "${myeconfargs[@]}"
 }
 
+src_test() {
+	# CK_FORK=no to avoid using fork() in check library
+	# as mc mocks fork() itself: bug #644462.
+	#
+	# VERBOSE=1 to make test failures contain detailed
+	# information.
+	CK_FORK=no emake check VERBOSE=1
+}
 src_install() {
 	emake DESTDIR="${D}" install
 	dodoc AUTHORS doc/{FAQ,NEWS,README}
