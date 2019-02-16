@@ -7,7 +7,7 @@ DESCRIPTION="GNU ccRTP - Implementation of the IETF real-time transport protocol
 HOMEPAGE="https://www.gnu.org/software/ccrtp/"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 
-KEYWORDS="~amd64 ~ppc ~ppc64 x86"
+KEYWORDS="amd64 ~ppc ~ppc64 x86"
 LICENSE="GPL-2"
 IUSE="doc"
 SLOT="0/2"
