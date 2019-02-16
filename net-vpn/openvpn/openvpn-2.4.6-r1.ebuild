@@ -1,25 +1,23 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit autotools flag-o-matic user systemd linux-info git-r3
+inherit autotools flag-o-matic user systemd linux-info
 
 DESCRIPTION="Robust and highly flexible tunneling application compatible with many OSes"
-EGIT_REPO_URI="https://github.com/OpenVPN/${PN}.git"
-EGIT_SUBMODULES=(-cmocka)
+SRC_URI="https://swupdate.openvpn.net/community/releases/${P}.tar.gz
+	test? ( https://raw.githubusercontent.com/OpenVPN/${PN}/v${PV}/tests/unit_tests/${PN}/mock_msg.h )"
 HOMEPAGE="https://openvpn.net/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-macos"
 
 IUSE="down-root examples inotify iproute2 libressl lz4 +lzo mbedtls pam"
 IUSE+=" pkcs11 +plugins selinux +ssl static systemd test userland_BSD"
 
 REQUIRED_USE="static? ( !plugins !pkcs11 )
-	lzo? ( !lz4 )
-	pkcs11? ( ssl )
 	mbedtls? ( ssl !libressl )
 	pkcs11? ( ssl )
 	!plugins? ( !pam !down-root )
@@ -28,7 +26,7 @@ REQUIRED_USE="static? ( !plugins !pkcs11 )
 CDEPEND="
 	kernel_linux? (
 		iproute2? ( sys-apps/iproute2[-minimal] )
-		!iproute2? ( sys-apps/net-tools )
+		!iproute2? ( >=sys-apps/net-tools-1.60_p20160215155418 )
 	)
 	pam? ( virtual/pam )
 	ssl? (
@@ -51,6 +49,7 @@ CONFIG_CHECK="~TUN"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-external-cmocka.patch"
+	"${FILESDIR}/${PN}-2.4.5-libressl-macro-fix.patch"
 )
 
 pkg_setup()  {
@@ -60,15 +59,20 @@ pkg_setup()  {
 src_prepare() {
 	default
 	eautoreconf
+
+	if use test; then
+		cp "${DISTDIR}/mock_msg.h" tests/unit_tests/${PN} || die
+	fi
 }
 
 src_configure() {
 	use static && append-ldflags -Xcompiler -static
 	SYSTEMD_UNIT_DIR=$(systemd_get_systemunitdir) \
 	TMPFILES_DIR="/usr/lib/tmpfiles.d" \
+	IFCONFIG=/bin/ifconfig \
+	ROUTE=/bin/route \
 	econf \
-		--with-plugindir="${ROOT}/usr/$(get_libdir)/$PN" \
-		$(usex mbedtls 'with-crypto-library' 'mbedtls' '' '') \
+		$(usex mbedtls '--with-crypto-library=mbedtls' '') \
 		$(use_enable inotify async-push) \
 		$(use_enable ssl crypto) \
 		$(use_enable lz4) \
@@ -120,6 +124,11 @@ pkg_postinst() {
 	enewgroup openvpn
 	enewuser openvpn "" "" "" openvpn
 
+	if use x64-macos; then
+		elog "You might want to install tuntaposx for TAP interface support:"
+		elog "http://tuntaposx.sourceforge.net"
+	fi
+
 	elog "The openvpn init script expects to find the configuration file"
 	elog "openvpn.conf in /etc/openvpn along with any extra files it may need."
 	elog ""
@@ -144,11 +153,6 @@ pkg_postinst() {
 
 	if use plugins ; then
 		einfo ""
-		einfo "plugins have been installed into /usr/$(get_libdir)/${PN}"
+		einfo "plugins have been installed into /usr/$(get_libdir)/${PN}/plugins"
 	fi
-
-	ewarn ""
-	ewarn "You are using a live ebuild building from the sources of openvpn"
-	ewarn "repository from http://openvpn.git.sourceforge.net. For reporting"
-	ewarn "bugs please contact: openvpn-devel@lists.sourceforge.net."
 }
