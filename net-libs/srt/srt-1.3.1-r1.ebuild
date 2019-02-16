@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit cmake-multilib
 
@@ -18,16 +18,17 @@ fi
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-IUSE="doc libressl gnutls"
+IUSE="gnutls libressl"
 
-RDEPEND="
-	gnutls? ( net-libs/gnutls )
+DEPEND="
+	gnutls? ( net-libs/gnutls:=[${MULTILIB_USEDEP}] )
 	!gnutls? (
 		!libressl? ( dev-libs/openssl:0=[${MULTILIB_USEDEP}] )
 		libressl? ( dev-libs/libressl:0=[${MULTILIB_USEDEP}] )
 	)
 "
-DEPEND="${RDEPEND}"
+RDEPEND="${DEPEND}"
+
 DOCS=( README.md )
 
 PATCHES=(
