@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -19,7 +19,7 @@ RDEPEND="
 	sys-libs/libcap
 	selinux? ( >=sys-libs/libselinux-2.1.9 )
 "
-DEPEND="${DEPEND}
+DEPEND="${RDEPEND}
 	app-text/docbook-xml-dtd:4.3
 	app-text/docbook-xsl-stylesheets
 	dev-libs/libxslt
