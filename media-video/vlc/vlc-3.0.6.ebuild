@@ -296,6 +296,7 @@ src_configure() {
 		$(use_enable chromecast microdns)
 		$(use_enable cpu_flags_x86_mmx mmx)
 		$(use_enable cpu_flags_x86_sse sse)
+		$(use_enable dav1d)
 		$(use_enable dbus)
 		$(use_enable dbus kwallet)
 		$(use_enable dc1394)
@@ -418,9 +419,14 @@ src_configure() {
 		--disable-spatialaudio
 		--disable-vsxu
 		--disable-wasapi
-		--disable-x26410b
 	)
 	# ^ We don't have these disabled libraries in the Portage tree yet.
+
+	if use x264 && has_version ">=media-libs/x264-0.0.20190214"; then
+		myeconfargs+=( --enable-x26410b )
+	else
+		myeconfargs+=( --disable-x26410b )
+	fi
 
 	# Compatibility fix for Samba 4.
 	use samba && append-cppflags "-I/usr/include/samba-4.0"

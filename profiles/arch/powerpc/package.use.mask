@@ -81,11 +81,6 @@ media-libs/mesa vulkan
 # Requires USE=opencl that is masked in this profile.
 net-misc/bfgminer adl lm_sensors
 
-# Andreas Sturmlechner <asturm@gentoo.org> (31 Jul 2017)
-# Mask for removal of ancient versions of media-libs/libvisio,
-# media-libs/libcdr, app-text/libwpd and app-text/libwpg
-media-gfx/inkscape cdr visio wpg
-
 # Jason Zaman <perfinion@gentoo.org> (09 May 2017)
 # x11-libs/libXpresent is not keyworded on ppc
 xfce-base/xfwm4 xpresent

@@ -298,6 +298,7 @@ src_configure() {
 		$(use_enable chromecast microdns)
 		$(use_enable cpu_flags_x86_mmx mmx)
 		$(use_enable cpu_flags_x86_sse sse)
+		$(use_enable dav1d)
 		$(use_enable dbus)
 		$(use_enable dbus kwallet)
 		$(use_enable dc1394)
