@@ -42,12 +42,7 @@ REQUIRED_USE="
 	cpu_flags_x86_ssse3? ( cpu_flags_x86_sse2 )
 "
 
-PATCHES=( "${FILESDIR}/libdirpc2.patch" "${FILESDIR}/pthread_lib2.patch" )
-
-src_prepare() {
-	sed -e 's/lib"/lib${LIB_SUFFIX}"/' -i CMakeLists.txt || die
-	cmake-utils_src_prepare
-}
+PATCHES=( "${FILESDIR}/pthread_lib2.patch" )
 
 multilib_src_configure() {
 	local mycmakeargs=(
@@ -72,7 +67,6 @@ multilib_src_configure() {
 		-DBUILD_SHARED_LIBS=ON
 	)
 	cmake-utils_src_configure
-	rm aom.pc # ensure it is rebuilt with proper libdir
 }
 
 multilib_src_install() {
