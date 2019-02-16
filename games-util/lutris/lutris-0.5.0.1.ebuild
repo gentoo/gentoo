@@ -8,7 +8,7 @@ PYTHON_REQ_USE="sqlite"
 
 inherit distutils-r1 gnome2-utils xdg-utils
 
-DESCRIPTION="Lutris is an open source gaming platform for GNU/Linux."
+DESCRIPTION="is an open source gaming platform for GNU/Linux"
 HOMEPAGE="https://lutris.net/"
 
 if [[ "${PV}" == "9999" ]] ; then
@@ -32,36 +32,35 @@ RDEPEND="
 	gnome-base/gnome-desktop[introspection]
 	net-libs/libsoup
 	net-libs/webkit-gtk:4[introspection]
-	sys-process/psmisc
 	x11-apps/xgamma
 	x11-apps/xrandr
 	x11-libs/gtk+[introspection]"
 
-	python_install_all() {
-    local DOCS=( AUTHORS README.rst docs/installers.rst )
-    distutils-r1_python_install_all
-	}
+python_install_all() {
+  local DOCS=( AUTHORS README.rst docs/installers.rst )
+  distutils-r1_python_install_all
+}
 
-	pkg_preinst() {
-		gnome2_icon_savelist
-		gnome2_schemas_savelist
-	}
+pkg_preinst() {
+	gnome2_icon_savelist
+	gnome2_schemas_savelist
+}
 
-	python_test() {
-    virtualx nosetests -v
-	}
+python_test() {
+  virtualx nosetests -v
+}
 
-	pkg_postinst() {
-		gnome2_icon_cache_update
-		gnome2_schemas_update
-		xdg_desktop_database_update
+pkg_postinst() {
+	gnome2_icon_cache_update
+	gnome2_schemas_update
+	xdg_desktop_database_update
 
-		elog "For a list of optional dependencies (runners) see:"
-		elog "/usr/share/doc/${PF}/README.rst.bz2"
-	}
+	elog "For a list of optional dependencies (runners) see:"
+	elog "/usr/share/doc/${PF}/README.rst.bz2"
+}
 
-	pkg_postrm() {
-		gnome2_icon_cache_update
-		gnome2_schemas_update
-		xdg_desktop_database_update
-	}
+pkg_postrm() {
+	gnome2_icon_cache_update
+	gnome2_schemas_update
+	xdg_desktop_database_update
+}
