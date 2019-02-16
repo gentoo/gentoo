@@ -29,6 +29,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Lars Wendler <polynomial-c@gentoo.org> (16 Feb 2019)
+# Masked because of broken mouse behavior (bug #678102)
+=sys-apps/less-549
+
 # Michał Górny <mgorny@gentoo.org> (14 Feb 2019)
 # Upstream switched install paths, and we no longer use Gentoo patches
 # for that.  Masked for testing, and for binary package builds.
