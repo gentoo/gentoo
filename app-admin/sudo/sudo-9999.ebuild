@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -31,7 +31,7 @@ fi
 # 3-clause BSD license
 LICENSE="ISC BSD"
 SLOT="0"
-IUSE="gcrypt ldap nls offensive openssl pam sasl selinux +sendmail skey"
+IUSE="gcrypt ldap nls offensive openssl pam sasl +secure-path selinux +sendmail skey sssd"
 
 CDEPEND="
 	sys-libs/zlib:=
@@ -44,6 +44,7 @@ CDEPEND="
 	pam? ( virtual/pam )
 	sasl? ( dev-libs/cyrus-sasl )
 	skey? ( >=sys-auth/skey-1.1.5-r1 )
+	sssd? ( sys-auth/sssd[sudo] )
 "
 RDEPEND="
 	${CDEPEND}
@@ -137,6 +138,7 @@ src_configure() {
 		--with-env-editor
 		--with-plugindir="${EPREFIX}"/usr/$(get_libdir)/sudo
 		--with-rundir="${EPREFIX}"/run/sudo
+		$(use_with secure-path secure-path ${SECURE_PATH})
 		--with-secure-path="${SECURE_PATH}"
 		--with-vardir="${EPREFIX}"/var/db/sudo
 		--without-linux-audit
@@ -151,6 +153,7 @@ src_configure() {
 		$(use_with ldap)
 		$(use_with pam)
 		$(use_with skey)
+		$(use_with sssd)
 		$(use_with selinux)
 		$(use_with sendmail)
 	)
