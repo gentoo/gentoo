@@ -84,9 +84,13 @@ pkg_setup() {
 }
 
 src_prepare() {
+	eapply "${FILESDIR}/7.0.0-gentoo-path.patch"
 	eapply "${FILESDIR}/1.9-distutils.unixccompiler.UnixCCompiler.runtime_library_dir_option.patch"
 	eapply "${FILESDIR}"/5.9.0-shared-lib.patch	# 517002
 	eapply "${FILESDIR}"/7.0.0_all_distutils_cxx.patch
+
+	sed -e "s^@EPREFIX@^${EPREFIX}^" \
+		-i lib-python/3/distutils/command/install.py || die
 
 	# apply CPython stdlib patches
 	pushd lib-python/3 > /dev/null || die

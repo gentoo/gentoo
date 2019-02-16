@@ -78,11 +78,15 @@ DEPEND="${RDEPEND}
 S=${WORKDIR}/${MY_P}-src
 
 QA_PREBUILT="
-	usr/lib*/pypy/pypy-c
-	usr/lib*/pypy/libpypy-c.so"
+	usr/lib/pypy2.7/pypy-c
+	usr/lib/pypy2.7/libpypy-c.so"
 
 src_prepare() {
+	eapply "${FILESDIR}/7.0.0-gentoo-path.patch"
 	eapply "${FILESDIR}/1.9-distutils.unixccompiler.UnixCCompiler.runtime_library_dir_option.patch"
+
+	sed -e "s^@EPREFIX@^${EPREFIX}^" \
+		-i lib-python/2.7/distutils/command/install.py || die
 
 	# apply CPython stdlib patches
 	pushd lib-python/2.7 > /dev/null || die
