@@ -9,4 +9,4 @@ RDEPEND=>=sys-libs/zlib-1.1.3:0= virtual/libffi:0= virtual/libintl:0= dev-libs/e
 SLOT=0/41-py27
 SRC_URI=https://dev.gentoo.org/~floppym/python/python-gentoo-patches-2.7.15.tar.xz
 _eclasses_=check-reqs	2c6f909675083dce8430b648bf737cb0	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	mercurial	9813bb616cb1bd0c943177ab52204409	multilib	b2f01ad412baf81650c23fcf0975fa33	pax-utils	e85f015e815dd463b0c206d781ef45a5	python-any-r1	4900ae970f827a22d33d41bd8b8f9ace	python-utils-r1	12114a2a9aab35b93efc037a196b3234	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
-_md5_=29452fc2631c12f92eaead35dcd6fe94
+_md5_=7ac196116a370d3cae8794169048ef6e
