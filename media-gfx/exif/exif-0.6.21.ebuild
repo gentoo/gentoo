@@ -1,10 +1,10 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
 
 DESCRIPTION="Small CLI util to show EXIF infos hidden in JPEG files"
-HOMEPAGE="http://libexif.sourceforge.net/"
+HOMEPAGE="https://libexif.github.io/"
 SRC_URI="mirror://sourceforge/libexif/${P}.tar.bz2"
 
 LICENSE="GPL-2"
