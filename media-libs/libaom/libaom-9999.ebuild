@@ -53,7 +53,6 @@ multilib_src_configure() {
 		-DENABLE_WERROR=OFF
 
 		-DENABLE_NEON=$(usex cpu_flags_arm_neon ON OFF)
-		-DENABLE_NEON_ASM=$(usex cpu_flags_arm_neon ON OFF)
 		# ENABLE_DSPR2 / ENABLE_MSA for mips
 		-DENABLE_MMX=$(usex cpu_flags_x86_mmx ON OFF)
 		-DENABLE_SSE=$(usex cpu_flags_x86_sse ON OFF)
