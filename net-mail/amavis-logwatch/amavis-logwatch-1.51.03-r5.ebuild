@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -24,6 +24,7 @@ PATCHES=(
 	"${FILESDIR}/no-pid_file-configured.patch"
 	"${FILESDIR}/will-bind-to-lines.patch"
 	"${FILESDIR}/SANITIZED-NULL-bytes-messages.patch"
+	"${FILESDIR}/handle-clamd-select-failed.patch"
 )
 
 src_prepare() {

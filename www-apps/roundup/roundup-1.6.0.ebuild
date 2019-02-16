@@ -25,14 +25,6 @@ python_install_all() {
 }
 
 pkg_postinst() {
-	ewarn "As a non privileged user! (not root)"
-	ewarn "Run 'roundup-admin install' to set up a roundup instance"
-	ewarn "Then edit your config.ini file in the tracker home you setup"
-	ewarn "Run 'roundup-admin initialise' to setup the admin pass"
-	ewarn "run /usr/bin/roundup start port host \"your tracker name\" [your tracker home], and all should work!"
-	ewarn "run /usr/bin/roundup stop [your tracker home] to stop the server"
-	ewarn "log is in [tracker home]/roundup.log"
-	ewarn "pid file is in [tracker home]/roundup.pid"
-	ewarn
+	ewarn "See installation.txt for initialisation instructions."
 	ewarn "See upgrading.txt for upgrading instructions."
 }
