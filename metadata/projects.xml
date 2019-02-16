@@ -3129,6 +3129,24 @@
     </member>
   </project>
   <project>
+    <email>riscv@gentoo.org</email>
+    <name>RISC-V project</name>
+    <url>https://wiki.gentoo.org/wiki/Project-3ARISC-2DV</url>
+    <description>RISC-V architecture support project</description>
+    <member>
+      <email>dilfridge@gentoo.org</email>
+      <name>Andreas K. Hüttel</name>
+    </member>
+    <member>
+      <email>gokturk@gentoo.org</email>
+      <name>Göktürk Yüksek</name>
+    </member>
+    <member>
+      <email>zlogene@gentoo.org</email>
+      <name>Mikle Kolyada</name>
+    </member>
+  </project>
+  <project>
     <email>ros@gentoo.org</email>
     <name>Gentoo ROS Project</name>
     <url>https://wiki.gentoo.org/wiki/Project-3AROS</url>
