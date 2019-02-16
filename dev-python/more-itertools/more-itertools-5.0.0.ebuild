@@ -1,8 +1,9 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-PYTHON_COMPAT=( python{2_7,3_{4,5,6}} pypy{,3} )
+EAPI=7
+
+PYTHON_COMPAT=( pypy{,3} python{2_7,3_{4,5,6,7}} )
 
 inherit distutils-r1
 
@@ -12,7 +13,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~hppa ~ia64 ~ppc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-fbsd ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="doc test"
 
 RDEPEND="<dev-python/six-2.0[${PYTHON_USEDEP}]"
@@ -20,23 +21,18 @@ DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	doc? (
 		dev-python/sphinx[${PYTHON_USEDEP}]
+		dev-python/sphinx_rtd_theme[${PYTHON_USEDEP}]
 	)
-	test? (
-		${RDEPEND}
-		dev-python/nose[${PYTHON_USEDEP}]
-	)
+	test? (	${RDEPEND} )
 "
 
 python_compile_all() {
-	use doc && emake -C docs html
+	if use doc; then
+		sphinx-build docs docs/_build/html || die
+		HTML_DOCS=( docs/_build/html/. )
+	fi
 }
 
 python_test() {
-	nosetests -v -w "${BUILD_DIR}" more_itertools --with-doctest \
-		|| die "tests fail with ${EPYTHON}"
-}
-
-python_install_all() {
-	use doc && local HTML_DOCS=( docs/_build/html/. )
-	distutils-r1_python_install_all
+	"${EPYTHON}" -m unittest discover -v || die "tests fail with ${EPYTHON}"
 }
