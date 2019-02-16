@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,7 +18,7 @@ RDEPEND="
 	>=media-libs/libogg-1.3.0[${MULTILIB_USEDEP}]
 	>=media-libs/libvorbis-1.3.3-r1[${MULTILIB_USEDEP}]
 	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl )
+	libressl? ( dev-libs/libressl:0= )
 	speex? ( >=media-libs/speex-1.2_rc1-r1[${MULTILIB_USEDEP}] )
 	theora? ( >=media-libs/libtheora-1.1.1[${MULTILIB_USEDEP}] )
 "
