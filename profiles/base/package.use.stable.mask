@@ -1,8 +1,13 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
+
+# Andreas Sturmlechner <asturm@gentoo.org> (16 Feb 2019)
+# Unstable dependencies.
+media-gfx/digikam vkontakte
+media-plugins/kipi-plugins mediawiki vkontakte
 
 # Brian Evans <grknight@gentoo.org> (06 Dec 2018)
 # Mask USE flag since argon2 dependency is not stable on most arches
@@ -103,10 +108,6 @@ app-portage/layman g-sorcery
 # broken, only allow for unstable keywords
 # Bug: #581058
 net-misc/asterisk osplookup
-
-# Johannes Huber <johu@gentoo.org> (28 Jan 2017)
-# Unstable dependencies.
-media-plugins/kipi-plugins mediawiki vkontakte
 
 # Michael Palimaka <kensington@gentoo.org (26 Jan 2017)
 # Requires testing version of media-libs/opencv
