@@ -10,6 +10,7 @@ inherit distutils-r1
 DESCRIPTION="Fork of MySQL-python"
 HOMEPAGE="https://pypi.org/project/mysqlclient/ https://github.com/PyMySQL/mysqlclient-python"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.post1.tar.gz -> ${PF}.tar.gz"
+S="${WORKDIR}/${P}.post1"
 
 SLOT="0"
 LICENSE="GPL-2"
