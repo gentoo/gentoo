@@ -1,8 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit autotools-multilib eutils flag-o-matic libtool multilib multilib-minimal
+EAPI=7
+inherit autotools flag-o-matic multilib-minimal
 
 DESCRIPTION="C library for executing name service queries asynchronously"
 HOMEPAGE="http://0pointer.de/lennart/projects/libasyncns/"
@@ -19,10 +19,11 @@ RDEPEND=""
 DEPEND="doc? ( app-doc/doxygen )"
 
 src_prepare() {
+	default
 	# fix libdir in pkgconfig file
-	epatch "${FILESDIR}/${P}-libdir.patch"
+	eapply "${FILESDIR}/${P}-libdir.patch"
 	# fix configure check for res_query
-	epatch "${FILESDIR}/${P}-configure-res_query.patch"
+	eapply "${FILESDIR}/${P}-configure-res_query.patch"
 	eautoreconf
 }
 
@@ -34,13 +35,12 @@ multilib_src_configure() {
 	econf \
 		--docdir="${EPREFIX}"/usr/share/doc/${PF} \
 		--htmldir="${EPREFIX}"/usr/share/doc/${PF}/html \
-		--disable-dependency-tracking \
 		--disable-lynx \
 		--disable-static
 }
 
 multilib_src_compile() {
-	emake || die "emake failed"
+	emake
 
 	if multilib_is_native_abi && use doc; then
 		doxygen doxygen/doxygen.conf || die "doxygen failed"
@@ -48,7 +48,7 @@ multilib_src_compile() {
 }
 
 multilib_src_install() {
-	emake DESTDIR="${D}" install || die "emake install failed"
+	emake DESTDIR="${D}" install
 
 	if multilib_is_native_abi && use doc; then
 		docinto apidocs
