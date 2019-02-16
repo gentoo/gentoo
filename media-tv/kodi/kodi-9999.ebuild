@@ -42,7 +42,7 @@ SLOT="0"
 # use flag is called libusb so that it doesn't fool people in thinking that
 # it is _required_ for USB support. Otherwise they'll disable udev and
 # that's going to be worse.
-IUSE="airplay alsa bluetooth bluray caps cec +css dbus debug dvd gbm gles lcms libressl libusb lirc mariadb mysql nfs +opengl pulseaudio samba systemd +system-ffmpeg test +udev udisks upnp upower vaapi vdpau wayland webserver +X +xslt zeroconf"
+IUSE="airplay alsa bluetooth bluray caps cec +css dbus dvd gbm gles lcms libressl libusb lirc mariadb mysql nfs +opengl pulseaudio samba systemd +system-ffmpeg test +udev udisks upnp upower vaapi vdpau wayland webserver +X +xslt zeroconf"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
 	|| ( gles opengl )
