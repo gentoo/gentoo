@@ -1,7 +1,8 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
+
 inherit cmake-multilib
 
 if [[ ${PV} == *9999* ]]; then
@@ -28,18 +29,17 @@ IUSE="doc examples"
 IUSE="${IUSE} cpu_flags_x86_mmx cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse3 cpu_flags_x86_ssse3 cpu_flags_x86_sse4_1 cpu_flags_x86_avx cpu_flags_x86_avx2"
 IUSE="${IUSE} cpu_flags_arm_neon"
 
-RDEPEND=""
-DEPEND="abi_x86_32? ( dev-lang/yasm )
+REQUIRED_USE="
+	cpu_flags_x86_sse2? ( cpu_flags_x86_mmx )
+	cpu_flags_x86_ssse3? ( cpu_flags_x86_sse2 )
+"
+
+BDEPEND="abi_x86_32? ( dev-lang/yasm )
 	abi_x86_64? ( dev-lang/yasm )
 	abi_x86_x32? ( dev-lang/yasm )
 	x86-fbsd? ( dev-lang/yasm )
 	amd64-fbsd? ( dev-lang/yasm )
 	doc? ( app-doc/doxygen )
-"
-
-REQUIRED_USE="
-	cpu_flags_x86_sse2? ( cpu_flags_x86_mmx )
-	cpu_flags_x86_ssse3? ( cpu_flags_x86_sse2 )
 "
 
 PATCHES=( "${FILESDIR}/pthread_lib2.patch" )
@@ -63,16 +63,13 @@ multilib_src_configure() {
 		-DENABLE_SSE4_1=$(usex cpu_flags_x86_sse4_1 ON OFF)
 		-DENABLE_AVX=$(usex cpu_flags_x86_avx ON OFF)
 		-DENABLE_AVX2=$(usex cpu_flags_x86_avx2 ON OFF)
-
-		-DBUILD_SHARED_LIBS=ON
 	)
 	cmake-utils_src_configure
 }
 
 multilib_src_install() {
-	cmake-utils_src_install
 	if multilib_is_native_abi && use doc ; then
-		docinto html
-		dodoc docs/html/*
+		local HTML_DOCS=( "${BUILD_DIR}"/docs/html/. )
 	fi
+	cmake-utils_src_install
 }
