@@ -15,23 +15,23 @@ IUSE="cpu_flags_x86_aes cpu_flags_x86_avx i2p-hardening libressl static +upnp we
 # if using libressl, require >=boost-1.65, see #597798
 RDEPEND="
 	!static? (
-		dev-libs/boost[threads]
-		!libressl? ( dev-libs/openssl:0[-bindist] )
+		dev-libs/boost:=[threads]
+		!libressl? ( dev-libs/openssl:0=[-bindist] )
 		libressl? (
-			dev-libs/libressl:0
-			>=dev-libs/boost-1.65
+			dev-libs/libressl:0=
+			>=dev-libs/boost-1.65:=
 		)
 		upnp? ( net-libs/miniupnpc )
 	)"
 DEPEND="${RDEPEND}
 	static? (
-		dev-libs/boost[static-libs,threads]
-		!libressl? ( dev-libs/openssl:0[static-libs] )
+		dev-libs/boost:=[static-libs,threads]
+		!libressl? ( dev-libs/openssl:0=[static-libs] )
 		libressl? (
-			dev-libs/libressl:0[static-libs]
-			>=dev-libs/boost-1.65
+			dev-libs/libressl:0=[static-libs]
+			>=dev-libs/boost-1.65:=
 		)
-		sys-libs/zlib[static-libs]
+		sys-libs/zlib:=[static-libs]
 		upnp? ( net-libs/miniupnpc[static-libs] )
 	)
 	websocket? ( dev-cpp/websocketpp )"
