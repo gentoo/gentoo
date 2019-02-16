@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -18,9 +18,9 @@ IUSE="gcrypt libressl"
 
 RDEPEND="!gcrypt? (
 		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:= )
+		libressl? ( dev-libs/libressl:0= )
 	)
-	gcrypt? ( dev-libs/libgcrypt:0 )
+	gcrypt? ( dev-libs/libgcrypt:0= )
 	dev-libs/libnl:3
 	net-wireless/wireless-regdb"
 DEPEND="${RDEPEND}
@@ -38,6 +38,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.18-cflags.patch
 	"${FILESDIR}"/${PN}-3.18-libreg-link.patch #542436
 	"${FILESDIR}"/${PN}-3.18-openssl-1.1.0-compatibility.patch #652428
+	"${FILESDIR}"/${PN}-3.18-libressl.patch
 )
 
 src_prepare() {
