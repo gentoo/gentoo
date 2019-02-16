@@ -3,7 +3,7 @@
 
 EAPI=7
 
-CMAKE_MAKEFILE_GENERATOR="emake" # FIXME
+CMAKE_MAKEFILE_GENERATOR="emake" # keep until CMAKE_MIN_VERSION=3.13.4
 KDE_HANDBOOK="forceoptional"
 inherit kde5
 
