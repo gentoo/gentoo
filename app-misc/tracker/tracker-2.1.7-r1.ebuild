@@ -42,9 +42,7 @@ DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
 " # g-ir-merge needs py3; functional tests need py2, so disabled for now due to mixup
 # intltool-merge manually called in meson.build in 2.1.7; properly gone by 2.2.0
-RDEPEND="${RDEPEND}
-	miners? ( >=app-misc/tracker-miners-${PV_SERIES} )
-"
+PDEPEND="miners? ( >=app-misc/tracker-miners-${PV_SERIES} )"
 
 PATCHES=(
 	"${FILESDIR}"/${PV}-doc-options.patch # https://gitlab.gnome.org/GNOME/tracker/merge_requests/58
