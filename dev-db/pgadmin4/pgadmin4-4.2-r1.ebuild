@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -36,9 +36,10 @@ RDEPEND="${COMMON_DEPEND}
 	>=dev-python/beautifulsoup-4.4.1[${PYTHON_USEDEP}]
 	>=dev-python/blinker-1.4[${PYTHON_USEDEP}]
 	>=dev-python/click-6.6[${PYTHON_USEDEP}]
+	>=dev-python/cryptography-2.2.2-r1[${PYTHON_USEDEP}]
 	>=dev-python/extras-1.0.0[${PYTHON_USEDEP}]
 	>=dev-python/fixtures-3.0.0[${PYTHON_USEDEP}]
-	>=dev-python/flask-1.0.2[${PYTHON_USEDEP}]
+	>=dev-python/flask-0.12.4[${PYTHON_USEDEP}]
 	>=dev-python/flask-babel-0.11.1[${PYTHON_USEDEP}]
 	>=dev-python/flask-babelex-0.9.3[${PYTHON_USEDEP}]
 	>=dev-python/flask-gravatar-0.5.0[${PYTHON_USEDEP}]
@@ -59,8 +60,8 @@ RDEPEND="${COMMON_DEPEND}
 	>=dev-python/mimeparse-1.6.0[${PYTHON_USEDEP}]
 	>=dev-python/passlib-1.7.1[${PYTHON_USEDEP}]
 	>=dev-python/pbr-3.1.1[${PYTHON_USEDEP}]
+	>=dev-python/psutil-5.4.7[${PYTHON_USEDEP}]
 	>=dev-python/psycopg-2.7.4[${PYTHON_USEDEP}]
-	>=dev-python/pycrypto-2.6.1[${PYTHON_USEDEP}]
 	>=dev-python/pyrsistent-0.14.2[${PYTHON_USEDEP}]
 	>=dev-python/python-dateutil-2.7.1[${PYTHON_USEDEP}]
 	>=dev-python/python-sqlparse-0.2.4[${PYTHON_USEDEP}]
