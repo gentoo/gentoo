@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -29,9 +29,6 @@ DEPEND="${RDEPEND}
 "
 
 src_configure() {
-	# bug 483134
-	export GIT_CEILING_DIRECTORIES="${WORKDIR}"
-
 	# weasyprint enables generation of PDF from HTML
 	gnome2_src_configure \
 		--disable-unversioned \

@@ -39,9 +39,6 @@ PATCHES=(
 )
 
 src_configure() {
-	# https://bugs.gentoo.org/483134
-	export GIT_CEILING_DIRECTORIES="${WORKDIR}"
-
 	# weasyprint enables generation of PDF from HTML
 	gnome2_src_configure \
 		--disable-unversioned \
