@@ -235,13 +235,13 @@ multilib_src_configure() {
 	fi
 
 	# relative path must be used for tests to work properly
+        # All distributions pass --disable-locking because /var/lock/sane/ would be a world-writable directory
+        # --without-api-spec to not automagically depend on tons of stuff
+        # that break in many ways, bug #636202, #668232, #668350
+        # People can refer to the "Programmer's Documentation" at http://www.sane-project.org/docs.html
 	ECONF_SOURCE=${S} \
 	SANEI_JPEG="sanei_jpeg.o" SANEI_JPEG_LO="sanei_jpeg.lo" \
 	BACKENDS="${BACKENDS}" \
-	# All distributions pass --disable-locking because /var/lock/sane/ would be a world-writable directory
-	# --without-api-spec to not automagically depend on tons of stuff
-	# that break in many ways, bug #636202, #668232, #668350
-	# People can refer to the "Programmer's Documentation" at http://www.sane-project.org/docs.html
 	econf \
 		--disable-locking \
 		--without-api-spec \
