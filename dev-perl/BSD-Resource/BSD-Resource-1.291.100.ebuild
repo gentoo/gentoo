@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Perl module for BSD process resource limit and priority functions"
 
 SLOT="0"
-KEYWORDS="alpha amd64 ia64 ~ppc ~ppc64 sparc x86"
+KEYWORDS="alpha amd64 ~arm ia64 ~ppc ~ppc64 sparc x86"
 IUSE=""
 
 DEPEND="virtual/perl-ExtUtils-MakeMaker"
