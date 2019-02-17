@@ -1403,7 +1403,7 @@ app-text/libwps 0.4.10: Microsoft Works file word processor format import filter
 app-text/linuxdoc-tools 0.9.72 0.9.73: A toolset for processing LinuxDoc DTD SGML files
 app-text/llpp 26b_p20180114: graphical PDF viewer which aims to superficially resemble less(1)
 app-text/lout 3.40: High-level language for document formatting
-app-text/lv 4.51-r3 4.51-r4: Powerful Multilingual File Viewer
+app-text/lv 4.51-r4: Powerful Multilingual File Viewer
 app-text/manpager 1: Enable colorization of man pages
 app-text/mathtex 1.04: Lets you easily embed LaTeX math in your own html pages, blogs, wikis, etc
 app-text/mecab 0.996-r1: Yet Another Part-of-Speech and Morphological Analyzer

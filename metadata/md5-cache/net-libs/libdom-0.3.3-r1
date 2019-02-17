@@ -4,11 +4,11 @@ DESCRIPTION=implementation of the W3C DOM, written in C
 EAPI=7
 HOMEPAGE=http://www.netsurf-browser.org/projects/libdom/
 IUSE=expat test xml
-KEYWORDS=~amd64 ~arm ~ppc ~m68k-mint
+KEYWORDS=~amd64 ~arm ~ppc ~ppc64 ~m68k-mint
 LICENSE=MIT
 RDEPEND=>=dev-libs/libparserutils-0.2.1-r1 >=dev-libs/libwapcaplet-0.3.0 >=net-libs/libhubbub-0.3.1-r1 xml? ( expat? ( >=dev-libs/expat-2.1.0-r3 ) !expat? ( >=dev-libs/libxml2-2.9.1-r4 ) )
 REQUIRED_USE=test? ( xml )
 SLOT=0/0.3.3
 SRC_URI=https://download.netsurf-browser.org/libs/releases/libdom-0.3.3-src.tar.gz
 _eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
-_md5_=ff159c170a424fc5579f1495910672ee
+_md5_=d2a356396f91108e35c4b271ec88ca7b
