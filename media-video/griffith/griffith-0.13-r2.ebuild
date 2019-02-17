@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -46,6 +46,7 @@ src_prepare() {
 		"${S}"/lib/gconsole.py || die "sed failed"
 
 	epatch "${FILESDIR}/0.10-fix_lib_path.patch"
+	epatch "${FILESDIR}/griffith-0.13-validators.patch"
 }
 
 src_compile() {
