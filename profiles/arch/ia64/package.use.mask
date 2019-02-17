@@ -19,10 +19,6 @@ dev-libs/efl vlc
 app-arch/rpm test
 
 # Michał Górny <mgorny@gentoo.org> (15 Apr 2018)
-# Unkeyworded deps.
-net-misc/curl curl_ssl_axtls
-
-# Michał Górny <mgorny@gentoo.org> (15 Apr 2018)
 # Unkeyworded dep masks moved from default/linux/ia64 tree.
 mail-client/mutt notmuch
 mail-mta/exim redis
