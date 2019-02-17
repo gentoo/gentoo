@@ -4138,6 +4138,7 @@ net-irc/weechat:fifo - Enable FIFO support (sh pipes)
 net-irc/weechat:fset - Enable fast set plugin
 net-irc/weechat:irc - Enable IRC protocol support
 net-irc/weechat:logger - Enable support for logging
+net-irc/weechat:man - Build and install man pages
 net-irc/weechat:relay - Enable relay plugin (experimental)
 net-irc/weechat:scripts - Build infrastructure for scripting
 net-irc/weechat:trigger - Enable trigger plugin
