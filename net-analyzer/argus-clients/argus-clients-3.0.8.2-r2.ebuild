@@ -39,6 +39,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.0.7.21-curses-readline.patch
 	"${FILESDIR}"/${PN}-3.0.8.2-rpc.patch
 	"${FILESDIR}"/${PN}-3.0.8.2-ar.patch
+	"${FILESDIR}"/${PN}-3.0.8.2-curses-readline.patch
 )
 
 src_prepare() {
