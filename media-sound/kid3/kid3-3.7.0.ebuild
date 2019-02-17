@@ -71,9 +71,6 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		-DWITH_PHONON=OFF
-		-DWITH_QT4=OFF
-		-DWITH_QT5=ON
 		-DWITH_CHROMAPRINT=$(usex acoustid)
 		-DWITH_FLAC=$(usex flac)
 		-DWITH_ID3LIB=$(usex mp3)
