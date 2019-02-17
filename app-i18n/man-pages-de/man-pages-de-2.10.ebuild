@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit autotools
 
@@ -17,44 +17,58 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~s
 IUSE=""
 
 RDEPEND="virtual/man"
-DEPEND="app-text/po4a"
+BDEPEND="app-text/po4a"
 
-S=${WORKDIR}/${MY_P}
-
-src_unpack() {
-	default
-
-	# sys-apps/shadow has it's own translated man-page for this
-	rm "${S}/upstream/primary/man1/groups.1" || die
-	rm "${S}/po/primary/man1/groups.1.po" || die
-}
+S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
 	default
+
+	sed '/gzip --best/d' -i po/Makefile.am || die
+
+	# sys-apps/shadow has it's own translated man-page for this
+	local manpage
+	local noinst_manpages=(
+		upstream/primary/man1/groups.1
+		po/primary/man1/groups.1.po
+		po/primary/man1/su.1.po
+	)
+	for manpage in ${noinst_manpages[@]} ; do
+		rm "${manpage}" || die
+	done
 
 	# Use the same compression as every other manpage
 	local PORTAGE_COMPRESS_LOCAL=${PORTAGE_COMPRESS-bzip2}
 	local PORTAGE_COMPRESS_FLAGS_LOCAL=${PORTAGE_COMPRESS_FLAGS}
 	if [[ ${PORTAGE_COMPRESS_FLAGS+set} != "set" ]] ; then
 		case ${PORTAGE_COMPRESS_LOCAL} in
-			bzip2|gzip)  PORTAGE_COMPRESS_FLAGS_LOCAL="-9"
+			bzip2|gzip)
+				PORTAGE_COMPRESS_FLAGS_LOCAL="-9"
 			;;
 		esac
 	fi
-	sed -i -e "s/gzip --best/${PORTAGE_COMPRESS_LOCAL} ${PORTAGE_COMPRESS_FLAGS_LOCAL}/"\
-		po/Makefile.in || die
+
 	# Fix source files for symlinks
+	local LINKSOURCE
 	case ${PORTAGE_COMPRESS_LOCAL} in
-		bzip2)  for LINKSOURCE in "${S}/upstream/"*"/links.txt"
-				do
-					sed -i -e "s/\.gz/\.bz2/g" "$LINKSOURCE" || die
-				done
+		bzip2)
+			for LINKSOURCE in upstream/*/links.txt ; do
+				sed -i -e 's/\.gz/\.bz2/g' "${LINKSOURCE}" || die
+			done
 		;;
-		gzip)  # pass
+		gzip)
+			# pass
 		;;
-		*)  ewarn "Unexpected compression command ${PORTAGE_COMPRESS} found, symlinks will not work."
+		xz)
+			for LINKSOURCE in upstream/*/links.txt ; do
+				sed -i -e 's/\.gz/\.xz/g' "${LINKSOURCE}" || die
+			done
+		;;
+		*)
+			ewarn "Unexpected compression command ${PORTAGE_COMPRESS} found, symlinks will not work."
 		;;
 	esac
+
 	eautoreconf
 }
 
