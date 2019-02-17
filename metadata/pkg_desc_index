@@ -6496,7 +6496,7 @@ games-arcade/gnome-robots 3.22.3: Avoid the robots and make them crash into each
 games-board/four-in-a-row 3.28.0: Make lines of the same color to win
 games-board/gnome-chess 3.28.1: Play the classic two-player boardgame of chess
 games-board/gnome-mahjongg 3.22.0: Disassemble a pile of tiles by removing matching pairs
-games-board/gnome-mines 3.20.1: Clear hidden mines from a minefield
+games-board/gnome-mines 3.20.1 3.30.0: Clear hidden mines from a minefield
 games-board/gnuchess 6.2.4: Console based chess interface
 games-board/gnugo 3.9.1-r1 3.9.1-r2: A Go-playing program
 games-board/iagno 3.30.0: Dominate the board in a classic version of Reversi
