@@ -1,9 +1,9 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit cmake-utils desktop flag-o-matic gnome2-utils xdg-utils
+inherit desktop flag-o-matic xdg cmake-utils
 
 DESCRIPTION="OpenGL 3D space simulator"
 HOMEPAGE="https://celestia.space"
@@ -22,14 +22,19 @@ IUSE="glut gtk nls +qt5 theora"
 
 REQUIRED_USE="|| ( glut gtk qt5 )"
 
-RDEPEND="
+BDEPEND="
+	dev-cpp/eigen
+	virtual/pkgconfig
+	nls? ( sys-devel/gettext )
+"
+DEPEND="
 	>=dev-lang/lua-5.1:*
 	dev-libs/libfmt
 	media-libs/glew:0
-	virtual/glu
-	virtual/opengl
-	virtual/jpeg:0
 	media-libs/libpng:0=
+	virtual/glu
+	virtual/jpeg:0
+	virtual/opengl
 	glut? ( media-libs/freeglut )
 	gtk? (
 		x11-libs/gtk+:2
@@ -47,11 +52,7 @@ RDEPEND="
 		media-libs/libtheora
 	)
 "
-
-DEPEND="${RDEPEND}
-	dev-cpp/eigen
-	virtual/pkgconfig
-	nls? ( sys-devel/gettext )"
+RDEPEND="${DEPEND}"
 
 PATCHES=(
 	# make better desktop files
@@ -61,7 +62,7 @@ PATCHES=(
 )
 
 src_prepare() {
-	default
+	cmake-utils_src_prepare
 
 	filter-flags "-funroll-loops -frerun-loop-opt"
 
@@ -106,14 +107,4 @@ src_install() {
 		fi
 	done
 	dodoc AUTHORS README TRANSLATORS *.txt
-}
-
-pkg_postinst() {
-	gnome2_icon_cache_update
-	xdg_desktop_database_update
-}
-
-pkg_postrm() {
-	gnome2_icon_cache_update
-	xdg_desktop_database_update
 }
