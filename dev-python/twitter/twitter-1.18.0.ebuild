@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} pypy )
 inherit distutils-r1
 
 DESCRIPTION="An API and command-line toolset for Twitter (twitter.com)"
-HOMEPAGE="http://mike.verdone.ca/twitter/"
+HOMEPAGE="https://mike.verdone.ca/twitter/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
