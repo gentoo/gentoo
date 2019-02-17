@@ -2,15 +2,15 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit git-r3 toolchain-funcs
+inherit toolchain-funcs vcs-snapshot
 
 DESCRIPTION="Small 802.11 wireless LAN analyzer"
 HOMEPAGE="http://br1.einfach.org/tech/horst/"
-EGIT_REPO_URI="https://github.com/br101/${PN}/"
+SRC_URI="https://github.com/br101/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="debug +pcap test"
 
 RDEPEND="
@@ -27,7 +27,9 @@ DEPEND="
 "
 RESTRICT=test #just semantic tests, no functional tests
 PATCHES=(
-	"${FILESDIR}"/${PN}-9999-tinfo.patch
+	"${FILESDIR}"/${PN}-5.1-CC.patch
+	"${FILESDIR}"/${PN}-5.1-pcap_bufsize.patch
+	"${FILESDIR}"/${PN}-5.1-tinfo.patch
 )
 
 src_compile() {
@@ -39,6 +41,4 @@ src_install() {
 	dosbin ${PN}{,.sh}
 	dodoc README.md
 	doman ${PN}.8
-	insinto /etc
-	doins ${PN}.conf
 }

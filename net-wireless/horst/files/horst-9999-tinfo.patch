@@ -1,0 +1,11 @@
+--- a/Makefile
++++ b/Makefile
+@@ -41,7 +41,7 @@
+ SRC		+= network.c
+ SRC		+= protocol_parser.c
+ 
+-LIBS		= -lncurses -lm -luwifi
++LIBS		= $(shell $(PKG_CONFIG) --libs ncurses ) -lm -luwifi
+ LDFLAGS		+= -Wl,-rpath,/usr/local/lib
+ 
+ INCLUDES	= -I.
