@@ -67,6 +67,9 @@ PATCHES=(
 	"${FILESDIR}"/1.30.1-clippy-sysroot.patch
 	"${FILESDIR}"/1.32.0-fix-configure-of-bundled-llvm.patch
 	"${FILESDIR}"/1.32.0-system-llvm-7-SIGSEGV.patch
+	# Support LibreSSL 2.8.x: https://github.com/sfackler/rust-openssl/commit/9fd7584a84168655cb27e03b7e19a9847b88e77f
+	# Support LibreSSL 2.9.0: https://github.com/sfackler/rust-openssl/commit/af4488357c9b3e003b883e89c16aaa675ad0c6ac
+	"${FILESDIR}"/1.32.0-libressl.patch
 )
 
 toml_usex() {
