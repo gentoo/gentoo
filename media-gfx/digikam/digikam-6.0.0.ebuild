@@ -105,6 +105,8 @@ RDEPEND="${COMMON_DEPEND}
 RESTRICT+=" test"
 # bug 366505
 
+PATCHES=( "${FILESDIR}/${P}-cmake.patch" )
+
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 	kde5_pkg_pretend
