@@ -17,7 +17,7 @@ IUSE=""
 RDEPEND="
 	>=dev-libs/glib-2.44:2
 	>=x11-libs/gtk+-3.19:3
-	>=gnome-base/librsvg-2.32.0:2
+	>=gnome-base/librsvg-2.32.0:2[vala]
 "
 DEPEND="${RDEPEND}
 	$(vala_depend)
