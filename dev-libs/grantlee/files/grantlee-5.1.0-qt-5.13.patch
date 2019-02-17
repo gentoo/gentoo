@@ -1,0 +1,27 @@
+From 0cee029ee03ab4906c6d19b57458b5036852b0f8 Mon Sep 17 00:00:00 2001
+From: Michael Pyne <mpyne@kde.org>
+Date: Tue, 18 Dec 2018 17:47:21 -0500
+Subject: [PATCH] Fix build with Qt 5.13 / GCC 8.2.
+
+At this point Grantlee doesn't build for me because QList is an
+incomplete type. I think the compiler is right to complain, so I fix by
+including the appropriate header.
+
+Fixes issue #47.
+---
+ templates/lib/lexer_p.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/templates/lib/lexer_p.h b/templates/lib/lexer_p.h
+index 275aeea..1ae451a 100644
+--- a/templates/lib/lexer_p.h
++++ b/templates/lib/lexer_p.h
+@@ -24,7 +24,7 @@
+ #include "textprocessingmachine_p.h"
+ #include "token.h"
+ 
+-template <typename T> class QList;
++#include <QList>
+ 
+ namespace Grantlee
+ {
