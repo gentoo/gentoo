@@ -122,6 +122,9 @@ do_filter_flags() {
 	filter-flags -frecord-gcc-switches
 	filter-flags '-fdiagnostics-color*'
 
+	# Bug #610064
+	filter-flags '-fstack-check*'
+
 	# ...sure, why not?
 	strip-unsupported-flags
 
