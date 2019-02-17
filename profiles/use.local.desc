@@ -1847,6 +1847,7 @@ dev-python/celery:redis - Enables redis support
 dev-python/celery:sqs - Enables Amazon SQS transport module for celery
 dev-python/celery:yaml - Enable support of yaml as a configuration file format
 dev-python/cgkit:3ds - Enable support for importing 3D Studio models
+dev-python/cryptography:idna - enable support for the old, deprecated IDNA specification (RFC 3490)
 dev-python/dap:server - Enable OpenDAP server support
 dev-python/dask:distributed - Add support for distributed computing with dev-python/distributed
 dev-python/fabric:fab2 - Install as "fab2", allowing side-by-side install with fabric 1.x
