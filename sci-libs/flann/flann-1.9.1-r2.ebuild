@@ -3,22 +3,22 @@
 
 EAPI=7
 
-inherit cmake-utils cuda flag-o-matic git-r3 toolchain-funcs
+inherit cmake-utils cuda flag-o-matic toolchain-funcs
 
 DESCRIPTION="Fast approximate nearest neighbor searches in high dimensional spaces"
 HOMEPAGE="https://www.cs.ubc.ca/research/flann/"
-EGIT_REPO_URI="https://github.com/mariusmuja/flann.git"
+SRC_URI="https://github.com/mariusmuja/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~arm ~ppc ~x86 ~amd64-linux ~x86-linux"
 IUSE="cuda doc examples mpi openmp octave static-libs"
 
 BDEPEND="
+	app-arch/unzip
 	doc? ( dev-tex/latex2html )
 "
 DEPEND="
-	app-arch/lz4:=
 	cuda? ( >=dev-util/nvidia-cuda-toolkit-5.5 )
 	mpi? (
 		sci-libs/hdf5[mpi]
