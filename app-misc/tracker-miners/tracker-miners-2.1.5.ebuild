@@ -71,6 +71,7 @@ PATCHES=(
 	"${FILESDIR}"/${PV}-test-fix.patch # https://gitlab.gnome.org/GNOME/tracker-miners/merge_requests/50
 	"${FILESDIR}"/${PV}-seccomp.patch # https://gitlab.gnome.org/GNOME/tracker-miners/merge_requests/51
 	"${FILESDIR}"/${PV}-rss-symlink-fix{1,2}.patch # tracker-2.1 branch, will be included in 2.1.6
+	"${FILESDIR}"/${PV}-libav-build-fix.patch # master branch, fixed in 2.2.0, might be backported to 2.1.6 too
 )
 
 pkg_setup() {

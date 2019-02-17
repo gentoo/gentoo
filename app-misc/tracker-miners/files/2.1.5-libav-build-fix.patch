@@ -1,0 +1,29 @@
+From b55c22542de4f0f0166c6e5510ef0ec90bc69f18 Mon Sep 17 00:00:00 2001
+From: Carlos Garnacho <carlosg@gnome.org>
+Date: Mon, 10 Sep 2018 16:19:20 +0200
+Subject: [PATCH] build: Fix build with libav
+
+The extractor rules defined an array inside an array, which configure_file()
+wouldn't accept.
+
+(cherry picked from commit fff231c16b2ad9a2824f09c5b81f31ee220fba6f)
+---
+ src/tracker-extract/meson.build | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/tracker-extract/meson.build b/src/tracker-extract/meson.build
+index 9834dc422..bf19f8bac 100644
+--- a/src/tracker-extract/meson.build
++++ b/src/tracker-extract/meson.build
+@@ -60,7 +60,7 @@ if libjpeg.found()
+ endif
+ 
+ if generic_media_handler_name == 'libav'
+-  rules = ['90-libav-audio-generic.rule', ['90-libav-video-generic.rule']]
++  rules = ['90-libav-audio-generic.rule', '90-libav-video-generic.rule']
+   dependencies = [avcodec, avformat, avutil, tracker_miners_common_dep]
+   modules += [['extract-libav', 'tracker-extract-libav.c', rules, dependencies]]
+ endif
+-- 
+2.17.0
+
