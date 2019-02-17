@@ -47,8 +47,7 @@ case ${PV} in
 	*)
 		SRC_URI="mirror://gnu/binutils/binutils-${PV}.tar.xz"
 		SLOT=$(get_version_component_range 1-2)
-		# no keywords yet. Needs some testing
-		#KEYWORDS="-* ~hppa"
+		KEYWORDS="-* ~hppa"
 		;;
 esac
 
