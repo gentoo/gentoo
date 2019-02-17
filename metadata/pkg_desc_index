@@ -1173,10 +1173,10 @@ app-office/kexi 3.1.0: Visual database applications creator
 app-office/kmymoney 5.0.2: Personal finance manager based on KDE Frameworks
 app-office/ledger 3.1.1-r2: A double-entry accounting system with a command-line reporting interface
 app-office/libalkimia 7.0.2: Library with common classes and functionality used by KDE finance applications
-app-office/libreoffice 6.1.4.2: A full office productivity suite
-app-office/libreoffice-bin 6.1.4.2: A full office productivity suite. Binary package
-app-office/libreoffice-bin-debug 6.1.4.2: LibreOffice, a full office productivity suite. Binary package, debug info
-app-office/libreoffice-l10n 6.1.4.2: Translations for the Libreoffice suite
+app-office/libreoffice 6.1.4.2 6.1.5.2: A full office productivity suite
+app-office/libreoffice-bin 6.1.4.2 6.1.5.2: A full office productivity suite. Binary package
+app-office/libreoffice-bin-debug 6.1.4.2 6.1.5.2: LibreOffice, a full office productivity suite. Binary package, debug info
+app-office/libreoffice-l10n 6.1.4.2 6.1.5.2: Translations for the Libreoffice suite
 app-office/lyx 2.3.0: WYSIWYM frontend for LaTeX, DocBook, etc.
 app-office/mdbtools 0.7.1-r2: Set of libraries and utilities for reading Microsoft Access database (MDB) files
 app-office/ooextras 20060909: OOExtras: Extra Templates for OpenOffice.org!
@@ -1384,7 +1384,7 @@ app-text/lesspipe 1.83: a preprocessor for less
 app-text/libabw 0.1.2: Library parsing abiword documents
 app-text/libebook 0.1.2-r1: Library parsing various ebook formats
 app-text/libepubgen 0.1.1: EPUB generator for librevenge
-app-text/libetonyek 0.1.8: Library parsing Apple Keynote presentations
+app-text/libetonyek 0.1.8 0.1.9: Library parsing Apple Keynote presentations
 app-text/libexttextcat 3.4.5: Library implementing N-gram-based text categorization
 app-text/libgepub 0.4: GObject based library for handling and rendering epub documents
 app-text/libgxps 0.3.0: Library for handling and rendering XPS documents
@@ -1394,11 +1394,11 @@ app-text/libmwaw 0.3.14: Library parsing many pre-OSX MAC text formats
 app-text/libnumbertext 1.0.5: Number to number name and money text conversion libraries
 app-text/libodfgen 0.1.7: Library to generate ODF documents from libwpd and libwpg
 app-text/libpaper 1.1.24-r2: Library for handling paper characteristics
-app-text/libqxp 0.0.1: Library parsing QuarkXpress documents
+app-text/libqxp 0.0.1 0.0.2: Library parsing QuarkXpress documents
 app-text/libspectre 0.2.7 0.2.8: A library for rendering Postscript documents
 app-text/libstaroffice 0.0.6: Import filter for old StarOffice documents
-app-text/libwpd 0.10.2: WordPerfect Document import/export library
-app-text/libwpg 0.3.2: C++ library to read and parse graphics in WPG
+app-text/libwpd 0.10.2 0.10.3: WordPerfect Document import/export library
+app-text/libwpg 0.3.2 0.3.3: C++ library to read and parse graphics in WPG
 app-text/libwps 0.4.10: Microsoft Works file word processor format import filter library
 app-text/linuxdoc-tools 0.9.72 0.9.73: A toolset for processing LinuxDoc DTD SGML files
 app-text/llpp 26b_p20180114: graphical PDF viewer which aims to superficially resemble less(1)
@@ -1854,7 +1854,7 @@ dev-cpp/gtkmm 2.24.5 3.22.2 3.24.0: C++ interface for GTK+
 dev-cpp/gtksourceviewmm 2.10.3-r1 3.18.0: C++ bindings for gtksourceview
 dev-cpp/libassa 3.5.1-r2: A networking library based on Adaptive Communication Patterns
 dev-cpp/libbinio 1.4-r1: Binary I/O stream class library
-dev-cpp/libcmis 0.5.2_pre20160820-r1: C++ client library for the CMIS interface
+dev-cpp/libcmis 0.5.2_pre20160820-r1 0.5.2: C++ client library for the CMIS interface
 dev-cpp/libglademm 2.6.7-r2: C++ bindings for libglade
 dev-cpp/libgnomecanvasmm 2.26.0-r1: C++ bindings for libgnomecanvas
 dev-cpp/libmcpp 2.7.2-r2: A portable C++ preprocessor
@@ -4922,7 +4922,7 @@ dev-python/flask-wtf 0.14.2-r1: Simple integration of Flask and WTForms
 dev-python/flask-xml-rpc 0.1.2-r1: XML-RPC support for Flask applications
 dev-python/flexx 0.3.1 0.4.1: Pure Python toolkit for creating GUI's using web technology
 dev-python/flup 1.0.2-r1: Random assortment of WSGI servers
-dev-python/fonttools 3.0: Library for manipulating TrueType, OpenType, AFM and Type1 fonts
+dev-python/fonttools 3.0 3.24.2: Library for manipulating TrueType, OpenType, AFM and Type1 fonts
 dev-python/foolscap 0.7.0: RPC protocol for Twisted
 dev-python/formencode 1.3.0-r2: HTML form validation, generation, and conversion package
 dev-python/fpconst 0.7.3-r1: Python Module for handling IEEE 754 floating point special values
@@ -7390,7 +7390,7 @@ media-gfx/gphotofs 0.5: FUSE file system for interfacing with digital cameras us
 media-gfx/gpicview 0.2.4 0.2.5: A Simple and Fast Image Viewer for X
 media-gfx/gqview 2.1.5-r1: A GTK-based image browser
 media-gfx/graphicsmagick 1.3.30: Collection of tools and libraries for many image formats
-media-gfx/graphite2 1.3.10: Library providing rendering capabilities for complex non-Roman writing systems
+media-gfx/graphite2 1.3.10 1.3.13: Library providing rendering capabilities for complex non-Roman writing systems
 media-gfx/graphviz 2.40.1-r1: Open Source Graph Visualization Software
 media-gfx/grub-splashes 20091109: Collection of grub splashes
 media-gfx/gscan2pdf 1.8.11: Scan documents, perform OCR, produce PDFs and DjVus
@@ -7604,7 +7604,7 @@ media-libs/libcaca 0.99_beta19: A library that creates colored ASCII-art graphic
 media-libs/libcanberra 0.30-r5: Portable sound event library
 media-libs/libcdaudio 0.99.12-r1: Library of cd audio related routines
 media-libs/libcddb 1.3.2 1.3.2-r1: A library for accessing a CDDB server
-media-libs/libcdr 0.1.4: Library parsing the Corel cdr documents
+media-libs/libcdr 0.1.4 0.1.5: Library parsing the Corel cdr documents
 media-libs/libchamplain 0.12.16: Clutter based world map renderer
 media-libs/libclalsadrv 1.2.2 2.0.0: ALSA driver C++ access library
 media-libs/libclastfm 0.5: C API library to the last.fm web service (unofficial)
@@ -8059,7 +8059,7 @@ media-sound/cdcd 0.6.6-r2: a simple yet powerful command line cd player
 media-sound/cdparanoia 3.10.2-r6: an advanced CDDA reader with error correction
 media-sound/cdplay 1.0: a commandline CD Player
 media-sound/cdtool 2.1.8-r1: collection of command-line utilities to control cdrom devices
-media-sound/clementine 1.3.1_p20180416: Modern music player and library organizer based on Amarok 1.4 and Qt
+media-sound/clementine 1.3.1_p20180416 1.3.1_p20190127: Modern music player and library organizer based on Amarok 1.4 and Qt
 media-sound/cmus 2.8.0_rc0: A ncurses based music player with plugin support for many formats
 media-sound/cvoicecontrol 0.9_alpha: Console based speech recognition system
 media-sound/dagrab 0.513-r1: fixed point cd ripper
@@ -8985,7 +8985,7 @@ net-misc/modemmanager 1.8.2: Modem and mobile broadband management libraries
 net-misc/mosh 1.2.6 1.3.2: Mobile shell that supports roaming and intelligent local echo
 net-misc/mrouted 3.9.5-r1: IP multicast routing daemon
 net-misc/nat-traverse 0.6: Traverse NAT gateways with the Use of UDP
-net-misc/ndisc6 0.9.9: Recursive DNS Servers discovery Daemon (rdnssd) for IPv6
+net-misc/ndisc6 1.0.3: Recursive DNS Servers discovery Daemon (rdnssd) for IPv6
 net-misc/nemesis 1.4: A commandline-based, portable human IP stack for UNIX/Linux
 net-misc/netdate 1.2: A Utility to synchronize the time with ntp-servers
 net-misc/netifrc 0.2.2 0.5.1: Gentoo Network Interface Management Scripts
