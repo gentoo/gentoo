@@ -32,7 +32,10 @@ RDEPEND="${DEPEND}"
 # readd dependencies for test suite,
 # requires multiple ruby dependencies
 
-PATCHES=( "${FILESDIR}"/flann-1.9.1-cmake-3.11.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-cmake-3.11.patch
+	"${FILESDIR}"/${P}-cuda-9.patch
+)
 
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
