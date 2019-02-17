@@ -1,10 +1,11 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
+
 PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6,3_7} )
-CMAKE_MAKEFILE_GENERATOR=emake
-inherit cmake-utils gnome2-utils python-single-r1
+
+inherit cmake-utils python-single-r1 xdg-utils
 
 if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3
@@ -25,7 +26,7 @@ PLUGINS="+alias +buflist +charset +exec +fset +fifo +logger +relay +scripts +spe
 # dev-lang/v8 was dropped from Gentoo so we can't enable javascript support
 SCRIPT_LANGS="guile lua +perl php +python ruby tcl"
 LANGS=" cs de es fr hu it ja pl pt pt_BR ru tr"
-IUSE="doc nls +ssl test ${SCRIPT_LANGS} ${PLUGINS} ${INTERFACES} ${NETWORKS}"
+IUSE="doc man nls +ssl test ${SCRIPT_LANGS} ${PLUGINS} ${INTERFACES} ${NETWORKS}"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="
@@ -40,16 +41,14 @@ RDEPEND="
 	perl? ( dev-lang/perl:= )
 	php? ( >=dev-lang/php-7.0:* )
 	python? ( ${PYTHON_DEPS} )
-	ruby? ( || ( dev-lang/ruby:2.5 dev-lang/ruby:2.4 dev-lang/ruby:2.3 ) )
+	ruby? ( || ( dev-lang/ruby:2.6 dev-lang/ruby:2.5 dev-lang/ruby:2.4 dev-lang/ruby:2.3 ) )
 	ssl? ( net-libs/gnutls )
 	spell? ( app-text/aspell )
 	tcl? ( >=dev-lang/tcl-8.4.15:0= )
 "
 DEPEND="${RDEPEND}
-	doc? (
-		>=dev-ruby/asciidoctor-1.5.4
-		dev-util/source-highlight
-	)
+	doc? ( >=dev-ruby/asciidoctor-1.5.4 )
+	man? ( >=dev-ruby/asciidoctor-1.5.4 )
 	nls? ( >=sys-devel/gettext-0.15 )
 	test? ( dev-util/cpputest )
 "
@@ -58,8 +57,6 @@ DOCS="AUTHORS.adoc ChangeLog.adoc Contributing.adoc ReleaseNotes.adoc README.ado
 
 # tests need to be fixed to not use system plugins if weechat is already installed
 RESTRICT="test"
-
-PATCHES=( "${FILESDIR}"/${PN}-2.2-tinfo.patch )
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
@@ -109,34 +106,35 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		-DENABLE_NCURSES=ON
-		-DENABLE_NLS=$(usex nls)
-		-DENABLE_GNUTLS=$(usex ssl)
+		-DENABLE_JAVASCRIPT=OFF
 		-DENABLE_LARGEFILE=ON
+		-DENABLE_NCURSES=ON
 		-DENABLE_ALIAS=$(usex alias)
 		-DENABLE_ASPELL=$(usex spell)
 		-DENABLE_BUFLIST=$(usex buflist)
 		-DENABLE_CHARSET=$(usex charset)
+		-DENABLE_DOC=$(usex doc)
 		-DENABLE_EXEC=$(usex exec)
-		-DENABLE_FSET=$(usex fset)
 		-DENABLE_FIFO=$(usex fifo)
+		-DENABLE_FSET=$(usex fset)
+		-DENABLE_GNUTLS=$(usex ssl)
+		-DENABLE_GUILE=$(usex guile)
 		-DENABLE_IRC=$(usex irc)
 		-DENABLE_LOGGER=$(usex logger)
-		-DENABLE_RELAY=$(usex relay)
-		-DENABLE_SCRIPT=$(usex scripts)
-		-DENABLE_SCRIPTS=$(usex scripts)
+		-DENABLE_LUA=$(usex lua)
+		-DENABLE_MAN=$(usex man)
+		-DENABLE_NLS=$(usex nls)
 		-DENABLE_PERL=$(usex perl)
 		-DENABLE_PHP=$(usex php)
 		-DENABLE_PYTHON=$(usex python)
+		-DENABLE_RELAY=$(usex relay)
 		-DENABLE_RUBY=$(usex ruby)
-		-DENABLE_LUA=$(usex lua)
+		-DENABLE_SCRIPT=$(usex scripts)
+		-DENABLE_SCRIPTS=$(usex scripts)
 		-DENABLE_TCL=$(usex tcl)
-		-DENABLE_GUILE=$(usex guile)
-		-DENABLE_JAVASCRIPT=OFF
+		-DENABLE_TESTS=$(usex test)
 		-DENABLE_TRIGGER=$(usex trigger)
 		-DENABLE_XFER=$(usex xfer)
-		-DENABLE_DOC=$(usex doc)
-		-DENABLE_TESTS=$(usex test)
 	)
 
 	if use python; then
@@ -151,9 +149,9 @@ src_configure() {
 }
 
 pkg_postinst() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }
