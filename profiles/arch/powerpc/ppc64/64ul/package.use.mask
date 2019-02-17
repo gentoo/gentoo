@@ -1,10 +1,6 @@
 # Copyright 1999-2019 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-# Michał Górny <mgorny@gentoo.org> (07 Aug 2017)
-# Requires USE=networkmanager that is masked in this profile.
-app-misc/geoclue skyhook
-
 # Brian Evans <grknight@gentoo.org> (23 Nov 2015)
 # unmask galera for dev-db/mariadb
 >=dev-db/mariadb-10.1.0 -galera

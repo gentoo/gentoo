@@ -19,10 +19,6 @@ dev-libs/efl vlc
 app-arch/rpm test
 
 # Michał Górny <mgorny@gentoo.org> (15 Apr 2018)
-# Unkeyworded deps.
-net-misc/curl curl_ssl_axtls
-
-# Michał Górny <mgorny@gentoo.org> (15 Apr 2018)
 # Unkeyworded dep masks moved from default/linux/ia64 tree.
 mail-client/mutt notmuch
 mail-mta/exim redis
@@ -66,10 +62,6 @@ media-video/ffmpeg libv4l
 # Michał Górny <mgorny@gentoo.org> (07 Aug 2017)
 # Requires USE=bluetooth that is masked in this profile.
 media-sound/pulseaudio native-headset
-
-# Michał Górny <mgorny@gentoo.org> (07 Aug 2017)
-# Requires USE=networkmanager that is masked in this profile.
-app-misc/geoclue skyhook
 
 # Robin H. Johnson <robbat2@gentoo.org> (05 Aug 2017)
 # Upstream Git is switching to PCRE2 w/ JIT.
