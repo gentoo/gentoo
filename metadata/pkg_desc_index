@@ -1384,7 +1384,7 @@ app-text/lesspipe 1.83: a preprocessor for less
 app-text/libabw 0.1.2: Library parsing abiword documents
 app-text/libebook 0.1.2-r1: Library parsing various ebook formats
 app-text/libepubgen 0.1.1: EPUB generator for librevenge
-app-text/libetonyek 0.1.8 0.1.9: Library parsing Apple Keynote presentations
+app-text/libetonyek 0.1.9: Library parsing Apple Keynote presentations
 app-text/libexttextcat 3.4.5: Library implementing N-gram-based text categorization
 app-text/libgepub 0.4: GObject based library for handling and rendering epub documents
 app-text/libgxps 0.3.0: Library for handling and rendering XPS documents
@@ -1394,11 +1394,11 @@ app-text/libmwaw 0.3.14: Library parsing many pre-OSX MAC text formats
 app-text/libnumbertext 1.0.5: Number to number name and money text conversion libraries
 app-text/libodfgen 0.1.7: Library to generate ODF documents from libwpd and libwpg
 app-text/libpaper 1.1.24-r2: Library for handling paper characteristics
-app-text/libqxp 0.0.1 0.0.2: Library parsing QuarkXpress documents
+app-text/libqxp 0.0.2: Library parsing QuarkXpress documents
 app-text/libspectre 0.2.7 0.2.8: A library for rendering Postscript documents
 app-text/libstaroffice 0.0.6: Import filter for old StarOffice documents
-app-text/libwpd 0.10.2 0.10.3: WordPerfect Document import/export library
-app-text/libwpg 0.3.2 0.3.3: C++ library to read and parse graphics in WPG
+app-text/libwpd 0.10.3: WordPerfect Document import/export library
+app-text/libwpg 0.3.3: C++ library to read and parse graphics in WPG
 app-text/libwps 0.4.10: Microsoft Works file word processor format import filter library
 app-text/linuxdoc-tools 0.9.72 0.9.73: A toolset for processing LinuxDoc DTD SGML files
 app-text/llpp 26b_p20180114: graphical PDF viewer which aims to superficially resemble less(1)
@@ -1854,7 +1854,7 @@ dev-cpp/gtkmm 2.24.5 3.22.2 3.24.0: C++ interface for GTK+
 dev-cpp/gtksourceviewmm 2.10.3-r1 3.18.0: C++ bindings for gtksourceview
 dev-cpp/libassa 3.5.1-r2: A networking library based on Adaptive Communication Patterns
 dev-cpp/libbinio 1.4-r1: Binary I/O stream class library
-dev-cpp/libcmis 0.5.2_pre20160820-r1 0.5.2: C++ client library for the CMIS interface
+dev-cpp/libcmis 0.5.2: C++ client library for the CMIS interface
 dev-cpp/libglademm 2.6.7-r2: C++ bindings for libglade
 dev-cpp/libgnomecanvasmm 2.26.0-r1: C++ bindings for libgnomecanvas
 dev-cpp/libmcpp 2.7.2-r2: A portable C++ preprocessor
