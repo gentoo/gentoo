@@ -9,7 +9,7 @@ EGO_PN="github.com/kubernetes-sigs/${PN}"
 inherit golang-vcs-snapshot systemd
 
 DESCRIPTION="OCI-based implementation of Kubernetes Container Runtime Interface"
-HOMEPAGE="http://cri-o.io/"
+HOMEPAGE="https://cri-o.io/"
 SRC_URI="https://github.com/kubernetes-sigs/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
