@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,7 +9,7 @@ EGO_PN="github.com/kubernetes-incubator/${PN}"
 inherit golang-vcs-snapshot systemd
 
 DESCRIPTION="OCI-based implementation of Kubernetes Container Runtime Interface"
-HOMEPAGE="http://cri-o.io/"
+HOMEPAGE="https://cri-o.io/"
 SRC_URI="https://github.com/kubernetes-incubator/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
