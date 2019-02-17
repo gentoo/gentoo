@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=0
@@ -106,6 +106,9 @@ do_filter_flags() {
 
 	filter-flags -frecord-gcc-switches
 	filter-flags '-fdiagnostics-color*'
+
+	# Bug #610064
+	filter-flags '-fstack-check*'
 
 	# ...sure, why not?
 	strip-unsupported-flags
