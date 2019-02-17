@@ -33,7 +33,6 @@ DEPEND="${RDEPEND}
 "
 # TODO: make gdk-pixbuf properly optional with USE=test
 
-
 pkg_setup() {
 	use python && python_setup
 }
