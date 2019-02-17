@@ -138,9 +138,6 @@ x11-drivers/xf86-video-ati glamor
 # x11-drivers/xf86-video-tdfx
 x11-base/xorg-drivers video_cards_tdfx
 
-# <=sci-geosciences/gpsd-2.95-r1
-app-misc/geoclue gps
-
 # >=sys-devel/binutils-2.22
 sys-devel/llvm gold
 

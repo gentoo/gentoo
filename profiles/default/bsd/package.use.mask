@@ -88,6 +88,3 @@ media-video/mplayer joystick video_cards_tdfx
 
 # linux only
 media-libs/opencv ieee1394 cuda
-
-# depends on networkmanager
-app-misc/geoclue skyhook

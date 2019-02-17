@@ -40,10 +40,6 @@ net-print/hplip qt5
 # Requires media-libs/portmidi which is not stable
 media-sound/hydrogen portmidi
 
-# Andreas Sturmlechner <asturm@gentoo.org> (06 Feb 2018)
-# Requires sci-geosciences/gpsd which is not stable
-app-misc/geoclue gps
-
 # David Seifert <soap@gentoo.org> (23 Sep 2017)
 # MPI does not have stable keywords on ppc/ppc64
 sci-libs/fftw mpi

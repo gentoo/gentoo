@@ -71,10 +71,6 @@ net-misc/ofono dundee
 # Requires USE=hdf5 that is masked in this profile.
 media-libs/vigra doc python test
 
-# Michał Górny <mgorny@gentoo.org> (07 Aug 2017)
-# Requires USE=networkmanager that is masked in this profile.
-app-misc/geoclue skyhook
-
 # Michał Górny <mgorny@gentoo.org> (28 Jun 2017)
 # app-misc/dtach is not keyworded, and tests are restricted anyway, so
 # no point in pursuing it right now.
