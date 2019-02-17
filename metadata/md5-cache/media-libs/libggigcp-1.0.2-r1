@@ -3,9 +3,9 @@ DEPEND=>=media-libs/libggi-2.2.2
 DESCRIPTION=Libggi extension for advanced color and palette handling
 EAPI=7
 HOMEPAGE=https://ibiblio.org/ggicore/packages/libggigcp.html
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 ~x86
 LICENSE=MIT
 RDEPEND=>=media-libs/libggi-2.2.2
 SLOT=0
 SRC_URI=mirror://sourceforge/ggi/libggigcp-1.0.2.src.tar.bz2
-_md5_=a4495e89a027d3d06bda52d48ca97c1e
+_md5_=4e93b243deacc74c2b0c9e4af25cdc0c
