@@ -1,0 +1,44 @@
+--- a/fragtest.c
++++ b/fragtest.c
+@@ -458,7 +458,7 @@
+ 	if ((ctx.ip = ip_open()) == NULL)
+ 		err(1, "couldn't open raw IP interface");
+ 
+-	if ((ctx.pcap = pcap_open(ifent.intf_name)) == NULL)
++	if ((ctx.pcap = fragroute_pcap_open(ifent.intf_name)) == NULL)
+ 		err(1, "couldn't open %s for sniffing", ifent.intf_name);
+ 	
+ 	if ((ctx.dloff = pcap_dloff(ctx.pcap)) < 0)
+--- a/tun-loop.c
++++ b/tun-loop.c
+@@ -331,7 +331,7 @@
+ 		return (tun_close(tun));
+ 	
+ 	/* Set up to sniff on loopback. */
+-	if ((tun->pcap = pcap_open(tun->ifent->intf_name)) == NULL)
++	if ((tun->pcap = fragroute_pcap_open(tun->ifent->intf_name)) == NULL)
+ 		return (tun_close(tun));
+ 	
+ 	if (pcap_filter(tun->pcap, "ip dst %s", addr_ntoa(dst)) < 0)
+--- a/pcaputil.c
++++ b/pcaputil.c
+@@ -27,7 +27,7 @@
+ #include "pcaputil.h"
+ 
+ pcap_t *
+-pcap_open(char *device)
++fragroute_pcap_open(char *device)
+ {
+ 	char ebuf[PCAP_ERRBUF_SIZE];
+ 	pcap_t *pcap;
+--- a/pcaputil.h
++++ b/pcaputil.h
+@@ -9,7 +9,7 @@
+ #ifndef PCAPUTIL_H
+ #define PCAPUTIL_H
+ 
+-pcap_t *pcap_open(char *device);
++pcap_t *fragroute_pcap_open(char *device);
+ int	pcap_dloff(pcap_t *pcap);
+ int	pcap_filter(pcap_t *pcap, const char *fmt, ...);
+ 
