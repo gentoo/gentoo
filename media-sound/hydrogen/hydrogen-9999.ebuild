@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit cmake-utils git-r3 xdg-utils
+inherit git-r3 xdg cmake-utils
 
 DESCRIPTION="Advanced drum machine"
 HOMEPAGE="http://www.hydrogen-music.org/"
@@ -16,7 +16,12 @@ IUSE="alsa +archive doc jack ladspa lash osc oss portaudio portmidi pulseaudio"
 
 REQUIRED_USE="lash? ( alsa )"
 
-RDEPEND="
+BDEPEND="
+	virtual/pkgconfig
+	doc? ( app-doc/doxygen )
+"
+DEPEND="
+	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5
 	dev-qt/qtwidgets:5
@@ -34,10 +39,7 @@ RDEPEND="
 	portmidi? ( media-libs/portmidi )
 	pulseaudio? ( media-sound/pulseaudio )
 "
-DEPEND="${RDEPEND}
-	virtual/pkgconfig
-	doc? ( app-doc/doxygen )
-"
+RDEPEND="${DEPEND}"
 
 DOCS=( AUTHORS ChangeLog DEVELOPERS README.txt )
 
@@ -71,16 +73,6 @@ src_compile() {
 }
 
 src_install() {
-	use doc && local HTML_DOCS=( ${BUILD_DIR}/docs/html/. )
+	use doc && local HTML_DOCS=( "${BUILD_DIR}"/docs/html/. )
 	cmake-utils_src_install
-}
-
-pkg_postinst() {
-	xdg_mimeinfo_database_update
-	xdg_desktop_database_update
-}
-
-pkg_postrm() {
-	xdg_mimeinfo_database_update
-	xdg_desktop_database_update
 }
