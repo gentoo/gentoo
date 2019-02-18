@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,7 +13,7 @@ SRC_URI="mirror://alsaproject/pyalsa/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 ~mips ppc ppc64 sparc x86"
+KEYWORDS="alpha amd64 ~hppa ~mips ppc ppc64 sparc x86"
 IUSE=""
 
 RDEPEND="media-libs/alsa-lib"
