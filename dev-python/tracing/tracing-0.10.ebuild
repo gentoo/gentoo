@@ -13,7 +13,7 @@ SRC_URI="http://git.liw.fi/cgi-bin/cgit/cgit.cgi/python-tracing/snapshot/${P}.ta
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 IUSE="doc examples"
 
 python_compile_all() {
