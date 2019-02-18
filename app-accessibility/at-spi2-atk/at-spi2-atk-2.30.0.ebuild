@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit gnome.org meson multilib-minimal virtualx
+inherit gnome.org meson multilib-minimal virtualx xdg
 
 DESCRIPTION="Gtk module for bridging AT-SPI to Atk"
 HOMEPAGE="https://wiki.gnome.org/Accessibility"
@@ -25,9 +25,6 @@ DEPEND="${RDEPEND}
 "
 
 multilib_src_configure() {
-	local emesonargs=(
-		-Ddisable_p2p=$(usex test false true)
-	)
 	meson_src_configure
 }
 
