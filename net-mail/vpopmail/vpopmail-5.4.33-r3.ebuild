@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,7 +17,7 @@ REQUIRED_USE="mysql? ( !postgres )"
 
 DEPEND="virtual/qmail
 	maildrop? ( mail-filter/maildrop )
-	mysql? ( || ( dev-db/mysql-connector-c dev-db/mariadb-connector-c[mysqlcompat] ) )
+	mysql? ( dev-db/mysql-connector-c:0= )
 	postgres? ( dev-db/postgresql:=[server] )
 	spamassassin? ( mail-filter/spamassassin )"
 RDEPEND="${DEPEND}"

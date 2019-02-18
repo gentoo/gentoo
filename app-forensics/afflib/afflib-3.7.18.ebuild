@@ -1,13 +1,13 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-PYTHON_COMPAT=( python2_7 )
+EAPI=7
+PYTHON_COMPAT=( python{2_7,3_{4,5,6,7}} )
 
-inherit autotools eutils python-single-r1
+inherit autotools python-single-r1
 
 MY_PN=AFFLIBv3
-MY_P=${MY_PN}-${PV}
+MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Library that implements the AFF image standard"
 HOMEPAGE="https://github.com/sshock/AFFLIBv3/"
@@ -16,25 +16,23 @@ SRC_URI="https://github.com/sshock/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~hppa ~ppc ~x86 ~x64-macos"
-IUSE="fuse ncurses python qemu readline s3 static-libs threads"
+IUSE="fuse libressl ncurses python qemu readline s3 static-libs threads"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
-RDEPEND="dev-libs/expat
-	dev-libs/openssl:0=
-	sys-libs/zlib
-	fuse? ( sys-fs/fuse )
+RDEPEND="
+	dev-libs/expat
+	sys-libs/zlib:0=
+	fuse? ( sys-fs/fuse:= )
+	!libressl? ( dev-libs/openssl:0= )
+	libressl? ( dev-libs/libressl:= )
 	ncurses? ( sys-libs/ncurses:0= )
 	python? ( ${PYTHON_DEPS} )
 	readline? ( sys-libs/readline:0= )
-	s3? ( net-misc/curl )"
+	s3? ( net-misc/curl )
+"
 DEPEND="${RDEPEND}"
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-3.7.1-python-module.patch
-	"${FILESDIR}"/${PN}-3.6.12-pyaff-header.patch
-)
-
-S=${WORKDIR}/${MY_P}
+S="${WORKDIR}/${MY_P}"
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
@@ -65,5 +63,5 @@ src_configure() {
 
 src_install() {
 	default
-	prune_libtool_files --modules
+	find "${ED}" -name "*.la" -delete || die
 }
