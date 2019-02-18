@@ -3203,7 +3203,7 @@ dev-libs/libx86emu 1.1: A library for emulating x86
 dev-libs/libxdg-basedir 1.2.0-r1: Small library to access XDG Base Directories Specification paths
 dev-libs/libxdiff 0.23-r2: Library for creating diff files
 dev-libs/libxls 1.4.0-r1: A library which can read Excel (xls) files
-dev-libs/libxml2 2.9.8: XML C parser and toolkit
+dev-libs/libxml2 2.9.8 2.9.9: XML C parser and toolkit
 dev-libs/libxslt 1.1.32: XSLT libraries and tools
 dev-libs/libyaml 0.1.7: YAML 1.1 parser and emitter written in C
 dev-libs/libzia 4.11 4.14: platform abstraction code for tucnak package
@@ -8426,7 +8426,7 @@ net-analyzer/jnettop 0.13.0-r1: A top like console network traffic visualiser
 net-analyzer/knocker 0.7.1-r2 0.7.1-r3: Knocker is an easy to use security port scanner written in C
 net-analyzer/labrea 2.5-r2: 'Sticky' Honeypot and IDS
 net-analyzer/lft 3.77: Layer Four Traceroute (LFT) and WhoB
-net-analyzer/linkchecker 9.3.1-r1: Check websites for broken links
+net-analyzer/linkchecker 9.3.1-r1 9.4.0: Check websites for broken links
 net-analyzer/macchanger 1.7.0: Utility for viewing/manipulating the MAC address of network interfaces
 net-analyzer/mbrowse 0.4.3: MBrowse is a graphical MIB browser
 net-analyzer/monitoring-plugins 2.2-r2 2.2-r3: 50+ standard plugins for Icinga, Naemon, Nagios, Shinken, Sensu
@@ -8647,7 +8647,7 @@ net-im/silc-toolkit 1.1.10: SDK for the SILC protocol
 net-im/telepathy-connection-managers 2-r2: Meta-package for Telepathy Connection Managers
 net-im/telepathy-logger 0.8.2: Daemon that centralizes the communication logging within the Telepathy framework
 net-im/telepathy-mission-control 5.16.4: An account manager and channel dispatcher for the Telepathy framework
-net-im/tkabber 0.11.1-r1: A jabber client written in Tcl/Tk
+net-im/tkabber 1.1.2: A jabber client written in Tcl/Tk
 net-im/ysm 2.9.9.1-r1: A console ICQ client supporting versions 7/8
 net-irc/bip 0.8.9: Multiuser IRC proxy with SSL support
 net-irc/bnc 2.9.4-r1: BNC (BouNCe) is used as a gateway to an IRC Server
@@ -8845,7 +8845,7 @@ net-mail/imapsync 1.592-r1: A tool allowing incremental and recursive imap trans
 net-mail/isync 1.3.0: MailDir mailbox synchronizer
 net-mail/kuvert 2.0.4: An MTA wrapper that automatically signs and/or encrypts outgoing mail
 net-mail/lbdb 0.41: Little Brother database
-net-mail/libpst 0.6.64-r1: Tools and library for reading Outlook files (.pst format)
+net-mail/libpst 0.6.64-r1 0.6.66-r1: Tools and library for reading Outlook files (.pst format)
 net-mail/mailbase 1.1: MTA layout package
 net-mail/maildirtree 0.6-r1: A utility that prints trees of Courier-style Maildirs
 net-mail/mailgraph 1.14-r2: A mail statistics RRDtool frontend for Postfix
@@ -9885,7 +9885,7 @@ sys-apps/iotools 1.5: Simple commands to access hardware device registers
 sys-apps/ipmitool 1.8.17-r1: Utility for controlling IPMI enabled devices.
 sys-apps/ipmiutil 3.0.6: IPMI Management Utilities
 sys-apps/iproute2 4.14.1-r2 4.17.0-r1: kernel routing and traffic control utilities
-sys-apps/irqbalance 1.4.0-r1: Distribute hardware interrupts across processors on a multiprocessor system
+sys-apps/irqbalance 1.4.0-r1 1.5.0: Distribute hardware interrupts across processors on a multiprocessor system
 sys-apps/isapnptools 1.27: Tools for configuring ISA PnP devices
 sys-apps/iucode_tool 2.1.1 2.3.1: tool to manipulate Intel X86 and X86-64 processor microcode update collections
 sys-apps/kbd 2.0.4: Keyboard and console utilities
