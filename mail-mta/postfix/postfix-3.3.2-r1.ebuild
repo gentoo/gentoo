@@ -59,6 +59,10 @@ REQUIRED_USE="ldap-bind? ( ldap sasl )"
 
 S="${WORKDIR}/${MY_SRC}"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-linux-5.patch"
+)
+
 pkg_setup() {
 	# Add postfix, postdrop user/group (bug #77565)
 	enewgroup postfix 207
