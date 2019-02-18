@@ -12,7 +12,7 @@ SRC_URI="mirror://gentoo/${MY_PN}-${PV}.tar.gz"
 
 LICENSE="Spread-1.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND=""
