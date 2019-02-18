@@ -1203,7 +1203,7 @@ app-officeext/sun-templates 1.0.0-r1: Collection of sun templates for various co
 app-officeext/texmaths 0.46.1: LaTeX Equation Editor for LibreOffice
 app-pda/gnupod 0.99.8-r1: A collection of Perl-scripts for iPod
 app-pda/gtkpod 2.1.5: A graphical user interface to the Apple productline
-app-pda/ideviceinstaller 1.0.1: A tool to interact with the installation_proxy of an Apple's iDevice
+app-pda/ideviceinstaller 1.1.0: A tool to interact with the installation_proxy of an Apple's iDevice
 app-pda/ifuse 1.1.3: Mount Apple iPhone/iPod Touch file systems for backup purposes
 app-pda/jpilot 1.8.2: Desktop Organizer Software for the Palm Pilot
 app-pda/libimobiledevice 1.2.0-r1: Support library to communicate with Apple iPhone/iPod Touch devices
@@ -4800,6 +4800,7 @@ dev-python/deform 0.9.9: Another form generation library
 dev-python/defusedxml 0.5.0: XML bomb protection for Python stdlib modules, an xml serialiser
 dev-python/demjson 2.2.4: Encoder, decoder, and lint/validator for JSON compliant with RFC 4627
 dev-python/deprecation 1.0.1: A library to handle automated deprecations
+dev-python/dexml 0.5.1: Dead-simple Object-XML mapper for Python
 dev-python/dib-utils 0.0.10: Standalone tools related to diskimage-builder.
 dev-python/dicttoxml 1.7.4: Converts a Python dictionary or other data type to a valid XML string
 dev-python/diff-match-patch 20121119: Diff, match and patch algorithms for plain text
@@ -4928,6 +4929,7 @@ dev-python/formencode 1.3.0-r2: HTML form validation, generation, and conversion
 dev-python/fpconst 0.7.3-r1: Python Module for handling IEEE 754 floating point special values
 dev-python/freezegun 0.3.10: Let your Python tests travel through time
 dev-python/frozen-flask 0.11-r1 0.15: Freezes a Flask application into a set of static files
+dev-python/fs 2.0.26: Filesystem abstraction layer
 dev-python/fudge 0.9.6-r1 1.1.0: Replace real objects with fakes (mocks, stubs, etc) while testing
 dev-python/funcparserlib 0.3.6: Recursive descent parsing library based on functional combinators
 dev-python/funcsigs 0.4 1.0.2-r1: Python function signatures backport from PEP362 for Python 2.7-3.5
@@ -5684,7 +5686,7 @@ dev-python/tox 2.9.1: virtualenv-based automation of test activities
 dev-python/tpg 3.2.2-r1: Toy Parser Generator for Python
 dev-python/tqdm 4.23.3: Add a progress meter to your loops in a second
 dev-python/traceback2 1.4.0: Backports of the traceback module
-dev-python/tracing 0.8: Debug log/trace messages
+dev-python/tracing 0.8 0.10: Debug log/trace messages
 dev-python/traitlets 4.3.2: A configuration system for Python applications
 dev-python/traits 4.5.0 4.6.0: Enthought Tool Suite: Explicitly typed attributes for Python
 dev-python/traitsui 4.4.0: Enthought Tool Suite: Traits-capable user interfaces
@@ -8634,7 +8636,7 @@ net-im/gg-transport 2.2.4-r1 2.2.6: Gadu-Gadu transport for Jabber
 net-im/jabber-base 0.01: Jabber servers and transports layout package
 net-im/kadu 4.3-r2: An open source Gadu-Gadu and Jabber/XMPP protocol Instant Messenger client
 net-im/kouchat 1.1.0: KouChat is a simple serverless chat client for local area networks
-net-im/librvp 0.9.6: An RVP (Microsoft Exchange Instant Messaging) plugin for Pidgin
+net-im/librvp 0.9.6 0.9.7: An RVP (Microsoft Exchange Instant Messaging) plugin for Pidgin
 net-im/mcabber 1.0.5 1.1.0-r1: A small Jabber console client with various features, like MUC, SSL, PGP
 net-im/minbif 1.0.5-r2: IRC gateway to IM networks
 net-im/openfire 4.2.3-r1: Openfire (formerly wildfire) real time collaboration (RTC) server
@@ -9134,7 +9136,7 @@ net-p2p/bitflu 1.50: BitTorrent client, written in Perl and is designed to run a
 net-p2p/bittornado 0.3.18-r4: TheShad0w's experimental BitTorrent client
 net-p2p/createtorrent 1.1.4: Create BitTorrent files easily
 net-p2p/ctcs 1.4.1: interface for monitoring and managing Enhanced CTorrent clients
-net-p2p/ctorrent 3.3.2-r2: Enhanced CTorrent is a BitTorrent console client written in C and C++
+net-p2p/ctorrent 3.3.2-r4: Enhanced CTorrent is a BitTorrent console client written in C and C++
 net-p2p/deluge 1.3.15-r2: BitTorrent client with a client/server model
 net-p2p/ed2k_hash 0.4.0-r2: Tool for generating eDonkey2000 links
 net-p2p/gtk-gnutella 1.1.13 1.1.14: A GTK+ Gnutella client
