@@ -1,7 +1,7 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 MY_PV=${PV//\./-}
 
@@ -43,7 +43,7 @@ src_install() {
 	exeinto /usr/share/${PN}
 	for i in DateRepeats ProcessRepeats RepeatMasker DupMasker RepeatProteinMask; do
 		doexe $i || die
-		dosym /usr/share/${PN}/$i /usr/bin/$i || die
+		dosym "${ED%/}"/usr/share/${PN}/$i "${ED%/}"/usr/bin/$i || die
 	done
 
 	dodir /usr/share/${PN}/lib
