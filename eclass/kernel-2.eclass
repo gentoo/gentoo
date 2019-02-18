@@ -1238,9 +1238,9 @@ unipatch() {
 				if kernel_is ge 4 13 ; then
 					UNIPATCH_DROP+=" 5011_enable-cpu-optimizations-for-gcc8.patch"
 				fi
-			# optimization patch for gcc >= 8 and kernel ge 3.15
+			# optimization patch for gcc >= 8 and kernel ge 4.13
 			elif [[ "${GCC_MAJOR_VER}" -ge 8 ]]; then
-				if kernel_is ge 3 15; then
+				if kernel_is ge 4 13; then
 					UNIPATCH_DROP+=" 5010_enable-additional-cpu-optimizations-for-gcc-4.9.patch"
 				fi
 			fi
