@@ -5,32 +5,19 @@ EAPI="7"
 
 inherit eutils
 
-if [[ ${PV} == *9999 ]] ; then
-	EGIT_REPO_URI="http://repo.or.cz/r/jimtcl.git"
-	inherit git-r3
-else
-	SRC_URI="https://github.com/msteveb/jimtcl/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~m68k ~mips ~s390 ~sh ~x86"
-fi
+SRC_URI="https://github.com/msteveb/jimtcl/archive/${PV}.tar.gz -> ${P}.tar.gz"
+KEYWORDS="~amd64 ~arm ~arm64 ~m68k ~mips ~s390 ~sh ~x86"
 
 DESCRIPTION="Small footprint implementation of Tcl programming language"
 HOMEPAGE="http://jim.tcl.tk/"
 
 LICENSE="LGPL-2"
-SLOT="0"
+SLOT="0/78" # SONAME=libjim.so.0.78
 IUSE="doc static-libs"
 
 RDEPEND=""
 DEPEND="doc? ( app-text/asciidoc )
 	app-arch/unzip"
-
-src_unpack() {
-	if [[ ${PV} == "9999" ]] ; then
-		git-2_src_unpack
-	else
-		default
-	fi
-}
 
 src_configure() {
 	CCACHE=None econf --with-jim-shared
@@ -58,5 +45,5 @@ src_install() {
 	doins jim.h jimautoconf.h jim-subcmd.h jim-signal.h \
 		jim-win32compat.h jim-eventloop.h jim-config.h
 	dodoc AUTHORS README TODO
-	dodoc Tcl.html
+	use doc && dohtml Tcl.html
 }
