@@ -61,7 +61,7 @@ DEPEND="
 		!libressl? ( dev-libs/openssl:0[-bindist] )
 		libressl? ( dev-libs/libressl )
 	)
-	mysql? ( >=virtual/mysql-4.0 )
+	mysql? ( dev-db/mysql-connector-c:0= )
 	odbc? ( >=dev-db/unixODBC-2.2.6 )
 	ldap? ( net-nds/openldap )
 	postgres? ( dev-db/postgresql:= )
