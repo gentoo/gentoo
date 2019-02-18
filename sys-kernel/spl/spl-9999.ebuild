@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -44,6 +44,7 @@ pkg_setup() {
 		KALLSYMS
 		MODULES
 		!PAX_KERNEXEC_PLUGIN_METHOD_OR
+		!TRIM_UNUSED_KSYMS
 		ZLIB_DEFLATE
 		ZLIB_INFLATE
 	"
