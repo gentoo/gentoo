@@ -513,7 +513,7 @@ app-doc/clsync-docs 0.4.2: Clsync and libclsync API documentation
 app-doc/diveintopython 2 3: 'Dive Into Python' by Mark Pilgrim - Python 3
 app-doc/doxygen 1.8.14-r1: Documentation system for most programming languages
 app-doc/elisp-manual 18.1.03 21.2.8-r2 22.2.9 23.4 24.5 25.3: The GNU Emacs Lisp Reference Manual
-app-doc/gimp-help 2.6.1 2.8.2: GNU Image Manipulation Program help files
+app-doc/gimp-help 2.8.2: GNU Image Manipulation Program help files
 app-doc/gnucash-docs 3.2-r1 3.3: Documentation package for GnuCash
 app-doc/halibut 1.2: yet another free document preparation system
 app-doc/jargon 4.4.7-r1: A compendium of hacker slang illuminating many aspects of hackish tradition
@@ -1366,6 +1366,7 @@ app-text/html-xml-utils 7.1: A number of simple utilities for manipulating HTML 
 app-text/html2text 1.3.2a 1.3.2a-r2: HTML to text converter
 app-text/html401 19991224-r3: DTDs for the HyperText Markup Language 4.01
 app-text/htmldoc 1.8.30: Convert HTML pages into a PDF document
+app-text/htmlinc 1.0_beta1-r2: HTML Include System by Ulli Meybohm
 app-text/htmlmin 0.1.11_pre20170909 0.1.12: A configurable HTML Minifier with safety features
 app-text/htmltidy 20090325-r2: Tidy the layout and correct errors in HTML and XML documents
 app-text/hunspell 1.6.2-r1: Hunspell spell checker - an improved replacement for myspell in OOo
@@ -4706,6 +4707,7 @@ dev-python/blinker 1.4: Fast, simple object-to-object and broadcast signaling
 dev-python/blockcanvas 4.0.3-r1: Enthought Tool Suite: Numerical modeling
 dev-python/blosc 1.2.8: High performance compressor optimized for binary data
 dev-python/bokeh 0.11.1 0.12.6: Statistical and interactive HTML plots for Python
+dev-python/booleanOperations 0.8.0: Boolean operations on paths
 dev-python/boto 2.41.0: Amazon Web Services API
 dev-python/boto3 1.7.19 1.9.4-r1: The AWS SDK for Python
 dev-python/botocore 1.10.19 1.12.4-r1: Low-level, data-driven core of boto 3.
@@ -4796,6 +4798,7 @@ dev-python/ddt 1.1.1: A library to multiply test cases
 dev-python/debtcollector 1.11.0 1.17.1 1.19.0: Python deprecation patterns and strategies that collect technical debt
 dev-python/decorator 4.1.2 4.2.1: Simplifies the usage of decorators for the average programmer
 dev-python/decoratortools 1.8-r1: Class, function, and metaclass decorators
+dev-python/defcon 0.5.3: A set of UFO based objects for use in font editing applications
 dev-python/deform 0.9.9: Another form generation library
 dev-python/defusedxml 0.5.0: XML bomb protection for Python stdlib modules, an xml serialiser
 dev-python/demjson 2.2.4: Encoder, decoder, and lint/validator for JSON compliant with RFC 4627
@@ -5177,6 +5180,7 @@ dev-python/nosexcover 1.0.10: Extends nose.plugins.cover to add Cobertura-style 
 dev-python/notebook 5.0.0: Jupyter Interactive Notebook
 dev-python/notify-python 0.1.1-r3: Python bindings for libnotify
 dev-python/notify2 0.3: Python interface to DBus notifications.
+dev-python/nototools 20180827: Noto fonts support tools and scripts plus web site generation
 dev-python/numba 0.27.0 0.37.0: NumPy aware dynamic Python compiler using LLVM
 dev-python/numexpr 2.6.1 2.6.8: Fast numerical array expression evaluator for Python and NumPy
 dev-python/numpy 1.9.2 1.10.4 1.14.5: Fast array and numerical python library
@@ -5686,7 +5690,7 @@ dev-python/tox 2.9.1: virtualenv-based automation of test activities
 dev-python/tpg 3.2.2-r1: Toy Parser Generator for Python
 dev-python/tqdm 4.23.3: Add a progress meter to your loops in a second
 dev-python/traceback2 1.4.0: Backports of the traceback module
-dev-python/tracing 0.8 0.10: Debug log/trace messages
+dev-python/tracing 0.10: Debug log/trace messages
 dev-python/traitlets 4.3.2: A configuration system for Python applications
 dev-python/traits 4.5.0 4.6.0: Enthought Tool Suite: Explicitly typed attributes for Python
 dev-python/traitsui 4.4.0: Enthought Tool Suite: Traits-capable user interfaces
@@ -5714,6 +5718,7 @@ dev-python/txaio 2.7.1: Compatibility API between asyncio/Twisted/Trollius
 dev-python/typing 3.6.2-r1: Type Hints for Python
 dev-python/tzlocal 1.2: tzinfo object for the local timezone
 dev-python/u-msgpack 2.4.1: A portable, lightweight MessagePack serializer and deserializer
+dev-python/ufoLib 3.0.0: A low-level UFO reader and writer
 dev-python/ujson 1.33 1.35: Ultra fast JSON encoder and decoder for Python
 dev-python/unicodecsv 0.14.1: Drop-in replacement for python stdlib csv module supporting unicode
 dev-python/unidecode 0.04.20: Module providing ASCII transliterations of Unicode text
@@ -7280,6 +7285,7 @@ media-fonts/nanumfont 2.0-r2: Korean monospace font distributed by NHN
 media-fonts/nepali-fonts 1-r1: a collection of fonts for Nepali users
 media-fonts/noto 20170403: Google's font family that aims to support all the world's languages
 media-fonts/noto-cjk 20150615: Google's font family that aims to support all the world's languages
+media-fonts/noto-emoji 20180823: Google Noto Emoji fonts
 media-fonts/oldstandard 2.2: Old Standard - font with wide range of Latin, Greek and Cyrillic characters
 media-fonts/open-sans 1: Clean and modern sans-serif typeface designed for legibility across interfaces
 media-fonts/opendesktop-fonts 1.4.2: Chinese TrueType Fonts
@@ -8428,7 +8434,7 @@ net-analyzer/jnettop 0.13.0-r1: A top like console network traffic visualiser
 net-analyzer/knocker 0.7.1-r2 0.7.1-r3: Knocker is an easy to use security port scanner written in C
 net-analyzer/labrea 2.5-r2: 'Sticky' Honeypot and IDS
 net-analyzer/lft 3.77: Layer Four Traceroute (LFT) and WhoB
-net-analyzer/linkchecker 9.3.1-r1 9.4.0: Check websites for broken links
+net-analyzer/linkchecker 9.4.0: Check websites for broken links
 net-analyzer/macchanger 1.7.0: Utility for viewing/manipulating the MAC address of network interfaces
 net-analyzer/mbrowse 0.4.3: MBrowse is a graphical MIB browser
 net-analyzer/monitoring-plugins 2.2-r2 2.2-r3: 50+ standard plugins for Icinga, Naemon, Nagios, Shinken, Sensu
@@ -8580,6 +8586,7 @@ net-firewall/firehol 3.1.3 3.1.4: iptables firewall generator
 net-firewall/firewalld 0.5.1-r2: A firewall daemon with D-BUS interface providing a dynamic firewall
 net-firewall/fwbuilder 5.3.7: A firewall GUI
 net-firewall/fwipsec 0.4.2-r1: Firewall scripts that control iptables, FreeS/WAN, and squid
+net-firewall/ipkungfu 0.6.1-r1: A nice iptables firewall script
 net-firewall/ipset 6.29: IPset tool for iptables, successor to ippool
 net-firewall/ipt_netflow 2.3: Netflow iptables module
 net-firewall/iptables 1.4.21-r1 1.6.1-r3: Linux kernel (2.4+) firewall, NAT and packet mangling tools
@@ -8636,7 +8643,7 @@ net-im/gg-transport 2.2.4-r1 2.2.6: Gadu-Gadu transport for Jabber
 net-im/jabber-base 0.01: Jabber servers and transports layout package
 net-im/kadu 4.3-r2: An open source Gadu-Gadu and Jabber/XMPP protocol Instant Messenger client
 net-im/kouchat 1.1.0: KouChat is a simple serverless chat client for local area networks
-net-im/librvp 0.9.6 0.9.7: An RVP (Microsoft Exchange Instant Messaging) plugin for Pidgin
+net-im/librvp 0.9.7: An RVP (Microsoft Exchange Instant Messaging) plugin for Pidgin
 net-im/mcabber 1.1.0-r1: A small Jabber console client with various features, like MUC, SSL, PGP
 net-im/minbif 1.0.5-r2: IRC gateway to IM networks
 net-im/openfire 4.2.3-r1: Openfire (formerly wildfire) real time collaboration (RTC) server
@@ -8847,7 +8854,7 @@ net-mail/imapsync 1.592-r1: A tool allowing incremental and recursive imap trans
 net-mail/isync 1.3.0: MailDir mailbox synchronizer
 net-mail/kuvert 2.0.4: An MTA wrapper that automatically signs and/or encrypts outgoing mail
 net-mail/lbdb 0.41: Little Brother database
-net-mail/libpst 0.6.64-r1 0.6.66-r1: Tools and library for reading Outlook files (.pst format)
+net-mail/libpst 0.6.66-r1: Tools and library for reading Outlook files (.pst format)
 net-mail/mailbase 1.1: MTA layout package
 net-mail/maildirtree 0.6-r1: A utility that prints trees of Courier-style Maildirs
 net-mail/mailgraph 1.14-r2: A mail statistics RRDtool frontend for Postfix
