@@ -1,0 +1,10 @@
+--- configparser-3.7.1/setup.py.orig	2019-02-17 23:10:47.136175199 +0100
++++ configparser-3.7.1/setup.py	2019-02-17 23:12:23.197707158 +0100
+@@ -4,6 +4,6 @@
+ setuptools.setup(
+     # enable `import configparser` for Python 2
+     py_modules=['configparser'] if sys.version_info < (3,) else [],
+-    packages=setuptools.find_packages(where='src'),
++    packages=setuptools.find_packages(where='src',exclude=['backports']),
+     package_dir={'': 'src'},
+ )
