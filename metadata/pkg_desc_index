@@ -2894,7 +2894,7 @@ dev-lang/cfortran 4.4-r2: Header file allowing to call Fortran routines from C a
 dev-lang/clojure 1.8.0: A dynamic programming language that targets the Java Virtual Machine
 dev-lang/coffee-script 1.9.3-r1: A little language that compiles into javascript
 dev-lang/elixir 1.4.5: Elixir programming language
-dev-lang/erlang 19.1 20.3: Erlang programming language, runtime environment and libraries (OTP)
+dev-lang/erlang 19.1 20.3 21.1.1: Erlang programming language, runtime environment and libraries (OTP)
 dev-lang/execline 2.1.1.0: a non-interactive scripting language similar to SH
 dev-lang/f2c 20060507: Fortran to C converter
 dev-lang/ferite 1.1.17-r1: A clean, lightweight, object oriented scripting language
