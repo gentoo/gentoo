@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 MY_P="${P/_}"
 PKCS11_IUSE="+softhsm opensc external-hsm"
-inherit autotools eutils multilib user
+inherit autotools user
 
 DESCRIPTION="An open-source turn-key solution for DNSSEC"
 HOMEPAGE="http://www.opendnssec.org/"
@@ -22,7 +22,7 @@ RDEPEND="
 	dev-libs/libxslt
 	net-libs/ldns
 	mysql? (
-		virtual/mysql
+		dev-db/mysql-connector-c:0=
 		dev-perl/DBD-mysql
 	)
 	opensc? ( dev-libs/opensc )
@@ -50,6 +50,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-fix-run-dir-2.0.x.patch"
 	"${FILESDIR}/${PN}-drop-privileges-2.0.x.patch"
 	"${FILESDIR}/${PN}-use-system-trang.patch"
+	"${FILESDIR}/${PN}-openssl1.1.patch"
 )
 
 S="${WORKDIR}/${MY_P}"
@@ -130,11 +131,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	local patch
 	default
-	for patch in "${PATCHES[@]}"; do
-		epatch "$patch"
-	done
 	eautoreconf
 }
 
@@ -199,7 +196,7 @@ src_install() {
 		-e 's,^SCHEMA=../src/db/,SCHEMA=/usr/share/opendnssec/db/sql/,' \
 		-e 's,^SCHEMA=../../src/db/,SCHEMA=/usr/share/opendnssec/db/sql/,' \
 		"${ED}"/usr/share/opendnssec/db/convert_* \
-		"${ED}"/usr/share/opendnssec/db/1.4-2.0_db_convert/convert_*
+		"${ED}"/usr/share/opendnssec/db/1.4-2.0_db_convert/convert_* || die
 
 	# fix permissions
 	fowners root:opendnssec /etc/opendnssec
