@@ -8637,7 +8637,7 @@ net-im/jabber-base 0.01: Jabber servers and transports layout package
 net-im/kadu 4.3-r2: An open source Gadu-Gadu and Jabber/XMPP protocol Instant Messenger client
 net-im/kouchat 1.1.0: KouChat is a simple serverless chat client for local area networks
 net-im/librvp 0.9.6 0.9.7: An RVP (Microsoft Exchange Instant Messaging) plugin for Pidgin
-net-im/mcabber 1.0.5 1.1.0-r1: A small Jabber console client with various features, like MUC, SSL, PGP
+net-im/mcabber 1.1.0-r1: A small Jabber console client with various features, like MUC, SSL, PGP
 net-im/minbif 1.0.5-r2: IRC gateway to IM networks
 net-im/openfire 4.2.3-r1: Openfire (formerly wildfire) real time collaboration (RTC) server
 net-im/pidgin 2.13.0: GTK Instant Messenger client
