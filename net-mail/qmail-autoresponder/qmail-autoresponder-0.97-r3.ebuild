@@ -1,9 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="2"
+EAPI=7
 
-inherit toolchain-funcs eutils multilib
+inherit toolchain-funcs
 
 DESCRIPTION="Rate-limited autoresponder for qmail"
 HOMEPAGE="http://untroubled.org/qmail-autoresponder/"
@@ -15,7 +15,7 @@ KEYWORDS="~alpha ~amd64 ~hppa ~mips ~ppc ~sparc ~x86"
 IUSE="mysql"
 
 DEPEND=">=dev-libs/bglibs-1.106
-	mysql? ( virtual/mysql )"
+	mysql? ( dev-db/mysql-connector-c:0= )"
 RDEPEND="
 	${DEPEND}
 	virtual/qmail
@@ -23,14 +23,15 @@ RDEPEND="
 "
 
 src_prepare() {
-	use mysql || epatch	"${FILESDIR}/${PN}-0.97-remove-mysql.h.diff"
+	use mysql || eapply "${FILESDIR}/${PN}-0.97-remove-mysql.h.diff"
+	default
 }
 
 src_configure() {
-	echo "/usr/include/bglibs" > conf-bgincs
-	echo "/usr/$(get_libdir)/bglibs" > conf-bglibs
-	echo "$(tc-getCC) ${CFLAGS}" > conf-cc
-	echo "$(tc-getCC) ${LDFLAGS}" > conf-ld
+	echo "/usr/include/bglibs" > conf-bgincs || die
+	echo "/usr/$(get_libdir)/bglibs" > conf-bglibs || die
+	echo "$(tc-getCC) ${CFLAGS}" > conf-cc || die
+	echo "$(tc-getCC) ${LDFLAGS}" > conf-ld || die
 }
 
 src_compile() {
@@ -42,10 +43,10 @@ src_compile() {
 }
 
 src_install () {
-	dobin qmail-autoresponder || die
+	dobin qmail-autoresponder
 	doman qmail-autoresponder.1
 	if use mysql; then
-		dobin qmail-autoresponder-mysql || die
+		dobin qmail-autoresponder-mysql
 		dodoc schema.mysql
 	fi
 
