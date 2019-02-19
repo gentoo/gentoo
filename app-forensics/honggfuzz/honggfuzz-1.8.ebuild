@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit toolchain-funcs
 
@@ -15,7 +15,7 @@ KEYWORDS="~amd64"
 IUSE=""
 
 RDEPEND="
-	sys-libs/binutils-libs:=
+	>=sys-libs/binutils-libs-2.29:=
 	sys-libs/libunwind
 "
 
@@ -28,12 +28,10 @@ DOCS=(
 	README.md
 )
 
-src_prepare() {
-	default
-	if has_version ">=sys-libs/binutils-libs-2.29"; then
-		eapply "${FILESDIR}"/${PN}-1.1-binutils-2.29.patch
-	fi
-}
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.7-no-werror.patch
+	"${FILESDIR}"/${PN}-1.1-binutils-2.29.patch
+)
 
 src_compile() {
 	CC="$(tc-getCC)" CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}" emake
