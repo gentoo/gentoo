@@ -27,8 +27,12 @@ RDEPEND="${DEPEND}
 	sys-apps/dmidecode
 	sys-apps/util-linux
 	sys-apps/lm_sensors
-	sys-power/pmtools
-	sys-power/iasl"
+	amd64? ( sys-power/pmtools )
+	amd64? ( sys-power/iasl )
+	x86? ( sys-power/pmtools )
+	x86? ( sys-power/iasl )
+	ppc? ( sys-power/pmtools )
+	ppc? ( sys-power/iasl )"
 
 src_install() {
 	emake install prefix="${D}usr"
