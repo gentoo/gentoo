@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>andrey.v.ponomarenko@gmail.com</email>
+		<name>Andrey Ponomarenko</name>
+	</maintainer>
+	<longdescription>
+		Probe — is a snapshot of your computer's hardware state and system logs. The tool returns a permanent URL to view the probe of the computer.
+
+		The tool is intended to simplify collecting of logs necessary for investigating hardware related issues. Just ask a user to run one simple command to collect all the system logs at once:
+
+			sudo hw-probe -all -upload
+
+		By creating probes you contribute to the HDD/SSD Real-Life Reliability Test study: https://github.com/linuxhw/SMART
+	</longdescription>
+	<upstream>
+		<bugs-to>https://github.com/linuxhw/hw-probe/issues</bugs-to>
+		<doc>https://github.com/linuxhw/hw-probe/blob/master/README.md</doc>
+	</upstream>
+</pkgmetadata>
