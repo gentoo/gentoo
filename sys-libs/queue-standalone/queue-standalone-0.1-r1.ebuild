@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,6 +17,6 @@ DEPEND="
 S="${WORKDIR}"
 
 src_install() {
-	mkdir -p "${D}"/usr/include/sys
-	cp "${FILESDIR}"/queue.h "${D}"/usr/include/sys
+	insinto /usr/include/sys
+	doins "${FILESDIR}"/queue.h
 }
