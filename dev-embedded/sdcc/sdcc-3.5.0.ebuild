@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -112,9 +112,4 @@ src_install() {
 		docs_compile || cd "${WORKDIR}"/doc
 		dohtml -r *
 	fi
-
-	# a bunch of archives (*.a) are built & installed by gputils
-	# for PIC processors, but they do not work with standard `ar`
-	# & `scanelf` utils and they're not for the host.
-	env RESTRICT="" prepstrip "${D%/}"/usr/bin
 }
