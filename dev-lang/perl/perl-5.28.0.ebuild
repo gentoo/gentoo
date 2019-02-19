@@ -307,8 +307,6 @@ src_prepare() {
 		# do NOT mess with nsl, on Solaris this is always necessary,
 		# when -lsocket is used e.g. to get h_errno
 		sed -i '/gentoo\/no-nsl\.patch/d' "${WORKDIR}/patches/series" || die
-		# and set a soname
-		sed -i 's/sunos\*/sunos*|solaris*/' Makefile.SH || die
 	fi
 
 	einfo "Applying patches from ${PATCH_BASE} ..."
@@ -331,6 +329,11 @@ src_prepare() {
 	# Use errno.h from prefix rather than from host system, bug #645804
 	if use prefix && [[ -e "${EPREFIX}"/usr/include/errno.h ]] ; then
 		sed -i "/my..sysroot/s:'':'${EPREFIX}':" ext/Errno/Errno_pm.PL || die
+	fi
+
+	if [[ ${CHOST} == *-solaris* ]] ; then
+		# set a soname, fix linking against just built libperl
+		sed -i -e 's/netbsd\*/netbsd*|solaris*/' Makefile.SH || die
 	fi
 
 	default
