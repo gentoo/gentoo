@@ -6,4 +6,4 @@ HOMEPAGE=https://www.gnu.org/software/libc/libc.html
 KEYWORDS=amd64 arm arm64 ~hppa ~mips ppc x86
 LICENSE=BSD
 SLOT=0
-_md5_=31675f824bebaa79656e93758b2a6ecd
+_md5_=5001b5673032830204cdf596b00d89b1
