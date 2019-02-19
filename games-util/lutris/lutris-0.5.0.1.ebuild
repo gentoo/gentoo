@@ -37,8 +37,8 @@ RDEPEND="
 	x11-libs/gtk+[introspection]"
 
 python_install_all() {
-  local DOCS=( AUTHORS README.rst docs/installers.rst )
-  distutils-r1_python_install_all
+	local DOCS=( AUTHORS README.rst docs/installers.rst )
+	distutils-r1_python_install_all
 }
 
 pkg_preinst() {
@@ -47,7 +47,7 @@ pkg_preinst() {
 }
 
 python_test() {
-  virtualx nosetests -v
+	virtualx nosetests -v
 }
 
 pkg_postinst() {
