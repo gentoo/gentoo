@@ -1,12 +1,12 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE='sqlite'
 
-inherit versionator python-single-r1 multilib
+inherit python-single-r1
 
 ARTWORK_PV="0.9.4"
 
@@ -31,6 +31,11 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	doc? ( app-text/docbook2X )"
 
+PATCHES=(
+	"${FILESDIR}/0.10-fix_lib_path.patch"
+	"${FILESDIR}/griffith-0.13-validators.patch"
+)
+
 pkg_setup() {
 	python-single-r1_pkg_setup
 }
@@ -45,7 +50,7 @@ src_prepare() {
 		-e 's/ISO-8859-1/UTF-8/' \
 		"${S}"/lib/gconsole.py || die "sed failed"
 
-	epatch "${FILESDIR}/0.10-fix_lib_path.patch"
+	default
 }
 
 src_compile() {
@@ -54,17 +59,19 @@ src_compile() {
 }
 
 src_install() {
-	use doc || { sed -i -e '/docs/d' Makefile || die ; }
+	if ! use doc ; then
+		sed -i -e '/docs/d' Makefile || die
+	fi
 
 	emake \
 		LIBDIR="${D}/usr/$(get_libdir)/griffith" \
 		DESTDIR="${D}" DOC2MAN=docbook2man.pl install
 	dodoc AUTHORS ChangeLog README THANKS TODO NEWS TRANSLATORS
 
-	cd "${WORKDIR}/${PN}-extra-artwork-${ARTWORK_PV}/"
+	cd "${WORKDIR}/${PN}-extra-artwork-${ARTWORK_PV}/" || die
 	emake DESTDIR="${D}" install
 	# This carries over from -0.13 but appears to have no effect.
-	python_optimize "${D}"usr/share/${PN}
+	python_optimize "${ED}"usr/share/${PN}
 }
 
 pkg_postinst() {

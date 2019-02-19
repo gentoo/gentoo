@@ -170,6 +170,17 @@ PPC64_FIRMWARE_DEPEND="
 	)
 "
 
+BDEPEND="
+	${PYTHON_DEPS}
+	dev-lang/perl
+	sys-apps/texinfo
+	virtual/pkgconfig
+	gtk? ( nls? ( sys-devel/gettext ) )
+	test? (
+		dev-libs/glib[utils]
+		sys-devel/bc
+	)
+"
 CDEPEND="
 	!static? (
 		${ALL_DEPEND//\[static-libs(+)]}
@@ -181,20 +192,12 @@ CDEPEND="
 "
 DEPEND="${CDEPEND}
 	${PYTHON_DEPS}
-	dev-lang/perl
-	sys-apps/texinfo
-	virtual/pkgconfig
 	kernel_linux? ( >=sys-kernel/linux-headers-2.6.35 )
-	gtk? ( nls? ( sys-devel/gettext ) )
 	static? (
 		${ALL_DEPEND}
 		${SOFTMMU_TOOLS_DEPEND}
 	)
-	static-user? ( ${ALL_DEPEND} )
-	test? (
-		dev-libs/glib[utils]
-		sys-devel/bc
-	)"
+	static-user? ( ${ALL_DEPEND} )"
 RDEPEND="${CDEPEND}
 	selinux? ( sec-policy/selinux-qemu )"
 

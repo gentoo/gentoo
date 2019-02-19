@@ -17,3 +17,4 @@ IUSE=""
 
 DEPEND=""
 RDEPEND=""
+BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
