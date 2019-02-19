@@ -8826,7 +8826,7 @@ net-libs/telepathy-logger-qt 17.08.0: Qt bindings for the Telepathy logger
 net-libs/telepathy-qt 0.9.7-r1: Qt bindings for the Telepathy D-Bus protocol
 net-libs/udns 0.4: Async-capable DNS stub resolver library
 net-libs/uhttpmock 0.5.0 0.5.1: HTTP web service mocking library
-net-libs/webkit-gtk 2.22.5: Open source web browser engine
+net-libs/webkit-gtk 2.22.5 2.22.6: Open source web browser engine
 net-libs/wvstreams 4.6.1-r3: A network programming library in C++
 net-libs/xrootd 4.4.0 4.8.3: Extended ROOT remote file server
 net-libs/zeromq 2.2.0 3.2.3 3.2.5 4.1.1 4.1.6 4.2.1 4.2.2-r2 4.3.0 4.3.1: A brokerless kernel
@@ -9048,7 +9048,7 @@ net-misc/rabbitmq-server 3.6.9: RabbitMQ is a high-performance AMQP-compliant me
 net-misc/radvd 2.14 2.17-r1: Linux IPv6 Router Advertisement Daemon
 net-misc/rclone 1.44: A program to sync files to and from various cloud storage providers
 net-misc/rdate 1.4-r3 1.4-r4: use TCP or UDP to retrieve the current time of another machine
-net-misc/rdesktop 1.8.3: A Remote Desktop Protocol Client
+net-misc/rdesktop 1.8.3 1.8.4-r1: A Remote Desktop Protocol Client
 net-misc/redir 3.2: Redir is a port redirector
 net-misc/remmina 1.2.0_rc24 1.2.31.3: A GTK+ RDP, SPICE, VNC, XDMCP and SSH client
 net-misc/rinetd 0.62-r2: redirects TCP connections from one IP address and port to another
