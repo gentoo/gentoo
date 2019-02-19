@@ -4,9 +4,9 @@
 EAPI=7
 inherit libtool multilib-minimal toolchain-funcs
 
-DESCRIPTION="BSD tar command"
-HOMEPAGE="http://www.libarchive.org/"
-SRC_URI="http://www.libarchive.org/downloads/${P}.tar.gz"
+DESCRIPTION="Multi-format archive and compression library"
+HOMEPAGE="https://www.libarchive.org/"
+SRC_URI="https://www.libarchive.org/downloads/${P}.tar.gz"
 
 LICENSE="BSD BSD-2 BSD-4 public-domain"
 SLOT="0/13"
