@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -8,8 +8,8 @@ RUBY_OPTIONAL="yes"
 inherit autotools flag-o-matic java-pkg-opt-2 perl-functions ruby-ng
 
 DESCRIPTION="Quick Database Manager"
-HOMEPAGE="http://fallabs.com/qdbm/"
-SRC_URI="http://fallabs.com/${PN}/${P}.tar.gz"
+HOMEPAGE="https://fallabs.com/qdbm/"
+SRC_URI="https://fallabs.com/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
