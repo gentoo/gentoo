@@ -1,0 +1,45 @@
+From 8561b744ac95ab6145a1163fa1d7c490a3329465 Mon Sep 17 00:00:00 2001
+From: William <wonko@undefined.re>
+Date: Mon, 12 Nov 2018 16:50:07 +0100
+Subject: [PATCH] hardcode missing ssl functions
+
+---
+ source/helpers/pkcs7/pkcs7-openssl.c | 22 ++++++++++++++++++++++
+ 1 file changed, 22 insertions(+)
+
+diff --git a/source/helpers/pkcs7/pkcs7-openssl.c b/source/helpers/pkcs7/pkcs7-openssl.c
+index 58dbf65..2b1f9e9 100644
+--- a/source/helpers/pkcs7/pkcs7-openssl.c
++++ b/source/helpers/pkcs7/pkcs7-openssl.c
+@@ -511,6 +511,28 @@ static void signer_drop_designated_name(pdf_pkcs7_signer *signer, pdf_pkcs7_desi
+ 	fz_free(osigner->ctx, dn);
+ }
+ 
++int
++PKCS12_SAFEBAG_get_nid(const PKCS12_SAFEBAG *bag)
++{
++    return OBJ_obj2nid(bag->type);
++}
++
++const STACK_OF(PKCS12_SAFEBAG) *
++PKCS12_SAFEBAG_get0_safes(const PKCS12_SAFEBAG *bag)
++{
++    if (OBJ_obj2nid(bag->type) != NID_safeContentsBag)
++        return NULL;
++    return bag->value.safes;
++}
++
++const PKCS8_PRIV_KEY_INFO *
++PKCS12_SAFEBAG_get0_p8inf(const PKCS12_SAFEBAG *bag)
++{
++    if (PKCS12_SAFEBAG_get_nid(bag) != NID_keyBag)
++        return NULL;
++    return bag->value.keybag;
++}
++
+ static void add_from_bags(X509 **pX509, EVP_PKEY **pPkey, const STACK_OF(PKCS12_SAFEBAG) *bags, const char *pw);
+ 
+ static void add_from_bag(X509 **pX509, EVP_PKEY **pPkey, PKCS12_SAFEBAG *bag, const char *pw)
+-- 
+2.19.1
+
