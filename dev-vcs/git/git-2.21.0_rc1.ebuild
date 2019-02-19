@@ -300,7 +300,7 @@ git_emake() {
 	emake ${MY_MAKEOPTS} \
 		prefix="${EPREFIX}"/usr \
 		htmldir="${EPREFIX}"/usr/share/doc/${PF}/html \
-		perllibdir="$(perl_get_raw_vendorlib)" \
+		perllibdir="$(use perl && perl_get_raw_vendorlib)" \
 		sysconfdir="${EPREFIX}"/etc \
 		DESTDIR="${D}" \
 		GIT_TEST_OPTS="--no-color" \
