@@ -1,10 +1,10 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
-inherit autotools gnome2-utils python-single-r1 xdg-utils
+inherit autotools desktop python-single-r1 xdg
 
 DESCRIPTION="An email client (and news reader) based on GTK+"
 HOMEPAGE="https://www.claws-mail.org/"
@@ -31,6 +31,11 @@ REQUIRED_USE="libcanberra? ( notification )
 COMMONDEPEND="
 	dev-libs/nettle
 	net-mail/ytnef
+	sys-libs/zlib:=
+	x11-libs/cairo
+	x11-libs/gdk-pixbuf:2[jpeg]
+	x11-libs/libX11
+	x11-libs/pango
 	archive? (
 		app-arch/libarchive
 		>=net-misc/curl-7.9.7
@@ -40,7 +45,10 @@ COMMONDEPEND="
 		>=dev-libs/libical-2.0.0:=
 		>=net-misc/curl-7.9.7
 	)
-	dbus? ( >=dev-libs/dbus-glib-0.60 )
+	dbus? (
+		>=dev-libs/dbus-glib-0.60
+		sys-apps/dbus
+	)
 	gdata? ( >=dev-libs/libgdata-0.17.2 )
 	dillo? ( www-client/dillo )
 	gnutls? ( >=net-libs/gnutls-3.0 )
@@ -97,7 +105,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	default
+	xdg_src_prepare
 	eautoreconf
 }
 
@@ -195,7 +203,7 @@ src_install() {
 }
 
 pkg_preinst() {
-	gnome2_icon_savelist
+	xdg_pkg_preinst
 }
 
 pkg_postinst() {
@@ -203,11 +211,9 @@ pkg_postinst() {
 	ewarn "- There are no individual plugins in mail-client/claws-mail-* anymore, but they are integrated mostly controlled through USE flags"
 	ewarn "- Plugins with no special dependencies are just built and can be loaded through the interface"
 	ewarn "- The gtkhtml2 and trayicon plugins have been dropped entirely"
-	gnome2_icon_cache_update
-	xdg_desktop_database_update
+	xdg_pkg_postinst
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
-	xdg_desktop_database_update
+	xdg_pkg_postrm
 }
