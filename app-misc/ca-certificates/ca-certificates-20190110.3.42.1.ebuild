@@ -157,7 +157,7 @@ src_compile() {
 }
 
 src_install() {
-	cp -pPR image/* "${ED}"/ || die
+	cp -pPR image/* "${D}"/ || die
 	if ! ${PRECOMPILED} ; then
 		cd ${PN}-${DEB_VER} || die
 		doman sbin/*.8
