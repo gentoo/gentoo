@@ -30,15 +30,15 @@ SDCC_PORTS="
 "
 IUSE="
 	${SDCC_PORTS}
-	+boehm-gc device-lib doc non-free packihx sdbinutils sdcdb +sdcpp ucsim
+	+boehm-gc device-lib doc non-free packihx +sdbinutils sdcdb +sdcpp ucsim
 "
 
-REQUIRED_USE="
-	ds390? ( sdbinutils )
-	ds400? ( sdbinutils )
-	hc08?  ( sdbinutils )
-	mcs51? ( sdbinutils )
-	s08?   ( sdbinutils )
+for port in ${SDCC_PORTS}; do
+REQUIRED_USE="${REQUIRED_USE}
+	${port}? ( sdbinutils )
+"
+done
+REQUIRED_USE="${REQUIRED_USE}
 	|| ( ${SDCC_PORTS} )
 "
 
