@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -29,6 +29,8 @@ RDEPEND="
 	${CDEPEND}"
 
 S="${WORKDIR}/${MY_P}"
+
+DOCS=( README ChangeLog NEWS AUTHORS THANKS util-vserver.spec )
 
 pkg_setup() {
 	if [[ -z "${VDIRBASE}" ]]; then
@@ -68,15 +70,16 @@ src_compile() {
 src_install() {
 	make DESTDIR="${D}" install install-distribution || die
 
+	# remove runtime paths
+	rm -r "${D}"/var/run || die
+	rm -r "${D}"/var/cache || die
+
 	# keep dirs
-	keepdir /var/cache/vservers
 	keepdir "${VDIRBASE}"
 	keepdir "${VDIRBASE}"/.pkg
 
 	# bash-completion
 	newbashcomp "${FILESDIR}"/bash_completion ${PN}
-
-	dodoc README ChangeLog NEWS AUTHORS THANKS util-vserver.spec
 }
 
 pkg_postinst() {
