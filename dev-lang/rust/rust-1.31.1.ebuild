@@ -1,9 +1,11 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 PYTHON_COMPAT=( python2_7 python3_{5,6} pypy )
+
+LLVM_MAX_SLOT=7
 
 inherit check-reqs eapi7-ver estack flag-o-matic llvm multiprocessing multilib-build python-any-r1 rust-toolchain toolchain-funcs
 
@@ -135,6 +137,7 @@ src_configure() {
 		release-debuginfo = $(toml_usex debug)
 		assertions = $(toml_usex debug)
 		targets = "${LLVM_TARGETS// /;}"
+		experimental-targets = ""
 		link-shared = $(toml_usex system-llvm)
 		[build]
 		build = "${rust_target}"
@@ -182,7 +185,7 @@ src_configure() {
 		EOF
 		if use system-llvm; then
 			cat <<- EOF >> "${S}"/config.toml
-			    llvm-config = "$(get_llvm_prefix)/bin/llvm-config"
+				llvm-config = "$(get_llvm_prefix "${LLVM_MAX_SLOT}")/bin/llvm-config"
 			EOF
 		fi
 	done
