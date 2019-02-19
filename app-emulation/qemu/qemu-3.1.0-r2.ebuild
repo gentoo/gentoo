@@ -20,6 +20,9 @@ if [[ ${PV} = *9999* ]]; then
 else
 	SRC_URI="http://wiki.qemu-project.org/download/${P}.tar.xz"
 	KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86 ~x86-fbsd"
+
+	# Gentoo specific patchsets:
+	#SRC_URI+=" https://dev.gentoo.org/~tamiko/distfiles/${P}-patches-r1.tar.xz"
 fi
 
 DESCRIPTION="QEMU + Kernel-based Virtual Machine userland tools"
@@ -205,6 +208,9 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.5.0-cflags.patch
 	"${FILESDIR}"/${PN}-2.5.0-sysmacros.patch
 	"${FILESDIR}"/${PN}-2.11.1-capstone_include_path.patch
+	"${FILESDIR}"/${PN}-3.1.0-CVE-2018-20123.patch
+	"${FILESDIR}"/${PN}-3.1.0-CVE-2019-3812.patch
+	#"${WORKDIR}"/patches
 )
 
 QA_PREBUILT="
@@ -673,7 +679,10 @@ src_install() {
 		emake DESTDIR="${ED}" install
 
 		# This might not exist if the test failed. #512010
-		[[ -e check-report.html ]] && dohtml check-report.html
+		if [[ -e check-report.html ]]; then
+			docinto html
+			dodoc check-report.html
+		fi
 
 		if use kernel_linux; then
 			udev_newrules "${FILESDIR}"/65-kvm.rules-r1 65-kvm.rules
