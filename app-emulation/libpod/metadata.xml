@@ -22,6 +22,9 @@
 		<flag name="ostree">
 			Enables dependencies for handling of OSTree images.
 		</flag>
+		<flag name="rootless">
+			Enables dependencies for running in rootless mode.
+		</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">containers/libpod</remote-id>

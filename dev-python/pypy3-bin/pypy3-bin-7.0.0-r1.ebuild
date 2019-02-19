@@ -41,7 +41,7 @@ RDEPEND="
 	dev-libs/expat:0/0
 	dev-libs/libffi:0/7
 	sys-devel/gcc:*
-	sys-libs/glibc
+	>=sys-libs/glibc-2.28
 	sys-libs/ncurses:0/6
 	sys-libs/zlib:0/1
 	gdbm? ( sys-libs/gdbm:0= )

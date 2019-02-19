@@ -191,7 +191,7 @@ src_install() {
 	export LD_LIBRARY_PATH RUBYLIB
 
 	# Create directory for the default gems
-	local gem_home="/usr/$(get_libdir)/ruby/gems/${RUBYVERSION}"
+	local gem_home="${EPREFIX}/usr/$(get_libdir)/ruby/gems/${RUBYVERSION}"
 	mkdir -p "${D}/${gem_home}" || die "mkdir gem home failed"
 
 	emake V=1 DESTDIR="${D}" GEM_DESTDIR=${gem_home} install || die "make install failed"
