@@ -500,7 +500,7 @@ xorg-2_src_install() {
 	fi
 
 	# Don't install libtool archives (even for modules)
-	prune_libtool_files --all
+	find "${D}" -type f -name '*.la' -delete || die
 
 	[[ -n ${FONT} ]] && remove_font_metadata
 }
