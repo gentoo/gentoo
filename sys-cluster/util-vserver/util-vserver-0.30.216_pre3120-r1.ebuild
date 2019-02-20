@@ -30,6 +30,8 @@ RDEPEND="
 
 S="${WORKDIR}/${MY_P}"
 
+PATCHES="${FILESDIR}/util-vserver-0.30.216-pre3120-dietlibc.patch "
+
 DOCS=( README ChangeLog NEWS AUTHORS THANKS util-vserver.spec )
 
 pkg_setup() {
