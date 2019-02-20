@@ -11,7 +11,7 @@ HOMEPAGE="https://www.gnu.org/software/commoncpp/"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
-IUSE="debug doc examples ipv6 gnutls ssl static-libs"
+IUSE="debug doc examples gnutls ipv6 libressl ssl static-libs"
 
 RDEPEND="
 	sys-libs/zlib
@@ -20,7 +20,10 @@ RDEPEND="
 			dev-libs/libgcrypt:0=
 			net-libs/gnutls:=
 		)
-		!gnutls? ( dev-libs/openssl:0= )
+		!gnutls? (
+			!libressl? ( dev-libs/openssl:0= )
+			libressl? ( dev-libs/libressl:0= )
+		)
 	)"
 DEPEND="${RDEPEND}
 	doc? ( >=app-doc/doxygen-1.3.6 )"
