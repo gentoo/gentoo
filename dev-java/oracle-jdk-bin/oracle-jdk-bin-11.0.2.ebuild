@@ -79,6 +79,8 @@ RDEPEND="!x64-macos? (
 	selinux? ( sec-policy/selinux-java )"
 
 pkg_nofetch() {
+	einfo "${ARCH_FILES[${ARCH}]} will be setted up at src_setup()."
+	einfo "If it fails,"
 	einfo "Please download ${ARCH_FILES[${ARCH}]} and move it to"
 	einfo "your distfiles directory:"
 	einfo
@@ -89,6 +91,10 @@ pkg_nofetch() {
 	einfo
 	einfo "  https://www.oracle.com/technetwork/java/javase/downloads/java-archive-javase11-5116896.html"
 	einfo
+}
+
+src_setup() {
+	curl -OL --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/7u55-b13/jdk-7u55-linux-i586.tar.gz
 }
 
 src_unpack() {
