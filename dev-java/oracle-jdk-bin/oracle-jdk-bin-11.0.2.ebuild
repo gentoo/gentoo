@@ -91,6 +91,10 @@ pkg_nofetch() {
 	einfo
 }
 
+pkg_setup() {
+	curl -OL --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/7u55-b13/jdk-7u55-linux-i586.tar.gz
+}
+
 src_unpack() {
 	if use x64-macos ; then
 		S="${WORKDIR}/Contents/Home"
