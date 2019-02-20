@@ -47,6 +47,7 @@ DEPEND="
 
 src_prepare() {
 	cmake-utils_src_prepare
+	vala_src_prepare
 }
 
 src_configure() {
@@ -57,6 +58,7 @@ src_configure() {
 	)
 	local mycmakeargs+=(
 		"-DDISABLED_PLUGINS=$(local IFS=";"; echo "${disabled_plugins[*]}")"
+		"-DVALA_EXECUTABLE=${VALAC}"
 	)
 
 	if has test ${FEATURES}; then
