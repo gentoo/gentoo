@@ -990,7 +990,7 @@ app-misc/delay 1.6-r2: Sleeplike program that counts down the number of seconds 
 app-misc/detachtty 9-r1: Attach/detach from interactive processes across the network
 app-misc/detox 1.2.0-r3: Safely remove spaces and strange characters from filenames
 app-misc/devtodo 0.1.20-r3: A nice command line todo list for developers
-app-misc/digitemp 3.5.0-r2: Temperature logging and reporting using Maxim's iButtons and 1-Wire protocol
+app-misc/digitemp 3.5.0-r2 3.7.1: Temperature logging and reporting using Maxim's iButtons and 1-Wire protocol
 app-misc/dnetc 2.9108.517: distributed.net client
 app-misc/dtach 0.8-r1 0.9: Emulates the detach feature of screen
 app-misc/dvorak7min 1.6.1: Simple ncurses-based typing tutor for learning the Dvorak keyboard layout
@@ -1187,7 +1187,7 @@ app-office/planner 0.14.6_p20130520: Project manager for Gnome
 app-office/pybliographer 1.2.15-r1: Pybliographer is a tool for working with bibliographic databases
 app-office/sc 7.16-r2: Spreadsheet Calculator
 app-office/scribus 1.5.4-r1: Desktop publishing (DTP) and layout program
-app-office/skrooge 2.16.2: Personal finances manager, aiming at being simple and intuitive
+app-office/skrooge 2.16.2 2.17.0: Personal finances manager, aiming at being simple and intuitive
 app-office/taskcoach 1.4.3-r1: Simple personal tasks and todo lists manager
 app-office/texmacs 1.99.6-r2: Wysiwyg text processor with high-quality maths
 app-office/texmaker 5.0-r1: A nice LaTeX-IDE
@@ -6479,7 +6479,7 @@ dev-vcs/git-flow 1.11.0: Git extensions to provide high-level repository operati
 dev-vcs/gitg 3.26.0: git repository viewer for GNOME
 dev-vcs/gitolite 2.3.1-r1 3.6.6: Highly flexible server for git directory version tracker
 dev-vcs/gitolite-gentoo 2.3.1-r1: Highly flexible server for git directory version tracker, Gentoo fork
-dev-vcs/guilt 0.36: A series of bash scripts which add a quilt-like interface to git
+dev-vcs/guilt 0.36 0.36-r1: A series of bash scripts which add a quilt-like interface to git
 dev-vcs/hg-git 0.8.8: push to and pull from a Git repository using Mercurial
 dev-vcs/hgsubversion 1.9.2: hgsubversion is a Mercurial extension for working with Subversion repositories
 dev-vcs/kdesvn 2.0.0: A frontend to the subversion vcs
@@ -6698,7 +6698,7 @@ kde-apps/filelight 18.08.3: Visualise disk usage with interactive map of concent
 kde-apps/granatier 18.08.3: KDE Bomberman game
 kde-apps/grantlee-editor 18.08.3: Utilities and tools to manage themes in KDE PIM applications
 kde-apps/grantleetheme 18.08.3: Library for Grantlee plugins
-kde-apps/gwenview 18.08.3: Image viewer by KDE
+kde-apps/gwenview 18.08.3 18.08.3-r1: Image viewer by KDE
 kde-apps/incidenceeditor 18.08.3: Incidence editor for korganizer
 kde-apps/juk 18.08.3: Jukebox and music manager by KDE
 kde-apps/k3b 18.08.3: Full-featured burning and ripping application based on KDE Frameworks
@@ -6861,7 +6861,7 @@ kde-apps/libkdcraw 18.08.3: Digital camera raw image library wrapper
 kde-apps/libkdegames 18.08.3: Base library common to many KDE games
 kde-apps/libkdepim 18.08.3: Common PIM libraries
 kde-apps/libkeduvocdocument 18.08.3: Library for reading/writing KVTML
-kde-apps/libkexiv2 18.08.3: KDE Image Plugin Interface: an exiv2 library wrapper
+kde-apps/libkexiv2 18.08.3 18.08.3-r1: KDE Image Plugin Interface: an exiv2 library wrapper
 kde-apps/libkgapi 18.08.3: Library for accessing Google calendar and contact resources
 kde-apps/libkgeomap 18.08.3: Wrapper library for world map components as marble, openstreetmap and googlemap
 kde-apps/libkipi 18.08.3: A library for image plugins accross KDE applications
@@ -6926,7 +6926,7 @@ kde-frameworks/kdesignerplugin 5.54.0: Framework providing plugins to use KDE fr
 kde-frameworks/kdesu 5.54.0: Framework to handle super user actions
 kde-frameworks/kdewebkit 5.54.0: Framework providing KDE integration of QtWebKit
 kde-frameworks/kdnssd 5.54.0: Framework for network service discovery using Zeroconf
-kde-frameworks/kdoctools 5.54.0: Tools to generate documentation in various formats from DocBook files
+kde-frameworks/kdoctools 5.54.0 5.54.0-r1: Tools to generate documentation in various formats from DocBook files
 kde-frameworks/kemoticons 5.54.0: Framework for converting text emoticons to graphical representations
 kde-frameworks/kf-env 5: Environment setting required for all KDE Frameworks apps to run
 kde-frameworks/kfilemetadata 5.54.0: Library for extracting file metadata
@@ -7356,7 +7356,7 @@ media-gfx/crwinfo 0.2: Canon raw image (CRW) information and thumbnail extractor
 media-gfx/darktable 2.2.5 2.4.3: A virtual lighttable and darkroom for photographers
 media-gfx/dawn 3.90b-r1: 3D geometrical postscript renderer
 media-gfx/dcraw 9.27.0 9.28.0: Command-line decoder for raw digital photos
-media-gfx/digikam 5.9.0: Digital photo management application
+media-gfx/digikam 5.9.0 6.0.0: Digital photo management application
 media-gfx/dpic 20130310: Converts PIC plots into pstricks, PGF/TikZ, PostScript, MetaPost and TeX
 media-gfx/duhdraw 2.8.13-r1: ASCII art editor
 media-gfx/ebdftopcf 2: ebdftopcf optimially generators PCF files from BDF files
@@ -7367,7 +7367,7 @@ media-gfx/eom 1.18.3: The MATE image viewer
 media-gfx/evoluspencil 2.0.5: A simple GUI prototyping tool to create mockups
 media-gfx/exif 0.6.21: Small CLI util to show EXIF infos hidden in JPEG files
 media-gfx/exiftags 1.01: Extracts JPEG EXIF headers from digital camera photos
-media-gfx/exiv2 0.26_p20180811-r3: EXIF, IPTC and XMP metadata C++ library and command line utility
+media-gfx/exiv2 0.26_p20180811-r3 0.27.0-r2: EXIF, IPTC and XMP metadata C++ library and command line utility
 media-gfx/fbgrab 1.3: Framebuffer screenshot utility
 media-gfx/fbida 2.12: Image viewers for the framebuffer console (fbi) and X11 (ida)
 media-gfx/feh 2.18.3: A fast, lightweight imageviewer using imlib2
@@ -7833,7 +7833,7 @@ media-libs/vo-amrwbenc 0.1.2-r1 0.1.3: VisualOn AMR-WB encoder library
 media-libs/vulkan-layers 1.1.92.0: Vulkan Validation Layers
 media-libs/vulkan-loader 1.1.92.1: Vulkan Installable Client Driver (ICD) Loader
 media-libs/waffle 1.5.2: Library that allows selection of GL API and of window system at runtime
-media-libs/webrtc-audio-processing 0.3: AudioProcessing library from the webrtc.org code base
+media-libs/webrtc-audio-processing 0.3 0.3.1: AudioProcessing library from the webrtc.org code base
 media-libs/woff2 1.0.2-r1: Encode/decode WOFF2 font format
 media-libs/wxsvg 1.5.9 1.5.11: C++ library to create, manipulate and render SVG files
 media-libs/x264 0.0.20170701: A free library for encoding X264/AVC streams
@@ -8554,7 +8554,7 @@ net-dns/bind 9.11.4_p2 9.12.2_p2-r1: BIND - Berkeley Internet Name Domain - Name
 net-dns/bind-tools 9.11.2_p1 9.12.2_p2-r1: bind tools: dig, nslookup, host, nsupdate, dnssec-keygen
 net-dns/c-ares 1.13.0: C library that resolves names asynchronously
 net-dns/ddclient 3.8.1-r5 3.9.0-r1: Perl client used to update dynamic DNS entries
-net-dns/djbdns 1.05-r32: Collection of DNS client/server software
+net-dns/djbdns 1.05-r32 1.05-r33: Collection of DNS client/server software
 net-dns/dnscrypt-proxy 2.0.19: A flexible DNS proxy, with support for encrypted DNS protocols
 net-dns/dnsmasq 2.79 2.80: Small forwarding DNS server
 net-dns/dnssec-root 20150403 20170203-r1: The DNSSEC root key(s)
@@ -8956,7 +8956,7 @@ net-misc/grdesktop 0.23-r1: Gtk2 frontend for rdesktop
 net-misc/gsasl 1.8.0-r1: The GNU SASL client, server, and library
 net-misc/gupnp-tools 0.8.14: Free replacements of Intel UPnP tools that use GUPnP
 net-misc/gwget 1.0.4: GTK2 WGet Frontend
-net-misc/gwhois 20120626: generic whois
+net-misc/gwhois 20120626 20120626-r1: Generic whois
 net-misc/hath 0.3.0: Hath manipulates network blocks in CIDR notation
 net-misc/hsc 1.0b: An HTML preprocessor using ML syntax
 net-misc/htbinit 0.8.5-r7: Sets up Hierachical Token Bucket based traffic control (QoS) with iproute2
@@ -9152,7 +9152,7 @@ net-p2p/gtorrentviewer 0.2b: A GTK2-based viewer and editor for BitTorrent meta 
 net-p2p/ktorrent 5.1.1: Powerful BitTorrent client based on KDE Frameworks
 net-p2p/mktorrent 1.0-r1: Simple command line utility to create BitTorrent metainfo files
 net-p2p/mldonkey 3.1.5-r1: Multi-network P2P application written in Ocaml, with Gtk, web & telnet interface
-net-p2p/ncdc 1.19.1: ncurses directconnect client
+net-p2p/ncdc 1.20: ncurses directconnect client
 net-p2p/qbittorrent 4.1.4-r1 4.1.5-r1: BitTorrent client in C++ and Qt
 net-p2p/retroshare 0.6.3-r1 0.6.4: P2P private sharing application
 net-p2p/rtorrent 0.9.7-r1: BitTorrent Client using libtorrent
@@ -9406,7 +9406,7 @@ sci-geosciences/qmapshack 1.12.0: GPS mapping utility
 sci-geosciences/routino 3.1.1 3.2: Routing application based on openstreetmap data
 sci-geosciences/seawater 2.0.1: Calculate properties of sea water. Similar to SEAWATER 3.2 for MATLAB
 sci-geosciences/swmm 5.0.022: Storm Water Management Model-SWMM, hydrology, hydraulics, water quality model
-sci-geosciences/tcd-utils 20120115: Utilities for working with Tidal Constituent Databases
+sci-geosciences/tcd-utils 20120115-r1: Utilities for working with Tidal Constituent Databases
 sci-geosciences/xtide 2.13.2: XTide provides tide and current predictions in a wide variety of formats
 sci-libs/Shapely 1.5.17-r1: Geometric objects, predicates, and operations
 sci-libs/adolc 2.4.1: Automatic differentiation system for C/C++
@@ -10280,7 +10280,7 @@ sys-libs/cracklib 2.9.6-r1: Password Checking Library
 sys-libs/db 1.85-r3 3.2.9_p2 4.2.52_p5-r1 4.3.29_p1-r1 4.5.20_p2-r1 4.6.21_p4 4.7.25_p4 4.8.30-r2 5.3.28-r2: Oracle Berkeley DB
 sys-libs/e2fsprogs-libs 1.43.6 1.43.9 1.44.5: e2fsprogs libraries (common error and subsystem)
 sys-libs/efivar 30 31 37: Tools and library to manipulate EFI variables
-sys-libs/freeipmi 1.4.8: Provides Remote-Console and System Management Software as per IPMI v1.5/2.0
+sys-libs/freeipmi 1.4.8 1.5.7: Provides Remote-Console and System Management Software as per IPMI v1.5/2.0
 sys-libs/fts-standalone 0.2-r1 1.2.7: Standalone fts library for use with musl
 sys-libs/gdbm 1.13-r2: Standard GNU database libraries
 sys-libs/glibc 2.27-r6: GNU libc C library
