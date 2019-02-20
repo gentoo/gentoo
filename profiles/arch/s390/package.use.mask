@@ -23,6 +23,8 @@ dev-python/restkit cli
 # not tested yet
 app-misc/mc samba
 app-arch/rpm test
+# no ceph keyworded
+net-analyzer/rrdtool rados
 
 
 # Michał Górny <mgorny@gentoo.org> (08 Aug 2017)
