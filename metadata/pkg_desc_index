@@ -1894,7 +1894,7 @@ dev-db/myodbc 5.3.10-r2: ODBC driver for MySQL
 dev-db/mysql 5.6.40-r2 5.6.42 5.7.23-r2 5.7.24: A fast, multi-threaded, multi-user SQL database server
 dev-db/mysql++ 3.2.3: C++ API interface to the MySQL database
 dev-db/mysql-connector-c 6.1.11-r1: C client library for MariaDB/MySQL
-dev-db/mysql-connector-c++ 1.1.9: MySQL database connector for C++ (mimics JDBC 4.0 API)
+dev-db/mysql-connector-c++ 1.1.9 1.1.11: MySQL database connector for C++ (mimics JDBC 4.0 API)
 dev-db/mysql-init-scripts 2.2-r3: Gentoo MySQL init scripts.
 dev-db/mysql-super-smack 1.3-r4: Benchmarking, stress testing, and load generation tool for MySQL & PostGreSQL
 dev-db/mysql-workbench 6.3.10: MySQL Workbench
@@ -3352,7 +3352,7 @@ dev-lua/luasocket 3.0_rc1-r3 3.0_rc1-r4: Networking support library for the Lua 
 dev-lua/luassert 1.7.9: Lua Assertions Extension
 dev-lua/luasystem 0.2.0_p0: platform independent system calls for lua
 dev-lua/lutok 0.4-r1: Lightweight C++ API library for Lua
-dev-lua/luvit 0.7.0: Takes node.js' architecture and dependencies and fits it in the Lua language
+dev-lua/luvit 0.7.0 0.8.2: Takes node.js' architecture and dependencies and fits it in the Lua language
 dev-lua/mediator_lua 1.1.2_p0: Event handling through channels
 dev-lua/mpack 1.0.4: Lua bindings for libmpack
 dev-lua/penlight 1.3.2: Lua utility libraries loosely based on the Python standard libraries
@@ -8977,6 +8977,7 @@ net-misc/iputils 20171016_pre 20180629: Network monitoring tools including ping 
 net-misc/ipv6calc 0.97.4 0.99.2 1.0.0: IPv6 address calculator
 net-misc/ipx-utils 1.1-r4: The IPX Utilities
 net-misc/java-wakeonlan 1.0.0-r2: A wakeonlan commandline tool and Java library
+net-misc/jlj 2.12-r1: Simple console LiveJournal entry system
 net-misc/jrdesktop 0.3.1.0: Java Remote Desktop (jrdesktop) software for viewing and/or controlling a distance PC
 net-misc/jwhois 4.0-r1: Advanced Internet Whois client capable of recursive queries
 net-misc/keychain 2.8.1 2.8.5: Agent manager for OpenSSH, ssh.com, Sun SSH, and GnuPG
