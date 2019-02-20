@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
+PYTHON_COMPAT=( python2_7 python3_{4,5,6,7} )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1 flag-o-matic
@@ -14,7 +14,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="mkl"
 
 RDEPEND="
@@ -29,11 +29,11 @@ python_prepare_all() {
 	if use mkl; then
 		use amd64 && local ext="_lp64"
 		cat > site.cfg <<- _EOF_ || die
-		[mkl]
-		library_dirs = ${MKLROOT}/lib/em64t
-		include_dirs = ${MKLROOT}/include
-		mkl_libs = mkl_solver${ext}, mkl_intel${ext}, \
-		mkl_intel_thread, mkl_core, iomp5
+			[mkl]
+			library_dirs = ${MKLROOT}/lib/em64t
+			include_dirs = ${MKLROOT}/include
+			mkl_libs = mkl_solver${ext}, mkl_intel${ext}, \
+			mkl_intel_thread, mkl_core, iomp5
 		_EOF_
 	fi
 
@@ -52,7 +52,7 @@ python_compile() {
 python_test() {
 	pushd "${BUILD_DIR}"/lib >/dev/null || die
 	"${EPYTHON}" \
-		-c "import sys;import numexpr;sys.exit(0 if numexpr.test() else 1)" \
+		-c "import sys,numexpr;sys.exit(0 if numexpr.test().wasSuccessful() else 1)" \
 		|| die
 	pushd >/dev/null || die
 }
