@@ -8,7 +8,7 @@ HOMEPAGE="http://umlautllama.com/projects/perl/#jlj"
 SRC_URI="http://umlautllama.com/projects/perl/${PN}_${PV}.tar.gz"
 
 LICENSE="freedist"
-KEYWORDS="~alpha ~amd64 ~ppc ~sparc x86"
+KEYWORDS="~alpha amd64 arm ~ppc ~sparc x86"
 SLOT="0"
 
 DEPEND="dev-lang/perl"
