@@ -7,16 +7,15 @@ if [[ ${PV} = *9999* ]] ; then # Live ebuild
 	inherit git-r3
 	EGIT_BRANCH=master
 	EGIT_REPO_URI="https://github.com/intel/libva"
+	AUTOTOOLS_AUTORECONF="yes"
 fi
-
-AUTOTOOLS_AUTORECONF="yes"
 inherit autotools-multilib eapi7-ver multilib
 
 DESCRIPTION="Video Acceleration (VA) API for Linux"
 HOMEPAGE="https://01.org/linuxmedia/vaapi"
 
 if [[ ${PV} != *9999* ]] ; then
-	SRC_URI="https://github.com/intel/libva/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/intel/libva/releases/download/${PV}/${P}.tar.bz2"
 	KEYWORDS="~amd64 ~arm64 ~x86 ~amd64-linux ~x86-linux"
 fi
 
