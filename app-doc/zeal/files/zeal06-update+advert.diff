@@ -1,0 +1,273 @@
+diff -ru zeal-0.5.0.orig/work/zeal-0.5.0/src/libs/core/application.cpp zeal-0.5.0/work/zeal-0.5.0/src/libs/core/application.cpp
+--- zeal-0.5.0.orig/work/zeal-0.5.0/src/libs/core/application.cpp	2018-01-08 23:58:54.412119599 +0100
++++ zeal-0.5.0/work/zeal-0.5.0/src/libs/core/application.cpp	2018-01-09 00:33:23.856727551 +0100
+@@ -160,43 +160,6 @@
+     return m_networkManager->get(request);
+ }
+ 
+-/*!
+-  \internal
+-
+-  Performs a check whether a new Zeal version is available. Setting \a quiet to true supresses
+-  error and "you are using the latest version" message boxes.
+-*/
+-void Application::checkForUpdates(bool quiet)
+-{
+-    QNetworkReply *reply = download(QUrl(ReleasesApiUrl));
+-    connect(reply, &QNetworkReply::finished, this, [this, quiet]() {
+-        QScopedPointer<QNetworkReply, QScopedPointerDeleteLater> reply(
+-                    qobject_cast<QNetworkReply *>(sender()));
+-
+-        if (reply->error() != QNetworkReply::NoError) {
+-            if (!quiet)
+-                emit updateCheckError(reply->errorString());
+-            return;
+-        }
+-
+-        QJsonParseError jsonError;
+-        const QJsonDocument jsonDoc = QJsonDocument::fromJson(reply->readAll(), &jsonError);
+-
+-        if (jsonError.error != QJsonParseError::NoError) {
+-            if (!quiet)
+-                emit updateCheckError(jsonError.errorString());
+-            return;
+-        }
+-
+-        const QJsonObject latestVersionInfo = jsonDoc.array().first().toObject();
+-        const Util::Version latestVersion = latestVersionInfo[QStringLiteral("version")].toString();
+-        if (latestVersion > Util::Version(QCoreApplication::applicationVersion()))
+-            emit updateCheckDone(latestVersion.toString());
+-        else if (!quiet)
+-            emit updateCheckDone();
+-    });
+-}
+-
+ void Application::applySettings()
+ {
+     m_docsetRegistry->setStoragePath(m_settings->docsetPath);
+diff -ru zeal-0.5.0.orig/work/zeal-0.5.0/src/libs/core/application.h zeal-0.5.0/work/zeal-0.5.0/src/libs/core/application.h
+--- zeal-0.5.0.orig/work/zeal-0.5.0/src/libs/core/application.h	2018-01-08 23:58:54.412119599 +0100
++++ zeal-0.5.0/work/zeal-0.5.0/src/libs/core/application.h	2018-01-09 00:30:37.302591838 +0100
+@@ -65,14 +65,11 @@
+     void executeQuery(const Registry::SearchQuery &query, bool preventActivation);
+     void extract(const QString &filePath, const QString &destination, const QString &root = QString());
+     QNetworkReply *download(const QUrl &url);
+-    void checkForUpdates(bool quiet = false);
+ 
+ signals:
+     void extractionCompleted(const QString &filePath);
+     void extractionError(const QString &filePath, const QString &errorString);
+     void extractionProgress(const QString &filePath, qint64 extracted, qint64 total);
+-    void updateCheckDone(const QString &version = QString());
+-    void updateCheckError(const QString &message);
+ 
+ private slots:
+     void applySettings();
+diff -ru zeal-0.5.0.orig/work/zeal-0.5.0/src/libs/ui/mainwindow.cpp zeal-0.5.0/work/zeal-0.5.0/src/libs/ui/mainwindow.cpp
+--- zeal-0.5.0.orig/work/zeal-0.5.0/src/libs/ui/mainwindow.cpp	2018-01-08 23:58:54.413119551 +0100
++++ zeal-0.5.0/work/zeal-0.5.0/src/libs/ui/mainwindow.cpp	2018-01-09 00:34:36.406301934 +0100
+@@ -114,11 +114,7 @@
+ 
+     void goToStartPage()
+     {
+-        if (Core::Application::instance()->settings()->isAdDisabled) {
+-            widget->load(QUrl(WelcomePageNoAdUrl));
+-        } else {
+-            widget->load(QUrl(WelcomePageUrl));
+-        }
++        widget->load(QUrl(WelcomePageNoAdUrl));
+     }
+ 
+     QString searchQuery;
+@@ -210,8 +206,6 @@
+     connect(ui->actionSubmitFeedback, &QAction::triggered, [this]() {
+         QDesktopServices::openUrl(QUrl(QStringLiteral("https://github.com/zealdocs/zeal/issues")));
+     });
+-    connect(ui->actionCheckForUpdates, &QAction::triggered,
+-            m_application, &Core::Application::checkForUpdates);
+     connect(ui->actionAboutZeal, &QAction::triggered, [this]() {
+         QScopedPointer<AboutDialog> dialog(new AboutDialog(this));
+         dialog->exec();
+@@ -220,32 +214,6 @@
+         QMessageBox::aboutQt(this);
+     });
+ 
+-    // Update check
+-    connect(m_application, &Core::Application::updateCheckError, [this](const QString &message) {
+-        QMessageBox::warning(this, QStringLiteral("Zeal"), message);
+-    });
+-
+-    connect(m_application, &Core::Application::updateCheckDone, [this](const QString &version) {
+-        if (version.isEmpty()) {
+-            QMessageBox::information(this, QStringLiteral("Zeal"),
+-                                     tr("You are using the latest version."));
+-            return;
+-        }
+-
+-        // TODO: Remove this ugly workaround for #637.
+-        qApp->setQuitOnLastWindowClosed(false);
+-        const int ret
+-                = QMessageBox::information(this, QStringLiteral("Zeal"),
+-                                           tr("Zeal <b>%1</b> is available. Open download page?").arg(version),
+-                                           QMessageBox::Yes | QMessageBox::Default,
+-                                           QMessageBox::No | QMessageBox::Escape);
+-        qApp->setQuitOnLastWindowClosed(true);
+-
+-        if (ret == QMessageBox::Yes) {
+-            QDesktopServices::openUrl(QUrl(QStringLiteral("https://zealdocs.org/download.html")));
+-        }
+-    });
+-
+     m_backMenu = new QMenu(ui->backButton);
+     connect(m_backMenu, &QMenu::aboutToShow, this, [this]() {
+         m_backMenu->clear();
+@@ -418,9 +386,6 @@
+ 
+     connect(m_settings, &Core::Settings::updated, this, &MainWindow::applySettings);
+     applySettings();
+-
+-    if (m_settings->checkForUpdate)
+-        m_application->checkForUpdates(true);
+ }
+ 
+ MainWindow::~MainWindow()
+diff -ru zeal-0.5.0.orig/work/zeal-0.5.0/src/libs/ui/mainwindow.ui zeal-0.5.0/work/zeal-0.5.0/src/libs/ui/mainwindow.ui
+--- zeal-0.5.0.orig/work/zeal-0.5.0/src/libs/ui/mainwindow.ui	2018-01-08 23:58:54.413119551 +0100
++++ zeal-0.5.0/work/zeal-0.5.0/src/libs/ui/mainwindow.ui	2018-01-09 00:30:37.303591790 +0100
+@@ -293,11 +293,6 @@
+     <string>&amp;Submit Feedback...</string>
+    </property>
+   </action>
+-  <action name="actionCheckForUpdates">
+-   <property name="text">
+-    <string>&amp;Check for updates...</string>
+-   </property>
+-  </action>
+   <action name="actionFind">
+    <property name="icon">
+     <iconset theme="edit-find"/>
+Datei zeal-0.6.0.orig/.ipc_in ist ein FIFO, während Datei zeal-0.6.0/.ipc_in ein FIFO ist.
+Datei zeal-0.6.0.orig/.ipc_out ist ein FIFO, während Datei zeal-0.6.0/.ipc_out ein FIFO ist.
+diff -ru zeal-0.6.0.orig/work/zeal-0.6.0/src/libs/core/settings.cpp zeal-0.6.0/work/zeal-0.6.0/src/libs/core/settings.cpp
+--- zeal-0.6.0.orig/work/zeal-0.6.0/src/libs/core/settings.cpp	2018-02-18 01:48:47.000000000 +0100
++++ zeal-0.6.0/work/zeal-0.6.0/src/libs/core/settings.cpp	2018-02-18 20:36:31.192337762 +0100
+@@ -71,7 +71,6 @@
+ 
+     // TODO: Put everything in groups
+     startMinimized = settings->value(QStringLiteral("start_minimized"), false).toBool();
+-    checkForUpdate = settings->value(QStringLiteral("check_for_update"), true).toBool();
+ 
+     showSystrayIcon = settings->value(QStringLiteral("show_systray_icon"), true).toBool();
+     minimizeToSystray = settings->value(QStringLiteral("minimize_to_systray"), false).toBool();
+@@ -137,7 +136,6 @@
+     externalLinkPolicy = settings->value(QStringLiteral("external_link_policy"),
+                                          QVariant::fromValue(ExternalLinkPolicy::Ask)).value<ExternalLinkPolicy>();
+     isSmoothScrollingEnabled = settings->value(QStringLiteral("smooth_scrolling"), false).toBool();
+-    isAdDisabled = settings->value(QStringLiteral("disable_ad"), false).toBool();
+     settings->endGroup();
+ 
+     settings->beginGroup(GroupProxy);
+@@ -183,7 +181,6 @@
+ 
+     // TODO: Put everything in groups
+     settings->setValue(QStringLiteral("start_minimized"), startMinimized);
+-    settings->setValue(QStringLiteral("check_for_update"), checkForUpdate);
+ 
+     settings->setValue(QStringLiteral("show_systray_icon"), showSystrayIcon);
+     settings->setValue(QStringLiteral("minimize_to_systray"), minimizeToSystray);
+@@ -216,7 +213,6 @@
+     settings->setValue(QStringLiteral("custom_css_file"), customCssFile);
+     settings->setValue(QStringLiteral("external_link_policy"), QVariant::fromValue(externalLinkPolicy));
+     settings->setValue(QStringLiteral("smooth_scrolling"), isSmoothScrollingEnabled);
+-    settings->setValue(QStringLiteral("disable_ad"), isAdDisabled);
+     settings->endGroup();
+ 
+     settings->beginGroup(GroupProxy);
+diff -ru zeal-0.6.0.orig/work/zeal-0.6.0/src/libs/core/settings.h zeal-0.6.0/work/zeal-0.6.0/src/libs/core/settings.h
+--- zeal-0.6.0.orig/work/zeal-0.6.0/src/libs/core/settings.h	2018-02-18 01:48:47.000000000 +0100
++++ zeal-0.6.0/work/zeal-0.6.0/src/libs/core/settings.h	2018-02-18 20:37:14.242243690 +0100
+@@ -41,7 +41,6 @@
+ 
+     // Startup
+     bool startMinimized;
+-    bool checkForUpdate;
+     // TODO: bool restoreLastState;
+ 
+     // System Tray
+@@ -81,7 +80,6 @@
+     bool highlightOnNavigateEnabled;
+     QString customCssFile;
+     bool isSmoothScrollingEnabled;
+-    bool isAdDisabled;
+ 
+     // Network
+     enum ProxyType : unsigned int {
+diff -ru zeal-0.6.0.orig/work/zeal-0.6.0/src/libs/ui/settingsdialog.cpp zeal-0.6.0/work/zeal-0.6.0/src/libs/ui/settingsdialog.cpp
+--- zeal-0.6.0.orig/work/zeal-0.6.0/src/libs/ui/settingsdialog.cpp	2018-02-18 01:48:47.000000000 +0100
++++ zeal-0.6.0/work/zeal-0.6.0/src/libs/ui/settingsdialog.cpp	2018-02-18 20:39:38.158246561 +0100
+@@ -157,7 +157,6 @@
+ 
+     // General Tab
+     ui->startMinimizedCheckBox->setChecked(settings->startMinimized);
+-    ui->checkForUpdateCheckBox->setChecked(settings->checkForUpdate);
+ 
+     ui->systrayGroupBox->setChecked(settings->showSystrayIcon);
+     ui->minimizeToSystrayCheckBox->setChecked(settings->minimizeToSystray);
+@@ -205,7 +204,6 @@
+     }
+ 
+     ui->useSmoothScrollingCheckBox->setChecked(settings->isSmoothScrollingEnabled);
+-    ui->disableAdCheckBox->setChecked(settings->isAdDisabled);
+ 
+     // Network Tab
+     switch (settings->proxyType) {
+@@ -233,7 +231,6 @@
+ 
+     // General Tab
+     settings->startMinimized = ui->startMinimizedCheckBox->isChecked();
+-    settings->checkForUpdate = ui->checkForUpdateCheckBox->isChecked();
+ 
+     settings->showSystrayIcon = ui->systrayGroupBox->isChecked();
+     settings->minimizeToSystray = ui->minimizeToSystrayCheckBox->isChecked();
+@@ -272,7 +269,6 @@
+     }
+ 
+     settings->isSmoothScrollingEnabled = ui->useSmoothScrollingCheckBox->isChecked();
+-    settings->isAdDisabled = ui->disableAdCheckBox->isChecked();
+ 
+     // Network Tab
+     // Proxy settings
+diff -ru zeal-0.6.0.orig/work/zeal-0.6.0/src/libs/ui/settingsdialog.ui zeal-0.6.0/work/zeal-0.6.0/src/libs/ui/settingsdialog.ui
+--- zeal-0.6.0.orig/work/zeal-0.6.0/src/libs/ui/settingsdialog.ui	2018-02-18 01:48:47.000000000 +0100
++++ zeal-0.6.0/work/zeal-0.6.0/src/libs/ui/settingsdialog.ui	2018-02-18 20:42:24.655159766 +0100
+@@ -40,16 +40,6 @@
+             </property>
+            </widget>
+           </item>
+-          <item>
+-           <widget class="QCheckBox" name="checkForUpdateCheckBox">
+-            <property name="text">
+-             <string>Check for update</string>
+-            </property>
+-            <property name="checked">
+-             <bool>true</bool>
+-            </property>
+-           </widget>
+-          </item>
+          </layout>
+         </widget>
+        </item>
+@@ -502,13 +492,6 @@
+             </property>
+            </widget>
+           </item>
+-          <item>
+-           <widget class="QCheckBox" name="disableAdCheckBox">
+-            <property name="text">
+-             <string>Disable ad&amp;vertisement on the welcome page</string>
+-            </property>
+-           </widget>
+-          </item>
+          </layout>
+         </widget>
+        </item>
