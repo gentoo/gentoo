@@ -7,7 +7,7 @@
 # @AUTHOR:
 # Author: Tomáš Chvátal <scarabeus@gentoo.org>
 # Author: Donnie Berkholz <dberkholz@gentoo.org>
-# @SUPPORTED_EAPIS: 3 4 5
+# @SUPPORTED_EAPIS: 4 5
 # @BLURB: Reduces code duplication in the modularized X11 ebuilds.
 # @DESCRIPTION:
 # This eclass makes trivial X ebuilds possible for apps, fonts, drivers,
@@ -53,7 +53,7 @@ fi
 
 EXPORTED_FUNCTIONS="src_unpack src_compile src_install pkg_postinst pkg_postrm"
 case "${EAPI:-0}" in
-	3|4|5) EXPORTED_FUNCTIONS="${EXPORTED_FUNCTIONS} src_prepare src_configure" ;;
+	4|5) EXPORTED_FUNCTIONS="${EXPORTED_FUNCTIONS} src_prepare src_configure" ;;
 	*) die "EAPI=${EAPI} is not supported" ;;
 esac
 
@@ -271,7 +271,7 @@ fi
 
 if [[ ${XORG_MODULE_REBUILD} == yes ]]; then
 	case ${EAPI} in
-		3|4)
+		4)
 			;;
 		*)
 			RDEPEND+=" x11-base/xorg-server:="
@@ -500,7 +500,7 @@ xorg-2_src_install() {
 	fi
 
 	# Don't install libtool archives (even for modules)
-	prune_libtool_files --all
+	find "${D}" -type f -name '*.la' -delete || die
 
 	[[ -n ${FONT} ]] && remove_font_metadata
 }
@@ -530,7 +530,7 @@ xorg-2_pkg_postrm() {
 
 	if [[ -n ${FONT} ]]; then
 		# if we're doing an upgrade, postinst will do
-		if [[ ${EAPI} -lt 4 || -z ${REPLACED_BY_VERSION} ]]; then
+		if [[ -z ${REPLACED_BY_VERSION} ]]; then
 			create_fonts_scale
 			create_fonts_dir
 			font_pkg_postrm "$@"
