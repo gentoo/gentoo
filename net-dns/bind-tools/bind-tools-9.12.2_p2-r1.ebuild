@@ -27,7 +27,7 @@ REQUIRED_USE="gost? ( !libressl ssl )
 CDEPEND="
 	ssl? (
 		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:= )
+		libressl? ( dev-libs/libressl:0= )
 	)
 	gost? (
 		|| (
