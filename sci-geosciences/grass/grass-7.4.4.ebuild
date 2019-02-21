@@ -8,9 +8,9 @@ PYTHON_REQ_USE="sqlite"  # bug 572440
 WANT_AUTOCONF="2.1"
 WX_GTK_VER=3.0
 
-inherit autotools gnome2 python-single-r1 versionator wxwidgets xdg-utils
+inherit autotools desktop eapi7-ver python-single-r1 wxwidgets xdg
 
-MY_PM=${PN}$(get_version_component_range 1-2 ${PV})
+MY_PM=${PN}$(ver_cut 1-2 ${PV})
 MY_PM=${MY_PM/.}
 MY_P=${P/_rc/RC}
 
@@ -21,25 +21,27 @@ SRC_URI="https://grass.osgeo.org/${MY_PM}/source/${MY_P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0/7.4.0"
 KEYWORDS="~amd64 ~ppc ~x86"
-IUSE="X blas cxx fftw geos lapack liblas mysql netcdf nls odbc opencl opengl openmp png postgres readline sqlite threads tiff truetype"
+IUSE="blas cxx fftw geos lapack liblas mysql netcdf nls odbc opencl opengl openmp png postgres readline sqlite threads tiff truetype X"
 
 RDEPEND="${PYTHON_DEPS}
 	>=app-admin/eselect-1.2
 	dev-python/numpy[${PYTHON_USEDEP}]
 	media-libs/libprojectm
-	sci-libs/proj
-	sci-libs/xdrfile
 	sci-libs/gdal
 	sys-libs/gdbm
 	sys-libs/ncurses:0=
-	sys-libs/zlib:=
+	sci-libs/proj
+	sci-libs/xdrfile
+	sys-libs/zlib
+	blas? (
+		sci-libs/cblas-reference
+		virtual/blas
+	)
 	fftw? ( sci-libs/fftw:3.0= )
 	geos? ( sci-libs/geos )
-	blas? ( virtual/blas
-		sci-libs/cblas-reference )
 	lapack? ( virtual/lapack )
 	liblas? ( sci-geosciences/liblas )
-	mysql? ( virtual/mysql )
+	mysql? ( dev-db/mysql-connector-c:= )
 	netcdf? ( sci-libs/netcdf )
 	odbc? ( dev-db/unixODBC )
 	opencl? ( virtual/opencl )
@@ -58,33 +60,25 @@ RDEPEND="${PYTHON_DEPS}
 		x11-libs/libX11
 		x11-libs/libXext
 		x11-libs/libXt
-	)"
-
+	)
+"
 DEPEND="${RDEPEND}
-	virtual/pkgconfig
+	sys-devel/bison
 	sys-devel/flex
 	sys-devel/gettext
-	sys-devel/bison
+	virtual/pkgconfig
 	X? (
 		dev-lang/swig
 		x11-base/xorg-proto
-	)"
+	)
+"
 
 S="${WORKDIR}/${MY_P}"
 
-REQUIRED_USE="
-	${PYTHON_REQUIRED_USE}
+REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	opengl? ( X )"
 
-PATCHES=(
-	"${FILESDIR}/${PN}"-7.0.1-declare-inespg.patch
-)
-
-#pre_pkg_setup() {
-#	export LIBS="$(pkg-config --libs libtirpc) ${LIBS}"
-#	export CPPFLAGS="$(pkg-config --cflags libtirpc) ${CPPFLAGS}"
-#	einfo "LIBS='${LIBS}' CPPFLAGS='${CPPFLAGS}' # bug #588980"
-#}
+PATCHES=( "${FILESDIR}/${PN}"-7.0.1-declare-inespg.patch )
 
 pkg_setup() {
 	if use lapack; then
@@ -153,43 +147,44 @@ src_configure() {
 		setup-wxwidgets
 	fi
 
-	addwrite "${EPREFIX}/dev/dri/renderD128"
+	addwrite "${EPREFIX%/}/dev/dri/renderD128"
 
-	econf \
-		--enable-shared \
-		--disable-w11 \
-		$(use_with cxx) \
-		$(use_with tiff) \
-		$(use_with png) \
-		$(use_with postgres) \
-		$(use_with mysql) \
-		$(use_with mysql mysql-includes "${EPREFIX}/usr/include/mysql") \
-		$(use_with mysql mysql-libs "${EPREFIX}/usr/$(get_libdir)/mysql") \
-		$(use_with sqlite) \
-		$(use_with opengl) \
-		$(use_with odbc) \
-		$(use_with fftw) \
-		$(use_with blas) \
-		$(use_with lapack) \
-		$(use_with X cairo) \
-		$(use_with truetype freetype) \
-		$(use_with truetype freetype-includes "${EPREFIX}/usr/include/freetype2") \
-		$(use_with nls) \
-		$(use_with readline) \
-		--without-opendwg \
-		--with-regex \
-		$(use_with threads pthread) \
-		$(use_with openmp) \
-		$(use_with opencl) \
-		--with-gdal="${EPREFIX}/usr/bin/gdal-config" \
-		$(use_with liblas liblas "${EPREFIX}/usr/bin/liblas-config") \
-		$(use_with X wxwidgets "${WX_CONFIG}") \
-		$(use_with netcdf netcdf "${EPREFIX}/usr/bin/nc-config") \
-		$(use_with geos geos "${EPREFIX}/usr/bin/geos-config") \
-		--with-proj-includes="${EPREFIX}/usr/include/libprojectM" \
-		--with-proj-libs="${EPREFIX}/usr/$(get_libdir)" \
-		--with-proj-share="${EPREFIX}/usr/share/proj/" \
+	local myeconfargs=(
+		--enable-shared
+		--disable-w11
+		--without-opendwg
+		--with-regex
+		--with-gdal="${EPREFIX%/}/usr/bin/gdal-config"
+		--with-proj-includes="${EPREFIX%/}/usr/include/libprojectM"
+		--with-proj-libs="${EPREFIX%/}/usr/$(get_libdir)"
+		--with-proj-share="${EPREFIX%/}/usr/share/proj/"
+		$(use_with cxx)
+		$(use_with tiff)
+		$(use_with png)
+		$(use_with postgres)
+		$(use_with mysql)
+		$(use_with mysql mysql-includes "${EPREFIX%/}/usr/include/mysql")
+		$(use_with sqlite)
+		$(use_with opengl)
+		$(use_with odbc)
+		$(use_with fftw)
+		$(use_with blas)
+		$(use_with lapack)
+		$(use_with X cairo)
+		$(use_with truetype freetype)
+		$(use_with truetype freetype-includes "${EPREFIX%/}/usr/include/freetype2")
+		$(use_with nls)
+		$(use_with readline)
+		$(use_with threads pthread)
+		$(use_with openmp)
+		$(use_with opencl)
+		$(use_with liblas liblas "${EPREFIX%/}/usr/bin/liblas-config")
+		$(use_with X wxwidgets "${WX_CONFIG}")
+		$(use_with netcdf netcdf "${EPREFIX%/}/usr/bin/nc-config")
+		$(use_with geos geos "${EPREFIX%/}/usr/bin/geos-config")
 		$(use_with X x)
+	)
+	econf "${myeconfargs[@]}"
 }
 
 src_compile() {
@@ -199,19 +194,15 @@ src_compile() {
 
 src_install() {
 	emake DESTDIR="${D}" \
-		INST_DIR="${D}usr/${MY_PM}" \
-		prefix="${D}usr" BINDIR="${D}usr/bin" \
-		PREFIX="${D}usr/" \
+		INST_DIR="${D}/usr/$(get_libdir)/${MY_PM}" \
+		prefix="${D}/usr/" BINDIR="${D}/usr/bin" \
+		PREFIX="${D}/usr/" \
 		install
 
-	pushd "${D}usr/${MY_PM}" &> /dev/null || die
+	pushd "${D}/usr/$(get_libdir)/${MY_PM}" &> /dev/null || die
 
-	# fix docs
-	dodoc AUTHORS CHANGES
-	docinto html
-	dodoc -r docs/html/*
-	rm -rf docs/ || die
-	rm -rf {AUTHORS,CHANGES,COPYING,GPL.TXT,REQUIREMENTS.html} || die
+	local HTML_DOCS=( docs/html/. )
+	einstalldocs
 
 	# manuals
 	dodir /usr/share/man/man1
@@ -220,36 +211,41 @@ src_install() {
 	# translations
 	if use nls; then
 		dodir /usr/share/locale/
-		mv locale/* "${D}usr/share/locale/" || die
-		rm -rf locale/ || die
+		mv locale/* "${D}/usr/share/locale/" || die
 	fi
 
 	popd &> /dev/null || die
 
-	# place libraries where they belong
-	mv "${D}usr/${MY_PM}/lib/" "${D}usr/$(get_libdir)/" || die
+	# link libraries in the ~standard~ place
+	for fLib in $(ls "${D}/usr/$(get_libdir)/${MY_PM}/lib/"); do
+		dosym "${MY_PM}/lib/${fLib}" "/usr/$(get_libdir)/${fLib}"
+	done
 
-	# place header files where they belong
-	mv "${D}usr/${MY_PM}/include/" "${D}usr/include/" || die
-	# make rules are not required on installed system
-	rm -rf "${D}usr/include/Make" || die
+	# link headers in the ~standard~ place
+	dodir "/usr/include/"
+	dosym "../$(get_libdir)/${MY_PM}/include/grass" "/usr/include/grass"
 
-	# mv remaining gisbase stuff to libdir
-	mv "${D}usr/${MY_PM}" "${D}usr/$(get_libdir)" || die
+	# fix paths in addons makefile includes
+	local scriptMakeDir
+	scriptMakeDir="${D}/usr/$(get_libdir)/${MY_PM}/include/Make/"
+	for mkFile in $(ls "${scriptMakeDir}"); do
+		echo sed -i "s|${D}|/|g" "${scriptMakeDir}/${mkFile}" || die
+		sed -i "s|${D}|/|g" "${scriptMakeDir}/${mkFile}" || die
+	done
 
 	# get proper folder for grass path in script
 	local gisbase
-	gisbase="${ROOT}usr/$(get_libdir)/${MY_PM}"
+	gisbase="${ROOT}/usr/$(get_libdir)/${MY_PM}"
 	sed -e "s:gisbase = \".*:gisbase = \"${gisbase}\":" \
-		-i "${D}usr/bin/${MY_PM}" || die
+		-i "${D}/usr/bin/${MY_PM}" || die
 
 	# get proper fonts path for fontcap
 	sed -i \
-		-e "s|${D}usr/${MY_PM}|${EPREFIX}usr/$(get_libdir)/${MY_PM}|" \
-		"${D}usr/$(get_libdir)/${MY_PM}/etc/fontcap" || die
+		-e "s|${D}/usr/${MY_PM}|${EPREFIX%/}/usr/$(get_libdir)/${MY_PM}|" \
+		"${D}/usr/$(get_libdir)/${MY_PM}/etc/fontcap" || die
 
 	# set proper python interpreter
-	sed -e "s:= \"python\":= \"${EPYTHON}\":" -i "${D}usr/bin/${MY_PM}" || die
+	sed -e "s:= \"python\":= \"${EPYTHON}\":" -i "${D}/usr/bin/${MY_PM}" || die
 
 	if use X; then
 		local GUI="-gui"
@@ -267,15 +263,16 @@ src_install() {
 }
 
 pkg_postinst() {
-	if use X; then
-		xdg_desktop_database_update
-		gnome2_icon_cache_update
-	fi
+	use X && xdg_pkg_postinst
+
+	ewarn "GRASS addons may fail due to Python 3 incompatibility."
+	ewarn "If that is tha case you can change the shebang a the beginning of"
+	ewarn "the script to enforce Python 2 usage."
+	ewarn "#!/usr/bin/env python"
+	ewarn "Should be changed into"
+	ewarn "#!/usr/bin/env python2"
 }
 
 pkg_postrm() {
-	if use X; then
-		xdg_desktop_database_update
-		gnome2_icon_cache_update
-	fi
+	use X && xdg_pkg_postrm
 }

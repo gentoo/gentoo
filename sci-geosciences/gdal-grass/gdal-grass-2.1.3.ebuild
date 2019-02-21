@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 DESCRIPTION="GDAL plugin to access GRASS data"
 HOMEPAGE="https://www.gdal.org/"
@@ -13,17 +13,10 @@ KEYWORDS="~amd64 ~x86"
 
 IUSE="postgres"
 RDEPEND="
-	>=sci-libs/gdal-2.0.0
-	sci-geosciences/grass:0=
+	>=sci-libs/gdal-2.0.0:=
+	sci-geosciences/grass:=
 "
 DEPEND="${RDEPEND}
-	dev-libs/expat
-	dev-libs/json-c:=
-	media-libs/tiff
-	sci-libs/libgeotiff
-	sci-libs/proj
-	sys-libs/zlib
-	virtual/jpeg
 	postgres? ( dev-db/postgresql )"
 
 # these drivers are copied at install from the already installed GRASS
@@ -36,10 +29,15 @@ src_prepare() {
 }
 
 src_configure() {
-	econf \
-		--with-grass="/usr/$(get_libdir)/grass70" \
-		--with-gdal="/usr/bin/gdal-config" \
+	local grassp=$(best_version sci-geosciences/grass)
+	local grasspv=$(echo ${grassp/%-r[0-9]*/} | rev | cut -d - -f 1 | rev)
+	local grasspm=$(ver_cut 1-2 ${grasspv})
+	local myeconfargs=(
+		--with-grass="/usr/$(get_libdir)/grass$(ver_rs 1 '' ${grasspm})"
+		--with-gdal="/usr/bin/gdal-config"
 		$(use_with postgres postgres-includes "/usr/include/postgresql")
+	)
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {
