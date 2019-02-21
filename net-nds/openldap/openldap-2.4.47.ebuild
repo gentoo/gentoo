@@ -162,6 +162,12 @@ PATCHES=(
 
 	# unbundle lmdb
 	"${FILESDIR}"/${PN}-2.4.42-mdb-unbundle.patch
+
+	# bug #622464
+	"${FILESDIR}"/${PN}-2.4.47-libressl.patch
+
+	# fix some compiler warnings
+	"${FILESDIR}"/${PN}-2.4.47-warnings.patch
 )
 
 openldap_filecount() {
