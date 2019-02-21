@@ -4,9 +4,9 @@
 EAPI=6
 inherit flag-o-matic pam systemd toolchain-funcs user
 
-MY_PV="${PV/_pre/-}"
+MY_PV="${PV/_rc/-RC}"
 MY_SRC="${PN}-${MY_PV}"
-MY_URI="ftp://ftp.porcupine.org/mirrors/postfix-release/experimental"
+MY_URI="ftp://ftp.porcupine.org/mirrors/postfix-release/official"
 RC_VER="2.7"
 
 DESCRIPTION="A fast and secure drop-in replacement for sendmail"
@@ -72,6 +72,7 @@ src_prepare() {
 		src/util/sys_defs.h || die "sed failed"
 	# change default paths to better comply with portage standard paths
 	sed -i -e "s:/usr/local/:/usr/:g" conf/master.cf || die "sed failed"
+	eapply "${FILESDIR}/${PN}-linux-5.patch"
 	eapply -p0 "${FILESDIR}/${PN}-libressl.patch" \
 		"${FILESDIR}/${PN}-libressl-runtime.patch" \
 		"${FILESDIR}/${PN}-libressl-eccurve.patch"
@@ -280,6 +281,17 @@ src_install () {
 	fi
 
 	systemd_dounit "${FILESDIR}/${PN}.service"
+}
+
+pkg_preinst() {
+	if has_version '<mail-mta/postfix-3.4'; then
+		elog
+		elog "Postfix-3.4 introduces a new master.cf service 'postlog'"
+		elog "with type 'unix-dgram' that is used by the new postlogd(8) daemon."
+		elog "Before backing out to an older Postfix version, edit the master.cf"
+		elog "file and remove the postlog entry."
+		elog
+	fi
 }
 
 pkg_postinst() {
