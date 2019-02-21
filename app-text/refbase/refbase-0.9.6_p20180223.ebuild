@@ -1,32 +1,28 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="2"
-inherit depend.apache webapp
+EAPI=7
+inherit webapp
 
 DESCRIPTION="Web-based solution for managing scientific literature, references and citations"
 HOMEPAGE="http://www.refbase.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="https://sourceforge.net/code-snapshots/svn/r/re/refbase/code/refbase-code-r1422-branches-bleeding-edge.zip -> ${P}.zip"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
-DEPEND=">=dev-lang/php-5.3
-	dev-lang/php[mysql,session]
+RDEPEND=">=dev-lang/php-5.3[mysql,mysqli(+),session]
+	virtual/httpd-php
 	app-admin/webapp-config
 	app-text/bibutils"
-RDEPEND="${DEPEND}"
+DEPEND="app-arch/unzip"
 
-need_apache
-
-pkg_setup() {
-	webapp_pkg_setup
-}
+S="${WORKDIR}/${PN}-code-r1422-branches-bleeding-edge"
 
 src_install () {
 	webapp_src_preinst
 
 	DOCS="AUTHORS BUGS ChangeLog NEWS README TODO UPDATE"
-	dodoc ${DOCS}
+	einstalldocs
 	# Don't install docs to webroot
 	rm -f ${DOCS} COPYING INSTALL
 
