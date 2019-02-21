@@ -6578,7 +6578,7 @@ gnome-extra/cinnamon-session 3.6.1-r4: Cinnamon session manager
 gnome-extra/cinnamon-settings-daemon 3.6.1-r1: Cinnamon's settings daemon
 gnome-extra/cinnamon-translations 3.6.3: Translation data for Cinnamon
 gnome-extra/cjs 3.6.1: Linux Mint's fork of gjs for Cinnamon
-gnome-extra/eiciel 0.9.11 0.9.11-r1: ACL editor for GNOME, with Nautilus extension
+gnome-extra/eiciel 0.9.11-r1: ACL editor for GNOME, with Nautilus extension
 gnome-extra/evolution-data-server 3.24.7: Evolution groupware backend
 gnome-extra/evolution-ews 3.24.6: Evolution module for connecting to Microsoft Exchange Web Services
 gnome-extra/gconf-editor 3.0.1-r1: An editor to the GNOME config system
