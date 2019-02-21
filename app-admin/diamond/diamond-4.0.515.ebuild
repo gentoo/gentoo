@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -43,6 +43,9 @@ src_prepare() {
 
 	# fix the version (not set in GitHub archive)
 	sed -i -e "s/__VERSIONTOKENHERE__/${PV}/" src/diamond/version.py.tmpl || die
+	# fix psutil usage
+	sed -i -e 's/psutil\.network_io_counters/psutil.net_io_counters/' \
+		src/collectors/network/network.py || die
 	# fix symlink out of place
 	rm README.md || die
 	cp docs/index.md README.md || die
