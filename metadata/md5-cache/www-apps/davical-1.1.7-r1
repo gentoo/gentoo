@@ -9,5 +9,5 @@ LICENSE=GPL-2+
 RDEPEND=app-admin/pwgen dev-lang/php:*[calendar,curl,pdo,postgres,xml] dev-perl/DBD-Pg dev-perl/DBI dev-perl/YAML >=dev-php/awl-0.59 virtual/httpd-php >=app-admin/webapp-config-1.50.15
 SLOT=1.1.7-r1
 SRC_URI=https://www.davical.org/downloads/davical_1.1.7.orig.tar.xz -> davical-1.1.7.tar.xz
-_eclasses_=webapp	6ae2395d7f341093c36057cb4f69101a
+_eclasses_=webapp	16783e418aca3ffa461d68310bf7ab12
 _md5_=6a24cf38708615ab749787213b61240f

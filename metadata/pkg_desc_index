@@ -6698,7 +6698,7 @@ kde-apps/filelight 18.08.3: Visualise disk usage with interactive map of concent
 kde-apps/granatier 18.08.3: KDE Bomberman game
 kde-apps/grantlee-editor 18.08.3: Utilities and tools to manage themes in KDE PIM applications
 kde-apps/grantleetheme 18.08.3: Library for Grantlee plugins
-kde-apps/gwenview 18.08.3 18.08.3-r1: Image viewer by KDE
+kde-apps/gwenview 18.08.3-r1: Image viewer by KDE
 kde-apps/incidenceeditor 18.08.3: Incidence editor for korganizer
 kde-apps/juk 18.08.3: Jukebox and music manager by KDE
 kde-apps/k3b 18.08.3: Full-featured burning and ripping application based on KDE Frameworks
@@ -6861,7 +6861,7 @@ kde-apps/libkdcraw 18.08.3: Digital camera raw image library wrapper
 kde-apps/libkdegames 18.08.3: Base library common to many KDE games
 kde-apps/libkdepim 18.08.3: Common PIM libraries
 kde-apps/libkeduvocdocument 18.08.3: Library for reading/writing KVTML
-kde-apps/libkexiv2 18.08.3 18.08.3-r1: KDE Image Plugin Interface: an exiv2 library wrapper
+kde-apps/libkexiv2 18.08.3-r1: KDE Image Plugin Interface: an exiv2 library wrapper
 kde-apps/libkgapi 18.08.3: Library for accessing Google calendar and contact resources
 kde-apps/libkgeomap 18.08.3: Wrapper library for world map components as marble, openstreetmap and googlemap
 kde-apps/libkipi 18.08.3: A library for image plugins accross KDE applications
@@ -6926,7 +6926,7 @@ kde-frameworks/kdesignerplugin 5.54.0: Framework providing plugins to use KDE fr
 kde-frameworks/kdesu 5.54.0: Framework to handle super user actions
 kde-frameworks/kdewebkit 5.54.0: Framework providing KDE integration of QtWebKit
 kde-frameworks/kdnssd 5.54.0: Framework for network service discovery using Zeroconf
-kde-frameworks/kdoctools 5.54.0 5.54.0-r1: Tools to generate documentation in various formats from DocBook files
+kde-frameworks/kdoctools 5.54.0-r1: Tools to generate documentation in various formats from DocBook files
 kde-frameworks/kemoticons 5.54.0: Framework for converting text emoticons to graphical representations
 kde-frameworks/kf-env 5: Environment setting required for all KDE Frameworks apps to run
 kde-frameworks/kfilemetadata 5.54.0: Library for extracting file metadata
@@ -7356,7 +7356,7 @@ media-gfx/crwinfo 0.2: Canon raw image (CRW) information and thumbnail extractor
 media-gfx/darktable 2.2.5 2.4.3: A virtual lighttable and darkroom for photographers
 media-gfx/dawn 3.90b-r1: 3D geometrical postscript renderer
 media-gfx/dcraw 9.27.0 9.28.0: Command-line decoder for raw digital photos
-media-gfx/digikam 5.9.0 6.0.0: Digital photo management application
+media-gfx/digikam 6.0.0: Digital photo management application
 media-gfx/dpic 20130310: Converts PIC plots into pstricks, PGF/TikZ, PostScript, MetaPost and TeX
 media-gfx/duhdraw 2.8.13-r1: ASCII art editor
 media-gfx/ebdftopcf 2: ebdftopcf optimially generators PCF files from BDF files
@@ -8061,7 +8061,7 @@ media-sound/aylet 0.5: Aylet plays music files in the .ay format
 media-sound/bladeenc 0.94.2-r1: An mp3 encoder
 media-sound/bplay 0.991: No-frills command-line buffered player and recorder
 media-sound/brutefir 1.0k-r2: Software convolution engine for applying long FIR filters
-media-sound/cantata 2.3.2 2.3.3-r1: Featureful and configurable Qt client for the music player daemon (MPD)
+media-sound/cantata 2.3.3-r1: Featureful and configurable Qt client for the music player daemon (MPD)
 media-sound/cd-discid 1.3 1.4: returns the disc id for the cd in the cd-rom drive
 media-sound/cdcd 0.6.6-r2: a simple yet powerful command line cd player
 media-sound/cdparanoia 3.10.2-r6: an advanced CDDA reader with error correction
