@@ -1,10 +1,6 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Mikle Kolyada <zlogene@gentoo.org> (12 Feb 2019)
-# net-libs/libotr is not keyworded
-net-irc/irssi otr
-
 # Davide Pesavento <pesa@gentoo.org> (27 Dec 2018)
 # The corresponding Qt5 modules are not keyworded on arm64, and we don't want to
 # keyword them solely because of PyQt5 while there are no other in-tree users.
@@ -39,10 +35,8 @@ sci-electronics/kicad occ oce ngspice
 
 # Andreas Sturmlechner <asturm@gentoo.org> (01 Sep 2018)
 # media-libs/aribb24 not yet keyworded, bug #665048
-# net-libs/srt not yet keyworded
 # net-libs/libmicrodns not yet keyworded, bug #653800
-# net-misc/freerdp not yet keyworded
-media-video/vlc aribsub chromecast rdp srt
+media-video/vlc aribsub chromecast
 
 # Matthew Thode <prometheanfire@gentoo.org> (30 Aug 2018)
 # Needs pillow and it's deps to build docs
@@ -426,10 +420,6 @@ app-admin/conky lua-cairo lua-imlib xmms2 audacious moc
 # Sergey Popov <pinkbyte@gentoo.org> (30 Jul 2013)
 # Not tested
 media-libs/devil allegro nvtt
-
-# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (13 Jul 2013)
-# requires net-misc/freerdp which is not keyworded on arm
-dev-libs/weston rdp
 
 # Andreas K. Huettel <dilfridge@gentoo.org> (27 May 2013)
 # Firmware loader not keyworded yet
