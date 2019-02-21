@@ -3,8 +3,6 @@
 
 EAPI=6
 
-inherit eutils
-
 DESCRIPTION="GDAL plugin to access GRASS data"
 HOMEPAGE="https://www.gdal.org/"
 SRC_URI="https://download.osgeo.org/gdal/${PV}/${P}.tar.gz"
@@ -21,11 +19,11 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	dev-libs/expat
 	dev-libs/json-c:=
-	virtual/jpeg
 	media-libs/tiff
 	sci-libs/libgeotiff
 	sci-libs/proj
 	sys-libs/zlib
+	virtual/jpeg
 	postgres? ( dev-db/postgresql )"
 
 # these drivers are copied at install from the already installed GRASS
