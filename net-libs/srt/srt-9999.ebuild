@@ -20,17 +20,16 @@ LICENSE="LGPL-2.1"
 SLOT="0"
 IUSE="gnutls libressl test"
 
-BDEPEND="
-	test? ( dev-cpp/gtest )
-"
-DEPEND="
+RDEPEND="
 	gnutls? ( net-libs/gnutls:=[${MULTILIB_USEDEP}] )
 	!gnutls? (
 		!libressl? ( dev-libs/openssl:0=[${MULTILIB_USEDEP}] )
 		libressl? ( dev-libs/libressl:0=[${MULTILIB_USEDEP}] )
 	)
 "
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}
+	test? ( dev-cpp/gtest )
+"
 
 RESTRICT="!test? ( test )"
 
