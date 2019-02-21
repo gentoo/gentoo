@@ -1,15 +1,15 @@
---- a/Makefile	2019-01-02 18:19:15.000000000 +0100
-+++ b/Makefile	2019-01-27 15:09:56.000000000 +0100
+--- a/Makefile	2019-02-15 13:06:01.000000000 +0100
++++ b/Makefile	2019-02-19 21:44:10.000000000 +0100
 @@ -21,7 +21,7 @@
  # Codename "portable pressure producer"
  #
  
--CFLAGS += -Wall -Wextra -DVERSION='"$(VERSION)"' -O2 -std=gnu99 -g
+-CFLAGS += -Wall -Wextra -DVERSION='"$(VERSION)"' -O2 -std=gnu99
 +CFLAGS += -Wall -Wextra -DVERSION='"$(VERSION)"' -std=gnu99
  
  #
  # Pedantic flags
-@@ -344,12 +344,10 @@
+@@ -347,12 +347,10 @@
  .o: stress-ng.h Makefile
  
  .c.o: stress-ng.h Makefile $(SRC)
@@ -24,7 +24,7 @@
  	@sync
  
  makeconfig:
-@@ -370,7 +368,7 @@
+@@ -373,7 +371,7 @@
  		sed '$$ s/.$$//' >> apparmor-data.c
  	@echo "};" >> apparmor-data.c
  	@echo "const size_t g_apparmor_data_len = sizeof(g_apparmor_data);" >> apparmor-data.c
@@ -33,10 +33,10 @@
  	@$(CC) -c apparmor-data.c -o apparmor-data.o
  	@rm -rf apparmor-data.c apparmor-data.bin
  
-@@ -386,12 +384,12 @@
- perf.o: perf.c perf-event.c
- 	@$(CC) $(CFLAGS) -E perf-event.c | grep "PERF_COUNT" | sed 's/,/ /' | \
- 	awk {'print "#define _SNG_" $$1 " (1)"'} > perf-event.h
+@@ -389,12 +387,12 @@
+ core-perf.o: core-perf.c core-perf-event.c
+ 	@$(CC) $(CFLAGS) -E core-perf-event.c | grep "PERF_COUNT" | sed 's/,/ /' | \
+ 	awk {'print "#define _SNG_" $$1 " (1)"'} > core-perf-event.h
 -	@echo CC $<
 -	@$(CC) $(CFLAGS) -c -o $@ $<
 +	echo CC $<
@@ -50,7 +50,7 @@
  	@touch stress-ng.c
  
  $(OBJS): stress-ng.h Makefile
-@@ -439,6 +437,6 @@
+@@ -442,6 +440,6 @@
  	mkdir -p ${DESTDIR}${BINDIR}
  	cp stress-ng ${DESTDIR}${BINDIR}
  	mkdir -p ${DESTDIR}${MANDIR}
