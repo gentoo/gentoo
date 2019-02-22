@@ -15,7 +15,7 @@ IUSE="examples"
 S="${WORKDIR}/manifest-${PV}"
 
 RDEPEND="dev-php/fedora-autoloader
-	dev-php/phar-io-version
+	>=dev-php/phar-io-version-2
 	dev-lang/php:*[phar]"
 
 src_install() {
