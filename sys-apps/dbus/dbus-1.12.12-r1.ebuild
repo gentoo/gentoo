@@ -57,7 +57,7 @@ TBD="${WORKDIR}/${P}-tests-build"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-enable-elogind.patch"
-	"${FILESDIR}/${PN}-daemon-optional.patch"
+	"${FILESDIR}/${PN}-daemon-optional.patch" # bug #653136
 )
 
 pkg_setup() {
