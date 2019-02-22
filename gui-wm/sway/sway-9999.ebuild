@@ -36,15 +36,15 @@ DEPEND="
 	elogind? ( >=sys-auth/elogind-239 )
 	swaybar? ( x11-libs/gdk-pixbuf:2 )
 	swaybg? ( x11-libs/gdk-pixbuf:2 )
-	swayidle? ( dev-libs/swayidle )
-	swaylock? ( dev-libs/swaylock )
+	swayidle? ( gui-apps/swayidle )
+	swaylock? ( gui-apps/swaylock )
 	systemd? ( >=sys-apps/systemd-239 )
 	X? ( x11-libs/libxcb:0= )
 "
 if [[ ${PV} == 9999 ]]; then
-	DEPEND+="~dev-libs/wlroots-9999[elogind=,systemd=,X=]"
+	DEPEND+="~gui-libs/wlroots-9999[elogind=,systemd=,X=]"
 else
-	DEPEND+=">=dev-libs/wlroots-0.3[elogind=,systemd=,X=]"
+	DEPEND+=">=gui-libs/wlroots-0.3[elogind=,systemd=,X=]"
 fi
 RDEPEND="
 	x11-misc/xkeyboard-config
