@@ -80,8 +80,6 @@ src_test() {
 }
 
 src_install(){
-	use examples && dodoc -r server-example
-
 	if use php_targets_php7-0 || use php_targets_php7-1 || use php_targets_php7-2 || use php_targets_php7-3 ; then
 		php-ext-source-r3_src_install
 	fi
