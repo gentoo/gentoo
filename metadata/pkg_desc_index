@@ -3227,7 +3227,7 @@ dev-libs/mm 1.4.2-r2: Shared Memory Abstraction Library
 dev-libs/mongo-c-driver 0.7.1-r1 0.8.1-r1 1.8.2 1.13.0-r1: Client library written in C for MongoDB
 dev-libs/mpc 1.0.3: A library for multiprecision complex arithmetic with exact rounding
 dev-libs/mpfr 3.1.3_p4 3.1.6: library for multiple-precision floating-point computations with exact rounding
-dev-libs/mxml 2.10: Small XML parsing library to read XML and XML-like data files
+dev-libs/mxml 2.10 2.12: A small XML parsing library that you can use to read XML data files or strings
 dev-libs/nettle 3.4: Low-level cryptographic library
 dev-libs/newt 0.52.15 0.52.20: Redhat's Newt windowing toolkit development files
 dev-libs/nmeap 0.3: Extensible NMEA-0183 (GPS) data parser in standard C
@@ -4651,7 +4651,7 @@ dev-python/anyvc 0.3.7.1-r1: Library to access any version control system
 dev-python/aodhclient 0.8.0 1.0.0: A client for the OpenStack Aodh API
 dev-python/apipkg 1.4: namespace control and lazy-import mechanism
 dev-python/appdirs 1.4.3: Module for determining appropriate platform-specific dirs
-dev-python/apptools 4.2.1: Enthought Tool Suite: Application tools
+dev-python/apptools 4.2.1 4.3.0: Enthought Tool Suite: Application tools
 dev-python/apsw 3.23.1_p1: APSW - Another Python SQLite Wrapper
 dev-python/aquarium 2.3-r1: Aquarium web application framework
 dev-python/argcomplete 1.4.1 1.9.4: Bash tab completion for argparse
@@ -6993,7 +6993,7 @@ kde-misc/kwebkitpart 1.4.0_pre20180406: WebKit KPart for Konqueror
 kde-misc/latte-dock 0.8.4: Elegant dock, based on KDE Frameworks
 kde-misc/openofficeorg-thumbnail 1.0.0-r500: KDE thumbnail-plugin that generates thumbnails for ODF files
 kde-misc/plasma-redshift-control 1.0.18: Plasma 5 applet for controlling redshift
-kde-misc/rsibreak 0.12.8: Small utility which bothers you at certain intervals
+kde-misc/rsibreak 0.12.8 0.12.9-r1: Small utility which bothers you at certain intervals
 kde-misc/skanlite 2.1.0.1: KDE image scanning application
 kde-misc/systemd-kcm 1.2.1: Plasma control module for systemd
 kde-misc/tellico 3.1.4: Collection manager based on KDE Frameworks
@@ -7433,7 +7433,7 @@ media-gfx/lximage-qt 0.7.0: LXImage Image Viewer - GPicView replacement
 media-gfx/mcomix 1.2.1: A fork of comix, a GTK image viewer for comic book archives
 media-gfx/metapixel 1.0.2-r1: a program for generating photomosaics
 media-gfx/mirage 0.9.5.2-r1: A fast and simple image viewer based on python and GTK+
-media-gfx/mkgallery 1.1: Creates thumbnails and a HTML index file for a directory of jpg files
+media-gfx/mkgallery 1.1-r1: Creates thumbnails and a HTML index file for a directory of jpg files
 media-gfx/monica 3.7: Monica is a Monitor Calibration Tool
 media-gfx/mscgen 0.20: A message sequence chart generator
 media-gfx/mypaint 1.1.0-r2: fast and easy graphics application for digital painters
@@ -7461,7 +7461,7 @@ media-gfx/pngtools 0.4-r2: A series of tools for the PNG image format
 media-gfx/potrace 1.15: Transforming bitmaps into vector graphics
 media-gfx/povray 3.7.0.0 3.7.0.0-r1: The Persistence of Vision Raytracer
 media-gfx/povtree 1.5-r1: Tree generator for POVray based on TOMTREE macro
-media-gfx/pqiv 2.10.4: powerful GTK 3 based command-line image viewer with a minimal UI
+media-gfx/pqiv 2.10.4 2.11: powerful GTK 3 based command-line image viewer with a minimal UI
 media-gfx/propaganda 1.0-r1: Propaganda Volume 1-14 + E. Tiling images for your desktop
 media-gfx/pstoedit 3.70-r1: Translate PostScript and PDF graphics into other vector formats
 media-gfx/qrencode 4.0.2: C library for encoding data in a QR Code symbol
@@ -7610,7 +7610,7 @@ media-libs/libbs2b 3.1.0-r2: Bauer stereophonic-to-binaural DSP library
 media-libs/libbsb 0.0.7: A portable C library for reading and writing BSB format image files
 media-libs/libcaca 0.99_beta19: A library that creates colored ASCII-art graphics
 media-libs/libcanberra 0.30-r5: Portable sound event library
-media-libs/libcdaudio 0.99.12-r1: Library of cd audio related routines
+media-libs/libcdaudio 0.99.12-r2: Library of cd audio related routines
 media-libs/libcddb 1.3.2 1.3.2-r1: A library for accessing a CDDB server
 media-libs/libcdr 0.1.4 0.1.5: Library parsing the Corel cdr documents
 media-libs/libchamplain 0.12.16: Clutter based world map renderer
@@ -8199,7 +8199,7 @@ media-sound/qmmp 1.2.3 1.2.6: Qt5-based audio player with winamp/xmms skins supp
 media-sound/qsynth 0.5.0: A Qt application to control FluidSynth
 media-sound/qtscrobbler 0.11_pre20130123: Updates last.fm profiles using information from supported portable music players
 media-sound/quimup 1.4.3: A Qt5 client for the music player daemon (MPD) written in C++
-media-sound/quodlibet 3.8.1-r1 3.9.1: audio library tagger, manager, and player for GTK+
+media-sound/quodlibet 3.8.1-r1 3.9.1 4.1.0: audio library tagger, manager, and player for GTK+
 media-sound/rawrec 0.9.991: CLI program to play and record audiofiles
 media-sound/rcenter 0.6.2: Rcenter - A program to control the EMU10K Remote Control
 media-sound/rexima 1.4-r1: A curses-based interactive mixer which can also be used from the command-line
@@ -8269,7 +8269,7 @@ media-sound/xineadump 0.1-r1: Utility for Xine decoding support in transKode
 media-sound/xmms2 0.8_p20161122 0.8_p20161122-r4: X(cross)platform Music Multiplexing System. Next generation of the XMMS player
 media-sound/xnoise 0.2.21: A media player for Gtk+ with a slick GUI, great speed and lots of features
 media-sound/xwax 1.5: Digital vinyl emulation software
-media-sound/zynaddsubfx 3.0.3: ZynAddSubFX is an opensource software synthesizer
+media-sound/zynaddsubfx 3.0.3 3.0.3-r1: Software synthesizer capable of making a countless number of instruments
 media-tv/dtv-scan-tables 0_p20171003: Digital TV scan tables in v3 and v5 format
 media-tv/dvbstream 0.7_pre20080516-r1: RTP multicast stream server and other tools for DVB cards
 media-tv/dvbtune 0.5-r1: simple tuning app for DVB cards
@@ -8324,7 +8324,7 @@ media-video/gxine 0.5.907-r1: GTK+ Front-End for libxine
 media-video/hasciicam 1.1.1: a webcam software displaying ascii art using aalib
 media-video/isight-firmware-tools 1.6-r1: Extract, load or export firmware for the iSight webcams
 media-video/jubler 5.1: Java subtitle editor
-media-video/kaffeine 2.0.15: Media player with digital TV support by KDE
+media-video/kaffeine 2.0.15 2.0.16.2: Media player with digital TV support by KDE
 media-video/kamerka 0.12_p20161002-r1: Simple photo taking application with fancy animated interface
 media-video/kino 1.3.4-r1: Kino is a non-linear DV editor for GNU/Linux
 media-video/kmplayer 0.12.0b-r1: Video player plugin for Konqueror and basic MPlayer frontend
@@ -9461,7 +9461,7 @@ sci-libs/libint 1.1.6: Matrix elements (integrals) evaluation over Cartesian Gau
 sci-libs/libnova 0.15.0: Celestial Mechanics and Astronomical Calculation Library
 sci-libs/libqalculate 0.9.9: A modern multi-purpose calculator library
 sci-libs/libsigrok 0.3.0: basic hardware drivers for logic analyzers and input/output file format support
-sci-libs/libspatialindex 1.8.1: General framework for developing spatial indices
+sci-libs/libspatialindex 1.8.1 1.8.5-r1: General framework for developing spatial indices
 sci-libs/libsvm 3.21 3.22: Library for Support Vector Machines
 sci-libs/linux-gpib 4.1.0: Kernel module and driver library for GPIB (IEEE 488.2) hardware
 sci-libs/lrslib 042c-r2: self-contained ANSI C implementation of the reverse search algorithm
@@ -9827,7 +9827,7 @@ sys-apps/bleachbit 2.0: Clean junk to free disk space and to maintain privacy
 sys-apps/busybox 1.29.0 1.29.3: Utilities for rescue and embedded systems
 sys-apps/cciss_vol_status 1.12: Shows status of logical drives attached to HP SmartArray controllers
 sys-apps/checkpolicy 2.7 2.8: SELinux policy compiler
-sys-apps/chname 1.0-r2: Run a command with a new system hostname
+sys-apps/chname 1.0-r2 1.1: Run a command with a new system hostname
 sys-apps/clrngd 1.0.3: Clock randomness gathering daemon
 sys-apps/collectl 3.7.4: Performance monitoring tool capable of interactive reporting and logging to disk
 sys-apps/colorized-logs 2.4: Tools for logs with ANSI color
@@ -10666,7 +10666,7 @@ www-misc/fcgiwrap 1.1.0-r1: Simple FastCGI wrapper for CGI scripts (CGI support 
 www-misc/htdig 3.2.0_beta6-r5: HTTP/HTML indexing and searching system
 www-misc/mergelog 4.5-r2: A utility to merge apache logs in chronological order
 www-misc/monitorix 3.9.0 3.10.0-r1 3.10.1: A lightweight system monitoring tool
-www-misc/profile-sync-daemon 5.45.1: Symlinks and syncs browser profile dirs to RAM.
+www-misc/profile-sync-daemon 5.45.1 6.31: Symlinks and syncs browser profile dirs to RAM.
 www-misc/shellinabox 2.20-r1: Export command line tools to a web based terminal emulator
 www-misc/surl 0.7.1.1-r1: URL shortening command line application that supports various sites
 www-misc/urlwatch 2.13: A tool for monitoring webpages for updates
@@ -10996,7 +10996,7 @@ x11-misc/matchbox-keyboard 0.1-r1: Matchbox-keyboard is an on screen 'virtual' o
 x11-misc/mate-notification-daemon 1.18.1: MATE Notification daemon
 x11-misc/menulibre 2.1.3: Advanced freedesktop.org compliant menu editor
 x11-misc/menumaker 0.99.10: Utility that scans through the system and generates a menu of installed programs
-x11-misc/mixer_app 1.8.0: mixer_app has volume controllers that can be configured to handle sound sources
+x11-misc/mixer_app 1.8.0 1.8.0-r1: mixer_app has volume controllers that can be configured to handle sound sources
 x11-misc/mozo 1.18.0: Mozo menu editor for MATE
 x11-misc/mugshot 0.4.1: A lightweight user-configuration application
 x11-misc/netwmpager 2.05: Pager that works with Openbox and other EWMH compliant window managers
@@ -11046,7 +11046,7 @@ x11-misc/tint2 16.2: tint2 is a lightweight panel/taskbar for Linux.
 x11-misc/tintwizard 0.3.4-r2: GUI wizard which generates config files for tint2 panels
 x11-misc/touchcal 0.80: Touchscreen calibration utility
 x11-misc/trayer 1.0-r3: Lightweight GTK+ based systray for UNIX desktop
-x11-misc/trayer-srg 1.1.6-r1: trayer fork with multi monitor support and cleaned up codebase
+x11-misc/trayer-srg 1.1.6-r1 1.1.7: trayer fork with multi monitor support and cleaned up codebase
 x11-misc/unclutter 8-r4: Hides mouse pointer while not in use
 x11-misc/unclutter-xfixes 1.5: A rewrite of unclutter using the x11-xfixes extension
 x11-misc/urxvt-font-size 1.1 1.3: Perl extension for rxvt-unicode to change the font size on the fly
