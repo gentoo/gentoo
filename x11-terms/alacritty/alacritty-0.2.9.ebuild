@@ -317,6 +317,7 @@ SRC_URI="https://github.com/jwilm/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
+IUSE="+terminfo"
 
 DEPEND="
 	media-libs/fontconfig:=
@@ -333,8 +334,8 @@ RDEPEND="${DEPEND}
 "
 
 BDEPEND="dev-util/cmake
-	sys-libs/ncurses
 	>=virtual/rust-1.32.0
+	terminfo? ( sys-libs/ncurses )
 "
 
 DOCS=( CHANGELOG.md docs/ansicode.txt INSTALL.md README.md alacritty.yml )
@@ -350,10 +351,6 @@ src_install() {
 	insinto /usr/share/zsh/site-functions
 	newins alacritty-completions.zsh _alacritty
 
-	tic -e alacritty,alacritty-direct -o "${T}" alacritty.info || die "generating terminfo failed"
-	insinto /usr/share/terminfo/a/
-	doins  "${T}"/a/alacritty*
-
 	sed -i '/^Icon=/s/utilities-terminal/alacritty/' alacritty.desktop || die
 	domenu alacritty.desktop
 	doicon "${DISTDIR}"/alacritty.png
@@ -361,6 +358,12 @@ src_install() {
 	newman alacritty.man alacritty.1
 
 	einstalldocs
+
+	if use terminfo; then
+		tic -e alacritty,alacritty-direct -o "${T}" alacritty.info || die "generating terminfo failed"
+		insinto /usr/share/terminfo/a/
+		doins  "${T}"/a/alacritty*
+	fi
 }
 
 pkg_postinst() {

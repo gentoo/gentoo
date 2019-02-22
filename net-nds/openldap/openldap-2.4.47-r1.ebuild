@@ -47,7 +47,7 @@ CDEPEND="
 	ssl? (
 		!gnutls? (
 			!libressl? ( >=dev-libs/openssl-1.0.1h-r2:0=[${MULTILIB_USEDEP}] )
-			libressl? ( dev-libs/libressl:=[${MULTILIB_USEDEP}] )
+			libressl? ( dev-libs/libressl:0=[${MULTILIB_USEDEP}] )
 		)
 		gnutls? (
 			>=net-libs/gnutls-2.12.23-r6[${MULTILIB_USEDEP}]
@@ -66,7 +66,7 @@ CDEPEND="
 		perl? ( dev-lang/perl:=[-build(-)] )
 		samba? (
 			!libressl? ( dev-libs/openssl:0= )
-			libressl? ( dev-libs/libressl )
+			libressl? ( dev-libs/libressl:0= )
 		)
 		berkdb? (
 			<sys-libs/db-6.0:=
@@ -74,7 +74,7 @@ CDEPEND="
 			)
 		smbkrb5passwd? (
 			!libressl? ( dev-libs/openssl:0= )
-			libressl? ( dev-libs/libressl:= )
+			libressl? ( dev-libs/libressl:0= )
 			kerberos? ( app-crypt/heimdal )
 			)
 		kerberos? (
