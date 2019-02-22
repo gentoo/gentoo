@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DESCRIPTION=TCPDF is a FLOSS PHP class for generating PDF documents
+EAPI=7
+HOMEPAGE=http://www.tcpdf.org/
+IUSE=examples
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-3+ GPL-3 BitstreamVera GPL-2
+RDEPEND=dev-lang/php
+SLOT=0
+SRC_URI=https://github.com/tecnickcom/TCPDF/archive/6.2.26.tar.gz -> tcpdf-6.2.26.tar.gz
+_md5_=d517ca590395a80faa6a26a670bf57c4
