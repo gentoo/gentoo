@@ -52,7 +52,7 @@ python_test() {
 
 python_install_all() {
 	doman doc/${PN}.1
-	domenu misc/${PN}.desktop
+	domenu misc/org.${PN}.${PN}.desktop
 	doicon -s scalable icons/${PN}.svg
 
 	distutils-r1_python_install_all
