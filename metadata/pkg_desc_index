@@ -1287,7 +1287,7 @@ app-text/a2ps 4.14-r6: Any to PostScript filter
 app-text/agrep 2.04-r2: A tool for the fast searching of text allowing for errors in the search pattern
 app-text/aiksaurus 1.2.1: A thesaurus lib, tool and database
 app-text/an 1.2: Very fast anagram generator with dictionary lookup
-app-text/ansifilter 2.10: Handles text files containing ANSI terminal escape codes
+app-text/ansifilter 2.13: Handles text files containing ANSI terminal escape codes
 app-text/antiword 0.37-r1: free MS Word reader
 app-text/apvlv 0.1.5-r2: Alf's PDF Viewer Like Vim
 app-text/asa 1.1-r1: ASA Carriage control conversion for ouput by Fortran programs
@@ -9857,7 +9857,7 @@ sys-apps/fakechroot 2.19: Provide a faked chroot environment without requiring r
 sys-apps/fakeroot 1.22: A fake root environment by means of LD_PRELOAD and SysV IPC (or TCP) trickery
 sys-apps/fbset 2.1: A utility to set the framebuffer videomode
 sys-apps/fd 7.2.0: Alternative to find that provides sensible defaults for 80% of the use cases
-sys-apps/file 5.34: identify a file's format by scanning binary data for patterns
+sys-apps/file 5.34 5.36: identify a file's format by scanning binary data for patterns
 sys-apps/findutils 4.6.0-r1: GNU utilities for finding files
 sys-apps/firejail 0.9.50: Security sandbox for any type of processes
 sys-apps/firejail-lts 0.9.38.10: Security sandbox for any type of processes; LTS branch
