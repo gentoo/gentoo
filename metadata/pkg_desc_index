@@ -8651,7 +8651,7 @@ net-im/pidgin 2.13.0: GTK Instant Messenger client
 net-im/prosody 0.9.14 0.11.1 0.11.2: Prosody is a flexible communications server for Jabber/XMPP written in Lua
 net-im/purple-events 0.99.1: Allows a fine-grained control over libpurple events
 net-im/pyicq-t 0.8.1.5-r6: Python based jabber transport for ICQ
-net-im/sendxmpp 1.23: A perl-script to send xmpp (jabber), similar to what mail(1) does for mail
+net-im/sendxmpp 1.23 1.24: A perl-script to send xmpp (jabber), similar to what mail(1) does for mail
 net-im/silc-toolkit 1.1.10: SDK for the SILC protocol
 net-im/telepathy-connection-managers 2-r2: Meta-package for Telepathy Connection Managers
 net-im/telepathy-logger 0.8.2: Daemon that centralizes the communication logging within the Telepathy framework
@@ -10239,7 +10239,7 @@ sys-fs/multipath-tools 0.6.4-r1: Device mapper target autoconfig
 sys-fs/ncdu 1.13: NCurses Disk Usage
 sys-fs/nilfs-utils 2.1.5-r1: A New Implementation of a Log-structured File System for Linux
 sys-fs/ntfs3g 2016.2.22-r2 2017.3.23-r1: Open source read-write NTFS driver that runs under FUSE
-sys-fs/owfs 3.1_p4-r1: Access 1-Wire devices like a filesystem
+sys-fs/owfs 3.1_p4-r1 3.2_p2-r2: Access 1-Wire devices like a filesystem
 sys-fs/progsreiserfs 0.3.1_rc8: Library for accessing and manipulating reiserfs partitions
 sys-fs/pysize 0.2-r1: A graphical and console tool for exploring the size of directories
 sys-fs/quota 4.03 4.04-r1: Linux quota tools
@@ -11263,7 +11263,7 @@ x11-themes/adwaita-qt 1.0-r1: A style to bend Qt applications to look like they 
 x11-themes/arc-icon-theme 20161122: Vertex icon theme
 x11-themes/blueglass-xcursors 0.4: A high quality set of Xfree 4.3.0 animated mouse cursors
 x11-themes/claws-mail-themes 20140629: Iconsets for Claws Mail
-x11-themes/clearlooks-phenix 3.0.15: Clearlooks-Phenix is a GTK+ 3 port of Clearlooks, the default theme for GNOME 2
+x11-themes/clearlooks-phenix 3.0.15 7.0.1: Clearlooks-Phenix is a GTK+ 3 port of Clearlooks, the default theme for GNOME 2
 x11-themes/comix-xcursors 0.8.2: X11 mouse theme with a comics feeling
 x11-themes/commonbox-styles 0.6: Common styles for fluxbox, blackbox, and openbox
 x11-themes/commonbox-styles-extra 0.2-r2: Extra styles pack for flux|black|open(box)
