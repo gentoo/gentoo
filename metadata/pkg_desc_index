@@ -3293,7 +3293,7 @@ dev-libs/uriparser 0.8.4-r1: Uriparser is a strictly RFC 3986 compliant URI pars
 dev-libs/userspace-rcu 0.9.1 0.10.1: userspace RCU (read-copy-update) library
 dev-libs/ustr 1.0.4-r5 1.0.4-r8: Low-overhead managed string library for C
 dev-libs/utfcpp 2.3.4: A portable and lightweight generic library for handling UTF-8 strings
-dev-libs/uthash 1.9.7: An easy-to-use hash implementation for C programmers
+dev-libs/uthash 1.9.7 2.0.2: An easy-to-use hash implementation for C programmers
 dev-libs/uulib 0.5.20-r1: Library that supports Base64 (MIME), uuencode, xxencode and binhex coding
 dev-libs/vala-common 0.36.15: Build infrastructure for packages that use Vala
 dev-libs/vanessa-logger 0.0.10: Generic logging layer that to log to syslog, an open file handle or a file name
@@ -5316,7 +5316,7 @@ dev-python/pyasn1-modules 0.0.5-r1 0.0.8: pyasn1 modules
 dev-python/pyatspi 2.24.0: Python binding to at-spi library
 dev-python/pyaudio 0.2.11: Python bindings for PortAudio
 dev-python/pyblake2 1.1.2: BLAKE2 hash function extension module
-dev-python/pybloomfiltermmap 0.3.11-r1: A Bloom filter (bloomfilter) for Python built on mmap
+dev-python/pybloomfiltermmap 0.3.15: A Bloom filter (bloomfilter) for Python built on mmap
 dev-python/pybluez 0.18-r1: Python bindings for Bluez Bluetooth Stack
 dev-python/pycadf 2.6.0 2.7.0: python implementation of DMTF Cloud Audit (CADF) data model
 dev-python/pycairo 1.16.3-r1 1.17.0-r1: Python bindings for the cairo library
@@ -8277,7 +8277,7 @@ media-tv/gentoo-vdr-scripts 2.0.0 2.5 2.7 2.7.3: Scripts necessary for use of vd
 media-tv/ivtv-utils 1.4.1: IVTV utilities for Hauppauge PVR PCI cards
 media-tv/kodi 17.3-r1: A free and open source media-player and entertainment hub
 media-tv/linuxtv-dvb-apps 1.1.1.20140321: Small utils for DVB to scan, zap, view signal strength
-media-tv/plex-media-server 1.11.3 1.12.3: A free media library that is intended for use with a plex client.
+media-tv/plex-media-server 1.11.3 1.12.3 1.13.2-r1: A free media library that is intended for use with a plex client.
 media-tv/shoutcast2vdr 0.0.8 0.0.8-r1: VDR script: generate shoutcast playlists
 media-tv/tvnamer 2.4: Automatic TV episode file renamer, data from thetvdb.com
 media-tv/v4l-dvb-saa716x 0.0.1_p20170225: driver for saa716x based dvb cards like TT S2-6400 or Skystar 2 eXpress HD
@@ -9196,7 +9196,7 @@ net-proxy/dante 1.4.1-r1: A free socks4,5 and msproxy implementation
 net-proxy/dnsproxy 1.17: The dnsproxy daemon is a proxy for DNS queries
 net-proxy/haproxy 1.6.11-r2 1.7.10 1.8.9 1.8.13: A TCP/HTTP reverse proxy for high availability environments
 net-proxy/havp 0.92a-r2: HTTP AntiVirus Proxy
-net-proxy/http-replicator 3.0-r7: Proxy cache for Gentoo packages
+net-proxy/http-replicator 3.0-r7 4.0_alpha2-r7: Proxy cache for Gentoo packages
 net-proxy/nylon 1.21-r2: A lightweight SOCKS proxy server
 net-proxy/polipo 1.1.1-r4: A caching web proxy
 net-proxy/privoxy 3.0.26: A web proxy with advanced filtering capabilities for enhancing privacy
