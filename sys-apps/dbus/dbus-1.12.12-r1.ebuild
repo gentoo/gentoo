@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python{2_7,3_{4,5,6,7}} )
 
-inherit autotools linux-info flag-o-matic python-any-r1 readme.gentoo-r1 systemd virtualx user multilib-minimal
+PYTHON_COMPAT=( python{2_7,3_{4,5,6,7}} )
+inherit autotools flag-o-matic linux-info python-any-r1 readme.gentoo-r1 systemd virtualx user multilib-minimal
 
 DESCRIPTION="A message bus system, a simple way for applications to talk to each other"
 HOMEPAGE="https://dbus.freedesktop.org/"
@@ -15,42 +15,36 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="debug doc elogind selinux static-libs systemd test user-session X"
 
-#RESTRICT="test"
+REQUIRED_USE="?? ( elogind systemd )"
 
-REQUIRED_USE="
-	?? ( elogind systemd )
+# autoconf-archive-2019.01.06 blocker added for bug #674830
+# Please check on bumps if the blocker is still necessary.
+BDEPEND="
+	app-text/xmlto
+	app-text/docbook-xml-dtd:4.4
+	<sys-devel/autoconf-archive-2019.01.06
+	virtual/pkgconfig
+	doc? ( app-doc/doxygen )
 "
-
-CDEPEND="
+COMMON_DEPEND="
 	>=dev-libs/expat-2.1.0
-	selinux? ( sys-libs/libselinux )
 	elogind? ( sys-auth/elogind )
+	selinux? ( sys-libs/libselinux )
 	systemd? ( sys-apps/systemd:0= )
 	X? (
 		x11-libs/libX11
 		x11-libs/libXt
-		)
-"
-# autoconf-archive-2019.01.06 blocker added for bug #674830
-# Please check on bumps if the blocker is still necessary.
-DEPEND="${CDEPEND}
-	<sys-devel/autoconf-archive-2019.01.06
-	app-text/xmlto
-	app-text/docbook-xml-dtd:4.4
-	dev-libs/expat
-	sys-devel/autoconf-archive
-	doc? ( app-doc/doxygen )
-	test? (
-		>=dev-libs/glib-2.40:2
-		${PYTHON_DEPS}
 	)
 "
-RDEPEND="${CDEPEND}
-	selinux? ( sec-policy/selinux-dbus )
+DEPEND="${COMMON_DEPEND}
+	dev-libs/expat
+	test? (
+		${PYTHON_DEPS}
+		>=dev-libs/glib-2.40:2
+	)
 "
-
-BDEPEND="
-	virtual/pkgconfig
+RDEPEND="${COMMON_DEPEND}
+	selinux? ( sec-policy/selinux-dbus )
 "
 
 DOC_CONTENTS="
@@ -63,6 +57,7 @@ TBD="${WORKDIR}/${P}-tests-build"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-enable-elogind.patch"
+	"${FILESDIR}/${PN}-daemon-optional.patch"
 )
 
 pkg_setup() {
@@ -157,15 +152,12 @@ multilib_src_configure() {
 			--disable-doxygen-docs
 		)
 		myconf+=(
+			--disable-daemon
 			--disable-selinux
 			--disable-libaudit
 			--disable-elogind
 			--disable-systemd
 			--without-x
-
-			# expat is used for the daemon only
-			# fake the check for multilib library build
-			ac_cv_lib_expat_XML_ParserCreate_MM=yes
 		)
 	fi
 
