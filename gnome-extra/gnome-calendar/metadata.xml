@@ -5,4 +5,7 @@
 		<email>gnome@gentoo.org</email>
 		<name>Gentoo GNOME Desktop</name>
 	</maintainer>
+	<longdescription lang="en">GNOME Calendar is a simple and beautiful calendar application designed to
+perfectly fit the GNOME desktop. By reusing the components which the GNOME
+desktop is build on, Calendar nicely integrates with the GNOME ecosystem.</longdescription>
 </pkgmetadata>
