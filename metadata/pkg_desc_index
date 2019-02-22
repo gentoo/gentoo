@@ -8144,7 +8144,7 @@ media-sound/moc 2.5.2: Music On Console - ncurses interface for playing audio fi
 media-sound/modplugtools 0.5.1: libmodplug based module players modplug123 and modplugplay
 media-sound/moosic 1.5.6-r1: Music player that focuses on easy playlist management
 media-sound/mp32ogg 0.11-r6: A perl script to convert MP3 files to Ogg Vorbis files
-media-sound/mp3_check 1.98 1.98-r1: MP3 consistency checker
+media-sound/mp3_check 1.98-r1: MP3 consistency checker
 media-sound/mp3asm 0.1.3-r2: A command line tool to clean and edit mp3 files
 media-sound/mp3blaster 3.2.6: Text console based program for playing audio files
 media-sound/mp3c 0.31-r1: console based mp3 ripper, with cddb support
