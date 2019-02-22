@@ -1230,9 +1230,6 @@ unipatch() {
 	        local GCC_MAJOR_VER=$(gcc-major-version)
 			local GCC_MINOR_VER=$(gcc-minor-version)
 
-			# support old kernels for a period. For now, remove as all gcc versions required are masked
-			UNIPATCH_DROP+=" 5010_enable-additional-cpu-optimizations-for-gcc.patch"
-
 			# optimization patch for gcc < 8.X and kernel > 4.13
 			if [[ ${GCC_MAJOR_VER} -lt 8 ]] && [[ ${GCC_MAJOR_VER} -gt 4 ]]; then
 				if kernel_is ge 4 13 ; then
@@ -1241,6 +1238,8 @@ unipatch() {
 			# optimization patch for gcc >= 8 and kernel ge 4.13
 			elif [[ "${GCC_MAJOR_VER}" -ge 8 ]]; then
 				if kernel_is ge 4 13; then
+					# support old kernels for a period. For now, remove as all gcc versions required are masked
+					UNIPATCH_DROP+=" 5010_enable-additional-cpu-optimizations-for-gcc.patch"
 					UNIPATCH_DROP+=" 5010_enable-additional-cpu-optimizations-for-gcc-4.9.patch"
 				fi
 			fi
