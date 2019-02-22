@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eapi7-ver bash-completion-r1 golang-build golang-vcs-snapshot
+inherit eapi7-ver golang-build golang-vcs-snapshot
 
 MY_PV="$(ver_cut 1-3)T$(ver_cut 4-7)Z"
 MY_PV=${MY_PV//./-}
@@ -44,6 +44,5 @@ src_install() {
 	pushd src/${EGO_PN} || die
 	dodoc -r README.md CONTRIBUTING.md docs
 	dobin mc
-	newbashcomp autocomplete/bash_autocomplete ${PN}
 	popd  || die
 }
