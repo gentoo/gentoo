@@ -145,7 +145,7 @@ app-admin/tmpwatch 2.11-r2: Files which haven't been accessed are removed from s
 app-admin/tripwire 2.4.3.7: Open Source File Integrity Checker and IDS
 app-admin/ulogd 2.0.7-r1: A userspace logging daemon for netfilter/iptables related logging
 app-admin/usbview 2.0: Display the topology of devices on the USB bus
-app-admin/verynice 1.1-r2: A tool for dynamically adjusting the nice-level of processes
+app-admin/verynice 1.1-r3: A tool for dynamically adjusting the nice-level of processes
 app-admin/watchfolder 0.3.3-r1: watches directories and processes files
 app-admin/webalizer 2.23.08: Webserver log file analyzer
 app-admin/webapp-config 1.52-r1 1.53-r2 1.55-r1: Gentoo's installer for web-based applications
@@ -1186,7 +1186,7 @@ app-office/pinpoint 0.1.8-r1: A tool for making hackers do excellent presentatio
 app-office/planner 0.14.6_p20130520: Project manager for Gnome
 app-office/pybliographer 1.2.15-r1: Pybliographer is a tool for working with bibliographic databases
 app-office/sc 7.16-r2: Spreadsheet Calculator
-app-office/scribus 1.5.4-r1: Desktop publishing (DTP) and layout program
+app-office/scribus 1.5.4-r1 1.5.5_pre20190124: Desktop publishing (DTP) and layout program
 app-office/skrooge 2.16.2 2.17.0: Personal finances manager, aiming at being simple and intuitive
 app-office/taskcoach 1.4.3-r1: Simple personal tasks and todo lists manager
 app-office/texmacs 1.99.6-r2: Wysiwyg text processor with high-quality maths
@@ -1436,7 +1436,7 @@ app-text/pep 2.8-r2: General purpose filter and file cleaning program
 app-text/pinfo 0.6.10-r5: Hypertext info and man viewer based on (n)curses
 app-text/po4a 0.47-r1: Tools for helping translation of documentation
 app-text/podofo 0.9.6_pre20170508-r1: PoDoFo is a C++ library to work with the PDF file format
-app-text/poppler 0.68.0: PDF rendering library based on the xpdf-3.0 code base
+app-text/poppler 0.68.0 0.74.0: PDF rendering library based on the xpdf-3.0 code base
 app-text/poppler-data 0.4.9: Data files for poppler to support uncommon encodings without xpdfrc
 app-text/ps2eps 1.68: Generate Encapsulated Postscript Format files from one-page Postscript documents
 app-text/ps2pkm 1.7_p20150521 1.8_p20160523 1.8_p20170524: Tool that converts a PostScript type1 font into a corresponding TeX PK font
@@ -2998,7 +2998,7 @@ dev-libs/flatbuffers 1.10.0: Memory efficient serialization library
 dev-libs/folks 0.11.4: Library for aggregating people from multiple sources
 dev-libs/freexl 1.0.1: Simple XLS data extraction library
 dev-libs/fribidi 1.0.5: A free implementation of the unicode bidirectional algorithm
-dev-libs/fstrm 0.2.0-r1: Frame Streams implementation in C
+dev-libs/fstrm 0.2.0-r1 0.3.0: Frame Streams implementation in C
 dev-libs/g-wrap 1.9.13 1.9.14: A tool for exporting C libraries into Scheme
 dev-libs/gdl 3.28.0: GNOME docking library
 dev-libs/geoip 1.6.9-r1 1.6.10: GeoIP Legacy C API
@@ -4977,7 +4977,7 @@ dev-python/graphy 1.0-r1: Simple Chart Library for Python
 dev-python/greenlet 0.4.12: Lightweight in-process concurrent programming
 dev-python/gst-python 0.10.22-r1 1.14.1-r1: A Python Interface to GStreamer
 dev-python/gtkspell-python 2.25.3-r1: GtkSpell bindings for Python
-dev-python/guessit 2.1.4: Python library for guessing information from video filenames
+dev-python/guessit 2.1.4 3.0.0: Python library for guessing information from video filenames
 dev-python/guppy 0.1.10-r1: Guppy-PE -- A Python Programming Environment
 dev-python/guzzle_sphinx_theme 0.7.11: Sphinx theme used by Guzzle
 dev-python/h5py 2.7.0: Simple Python interface to HDF5 files
@@ -6267,7 +6267,7 @@ dev-util/cargo 0.30.0: The Rust's package manager
 dev-util/catalyst 2.0.18-r1 2.0.18-r4 3.0.2 3.0.2-r1 3.0.3: Release metatool used for creating releases based on Gentoo Linux
 dev-util/catfish 1.2.2 1.4.6: A frontend for find, (s)locate, doodle, tracker, beagle, strigi and pinot
 dev-util/ccache 3.2.4 3.3.4-r1: fast compiler cache
-dev-util/cdiff 0.9.8: Colored, side-by-side diff terminal viewer
+dev-util/cdiff 0.9.8 1.0: Colored, side-by-side diff terminal viewer
 dev-util/cgdb 0.6.6 0.6.7 0.6.8: A curses front-end for GDB, the GNU debugger
 dev-util/cgvg 1.6.2: A tiny version of cscope that is much more useful in certian instances
 dev-util/checkbashisms 2.18.11: Perl script to check for commonly used bash features not defined by POSIX
@@ -7597,7 +7597,7 @@ media-libs/lcms 2.9: A lightweight, speed optimized color management engine
 media-libs/lensfun 0.3.2-r1: Library for rectifying and simulating photographic lens distortions
 media-libs/leptonica 1.74.4: C library for image processing and analysis
 media-libs/lib3ds 1.3.0-r1 2.0.0_rc1: library for managing 3D-Studio Release 3 and 4 .3DS files
-media-libs/libXcm 0.5.2-r1: reference implementation of the net-color spec
+media-libs/libXcm 0.5.2-r1 0.5.4: Reference implementation of the X Color Management specification
 media-libs/libaacplus 2.0.2-r2: HE-AAC+ v2 library, based on the reference implementation
 media-libs/libaacs 0.7.1: Open implementation of the Advanced Access Content System (AACS) specification
 media-libs/libafterimage 1.20-r2: Afterstep's standalone generic image manipulation library
@@ -7675,7 +7675,7 @@ media-libs/libmatemixer 1.18.0: Mixer library for MATE Desktop
 media-libs/libmatroska 1.4.5 1.4.8: Extensible multimedia container format based on EBML
 media-libs/libmediaart 1.9.4: Manages, extracts and handles media art caches
 media-libs/libmediainfo 18.08.1: MediaInfo libraries
-media-libs/libmetalink 0.1.1-r1: Library for handling Metalink files
+media-libs/libmetalink 0.1.1-r1 0.1.3: Library for handling Metalink files
 media-libs/libmikmod 3.3.8: A library to play a wide range of module formats
 media-libs/libmkv 0.6.5.1: Lightweight Matroska muxer written for HandBrake
 media-libs/libmms 0.6.4: Common library for accessing Microsoft Media Server (MMS) media streaming protocol
@@ -7717,7 +7717,7 @@ media-libs/libsdl 1.2.15-r9: Simple Direct Media Layer
 media-libs/libsdl2 2.0.8-r2 2.0.9: Simple Direct Media Layer
 media-libs/libsfml 2.5.1: Simple and Fast Multimedia Library (SFML)
 media-libs/libshout 2.4.1-r1: library for connecting and sending data to icecast servers
-media-libs/libsidplay 1.36.59-r2 2.1.1-r4: C64 SID player library
+media-libs/libsidplay 1.36.59-r2 2.1.1-r4 2.1.1-r5: C64 SID player library
 media-libs/libsidplayfp 1.1.0: A library for the sidplay2 fork with resid-fp
 media-libs/libsixel 1.8.1: A lightweight, fast implementation of DEC SIXEL graphics codec
 media-libs/libsmf 1.3: Standard MIDI File format library
@@ -8126,7 +8126,7 @@ media-sound/jack-rack 1.4.7-r1 1.4.8_rc1: JACK Rack is an effects rack for the J
 media-sound/jamin 0.95.0-r3: JAMin is the JACK Audio Connection Kit (JACK) Audio Mastering interface
 media-sound/jtagger 1.0-r1: Powerful MP3 tag and filename editor
 media-sound/kaudiocreator 1.3_p20170806: CD ripper and audio encoder frontend based on KDE Frameworks
-media-sound/kid3 3.6.1: Simple tag editor based on Qt
+media-sound/kid3 3.6.1 3.7.0: Simple tag editor based on Qt
 media-sound/kmetronome 1.0.0: MIDI based metronome using ALSA sequencer
 media-sound/lame 3.100-r1: LAME Ain't an MP3 Encoder
 media-sound/lash 0.5.4-r3: LASH Audio Session Handler
@@ -8270,12 +8270,13 @@ media-sound/xmms2 0.8_p20161122 0.8_p20161122-r4: X(cross)platform Music Multipl
 media-sound/xnoise 0.2.21: A media player for Gtk+ with a slick GUI, great speed and lots of features
 media-sound/xwax 1.5: Digital vinyl emulation software
 media-sound/zynaddsubfx 3.0.3: ZynAddSubFX is an opensource software synthesizer
+media-tv/dtv-scan-tables 0_p20171003: Digital TV scan tables in v3 and v5 format
 media-tv/dvbstream 0.7_pre20080516-r1: RTP multicast stream server and other tools for DVB cards
 media-tv/dvbtune 0.5-r1: simple tuning app for DVB cards
 media-tv/gentoo-vdr-scripts 2.0.0 2.5 2.7 2.7.3: Scripts necessary for use of vdr as a set-top-box
 media-tv/ivtv-utils 1.4.1: IVTV utilities for Hauppauge PVR PCI cards
 media-tv/kodi 17.3-r1: A free and open source media-player and entertainment hub
-media-tv/linuxtv-dvb-apps 1.1.1.20100223-r1: Small utils for DVB to scan, zap, view signal strength, ...
+media-tv/linuxtv-dvb-apps 1.1.1.20140321: Small utils for DVB to scan, zap, view signal strength
 media-tv/plex-media-server 1.11.3 1.12.3: A free media library that is intended for use with a plex client.
 media-tv/shoutcast2vdr 0.0.8 0.0.8-r1: VDR script: generate shoutcast playlists
 media-tv/tvnamer 2.4: Automatic TV episode file renamer, data from thetvdb.com
@@ -10600,7 +10601,7 @@ www-apache/mod_gnutls 0.8.2-r1: mod_gnutls uses GnuTLS for SSL/TLS encryption in
 www-apache/mod_jk 1.2.42: JK module for connecting Tomcat and Apache using the ajp13 protocol
 www-apache/mod_ldap_userdir 1.1.19: Look up Apache ~user directories in an LDAP directory
 www-apache/mod_limitipconn 0.24: Allows administrators to limit the number of simultaneous downloads permitted
-www-apache/mod_log_rotate 1.00: mod_log_rotate adds log rotation support to mod_log_config based on strftime(3)
+www-apache/mod_log_rotate 1.01: Log rotation support for mod_log_config based on strftime(3)
 www-apache/mod_log_sql 1.101-r2: An Apache module for logging to an SQL (MySQL) database
 www-apache/mod_macro 1.1.10: An Apache2 module providing macros for the Apache config file
 www-apache/mod_perl 2.0.10: An embedded Perl interpreter for Apache2
@@ -11035,7 +11036,7 @@ x11-misc/shutterbug 1.7.49: Screenshot utility based on the FOX Toolkit
 x11-misc/skippy 0.5.0-r1: A full-screen task-switcher providing Apple Expose-like functionality
 x11-misc/slim 1.3.6-r5: Simple Login Manager
 x11-misc/slock 1.4: simple X display locker
-x11-misc/spacefm 1.0.5-r2: A multi-panel tabbed file manager
+x11-misc/spacefm 1.0.5-r2 1.0.6: A multi-panel tabbed file manager
 x11-misc/spnavcfg 0.3: GTK-based GUI to configure a space navigator device
 x11-misc/sselp 0.2-r1: Simple X selection printer
 x11-misc/stalonetray 0.8.3: System tray utility including support for KDE system tray icons
@@ -11163,7 +11164,7 @@ x11-plugins/pidgin-latex 1.5.0: Pidgin plugin that renders latex formulae
 x11-plugins/pidgin-libnotify 0.14-r1: pidgin-libnotify provides popups for pidgin via a libnotify interface
 x11-plugins/pidgin-mbpurple 0.3.0-r2: Pidgin plug-in supporting microblog services like Twitter or identi.ca
 x11-plugins/pidgin-musictracker 0.4.22: A Pidgin now playing plugin to publicise the songs you are listening
-x11-plugins/pidgin-opensteamworks 1.4: Steam protocol plugin for pidgin
+x11-plugins/pidgin-opensteamworks 1.4 1.6.1: Steam protocol plugin for pidgin
 x11-plugins/pidgin-otr 4.0.2: (OTR) Messaging allows you to have private conversations over instant messaging
 x11-plugins/pidgin-privacy-please 0.7.1: pidgin plugin to stop spammers from annoying you
 x11-plugins/pidgin-rhythmbox 2.0: automatically update your pidgin profile with current info from Rhythmbox
