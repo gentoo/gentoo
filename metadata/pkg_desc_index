@@ -1186,7 +1186,7 @@ app-office/pinpoint 0.1.8-r1: A tool for making hackers do excellent presentatio
 app-office/planner 0.14.6_p20130520: Project manager for Gnome
 app-office/pybliographer 1.2.15-r1: Pybliographer is a tool for working with bibliographic databases
 app-office/sc 7.16-r2: Spreadsheet Calculator
-app-office/scribus 1.5.4-r1 1.5.5_pre20190124: Desktop publishing (DTP) and layout program
+app-office/scribus 1.5.5_pre20190124: Desktop publishing (DTP) and layout program
 app-office/skrooge 2.16.2 2.17.0: Personal finances manager, aiming at being simple and intuitive
 app-office/taskcoach 1.4.3-r1: Simple personal tasks and todo lists manager
 app-office/texmacs 1.99.6-r2: Wysiwyg text processor with high-quality maths
@@ -6993,7 +6993,7 @@ kde-misc/kwebkitpart 1.4.0_pre20180406: WebKit KPart for Konqueror
 kde-misc/latte-dock 0.8.4: Elegant dock, based on KDE Frameworks
 kde-misc/openofficeorg-thumbnail 1.0.0-r500: KDE thumbnail-plugin that generates thumbnails for ODF files
 kde-misc/plasma-redshift-control 1.0.18: Plasma 5 applet for controlling redshift
-kde-misc/rsibreak 0.12.8 0.12.9-r1: Small utility which bothers you at certain intervals
+kde-misc/rsibreak 0.12.9-r1: Small utility which bothers you at certain intervals
 kde-misc/skanlite 2.1.0.1: KDE image scanning application
 kde-misc/systemd-kcm 1.2.1: Plasma control module for systemd
 kde-misc/tellico 3.1.4: Collection manager based on KDE Frameworks
@@ -8126,7 +8126,7 @@ media-sound/jack-rack 1.4.7-r1 1.4.8_rc1: JACK Rack is an effects rack for the J
 media-sound/jamin 0.95.0-r3: JAMin is the JACK Audio Connection Kit (JACK) Audio Mastering interface
 media-sound/jtagger 1.0-r1: Powerful MP3 tag and filename editor
 media-sound/kaudiocreator 1.3_p20170806: CD ripper and audio encoder frontend based on KDE Frameworks
-media-sound/kid3 3.6.1 3.7.0: Simple tag editor based on Qt
+media-sound/kid3 3.7.0: Simple tag editor based on Qt
 media-sound/kmetronome 1.0.0: MIDI based metronome using ALSA sequencer
 media-sound/lame 3.100-r1: LAME Ain't an MP3 Encoder
 media-sound/lash 0.5.4-r3: LASH Audio Session Handler
@@ -8269,7 +8269,7 @@ media-sound/xineadump 0.1-r1: Utility for Xine decoding support in transKode
 media-sound/xmms2 0.8_p20161122 0.8_p20161122-r4: X(cross)platform Music Multiplexing System. Next generation of the XMMS player
 media-sound/xnoise 0.2.21: A media player for Gtk+ with a slick GUI, great speed and lots of features
 media-sound/xwax 1.5: Digital vinyl emulation software
-media-sound/zynaddsubfx 3.0.3 3.0.3-r1: Software synthesizer capable of making a countless number of instruments
+media-sound/zynaddsubfx 3.0.3-r1: Software synthesizer capable of making a countless number of instruments
 media-tv/dtv-scan-tables 0_p20171003: Digital TV scan tables in v3 and v5 format
 media-tv/dvbstream 0.7_pre20080516-r1: RTP multicast stream server and other tools for DVB cards
 media-tv/dvbtune 0.5-r1: simple tuning app for DVB cards
@@ -8324,7 +8324,7 @@ media-video/gxine 0.5.907-r1: GTK+ Front-End for libxine
 media-video/hasciicam 1.1.1: a webcam software displaying ascii art using aalib
 media-video/isight-firmware-tools 1.6-r1: Extract, load or export firmware for the iSight webcams
 media-video/jubler 5.1: Java subtitle editor
-media-video/kaffeine 2.0.15 2.0.16.2: Media player with digital TV support by KDE
+media-video/kaffeine 2.0.16.2: Media player with digital TV support by KDE
 media-video/kamerka 0.12_p20161002-r1: Simple photo taking application with fancy animated interface
 media-video/kino 1.3.4-r1: Kino is a non-linear DV editor for GNU/Linux
 media-video/kmplayer 0.12.0b-r1: Video player plugin for Konqueror and basic MPlayer frontend
