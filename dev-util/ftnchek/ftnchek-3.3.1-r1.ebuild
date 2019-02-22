@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="2"
@@ -6,8 +6,8 @@ EAPI="2"
 inherit autotools
 
 DESCRIPTION="Static analyzer a la 'lint' for Fortran 77"
-HOMEPAGE="http://www.dsm.fordham.edu/~ftnchek/"
-SRC_URI="http://www.dsm.fordham.edu/~${PN}/download/${P}.tar.gz"
+HOMEPAGE="https://www.dsm.fordham.edu/~ftnchek/"
+SRC_URI="https://www.dsm.fordham.edu/~${PN}/download/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
