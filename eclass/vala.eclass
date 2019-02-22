@@ -53,7 +53,8 @@ vala_api_versions() {
 	minimal_supported_minor_version="32"
 
 	for ((minor_version = ${VALA_MAX_API_VERSION#*.}; minor_version >= ${VALA_MIN_API_VERSION#*.}; minor_version = minor_version - 2)); do
-		if ((minor_version >= minimal_supported_minor_version)); then
+		# 0.38 was never in main tree; remove the special case once minimal_supported_minor_version >= 40
+		if ((minor_version >= minimal_supported_minor_version)) && ((minor_version != 38)); then
 			echo "0.${minor_version}"
 		fi
 	done
