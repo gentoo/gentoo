@@ -1,34 +1,29 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
+OLD_PN=udev-gentoo-scripts
+OLD_P=${OLD_PN}-${PV}
 
 if [ "${PV}" = "9999" ]; then
-	EGIT_REPO_URI="git://anongit.gentoo.org/proj/udev-gentoo-scripts.git"
+	EGIT_REPO_URI="git://anongit.gentoo.org/proj/${OLD_PN}.git"
 	inherit git-r3
 else
-	SRC_URI="https://dev.gentoo.org/~williamh/dist/${P}.tar.gz"
+	SRC_URI="https://gitweb.gentoo.org/proj/${OLD_PN}.git/snapshot/${OLD_P}.tar.gz -> ${P}.tar.gz"
+	S="${WORKDIR}/${OLD_P}"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 fi
-
-inherit eutils
 
 DESCRIPTION="udev startup scripts for openrc"
 HOMEPAGE="https://www.gentoo.org"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE=""
 
 RESTRICT="test"
 
-DEPEND=""
 RDEPEND=">=virtual/udev-217
 	!<sys-apps/openrc-0.14"
-
-src_prepare() {
-	epatch_user
-}
 
 pkg_postinst() {
 	# Add udev and udev-trigger to the sysinit runlevel automatically.
