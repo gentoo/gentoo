@@ -29,7 +29,7 @@ DEPEND="
 "
 RDEPEND="
 	${DEPEND}
-	!<=dev-libs/sway-1.0_beta2[swaylock]
+	!<=gui-libs/sway-1.0_beta2[swaylock]
 "
 BDEPEND="
 	>=dev-libs/wayland-protocols-1.14
