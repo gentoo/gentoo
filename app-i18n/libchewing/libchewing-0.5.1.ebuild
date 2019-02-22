@@ -21,6 +21,7 @@ LICENSE="LGPL-2.1"
 SLOT="0/3"
 KEYWORDS="amd64 ~arm ~arm64 ppc ppc64 x86"
 IUSE="static-libs test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="dev-db/sqlite:3"
 DEPEND="${RDEPEND}

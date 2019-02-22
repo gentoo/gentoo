@@ -21,6 +21,7 @@ LICENSE="LGPL-2.1"
 SLOT="0/3"
 KEYWORDS=""
 IUSE="static-libs test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="dev-db/sqlite:3"
 DEPEND="${RDEPEND}
