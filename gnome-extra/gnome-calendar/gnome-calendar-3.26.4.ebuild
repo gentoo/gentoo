@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,7 +10,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Calendar"
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="gtk-doc"
 
 # >=libical-1.0.1 for https://bugzilla.gnome.org/show_bug.cgi?id=751244
 # FIXME add docs
@@ -25,11 +25,21 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	dev-libs/appstream-glib
+	dev-libs/libxml2:2
 	dev-util/gdbus-codegen
-	>=dev-util/meson-0.42.0
+	dev-util/glib-utils
+	gtk-doc? ( dev-util/gtk-doc
+		app-text/docbook-xml-dtd:4.3 )
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
 "
+
+RESTRICT="!test? ( test )"
+
+src_configure() {
+	meson_src_configure \
+		$(meson_use gtk-doc enable-gtk-doc)
+}
 
 src_test() {
 	virtx meson_src_test
@@ -37,12 +47,10 @@ src_test() {
 
 pkg_postinst() {
 	xdg_pkg_postinst
-	gnome2_icon_cache_update
 	gnome2_schemas_update
 }
 
 pkg_postrm() {
 	xdg_pkg_postrm
-	gnome2_icon_cache_update
 	gnome2_schemas_update
 }
