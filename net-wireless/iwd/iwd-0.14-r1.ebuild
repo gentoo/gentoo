@@ -9,7 +9,7 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://www.kernel.org/pub/linux/network/wireless/${P}.tar.xz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~x86"
 fi
 
 DESCRIPTION="Wireless daemon for linux"
@@ -66,10 +66,6 @@ pkg_pretend() {
 		WARNING_CRYPTO_SHA512_SSSE3="CRYPTO_SHA512_SSSE3: enable for increased performance"
 	fi
 
-	if use kernel_linux && kernel_is -ge 4 20; then
-		CONFIG_CHECK="${CONFIG_CHECK} ~PKCS8_PRIVATE_KEY_PARSER"
-	fi
-
 	check_extra_config
 }
 
@@ -95,8 +91,7 @@ src_configure() {
 		$(use_enable ofono) \
 		$(use_enable wired) \
 		--enable-systemd-service \
-		--with-systemd-unitdir="$(systemd_get_systemunitdir)" \
-		--with-systemd-modloaddir=$(_systemd_get_dir modulesloaddir /usr/lib/modules-load.d)
+		--with-systemd-unitdir="$(systemd_get_systemunitdir)"
 }
 
 src_install() {
