@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-USE_RUBY="ruby22 ruby23 ruby24 ruby25"
+USE_RUBY="ruby23 ruby24 ruby25 ruby26"
 
 # Avoid the complexity of the "rake" recipe and run testrb-2 manually.
 RUBY_FAKEGEM_RECIPE_TEST=none
@@ -14,8 +14,8 @@ RUBY_FAKEGEM_EXTRADOC="GUIDE.md History.md README.md"
 inherit ruby-fakegem
 
 DESCRIPTION="Ruby library to read and write spreadsheet documents"
-HOMEPAGE="https://rubygems.org/gems/spreadsheet"
-SRC_URI="https://github.com/zdavatz/spreadsheet/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/zdavatz/spreadsheet"
+SRC_URI="https://github.com/zdavatz/spreadsheet/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
