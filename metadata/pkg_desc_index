@@ -1526,7 +1526,7 @@ app-vim/autoalign 14: vim plugin: automatically align bib, c, c++, tex and vim c
 app-vim/automatictexplugin 12.5-r1: vim plugin: a comprehensive plugin for editing LaTeX files
 app-vim/bash-support 4.2.1: vim plugin: write and run bash scripts using menus and hotkeys
 app-vim/bnf-syntax 1.2-r2: vim plugin: BNF file syntax highlighting
-app-vim/brainfuck-syntax 1.0.2: vim plugin: BrainFuck source file syntax highlighting
+app-vim/brainfuck-syntax 1.0.3-r1: vim plugin: BrainFuck source file syntax highlighting
 app-vim/breakpts 4.0-r1: vim plugin: sets vim breakpoints visually
 app-vim/bufexplorer 7.4.18: vim plugin: easily browse vim buffers
 app-vim/c-support 6.0 6.1 6.1.1: vim plugin: C/C++-IDE -- Write and run programs using menus and hotkeys
