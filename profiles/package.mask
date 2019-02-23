@@ -29,6 +29,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Mart Raudsepp <leio@gentoo.org> (23 Feb 2019)
+# GNOME 3.28/3.30 mask (#650480, #665348)
+# This is intended as an actively updated short-term mask this time around.
+# Unless you use an overlay which this mask block affects, it might be a
+# better idea to just wait for a smaller set to be ready within a couple
+# days and quickly unmasked.
+>=gnome-base/gnome-desktop-3.30.2.1
+
 # Michał Górny <mgorny@gentoo.org> (13 Feb 2019)
 # Release candidate, masked for testing.
 =sys-devel/llvm-common-8.0.0_rc*
