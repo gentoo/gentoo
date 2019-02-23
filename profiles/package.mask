@@ -38,6 +38,7 @@
 >=gnome-base/gnome-desktop-3.30.2.1
 >=dev-libs/libgweather-3.28.3
 >=gnome-extra/gnome-clocks-3.30.1
+=gnome-base/gnome-control-center-3.26.2-r2
 
 # Michał Górny <mgorny@gentoo.org> (13 Feb 2019)
 # Release candidate, masked for testing.
