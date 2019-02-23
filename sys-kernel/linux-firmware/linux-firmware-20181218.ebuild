@@ -17,7 +17,7 @@ fi
 DESCRIPTION="Linux firmware files"
 HOMEPAGE="https://git.kernel.org/?p=linux/kernel/git/firmware/linux-firmware.git"
 
-LICENSE="linux-firmware ( BSD ISC MIT no-source-code ) GPL-2 GPL-2+ freedist"
+LICENSE="linux-firmware ( BSD ISC MIT no-source-code ) GPL-2 GPL-2+"
 SLOT="0"
 IUSE="savedconfig"
 
