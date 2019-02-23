@@ -1,17 +1,19 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 DISTUTILS_OPTIONAL=1
 
-inherit eutils distutils-r1 libtool multilib-minimal toolchain-funcs
+inherit distutils-r1 libtool multilib-minimal toolchain-funcs
 
 MY_P=${P/_}
 DESCRIPTION="Password Checking Library"
 HOMEPAGE="https://github.com/cracklib/cracklib/"
-SRC_URI="https://github.com/${PN}/${PN}/releases/download/${P}/${P}.tar.gz"
+# source tarballs on GitHub lack pre-generated configure script.
+#SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://dev.gentoo.org/~polynomial-c/dist/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
@@ -20,13 +22,18 @@ IUSE="nls python static-libs zlib"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="python? ( ${PYTHON_DEPS} )
-	zlib? ( >=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}] )"
+	zlib? ( >=sys-libs/zlib-1.2.8-r1:=[${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}
 	python? (
 		dev-python/setuptools[${PYTHON_USEDEP}]
 	)"
 
-S=${WORKDIR}/${MY_P}
+S="${WORKDIR}/${MY_P}"
+
+PATCHES=(
+	"${FILESDIR}"/cracklib-2.9.6-CVE-2016-6318.patch
+	"${FILESDIR}"/cracklib-2.9.6-fix-long-word-bufferoverflow.patch
+)
 
 do_python() {
 	multilib_is_native_abi || return 0
@@ -46,23 +53,23 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/cracklib-2.9.6-CVE-2016-6318.patch
-	epatch "${FILESDIR}"/cracklib-2.9.6-fix-long-word-bufferoverflow.patch
-
+	eapply -p2 "${PATCHES[@]}"
+	eapply_user
 	elibtoolize #269003
 	do_python
 }
 
 multilib_src_configure() {
+	local myeconfargs=(
+		# use /usr/lib so that the dictionary is shared between ABIs
+		--with-default-dict='/usr/lib/cracklib_dict'
+		--without-python
+		$(use_enable nls)
+		$(use_enable static-libs static)
+	)
 	export ac_cv_header_zlib_h=$(usex zlib)
 	export ac_cv_search_gzopen=$(usex zlib -lz no)
-	# use /usr/lib so that the dictionary is shared between ABIs
-	ECONF_SOURCE=${S} \
-	econf \
-		--with-default-dict='/usr/lib/cracklib_dict' \
-		--without-python \
-		$(use_enable nls) \
-		$(use_enable static-libs static)
+	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
 }
 
 multilib_src_compile() {
@@ -89,11 +96,11 @@ multilib_src_install() {
 
 multilib_src_install_all() {
 	einstalldocs
-	prune_libtool_files
-	rm -r "${ED}"/usr/share/cracklib
+	find "${ED}" -name "*.la" -delete || die
+	rm -r "${ED%/}"/usr/share/cracklib || die
 
 	insinto /usr/share/dict
-	doins dicts/cracklib-small || die
+	doins dicts/cracklib-small
 }
 
 pkg_postinst() {
