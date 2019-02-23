@@ -7,7 +7,7 @@
 
 EAPI=6
 
-inherit flag-o-matic
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="The GNU info program and utilities"
 HOMEPAGE="https://www.gnu.org/software/texinfo/"
@@ -31,6 +31,9 @@ DEPEND="${RDEPEND}
 	nls? ( >=sys-devel/gettext-0.19.6 )"
 
 src_configure() {
+	# Respect compiler and CPPFLAGS/CFLAGS/LDFLAGS for Perl extensions. #622576
+	local -x PERL_EXT_CC="$(tc-getCC)" PERL_EXT_CPPFLAGS="${CPPFLAGS}" PERL_EXT_CFLAGS="${CFLAGS}" PERL_EXT_LDFLAGS="${LDFLAGS}"
+
 	use static && append-ldflags -static
 	local myeconfargs=(
 		--with-external-libintl-perl
