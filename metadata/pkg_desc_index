@@ -2997,7 +2997,7 @@ dev-libs/flatbuffers 1.10.0: Memory efficient serialization library
 dev-libs/folks 0.11.4: Library for aggregating people from multiple sources
 dev-libs/freexl 1.0.1: Simple XLS data extraction library
 dev-libs/fribidi 1.0.5: A free implementation of the unicode bidirectional algorithm
-dev-libs/fstrm 0.2.0-r1 0.3.0: Frame Streams implementation in C
+dev-libs/fstrm 0.3.0: Frame Streams implementation in C
 dev-libs/g-wrap 1.9.13 1.9.14: A tool for exporting C libraries into Scheme
 dev-libs/gdl 3.28.0: GNOME docking library
 dev-libs/geoip 1.6.9-r1 1.6.10: GeoIP Legacy C API
@@ -3292,7 +3292,7 @@ dev-libs/uriparser 0.8.4-r1: Uriparser is a strictly RFC 3986 compliant URI pars
 dev-libs/userspace-rcu 0.9.1 0.10.1: userspace RCU (read-copy-update) library
 dev-libs/ustr 1.0.4-r5 1.0.4-r8: Low-overhead managed string library for C
 dev-libs/utfcpp 2.3.4: A portable and lightweight generic library for handling UTF-8 strings
-dev-libs/uthash 1.9.7 2.0.2: An easy-to-use hash implementation for C programmers
+dev-libs/uthash 2.0.2: An easy-to-use hash implementation for C programmers
 dev-libs/uulib 0.5.20-r1: Library that supports Base64 (MIME), uuencode, xxencode and binhex coding
 dev-libs/vala-common 0.36.15: Build infrastructure for packages that use Vala
 dev-libs/vanessa-logger 0.0.10: Generic logging layer that to log to syslog, an open file handle or a file name
@@ -4650,7 +4650,7 @@ dev-python/anyvc 0.3.7.1-r1: Library to access any version control system
 dev-python/aodhclient 0.8.0 1.0.0: A client for the OpenStack Aodh API
 dev-python/apipkg 1.4: namespace control and lazy-import mechanism
 dev-python/appdirs 1.4.3: Module for determining appropriate platform-specific dirs
-dev-python/apptools 4.2.1 4.3.0: Enthought Tool Suite: Application tools
+dev-python/apptools 4.3.0: Enthought Tool Suite: Application tools
 dev-python/apsw 3.23.1_p1: APSW - Another Python SQLite Wrapper
 dev-python/aquarium 2.3-r1: Aquarium web application framework
 dev-python/argcomplete 1.4.1 1.9.4: Bash tab completion for argparse
@@ -6266,7 +6266,7 @@ dev-util/cargo 0.30.0: The Rust's package manager
 dev-util/catalyst 2.0.18-r1 2.0.18-r4 3.0.2 3.0.2-r1 3.0.3: Release metatool used for creating releases based on Gentoo Linux
 dev-util/catfish 1.2.2 1.4.6: A frontend for find, (s)locate, doodle, tracker, beagle, strigi and pinot
 dev-util/ccache 3.2.4 3.3.4-r1: fast compiler cache
-dev-util/cdiff 0.9.8 1.0: Colored, side-by-side diff terminal viewer
+dev-util/cdiff 1.0: Colored, side-by-side diff terminal viewer
 dev-util/cgdb 0.6.6 0.6.7 0.6.8: A curses front-end for GDB, the GNU debugger
 dev-util/cgvg 1.6.2: A tiny version of cscope that is much more useful in certian instances
 dev-util/checkbashisms 2.18.11: Perl script to check for commonly used bash features not defined by POSIX
@@ -7596,7 +7596,7 @@ media-libs/lcms 2.9: A lightweight, speed optimized color management engine
 media-libs/lensfun 0.3.2-r1: Library for rectifying and simulating photographic lens distortions
 media-libs/leptonica 1.74.4: C library for image processing and analysis
 media-libs/lib3ds 1.3.0-r1 2.0.0_rc1: library for managing 3D-Studio Release 3 and 4 .3DS files
-media-libs/libXcm 0.5.2-r1 0.5.4: Reference implementation of the X Color Management specification
+media-libs/libXcm 0.5.4: Reference implementation of the X Color Management specification
 media-libs/libaacplus 2.0.2-r2: HE-AAC+ v2 library, based on the reference implementation
 media-libs/libaacs 0.7.1: Open implementation of the Advanced Access Content System (AACS) specification
 media-libs/libafterimage 1.20-r2: Afterstep's standalone generic image manipulation library
@@ -8651,7 +8651,7 @@ net-im/pidgin 2.13.0: GTK Instant Messenger client
 net-im/prosody 0.9.14 0.11.1 0.11.2: Prosody is a flexible communications server for Jabber/XMPP written in Lua
 net-im/purple-events 0.99.1: Allows a fine-grained control over libpurple events
 net-im/pyicq-t 0.8.1.5-r6: Python based jabber transport for ICQ
-net-im/sendxmpp 1.23 1.24: A perl-script to send xmpp (jabber), similar to what mail(1) does for mail
+net-im/sendxmpp 1.24: A perl-script to send xmpp (jabber), similar to what mail(1) does for mail
 net-im/silc-toolkit 1.1.10: SDK for the SILC protocol
 net-im/telepathy-connection-managers 2-r2: Meta-package for Telepathy Connection Managers
 net-im/telepathy-logger 0.8.2: Daemon that centralizes the communication logging within the Telepathy framework
@@ -8808,7 +8808,7 @@ net-libs/ortp 0.23.0-r1: Open Real-time Transport Protocol (RTP, RFC3550) stack
 net-libs/phodav 2.2: WebDav server implementation using libsoup
 net-libs/pjproject 2.7.1: Open source SIP, Media, and NAT Traversal Library
 net-libs/qxmpp 0.9.3-r2: A cross-platform C++ XMPP client library based on the Qt framework
-net-libs/rabbitmq-c 0.8.0 0.9.0: RabbitMQ C client
+net-libs/rabbitmq-c 0.9.0: RabbitMQ C client
 net-libs/rest 0.8.1: Helper library for RESTful services
 net-libs/ripe-atlas-sagan 1.1.8 1.1.11: A parsing library for RIPE Atlas result strings
 net-libs/rpcsvc-proto 1.3.1-r1: rpcsvc protocol definitions from glibc
@@ -9195,7 +9195,7 @@ net-proxy/dante 1.4.1-r1: A free socks4,5 and msproxy implementation
 net-proxy/dnsproxy 1.17: The dnsproxy daemon is a proxy for DNS queries
 net-proxy/haproxy 1.6.11-r2 1.7.10 1.8.9 1.8.13: A TCP/HTTP reverse proxy for high availability environments
 net-proxy/havp 0.92a-r2: HTTP AntiVirus Proxy
-net-proxy/http-replicator 3.0-r7 4.0_alpha2-r7: Proxy cache for Gentoo packages
+net-proxy/http-replicator 4.0_alpha2-r7: Proxy cache for Gentoo packages
 net-proxy/nylon 1.21-r2: A lightweight SOCKS proxy server
 net-proxy/polipo 1.1.1-r4: A caching web proxy
 net-proxy/privoxy 3.0.26: A web proxy with advanced filtering capabilities for enhancing privacy
@@ -9460,7 +9460,7 @@ sci-libs/libint 1.1.6: Matrix elements (integrals) evaluation over Cartesian Gau
 sci-libs/libnova 0.15.0: Celestial Mechanics and Astronomical Calculation Library
 sci-libs/libqalculate 0.9.9: A modern multi-purpose calculator library
 sci-libs/libsigrok 0.3.0: basic hardware drivers for logic analyzers and input/output file format support
-sci-libs/libspatialindex 1.8.1 1.8.5-r1: General framework for developing spatial indices
+sci-libs/libspatialindex 1.8.5-r1: General framework for developing spatial indices
 sci-libs/libsvm 3.21 3.22: Library for Support Vector Machines
 sci-libs/linux-gpib 4.1.0: Kernel module and driver library for GPIB (IEEE 488.2) hardware
 sci-libs/lrslib 042c-r2: self-contained ANSI C implementation of the reverse search algorithm
@@ -9826,7 +9826,7 @@ sys-apps/bleachbit 2.0: Clean junk to free disk space and to maintain privacy
 sys-apps/busybox 1.29.0 1.29.3: Utilities for rescue and embedded systems
 sys-apps/cciss_vol_status 1.12: Shows status of logical drives attached to HP SmartArray controllers
 sys-apps/checkpolicy 2.7 2.8: SELinux policy compiler
-sys-apps/chname 1.0-r2 1.1: Run a command with a new system hostname
+sys-apps/chname 1.1: Run a command with a new system hostname
 sys-apps/clrngd 1.0.3: Clock randomness gathering daemon
 sys-apps/collectl 3.7.4: Performance monitoring tool capable of interactive reporting and logging to disk
 sys-apps/colorized-logs 2.4: Tools for logs with ANSI color
@@ -10239,7 +10239,7 @@ sys-fs/multipath-tools 0.6.4-r1: Device mapper target autoconfig
 sys-fs/ncdu 1.13: NCurses Disk Usage
 sys-fs/nilfs-utils 2.1.5-r1: A New Implementation of a Log-structured File System for Linux
 sys-fs/ntfs3g 2016.2.22-r2 2017.3.23-r1: Open source read-write NTFS driver that runs under FUSE
-sys-fs/owfs 3.1_p4-r1 3.2_p2-r2: Access 1-Wire devices like a filesystem
+sys-fs/owfs 3.2_p2-r2: Access 1-Wire devices like a filesystem
 sys-fs/progsreiserfs 0.3.1_rc8: Library for accessing and manipulating reiserfs partitions
 sys-fs/pysize 0.2-r1: A graphical and console tool for exploring the size of directories
 sys-fs/quota 4.03 4.04-r1: Linux quota tools
@@ -10665,7 +10665,7 @@ www-misc/fcgiwrap 1.1.0-r1: Simple FastCGI wrapper for CGI scripts (CGI support 
 www-misc/htdig 3.2.0_beta6-r5: HTTP/HTML indexing and searching system
 www-misc/mergelog 4.5-r2: A utility to merge apache logs in chronological order
 www-misc/monitorix 3.9.0 3.10.0-r1 3.10.1: A lightweight system monitoring tool
-www-misc/profile-sync-daemon 5.45.1 6.31: Symlinks and syncs browser profile dirs to RAM.
+www-misc/profile-sync-daemon 6.31: Symlinks and syncs browser profile dirs to RAM.
 www-misc/shellinabox 2.20-r1: Export command line tools to a web based terminal emulator
 www-misc/surl 0.7.1.1-r1: URL shortening command line application that supports various sites
 www-misc/urlwatch 2.13: A tool for monitoring webpages for updates
@@ -11035,7 +11035,7 @@ x11-misc/shutterbug 1.7.49: Screenshot utility based on the FOX Toolkit
 x11-misc/skippy 0.5.0-r1: A full-screen task-switcher providing Apple Expose-like functionality
 x11-misc/slim 1.3.6-r5: Simple Login Manager
 x11-misc/slock 1.4: simple X display locker
-x11-misc/spacefm 1.0.5-r2 1.0.6: A multi-panel tabbed file manager
+x11-misc/spacefm 1.0.6: A multi-panel tabbed file manager
 x11-misc/spnavcfg 0.3: GTK-based GUI to configure a space navigator device
 x11-misc/sselp 0.2-r1: Simple X selection printer
 x11-misc/stalonetray 0.8.3: System tray utility including support for KDE system tray icons
@@ -11045,7 +11045,7 @@ x11-misc/tint2 16.2: tint2 is a lightweight panel/taskbar for Linux.
 x11-misc/tintwizard 0.3.4-r2: GUI wizard which generates config files for tint2 panels
 x11-misc/touchcal 0.80: Touchscreen calibration utility
 x11-misc/trayer 1.0-r3: Lightweight GTK+ based systray for UNIX desktop
-x11-misc/trayer-srg 1.1.6-r1 1.1.7: trayer fork with multi monitor support and cleaned up codebase
+x11-misc/trayer-srg 1.1.7: trayer fork with multi monitor support and cleaned up codebase
 x11-misc/unclutter 8-r4: Hides mouse pointer while not in use
 x11-misc/unclutter-xfixes 1.5: A rewrite of unclutter using the x11-xfixes extension
 x11-misc/urxvt-font-size 1.1 1.3: Perl extension for rxvt-unicode to change the font size on the fly
@@ -11163,7 +11163,7 @@ x11-plugins/pidgin-latex 1.5.0: Pidgin plugin that renders latex formulae
 x11-plugins/pidgin-libnotify 0.14-r1: pidgin-libnotify provides popups for pidgin via a libnotify interface
 x11-plugins/pidgin-mbpurple 0.3.0-r2: Pidgin plug-in supporting microblog services like Twitter or identi.ca
 x11-plugins/pidgin-musictracker 0.4.22: A Pidgin now playing plugin to publicise the songs you are listening
-x11-plugins/pidgin-opensteamworks 1.4 1.6.1: Steam protocol plugin for pidgin
+x11-plugins/pidgin-opensteamworks 1.6.1: Steam protocol plugin for pidgin
 x11-plugins/pidgin-otr 4.0.2: (OTR) Messaging allows you to have private conversations over instant messaging
 x11-plugins/pidgin-privacy-please 0.7.1: pidgin plugin to stop spammers from annoying you
 x11-plugins/pidgin-rhythmbox 2.0: automatically update your pidgin profile with current info from Rhythmbox
@@ -11263,7 +11263,7 @@ x11-themes/adwaita-qt 1.0-r1: A style to bend Qt applications to look like they 
 x11-themes/arc-icon-theme 20161122: Vertex icon theme
 x11-themes/blueglass-xcursors 0.4: A high quality set of Xfree 4.3.0 animated mouse cursors
 x11-themes/claws-mail-themes 20140629: Iconsets for Claws Mail
-x11-themes/clearlooks-phenix 3.0.15 7.0.1: Clearlooks-Phenix is a GTK+ 3 port of Clearlooks, the default theme for GNOME 2
+x11-themes/clearlooks-phenix 7.0.1: Clearlooks-Phenix is a GTK+ 3 port of Clearlooks, the default theme for GNOME 2
 x11-themes/comix-xcursors 0.8.2: X11 mouse theme with a comics feeling
 x11-themes/commonbox-styles 0.6: Common styles for fluxbox, blackbox, and openbox
 x11-themes/commonbox-styles-extra 0.2-r2: Extra styles pack for flux|black|open(box)
