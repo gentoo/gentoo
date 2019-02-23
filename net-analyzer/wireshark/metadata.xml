@@ -35,6 +35,7 @@ be exported to XML, PostScript®, CSV, or plain text.
 <flag name="ciscodump">Install ciscodump, extcap interface to capture from a remote Cisco router</flag>
 <flag name="dftest">Install dftest, to display filter byte-code, for debugging dfilter routines</flag>
 <flag name="doc-pdf">Build documentation in pdf format (US and a4 paper sizes)</flag>
+<flag name="dpauxmon">Install dpauxmon, an external capture interface (extcap) that captures DisplayPort AUX channel data from linux kernel drivers</flag>
 <flag name="dumpcap">Install dumpcap, to dump network traffic from inside wireshark</flag>
 <flag name="editcap">Install editcap, to edit and/or translate the format of capture files</flag>
 <flag name="libssh">Use <pkg>net-libs/libssh</pkg> (for sshdump)</flag>
@@ -49,6 +50,7 @@ be exported to XML, PostScript®, CSV, or plain text.
 <flag name="randpktdump">Install randpktdump, an extcap interface to provide access to the random packet generator (randpkt)</flag>
 <flag name="reordercap">Install reordercap, to reorder input file by timestamp into output file</flag>
 <flag name="sbc">Use <pkg>media-libs/sbc</pkg> for playing back SBC encoded packets</flag>
+<flag name="sdjournal">Install sdjournal, an extcap that captures systemd journal entries</flag>
 <flag name="sharkd">Install sharkd, the daemon variant of wireshark</flag>
 <flag name="smi">Use <pkg>net-libs/libsmi</pkg> to resolve numeric OIDs into human readable format</flag>
 <flag name="snappy">Use <pkg>app-arch/snappy</pkg> for snappy compression and decompression</flag>
