@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -32,6 +32,9 @@ RDEPEND="${PYTHON_DEPS}
 DEPEND="${RDEPEND}
 	app-text/yelp-tools
 "
+
+# Tests broken for a long time, recheck in 1.4, bug #678444
+RESTRICT="test"
 
 src_prepare() {
 	# Workaround for bug 487204.
