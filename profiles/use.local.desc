@@ -3785,6 +3785,7 @@ net-analyzer/wireshark:captype - Install captype, to print the file types of cap
 net-analyzer/wireshark:ciscodump - Install ciscodump, extcap interface to capture from a remote Cisco router
 net-analyzer/wireshark:dftest - Install dftest, to display filter byte-code, for debugging dfilter routines
 net-analyzer/wireshark:doc-pdf - Build documentation in pdf format (US and a4 paper sizes)
+net-analyzer/wireshark:dpauxmon - Install dpauxmon, an external capture interface (extcap) that captures DisplayPort AUX channel data from linux kernel drivers
 net-analyzer/wireshark:dumpcap - Install dumpcap, to dump network traffic from inside wireshark
 net-analyzer/wireshark:editcap - Install editcap, to edit and/or translate the format of capture files
 net-analyzer/wireshark:libssh - Use net-libs/libssh (for sshdump)
@@ -3799,6 +3800,7 @@ net-analyzer/wireshark:randpkt - Install randpkt, a utility for creating pcap tr
 net-analyzer/wireshark:randpktdump - Install randpktdump, an extcap interface to provide access to the random packet generator (randpkt)
 net-analyzer/wireshark:reordercap - Install reordercap, to reorder input file by timestamp into output file
 net-analyzer/wireshark:sbc - Use media-libs/sbc for playing back SBC encoded packets
+net-analyzer/wireshark:sdjournal - Install sdjournal, an extcap that captures systemd journal entries
 net-analyzer/wireshark:sharkd - Install sharkd, the daemon variant of wireshark
 net-analyzer/wireshark:smi - Use net-libs/libsmi to resolve numeric OIDs into human readable format
 net-analyzer/wireshark:snappy - Use app-arch/snappy for snappy compression and decompression
