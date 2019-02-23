@@ -15,7 +15,7 @@ IUSE=""
 
 RDEPEND="
 	>=dev-libs/glib-2.44:2
-	>=dev-libs/libgweather-3.14:2=[vala]
+	>=dev-libs/libgweather-3.27.2:2=[vala]
 	>=gnome-base/gnome-desktop-3.8:3=
 	>=media-libs/gsound-0.98[vala]
 	>=sci-geosciences/geocode-glib-1

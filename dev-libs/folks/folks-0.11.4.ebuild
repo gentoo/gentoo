@@ -4,6 +4,7 @@
 EAPI=6
 GNOME2_LA_PUNT="yes"
 VALA_USE_DEPEND="vapigen"
+VALA_MAX_API_VERSION="0.40"
 
 inherit gnome2 vala virtualx
 
