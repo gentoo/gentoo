@@ -36,6 +36,7 @@
 # better idea to just wait for a smaller set to be ready within a couple
 # days and quickly unmasked.
 >=gnome-base/gnome-desktop-3.30.2.1
+>=dev-libs/libgweather-3.28.3
 
 # Michał Górny <mgorny@gentoo.org> (13 Feb 2019)
 # Release candidate, masked for testing.
