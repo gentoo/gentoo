@@ -15,17 +15,14 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="acl elibc_glibc minimal nls selinux static userland_GNU xattr"
 
-RDEPEND="acl? ( virtual/acl )
+LIB_DEPEND="acl? ( virtual/acl[static-libs(+)] )"
+
+RDEPEND="!static? ( ${LIB_DEPEND//\[static-libs(+)]} )
 	selinux? ( sys-libs/libselinux )"
 DEPEND="${RDEPEND}
 	nls? ( >=sys-devel/gettext-0.10.35 )
+	static? ( ${LIB_DEPEND} )
 	xattr? ( elibc_glibc? ( sys-apps/attr ) )"
-
-PATCHES=(
-	"${FILESDIR}"/${P}-fix-test-92.patch
-	"${FILESDIR}"/${P}-fix-test-117-and-118.patch
-	"${FILESDIR}"/${P}-CVE-2018-20482.patch #674210
-)
 
 src_prepare() {
 	default
