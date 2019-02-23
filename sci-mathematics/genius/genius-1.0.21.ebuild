@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,9 +7,9 @@ GNOME2_LA_PUNT="yes"
 inherit gnome2
 
 DESCRIPTION="Genius Mathematics Tool and the GEL Language"
-HOMEPAGE="http://www.jirka.org/genius.html"
+HOMEPAGE="https://www.jirka.org/genius.html"
 SRC_URI="${SRC_URI}
-	doc? ( http://www.jirka.org/${PN}-reference.pdf )"
+	doc? ( https://www.jirka.org/${PN}-reference.pdf )"
 
 LICENSE="GPL-3"
 SLOT="0"
