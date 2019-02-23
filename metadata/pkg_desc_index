@@ -1494,7 +1494,7 @@ app-text/writerperfect 0.9.5: Various formats to Open document format converter
 app-text/wscr 1.2-r1: A Lightweight and Fast Anagram Solver
 app-text/wv 1.2.9-r2: Tool for conversion of MSWord doc and rtf files to something readable
 app-text/wv2 0.4.2-r2: Excellent MS Word filter lib, used in most Office suites
-app-text/xapian-omega 1.2.24 1.2.25 1.4.4 1.4.5 1.4.7: An application built on Xapian, consisting of indexers and a CGI search frontend
+app-text/xapian-omega 1.2.25 1.4.5 1.4.7: An application built on Xapian, consisting of indexers and a CGI search frontend
 app-text/xchm 1.23-r1: Utility for viewing Compiled HTML Help (CHM) files
 app-text/xdvik 22.87.03-r1: DVI previewer for X Window System
 app-text/xfbib 0.0.2-r2: a lightweight BibTeX editor
