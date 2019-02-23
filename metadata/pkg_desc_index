@@ -3302,7 +3302,7 @@ dev-libs/wayland 1.16.0: Wayland protocol libraries
 dev-libs/wayland-protocols 1.17: Wayland protocol files
 dev-libs/weston 3.0.0: Wayland reference compositor
 dev-libs/xalan-c 1.11.0_pre1153059: XSLT processor for transforming XML into HTML, text, or other XML types
-dev-libs/xapian 1.2.25 1.4.5 1.4.7: Xapian Probabilistic Information Retrieval library
+dev-libs/xapian 1.2.24 1.2.25 1.4.5 1.4.7: Xapian Probabilistic Information Retrieval library
 dev-libs/xapian-bindings 1.2.25 1.4.5 1.4.7: SWIG and JNI bindings for Xapian
 dev-libs/xerces-c 3.1.4-r1: A validating XML parser written in a portable subset of C++
 dev-libs/xmlrpc-c 1.32.05-r1 1.39.11-r1: A lightweigt RPC library based on XML and HTTP
