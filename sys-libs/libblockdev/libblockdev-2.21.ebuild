@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python{2_7,3_{4,5,6,7}} )
-inherit autotools python-single-r1
+inherit autotools python-single-r1 xdg-utils
 
 MY_PV="${PV}-1"
 MY_P="${PN}-${MY_PV}"
@@ -14,8 +14,8 @@ HOMEPAGE="https://github.com/storaged-project/libblockdev"
 SRC_URI="https://github.com/storaged-project/${PN}/archive/${MY_PV}.tar.gz -> ${MY_P}.tar.gz"
 LICENSE="LGPL-2+"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 ~ia64 ~mips ppc ppc64 sparc x86"
-IUSE="bcache +cryptsetup dmraid doc escrow lvm kbd test vdo"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
+IUSE="bcache +cryptsetup device-mapper dmraid doc escrow lvm kbd test +tools vdo"
 
 RDEPEND="
 	>=dev-libs/glib-2.42.2
@@ -30,6 +30,7 @@ RDEPEND="
 		)
 		>=sys-fs/cryptsetup-1.6.7:=
 	)
+	device-mapper? ( sys-fs/lvm2 )
 	dmraid? (
 		sys-fs/dmraid
 		sys-fs/lvm2
@@ -58,6 +59,7 @@ pkg_setup() {
 }
 
 src_prepare() {
+	xdg_environment_reset #623992
 	default
 	eautoreconf
 }
@@ -72,12 +74,14 @@ src_configure() {
 		$(use_enable test tests)
 		$(use_with bcache)
 		$(use_with cryptsetup crypto)
+		$(use_with device-mapper dm)
 		$(use_with dmraid)
 		$(use_with doc gtk-doc)
 		$(use_with escrow)
+		$(use_with kbd)
 		$(use_with lvm lvm)
 		$(use_with lvm lvm-dbus)
-		$(use_with kbd)
+		$(use_with tools)
 		$(use_with vdo)
 	)
 	if python_is_python3 ; then
