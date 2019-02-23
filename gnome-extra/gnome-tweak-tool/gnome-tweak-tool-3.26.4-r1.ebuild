@@ -28,7 +28,7 @@ RDEPEND="${COMMON_DEPEND}
 
 	dev-libs/glib:2
 	>=x11-libs/gtk+-3.12:3[introspection]
-	>=gnome-base/gnome-desktop-3.6.0.1:3=[introspection]
+	>=gnome-base/gnome-desktop-3.6.0.1:3[introspection]
 	net-libs/libsoup:2.4[introspection]
 	x11-libs/libnotify[introspection]
 
