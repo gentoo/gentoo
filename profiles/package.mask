@@ -187,11 +187,6 @@ dev-go/sarama
 # Keeping it masked while users have unsolved issues with >0.15.0.
 <x11-misc/sddm-0.18.0
 
-# Sergei Trofimovich <slyfox@gentoo.org> (23 Nov 2018)
-# New version breaks kernel compilation as objtool seemingly
-# corrupts object files: bug #671760
->=dev-libs/elfutils-0.175
-
 # Ian Stakenvicius <axs@gentoo.org> (07 Nov 2018)
 # on behalf of Mozilla Project <mozilla@gentoo.org>
 # Mask old/vuln thunderbird for removal by 2019,
