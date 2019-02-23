@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit gnome2-utils meson
 
@@ -48,9 +48,12 @@ RDEPEND="
 # and sys-devel/gettext depends reasoning
 DEPEND="
 	${RDEPEND}
-	virtual/pkgconfig
 	dev-libs/appstream-glib
 	sys-devel/gettext
+"
+BDEPEND="
+	>=sys-devel/gcc-7.3.0
+	virtual/pkgconfig
 "
 
 pkg_postinst(){
