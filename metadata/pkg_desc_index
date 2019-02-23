@@ -2915,7 +2915,7 @@ dev-lang/mmix 20131017 20160804: Donald Knuth's MMIX Assembler and Simulator
 dev-lang/mono 4.4.1.0 4.8.0.524: Mono runtime and class libraries, a C# compiler/interpreter
 dev-lang/mono-basic 4.6-r1: Visual Basic Compiler and Runtime
 dev-lang/mujs 1.0.5: An embeddable Javascript interpreter in C.
-dev-lang/nasm 2.13.01 2.14.02: groovy little assembler
+dev-lang/nasm 2.14.02: groovy little assembler
 dev-lang/ocaml 4.04.2-r1: Type-inferring functional programming language descended from the ML family
 dev-lang/orc 0.4.28-r1: The Oil Runtime Compiler, a just-in-time compiler for array operations
 dev-lang/perl 5.24.3-r1 5.26.2: Larry Wall's Practical Extraction and Report Language
@@ -10276,7 +10276,7 @@ sys-libs/argp-standalone 1.3-r2: Standalone argp library for use with uclibc
 sys-libs/binutils-libs 2.30-r4: Core binutils libraries (libbfd, libopcodes, libiberty) for external packages
 sys-libs/compiler-rt 4.0.1 5.0.2 6.0.1: Compiler runtime library for clang (built-in part)
 sys-libs/compiler-rt-sanitizers 4.0.1 5.0.2 6.0.1: Compiler runtime libraries for clang (sanitizers & xray)
-sys-libs/cracklib 2.9.6-r1: Password Checking Library
+sys-libs/cracklib 2.9.6-r2: Password Checking Library
 sys-libs/db 1.85-r3 3.2.9_p2 4.2.52_p5-r1 4.3.29_p1-r1 4.5.20_p2-r1 4.6.21_p4 4.7.25_p4 4.8.30-r2 5.3.28-r2: Oracle Berkeley DB
 sys-libs/e2fsprogs-libs 1.43.6 1.43.9 1.44.5: e2fsprogs libraries (common error and subsystem)
 sys-libs/efivar 30 31 37: Tools and library to manipulate EFI variables
