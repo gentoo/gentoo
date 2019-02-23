@@ -45,6 +45,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-1.0.47-MAX_DATA_SIZE.patch"
 	"${FILESDIR}/${PN}-1.0.47-TLSv1.3.patch"
 	"${FILESDIR}/${PN}-1.0.47-disable-TLSv1.3.patch"
+	"${FILESDIR}/${PN}-1.0.47-disable-TLSv1.1.patch"
 )
 
 src_configure() {
