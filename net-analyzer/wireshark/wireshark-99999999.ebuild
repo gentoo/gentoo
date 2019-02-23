@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,10 +13,11 @@ LICENSE="GPL-2"
 SLOT="0/${PV}"
 KEYWORDS=""
 IUSE="
-	adns androiddump bcg729 +capinfos +captype ciscodump +dftest doc +dumpcap
-	+editcap kerberos libxml2 lua lz4 maxminddb +mergecap +netlink nghttp2
-	+pcap +qt5 +randpkt +randpktdump +reordercap sbc selinux +sharkd smi snappy
-	spandsp sshdump ssl +text2pcap tfshark +tshark +udpdump zlib
+	adns androiddump bcg729 +capinfos +captype ciscodump +dftest doc dpauxmon
+	+dumpcap +editcap kerberos libxml2 lua lz4 maxminddb +mergecap +netlink
+	nghttp2 +pcap +qt5 +randpkt +randpktdump +reordercap sbc selinux +sharkd
+	smi snappy spandsp sshdump ssl sdjournal +text2pcap tfshark +tshark
+	+udpdump zlib
 "
 
 S=${WORKDIR}/${P/_/}
@@ -45,6 +46,7 @@ CDEPEND="
 		x11-misc/xdg-utils
 	)
 	sbc? ( media-libs/sbc )
+	sdjournal? ( sys-apps/systemd )
 	smi? ( net-libs/libsmi )
 	snappy? ( app-arch/snappy )
 	spandsp? ( media-libs/spandsp )
@@ -76,7 +78,9 @@ RDEPEND="
 	qt5? ( virtual/freedesktop-icon-theme )
 	selinux? ( sec-policy/selinux-wireshark )
 "
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+REQUIRED_USE="
+	${PYTHON_REQUIRED_USE}
+"
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.4-androiddump.patch
 	"${FILESDIR}"/${PN}-2.6.0-redhat.patch
@@ -124,6 +128,7 @@ src_configure() {
 		-DBUILD_captype=$(usex captype)
 		-DBUILD_ciscodump=$(usex ciscodump)
 		-DBUILD_dftest=$(usex dftest)
+		-DBUILD_dpauxmon=$(usex dpauxmon)
 		-DBUILD_dumpcap=$(usex dumpcap)
 		-DBUILD_editcap=$(usex editcap)
 		-DBUILD_mergecap=$(usex mergecap)
@@ -131,6 +136,7 @@ src_configure() {
 		-DBUILD_randpkt=$(usex randpkt)
 		-DBUILD_randpktdump=$(usex randpktdump)
 		-DBUILD_reordercap=$(usex reordercap)
+		-DBUILD_sdjournal=$(usex sdjournal)
 		-DBUILD_sharkd=$(usex sharkd)
 		-DBUILD_sshdump=$(usex sshdump)
 		-DBUILD_text2pcap=$(usex text2pcap)
@@ -158,6 +164,11 @@ src_configure() {
 	)
 
 	cmake-utils_src_configure
+}
+
+src_test() {
+	emake -C "${BUILD_DIR}" test-programs
+	emake -C "${BUILD_DIR}" test
 }
 
 src_install() {
