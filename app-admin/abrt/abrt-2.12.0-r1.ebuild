@@ -64,7 +64,7 @@ src_prepare() {
 	# Install under proper directory
 	sed -i -e 's:dbusabrtdocdir = ${datadir}/doc/abrt-dbus-${VERSION}/html:dbusabrtdocdir = ${datadir}/doc/${PF}/html:' doc/problems-service/Makefile.am || die
 
-	# Ensure this works for systemd with and without /usr merge
+	# Ensure this works for systems with and without /usr merge
 	sed -i -e "s:/usr/bin/bash:$(which bash):" init-scripts/abrtd.service || die
 
 	# pyhook test is sensitive to the format of python's error messages, and
