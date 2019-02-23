@@ -60,7 +60,6 @@ multilib_src_configure() {
 		-DCMAKE_SKIP_RPATH=True
 		-DBUILD_CUBE=$(usex cube)
 		-DBUILD_VULKANINFO=$(usex vulkaninfo)
-		-DBUILD_WSI_MIR_SUPPORT=False
 		-DBUILD_WSI_WAYLAND_SUPPORT=$(usex wayland)
 		-DBUILD_WSI_XCB_SUPPORT=$(usex X)
 		-DBUILD_WSI_XLIB_SUPPORT=$(usex X)
@@ -76,7 +75,6 @@ multilib_src_configure() {
 	if use X; then
 		mycmakeargs+=(
 			-DCUBE_WSI_SELECTION="XCB"
-			-DVULKANINFO_WSI_SELECTION="XCB"
 		)
 	fi
 
