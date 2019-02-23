@@ -159,7 +159,7 @@ src_configure() {
 	# graphviz are detected. pandoc has loads of dependencies anyway.
 
 	(
-		unset JAVA JAVAC XARGS
+		unset _JAVA_OPTIONS JAVA JAVAC XARGS
 		CFLAGS= CXXFLAGS= LDFLAGS= \
 		CONFIG_SITE=/dev/null \
 		econf \

@@ -123,7 +123,6 @@ pkg_setup() {
 		JDK_HOME=${JDK_HOME#*/}
 		JDK_HOME=${EPREFIX}/opt/${JDK_HOME%-r*}
 		export JDK_HOME
-		unset _JAVA_OPTIONS
 	fi
 }
 
@@ -172,7 +171,7 @@ src_configure() {
 	fi
 
 	(
-		unset JAVA JAVAC XARGS
+		unset _JAVA_OPTIONS JAVA JAVAC XARGS
 		CFLAGS= CXXFLAGS= LDFLAGS= \
 		CONFIG_SITE=/dev/null \
 		econf "${myconf[@]}"
