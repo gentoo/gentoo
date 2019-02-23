@@ -97,7 +97,7 @@ PATCHES=(
 	"${WORKDIR}"/${P}-patchset/${PN}-3.0.2-smooth-scrolling.patch
 
 	# https://bugzilla.abisource.com/show_bug.cgi?id=13791
-	"${WORKDIR}"/${P}-patchset/${PN}-3.0.2-fix-flickering.patch	
+	"${WORKDIR}"/${P}-patchset/${PN}-3.0.2-fix-flickering.patch
 
 	# https://github.com/AbiWord/abiword/commit/bdaf0e2da72bdc9d9bb3020445fe7b1b5dd7c062
 	"${WORKDIR}"/${P}-patchset/${PN}-3.0.2-libical3.patch
