@@ -26,7 +26,7 @@ RDEPEND="
 			libressl? ( dev-libs/libressl:0= )
 		)
 	)
-	lm_sensors? ( sys-apps/lm_sensors )
+	lm_sensors? ( sys-apps/lm_sensors:= )
 	nls? ( virtual/libintl )
 	ntlm? ( net-libs/libntlm )
 	X? (
