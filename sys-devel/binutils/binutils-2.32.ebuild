@@ -292,7 +292,8 @@ src_test() {
 	# bug 637066
 	filter-flags -Wall -Wreturn-type
 
-	emake -k check
+	# enable verbose test run and result logging
+	emake -k check RUNTESTFLAGS='-a -v' VERBOSE=1
 }
 
 src_install() {
