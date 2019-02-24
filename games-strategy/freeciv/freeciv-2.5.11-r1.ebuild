@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,9 +19,9 @@ RDEPEND="app-arch/bzip2
 	net-misc/curl
 	sys-libs/zlib
 	auth? (
-		mysql? ( virtual/mysql )
+		mysql? ( dev-db/mysql-connector-c:0= )
 		sqlite? ( dev-db/sqlite:3 )
-		!mysql? ( ( !sqlite? ( virtual/mysql ) ) )
+		!mysql? ( ( !sqlite? ( dev-db/mysql-connector-c:0= ) ) )
 	)
 	readline? ( sys-libs/readline:0= )
 	dedicated? ( aimodules? ( dev-libs/libltdl:0 ) )
