@@ -244,11 +244,6 @@ dev-db/pgadmin3
 ~net-libs/libnsl-0
 ~net-libs/rpcsvc-proto-0
 
-# Matthias Maier <tamiko@gentoo.org> (1 Sep 2018)
-# Mask 0.7.0 and  1.0.1 for the time being until a compatible LLVM version
-# made it into the tree, bug #665192
-~dev-lang/julia-1.0.3
-
 # Bernard Cafarelli <voyageur@gentoo.org> (13 Aug 2018)
 # Beta release with new features, masked for testing
 =app-text/tesseract-4.0.0_beta*
