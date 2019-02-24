@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit xdg-utils eutils python-single-r1 flag-o-matic
+inherit xdg python-single-r1 flag-o-matic
 
 DESCRIPTION="Application to organise documents or references, and to generate BibTeX files"
 HOMEPAGE="https://launchpad.net/referencer"
@@ -13,15 +13,16 @@ SRC_URI="https://launchpad.net/${PN}/1./${PV}/+download/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE=""
 KEYWORDS="~amd64 ~x86"
+IUSE="test"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
 	>=app-text/poppler-0.12.3-r3[cairo]
-	>=dev-cpp/gtkmm-2.8:*
+	>=dev-cpp/gtkmm-2.8:2.4
 	>=dev-cpp/libglademm-2.6.0
 	>=dev-cpp/gconfmm-2.14.0
-	>=dev-libs/boost-1.52.0-r4"
+	>=dev-libs/boost-1.52.0-r4:="
 
 DEPEND="
 	${RDEPEND}
@@ -30,7 +31,10 @@ DEPEND="
 	>=dev-lang/perl-5.8.1
 	dev-perl/libxml-perl
 	dev-util/intltool
-	app-text/rarian"
+	app-text/rarian
+	test? ( app-text/docbook-xml-dtd:4.1.2
+		app-text/docbook-xml-dtd:4.5
+		app-text/scrollkeeper-dtd:1.0 )"
 
 PATCHES=( ${FILESDIR}/${PN}-${PV}-lib_path.patch )
 
@@ -44,14 +48,4 @@ src_configure() {
 	econf \
 		--disable-update-mime-database \
 		--enable-python
-}
-
-pkg_postinst() {
-	xdg_mimeinfo_database_update
-	xdg_desktop_database_update
-}
-
-pkg_postrm() {
-	xdg_mimeinfo_database_update
-	xdg_desktop_database_update
 }
