@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit cmake-utils qmake-utils
 
@@ -15,6 +15,9 @@ KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd
 
 IUSE="botan debug doc examples gcrypt gpg libressl logger nss pkcs11 sasl softstore +ssl test"
 
+BDEPEND="
+	doc? ( app-doc/doxygen )
+"
 RDEPEND="
 	dev-qt/qtcore:5
 	botan? ( dev-libs/botan:= )
@@ -33,7 +36,6 @@ RDEPEND="
 	)
 "
 DEPEND="${RDEPEND}
-	doc? ( app-doc/doxygen )
 	test? (
 		dev-qt/qtnetwork:5
 		dev-qt/qttest:5
