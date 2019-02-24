@@ -134,6 +134,7 @@ PATCHES=(
 	# https://bugzilla.gnome.org/686840, 697478, 700145
 	# Fix some absolute paths to be appropriate for Gentoo
 	"${WORKDIR}"/patches/
+	"${FILESDIR}"/${PV}-without-wayland-fix.patch # Fixes USE=-wayland build against gtk+[wayland]
 )
 
 src_configure() {

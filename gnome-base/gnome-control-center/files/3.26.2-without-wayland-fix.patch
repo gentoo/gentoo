@@ -1,0 +1,30 @@
+From 62f07b2c6d8a28378e1f2c9f5d0c3241332ee8cf Mon Sep 17 00:00:00 2001
+From: Georges Basile Stavracas Neto <georges.stavracas@gmail.com>
+Date: Wed, 17 Jan 2018 20:05:03 -0200
+Subject: [PATCH] common: Don't unconditionally define HAVE_WAYLAND
+
+This header unconditionally defines HAVE_WAYLAND when GTK
+is built with Wayland support. This breaks the build when
+building with Wayland disabled.
+
+https://bugzilla.gnome.org/show_bug.cgi?id=785414
+---
+ panels/common/gnome-settings-bus.h | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/panels/common/gnome-settings-bus.h b/panels/common/gnome-settings-bus.h
+index ce58f5805..763a9cca7 100644
+--- a/panels/common/gnome-settings-bus.h
++++ b/panels/common/gnome-settings-bus.h
+@@ -5,8 +5,6 @@
+ 
+ #ifdef GDK_WINDOWING_WAYLAND
+ 
+-#define HAVE_WAYLAND 1
+-
+ static inline gboolean
+ gnome_settings_is_wayland (void)
+ {
+-- 
+2.17.0
+
