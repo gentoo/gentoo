@@ -143,7 +143,7 @@ src_configure() {
 		release-debuginfo = $(toml_usex debug)
 		assertions = $(toml_usex debug)
 		targets = "${LLVM_TARGETS// /;}"
-		experimental-targets = ""
+		experimental-targets = "$(usex wasm WebAssembly '')"
 		link-shared = $(toml_usex system-llvm)
 		[build]
 		build = "${rust_target}"
