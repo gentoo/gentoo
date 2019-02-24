@@ -109,7 +109,10 @@ xindy
 mpi
 lasi
 hardened
-frei0r
+# Roy Bamford <neddyseagoon@gentoo.org. (23 Feb 2019)
+# media-plugins/frei0r-plugins-1.6.1  builds on the Packet box
+#  and KDE woud like it.
+#frei0r
 pdfannotextractor
 prelude
 mssql
@@ -152,7 +155,9 @@ fits
 tokyocabinet
 rtmp
 vpx
-plotutils
+# Roy Bamford <neddyseagoon@gentoo.org. (23 Feb 2019)
+# unmask sdl for KDE
+#plotutils
 lpsol
 upnp
 quvi
