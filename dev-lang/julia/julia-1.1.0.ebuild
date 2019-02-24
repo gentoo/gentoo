@@ -27,7 +27,7 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND+="
@@ -61,6 +61,7 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.1.0-fix_build_system.patch
+	"${FILESDIR}"/${PN}-1.1.0-fix_llvm_install.patch
 )
 
 S="${WORKDIR}/${PN}-${MY_PV}"
