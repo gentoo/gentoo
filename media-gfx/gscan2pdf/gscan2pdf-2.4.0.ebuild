@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,24 +14,21 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 # OCR tests fail with tesseract[opencl], not fixed by addpredict
-# and others on Wayland and the console
 RESTRICT="test"
 
 RDEPEND="
 	dev-perl/Config-General
-	dev-perl/Date-Calc
 	dev-perl/Data-UUID
+	dev-perl/Date-Calc
 	dev-perl/Filesys-Df
 	dev-perl/glib-perl
-	dev-perl/Goo-Canvas
-	dev-perl/Gtk2-Ex-PodViewer
-	dev-perl/Gtk2-Ex-Simple-List
-	dev-perl/Gtk2-ImageView
-	dev-perl/Gtk2
+	dev-perl/GooCanvas2
+	dev-perl/Gtk3
+	dev-perl/Gtk3-SimpleList
 	dev-perl/HTML-Parser
 	dev-perl/Image-Sane
-	dev-perl/Locale-gettext
 	dev-perl/List-MoreUtils
+	dev-perl/Locale-gettext
 	dev-perl/Log-Log4perl
 	dev-perl/PDF-API2
 	dev-perl/Proc-ProcessTable
@@ -45,7 +42,6 @@ RDEPEND="
 	virtual/perl-Getopt-Long
 	virtual/perl-threads
 	virtual/perl-threads-shared
-	media-gfx/gtkimageview
 	media-gfx/imagemagick[png,tiff,perl]
 	media-gfx/sane-backends
 	media-libs/tiff"

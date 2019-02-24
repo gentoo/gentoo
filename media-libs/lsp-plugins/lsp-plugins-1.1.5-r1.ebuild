@@ -20,12 +20,12 @@ DEPEND="
 	doc? ( dev-lang/php:* )
 	jack? (
 		virtual/jack
-		x11-libs/cairo
+		x11-libs/cairo[X]
 	)
 	ladspa? ( media-libs/ladspa-sdk )
 	lv2? (
 		media-libs/lv2
-		x11-libs/cairo
+		x11-libs/cairo[X]
 	)
 "
 RDEPEND="${DEPEND}"
