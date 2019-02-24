@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas K. Huettel <dilfridge@gentoo.org> (23 Feb 2019)
+# Fails to build with glibc-2.28, bug 669206.
+# Removal in 30 days.
+app-arch/freeze
+
 # Michał Górny <mgorny@gentoo.org> (13 Feb 2019)
 # Release candidate, masked for testing.
 =sys-devel/llvm-common-8.0.0_rc*
