@@ -1,6 +1,30 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Roy Bamford <neddyseagoon@gentoo.org> (24 Feb 19)
+# sdl is in use.mask and lots of things remain untested with USE=sdl
+# list packages here that have been tested.
+app-emulation/qemu -sdl
+dev-libs/zziplib -sdl
+media-libs/libmpeg2 -sdl
+media-libs/mediastreamer -sdl
+media-libs/mlt -sdl
+media-libs/openal -sdl
+media-sound/mpg123 -sdl
+media-video/ffmpeg -sdl
+media-video/mplayer -sdl
+media-video/mpv -sdl
+media-video/transcode -sdl
+media-video/vlc -sdl
+net-libs/libvncserver -sdl
+virtual/ffmpeg -sdl
+>=x11-libs/wxGTK-3 -sdl
+
+# Roy Bamford <neddyseagoon@gentoo.org> (24 Feb 19)
+# kde-apps/cantor lua means luajit which needs luajit-2.1.0_beta3 for arm64
+# It builds OK but is not yet in ::gentoo. bug #678404
+kde-apps/cantor lua
+
 # Mart Raudsepp <leio@gentoo.org> (23 Feb 2019)
 # app-text/gspell not keyworded yet
 app-text/evince spell
