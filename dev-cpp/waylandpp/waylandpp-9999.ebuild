@@ -23,7 +23,7 @@ fi
 RDEPEND="
 	>=dev-libs/wayland-1.11.0
 	media-libs/mesa[wayland]
-	>=dev-libs/pugixml-1.4
+	>=dev-libs/pugixml-1.9-r1
 "
 DEPEND="${RDEPEND}
 	doc? (

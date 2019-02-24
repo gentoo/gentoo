@@ -1,16 +1,16 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit cmake-utils versionator
+inherit cmake-utils
 
 DESCRIPTION="Wayland C++ bindings"
 HOMEPAGE="https://github.com/NilsBrause/waylandpp"
 
 LICENSE="MIT"
 IUSE="doc"
-SLOT="0/$(get_version_component_range 1-2)"
+SLOT="0/$(ver_cut 1-2)"
 
 if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/NilsBrause/waylandpp.git"
@@ -23,6 +23,7 @@ fi
 RDEPEND="
 	>=dev-libs/wayland-1.11.0
 	media-libs/mesa[wayland]
+	>=dev-libs/pugixml-1.9-r1
 "
 DEPEND="${RDEPEND}
 	doc? (

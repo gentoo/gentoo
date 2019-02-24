@@ -34,8 +34,8 @@ DEPEND="
 	net-misc/curl
 	sys-libs/zlib
 	auth? (
-		!mysql? ( ( !sqlite? ( virtual/mysql ) ) )
-		mysql? ( virtual/mysql )
+		!mysql? ( ( !sqlite? ( dev-db/mysql-connector-c:0= ) ) )
+		mysql? ( dev-db/mysql-connector-c:0= )
 		sqlite? ( dev-db/sqlite:3 )
 	)
 	dedicated? ( aimodules? ( dev-libs/libltdl:0 ) )
