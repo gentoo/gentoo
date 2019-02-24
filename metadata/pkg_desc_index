@@ -173,7 +173,6 @@ app-arch/dump 0.4.46: Dump/restore ext2fs backup utilities
 app-arch/engrampa 1.18.3: Engrampa archive manager for MATE
 app-arch/fastjar 0.98-r2: A jar program written in C
 app-arch/file-roller 3.26.2: Archive manager for GNOME
-app-arch/freeze 2.5.0-r1: Freeze/unfreeze compression program
 app-arch/funzix 1.0: unpacker for the bogus ZIX format
 app-arch/gcab 0.8: Library and tool for working with Microsoft Cabinet (CAB) files
 app-arch/gnome-autoar 0.2.2: Automatic archives creating and extracting library
@@ -7096,7 +7095,7 @@ mail-client/thunderbird 60.5.1: Thunderbird Mail Client
 mail-client/thunderbird-bin 60.5.1: Thunderbird Mail Client
 mail-client/trojita 0.7-r2: A Qt IMAP e-mail client
 mail-filter/amavisd-milter 1.5.0 1.5.0-r1: sendmail milter for amavisd-new
-mail-filter/amavisd-new 2.11.0-r3 2.11.1-r3: High-performance interface between the MTA and content checkers
+mail-filter/amavisd-new 2.11.1-r3: High-performance interface between the MTA and content checkers
 mail-filter/bmf 0.9.4-r2: A fast and small Bayesian spam filter
 mail-filter/bogofilter 1.2.4-r2: Bayesian spam filter designed with fast algorithms, and tuned for speed
 mail-filter/clamassassin 1.2.4: Simple spamassassin-like script for virus scanning and filtering e-mail messages

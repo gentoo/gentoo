@@ -1,0 +1,13 @@
+BDEPEND=>=dev-vcs/git-1.8.2.1[curl]
+DEFINED_PHASES=compile install unpack
+DEPEND=dev-libs/expat media-libs/libsndfile doc? ( dev-lang/php:* ) jack? ( virtual/jack x11-libs/cairo ) ladspa? ( media-libs/ladspa-sdk ) lv2? ( media-libs/lv2 x11-libs/cairo )
+DESCRIPTION=Linux Studio Plugins
+EAPI=7
+HOMEPAGE=https://lsp-plug.in
+IUSE=doc jack ladspa +lv2
+LICENSE=LGPL-3
+RDEPEND=dev-libs/expat media-libs/libsndfile doc? ( dev-lang/php:* ) jack? ( virtual/jack x11-libs/cairo ) ladspa? ( media-libs/ladspa-sdk ) lv2? ( media-libs/lv2 x11-libs/cairo )
+REQUIRED_USE=|| ( jack ladspa lv2 )
+SLOT=0
+_eclasses_=git-r3	0d4635eeb5a96cd5315597a47eba25c9
+_md5_=56c5151e944c8cdba1871ec1027f5699
