@@ -1,13 +1,12 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-
 USE_RUBY="ruby22 ruby23 ruby24 ruby25"
 
 inherit ruby-single
 
-DOCBOOKDIR="/usr/share/sgml/${PN/-//}"
+DOCBOOKDIR="${EPREFIX}/usr/share/sgml/${PN/-//}"
 MY_PN="${PN%-stylesheets}"
 MY_P="${MY_PN}-${PV}"
 
@@ -20,8 +19,10 @@ SLOT="0"
 KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~ppc-aix ~x64-cygwin ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="ruby"
 
-RDEPEND=">=app-text/build-docbook-catalog-1.1
-	ruby? ( ${RUBY_DEPS} )"
+RDEPEND="
+	>=app-text/build-docbook-catalog-1.1
+	ruby? ( ${RUBY_DEPS} )
+"
 
 S="${WORKDIR}/${MY_P}"
 
@@ -42,7 +43,7 @@ src_prepare() {
 		 -printf "removed %p\n" -delete || die
 
 	if ! use ruby; then
-	   rm -rv epub/ || die
+		rm -rv epub/ || die
 	fi
 }
 
@@ -83,12 +84,12 @@ src_install() {
 		# we can't use a symlink or it'll look for the library in the
 		# wrong path.
 		dodir /usr/bin
-		cat - > "${D}"/usr/bin/${cmd} <<EOF
+		cat - > "${D}"${EPREFIX}/usr/bin/${cmd} <<EOF
 #!/usr/bin/env ruby
 
 load "${DOCBOOKDIR}/epub/bin/dbtoepub"
 EOF
-		fperms 0755 /usr/bin/${cmd}
+		fperms 0755 ${EPREFIX}/usr/bin/${cmd}
 	fi
 }
 
