@@ -1731,7 +1731,8 @@ gcc_do_make() {
 toolchain_src_test() {
 	if use ${GCC_EBUILD_TEST_FLAG} ; then
 		cd "${WORKDIR}"/build
-		emake -k check
+		# enable verbose test run and result logging
+		emake -k check RUNTESTFLAGS='-a -v'
 	fi
 }
 
