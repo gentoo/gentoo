@@ -132,6 +132,7 @@ PATCHES=(
 	# https://bugzilla.gnome.org/686840, 697478, 700145
 	# Fix some absolute paths to be appropriate for Gentoo
 	"${WORKDIR}"/patches/
+	"${FILESDIR}"/${PV}-without-wayland-fix.patch # Fixes USE=-wayland build against gtk+[wayland]
 	"${FILESDIR}"/${PV}-goa-lifecycle.patch # extra patch from gnome-3-26
 	"${FILESDIR}"/${PV}-gnome-desktop-3-28-compat.patch # backport of porting to gnome-desktop-3.28 API changes
 )
