@@ -1,6 +1,34 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+
+# Roy Bamford <neddyseagoon@gentoo.org> (24 Feb 19)
+# sdl is in use.mask and lots of things remain untested with USE=sdl
+# list packages here that have been tested.
+# Everything from  arm64-build /var/db/pkg # grep sdl */*/IUSE
+
+app-emulation/qemu -sdl
+dev-libs/zziplib -sdl
+media-libs/libmpeg2 -sdl
+media-libs/mediastreamer -sdl
+media-libs/mlt -sdl
+media-libs/openal -sdl
+media-sound/mpg123 -sdl
+media-video/ffmpeg -sdl
+media-video/mplayer -sdl
+media-video/mpv -sdl
+media-video/transcode -sdl
+media-video/vlc -sdl
+net-libs/libvncserver -sdl
+virtual/ffmpeg -sdl
+>x11-libs/wxGTK-3 -sdl 
+
+
+# Roy Bamford <neddyseagoon@gentoo.org> (21 Feb 19)
+# app-text/discount lua means luajit which need luajit-2.1.0_beta3 for arm64
+# It builds OK but is not yet in ::gentoo. bug #678404
+app-text/discount lua
+
 # Mikle Kolyada <zlogene@gentoo.org> (12 Feb 2019)
 # net-libs/libotr is not keyworded
 net-irc/irssi otr
