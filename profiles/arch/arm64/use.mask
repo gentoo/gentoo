@@ -109,7 +109,6 @@ xindy
 mpi
 lasi
 hardened
-frei0r
 pdfannotextractor
 prelude
 mssql
@@ -152,7 +151,6 @@ fits
 tokyocabinet
 rtmp
 vpx
-plotutils
 lpsol
 upnp
 quvi
