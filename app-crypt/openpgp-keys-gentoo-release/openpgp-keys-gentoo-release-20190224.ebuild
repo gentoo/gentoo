@@ -6,7 +6,7 @@ EAPI=6
 DESCRIPTION="OpenPGP keys used for Gentoo releases (snapshots, stages)"
 HOMEPAGE="https://www.gentoo.org/downloads/signatures/"
 SRC_URI="https://dev.gentoo.org/~mgorny/dist/openpgp-keys/gentoo-release.asc.${PV}.gz
-	test? ( https://dev.gentoo.org/~mgorny/dist/openpgp-keys/gentoo-release-test-sigs-20180706.tar.gz )"
+	test? ( https://dev.gentoo.org/~mgorny/dist/openpgp-keys/gentoo-release-test-sigs-20190224.tar.gz )"
 
 LICENSE="public-domain"
 SLOT="0"
