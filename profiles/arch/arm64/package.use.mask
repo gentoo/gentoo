@@ -25,9 +25,9 @@ virtual/ffmpeg -sdl
 
 
 # Roy Bamford <neddyseagoon@gentoo.org> (21 Feb 19)
-# app-text/discount lua means luajit which need luajit-2.1.0_beta3 for arm64
+# kde-apps/cantor lua means luajit which need luajit-2.1.0_beta3 for arm64
 # It builds OK but is not yet in ::gentoo. bug #678404
-app-text/discount lua
+kde-apps/cantor lua 
 
 # Mikle Kolyada <zlogene@gentoo.org> (12 Feb 2019)
 # net-libs/libotr is not keyworded
