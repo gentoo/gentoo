@@ -4,7 +4,6 @@
 EAPI=6
 GNOME2_LA_PUNT="yes"
 VALA_USE_DEPEND="vapigen"
-VALA_MAX_API_VERSION="0.40"
 
 inherit gnome2 vala virtualx
 
@@ -56,6 +55,10 @@ DEPEND="${COMMON_DEPEND}
 			>=gnome-extra/evolution-data-server-3.9.1
 			>=dev-libs/glib-2.40:2 ) )
 "
+
+PATCHES=(
+	"${FILESDIR}"/${PV}-vala-0.42-compat.patch
+)
 
 src_prepare() {
 	# Force re-generation of introspection files, otherwise it does not match installed libs
