@@ -2,3 +2,4 @@ move dev-libs/sway gui-wm/sway
 move dev-libs/swayidle gui-apps/swayidle
 move dev-libs/swaylock gui-apps/swaylock
 move dev-libs/wlroots gui-libs/wlroots
+move dev-libs/wl-clipboard gui-apps/wl-clipboard
