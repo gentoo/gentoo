@@ -4,7 +4,6 @@
 EAPI="6"
 PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6,3_7} )
 VALA_MIN_API_VERSION="0.34"
-VALA_MAX_API_VERSION="0.36"
 VALA_USE_DEPEND="vapigen"
 
 inherit autotools bash-completion-r1 gnome2-utils python-r1 vala virtualx xdg-utils
@@ -74,7 +73,10 @@ DEPEND="${CDEPEND}
 	nls? ( sys-devel/gettext )
 	unicode? ( app-i18n/unicode-data )"
 
-PATCHES=( "${FILESDIR}"/${P}-gdk-wayland.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-gdk-wayland.patch
+	"${FILESDIR}"/${P}-vala-0.43.4.patch
+)
 
 src_prepare() {
 	vala_src_prepare --ignore-use
