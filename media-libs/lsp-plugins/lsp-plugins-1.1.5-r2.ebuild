@@ -45,8 +45,8 @@ src_compile(){
 }
 
 src_install(){
-	use doc && emake PREFIX="/usr" DESTDIR="${D}" install_doc
-	use jack && emake PREFIX="/usr" DESTDIR="${D}" install_jack
-	use ladspa && emake PREFIX="/usr" DESTDIR="${D}" install_ladspa
-	use lv2 && emake PREFIX="/usr" DESTDIR="${D}" install_lv2
+	use doc && emake PREFIX="/usr" DESTDIR="${D}" LIB_PATH="/usr/$(get_libdir)" install_doc
+	use jack && emake PREFIX="/usr" DESTDIR="${D}" LIB_PATH="/usr/$(get_libdir)" install_jack
+	use ladspa && emake PREFIX="/usr" DESTDIR="${D}" LIB_PATH="/usr/$(get_libdir)" install_ladspa
+	use lv2 && emake PREFIX="/usr" DESTDIR="${D}" LIB_PATH="/usr/$(get_libdir)" install_lv2
 }
