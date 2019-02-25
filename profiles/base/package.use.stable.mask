@@ -30,8 +30,8 @@ sys-devel/clang-runtime crt
 net-analyzer/wireshark doc
 
 # Andreas Sturmlechner <asturm@gentoo.org> (29 May 2018)
-# Depends on unstable media-libs/libaom, net-libs/srt
-media-video/vlc aom srt
+# Depends on unstable media-libs/libaom, media-libs/dav1d, net-libs/srt
+media-video/vlc aom dav1d srt
 
 # Andreas Sturmlechner <asturm@gentoo.org> (21 May 2018)
 # Depends on lots of unstable dependencies
