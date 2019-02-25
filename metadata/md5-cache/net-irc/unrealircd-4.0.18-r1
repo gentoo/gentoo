@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=dev-libs/openssl:0= dev-libs/libpcre2 dev-libs/tre >=net-dns/c-ares-1.7:= sys-libs/zlib curl? ( net-misc/curl[adns] )
 SLOT=0
 SRC_URI=https://www.unrealircd.org/unrealircd4/unrealircd-4.0.18.tar.gz
-_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	ssl-cert	a1a4daed6b2479901759d6fe367c4c29	user	8bc2845510e2109af75e3eeac607ec81	versionator	2352c3fc97241f6a02042773c8287748
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	ssl-cert	a1a4daed6b2479901759d6fe367c4c29	user	8bd74731cafdcdad8f7a63637302e073	versionator	2352c3fc97241f6a02042773c8287748
 _md5_=87122920725bfe34495412351461fe43
