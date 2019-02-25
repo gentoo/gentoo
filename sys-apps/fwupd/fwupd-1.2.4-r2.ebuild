@@ -12,17 +12,16 @@ HOMEPAGE="https://fwupd.org"
 SRC_URI="https://github.com/hughsie/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1+"
-
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="colorhug dell doc +gpg +man nvme pkcs7 redfish systemd test thunderbolt uefi"
-REQUIRED_USE="
-	${PYTHON_REQUIRED_USE}
+IUSE="colorhug dell doc elogind +gpg +man nvme pkcs7 redfish systemd test thunderbolt uefi"
+
+REQUIRED_USE="${PYTHON_REQUIRED_USE}
+	?? ( elogind systemd )
 	dell? ( uefi )
 "
 
-RDEPEND="
-	${PYTHON_DEPS}
+RDEPEND="${PYTHON_DEPS}
 	app-arch/gcab
 	app-arch/libarchive:=
 	dev-db/sqlite
@@ -49,11 +48,12 @@ RDEPEND="
 	)
 	nvme? ( sys-libs/efivar )
 	pkcs7? ( >=net-libs/gnutls-3.4.4.1:= )
-	redfish? (
-		sys-libs/efivar
+	redfish? ( sys-libs/efivar )
+	!systemd? (
+		!elogind? ( >=sys-auth/consolekit-1.0.0 )
+		elogind? ( sys-auth/elogind )
 	)
 	systemd? ( >=sys-apps/systemd-211 )
-	!systemd? ( >=sys-auth/consolekit-1.0.0 )
 	thunderbolt? ( sys-apps/thunderbolt-software-user-space )
 	uefi? (
 		media-libs/fontconfig
@@ -63,24 +63,24 @@ RDEPEND="
 		x11-libs/cairo
 	)
 "
-DEPEND="
-	${RDEPEND}
+DEPEND="${RDEPEND}
 	$(vala_depend)
 	x11-libs/pango[introspection]
-	doc? ( dev-util/gtk-doc )
-	man? ( app-text/docbook-sgml-utils )
 	nvme? (	>=sys-kernel/linux-headers-4.4 )
 	test? ( net-libs/gnutls[tools] )
 "
-
 BDEPEND="
 	>=dev-util/meson-0.47.0
 	virtual/pkgconfig
+	doc? ( dev-util/gtk-doc )
+	man? ( app-text/docbook-sgml-utils )
 "
 
 # required for fwupd daemon to run.
 # NOT a build time dependency. The build system does not check for dbus.
 PDEPEND="sys-apps/dbus"
+
+PATCHES=( "${FILESDIR}/${P}-elogind.patch" ) # bug 668522
 
 src_prepare() {
 	default
@@ -95,9 +95,9 @@ src_configure() {
 	xdg_environment_reset
 	local emesonargs=(
 		--localstatedir "${EPREFIX}"/var
-		-Dconsolekit="$(usex systemd false true)"
-		-Dgpg="$(usex gpg true false)"
 		-Dgtkdoc="$(usex doc true false)"
+		-Delogind="$(usex elogind true false)"
+		-Dgpg="$(usex gpg true false)"
 		-Dman="$(usex man true false)"
 		-Dpkcs7="$(usex pkcs7 true false)"
 		-Dplugin_dell="$(usex dell true false)"
@@ -109,6 +109,7 @@ src_configure() {
 		-Dsystemd="$(usex systemd true false)"
 		-Dtests="$(usex test true false)"
 	)
+	use elogind || use systemd || emesonargs+=( -Dconsolekit=true )
 	meson_src_configure
 }
 
@@ -116,7 +117,7 @@ src_install() {
 	meson_src_install
 	doinitd "${FILESDIR}"/${PN}
 
-	if ! use systemd ; then
+	if ! use systemd && ! use elogind ; then
 		# Don't timeout when fwupd is running (#673140)
 		sed '/^IdleTimeout=/s@=[[:digit:]]\+@=0@' \
 			-i "${ED}"/etc/${PN}/daemon.conf || die
