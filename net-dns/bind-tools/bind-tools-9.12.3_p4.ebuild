@@ -17,21 +17,35 @@ SRC_URI="https://www.isc.org/downloads/file/${MY_P}/?version=tar-gz -> ${MY_PN}-
 LICENSE="Apache-2.0 BSD BSD-2 GPL-2 HPND ISC MPL-2.0"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="doc gost gssapi idn ipv6 libressl readline seccomp ssl urandom xml"
+IUSE="doc gost gssapi idn ipv6 libedit libidn2 libressl readline seccomp ssl urandom xml"
 # no PKCS11 currently as it requires OpenSSL to be patched, also see bug 409687
 
-REQUIRED_USE="gost? ( !libressl ssl )"
+REQUIRED_USE="gost? ( !libressl ssl )
+	idn? ( !libidn2 )
+	libidn2? ( !idn )"
 
 CDEPEND="
 	ssl? (
 		!libressl? ( dev-libs/openssl:0= )
 		libressl? ( dev-libs/libressl:0= )
 	)
-	gost? ( >=dev-libs/openssl-1.0.0:0=[-bindist] )
+	gost? (
+		|| (
+			=dev-libs/openssl-1.0*[-bindist]
+			(
+				>=dev-libs/openssl-1.1
+				dev-libs/gost-engine
+			)
+		)
+	)
 	xml? ( dev-libs/libxml2 )
 	idn? ( <net-dns/idnkit-2:= )
+	libidn2? ( net-dns/libidn2:= )
 	gssapi? ( virtual/krb5 )
-	readline? ( sys-libs/readline:0= )
+	libedit? ( dev-libs/libedit )
+	!libedit? (
+		readline? ( sys-libs/readline:0= )
+	)
 	seccomp? ( sys-libs/libseccomp )"
 DEPEND="${CDEPEND}
 	virtual/pkgconfig"
@@ -42,10 +56,6 @@ S="${WORKDIR}/${MY_P}"
 
 # bug 479092, requires networking
 RESTRICT="test"
-
-PATCHES=(
-	"${FILESDIR}"/${PN}-9.5.0_p1-lwconfig.patch #231247
-)
 
 src_prepare() {
 	default
@@ -63,17 +73,17 @@ src_prepare() {
 
 src_configure() {
 	local myeconfargs=(
-		--localstatedir=/var
+		--localstatedir="${EPREFIX}"/var
 		--without-python
 		--without-libjson
 		--without-zlib
 		--without-lmdb
-		--disable-openssl-version-check
 		$(use_enable ipv6)
-		$(use_with idn)
+		$(use_with idn idnkit)
 		$(usex idn --with-idnlib=-lidnkit '')
+		$(use_with libidn2)
 		$(use_enable seccomp)
-		$(use_with ssl openssl)
+		$(use_with ssl openssl "${EPREFIX}"/usr)
 		$(use_with xml libxml2)
 		$(use_with gssapi)
 		$(use_with readline)
@@ -84,6 +94,15 @@ src_configure() {
 		myeconfargs+=( --with-randomdev=/dev/urandom )
 	else
 		myeconfargs+=( --with-randomdev=/dev/random )
+	fi
+
+	# bug 607400
+	if use libedit ; then
+		myeconfargs+=( --with-readline=-ledit )
+	elif use readline ; then
+		myeconfargs+=( --with-readline=-lreadline )
+	else
+		myeconfargs+=( --without-readline )
 	fi
 
 	# bug 344029
@@ -128,7 +147,7 @@ src_install() {
 
 	cd "${S}"/bin/dnssec || die
 	for tool in dsfromkey importkey keyfromlabel keygen \
-	  revoke settime signzone verify; do
+		revoke settime signzone verify; do
 		dobin dnssec-"${tool}"
 		doman dnssec-"${tool}".8
 		if use doc; then

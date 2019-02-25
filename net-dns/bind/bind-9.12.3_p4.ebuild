@@ -24,8 +24,6 @@ SDB_LDAP_VER="1.1.0-fc14"
 
 RRL_PV="${MY_PV}"
 
-NSLINT_DIR="contrib/nslint-3.0a2/"
-
 # SDB-LDAP: http://bind9-ldap.bayour.com/
 
 DESCRIPTION="BIND - Berkeley Internet Name Domain - Name Server"
@@ -38,15 +36,16 @@ SRC_URI="https://www.isc.org/downloads/file/${MY_P}/?version=tar-gz -> ${P}.tar.
 
 LICENSE="Apache-2.0 BSD BSD-2 GPL-2 HPND ISC MPL-2.0"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 # -berkdb by default re bug 602682
-IUSE="-berkdb +caps dlz dnstap doc filter-aaaa fixed-rrset geoip gost gssapi idn ipv6
+IUSE="-berkdb +caps dlz dnstap doc dnsrps fixed-rrset geoip gost gssapi ipv6
 json ldap libressl lmdb mysql odbc postgres python rpz seccomp selinux ssl static-libs
 +threads urandom xml +zlib"
 # sdb-ldap - patch broken
 # no PKCS11 currently as it requires OpenSSL to be patched, also see bug 409687
 
-REQUIRED_USE="postgres? ( dlz )
+REQUIRED_USE="
+	postgres? ( dlz )
 	berkdb? ( dlz )
 	mysql? ( dlz !threads )
 	odbc? ( dlz )
@@ -62,16 +61,23 @@ DEPEND="
 		!libressl? ( dev-libs/openssl:0[-bindist] )
 		libressl? ( dev-libs/libressl )
 	)
-	mysql? ( >=virtual/mysql-4.0 )
+	mysql? ( dev-db/mysql-connector-c:0= )
 	odbc? ( >=dev-db/unixODBC-2.2.6 )
 	ldap? ( net-nds/openldap )
-	idn? ( net-dns/idnkit )
 	postgres? ( dev-db/postgresql:= )
 	caps? ( >=sys-libs/libcap-2.1.0 )
 	xml? ( dev-libs/libxml2 )
 	geoip? ( >=dev-libs/geoip-1.4.6 )
 	gssapi? ( virtual/krb5 )
-	gost? ( >=dev-libs/openssl-1.0.0:0[-bindist] )
+	gost? (
+		|| (
+			=dev-libs/openssl-1.0*[-bindist]
+			(
+				>=dev-libs/openssl-1.1
+				dev-libs/gost-engine
+			)
+		)
+	)
 	seccomp? ( sys-libs/libseccomp )
 	json? ( dev-libs/json-c:= )
 	lmdb? ( dev-db/lmdb )
@@ -143,7 +149,8 @@ src_configure() {
 		--enable-full-report
 		--without-readline
 		$(use_enable caps linux-caps)
-		$(use_enable filter-aaaa)
+		$(use_enable dnsrps)
+		$(use_enable dnstap)
 		$(use_enable fixed-rrset)
 		$(use_enable ipv6)
 		$(use_enable rpz rpz-nsdname)
@@ -157,7 +164,6 @@ src_configure() {
 		$(use_with dlz dlz-stub)
 		$(use_with gost)
 		$(use_with gssapi)
-		$(use_with idn)
 		$(use_with json libjson)
 		$(use_with ldap dlz-ldap)
 		$(use_with mysql dlz-mysql)
@@ -196,10 +202,6 @@ src_install() {
 	emake DESTDIR="${D}" install
 
 	dodoc CHANGES README
-
-	if use idn; then
-		dodoc contrib/idn/README.idnkit
-	fi
 
 	if use doc; then
 		dodoc doc/arm/Bv9ARM.pdf
