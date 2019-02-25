@@ -1,0 +1,140 @@
+--- a/src/cmds/pbsnodes.c	2015-03-17 16:43:36.000000000 -0400
++++ b/src/cmds/pbsnodes.c	2019-02-25 12:33:37.824638386 -0500
+@@ -693,7 +693,7 @@
+         /* -N n is the same as -N ""  -- it clears the note */
+ 
+         if (!strcmp(note, "n"))
+-          *note = '\0';
++          *note = NULL;
+ 
+         if (strlen(note) > MAX_NOTE)
+           {
+@@ -821,7 +821,7 @@
+         {
+         nodeargs = (char **)calloc(2, sizeof(char **));
+         nodeargs[0] = strdup("");
+-        nodeargs[1] = '\0';
++        nodeargs[1] = NULL;
+         }
+       }
+     }
+@@ -901,7 +901,7 @@
+ 
+         MXMLCreateE(&DE, "Data");
+ 
+-        for (lindex = 0;nodeargs[lindex] != '\0';lindex++)
++        for (lindex = 0;nodeargs[lindex] != NULL;lindex++)
+           {
+           bstatus = statnode(con, nodeargs[lindex]);
+ 
+@@ -922,7 +922,7 @@
+         }
+       else
+         {
+-        for (lindex = 0;nodeargs[lindex] != '\0';lindex++)
++        for (lindex = 0;nodeargs[lindex] != NULL;lindex++)
+           {
+           bstatus = statnode(con, nodeargs[lindex]);
+ 
+@@ -946,7 +946,7 @@
+ 
+       /* list any node that is DOWN, OFFLINE, or UNKNOWN */
+ 
+-      for (lindex = 0;nodeargs[lindex] != '\0';lindex++)
++      for (lindex = 0;nodeargs[lindex] != NULL;lindex++)
+         {
+         bstatus = statnode(con, nodeargs[lindex]);
+ 
+--- a/src/cmds/qsub_functions.c	2015-03-17 16:43:36.000000000 -0400
++++ b/src/cmds/qsub_functions.c	2019-02-25 12:32:00.442982091 -0500
+@@ -542,7 +542,7 @@
+   static char tmpLine[65536];
+ 
+   /* we've reached the end */
+-  if ((start == NULL) && (*tok_ptr == '\0'))
++  if ((start == NULL) && (*tok_ptr == NULL))
+     return(0);
+ 
+   if (start != NULL)
+@@ -554,7 +554,7 @@
+     return(0);
+      
+   if ((*curr_ptr == '=') || 
+-      (*curr_ptr == '\0'))
++      (*curr_ptr == NULL))
+     {
+     /* no name, fail */
+     return(-1);
+@@ -574,18 +574,18 @@
+ 
+   /* strip blanks */
+   while ((*equals) && (isspace((int)*equals)))
+-    *equals++ = '\0';
++    *equals++ = NULL;
+ 
+   if (*equals != '=')
+     return (-1); /* should have found a = as first non blank */
+ 
+-  *equals++ = '\0';
++  *equals++ = NULL;
+ 
+   /* skip leading white space */
+   while (isspace((int)*equals) && *equals)
+     equals++;
+ 
+-  if (*equals == '\0')
++  if (*equals == NULL)
+     return(-1);
+ 
+   *value = equals;
+@@ -872,7 +872,7 @@
+   else
+     {
+     char *tmp_host = pbs_default();
+-    if (tmp_host == '\0')
++    if (tmp_host == NULL)
+       hash_add_or_exit(mm, job_attr, ATTR_pbs_o_server, qsub_host, LOGIC_DATA);
+     else
+       hash_add_or_exit(mm, job_attr, ATTR_pbs_o_server, tmp_host, LOGIC_DATA);
+--- a/src/include/attribute.h	2015-03-17 16:43:36.000000000 -0400
++++ b/src/include/attribute.h	2019-02-22 16:47:40.507695453 -0500
+@@ -445,7 +445,7 @@
+ extern int   parse_equal_string(char *, char **, char **);
+ extern char *parse_comma_string(char *,char **);
+ 
+-#define NULL_FUNC '\0'
++#define NULL_FUNC NULL
+ 
+ /* other associated funtions */
+ struct dynamic_string;
+--- a/src/resmom/mom_main.c	2015-03-17 16:43:36.000000000 -0400
++++ b/src/resmom/mom_main.c	2019-02-22 14:01:26.573890840 -0500
+@@ -4224,7 +4224,7 @@
+     goto done;
+     }
+ 
+-  name[i] = '\0';
++  name[i] = NULL;
+ 
+   for (d = ret_string, resline++;*resline;)
+     {
+--- a/src/server/job_attr_def.c	2015-03-17 16:43:36.000000000 -0400
++++ b/src/server/job_attr_def.c	2019-02-22 16:43:05.653007840 -0500
+@@ -1193,7 +1193,7 @@
+   },
+ 
+   /* JOB_ATR_system_start_time */
+-  {ATTR_system_start_time, /* start time as encoded in the proc/pid directory */
++  { (char *)ATTR_system_start_time, /* start time as encoded in the proc/pid directory */
+    decode_l,
+    encode_l,
+    set_l,
+@@ -1205,7 +1205,7 @@
+    PARENT_TYPE_JOB},
+ 
+   /* JOB_ATR_nppcu */
+-  {ATTR_nppcu, /* how to handle compute units (on Cray system) */
++  { (char *)ATTR_nppcu, /* how to handle compute units (on Cray system) */
+    decode_l,
+    encode_l,
+    set_l,

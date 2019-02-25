@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,7 +9,8 @@ DESCRIPTION="Resource manager and queuing system based on OpenPBS"
 HOMEPAGE="http://www.adaptivecomputing.com/products/open-source/torque"
 # TODO:  hopefully moving to github tags soon
 # http://www.supercluster.org/pipermail/torquedev/2013-May/004519.html
-SRC_URI="http://www.adaptivecomputing.com/index.php?wpfb_dl=2849 -> ${P}.tar.gz"
+#SRC_URI="http://www.adaptivecomputing.com/index.php?wpfb_dl=2849 -> ${P}.tar.gz"
+SRC_URI="https://github.com/adaptivecomputing/torque/archive/ddf5c4f40091b6157164a8846e5b60f42a5ae7f6.tar.gz -> ${P}-gh-20150517.tar.gz"
 
 LICENSE="torque-2.5"
 SLOT="0"
@@ -42,7 +43,7 @@ RDEPEND="${DEPEND_COMMON}
 	!crypt? ( net-misc/netkit-rsh )
 	!dev-libs/uthash"
 
-S="${WORKDIR}"/${PN}-4.2.9
+S="${WORKDIR}"/${PN}-ddf5c4f40091b6157164a8846e5b60f42a5ae7f6
 
 # Torque should depend on dev-libs/uthash but that's pretty much impossible
 # to patch in as they ship with a broken configure such that files referenced
@@ -90,14 +91,11 @@ src_prepare() {
 	sed -i '/mk_default_ld_lib_file || return 1/d' buildutils/pbs_mkdirs.in || die
 
 	eapply "${FILESDIR}"/${PN}-4.2.9-tcl8.6.patch
-
-	# 524362
-	eapply "${FILESDIR}"/TRQ-2885-limit-tm_adopt-to-only-adopt-a-session-id-t.patch
-
 	eapply "${FILESDIR}"/${PN}-4.2-dont-mess-with-cflags.patch
+	eapply "${FILESDIR}"/${PN}-4.2-use-NULL-instead-of-char0.patch
 	eapply_user
 	mkdir -p "${S}"/m4
-	eautoconf
+	eautoreconf
 }
 
 src_configure() {
