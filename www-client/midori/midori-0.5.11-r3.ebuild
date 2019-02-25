@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ VALA_MIN_API_VERSION=0.36
 inherit cmake-utils gnome2-utils pax-utils python-any-r1 vala virtualx xdg-utils
 
 DESCRIPTION="A lightweight web browser based on WebKitGTK+"
-HOMEPAGE="http://www.midori-browser.org/"
+HOMEPAGE="https://www.midori-browser.org/"
 SRC_URI="http://www.${PN}-browser.org/downloads/${PN}_${PV}_all_.tar.bz2"
 
 KEYWORDS="~amd64 ~arm ~mips ~x86 ~x86-fbsd"
