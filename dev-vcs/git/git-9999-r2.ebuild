@@ -26,7 +26,7 @@ if [[ ${PV} == *9999 ]]; then
 	esac
 fi
 
-inherit toolchain-funcs eutils elisp-common l10n perl-module bash-completion-r1 python-single-r1 systemd ${SCM}
+inherit toolchain-funcs elisp-common l10n perl-module bash-completion-r1 python-single-r1 systemd ${SCM}
 
 MY_PV="${PV/_rc/.rc}"
 MY_P="${PN}-${MY_PV}"
@@ -194,7 +194,7 @@ exportmakeopts() {
 	)
 
 	# For svn-fe
-	extlibs="-lz -lssl ${S}/xdiff/lib.a $(usex threads -lpthread '')"
+	extlibs=( -lz -lssl ${S}/xdiff/lib.a $(usex threads -lpthread '') )
 
 	# can't define this to null, since the entire makefile depends on it
 	sed -i -e '/\/usr\/local/s/BASIC_/#BASIC_/' Makefile || die
@@ -202,13 +202,13 @@ exportmakeopts() {
 	if use pcre; then
 		if use pcre-jit; then
 			myopts+=( USE_LIBPCRE2=YesPlease )
-			extlibs+=" -lpcre2-8"
+			extlibs+=( -lpcre2-8 )
 		else
 			myopts+=(
 				USE_LIBPCRE1=YesPlease
 				NO_LIBPCRE1_JIT=YesPlease
 			)
-			extlibs+=" -lpcre"
+			extlibs+=( -lpcre )
 		fi
 	fi
 # Disabled until ~m68k-mint can be keyworded again
@@ -233,7 +233,7 @@ exportmakeopts() {
 			NEEDS_LIBICONV=YesPlease
 			HAVE_CLOCK_MONOTONIC=1
 		)
-		grep -q getdelim "${ROOT}"/usr/include/stdio.h && \
+		grep -q getdelim "${ROOT%/}"/usr/include/stdio.h && \
 			myopts+=( HAVE_GETDELIM=1 )
 	fi
 
@@ -246,7 +246,7 @@ exportmakeopts() {
 		myopts+=( NO_NSEC=YesPlease )
 
 	export MY_MAKEOPTS="${myopts[@]}"
-	export EXTLIBS="${extlibs}"
+	export EXTLIBS="${extlibs[@]}"
 }
 
 src_unpack() {
@@ -359,12 +359,14 @@ src_compile() {
 		pushd contrib/svn-fe &>/dev/null || die
 		# by defining EXTLIBS we override the detection for libintl and
 		# libiconv, bug #516168
-		local nlsiconv=
-		use nls && use !elibc_glibc && nlsiconv+=" -lintl"
-		use iconv && use !elibc_glibc && nlsiconv+=" -liconv"
-		git_emake EXTLIBS="${EXTLIBS} ${nlsiconv}" || die "emake svn-fe failed"
+		local nlsiconv=()
+		use nls && use !elibc_glibc && nlsiconv+=( -lintl )
+		use iconv && use !elibc_glibc && nlsiconv+=( -liconv )
+		git_emake EXTLIBS="${EXTLIBS} ${nlsiconv[@]}" \
+			|| die "emake svn-fe failed"
 		if use doc ; then
-			git_emake svn-fe.{1,html} || die "emake svn-fe.1 svn-fe.html failed"
+			git_emake svn-fe.{1,html} \
+				|| die "emake svn-fe.1 svn-fe.html failed"
 		fi
 		popd &>/dev/null || die
 	fi
@@ -407,6 +409,7 @@ src_install() {
 	find Documentation/*.[157] >/dev/null 2>&1 && doman Documentation/*.[157]
 	dodoc README* Documentation/{SubmittingPatches,CodingGuidelines}
 	use doc && dodir /usr/share/doc/${PF}/html
+	local d
 	for d in / /howto/ /technical/ ; do
 		docinto ${d}
 		dodoc Documentation${d}*.txt
@@ -432,7 +435,7 @@ src_install() {
 		#elisp-install ${PN}/compat contrib/emacs/vc-git.{el,elc}
 		# don't add automatically to the load-path, so the sitefile
 		# can do a conditional loading
-		touch "${ED}${SITELISP}/${PN}/compat/.nosearch"
+		touch "${ED%/}${SITELISP}/${PN}/compat/.nosearch"
 		elisp-site-file-install "${FILESDIR}"/${SITEFILE}
 	fi
 
@@ -515,6 +518,7 @@ src_install() {
 		stats
 		workdir
 	)
+	local i
 	for i in "${contrib_objects[@]}" ; do
 		cp -rf \
 			"${S}"/contrib/${i} \
@@ -535,7 +539,7 @@ src_install() {
 		newdoc  "${S}"/gitweb/README README.gitweb
 
 		for d in "${ED%/}"/usr/lib{,64}/perl5/ ; do
-			if test -d "$d" ; then find "$d" \
+			if test -d "${d}" ; then find "${d}" \
 				-name .packlist \
 				-delete || die
 			fi
