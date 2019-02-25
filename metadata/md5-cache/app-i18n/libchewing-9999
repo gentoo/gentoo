@@ -1,11 +1,13 @@
+BDEPEND=>=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1[curl]
 DEFINED_PHASES=configure install prepare test unpack
-DEPEND=dev-db/sqlite:3 test? ( sys-libs/ncurses[unicode] ) >=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1[curl]
+DEPEND=dev-db/sqlite:3 test? ( sys-libs/ncurses[unicode] )
 DESCRIPTION=Intelligent phonetic (Zhuyin/Bopomofo) input method library
-EAPI=6
+EAPI=7
 HOMEPAGE=http://chewing.im/ https://github.com/chewing/libchewing
 IUSE=static-libs test
 LICENSE=LGPL-2.1
 RDEPEND=dev-db/sqlite:3
+RESTRICT=!test? ( test )
 SLOT=0/3
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	git-r3	0d4635eeb5a96cd5315597a47eba25c9	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
-_md5_=8dda17f9cf5e55c6c89d89e2074e935d
+_md5_=dee830860bfaa3d1a2daac22b45740f3
