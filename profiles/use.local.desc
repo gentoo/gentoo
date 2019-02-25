@@ -2463,6 +2463,8 @@ kde-plasma/plasma-desktop:touchpad - Enable touchpad KCM
 kde-plasma/plasma-meta:browser-integration - Enable integration with Chrome/Firefox with browser extensions
 kde-plasma/plasma-meta:consolekit - Enable sys-auth/consolekit support instead of logind session tracking
 kde-plasma/plasma-meta:crypt - Pull in kde-plasma/plasma-vault for encrypted vaults integration
+kde-plasma/plasma-meta:desktop-portal - Enable sys-apps/xdg-desktop-portal backend implementation for Plasma
+kde-plasma/plasma-meta:discover - Pull in resources management GUI; a centralised GHNS alternative and optional sys-apps/fwupd frontend
 kde-plasma/plasma-meta:display-manager - Pull in a graphical display manager
 kde-plasma/plasma-meta:elogind - Use sys-auth/elogind for session tracking
 kde-plasma/plasma-meta:grub - Pull in Breeze theme for sys-boot/grub
