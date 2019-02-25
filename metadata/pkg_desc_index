@@ -8532,7 +8532,7 @@ net-dialup/freeradius-client 1.1.7: FreeRADIUS Client framework
 net-dialup/globespan-adsl 0.11-r1: Driver for various ADSL modems. Also known as EciAdsl
 net-dialup/isdn-firmware 2005.8.15.2: ISDN firmware for active ISDN cards (AVM, Eicon, etc.)
 net-dialup/kpnadsl4linux 1.11: ADSL4Linux, a PPTP start/stop/etc. program especially for Dutch users
-net-dialup/linux-atm 2.5.0: Tools for ATM
+net-dialup/linux-atm 2.5.0 2.5.2: Tools for ATM
 net-dialup/lrzsz 0.12.20-r4: Communication package providing the X, Y, and ZMODEM file transfer protocols
 net-dialup/mgetty 1.1.37-r1 1.2.1: fax and voice modem programs
 net-dialup/mingetty 1.08-r1: A compact getty program for virtual consoles only
