@@ -7,4 +7,5 @@ move net-misc/networkmanager-fortisslvpn net-vpn/networkmanager-fortisslvpn
 move net-misc/networkmanager-libreswan net-vpn/networkmanager-libreswan
 move net-misc/networkmanager-openconnect net-vpn/networkmanager-openconnect
 move net-misc/networkmanager-openvpn net-vpn/networkmanager-openvpn
+move net-misc/networkmanager-pptp net-vpn/networkmanager-pptp
 move net-misc/networkmanager-strongswan net-vpn/networkmanager-strongswan
