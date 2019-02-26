@@ -48,8 +48,7 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )
-	servers? ( tcpd )
-	servers? ( ldap )"
+	servers? ( tcpd ldap )"
 
 DOCS=( ABOUT-NLS AUTHORS COPYING COPYING.LESSER ChangeLog INSTALL NEWS README THANKS TODO )
 PATCHES=( "${FILESDIR}/${PN}-3.5-add-include.patch" \
@@ -66,9 +65,6 @@ src_prepare() {
 		sed -i -e /^INCLUDES/"s:$:$(mysql_config --include):" \
 			sql/Makefile.am || die
 	fi
-	# bug 669946
-	#eapply "${FILESDIR}/${PN}-3.5-add-include.patch"
-	#eapply_user
 	eautoreconf
 }
 
@@ -131,8 +127,6 @@ src_install() {
 		newinitd "${FILESDIR}"/pop3d.initd pop3d
 		newinitd "${FILESDIR}"/comsatd.initd comsatd
 	fi
-
-	#dodoc AUTHORS ChangeLog NEWS README* THANKS TODO
 
 	# compatibility link
 	use clients && dosym /usr/bin/mail /bin/mail
