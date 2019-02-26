@@ -1073,7 +1073,7 @@ app-misc/ondir 0.2.2-r2: Automatically execute scripts as you traverse directori
 app-misc/oneko 1.2-r2: A cat, dog and others which chase the mouse or windows around the screen
 app-misc/pal 0.4.3-r2: Command-line calendar program
 app-misc/pax-utils 1.2.3: ELF utils that can check files for security relevant properties
-app-misc/pdfpc 4.1.1: Presenter console with multi-monitor support for PDF files
+app-misc/pdfpc 4.1.1 4.3.0: Presenter console with multi-monitor support for PDF files
 app-misc/perltrash 0.3-r1: Command-line trash can emulation
 app-misc/pfm 2.12.3: A terminal-based file manager written in Perl
 app-misc/pip 1.2-r2: Wrapper around programs that don't support stdin/stdout
@@ -10677,7 +10677,7 @@ www-servers/caddy 0.10.11: Fast, cross-platform HTTP/2 web server with automatic
 www-servers/gunicorn 19.1.1 19.6.0 19.8.1: A WSGI HTTP Server for UNIX
 www-servers/lighttpd 1.4.51: Lightweight high-performance web server
 www-servers/monkeyd 1.6.9-r1: A small, fast, and scalable web server
-www-servers/nginx 1.14.1: Robust, small and high performance http and reverse proxy server
+www-servers/nginx 1.14.2-r3: Robust, small and high performance http and reverse proxy server
 www-servers/pound 2.7f-r1: A http/https reverse-proxy and load-balancer
 www-servers/puma 3.11.4: a simple, fast, threaded, and highly concurrent HTTP 1.1 server for Ruby/Rack
 www-servers/spawn-fcgi 1.6.3-r1: A FCGI spawner for lighttpd and cherokee and other webservers
