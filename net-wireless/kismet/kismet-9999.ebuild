@@ -64,8 +64,11 @@ src_prepare() {
 	sed -i -e 's| -s||g' \
 		-e 's|@mangrp@|root|g' Makefile.in
 
-	eapply "${FILESDIR}"/fix-setuptools4.patch
 	eapply_user
+
+	#just use set to fix setup.py
+	find . -name "Makefile.in" -exec sed -i 's#setup.py install#setup.py install --root=$(DESTDIR)#' {} + || die
+	find . -name "Makefile" -exec sed -i 's#setup.py install#setup.py install --root=$(DESTDIR)#' {} + || die
 
 	if [ "${PV}" = "9999" ]; then
 		eautoreconf
