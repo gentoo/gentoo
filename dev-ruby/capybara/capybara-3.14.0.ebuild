@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -36,10 +36,11 @@ ruby_add_rdepend "
 	>=dev-ruby/nokogiri-1.8:0
 	>=dev-ruby/rack-1.6.0:*
 	>=dev-ruby/rack-test-0.6.3:*
-	>=dev-ruby/xpath-3.1:3"
+	>=dev-ruby/regexp_parser-1.2:1
+	>=dev-ruby/xpath-3.2:3"
 
 all_ruby_prepare() {
-	sed -i -e '/bundler/d' -e '/pry/d' -e '1igem "sinatra"' spec/spec_helper.rb || die
+	sed -i -e '/bundler/d' -e '/pry/d' -e '1igem "sinatra"' -e '/statistics/Id' spec/spec_helper.rb || die
 
 	# Avoid window-manager specific tests (sizes are specific for fluxbox)
 	sed -i -e '/#maximize/,/^  end/ s:^:#:' lib/capybara/spec/session/window/window_spec.rb || die
