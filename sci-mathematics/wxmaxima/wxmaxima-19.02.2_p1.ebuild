@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,8 +7,8 @@ PLOCALES="ca cs da de el es fi fr gl hu it ja kab nb pl pt_BR ru tr uk zh_CN zh_
 inherit cmake-utils wxwidgets l10n xdg-utils gnome2-utils
 
 DESCRIPTION="Graphical frontend to Maxima, using the wxWidgets toolkit"
-HOMEPAGE="http://andrejv.github.io/wxmaxima/"
-SRC_URI="https://github.com/andrejv/wxmaxima/archive/Version-${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="http://wxmaxima-developers.github.io/wxmaxima/"
+SRC_URI="https://dev.gentoo.org/~grozin/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -37,6 +37,11 @@ src_prepare() {
 	}
 	l10n_find_plocales_changes "${S}"/locales '' '.po'
 	l10n_for_each_disabled_locale_do rm_po
+}
+
+src_install() {
+	docompress -x /usr/share/doc/${PF}/wxmaxima.hhp /usr/share/doc/${PF}/wxmaxima_tr.hhp
+	cmake-utils_src_install
 }
 
 pkg_postinst() {
