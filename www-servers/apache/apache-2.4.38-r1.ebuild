@@ -1,12 +1,12 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 # latest gentoo apache files
-GENTOO_PATCHSTAMP="20180716"
+GENTOO_PATCHSTAMP="20190226"
 GENTOO_DEVELOPER="polynomial-c"
-GENTOO_PATCHNAME="gentoo-apache-2.4.34"
+GENTOO_PATCHNAME="gentoo-apache-2.4.38"
 
 # IUSE/USE_EXPAND magic
 IUSE_MPMS_FORK="prefork"
@@ -188,7 +188,7 @@ src_install() {
 		/usr/share/man/man8/{rotatelogs.8,htcacheclean.8}
 	)
 	for i in ${apache_tools_prune_list[@]} ; do
-		rm "${ED%/}"/$i || die "Failed to prune apache-tools bits"
+		rm "${ED%/}"/${i} || die "Failed to prune apache-tools bits"
 	done
 
 	# install apxs in /usr/bin (bug #502384) and put a symlink into the
