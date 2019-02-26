@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -27,6 +27,10 @@ DEPEND="${RDEPEND}
 		sys-devel/bc
 	)"
 PDEPEND="app-misc/ca-certificates"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.1.0j-parallel_install_fix.patch #671602
+)
 
 # This does not copy the entire Fedora patchset, but JUST the parts that
 # are needed to make it safe to use EC with RESTRICT=bindist.
