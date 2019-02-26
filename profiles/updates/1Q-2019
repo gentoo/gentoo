@@ -5,3 +5,4 @@ move dev-libs/wlroots gui-libs/wlroots
 move dev-libs/wl-clipboard gui-apps/wl-clipboard
 move net-misc/networkmanager-fortisslvpn net-vpn/networkmanager-fortisslvpn
 move net-misc/networkmanager-libreswan net-vpn/networkmanager-libreswan
+move net-misc/networkmanager-openconnect net-vpn/networkmanager-openconnect

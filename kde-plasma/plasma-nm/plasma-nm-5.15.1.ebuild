@@ -45,7 +45,7 @@ DEPEND="
 	)
 	openconnect? (
 		$(add_qt_dep qtxml)
-		net-misc/networkmanager-openconnect
+		net-vpn/networkmanager-openconnect
 		net-vpn/openconnect:=
 	)
 "
