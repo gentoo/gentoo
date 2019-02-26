@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -39,8 +39,8 @@ src_prepare() {
 	sed -i -e "s/^install-data-local:/do-not-run-this:/" \
 		tools/Makefile.in || die "sed failed"
 
-	# libressl compat
-	eapply "${FILESDIR}"/${PN}-5.48-compat-libressl.patch
+	# bug 656420
+	eapply "${FILESDIR}"/${P}-libressl.patch
 
 	echo "CONFIG_PROTECT=\"/etc/stunnel/stunnel.conf\"" > "${T}"/20stunnel
 
