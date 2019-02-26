@@ -23,9 +23,6 @@ IUSE="colord cups cpu_flags_x86_sse3 doc flickr geolocation gnome-keyring gphoto
 nls opencl openmp openexr pax_kernel webp
 ${LANGS// / l10n_}"
 
-# sse3 support is required to build darktable
-REQUIRED_USE="cpu_flags_x86_sse3"
-
 BDEPEND="
 	dev-util/intltool
 	virtual/pkgconfig
