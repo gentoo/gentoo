@@ -2901,7 +2901,7 @@ dev-lang/ferite 1.1.17-r1: A clean, lightweight, object oriented scripting langu
 dev-lang/fpc 2.6.4: Free Pascal Compiler
 dev-lang/ghc 7.8.4 7.10.3 8.0.2: The Glasgow Haskell Compiler
 dev-lang/gnat-gpl 2016-r3 2017 2018-r1: GNAT Ada Compiler - GPL version
-dev-lang/go 1.10.8 1.11.5: A concurrent garbage collected and typesafe programming language
+dev-lang/go 1.11.5: A concurrent garbage collected and typesafe programming language
 dev-lang/gprolog 1.4.4: A native Prolog compiler with constraint solving over finite domains (FD)
 dev-lang/icon 9.5.1-r1: very high level language
 dev-lang/inform 6.33.1_p2: design system for interactive fiction
@@ -10776,7 +10776,7 @@ x11-base/xorg-drivers 1.20: Meta package containing deps on all xorg drivers
 x11-base/xorg-proto 2018.4: X.Org combined protocol headers
 x11-base/xorg-server 1.20.3: X.Org X servers
 x11-base/xorg-x11 7.4-r3: An X11 implementation maintained by the X.Org Foundation (meta package)
-x11-drivers/nvidia-drivers 340.107 390.87 410.93 415.27: NVIDIA Accelerated Graphics Driver
+x11-drivers/nvidia-drivers 340.107 390.116 410.104 415.27 418.43: NVIDIA Accelerated Graphics Driver
 x11-drivers/xf86-input-elographics 1.4.1: Elographics input driver
 x11-drivers/xf86-input-evdev 2.10.6: Generic Linux input driver
 x11-drivers/xf86-input-joystick 1.6.3: X.Org driver for joystick input devices
