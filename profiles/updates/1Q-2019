@@ -10,3 +10,4 @@ move net-misc/networkmanager-openvpn net-vpn/networkmanager-openvpn
 move net-misc/networkmanager-pptp net-vpn/networkmanager-pptp
 move net-misc/networkmanager-strongswan net-vpn/networkmanager-strongswan
 move net-misc/networkmanager-vpnc net-vpn/networkmanager-vpnc
+move net-misc/networkmanager-sstp net-vpn/networkmanager-sstp
