@@ -15,6 +15,6 @@ Gallium Nine Standalone, as the name implies, is a standalone version of the WIN
 This decouples Gallium Nine from the WINE tree, so that it can be used with any WINE version. There is no need for any WINE patches. A stable, development, or staging WINE release is sufficient.
 	</longdescription>
 	<upstream>
-		<remote-id type="github">dhewg/nine</remote-id>
+		<remote-id type="github">iXit/wine-nine-standalone</remote-id>
 	</upstream>
 </pkgmetadata>
