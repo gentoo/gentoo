@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 DESCRIPTION="Tool to measure IP bandwidth using UDP or TCP"
 HOMEPAGE="http://iperf2.sourceforge.net/"
@@ -13,6 +13,9 @@ KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-
 IUSE="ipv6 threads debug"
 
 DOCS="INSTALL README"
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.0.12-ipv6.patch
+)
 
 src_configure() {
 	econf \
