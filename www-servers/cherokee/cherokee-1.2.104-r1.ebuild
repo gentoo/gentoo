@@ -1,13 +1,13 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=7
 
 WANT_AUTOMAKE="1.11"
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit autotools python-r1 eutils multilib pam systemd user
+inherit autotools python-r1 pam systemd user
 
 DESCRIPTION="An extremely fast and tiny web server"
 SRC_URI="https://github.com/cherokee/webserver/archive/v${PV}.zip -> ${P}.zip"
@@ -27,7 +27,7 @@ COMMON_DEPEND="
 	ffmpeg? ( virtual/ffmpeg )
 	geoip? ( dev-libs/geoip )
 	ldap? ( net-nds/openldap )
-	mysql? ( >=virtual/mysql-5 )
+	mysql? ( dev-db/mysql-connector-c:0= )
 	nls? ( virtual/libintl )
 	pam? ( virtual/pam )
 	php? ( || (
@@ -35,7 +35,7 @@ COMMON_DEPEND="
 		dev-lang/php:*[cgi]
 	) )
 	ssl? (
-		!libressl? ( dev-libs/openssl:0= )
+		!libressl? ( <dev-libs/openssl-1.1.0:0= )
 		libressl? ( dev-libs/libressl:0= )
 	)
 	"
@@ -48,10 +48,8 @@ RESTRICT="test"
 
 WEBROOT="/var/www/localhost"
 
-src_unpack() {
-	unpack ${A}
-	mv "webserver-${PV}" "${S}" || die
-}
+PATCHES=( "${FILESDIR}/${PN}-1.2.99-gentoo.patch" )
+S="${WORKDIR}/webserver-${PV}"
 
 pkg_setup() {
 	enewgroup cherokee
@@ -60,8 +58,7 @@ pkg_setup() {
 
 src_prepare() {
 	python_setup
-	epatch \
-		"${FILESDIR}/${PN}-1.2.99-gentoo.patch"
+	default
 
 	"${S}/po/admin/generate_POTFILESin.py" > po/admin/POTFILES.in
 	eautoreconf
@@ -123,7 +120,7 @@ src_configure() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install
+	default
 
 	if ! use static-libs ; then
 		find "${ED}" -name '*.la' -delete || die
@@ -171,6 +168,9 @@ src_install() {
 	newins "${FILESDIR}"/${PN}.logrotate-r1 ${PN}
 
 	systemd_dounit "${FILESDIR}"/cherokee.service
+
+	# Fix QA error - not important if it fails
+	rmdir "${ED}"/var/run
 }
 
 pkg_postinst() {
