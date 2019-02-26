@@ -48,9 +48,7 @@ PATCHES=(
 	"${FILESDIR}"/${PV}-doc-options.patch # https://gitlab.gnome.org/GNOME/tracker/merge_requests/58
 	"${FILESDIR}"/${PV}-test-fix.patch # https://gitlab.gnome.org/GNOME/tracker/merge_requests/59
 	"${FILESDIR}"/${PV}-prevent-stack-smashing.patch
-	"${FILESDIR}"/${PV}-glib-2.60-compat.patch
 	"${FILESDIR}"/${PV}-fix-library-symlinks.patch
-	"${FILESDIR}"/${PV}-upgrade-path-fix.patch
 )
 
 function inotify_enabled() {
