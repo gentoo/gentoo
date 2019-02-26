@@ -18,7 +18,7 @@ IUSE="debug doc frotz irc mysql postgres purple sms +sqlite test twitter whatsap
 REQUIRED_USE="|| ( mysql postgres sqlite )"
 
 RDEPEND="
-	dev-libs/boost:=
+	dev-libs/boost:=[nls]
 	dev-libs/expat
 	dev-libs/libev:=
 	dev-libs/log4cxx
