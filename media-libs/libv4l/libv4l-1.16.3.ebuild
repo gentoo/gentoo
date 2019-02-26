@@ -16,7 +16,6 @@ SLOT="0/0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE="jpeg"
 
-# The libraries only link to -ljpeg, therefore multilib depend only for virtual/jpeg.
 RDEPEND="jpeg? ( >=virtual/jpeg-0-r2:0=[${MULTILIB_USEDEP}] )
 	virtual/libudev[${MULTILIB_USEDEP}]
 	!media-tv/v4l2-ctl
