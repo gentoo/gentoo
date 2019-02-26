@@ -19,9 +19,8 @@ REQUIRED_USE="vala? ( introspection )"
 
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-solaris"
 
-# sys-libs/db is only required for migrating from <3.13 versions
 # gdata-0.17.7 soft required for new gdata_feed_get_next_page_token API to handle more than 100 google tasks
-# berkdb needed only for migrating old calendar data, bug #519512
+# berkdb needed only for migrating old addressbook data from <3.13 versions, bug #519512
 # >=libical-3.0.2 present at build-time ensures less memory usage by calendar backend
 gdata_depend=">=dev-libs/libgdata-0.17.7:="
 RDEPEND="
