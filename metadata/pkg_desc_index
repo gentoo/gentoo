@@ -8859,7 +8859,7 @@ net-mail/mailbase 1.1: MTA layout package
 net-mail/maildirtree 0.6-r1: A utility that prints trees of Courier-style Maildirs
 net-mail/mailgraph 1.14-r2: A mail statistics RRDtool frontend for Postfix
 net-mail/mailman 2.1.26: A python-based mailing list server with an extensive web interface
-net-mail/mailutils 3.1.1 3.4-r2: A useful collection of mail servers, clients, and filters
+net-mail/mailutils 3.4-r2: A useful collection of mail servers, clients, and filters
 net-mail/mairix 0.23: Indexes and searches Maildir/MH folders
 net-mail/mess822 0.58-r2: Collection of utilities for parsing Internet mail messages
 net-mail/metamail 2.7.53.3-r2: Metamail (with Debian patches) - Generic MIME package
