@@ -1017,17 +1017,6 @@
     </member>
   </project>
   <project>
-    <email>eselect@gentoo.org</email>
-    <name>eselect configuration and management tool</name>
-    <url>https://wiki.gentoo.org/wiki/Project-3AEselect</url>
-    <description>eselect is Gentoo's modular framework for configuration and administration utilities.</description>
-    <member is-lead="1">
-      <email>ulm@gentoo.org</email>
-      <name>Ulrich Müller</name>
-      <role>Lead</role>
-    </member>
-  </project>
-  <project>
     <email>eudev@gentoo.org</email>
     <name>eudev</name>
     <url>https://wiki.gentoo.org/wiki/Project-3AEudev</url>
@@ -4272,6 +4261,17 @@
       <email>wizardedit@gentoo.org</email>
       <name>Austin English</name>
       <role>Member</role>
+    </member>
+  </project>
+  <project>
+    <email>eselect@gentoo.org</email>
+    <name>eselect configuration and management tool</name>
+    <url>https://wiki.gentoo.org/wiki/Project-3AEselect</url>
+    <description>eselect is Gentoo's modular framework for configuration and administration utilities.</description>
+    <member is-lead="1">
+      <email>ulm@gentoo.org</email>
+      <name>Ulrich Müller</name>
+      <role>Lead</role>
     </member>
   </project>
 </projects>
