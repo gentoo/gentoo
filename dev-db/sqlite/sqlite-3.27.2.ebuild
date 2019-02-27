@@ -59,6 +59,7 @@ pkg_setup() {
 src_prepare() {
 	if full_archive; then
 		eapply "${FILESDIR}/${PN}-3.27.0-full_archive-build.patch"
+		eapply "${FILESDIR}/${PN}-3.27.2-full_archive-tests.patch"
 
 		eapply_user
 
