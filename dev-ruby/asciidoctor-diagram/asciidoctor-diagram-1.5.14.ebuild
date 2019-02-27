@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-USE_RUBY="ruby23 ruby24"
+USE_RUBY="ruby23 ruby24 ruby25"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 
@@ -30,7 +30,7 @@ all_ruby_prepare() {
 	sed -i -e '/c.formatter/ s:^:#:' spec/test_helper.rb || die
 
 	# Avoid specs for unpackaged tools
-	rm -f spec/{a2s,blockdiag,erd,mermaid,msc,shaape,svgbob,syntrax,umlet,vega,wavedrom}_spec.rb || die
+	rm -f spec/{a2s,blockdiag,erd,mermaid,msc,nomnoml,shaape,svgbob,syntrax,umlet,vega,wavedrom}_spec.rb || die
 }
 
 all_ruby_install() {
