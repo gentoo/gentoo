@@ -356,6 +356,11 @@ src_configure() {
 	# Perl has problems compiling with -Os in your flags with glibc
 	use elibc_uclibc || replace-flags "-Os" "-O2"
 
+	# perl-cross should be built without -O flags, so it does not segfault.
+	if tc-is-cross-compiler; then
+		replace-flags -O? -O0
+	fi
+
 	# xlocale.h is going away in glibc-2.26, so it's counterproductive
 	# if we use it and include it in CORE/perl.h ... Perl builds just
 	# fine with glibc and locale.h only.
