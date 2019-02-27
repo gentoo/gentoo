@@ -4,7 +4,7 @@
 EAPI=6
 GNOME2_LA_PUNT="yes"
 
-inherit eutils gnome2 pam readme.gentoo-r1 systemd user
+inherit eutils gnome2 pam readme.gentoo-r1 systemd udev user
 
 DESCRIPTION="GNOME Display Manager for managing graphical display servers and user logins"
 HOMEPAGE="https://wiki.gnome.org/Projects/GDM"
@@ -28,28 +28,23 @@ KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sh ~x86"
 # nspr used by smartcard extension
 # dconf, dbus and g-s-d are needed at install time for dconf update
 # We need either systemd or >=openrc-0.12 to restart gdm properly, bug #463784
-# Requires org.gnome.SettingsDaemon.A11yKeyboard component which doesn't exist in 3.28
 COMMON_DEPEND="
 	app-text/iso-codes
-	>=dev-libs/glib-2.36:2[dbus]
+	>=dev-libs/glib-2.44:2
 	>=x11-libs/gtk+-2.91.1:3
 	>=gnome-base/dconf-0.20
 	>=gnome-base/gnome-settings-daemon-3.1.4
-	<gnome-base/gnome-settings-daemon-3.27
 	gnome-base/gsettings-desktop-schemas
 	>=media-libs/fontconfig-2.5.0:1.0
 	>=media-libs/libcanberra-0.4[gtk3]
 	sys-apps/dbus
 	>=sys-apps/accountsservice-0.6.35
 
-	x11-apps/sessreg
 	x11-base/xorg-server
-	x11-libs/libXi
 	x11-libs/libXau
 	x11-libs/libX11
 	x11-libs/libXdmcp
 	x11-libs/libXext
-	x11-libs/libXft
 	x11-libs/libxcb
 	>=x11-misc/xdg-utils-1.0.2-r3
 
@@ -86,8 +81,8 @@ DEPEND="${COMMON_DEPEND}
 	app-text/docbook-xml-dtd:4.1.2
 	dev-util/gdbus-codegen
 	dev-util/glib-utils
-	>=dev-util/intltool-0.40.0
 	dev-util/itstool
+	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
 	x11-base/xorg-proto
 	test? ( >=dev-libs/check-0.9.4 )
@@ -129,26 +124,27 @@ src_prepare() {
 	# Gentoo does not have a fingerprint-auth pam stack
 	eapply "${FILESDIR}/${PN}-3.8.4-fingerprint-auth.patch"
 
-	# CVE-2018-14424, bug #662782
-	eapply "${FILESDIR}/3.24.3-CVE-2018-14424.patch"
-	eapply "${FILESDIR}/3.24.3-display-object-lifetime-fix.patch"
-
 	# Show logo when branding is enabled
-	use branding && eapply "${FILESDIR}/${PN}-3.8.4-logo.patch"
+	use branding && eapply "${FILESDIR}/${PN}-3.30.3-logo.patch"
 
 	gnome2_src_prepare
 }
 
 src_configure() {
-	local myconf
 	# PAM is the only auth scheme supported
 	# even though configure lists shadow and crypt
 	# they don't have any corresponding code.
 	# --with-at-spi-registryd-directory= needs to be passed explicitly because
 	# of https://bugzilla.gnome.org/show_bug.cgi?id=607643#c4
 	# Xevie is obsolete, bug #482304
+
 	# --with-initial-vt=7 conflicts with plymouth, bug #453392
-	! use plymouth && myconf="${myconf} --with-initial-vt=7"
+	# gdm-3.30 now reaps (stops) the login screen when the login VT isn't active, which
+	# saves on memory. However this means if we don't start on VT1, gdm doesn't start up
+	# before user manually goes to VT7. Thus as-is we can not keep gdm away from VT1,
+	# so lets try always having it in VT1 and see if that is an issue for people before
+	# hacking up workarounds for the initial start case.
+	# ! use plymouth && myconf="${myconf} --with-initial-vt=7"
 
 	gnome2_src_configure \
 		--enable-gdm-xsession \
@@ -160,6 +156,7 @@ src_configure() {
 		--enable-authentication-scheme=pam \
 		--with-default-pam-config=exherbo \
 		--with-pam-mod-dir=$(getpam_mod_dir) \
+		--with-udevdir=$(get_udevdir) \
 		--with-at-spi-registryd-directory="${EPREFIX}"/usr/libexec \
 		--without-xevie \
 		--enable-systemd-journal \
@@ -170,8 +167,7 @@ src_configure() {
 		$(use_with selinux) \
 		$(use_with tcpd tcp-wrappers) \
 		$(use_enable wayland wayland-support) \
-		$(use_with xinerama) \
-		${myconf}
+		$(use_with xinerama)
 }
 
 src_install() {
