@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 PYTHON_COMPAT=( python2_7 python3_6 )
 
 inherit eutils systemd distutils-r1
@@ -96,7 +96,7 @@ RESTRICT="x86? ( test )"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-2017.7.0-dont-realpath-tmpdir.patch"
-	"${FILESDIR}/${PN}-2017.7.8-tests.patch"
+	"${FILESDIR}/${PN}-2018.3.4-tests.patch"
 	"${FILESDIR}/${PN}-2018.3.2-skip-zeromq-test-that-hangs.patch"
 )
 
