@@ -11,14 +11,13 @@ SRC_URI="http://linuxtv.org/downloads/v4l-utils/${P}.tar.bz2"
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86"
-IUSE="qt5"
+IUSE="opengl qt5"
 
 RDEPEND=">=media-libs/libv4l-${PV}[jpeg]
 	qt5? (
 		dev-qt/qtcore:5
 		dev-qt/qtgui:5
-		dev-qt/qtopengl:5
-		virtual/opengl
+		opengl? ( dev-qt/qtopengl:5[-gles2(-)] virtual/opengl )
 		media-libs/alsa-lib
 	)
 	virtual/libudev
@@ -39,6 +38,9 @@ src_configure() {
 			UIC="$(pkg-config --variable=host_bins Qt5Core)/uic" \
 			RCC="$(pkg-config --variable=host_bins Qt5Core)/rcc" \
 		)
+		if use !opengl; then
+			sed -e 's/Qt5OpenGL/DiSaBlEd/g' -i configure || die
+		fi
 	fi
 	# Hard disable the flags that apply only to the libs.
 	econf \
