@@ -42,7 +42,7 @@ multilib_src_configure() {
 		-DBUILD_WSI_XLIB_SUPPORT=$(usex X)
 		-DBUILD_TESTS=False
 		-DGLSLANG_INSTALL_DIR="/usr"
-		-DVULKAN_HEADERS_INSTALL_DIR="/usr"
+		-DCMAKE_INSTALL_INCLUDEDIR="/usr/include/vulkan/"
 	)
 	cmake-utils_src_configure
 }
