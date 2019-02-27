@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -165,15 +165,9 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	elog "    If this is the first time torque has been installed, then you are not"
-	elog "ready to start the server.  Please refer to the documentation located at:"
-	elog "http://docs.adaptivecomputing.com/torque/${PN//./-}/Content/topics/1-installConfig/initializeConfigOnServer.htm"
-	if [[ -z "${REPLACING_VERSIONS}" ]] || [[ ${REPLACING_VERSIONS} < 4 ]]; then
-		echo
-		elog "Important 4.0+ updates"
-		elog "  - The on-wire protocol version has been changed."
-		elog "    Versions of Torque before 4.0.0 are no longer able to communicate."
-		elog "  - pbs_iff has been replaced by trqauthd, you will now need to add"
-		elog "    trqauthd to your default runlevel."
+        if [[ -z "${REPLACING_VERSIONS}" ]] ; then
+		elog "If this is the first time torque has been installed, then you are not"
+		elog "ready to start the server.  Please refer to the documentation located at:"
+		elog "http://docs.adaptivecomputing.com/torque/${PN//./-}/adminGuide/help.htm#topics/torque/1-installConfig/initializeConfigOnServer.htm"
 	fi
 }

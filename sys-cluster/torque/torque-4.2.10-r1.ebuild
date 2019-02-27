@@ -175,7 +175,7 @@ pkg_postinst() {
 		showmessage=0;
 		elog "If this is the first time torque has been installed, then you are not"
 		elog "ready to start the server.  Please refer to the documentation located at:"
-		elog "http://docs.adaptivecomputing.com/torque/${PN//./-}/Content/topics/1-installConfig/initializeConfigOnServer.htm"
+		elog "http://docs.adaptivecomputing.com/torque/${PN//./-}/help.htm#topics/1-installConfig/initializeConfigOnServer.htm"
 		elog
 	else
 		for i in ${REPLACING_VERSIONS} ; do
