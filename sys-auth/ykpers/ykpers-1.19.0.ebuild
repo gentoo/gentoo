@@ -15,7 +15,7 @@ LICENSE="BSD-2"
 IUSE="static-libs consolekit"
 
 RDEPEND="
-	dev-libs/json-c
+	dev-libs/json-c:=
 	>=sys-auth/libyubikey-1.6
 	virtual/libusb:1"
 DEPEND="${RDEPEND}
