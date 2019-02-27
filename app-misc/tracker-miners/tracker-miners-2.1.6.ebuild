@@ -62,16 +62,14 @@ DEPEND="${RDEPEND}
 	>=dev-util/intltool-0.40.0
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
-	test? ( ${PYTHON_DEPS} )
+	test? ( ${PYTHON_DEPS}
+		gstreamer? ( || ( media-plugins/gst-plugins-libav:1.0
+			media-plugins/gst-plugins-openh264:1.0 ) ) )
 "
 # intltool-merge manually called in meson.build in 2.1.5; might be properly gone by 2.2.0 (MR !29)
 
 PATCHES=(
-	"${FILESDIR}"/${PV}-meson-fixes.patch # https://gitlab.gnome.org/GNOME/tracker-miners/merge_requests/49
-	"${FILESDIR}"/${PV}-test-fix.patch # https://gitlab.gnome.org/GNOME/tracker-miners/merge_requests/50
-	"${FILESDIR}"/${PV}-seccomp.patch # https://gitlab.gnome.org/GNOME/tracker-miners/merge_requests/51
-	"${FILESDIR}"/${PV}-rss-symlink-fix{1,2}.patch # tracker-2.1 branch, will be included in 2.1.6
-	"${FILESDIR}"/${PV}-libav-build-fix.patch # master branch, fixed in 2.2.0, might be backported to 2.1.6 too
+	"${FILESDIR}"/${PV}-cue-meson-fixes.patch
 )
 
 pkg_setup() {
@@ -79,6 +77,12 @@ pkg_setup() {
 }
 
 src_prepare() {
+	# Avoid gst-inspect calls that may trigger sandbox; instead assume the detection will succeed and add the needed test deps for that
+	if use gstreamer; then
+		sed -i -e 's:detect-h264-codec.sh:/bin/true:' tests/functional-tests/meson.build || die
+	else
+		sed -i -e 's:detect-h264-codec.sh:/bin/false:' tests/functional-tests/meson.build || die
+	fi
 	xdg_src_prepare
 	gnome2_environment_reset # sets gstreamer safety variables
 }
