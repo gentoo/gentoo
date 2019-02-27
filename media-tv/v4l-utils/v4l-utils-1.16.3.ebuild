@@ -62,3 +62,6 @@ src_install() {
 	newdoc utils/dvb/README README.dvb
 	newdoc utils/v4l2-compliance/fixme.txt fixme.txt.v4l2-compliance
 }
+
+pkg_postinst() { xdg_icon_cache_update; }
+pkg_postrm() { xdg_icon_cache_update; }
