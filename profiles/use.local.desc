@@ -3395,6 +3395,7 @@ media-tv/kodi:webserver - Enable internal webserver
 media-tv/kodi:xslt - Enable XSLT support using dev-libs/libxslt
 media-tv/linuxtv-dvb-apps:alevt - Build videotext decoder
 media-tv/v4l-dvb-saa716x:firmware - Install firmware
+media-tv/v4l-utils:bpf - Enables support for IR BPF decoders.
 media-tv/xmltv:ar - Argentina tv listing grabber
 media-tv/xmltv:ch_search - Grabber for Switzerland
 media-tv/xmltv:dk - Denmark tv listing grabber
