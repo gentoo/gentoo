@@ -64,12 +64,18 @@ src_prepare() {
 		for i in "${FEDORA_SOURCE[@]}" ; do
 			cp -f "${DISTDIR}"/"${P}_${i}" "${WORKDIR}"/"${i}" || die
 		done
+
 		# .spec %prep
 		bash "${WORKDIR}"/"${SOURCE1}" || die
 		cp -f "${WORKDIR}"/"${SOURCE12}" "${S}"/crypto/ec/ || die
 		cp -f "${WORKDIR}"/"${SOURCE13}" "${S}"/test/ || die
 		for i in "${FEDORA_PATCH[@]}" ; do
-			eapply "${DISTDIR}"/"${i}"
+			if [[ "${i}" == "${PATCH37}" ]] ; then
+				# apply our own for OpenSSL 1.1.1b adjusted version of this patch
+				eapply "${FILESDIR}"/openssl-1.1.1b-ec-curves-patch.patch
+			else
+				eapply "${DISTDIR}"/"${i}"
+			fi
 		done
 		# Also see the configure parts below:
 		# enable-ec \
