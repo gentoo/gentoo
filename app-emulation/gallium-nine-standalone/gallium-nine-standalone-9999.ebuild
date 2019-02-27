@@ -5,16 +5,16 @@ EAPI=7
 
 inherit meson multilib-minimal toolchain-funcs
 
+MY_PN="wine-nine-standalone"
 DESCRIPTION="A standalone version of the WINE parts of Gallium Nine"
-HOMEPAGE="https://github.com/dhewg/nine"
+HOMEPAGE="https://github.com/iXit/wine-nine-standalone"
 
 if [[ $PV = 9999* ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="https://github.com/dhewg/nine.git"
+	EGIT_REPO_URI="https://github.com/iXit/${MY_PN}.git"
 else
-	COMMIT=""
-	SRC_URI="https://github.com/dhewg/nine/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
-	S="${WORKDIR}/nine-${COMMIT}"
+	SRC_URI="https://github.com/iXit/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	S="${WORKDIR}/${MY_PN}-${PV}"
 	KEYWORDS="-* ~amd64 ~x86"
 fi
 
@@ -25,7 +25,7 @@ SLOT="0"
 # Steam's Proton.
 
 RDEPEND="
-	media-libs/mesa[d3d9,egl,${MULTILIB_USEDEP}]
+	media-libs/mesa[d3d9,dri3,${MULTILIB_USEDEP}]
 	x11-libs/libX11[${MULTILIB_USEDEP}]
 	x11-libs/libXext[${MULTILIB_USEDEP}]
 	x11-libs/libxcb[${MULTILIB_USEDEP}]
@@ -39,7 +39,7 @@ DEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/flags.patch
-	"${FILESDIR}"/nine-dll-path.patch
+	"${FILESDIR}"/0.3-nine-dll-path.patch
 )
 
 bits() {
@@ -82,6 +82,8 @@ multilib_src_configure() {
 	local emesonargs=(
 		--cross-file "${S}/tools/cross-wine$(bits)"
 		--bindir "$(get_libdir)"
+		-Ddistro-independent=false
+		-Ddri2=false
 	)
 	meson_src_configure
 }
