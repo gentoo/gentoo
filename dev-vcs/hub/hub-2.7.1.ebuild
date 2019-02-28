@@ -29,7 +29,8 @@ src_prepare() {
 }
 
 src_compile() {
-	unset GOPATH
+	GOCACHE="${T}"/go-cache \
+	GOPATH= \
 	./script/build -o bin/${PN} || die
 }
 

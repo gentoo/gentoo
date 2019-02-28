@@ -34,3 +34,9 @@ systemd_dounit "${FILESDIR}"/trickster.service
 keepdir /var/log/${MY_PN}
 fowners ${MY_PN}:${MY_PN} /var/log/${MY_PN}
 }
+
+pkg_postinst() {
+	if [[ -z "${REPLACING_VERSIONS}" ]]; then
+	elog "Please edit ${EROOT}/etc/trickster/trickster.conf for your setup."
+	fi
+}
