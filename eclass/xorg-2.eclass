@@ -236,7 +236,7 @@ fi
 
 DOC_DEPEND="
 	doc? (
-		app-text/asciidoc
+		|| ( app-text/asciidoc dev-ruby/asciidoctor )
 		app-text/xmlto
 		app-doc/doxygen
 		app-text/docbook-xml-dtd:4.1.2
