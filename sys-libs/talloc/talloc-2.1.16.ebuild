@@ -1,10 +1,10 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 )
-PYTHON_REQ_USE="threads"
+PYTHON_COMPAT=( python3_{4,5,6,7} )
+PYTHON_REQ_USE="threads(+)"
 
 inherit waf-utils python-single-r1 multilib multilib-minimal
 
@@ -54,6 +54,7 @@ multilib_src_configure() {
 	local extra_opts=(
 		$(usex compat --enable-talloc-compat1 '')
 		$(multilib_native_usex python '' --disable-python)
+		$([[ ${CHOST} == *-solaris* ]] && echo '--disable-symbol-versions')
 	)
 	waf-utils_src_configure "${extra_opts[@]}"
 }

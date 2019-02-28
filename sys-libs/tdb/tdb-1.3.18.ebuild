@@ -1,10 +1,10 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 )
-PYTHON_REQ_USE="threads"
+PYTHON_COMPAT=( python3_{4,5,6,7} )
+PYTHON_REQ_USE="threads(+)"
 
 inherit waf-utils multilib-minimal python-single-r1
 
@@ -27,6 +27,8 @@ DEPEND="
 
 WAF_BINARY="${S}/buildtools/bin/waf"
 
+RESTRICT="test"
+
 src_prepare() {
 	default
 	python_fix_shebang .
@@ -39,8 +41,7 @@ multilib_src_configure() {
 		extra_opts+=( --disable-python )
 	fi
 
-	waf-utils_src_configure \
-		"${extra_opts[@]}"
+	waf-utils_src_configure "${extra_opts[@]}"
 }
 
 multilib_src_compile() {

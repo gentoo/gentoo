@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python3_{4,5,6,7} )
 PYTHON_REQ_USE="threads(+)"
 
 inherit waf-utils multilib-minimal python-single-r1
@@ -16,7 +16,7 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-linux"
 IUSE="elibc_glibc python"
 
-RDEPEND=">=sys-libs/talloc-2.1.11[${MULTILIB_USEDEP}]
+RDEPEND=">=sys-libs/talloc-2.1.16[${MULTILIB_USEDEP}]
 	python? ( ${PYTHON_DEPS} )"
 
 DEPEND="${RDEPEND}
@@ -33,11 +33,9 @@ DEPEND="${RDEPEND}
 # build system does not work with python3
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-#PATCHES=(
-#	"${FILESDIR}"/talloc-disable-python.patch
-#)
-
 WAF_BINARY="${S}/buildtools/bin/waf"
+
+RESTRICT="test"
 
 pkg_setup() {
 	python-single-r1_pkg_setup

@@ -20,9 +20,9 @@ RDEPEND="
 	!elibc_FreeBSD? ( dev-libs/libbsd[${MULTILIB_USEDEP}] )
 	dev-libs/popt[${MULTILIB_USEDEP}]
 	>=dev-util/cmocka-1.1.3[${MULTILIB_USEDEP}]
-	>=sys-libs/talloc-2.1.15[python?,${MULTILIB_USEDEP}]
-	>=sys-libs/tdb-1.3.17[python?,${MULTILIB_USEDEP}]
-	>=sys-libs/tevent-0.9.38[python(+)?,${MULTILIB_USEDEP}]
+	>=sys-libs/talloc-2.1.16[python?,${MULTILIB_USEDEP}]
+	>=sys-libs/tdb-1.3.18[python?,${MULTILIB_USEDEP}]
+	>=sys-libs/tevent-0.9.39[python(+)?,${MULTILIB_USEDEP}]
 	ldap? ( net-nds/openldap )
 	lmdb? ( >=dev-db/lmdb-0.9.16[${MULTILIB_USEDEP}] )
 	python? ( ${PYTHON_DEPS} )
