@@ -6,8 +6,8 @@ EAPI=6
 inherit cmake-utils gnome2-utils
 
 DESCRIPTION="Synchronize files from ownCloud Server with your computer"
-HOMEPAGE="http://owncloud.org/"
-SRC_URI="http://download.owncloud.com/desktop/stable/${P/-}.tar.xz"
+HOMEPAGE="https://owncloud.org/"
+SRC_URI="https://download.owncloud.com/desktop/stable/${P/-}.tar.xz"
 
 LICENSE="CC-BY-3.0 GPL-2"
 SLOT="0"
