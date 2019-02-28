@@ -1,6 +1,10 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andreas Sturmlechner <asturm@gentoo.org> (28 Feb 2019)
+# media-libs/dav1d is not yet keyworded
+media-video/vlc dav1d
+
 # Andreas Sturmlechner <asturm@gentoo.org> (25 Feb 2019)
 # (SM)BIOS/Thunderbolt outside of amd64/x86? - citation needed
 sys-apps/fwupd dell thunderbolt
