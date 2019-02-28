@@ -7964,7 +7964,7 @@ media-plugins/mediastreamer-amr 0.0.1: mediastreamer plugin: add AMR Narrow Band
 media-plugins/mediastreamer-bcg729 1.0.0: Backported G729 implementation for Linphone
 media-plugins/mediastreamer-ilbc 2.0.3: mediastreamer plugin: add iLBC support
 media-plugins/mediastreamer-x264 1.4.1: mediastreamer plugin: add H264 support
-media-plugins/qmmp-plugin-pack 1.2.2 1.2.4: A set of extra plugins for Qmmp
+media-plugins/qmmp-plugin-pack 1.2.4: A set of extra plugins for Qmmp
 media-plugins/rev-plugins 0.7.1: REV LADSPA plugins package. A stereo reverb plugin based on the well-known greverb
 media-plugins/swh-lv2 1.0.16: Large collection of LV2 audio plugins/effects
 media-plugins/swh-plugins 0.4.15-r3: Large collection of LADSPA audio plugins/effects
@@ -8194,7 +8194,7 @@ media-sound/pympd 0.08.1-r1: a Rhythmbox-like PyGTK+ client for Music Player Dae
 media-sound/qastools 0.21.0: Qt5 GUI ALSA tools: mixer, configuration browser
 media-sound/qjackctl 0.4.5: Qt GUI to control the JACK Audio Connection Kit and ALSA sequencer connections
 media-sound/qmidiroute 0.4.0: QMidiRoute is a filter/router for MIDI events
-media-sound/qmmp 1.2.3 1.2.6: Qt5-based audio player with winamp/xmms skins support
+media-sound/qmmp 1.2.6: Qt5-based audio player with winamp/xmms skins support
 media-sound/qsynth 0.5.0: A Qt application to control FluidSynth
 media-sound/qtscrobbler 0.11_pre20130123: Updates last.fm profiles using information from supported portable music players
 media-sound/quimup 1.4.3: A Qt5 client for the music player daemon (MPD) written in C++
