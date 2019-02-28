@@ -17,10 +17,10 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
 
-DEPEND=""
+DEPEND="media-libs/fontconfig"
 RDEPEND="${DEPEND}"
 
-QA_EXECSTACK="usr/share/grafana/vendor/phantomjs/phantomjs"
+QA_EXECSTACK="usr/share/grafana/tools/phantomjs/phantomjs"
 QA_PREBUILT="usr/bin/grafana-*"
 QA_PRESTRIPPED=${QA_EXECSTACK}
 
@@ -41,6 +41,12 @@ src_install() {
 
 	dobin bin/grafana-cli
 	dobin bin/grafana-server
+
+	exeinto /usr/share/grafana/tools/phantomjs
+	doexe tools/phantomjs/phantomjs
+
+	insinto /usr/share/grafana/tools/phantomjs
+	doins tools/phantomjs/render.js
 
 	newconfd "${FILESDIR}"/grafana.confd grafana
 	newinitd "${FILESDIR}"/grafana.initd.3 grafana
