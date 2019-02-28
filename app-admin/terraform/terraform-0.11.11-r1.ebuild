@@ -17,6 +17,8 @@ KEYWORDS="~amd64"
 IUSE=""
 DEPEND=">=dev-lang/go-1.11.0"
 
+DOCS="README.md CHANGELOG.md"
+
 src_compile() {
 	cd "src/${EGO_PN}" || die
 	GOPATH="${S}" GOCACHE="${T}/go-cache" go build \
@@ -25,4 +27,13 @@ src_compile() {
 
 src_install() {
 	dobin terraform
+
+	pushd "src/${EGO_PN}" || die
+	einstalldocs
+	popd || die
+}
+
+pkg_postinst() {
+	elog "If you would like to install shell completions please run:"
+	elog "    terraform -install-autocomplete"
 }

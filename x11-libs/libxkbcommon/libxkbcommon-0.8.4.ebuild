@@ -22,10 +22,10 @@ IUSE="X doc test"
 
 BDEPEND="
 	sys-devel/bison
-	X? ( x11-base/xorg-proto )
 	doc? ( app-doc/doxygen )"
-DEPEND="X? ( >=x11-libs/libxcb-1.10:=[${MULTILIB_USEDEP},xkb] )"
-RDEPEND="${DEPEND}"
+RDEPEND="X? ( >=x11-libs/libxcb-1.10:=[${MULTILIB_USEDEP},xkb] )"
+DEPEND="${RDEPEND}
+	X? ( x11-base/xorg-proto )"
 
 pkg_setup() {
 	XORG_CONFIGURE_OPTIONS=(
