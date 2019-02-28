@@ -19,6 +19,7 @@ BDEPEND="
 	test? ( dev-qt/qttest:5 )
 "
 DEPEND="
+	app-editors/qhexedit2
 	dev-cpp/antlr-cpp:2
 	dev-db/sqlite:3
 	>=dev-libs/qcustomplot-2.0.0[qt5(+)]
@@ -29,7 +30,6 @@ DEPEND="
 	>=x11-libs/qscintilla-2.10.1:=[qt5(+)]
 "
 RDEPEND="${DEPEND}
-	app-editors/qhexedit2
 	dev-qt/qtsvg:5
 "
 
