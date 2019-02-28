@@ -55,6 +55,11 @@ BDEPEND="
 	virtual/pkgconfig
 	man? ( >=app-text/scdoc-1.8.1 )
 "
+if [[ ${PV} == 9999 ]]; then
+	BDEPEND+="~app-text/scdoc-9999"
+else
+	BDEPEND+="~app-text/scdoc=-1.9.0"
+fi
 
 src_prepare() {
 	default
