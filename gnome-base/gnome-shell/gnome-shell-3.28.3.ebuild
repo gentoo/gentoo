@@ -12,7 +12,7 @@ SRC_URI+=" https://dev.gentoo.org/~leio/distfiles/${P}-patchset.tar.xz"
 
 LICENSE="GPL-2+ LGPL-2+"
 SLOT="0"
-IUSE="+bluetooth +browser-extension elogind +ibus +networkmanager nsplugin systemd telepathy"
+IUSE="+bluetooth +browser-extension elogind gtk-doc +ibus +networkmanager nsplugin systemd telepathy"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	?? ( elogind systemd )"
 
@@ -110,9 +110,10 @@ DEPEND="${COMMON_DEPEND}
 	dev-libs/libxslt
 	>=dev-util/gdbus-codegen-2.45.3
 	dev-util/glib-utils
+	gtk-doc? ( >=dev-util/gtk-doc-1.17 )
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
-" #gtk-doc? ( >=dev-util/gtk-doc-1.17 )
+"
 
 PATCHES=(
 	# Patches from gnome-3-26 branch on top of 3.26.2
@@ -121,6 +122,8 @@ PATCHES=(
 	"${FILESDIR}"/${PV}-defaults.patch
 	# Fix automagic gnome-bluetooth dep, bug #398145
 	"${FILESDIR}"/${PV}-optional-bluetooth.patch
+	# Fix gtk-doc build with >=meson-0.47
+	"${FILESDIR}"/${PV}-fix-gtk-doc-meson.patch
 )
 
 src_prepare() {
@@ -135,7 +138,7 @@ src_configure() {
 	local emesonargs=(
 		$(meson_use bluetooth)
 		$(meson_use nsplugin browser_plugin)
-		#$(meson_use gtk-doc gtk_doc) # fails in gtkdoc-scangobj call with gtk-doc-1.25 (perl regex parenthesis issue); probably needs newer python-based gtk-doc to work
+		$(meson_use gtk-doc gtk_doc)
 		-Dman=true
 		$(meson_use networkmanager)
 		$(meson_use systemd) # this controls journald integration only as of 3.26.2 (structured logging and having gnome-shell launched apps use its own identifier instead of gnome-session)
