@@ -826,7 +826,7 @@ app-eselect/eselect-vi 1.1.9: Manages the /usr/bin/vi symlink
 app-eselect/eselect-wine 1.2.2: Manage active wine version
 app-eselect/eselect-wxwidgets 20140423: Eselect module and wrappers for wxWidgets
 app-eselect/eselect-xvmc 0.4: Manages XvMC implementations
-app-forensics/afflib 3.7.4: Library that implements the AFF image standard
+app-forensics/afflib 3.7.4 3.7.18: Library that implements the AFF image standard
 app-forensics/aide 0.16-r1: AIDE (Advanced Intrusion Detection Environment) is a file integrity checker
 app-forensics/air 2.0.0-r2: A GUI front-end to dd/dc3dd
 app-forensics/chkrootkit 0.52: Tool to locally check for signs of a rootkit
