@@ -23,14 +23,12 @@ KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sh ~x86 ~x86-fbsd ~amd64-linux ~
 # (mouse, keyboards, touchscreen, etc)
 # display panel requires colord and gnome-settings-daemon[colord]
 # printer panel requires cups and smbclient (the latter is not patch yet to be separately optional)
-# Requires gnome_bg_set_color, which was replaced with gnome_bg_set_rgba in 3.27.90
 COMMON_DEPEND="
 	>=dev-libs/glib-2.53.0:2[dbus]
 	>=x11-libs/gdk-pixbuf-2.23.0:2
-	>=x11-libs/gtk+-3.22.0:3[X,wayland?]
+	>=x11-libs/gtk+-3.22.0:3[X,wayland=]
 	>=gnome-base/gsettings-desktop-schemas-3.21.4
-	>=gnome-base/gnome-desktop-3.21.2:3=
-	<gnome-base/gnome-desktop-3.27.90:3
+	>=gnome-base/gnome-desktop-3.27.3:3=
 	>=gnome-base/gnome-settings-daemon-3.25.90[colord,policykit]
 	>=x11-misc/colord-0.1.34:0=
 
@@ -135,6 +133,8 @@ PATCHES=(
 	# Fix some absolute paths to be appropriate for Gentoo
 	"${WORKDIR}"/patches/
 	"${FILESDIR}"/${PV}-without-wayland-fix.patch # Fixes USE=-wayland build against gtk+[wayland]
+	"${FILESDIR}"/${PV}-goa-lifecycle.patch # extra patch from gnome-3-26
+	"${FILESDIR}"/${PV}-gnome-desktop-3-28-compat.patch # backport of porting to gnome-desktop-3.28 API changes; but due to runtime issues we ended up still needing to lock the wayland flags between gtk+ and g-c-c (TODO)
 )
 
 src_configure() {
