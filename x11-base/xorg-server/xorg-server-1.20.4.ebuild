@@ -4,6 +4,7 @@
 EAPI=7
 
 XORG_DOC=doc
+XORG_EAUTORECONF="yes"
 inherit xorg-3 multilib flag-o-matic
 EGIT_REPO_URI="https://anongit.freedesktop.org/git/xorg/xserver.git"
 
@@ -110,6 +111,9 @@ REQUIRED_USE="!minimal? (
 	xephyr? ( kdrive )"
 
 UPSTREAMED_PATCHES=(
+	"${FILESDIR}"/${P}-shm-reindent-shm_tmpfile-to-follow-our-standards.patch
+	"${FILESDIR}"/${P}-shm-Pick-the-shm-dir-at-run-time-not-build-time.patch
+	"${FILESDIR}"/${P}-shm-Use-memfd_create-when-possible.patch
 )
 
 PATCHES=(
@@ -165,6 +169,7 @@ pkg_setup() {
 		--disable-linux-acpi
 		--without-dtrace
 		--without-fop
+		--with-os-vendor=Gentoo
 		--with-sha1=libcrypto
 	)
 }

@@ -1,0 +1,72 @@
+From 804a9b4f57107fa2d0ed1ae0becda5bebaffe6e1 Mon Sep 17 00:00:00 2001
+From: Eric Anholt <eric@anholt.net>
+Date: Wed, 19 Sep 2018 13:20:12 -0700
+Subject: [PATCH xserver] shm: reindent shm_tmpfile to follow our standards.
+
+Signed-off-by: Eric Anholt <eric@anholt.net>
+---
+ Xext/shm.c | 40 ++++++++++++++++++++--------------------
+ 1 file changed, 20 insertions(+), 20 deletions(-)
+
+diff --git a/Xext/shm.c b/Xext/shm.c
+index 589ed0b4d..ed43b9202 100644
+--- a/Xext/shm.c
++++ b/Xext/shm.c
+@@ -1195,34 +1195,34 @@ static int
+ shm_tmpfile(void)
+ {
+ #ifdef SHMDIR
+-	int	fd;
+-	char	template[] = SHMDIR "/shmfd-XXXXXX";
++    int	fd;
++    char	template[] = SHMDIR "/shmfd-XXXXXX";
+ #ifdef O_TMPFILE
+-	fd = open(SHMDIR, O_TMPFILE|O_RDWR|O_CLOEXEC|O_EXCL, 0666);
+-	if (fd >= 0) {
+-		DebugF ("Using O_TMPFILE\n");
+-		return fd;
+-	}
+-	ErrorF ("Not using O_TMPFILE\n");
++    fd = open(SHMDIR, O_TMPFILE|O_RDWR|O_CLOEXEC|O_EXCL, 0666);
++    if (fd >= 0) {
++        DebugF ("Using O_TMPFILE\n");
++        return fd;
++    }
++    ErrorF ("Not using O_TMPFILE\n");
+ #endif
+ #ifdef HAVE_MKOSTEMP
+-	fd = mkostemp(template, O_CLOEXEC);
++    fd = mkostemp(template, O_CLOEXEC);
+ #else
+-	fd = mkstemp(template);
++    fd = mkstemp(template);
+ #endif
+-	if (fd < 0)
+-		return -1;
+-	unlink(template);
++    if (fd < 0)
++        return -1;
++    unlink(template);
+ #ifndef HAVE_MKOSTEMP
+-	int flags = fcntl(fd, F_GETFD);
+-	if (flags != -1) {
+-		flags |= FD_CLOEXEC;
+-		(void) fcntl(fd, F_SETFD, &flags);
+-	}
++    int flags = fcntl(fd, F_GETFD);
++    if (flags != -1) {
++        flags |= FD_CLOEXEC;
++        (void) fcntl(fd, F_SETFD, &flags);
++    }
+ #endif
+-	return fd;
++    return fd;
+ #else
+-        return -1;
++    return -1;
+ #endif
+ }
+ 
+-- 
+2.19.2
+

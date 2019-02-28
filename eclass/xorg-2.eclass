@@ -80,7 +80,8 @@ HOMEPAGE="https://www.x.org/wiki/ https://cgit.freedesktop.org/"
 # The subdirectory to download source from. Possible settings are app,
 # doc, data, util, driver, font, lib, proto, xserver. Set above the
 # inherit to override the default autoconfigured module.
-if [[ -z ${XORG_MODULE} ]]; then
+: ${XORG_MODULE:="auto"}
+if [[ ${XORG_MODULE} == auto ]]; then
 	case ${CATEGORY} in
 		app-doc)             XORG_MODULE=doc/     ;;
 		media-fonts)         XORG_MODULE=font/    ;;
@@ -236,7 +237,7 @@ fi
 
 DOC_DEPEND="
 	doc? (
-		app-text/asciidoc
+		|| ( app-text/asciidoc dev-ruby/asciidoctor )
 		app-text/xmlto
 		app-doc/doxygen
 		app-text/docbook-xml-dtd:4.1.2
@@ -257,19 +258,7 @@ case ${XORG_DOC} in
 esac
 unset DOC_DEPEND
 
-# @ECLASS-VARIABLE: XORG_MODULE_REBUILD
-# @DESCRIPTION:
-# Describes whether a package contains modules that need to be rebuilt on
-# xorg-server upgrade. This has an effect only since EAPI=5.
-# Possible values are "yes" or "no". Default value is "yes" for packages which
-# are recognized as DRIVER by this eclass and "no" for all other packages.
-if [[ "${DRIVER}" == yes ]]; then
-	: ${XORG_MODULE_REBUILD:="yes"}
-else
-	: ${XORG_MODULE_REBUILD:="no"}
-fi
-
-if [[ ${XORG_MODULE_REBUILD} == yes ]]; then
+if [[ ${DRIVER} == yes ]]; then
 	case ${EAPI} in
 		4)
 			;;
