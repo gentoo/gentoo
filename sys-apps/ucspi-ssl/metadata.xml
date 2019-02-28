@@ -17,4 +17,7 @@
 		building SSL client-server applications. They conform to the UNIX
 		Client-Server Program Interface, UCSPI.
 	</longdescription>
+	<use>
+		<flag name="bindist">Disable EC/RC5 algorithms in OpenSSL for patent reasons.</flag>
+	</use>
 </pkgmetadata>
