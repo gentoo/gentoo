@@ -1183,7 +1183,7 @@ app-office/openoffice-bin 4.1.6: Apache OpenOffice productivity suite
 app-office/orage 4.12.1-r1: A time managing application (and panel plug-in) for the Xfce desktop environment
 app-office/pinpoint 0.1.8-r1: A tool for making hackers do excellent presentations
 app-office/planner 0.14.6_p20130520: Project manager for Gnome
-app-office/pybliographer 1.2.15-r1: Pybliographer is a tool for working with bibliographic databases
+app-office/pybliographer 1.2.15-r1 1.2.18: Pybliographer is a tool for working with bibliographic databases
 app-office/sc 7.16-r2: Spreadsheet Calculator
 app-office/scribus 1.5.5_pre20190124: Desktop publishing (DTP) and layout program
 app-office/skrooge 2.16.2 2.17.0: Personal finances manager, aiming at being simple and intuitive
@@ -7137,7 +7137,7 @@ mail-filter/spamassassin 3.4.2-r2: An extensible mail filter which can identify 
 mail-filter/spamdyke 4.3.0: A drop-in connection-time spam filter for qmail
 mail-filter/spamprobe 1.4d-r1: Fast, intelligent, automatic spam detector using Bayesian analysis
 mail-filter/sqlgrey 1.7.6-r2: SQLgrey is a postfix policy service implementing a grey-listing policy
-mail-mta/courier 0.75.0: An MTA designed specifically for maildirs
+mail-mta/courier 0.75.0 1.0.5: An MTA designed specifically for maildirs
 mail-mta/esmtp 1.2: User configurable relay-only Mail Transfer Agent with a sendmail-like syntax
 mail-mta/exim 4.91-r2: A highly configurable, drop-in replacement for sendmail
 mail-mta/mini-qmail 1.06: a small null client that forwards mail via QMQP to a full qmail server
@@ -8153,7 +8153,7 @@ media-sound/mp3info 0.8.5a: An MP3 technical info viewer and ID3 1.x tag editor
 media-sound/mp3splt 2.6.1a: a command line utility to split mp3 and ogg files without decoding
 media-sound/mp3splt-gtk 0.9.2-r1: a GTK+ based utility to split mp3 and ogg files without decoding
 media-sound/mp3wrap 0.5: Command-line utility that wraps quickly two or more mp3 files in one single large playable mp3
-media-sound/mpc 0.30: A commandline client for Music Player Daemon (media-sound/mpd)
+media-sound/mpc 0.30 0.31-r1: Commandline client for Music Player Daemon (media-sound/mpd)
 media-sound/mpd 0.20.21-r1 0.21.4-r1: The Music Player Daemon (mpd)
 media-sound/mpdas 0.4.0-r1: An AudioScrobbler client for MPD written in C++
 media-sound/mpdscribble 0.22: An MPD client that submits information to Audioscrobbler
@@ -8553,7 +8553,7 @@ net-dns/avahi 0.7-r1: System which facilitates service discovery on a local netw
 net-dns/bind 9.12.2_p2-r1: BIND - Berkeley Internet Name Domain - Name Server
 net-dns/bind-tools 9.11.2_p1 9.12.2_p2-r1: bind tools: dig, nslookup, host, nsupdate, dnssec-keygen
 net-dns/c-ares 1.13.0: C library that resolves names asynchronously
-net-dns/ddclient 3.8.1-r5 3.9.0-r1: Perl client used to update dynamic DNS entries
+net-dns/ddclient 3.8.1-r5 3.9.0-r1 3.9.0-r2: Perl client used to update dynamic DNS entries
 net-dns/djbdns 1.05-r32 1.05-r33: Collection of DNS client/server software
 net-dns/dnscrypt-proxy 2.0.19: A flexible DNS proxy, with support for encrypted DNS protocols
 net-dns/dnsmasq 2.79 2.80: Small forwarding DNS server
@@ -8699,8 +8699,8 @@ net-libs/biblesync 1.1.2-r2: A multicast protocol to support Bible software shar
 net-libs/c-client 2007f-r6: UW IMAP c-client library
 net-libs/canlock 2b: A library for creating and verifying Usenet cancel locks
 net-libs/ccrtp 2.1.2: GNU ccRTP - Implementation of the IETF real-time transport protocol
-net-libs/courier-authlib 0.65.0-r3 0.66.4: Courier authentication library
-net-libs/courier-unicode 1.3: Unicode library used by the courier mail server
+net-libs/courier-authlib 0.65.0-r3 0.66.4 0.69.0-r1: Courier authentication library
+net-libs/courier-unicode 1.3 2.1: Unicode library used by the courier mail server
 net-libs/cppzmq 0_pre150606: High-level CPP Binding for ZeroMQ
 net-libs/czmq 2.2.0-r2 3.0.2: High-level C Binding for ZeroMQ
 net-libs/daq 0.6.2: Data Acquisition library, for packet I/O
@@ -8726,7 +8726,7 @@ net-libs/gupnp-igd 0.2.5: Library to handle UPnP IGD port mapping for GUPnP
 net-libs/http-parser 2.8.1: HTTP request/response parser for C
 net-libs/ldns 1.7.0-r2: a library with the aim to simplify DNS programming in C
 net-libs/libaccounts-glib 1.23: Accounts SSO (Single Sign-On) management library for GLib applications
-net-libs/libasyncns 0.8-r3: C library for executing name service queries asynchronously
+net-libs/libasyncns 0.8-r3 0.8-r4: C library for executing name service queries asynchronously
 net-libs/libbitcoinconsensus 0.16.3: Bitcoin Core consensus library
 net-libs/libblkmaker 0.3.2: C implementation of getblocktemplate (BIP 22)
 net-libs/libcapi 3.0.7-r1: CAPI library used by AVM products
@@ -10680,7 +10680,7 @@ www-servers/monkeyd 1.6.9-r1: A small, fast, and scalable web server
 www-servers/nginx 1.14.2-r3: Robust, small and high performance http and reverse proxy server
 www-servers/pound 2.7f-r1: A http/https reverse-proxy and load-balancer
 www-servers/puma 3.11.4: a simple, fast, threaded, and highly concurrent HTTP 1.1 server for Ruby/Rack
-www-servers/spawn-fcgi 1.6.3-r1: A FCGI spawner for lighttpd and cherokee and other webservers
+www-servers/spawn-fcgi 1.6.3-r1 1.6.4-r1: A FCGI spawner for lighttpd and cherokee and other webservers
 www-servers/thttpd 2.27.1: Fork of thttpd, a small, fast, multiplexing webserver
 www-servers/tomcat 7.0.92 8.0.52 8.5.31 9.0.7: Tomcat Servlet-4.0/JSP-2.4?/EL-3.1?/WebSocket-1.2?/JASPIC-1.1 Container
 www-servers/tornado 4.4.2-r1 4.5.3: Python web framework and asynchronous networking library
