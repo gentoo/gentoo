@@ -48,3 +48,8 @@ multilib_src_configure() {
 multilib_src_test() {
 	virtx emake check
 }
+
+multilib_src_install() {
+	default
+	find "${ED}" -name '*.la' -delete || die
+}
