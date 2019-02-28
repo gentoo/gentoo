@@ -6210,6 +6210,7 @@ x11-wm/i3:doc - Build and install the HTML documentation and regenerate the man 
 x11-wm/lumina:desktop-utils - Build and install lumina's desktop-utils
 x11-wm/musca:apis - Optionally install the experimental `apis' window manager
 x11-wm/musca:xlisten - Optionally install the xlisten utility
+x11-wm/mutter:elogind - Rely on sys-auth/elogind as logind provider for Wayland sessions
 x11-wm/mutter:gles2 - Enable OpenGL ES 2.0 support
 x11-wm/openbox:session - Enables support for session managers
 x11-wm/openbox:xdg - Install the python xdg files for xdg autostart
