@@ -1,0 +1,13 @@
+diff --git a/src/functions/FunctionParseHTML.cpp b/src/functions/FunctionParseHTML.cpp
+index 833d997..920895d 100644
+--- a/src/functions/FunctionParseHTML.cpp
++++ b/src/functions/FunctionParseHTML.cpp
+@@ -30,7 +30,7 @@
+ 
+ #ifdef HAVE_LIBTIDY
+ #include <tidy.h>
+-#include <buffio.h>
++#include <tidybuffio.h>
+ #endif
+ 
+ #include <xercesc/util/XMLString.hpp>
