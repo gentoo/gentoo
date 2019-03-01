@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,16 +11,9 @@ if [[ ${PV} = *9999* ]]; then
 	EGIT_CHECKOUT_DIR="${WORKDIR}/${P}/src/${EGO_PN}"
 	inherit git-r3
 else
-	inherit versionator
-	if [ "$(get_version_component_count)" = 4 ]; then
-		MY_PV="$(replace_version_separator 3 '-ce-')"
-	else
-		MY_PV="$PV-ce"
-	fi
-	DOCKER_GITCOMMIT="9ee9f40"
-	EGIT_COMMIT="v${MY_PV}"
-	SRC_URI="https://${EGO_PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm"
+	DOCKER_GITCOMMIT="774a1f4"
+	SRC_URI="https://${EGO_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~amd64 ~arm ~arm64"
 	[ "$DOCKER_GITCOMMIT" ] || die "DOCKER_GITCOMMIT must be added manually for each bump!"
 	inherit golang-vcs-snapshot
 fi
@@ -30,7 +23,7 @@ DESCRIPTION="The core functions you need to create Docker images and run Docker 
 HOMEPAGE="https://dockerproject.org"
 LICENSE="Apache-2.0"
 SLOT="0"
-IUSE="apparmor aufs btrfs +container-init +device-mapper hardened +overlay pkcs11 seccomp"
+IUSE="apparmor aufs btrfs +container-init device-mapper hardened +overlay pkcs11 seccomp"
 
 # https://github.com/docker/docker/blob/master/project/PACKAGERS.md#build-dependencies
 CDEPEND="
@@ -61,17 +54,16 @@ RDEPEND="
 	>=dev-vcs/git-1.7
 	>=app-arch/xz-utils-4.9
 	dev-libs/libltdl
-	~app-emulation/containerd-1.0.3
-	~app-emulation/runc-1.0.0_rc5[apparmor?,seccomp?]
-	~app-emulation/docker-proxy-0.8.0_p20180411
-	container-init? ( >=sys-process/tini-0.16.1[static] )
+	~app-emulation/containerd-1.2.2
+	~app-emulation/runc-1.0.0_rc6_p20181203[apparmor?,seccomp?]
+	>=app-emulation/runc-1.0.0_rc6_p20181203-r1
+	~app-emulation/docker-proxy-0.8.0_p20181207
+	container-init? ( >=sys-process/tini-0.18.0[static] )
 "
 
 RESTRICT="installsources strip"
 
 S="${WORKDIR}/${P}/src/${EGO_PN}"
-
-PATCHES=( "${FILESDIR}"/bsc1073877-docker-apparmor-add-signal-r1.patch )
 
 # see "contrib/check-config.sh" from upstream's sources
 CONFIG_CHECK="
@@ -282,6 +274,8 @@ src_install() {
 	doman man/man*/*
 
 	dobashcomp contrib/completion/bash/*
+	insinto /usr/share/fish/vendor_completions.d/
+	doins contrib/completion/fish/docker.fish
 	insinto /usr/share/zsh/site-functions
 	doins contrib/completion/zsh/_*
 	popd || die # components/cli
@@ -300,4 +294,7 @@ pkg_postinst() {
 	elog "To use Docker as a non-root user, add yourself to the 'docker' group:"
 	elog "  usermod -aG docker youruser"
 	elog
+
+	elog " Devicemapper storage driver has been deprecated"
+	elog " It will be removed in a future release"
 }
