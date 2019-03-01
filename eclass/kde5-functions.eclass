@@ -41,6 +41,7 @@ case ${CATEGORY} in
 		[[ ${PV} = 5.14.5 ]] && : ${FRAMEWORKS_MINIMAL:=5.52.0}
 		if [[ ${KDE_BUILD_TYPE} = live && ${PV} != 5.??.49* ]]; then
 			: ${FRAMEWORKS_MINIMAL:=9999}
+			: ${QT_MINIMAL:=5.12.1}
 		fi
 		;;
 esac
