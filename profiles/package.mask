@@ -29,6 +29,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Eray Aslan <eras@gentoo.org> (01 Mar 2019)
+# Mask experimental software
+=mail-mta/postfix-3.5*
+
 # Michał Górny <mgorny@gentoo.org> (24 Feb 2019)
 # Making releng key cert-only broke validating old releases.  Mask
 # the relevant version until the key is fixed.  Bug #678660.
@@ -271,10 +275,6 @@ media-libs/libglvnd
 # Likely to break a lot of software
 # Masked for initial testing
 >=dev-db/mysql-connector-c++-8.0.0
-
-# Eray Aslan <eras@gentoo.org> (08 Feb 2018)
-# Mask experimental software
-=mail-mta/postfix-3.4*
 
 # Eray Aslan <eras@gentoo.org> (22 Jan 2018)
 # Vulnerable - see https://bugs.gentoo.org/630684
