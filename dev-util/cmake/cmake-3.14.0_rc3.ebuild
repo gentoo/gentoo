@@ -50,7 +50,7 @@ SITEFILE="50${PN}-gentoo.el"
 PATCHES=(
 	# prefix
 	"${FILESDIR}"/${PN}-3.4.0_rc1-darwin-bundle.patch
-	"${FILESDIR}"/${PN}-3.14.0_rc2-prefix-dirs.patch
+	"${FILESDIR}"/${PN}-3.14.0_rc3-prefix-dirs.patch
 	# Next patch requires new work from prefix people
 	#"${FILESDIR}"/${PN}-3.1.0-darwin-isysroot.patch
 
