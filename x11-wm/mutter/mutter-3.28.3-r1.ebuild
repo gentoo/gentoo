@@ -17,7 +17,7 @@ IUSE="debug elogind gles2 input_devices_wacom +introspection systemd test udev w
 # gles2 may be avoidable, but probably not worth the effort before switching to meson; without it, it seems it'll have subtle lost features as well that isn't explained to user atm.
 REQUIRED_USE="
 	wayland? (
-		?? ( elogind systemd )
+		^^ ( elogind systemd )
 		gles2
 	)"
 
