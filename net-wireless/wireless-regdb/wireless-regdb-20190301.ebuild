@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -27,6 +27,12 @@ src_install() {
 
 	insinto /etc/wireless-regdb/pubkeys
 	doins sforshee.key.pub.pem
+
+	# Linux 4.15 now complains if the firmware loader
+	# can't find these files #643520
+	insinto /lib/firmware
+	doins regulatory.db
+	doins regulatory.db.p7s
 
 	doman regulatory.bin.5
 	dodoc README db.txt
