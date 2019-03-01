@@ -10,4 +10,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=mirror://sourceforge/docbook/docbook-xsl-1.79.1.tar.bz2
 _eclasses_=ruby-single	e6530f43a549f120f9396ccb852288f5	ruby-utils	10cec86289e60f4b0d731b2e4b545e5d
-_md5_=3d178aee6907b70e4d687622e60d45e2
+_md5_=f7cf64b383db60a572e2f63d200b092d
