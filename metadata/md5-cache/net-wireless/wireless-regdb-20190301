@@ -5,5 +5,5 @@ HOMEPAGE=https://wireless.kernel.org/en/developers/Regulatory
 KEYWORDS=alpha amd64 arm ~arm64 ia64 ~mips ppc ppc64 sparc x86
 LICENSE=ISC
 SLOT=0
-SRC_URI=https://www.kernel.org/pub/software/network/wireless-regdb/wireless-regdb-2018.09.07.tar.xz
-_md5_=8f8820e45d7717c25fef3dc4122d10c5
+SRC_URI=https://www.kernel.org/pub/software/network/wireless-regdb/wireless-regdb-2019.03.01.tar.xz
+_md5_=e324df738dbd6bbf63c38eb8f744c5aa
