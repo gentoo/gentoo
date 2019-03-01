@@ -6,7 +6,7 @@ USE_RUBY="ruby22 ruby23 ruby24 ruby25"
 
 inherit ruby-single
 
-DOCBOOKDIR="${EPREFIX}/usr/share/sgml/${PN/-//}"
+DOCBOOKDIR="/usr/share/sgml/${PN/-//}"
 MY_PN="${PN%-stylesheets}"
 MY_P="${MY_PN}-${PV}"
 
@@ -84,12 +84,12 @@ src_install() {
 		# we can't use a symlink or it'll look for the library in the
 		# wrong path.
 		dodir /usr/bin
-		cat - > "${D}"${EPREFIX}/usr/bin/${cmd} <<EOF
+		cat - > "${ED%/}"/usr/bin/${cmd} <<EOF
 #!/usr/bin/env ruby
 
-load "${DOCBOOKDIR}/epub/bin/dbtoepub"
+load "${EPREFIX}${DOCBOOKDIR}/epub/bin/dbtoepub"
 EOF
-		fperms 0755 ${EPREFIX}/usr/bin/${cmd}
+		fperms 0755 /usr/bin/${cmd}
 	fi
 }
 
