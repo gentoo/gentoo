@@ -17,6 +17,7 @@ i915 - VIDEO_CARDS setting to build driver for Intel i915 video cards
 i965 - VIDEO_CARDS setting to build driver for Intel i965 video cards
 imx - VIDEO_CARDS setting to build driver for Freescale i.MX video cards
 intel - VIDEO_CARDS setting to build driver for Intel video cards
+iris - VIDEO_CARDS setting to build driver for Intel video cards Gen8 / Broadwell or newer
 mga - VIDEO_CARDS setting to build driver for mga video cards
 newport - VIDEO_CARDS setting to build driver for newport video cards
 nouveau - VIDEO_CARDS setting to build reverse-engineered driver for nvidia cards
