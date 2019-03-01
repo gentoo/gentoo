@@ -1,7 +1,8 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
+
 inherit flag-o-matic pam systemd toolchain-funcs user
 
 MY_PV="${PV/_rc/-RC}"
@@ -59,7 +60,12 @@ REQUIRED_USE="ldap-bind? ( ldap sasl )"
 
 S="${WORKDIR}/${MY_SRC}"
 
+PATCHES=( "${FILESDIR}/${PN}-linux-5.patch" )
+
 pkg_setup() {
+	if use libressl; then
+		die "LibreSSL patches are not yet available for postfix-3.4 releases."
+	fi
 	# Add postfix, postdrop user/group (bug #77565)
 	enewgroup postfix 207
 	enewgroup postdrop 208
@@ -72,11 +78,11 @@ src_prepare() {
 		src/util/sys_defs.h || die "sed failed"
 	# change default paths to better comply with portage standard paths
 	sed -i -e "s:/usr/local/:/usr/:g" conf/master.cf || die "sed failed"
-	eapply "${FILESDIR}/${PN}-linux-5.patch"
-	eapply -p0 "${FILESDIR}/${PN}-libressl.patch" \
-		"${FILESDIR}/${PN}-libressl-runtime.patch" \
-		"${FILESDIR}/${PN}-libressl-eccurve.patch"
-		#"${FILESDIR}/${PN}-libressl-session-tickets.patch"
+	# libressl support needs work for postfix-3.4
+	#eapply -p0 "${FILESDIR}/${PN}-libressl.patch" \
+	#	"${FILESDIR}/${PN}-libressl-runtime.patch" \
+	#	"${FILESDIR}/${PN}-libressl-eccurve.patch"
+	#	"${FILESDIR}/${PN}-libressl-session-tickets.patch"
 }
 
 src_configure() {
