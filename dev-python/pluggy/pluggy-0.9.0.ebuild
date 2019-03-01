@@ -23,10 +23,6 @@ DEPEND="${RDEPEND}
 		dev-python/pytest[${PYTHON_USEDEP}]
 	)"
 
-PATCHES=(
-	"${FILESDIR}/${PN}-0.7.1-disable-broken-tests.patch"
-)
-
 python_test() {
 	PYTHONPATH="${BUILD_DIR}/lib" pytest -v || die "tests failed with ${EPYTHON}"
 }
