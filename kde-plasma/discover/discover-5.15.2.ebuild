@@ -4,6 +4,7 @@
 EAPI=7
 
 KDE_TEST="forceoptional"
+VIRTUALX_REQUIRED="test"
 inherit kde5
 
 DESCRIPTION="KDE Plasma resources management GUI"
