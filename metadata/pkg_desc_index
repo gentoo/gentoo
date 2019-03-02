@@ -1208,7 +1208,7 @@ app-pda/jpilot 1.8.2: Desktop Organizer Software for the Palm Pilot
 app-pda/libimobiledevice 1.2.0-r1: Support library to communicate with Apple iPhone/iPod Touch devices
 app-pda/libplist 2.0.0: Support library to deal with Apple Property Lists (Binary & XML)
 app-pda/libusbmuxd 1.0.9: USB multiplex daemon for use with Apple iPhone/iPod Touch devices
-app-pda/pilot-link 0.12.5-r1 0.12.5-r2: Suite of tools for moving data between a Palm device and a desktop
+app-pda/pilot-link 0.12.5-r2: Suite of tools for moving data between a Palm device and a desktop
 app-pda/usbmuxd 1.0.8_p20140530: USB multiplex daemon for use with Apple iPhone/iPod Touch devices
 app-portage/cfg-update 1.8.9: Easy to use GUI & CLI alternative for etc-update
 app-portage/conf-update 1.0.3-r1: conf-update is a ncurses-based config management utility
@@ -8532,7 +8532,7 @@ net-dialup/freeradius-client 1.1.7: FreeRADIUS Client framework
 net-dialup/globespan-adsl 0.11-r1: Driver for various ADSL modems. Also known as EciAdsl
 net-dialup/isdn-firmware 2005.8.15.2: ISDN firmware for active ISDN cards (AVM, Eicon, etc.)
 net-dialup/kpnadsl4linux 1.11: ADSL4Linux, a PPTP start/stop/etc. program especially for Dutch users
-net-dialup/linux-atm 2.5.0 2.5.2: Tools for ATM
+net-dialup/linux-atm 2.5.2: Tools for ATM
 net-dialup/lrzsz 0.12.20-r4: Communication package providing the X, Y, and ZMODEM file transfer protocols
 net-dialup/mgetty 1.1.37-r1 1.2.1: fax and voice modem programs
 net-dialup/mingetty 1.08-r1: A compact getty program for virtual consoles only
@@ -9384,7 +9384,7 @@ sci-electronics/voacapl 0.6.7 0.7.2: HF propagation prediction tool
 sci-electronics/xcircuit 3.7.48: Circuit drawing and schematic capture program
 sci-electronics/xnec2c 3.5.1: A GTK+ graphical interactive version of nec2c
 sci-electronics/xoscope 2.0: Soundcard Oscilloscope for X
-sci-geosciences/congen 1.6.2 1.6.2-r1: Calculate speeds, equilibrium arguments, node factors of tidal constituents
+sci-geosciences/congen 1.6.2-r1: Calculate speeds, equilibrium arguments, node factors of tidal constituents
 sci-geosciences/foxtrotgps 1.2.0: Easy to use, fast and lightweight mapping application (fork of tangogps)
 sci-geosciences/geocode-glib 3.24.0: GLib helper library for geocoding services
 sci-geosciences/gmt 4.5.6: Powerful map generator
@@ -9392,7 +9392,7 @@ sci-geosciences/gnome-maps 3.24.3: A map application for GNOME
 sci-geosciences/gpsbabel 1.5.4-r1: GPS waypoints, tracks and routes converter
 sci-geosciences/gpsd 3.17-r3: GPS daemon and library for USB/serial GPS devices and GPS/mapping clients
 sci-geosciences/gtk-g-rays2 2.05: GUI for accessing the Wintec WBT 201 / G-Rays 2 GPS device
-sci-geosciences/harmonics-dwf-free 20121224 20131228: Tidal harmonics database for libtcd
+sci-geosciences/harmonics-dwf-free 20131228: Tidal harmonics database for libtcd
 sci-geosciences/harmonics-dwf-free-noncomm 20111230-r1: Tidal harmonics database for libtcd
 sci-geosciences/josm 10966: Java-based editor for the OpenStreetMap project
 sci-geosciences/laszip 2.2.0: Library for free and lossless compression of the LAS LiDAR format

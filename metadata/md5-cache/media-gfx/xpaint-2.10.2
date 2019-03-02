@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare
+DEPEND=media-libs/fontconfig media-libs/freetype:2 media-libs/libpng:0= x11-libs/libICE x11-libs/libX11 >=x11-libs/libXaw3dXft-1.6.2c[unicode] x11-libs/libXext x11-libs/libXft x11-libs/libXmu x11-libs/libXpm x11-libs/libXt sys-libs/zlib virtual/jpeg:0 jpeg2k? ( media-libs/openjpeg:0= ) pgf? ( media-libs/libpgf ) tiff? ( media-libs/jbigkit:0= media-libs/tiff:0 ) sys-devel/flex sys-devel/bison virtual/pkgconfig
+DESCRIPTION=Image editor with tiff, jpeg and png support
+EAPI=7
+HOMEPAGE=http://sf-xpaint.sourceforge.net/
+IUSE=jpeg2k pgf tiff
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=media-libs/fontconfig media-libs/freetype:2 media-libs/libpng:0= x11-libs/libICE x11-libs/libX11 >=x11-libs/libXaw3dXft-1.6.2c[unicode] x11-libs/libXext x11-libs/libXft x11-libs/libXmu x11-libs/libXpm x11-libs/libXt sys-libs/zlib virtual/jpeg:0 jpeg2k? ( media-libs/openjpeg:0= ) pgf? ( media-libs/libpgf ) tiff? ( media-libs/jbigkit:0= media-libs/tiff:0 )
+SLOT=0
+SRC_URI=mirror://sourceforge/sf-xpaint/xpaint-2.10.2.tar.bz2
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_md5_=c607a24ce3ef4c08a9c4e7d0835e5f5c
