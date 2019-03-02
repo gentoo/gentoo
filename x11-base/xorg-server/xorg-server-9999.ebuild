@@ -170,7 +170,7 @@ pkg_setup() {
 }
 
 src_install() {
-	default
+	xorg-3_src_install
 
 	server_based_install
 
