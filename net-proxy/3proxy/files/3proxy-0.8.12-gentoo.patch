@@ -1,0 +1,49 @@
+diff -uNr a/Makefile.Linux b/Makefile.Linux
+--- a/Makefile.Linux	2018-04-18 22:48:45.000000000 +0300
++++ b/Makefile.Linux	2019-05-26 14:42:38.927811513 +0300
+@@ -8,13 +8,13 @@
+ # library support. Add -DSAFESQL for poorely written ODBC library / drivers.
+ 
+ BUILDDIR =
+-CC = gcc
++CC ?= gcc
+ 
+-CFLAGS = -g -O2 -fno-strict-aliasing -c -pthread -DGETHOSTBYNAME_R -D_THREAD_SAFE -D_REENTRANT -DNOODBC -DWITH_STD_MALLOC -DFD_SETSIZE=4096 -DWITH_POLL
++CFLAGS += -fno-strict-aliasing -c -pthread -DGETHOSTBYNAME_R -D_THREAD_SAFE -D_REENTRANT -DNOODBC -DWITH_STD_MALLOC -DFD_SETSIZE=4096 -DWITH_POLL
+ COUT = -o 
+-LN = gcc
++LN ?= gcc
+ DCFLAGS = -fpic
+-LDFLAGS = -O2 -fno-strict-aliasing -pthread
++LDFLAGS += -fno-strict-aliasing -pthread
+ DLFLAGS = -shared
+ DLSUFFICS = .ld.so
+ # -lpthreads may be reuqired on some platforms instead of -pthreads
+@@ -39,12 +39,12 @@
+ include Makefile.inc
+ 
+ allplugins:
+-	@list='$(PLUGINS)'; for p in $$list; do cp Makefile Makefile.var plugins/$$p; cd plugins/$$p ; make ;	cd ../.. ; done
++	@list='$(PLUGINS)'; for p in $$list; do cp Makefile Makefile.var plugins/$$p; cd plugins/$$p ; $(MAKE) ;	cd ../.. ; done
+ 
+ DESTDIR		=
+-prefix		= /usr/local
++prefix		=
+ exec_prefix	= $(prefix)
+-man_prefix	= $(prefix)/share
++man_prefix	= $(prefix)/usr/share
+ 
+ INSTALL		= /usr/bin/install
+ INSTALL_BIN	= $(INSTALL) -m 755
+diff -uNr a/src/stringtable.c b/src/stringtable.c
+--- a/src/stringtable.c	2018-04-18 22:48:45.000000000 +0300
++++ b/src/stringtable.c	2019-05-26 14:42:07.437810566 +0300
+@@ -38,7 +38,7 @@
+ /* 24 */	NULL,
+ #ifndef TPROXY_CONF
+ #ifndef _WIN32
+-/* 25 */	(unsigned char *)"/usr/local/etc/3proxy/3proxy.cfg",
++/* 25 */	(unsigned char *)"/etc/3proxy/3proxy.cfg",
+ #else
+ /* 25 */	(unsigned char *)"3proxy.cfg",
+ #endif
