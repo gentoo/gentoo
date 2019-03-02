@@ -104,8 +104,6 @@ python_prepare_all() {
 }
 
 python_compile() {
-	export MAKEOPTS=-j1 # bug #660754
-
 	distutils-r1_python_compile -j $(makeopts_jobs) ${NUMPY_FCONFIG}
 }
 
