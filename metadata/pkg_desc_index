@@ -1435,7 +1435,7 @@ app-text/pep 2.8-r2: General purpose filter and file cleaning program
 app-text/pinfo 0.6.10-r5: Hypertext info and man viewer based on (n)curses
 app-text/po4a 0.47-r1: Tools for helping translation of documentation
 app-text/podofo 0.9.6_pre20170508-r1: PoDoFo is a C++ library to work with the PDF file format
-app-text/poppler 0.68.0 0.74.0: PDF rendering library based on the xpdf-3.0 code base
+app-text/poppler 0.74.0: PDF rendering library based on the xpdf-3.0 code base
 app-text/poppler-data 0.4.9: Data files for poppler to support uncommon encodings without xpdfrc
 app-text/ps2eps 1.68: Generate Encapsulated Postscript Format files from one-page Postscript documents
 app-text/ps2pkm 1.7_p20150521 1.8_p20160523 1.8_p20170524: Tool that converts a PostScript type1 font into a corresponding TeX PK font
@@ -9163,7 +9163,7 @@ net-print/cndrvcups-lb 3.50 3.50-r1: Canon UFR II / LIPSLX Printer Driver for Li
 net-print/cnijfilter2 5.50: IJ Printer Driver
 net-print/cups 2.2.7: The Common Unix Printing System
 net-print/cups-bjnp 2.0: CUPS backend for the canon printers using the proprietary USB over IP BJNP protocol
-net-print/cups-filters 1.20.4 1.21.6: Cups filters
+net-print/cups-filters 1.21.6: Cups filters
 net-print/cups-pdf 2.6.1: Provides a virtual printer for CUPS to produce PDF files
 net-print/cups-pk-helper 0.2.6: PolicyKit helper to configure cups with fine-grained privileges
 net-print/cups-windows 6.0-r1: CUPS PostScript Driver for Windows
@@ -9443,7 +9443,7 @@ sci-libs/fftw 2.1.5-r9 3.3.6_p2: Fast C library for the Discrete Fourier Transfo
 sci-libs/flann 1.9.1: Fast approximate nearest neighbor searches in high dimensional spaces
 sci-libs/galib 2.4.7-r1: Library for genetic algorithms in C++ programs
 sci-libs/gamer 1.5-r2: Geometry-preserving Adaptive MeshER
-sci-libs/gdal 2.3.0-r2 2.3.1: Translator library for raster geospatial data formats (includes OGR support)
+sci-libs/gdal 2.3.1: Translator library for raster geospatial data formats (includes OGR support)
 sci-libs/geos 3.7.0: Geometry engine library for Geographic Information Systems
 sci-libs/gsl 1.16: The GNU Scientific Library
 sci-libs/gts 20121130: GNU Triangulated Surface Library
