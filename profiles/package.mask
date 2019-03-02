@@ -29,6 +29,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (02 Mar 2019)
+# Completely broken. Masked for removal in 30 days.
+# Bugs 630924, 639310, 640728, 644654, 654892, 655096, 670822
+media-video/dcpomatic
+media-libs/libasdcp-cth
+media-libs/libdcp
+media-libs/libsub
+
 # Eray Aslan <eras@gentoo.org> (01 Mar 2019)
 # Mask experimental software
 =mail-mta/postfix-3.5*

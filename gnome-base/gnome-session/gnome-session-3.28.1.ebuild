@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit gnome.org meson xdg
+inherit gnome.org gnome2-utils meson xdg
 
 DESCRIPTION="Gnome session manager"
 HOMEPAGE="https://gitlab.gnome.org/GNOME/gnome-session"
@@ -101,6 +101,7 @@ src_install() {
 
 pkg_postinst() {
 	xdg_pkg_postinst
+	gnome2_schemas_update
 
 	if ! has_version gnome-base/gdm && ! has_version x11-misc/sddm; then
 		ewarn "If you use a custom .xinitrc for your X session,"
@@ -111,4 +112,9 @@ pkg_postinst() {
 		ewarn "You are building without systemd and/or consolekit support."
 		ewarn "gnome-session won't be able to correctly track and manage your session."
 	fi
+}
+
+pkg_postrm() {
+	xdg_pkg_postinst
+	gnome2_schemas_update
 }
