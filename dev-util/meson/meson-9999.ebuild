@@ -42,11 +42,6 @@ python_prepare_all() {
 }
 
 src_test() {
-	# This is needed because upstream doesn't support installing qtcore
-	# without qtgui in the test suite.
-	# https://bugs.gentoo.org/show_bug.cgi?id=678664
-	has_version 'dev-qt/qtcore' && ! has_version 'dev-qt/qtgui' &&
-		rm -rf "test cases/frameworks/4 qt"
 	distutils-r1_src_test
 }
 
