@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -26,7 +26,7 @@ IUSE="X wayland"
 
 DEPEND="${PYTHON_DEPS}
 		>=dev-util/glslang-7.10.2984:=[${MULTILIB_USEDEP}]
-		>=dev-util/spirv-tools-2018.2-r1:=[${MULTILIB_USEDEP}]
+		>=dev-util/spirv-tools-2019.1:=[${MULTILIB_USEDEP}]
 		>=dev-util/vulkan-headers-1.1.92.0
 		wayland? ( dev-libs/wayland:=[${MULTILIB_USEDEP}] )
 		X? (
