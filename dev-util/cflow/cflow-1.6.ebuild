@@ -1,13 +1,13 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI="7"
 
-inherit elisp-common eutils
+inherit elisp-common
 
 DESCRIPTION="C function call hierarchy analyzer"
 HOMEPAGE="https://www.gnu.org/software/cflow/"
-SRC_URI="ftp://download.gnu.org.ua/pub/release/cflow/${P}.tar.bz2"
+SRC_URI="http://ftp.gnu.org/gnu/cflow/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -16,14 +16,12 @@ IUSE="debug emacs nls"
 
 RDEPEND="emacs? ( virtual/emacs )
 	nls? ( virtual/libintl virtual/libiconv )"
-DEPEND="${RDEPEND}
+BDEPEND="${RDEPEND}
+	sys-devel/flex
 	nls? ( sys-devel/gettext )"
 
 SITEFILE="50${PN}-gentoo.el"
-
-src_prepare() {
-	epatch "${FILESDIR}/${P}-info-direntry.patch"
-}
+PATCHES=( "${FILESDIR}/cflow-1.4-info-direntry.patch" )
 
 src_configure() {
 	econf \

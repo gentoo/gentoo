@@ -18,7 +18,7 @@ MY_P="med-${PV}"
 DESCRIPTION="A library to store and exchange meshed data or computation results"
 HOMEPAGE="https://www.salome-platform.org/"
 SRC_URI="http://files.salome-platform.org/Salome/other/${MY_P}.tar.gz
-	 https://dev.gentoo.org/~fordfrog/distfiles/${P}-gentoo.tar.bz2"
+	 https://dev.gentoo.org/~fordfrog/distfiles/${P}-r1-gentoo.tar.bz2"
 
 LICENSE="GPL-3 LGPL-3"
 SLOT="0"
