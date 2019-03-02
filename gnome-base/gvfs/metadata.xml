@@ -6,11 +6,12 @@
 	<name>Gentoo GNOME Desktop</name>
 </maintainer>
 <longdescription lang="en">
-gvfs is a userspace virtual filesystem designed to work with the i/o
-abstractions of gio (a library availible in glib &gt;= 2.15.1). It
-installs several modules that are automatically used by applications
-using the APIs of libgio. There is also fuse support that allows
-applications not using gio to access the gvfs filesystems.
+GVfs is a userspace virtual filesystem implementation for GIO (a library
+available in GLib). GVfs comes with a set of backends, including trash
+support, SFTP, SMB, HTTP, DAV, and many others. GVfs also contains modules
+for GIO that implement volume monitors and persistent metadata storage.
+There is also FUSE support that provides limited access to the GVfs
+filesystems for applications not using GIO.
 </longdescription>
 <use>
 	<flag name="afp">Enables support for accessing AFP (Apple Filing Protocol) network shares</flag>
