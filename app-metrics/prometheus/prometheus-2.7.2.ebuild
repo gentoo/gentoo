@@ -5,11 +5,10 @@ EAPI=6
 inherit user golang-build golang-vcs-snapshot
 
 EGO_PN="github.com/prometheus/prometheus"
-MY_PV=${PV/_rc/-rc.}
-EGIT_COMMIT="v${MY_PV}"
-PROMETHEUS_COMMIT="b639fe1"
-ARCHIVE_URI="https://${EGO_PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
-KEYWORDS="amd64"
+MY_PV=v${PV/_rc/-rc.}
+PROMETHEUS_COMMIT="82f98c8"
+ARCHIVE_URI="https://${EGO_PN}/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
+KEYWORDS="~amd64"
 
 DESCRIPTION="Prometheus monitoring system and time series database"
 HOMEPAGE="https://github.com/prometheus/prometheus"
