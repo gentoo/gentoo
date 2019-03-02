@@ -606,6 +606,7 @@ src_test() {
 	# rocksdb.prefix_extractor_override:                https://jira.percona.com/browse/PS-5199
 	# rpl.rpl_innodb_info_tbl_slave_tmp_tbl_mismatch:   https://bugs.mysql.com/bug.php?id=89223
 	# rpl.rpl_multi_source_mts_reset_worker_info:       https://jira.percona.com/browse/PS-3786
+	# tokudb.bugs.5733_tokudb:                          https://jira.percona.com/browse/PS-4274
 	# x.crud_insert_cast:                               https://jira.percona.com/browse/PS-5032
 	# x.insert_table_bad_column:                        https://jira.percona.com/browse/PS-5032
 	# x.insert_table_bad_numcolumns:                    https://jira.percona.com/browse/PS-5032
@@ -625,6 +626,7 @@ src_test() {
 		rocksdb.prefix_extractor_override \
 		rpl.rpl_innodb_info_tbl_slave_tmp_tbl_mismatch \
 		rpl.rpl_multi_source_mts_reset_worker_info \
+		tokudb.bugs.5733_tokudb \
 		x.crud_insert_cast \
 		x.insert_table_bad_column \
 		x.insert_table_bad_numcolumns \

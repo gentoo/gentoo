@@ -13,7 +13,7 @@ SRC_URI="https://github.com/shimmerproject/${MY_PN}/archive/v${PV}.tar.gz -> ${P
 # README says "dual-licensed as GPLv2 or later and CC-BY-SA 3.0 or later"
 LICENSE="CC-BY-SA-3.0 GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 IUSE="ayatana gnome xfce"
 
 RDEPEND="
