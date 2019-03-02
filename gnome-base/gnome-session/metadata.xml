@@ -5,4 +5,7 @@
 	<email>gnome@gentoo.org</email>
 	<name>Gentoo GNOME Desktop</name>
 </maintainer>
+<use>
+	<flag name="consolekit">Support <pkg>sys-auth/consolekit</pkg> for session tracking</flag>
+</use>
 </pkgmetadata>
