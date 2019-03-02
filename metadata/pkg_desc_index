@@ -2709,7 +2709,7 @@ dev-java/junitperf 1.9.1-r2: Simple framework to write repeatable tests
 dev-java/jupidator 0.6.0-r1: Jupidator is a library/tool in Java for automatic updating of applications
 dev-java/jutils 1.0.0-r1: Common utilities for the Java Game Technology Group
 dev-java/jvyaml 0.2.1-r2: Java YAML parser and emitter
-dev-java/jvyamlb 0.2.5: JvYAMLb, YAML processor extracted from JRuby
+dev-java/jvyamlb 0.2.5-r1: JvYAMLb, YAML processor extracted from JRuby
 dev-java/jython 2.7.0-r2: An implementation of Python written in Java
 dev-java/jzlib 1.0.7-r2 1.1.1 1.1.3: JZlib is a re-implementation of zlib in pure Java
 dev-java/kxml 2.3.0: Small XML Pull Parser
