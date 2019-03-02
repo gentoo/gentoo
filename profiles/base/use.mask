@@ -4,6 +4,14 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Matt Turner <mattst88@gentoo.org> (02 Mar 2019)
+# For ancient hardware. Tired of maintaining. Masked for removal in 30 days.
+# Bug #679256
+input_devices_elographics
+video_cards_newport
+video_cards_tdfx
+video_cards_voodoo
+
 # Brian Evans <grknight@gentoo.org> (11 Jan 2019)
 # Mask PHP 7.0 target as EOL
 php_targets_php7-0
@@ -15,11 +23,6 @@ d3d9
 # Aaron W. Swenson <titanofold@gentoo.org> (09 Sep 2018)
 # Mask PostgreSQL 12 while in (pre-)alpha.
 postgres_targets_postgres12
-
-# Matt Turner <mattst88@gentoo.org> (23 Nov 2017)
-# For ancient hardware. Tired of maintaining. Masked for removal in 30 days.
-# Bug #606132.
-video_cards_tdfx
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (04 Nov 2017)
 # Unkeyworded on most arches, unmasked in supported arch profiles.

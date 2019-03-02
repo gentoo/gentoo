@@ -29,6 +29,19 @@
 
 #--- END OF EXAMPLES ---
 
+# Matt Turner <mattst88@gentoo.org> (02 Mar 2019)
+# Old, unused drivers.
+# Masked for removal in 30 days. Bug #679256
+x11-drivers/xf86-input-elographics
+x11-drivers/xf86-video-newport
+x11-drivers/xf86-video-tdfx
+x11-drivers/xf86-video-voodoo
+
+# Matt Turner <mattst88@gentoo.org> (02 Mar 2019)
+# No reverse dependencies. No releases in 13 years.
+# Masked for removal in 30 days. Bug #679256
+x11-libs/libxkbui
+
 # Andreas Sturmlechner <asturm@gentoo.org> (02 Mar 2019)
 # Completely broken. Masked for removal in 30 days.
 # Bugs 630924, 639310, 640728, 644654, 654892, 655096, 670822

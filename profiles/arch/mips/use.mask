@@ -118,7 +118,6 @@ fuse
 dri
 
 # Available on for mips.
--video_cards_newport
 -video_cards_siliconmotion
 -video_cards_vivante
 
