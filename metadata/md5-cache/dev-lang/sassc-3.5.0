@@ -3,10 +3,10 @@ DEPEND=>=dev-libs/libsass-3.5:= >=app-portage/elt-patches-20170815 !<sys-devel/g
 DESCRIPTION=A libsass command line driver
 EAPI=6
 HOMEPAGE=https://github.com/sass/sassc
-KEYWORDS=~amd64 ~arm ~arm64 ~x86 ~amd64-linux
+KEYWORDS=~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux
 LICENSE=MIT
 RDEPEND=>=dev-libs/libsass-3.5:=
 SLOT=0
 SRC_URI=https://github.com/sass/sassc/archive/3.5.0.tar.gz -> sassc-3.5.0.tar.gz
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
-_md5_=23016e1f40e62d7e6a5a4b0caceff92c
+_md5_=89be1175cb0f05a1330096c4f9554534
