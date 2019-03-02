@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -50,7 +50,7 @@ RDEPEND="${CDEPEND}
 CONFIG_CHECK="~TUN"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-external-cmocka.patch"
+	"${FILESDIR}/${PN}-2.5-external-cmocka.patch"
 )
 
 pkg_setup()  {
