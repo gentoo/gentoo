@@ -49,5 +49,3 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 DOCS=( CHANGELOG.md README.md )
-
-PATCHES=( "${FILESDIR}/${P}-create-dir-if-missing.patch" )
