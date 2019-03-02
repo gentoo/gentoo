@@ -4667,7 +4667,7 @@ dev-python/astroid 1.4.8: Abstract Syntax Tree for logilab packages
 dev-python/astropy 1.2.1 1.3.3: Core functionality for performing astrophysics with Python
 dev-python/astropy-helpers 1.2 1.3.1: Helpers for Astropy and Affiliated packages
 dev-python/atom 0.4.1: Memory efficient Python objects
-dev-python/atomicwrites 1.1.5-r2: Atomic file writes
+dev-python/atomicwrites 1.1.5-r2 1.1.5-r3: Atomic file writes
 dev-python/attrs 16.3.0-r1 18.2.0: Attributes without boilerplate
 dev-python/authres 0.800: Authentication Results Header Module
 dev-python/autobahn 17.5.1-r2: WebSocket and WAMP for Twisted and Asyncio
@@ -5248,7 +5248,7 @@ dev-python/pastescript 2.0.2-r1: A pluggable command-line frontend, including co
 dev-python/patch 1.16: Library to parse and apply unified diffs
 dev-python/path-py 8.1.2: A module wrapper for os.path
 dev-python/pathlib 1.0.1-r1: Object-oriented filesystem paths
-dev-python/pathlib2 2.3.0: Fork of pathlib aiming to support the full stdlib Python API
+dev-python/pathlib2 2.3.0 2.3.2: Fork of pathlib aiming to support the full stdlib Python API
 dev-python/pathtools 0.1.2-r1 0.1.2-r2: Pattern matching and various utilities for file systems paths
 dev-python/patsy 0.4.1: Python module to describe statistical models and design matrices
 dev-python/paver 1.2.4: Python-based software project scripting tool along the lines of Make
@@ -5271,7 +5271,7 @@ dev-python/pip 7.1.2 9.0.1-r1: Installs python packages -- replacement for easy_
 dev-python/pkgconfig 1.2.2: Interface Python with pkg-config
 dev-python/pkginfo 1.2.1: Provides an API for querying the distutils metadata written in a PKG-INFO file
 dev-python/placefinder 0.3: Yahoo! BOSS PlaceFinder Python Client
-dev-python/pluggy 0.5.2: plugin and hook calling mechanisms for python
+dev-python/pluggy 0.5.2 0.7.1: plugin and hook calling mechanisms for python
 dev-python/plumbum 1.6.4: A library for shell script-like programs in python
 dev-python/ply 3.6-r1 3.9: Python Lex-Yacc library
 dev-python/plyr 1.0.6: A python wrapper for Glyr
@@ -5432,7 +5432,7 @@ dev-python/pystache 0.5.4: Mustache for Python
 dev-python/pysvn 1.8.0: Object-oriented python bindings for subversion
 dev-python/pytables 3.3.0 3.4.4: Hierarchical datasets for Python
 dev-python/pyte 0.5.2-r2: Simple VTXXX-compatible terminal emulator
-dev-python/pytest 3.2.2 3.4.2: Simple powerful testing with Python
+dev-python/pytest 3.2.2 3.4.2 3.10.1: Simple powerful testing with Python
 dev-python/pytest-cache 1.0-r1: mechanisms for caching across test runs
 dev-python/pytest-capturelog 0.7: py.test plugin to capture log messages
 dev-python/pytest-catchlog 1.2.2: py.test plugin to catch log messages, fork of pytest-capturelog
@@ -5589,7 +5589,7 @@ dev-python/s3fs 0.1.2: Pythonic file interface to S3
 dev-python/s3transfer 0.1.11 0.1.13-r1: An Amazon S3 Transfer Manager
 dev-python/sampy 1.2.1: Simple Application Messaging Protocol messaging system implementation in Python
 dev-python/sancho 2.4-r1: Sancho is a unit testing framework
-dev-python/scandir 1.7: A better directory iterator and faster os.walk()
+dev-python/scandir 1.7 1.9.0: A better directory iterator and faster os.walk()
 dev-python/scimath 4.1.2-r1: Enthought Tool Suite: Scientific and mathematical tools
 dev-python/scripttest 1.2-r1: A very small text templating language
 dev-python/scrypt 0.8.0: Bindings for the scrypt key derivation function library
