@@ -942,7 +942,7 @@ app-laptop/tpb 0.6.4-r1: IBM ThinkPad buttons utility
 app-leechcraft/liblaretz 0.1.0: Shared library to be used by the Laretz sync server and its clients
 app-metrics/collectd 5.8.0-r1 5.8.1: Collects system statistics and provides mechanisms to store the values
 app-metrics/node_exporter 0.16.0: Prometheus exporter for machine metrics
-app-metrics/prometheus 2.4.3: Prometheus monitoring system and time series database
+app-metrics/prometheus 2.4.3 2.6.1: Prometheus monitoring system and time series database
 app-misc/abook 0.6.1: Abook is a text-based addressbook program designed to use with mutt mail client
 app-misc/actkbd 0.2.8-r2: A keyboard shortcut daemon
 app-misc/asciinema 2.0.1: Command line recorder for asciinema.org service
@@ -6395,7 +6395,7 @@ dev-util/pkgconf 1.3.7 1.5.4: pkg-config compatible replacement with no dependen
 dev-util/pkgconfig 0.28-r2 0.29.2: Package config system that manages compile/link flags
 dev-util/pmd 4.2.5: A Java source code analyzer
 dev-util/premake 3.7 4.3-r1: A makefile generation tool
-dev-util/promu 0.1.0: Prometheus Utility Tool
+dev-util/promu 0.2.0: Prometheus Utility Tool
 dev-util/pscan 20000721-r1: A limited problem scanner for C source files
 dev-util/pycharm-community 2018.2.4: Intelligent Python IDE with unique code assistance and analysis
 dev-util/pycharm-professional 2018.2.4: Intelligent Python IDE with unique code assistance and analysis
@@ -9902,7 +9902,7 @@ sys-apps/iucode_tool 2.1.1 2.3.1: tool to manipulate Intel X86 and X86-64 proces
 sys-apps/kbd 2.0.4: Keyboard and console utilities
 sys-apps/kexec-tools 2.0.17-r1: Load another kernel from the currently executing Linux kernel
 sys-apps/keyutils 1.5.9-r4: Linux Key Management Utilities
-sys-apps/kmod 24 25: library and tools for managing linux kernel modules
+sys-apps/kmod 25: library and tools for managing linux kernel modules
 sys-apps/less 531: Excellent text file viewer
 sys-apps/lm_sensors 3.4.0_p20180923 3.5.0: Hardware Monitoring user-space utilities
 sys-apps/lnxhc 1.2-r1: Linux Health Checker
