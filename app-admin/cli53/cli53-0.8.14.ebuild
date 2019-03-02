@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 2016-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -21,6 +21,8 @@ EGO_PN="github.com/barnybug/cli53"
 S="${WORKDIR}/${P}/src/${EGO_PN}"
 
 src_compile() {
+	# https://bugs.gentoo.org/679110
+	unset XDG_CACHE_HOME
 	GOPATH="${WORKDIR}/${P}" emake build
 }
 

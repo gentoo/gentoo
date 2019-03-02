@@ -81,6 +81,8 @@ RDEPEND="${REQDEPEND} ${OPTDEPEND}"
 PATCHES=(
 	"${FILESDIR}/spamassassin-3.4.2-bug_7631.patch"
 	"${FILESDIR}/spamassassin-3.4.2-bug_7632.patch"
+	"${FILESDIR}/spamassassin-3.4.2-bug_7623_p1.patch"
+	"${FILESDIR}/spamassassin-3.4.2-bug_7623_p2.patch"
 )
 
 src_prepare() {
