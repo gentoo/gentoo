@@ -27,6 +27,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="app-arch/bzip2:0=
 	app-arch/xz-utils:0=
+	sys-apps/util-linux:0=
 	>=sys-libs/zlib-1.1.3:0=
 	virtual/libffi:=
 	virtual/libintl
