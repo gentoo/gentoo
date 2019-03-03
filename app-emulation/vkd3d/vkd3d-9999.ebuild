@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -22,13 +22,19 @@ RDEPEND="spirv-tools? ( dev-util/spirv-tools:=[${MULTILIB_USEDEP}] )
 
 DEPEND="${RDEPEND}
 		dev-util/spirv-headers
-		dev-util/vulkan-headers"
+		dev-util/vulkan-headers
+		|| ( app-emulation/wine-any app-emulation/wine-d3d9 app-emulation/wine-staging app-emulation/wine-vanilla )"
 
 DESCRIPTION="D3D12 to Vulkan translation library"
 HOMEPAGE="https://source.winehq.org/git/vkd3d.git/"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
+
+src_prepare() {
+	default
+	eautoreconf
+}
 
 multilib_src_configure() {
 	local myconf=(
