@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,6 +16,8 @@ IUSE="7zip doc grp hog iso mvl qpak slb static-libs vdf wad +zip"
 DEPEND="doc? ( app-doc/doxygen )"
 
 DOCS=( docs/CHANGELOG.txt docs/CREDITS.txt docs/TODO.txt )
+
+PATCHES=( "${FILESDIR}/${P}-setwritedir.patch" )
 
 multilib_src_configure() {
 	local mycmakeargs=(
