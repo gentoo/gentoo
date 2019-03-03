@@ -43,7 +43,7 @@ RDEPEND="
 	jpeg? ( virtual/jpeg:0 )
 	libinput? (
 		dev-libs/libinput:=
-		x11-libs/libxkbcommon
+		>=x11-libs/libxkbcommon-0.5.0
 	)
 	png? ( media-libs/libpng:0= )
 	tslib? ( x11-libs/tslib )
@@ -91,7 +91,7 @@ QT5_GENTOO_CONFIG=(
 	evdev:evdev:
 	evdev:mtdev:
 	:fontconfig:
-	:system-freetype:
+	:system-freetype:FREETYPE
 	!:no-freetype:
 	!gif:no-gif:
 	gles2::OPENGL_ES
