@@ -11,4 +11,4 @@ RDEPEND=x11-apps/sessreg x11-apps/xconsole x11-apps/xinit x11-apps/xrdb x11-apps
 SLOT=0
 SRC_URI=https://www.x.org/releases/individual/app/xdm-1.1.12.tar.bz2
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	a09389deba2c0a7108b581e02c7cecbf	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	b2f01ad412baf81650c23fcf0975fa33	pam	3e788d86170dfcd5b06824d898315e18	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	xorg-3	ebaa0d238287ba81a1b3fab158a65619
-_md5_=886acb8307bdd4938416406dbcd62892
+_md5_=389083123f23967ab8d8edf3cef7c5c1
