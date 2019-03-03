@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit kde5
 
@@ -17,11 +17,12 @@ DEPEND="
 	$(add_frameworks_dep kcoreaddons)
 	$(add_qt_dep qtnetwork)
 "
-RDEPEND="${DEPEND}
-	!net-libs/libmediawiki:4
-"
+RDEPEND="${DEPEND}"
 
-PATCHES=( "${FILESDIR}/${PN}-5.0.0_pre20170128-tests-optional.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-tests-optional.patch"
+	"${FILESDIR}/${P}-fix-warnings.patch"
+)
 
 src_test() {
 	# bug 646808, 662592
