@@ -774,10 +774,11 @@ app-emulation/virtualbox 5.2.22: Family of powerful x86 virtualization products 
 app-emulation/virtualbox-additions 5.2.22: CD image containing guest additions for VirtualBox
 app-emulation/virtualbox-guest-additions 5.2.22: VirtualBox kernel modules and user-space tools for Gentoo guests
 app-emulation/virtualbox-modules 5.2.22: Kernel Modules for Virtualbox
+app-emulation/vkd3d 1.1: D3D12 to Vulkan translation library
 app-emulation/wine-desktop-common 20150204: Various desktop menu items and icons for wine
 app-emulation/wine-gecko 2.47-r1: A Mozilla Gecko based version of Internet Explorer for Wine
-app-emulation/wine-mono 4.6.4 4.7.1: A replacement for the .NET runtime and class libraries in Wine
-app-emulation/wine-vanilla 3.0.3: Free implementation of Windows(tm) on Unix, without external patchsets
+app-emulation/wine-mono 4.6.4 4.7.1 4.7.5: Wine Mono is a replacement for the .NET runtime and class libraries in Wine
+app-emulation/wine-vanilla 3.0.3 4.0: Free implementation of Windows(tm) on Unix, without external patchsets
 app-emulation/winetricks 20170823: Easy way to install DLLs needed to work around problems in Wine
 app-emulation/x48 0.6.4-r1: HP48 Calculator Emulator
 app-emulation/xen 4.10.2-r2: The Xen virtual machine monitor
@@ -8727,7 +8728,7 @@ net-libs/gupnp-igd 0.2.5: Library to handle UPnP IGD port mapping for GUPnP
 net-libs/http-parser 2.8.1: HTTP request/response parser for C
 net-libs/ldns 1.7.0-r2: a library with the aim to simplify DNS programming in C
 net-libs/libaccounts-glib 1.23: Accounts SSO (Single Sign-On) management library for GLib applications
-net-libs/libasyncns 0.8-r3 0.8-r4: C library for executing name service queries asynchronously
+net-libs/libasyncns 0.8-r4: C library for executing name service queries asynchronously
 net-libs/libbitcoinconsensus 0.16.3: Bitcoin Core consensus library
 net-libs/libblkmaker 0.3.2: C implementation of getblocktemplate (BIP 22)
 net-libs/libcapi 3.0.7-r1: CAPI library used by AVM products
@@ -9225,7 +9226,7 @@ net-vpn/openconnect 7.08-r1: Free client for Cisco AnyConnect SSL VPN software
 net-vpn/openfortivpn 1.7.1: A Fortinet compatible VPN client
 net-vpn/openvpn 2.4.6: Robust and highly flexible tunneling application compatible with many OSes
 net-vpn/pptpd 1.4.0-r2: Linux Point-to-Point Tunnelling Protocol Server
-net-vpn/strongswan 5.7.1: IPsec-based VPN solution, supporting IKEv1/IKEv2 and MOBIKE
+net-vpn/strongswan 5.7.1 5.7.2: IPsec-based VPN solution, supporting IKEv1/IKEv2 and MOBIKE
 net-vpn/tor 0.3.4.9 0.3.5.8: Anonymizing overlay network for TCP
 net-vpn/vpnc 0.5.3_p550: Free client for Cisco VPN routing software
 net-vpn/vtun 3.0.3: Create tunnels over TCP/IP networks with shaping, encryption, and compression
