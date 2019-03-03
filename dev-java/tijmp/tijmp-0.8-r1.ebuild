@@ -11,7 +11,7 @@ SRC_URI="http://www.khelekore.org/jmp/tijmp/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND="
 	>=virtual/jre-1.6"
