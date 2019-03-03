@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -20,7 +20,7 @@ else
 fi
 
 TSV="0.1.2"
-OBJV="1.0.3"
+OBJV="1.0.8"
 SRC_URI+="
 	https://github.com/OpenRCT2/title-sequences/releases/download/v${TSV}/title-sequence-v${TSV}.zip
 		-> ${PN}-title-sequence-v${TSV}.zip
