@@ -7,7 +7,11 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
-# Georgy Yakovlev <gyakovlev@gentoo.org> (17 Jan 2019 )
+# Matt Turner <mattst88@gentoo.org> (03 Mar 2019)
+# Mask for testing. Bug 606924
+media-libs/mesa libglvnd
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (17 Jan 2019)
 # Mask openjdk:8 for use as system java-vm until it's proven to work
 dev-java/openjdk:8 gentoo-vm
 dev-java/openjdk-bin:8 gentoo-vm

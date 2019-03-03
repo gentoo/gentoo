@@ -1,21 +1,20 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
+COMMIT="c8b3da65bfd289d0a0262aa673aa6b697022d4a3"
 inherit kde5
 
 DESCRIPTION="An input method frontend for Plasma"
 HOMEPAGE="https://www.linux-apps.com/content/show.php?content=140967"
-if [[ ${KDE_BUILD_TYPE} != live ]]; then
-	SRC_URI="https://dl.opendesktop.org/api/files/download/id/1466629206/140967-${P}.tar.bz2"
-fi
+SRC_URI="https://github.com/KDE/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 
-KEYWORDS="~amd64 ~x86"
 LICENSE="GPL-2+"
+KEYWORDS="~amd64 ~x86"
 IUSE="libressl scim semantic-desktop"
 
-COMMON_DEPEND="
+DEPEND="
 	$(add_frameworks_dep karchive)
 	$(add_frameworks_dep kconfig)
 	$(add_frameworks_dep kconfigwidgets)
@@ -46,10 +45,7 @@ COMMON_DEPEND="
 	)
 	semantic-desktop? ( $(add_frameworks_dep kfilemetadata) )
 "
-DEPEND="${COMMON_DEPEND}
-	x11-misc/shared-mime-info
-"
-RDEPEND="${COMMON_DEPEND}
+RDEPEND="${DEPEND}
 	!kde-misc/kimtoy:4
 	>=app-i18n/fcitx-4.0
 "
@@ -70,3 +66,5 @@ src_configure() {
 
 	kde5_src_configure
 }
+
+S="${WORKDIR}/${PN}-${COMMIT}"

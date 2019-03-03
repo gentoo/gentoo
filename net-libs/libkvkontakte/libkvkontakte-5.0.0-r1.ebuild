@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 KDE_TEST="true"
 inherit kde5
@@ -22,10 +22,12 @@ DEPEND="
 	$(add_frameworks_dep kwidgetsaddons)
 	$(add_qt_dep qtgui)
 	$(add_qt_dep qtnetwork)
-	$(add_qt_dep qtwebkit)
 	$(add_qt_dep qtwidgets)
+	>=dev-qt/qtwebkit-5.212.0_pre20180120:5
 "
 RDEPEND="${DEPEND}"
 
 # accessing network
 RESTRICT+=" test"
+
+PATCHES=( "${FILESDIR}/${P}-fix-warnings.patch" )
