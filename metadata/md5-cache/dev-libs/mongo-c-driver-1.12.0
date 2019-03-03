@@ -4,7 +4,7 @@ DESCRIPTION=Client library written in C for MongoDB
 EAPI=6
 HOMEPAGE=https://github.com/mongodb/mongo-c-driver
 IUSE=debug examples libressl sasl ssl static-libs test
-KEYWORDS=~amd64 ~hppa ~x86
+KEYWORDS=~amd64 ~hppa ~s390 ~x86
 LICENSE=Apache-2.0
 RDEPEND=app-arch/snappy:= >=dev-libs/libbson-1.12.0 dev-python/sphinx sys-libs/zlib:= sasl? ( dev-libs/cyrus-sasl:= ) ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) )
 REQUIRED_USE=test? ( static-libs )
@@ -12,4 +12,4 @@ RESTRICT=x86? ( test )
 SLOT=0
 SRC_URI=https://github.com/mongodb/mongo-c-driver/archive/1.12.0.tar.gz -> mongo-c-driver-1.12.0.tar.gz
 _eclasses_=cmake-utils	ab10bd85e5d38e2a32077bcd91faa1b6	desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	a09389deba2c0a7108b581e02c7cecbf	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	b2f01ad412baf81650c23fcf0975fa33	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	14d00d009167652b1fa363e55effe213
-_md5_=c08483d3067401cb2834501ddf5015bc
+_md5_=31b1e726a0d0213529b731c09fdce313
