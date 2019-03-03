@@ -42,10 +42,20 @@ python_prepare_all() {
 }
 
 src_test() {
-	distutils-r1_src_test
+	tc-export PKG_CONFIG
+	if ${PKG_CONFIG} --exists Qt5Core && ! ${PKG_CONFIG} --exists Qt5Gui; then
+		ewarn "Found Qt5Core but not Qt5Gui; skipping tests"
+	else
+		distutils-r1_src_test
+	fi
 }
 
 python_test() {
+	if [[ ${EPYTHON} == python3.5 ]]; then
+		ewarn "Skipping tests with ${EPYTHON}"
+		return 0
+	fi
+
 	(
 		# test_meson_installed
 		unset PYTHONDONTWRITEBYTECODE

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 2012-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -66,6 +66,7 @@ multilib_src_install() {
 
 	if use pkg-config; then
 		dosym pkgconf /usr/bin/pkg-config
+		dosym pkgconf.1 /usr/share/man/man1/pkg-config.1
 	else
 		rm "${ED%/}"/usr/share/aclocal/pkg.m4 || die
 	fi
