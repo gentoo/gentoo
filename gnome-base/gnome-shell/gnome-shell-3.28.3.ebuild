@@ -74,7 +74,8 @@ COMMON_DEPEND="
 # 7. mobile-broadband-provider-info, timezone-data for shell-mobile-providers.c  # TODO: Review
 # 8. IBus is needed for nls integration
 # 9. Optional telepathy chat integration
-# 10. TODO: semi-optional webkit-gtk[introspection] for captive portal helper
+# 10. Cantarell font used in gnome-shell global CSS (if removing this for some reason, make sure it's pulled in somehow for non-meta users still too)
+# 11. TODO: semi-optional webkit-gtk[introspection] for captive portal helper
 RDEPEND="${COMMON_DEPEND}
 	>=sys-apps/accountsservice-0.6.14[introspection]
 	app-accessibility/at-spi2-core:2[introspection]
@@ -98,6 +99,7 @@ RDEPEND="${COMMON_DEPEND}
 	telepathy? (
 		>=net-im/telepathy-logger-0.2.4[introspection]
 		>=net-libs/telepathy-glib-0.19[introspection] )
+	media-fonts/cantarell
 "
 # avoid circular dependency, see bug #546134
 PDEPEND="
