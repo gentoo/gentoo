@@ -3,6 +3,10 @@
 
 # This file requires >=portage-2.1.1
 
+# Mikle Kolyada <zlogene@gentoo.org> (03 Mar 2019)
+# No Spice protocol for x86
+app-emulation/nemu spice
+
 # Andreas Sturmlechner <asturm@gentoo.org> (28 Feb 2019)
 # media-libs/dav1d is not yet keyworded
 media-video/vlc dav1d
