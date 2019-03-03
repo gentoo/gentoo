@@ -154,7 +154,7 @@ app-admin/xstow 1.0.1: replacement for GNU stow with extensions
 app-admin/xtail 2.1-r1: Tail multiple logfiles at once, even if rotated
 app-admin/yaala 0.7.3-r1 0.7.3-r2: Yet Another Log Analyzer
 app-antivirus/clamav 0.99.4-r1 0.99.4-r2 0.100.1 0.100.1-r1 0.101.0: Clam Anti-Virus Scanner
-app-antivirus/clamav-unofficial-sigs 3.7.2 5.6.2: Download and install third-party clamav signatures
+app-antivirus/clamav-unofficial-sigs 5.6.2: Download and install third-party clamav signatures
 app-arch/advancecomp 2.0: Recompress ZIP, PNG and MNG, considerably improving compression
 app-arch/afio 2.5.1-r2: Afio creates cpio-format archives.
 app-arch/alien 8.95: Converts between the rpm, dpkg, stampede slp, and slackware tgz file formats
@@ -6991,7 +6991,7 @@ kde-misc/krename 5.0.0-r1: Powerful batch file renamer
 kde-misc/krusader 2.7.1: Advanced twin-panel (commander-style) file-manager with many extras
 kde-misc/kshutdown 4.2: Shutdown manager for desktop environments like KDE Plasma
 kde-misc/kwebkitpart 1.4.0_pre20180406: WebKit KPart for Konqueror
-kde-misc/latte-dock 0.8.4 0.8.7: Elegant dock, based on KDE Frameworks
+kde-misc/latte-dock 0.8.7: Elegant dock, based on KDE Frameworks
 kde-misc/openofficeorg-thumbnail 1.0.0-r500: KDE thumbnail-plugin that generates thumbnails for ODF files
 kde-misc/plasma-redshift-control 1.0.18: Plasma 5 applet for controlling redshift
 kde-misc/rsibreak 0.12.9-r1: Small utility which bothers you at certain intervals
@@ -7129,7 +7129,7 @@ mail-filter/popfile 1.1.3-r1: Anti-spam bayesian filter
 mail-filter/postgrey 1.34-r3 1.36-r1: Postgrey is a Postfix policy server implementing greylisting
 mail-filter/procmail 3.22-r10: Mail delivery agent/filter
 mail-filter/procmail-lib 20081108: Procmail Module Library is a collection of modules for Procmail
-mail-filter/pypolicyd-spf 2.0.1 2.0.2: Python-based policy daemon for Postfix SPF verification
+mail-filter/pypolicyd-spf 2.0.2: Python-based policy daemon for Postfix SPF verification
 mail-filter/razor 2.85-r3: Distributed, collaborative spam detection and filtering network
 mail-filter/rblcheck 1.5-r2: Perform lookups in RBL-styles services
 mail-filter/scmail 1.3: a mail filter written in Scheme
