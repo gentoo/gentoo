@@ -5,7 +5,7 @@ EAPI=7
 
 XORG_EAUTORECONF=yes
 
-inherit multilib xorg-3 pam systemd
+inherit xorg-3 pam systemd
 
 DEFAULTVT=vt7
 
