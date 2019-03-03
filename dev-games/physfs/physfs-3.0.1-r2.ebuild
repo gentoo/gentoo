@@ -1,12 +1,12 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 inherit cmake-multilib
 
 DESCRIPTION="Abstraction layer for filesystem and archive access"
-HOMEPAGE="http://icculus.org/physfs/"
-SRC_URI="http://icculus.org/physfs/downloads/${P}.tar.bz2"
+HOMEPAGE="https://icculus.org/physfs/"
+SRC_URI="https://icculus.org/physfs/downloads/${P}.tar.bz2"
 
 LICENSE="ZLIB"
 SLOT="0"
