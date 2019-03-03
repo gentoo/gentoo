@@ -112,7 +112,7 @@ python_prepare_all() {
 }
 
 python_compile() {
-	use !lapack && export MAKEOPTS=-j1 #660754
+	export MAKEOPTS=-j1 #660754
 
 	local python_makeopts_jobs=""
 	python_is_python3 || python_makeopts_jobs="-j $(makeopts_jobs)"
