@@ -262,7 +262,8 @@ dev-db/pgadmin3
 media-libs/libglvnd
 
 # Aaron Bauman <bman@gentoo.org> (30 Apr 2018)
-# Masked for testing
+# Masked for testing. Will implement more of the 1.1 API
+# Which will require patch updates across the tree
 =dev-libs/libressl-2.9*
 
 # Brian Evans <grknight@gentoo.org> (20 Apr 2018)

@@ -1,32 +1,40 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-COMMIT=f99c63723ca96cfd3d9499ef7fcf0fe7e7b021ca
-KDE_HANDBOOK="optional"
+COMMIT=50ac0509891343bc01a0aeffda5a44a1e65d9d04
+EGIT_BRANCH="frameworks"
+KDE_HANDBOOK="forceoptional"
 inherit kde5
 
-DESCRIPTION="The japanese warehouse keeper game"
-HOMEPAGE="https://cgit.kde.org/ksokoban.git"
+DESCRIPTION="Tool for editing color palettes"
+HOMEPAGE="https://userbase.kde.org/KColorEdit"
 SRC_URI="https://github.com/KDE/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-RDEPEND="
+DEPEND="
+	$(add_frameworks_dep kactivities)
+	$(add_frameworks_dep kcompletion)
 	$(add_frameworks_dep kconfig)
+	$(add_frameworks_dep kconfigwidgets)
 	$(add_frameworks_dep kcoreaddons)
+	$(add_frameworks_dep kdelibs4support)
+	$(add_frameworks_dep kguiaddons)
 	$(add_frameworks_dep ki18n)
+	$(add_frameworks_dep kiconthemes)
 	$(add_frameworks_dep kio)
+	$(add_frameworks_dep ktextwidgets)
 	$(add_frameworks_dep kwidgetsaddons)
 	$(add_frameworks_dep kxmlgui)
 	$(add_qt_dep qtgui)
 	$(add_qt_dep qtwidgets)
 "
-DEPEND="${RDEPEND}
-	$(add_frameworks_dep kiconthemes)
+RDEPEND="${DEPEND}
+	!media-gfx/kcoloredit:4
 "
 
 S="${WORKDIR}/${PN}-${COMMIT}"
