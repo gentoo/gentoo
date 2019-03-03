@@ -1,12 +1,12 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 COMMIT=50ac0509891343bc01a0aeffda5a44a1e65d9d04
 EGIT_BRANCH="frameworks"
 KDE_HANDBOOK="forceoptional"
-inherit kde5 vcs-snapshot
+inherit kde5
 
 DESCRIPTION="Tool for editing color palettes"
 HOMEPAGE="https://userbase.kde.org/KColorEdit"
@@ -36,3 +36,5 @@ DEPEND="
 RDEPEND="${DEPEND}
 	!media-gfx/kcoloredit:4
 "
+
+S="${WORKDIR}/${PN}-${COMMIT}"
