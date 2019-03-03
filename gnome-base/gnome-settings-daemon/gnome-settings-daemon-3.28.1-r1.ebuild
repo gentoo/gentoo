@@ -26,7 +26,7 @@ COMMON_DEPEND="
 	>=dev-libs/glib-2.53.0:2
 	>=gnome-base/gnome-desktop-3.11.1:3=
 	>=gnome-base/gsettings-desktop-schemas-3.23.3
-	>=x11-libs/gtk+-3.15.3:3[X]
+	>=x11-libs/gtk+-3.15.3:3[X,wayland?]
 	>=dev-libs/libgweather-3.9.5:2=
 	colord? (
 		>=x11-misc/colord-1.0.2:=
@@ -85,6 +85,8 @@ PATCHES=(
 	# Make colord and wacom optional
 	# glib 2.58 compatibility fix; included in 3.29.1+
 	"${WORKDIR}"/patches/
+	# Fix non-wayland builds; 3.32 won't have this device manager code anymore, so nothing to upstream
+	"${FILESDIR}"/${PV}-fix-non-wayland-build.patch
 )
 
 python_check_deps() {
