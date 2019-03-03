@@ -196,8 +196,10 @@ src_install() {
 }
 
 pkg_postinst() {
-	# sets up libGL and DRI2 symlinks if needed (ie, on a fresh install)
-	eselect opengl set xorg-x11 --use-old
+	if ! use minimal; then
+		# sets up libGL and DRI2 symlinks if needed (ie, on a fresh install)
+		eselect opengl set xorg-x11 --use-old
+	fi
 }
 
 pkg_postrm() {
