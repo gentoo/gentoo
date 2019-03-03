@@ -42,7 +42,7 @@ PATCHES=( "${FILESDIR}/${P}-dep.patch" )
 
 src_prepare() {
 	kde5_src_prepare
-	punt_bogus_dep KF5 DocToolss
+	punt_bogus_dep KF5 DocTools
 }
 
 pkg_postinst() {
