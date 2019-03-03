@@ -7279,7 +7279,7 @@ media-fonts/mikachan-font-otf 9.1-r1: Mikachan Japanese TrueType Collection font
 media-fonts/mikachan-font-ttc 9.1: Mikachan Japanese TrueType Collection fonts
 media-fonts/mikachan-font-ttf 8.9-r2: Mikachan Japanese TrueType fonts
 media-fonts/monafont 2.90-r2: Japanese bitmap and TrueType fonts suitable for browsing 2ch
-media-fonts/mplus-fonts 2.2.4: M+ Japanese bitmap fonts
+media-fonts/mplus-fonts 2.2.4 2.2.4-r1: M+ Japanese bitmap fonts
 media-fonts/mplus-outline-fonts 0_pre062 0_pre063: M+ Japanese outline fonts
 media-fonts/nanumfont 2.0-r2: Korean monospace font distributed by NHN
 media-fonts/nepali-fonts 1-r1: a collection of fonts for Nepali users
@@ -9366,7 +9366,7 @@ sci-electronics/espresso-ab 1.0-r1: POSIX compliant version of the espresso logi
 sci-electronics/geda 1.8.2 1.9.2-r1: GPL Electronic Design Automation (gEDA):gaf core package
 sci-electronics/geda-xgsch2pcb 0.1.3-r3: A graphical front-end for the gschem -> pcb workflow
 sci-electronics/gerbv 2.6.0: A RS-274X (Gerber) and NC drill (Excellon) file viewer
-sci-electronics/gnucap 0.35.20091207: GNUCap is the GNU Circuit Analysis Package
+sci-electronics/gnucap 0.35.20091207-r1: GNUCap is the GNU Circuit Analysis Package
 sci-electronics/gresistor 0.0.2: Translate a resistor color codes into a readable value
 sci-electronics/gspiceui 1.1.0: GUI frontend for Ngspice and Gnucap
 sci-electronics/gtkwave 3.3.68: A wave viewer for LXT, LXT2, VZT, GHW and standard Verilog VCD/EVCD files
