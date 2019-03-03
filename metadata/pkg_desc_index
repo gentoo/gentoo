@@ -6272,7 +6272,7 @@ dev-util/cgdb 0.6.6 0.6.7 0.6.8: A curses front-end for GDB, the GNU debugger
 dev-util/cgvg 1.6.2: A tiny version of cscope that is much more useful in certian instances
 dev-util/checkbashisms 2.18.11: Perl script to check for commonly used bash features not defined by POSIX
 dev-util/checkstyle 7.2: Development tool to help write Java code that adheres to a coding standard
-dev-util/cloc 1.72: Count Lines of Code
+dev-util/cloc 1.72 1.76-r1: Count Lines of Code
 dev-util/cmake 3.9.6: Cross platform Make
 dev-util/cmake-fedora 2.7.1: Provides cmake helper macros and targets for linux, especially fedora developers
 dev-util/cmdtest 0.30: black box tests Unix command line tools
