@@ -5153,6 +5153,7 @@ sec-policy/selinux-base:unconfined - Enable support for the unconfined SELinux m
 sec-policy/selinux-base-policy:unconfined - Enable support for the unconfined SELinux policy module
 sys-apps/accountsservice:elogind - Use sys-auth/elogind instead of sys-auth/consolekit for session tracking
 sys-apps/accountsservice:systemd - Use sys-apps/systemd instead of sys-auth/consolekit for session tracking
+sys-apps/accountsservice:user-heuristics - Enable heuristics for guessing system vs. human users in the range 500-minimum-uid
 sys-apps/baselayout:split-usr - Enable this if /bin and /usr/bin are separate directories
 sys-apps/busybox:make-symlinks - Create all the appropriate symlinks in /bin and /sbin.
 sys-apps/busybox:math - Enable math support in gawk (requires libm)
