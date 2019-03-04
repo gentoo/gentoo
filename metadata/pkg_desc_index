@@ -2419,7 +2419,7 @@ dev-haskell/zlib-enum 0.2.3.1 0.2.3.1-r1: Enumerator interface for zlib compress
 dev-java/absolutelayout 6.7_beta-r1: AbsoluteLayout files extracted from Netbeans
 dev-java/animal-sniffer-annotations 1.15: Java annotations for marking methods that Animal Sniffer should ignore
 dev-java/annogen 0.1.0-r3: A tool which helps you work with JSR175 annotations
-dev-java/ant 1.9.2-r1: Java-based build tool similar to 'make' that uses XML configuration files
+dev-java/ant 1.9.2-r1 1.9.13 1.10.5: Java-based build tool similar to 'make' that uses XML configuration files
 dev-java/ant-antlr 1.9.2-r1 1.9.13 1.10.5: Apache Ant's optional tasks for Antlr
 dev-java/ant-apache-bcel 1.9.2 1.9.13 1.10.5: Apache Ant's optional tasks depending on bcel
 dev-java/ant-apache-bsf 1.9.2 1.9.13 1.10.5: Apache Ant's optional tasks depending on bsf-2.3
