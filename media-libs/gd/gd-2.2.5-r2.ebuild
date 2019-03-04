@@ -9,8 +9,8 @@ DESCRIPTION="Graphics library for fast image creation"
 HOMEPAGE="https://libgd.org/ https://www.boutell.com/gd/"
 SRC_URI="https://github.com/libgd/libgd/releases/download/${P}/lib${P}.tar.xz
 	test? (
-		https://github.com/libgd/libgd/raw/e0cb1b76c305db68b251fe782faa12da5d357593/tests/gif/ossfuzz5700.gif -> lib$P-ossfuzz5700.dat
-		https://github.com/libgd/libgd/raw/e0cb1b76c305db68b251fe782faa12da5d357593/tests/gif/php_bug_75571.gif -> lib$P-php_bug_75571.dat
+		https://github.com/libgd/libgd/raw/e0cb1b76c305db68b251fe782faa12da5d357593/tests/gif/ossfuzz5700.gif -> lib${P}-ossfuzz5700.dat
+		https://github.com/libgd/libgd/raw/e0cb1b76c305db68b251fe782faa12da5d357593/tests/gif/php_bug_75571.gif -> lib${P}-php_bug_75571.dat
 	)"
 
 LICENSE="gd IJG HPND BSD"
@@ -45,13 +45,16 @@ PATCHES=(
 src_unpack() {
 	default
 
-	cp "${DISTDIR}"/lib${P}-ossfuzz5700.dat "${S}"/tests/gif/ossfuzz5700.gif || die
-	cp "${DISTDIR}"/lib${P}-php_bug_75571.dat "${S}"/tests/gif/php_bug_75571.gif || die
+	if use test ; then
+		cp "${DISTDIR}"/lib${P}-ossfuzz5700.dat \
+			"${S}"/tests/gif/ossfuzz5700.gif || die
+		cp "${DISTDIR}"/lib${P}-php_bug_75571.dat \
+			"${S}"/tests/gif/php_bug_75571.gif || die
+	fi
 }
 
 src_prepare() {
 	default
-
 	eautoreconf
 }
 
@@ -78,5 +81,5 @@ multilib_src_configure() {
 
 multilib_src_install_all() {
 	dodoc README.md
-	find "${D}" -name '*.la' -delete || die
+	find "${ED}" -name '*.la' -delete || die
 }
