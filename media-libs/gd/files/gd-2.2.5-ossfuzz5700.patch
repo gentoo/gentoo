@@ -1,0 +1,103 @@
+From 9fa3abd2e61da18ed2b889704e4e252f0f5a95fe Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Fri, 26 Jan 2018 01:57:52 -0500
+Subject: [PATCH] gif: fix out-of-bounds read w/corrupted lzw data
+
+oss-fuzz pointed out:
+gd_gif_in.c:605:16: runtime error: index 5595 out of bounds for type 'int [4096]'
+
+Add some bounds checking on each code that we read from the file.
+---
+ src/gd_gif_in.c           |   8 ++++++++
+ tests/gif/CMakeLists.txt  |   3 ++-
+ tests/gif/Makemodule.am   |   2 ++
+ tests/gif/ossfuzz5700.c   |  13 +++++++++++++
+ tests/gif/ossfuzz5700.gif | Bin 0 -> 30 bytes
+ 6 files changed, 26 insertions(+), 1 deletion(-)
+ create mode 100644 tests/gif/ossfuzz5700.c
+
+diff --git a/src/gd_gif_in.c b/src/gd_gif_in.c
+index afc08bf7..daf26e79 100644
+--- a/src/gd_gif_in.c
++++ b/src/gd_gif_in.c
+@@ -601,6 +601,10 @@ LWZReadByte_(gdIOCtx *fd, LZW_STATIC_DATA *sd, char flag, int input_code_size, i
+ 				/* Bad compressed data stream */
+ 				return -1;
+ 			}
++			if(code >= (1 << MAX_LWZ_BITS)) {
++				/* Corrupted code */
++				return -1;
++			}
+ 
+ 			*sd->sp++ = sd->table[1][code];
+ 
+@@ -610,6 +614,10 @@ LWZReadByte_(gdIOCtx *fd, LZW_STATIC_DATA *sd, char flag, int input_code_size, i
+ 
+ 			code = sd->table[0][code];
+ 		}
++		if(code >= (1 << MAX_LWZ_BITS)) {
++			/* Corrupted code */
++			return -1;
++		}
+ 
+ 		*sd->sp++ = sd->firstcode = sd->table[1][code];
+ 
+diff --git a/tests/gif/CMakeLists.txt b/tests/gif/CMakeLists.txt
+index 7d40cddc..2b73749e 100644
+--- a/tests/gif/CMakeLists.txt
++++ b/tests/gif/CMakeLists.txt
+@@ -3,6 +3,8 @@ LIST(APPEND TESTS_FILES
+ 	bug00181
+ 	bug00227
+ 	gif_null
++	ossfuzz5700
++	uninitialized_memory_read
+ )
+ 
+ IF(PNG_FOUND)
+@@ -12,7 +14,6 @@ LIST(APPEND TESTS_FILES
+ 	bug00060
+ 	bug00066
+ 	gif_im2im
+-	uninitialized_memory_read
+ )
+ ENDIF(PNG_FOUND)
+ 
+diff --git a/tests/gif/Makemodule.am b/tests/gif/Makemodule.am
+index 0bdeab7e..3199438f 100644
+--- a/tests/gif/Makemodule.am
++++ b/tests/gif/Makemodule.am
+@@ -3,6 +3,7 @@ libgd_test_programs += \
+ 	gif/bug00181 \
+ 	gif/bug00227 \
+ 	gif/gif_null \
++	gif/ossfuzz5700 \
+ 	gif/uninitialized_memory_read
+ 
+ if HAVE_LIBPNG
+@@ -24,4 +25,5 @@ EXTRA_DIST += \
+ 	gif/bug00060.gif \
+ 	gif/bug00066.gif \
+ 	gif/bug00066_exp.png \
++	gif/ossfuzz5700.gif \
+ 	gif/unitialized_memory_read.gif
+diff --git a/tests/gif/ossfuzz5700.c b/tests/gif/ossfuzz5700.c
+new file mode 100644
+index 00000000..8fc9f88c
+--- /dev/null
++++ b/tests/gif/ossfuzz5700.c
+@@ -0,0 +1,13 @@
++#include <stdio.h>
++#include "gd.h"
++#include "gdtest.h"
++
++int main()
++{
++	gdImagePtr im;
++	FILE *fp = gdTestFileOpen("gif/ossfuzz5700.gif");
++	im = gdImageCreateFromGif(fp);
++	fclose(fp);
++	gdImageDestroy(im);
++	return 0;
++}
+
