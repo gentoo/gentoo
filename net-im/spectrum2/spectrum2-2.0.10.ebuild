@@ -14,7 +14,7 @@ SRC_URI="https://github.com/SpectrumIM/spectrum2/archive/${PV}.tar.gz -> ${P}.ta
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="debug doc frotz irc mysql postgres purple sms +sqlite test twitter whatsapp xmpp"
+IUSE="doc frotz irc mysql postgres purple sms +sqlite test twitter whatsapp xmpp"
 REQUIRED_USE="|| ( mysql postgres sqlite )"
 
 RDEPEND="
@@ -59,8 +59,6 @@ DEPEND="
 	)
 "
 
-PATCHES=( "${FILESDIR}/${PN}-2.0.9-remove_debug_cflags.patch" )
-
 # Tests are currently restricted, as they do completly fail
 RESTRICT="test"
 
@@ -75,16 +73,10 @@ src_prepare() {
 	# Respect users LDFLAGS
 	sed -i -e "s/-Wl,-export-dynamic/& ${LDFLAGS}/" spectrum/src/CMakeLists.txt || die
 
-	# Respect users CFLAGS, when compiling for debug mode
-	# Since Spectrum2 searches for a qt4 compiled libcommuni,
-	# it must be patched, to find the qt5 compiled libcommuni,
-	# See: https://github.com/SpectrumIM/spectrum2/pull/253
 	cmake-utils_src_prepare
 }
 
 src_configure() {
-	use debug && CMAKE_BUILD_TYPE="Debug"
-
 	local mycmakeargs=(
 		-DENABLE_DOCS="$(usex doc)"
 		-DENABLE_FROTZ="$(usex frotz)"
