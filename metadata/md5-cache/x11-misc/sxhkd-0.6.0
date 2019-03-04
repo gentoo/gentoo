@@ -1,12 +1,13 @@
+BDEPEND=virtual/pkgconfig
 DEFINED_PHASES=compile install
-DEPEND=x11-libs/libxcb x11-libs/xcb-util-keysyms x11-libs/xcb-util virtual/pkgconfig
+DEPEND=x11-libs/libxcb x11-libs/xcb-util-keysyms x11-libs/xcb-util
 DESCRIPTION=Simple X hotkey daemon
-EAPI=6
+EAPI=7
 HOMEPAGE=https://github.com/baskerville/sxhkd/
 KEYWORDS=~amd64 ~x86
 LICENSE=BSD-2
 RDEPEND=x11-libs/libxcb x11-libs/xcb-util-keysyms
 SLOT=0
-SRC_URI=https://github.com/baskerville/sxhkd/archive/0.5.7.tar.gz -> sxhkd-0.5.7.tar.gz
+SRC_URI=https://github.com/baskerville/sxhkd/archive/0.6.0.tar.gz -> sxhkd-0.6.0.tar.gz
 _eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
-_md5_=478e305f4b2fdf3dc6a8897e79c68312
+_md5_=ad2f9c6bd1625e12424251529391bafc
