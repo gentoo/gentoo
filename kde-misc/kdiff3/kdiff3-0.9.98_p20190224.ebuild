@@ -36,4 +36,6 @@ RDEPEND="${DEPEND}
 	!kde-misc/kdiff3:4
 "
 
+PATCHES=( "${FILESDIR}/${P}-clangtidy-optional.patch" )
+
 S="${WORKDIR}/${PN}-${COMMIT}"
