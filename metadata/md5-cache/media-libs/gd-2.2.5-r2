@@ -12,4 +12,4 @@ REQUIRED_USE=prefix? ( fontconfig )
 SLOT=2/3
 SRC_URI=https://github.com/libgd/libgd/releases/download/gd-2.2.5/libgd-2.2.5.tar.xz test? ( https://github.com/libgd/libgd/raw/e0cb1b76c305db68b251fe782faa12da5d357593/tests/gif/ossfuzz5700.gif -> libgd-2.2.5-ossfuzz5700.dat https://github.com/libgd/libgd/raw/e0cb1b76c305db68b251fe782faa12da5d357593/tests/gif/php_bug_75571.gif -> libgd-2.2.5-php_bug_75571.dat )
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multibuild	40fe59465edacd730c644ec2bc197809	multilib	b2f01ad412baf81650c23fcf0975fa33	multilib-build	b42436dc1260f475af229754c165cb6b	multilib-minimal	8bddda43703ba94d8341f4e247f97566	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
-_md5_=0bf668e06c43a56a150ebd4d18be81e1
+_md5_=2f54641c3718907c6b08af408173206b
