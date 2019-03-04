@@ -1,21 +1,29 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 inherit cmake-multilib
 
 DESCRIPTION="Abstraction layer for filesystem and archive access"
-HOMEPAGE="http://icculus.org/physfs/"
-SRC_URI="http://icculus.org/physfs/downloads/${P}.tar.bz2"
+HOMEPAGE="https://icculus.org/physfs/"
+
+if [[ ${PV} == *9999* ]]; then
+	EHG_REPO_URI="https://hg.icculus.org/icculus/physfs"
+	inherit mercurial
+else
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc64 ~x86 ~x86-fbsd"
+	SRC_URI="https://icculus.org/physfs/downloads/${P}.tar.bz2"
+fi
 
 LICENSE="ZLIB"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc64 ~x86 ~x86-fbsd"
 IUSE="7zip doc grp hog iso mvl qpak slb static-libs vdf wad +zip"
 
-DEPEND="doc? ( app-doc/doxygen )"
+BDEPEND="doc? ( app-doc/doxygen )"
 
 DOCS=( docs/CHANGELOG.txt docs/CREDITS.txt docs/TODO.txt )
+
+PATCHES=( "${FILESDIR}/${P}-setwritedir.patch" )
 
 multilib_src_configure() {
 	local mycmakeargs=(

@@ -29,7 +29,7 @@
 
 #--- END OF EXAMPLES ---
 
-# Mikle Kolyada <zlogene@gentoo.org? (04 Mar 2019)
+# Mikle Kolyada <zlogene@gentoo.org> (04 Mar 2019)
 # Mask Squid-4.x for testing
 =net-proxy/squid-4*
 
