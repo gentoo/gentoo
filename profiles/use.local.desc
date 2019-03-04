@@ -2220,6 +2220,7 @@ gnome-base/gdm:plymouth - Enable support for smooth transition from sys-boot/ply
 gnome-base/gnome:classic - Install gnome-extra/gnome-shell-extensions for the Gnome Shell Classic mode
 gnome-base/gnome:extras - Install additional GNOME applications
 gnome-base/gnome-control-center:colord - Support color management using x11-misc/colord
+gnome-base/gnome-control-center:flickr - Add support for using photos from flickr as desktop background
 gnome-base/gnome-control-center:gnome-online-accounts - Enable configuration panel for net-libs/gnome-online-accounts accounts
 gnome-base/gnome-control-center:ibus - Enable support for enhanced input methods through app-i18n/ibus
 gnome-base/gnome-desktop:license-docs - Install help files documenting GNOME's licenses
