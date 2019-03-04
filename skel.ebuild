@@ -10,7 +10,9 @@
 # It is suggested that you use the latest EAPI approved by the Council.
 # The PMS contains specifications for all EAPIs. Eclasses will test for this
 # variable if they need to use features that are not universal in all EAPIs.
-EAPI=6
+# If an eclass doesn't support latest EAPI, use the previous EAPI instead.
+EAPI=7
+
 
 # inherit lists eclasses to inherit functions from. For example, an ebuild
 # that needs the eautoreconf function from autotools.eclass won't work
@@ -89,11 +91,16 @@ IUSE="gnome X"
 # The below is valid if the same run-time depends are required to compile.
 RDEPEND="${DEPEND}"
 
+# Build-time dependencies that are executed during the emerge process, and
+# only need to be present in the native build system (CBUILD). Example:
+#BDEPEND="virtual/pkgconfig"
+
+
 # Source directory; the dir where the sources can be found (automatically
 # unpacked) inside ${WORKDIR}.  The default value for S is ${WORKDIR}/${P}
 # If you don't need to change it, leave the S= line out of the ebuild
 # to keep it tidy.
-#S=${WORKDIR}/${P}
+#S="${WORKDIR}/${P}"
 
 
 # The following src_configure function is implemented as default by portage, so
@@ -116,7 +123,7 @@ RDEPEND="${DEPEND}"
 	#	--mandir=/usr/share/man || die
 	# Note the use of --infodir and --mandir, above. This is to make
 	# this package FHS 2.2-compliant.  For more information, see
-	#   https://www.pathname.com/fhs/
+	#   https://wiki.linuxfoundation.org/lsb/fhs
 #}
 
 # The following src_compile function is implemented as default by portage, so
