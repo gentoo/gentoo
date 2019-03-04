@@ -1,14 +1,14 @@
 BDEPEND=dev-util/ninja >=dev-util/cmake-3.9.6
 DEFINED_PHASES=compile configure install prepare test
-DEPEND=virtual/libmysqlclient:= dev-libs/boost:= dev-libs/openssl:0= !<dev-db/mysql-connector-c-6.1.8
+DEPEND=virtual/libmysqlclient:= dev-libs/boost:= !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) !<dev-db/mysql-connector-c-6.1.8
 DESCRIPTION=MySQL database connector for C++ (mimics JDBC 4.0 API)
 EAPI=7
 HOMEPAGE=https://dev.mysql.com/downloads/connector/cpp/
-IUSE=debug examples gcov static-libs
+IUSE=debug examples gcov libressl static-libs
 KEYWORDS=~amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc ~x86
 LICENSE=Artistic GPL-2
-RDEPEND=virtual/libmysqlclient:= dev-libs/boost:= dev-libs/openssl:0= !<dev-db/mysql-connector-c-6.1.8
+RDEPEND=virtual/libmysqlclient:= dev-libs/boost:= !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) !<dev-db/mysql-connector-c-6.1.8
 SLOT=0/7
 SRC_URI=https://dev.mysql.com/get/Downloads/Connector-C++/mysql-connector-c++-1.1.12.tar.gz
 _eclasses_=cmake-utils	ab10bd85e5d38e2a32077bcd91faa1b6	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	a09389deba2c0a7108b581e02c7cecbf	multilib	b2f01ad412baf81650c23fcf0975fa33	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	xdg-utils	14d00d009167652b1fa363e55effe213
-_md5_=b35268a440785cbe18bda4fa5c52e983
+_md5_=db0feb602bd9ad04af251ca3d3def3bc
