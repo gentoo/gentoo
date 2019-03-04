@@ -33,6 +33,10 @@ DEPEND="${RDEPEND}
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}/meson-0.49-python3.5-tests.patch"
+)
+
 python_prepare_all() {
 	# ASAN and sandbox both want control over LD_PRELOAD
 	# https://bugs.gentoo.org/673016
@@ -51,11 +55,6 @@ src_test() {
 }
 
 python_test() {
-	if [[ ${EPYTHON} == python3.5 ]]; then
-		ewarn "Skipping tests with ${EPYTHON}"
-		return 0
-	fi
-
 	(
 		# test_meson_installed
 		unset PYTHONDONTWRITEBYTECODE

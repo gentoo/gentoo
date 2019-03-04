@@ -51,11 +51,6 @@ src_test() {
 }
 
 python_test() {
-	if [[ ${EPYTHON} == python3.5 ]]; then
-		ewarn "Skipping tests with ${EPYTHON}"
-		return 0
-	fi
-
 	(
 		# test_meson_installed
 		unset PYTHONDONTWRITEBYTECODE
