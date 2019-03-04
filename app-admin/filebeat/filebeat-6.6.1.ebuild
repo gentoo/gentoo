@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,10 +9,10 @@ SRC_URI="https://github.com/elastic/beats/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="~amd64 ~x86"
 RESTRICT="test"
 
-DEPEND=">=dev-lang/go-1.10.3"
+DEPEND=">=dev-lang/go-1.11.2"
 RDEPEND="!app-admin/filebeat-bin"
 
 # Do not complain about CFLAGS etc since go projects do not use them.

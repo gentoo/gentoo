@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE="sasl ssl"
 
-DEPEND="dev-lang/go:=
+DEPEND="<dev-lang/go-1.12:=
 	net-libs/libpcap
 	sasl? ( dev-libs/cyrus-sasl )
 	ssl? ( dev-libs/openssl:0= )"
