@@ -41,6 +41,7 @@ RDEPEND="
 	x11-apps/xgamma
 	x11-apps/xrandr
 	x11-libs/gtk+:3[introspection]
+	x11-libs/libnotify
 "
 
 S="${WORKDIR}/${PN}"
