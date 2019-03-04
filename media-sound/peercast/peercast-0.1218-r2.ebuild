@@ -1,8 +1,9 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=2
-inherit eutils flag-o-matic toolchain-funcs
+EAPI=7
+
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="A client and server for Peercast P2P-radio network"
 HOMEPAGE="http://www.peercast.org"
@@ -18,12 +19,12 @@ DEPEND=""
 
 S=${WORKDIR}
 
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-CVE-2008-2040.patch \
-		"${FILESDIR}"/${PN}-0.1216-makefile.patch \
-		"${FILESDIR}"/${PN}-0.1216-amd64.patch \
-		"${FILESDIR}"/${P}-glibc-2.10.patch
-}
+PATCHES=(
+	"${FILESDIR}/${P}-CVE-2008-2040.patch" \
+	"${FILESDIR}/${PN}-0.1216-makefile.patch" \
+	"${FILESDIR}/${PN}-0.1216-amd64.patch" \
+	"${FILESDIR}/${P}-glibc-2.10.patch"
+)
 
 src_compile() {
 	append-ldflags -pthread
