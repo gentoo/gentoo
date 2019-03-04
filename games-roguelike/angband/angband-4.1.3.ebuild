@@ -14,9 +14,15 @@ SRC_URI="https://rephial.org/downloads/${MAJOR_PV}/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="ncurses sdl +sound X"
+IUSE="+ncurses sdl sound +X"
 
-RDEPEND="!ncurses? ( !X? ( !sdl? ( sys-libs/ncurses:0=[unicode] ) ) )
+REQUIRED_USE="sound? ( sdl )
+	|| ( X ncurses )"
+
+RDEPEND="X? (
+		media-fonts/font-misc-misc
+		x11-libs/libX11
+	)
 	ncurses? ( sys-libs/ncurses:0=[unicode] )
 	sdl? (
 		media-libs/libsdl[video,X]
@@ -26,8 +32,7 @@ RDEPEND="!ncurses? ( !X? ( !sdl? ( sys-libs/ncurses:0=[unicode] ) ) )
 			media-libs/libsdl[sound]
 			media-libs/sdl-mixer[mp3]
 		)
-	)
-	X? ( x11-libs/libX11 )"
+	)"
 DEPEND="${RDEPEND}
 	dev-python/docutils
 	virtual/pkgconfig"
@@ -54,23 +59,16 @@ src_prepare() {
 }
 
 src_configure() {
-	local myconf
+	local myconf=(
+		--bindir="${EPREFIX}"/usr/bin
+		--with-private-dirs
+		$(use_enable X x11)
+		$(use_enable sdl)
+		$(use_enable sound sdl-mixer)
+		$(use_enable ncurses curses)
+	)
 
-	if use sdl; then
-		myconf="$(use_enable sound sdl-mixer)"
-	else
-		myconf="--disable-sdl-mixer"
-	fi
-
-	econf \
-		--bindir="${EPREFIX}"/usr/bin \
-		--with-private-dirs \
-		$(use_enable X x11) \
-		$(use_enable sdl) \
-		$(use_enable ncurses curses) \
-		$(use !sdl && use !ncurses && use !X && \
-			echo --enable-curses) \
-		${myconf}
+	econf "${myconf[@]}"
 }
 
 src_install() {
