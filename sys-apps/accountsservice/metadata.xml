@@ -10,5 +10,6 @@
 			<pkg>sys-auth/consolekit</pkg> for session tracking</flag>
 		<flag name="systemd">Use <pkg>sys-apps/systemd</pkg> instead of
 			<pkg>sys-auth/consolekit</pkg> for session tracking</flag>
+		<flag name="user-heuristics">Enable heuristics for guessing system vs. human users in the range 500-minimum-uid</flag>
 	</use>
 </pkgmetadata>
