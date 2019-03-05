@@ -3,6 +3,10 @@
 
 # This file requires >=portage-2.1.1
 
+# Georgy Yakovlev <gyakovlev@gentoo.org> (05 March 2019)
+# freeipmi is supported on x86
+app-admin/conserver -freeipmi
+
 # Mikle Kolyada <zlogene@gentoo.org> (03 Mar 2019)
 # No Spice protocol for x86
 app-emulation/nemu spice

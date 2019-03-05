@@ -7,6 +7,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Georgy Yakovlev <gyakovlev@gentoo.org> (05 Mar 2019)
+# Not keyworded on non-x86 arches
+app-admin/conserver freeipmi
+
 # Matt Turner <mattst88@gentoo.org> (03 Mar 2019)
 # Mask for testing. Bug 606924
 media-libs/mesa libglvnd
