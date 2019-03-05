@@ -1,0 +1,23 @@
+From 129588442041c32b0d98f2361a69e0e350592f70 Mon Sep 17 00:00:00 2001
+From: Oskar Kruschitz <okr@huemer-it.com>
+Date: Thu, 13 Dec 2018 16:13:01 +0100
+Subject: [PATCH] Added missing Include
+
+Fixing an error during Build with Qt5.12:
+error: member access into incomplete type 'const QWebEngineCertificateError'
+---
+ src/gui/wizard/webview.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/gui/wizard/webview.cpp b/src/gui/wizard/webview.cpp
+index 15c1f314e..73e671b8f 100644
+--- a/src/gui/wizard/webview.cpp
++++ b/src/gui/wizard/webview.cpp
+@@ -10,6 +10,7 @@
+ #include <QProgressBar>
+ #include <QLoggingCategory>
+ #include <QLocale>
++#include <QWebEngineCertificateError>
+ 
+ #include "common/utility.h"
+ 

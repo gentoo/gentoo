@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -52,6 +52,10 @@ DEPEND="${COMMON_DEPEND}
 		dev-qt/qttest:5
 	)
 "
+
+PATCHES=(
+	"${FILESDIR}"/${P}-missing_qt_include.patch
+	)
 
 S=${WORKDIR}/desktop-${PV/_/-}
 
