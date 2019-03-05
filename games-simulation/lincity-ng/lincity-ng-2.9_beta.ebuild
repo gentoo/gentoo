@@ -31,8 +31,9 @@ S="${WORKDIR}/${PN}-${P/_/-}"
 
 src_prepare() {
 	default
-	sed -i "/COPYING COPYING-data.txt COPYING-fonts.txt CREDITS /d" \
-		Jamfile || die
+
+	# Missing CREDITS files actually breaks the install.
+	sed -i -r "s/\b(COPYING[^ ]*|CREDITS)\b//g" Jamfile || die
 
 	# Can't use eautoreconf as it does weird jam stuff.
 	autotools_run_tool ./autogen.sh
