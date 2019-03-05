@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit multiprocessing
+inherit autotools libtool multiprocessing
 
 DESCRIPTION="City simulation game"
 HOMEPAGE="https://github.com/lincity-ng/lincity-ng"
@@ -33,7 +33,10 @@ src_prepare() {
 	default
 	sed -i "/COPYING COPYING-data.txt COPYING-fonts.txt CREDITS /d" \
 		Jamfile || die
-	./autogen.sh || die
+
+	# Can't use eautoreconf as it does weird jam stuff.
+	autotools_run_tool ./autogen.sh
+	elibtoolize
 }
 
 src_compile() {
