@@ -1,21 +1,23 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 KDE_HANDBOOK="forceoptional"
 inherit kde5
 
 DESCRIPTION="IDE for the R-project"
 HOMEPAGE="https://rkward.kde.org/"
-SRC_URI="mirror://kde/stable/${PN}/${PV}/src/${P}.tar.gz"
+SRC_URI="mirror://kde/stable/${PN}/${PV/b}/src/${P}.tar.gz"
 
 LICENSE="GPL-2+ LGPL-2"
-SLOT="5"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
-COMMON_DEPEND="
+BDEPEND="
+	sys-devel/gettext
+"
+DEPEND="
 	$(add_frameworks_dep kcompletion)
 	$(add_frameworks_dep kconfig)
 	$(add_frameworks_dep kconfigwidgets)
@@ -37,15 +39,12 @@ COMMON_DEPEND="
 	$(add_qt_dep qtnetwork)
 	$(add_qt_dep qtprintsupport)
 	$(add_qt_dep qtscript)
-	$(add_qt_dep qtwebkit)
+	>=dev-qt/qtwebkit-5.212.0_pre20180120:5
 	$(add_qt_dep qtwidgets)
 	$(add_qt_dep qtxml)
 	dev-lang/R
 "
-RDEPEND="${COMMON_DEPEND}
+RDEPEND="${DEPEND}
 	virtual/libintl
 	!sci-mathematics/rkward:4
-"
-DEPEND="${COMMON_DEPEND}
-	sys-devel/gettext
 "
