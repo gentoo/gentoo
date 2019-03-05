@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
-MY_EXTRAS_VER="20181211-1735Z"
+MY_EXTRAS_VER="20190305-2052Z"
 SUBSLOT="18"
 
 JAVA_PKG_OPT_USE="jdbc"
