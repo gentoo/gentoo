@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup test
+DEPEND==sys-kernel/spl-0.7.13* dev-lang/perl virtual/awk kernel_linux? ( virtual/modutils ) sys-apps/sed kernel_linux? ( virtual/linux-sources virtual/libelf ) >=app-portage/elt-patches-20170815
+DESCRIPTION=Linux ZFS kernel module for sys-fs/zfs
+EAPI=5
+HOMEPAGE=https://zfsonlinux.org/
+IUSE=custom-cflags debug +rootfs kernel_linux kernel_linux kernel_linux
+KEYWORDS=~amd64
+LICENSE=CDDL debug? ( GPL-2+ )
+RDEPEND==sys-kernel/spl-0.7.13* dev-lang/perl virtual/awk !sys-fs/zfs-fuse kernel_linux? ( virtual/modutils )
+RESTRICT=debug? ( strip ) test
+SLOT=0
+SRC_URI=https://github.com/zfsonlinux/zfs/releases/download/zfs-0.7.13/zfs-0.7.13.tar.gz
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	autotools-utils	696393cddf6200db17a31641f597b403	desktop	b1d22ac8bdd4679ab79c71aca235009d	eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	a09389deba2c0a7108b581e02c7cecbf	libtool	f143db5a74ccd9ca28c1234deffede96	linux-info	953c3b1c472dcadbf62098a9301327f2	linux-mod	4b8528d500d6555ad20763a77b31766c	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	b2f01ad412baf81650c23fcf0975fa33	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=152dd6c31f4581deab2c5eee5d2fdeff
