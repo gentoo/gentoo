@@ -36,6 +36,7 @@ RDEPEND="${COMMON_DEPEND}
 	>=gnome-base/gnome-settings-daemon-3
 	>=gnome-base/gnome-shell-3.24
 	>=gnome-base/nautilus-3
+	<gnome-base/nautilus-3.27
 "
 DEPEND="${COMMON_DEPEND}
 	>=dev-util/intltool-0.40.0

@@ -37,6 +37,7 @@ RDEPEND="${COMMON_DEPEND}
 	>=gnome-base/gnome-shell-3.24
 	x11-wm/mutter
 	>=gnome-base/nautilus-3
+	<gnome-base/nautilus-3.27
 "
 DEPEND="${COMMON_DEPEND}
 	>=sys-devel/gettext-0.19.8
