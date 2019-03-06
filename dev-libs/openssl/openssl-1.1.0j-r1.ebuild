@@ -12,9 +12,8 @@ SRC_URI="mirror://openssl/source/${MY_P}.tar.gz"
 
 LICENSE="openssl"
 SLOT="0/1.1" # .so version of libssl/libcrypto
-[[ "${PV}" = *_pre* ]] || \
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-linux"
-IUSE="+asm bindist elibc_musl rfc3779 sctp cpu_flags_x86_sse2 sslv3 static-libs test tls-heartbeat vanilla zlib"
+IUSE="+asm bindist elibc_musl rfc3779 sctp cpu_flags_x86_sse2 static-libs test tls-heartbeat vanilla zlib"
 RESTRICT="!bindist? ( bindist )"
 
 RDEPEND=">=app-misc/c_rehash-1.7-r1
@@ -28,27 +27,25 @@ DEPEND="${RDEPEND}
 	)"
 PDEPEND="app-misc/ca-certificates"
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-1.1.0j-parallel_install_fix.patch #671602
-)
-
 # This does not copy the entire Fedora patchset, but JUST the parts that
 # are needed to make it safe to use EC with RESTRICT=bindist.
 # See openssl.spec for the matching numbering of SourceNNN, PatchNNN
 SOURCE1=hobble-openssl
 SOURCE12=ec_curve.c
 SOURCE13=ectest.c
-PATCH37=openssl-1.1.1-ec-curves.patch
+PATCH1=openssl-1.1.0-build.patch # Fixes EVP testcase for EC
+PATCH37=openssl-1.1.0-ec-curves.patch
 FEDORA_GIT_BASE='https://src.fedoraproject.org/cgit/rpms/openssl.git/plain/'
-FEDORA_GIT_BRANCH='f29'
+FEDORA_GIT_BRANCH='f28'
+FEDORA_GIT_COMMIT="d2ede125556ac99aa0faa7744c703af3f559094e"
 FEDORA_SRC_URI=()
-FEDORA_SOURCE=( ${SOURCE1} ${SOURCE12} ${SOURCE13} )
-FEDORA_PATCH=( ${PATCH37} )
+FEDORA_SOURCE=( $SOURCE1 $SOURCE12 $SOURCE13 )
+FEDORA_PATCH=( $PATCH1 $PATCH37 )
 for i in "${FEDORA_SOURCE[@]}" ; do
-	FEDORA_SRC_URI+=( "${FEDORA_GIT_BASE}/${i}?h=${FEDORA_GIT_BRANCH} -> ${P}_${i}" )
+	FEDORA_SRC_URI+=( "${FEDORA_GIT_BASE}/${i}?h=${FEDORA_GIT_BRANCH}&id=${FEDORA_GIT_COMMIT} -> ${P}_${FEDORA_GIT_COMMIT}_${i}" )
 done
 for i in "${FEDORA_PATCH[@]}" ; do # Already have a version prefix
-	FEDORA_SRC_URI+=( "${FEDORA_GIT_BASE}/${i}?h=${FEDORA_GIT_BRANCH} -> ${i}" )
+	FEDORA_SRC_URI+=( "${FEDORA_GIT_BASE}/${i}?h=${FEDORA_GIT_BRANCH}&id=${FEDORA_GIT_COMMIT} -> ${i%.patch}_${FEDORA_GIT_COMMIT}.patch" )
 done
 SRC_URI+=" bindist? ( ${FEDORA_SRC_URI[@]} )"
 
@@ -58,31 +55,42 @@ MULTILIB_WRAPPED_HEADERS=(
 	usr/include/openssl/opensslconf.h
 )
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.0.2a-x32-asm.patch #542618
+	"${FILESDIR}"/${PN}-1.1.0j-parallel_install_fix.patch #671602
+	"${FILESDIR}"/${PN}-1.1.1b-CVE-2019-1543.patch
+)
+
 src_prepare() {
 	if use bindist; then
-		# This just removes the prefix, and puts it into WORKDIR like the RPM.
-		for i in "${FEDORA_SOURCE[@]}" ; do
-			cp -f "${DISTDIR}"/"${P}_${i}" "${WORKDIR}"/"${i}" || die
+		# we need to patch the patch but we cannot patch in DISTDIR...
+		mkdir "${WORKDIR}"/fedora_patches || die
+		for i in "${FEDORA_PATCH[@]}" ; do
+			cp "${DISTDIR}"/"${i%.patch}_${FEDORA_GIT_COMMIT}.patch" "${WORKDIR}"/fedora_patches || die
 		done
 
+		# now patch the path, due to OpenSSL change cb193560e0da17a41b40ce574a2349f1d4d59ed1
+		sed -i -e 's#test/evptests.txt#test/recipes/30-test_evp_data/evppkey.txt#g' \
+			"${WORKDIR}"/fedora_patches/openssl-1.1.0-build_d2ede125556ac99aa0faa7744c703af3f559094e.patch || \
+			die
+
+		# This just removes the prefix, and puts it into WORKDIR like the RPM.
+		for i in "${FEDORA_SOURCE[@]}" ; do
+			cp -f "${DISTDIR}"/"${P}_${FEDORA_GIT_COMMIT}_${i}" "${WORKDIR}"/"${i}" || die
+		done
 		# .spec %prep
 		bash "${WORKDIR}"/"${SOURCE1}" || die
 		cp -f "${WORKDIR}"/"${SOURCE12}" "${S}"/crypto/ec/ || die
 		cp -f "${WORKDIR}"/"${SOURCE13}" "${S}"/test/ || die
 		for i in "${FEDORA_PATCH[@]}" ; do
-			if [[ "${i}" == "${PATCH37}" ]] ; then
-				# apply our own for OpenSSL 1.1.1b adjusted version of this patch
-				eapply "${FILESDIR}"/openssl-1.1.1b-ec-curves-patch.patch
-			else
-				eapply "${DISTDIR}"/"${i}"
-			fi
+			#eapply "${DISTDIR}"/"${i%.patch}_${FEDORA_GIT_COMMIT}.patch"
+			eapply "${WORKDIR}/fedora_patches/${i%.patch}_${FEDORA_GIT_COMMIT}.patch"
 		done
 		# Also see the configure parts below:
 		# enable-ec \
 		# $(use_ssl !bindist ec2m) \
 
 	fi
-
 	# keep this in sync with app-misc/c_rehash
 	SSL_CNF_DIR="/etc/ssl"
 
@@ -91,9 +99,7 @@ src_prepare() {
 	rm -f Makefile
 
 	if ! use vanilla ; then
-		if [[ $(declare -p PATCHES 2>/dev/null) == "declare -a"* ]] ; then
-			[[ ${#PATCHES[@]} -gt 0 ]] && eapply "${PATCHES[@]}"
-		fi
+		eapply "${PATCHES[@]}"
 	fi
 
 	eapply_user #332661
@@ -106,10 +112,13 @@ src_prepare() {
 		-e '/^MAKEDEPPROG/s:=.*:=$(CC):' \
 		-e $(has noman FEATURES \
 			&& echo '/^install:/s:install_docs::' \
-			|| echo '/^MANDIR=/s:=.*:='${EPREFIX%/}'/usr/share/man:') \
+			|| echo '/^MANDIR=/s:=.*:='${EPREFIX}'/usr/share/man:') \
 		-e "/^DOCDIR/s@\$(BASENAME)@&-${PVR}@" \
 		Configurations/unix-Makefile.tmpl \
 		|| die
+
+	# show the actual commands in the log
+	sed -i '/^SET_X/s@=.*@=set -x@' Makefile.shared || die
 
 	# quiet out unknown driver argument warnings since openssl
 	# doesn't have well-split CFLAGS and we're making it even worse
@@ -126,7 +135,7 @@ src_prepare() {
 
 	# Prefixify Configure shebang (#141906)
 	sed \
-		-e "1s,/usr/bin/env,${EPREFIX%/}&," \
+		-e "1s,/usr/bin/env,${EPREFIX}&," \
 		-i Configure || die
 	# Remove test target when FEATURES=test isn't set
 	if ! use test ; then
@@ -193,15 +202,13 @@ multilib_src_configure() {
 		enable-idea \
 		enable-mdc2 \
 		enable-rc5 \
-		$(use_ssl sslv3 ssl3) \
-		$(use_ssl sslv3 ssl3-method) \
 		$(use_ssl asm) \
 		$(use_ssl rfc3779) \
 		$(use_ssl sctp) \
 		$(use_ssl tls-heartbeat heartbeats) \
 		$(use_ssl zlib) \
-		--prefix="${EPREFIX%/}"/usr \
-		--openssldir="${EPREFIX%/}"${SSL_CNF_DIR} \
+		--prefix="${EPREFIX}"/usr \
+		--openssldir="${EPREFIX}"${SSL_CNF_DIR} \
 		--libdir=$(get_libdir) \
 		shared threads \
 		|| die
@@ -235,13 +242,7 @@ multilib_src_test() {
 }
 
 multilib_src_install() {
-	# We need to create $ED/usr on our own to avoid a race condition #665130
-	if [[ ! -d "${ED%/}/usr" ]]; then
-		# We can only create this directory once
-		mkdir "${ED%/}"/usr || die
-	fi
-
-	emake DESTDIR="${D%/}" install
+	emake DESTDIR="${D}" install
 }
 
 multilib_src_install_all() {
