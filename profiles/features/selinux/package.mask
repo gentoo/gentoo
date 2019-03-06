@@ -29,7 +29,7 @@ gnome-extra/gnome-shell-extensions
 gnome-extra/gnome-shell-frippery
 gnome-extra/gnome-shell-extensions-topicons-plus
 gnome-extra/gnome-shell-extension-gsconnect
-gnome-extra/gnome-tweak-tool
+gnome-extra/gnome-tweaks
 x11-themes/zukitwo-shell
 gnome-extra/office-runner
 kde-misc/systemd-kcm

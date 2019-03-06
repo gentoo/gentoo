@@ -4,6 +4,7 @@
 EAPI=6
 GNOME2_LA_PUNT="yes"
 PYTHON_COMPAT=( python2_7 )
+GNOME_ORG_MODULE="gnome-tweak-tool"
 
 inherit gnome2 python-r1
 
@@ -43,7 +44,7 @@ DEPEND="${COMMON_DEPEND}
 
 src_prepare() {
 	# Add contents of Gentoo's cursor theme directory to cursor theme list
-	eapply "${FILESDIR}/${PN}-3.10.1-gentoo-cursor-themes.patch"
+	eapply "${FILESDIR}/3.10.1-gentoo-cursor-themes.patch"
 
 	gnome2_src_prepare
 	python_copy_sources

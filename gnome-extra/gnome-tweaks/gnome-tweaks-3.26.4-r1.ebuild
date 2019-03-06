@@ -4,6 +4,7 @@
 EAPI=6
 GNOME2_LA_PUNT="yes"
 PYTHON_COMPAT=( python3_{4,5,6} )
+GNOME_ORG_MODULE="gnome-tweak-tool"
 
 inherit gnome.org meson gnome2-utils python-single-r1 xdg
 
