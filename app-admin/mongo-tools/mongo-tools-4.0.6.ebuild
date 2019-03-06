@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE="sasl ssl"
 
-DEPEND="<dev-lang/go-1.12:=
+DEPEND="dev-lang/go:=
 	net-libs/libpcap
 	sasl? ( dev-libs/cyrus-sasl )
 	ssl? ( dev-libs/openssl:0= )"
@@ -30,6 +30,13 @@ src_unpack() {
 	mkdir -p "${S%/*}" || die
 	default
 	mv ${MY_P} "${S}" || die
+}
+
+src_prepare() {
+	default
+
+	# allow building with go 1.12 #678924
+	sed -i 's/_Ctype_struct_/C.struct_/' vendor/github.com/google/gopacket/pcap/pcap.go || die
 }
 
 src_compile() {
