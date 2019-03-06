@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -26,7 +26,7 @@ DEPEND="${RDEPEND}
 	sys-apps/texinfo"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.41.8-makefile.patch
+	#"${FILESDIR}"/${PN}-1.41.8-makefile.patch
 	"${FILESDIR}"/${PN}-1.40-fbsd.patch
 	"${FILESDIR}"/${PN}-1.42.13-fix-build-cflags.patch #516854
 
@@ -121,7 +121,7 @@ src_install() {
 
 	# configure doesn't have an option to disable static libs :/
 	if ! use static-libs ; then
-		find "${D}" -name '*.a' -delete || die
+		find "${ED}" -name '*.a' -delete || die
 	fi
 
 	if use elibc_FreeBSD ; then
