@@ -126,6 +126,8 @@ DEPEND="${COMMON_DEPEND}
 	app-arch/xz-utils
 	>=sys-devel/bison-3.0.1"
 
+BDEPEND="virtual/pkgconfig"
+
 # Without USE=readline or libedit, the interactive "php -a" CLI will hang.
 REQUIRED_USE="
 	|| ( cli cgi fpm apache2 embed phpdbg )
