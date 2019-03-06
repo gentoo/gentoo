@@ -390,7 +390,7 @@ src_install() {
 	emake install-nokeys DESTDIR="${D}"
 	fperms 600 /etc/ssh/sshd_config
 	dobin contrib/ssh-copy-id
-	newinitd "${FILESDIR}"/sshd.initd sshd
+	newinitd "${FILESDIR}"/sshd-r1.initd sshd
 	newconfd "${FILESDIR}"/sshd-r1.confd sshd
 
 	newpamd "${FILESDIR}"/sshd.pam_include.2 sshd
