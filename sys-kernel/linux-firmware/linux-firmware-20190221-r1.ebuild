@@ -11,7 +11,7 @@ if [[ ${PV} == 99999999* ]]; then
 else
 	GIT_COMMIT="9ee52be785cf91fc6a3c6aa27d484873f8270b72"
 	SRC_URI="https://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git/snapshot/linux-firmware-${GIT_COMMIT}.tar.gz -> ${P}-r1.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+	KEYWORDS="alpha amd64 arm arm64 hppa ia64 mips ppc ppc64 s390 sh sparc x86"
 fi
 
 DESCRIPTION="Linux firmware files"
