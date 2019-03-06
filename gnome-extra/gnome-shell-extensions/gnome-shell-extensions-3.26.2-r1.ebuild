@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -45,7 +45,7 @@ To change the system default and enable some extensions, you can use
 
 Alternatively, to enable/disable extensions on a per-user basis,
 you can use the https://extensions.gnome.org/ web interface, the
-gnome-extra/gnome-tweak-tool GUI, or modify the org.gnome.shell
+gnome-extra/gnome-tweaks GUI, or modify the org.gnome.shell
 enabled-extensions gsettings key from the command line or a script."
 
 PATCHES=(
