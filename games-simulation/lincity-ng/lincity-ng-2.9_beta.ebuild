@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools libtool multiprocessing
+inherit autotools libtool multiprocessing toolchain-funcs
 
 DESCRIPTION="City simulation game"
 HOMEPAGE="https://github.com/lincity-ng/lincity-ng"
@@ -41,7 +41,11 @@ src_prepare() {
 }
 
 src_compile() {
-	jam -q -dx -j $(makeopts_jobs) || die "jam failed"
+	jam -q -dx \
+		-j$(makeopts_jobs) \
+		-sAR="$(tc-getAR) ru" \
+		-sRANLIB="$(tc-getRANLIB)" \
+		|| die "jam failed"
 }
 
 src_install() {
