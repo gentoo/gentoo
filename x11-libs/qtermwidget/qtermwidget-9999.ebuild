@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 inherit cmake-utils git-r3
 
 DESCRIPTION="Qt terminal emulator widget"
@@ -22,5 +22,3 @@ DEPEND="${DEPEND}
 	dev-util/lxqt-build-tools
 	dev-qt/linguist-tools:5
 "
-
-PATCHES=( "${FILESDIR}/${P}-nofetch.patch" )
