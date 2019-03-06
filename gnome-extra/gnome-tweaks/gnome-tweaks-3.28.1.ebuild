@@ -2,15 +2,14 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-GNOME2_LA_PUNT="yes"
 PYTHON_COMPAT=( python3_{4,5,6} )
 
-inherit gnome.org meson gnome2-utils python-single-r1 xdg
+inherit gnome.org meson python-single-r1 xdg
 
 DESCRIPTION="Customize advanced GNOME 3 options"
 HOMEPAGE="https://wiki.gnome.org/Apps/Tweaks"
 
-LICENSE="GPL-3+"
+LICENSE="GPL-3+ CC0-1.0"
 SLOT="0"
 
 IUSE=""
@@ -32,10 +31,9 @@ RDEPEND="${COMMON_DEPEND}
 	net-libs/libsoup:2.4[introspection]
 	x11-libs/libnotify[introspection]
 
-	>=gnome-base/gsettings-desktop-schemas-3.24
+	>=gnome-base/gsettings-desktop-schemas-3.27.90
 	>=gnome-base/gnome-shell-3.24
 	x11-wm/mutter
-	>=gnome-base/nautilus-3
 "
 DEPEND="${COMMON_DEPEND}
 	>=sys-devel/gettext-0.19.8
@@ -48,14 +46,4 @@ PATCHES=(
 src_install() {
 	meson_src_install
 	python_fix_shebang "${ED}"/usr/bin/
-}
-
-pkg_postinst() {
-	xdg_pkg_postinst
-	gnome2_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_pkg_postrm
-	gnome2_icon_cache_update
 }

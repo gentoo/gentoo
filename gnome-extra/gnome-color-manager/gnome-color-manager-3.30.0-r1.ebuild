@@ -2,10 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit gnome.org gnome2-utils meson virtualx xdg
+inherit gnome.org meson virtualx xdg
 
-DESCRIPTION="Color profile manager for the GNOME desktop"
-HOMEPAGE="https://git.gnome.org/browse/gnome-color-manager"
+DESCRIPTION="GNOME color profile tools"
+HOMEPAGE="https://gitlab.gnome.org/GNOME/gnome-color-manager/"
 
 LICENSE="GPL-2+"
 SLOT="0"
@@ -71,7 +71,6 @@ src_test() {
 
 pkg_postinst() {
 	xdg_pkg_postinst
-	gnome2_icon_cache_update
 
 	if ! has_version media-gfx/argyllcms ; then
 		elog "If you want to do display or scanner calibration, you will need to"
@@ -81,5 +80,4 @@ pkg_postinst() {
 
 pkg_postrm() {
 	xdg_pkg_postrm
-	gnome2_icon_cache_update
 }

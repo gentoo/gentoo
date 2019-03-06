@@ -5,7 +5,7 @@ EAPI=6
 inherit gnome2 virtualx
 
 DESCRIPTION="Color profile manager for the GNOME desktop"
-HOMEPAGE="https://git.gnome.org/browse/gnome-color-manager"
+HOMEPAGE="https://gitlab.gnome.org/GNOME/gnome-color-manager/"
 
 LICENSE="GPL-2+"
 SLOT="0"

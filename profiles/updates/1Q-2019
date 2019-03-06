@@ -11,3 +11,4 @@ move net-misc/networkmanager-pptp net-vpn/networkmanager-pptp
 move net-misc/networkmanager-strongswan net-vpn/networkmanager-strongswan
 move net-misc/networkmanager-vpnc net-vpn/networkmanager-vpnc
 move net-misc/networkmanager-sstp net-vpn/networkmanager-sstp
+move gnome-extra/gnome-tweak-tool gnome-extra/gnome-tweaks

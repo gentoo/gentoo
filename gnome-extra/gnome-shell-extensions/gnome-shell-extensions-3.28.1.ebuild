@@ -47,7 +47,7 @@ To change the system default and enable some extensions, you can use
 
 Alternatively, to enable/disable extensions on a per-user basis,
 you can use the https://extensions.gnome.org/ web interface, the
-gnome-extra/gnome-tweak-tool GUI, or modify the org.gnome.shell
+gnome-extra/gnome-tweaks GUI, or modify the org.gnome.shell
 enabled-extensions gsettings key from the command line or a script."
 
 src_configure() {
