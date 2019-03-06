@@ -4,12 +4,11 @@
 EAPI=7
 
 MY_PN="kde_cdemu"
-SOME_HASH="efbd90bba65c0b58a15865dda8288e87a635d59a1da0b465424c26601f37166aba223d0258de7fb79462dcb182c0b359f0cb9533e076d313b21850152aa6207c"
 inherit kde5
 
 DESCRIPTION="Frontend to cdemu daemon based on KDE Frameworks"
 HOMEPAGE="https://www.linux-apps.com/p/998461/"
-SRC_URI="https://dl.opendesktop.org/api/files/download/id/1511553040/s/${SOME_HASH}/t/1551656655/u//${MY_PN}-${PV}.tar.bz2"
+SRC_URI="https://dl.opendesktop.org/api/files/downloadfile/id/1511553040/o/1/s/3e4f95734673128605fc1d8721894a1c/t/1517011407/u/65804/${MY_PN}-${PV}.tar.bz2"
 
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~x86"
