@@ -3094,7 +3094,7 @@ dev-libs/libezV24 0.1.1: library that provides an easy API to Linux serial ports
 dev-libs/libf2c 20110801-r4: Library that converts FORTRAN to C source
 dev-libs/libfastjson 0.99.8: Fork of the json-c library, which is optimized for liblognorm processing
 dev-libs/libffi 3.2.1: a portable, high level programming interface to various calling conventions
-dev-libs/libfilezilla 0.12.3 0.15.1: C++ library offering some basic functionality for platform-independent programs
+dev-libs/libfilezilla 0.15.1: C++ library offering some basic functionality for platform-independent programs
 dev-libs/libfmt 5.2.0: Small, safe and fast formatting library
 dev-libs/libfstrcmp 0.7: Make fuzzy comparisons of strings and byte arrays
 dev-libs/libg15 1.2.7-r1: The libg15 library gives low-level access to the Logitech G15 keyboard
@@ -8615,7 +8615,7 @@ net-fs/sshfs 2.10-r1: Fuse-filesystem utilizing the sftp service
 net-fs/wdfs 1.4.2-r1: WebDAV filesystem with special features for accessing subversion repositories
 net-ftp/atftp 0.7-r5 0.7-r6: Advanced TFTP implementation client/server
 net-ftp/cmdftp 0.9.8: Light weight, yet robust command line FTP client with shell-like functions.
-net-ftp/filezilla 3.34.0 3.39.0: FTP client with lots of useful features and an intuitive interface
+net-ftp/filezilla 3.39.0: FTP client with lots of useful features and an intuitive interface
 net-ftp/frox 0.7.18-r5: A transparent ftp proxy
 net-ftp/ftp 0.17-r7 0.17.23.0.2.1: Standard Linux FTP client
 net-ftp/ftpbase 0.01-r2: FTP layout package
