@@ -3,18 +3,23 @@
 
 EAPI=7
 
-inherit cmake-utils git-r3 xdg-utils
+inherit cmake-utils xdg-utils
 
 DESCRIPTION="Qt-based multitab terminal emulator"
-HOMEPAGE="https://github.com/lxde/qterminal"
-EGIT_REPO_URI="https://github.com/lxde/qterminal.git"
+HOMEPAGE="https://lxqt.org/"
 
-LICENSE="GPL-2+"
+if [[ ${PV} = *9999* ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/lxqt/${PN}.git"
+else
+	SRC_URI="https://downloads.lxqt.org/downloads/${PN}/${PV}/${P}.tar.xz"
+	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+fi
+
+LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
-IUSE=""
 
-BDEPEND="dev-util/lxqt-build-tools"
+BDEPEND=">=dev-util/lxqt-build-tools-0.6.0"
 DEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
@@ -24,8 +29,6 @@ DEPEND="
 	~x11-libs/qtermwidget-${PV}
 "
 RDEPEND="${DEPEND}"
-
-PATCHES=( "${FILESDIR}/${P}-nofetch.patch" )
 
 pkg_postinst() {
 	xdg_icon_cache_update
