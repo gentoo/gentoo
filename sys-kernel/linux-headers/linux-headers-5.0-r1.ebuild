@@ -9,7 +9,7 @@ inherit kernel-2
 detect_version
 
 PATCH_VER="1"
-SRC_URI="mirror://gentoo/gentoo-headers-base-${PV}.tar.xz
+SRC_URI="mirror://gentoo/gentoo-headers-base-${PV}-bug-679630.tar.xz
 	https://dev.gentoo.org/~slyfox/distfiles/gentoo-headers-base-${PV}-bug-679630.tar.xz
 	${PATCH_VER:+mirror://gentoo/gentoo-headers-${PV}-${PATCH_VER}.tar.xz}
 	${PATCH_VER:+https://dev.gentoo.org/~slyfox/distfiles/gentoo-headers-${PV}-${PATCH_VER}.tar.xz}
