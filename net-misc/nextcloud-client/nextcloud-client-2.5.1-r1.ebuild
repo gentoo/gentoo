@@ -32,12 +32,9 @@ COMMON_DEPEND=">=dev-db/sqlite-3.4:3
 		kde-frameworks/kio:5
 	)
 	nautilus? ( dev-python/nautilus-python )
-	shibboleth? ( dev-qt/qtwebkit:5 )
-"
-RDEPEND="${COMMON_DEPEND}
-	!net-misc/ocsync
-	!net-misc/owncloud-client
-"
+	shibboleth? ( dev-qt/qtwebkit:5 )"
+
+RDEPEND="${COMMON_DEPEND}"
 DEPEND="${COMMON_DEPEND}
 	dev-qt/linguist-tools:5
 	doc? (
@@ -50,8 +47,7 @@ DEPEND="${COMMON_DEPEND}
 	test? (
 		dev-util/cmocka
 		dev-qt/qttest:5
-	)
-"
+	)"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-missing_qt_include.patch
