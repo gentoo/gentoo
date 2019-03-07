@@ -1,10 +1,10 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 XORG_DRI=always
-inherit linux-info xorg-2
+inherit linux-info xorg-3
 
 if [[ ${PV} == 9999* ]]; then
 	SRC_URI=""
@@ -35,10 +35,9 @@ pkg_pretend() {
 	check_extra_config
 }
 
-src_configure() {
+pkg_setup() {
 	XORG_CONFIGURE_OPTIONS=(
 		$(use_enable glamor)
 		$(use_enable udev)
 	)
-	xorg-2_src_configure
 }
