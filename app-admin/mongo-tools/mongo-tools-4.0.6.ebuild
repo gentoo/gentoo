@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE="sasl ssl"
 
-DEPEND="<dev-lang/go-1.12:=
+DEPEND="dev-lang/go:=
 	net-libs/libpcap
 	sasl? ( dev-libs/cyrus-sasl )
 	ssl? ( dev-libs/openssl:0= )"
@@ -30,6 +30,13 @@ src_unpack() {
 	mkdir -p "${S%/*}" || die
 	default
 	mv ${MY_P} "${S}" || die
+}
+
+src_prepare() {
+	default
+
+	# allow building with go 1.12 #678924
+	sed -i 's/_Ctype_struct_/C.struct_/' vendor/github.com/google/gopacket/pcap/pcap.go || die
 }
 
 src_compile() {
@@ -54,7 +61,7 @@ src_compile() {
 	mkdir -p bin || die
 	for i in bsondump mongostat mongofiles mongoexport mongoimport mongorestore mongodump mongotop mongoreplay; do
 		echo "Building $i"
-		GOROOT="${PREFIX}/usr/$(get_libdir)/go" GOPATH="${WORKDIR}" go build -buildmode="${buildmode}" -o "bin/$i" \
+		GOROOT="$(go env GOROOT)" GOPATH="${WORKDIR}" go build -buildmode="${buildmode}" -o "bin/$i" \
 			-ldflags "-X ${EGO_PN}/common/options.VersionStr=${PV}" --tags "${myconf[*]}" "$i/main/$i.go" || die
 	done
 }
