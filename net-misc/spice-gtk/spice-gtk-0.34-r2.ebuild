@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -65,6 +65,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	>=app-emulation/spice-protocol-0.12.13
 	dev-perl/Text-CSV
+	dev-util/glib-utils
 	>=dev-util/gtk-doc-am-1.14
 	>=dev-util/intltool-0.40.0
 	>=sys-devel/gettext-0.17
