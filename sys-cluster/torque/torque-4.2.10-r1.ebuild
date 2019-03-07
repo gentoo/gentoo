@@ -1,15 +1,16 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-inherit flag-o-matic eutils linux-info
+inherit autotools eutils linux-info
 
 DESCRIPTION="Resource manager and queuing system based on OpenPBS"
 HOMEPAGE="http://www.adaptivecomputing.com/products/open-source/torque"
 # TODO:  hopefully moving to github tags soon
 # http://www.supercluster.org/pipermail/torquedev/2013-May/004519.html
-SRC_URI="http://www.adaptivecomputing.com/index.php?wpfb_dl=2849 -> ${P}.tar.gz"
+#SRC_URI="http://www.adaptivecomputing.com/index.php?wpfb_dl=2849 -> ${P}.tar.gz"
+SRC_URI="https://github.com/adaptivecomputing/torque/archive/ddf5c4f40091b6157164a8846e5b60f42a5ae7f6.tar.gz -> ${P}-gh-20150517.tar.gz"
 
 LICENSE="torque-2.5"
 SLOT="0"
@@ -41,6 +42,8 @@ RDEPEND="${DEPEND_COMMON}
 	crypt? ( net-misc/openssh )
 	!crypt? ( net-misc/netkit-rsh )
 	!dev-libs/uthash"
+
+S="${WORKDIR}"/${PN}-ddf5c4f40091b6157164a8846e5b60f42a5ae7f6
 
 # Torque should depend on dev-libs/uthash but that's pretty much impossible
 # to patch in as they ship with a broken configure such that files referenced
@@ -87,17 +90,15 @@ src_prepare() {
 	# --without-loadlibfile is supposed to do this for us...
 	sed -i '/mk_default_ld_lib_file || return 1/d' buildutils/pbs_mkdirs.in || die
 
-	epatch "${FILESDIR}"/${P}-tcl8.6.patch
-
-	# 524362
-	epatch "${FILESDIR}"/TRQ-2885-limit-tm_adopt-to-only-adopt-a-session-id-t.patch
+	eapply "${FILESDIR}"/${PN}-4.2.9-tcl8.6.patch
+	eapply "${FILESDIR}"/${PN}-4.2-dont-mess-with-cflags.patch
+	eapply "${FILESDIR}"/${PN}-4.2-use-NULL-instead-of-char0.patch
+	eapply_user
+	mkdir -p "${S}"/m4
+	eautoreconf
 }
 
 src_configure() {
-	local myconf="--with-rcp=mom_rcp"
-
-	use crypt && myconf="--with-rcp=scp"
-
 	econf \
 		$(use_enable tk gui) \
 		$(use_enable syslog) \
@@ -106,13 +107,13 @@ src_configure() {
 		$(use_enable munge munge-auth) \
 		$(use_enable nvidia nvidia-gpus) \
 		$(usex kernel_linux $(use_enable cpusets cpuset) --disable-cpuset) \
+		$(usex crypt --with-rcp=scp --with-rcp=mom_rcp) \
 		--with-server-home=${PBS_SERVER_HOME} \
 		--with-environ=/etc/pbs_environment \
 		--with-default-server=${PBS_SERVER_NAME} \
 		--disable-gcc-warnings \
 		--with-tcp-retry-limit=2 \
-		--without-loadlibfile \
-		${myconf}
+		--without-loadlibfile
 }
 
 src_install() {
@@ -169,12 +170,22 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	elog "    If this is the first time torque has been installed, then you are not"
-	elog "ready to start the server.  Please refer to the documentation located at:"
-	elog "http://docs.adaptivecomputing.com/torque/${PN//./-}/Content/topics/1-installConfig/initializeConfigOnServer.htm"
-	if [[ -z "${REPLACING_VERSIONS}" ]] || [[ ${REPLACING_VERSIONS} < 4 ]]; then
-		echo
-		elog "Important 4.0+ updates"
+	local showmessage=1
+	if [[ -z "${REPLACING_VERSIONS}" ]] ; then
+		showmessage=0;
+		elog "If this is the first time torque has been installed, then you are not"
+		elog "ready to start the server.  Please refer to the documentation located at:"
+		elog "http://docs.adaptivecomputing.com/torque/${PN//./-}/help.htm#topics/1-installConfig/initializeConfigOnServer.htm"
+		elog
+	else
+		for i in ${REPLACING_VERSIONS} ; do
+			if [[ ${i} == 4* ]]; then
+				showmessage=0; break;
+			fi
+		done
+	fi
+	if [[ ${showmessage} > 0 ]]; then
+		elog "Important v4.x changes:"
 		elog "  - The on-wire protocol version has been changed."
 		elog "    Versions of Torque before 4.0.0 are no longer able to communicate."
 		elog "  - pbs_iff has been replaced by trqauthd, you will now need to add"
