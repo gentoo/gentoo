@@ -1,17 +1,17 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit eutils qmake-utils xdg-utils
+inherit desktop qmake-utils xdg-utils
 
 DESCRIPTION="Simple Qt-based XML editor"
-HOMEPAGE="http://qxmledit.org/"
-SRC_URI="mirror://sourceforge/${PN}/${P}-1-src.tgz"
+HOMEPAGE="https://qxmledit.org/"
+SRC_URI="mirror://sourceforge/${PN}/${P}-src.tgz"
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="
@@ -34,18 +34,12 @@ RDEPEND="${DEPEND}"
 
 DOCS=( AUTHORS NEWS README )
 
-S=${WORKDIR}/${P}-1
-
 src_prepare() {
 	default
 
 	# bug 568746
 	sed -i -e '/QMAKE_CXXFLAGS/s:-Werror::' \
 		src/{QXmlEdit,QXmlEditWidget,sessions/QXmlEditSessions}.pro || die
-
-	# bug 629624
-	sed -i -e 's/LIBS += -lGL -lGLU -lglut/LIBS += -lGL -lGLU/' \
-		src/QXmlEdit.pro || die
 }
 
 src_configure() {
