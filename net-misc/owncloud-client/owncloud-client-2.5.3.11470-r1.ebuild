@@ -5,17 +5,16 @@ EAPI=6
 
 inherit cmake-utils gnome2-utils
 
-DESCRIPTION="Desktop Syncing Client for Nextcloud"
-HOMEPAGE="https://github.com/nextcloud/desktop"
-SRC_URI="https://github.com/nextcloud/desktop/archive/v${PV/_/-}.tar.gz -> ${P}.tar.gz"
+DESCRIPTION="Synchronize files from ownCloud Server with your computer"
+HOMEPAGE="https://owncloud.org/"
+SRC_URI="https://download.owncloud.com/desktop/stable/${P/-}.tar.xz"
 
 LICENSE="CC-BY-3.0 GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="doc dolphin nautilus shibboleth test"
 
 COMMON_DEPEND=">=dev-db/sqlite-3.4:3
-	>=dev-libs/openssl-1.1.0:0=
 	dev-libs/qtkeychain[qt5(+)]
 	dev-qt/qtconcurrent:5
 	dev-qt/qtcore:5
@@ -23,7 +22,6 @@ COMMON_DEPEND=">=dev-db/sqlite-3.4:3
 	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5[ssl]
 	dev-qt/qtsql:5
-	dev-qt/qtwebengine:5[widgets]
 	dev-qt/qtwidgets:5
 	dev-qt/qtxml:5
 	sys-fs/inotify-tools
@@ -32,12 +30,9 @@ COMMON_DEPEND=">=dev-db/sqlite-3.4:3
 		kde-frameworks/kio:5
 	)
 	nautilus? ( dev-python/nautilus-python )
-	shibboleth? ( dev-qt/qtwebkit:5 )
-"
-RDEPEND="${COMMON_DEPEND}
-	!net-misc/ocsync
-	!net-misc/owncloud-client
-"
+	shibboleth? ( dev-qt/qtwebkit:5 )"
+
+RDEPEND="${COMMON_DEPEND}"
 DEPEND="${COMMON_DEPEND}
 	dev-qt/linguist-tools:5
 	doc? (
@@ -50,14 +45,9 @@ DEPEND="${COMMON_DEPEND}
 	test? (
 		dev-util/cmocka
 		dev-qt/qttest:5
-	)
-"
+	)"
 
-PATCHES=(
-	"${FILESDIR}"/${P}-missing_qt_include.patch
-	)
-
-S=${WORKDIR}/desktop-${PV/_/-}
+S=${WORKDIR}/${P/-}
 
 src_prepare() {
 	# Keep tests in ${T}
