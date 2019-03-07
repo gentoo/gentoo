@@ -1,9 +1,9 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 XORG_DRI="always"
-inherit xorg-2
+inherit xorg-3
 
 if [[ ${PV} == 9999* ]]; then
 	SRC_URI=""
@@ -20,10 +20,9 @@ RDEPEND=">=x11-libs/libdrm-2.4.89[video_cards_amdgpu]
 	udev? ( virtual/libudev:= )"
 DEPEND="${RDEPEND}"
 
-src_configure() {
+pkg_setup() {
 	XORG_CONFIGURE_OPTIONS=(
 		--enable-glamor
 		$(use_enable udev)
 	)
-	xorg-2_src_configure
 }
