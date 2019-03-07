@@ -29,6 +29,16 @@
 
 #--- END OF EXAMPLES ---
 
+# Georgy Yakovlev <gyakovlev@gentoo.org> (06 Mar 2019)
+# Mask rust 1.33.0 & co because it breaks firefox simd
+# https://bugzilla.mozilla.org/show_bug.cgi?id=1521249
+# https://bugs.gentoo.org/679656
+>=dev-lang/rust-1.33.0
+>=dev-lang/rust-bin-1.33.0
+>=virtual/rust-1.33.0
+>=virtual/cargo-1.33.0
+
+
 # Mikle Kolyada <zlogene@gentoo.org> (04 Mar 2019)
 # Mask Squid-4.x for testing
 =net-proxy/squid-4*
