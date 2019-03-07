@@ -1,14 +1,13 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-inherit flag-o-matic eutils linux-info
+inherit autotools flag-o-matic linux-info
 
 DESCRIPTION="Resource manager and queuing system based on OpenPBS"
 HOMEPAGE="http://www.adaptivecomputing.com/products/open-source/torque"
-DISTFILEHASH="1485300822_19e79ad"
-SRC_URI="http://wpfilebase.s3.amazonaws.com/torque/${P}-${DISTFILEHASH}.tar.gz"
+SRC_URI="https://github.com/adaptivecomputing/torque/archive/6a0b37f85c7d644e9217cbab1542792d646f59a6.tar.gz -> ${P}-gh-20170829.tar.gz"
 
 LICENSE="torque-2.5"
 SLOT="0"
@@ -47,7 +46,11 @@ RDEPEND="${DEPEND_COMMON}
 # by the configure.ac and Makefile.am are missing.
 # http://www.supercluster.org/pipermail/torquedev/2014-October/004773.html
 
-S="${WORKDIR}"/${P}-${DISTFILEHASH}
+S="${WORKDIR}"/${PN}-6a0b37f85c7d644e9217cbab1542792d646f59a6
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-6.0.3-fix-emptystring-comparison.patch
+)
 
 pkg_setup() {
 	PBS_SERVER_HOME="${PBS_SERVER_HOME:-/var/spool/${PN}}"
@@ -81,10 +84,11 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-fix-emptystring-comparison.patch
+	default
 	# We install to a valid location, no need to muck with ld.so.conf
 	# --without-loadlibfile is supposed to do this for us...
 	sed -i '/mk_default_ld_lib_file || return 1/d' buildutils/pbs_mkdirs.in || die
+	eautoreconf
 }
 
 src_configure() {
@@ -165,7 +169,7 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-        if [[ -z "${REPLACING_VERSIONS}" ]] ; then
+	if [[ -z "${REPLACING_VERSIONS}" ]] ; then
 		elog "If this is the first time torque has been installed, then you are not"
 		elog "ready to start the server.  Please refer to the documentation located at:"
 		elog "http://docs.adaptivecomputing.com/torque/${PN//./-}/adminGuide/help.htm#topics/torque/1-installConfig/initializeConfigOnServer.htm"
