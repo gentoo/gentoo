@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Matt Turner <mattst88@gentoo.org> (06 Mar 2019)
+# Does not build with glibc >= 2.25 (stabilized a year ago). Unmaintained by
+# maintainer-by-proxy: Bugs #628734 and #641176
+# Removal in 30 days
+sys-fs/cryptmount
+
 # Georgy Yakovlev <gyakovlev@gentoo.org> (06 Mar 2019)
 # Mask rust 1.33.0 & co because it breaks firefox simd
 # https://bugzilla.mozilla.org/show_bug.cgi?id=1521249
@@ -37,7 +43,6 @@
 >=dev-lang/rust-bin-1.33.0
 >=virtual/rust-1.33.0
 >=virtual/cargo-1.33.0
-
 
 # Mikle Kolyada <zlogene@gentoo.org> (04 Mar 2019)
 # Mask Squid-4.x for testing
