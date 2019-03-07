@@ -24,7 +24,7 @@ BDEPEND="
 "
 DEPEND="
 	$(add_qt_dep qtdbus)
-	!gmp? ( sci-libs/mpir:= )
+	!gmp? ( sci-libs/mpir:=[cxx] )
 	gmp? ( dev-libs/gmp:0=[cxx] )
 "
 RDEPEND="${DEPEND}"
