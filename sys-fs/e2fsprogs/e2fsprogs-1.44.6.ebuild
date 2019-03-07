@@ -26,7 +26,7 @@ DEPEND="${RDEPEND}
 	sys-apps/texinfo"
 
 PATCHES=(
-	#"${FILESDIR}"/${PN}-1.41.8-makefile.patch
+	"${FILESDIR}"/${PN}-1.44.6-parallel_install.patch
 	"${FILESDIR}"/${PN}-1.40-fbsd.patch
 	"${FILESDIR}"/${PN}-1.42.13-fix-build-cflags.patch #516854
 
