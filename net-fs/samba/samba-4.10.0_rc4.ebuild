@@ -49,14 +49,14 @@ CDEPEND="
 	>=dev-util/cmocka-1.1.1[${MULTILIB_USEDEP}]
 	net-libs/libnsl:=[${MULTILIB_USEDEP}]
 	sys-apps/attr[${MULTILIB_USEDEP}]
-	>=sys-libs/ldb-1.5.3[ldap(+)?,python?,${PYTHON_USEDEP},${MULTILIB_USEDEP}]
+	>=sys-libs/ldb-1.5.4[ldap(+)?,python?,${PYTHON_USEDEP},${MULTILIB_USEDEP}]
 	<sys-libs/ldb-1.6.0[ldap(+)?,python?,${PYTHON_USEDEP},${MULTILIB_USEDEP}]
 	sys-libs/libcap
 	sys-libs/ncurses:0=[${MULTILIB_USEDEP}]
 	sys-libs/readline:0=
-	>=sys-libs/talloc-2.1.15[python?,${PYTHON_USEDEP},${MULTILIB_USEDEP}]
-	>=sys-libs/tdb-1.3.17[python?,${PYTHON_USEDEP},${MULTILIB_USEDEP}]
-	>=sys-libs/tevent-0.9.38[python?,${PYTHON_USEDEP},${MULTILIB_USEDEP}]
+	>=sys-libs/talloc-2.1.16[python?,${PYTHON_USEDEP},${MULTILIB_USEDEP}]
+	>=sys-libs/tdb-1.3.18[python?,${PYTHON_USEDEP},${MULTILIB_USEDEP}]
+	>=sys-libs/tevent-0.9.39[python?,${PYTHON_USEDEP},${MULTILIB_USEDEP}]
 	sys-libs/zlib[${MULTILIB_USEDEP}]
 	virtual/libiconv
 	pam? ( virtual/pam )
