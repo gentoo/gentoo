@@ -25,7 +25,7 @@ IUSE="test"
 
 RDEPEND="
 	>=dev-python/cryptography-1.2.3[${PYTHON_USEDEP}]
-	>=dev-python/josepy-1.0.0[${PYTHON_USEDEP}]
+	>=dev-python/josepy-1.1.0[${PYTHON_USEDEP}]
 	dev-python/mock[${PYTHON_USEDEP}]
 	>=dev-python/pyopenssl-0.13.1[${PYTHON_USEDEP}]
 	dev-python/pyrfc3339[${PYTHON_USEDEP}]
