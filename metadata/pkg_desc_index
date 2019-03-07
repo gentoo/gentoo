@@ -3376,7 +3376,7 @@ dev-ml/lablgl 1.05-r1: Objective CAML interface for OpenGL
 dev-ml/lablgtk 2.18.5: Objective CAML interface for Gtk+2
 dev-ml/labltk 8.06.2: OCaml interface to the Tcl/Tk GUI framework
 dev-ml/menhir 20171013: LR(1) parser generator for the OCaml language
-dev-ml/ocaml-autoconf 1.1: autoconf macros to support configuration of OCaml programs and libraries
+dev-ml/ocaml-autoconf 1.1-r1: autoconf macros to support configuration of OCaml programs and libraries
 dev-ml/ocaml-ctypes 0.11.2: Library for binding to C libraries using pure OCaml
 dev-ml/ocaml-doc 4.04: Ocaml reference manual (html)
 dev-ml/ocaml-ssl 0.5.3: OCaml bindings for OpenSSL
