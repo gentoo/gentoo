@@ -2,6 +2,8 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+SQUID_SVCNAME=$( echo "${RC_SVCNAME}" | tr -cd '[a-zA-Z0-9]' )
+
 extra_started_commands="reload rotate"
 
 depend() {
@@ -54,7 +56,7 @@ checkconfig() {
 				return 1
 			fi
 
-			local INIT_CACHE_RESPONSE="$(/usr/sbin/squid -z -N -f /etc/squid/${RC_SVCNAME}.conf -n ${RC_SVCNAME//[^[:alnum:]]/} 2>&1)"
+			local INIT_CACHE_RESPONSE="$(/usr/sbin/squid -z -N -f /etc/squid/${RC_SVCNAME}.conf -n ${SQUID_SVCNAME} 2>&1)"
 			if [ $? != 0 ] || echo "$INIT_CACHE_RESPONSE" | grep -q "erminated abnormally" ; then
 				umask $ORIG_UMASK
 				eend 1
@@ -76,14 +78,14 @@ start() {
 	checkpath -d -q -m 0750 -o squid:squid /run/${RC_SVCNAME}
 
 	# see https://wiki.squid-cache.org/MultipleInstances
-	ebegin "Starting ${RC_SVCNAME} (service name ${RC_SVCNAME//[^[:alnum:]]/}) with KRB5_KTNAME=\"${SQUID_KEYTAB}\" /usr/sbin/squid ${SQUID_OPTS} -f /etc/squid/${RC_SVCNAME}.conf -n ${RC_SVCNAME//[^[:alnum:]]/}"
-	KRB5_KTNAME="${SQUID_KEYTAB}" /usr/sbin/squid ${SQUID_OPTS} -f /etc/squid/${RC_SVCNAME}.conf -n ${RC_SVCNAME//[^[:alnum:]]/}
+	ebegin "Starting ${RC_SVCNAME} (service name ${SQUID_SVCNAME}) with KRB5_KTNAME=\"${SQUID_KEYTAB}\" /usr/sbin/squid ${SQUID_OPTS} -f /etc/squid/${RC_SVCNAME}.conf -n ${SQUID_SVCNAME}"
+	KRB5_KTNAME="${SQUID_KEYTAB}" /usr/sbin/squid ${SQUID_OPTS} -f /etc/squid/${RC_SVCNAME}.conf -n ${SQUID_SVCNAME}
 	eend $? && sleep 1
 }
 
 stop() {
-	ebegin "Stopping ${RC_SVCNAME} with /usr/sbin/squid -k shutdown -f /etc/squid/${RC_SVCNAME}.conf -n ${RC_SVCNAME//[^[:alnum:]]/}"
-	if /usr/sbin/squid -k shutdown -f /etc/squid/${RC_SVCNAME}.conf -n ${RC_SVCNAME//[^[:alnum:]]/} ; then
+	ebegin "Stopping ${RC_SVCNAME} with /usr/sbin/squid -k shutdown -f /etc/squid/${RC_SVCNAME}.conf -n ${SQUID_SVCNAME}"
+	if /usr/sbin/squid -k shutdown -f /etc/squid/${RC_SVCNAME}.conf -n ${SQUID_SVCNAME} ; then
 		# Now we have to wait until squid has _really_ stopped.
 		sleep 1
 		if [ -f /run/${RC_SVCNAME}.pid ] ; then
@@ -110,14 +112,14 @@ stop() {
 
 reload() {
 	checkconfig || return 1
-	ebegin "Reloading ${RC_SVCNAME} with /usr/sbin/squid -k reconfigure -f /etc/squid/${RC_SVCNAME}.conf -n ${RC_SVCNAME//[^[:alnum:]]/}"
-	/usr/sbin/squid -k reconfigure -f /etc/squid/${RC_SVCNAME}.conf -n ${RC_SVCNAME//[^[:alnum:]]/}
+	ebegin "Reloading ${RC_SVCNAME} with /usr/sbin/squid -k reconfigure -f /etc/squid/${RC_SVCNAME}.conf -n ${SQUID_SVCNAME}"
+	/usr/sbin/squid -k reconfigure -f /etc/squid/${RC_SVCNAME}.conf -n ${SQUID_SVCNAME}
 	eend $?
 }
 
 rotate() {
 	service_started ${RC_SVCNAME} || return 1
-	ebegin "Rotating ${RC_SVCNAME} logs with /usr/sbin/squid -k rotate -f /etc/squid/${RC_SVCNAME}.conf -n ${RC_SVCNAME//[^[:alnum:]]/}"
-	/usr/sbin/squid -k rotate -f /etc/squid/${RC_SVCNAME}.conf -n ${RC_SVCNAME//[^[:alnum:]]/}
+	ebegin "Rotating ${RC_SVCNAME} logs with /usr/sbin/squid -k rotate -f /etc/squid/${RC_SVCNAME}.conf -n ${SQUID_SVCNAME}"
+	/usr/sbin/squid -k rotate -f /etc/squid/${RC_SVCNAME}.conf -n ${SQUID_SVCNAME}
 	eend $?
 }
