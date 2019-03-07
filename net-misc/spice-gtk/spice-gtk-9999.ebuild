@@ -95,12 +95,6 @@ src_configure() {
 	xdg_environment_reset
 
 	local myconf
-
-	if use vala ; then
-		# force vala regen for MinGW, etc
-		rm -fv gtk/controller/controller.{c,vala.stamp} gtk/controller/menu.c
-	fi
-
 	myconf="
 		$(use_enable static-libs static)
 		$(use_enable introspection)
