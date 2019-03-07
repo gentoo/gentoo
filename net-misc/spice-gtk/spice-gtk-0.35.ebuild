@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -39,7 +39,7 @@ RDEPEND="
 	>=x11-libs/pixman-0.17.7
 	media-libs/opus
 	gtk3? ( x11-libs/gtk+:3[introspection?] )
-	>=dev-libs/glib-2.36:2
+	>=dev-libs/glib-2.46:2
 	>=x11-libs/cairo-1.2
 	virtual/jpeg:0=
 	sys-libs/zlib
@@ -59,7 +59,6 @@ RDEPEND="
 		)
 	webdav? (
 		net-libs/phodav:2.0
-		>=dev-libs/glib-2.43.90:2
 		>=net-libs/libsoup-2.49.91 )
 "
 DEPEND="${RDEPEND}
