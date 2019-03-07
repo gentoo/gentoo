@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 EGIT_BRANCH="5.3"
 KDE_HANDBOOK="forceoptional"
@@ -56,7 +56,6 @@ COMMON_DEPEND="
 	$(add_qt_dep qtxml)
 	dev-libs/grantlee:5
 	>=sys-devel/clang-3.8.0:=
-	x11-misc/shared-mime-info
 	gdbui? ( $(add_plasma_dep libksysguard) )
 	hex? ( app-editors/okteta:5 )
 	plasma? (
@@ -70,7 +69,7 @@ COMMON_DEPEND="
 		dev-libs/apr-util:1
 		dev-vcs/subversion
 	)
-	webkit? ( $(add_qt_dep qtwebkit) )
+	webkit? ( >=dev-qt/qtwebkit-5.212.0_pre20180120:5 )
 	!webkit? ( $(add_qt_dep qtwebengine 'widgets') )
 "
 DEPEND="${COMMON_DEPEND}
