@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Palimaka <kensington@gentoo.org> (07 Mar 2019)
+# Fails to build with ffmpeg-4 (bug #673352). Dead upstream.
+# Masked for removal in 30 days.
+media-sound/karlyriceditor
+
 # Matt Turner <mattst88@gentoo.org> (06 Mar 2019)
 # Does not build with glibc >= 2.25 (stabilized a year ago). Unmaintained by
 # maintainer-by-proxy: Bugs #628734 and #641176
