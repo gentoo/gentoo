@@ -57,6 +57,10 @@ PDEPEND="
 	x11-misc/xsel
 "
 
+PATCHES=(
+	"${FILESDIR}/${PN}-dont_call_mandb.patch"
+)
+
 src_prepare() {
 	 use test || \
 		sed -e "/^find_package(Qt5Test/d" -i CMakeLists.txt || die
