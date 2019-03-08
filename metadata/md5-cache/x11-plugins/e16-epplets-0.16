@@ -1,0 +1,13 @@
+BDEPEND=virtual/pkgconfig
+DEFINED_PHASES=configure install
+DEPEND=cdaudio? ( media-libs/libcdaudio ) libgtop? ( gnome-base/libgtop ) opengl? ( media-libs/glu media-libs/mesa ) >=media-libs/imlib2-1.2.0 x11-libs/libX11 x11-libs/libXext x11-wm/e16 x11-base/xorg-proto
+DESCRIPTION=Enlightenment DR16 epplets
+EAPI=7
+HOMEPAGE=https://www.enlightenment.org https://sourceforge.net/projects/enlightenment/
+IUSE=cdaudio libgtop opengl
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2+ BSD public-domain
+RDEPEND=cdaudio? ( media-libs/libcdaudio ) libgtop? ( gnome-base/libgtop ) opengl? ( media-libs/glu media-libs/mesa ) >=media-libs/imlib2-1.2.0 x11-libs/libX11 x11-libs/libXext x11-wm/e16 !x11-plugins/epplets
+SLOT=0
+SRC_URI=mirror://sourceforge/enlightenment/e16-epplets-0.16.tar.xz
+_md5_=7b960607df0dc809438467b81f31dd71
