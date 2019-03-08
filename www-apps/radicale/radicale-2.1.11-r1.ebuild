@@ -51,8 +51,8 @@ pkg_pretend() {
 }
 
 pkg_setup() {
-	enewgroup radicale
-	enewuser radicale -1 -1 ${RDIR} radicale
+	enewgroup ${PN}
+	enewuser ${PN} -1 -1 ${RDIR} ${PN}
 }
 
 python_install_all() {
@@ -62,8 +62,9 @@ python_install_all() {
 	newinitd "${FILESDIR}"/radicale-r1.init.d radicale
 
 	# directories
-	diropts -m0750 -oradicale -gradicale
 	keepdir ${RDIR}
+	fowners ${PN}:${PN} ${RDIR}
+	fperms 0750 ${RDIR}
 
 	# config file
 	insinto /etc/${PN}
@@ -79,4 +80,13 @@ python_install_all() {
 pkg_postinst() {
 	einfo "A sample WSGI script has been put into ${ROOT%/}/usr/share/${PN}."
 	einfo "You will also find there an example FastCGI script."
+	if [[ $(stat --format="%U:%G:%a" ${RDIR}) != "${PN}:${PN}:750" ]]
+	then
+		ewarn "Usafe file permissions detected on ${RDIR}. This probably comes"
+		ewarn "from an earlier version of this ebuild."
+		ewarn "To fix run:"
+		ewarn "  \`chown -R ${PN}:${PN} ${RDIR}\`"
+		ewarn "  \`chmod 0750 ${RDIR}\`"
+		ewarn "  \`chmod -R o= ${RDIR}\`"
+	fi
 }
