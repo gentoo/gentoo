@@ -781,9 +781,9 @@ app-emulation/wine-mono 4.6.4 4.7.1 4.7.5: Wine Mono is a replacement for the .N
 app-emulation/wine-vanilla 3.0.3 4.0: Free implementation of Windows(tm) on Unix, without external patchsets
 app-emulation/winetricks 20170823: Easy way to install DLLs needed to work around problems in Wine
 app-emulation/x48 0.6.4-r1: HP48 Calculator Emulator
-app-emulation/xen 4.10.2-r2: The Xen virtual machine monitor
-app-emulation/xen-pvgrub 4.10.2: allows to boot Xen domU kernels from a menu.lst laying inside guest filesystem
-app-emulation/xen-tools 4.10.2-r1: Xen tools including QEMU and xl
+app-emulation/xen 4.10.2-r2 4.10.3-r1: The Xen virtual machine monitor
+app-emulation/xen-pvgrub 4.10.2 4.10.3: allows to boot Xen domU kernels from a menu.lst laying inside guest filesystem
+app-emulation/xen-tools 4.10.2-r1 4.10.3-r1: Xen tools including QEMU and xl
 app-emulation/xtrs 4.9d-r4: Radio Shack TRS-80 emulator
 app-eselect/eselect-awk 0.2: Manages the {,/usr}/bin/awk symlink
 app-eselect/eselect-blas 0.1: BLAS module for eselect
@@ -9016,7 +9016,7 @@ net-misc/netsed 0.01b: Small tool for altering forwarded network data in real ti
 net-misc/netstat-nat 1.4.10: Display NAT connections
 net-misc/networkmanager 1.14.4 1.14.6: A set of co-operative tools that make networking simple and straightforward
 net-misc/npapi-sdk 0.27.2: NPAPI headers bundle
-net-misc/ntp 4.2.8_p12: Network Time Protocol suite/programs
+net-misc/ntp 4.2.8_p12 4.2.8_p13: Network Time Protocol suite/programs
 net-misc/ntpclient 2018.244: A NTP (RFC-1305 and RFC-4330) client for unix-alike systems
 net-misc/nx 3.5.0.33 3.5.99.16: NX compression technology core libraries
 net-misc/ofono 1.16: Open Source mobile telephony (GSM/UMTS) daemon
