@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
+EAPI=7
+PYTHON_COMPAT=( python2_7 python3_{5,6,7} )
 
 inherit distutils-r1
 
@@ -22,5 +22,3 @@ RDEPEND="cuneiform? ( app-text/cuneiform )
 DEPEND="${RDEPEND}"
 
 REQUIRED_USE="|| ( cuneiform tesseract )"
-
-RESTRICT="test" # reguires tesseract[l10n_fr,l10n_en,l10n_jp]
