@@ -9,7 +9,7 @@ SRC_URI="mirror://sourceforge/wmweatherplus/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~mips ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="amd64 ~mips ~ppc ~ppc64 ~sparc x86"
 IUSE=""
 
 DEPEND="dev-libs/libpcre
