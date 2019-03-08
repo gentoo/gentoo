@@ -57,7 +57,7 @@ DEPEND="${CDEPEND}
 "
 REQIRED_USE="
 	audiofile? ( sound )
-	opengl? ( composite )
+	opengl? ( xcomposite )
 	sndfile? ( sound )
 	sound? ^^ ( sndfile audiofile )
 "
