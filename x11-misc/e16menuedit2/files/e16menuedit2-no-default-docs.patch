@@ -1,0 +1,20 @@
+--- e16menuedit2-0.0.3/Makefile.am.orig	2019-03-08 00:52:08.000000000 +0300
++++ e16menuedit2-0.0.3/Makefile.am	2019-03-08 00:52:31.930201552 +0300
+@@ -2,15 +2,8 @@
+ 
+ SUBDIRS = src po pixmaps help
+ 
+-e16menuedit2docdir = ${prefix}/${packagedocdir}
+-e16menuedit2doc_DATA = \
+-		README\
+-		COPYING\
+-		AUTHORS\
+-		ChangeLog\
+-		INSTALL\
+-		NEWS\
+-                TODO
++e16menuedit2docdir = ${prefix}
++e16menuedit2doc_DATA = 
+ 
+ GLADE_FILES = e16menuedit2.glade
+ 
