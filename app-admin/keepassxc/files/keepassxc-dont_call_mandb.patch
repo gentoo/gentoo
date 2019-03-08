@@ -1,9 +1,9 @@
-From f3e52d89b20a8740d18cd9f1124f299b64f06b36 Mon Sep 17 00:00:00 2001
+From 7789bed0f29e0067eca7a40f604262d18611cdb0 Mon Sep 17 00:00:00 2001
 From: Lars Wendler <polynomial-c@gentoo.org>
 Date: Fri, 8 Mar 2019 14:48:13 +0100
 Subject: [PATCH] Don't call mandb
 
-There are other man implementateions beside man-db so it is not even sure
+There are other man implementations beside man-db so it is not even sure
 that the "mandb" binary even exists on all unices. Other than that, usually
 there's a cron job running "mandb" on a daily basis.
 ---
