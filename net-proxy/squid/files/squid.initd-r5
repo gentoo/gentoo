@@ -100,7 +100,7 @@ stop() {
 					break
 				fi
 				sleep 2
-				echo -n "."
+				printf "."
 			done
 			echo
 		fi
