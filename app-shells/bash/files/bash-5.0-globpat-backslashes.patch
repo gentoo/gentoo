@@ -53,8 +53,18 @@
 !   return bsquote ? 2 : 0;
   }
   
+*** ../bash-5.0-patched/lib/glob/glob.h	2013-10-28 14:46:12.000000000 -0400
+--- lib/glob/glob.h	2019-03-07 11:06:47.000000000 -0500
+***************
+*** 31,34 ****
+--- 31,35 ----
+  #define GX_ADDCURDIR	0x200	/* internal -- add passed directory name */
+  #define GX_GLOBSTAR	0x400	/* turn on special handling of ** */
++ #define GX_RECURSE	0x800	/* internal -- glob_filename called recursively */
+  
+  extern int glob_pattern_p __P((const char *));
 *** ../bash-5.0-patched/lib/glob/glob.c	2018-09-20 10:53:23.000000000 -0400
---- lib/glob/glob.c	2019-01-31 19:14:13.000000000 -0500
+--- lib/glob/glob.c	2019-03-07 14:23:43.000000000 -0500
 ***************
 *** 1062,1066 ****
     unsigned int directory_len;
@@ -89,15 +99,37 @@
       {
         char **directories, *d, *p;
 ***************
+*** 1176,1180 ****
+  	d[directory_len - 1] = '\0';
+  
+!       directories = glob_filename (d, dflags);
+  
+        if (free_dirname)
+--- 1195,1199 ----
+  	d[directory_len - 1] = '\0';
+  
+!       directories = glob_filename (d, dflags|GX_RECURSE);
+  
+        if (free_dirname)
+***************
 *** 1333,1336 ****
---- 1352,1360 ----
+--- 1352,1369 ----
   	  return (NULL);
   	}
-+       if (directory_len > 0 && hasglob == 2)		/* need to dequote */
++       /* If we have a directory name with quoted characters, and we are
++ 	 being called recursively to glob the directory portion of a pathname,
++ 	 we need to dequote the directory name before returning it so the
++ 	 caller can read the directory */
++       if (directory_len > 0 && hasglob == 2 && (flags & GX_RECURSE) != 0)
 + 	{
 + 	  dequote_pathname (directory_name);
 + 	  directory_len = strlen (directory_name);
 + 	}
++ 
++       /* We could check whether or not the dequoted directory_name is a
++ 	 directory and return it here, returning the original directory_name
++ 	 if not, but we don't do that yet. I'm not sure it matters. */
++ 
         /* Handle GX_MARKDIRS here. */
         result[0] = (char *) malloc (directory_len + 1);
 *** ../bash-5.0-patched/pathexp.c	2018-04-29 17:44:48.000000000 -0400
