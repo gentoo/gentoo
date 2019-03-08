@@ -1,6 +1,10 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Anthony G. Basile <blueness@gentoo.org> (8 Mar 2019)
+# hipe code is missing on arm
+dev-lang/erlang hipe
+
 # Andreas Sturmlechner <asturm@gentoo.org> (28 Feb 2019)
 # media-libs/dav1d is not yet keyworded
 media-video/vlc dav1d
