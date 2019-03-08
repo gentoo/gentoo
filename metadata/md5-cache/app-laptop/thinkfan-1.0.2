@@ -1,0 +1,14 @@
+BDEPEND=dev-util/ninja >=dev-util/cmake-3.9.6
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=atasmart? ( dev-libs/libatasmart ) yaml? ( dev-cpp/yaml-cpp )
+DESCRIPTION=simple fan control program for thinkpads
+EAPI=7
+HOMEPAGE=http://thinkfan.sourceforge.net
+IUSE=atasmart nvidia +yaml
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=atasmart? ( dev-libs/libatasmart ) yaml? ( dev-cpp/yaml-cpp ) nvidia? ( x11-drivers/nvidia-drivers )
+SLOT=0
+SRC_URI=https://github.com/vmatare/thinkfan/archive/1.0.2.tar.gz -> thinkfan-1.0.2.tar.gz
+_eclasses_=cmake-utils	ab10bd85e5d38e2a32077bcd91faa1b6	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	a09389deba2c0a7108b581e02c7cecbf	multilib	b2f01ad412baf81650c23fcf0975fa33	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	xdg-utils	14d00d009167652b1fa363e55effe213
+_md5_=da0d64220868f908278eb7513cfdb156
