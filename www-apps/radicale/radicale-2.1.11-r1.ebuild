@@ -5,7 +5,7 @@ EAPI="6"
 
 PYTHON_COMPAT=( python{3_4,3_5,3_6} )
 
-inherit distutils-r1 eutils user
+inherit distutils-r1 eutils user systemd
 
 MY_PN="Radicale"
 MY_P="${MY_PN}-${PV}"
@@ -60,6 +60,7 @@ python_install_all() {
 
 	# init file
 	newinitd "${FILESDIR}"/radicale-r2.init.d radicale
+	systemd_dounit "${FILESDIR}/${PN}.service"
 
 	# directories
 	keepdir ${RDIR}
