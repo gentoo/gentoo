@@ -2,10 +2,9 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-PIDFILE=/var/run/radicale.pid
+PIDFILE=/run/radicale.pid
 
 depend() {
-    use net
     need localmount
 }
 
@@ -13,6 +12,7 @@ start() {
     ebegin "Starting radicale"
         start-stop-daemon --start --quiet --background \
         --user radicale \
+	--umask 0027 \
         --stderr-logger /usr/bin/logger \
         --pidfile ${PIDFILE} --make-pidfile \
         --exec /usr/bin/radicale -- --foreground

@@ -59,7 +59,7 @@ python_install_all() {
 	rm README* || die
 
 	# init file
-	newinitd "${FILESDIR}"/radicale-r1.init.d radicale
+	newinitd "${FILESDIR}"/radicale-r2.init.d radicale
 
 	# directories
 	keepdir ${RDIR}
