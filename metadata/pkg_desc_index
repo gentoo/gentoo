@@ -5821,6 +5821,7 @@ dev-qt/qtlocation 5.11.3-r1: The Location module for the Qt5 framework
 dev-qt/qtlockedfile 2.4.1_p20171024: QFile extension with advisory locking functions
 dev-qt/qtmultimedia 5.11.3: Multimedia (audio, video, radio, camera) library for the Qt5 framework
 dev-qt/qtnetwork 5.11.3: Network abstraction library for the Qt5 framework
+dev-qt/qtnetworkauth 5.11.3: Network authorization library for the Qt5 framework
 dev-qt/qtopengl 5.11.3: OpenGL support library for the Qt5 framework (deprecated)
 dev-qt/qtpaths 5.11.3: Command line client to QStandardPaths
 dev-qt/qtpositioning 5.11.3: Physical position determination library for the Qt5 framework
@@ -10089,7 +10090,7 @@ sys-cluster/csync2 2.0: Cluster synchronization tool
 sys-cluster/dlm 2.03.09: General-purpose Distributed Lock Manager
 sys-cluster/dlm-lib 2.03.09: General-purpose Distributed Lock Manager
 sys-cluster/drbd-utils 8.9.6-r1: mirror/replicate block-devices across a network-connection
-sys-cluster/galera 25.3.23: Synchronous multi-master replication engine that provides the wsrep API
+sys-cluster/galera 25.3.23 25.3.25: Synchronous multi-master replication engine that provides the wsrep API
 sys-cluster/ganglia 3.7.1-r1: A scalable distributed monitoring system for clusters and grids
 sys-cluster/glusterfs 4.0.0-r1 4.0.2: GlusterFS is a powerful network/cluster filesystem
 sys-cluster/heartbeat 3.0.5-r3: Heartbeat high availability cluster manager
@@ -11210,11 +11211,11 @@ x11-plugins/wmload 0.9.7-r1: yet another dock application showing a system load 
 x11-plugins/wmmaiload 2.2.1-r1: dockapp that monitors one or more mailboxes
 x11-plugins/wmmemload 0.1.8-r1: dockapp that displays memory and swap space usage
 x11-plugins/wmmenu 1.3-r2: a popup menu of icons like in AfterStep, as a dockapp
-x11-plugins/wmmon 1.2_beta1: Dockable system resources monitor applet for WindowMaker
+x11-plugins/wmmon 1.2_beta1 1.4: Dockable system resources monitor applet for WindowMaker
 x11-plugins/wmmon+smp 1.0-r3: Dockapp CPU monitor resembling Xosview, support for smp
 x11-plugins/wmmoonclock 1.27-r1: dockapp that shows lunar ephemeris to a high accuracy
 x11-plugins/wmmp 0.10.0-r1: A Window Maker dock app client for Music Player Daemon(media-sound/mpd)
-x11-plugins/wmnd 0.4.16: WindowMaker Network Devices (dockapp)
+x11-plugins/wmnd 0.4.16 0.4.17-r1: WindowMaker Network Devices (dockapp)
 x11-plugins/wmnet 1.06-r2: WMnet is a dock.app network monitor
 x11-plugins/wmpager 1.2-r2: A simple pager docklet for the WindowMaker window manager
 x11-plugins/wmpasman 0.8.5.3: Password storage/retrieval in a dockapp
@@ -11231,7 +11232,7 @@ x11-plugins/wmtop 0.85: dockapp for monitoring the top three processes using cpu
 x11-plugins/wmtz 0.7_p20150816: dockapp that shows the time in multiple timezones
 x11-plugins/wmudmount 2.2-r2: A filesystem mounter that uses udisks to handle notification and mounting
 x11-plugins/wmweather 2.4.4: a dockable weather monitor for standard METAR stations using ICAO location
-x11-plugins/wmweather+ 2.13: A dockapp for displaying data collected from METAR, AVN, ETA, and MRF forecasts
+x11-plugins/wmweather+ 2.13 2.17: A dockapp for displaying data collected from METAR, AVN, ETA, and MRF forecasts
 x11-plugins/wmwifi 0.6-r1: wireless network interface monitor dockapp
 x11-terms/aterm 1.0.1-r3: rxvt compatible terminal emulator with transparency support
 x11-terms/eterm 0.9.6-r2: A vt102 terminal emulator for X
