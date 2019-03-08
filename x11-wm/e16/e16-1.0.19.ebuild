@@ -55,11 +55,11 @@ RDEPEND="${CDEPEND}
 DEPEND="${CDEPEND}
 	x11-base/xorg-proto
 "
-REQIRED_USE="
+REQUIRED_USE="
 	audiofile? ( sound )
 	opengl? ( xcomposite )
 	sndfile? ( sound )
-	sound? ^^ ( sndfile audiofile )
+	sound? ( ^^ ( sndfile audiofile ) )
 "
 
 PATCHES=( "${FILESDIR}/${PN}-user-fonts.patch" )
