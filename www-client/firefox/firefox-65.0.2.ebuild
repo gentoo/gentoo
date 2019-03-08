@@ -30,9 +30,9 @@ fi
 PATCH="${PN}-65.0-patches-04"
 MOZ_HTTP_URI="https://archive.mozilla.org/pub/${PN}/releases"
 
-inherit check-reqs flag-o-matic toolchain-funcs eutils gnome2-utils llvm \
-		mozcoreconf-v6 pax-utils xdg-utils autotools mozlinguas-v2 \
-		virtualx
+inherit check-reqs eapi7-ver flag-o-matic toolchain-funcs eutils \
+		gnome2-utils llvm mozcoreconf-v6 pax-utils xdg-utils \
+		autotools mozlinguas-v2 virtualx
 
 DESCRIPTION="Firefox Web Browser"
 HOMEPAGE="https://www.mozilla.com/firefox"
@@ -378,10 +378,17 @@ src_configure() {
 			fi
 
 			if ! use cpu_flags_x86_avx2 ; then
-				# due to a GCC bug, GCC will produce AVX2 instructions
-				# even if the CPU doesn't support AVX2, https://gcc.gnu.org/ml/gcc-patches/2018-12/msg01142.html
-				einfo "Disable IPA cdtor due to bug in GCC and missing AVX2 support -- triggered by USE=lto"
-				append-ldflags -fdisable-ipa-cdtor
+				local _gcc_version_with_ipa_cdtor_fix="8.3"
+				local _current_gcc_version="$(gcc-major-version).$(gcc-minor-version)"
+
+				if ver_test "${_current_gcc_version}" -lt "${_gcc_version_with_ipa_cdtor_fix}" ; then
+					# due to a GCC bug, GCC will produce AVX2 instructions
+					# even if the CPU doesn't support AVX2, https://gcc.gnu.org/ml/gcc-patches/2018-12/msg01142.html
+					einfo "Disable IPA cdtor due to bug in GCC and missing AVX2 support -- triggered by USE=lto"
+					append-ldflags -fdisable-ipa-cdtor
+				else
+					einfo "No GCC workaround required, GCC version is already patched!"
+				fi
 			else
 				einfo "No GCC workaround required, system supports AVX2"
 			fi
