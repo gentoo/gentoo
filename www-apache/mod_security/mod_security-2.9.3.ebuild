@@ -60,19 +60,14 @@ src_configure() {
 		$(use_enable mlogc)
 		$(use_with lua)
 		$(use_enable lua lua-cache)
-		$(use_enable jit pcre-jit) )
+		$(use_enable jit pcre-jit)
+		$(use_enable doc docs) )
 
 	econf ${myconf[@]}
 }
 
 src_compile() {
 	default
-
-	# Building the docs is broken at the moment, see e.g.
-	# https://github.com/SpiderLabs/ModSecurity/issues/1322
-	if use doc; then
-		doxygen doc/doxygen-apache.conf || die 'failed to build documentation'
-	fi
 }
 
 src_install() {
