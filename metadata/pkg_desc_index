@@ -41,7 +41,7 @@ app-admin/chrootuid 1.3-r1 1.3-r2: Run a network service at low privilege level 
 app-admin/chrpath 0.13-r2: chrpath can modify the rpath and runpath of ELF executables
 app-admin/clsync 0.4.2: Live sync tool based on inotify, written in GNU C
 app-admin/clustershell 1.7.3: Python framework for efficient cluster administration
-app-admin/conky 1.10.8-r1 1.10.8-r4: An advanced, highly configurable system monitor for X
+app-admin/conky 1.10.8-r4: An advanced, highly configurable system monitor for X
 app-admin/conserver 8.1.18-r1: Serial Console Manager
 app-admin/cpulimit 1.8: Limits the CPU usage of a process
 app-admin/cronolog 1.6.2-r5: Log rotation software
