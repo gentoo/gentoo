@@ -11,4 +11,4 @@ RDEPEND=app-crypt/argon2:= dev-libs/libgcrypt:= dev-qt/qtcore:5 dev-qt/qtdbus:5 
 SLOT=0
 SRC_URI=https://github.com/keepassxreboot/keepassxc/archive/2.4.0-beta2.tar.gz -> keepassxc-2.4.0_beta2.tar.gz
 _eclasses_=cmake-utils	ab10bd85e5d38e2a32077bcd91faa1b6	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	a09389deba2c0a7108b581e02c7cecbf	multilib	b2f01ad412baf81650c23fcf0975fa33	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	14d00d009167652b1fa363e55effe213
-_md5_=6b6e1ccee9635af2ab8865cfd3d76bdb
+_md5_=71e9510ca1f0a6a492b56f8327fb2da8
