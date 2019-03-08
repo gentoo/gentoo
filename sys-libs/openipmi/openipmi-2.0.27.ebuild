@@ -1,11 +1,11 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit eutils autotools python-single-r1
+inherit autotools python-single-r1
 
 DESCRIPTION="Library interface to IPMI"
 HOMEPAGE="https://sourceforge.net/projects/openipmi/"
@@ -31,8 +31,9 @@ RDEPEND="
 	python? ( ${PYTHON_DEPS} )
 	tcl? ( dev-lang/tcl:0= )"
 DEPEND="${RDEPEND}
-	>=dev-lang/swig-1.3.21
-	virtual/pkgconfig"
+	>=dev-lang/swig-1.3.21"
+BDEPEND="virtual/pkgconfig"
+
 # Gui is broken!
 #		python? ( tcl? ( tk? ( dev-lang/tk dev-tcltk/tix ) ) )"
 
@@ -40,7 +41,9 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 PATCHES=(
 	# https://bugs.gentoo.org/501510
-	"${FILESDIR}/${PN}-2.0.21-tinfo.patch"
+	"${FILESDIR}/${PN}-2.0.26-tinfo.patch"
+
+	"${FILESDIR}/${PN}-2.0.26-readline.patch"
 )
 
 pkg_setup() {
@@ -56,12 +59,12 @@ src_prepare() {
 	sed -r -i \
 		-e '/INSTALL.*\.py[oc] /d' \
 		-e '/install-exec-local/s,OpenIPMI.pyc OpenIPMI.pyo,,g' \
-		swig/python/Makefile.{am,in}
+		swig/python/Makefile.{am,in} || die
 
 	# Bug #298250: parallel install fix.
 	sed -r -i \
 		-e '/^install-data-local:/s,$, install-exec-am,g' \
-		cmdlang/Makefile.{am,in}
+		cmdlang/Makefile.{am,in} || die
 
 	# We touch the .in and .am above because if we use the below, the Perl stuff
 	# is very fragile, and often fails to link.
@@ -72,7 +75,7 @@ src_prepare() {
 src_configure() {
 	local myconf=(
 		# these binaries are for root!
-		--bindir=/usr/sbin
+		--bindir="${EPREFIX}"/usr/sbin
 		--with-glib
 		--with-glibver=2.0
 		--with-swig
