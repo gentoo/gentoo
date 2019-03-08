@@ -114,12 +114,52 @@ DEPEND="${CDEPEND}
 	>=net-libs/nodejs-8.11.0
 	>=sys-devel/binutils-2.30
 	sys-apps/findutils
-	>=sys-devel/llvm-4.0.1
-	>=sys-devel/clang-4.0.1
-	clang? (
-		>=sys-devel/llvm-4.0.1[gold]
-		>=sys-devel/lld-4.0.1
-		pgo? ( >=sys-libs/compiler-rt-sanitizers-4.0.1[profile] )
+	|| (
+		(
+			sys-devel/clang:4
+			!clang? ( sys-devel/llvm:4 )
+			clang? (
+				=sys-devel/lld-4*
+				sys-devel/llvm:4[gold]
+				pgo? ( =sys-libs/compiler-rt-sanitizers-4*[profile] )
+			)
+		)
+		(
+			sys-devel/clang:5
+			!clang? ( sys-devel/llvm:5 )
+			clang? (
+				=sys-devel/lld-5*
+				sys-devel/llvm:5[gold]
+				pgo? ( =sys-libs/compiler-rt-sanitizers-5*[profile] )
+			)
+		)
+		(
+			sys-devel/clang:6
+			!clang? ( sys-devel/llvm:6 )
+			clang? (
+				=sys-devel/lld-6*
+				sys-devel/llvm:6[gold]
+				pgo? ( =sys-libs/compiler-rt-sanitizers-6*[profile] )
+			)
+		)
+		(
+			sys-devel/clang:7
+			!clang? ( sys-devel/llvm:7 )
+			clang? (
+				=sys-devel/lld-7*
+				sys-devel/llvm:7[gold]
+				pgo? ( =sys-libs/compiler-rt-sanitizers-7*[profile] )
+			)
+		)
+		(
+			sys-devel/clang:8
+			!clang? ( sys-devel/llvm:8 )
+			clang? (
+				=sys-devel/lld-8*
+				sys-devel/llvm:8[gold]
+				pgo? ( =sys-libs/compiler-rt-sanitizers-8*[profile] )
+			)
+		)
 	)
 	pulseaudio? ( media-sound/pulseaudio )
 	>=virtual/cargo-1.30.0
@@ -146,7 +186,26 @@ if [[ -z $GMP_PLUGIN_LIST ]] ; then
 fi
 
 llvm_check_deps() {
-	has_version "sys-devel/clang:${LLVM_SLOT}"
+	if ! has_version "sys-devel/clang:${LLVM_SLOT}" ; then
+		ewarn "sys-devel/clang:${LLVM_SLOT} is missing! Cannot use LLVM slot ${LLVM_SLOT} ..."
+		return 1
+	fi
+
+	if use clang ; then
+		if ! has_version "=sys-devel/lld-${LLVM_SLOT}*" ; then
+			ewarn "=sys-devel/lld-${LLVM_SLOT}* is missing! Cannot use LLVM slot ${LLVM_SLOT} ..."
+			return 1
+		fi
+
+		if use pgo ; then
+			if ! has_version "=sys-libs/compiler-rt-sanitizers-${LLVM_SLOT}*" ; then
+				ewarn "=sys-libs/compiler-rt-sanitizers-${LLVM_SLOT}* is missing! Cannot use LLVM slot ${LLVM_SLOT} ..."
+				return 1
+			fi
+		fi
+	fi
+
+	einfo "Will use LLVM slot ${LLVM_SLOT}!"
 }
 
 pkg_setup() {
