@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 PYTHON_COMPAT=( python{2_7,3_3,3_4,3_5,3_6,3_7} )
 
@@ -30,6 +30,7 @@ COMMON_DEP="
 	>=dev-libs/libpcre-8.30
 	>=app-crypt/mit-krb5-1.10.3
 	dev-libs/jansson
+	net-misc/curl
 	locator? (
 		>=app-crypt/mit-krb5-1.12.2[${MULTILIB_USEDEP}]
 		>=net-dns/c-ares-1.10.0-r1[${MULTILIB_USEDEP}]
@@ -86,6 +87,7 @@ src_prepare() {
 		"${S}"/src/sysv/gentoo/sssd.in || die "sed sssd.in"
 
 	eapply "${FILESDIR}"/${PN}-curl-macros.patch
+	eapply "${FILESDIR}"/${PN}-fix-CVE-2019-3811.patch
 
 	default
 	eautoreconf
@@ -233,5 +235,5 @@ multilib_src_test() {
 pkg_postinst(){
 	elog "You must set up sssd.conf (default installed into /etc/sssd)"
 	elog "and (optionally) configuration in /etc/pam.d in order to use SSSD"
-	elog "features. Please see howto in	http://fedorahosted.org/sssd/wiki/HOWTO_Configure_1_0_2"
+	elog "features. Please see howto in	https://docs.pagure.org/SSSD.sssd/design_pages/index.html#implemented-in-1-16-x"
 }
