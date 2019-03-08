@@ -10,4 +10,4 @@ RDEPEND=>=sys-libs/ncurses-5.2-r2:0= readline? ( >=sys-libs/readline-8.0:0= ) nl
 SLOT=0
 SRC_URI=mirror://gnu/bash/bash-5.0.tar.gz ftp://ftp.cwru.edu/pub/bash/bash-5.0-patches/bash50-001 ftp://ftp.cwru.edu/pub/bash/bash-5.0-patches/bash50-002 mirror://gnu/bash/bash-5.0-patches/bash50-001 mirror://gnu/bash/bash-5.0-patches/bash50-002
 _eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	a09389deba2c0a7108b581e02c7cecbf	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	b2f01ad412baf81650c23fcf0975fa33	prefix	e51c7882b7b721e54e684f7eb143cbfe	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
-_md5_=3236a7d4612df3bed4f1f0ee6bdd5c71
+_md5_=77bcce0bbaeb4f2b83c11fb901f7800e
