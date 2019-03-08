@@ -54,6 +54,7 @@ PDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/${PN}-2.3.3-qt-5.11-edit-entry-widget-includes.patch" #655844
+	"${FILESDIR}/${PN}-dont_call_mandb.patch"
 )
 
 src_prepare() {
