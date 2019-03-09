@@ -41,7 +41,7 @@ IUSE="${IUSE_VIDEO_CARDS}
 	vdpau vulkan vulkan-overlay wayland xa xvmc"
 
 REQUIRED_USE="
-	d3d9?   ( dri3 || ( video_cards_r300 video_cards_r600 video_cards_radeonsi video_cards_nouveau video_cards_vmware ) )
+	d3d9?   ( dri3 || ( video_cards_iris video_cards_r300 video_cards_r600 video_cards_radeonsi video_cards_nouveau video_cards_vmware ) )
 	gles1?  ( egl )
 	gles2?  ( egl )
 	vulkan? ( dri3
@@ -356,7 +356,8 @@ multilib_src_configure() {
 			$(meson_use unwind libunwind)
 		)
 
-		if use video_cards_r300 ||
+		if use video_cards_iris ||
+		   use video_cards_r300 ||
 		   use video_cards_r600 ||
 		   use video_cards_radeonsi ||
 		   use video_cards_nouveau ||
