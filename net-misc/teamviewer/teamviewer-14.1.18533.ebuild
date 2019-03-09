@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -67,7 +67,7 @@ src_install() {
 	done
 
 	# No slotting here, binary expects this service path
-	newinitd "${FILESDIR}"/teamviewerd13.init teamviewerd
+	newinitd "${FILESDIR}"/teamviewerd14.init teamviewerd
 	systemd_dounit tv_bin/script/teamviewerd.service
 
 	insinto /usr/share/dbus-1/services
