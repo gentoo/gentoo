@@ -1,4 +1,4 @@
-# Copyright 2004-2018 Gentoo Foundation
+# Copyright 2004-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: java-utils-2.eclass
@@ -15,7 +15,10 @@
 # you should inherit java-pkg-2 for Java packages or java-pkg-opt-2 for packages
 # that have optional Java support. In addition you can inherit java-ant-2 for
 # Ant-based packages.
-inherit eutils versionator multilib
+inherit eutils multilib
+# EAPI 7 has version functions built-in. Use eapi7-ver for all earlier eclasses.
+# Keep versionator inheritance in case consumers are using it implicitly.
+[[ ${EAPI} == [0123456] ]] && inherit eapi7-ver versionator
 
 IUSE="elibc_FreeBSD"
 
@@ -1518,8 +1521,8 @@ java-pkg_is-vm-version-eq() {
 
 	local vm_version="$(java-pkg_get-vm-version)"
 
-	vm_version="$(get_version_component_range 1-2 "${vm_version}")"
-	needed_version="$(get_version_component_range 1-2 "${needed_version}")"
+	vm_version="$(ver_cut 1-2 "${vm_version}")"
+	needed_version="$(ver_cut 1-2 "${needed_version}")"
 
 	if [[ -z "${vm_version}" ]]; then
 		debug-print "Could not get JDK version from DEPEND"
@@ -1570,7 +1573,7 @@ java-pkg_is-vm-version-ge() {
 		debug-print "Could not get JDK version from DEPEND"
 		return 1
 	else
-		if version_is_at_least "${needed_version}" "${vm_version}"; then
+		if ver_test "${vm_version}" -ge "${needed_version}"; then
 			debug-print "Detected a JDK(${vm_version}) >= ${needed_version}"
 			return 0
 		else

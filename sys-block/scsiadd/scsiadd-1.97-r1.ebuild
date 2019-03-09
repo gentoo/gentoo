@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="2"
+EAPI=7
 
 inherit user toolchain-funcs flag-o-matic
 
@@ -13,20 +13,21 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="suid"
-DEPEND=""
 
 pkg_setup() {
 	use suid && enewgroup scsi
 }
 
 src_prepare() {
+	default
 	# remove 'strip' command
-	sed -i -e "s:^\(.*strip.*\):#\1:g" Makefile.in
+	sed -i -e "s:^\(.*strip.*\):#\1:g" Makefile.in || die
 
 	# convert docs to utf-8
 	if [ -x "$(type -p iconv)" ]; then
 		for X in NEWS README; do
-			iconv -f LATIN1 -t UTF8 -o "${X}~" "${X}" && mv -f "${X}~" "${X}" || rm -f "${X}~"
+			iconv -f LATIN1 -t UTF8 -o "${X}~" "${X}" && mv -f "${X}~" "${X}" \
+				|| rm -f "${X}~" || die
 		done
 	fi
 }
@@ -35,11 +36,11 @@ src_compile() {
 	# extra safety for suid
 	append-ldflags -Wl,-z,now
 
-	emake CC="$(tc-getCC)" || die "emake failed"
+	emake CC="$(tc-getCC)"
 }
 
 src_install() {
-	dosbin scsiadd || die "install failed"
+	dosbin scsiadd
 	if use suid; then
 		fowners root:scsi /usr/sbin/scsiadd
 		fperms  4710      /usr/sbin/scsiadd
