@@ -1,12 +1,12 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 inherit autotools eutils
 
 DESCRIPTION="A library and tools for trace processing"
-HOMEPAGE="http://research.wand.net.nz/software/libtrace.php"
-SRC_URI="http://research.wand.net.nz/software/${PN}/${P/_/-}.tar.gz"
+HOMEPAGE="https://research.wand.net.nz/software/libtrace.php"
+SRC_URI="https://research.wand.net.nz/software/${PN}/${P/_/-}.tar.gz"
 
 LICENSE="LGPL-3"
 SLOT="0"
