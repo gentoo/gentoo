@@ -75,6 +75,10 @@ DEPEND="${RDEPEND}
 	vala? ( $(vala_depend) )
 "
 
+PATCHES=(
+	"${FILESDIR}/${PN}-0.3.12-failing-tests.patch"
+)
+
 pkg_setup() {
 	use test && use introspection && python-any-r1_pkg_setup
 }
