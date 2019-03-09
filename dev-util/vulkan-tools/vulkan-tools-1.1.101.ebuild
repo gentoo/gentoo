@@ -26,7 +26,7 @@ IUSE="+cube +vulkaninfo X wayland"
 
 DEPEND="${PYTHON_DEPS}
 	cube? ( dev-util/glslang:=[${MULTILIB_USEDEP}] )
-	dev-util/vulkan-headers
+	>=dev-util/vulkan-headers-1.1.101
 	media-libs/vulkan-loader:=[${MULTILIB_USEDEP},wayland?,X?]
 	wayland? ( dev-libs/wayland:=[${MULTILIB_USEDEP}] )
 	X? (
