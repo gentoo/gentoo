@@ -10,6 +10,8 @@ DESCRIPTION="KDE utility to translate DocBook XML files using gettext po files"
 KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE=""
 
-BDEPEND="sys-devel/gettext"
-DEPEND="$(add_qt_dep qtxml)"
+DEPEND="
+	$(add_qt_dep qtxml)
+	sys-devel/gettext
+"
 RDEPEND="${DEPEND}"
