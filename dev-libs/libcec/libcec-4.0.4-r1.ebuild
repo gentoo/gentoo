@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 MY_PV=${PV/_p/-}
@@ -59,9 +59,6 @@ src_configure() {
 		-DHAVE_EXYNOS_API=$(usex exynos)
 		-DHAVE_TDA995X_API=$(usex cubox)
 		-DHAVE_RPI_API=$(usex raspberry-pi)
-	)
-	use python && mycmakeargs+=(
-		-DPYTHON_SITEDIR="$(python_get_sitedir)"
 	)
 
 	# raspberrypi-userland itself does not provide .pc file so using
