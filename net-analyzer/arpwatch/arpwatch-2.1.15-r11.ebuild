@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,7 +8,7 @@ PATCH_VER="0.8"
 MY_P="${PN}-$(replace_version_separator 2 'a')"
 
 DESCRIPTION="An ethernet monitor program that keeps track of ethernet/IP address pairings"
-HOMEPAGE="http://ee.lbl.gov/"
+HOMEPAGE="https://ee.lbl.gov/"
 SRC_URI="
 	ftp://ftp.ee.lbl.gov/${MY_P}.tar.gz
 	https://dev.gentoo.org/~jer/arpwatch-patchset-${PATCH_VER}.tar.xz
