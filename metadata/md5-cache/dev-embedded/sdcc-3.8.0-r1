@@ -5,7 +5,7 @@ DESCRIPTION=Small device C compiler (for various microprocessors)
 EAPI=7
 HOMEPAGE=http://sdcc.sourceforge.net/
 IUSE=avr ds390 ds400 gbz80 hc08 mcs51 pic14 pic16 r2k r3ka s08 stm8 tlcs90 z180 z80 +boehm-gc device-lib doc non-free packihx +sdbinutils sdcdb +sdcpp ucsim
-KEYWORDS=~amd64 ~x86
+KEYWORDS=~amd64 x86
 LICENSE=GPL-2 ZLIB non-free? ( MicroChip-SDCC ) packihx? ( public-domain )
 RDEPEND=dev-libs/boost:= sys-libs/ncurses:= sys-libs/readline:0= >=dev-embedded/gputils-0.13.7 boehm-gc? ( dev-libs/boehm-gc:= ) !dev-embedded/sdcc-svn
 REQUIRED_USE=avr? ( sdbinutils ) ds390? ( sdbinutils ) ds400? ( sdbinutils ) gbz80? ( sdbinutils ) hc08? ( sdbinutils ) mcs51? ( sdbinutils ) pic14? ( sdbinutils ) pic16? ( sdbinutils ) r2k? ( sdbinutils ) r3ka? ( sdbinutils ) s08? ( sdbinutils ) stm8? ( sdbinutils ) tlcs90? ( sdbinutils ) z180? ( sdbinutils ) z80? ( sdbinutils ) || ( avr ds390 ds400 gbz80 hc08 mcs51 pic14 pic16 r2k r3ka s08 stm8 tlcs90 z180 z80 )
@@ -13,4 +13,4 @@ RESTRICT=strip
 SLOT=0
 SRC_URI=mirror://sourceforge/sdcc/sdcc-src-3.8.0.tar.bz2 doc? ( mirror://sourceforge/sdcc/sdcc-doc-3.8.0.tar.bz2 )
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
-_md5_=0d103516b93500dcb53adf949562fba9
+_md5_=cfc533f1d60a9e2b64b450f9e49c1d61

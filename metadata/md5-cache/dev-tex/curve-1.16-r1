@@ -5,10 +5,10 @@ DESCRIPTION=LaTeX style for a CV (curriculum vitae) with flavour option
 EAPI=7
 HOMEPAGE=https://ctan.org/tex-archive/macros/latex/contrib/curve/
 IUSE=doc examples
-KEYWORDS=~amd64 ~ppc ~sparc ~x86
+KEYWORDS=~amd64 ~ppc ~sparc x86
 LICENSE=LPPL-1.2
 RDEPEND=>=dev-texlive/texlive-latexextra-2010 virtual/latex-base
 SLOT=0
 SRC_URI=http://mirrors.ctan.org/macros/latex/contrib/curve.zip -> curve-1.16.zip
 _eclasses_=latex-package	17f13abe0de88340745e52e6b627aee7
-_md5_=42be4a1890b7f6fde5116b1fe6af0747
+_md5_=bb1c550e6f464ea66062659c178ffe71
