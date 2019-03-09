@@ -32,6 +32,8 @@ if [[ ${MOZ_ESR} == 1 ]]; then
 fi
 MOZ_P="${PN}-${MOZ_PV}"
 
+LLVM_MAX_SLOT=8
+
 inherit check-reqs flag-o-matic toolchain-funcs gnome2-utils llvm mozcoreconf-v6 pax-utils xdg-utils autotools mozlinguas-v2
 
 DESCRIPTION="Thunderbird Mail Client"
@@ -116,27 +118,11 @@ DEPEND="${CDEPEND}
 	sys-apps/findutils
 	|| (
 		(
-			sys-devel/clang:4
-			!clang? ( sys-devel/llvm:4 )
+			sys-devel/clang:8
+			!clang? ( sys-devel/llvm:8 )
 			clang? (
-				=sys-devel/lld-4*
-				sys-devel/llvm:4[gold]
-			)
-		)
-		(
-			sys-devel/clang:5
-			!clang? ( sys-devel/llvm:5 )
-			clang? (
-				=sys-devel/lld-5*
-				sys-devel/llvm:5[gold]
-			)
-		)
-		(
-			sys-devel/clang:6
-			!clang? ( sys-devel/llvm:6 )
-			clang? (
-				=sys-devel/lld-6*
-				sys-devel/llvm:6[gold]
+				=sys-devel/lld-8*
+				sys-devel/llvm:8[gold]
 			)
 		)
 		(
@@ -148,11 +134,27 @@ DEPEND="${CDEPEND}
 			)
 		)
 		(
-			sys-devel/clang:8
-			!clang? ( sys-devel/llvm:8 )
+			sys-devel/clang:6
+			!clang? ( sys-devel/llvm:6 )
 			clang? (
-				=sys-devel/lld-8*
-				sys-devel/llvm:8[gold]
+				=sys-devel/lld-6*
+				sys-devel/llvm:6[gold]
+			)
+		)
+		(
+			sys-devel/clang:5
+			!clang? ( sys-devel/llvm:5 )
+			clang? (
+				=sys-devel/lld-5*
+				sys-devel/llvm:5[gold]
+			)
+		)
+		(
+			sys-devel/clang:4
+			!clang? ( sys-devel/llvm:4 )
+			clang? (
+				=sys-devel/lld-4*
+				sys-devel/llvm:4[gold]
 			)
 		)
 	)
