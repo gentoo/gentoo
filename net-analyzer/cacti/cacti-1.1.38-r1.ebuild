@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -22,7 +22,6 @@ RDEPEND="
 	dev-php/adodb
 	net-analyzer/rrdtool[graph]
 	virtual/cron
-	virtual/mysql
 	snmp? ( >=net-analyzer/net-snmp-5.2.0 )
 "
 
