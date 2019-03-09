@@ -188,7 +188,7 @@ multilib_src_install() {
 		dopammod .libs/pam_sss.so
 
 		into /
-		dolib .libs/libnss_sss.so*
+		dolib.so .libs/libnss_sss.so*
 
 		if use locator; then
 			exeinto /usr/$(get_libdir)/krb5/plugins/libkrb5
