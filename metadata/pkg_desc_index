@@ -9972,7 +9972,7 @@ sys-apps/syscriptor 1.5.15: display misc information about your hardware
 sys-apps/syslog-notify 0.2: Notifications for syslog entries via libnotify
 sys-apps/systemd 239-r2 239-r3 239-r4: System and service manager for Linux
 sys-apps/systemd-readahead 216: Split of readahead systemd implementation
-sys-apps/sysvinit 2.91-r1: /sbin/init - parent of all processes
+sys-apps/sysvinit 2.91-r1 2.93: /sbin/init - parent of all processes
 sys-apps/tcp-wrappers 7.6.22-r1: TCP Wrappers
 sys-apps/texinfo 6.3 6.6-r1: The GNU info program and utilities
 sys-apps/the_silver_searcher 2.0.0: A code-searching tool similar to ack, but faster
@@ -10341,7 +10341,7 @@ sys-libs/timezone-data 2018i: Timezone data (/usr/share/zoneinfo) and utilities 
 sys-libs/uclibc-ng 1.0.26 1.0.30-r1 1.0.31: C library for developing embedded Linux systems
 sys-libs/uid_wrapper 1.2.1: A wrapper to fake privilege separation
 sys-libs/zlib 1.2.11 1.2.11-r1 1.2.11-r2: Standard (de)compression library
-sys-power/acpi 1.6 1.7-r1: Displays information about ACPI devices
+sys-power/acpi 1.7-r1: Displays information about ACPI devices
 sys-power/acpid 2.0.29-r1 2.0.30 2.0.31: Daemon for Advanced Configuration and Power Interface
 sys-power/acpilight 1.0 1.1: Replacement for xbacklight that uses the ACPI interface to set brightness
 sys-power/acpitool 0.5.1-r1: A small command line application, intended to be a replacement for the apm tool
