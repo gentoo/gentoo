@@ -29,9 +29,7 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 src_configure() {
-	local mycmakeargs=(
-		-DCMAKE_DISABLE_FIND_PACKAGE_KF5KExiv2=true
-	)
+	use test && local mycmakeargs=( -DCMAKE_DISABLE_FIND_PACKAGE_KF5KExiv2=true )
 
 	kde5_src_configure
 }
