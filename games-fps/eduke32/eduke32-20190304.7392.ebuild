@@ -50,7 +50,7 @@ REQUIRED_USE="
 S="${WORKDIR}/${PN}_${MY_DATE}-${MY_BUILD}"
 
 MY_DEPEND_RDEPEND="
-	media-libs/libsdl2[joystick,opengl?,sound,video,X]
+	media-libs/libsdl2[joystick,opengl?,sound,video]
 	media-libs/sdl2-mixer[flac?,fluidsynth?,midi,timidity?,vorbis?]
 	sys-libs/zlib:=
 	flac? ( media-libs/flac )
