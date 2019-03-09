@@ -4,10 +4,10 @@ DESCRIPTION=Lightweight NTP server ported from OpenBSD
 EAPI=5
 HOMEPAGE=http://www.openntpd.org/
 IUSE=libressl selinux
-KEYWORDS=alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~x86-fbsd
+KEYWORDS=alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 ~sh sparc x86 ~x86-fbsd
 LICENSE=BSD GPL-2
 RDEPEND=!<=net-misc/ntp-4.2.0-r2 !net-misc/ntp[-openntpd] libressl? ( >=dev-libs/libressl-2.3.2 ) selinux? ( sec-policy/selinux-ntp )
 SLOT=0
 SRC_URI=mirror://openbsd/OpenNTPD/openntpd-6.0p1.tar.gz
 _eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	b2f01ad412baf81650c23fcf0975fa33	preserve-libs	ef207dc62baddfddfd39a164d9797648	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	user	8bd74731cafdcdad8f7a63637302e073	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
-_md5_=759e053e4a3dfd4d9a286edf90bcdd0c
+_md5_=b170d1c958904a0e085c6808dde5468e
