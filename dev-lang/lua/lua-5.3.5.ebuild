@@ -31,9 +31,7 @@ MULTILIB_WRAPPED_HEADERS=(
 )
 
 src_prepare() {
-	local PATCH_PV=$(get_version_component_range 1-2)
-
-	epatch "${FILESDIR}"/${PN}-${PATCH_PV}-make-r1.patch
+	epatch "${FILESDIR}"/${PN}-${SLOT}-make-r1.patch
 
 	# use glibtool on Darwin (versus Apple libtool)
 	if [[ ${CHOST} == *-darwin* ]] ; then
@@ -114,7 +112,7 @@ multilib_src_compile() {
 			RPATH="${EPREFIX}/usr/$(get_libdir)/" \
 			LUA_LIBS="${mylibs}" \
 			LIB_LIBS="${liblibs}" \
-			V=$(get_version_component_range 1-2) \
+			V=${SLOT} \
 			gentoo_all
 }
 
@@ -126,7 +124,7 @@ multilib_src_install() {
 	cp "${FILESDIR}/lua.pc" "${WORKDIR}"
 	sed -i \
 		-e "s:^prefix= :prefix= ${EPREFIX}:" \
-		-e "s:^V=.*:V= ${PATCH_PV}:" \
+		-e "s:^V=.*:V= ${SLOT}:" \
 		-e "s:^R=.*:R= ${PV}:" \
 		-e "s:/,lib,:/$(get_libdir):g" \
 		"${WORKDIR}/lua.pc"
