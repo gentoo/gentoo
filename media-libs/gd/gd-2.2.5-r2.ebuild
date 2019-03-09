@@ -66,6 +66,11 @@ multilib_src_configure() {
 		append-cflags -ffloat-store
 	fi
 
+	# bug 632076, https://github.com/libgd/libgd/issues/278
+	if use arm64 || use ppc64 || use s390 ; then
+		append-cflags -ffp-contract=off
+	fi
+
 	# we aren't actually {en,dis}abling X here ... the configure
 	# script uses it just to add explicit -I/-L paths which we
 	# don't care about on Gentoo systems.
