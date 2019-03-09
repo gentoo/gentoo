@@ -30,6 +30,8 @@ fi
 PATCH="${PN}-65.0-patches-04"
 MOZ_HTTP_URI="https://archive.mozilla.org/pub/${PN}/releases"
 
+LLVM_MAX_SLOT=8
+
 inherit check-reqs eapi7-ver flag-o-matic toolchain-funcs eutils \
 		gnome2-utils llvm mozcoreconf-v6 pax-utils xdg-utils \
 		autotools mozlinguas-v2 virtualx
@@ -116,30 +118,12 @@ DEPEND="${CDEPEND}
 	sys-apps/findutils
 	|| (
 		(
-			sys-devel/clang:4
-			!clang? ( sys-devel/llvm:4 )
+			sys-devel/clang:8
+			!clang? ( sys-devel/llvm:8 )
 			clang? (
-				=sys-devel/lld-4*
-				sys-devel/llvm:4[gold]
-				pgo? ( =sys-libs/compiler-rt-sanitizers-4*[profile] )
-			)
-		)
-		(
-			sys-devel/clang:5
-			!clang? ( sys-devel/llvm:5 )
-			clang? (
-				=sys-devel/lld-5*
-				sys-devel/llvm:5[gold]
-				pgo? ( =sys-libs/compiler-rt-sanitizers-5*[profile] )
-			)
-		)
-		(
-			sys-devel/clang:6
-			!clang? ( sys-devel/llvm:6 )
-			clang? (
-				=sys-devel/lld-6*
-				sys-devel/llvm:6[gold]
-				pgo? ( =sys-libs/compiler-rt-sanitizers-6*[profile] )
+				=sys-devel/lld-8*
+				sys-devel/llvm:8[gold]
+				pgo? ( =sys-libs/compiler-rt-sanitizers-8*[profile] )
 			)
 		)
 		(
@@ -152,12 +136,30 @@ DEPEND="${CDEPEND}
 			)
 		)
 		(
-			sys-devel/clang:8
-			!clang? ( sys-devel/llvm:8 )
+			sys-devel/clang:6
+			!clang? ( sys-devel/llvm:6 )
 			clang? (
-				=sys-devel/lld-8*
-				sys-devel/llvm:8[gold]
-				pgo? ( =sys-libs/compiler-rt-sanitizers-8*[profile] )
+				=sys-devel/lld-6*
+				sys-devel/llvm:6[gold]
+				pgo? ( =sys-libs/compiler-rt-sanitizers-6*[profile] )
+			)
+		)
+		(
+			sys-devel/clang:5
+			!clang? ( sys-devel/llvm:5 )
+			clang? (
+				=sys-devel/lld-5*
+				sys-devel/llvm:5[gold]
+				pgo? ( =sys-libs/compiler-rt-sanitizers-5*[profile] )
+			)
+		)
+		(
+			sys-devel/clang:4
+			!clang? ( sys-devel/llvm:4 )
+			clang? (
+				=sys-devel/lld-4*
+				sys-devel/llvm:4[gold]
+				pgo? ( =sys-libs/compiler-rt-sanitizers-4*[profile] )
 			)
 		)
 	)

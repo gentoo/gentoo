@@ -160,27 +160,11 @@ DEPEND="app-arch/zip
 	sys-apps/findutils
 	|| (
 		(
-			sys-devel/clang:4
-			!clang? ( sys-devel/llvm:4 )
+			sys-devel/clang:8
+			!clang? ( sys-devel/llvm:8 )
 			clang? (
-				=sys-devel/lld-4*
-				sys-devel/llvm:4[gold]
-			)
-		)
-		(
-			sys-devel/clang:5
-			!clang? ( sys-devel/llvm:5 )
-			clang? (
-				=sys-devel/lld-5*
-				sys-devel/llvm:5[gold]
-			)
-		)
-		(
-			sys-devel/clang:6
-			!clang? ( sys-devel/llvm:6 )
-			clang? (
-				=sys-devel/lld-6*
-				sys-devel/llvm:6[gold]
+				=sys-devel/lld-8*
+				sys-devel/llvm:8[gold]
 			)
 		)
 		(
@@ -192,11 +176,27 @@ DEPEND="app-arch/zip
 			)
 		)
 		(
-			sys-devel/clang:8
-			!clang? ( sys-devel/llvm:8 )
+			sys-devel/clang:6
+			!clang? ( sys-devel/llvm:6 )
 			clang? (
-				=sys-devel/lld-8*
-				sys-devel/llvm:8[gold]
+				=sys-devel/lld-6*
+				sys-devel/llvm:6[gold]
+			)
+		)
+		(
+			sys-devel/clang:5
+			!clang? ( sys-devel/llvm:5 )
+			clang? (
+				=sys-devel/lld-5*
+				sys-devel/llvm:5[gold]
+			)
+		)
+		(
+			sys-devel/clang:4
+			!clang? ( sys-devel/llvm:4 )
+			clang? (
+				=sys-devel/lld-4*
+				sys-devel/llvm:4[gold]
 			)
 		)
 	)
