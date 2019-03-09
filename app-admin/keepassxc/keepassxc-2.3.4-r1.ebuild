@@ -11,7 +11,7 @@ HOMEPAGE="https://keepassxc.org"
 if [[ "${PV}" != 9999 ]] ; then
 	#SRC_URI="https://github.com/keepassxreboot/keepassxc/archive/${PV}.tar.gz -> ${P}.tar.gz"
 	SRC_URI="https://github.com/keepassxreboot/keepassxc/releases/download/${PV}/${P}-src.tar.xz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 x86"
 else
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/keepassxreboot/${PN}"
