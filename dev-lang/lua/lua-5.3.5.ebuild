@@ -65,13 +65,6 @@ src_prepare() {
 	cp "${FILESDIR}/configure.in" "${S}/configure.ac" || die
 	eautoreconf
 
-	# A slotted Lua uses different directories for headers & names for
-	# libraries, and pkgconfig should reflect that.
-	sed -r -i \
-		-e "/^Libs:/s,((-llua)($| )),\2${SLOT}\3," \
-		-e "/^Cflags:/s,((-I..includedir.)($| )),\2/lua${SLOT}\3," \
-		"${S}"/etc/lua.pc
-
 	# custom Makefiles
 	multilib_copy_sources
 }
@@ -127,6 +120,8 @@ multilib_src_install() {
 		-e "s:^V=.*:V= ${SLOT}:" \
 		-e "s:^R=.*:R= ${PV}:" \
 		-e "s:/,lib,:/$(get_libdir):g" \
+		-e "s:/include:/include/lua\${V}:g" \
+		-e "s:-llua:-llua\${V}:g" \
 		"${WORKDIR}/lua.pc"
 
 	insinto "/usr/$(get_libdir)/pkgconfig"
