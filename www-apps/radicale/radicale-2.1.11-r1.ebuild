@@ -1,11 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 
 PYTHON_COMPAT=( python{3_4,3_5,3_6} )
 
-inherit distutils-r1 eutils user
+inherit distutils-r1 eutils user systemd
 
 MY_PN="Radicale"
 MY_P="${MY_PN}-${PV}"
@@ -26,7 +26,7 @@ RDEPEND="sys-apps/util-linux
 
 S=${WORKDIR}/${MY_P}
 
-RDIR=/var/lib/radicale
+RDIR=/var/lib/${PN}
 
 pkg_pretend() {
 	if [[ -f ${RDIR}/.props && ${MERGE_TYPE} != buildonly ]]; then
@@ -51,19 +51,21 @@ pkg_pretend() {
 }
 
 pkg_setup() {
-	enewgroup radicale
-	enewuser radicale -1 -1 ${RDIR} radicale
+	enewgroup ${PN}
+	enewuser ${PN} -1 -1 ${RDIR} ${PN}
 }
 
 python_install_all() {
 	rm README* || die
 
 	# init file
-	newinitd "${FILESDIR}"/radicale-r1.init.d radicale
+	newinitd "${FILESDIR}"/radicale-r2.init.d radicale
+	systemd_dounit "${FILESDIR}/${PN}.service"
 
 	# directories
-	diropts -m0750 -oradicale -gradicale
 	keepdir ${RDIR}
+	fowners ${PN}:${PN} ${RDIR}
+	fperms 0750 ${RDIR}
 
 	# config file
 	insinto /etc/${PN}
@@ -77,6 +79,17 @@ python_install_all() {
 }
 
 pkg_postinst() {
-	einfo "A sample WSGI script has been put into ${ROOT%/}/usr/share/${PN}."
+	local _erdir="${EROOT%/}${RDIR}"
+
+	einfo "A sample WSGI script has been put into ${EROOT%/}/usr/share/${PN}."
 	einfo "You will also find there an example FastCGI script."
+	if [[ $(stat --format="%U:%G:%a" "${_erdir}") != "${PN}:${PN}:750" ]]
+	then
+		ewarn "Unsafe file permissions detected on ${_erdir}. This probably comes"
+		ewarn "from an earlier version of this ebuild."
+		ewarn "To fix run:"
+		ewarn "  \`chown -R ${PN}:${PN} ${_erdir}\`"
+		ewarn "  \`chmod 0750 ${_erdir}\`"
+		ewarn "  \`chmod -R o= ${_erdir}\`"
+	fi
 }

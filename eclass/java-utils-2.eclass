@@ -15,10 +15,10 @@
 # you should inherit java-pkg-2 for Java packages or java-pkg-opt-2 for packages
 # that have optional Java support. In addition you can inherit java-ant-2 for
 # Ant-based packages.
-inherit eutils multilib
+
 # EAPI 7 has version functions built-in. Use eapi7-ver for all earlier eclasses.
 # Keep versionator inheritance in case consumers are using it implicitly.
-[[ ${EAPI} == [0123456] ]] && inherit eapi7-ver versionator
+[[ ${EAPI} == [0123456] ]] && inherit eapi7-ver eutils multilib versionator
 
 IUSE="elibc_FreeBSD"
 

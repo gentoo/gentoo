@@ -3,13 +3,13 @@
 <catmetadata>
 	<longdescription lang="en">
 		The kde-misc category contains various miscellaneous KDE packages.
-		In general, packages here are extensions of the KDE desktop environment
+		In general, packages here are extensions of the Plasma desktop environment
 		(ioslaves, command center modules, plasmoids, ...), while KDE applications
 		that do not rely on the desktop environment better suit other categories.
 	</longdescription>
 	<longdescription lang="de">
 		Die Kategorie kde-misc enthält verschiedenartige KDE-Pakete.
-		In der Regel sind die Pakete hier Erweiterungen der KDE-Desktopumgebung
+		In der Regel sind die Pakete hier Erweiterungen der Plasma Desktopumgebung
 		(ioslaves, Module der Systemeinstellungen, Plasmoide, ...); KDE-Anwendungen, 
 		die nicht zwingend die gesamte Desktopumgebung voraussetzen, gehören besser
 		in andere Kategorien.
