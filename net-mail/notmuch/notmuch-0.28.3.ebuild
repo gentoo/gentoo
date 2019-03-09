@@ -30,7 +30,7 @@ CDEPEND="
 	!!<app-shells/bash-completion-1.9
 	>=dev-libs/glib-2.22:2
 	>=dev-libs/gmime-3.0.3:3.0
-	>=dev-libs/xapian-1.4.9:=
+	>=dev-libs/xapian-1.4.8:=
 	dev-python/sphinx[${PYTHON_USEDEP}]
 	sys-apps/texinfo
 	>=sys-libs/zlib-1.2.5.2
@@ -59,7 +59,10 @@ RDEPEND="${CDEPEND}
 DOCS=( AUTHORS NEWS README )
 SITEFILE="50${PN}-gentoo.el"
 MY_LD_LIBRARY_PATH="${WORKDIR}/${P}/lib"
-PATCHES=( "${FILESDIR}"/0001-Use-loopback-IP-address-rather-than-name.patch )
+PATCHES=(
+	"${FILESDIR}"/0001-Use-loopback-IP-address-rather-than-name.patch
+	"${FILESDIR}"/0002-Fix-jobserver-unavailable-warning.patch
+)
 
 bindings() {
 	local ret=0
@@ -108,6 +111,8 @@ src_prepare() {
 
 	# assure that new Makefile.config will be generated
 	rm -f Makefile.config || die
+
+	sed -e 's@^install: all install-man install-info$@install: all install-info@' -i Makefile.local
 
 	if use test; then
 		append-cflags -g
@@ -164,6 +169,8 @@ src_test() {
 src_install() {
 	default
 
+	doman doc/_build/man/man?/*.?
+
 	if use emacs; then
 		elisp-site-file-install "${FILESDIR}/${SITEFILE}" || die
 	fi
@@ -198,11 +205,6 @@ pkg_preinst() {
 
 pkg_postinst() {
 	use emacs && elisp-site-regen
-
-	if has_version '<dev-libs/xapian-1.4'; then
-		elog "Regular expression searches supported for from: and subject:"
-		elog "require >=dev-libs/xapian-1.4."
-	fi
 }
 
 pkg_postrm() {
