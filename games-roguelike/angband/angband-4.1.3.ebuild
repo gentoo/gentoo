@@ -1,9 +1,9 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit autotools eapi7-ver gnome2-utils
+inherit autotools desktop xdg-utils
 
 MAJOR_PV=$(ver_cut 1-2)
 
@@ -33,8 +33,8 @@ RDEPEND="X? (
 			media-libs/sdl-mixer[mp3]
 		)
 	)"
-DEPEND="${RDEPEND}
-	dev-python/docutils
+DEPEND="${RDEPEND}"
+BDEPEND="dev-python/docutils
 	virtual/pkgconfig"
 
 src_prepare() {
@@ -91,6 +91,12 @@ src_install() {
 
 pkg_postinst() {
 	if use X || use sdl ; then
-		gnome2_icon_cache_update
+		xdg_icon_cache_update
+	fi
+}
+
+pkg_postrm() {
+	if use X || use sdl ; then
+		xdg_icon_cache_update
 	fi
 }
