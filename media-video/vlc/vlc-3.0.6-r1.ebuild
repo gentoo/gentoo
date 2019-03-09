@@ -230,7 +230,6 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.1.0-fix-libtremor-libs.patch # build system
-	"${FILESDIR}"/${PN}-2.2.4-libav-11.7.patch # bug #593460
 	"${FILESDIR}"/${PN}-2.2.8-freerdp-2.patch # bug 590164
 	"${FILESDIR}"/${P}-libvpx-1.8.0.patch # bug 677606
 	"${FILESDIR}"/${P}-fdk-aac-2.0.0.patch # bug 672290
