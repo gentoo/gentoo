@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<longdescription>
+		HW-Probe is a snapshot of your computer's hardware state and system logs.
+		The tool returns a permanent URL to view the probe of the computer and
+		is intended to simplify collecting of logs necessary for investigating
+		hardware related issues. Just ask a user to run one simple command to collect
+		all the system logs at once:
+
+		sudo hw-probe -all -upload
+
+		By creating probes you contribute to the HDD/SSD
+		Real-Life Reliability Test study: https://github.com/linuxhw/SMART
+	</longdescription>
+	<upstream>
+		<bugs-to>https://github.com/linuxhw/hw-probe/issues</bugs-to>
+		<remote-id type="github">linuxhw/hw-probe</remote-id>
+	</upstream>
+	<use>
+		<flag name="i2c">Use <pkg>sys-apps/i2c-tools</pkg> for additional information.</flag>
+		<flag name="inxi">Use <pkg>sys-apps/inxi</pkg> for additional information.</flag>
+		<flag name="memtester">Use <pkg>sys-apps/memtester</pkg> for additional information.</flag>
+		<flag name="mesa">Use <pkg>x11-apps/mesa-progs</pkg> for additional information.</flag>
+		<flag name="pnp">Use <pkg>sys-apps/pnputils</pkg> for additional information.</flag>
+		<flag name="rfkill">Use <pkg>net-wireless/rfkill</pkg> for additional information.</flag>
+		<flag name="scanner">Use <pkg>media-gfx/sane-backends</pkg> for additional information.</flag>
+		<flag name="smartcard">Use <pkg>dev-libs/opensc</pkg> for additional information.</flag>
+		<flag name="sysstat">Use <pkg>app-admin/sysstat</pkg> for additional information.</flag>
+		<flag name="vaapi">Use <pkg>x11-libs/libva</pkg> for additional information.</flag>
+		<flag name="vulkan">Use <pkg>dev-util/vulkan-tools</pkg> for additional information.</flag>
+		<flag name="xinput">Use <pkg>x11-apps/xinput</pkg> for additional information.</flag>
+	</use>	
+</pkgmetadata>
