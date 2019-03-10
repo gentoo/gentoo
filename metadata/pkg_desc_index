@@ -5434,7 +5434,6 @@ dev-python/pytables 3.3.0 3.4.4: Hierarchical datasets for Python
 dev-python/pyte 0.5.2-r2: Simple VTXXX-compatible terminal emulator
 dev-python/pytest 3.2.2 3.4.2 3.10.1: Simple powerful testing with Python
 dev-python/pytest-cache 1.0-r1: mechanisms for caching across test runs
-dev-python/pytest-capturelog 0.7: py.test plugin to capture log messages
 dev-python/pytest-catchlog 1.2.2: py.test plugin to catch log messages, fork of pytest-capturelog
 dev-python/pytest-cov 2.3.1: py.test plugin for coverage reporting
 dev-python/pytest-expect 1.1.0: py.test plugin that stores test expectations by saving the set of failing tests
