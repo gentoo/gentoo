@@ -105,7 +105,7 @@ src_prepare() {
 
 	# ugly hack for https://bugs.gentoo.org/679806
 	if use ppc64; then
-		sed -i 's/getentropy/gEtEnTrOpY/g' "${rust_stage0_root}"/bin/cargo
+		sed -i 's/getentropy/gEtEnTrOpY/g' "${rust_stage0_root}"/bin/cargo || die
 		export OPENSSL_ppccap=0
 	fi
 
