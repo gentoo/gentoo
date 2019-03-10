@@ -1,9 +1,9 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit cmake-utils eutils vcs-snapshot
+inherit cmake-utils desktop
 
 DESCRIPTION="FastTracker 2 inspired music tracker"
 HOMEPAGE="https://milkytracker.titandemo.org/"
@@ -23,6 +23,8 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 PATCHES=( "${FILESDIR}"/${PN}-1.0.0-docdir.patch )
+
+S="${WORKDIR}/MilkyTracker-${PV}"
 
 src_configure() {
 	local mycmakeargs=(
