@@ -87,11 +87,6 @@ media-libs/libsub
 # Mask experimental software
 =mail-mta/postfix-3.5*
 
-# Michał Górny <mgorny@gentoo.org> (24 Feb 2019)
-# Making releng key cert-only broke validating old releases.  Mask
-# the relevant version until the key is fixed.  Bug #678660.
-=app-crypt/openpgp-keys-gentoo-release-20190223
-
 # Andreas K. Huettel <dilfridge@gentoo.org> (23 Feb 2019)
 # Fails to build with glibc-2.28, bug 669206.
 # Removal in 30 days.
