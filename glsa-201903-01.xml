@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201903-01">
+  <title>Keepalived: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Keepalived, the worst
+    of which could allow an attacker to cause Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">keepalived</product>
+  <announced>2019-03-10</announced>
+  <revised count="1">2019-03-10</revised>
+  <bug>670856</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="sys-cluster/keepalived" auto="yes" arch="*">
+      <unaffected range="ge">2.0.10</unaffected>
+      <vulnerable range="lt">2.0.10</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Keepalived is a strong &amp; robust keepalive facility to the Linux
+      Virtual Server project.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in keepalived. Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could send a specially crafted request possibly
+      resulting in a Denial of Service condition. A local attacker could
+      perform symlink attacks to overwrite arbitrary files with the privileges
+      of the user running the application.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Keepalived users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-cluster/keepalived-2.0.10"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-19044">CVE-2018-19044</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-19045">CVE-2018-19045</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-19046">CVE-2018-19046</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-19115">CVE-2018-19115</uri>
+  </references>
+  <metadata tag="requester" timestamp="2019-01-07T16:53:52Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2019-03-10T02:16:03Z">pinkbyte</metadata>
+</glsa>
