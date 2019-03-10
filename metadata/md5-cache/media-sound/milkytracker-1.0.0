@@ -1,13 +1,14 @@
-DEFINED_PHASES=compile configure install prepare test unpack
-DEPEND=dev-libs/zziplib media-libs/libsdl2[X] sys-libs/zlib alsa? ( media-libs/alsa-lib ) jack? ( media-sound/jack-audio-connection-kit ) sys-devel/make >=dev-util/cmake-3.9.6
+BDEPEND=dev-util/ninja >=dev-util/cmake-3.9.6
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-libs/zziplib media-libs/libsdl2[X] sys-libs/zlib alsa? ( media-libs/alsa-lib ) jack? ( media-sound/jack-audio-connection-kit )
 DESCRIPTION=FastTracker 2 inspired music tracker
-EAPI=6
-HOMEPAGE=http://milkytracker.titandemo.org/
+EAPI=7
+HOMEPAGE=https://milkytracker.titandemo.org/
 IUSE=alsa jack
 KEYWORDS=~amd64 ~x86
 LICENSE=|| ( GPL-3 MPL-1.1 ) AIFFWriter.m BSD GPL-3 GPL-3+ LGPL-2.1+ MIT
 RDEPEND=dev-libs/zziplib media-libs/libsdl2[X] sys-libs/zlib alsa? ( media-libs/alsa-lib ) jack? ( media-sound/jack-audio-connection-kit )
 SLOT=0
 SRC_URI=https://github.com/milkytracker/MilkyTracker/archive/v1.0.0.tar.gz -> milkytracker-1.0.0.tar.gz
-_eclasses_=cmake-utils	ab10bd85e5d38e2a32077bcd91faa1b6	desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	a09389deba2c0a7108b581e02c7cecbf	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	b2f01ad412baf81650c23fcf0975fa33	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	vcs-snapshot	b77011b62e2053c646ad720defe6d921	xdg-utils	14d00d009167652b1fa363e55effe213
-_md5_=418f92867729c777ee31875ab785bec8
+_eclasses_=cmake-utils	ab10bd85e5d38e2a32077bcd91faa1b6	desktop	b1d22ac8bdd4679ab79c71aca235009d	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	a09389deba2c0a7108b581e02c7cecbf	multilib	b2f01ad412baf81650c23fcf0975fa33	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	xdg-utils	14d00d009167652b1fa363e55effe213
+_md5_=8f0c1487aea88d5ed7ea90e1db7b0733
