@@ -1,4 +1,4 @@
-# Copyright 2018 Gentoo Authors
+# Copyright 2018-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -32,7 +32,6 @@ RDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	>=dev-python/pyyaml-3.10[${PYTHON_USEDEP}]
 	<dev-python/pyyaml-4
 	>=dev-python/requests-2.6.1[${PYTHON_USEDEP}]
-	<dev-python/requests-2.21
 	>=dev-python/six-1.3.0[${PYTHON_USEDEP}]
 	<dev-python/six-2
 	>=dev-python/texttable-0.9.0[${PYTHON_USEDEP}]
