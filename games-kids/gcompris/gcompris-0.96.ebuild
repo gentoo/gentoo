@@ -1,13 +1,13 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit cmake-utils desktop
 
 DESCRIPTION="full featured educational application for children from 2 to 10"
 HOMEPAGE="https://gcompris.net/"
-SRC_URI="http://gcompris.net/download/qt/src/gcompris-qt-${PV}.tar.xz"
+SRC_URI="https://gcompris.net/download/qt/src/gcompris-qt-${PV}.tar.xz"
 
 LICENSE="GPL-3+"
 SLOT="0"
