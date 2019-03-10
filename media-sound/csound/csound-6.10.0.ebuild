@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -53,7 +53,7 @@ RDEPEND="
 		media-libs/dssi
 		media-libs/ladspa-sdk
 	)
-	fluidsynth? ( media-sound/fluidsynth )
+	fluidsynth? ( media-sound/fluidsynth:= )
 	fltk? ( x11-libs/fltk:1[threads?] )
 	image? ( media-libs/libpng:0= )
 	jack? ( media-sound/jack-audio-connection-kit )
