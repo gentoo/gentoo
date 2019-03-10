@@ -29,6 +29,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Virgil Dupras <vdupras@gentoo.org> (10 Mar 2019)
+# Merged in pytest, no revdep. Removal in 30 days. Bug #668746
+dev-python/pytest-capturelog
+
 # Michał Górny <mgorny@gentoo.org> (09 Mar 2019)
 # According to bug #678914, our version is over 5 years old.  It has
 # open bugs (#671742, #671990) and is non-trivial to bump due to being
