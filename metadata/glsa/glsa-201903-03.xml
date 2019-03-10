@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201903-03">
+  <title>cURL: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in cURL, the worst of
+    which could result in a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">curl</product>
+  <announced>2019-03-10</announced>
+  <revised count="1">2019-03-10</revised>
+  <bug>665292</bug>
+  <bug>670026</bug>
+  <bug>677346</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/curl" auto="yes" arch="*">
+      <unaffected range="ge">7.64.0</unaffected>
+      <vulnerable range="lt">7.64.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>A command line tool and library for transferring data with URLs.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in cURL. Please review the
+      CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Remote attackers could cause a Denial of Service condition.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All cURL users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/curl-7.64.0"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-14618">CVE-2018-14618</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-16839">CVE-2018-16839</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-16840">CVE-2018-16840</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-16842">CVE-2018-16842</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-3822">CVE-2019-3822</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-3823">CVE-2019-3823</uri>
+  </references>
+  <metadata tag="requester" timestamp="2019-03-10T02:44:40Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2019-03-10T19:47:40Z">b-man</metadata>
+</glsa>
