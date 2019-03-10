@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -82,6 +82,8 @@ src_prepare() {
 			ewarn "Continuing anyway as requested."
 		fi
 	fi
+
+	epatch_user
 }
 
 src_compile() {
