@@ -7,6 +7,6 @@ KEYWORDS=~amd64
 LICENSE=MPL-2.0
 RESTRICT=strip
 SLOT=0
-SRC_URI=https://github.com/hashicorp/terraform/archive/v0.11.11.tar.gz -> terraform-0.11.11.tar.gz
+SRC_URI=https://github.com/hashicorp/terraform/archive/v0.11.12.tar.gz -> terraform-0.11.12.tar.gz
 _eclasses_=golang-base	c57d2c3f9e1a02d0feb8b87c7b689892	golang-vcs-snapshot	12177e83bede6f7fb87eae383864b40b
 _md5_=f01ec0c7e10d90dbb345f65bd7a60fb5
