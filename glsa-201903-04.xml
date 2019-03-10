@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201903-04">
+  <title>Mozilla Firefox: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Mozilla Firefox, the
+    worst of which may allow execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">firefox</product>
+  <announced>2019-03-10</announced>
+  <revised count="1">2019-03-10</revised>
+  <bug>672956</bug>
+  <bug>676892</bug>
+  <bug>677856</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-client/firefox" auto="yes" arch="*">
+      <unaffected range="ge">60.5.1</unaffected>
+      <vulnerable range="lt">60.5.1</vulnerable>
+    </package>
+    <package name="www-client/firefox-bin" auto="yes" arch="*">
+      <unaffected range="ge">60.5.1</unaffected>
+      <vulnerable range="lt">60.5.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Mozilla Firefox is a popular open-source web browser from the Mozilla
+      Project.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Mozilla Firefox. Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to view a specially crafted web
+      page possibly resulting in the execution of arbitrary code with the
+      privileges of the process or cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Mozilla FireFox users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=www-client/firefox-60.5.1"
+    </code>
+    
+    <p>All Mozilla FireFox bin users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=www-client/firefox-bin-60.5.1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-12405">CVE-2018-12405</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-18356">CVE-2018-18356</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-18492">CVE-2018-18492</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-18493">CVE-2018-18493</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-18494">CVE-2018-18494</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-18498">CVE-2018-18498</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-18500">CVE-2018-18500</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-18501">CVE-2018-18501</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-18505">CVE-2018-18505</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5785">CVE-2019-5785</uri>
+  </references>
+  <metadata tag="requester" timestamp="2019-02-06T14:21:19Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2019-03-10T19:49:50Z">b-man</metadata>
+</glsa>
