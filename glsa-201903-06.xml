@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201903-06">
+  <title>rdesktop: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been discovered in rdesktop, the
+    worst of which could result in the remote execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">rdesktop</product>
+  <announced>2019-03-10</announced>
+  <revised count="1">2019-03-10</revised>
+  <bug>674558</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/rdesktop" auto="yes" arch="*">
+      <unaffected range="ge">1.8.4</unaffected>
+      <vulnerable range="lt">1.8.4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>rdesktop is a Remote Desktop Protocol (RDP) Client.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in rdesktop. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could cause a Denial of Service condition, obtain
+      sensitive information, or execute arbitrary code.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All rdesktop users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/rdesktop-1.8.4"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-20174">CVE-2018-20174</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-20175">CVE-2018-20175</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-20176">CVE-2018-20176</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-20177">CVE-2018-20177</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-20178">CVE-2018-20178</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-20179">CVE-2018-20179</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-20180">CVE-2018-20180</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-20181">CVE-2018-20181</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-20182">CVE-2018-20182</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-8791">CVE-2018-8791</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-8792">CVE-2018-8792</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-8793">CVE-2018-8793</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-8794">CVE-2018-8794</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-8795">CVE-2018-8795</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-8796">CVE-2018-8796</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-8797">CVE-2018-8797</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-8798">CVE-2018-8798</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-8799">CVE-2018-8799</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-8800">CVE-2018-8800</uri>
+  </references>
+  <metadata tag="requester" timestamp="2019-03-10T19:30:37Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2019-03-10T20:45:00Z">b-man</metadata>
+</glsa>
