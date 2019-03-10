@@ -52,6 +52,7 @@ DEPEND="
 	virtual/pkgconfig
 	dev-libs/appstream-glib
 	sys-devel/gettext
+	dev-util/itstool
 "
 
 pkg_postinst(){
