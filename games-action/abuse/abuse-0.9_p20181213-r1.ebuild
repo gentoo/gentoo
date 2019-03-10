@@ -18,7 +18,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 DEPEND=">=media-libs/libsdl2-2.0.3[sound,video]
-	media-libs/sdl2-mixer"
+	media-libs/sdl2-mixer[midi,wav]"
 
 RDEPEND="${DEPEND}"
 
