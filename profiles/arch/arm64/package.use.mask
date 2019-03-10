@@ -1,6 +1,11 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Roy Bamford <neddyseagoon@gentoo.org> (10 Mar 2019)
+# No arm64 ever had bios but sys-apps/fwupdate needs
+# refactored to separate bios and uefi
+kde-plasma/discover firmware
+
 # Mart Raudsepp <leio@gentoo.org> (23 Feb 2019)
 # x11-libs/libXTrap not keyworded yet
 x11-misc/x11vnc xtrap
