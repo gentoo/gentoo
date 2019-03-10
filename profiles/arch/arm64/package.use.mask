@@ -2,6 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Roy Bamford <neddyseagoon@gentoo.org> (10 Mar 2019)
+# kde-apps/kalzium editor as sci-chemistry/openbabel
+# fails to build on arm64
+kde-apps/kalzium editor
+
+# Roy Bamford <neddyseagoon@gentoo.org> (10 Mar 2019)
 # No arm64 ever had bios but sys-apps/fwupdate needs
 # refactored to separate bios and uefi
 kde-plasma/discover firmware
