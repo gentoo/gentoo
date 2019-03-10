@@ -1,0 +1,14 @@
+BDEPEND=virtual/pkgconfig
+DEFINED_PHASES=configure
+DEPEND=alsa? ( media-libs/alsa-lib:= media-sound/alsa-utils ) dssi? ( media-libs/dssi:= media-libs/liblo:= >=x11-libs/gtk+-2.20:2 ) jack? ( virtual/jack ) lash? ( media-sound/lash ) sndfile? ( >=media-libs/libsndfile-1:= ) oss? ( virtual/os-headers )
+DESCRIPTION=Virtual analogue synthesizer
+EAPI=7
+HOMEPAGE=https://github.com/amsynth/amsynth
+IUSE=alsa dssi jack lash oss sndfile
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=alsa? ( media-libs/alsa-lib:= media-sound/alsa-utils ) dssi? ( media-libs/dssi:= media-libs/liblo:= >=x11-libs/gtk+-2.20:2 ) jack? ( virtual/jack ) lash? ( media-sound/lash ) sndfile? ( >=media-libs/libsndfile-1:= )
+SLOT=0
+SRC_URI=https://github.com/amsynth/amsynth/releases/download/release-1.8.0/amsynth-1.8.0.tar.bz2
+_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	a09389deba2c0a7108b581e02c7cecbf	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_md5_=916a4e16441b04b4eeade33bf4934fef
