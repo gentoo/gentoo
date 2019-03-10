@@ -5557,7 +5557,7 @@ dev-python/reno 2.7.0: Release notes manager, storing release notes in a git rep
 dev-python/reportlab 3.3.0-r2: Tools for generating printable PDF documents from any data source
 dev-python/repoze-lru 0.6-r2: A tiny LRU cache implementation and decorator
 dev-python/repoze-who 2.2: repoze.who is an identification and authentication framework for WSGI
-dev-python/requests 2.18.4-r1 2.21.0-r1: HTTP library for human beings
+dev-python/requests 2.21.0-r1: HTTP library for human beings
 dev-python/requests-cache 0.4.12: Persistent cache for requests library
 dev-python/requests-mock 1.2.0 1.5.2: Mock out responses from the requests package
 dev-python/requests-oauthlib 0.7.0: This project provides first-class OAuth library support for Requests
@@ -8083,7 +8083,7 @@ media-sound/easytag 2.4.3-r1: GTK+ utility for editing MP2, MP3, MP4, FLAC, Ogg 
 media-sound/ecasound 2.6.0-r1: a package for multitrack audio processing
 media-sound/edna 0.6: Greg Stein's python streaming audio server for desktop or LAN use
 media-sound/erec 2.2.0.1: A shared audio recording server
-media-sound/exaile 3.4.5 4.0.0_rc3: GTK+ based media player aiming to be similar to Amarok
+media-sound/exaile 4.0.0_rc3: GTK+ based media player aiming to be similar to Amarok
 media-sound/fapg 0.41: Fast Audio Playlist Generator
 media-sound/flac123 0.0.12: console app for playing FLAC audio files
 media-sound/flacon 4.1.0: Extracts audio tracks from an audio CD image to separate tracks
