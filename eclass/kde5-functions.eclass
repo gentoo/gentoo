@@ -44,6 +44,9 @@ case ${CATEGORY} in
 			: ${QT_MINIMAL:=5.12.1}
 		fi
 		;;
+	kde-apps)
+		[[ ${PV} = 19.04* ]] && : ${FRAMEWORKS_MINIMAL:=5.56.0}
+		;;
 esac
 
 # @ECLASS-VARIABLE: QT_MINIMAL
