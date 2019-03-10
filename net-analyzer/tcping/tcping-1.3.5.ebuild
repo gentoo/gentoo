@@ -1,20 +1,24 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=7
 
 inherit toolchain-funcs
 
+MY_COMMIT="a29f692040e6086f5233197444773c36f36cdd9c"
+
 DESCRIPTION="Ping implementation that uses the TCP protocol"
-HOMEPAGE="http://www.linuxco.de/tcping/tcping.html"
-SRC_URI="http://www.linuxco.de/tcping/${P}.tar.gz"
+HOMEPAGE="https://github.com/mkirchner/tcping"
+SRC_URI="https://github.com/mkirchner/${PN}/tarball/${MY_COMMIT} -> ${P}.tar.gz"
 
 LICENSE="LGPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+
+S="${WORKDIR}"/mkirchner-"${PN}"-"${MY_COMMIT:0:7}"
 
 src_prepare() {
+	default
 	sed -e '/^CC=/s:=:?=:' \
 		-e '/^CCFLAGS/s:=:+=:' \
 		-e 's/$(CCFLAGS)/$(CCFLAGS) $(LDFLAGS)/' \
