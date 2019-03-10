@@ -129,7 +129,7 @@ if [ "${COPY_SRCD_TO_BOOT}" = yes ]; then
 fi
 
 # Build menu entries
-for isopref in ${bootdir} ${installdir}; do
+for isopref in "${bootdir}" "${installdir}"; do
 	# Make sure there are any ISOs
 	ls "${isopref}" | grep -E -q -e "${isorex}" || continue
 
