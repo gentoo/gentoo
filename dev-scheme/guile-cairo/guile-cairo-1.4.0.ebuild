@@ -9,7 +9,7 @@ SRC_URI="http://download.gna.org/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 ppc ~sparc x86"
+KEYWORDS="amd64 ~sparc x86"
 IUSE="test"
 
 RDEPEND=">=dev-scheme/guile-1.8
