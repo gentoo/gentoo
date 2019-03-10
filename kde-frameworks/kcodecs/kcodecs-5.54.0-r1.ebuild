@@ -14,3 +14,5 @@ BDEPEND="
 	dev-util/gperf
 	nls? ( $(add_qt_dep linguist-tools) )
 "
+
+PATCHES=( "${FILESDIR}/${P}-CVE-2013-0779.patch" )

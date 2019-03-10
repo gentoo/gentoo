@@ -1,9 +1,9 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=7
 
-inherit desktop eapi7-ver gnome2-utils toolchain-funcs
+inherit desktop toolchain-funcs xdg-utils
 
 MY_BUILD="$(ver_cut 2)"
 MY_DATE="$(ver_cut 1)"
@@ -17,20 +17,23 @@ MY_PV_VOXELS="1.21"
 
 DESCRIPTION="An open source engine port of the classic PC first person shooter Duke Nukem 3D"
 HOMEPAGE="http://www.eduke32.com/"
-SRC_URI="http://dukeworld.com/eduke32/synthesis/${MY_DATE}-${MY_BUILD}/${PN}_src_${MY_DATE}-${MY_BUILD}.tar.xz
+SRC_URI="
+	http://dukeworld.com/eduke32/synthesis/${MY_DATE}-${MY_BUILD}/${PN}_src_${MY_DATE}-${MY_BUILD}.tar.xz
 	http://www.eduke32.com/images/eduke32_classic.png
 	hrp? ( http://www.duke4.org/files/nightfright/hrp/duke3d_hrp.zip -> duke3d_hrp-${MY_PV_HRP}.zip )
 	offensive? ( http://www.duke4.org/files/nightfright/related/duke3d_xxx.zip -> duke3d_xxx-${MY_PV_OFFENSIVE_XXX}.zip )
 	opl? ( http://www.moddb.com/downloads/mirror/95750/102/ce9e8f422c6cccdb297852426e96740a -> duke3d_musopl-${MY_PV_OPL}.zip )
 	psx? ( http://www.duke4.org/files/nightfright/related/duke3d_psx.zip -> duke3d_psx-${MY_PV_PSX}.zip )
 	sc-55? ( http://www.duke4.org/files/nightfright/music/duke3d_music-sc55.zip -> duke3d_music-sc55-${MY_PV_SC55}.zip )
-	voxels? ( https://www.dropbox.com/s/yaxfahyvskyvt4r/duke3d_voxels.zip -> duke3d_voxels-${MY_PV_VOXELS}.zip )"
+	voxels? ( https://www.dropbox.com/s/yaxfahyvskyvt4r/duke3d_voxels.zip -> duke3d_voxels-${MY_PV_VOXELS}.zip )
+"
 
-KEYWORDS="~amd64 ~hppa ~x86"
 LICENSE="BUILDLIC GPL-2 HRP"
 SLOT="0"
+KEYWORDS="~amd64 ~hppa ~x86"
 IUSE="cdinstall demo flac fluidsynth gtk hrp offensive opengl opl png psx sc-55 server sdk timidity tools vorbis voxels vpx xmp"
-REQUIRED_USE="cdinstall? ( !demo )
+REQUIRED_USE="
+	cdinstall? ( !demo )
 	demo? ( !cdinstall )
 	hrp? ( ^^ ( demo cdinstall )
 		!voxels )
@@ -41,11 +44,13 @@ REQUIRED_USE="cdinstall? ( !demo )
 	sc-55? ( ^^ ( demo cdinstall )
 		!opl )
 	voxels? ( !hrp )
-	vpx? ( opengl )"
+	vpx? ( opengl )
+"
 
 S="${WORKDIR}/${PN}_${MY_DATE}-${MY_BUILD}"
 
-MY_DEPEND_RDEPEND="media-libs/libsdl2[joystick,opengl?,sound,video,X]
+MY_DEPEND_RDEPEND="
+	media-libs/libsdl2[joystick,opengl?,sound,video]
 	media-libs/sdl2-mixer[flac?,fluidsynth?,midi,timidity?,vorbis?]
 	sys-libs/zlib:=
 	flac? ( media-libs/flac )
@@ -57,17 +62,25 @@ MY_DEPEND_RDEPEND="media-libs/libsdl2[joystick,opengl?,sound,video,X]
 	vpx? ( media-libs/libvpx:= )
 	vorbis? ( media-libs/libogg
 		media-libs/libvorbis )
-	xmp? ( media-libs/exempi:= )"
+	xmp? ( media-libs/exempi:= )
+"
 
-RDEPEND="${MY_DEPEND_RDEPEND}
+RDEPEND="
+	${MY_DEPEND_RDEPEND}
 	cdinstall? ( games-fps/duke3d-data )
-	demo? ( games-fps/duke3d-demodata )"
+	demo? ( games-fps/duke3d-demodata )
+"
 
-DEPEND="${MY_DEPEND_RDEPEND}
+DEPEND="
+	${MY_DEPEND_RDEPEND}
 	app-arch/unzip
-	x86? ( dev-lang/nasm )"
+	x86? ( dev-lang/nasm )
+"
 
-PATCHES=( "${FILESDIR}/log-to-tmpdir.patch" "${FILESDIR}/search-duke3d-path.patch" )
+PATCHES=(
+	"${FILESDIR}/log-to-tmpdir.patch"
+	"${FILESDIR}/search-duke3d-path.patch"
+)
 
 src_unpack() {
 	# Extract only the eduke32 archive
@@ -225,9 +238,9 @@ src_install() {
 }
 
 pkg_postinst() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }
