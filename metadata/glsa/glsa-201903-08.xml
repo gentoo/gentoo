@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201903-08">
+  <title>GNU Wget: Password and metadata leak</title>
+  <synopsis>A vulnerability in GNU Wget which could allow an attacker to obtain
+    sensitive information.
+  </synopsis>
+  <product type="ebuild">wget</product>
+  <announced>2019-03-10</announced>
+  <revised count="1">2019-03-10</revised>
+  <bug>674170</bug>
+  <access>local</access>
+  <affected>
+    <package name="net-misc/wget" auto="yes" arch="*">
+      <unaffected range="ge">1.20.1</unaffected>
+      <vulnerable range="lt">1.20.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>GNU Wget is a free software package for retrieving files using HTTP,
+      HTTPS and FTP, the most widely-used Internet protocols.
+    </p>
+  </background>
+  <description>
+    <p>A vulnerability was discovered in GNU Wget’s file_metadata in xattr.c.</p>
+  </description>
+  <impact type="normal">
+    <p>A local attacker could obtain sensitive information to include
+      credentials.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All GNU Wget users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/wget-1.20.1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-20483">CVE-2018-20483</uri>
+  </references>
+  <metadata tag="requester" timestamp="2019-03-10T06:22:02Z">BlueKnight</metadata>
+  <metadata tag="submitter" timestamp="2019-03-10T20:49:49Z">b-man</metadata>
+</glsa>
