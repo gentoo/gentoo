@@ -103,6 +103,12 @@ src_prepare() {
 
 	"${WORKDIR}/${rust_stage0}"/install.sh --disable-ldconfig --destdir="${rust_stage0_root}" --prefix=/ || die
 
+	# ugly hack for https://bugs.gentoo.org/679806
+	if use ppc64; then
+		sed -i 's/getentropy/gEtEnTrOpY/g' "${rust_stage0_root}"/bin/cargo || die
+		export OPENSSL_ppccap=0
+	fi
+
 	default
 }
 
