@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit desktop eapi7-ver gnome2-utils java-pkg-2
+inherit desktop eapi7-ver java-pkg-2 xdg-utils
 
 MY_PN="Moneydance"
 MY_PV="$(ver_cut 1)"
@@ -48,9 +48,9 @@ src_install() {
 }
 
 pkg_postinst() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }

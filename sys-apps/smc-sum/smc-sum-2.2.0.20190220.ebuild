@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI=7
 
 MY_DATE="$(ver_cut 4)"
 MY_PN="${PN/smc-/}"
@@ -11,9 +11,9 @@ DESCRIPTION="Updates the BIOS and IPMI firmware and system settings on Supermicr
 HOMEPAGE="https://www.supermicro.com"
 SRC_URI="${MY_PN}_${MY_PV}_Linux_x86_64_${MY_DATE}.tar.gz"
 
-KEYWORDS="-* ~amd64 ~x86"
 LICENSE="supermicro"
 SLOT="0"
+KEYWORDS="-* ~amd64 ~x86"
 
 RDEPEND="sys-apps/smc-sum-driver"
 

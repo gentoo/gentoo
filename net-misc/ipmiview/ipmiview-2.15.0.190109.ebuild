@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,17 +11,21 @@ MY_PV="$(ver_cut 1-3)"
 
 DESCRIPTION="A GUI application that allows to manage multiple target systems through BMC"
 HOMEPAGE="https://www.supermicro.com/"
-SRC_URI="amd64? ( ftp://ftp.supermicro.com/utility/${MY_PN}/Linux/${MY_PN}_${MY_PV}_build.${MY_DATE}_bundleJRE_Linux_x64.tar.gz )
-	x86? ( ftp://ftp.supermicro.com/utility/${MY_PN}/Linux/${MY_PN}_${MY_PV}_build.${MY_DATE}_bundleJRE_Linux.tar.gz )"
+SRC_URI="
+	amd64? ( ftp://ftp.supermicro.com/utility/${MY_PN}/Linux/${MY_PN}_${MY_PV}_build.${MY_DATE}_bundleJRE_Linux_x64.tar.gz )
+	x86? ( ftp://ftp.supermicro.com/utility/${MY_PN}/Linux/${MY_PN}_${MY_PV}_build.${MY_DATE}_bundleJRE_Linux.tar.gz )
+"
 
 LICENSE="supermicro"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
 
-DEPEND="app-arch/unzip"
+RDEPEND="
+	net-misc/stunnel
+	virtual/jre:1.8
+"
 
-RDEPEND="net-misc/stunnel
-	virtual/jre:1.8"
+DEPEND="app-arch/unzip"
 
 RESTRICT="bindist fetch mirror strip"
 
