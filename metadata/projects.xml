@@ -1248,11 +1248,6 @@
       <role>Member</role>
     </member>
     <member>
-      <email>tetromino@gentoo.org</email>
-      <name>Alexandre Rostovtsev</name>
-      <role>Member</role>
-    </member>
-    <member>
       <email>tranquility@gentoo.org</email>
       <name>Ole Reifschneider</name>
       <role>Member</role>
@@ -4117,10 +4112,6 @@
     <member>
       <email>sarnex@gentoo.org</email>
       <name>Nick Sarnie</name>
-    </member>
-    <member>
-      <email>tetromino@gentoo.org</email>
-      <name>Alexandre Rostovtsev</name>
     </member>
     <member>
       <email>vapier@gentoo.org</email>
