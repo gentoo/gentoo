@@ -23,7 +23,7 @@ HOMEPAGE="http://handbrake.fr/"
 LICENSE="GPL-2"
 
 SLOT="0"
-IUSE="+fdk gstreamer gtk libav libav-aac x265"
+IUSE="+fdk gstreamer gtk libav libav-aac nvenc x265 vaapi"
 
 REQUIRED_USE="^^ ( fdk libav-aac )"
 
@@ -40,6 +40,7 @@ RDEPEND="
 	media-libs/libtheora
 	media-libs/libvorbis
 	media-libs/libvpx
+	nvenc? ( media-libs/nv-codec-headers )
 	media-libs/opus
 	media-libs/x264:=
 	media-sound/lame
@@ -86,6 +87,9 @@ PATCHES=(
 
 	# Fix missing x265 link flag
 	"${FILESDIR}/${PN}-9999-fix-missing-x265-link-flag.patch"
+
+	# Allow disabling nvenc etc
+	"${FILESDIR}/${P}-backport-hardware-configure.patch"
 )
 
 pkg_setup() {
@@ -119,6 +123,8 @@ src_configure() {
 		$(use_enable fdk fdk-aac) \
 		$(use_enable gtk) \
 		$(usex !gstreamer --disable-gst) \
+		$(use_enable nvenc) \
+		$(use_enable vaapi qsv) \
 		$(use_enable x265) || die "Configure failed."
 }
 
