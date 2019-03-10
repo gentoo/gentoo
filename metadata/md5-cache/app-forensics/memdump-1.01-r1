@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install prepare test
+DESCRIPTION=Simple memory dumper for UNIX-Like systems
+EAPI=7
+HOMEPAGE=http://www.porcupine.org/forensics
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=IBM
+SLOT=0
+SRC_URI=http://www.porcupine.org/forensics/memdump-1.01.tar.gz
+_eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_md5_=cd248024e2d0ce960e7368456feb35b8

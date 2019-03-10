@@ -5,11 +5,11 @@ DESCRIPTION=Python Imaging Library (fork)
 EAPI=7
 HOMEPAGE=https://python-pillow.org/
 IUSE=doc examples imagequant jpeg jpeg2k lcms test tiff tk truetype webp zlib python_targets_pypy python_targets_python2_7 python_targets_python3_4 python_targets_python3_5 python_targets_python3_6 python_targets_python3_7 test
-KEYWORDS=amd64 arm ~arm64 ppc ppc64 x86 ~amd64-linux ~x86-linux
+KEYWORDS=amd64 arm ~arm64 ~hppa ppc ppc64 x86 ~amd64-linux ~x86-linux
 LICENSE=HPND
 RDEPEND=dev-python/olefile[python_targets_pypy(-)?,python_targets_python2_7(-)?,python_targets_python3_4(-)?,python_targets_python3_5(-)?,python_targets_python3_6(-)?,python_targets_python3_7(-)?,-python_single_target_pypy(-),-python_single_target_python2_7(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),-python_single_target_python3_7(-)] imagequant? ( media-gfx/libimagequant:0 ) jpeg? ( virtual/jpeg:0 ) jpeg2k? ( media-libs/openjpeg:2= ) lcms? ( media-libs/lcms:2= ) tiff? ( media-libs/tiff:0=[jpeg,zlib] ) truetype? ( media-libs/freetype:2= ) webp? ( media-libs/libwebp:0= ) zlib? ( sys-libs/zlib:0= ) python_targets_pypy? ( >=virtual/pypy-5:0=[tk?,threads(+)] ) python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[tk?,threads(+)] ) python_targets_python3_4? ( dev-lang/python:3.4[tk?,threads(+)] ) python_targets_python3_5? ( dev-lang/python:3.5[tk?,threads(+)] ) python_targets_python3_6? ( dev-lang/python:3.6[tk?,threads(+)] ) python_targets_python3_7? ( dev-lang/python:3.7[tk?,threads(+)] ) >=dev-lang/python-exec-2:=[python_targets_pypy(-)?,python_targets_python2_7(-)?,python_targets_python3_4(-)?,python_targets_python3_5(-)?,python_targets_python3_6(-)?,python_targets_python3_7(-)?,-python_single_target_pypy(-),-python_single_target_python2_7(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),-python_single_target_python3_7(-)]
 REQUIRED_USE=test? ( jpeg tiff ) || ( python_targets_pypy python_targets_python2_7 python_targets_python3_4 python_targets_python3_5 python_targets_python3_6 python_targets_python3_7 )
 SLOT=0
 SRC_URI=mirror://pypi/P/Pillow/Pillow-5.2.0.tar.gz
 _eclasses_=distutils-r1	30044897f9a75ab6414bdb19aa3c07d4	multibuild	40fe59465edacd730c644ec2bc197809	multilib	b2f01ad412baf81650c23fcf0975fa33	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	ce1cd23cfdc1848e8e32743efe34f299	python-utils-r1	12114a2a9aab35b93efc037a196b3234	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	virtualx	401b718cc14d43a5a7fbe062c4851ba5
-_md5_=39257678e3df6a71d033b76b737c61f0
+_md5_=a79247a9e959010e57c439c3a615aff2

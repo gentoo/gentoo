@@ -1,0 +1,12 @@
+BDEPEND=virtual/pkgconfig
+DEFINED_PHASES=install postinst preinst
+DESCRIPTION=Main implementation of IPFS
+EAPI=7
+HOMEPAGE=https://ipfs.io/
+KEYWORDS=-* ~amd64 ~arm ~x86
+LICENSE=MIT
+RDEPEND=sys-fs/fuse
+SLOT=0
+SRC_URI=amd64? ( https://dist.ipfs.io/go-ipfs/v0.4.19/go-ipfs_v0.4.19_linux-amd64.tar.gz ) x86? ( https://dist.ipfs.io/go-ipfs/v0.4.19/go-ipfs_v0.4.19_linux-386.tar.gz ) arm? ( https://dist.ipfs.io/go-ipfs/v0.4.19/go-ipfs_v0.4.19_linux-arm.tar.gz ) https://raw.githubusercontent.com/ipfs/go-ipfs/v0.4.19/misc/completion/ipfs-completion.bash -> go-ipfs-bin-0.4.19.bash
+_eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	multilib	b2f01ad412baf81650c23fcf0975fa33	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	user	8bd74731cafdcdad8f7a63637302e073
+_md5_=ab17c9e9408a1d454c848078b07778d1
