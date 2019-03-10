@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>tetromino@gentoo.org</email>
-		<name>Alexandre Rostovtsev</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<longdescription lang="en">
 		GCstar is an application for managing your collections. It supports many
 		types of collections, including movies, books, games, comics, stamps,

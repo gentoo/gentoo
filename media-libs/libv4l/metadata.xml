@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>tetromino@gentoo.org</email>
-		<name>Alexandre Rostovtsev</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<longdescription lang="en">
 	libv4l is a collection of libraries which adds a thin abstraction layer	on
 	top of video4linux2 devices. The purpose of this (thin) layer is to make it
