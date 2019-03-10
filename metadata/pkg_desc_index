@@ -1251,7 +1251,7 @@ app-portage/ufed 0.91 0.92: Gentoo Linux USE flags editor
 app-portage/unsymlink-lib 13: Convert your system to SYMLINK_LIB=no
 app-shells/autojump 22.2.4-r4: change directory command that learns
 app-shells/bash 2.05b_p13 3.0_p22 3.1_p23 3.2_p57 4.0_p44 4.1_p17 4.2_p53 4.3_p48-r2 4.4_p23-r1: The standard GNU Bourne again shell
-app-shells/bash-completion 2.7-r3: Programmable Completion for bash
+app-shells/bash-completion 2.7-r3 2.8: Programmable Completion for bash
 app-shells/bashdb 4.3.0.91-r2: bash source code debugging
 app-shells/bashish 2.2.4: Text console theme engine
 app-shells/ccsh 0.0.4-r4: UNIX Shell for people already familiar with the C language
@@ -11165,7 +11165,7 @@ x11-plugins/pidgin-opensteamworks 1.6.1: Steam protocol plugin for pidgin
 x11-plugins/pidgin-otr 4.0.2: (OTR) Messaging allows you to have private conversations over instant messaging
 x11-plugins/pidgin-privacy-please 0.7.1: pidgin plugin to stop spammers from annoying you
 x11-plugins/pidgin-rhythmbox 2.0: automatically update your pidgin profile with current info from Rhythmbox
-x11-plugins/pidgin-sipe 1.22.0: Pidgin Plug-in SIPE (Sip Exchange Protocol)
+x11-plugins/pidgin-sipe 1.22.0 1.23.3: Pidgin Plug-in SIPE (Sip Exchange Protocol)
 x11-plugins/pidgin-xmpp-receipts 0.8: Implementation of xmpp message delivery receipts (XEP-0184) for Pidgin
 x11-plugins/pidgintex 1.1.2_p20170107: Pidgin plugin to render LaTeX expressions in messages
 x11-plugins/purple-libnotify-plus 2.99.1: Provide libnotify interface to Pidgin and Finch

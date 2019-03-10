@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst postrm preinst prepare
+DEPEND=dev-util/desktop-file-utils x11-misc/shared-mime-info
+DESCRIPTION=Various desktop menu items and icons for wine
+EAPI=7
+HOMEPAGE=https://github.com/NP-Hardass/wine-desktop-common https://bazaar.launchpad.net/~ubuntu-wine/wine/ubuntu-debian-dir/files/head:/debian/
+KEYWORDS=-* ~amd64 ~x86 ~x86-fbsd
+LICENSE=LGPL-2.1
+PDEPEND=app-eselect/eselect-wine
+RDEPEND=!app-emulation/wine:0
+SLOT=0
+SRC_URI=https://github.com/NP-Hardass/wine-desktop-common/archive/20150204.tar.gz -> wine-desktop-common-20150204.tar.gz
+_eclasses_=xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	14d00d009167652b1fa363e55effe213
+_md5_=7e62747bfbb5fd270fd65e28c911604a
