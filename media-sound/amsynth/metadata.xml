@@ -9,6 +9,6 @@
 		<flag name="dssi">Enable support for DSSI Soft Synth Interface</flag>
 	</use>
 	<upstream>
-		<remote-id type="github">nixxcode/amsynth</remote-id>
+		<remote-id type="github">amsynth/amsynth</remote-id>
 	</upstream>
 </pkgmetadata>
