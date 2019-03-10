@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201903-07">
+  <title>systemd: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in systemd, the worst of
+    which may allow execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">systemd</product>
+  <announced>2019-03-10</announced>
+  <revised count="1">2019-03-10</revised>
+  <bug>674144</bug>
+  <bug>677944</bug>
+  <access>remote</access>
+  <affected>
+    <package name="sys-apps/systemd" auto="yes" arch="*">
+      <unaffected range="ge">239-r4</unaffected>
+      <vulnerable range="lt">239-r4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>A system and service manager.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in systemd. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>An attacker could cause a Denial of Service condition or possibly
+      execute arbitrary code.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All systemd users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-apps/systemd-239-r4"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-16864">CVE-2018-16864</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-16865">CVE-2018-16865</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-16866">CVE-2018-16866</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-6454">CVE-2019-6454</uri>
+  </references>
+  <metadata tag="requester" timestamp="2019-03-10T19:34:40Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2019-03-10T20:47:25Z">b-man</metadata>
+</glsa>
