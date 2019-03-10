@@ -28,6 +28,8 @@ RDEPEND="${DEPEND}"
 
 DOCS=( AUTHORS ChangeLog README RTC SEQ24 )
 
+PATCHES=( "${FILESDIR}/${P}-std-mutex.patch" )
+
 src_configure() {
 	econf \
 		$(use_enable jack) \
