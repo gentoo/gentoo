@@ -1,12 +1,13 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit cmake-utils eutils
+
+inherit cmake-utils
 
 DESCRIPTION="The OpenAL Utility Toolkit"
-HOMEPAGE="http://kcat.strangesoft.net/alure.html"
-SRC_URI="http://kcat.strangesoft.net/alure-releases/${P}.tar.bz2"
+HOMEPAGE="https://kcat.strangesoft.net/alure.html"
+SRC_URI="https://kcat.strangesoft.net/alure-releases/${P}.tar.bz2"
 
 LICENSE="MIT"
 SLOT="0"

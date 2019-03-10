@@ -27,7 +27,7 @@ DESCRIPTION="Media player and framework with support for most multimedia files a
 HOMEPAGE="https://www.videolan.org/vlc/"
 
 LICENSE="LGPL-2.1 GPL-2"
-SLOT="0/5-9" # vlc - vlccore
+SLOT="0/12-9" # vlc - vlccore
 
 IUSE="a52 alsa altivec aom archive aribsub bidi bluray cddb chromaprint chromecast
 	dav1d dbus dc1394 debug directx dts +dvbpsi dvd +encode faad fdk +ffmpeg flac
