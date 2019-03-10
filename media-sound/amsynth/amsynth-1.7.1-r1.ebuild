@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,8 +6,8 @@ EAPI=6
 inherit autotools flag-o-matic
 
 DESCRIPTION="Virtual analogue synthesizer"
-HOMEPAGE="https://github.com/nixxcode/amsynth/"
-SRC_URI="https://github.com/nixxcode/${PN}/archive/release-${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/amsynth/amsynth"
+SRC_URI="https://github.com/${PN}/${PN}/archive/release-${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

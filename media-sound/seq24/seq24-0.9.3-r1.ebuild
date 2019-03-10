@@ -1,31 +1,34 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
-inherit eutils
+EAPI=7
 
-DESCRIPTION="Seq24 is a loop based MIDI sequencer with focus on live performances"
+inherit desktop
+
+DESCRIPTION="Loop based MIDI sequencer with focus on live performances"
 HOMEPAGE="https://edge.launchpad.net/seq24/"
 SRC_URI="https://edge.launchpad.net/seq24/trunk/${PV}/+download/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc x86"
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="jack lash"
 
-RDEPEND="media-libs/alsa-lib
-	>=dev-cpp/gtkmm-2.4:2.4
-	>=dev-libs/libsigc++-2.2:2
-	jack? ( >=media-sound/jack-audio-connection-kit-0.90 )
-	lash? ( >=media-sound/lash-0.5 )"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+BDEPEND="
+	virtual/pkgconfig
+"
+DEPEND="
+	dev-cpp/gtkmm:2.4
+	dev-libs/libsigc++:2
+	media-libs/alsa-lib
+	jack? ( virtual/jack )
+	lash? ( media-sound/lash )
+"
+RDEPEND="${DEPEND}"
 
 DOCS=( AUTHORS ChangeLog README RTC SEQ24 )
 
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-lash-fix.patch
-}
+PATCHES=( "${FILESDIR}/${P}-std-mutex.patch" )
 
 src_configure() {
 	econf \

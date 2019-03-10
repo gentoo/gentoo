@@ -1,42 +1,39 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit autotools flag-o-matic
+inherit flag-o-matic
 
 DESCRIPTION="Virtual analogue synthesizer"
-HOMEPAGE="https://github.com/nixxcode/amsynth/"
-SRC_URI="https://github.com/nixxcode/${PN}/archive/release-${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/amsynth/amsynth"
+SRC_URI="https://github.com/${PN}/${PN}/releases/download/release-${PV}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="alsa dssi jack lash oss sndfile"
 
-RDEPEND="dev-cpp/gtkmm:2.4
-	sndfile? ( >=media-libs/libsndfile-1:= )
+BDEPEND="
+	virtual/pkgconfig
+"
+RDEPEND="
 	alsa? (
 		media-libs/alsa-lib:=
 		media-sound/alsa-utils
-		)
+	)
 	dssi? (
 		media-libs/dssi:=
 		media-libs/liblo:=
 		>=x11-libs/gtk+-2.20:2
-		)
+	)
 	jack? ( virtual/jack )
-	lash? ( media-sound/lash )"
+	lash? ( media-sound/lash )
+	sndfile? ( >=media-libs/libsndfile-1:= )
+"
 DEPEND="${RDEPEND}
-	virtual/pkgconfig
-	oss? ( virtual/os-headers )"
-
-S="${WORKDIR}/${PN}-release-${PV}"
-
-src_prepare() {
-	default
-	eautoreconf
-}
+	oss? ( virtual/os-headers )
+"
 
 src_configure() {
 	append-cxxflags -std=c++11

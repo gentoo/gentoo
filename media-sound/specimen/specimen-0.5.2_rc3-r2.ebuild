@@ -1,11 +1,10 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit autotools versionator
-
-MY_PV="$(replace_version_separator 3 -)"
+MY_PV="${PV/_/-}"
+inherit autotools desktop
 
 DESCRIPTION="A Midi Controllable Audio Sampler"
 HOMEPAGE="http://zhevny.com/specimen"
@@ -16,22 +15,27 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~sparc ~x86"
 IUSE="lash"
 
-RDEPEND=">=media-sound/jack-audio-connection-kit-0.109.2
+BDEPEND="
+	virtual/pkgconfig
+"
+DEPEND="
+	dev-libs/libxml2:2
+	gnome-base/libgnomecanvas
 	>=media-libs/alsa-lib-0.9
 	media-libs/libsamplerate
 	media-libs/libsndfile
 	>=media-libs/phat-0.4
-	dev-libs/libxml2:2
+	>=media-sound/jack-audio-connection-kit-0.109.2
 	x11-libs/gtk+:2
-	gnome-base/libgnomecanvas
-	lash? ( media-sound/lash )"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+	lash? ( media-sound/lash )
+"
+RDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${FILESDIR}/${P}-jackmidi.patch"
 	"${FILESDIR}/${P}-underlinking.patch"
 )
+
 S="${WORKDIR}"/${PN}-${MY_PV}
 
 src_prepare() {
