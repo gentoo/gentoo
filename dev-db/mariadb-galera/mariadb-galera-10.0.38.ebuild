@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
-MY_EXTRAS_VER="20180515-1334Z"
+MY_EXTRAS_VER="20190310-0358Z"
 SUBSLOT="18"
 
 JAVA_PKG_OPT_USE="jdbc"
@@ -29,7 +29,7 @@ LICENSE="GPL-2 LGPL-2.1+"
 SLOT="0/${SUBSLOT:-0}"
 IUSE="bindist client-libs debug extraengine jdbc jemalloc latin1 libressl
 	numa odbc oqgraph pam +perl profiling selinux +server sphinx
-	sst-rsync sst-xtrabackup static static-libs systemtap tcmalloc
+	sst-rsync sst-xtrabackup static systemtap tcmalloc
 	test tokudb xml yassl"
 
 # Tests always fail when libressl is enabled due to hard-coded ciphers in the tests
@@ -77,7 +77,7 @@ COMMON_DEPEND="
 	tcmalloc? ( dev-util/google-perftools:0= )
 	systemtap? ( >=dev-util/systemtap-1.3:0= )
 	!yassl? (
-		!libressl? ( dev-libs/openssl:0= !>=dev-libs/openssl-1.1 )
+		!libressl? ( <dev-libs/openssl-1.1.0:0= )
 		libressl? ( dev-libs/libressl:0= )
 	)
 	>=sys-libs/zlib-1.2.3:0=
@@ -96,7 +96,6 @@ COMMON_DEPEND="
 		tokudb? ( app-arch/snappy )
 	)
 	>=dev-libs/libpcre-8.41-r1:3=
-	!client-libs? ( dev-db/mysql-connector-c[static-libs?] )
 "
 DEPEND="virtual/yacc
 	static? ( sys-libs/ncurses[static-libs] )
@@ -134,6 +133,14 @@ pkg_setup() {
 		if use tokudb && [[ ${GCC_MAJOR_SET} -lt 4 || \
 			${GCC_MAJOR_SET} -eq 4 && ${GCC_MINOR_SET} -lt 7 ]] ; then
 			eerror "${PN} with tokudb needs to be built with gcc-4.7 or later."
+			eerror "Please use gcc-config to switch to gcc-4.7 or later version."
+			die
+		fi
+		# Bug 565584.  InnoDB now requires atomic functions introduced with gcc-4.7 on
+		# non x86{,_64} arches
+		if ! use amd64 && ! use x86 && [[ ${GCC_MAJOR_SET} -lt 4 || \
+			${GCC_MAJOR_SET} -eq 4 && ${GCC_MINOR_SET} -lt 7 ]] ; then
+			eerror "${PN} needs to be built with gcc-4.7 or later."
 			eerror "Please use gcc-config to switch to gcc-4.7 or later version."
 			die
 		fi
@@ -203,16 +210,15 @@ src_unpack() {
 	mv -f "${WORKDIR%/}/${PN%%-galera}-${PV}" "${S}" || die
 }
 
-disable_engine() {
-	echo > "${S%/}/storage/${1}/CMakeLists.txt" || die
-}
-
-disable_plugin() {
-	echo > "${S%/}/plugin/${1}/CMakeLists.txt" || die
-}
-
 src_prepare() {
-	java-pkg-opt-2_src_prepare
+	_disable_engine() {
+		echo > "${S%/}/storage/${1}/CMakeLists.txt" || die
+	}
+
+	_disable_plugin() {
+		echo > "${S%/}/plugin/${1}/CMakeLists.txt" || die
+	}
+
 	if use tcmalloc; then
 		echo "TARGET_LINK_LIBRARIES(mysqld tcmalloc)" >> "${S%/}/sql/CMakeLists.txt" || die
 	fi
@@ -228,28 +234,29 @@ src_prepare() {
 	local test_plugins=( audit_null auth_examples daemon_example fulltext )
 	if ! use server; then # These plugins are for the server
 		for plugin in "${server_plugins[@]}" ; do
-			disable_plugin "${plugin}"
+			_disable_plugin "${plugin}"
 		done
 	fi
 
 	if ! use test; then # These plugins are only used during testing
 		for plugin in "${test_plugins[@]}" ; do
-			disable_plugin "${plugin}"
+			_disable_plugin "${plugin}"
 		done
 	fi
 
 	# Collides with mariadb-connector-c bug 655980
-	disable_plugin auth_dialog
+	_disable_plugin auth_dialog
 
 	# Don't build Mroonga or example
-	disable_engine mroonga
-	disable_engine example
+	_disable_engine mroonga
+	_disable_engine example
 
 	if ! use oqgraph ; then # avoids extra library checks
-		disable_engine oqgraph
+		_disable_engine oqgraph
 	fi
 
 	cmake-utils_src_prepare
+	java-pkg-opt-2_src_prepare
 }
 
 src_configure(){
@@ -464,6 +471,10 @@ src_install() {
 		for script in "${S}"/scripts/mysql* ; do
 			[[ ( -f "$script" ) && ( "${script%.sh}" == "${script}" ) ]] && dodoc "${script}"
 		done
+		# Manually install supporting files that conflict with other packages
+		# but are needed for galera and initial installation
+		exeinto /usr/libexec/mariadb
+		doexe "${BUILD_DIR}/extra/my_print_defaults" "${BUILD_DIR}/extra/perror"
 	fi
 
 	#Remove mytop if perl is not selected
@@ -471,7 +482,7 @@ src_install() {
 }
 
 # Official test instructions:
-# USE='extraengine perl server static-libs' \
+# USE='extraengine perl server' \
 # FEATURES='test userpriv -usersandbox' \
 # ebuild mariadb-X.X.XX.ebuild \
 # digest clean package
@@ -800,9 +811,8 @@ pkg_config() {
 		--max_allowed_packet=8M \
 		--net_buffer_length=16K \
 		--socket=${socket} \
-		--pid-file=${pidfile}
+		--pid-file=${pidfile} \
 		--tmpdir=${ROOT}/${MYSQL_TMPDIR}"
-	#einfo "About to start mysqld: ${mysqld}"
 	ebegin "Starting mysqld"
 	einfo "Command ${mysqld}"
 	${mysqld} &
