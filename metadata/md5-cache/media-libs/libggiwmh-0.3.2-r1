@@ -4,9 +4,9 @@ DESCRIPTION=Window manager hints extensions for libggi
 EAPI=7
 HOMEPAGE=https://ibiblio.org/ggicore/packages/libggiwmh.html
 IUSE=X
-KEYWORDS=~alpha amd64 hppa ia64 ppc ppc64 sparc x86 ~amd64-fbsd ~x86-fbsd
+KEYWORDS=alpha amd64 hppa ia64 ppc ppc64 sparc x86 ~amd64-fbsd ~x86-fbsd
 LICENSE=MIT
 RDEPEND=>=media-libs/libggi-2.2.2 X? ( x11-libs/libX11 x11-libs/libXext x11-libs/libXxf86dga x11-libs/libXxf86vm )
 SLOT=0
 SRC_URI=mirror://sourceforge/ggi/libggiwmh-0.3.2.src.tar.bz2
-_md5_=326f9df46b064d291e4fa6469b3c9b59
+_md5_=e9e17ffbfdcbe05b4e63bd1b5f872eee
