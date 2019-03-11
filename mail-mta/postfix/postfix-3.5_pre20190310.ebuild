@@ -60,8 +60,6 @@ REQUIRED_USE="ldap-bind? ( ldap sasl )"
 
 S="${WORKDIR}/${MY_SRC}"
 
-PATCHES=( "${FILESDIR}/${PN}-linux-5.patch" )
-
 pkg_setup() {
 	if use libressl; then
 		die "LibreSSL patches are not yet available for postfix-3.4 releases."
@@ -78,7 +76,7 @@ src_prepare() {
 		src/util/sys_defs.h || die "sed failed"
 	# change default paths to better comply with portage standard paths
 	sed -i -e "s:/usr/local/:/usr/:g" conf/master.cf || die "sed failed"
-	# libressl support needs work for postfix-3.4
+	# libressl support needs work for >=postfix-3.4
 	#eapply -p0 "${FILESDIR}/${PN}-libressl.patch" \
 	#	"${FILESDIR}/${PN}-libressl-runtime.patch" \
 	#	"${FILESDIR}/${PN}-libressl-eccurve.patch"
