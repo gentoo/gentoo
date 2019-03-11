@@ -1,22 +1,30 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 PYTHON_COMPAT=(python2_7)
 
-inherit eutils toolchain-funcs linux-info python-single-r1
+inherit linux-info python-single-r1 toolchain-funcs
 
 DESCRIPTION="User-space front-end for Ftrace"
 HOMEPAGE="https://git.kernel.org/cgit/linux/kernel/git/rostedt/trace-cmd.git"
-SRC_URI="mirror://gentoo/${P}.tar.xz"
 
-LICENSE="GPL-2 LGPL-2.1"
+if [[ ${PV} == *9999 ]] ; then
+	EGIT_REPO_URI="https://git.kernel.org/pub/scm/linux/kernel/git/rostedt/${PN}.git"
+	inherit git-r3
+else
+	SRC_URI="https://git.kernel.org/pub/scm/linux/kernel/git/rostedt/${PN}.git/snapshot/${PN}-v${PV}.tar.gz"
+	KEYWORDS="~amd64 ~x86"
+	S="${WORKDIR}/${PN}-v${PV}"
+fi
+
+LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="0"
-KEYWORDS="~amd64"
-IUSE="doc gtk python udis86"
+IUSE="+audit doc gtk python udis86"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
-RDEPEND="python? ( ${PYTHON_DEPS} )
+RDEPEND="audit? ( sys-process/audit )
+	python? ( ${PYTHON_DEPS} )
 	udis86? ( dev-libs/udis86 )
 	gtk? (
 		${PYTHON_DEPS}
@@ -37,7 +45,8 @@ CONFIG_CHECK="
 	~BLK_DEV_IO_TRACE"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-2.5.1-makefile.patch
+	"${FILESDIR}"/${PN}-2.7-makefile.patch
+	"${FILESDIR}"/${PN}-2.7-soname.patch
 )
 
 pkg_setup() {
@@ -46,7 +55,11 @@ pkg_setup() {
 }
 
 src_configure() {
-	MAKEOPTS+=" prefix=/usr libdir=$(get_libdir) CC=$(tc-getCC) AR=$(tc-getAR)"
+	MAKEOPTS+=" prefix=/usr
+		libdir=/usr/$(get_libdir)
+		CC=$(tc-getCC)
+		AR=$(tc-getAR)
+		$(usex audit '' '' 'NO_AUDIT=1')"
 
 	if use python; then
 		MAKEOPTS+=" PYTHON_VERS=${EPYTHON//python/python-}"
@@ -59,13 +72,13 @@ src_configure() {
 }
 
 src_compile() {
-	emake all_cmd
+	emake V=1 all_cmd libs
 	use doc && emake doc
 	use gtk && emake -j1 gui
 }
 
 src_install() {
-	emake DESTDIR="${D}" install
+	emake DESTDIR="${D}" V=1 install install_libs
 	use doc && emake DESTDIR="${D}" install_doc
 	use gtk && emake DESTDIR="${D}" install_gui
 }

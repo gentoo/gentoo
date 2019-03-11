@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -20,10 +20,11 @@ fi
 
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="0"
-IUSE="doc gtk python udis86"
+IUSE="+audit doc gtk python udis86"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
-RDEPEND="python? ( ${PYTHON_DEPS} )
+RDEPEND="audit? ( sys-process/audit )
+	python? ( ${PYTHON_DEPS} )
 	udis86? ( dev-libs/udis86 )
 	gtk? (
 		${PYTHON_DEPS}
@@ -45,6 +46,7 @@ CONFIG_CHECK="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.7-makefile.patch
+	"${FILESDIR}"/${PN}-2.7-soname.patch
 )
 
 pkg_setup() {
@@ -53,7 +55,11 @@ pkg_setup() {
 }
 
 src_configure() {
-	MAKEOPTS+=" prefix=/usr libdir=$(get_libdir) CC=$(tc-getCC) AR=$(tc-getAR)"
+	MAKEOPTS+=" prefix=/usr
+		libdir=/usr/$(get_libdir)
+		CC=$(tc-getCC)
+		AR=$(tc-getAR)
+		$(usex audit '' '' 'NO_AUDIT=1')"
 
 	if use python; then
 		MAKEOPTS+=" PYTHON_VERS=${EPYTHON//python/python-}"
@@ -66,13 +72,13 @@ src_configure() {
 }
 
 src_compile() {
-	emake all_cmd
+	emake V=1 all_cmd libs
 	use doc && emake doc
 	use gtk && emake -j1 gui
 }
 
 src_install() {
-	default
+	emake DESTDIR="${D}" V=1 install install_libs
 	use doc && emake DESTDIR="${D}" install_doc
 	use gtk && emake DESTDIR="${D}" install_gui
 }

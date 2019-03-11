@@ -5,18 +5,21 @@
 # media-libs/bcg729 not keyworded yet
 net-analyzer/wireshark bcg729
 
+# Roy Bamford <neddyseagoon@gentoo.org> (11 Mar 2019)
+# net-misc/dropbox is binary amd64/x86 only
+kde-apps/kdenetwork-meta dropbox
+
 # Roy Bamford <neddyseagoon@gentoo.org> (10 Mar 2019)
-# kde-apps/kalzium editor as sci-chemistry/openbabel
-# fails to build on arm64
+# sci-chemistry/openbabel is not keyworded/fails to build
 kde-apps/kalzium editor
 
 # Roy Bamford <neddyseagoon@gentoo.org> (10 Mar 2019)
-# No arm64 ever had bios but sys-apps/fwupdate needs
-# refactored to separate bios and uefi
+# No arm64 ever had bios, but sys-apps/fwupdate needs
+# to be refactored to separate bios and uefi
 kde-plasma/discover firmware
 
 # Jimi Huotari <chiitoo@gentoo.org> (10 Mar 2019)
-# Requires 'dev-qt/qttranslations' which is missing 'arm64'.
+# dev-qt/qttranslations is not yet keyworded, bug #680082
 lxqt-base/lxqt-meta nls
 
 # Mart Raudsepp <leio@gentoo.org> (23 Feb 2019)
