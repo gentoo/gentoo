@@ -15,7 +15,6 @@ IUSE=""
 DEPEND="
 	~dev-qt/qtcore-${PV}
 	~dev-qt/qtnetwork-${PV}
+	~dev-qt/qtdeclarative-${PV}
 "
-RDEPEND="${DEPEND}
-	!<dev-qt/qtdeclarative-5.12.0_beta4:5
-"
+RDEPEND="${DEPEND}"
