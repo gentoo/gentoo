@@ -22,6 +22,6 @@ DEPEND="
 	$(add_qt_dep qtgui)
 	$(add_qt_dep qtsvg)
 	$(add_qt_dep qtquickcontrols2)
-	media-sound/fluidsynth
+	media-sound/fluidsynth:=
 "
 RDEPEND="${DEPEND}"
