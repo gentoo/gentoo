@@ -16,11 +16,7 @@ SLOT="0"
 KEYWORDS=""
 IUSE=""
 
-DEPEND="dev-python/python-dateutil[${PYTHON_USEDEP}]"
+DEPEND="dev-python/python-dateutil[${PYTHON_USEDEP}]
+	dev-python/simplekml[${PYTHON_USEDEP}]"
 RDEPEND="${DEPEND}"
 BDEPEND=""
-
-src_prepare() {
-	sed -i 's#, "simplekml"##' setup.py
-	distutils-r1_src_prepare
-}
