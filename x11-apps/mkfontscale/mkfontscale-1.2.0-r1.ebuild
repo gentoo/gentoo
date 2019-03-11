@@ -3,6 +3,7 @@
 
 EAPI=7
 
+XORG_EAUTORECONF="yes"
 inherit xorg-3
 
 DESCRIPTION="create an index of scalable font files for X"
