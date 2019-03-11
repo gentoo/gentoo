@@ -21,7 +21,7 @@ index ad46899..7a6c1a9 100644
  ExecReload=/bin/kill -HUP $MAINPID
  KillMode=process
 +Type=forking
-+PIDFile=/var/run/crond.pid
++PIDFile=/run/crond.pid
  
  [Install]
  WantedBy=multi-user.target
