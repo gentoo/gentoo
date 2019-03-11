@@ -6,5 +6,5 @@ KEYWORDS=~amd64 ~arm64 ~ppc64 ~x86
 LICENSE=GPL-2
 RDEPEND=>=app-admin/eselect-1.2.3
 SLOT=0
-SRC_URI=mirrors://gentoo/eselect-rust-20190311.tar.bz2
-_md5_=b03d8c0598e9f0a761fa4f577d621b5c
+SRC_URI=mirror://gentoo/eselect-rust-20190311.tar.bz2
+_md5_=4f88276faeb6f7cce2e694f6902f6222
