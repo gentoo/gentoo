@@ -65,7 +65,6 @@ src_prepare() {
 }
 
 src_configure() {
-
 	local mycmakeargs=(
 		-DWITH_GUI_TESTS=OFF
 		-DWITH_TESTS="$(usex test)"
