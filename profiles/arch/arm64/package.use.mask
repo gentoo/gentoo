@@ -1,6 +1,11 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Roy Bamford <neddyseagoon@gentoo.org> (11 Mar 2019)
+# Do not allow kde-apps/kdenetwork-meta to use x86/amd64 binary
+# only dropbox  
+kde-apps/kdenetwork-meta dropbox
+
 # Roy Bamford <neddyseagoon@gentoo.org> (10 Mar 2019)
 # kde-apps/kalzium editor as sci-chemistry/openbabel
 # fails to build on arm64
