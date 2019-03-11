@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit desktop
+inherit autotools desktop
 
 DESCRIPTION="Loop based MIDI sequencer with focus on live performances"
 HOMEPAGE="https://edge.launchpad.net/seq24/"
@@ -29,6 +29,11 @@ RDEPEND="${DEPEND}"
 DOCS=( AUTHORS ChangeLog README RTC SEQ24 )
 
 PATCHES=( "${FILESDIR}/${P}-std-mutex.patch" )
+
+src_prepare() {
+	default
+	eautoreconf
+}
 
 src_configure() {
 	econf \
