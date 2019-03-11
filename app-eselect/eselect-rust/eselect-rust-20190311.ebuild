@@ -7,7 +7,7 @@ if [[ ${PV} == "99999999" ]] ; then
 	inherit autotools git-r3
 	EGIT_REPO_URI="git://anongit.gentoo.org/proj/${PN}.git"
 else
-	SRC_URI="mirrors://gentoo/${P}.tar.bz2"
+	SRC_URI="mirror://gentoo/${P}.tar.bz2"
 	KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 fi
 
