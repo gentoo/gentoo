@@ -79,6 +79,14 @@ SLOT="0"
 [[ ${MY_PV} == *9999* ]] || \
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 
+BDEPEND="
+	dev-util/intltool
+	sys-devel/bison
+	sys-devel/flex
+	sys-devel/gettext
+	virtual/pkgconfig
+	odk? ( >=app-doc/doxygen-1.8.4 )
+"
 COMMON_DEPEND="${PYTHON_DEPS}
 	app-arch/unzip
 	app-arch/zip
@@ -192,7 +200,32 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	pdfimport? ( app-text/poppler:=[cxx] )
 	postgres? ( >=dev-db/postgresql-9.0:*[kerberos] )
 "
-
+# FIXME: cppunit should be moved to test conditional
+#        after everything upstream is under gbuild
+#        as dmake execute tests right away
+#        tests apparently also need google-carlito-fonts (not packaged)
+DEPEND="${COMMON_DEPEND}
+	>=dev-libs/libatomic_ops-7.2d
+	dev-perl/Archive-Zip
+	>=dev-util/cppunit-1.14.0
+	>=dev-util/gperf-3
+	>=dev-util/mdds-1.4.1:1=
+	media-libs/glm
+	sys-devel/ucpp
+	x11-base/xorg-proto
+	x11-libs/libXt
+	x11-libs/libXtst
+	java? (
+		dev-java/ant-core
+		>=virtual/jdk-1.6
+	)
+	test? (
+		app-crypt/gnupg
+		dev-util/cppunit
+		media-fonts/dejavu
+		media-fonts/liberation-fonts
+	)
+"
 RDEPEND="${COMMON_DEPEND}
 	!app-office/libreoffice-bin
 	!app-office/libreoffice-bin-debug
@@ -203,7 +236,6 @@ RDEPEND="${COMMON_DEPEND}
 	kde? ( kde-frameworks/breeze-icons:* )
 	vlc? ( media-video/vlc )
 "
-
 if [[ ${MY_PV} != *9999* ]] && [[ ${PV} != *_* ]]; then
 	PDEPEND="=app-office/libreoffice-l10n-$(ver_cut 1-2)*"
 else
@@ -211,39 +243,6 @@ else
 	# rather force people to use english only.
 	PDEPEND="!app-office/libreoffice-l10n"
 fi
-
-# FIXME: cppunit should be moved to test conditional
-#        after everything upstream is under gbuild
-#        as dmake execute tests right away
-#        tests apparently also need google-carlito-fonts (not packaged)
-DEPEND="${COMMON_DEPEND}
-	>=dev-libs/libatomic_ops-7.2d
-	dev-perl/Archive-Zip
-	>=dev-util/cppunit-1.14.0
-	>=dev-util/gperf-3
-	dev-util/intltool
-	>=dev-util/mdds-1.4.1:1=
-	media-libs/glm
-	sys-devel/bison
-	sys-devel/flex
-	sys-devel/gettext
-	sys-devel/ucpp
-	virtual/pkgconfig
-	x11-base/xorg-proto
-	x11-libs/libXt
-	x11-libs/libXtst
-	java? (
-		dev-java/ant-core
-		>=virtual/jdk-1.6
-	)
-	odk? ( >=app-doc/doxygen-1.8.4 )
-	test? (
-		app-crypt/gnupg
-		dev-util/cppunit
-		media-fonts/dejavu
-		media-fonts/liberation-fonts
-	)
-"
 
 PATCHES=(
 	# master branch
