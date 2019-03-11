@@ -16,7 +16,7 @@ S="${WORKDIR}/${PN}-${P}" # <- need this only for github-based SRC_URI
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="test"
 
 RDEPEND="
