@@ -101,10 +101,6 @@ dev-cpp/xsd ace
 games-fps/doom-data doomsday
 media-tv/tvheadend hdhomerun
 
-# Michał Górny <mgorny@gentoo.org> (21 Dec 2017)
-# clang is not currently supported on Gentoo ARM profiles.
-sys-devel/llvm clang lldb
-
 # Michał Górny <mgorny@gentoo.org> (29 Nov 2017)
 # All current clang versions are broken on ARM.
 app-doc/doxygen clang

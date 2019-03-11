@@ -151,10 +151,6 @@ net-wireless/blueman appindicator
 # x11-drivers/xf86-video-amdgpu is not keyworded
 x11-base/xorg-drivers video_cards_amdgpu
 
-# Bernard Cafarelli <voyageur@gentoo.org> (06 Aug 2015)
-# Dependencies missing keywords, bug #543604
-sys-devel/llvm ocaml
-
 # Gilles Dartiguelongue <eva@gentoo.org> (10 Jun 2015)
 # net-libs/dleyna-connector-dbus lack ppc/ppc64 keyword, bug #551634
 >=media-plugins/grilo-plugins-0.2.14 upnp-av

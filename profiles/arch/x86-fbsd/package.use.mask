@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Andreas Sturmlechner <asturm@gentoo.org> (01 Sep 2018)
@@ -13,11 +13,6 @@ media-video/vlc aom aribsub dav1d skins
 # whether sys-libs/libomp should eventually be keyworded to when new
 # LLVM is going to be keyworded.
 <sys-devel/clang-runtime-4 openmp
-
-# Michał Górny <mgorny@gentoo.org> (20 Jan 2018)
-# Needs dev-ml/ocaml-ctypes which is not keyworded. Newer versions
-# no longer have the flag, so no point in keywording it for old.
-sys-devel/llvm ocaml
 
 # Thomas Deutschmann <whissi@gentoo.org> (26 Oct 2017)
 # idn: Needs net-dns/libidn2 which is not keyworded

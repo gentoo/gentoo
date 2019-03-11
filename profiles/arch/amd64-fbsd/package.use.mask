@@ -95,11 +95,6 @@ net-libs/gnutls test-full
 # LLVM is going to be keyworded.
 <sys-devel/clang-runtime-4 openmp
 
-# Michał Górny <mgorny@gentoo.org> (20 Jan 2018)
-# Needs dev-ml/ocaml-ctypes which is not keyworded. Newer versions
-# no longer have the flag, so no point in keywording it for old.
-sys-devel/llvm ocaml
-
 # Ulrich Müller <ulm@gentoo.org> (23 Oct 2017)
 # Needs net-mail/mailutils which is not keyworded, bug #635216.
 app-editors/emacs mailutils

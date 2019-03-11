@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Sergei Trofimovich <slyfox@gentoo.org> (28 Sep 2018)
@@ -169,10 +169,6 @@ dev-python/restkit cli
 # Alexandre Rostovtsev <tetromino@gentoo.org> (10 Sep 2015)
 # Requires wifi USE flag, which is masked for this arch
 net-misc/networkmanager wext
-
-# Bernard Cafarelli <voyageur@gentoo.org> (06 Aug 2015)
-# Dependencies missing keywords, bug #543604
-sys-devel/llvm ocaml
 
 # Pacho Ramos <pacho@gentoo.org> (13 Jun 2015)
 # Missing keywords, bug #513108
