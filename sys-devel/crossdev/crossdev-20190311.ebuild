@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 if [[ ${PV} == "99999999" ]] ; then
 	inherit git-r3
@@ -9,7 +9,7 @@ if [[ ${PV} == "99999999" ]] ; then
 else
 	SRC_URI="mirror://gentoo/${P}.tar.xz
 		https://dev.gentoo.org/~slyfox/distfiles/${P}.tar.xz"
-	KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~x86-fbsd"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd"
 fi
 
 DESCRIPTION="Gentoo Cross-toolchain generator"
@@ -19,7 +19,11 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE=""
 
-RDEPEND=">=sys-apps/portage-2.1
+RDEPEND="
+	|| (
+		>=sys-apps/portage-2.1
+		sys-apps/portage-mgorny
+	)
 	>=app-portage/portage-utils-0.55
 	app-shells/bash
 	sys-apps/gentoo-functions
