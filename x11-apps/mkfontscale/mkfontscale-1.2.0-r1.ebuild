@@ -15,10 +15,14 @@ COMMON_DEPEND="
 	media-libs/freetype:2
 	sys-libs/zlib
 	app-arch/bzip2"
-DEPEND="x11-base/xorg-proto"
+DEPEND="${COMMON_DEPEND}
+	x11-base/xorg-proto"
 RDEPEND="${COMMON_DEPEND}
-	${DEPEND}
 	!<x11-apps/mkfontdir-1.2.0"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-Revert-Use-autoconf-instead-of-sed-to-substitute-bin.patch
+)
 
 XORG_CONFIGURE_OPTIONS=(
 	--with-bzip2
