@@ -19,4 +19,4 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
-PATCHES=( "${FILESDIR}/${PN}-5.9.4-nogui.patch" )
+PATCHES=( "${FILESDIR}/${PN}-5.12.1-nogui.patch" )

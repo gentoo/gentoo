@@ -310,12 +310,6 @@ mate-base/mate bluetooth
 app-editors/emacs cairo
 app-editors/emacs-vcs cairo
 
-# Michał Górny <mgorny@gentoo.org> (28 Aug 2016)
-# lldb fails to build in the current RC, and needs a lot of minor fixes.
-# It's no longer available in -9999 line, and it won't be in 3.9.0
-# either unless somebody steps up to fix it.
->=sys-devel/llvm-3.9.0_rc lldb
-
 # Gilles Dartiguelongue <eva@gentoo.org> (21 Aug 2016)
 # Needs a Gstreamer plugin from gst-plugins-bad that is not packaged to date
 media-plugins/grilo-plugins chromaprint

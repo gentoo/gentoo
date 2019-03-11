@@ -34,8 +34,7 @@ fi
 : ${XORG_MULTILIB:="no"}
 
 # we need to inherit autotools first to get the deps
-inherit autotools eutils libtool multilib toolchain-funcs \
-	flag-o-matic ${GIT_ECLASS}
+inherit autotools libtool multilib toolchain-funcs flag-o-matic ${GIT_ECLASS}
 
 if [[ ${XORG_MULTILIB} == yes ]]; then
 	inherit multilib-minimal
