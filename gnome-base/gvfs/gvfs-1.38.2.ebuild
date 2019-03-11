@@ -7,7 +7,6 @@ inherit gnome.org gnome2-utils meson systemd xdg
 
 DESCRIPTION="Virtual filesystem implementation for GIO"
 HOMEPAGE="https://wiki.gnome.org/Projects/gvfs"
-SRC_URI+=" https://dev.gentoo.org/~leio/distfiles/${P}-patchset.tar.xz"
 
 LICENSE="LGPL-2+"
 SLOT="0"
@@ -69,10 +68,6 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	dev-util/gdbus-codegen
 "
-
-PATCHES=(
-	"${WORKDIR}"/patches/ # origin/gnome-3-30@20190301
-)
 
 src_configure() {
 	local enable_logind="false"
