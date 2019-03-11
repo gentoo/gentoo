@@ -2,12 +2,12 @@ DEFINED_PHASES=configure install
 DEPEND=>=net-libs/libtrace-3.0.6
 DESCRIPTION=A library that measures and reports on packet flows
 EAPI=6
-HOMEPAGE=http://research.wand.net.nz/software/libflowmanager.php
+HOMEPAGE=https://research.wand.net.nz/software/libflowmanager.php
 IUSE=static-libs
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
 RDEPEND=>=net-libs/libtrace-3.0.6
 SLOT=0/3
-SRC_URI=http://research.wand.net.nz/software/libflowmanager/libflowmanager-3.0.0.tar.gz
+SRC_URI=https://research.wand.net.nz/software/libflowmanager/libflowmanager-3.0.0.tar.gz
 _eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	b2f01ad412baf81650c23fcf0975fa33	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
-_md5_=f6658e72feda3c1cf727c797de307cb4
+_md5_=a5620dbf929d38f94469a1d95e4d9f47
