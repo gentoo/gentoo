@@ -6263,7 +6263,7 @@ dev-util/buildbot 0.8.12-r3: BuildBot build automation system
 dev-util/buildbot-slave 0.8.12: BuildBot Slave Daemon
 dev-util/bustle 0.4.2-r1 0.5.4: Draw sequence diagrams of D-Bus traffic
 dev-util/byacc 20170201: the best variant of the Yacc parser generator
-dev-util/cargo 0.30.0: The Rust's package manager
+dev-util/cargo 0.30.0-r1: The Rust's package manager
 dev-util/catalyst 2.0.18-r1 2.0.18-r4 3.0.2 3.0.2-r1 3.0.3: Release metatool used for creating releases based on Gentoo Linux
 dev-util/catfish 1.2.2 1.4.6: A frontend for find, (s)locate, doodle, tracker, beagle, strigi and pinot
 dev-util/ccache 3.2.4 3.3.4-r1: fast compiler cache
@@ -7353,7 +7353,7 @@ media-gfx/colorhug-client 0.2.8: Client tools for the ColorHug display colorimet
 media-gfx/comix 4.0.4-r1: A GTK image viewer specifically designed to handle comic books
 media-gfx/cropgui 0.2-r1: GUI for lossless cropping of jpeg images
 media-gfx/crwinfo 0.2: Canon raw image (CRW) information and thumbnail extractor
-media-gfx/darktable 2.2.5 2.4.3: A virtual lighttable and darkroom for photographers
+media-gfx/darktable 2.2.5 2.4.3 2.6.1: A virtual lighttable and darkroom for photographers
 media-gfx/dawn 3.90b-r1: 3D geometrical postscript renderer
 media-gfx/dcraw 9.28.0: Command-line decoder for raw digital photos
 media-gfx/digikam 6.0.0: Digital photo management application
