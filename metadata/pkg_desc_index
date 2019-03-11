@@ -8218,7 +8218,7 @@ media-sound/sexypsf 0.4.7: sexyPSF is an open-source PSF1 (Playstation music) fi
 media-sound/sfc 0.018-r1: SoundFontCombi is an opensource software pseudo synthesizer
 media-sound/shntool 3.0.10-r1: A multi-purpose WAVE data processing and reporting utility
 media-sound/shorten 3.6.1: fast, low complexity waveform coder (i.e. audio compressor)
-media-sound/sidplay 2.0.9 2.0.9-r1: C64 SID player
+media-sound/sidplay 2.0.9-r1: C64 SID player
 media-sound/smixer 1.0.4: command-line tool for setting and viewing mixer settings
 media-sound/solfege 3.22.2: GNU Solfege is a program written to help you practice ear training
 media-sound/sonata 1.6.2.1-r1: An elegant GTK+ music client for the Music Player Daemon (MPD)
@@ -9967,7 +9967,7 @@ sys-apps/shadow 4.6: Utilities to deal with user accounts
 sys-apps/smartmontools 6.6: Tools to monitor storage systems to provide advanced warning of disk degradation
 sys-apps/syscriptor 1.5.15: display misc information about your hardware
 sys-apps/syslog-notify 0.2: Notifications for syslog entries via libnotify
-sys-apps/systemd 239-r2 239-r3 239-r4: System and service manager for Linux
+sys-apps/systemd 239-r4: System and service manager for Linux
 sys-apps/systemd-readahead 216: Split of readahead systemd implementation
 sys-apps/sysvinit 2.91-r1 2.93: /sbin/init - parent of all processes
 sys-apps/tcp-wrappers 7.6.22-r1: TCP Wrappers
@@ -10248,7 +10248,7 @@ sys-fs/reiserfsprogs 3.6.25 3.6.27: Reiserfs Utilities
 sys-fs/safecopy 1.7: Tool for fault-tolerant data recovery from damaged (io-errors) devices or files
 sys-fs/shake 1.0: Defragmenter that runs in userspace while the system is used
 sys-fs/simple-mtpfs 0.3.0: Simple MTP fuse filesystem driver
-sys-fs/squashfs-tools 3.2_p2 3.4 4.3-r2: Tool for creating compressed filesystem type squashfs
+sys-fs/squashfs-tools 4.3-r2: Tool for creating compressed filesystem type squashfs
 sys-fs/static-dev 0.1: A skeleton, statically managed /dev
 sys-fs/sysfsutils 2.1.0: System Utilities Based on Sysfs
 sys-fs/traydevice 1.6.2-r1: A little desktop application displaying systray icon for UDisks
