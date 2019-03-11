@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,10 +16,10 @@ IUSE="cg"
 RDEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
+	dev-qt/qtsvg:5
 	dev-qt/qtwidgets:5
 	cg? ( media-gfx/nvidia-cg-toolkit )
 	media-libs/alsa-lib
-	media-libs/libsdl[opengl]
 	virtual/opengl"
 
 DEPEND="
@@ -27,8 +27,6 @@ DEPEND="
 	virtual/pkgconfig"
 
 S="${WORKDIR}/puNES-${PV}"
-
-PATCHES=( "${FILESDIR}/${P}-qt-5.11-fix.patch" )
 
 src_prepare() {
 	default
@@ -42,7 +40,6 @@ src_prepare() {
 
 src_configure() {
 	econf \
-		--enable-qt5 \
 		$(use_with cg opengl-nvidia-cg)
 }
 
