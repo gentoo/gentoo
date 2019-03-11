@@ -34,11 +34,9 @@ be exported to XML, PostScript®, CSV, or plain text.
 <flag name="captype">Install captype, to print the file types of capture files</flag>
 <flag name="ciscodump">Install ciscodump, extcap interface to capture from a remote Cisco router</flag>
 <flag name="dftest">Install dftest, to display filter byte-code, for debugging dfilter routines</flag>
-<flag name="doc-pdf">Build documentation in pdf format (US and a4 paper sizes)</flag>
 <flag name="dpauxmon">Install dpauxmon, an external capture interface (extcap) that captures DisplayPort AUX channel data from linux kernel drivers</flag>
 <flag name="dumpcap">Install dumpcap, to dump network traffic from inside wireshark</flag>
 <flag name="editcap">Install editcap, to edit and/or translate the format of capture files</flag>
-<flag name="libssh">Use <pkg>net-libs/libssh</pkg> (for sshdump)</flag>
 <flag name="libxml2">Use <pkg>dev-libs/libxml2</pkg> for handling XML configuration in dissectors</flag>
 <flag name="lz4">Use <pkg>app-arch/lz4</pkg> for compression/decompression</flag>
 <flag name="maxminddb">Use <pkg>dev-libs/libmaxminddb</pkg> for IP address geolocation</flag>
