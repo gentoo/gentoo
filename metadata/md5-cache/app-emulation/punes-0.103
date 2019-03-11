@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure postinst postrm prepare
+DEPEND=dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtsvg:5 dev-qt/qtwidgets:5 cg? ( media-gfx/nvidia-cg-toolkit ) media-libs/alsa-lib virtual/opengl virtual/pkgconfig >=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DESCRIPTION=Nintendo Entertainment System (NES) emulator
+EAPI=6
+HOMEPAGE=https://github.com/punesemu/puNES
+IUSE=cg
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtsvg:5 dev-qt/qtwidgets:5 cg? ( media-gfx/nvidia-cg-toolkit ) media-libs/alsa-lib virtual/opengl
+SLOT=0
+SRC_URI=https://github.com/punesemu/puNES/archive/v0.103.tar.gz -> punes-0.103.tar.gz
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	xdg-utils	14d00d009167652b1fa363e55effe213
+_md5_=322738befbee5cfe72d76a01b775bcf3

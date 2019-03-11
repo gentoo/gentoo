@@ -1,4 +1,4 @@
-BDEPEND=>=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+BDEPEND=>=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=sys-devel/libtool-2.2.6a sys-devel/m4 >=x11-misc/util-macros-1.18 >=media-fonts/font-util-1.2.0
 DEFINED_PHASES=compile configure install prepare unpack
 DEPEND=x11-libs/libfontenc media-libs/freetype:2 sys-libs/zlib app-arch/bzip2 x11-base/xorg-proto ppc-aix? ( >=sys-devel/libtool-2.2.6a sys-devel/m4 >=x11-misc/util-macros-1.18 >=media-fonts/font-util-1.2.0 ) x86-winnt? ( >=sys-devel/libtool-2.2.6a sys-devel/m4 >=x11-misc/util-macros-1.18 >=media-fonts/font-util-1.2.0 ) virtual/pkgconfig
 DESCRIPTION=create an index of scalable font files for X
@@ -10,4 +10,4 @@ RDEPEND=x11-libs/libfontenc media-libs/freetype:2 sys-libs/zlib app-arch/bzip2 !
 SLOT=0
 SRC_URI=https://www.x.org/releases/individual/app/mkfontscale-1.2.0.tar.bz2
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	a09389deba2c0a7108b581e02c7cecbf	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	xorg-3	2cbdb63dc35f80a1b136a4dd02490a1c
-_md5_=76aede054088b419b46f3d4d4a34ce64
+_md5_=4b97a68072afec1a4290623db5f8400a
