@@ -17,6 +17,7 @@ REQUIRED_USE="?? ( gnutls libressl )"
 DEPEND="
 	>=net-libs/courier-authlib-0.69.0-r1
 	>=net-libs/courier-unicode-2.1
+	net-dns/libidn:=
 	!gnutls? ( !libressl? ( dev-libs/openssl:0= ) )
 	libressl? ( dev-libs/libressl:= )
 	gnutls? ( net-libs/gnutls )
