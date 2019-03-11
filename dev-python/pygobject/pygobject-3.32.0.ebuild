@@ -6,7 +6,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6,7} )
 
 inherit gnome.org meson python-r1 virtualx xdg
 
-DESCRIPTION="GLib's GObject library bindings for Python"
+DESCRIPTION="Python bindings for GObject Introspection"
 HOMEPAGE="https://wiki.gnome.org/Projects/PyGObject"
 
 LICENSE="LGPL-2.1+"
@@ -17,7 +17,7 @@ IUSE="+cairo examples test"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
-	>=dev-libs/glib-2.38:2
+	>=dev-libs/glib-2.48:2
 	>=dev-libs/gobject-introspection-1.54:=
 	virtual/libffi:=
 	cairo? (
