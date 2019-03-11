@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -156,7 +156,8 @@ KEYWORDS="amd64 ~arm64 x86"
 
 IUSE="doc libressl"
 
-COMMON_DEPEND="sys-libs/zlib
+COMMON_DEPEND=">=app-eselect/eselect-rust-0.3_pre20150425
+	sys-libs/zlib
 	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:0= )
 	net-libs/libssh2
@@ -199,4 +200,8 @@ src_install() {
 	insinto /usr/share/zsh/site-functions
 	doins src/etc/_cargo
 	doman src/etc/man/*
+}
+
+pkg_postrm() {
+	eselect rust update
 }
