@@ -1,9 +1,9 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_5,3_6} )
+PYTHON_COMPAT=( python{2_7,3_{5,6,7}} )
 inherit autotools pam python-single-r1 systemd user
 
 MY_P="${PN}-server-${PV}"
@@ -189,13 +189,6 @@ src_compile() {
 }
 
 src_install() {
-	dodoc CREDITS
-
-	rm "${D}/usr/sbin/rc.radiusd" || die
-
-	systemd_newtmpfilesd "${FILESDIR}"/freeradius.tmpfiles freeradius.conf
-	systemd_dounit "${FILESDIR}"/freeradius.service
-
 	dodir /etc
 	diropts -m0750 -o root -g radius
 	dodir /etc/raddb
@@ -217,10 +210,17 @@ src_install() {
 
 	pamd_mimic_system radiusd auth account password session
 
+	dodoc CREDITS
+
+	rm "${ED}/usr/sbin/rc.radiusd" || die
+
 	newinitd "${FILESDIR}/radius.init-r3" radiusd
 	newconfd "${FILESDIR}/radius.conf-r4" radiusd
 
-	prune_libtool_files
+	systemd_newtmpfilesd "${FILESDIR}"/freeradius.tmpfiles freeradius.conf
+	systemd_dounit "${FILESDIR}"/freeradius.service
+
+	find "${ED}" \( -name "*.a" -o -name "*.la" \) -delete || die
 }
 
 pkg_config() {
