@@ -41,14 +41,13 @@ RDEPEND="${COMMON_DEPEND}
 	flickr? ( media-plugins/grilo-plugins:0.3[flickr] )
 "
 DEPEND="${COMMON_DEPEND}
-	app-text/yelp-tools
 	dev-util/desktop-file-utils
 	dev-util/glib-utils
+	dev-util/itstool
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
 	test? ( $(python_gen_any_dep 'dev-util/dogtail[${PYTHON_USEDEP}]') )
-"
-# app-text/yelp-tools needed for eautoreconf; otherwise probably just itstool
+" # app-text/yelp-tools needed for eautoreconf; otherwise just itstool
 RDEPEND="${RDEPEND}
 	>=app-misc/tracker-miners-2
 "
