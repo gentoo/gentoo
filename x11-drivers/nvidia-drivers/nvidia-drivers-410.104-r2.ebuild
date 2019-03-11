@@ -86,11 +86,11 @@ nvidia_drivers_versions_check() {
 		die "Unexpected \${DEFAULT_ABI} = ${DEFAULT_ABI}"
 	fi
 
-	if use kernel_linux && kernel_is ge 4 21; then
+	if use kernel_linux && kernel_is ge 5 1; then
 		ewarn "Gentoo supports kernels which are supported by NVIDIA"
 		ewarn "which are limited to the following kernels:"
-		ewarn "<sys-kernel/gentoo-sources-4.21"
-		ewarn "<sys-kernel/vanilla-sources-4.21"
+		ewarn "<sys-kernel/gentoo-sources-5.1"
+		ewarn "<sys-kernel/vanilla-sources-5.1"
 		ewarn ""
 		ewarn "You are free to utilize epatch_user to provide whatever"
 		ewarn "support you feel is appropriate, but will not receive"
@@ -107,7 +107,7 @@ nvidia_drivers_versions_check() {
 	nvidia-driver-check-warning
 
 	# Kernel features/options to check for
-	CONFIG_CHECK="!DEBUG_MUTEXES !I2C_NVIDIA_GPU ~!LOCKDEP ~MTRR ~SYSVIPC ~ZONE_DMA"
+	CONFIG_CHECK="!DEBUG_MUTEXES ~!LOCKDEP ~MTRR ~PM ~SYSVIPC ~ZONE_DMA"
 
 	# Now do the above checks
 	use kernel_linux && check_extra_config
@@ -344,24 +344,6 @@ src_install() {
 		doins ${NV_OBJ}/nvidia.icd
 	fi
 
-	# Documentation
-	if use kernel_FreeBSD; then
-		dodoc "${NV_DOC}/README"
-		use X && doman "${NV_MAN}"/nvidia-xconfig.1
-		use tools && doman "${NV_MAN}"/nvidia-settings.1
-	else
-		# Docs
-		newdoc "${NV_DOC}/README.txt" README
-		dodoc "${NV_DOC}/NVIDIA_Changelog"
-		doman "${NV_MAN}"/nvidia-smi.1
-		use X && doman "${NV_MAN}"/nvidia-xconfig.1
-		use tools && doman "${NV_MAN}"/nvidia-settings.1
-		doman "${NV_MAN}"/nvidia-cuda-mps-control.1
-	fi
-
-	docinto html
-	dodoc -r ${NV_DOC}/html/*
-
 	# Helper Apps
 	exeinto /opt/bin/
 
@@ -443,7 +425,25 @@ src_install() {
 
 	is_final_abi || die "failed to iterate through all ABIs"
 
+	# Documentation
+	if use kernel_FreeBSD; then
+		dodoc "${NV_DOC}/README"
+		use X && doman "${NV_MAN}"/nvidia-xconfig.1
+		use tools && doman "${NV_MAN}"/nvidia-settings.1
+	else
+		# Docs
+		newdoc "${NV_DOC}/README.txt" README
+		dodoc "${NV_DOC}/NVIDIA_Changelog"
+		doman "${NV_MAN}"/nvidia-smi.1
+		use X && doman "${NV_MAN}"/nvidia-xconfig.1
+		use tools && doman "${NV_MAN}"/nvidia-settings.1
+		doman "${NV_MAN}"/nvidia-cuda-mps-control.1
+	fi
+
 	readme.gentoo_create_doc
+
+	docinto html
+	dodoc -r ${NV_DOC}/html/*
 }
 
 src_install-libs() {
@@ -509,7 +509,7 @@ src_install-libs() {
 		if use kernel_linux; then
 			NV_GLX_LIBRARIES+=(
 				"libnvidia-ml.so.${NV_SOVER}"
-				"libnvidia-tls.so.${NV_SOVER}"
+				"tls/libnvidia-tls.so.${NV_SOVER}"
 			)
 		fi
 
