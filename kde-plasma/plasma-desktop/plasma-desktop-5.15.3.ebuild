@@ -114,6 +114,11 @@ RDEPEND="${COMMON_DEPEND}
 	!kde-apps/knetattach[handbook]
 "
 
+src_prepare() {
+	rm -r po/id/docs || die "failed to remove Indonesian docs" # bug 680162
+	kde5_src_prepare
+}
+
 src_configure() {
 	local mycmakeargs=(
 		$(cmake-utils_use_find_package appstream AppStreamQt)

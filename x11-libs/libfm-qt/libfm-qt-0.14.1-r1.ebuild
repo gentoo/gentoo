@@ -3,7 +3,10 @@
 
 EAPI=7
 
-inherit cmake-utils xdg-utils
+inherit cmake-utils
+
+DESCRIPTION="Qt port of libfm, a library providing components to build desktop file managers"
+HOMEPAGE="https://lxqt.org/"
 
 if [[ "${PV}" == "9999" ]]; then
 	inherit git-r3
@@ -13,38 +16,24 @@ else
 	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 fi
 
-DESCRIPTION="Fast lightweight tabbed filemanager (Qt port)"
-HOMEPAGE="https://lxqt.org/"
-
 LICENSE="GPL-2+ LGPL-2.1+"
-SLOT="0"
+SLOT="0/5"
 
 BDEPEND="
 	dev-qt/linguist-tools:5
 	>=dev-util/lxqt-build-tools-0.6.0
+	virtual/pkgconfig
 "
 DEPEND="
 	dev-libs/glib:2
 	dev-qt/qtcore:5
-	dev-qt/qtdbus:5
 	dev-qt/qtgui:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtx11extras:5
-	>=x11-libs/libfm-1.2.0:=
-	=x11-libs/libfm-qt-$(ver_cut 1-2)*
+	>=lxde-base/menu-cache-1.1.0
+	media-libs/libexif:=
 	x11-libs/libxcb:=
-	x11-misc/xdg-utils
-	virtual/eject
-	virtual/freedesktop-icon-theme
 "
 RDEPEND="${DEPEND}
 	!lxqt-base/lxqt-l10n
 "
-
-pkg_postinst() {
-	xdg_desktop_database_update
-}
-
-pkg_postrm() {
-	xdg_desktop_database_update
-}
