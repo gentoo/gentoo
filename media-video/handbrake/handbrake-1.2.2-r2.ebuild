@@ -23,7 +23,7 @@ HOMEPAGE="http://handbrake.fr/"
 LICENSE="GPL-2"
 
 SLOT="0"
-IUSE="+fdk gstreamer gtk libav libav-aac nvenc x265 vaapi"
+IUSE="+fdk gstreamer gtk libav libav-aac nvenc x265"
 
 REQUIRED_USE="^^ ( fdk libav-aac )"
 
@@ -124,7 +124,6 @@ src_configure() {
 		$(use_enable gtk) \
 		$(usex !gstreamer --disable-gst) \
 		$(use_enable nvenc) \
-		$(use_enable vaapi qsv) \
 		$(use_enable x265) || die "Configure failed."
 }
 
@@ -145,10 +144,14 @@ src_install() {
 }
 
 pkg_postinst() {
-	einfo "For the CLI version of HandBrake, you can use \`HandBrakeCLI\`."
+	einfo "Gentoo builds of HandBrake are NOT SUPPORTED by upstream as they"
+	einfo "do not use the bundled (and often patched) upstream libraries."
+	einfo ""
+	einfo "Please do not raise bugs with upstream because of these ebuilds,"
+	einfo "report bugs to Gentoo's bugzilla or Multimedia forum instead."
 
+	einfo "For the CLI version of HandBrake, you can use \`HandBrakeCLI\`."
 	if use gtk ; then
-		einfo ""
 		einfo "For the GTK+ version of HandBrake, you can run \`ghb\`."
 	fi
 
