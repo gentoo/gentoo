@@ -1,0 +1,20 @@
+diff --git a/cmake/FindLuaJIT.cmake b/cmake/FindLuaJIT.cmake
+index 5a2bcf85..7f6e07e4 100644
+--- a/cmake/FindLuaJIT.cmake
++++ b/cmake/FindLuaJIT.cmake
+@@ -28,6 +28,7 @@
+ # 2010 - modified for cronkite to find luajit instead of lua, as it was before.
+ #
+ 
++if(WITH_LUAJIT)
+ FIND_PATH(LUAJIT_INCLUDE_DIR lua.h
+   HINTS
+   $ENV{LUAJIT_DIR}
+@@ -58,6 +59,7 @@ FIND_LIBRARY(LUAJIT_LIBRARY
+   /opt/csw
+   /opt
+ )
++endif()
+ 
+ IF(LUAJIT_LIBRARY)
+   IF(UNIX AND NOT APPLE)
