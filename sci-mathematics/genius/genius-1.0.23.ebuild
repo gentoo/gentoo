@@ -28,10 +28,12 @@ RDEPEND="
 		>=x11-libs/vte-0.26.0:0 )
 "
 DEPEND="${RDEPEND}
+	dev-util/gtk-update-icon-cache
 	dev-util/intltool
 	virtual/yacc
 	sys-devel/flex
 " # eautoreconf needs autoconf-archive
+# dev-util/gtk-update-icon-cache because configure checks for it for some reason and never calls it with DESTDIR set..
 
 src_configure() {
 	# Unrecognized --disable-scrollkeeper warning comes from gnome2.eclass adding it based on grep, but upstream has them commented out in .ac with "#" instead of "dnl"
