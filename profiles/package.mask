@@ -29,6 +29,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (12 Mar 2019)
+# Mask unused obsolete slot for removal in 30 days.
+dev-ruby/trollop:0
+
 # Virgil Dupras <vdupras@gentoo.org> (10 Mar 2019)
 # Merged in pytest, no revdep. Removal in 30 days. Bug #668746
 dev-python/pytest-capturelog
