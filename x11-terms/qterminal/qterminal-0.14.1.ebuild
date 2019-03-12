@@ -28,7 +28,9 @@ DEPEND="
 	x11-libs/libX11
 	~x11-libs/qtermwidget-${PV}
 "
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	!lxqt-base/lxqt-l10n
+"
 
 pkg_postinst() {
 	xdg_icon_cache_update
