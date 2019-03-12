@@ -10,4 +10,4 @@ RESTRICT=strip
 SLOT=0
 SRC_URI=https://github.com/minio/mc/archive/RELEASE.2019-03-06T18-41-35Z.tar.gz -> mc-2019.03.06.18.41.35.tar.gz
 _eclasses_=eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	golang-base	c57d2c3f9e1a02d0feb8b87c7b689892	golang-build	dc25bafa8fc1305a4de66a0a448472e7	golang-vcs-snapshot	12177e83bede6f7fb87eae383864b40b
-_md5_=a38b2882794159f3d24fb57fc55eecae
+_md5_=34fb679d4567d11fa7aaa421e2dd8d73

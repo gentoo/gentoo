@@ -9,4 +9,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/minio/minio/archive/RELEASE.2019-01-31T00-31-19Z.tar.gz -> minio-2019.01.31.00.31.19.tar.gz
 _eclasses_=eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	golang-base	c57d2c3f9e1a02d0feb8b87c7b689892	golang-build	dc25bafa8fc1305a4de66a0a448472e7	golang-vcs-snapshot	12177e83bede6f7fb87eae383864b40b	user	8bd74731cafdcdad8f7a63637302e073
-_md5_=77e7d0e63cfa6465950444c2b9c515ad
+_md5_=c98a35643c39d501a0fd40f62b11003d
