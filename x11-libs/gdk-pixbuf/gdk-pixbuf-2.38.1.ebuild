@@ -123,7 +123,8 @@ pkg_postinst() {
 	# causes segfault if set, see bug 375615
 	unset __GL_NO_DSO_FINALIZER
 
-	multilib_foreach_abi xdg_pkg_postinst
+	xdg_pkg_postinst
+	multilib_foreach_abi gnome2_gdk_pixbuf_update
 
 	# Migration snippet for when this was handled by gtk+
 	if [ -e "${EROOT}"usr/lib/gtk-2.0/2.*/loaders ]; then
