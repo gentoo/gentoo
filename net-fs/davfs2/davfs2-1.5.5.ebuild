@@ -28,6 +28,14 @@ pkg_setup() {
 	enewgroup davfs2
 }
 
+src_prepare() {
+	# Let the package manager handle man page compression
+	sed -e '/^manual[58]_DATA/ s/\.gz//g' \
+		-i "${S}"/man/Makefile.in || die
+
+	default
+}
+
 src_configure() {
 	econf dav_user=nobody --enable-largefile $(use_enable nls)
 }
