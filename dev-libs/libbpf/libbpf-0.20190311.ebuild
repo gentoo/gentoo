@@ -16,7 +16,8 @@ SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
 IUSE="static-libs"
 
-COMMON_DEPEND="virtual/libelf"
+COMMON_DEPEND="virtual/libelf
+	!<=dev-util/bcc-0.7.0"
 DEPEND="${COMMON_DEPEND}
 	sys-kernel/linux-headers"
 RDEPEND="${COMMON_DEPEND}"
