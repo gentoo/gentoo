@@ -184,6 +184,10 @@ src_install() {
 		-i "${ED}"/usr/share/applications/timidity.desktop || die
 }
 
+pkg_preinst() {
+	xdg_pkg_preinst
+}
+
 pkg_postinst() {
 	use emacs && elisp-site-regen
 
@@ -201,10 +205,10 @@ pkg_postinst() {
 		elog "Only saving to wave file and ALSA soundback has been tested working."
 	fi
 
-	xdg_desktop_database_update
+	xdg_pkg_postinst
 }
 
 pkg_postrm() {
 	use emacs && elisp-site-regen
-	xdg_desktop_database_update
+	xdg_pkg_postrm
 }
