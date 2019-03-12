@@ -1684,7 +1684,7 @@ app-vim/xquery-syntax 0.1-r2: vim plugin: XQuery syntax highlighting
 app-vim/xsl-syntax 0.3.11-r2: vim plugin: Syntax for XSLT (with HTML and others)
 app-vim/yankring 19.0: vim plugin: maintains a history of previous yanks and deletes
 app-vim/zenburn 2.25: Low-contrast color scheme for Vim
-app-vim/zoomwin 24: vim plugin: brief-style window zooming
+app-vim/zoomwin 24-r1: vim plugin: brief-style window zooming
 app-xemacs/ada 1.14 1.16: Ada language support
 app-xemacs/apel 1.32 1.34 1.36: A Portable Emacs Library. Used by XEmacs MIME support
 app-xemacs/auctex 1.47 1.51 1.58: Basic TeX/LaTeX support
