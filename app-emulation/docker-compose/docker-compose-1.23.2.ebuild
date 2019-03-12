@@ -52,6 +52,9 @@ src_prepare() {
 	# Address QA issue "docker-compose.exe: missing alias (symlink) for completed command."
 	sed 's,^\(complete.*\) docker-compose\.exe\(.*\),\1\2,' -i contrib/completion/bash/docker-compose || die
 
+	# Get rid of requests boundary
+	sed -i -e  "/^.*requests/s/, <.*/',/" setup.py || die
+
 	default
 
 }
