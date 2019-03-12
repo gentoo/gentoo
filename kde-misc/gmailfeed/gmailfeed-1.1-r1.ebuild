@@ -1,8 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
+QT_MINIMAL=5.12.1
 inherit kde5
 
 DESCRIPTION="Plasma 5 applet providing a list of unread emails from your Gmail inbox"
@@ -16,8 +17,8 @@ IUSE=""
 DEPEND="
 	$(add_frameworks_dep knotifications)
 	$(add_frameworks_dep plasma)
-	$(add_qt_dep qtdeclarative 'xml')
 	$(add_qt_dep qtnetwork)
+	$(add_qt_dep qtxmlpatterns '' 5.12.1-r1)
 "
 RDEPEND="${DEPEND}
 	$(add_qt_dep qtquickcontrols)

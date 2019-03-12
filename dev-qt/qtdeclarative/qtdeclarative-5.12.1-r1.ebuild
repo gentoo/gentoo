@@ -11,7 +11,7 @@ if [[ ${QT5_BUILD_TYPE} == release ]]; then
 	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86 ~amd64-fbsd"
 fi
 
-IUSE="gles2 +jit localstorage +widgets xml"
+IUSE="gles2 +jit localstorage +widgets"
 
 # qtgui[gles2=] is needed because of bug 504322
 COMMON_DEPEND="
@@ -21,10 +21,6 @@ COMMON_DEPEND="
 	~dev-qt/qttest-${PV}
 	localstorage? ( ~dev-qt/qtsql-${PV} )
 	widgets? ( ~dev-qt/qtwidgets-${PV}[gles2=] )
-	xml? (
-		~dev-qt/qtnetwork-${PV}
-		~dev-qt/qtxmlpatterns-${PV}
-	)
 "
 DEPEND="${COMMON_DEPEND}
 	${PYTHON_DEPS}
@@ -46,11 +42,6 @@ src_prepare() {
 		tools/tools.pro \
 		tools/qmlscene/qmlscene.pro \
 		tools/qml/qml.pro
-
-	qt_use_disable_mod xml xmlpatterns \
-		src/imports/imports.pro \
-		tests/auto/quick/quick.pro \
-		tests/auto/quick/examples/examples.pro
 
 	qt5-build_src_prepare
 }

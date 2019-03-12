@@ -1,25 +1,24 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-EGIT_REPO_URI="https://gitlab.com/orcus/orcus.git"
-
-PYTHON_COMPAT=( python{3_4,3_5,3_6} )
-
-[[ ${PV} == 9999 ]] && GITECLASS="git-r3 autotools"
-inherit python-single-r1 ${GITECLASS}
-unset GITECLASS
+PYTHON_COMPAT=( python3_{5,6,7} )
+inherit python-single-r1
 
 DESCRIPTION="Standalone file import filter library for spreadsheet documents"
 HOMEPAGE="https://gitlab.com/orcus/orcus/blob/master/README.md"
-[[ ${PV} == 9999 ]] || SRC_URI="https://kohei.us/files/orcus/src/${P}.tar.xz"
+
+if [[ ${PV} == *9999* ]]; then
+	EGIT_REPO_URI="https://gitlab.com/orcus/orcus.git"
+	inherit git-r3 autotools
+else
+	SRC_URI="https://kohei.us/files/orcus/src/${P}.tar.xz"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+fi
 
 LICENSE="MIT"
 SLOT="0/0.14" # based on SONAME of liborcus.so
-[[ ${PV} == 9999 ]] || \
-KEYWORDS=""
-# KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86"
 IUSE="python +spreadsheet-model static-libs tools"
 
 RDEPEND="

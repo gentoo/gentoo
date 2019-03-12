@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 PYTHON_COMPAT=( python2_7 python3_{5,6,7} )
 PYTHON_REQ_USE="threads(+),xml"
@@ -18,10 +18,10 @@ DEV_URI="
 ADDONS_URI="https://dev-www.libreoffice.org/src/"
 
 BRANDING="${PN}-branding-gentoo-0.8.tar.xz"
-PATCHSET="${P}-patchset-01.tar.xz"
+PATCHSET="${PN}-6.2.1.1-patchset-01.tar.xz"
 
 [[ ${MY_PV} == *9999* ]] && inherit git-r3
-inherit autotools bash-completion-r1 check-reqs eapi7-ver flag-o-matic java-pkg-opt-2 multiprocessing pax-utils python-single-r1 qmake-utils toolchain-funcs xdg
+inherit autotools bash-completion-r1 check-reqs flag-o-matic java-pkg-opt-2 multiprocessing pax-utils python-single-r1 qmake-utils toolchain-funcs xdg
 
 DESCRIPTION="A full office productivity suite"
 HOMEPAGE="https://www.libreoffice.org"
@@ -77,9 +77,16 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 LICENSE="|| ( LGPL-3 MPL-1.1 )"
 SLOT="0"
 [[ ${MY_PV} == *9999* ]] || \
-KEYWORDS=""
-# KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 
+BDEPEND="
+	dev-util/intltool
+	sys-devel/bison
+	sys-devel/flex
+	sys-devel/gettext
+	virtual/pkgconfig
+	odk? ( >=app-doc/doxygen-1.8.4 )
+"
 COMMON_DEPEND="${PYTHON_DEPS}
 	app-arch/unzip
 	app-arch/zip
@@ -193,7 +200,32 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	pdfimport? ( app-text/poppler:=[cxx] )
 	postgres? ( >=dev-db/postgresql-9.0:*[kerberos] )
 "
-
+# FIXME: cppunit should be moved to test conditional
+#        after everything upstream is under gbuild
+#        as dmake execute tests right away
+#        tests apparently also need google-carlito-fonts (not packaged)
+DEPEND="${COMMON_DEPEND}
+	>=dev-libs/libatomic_ops-7.2d
+	dev-perl/Archive-Zip
+	>=dev-util/cppunit-1.14.0
+	>=dev-util/gperf-3
+	>=dev-util/mdds-1.4.1:1=
+	media-libs/glm
+	sys-devel/ucpp
+	x11-base/xorg-proto
+	x11-libs/libXt
+	x11-libs/libXtst
+	java? (
+		dev-java/ant-core
+		>=virtual/jdk-1.6
+	)
+	test? (
+		app-crypt/gnupg
+		dev-util/cppunit
+		media-fonts/dejavu
+		media-fonts/liberation-fonts
+	)
+"
 RDEPEND="${COMMON_DEPEND}
 	!app-office/libreoffice-bin
 	!app-office/libreoffice-bin-debug
@@ -204,7 +236,6 @@ RDEPEND="${COMMON_DEPEND}
 	kde? ( kde-frameworks/breeze-icons:* )
 	vlc? ( media-video/vlc )
 "
-
 if [[ ${MY_PV} != *9999* ]] && [[ ${PV} != *_* ]]; then
 	PDEPEND="=app-office/libreoffice-l10n-$(ver_cut 1-2)*"
 else
@@ -212,39 +243,6 @@ else
 	# rather force people to use english only.
 	PDEPEND="!app-office/libreoffice-l10n"
 fi
-
-# FIXME: cppunit should be moved to test conditional
-#        after everything upstream is under gbuild
-#        as dmake execute tests right away
-#        tests apparently also need google-carlito-fonts (not packaged)
-DEPEND="${COMMON_DEPEND}
-	>=dev-libs/libatomic_ops-7.2d
-	dev-perl/Archive-Zip
-	>=dev-util/cppunit-1.14.0
-	>=dev-util/gperf-3
-	dev-util/intltool
-	>=dev-util/mdds-1.4.1:1=
-	media-libs/glm
-	sys-devel/bison
-	sys-devel/flex
-	sys-devel/gettext
-	sys-devel/ucpp
-	virtual/pkgconfig
-	x11-base/xorg-proto
-	x11-libs/libXt
-	x11-libs/libXtst
-	java? (
-		dev-java/ant-core
-		>=virtual/jdk-1.6
-	)
-	odk? ( >=app-doc/doxygen-1.8.4 )
-	test? (
-		app-crypt/gnupg
-		dev-util/cppunit
-		media-fonts/dejavu
-		media-fonts/liberation-fonts
-	)
-"
 
 PATCHES=(
 	# master branch
@@ -555,7 +553,7 @@ src_install() {
 		insinto /usr/$(get_libdir)/${PN}/program
 		newins "${WORKDIR}/branding-sofficerc" sofficerc
 		dodir /etc/env.d
-		echo "CONFIG_PROTECT=/usr/$(get_libdir)/${PN}/program/sofficerc" > "${ED%/}"/etc/env.d/99${PN} || die
+		echo "CONFIG_PROTECT=/usr/$(get_libdir)/${PN}/program/sofficerc" > "${ED}"/etc/env.d/99${PN} || die
 	fi
 
 	# Hack for offlinehelp, this needs fixing upstream at some point.
@@ -564,8 +562,8 @@ src_install() {
 	insinto /usr/$(get_libdir)/libreoffice/help
 	doins xmlhelp/util/*.xsl
 
-	pax-mark -m "${ED%/}"/usr/$(get_libdir)/libreoffice/program/soffice.bin
-	pax-mark -m "${ED%/}"/usr/$(get_libdir)/libreoffice/program/unopkg.bin
+	pax-mark -m "${ED}"/usr/$(get_libdir)/libreoffice/program/soffice.bin
+	pax-mark -m "${ED}"/usr/$(get_libdir)/libreoffice/program/unopkg.bin
 }
 
 pkg_preinst() {

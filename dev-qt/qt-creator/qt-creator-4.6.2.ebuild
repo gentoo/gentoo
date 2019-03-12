@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -62,7 +62,11 @@ DEPEND="${CDEPEND}
 	virtual/pkgconfig
 	doc? ( >=dev-qt/qdoc-${QT_PV} )
 	test? (
-		>=dev-qt/qtdeclarative-${QT_PV}[localstorage,xml]
+		>=dev-qt/qtdeclarative-${QT_PV}[localstorage]
+		|| (
+			>=dev-qt/qtxmlpatterns-5.12.1-r1:5
+			<dev-qt/qtdeclarative-5.12.0[xml]
+		)
 		>=dev-qt/qtquickcontrols2-${QT_PV}
 		>=dev-qt/qttest-${QT_PV}
 	)

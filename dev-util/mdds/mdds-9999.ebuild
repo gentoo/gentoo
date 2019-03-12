@@ -19,8 +19,6 @@ LICENSE="MIT"
 SLOT="1/${PV%.*}"
 IUSE="doc valgrind"
 
-RDEPEND="dev-libs/boost:="
-DEPEND="${RDEPEND}"
 BDEPEND="
 	doc? (
 		app-doc/doxygen
@@ -28,6 +26,8 @@ BDEPEND="
 	)
 	valgrind? ( dev-util/valgrind )
 "
+DEPEND="dev-libs/boost:="
+RDEPEND="${DEPEND}"
 
 PATCHES=( "${FILESDIR}/${PN}-1.4.3-buildsystem.patch" )
 
