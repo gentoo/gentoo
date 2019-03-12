@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 EGO_PN="github.com/${PN}/${PN}"
 
-inherit golang-vcs-snapshot systemd user eapi7-ver
+inherit golang-vcs-snapshot systemd user
 
 DESCRIPTION="Open Source Continuous File Synchronization"
 HOMEPAGE="https://syncthing.net"
@@ -88,36 +88,5 @@ src_install() {
 
 		insinto /etc/logrotate.d
 		newins "${FILESDIR}/strelaysrv.logrotate" strelaysrv
-	fi
-}
-
-pkg_postinst() {
-	local v
-	for v in ${REPLACING_VERSIONS}; do
-		if [[ $(ver_cut 2) -gt \
-				$(ver_cut 2 ${v}) ]]; then
-			ewarn "Version ${PV} is not protocol-compatible with version" \
-				"0.$(($(ver_cut 2) - 1)).x or lower."
-			ewarn "Make sure all your devices are running at least version" \
-				"0.$(ver_cut 2).0."
-		fi
-		ewarn "Syncthing OpenRC init script now uses the upstream default of"
-		ewarn ""
-		ewarn "  /var/lib/${PN}/.config/${PN}"
-		ewarn ""
-		ewarn "as its configuration directory. Please set SYNCTHING_HOMEDIR"
-		ewarn "to /var/lib/${PN} in /etc/conf.d/${PN} if you wish to continue"
-		ewarn "using the old Gentoo default. Systemd users are not affected."
-	done
-
-	# check if user syncthing-relaysrv exists
-	# if yes, warn that it has been moved to strelaysrv
-	if [[ -n "$(egetent passwd syncthing-relaysrv 2>/dev/null)" ]]; then
-		ewarn
-		ewarn "The user and group for the relay server have been changed"
-		ewarn "from syncthing-relaysrv to strelaysrv"
-		ewarn "The old user and group are not deleted automatically. Delete them by running:"
-		ewarn "    userdel -r syncthing-relaysrv"
-		ewarn "    groupdel syncthing-relaysrv"
 	fi
 }
