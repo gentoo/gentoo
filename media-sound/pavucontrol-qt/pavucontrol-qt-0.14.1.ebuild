@@ -31,4 +31,6 @@ DEPEND="
 	dev-qt/qtwidgets:5
 	media-sound/pulseaudio[glib]
 "
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	!lxqt-base/lxqt-l10n
+"
