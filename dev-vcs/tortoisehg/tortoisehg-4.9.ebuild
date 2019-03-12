@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,7 @@ inherit desktop distutils-r1
 if [[ ${PV} != *9999* ]]; then
 	KEYWORDS="~amd64 ~x86"
 	SRC_URI="https://www.bitbucket.org/${PN}/targz/downloads/${P}.tar.gz"
-	HG_DEPEND=">=dev-vcs/mercurial-4.6 <dev-vcs/mercurial-4.8"
+	HG_DEPEND=">=dev-vcs/mercurial-4.8 <dev-vcs/mercurial-4.10"
 else
 	inherit mercurial
 	EHG_REPO_URI="https://bitbucket.org/tortoisehg/thg"
@@ -68,7 +68,7 @@ python_install_all() {
 	domenu contrib/thg.desktop
 
 	# Remove file that collides with >=mercurial-4.0 (bug #599266).
-	rm "${ED%/}"/usr/$(get_libdir)/${EPYTHON}/site-packages/hgext3rd/__init__.py \
+	rm "${ED}"/usr/$(get_libdir)/${EPYTHON}/site-packages/hgext3rd/__init__.py \
 		|| die
 }
 
