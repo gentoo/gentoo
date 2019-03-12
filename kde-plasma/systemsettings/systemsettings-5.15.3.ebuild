@@ -43,6 +43,11 @@ RDEPEND="${DEPEND}
 	gtk? ( $(add_plasma_dep kde-gtk-config) )
 "
 
+src_prepare() {
+	rm -r po/id/docs || die "failed to remove Indonesian docs" # bug 680162
+	kde5_src_prepare
+}
+
 src_configure() {
 	local mycmakeargs=(
 		$(cmake-utils_use_find_package classic KF5KHtml)
