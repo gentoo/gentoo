@@ -13,7 +13,7 @@ HOMEPAGE="
 SRC_URI="https://github.com/michaelrsweet/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Mini-XML"
-SLOT="1/6"
+SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="static-libs threads"
 
