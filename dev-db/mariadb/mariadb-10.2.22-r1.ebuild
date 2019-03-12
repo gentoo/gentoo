@@ -225,6 +225,12 @@ pkg_postinst() {
 			elog "--wsrep-new-cluster to the options in /etc/conf.d/mysql for one node."
 			elog "This option should then be removed for subsequent starts."
 			einfo
+			if use sst-xtrabackup ; then
+				ewarn "As per https://mariadb.com/kb/en/meta/xtrabackup_warning/, XtraBackup"
+				ewarn "as an SST is broken by default beginning with 10.2.19 with the setting"
+				ewarn "innodb_safe_truncate=ON.  Please migrate to sst-mariabackup instead."
+				ewarn "sst-xtrabackup is being removed in 10.3 and higher."
+			fi
 		fi
 	fi
 
