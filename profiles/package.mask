@@ -120,11 +120,6 @@ app-arch/freeze
 =sys-libs/libomp-8.0.0_rc*
 =sys-devel/clang-runtime-8.0.0_rc*
 
-# Mart Raudsepp <leio@gentoo.org> (12 Feb 2019)
-# Was not well maintained upstream, dropped with tracker-2.
-# Removal in 30 days. Bug 677798
-gnome-extra/nautilus-tracker-tags
-
 # Miroslav Šulc <fordfrog@gentoo.org> (10 Feb 2019)
 # Depends on >=virtual/{jdk,jre}-11 which is masked
 =www-servers/tomcat-9.0.16
