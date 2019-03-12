@@ -11,7 +11,7 @@ DESCRIPTION="Data Model and Extraction System for Travel Reservation information
 HOMEPAGE="https://www.kde.org/applications/office/kontact/"
 
 LICENSE="LGPL-2.1+"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="pdf"
 
 DEPEND="
