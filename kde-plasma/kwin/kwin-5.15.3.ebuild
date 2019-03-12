@@ -87,6 +87,8 @@ PDEPEND="
 RESTRICT+=" test"
 
 src_prepare() {
+	rm -r po/id/docs || die "failed to remove Indonesian docs" # bug 680136
+
 	kde5_src_prepare
 	use multimedia || eapply "${FILESDIR}/${PN}-gstreamer-optional.patch"
 
