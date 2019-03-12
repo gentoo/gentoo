@@ -20,6 +20,7 @@ IUSE="+luajit"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="dev-libs/libbpf:=
+	>=sys-kernel/linux-headers-4.18
 	>=dev-libs/elfutils-0.166:=
 	sys-devel/clang:=
 	>=sys-devel/llvm-3.7.1:=[llvm_targets_BPF(+)]
