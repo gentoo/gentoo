@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install postinst postrm preinst prepare
-DEPEND=>=dev-libs/glib-2.16:2 dev-libs/gmp:0= dev-libs/mpfr:0= sys-libs/ncurses:0= sys-libs/readline:0= gnome? ( >=x11-libs/gtk+-2.18:2 x11-libs/gtksourceview:2.0 >=x11-libs/vte-0.26.0:0 ) dev-util/intltool virtual/yacc sys-devel/flex >=app-portage/elt-patches-20170815 app-arch/xz-utils dev-util/desktop-file-utils x11-misc/shared-mime-info
+DEPEND=>=dev-libs/glib-2.16:2 dev-libs/gmp:0= dev-libs/mpfr:0= sys-libs/ncurses:0= sys-libs/readline:0= gnome? ( >=x11-libs/gtk+-2.18:2 x11-libs/gtksourceview:2.0 >=x11-libs/vte-0.26.0:0 ) dev-util/gtk-update-icon-cache dev-util/intltool virtual/yacc sys-devel/flex >=app-portage/elt-patches-20170815 app-arch/xz-utils dev-util/desktop-file-utils x11-misc/shared-mime-info
 DESCRIPTION=Genius Mathematics Tool and the GEL Language
 EAPI=6
 HOMEPAGE=https://www.jirka.org/genius.html
@@ -10,4 +10,4 @@ RDEPEND=>=dev-libs/glib-2.16:2 dev-libs/gmp:0= dev-libs/mpfr:0= sys-libs/ncurses
 SLOT=0
 SRC_URI=mirror://gnome/sources/genius/1.0/genius-1.0.23.tar.xz doc? ( https://www.jirka.org/genius-reference.pdf )
 _eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	gnome.org	532d56d07b9eace4831aaa817d2b756a	gnome2	1a42e8c41af42cb294817dcc5b7e3df6	gnome2-utils	532371cfcba45b2ab0d2950547c97d95	libtool	f143db5a74ccd9ca28c1234deffede96	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	b2f01ad412baf81650c23fcf0975fa33	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	versionator	2352c3fc97241f6a02042773c8287748	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	14d00d009167652b1fa363e55effe213
-_md5_=ea429848770c77a2e02e0d92640f765f
+_md5_=924ed9f3738031f19bd9f66485907441
