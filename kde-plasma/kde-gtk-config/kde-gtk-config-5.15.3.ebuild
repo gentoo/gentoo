@@ -24,6 +24,7 @@ DEPEND="
 	$(add_frameworks_dep knewstuff)
 	$(add_frameworks_dep kwidgetsaddons)
 	$(add_qt_dep qtgui)
+	$(add_qt_dep qtsvg)
 	$(add_qt_dep qtwidgets)
 	dev-libs/glib:2
 	gnome-base/gsettings-desktop-schemas
