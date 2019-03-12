@@ -33,6 +33,8 @@ src_prepare() {
 }
 
 src_compile() {
+	unset XDG_CACHE_HOME
+
 	pushd src/${EGO_PN} || die
 	MC_RELEASE="${MY_PV}"
 	GOPATH="${S}" go build --ldflags "$(go run buildscripts/gen-ldflags.go)" -o ${PN} || die
