@@ -9,7 +9,4 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
-	<use>
-		<flag name="extras">Pdf results, extra fonts, html docs support</flag>
-	</use>
 </pkgmetadata>
