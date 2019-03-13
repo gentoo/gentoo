@@ -1,19 +1,25 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit qmake-utils systemd user readme.gentoo-r1
 
 DESCRIPTION="Mumble is an open source, low-latency, high quality voice chat software"
 HOMEPAGE="https://wiki.mumble.info"
-if [[ "${PV}" = 9999 ]] ; then
+if [[ "${PV}" == 9999 ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/mumble-voip/mumble.git"
 	EGIT_SUBMODULES=( '-*' )
 else
-	MY_P="mumble-${PV/_/~}"
-	SRC_URI="https://mumble.info/snapshot/${MY_P}.tar.gz"
+	MY_PN="mumble"
+	if [[ "${PV}" == *_pre* ]] ; then
+		MY_P="${MY_PN}-${PV}"
+		SRC_URI="https://dev.gentoo.org/~polynomial-c/dist/${MY_P}.tar.xz"
+	else
+		MY_P="${MY_PN}-${PV/_/~}"
+		SRC_URI="https://mumble.info/snapshot/${MY_P}.tar.gz"
+	fi
 	KEYWORDS="~amd64 ~arm ~x86"
 	S="${WORKDIR}/${MY_P}"
 fi
@@ -41,6 +47,8 @@ RDEPEND="
 
 DEPEND="${RDEPEND}
 	>=dev-libs/boost-1.41.0
+"
+BDEPEND="
 	virtual/pkgconfig"
 
 DOC_CONTENTS="
