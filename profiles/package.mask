@@ -124,28 +124,6 @@ app-arch/freeze
 # Depends on >=virtual/{jdk,jre}-11 which is masked
 =www-servers/tomcat-9.0.16
 
-# Brian Evans <grknight@gentoo.org> (7 Feb 2019)
-# These packages will not build properly under the new split
-# library package easily and have no maintainer.
-# Cannot verify if they work with modern database versions either.
-# Removal in 30 days. Bug 677450
-dev-db/lib_mysqludf_log
-dev-db/lib_mysqludf_stem
-dev-db/mysql-udf-base64
-dev-db/mysql-udf-http
-dev-db/mysql-udf-ipv6
-
-# Erik Mackdanz <stasibear@gentoo.org> (6 Feb 2019)
-# Dead upstream #677400
-# Masked for removal in 30 days.
-sys-fs/cloudfuse
-
-# Tim Harder <radhermit@gentoo.org> (6 Feb 2019)
-# Deprecated and unmaintained, use sieve for a replacement.
-# https://wiki2.dovecot.org/HowTo/AntispamWithSieve
-# Masked for removal in 30 days.
-mail-filter/dovecot-antispam
-
 # Jeroen Roovers <jer@gentoo.org> (31 Jan 2019)
 # Depends on =dev-libs/openssl-1.1.1*
 # bug #670574
