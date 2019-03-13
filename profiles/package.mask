@@ -30,6 +30,12 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (13 Mar 2019)
+# Contains vulnerability (CVE-2016-2049) that has not been resolved
+# for almost 3 years.  No reverse dependencies.
+# Removal in 30 days.  Bug #572882.
+dev-php/php-openid
+
+# Michał Górny <mgorny@gentoo.org> (13 Mar 2019)
 # The eselect module is obsolete, now that dev-lang/gnat-gpl is the only
 # implementation in Gentoo.  It is unmaintained and has unresolved QA
 # issues.
