@@ -62,7 +62,7 @@ SLOT="0"
 if [[ ${PV} != 9999* ]] ; then
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 fi
-IUSE="+client lzma multitarget nls +python +server test vanilla xml"
+IUSE="+client lzma multitarget nls +python +server source-highlight test vanilla xml"
 REQUIRED_USE="
 	python? ( ${PYTHON_REQUIRED_USE} )
 	|| ( client server )
@@ -78,7 +78,11 @@ RDEPEND="
 		python? ( ${PYTHON_DEPS} )
 		xml? ( dev-libs/expat )
 		sys-libs/zlib
-	)"
+	)
+	source-highlight? (
+		dev-util/source-highlight
+	)
+"
 DEPEND="${RDEPEND}"
 BDEPEND="
 	app-arch/xz-utils
@@ -88,6 +92,10 @@ BDEPEND="
 		test? ( dev-util/dejagnu )
 		nls? ( sys-devel/gettext )
 	)"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-source-highlight.patch
+)
 
 S=${WORKDIR}/${PN}-${MY_PV}
 
@@ -165,6 +173,7 @@ src_configure() {
 			$(use_with xml expat)
 			$(use_with lzma)
 			$(use_enable nls)
+			$(use_enable source-highlight)
 			$(use multitarget && echo --enable-targets=all)
 			$(use_with python python "${EPYTHON}")
 		)
