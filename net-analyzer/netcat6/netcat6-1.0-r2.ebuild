@@ -1,10 +1,10 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 inherit eutils autotools toolchain-funcs
 
-DESCRIPTION="netcat clone with better IPv6 support, improved code, etc..."
+DESCRIPTION="Obsolete netcat clone from before netcat had IPv6 support"
 HOMEPAGE="http://netcat6.sourceforge.net/"
 SRC_URI="ftp://ftp.deepspace6.net/pub/ds6/sources/nc6/nc6-${PV}.tar.bz2"
 
