@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools systemd toolchain-funcs
+inherit autotools systemd readme.gentoo-r1 toolchain-funcs
 
 DESCRIPTION="Daemon to use hardware random number generators"
 HOMEPAGE="https://github.com/nhorman/rng-tools"
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/nhorman/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~x86"
-IUSE="jitterentropy nistbeacon selinux"
+IUSE="jitterentropy nistbeacon pkcs11 selinux"
 
 DEPEND="dev-libs/libgcrypt:0
 	dev-libs/libgpg-error
@@ -24,6 +24,9 @@ DEPEND="dev-libs/libgcrypt:0
 		net-misc/curl[ssl]
 		dev-libs/libxml2:2=
 		dev-libs/openssl:0=
+	)
+	pkcs11? (
+		dev-libs/libp11:=
 	)
 	elibc_musl? ( sys-libs/argp-standalone )
 "
@@ -38,7 +41,6 @@ DEPEND="${DEPEND}
 PATCHES=(
 	"${FILESDIR}"/test-for-argp.patch
 	"${FILESDIR}"/${PN}-5-fix-textrels-on-PIC-x86.patch #469962
-	"${FILESDIR}"/${PN}-6.4-jitterentropy-linking-fix.patch
 )
 
 src_prepare() {
@@ -47,11 +49,6 @@ src_prepare() {
 
 	mv README.md README || die
 
-	if use jitterentropy; then
-		# Fool the build system into thinking that
-		# jitterentropy source code exists
-		touch "${S}"/jitterentropy-library/Makefile || die
-	fi
 	eautoreconf
 
 	sed -i '/^AR /d' Makefile.in || die
@@ -59,12 +56,34 @@ src_prepare() {
 }
 
 src_configure() {
-	econf $(use_with nistbeacon)
+	local myeconfargs=(
+		$(use_enable jitterentropy)
+		$(use_with nistbeacon)
+		$(use_with pkcs11)
+	)
+
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {
 	default
-	newinitd "${FILESDIR}"/rngd-initd-6 rngd
-	newconfd "${FILESDIR}"/rngd-confd-4.1 rngd
+	newinitd "${FILESDIR}"/rngd-initd-6.7 rngd
+	newconfd "${FILESDIR}"/rngd-confd-6.7 rngd
 	systemd_dounit "${FILESDIR}"/rngd.service
+
+	if use pkcs11; then
+		local DISABLE_AUTOFORMATTING=1
+		local DOC_CONTENTS="
+The PKCS11 entropy source may require extra packages (e.g. 'dev-libs/opensc')
+to support various smartcard readers. Make sure 'PKCS11_OPTIONS' in:
+	'${EROOT%/}/etc/conf.d/rngd'
+reflects the correct PKCS11 engine path to be used by rngd.
+"
+		readme.gentoo_create_doc
+	fi
+
+}
+
+pkg_postinst() {
+	use pkcs11 && readme.gentoo_print_elog
 }
