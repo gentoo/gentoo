@@ -5287,6 +5287,7 @@ sys-apps/qingy:opensslcrypt - Encrypt communications between qingy and its GUI u
 sys-apps/ripgrep:man - Build and install man pages.
 sys-apps/rng-tools:jitterentropy - Enable Jitter RNG entropy support
 sys-apps/rng-tools:nistbeacon - Enable NIST beacon entropy support
+sys-apps/rng-tools:pkcs11 - Enable PKCS11 entropy support
 sys-apps/sed:forced-sandbox - Always enable --sandbox mode for simpler/secure runtime (disables e/r/w commands). Note: This may break many configure scripts, so it should be avoided on dev systems (and generally used on binpkg/final systems only).
 sys-apps/selinux-python:audit - Enable support for sys-process/audit and use the audit_* functions (like audit_getuid instead of getuid())
 sys-apps/smartmontools:caps - Build against sys-libs/libcap-ng to allow smartd to drop its privileges.
