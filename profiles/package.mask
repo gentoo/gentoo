@@ -30,6 +30,25 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (13 Mar 2019)
+# Unresolved vulnerability (CVE-2018-14663).  The maintainer is inactive
+# for over a year.
+# Removal in 30 days.  Bug #670214.
+net-dns/dnsdist
+
+# Michał Górny <mgorny@gentoo.org> (13 Mar 2019)
+# Contains vulnerability (CVE-2016-2049) that has not been resolved
+# for almost 3 years.  No reverse dependencies.
+# Removal in 30 days.  Bug #572882.
+dev-php/php-openid
+
+# Michał Górny <mgorny@gentoo.org> (13 Mar 2019)
+# The eselect module is obsolete, now that dev-lang/gnat-gpl is the only
+# implementation in Gentoo.  It is unmaintained and has unresolved QA
+# issues.
+# Removal in 30 days.  Bug #362753.
+app-eselect/eselect-gnat
+
+# Michał Górny <mgorny@gentoo.org> (13 Mar 2019)
 # An ancient netcat clone that has been declared obsolete upstream,
 # yet keeps confusing Gentoo users into thinking it's better than
 # the original.  Recommended alternatives are net-analyzer/netcat,
