@@ -38,7 +38,6 @@ ipod
 ipv6
 lm_sensors
 ncurses
-netboot
 opengl
 oss
 pcmcia
