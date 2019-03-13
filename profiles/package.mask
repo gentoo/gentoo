@@ -181,11 +181,6 @@ dev-libs/gost-engine
 # Causes a dependency loop in the OpenRC script. Bug #651998
 =sys-fs/cryptsetup-2.0.5-r1
 
-# Pacho Ramos <pacho@gentoo.org> (01 Nov 2018)
-# All this packages are broken and need major version bumps to fix them. See
-# bug #504114, #486510, #510550, #511096, #517260, #551784, #616490, #
-net-voip/linphone
-
 # Aaron W. Swenson <titanofold@gentoo.org> (25 Oct 2018)
 # Fails to build against up to date OpenSSL library (Bug 663966). No longer
 # supported upstream. Use dev-db/pgadmin4.
