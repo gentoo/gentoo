@@ -27,7 +27,7 @@ if [[ ${MOZ_ESR} == 1 ]] ; then
 fi
 
 # Patch version
-PATCH="${PN}-66.0-patches-02"
+PATCH="${PN}-66.0-patches-03"
 MOZ_HTTP_URI="https://archive.mozilla.org/pub/${PN}/releases"
 
 LLVM_MAX_SLOT=8
