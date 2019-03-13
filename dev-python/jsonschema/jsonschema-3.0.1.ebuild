@@ -21,6 +21,7 @@ RDEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/strict-rfc3339[${PYTHON_USEDEP}]
 	dev-python/webcolors[${PYTHON_USEDEP}]
+	>=dev-python/attrs-17.4.0[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep \
 		'dev-python/functools32[${PYTHON_USEDEP}]' 'python2*' pypy)
 	"
