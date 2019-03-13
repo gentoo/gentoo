@@ -135,11 +135,6 @@ dev-db/mysql-udf-base64
 dev-db/mysql-udf-http
 dev-db/mysql-udf-ipv6
 
-# Erik Mackdanz <stasibear@gentoo.org> (6 Feb 2019)
-# Dead upstream #677400
-# Masked for removal in 30 days.
-sys-fs/cloudfuse
-
 # Jeroen Roovers <jer@gentoo.org> (31 Jan 2019)
 # Depends on =dev-libs/openssl-1.1.1*
 # bug #670574
