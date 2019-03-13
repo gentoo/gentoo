@@ -132,7 +132,6 @@ app-arch/freeze
 dev-db/lib_mysqludf_log
 dev-db/lib_mysqludf_stem
 dev-db/mysql-udf-base64
-dev-db/mysql-udf-http
 
 # Jeroen Roovers <jer@gentoo.org> (31 Jan 2019)
 # Depends on =dev-libs/openssl-1.1.1*
