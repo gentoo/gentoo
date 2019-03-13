@@ -124,13 +124,6 @@ app-arch/freeze
 # Depends on >=virtual/{jdk,jre}-11 which is masked
 =www-servers/tomcat-9.0.16
 
-# Brian Evans <grknight@gentoo.org> (7 Feb 2019)
-# These packages will not build properly under the new split
-# library package easily and have no maintainer.
-# Cannot verify if they work with modern database versions either.
-# Removal in 30 days. Bug 677450
-dev-db/lib_mysqludf_log
-
 # Jeroen Roovers <jer@gentoo.org> (31 Jan 2019)
 # Depends on =dev-libs/openssl-1.1.1*
 # bug #670574
