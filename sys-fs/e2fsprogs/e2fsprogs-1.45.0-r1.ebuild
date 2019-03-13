@@ -70,9 +70,9 @@ src_configure() {
 
 	local myeconfargs=(
 		--with-root-prefix="${EPREFIX%/}/"
-		--with-crond-dir="${EPREFIX}/etc/cron.d"
+		--with-crond-dir="${EPREFIX%/}/etc/cron.d"
 		--with-systemd-unit-dir="$(systemd_get_systemunitdir)"
-		--with-udev-rules-dir="$(get_udevdir)/rules.d"
+		--with-udev-rules-dir="${EPREFIX%/}$(get_udevdir)/rules.d"
 		--enable-symlink-install
 		--enable-elf-shlibs
 		$(tc-has-tls || echo --disable-tls)
