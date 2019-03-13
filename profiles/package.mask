@@ -149,7 +149,6 @@ mail-filter/dovecot-antispam
 # Jeroen Roovers <jer@gentoo.org> (31 Jan 2019)
 # Depends on =dev-libs/openssl-1.1.1*
 # bug #670574
-=net-libs/nodejs-11.9*
 =net-libs/nodejs-11.10*
 =net-libs/nodejs-11.11*
 
@@ -179,32 +178,10 @@ dev-libs/gost-engine
 # Masked while being tested and reverse deps aren't fully compatible
 =dev-libs/openssl-1.1.1*
 
-# Andreas K. Hüttel <dilfridge@gentoo.org> (25 Dec 2018)
-# Included in dev-tex/texlive-publishers-2017; there is no
-# need for a separate package anymore. Removal in 30 days.
-<dev-tex/revtex-4.2
-
 # Hanno Boeck <hanno@gentoo.org (23 Dec 2018)
 # Needs new OpenSSL, should be unmasked together with
 # OpenSSL 1.1.1
 >=app-crypt/osslsigncode-2.0
-
-# Jeroen Roovers <jer@gentoo.org> (14 Dec 2018)
-# Deprecated short lived branches https://www.nvidia.com/object/unix.html
-# Unsupported legacy branch 304 https://bugs.gentoo.org/669588
-# See https://nvidia.custhelp.com/app/answers/detail/a_id/3142 for timelines on
-# upstream support for various branches. File a bug report if you absolutely
-# must use one of these ebuilds.
-# Removal on or about 16 January 2019
-=x11-drivers/nvidia-drivers-304*
-=x11-drivers/nvidia-drivers-375*
-=x11-drivers/nvidia-drivers-378*
-=x11-drivers/nvidia-drivers-381*
-=x11-drivers/nvidia-drivers-384*
-=x11-drivers/nvidia-drivers-387*
-=x11-drivers/nvidia-drivers-396*
-<x11-base/xorg-server-1.20.3
-<x11-base/xorg-drivers-1.20
 
 # Thomas Deutschmann <whissi@gentoo.org> (10 Dec 2018)
 # Requires >=dev-lang/lua-5.2 which is masked
@@ -307,13 +284,6 @@ media-libs/libglvnd
 # Vulnerable - see https://bugs.gentoo.org/630684
 # Please migrate to cyrus-imapd-3.0 releases
 =net-mail/cyrus-imapd-2.5*
-
-# Thomas Beierlein <tomjbe@gentoo.org> (23 Dec 2017)
-# To adapt to changed version naming by upstream
-# (pcb-yyyymmdd to pcb-x.y.z) we move the ebuild to
-# pcb-0_pyyyymmdd and mask >=pcb-20000000.
-# Do not remove the mask until newer version gets stable
->=sci-electronics/pcb-20000000
 
 # James Le Cuirot <chewi@gentoo.org> (17 Dec 2017)
 # Java 9+ is not yet fully supported on Gentoo. Packages cannot depend
