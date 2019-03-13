@@ -8531,6 +8531,7 @@ net-analyzer/zabbix 2.2.16: ZABBIX is software for monitoring of your applicatio
 net-analyzer/zniper 1.0-r1: Displays and kill active TCP connections seen by the selected interface
 net-dialup/cutecom 0.40.0-r1: CuteCom is a serial terminal, like minicom, written in qt
 net-dialup/fbgetty 0.1.698-r1: An extended getty for the framebuffer console
+net-dialup/freeradius 3.0.15: Highly configurable free RADIUS server
 net-dialup/freeradius-client 1.1.7: FreeRADIUS Client framework
 net-dialup/globespan-adsl 0.11-r1: Driver for various ADSL modems. Also known as EciAdsl
 net-dialup/isdn-firmware 2005.8.15.2: ISDN firmware for active ISDN cards (AVM, Eicon, etc.)
