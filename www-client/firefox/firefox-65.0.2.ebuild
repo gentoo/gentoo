@@ -475,13 +475,6 @@ src_configure() {
 		mozconfig_annotate '' --enable-rust-simd
 	fi
 
-	# skia has no support for big-endian platforms
-	if [[ $(tc-endian) == "big" ]] ; then
-		mozconfig_annotate 'big endian target' --disable-skia
-	else
-		mozconfig_annotate '' --enable-skia
-	fi
-
 	# use the gtk3 toolkit (the only one supported at this point)
 	# TODO: Will this result in automagic dependency on x11-libs/gtk+[wayland]?
 	mozconfig_annotate '' --enable-default-toolkit=cairo-gtk3

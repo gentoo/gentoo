@@ -27,7 +27,7 @@ if [[ ${MOZ_ESR} == 1 ]] ; then
 fi
 
 # Patch version
-PATCH="${PN}-66.0-patches-01"
+PATCH="${PN}-66.0-patches-02"
 MOZ_HTTP_URI="https://archive.mozilla.org/pub/${PN}/releases"
 
 LLVM_MAX_SLOT=8
@@ -113,7 +113,6 @@ DEPEND="${CDEPEND}
 	app-arch/zip
 	app-arch/unzip
 	>=dev-util/cbindgen-0.6.8
-	<dev-util/cbindgen-0.8
 	>=net-libs/nodejs-8.11.0
 	>=sys-devel/binutils-2.30
 	sys-apps/findutils
@@ -476,13 +475,6 @@ src_configure() {
 
 	if ! use x86 && [[ ${CHOST} != armv*h* ]] ; then
 		mozconfig_annotate '' --enable-rust-simd
-	fi
-
-	# skia has no support for big-endian platforms
-	if [[ $(tc-endian) == "big" ]] ; then
-		mozconfig_annotate 'big endian target' --disable-skia
-	else
-		mozconfig_annotate '' --enable-skia
 	fi
 
 	# use the gtk3 toolkit (the only one supported at this point)
