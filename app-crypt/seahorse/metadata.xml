@@ -8,26 +8,11 @@
 <use>
 	<flag name="ldap">Enable seahorse to manipulate GPG keys on a LDAP server.</flag>
 </use>
-<longdescription>Seahorse is a Gnome interface for GnuPG.  It's main purpose is to be a PGP/GPG Key Manager, though 
-it has other components including a text editor and file manager.
+<longdescription>Seahorse is a GNOME application for managing encryption keys.
+It also integrates with nautilus, gedit and other places for encryption operations.
 
-Key Manager Features:
-Generating a key
-Deleting a key
-Importing keys from text or a file
-Exporting a key to text or a file
-View key properties
-
-Key Properties Features:
-Show key info
-Change owner trust
-Change primary key's expiration date
-Change passphrase
-Export key
-Delete Key
-
-Plugins:
-Nautilus Integration
-Gedit plugin
+With seahorse you can create and manage PGP keys, create and manage SSH keys,
+publish and retrieve keys from key servers, cache your passphrase so you
+don't have to keep typing it and backup your keys and keyring.
 </longdescription>
 </pkgmetadata>
