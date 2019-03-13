@@ -49,8 +49,13 @@ SHA1='294b433'
 
 S="${WORKDIR}/Cockatrice-${MY_PV}"
 
+PATCHES=(
+	"${FILESDIR}"/use-ccache.patch
+)
+
 src_configure() {
 	local mycmakeargs=(
+		-DUSE_CCACHE=OFF
 		-DWITH_CLIENT=$(usex client)
 		-DWITH_ORACLE=$(usex oracle)
 		-DWITH_SERVER=$(usex server)
