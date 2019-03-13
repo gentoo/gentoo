@@ -7,11 +7,6 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
-# Brian Evans <grknight@gentoo.org> (12 Mar 2019)
-# Mask broken dependency until it can be removed
-# Use sst-mariabackup instead
->=dev-db/mariadb-10.3.0 sst-xtrabackup
-
 # Georgy Yakovlev <gyakovlev@gentoo.org> (05 Mar 2019)
 # Not keyworded on non-x86 arches
 app-admin/conserver freeipmi

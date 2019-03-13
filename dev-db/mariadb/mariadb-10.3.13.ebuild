@@ -31,7 +31,7 @@ SLOT="0/${SUBSLOT:-0}"
 IUSE="+backup bindist client-libs cracklib debug extraengine galera innodb-lz4
 	innodb-lzo innodb-snappy jdbc jemalloc kerberos latin1 libressl mroonga
 	numa odbc oqgraph pam +perl profiling rocksdb selinux +server sphinx
-	sst-rsync sst-mariabackup sst-xtrabackup static systemd systemtap tcmalloc
+	sst-rsync sst-mariabackup static systemd systemtap tcmalloc
 	test tokudb xml yassl"
 
 # Tests always fail when libressl is enabled due to hard-coded ciphers in the tests
@@ -124,7 +124,6 @@ RDEPEND="selinux? ( sec-policy/selinux-mysql )
 		=sys-cluster/galera-25*
 		sst-rsync? ( sys-process/lsof )
 		sst-mariabackup? ( net-misc/socat[ssl] )
-		sst-xtrabackup? ( net-misc/socat[ssl] )
 	) )
 	perl? ( !dev-db/mytop
 		virtual/perl-Getopt-Long
@@ -135,10 +134,8 @@ RDEPEND="selinux? ( sec-policy/selinux-mysql )
 "
 # For other stuff to bring us in
 # dev-perl/DBD-mysql is needed by some scripts installed by MySQL
-# percona-xtrabackup-bin causes a circular dependency if DBD-mysql is not already installed
 PDEPEND="perl? ( >=dev-perl/DBD-mysql-2.9004 )
-	 server? ( ~virtual/mysql-5.6[static=]
-		 galera? ( sst-xtrabackup? ( || ( >=dev-db/percona-xtrabackup-bin-2.2.4 dev-db/percona-xtrabackup ) ) ) )"
+	 server? ( ~virtual/mysql-5.6[static=] )"
 
 pkg_setup() {
 	if [[ ${MERGE_TYPE} != binary ]] ; then
@@ -583,6 +580,14 @@ src_install() {
 	if [[ -L "${ED}/usr/bin/wsrep_sst_rsync_wan" ]] && ! use galera ; then
 		rm "${ED}/usr/bin/wsrep_sst_rsync_wan" || die
 	fi
+
+	# Remove broken SST scripts that are incompatible
+	local scriptremove
+	for scriptremove in wsrep_sst_xtrabackup wsrep_sst_xtrabackup-v2 ; do
+		if [[ -e "${ED}/usr/bin/${scriptremove}" ]] ; then
+			rm "${ED}/usr/bin/${scriptremove}" || die
+		fi
+	done
 }
 
 # Official test instructions:
