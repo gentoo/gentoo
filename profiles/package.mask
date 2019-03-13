@@ -130,7 +130,6 @@ app-arch/freeze
 # Cannot verify if they work with modern database versions either.
 # Removal in 30 days. Bug 677450
 dev-db/lib_mysqludf_log
-dev-db/lib_mysqludf_stem
 
 # Jeroen Roovers <jer@gentoo.org> (31 Jan 2019)
 # Depends on =dev-libs/openssl-1.1.1*
