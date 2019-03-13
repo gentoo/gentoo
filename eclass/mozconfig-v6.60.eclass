@@ -183,22 +183,6 @@ DEPEND="app-arch/zip
 				sys-devel/llvm:6[gold]
 			)
 		)
-		(
-			sys-devel/clang:5
-			!clang? ( sys-devel/llvm:5 )
-			clang? (
-				=sys-devel/lld-5*
-				sys-devel/llvm:5[gold]
-			)
-		)
-		(
-			sys-devel/clang:4
-			!clang? ( sys-devel/llvm:4 )
-			clang? (
-				=sys-devel/lld-4*
-				sys-devel/llvm:4[gold]
-			)
-		)
 	)
 	pulseaudio? ( media-sound/pulseaudio )
 	elibc_glibc? (
