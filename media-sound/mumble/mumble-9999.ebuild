@@ -1,21 +1,25 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit desktop gnome2-utils qmake-utils xdg-utils
+inherit desktop qmake-utils xdg
 
 DESCRIPTION="Mumble is an open source, low-latency, high quality voice chat software"
 HOMEPAGE="https://wiki.mumble.info"
-if [[ "${PV}" = 9999 ]] ; then
+if [[ "${PV}" == 9999 ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/mumble-voip/mumble.git"
 	EGIT_SUBMODULES=( '-*' celt-0.7.0-src celt-0.11.0-src themes/Mumble 3rdparty/rnnoise-src )
 else
-	MY_P="${PN}-${PV/_/~}"
-	SRC_URI="https://mumble.info/snapshot/${MY_P}.tar.gz"
+	if [[ "${PV}" == *_pre* ]] ; then
+		SRC_URI="https://dev.gentoo.org/~polynomial-c/dist/${P}.tar.xz"
+	else
+		MY_P="${PN}-${PV/_/~}"
+		SRC_URI="https://mumble.info/snapshot/${MY_P}.tar.gz"
+		S="${WORKDIR}/${MY_P}"
+	fi
 	KEYWORDS="~amd64 ~arm64 ~x86"
-	S="${WORKDIR}/${MY_P}"
 fi
 
 LICENSE="BSD MIT"
@@ -51,9 +55,11 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	>=dev-libs/boost-1.41.0
+	x11-base/xorg-proto
+"
+BDEPEND="
 	dev-qt/linguist-tools:5
 	virtual/pkgconfig
-	x11-base/xorg-proto
 "
 
 src_configure() {
@@ -115,9 +121,12 @@ src_install() {
 	dolib.so "${dir}"/libmumble.so* "${dir}"/libcelt0.so* "${dir}"/plugins/lib*.so*
 }
 
+pkg_preinst() {
+	xdg_pkg_preinst
+}
+
 pkg_postinst() {
-	gnome2_icon_cache_update
-	xdg_desktop_database_update
+	xdg_pkg_postinst
 	echo
 	elog "Visit http://mumble.sourceforge.net/ for futher configuration instructions."
 	elog "Run mumble-overlay to start the OpenGL overlay (after starting mumble)."
@@ -125,6 +134,5 @@ pkg_postinst() {
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
-	xdg_desktop_database_update
+	xdg_pkg_postrm
 }
