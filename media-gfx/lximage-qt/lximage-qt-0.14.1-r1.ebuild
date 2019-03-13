@@ -35,7 +35,6 @@ DEPEND="
 	dev-qt/qtwidgets:5
 	dev-qt/qtx11extras:5
 	media-libs/libexif
-	>=x11-libs/libfm-1.2:=
 	>=x11-libs/libfm-qt-0.12.0:=
 	x11-libs/libX11
 	x11-libs/libXfixes

@@ -21,6 +21,7 @@ SLOT="0"
 IUSE="test"
 
 BDEPEND="
+	>=dev-util/lxqt-build-tools-0.6.0
 	virtual/pkgconfig
 "
 RDEPEND="
