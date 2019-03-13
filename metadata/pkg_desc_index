@@ -8477,6 +8477,7 @@ net-analyzer/nsca 2.7.2-r103: Nagios Service Check Acceptor
 net-analyzer/nstats 0.4-r2: Displays statistics about ethernet traffic including protocol breakdown
 net-analyzer/nttcp 1.47-r1 1.47-r3: tool to test TCP and UDP throughput
 net-analyzer/oinkmaster 2.0: Rule management for SNORT
+net-analyzer/openbsd-netcat 1.190: The OpenBSD network swiss army knife
 net-analyzer/p0f 3.09_beta: A tool to perform passive OS detection based on SYN packets
 net-analyzer/pbnj 2.04: A tool for running Nmap scans and diff'ing the results
 net-analyzer/pinger 0.32e 0.33: Cyclic multi ping utility for selected adresses using GTK/ncurses
@@ -8830,7 +8831,7 @@ net-libs/udns 0.4: Async-capable DNS stub resolver library
 net-libs/uhttpmock 0.5.0 0.5.1: HTTP web service mocking library
 net-libs/webkit-gtk 2.22.6: Open source web browser engine
 net-libs/wvstreams 4.6.1-r3: A network programming library in C++
-net-libs/xrootd 4.4.0 4.8.3: Extended ROOT remote file server
+net-libs/xrootd 4.8.3: Extended ROOT remote file server
 net-libs/zeromq 2.2.0 3.2.3 3.2.5 4.1.1 4.1.6 4.2.1 4.2.2-r2 4.3.0 4.3.1: A brokerless kernel
 net-mail/altermime 0.3.11: alterMIME is a small program which is used to alter your mime-encoded mailpacks
 net-mail/amavis-logwatch 1.51.03-r3: A log analyzer for amavisd-new
