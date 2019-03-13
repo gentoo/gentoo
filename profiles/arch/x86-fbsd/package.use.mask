@@ -8,12 +8,6 @@
 # skins requires USE=qt5 that is masked in this profile.
 media-video/vlc aom aribsub dav1d skins
 
-# Michał Górny <mgorny@gentoo.org> (20 Jan 2018)
-# Needs sys-libs/libomp which is not keyworded. Leaving the decision
-# whether sys-libs/libomp should eventually be keyworded to when new
-# LLVM is going to be keyworded.
-<sys-devel/clang-runtime-4 openmp
-
 # Thomas Deutschmann <whissi@gentoo.org> (26 Oct 2017)
 # idn: Needs net-dns/libidn2 which is not keyworded
 # uuid: Needs sys-apps/util-linux which is not keyworded
