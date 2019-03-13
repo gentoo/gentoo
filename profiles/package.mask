@@ -30,6 +30,14 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (13 Mar 2019)
+# An ancient netcat clone that has been declared obsolete upstream,
+# yet keeps confusing Gentoo users into thinking it's better than
+# the original.  Recommended alternatives are net-analyzer/netcat,
+# net-analyzer/openbsd-netcat, net-misc/socat...
+# Removal in 30 days.  Bug #573814.
+net-analyzer/netcat6
+
+# Michał Górny <mgorny@gentoo.org> (13 Mar 2019)
 # An obscure GNU audio file library with no reverse dependencies.  Last
 # release in 2015 (and we are one release behind).  Fails to build.
 # Removal in 30 days.  Bug #545818.
