@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install unpack
+DEPEND=>=app-crypt/gpgme-1.5.5:= >=dev-libs/libassuan-2.4.3 >=sys-fs/btrfs-progs-4.0.1 >=sys-fs/lvm2-2.02.145 dev-go/go-md2man >=dev-lang/go-1.10
+DESCRIPTION=Command line utility foroperations on container images and image repositories
+EAPI=6
+HOMEPAGE=https://github.com/containers/skopeo
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+RDEPEND=>=app-crypt/gpgme-1.5.5:= >=dev-libs/libassuan-2.4.3 >=sys-fs/btrfs-progs-4.0.1 >=sys-fs/lvm2-2.02.145
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/containers/skopeo/archive/v0.1.35.tar.gz -> skopeo-0.1.35.tar.gz
+_eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	golang-base	c57d2c3f9e1a02d0feb8b87c7b689892	golang-vcs-snapshot	12177e83bede6f7fb87eae383864b40b	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_md5_=5f2ec71f5a2f946ecd26c8daf2ded241
