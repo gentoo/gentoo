@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Sergei Trofimovich <slyfox@gentoo.org> (13 Oct 2018)
@@ -184,7 +184,6 @@ sys-apps/systemd -gnuefi
 # James Le Cuirot <chewi@gentoo.org> (11 Jul 2015)
 # Requires dev-java/fop but we don't support java on ia64.
 gnome-extra/libgda reports
-net-analyzer/wireshark doc-pdf
 
 # Pacho Ramos <pacho@gentoo.org> (13 Jun 2015)
 # Missing keywords, bug #513108

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Tobias Klausmann <klausman@gentoo.rog> (23/Nov/2018)
@@ -384,9 +384,6 @@ media-plugins/gst-plugins-meta dts libvisual
 # needs sys-libs/libcap-ng that is masked right now
 sys-apps/smartmontools caps
 
-# Raúl Porcel <armin76@gentoo.org> (5 Dec 2010)
-# Mask doc-pdf because of Java dependencies (bug #347259)
-net-analyzer/wireshark doc-pdf
 # legacy mask
 www-client/elinks javascript
 

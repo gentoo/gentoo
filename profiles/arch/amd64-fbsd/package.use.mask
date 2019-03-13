@@ -89,12 +89,6 @@ virtual/notification-daemon kde
 # Requires USE=seccomp that is masked in this profile.
 net-libs/gnutls test-full
 
-# Michał Górny <mgorny@gentoo.org> (20 Jan 2018)
-# Needs sys-libs/libomp which is not keyworded. Leaving the decision
-# whether sys-libs/libomp should eventually be keyworded to when new
-# LLVM is going to be keyworded.
-<sys-devel/clang-runtime-4 openmp
-
 # Ulrich Müller <ulm@gentoo.org> (23 Oct 2017)
 # Needs net-mail/mailutils which is not keyworded, bug #635216.
 app-editors/emacs mailutils

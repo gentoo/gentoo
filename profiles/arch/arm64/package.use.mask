@@ -466,7 +466,7 @@ media-gfx/fim graphicsmagick svg
 
 # Markus Meier <maekke@gentoo.org> (04 Aug 2013)
 # Unkeyworded deps, bug #474026
-app-admin/conky lua-cairo lua-imlib xmms2 audacious moc
+app-admin/conky lua-cairo lua-imlib xmms2 moc
 
 # Sergey Popov <pinkbyte@gentoo.org> (30 Jul 2013)
 # Not tested
@@ -526,10 +526,6 @@ app-accessibility/speech-dispatcher flite
 # Markus Meier <maekke@gentoo.org> (08 Dec 2012)
 # mask app-office/libreoffice java extensions
 app-office/libreoffice libreoffice_extensions_scripting-beanshell libreoffice_extensions_scripting-javascript libreoffice_extensions_wiki-publisher
-
-# Steev Klimaszewski <steev@gentoo.org> (03 Aug 2012)
-# No java on ARM
-net-analyzer/wireshark doc-pdf
 
 # Markus Meier <maekke@gentoo.org> (25 Jul 2012)
 # no stable media-video/vlc yet, bug #401313

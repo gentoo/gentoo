@@ -118,7 +118,6 @@ games-rpg/eschalon-book-1-demo
 games-rpg/wasteland2
 games-server/etqw-ded
 games-server/nwn-ded
-games-server/ut2003-ded
 games-simulation/bcs-demo
 games-strategy/darwinia
 games-strategy/darwinia-demo
@@ -142,8 +141,3 @@ sci-chemistry/cara-bin
 sci-chemistry/mars
 sci-electronics/eagle
 sys-libs/lib-compat-loki
-
-
-# AMD64 Team; <amd64@gentoo.org>
-# grub-1 is not available on no-multilib-profiles
-<sys-boot/grub-1.99

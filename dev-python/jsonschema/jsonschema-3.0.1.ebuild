@@ -16,11 +16,17 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~amd64-linux ~x86-linux"
 IUSE="test"
 
+BDEPEND="
+	dev-python/setuptools_scm[${PYTHON_USEDEP}]
+	"
+
 RDEPEND="
 	dev-python/rfc3987[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/strict-rfc3339[${PYTHON_USEDEP}]
 	dev-python/webcolors[${PYTHON_USEDEP}]
+	dev-python/pyrsistent[${PYTHON_USEDEP}]
+	>=dev-python/attrs-17.4.0[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep \
 		'dev-python/functools32[${PYTHON_USEDEP}]' 'python2*' pypy)
 	"

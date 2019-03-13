@@ -336,10 +336,6 @@ media-plugins/gst-plugins-meta dts dv libvisual modplug vcd wavpack
 # dev-libs/libev is not keyworded
 www-servers/lighttpd libev
 
-# Raúl Porcel <armin76@gentoo.org> (5 Dec 2010)
-# Mask doc-pdf because of Java dependencies (bug #347259)
-net-analyzer/wireshark doc-pdf
-
 # Justin Lecher <jlec@gentoo.org> (13 Aug 2010)
 # MKL not available on this arch
 media-gfx/povray mkl

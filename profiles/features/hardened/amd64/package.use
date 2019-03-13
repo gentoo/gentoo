@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Magnus Granberg <zorry@gentoo.org> (14 Jan, 2015)
@@ -10,4 +10,3 @@ media-video/libav pic
 media-libs/mesa pic
 media-libs/libpostproc pic
 media-libs/xvid pic
-app-emulation/open-vm-tools pic

@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation.
+# Copyright 1999-2019 Gentoo Authors.
 # Distributed under the terms of the GNU General Public License v2
 
 # This file contains descriptions of VIDEO_CARDS USE_EXPAND flags.
@@ -19,7 +19,6 @@ imx - VIDEO_CARDS setting to build driver for Freescale i.MX video cards
 intel - VIDEO_CARDS setting to build driver for Intel video cards
 iris - VIDEO_CARDS setting to build driver for Intel video cards Gen8 / Broadwell or newer
 mga - VIDEO_CARDS setting to build driver for mga video cards
-newport - VIDEO_CARDS setting to build driver for newport video cards
 nouveau - VIDEO_CARDS setting to build reverse-engineered driver for nvidia cards
 nvidia - VIDEO_CARDS setting to build driver for nvidia video cards
 nv - VIDEO_CARDS setting to build driver for nv video cards

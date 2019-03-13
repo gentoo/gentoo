@@ -155,7 +155,6 @@ app-admin/testdisk ewf
 # Brian Evans <grknight@gentoo.org> (5 Mar 2018)
 # Mask embedded USE on virtual/mysql and friends to transition it to be obsolete
 virtual/mysql embedded
-dev-db/mysql-cluster embedded
 dev-perl/DBD-mysql embedded
 
 # Brian Evans <grknight@gentoo.org> (28 Feb 2018)
@@ -183,9 +182,7 @@ media-video/ffmpeg appkit
 # gentoo-vm flag allows us to provide it without it breaking Gentoo
 # packages. Those who wish to experiment with it as a fully recognised
 # Gentoo JVM can unmask the flag.
-dev-java/oracle-jdk-bin:9 gentoo-vm
 dev-java/oracle-jdk-bin:11 gentoo-vm
-dev-java/oracle-jre-bin:9 gentoo-vm
 dev-java/openjdk-bin:11 gentoo-vm
 dev-java/openjdk:11 gentoo-vm
 
@@ -241,10 +238,6 @@ media-video/mpv libav
 # Andreas K. Hüttel <dilfridge@gentoo.org> (29 May 2017)
 # Does not build
 sci-libs/linux-gpib php
-
-# Michał Górny <mgorny@gentoo.org> (20 May 2017)
-# CUDA support in nvtt does not support GCC 4.5+.
-media-gfx/nvidia-texture-tools cuda
 
 # Michał Górny <mgorny@gentoo.org> (15 May 2017)
 # Mask ruby20-only compatible packages
