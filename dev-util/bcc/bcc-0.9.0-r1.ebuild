@@ -10,7 +10,8 @@ inherit cmake-utils linux-info python-single-r1 python-utils-r1
 DESCRIPTION="Tools for BPF-based Linux IO analysis, networking, monitoring, and more"
 HOMEPAGE="https://iovisor.github.io/bcc/"
 EGIT_COMMIT="v${PV}"
-SRC_URI="https://github.com/iovisor/bcc/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/iovisor/bcc/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz
+	mirror://gentoo/bcc-0.9.0-linux-5-bpf.patch.xz"
 RESTRICT="test"
 
 LICENSE="Apache-2.0"
@@ -47,6 +48,14 @@ pkg_pretend() {
 
 pkg_setup() {
 	python-single-r1_pkg_setup
+}
+
+src_prepare() {
+	# needs bpf.h from linux-5.0 to build
+	has_version '>=sys-kernel/linux-headers-5.0' || \
+		eapply "${WORKDIR}/bcc-0.9.0-linux-5-bpf.patch"
+
+	cmake-utils_src_prepare
 }
 
 src_configure() {
