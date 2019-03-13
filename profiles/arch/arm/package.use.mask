@@ -392,7 +392,7 @@ media-gfx/fim graphicsmagick svg
 
 # Markus Meier <maekke@gentoo.org> (04 Aug 2013)
 # Unkeyworded deps, bug #474026
-app-admin/conky audacious cmus irc lua-cairo lua-imlib lua-rsvg moc xmms2
+app-admin/conky cmus irc lua-cairo lua-imlib lua-rsvg moc xmms2
 
 # Sergey Popov <pinkbyte@gentoo.org> (30 Jul 2013)
 # Not tested
@@ -467,7 +467,7 @@ app-office/libreoffice libreoffice_extensions_scripting-beanshell libreoffice_ex
 
 # Steev Klimaszewski <steev@gentoo.org> (03 Aug 2012)
 # No java on ARM
-net-analyzer/wireshark doc-pdf bcg729 maxminddb
+net-analyzer/wireshark bcg729 maxminddb
 
 # Markus Meier <maekke@gentoo.org> (25 Jul 2012)
 # no stable media-video/vlc yet, bug #401313
