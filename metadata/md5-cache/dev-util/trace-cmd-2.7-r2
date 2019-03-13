@@ -1,13 +1,14 @@
-BDEPEND=>=dev-vcs/git-1.8.2.1[curl]
-DEFINED_PHASES=compile configure install setup unpack
+DEFINED_PHASES=compile configure install setup
 DEPEND=audit? ( sys-process/audit ) python? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),-python_single_target_python3_7(-),python_single_target_python2_7(+)] ) udis86? ( dev-libs/udis86 ) sys-kernel/linux-headers python? ( virtual/pkgconfig dev-lang/swig ) doc? ( app-text/asciidoc )
 DESCRIPTION=User-space front-end for Ftrace
 EAPI=7
 HOMEPAGE=https://git.kernel.org/cgit/linux/kernel/git/rostedt/trace-cmd.git
 IUSE=+audit doc python udis86 kernel_linux python_targets_python2_7
+KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2+ LGPL-2.1+
 RDEPEND=audit? ( sys-process/audit ) python? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_4(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),-python_single_target_python3_7(-),python_single_target_python2_7(+)] ) udis86? ( dev-libs/udis86 )
 REQUIRED_USE=python? ( python_targets_python2_7 )
 SLOT=0
-_eclasses_=git-r3	0d4635eeb5a96cd5315597a47eba25c9	linux-info	953c3b1c472dcadbf62098a9301327f2	multilib	b2f01ad412baf81650c23fcf0975fa33	python-single-r1	3a0fc81f484bfdbd9c2b7448015a36e4	python-utils-r1	12114a2a9aab35b93efc037a196b3234	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+SRC_URI=https://git.kernel.org/pub/scm/linux/kernel/git/rostedt/trace-cmd.git/snapshot/trace-cmd-v2.7.tar.gz
+_eclasses_=linux-info	953c3b1c472dcadbf62098a9301327f2	multilib	b2f01ad412baf81650c23fcf0975fa33	python-single-r1	3a0fc81f484bfdbd9c2b7448015a36e4	python-utils-r1	12114a2a9aab35b93efc037a196b3234	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
 _md5_=fc2ea587d99f014db314c4e3d0d5b282
