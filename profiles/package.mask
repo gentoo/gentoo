@@ -30,6 +30,26 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (13 Mar 2019)
+# Ancient asynchronous DNS library.  The current Gentoo version is
+# from 2006, and lacks support for IPv6, NSS, /etc/hosts.  There were
+# some new upstream activity in 2014-2016 but there is probably
+# no reason to bump it, now that it has no reverse dependencies anymore.
+# It had no Gentoo maintainer since 2004, when metadata.xml was added.
+# A good alternative is net-dns/c-ares.
+# Removal in 30 days.  Bug #513238.
+net-libs/adns
+
+# Michał Górny <mgorny@gentoo.org> (13 Mar 2019)
+# Ancient event-loop library with no reverse dependencies.  The current
+# version has been released in 2003, and has no maintainer since
+# at least 2006 (when metadata.xml was added).  Upstream released 1.0.1
+# at some point but there's probably no use in bumping it.  Blocks
+# removal of net-libs/adns.  Alternatives includes dev-libs/glib,
+# dev-libs/libevent, dev-libs/libev and many more.
+# Removal in 30 days.  Bug #680212.
+dev-libs/liboop
+
+# Michał Górny <mgorny@gentoo.org> (13 Mar 2019)
 # Both packages duplicate each other (#511032) and share the same bugs.
 # They are both unmaintained, apparently fail to build (#541894)
 # and have a bump pending for over 3 years (#557284).
