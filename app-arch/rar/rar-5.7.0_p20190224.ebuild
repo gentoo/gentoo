@@ -18,7 +18,7 @@ SRC_URI="x86? ( ${URI_x86} )
 
 LICENSE="RAR BSD BSD-2"
 SLOT="0"
-KEYWORDS="-* ~amd64 ~x86"
+KEYWORDS="-* amd64 x86"
 IUSE="all_sfx"
 RESTRICT="mirror bindist"
 
