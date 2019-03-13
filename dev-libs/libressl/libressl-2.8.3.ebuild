@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit multilib-minimal
+inherit multilib-minimal libtool
 
 DESCRIPTION="Free version of the SSL/TLS protocol forked from OpenSSL"
 HOMEPAGE="https://www.libressl.org/"
@@ -34,7 +34,10 @@ src_prepare() {
 		-e '/^[ \t]*USER_CFLAGS=/s#-O2"#"#' \
 		configure || die "fixing CFLAGS failed"
 
+	eapply "${FILESDIR}"/${P}-solaris10.patch
 	eapply_user
+
+	elibtoolize  # for Solaris
 }
 
 multilib_src_configure() {
