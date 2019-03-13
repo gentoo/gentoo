@@ -3147,7 +3147,6 @@ dev-libs/libnl 1.1.4 3.4.0: Libraries providing APIs to netlink protocol based L
 dev-libs/libofx 0.9.10: A library to support the Open Financial eXchange XML format
 dev-libs/liboil 0.3.17-r2: Library of simple functions that are optimized for various CPUs
 dev-libs/liboobs 3.0.0: Liboobs is a wrapping library to the System Tools Backends
-dev-libs/liboop 1.0-r1: low-level event loop management library for POSIX-based operating systems
 dev-libs/liborcus 0.13.4: Standalone file import filter library for spreadsheet documents
 dev-libs/libotf 0.9.13: Library for handling OpenType fonts (OTF)
 dev-libs/libowfat 0.31-r1: reimplement libdjb - excellent libraries from Dan Bernstein
@@ -8697,7 +8696,6 @@ net-irc/unrealircd 4.0.18-r1: An advanced Internet Relay Chat daemon
 net-irc/weechat 2.3: Portable and multi-interface IRC client
 net-irc/znc 1.7.1: An advanced IRC Bouncer
 net-libs/accounts-qt 1.15: Qt5 bindings for libaccounts-glib
-net-libs/adns 1.4: Advanced, easy to use, asynchronous-capable DNS client library and utilities
 net-libs/aqbanking 5.7.8: Generic Online Banking Interface
 net-libs/axtls 1.5.3 2.1.3: Embedded client/server TLSv1 SSL library and small HTTP(S) server
 net-libs/biblesync 1.1.2-r2: A multicast protocol to support Bible software shared co-navigation
