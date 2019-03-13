@@ -20,23 +20,19 @@ fi
 
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="0"
-IUSE="+audit doc gtk python udis86"
+IUSE="+audit doc python udis86"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="audit? ( sys-process/audit )
 	python? ( ${PYTHON_DEPS} )
-	udis86? ( dev-libs/udis86 )
-	gtk? (
-		${PYTHON_DEPS}
-		dev-python/pygtk:2[${PYTHON_USEDEP}]
-	)"
+	udis86? ( dev-libs/udis86 )"
 DEPEND="${RDEPEND}
 	sys-kernel/linux-headers
 	python? (
 		virtual/pkgconfig
 		dev-lang/swig
 	)
-	gtk? ( virtual/pkgconfig )
+
 	doc? ( app-text/asciidoc )"
 
 CONFIG_CHECK="
@@ -74,11 +70,11 @@ src_configure() {
 src_compile() {
 	emake V=1 all_cmd libs
 	use doc && emake doc
-	use gtk && emake -j1 gui
+
 }
 
 src_install() {
 	emake DESTDIR="${D}" V=1 install install_libs
 	use doc && emake DESTDIR="${D}" install_doc
-	use gtk && emake DESTDIR="${D}" install_gui
+
 }
