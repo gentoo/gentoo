@@ -6343,7 +6343,7 @@ dev-util/gperf 3.0.4 3.1: A perfect hash function generator
 dev-util/gtk-builder-convert 2.24.32: Converts Glade files to GtkBuilder XML format
 dev-util/gtk-doc 1.25-r1: GTK+ Documentation Generator
 dev-util/gtk-doc-am 1.25-r1: Automake files from gtk-doc
-dev-util/gtk-update-icon-cache 3.22.19 3.24.0: GTK update icon cache
+dev-util/gtk-update-icon-cache 3.24.0: GTK update icon cache
 dev-util/gyp 20170904022846: GYP (Generate Your Projects) meta-build system
 dev-util/howdoi 1.1.14: A code search tool
 dev-util/huc 0.1-r1: HTML umlaut conversion tool
