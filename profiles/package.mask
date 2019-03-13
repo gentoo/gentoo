@@ -140,12 +140,6 @@ dev-db/mysql-udf-ipv6
 # Masked for removal in 30 days.
 sys-fs/cloudfuse
 
-# Tim Harder <radhermit@gentoo.org> (6 Feb 2019)
-# Deprecated and unmaintained, use sieve for a replacement.
-# https://wiki2.dovecot.org/HowTo/AntispamWithSieve
-# Masked for removal in 30 days.
-mail-filter/dovecot-antispam
-
 # Jeroen Roovers <jer@gentoo.org> (31 Jan 2019)
 # Depends on =dev-libs/openssl-1.1.1*
 # bug #670574
