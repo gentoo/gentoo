@@ -5,9 +5,10 @@ EAPI=7
 
 inherit cmake-utils
 
+MY_PV="2019-03-04-Release-2.7.0"
 DESCRIPTION="An open-source multiplatform software for playing card games over a network"
 HOMEPAGE="https://github.com/Cockatrice/Cockatrice"
-SRC_URI="${HOMEPAGE}/archive/2018-12-20-Release-2.6.2.tar.gz -> ${P}.tar.gz"
+SRC_URI="${HOMEPAGE}/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -20,6 +21,7 @@ RDEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5[ssl]
+	dev-qt/qtwebsockets:5
 	dev-qt/qtwidgets:5
 	client? (
 		dev-libs/protobuf:=
@@ -45,7 +47,7 @@ DEPEND="${RDEPEND}
 # As the default help/about display the sha1 we need it
 SHA1='294b433'
 
-S="${WORKDIR}/Cockatrice-2018-12-20-Release-2.6.2"
+S="${WORKDIR}/Cockatrice-${MY_PV}"
 
 src_configure() {
 	local mycmakeargs=(
