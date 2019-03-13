@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -23,6 +23,9 @@ S=${WORKDIR}/${MY_P}
 
 src_prepare() {
 	default
+
+	epatch "${FILESDIR}/sharutils-4.15.2-glibc228.patch"
+	epatch "${FILESDIR}/sharutils-4.15.2-CVE-2018-1000097.patch"
 
 	# Upstream is aware but thinks this isn't a bug/problem in sharutils itself
 	# See http://lists.gnu.org/archive/html/bug-gnu-utils/2013-10/msg00011.html
