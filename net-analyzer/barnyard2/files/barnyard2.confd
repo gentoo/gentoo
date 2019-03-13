@@ -33,4 +33,4 @@ CONF="/etc/barnyard2/barnyard2.conf"
 # This pulls in the options above
 BARNYARD_OPTS="-D -c ${CONF} -d ${SPOOL_DIR} -w ${WALDO_FILE} -f ${SPOOL_FILE} -l ${LOG_DIR}"
 # Or with an archive directory
-#BARNYARD_OPTS="-D -c ${CONF} -d ${SPOOL_DIR} -w ${WALDO_FILE} -f ${LOG_FILE} -l ${LOG_DIR} -a ${ARCHIVE_DIR}"
+#BARNYARD_OPTS="-D -c ${CONF} -d ${SPOOL_DIR} -w ${WALDO_FILE} -f ${SPOOL_FILE} -l ${LOG_DIR} -a ${ARCHIVE_DIR}"

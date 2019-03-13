@@ -1,5 +1,7 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+EAPI=0
 
 inherit eutils multilib
 
@@ -10,7 +12,7 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc x86"
 IUSE=""
-DEPEND="|| ( >=dev-util/cweb-3.00 virtual/tex-base )"
+DEPEND="virtual/tex-base"
 S="${WORKDIR}"
 
 src_unpack() {

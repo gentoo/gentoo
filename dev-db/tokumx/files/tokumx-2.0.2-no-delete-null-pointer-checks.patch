@@ -1,0 +1,23 @@
+diff -uNr tokumx-enterprise-2.0.2.ORIG/CMakeLists.txt tokumx-enterprise-2.0.2/CMakeLists.txt
+--- tokumx-enterprise-2.0.2.ORIG/CMakeLists.txt	2018-07-17 16:20:18.712013701 +0100
++++ tokumx-enterprise-2.0.2/CMakeLists.txt	2018-07-17 16:22:06.063018495 +0100
+@@ -83,7 +83,7 @@
+ endmacro(set_cxxflags_if_supported)
+ 
+ set(CMAKE_C_FLAGS "-fPIC -fno-strict-aliasing -ggdb -Wall -Wsign-compare -Wno-unknown-pragmas -Winvalid-pch -pipe")
+-set(CMAKE_CXX_FLAGS "-fPIC -fno-strict-aliasing -ggdb")
++set(CMAKE_CXX_FLAGS "-fPIC -fno-strict-aliasing -fno-delete-null-pointer-checks -ggdb")
+ set_cxxflags_if_supported(
+   -Wall
+   -Wsign-compare
+diff -uNr tokumx-enterprise-2.0.2.ORIG/SConstruct tokumx-enterprise-2.0.2/SConstruct
+--- tokumx-enterprise-2.0.2.ORIG/SConstruct	2018-07-17 16:20:18.712013701 +0100
++++ tokumx-enterprise-2.0.2/SConstruct	2018-07-17 16:22:40.459020031 +0100
+@@ -702,6 +702,7 @@
+     # -Winvalid-pch Warn if a precompiled header (see Precompiled Headers) is found in the search path but can't be used.
+     env.Append( CCFLAGS=["-fPIC",
+                          "-fno-strict-aliasing",
++                         "-fno-delete-null-pointer-checks",
+                          "-ggdb",
+                          "-pthread",
+                          "-Wall",

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -20,7 +20,7 @@ SLOT="0"
 IUSE="archive ffmpeg imagemagick kernel_linux libav pdf postscript webp"
 
 RDEPEND="
-	>=dev-libs/glib-2.8:2
+	>=dev-libs/glib-2.32:2
 	>=x11-libs/cairo-1.6
 	x11-libs/gtk+:3
 	archive? ( app-arch/libarchive:0= )

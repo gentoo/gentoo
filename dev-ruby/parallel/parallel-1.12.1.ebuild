@@ -1,10 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-# ruby24: fails specs
-USE_RUBY="ruby22 ruby23"
+USE_RUBY="ruby23 ruby24 ruby25"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 
@@ -26,7 +25,7 @@ IUSE="test"
 DEPEND+="test? ( sys-process/lsof )"
 
 ruby_add_bdepend "
-	test? ( dev-ruby/ruby-progressbar dev-ruby/activerecord:4.2 dev-ruby/sqlite3 )"
+	test? ( dev-ruby/ruby-progressbar dev-ruby/activerecord:5.2 dev-ruby/sqlite3 )"
 
 each_ruby_prepare() {
 	# Make sure the correct ruby is used for testing
@@ -35,7 +34,7 @@ each_ruby_prepare() {
 
 all_ruby_prepare() {
 	sed -i -e '/bundler/ s:^:#:' \
-		-e '1i require "tempfile"; gem "activerecord", "~>4.2.0"' spec/cases/helper.rb || die
+		-e '1i require "tempfile"; gem "activerecord", "~>5.2.0"' spec/cases/helper.rb || die
 	sed -i -e '3irequire "timeout"' spec/spec_helper.rb || die
 
 	# Avoid a failing spec regarding to pipes. The spec seems like it

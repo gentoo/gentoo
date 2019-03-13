@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -8,7 +8,7 @@ inherit vdr-plugin-2
 VERSION="1861" #every bump, new version
 
 DESCRIPTION="VDR Plugin: Output Device for Raspberry Pi"
-HOMEPAGE="http://projects.vdr-developer.org/projects/plg-rpihddevice"
+HOMEPAGE="https://projects.vdr-developer.org/projects/plg-rpihddevice"
 SRC_URI="mirror://vdr-developerorg/${VERSION}/${P}.tgz"
 
 KEYWORDS="~arm"

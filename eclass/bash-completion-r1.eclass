@@ -1,9 +1,10 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: bash-completion-r1.eclass
 # @MAINTAINER:
 # mgorny@gentoo.org
+# @SUPPORTED_EAPIS: 0 1 2 3 4 5 6 7
 # @BLURB: A few quick functions to install bash-completion files
 # @EXAMPLE:
 #
@@ -25,7 +26,7 @@
 inherit toolchain-funcs
 
 case ${EAPI:-0} in
-	0|1|2|3|4|5|6) ;;
+	0|1|2|3|4|5|6|7) ;;
 	*) die "EAPI ${EAPI} unsupported (yet)."
 esac
 
@@ -98,6 +99,7 @@ dobashcomp() {
 	debug-print-function ${FUNCNAME} "${@}"
 
 	(
+		insopts -m 0644
 		insinto "$(_bash-completion-r1_get_bashcompdir)"
 		doins "${@}"
 	)
@@ -112,6 +114,7 @@ newbashcomp() {
 	debug-print-function ${FUNCNAME} "${@}"
 
 	(
+		insopts -m 0644
 		insinto "$(_bash-completion-r1_get_bashcompdir)"
 		newins "${@}"
 	)

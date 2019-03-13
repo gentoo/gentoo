@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-USE_RUBY="ruby22 ruby23 ruby24 ruby25"
+USE_RUBY="ruby23 ruby24 ruby25 ruby26"
 
 # The test target also contains test:exe but that requires
 # shoulda-context which we do not have packaged yet.
@@ -33,4 +33,7 @@ IUSE=""
 all_ruby_prepare() {
 	sed -i -e "/[Bb]undler/d" Rakefile || die
 	sed -i -e '/git ls-files/ s:^:#:' coderay.gemspec || die
+
+	# Fix failing tests for lazy evaluation in ruby26
+	sed -i -e 's/\.filter$/.filter.to_a/' test/unit/filter.rb || die
 }

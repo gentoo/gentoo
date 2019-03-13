@@ -1,20 +1,21 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI="6"
 
-inherit elisp eutils
+inherit elisp
 
 DESCRIPTION="Yet Another TeX mode for Emacs"
 HOMEPAGE="http://www.yatex.org/"
-SRC_URI="http://www.yatex.org/${P/-/}.tar.gz"
+SRC_URI="http://www.${PN}.org/${P/-}.tar.gz"
 
 KEYWORDS="amd64 ppc ~ppc64 x86"
 SLOT="0"
 LICENSE="YaTeX"
 IUSE="l10n_ja"
 
-S="${WORKDIR}/${P/-/}"
+S="${WORKDIR}/${P/-}"
+
 ELISP_PATCHES="${PN}-1.76-gentoo.patch
 	${PN}-1.76-direntry.patch
 	${PN}-1.77-texinfo-5.patch"
@@ -25,27 +26,27 @@ src_compile() {
 	# that are only available under X
 
 	cd docs
-	makeinfo yatexe.tex yahtmle.tex || die
+	makeinfo {${PN},yahtml}e.tex || die
 
 	if use l10n_ja; then
-		iconv -f WINDOWS-31J -t UTF-8 yatexj.tex >yatex-ja.texi || die
-		iconv -f WINDOWS-31J -t UTF-8 yahtmlj.tex >yahtml-ja.texi || die
-		makeinfo yatex-ja.texi yahtml-ja.texi || die
+		iconv -f WINDOWS-31J -t UTF-8 ${PN}j.tex  > ${PN}-ja.texi  || die
+		iconv -f WINDOWS-31J -t UTF-8 yahtmlj.tex > yahtml-ja.texi || die
+		makeinfo {${PN},yahtml}-ja.texi || die
 	fi
 }
 
 src_install() {
-	elisp-install ${PN} *.el || die
-	elisp-site-file-install "${FILESDIR}/${SITEFILE}" || die
+	elisp-install ${PN} *.el
+	elisp-site-file-install "${FILESDIR}"/${SITEFILE}
 
 	insinto ${SITEETC}/${PN}
 	doins help/YATEXHLP.eng
-	doinfo docs/yatex.info* docs/yahtml.info*
+	doinfo docs/{${PN},yahtml}.info*
 	dodoc docs/*.eng
 
 	if use l10n_ja; then
 		doins help/YATEXHLP.jp
-		doinfo docs/yatex-ja.info* docs/yahtml-ja.info*
-		dodoc 00readme install docs/{htmlqa,qanda} docs/*.doc
+		doinfo docs/{${PN},yahtml}-ja.info*
+		dodoc 00readme install docs/{htmlqa,qanda,*.doc}
 	fi
 }

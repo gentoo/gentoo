@@ -1,0 +1,20 @@
+#!/sbin/openrc-run
+# Copyright 1999-2018 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+command="/usr/bin/errbot -u ${ERR_USER}:${ERR_GROUP}"
+command_args="-d -p ${ERR_PID_FILE} -c ${ERR_CONFIG_PATH}/config.py"
+pidfile="${ERR_PID_FILE}"
+
+depend() {
+	need net
+}
+
+start_pre() {
+	# create piddir if necessary, bug #448498
+	local piddir=$(dirname ${ERR_PID_FILE})
+	checkpath -q -d -o err:err -m 0770 "${piddir}" || {
+                eend 1
+                return 1
+        }
+}

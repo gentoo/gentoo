@@ -1,7 +1,0 @@
---- TouchFreeze.pro
-+++ TouchFreeze.pro
-@@ -3,3 +3,4 @@
- RESOURCES+=stuff.qrc
- SOURCES+=main.cpp TouchFreezeApp.cpp TouchFreezeUI.cpp SynDaemon.cpp
- HEADERS+=TouchFreezeApp.h TouchFreezeUI.h SynDaemon.h Version.h
-+LIBS+=-lX11

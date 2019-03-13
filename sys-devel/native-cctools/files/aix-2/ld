@@ -1,5 +1,5 @@
 #! /usr/bin/env /bin/ksh
-# Copyright 1999-2013 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2018 Gentoo Foundation; Distributed under the GPL v2
 
 # Upon '-soname' and similar flags, create a "shared library" on AIX being an
 # archive file containing an Import File and the shared object file, as in:
@@ -29,6 +29,11 @@ while [[ $# -gt 0 ]]
 do
 	arg=$1
 	shift
+	case ${arg} in
+	-rpath=*)
+		arg="-R${arg#-rpath=}"
+	;;
+	esac
 	oldargs="${oldargs} '${arg}'"
 	case ${arg} in
 	-o)

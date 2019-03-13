@@ -15,7 +15,6 @@
 		<flag name="image">Build the image opcodes</flag>
 		<flag name="keyboard">Build Virtual MIDI keyboard</flag>
 		<flag name="linear">Build the linear algebra Opcodes</flag>
-		<flag name="luajit">Use the lua just-in-time compiler <pkg>dev-lang/luajit</pkg> instead of <pkg>dev-lang/lua</pkg></flag>
 		<flag name="portmidi">Build the PortMIDI I/O module</flag>
 		<flag name="samples">Install the HRTF datafiles for use with hrtfmove, hrtfmove2, hrtfstat, hrtfearly, and hrtfreverb</flag>
 		<flag name="score">Build the alternative score parser</flag>

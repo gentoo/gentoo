@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit toolchain-funcs
 
@@ -21,7 +21,10 @@ DEPEND="${RDEPEND}
 	static? ( dev-libs/openssl:0[static-libs] )"
 
 DOCS=(
-	HISTORY.txt README.txt regedit.txt WinReg.txt
+	HISTORY.txt
+	README.txt
+	WinReg.txt
+	regedit.txt
 )
 
 src_prepare() {

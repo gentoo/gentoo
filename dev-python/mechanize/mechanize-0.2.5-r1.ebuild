@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 pypy )
 inherit distutils-r1
 
 DESCRIPTION="Stateful programmatic web browsing in Python"
-HOMEPAGE="http://wwwsearch.sourceforge.net/mechanize/ https://pypi.python.org/pypi/mechanize"
+HOMEPAGE="http://wwwsearch.sourceforge.net/mechanize/ https://pypi.org/project/mechanize/"
 SRC_URI="http://wwwsearch.sourceforge.net/${PN}/src/${P}.tar.gz"
 
 LICENSE="|| ( BSD ZPL )"

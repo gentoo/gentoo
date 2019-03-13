@@ -1,0 +1,26 @@
+From 4e52acbf26b6d52e26e757cb04817d17c5464331 Mon Sep 17 00:00:00 2001
+From: Dave Halter <davidhalter88@gmail.com>
+Date: Sun, 7 Jan 2018 14:13:21 +0100
+Subject: [PATCH] Using setup.py build should not include part of tests
+
+It looks like that we have to not only exclude the test package but also 'test.*'. Thanks to @david-geiger for noticing this. Fixes #1024.
+---
+ setup.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/setup.py b/setup.py
+index 3f3b7e54..c7081858 100755
+--- a/setup.py
++++ b/setup.py
+@@ -32,7 +32,7 @@ setup(name='jedi',
+       license='MIT',
+       keywords='python completion refactoring vim',
+       long_description=readme,
+-      packages=find_packages(exclude=['test']),
++      packages=find_packages(exclude=['test', 'test.*']),
+       install_requires=install_requires,
+       extras_require={'dev': ['docopt']},
+       package_data={'jedi': ['evaluate/compiled/fake/*.pym']},
+-- 
+2.16.1
+

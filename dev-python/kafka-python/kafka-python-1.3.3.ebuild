@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 inherit distutils-r1
 
 DESCRIPTION="Kafka protocol support in Python"
-HOMEPAGE="https://github.com/dpkp/kafka-python/ https://pypi.python.org/pypi/kafka-python/"
+HOMEPAGE="https://github.com/dpkp/kafka-python/ https://pypi.org/project/kafka-python/"
 SRC_URI="https://github.com/dpkp/kafka-python/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"

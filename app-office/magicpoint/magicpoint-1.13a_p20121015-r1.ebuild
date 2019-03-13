@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -40,7 +40,7 @@ COMMON_DEPEND="x11-libs/libICE
 	mng? ( media-libs/libmng )"
 DEPEND="${COMMON_DEPEND}
 	sys-devel/autoconf
-	x11-proto/xextproto
+	x11-base/xorg-proto
 	x11-libs/libxkbfile
 	app-text/rman
 	x11-misc/imake"

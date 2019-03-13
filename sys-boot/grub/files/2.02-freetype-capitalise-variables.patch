@@ -1,0 +1,126 @@
+From ba84c8d1b4830e9fcb14d9f0e4a36e03ac40a09d Mon Sep 17 00:00:00 2001
+From: Colin Watson <cjwatson@ubuntu.com>
+Date: Tue, 30 Jan 2018 14:08:26 +0000
+Subject: build: Capitalise *freetype_* variables
+
+Using FREETYPE_CFLAGS and FREETYPE_LIBS is more in line with the naming
+scheme used by pkg-config macros.
+
+Bug-Debian: https://bugs.debian.org/887721
+Last-Update: 2018-02-11
+
+Patch-Name: freetype-capitalise-variables.patch
+---
+ Makefile.am       |  6 +++---
+ Makefile.util.def |  4 ++--
+ configure.ac      | 24 ++++++++++++------------
+ 3 files changed, 17 insertions(+), 17 deletions(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index f0ab1adc3..b47b4b1ac 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -71,7 +71,7 @@ endif
+ starfield_theme_files = $(srcdir)/themes/starfield/blob_w.png $(srcdir)/themes/starfield/boot_menu_c.png $(srcdir)/themes/starfield/boot_menu_e.png $(srcdir)/themes/starfield/boot_menu_ne.png $(srcdir)/themes/starfield/boot_menu_n.png $(srcdir)/themes/starfield/boot_menu_nw.png $(srcdir)/themes/starfield/boot_menu_se.png $(srcdir)/themes/starfield/boot_menu_s.png $(srcdir)/themes/starfield/boot_menu_sw.png $(srcdir)/themes/starfield/boot_menu_w.png $(srcdir)/themes/starfield/slider_c.png $(srcdir)/themes/starfield/slider_n.png $(srcdir)/themes/starfield/slider_s.png $(srcdir)/themes/starfield/starfield.png $(srcdir)/themes/starfield/terminal_box_c.png $(srcdir)/themes/starfield/terminal_box_e.png $(srcdir)/themes/starfield/terminal_box_ne.png $(srcdir)/themes/starfield/terminal_box_n.png $(srcdir)/themes/starfield/terminal_box_nw.png $(srcdir)/themes/starfield/terminal_box_se.png $(srcdir)/themes/starfield/terminal_box_s.png $(srcdir)/themes/starfield/terminal_box_sw.png $(srcdir)/themes/starfield/terminal_box_w.png $(srcdir)/themes/starfield/theme.txt $(srcdir)/themes/starfield/README $(srcdir)/themes/starfield/COPYING.CC-BY-SA-3.0
+ 
+ build-grub-mkfont$(BUILD_EXEEXT): util/grub-mkfont.c grub-core/unidata.c grub-core/kern/emu/misc.c util/misc.c
+-	$(BUILD_CC) -o $@ -I$(top_srcdir)/include $(BUILD_CFLAGS) $(BUILD_CPPFLAGS) $(BUILD_LDFLAGS) -DGRUB_MKFONT=1 -DGRUB_BUILD=1 -DGRUB_UTIL=1 -DGRUB_BUILD_PROGRAM_NAME=\"build-grub-mkfont\" $^ $(build_freetype_cflags) $(build_freetype_libs)
++	$(BUILD_CC) -o $@ -I$(top_srcdir)/include $(BUILD_CFLAGS) $(BUILD_CPPFLAGS) $(BUILD_LDFLAGS) -DGRUB_MKFONT=1 -DGRUB_BUILD=1 -DGRUB_UTIL=1 -DGRUB_BUILD_PROGRAM_NAME=\"build-grub-mkfont\" $^ $(BUILD_FREETYPE_CFLAGS) $(BUILD_FREETYPE_LIBS)
+ CLEANFILES += build-grub-mkfont$(BUILD_EXEEXT)
+ 
+ garbage-gen$(BUILD_EXEEXT): util/garbage-gen.c
+@@ -80,11 +80,11 @@ CLEANFILES += garbage-gen$(BUILD_EXEEXT)
+ EXTRA_DIST += util/garbage-gen.c
+ 
+ build-grub-gen-asciih$(BUILD_EXEEXT): util/grub-gen-asciih.c
+-	$(BUILD_CC) -o $@ -I$(top_srcdir)/include $(BUILD_CFLAGS) $(BUILD_CPPFLAGS) $(BUILD_LDFLAGS) -DGRUB_MKFONT=1 -DGRUB_BUILD=1 -DGRUB_UTIL=1 $^ $(build_freetype_cflags) $(build_freetype_libs) -Wall -Werror
++	$(BUILD_CC) -o $@ -I$(top_srcdir)/include $(BUILD_CFLAGS) $(BUILD_CPPFLAGS) $(BUILD_LDFLAGS) -DGRUB_MKFONT=1 -DGRUB_BUILD=1 -DGRUB_UTIL=1 $^ $(BUILD_FREETYPE_CFLAGS) $(BUILD_FREETYPE_LIBS) -Wall -Werror
+ CLEANFILES += build-grub-gen-asciih$(BUILD_EXEEXT)
+ 
+ build-grub-gen-widthspec$(BUILD_EXEEXT): util/grub-gen-widthspec.c
+-	$(BUILD_CC) -o $@ -I$(top_srcdir)/include $(BUILD_CFLAGS) $(BUILD_CPPFLAGS) $(BUILD_LDFLAGS) -DGRUB_MKFONT=1 -DGRUB_BUILD=1 -DGRUB_UTIL=1 $^ $(build_freetype_cflags) $(build_freetype_libs) -Wall -Werror
++	$(BUILD_CC) -o $@ -I$(top_srcdir)/include $(BUILD_CFLAGS) $(BUILD_CPPFLAGS) $(BUILD_LDFLAGS) -DGRUB_MKFONT=1 -DGRUB_BUILD=1 -DGRUB_UTIL=1 $^ $(BUILD_FREETYPE_CFLAGS) $(BUILD_FREETYPE_LIBS) -Wall -Werror
+ CLEANFILES += build-grub-gen-widthspec$(BUILD_EXEEXT)
+ 
+ if COND_STARFIELD
+diff --git a/Makefile.util.def b/Makefile.util.def
+index 168acbe59..fa39d8bd1 100644
+--- a/Makefile.util.def
++++ b/Makefile.util.def
+@@ -302,14 +302,14 @@ program = {
+   common = grub-core/kern/emu/argp_common.c;
+   common = grub-core/osdep/init.c;
+ 
+-  cflags = '$(freetype_cflags)';
++  cflags = '$(FREETYPE_CFLAGS)';
+   cppflags = '-DGRUB_MKFONT=1';
+ 
+   ldadd = libgrubmods.a;
+   ldadd = libgrubgcry.a;
+   ldadd = libgrubkern.a;
+   ldadd = grub-core/gnulib/libgnu.a;
+-  ldadd = '$(freetype_libs)';
++  ldadd = '$(FREETYPE_LIBS)';
+   ldadd = '$(LIBINTL) $(LIBDEVMAPPER) $(LIBZFS) $(LIBNVPAIR) $(LIBGEOM)';
+   condition = COND_GRUB_MKFONT;
+ };
+diff --git a/configure.ac b/configure.ac
+index cd1f49837..85c23bd62 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -1505,12 +1505,12 @@ unset ac_cv_header_ft2build_h
+ 
+ if test x"$grub_mkfont_excuse" = x ; then
+   # Check for freetype libraries.
+-  freetype_cflags=`$FREETYPE --cflags`
+-  freetype_libs=`$FREETYPE --libs`
++  FREETYPE_CFLAGS=`$FREETYPE --cflags`
++  FREETYPE_LIBS=`$FREETYPE --libs`
+   SAVED_CPPFLAGS="$CPPFLAGS"
+   SAVED_LIBS="$LIBS"
+-  CPPFLAGS="$CPPFLAGS $freetype_cflags"
+-  LIBS="$LIBS $freetype_libs"
++  CPPFLAGS="$CPPFLAGS $FREETYPE_CFLAGS"
++  LIBS="$LIBS $FREETYPE_LIBS"
+   AC_CHECK_HEADERS([ft2build.h], [],
+   	[grub_mkfont_excuse=["need freetype2 headers"]])
+   AC_LINK_IFELSE([AC_LANG_CALL([], [FT_Load_Glyph])], [], [grub_mkfont_excuse=["freetype2 library unusable"]])
+@@ -1527,8 +1527,8 @@ else
+ enable_grub_mkfont=no
+ fi
+ AC_SUBST([enable_grub_mkfont])
+-AC_SUBST([freetype_cflags])
+-AC_SUBST([freetype_libs])
++AC_SUBST([FREETYPE_CFLAGS])
++AC_SUBST([FREETYPE_LIBS])
+ 
+ SAVED_CC="$CC"
+ SAVED_CPP="$CPP"
+@@ -1566,12 +1566,12 @@ fi
+ 
+ if test x"$grub_build_mkfont_excuse" = x ; then
+   # Check for freetype libraries.
+-  build_freetype_cflags=`$BUILD_FREETYPE --cflags`
+-  build_freetype_libs=`$BUILD_FREETYPE --libs`
++  BUILD_FREETYPE_CFLAGS=`$BUILD_FREETYPE --cflags`
++  BUILD_FREETYPE_LIBS=`$BUILD_FREETYPE --libs`
+   SAVED_CPPFLAGS_2="$CPPFLAGS"
+   SAVED_LIBS="$LIBS"
+-  CPPFLAGS="$CPPFLAGS $build_freetype_cflags"
+-  LIBS="$LIBS $build_freetype_libs"
++  CPPFLAGS="$CPPFLAGS $BUILD_FREETYPE_CFLAGS"
++  LIBS="$LIBS $BUILD_FREETYPE_LIBS"
+   AC_CHECK_HEADERS([ft2build.h], [],
+   	[grub_build_mkfont_excuse=["need freetype2 headers"]])
+   AC_LINK_IFELSE([AC_LANG_CALL([], [FT_Load_Glyph])], [], [grub_build_mkfont_excuse=["freetype2 library unusable"]])
+@@ -1595,8 +1595,8 @@ if test x"$enable_build_grub_mkfont" = xno && ( test "x$platform" = xqemu || tes
+   fi
+ fi
+ 
+-AC_SUBST([build_freetype_cflags])
+-AC_SUBST([build_freetype_libs])
++AC_SUBST([BUILD_FREETYPE_CFLAGS])
++AC_SUBST([BUILD_FREETYPE_LIBS])
+ 
+ CC="$SAVED_CC"
+ CPP="$SAVED_CPP"

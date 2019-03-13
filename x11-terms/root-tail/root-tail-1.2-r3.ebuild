@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="2"
@@ -18,9 +18,9 @@ RDEPEND="x11-libs/libXext
 	x11-libs/libX11"
 DEPEND="x11-misc/imake
 	app-text/rman
-	x11-misc/gccmakedep
+	x11-base/xorg-proto
 	x11-libs/libX11
-	x11-proto/xproto"
+	x11-misc/gccmakedep"
 
 src_prepare() {
 	use kde && epatch "${FILESDIR}"/${P}-kde.patch

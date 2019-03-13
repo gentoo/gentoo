@@ -14,13 +14,17 @@
 		<flag name="autotools">Enable autotools project manager plugin</flag>
 		<flag name="baremetal">Build plugin for bare metal devices</flag>
 		<flag name="bazaar">Add support for <pkg>dev-vcs/bzr</pkg> version control system</flag>
+		<flag name="clang">Build clang-based plugins (code model, format, static analysis)</flag>
 		<flag name="clangcodemodel">Build clang-based code model and refactoring plugins</flag>
 		<flag name="clangstaticanalyzer">Build clang-based static analyzer plugin</flag>
 		<flag name="clearcase">Add support for IBM ClearCase version control system (requires manual installation of ClearCase client)</flag>
 		<flag name="cmake">Enable cmake project manager plugin</flag>
+		<flag name="cppcheck">Enable integration with <pkg>dev-util/cppcheck</pkg></flag>
 		<flag name="designer">Build widget designer plugin</flag>
 		<flag name="glsl">Enable GLSL source code editor</flag>
+		<flag name="help">Build the help plugin</flag>
 		<flag name="ios">Build plugin for Apple iOS devices</flag>
+		<flag name="lsp">Add support for the Language Server Protocol (LSP)</flag>
 		<flag name="mercurial">Add support for <pkg>dev-vcs/mercurial</pkg> version control system</flag>
 		<flag name="modeling">Enable graphical model editor</flag>
 		<flag name="nim">Enable Nim source code editor</flag>
@@ -29,6 +33,8 @@
 		<flag name="qbs">Enable QBS project manager plugin</flag>
 		<flag name="qnx">Build plugin for QNX devices</flag>
 		<flag name="scxml">Enable graphical SCXML editor</flag>
+		<flag name="serialterminal">Build serial terminal plugin</flag>
+		<flag name="silversearcher">Enable integration with <pkg>sys-apps/the_silver_searcher</pkg></flag>
 		<flag name="systemd">Add support for retrieving application output from journald</flag>
 		<flag name="valgrind">Add support for memory debugging using <pkg>dev-util/valgrind</pkg></flag>
 		<flag name="webengine">Use <pkg>dev-qt/qtwebengine</pkg> to view documentation</flag>

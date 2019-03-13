@@ -15,13 +15,10 @@ LXD_OPTIONS+=" --group lxd"
 #LXD_OPTIONS+=" --debug"
 
 # For debugging, print a complete stack trace every n seconds
-#LXD_OPTIONS+=" --print-goroutines-every 5"
+#LXD_OPTIONS+=" --print-goroutines 5"
 
 # Enables verbose mode
-#LXD_OPTIONS+=" -v"
+#LXD_OPTIONS+=" --verbose"
 
 # Logfile to log to
 #LXD_OPTIONS+=" --logfile /var/log/lxd/lxd.log"
-
-# Enables syslog logging
-#LXD_OPTIONS+=" --syslog"

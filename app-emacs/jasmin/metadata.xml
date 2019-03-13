@@ -11,4 +11,5 @@
   fontifying, and quick-reference syntax help. Font-lock specifications
   are derived from an encoded grammar, for detailed syntax coloring.
 </longdescription>
+<stabilize-allarches/>
 </pkgmetadata>

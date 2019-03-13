@@ -1,0 +1,50 @@
+From b6e53cce5370fba88299f9ed2944ab8a7a4cef5c Mon Sep 17 00:00:00 2001
+From: Florian Delizy <florian.delizy@gmail.com>
+Date: Tue, 7 Aug 2018 22:09:32 +0800
+Subject: [PATCH] adding BUILD_TOOLS BUILD_REGRESS BUILD_EXAMPLES BUILD_DOC
+ options (default ON)
+
+---
+ CMakeLists.txt | 18 ++++++++++++++++++
+ 1 file changed, 18 insertions(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 69e6548e..def25607 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -11,6 +11,11 @@ OPTION(ENABLE_GNUTLS "Enable use of GnuTLS" ON)
+ OPTION(ENABLE_OPENSSL "Enable use of OpenSSL" ON)
+ OPTION(ENABLE_COMMONCRYPTO "Enable use of CommonCrypto" ON)
+ 
++OPTION(BUILD_TOOLS "Build tools in the src directory (zipcmp, zipmerge, ziptool)" ON)
++OPTION(BUILD_REGRESS "Build regression tests" ON)
++OPTION(BUILD_EXAMPLES "Build examples" ON)
++OPTION(BUILD_DOC "Build documentation" ON)
++
+ INCLUDE(CheckFunctionExists)
+ INCLUDE(CheckIncludeFiles)
+ INCLUDE(CheckSymbolExists)
+@@ -234,10 +239,23 @@ ENABLE_TESTING()
+ 
+ # Targets
+ ADD_SUBDIRECTORY(lib)
++
++IF(BUILD_DOC)
+ ADD_SUBDIRECTORY(man)
++ENDIF()
++
++IF(BUILD_TOOLS)
+ ADD_SUBDIRECTORY(src)
++ENDIF()
++
++IF(BUILD_REGRESS)
+ ADD_SUBDIRECTORY(regress)
++ENDIF()
++
++IF(BUILD_EXAMPLES)
+ ADD_SUBDIRECTORY(examples)
++ENDIF()
++
+ 
+ # pkgconfig file
+ SET(prefix ${CMAKE_INSTALL_PREFIX})

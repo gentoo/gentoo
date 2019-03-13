@@ -3,7 +3,6 @@
 <pkgmetadata>
 <maintainer type="person">
 	<email>rich0@gentoo.org</email>
-	<description>Primary maintainer</description>
 </maintainer>
 <upstream>
 	<remote-id type="sourceforge">trustedqsl</remote-id>

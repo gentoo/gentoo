@@ -1,0 +1,11 @@
+--- /src/gdbmsync.c.orig	2018-08-05 14:37:18.000116786 +0200
++++ /src/gdbmsync.c		2018-08-05 14:37:39.666117321 +0200
+@@ -28,7 +28,7 @@
+ gdbm_sync (GDBM_FILE dbf)
+ {
+   /* Return immediately if the database needs recovery */	
+-  GDBM_ASSERT_CONSISTENCY (dbf, );
++  GDBM_ASSERT_CONSISTENCY (dbf, GDBM_NEED_RECOVERY);
+ 
+   /* Initialize the gdbm_errno variable. */
+   gdbm_set_errno (dbf, GDBM_NO_ERROR, FALSE);}

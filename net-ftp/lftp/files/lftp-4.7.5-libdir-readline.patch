@@ -1,0 +1,11 @@
+--- a/m4/lftp_lib_readline.m4
++++ b/m4/lftp_lib_readline.m4
+@@ -107,7 +107,7 @@
+ 	if test -f "$readline_include_dir/readline/readline.h"; then
+ 	    readline_include_dir="$readline_include_dir/readline"
+ 	fi
+-        readline_ld_flags="-L$readline_prefix/lib"
++        readline_ld_flags="-L$libdir"
+         readline_lib_flags="-lreadline"
+         run_readline_test="yes"
+     elif test "$readline_requested" = "yes"; then

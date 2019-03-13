@@ -11,7 +11,7 @@ MY_PN="backports.shutil_which"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Backport of shutil.which from Python 3.3"
-HOMEPAGE="https://pypi.python.org/pypi/backports.shutil_which/ https://github.com/minrk/backports.shutil_which"
+HOMEPAGE="https://pypi.org/project/backports.shutil_which/ https://github.com/minrk/backports.shutil_which"
 SRC_URI="mirror://pypi/${PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="MIT"

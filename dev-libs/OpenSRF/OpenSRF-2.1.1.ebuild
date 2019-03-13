@@ -1,23 +1,23 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 inherit eutils multilib flag-o-matic apache-module autotools perl-module
 
 DESCRIPTION="Framework for the high-level development of the Evergreen ILS software"
-HOMEPAGE="http://open-ils.org/"
+HOMEPAGE="https://open-ils.org/"
 MY_PN="opensrf" # upstream lowercased the tarball in 2.x
 MY_P="${MY_PN}-${PV}"
-SRC_URI="http://open-ils.org/downloads/${MY_P}.tar.gz"
+SRC_URI="https://open-ils.org/downloads/${MY_P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE="postgres +sqlite"
 DEPEND=">=www-servers/apache-2.2.9
 		>=dev-db/libdbi-drivers-0.8.2
 		>=dev-db/libdbi-0.8.2
 		net-im/ejabberd
-		dev-libs/libmemcache
+		dev-libs/libmemcached
 		dev-perl/Cache-Memcached
 		dev-perl/Class-DBI-AbstractSearch
 		sqlite? ( dev-perl/DBD-SQLite )
@@ -86,14 +86,14 @@ src_configure() {
 }
 
 src_compile() {
-	emake || die "main emake failed"
+	emake
 	cd "${PERL_S}" && S="${PERL_S}" perl-module_src_compile || die "perl-module_src_compile failed"
 }
 
 src_install() {
 	einfo "Doing src_install"
 	#emake install-verbose DESTDIR="${D}" || die "Failed to install"
-	emake install DESTDIR="${D}" APXS2_INSTALL="-i" || die "Failed to install"
+	emake install DESTDIR="${D}" APXS2_INSTALL="-i"
 	apache-module_src_install || die "apache-module_src_install failed"
 	cd "${PERL_S}" && S="${PERL_S}" perl-module_src_install || die "perl-module_src_install failed"
 	cd "${S}"
@@ -103,7 +103,7 @@ src_install() {
 }
 
 src_test() {
-	emake check || die "emake check failed"
+	emake check
 	cd "${PERL_S}" && S="${PERL_S}" perl-module_src_test || die "perl-module_src_test failed"
 }
 

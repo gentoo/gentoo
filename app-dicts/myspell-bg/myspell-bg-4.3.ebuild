@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=6
 
 MY_P="OOo-full-pack-bg-${PV}"
 
@@ -27,13 +27,14 @@ SRC_URI="mirror://sourceforge/bgoffice/${MY_P}.zip"
 
 LICENSE="GPL-2 LGPL-2.1 MPL-1.1"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ppc ppc64 sh sparc x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 sh sparc x86 ~amd64-fbsd ~x86-fbsd"
 IUSE=""
 
 S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
+	default
 	# remove licenses that are suffixed with txt
 	# so they are not picked by install dodoc
-	rm -rf *.txt
+	rm -rf *.txt || die
 }

@@ -1,0 +1,11 @@
+--- a/indep.c
++++ b/indep.c
+@@ -14,7 +14,7 @@
+ {
+ #ifdef HAVE_STRTOLL
+     return strtoll(s, NULL, base);
+-#elif HAVE_STRTOQ
++#elif defined(HAVE_STRTOQ)
+     return strtoq(s, NULL, base);
+ #else
+     int minus, digit;

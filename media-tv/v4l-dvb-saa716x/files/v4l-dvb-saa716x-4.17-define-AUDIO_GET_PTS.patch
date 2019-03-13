@@ -1,0 +1,12 @@
+--- a/linux/drivers/media/common/saa716x/saa716x_ff.h	2018-11-08 15:44:10.479886225 +0100
++++ b/linux/drivers/media/common/saa716x/saa716x_ff.h	2018-11-08 15:45:19.981237523 +0100
+@@ -108,6 +108,9 @@
+ #define VIDEO_CAPTURE_OFF	0
+ #define VIDEO_CAPTURE_ONE_SHOT	1
+
++#ifndef AUDIO_GET_PTS
++#define AUDIO_GET_PTS              _IOR('o', 19, __u64)
++#endif
+
+ /* place to store all the necessary device information */
+ struct sti7109_dev {

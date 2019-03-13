@@ -1,8 +1,8 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=2
-inherit eutils toolchain-funcs
+EAPI=6
+inherit toolchain-funcs
 
 DESCRIPTION="JPEG to AVI/MJPEG animation command-line conversion tool"
 HOMEPAGE="https://sourceforge.net/projects/jpegtoavi/"
@@ -13,17 +13,14 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-Makefile.patch
-}
+PATCHES=( "${FILESDIR}/${P}-Makefile.patch" )
 
-src_compile() {
+src_configure() {
 	tc-export CC
-	emake || die
 }
 
 src_install() {
-	dobin ${PN} || die
+	dobin ${PN}
 	doman ${PN}.1
 	dodoc CHANGELOG README
 }

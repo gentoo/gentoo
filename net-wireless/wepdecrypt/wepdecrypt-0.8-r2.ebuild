@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 DESCRIPTION="Enhanced version of WepAttack a tool for breaking 802.11 WEP keys"
 HOMEPAGE="http://wepdecrypt.sourceforge.net/"

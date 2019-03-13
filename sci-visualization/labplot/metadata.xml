@@ -16,5 +16,7 @@
 	<use>
 		<flag name="cantor">Enable support for different open-source computer algebra systems via <pkg>kde-apps/cantor</pkg></flag>
 		<flag name="fits">Enable support for NASA's <pkg>sci-libs/cfitsio</pkg> library</flag>
+		<flag name="libcerf">Enable special functions from <pkg>sci-libs/libcerf</pkg></flag>
+		<flag name="root">Enable support for CERN's ROOT file type</flag>
 	</use>
 </pkgmetadata>

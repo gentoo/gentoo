@@ -1,17 +1,17 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=2
+
 inherit toolchain-funcs
 
 DESCRIPTION="ID3 tag editor for mp3 files"
-HOMEPAGE="http://www.dakotacom.net/~donut/programs/id3ed.html"
-SRC_URI="http://www.dakotacom.net/~donut/programs/${PN}/${P}.tar.gz"
+HOMEPAGE="http://code.fluffytapeworm.com/projects/id3ed"
+SRC_URI="http://code.fluffytapeworm.com/projects/${PN}/${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 ppc ppc64 sparc x86"
-IUSE=""
 
 DEPEND="sys-libs/ncurses
 	sys-libs/readline"

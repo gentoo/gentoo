@@ -4,8 +4,8 @@ Subject: build system
 
 	respect flags where possible
 
---- configure.ac
-+++ configure.ac
+--- a/configure.ac
++++ b/configure.ac
 @@ -18,26 +18,6 @@
  
  

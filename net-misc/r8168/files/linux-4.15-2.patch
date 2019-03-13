@@ -1,0 +1,85 @@
+Author: Alois Nespor <info@aloisnespor.info>
+Description: fix module build for Linux 4.15
+Origin: vendor, https://aur.archlinux.org/cgit/aur.git/tree/linux-4.15-2.patch?h=r8168-dkms
+
+--- a/src/r8168_n.c
++++ b/src/r8168_n.c
+@@ -407,8 +407,14 @@ MODULE_VERSION(RTL8168_VERSION);
+ static void rtl8168_sleep_rx_enable(struct net_device *dev);
+ static void rtl8168_dsm(struct net_device *dev, int dev_state);
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4,15,0)
++static void rtl8168_esd_timer(struct timer_list *timer);
++static void rtl8168_link_timer(struct timer_list *timer);
++#else
+ static void rtl8168_esd_timer(unsigned long __opaque);
+ static void rtl8168_link_timer(unsigned long __opaque);
++#endif//LINUX_VERSION_CODE >= KERNEL_VERSION(4,15,0)
++
+ static void rtl8168_tx_clear(struct rtl8168_private *tp);
+ static void rtl8168_rx_clear(struct rtl8168_private *tp);
+ 
+@@ -22964,7 +22970,11 @@ static inline void rtl8168_request_esd_t
+         struct rtl8168_private *tp = netdev_priv(dev);
+         struct timer_list *timer = &tp->esd_timer;
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4,15,0)
++        timer_setup(timer, rtl8168_esd_timer, 0);
++#else
+         setup_timer(timer, rtl8168_esd_timer, (unsigned long)dev);
++#endif//LINUX_VERSION_CODE >= KERNEL_VERSION(4,15,0)
+         mod_timer(timer, jiffies + RTL8168_ESD_TIMEOUT);
+ }
+ 
+@@ -22978,7 +22988,11 @@ static inline void rtl8168_request_link_
+         struct rtl8168_private *tp = netdev_priv(dev);
+         struct timer_list *timer = &tp->link_timer;
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4,15,0)
++        timer_setup(timer, rtl8168_link_timer, 0);
++#else
+         setup_timer(timer, rtl8168_link_timer, (unsigned long)dev);
++#endif//LINUX_VERSION_CODE >= KERNEL_VERSION(4,15,0)
+         mod_timer(timer, jiffies + RTL8168_LINK_TIMEOUT);
+ }
+ 
+@@ -24717,12 +24731,19 @@ err_out:
+ #define PCI_DEVICE_SERIAL_NUMBER (0x0164)
+ 
+ static void
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4,15,0)
++rtl8168_esd_timer(struct timer_list *timer)
++{
++        struct rtl8168_private *tp = from_timer(tp, timer, esd_timer);
++        struct net_device *dev = tp->dev;
++#else
+ rtl8168_esd_timer(unsigned long __opaque)
+ {
+         struct net_device *dev = (struct net_device *)__opaque;
+         struct rtl8168_private *tp = netdev_priv(dev);
+-        struct pci_dev *pdev = tp->pci_dev;
+         struct timer_list *timer = &tp->esd_timer;
++#endif//LINUX_VERSION_CODE >= KERNEL_VERSION(4,15,0)
++        struct pci_dev *pdev = tp->pci_dev;
+         unsigned long timeout = RTL8168_ESD_TIMEOUT;
+         unsigned long flags;
+         u8 cmd;
+@@ -24856,11 +24877,18 @@ rtl8168_esd_timer(unsigned long __opaque
+ }
+ 
+ static void
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4,15,0)
++rtl8168_link_timer(struct timer_list *timer)
++{
++        struct rtl8168_private *tp = from_timer(tp, timer, link_timer);
++        struct net_device *dev = tp->dev;
++#else
+ rtl8168_link_timer(unsigned long __opaque)
+ {
+         struct net_device *dev = (struct net_device *)__opaque;
+         struct rtl8168_private *tp = netdev_priv(dev);
+         struct timer_list *timer = &tp->link_timer;
++#endif//LINUX_VERSION_CODE >= KERNEL_VERSION(4,15,0)
+         unsigned long flags;
+ 
+         spin_lock_irqsave(&tp->lock, flags);

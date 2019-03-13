@@ -28,8 +28,7 @@ RDEPEND="
 	virtual/opengl
 	virtual/glu"
 DEPEND="${RDEPEND}
-	x11-proto/xextproto
-	x11-proto/xf86vidmodeproto"
+	x11-base/xorg-proto"
 
 S=${WORKDIR}/${PN}_${PV}
 

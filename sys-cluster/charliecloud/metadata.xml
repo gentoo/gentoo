@@ -4,7 +4,10 @@
   <maintainer type="person">
     <email>o.freyermuth@googlemail.com</email>
     <name>Oliver Freyermuth</name>
-    <description>Proxy-maintainer, assign bugs</description>
+  </maintainer>
+  <maintainer type="person">
+    <email>junghans@gentoo.org</email>
+    <name>Christoph Junghans (proxy)</name>
   </maintainer>
   <maintainer type="project">
     <email>proxy-maint@gentoo.org</email>
@@ -13,4 +16,7 @@
   <upstream>
     <remote-id type="github">hpc/charliecloud</remote-id>
   </upstream>
+  <use>
+    <flag name='pv'>Use sys-apps/pv to enable progress bar functionality</flag>
+  </use>
 </pkgmetadata>

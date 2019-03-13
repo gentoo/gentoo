@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -21,11 +21,11 @@ RDEPEND="
 	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:0= )
 	sys-apps/util-linux
+	sys-libs/efivar
 "
 DEPEND="${RDEPEND}
 	sys-apps/help2man
 	sys-boot/gnu-efi
-	sys-libs/efivar
 	virtual/pkgconfig
 "
 
@@ -35,7 +35,13 @@ PATCHES=(
 )
 
 src_compile() {
-	emake CC="$(tc-getCC)"
+	emake AR="$(tc-is-gcc && echo "$(tc-getCC)-ar" || tc-getAR)" \
+		AS="$(tc-getAS)" \
+		CC="$(tc-getCC)" \
+		LD="$(tc-getLD)" \
+		OBJCOPY="$(tc-getOBJCOPY)" \
+		PKG_CONFIG="$(tc-getPKG_CONFIG)" \
+		RANLIB="$(tc-getRANLIB)"
 }
 
 src_install() {
@@ -44,5 +50,5 @@ src_install() {
 
 	# remove some files that don't make sense for Gentoo installs
 	rm -rf "${ED%/}/etc/" "${ED%/}/var/" \
-	   "${ED%/}/usr/share/doc/${PF}/COPYING" || die
+		"${ED%/}/usr/share/doc/${PF}/COPYING" || die
 }

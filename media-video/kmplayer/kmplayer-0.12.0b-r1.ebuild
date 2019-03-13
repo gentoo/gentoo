@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -61,6 +61,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-cmake.patch
 	"${FILESDIR}"/${P}-desktop.patch
 	"${FILESDIR}"/${P}-qt-5.9.patch
+	"${FILESDIR}"/${P}-qt-5.11b3.patch
 )
 
 src_prepare() {

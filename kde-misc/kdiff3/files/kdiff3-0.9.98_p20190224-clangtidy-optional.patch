@@ -1,0 +1,34 @@
+From 26657d8bf425415c97801fe976939329f11c3979 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <andreas.sturmlechner@gmail.com>
+Date: Mon, 4 Mar 2019 11:21:31 +0100
+Subject: [PATCH] Optionalise clang-tidy
+
+It should not be run as part of a standard build.
+---
+ CMakeLists.txt | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index b1d72a7..2e8bad4 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -50,6 +50,7 @@ find_package(
+     IconThemes
+ )
+ 
++option(ENABLE_CLANG_TIDY "Run clang-tidy if available and cmake version >=3.6" OFF)
+ 
+ set(KDiff3_LIBRARIES ${Qt5PrintSupport_LIBRARIES} KF5::I18n KF5::CoreAddons KF5::Crash KF5::IconThemes )
+ 
+@@ -68,7 +69,7 @@ elseif(CMAKE_CXX_COMPILER_ID MATCHES "GNU")
+ endif()
+ 
+ #new in cmake 3.6+ integrate clang-tidy
+-if(NOT ${CMAKE_VERSION} VERSION_LESS "3.6.0")
++if(ENABLE_CLANG_TIDY AND NOT ${CMAKE_VERSION} VERSION_LESS "3.6.0")
+     find_program(CLANG_TIDY_EXE NAMES "clang-tidy" "clang-tidy-7" "clang-tidy-6.0" "clang-tidy-6" DOC "Path to clang-tidy executable")
+     if(NOT CLANG_TIDY_EXE)
+         message(STATUS "clang-tidy not found disabling integration.")
+-- 
+2.21.0
+

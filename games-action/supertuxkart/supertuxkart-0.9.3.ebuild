@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit cmake-utils eutils gnome2-utils
+inherit cmake-utils desktop gnome2-utils
 
 DESCRIPTION="A kart racing game starring Tux, the linux penguin (TuxKart fork)"
 HOMEPAGE="https://supertuxkart.net/"
@@ -41,6 +41,7 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 PATCHES=(
+	"${FILESDIR}"/${PN}-0.9.3-intrin.patch
 	"${FILESDIR}"/${PN}-0.9.3-unbundle-enet.patch
 	"${FILESDIR}"/${PN}-0.9.3-unbundle-libs.patch
 	"${FILESDIR}"/${PN}-0.9.3-irrlicht-arch-support.patch

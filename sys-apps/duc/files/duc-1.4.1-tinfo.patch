@@ -1,0 +1,23 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -138,8 +138,8 @@
+ if test "${enable_ui}" = "yes"; then
+         AC_DEFINE([ENABLE_UI], [1], [Enable ui])
+ 
+-	AC_CHECK_LIB([ncursesw], [tputs],, [
+-		AC_CHECK_LIB([ncurses], [tputs],, [
++	AC_CHECK_LIB([ncursesw], [touchwin],, [
++		AC_CHECK_LIB([ncurses], [touchwin],, [
+ 			AC_MSG_ERROR([
+ The ncurses library was not found, which is needed for ui support. Either install
+ the ncurses development libraries, or compile without ui support (--disable-ui)
+@@ -148,6 +148,9 @@
+ 	])
+ fi
+ 
++AC_SEARCH_LIBS([tputs], [tinfo],, [
++	AC_MSG_ERROR([No library was found providing tputs])
++])
+ 
+ if test "${enable_x11}" = "yes"; then
+         test "${enable_cairo}" != "yes" && AC_MSG_ERROR([cairo must be enabled for x11])

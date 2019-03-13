@@ -1,0 +1,11 @@
+--- a/test/test.py	2018-05-22 08:32:05.000000000 +0200
++++ b/test/test.py	2018-07-07 00:41:02.861367660 +0200
+@@ -7,7 +7,7 @@
+ import unittest
+ import e4u
+ 
+-e4u.load()
++e4u.load(filename=r"./e4u/data/emoji4unicode.xml")
+ 
+ DISPLAY_INFO = False
+ 

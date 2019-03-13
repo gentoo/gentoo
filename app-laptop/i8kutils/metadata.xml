@@ -4,7 +4,6 @@
 	<maintainer type="person">
 		<email>adi@adirat.com</email>
 		<name>Ioan-Adrian Ratiu</name>
-		<description>Proxied maintainer. Assign bugs to him.</description>
 	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>

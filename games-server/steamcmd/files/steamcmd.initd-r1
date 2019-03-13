@@ -1,0 +1,32 @@
+#!/sbin/openrc-run
+# Copyright 1999-2018 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+if [ "${SVCNAME}" = "steamcmd" ]; then
+	instance="main"
+else
+	instance="${SVCNAME#steamcmd.}"
+fi
+
+name="SteamCMD (Mod: ${instance})"
+pidfile="/run/steamcmd.${instance}.pid"
+screen_name="steamcmd.${instance}"
+start_stop_daemon_args="--chdir ${STEAMCMD_PATH}"
+
+command="screen"
+command_args="-DmUS ${screen_name} ${STEAMCMD_PATH}/${STEAMCMD_BINARY} ${STEAMCMD_OPTS}"
+command_background="true"
+command_group="steamcmd"
+command_user="steamcmd"
+
+depend() {
+	use net
+}
+
+start_pre() {
+	if [ -z "${STEAMCMD_BINARY}" ] || [ -z "${STEAMCMD_PATH}" ]; then
+		eerror "One or more STEAMCMD_* variables in /etc/conf.d/steamcmd.${SVCNAME} are not set!"
+		return 1
+	fi
+	return 0
+}

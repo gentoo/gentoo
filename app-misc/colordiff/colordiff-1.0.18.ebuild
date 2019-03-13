@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,8 +6,8 @@ EAPI=6
 inherit prefix
 
 DESCRIPTION="Colorizes output of diff"
-HOMEPAGE="http://www.colordiff.org/"
-SRC_URI="http://www.colordiff.org/${P}.tar.gz"
+HOMEPAGE="https://www.colordiff.org/"
+SRC_URI="https://www.colordiff.org/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

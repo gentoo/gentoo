@@ -7,7 +7,7 @@ inherit gnome2-utils
 
 DESCRIPTION="A panel area for fd.o Status Notifiers (systray replacement)"
 HOMEPAGE="https://goodies.xfce.org/projects/panel-plugins/xfce4-statusnotifier-plugin"
-SRC_URI="mirror://xfce/src/panel-plugins/${PN}/${PV%.*}/${P}.tar.bz2"
+SRC_URI="https://archive.xfce.org/src/panel-plugins/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

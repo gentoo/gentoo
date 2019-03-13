@@ -6,6 +6,7 @@
 		<name>Anthony G. Basile</name>
 	</maintainer>
 	<use>
+		<flag name="brotli">Enable brotli compression support</flag>
 		<flag name="http2">Enabled HTTP/2.0 support</flag>
 		<flag name="ssh">Enabled SSH urls in curl using libssh2</flag>
 		<flag name="metalink">Enable metalink support</flag>

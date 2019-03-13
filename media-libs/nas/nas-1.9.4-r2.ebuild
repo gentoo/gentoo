@@ -1,19 +1,21 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils multilib toolchain-funcs multilib-minimal
+EAPI=7
+
+inherit multilib-minimal toolchain-funcs
 
 DESCRIPTION="Network Audio System"
-HOMEPAGE="http://radscan.com/nas.html"
+HOMEPAGE="https://radscan.com/nas.html"
 SRC_URI="mirror://sourceforge/${PN}/${P}.src.tar.gz"
 
 LICENSE="HPND MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 arm ~arm64 ~hppa ia64 ~mips ppc ppc64 ~sh sparc x86 ~x86-fbsd"
 IUSE="doc static-libs"
 
-RDEPEND="x11-libs/libICE
+RDEPEND="
+	x11-libs/libICE
 	x11-libs/libSM
 	x11-libs/libX11
 	>=x11-libs/libXau-1.0.7-r1[${MULTILIB_USEDEP}]
@@ -26,16 +28,20 @@ DEPEND="${RDEPEND}
 	app-text/rman
 	sys-devel/bison
 	sys-devel/flex
+	x11-base/xorg-proto
 	x11-misc/gccmakedep
-	x11-misc/imake
-	>=x11-proto/xproto-7.0.24[${MULTILIB_USEDEP}]"
+	x11-misc/imake"
 
 DOCS=( BUILDNOTES FAQ HISTORY README RELEASE TODO )
 
-src_prepare() {
-	epatch "${FILESDIR}"/${PN}-1.9.2-asneeded.patch
-	epatch "${FILESDIR}"/${PN}-1.9.4-remove-abs-fabs.patch
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.9.2-asneeded.patch
+	"${FILESDIR}"/${PN}-1.9.4-remove-abs-fabs.patch
+	"${FILESDIR}"/${PN}-1.9.4-libfl.patch
+)
 
+src_prepare() {
+	default
 	multilib_copy_sources
 }
 
@@ -99,5 +105,7 @@ multilib_src_install_all() {
 	newconfd "${FILESDIR}"/nas.conf.d nas
 	newinitd "${FILESDIR}"/nas.init.d nas
 
-	use static-libs || rm -f "${D}"/usr/lib*/libaudio.a
+	if ! use static-libs; then
+		rm -f "${D}"/usr/lib*/libaudio.a || die
+	fi
 }

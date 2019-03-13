@@ -1,0 +1,31 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -2,6 +2,7 @@
+ AC_INIT([sarg],[2.3.9])
+ AC_CONFIG_SRCDIR([log.c])
+ AC_CONFIG_AUX_DIR(cfgaux)
++AC_CONFIG_MACRO_DIR(m4)
+ 
+ AC_CANONICAL_HOST
+ 
+@@ -26,6 +27,11 @@
+ dnl C99 support is required to define LLONG_MAX (at least on CentOS 5.7)
+ AC_PROG_CC_C99
+ 
++dnl mkdir_p / MKDIR_P
++AC_PROG_MKDIR_P
++mkdir_p="$MKDIR_P"
++AC_SUBST(mkdir_p)
++
+ # Report more warnings to improve code quality.
+ CFLAGS="${CFLAGS} -Wall -Wno-sign-compare"
+ 
+@@ -60,7 +66,7 @@
+ 
+ case "$host" in
+    *-solaris*)
+-   LDFLAGS="${LDFLAGS} -lsocket -lnsl"
++   LIBS="${LIBS} -lsocket -lnsl"
+    CFLAGS="-DSOLARIS ${CFLAGS}"
+    ;;
+ esac

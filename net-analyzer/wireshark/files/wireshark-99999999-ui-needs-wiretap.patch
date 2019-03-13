@@ -1,0 +1,11 @@
+--- a/ui/CMakeLists.txt
++++ b/ui/CMakeLists.txt
+@@ -76,6 +76,8 @@
+ 
+ add_library(ui STATIC ${UI_SRC})
+ 
++set(ui_LIBS wiretap)
++
+ set_target_properties(ui PROPERTIES
+ 	LINK_FLAGS "${WS_LINK_FLAGS}"
+ 	FOLDER "UI"

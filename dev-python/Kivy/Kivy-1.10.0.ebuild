@@ -10,7 +10,7 @@ inherit distutils-r1
 DISTUTILS_IN_SOURCE_BUILD=1
 
 DESCRIPTION="Library for rapid development of hardware-accelerated multitouch applications"
-HOMEPAGE="http://kivy.org/"
+HOMEPAGE="https://kivy.org/"
 SRC_URI="https://github.com/kivy/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"

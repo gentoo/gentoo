@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=2
+EAPI=6
 
 inherit autotools
 
@@ -19,11 +19,7 @@ DEPEND="${RDEPEND}
 	sys-devel/gettext"
 
 src_prepare() {
+	default
 	sed -e 's: -Wall -g3::' -i configure.ac || die
 	eautoreconf
-}
-
-src_install() {
-	emake DESTDIR="${D}" ALL_LINGUAS="${LANGS}" install || die
-	dodoc AUTHORS ChangeLog NEWS README || die
 }

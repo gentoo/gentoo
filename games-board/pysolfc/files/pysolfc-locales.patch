@@ -1,0 +1,11 @@
+diff -r -U2 PySolFC-pysolfc-2.2.0.orig/setup.py PySolFC-pysolfc-2.2.0/setup.py
+--- PySolFC-pysolfc-2.2.0.orig/setup.py	2018-04-16 15:05:24.000000000 +0200
++++ PySolFC-pysolfc-2.2.0/setup.py	2018-05-19 17:52:08.434768430 +0200
+@@ -45,7 +45,4 @@
+                        ['data/images/misc/pysol01.png',
+                         'data/images/misc/pysol02.png', ]))
+-    for l in ('ru', 'ru_RU'):
+-        data_files.append(('share/locale/%s/LC_MESSAGES' % l,
+-                           ['locale/%s/LC_MESSAGES/pysol.mo' % l]))
+     data_files.append((data_dir, ['data/pysolfc.glade']))
+     data_files.append(('share/applications', ['data/pysol.desktop']))

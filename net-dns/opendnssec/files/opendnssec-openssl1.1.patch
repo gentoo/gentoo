@@ -1,0 +1,55 @@
+--- a/signer/src/wire/tsig-openssl.c
++++ b/signer/src/wire/tsig-openssl.c
+@@ -126,7 +126,11 @@ static void
+ cleanup_context(void *data)
+ {
+     HMAC_CTX* context = (HMAC_CTX*) data;
++#ifdef HAVE_SSL_NEW_HMAC
++    HMAC_CTX_free(context);
++#else
+     HMAC_CTX_cleanup(context);
++#endif
+ }
+ 
+ static void
+@@ -146,8 +150,13 @@ static void*
+ create_context()
+ {
+     HMAC_CTX* context;
++#ifdef HAVE_SSL_NEW_HMAC
++    CHECKALLOC(context = HMAC_CTX_new());
++    HMAC_CTX_reset(context);
++#else
+     CHECKALLOC(context = (HMAC_CTX*) malloc(sizeof(HMAC_CTX)));
+     HMAC_CTX_init(context);
++#endif
+     context_add_cleanup(context);
+     return context;
+ }
+--- a/m4/acx_ssl.m4	2016-10-14 09:40:13.000000000 -0400
++++ b/m4/acx_ssl.m4	2019-02-18 13:52:49.861127549 -0500
+@@ -35,12 +35,21 @@
+             if test x_$ssldir = x_/usr/sfw; then
+                 SSL_LIBS="$SSL_LIBS -R$ssldir/lib";
+             fi
+-            AC_CHECK_LIB(crypto, HMAC_CTX_init,, [
+-                    AC_MSG_ERROR([OpenSSL found in $ssldir, but version 0.9.7 or higher is required])
+-            ])
++            save_LIBS=$LIBS
++            AC_CHECK_LIB(crypto, HMAC_CTX_reset, [
++                    AC_DEFINE_UNQUOTED([HAVE_SSL_NEW_HMAC], [], [Define if you have the SSL libraries with new HMAC related functions.])
++            ], [
++                    AC_CHECK_LIB(crypto, HMAC_CTX_init,, [
++                            AC_MSG_ERROR([OpenSSL found in $ssldir, but version 0.9.7 or higher is required])
++                    ])
++            ] )
++            SSL_LIBS="$SSL_LIBS -lcrypto";
++            LIBS="$SSL_LIBS $LIBS"
+             AC_CHECK_FUNCS([EVP_sha1 EVP_sha256])
++            LIBS=$saveLIBS
+         fi
+         AC_SUBST(HAVE_SSL)
++        AC_SUBST(HAVE_SSL_NEW_HMAC)
+         AC_SUBST(SSL_INCLUDES)
+         AC_SUBST(SSL_LIBS)
+     fi

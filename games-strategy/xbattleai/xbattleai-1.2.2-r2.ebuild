@@ -24,7 +24,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	app-text/rman
 	x11-misc/imake
-	x11-proto/xproto"
+	x11-base/xorg-proto"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-sandbox.patch

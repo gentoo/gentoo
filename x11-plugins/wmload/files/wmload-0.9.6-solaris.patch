@@ -1,7 +1,7 @@
 * original: http://www.rampant.org/~dp/software/wmload.solaris.patch
 
---- wmload.c
-+++ wmload.c
+--- a/wmload.c
++++ b/wmload.c
 @@ -6,6 +6,11 @@
  #include <math.h>
  #include <fcntl.h>

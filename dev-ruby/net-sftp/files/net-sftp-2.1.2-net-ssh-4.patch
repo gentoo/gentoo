@@ -1,0 +1,42 @@
+From 9870b32d31bbe5cddceead54c64f71e4fd91779e Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?V=C3=ADt=20Ondruch?= <vondruch@redhat.com>
+Date: Mon, 27 Feb 2017 15:00:30 +0100
+Subject: [PATCH] Fix compatiblity with net-ssh 4.0+
+
+---
+ test/test_download.rb | 4 +++-
+ test/test_session.rb  | 6 ++++--
+ 2 files changed, 7 insertions(+), 3 deletions(-)
+
+diff --git a/test/test_download.rb b/test/test_download.rb
+index d4a5f0b..d9582b6 100644
+--- a/test/test_download.rb
++++ b/test/test_download.rb
+@@ -139,7 +139,9 @@ def test_download_file_should_transfer_remote_to_local_buffer
+ 
+   def test_download_directory_to_buffer_should_fail
+     expect_sftp_session :server_version => 3
+-    assert_raises(ArgumentError) { sftp.download("/path/to/remote", StringIO.new, :recursive => true) }
++    Net::SSH::Test::Extensions::IO.with_test_extension do
++      assert_raises(ArgumentError) { sftp.download("/path/to/remote", StringIO.new, :recursive => true) }
++    end
+   end
+ 
+   private
+diff --git a/test/test_session.rb b/test/test_session.rb
+index a59058a..c398436 100644
+--- a/test/test_session.rb
++++ b/test/test_session.rb
+@@ -660,8 +660,10 @@ def test_unblock_bang_should_block_and_return_response
+ 
+     def assert_not_implemented(server_version, command, *args)
+       expect_sftp_session :server_version => 1
+-      sftp.connect!
+-      assert_raises(NotImplementedError) { sftp.send(command, *args) }
++      Net::SSH::Test::Extensions::IO.with_test_extension do
++        sftp.connect!
++        assert_raises(NotImplementedError) { sftp.send(command, *args) }
++      end
+     end
+ 
+     def assert_command_with_callback(command, *args)

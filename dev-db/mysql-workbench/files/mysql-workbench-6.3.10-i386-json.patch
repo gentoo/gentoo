@@ -1,0 +1,182 @@
+Last-Update: 2018-03-05
+Forwarded: not-needed
+Origin: upstream, https://github.com/mysql/mysql-workbench/commit/fff08d9ec68de8215fc8f12fe0ee42e598e1cf75.patch
+Bug-Upstream: https://github.com/mysql/mysql-workbench/pull/14
+Bug-Upstream: https://bugs.mysql.com/bug.php?id=84886
+Bug-Upstream: https://bugs.mysql.com/bug.php?id=84951
+From: Christian Hesse <mail@eworm.de>
+Description: fixes FTBFS on 32bit architectures.
+
+~~~~
+/<<BUILDDIR>>/mysql-workbench-6.3.10+dfsg/library/base/jsonparser.cpp:346:79: error: format '%lu' expects argument of type 'long unsigned int', but argument 2 has type 'JsonParser::JsonArray::SizeType {aka unsigned int}' [-Werror=format=]
+       throw std::out_of_range(base::strfmt("Index '%lu' is out of range.", pos));
+                                                                               ^
+/<<BUILDDIR>>/mysql-workbench-6.3.10+dfsg/library/base/jsonparser.cpp: In member function 'const JsonParser::JsonValue& JsonParser::JsonArray::at(JsonParser::JsonArray::SizeType) const':
+/<<BUILDDIR>>/mysql-workbench-6.3.10+dfsg/library/base/jsonparser.cpp:361:79: error: format '%lu' expects argument of type 'long unsigned int', but argument 2 has type 'JsonParser::JsonArray::SizeType {aka unsigned int}' [-Werror=format=]
+       throw std::out_of_range(base::strfmt("Index '%lu' is out of range.", pos));
+                                                                               ^
+/<<BUILDDIR>>/mysql-workbench-6.3.10+dfsg/library/base/jsonparser.cpp: In member function 'void JsonParser::JsonWriter::write(const JsonParser::JsonValue&)':
+/<<BUILDDIR>>/mysql-workbench-6.3.10+dfsg/library/base/jsonparser.cpp:1672:44: error: conversion from 'const JsonParser::JsonValue' to 'int64_t {aka long long int}' is ambiguous
+         _output += std::to_string((int64_t)value);
+                                            ^~~~~
+/<<BUILDDIR>>/mysql-workbench-6.3.10+dfsg/library/base/jsonparser.cpp:1001:3: note: candidate: JsonParser::JsonValue::operator bool() const
+   JsonValue::operator bool() const {
+   ^~~~~~~~~
+/<<BUILDDIR>>/mysql-workbench-6.3.10+dfsg/library/base/jsonparser.cpp:981:3: note: candidate: JsonParser::JsonValue::operator double() const
+   JsonValue::operator double() const {
+   ^~~~~~~~~
+/<<BUILDDIR>>/mysql-workbench-6.3.10+dfsg/library/base/jsonparser.cpp:950:3: note: candidate: JsonParser::JsonValue::operator size_t() const
+   JsonValue::operator size_t() const {
+   ^~~~~~~~~
+/<<BUILDDIR>>/mysql-workbench-6.3.10+dfsg/library/base/jsonparser.cpp:939:3: note: candidate: JsonParser::JsonValue::operator ssize_t() const
+   JsonValue::operator ssize_t() const {
+   ^~~~~~~~~
+/<<BUILDDIR>>/mysql-workbench-6.3.10+dfsg/library/base/jsonparser.cpp:1675:45: error: conversion from 'const JsonParser::JsonValue' to 'uint64_t {aka long long unsigned int}' is ambiguous
+         _output += std::to_string((uint64_t)value);
+~~~~
+
+--- a/library/base/jsonparser.cpp
++++ b/library/base/jsonparser.cpp
+@@ -342,9 +342,9 @@
+    *         If no such data is present std::out_of_range is thrown.
+    */
+   JsonValue &JsonArray::at(SizeType pos) {
+     if (pos > _data.size())
+-      throw std::out_of_range(base::strfmt("Index '%lu' is out of range.", pos));
++      throw std::out_of_range(base::strfmt("Index '%zu' is out of range.", pos));
+     return _data.at(pos);
+   }
+ 
+   //--------------------------------------------------------------------------------------------------
+@@ -357,9 +357,9 @@
+    *         If no such data is present std::out_of_range is thrown.
+    */
+   const JsonValue &JsonArray::at(SizeType pos) const {
+     if (pos > _data.size())
+-      throw std::out_of_range(base::strfmt("Index '%lu' is out of range.", pos));
++      throw std::out_of_range(base::strfmt("Index '%zu' is out of range.", pos));
+     return _data.at(pos);
+   }
+ 
+   //--------------------------------------------------------------------------------------------------
+@@ -1667,14 +1667,16 @@
+         break;
+       case VDouble:
+         _output += std::to_string((double)value);
+         break;
++#ifdef DEFINE_UINT64_T_FUNCTIONS
+       case VInt64:
+         _output += std::to_string((int64_t)value);
+         break;
+       case VUint64:
+         _output += std::to_string((uint64_t)value);
+         break;
++#endif
+       case VObject:
+         write((JsonObject)value);
+         break;
+       case VArray:
+--- a/library/forms/jsonview.cpp
++++ b/library/forms/jsonview.cpp
+@@ -650,10 +650,12 @@
+   bool setData = false;
+   if (data != nullptr) {
+     std::stringstream buffer;
+     double number = 0;
++#ifdef DEFINE_UINT64_T_FUNCTIONS
+     int64_t number2 = 0;
+     uint64_t number3 = 0;
++#endif
+     bool retBool = false;
+     auto &storedValue = data->getData();
+     switch (storedValue.getType()) {
+       case VDouble:
+@@ -663,8 +665,9 @@
+         buffer >> number;
+         storedValue = number;
+         setData = true;
+         break;
++#ifdef DEFINE_UINT64_T_FUNCTIONS
+       case VInt64:
+         if (!base::is_number(value))
+           break;
+         buffer << value;
+@@ -679,8 +682,9 @@
+         buffer >> number3;
+         storedValue = number3;
+         setData = true;
+         break;
++#endif
+       case VBoolean:
+         if (!base::isBool(value))
+           break;
+         buffer << value;
+@@ -1072,16 +1076,18 @@
+     case VDouble:
+       node->set_string(1, std::to_string((double)value));
+       node->set_string(2, "Double");
+       break;
++#ifdef DEFINE_UINT64_T_FUNCTIONS
+     case VInt64:
+       node->set_string(1, std::to_string((int64_t)value));
+       node->set_string(2, "Long Integer");
+       break;
+     case VUint64:
+       node->set_string(1, std::to_string((uint64_t)value));
+       node->set_string(2, "Unsigned Long Integer");
+       break;
++#endif
+     default:
+       break;
+   }
+   node->set_data(new JsonTreeBaseView::JsonValueNodeData(value));
+@@ -1321,10 +1327,12 @@
+   JsonParser::JsonValue &storedValue = (!key.empty() ? ((JsonObject &)data->getData())[key] : data->getData());
+   if (data != NULL) {
+     std::stringstream buffer;
+     double number = 0;
++#ifdef DEFINE_UINT64_T_FUNCTIONS
+     int64_t number2 = 0;
+     uint64_t number3 = 0;
++#endif
+     bool retBool = false;
+     switch (storedValue.getType()) {
+       case VDouble:
+         if (!base::is_number(value))
+@@ -1334,8 +1342,9 @@
+         storedValue = number;
+         node->set_float(column, number);
+         _dataChanged(false);
+ 	break;
++#ifdef DEFINE_UINT64_T_FUNCTIONS
+       case VInt64:
+         if (!base::is_number(value))
+           break;
+         buffer << value;
+@@ -1352,8 +1361,9 @@
+         storedValue = number3;
+         node->set_float(column, (double)number3);
+         _dataChanged(false);
+         break;
++#endif
+       case VBoolean:
+         if (!base::isBool(value))
+           break;
+         buffer << value;
+@@ -1611,14 +1621,16 @@
+   switch (value.getType()) {
+     case VDouble:
+       node->set_float(columnId, (double)value);
+       break;
++#ifdef DEFINE_UINT64_T_FUNCTIONS
+     case VInt64:
+       node->set_long(columnId, (int64_t)value);
+       break;
+     case VUint64:
+       node->set_long(columnId, (uint64_t)value);
+       break;
++#endif
+     default:
+       break;
+   }
+ }

@@ -10,6 +10,6 @@
 		MacFUSE. It's just one file and is implemented using ctypes.
 	</longdescription>
 	<upstream>
-		<remote-id type="github">terencehonles/fusepy</remote-id>
+		<remote-id type="github">fusepy/fusepy</remote-id>
 	</upstream>
 </pkgmetadata>

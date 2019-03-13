@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>horea.christ@gmail.com</email>
+		<name>Horea Christian</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+		The svg.path package provides a collection of Python objects that
+		implement the different path commands in SVG, as well as a parser for
+		SVG path definitions.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">regebro/svg.path</remote-id>
+		<remote-id type="pypi">svg.path</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -9,7 +9,7 @@ GNOME_TARBALL_SUFFIX=bz2
 inherit autotools eutils gnome2
 
 DESCRIPTION="Notification daemon"
-HOMEPAGE="https://git.gnome.org/browse/notification-daemon/"
+HOMEPAGE="https://gitlab.gnome.org/GNOME/notification-daemon/"
 
 LICENSE="GPL-2"
 SLOT="0"

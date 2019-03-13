@@ -1,18 +1,20 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI="6"
 
-DESCRIPTION="Gtk+-3.0 Hangul Input Modules"
-HOMEPAGE="https://code.google.com/p/imhangul/"
-SRC_URI="https://imhangul.googlecode.com/files/${P}.tar.bz2"
+inherit gnome2-utils
+
+DESCRIPTION="GTK+ 3 Hangul Input Modules"
+HOMEPAGE="https://github.com/libhangul/imhangul"
+SRC_URI="https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/${PN}/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1"
 SLOT="3"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE=""
 
-RDEPEND=">=app-i18n/libhangul-0.0.12
+RDEPEND="app-i18n/libhangul
 	x11-libs/gtk+:3
 	virtual/libintl"
 DEPEND="${RDEPEND}
@@ -21,41 +23,34 @@ DEPEND="${RDEPEND}
 
 src_prepare() {
 	default
-
-	# Drop DEPRECATED flags, bug #387825
-	sed -i -e 's:-D[A-Z_]*DISABLE_DEPRECATED:$(NULL):g' Makefile.am Makefile.in || die
+	gnome2_environment_reset
+	gnome2_disable_deprecation_warning
 }
 
 src_configure() {
-	econf --with-gtk-im-module-dir="${EPREFIX}/usr/$(get_libdir)/gtk-3.0/$(pkg-config gtk+-3.0 --variable=gtk_binary_version)/immodules"
+	econf --with-gtk-im-module-dir="${EPREFIX%/}"/usr/$(get_libdir)/gtk-3.0/$(pkg-config gtk+-3.0 --variable=gtk_binary_version)/immodules
 }
 
 src_install() {
 	default
-	dodoc imhangul.conf
+	find "${ED}" -name '*.la' -delete || die
+	dodoc ${PN}.conf
 
+	local s
 	insinto /etc/X11/xinit/xinput.d
-	newins "${FILESDIR}/xinput-imhangul2" imhangul2.conf
-	newins "${FILESDIR}/xinput-imhangul2y" imhangul2y.conf
-	newins "${FILESDIR}/xinput-imhangul32" imhangul32.conf
-	newins "${FILESDIR}/xinput-imhangul39" imhangul39.conf
-	newins "${FILESDIR}/xinput-imhangul3f" imhangul3f.conf
-	newins "${FILESDIR}/xinput-imhangul3s" imhangul3s.conf
-	newins "${FILESDIR}/xinput-imhangul3y" imhangul3y.conf
-	newins "${FILESDIR}/xinput-imhangulahn" imhangulahn.conf
-	newins "${FILESDIR}/xinput-imhangulro" imhangulro.conf
-
-	find "${D}" -name '*.la' -delete || die
+	for s in 2{,y} 3{2,9,f,s,y} ahn ro; do
+		newins "${FILESDIR}"/xinput-${PN}${s} ${PN}${s}.conf
+	done
 }
 
 pkg_postinst() {
 	gnome2_query_immodules_gtk3
-	elog ""
+	elog
 	elog "If you want to use one of the module as a default input method, "
-	elog ""
+	elog
 	elog "export GTK_IM_MODULE=hangul2  # 2 input type"
 	elog "export GTK_IM_MODULE=hangul3f # 3 input type"
-	elog ""
+	elog
 }
 
 pkg_postrm() {

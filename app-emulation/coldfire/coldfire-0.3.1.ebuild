@@ -1,9 +1,7 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="2"
-
-inherit eutils
+EAPI=7
 
 DESCRIPTION="Motorola Coldfire Emulator"
 HOMEPAGE="http://www.slicer.ca/coldfire/"
@@ -14,16 +12,15 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE=""
 
-DEPEND="sys-libs/ncurses
-	sys-libs/readline"
+DEPEND="sys-libs/ncurses:0=
+	sys-libs/readline:0="
 
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-build.patch
-	epatch "${FILESDIR}"/${P}-headers.patch
-}
+PATCHES=(
+	"${FILESDIR}/${P}-build.patch"
+	"${FILESDIR}/${P}-headers.patch"
+)
 
 src_install() {
-	dodir /usr/bin
-	einstall || die
+	dobin coldfire
 	dodoc CONTRIBUTORS HACKING README
 }

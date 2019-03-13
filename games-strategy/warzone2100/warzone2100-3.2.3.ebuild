@@ -100,9 +100,6 @@ src_install() {
 	fi
 	doman doc/warzone2100.6
 	dodoc doc/quickstartguide.pdf
-
-	elog "If you are using opensource drivers you should consider installing: "
-	elog "    media-libs/libtxc_dxtn"
 }
 
 pkg_preinst() {

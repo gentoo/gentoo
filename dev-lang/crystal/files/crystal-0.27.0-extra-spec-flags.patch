@@ -1,0 +1,11 @@
+Allow injecting additional arguments to test suite.
+Useful to be able to run small subset of individual
+test suite:
+
+    make spec EXTRA_SPEC_FLAGS='-e parse_set_cookie'
+
+--- a/Makefile
++++ b/Makefile
+@@ -31 +31 @@ override FLAGS += $(if $(release),--release )$(if $(stats),--stats )$(if $(progr
+-SPEC_FLAGS := $(if $(verbose),-v )$(if $(junit_output),--junit_output $(junit_output) )
++SPEC_FLAGS := $(if $(verbose),-v )$(if $(junit_output),--junit_output $(junit_output) )$(EXTRA_SPEC_FLAGS)

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,7 +10,7 @@ SRC_URI="!binary? ( https://dev.gentoo.org/~ulm/distfiles/${P}.tar.xz )
 
 LICENSE="CC-BY-SA-3.0"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris ~x86-winnt"
+KEYWORDS="alpha amd64 arm hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris ~x86-winnt"
 IUSE="binary html"
 
 # texlive-bibtexextra: plainurl.bst
@@ -24,13 +24,12 @@ DEPEND="!binary? (
 		dev-texlive/texlive-latex
 		dev-texlive/texlive-latexextra
 		dev-texlive/texlive-latexrecommended
-		|| ( dev-texlive/texlive-mathscience dev-texlive/texlive-science )
+		dev-texlive/texlive-mathscience
 		html? (
 			app-text/recode
 			>=dev-tex/tex4ht-20090611_p1038-r5
 		)
 	)"
-RDEPEND=""
 
 src_compile() {
 	if ! use binary; then

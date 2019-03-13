@@ -1,0 +1,20 @@
+--- a/src/Makefile.in
++++ b/src/Makefile.in
+@@ -226,7 +226,7 @@
+ 	update_frame.h
+ am_freedink_OBJECTS = $(am__objects_3) freedink.$(OBJEXT) \
+ 	update_frame.$(OBJEXT)
+-@HAVE_WINDRES_TRUE@am__objects_4 = woeres.$(OBJEXT)
++#@HAVE_WINDRES_TRUE@am__objects_4 = woeres.$(OBJEXT)
+ nodist_freedink_OBJECTS = $(am__objects_4)
+ freedink_OBJECTS = $(am_freedink_OBJECTS) $(nodist_freedink_OBJECTS)
+ freedink_LDADD = $(LDADD)
+@@ -1143,7 +1143,7 @@
+ @HAVE_WINDRES_FALSE@WOERES = 
+ 
+ # How do we handle resources embedded in the executable binary?
+-@HAVE_WINDRES_TRUE@WOERES = woeres.rc
++#@HAVE_WINDRES_TRUE@WOERES = woeres.rc
+ 
+ # Other projects that use Autotools and support MinGW
+ # http://sourceforge.net/projects/chocolate-doom (Doom port)

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -11,7 +11,7 @@ SRC_URI="http://www.libsdl.org/projects/SDL_mixer/release/${MY_P}.tar.gz"
 
 LICENSE="ZLIB"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 sh sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris"
+KEYWORDS="alpha amd64 ~arm ~arm64 ~hppa ia64 ~mips ppc ppc64 sh sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris"
 IUSE="flac fluidsynth mad midi mikmod mod modplug mp3 playtools smpeg static-libs timidity vorbis +wav"
 REQUIRED_USE="
 	midi? ( || ( timidity fluidsynth ) )
@@ -28,7 +28,7 @@ REQUIRED_USE="
 RDEPEND=">=media-libs/libsdl-1.2.15-r4[${MULTILIB_USEDEP}]
 	flac? ( >=media-libs/flac-1.2.1-r5[${MULTILIB_USEDEP}] )
 	midi? (
-		fluidsynth? ( >=media-sound/fluidsynth-1.1.6-r1[${MULTILIB_USEDEP}] )
+		fluidsynth? ( >=media-sound/fluidsynth-1.1.6-r1:=[${MULTILIB_USEDEP}] )
 		timidity? ( media-sound/timidity++ )
 	)
 	mp3? (
@@ -41,10 +41,7 @@ RDEPEND=">=media-libs/libsdl-1.2.15-r4[${MULTILIB_USEDEP}]
 	)
 	vorbis? (
 		>=media-libs/libvorbis-1.3.3-r1[${MULTILIB_USEDEP}]
-		>=media-libs/libogg-1.3.0[${MULTILIB_USEDEP}] )
-	abi_x86_32? (
-		!<=app-emulation/emul-linux-x86-sdl-20140406-r1
-		!app-emulation/emul-linux-x86-sdl[-abi_x86_32(-)]
+		>=media-libs/libogg-1.3.0[${MULTILIB_USEDEP}]
 	)"
 DEPEND=${RDEPEND}
 

@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit gnome2 readme.gentoo-r1
 
 DESCRIPTION="Screenshot utility for GNOME"
-HOMEPAGE="https://wiki.gnome.org/Apps/Attic/GnomeUtils"
+HOMEPAGE="https://gitlab.gnome.org/GNOME/gnome-screenshot"
 
 LICENSE="GPL-2+"
 SLOT="0"
@@ -28,9 +28,9 @@ RDEPEND="${COMMON_DEPEND}
 "
 # ${PN} was part of gnome-utils before 3.4
 DEPEND="${COMMON_DEPEND}
-	x11-proto/xextproto
 	>=dev-util/intltool-0.50.2
 	virtual/pkgconfig
+	x11-base/xorg-proto
 "
 
 DOC_CONTENTS="${P} saves screenshots in ~/Pictures/ and defaults to

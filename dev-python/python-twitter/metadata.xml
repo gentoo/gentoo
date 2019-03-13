@@ -8,5 +8,6 @@
 	<upstream>
 		<remote-id type="github">bear/python-twitter</remote-id>
 		<remote-id type="pypi">python-twitter</remote-id>
+		<bugs-to>https://github.com/bear/python-twitter/issues</bugs-to>
 	</upstream>
 </pkgmetadata>

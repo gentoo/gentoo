@@ -1,8 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=2
-inherit eutils libtool
+EAPI=6
+inherit libtool
 
 DESCRIPTION="OpenEXR ILM Base libraries"
 HOMEPAGE="http://openexr.com/"
@@ -16,20 +16,22 @@ IUSE="static-libs"
 RDEPEND="!<media-libs/openexr-1.5.0"
 DEPEND="${RDEPEND}"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-1.0.0-asneeded.patch"
+	"${FILESDIR}/${P}-gcc43.patch"
+)
+
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-1.0.0-asneeded.patch \
-		"${FILESDIR}"/${P}-gcc43.patch
+	default
 	elibtoolize
 }
 
 src_configure() {
 	econf \
-		--disable-dependency-tracking \
 		$(use_enable static-libs static)
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die
-	dodoc AUTHORS ChangeLog NEWS README
-	find "${D}" -name '*.la' -delete
+	default
+	find "${D}" -name '*.la' -delete || die "Pruning failed"
 }

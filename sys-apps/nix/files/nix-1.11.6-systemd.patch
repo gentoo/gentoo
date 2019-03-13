@@ -1,4 +1,4 @@
-Make 'nix-daemon' a goof unit for 'systemctl enable nix-daemon.service'.
+Make 'nix-daemon' a good unit for 'systemctl enable nix-daemon.service'.
 diff --git a/misc/systemd/nix-daemon.service.in b/misc/systemd/nix-daemon.service.in
 index 5fc04a3..2565520 100644
 --- a/misc/systemd/nix-daemon.service.in

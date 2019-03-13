@@ -1,0 +1,28 @@
+From 97380f009b0e6a8bb6ee4ecbf0436045342cdf1e Mon Sep 17 00:00:00 2001
+From: abishai <abi@abinet.ru>
+Date: Tue, 31 Jan 2017 10:42:57 +0300
+Subject: [PATCH] implement platform-agnostic comparison without abs()
+
+---
+ src/zm_image.cpp | 8 +++-----
+ 1 file changed, 3 insertions(+), 5 deletions(-)
+
+diff --git a/src/zm_image.cpp b/src/zm_image.cpp
+index 9c8c12fda..80a821376 100644
+--- a/src/zm_image.cpp
++++ b/src/zm_image.cpp
+@@ -1658,11 +1658,9 @@ Image *Image::Highlight( unsigned int n_images, Image *images[], const Rgb thres
+       {
+         uint8_t *psrc = images[j]->buffer+c;
+ 
+-#ifndef SOLARIS
+-        if ( (unsigned)abs((*psrc)-RGB_VAL(ref_colour,c)) >= RGB_VAL(threshold,c) )
+-#else
+-        if ( (unsigned)std::abs((*psrc)-RGB_VAL(ref_colour,c)) >= RGB_VAL(threshold,c) )
+-#endif
++	    unsigned int diff = ((*psrc)-RGB_VAL(ref_colour,c)) > 0 ? (*psrc)-RGB_VAL(ref_colour,c) : RGB_VAL(ref_colour,c) - (*psrc);
++
++	    if (diff >= RGB_VAL(threshold,c))
+         {
+           count++;
+         }

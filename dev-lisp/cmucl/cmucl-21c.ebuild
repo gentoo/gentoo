@@ -1,7 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+
 inherit eutils toolchain-funcs multilib
 
 MY_PV=${PV:0:3}
@@ -13,7 +14,7 @@ SRC_URI="http://common-lisp.net/project/cmucl/downloads/release/${MY_PV}/cmucl-s
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="x86"
 IUSE="X doc source"
 
 CDEPEND=">=dev-lisp/asdf-2.33-r3:=
@@ -28,18 +29,17 @@ S="${WORKDIR}"
 TARGET=linux-4
 
 src_prepare() {
-	eapply "${FILESDIR}"/${MY_PV}-execstack-fixes.patch
-	eapply "${FILESDIR}"/${MY_PV}-customize-lisp-implementation-version.patch
-	eapply "${FILESDIR}"/${MY_PV}-build.patch
+	eapply "${FILESDIR}"/${P}-execstack-fixes.patch
+	eapply "${FILESDIR}"/${P}-build.patch
 	eapply_user
-	cp "${FILESDIR}"/os-common.h src/lisp/ || die
+	#cp "${FILESDIR}"/os-common.h src/lisp/ || die
 	cp /usr/share/common-lisp/source/asdf/build/asdf.lisp src/contrib/asdf/ || die
 }
 
 src_compile() {
 	local cmuopts buildimage
 
-	if use X; then
+	if use X ; then
 		cmuopts=""
 	else
 		cmuopts="-u"
@@ -61,7 +61,7 @@ src_compile() {
 (compile-file "modules:defsystem/defsystem")
 EOF
 
-	# documentation
+	# Documentation
 	if use doc; then
 		pushd src/docs/cmu-user > /dev/null || die "directory src/docs/cmu-user does not exist"
 		emake
@@ -86,7 +86,7 @@ src_install() {
 	if use source; then
 		# Necessary otherwise tar will fail
 		dodir /usr/share/common-lisp/source/${PN}
-		cd "${D}"/usr/share/common-lisp/source/${PN}
+		cd "${D}"/usr/share/common-lisp/source/${PN} || die
 		tar --strip-components 1 -xzpf "${WORKDIR}"/cmucl-src-${MY_PV}.tar.gz \
 			|| die "Cannot install sources"
 	fi
@@ -100,7 +100,7 @@ src_install() {
 	insinto /etc/common-lisp
 	doins "${FILESDIR}"/cmuclrc || die "Failed to install cmuclrc"
 
-	# documentation
+	# Documentation
 	dodoc doc/cmucl/README
 	if use doc; then
 		insinto /usr/share/doc/${PF}

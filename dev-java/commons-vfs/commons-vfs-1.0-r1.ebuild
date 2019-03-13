@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,7 +12,7 @@ HOMEPAGE="https://commons.apache.org/vfs/"
 SRC_URI="https://archive.apache.org/dist/${PN/-//}/source/${P}-src.tar.gz" # Not on Apache mirrors.
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 ppc64 x86 ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ppc64 x86 ~amd64-linux ~x86-linux"
 RESTRICT="test" # Some failures, can't figure them out.
 
 CP_DEPEND="

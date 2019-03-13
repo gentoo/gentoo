@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+	<email>gnome@gentoo.org</email>
+	<name>Gentoo GNOME Desktop</name>
+</maintainer>
+<use>
+	<flag name="clang">Provide integration with <pkg>sys-devel/clang</pkg> for best possible C/C++ autocompletion, semantic highlighting, symbol resolving, and diagnostics support</flag>
+	<flag name="devhelp">Provide API docs browsing and integration via <pkg>dev-util/devhelp</pkg></flag>
+	<flag name="git">Provide support for the Git version control system via <pkg>dev-libs/libgit2-glib</pkg>
+		(such as setup of Git for New Project, direct cloning for Open Project and changed lines indicators in the editor gutter)</flag>
+	<flag name="sysprof">Provide an integrated profiler via <pkg>dev-util/sysprof</pkg></flag>
+	<flag name="vala">Provide an autoindenter, autocompletion, diagnostics, and symbol resolver for Vala</flag>
+	<flag name="webkit">Enable <pkg>net-libs/webkit-gtk</pkg> using plugins support and the HTML/Markdown previewer plugin</flag>
+</use>
+</pkgmetadata>

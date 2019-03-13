@@ -14,7 +14,7 @@ else
 fi
 
 DESCRIPTION="util to detect Super I/O chips and functionality"
-HOMEPAGE="http://www.coreboot.org/Superiotool"
+HOMEPAGE="https://www.coreboot.org/Superiotool"
 
 LICENSE="GPL-2"
 SLOT="0"

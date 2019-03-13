@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="Library to implement a well-behaved Unix daemon process"
-HOMEPAGE="https://pypi.python.org/pypi/python-daemon"
+HOMEPAGE="https://pypi.org/project/python-daemon/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="PSF-2"

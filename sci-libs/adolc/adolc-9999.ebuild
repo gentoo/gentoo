@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -23,12 +23,12 @@ fi
 
 LICENSE="|| ( EPL-1.0 GPL-2 )"
 SLOT="0/2"
-IUSE="mpi sparse static-libs"
+IUSE="+boost mpi sparse static-libs"
 
 RDEPEND="
+	boost? ( dev-libs/boost:0= )
 	mpi? ( sys-cluster/ampi:0= )
-		sparse? ( sci-libs/colpack:0= )
-"
+	sparse? ( sci-libs/colpack:0= )"
 DEPEND="${RDEPEND}"
 
 PATCHES=(
@@ -44,9 +44,12 @@ src_prepare() {
 
 src_configure() {
 	econf \
-		$(use_enable static-libs static) \
+		--enable-advanced-branching \
+		--enable-atrig-erf \
 		$(use_enable mpi ampi) \
 		$(use_enable sparse) \
+		$(use_enable static-libs static) \
+		$(use_with boost) \
 		$(use_with sparse colpack "${EPREFIX}"/usr)
 }
 

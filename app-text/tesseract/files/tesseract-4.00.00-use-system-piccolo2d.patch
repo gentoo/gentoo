@@ -14,9 +14,9 @@ diff -Naur tesseract.orig/java/Makefile.am tesseract/java/Makefile.am
  
  ScrollView.jar : $(SCROLLVIEW_CLASSES)
  	$(JAR) cfm $@ $(srcdir)/Manifest.txt com/google/scrollview/*.class \
-diff -Naur tesseract.orig/viewer/Makefile.am tesseract/viewer/Makefile.am
---- tesseract.orig/viewer/Makefile.am	2017-01-30 17:20:23.176458368 +0100
-+++ tesseract/viewer/Makefile.am	2017-01-30 17:22:39.281467163 +0100
+diff -Naur tesseract.orig/src/viewer/Makefile.am tesseract/src/viewer/Makefile.am
+--- tesseract.orig/src/viewer/Makefile.am	2017-01-30 17:20:23.176458368 +0100
++++ tesseract/src/viewer/Makefile.am	2017-01-30 17:22:39.281467163 +0100
 @@ -17,3 +17,7 @@
  
  libtesseract_viewer_la_SOURCES = \

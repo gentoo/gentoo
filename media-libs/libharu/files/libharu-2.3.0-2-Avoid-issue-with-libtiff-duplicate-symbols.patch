@@ -1,0 +1,89 @@
+From c1ecbf1bd286e26572fc0fd7a49d06774d6436f7 Mon Sep 17 00:00:00 2001
+From: Bruno Virlet <bruno.virlet@gmail.com>
+Date: Thu, 30 Nov 2017 12:19:37 +0100
+Subject: [PATCH 2/4] Avoid issue with libtiff duplicate symbols
+
+To achieve this, I move the G3CODES #define to pdf_conf.h so that anyone
+who builds the project has more control.
+---
+ include/hpdf_conf.h    | 3 ++-
+ src/hpdf_image_ccitt.c | 9 ++++-----
+ src/t4.h               | 6 ++++--
+ 3 files changed, 10 insertions(+), 8 deletions(-)
+
+diff --git a/include/hpdf_conf.h b/include/hpdf_conf.h
+index d25b464..27d1dff 100644
+--- a/include/hpdf_conf.h
++++ b/include/hpdf_conf.h
+@@ -78,8 +78,9 @@
+ 
+ /* alignment size of memory-pool-object
+  */
+-#define HPDF_ALIGN_SIZ              sizeof int;
++#define HPDF_ALINMENT_SIZ              sizeof(int)
+ 
++#define G3CODES
+ 
+ #endif /* _HPDF_CONF_H */
+ 
+diff --git a/src/hpdf_image_ccitt.c b/src/hpdf_image_ccitt.c
+index 8672763..939b0b5 100644
+--- a/src/hpdf_image_ccitt.c
++++ b/src/hpdf_image_ccitt.c
+@@ -21,7 +21,6 @@
+ #include <memory.h>
+ #include <assert.h>
+ 
+-#define	G3CODES
+ #include "t4.h"
+ 
+ typedef unsigned int uint32;
+@@ -578,11 +577,11 @@ HPDF_Fax3Encode2DRow(struct _HPDF_CCITT_Data *pData, unsigned char* bp, unsigned
+ 				a2 = finddiff2(bp, a1, bits, PIXEL(bp,a1));
+ 				putcode(pData, &horizcode);
+ 				if (a0+a1 == 0 || PIXEL(bp, a0) == 0) {
+-					putspan(pData, a1-a0, TIFFFaxWhiteCodes);
+-					putspan(pData, a2-a1, TIFFFaxBlackCodes);
++					putspan(pData, a1-a0, HPDF_TIFFFaxWhiteCodes);
++					putspan(pData, a2-a1, HPDF_TIFFFaxBlackCodes);
+ 				} else {
+-					putspan(pData, a1-a0, TIFFFaxBlackCodes);
+-					putspan(pData, a2-a1, TIFFFaxWhiteCodes);
++					putspan(pData, a1-a0, HPDF_TIFFFaxBlackCodes);
++					putspan(pData, a2-a1, HPDF_TIFFFaxWhiteCodes);
+ 				}
+ 				a0 = a2;
+ 			} else {			/* vertical mode */
+diff --git a/src/t4.h b/src/t4.h
+index f306e15..c4c8c0d 100644
+--- a/src/t4.h
++++ b/src/t4.h
+@@ -55,7 +55,7 @@ typedef struct tableentry {
+  *     during state generation (see mkg3states.c).
+  */
+ #ifdef G3CODES
+-const tableentry TIFFFaxWhiteCodes[] = {
++const tableentry HPDF_TIFFFaxWhiteCodes[] = {
+     { 8, 0x35, 0 },	/* 0011 0101 */
+     { 6, 0x7, 1 },	/* 0001 11 */
+     { 4, 0x7, 2 },	/* 0111 */
+@@ -167,7 +167,7 @@ const tableentry TIFFFaxWhiteCodes[] = {
+     { 12, 0x0, G3CODE_INVALID },	/* 0000 0000 0000 */
+ };
+ 
+-const tableentry TIFFFaxBlackCodes[] = {
++const tableentry HPDF_TIFFFaxBlackCodes[] = {
+     { 10, 0x37, 0 },	/* 0000 1101 11 */
+     { 3, 0x2, 1 },	/* 010 */
+     { 2, 0x3, 2 },	/* 11 */
+@@ -281,5 +281,7 @@ const tableentry TIFFFaxBlackCodes[] = {
+ #else
+ extern	const tableentry TIFFFaxWhiteCodes[];
+ extern	const tableentry TIFFFaxBlackCodes[];
++const tableentry *HPDF_TIFFFaxWhiteCodes = TIFFFaxWhiteCodes;
++const tableentry *HPDF_TIFFFaxBlackCodes = TIFFFaxBlackCodes;
+ #endif
+ #endif /* _T4_ */
+-- 
+2.16.0
+

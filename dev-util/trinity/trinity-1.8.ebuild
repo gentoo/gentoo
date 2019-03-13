@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 inherit toolchain-funcs
 
 DESCRIPTION="A Linux system call fuzz tester"
@@ -14,9 +14,18 @@ KEYWORDS="~amd64 ~x86"
 IUSE="examples"
 
 # We need newer headers to avoid compilation failures in the BPF stuff.
-DEPEND="app-arch/xz-utils
+DEPEND="
 	>=sys-kernel/linux-headers-4.8
 "
+RDEPEND=""
+
+PATCHES=(
+	# Fixes from Fedora and Debian
+	"${FILESDIR}"/${PN}-autofs.patch
+	"${FILESDIR}"/${PN}-irda.patch
+	"${FILESDIR}"/${PN}-memfd.patch
+	"${FILESDIR}"/${PN}-net-protocols.patch
+)
 
 src_configure() {
 	tc-export CC

@@ -1,79 +1,104 @@
 --- a/configure.ac
 +++ b/configure.ac
-@@ -84,14 +84,14 @@
+@@ -83,22 +83,6 @@
+ # -- libnet --
  #
  
- filechk="yes"
+-filechk="yes"
 -AC_CHECK_FILE(/usr/lib/libnet.a,, filechk="no")
-+AC_CHECK_FILE(/usr/lib/libnet.so,, filechk="no")
- if test "$filechk" = "no"; then
+-if test "$filechk" = "no"; then
 - AC_CHECK_FILE(/usr/local/lib/libnet.a, filechk="yes" ; LDFLAGS="-L/usr/local/lib"; CPPFLAGS="-I/usr/local/include")
-+ AC_CHECK_FILE(/usr/local/lib/libnet.so, filechk="yes" ; LDFLAGS="-L/usr/local/lib"; CPPFLAGS="-I/usr/local/include")
- fi
- 
- if test "$filechk" = "no"; then AC_MSG_ERROR([
- 
+-fi
+-
+-if test "$filechk" = "no"; then AC_MSG_ERROR([
+-
 -Libnet archive file (libnet.a) not found in /usr or /usr/local!
-+Libnet archive file (libnet.so) not found in /usr or /usr/local!
+-
+-Libnet-1.1.x Packet Shaping Library is required.
+-You can download it from official web site: http://www.packetfactory.net/libnet
+-
+-])
+-fi
+-
+ AC_CHECK_LIB(net, libnet_name2addr4,, AC_MSG_ERROR([
  
- Libnet-1.1.x Packet Shaping Library is required.
- You can download it from official web site: http://www.packetfactory.net/libnet
-@@ -111,14 +111,14 @@
+ Libnet-1.1.x Packet Shaping Library not found! It's required.
+@@ -110,22 +94,6 @@
+ # -- libpcap --
  #
  
- filechk="yes"
+-filechk="yes"
 -AC_CHECK_FILE(/usr/lib/libpcap.a,, filechk="no")
-+AC_CHECK_FILE(/usr/lib/libpcap.so,, filechk="no")
- if test "$filechk" = "no"; then
+-if test "$filechk" = "no"; then
 - AC_CHECK_FILE(/usr/local/lib/libpcap.a, filechk="yes" ; LDFLAGS="-L/usr/local/lib"; CPPFLAGS="-I/usr/local/include")
-+ AC_CHECK_FILE(/usr/local/lib/libpcap.so, filechk="yes" ; LDFLAGS="-L/usr/local/lib"; CPPFLAGS="-I/usr/local/include")
- fi
- 
- if test "$filechk" = "no"; then AC_MSG_ERROR([
- 
+-fi
+-
+-if test "$filechk" = "no"; then AC_MSG_ERROR([
+-
 -Libpcap archive file (libpcap.a) not found in /usr or /usr/local!
-+Libpcap archive file (libpcap.so) not found in /usr or /usr/local!
+-
+-Libpcap-0.7.1 Packet Capture Library is required. 
+-You can download it from official web site: http://www.tcpdump.org/#current
+-
+-])
+-fi
+-
+ AC_CHECK_LIB(pcap, pcap_dispatch,, AC_MSG_ERROR([
  
- Libpcap-0.7.1 Packet Capture Library is required. 
- You can download it from official web site: http://www.tcpdump.org/#current
-@@ -137,16 +137,18 @@
+ Libpcap-0.7.1 Packet Capture Library not found! It's required. 
+@@ -137,25 +105,7 @@
  # -- libncurses support --
  #
  
-+PKG_CHECK_MODULES(ncurses,ncurses,[LIBS="$LIBS $ncurses_LIBS"],)
-+
- filechk="yes"
+-filechk="yes"
 -AC_CHECK_FILE(/usr/lib/libncurses.a,, filechk="no")
-+AC_CHECK_FILE(/usr/lib/libncurses.so,, filechk="no")
- if test "$filechk" = "no"; then
+-if test "$filechk" = "no"; then
 - AC_CHECK_FILE(/usr/local/lib/libncurses.a, filechk="yes" ; LDFLAGS="-L/usr/local/lib"; CPPFLAGS="-I/usr/local/include")
-+ AC_CHECK_FILE(/usr/local/lib/libncurses.so, filechk="yes" ; LDFLAGS="-L/usr/local/lib"; CPPFLAGS="-I/usr/local/include")
- fi
- 
- if test "$filechk" = "no"; 
- then AC_MSG_WARN([
- 
+-fi
+-
+-if test "$filechk" = "no"; 
+-then AC_MSG_WARN([
+-
 -Libncurses archive file (libncurses.a) not found in /usr or /usr/local!
-+Libncurses archive file (libncurses.so) not found in /usr or /usr/local!
+-
+-Ncurses library (*) not found in your system.
+-You can download it from official web site: http://www.gnu.org/software/ncurses/ncurses.html
+-(*): CRT screen handling and optimization package
+-
+-Building without ncurses menu support (-G flag will doesn't work)
+-
+-])
+-fi
++PKG_CHECK_MODULES(ncurses,ncurses,[LIBS="$LIBS $ncurses_LIBS"],)
  
- Ncurses library (*) not found in your system.
- You can download it from official web site: http://www.gnu.org/software/ncurses/ncurses.html
-@@ -174,15 +176,15 @@
+ ENABLE_NCRS="no"
+ AC_CHECK_LIB(ncurses, initscr, ENABLE_NCRS="yes"; NCURSES=ncurses/n_nast.o; LIBS="-lncurses $LIBS"; AC_DEFINE(HAVE_LIBNCURSES), AC_MSG_RESULT([
+@@ -173,28 +123,6 @@
+ #  --lmenu support--
  #
  
- filechk="yes"
+-filechk="yes"
 -AC_CHECK_FILE(/usr/lib/libmenu.a,, filechk="no")
-+AC_CHECK_FILE(/usr/lib/libmenu.so,, filechk="no")
- if test "$filechk" = "no"; then
+-if test "$filechk" = "no"; then
 - AC_CHECK_FILE(/usr/local/lib/libmenu.a, filechk="yes" ; LDFLAGS="-L/usr/local/lib"; CPPFLAGS="-I/usr/local/include")
-+ AC_CHECK_FILE(/usr/local/lib/libmenu.so, filechk="yes" ; LDFLAGS="-L/usr/local/lib"; CPPFLAGS="-I/usr/local/include")
- fi
- 
- if test "$filechk" = "no"; 
- then AC_MSG_WARN([
- 
+-fi
+-
+-if test "$filechk" = "no"; 
+-then AC_MSG_WARN([
+-
 -Menu archive file (libncurses.a) not found in /usr or /usr/local!
-+Menu archive file (libncurses.so) not found in /usr or /usr/local!
+-
+-
+-Menu library (*) not found in your system.
+-You can download it from official web site: http://www.gnu.org/software/ncurses/ncurses.html
+-(*): CRT screen handling and optimization package
+-
+-
+-Building without ncurses menu support (-G flag will doesn't work)
+-])
+-
+-fi
+-
+ ENABLE_NCRS="no"
+ AC_CHECK_LIB(menu, menu_opts_off, ENABLE_NCRS="yes"; MENU=ncurses/n_menu.o; LIBS="-lmenu $LIBS"; AC_DEFINE(HAVE_LIBMENU), AC_MSG_RESULT([
  
- 
- Menu library (*) not found in your system.

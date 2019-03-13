@@ -3,7 +3,6 @@
 <pkgmetadata>
 	<maintainer type="person">
 		<email>williamh@gentoo.org</email>
-		<description>backup Maintainer, CC him on bugs</description>
 	</maintainer>
 	<upstream>
 		<maintainer status="active">

@@ -1,5 +1,5 @@
---- Makefile.orig	2004-12-11 01:36:11.000000000 -0800
-+++ Makefile	2004-12-11 01:36:14.000000000 -0800
+--- a/Makefile.orig	2004-12-11 01:36:11.000000000 -0800
++++ b/Makefile	2004-12-11 01:36:14.000000000 -0800
 @@ -13,9 +13,7 @@
  MIXER=-lSDL_mixer
  SDL_LIB=$(shell sdl-config --static-libs) $(MIXER)

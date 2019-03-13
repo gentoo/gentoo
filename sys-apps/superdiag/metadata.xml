@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>ck+gentoo@bl4ckb0x.de</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		The Super Diagnostics provides offline the capability to determine
+		the health of Supermicro server's components, including CPU, memory and I/O.
+		Features: Designed for Supermicro Sytems, offline diagnostics,
+		command line interface (CLI), local and remote diagnostics,
+		automatically collects information on detected devices,
+		test results reported in output files and flexible test coverage.
+	</longdescription>
+	<use>
+		<flag name="iso">Install an iso image, which can be used with <pkg>sys-apps/smc-sum</pkg>.</flag>
+		<flag name="usb">Install all files, which are needed for an installation on an usb thumb drive.</flag>
+	</use>
+</pkgmetadata>

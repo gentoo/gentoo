@@ -1,0 +1,11 @@
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -107,7 +107,7 @@
+             -e "s@/usr/bin/python@$(PYTHON)@" \
+              $(srcdir)/units_cur > units_cur_inst
+ 
+-install-support: definitions.units units_cur_inst currency-units-update
++install-support: definitions.units units_cur_inst
+ 	$(MKDIR_P) $(DESTDIR)@UDAT@ $(DESTDIR)$(bindir) $(DESTDIR)@CDAT@
+ 	$(INSTALL_DATA) $(srcdir)/definitions.units $(DESTDIR)@UDAT@definitions.units
+ 	-rm -f $(DESTDIR)@UDAT@currency.units

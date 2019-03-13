@@ -1,0 +1,7 @@
+# Copyright 1999-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Brian Evans <grknight@gentoo.org> (27 Feb 2019)
+# Avoids conflicts from kde-plasma/plasma-workspace
+# setting sys-fs/dbus[user-session] if bluez is installed
+net-wireless/bluez user-session

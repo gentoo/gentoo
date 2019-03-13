@@ -1,10 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>tommy@gentoo.org</email>
-		<name>Thomas Sachau (Tommy[D])</name>
-	</maintainer>
 	<maintainer type="project">
 		<email>cpp@gentoo.org</email>
 		<name>Gentoo C++ Project</name>
@@ -37,6 +33,7 @@ done quickly and working on the features that make their application unique.
 		<flag name="data">Database abstraction layer to easily send/retrieve data to/from various databases</flag>
 		<flag name="file2pagecompiler">Utility to convert ordinary files to Page Compiler source files</flag>
 		<flag name="json">Add JSON support</flag>
+		<flag name="mariadb">Prefer <pkg>dev-db/mariadb-connector-c</pkg> over <pkg>dev-db/mysql-connector-c</pkg></flag>
 		<flag name="mongodb">Add <pkg>dev-db/mongodb</pkg> support</flag>
 		<flag name="net">Classes to write network clients &amp; servers</flag>
 		<flag name="pagecompiler">Simple compiler translating HTML pages containing embedded C++ code into HTTPRequestHandler classes</flag>

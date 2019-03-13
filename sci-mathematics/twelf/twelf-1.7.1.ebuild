@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -91,10 +91,12 @@ src_install() {
 		ins_example_dir examples-delphin
 	fi
 	dobin bin/twelf-server
-	dohtml doc/html/index.html
-	doinfo doc/guide/twelf.info
-	dodoc doc/guide/twelf.dvi doc/guide/twelf.ps doc/guide/twelf.pdf
-	dohtml doc/guide/twelf/*
+	if use doc; then
+		dohtml doc/html/index.html
+		doinfo doc/guide/twelf.info
+		dodoc doc/guide/twelf.dvi doc/guide/twelf.ps doc/guide/twelf.pdf
+		dohtml doc/guide/twelf/*
+	fi
 }
 
 pkg_postinst() {

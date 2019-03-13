@@ -8,7 +8,7 @@ inherit readme.gentoo-r1 elisp
 
 DESCRIPTION="Collaborative editing environment for GNU Emacs"
 HOMEPAGE="http://rudel.sourceforge.net/
-	http://www.emacswiki.org/emacs/Rudel"
+	https://www.emacswiki.org/emacs/Rudel"
 # snapshot of bzr://rudel.bzr.sourceforge.net/bzrroot/rudel/trunk
 SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.tar.xz"
 

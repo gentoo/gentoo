@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
-    <email>eras@gentoo.org</email>
-    <name>Eray Aslan</name>
-  </maintainer>
+<maintainer type="person">
+    <email>zlogene@gentoo.org</email>
+    <name>Mikle Kolyada</name>
+</maintainer>
   <longdescription>A full-featured web proxy cache</longdescription>
   <use>
     <flag name="ecap">Adds support for loadable content adaptation modules

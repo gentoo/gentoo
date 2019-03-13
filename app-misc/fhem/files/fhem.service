@@ -1,0 +1,13 @@
+[Unit]
+Description=FHEM
+After=network-online.target
+
+[Service]
+Type=simple
+User=fhem
+Group=fhem
+WorkingDirectory=/opt/fhem
+ExecStart=/opt/fhem/fhem.pl /opt/fhem/fhem.cfg
+
+[Install]
+WantedBy=multi-user.target

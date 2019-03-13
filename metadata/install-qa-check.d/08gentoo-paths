@@ -1,0 +1,77 @@
+# Check whether ebuilds are not installing new, non-Gentoo-ey paths.
+
+gentoo_path_check() {
+	# allowed path definitions
+	# ------------------------
+
+	# directories common to / and /usr
+	local allowed_common_dirs=(
+		bin lib lib32 lib64 libx32 sbin
+	)
+
+	# toplevel directories which can be installed to by ebuilds
+	# /home is not included as no ebuilds should install files there
+	local allowed_paths_toplevel=(
+		"${allowed_common_dirs[@]}"
+		boot dev etc opt srv usr var
+	)
+
+	# directories in /usr which can be installed to by ebuilds
+	# /usr/games is not included as it is banned nowadays
+	local allowed_paths_usr=(
+		"${allowed_common_dirs[@]}"
+		include libexec share src
+		# toolchain stuff
+		"${CHOST}" "${CTARGET}"
+	)
+
+
+	# the logic
+	# ---------
+	local bad_paths=()
+	local x
+
+	local shopt_save=$(shopt -p nullglob)
+	shopt -s nullglob
+
+	# 1. check for unexpected top-level directories
+	local toplevel_dirs=( "${ED%/}"/* )
+	for x in "${toplevel_dirs[@]##*/}"; do
+		if ! has "${x}" "${allowed_paths_toplevel[@]}"; then
+			bad_paths+=( "/${x}" )
+		fi
+	done
+
+	# 2. check for unexpected /usr subdirectories
+	local usr_dirs=( "${ED%/}"/usr/* )
+	for x in "${usr_dirs[@]##*/}"; do
+		if ! has "${x}" "${allowed_paths_usr[@]}"; then
+			bad_paths+=( "/usr/${x}" )
+		fi
+	done
+
+	# 3. check for unexpected /usr/share/doc subdirectories
+	local doc_dirs=( "${ED%/}"/usr/share/doc/* )
+	for x in "${doc_dirs[@]##*/}"; do
+		if [[ ${x} != ${PF} ]]; then
+			bad_paths+=( "/usr/share/doc/${x}" )
+		fi
+	done
+
+	${shopt_save}
+
+	# report
+	# ------
+	if [[ -n ${bad_paths[@]} ]]; then
+		eqawarn "The ebuild is installing to one or more unexpected paths:"
+		eqawarn
+		eqatag -v non-gentoo-paths "${bad_paths[@]}"
+		eqawarn
+		eqawarn "Please fix the ebuild to use correct FHS/Gentoo policy paths."
+	fi
+}
+
+gentoo_path_check
+: # guarantee successful exit
+
+# vim:ft=sh

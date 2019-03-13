@@ -1,0 +1,35 @@
+diff --git a/Makefile b/Makefile
+index 29f2d6a..038b05e 100644
+--- a/Makefile
++++ b/Makefile
+@@ -82,12 +82,19 @@ else
+     ifneq (,$(findstring arm,$(gcc_machine)))
+         ifneq (,$(findstring linux-gnueabihf,$(gcc_machine)))
+             detected_openhome_architecture = armhf
++        else ifneq (,$(findstring armv7hl,$(gcc_machine)))
++            # cubox: armv7hl-redhat-linux-gnueabi
++            detected_openhome_architecture = armhf
+         else ifeq (${detected_openhome_system},Qnap)
+             detected_openhome_architecture = x19
+         else
+             detected_openhome_architecture = armel
+         endif
+     endif
++    ifneq (,$(findstring aarch64,$(gcc_machine)))
++      # odroid64: aarch64-linux-gnu
++      detected_openhome_architecture = arm64
++    endif
+     ifneq (,$(findstring i686,$(gcc_machine)))
+       detected_openhome_architecture = x86
+     endif
+@@ -375,6 +382,10 @@ mkdir = mkdir -p
+ rmdir = rm -rf
+ uset4 = no
+ 
++# This avoids errors in Generated/Devices.mak (they apparently have no
++# consequences anyway because we use make native_only=yes)
++t4 = echo
++
+ ifeq ($(managed_only), yes)
+ build_targets_base = make_obj_dir ohNet.net.dll CpProxyDotNetAssemblies DvDeviceDotNetAssemblies
+ else

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>ktrace@yandex.ru</email>
+		<name>Victor Kustov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		Oregano is an application for schematic capture and simulation of electrical
+		circuits. The actual simulation is performed by Berkeley Spice, or GNUcap or
+		the new generation ngspice.
+		It's alive fork of <pkg>sci-electronics/oregano</pkg>
+	</longdescription>
+	<upstream>
+		<remote-id type="github">drahnr/oregano</remote-id>
+	</upstream>
+</pkgmetadata>

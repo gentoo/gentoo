@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>bman@gentoo.org</email>
+		<name>Aaron Bauman</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>prometheanfire@gentoo.org</email>
+		<name>Matthew Thode</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>hilobakho@gmail.com</email>
+		<name>Mykyta Holubakha</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>speedjack95@gmail.com</email>
+		<name>Niccolò Scatena</name>
+	</maintainer>
+	<longdescription lang="en">
+		"SirCmpwn's Wayland window manager" is an i3-compatible window manager
+		for Wayland.
+
+		sway was created to fill the need of an i3-like window manager for
+		Wayland. The upstream i3 developers have no intention of porting i3 to
+		Wayland, and projects proposed by others ended up as vaporware. Many
+		thanks to the i3 folks for providing such a great piece of software, so
+		good that your users would rather write an entirely new window manager
+		from scratch that behaved *exactly* like i3 rather than switch to
+		something else.
+	</longdescription>
+	<use>
+		<flag name="elogind">Enable support for rootless session via elogind</flag>
+		<flag name="fish-completion">Enable fish completion support</flag>
+		<flag name="man">Build and install man pages</flag>
+		<flag name="swaybar">Install 'swaybar': sway's status bar component</flag>
+		<flag name="swaybg">Install 'swaybg': allows to set a desktop background image</flag>
+		<flag name="swayidle">Install 'swayidle': idle manager to run commands when user is inactive</flag>
+		<flag name="swaylock">Install 'swaylock': sway's screen locker</flag>
+		<flag name="swaymsg">Install 'swaymsg': tool for communicating with a running sway instance</flag>
+		<flag name="swaynag">Install 'swaynag': shows a message with buttons</flag>
+		<flag name="tray">Enable support for StatusNotifierItem tray specification</flag>
+		<flag name="wallpapers">Install sway's default wallpaper image</flag>
+		<flag name="X">Enable support for X11 applications (XWayland)</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">swaywm/sway</remote-id>
+		<maintainer status="active">
+			<email>sir@cmpwn.com</email>
+			<name>Drew DeVault</name>
+		</maintainer>
+		<bugs-to>https://github.com/swaywm/sway/issues</bugs-to>
+		<doc>https://github.com/swaywm/sway/wiki</doc>
+		<changelog>https://github.com/swaywm/sway/releases</changelog>
+	</upstream>
+</pkgmetadata>

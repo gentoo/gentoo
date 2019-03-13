@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils qmake-utils
+inherit qmake-utils
 
 MY_P=${P/-/_}
 
@@ -42,7 +42,7 @@ src_prepare() {
 		qsstv/qsstv.pro || die
 }
 
-src_compile() {
+src_configure() {
 	eqmake5
 }
 

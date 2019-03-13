@@ -21,11 +21,11 @@ fi
 LICENSE="BSD-2"
 SLOT="0"
 if [ "${PV%9999}" = "${PV}" ] ; then
-	KEYWORDS="~amd64 ~arm64 ~mips ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
+	KEYWORDS="~amd64 ~arm64 ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
 else
 	KEYWORDS=""
 fi
-IUSE="+libunwind +static-libs"
+IUSE="+libunwind +static-libs test"
 
 RDEPEND="libunwind? ( || ( >=sys-libs/libunwind-1.0.1-r1[static-libs?,${MULTILIB_USEDEP}]
 		sys-libs/llvm-libunwind[static-libs?,${MULTILIB_USEDEP}] ) )"

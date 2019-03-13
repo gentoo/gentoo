@@ -1,5 +1,5 @@
---- tools/rlecat.c
-+++ tools/rlecat.c
+--- a/tools/rlecat.c
++++ b/tools/rlecat.c
 @@ -110,8 +110,14 @@
  	    nflag = 0;		/* Not really repeating! */
  	else

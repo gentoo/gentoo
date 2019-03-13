@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,7 +10,7 @@ HOMEPAGE="https://projects.gnome.org/gnome-power-manager/"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="test"
-KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86 ~x86-fbsd"
 
 COMMON_DEPEND="
 	>=dev-libs/glib-2.45.8:2
@@ -26,7 +26,7 @@ DEPEND="${COMMON_DEPEND}
 	app-text/docbook-sgml-utils
 	dev-libs/appstream-glib
 	>=sys-devel/gettext-0.19.7
-	x11-proto/randrproto
+	x11-base/xorg-proto
 	virtual/pkgconfig
 	test? ( sys-apps/dbus )
 "

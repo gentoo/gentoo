@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,12 +8,12 @@ PYTHON_COMPAT=( python2_7 )
 inherit gnome2 python-single-r1
 
 DESCRIPTION="Pybliographer is a tool for working with bibliographic databases"
-HOMEPAGE="http://pybliographer.org/"
+HOMEPAGE="https://pybliographer.org"
 SRC_URI="mirror://sourceforge/pybliographer/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 
 IUSE=""
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
@@ -32,6 +32,9 @@ RDEPEND="${PYTHON_DEPS}
 DEPEND="${RDEPEND}
 	app-text/yelp-tools
 "
+
+# Tests broken for a long time, recheck in 1.4, bug #678444
+RESTRICT="test"
 
 src_prepare() {
 	# Workaround for bug 487204.

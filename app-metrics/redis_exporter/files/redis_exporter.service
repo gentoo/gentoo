@@ -1,0 +1,16 @@
+[Unit]
+Description=Prometheus Exporter for Redis Metrics
+Documentation=https://github.com/oliver006/redis_exporter/
+After=network-online.target
+
+[Service]
+User=redis_exporter
+Restart=on-failure
+Environment=REDIS_EXPORTER_ARGS="--web.listen-address=:9121 --redis.addr=localhost:6379"
+ExecStart=/usr/bin/redis_exporter $REDIS_EXPORTER_ARGS
+ExecReload=/bin/kill -HUP $MAINPID
+TimeoutStopSec=20s
+SendSIGKILL=no
+
+[Install]
+WantedBy=multi-user.target

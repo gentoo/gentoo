@@ -1,0 +1,44 @@
+--- a/spec/std/socket/tcp_server_spec.cr
++++ b/spec/std/socket/tcp_server_spec.cr
+@@ -76,13 +76,17 @@ describe TCPServer do
+         TCPServer.new("localhost", unused_local_port)
+       end
+ 
+-      it "raises when host doesn't exist" do
++      # gentoo's FEATURES=network-sandbox blocks external network:
++      #   Socket::Error: getaddrinfo: Temporary failure in name resolution
++      pending "raises when host doesn't exist" do
+         expect_raises(Socket::Error, "No address") do
+           TCPServer.new("doesnotexist.example.org.", 12345)
+         end
+       end
+ 
+-      it "raises (rather than segfault on darwin) when host doesn't exist and port is 0" do
++      # gentoo's FEATURES=network-sandbox blocks external network:
++      #   Socket::Error: getaddrinfo: Temporary failure in name resolution
++      pending "raises (rather than segfault on darwin) when host doesn't exist and port is 0" do
+         expect_raises(Socket::Error, "No address") do
+           TCPServer.new("doesnotexist.example.org.", 0)
+         end
+--- a/spec/std/socket/tcp_socket_spec.cr
++++ b/spec/std/socket/tcp_socket_spec.cr
+@@ -56,13 +56,17 @@ describe TCPSocket do
+         end
+       end
+ 
+-      it "raises when host doesn't exist" do
++      # gentoo's FEATURES=network-sandbox blocks external network:
++      #   Socket::Error: getaddrinfo: Temporary failure in name resolution
++      pending "raises when host doesn't exist" do
+         expect_raises(Socket::Error, "No address") do
+           TCPSocket.new("doesnotexist.example.org.", 12345)
+         end
+       end
+ 
+-      it "raises (rather than segfault on darwin) when host doesn't exist and port is 0" do
++      # gentoo's FEATURES=network-sandbox blocks external network:
++      #   Socket::Error: getaddrinfo: Temporary failure in name resolution
++      pending "raises (rather than segfault on darwin) when host doesn't exist and port is 0" do
+         expect_raises(Socket::Error, "No address") do
+           TCPSocket.new("doesnotexist.example.org.", 0)
+         end

@@ -1,0 +1,12 @@
+--- a/spec/std/http/server/server_spec.cr
++++ b/spec/std/http/server/server_spec.cr
+@@ -524,7 +524,8 @@ module HTTP
+     end
+ 
+     describe "#close" do
+-      it "closes gracefully" do
++      # fails under gentoo's sandbox
++      pending "closes gracefully" do
+         server = Server.new do |context|
+           context.response.flush
+           context.response.puts "foo"

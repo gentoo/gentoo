@@ -10,4 +10,7 @@
 		<remote-id type="bitbucket">pypa/setuptools_scm</remote-id>
 		<remote-id type="github">pypa/setuptools_scm</remote-id>
 	</upstream>
+	<use>
+		<flag name="mercurial">Enables mercurial backend</flag>
+	</use>
 </pkgmetadata>

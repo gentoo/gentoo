@@ -1,0 +1,194 @@
+From 3eec911197081a63d9dae28f1784ad01a06fb60a Mon Sep 17 00:00:00 2001
+From: Colin Watson <cjwatson@ubuntu.com>
+Date: Tue, 30 Jan 2018 21:54:17 +0000
+Subject: build: Use pkg-config to find FreeType
+
+pkg-config is apparently preferred over freetype-config these days (see
+the BUGS section of freetype-config(1)).  pkg-config support was added
+to FreeType in version 2.1.5, which was released in 2003, so it should
+comfortably be available everywhere by now.
+
+We no longer need to explicitly substitute FREETYPE_CFLAGS and
+FREETYPE_LIBS, since PKG_CHECK_MODULES does that automatically.
+
+Fixes Debian bug #887721.
+
+Reported-by: Hugh McMaster <hugh.mcmaster@outlook.com>
+Signed-off-by: Colin Watson <cjwatson@ubuntu.com>
+
+Bug-Debian: https://bugs.debian.org/887721
+Last-Update: 2018-02-11
+
+Patch-Name: freetype-pkg-config.patch
+---
+ INSTALL      | 11 +++++----
+ configure.ac | 74 +++++++++++++++++++++++++-----------------------------------
+ 2 files changed, 37 insertions(+), 48 deletions(-)
+
+diff --git a/INSTALL b/INSTALL
+index f3c20edc8..b370d7753 100644
+--- a/INSTALL
++++ b/INSTALL
+@@ -37,6 +37,7 @@ configuring the GRUB.
+ * GNU gettext 0.17 or later
+ * GNU binutils 2.9.1.0.23 or later
+ * Flex 2.5.35 or later
++* pkg-config
+ * Other standard GNU/Unix tools
+ * a libc with large file support (e.g. glibc 2.1 or later)
+ 
+@@ -52,7 +53,7 @@ For optional grub-emu features, you need:
+ 
+ To build GRUB's graphical terminal (gfxterm), you need:
+ 
+-* FreeType 2 or later
++* FreeType 2.1.5 or later
+ * GNU Unifont
+ 
+ If you use a development snapshot or want to hack on GRUB you may
+@@ -158,8 +159,8 @@ For this example the configure line might look like (more details below)
+ (some options are optional and included here for completeness but some rarely
+ used options are omitted):
+ 
+-./configure BUILD_CC=gcc BUILD_FREETYPE=freetype-config --host=amd64-linux-gnu
+-CC=amd64-linux-gnu-gcc CFLAGS="-g -O2" FREETYPE=amd64-linux-gnu-freetype-config
++./configure BUILD_CC=gcc BUILD_PKG_CONFIG=pkg-config --host=amd64-linux-gnu
++CC=amd64-linux-gnu-gcc CFLAGS="-g -O2" PKG_CONFIG=amd64-linux-gnu-pkg-config
+ --target=arm --with-platform=uboot TARGET_CC=arm-elf-gcc
+ TARGET_CFLAGS="-Os -march=armv6" TARGET_CCASFLAGS="-march=armv6"
+ TARGET_OBJCOPY="arm-elf-objcopy" TARGET_STRIP="arm-elf-strip"
+@@ -176,7 +177,7 @@ corresponding platform are not needed for the platform in question.
+     2. BUILD_CFLAGS= for C options for build.
+     3. BUILD_CPPFLAGS= for C preprocessor options for build.
+     4. BUILD_LDFLAGS= for linker options for build.
+-    5. BUILD_FREETYPE= for freetype-config for build (optional).
++    5. BUILD_PKG_CONFIG= for pkg-config for build (optional).
+ 
+   - For host
+     1. --host= to autoconf name of host.
+@@ -184,7 +185,7 @@ corresponding platform are not needed for the platform in question.
+     3. HOST_CFLAGS= for C options for host.
+     4. HOST_CPPFLAGS= for C preprocessor options for host.
+     5. HOST_LDFLAGS= for linker options for host.
+-    6. FREETYPE= for freetype-config for host (optional).
++    6. PKG_CONFIG= for pkg-config for host (optional).
+     7. Libdevmapper if any must be in standard linker folders (-ldevmapper) (optional).
+     8. Libfuse if any must be in standard linker folders (-lfuse) (optional).
+     9. Libzfs if any must be in standard linker folders (-lzfs) (optional).
+diff --git a/configure.ac b/configure.ac
+index 85c23bd62..f102b7024 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -50,6 +50,10 @@ AC_PREREQ(2.60)
+ AC_CONFIG_SRCDIR([include/grub/dl.h])
+ AC_CONFIG_HEADER([config-util.h])
+ 
++# Explicitly check for pkg-config early on, since otherwise conditional
++# calls are problematic.
++PKG_PROG_PKG_CONFIG
++
+ # Program name transformations
+ AC_ARG_PROGRAM
+ grub_TRANSFORM([grub-bios-setup])
+@@ -1493,29 +1497,22 @@ if test x"$enable_grub_mkfont" = xno ; then
+   grub_mkfont_excuse="explicitly disabled"
+ fi
+ 
+-if test x"$grub_mkfont_excuse" = x ; then
+-  # Check for freetype libraries.
+-  AC_CHECK_TOOLS([FREETYPE], [freetype-config])
+-  if test "x$FREETYPE" = x ; then
+-    grub_mkfont_excuse=["need freetype2 library"]
+-  fi
+-fi
+-
+ unset ac_cv_header_ft2build_h
+ 
+ if test x"$grub_mkfont_excuse" = x ; then
+   # Check for freetype libraries.
+-  FREETYPE_CFLAGS=`$FREETYPE --cflags`
+-  FREETYPE_LIBS=`$FREETYPE --libs`
+-  SAVED_CPPFLAGS="$CPPFLAGS"
+-  SAVED_LIBS="$LIBS"
+-  CPPFLAGS="$CPPFLAGS $FREETYPE_CFLAGS"
+-  LIBS="$LIBS $FREETYPE_LIBS"
+-  AC_CHECK_HEADERS([ft2build.h], [],
+-  	[grub_mkfont_excuse=["need freetype2 headers"]])
+-  AC_LINK_IFELSE([AC_LANG_CALL([], [FT_Load_Glyph])], [], [grub_mkfont_excuse=["freetype2 library unusable"]])
+-  CPPFLAGS="$SAVED_CPPFLAGS"
+-  LIBS="$SAVED_LIBS"
++  PKG_CHECK_MODULES([FREETYPE], [freetype2], [
++    SAVED_CPPFLAGS="$CPPFLAGS"
++    SAVED_LIBS="$LIBS"
++    CPPFLAGS="$CPPFLAGS $FREETYPE_CFLAGS"
++    LIBS="$LIBS $FREETYPE_LIBS"
++    AC_CHECK_HEADERS([ft2build.h], [],
++      [grub_mkfont_excuse=["need freetype2 headers"]])
++    AC_LINK_IFELSE([AC_LANG_CALL([], [FT_Load_Glyph])], [],
++      [grub_mkfont_excuse=["freetype2 library unusable"]])
++    CPPFLAGS="$SAVED_CPPFLAGS"
++    LIBS="$SAVED_LIBS"
++  ], [grub_mkfont_excuse=["need freetype2 library"]])
+ fi
+ 
+ if test x"$enable_grub_mkfont" = xyes && test x"$grub_mkfont_excuse" != x ; then
+@@ -1527,8 +1524,6 @@ else
+ enable_grub_mkfont=no
+ fi
+ AC_SUBST([enable_grub_mkfont])
+-AC_SUBST([FREETYPE_CFLAGS])
+-AC_SUBST([FREETYPE_LIBS])
+ 
+ SAVED_CC="$CC"
+ SAVED_CPP="$CPP"
+@@ -1558,25 +1553,21 @@ AC_SUBST([BUILD_WORDS_BIGENDIAN])
+ 
+ if test x"$grub_build_mkfont_excuse" = x ; then
+   # Check for freetype libraries.
+-  AC_CHECK_PROGS([BUILD_FREETYPE], [freetype-config])
+-  if test "x$BUILD_FREETYPE" = x ; then
+-    grub_build_mkfont_excuse=["need freetype2 library"]
+-  fi
+-fi
+-
+-if test x"$grub_build_mkfont_excuse" = x ; then
+-  # Check for freetype libraries.
+-  BUILD_FREETYPE_CFLAGS=`$BUILD_FREETYPE --cflags`
+-  BUILD_FREETYPE_LIBS=`$BUILD_FREETYPE --libs`
+-  SAVED_CPPFLAGS_2="$CPPFLAGS"
+-  SAVED_LIBS="$LIBS"
+-  CPPFLAGS="$CPPFLAGS $BUILD_FREETYPE_CFLAGS"
+-  LIBS="$LIBS $BUILD_FREETYPE_LIBS"
+-  AC_CHECK_HEADERS([ft2build.h], [],
+-  	[grub_build_mkfont_excuse=["need freetype2 headers"]])
+-  AC_LINK_IFELSE([AC_LANG_CALL([], [FT_Load_Glyph])], [], [grub_build_mkfont_excuse=["freetype2 library unusable"]])
+-  LIBS="$SAVED_LIBS"
+-  CPPFLAGS="$SAVED_CPPFLAGS_2"
++  SAVED_PKG_CONFIG="$PKG_CONFIG"
++  test -z "$BUILD_PKG_CONFIG" || PKG_CONFIG="$BUILD_PKG_CONFIG"
++  PKG_CHECK_MODULES([BUILD_FREETYPE], [freetype2], [
++    SAVED_CPPFLAGS_2="$CPPFLAGS"
++    SAVED_LIBS="$LIBS"
++    CPPFLAGS="$CPPFLAGS $BUILD_FREETYPE_CFLAGS"
++    LIBS="$LIBS $BUILD_FREETYPE_LIBS"
++    AC_CHECK_HEADERS([ft2build.h], [],
++      [grub_build_mkfont_excuse=["need freetype2 headers"]])
++    AC_LINK_IFELSE([AC_LANG_CALL([], [FT_Load_Glyph])], [],
++      [grub_build_mkfont_excuse=["freetype2 library unusable"]])
++    LIBS="$SAVED_LIBS"
++    CPPFLAGS="$SAVED_CPPFLAGS_2"
++  ], [grub_build_mkfont_excuse=["need freetype2 library"]])
++  PKG_CONFIG="$SAVED_PKG_CONFIG"
+ fi
+ 
+ if test x"$enable_build_grub_mkfont" = xyes && test x"$grub_build_mkfont_excuse" != x ; then
+@@ -1595,9 +1586,6 @@ if test x"$enable_build_grub_mkfont" = xno && ( test "x$platform" = xqemu || tes
+   fi
+ fi
+ 
+-AC_SUBST([BUILD_FREETYPE_CFLAGS])
+-AC_SUBST([BUILD_FREETYPE_LIBS])
+-
+ CC="$SAVED_CC"
+ CPP="$SAVED_CPP"
+ CFLAGS="$SAVED_CFLAGS"

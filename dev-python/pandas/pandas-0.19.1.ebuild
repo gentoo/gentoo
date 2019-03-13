@@ -48,11 +48,7 @@ OPTIONAL_DEPEND="
 	dev-python/xlwt[${PYTHON_USEDEP}]
 	sci-libs/scipy[${PYTHON_USEDEP}]
 	X? (
-		|| (
-			dev-python/PyQt4[${PYTHON_USEDEP}]
-			dev-python/pyside[${PYTHON_USEDEP}]
-			dev-python/pygtk[$(python_gen_usedep python2_7)]
-		)
+		dev-python/pygtk[$(python_gen_usedep python2_7)]
 		|| (
 			x11-misc/xclip
 			x11-misc/xsel
@@ -161,5 +157,5 @@ pkg_postinst() {
 	optfeature "Needed for parts of pandas.stats" dev-python/statsmodels
 	optfeature "SQL database support" ">=dev-python/sqlalchemy-0.8.1"
 	optfeature "miscellaneous statistical functions" sci-libs/scipy
-	optfeature "necessary to use pandas.io.clipboard.read_clipboard support" dev-python/PyQt4 dev-python/pyside dev-python/pygtk x11-misc/xclip x11-misc/xsel
+	optfeature "necessary to use pandas.io.clipboard.read_clipboard support" dev-python/pygtk x11-misc/xclip x11-misc/xsel
 }

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>chewi@gentoo.org</email>
+		<name>James Le Cuirot</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="sourceforge">munt</remote-id>
+		<remote-id type="github">munt/munt</remote-id>
+	</upstream>
+	<longdescription lang="en">
+		mt32emu_alsadrv is a module of the Munt project. It uses the mt32emu library and provides an ALSA MIDI driver which emulates (approximately) the Roland MT-32, CM-32L and LAPC-I synthesiser modules.
+	</longdescription>
+</pkgmetadata>

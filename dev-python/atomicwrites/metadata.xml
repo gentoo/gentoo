@@ -7,5 +7,6 @@
 	<upstream>
 		<remote-id type="github">untitaker/python-atomicwrites</remote-id>
 		<remote-id type="pypi">atomicwrites</remote-id>
+		<bugs-to>https://github.com/untitaker/python-atomicwrites/issues</bugs-to>
 	</upstream>
 </pkgmetadata>

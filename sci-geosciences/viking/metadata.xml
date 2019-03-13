@@ -9,6 +9,9 @@
     <name>Gentoo Geosciences Project</name>
   </maintainer>
   <use>
+    <flag name="geoclue">
+      Use <pkg>app-misc/geoclue</pkg> to determine current location
+    </flag>
     <flag name="libexif">
       Use <pkg>media-libs/libexif</pkg> for EXIF support
     </flag>
@@ -17,6 +20,9 @@
     </flag>
     <flag name="mapnik">
       Enable a layer based on <pkg>sci-geosciences/mapnik</pkg>
+    </flag>
+    <flag name="oauth">
+      Enable OAuth authentication for OSM
     </flag>
     <flag name="sqlite">
       Enable MBTiles support based on <pkg>dev-db/sqlite</pkg>

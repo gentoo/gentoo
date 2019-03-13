@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -20,7 +20,7 @@ HOMEPAGE="https://cgit.freedesktop.org/plymouth/"
 LICENSE="GPL-2"
 SLOT="0"
 [[ ${PV} == 9999 ]] || \
-KEYWORDS="alpha amd64 arm ia64 ppc ppc64 ~sparc x86"
+KEYWORDS="alpha amd64 arm ia64 ppc ppc64 sparc x86"
 IUSE="debug gdm +gtk +libkms +pango static-libs"
 
 CDEPEND="
@@ -52,23 +52,28 @@ PATCHES=(
 	"${FILESDIR}"/0.9.3-glibc-sysmacros.patch
 )
 
-src_configure() {
-	local myconf
-	myconf="--with-system-root-install=no
-	--localstatedir=/var
-	--without-rhgb-compat-link
-	--enable-documentation
-	--enable-systemd-integration
-	--with-systemdunitdir="$(systemd_get_systemunitdir)"
-	$(use_enable !static-libs shared)
-	$(use_enable static-libs static)
-	$(use_enable debug tracing)
-	$(use_enable gtk gtk)
-	$(use_enable libkms drm)
-	$(use_enable pango)
-	$(use_enable gdm gdm-transition)"
+src_prepare() {
+	default
 	eautoreconf
-	econf ${myconf}
+}
+
+src_configure() {
+	local myconf=(
+		--with-system-root-install=no
+		--localstatedir=/var
+		--without-rhgb-compat-link
+		--enable-documentation
+		--enable-systemd-integration
+		--with-systemdunitdir="$(systemd_get_systemunitdir)"
+		$(use_enable !static-libs shared)
+		$(use_enable static-libs static)
+		$(use_enable debug tracing)
+		$(use_enable gtk gtk)
+		$(use_enable libkms drm)
+		$(use_enable pango)
+		$(use_enable gdm gdm-transition)
+	)
+	econf "${myconf[@]}"
 }
 
 src_install() {

@@ -14,7 +14,10 @@
 		<name>Michał Górny</name>
 	</maintainer>
 	<longdescription lang="en">
-		GTK+ based frontend for GIT
+		gitg is a graphical user interface for git. It aims at being a small,
+		fast and convenient tool to visualize the history of git repositories.
+		Besides visualization, gitg also provides several utilities to manage your
+		repository and commit your work.
 	</longdescription>
 	<use>
 		<flag name="glade">Install a glade catalog file</flag>

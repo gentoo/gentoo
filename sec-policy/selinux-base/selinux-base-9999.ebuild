@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -10,7 +10,7 @@ if [[ ${PV} == 9999* ]]; then
 
 	inherit git-r3
 else
-	SRC_URI="https://raw.githubusercontent.com/wiki/TresysTechnology/refpolicy/files/refpolicy-${PV}.tar.bz2
+	SRC_URI="https://github.com/SELinuxProject/refpolicy/releases/download/RELEASE_${PV/./_}/refpolicy-${PV}.tar.bz2
 			https://dev.gentoo.org/~swift/patches/selinux-base-policy/patchbundle-selinux-base-policy-${PVR}.tar.bz2"
 
 	KEYWORDS="~amd64 -arm ~arm64 ~mips ~x86"
@@ -19,15 +19,15 @@ fi
 IUSE="doc +open_perms +peer_perms systemd +ubac +unconfined"
 
 DESCRIPTION="Gentoo base policy for SELinux"
-HOMEPAGE="https://www.gentoo.org/proj/en/hardened/selinux/"
+HOMEPAGE="https://wiki.gentoo.org/wiki/Project:SELinux"
 LICENSE="GPL-2"
 SLOT="0"
 
-RDEPEND=">=sys-apps/policycoreutils-2.3
+RDEPEND=">=sys-apps/policycoreutils-2.8
 	virtual/udev"
 DEPEND="${RDEPEND}
 	sys-devel/m4
-	>=sys-apps/checkpolicy-2.3"
+	>=sys-apps/checkpolicy-2.8"
 
 S=${WORKDIR}/
 

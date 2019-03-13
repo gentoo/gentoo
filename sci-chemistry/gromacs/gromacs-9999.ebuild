@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,11 +14,10 @@ if [[ $PV = *9999* ]]; then
 		http://repo.or.cz/r/gromacs.git"
 	[[ $PV = 9999 ]] && EGIT_BRANCH="master" || EGIT_BRANCH="release-${PV:0:4}"
 	inherit git-r3
-	KEYWORDS=""
 else
 	SRC_URI="ftp://ftp.gromacs.org/pub/${PN}/${PN}-${PV/_/-}.tar.gz
 		test? ( http://gerrit.gromacs.org/download/regressiontests-${PV/_/-}.tar.gz )"
-	KEYWORDS="~alpha ~amd64 ~arm ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
+	KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
 fi
 
 ACCE_IUSE="cpu_flags_x86_sse2 cpu_flags_x86_sse4_1 cpu_flags_x86_fma4 cpu_flags_x86_avx cpu_flags_x86_avx2"
@@ -31,7 +30,7 @@ HOMEPAGE="http://www.gromacs.org/"
 #        base,    vmd plugins, fftpack from numpy,  blas/lapck from netlib,        memtestG80 library,  mpi_thread lib
 LICENSE="LGPL-2.1 UoI-NCSA !mkl? ( !fftw? ( BSD ) !blas? ( BSD ) !lapack? ( BSD ) ) cuda? ( LGPL-3 ) threads? ( BSD )"
 SLOT="0/${PV}"
-IUSE="X blas cuda +doc -double-precision +fftw +hwloc lapack mkl mpi +offensive openmp +single-precision test +threads +tng ${ACCE_IUSE}"
+IUSE="X blas cuda +doc -double-precision +fftw +gmxapi +hwloc lapack +lmfit mkl mpi +offensive opencl openmp +single-precision test +threads +tng ${ACCE_IUSE}"
 
 CDEPEND="
 	X? (
@@ -40,10 +39,12 @@ CDEPEND="
 		x11-libs/libICE
 		)
 	blas? ( virtual/blas )
-	cuda? ( >=dev-util/nvidia-cuda-toolkit-4.2.9-r1 )
+	cuda? ( >=dev-util/nvidia-cuda-toolkit-6.5.14 )
+	opencl? ( virtual/opencl )
 	fftw? ( sci-libs/fftw:3.0 )
 	hwloc? ( sys-apps/hwloc )
 	lapack? ( virtual/lapack )
+	lmfit? ( sci-libs/lmfit )
 	mkl? ( sci-libs/mkl )
 	mpi? ( virtual/mpi )
 	"
@@ -51,6 +52,8 @@ DEPEND="${CDEPEND}
 	virtual/pkgconfig
 	doc? (
 		app-doc/doxygen
+		dev-python/sphinx
+		media-gfx/mscgen
 		dev-texlive/texlive-latex
 		dev-texlive/texlive-latexextra
 		media-gfx/imagemagick
@@ -60,6 +63,7 @@ RDEPEND="${CDEPEND}"
 REQUIRED_USE="
 	|| ( single-precision double-precision )
 	cuda? ( single-precision )
+	cuda? ( !opencl )
 	mkl? ( !blas !fftw !lapack )"
 
 DOCS=( AUTHORS README )
@@ -144,8 +148,15 @@ src_configure() {
 		fft_opts=( -DGMX_FFT_LIBRARY=fftpack )
 	fi
 
+	if use lmfit; then
+		local lmfit_opts=( -DGMX_USE_LMFIT=EXTERNAL )
+	else
+		local lmfit_opts=( -DGMX_USE_LMFIT=INTERNAL )
+	fi
+
 	mycmakeargs_pre+=(
 		"${fft_opts[@]}"
+		"${lmfit_opts[@]}"
 		-DGMX_X11=$(usex X)
 		-DGMX_EXTERNAL_BLAS=$(usex blas)
 		-DGMX_EXTERNAL_LAPACK=$(usex lapack)
@@ -156,7 +167,6 @@ src_configure() {
 		-DGMX_HWLOC=$(usex hwloc)
 		-DGMX_DEFAULT_SUFFIX=off
 		-DGMX_SIMD="$acce"
-		-DGMX_LIB_INSTALL_DIR="$(get_libdir)"
 		-DGMX_VMD_PLUGIN_PATH="${EPREFIX}/usr/$(get_libdir)/vmd/plugins/*/molfile/"
 		-DBUILD_TESTING=$(usex test)
 		-DGMX_BUILD_UNITTESTS=$(usex test)
@@ -173,11 +183,15 @@ src_configure() {
 		[[ ${x} = "double" ]] && p="-DGMX_DOUBLE=ON" || p="-DGMX_DOUBLE=OFF"
 		local cuda=( "-DGMX_GPU=OFF" )
 		[[ ${x} = "float" ]] && use cuda && \
-			cuda=( -DGMX_GPU=ON )
+			cuda=( "-DGMX_GPU=ON" )
+		local opencl=( "-DGMX_USE_OPENCL=OFF" )
+		use opencl && opencl=( "-DGMX_USE_OPENCL=ON" ) cuda=( "-DGMX_GPU=ON" )
 		mycmakeargs=(
 			${mycmakeargs_pre[@]} ${p}
 			-DGMX_MPI=OFF
 			-DGMX_THREAD_MPI=$(usex threads)
+			-DGMXAPI=$(usex gmxapi)
+			"${opencl[@]}"
 			"${cuda[@]}"
 			"$(use test && echo -DREGRESSIONTEST_PATH="${WORKDIR}/${P}_${x}/tests")"
 			-DGMX_BINARY_SUFFIX="${suffix}"
@@ -193,6 +207,7 @@ src_configure() {
 			-DGMX_THREAD_MPI=OFF
 			-DGMX_MPI=ON ${cuda}
 			-DGMX_OPENMM=OFF
+			-DGMXAPI=OFF
 			-DGMX_BUILD_MDRUN_ONLY=ON
 			-DBUILD_SHARED_LIBS=OFF
 			-DGMX_BUILD_MANUAL=OFF

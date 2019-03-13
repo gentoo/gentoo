@@ -13,7 +13,7 @@ HOMEPAGE="http://commons.apache.org/daemon/"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 ppc64 x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-solaris"
+KEYWORDS="amd64 ppc64 x86 ~amd64-linux ~x86-linux ~x86-solaris"
 IUSE="kernel_linux"
 
 CDEPEND="kernel_linux? ( sys-libs/libcap )"

@@ -1,8 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit font eutils
+inherit eutils font xdg-utils
 
 DESCRIPTION="Chinese TrueType Arphic Fonts"
 HOMEPAGE="http://www.arphic.com.tw/
@@ -16,7 +16,7 @@ SRC_URI="mirror://gnu/non-gnu/chinese-fonts-truetype/gkai00mp.ttf.gz
 
 LICENSE="Arphic"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~x86-macos"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~m68k ~mips ppc ppc64 s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~x86-macos"
 IUSE=""
 
 DEPEND="media-gfx/fontforge"
@@ -59,6 +59,7 @@ src_prepare() {
 	find "${WORKDIR}" -mindepth 2 -maxdepth 2 -name '*.ttc' -exec mv {} . \;
 	find "${WORKDIR}" -name '*.conf' -exec mv "{}" . \;
 	epatch "${FILESDIR}"/${P}-fontconfig.patch
+	xdg_environment_reset
 	fontforge -script "${FILESDIR}"/${P}.pe b*.ttf || die
 }
 
@@ -68,7 +69,7 @@ src_install() {
 	do
 		cd "${WORKDIR}"/${myfont}
 		docinto ${myfont}
-		for doc in  FONTLOG KNOWN_ISSUES TODO README README.Bitmap NEWS CONTRIBUTERS
+		for doc in FONTLOG KNOWN_ISSUES TODO README README.Bitmap NEWS CONTRIBUTERS
 		do
 			[ -f ${doc} ] && dodoc ${doc}
 		done

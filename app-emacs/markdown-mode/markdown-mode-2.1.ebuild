@@ -6,7 +6,7 @@ EAPI=5
 inherit elisp
 
 DESCRIPTION="Major mode for editing Markdown-formatted text files"
-HOMEPAGE="http://jblevins.org/projects/markdown-mode/"
+HOMEPAGE="https://jblevins.org/projects/markdown-mode/"
 # Cannot use this url because its hash differ about every five minutes
 # SRC_URI="http://jblevins.org/git/${PN}.git/snapshot/${P}.tar.gz"
 SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.el.xz"

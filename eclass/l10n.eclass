@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: l10n.eclass
@@ -18,8 +18,7 @@
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # Variable listing the locales for which localizations are offered by
-# the package. Check profiles/desc/linguas.desc to see if the locales
-# are listed there. Add any missing ones there.
+# the package.
 #
 # Example: PLOCALES="cy de el_GR en_US pt_BR vi zh_CN"
 
@@ -102,26 +101,22 @@ l10n_find_plocales_changes() {
 # are selected, fall back on PLOCALE_BACKUP.  When the disabled argument
 # is given, return the disabled locales instead of the enabled ones.
 l10n_get_locales() {
-	local disabled_locales enabled_locales loc locs
+	local loc locs
 	if [[ -z ${LINGUAS+set} ]]; then
 		# enable all if unset
-		enabled_locales=${PLOCALES}
-	elif [[ -z ${LINGUAS} ]]; then
-		# disable all if empty
-		disabled_locales=${PLOCALES}
+		locs=${PLOCALES}
 	else
-		for loc in ${PLOCALES}; do
-			if has ${loc} ${LINGUAS}; then
-				enabled_locales+="${loc} "
-			else
-				disabled_locales+="${loc} "
-			fi
+		for loc in ${LINGUAS}; do
+			has ${loc} ${PLOCALES} && locs+="${loc} "
 		done
 	fi
+	[[ -z ${locs} ]] && locs=${PLOCALE_BACKUP}
 	if [[ ${1} == disabled ]]; then
-		locs=${disabled_locales}
-	else
-		locs=${enabled_locales:-${PLOCALE_BACKUP}}
+		local disabled_locs
+		for loc in ${PLOCALES}; do
+			has ${loc} ${locs} || disabled_locs+="${loc} "
+		done
+		locs=${disabled_locs}
 	fi
 	printf "%s" "${locs}"
 }

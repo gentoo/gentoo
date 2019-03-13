@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,7 +13,7 @@ SRC_URI="http://download.openvz.org/criu/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64"
+KEYWORDS="amd64 ~arm ~arm64"
 IUSE="python selinux setproctitle static-libs"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
@@ -31,10 +31,7 @@ DEPEND="${RDEPEND}
 	app-text/xmlto"
 RDEPEND="${RDEPEND}
 	python? (
-		|| (
-			dev-python/protobuf-python[${PYTHON_USEDEP}]
-			dev-libs/protobuf[python,${PYTHON_USEDEP}]
-		)
+		dev-python/protobuf-python[${PYTHON_USEDEP}]
 		dev-python/ipaddr[${PYTHON_USEDEP}]
 	)"
 
@@ -100,6 +97,7 @@ src_install() {
 		LOGROTATEDIR="${EPREFIX}"/etc/logrotate.d \
 		DESTDIR="${D}" \
 		LIBDIR="${EPREFIX}/usr/$(get_libdir)" \
+		WERROR=0 \
 		install
 
 	dodoc CREDITS README.md

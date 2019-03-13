@@ -1,8 +1,7 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # TODO: unbundle Qt5
-#		remove emul-linux-x86* deps (bug 484060)
 
 EAPI=5
 inherit eutils games
@@ -61,7 +60,7 @@ S=${WORKDIR}
 pkg_nofetch() {
 	einfo "Please buy & download ${SRC_URI} from:"
 	einfo "  https://www.humblebundle.com/store"
-	einfo "and move it to ${DISTDIR}"
+	einfo "and move it to your DISTDIR directory."
 }
 
 src_install() {

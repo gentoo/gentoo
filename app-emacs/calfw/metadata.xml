@@ -8,6 +8,7 @@
   <email>gnu-emacs@gentoo.org</email>
   <name>Gentoo GNU Emacs project</name>
 </maintainer>
+<stabilize-allarches/>
 <use>
   <flag name="howm">Add support for the <pkg>app-emacs/howm</pkg>
     note-taking tool</flag>

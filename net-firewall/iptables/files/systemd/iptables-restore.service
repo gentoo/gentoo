@@ -8,7 +8,7 @@ Wants=network-pre.target
 
 [Service]
 Type=oneshot
-ExecStart=/sbin/iptables-restore /var/lib/iptables/rules-save
+ExecStart=/sbin/iptables-restore -w -- /var/lib/iptables/rules-save
 
 [Install]
 WantedBy=basic.target

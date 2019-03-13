@@ -1,0 +1,66 @@
+--- a/debian/patches/15-partial_send.patch
++++ b/debian/patches/15-partial_send.patch
+@@ -1,6 +1,6 @@
+ diff -Naur fam-2.7.0/fam-2.7.0/src/NetConnection.c++ fam-2.7.0-mod/fam-2.7.0/src/NetConnection.c++
+---- fam-2.7.0/fam-2.7.0/src/NetConnection.c++	2003-01-18 09:18:12.000000000 -0500
+-+++ fam-2.7.0-mod/fam-2.7.0/src/NetConnection.c++	2007-07-30 12:57:19.812380334 -0400
++--- a/src/NetConnection.c++	2003-01-18 09:18:12.000000000 -0500
+++++ b/src/NetConnection.c++	2007-07-30 12:57:19.812380334 -0400
+ @@ -213,6 +213,7 @@
+  
+      msgList_t * msg = new msgList_t;
+@@ -31,8 +31,8 @@
+              {
+                  /* Since the client library can close it's fd before
+ diff -Naur fam-2.7.0/fam-2.7.0/src/NetConnection.h fam-2.7.0-mod/fam-2.7.0/src/NetConnection.h
+---- fam-2.7.0/fam-2.7.0/src/NetConnection.h	2003-01-18 09:18:12.000000000 -0500
+-+++ fam-2.7.0-mod/fam-2.7.0/src/NetConnection.h	2007-07-30 12:53:46.746803625 -0400
++--- a/src/NetConnection.h	2003-01-18 09:18:12.000000000 -0500
+++++ b/src/NetConnection.h	2007-07-30 12:53:46.746803625 -0400
+ @@ -80,6 +80,7 @@
+      typedef struct msgList_s {
+          char msg[MAXMSGSIZE+5];  //  + 4 for 32-bit length, + 1 for overflow
+--- a/debian/patches/16-port_number.patch
++++ b/debian/patches/16-port_number.patch
+@@ -1,6 +1,6 @@
+ diff -Naur fam-2.7.0/fam-2.7.0/man/famd.8 fam-2.7.0-mod/fam-2.7.0/man/famd.8
+---- fam-2.7.0/fam-2.7.0/man/famd.8	2003-01-19 19:58:11.000000000 -0500
+-+++ fam-2.7.0-mod/fam-2.7.0/man/famd.8	2007-07-30 12:23:15.292527117 -0400
++--- a/man/famd.8	2003-01-19 19:58:11.000000000 -0500
+++++ b/man/famd.8	2007-07-30 12:23:15.292527117 -0400
+ @@ -51,6 +51,9 @@
+  Register with the portmapper using the specifed RPC program
+  and version numbers.
+@@ -12,8 +12,8 @@
+  Poll a remove NFS server every \fIperiod\fR seconds
+  to obtain file updates if the remove server is not running \fBfamd\fR.
+ diff -Naur fam-2.7.0/fam-2.7.0/src/Listener.c++ fam-2.7.0-mod/fam-2.7.0/src/Listener.c++
+---- fam-2.7.0/fam-2.7.0/src/Listener.c++	2003-01-19 19:37:29.000000000 -0500
+-+++ fam-2.7.0-mod/fam-2.7.0/src/Listener.c++	2007-07-26 16:32:03.863758810 -0400
++--- a/src/Listener.c++	2003-01-19 19:37:29.000000000 -0500
+++++ b/src/Listener.c++	2007-07-26 16:32:03.863758810 -0400
+ @@ -60,13 +60,14 @@
+  
+  static void cleanup_negotiation(void *closure);
+@@ -57,8 +57,8 @@
+  	if (listen(sock, 1) < 0)
+  	{
+ diff -Naur fam-2.7.0/fam-2.7.0/src/Listener.h fam-2.7.0-mod/fam-2.7.0/src/Listener.h
+---- fam-2.7.0/fam-2.7.0/src/Listener.h	2003-01-18 09:18:12.000000000 -0500
+-+++ fam-2.7.0-mod/fam-2.7.0/src/Listener.h	2007-07-26 16:32:50.682255289 -0400
++--- a/src/Listener.h	2003-01-18 09:18:12.000000000 -0500
+++++ b/src/Listener.h	2007-07-26 16:32:50.682255289 -0400
+ @@ -51,7 +51,9 @@
+  
+      Listener(bool started_by_inetd,
+@@ -79,8 +79,8 @@
+      //  Private Instance Methods
+  
+ diff -Naur fam-2.7.0/fam-2.7.0/src/main.c++ fam-2.7.0-mod/fam-2.7.0/src/main.c++
+---- fam-2.7.0/fam-2.7.0/src/main.c++	2003-01-19 01:15:51.000000000 -0500
+-+++ fam-2.7.0-mod/fam-2.7.0/src/main.c++	2007-05-08 16:42:35.618954322 -0400
++--- a/src/main.c++	2003-01-19 01:15:51.000000000 -0500
+++++ b/src/main.c++	2007-05-08 16:42:35.618954322 -0400
+ @@ -89,6 +89,7 @@
+      fprintf(stderr, "\t-d\t\tdebug\n");
+      fprintf(stderr, "\t-v\t\tverbose\n");

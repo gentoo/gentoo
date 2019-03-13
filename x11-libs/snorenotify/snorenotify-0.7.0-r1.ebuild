@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -30,7 +30,10 @@ DEPEND="${RDEPEND}
 	test? ( dev-qt/qttest:5 )
 "
 
-PATCHES=( "${FILESDIR}/${P}-desktop.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-desktop.patch"
+	"${FILESDIR}/${P}-include.patch"
+)
 
 src_configure() {
 	local mycmakeargs=(
@@ -43,10 +46,6 @@ src_configure() {
 
 src_test() {
 	virtx cmake-utils_src_test
-}
-
-pkg_preinst() {
-	gnome2_icon_savelist
 }
 
 pkg_postinst() {

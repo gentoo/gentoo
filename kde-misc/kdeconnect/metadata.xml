@@ -7,6 +7,7 @@
 	</maintainer>
 	<use>
 		<flag name="app">Enable experimental kcapp frontend</flag>
+		<flag name="mousepad">Enable remote mousepad plugin using <pkg>x11-libs/libfakekey</pkg></flag>
 		<flag name="wayland">Enable kwin_wayland support for mousepad plugin using <pkg>kde-frameworks/kwayland</pkg></flag>
 	</use>
 </pkgmetadata>

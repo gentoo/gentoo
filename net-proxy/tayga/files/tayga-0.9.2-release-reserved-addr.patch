@@ -1,0 +1,13 @@
+--- a/addrmap.c
++++ b/addrmap.c
+@@ -22,10 +22,6 @@
+ 
+ int validate_ip4_addr(const struct in_addr *a)
+ {
+-	/* First octet == 0 */
+-	if (!(a->s_addr & htonl(0xff000000)))
+-		return -1;
+-
+ 	/* First octet == 127 */
+ 	if ((a->s_addr & htonl(0xff000000)) == htonl(0x7f000000))
+ 		return -1;

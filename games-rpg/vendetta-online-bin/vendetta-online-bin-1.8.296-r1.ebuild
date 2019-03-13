@@ -1,11 +1,11 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 inherit eutils unpacker
 
 DESCRIPTION="Space-based MMORPG"
-HOMEPAGE="http://www.vendetta-online.com/"
+HOMEPAGE="https://www.vendetta-online.com"
 SRC_URI="amd64? (
 		http://mirror.cle.vendetta-online.com/vendetta-linux-amd64-installer.sh
 			-> ${P}-amd64.sh

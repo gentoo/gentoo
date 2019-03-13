@@ -1,6 +1,5 @@
-diff -Naur paxtest-0.9.13.orig/Makefile paxtest-0.9.13/Makefile
---- paxtest-0.9.13.orig/Makefile	2014-12-09 19:53:48.000000000 -0500
-+++ paxtest-0.9.13/Makefile	2014-12-12 13:07:55.715099100 -0500
+--- a/Makefile
++++ b/Makefile
 @@ -52,12 +52,14 @@
  endif
  

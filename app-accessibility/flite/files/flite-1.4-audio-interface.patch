@@ -1,5 +1,5 @@
---- configure.in	2009-08-15 06:46:38.000000000 +1000
-+++ configure.in	2011-08-30 00:53:26.000000000 +1000
+--- a/configure.in
++++ b/configure.in
 @@ -304,7 +304,6 @@
  	[  --with-audio          with specific audio support (none linux freebsd etc) ],
          AUDIODRIVER=$with_audio )

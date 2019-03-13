@@ -1,0 +1,51 @@
+diff --git a/build/gen.py b/build/gen.py
+index fce8fb18..2927da5f 100755
+--- a/build/gen.py
++++ b/build/gen.py
+@@ -260,17 +260,12 @@ def WriteGNNinja(path, options, linux_sysroot):
+     if options.debug:
+       cflags.extend(['-O0', '-g'])
+     else:
+-      cflags.append('-DNDEBUG')
+-      cflags.append('-O3')
+-      ldflags.append('-O3')
+       # Use -fdata-sections and -ffunction-sections to place each function
+       # or data item into its own section so --gc-sections can eliminate any
+       # unused functions and data items.
+       cflags.extend(['-fdata-sections', '-ffunction-sections'])
+       ldflags.extend(['-fdata-sections', '-ffunction-sections'])
+       ldflags.append('-Wl,-dead_strip' if is_mac else '-Wl,--gc-sections')
+-      # Omit all symbol information from the output file.
+-      ldflags.append('-Wl,-S' if is_mac else '-Wl,-strip-all')
+       # Enable identical code-folding.
+       if options.use_icf:
+         ldflags.append('-Wl,--icf=all')
+@@ -279,11 +274,11 @@ def WriteGNNinja(path, options, linux_sysroot):
+         '-D_FILE_OFFSET_BITS=64',
+         '-D__STDC_CONSTANT_MACROS', '-D__STDC_FORMAT_MACROS',
+         '-pthread',
+-        '-pipe',
+         '-fno-exceptions',
+         '-fno-rtti',
+     ])
+     cflags_cc.extend(['-std=c++14', '-Wno-c++11-narrowing'])
++    ldflags.append('-pthread')
+ 
+     if is_linux:
+       if linux_sysroot:
+@@ -293,15 +288,6 @@ def WriteGNNinja(path, options, linux_sysroot):
+         # probably resolve this and (re-)add a way to build against libc++.
+         cflags.append('--sysroot=' + linux_sysroot)
+         ldflags.append('--sysroot=' + linux_sysroot)
+-      cflags.append('-stdlib=libstdc++')
+-      ldflags.extend(['-static-libstdc++',
+-                      '-stdlib=libstdc++',
+-                      '-Wl,--as-needed',
+-                     ])
+-      libs.extend([
+-          '-lgcc_s',
+-          '-lpthread',
+-      ])
+     elif is_mac:
+       min_mac_version_flag = '-mmacosx-version-min=10.9'
+       cflags.append(min_mac_version_flag)

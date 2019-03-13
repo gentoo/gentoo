@@ -1,0 +1,2 @@
+# dropbox-cli completion
+complete -W 'autostart exclude filestatus help lansync ls puburl running start status stop' dropbox-cli

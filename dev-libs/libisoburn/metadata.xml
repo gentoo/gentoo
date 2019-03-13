@@ -14,6 +14,5 @@ risk)</flag>
 <flag name="launch-frontend">Enable the tcl gui for xorriso</flag>
 <flag name="launch-frontend-setuid">Enable the tcl gui for xorriso under setuid</flag>
 <flag name="frontend-optional">Use <pkg>dev-tcltk/bwidget</pkg> which is not strictly required for the frontend</flag>
-<flag name="cdio">Enable EXPERIMENTAL use of libcdio as system adapter</flag>
 </use>
 </pkgmetadata>

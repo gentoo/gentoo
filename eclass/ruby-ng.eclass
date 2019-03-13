@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: ruby-ng.eclass
@@ -8,6 +8,7 @@
 # Author: Diego E. Pettenò <flameeyes@gentoo.org>
 # Author: Alex Legler <a3li@gentoo.org>
 # Author: Hans de Graaff <graaff@gentoo.org>
+# @SUPPORTED_EAPIS: 2 3 4 5 6
 # @BLURB: An eclass for installing Ruby packages with proper support for multiple Ruby slots.
 # @DESCRIPTION:
 # The Ruby eclass is designed to allow an easier installation of Ruby packages
@@ -112,7 +113,7 @@ _ruby_get_all_impls() {
 	for i in ${USE_RUBY}; do
 		case ${i} in
 			# removed implementations
-			ruby19|ruby20|ruby21|jruby)
+			ruby19|ruby20|ruby21|ruby22|jruby)
 				;;
 			*)
 				echo ${i};;

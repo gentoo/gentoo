@@ -1,0 +1,18 @@
+Bug: https://bugs.gentoo.org/645742
+
+--- a/Makefile
++++ b/Makefile
+@@ -25,11 +25,11 @@
+ 
+ src/smplayer:
+ 	./get_svn_revision.sh
+-	+cd src && $(QMAKE) $(QMAKE_OPTS) && $(DEFS) make
++	+cd src && $(QMAKE) $(QMAKE_OPTS) && $(DEFS) $(MAKE)
+ 	cd src && $(LRELEASE) smplayer.pro
+ 
+ webserver/simple_web_server:
+-	cd webserver && make
++	cd webserver && $(MAKE)
+ 
+ clean:
+ 	if [ -f src/Makefile ]; then cd src && make distclean; fi

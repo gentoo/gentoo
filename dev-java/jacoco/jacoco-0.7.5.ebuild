@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -10,7 +10,7 @@ inherit java-pkg-2 java-pkg-simple
 DATE="201505241946"
 
 DESCRIPTION="Java Code Coverage library."
-HOMEPAGE="http://eclemma.org/jacoco/"
+HOMEPAGE="https://eclemma.org/jacoco/"
 SRC_URI="
 	https://repo1.maven.org/maven2/org/${PN}/org.${PN}.report/${PV}.${DATE}/org.${PN}.report-${PV}.${DATE}-sources.jar -> ${P}-report.jar
 	https://repo1.maven.org/maven2/org/${PN}/org.${PN}.agent/${PV}.${DATE}/org.${PN}.agent-${PV}.${DATE}-sources.jar -> ${P}-agent.jar

@@ -1,0 +1,34 @@
+From d3cdf9cbfbace4874c6e5c96f1e5ef5b342c813e Mon Sep 17 00:00:00 2001
+From: Mikle Kolyada <zlogene@gentoo.org>
+Date: Sun, 16 Dec 2018 20:42:39 +0300
+Subject: [PATCH] tev_curl.c: remove case duplication
+
+CURLE_SSL_CACERT and CURLE_PEER_FAILED_VERIFICATION macros are provided
+by net-misc/curl-7.62.0 and older
+---
+ tev_curl.c | 3 ---
+ 1 file changed, 3 deletions(-)
+
+diff --git a/tev_curl.c b/tev_curl.c
+index 6a7a580..ce6fdba 100644
+--- a/src/util/tev_curl.c
++++ b/src/util/tev_curl.c
+@@ -97,7 +97,6 @@ static errno_t curl_code2errno(CURLcode crv)
+         return ETIMEDOUT;
+     case CURLE_SSL_ISSUER_ERROR:
+     case CURLE_SSL_CACERT_BADFILE:
+-    case CURLE_SSL_CACERT:
+     case CURLE_SSL_CERTPROBLEM:
+         return ERR_INVALID_CERT;
+ 
+@@ -110,8 +109,6 @@ static errno_t curl_code2errno(CURLcode crv)
+     case CURLE_SSL_ENGINE_NOTFOUND:
+     case CURLE_SSL_CONNECT_ERROR:
+         return ERR_SSL_FAILURE;
+-    case CURLE_PEER_FAILED_VERIFICATION:
+-        return ERR_UNABLE_TO_VERIFY_PEER;
+     case CURLE_COULDNT_RESOLVE_HOST:
+         return ERR_UNABLE_TO_RESOLVE_HOST;
+     default:
+-- 
+2.19.2

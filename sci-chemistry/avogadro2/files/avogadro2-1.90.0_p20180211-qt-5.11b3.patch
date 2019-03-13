@@ -1,0 +1,34 @@
+From 2c70d9bf7248d8da7691a5830ba6a0972fd9eea7 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Tue, 17 Apr 2018 11:57:32 +0200
+Subject: [PATCH] Fix build with Qt 5.11_beta3 (dropping qt5_use_modules)
+
+---
+ avogadro/CMakeLists.txt | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/avogadro/CMakeLists.txt b/avogadro/CMakeLists.txt
+index 115b798..f564eb5 100644
+--- a/avogadro/CMakeLists.txt
++++ b/avogadro/CMakeLists.txt
+@@ -16,7 +16,7 @@ if(MSVC)
+ endif()
+ 
+ # Find the Qt components we need.
+-find_package(Qt5 COMPONENTS Widgets Network REQUIRED)
++find_package(Qt5 REQUIRED COMPONENTS Concurrent Widgets Network CONFIG)
+ 
+ configure_file(avogadroappconfig.h.in avogadroappconfig.h)
+ 
+@@ -88,7 +88,7 @@ endif()
+ 
+ add_executable(avogadro WIN32 MACOSX_BUNDLE
+   ${avogadro_srcs} ${ui_srcs} ${rcc_srcs})
+-qt5_use_modules(avogadro Widgets Network Concurrent)
++target_link_libraries(avogadro Qt5::Widgets Qt5::Network Qt5::Concurrent)
+ if(WIN32)
+   set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /NODEFAULTLIB:MSVCRTD")
+   target_link_libraries(avogadro Qt5::WinMain)
+-- 
+2.17.0
+

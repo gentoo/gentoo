@@ -1,0 +1,23 @@
+--- a/Imakefile
++++ b/Imakefile
+@@ -23,6 +23,10 @@
+     PUCCPTYDDEF = -DPUCC_PTYD		/* does not need to be setuid */
+          PTYLIB = -lpucc
+ #endif
++#ifdef KTERM_XAW3D
++	XAWLIB = -lXaw3d
++	XAW6LIB =  -lXaw3d
++#endif
+ 
+  OSMAJORVERSION = OSMajorVersion
+  OSMINORVERSION = OSMinorVersion
+--- a/kterm.h
++++ b/kterm.h
+@@ -36,6 +36,6 @@
+ #define KTERM_KINPUT2	/* Kinput2 protocol */
+ #define KTERM_COLOR	/* color sequence */
+ #define KTERM_NOTEK	/* disables Tektronix emulation */
+-#undef  KTERM_XAW3D	/* Xaw3d -DARROW_SCROLLBAR support */
++#define KTERM_XAW3D	/* Xaw3d -DARROW_SCROLLBAR support */
+ 
+ #endif /* !_KTERM_H_ */

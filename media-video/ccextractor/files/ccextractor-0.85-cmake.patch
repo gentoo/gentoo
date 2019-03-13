@@ -1,0 +1,76 @@
+--- a/CMakeLists.txt	2017-07-25 12:22:29.294144514 -0600
++++ b/CMakeLists.txt	2017-07-25 12:23:33.979149436 -0600
+@@ -25,14 +25,13 @@
+ include_directories ("${PROJECT_SOURCE_DIR}/protobuf-c/")
+ include_directories ("${PROJECT_SOURCE_DIR}/zvbi")
+ aux_source_directory ("${PROJECT_SOURCE_DIR}/zvbi" SOURCEFILE)
+-aux_source_directory ("${PROJECT_SOURCE_DIR}/zlib" SOURCEFILE)
+ aux_source_directory ("${PROJECT_SOURCE_DIR}/lib_hash" SOURCEFILE)
+ 
+ # Adding some platform specific library path
+ link_directories (/opt/local/lib)
+ link_directories (/usr/local/lib)
+ 
+-set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -O0 -Wall -g -std=gnu99 -Wno-write-strings -D_FILE_OFFSET_BITS=64")
++set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=gnu99 -D_FILE_OFFSET_BITS=64")
+ add_subdirectory (lib_ccx)
+ 
+ aux_source_directory (${PROJECT_SOURCE_DIR} SOURCEFILE)
+@@ -43,24 +42,8 @@
+ set (EXTRA_LIBS ${EXTRA_LIBS} iconv)
+ endif (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
+ 
+-
+-find_package (PkgConfig)
+-if(PKG_CONFIG_FOUND)
+-  pkg_check_modules(PNG libpng )
+-  if(PNG_FOUND)
+-    set (EXTRA_LIBS ${EXTRA_LIBS} png)
+-  else (PNG_FOUND)
+-    include_directories ("${PROJECT_SOURCE_DIR}/libpng/")
+-    include_directories ("${PROJEXT_SOURCE_DIR}/zlib/")
+-    aux_source_directory ("${PROJECT_SOURCE_DIR}/libpng/" SOURCEFILE)
+-    aux_source_directory ("${PROJECT_SOURCE_DIR}/zlib/" SOURCEFILE)
+-  endif(PNG_FOUND)
+-else(PKG_CONFIG_FOUND)
+-    include_directories ("${PROJECT_SOURCE_DIR}/libpng/")
+-    include_directories ("${PROJEXT_SOURCE_DIR}/zlib/")
+-    aux_source_directory ("${PROJECT_SOURCE_DIR}/libpng/" SOURCEFILE)
+-    aux_source_directory ("${PROJECT_SOURCE_DIR}/zlib/" SOURCEFILE)
+-endif (PKG_CONFIG_FOUND)
++set (EXTRA_LIBS ${EXTRA_LIBS} png)
++set (EXTRA_LIBS ${EXTRA_LIBS} z)
+ 
+ ########################################################
+ # Build using FFmpeg libraries
+--- a/lib_ccx/CMakeLists.txt	2017-07-25 12:32:32.803190443 -0600
++++ b/lib_ccx/CMakeLists.txt	2017-07-25 12:25:40.819159089 -0600
+@@ -1,6 +1,6 @@
+ cmake_policy (SET CMP0037 NEW)
+ 
+-set (CMAKE_C_FLAGS "-O0 -Wall -g -std=gnu99")
++set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=gnu99")
+ 
+ if (WITH_FFMPEG)
+   set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -DENABLE_FFMPEG")
+@@ -37,20 +37,3 @@
+ if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
+     set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -DGPAC_CONFIG_DARWIN")
+ endif (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
+-
+-
+-file (GLOB HeaderFiles *.h)
+-file (WRITE ccx.pc "prefix=${CMAKE_INSTALL_PREFIX}\n"
+-                  "includedir=\${prefix}/include\n"
+-                  "libdir=\${prefix}/lib\n\n"
+-                  "Name: ccx\n"
+-                  "Description: Closed Caption Extraction library\n"
+-                  "Version: 0.75\n"
+-                  "Cflags: -I\${includedir}/\n"
+-                  "Libs: -L\${libdir} -lccx -lpng\n"
+-                  "Libs.private: -lpng\n"
+-                  )
+-
+-install (TARGETS ccx DESTINATION lib)
+-install (FILES ${HeaderFiles} DESTINATION include)
+-install (FILES ccx.pc DESTINATION lib/pkgconfig)

@@ -1,16 +1,18 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit linux-info toolchain-funcs eutils
+inherit linux-info systemd toolchain-funcs
 
 if [[ ${PV} == "9999" ]]; then
-	EGIT_REPO_URI="git://git.fedorahosted.org/numad.git"
-	inherit git-2
+	EGIT_REPO_URI="https://pagure.io/numad.git"
+	inherit git-r3
 else
-	SRC_URI=""
-	KEYWORDS="~amd64 ~x86 -arm -s390"
+	EGIT_COMMIT=""
+	SRC_URI="mirror://gentoo/numad-0.5-${EGIT_COMMIT:0:7}.tar.bz2"
+	KEYWORDS="~amd64 -arm ~arm64 -s390 ~x86"
+	S="${WORKDIR}/${PN}-${EGIT_COMMIT:0:7}"
 fi
 
 DESCRIPTION="The NUMA daemon that manages application locality"
@@ -23,12 +25,8 @@ IUSE=""
 CONFIG_CHECK="~NUMA ~CPUSETS"
 
 src_prepare() {
-	epatch "${FILESDIR}"/0001-Fix-man-page-directory-creation.patch
+	default
 	tc-export CC
-}
-
-src_configure() {
-	:
 }
 
 src_compile() {
@@ -37,4 +35,14 @@ src_compile() {
 
 src_install() {
 	emake prefix="${ED}/usr" install
+
+	newinitd "${FILESDIR}/numad.initd" numad
+	newconfd "${FILESDIR}/numad.confd" numad
+
+	insinto /etc/logrotate.d
+	newins "${FILESDIR}/numad.logrotated" numad
+
+	insinto /etc
+	doins numad.conf
+	systemd_dounit numad.service
 }

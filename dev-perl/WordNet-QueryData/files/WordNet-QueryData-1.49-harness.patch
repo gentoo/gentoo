@@ -1,0 +1,31 @@
+From a29056d2dca8cfb27750e391a95dd2f612a02a87 Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Wed, 21 Mar 2018 22:28:11 +1300
+Subject: Reorganize into proper test structure to make harness work
+
+---
+ MANIFEST            | 2 +-
+ test.pl => t/wnqd.t | 0
+ 2 files changed, 1 insertion(+), 1 deletion(-)
+ rename test.pl => t/wnqd.t (100%)
+
+diff --git a/MANIFEST b/MANIFEST
+index 6b05bf0..3c8aeaa 100644
+--- a/MANIFEST
++++ b/MANIFEST
+@@ -1,7 +1,7 @@
+ ChangeLog
+ Makefile.PL
+ README
+-test.pl
++t/wnqd.t
+ QueryData.pm
+ MANIFEST
+ META.yml                                 Module meta-data (added by MakeMaker)
+diff --git a/test.pl b/t/wnqd.t
+similarity index 100%
+rename from test.pl
+rename to t/wnqd.t
+-- 
+2.16.2
+

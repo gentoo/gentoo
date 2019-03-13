@@ -1,8 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit autotools eutils
+EAPI=6
+
+inherit autotools
 
 DESCRIPTION="Id3 library for C/C++"
 HOMEPAGE="http://id3lib.sourceforge.net/"
@@ -10,7 +11,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P/_}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 sh sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-macos ~x86-solaris"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 sh sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-macos ~x86-solaris"
 IUSE="doc static-libs"
 
 RDEPEND="sys-libs/zlib:="
@@ -19,20 +20,23 @@ DEPEND="${RDEPEND}
 
 RESTRICT="test"
 
-DOCS="AUTHORS ChangeLog HISTORY README THANKS TODO"
+DOCS=( AUTHORS ChangeLog HISTORY README THANKS TODO )
 
 S=${WORKDIR}/${P/_}
 
+PATCHES=(
+	"${FILESDIR}"/${P}-zlib.patch
+	"${FILESDIR}"/${P}-test_io.patch
+	"${FILESDIR}"/${P}-autoconf259.patch
+	"${FILESDIR}"/${P}-doxyinput.patch
+	"${FILESDIR}"/${P}-unicode16.patch
+	"${FILESDIR}"/${P}-gcc-4.3.patch
+	"${FILESDIR}"/${P}-missing_nullpointer_check.patch
+	"${FILESDIR}"/${P}-security.patch
+)
+
 src_prepare() {
-	epatch \
-		"${FILESDIR}"/${P}-zlib.patch \
-		"${FILESDIR}"/${P}-test_io.patch \
-		"${FILESDIR}"/${P}-autoconf259.patch \
-		"${FILESDIR}"/${P}-doxyinput.patch \
-		"${FILESDIR}"/${P}-unicode16.patch \
-		"${FILESDIR}"/${P}-gcc-4.3.patch \
-		"${FILESDIR}"/${P}-missing_nullpointer_check.patch \
-		"${FILESDIR}"/${P}-security.patch
+	default
 
 	sed -i 's:AM_CONFIG_HEADER:AC_CONFIG_HEADERS:' {.,zlib}/configure.in || die
 
@@ -46,14 +50,14 @@ src_configure() {
 src_compile() {
 	default
 	if use doc; then
-		pushd doc >/dev/null
+		pushd doc >/dev/null || die
 		doxygen Doxyfile || die
-		popd >/dev/null
+		popd >/dev/null || die
 	fi
 }
 
 src_install() {
+	use doc && local HTML_DOCS=( doc/. )
 	default
-	prune_libtool_files
-	use doc && dohtml -r doc
+	find "${D}" -name '*.la' -delete || die
 }

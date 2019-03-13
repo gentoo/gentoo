@@ -1,0 +1,29 @@
+From a70778f1e263bce11b8749353a7a6a99e3f721fb Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Tue, 27 Mar 2018 16:00:45 +1300
+Subject: Force entity expansion
+
+Gentoo's XML::LibXML does not expand entities on its own by default
+and has to be configured to do so.
+
+Bug: https://bugs.gentoo.org/623192
+---
+ t/06entities.t | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/t/06entities.t b/t/06entities.t
+index 32bc395..3d5e791 100644
+--- a/t/06entities.t
++++ b/t/06entities.t
+@@ -9,7 +9,7 @@ use XML::LibXSLT;
+ my $parser = XML::LibXML->new();
+ my $xslt = XML::LibXSLT->new();
+ 
+-# $parser->expand_entities(1);
++$parser->expand_entities(1);
+ 
+ my $source = $parser->parse_string(qq{<?xml version="1.0" encoding="UTF-8"?>
+ <root>foo</root>});
+-- 
+2.16.2
+

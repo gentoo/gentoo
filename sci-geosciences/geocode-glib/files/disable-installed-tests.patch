@@ -1,0 +1,38 @@
+--- a/geocode-glib/tests/meson.build	2019-01-11 14:10:47.797376871 +0200
++++ b/geocode-glib/tests/meson.build	2019-01-11 14:13:09.409159050 +0200
+@@ -3,7 +3,7 @@
+ e = executable('geo-uri',
+                'geo-uri.c',
+                dependencies: geocode_glib_dep,
+-               install: true,
++               install: false,
+                install_dir: install_dir)
+ test('Geo URI', e)
+ 
+@@ -12,7 +12,7 @@
+                'geocode-nominatim-test.c',
+                'geocode-glib.c',
+                dependencies: geocode_glib_dep,
+-               install: true,
++               install: false,
+                install_dir: install_dir)
+ env = ['G_TEST_SRCDIR=' + meson.current_source_dir()]
+ test('API test', e, env: env)
+@@ -20,10 +20,11 @@
+ e = executable('mock-backend',
+                'mock-backend.c',
+                dependencies: geocode_glib_dep,
+-               install: true,
++               install: false,
+                install_dir: install_dir)
+ test('Test mock backend', e)
+ 
++if false
+ install_data('locale_format.json',
+              'locale_name.json',
+              'nominatim-area.json',
+@@ -39,3 +40,4 @@
+              'search_lat_long.json',
+              'xep.json',
+              install_dir: install_dir)
++endif

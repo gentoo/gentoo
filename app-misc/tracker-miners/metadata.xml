@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>gnome@gentoo.org</email>
+    <name>Gentoo GNOME Desktop</name>
+  </maintainer>
+  <use>
+    <flag name="cue">Enable cue sheet parsing</flag>
+    <flag name="gsf">Enable <pkg>gnome-extra/libgsf</pkg> based data extractor and
+  for ODT.</flag>
+    <flag name="iptc">Enable extraction of IPTC data from pictures</flag>
+    <flag name="iso">Enable extraction of metadata from ISO disk images</flag>
+    <flag name="playlist">Add support for playlists</flag>
+    <flag name="xps">Add support for XPS file format through <pkg>app-text/libgxps</pkg>.</flag>
+  </use>
+</pkgmetadata>

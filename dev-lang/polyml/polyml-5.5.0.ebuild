@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -11,7 +11,7 @@ MY_PV=$(get_version_component_range "1-2" "${PV}")
 MY_P="${PN}.${MY_PV}"
 
 DESCRIPTION="Poly/ML is a full implementation of Standard ML"
-HOMEPAGE="http://www.polyml.org"
+HOMEPAGE="https://www.polyml.org"
 SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
 
 LICENSE="LGPL-2.1"

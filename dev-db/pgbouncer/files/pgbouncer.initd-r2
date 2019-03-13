@@ -1,0 +1,81 @@
+#!/sbin/openrc-run
+
+extra_started_commands="reload"
+
+depend() {
+    use net
+    after postgresql
+}
+
+get_config() {
+    [ -f "${INIFILE}" ] || eend 1 "'${INIFILE}' not found"
+
+    eval echo $(sed -e 's:;.*::' "${INIFILE}" | \
+                    awk '$1 == "'$1'" { print ($2 == "=" ? $3 : $2) }')
+}
+
+start_pre() {
+    local s="$(get_config unix_socket_dir)"
+
+    if [ -n "${s}" ] ; then
+        checkpath -o root:postgres -m 1775 -d "${s}" || return 1
+
+        local listen_port="$(get_config listen_port)"
+
+        if [ -e "${s%/}/.s.PGSQL.${listen_port}" ] ; then
+            eerror "Socket conflict."
+            eerror "A server is already listening on:"
+            eerror "    ${s%/}/.s.PGSQL.${listen_port}"
+            eerror "HINT: Change listen_port in pgbouncer.ini to listen on a"
+            eerror "different socket."
+            return 1
+        fi
+    fi
+
+    checkpath -o pgbouncer:postgres -m 0755 \
+              -d "$(dirname $(get_config logfile))" || return 1
+    checkpath -o pgbouncer:postgres -m 0640 \
+              -f "$(get_config logfile)" || return 1
+
+    return 0
+}
+
+start() {
+    ebegin "Starting PgBouncer"
+    [ -f ${PIDFILE} ] && rm ${PIDFILE}
+
+    start-stop-daemon --start \
+                      --pidfile ${PIDFILE} \
+                      --background \
+                      --make-pidfile \
+                      --user pgbouncer:postgres \
+                      --exec /usr/bin/pgbouncer \
+                      -- -q "${INIFILE}"
+    eend $?
+}
+
+stop() {
+    local seconds=$(( ${NICE_TIMEOUT} + ${FORCE_QUIT_TIMEOUT} ))
+    ebegin "Stopping PgBouncer (this can take up to ${seconds} seconds)"
+
+    local retries=SIGINT/${NICE_TIMEOUT}
+
+    if [ "${FORCE_QUIT}" = "YES" ] ; then
+        einfo "FORCE_QUIT enabled."
+        retries="${retries}/SIGTERM/${FORCE_QUIT_TIMEOUT}"
+    fi
+
+    # Loops through nice and force quit in one go.
+    start-stop-daemon --stop \
+                      --user pgbouncer:postgres \
+                      --pidfile ${PIDFILE} \
+                      --retry ${retries}
+
+    eend $?
+}
+
+reload() {
+    ebegin "Reloading PgBouncer configuration from '${INIFILE}'"
+    start-stop-daemon --signal HUP --pidfile ${PIDFILE}
+    eend $?
+}

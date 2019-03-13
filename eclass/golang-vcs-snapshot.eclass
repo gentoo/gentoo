@@ -4,6 +4,7 @@
 # @ECLASS: golang-vcs-snapshot.eclass
 # @MAINTAINER:
 # William Hubbs <williamh@gentoo.org>
+# @SUPPORTED_EAPIS: 5 6 7
 # @BLURB: support eclass for unpacking VCS snapshot tarballs for
 # software written in the Go programming language
 # @DESCRIPTION:
@@ -45,7 +46,7 @@
 inherit golang-base
 
 case ${EAPI:-0} in
-	5|6) ;;
+	5|6|7) ;;
 	*) die "${ECLASS} API in EAPI ${EAPI} not yet established."
 esac
 

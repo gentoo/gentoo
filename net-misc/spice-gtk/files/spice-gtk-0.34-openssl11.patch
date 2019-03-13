@@ -1,0 +1,16 @@
+https://617764.bugs.gentoo.org/attachment.cgi?id=522368
+https://bugs.gentoo.org/617764
+
+--- spice-gtk-0.34.orig/src/spice-channel.c	2017-07-12 10:23:31.000000000 +0200
++++ spice-gtk-0.34/src/spice-channel.c	2018-03-04 13:12:14.351051444 +0100
+@@ -392,8 +392,10 @@
+ 
+     g_type_class_add_private(klass, sizeof(SpiceChannelPrivate));
+ 
++#if OPENSSL_VERSION_NUMBER < 0x10100000L
+     SSL_library_init();
+     SSL_load_error_strings();
++#endif
+ }
+ 
+ /* ---------------------------------------------------------------- */

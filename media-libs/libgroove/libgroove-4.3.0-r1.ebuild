@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-inherit multilib cmake-utils
+inherit cmake-utils
 
 DESCRIPTION="Streaming audio processing library."
 HOMEPAGE="https://github.com/andrewrk/libgroove"
@@ -14,22 +14,26 @@ SLOT="0/4"
 KEYWORDS="~amd64"
 IUSE="+chromaprint libav +loudness +sound static-libs"
 
-DEPEND="libav? ( media-video/libav )
-	!libav? ( media-video/ffmpeg )
-	chromaprint? ( media-libs/chromaprint )
-	loudness? ( media-libs/libebur128[speex(+)] )
+DEPEND="
+	libav? ( media-video/libav:= )
+	!libav? ( media-video/ffmpeg:= )
+	chromaprint? ( media-libs/chromaprint:= )
+	loudness? ( media-libs/libebur128:=[speex(+)] )
 	sound? ( media-libs/libsdl2[sound] )"
 RDEPEND="${DEPEND}"
 
-PATCHES=( "${FILESDIR}/${P}_cflags.patch"
+PATCHES=(
+	"${FILESDIR}/${P}_cflags.patch"
 	"${FILESDIR}/${P}_sdl2_include_dir.patch"
-	"${FILESDIR}/${P}_GNUInstallDirs.patch" )
+	"${FILESDIR}/${P}_ffmpeg4.patch"
+	"${FILESDIR}/${P}_GNUInstallDirs.patch"
+)
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_disable chromaprint FINGERPRINTER)
-		$(cmake-utils_use_disable loudness LOUDNESS)
-		$(cmake-utils_use_disable sound PLAYER)
+		-DDISABLE_FINGERPRINTER=$(usex !chromaprint)
+		-DDISABLE_LOUDNESS=$(usex !loudness)
+		-DDISABLE_PLAYER=$(usex !sound)
 	)
 	cmake-utils_src_configure
 }

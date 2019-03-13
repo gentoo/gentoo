@@ -1,7 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+
 PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} pypy )
 
 inherit distutils-r1
@@ -15,6 +16,7 @@ KEYWORDS="amd64 ~arm ~arm64 x86"
 SLOT="0"
 IUSE="test doc"
 
+RDEPEND="dev-libs/openssl:0="
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]"
 
@@ -22,5 +24,5 @@ DEPEND="${RDEPEND}
 RESTRICT=test
 
 python_test() {
-	esetup.py test || die "tests failed"
+	esetup.py test
 }

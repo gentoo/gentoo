@@ -1,0 +1,169 @@
+Description: Patch to build with FFmpeg 4.0
+             https://github.com/webcamoid/webcamoid/pull/119/
+             commits/52fbf8376085aded2d87397be58cda6e209d3bb7
+Author: https://github.com/webcamoid/webcamoid/commits?author=jbeich
+Reviewed-By: Herbert Parentes Fortes Neto <hpfn@debian.org>
+Last-Update: 2018-07-21
+Index: webcamoid/libAvKys/Plugins/MultiSink/src/ffmpeg/src/abstractstream.cpp
+===================================================================
+--- webcamoid.orig/libAvKys/Plugins/MultiSink/src/ffmpeg/src/abstractstream.cpp
++++ webcamoid/libAvKys/Plugins/MultiSink/src/ffmpeg/src/abstractstream.cpp
+@@ -62,7 +62,7 @@ AbstractStream::AbstractStream(const AVF
+ 
+     // Some formats want stream headers to be separate.
+     if (formatContext->oformat->flags & AVFMT_GLOBALHEADER)
+-        this->m_codecContext->flags |= CODEC_FLAG_GLOBAL_HEADER;
++        this->m_codecContext->flags |= AV_CODEC_FLAG_GLOBAL_HEADER;
+ 
+     this->m_codecContext->strict_std_compliance = CODEC_COMPLIANCE;
+ 
+Index: webcamoid/libAvKys/Plugins/MultiSink/src/ffmpeg/src/abstractstream.h
+===================================================================
+--- webcamoid.orig/libAvKys/Plugins/MultiSink/src/ffmpeg/src/abstractstream.h
++++ webcamoid/libAvKys/Plugins/MultiSink/src/ffmpeg/src/abstractstream.h
+@@ -29,6 +29,15 @@ extern "C"
+ {
+     #include <libavformat/avformat.h>
+     #include <libavcodec/avcodec.h>
++    #ifndef AV_CODEC_CAP_EXPERIMENTAL
++    #define AV_CODEC_CAP_EXPERIMENTAL CODEC_CAP_EXPERIMENTAL
++    #endif
++    #ifndef AV_CODEC_CAP_VARIABLE_FRAME_SIZE
++    #define AV_CODEC_CAP_VARIABLE_FRAME_SIZE CODEC_CAP_VARIABLE_FRAME_SIZE
++    #endif
++    #ifndef AV_CODEC_FLAG_GLOBAL_HEADER
++    #define AV_CODEC_FLAG_GLOBAL_HEADER CODEC_FLAG_GLOBAL_HEADER
++    #endif
+ }
+ 
+ #define CODEC_COMPLIANCE FF_COMPLIANCE_VERY_STRICT
+Index: webcamoid/libAvKys/Plugins/MultiSink/src/ffmpeg/src/audiostream.cpp
+===================================================================
+--- webcamoid.orig/libAvKys/Plugins/MultiSink/src/ffmpeg/src/audiostream.cpp
++++ webcamoid/libAvKys/Plugins/MultiSink/src/ffmpeg/src/audiostream.cpp
+@@ -267,7 +267,7 @@ void AudioStream::convertPacket(const Ak
+     this->deleteFrame(&this->m_frame);
+     this->m_frame = oFrame;
+ 
+-    if (codecContext->codec->capabilities & CODEC_CAP_VARIABLE_FRAME_SIZE
++    if (codecContext->codec->capabilities & AV_CODEC_CAP_VARIABLE_FRAME_SIZE
+         || oFrame->nb_samples >= codecContext->frame_size) {
+         this->m_frameReady.wakeAll();
+     }
+@@ -280,7 +280,7 @@ int AudioStream::encodeData(AVFrame *fra
+     auto codecContext = this->codecContext();
+ 
+     if (!frame
+-        && codecContext->codec->capabilities & CODEC_CAP_VARIABLE_FRAME_SIZE)
++        && codecContext->codec->capabilities & AV_CODEC_CAP_VARIABLE_FRAME_SIZE)
+         return AVERROR_EOF;
+ 
+     if (frame) {
+@@ -366,7 +366,7 @@ AVFrame *AudioStream::dequeueFrame()
+     this->m_frameMutex.lock();
+ 
+     if (!this->m_frame
+-        || (!(codecContext->codec->capabilities & CODEC_CAP_VARIABLE_FRAME_SIZE)
++        || (!(codecContext->codec->capabilities & AV_CODEC_CAP_VARIABLE_FRAME_SIZE)
+             && this->m_frame->nb_samples < codecContext->frame_size)) {
+         if (!this->m_frameReady.wait(&this->m_frameMutex, THREAD_WAIT_LIMIT)) {
+             this->m_frameMutex.unlock();
+@@ -377,7 +377,7 @@ AVFrame *AudioStream::dequeueFrame()
+ 
+     AVFrame *oFrame = nullptr;
+ 
+-    if (codecContext->codec->capabilities & CODEC_CAP_VARIABLE_FRAME_SIZE
++    if (codecContext->codec->capabilities & AV_CODEC_CAP_VARIABLE_FRAME_SIZE
+         || this->m_frame->nb_samples == codecContext->frame_size) {
+         oFrame = this->m_frame;
+         this->m_frame = nullptr;
+Index: webcamoid/libAvKys/Plugins/MultiSink/src/ffmpeg/src/videostream.cpp
+===================================================================
+--- webcamoid.orig/libAvKys/Plugins/MultiSink/src/ffmpeg/src/videostream.cpp
++++ webcamoid/libAvKys/Plugins/MultiSink/src/ffmpeg/src/videostream.cpp
+@@ -273,8 +273,10 @@ int VideoStream::encodeData(AVFrame *fra
+ {
+     auto formatContext = this->formatContext();
+ 
++#ifdef AVFMT_RAWPICTURE
+     if (!frame && formatContext->oformat->flags & AVFMT_RAWPICTURE)
+         return AVERROR_EOF;
++#endif
+ 
+     auto codecContext = this->codecContext();
+ 
+@@ -300,6 +302,7 @@ int VideoStream::encodeData(AVFrame *fra
+ 
+     auto stream = this->stream();
+ 
++#ifdef AVFMT_RAWPICTURE
+     if (formatContext->oformat->flags & AVFMT_RAWPICTURE) {
+         // Raw video case - directly store the picture in the packet
+         AVPacket pkt;
+@@ -315,6 +318,7 @@ int VideoStream::encodeData(AVFrame *fra
+ 
+         return 0;
+     }
++#endif
+ 
+     // encode the image
+ #ifdef HAVE_SENDRECV
+Index: webcamoid/libAvKys/Plugins/MultiSrc/src/ffmpeg/src/abstractstream.cpp
+===================================================================
+--- webcamoid.orig/libAvKys/Plugins/MultiSrc/src/ffmpeg/src/abstractstream.cpp
++++ webcamoid/libAvKys/Plugins/MultiSrc/src/ffmpeg/src/abstractstream.cpp
+@@ -96,8 +96,10 @@ AbstractStream::AbstractStream(const AVF
+         this->m_codecContext->idct_algo = FF_IDCT_AUTO;
+         this->m_codecContext->error_concealment = FF_EC_GUESS_MVS | FF_EC_DEBLOCK;
+ 
++#ifdef CODEC_FLAG_EMU_EDGE
+         if (this->m_codec->capabilities & CODEC_CAP_DR1)
+             this->m_codecContext->flags |= CODEC_FLAG_EMU_EDGE;
++#endif
+ 
+         av_dict_set(&this->m_codecOptions, "refcounted_frames", "0", 0);
+     }
+Index: webcamoid/libAvKys/Plugins/VideoCapture/src/ffmpeg/src/convertvideoffmpeg.cpp
+===================================================================
+--- webcamoid.orig/libAvKys/Plugins/VideoCapture/src/ffmpeg/src/convertvideoffmpeg.cpp
++++ webcamoid/libAvKys/Plugins/VideoCapture/src/ffmpeg/src/convertvideoffmpeg.cpp
+@@ -19,6 +19,10 @@
+ 
+ #include <QMetaEnum>
+ 
++#ifndef AV_CODEC_FLAG_TRUNCATED
++#define AV_CODEC_FLAG_TRUNCATED CODEC_FLAG_TRUNCATED
++#endif
++
+ #include "convertvideoffmpeg.h"
+ 
+ #define THREAD_WAIT_LIMIT 500
+@@ -219,11 +223,13 @@ bool ConvertVideoFFmpeg::init(const AkCa
+     if (!this->m_codecContext)
+         return false;
+ 
+-    if (codec->capabilities & CODEC_CAP_TRUNCATED)
+-        this->m_codecContext->flags |= CODEC_FLAG_TRUNCATED;
++    if (codec->capabilities & AV_CODEC_CAP_TRUNCATED)
++        this->m_codecContext->flags |= AV_CODEC_FLAG_TRUNCATED;
+ 
++#ifdef CODEC_FLAG_EMU_EDGE
+     if (codec->capabilities & CODEC_CAP_DR1)
+         this->m_codecContext->flags |= CODEC_FLAG_EMU_EDGE;
++#endif
+ 
+     this->m_codecContext->pix_fmt = rawToFF->value(fourcc, AV_PIX_FMT_NONE);
+     this->m_codecContext->width = caps.property("width").toInt();
+Index: webcamoid/libAvKys/Plugins/MultiSink/src/ffmpeg/src/mediawriterffmpeg.cpp
+===================================================================
+--- webcamoid.orig/libAvKys/Plugins/MultiSink/src/ffmpeg/src/mediawriterffmpeg.cpp
++++ webcamoid/libAvKys/Plugins/MultiSink/src/ffmpeg/src/mediawriterffmpeg.cpp
+@@ -251,7 +251,7 @@ class MediaWriterFFmpegGlobal
+                 AVCodec *codec = nullptr;
+ 
+                 while ((codec = av_codec_next(codec))) {
+-                    if (codec->capabilities & CODEC_CAP_EXPERIMENTAL
++                    if (codec->capabilities & AV_CODEC_CAP_EXPERIMENTAL
+                         && CODEC_COMPLIANCE > FF_COMPLIANCE_EXPERIMENTAL)
+                         continue;
+ 

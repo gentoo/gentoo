@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,25 +6,32 @@ EAPI=6
 inherit autotools bash-completion-r1 eutils git-r3
 
 DESCRIPTION="Mobile shell that supports roaming and intelligent local echo"
-HOMEPAGE="http://mosh.mit.edu"
+HOMEPAGE="https://mosh.org"
 EGIT_REPO_URI="https://github.com/keithw/mosh.git"
 
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS=""
-IUSE="+client examples +mosh-hardening +server ufw +utempter"
+IUSE="+client examples libressl +mosh-hardening +server ufw +utempter"
 
 REQUIRED_USE="
 	|| ( client server )
 	examples? ( client )"
 
 RDEPEND="
+	dev-libs/openssl:0=
 	dev-libs/protobuf:0=
 	sys-libs/ncurses:0=
 	virtual/ssh
 	client? (
 		dev-lang/perl
 		dev-perl/IO-Tty
+	)
+	libressl? (
+		dev-libs/libressl:0=
+	)
+	!libressl? (
+		dev-libs/openssl:0=
 	)
 	utempter? (
 		sys-libs/libutempter

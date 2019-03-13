@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -22,7 +22,7 @@ IUSE="test"
 RDEPEND="
 	>=dev-lang/perl-5.8
 	virtual/latex-base
-	|| ( dev-texlive/texlive-plaingeneric dev-texlive/texlive-genericrecommended )
+	dev-texlive/texlive-plaingeneric
 	dev-perl/Algorithm-Diff
 "
 DEPEND="${RDEPEND}

@@ -1,0 +1,20 @@
+http://lists.gnu.org/archive/html/bug-gnu-libiconv/2018-05/msg00004.html
+
+--- libiconv-1.15/lib/Makefile.in
++++ libiconv-1.15/lib/Makefile.in
+@@ -100,12 +100,14 @@
+ 
+ # On AIX, libiconv.a must include the object files of /lib/libiconv.a,
+ # otherwise the setlocale() call fails when invoked from executables linked
+-# with -rpath $(libdir), even if linked without -liconv.
++# with -rpath $(libdir), even if linked without -liconv.  However, since
++# the --with-aix-soname flag libtool may not create libiconv.a at all.
+ install : all force
+ 	if [ ! -d $(DESTDIR)$(libdir) ] ; then $(mkinstalldirs) $(DESTDIR)$(libdir) ; fi
+ 	$(LIBTOOL_INSTALL) $(INSTALL) libiconv.la $(DESTDIR)$(libdir)/libiconv.la
+ 	case "@host_os@" in \
+ 	  aix*) (cd $(DESTDIR)$(libdir) && \
++	         { test -e libiconv.a || exit 0; } && \
+ 	         objects=`ar t libiconv.a`" "`ar t /lib/libiconv.a` && \
+ 	         ar x libiconv.a && ar x /lib/libiconv.a && \
+ 	         ar q libiconv.new.a $$objects && \

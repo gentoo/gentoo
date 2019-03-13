@@ -1,0 +1,109 @@
+From f53805bdc108b608e40f217e6a78e7e4df4284f2 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <andreas.sturmlechner@gmail.com>
+Date: Sun, 18 Mar 2018 11:56:57 +0100
+Subject: [PATCH] Fix build with Qt 5.11 (missing headers)
+
+Reviewers: #calligra:_3.0
+
+Tags: #calligra:_3.0
+
+Differential Revision: https://phabricator.kde.org/D11454
+---
+ libs/widgets/KoCsvImportDialog.cpp                         | 1 +
+ libs/widgets/KoPageLayoutWidget.cpp                        | 2 ++
+ plugins/chartshape/dialogs/TableEditorDialog.cpp           | 1 +
+ plugins/formulashape/FormulaToolWidget.cpp                 | 1 +
+ sheets/dialogs/LayoutDialog.cpp                            | 1 +
+ words/part/dialogs/KWAnchoringProperties.cpp               | 1 +
+ words/part/dialogs/KWRunAroundProperties.cpp               | 2 ++
+ 15 files changed, 18 insertions(+), 1 deletion(-)
+
+diff --git a/libs/widgets/KoCsvImportDialog.cpp b/libs/widgets/KoCsvImportDialog.cpp
+index 0ffdcf62a70..cdca006dc62 100644
+--- a/libs/widgets/KoCsvImportDialog.cpp
++++ b/libs/widgets/KoCsvImportDialog.cpp
+@@ -21,6 +21,7 @@
+ #include "KoCsvImportDialog.h"
+ 
+ // Qt
++#include <QButtonGroup>
+ #include <QTextCodec>
+ #include <QTextStream>
+ 
+diff --git a/libs/widgets/KoPageLayoutWidget.cpp b/libs/widgets/KoPageLayoutWidget.cpp
+index f91555ca262..a3816f96d8a 100644
+--- a/libs/widgets/KoPageLayoutWidget.cpp
++++ b/libs/widgets/KoPageLayoutWidget.cpp
+@@ -23,6 +23,8 @@
+ 
+ #include <KoUnit.h>
+ 
++#include <QButtonGroup>
++
+ class Q_DECL_HIDDEN KoPageLayoutWidget::Private
+ {
+ public:
+diff --git a/plugins/chartshape/dialogs/TableEditorDialog.cpp b/plugins/chartshape/dialogs/TableEditorDialog.cpp
+index c0d5136f09e..d2a772e83c2 100644
+--- a/plugins/chartshape/dialogs/TableEditorDialog.cpp
++++ b/plugins/chartshape/dialogs/TableEditorDialog.cpp
+@@ -24,6 +24,7 @@
+ 
+ // Qt
+ #include <QAbstractItemModel>
++#include <QAction>
+ 
+ // Calligra
+ #include <KoIcon.h>
+diff --git a/plugins/formulashape/FormulaToolWidget.cpp b/plugins/formulashape/FormulaToolWidget.cpp
+index ed109192cc5..8f521779617 100644
+--- a/plugins/formulashape/FormulaToolWidget.cpp
++++ b/plugins/formulashape/FormulaToolWidget.cpp
+@@ -30,6 +30,7 @@
+ #include <QWidgetAction>
+ #include <QTableWidget>
+ #include <QAction>
++#include <QHeaderView>
+ #include <QMenu>
+ 
+ FormulaToolWidget::FormulaToolWidget( KoFormulaTool* tool, QWidget* parent )
+diff --git a/sheets/dialogs/LayoutDialog.cpp b/sheets/dialogs/LayoutDialog.cpp
+index a0a9832ddfc..7d7db53823b 100644
+--- a/sheets/dialogs/LayoutDialog.cpp
++++ b/sheets/dialogs/LayoutDialog.cpp
+@@ -36,6 +36,7 @@
+ #include <math.h>
+ 
+ #include <QIntValidator>
++#include <QButtonGroup>
+ #include <QCheckBox>
+ #include <QFrame>
+ #include <QLabel>
+diff --git a/words/part/dialogs/KWAnchoringProperties.cpp b/words/part/dialogs/KWAnchoringProperties.cpp
+index d64208cbdb6..bfddb3a03f5 100644
+--- a/words/part/dialogs/KWAnchoringProperties.cpp
++++ b/words/part/dialogs/KWAnchoringProperties.cpp
+@@ -35,6 +35,7 @@
+ 
+ #include <kundo2command.h>
+ 
++#include <QButtonGroup>
+ #include <QComboBox>
+ 
+ const int KWAnchoringProperties::vertRels[4][20] = {
+diff --git a/words/part/dialogs/KWRunAroundProperties.cpp b/words/part/dialogs/KWRunAroundProperties.cpp
+index e38599a06d7..7e8b2d51ef9 100644
+--- a/words/part/dialogs/KWRunAroundProperties.cpp
++++ b/words/part/dialogs/KWRunAroundProperties.cpp
+@@ -28,6 +28,8 @@
+ 
+ #include <kundo2command.h>
+ 
++#include <QButtonGroup>
++
+ KWRunAroundProperties::KWRunAroundProperties(FrameConfigSharedState *state)
+         : m_state(state)
+ {
+-- 
+2.16.2
+

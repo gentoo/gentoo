@@ -53,8 +53,3 @@ VIDEO_CARDS="dummy fbdev v4l"
 # Note that adding LDFLAGS="-Wl,-O1 ${LDFLAGS}" breaks dev-util/boost-build
 # because of whitespace.
 LDFLAGS="-Wl,-O1 -Wl,--as-needed"
-
-# 2009/09/21 Robin H. Johnson <robbat2@gentoo.org>
-# https://archives.gentoo.org/gentoo-dev/msg_dc705dc2c1a45e18a85aa62e8fb17009.xml
-# Build kernel modules from linux-mod by default:
-USE="${USE} modules"

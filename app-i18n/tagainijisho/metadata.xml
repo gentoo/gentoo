@@ -5,6 +5,10 @@
     <email>calchan@gentoo.org</email>
     <name>Denis Dupeyron</name>
   </maintainer>
+  <maintainer type="person">
+    <email>arfrever.fta@gmail.com</email>
+    <name>Arfrever Frehtes Taifersar Arahesis</name>
+  </maintainer>
   <longdescription>
 Tagaini Jisho is a free, open-source Japanese dictionary and kanji lookup tool
 that is available for Windows, MacOS X and Linux and aims at becoming your

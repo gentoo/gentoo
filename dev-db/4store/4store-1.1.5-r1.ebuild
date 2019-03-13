@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -6,10 +6,9 @@ EAPI="5"
 inherit eutils user
 
 DESCRIPTION="4store is an efficient, scalable and stable RDF database"
-HOMEPAGE="http://4store.org/"
-# http://4store.org/download/4store-v1.0.4.tar.gz
+HOMEPAGE="https://4store.github.io/"
 MY_P="${PN}-v${PV}"
-SRC_URI="http://4store.org/download/${MY_P}.tar.gz"
+SRC_URI="https://4store.danielknoell.de/download/4store-v${PV}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

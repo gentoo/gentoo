@@ -1,17 +1,17 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit autotools toolchain-funcs vcs-snapshot
 
-DESCRIPTION="alpine is an easy to use text-based based mail and news client"
+DESCRIPTION="An easy to use text-based based mail and news client"
 HOMEPAGE="http://www.washington.edu/alpine/ http://repo.or.cz/alpine.git/"
 GIT_COMMIT="672d6838a9babf2faeb9f79267525a4ab9d20b14"
 SRC_URI="http://repo.or.cz/alpine.git/snapshot/${GIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~alpha ~ia64 ~ppc ~sparc"
+KEYWORDS="alpha amd64 ia64 ppc sparc x86"
 IUSE="doc ipv6 kerberos ldap libressl nls onlyalpine passfile smime spell ssl threads"
 
 DEPEND="virtual/pam

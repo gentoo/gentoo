@@ -1,14 +1,14 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-PYTHON_COMPAT=( python{2_7,3_{4,5}} )
+PYTHON_COMPAT=( python{2_7,3_{4,5,6}} )
 
 inherit distutils-r1
 
 DESCRIPTION="Spec-compliant and thorough implementation of the OAuth request-signing logic"
-HOMEPAGE="https://github.com/idan/oauthlib https://pypi.python.org/pypi/oauthlib"
+HOMEPAGE="https://github.com/idan/oauthlib https://pypi.org/project/oauthlib/"
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"

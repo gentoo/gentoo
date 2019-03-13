@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ DESCRIPTION="Digital Audio Workstation"
 HOMEPAGE="http://ardour.org/"
 
 if [[ ${PV} == *9999* ]]; then
-	EGIT_REPO_URI="git://git.ardour.org/ardour/ardour.git"
+	EGIT_REPO_URI="https://git.ardour.org/ardour/ardour.git"
 	inherit git-r3
 else
 	KEYWORDS="~amd64 ~x86"
@@ -20,7 +20,7 @@ else
 fi
 
 LICENSE="GPL-2"
-SLOT="5"
+SLOT="6"
 IUSE="altivec doc jack cpu_flags_x86_sse cpu_flags_x86_mmx cpu_flags_x86_3dnow"
 
 RDEPEND="
@@ -129,7 +129,7 @@ src_install() {
 	mv ${PN}.1 ${PN}${SLOT}.1
 	doman ${PN}${SLOT}.1
 	newicon "${S}/gtk2_ardour/resources/Ardour-icon_48px.png" ${PN}${SLOT}.png
-	make_desktop_entry ardour5 ardour5 ardour5 AudioVideo
+	make_desktop_entry ardour6 ardour6 ardour6 AudioVideo
 }
 
 pkg_postinst() {

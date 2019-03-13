@@ -1,14 +1,14 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_{4,5}} pypy pypy3 )
+PYTHON_COMPAT=( python2_7 pypy )
 
 inherit distutils-r1
 
 DESCRIPTION="A low-level ctypes wrapper for Ed25519 digital signatures."
-HOMEPAGE="http://bitbucket.org/dholth/ed25519ll/ http://pypi.python.org/pypi/ed25519ll"
+HOMEPAGE="https://bitbucket.org/dholth/ed25519ll/ https://pypi.org/project/ed25519ll/"
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
@@ -22,9 +22,6 @@ DEPEND="${RDEPEND}
 	test? (
 		dev-python/nose[${PYTHON_USEDEP}]
 	)"
-
-# https://bitbucket.org/dholth/ed25519ll/issues/1/testfailures-with-python-3
-RESTRICT=test
 
 python_test() {
 	esetup.py test

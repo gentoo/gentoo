@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ inherit eutils cmake-utils git-r3 gnome2-utils xdg-utils
 
 DESCRIPTION="Project aiming to recreate classic Opera (12.x) UI using Qt5"
 HOMEPAGE="http://otter-browser.org/"
-EGIT_REPO_URI="https://github.com/Emdek/otter"
+EGIT_REPO_URI="https://github.com/OtterBrowser/otter-browser"
 
 LICENSE="GPL-3"
 SLOT="0"

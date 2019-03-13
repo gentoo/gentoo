@@ -1,0 +1,16 @@
+diff --git a/src/mainwindow.cpp b/src/mainwindow.cpp
+index fd533ecd..2733b273 100644
+--- a/src/mainwindow.cpp
++++ b/src/mainwindow.cpp
+@@ -137,9 +137,7 @@ MainWindow::~MainWindow()
+ void MainWindow::saveProperties(KConfigGroup &config)
+ {
+     if (!m_part) {
+-        if (!loadPart()) {
+-            return;
+-        }
++        return;
+     }
+ 
+     m_part->saveProperties(config);
+

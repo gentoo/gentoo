@@ -1,0 +1,15 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -125,7 +125,11 @@
+ BZ_CONFIGURE_STAGE([arguments], [1 of 9])
+ 
+ # provide a with-curses option, test for curses
+-MP_WITH_CURSES
++PKG_CHECK_MODULES(ncurses, ncurses,
++	[CURSES_LIB="$ncurses_LIBS"]
++	AC_DEFINE(HAVE_NCURSES_H, , [Use the header file ncurses.h]),
++	AC_MSG_ERROR([Could not find ncurses]))
++AC_SUBST(CURSES_LIB)
+ 
+ # check for SDL option (enabled by default now)
+ AC_ARG_WITH(SDL, AS_HELP_STRING([--without-SDL | --with-SDL={1,2}],[Do not use Simple DirectMedia Layer or force using a specific version (by default tries 2, then 1, then resorts to native platform code if available]), sdl_version="$withval", sdl_version="detect")

@@ -1,0 +1,8 @@
+# Copyright 1999-2018 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+# Benda Xu <heroxbd@gentoo.org> (Feb 21, 2018)
+# We are on an old kernel that only glibc-2.19 is supported. That glibc does
+# not build with PIE enabled.  glibc-2.19 and linux-2.6.16 is end of life
+# anyway, so we don't care about security.
+sys-devel/gcc pie

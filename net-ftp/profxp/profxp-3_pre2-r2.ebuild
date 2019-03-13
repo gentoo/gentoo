@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,8 +6,8 @@ EAPI=5
 inherit perl-module
 
 DESCRIPTION="FXP (server-to-server FTP) commandline client written in Perl"
-HOMEPAGE="http://duncanthrax.net/profxp/"
-SRC_URI="http://duncanthrax.net/profxp/profxp-v${PV/_/-}-src.tar.gz
+HOMEPAGE="https://duncanthrax.net/profxp/"
+SRC_URI="https://duncanthrax.net/profxp/profxp-v${PV/_/-}-src.tar.gz
 	http://search.cpan.org/src/CLINTDW/SOCKS-0.03/lib/Net/SOCKS.pm"
 
 LICENSE="BSD"

@@ -1,7 +1,7 @@
 Index: id3lib-3.8.3/doc/Doxyfile
 ===================================================================
---- id3lib-3.8.3.orig/doc/Doxyfile
-+++ id3lib-3.8.3/doc/Doxyfile
+--- a/doc/Doxyfile
++++ b/doc/Doxyfile
 @@ -262,17 +262,7 @@ WARN_FORMAT            = "$file:$line: $
  # with spaces. 
  

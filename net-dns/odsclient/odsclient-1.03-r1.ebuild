@@ -1,9 +1,9 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="2"
+EAPI=6
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="Client for the Open Domain Server's dynamic dns"
 HOMEPAGE="http://www.ods.org/"
@@ -14,10 +14,11 @@ SLOT="0"
 KEYWORDS="~amd64 x86"
 IUSE=""
 
-src_prepare() {
-	sed -i Makefile -e 's| -o | $(LDFLAGS)&|g' || die "sed failed"
+PATCHES=( "${FILESDIR}/${PV}-gentoo.patch" )
 
-	epatch "${FILESDIR}"/${PV}-gentoo.patch
+src_prepare() {
+	default
+	sed -i Makefile -e 's| -o | $(LDFLAGS)&|g' || die "sed failed"
 }
 
 src_compile() {
@@ -30,5 +31,5 @@ src_compile() {
 
 src_install() {
 	dosbin odsclient
-	dodoc README
+	einstalldocs
 }

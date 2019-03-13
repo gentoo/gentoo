@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: ninja-utils.eclass
@@ -8,6 +8,7 @@
 # @AUTHOR:
 # Michał Górny <mgorny@gentoo.org>
 # Mike Gilbert <floppym@gentoo.org>
+# @SUPPORTED_EAPIS: 2 4 5 6 7
 # @BLURB: common bits to run dev-util/ninja builder
 # @DESCRIPTION:
 # This eclass provides a single function -- eninja -- that can be used
@@ -22,7 +23,7 @@ if [[ -z ${_NINJA_UTILS_ECLASS} ]]; then
 case ${EAPI:-0} in
 	0|1|3) die "EAPI=${EAPI:-0} is not supported (too old)";;
 	# copied from cmake-utils
-	2|4|5|6) ;;
+	2|4|5|6|7) ;;
 	*) die "EAPI=${EAPI} is not yet supported" ;;
 esac
 

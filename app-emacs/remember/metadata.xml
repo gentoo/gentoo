@@ -15,6 +15,7 @@
   this' impulse should be as close to simply throwing the data at Emacs as
   possible.
 </longdescription>
+<stabilize-allarches/>
 <use>
   <flag name="bbdb">Include support for <pkg>app-emacs/bbdb</pkg></flag>
   <flag name="planner">Include support for <pkg>app-emacs/planner</pkg></flag>

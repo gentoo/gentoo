@@ -1,15 +1,15 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-EGO_PN=golang.org/x/net/...
+EAPI=6
 EGO_SRC=golang.org/x/net
+EGO_PN=${EGO_SRC}/...
 
 if [[ ${PV} = *9999* ]]; then
 	inherit golang-vcs
 else
-	KEYWORDS="~amd64"
-	EGIT_COMMIT="b6d7b1396ec874c3b00f6c84cd4301a17c56c8ed"
+	KEYWORDS="~amd64 ~arm ~x86"
+	EGIT_COMMIT="aaf60122140d3fcf75376d319f0554393160eb50"
 	SRC_URI="https://github.com/golang/net/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 	inherit golang-vcs-snapshot
 fi
@@ -20,24 +20,40 @@ HOMEPAGE="https://godoc.org/golang.org/x/net"
 LICENSE="BSD"
 SLOT="0/${PVR}"
 IUSE=""
-DEPEND="dev-go/go-crypto:=
-	dev-go/go-text:="
+DEPEND=">=dev-go/go-crypto-0_pre20180816:=
+	>=dev-go/go-sys-0_pre20180816:=
+	>=dev-go/go-text-0.3.0:="
 RDEPEND=""
 
 src_prepare() {
-	# disable broken tests
-	sed -e 's:TestReadProppatch(:_\0:' \
-		-i src/${EGO_SRC}/webdav/xml_test.go || die
-	sed -e 's:TestPingGoogle(:_\0:' \
-		-e 's:TestNonPrivilegedPing(:_\0:' \
-		-i src/${EGO_SRC}/icmp/ping_test.go || die
+	default
+	sed -e 's:TestDiag(:_\0:' \
+		-e 's:TestConcurrentNonPrivilegedListenPacket(:_\0:' \
+		-i src/${EGO_SRC}/icmp/diag_test.go || die
+	sed -e 's:TestConcurrentNonPrivilegedListenPacket(:_\0:' \
+		-i src/${EGO_SRC}/icmp/diag_test.go || die
+	sed -e 's:TestMultipartMessageBodyLen(:_\0:' \
+		-i src/${EGO_SRC}/icmp/multipart_test.go || die
 }
 
 src_compile() {
-	# Create a writable GOROOT in order to avoid sandbox violations.
-	cp -sR "$(go env GOROOT)" "${T}/goroot" || die
-	rm -rf "${T}/goroot/src/${EGO_SRC}" || die
-	rm -rf "${T}/goroot/pkg/$(go env GOOS)_$(go env GOARCH)/${EGO_SRC}" || die
-	export GOROOT="${T}/goroot"
-	golang-build_src_compile
+	local x
+	mkdir -p "${T}/golibdir/src/golang.org/x" || die
+	for x in sys text crypto; do
+		ln -s "$(get_golibdir_gopath)/src/golang.org/x/${x}" "${T}/golibdir/src/golang.org/x/${x}" || die
+	done
+	env GOPATH="${S}:${T}/golibdir" GOBIN="${S}/bin" \
+		go install -v -work -x ${EGO_BUILD_FLAGS} "${EGO_PN}" || die
+}
+
+src_test() {
+	GOPATH="${S}:${T}/golibdir" GOBIN="${S}/bin" \
+		go test -v -work -x "${EGO_PN}" || die
+}
+
+src_install() {
+	rm -rf "${S}/src/${EGO_SRC}/.git"* || die
+	golang_install_pkgs
+	exeinto "$(go env GOROOT)/bin"
+	doexe bin/*
 }

@@ -1,8 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6,3_7} )
 PYTHON_REQ_USE="ncurses"
 
 inherit distutils-r1
@@ -11,12 +11,12 @@ if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/ranger/ranger.git"
 	inherit git-r3
 else
-	SRC_URI="http://nongnu.org/${PN}/${P}.tar.gz"
+	SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~ppc ~x86"
 fi
 
 DESCRIPTION="A vim-inspired file manager for the console"
-HOMEPAGE="http://ranger.nongnu.org/"
+HOMEPAGE="https://ranger.github.io/"
 LICENSE="GPL-3"
 SLOT="0"
 IUSE="test"
@@ -32,7 +32,7 @@ src_prepare() {
 }
 
 python_test() {
-	py.test -v || die "Tests failed under ${EPYTHON}"
+	py.test -v tests/ranger || die "Tests failed under ${EPYTHON}"
 }
 
 pkg_postinst() {

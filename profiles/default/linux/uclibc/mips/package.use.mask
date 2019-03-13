@@ -21,12 +21,6 @@ app-doc/doxygen clang
 # virtual/jre is not keyworded on mips.
 net-print/cups java
 
-# Davide Pesavento <pesa@gentoo.org> (17 Sep 2014)
-# dev-qt/qtdeclarative:4 and net-misc/{connman,networkmanager}
-# are not keyworded on mips.
-dev-qt/designer:4 declarative
-dev-qt/qtbearer:4 connman networkmanager
-
 # Vicente Olivert Riera <vincent@gentoo.org> (11 Sep 2014)
 # www-client/midori[jit] depends on net-libs/webkit-gtk[jit]
 # which is masked on base/package.use.mask and not unmasked

@@ -7,7 +7,6 @@
 	</maintainer>
 	<use>
 		<flag name="appindicator">Add support for AppIndicator</flag>
-		<flag name="gtk3">Build with GTK+3 instead of GTK+2</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">mate-desktop/mate-control-center</remote-id>

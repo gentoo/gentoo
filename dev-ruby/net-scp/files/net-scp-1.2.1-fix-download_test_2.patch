@@ -1,0 +1,25 @@
+--- test/test_download.rb	2018-01-22 02:26:56.440016436 +0100
++++ test/test_download.rb	2018-01-22 02:32:46.076017270 +0100
+@@ -116,7 +116,9 @@
+ 
+   def test_download_io_with_recursive_should_raise_error
+     expect_scp_session "-f -r /path/to/remote.txt"
+-    assert_raises(Net::SCP::Error) { scp.download!("/path/to/remote.txt", StringIO.new, :recursive => true) }
++    Net::SSH::Test::Extensions::IO.with_test_extension do
++      assert_raises(Net::SCP::Error) { scp.download!("/path/to/remote.txt", StringIO.new, :recursive => true) }
++    end
+   end
+ 
+   def test_download_io_with_preserve_should_ignore_preserve
+@@ -154,8 +156,9 @@
+       channel.sends_ok
+       channel.gets_data "D0755 0 remote\n"
+     end
+-
+-    assert_raises(Net::SCP::Error) { scp.download!("/path/to/remote") }
++    Net::SSH::Test::Extensions::IO.with_test_extension do
++      assert_raises(Net::SCP::Error) { scp.download!("/path/to/remote") }
++    end
+   end
+ 
+   def test_download_should_raise_error_if_gets_not_ok

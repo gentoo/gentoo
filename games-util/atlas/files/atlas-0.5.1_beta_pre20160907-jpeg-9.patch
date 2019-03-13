@@ -1,0 +1,27 @@
+Fix build with jpeg-9. Bug # 520908
+
+--- a/src/Image.cxx	2018-02-07 03:19:18.538699623 +0100
++++ b/src/Image.cxx	2018-02-07 03:20:15.105160934 +0100
+@@ -29,11 +29,12 @@
+ 
+ // Other libraries' include files
+ #include <png.h>
+-#include <jpeglib.h>
+ 
+ // Our project's include files
+ #include "misc.hxx"
+ 
++#include <jpeglib.h>
++
+ // This is a constant representing "Not an Elevation" - it is
+ // guaranteed to be less than any possible real elevation value.
+ static const float NanE = -std::numeric_limits<float>::max();
+@@ -266,7 +267,7 @@
+     cinfo.in_color_space = JCS_RGB;
+ 
+     jpeg_set_defaults(&cinfo);
+-    jpeg_set_quality(&cinfo, quality, true);
++    jpeg_set_quality(&cinfo, quality, TRUE);
+ 
+     jpeg_start_compress(&cinfo, TRUE);
+ 

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,11 +11,11 @@ inherit versionator gnome2-utils eutils autotools python-any-r1 vala
 
 if [[ ${PV} == *9999* ]]; then
 	inherit autotools git-r3
-	EGIT_REPO_URI="git://git.gnome.org/gegl"
+	EGIT_REPO_URI="https://gitlab.gnome.org/GNOME/gegl.git"
 	SRC_URI=""
 else
 	SRC_URI="http://download.gimp.org/pub/${PN}/${PV:0:3}/${P}.tar.bz2"
-	KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
+	KEYWORDS="alpha amd64 arm ~arm64 ~hppa ia64 ~mips ppc ppc64 ~sparc x86 ~amd64-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
 fi
 
 DESCRIPTION="A graph based image processing framework"
@@ -75,6 +75,10 @@ pkg_setup() {
 	use test && use introspection && python-any-r1_pkg_setup
 }
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.3.12-failing-tests.patch
+)
+
 src_prepare() {
 	default
 
@@ -90,8 +94,6 @@ src_prepare() {
 	sed -e '/clones.xml/d' \
 		-e '/composite-transform.xml/d' \
 		-i tests/compositions/Makefile.am || die
-
-	epatch "${FILESDIR}"/${PN}-0.3.12-failing-tests.patch
 
 	eautoreconf
 

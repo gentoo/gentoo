@@ -2,13 +2,13 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-USE_RUBY="ruby21 ruby22 ruby23"
+USE_RUBY="ruby23 ruby24"
 
 GITHUB_COMMIT="e358601cc521d8aced941eb928fae2d8c53cf0c2"
 inherit ruby-ng eutils user
 
 DESCRIPTION="A ruby IRC bot"
-HOMEPAGE="http://ruby-rbot.org/"
+HOMEPAGE="https://ruby-rbot.org/"
 SRC_URI="https://github.com/ruby-rbot/rbot/archive/${GITHUB_COMMIT}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="|| ( feh GPL-2 )"

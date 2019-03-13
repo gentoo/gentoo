@@ -1,5 +1,5 @@
---- lib/lwres/lwconfig.c.old	2007-06-20 01:47:22.000000000 +0200
-+++ lib/lwres/lwconfig.c	2008-06-15 02:57:02.000000000 +0200
+--- a/lib/lwres/lwconfig.c
++++ b/lib/lwres/lwconfig.c
 @@ -175,13 +175,8 @@
  	REQUIRE(buffer != NULL);
  	REQUIRE(size > 0U);

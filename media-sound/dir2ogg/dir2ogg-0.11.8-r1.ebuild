@@ -1,10 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=2
-inherit versionator
+EAPI=7
 
-MY_PR=$(get_version_component_range 1-2)
+MY_PR=$(ver_cut 1-2)
 
 DESCRIPTION="Converts mp3, m4a, wma, and wav files to Ogg Vorbis format"
 HOMEPAGE="http://jak-linux.org/projects/dir2ogg/"
@@ -39,7 +38,7 @@ RDEPEND=">=dev-lang/python-2.5
 DEPEND=""
 
 src_install() {
-	dobin dir2ogg || die
+	dobin dir2ogg
 	doman dir2ogg.1
-	dodoc NEWS README
+	einstalldocs
 }

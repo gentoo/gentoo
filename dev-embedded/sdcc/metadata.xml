@@ -6,12 +6,18 @@
 		<name>Embedded Gentoo</name>
 	</maintainer>
 	<longdescription>
-SDCC is a retargettable, optimizing ANSI - C compiler suite that targets the Intel MCS51 based microprocessors (8031, 8032, 8051, 8052, etc.), Maxim (formerly Dallas) DS80C390 variants, Freescale (formerly Motorola) HC08 based (hc08, s08), Zilog Z80 based MCUs (z80, z180, gbz80, Rabbit 2000/3000, Rabbit 3000A, TLCS-90) and STMicroelectronics STM8. It can be retargeted for other microprocessors.
+SDCC is a retargettable, optimizing ANSI - C compiler suite that targets the
+Intel MCS51 based microprocessors (8031, 8032, 8051, 8052, etc.), Maxim
+(formerly Dallas) DS80C390 variants, Freescale (formerly Motorola) HC08 based
+(hc08, s08), Zilog Z80 based MCUs (z80, z180, gbz80, Rabbit 2000/3000, Rabbit
+3000A, TLCS-90) and STMicroelectronics STM8. It can be retargeted for other
+microprocessors.
 	</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">sdcc</remote-id>
 	</upstream>
 	<use>
+		<flag name="avr">Add support for AVR -- not supported upstream</flag>
 		<flag name="boehm-gc">Enable Hans Boehm's garbage collector <pkg>dev-libs/boehm-gc</pkg></flag>
 		<flag name="device-lib">Enable built of devices libraries</flag>
 		<flag name="ds390">Add support for Dallas DS390</flag>

@@ -11,6 +11,7 @@
   </maintainer>
   <use>
     <flag name="epydoc">Build html API documentation with epydoc.</flag>
+    <flag name="gentoo-dev">Enable features required for Gentoo ebuild development.</flag>
     <flag name="ipc">Use inter-process communication between portage and
         running ebuilds.
     </flag>
@@ -19,6 +20,10 @@
         backup code).  Currently includes libc-locales.
         This should only be temporarily disabled for some bootstrapping
         operations.  Cross-compilation is not supported.
+    </flag>
+    <flag name="rsync-verify">
+        Enable full-tree cryptographic verification of Gentoo repository
+        rsync checkouts using <pkg>app-portage/gemato</pkg>.
     </flag>
     <flag name="xattr">Preserve extended attributes (filesystem-stored metadata)
         when installing files. Usually only required for hardened systems.

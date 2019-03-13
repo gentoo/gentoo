@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>zmedico@gentoo.org</email>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">andreax79/python-cstruct</remote-id>
+		<remote-id type="pypi">cstruct</remote-id>
+	</upstream>
+</pkgmetadata>

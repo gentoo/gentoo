@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,7 +12,7 @@ LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~sparc ~x86 ~x86-fbsd"
 
-S=${WORKDIR}/${MY_P:5}
+S="${WORKDIR}/${MY_P:5}"
 
 src_install() {
 	dodir /usr/share/cursors/xorg-x11/Silver/cursors/

@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,15 +9,15 @@ DISTUTILS_SINGLE_IMPL=true
 
 inherit xdg distutils-r1
 
-DESCRIPTION='A hierarchical note taking application'
-HOMEPAGE='http://www.giuspen.com/cherrytree'
-LICENSE='GPL-3'
+DESCRIPTION="A hierarchical note taking application"
+HOMEPAGE="https://www.giuspen.com/cherrytree"
+LICENSE="GPL-3"
 
-SLOT='0'
+SLOT="0"
 SRC_URI="https://github.com/giuspen/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
-KEYWORDS='~amd64 ~x86'
-IUSE='nls'
+KEYWORDS="~amd64 ~x86"
+IUSE="nls"
 
 RDEPEND="
 	x11-libs/libX11
@@ -30,7 +30,7 @@ DEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext )
 "
 
-PLOCALES='cs de es fr hy it ja lt nl pl pt_BR ru sl tr uk zh_CN'
+PLOCALES="cs de es fr hy it ja lt nl pl pt_BR ru sl tr uk zh_CN"
 inherit l10n
 
 python_prepare_all() {

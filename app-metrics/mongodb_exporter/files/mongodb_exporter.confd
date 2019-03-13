@@ -1,0 +1,2 @@
+# arguments for prometheus mongodb exporter
+command_args="-mongodb.uri=http://localhost:9200"

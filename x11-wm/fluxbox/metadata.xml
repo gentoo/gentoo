@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>pchrist@gentoo.org</email>
-		<name>Panagiotis Christopoulos</name>
-	</maintainer>
+<maintainer type="person">
+		<email>zlogene@gentoo.org</email>
+		<name>Mikle Kolyada</name>
+		</maintainer>
 	<longdescription>
 		Fluxbox is yet another windowmanager for X. Originally based upon the
 		Blackbox 0.61.1 code, Fluxbox has been extended to include a new tabbed

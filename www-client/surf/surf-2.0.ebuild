@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -28,10 +28,10 @@ DEPEND="
 RDEPEND="
 	!sci-chemistry/surf
 	${COMMON_DEPEND}
-	x11-apps/xprop
-	x11-misc/dmenu
 	!savedconfig? (
 		net-misc/curl
+		x11-apps/xprop
+		x11-misc/dmenu
 		x11-terms/st
 	)
 "
@@ -64,11 +64,4 @@ src_install() {
 	default
 
 	save_config config.h
-}
-
-pkg_postinst() {
-	if [[ ${REPLACING_VERSIONS} ]] && [[ ${REPLACING_VERSIONS} < 0.4.1-r1 ]]; then
-		ewarn "Please correct the permissions of your \$HOME/.surf/ directory"
-		ewarn "and its contents to no longer be world readable (see bug #404983)"
-	fi
 }

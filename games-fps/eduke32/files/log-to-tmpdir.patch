@@ -1,0 +1,11 @@
+--- a/source/duke3d/src/game.cpp	2018-05-08 19:32:19.000000000 +0200
++++ b/source/duke3d/src/game.cpp	2018-05-10 23:46:21.540213019 +0200
+@@ -6234,7 +6234,7 @@
+     }
+     else
+ #endif
+-    OSD_SetLogFile(APPBASENAME ".log");
++    OSD_SetLogFile("/tmp/" APPBASENAME ".log");
+ 
+     OSD_SetFunctions(GAME_drawosdchar,
+                      GAME_drawosdstr,

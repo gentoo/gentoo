@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,8 +6,8 @@ EAPI=6
 inherit autotools fortran-2 toolchain-funcs
 
 DESCRIPTION="Library of Iterative Solvers for Linear Systems"
-HOMEPAGE="http://www.ssisc.org/lis/index.en.html"
-SRC_URI="http://www.ssisc.org/lis/dl/${P}.tar.gz"
+HOMEPAGE="https://www.ssisc.org/lis/index.en.html"
+SRC_URI="https://www.ssisc.org/lis/dl/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

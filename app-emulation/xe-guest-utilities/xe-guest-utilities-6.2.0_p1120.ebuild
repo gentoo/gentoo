@@ -1,10 +1,10 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 inherit eutils rpm linux-info
 DESCRIPTION="XenServer Virtual Machine Tools"
-HOMEPAGE="http://www.citrix.com/"
+HOMEPAGE="https://www.citrix.com/"
 PV_BASE=${PV/_*}
 PV_FULL=${PV/_p/-}
 SRC_URI="http://updates.vmd.citrix.com/XenServer/${PV_BASE}/rhel4x/SRPMS/xe-guest-utilities-${PV_FULL}.src.rpm"

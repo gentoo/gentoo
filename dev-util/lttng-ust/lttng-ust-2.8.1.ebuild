@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -14,10 +14,10 @@ SRC_URI="http://lttng.org/files/${PN}/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0/${MY_SLOT}"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ppc ppc64 ~sparc x86"
 IUSE="examples"
 
-DEPEND="dev-libs/userspace-rcu"
+DEPEND="dev-libs/userspace-rcu:="
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}"/${MY_P}

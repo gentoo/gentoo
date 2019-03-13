@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -18,7 +18,7 @@ IUSE="doc jack"
 
 RDEPEND=">=dev-libs/redland-1.0.6
 	jack? ( virtual/jack )
-	|| ( media-libs/lv2 media-libs/lv2core )"
+	media-libs/lv2"
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
 	virtual/pkgconfig

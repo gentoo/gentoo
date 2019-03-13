@@ -1,0 +1,19 @@
+--- a/extcap/CMakeLists.txt
++++ b/extcap/CMakeLists.txt
+@@ -68,6 +68,8 @@
+ 		if(HAVE_LIBPCAP)
+ 			set(androiddump_LIBS
+ 				ui
++				wiretap
++				wsutil
+ 				${GLIB2_LIBRARIES}
+ 				${PCAP_LIBRARIES}
+ 			)
+@@ -78,6 +80,7 @@
+ 		set(androiddump_LIBS
+ 			ui
+ 			wiretap
++			wsutil
+ 			${GLIB2_LIBRARIES}
+ 			${ZLIB_LIBRARIES}
+ 			${CMAKE_DL_LIBS}

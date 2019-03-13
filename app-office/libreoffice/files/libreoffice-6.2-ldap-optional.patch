@@ -1,0 +1,178 @@
+From 6776c53b7ce2e431d8636f4e5a755f50f787ec8f Mon Sep 17 00:00:00 2001
+From: Andrew Udvare <audvare@gmail.com>
+Date: Tue, 8 Jan 2019 04:53:51 -0500
+Subject: Make LDAP support optional
+
+Change-Id: Ifbd3903494a81e7b155bf6468f6ca2c50b3370a4
+Reviewed-on: https://gerrit.libreoffice.org/65958
+Tested-by: Jenkins
+Reviewed-by: Markus Mohrhard <markus.mohrhard@googlemail.com>
+---
+ Repository.mk                                     |  2 +-
+ RepositoryExternal.mk                             |  3 ++-
+ configure.ac                                      | 24 ++++++++++++++++++++++-
+ connectivity/Library_postgresql-sdbc-impl.mk      |  2 +-
+ extensions/Module_extensions.mk                   |  7 ++++++-
+ external/postgresql/ExternalProject_postgresql.mk |  5 +++--
+ postprocess/Rdb_services.mk                       |  2 +-
+ 7 files changed, 37 insertions(+), 8 deletions(-)
+
+diff --git a/Repository.mk b/Repository.mk
+index 4ae8528..4d8389b 100644
+--- a/Repository.mk
++++ b/Repository.mk
+@@ -389,7 +389,7 @@ $(eval $(call gb_Helper_register_libraries_for_install,OOOLIBS,ooo, \
+ 	hyphen \
+     icg \
+ 	$(if $(ENABLE_JAVA),jdbc) \
+-	ldapbe2 \
++	$(if $(ENABLE_LDAP),ldapbe2) \
+ 	$(if $(filter WNT,$(OS)),WinUserInfoBe) \
+ 	localebe1 \
+ 	log \
+diff --git a/RepositoryExternal.mk b/RepositoryExternal.mk
+index 602ff6d..3c9be87 100644
+--- a/RepositoryExternal.mk
++++ b/RepositoryExternal.mk
+@@ -2900,7 +2900,7 @@ endef
+ 
+ endif # SYSTEM_HSQLDB
+ 
+-
++ifeq ($(ENABLE_LDAP),TRUE)
+ ifneq ($(SYSTEM_OPENLDAP),)
+ 
+ define gb_LinkTarget__use_openldap
+@@ -2929,6 +2929,7 @@ $(call gb_LinkTarget_add_libs,$(1), \
+ )
+ 
+ endef
++endif
+ 
+ define gb_ExternalProject__use_openldap
+ $(call gb_ExternalProject_use_external_project,$(1),openldap)
+diff --git a/configure.ac b/configure.ac
+index f880308..35c7e02 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -1519,6 +1519,11 @@ libo_FUZZ_ARG_ENABLE(formula-logger,
+     )
+ )
+ 
++AC_ARG_ENABLE(ldap,
++    AS_HELP_STRING([--disable-ldap],
++        [Disable LDAP support.]),
++,enable_ldap=yes)
++
+ dnl ===================================================================
+ dnl Optional Packages (--with/without-)
+ dnl ===================================================================
+@@ -9214,12 +9219,29 @@ else
+ fi
+ AC_SUBST(SYSTEM_ODBC_HEADERS)
+ 
++dnl ===================================================================
++dnl Enable LDAP support
++dnl ===================================================================
++
++if test "$_os" != "WINNT" -a "$_os" != "iOS" -a "$_os" != "Android"; then
++AC_MSG_CHECKING([whether to enable LDAP support])
++    if test "$enable_ldap" != "yes"; then
++        AC_MSG_RESULT([no])
++        ENABLE_LDAP=""
++        enable_ldap=no
++    else
++        AC_MSG_RESULT([yes])
++        ENABLE_LDAP="TRUE"
++        AC_DEFINE(HAVE_FEATURE_LDAP)
++    fi
++fi
++AC_SUBST(ENABLE_LDAP)
+ 
+ dnl ===================================================================
+ dnl Check for system openldap
+ dnl ===================================================================
+ 
+-if test "$_os" != "WINNT" -a "$_os" != "iOS" -a "$_os" != "Android"; then
++if test "$_os" != "WINNT" -a "$_os" != "iOS" -a "$_os" != "Android" -a "$ENABLE_LDAP" != ""; then
+ AC_MSG_CHECKING([which openldap library to use])
+ if test "$with_system_openldap" = "yes"; then
+     AC_MSG_RESULT([external])
+diff --git a/connectivity/Library_postgresql-sdbc-impl.mk b/connectivity/Library_postgresql-sdbc-impl.mk
+index 53cebd0..3d048f3 100644
+--- a/connectivity/Library_postgresql-sdbc-impl.mk
++++ b/connectivity/Library_postgresql-sdbc-impl.mk
+@@ -47,7 +47,7 @@ $(eval $(call gb_Library_use_externals,postgresql-sdbc-impl,\
+ 	postgresql \
+ 	$(if $(filter-out MSC,$(COM)), \
+ 		openssl \
+-		openldap \
++		$(if $(ENABLE_LDAP),openldap) \
+ 		nss3 \
+ 		plc4 \
+ 		ssl3 \
+diff --git a/extensions/Module_extensions.mk b/extensions/Module_extensions.mk
+index f84a9ca..43dd929 100644
+--- a/extensions/Module_extensions.mk
++++ b/extensions/Module_extensions.mk
+@@ -16,7 +16,6 @@ $(eval $(call gb_Module_add_l10n_targets,extensions,\
+ ifneq ($(filter-out iOS ANDROID,$(OS)),)
+ $(eval $(call gb_Module_add_targets,extensions,\
+ 	Library_abp \
+-	Library_ldapbe2 \
+ 	$(if $(filter WNT,$(OS)),Library_WinUserInfoBe) \
+ 	Library_log \
+ 	Library_scn \
+@@ -28,6 +27,12 @@ $(eval $(call gb_Module_add_targets,extensions,\
+ ))
+ endif
+ 
++ifeq ($(ENABLE_LDAP),TRUE)
++$(eval $(call gb_Module_add_targets,extensions,\
++	Library_ldapbe2 \
++))
++endif
++
+ ifneq (,$(filter DBCONNECTIVITY,$(BUILD_TYPE)))
+ $(eval $(call gb_Module_add_targets,extensions,\
+ 	Library_bib \
+diff --git a/external/postgresql/ExternalProject_postgresql.mk b/external/postgresql/ExternalProject_postgresql.mk
+index f6617e5..fc4342c 100644
+--- a/external/postgresql/ExternalProject_postgresql.mk
++++ b/external/postgresql/ExternalProject_postgresql.mk
+@@ -10,7 +10,7 @@
+ $(eval $(call gb_ExternalProject_ExternalProject,postgresql))
+ 
+ $(eval $(call gb_ExternalProject_use_externals,postgresql,\
+-	openldap \
++	$(if $(ENABLE_LDAP),openldap) \
+ 	openssl \
+ 	zlib \
+ ))
+@@ -64,9 +64,10 @@ $(call gb_ExternalProject_get_state_target,postgresql,build) :
+ 			$(if $(DISABLE_OPENSSL),,--with-openssl \
+ 				$(if $(WITH_KRB5), --with-krb5) \
+ 				$(if $(WITH_GSSAPI),--with-gssapi)) \
++				$(if $(ENABLE_LDAP),,--with-ldap=no) \
+ 			CPPFLAGS="$(postgresql_CPPFLAGS)" \
+ 			LDFLAGS="$(postgresql_LDFLAGS)" \
+-			EXTRA_LDAP_LIBS="-llber -lssl3 -lsmime3 -lnss3 -lnssutil3 -lplds4 -lplc4 -lnspr4" \
++			$(if $(ENABLE_LDAP),EXTRA_LDAP_LIBS="-llber -lssl3 -lsmime3 -lnss3 -lnssutil3 -lplds4 -lplc4 -lnspr4") \
+ 		&& cd src/interfaces/libpq \
+ 		&& MAKEFLAGS= && $(MAKE) all-static-lib)
+ 
+diff --git a/postprocess/Rdb_services.mk b/postprocess/Rdb_services.mk
+index c70d1ca..342f19b 100644
+--- a/postprocess/Rdb_services.mk
++++ b/postprocess/Rdb_services.mk
+@@ -293,7 +293,7 @@ $(eval $(call gb_Rdb_add_components,services,\
+ 	desktop/source/offacc/offacc \
+ 	$(if $(DISABLE_GUI),,desktop/source/splash/spl) \
+ 	extensions/source/abpilot/abp \
+-	extensions/source/config/ldap/ldapbe2 \
++	$(if $(ENABLE_LDAP),extensions/source/config/ldap/ldapbe2) \
+ 	$(if $(filter WNT,$(OS)),\
+ 		extensions/source/config/WinUserInfo/WinUserInfoBe \
+ 	) \
+-- 
+cgit v1.1

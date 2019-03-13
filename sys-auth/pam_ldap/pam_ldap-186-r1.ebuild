@@ -17,11 +17,7 @@ DEPEND="|| ( >=sys-libs/glibc-2.1.3 >=sys-freebsd/freebsd-lib-9.1 )
 	>=virtual/pam-0-r1[${MULTILIB_USEDEP}]
 	>=net-nds/openldap-2.4.38-r1[${MULTILIB_USEDEP}]
 	sasl? ( >=dev-libs/cyrus-sasl-2.1.26-r3[${MULTILIB_USEDEP}] )"
-RDEPEND="${DEPEND}
-	abi_x86_32? (
-		!<=app-emulation/emul-linux-x86-baselibs-20140508-r7
-		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)]
-	)"
+RDEPEND="${DEPEND}"
 
 multilib_src_configure() {
 	local myconf=(

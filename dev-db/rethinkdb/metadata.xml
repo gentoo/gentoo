@@ -6,9 +6,6 @@
     <name>Ultrabug</name>
   </maintainer>
   <use>
-    <flag name="jemalloc">
-      Use <pkg>dev-libs/jemalloc</pkg> for allocations (default).
-    </flag>
     <flag name="tcmalloc">
       Use tcmalloc from <pkg>dev-util/google-perftools</pkg> for allocations.
     </flag>

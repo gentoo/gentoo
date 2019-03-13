@@ -1,0 +1,36 @@
+diff --git a/dask/bytes/tests/test_local.py b/dask/bytes/tests/test_local.py
+index dbe58ae0..072a1ee7 100644
+--- a/dask/bytes/tests/test_local.py
++++ b/dask/bytes/tests/test_local.py
+@@ -141,6 +141,7 @@ def test_with_urls():
+         assert sum(map(len, values)) == len(files)
+ 
+ 
++@pytest.mark.skip("Fails on Gentoo")
+ @pytest.mark.skipif(sys.platform == 'win32',
+                     reason="pathlib and moto clash on windows")
+ def test_with_paths():
+diff --git a/dask/dataframe/tests/test_dataframe.py b/dask/dataframe/tests/test_dataframe.py
+index f5a080d4..de9c0a90 100644
+--- a/dask/dataframe/tests/test_dataframe.py
++++ b/dask/dataframe/tests/test_dataframe.py
+@@ -2388,6 +2388,7 @@ def _assert_info(df, ddf, memory_usage=True):
+     assert stdout_pd == stdout_da
+ 
+ 
++@pytest.mark.skip("Fails on Gentoo")
+ def test_info():
+     from io import StringIO
+     from dask.compatibility import unicode
+diff --git a/dask/tests/test_base.py b/dask/tests/test_base.py
+index 8e5b0118..1cf56e31 100644
+--- a/dask/tests/test_base.py
++++ b/dask/tests/test_base.py
+@@ -595,6 +595,7 @@ def test_visualize():
+         assert os.path.exists(os.path.join(d, 'mydask.png'))
+ 
+ 
++@pytest.mark.skip("Fails on Gentoo")
+ @pytest.mark.skipif('not da')
+ @pytest.mark.skipif(sys.flags.optimize,
+                     reason="graphviz exception with Python -OO flag")

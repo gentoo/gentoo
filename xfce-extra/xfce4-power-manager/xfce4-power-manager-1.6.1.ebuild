@@ -6,7 +6,7 @@ inherit gnome2-utils
 
 DESCRIPTION="Power manager for the Xfce desktop environment"
 HOMEPAGE="https://goodies.xfce.org/projects/applications/xfce4-power-manager"
-SRC_URI="mirror://xfce/src/xfce/${PN}/${PV%.*}/${P}.tar.bz2"
+SRC_URI="https://archive.xfce.org/src/xfce/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -33,7 +33,7 @@ DEPEND="${COMMON_DEPEND}
 	dev-util/intltool
 	sys-devel/gettext
 	virtual/pkgconfig
-	x11-proto/xproto"
+	x11-base/xorg-proto"
 
 src_configure() {
 	local myconf=(

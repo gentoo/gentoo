@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -70,7 +70,7 @@ pkg_nofetch() {
 		elog "with ${PV}+. If you can get the distfile from e.g. another computer of yours, or search"
 		use amd64 && MY_PKG="${MY_PKG/i386/amd64}"
 		elog "it with google: https://www.google.com/search?q=intitle:%22index+of%22+${MY_PKG}"
-		elog "and copy the file ${MY_PKG} to ${DISTDIR}."
+		elog "and copy ${MY_PKG} to your DISTDIR directory."
 	else
 		einfo "This version is no longer available from Google."
 		einfo "Note that Gentoo cannot mirror the distfiles due to license reasons, so we have to follow the bump."

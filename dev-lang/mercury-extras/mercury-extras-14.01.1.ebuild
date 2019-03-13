@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
 inherit eutils multilib
 
-PATCHSET_VER="0"
+PATCHSET_VER="1"
 MY_P=mercury-srcdist-${PV}
 
 DESCRIPTION="Additional libraries and tools that are not part of the Mercury standard library"
@@ -15,7 +15,7 @@ SRC_URI="http://dl.mercurylang.org/release/${MY_P}.tar.gz
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 IUSE="X cairo examples glut iodbc ncurses odbc opengl ssl tcl tk xml"
 
@@ -57,7 +57,7 @@ mercury_pkgs()
 		$(use glut && echo graphics/mercury_glut)
 		$(use opengl && echo graphics/mercury_opengl)
 		$(use tcl && use tk && echo graphics/mercury_tcltk)
-		$(use odbc && echo odbc || use iodbc && echo odbc)
+		$(use odbc && echo odbc || (use iodbc && echo odbc) )
 		$(has_version dev-lang/mercury[trail] && echo references)
 		$(usev xml)"
 }

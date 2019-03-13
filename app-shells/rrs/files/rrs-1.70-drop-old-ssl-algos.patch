@@ -1,0 +1,64 @@
+--- a/rrs.c	2019-01-17 12:36:21.134181933 +0300
++++ b/rrs.c	2019-01-17 12:37:56.133181353 +0300
+@@ -186,11 +186,9 @@
+ "                       can change it with, e.g., --ssl=tlsv1 for instance, or\n"
+ "                       the -S option.\n"
+ "   -S, --ssl=method    Choose OpenSSL protocol (case doesn't matter):\n"
+-"                           -S SSLv2\n"
+-"                           -S SSLv3\n"
+ "                           -S TLSv1\n"
+ "                       If you use --ssl instead of -S, please remember to use\n"
+-"                       the equal sign, e.g., --ssl=sslv3.\n"
++"                       the equal sign, e.g., --ssl=tlsv1.\n"
+ "   -P, --pem file      Specify private key and certificate (public key) file.\n"
+ "                       The file should begin with a PEM encoded private key\n"
+ "                       followed by a PEM encoded certificate. Both the\n"
+@@ -336,8 +334,8 @@
+ /****** various other global variables ******/
+ 
+ #if ! defined(WITHOUT_SSL)
+-    enum { none, TLSv1, SSLv3, SSLv2 } rrs_ssl = none;
+-    char *sslprotocols[] = { "none", "TLSv1", "SSLv3", "SSLv2" };
++    enum { none, TLSv1 } rrs_ssl = none;
++    char *sslprotocols[] = { "none", "TLSv1" };
+ #endif
+ 
+ unsigned int sourceport = 0,
+@@ -1826,11 +1824,7 @@
+                 }
+                 rrs_ssl = TLSv1;
+                 if (optarg) {
+-                    if (!strcasecmp(optarg, "SSLv2")) {
+-                        rrs_ssl = SSLv2;
+-                    } else if (!strcasecmp(optarg, "SSLv3")) {
+-                        rrs_ssl = SSLv3;
+-                    } else if (!strcasecmp(optarg, "TLSv1")) {
++                    if (!strcasecmp(optarg, "TLSv1")) {
+                         rrs_ssl = TLSv1;
+                     } else {
+                         fprintf(stderr, "[?] not supported ssl protocol: %s\n", optarg);
+@@ -1981,22 +1975,14 @@
+         SSL_load_error_strings();
+ 
+         if (rrs_listen) {
+-            if (rrs_ssl == SSLv2) {
+-                sslmethod = SSLv2_server_method();
+-            } else if (rrs_ssl == SSLv3) {
+-                sslmethod = SSLv3_server_method();
+-            } else if (rrs_ssl == TLSv1) {
++            if (rrs_ssl == TLSv1) {
+                 sslmethod = TLSv1_server_method();
+             } else {
+                 fprintf(stderr, "[?] huh? rrs_ssl = 0x%08x\n", (unsigned int)sslmethod);
+                 return err_generic;
+             }
+         } else {
+-            if (rrs_ssl == SSLv2) {
+-                sslmethod = SSLv2_client_method();
+-            } else if (rrs_ssl == SSLv3) {
+-                sslmethod = SSLv3_client_method();
+-            } else if (rrs_ssl == TLSv1) {
++            if (rrs_ssl == TLSv1) {
+                 sslmethod = TLSv1_client_method();
+             } else {
+                 fprintf(stderr, "[?] huh? rrs_ssl = 0x%08x\n", (unsigned int)sslmethod);

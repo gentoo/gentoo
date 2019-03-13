@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -10,7 +10,7 @@ MOD_ICON="aut.ico"
 
 inherit games games-mods
 
-HOMEPAGE="http://www.moddb.com/mods/action-unreal-tournament/addons/action-unreal-tournament-r1"
+HOMEPAGE="https://www.moddb.com/mods/action-unreal-tournament/addons/action-unreal-tournament-r1"
 SRC_URI="https://ut.rushbase.net/beyondunreal/mods/aut-r1-msuc.zip"
 
 LICENSE="freedist"

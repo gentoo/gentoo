@@ -5,10 +5,6 @@
 		<email>qt@gentoo.org</email>
 		<name>Gentoo Qt Project</name>
 	</maintainer>
-	<use>
-		<flag name="exceptions">Add support for exceptions - like catching them
-			inside the event loop (recommended by upstream)</flag>
-	</use>
 	<upstream>
 		<bugs-to>https://bugreports.qt.io/</bugs-to>
 		<doc>https://doc.qt.io/</doc>

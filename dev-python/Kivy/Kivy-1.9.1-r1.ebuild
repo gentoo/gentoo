@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,7 +10,7 @@ inherit distutils-r1
 DISTUTILS_IN_SOURCE_BUILD=1
 
 DESCRIPTION="Library for rapid development of hardware-accelerated multitouch applications"
-HOMEPAGE="http://kivy.org/"
+HOMEPAGE="https://kivy.org/"
 SRC_URI="https://pypi.io/packages/source/${PN:0:1}/${PN}/${P,,}.tar.gz"
 
 LICENSE="MIT"

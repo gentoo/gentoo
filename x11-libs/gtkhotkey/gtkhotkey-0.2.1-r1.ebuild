@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -18,24 +18,33 @@ SRC_URI="https://launchpad.net/${PN}/${MY_CRV}/${PV}/+download/${P}.tar.gz"
 LICENSE="LGPL-3"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE=""
+IUSE="static-libs"
 
-COMMON_DEPEND=">=dev-libs/glib-2.16
-	>=x11-libs/gtk+-2.12:2"
-
-RDEPEND="${COMMON_DEPEND}
-	virtual/libintl"
-
-DEPEND="${COMMON_DEPEND}
+COMMON_DEPEND="
+	>=dev-libs/glib-2.16
+	>=x11-libs/gtk+-2.12:2
+"
+RDEPEND="
+	${COMMON_DEPEND}
+	virtual/libintl
+"
+DEPEND="
+	${COMMON_DEPEND}
 	virtual/pkgconfig
 	>=dev-util/intltool-0.35.0
-	sys-devel/gettext"
+	sys-devel/gettext
+"
 
 PATCHES=( "${FILESDIR}/${P}-glibheaders.patch" )
 
 src_prepare() {
-	sed -i -e "s: install-gtkhotkeydocDATA ::" Makefile.in || die "Patching Makefile.in failed"
 	default
+	sed -i -e "s: install-gtkhotkeydocDATA ::" Makefile.in || die
+}
+
+src_configure() {
+	econf \
+		$(use_enable static-libs static)
 }
 
 src_install() {

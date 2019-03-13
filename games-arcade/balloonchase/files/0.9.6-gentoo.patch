@@ -1,5 +1,5 @@
---- Makefile
-+++ Makefile
+--- a/Makefile
++++ b/Makefile
 @@ -1,4 +1,3 @@
 -LDFLAGS= -lSDL -lpthread -s
  CFLAGS= -Wall # -DDEBUG
@@ -16,8 +16,8 @@
  pkg:
  	@echo $(PKG_BCVERSION) >VERSION
  	rm balloonchase src/*.o
---- src/main.c
-+++ src/main.c
+--- a/src/main.c
++++ b/src/main.c
 @@ -333,47 +333,47 @@
  
  int InitImages()

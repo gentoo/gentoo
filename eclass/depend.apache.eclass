@@ -4,6 +4,7 @@
 # @ECLASS: depend.apache.eclass
 # @MAINTAINER:
 # apache-devs@gentoo.org
+# @SUPPORTED_EAPIS: 0 2 3 4 5 6
 # @BLURB: Functions to allow ebuilds to depend on apache
 # @DESCRIPTION:
 # This eclass handles depending on apache in a sane way and provides information

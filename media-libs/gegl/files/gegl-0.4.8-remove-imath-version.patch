@@ -1,0 +1,33 @@
+diff -urN a/operations/external/exr-save.cc b/operations/external/exr-save.cc
+--- a/operations/external/exr-save.cc	2018-07-11 23:15:19.000000000 +0100
++++ b/operations/external/exr-save.cc	2018-08-22 19:13:26.241432231 +0100
+@@ -145,10 +145,10 @@
+                           &blue[0], &blue[1],
+                           NULL, NULL, NULL);
+     {
+-    Imf::Chromaticities c1 (Imath_2_2::V2f(red[0],red[1]),
+-                            Imath_2_2::V2f(green[0],green[1]),
+-                            Imath_2_2::V2f(blue[0],blue[1]),
+-                            Imath_2_2::V2f(wp[0],wp[1]));
++    Imf::Chromaticities c1 (Imath::V2f(red[0],red[1]),
++                            Imath::V2f(green[0],green[1]),
++                            Imath::V2f(blue[0],blue[1]),
++                            Imath::V2f(wp[0],wp[1]));
+     Imf::addChromaticities (header, c1);
+     }
+   }
+@@ -184,10 +184,10 @@
+                            &green[0], &green[1],
+                            &blue[0], &blue[1],
+                            NULL, NULL, NULL);
+-    Imf::Chromaticities c1 (Imath_2_2::V2f(red[0],red[1]),
+-                            Imath_2_2::V2f(green[0],green[1]),
+-                            Imath_2_2::V2f(blue[0],blue[1]),
+-                            Imath_2_2::V2f(wp[0],wp[1]));
++    Imf::Chromaticities c1 (Imath::V2f(red[0],red[1]),
++                            Imath::V2f(green[0],green[1]),
++                            Imath::V2f(blue[0],blue[1]),
++                            Imath::V2f(wp[0],wp[1]));
+     Imf::addChromaticities (header, c1);
+   }
+ 

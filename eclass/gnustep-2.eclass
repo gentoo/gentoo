@@ -1,9 +1,10 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: gnustep-2.eclass
 # @MAINTAINER:
 # GNUstep Herd <gnustep@gentoo.org>
+# @SUPPORTED_EAPIS: 0 1 2 3 4 5 6 7
 # @BLURB: eclass for GNUstep Apps, Frameworks, and Bundles build
 # @DESCRIPTION:
 # This eclass sets up GNUstep environment to properly install

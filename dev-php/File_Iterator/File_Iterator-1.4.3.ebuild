@@ -6,7 +6,8 @@ EAPI=6
 MY_PN="php-file-iterator"
 
 DESCRIPTION="FilterIterator implementation that filters files based on criteria"
-HOMEPAGE="https://phpunit.de"
+HOMEPAGE="https://github.com/sebastianbergmann/php-file-iterator
+	https://phpunit.de"
 SRC_URI="https://github.com/sebastianbergmann/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"

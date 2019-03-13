@@ -1,8 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
-inherit eutils fdo-mime toolchain-funcs
+EAPI=6
+
+inherit toolchain-funcs xdg-utils
 
 DESCRIPTION="Graphical CD image editor for reading, modifying and writing ISO images"
 HOMEPAGE="http://littlesvr.ca/isomaster"
@@ -10,7 +11,7 @@ SRC_URI="http://littlesvr.ca/${PN}/releases/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~x86-fbsd"
+KEYWORDS="amd64 x86 ~x86-fbsd"
 IUSE="nls"
 
 RDEPEND=">=dev-libs/iniparser-3.0.0:0
@@ -18,6 +19,10 @@ RDEPEND=">=dev-libs/iniparser-3.0.0:0
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	nls? ( >=sys-devel/gettext-0.19.1 )"  # bug 512448
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.3.9-iniparser-3.0.0.patch #399629
+)
 
 pkg_setup() {
 	myisoconf=(
@@ -31,11 +36,10 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-1.3.9-iniparser-3.0.0.patch #399629
+	default
+	rm -f configure || die #274361
 	rm -R iniparser-2.17 || die
 }
-
-src_configure() { :; } #274361
 
 src_compile() {
 	tc-export CC
@@ -60,9 +64,9 @@ src_install() {
 }
 
 pkg_postinst() {
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
 }
 
 pkg_postrm() {
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
 }

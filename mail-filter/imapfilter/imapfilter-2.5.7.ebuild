@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -13,7 +13,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 
-RDEPEND="dev-libs/openssl:0
+RDEPEND="dev-libs/openssl:0=
 	dev-libs/libpcre
 	dev-lang/lua:*"
 DEPEND="${RDEPEND}"

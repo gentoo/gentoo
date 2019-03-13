@@ -1,5 +1,5 @@
---- src/SoundCore.cpp
-+++ src/SoundCore.cpp
+--- a/src/SoundCore.cpp
++++ b/src/SoundCore.cpp
 @@ -352,32 +352,13 @@
  
  	PHYSFS_close(filehandle);

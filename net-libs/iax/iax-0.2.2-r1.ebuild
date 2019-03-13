@@ -1,11 +1,11 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="2"
+EAPI=6
 
 DESCRIPTION="IAX (Inter Asterisk eXchange) Library"
-HOMEPAGE="http://www.asterisk.org/"
-SRC_URI="http://downloads.asterisk.org/pub/telephony/libiax/${P}.tar.gz"
+HOMEPAGE="https://www.asterisk.org/"
+SRC_URI="https://downloads.asterisk.org/pub/telephony/libiax/${P}.tar.gz"
 
 LICENSE="LGPL-2"
 SLOT="0"
@@ -13,6 +13,7 @@ KEYWORDS="~amd64 ~ppc x86"
 IUSE="debug snomhack"
 
 src_prepare() {
+	default
 	if ! use debug; then
 		sed -i -e "s:-DDEBUG_SUPPORT -DDEBUG_DEFAULT ::" src/Makefile.in \
 			|| die "sed failed"
@@ -33,9 +34,4 @@ src_configure() {
 	econf \
 		$(use_enable debug extreme-debug) \
 		$(use_enable snomhack)
-}
-
-src_install () {
-	emake DESTDIR="${D}" install || die "emake install failed"
-	dodoc AUTHORS ChangeLog NEWS README || die "dodoc failed"
 }

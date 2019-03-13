@@ -3,11 +3,11 @@
 
 EAPI=6
 
-inherit eutils autotools
+inherit autotools
 
 DESCRIPTION="Synthesis ToolKit in C++"
-HOMEPAGE="http://ccrma.stanford.edu/software/stk/"
-SRC_URI="http://ccrma.stanford.edu/software/stk/release/${P}.tar.gz"
+HOMEPAGE="https://ccrma.stanford.edu/software/stk/"
+SRC_URI="https://ccrma.stanford.edu/software/stk/release/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
@@ -20,10 +20,12 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	dev-lang/perl"
 
-src_prepare() {
-	EPATCH_SUFFIX="patch" epatch "${FILESDIR}/${P}"
-	eapply_user
+PATCHES=(
+	"${FILESDIR}/${P}"
+)
 
+src_prepare() {
+	default
 	eautoreconf
 }
 

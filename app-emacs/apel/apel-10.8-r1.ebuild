@@ -1,7 +1,7 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=6
 
 inherit elisp
 
@@ -18,7 +18,8 @@ IUSE=""
 ELISP_PATCHES="${PN}-10.8-020_Prevent-fontset-error.patch
 	${PN}-10.8-030_Use-new-style-backquotes.patch
 	${PN}-10.8-010_ikazuhiro.patch
-	${PN}-10.8-040_make-temp-file-for-Emacs-24.3.50.patch"
+	${PN}-10.8-040_make-temp-file-for-Emacs-24.3.50.patch
+	${PN}-10.8-050_escape-backslash.patch"
 
 src_prepare() {
 	elisp_src_prepare

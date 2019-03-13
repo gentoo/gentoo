@@ -1,11 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-WANT_AUTOMAKE=1.9
-
-inherit autotools eutils subversion
+inherit autotools subversion
 
 DESCRIPTION="A makefile framework for writing simple makefiles for complex tasks"
 HOMEPAGE="http://svn.netlabs.org/kbuild/wiki"
@@ -23,24 +21,29 @@ RDEPEND=""
 S="${WORKDIR}/${MY_P/-src}"
 
 src_prepare() {
-		default
-		rm -rf "${S}/kBuild/bin" || die
+	default
+	rm -rf "${S}/kBuild/bin" || die
 
-		cd "${S}/src/kmk" || die
-		eautoreconf
-		cd "${S}/src/sed" || die
-		eautoreconf
+	# bootstrapping breaks because of missing po/Makefile.in.in
+	sed '/^AC_CONFIG_FILES/s@ po/Makefile\.in@@' \
+		-i src/kmk/configure.ac || die
+
+	cd "${S}/src/kmk" || die
+	eautoreconf
+	cd "${S}/src/sed" || die
+	eautoreconf
 }
 
 src_compile() {
-		kBuild/env.sh --full \
-		make -f bootstrap.gmk AUTORECONF=true \
+	kBuild/env.sh --full \
+		emake -f bootstrap.gmk AUTORECONF=true \
 		|| die "bootstrap failed"
 }
 
 src_install() {
-		kBuild/env.sh kmk \
+	kBuild/env.sh kmk \
 		NIX_INSTALL_DIR=/usr \
 		PATH_INS="${D}" \
-		install || die "install failed"
+		install \
+		|| die "install failed"
 }

@@ -18,7 +18,7 @@ RDEPEND="media-sound/cd-discid
 	net-misc/wget
 	virtual/eject
 	aac? (
-		|| ( media-libs/faac media-sound/neroaac )
+		media-libs/faac
 		|| ( media-video/atomicparsley media-video/atomicparsley-wez )
 		)
 	cdparanoia? (

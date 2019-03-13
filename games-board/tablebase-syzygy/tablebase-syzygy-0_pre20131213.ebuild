@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -34,7 +34,7 @@ unset i j k l m tb6
 
 LICENSE="public-domain" # machine-generated tables
 SLOT="nofetch"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 RESTRICT="fetch"
 
 RDEPEND="~${CATEGORY}/${P}:0"

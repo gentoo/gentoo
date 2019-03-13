@@ -6,6 +6,7 @@
 # ml@gentoo.org
 # @AUTHOR:
 # Original Author: Alexis Ballier <aballier@gentoo.org>
+# @SUPPORTED_EAPIS: 3 4 5 6 7
 # @BLURB: Provides common ebuild phases for oasis-based packages.
 # @DESCRIPTION:
 # Provides common ebuild phases for oasis-based packages.

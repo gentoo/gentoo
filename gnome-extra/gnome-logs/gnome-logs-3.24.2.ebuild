@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Logs"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="test"
 
 RDEPEND="
@@ -21,9 +21,11 @@ RDEPEND="
 	>=x11-libs/gtk+-3.19.3:3
 "
 DEPEND="${RDEPEND}
+	dev-util/glib-utils
 	~app-text/docbook-xml-dtd-4.3
 	app-text/yelp-tools
 	dev-libs/appstream-glib
+	dev-libs/libxml2:2
 	dev-libs/libxslt
 	>=dev-util/intltool-0.50
 	gnome-base/gnome-common

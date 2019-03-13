@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 inherit eutils flag-o-matic
 
 DESCRIPTION="Bitcoin CPU/GPU/FPGA/ASIC miner in C"
-HOMEPAGE="http://bitcointalk.org/?topic=28402.msg357369 https://github.com/ckolivas/cgminer"
+HOMEPAGE="https://bitcointalk.org/?topic=28402.msg357369 https://github.com/ckolivas/cgminer"
 SRC_URI="http://ck.kolivas.org/apps/cgminer/${P}.tar.bz2"
 #SRC_URI="http://ck.kolivas.org/apps/cgminer/4.5/${P}.tar.bz2"
 

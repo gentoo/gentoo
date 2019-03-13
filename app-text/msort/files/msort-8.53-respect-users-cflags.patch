@@ -1,0 +1,11 @@
+--- a/configure.ac	2010-01-11 01:56:36.000000000 +0100
++++ b/configure.ac	2018-09-27 15:36:41.425756703 +0200
+@@ -78,8 +78,6 @@
+ AC_PROG_CC
+ if ${debugbuild}; then
+    CFLAGS="-ggdb -g3" 
+-else
+-   CFLAGS="-g -O2" 
+ fi
+ 
+ AC_PROG_INSTALL

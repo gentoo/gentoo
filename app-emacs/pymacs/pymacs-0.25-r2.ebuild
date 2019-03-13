@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 inherit elisp distutils-r1 vcs-snapshot
 
 DESCRIPTION="A tool that allows both-side communication beetween Python and Emacs Lisp"
-HOMEPAGE="http://www.emacswiki.org/emacs/PyMacs"
+HOMEPAGE="https://www.emacswiki.org/emacs/PyMacs"
 SRC_URI="https://github.com/pinard/Pymacs/tarball/v${PV} -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"

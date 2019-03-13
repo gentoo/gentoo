@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -27,7 +27,7 @@ COMMON_DEPEND=">=dev-libs/boost-1.62
 	dev-qt/qtx11extras:5
 	dev-qt/qtconcurrent:5
 	dev-qt/linguist-tools:5
-	qwt? ( x11-libs/qwt:6[qt5] )"
+	qwt? ( x11-libs/qwt:6 )"
 DEPEND="${COMMON_DEPEND}
 	doc? ( app-doc/doxygen )"
 RDEPEND="${COMMON_DEPEND}
@@ -53,5 +53,5 @@ src_configure() {
 
 src_install() {
 	cmake-utils_src_install
-	use doc && dohtml -r "${CMAKE_BUILD_DIR}/${PN#lc-}"/out/html/*
+	use doc && dodoc -r "${CMAKE_BUILD_DIR}/${PN#lc-}"/out/html/*
 }

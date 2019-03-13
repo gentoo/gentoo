@@ -1,16 +1,16 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_4 python3_5 )
+PYTHON_COMPAT=( python3_{4,5,6} )
 
 inherit cmake-utils python-single-r1
 
 my_pn="Sigil"
 
 DESCRIPTION="Sigil is a multi-platform WYSIWYG ebook editor for ePub format"
-HOMEPAGE="http://sigil-ebook.com/"
+HOMEPAGE="https://sigil-ebook.com/"
 SRC_URI="https://github.com/Sigil-Ebook/${my_pn}/releases/download/${PV}/${my_pn}-${PV}-Code.zip"
 
 LICENSE="GPL-3+"

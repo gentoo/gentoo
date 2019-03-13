@@ -1,16 +1,16 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 inherit eutils autotools toolchain-funcs
 
-DESCRIPTION="netcat clone with better IPv6 support, improved code, etc..."
+DESCRIPTION="Obsolete netcat clone from before netcat had IPv6 support"
 HOMEPAGE="http://netcat6.sourceforge.net/"
 SRC_URI="ftp://ftp.deepspace6.net/pub/ds6/sources/nc6/nc6-${PV}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 m68k ~mips ppc ~ppc64 s390 sh sparc x86 ~amd64-linux ~arm-linux ~x86-linux"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 m68k ~mips ppc ~ppc64 s390 sh sparc x86 ~amd64-linux ~x86-linux"
 IUSE="ipv6 nls bluetooth"
 
 # need to block netcat as we provide the "nc" file now too

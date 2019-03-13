@@ -6,8 +6,8 @@ EAPI=5
 inherit elisp
 
 DESCRIPTION="A great IRC client for Emacs"
-HOMEPAGE="http://www.jorgenschaefer.de/software/circe/
-	http://www.emacswiki.org/emacs/Circe"
+HOMEPAGE="https://github.com/jorgenschaefer/circe
+	https://www.emacswiki.org/emacs/Circe"
 SRC_URI="https://github.com/jorgenschaefer/${PN}/archive/${P}.tar.gz"
 
 LICENSE="GPL-3+"

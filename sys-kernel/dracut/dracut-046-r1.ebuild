@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,7 +10,7 @@ HOMEPAGE="https://dracut.wiki.kernel.org"
 SRC_URI="mirror://kernel/linux/utils/boot/${PN}/${P}.tar.xz"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ia64 ~mips ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="alpha amd64 ~arm ia64 ~mips ppc ~ppc64 sparc x86"
 IUSE="debug selinux"
 
 RESTRICT="test"
@@ -149,8 +149,6 @@ pkg_postinst() {
 	optfeature \
 		"Allows use of dash instead of default bash (on your own risk)" \
 		app-shells/dash
-	optfeature "Framebuffer splash (media-gfx/splashutils)" \
-		media-gfx/splashutils
 	optfeature "Support iSCSI" sys-block/open-iscsi
 	optfeature "Support Logical Volume Manager" sys-fs/lvm2
 	optfeature "Support MD devices, also known as software RAID devices" \

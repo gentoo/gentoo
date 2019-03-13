@@ -11,6 +11,6 @@
     <flag name="utils">Install VA-API utility programs.</flag>
   </use>
   <upstream>
-    <remote-id type="github">01org/libva</remote-id>
+  <remote-id type="github">intel/libva</remote-id>
   </upstream>
 </pkgmetadata>

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -40,10 +40,7 @@ RDEPEND="${CDEPEND}
 	app-admin/sudo
 	net-fs/autofs
 	server? (
-		aufs? ( || (
-			sys-fs/aufs3
-			sys-fs/aufs4
-			sys-kernel/aufs-sources ) )
+		aufs? ( sys-kernel/aufs-sources )
 		www-servers/apache
 	)
 "
@@ -55,7 +52,7 @@ DEPEND="${CDEPEND}
 		dev-python/geoip-python
 		>=dev-cpp/tbb-4.4:0=
 		|| ( sys-devel/gdb dev-util/lldb )
-	 )
+	)
 "
 
 REQUIRED_USE="test-programs? ( server )"

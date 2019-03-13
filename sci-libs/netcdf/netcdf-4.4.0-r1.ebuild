@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 inherit eutils
 
 DESCRIPTION="Scientific library and interface for array oriented data access"
-HOMEPAGE="http://www.unidata.ucar.edu/software/netcdf/"
+HOMEPAGE="https://www.unidata.ucar.edu/software/netcdf/"
 SRC_URI="https://github.com/Unidata/netcdf-c/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="UCAR-Unidata"

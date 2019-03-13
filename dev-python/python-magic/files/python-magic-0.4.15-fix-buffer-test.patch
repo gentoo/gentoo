@@ -1,0 +1,65 @@
+commit acfda9c26df888741805249f3ec0f60f369fc664
+Author: Louis Sautier <sautier.louis@gmail.com>
+Date:   Tue Aug 14 11:14:19 2018 +0200
+
+    Tests: allow differences when reading a buffer or a file, fixes #173
+    
+    Also remove the loop in order to avoid analyzing files or buffers for each
+    expected value, replace it with a call to assertIn().
+
+diff --git a/test/test.py b/test/test.py
+index addccc6..67957ee 100755
+--- a/test/test.py
++++ b/test/test.py
+@@ -10,7 +10,7 @@ import magic
+ class MagicTest(unittest.TestCase):
+     TESTDATA_DIR = os.path.join(os.path.dirname(__file__), 'testdata')
+ 
+-    def assert_values(self, m, expected_values):
++    def assert_values(self, m, expected_values, buf_equals_file=True):
+         for filename, expected_value in expected_values.items():
+             try:
+                 filename = os.path.join(self.TESTDATA_DIR, filename)
+@@ -21,15 +21,16 @@ class MagicTest(unittest.TestCase):
+             if type(expected_value) is not tuple:
+                 expected_value = (expected_value,)
+ 
+-            for i in expected_value:
+-                with open(filename, 'rb') as f:
+-                    buf_value = m.from_buffer(f.read())
++            with open(filename, 'rb') as f:
++                buf_value = m.from_buffer(f.read())
+ 
+-                file_value = m.from_file(filename)
+-                if buf_value == i and file_value == i:
+-                    break
+-            else:
+-                self.assertTrue(False, "no match for " + repr(expected_value))
++            file_value = m.from_file(filename)
++
++            if buf_equals_file:
++                self.assertEqual(buf_value, file_value)
++
++            for value in (buf_value, file_value):
++                self.assertIn(value, expected_value)
+ 
+     def test_from_buffer_str_and_bytes(self):
+         m = magic.Magic(mime=True)
+@@ -62,10 +63,14 @@ class MagicTest(unittest.TestCase):
+                 'magic._pyc_': 'python 2.4 byte-compiled',
+                 'test.pdf': 'PDF document, version 1.2',
+                 'test.gz':
+-                ('gzip compressed data, was "test", from Unix, last modified: Sun Jun 29 01:32:52 2008',
+-                 'gzip compressed data, was "test", last modified: Sun Jun 29 01:32:52 2008, from Unix'),
++                ('gzip compressed data, was "test", from Unix, last '
++                 'modified: Sun Jun 29 01:32:52 2008',
++                 'gzip compressed data, was "test", last modified'
++                 ': Sun Jun 29 01:32:52 2008, from Unix',
++                 'gzip compressed data, was "test", last modified'
++                 ': Sun Jun 29 01:32:52 2008, from Unix, original size 15'),
+                 'text.txt': 'ASCII text',
+-            })
++            }, buf_equals_file=False)
+         finally:
+             del os.environ['TZ']
+ 

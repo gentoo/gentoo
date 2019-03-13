@@ -1,0 +1,23 @@
+diff -r f52d1198146d tests/test_lib_utils.py
+--- a/tests/test_lib_utils.py	Tue Jan 15 16:06:40 2019 +0000
++++ b/tests/test_lib_utils.py	Sun Jan 27 10:21:29 2019 -0500
+@@ -112,7 +112,7 @@
+         "test open and read of a relative file: URL"
+         b = _rel_open_and_read('file:../docs/images/Edit_Prefs.gif')
+ 
+-    def test9(self):
++    def xtest9(self):
+         "test open and read of an http: URL"
+         from reportlab.lib.utils import open_and_read
+         b = open_and_read('http://www.reportlab.com/rsrc/encryption.gif')
+diff -r f52d1198146d tests/test_platypus_general.py
+--- a/tests/test_platypus_general.py	Tue Jan 15 16:06:40 2019 +0000
++++ b/tests/test_platypus_general.py	Sun Jan 27 10:21:29 2019 -0500
+@@ -587,7 +587,7 @@
+ 
+ class PlatypusTestCase(unittest.TestCase):
+ 
+-    def test0(self):
++    def xtest0(self):
+         "Make a platypus document"
+         run()

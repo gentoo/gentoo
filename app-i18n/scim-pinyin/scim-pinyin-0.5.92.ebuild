@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
@@ -15,7 +15,7 @@ KEYWORDS="amd64 ppc ppc64 x86"
 IUSE="nls"
 
 RDEPEND="x11-libs/libXt
-	|| ( >=app-i18n/scim-1.1 >=app-i18n/scim-cvs-1.1 )
+	>=app-i18n/scim-1.1
 	nls? ( virtual/libintl )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig

@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit eutils autotools
+inherit autotools
 
 DESCRIPTION="top for UNIX systems"
 HOMEPAGE="http://unixtop.sourceforge.net/"
@@ -19,14 +19,17 @@ DEPEND="${RDEPEND}"
 
 S=${WORKDIR}/top-${PV/_/}
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.8_beta1-ncurses.patch
+	"${FILESDIR}"/${PN}-3.8_beta1-no-AX-macros.patch
+	"${FILESDIR}"/${PN}-3.8_beta1-renice-segfault.patch
+	"${FILESDIR}"/${PN}-3.8_beta1-memleak-fix-v2.patch
+	"${FILESDIR}"/${PN}-3.8_beta1-high-threadid-crash.patch
+	"${FILESDIR}"/${PN}-3.8_beta1-percent-cpu.patch
+)
+
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-ncurses.patch
-	epatch "${FILESDIR}"/${P}-no-AX-macros.patch
-	epatch "${FILESDIR}"/${P}-renice-segfault.patch
-	epatch "${FILESDIR}"/${P}-memleak-fix-v2.patch
-	epatch "${FILESDIR}"/${P}-high-threadid-crash.patch
-	epatch "${FILESDIR}"/${P}-percent-cpu.patch
-	eapply_user
+	default
 	eautoreconf
 }
 

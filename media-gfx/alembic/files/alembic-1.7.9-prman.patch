@@ -1,0 +1,26 @@
+diff --git a/cmake/AlembicPRMan.cmake b/cmake/AlembicPRMan.cmake
+index e02b237..fdbf26c 100644
+--- a/cmake/AlembicPRMan.cmake
++++ b/cmake/AlembicPRMan.cmake
+@@ -66,8 +66,8 @@ ELSE()
+ ENDIF()
+ 
+ # Prefer PRMAN_ROOT set from the environment over the CMakeCache'd variable
+-IF(NOT $ENV{PRMAN_ROOT}x STREQUAL "x")
+-  SET( ALEMBIC_PRMAN_ROOT $ENV{PRMAN_ROOT})
++IF(NOT $ENV{RMANTREE}x STREQUAL "x")
++  SET( ALEMBIC_PRMAN_ROOT $ENV{RMANTREE})
+ ENDIF()
+ 
+ 
+diff --git a/prman/Procedural/CMakeLists.txt b/prman/Procedural/CMakeLists.txt
+index 6b46e91..0cb2aa6 100644
+--- a/prman/Procedural/CMakeLists.txt
++++ b/prman/Procedural/CMakeLists.txt
+@@ -65,5 +65,5 @@ set_target_properties(AlembicRiProcedural PROPERTIES
+ INSTALL(TARGETS
+     AlembicRiProcedural
+     DESTINATION
+-    prman/procedurals
++    $ENV{RMANTREE}/lib/plugins
+ )

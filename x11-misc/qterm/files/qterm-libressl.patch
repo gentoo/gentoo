@@ -1,0 +1,60 @@
+--- a/src/ssh/libcrypto-compat.c
++++ b/src/ssh/libcrypto-compat.c
+@@ -8,7 +8,7 @@
+  */
+ 
+ #include "libcrypto-compat.h"
+-#if OPENSSL_VERSION_NUMBER < 0x10100000L
++#if OPENSSL_VERSION_NUMBER < 0x10100000L || defined(LIBRESSL_VERSION_NUMBER)
+ #include <string.h>
+ #include <openssl/engine.h>
+ 
+--- a/src/ssh/libcrypto-compat.h
++++ b/src/ssh/libcrypto-compat.h
+@@ -9,7 +9,7 @@
+ #include <openssl/evp.h>
+ #include <openssl/hmac.h>
+ 
+-#if OPENSSL_VERSION_NUMBER < 0x10100000L
++#if OPENSSL_VERSION_NUMBER < 0x10100000L || defined(LIBRESSL_VERSION_NUMBER)
+ 
+ int RSA_set0_key(RSA *r, BIGNUM *n, BIGNUM *e, BIGNUM *d);
+ int RSA_set0_factors(RSA *r, BIGNUM *p, BIGNUM *q);
+--- a/src/ssh/socket.cpp
++++ b/src/ssh/socket.cpp
+@@ -36,7 +36,7 @@
+ SSH2SocketPriv::SSH2SocketPriv(SocketPrivate * plainSocket, QByteArray & banner, QObject * parent)
+         : SSHSocketPriv(parent), m_banner(banner), m_status(Init), m_sessionID(), m_channelList()
+ {
+-#if OPENSSL_VERSION_NUMBER < 0x10100000L
++#if OPENSSL_VERSION_NUMBER < 0x10100000L || defined(LIBRESSL_VERSION_NUMBER)
+     OpenSSL_add_all_ciphers();
+ #endif
+     m_sessionID = NULL;
+@@ -56,7 +56,7 @@
+ 
+ SSH2SocketPriv::~SSH2SocketPriv()
+ {
+-#if OPENSSL_VERSION_NUMBER < 0x10100000L
++#if OPENSSL_VERSION_NUMBER < 0x10100000L || defined(LIBRESSL_VERSION_NUMBER)
+     EVP_cleanup();
+ #endif
+ }
+@@ -133,7 +133,7 @@
+ #ifdef SSH_DEBUG
+     qDebug() << "init ssh1 session";
+ #endif
+-#if OPENSSL_VERSION_NUMBER < 0x10100000L
++#if OPENSSL_VERSION_NUMBER < 0x10100000L || defined(LIBRESSL_VERSION_NUMBER)
+     OpenSSL_add_all_ciphers();
+ #endif
+     m_inPacket = new SSH1InBuffer(plainSocket, this);
+@@ -148,7 +148,7 @@
+ 
+ SSH1SocketPriv::~SSH1SocketPriv()
+ {
+-#if OPENSSL_VERSION_NUMBER < 0x10100000L
++#if OPENSSL_VERSION_NUMBER < 0x10100000L || defined(LIBRESSL_VERSION_NUMBER)
+     EVP_cleanup();
+ #endif
+ }

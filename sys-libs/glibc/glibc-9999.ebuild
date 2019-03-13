@@ -1,9 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit prefix eutils versionator toolchain-funcs flag-o-matic gnuconfig \
+PYTHON_COMPAT=( python3_{4,5,6,7} )
+
+inherit python-any-r1 prefix eutils eapi7-ver toolchain-funcs flag-o-matic gnuconfig \
 	multilib systemd multiprocessing
 
 DESCRIPTION="GNU libc C library"
@@ -12,26 +14,28 @@ LICENSE="LGPL-2.1+ BSD HPND ISC inner-net rc PCRE"
 RESTRICT="strip" # Strip ourself #46186
 SLOT="2.2"
 
+EMULTILIB_PKG="true"
+
 if [[ ${PV} == 9999* ]]; then
 	EGIT_REPO_URI="https://sourceware.org/git/glibc.git"
 	inherit git-r3
 else
-	# KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+	#KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 	KEYWORDS=""
 	SRC_URI="mirror://gnu/glibc/${P}.tar.xz"
 fi
 
 RELEASE_VER=${PV}
 
-GCC_BOOTSTRAP_VER="4.7.3-r1"
+GCC_BOOTSTRAP_VER=20180511
 
 # Gentoo patchset
-PATCH_VER=4
+PATCH_VER=11
 
-SRC_URI+=" https://dev.gentoo.org/~dilfridge/distfiles/${P}-patches-${PATCH_VER}.tar.bz2"
-SRC_URI+=" multilib? ( https://dev.gentoo.org/~dilfridge/distfiles/gcc-${GCC_BOOTSTRAP_VER}-multilib-bootstrap.tar.bz2 )"
+SRC_URI+=" https://dev.gentoo.org/~slyfox/distfiles/${P}-patches-${PATCH_VER}.tar.xz"
+SRC_URI+=" multilib? ( https://dev.gentoo.org/~dilfridge/distfiles/gcc-multilib-bootstrap-${GCC_BOOTSTRAP_VER}.tar.xz )"
 
-IUSE="audit caps compile-locales debug doc gd hardened multilib nscd selinux systemtap profile suid vanilla headers-only"
+IUSE="audit caps cet compile-locales doc gd headers-only +multiarch multilib nscd profile selinux +ssp suid systemtap test vanilla"
 
 # Minimum kernel version that glibc requires
 MIN_KERN_VER="3.2.0"
@@ -59,7 +63,8 @@ if [[ ${CTARGET} == ${CHOST} ]] ; then
 fi
 
 # We need a new-enough binutils/gcc to match upstream baseline.
-# Also we need to make sure our binutils/gcc supports TLS.
+# Also we need to make sure our binutils/gcc supports TLS,
+# and that gcc already contains the hardened patches.
 COMMON_DEPEND="
 	nscd? ( selinux? (
 		audit? ( sys-process/audit )
@@ -70,12 +75,18 @@ COMMON_DEPEND="
 	systemtap? ( dev-util/systemtap )
 "
 DEPEND="${COMMON_DEPEND}
+	${PYTHON_DEPS}
 	>=app-misc/pax-utils-0.1.10
+	sys-devel/bison
 	!<sys-apps/sandbox-1.6
 	!<sys-apps/portage-2.1.2
+	!<sys-devel/bison-2.7
+	!<sys-devel/make-4
 	doc? ( sys-apps/texinfo )
+	test? ( >=net-dns/libidn2-2.0.5 )
 "
 RDEPEND="${COMMON_DEPEND}
+	>=net-dns/libidn2-2.0.5
 	sys-apps/gentoo-functions
 	!sys-kernel/ps3-sources
 	!sys-libs/nss-db
@@ -84,13 +95,13 @@ RDEPEND="${COMMON_DEPEND}
 if [[ ${CATEGORY} == cross-* ]] ; then
 	DEPEND+=" !headers-only? (
 		>=${CATEGORY}/binutils-2.24
-		>=${CATEGORY}/gcc-4.9
+		>=${CATEGORY}/gcc-6
 	)"
 	[[ ${CATEGORY} == *-linux* ]] && DEPEND+=" ${CATEGORY}/linux-headers"
 else
 	DEPEND+="
 		>=sys-devel/binutils-2.24
-		>=sys-devel/gcc-4.9
+		>=sys-devel/gcc-6
 		virtual/os-headers
 	"
 	RDEPEND+=" vanilla? ( !sys-libs/timezone-data )"
@@ -113,8 +124,8 @@ alt_prefix() {
 	is_crosscompile && echo /usr/${CTARGET}
 }
 
-# We need to be able to set alternative headers for compiling for non-native 
-# platform. Will also become useful for testing kernel-headers without screwing 
+# We need to be able to set alternative headers for compiling for non-native
+# platform. Will also become useful for testing kernel-headers without screwing
 # up the whole system.
 alt_headers() {
 	echo ${ALT_HEADERS:=$(alt_prefix)/usr/include}
@@ -252,18 +263,18 @@ setup_target_flags() {
 			sparc64-*)
 				case $(get-flag mcpu) in
 				niagara[234])
-					if version_is_at_least 2.8 ; then
+					if ver_test -ge 2.8 ; then
 						cpu="sparc64v2"
-					elif version_is_at_least 2.4 ; then
+					elif ver_test -ge 2.4 ; then
 						cpu="sparc64v"
-					elif version_is_at_least 2.2.3 ; then
+					elif ver_test -ge 2.2.3 ; then
 						cpu="sparc64b"
 					fi
 					;;
 				niagara)
-					if version_is_at_least 2.4 ; then
+					if ver_test -ge 2.4 ; then
 						cpu="sparc64v"
-					elif version_is_at_least 2.2.3 ; then
+					elif ver_test -ge 2.2.3 ; then
 						cpu="sparc64b"
 					fi
 					;;
@@ -281,20 +292,20 @@ setup_target_flags() {
 			sparc-*)
 				case $(get-flag mcpu) in
 				niagara[234])
-					if version_is_at_least 2.8 ; then
+					if ver_test -ge 2.8 ; then
 						cpu="sparcv9v2"
-					elif version_is_at_least 2.4 ; then
+					elif ver_test -ge 2.4 ; then
 						cpu="sparcv9v"
-					elif version_is_at_least 2.2.3 ; then
+					elif ver_test -ge 2.2.3 ; then
 						cpu="sparcv9b"
 					else
 						cpu="sparcv9"
 					fi
 					;;
 				niagara)
-					if version_is_at_least 2.4 ; then
+					if ver_test -ge 2.4 ; then
 						cpu="sparcv9v"
-					elif version_is_at_least 2.2.3 ; then
+					elif ver_test -ge 2.2.3 ; then
 						cpu="sparcv9b"
 					else
 						cpu="sparcv9"
@@ -364,21 +375,6 @@ setup_flags() {
 	append-flags -O2 -fno-strict-aliasing
 
 	filter-flags '-fstack-protector*'
-
-	# Starting with gcc-6 (and fully upstreamed pie patches) we control
-	# default enabled/disabled pie via use flags. So nothing to do
-	# here then. #618160
-	if [[ $(gcc-major-version) -lt 6 ]]; then
-		if use hardened && tc-enables-pie ; then
-			# Force PIC macro definition for all compilations since they're all
-			# either -fPIC or -fPIE with the default-PIE compiler.
-			append-cppflags -DPIC
-		else
-			# Don't build -fPIE without the default-PIE compiler and the
-			# hardened-pie patch
-			filter-flags -fPIE
-		fi
-	fi
 }
 
 want_tls() {
@@ -409,6 +405,8 @@ want__thread() {
 }
 
 use_multiarch() {
+	# Allow user to disable runtime arch detection in multilib.
+	use multiarch || return 1
 	# Make sure binutils is new enough to support indirect functions,
 	# #336792. This funky sed supports gold and bfd linkers.
 	local bver nver
@@ -424,7 +422,7 @@ use_multiarch() {
 	sparc)     nver="2.21" ;;
 	*)         return 1 ;;
 	esac
-	version_is_at_least ${nver} ${bver}
+	ver_test ${bver} -ge ${nver}
 }
 
 # Setup toolchain variables that had historically been defined in the
@@ -447,12 +445,20 @@ setup_env() {
 		# and fall back on CFLAGS.
 		local VAR=CFLAGS_${CTARGET//[-.]/_}
 		CFLAGS=${!VAR-${CFLAGS}}
+		einfo " $(printf '%15s' 'Manual CFLAGS:')   ${CFLAGS}"
 	fi
 
 	setup_flags
 
 	export ABI=${ABI:-${DEFAULT_ABI:-default}}
 
+	if just_headers ; then
+		# Avoid mixing host's CC and target's CFLAGS_${ABI}:
+		# At this bootstrap stage we have only binutils for
+		# target but not compiler yet.
+		einfo "Skip CC ABI injection. We can't use (cross-)compiler yet."
+		return 0
+	fi
 	local VAR=CFLAGS_${ABI}
 	# We need to export CFLAGS with abi information in them because glibc's
 	# configure script checks CFLAGS for some targets (like mips).  Keep
@@ -460,6 +466,7 @@ setup_env() {
 	# top of each other.
 	: ${__GLIBC_CC:=$(tc-getCC ${CTARGET_OPT:-${CTARGET}})}
 	export __GLIBC_CC CC="${__GLIBC_CC} ${!VAR}"
+	einfo " $(printf '%15s' 'Manual CC:')   ${CC}"
 }
 
 foreach_abi() {
@@ -509,7 +516,53 @@ check_devpts() {
 	fi
 }
 
-int_to_KV() {
+# The following Kernel version handling functions are mostly copied from portage
+# source. It's better not to use linux-info.eclass here since a) it adds too
+# much magic, see bug 326693 for some of the arguments, and b) some of the
+# functions are just not provided.
+
+g_get_running_KV() {
+	uname -r
+	return $?
+}
+
+g_KV_major() {
+	[[ -z $1 ]] && return 1
+	local KV=$@
+	echo "${KV%%.*}"
+}
+
+g_KV_minor() {
+	[[ -z $1 ]] && return 1
+	local KV=$@
+	KV=${KV#*.}
+	echo "${KV%%.*}"
+}
+
+g_KV_micro() {
+	[[ -z $1 ]] && return 1
+	local KV=$@
+	KV=${KV#*.*.}
+	echo "${KV%%[^[:digit:]]*}"
+}
+
+g_KV_to_int() {
+	[[ -z $1 ]] && return 1
+	local KV_MAJOR=$(g_KV_major "$1")
+	local KV_MINOR=$(g_KV_minor "$1")
+	local KV_MICRO=$(g_KV_micro "$1")
+	local KV_int=$(( KV_MAJOR * 65536 + KV_MINOR * 256 + KV_MICRO ))
+
+	# We make version 2.2.0 the minimum version we will handle as
+	# a sanity check ... if its less, we fail ...
+	if [[ ${KV_int} -ge 131584 ]] ; then
+		echo "${KV_int}"
+		return 0
+	fi
+	return 1
+}
+
+g_int_to_KV() {
 	local version=$1 major minor micro
 	major=$((version / 65536))
 	minor=$(((version % 65536) / 256))
@@ -518,7 +571,7 @@ int_to_KV() {
 }
 
 eend_KV() {
-	[[ $(KV_to_int $1) -ge $(KV_to_int $2) ]]
+	[[ $(g_KV_to_int $1) -ge $(g_KV_to_int $2) ]]
 	eend $?
 }
 
@@ -528,51 +581,10 @@ get_kheader_version() {
 	tail -n 1
 }
 
-check_nptl_support() {
-	# We don't care about the compiler here as we aren't using it
-	just_headers && return
-
-	local run_kv build_kv want_kv
-
-	# TODO: this needs to be replaced somehow
-	run_kv=$(int_to_KV $(get_KV))
-
-	build_kv=$(int_to_KV $(get_kheader_version))
-	want_kv=${MIN_KERN_VER}
-
-	ebegin "Checking gcc for __thread support"
-	if ! eend $(want__thread ; echo $?) ; then
-		echo
-		eerror "Could not find a gcc that supports the __thread directive!"
-		eerror "Please update your binutils/gcc and try again."
-		die "No __thread support in gcc!"
-	fi
-
-	if ! is_crosscompile && ! tc-is-cross-compiler ; then
-		# Building fails on an non-supporting kernel
-		ebegin "Checking kernel version (${run_kv} >= ${want_kv})"
-		if ! eend_KV ${run_kv} ${want_kv} ; then
-			echo
-			eerror "You need a kernel of at least ${want_kv}!"
-			die "Kernel version too low!"
-		fi
-	fi
-
-	ebegin "Checking linux-headers version (${build_kv} >= ${want_kv})"
-	if ! eend_KV ${build_kv} ${want_kv} ; then
-		echo
-		eerror "You need linux-headers of at least ${want_kv}!"
-		die "linux-headers version too low!"
-	fi
-}
-
-#
-# the phases
-#
-
-# pkg_pretend
-
-pkg_pretend() {
+# We collect all sanity checks here. Consistency is not guranteed between
+# pkg_ and src_ phases, so we call this function both in pkg_pretend and in
+# src_unpack.
+sanity_prechecks() {
 	# Make sure devpts is mounted correctly for use w/out setuid pt_chown
 	check_devpts
 
@@ -592,8 +604,11 @@ pkg_pretend() {
 			die "Aborting to save your system."
 		fi
 
-		# removed check for #262698 since it's about kernel 2.6.18 ...
-		# removed check for #279260 since it's about kernel <2.6.28 ...
+		if ! do_run_test '#include <unistd.h>\n#include <sys/syscall.h>\nint main(){return syscall(1000)!=-1;}\n' ; then
+			eerror "Your old kernel is broken. You need to update it to a newer"
+			eerror "version as syscall(<bignum>) will break. See bug 279260."
+			die "Old and broken kernel."
+		fi
 	fi
 
 	# Users have had a chance to phase themselves, time to give em the boot
@@ -616,33 +631,6 @@ pkg_pretend() {
 		ewarn "hypervisor, which is probably not what you want."
 	fi
 
-	use hardened && ! tc-enables-pie && \
-		ewarn "PIE hardening not applied, as your compiler doesn't default to PIE"
-
-	# Make sure host system is up to date #394453
-	if has_version '<sys-libs/glibc-2.13' && \
-	   [[ -n $(scanelf -qys__guard -F'#s%F' "${EROOT}"/lib*/l*-*.so) ]]
-	then
-		ebegin "Scanning system for __guard to see if you need to rebuild first ..."
-		local files=$(
-			scanelf -qys__guard -F'#s%F' \
-				"${EROOT}"/*bin/ \
-				"${EROOT}"/lib* \
-				"${EROOT}"/usr/*bin/ \
-				"${EROOT}"/usr/lib* | \
-				egrep -v \
-					-e "^${EROOT}/lib.*/(libc|ld)-2.*.so$" \
-					-e "^${EROOT}/sbin/(ldconfig|sln)$"
-		)
-		[[ -z ${files} ]]
-		if ! eend $? ; then
-			eerror "Your system still has old SSP __guard symbols.  You need to"
-			eerror "rebuild all the packages that provide these files first:"
-			eerror "${files}"
-			die "old __guard detected"
-		fi
-	fi
-
 	# Check for sanity of /etc/nsswitch.conf
 	if [[ -e ${EROOT}/etc/nsswitch.conf ]] ; then
 		local entry
@@ -657,20 +645,88 @@ pkg_pretend() {
 			fi
 		done
 	fi
+
+	# ABI-specific checks follow here. Hey, we have a lot more specific conditions that
+	# we test for...
+	if ! is_crosscompile ; then
+		if use amd64 && use multilib && [[ ${MERGE_TYPE} != "binary" ]] ; then
+			ebegin "Checking that IA32 emulation is enabled in the running kernel"
+			echo 'int main(){return 0;}' > "${T}/check-ia32-emulation.c"
+			local STAT
+			if "${CC-${CHOST}-gcc}" ${CFLAGS_x86} "${T}/check-ia32-emulation.c" -o "${T}/check-ia32-emulation.elf32"; then
+				"${T}/check-ia32-emulation.elf32"
+				STAT=$?
+			else
+				# Don't fail here to allow single->multi ABI switch
+				# or recover from breakage like bug #646424
+				ewarn "Failed to compile the ABI test. Broken host glibc?"
+				STAT=0
+			fi
+			rm -f "${T}/check-ia32-emulation.elf32"
+			eend $STAT
+			[[ $STAT -eq 0 ]] || die "CONFIG_IA32_EMULATION must be enabled in the kernel to compile a multilib glibc."
+		fi
+
+	fi
+
+	# When we actually have to compile something...
+	if ! just_headers ; then
+		ebegin "Checking gcc for __thread support"
+		if ! eend $(want__thread ; echo $?) ; then
+			echo
+			eerror "Could not find a gcc that supports the __thread directive!"
+			eerror "Please update your binutils/gcc and try again."
+			die "No __thread support in gcc!"
+		fi
+
+		if [[ ${CTARGET} == *-linux* ]] ; then
+			local run_kv build_kv want_kv
+
+			run_kv=$(g_get_running_KV)
+			build_kv=$(g_int_to_KV $(get_kheader_version))
+			want_kv=${MIN_KERN_VER}
+
+			if ! is_crosscompile && ! tc-is-cross-compiler ; then
+				# Building fails on an non-supporting kernel
+				ebegin "Checking running kernel version (${run_kv} >= ${want_kv})"
+				if ! eend_KV ${run_kv} ${want_kv} ; then
+					echo
+					eerror "You need a kernel of at least ${want_kv}!"
+					die "Kernel version too low!"
+				fi
+			fi
+
+			ebegin "Checking linux-headers version (${build_kv} >= ${want_kv})"
+			if ! eend_KV ${build_kv} ${want_kv} ; then
+				echo
+				eerror "You need linux-headers of at least ${want_kv}!"
+				die "linux-headers version too low!"
+			fi
+		fi
+	fi
 }
-# todo: shouldn't most of these checks be called also in src_configure again?
-# (since consistency is not guaranteed between pkg_ and src_)
+
+#
+# the phases
+#
+
+# pkg_pretend
+
+pkg_pretend() {
+	# All the checks...
+	einfo "Checking general environment sanity."
+	sanity_prechecks
+}
 
 # src_unpack
 
 src_unpack() {
-	use multilib && unpack gcc-${GCC_BOOTSTRAP_VER}-multilib-bootstrap.tar.bz2
+	# Consistency is not guaranteed between pkg_ and src_ ...
+	sanity_prechecks
+
+	use multilib && unpack gcc-multilib-bootstrap-${GCC_BOOTSTRAP_VER}.tar.xz
 
 	setup_env
-
-	# Check NPTL support _before_ we unpack things to save some time
-	check_nptl_support
-	# todo: 1) move this to pkg_pretend? 2) use proper functions for kv
 
 	if [[ -n ${EGIT_REPO_URI} ]] ; then
 		git-r3_src_unpack
@@ -678,11 +734,8 @@ src_unpack() {
 		unpack ${P}.tar.xz
 	fi
 
-	cd "${S}"
-	touch locale/C-translit.h #185476 #218003
-
-	cd "${WORKDIR}"
-	unpack glibc-${RELEASE_VER}-patches-${PATCH_VER}.tar.bz2
+	cd "${WORKDIR}" || die
+	unpack glibc-${RELEASE_VER}-patches-${PATCH_VER}.tar.xz
 }
 
 src_prepare() {
@@ -690,16 +743,6 @@ src_prepare() {
 		elog "Applying Gentoo Glibc Patchset ${RELEASE_VER}-${PATCH_VER}"
 		eapply "${WORKDIR}"/patches
 		einfo "Done."
-	fi
-
-	if just_headers ; then
-		if [[ -e ports/sysdeps/mips/preconfigure ]] ; then
-			# mips peeps like to screw with us.  if building headers,
-			# we don't have a real compiler, so we can't let them
-			# insert -mabi on us.
-			sed -i '/CPPFLAGS=.*-mabi/s|.*|:|' ports/sysdeps/mips/preconfigure || die
-			find ports/sysdeps/mips/ -name Makefile -exec sed -i '/^CC.*-mabi=/s:-mabi=.*:-D_MIPS_SZPTR=32:' {} +
-		fi
 	fi
 
 	default
@@ -715,23 +758,6 @@ src_prepare() {
 	chmod u+x "${S}"/scripts/*.sh
 
 	cd "${S}"
-
-	if use hardened ; then
-		# We don't enable these for non-hardened as the output is very terse --
-		# it only states that a crash happened.  The default upstream behavior
-		# includes backtraces and symbols.
-		einfo "Installing Hardened Gentoo SSP and FORTIFY_SOURCE handler"
-		cp "${FILESDIR}"/2.20/glibc-2.20-gentoo-stack_chk_fail.c debug/stack_chk_fail.c || die
-		cp "${FILESDIR}"/2.25/glibc-2.25-gentoo-chk_fail.c debug/chk_fail.c || die
-
-		if use debug ; then
-			# Allow SIGABRT to dump core on non-hardened systems, or when debug is requested.
-			sed -i \
-				-e '/^CFLAGS-backtrace.c/ iCPPFLAGS-stack_chk_fail.c = -DSSP_SMASH_DUMPS_CORE' \
-				-e '/^CFLAGS-backtrace.c/ iCPPFLAGS-chk_fail.c = -DSSP_SMASH_DUMPS_CORE' \
-				debug/Makefile || die
-		fi
-	fi
 }
 
 glibc_do_configure() {
@@ -755,12 +781,18 @@ glibc_do_configure() {
 		einfo " $(printf '%15s' ${v}:)   ${!v}"
 	done
 
+	# CFLAGS can contain ABI-specific flags like -mfpu=neon, see bug #657760
+	# To build .S (assembly) files with the same ABI-specific flags
+	# upstream currently recommends adding CFLAGS to CC/CXX:
+	#    https://sourceware.org/PR23273
+	# Note: Passing CFLAGS via CPPFLAGS overrides glibc's arch-specific CFLAGS
+	# and breaks multiarch support. See 659030#c3 for an example.
 	# The glibc configure script doesn't properly use LDFLAGS all the time.
-	export CC="$(tc-getCC ${CTARGET}) ${LDFLAGS}"
+	export CC="$(tc-getCC ${CTARGET}) ${CFLAGS} ${LDFLAGS}"
 	einfo " $(printf '%15s' 'Manual CC:')   ${CC}"
 
 	# Some of the tests are written in C++, so we need to force our multlib abis in, bug 623548
-	export CXX="$(tc-getCXX ${CTARGET}) $(get_abi_CFLAGS)"
+	export CXX="$(tc-getCXX ${CTARGET}) $(get_abi_CFLAGS) ${CFLAGS}"
 	einfo " $(printf '%15s' 'Manual CXX:')   ${CXX}"
 
 	echo
@@ -768,9 +800,9 @@ glibc_do_configure() {
 	local myconf=()
 
 	case ${CTARGET} in
-		mips*)
-			# dlopen() detects stack smash on mips n32 ABI.
-			# Cause is unknown: https://bugs.gentoo.org/640130
+		m68k*)
+			# setjmp() is not compatible with stack protection:
+			# https://sourceware.org/PR24202
 			myconf+=( --enable-stack-protector=no )
 			;;
 		powerpc-*)
@@ -782,7 +814,7 @@ glibc_do_configure() {
 			myconf+=( --enable-stack-protector=no )
 			;;
 		*)
-			myconf+=( --enable-stack-protector=all )
+			myconf+=( --enable-stack-protector=$(usex ssp all no) )
 			;;
 	esac
 	myconf+=( --enable-stackguard-randomization )
@@ -796,6 +828,12 @@ glibc_do_configure() {
 		amd64|x86|sparc|ppc|ppc64|arm|arm64|s390) ;;
 		# Blacklist everywhere else
 		*) myconf+=( libc_cv_ld_gnu_indirect_function=no ) ;;
+	esac
+
+	# Enable Intel Control-flow Enforcement Technology on amd64 if requested
+	case ${CTARGET} in
+		x86_64-*) myconf+=( $(use_enable cet) ) ;;
+		*) ;;
 	esac
 
 	[[ $(tc-is-softfloat) == "yes" ]] && myconf+=( --without-fp )
@@ -847,8 +885,8 @@ glibc_do_configure() {
 		--with-bugurl=https://bugs.gentoo.org/
 		--with-pkgversion="$(glibc_banner)"
 		$(use_multiarch || echo --disable-multi-arch)
-		$(in_iuse systemtap && use_enable systemtap)
-		$(in_iuse nscd && use_enable nscd)
+		$(use_enable systemtap)
+		$(use_enable nscd)
 		${EXTRA_ECONF}
 	)
 
@@ -856,8 +894,8 @@ glibc_do_configure() {
 	myconf+=( $(use_enable vanilla timezone-tools) )
 
 	# These libs don't have configure flags.
-	ac_cv_lib_audit_audit_log_user_avc_message=$(in_iuse audit && usex audit || echo no)
-	ac_cv_lib_cap_cap_init=$(in_iuse caps && usex caps || echo no)
+	ac_cv_lib_audit_audit_log_user_avc_message=$(usex audit || echo no)
+	ac_cv_lib_cap_cap_init=$(usex caps || echo no)
 
 	# There is no configure option for this and we need to export it
 	# since the glibc build will re-run configure on itself
@@ -891,16 +929,10 @@ glibc_do_configure() {
 	# is built with MULTILIB_ABIS="amd64 x86" but we want to
 	# add x32 to it, gcc/glibc don't yet support x32.
 	#
-	# This reqires net-libs/rpcsvc-proto now (which provides
-	# rpcgen) !!! Needs analysis how to best add to deps.
-	#
 	if [[ -n ${GCC_BOOTSTRAP_VER} ]] && use multilib ; then
 		echo 'main(){}' > "${T}"/test.c
 		if ! $(tc-getCC ${CTARGET}) ${CFLAGS} ${LDFLAGS} "${T}"/test.c -Wl,-emain -lgcc 2>/dev/null ; then
-			sed -i -e '/^CC = /s:$: -B$(objdir)/../'"gcc-${GCC_BOOTSTRAP_VER}/${ABI}:" config.make || die
-			mkdir -p sunrpc
-			cp $(which rpcgen) sunrpc/cross-rpcgen || die
-			touch -t 202001010101 sunrpc/cross-rpcgen || die
+			sed -i -e '/^CC = /s:$: -B$(objdir)/../'"gcc-multilib-bootstrap-${GCC_BOOTSTRAP_VER}/${ABI}:" config.make || die
 		fi
 	fi
 }
@@ -921,6 +953,7 @@ glibc_headers_configure() {
 		libc_cv_asm_cfi_directives=yes
 		libc_cv_broken_visibility_attribute=no
 		libc_cv_c_cleanup=yes
+		libc_cv_compiler_powerpc64le_binary128_ok=yes
 		libc_cv_forced_unwind=yes
 		libc_cv_gcc___thread=yes
 		libc_cv_mlong_double_128=yes
@@ -928,6 +961,7 @@ glibc_headers_configure() {
 		libc_cv_ppc_machine=yes
 		libc_cv_ppc_rel16=yes
 		libc_cv_predef_fortify_source=no
+		libc_cv_target_power8_ok=yes
 		libc_cv_visibility_attribute=yes
 		libc_cv_z_combreloc=yes
 		libc_cv_z_execstack=yes
@@ -948,6 +982,8 @@ glibc_headers_configure() {
 		export ${v}
 	done
 
+	local headers_only_arch_CPPFLAGS=()
+
 	# Blow away some random CC settings that screw things up. #550192
 	if [[ -d ${S}/sysdeps/mips ]]; then
 		pushd "${S}"/sysdeps/mips >/dev/null
@@ -963,6 +999,25 @@ glibc_headers_configure() {
 
 		popd >/dev/null
 	fi
+
+	case ${CTARGET} in
+	riscv*)
+		# RISC-V interrogates the compiler to determine which target to
+		# build.  If building the headers then we don't strictly need a
+		# RISC-V compiler, so the built-in definitions that are provided
+		# along with all RISC-V compiler might not exist.  This causes
+		# glibc's RISC-V preconfigure script to blow up.  Since we're just
+		# building the headers any value will actually work here, so just
+		# pick the standard one (rv64g/lp64d) to make the build scripts
+		# happy for now -- the headers are all the same anyway so it
+		# doesn't matter.
+		headers_only_arch_CPPFLAGS+=(
+			-D__riscv_xlen=64
+			-D__riscv_flen=64
+			-D__riscv_float_abi_double=1
+			-D__riscv_atomic=1
+		) ;;
+	esac
 
 	local myconf=()
 	myconf+=(
@@ -980,11 +1035,20 @@ glibc_headers_configure() {
 
 	# Nothing is compiled here which would affect the headers for the target.
 	# So forcing CC/CFLAGS is sane.
+	local headers_only_CC=$(tc-getBUILD_CC)
+	local headers_only_CFLAGS="-O1 -pipe"
+	local headers_only_CPPFLAGS="-U_FORTIFY_SOURCE ${headers_only_arch_CPPFLAGS[*]}"
+	local headers_only_LDFLAGS=""
 	set -- "${S}"/configure "${myconf[@]}"
-	echo "$@"
-	CC="$(tc-getBUILD_CC)" \
-	CFLAGS="-O1 -pipe" \
-	CPPFLAGS="-U_FORTIFY_SOURCE" \
+	echo \
+		"CC=${headers_only_CC}" \
+		"CFLAGS=${headers_only_CFLAGS}" \
+		"CPPFLAGS=${headers_only_CPPFLAGS}" \
+		"LDFLAGS=${headers_only_LDFLAGS}" \
+		"$@"
+	CC=${headers_only_CC} \
+	CFLAGS=${headers_only_CFLAGS} \
+	CPPFLAGS=${headers_only_CPPFLAGS} \
 	LDFLAGS="" \
 	"$@" || die "failed to configure glibc"
 }
@@ -1015,7 +1079,7 @@ src_compile() {
 
 glibc_src_test() {
 	cd "$(builddir nptl)"
-	emake -j1 check
+	emake check
 }
 
 do_src_test() {
@@ -1028,6 +1092,10 @@ do_src_test() {
 }
 
 src_test() {
+	if just_headers ; then
+		return
+	fi
+
 	# Give tests more time to complete.
 	export TIMEOUTFACTOR=5
 
@@ -1132,7 +1200,7 @@ glibc_do_src_install() {
 	# With devpts under Linux mounted properly, we do not need the pt_chown
 	# binary to be setuid.  This is because the default owners/perms will be
 	# exactly what we want.
-	if in_iuse suid && ! use suid ; then
+	if ! use suid ; then
 		find "${ED}" -name pt_chown -exec chmod -s {} +
 	fi
 
@@ -1146,10 +1214,8 @@ glibc_do_src_install() {
 		# gcc likes to use relative paths to get to its multilibs like
 		# /usr/lib/../lib64/.  So while we don't install any files into
 		# /usr/lib/, we do need it to exist.
-		cd "${ED}"$(alt_libdir)/..
-		[[ -e lib ]] || mkdir lib
-		cd "${ED}"$(alt_usrlibdir)/..
-		[[ -e lib ]] || mkdir lib
+		keepdir $(alt_prefix)/lib
+		keepdir $(alt_prefix)/usr/lib
 
 		dosym usr/include $(alt_prefix)/sys-include
 		return 0
@@ -1247,7 +1313,7 @@ src_strip() {
 	# if user has stripping enabled and does not have split debug turned on,
 	# then leave the debugging sections in libpthread.
 	if ! has nostrip ${FEATURES} && ! has splitdebug ${FEATURES} ; then
-		${STRIP:-${CTARGET}-strip} --strip-debug "${ED}"/*/libpthread-*.so
+		${STRIP:-${CTARGET}-strip} --strip-debug "${ED}"$(alt_prefix)/*/libpthread-*.so
 	fi
 }
 

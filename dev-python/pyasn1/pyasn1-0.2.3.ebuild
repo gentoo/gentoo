@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy pypy3 )
 inherit distutils-r1
 
 DESCRIPTION="ASN.1 library for Python"
-HOMEPAGE="http://pyasn1.sourceforge.net/ https://pypi.python.org/pypi/pyasn1"
+HOMEPAGE="http://pyasn1.sourceforge.net/ https://pypi.org/project/pyasn1/"
 SRC_URI="https://github.com/etingof/pyasn1/archive/${PV}.tar.gz -> ${P}.tar.gz"
 # The required doc/source/conf.py file is missing from the pypi:
 # https://github.com/etingof/pyasn1/issues/35

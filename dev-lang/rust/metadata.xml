@@ -6,10 +6,12 @@
     <name>Rust Project</name>
   </maintainer>
   <use>
-    <flag name="clang">Use <pkg>sys-devel/clang</pkg> for building</flag>
-    <flag name="libcxx">Use <pkg>sys-libs/libcxx</pkg> as standard
-    library when building with <pkg>sys-devel/clang</pkg></flag>
-    <flag name="system-llvm">Use system <pkg>sys-devel/llvm</pkg> in
-    place of the bundled one</flag>
+    <flag name="cargo">Install cargo component</flag>
+    <flag name="clippy">Install clippy component</flag>
+    <flag name="system-llvm">Use the system LLVM install</flag>
+    <flag name="rls">Install rls component</flag>
+    <flag name="rustfmt">Install rustfmt component</flag>
+    <flag name="wasm">Build support for the wasm32-unknown-unknown
+    target</flag>
   </use>
 </pkgmetadata>

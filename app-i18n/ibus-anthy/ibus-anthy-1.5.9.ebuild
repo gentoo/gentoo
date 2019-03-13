@@ -1,10 +1,10 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 
-inherit gnome2-utils ltprune python-single-r1
+inherit gnome2-utils python-single-r1
 
 DESCRIPTION="Japanese Anthy engine for IBus"
 HOMEPAGE="https://github.com/ibus/ibus/wiki"
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/ibus/${PN}/releases/download/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 IUSE="nls"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -41,7 +41,7 @@ src_configure() {
 
 src_install() {
 	default
-	prune_libtool_files --modules
+	find "${ED}" -name '*.la' -delete || die
 
 	python_optimize
 }

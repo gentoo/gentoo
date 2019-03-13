@@ -1,0 +1,171 @@
+Remove all hardcoded calls to `strip` command
+
+Index: dcmtk-3.6.0/config/templates/Makefile.src
+===================================================================
+--- a/config/templates/Makefile.src	2009-01-30 10:27:58.000000000 +0100
++++ b/config/templates/Makefile.src	2011-01-28 09:53:28.000000000 +0100
+@@ -31,7 +31,7 @@
+ install-bin: all
+ 	$(configdir)/mkinstalldirs $(DESTDIR)$(bindir)
+ 	for prog in $(progs); do \
+-		$(INSTALL_PROGRAM) $$prog$(BINEXT) $(DESTDIR)$(bindir) && $(STRIP) $(DESTDIR)$(bindir)/$$prog$(BINEXT) ;\
++		$(INSTALL_PROGRAM) $$prog$(BINEXT) $(DESTDIR)$(bindir);\
+ 	done
+ 
+ 
+Index: dcmtk-3.6.0/dcmdata/apps/Makefile.in
+===================================================================
+--- a/dcmdata/apps/Makefile.in	2009-11-04 10:58:05.000000000 +0100
++++ b/dcmdata/apps/Makefile.in	2011-01-28 09:53:45.000000000 +0100
+@@ -76,7 +76,7 @@
+ install-bin: all
+ 	$(configdir)/mkinstalldirs $(DESTDIR)$(bindir)
+ 	for prog in $(progs); do \
+-		$(INSTALL_PROGRAM) $$prog$(BINEXT) $(DESTDIR)$(bindir) && $(STRIP) $(DESTDIR)$(bindir)/$$prog$(BINEXT) ;\
++		$(INSTALL_PROGRAM) $$prog$(BINEXT) $(DESTDIR)$(bindir);\
+ 	done
+ 
+ 
+Index: dcmtk-3.6.0/dcmimage/apps/Makefile.in
+===================================================================
+--- a/dcmimage/apps/Makefile.in	2009-10-13 16:08:33.000000000 +0200
++++ b/dcmimage/apps/Makefile.in	2011-01-28 09:53:59.000000000 +0100
+@@ -42,7 +42,7 @@
+ install: all
+ 	$(configdir)/mkinstalldirs $(DESTDIR)$(bindir)
+ 	for prog in $(progs); do \
+-		$(INSTALL_PROGRAM) $$prog$(BINEXT) $(DESTDIR)$(bindir) && $(STRIP) $(DESTDIR)$(bindir)/$$prog$(BINEXT) ;\
++		$(INSTALL_PROGRAM) $$prog$(BINEXT) $(DESTDIR)$(bindir);\
+ 	done
+ 
+ 
+Index: dcmtk-3.6.0/dcmimgle/apps/Makefile.in
+===================================================================
+--- a/dcmimgle/apps/Makefile.in	2009-10-28 10:53:39.000000000 +0100
++++ b/dcmimgle/apps/Makefile.in	2011-01-28 09:54:11.000000000 +0100
+@@ -39,7 +39,7 @@
+ install: all
+ 	$(configdir)/mkinstalldirs $(DESTDIR)$(bindir)
+ 	for prog in $(progs); do \
+-		$(INSTALL_PROGRAM) $$prog$(BINEXT) $(DESTDIR)$(bindir) && $(STRIP) $(DESTDIR)$(bindir)/$$prog$(BINEXT) ;\
++		$(INSTALL_PROGRAM) $$prog$(BINEXT) $(DESTDIR)$(bindir);\
+ 	done
+ 
+ 
+Index: dcmtk-3.6.0/dcmjpeg/apps/Makefile.in
+===================================================================
+--- a/dcmjpeg/apps/Makefile.in	2009-10-07 14:44:33.000000000 +0200
++++ b/dcmjpeg/apps/Makefile.in	2011-01-28 09:54:28.000000000 +0100
+@@ -72,7 +72,7 @@
+ install: all
+ 	$(configdir)/mkinstalldirs $(DESTDIR)$(bindir)
+ 	for prog in $(progs); do \
+-		$(INSTALL_PROGRAM) $$prog$(BINEXT) $(DESTDIR)$(bindir) && $(STRIP) $(DESTDIR)$(bindir)/$$prog$(BINEXT) ;\
++		$(INSTALL_PROGRAM) $$prog$(BINEXT) $(DESTDIR)$(bindir);\
+ 	done
+ 
+ clean:
+Index: dcmtk-3.6.0/dcmnet/apps/Makefile.in
+===================================================================
+--- a/dcmnet/apps/Makefile.in	2009-11-04 11:24:29.000000000 +0100
++++ b/dcmnet/apps/Makefile.in	2011-01-28 09:54:50.000000000 +0100
+@@ -52,7 +52,7 @@
+ install: all
+ 	$(configdir)/mkinstalldirs $(DESTDIR)$(bindir)
+ 	for prog in $(progs); do \
+-		$(INSTALL_PROGRAM) $$prog$(BINEXT) $(DESTDIR)$(bindir) && $(STRIP) $(DESTDIR)$(bindir)/$$prog$(BINEXT) ;\
++		$(INSTALL_PROGRAM) $$prog$(BINEXT) $(DESTDIR)$(bindir);\
+ 	done
+ 
+ 
+Index: dcmtk-3.6.0/dcmpstat/apps/Makefile.in
+===================================================================
+--- a/dcmpstat/apps/Makefile.in	2009-10-13 16:57:49.000000000 +0200
++++ b/dcmpstat/apps/Makefile.in	2011-01-28 09:55:10.000000000 +0100
+@@ -113,7 +113,7 @@
+ install: all
+ 	$(configdir)/mkinstalldirs $(DESTDIR)$(bindir)
+ 	for prog in $(progs); do \
+-		$(INSTALL_PROGRAM) $$prog$(BINEXT) $(DESTDIR)$(bindir) && $(STRIP) $(DESTDIR)$(bindir)/$$prog$(BINEXT) ;\
++		$(INSTALL_PROGRAM) $$prog$(BINEXT) $(DESTDIR)$(bindir);\
+ 	done
+ 
+ 
+Index: dcmtk-3.6.0/dcmqrdb/apps/Makefile.in
+===================================================================
+--- a/dcmqrdb/apps/Makefile.in	2009-11-04 11:24:30.000000000 +0100
++++ b/dcmqrdb/apps/Makefile.in	2011-01-28 09:55:24.000000000 +0100
+@@ -57,7 +57,7 @@
+ install: all
+ 	$(configdir)/mkinstalldirs $(DESTDIR)$(bindir)
+ 	for prog in $(progs); do \
+-		$(INSTALL_PROGRAM) $$prog$(BINEXT) $(DESTDIR)$(bindir) && $(STRIP) $(DESTDIR)$(bindir)/$$prog$(BINEXT) ;\
++		$(INSTALL_PROGRAM) $$prog$(BINEXT) $(DESTDIR)$(bindir);\
+ 	done
+ 
+ 
+Index: dcmtk-3.6.0/dcmsign/apps/Makefile.in
+===================================================================
+--- a/dcmsign/apps/Makefile.in	2009-09-04 17:42:31.000000000 +0200
++++ b/dcmsign/apps/Makefile.in	2011-01-28 09:55:35.000000000 +0100
+@@ -33,7 +33,7 @@
+ install: all
+ 	$(configdir)/mkinstalldirs $(DESTDIR)$(bindir)
+ 	for prog in $(progs); do \
+-		$(INSTALL_PROGRAM) $$prog$(BINEXT) $(DESTDIR)$(bindir) && $(STRIP) $(DESTDIR)$(bindir)/$$prog$(BINEXT) ;\
++		$(INSTALL_PROGRAM) $$prog$(BINEXT) $(DESTDIR)$(bindir);\
+ 	done
+ 
+ 
+Index: dcmtk-3.6.0/dcmsr/apps/Makefile.in
+===================================================================
+--- a/dcmsr/apps/Makefile.in	2009-10-13 16:57:49.000000000 +0200
++++ b/dcmsr/apps/Makefile.in	2011-01-28 09:55:48.000000000 +0100
+@@ -44,7 +44,7 @@
+ install-bin: all
+ 	$(configdir)/mkinstalldirs $(DESTDIR)$(bindir)
+ 	for prog in $(progs); do \
+-		$(INSTALL_PROGRAM) $$prog$(BINEXT) $(DESTDIR)$(bindir) && $(STRIP) $(DESTDIR)$(bindir)/$$prog$(BINEXT) ;\
++		$(INSTALL_PROGRAM) $$prog$(BINEXT) $(DESTDIR)$(bindir);\
+ 	done
+ 
+ 
+Index: dcmtk-3.6.0/dcmwlm/apps/Makefile.in
+===================================================================
+--- a/dcmwlm/apps/Makefile.in	2009-11-04 11:24:30.000000000 +0100
++++ b/dcmwlm/apps/Makefile.in	2011-01-28 09:55:58.000000000 +0100
+@@ -49,7 +49,7 @@
+ install: all
+ 	$(configdir)/mkinstalldirs $(DESTDIR)$(bindir)
+ 	for prog in $(progs); do \
+-		$(INSTALL_PROGRAM) $$prog$(BINEXT) $(DESTDIR)$(bindir) && $(STRIP) $(DESTDIR)$(bindir)/$$prog$(BINEXT) ;\
++		$(INSTALL_PROGRAM) $$prog$(BINEXT) $(DESTDIR)$(bindir);\
+ 	done
+ 
+ 
+Index: dcmtk-3.6.0/dcmwlm/wwwapps/Makefile.in
+===================================================================
+--- a/dcmrt/apps/Makefile.in	2009-11-04 11:24:30.000000000 +0100
++++ b/dcmrt/apps/Makefile.in	2011-01-28 09:56:33.000000000 +0100
+@@ -55,7 +55,7 @@
+ install-bin: all
+ 	$(configdir)/mkinstalldirs $(DESTDIR)$(bindir)
+ 	for prog in $(progs); do \
+-		$(INSTALL_PROGRAM) $$prog$(BINEXT) $(DESTDIR)$(bindir) && $(STRIP) $(DESTDIR)$(bindir)/$$prog$(BINEXT) ;\
++		$(INSTALL_PROGRAM) $$prog$(BINEXT) $(DESTDIR)$(bindir);\
+ 	done
+ 
+ 
+Index: dcmtk-3.6.0/dcmjpls/apps/Makefile.in
+===================================================================
+--- a/dcmjpls/apps/Makefile.in	2011-01-28 09:56:54.000000000 +0100
++++ b/dcmjpls/apps/Makefile.in	2011-01-28 09:57:00.000000000 +0100
+@@ -71,7 +71,7 @@
+ install: all
+ 	$(configdir)/mkinstalldirs $(DESTDIR)$(bindir)
+ 	for prog in $(progs); do \
+-		$(INSTALL_PROGRAM) $$prog$(BINEXT) $(DESTDIR)$(bindir) && $(STRIP) $(DESTDIR)$(bindir)/$$prog$(BINEXT) ;\
++		$(INSTALL_PROGRAM) $$prog$(BINEXT) $(DESTDIR)$(bindir);\
+ 	done
+ 
+ 

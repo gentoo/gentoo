@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -30,8 +30,8 @@ IUSE="X bzip2 doc elf ipv6 libressl lm_sensors mfd-rewrites minimal mysql netlin
 
 COMMON_DEPEND="
 	ssl? (
-		!libressl? ( >=dev-libs/openssl-0.9.6d:0 )
-		libressl? ( dev-libs/libressl )
+		!libressl? ( >=dev-libs/openssl-0.9.6d:0= )
+		libressl? ( dev-libs/libressl:= )
 	)
 	tcpd? ( >=sys-apps/tcp-wrappers-7.6 )
 	rpm? (
@@ -81,6 +81,7 @@ src_prepare() {
 
 	epatch "${WORKDIR}"/${P}-perl524.patch
 	epatch "${WORKDIR}"/${P}-perl524-2.patch
+	epatch "${FILESDIR}"/${PN}-5.7.3-include-limits.patch
 
 	epatch "${WORKDIR}"/patches/*.patch
 

@@ -18,7 +18,7 @@ UPSTREAM_PATCHES=( "SA-17:08/ptrace.patch"
 	"EN-17:08/pf.patch" )
 
 if [[ ${PV} != *9999* ]]; then
-	KEYWORDS="~amd64-fbsd ~sparc-fbsd ~x86-fbsd"
+	KEYWORDS="~amd64-fbsd ~x86-fbsd"
 	SRC_URI="${SRC_URI}
 		$(freebsd_upstream_patches)"
 fi
@@ -137,18 +137,18 @@ pkg_preinst() {
 		rm -f "${ROOT}/usr/src/sys"
 	fi
 
-	if use sparc-fbsd ; then
-		ewarn "WARNING: kldload currently causes kernel panics"
-		ewarn "on sparc64. This is probably a gcc-4.1 issue, but"
-		ewarn "we need gcc-4.1 to compile the kernel correctly :/"
-		ewarn "Please compile all modules you need into the kernel"
-	fi
+#	if use sparc-fbsd ; then
+#		ewarn "WARNING: kldload currently causes kernel panics"
+#		ewarn "on sparc64. This is probably a gcc-4.1 issue, but"
+#		ewarn "we need gcc-4.1 to compile the kernel correctly :/"
+#		ewarn "Please compile all modules you need into the kernel"
+#	fi
 
 	ewarn "If you want to manually compile (not recommended), please don't forget the following steps."
-	if ! use sparc-fbsd ; then
-		ewarn "export CC=clang"
-		ewarn "export CXX=clang++"
-	fi
+#	if ! use sparc-fbsd ; then
+#		ewarn "export CC=clang"
+#		ewarn "export CXX=clang++"
+#	fi
 	if ! use zfs ; then
 		ewarn "export WITHOUT_CDDL="
 		ewarn "Note, Please set USE=zfs if you want to enable modules under the CDDL."

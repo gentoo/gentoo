@@ -11,7 +11,7 @@ MY_PN=numdifftools
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Solves automatic numerical differentiation problems in one or more variables"
-HOMEPAGE="https://pypi.python.org/pypi/Numdifftools https://github.com/pbrod/numdifftools"
+HOMEPAGE="https://pypi.org/project/Numdifftools/ https://github.com/pbrod/numdifftools"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${MY_P}.zip"
 
 SLOT="0"

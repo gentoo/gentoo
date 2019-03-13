@@ -1,8 +1,8 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils flag-o-matic toolchain-funcs
+EAPI=6
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="A libc optimized for small size"
 HOMEPAGE="http://www.fefe.de/dietlibc/"
@@ -16,11 +16,16 @@ IUSE=""
 DEPEND=""
 RDEPEND=""
 
-DIETHOME=/usr/diet
+DIETHOME="/usr/diet"
 
-S=${WORKDIR}/dietlibc
+S="${WORKDIR}/dietlibc"
 
 src_prepare() {
+	default
+
+	# use __DYN_LIB instead of __PIC__ in i386 socketcalls, bug #644116
+	eapply "${FILESDIR}"/${P}-dyn-lib.patch
+
 	# Replace sparc64 related C[XX]FLAGS (see bug #45716)
 	use sparc && replace-sparc64-flags
 

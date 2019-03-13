@@ -6,7 +6,7 @@ EAPI=5
 inherit elisp
 
 DESCRIPTION="Drop-down menu interface"
-HOMEPAGE="http://www.emacswiki.org/emacs/dropdown-list.el"
+HOMEPAGE="https://www.emacswiki.org/emacs/dropdown-list.el"
 SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.el.xz"
 
 LICENSE="GPL-3+"

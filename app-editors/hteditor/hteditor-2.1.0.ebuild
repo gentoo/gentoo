@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit toolchain-funcs
+inherit autotools toolchain-funcs
 
 MY_P=${P/editor}
 
@@ -27,7 +27,16 @@ DOCS=( AUTHORS ChangeLog KNOWNBUGS README TODO )
 
 S=${WORKDIR}/${MY_P}
 
-PATCHES=("${FILESDIR}"/${P}-gcc-7.patch)
+PATCHES=(
+	"${FILESDIR}"/${P}-gcc-7.patch
+	"${FILESDIR}"/${P}-tinfo.patch
+	"${FILESDIR}"/${P}-gcc-6-uchar.patch
+)
+
+src_prepare() {
+	default
+	eautoreconf
+}
 
 src_configure() {
 	econf \

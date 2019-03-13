@@ -5,6 +5,10 @@
 		<email>robbat2@gentoo.org</email>
 		<name>Robin H. Johnson</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>mgorny@gentoo.org</email>
+		<name>Michał Górny</name>
+	</maintainer>
 	<use>
 		<flag name="ntfs">Include the ability to read NTFS filesystems</flag>
 		<flag name="reiserfs">Include reiserfs reading ability</flag>

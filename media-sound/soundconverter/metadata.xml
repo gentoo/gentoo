@@ -5,9 +5,6 @@
 		<email>gstreamer@gentoo.org</email>
 		<name>GStreamer package maintainers</name>
 	</maintainer>
-	<use>
-		<flag name="opus">Enable Opus audio codec support</flag>
-	</use>
 	<upstream>
 		<remote-id type="launchpad">soundconverter</remote-id>
 	</upstream>

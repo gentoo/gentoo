@@ -37,13 +37,13 @@ Signed-off-by: Pavel Raiskup <praiskup@redhat.com>
  NEWS                       |  4 ++++
  NO-THANKS                  |  1 +
  bootstrap                  | 42 +++++++++++++++++++++++++++---------------
- gl/build-aux/extract-trace | 42 +++++++++++++++++++++++++++---------------
+ build-aux/extract-trace    | 42 +++++++++++++++++++++++++++---------------
  4 files changed, 59 insertions(+), 30 deletions(-)
 
 diff --git a/gl/build-aux/extract-trace b/gl/build-aux/extract-trace
 index 315a32a..c6abd21 100755
---- a/gl/build-aux/extract-trace
-+++ b/gl/build-aux/extract-trace
+--- a/build-aux/extract-trace
++++ b/build-aux/extract-trace
 @@ -329,29 +329,41 @@ func_extract_trace ()
      # arguments to Autocof functions, but without following
      # 'm4_s?include' files.

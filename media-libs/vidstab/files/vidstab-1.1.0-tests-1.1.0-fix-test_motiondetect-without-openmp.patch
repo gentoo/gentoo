@@ -1,0 +1,26 @@
+From a6438c4b3ea5a00f2896b903a4bda0a4efa241f4 Mon Sep 17 00:00:00 2001
+From: Craig Andrews <candrews@integralblue.com>
+Date: Tue, 12 Feb 2019 16:39:06 -0500
+Subject: [PATCH] Use OpenMP only if available in test_motiondetect
+
+Only call `omp_set_dynamic( 1 );` if `USE_OMP`
+
+Fixes `undefined reference to `omp_set_dynamic'` when not using OpenMP
+---
+ tests/test_motiondetect.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/tests/test_motiondetect.c b/tests/test_motiondetect.c
+index 0f37def..125f4bd 100644
+--- a/tests/test_motiondetect.c
++++ b/tests/test_motiondetect.c
+@@ -19,7 +19,9 @@ void test_motionDetect(TestData* testdata){
+     int i;
+ 
+     int start = timeOfDayinMS();
++#ifdef USE_OMP
+     omp_set_dynamic( 1 );
++#endif
+     md.conf.numThreads=threads;
+ 
+     for(i=0; i<numruns; i++){

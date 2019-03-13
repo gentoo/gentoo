@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="Calculate properties of sea water. Similar to SEAWATER 3.2 for MATLAB"
-HOMEPAGE="https://pypi.python.org/pypi/seawater/"
+HOMEPAGE="https://pypi.org/project/seawater/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

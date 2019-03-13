@@ -8,7 +8,7 @@ MY_REV=6d2684b
 
 DESCRIPTION="A panel plug-in to mount remote filesystems for the Xfce desktop environment"
 HOMEPAGE="https://goodies.xfce.org/projects/panel-plugins/xfce4-gvfs-mount"
-SRC_URI="mirror://xfce/src/panel-plugins/${PN}/${PV%.*}/${P}-${MY_REV}.tar.bz2"
+SRC_URI="https://archive.xfce.org/src/panel-plugins/${PN}/${PV%.*}/${P}-${MY_REV}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"

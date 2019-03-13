@@ -1,0 +1,53 @@
+From 3423ca9bf48e675007b7fb1bd61b50aa97d14890 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Albrecht=20Dre=C3=9F?=
+Date: Sat, 7 Jul 2018 16:36:49 -0400
+Subject: [PATCH] html: Fix HTML rendering with webkit2gtk-4.0 < 2.20
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+* README: document use of G_MESSAGES_DEBUG=…
+* libbalsa/html.c (lbh_navigation_policy_decision):
+  allow the rendering of “about:blank”.
+---
+ libbalsa/html.c | 12 ++++++++----
+ 1 file changed, 8 insertions(+), 4 deletions(-)
+
+leio: trimmed out the G_MESSAGES_DEBUG doc changes
+diff --git a/libbalsa/html.c b/libbalsa/html.c
+index 1e5e2f500..307194e0a 100644
+--- a/libbalsa/html.c
++++ b/libbalsa/html.c
+@@ -44,13 +44,13 @@
+ #include <string.h>
+ #include <glib/gi18n.h>
+ 
++#ifdef HAVE_HTML_WIDGET
++
+ #ifdef G_LOG_DOMAIN
+ #  undef G_LOG_DOMAIN
+ #endif
+ #define G_LOG_DOMAIN "html"
+ 
+-#ifdef HAVE_HTML_WIDGET
+-
+ /*
+  * Used by all HTML widgets
+  *
+@@ -281,8 +281,12 @@ lbh_navigation_policy_decision(WebKitPolicyDecision * decision,
+         g_debug("%s clicked %s", __func__, uri);
+         (*info->clicked_cb) (uri);
+     default:
+-        g_debug("%s uri %s, type %d, ignored", __func__, uri, navigation_type);
+-        webkit_policy_decision_ignore(decision);
++        if (g_ascii_strcasecmp(uri, "about:blank") != 0) {
++            g_debug("%s uri %s, type %d, ignored", __func__, uri, navigation_type);
++        	webkit_policy_decision_ignore(decision);
++        } else {
++        	g_debug("%s uri %s, type %d loaded", __func__, uri, navigation_type);
++        }
+     }
+ }
+ 
+-- 
+2.17.1

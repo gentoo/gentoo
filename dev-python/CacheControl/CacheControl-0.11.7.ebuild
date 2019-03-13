@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy pypy3 )
 inherit distutils-r1 eutils
 
 DESCRIPTION="The httplib2 caching algorithms packaged up for use with requests"
-HOMEPAGE="https://github.com/ionrock/cachecontrol https://pypi.python.org/pypi/cachecontrol/"
+HOMEPAGE="https://github.com/ionrock/cachecontrol https://pypi.org/project/cachecontrol/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

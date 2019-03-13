@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} pypy )
 inherit distutils-r1 git-r3
 
 DESCRIPTION="Python library to work with countries and languages"
-HOMEPAGE="https://github.com/Diaoul/babelfish https://pypi.python.org/pypi/babelfish"
+HOMEPAGE="https://github.com/Diaoul/babelfish https://pypi.org/project/babelfish/"
 EGIT_REPO_URI="https://github.com/Diaoul/${PN}.git"
 
 LICENSE="BSD"

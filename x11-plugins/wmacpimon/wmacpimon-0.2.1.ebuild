@@ -1,8 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=2
-inherit eutils
+EAPI=6
 
 DESCRIPTION="DockApp monitors the temperature and Speedstep features in ACPI-based systems"
 HOMEPAGE="http://www.vrlteam.org/wmacpimon/"
@@ -17,21 +16,20 @@ RDEPEND="x11-libs/libX11
 	x11-libs/libXext
 	x11-libs/libXpm"
 DEPEND="${RDEPEND}
-	x11-proto/xproto
-	x11-proto/xextproto"
+	x11-base/xorg-proto"
 
-src_prepare() {
+PATCHES=(
 	# patch wmacpimon.c file to set default path for
 	# wmacpimon.prc to /var/tmp/
-	epatch "${FILESDIR}"/wmacpimon.c.patch
+	"${FILESDIR}/wmacpimon.c.patch"
 
 	# fix LDFLAGS ordering. See bug #248618.
 	# fix LDFLAGS ordering again and other stuff. See bug #336091.
-	epatch "${FILESDIR}"/Makefile.patch
-}
+	"${FILESDIR}/Makefile.patch"
+)
 
 src_install() {
-	dobin wmacpimond wmacpimon || die "dobin failed."
+	dobin wmacpimond wmacpimon
 	dodoc AUTHORS ChangeLog README
 	newinitd "${FILESDIR}"/wmacpimon.initscript wmacpimon
 }

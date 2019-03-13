@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -7,13 +7,13 @@ AUTOTOOLS_AUTORECONF=1
 
 inherit autotools-multilib
 
-DESCRIPTION="Fast and safe graphics and drivers for about any graphics card to the Linux kernel (sometimes)"
-HOMEPAGE="http://www.ggi-project.org"
+DESCRIPTION="Easy to use, but yet powerful, API for all possible input sources"
+HOMEPAGE="https://ibiblio.org/ggicore/packages/libgii.html"
 SRC_URI="mirror://sourceforge/ggi/${P}.src.tar.bz2"
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ppc ppc64 s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd"
 IUSE="X"
 
 RDEPEND="X? (

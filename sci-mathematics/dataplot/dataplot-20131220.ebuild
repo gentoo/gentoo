@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,7 +13,7 @@ MY_PV_AUX=2009_07_15
 MY_P_AUX=dplib.${MY_PV_AUX}
 
 DESCRIPTION="Program for scientific visualization and statistical analyis"
-HOMEPAGE="http://www.itl.nist.gov/div898/software/dataplot/"
+HOMEPAGE="https://www.itl.nist.gov/div898/software/dataplot/"
 SRC_URI="
 	ftp://ftp.nist.gov/pub/dataplot/unix/${MY_P}.tar.gz
 	ftp://ftp.nist.gov/pub/dataplot/unix/${MY_P_AUX}.tar.gz"

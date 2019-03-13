@@ -1,0 +1,10 @@
+--- a/m4/lftp.m4
++++ b/m4/lftp.m4
+@@ -319,7 +319,6 @@
+        libidn=$withval, libidn=yes)
+      if test "$libidn" != "no"; then
+        if test "$libidn" != "yes"; then
+-         LDFLAGS="${LDFLAGS} -L$libidn/lib"
+          CPPFLAGS="${CPPFLAGS} -I$libidn/include"
+        fi
+        AC_CHECK_HEADER(idna.h,

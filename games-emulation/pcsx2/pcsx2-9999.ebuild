@@ -1,10 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-PLOCALES="ar_SA ca_ES cs_CZ de_DE es_ES fi_FI fr_FR hr_HR hu_HU id_ID it_IT ja_JP ko_KR ms_MY nb_NO pl_PL pt_BR ru_RU sv_SE th_TH tr_TR zh_CN zh_TW"
+EAPI=6
 
-inherit cmake-utils git-r3 l10n multilib toolchain-funcs wxwidgets
+inherit cmake-utils git-r3 multilib toolchain-funcs wxwidgets
 
 DESCRIPTION="A PlayStation 2 emulator"
 HOMEPAGE="https://www.pcsx2.net"
@@ -26,6 +25,7 @@ RDEPEND="
 	media-libs/portaudio[abi_x86_32(-)]
 	>=sys-libs/zlib-1.2.4[abi_x86_32(-)]
 	virtual/jpeg:62[abi_x86_32(-)]
+	virtual/libudev[abi_x86_32(-)]
 	virtual/opengl[abi_x86_32(-)]
 	x11-libs/gtk+:2[abi_x86_32(-)]
 	x11-libs/libICE[abi_x86_32(-)]
@@ -40,21 +40,12 @@ DEPEND="${RDEPEND}
 	>=dev-cpp/sparsehash-1.5
 "
 
-clean_locale() {
-	rm -R "${S}"/locales/"${1}" || die
-}
-
 pkg_setup() {
 	if [[ ${MERGE_TYPE} != binary && $(tc-getCC) == *gcc* ]]; then
 		if [[ $(gcc-major-version) -lt 4 || $(gcc-major-version) == 4 && $(gcc-minor-version) -lt 8 ]] ; then
 			die "${PN} does not compile with gcc less than 4.8"
 		fi
 	fi
-}
-
-src_prepare() {
-	cmake-utils_src_prepare
-	l10n_for_each_disabled_locale_do clean_locale
 }
 
 src_configure() {

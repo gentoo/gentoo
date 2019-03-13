@@ -11,7 +11,7 @@ SRC_URI="http://www.w3.org/TR/xhtml1/xhtml1.tgz"
 LICENSE="W3C"
 
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 ~arm64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE=""
 
 DEPEND="app-text/sgml-common

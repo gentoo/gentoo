@@ -1,9 +1,10 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: libtool.eclass
 # @MAINTAINER:
 # base-system@gentoo.org
+# @SUPPORTED_EAPIS: 0 1 2 3 4 5 6 7
 # @BLURB: quickly update bundled libtool code
 # @DESCRIPTION:
 # This eclass patches ltmain.sh distributed with libtoolized packages with the
@@ -16,7 +17,11 @@
 if [[ -z ${_LIBTOOL_ECLASS} ]]; then
 _LIBTOOL_ECLASS=1
 
-DEPEND=">=app-portage/elt-patches-20170422"
+case ${EAPI:-0} in
+	0|1|2|3|4|5|6) DEPEND=">=app-portage/elt-patches-20170815" ;;
+	7) BDEPEND=">=app-portage/elt-patches-20170815" ;;
+	*) die "${ECLASS}: EAPI ${EAPI} not supported" ;;
+esac
 
 inherit toolchain-funcs
 

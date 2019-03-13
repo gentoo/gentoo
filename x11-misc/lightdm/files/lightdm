@@ -1,8 +1,0 @@
-#%PAM-1.0
-auth       optional		pam_env.so
-auth       include		system-login
-auth       required		pam_nologin.so
-account    include		system-login
-password   include		system-login
-session    optional             pam_loginuid.so
-session    include		system-auth

@@ -1,21 +1,23 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: git-2.eclass
 # @MAINTAINER:
 # maintainer-needed@gentoo.org
+# @SUPPORTED_EAPIS: 0 1 2 3 4 5
 # @BLURB: Eclass for fetching and unpacking git repositories.
 # @DESCRIPTION:
-# Eclass for easing maitenance of live ebuilds using git as remote repository.
+# Eclass for easing maintenance of live ebuilds using git as remote repository.
 # Eclass support working with git submodules and branching.
 #
 # This eclass is DEPRECATED. Please use git-r3 instead.
 
-if [[ ${EAPI} == 6 ]]; then
-	die "${ECLASS}.eclass is banned in EAPI ${EAPI}"
-fi
+case ${EAPI:-0} in
+	0|1|2|3|4|5) ;;
+	*) die "${ECLASS}.eclass is banned in EAPI ${EAPI}";;
+esac
 
-# This eclass support all EAPIs
+# This eclass support all EAPIs.
 EXPORT_FUNCTIONS src_unpack
 
 DEPEND="dev-vcs/git"
@@ -47,7 +49,7 @@ DEPEND="dev-vcs/git"
 # @ECLASS-VARIABLE: EGIT_MASTER
 # @DESCRIPTION:
 # Variable for specifying master branch.
-# Usefull when upstream don't have master branch or name it differently.
+# Useful when upstream don't have master branch or name it differently.
 #
 # EGIT_MASTER="master"
 
@@ -62,7 +64,7 @@ DEPEND="dev-vcs/git"
 # @ECLASS-VARIABLE: EGIT_DIR
 # @DESCRIPTION:
 # Directory where we want to store the git data.
-# This variable should not be overriden.
+# This variable should not be overridden.
 #
 # EGIT_DIR="${EGIT_STORE_DIR}/${EGIT_PROJECT}"
 
@@ -73,7 +75,7 @@ DEPEND="dev-vcs/git"
 # URI for the repository
 # e.g. http://foo, git://bar
 #
-# It can be overriden via env using packagename_LIVE_REPO
+# It can be overridden via env using packagename_LIVE_REPO
 # variable.
 #
 # Support multiple values:
@@ -88,7 +90,7 @@ DEPEND="dev-vcs/git"
 # @ECLASS-VARIABLE: EGIT_BRANCH
 # @DESCRIPTION:
 # Variable containing branch name we want to check out.
-# It can be overriden via env using packagename_LIVE_BRANCH
+# It can be overridden via env using packagename_LIVE_BRANCH
 # variable.
 #
 # EGIT_BRANCH="${EGIT_MASTER}"
@@ -96,7 +98,7 @@ DEPEND="dev-vcs/git"
 # @ECLASS-VARIABLE: EGIT_COMMIT
 # @DESCRIPTION:
 # Variable containing commit hash/tag we want to check out.
-# It can be overriden via env using packagename_LIVE_COMMIT
+# It can be overridden via env using packagename_LIVE_COMMIT
 # variable.
 #
 # EGIT_COMMIT="${EGIT_BRANCH}"
@@ -125,7 +127,7 @@ DEPEND="dev-vcs/git"
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # If non-empty this variable bans unpacking of ${A} content into the srcdir.
-# Default behaviour is to unpack ${A} content.
+# Default behavior is to unpack ${A} content.
 
 # @FUNCTION: git-2_init_variables
 # @INTERNAL

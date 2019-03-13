@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -28,6 +28,7 @@ SLOT="0"
 
 DEPEND=">=sys-libs/libsepol-${PV}:=
 	>=sys-libs/libselinux-${PV}:=
+	dev-libs/dbus-glib
 	dev-libs/libpcre:=
 	>=sys-libs/libcap-1.10-r10:="
 

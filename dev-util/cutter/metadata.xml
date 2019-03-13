@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+    <maintainer type="person">
+        <email>otakuto.gentoo@gmail.com</email>
+        <name>Tact Yoshida</name>
+    </maintainer>
+    <maintainer type="project">
+        <email>proxy-maint@gentoo.org</email>
+        <name>Proxy Maintainers</name>
+    </maintainer>
+    <upstream>
+        <remote-id type="github">radareorg/cutter</remote-id>
+    </upstream>
+    <use>
+        <flag name="jupyter">Add support for jupyter notebook</flag>
+        <flag name="webengine">Use <pkg>dev-qt/qtwebengine</pkg> for in-app jupyter browser</flag>
+    </use>
+</pkgmetadata>

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -21,7 +21,7 @@ RDEPEND="x11-libs/libX11
 	x11-libs/libXext
 	jpeg? ( virtual/jpeg:0 )"
 DEPEND="${RDEPEND}
-	x11-proto/xproto"
+	x11-base/xorg-proto"
 
 PATCHES=( "${FILESDIR}/respect-ldflags.patch" )
 

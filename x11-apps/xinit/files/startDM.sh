@@ -17,7 +17,7 @@ fi
 # We enable this by default
 export GDK_USE_XFT=1
 
-export SVCNAME=xdm
+export RC_SVCNAME=xdm
 EXEC="$(get_options service)"
 NAME="$(get_options name)"
 PIDFILE="$(get_options pidfile)"

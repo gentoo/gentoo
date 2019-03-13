@@ -1,0 +1,5 @@
+/var/log/sccache-scheduler.log /var/log/sccache-scheduler.error.log /var/log/sccache-server.log /var/log/sccache-server.error.log {
+	copytruncate
+	missingok
+	notifempty
+}

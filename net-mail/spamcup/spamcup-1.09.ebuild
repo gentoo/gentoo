@@ -1,5 +1,7 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+EAPI=0
 
 DESCRIPTION="This script does the same you would do when you report spam with your browser in Spamcop.net"
 HOMEPAGE="https://sourceforge.net/projects/spamcup/"
@@ -12,8 +14,8 @@ IUSE=""
 
 DEPEND=">=dev-lang/perl-5.8.0
 	dev-perl/Getopt-ArgvFile
-	|| ( ( >dev-perl/libwww-perl-6 dev-perl/HTML-Form ) <dev-perl/libwww-perl-6
-	) "
+	dev-perl/HTML-Form
+	>dev-perl/libwww-perl-6"
 RDEPEND="${DEPEND}"
 
 src_install() {

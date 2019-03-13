@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 MY_PN=${PN/oroborus-//}
 
 DESCRIPTION="utility for binding keys in Oroborus"
-HOMEPAGE="http://www.oroborus.org"
+HOMEPAGE="https://www.oroborus.org"
 SRC_URI="mirror://debian/pool/main/k/${MY_PN}/${MY_PN}_${PV}.tar.gz"
 
 LICENSE="GPL-2"

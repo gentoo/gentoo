@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -34,16 +34,13 @@ RDEPEND="
 			>=net-libs/gnutls-2.12.23-r6[${MULTILIB_USEDEP}]
 			!gnome-extra/gnome-vfs-sftp )
 		!gnutls? (
-			!libressl? ( >=dev-libs/openssl-1.0.1h-r2:0[${MULTILIB_USEDEP}] )
-			libressl? ( dev-libs/libressl[${MULTILIB_USEDEP}] )
+			!libressl? ( >=dev-libs/openssl-1.0.1h-r2:0=[${MULTILIB_USEDEP}] )
+			libressl? ( dev-libs/libressl:=[${MULTILIB_USEDEP}] )
 			!gnome-extra/gnome-vfs-sftp ) )
 	zeroconf? ( >=net-dns/avahi-0.6.31-r2[${MULTILIB_USEDEP}] )
-	abi_x86_32? (
-		!<=app-emulation/emul-linux-x86-gtklibs-20140508-r1
-		!app-emulation/emul-linux-x86-gtklibs[-abi_x86_32(-)]
-	)
 "
 DEPEND="${RDEPEND}
+	dev-util/glib-utils
 	sys-devel/gettext
 	gnome-base/gnome-common
 	>=dev-util/intltool-0.40
@@ -51,43 +48,50 @@ DEPEND="${RDEPEND}
 	>=dev-util/gtk-doc-am-1.13
 "
 
-src_prepare() {
+PATCHES=(
 	# Allow the Trash on afs filesystems (#106118)
-	epatch "${FILESDIR}"/${PN}-2.12.0-afs.patch
+	"${FILESDIR}"/${PN}-2.12.0-afs.patch
 
 	# Fix compiling with headers missing
-	epatch "${FILESDIR}"/${PN}-2.15.2-headers-define.patch
+	"${FILESDIR}"/${PN}-2.15.2-headers-define.patch
 
 	# Fix for crashes running programs via sudo
-	epatch "${FILESDIR}"/${PN}-2.16.0-no-dbus-crash.patch
+	"${FILESDIR}"/${PN}-2.16.0-no-dbus-crash.patch
 
 	# Fix automagic dependencies, upstream bug #493475
-	epatch "${FILESDIR}"/${PN}-2.20.0-automagic-deps.patch
-	epatch "${FILESDIR}"/${PN}-2.20.1-automagic-deps.patch
+	"${FILESDIR}"/${PN}-2.20.0-automagic-deps.patch
+	"${FILESDIR}"/${PN}-2.20.1-automagic-deps.patch
 
 	# Fix to identify ${HOME} (#200897)
 	# thanks to debian folks
-	epatch "${FILESDIR}"/${PN}-2.24.4-home_dir_fakeroot.patch
+	"${FILESDIR}"/${PN}-2.24.4-home_dir_fakeroot.patch
 
 	# Configure with gnutls-2.7, bug #253729
 	# Fix building with gnutls-2.12, bug #388895
-	epatch "${FILESDIR}"/${PN}-2.24.4-gnutls27.patch
+	"${FILESDIR}"/${PN}-2.24.4-gnutls27.patch
 
 	# Prevent duplicated volumes, bug #193083
-	epatch "${FILESDIR}"/${PN}-2.24.0-uuid-mount.patch
+	"${FILESDIR}"/${PN}-2.24.0-uuid-mount.patch
 
 	# Do not build tests with FEATURES="-test", bug #226221
-	epatch "${FILESDIR}"/${PN}-2.24.4-build-tests-asneeded.patch
+	"${FILESDIR}"/${PN}-2.24.4-build-tests-asneeded.patch
 
 	# Disable broken test, bug #285706
-	epatch "${FILESDIR}"/${PN}-2.24.4-disable-test-async-cancel.patch
+	"${FILESDIR}"/${PN}-2.24.4-disable-test-async-cancel.patch
 
 	# Fix for automake-1.13 compatibility, #466944
-	epatch "${FILESDIR}"/${P}-automake-1.13.patch
+	"${FILESDIR}"/${P}-automake-1.13.patch
 
 	# Fix gnutls-3.4+ compatibility, #560084
 	# always use system defaults (patch from Arch Linux)
-	epatch "${FILESDIR}"/${P}-gnutls34.patch
+	"${FILESDIR}"/${P}-gnutls34.patch
+
+	# Fix build with openssl-1.1 #592540
+	"${FILESDIR}"/${PN}-2.24.4-openssl-1.1.patch
+)
+
+src_prepare() {
+	epatch "${PATCHES[@]}"
 
 	sed -e "s/AM_CONFIG_HEADER/AC_CONFIG_HEADERS/" -i configure.in || die
 

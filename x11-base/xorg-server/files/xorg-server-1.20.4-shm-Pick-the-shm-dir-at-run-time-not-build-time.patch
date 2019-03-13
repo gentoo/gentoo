@@ -1,0 +1,174 @@
+From 19f6cb570becbc4e355807199c6e251fc7935132 Mon Sep 17 00:00:00 2001
+From: Eric Anholt <eric@anholt.net>
+Date: Wed, 19 Sep 2018 13:28:06 -0700
+Subject: [PATCH xserver] shm: Pick the shm dir at run time, not build time.
+
+Prodding the builder's filesystem for tmp dirs doesn't necessarily
+tell you anything about what the actual host's filesystem is going to
+look like, so we should just try the dirs at runtime.
+
+Signed-off-by: Eric Anholt <eric@anholt.net>
+---
+ Xext/shm.c              | 48 +++++++++++++++++++++++++----------------
+ configure.ac            | 43 ------------------------------------
+ include/dix-config.h.in |  3 ---
+ include/meson.build     |  5 -----
+ 4 files changed, 29 insertions(+), 70 deletions(-)
+
+diff --git a/Xext/shm.c b/Xext/shm.c
+index ed43b9202..2739a59e7 100644
+--- a/Xext/shm.c
++++ b/Xext/shm.c
+@@ -1194,36 +1194,46 @@ ProcShmAttachFd(ClientPtr client)
+ static int
+ shm_tmpfile(void)
+ {
+-#ifdef SHMDIR
++    const char *shmdirs[] = {
++        "/run/shm",
++        "/var/tmp",
++        "/tmp",
++    };
+     int	fd;
+-    char	template[] = SHMDIR "/shmfd-XXXXXX";
++
+ #ifdef O_TMPFILE
+-    fd = open(SHMDIR, O_TMPFILE|O_RDWR|O_CLOEXEC|O_EXCL, 0666);
+-    if (fd >= 0) {
+-        DebugF ("Using O_TMPFILE\n");
+-        return fd;
++    for (int i = 0; i < ARRAY_SIZE(shmdirs); i++) {
++        fd = open(shmdirs[i], O_TMPFILE|O_RDWR|O_CLOEXEC|O_EXCL, 0666);
++        if (fd >= 0) {
++            DebugF ("Using O_TMPFILE\n");
++            return fd;
++        }
+     }
+     ErrorF ("Not using O_TMPFILE\n");
+ #endif
++
++    for (int i = 0; i < ARRAY_SIZE(shmdirs); i++) {
++        char template[PATH_MAX];
++        snprintf(template, ARRAY_SIZE(template), "%s/shmfd-XXXXXX", shmdirs[i]);
+ #ifdef HAVE_MKOSTEMP
+-    fd = mkostemp(template, O_CLOEXEC);
++        fd = mkostemp(template, O_CLOEXEC);
+ #else
+-    fd = mkstemp(template);
++        fd = mkstemp(template);
+ #endif
+-    if (fd < 0)
+-        return -1;
+-    unlink(template);
++        if (fd < 0)
++            continue;
++        unlink(template);
+ #ifndef HAVE_MKOSTEMP
+-    int flags = fcntl(fd, F_GETFD);
+-    if (flags != -1) {
+-        flags |= FD_CLOEXEC;
+-        (void) fcntl(fd, F_SETFD, &flags);
+-    }
++        int flags = fcntl(fd, F_GETFD);
++        if (flags != -1) {
++            flags |= FD_CLOEXEC;
++            (void) fcntl(fd, F_SETFD, &flags);
++        }
+ #endif
+-    return fd;
+-#else
++        return fd;
++    }
++
+     return -1;
+-#endif
+ }
+ 
+ static int
+diff --git a/configure.ac b/configure.ac
+index 359b62cb5..57a233102 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -1115,49 +1115,6 @@ case "$DRI2,$HAVE_DRI2PROTO" in
+ esac
+ AM_CONDITIONAL(DRI2, test "x$DRI2" = xyes)
+ 
+-dnl
+-dnl Locate a suitable tmp file system for creating shared memeory files
+-dnl
+-
+-AC_ARG_WITH(shared-memory-dir, AS_HELP_STRING([--with-shared-memory-dir=PATH], [Path to directory in a world-writable temporary directory for anonymous shared memory (default: auto)]),
+-[],
+-[with_shared_memory_dir=yes])
+-
+-shmdirs="/run/shm /var/tmp /tmp"
+-
+-case x"$with_shared_memory_dir" in
+-xyes)
+-	for dir in $shmdirs; do
+-		case x"$with_shared_memory_dir" in
+-		xyes)
+-			echo Checking temp dir "$dir"
+-			if test -d "$dir"; then
+-				with_shared_memory_dir="$dir"
+-			fi
+-			;;
+-		esac
+-	done
+-	;;
+-x/*)
+-	;;
+-xno)
+-	;;
+-*)
+-	AC_MSG_ERROR([Invalid directory specified for --with-shared-memory-dir: $with_shared_memory_dir])
+-	;;
+-esac
+-
+-case x"$with_shared_memory_dir" in
+-xyes)
+-	AC_MSG_ERROR([No directory found for shared memory temp files.])
+-	;;
+-xno)
+-	;;
+-*)
+-	AC_DEFINE_UNQUOTED(SHMDIR, ["$with_shared_memory_dir"], [Directory for shared memory temp files])
+-	;;
+-esac
+-
+ AC_ARG_ENABLE(xtrans-send-fds,	AS_HELP_STRING([--disable-xtrans-send-fds], [Use Xtrans support for fd passing (default: auto)]), [XTRANS_SEND_FDS=$enableval], [XTRANS_SEND_FDS=auto])
+ 
+ case "x$XTRANS_SEND_FDS" in
+diff --git a/include/dix-config.h.in b/include/dix-config.h.in
+index f8df86608..3bd22b8bb 100644
+--- a/include/dix-config.h.in
++++ b/include/dix-config.h.in
+@@ -452,9 +452,6 @@
+ /* Wrap SIGBUS to catch MIT-SHM faults */
+ #undef BUSFAULT
+ 
+-/* Directory for shared memory temp files */
+-#undef SHMDIR
+-
+ /* Don't let Xdefs.h define 'pointer' */
+ #define _XTYPEDEF_POINTER       1
+ 
+diff --git a/include/meson.build b/include/meson.build
+index 4a0c12f5a..04c41e999 100644
+--- a/include/meson.build
++++ b/include/meson.build
+@@ -91,11 +91,6 @@ conf_data.set('SYSTEMD_LOGIND', build_systemd_logind)
+ conf_data.set('NEED_DBUS', build_systemd_logind or build_hal)
+ conf_data.set('CONFIG_WSCONS', host_machine.system() == 'openbsd')
+ 
+-# XXX: SHMDIR is weird in autoconf, probing the build system for
+-# various tmp directories.  Could we replace it with C code at runtime
+-# that just uses whatever directory works?
+-conf_data.set_quoted('SHMDIR', '/tmp')
+-
+ conf_data.set('HAVE_XSHMFENCE', xshmfence_dep.found())
+ conf_data.set('WITH_LIBDRM', libdrm_dep.found())
+ conf_data.set('GLAMOR_HAS_EGL_QUERY_DMABUF',
+-- 
+2.19.2
+

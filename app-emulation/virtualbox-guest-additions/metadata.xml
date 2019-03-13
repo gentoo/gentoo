@@ -5,8 +5,5 @@
     <email>polynomial-c@gentoo.org</email>
     <name>Lars Wendler</name>
   </maintainer>
-  <maintainer type="person">
-    <email>masterzorag@gmail.com</email>
-    <description>Proxy maintainer. CC him on bugs</description>
-  </maintainer>
-</pkgmetadata>
+  </pkgmetadata>
+

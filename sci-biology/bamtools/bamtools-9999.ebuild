@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit cmake-utils multibuild
 
@@ -23,8 +23,8 @@ IUSE="static-libs"
 RDEPEND="
 	>=dev-libs/jsoncpp-1.8.0:=
 	sys-libs/zlib:="
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 pkg_setup() {
 	[[ ${MERGE_TYPE} != binary ]] &&
@@ -43,17 +43,8 @@ src_prepare() {
 
 src_configure() {
 	my_configure() {
-		case "${MULTIBUILD_ID}" in
-			static*)
-				local mycmakeargs=( -DBUILD_SHARED_LIBS=OFF )
-				;;
-			shared)
-				local mycmakeargs=( -DBUILD_SHARED_LIBS=ON )
-				;;
-			*)
-				die "${MULTIBUILD_ID} is not recognized"
-				;;
-		esac
+		[[ ${MULTIBUILD_ID} == static-libs* ]] &&
+			local mycmakeargs=( -DBUILD_SHARED_LIBS=OFF )
 
 		cmake-utils_src_configure
 	}

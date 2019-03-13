@@ -1,0 +1,23 @@
+gnu-efi-3.0.8 added StrnCpy. This caused conflict with elilo's definition:
+  ./../fs/../strops.h:30:16: error: conflicting types for 'StrnCpy'
+  extern CHAR16 *StrnCpy(OUT CHAR16 *dst, IN const CHAR16 *src, UINTN count);
+                  ^~~~~~~
+
+Work it around by always using private copy.
+
+Reported-by: Bill Glessner
+--- a/strops.h
++++ b/strops.h
+@@ -29,3 +29,4 @@
+ extern CHAR16 *StrChr(IN const CHAR16 *s, const CHAR16 c);
++#define StrnCpy elilo_StrnCpy
+ extern CHAR16 *StrnCpy(OUT CHAR16 *dst, IN const CHAR16 *src, UINTN count);
+ extern CHAR8 *StrnXCpy(OUT CHAR8 *dst, IN const CHAR16 *src, UINTN count);
+--- a/strops.c
++++ b/strops.c
+@@ -27,4 +27,6 @@
+ #include <efilib.h>
+ 
++#include "strops.h"
++
+ //#define CHAR_NULL    (CHAR16)'\0'

@@ -1,0 +1,11 @@
+Index: depthimage_to_laserscan-1.0.7/src/DepthImageToLaserScanNodelet.cpp
+===================================================================
+--- depthimage_to_laserscan-1.0.7.orig/src/DepthImageToLaserScanNodelet.cpp
++++ depthimage_to_laserscan-1.0.7/src/DepthImageToLaserScanNodelet.cpp
+@@ -57,5 +57,5 @@ private:
+ }
+ 
+ #include <pluginlib/class_list_macros.h>
+-PLUGINLIB_DECLARE_CLASS(depthimage_to_laserscan, DepthImageToLaserScanNodelet, depthimage_to_laserscan::DepthImageToLaserScanNodelet, nodelet::Nodelet);
++PLUGINLIB_EXPORT_CLASS(depthimage_to_laserscan::DepthImageToLaserScanNodelet, nodelet::Nodelet)
+ 

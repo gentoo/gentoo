@@ -1,0 +1,20 @@
+--- a/poe.el	2018-07-27 19:34:05.959194677 -0500
++++ b/poe.el	2018-07-27 19:40:06.409212629 -0500
+@@ -1081,7 +1081,7 @@
+ If third arg LITERAL is non-nil, insert NEWTEXT literally.
+ Otherwise treat `\' as special:
+   `\&' in NEWTEXT means substitute original matched text.
+-  `\N' means substitute what matched the Nth `\(...\)'.
++  `\\N' means substitute what matched the Nth `\(...\)'.
+        If Nth parens didn't match, substitute nothing.
+   `\\' means insert one `\'.
+ FIXEDCASE and LITERAL are optional arguments.
+@@ -1133,7 +1133,7 @@
+ If third arg LITERAL is non-nil, insert NEWTEXT literally.
+ Otherwise treat `\' as special:
+   `\&' in NEWTEXT means substitute original matched text.
+-  `\N' means substitute what matched the Nth `\(...\)'.
++  `\\N' means substitute what matched the Nth `\(...\)'.
+        If Nth parens didn't match, substitute nothing.
+   `\\' means insert one `\'.
+ FIXEDCASE and LITERAL are optional arguments.

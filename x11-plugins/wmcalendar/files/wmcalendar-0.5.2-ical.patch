@@ -1,13 +1,13 @@
---- a/Src/calendar.h
-+++ b/Src/calendar.h
+--- a/calendar.h
++++ b/calendar.h
 @@ -1,4 +1,4 @@
 -#include <ical.h>
 +#include <libical/ical.h>
  #include <stdlib.h>
  #include <gtk/gtk.h>
  #include <string.h>
---- a/Src/calendarfunc.h
-+++ b/Src/calendarfunc.h
+--- a/calendarfunc.h
++++ b/calendarfunc.h
 @@ -22,7 +22,7 @@
  
  #include <unistd.h>

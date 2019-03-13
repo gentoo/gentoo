@@ -1,0 +1,33 @@
+--- a/configure.ac	2010-01-11 01:56:36.000000000 +0100
++++ b/configure.ac	2018-09-27 15:05:20.205734233 +0200
+@@ -94,7 +94,7 @@
+ AC_CHECK_HEADERS([alloca.h ctype.h errno.h gnu/libc-version.h langinfo.h libintl.h limits.h locale.h stdargs.h stddef.h stdint.h stdlib.h string.h sys/file.h sys/stat.h time.h tre/tre.h unicode/umachine.h unicode/unorm.h  uninum/unicode.h uninum/nsdefs.h uninum/uninum.h unistd.h wchar.h wctype.h])
+ 
+ if ${utf8proc}; then
+-AC_CHECK_HEADER([utf8proc.h],[AC_DEFINE([HAVE_UTF8PROC_H], [1],[Define to 1 if you have <utf8proc.h>.])],[AC_MSG_ERROR([LIB UTF8PROC and its header is obligatory. See http://www.flexiguided.de/publications.utf8proc.en.html])])
++AC_CHECK_HEADER([libutf8proc/utf8proc.h],[AC_DEFINE([HAVE_UTF8PROC_H], [1],[Define to 1 if you have <libutf8proc/utf8proc.h>.])],[AC_MSG_ERROR([LIB UTF8PROC and its header is obligatory. See http://www.flexiguided.de/publications.utf8proc.en.html])])
+ fi
+ 
+ if ${uninum}; then
+--- a/misc.c	2009-08-05 05:09:21.000000000 +0200
++++ b/misc.c	2018-09-27 15:10:37.355738021 +0200
+@@ -41,7 +41,7 @@
+ #include <unicode/umachine.h>
+ #include <unicode/unorm.h>
+ #else
+-#include <utf8proc.h>
++#include <libutf8proc/utf8proc.h>
+ #include "unorm.h"
+ #endif
+ #include <tre/regex.h>
+--- a/msort.c	2010-01-11 01:53:32.000000000 +0100
++++ b/msort.c	2018-09-27 15:10:30.275737936 +0200
+@@ -57,7 +57,7 @@
+ #ifndef USEUTF8PROC
+ #include <unicode/unorm.h>
+ #else
+-#include <utf8proc.h>
++#include <libutf8proc/utf8proc.h>
+ #include "unorm.h"
+ #endif
+ #ifdef HAVE_UNINUM_UNICODE_H

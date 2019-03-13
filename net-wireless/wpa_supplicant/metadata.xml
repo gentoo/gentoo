@@ -2,10 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>gurligebis@gentoo.org</email>
-		<name>Bjarke Istrup Pedersen</name>
-	</maintainer>
-	<maintainer type="person">
 		<email>zerochaos@gentoo.org</email>
 		<name>Rick Farina</name>
 	</maintainer>
@@ -18,6 +14,7 @@
 		<flag name="p2p">Add support for Wi-Fi Direct mode</flag>
 		<flag name="ps3">Add support for ps3 hypervisor driven gelic wifi</flag>
 		<flag name="privsep">Enable wpa_priv privledge separation binary</flag>
+		<flag name="suiteb">Enable enable NSA Suite B encryption</flag>
 		<flag name="tdls">Add support for Tunneled Direct Link Setup (802.11z)</flag>
 		<flag name="uncommon-eap-types">Add support for GPSK, SAKE, GPSK_SHA256, IKEV2 and EKE</flag>
 		<flag name="wps">Add support for Wi-Fi Protected Setup</flag>

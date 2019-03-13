@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,14 +14,13 @@ SRC_URI="https://bues.ch/${PN}/${P}.tar.bz2"
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="+pm-utils qt4 +udev"
+IUSE="+pm-utils +udev"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
 	virtual/libusb:1
 	pm-utils? ( sys-power/pm-utils )
-	qt4? ( >=dev-python/pyside-1.2.1[${PYTHON_USEDEP}] )
 	udev? ( virtual/udev )
 "
 DEPEND="${PYTHON_DEPS}
@@ -67,11 +66,9 @@ src_install() {
 	newinitd "${FILESDIR}"/razerd.init.d-r2 razerd
 	dodoc README.* HACKING.* razer.conf
 
-	if ! use qt4; then
-		rm "${D%/}"/usr/bin/qrazercfg{,-applet} || die
-		rm "${D%/}"/usr/share/icons/hicolor/scalable/apps/razercfg* || die
-		rm "${D%/}"/usr/share/applications/razercfg.desktop || die
-	fi
+	rm "${D%/}"/usr/bin/qrazercfg{,-applet} || die
+	rm "${D%/}"/usr/share/icons/hicolor/scalable/apps/razercfg* || die
+	rm "${D%/}"/usr/share/applications/razercfg.desktop || die
 
 	if ! use pm-utils; then
 		rm "${D%/}/usr/$(get_libdir)/pm-utils/sleep.d/80razer" || die

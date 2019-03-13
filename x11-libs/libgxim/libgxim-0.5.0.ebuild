@@ -1,10 +1,10 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 USE_RUBY="ruby21 ruby22 ruby23 ruby24"
 
-inherit autotools ltprune ruby-single
+inherit autotools ruby-single
 
 DESCRIPTION="GObject-based XIM protocol library"
 HOMEPAGE="https://tagoh.bitbucket.io/libgxim"
@@ -19,9 +19,11 @@ RDEPEND="dev-libs/dbus-glib
 	dev-libs/glib:2
 	sys-apps/dbus
 	virtual/libintl
-	x11-libs/gtk+:2"
+	x11-libs/gtk+:2
+	x11-libs/libX11"
 DEPEND="${RDEPEND}
 	${RUBY_DEPS}
+	dev-util/glib-utils
 	dev-util/intltool
 	sys-devel/autoconf-archive
 	sys-devel/gettext
@@ -57,5 +59,5 @@ src_configure() {
 
 src_install() {
 	default
-	prune_libtool_files
+	find "${D}" -name '*.la' -delete || die
 }

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>chrisadr@gentoo.org</email>
+		<name>Christopher Díaz Riveros</name>
+		<description>Primary maintainer</description>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+	</maintainer>
+	<longdescription>
+		installer is designed to aid users during the installation
+		process of Gentoo Linux. It is capable of walk a beginner 
+		user through the regular installation process following key
+		topics from the Gentoo Handbook.
+	</longdescription>
+</pkgmetadata>

@@ -1,0 +1,51 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -53,6 +53,7 @@
+ 
+ dnl Check for libraries
+ dnl Add your macro calls to check required libraries, if you have any.
++PKG_CHECK_MODULES([FFI], [libffi])
+ 
+ dnl Platform-dependent configuration.
+ AC_ARG_ENABLE(objc, [  --enable-objc           turn on Objective-C support])
+--- a/src/Makefile.in
++++ b/src/Makefile.in
+@@ -20,9 +20,10 @@
+ GAUCHE_PACKAGE = @GAUCHE_PACKAGE@
+ INSTALL        = @GAUCHE_INSTALL@
+ 
+-CPPFLAGS       = -I./libffi/include -DGAUCHE_API_0_8_8 @CPPFLAGS@
++CPPFLAGS       = -DGAUCHE_API_0_8_8 @FFI_CFLAGS@ @CPPFLAGS@
++CFLAGS         = @CFLAGS@
+ LDFLAGS        = @LDFLAGS@
+-LIBS           = libffi/.libs/libffi.a @LIBS@
++LIBS           = @FFI_LIBS@ @LIBS@
+ 
+ YACC           = @YACC@
+ 
+@@ -38,7 +39,7 @@
+ SCMFILES  = 
+ HEADERS   = 
+ 
+-TARGET    = libffi/.libs/libffi.a $(ARCHFILES)
++TARGET    = $(ARCHFILES)
+ GENERATED = libffi
+ CONFIG_GENERATED = libffi/Makefile Makefile cwcompile
+ 
+@@ -62,13 +63,13 @@
+ 	cd libffi; $(MAKE)
+ 
+ c-ffi.$(SOEXT): $(ffi_SRCS)
+-	$(GAUCHE_PACKAGE) compile --cppflags="$(CPPFLAGS)" --ldflags="$(LDFLAGS)" --libs="$(LIBS)" --verbose c-ffi $(ffi_SRCS)
++	$(GAUCHE_PACKAGE) compile --cppflags="$(CPPFLAGS)" --cflags="$(CFLAGS)" --ldflags="$(LDFLAGS)" --libs="$(LIBS)" --verbose c-ffi $(ffi_SRCS)
+ 
+ c-lex.$(SOEXT): $(clex_SRCS)
+-	$(GAUCHE_PACKAGE) compile --cppflags="$(CPPFLAGS)" --ldflags="$(LDFLAGS)" --libs="$(LIBS)" --verbose c-lex $(clex_SRCS)
++	$(GAUCHE_PACKAGE) compile --cppflags="$(CPPFLAGS)" --cflags="$(CFLAGS)" --ldflags="$(LDFLAGS)" --libs="$(LIBS)" --verbose c-lex $(clex_SRCS)
+ 
+ c-parser.$(SOEXT): $(cparser_SRCS) y.tab.c
+-	$(GAUCHE_PACKAGE) compile --cppflags="$(CPPFLAGS)" --ldflags="$(LDFLAGS)" --libs="$(LIBS) $(cparser_LIBS)" --verbose c-parser $(cparser_SRCS)
++	$(GAUCHE_PACKAGE) compile --cppflags="$(CPPFLAGS)" --cflags="$(CFLAGS)" --ldflags="$(LDFLAGS)" --libs="$(LIBS) $(cparser_LIBS)" --verbose c-parser $(cparser_SRCS)
+ 
+ c-grammar.y: c-grammar.scm genyacc.scm
+ 	$(GOSH) genyacc.scm --outfile=c-grammar.y $<

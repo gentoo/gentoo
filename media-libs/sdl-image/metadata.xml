@@ -5,7 +5,4 @@
 		<email>games@gentoo.org</email>
 		<name>Gentoo Games Project</name>
 	</maintainer>
-	<use>
-		<flag name="webp">support loading WEBP images</flag>
-	</use>
 </pkgmetadata>

@@ -1,0 +1,10 @@
+--- a/w3mimg/fb/fb_imlib2.c
++++ b/w3mimg/fb/fb_imlib2.c
+@@ -3,7 +3,6 @@
+                 fb_imlib2.c 0.3 Copyright (C) 2002, hito
+  **************************************************************************/
+ 
+-#include <X11/Xlib.h>
+ #include <Imlib2.h>
+ #include "fb.h"
+ #include "fb_img.h"

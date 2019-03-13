@@ -1,7 +1,5 @@
-Index: stk-4.4.3/configure.ac
-===================================================================
---- stk-4.4.3.orig/configure.ac
-+++ stk-4.4.3/configure.ac
+--- a/configure.ac
++++ b/configure.ac
 @@ -65,7 +65,7 @@ if test "$debug" = "yes"; then
  else
    AC_SUBST( debug, [no] )

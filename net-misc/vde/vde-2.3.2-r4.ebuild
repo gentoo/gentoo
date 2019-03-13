@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit ltprune python-single-r1 user
+inherit ltprune python-single-r1 user flag-o-matic
 
 MY_P="${PN}2-${PV}"
 
@@ -41,6 +41,7 @@ pkg_setup() {
 }
 
 src_configure() {
+	filter-flags -O0 -Os
 	econf \
 		$(use_enable pcap) \
 		$(use_enable python) \

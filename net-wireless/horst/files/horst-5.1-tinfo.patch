@@ -1,0 +1,11 @@
+--- a/Makefile
++++ b/Makefile
+@@ -54,7 +54,7 @@
+ 	radiotap/radiotap.o			   \
+ 	util.o					   \
+ 	wlan_util.o
+-LIBS=-lncurses -lm
++LIBS=$(shell $(PKG_CONFIG) --libs ncurses ) -lm
+ CFLAGS+=-std=gnu99 -Wall -Wextra -g -I. -DVERSION=\"$(VERSION)\"
+ 
+ ifeq ($(OSX),1)

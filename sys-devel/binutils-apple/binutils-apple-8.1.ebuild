@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -17,9 +17,9 @@ SRC_URI="http://www.opensource.apple.com/tarballs/ld64/${LD64}.tar.gz
 	http://www.opensource.apple.com/tarballs/dyld/${DYLD}.tar.gz
 	https://dev.gentoo.org/~grobian/distfiles/${PN}-patches-4.3-r1.tar.bz2
 	https://dev.gentoo.org/~grobian/distfiles/${PN}-patches-5.1-r2.tar.bz2
-	https://dev.gentoo.org/~grobian/distfiles/${PN}-patches-7.0-r2.tar.bz2
-	https://dev.gentoo.org/~grobian/distfiles/${PN}-patches-7.3-r1.tar.bz2
-	https://dev.gentoo.org/~grobian/distfiles/${PN}-patches-8.2-r0.tar.bz2"
+	https://dev.gentoo.org/~grobian/distfiles/${PN}-patches-7.0-r3.tar.bz2
+	https://dev.gentoo.org/~grobian/distfiles/${PN}-patches-7.3-r2.tar.bz2
+	https://dev.gentoo.org/~grobian/distfiles/${PN}-patches-8.2-r1.tar.bz2"
 
 LICENSE="APSL-2"
 KEYWORDS="~x64-macos ~x86-macos"

@@ -5,4 +5,12 @@
     <email>perl@gentoo.org</email>
     <name>Gentoo Perl Project</name>
   </maintainer>
+  <upstream>
+    <remote-id type="cpan">Unicode-Stringprep</remote-id>
+    <remote-id type="cpan-module">Unicode::Stringprep</remote-id>
+    <remote-id type="cpan-module">Unicode::Stringprep::BiDi</remote-id>
+    <remote-id type="cpan-module">Unicode::Stringprep::Mapping</remote-id>
+    <remote-id type="cpan-module">Unicode::Stringprep::Prohibited</remote-id>
+    <remote-id type="cpan-module">Unicode::Stringprep::Unassigned</remote-id>
+  </upstream>
 </pkgmetadata>

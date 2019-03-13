@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -25,7 +25,7 @@ pkg_nofetch() {
 	elog "Due to licensing restrictions, you need to download the distfile manually."
 	elog "Please navigate to ${DOWNLOADPAGE}"
 	elog "Sign in with your Altera account (you need to register)"
-	elog "Download ${SRC_URI} and place it into ${DISTDIR}"
+	elog "Download ${SRC_URI} and place it into your DISTDIR directory"
 	elog "And restart the installation."
 }
 

@@ -1,0 +1,42 @@
+#!/sbin/openrc-run
+# Copyright 1999-2018 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+extra_started_commands="reload"
+command="/usr/sbin/${RC_SVCNAME}"
+pidfile="/run/${RC_SVCNAME}.pid"
+
+# Why run in the foreground? Typically amavisd will drop privileges
+# and then write its own PID file in its home directory. This is fine
+# so long as you use e.g. "amavisd stop" to stop the daemon. But, we
+# want to use start-stop-daemon to do it. And start-stop-daemon will
+# send a signal *as root* to the PID contained in the PID file. So, we
+# don't want to rely on a PID file that's controlled by a non-root
+# user.
+#
+# As a workaround, we run amavisd in the foreground, and let
+# start-stop-daemon push it into the background with its own PID
+# file. We don't pass "-P" via command_args below because we don't
+# want amavisd to try (and fail) to create that PID file. This does
+# mean that you can't run "amavisd stop" or "amavisd reload" directly;
+# sorry!
+command_args="foreground"
+command_background="true"
+
+# The amavisd daemon provides its own "stop" and "reload" functions,
+# but if you read into the source, they just do what start-stop-daemon
+# is going to do anyway. The "stop" command for amavisd will send a
+# SIGTERM immediately, and then a SIGKILL after 60 seconds. So, we do
+# that too. The "reload" command sends a SIGHUP; see reload() below.
+retry="SIGTERM/15 SIGKILL/60"
+
+depend() {
+  use net logger antivirus snmpd
+  before mta
+}
+
+reload() {
+  ebegin "Reloading ${RC_SVCNAME}"
+  start-stop-daemon --signal HUP --pidfile "${pidfile}"
+  eend $?
+}

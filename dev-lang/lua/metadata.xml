@@ -9,5 +9,8 @@
 	<email>williamh@gentoo.org</email>
 	<name>William Hubbs</name>
 </maintainer>
-<use><flag name="deprecated">make deprecated data structures/routines available</flag></use>
+<use>
+	<flag name="deprecated">make deprecated data structures/routines available</flag>
+	<flag name="test-complete">Run the complete (non-portable) testsuite</flag>
+</use>
 </pkgmetadata>

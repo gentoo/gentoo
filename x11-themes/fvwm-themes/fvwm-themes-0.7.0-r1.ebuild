@@ -1,8 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=2
-inherit autotools eutils
+EAPI=6
+inherit autotools
 
 DESCRIPTION="A configuration framework for the fvwm window manager"
 HOMEPAGE="http://fvwm-themes.sourceforge.net/"
@@ -17,21 +17,19 @@ RDEPEND=">=x11-wm/fvwm-2.6.2"
 DEPEND="${RDEPEND}
 	gnome? ( virtual/imagemagick-tools )"
 
-src_prepare() {
-	epatch \
-		"${FILESDIR}"/${P}-gentoo.patch \
-		"${FILESDIR}"/${P}-posix-sort.patch
+PATCHES=(
+	"${FILESDIR}/${P}-gentoo.patch"
+	"${FILESDIR}/${P}-posix-sort.patch"
+)
 
+src_prepare() {
+	default
+	mv configure.in configure.ac || die "moving configure.in failed"
 	eautoreconf
 }
 
 src_configure() {
 	econf $(use_enable gnome gnome-icons)
-}
-
-src_install() {
-	emake DESTDIR="${D}" install || die
-	dodoc AUTHORS ChangeLog NEWS README TODO
 }
 
 pkg_postinst() {

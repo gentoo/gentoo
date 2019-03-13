@@ -7,7 +7,7 @@
 	</maintainer>
 	<longdescription>
 		The psqueues package provides
-		&lt;http://en.wikipedia.org/wiki/Priority_queue Priority Search Queues&gt; in
+		&lt;https://en.wikipedia.org/wiki/Priority_queue Priority Search Queues&gt; in
 		three different flavors.
 		
 		* @OrdPSQ k p v@, which uses the @Ord k@ instance to provide fast insertion,
@@ -18,7 +18,7 @@
 		considerably faster and provides a slightly different API.
 		
 		* @IntPSQ p v@ is a far more efficient implementation. It fixes the key type
-		to @Int@ and uses a &lt;http://en.wikipedia.org/wiki/Radix_tree radix tree&gt;
+		to @Int@ and uses a &lt;https://en.wikipedia.org/wiki/Radix_tree radix tree&gt;
 		(like @IntMap@) with an additional min-heap property.
 		
 		* @HashPSQ k p v@ is a fairly straightforward extension of @IntPSQ@: it

@@ -1,7 +1,7 @@
 http://bugs.gentoo.org/show_bug.cgi?id=465882
 
---- CMakeLists.txt
-+++ CMakeLists.txt
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
 @@ -34,7 +34,7 @@
    FIND_PACKAGE( ZLIB REQUIRED )
  ENDIF( WITH_ZLIB )

@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
-    <email>dev-zero@gentoo.org</email>
-    <name>Tiziano Müller</name>
-  </maintainer>
-<maintainer type="project">
+  <maintainer type="project">
     <email>virtualization@gentoo.org</email>
     <name>Gentoo Virtualization Project</name>
   </maintainer>
+  <use>
+    <flag name="passthrough">Enable smartcard passthrough support via <pkg>sys-apps/pcsc-lite</pkg></flag>
+  </use>
 </pkgmetadata>

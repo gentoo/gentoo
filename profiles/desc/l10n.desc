@@ -57,6 +57,7 @@ dz - Dzongkha
 el - Modern Greek
 en - English
 en-AU - English (Australia)
+en-CA - English (Canada)
 en-GB - English (United Kingdom)
 en-US - English (United States)
 en-ZA - English (South Africa)
@@ -65,12 +66,8 @@ es - Spanish
 es-419 - Spanish (Latin America)
 es-AR - Spanish (Argentina)
 es-CL - Spanish (Chile)
-es-CO - Spanish (Colombia)
-es-DO - Spanish (Dominican Republic)
 es-ES - Spanish (Spain)
 es-MX - Spanish (Mexico)
-es-UY - Spanish (Uruguay)
-es-VE - Spanish (Venezuela)
 et - Estonian
 eu - Basque
 fa - Persian
@@ -126,7 +123,6 @@ ms - Malay (macrolanguage)
 my - Burmese
 nan - Min Nan Chinese
 nb - Norwegian Bokmål
-nds - Low German
 ne - Nepali
 nl - Dutch
 nn - Norwegian Nynorsk
@@ -137,7 +133,6 @@ oc - Occitan
 om - Oromo
 or - Oriya (macrolanguage)
 pa - Punjabi
-pam - Kapampangan
 pl - Polish
 pt - Portuguese
 pt-BR - Portuguese (Brazil)
@@ -150,19 +145,15 @@ sa - Sanskrit
 sat - Santali
 sco - Scots
 sd - Sindhi
-se - Northern Sami
 si - Sinhala
 sid - Sidamo
 sk - Slovak
 sl - Slovenian
-sn - Shona
 so - Somali
 son - Songhai languages
 sq - Albanian
 sr - Serbian
-sr-ijekavsk - Serbian (Ijekavian pronunciation)
 sr-Latn - Serbian (Latin script)
-sr-Latn-ijekavsk - Serbian (Latin script, Ijekavian pronunciation)
 ss - Swati
 st - Southern Sotho
 sv - Swedish
@@ -183,15 +174,11 @@ tt - Tatar
 ug - Uyghur
 uk - Ukrainian
 ur - Urdu
-ur-PK - Urdu (Pakistan)
 uz - Uzbek
-uz-Cyrl - Uzbek (Cyrillic script)
 ve - Venda
 vi - Vietnamese
-wa - Walloon
 xh - Xhosa
 zh - Chinese
 zh-CN - Chinese (China)
-zh-HK - Chinese (Hong Kong)
 zh-TW - Chinese (Taiwan)
 zu - Zulu

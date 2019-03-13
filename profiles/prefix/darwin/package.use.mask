@@ -1,11 +1,6 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-
-# Andreas Sturmlechner <asturm@gentoo.org> (03 Sep 2017)
-# Required media-libs/phonon no longer provides USE=aqua
-dev-qt/qtdemo phonon
-
 # Fabian Groffen <grobian@gentoo.org> (06 Apr 2016)
 # dev-libs/re2 needs love, bug #563932
 app-misc/sphinx re2
@@ -29,10 +24,6 @@ media-gfx/tachyon mpi
 # Fabian Groffen <grobian@gentoo.org> (01 Jan 2012)
 # gdb server is not supported on this platform
 sys-devel/gdb server
-
-# Fabian Groffen <grobian@gentoo.org> (16 Feb 2011)
-# De-mask of OSX-specific USE-flags that are useful for VLC
-media-video/vlc -audioqueue -macosx-dialog-provider -macosx-eyetv -macosx-quartztext
 
 # Fabian Groffen <grobian@gentoo.org> (08 Jan 2011)
 # Darwin has libuuid from util-linux

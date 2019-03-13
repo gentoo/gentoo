@@ -8,7 +8,7 @@ inherit elisp
 
 DESCRIPTION="A chess client and library for Emacs"
 HOMEPAGE="https://elpa.gnu.org/packages/chess.html
-	http://www.emacswiki.org/emacs/ChessMode"
+	https://www.emacswiki.org/emacs/ChessMode"
 # Taken from https://elpa.gnu.org/packages/${P}.tar
 SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.tar.xz
 	mirror://gentoo/emacs-chess-sounds-${PV%.*}.tar.bz2

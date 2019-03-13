@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="4"
@@ -16,7 +16,7 @@ IUSE="debug X"
 
 RDEPEND="X? ( x11-libs/libX11 )"
 DEPEND="${RDEPEND}
-	X? ( x11-proto/xproto )"
+	X? ( x11-base/xorg-proto )"
 
 src_prepare() {
 	epatch "${FILESDIR}"/${PV}-gcc46.patch

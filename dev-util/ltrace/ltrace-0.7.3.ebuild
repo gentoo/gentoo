@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -8,7 +8,7 @@ inherit eutils autotools
 NUM="3947"
 
 DESCRIPTION="trace library calls made at runtime"
-HOMEPAGE="http://ltrace.alioth.debian.org/"
+HOMEPAGE="https://www.ltrace.org/"
 SRC_URI="https://alioth.debian.org/frs/download.php/file/${NUM}/${P}.tar.bz2"
 
 LICENSE="GPL-2"

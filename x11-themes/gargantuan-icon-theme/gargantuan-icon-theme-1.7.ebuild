@@ -1,11 +1,11 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 inherit gnome2-utils
 
 DESCRIPTION="Gargantuan Icon Theme"
-HOMEPAGE="http://www.gnome-look.org/content/show.php?content=24364"
+HOMEPAGE="https://www.gnome-look.org/content/show.php?content=24364"
 SRC_URI="mirror://gentoo/${P}.tar.bz2"
 
 LICENSE="public-domain"

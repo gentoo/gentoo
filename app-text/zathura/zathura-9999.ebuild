@@ -1,69 +1,62 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-inherit eutils multilib toolchain-funcs virtualx xdg-utils
-
-if [[ ${PV} == *9999 ]]; then
-	inherit git-r3
-	EGIT_REPO_URI="https://git.pwmt.org/pwmt/zathura.git"
-	EGIT_BRANCH="develop"
-else
-	KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux"
-	SRC_URI="http://pwmt.org/projects/${PN}/download/${P}.tar.gz"
-fi
+inherit gnome2-utils meson virtualx xdg-utils
 
 DESCRIPTION="A highly customizable and functional document viewer"
 HOMEPAGE="http://pwmt.org/projects/zathura/"
 
+if [[ ${PV} == *9999 ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://git.pwmt.org/pwmt/${PN}.git"
+	EGIT_BRANCH="develop"
+else
+	SRC_URI="https://pwmt.org/projects/zathura/download/${P}.tar.xz"
+	KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux"
+fi
+
 LICENSE="ZLIB"
 SLOT="0"
-IUSE="+magic sqlite synctex test"
+IUSE="+magic seccomp sqlite synctex test"
 
-RDEPEND=">=dev-libs/girara-0.2.7:3=
-	>=dev-libs/glib-2.32:2=
-	x11-libs/cairo:=
-	>=x11-libs/gtk+-3.6:3
-	magic? ( sys-apps/file:= )
-	sqlite? ( dev-db/sqlite:3= )
-	synctex? ( >=app-text/texlive-core-2015 )"
+RDEPEND=">=dev-libs/girara-0.3.1
+	>=dev-libs/glib-2.50:2
+	dev-python/sphinx
+	>=sys-devel/gettext-0.19.8
+	x11-libs/cairo
+	>=x11-libs/gtk+-3.22:3
+	magic? ( sys-apps/file )
+	seccomp? ( sys-libs/libseccomp )
+	sqlite? ( >=dev-db/sqlite-3.5.9:3 )
+	synctex? ( app-text/texlive-core )"
+
 DEPEND="${RDEPEND}
-	sys-devel/gettext
-	virtual/pkgconfig
 	test? ( dev-libs/check )"
 
-src_configure() {
-	myzathuraconf=(
-		WITH_MAGIC=$(usex magic 1 0)
-		WITH_SQLITE=$(usex sqlite 1 0)
-		WITH_SYNCTEX=$(usex synctex 1 0)
-		PREFIX="${EPREFIX}"/usr
-		LIBDIR='${PREFIX}'/$(get_libdir)
-		CC="$(tc-getCC)"
-		SFLAGS=''
-		VERBOSE=1
-		DESTDIR="${D}"
-	)
-}
+BDEPEND="virtual/pkgconfig"
 
-src_compile() {
-	emake "${myzathuraconf[@]}"
+src_configure() {
+	local emesonargs=(
+		-Denable-magic=$(usex magic true false)
+		-Denable-seccomp=$(usex seccomp true false)
+		-Denable-sqlite=$(usex sqlite true false)
+		-Denable-synctex=$(usex synctex true false)
+		)
+	meson_src_configure
 }
 
 src_test() {
-	Xemake "${myzathuraconf[@]}" test
-}
-
-src_install() {
-	emake "${myzathuraconf[@]}" install
-	dodoc AUTHORS
+	virtx meson_src_test
 }
 
 pkg_postinst() {
+	gnome2_icon_cache_update
 	xdg_desktop_database_update
 }
 
 pkg_postrm() {
+	gnome2_icon_cache_update
 	xdg_desktop_database_update
 }

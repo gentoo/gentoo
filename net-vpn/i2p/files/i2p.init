@@ -1,0 +1,19 @@
+#!/sbin/openrc-run
+# Copyright 1999-2018 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	need net
+}
+
+CONFIG_PATH="/var/lib/i2p/.i2p"
+INSTALL_PATH="/usr/share/i2p"
+WRAPPER_CONF="$INSTALL_PATH/wrapper.config"
+
+command=wrapper
+command_args="$WRAPPER_CONF wrapper.syslog.ident=i2p wrapper.logfile=$CONFIG_PATH/wrapper.log"
+command_background=true
+command_progress=true
+command_user=i2p
+pidfile="/var/run/i2p.pid"
+retry='SIGTERM/20 SIGKILL/20'

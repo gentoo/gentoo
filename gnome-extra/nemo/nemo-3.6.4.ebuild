@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,7 +13,7 @@ SRC_URI="https://github.com/linuxmint/nemo/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+ LGPL-2+ FDL-1.1"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="exif +introspection +nls packagekit tracker xmp"
 
 COMMON_DEPEND="
@@ -33,7 +33,7 @@ COMMON_DEPEND="
 
 	exif? ( >=media-libs/libexif-0.6.20:= )
 	introspection? ( >=dev-libs/gobject-introspection-0.6.4:= )
-	tracker? ( >=app-misc/tracker-0.12:= )
+	tracker? ( >=app-misc/tracker-0.12:0/100 )
 	xmp? ( >=media-libs/exempi-2.2.0:= )
 	sys-libs/libselinux
 "
@@ -56,7 +56,7 @@ DEPEND="${COMMON_DEPEND}
 	>=dev-util/intltool-0.40.1
 	sys-devel/gettext
 	virtual/pkgconfig
-	x11-proto/xproto
+	x11-base/xorg-proto
 
 	dev-util/gtk-doc
 	gnome-base/gnome-common

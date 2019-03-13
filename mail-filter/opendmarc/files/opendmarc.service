@@ -1,7 +1,6 @@
 [Unit]
 Description=Domain-based Message Authentication, Reporting and Conformance (DMARC) Milter
-Documentation=man:opendmarc(8) man:opendmarc.conf(5) man:opendmarc-expire(8) man:opendmarc-importstats(8) man:opendmarc-reports(8)
-man:opendmarc-check(8) man:opendmarc-import(8) man:opendmarc-params(8) http://www.trusteddomain.org/opendmarc/
+Documentation=man:opendmarc(8) man:opendmarc.conf(5) man:opendmarc-expire(8) man:opendmarc-importstats(8) man:opendmarc-reports(8) man:opendmarc-check(8) man:opendmarc-import(8) man:opendmarc-params(8) http://www.trusteddomain.org/opendmarc/
 After=network.target nss-lookup.target syslog.target
 
 [Service]

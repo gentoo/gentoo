@@ -6,7 +6,7 @@ EAPI=5
 inherit elisp
 
 DESCRIPTION="A folding-editor-like Emacs minor mode"
-HOMEPAGE="http://www.emacswiki.org/emacs/FoldingMode"
+HOMEPAGE="https://www.emacswiki.org/emacs/FoldingMode"
 # taken from http://git.savannah.gnu.org/cgit/emacs-tiny-tools.git
 SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.el.xz"
 

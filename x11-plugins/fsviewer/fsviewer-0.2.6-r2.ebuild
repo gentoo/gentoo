@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -20,7 +20,7 @@ RDEPEND=">=x11-wm/windowmaker-0.95.2
 	x11-libs/libXpm
 	x11-libs/libX11"
 DEPEND="${RDEPEND}
-	x11-proto/xproto
+	x11-base/xorg-proto
 	nls? ( sys-devel/gettext )"
 
 S=${WORKDIR}/${MY_P}

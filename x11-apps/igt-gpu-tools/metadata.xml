@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+ <email>x11@gentoo.org</email>
+ <name>X11</name>
+</maintainer>
+<use>
+ <flag name="chamelium">Enables support for building Chamelium tests</flag>
+ <flag name="glib">Support reading config files via glib helpers</flag>
+ <flag name="valgrind">Support valgrind annotations</flag>
+ <flag name="xrandr">Enable support for the X RandR extension</flag>
+</use>
+</pkgmetadata>

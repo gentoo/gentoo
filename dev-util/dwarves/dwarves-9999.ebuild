@@ -1,12 +1,12 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-EGIT_REPO_URI="git://git.kernel.org/pub/scm/devel/pahole/pahole.git"
+EGIT_REPO_URI="https://git.kernel.org/pub/scm/devel/pahole/pahole.git"
 
 PYTHON_COMPAT=( python2_7 )
-inherit multilib cmake-utils git-2 python-single-r1
+inherit multilib cmake-utils git-r3 python-single-r1
 
 DESCRIPTION="pahole (Poke-a-Hole) and other DWARF2 utilities"
 HOMEPAGE="https://git.kernel.org/cgit/devel/pahole/pahole.git/"

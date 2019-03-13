@@ -1,0 +1,12 @@
+#!/bin/sh
+
+# Get all installed zip files
+zips=$(ls /usr/share/games/eduke32/*.zip)
+
+# Create opts for eduke32
+for zip in ${zips[@]}; do
+	opts+="-g ${zip} "
+done
+
+# Switch to /tmp, for writing there the log file and run eduke32 with set opts
+cd /tmp && eduke32 ${opts}

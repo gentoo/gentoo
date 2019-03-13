@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -20,7 +20,7 @@ EGIT_REPO_URI="https://github.com/${MY_PN}/${PN}.git"
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS=""
-IUSE="doc examples jpeg math opencl openmp osd png scrollview static-libs tiff training webp"
+IUSE="doc jpeg math opencl openmp osd png scrollview static-libs tiff training webp"
 
 # List of supported Gentoo linguas and their upstream mapping
 # https://github.com/tesseract-ocr/tesseract/wiki/Data-Files
@@ -72,7 +72,7 @@ DEPEND="${CDEPEND}
 RDEPEND="${CDEPEND}
 	scrollview? ( >=virtual/jre-1.7 )"
 
-DOCS=( AUTHORS ChangeLog NEWS README.md )
+DOCS=( AUTHORS ChangeLog README.md )
 
 PATCHES=(
 	"${FILESDIR}/${PN}-4.00.00-use-system-piccolo2d.patch"
@@ -128,11 +128,6 @@ src_install() {
 
 	if use training; then
 		emake DESTDIR="${D}" training-install
-	fi
-
-	if use examples; then
-		insinto /usr/share/doc/${PF}/examples
-		doins testing/eurotext.tif testing/phototest.tif
 	fi
 
 	insinto /usr/share/tessdata

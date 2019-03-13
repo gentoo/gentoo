@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
-    <email>hwoarang@gentoo.org</email>
-    <name>Markos Chandras</name>
-  </maintainer>
+  <!-- maintainer-needed -->
   <longdescription lang="en">
 CONMUX is a console abstractor.  Presenting any console with a
 consistent location, naming and semantic.  Access to the console,

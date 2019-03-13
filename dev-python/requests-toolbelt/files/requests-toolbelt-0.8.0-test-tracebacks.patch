@@ -1,0 +1,36 @@
+From e130ad521d3b5a14cd9494213e6ca9f52d0d9a2e Mon Sep 17 00:00:00 2001
+From: Brian Dolbec <brian.dolbec@sony.com>
+Date: Wed, 7 Mar 2018 21:52:25 +0000
+Subject: [PATCH] threaded/thread.py: Fix unhandled Nonetype job queue
+
+Adding this check and return prevents numerous test tracebacks:
+
+Exception in thread 12f554d5-f61f-44d9-bc69-023714627952:
+Traceback (most recent call last):
+  File "/usr/lib64/python3.4/threading.py", line 911, in _bootstrap_inner
+    self.run()
+  File "/usr/lib64/python3.4/threading.py", line 859, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/bdolbec/git/toolbelt/requests_toolbelt/threaded/thread.py", line 43, in _make_request
+    kwargs = self._jobs.get_nowait()
+AttributeError: 'NoneType' object has no attribute 'get_nowait'
+
+Signed-off-by: Brian Dolbec <brian.dolbec@sony.com>
+Signed-off-by: Brian Dolbec <dolsen@gentoo.org>
+---
+ requests_toolbelt/threaded/thread.py | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/requests_toolbelt/threaded/thread.py b/requests_toolbelt/threaded/thread.py
+index 542813c..f33b759 100644
+--- a/requests_toolbelt/threaded/thread.py
++++ b/requests_toolbelt/threaded/thread.py
+@@ -36,6 +36,8 @@ def _handle_request(self, kwargs):
+             self._jobs.task_done()
+ 
+     def _make_request(self):
++        if self._jobs is None:
++            return
+         while True:
+             try:
+                 kwargs = self._jobs.get_nowait()

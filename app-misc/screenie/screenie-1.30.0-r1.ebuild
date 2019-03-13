@@ -1,9 +1,7 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="2"
-
-inherit eutils
+EAPI=6
 
 DESCRIPTION="screen(1) frontend that is designed to be a session handler"
 HOMEPAGE="http://pubwww.hsz-t.ch/~mgloor/screenie.html"
@@ -16,11 +14,9 @@ IUSE=""
 
 RDEPEND="app-misc/screen"
 
-src_prepare() {
-	epatch "${FILESDIR}/${PN}-CVE-2008-5371.patch"
-}
+PATCHES=( "${FILESDIR}/${PN}-CVE-2008-5371.patch" )
 
 src_install() {
 	dobin screenie || die "dobin failed"
-	dodoc AUTHORS ChangeLog INSTALL README TODO || die "dodoc failed"
+	default
 }

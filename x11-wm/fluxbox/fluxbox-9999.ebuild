@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -8,7 +8,7 @@ IUSE="nls xinerama bidi +truetype +imlib +slit +systray +toolbar vim-syntax"
 
 REQUIRED_USE="systray? ( toolbar )"
 
-DESCRIPTION="Fluxbox is an X11 window manager featuring tabs and an iconbar"
+DESCRIPTION="X11 window manager featuring tabs and an iconbar"
 
 EGIT_REPO_URI="git://git.fluxbox.org/fluxbox.git"
 SRC_URI=""
@@ -37,7 +37,7 @@ DEPEND="
 	${RDEPEND}
 	bidi? ( virtual/pkgconfig )
 	nls? ( sys-devel/gettext )
-	x11-proto/xextproto
+	x11-base/xorg-proto
 "
 
 src_prepare() {

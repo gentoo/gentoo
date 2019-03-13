@@ -1,0 +1,20 @@
+Disable conch interop tests which are failing when called
+via portage for yet unknown reason and because using conch
+seems to be flaky (test is failing when using Python2 but
+passing when using Python3).
+
+Bug: https://bugs.gentoo.org/605446
+
+--- a/regress/conch-ciphers.sh
++++ b/regress/conch-ciphers.sh
+@@ -3,6 +3,10 @@
+ 
+ tid="conch ciphers"
+ 
++# https://bugs.gentoo.org/605446
++echo "conch interop tests skipped due to Gentoo bug #605446"
++exit 0
++
+ if test "x$REGRESS_INTEROP_CONCH" != "xyes" ; then
+ 	echo "conch interop tests not enabled"
+ 	exit 0

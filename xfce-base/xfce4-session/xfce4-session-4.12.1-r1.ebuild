@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -7,11 +7,11 @@ inherit xfconf
 
 DESCRIPTION="A session manager for the Xfce desktop environment"
 HOMEPAGE="https://docs.xfce.org/xfce/xfce4-session/start"
-SRC_URI="mirror://xfce/src/xfce/${PN}/${PV%.*}/${P}.tar.bz2"
+SRC_URI="https://archive.xfce.org/src/xfce/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-solaris"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-solaris"
 IUSE="debug nls policykit systemd upower +xscreensaver"
 
 COMMON_DEPEND=">=dev-libs/dbus-glib-0.100:=
@@ -25,7 +25,7 @@ COMMON_DEPEND=">=dev-libs/dbus-glib-0.100:=
 	!xfce-base/xfce-utils
 	!=xfce-base/libxfce4ui-4.12.0
 	policykit? ( >=sys-auth/polkit-0.102:= )
-	upower? ( || ( >=sys-power/upower-0.9.23 sys-power/upower-pm-utils ) )"
+	upower? ( >=sys-power/upower-0.9.23 )"
 RDEPEND="${COMMON_DEPEND}
 	x11-apps/xrdb
 	nls? ( x11-misc/xdg-user-dirs )

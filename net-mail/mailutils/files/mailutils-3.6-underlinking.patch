@@ -1,0 +1,11 @@
+--- a/configure.ac	2019-02-26 17:11:29.398115222 +0300
++++ b/configure.ac	2019-02-26 17:14:13.733899654 +0300
+@@ -985,7 +985,7 @@
+   AC_CHECK_LIB(ldap, ldap_bind,[
+    status_ldap=yes
+    AC_DEFINE(WITH_LDAP, 1, [Define to 1 if you want to use -lldap])
+-   MU_AUTHLIBS="$MU_AUTHLIBS -lldap"],
++   MU_AUTHLIBS="$MU_AUTHLIBS -lldap -llber"],
+    [status_ldap=no])
+ fi
+ 

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="project">
+  <email>gnu-emacs@gentoo.org</email>
+  <name>Gentoo GNU Emacs project</name>
+</maintainer>
+<longdescription>
+  Edit with Emacs is an addon for webextension compatible browsers
+  like Google's Chrome(ium), Opera or Firefox that allows you to edit
+  text areas on your browser in a more full featured editor. It does
+  this in conjunction with an "Edit Server" which services requests by
+  the browser. This is because extensions cannot spawn new processes
+  as a security measure. 
+
+  The extension packages a native elisp version that can be run inside
+  GNU Emacs itself.
+</longdescription>
+<stabilize-allarches/>
+</pkgmetadata>

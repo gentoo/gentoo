@@ -2,7 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<use>
-		<flag name="thumbnail">Enables video thumbnail generation</flag>
+		<flag name="thumbnail">Enables thumbnail generation</flag>
 	</use>
 	<maintainer type="project">
 		<email>kde@gentoo.org</email>

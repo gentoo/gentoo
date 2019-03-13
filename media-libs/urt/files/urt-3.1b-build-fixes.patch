@@ -4,8 +4,8 @@ http://bugs.gentoo.org/107428
 respect user LDFLAGS
 http://bugs.gentoo.org/126872
 
---- urt/lib/makefile.src
-+++ urt/lib/makefile.src
+--- a/lib/makefile.src
++++ b/lib/makefile.src
 @@ -181,8 +181,7 @@
  # Rebuild the library from all the .o files.
  buildlib: $(OBJS)
@@ -16,8 +16,8 @@ http://bugs.gentoo.org/126872
  #ifndef NO_RANLIB
  	ranlib $(LIBNAME)
  #endif
---- urt/tools/clock/makefile.src
-+++ urt/tools/clock/makefile.src
+--- a/tools/clock/makefile.src
++++ b/tools/clock/makefile.src
 @@ -6,7 +6,7 @@ install: rleClock
  	mv rleClock ../rleClock.out
  
@@ -27,8 +27,8 @@ http://bugs.gentoo.org/126872
  
  font.c:font.src makeFont
  	chmod +x makeFont
---- urt/tools/makefile.src
-+++ urt/tools/makefile.src
+--- a/tools/makefile.src
++++ b/tools/makefile.src
 @@ -62,21 +62,21 @@ applymap.out rlebg.out: $(RI)/rle_raw.h
  pyrlib.o: pyrlib.c $(RI)/pyramid.h $(RI)/rle.h $(RI)/rle_config.h
  	$(CC) $(CFLAGS) pyrlib.c -c
@@ -64,8 +64,8 @@ http://bugs.gentoo.org/126872
  	mv $*.new $@
  
  .c.o:
---- urt/cnv/makefile.src
-+++ urt/cnv/makefile.src
+--- a/cnv/makefile.src
++++ b/cnv/makefile.src
 @@ -76,13 +76,13 @@ PBMDIR = 
  # ppmtorle - ppm format to RLE
  # rletoppm - RLE to ppm format
@@ -127,8 +127,8 @@ http://bugs.gentoo.org/126872
  	mv $*.new $@
  
  # Dependency lines.  Make sure to #ifdef them.
---- urt/cnv/rletoabA62/makefile.src
-+++ urt/cnv/rletoabA62/makefile.src
+--- a/cnv/rletoabA62/makefile.src
++++ b/cnv/rletoabA62/makefile.src
 @@ -15,7 +15,7 @@ all		:	$(PGMS)
  # Executables.  The .out will be stripped off in the install action.
  
@@ -138,8 +138,8 @@ http://bugs.gentoo.org/126872
  			  rletoabA62.o rle.o $(LIBS)
  			mv rletoabA62.new rletoabA62.out
  
---- urt/cnv/rletogif/makefile.src
-+++ urt/cnv/rletogif/makefile.src
+--- a/cnv/rletogif/makefile.src
++++ b/cnv/rletogif/makefile.src
 @@ -15,7 +15,7 @@ all:	$(PGMS)
  # The executable.  The ".out" will be stripped off in the install action.
  

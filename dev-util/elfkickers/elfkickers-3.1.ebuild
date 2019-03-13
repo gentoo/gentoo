@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=6
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 MY_PN=${PN/elf/ELF}-${PV}
 S=${WORKDIR}/${MY_PN}
@@ -20,13 +20,16 @@ IUSE="doc"
 DEPEND="app-misc/pax-utils"
 RDEPEND=""
 
+PATCHES=(
+	"${FILESDIR}"/${P}-respect-CFLAGS-LDFLAGS.patch
+	"${FILESDIR}"/${P}-create-destdir-path.patch
+	"${FILESDIR}"/add-freebsd-elf-defs.patch
+)
+
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-respect-CFLAGS-LDFLAGS.patch
-	epatch "${FILESDIR}"/${P}-create-destdir-path.patch
-	epatch "${FILESDIR}"/add-freebsd-elf-defs.patch
+	default
 	sed -i -e "s:^prefix = /usr/local:prefix = ${D}:" Makefile \
 		|| die "sed failed"
-	eapply_user
 }
 
 src_compile() {

@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 inherit cmake-utils
 
@@ -33,7 +33,7 @@ src_unpack() {
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_build test)
+		-DBUILD_TESTING=$(usex test)
 	)
 	cmake-utils_src_configure
 }

@@ -1,9 +1,7 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="2"
-
-inherit eutils
+EAPI=7
 
 DESCRIPTION="subsync is an program that synchronizes srt subtitle files"
 HOMEPAGE="https://sourceforge.net/projects/subsync/"
@@ -16,8 +14,3 @@ IUSE=""
 
 DEPEND=""
 RDEPEND="${DEPEND}"
-
-src_install() {
-	emake DESTDIR="${D}" install || die "emake install failed"
-	dodoc AUTHORS ChangeLog
-}

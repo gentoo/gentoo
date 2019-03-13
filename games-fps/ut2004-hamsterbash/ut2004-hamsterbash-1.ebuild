@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -9,7 +9,7 @@ MOD_DIR="hamsterbash"
 
 inherit unpacker games games-mods
 
-HOMEPAGE="http://www.moddb.com/mods/hamsterbash"
+HOMEPAGE="https://www.moddb.com/mods/hamsterbash"
 SRC_URI="HamsterBashFinal.zip"
 
 LICENSE="freedist"
@@ -20,7 +20,7 @@ RESTRICT="fetch"
 pkg_nofetch() {
 	elog "Please download ${SRC_URI} from:"
 	elog "${HOMEPAGE}"
-	elog "and move it to ${DISTDIR}"
+	elog "and move it to your DISTDIR directory."
 }
 
 src_prepare() {

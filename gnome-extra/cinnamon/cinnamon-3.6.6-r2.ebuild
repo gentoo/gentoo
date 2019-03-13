@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 GNOME2_LA_PUNT="yes"
-PYTHON_COMPAT=( python{2_7,3_4,3_5} )
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 PYTHON_REQ_USE="xml"
 
 inherit autotools eutils flag-o-matic gnome2 multilib pax-utils python-r1
@@ -28,7 +28,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	|| ( $(python_gen_useflags 'python3*') )
 "
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 COMMON_DEPEND="${PYTHON_DEPS}
 	app-accessibility/at-spi2-atk:2
@@ -82,7 +82,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 RDEPEND="${COMMON_DEPEND}
 	>=gnome-base/dconf-0.4.1
 	>=gnome-base/libgnomekbd-2.91.4[introspection]
-	|| ( sys-power/upower[introspection] sys-power/upower-pm-utils[introspection] )
+	sys-power/upower[introspection] 
 
 	>=gnome-extra/cinnamon-session-3.6
 	>=gnome-extra/cinnamon-settings-daemon-3.6

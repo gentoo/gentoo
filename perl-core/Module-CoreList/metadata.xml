@@ -8,7 +8,6 @@
   <upstream>
     <remote-id type="cpan">Module-CoreList</remote-id>
     <remote-id type="cpan-module">Module::CoreList</remote-id>
-    <remote-id type="cpan-module">Module::CoreList::TieHashDelta</remote-id>
     <remote-id type="cpan-module">Module::CoreList::Utils</remote-id>
   </upstream>
 </pkgmetadata>

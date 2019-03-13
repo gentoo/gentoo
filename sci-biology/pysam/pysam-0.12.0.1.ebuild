@@ -10,7 +10,7 @@ inherit distutils-r1
 DESCRIPTION="Python interface for the SAM/BAM sequence alignment and mapping format"
 HOMEPAGE="
 	https://github.com/pysam-developers/pysam
-	https://pypi.python.org/pypi/pysam"
+	https://pypi.org/project/pysam/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

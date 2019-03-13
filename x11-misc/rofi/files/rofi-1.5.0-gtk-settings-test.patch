@@ -1,0 +1,13 @@
+--- a/subprojects/libnkutils/libnkutils-common.mk
++++ b/subprojects/libnkutils/libnkutils-common.mk
+@@ -130,8 +130,8 @@
+ 	%D%/src/gtk-settings.c \
+ 	%D%/src/nkutils-gtk-settings.h
+ 
+-_libnkutils_tests += \
+-	%D%/tests/gtk-settings.test
++#_libnkutils_tests += \
++#	%D%/tests/gtk-settings.test
+ endif
+ 
+ if NK_ENABLE_XDG_DE

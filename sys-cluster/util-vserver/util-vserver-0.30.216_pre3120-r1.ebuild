@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,7 +13,7 @@ SRC_URI="http://people.linux-vserver.org/~dhozac/t/uv-testing/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~x86"
 
 CDEPEND="
 	net-misc/vconfig
@@ -29,6 +29,12 @@ RDEPEND="
 	${CDEPEND}"
 
 S="${WORKDIR}/${MY_P}"
+
+PATCHES=(
+	"${FILESDIR}/${P}-vserver-init-functions.patch"
+)
+
+DOCS=( README ChangeLog NEWS AUTHORS THANKS util-vserver.spec )
 
 pkg_setup() {
 	if [[ -z "${VDIRBASE}" ]]; then
@@ -68,15 +74,16 @@ src_compile() {
 src_install() {
 	make DESTDIR="${D}" install install-distribution || die
 
+	# remove runtime paths
+	rm -r "${D}"/var/run || die
+	rm -r "${D}"/var/cache || die
+
 	# keep dirs
-	keepdir /var/cache/vservers
 	keepdir "${VDIRBASE}"
 	keepdir "${VDIRBASE}"/.pkg
 
 	# bash-completion
 	newbashcomp "${FILESDIR}"/bash_completion ${PN}
-
-	dodoc README ChangeLog NEWS AUTHORS THANKS util-vserver.spec
 }
 
 pkg_postinst() {

@@ -6,7 +6,7 @@ EAPI=6
 inherit elisp
 
 DESCRIPTION="Manage multiple terminal buffers in Emacs"
-HOMEPAGE="http://www.emacswiki.org/emacs/MultiTerm"
+HOMEPAGE="https://www.emacswiki.org/emacs/MultiTerm"
 # Taken from http://www.emacswiki.org/emacs/download/${PN}.el
 SRC_URI="https://dev.gentoo.org/~mjo/distfiles/${P}.el.xz"
 

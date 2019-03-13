@@ -1,8 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools eutils user
+
+inherit autotools desktop user
 
 DESCRIPTION="2D length scroll shooting game"
 HOMEPAGE="http://triring.net/ps2linux/games/kxl/kxlgames.html"

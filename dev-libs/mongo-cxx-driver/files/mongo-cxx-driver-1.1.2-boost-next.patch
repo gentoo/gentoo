@@ -1,0 +1,21 @@
+Add missing include for boost::next()
+
+https://bugs.gentoo.org/671422
+--- a/src/mongo/client/command_writer.cpp
++++ b/src/mongo/client/command_writer.cpp
+@@ -22,4 +22,6 @@
+ #include "mongo/db/namespace_string.h"
+ 
++#include <boost/next_prior.hpp>
++
+ namespace mongo {
+ 
+--- a/src/mongo/client/wire_protocol_writer.cpp
++++ b/src/mongo/client/wire_protocol_writer.cpp
+@@ -22,4 +22,6 @@
+ #include "mongo/db/namespace_string.h"
+ 
++#include <boost/next_prior.hpp>
++
+ namespace mongo {
+ 

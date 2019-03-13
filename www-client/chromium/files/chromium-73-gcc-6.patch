@@ -1,0 +1,88 @@
+From cf4c534f04c223f8a9d65407852e2a531a6d7fb6 Mon Sep 17 00:00:00 2001
+From: Raphael Kubo da Costa <raphael.kubo.da.costa@intel.com>
+Date: Thu, 14 Feb 2019 22:22:21 +0000
+Subject: [PATCH] chrome/browser: Replace some forward declarations with actual
+ includes
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+This fixes the GCC build which was failing like this:
+
+    ../../base/scoped_observer.h: In instantiation of ‘void ScopedObserver<Source, Observer>::RemoveAll() [with Source = TabStripModel; Observer = TabStripModelObserver]’:
+    ../../base/scoped_observer.h:26:5:   required from ‘ScopedObserver<Source, Observer>::~ScopedObserver() [with Source = TabStripModel; Observer = TabStripModelObserver]’
+    ../../chrome/browser/ui/views/extensions/extension_popup.h:115:70:   required from here
+    ../../base/scoped_observer.h:45:20: error: invalid use of incomplete type ‘class TabStripModel’
+           sources_[i]->RemoveObserver(observer_);
+           ~~~~~~~~~~~~~^~~~~~~~~~~~~~
+
+This is caused by https://gcc.gnu.org/bugzilla/show_bug.cgi?id=89311 ("Brace
+initialization needlessly invokes destructor"), i.e. having something like
+
+    ScopedObserver<T, U> observer_{this};
+
+in a header declaration requires T and U to be fully declared because
+ScopedObserver's destructor references them. In a few cases, T was only
+forward-declared.
+
+Bug: 819294
+Change-Id: Ie5b9dc2745e27d4532c5539e3845a8c9147a0595
+Reviewed-on: https://chromium-review.googlesource.com/c/1472576
+Auto-Submit: Raphael Kubo da Costa <raphael.kubo.da.costa@intel.com>
+Commit-Queue: Alan Cutter <alancutter@chromium.org>
+Reviewed-by: Finnur Thorarinsson <finnur@chromium.org>
+Reviewed-by: Alan Cutter <alancutter@chromium.org>
+Cr-Commit-Position: refs/heads/master@{#632385}
+---
+ chrome/browser/ui/views/extensions/extension_popup.cc           | 1 -
+ chrome/browser/ui/views/extensions/extension_popup.h            | 1 +
+ chrome/browser/ui/views/toolbar/extension_toolbar_menu_view.cc  | 1 -
+ chrome/browser/ui/views/toolbar/extension_toolbar_menu_view.h   | 2 +-
+ .../web_applications/extensions/bookmark_app_tab_helper.cc      | 1 -
+ .../web_applications/extensions/bookmark_app_tab_helper.h       | 2 +-
+ 6 files changed, 3 insertions(+), 5 deletions(-)
+
+diff --git a/chrome/browser/ui/views/extensions/extension_popup.cc b/chrome/browser/ui/views/extensions/extension_popup.cc
+index 3f0985d383dd..57d16aba9e9f 100644
+--- a/chrome/browser/ui/views/extensions/extension_popup.cc
++++ b/chrome/browser/ui/views/extensions/extension_popup.cc
+@@ -8,7 +8,6 @@
+ #include "chrome/browser/devtools/devtools_window.h"
+ #include "chrome/browser/extensions/extension_view_host.h"
+ #include "chrome/browser/ui/browser.h"
+-#include "chrome/browser/ui/tabs/tab_strip_model.h"
+ #include "content/public/browser/devtools_agent_host.h"
+ #include "content/public/browser/notification_details.h"
+ #include "content/public/browser/notification_source.h"
+diff --git a/chrome/browser/ui/views/extensions/extension_popup.h b/chrome/browser/ui/views/extensions/extension_popup.h
+index 3661b5bda950..9018efa0fea5 100644
+--- a/chrome/browser/ui/views/extensions/extension_popup.h
++++ b/chrome/browser/ui/views/extensions/extension_popup.h
+@@ -9,6 +9,7 @@
+ #include "base/compiler_specific.h"
+ #include "base/macros.h"
+ #include "base/scoped_observer.h"
++#include "chrome/browser/ui/tabs/tab_strip_model.h"
+ #include "chrome/browser/ui/tabs/tab_strip_model_observer.h"
+ #include "chrome/browser/ui/views/extensions/extension_view_views.h"
+ #include "content/public/browser/devtools_agent_host_observer.h"
+diff --git a/chrome/browser/ui/views/toolbar/extension_toolbar_menu_view.h b/chrome/browser/ui/views/toolbar/extension_toolbar_menu_view.h
+index 2a3ea8e4f91f..ac44a4f05dec 100644
+--- a/chrome/browser/ui/views/toolbar/extension_toolbar_menu_view.h
++++ b/chrome/browser/ui/views/toolbar/extension_toolbar_menu_view.h
+@@ -8,6 +8,7 @@
+ #include "base/macros.h"
+ #include "base/memory/weak_ptr.h"
+ #include "base/scoped_observer.h"
++#include "chrome/browser/ui/toolbar/toolbar_actions_bar.h"
+ #include "chrome/browser/ui/toolbar/toolbar_actions_bar_observer.h"
+ #include "chrome/browser/ui/views/frame/app_menu_button_observer.h"
+ #include "ui/views/controls/scroll_view.h"
+@@ -16,7 +17,6 @@ class AppMenu;
+ class AppMenuButton;
+ class Browser;
+ class BrowserActionsContainer;
+-class ToolbarActionsBar;
+ 
+ namespace views {
+ class MenuItemView;

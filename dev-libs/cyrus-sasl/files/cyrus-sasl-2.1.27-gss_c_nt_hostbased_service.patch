@@ -1,0 +1,16 @@
+Gentoo bug #389349
+--- cyrus-sasl-2.1.27/m4/sasl2.m4
++++ cyrus-sasl-2.1.27/m4/sasl2.m4
+@@ -220,7 +220,11 @@
+                  [AC_WARN([Cybersafe define not found])])
+ 
+   elif test "$ac_cv_header_gssapi_h" = "yes"; then
+-    AC_EGREP_HEADER(GSS_C_NT_HOSTBASED_SERVICE, gssapi.h,
++    AC_EGREP_CPP(hostbased_service_gss_nt_yes, gssapi.h,
++                 [#include <gssapi.h>
++                  #ifdef GSS_C_NT_HOSTBASED_SERVICE
++                    hostbased_service_gss_nt_yes
++                  #endif],
+                     [AC_DEFINE(HAVE_GSS_C_NT_HOSTBASED_SERVICE,,
+                                [Define if your GSSAPI implementation defines GSS_C_NT_HOSTBASED_SERVICE])])
+   elif test "$ac_cv_header_gssapi_gssapi_h"; then

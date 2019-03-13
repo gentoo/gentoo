@@ -1,0 +1,40 @@
+#!/sbin/openrc-run
+# Copyright 1999-2018 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	need net
+	provide authdaemond
+}
+
+checkconfig() {
+	if [ ! -e /etc/courier/authlib/authdaemonrc ] ; then
+		eerror "You need an /etc/courier/authlib/authdaemonrc file to run authdaemon"
+		return 1
+	fi
+}
+
+setauth() {
+	. /etc/courier/authlib/authdaemonrc
+	AUTHLIB="/usr/libexec/courier-authlib"
+	AUTHDAEMOND="authdaemond"
+	pidfile="/var/run/authdaemon.pid"
+	logger="/usr/sbin/courierlogger"
+	export DEBUG_LOGIN DEFAULTOPTIONS LOGGEROPTS
+}
+
+start() {
+	checkconfig || return 1
+	setauth
+	ebegin "Starting courier-authlib: ${AUTHDAEMOND}"
+	start-stop-daemon --quiet --start --pidfile "${pidfile}" --exec \
+		/usr/bin/env ${logger} -- ${LOGGEROPTS} -pid="${pidfile}" -start "${AUTHLIB}/${AUTHDAEMOND}" 
+	eend $?
+}
+
+stop() {
+	setauth
+	ebegin "Stopping courier-authlib: ${AUTHDAEMOND}"
+	start-stop-daemon --quiet --stop --pidfile "${pidfile}"
+	eend $?
+}

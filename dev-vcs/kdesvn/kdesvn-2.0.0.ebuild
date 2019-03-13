@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -53,6 +53,7 @@ RDEPEND="${DEPEND}
 PATCHES=(
 	"${FILESDIR}/${P}-desktop.patch"
 	"${FILESDIR}/${P}-deps.patch"
+	"${FILESDIR}/${P}-qt-5.11.patch"
 )
 
 src_prepare(){

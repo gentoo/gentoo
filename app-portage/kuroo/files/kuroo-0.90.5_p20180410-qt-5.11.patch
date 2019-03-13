@@ -1,0 +1,42 @@
+From 77941829f2aba22e05142a47b689e17d594da610 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Tue, 10 Apr 2018 16:27:47 +0200
+Subject: [PATCH] Fix build with Qt 5.11
+
+---
+ src/core/categorieslistview.cpp | 5 +++--
+ src/core/versionview.cpp        | 1 +
+ 2 files changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/src/core/categorieslistview.cpp b/src/core/categorieslistview.cpp
+index d499397..1246aad 100644
+--- a/src/core/categorieslistview.cpp
++++ b/src/core/categorieslistview.cpp
+@@ -22,9 +22,10 @@
+ #include "categorieslistview.h"
+ 
+ #include <qpainter.h>
+-#include <QTreeWidget>
+-#include <QScrollBar>
+ #include <QFrame>
++#include <QHeaderView>
++#include <QScrollBar>
++#include <QTreeWidget>
+ 
+ #include <kglobal.h>
+ 
+diff --git a/src/core/versionview.cpp b/src/core/versionview.cpp
+index 1a2b701..e83e265 100644
+--- a/src/core/versionview.cpp
++++ b/src/core/versionview.cpp
+@@ -21,6 +21,7 @@
+ #include "common.h"
+ #include "versionview.h"
+ 
++#include <QHeaderView>
+ #include <QTreeWidget>
+ 
+ VersionView::VersionItem::VersionItem( QTreeWidget* parent, const QString& version, const bool& isInstalled, const int& stability )
+-- 
+2.17.0
+

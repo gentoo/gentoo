@@ -12,4 +12,8 @@
 		<remote-id type="pypi">py3status</remote-id>
 		<remote-id type="github">ultrabug/py3status</remote-id>
 	</upstream>
+	<use>
+		<flag name="gevent">Install extra requirement <pkg>dev-python/gevent</pkg> to enable green threads.</flag>
+		<flag name="udev">Install extra requirement <pkg>dev-python/pyudev</pkg> to enable udev events monitoring on modules.</flag>
+	</use>
 </pkgmetadata>

@@ -1,12 +1,12 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Remember: we cannot leverage autotools in this ebuild in order
 #           to avoid circular deps with autotools
 
-EAPI=5
+EAPI=6
 
-inherit eutils multilib toolchain-funcs libtool multilib-minimal
+inherit multilib toolchain-funcs libtool multilib-minimal preserve-libs
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://git.tukaani.org/xz.git"
@@ -16,13 +16,14 @@ if [[ ${PV} == "9999" ]] ; then
 else
 	MY_P="${PN/-utils}-${PV/_}"
 	SRC_URI="https://tukaani.org/xz/${MY_P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-	S=${WORKDIR}/${MY_P}
+	[[ "${PV}" == *_alpha* ]] || [[ "${PV}" == *_beta* ]] || \
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+	S="${WORKDIR}/${MY_P}"
 	EXTRA_DEPEND=
 fi
 
 DESCRIPTION="utils for managing LZMA compressed files"
-HOMEPAGE="http://tukaani.org/xz/"
+HOMEPAGE="https://tukaani.org/xz/"
 
 # See top-level COPYING file as it outlines the various pieces and their licenses.
 LICENSE="public-domain LGPL-2.1+ GPL-2+"
@@ -30,7 +31,6 @@ SLOT="0"
 IUSE="elibc_FreeBSD +extra-filters nls static-libs +threads"
 
 RDEPEND="!<app-arch/lzma-4.63
-	!app-arch/lzma-utils
 	!<app-arch/p7zip-4.57"
 DEPEND="${RDEPEND}
 	${EXTRA_DEPEND}"
@@ -39,6 +39,7 @@ DEPEND="${RDEPEND}
 RESTRICT="!extra-filters? ( test )"
 
 src_prepare() {
+	default
 	if [[ ${PV} == "9999" ]] ; then
 		eautopoint
 		eautoreconf
@@ -77,9 +78,8 @@ multilib_src_install() {
 }
 
 multilib_src_install_all() {
-	prune_libtool_files --all
-	rm "${ED}"/usr/share/doc/xz/COPYING* || die
-	mv "${ED}"/usr/share/doc/{xz,${PF}} || die
+	find "${ED}" \( -name '*.a' -o -name '*.la' \) -delete || die
+	rm "${ED%/}"/usr/share/doc/${PF}/COPYING* || die
 }
 
 pkg_preinst() {

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,6 +15,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86
 IUSE="perl"
 
 DEPEND="dev-libs/openssl:=
+	net-libs/libnsl
 	perl? ( dev-lang/perl:= )"
 RDEPEND="${DEPEND}
 	sys-apps/ucspi-tcp"

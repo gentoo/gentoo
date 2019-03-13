@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -54,7 +54,7 @@ src_configure() {
 }
 
 src_test() {
-	# TODO: use system gmock/gtest
+	# TODO: use system gtest
 	cd "${S}"/cpp || die
 	emake ycm_core_tests
 	cd ycm/tests || die

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,12 +6,12 @@ EAPI=6
 inherit toolchain-funcs
 
 DESCRIPTION="ncurses directconnect client"
-HOMEPAGE="http://dev.yorhel.nl/ncdc"
-SRC_URI="http://dev.yorhel.nl/download/${P}.tar.gz"
+HOMEPAGE="https://dev.yorhel.nl/ncdc"
+SRC_URI="https://dev.yorhel.nl/download/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~sparc ~x86"
+KEYWORDS="amd64 ~ppc ~sparc x86"
 IUSE="geoip"
 
 RDEPEND="app-arch/bzip2

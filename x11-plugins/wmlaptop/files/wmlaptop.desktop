@@ -1,8 +1,0 @@
-[Desktop Entry]
-Name=WmLaptop
-Comment=Laptop Monitor
-Comment[pl]=Monitor Dla Laptopa
-Exec=wmlaptop
-Type=Application
-Terminal=false
-Categories=System;Monitor;

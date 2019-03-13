@@ -4,15 +4,13 @@
     <maintainer type="person">
         <email>titanofold@gentoo.org</email>
         <name>Aaron W. Swenson</name>
-        <description>Assign bugs.</description>
     </maintainer>
     <maintainer type="person">
         <email>stefantalpalaru@yahoo.com</email>
-        <name>Stefan Talpalaru</name>
-        <description>CC on bugs.</description>
+        <name>Ștefan Talpalaru</name>
     </maintainer>
     <longdescription lang="en">
-        upwork's desktop application enabling visibility, connectivity,
+        Upwork's desktop application enabling visibility, connectivity,
         collaboration and guaranteed payment for guaranteed work.
     </longdescription>
 </pkgmetadata>

@@ -10,7 +10,7 @@ MODULE_VERSION="4.01_05"
 inherit eutils perl-module versionator
 
 DESCRIPTION="Concurrent Multi-Server Terminal Access"
-HOMEPAGE="http://clusterssh.sourceforge.net"
+HOMEPAGE="https://github.com/duncs/clusterssh"
 
 LICENSE="GPL-2"
 SLOT="0"

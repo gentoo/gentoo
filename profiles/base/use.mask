@@ -1,53 +1,32 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
-# Matt Turner <mattst88@gentoo.org> (25 Nov 2017)
-# Unmaintained upstream. Masked for removal in 30 days.
-# Bug #606132.
-input_devices_acecad
-input_devices_aiptek
-input_devices_fpit
-input_devices_hyperpen
-input_devices_mutouch
-
-# Matt Turner <mattst88@gentoo.org> (23 Nov 2017)
+# Matt Turner <mattst88@gentoo.org> (02 Mar 2019)
 # For ancient hardware. Tired of maintaining. Masked for removal in 30 days.
-# Bug #606132.
-video_cards_apm
-video_cards_ark
-video_cards_chips
-video_cards_cirrus
-video_cards_i128
-video_cards_i740
-video_cards_mach64
-video_cards_neomagic
-video_cards_rendition
-video_cards_s3
-video_cards_s3virge
-video_cards_savage
-video_cards_sis
-video_cards_sisusb
-video_cards_suncg14
-video_cards_suncg3
-video_cards_suncg6
-video_cards_sunffb
-video_cards_sunleo
-video_cards_suntcx
+# Bug #679256
+input_devices_elographics
+video_cards_newport
 video_cards_tdfx
-video_cards_tga
-video_cards_trident
-video_cards_tseng
+video_cards_voodoo
+
+# Brian Evans <grknight@gentoo.org> (11 Jan 2019)
+# Mask PHP 7.0 target as EOL
+php_targets_php7-0
+
+# Matt Turner <mattst88@gentoo.org> (11 Nov 2018)
+# d3d9 only works on amd64/x86.
+d3d9
+
+# Aaron W. Swenson <titanofold@gentoo.org> (09 Sep 2018)
+# Mask PostgreSQL 12 while in (pre-)alpha.
+postgres_targets_postgres12
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (04 Nov 2017)
-# ... since audacious is being last-rited ... bug 632513
+# Unkeyworded on most arches, unmasked in supported arch profiles.
 audacious
-
-# Patrick Lauer <patrick@gentoo.org> (22 Oct 2017)
-# postgres-9.2 is EOL and masked
-postgres_targets_postgres9_2
 
 # Michael Palimaka <kensington@gentoo.org> (03 Jun 2017)
 # Unkeyworded on most arches, unmasked in supported arch profiles.
@@ -133,11 +112,3 @@ netlink
 # Enabling this you will get a fully unsupported Gnome setup that
 # could suffer unexpected problem, don't expect support for it then.
 openrc-force
-
-# Brian Evans <grknight@gentoo.org> (2 Dec 2015)
-# php 5.4 is end of life, masked for removal
-php_targets_php5-4
-
-# Brian Evans <grknight@gentoo.org> (22 Aug 2016)
-# php 5.5 is end of life, masked for removal
-php_targets_php5-5

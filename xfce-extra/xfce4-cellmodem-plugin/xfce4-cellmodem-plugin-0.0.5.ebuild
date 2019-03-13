@@ -7,7 +7,7 @@ inherit multilib xfconf
 
 DESCRIPTION="A panel plug-in with monitoring support for GPRS/UMTS(3G)/HSDPA(3.5G) modems"
 HOMEPAGE="https://goodies.xfce.org/projects/panel-plugins/xfce4-cellmodem-plugin"
-SRC_URI="mirror://xfce/src/panel-plugins/${PN}/${PV%.*}/${P}.tar.gz"
+SRC_URI="https://archive.xfce.org/src/panel-plugins/${PN}/${PV%.*}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

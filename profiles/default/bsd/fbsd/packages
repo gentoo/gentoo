@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation.
+# Copyright 1999-2018 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License, v2
 
 # This files contains a small list of packages that define a 
@@ -13,7 +13,6 @@
 *sys-freebsd/freebsd-ubin
 *sys-freebsd/freebsd-usbin
 *sys-freebsd/freebsd-share
-*sys-freebsd/freebsd-contrib
 
 *sys-devel/gettext
 *dev-libs/libiconv

@@ -5,6 +5,7 @@
 # @MAINTAINER:
 # @AUTHOR:
 # Max Kalika <max@gentoo.org>
+# @SUPPORTED_EAPIS: 1 2 3 4 5 6
 # @BLURB: Eclass for SSL certificates
 # @DESCRIPTION:
 # This eclass implements a standard installation procedure for installing

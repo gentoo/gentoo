@@ -1,0 +1,8 @@
+[Unit]
+Description=Kerberos 5 propagation server
+Conflicts=mit-krb5kpropd.service
+
+[Service]
+ExecStart=/usr/sbin/kpropd
+StandardInput=socket
+StandardError=syslog

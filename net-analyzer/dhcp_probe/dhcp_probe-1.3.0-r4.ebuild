@@ -1,12 +1,12 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit flag-o-matic
 
 DESCRIPTION="discover DHCP and BootP servers on a directly-attached Ethernet network"
-HOMEPAGE="http://www.net.princeton.edu/software/dhcp_probe/"
-SRC_URI="http://www.net.princeton.edu/software/${PN}/${P}.tar.gz"
+HOMEPAGE="https://www.net.princeton.edu/software/dhcp_probe/"
+SRC_URI="https://www.net.princeton.edu/software/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

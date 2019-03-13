@@ -1,0 +1,15 @@
+https://bugs.gentoo.org/654800
+Fixed-by: milan hodoscek
+diff --git a/../old/CMakeLists.txt b/CMakeLists.txt
+index dc38d1b..801207e 100644
+--- a/../old/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -239,7 +239,7 @@ check_type_size(clock_t CLOCK_T)
+ # Get the GCC version - from KDE4 cmake files
+ if(CMAKE_COMPILER_IS_GNUCXX)
+   exec_program(${CMAKE_C_COMPILER} ARGS --version OUTPUT_VARIABLE _gcc_version_info)
+-  string(REGEX MATCH "[34567]\\.[0-9]\\.[0-9]" _gcc_version "${_gcc_version_info}")
++  string(REGEX MATCH "[345678]\\.[0-9]\\.[0-9]" _gcc_version "${_gcc_version_info}")
+   # gcc on mac just reports: "gcc (GCC) 3.3 20030304 ..." without the
+   # patch level, handle this here:
+   if (NOT _gcc_version)

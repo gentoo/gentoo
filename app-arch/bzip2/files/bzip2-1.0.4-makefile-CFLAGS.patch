@@ -1,5 +1,5 @@
---- Makefile
-+++ Makefile
+--- a/Makefile
++++ b/Makefile
 @@ -18,10 +18,9 @@
  CC=gcc
  AR=ar
@@ -12,8 +12,8 @@
  
  # Where you want it installed when you do 'make install'
  PREFIX=/usr/local
---- Makefile-libbz2_so
-+++ Makefile-libbz2_so
+--- a/Makefile-libbz2_so
++++ b/Makefile-libbz2_so
 @@ -24,7 +24,7 @@
  SHELL=/bin/sh
  CC=gcc

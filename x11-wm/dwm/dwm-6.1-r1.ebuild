@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,7 +10,7 @@ SRC_URI="https://dl.suckless.org/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~x86-fbsd"
+KEYWORDS="amd64 ~arm ppc ppc64 x86 ~x86-fbsd"
 IUSE="xinerama"
 
 RDEPEND="
@@ -21,7 +21,7 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
-	xinerama? ( x11-proto/xineramaproto )
+	xinerama? ( x11-base/xorg-proto )
 "
 
 src_prepare() {
@@ -35,7 +35,7 @@ src_prepare() {
 		-e "s@/usr/X11R6/include@${EPREFIX}/usr/include/X11@" \
 		-e "s@/usr/X11R6/lib@${EPREFIX}/usr/lib@" \
 		-e "s@-I/usr/include@@" -e "s@-L/usr/lib@@" \
-		-e "s/\/freetype2/\ -I\/usr\/include\/freetype2/" \
+		-e "s@/freetype2@ -I${EPREFIX}/usr/include/freetype2@" \
 		config.mk || die
 	sed -i \
 		-e '/@echo CC/d' \

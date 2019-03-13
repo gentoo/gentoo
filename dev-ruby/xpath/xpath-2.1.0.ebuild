@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-USE_RUBY="ruby21 ruby22 ruby23 ruby24"
+USE_RUBY="ruby23 ruby24 ruby25"
 
 RUBY_FAKEGEM_EXTRADOC="README.md"
 
@@ -15,7 +15,7 @@ DESCRIPTION="XPath is a Ruby DSL around a subset of XPath 1.0"
 HOMEPAGE="https://github.com/jnicklas/xpath"
 LICENSE="MIT"
 
-KEYWORDS="amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ~x86"
 SLOT="2"
 IUSE=""
 

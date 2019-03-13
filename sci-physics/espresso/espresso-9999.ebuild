@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,35 +13,29 @@ HOMEPAGE="http://espressomd.org"
 
 if [[ ${PV} = 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/${PN}md/${PN}.git"
-	EGIT_BRANCH="master"
+	EGIT_BRANCH="python"
 	inherit git-r3
 	KEYWORDS=""
 else
-	SRC_URI="mirror://nongnu/${PN}md/${P}.tar.gz"
+	SRC_URI="https://github.com/${PN}md/${PN}/releases/download/${PV}/${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-macos"
 fi
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="cuda doc examples +fftw +hdf5 packages +python tcl test"
+IUSE="cuda doc examples +fftw +hdf5 test"
 
 REQUIRED_USE="
-	packages? ( tcl )
-	|| ( python tcl )
 	${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
 	${PYTHON_DEPS}
-	python? (
-		>dev-python/cython-0.22[${PYTHON_USEDEP}]
-		dev-python/numpy[${PYTHON_USEDEP}]
-	)
-	tcl? ( dev-lang/tcl:0= )
+	>=dev-python/cython-0.26.1[${PYTHON_USEDEP}]
+	dev-python/numpy[${PYTHON_USEDEP}]
 	cuda? ( >=dev-util/nvidia-cuda-toolkit-4.2.9-r1 )
 	fftw? ( sci-libs/fftw:3.0 )
 	dev-libs/boost:=[mpi]
-	hdf5? ( sci-libs/hdf5:= )
-	packages? ( dev-tcltk/tcllib )"
+	hdf5? ( sci-libs/hdf5:=[mpi] )"
 
 DEPEND="${RDEPEND}
 	doc? (
@@ -60,12 +54,10 @@ src_configure() {
 	mycmakeargs=(
 		-DWITH_CUDA=$(usex cuda)
 		-DPYTHON_EXECUTABLE="${PYTHON}"
-		-DWITH_PYTHON=$(usex python)
-		-DWITH_TCL=$(usex tcl)
 		-DWITH_TESTS=$(usex test)
-		-DWITH_SCAFACOS=ON
 		-DINSTALL_PYPRESSO=OFF
 		-DCMAKE_DISABLE_FIND_PACKAGE_FFTW3=$(usex !fftw)
+		-DWITH_HDF5=$(usex hdf5)
 		-DCMAKE_DISABLE_FIND_PACKAGE_HDF5=$(usex !hdf5)
 		-DCMAKE_SKIP_RPATH=YES
 		-DLIBDIR=$(get_libdir)
@@ -93,24 +85,15 @@ src_install() {
 		[[ ${PV} = 9999 ]] && docdir="${CMAKE_BUILD_DIR}"
 		newdoc "${docdir}"/doc/dg/dg.pdf developer_guide.pdf
 		newdoc "${docdir}"/doc/ug/ug.pdf user_guide.pdf
-		for j in $(usev python) $(usev tcl); do
-			for i in "${docdir}/doc/tutorials/${j}"/*/[0-9]*.pdf; do
-		  		newdoc "${i}" "${j}_tutorial_${i##*/}"
-			done
+		for i in "${docdir}/doc/tutorials/python"/*/[0-9]*.pdf; do
+			newdoc "${i}" "tutorial_${i##*/}"
 		done
 		dodoc -r ${CMAKE_BUILD_DIR}/doc/doxygen/html
 	fi
 
 	if use examples; then
-		for i in $(usev python) $(usev tcl); do
-			insinto "/usr/share/${PN}/examples/${i}"
-			doins -r samples/${i}/.
-		done
-	fi
-
-	if use packages; then
-		insinto /usr/share/${PN}/packages
-		doins -r packages/*
+		insinto "/usr/share/${PN}/examples/python"
+		doins -r samples/${i}/.
 	fi
 }
 

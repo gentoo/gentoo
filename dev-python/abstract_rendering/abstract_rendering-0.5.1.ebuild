@@ -1,16 +1,16 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-PYTHON_COMPAT=( python2_7 python3_{4,5} )
+PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 
 inherit distutils-r1
 
 DESCRIPTION="Rendering as a binning process"
 HOMEPAGE="
-	https://github.com/ContinuumIO/abstract_rendering
-	http://pypi.python.org/pypi/abstract_rendering
+	https://github.com/JosephCottam/AbstractRendering
+	https://pypi.org/project/abstract_rendering/
 "
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 

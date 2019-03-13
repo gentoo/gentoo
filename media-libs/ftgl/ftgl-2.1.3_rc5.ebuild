@@ -1,13 +1,13 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils flag-o-matic autotools
+EAPI=6
+inherit autotools flag-o-matic
 
-MY_PV=${PV/_/-}
-MY_PV2=${PV/_/\~}
-MY_P=${PN}-${MY_PV}
-MY_P2=${PN}-${MY_PV2}
+MY_PV="${PV/_/-}"
+MY_PV2="${PV/_/~}"
+MY_P="${PN}-${MY_PV}"
+MY_P2="${PN}-${MY_PV2}"
 
 DESCRIPTION="library to use arbitrary fonts in OpenGL applications"
 HOMEPAGE="http://ftgl.sourceforge.net/"
@@ -15,21 +15,26 @@ SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.bz2"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
 IUSE="static-libs"
 
 DEPEND=">=media-libs/freetype-2.0.9
 	virtual/opengl
 	virtual/glu
 	media-libs/freeglut"
-RDEPEND=${DEPEND}
+RDEPEND="${DEPEND}
+	virtual/pkgconfig"
 
-S=${WORKDIR}/${MY_P2}
+S="${WORKDIR}/${MY_P2}"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-gentoo.patch
+	"${FILESDIR}"/${P}-underlink.patch
+	"${FILESDIR}"/${P}-freetype_pkgconfig.patch
+)
 
 src_prepare() {
-	epatch \
-		"${FILESDIR}"/${P}-gentoo.patch \
-		"${FILESDIR}"/${P}-underlink.patch
+	default
 	sed -e "s/AM_CONFIG_HEADER/AC_CONFIG_HEADERS/" -i configure.ac || die
 	eautoreconf
 }
@@ -40,8 +45,8 @@ src_configure() {
 }
 
 src_install() {
-	DOCS="AUTHORS BUGS ChangeLog NEWS README TODO docs/projects_using_ftgl.txt" \
-		default
-	rm -rf "${D}"/usr/share/doc/ftgl || die
-	prune_libtool_files
+	local DOCS=( AUTHORS BUGS ChangeLog NEWS README TODO docs/projects_using_ftgl.txt)
+	default
+	rm -r "${ED%/}"/usr/share/doc/ftgl || die
+	find "${ED}" -name '*.la' -delete || die
 }

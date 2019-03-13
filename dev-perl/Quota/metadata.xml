@@ -4,11 +4,9 @@
   <maintainer type="person">
     <email>c.affolter@purplehaze.ch</email>
     <name>Christian Affolter</name>
-    <description>Maintainer</description>
   </maintainer>
   <maintainer type="person">
     <email>dev-zero@gentoo.org</email>
-    <description>Proxy maintainer</description>
   </maintainer>
   <maintainer type="project">
     <email>proxy-maint@gentoo.org</email>

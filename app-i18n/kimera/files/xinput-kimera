@@ -1,4 +1,0 @@
-XIM=kimera
-XIM_PROGRAM="@EPREFIX@/usr/bin/kimera"
-GTK_IM_MODULE=xim
-QT_IM_MODULE=xim

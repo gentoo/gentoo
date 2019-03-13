@@ -1,9 +1,7 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-
-inherit eutils
+EAPI=7
 
 DESCRIPTION="Generate an overview of changes on a branch"
 HOMEPAGE="https://github.com/roman-neuhauser/git-mantle"
@@ -12,15 +10,18 @@ SRC_URI="http://codex.sigpipe.cz/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
+IUSE="test"
 
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="~amd64 ~x86"
 
-DEPEND=""
+DEPEND="test? ( dev-util/cram )"
 RDEPEND="
 	dev-vcs/git
 	app-shells/zsh
 "
 
-src_install(){
+src_install() {
+	# Don't install in /usr/local
 	emake PREFIX="${ED}/usr" install
+	einstalldocs
 }

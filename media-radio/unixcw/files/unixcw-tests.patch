@@ -1,0 +1,12 @@
+# works now without any installed audio system
+--- src/libcw/tests/libcw_test_tq_short_space.c.orig	2018-08-01 07:53:33.972577616 +0000
++++ src/libcw/tests/libcw_test_tq_short_space.c	2018-08-01 07:53:42.877456677 +0000
+@@ -94,7 +94,7 @@
+ 	bool success = true;
+ 
+         /* Library initialization. */
+-        cw_generator_new(CW_AUDIO_SOUNDCARD, NULL);
++        cw_generator_new(CW_AUDIO_NULL, NULL);
+         cw_generator_start();
+ 
+ 	cw_register_tone_queue_low_callback(cwdaemon_tone_queue_low_callback, NULL, tq_low_watermark);

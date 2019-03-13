@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,7 +17,7 @@ SRC_URI="mirror://mysql/Downloads/MySQLGUITools/${MY_P}.tar.gz https://github.co
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 IUSE="debug doc gnome-keyring"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -38,7 +38,6 @@ CDEPEND="${PYTHON_DEPS}
 		>=dev-cpp/ctemplate-0.95
 		>=dev-libs/libxml2-2.6.2:2
 		dev-libs/libzip
-		>=virtual/mysql-5.6
 		dev-libs/libpcre[cxx]
 		>=sci-libs/gdal-1.11.1-r1[-mdb]
 		virtual/opengl
@@ -66,6 +65,7 @@ S="${WORKDIR}"/"${MY_P}"
 PATCHES=(
 	"${FILESDIR}/${PN}-6.2.5-wbcopytables.patch"
 	"${FILESDIR}/${PN}-6.3.9-mariadb-json.patch"
+	"${FILESDIR}/${PN}-6.3.10-i386-json.patch"
 )
 
 src_unpack() {
@@ -88,10 +88,16 @@ src_prepare() {
 }
 
 src_configure() {
+	if has_version dev-db/libiodbc ; then
+		IODBC="-DIODBC_CONFIG_PATH=/usr/bin/iodbc-config"
+	fi
+
 	append-cxxflags -std=c++11
 	local mycmakeargs=(
 		-DUSE_GNOME_KEYRING="$(usex gnome-keyring)"
 		-DLIB_INSTALL_DIR="/usr/$(get_libdir)"
+		-DIODBC_INCLUDE_PATH="/usr/include/iodbc"
+		${IODBC}
 		-DPYTHON_INCLUDE_DIR="$(python_get_includedir)"
 		-DPYTHON_LIBRARY="$(python_get_library_path)"
 		-DMySQL_CONFIG_PATH="/usr/bin/mysql_config"

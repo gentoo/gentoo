@@ -1,0 +1,27 @@
+From 9286e6f00bf63318dcc73380d48af497ba774ad9 Mon Sep 17 00:00:00 2001
+From: Kent Fredric <kentnl@gentoo.org>
+Date: Tue, 19 Apr 2016 09:46:13 +1200
+Subject: Remove unwanted author tests
+
+---
+ MANIFEST         |  2 --
+ t/pod.t          |  4 ----
+ t/pod_coverage.t | 13 -------------
+ t/test_manifest  |  2 --
+ 4 files changed, 21 deletions(-)
+ delete mode 100644 t/pod.t
+ delete mode 100644 t/pod_coverage.t
+
+diff --git a/t/test_manifest b/t/test_manifest
+index 31cb5b3..e2602b0 100644
+--- a/t/test_manifest
++++ b/t/test_manifest
+@@ -1,5 +1,3 @@
+ load.t
+-pod.t
+-pod_coverage.t
+ cycle.t
+ one.t
+-- 
+2.16.2
+

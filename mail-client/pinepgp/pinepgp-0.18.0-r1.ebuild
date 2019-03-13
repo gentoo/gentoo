@@ -1,5 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+EAPI=0
 
 inherit eutils
 
@@ -11,7 +13,7 @@ SLOT="0"
 KEYWORDS="amd64 ppc ~sparc x86"
 IUSE=""
 
-DEPEND="|| ( mail-client/alpine mail-client/pine )
+DEPEND="mail-client/alpine
 	app-crypt/gnupg"
 
 src_unpack()	{

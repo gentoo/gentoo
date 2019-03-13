@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,7 +14,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/kodi-pvr/pvr.hts.git"
 	inherit git-r3
 else
-	CODENAME="Krypton"
+	CODENAME="Leia"
 	KEYWORDS="~amd64 ~x86"
 	SRC_URI="https://github.com/kodi-pvr/pvr.hts/archive/${PV}-${CODENAME}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/pvr.hts-${PV}-${CODENAME}"
@@ -26,8 +26,8 @@ IUSE=""
 
 DEPEND="
 	=dev-libs/libplatform-2*
-	=media-libs/kodi-platform-9999
-	=media-tv/kodi-9999
+	~media-libs/kodi-platform-9999
+	~media-tv/kodi-9999
 	"
 
 RDEPEND="

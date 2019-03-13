@@ -1,0 +1,11 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -171,6 +171,8 @@
+ dnl For vcdimager and vcdxbuild to be able to set creation time of VCD
+ AC_CHECK_FUNCS(getdate strptime, , )
+ 
++PKG_PROG_PKG_CONFIG
++
+ if test "x$enable_cli_fe" = "xyes" -o "x$enable_xml_fe" = "xyes"; then
+   PKG_CHECK_MODULES(LIBPOPT, popt, [], [enable_cli_fe=no; enable_xml_fe=no])
+ fi

@@ -10,6 +10,6 @@
     <flag name="log4cxx">Use <pkg>dev-libs/log4cxx</pkg> as log backend.</flag>
   </use>
   <upstream>
-    <remote-id type="github">ros/ros_comm</remote-id>
+    <remote-id type="github">ros/rosconsole</remote-id>
   </upstream>
 </pkgmetadata>

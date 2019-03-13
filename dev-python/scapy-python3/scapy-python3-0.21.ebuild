@@ -9,7 +9,7 @@ IUSE="test"
 inherit distutils-r1
 
 DESCRIPTION="Packet crafting/sending/... PCAP processing tool with python3 compatibility"
-HOMEPAGE="https://pypi.python.org/pypi/scapy-python3/"
+HOMEPAGE="https://pypi.org/project/scapy-python3/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"

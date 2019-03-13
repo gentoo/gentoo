@@ -4,7 +4,6 @@
 	<maintainer type="person">
 		<email>olivier.laurantin@laposte.net</email>
 		<name>Olivier Laurantin</name>
-		<description>Proxy maintainer. CC him on bugs</description>
 	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>

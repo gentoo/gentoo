@@ -1,0 +1,10 @@
+diff -r -U2 pyqtgraph-0.10.0.orig/pyqtgraph/Qt.py pyqtgraph-0.10.0/pyqtgraph/Qt.py
+--- pyqtgraph-0.10.0.orig/pyqtgraph/Qt.py	2016-10-17 23:22:41.000000000 +0700
++++ pyqtgraph-0.10.0/pyqtgraph/Qt.py	2018-01-23 22:52:19.503525554 +0700
+@@ -25,5 +25,5 @@
+ ## is already imported. If not, then attempt to import PyQt4, then PySide.
+ if QT_LIB is None:
+-    libOrder = [PYQT4, PYSIDE, PYQT5]
++    libOrder = [PYQT5]
+ 
+     for lib in libOrder:

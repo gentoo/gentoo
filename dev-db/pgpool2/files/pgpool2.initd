@@ -1,5 +1,5 @@
 #!/sbin/openrc-run
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 extra_started_commands="reload"
@@ -23,24 +23,22 @@ get_config() {
 PIDFILE="$(get_config pid_file_name)"
 : ${PIDFILE:='/run/pgpool/pgpool.pid'}
 
-prep() {
+start_pre() {
     # $logdir contains status file(s), not log files.
     local logdir=$(get_config logdir)
     local socket_dir=$(get_config socket_dir)
     local pcp_socket_dir=$(get_config pcp_socket_dir)
 
     checkpath -o pgpool:postgres -m 0770 -d $(dirname ${PIDFILE}) || return 1
-    checkpath -o pgpool:postgres -m 0770 -d ${logdir:-'/run/pgpool'} || return 1
+    checkpath -o pgpool:postgres -m 0770 -d ${logdir:-'/var/lib/pgpool'} || return 1
     checkpath -o pgpool:postgres -m 0660 -f ${LOGFILE} || return 1
-    checkpath -o postgres:postgres -m 0770 \
+    checkpath -o root:postgres -m 1775 \
         -d ${socket_dir:-'/run/postgresql'} || return 1
-    checkpath -o postgres:postgres -m 0770 \
-        -d ${pcp_socket_dir:-'/run/postgresql'} || return 1
+    checkpath -o pgpool:postgres -m 0770 \
+        -d ${pcp_socket_dir:-'/run/postgresql/pgpool'} || return 1
 }
 
 start() {
-    prep || return 1
-
     ebegin "Starting pgpool2"
 
     start-stop-daemon --start \

@@ -1,14 +1,14 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python{2_7,3_4,3_5} )
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 DISTUTILS_IN_SOURCE_BUILD=1
 
 inherit distutils-r1
 
 DESCRIPTION="Python module for doing approximate and phonetic matching of strings"
-HOMEPAGE="https://github.com/jamesturk/jellyfish https://pypi.python.org/pypi/jellyfish"
+HOMEPAGE="https://github.com/jamesturk/jellyfish https://pypi.org/project/jellyfish/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD-2"

@@ -1,5 +1,5 @@
---- projects/rlm_stg/configure.org	2013-01-18 18:06:17.000000000 +0200
-+++ projects/rlm_stg/configure	2013-01-18 18:07:18.000000000 +0200
+--- a/projects/rlm_stg/configure.org	2013-01-18 18:06:17.000000000 +0200
++++ b/projects/rlm_stg/configure	2013-01-18 18:07:18.000000000 +0200
 @@ -34,6 +34,7 @@
  then
      OS=linux
@@ -24,8 +24,8 @@
 -
 +echo "ETC_DIR=$ETC_DIR" >> $CONFFILE
 \ No newline at end of file
---- projects/rscriptd/configure.org	2013-01-18 18:07:28.000000000 +0200
-+++ projects/rscriptd/configure	2013-01-18 18:08:02.000000000 +0200
+--- a/projects/rscriptd/configure.org	2013-01-18 18:07:28.000000000 +0200
++++ b/projects/rscriptd/configure	2013-01-18 18:08:02.000000000 +0200
 @@ -34,6 +34,7 @@
  then
      OS=linux
@@ -51,8 +51,8 @@
 -
 +echo "ETC_DIR=$ETC_DIR" >> $CONFFILE
 \ No newline at end of file
---- projects/sgauth/configure.org	2013-01-18 18:08:10.000000000 +0200
-+++ projects/sgauth/configure	2013-01-18 18:08:38.000000000 +0200
+--- a/projects/sgauth/configure.org	2013-01-18 18:08:10.000000000 +0200
++++ b/projects/sgauth/configure	2013-01-18 18:08:38.000000000 +0200
 @@ -34,6 +34,7 @@
  then
      OS=linux
@@ -77,8 +77,8 @@
 -
 +echo "ETC_DIR=$ETC_DIR" >> $CONFFILE
 \ No newline at end of file
---- projects/sgconf/configure.org	2013-01-18 18:08:46.000000000 +0200
-+++ projects/sgconf/configure	2013-01-18 18:09:44.000000000 +0200
+--- a/projects/sgconf/configure.org	2013-01-18 18:08:46.000000000 +0200
++++ b/projects/sgconf/configure	2013-01-18 18:09:44.000000000 +0200
 @@ -34,6 +34,7 @@
  then
      OS=linux
@@ -104,8 +104,8 @@
 -
 +echo "ETC_DIR=$ETC_DIR" >> $CONFFILE
 \ No newline at end of file
---- projects/sgconf_xml/configure.org	2013-01-18 18:09:54.000000000 +0200
-+++ projects/sgconf_xml/configure	2013-01-18 18:10:23.000000000 +0200
+--- a/projects/sgconf_xml/configure.org	2013-01-18 18:09:54.000000000 +0200
++++ b/projects/sgconf_xml/configure	2013-01-18 18:10:23.000000000 +0200
 @@ -34,6 +34,7 @@
  then
      OS=linux
@@ -131,8 +131,8 @@
 -
 +echo "ETC_DIR=$ETC_DIR" >> $CONFFILE
 \ No newline at end of file
---- projects/sgconv/configure.org	2013-01-18 18:10:30.000000000 +0200
-+++ projects/sgconv/configure	2013-01-18 18:11:09.000000000 +0200
+--- a/projects/sgconv/configure.org	2013-01-18 18:10:30.000000000 +0200
++++ b/projects/sgconv/configure	2013-01-18 18:11:09.000000000 +0200
 @@ -35,6 +35,7 @@
  then
      OS=linux
@@ -161,8 +161,8 @@
 -
 +mkdir -p ../stargazer/modules
 \ No newline at end of file
---- projects/stargazer/configure.org	2013-01-18 18:11:15.000000000 +0200
-+++ projects/stargazer/configure	2013-01-18 18:11:40.000000000 +0200
+--- a/projects/stargazer/configure.org	2013-01-18 18:11:15.000000000 +0200
++++ b/projects/stargazer/configure	2013-01-18 18:11:40.000000000 +0200
 @@ -404,11 +404,4 @@
  echo "VAR_DIR=$VAR_DIR" >> $CONFFILE
  echo "ETC_DIR=$ETC_DIR" >> $CONFFILE

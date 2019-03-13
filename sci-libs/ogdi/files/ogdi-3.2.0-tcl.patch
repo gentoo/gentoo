@@ -1,0 +1,14 @@
+diff --git a/config/generic.mak.in b/config/generic.mak.in
+index 1cb74f5..2e9cabe 100644
+--- a/config/generic.mak.in
++++ b/config/generic.mak.in
+@@ -46,8 +46,8 @@ AR		= ar cr
+ RPC_INCLUDES = @RPC_INCLUDES@
+ 
+ UCB_STATICLIB = 
+ 
+-TCL_INCLUDE = -I/usr/include/tcl8.3
++TCL_INCLUDE = -I${prefix}/include
+ TCL_LINKLIB =
+ 
+ #

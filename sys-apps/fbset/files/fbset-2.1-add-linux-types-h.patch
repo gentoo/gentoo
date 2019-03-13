@@ -1,0 +1,11 @@
+--- a/fbset.h	2018-04-05 18:17:18.292975594 +0000
++++ b/fbset.h	2018-04-05 18:22:20.448747231 +0000
+@@ -17,6 +17,8 @@
+ 
+ #ifdef __GLIBC__
+ #include <asm/types.h>
++#else
++#include <linux/types.h>
+ #endif
+ 
+ #define VERSION         "Linux Frame Buffer Device Configuration " \

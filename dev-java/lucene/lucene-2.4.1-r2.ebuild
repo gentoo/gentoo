@@ -15,7 +15,7 @@ SRC_URI="https://archive.apache.org/dist/${PN}/java/${P}-src.tar.gz -> ${P}.tar.
 
 LICENSE="Apache-2.0"
 SLOT="2.4"
-KEYWORDS="amd64 x86 ~x86-fbsd"
+KEYWORDS="amd64 x86"
 
 CDEPEND="
 	dev-java/javacc:0"
@@ -46,7 +46,7 @@ src_compile() {
 	# put javacc.jar on ant's classpath here even when <javacc> task
 	# doesn't use it - it's to fool the <available> test, first time
 	# it's useful not to have ignoresystemclasses=true...
-	ANT_TASKS="ant-nodeps javacc" \
+	ANT_TASKS="ant-core javacc" \
 		eant \
 		-Djavacc.home="${EPREFIX}"/usr/share/javacc/lib \
 		javacc

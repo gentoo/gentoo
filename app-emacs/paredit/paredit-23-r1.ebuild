@@ -6,8 +6,8 @@ EAPI=5
 inherit elisp
 
 DESCRIPTION="Minor mode for performing structured editing of S-expressions"
-HOMEPAGE="http://mumble.net/~campbell/emacs/
-	http://www.emacswiki.org/emacs/ParEdit"
+HOMEPAGE="https://mumble.net/~campbell/emacs/
+	https://www.emacswiki.org/emacs/ParEdit"
 SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.tar.xz"
 
 LICENSE="GPL-3+"

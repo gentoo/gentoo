@@ -1,0 +1,20 @@
+Format: http://dep.debian.net/deps/dep5
+Upstream-Name: prog-express
+Source: http://www.batronix.com/shop/software/prog-express/download
+
+Files: *
+Copyright: 2006-2015 Batronix Elektronik <support@batronix.com>
+License: Freeware
+ First and foremost, Prog-Express is a freeware tool. So you are allowed
+ to copy and redistribute it free of charge. You can use it anywhere you 
+ like - be it at home or at work.
+ .
+ Restrictions:
+ You are not allowed to modify Prog-Express itself or any parts of it 
+ nor apply any kind of reverse engineering to this software or any parts
+ of it.
+ .
+ You are not allowed to sell this software.
+ .
+ It's closed source, but it's at least free of charge. We hope you like it.
+

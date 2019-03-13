@@ -1,13 +1,22 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: scons-utils.eclass
 # @MAINTAINER:
 # mgorny@gentoo.org
+# @SUPPORTED_EAPIS: 0 1 2 3 4 5 6 7
 # @BLURB: helper functions to deal with SCons buildsystem
 # @DESCRIPTION:
 # This eclass provides a set of function to help developers sanely call
 # dev-util/scons and pass parameters to it.
+#
+# As of dev-util/scons-3.0.1-r100, SCons supports Python 3.  Since
+# SCons* files in build systems are written as Python, all packages
+# need to explicitly verify which versions of Python are supported
+# and use appropriate Python suite eclass to select the implementation.
+# The eclass needs to be inherited before scons-utils, and scons-utils
+# will automatically take advantage of it. For more details, please see:
+# https://wiki.gentoo.org/wiki/Project:Python/scons-utils_integration
 #
 # Please note that SCons is more like a 'build system creation kit',
 # and requires a lot of upstream customization to be used sanely.
@@ -26,7 +35,8 @@
 #
 # @EXAMPLE:
 # @CODE
-# inherit scons-utils toolchain-funcs
+# PYTHON_COMPAT=( python2_7 )
+# inherit python-any-r1 scons-utils toolchain-funcs
 #
 # EAPI=5
 #
@@ -93,7 +103,7 @@
 # -- EAPI support check --
 
 case ${EAPI:-0} in
-	0|1|2|3|4|5|6) ;;
+	0|1|2|3|4|5|6|7) ;;
 	*) die "EAPI ${EAPI} unsupported."
 esac
 
@@ -102,9 +112,43 @@ inherit multiprocessing
 # -- ebuild variables setup --
 
 if [[ -n ${SCONS_MIN_VERSION} ]]; then
-	DEPEND=">=dev-util/scons-${SCONS_MIN_VERSION}"
+	SCONS_DEPEND=">=dev-util/scons-${SCONS_MIN_VERSION}"
 else
-	DEPEND="dev-util/scons"
+	SCONS_DEPEND="dev-util/scons"
+fi
+
+if [[ ${_PYTHON_ANY_R1} ]]; then
+	# when using python-any-r1, use any-of dep API
+	BDEPEND="$(python_gen_any_dep "${SCONS_DEPEND}[\${PYTHON_USEDEP}]")"
+
+	scons-utils_python_check_deps() {
+		has_version "${SCONS_DEPEND}[${PYTHON_USEDEP}]"
+	}
+	python_check_deps() { scons-utils_python_check_deps; }
+elif [[ ${_PYTHON_SINGLE_R1} ]]; then
+	# when using python-single-r1, use plain PYTHON_USEDEP API
+	BDEPEND="${SCONS_DEPEND}[${PYTHON_USEDEP}]
+		${PYTHON_DEPS}"
+elif [[ ${EAPI:-0} == [0123456] ]]; then
+	# in older EAPIs, just force Python 2.7
+	BDEPEND="${SCONS_DEPEND}[python_targets_python2_7]"
+elif [[ ${_PYTHON_R1} ]]; then
+	# when using python-r1, you need to depend on scons yourself
+	# (depending on whether you need any-r1 or full -r1 API)
+	# -- since this is a breaking API change, it applies to EAPI 7+ only
+	BDEPEND=""
+elif [[ ${EAPI:-0} != [0123456] ]]; then
+	# in EAPI 7+, require appropriate eclass use
+	eerror "Using scons-utils.eclass without any python-r1 suite eclass is not supported."
+	eerror "Please make sure to configure and inherit appropriate -r1 eclass."
+	eerror "For more information and examples, please see:"
+	eerror "    https://wiki.gentoo.org/wiki/Project:Python/scons-utils_integration"
+	die "Invalid use of scons-utils.eclass"
+fi
+
+if [[ ${EAPI:-0} == [0123456] ]]; then
+	DEPEND=${BDEPEND}
+	unset BDEPEND
 fi
 
 # -- public functions --
@@ -119,6 +163,24 @@ escons() {
 
 	debug-print-function ${FUNCNAME} "${@}"
 
+	if [[ ! ${EPYTHON} ]]; then
+		if [[ ${EAPI:-0} != [0123456] ]]; then
+			eerror "EPYTHON is unset while calling escons. This most likely means that"
+			eerror "the ebuild did not call the appropriate eclass function before calling scons."
+			if [[ ${_PYTHON_ANY_R1} ]]; then
+				eerror "Please ensure that python-any-r1_pkg_setup is called in pkg_setup()."
+			elif [[ ${_PYTHON_SINGLE_R1} ]]; then
+				eerror "Please ensure that python-single-r1_pkg_setup is called in pkg_setup()."
+			else # python-r1
+				eerror "Please ensure that python_setup is called before escons, or that escons"
+				eerror "is used within python_foreach_impl as appropriate."
+			fi
+			die "EPYTHON unset in escons"
+		else
+			local -x EPYTHON=python2.7
+		fi
+	fi
+
 	# Use myesconsargs in EAPI 5 and older
 	if [[ ${EAPI} == [012345] ]]; then
 		set -- "${myesconsargs[@]}" "${@}"
@@ -129,6 +191,9 @@ escons() {
 		local SCONSOPTS
 		_scons_clean_makeopts
 	fi
+
+	# pass ebuild environment variables through!
+	local -x GENTOO_SCONS_ENV_PASSTHROUGH=1
 
 	set -- scons ${SCONSOPTS} ${EXTRA_ESCONS} "${@}"
 	echo "${@}" >&2

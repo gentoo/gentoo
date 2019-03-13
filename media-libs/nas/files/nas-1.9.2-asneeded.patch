@@ -1,7 +1,7 @@
 http://bugs.gentoo.org/show_bug.cgi?id=247761
 
---- config/NetAudio.tmpl
-+++ config/NetAudio.tmpl
+--- a/config/NetAudio.tmpl
++++ b/config/NetAudio.tmpl
 @@ -162,7 +162,7 @@
  
    AUDIODEPLIBS = $(DEPAULIB) $(DEPXTOOLLIB) $(DEPXLIB)

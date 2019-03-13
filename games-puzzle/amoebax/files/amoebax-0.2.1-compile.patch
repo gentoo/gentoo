@@ -1,5 +1,5 @@
---- src/binreloc.cxx
-+++ src/binreloc.cxx
+--- a/src/binreloc.cxx
++++ b/src/binreloc.cxx
 @@ -739,7 +739,8 @@
  char *
  br_dirname (const char *path)

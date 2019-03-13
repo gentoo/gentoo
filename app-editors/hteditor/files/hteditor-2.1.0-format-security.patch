@@ -1,0 +1,57 @@
+https://bugs.gentoo.org/521018
+
+From 5839355d67ff822593190473a41512ca19e4280a Mon Sep 17 00:00:00 2001
+From: Anton Gladky <gladk@debian.org>
+Date: Wed, 18 Feb 2015 21:20:39 +0100
+Subject: [PATCH] Fix "format not a string" compilation failure
+
+Compilation with the flag -Werror=format-security fails with
+the message:
+
+error: format not a string literal and no format arguments
+
+This patch solves the issue.
+---
+ asm/x86dis.cc | 6 +++---
+ htpal.cc      | 2 +-
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/asm/x86dis.cc b/asm/x86dis.cc
+index 0830d9c..bb9028f 100644
+--- a/asm/x86dis.cc
++++ b/asm/x86dis.cc
+@@ -1218,15 +1218,15 @@ void x86dis::str_op(char *opstr, int *opstrlen, x86dis_insn *insn, x86_insn_op *
+ 		default: {assert(0);}
+ 		}
+ 		if (!insn->rexprefix) {
+-			sprintf(opstr, x86_regs[j][op->reg]);
++			sprintf(opstr, "%s", x86_regs[j][op->reg]);
+ 		} else {
+-			sprintf(opstr, x86_64regs[j][op->reg]);
++			sprintf(opstr, "%s", x86_64regs[j][op->reg]);
+ 		}
+ 		break;
+ 	}
+ 	case X86_OPTYPE_SEG:
+ 		if (x86_segs[op->seg]) {
+-			sprintf(opstr, x86_segs[op->seg]);
++			sprintf(opstr, "%s", x86_segs[op->seg]);
+ 		}
+ 		break;
+ 	case X86_OPTYPE_CRX:
+diff --git a/htpal.cc b/htpal.cc
+index 03dea18..3d5f51e 100644
+--- a/htpal.cc
++++ b/htpal.cc
+@@ -307,7 +307,7 @@ void palette_entry::strvalue(char *buf32bytes)
+ 		text = "normal";
+ 	}
+ 	p = tag_make_color(p, 32, VCP(fg, bg));
+-	p += sprintf(p, text);
++	p += sprintf(p, "%s", text);
+ 	p = tag_make_default_color(p, 32);
+ 	*p = 0;
+ }
+-- 
+2.16.2
+

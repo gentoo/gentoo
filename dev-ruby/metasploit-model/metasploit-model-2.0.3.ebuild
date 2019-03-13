@@ -1,10 +1,10 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 USE_RUBY="ruby23"
 
-inherit ruby-fakegem versionator
+inherit ruby-fakegem eapi7-ver
 
 RUBY_FAKEGEM_EXTRAINSTALL="app config script spec"
 
@@ -13,7 +13,7 @@ HOMEPAGE="https://github.com/rapid7/metasploit-model"
 SRC_URI="mirror://rubygems/${P}.gem"
 
 LICENSE="BSD"
-SLOT="$(get_version_component_range 1-2)"
+SLOT="$(ver_cut 1-2)"
 KEYWORDS="~amd64 ~arm"
 #IUSE="development test"
 RESTRICT=test

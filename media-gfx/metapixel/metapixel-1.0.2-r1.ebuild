@@ -1,12 +1,12 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit toolchain-funcs
 
 DESCRIPTION="a program for generating photomosaics"
-HOMEPAGE="http://www.complang.tuwien.ac.at/schani/metapixel"
-SRC_URI="http://www.complang.tuwien.ac.at/schani/${PN}/files/${P}.tar.gz"
+HOMEPAGE="https://www.complang.tuwien.ac.at/schani/metapixel"
+SRC_URI="https://www.complang.tuwien.ac.at/schani/${PN}/files/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

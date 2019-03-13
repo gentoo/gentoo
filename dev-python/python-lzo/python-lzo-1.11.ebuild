@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 
-inherit distutils-r1
+inherit distutils-r1 prefix
 
 DESCRIPTION="Python interface to lzo"
 HOMEPAGE="https://github.com/jd-boyd/python-lzo"
@@ -24,7 +24,7 @@ DEPEND="${RDEPEND}
 
 src_prepare() {
 	distutils-r1_src_prepare
-	PREFIX="${EPREFIX}"
+	hprefixify setup.py
 }
 
 python_test() {

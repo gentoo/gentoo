@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -30,6 +30,7 @@ RDEPEND="
 		dev-python/pygtk:2[${PYTHON_USEDEP}] )
 "
 DEPEND="${RDEPEND}
+	dev-util/glib-utils
 	dev-util/gtk-doc-am
 	virtual/pkgconfig
 "

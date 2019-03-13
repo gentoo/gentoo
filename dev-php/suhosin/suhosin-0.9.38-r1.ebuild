@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -13,8 +13,8 @@ inherit php-ext-source-r3
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 
 DESCRIPTION="Suhosin is an advanced protection system for PHP installations"
-HOMEPAGE="http://www.suhosin.org/"
-SRC_URI="http://download.suhosin.org/${P}.tar.gz"
+HOMEPAGE="https://www.suhosin.org/"
+SRC_URI="https://download.suhosin.org/${P}.tar.gz"
 LICENSE="PHP-3.01"
 SLOT="0"
 IUSE=""

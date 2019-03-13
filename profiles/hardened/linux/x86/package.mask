@@ -1,9 +1,5 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-
-# Rick Farina <zerochaos@gentoo.org> (26 Nov 2012)
-# Need X
-media-video/nvidia-settings
 
 # Depends on x11-drivers/nvidia-drivers
 #dev-python/pyopencl

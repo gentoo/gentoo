@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -9,7 +9,7 @@ MY_DP="${PN}$(get_version_component_range 1)$(get_version_component_range 2)"
 MY_P="${MY_DP}_$(get_version_component_range 3)"
 
 DESCRIPTION="Common Data Format I/O library for multi-dimensional data sets"
-HOMEPAGE="http://cdf.gsfc.nasa.gov/"
+HOMEPAGE="https://cdf.gsfc.nasa.gov"
 SRC_BASE="ftp://cdaweb.gsfc.nasa.gov/pub/${PN}/dist/${MY_P}/unix"
 
 SRC_URI="${SRC_BASE}/${MY_P}-dist-${PN}.tar.gz

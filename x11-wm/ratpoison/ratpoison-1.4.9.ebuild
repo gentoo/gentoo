@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,7 +10,7 @@ SRC_URI="http://download.savannah.gnu.org/releases/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~ppc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 hppa ~ppc x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 IUSE="debug emacs +history sloppy +xft +xrandr"
 
 RDEPEND="
@@ -24,8 +24,7 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 	virtual/pkgconfig
-	x11-proto/randrproto
-	x11-proto/xproto
+	x11-base/xorg-proto
 "
 
 SITEFILE=50ratpoison-gentoo.el

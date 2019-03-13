@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
@@ -6,11 +6,11 @@
 		<name>Gentoo KDE Project</name>
 	</maintainer>
 	<use>
+		<flag name="activities">Enable <pkg>kde-frameworks/kactivities</pkg> integration</flag>
+		<flag name="addressbook">Enable <pkg>kde-apps/akonadi</pkg> contact integration</flag>
 		<flag name="hbci">Enable HBCI support using <pkg>net-libs/aqbanking</pkg></flag>
+		<flag name="holidays">Enable <pkg>kde-frameworks/kholidays</pkg> integration</flag>
 		<flag name="quotes">Enable Online Stock Quote retrieval</flag>
 		<flag name="weboob">Enable import of online banking transactions extracted by <pkg>www-client/weboob</pkg></flag>
 	</use>
-	<upstream>
-		<remote-id type="sourceforge">kmymoney2</remote-id>
-	</upstream>
 </pkgmetadata>

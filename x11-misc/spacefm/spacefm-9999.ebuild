@@ -1,19 +1,23 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-EGIT_REPO_URI="https://github.com/IgnorantGuru/${PN}.git"
-EGIT_BRANCH="next"
-
-inherit fdo-mime git-r3 gnome2-utils linux-info
+inherit gnome2-utils linux-info xdg-utils
 
 DESCRIPTION="A multi-panel tabbed file manager"
 HOMEPAGE="https://ignorantguru.github.com/spacefm/"
+if [[ ${PV} == *9999* ]]; then
+	EGIT_REPO_URI="https://github.com/IgnorantGuru/${PN}.git"
+	EGIT_BRANCH="next"
+	inherit git-r3
+else
+	KEYWORDS="~amd64 ~x86"
+	SRC_URI="https://github.com/IgnorantGuru/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+fi
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS=""
 IUSE="gtk2 +gtk3 +startup-notification +video-thumbnails"
 
 RDEPEND="dev-libs/glib:2
@@ -22,17 +26,19 @@ RDEPEND="dev-libs/glib:2
 	virtual/freedesktop-icon-theme
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf
-	gtk2? ( gtk3? ( x11-libs/gtk+:3 ) !gtk3? ( x11-libs/gtk+:2 ) )
-	!gtk2? ( x11-libs/gtk+:3 )
 	x11-libs/pango
 	x11-libs/libX11
 	x11-misc/shared-mime-info
-	video-thumbnails? ( media-video/ffmpegthumbnailer )
-	startup-notification? ( x11-libs/startup-notification )"
+	gtk2? ( gtk3? ( x11-libs/gtk+:3 ) !gtk3? ( x11-libs/gtk+:2 ) )
+	!gtk2? ( x11-libs/gtk+:3 )
+	startup-notification? ( x11-libs/startup-notification )
+	video-thumbnails? ( media-video/ffmpegthumbnailer )"
 DEPEND="${RDEPEND}
 	dev-util/intltool
-	virtual/pkgconfig
-	sys-devel/gettext"
+	sys-devel/gettext
+	virtual/pkgconfig"
+
+PATCHES=( "${FILESDIR}"/${PN}-9999-include-sysmacros.patch )
 
 src_configure() {
 	econf \
@@ -45,13 +51,9 @@ src_configure() {
 		$(use_with gtk3 gtk3 "yes")
 }
 
-pkg_preinst() {
-	gnome2_icon_savelist
-}
-
 pkg_postinst() {
-	fdo-mime_desktop_database_update
-	fdo-mime_mime_database_update
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 	gnome2_icon_cache_update
 
 	einfo
@@ -81,7 +83,7 @@ pkg_postinst() {
 }
 
 pkg_postrm() {
-	fdo-mime_desktop_database_update
-	fdo-mime_mime_database_update
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 	gnome2_icon_cache_update
 }

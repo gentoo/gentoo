@@ -14,8 +14,6 @@ SLOT="0"
 KEYWORDS="alpha amd64 arm ~arm64 ia64 ppc ppc64 sparc x86"
 IUSE="static-libs"
 
-RDEPEND=">=sys-libs/libraw1394-2.1.0-r1[${MULTILIB_USEDEP}]
-	abi_x86_32? ( !<=app-emulation/emul-linux-x86-baselibs-20130224-r4
-		!app-emulation/emul-linux-x86-baselibs[-abi_x86_32(-)] )"
+RDEPEND=">=sys-libs/libraw1394-2.1.0-r1[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"

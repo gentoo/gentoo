@@ -16,10 +16,8 @@
   for ODT.</flag>
     <flag name="iptc">Enable extraction of IPTC data from pictures</flag>
     <flag name="iso">Enable extraction of metadata from ISO disk images</flag>
+    <flag name="miners">Install the <pkg>app-misc/tracker-miners</pkg> package for actual data mining support for tracker</flag>
     <flag name="miner-fs">Enable tracker-miner-fs (required for filesystem indexing)</flag>
-    <flag name="nautilus">Enable tracker to integrate with
-    <pkg>gnome-base/nautilus</pkg> by providing entries in its context menu
-  </flag>
     <flag name="playlist">Add support for playlists</flag>
     <flag name="stemmer">Add word stemming via <pkg>dev-libs/snowball-stemmer</pkg>.</flag>
     <flag name="thunderbird">Install email data miner plugin for

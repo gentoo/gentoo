@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Force building libc++ over libcxxrt.
@@ -12,5 +12,6 @@ sys-libs/libcxx static-libs abi_x86_32
 # libcxx on this profile. Mask the other ssl providers.
 net-misc/curl ssl curl_ssl_openssl
 
-# We obviously need clang
-sys-devel/llvm clang static-analyzer default-compiler-rt default-libcxx
+# o-flag-munging is required to compile dev-libs/libgcrypt with clang.
+# https://bugs.gentoo.org/629410
+dev-libs/libgcrypt o-flag-munging

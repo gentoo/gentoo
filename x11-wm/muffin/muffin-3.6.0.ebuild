@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ SRC_URI="https://github.com/linuxmint/muffin/archive/${PV}.tar.gz -> ${P}.tar.gz
 LICENSE="GPL-2+"
 SLOT="0"
 IUSE="+introspection test xinerama"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 COMMON_DEPEND="
 	>=x11-libs/pango-1.2[X,introspection?]
@@ -53,10 +53,8 @@ DEPEND="${COMMON_DEPEND}
 	dev-util/gtk-doc-am
 	>=dev-util/intltool-0.35
 	virtual/pkgconfig
+	x11-base/xorg-proto
 	test? ( app-text/docbook-xml-dtd:4.5 )
-	xinerama? ( x11-proto/xineramaproto )
-	x11-proto/xextproto
-	x11-proto/xproto
 "
 RDEPEND="${COMMON_DEPEND}
 	!x11-misc/expocity

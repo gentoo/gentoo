@@ -1,0 +1,16 @@
+diff --git a/src/pybind/CMakeLists.txt b/src/pybind/CMakeLists.txt
+index c996cd9402..f99765702b 100644
+--- a/src/pybind/CMakeLists.txt
++++ b/src/pybind/CMakeLists.txt
+@@ -62,11 +62,6 @@ foreach(python_version ${py_vers})
+ endforeach()
+ 
+ if(WITH_MGR)
+-  if(NOT WITH_PYTHON2 AND MGR_PYTHON_VERSION_MAJOR EQUAL 2)
+-    message(FATAL_ERROR "mgr plugins require python2 binding")
+-  elseif(NOT WITH_PYTHON3 AND MGR_PYTHON_VERSION_MAJOR EQUAL 3)
+-    message(FATAL_ERROR "mgr plugins require python3 binding")
+-  endif()
+   # Location needs to match default setting for mgr_module_path, currently:
+   # OPTION(mgr_module_path, OPT_STR, CEPH_PKGLIBDIR "/mgr")
+   install(DIRECTORY

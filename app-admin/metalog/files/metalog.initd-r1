@@ -1,0 +1,28 @@
+#!/sbin/openrc-run
+# Copyright 1999-2018 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+pidfile="${PIDFILE:-/run/metalog.pid}"
+command="/usr/sbin/metalog"
+command_args="--pidfile=${pidfile} --daemonize ${METALOG_OPTS}"
+
+extra_started_commands="buffer unbuffer"
+
+depend() {
+	need localmount
+	use clock hostname
+	after bootmisc
+	provide logger
+}
+
+buffer() {
+	ebegin "Enabling log buffering"
+	start-stop-daemon --exec "${command}" --signal USR2 --pidfile "${pidfile}"
+	eend ${?}
+}
+
+unbuffer() {
+	ebegin "Disabling log buffering"
+	start-stop-daemon --exec "${command}" --signal USR1 --pidfile "${pidfile}"
+	eend ${?}
+}

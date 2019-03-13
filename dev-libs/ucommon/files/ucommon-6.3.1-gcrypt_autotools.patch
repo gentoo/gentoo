@@ -1,5 +1,5 @@
---- ucommon-6.3.1/configure.ac
-+++ ucommon-6.3.1/configure.ac
+--- a/configure.ac
++++ b/configure.ac
 @@ -38,8 +38,12 @@
  OPENSSL_LINK=""
  MODULE_FLAGS="-module -shared -avoid-version"
@@ -23,8 +23,8 @@
          SECURE="gnutls"
      fi
      ;;
---- ucommon-6.3.1/utils/Makefile.am
-+++ ucommon-6.3.1/utils/Makefile.am
+--- a/utils/Makefile.am
++++ b/utils/Makefile.am
 @@ -10,9 +10,9 @@
  # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  

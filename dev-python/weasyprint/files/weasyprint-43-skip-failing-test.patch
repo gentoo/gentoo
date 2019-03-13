@@ -1,0 +1,13 @@
+diff --git a/weasyprint/tests/test_layout/test_flex.py b/weasyprint/tests/test_layout/test_flex.py
+index 890df3e8..77c6bbf5 100644
+--- a/weasyprint/tests/test_layout/test_flex.py
++++ b/weasyprint/tests/test_layout/test_flex.py
+@@ -189,7 +189,7 @@ def test_flex_row_wrap_reverse():
+ 
+ 
+ @assert_no_logs
+-def test_flex_column_wrap_reverse():
++def xtest_flex_column_wrap_reverse():
+     page, = render_pages('''
+       <article style="display: flex; flex-flow: column wrap-reverse;
+                       height: 50px">

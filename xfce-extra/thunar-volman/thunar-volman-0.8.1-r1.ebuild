@@ -7,11 +7,11 @@ inherit gnome2-utils
 
 DESCRIPTION="Daemon that enforces volume-related policies"
 HOMEPAGE="https://goodies.xfce.org/projects/thunar-plugins/thunar-volman"
-SRC_URI="mirror://xfce/src/apps/${PN}/${PV%.*}/${P}.tar.bz2"
+SRC_URI="https://archive.xfce.org/src/apps/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ia64 ppc ppc64 ~sparc x86"
+KEYWORDS="alpha amd64 arm ~arm64 ia64 ppc ppc64 ~sparc x86"
 IUSE="libnotify"
 
 COMMON_DEPEND=">=dev-libs/glib-2.30

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/openil/${MY_P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~mips ppc ppc64 x86"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ~mips ppc ppc64 x86"
 IUSE="allegro cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse3 gif glut jpeg jpeg2k mng nvtt openexr opengl png sdl static-libs tiff X xpm"
 
 RDEPEND="
@@ -36,7 +36,7 @@ RDEPEND="
 	xpm? ( x11-libs/libXpm )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
-	X? ( x11-proto/xextproto )"
+	X? ( x11-base/xorg-proto )"
 
 PATCHES=(
 	"${FILESDIR}/${P}"-CVE-2009-3994.patch

@@ -19,9 +19,6 @@ RDEPEND="dev-libs/expat
 	>=sci-libs/fftw-3.3.3-r2[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}
 	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]"
-RDEPEND="${RDEPEND}
-	abi_x86_32? ( !<=app-emulation/emul-linux-x86-medialibs-20140508-r2
-		!app-emulation/emul-linux-x86-medialibs[-abi_x86_32(-)] )"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-gcc-4.patch

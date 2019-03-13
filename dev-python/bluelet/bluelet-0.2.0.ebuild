@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 inherit distutils-r1
 
 DESCRIPTION="Module for pure Python asynchronous I/O using coroutines"
-HOMEPAGE="https://pypi.python.org/pypi/bluelet"
+HOMEPAGE="https://pypi.org/project/bluelet/"
 SRC_URI="https://github.com/sampsyo/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"

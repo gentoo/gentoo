@@ -7,7 +7,7 @@ inherit elisp
 
 DESCRIPTION="Minor mode to show space left on devices in the mode line"
 HOMEPAGE="https://web.archive.org/web/20061001221337/http://www.coli.uni-saarland.de/~fouvry/software.html
-	http://www.emacswiki.org/emacs/DfMode"
+	https://www.emacswiki.org/emacs/DfMode"
 # taken from http://www.coli.uni-saarland.de/~fouvry/files/df-mode.el.gz
 SRC_URI="mirror://gentoo/${P}.el.bz2"
 

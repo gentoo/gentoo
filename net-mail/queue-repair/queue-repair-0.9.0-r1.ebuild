@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -24,6 +24,6 @@ DOCS=( BLURB TODO CHANGELOG )
 
 src_install () {
 	python_newscript queue_repair.py queue-repair.py
-	dosym /usr/bin/queue-repair.py /usr/bin/queue-repair
+	dosym queue-repair.py /usr/bin/queue-repair
 	einstalldocs
 }

@@ -46,7 +46,7 @@ bsd-patch_install-sh() {
         # Do nothing if $S does not exist
         [ -d "${S}" ] || return 0
 
-	local EPDIR="${ECLASSDIR}/ELT-patches/install-sh"
+	local EPDIR="${EPREFIX}/usr/share/elt-patches/install-sh"
 	local EPATCHES="${EPDIR}/1.5.6 ${EPDIR}/1.5.4 ${EPDIR}/1.5"
 	local ret=0
 	cd "${S}"

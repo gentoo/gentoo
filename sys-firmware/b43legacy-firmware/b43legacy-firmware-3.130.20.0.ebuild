@@ -10,11 +10,11 @@ DESCRIPTION="broadcom firmware for b43legacy/bcm43xx"
 HOMEPAGE="http://linuxwireless.org/en/users/Drivers/b43"
 SRC_URI="http://downloads.openwrt.org/sources/wl_apsta-${PV}.o"
 
-RESTRICT="mirror binchecks strip"
+RESTRICT="binchecks strip"
 
 LICENSE="Broadcom"
 SLOT=0
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ppc ~x86"
 IUSE=""
 
 RDEPEND=""

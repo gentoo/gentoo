@@ -1,5 +1,5 @@
---- etpan-ng-0.7.1.orig/configure.in	2006-01-09 11:44:20.000000000 +0100
-+++ etpan-ng-0.7.1/configure.in	2010-01-10 14:51:40.788046570 +0100
+--- a/configure.in
++++ b/configure.in
 @@ -11,18 +11,25 @@
  libetpan_major_required=0
  libetpan_minor_required=42

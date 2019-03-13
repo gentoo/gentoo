@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
+PYTHON_COMPAT=( python2_7 python3_{4,5,6,7} )
 PYTHON_REQ_USE="threads(+)"
 
 MY_PN=tables
@@ -45,6 +45,7 @@ python_prepare_all() {
 	sed -e "s:/usr:${EPREFIX}/usr:g" \
 		-i setup.py || die
 	rm -r c-blosc/{blosc,internal-complibs} || die
+	sed -i -e '/_version/ s/\\s\*/\\s\+/' setup.py || die
 	distutils-r1_python_prepare_all
 }
 

@@ -6,14 +6,15 @@
 # Gentoo ML Project <ml@gentoo.org>
 # @AUTHOR:
 # Alexis Ballier <aballier@gentoo.org>
+# @SUPPORTED_EAPIS: 5 6 7
 # @BLURB: Provides functions for installing opam packages.
 # @DESCRIPTION:
 # Provides dependencies on opam and ocaml, opam-install and a default
 # src_install for opam-based packages.
 
 case ${EAPI:-0} in
-    0|1|2|3|4) die "You need at least EAPI-5 to use opam.eclass";;
-    *) ;;
+	5|6|7) ;;
+	*) die "${ECLASS}: EAPI ${EAPI} not supported" ;;
 esac
 
 RDEPEND=">=dev-lang/ocaml-4:="
@@ -29,10 +30,10 @@ opam-install() {
 	local pkg
 	for pkg ; do
 		opam-installer -i \
-			--prefix="${ED}usr" \
-			--libdir="${D}$(ocamlc -where)" \
-			--docdir="${ED}usr/share/doc/${PF}" \
-			--mandir="${ED}usr/share/man" \
+			--prefix="${ED%/}/usr" \
+			--libdir="${D%/}/$(ocamlc -where)" \
+			--docdir="${ED%/}/usr/share/doc/${PF}" \
+			--mandir="${ED%/}/usr/share/man" \
 			"${pkg}.install" || die
 	done
 }
@@ -41,9 +42,9 @@ opam_src_install() {
 	local pkg="${1:-${PN}}"
 	opam-install "${pkg}"
 	# Handle opam putting doc in a subdir
-	if [ -d "${ED}usr/share/doc/${PF}/${pkg}" ] ; then
-		mv "${ED}usr/share/doc/${PF}/${pkg}/"* "${ED}usr/share/doc/${PF}/" || die
-		rmdir "${ED}usr/share/doc/${PF}/${pkg}" || die
+	if [ -d "${ED%/}/usr/share/doc/${PF}/${pkg}" ] ; then
+		mv "${ED%/}/usr/share/doc/${PF}/${pkg}/"* "${ED%/}/usr/share/doc/${PF}/" || die
+		rmdir "${ED%/}/usr/share/doc/${PF}/${pkg}" || die
 	fi
 }
 

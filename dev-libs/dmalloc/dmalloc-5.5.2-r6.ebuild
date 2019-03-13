@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -10,7 +10,7 @@ SRC_URI="http://dmalloc.com/releases/${P}.tgz"
 
 LICENSE="CC-BY-SA-3.0"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd"
 IUSE="static-libs threads"
 
 DEPEND="sys-apps/texinfo"
@@ -80,6 +80,6 @@ src_install() {
 	done
 
 	if ! use static-libs; then
-		rm "${D}"/usr/$(get_libdir)/lib${PN}*.a || die
+		rm "${ED}"/usr/$(get_libdir)/lib${PN}*.a || die
 	fi
 }

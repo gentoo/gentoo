@@ -12,7 +12,4 @@
 	<upstream>
 		<remote-id type="github">gogglesmm/gogglesmm</remote-id>
 	</upstream>
-	<use>
-		<flag name="opus">Enable support for opus codec</flag>
-	</use>
 </pkgmetadata>

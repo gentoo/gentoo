@@ -10,7 +10,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5} )
 inherit distutils-r1
 
 DESCRIPTION="Ultra fast JSON encoder and decoder for Python"
-HOMEPAGE="https://pypi.python.org/pypi/ujson/"
+HOMEPAGE="https://pypi.org/project/ujson/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.zip"
 
 LICENSE="BSD"

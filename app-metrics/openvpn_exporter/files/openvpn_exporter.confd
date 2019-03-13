@@ -1,0 +1,2 @@
+# arguments for prometheus openvpn exporter
+command_args="-openvpn.status_paths /etc/openvpn/openvpn-status.log"

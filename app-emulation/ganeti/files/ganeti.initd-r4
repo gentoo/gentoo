@@ -1,0 +1,96 @@
+#!/sbin/openrc-run
+# Copyright 1999-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+extra_commands="forcestart is_master"
+
+depend() {
+	need localmount logger
+	after bootmisc sshd
+	use net
+}
+
+DAEMON_UTIL="/usr/%LIBDIR%/ganeti/daemon-util"
+
+is_master() {
+	[ -z "${ganeti_master}" ] && ganeti_master="$(gnt-cluster getmaster)"
+	[ -z "${local_hostname}" ] && local_hostname="$(hostname -f)"
+	[ "${ganeti_master}" = "${local_hostname}" ]
+}
+
+# This exists specifically for restarting a 2-node cluster where quorum might
+# not be available.
+forcestart() {
+	ewarn "Forcing non-quorum Ganeti master start"
+	GANETI_WCONFD_OPTS="${GANETI_WCONFD_OPTS} --no-voting --yes-do-it"
+	GANETI_LUXID_OPTS="${GANETI_LUXID_OPTS} --no-voting --yes-do-it"
+	GANETI_MASTERD_OPTS="${GANETI_LUXID_OPTS} --no-voting --yes-do-it"
+	export GANETI_WCONFD_OPTS GANETI_LUXID_OPTS GANETI_MASTERD_OPTS
+	start
+}
+
+start() {
+	if ! [ -e ${DAEMON_UTIL} ]; then
+		eerror "Could not find daemon utility at ${DAEMON_UTIL}"
+		return 1
+	elif ! ${DAEMON_UTIL} check-config ; then
+		eerror "Incomplete configuration, will not run."
+		return 1
+	fi
+
+	local daemon retval=0 optsvar started_daemons daemon_opts
+
+	for daemon in $(${DAEMON_UTIL} list-start-daemons); do
+		optsvar="$(printf "${daemon}_OPTS" | tr - _ | LC_ALL=C tr '[:lower:]' '[:upper:]')"
+
+		case "${daemon#ganeti-}" in
+			masterd|rapi|luxid) is_master || continue;;
+		esac
+
+		eval daemon_opts=\"\$\{${optsvar}\}\"
+
+		ebegin "Starting ${daemon}"
+		eindent
+		veinfo ${DAEMON_UTIL} start ${daemon} ${GANETI_OPTS} ${daemon_opts}
+		${DAEMON_UTIL} start ${daemon} ${GANETI_OPTS} ${daemon_opts} || retval=${?}
+
+		if [ ${retval} != 0  ] && [ -n "${started_daemons}" ]; then
+			case ${daemon} in
+				*-kvmd) retval=0; ewarn "Failed to start kvmd, continuing anyway";;
+				*)
+					eerror "Stopping already started daemons"
+					eindent
+					eend ${code} "$(${DAEMON_UTIL} check-exitcode ${code})"
+
+					for daemon in ${started_daemons}; do
+						ebegin "Stopping ${daemon}"
+						${DAEMON_UTIL} stop ${daemon} ${GANETI_OPTS}
+						eend ${?}
+					done
+					eoutdent; eoutdent
+					return ${retval}
+				;;
+			esac
+		fi
+		eoutdent
+		started_daemons="${started_daemons} ${daemon}"
+	done
+}
+
+stop() {
+	if ! [ -e ${DAEMON_UTIL} ]; then
+		eerror "Could not find daemon utility at ${DAEMON_UTIL}"
+		return 1
+	fi
+
+	local daemon
+
+	for daemon in $(${DAEMON_UTIL} list-stop-daemons) ; do \
+		case "${daemon#ganeti-}" in
+			masterd|rapi|luxid) is_master || continue;;
+		esac
+		${DAEMON_UTIL} stop ${daemon} ${GANETI_OPTS}
+	done
+}
+
+# vim:ft=gentoo-init-d:ts=4:sts=4:sw=4:noet:

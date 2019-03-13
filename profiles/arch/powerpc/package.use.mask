@@ -1,5 +1,63 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Virgil Dupras <vdupras@gentoo.org> (03 Mar 2019)
+# Tests fail with jpeg2k flag. Bug #662686
+dev-python/pillow jpeg2k
+
+# Andreas Sturmlechner <asturm@gentoo.org> (28 Feb 2019)
+# media-libs/dav1d is not yet keyworded
+media-video/vlc dav1d
+
+# Thomas Deutschmann <whissi@gentoo.org> (26 Feb 2019)
+# nginx_modules_http_lua requires USE=luajit which requires
+# dev-lang/luajit which is not keyworded on PowerPC
+www-servers/nginx luajit nginx_modules_http_lua
+
+# Alon Bar-Lev <alonbl@gentoo.org> (21 Dec 2018)
+# Requires USE=dane that is masked in this profile.
+net-libs/gnutls test-full
+
+# Matthew Thode <prometheanfire@gentoo.org> (12 Sep 2018)
+# dev-db/mariadb-connector-c not yet keyworded
+net-analyzer/icinga2 mariadb
+
+# Luca Barbato <lu_zero@gentoo.org> (12 Aug 2018)
+# grub pc is not supported on powerpc
+sys-boot/grub:2 grub_platforms_pc grub_platforms_efi-32 grub_platforms_efi-64 grub_platforms_xen
+
+# Luke Dashjr <luke-jr+gentoobugs@utopios.org> (08 Jun 2018)
+# Requires unported sys-libs/netbsd-csu
+sys-devel/clang-runtime crt
+
+# Luke Dashjr <luke-jr+gentoobugs@utopios.org> (08 Jun 2018)
+# sys-devel/llvmgold not yet keyworded
+sys-devel/llvm gold
+
+# Tomáš Mózes <hydrapolic@gmail.com> (05 Jun 2018)
+# Unkeyworded dependencies.
+app-admin/syslog-ng mongodb
+
+# Anthony G. Basile <blueness@gentoo.org> (14 Apr 2018)
+# net-vpn/tor, tests are broken on ppc/ppc64, bug #653098
+net-vpn/tor test
+
+# Sergei Trofimovich <slyfox@gentoo.org> (27 Mar 2018)
+# dev-qt/qtwebengine is not ported to powerpc
+net-irc/quassel urlpreview
+www-client/otter webengine
+
+# Matthias Maier <tamiko@gentoo.org> (18 Mar 2018)
+# dev-libs/capstone not keyworded
+app-emulation/qemu capstone
+
+# Andreas Sturmlechner <asturm@gentoo.org> (02 Mar 2018)
+# Requires unkeyworded deps
+>=dev-python/ipython-5.4.1 qt5 smp
+
+# Amy Liffey <amynka@gentoo.org (21 Jan 2018)
+# dev-libs/cereal not keyworded for ppc
+media-libs/opencv contrib_dnn
 
 # Robin H. Johnson <robbat2@gentoo.org> (10 Nov 2017)
 # Masked for dependencies:
@@ -36,15 +94,6 @@ media-libs/mesa vulkan
 # Requires USE=opencl that is masked in this profile.
 net-misc/bfgminer adl lm_sensors
 
-# Andreas Sturmlechner <asturm@gentoo.org> (31 Jul 2017)
-# Mask for removal of ancient versions of media-libs/libvisio,
-# media-libs/libcdr, app-text/libwpd and app-text/libwpg
-media-gfx/inkscape cdr visio wpg
-
-# Michael Weber <xmw@gentoo.org> (14 Mar 2017)
-# mask unkeyworded dependency media-libs/glfw
-app-text/mupdf opengl
-
 # Jason Zaman <perfinion@gentoo.org> (09 May 2017)
 # x11-libs/libXpresent is not keyworded on ppc
 xfce-base/xfwm4 xpresent
@@ -74,39 +123,21 @@ dev-db/percona-server -numa
 # Davide Pesavento <pesa@gentoo.org> (28 Jul 2016)
 # The corresponding Qt5 modules are not keyworded on ppc, and we don't want to
 # keyword them solely because of PyQt5 while there are no other in-tree users.
-dev-python/PyQt5 bluetooth location webengine
+dev-python/PyQt5 bluetooth location networkauth webengine
 
 # Michael Palimaka <kensington@gentoo.org> (07 Jul 2016)
 # Requires unkeyworded dependencies
 dev-vcs/subversion kwallet
-games-arcade/jumpnbump kde
-kde-apps/katepart handbook
-kde-frameworks/kdelibs handbook policykit
-net-irc/quassel kde
+net-irc/quassel kde snorenotify
 net-libs/libproxy kde
 sys-auth/polkit kde
 sys-block/gparted kde
 virtual/notification-daemon kde
-
-# Davide Pesavento <pesa@gentoo.org> (06 Jun 2016)
-# Requires unkeyworded dev-python/PyQt5
-net-print/hplip qt5
-
-# Johannes Huber <johu@gentoo.org> (26 Mar 2016)
-# Unkeyworded dependency x11-libs/snorenotify
-net-irc/quassel snorenotify
-
-# Rick Farina <zerochaos@gentoo.org> (23 Mar 2016)
-# rspec:3 is not keyworded for x86 at this time
-=dev-ruby/bundler-audit-0.5.0 test
+x11-wm/sawfish kde
 
 # Justin Lecher <jlec@gentoo.org> (22 Feb 2016)
 # Missing test deps keyword #575366
 dev-cpp/eigen test
-
-# Mike Frysinger <vapier@gentoo.org> (21 Feb 2016)
-# Needs arch love for elementary. #575322
-media-libs/elementary javascript
 
 # Pacho Ramos <pacho@gentoo.org> (15 Nov 2015)
 # Missing keywords
@@ -120,17 +151,9 @@ net-wireless/blueman appindicator
 # x11-drivers/xf86-video-amdgpu is not keyworded
 x11-base/xorg-drivers video_cards_amdgpu
 
-# Bernard Cafarelli <voyageur@gentoo.org> (06 Aug 2015)
-# Dependencies missing keywords, bug #543604
-sys-devel/llvm ocaml
-
 # Gilles Dartiguelongue <eva@gentoo.org> (10 Jun 2015)
 # net-libs/dleyna-connector-dbus lack ppc/ppc64 keyword, bug #551634
 >=media-plugins/grilo-plugins-0.2.14 upnp-av
-
-# Justin Lecher <jlec@gentoo> (18 May 2015)
-# missing keywords
-dev-python/matplotlib qt5 test
 
 # Pacho Ramos <pacho@gentoo.org> (15 May 2015)
 # Missing keywords
@@ -143,7 +166,6 @@ sys-auth/sssd samba
 # Mike Frysinger <vapier@gentoo.org> (16 Mar 2015)
 # Needs sci-physics/bullet & media-libs/libsdl2 tested #499974
 dev-libs/efl physics sdl
-media-libs/elementary sdl
 
 # Andreas K. Huettel <dilfridge@gentoo.org> (15 Feb 2015)
 # There's no keyworded office implementation anymore.
@@ -184,15 +206,11 @@ dev-ruby/haml test
 
 # Anthony G. Basile <blueness@gentoo.org> (14 Aug 2014)
 # Mask these flags since mongodb is broken on ppc/ppc64
-dev-python/ipython doc matplotlib mongodb nbconvert notebook qt4 test
+dev-python/ipython doc matplotlib nbconvert notebook test
 
 # Anthony G. Basile <blueness@gentoo.org> (12 Aug 2014)
 # Ultimately pulls in nodejs which is broken.
 dev-ruby/actionpack test
-
-# Anthony G. Basile <blueness@gentoo.org> (12 Aug 2014)
-# Ultimately pulls in nodejs which is broken.
-dev-ruby/tilt test
 
 # Anthony G. Basile <blueness@gentoo.org> (12 Aug 2014)
 # Pulls in ceph which is broken.  Masked per dev-zero.
@@ -201,10 +219,6 @@ sys-block/fio rbd
 # Andreas K. Huettel <dilfridge@gentoo.org> (14 Jun 2014)
 # dependency sci-libs/vtk not keyworded on ppc yet
 media-libs/opencv vtk
-
-# Johannes Huber <johu@gentoo.org> (16 Apr 2014)
-# unkeyworded deps
-kde-apps/gwenview semantic-desktop
 
 # Pacho Ramos <pacho@gentoo.org> (22 Feb 2013)
 # Missing keywords, bug #495250
@@ -260,11 +274,6 @@ net-im/choqok telepathy
 >=dev-db/mariadb-5.5 tcmalloc
 >=dev-db/percona-server-5.5 tcmalloc
 
-# Anthony G. Basile <blueness@gentoo.org> (29 Sep 2012)
-# dev-cpp/tbb does not build on ppc ppc64 so mask any
-# dependencies on it
-media-libs/openimageio tbb
-
 # Samuli Suominen <ssuominen@gentoo.org> (27 Sep 2012)
 # I don't want to open this can of worms yet. Feel free
 # to do so.
@@ -273,10 +282,6 @@ dev-ruby/rack-test test
 # Anthony G. Basile <blueness@gentoo.org> (21 Aug 2012)
 # Does not work on ppc/ppc64
 net-vpn/tor tor-hardening
-
-# Brent Baude <ranger@gentoo.org> (06 Mar 2012)
-# masking kde on gajim
-net-im/gajim kde
 
 # Pacho Ramos <pacho@gentoo.org> (07 May 2012)
 # libhid is not keyworded
@@ -341,8 +346,3 @@ media-tv/mythtv vdpau
 # Brent Baude <ranger@gentoo.org>
 # masking zephyr USE on pidgin
 net-im/pidgin zephyr
-
-# Joseph Jezak <josejx@gentoo.org> (28 Jun 2007)
-# Masked Parallel LCD devices for bug #180683
-# app-misc/lcd4linux
-app-misc/lcd4linux lcd_devices_hd44780

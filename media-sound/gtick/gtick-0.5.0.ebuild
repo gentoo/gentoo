@@ -1,12 +1,12 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
 inherit eutils
 
 DESCRIPTION="a metronome application supporting different meters and speeds ranging"
-HOMEPAGE="http://www.antcom.de/gtick"
-SRC_URI="http://www.antcom.de/gtick/download/${P}.tar.gz"
+HOMEPAGE="https://www.antcom.de/gtick"
+SRC_URI="https://www.antcom.de/gtick/download/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

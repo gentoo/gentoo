@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -13,12 +13,9 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="+plugins"
 
-# sys-apps/coreutils dependency wrt
-# https://bugs.gentoo.org/show_bug.cgi?id=448716
-
 DEPEND=""
 RDEPEND="net-firewall/iptables
-	|| ( <sys-apps/coreutils-8.20 >sys-apps/coreutils-8.20-r1 )
+	>sys-apps/coreutils-8.20-r1
 	sys-apps/iproute2
 	plugins? ( net-dns/bind-tools )"
 

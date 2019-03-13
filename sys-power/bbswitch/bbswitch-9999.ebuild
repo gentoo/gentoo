@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit linux-mod
 
@@ -39,7 +39,7 @@ pkg_setup() {
 
 src_prepare() {
 	# Fix build failure, bug #513542
-	sed -i 's/^KDIR.*$/KDIR\ \:= \/usr\/src\/linux/g' Makefile || die
+	sed "s%^KDIR :=.*%KDIR := ${KERNEL_DIR}%g" -i Makefile || die
 
 	default
 }

@@ -5,4 +5,8 @@
     <email>perl@gentoo.org</email>
     <name>Gentoo Perl Project</name>
   </maintainer>
+  <upstream>
+    <remote-id type="cpan">Test-CleanNamespaces</remote-id>
+    <remote-id type="cpan-module">Test::CleanNamespaces</remote-id>
+  </upstream>
 </pkgmetadata>

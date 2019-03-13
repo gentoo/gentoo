@@ -38,7 +38,6 @@ ipod
 ipv6
 lm_sensors
 ncurses
-netboot
 opengl
 oss
 pcmcia
@@ -66,7 +65,6 @@ ladspa
 openmp
 portaudio
 pulseaudio
-qt4
 readline
 # libtiff only static, so avoid the tiff USE flag!
 tiff

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -7,12 +7,12 @@ PYTHON_COMPAT=( python2_7 )
 inherit twisted-r1
 
 DESCRIPTION="A web templating framework that provides LivePage, an automatic AJAX toolkit"
-HOMEPAGE="https://github.com/twisted/nevow https://pypi.python.org/pypi/Nevow"
+HOMEPAGE="https://github.com/twisted/nevow https://pypi.org/project/Nevow/"
 SRC_URI="mirror://pypi/${TWISTED_PN:0:1}/${TWISTED_PN}/${TWISTED_P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-linux"
+KEYWORDS="~alpha amd64 ia64 ppc ppc64 ~sparc x86 ~x86-linux"
 IUSE="doc test"
 
 RDEPEND="

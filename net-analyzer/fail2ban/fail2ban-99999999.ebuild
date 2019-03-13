@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} pypy )
 DISTUTILS_SINGLE_IMPL=1
 
-inherit distutils-r1 eutils systemd git-r3
+inherit distutils-r1 git-r3 systemd
 
 DESCRIPTION="scans log files and bans IPs that show malicious signs"
 HOMEPAGE="http://www.fail2ban.org/"
@@ -35,7 +35,7 @@ REQUIRED_USE="systemd? ( !python_single_target_pypy )"
 DOCS=( ChangeLog DEVELOP README.md THANKS TODO doc/run-rootless.txt )
 
 python_prepare_all() {
-	eapply_user
+	default
 
 	# Replace /var/run with /run, but not in the top source directory
 	find . -mindepth 2 -type f -exec \
@@ -58,7 +58,6 @@ python_install_all() {
 	# not FILESDIR
 	newconfd files/gentoo-confd ${PN}
 	newinitd files/gentoo-initd ${PN}
-	systemd_dounit files/${PN}.service
 	sed -e "s:@BINDIR@:${EPREFIX}/usr/bin:g" files/${PN}.service.in > "${T}"/${PN}.service || die
 	systemd_dounit "${T}"/${PN}.service
 	systemd_dotmpfilesd files/${PN}-tmpfiles.conf
@@ -68,6 +67,8 @@ python_install_all() {
 	# See http://thread.gmane.org/gmane.linux.gentoo.devel/35675
 	insinto /etc/logrotate.d
 	newins files/${PN}-logrotate ${PN}
+
+	keepdir /var/lib/${PN}
 }
 
 pkg_preinst() {

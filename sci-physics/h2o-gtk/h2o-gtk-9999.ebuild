@@ -1,24 +1,18 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-#if LIVE
-AUTOTOOLS_AUTORECONF=yes
-EGIT_REPO_URI="https://bitbucket.org/mgorny/${PN}.git"
-
-inherit git-r3
-#endif
-
-inherit autotools-utils
+inherit autotools git-r3
 
 DESCRIPTION="GTK+ UI for libh2o -- water & steam properties"
-HOMEPAGE="https://bitbucket.org/mgorny/h2o-gtk/"
-SRC_URI="https://www.bitbucket.org/mgorny/${PN}/downloads/${P}.tar.bz2"
+HOMEPAGE="https://github.com/mgorny/h2o-gtk/"
+SRC_URI=""
+EGIT_REPO_URI="https://github.com/mgorny/h2o-gtk.git"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS=""
 IUSE=""
 
 RDEPEND="dev-cpp/gtkmm:2.4=
@@ -26,7 +20,7 @@ RDEPEND="dev-cpp/gtkmm:2.4=
 	sci-libs/plotmm:0="
 DEPEND="${RDEPEND}"
 
-#if LIVE
-KEYWORDS=
-SRC_URI=
-#endif
+src_prepare() {
+	default
+	eautoreconf
+}

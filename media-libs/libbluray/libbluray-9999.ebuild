@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,14 +11,14 @@ else
 	SRC_URI="https://downloads.videolan.org/pub/videolan/libbluray/${PV}/${P}.tar.bz2"
 fi
 
-inherit autotools java-pkg-opt-2 flag-o-matic eutils multilib-minimal
+inherit autotools java-pkg-opt-2 flag-o-matic multilib-minimal
 
 DESCRIPTION="Blu-ray playback libraries"
 HOMEPAGE="https://www.videolan.org/developers/libbluray.html"
 
 LICENSE="LGPL-2.1"
 SLOT="0/2"
-IUSE="aacs bdplus +fontconfig java static-libs +truetype udf utils +xml"
+IUSE="aacs bdplus +fontconfig java static-libs +truetype utils +xml"
 
 COMMON_DEPEND="
 	xml? ( >=dev-libs/libxml2-2.9.1-r4[${MULTILIB_USEDEP}] )
@@ -44,7 +44,7 @@ DOCS=( ChangeLog README.txt )
 
 src_prepare() {
 	default
-
+	unset JDK_HOME #621992
 	if use java ; then
 		export JDK_HOME="$(java-config -g JAVA_HOME)"
 
@@ -61,11 +61,10 @@ multilib_src_configure() {
 	ECONF_SOURCE="${S}" econf \
 		--disable-optimizations \
 		$(multilib_native_use_enable utils examples) \
-		$(multilib_native_use_enable java bdjava) \
+		$(multilib_native_use_enable java bdjava-jar) \
 		$(use_with fontconfig) \
 		$(use_with truetype freetype) \
 		$(use_enable static-libs static) \
-		$(use_enable udf) \
 		$(use_with xml libxml2)
 }
 
@@ -73,7 +72,7 @@ multilib_src_install() {
 	emake DESTDIR="${D}" install
 
 	if multilib_is_native_abi && use utils; then
-		cd .libs/
+		cd .libs/ || die
 		dobin index_dump mobj_dump mpls_dump bd_info bdsplice clpi_dump hdmv_test libbluray_test list_titles sound_dump
 		if use java; then
 			dobin bdj_test
@@ -81,11 +80,11 @@ multilib_src_install() {
 	fi
 
 	if multilib_is_native_abi && use java; then
-		java-pkg_dojar "${BUILD_DIR}"/.libs/${PN}-j2se-*.jar
+		java-pkg_dojar "${BUILD_DIR}"/.libs/${PN}{,-awt}-j2se-*.jar
 	fi
 }
 
 multilib_src_install_all() {
 	einstalldocs
-	prune_libtool_files
+	find "${D}" -name '*.la' -delete || die
 }

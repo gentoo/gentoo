@@ -1,0 +1,16 @@
+#The convention in this file is to show the default setting commented
+#out.
+#To change the setting, uncomment it then change the value.
+
+#This is the chronograf error log:
+#error_log="/var/log/chronograf/chronograf.log"
+
+#This is the chronograf output log:
+#output_log="/dev/null"
+
+# If you set this to yes, chronograf will report anonymous usage stats
+# to influx data.
+#report_usage_stats="no"
+
+# Extra options to pass to chronograf:
+#chronograf_opts=""

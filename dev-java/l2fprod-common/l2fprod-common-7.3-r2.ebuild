@@ -1,10 +1,7 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
-
-WANT_ANT_TASKS="ant-trax"
-
 inherit eutils java-pkg-2 java-ant-2
 
 DESCRIPTION="Java/Swing GUI components and libraries for building desktop applications"

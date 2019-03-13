@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,7 +7,7 @@ KDE_TEST="forceoptional"
 inherit kde5
 
 DESCRIPTION="CD ripper and audio encoder frontend based on KDE Frameworks"
-HOMEPAGE="http://www.kde-apps.org/content/show.php?content=107645"
+HOMEPAGE="https://www.kde-apps.org/content/show.php?content=107645"
 SRC_URI="https://dev.gentoo.org/~asturm/distfiles/${P}.tar.xz"
 
 LICENSE="GPL-2 FDL-1.2"

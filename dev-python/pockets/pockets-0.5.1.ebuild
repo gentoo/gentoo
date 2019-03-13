@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 inherit distutils-r1
 
 DESCRIPTION="Collection of helpful Python tools"
-HOMEPAGE="https://pypi.python.org/pypi/pockets"
+HOMEPAGE="https://pypi.org/project/pockets/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"

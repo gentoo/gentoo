@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,6 +13,7 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 hppa x86"
 IUSE=""
-HOMEPAGE="https://github.com/sebastianbergmann/php-file-iterator"
+HOMEPAGE="https://github.com/sebastianbergmann/php-file-iterator
+	https://phpunit.de"
 SRC_URI="http://${PHP_PEAR_URI}/get/${PEAR_P}.tgz"
 DOCS=( ChangeLog.markdown README.markdown )

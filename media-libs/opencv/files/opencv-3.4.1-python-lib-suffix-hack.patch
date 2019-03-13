@@ -1,0 +1,13 @@
+--- a/cmake/OpenCVDetectPython.cmake	2018-05-31 09:14:42.998873104 +0200
++++ b/cmake/OpenCVDetectPython.cmake	2018-05-31 09:26:08.444914001 +0200
+@@ -140,8 +140,8 @@
+         else() #debian based assumed, install to the dist-packages.
+           set(_packages_path "python${_version_major_minor}/dist-packages")
+         endif()
+-        if(EXISTS "${CMAKE_INSTALL_PREFIX}/lib${LIB_SUFFIX}/${${packages_path}}")
+-          set(_packages_path "lib${LIB_SUFFIX}/${_packages_path}")
++        if(EXISTS "${CMAKE_INSTALL_PREFIX}/lib${LIBPY_SUFFIX}/${${packages_path}}")
++          set(_packages_path "lib${LIBPY_SUFFIX}/${_packages_path}")
+         else()
+           set(_packages_path "lib/${_packages_path}")
+         endif()

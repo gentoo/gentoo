@@ -1,5 +1,5 @@
---- source/net_list.cpp.old	2015-12-08 21:41:16.782404098 +0100
-+++ source/net_list.cpp	2015-12-08 21:41:33.153114600 +0100
+--- a/source/net_list.cpp.old	2015-12-08 21:41:16.782404098 +0100
++++ b/source/net_list.cpp	2015-12-08 21:41:33.153114600 +0100
 @@ -693,7 +693,7 @@
  				//Drawn at a total higher or equal to end_value: suspense!
  				//  or maybe timer just elapsed and the game is drawn

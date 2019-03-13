@@ -20,8 +20,8 @@ index de512e7822d0..b384cb0e23a2 100644
  
  #define THROW(p_result) if (!(p_result)) { error = 1; goto err; }
  
-+#if OPENSSL_VERSION_NUMBER < 0x10100000 || defined(LIBRESSL_VERSION_NUMBER)
-+
++#if OPENSSL_VERSION_NUMBER < 0x10100000L || \
++    (defined(LIBRESSL_VERSION_NUMBER) && LIBRESSL_VERSION_NUMBER < 0x2070000fL)
 +static void RSA_get0_key(const RSA *r,
 +                         const BIGNUM **n, const BIGNUM **e, const BIGNUM **d)
 +{

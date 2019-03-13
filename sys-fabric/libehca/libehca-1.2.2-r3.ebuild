@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -12,7 +12,7 @@ OFED_SNAPSHOT="1"
 inherit openib
 
 DESCRIPTION="OpenIB - IBM eServer eHCA Infiniband device driver for Linux on POWER"
-KEYWORDS=""
+KEYWORDS="amd64"
 IUSE=""
 
 DEPEND="sys-fabric/libibverbs:${SLOT}"

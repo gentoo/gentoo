@@ -1,16 +1,17 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=6
 
 inherit toolchain-funcs
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/cvsync/cvsync.git"
-	inherit git-2
+	inherit git-r3
 else
 	SRC_URI="mirror://gentoo/${P}.tar.xz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+	S="${WORKDIR}/${PN}"
 fi
 
 DESCRIPTION="portable CVS repository synchronization utility"
@@ -29,8 +30,6 @@ RDEPEND="sys-libs/zlib
 	)"
 DEPEND="${RDEPEND}"
 
-S="${WORKDIR}/${PN}"
-
 maint_pkg_create() {
 	cd "${S}"
 	local ver=$(date --date="$(git log -n1 --pretty=format:%ci HEAD)" -u "+%Y.%m.%d.%H%M%S")
@@ -42,7 +41,7 @@ maint_pkg_create() {
 
 src_unpack() {
 	if [[ ${PV} == "9999" ]] ; then
-		git-2_src_unpack
+		git-r3_src_unpack
 		maint_pkg_create
 	else
 		default

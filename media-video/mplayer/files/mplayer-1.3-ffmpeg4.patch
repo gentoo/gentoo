@@ -1,0 +1,501 @@
+Index: Makefile
+===================================================================
+--- a/Makefile.orig
++++ b/Makefile
+@@ -68,7 +68,6 @@ SRCS_COMMON-$(CONFIG_VF_LAVFI)      +=
+ 
+ # These filters use private headers and do not work with shared FFmpeg.
+ SRCS_COMMON-$(FFMPEG_A)              += libmpcodecs/vf_fspp.c           \
+-                                        libmpcodecs/vf_mcdeint.c        \
+                                         libmpcodecs/vf_qp.c             \
+                                         libmpcodecs/vf_spp.c            \
+                                         libmpcodecs/vf_uspp.c           \
+@@ -616,9 +615,7 @@ SRCS_MPLAYER = command.c
+ 
+ #MEncoder
+ SRCS_MENCODER-$(FAAC)             += libmpcodecs/ae_faac.c
+-SRCS_MENCODER-$(FFMPEG)           += libmpcodecs/ae_lavc.c              \
+-                                     libmpcodecs/ve_lavc.c              \
+-                                     libmpdemux/muxer_lavf.c
++SRCS_MENCODER-$(FFMPEG)           += libmpdemux/muxer_lavf.c
+ SRCS_MENCODER-$(LIBDV)            += libmpcodecs/ve_libdv.c
+ SRCS_MENCODER-$(LIBLZO)           += libmpcodecs/ve_nuv.c               \
+                                      libmpcodecs/native/rtjpegn.c
+Index: cfg-mencoder.h
+===================================================================
+--- a/cfg-mencoder.h.orig
++++ b/cfg-mencoder.h
+@@ -52,7 +52,7 @@ const m_option_t ovc_conf[]={
+     "   nuv      - nuppel video\n"
+ #endif
+ #ifdef CONFIG_FFMPEG
+-    "   lavc     - libavcodec codecs - best quality!\n"
++//    "   lavc     - libavcodec codecs - best quality!\n"//TODO: ve_lavc is deactivated because it doesn't build after latest FFmpeg major bumps
+ #endif
+ #ifdef CONFIG_WIN32DLL
+     "   vfw      - VfW DLLs, read DOCS/HTML/en/encoding-guide.html.\n"
+@@ -106,7 +106,7 @@ const m_option_t oac_conf[]={
+     "   mp3lame  - cbr/abr/vbr MP3 using libmp3lame\n"
+ #endif
+ #ifdef CONFIG_FFMPEG
+-    "   lavc     - FFmpeg audio encoder (MP2, AC3, ...)\n"
++//    "   lavc     - FFmpeg audio encoder (MP2, AC3, ...)\n"//TODO: ae_lavc was deactivated because it depends on ve_lavc which does not compile after latest FFmpeg major bumps
+ #endif
+ #ifdef CONFIG_TOOLAME
+     "   toolame  - Toolame MP2 audio encoder\n"
+@@ -226,7 +226,7 @@ const m_option_t mencoder_opts[]={
+     {"lameopts", lameopts_conf, CONF_TYPE_SUBCONFIG, CONF_GLOBAL, 0, 0, NULL},
+ #endif
+ #ifdef CONFIG_FFMPEG
+-    {"lavcopts", lavcopts_conf, CONF_TYPE_SUBCONFIG, CONF_GLOBAL, 0, 0, NULL},
++    //{"lavcopts", lavcopts_conf, CONF_TYPE_SUBCONFIG, CONF_GLOBAL, 0, 0, NULL}, //TODO: ve_lavc doesn't build after latest FFmpeg major bumps
+ #else
+     {"lavcopts", "MPlayer was compiled without libavcodec. See README or DOCS.\n", CONF_TYPE_PRINT, CONF_NOCFG, 0, 0, NULL},
+ #endif /* CONFIG_FFMPEG */
+Index: gui/util/bitmap.c
+===================================================================
+--- a/gui/util/bitmap.c.orig
++++ b/gui/util/bitmap.c
+@@ -95,7 +95,7 @@ static int pngRead(const char *fname, gu
+         return 3;
+     }
+ 
+-    data = av_malloc(len + FF_INPUT_BUFFER_PADDING_SIZE);
++    data = av_malloc(len + AV_INPUT_BUFFER_PADDING_SIZE);
+ 
+     if (!data) {
+         fclose(file);
+Index: libmpdemux/demuxer.c
+===================================================================
+--- a/libmpdemux/demuxer.c.orig
++++ b/libmpdemux/demuxer.c
+@@ -50,7 +50,7 @@
+ 
+ #ifdef CONFIG_FFMPEG
+ #include "libavcodec/avcodec.h"
+-#if MP_INPUT_BUFFER_PADDING_SIZE < FF_INPUT_BUFFER_PADDING_SIZE
++#if MP_INPUT_BUFFER_PADDING_SIZE < AV_INPUT_BUFFER_PADDING_SIZE
+ #error MP_INPUT_BUFFER_PADDING_SIZE is too small!
+ #endif
+ #include "av_helpers.h"
+Index: libmpdemux/demux_lavf.c
+===================================================================
+--- a/libmpdemux/demux_lavf.c.orig
++++ b/libmpdemux/demux_lavf.c
+@@ -176,7 +176,7 @@ static int lavf_check_file(demuxer_t *de
+     }
+ 
+     avpd.buf = av_mallocz(FFMAX(BIO_BUFFER_SIZE, PROBE_BUF_SIZE) +
+-                          FF_INPUT_BUFFER_PADDING_SIZE);
++                          AV_INPUT_BUFFER_PADDING_SIZE);
+     do {
+         read_size = stream_read(demuxer->stream, avpd.buf + probe_data_size, read_size);
+         if(read_size < 0) {
+Index: libmpcodecs/vf_uspp.c
+===================================================================
+--- a/libmpcodecs/vf_uspp.c.orig
++++ b/libmpcodecs/vf_uspp.c
+@@ -240,7 +240,7 @@ static int config(struct vf_instance *vf
+             avctx_enc->gop_size = 300;
+             avctx_enc->max_b_frames= 0;
+             avctx_enc->pix_fmt = AV_PIX_FMT_YUV420P;
+-            avctx_enc->flags = CODEC_FLAG_QSCALE | CODEC_FLAG_LOW_DELAY;
++            avctx_enc->flags = AV_CODEC_FLAG_QSCALE | AV_CODEC_FLAG_LOW_DELAY;
+             avctx_enc->strict_std_compliance = FF_COMPLIANCE_EXPERIMENTAL;
+             avctx_enc->global_quality= 123;
+             av_dict_set(&opts, "no_bitstream", "1", 0);
+Index: libmpcodecs/ad_ffmpeg.c
+===================================================================
+--- a/libmpcodecs/ad_ffmpeg.c.orig
++++ b/libmpcodecs/ad_ffmpeg.c
+@@ -134,7 +134,7 @@ static int init(sh_audio_t *sh_audio)
+ 
+     /* alloc extra data */
+     if (sh_audio->wf && sh_audio->wf->cbSize > 0) {
+-        lavc_context->extradata = av_mallocz(sh_audio->wf->cbSize + FF_INPUT_BUFFER_PADDING_SIZE);
++        lavc_context->extradata = av_mallocz(sh_audio->wf->cbSize + AV_INPUT_BUFFER_PADDING_SIZE);
+         lavc_context->extradata_size = sh_audio->wf->cbSize;
+         memcpy(lavc_context->extradata, sh_audio->wf + 1,
+                lavc_context->extradata_size);
+Index: libmpcodecs/vf_lavc.c
+===================================================================
+--- a/libmpcodecs/vf_lavc.c.orig
++++ b/libmpcodecs/vf_lavc.c
+@@ -157,7 +157,7 @@ static int vf_open(vf_instance_t *vf, ch
+ 
+     if(p_quality<32){
+ 	// fixed qscale
+-	lavc_venc_context.flags = CODEC_FLAG_QSCALE;
++	lavc_venc_context.flags = AV_CODEC_FLAG_QSCALE;
+ 	lavc_venc_context.global_quality =
+ 	vf->priv->pic->quality = (int)(FF_QP2LAMBDA * ((p_quality<1) ? 1 : p_quality) + 0.5);
+     } else {
+Index: libmpcodecs/ae_lavc.c
+===================================================================
+--- a/libmpcodecs/ae_lavc.c.orig
++++ b/libmpcodecs/ae_lavc.c
+@@ -224,10 +224,10 @@ int mpae_init_lavc(audio_encoder_t *enco
+ 	}
+         if((lavc_param_audio_global_header&1)
+         /*|| (video_global_header==0 && (oc->oformat->flags & AVFMT_GLOBALHEADER))*/){
+-                lavc_actx->flags |= CODEC_FLAG_GLOBAL_HEADER;
++                lavc_actx->flags |= AV_CODEC_FLAG_GLOBAL_HEADER;
+         }
+         if(lavc_param_audio_global_header&2){
+-                lavc_actx->flags2 |= CODEC_FLAG2_LOCAL_HEADER;
++                lavc_actx->flags2 |= AV_CODEC_FLAG2_LOCAL_HEADER;
+         }
+ 
+ 	if(avcodec_open2(lavc_actx, lavc_acodec, NULL) < 0)
+Index: libmpcodecs/vf_mcdeint.c
+===================================================================
+--- a/libmpcodecs/vf_mcdeint.c.orig
++++ b/libmpcodecs/vf_mcdeint.c
+@@ -231,7 +231,7 @@ static int config(struct vf_instance *vf
+             avctx_enc->gop_size = 300;
+             avctx_enc->max_b_frames= 0;
+             avctx_enc->pix_fmt = AV_PIX_FMT_YUV420P;
+-            avctx_enc->flags = CODEC_FLAG_QSCALE | CODEC_FLAG_LOW_DELAY;
++            avctx_enc->flags = AV_CODEC_FLAG_QSCALE | AV_CODEC_FLAG_LOW_DELAY;
+             avctx_enc->strict_std_compliance = FF_COMPLIANCE_EXPERIMENTAL;
+             avctx_enc->global_quality= 1;
+             av_dict_set(&opts, "memc_only", "1", 0);
+@@ -245,11 +245,11 @@ static int config(struct vf_instance *vf
+             case 2:
+                 avctx_enc->me_method= ME_ITER;
+             case 1:
+-                avctx_enc->flags |= CODEC_FLAG_4MV;
++                avctx_enc->flags |= AV_CODEC_FLAG_4MV;
+                 avctx_enc->dia_size=2;
+ //                avctx_enc->mb_decision = MB_DECISION_RD;
+             case 0:
+-                avctx_enc->flags |= CODEC_FLAG_QPEL;
++                avctx_enc->flags |= AV_CODEC_FLAG_QPEL;
+             }
+ 
+             avcodec_open2(avctx_enc, enc, &opts);
+Index: libmpcodecs/ve_lavc.c
+===================================================================
+--- a/libmpcodecs/ve_lavc.c.orig
++++ b/libmpcodecs/ve_lavc.c
+@@ -213,7 +213,7 @@ const m_option_t lavcopts_conf[]={
+ 	{"vstrict", &lavc_param_strict, CONF_TYPE_INT, CONF_RANGE, -99, 99, NULL},
+ 	{"vdpart", &lavc_param_data_partitioning, CONF_TYPE_FLAG, 0, 0, 1, NULL},
+ 	{"keyint", &lavc_param_keyint, CONF_TYPE_INT, 0, 0, 0, NULL},
+-	{"gray", &lavc_param_gray, CONF_TYPE_FLAG, 0, 0, CODEC_FLAG_GRAY, NULL},
++	{"gray", &lavc_param_gray, CONF_TYPE_FLAG, 0, 0, AV_CODEC_FLAG_GRAY, NULL},
+ 	{"mpeg_quant", &lavc_param_mpeg_quant, CONF_TYPE_FLAG, 0, 0, 1, NULL},
+ 	{"vi_qfactor", &lavc_param_vi_qfactor, CONF_TYPE_FLOAT, CONF_RANGE, -31.0, 31.0, NULL},
+ 	{"vi_qoffset", &lavc_param_vi_qoffset, CONF_TYPE_FLOAT, CONF_RANGE, 0.0, 31.0, NULL},
+@@ -242,7 +242,7 @@ const m_option_t lavcopts_conf[]={
+         {"pred", &lavc_param_prediction_method, CONF_TYPE_INT, CONF_RANGE, 0, 20, NULL},
+         {"format", &lavc_param_format, CONF_TYPE_IMGFMT, 0, 0, 0, NULL},
+         {"debug", &lavc_param_debug, CONF_TYPE_INT, CONF_RANGE, 0, 100000000, NULL},
+-        {"psnr", &lavc_param_psnr, CONF_TYPE_FLAG, 0, 0, CODEC_FLAG_PSNR, NULL},
++        {"psnr", &lavc_param_psnr, CONF_TYPE_FLAG, 0, 0, AV_CODEC_FLAG_PSNR, NULL},
+         {"precmp", &lavc_param_me_pre_cmp, CONF_TYPE_INT, CONF_RANGE, 0, 2000, NULL},
+         {"cmp", &lavc_param_me_cmp, CONF_TYPE_INT, CONF_RANGE, 0, 2000, NULL},
+         {"subcmp", &lavc_param_me_sub_cmp, CONF_TYPE_INT, CONF_RANGE, 0, 2000, NULL},
+@@ -251,21 +251,21 @@ const m_option_t lavcopts_conf[]={
+ #ifdef FF_CMP_VSAD
+         {"ildctcmp", &lavc_param_ildct_cmp, CONF_TYPE_INT, CONF_RANGE, 0, 2000, NULL},
+ #endif
+-        {"bit_exact", &lavc_param_bit_exact, CONF_TYPE_FLAG, 0, 0, CODEC_FLAG_BITEXACT, NULL},
++        {"bit_exact", &lavc_param_bit_exact, CONF_TYPE_FLAG, 0, 0, AV_CODEC_FLAG_BITEXACT, NULL},
+         {"predia", &lavc_param_pre_dia_size, CONF_TYPE_INT, CONF_RANGE, -2000, 2000, NULL},
+         {"dia", &lavc_param_dia_size, CONF_TYPE_INT, CONF_RANGE, -2000, 2000, NULL},
+-	{"qpel", &lavc_param_qpel, CONF_TYPE_FLAG, 0, 0, CODEC_FLAG_QPEL, NULL},
++	{"qpel", &lavc_param_qpel, CONF_TYPE_FLAG, 0, 0, AV_CODEC_FLAG_QPEL, NULL},
+ 	{"trell", &lavc_param_trell, CONF_TYPE_FLAG, 0, 0, 1, NULL},
+-	{"lowdelay", &lavc_param_lowdelay, CONF_TYPE_FLAG, 0, 0, CODEC_FLAG_LOW_DELAY, NULL},
++	{"lowdelay", &lavc_param_lowdelay, CONF_TYPE_FLAG, 0, 0, AV_CODEC_FLAG_LOW_DELAY, NULL},
+ 	{"last_pred", &lavc_param_last_pred, CONF_TYPE_INT, CONF_RANGE, 0, 2000, NULL},
+ 	{"preme", &lavc_param_pre_me, CONF_TYPE_INT, CONF_RANGE, 0, 2000, NULL},
+ 	{"subq", &lavc_param_me_subpel_quality, CONF_TYPE_INT, CONF_RANGE, 0, 8, NULL},
+ 	{"me_range", &lavc_param_me_range, CONF_TYPE_INT, CONF_RANGE, 0, 16000, NULL},
+-	{"aic", &lavc_param_aic, CONF_TYPE_FLAG, 0, 0, CODEC_FLAG_AC_PRED, NULL},
++	{"aic", &lavc_param_aic, CONF_TYPE_FLAG, 0, 0, AV_CODEC_FLAG_AC_PRED, NULL},
+ 	{"umv", &lavc_param_umv, CONF_TYPE_FLAG, 0, 0, 1, NULL},
+ 	{"aiv", &lavc_param_aiv, CONF_TYPE_FLAG, 0, 0, 1, NULL},
+ 	{"obmc", &lavc_param_obmc, CONF_TYPE_FLAG, 0, 0, 1, NULL},
+-	{"loop", &lavc_param_loop, CONF_TYPE_FLAG, 0, 0, CODEC_FLAG_LOOP_FILTER, NULL},
++	{"loop", &lavc_param_loop, CONF_TYPE_FLAG, 0, 0, AV_CODEC_FLAG_LOOP_FILTER, NULL},
+ 	{"ibias", &lavc_param_ibias, CONF_TYPE_INT, CONF_RANGE, -512, 512, NULL},
+ 	{"pbias", &lavc_param_pbias, CONF_TYPE_INT, CONF_RANGE, -512, 512, NULL},
+ 	{"coder", &lavc_param_coder, CONF_TYPE_INT, CONF_RANGE, 0, 10, NULL},
+@@ -278,8 +278,8 @@ const m_option_t lavcopts_conf[]={
+ 	{"qprd", "Please use o=mpv_flags=+qp_rd instead of qprd.\n", CONF_TYPE_PRINT, 0, 0, 0, NULL},
+ 	{"ss", &lavc_param_ss, CONF_TYPE_FLAG, 0, 0, 1, NULL},
+ 	{"alt", &lavc_param_alt, CONF_TYPE_FLAG, 0, 0, 1, NULL},
+-	{"ilme", &lavc_param_ilme, CONF_TYPE_FLAG, 0, 0, CODEC_FLAG_INTERLACED_ME, NULL},
+-	{"cgop", &lavc_param_closed_gop, CONF_TYPE_FLAG, 0, 0, CODEC_FLAG_CLOSED_GOP, NULL},
++	{"ilme", &lavc_param_ilme, CONF_TYPE_FLAG, 0, 0, AV_CODEC_FLAG_INTERLACED_ME, NULL},
++	{"cgop", &lavc_param_closed_gop, CONF_TYPE_FLAG, 0, 0, AV_CODEC_FLAG_CLOSED_GOP, NULL},
+ 	{"gmc", &lavc_param_gmc, CONF_TYPE_FLAG, 0, 0, CODEC_FLAG_GMC, NULL},
+ 	{"dc", &lavc_param_dc_precision, CONF_TYPE_INT, CONF_RANGE, 8, 11, NULL},
+ 	{"border_mask", &lavc_param_border_masking, CONF_TYPE_FLOAT, CONF_RANGE, 0.0, 1.0, NULL},
+@@ -543,7 +543,7 @@ static int config(struct vf_instance *vf
+     if (lavc_param_obmc)
+         av_dict_set(&opts, "obmc", "1", 0);
+     lavc_venc_context->flags|= lavc_param_loop;
+-    lavc_venc_context->flags|= lavc_param_v4mv ? CODEC_FLAG_4MV : 0;
++    lavc_venc_context->flags|= lavc_param_v4mv ? AV_CODEC_FLAG_4MV : 0;
+     if (lavc_param_data_partitioning)
+         av_dict_set(&opts, "data_partitioning", "1", 0);
+     lavc_venc_context->flags|= lavc_param_mv0;
+@@ -553,13 +553,13 @@ static int config(struct vf_instance *vf
+         av_dict_set(&opts, "alternate_scan", "1", 0);
+     lavc_venc_context->flags|= lavc_param_ilme;
+     lavc_venc_context->flags|= lavc_param_gmc;
+-#ifdef CODEC_FLAG_CLOSED_GOP
++#ifdef AV_CODEC_FLAG_CLOSED_GOP
+     lavc_venc_context->flags|= lavc_param_closed_gop;
+ #endif
+     lavc_venc_context->flags|= lavc_param_gray;
+ 
+     if(lavc_param_normalize_aqp) lavc_venc_context->flags|= CODEC_FLAG_NORMALIZE_AQP;
+-    if(lavc_param_interlaced_dct) lavc_venc_context->flags|= CODEC_FLAG_INTERLACED_DCT;
++    if(lavc_param_interlaced_dct) lavc_venc_context->flags|= AV_CODEC_FLAG_INTERLACED_DCT;
+     lavc_venc_context->flags|= lavc_param_psnr;
+     lavc_venc_context->intra_dc_precision = lavc_param_dc_precision - 8;
+     lavc_venc_context->prediction_method= lavc_param_prediction_method;
+@@ -568,10 +568,10 @@ static int config(struct vf_instance *vf
+     lavc_venc_context->scenechange_factor = lavc_param_sc_factor;
+     if((lavc_param_video_global_header&1)
+        /*|| (video_global_header==0 && (oc->oformat->flags & AVFMT_GLOBALHEADER))*/){
+-        lavc_venc_context->flags |= CODEC_FLAG_GLOBAL_HEADER;
++        lavc_venc_context->flags |= AV_CODEC_FLAG_GLOBAL_HEADER;
+     }
+     if(lavc_param_video_global_header&2){
+-        lavc_venc_context->flags2 |= CODEC_FLAG2_LOCAL_HEADER;
++        lavc_venc_context->flags2 |= AV_CODEC_FLAG2_LOCAL_HEADER;
+     }
+     lavc_venc_context->mv0_threshold = lavc_param_mv0_threshold;
+     lavc_venc_context->refs = lavc_param_refs;
+@@ -595,7 +595,7 @@ static int config(struct vf_instance *vf
+     switch(lavc_param_vpass){
+     case 2:
+     case 3:
+-	lavc_venc_context->flags|= CODEC_FLAG_PASS2;
++	lavc_venc_context->flags|= AV_CODEC_FLAG_PASS2;
+ 	stats_file= fopen(passtmpfile, "rb");
+ 	if(stats_file==NULL){
+ 	    mp_msg(MSGT_MENCODER,MSGL_ERR,"2pass failed: filename=%s\n", passtmpfile);
+@@ -618,7 +618,7 @@ static int config(struct vf_instance *vf
+ 	    fclose(stats_file);
+ 	    /* fall through */
+     case 1:
+-	lavc_venc_context->flags|= CODEC_FLAG_PASS1;
++	lavc_venc_context->flags|= AV_CODEC_FLAG_PASS1;
+ 	stats_file= fopen(passtmpfile, "wb");
+ 	if(stats_file==NULL){
+ 	    mp_msg(MSGT_MENCODER,MSGL_ERR,"2pass failed: filename=%s\n", passtmpfile);
+@@ -638,8 +638,8 @@ static int config(struct vf_instance *vf
+ 	  lavc_venc_context->noise_reduction = 0; // nr=0
+ 	  lavc_venc_context->mb_decision = 0; // mbd=0 ("realtime" encoding)
+ 
+-	  lavc_venc_context->flags &= ~CODEC_FLAG_QPEL;
+-	  lavc_venc_context->flags &= ~CODEC_FLAG_4MV;
++	  lavc_venc_context->flags &= ~AV_CODEC_FLAG_QPEL;
++	  lavc_venc_context->flags &= ~AV_CODEC_FLAG_4MV;
+ 	  lavc_venc_context->trellis = 0;
+ 	  av_dict_set(&opts, "mpv_flags", "-mv0", 0);
+ 	  av_dict_set(&opts, "mpv_flags", "-qp_rd-cbp_rd", 0);
+@@ -654,7 +654,7 @@ static int config(struct vf_instance *vf
+     if (lavc_param_vqscale >= 0.0)
+     {
+ 	mp_msg(MSGT_MENCODER, MSGL_INFO, MSGTR_MPCODECS_UsingConstantQscale, lavc_param_vqscale);
+-	lavc_venc_context->flags |= CODEC_FLAG_QSCALE;
++	lavc_venc_context->flags |= AV_CODEC_FLAG_QSCALE;
+         lavc_venc_context->global_quality=
+ 	vf->priv->pic->quality = (int)(FF_QP2LAMBDA * lavc_param_vqscale + 0.5);
+     }
+@@ -693,7 +693,7 @@ static int control(struct vf_instance *v
+ 
+     switch(request){
+         case VFCTRL_FLUSH_FRAMES:
+-            if(vf->priv->codec->capabilities & CODEC_CAP_DELAY)
++            if(vf->priv->codec->capabilities & AV_CODEC_CAP_DELAY)
+                 while(encode_frame(vf, NULL, MP_NOPTS_VALUE) > 0);
+             return CONTROL_TRUE;
+         default:
+Index: libmpcodecs/ve.c
+===================================================================
+--- a/libmpcodecs/ve.c.orig
++++ b/libmpcodecs/ve.c
+@@ -43,7 +43,7 @@ extern const vf_info_t ve_info_x264;
+ 
+ static const vf_info_t * const encoder_list[] = {
+ #ifdef CONFIG_FFMPEG
+-    &ve_info_lavc,
++//    &ve_info_lavc,//TODO: ve_lavc is deactivated because it doesn't build after latest FFmpeg major bumps
+ #endif
+ #ifdef CONFIG_WIN32DLL
+     &ve_info_vfw,
+Index: libmpcodecs/ae.c
+===================================================================
+--- a/libmpcodecs/ae.c.orig
++++ b/libmpcodecs/ae.c
+@@ -59,9 +59,7 @@ audio_encoder_t *new_audio_encoder(muxer
+ 			break;
+ #endif
+ #ifdef CONFIG_FFMPEG
+-		case ACODEC_LAVC:
+-			ris = mpae_init_lavc(encoder);
+-			break;
++		//TODO: ACODEC_LAVC <-- has been removed here because it depends on ve_lavc which does not compile after latest FFmpeg major bumps
+ #endif
+ #ifdef CONFIG_MP3LAME
+ 		case ACODEC_VBRMP3:
+Index: libmpcodecs/vd_ffmpeg.c
+===================================================================
+--- a/libmpcodecs/vd_ffmpeg.c.orig
++++ b/libmpcodecs/vd_ffmpeg.c
+@@ -115,8 +115,7 @@ static int lavc_param_gray=0;
+ static int lavc_param_vstats=0;
+ static int lavc_param_idct_algo=0;
+ static int lavc_param_debug=0;
+-static int lavc_param_vismv=0;
+-#ifdef CODEC_FLAG2_SHOW_ALL
++#ifdef AV_CODEC_FLAG2_SHOW_ALL
+ static int lavc_param_wait_keyframe=0;
+ #endif
+ static int lavc_param_skip_top=0;
+@@ -141,24 +140,23 @@ static const mp_image_t mpi_no_picture =
+ const m_option_t lavc_decode_opts_conf[]={
+     {"bug"           , &lavc_param_workaround_bugs      , CONF_TYPE_INT     , CONF_RANGE, -1, 999999, NULL},
+     {"er"            , &lavc_param_error_resilience     , CONF_TYPE_INT     , CONF_RANGE, 0, 99, NULL},
+-    {"gray"          , &lavc_param_gray                 , CONF_TYPE_FLAG    , 0, 0, CODEC_FLAG_GRAY, NULL},
++    {"gray"          , &lavc_param_gray                 , CONF_TYPE_FLAG    , 0, 0, AV_CODEC_FLAG_GRAY, NULL},
+     {"idct"          , &lavc_param_idct_algo            , CONF_TYPE_INT     , CONF_RANGE, 0, 99, NULL},
+     {"ec"            , &lavc_param_error_concealment    , CONF_TYPE_INT     , CONF_RANGE, 0, 99, NULL},
+     {"vstats"        , &lavc_param_vstats               , CONF_TYPE_FLAG    , 0, 0, 1, NULL},
+     {"debug"         , &lavc_param_debug                , CONF_TYPE_INT     , CONF_RANGE, 0, 9999999, NULL},
+-    {"vismv"         , &lavc_param_vismv                , CONF_TYPE_INT     , CONF_RANGE, 0, 9999999, NULL},
+-#ifdef CODEC_FLAG2_SHOW_ALL
++#ifdef AV_CODEC_FLAG2_SHOW_ALL
+     {"wait_keyframe" , &lavc_param_wait_keyframe        , CONF_TYPE_FLAG    , 0, 0, 1, NULL},
+ #endif
+     {"st"            , &lavc_param_skip_top             , CONF_TYPE_INT     , CONF_RANGE, 0, 999, NULL},
+     {"sb"            , &lavc_param_skip_bottom          , CONF_TYPE_INT     , CONF_RANGE, 0, 999, NULL},
+-    {"fast"          , &lavc_param_fast                 , CONF_TYPE_FLAG    , 0, 0, CODEC_FLAG2_FAST, NULL},
++    {"fast"          , &lavc_param_fast                 , CONF_TYPE_FLAG    , 0, 0, AV_CODEC_FLAG2_FAST, NULL},
+     {"lowres"        , &lavc_param_lowres_str           , CONF_TYPE_STRING  , 0, 0, 0, NULL},
+     {"skiploopfilter", &lavc_param_skip_loop_filter_str , CONF_TYPE_STRING  , 0, 0, 0, NULL},
+     {"skipidct"      , &lavc_param_skip_idct_str        , CONF_TYPE_STRING  , 0, 0, 0, NULL},
+     {"skipframe"     , &lavc_param_skip_frame_str       , CONF_TYPE_STRING  , 0, 0, 0, NULL},
+-    {"threads"       , &lavc_param_threads              , CONF_TYPE_INT     , CONF_RANGE, 1, 16, NULL},
+-    {"bitexact"      , &lavc_param_bitexact             , CONF_TYPE_FLAG    , 0, 0, CODEC_FLAG_BITEXACT, NULL},
++    {"threads"       , &lavc_param_threads              , CONF_TYPE_INT     , CONF_RANGE, 1, 32, NULL},
++    {"bitexact"      , &lavc_param_bitexact             , CONF_TYPE_FLAG    , 0, 0, AV_CODEC_FLAG_BITEXACT, NULL},
+     {"o"             , &lavc_avopt                      , CONF_TYPE_STRING  , 0, 0, 0, NULL},
+     {NULL, NULL, 0, 0, 0, 0, NULL}
+ };
+@@ -257,9 +255,9 @@ static void set_dr_slice_settings(struct
+     // explicitly requested
+     int use_slices = vd_use_slices > 0 || (vd_use_slices <  0 && lavc_param_threads <= 1);
+ 
+-    ctx->do_slices = use_slices && (lavc_codec->capabilities & CODEC_CAP_DRAW_HORIZ_BAND);
++    ctx->do_slices = use_slices && (lavc_codec->capabilities & AV_CODEC_CAP_DRAW_HORIZ_BAND);
+ 
+-    ctx->do_dr1 = (lavc_codec->capabilities & CODEC_CAP_DR1) &&
++    ctx->do_dr1 = (lavc_codec->capabilities & AV_CODEC_CAP_DR1) &&
+         lavc_codec->id != AV_CODEC_ID_INTERPLAY_VIDEO &&
+         lavc_codec->id != AV_CODEC_ID_H264 &&
+         lavc_codec->id != AV_CODEC_ID_HEVC;
+@@ -271,12 +269,9 @@ static void set_dr_slice_settings(struct
+         ctx->do_dr1 = 1;
+         ctx->nonref_dr = 1;
+     }
+-    if (lavc_param_vismv || (lavc_param_debug & (FF_DEBUG_VIS_MB_TYPE|FF_DEBUG_VIS_QP))) {
+-        ctx->do_slices = ctx->do_dr1 = 0;
+-    }
+     if(ctx->do_dr1){
+         avctx->get_buffer2 = get_buffer2;
+-    } else if (lavc_codec->capabilities & CODEC_CAP_DR1) {
++    } else if (lavc_codec->capabilities & AV_CODEC_CAP_DR1) {
+         avctx->get_buffer2 = avcodec_default_get_buffer2;
+     }
+     avctx->slice_flags = 0;
+@@ -372,9 +367,9 @@ static int init(sh_video_t *sh){
+     case 1:
+         avctx->err_recognition |= AV_EF_CAREFUL;
+     }
+-    lavc_param_gray|= CODEC_FLAG_GRAY;
+-#ifdef CODEC_FLAG2_SHOW_ALL
+-    if(!lavc_param_wait_keyframe) avctx->flags2 |= CODEC_FLAG2_SHOW_ALL;
++    lavc_param_gray|= AV_CODEC_FLAG_GRAY;
++#ifdef AV_CODEC_FLAG2_SHOW_ALL
++    if(!lavc_param_wait_keyframe) avctx->flags2 |= AV_CODEC_FLAG2_SHOW_ALL;
+ #endif
+     avctx->flags2|= lavc_param_fast;
+     avctx->codec_tag= sh->format;
+@@ -383,7 +378,6 @@ static int init(sh_video_t *sh){
+     avctx->debug= lavc_param_debug;
+     if (lavc_param_debug)
+         av_log_set_level(AV_LOG_DEBUG);
+-    avctx->debug_mv= lavc_param_vismv;
+     avctx->skip_top   = lavc_param_skip_top;
+     avctx->skip_bottom= lavc_param_skip_bottom;
+     if(lavc_param_lowres_str != NULL)
+@@ -419,7 +413,7 @@ static int init(sh_video_t *sh){
+        handled here; the second case falls through to the next section. */
+         if (sh->ImageDesc) {
+             avctx->extradata_size = (*(int *)sh->ImageDesc) - sizeof(int);
+-            avctx->extradata = av_mallocz(avctx->extradata_size + FF_INPUT_BUFFER_PADDING_SIZE);
++            avctx->extradata = av_mallocz(avctx->extradata_size + AV_INPUT_BUFFER_PADDING_SIZE);
+             memcpy(avctx->extradata, ((int *)sh->ImageDesc)+1, avctx->extradata_size);
+             break;
+         }
+@@ -434,7 +428,7 @@ static int init(sh_video_t *sh){
+             break;
+         av_dict_set(&opts, "extern_huff", "1", 0);
+         avctx->extradata_size = sh->bih->biSize-sizeof(*sh->bih);
+-        avctx->extradata = av_mallocz(avctx->extradata_size + FF_INPUT_BUFFER_PADDING_SIZE);
++        avctx->extradata = av_mallocz(avctx->extradata_size + AV_INPUT_BUFFER_PADDING_SIZE);
+         memcpy(avctx->extradata, sh->bih+1, avctx->extradata_size);
+ 
+ #if 0
+@@ -457,14 +451,14 @@ static int init(sh_video_t *sh){
+         if(sh->bih->biSize<sizeof(*sh->bih)+8){
+             /* only 1 packet per frame & sub_id from fourcc */
+             avctx->extradata_size= 8;
+-            avctx->extradata = av_mallocz(avctx->extradata_size + FF_INPUT_BUFFER_PADDING_SIZE);
++            avctx->extradata = av_mallocz(avctx->extradata_size + AV_INPUT_BUFFER_PADDING_SIZE);
+             ((uint32_t *)avctx->extradata)[0] = 0;
+             ((uint32_t *)avctx->extradata)[1] =
+                 (sh->format == mmioFOURCC('R', 'V', '1', '3')) ? 0x10003001 : 0x10000000;
+         } else {
+             /* has extra slice header (demux_rm or rm->avi streamcopy) */
+             avctx->extradata_size = sh->bih->biSize-sizeof(*sh->bih);
+-            avctx->extradata = av_mallocz(avctx->extradata_size + FF_INPUT_BUFFER_PADDING_SIZE);
++            avctx->extradata = av_mallocz(avctx->extradata_size + AV_INPUT_BUFFER_PADDING_SIZE);
+             memcpy(avctx->extradata, sh->bih+1, avctx->extradata_size);
+         }
+ 
+@@ -475,7 +469,11 @@ static int init(sh_video_t *sh){
+         if (!sh->bih || sh->bih->biSize <= sizeof(*sh->bih))
+             break;
+         avctx->extradata_size = sh->bih->biSize-sizeof(*sh->bih);
+-        avctx->extradata = av_mallocz(avctx->extradata_size + FF_INPUT_BUFFER_PADDING_SIZE);
++        avctx->extradata = av_mallocz(avctx->extradata_size + AV_INPUT_BUFFER_PADDING_SIZE);
++        if (!avctx->extradata) {
++            avctx->extradata_size = 0;
++            break;
++	}
+         memcpy(avctx->extradata, sh->bih+1, avctx->extradata_size);
+         break;
+     }
+Index: libmpcodecs/vf.c
+===================================================================
+--- a/libmpcodecs/vf.c.orig
++++ b/libmpcodecs/vf.c
+@@ -200,7 +200,7 @@ static const vf_info_t* const filter_lis
+     &vf_info_uspp,
+     &vf_info_fspp,
+     &vf_info_qp,
+-    &vf_info_mcdeint,
++//    &vf_info_mcdeint, //TODO: vf_mcdeint is deactivated because it doesn't build after latest FFmpeg major bumps
+ #endif
+     &vf_info_yuvcsp,
+     &vf_info_kerndeint,

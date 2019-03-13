@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,11 +13,11 @@ EGIT_REPO_URI="https://github.com/qTox/qTox.git"
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS=""
-IUSE="gtk test X"
+IUSE="notification test X"
 
 RDEPEND="
 	dev-db/sqlcipher
-	dev-libs/libsodium
+	dev-libs/libsodium:=
 	dev-qt/qtconcurrent:5
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5[gif,jpeg,png,xcb]
@@ -27,17 +27,12 @@ RDEPEND="
 	dev-qt/qtsvg:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtxml:5
-	media-gfx/qrencode
-	media-libs/libexif
+	media-gfx/qrencode:=
+	media-libs/libexif:=
 	media-libs/openal
-	>=media-video/ffmpeg-2.6.3[webp,v4l]
-	gtk? (	dev-libs/atk
-			dev-libs/glib:2
-			x11-libs/gdk-pixbuf[X]
-			x11-libs/gtk+:2
-			x11-libs/cairo[X]
-			x11-libs/pango[X] )
-	net-libs/tox:0/0.1[av]
+	>=media-video/ffmpeg-2.6.3:=[webp,v4l]
+	net-libs/tox:0/0.2[av]
+	notification? ( x11-libs/gtk+:2 )
 	X? ( x11-libs/libX11
 		x11-libs/libXScrnSaver )
 "
@@ -52,15 +47,17 @@ src_prepare() {
 
 	# bug 628574
 	if ! use test; then
-		sed -i CMakeLists.txt -e "/include(Testing)/s/^/#/" || die
-		sed -i cmake/Dependencies.cmake -e "/find_package(Qt5Test/s/^/#/" || die
+		sed -i CMakeLists.txt -e "/include(Testing)/d" || die
+		sed -i cmake/Dependencies.cmake -e "/find_package(Qt5Test/d" || die
 	fi
 }
 
 src_configure() {
 	local mycmakeargs=(
-		-DENABLE_STATUSNOTIFIER=$(usex gtk)
-		-DENABLE_GTK_SYSTRAY=$(usex gtk)
+		-DENABLE_STATUSNOTIFIER=$(usex notification)
+		-DENABLE_GTK_SYSTRAY=$(usex notification)
+		-DPLATFORM_EXTENSIONS=$(usex X)
+		-DUSE_FILTERAUDIO=OFF
 	)
 
 	cmake-utils_src_configure

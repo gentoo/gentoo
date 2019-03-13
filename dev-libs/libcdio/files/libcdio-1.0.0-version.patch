@@ -1,5 +1,5 @@
---- libcdio-1.0.0/configure.ac
-+++ libcdio-1.0.0/configure.ac
+--- a/configure.ac
++++ b/configure.ac
 @@ -32,7 +32,12 @@
  m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES([yes])],
           [AC_SUBST([AM_DEFAULT_VERBOSITY], [1])])

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="person">
+	<email>stasibear@gentoo.org</email>
+</maintainer>
+<longdescription>
+	The libupnpp C++ library wraps libupnp for easier use by upmpdcli and
+upplay
+</longdescription>
+</pkgmetadata>

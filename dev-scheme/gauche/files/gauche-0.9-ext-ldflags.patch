@@ -1,5 +1,5 @@
---- Gauche-0.9.1.orig/ext/Makefile.ext.in
-+++ Gauche-0.9.1/ext/Makefile.ext.in
+--- a/ext/Makefile.ext.in
++++ b/ext/Makefile.ext.in
 @@ -22,7 +22,7 @@
  LIBS         = $(XLIBS) @LIBS@ 
  CFLAGS       = @CFLAGS@ @SHLIB_SO_CFLAGS@ $(XCFLAGS)

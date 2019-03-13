@@ -1,0 +1,27 @@
+diff --git a/config/bash/lxc.in b/config/bash/lxc.in
+index 43056882..0a22d4ad 100644
+--- a/config/bash/lxc.in
++++ b/config/bash/lxc.in
+@@ -1,4 +1,3 @@
+-_have lxc-start && {
+     _lxc_names() {
+         COMPREPLY=( $( compgen -W "$( lxc-ls )" "$cur" ) )
+     }
+@@ -108,4 +107,3 @@ _have lxc-start && {
+     complete -o default -F _lxc_generic_t lxc-create
+ 
+     complete -o default -F _lxc_generic_o lxc-copy
+-}
+diff --git a/configure.ac b/configure.ac
+index 50c99836..0569caec 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -395,7 +395,7 @@ AM_CONDITIONAL([ENABLE_BASH], [test "x$enable_bash" = "xyes"])
+ AM_COND_IF([ENABLE_BASH],
+ 	[AC_MSG_CHECKING([bash completion directory])
+ 	PKG_CHECK_VAR(bashcompdir, [bash-completion], [completionsdir], ,
+-		bashcompdir="${sysconfdir}/bash_completion.d")
++		bashcompdir="$datadir/bash-completion/completions")
+ 	AC_MSG_RESULT([$bashcompdir])
+ 	AC_SUBST(bashcompdir)
+ 	])

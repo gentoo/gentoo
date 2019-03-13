@@ -1,5 +1,5 @@
 #!/sbin/openrc-run
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 extra_commands="checkconfig"
@@ -12,6 +12,9 @@ depend() {
 	use net.lo
 	# localmount needed for $basedir
 	need localmount
+	# This service has its own timeout and may need to wait for repairs
+	# or remote synchronization
+	keyword -timeout
 }
 
 get_config() {

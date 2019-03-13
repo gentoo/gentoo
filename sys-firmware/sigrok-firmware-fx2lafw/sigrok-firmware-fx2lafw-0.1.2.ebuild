@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -9,13 +9,13 @@ if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="git://sigrok.org/${PN}"
 	inherit git-r3 autotools
 else
-	SRC_URI="binary? ( http://sigrok.org/download/binary/${PN}/${PN}-bin-${PV}.tar.gz )
-		!binary? ( http://sigrok.org/download/source/${PN}/${P}.tar.gz )"
+	SRC_URI="binary? ( https://sigrok.org/download/binary/${PN}/${PN}-bin-${PV}.tar.gz )
+		!binary? ( https://sigrok.org/download/source/${PN}/${P}.tar.gz )"
 	KEYWORDS="~amd64 ~x86"
 fi
 
 DESCRIPTION="Firmware for Cypress FX2 chips for use as simple logic analyzer hardware"
-HOMEPAGE="http://sigrok.org/wiki/Fx2lafw"
+HOMEPAGE="https://sigrok.org/wiki/Fx2lafw"
 
 LICENSE="GPL-2+"
 SLOT="0"

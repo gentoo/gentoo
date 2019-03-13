@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit cmake-utils
 
-DESCRIPTION="An application that queries the user for a selection for printing"
+DESCRIPTION="Application that queries the user for a selection for printing"
 HOMEPAGE="https://github.com/naelstrof/slop"
 
 if [[ ${PV} == *9999 ]]; then
@@ -17,7 +17,7 @@ else
 fi
 
 LICENSE="GPL-3"
-SLOT="0"
+SLOT="0/${PV}"
 IUSE="opengl"
 
 RDEPEND="
@@ -29,9 +29,9 @@ RDEPEND="
 		virtual/opengl
 		x11-libs/libXrender:=
 	)"
-DEPEND="
-	${RDEPEND}
-	media-libs/glm"
+DEPEND="${RDEPEND}
+	media-libs/glm
+"
 
 src_configure() {
 	local mycmakeargs=(

@@ -1,0 +1,60 @@
+From cda0a857dd7a27cd5d621747464bfe71e8727fff Mon Sep 17 00:00:00 2001
+From: Daniel Kiper <daniel.kiper@oracle.com>
+Date: Tue, 29 May 2018 16:16:02 +0200
+Subject: xfs: Accept filesystem with sparse inodes
+
+The sparse inode metadata format became a mkfs.xfs default in
+xfsprogs-4.16.0, and such filesystems are now rejected by grub as
+containing an incompatible feature.
+
+In essence, this feature allows xfs to allocate inodes into fragmented
+freespace.  (Without this feature, if xfs could not allocate contiguous
+space for 64 new inodes, inode creation would fail.)
+
+In practice, the disk format change is restricted to the inode btree,
+which as far as I can tell is not used by grub.  If all you're doing
+today is parsing a directory, reading an inode number, and converting
+that inode number to a disk location, then ignoring this feature
+should be fine, so I've added it to XFS_SB_FEAT_INCOMPAT_SUPPORTED
+
+I did some brief testing of this patch by hacking up the regression
+tests to completely fragment freespace on the test xfs filesystem, and
+then write a large-ish number of inodes to consume any existing
+contiguous 64-inode chunk.  This way any files the grub tests add and
+traverse would be in such a fragmented inode allocation.  Tests passed,
+but I'm not sure how to cleanly integrate that into the test harness.
+
+Signed-off-by: Eric Sandeen <sandeen@redhat.com>
+Reviewed-by: Daniel Kiper <daniel.kiper@oracle.com>
+Tested-by: Chris Murphy <lists@colorremedies.com>
+---
+ grub-core/fs/xfs.c | 11 ++++++++++-
+ 1 file changed, 10 insertions(+), 1 deletion(-)
+
+diff --git a/grub-core/fs/xfs.c b/grub-core/fs/xfs.c
+index c6031bd..3b00c74 100644
+--- a/grub-core/fs/xfs.c
++++ b/grub-core/fs/xfs.c
+@@ -79,9 +79,18 @@ GRUB_MOD_LICENSE ("GPLv3+");
+ #define XFS_SB_FEAT_INCOMPAT_SPINODES   (1 << 1)        /* sparse inode chunks */
+ #define XFS_SB_FEAT_INCOMPAT_META_UUID  (1 << 2)        /* metadata UUID */
+ 
+-/* We do not currently verify metadata UUID so it is safe to read such filesystem */
++/*
++ * Directory entries with ftype are explicitly handled by GRUB code.
++ *
++ * We do not currently read the inode btrees, so it is safe to read filesystems
++ * with the XFS_SB_FEAT_INCOMPAT_SPINODES feature.
++ *
++ * We do not currently verify metadata UUID, so it is safe to read filesystems
++ * with the XFS_SB_FEAT_INCOMPAT_META_UUID feature.
++ */
+ #define XFS_SB_FEAT_INCOMPAT_SUPPORTED \
+ 	(XFS_SB_FEAT_INCOMPAT_FTYPE | \
++	 XFS_SB_FEAT_INCOMPAT_SPINODES | \
+ 	 XFS_SB_FEAT_INCOMPAT_META_UUID)
+ 
+ struct grub_xfs_sblock
+-- 
+cgit v1.0-41-gc330
+

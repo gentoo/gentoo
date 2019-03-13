@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,8 +19,7 @@ DEPEND=">=dev-lang/ghc-6.12.1"
 
 # Need a lower version for portage to get --keep-going
 RDEPEND="|| ( >=sys-apps/portage-2.1.6
-		sys-apps/pkgcore
-		sys-apps/paludis )"
+		sys-apps/pkgcore )"
 
 src_prepare() {
 	default

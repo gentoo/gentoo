@@ -1,10 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: autotools-utils.eclass
 # @MAINTAINER:
 # Maciej Mrozowski <reavertm@gentoo.org>
 # Michał Górny <mgorny@gentoo.org>
+# @SUPPORTED_EAPIS: 2 3 4 5
 # @BLURB: common ebuild functions for autotools-based packages
 # @DESCRIPTION:
 # autotools-utils.eclass is autotools.eclass(5) and base.eclass(5) wrapper
@@ -89,7 +90,7 @@
 
 case ${EAPI:-0} in
 	6) die "${ECLASS}.eclass is banned in EAPI ${EAPI}";;
-	2|3|4|5) ;;
+	4|5) ;;
 	*) die "EAPI=${EAPI} is not supported" ;;
 esac
 
@@ -281,8 +282,6 @@ autotools-utils_src_configure() {
 	[[ -z ${myeconfargs+1} || $(declare -p myeconfargs) == 'declare -a'* ]] \
 		|| die 'autotools-utils.eclass: myeconfargs has to be an array.'
 
-	[[ ${EAPI} == 2 ]] && ! use prefix && EPREFIX=
-
 	# Common args
 	local econfargs=()
 
@@ -338,31 +337,12 @@ autotools-utils_src_install() {
 	emake DESTDIR="${D}" "$@" install || die "emake install failed"
 	popd > /dev/null || die
 
-	# Move docs installed by autotools (in EAPI < 4).
-	if [[ ${EAPI} == [23] ]] \
-			&& path_exists "${D}${EPREFIX}"/usr/share/doc/${PF}/*; then
-		if [[ $(find "${D}${EPREFIX}"/usr/share/doc/${PF}/* -type d) ]]; then
-			eqawarn "autotools-utils: directories in docdir require at least EAPI 4"
-		else
-			mkdir "${T}"/temp-docdir
-			mv "${D}${EPREFIX}"/usr/share/doc/${PF}/* "${T}"/temp-docdir/ \
-				|| die "moving docs to tempdir failed"
-
-			dodoc "${T}"/temp-docdir/* || die "docdir dodoc failed"
-			rm -r "${T}"/temp-docdir || die
-		fi
-	fi
-
 	# XXX: support installing them from builddir as well?
 	if declare -p DOCS &>/dev/null; then
 		# an empty list == don't install anything
 		if [[ ${DOCS[@]} ]]; then
-			if [[ ${EAPI} == [23] ]]; then
-				dodoc "${DOCS[@]}" || die
-			else
-				# dies by itself
-				dodoc -r "${DOCS[@]}"
-			fi
+			# dies by itself
+			dodoc -r "${DOCS[@]}"
 		fi
 	else
 		local f

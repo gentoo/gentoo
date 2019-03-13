@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,9 +8,9 @@ inherit check-reqs cmake-utils xdg-utils flag-o-matic gnome2-utils \
 	pax-utils python-single-r1 toolchain-funcs versionator
 
 DESCRIPTION="3D Creation/Animation/Publishing System"
-HOMEPAGE="http://www.blender.org"
+HOMEPAGE="https://www.blender.org"
 
-SRC_URI="http://download.blender.org/source/${P}.tar.gz"
+SRC_URI="https://download.blender.org/source/${P}.tar.gz"
 
 # Blender can have letters in the version string,
 # so strip of the letter if it exists.
@@ -48,7 +48,7 @@ RDEPEND="${PYTHON_DEPS}
 	collada? ( >=media-libs/opencollada-1.6.18:= )
 	colorio? ( media-libs/opencolorio )
 	cuda? ( dev-util/nvidia-cuda-toolkit:= )
-	ffmpeg? ( media-video/ffmpeg:=[x264,mp3,encode,theora,jpeg2k?] )
+	ffmpeg? ( <media-video/ffmpeg-4.0:=[x264,mp3,encode,theora,jpeg2k?] )
 	libav? ( >=media-video/libav-11.3:=[x264,mp3,encode,theora,jpeg2k?] )
 	fftw? ( sci-libs/fftw:3.0= )
 	!headless? (
@@ -74,7 +74,7 @@ RDEPEND="${PYTHON_DEPS}
 	)
 	opensubdiv? ( >=media-libs/opensubdiv-3.3.0:=[cuda=,opencl=] )
 	openvdb? (
-		media-gfx/openvdb[${PYTHON_USEDEP},abi3-compat(+),openvdb-compression(+)]
+		<media-gfx/openvdb-5.0.0:=[${PYTHON_USEDEP},abi3-compat]
 		dev-cpp/tbb
 		>=dev-libs/c-blosc-1.5.2
 	)

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sci@gentoo.org</email>
+		<name>Gentoo Science Project</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>alexxy@gentoo.org</email>
+		<name>Alexey Shvetsov</name>
+	</maintainer>
+	<longdescription lang="en">
+		Tango is an Open Source solution for SCADA and DCS. Open Source means you get all the source code under an Open Source free licence (LGPL and GPL). Supervisory Control and Data Acquisition (SCADA) systems are typically industrial type systems using standard hardware. Distributed Control Systems (DCS) are more flexible control systems used in more complex environments.
+	</longdescription>
+	<upstream>
+		<remote-id type="sourceforge">tango-cs</remote-id>
+	</upstream>
+	<use>
+		<flag name="dbserver">Enable build of tango dbserver</flag>
+		<flag name="mariadb">Use <pkg>dev-db/mariadb</pkg></flag>
+		<flag name="zeromq">Allow to use ZeroMQ broker via <pkg>net-libs/zeromq</pkg></flag>
+	</use>
+</pkgmetadata>

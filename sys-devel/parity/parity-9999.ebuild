@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,22 +14,15 @@ fi
 DESCRIPTION="A POSIX to native Win32 Cross-Compiler Tool (requires Visual Studio)"
 HOMEPAGE="https://github.com/haubi/parity"
 
+parity-vcarchs() { echo x86 ; }
+parity-vcvers() { echo 7_0 7_1 8_0 9_0 10_0 11_0 12_0 14_0 15_0 ; }
+
 LICENSE="LGPL-3"
 SLOT="0"
-IUSE=""
-
-pkg_setup() {
-	if [ -z "${MSSDK}" ]; then
-		einfo "NOTE: When using Visual Studio 2008, the Platform SDK is no longer"
-		einfo "installed alongside with the other components, but has it's own"
-		einfo "root directory, most likely something like this:"
-		einfo ""
-		einfo "  C:\\Program Files\\Microsoft SDKs\\Windows\\v6.0A"
-		einfo ""
-		einfo "To make parity find it's paths correctly, please set MSSDK to the"
-		einfo "value correspoding to the above example for your system."
-	fi
-}
+IUSE="$(
+	for a in $(parity-vcarchs); do echo "+vc_${a}"; done
+	for v in $(parity-vcvers); do echo "+vc${v}"; done
+)"
 
 if [[ ${PV} == 9999 ]]; then
 	src_prepare() {
@@ -38,30 +31,40 @@ if [[ ${PV} == 9999 ]]; then
 	}
 fi
 
-src_install() {
-	emake DESTDIR="${D}" install || die "emake install failed"
-
-	# create i586-pc-winnt-g[++|cc|..] links..
-	local exeext=
-
-	[[ -f ${ED}usr/bin/parity.gnu.gcc.exe ]] && exeext=.exe
-
-	# create cross compiler syms, also for former versioned winnt profiles
-	local v t
-	for v in "" 5.2 6.1; do
-		dosym /usr/bin/parity.gnu.gcc${exeext} /usr/bin/i586-pc-winnt${v}-c++
-		dosym /usr/bin/parity.gnu.gcc${exeext} /usr/bin/i586-pc-winnt${v}-g++
-		for t in gcc ld windres ar nm ranlib strip; do
-			if [[ -e "${ED}"usr/bin/parity.gnu.${t}${exeext} ]]; then
-				dosym /usr/bin/parity.gnu.${t}${exeext} /usr/bin/i586-pc-winnt${v}-${t}
-			else
-				dosym /usr/bin/parity.gnu.${t} /usr/bin/i586-pc-winnt${v}-${t}
-			fi
-		done
+parity-enabled-vcarchs() {
+	local enabled= a
+	for a in $(parity-vcarchs) ; do
+		if use vc_${a} ; then
+			enabled+=",${a}"
+		fi
 	done
+	echo ${enabled#,}
+}
 
-	# we don't need the header files installed by parity... private
-	# header files are supported with a patch from 2.1.0-r1 onwards,
-	# so they won't be there anymore, but -f does the job in any case.
-	rm -f "${ED}"/usr/include/*.h
+parity-enabled-vcvers() {
+	local enabled= v
+	for v in $(parity-vcvers) ; do
+		if use vc${v} ; then
+			enabled+=",${v/_/.}"
+		fi
+	done
+	echo ${enabled#,}
+}
+
+src_configure() {
+	local myconf=(
+		--enable-msvc-archs="$(parity-enabled-vcarchs)"
+		--enable-msvc-versions="$(parity-enabled-vcvers)"
+		--disable-default-msvc-version
+	)
+	econf "${myconf[@]}"
+}
+
+pkg_postinst() {
+	if [[ -n ${ROOT%/} ]] ; then
+		einfo "To enable all available MSVC versions, on the target machine please run:"
+		einfo " '${EPREFIX}/usr/bin/parity-setup' --enable-all"
+	else
+		"${EPREFIX}"/usr/bin/parity-setup --enable-all
+	fi
 }

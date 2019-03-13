@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit eutils toolchain-funcs
+inherit desktop toolchain-funcs
 
 MY_DATA_V="2005-12-21"
 MY_DATA_P="${PN}data-${MY_DATA_V}"

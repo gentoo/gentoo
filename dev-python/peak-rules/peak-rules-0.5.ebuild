@@ -10,7 +10,7 @@ MY_PN="PEAK-Rules"
 MY_P="${MY_PN}-${PV}a1.dev-r2713"
 
 DESCRIPTION="Generic functions and business rules support systems"
-HOMEPAGE="http://peak.telecommunity.com/ https://pypi.python.org/pypi/PEAK-Rules/"
+HOMEPAGE="http://peak.telecommunity.com/ https://pypi.org/project/PEAK-Rules/"
 SRC_URI="http://peak.telecommunity.com/snapshots/${MY_P}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="ZPL"

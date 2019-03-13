@@ -23,7 +23,7 @@ done
 RDEPEND="
 	app-text/ghostscript-gpl
 	net-print/cups
-	|| ( >=net-print/cups-filters-1.0.43-r1[foomatic] net-print/foomatic-filters )
+	>=net-print/cups-filters-1.0.43-r1[foomatic]
 	sys-libs/glibc
 	syslog? ( virtual/logger )
 "

@@ -1,0 +1,34 @@
+commit 1dffc1a763f33af12715f4abcf8fd2043055a9a2
+Author: Haelwenn (lanodan) Monnier <contact@hacktivis.me>
+Date:   Sun Apr 1 23:21:55 2018 +0200
+
+    share/skins/CMakeLists.txt: Use already unpacked osu-skin
+
+diff --git a/share/skins/CMakeLists.txt b/share/skins/CMakeLists.txt
+index 54e20e5..2501757 100644
+--- a/share/skins/CMakeLists.txt
++++ b/share/skins/CMakeLists.txt
+@@ -24,22 +24,10 @@ if ("minimal" IN_LIST OSHU_ENABLED_SKINS)
+ endif ("minimal" IN_LIST OSHU_ENABLED_SKINS)
+ 
+ if ("osu" IN_LIST OSHU_ENABLED_SKINS)
+-	file(
+-		DOWNLOAD "https://www.mg0.fr/oshu/skins/osu-v1.tar.gz" "${CMAKE_CURRENT_BINARY_DIR}/osu.tar.gz"
+-		EXPECTED_HASH SHA256=bc645534371bf5ccba66d4a6729dc1deffb6f148b6ce115efd305f9ffab1d183
+-	)
+-	add_custom_command(
+-		OUTPUT osu/README.md
+-		COMMAND "${CMAKE_COMMAND}" -E tar xf osu.tar.gz
+-		COMMAND "${CMAKE_COMMAND}" -E touch osu/README.md
+-		DEPENDS "${CMAKE_CURRENT_BINARY_DIR}/osu.tar.gz"
+-		COMMENT "Unpacking the osu skin"
+-		VERBATIM
+-	)
+ 	add_custom_target(osu-skin DEPENDS osu/README.md)
+ 	add_dependencies(skins osu-skin)
+ 	install(
+-		DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/osu"
++		DIRECTORY osu
+ 		DESTINATION "${OSHU_SKINS_INSTALL_DIRECTORY}"
+ 	)
+ endif ("osu" IN_LIST OSHU_ENABLED_SKINS)

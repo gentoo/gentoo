@@ -12,7 +12,7 @@ SRC_URI="https://github.com/sm0svx/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND="dev-lang/tcl:0
@@ -28,6 +28,7 @@ RDEPEND="dev-lang/tcl:0
 	dev-libs/libsigc++:2
 	dev-libs/popt"
 DEPEND="${RDEPEND}
+	dev-qt/linguist-tools:5
 	virtual/pkgconfig"
 
 pkg_setup() {

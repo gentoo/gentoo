@@ -1,5 +1,5 @@
---- lib/JAMA/tnt_math_utils.h.orig	2006-06-17 01:46:22.000000000 +0300
-+++ lib/JAMA/tnt_math_utils.h	2006-06-17 01:47:02.000000000 +0300
+--- a/lib/JAMA/tnt_math_utils.h	2006-06-17 01:46:22.000000000 +0300
++++ b/lib/JAMA/tnt_math_utils.h	2006-06-17 01:47:02.000000000 +0300
 @@ -20,11 +20,20 @@
  namespace TNT
  {

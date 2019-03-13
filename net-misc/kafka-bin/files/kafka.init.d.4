@@ -1,0 +1,24 @@
+#!/sbin/openrc-run
+# Copyright 1999-2018 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+description="Kafka distributed messaging system"
+
+logfile="/var/log/kafka/kafka.log"
+
+command="/opt/kafka/bin/kafka-server-start.sh"
+command_args="/etc/kafka/server.properties"
+
+command_background=yes
+pidfile=/run/kafka.pid
+
+start() {
+	ebegin "Starting kafka ..."
+	start-stop-daemon --start --background --user kafka --chdir /opt/kafka --stdout $logfile --stderr $logfile \
+	-m --env KAFKA_HEAP_OPTS="${KAFKA_HEAP_OPTS}" \
+	--pidfile $pidfile --exec /opt/kafka/bin/kafka-server-start.sh -- /etc/kafka/server.properties
+	eend $?
+}
+depend() {
+       after zookeeper kafka-zookeeper
+}

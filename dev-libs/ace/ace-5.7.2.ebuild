@@ -1,10 +1,12 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+EAPI=0
 
 inherit eutils multilib toolchain-funcs
 
 DESCRIPTION="The Adaptive Communications Environment"
-HOMEPAGE="http://www.cs.wustl.edu/~schmidt/ACE.html"
+HOMEPAGE="http://www.dre.vanderbilt.edu/~schmidt/ACE.html"
 SRC_URI="!tao? ( http://download.dre.vanderbilt.edu/previous_versions/ACE-${PV}.tar.bz2 )
 	tao? (
 		!ciao? ( http://download.dre.vanderbilt.edu/previous_versions/ACE+TAO-${PV}.tar.bz2 )
@@ -22,7 +24,7 @@ RDEPEND="${COMMON_DEPEND}
 	X? ( x11-libs/libXt x11-libs/libXaw )"
 
 DEPEND="${COMMON_DEPEND}
-	X? ( x11-proto/xproto )"
+	X? ( x11-base/xorg-proto )"
 
 S="${WORKDIR}/ACE_wrappers"
 

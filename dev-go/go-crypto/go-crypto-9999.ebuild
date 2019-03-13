@@ -1,15 +1,15 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-EGO_PN=golang.org/x/crypto/...
+EAPI=6
 EGO_SRC=golang.org/x/crypto
+EGO_PN=${EGO_SRC}/...
 
 if [[ ${PV} = *9999* ]]; then
 	inherit golang-vcs
 else
-	KEYWORDS="~amd64"
-	EGIT_COMMIT="1e856cbfdf9bc25eefca75f83f25d55e35ae72e0"
+	KEYWORDS="~amd64 ~arm ~x86"
+	EGIT_COMMIT="aabede6cba87e37f413b3e60ebfc214f8eeca1b0"
 	SRC_URI="https://github.com/golang/crypto/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 	inherit golang-vcs-snapshot
 fi
@@ -20,19 +20,31 @@ HOMEPAGE="https://godoc.org/golang.org/x/crypto"
 LICENSE="BSD"
 SLOT="0/${PVR}"
 IUSE=""
-DEPEND=""
+DEPEND=">=dev-go/go-sys-0_pre20180816:="
 RDEPEND=""
 
 src_prepare() {
-	# disable broken tests
-	sed -e 's:TestAgentForward(:_\0:' \
-		-i src/${EGO_SRC}/ssh/test/agent_unix_test.go || die
-	sed -e 's:TestRunCommandSuccess(:_\0:' \
-		-e 's:TestRunCommandStdin(:_\0:' \
-		-e 's:TestRunCommandStdinError(:_\0:' \
-		-e 's:TestRunCommandWeClosed(:_\0:' \
-		-e 's:TestFuncLargeRead(:_\0:' \
-		-e 's:TestKeyChange(:_\0:' \
-		-e 's:TestValidTerminalMode(:_\0:' \
-		-i src/${EGO_SRC}/ssh/test/session_test.go || die
+	default
+	sed -e 's:TestLockOpenSSHAgent(:_\0:' \
+		-i src/${EGO_SRC}/ssh/agent/client_test.go || die
+}
+
+src_compile() {
+	# Exclude $(get_golibdir_gopath) from GOPATH, for bug 577908 which may
+	# or may not manifest, depending on what libraries are installed.
+	mkdir -p "${T}/golibdir/src/golang.org/x" || die
+	ln -s "$(get_golibdir_gopath)/src/golang.org/x/sys" "${T}/golibdir/src/golang.org/x/sys" || die
+	GOPATH="${S}:${T}/golibdir" GOBIN="$(go env GOROOT)/bin" \
+		go install -v -work -x ${EGO_BUILD_FLAGS} "${EGO_PN}" || die
+}
+
+src_test() {
+	# Exclude $(get_golibdir_gopath) from GOPATH
+	GOPATH="${S}:${T}/golibdir" GOBIN="$(go env GOROOT)/bin" \
+		go test -v -work -x "${EGO_PN}" || die
+}
+
+src_install() {
+	rm -rf "${S}/src/${EGO_SRC}/.git"* || die
+	golang_install_pkgs
 }

@@ -12,5 +12,6 @@
 	</longdescription>
 	<use>
 		<flag name="discid">Add support for reading disc IDs from audio CDs</flag>
+		<flag name="yaz">Add support for searching Z39.50 databases</flag>
 	</use>
 </pkgmetadata>

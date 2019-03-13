@@ -1,4 +1,0 @@
-#!/bin/sh
-[ ! -d ~/.icewm ] && mkdir ~/.icewm
-XDG_MENU_PREFIX="gnome-" icewm-xdg-menu --entire-menu --with-theme-paths --icon-size 16 --theme gnome > ~/.icewm/programs.autogen
-

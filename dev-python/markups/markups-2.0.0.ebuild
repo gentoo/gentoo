@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,9 +12,9 @@ MY_P=${MY_PN}-${PV}
 
 DESCRIPTION="A wrapper around various text markups"
 HOMEPAGE="
-	http://pythonhosted.org/Markups/
+	https://pythonhosted.org/Markups/
 	https://github.com/retext-project/pymarkups
-	https://pypi.python.org/pypi/Markups"
+	https://pypi.org/project/Markups/"
 SRC_URI="mirror://pypi/M/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="BSD"

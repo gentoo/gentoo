@@ -1,0 +1,30 @@
+Patch kindly borrowed from Debian.
+Gentoo-bug: https://bugs.gentoo.org/574746
+KDE-bug: https://bugs.kde.org/show_bug.cgi?id=355324
+
+--- a/src/plugins/fits/non_linear.h
++++ b/src/plugins/fits/non_linear.h
+@@ -177,7 +177,9 @@ bool kstfit_nonlinear(
+             }
+             iIterations++;
+           } while( iStatus == GSL_CONTINUE && iIterations < MAX_NUM_ITERATIONS );
+-          gsl_multifit_covar( pSolver->J, 0.0, pMatrixCovariance );
++          gsl_matrix *J = gsl_matrix_alloc (pSolver->fdf->n, pSolver->fdf->p);
++          gsl_multifit_fdfsolver_jac (pSolver, J);
++          gsl_multifit_covar (J, 0.0, pMatrixCovariance);
+ 
+           //
+           // determine the fitted values...
+--- a/src/plugins/fits/non_linear_weighted.h
++++ b/src/plugins/fits/non_linear_weighted.h
+@@ -193,7 +193,9 @@ bool kstfit_nonlinear_weighted(
+           }
+           while( iStatus == GSL_CONTINUE && iIterations < MAX_NUM_ITERATIONS );
+ 
+-          gsl_multifit_covar( pSolver->J, 0.0, pMatrixCovariance );
++          gsl_matrix *J = gsl_matrix_alloc (pSolver->fdf->n, pSolver->fdf->p);
++          gsl_multifit_fdfsolver_jac (pSolver, J);
++          gsl_multifit_covar (J, 0.0, pMatrixCovariance);
+ 
+           //
+           // determine the fitted values...

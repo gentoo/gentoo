@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Act on upper scopes"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 DEPEND=""
 RDEPEND=""

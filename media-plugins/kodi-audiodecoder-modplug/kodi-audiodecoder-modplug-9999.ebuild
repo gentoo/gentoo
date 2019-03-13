@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,9 +16,10 @@ case ${PV} in
 	inherit git-r3
 	;;
 *)
+	CODENAME="Leia"
 	KEYWORDS="~amd64 ~x86"
-	SRC_URI="https://github.com/notspiff/audiodecoder.modplug/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	S="${WORKDIR}/audiodecoder.modplug-${PV}"
+	SRC_URI="https://github.com/notspiff/audiodecoder.modplug/archive/${PV}-${CODENAME}.tar.gz -> ${P}.tar.gz"
+	S="${WORKDIR}/audiodecoder.modplug-${PV}-${CODENAME}"
 	;;
 esac
 
@@ -27,8 +28,8 @@ SLOT="0"
 IUSE=""
 
 DEPEND="
-	media-tv/kodi
-	media-libs/kodi-platform
+	~media-tv/kodi-99999
+	~media-libs/kodi-platform-9999
 	media-libs/libmodplug
 	"
 

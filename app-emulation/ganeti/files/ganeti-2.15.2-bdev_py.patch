@@ -1,0 +1,16 @@
+--- a/lib/storage/bdev.py       2018-09-06 19:20:03.970318746 +0000
++++ b/lib/storage/bdev.py       2018-09-06 19:18:59.799346241 +0000
+@@ -413,6 +413,16 @@
+     if not self.minor and not self.Attach():
+       # the LV does not exist
+       return
++
++    import glob
++
++    for partdev in glob.glob("/dev/mapper/%s-%sp*" % (self._vg_name, self._lv_name.replace("-", "--"))):
++        result = utils.RunCmd(["dmsetup", "remove", partdev])
++
++        if result.failed:
++          base.ThrowError("Can't dmsetup remove %s: %s-%s",
++                          partdev, result.fail_reason, result.output)
++

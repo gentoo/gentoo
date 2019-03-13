@@ -1,5 +1,5 @@
---- Makefile
-+++ Makefile
+--- a/Makefile
++++ b/Makefile
 @@ -2,32 +2,24 @@
  # Mixer.app Makefile
  #

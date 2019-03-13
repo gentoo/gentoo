@@ -1,0 +1,13 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -98,6 +98,10 @@
+ 	])
+ ])
+ 
++AC_SEARCH_LIBS([keyname], [tinfo], [], [
++	AC_MSG_ERROR([ You need to have ncurses panelw library installed to compile sngrep.])
++])
++
+ ####
+ #### GnuTLS Support
+ ####

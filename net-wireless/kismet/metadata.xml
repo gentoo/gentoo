@@ -4,12 +4,6 @@
 	<maintainer type="person">
 		<email>zerochaos@gentoo.org</email>
 		<name>Rick Farina</name>
-		<description>maintainer</description>
-	</maintainer>
-	<maintainer type="person">
-		<email>steev@gentoo.org</email>
-		<name>Steev Klimaszewski</name>
-		<description>co-maintainer, CC him on bugs</description>
 	</maintainer>
 	<use>
 		<flag name="client">Build the ncurses-based user interface</flag>
@@ -18,6 +12,7 @@
 			this allows running kismet as a normal user, significantly
 			reducing security risks
 		</flag>
+		<flag name="mousejack">Add support for mousejack hardware using <pkg>dev-libs/libusb</pkg></flag>
 		<flag name="pcre">Build with pcre support</flag>
 		<flag name="speech">Audio support using <pkg>app-accessibility/flite</pkg></flag>
 		<flag name="plugin-autowep">Build the autowep plugin</flag>

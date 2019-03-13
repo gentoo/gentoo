@@ -1,0 +1,73 @@
+From 1dfc0e3218e15b94f7b145c8f5b2bf61974b9573 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sun, 23 Dec 2018 22:10:49 +0100
+Subject: [PATCH 1/2] Add GNUInstallDirs for standard installation directories
+
+Distributions are given standard variables for already existing hooks.
+Multiarch libdirs is taken care of automagically.
+Raises minimum cmake version by a little (2.8.5 is enough).
+---
+ CMakeLists.txt | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 064d4e289..777265e0e 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -13,7 +13,7 @@ SET(OPENSCENEGRAPH_RELEASE_CANDIDATE 0)
+ set(CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS TRUE)
+ set_property(GLOBAL PROPERTY USE_FOLDERS ON)
+ 
+-CMAKE_MINIMUM_REQUIRED(VERSION 2.8.0 FATAL_ERROR)
++CMAKE_MINIMUM_REQUIRED(VERSION 2.8.5 FATAL_ERROR)
+ 
+ if(COMMAND cmake_policy)
+     # Works around warnings libraries linked against that don't
+@@ -767,6 +767,7 @@ ELSE()
+     # FIND_PACKAGE(PythonLibs)
+ ENDIF()
+ 
++INCLUDE(GNUInstallDirs)
+ # Include macro utilities here
+ INCLUDE(OsgMacroUtils)
+ 
+-- 
+2.20.1
+
+
+From d2be900de7b5fb4e23d9429c02269f671962c670 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sun, 23 Dec 2018 22:12:33 +0100
+Subject: [PATCH 2/2] Replace OPENJPEG_INSTALL_DOC_DIR with
+ CMAKE_INSTALL_DOCDIR
+
+This changes the default doc installdir to DATAROOTDIR/doc/PROJECT_NAME
+---
+ CMakeLists.txt | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 777265e0e..e1ed1bd51 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1180,7 +1180,7 @@ IF(BUILD_DOCUMENTATION)
+         ${PROJECT_BINARY_DIR}/doc/OpenSceneGraphReferenceDocs/osg32-32.png COPYONLY
+     )
+     #INSTALL(FILES ${PROJECT_BINARY_DIR}/doc/${PROJECT_NAME}ReferenceDocs-${OPENSCENEGRAPH_VERSION}.chm DESTINATION doc OPTIONAL COMPONENT openscenegraph-doc)
+-    INSTALL(DIRECTORY ${PROJECT_BINARY_DIR}/doc/OpenSceneGraphReferenceDocs DESTINATION doc COMPONENT openscenegraph-doc)
++    INSTALL(DIRECTORY ${PROJECT_BINARY_DIR}/doc/OpenSceneGraphReferenceDocs DESTINATION ${CMAKE_INSTALL_DOCDIR} COMPONENT openscenegraph-doc)
+ 
+     # now set up openthreads documentation generation
+     IF(BUILD_REF_DOCS_TAGFILE)
+@@ -1196,7 +1196,7 @@ IF(BUILD_DOCUMENTATION)
+         ${PROJECT_BINARY_DIR}/doc/OpenThreadsReferenceDocs/osg32-32.png COPYONLY
+     )
+     #INSTALL(FILES ${PROJECT_BINARY_DIR}/doc/${PROJECT_NAME}ReferenceDocs-${OPENSCENEGRAPH_VERSION}.chm DESTINATION doc OPTIONAL COMPONENT openscenegraph-doc)
+-    INSTALL(DIRECTORY ${PROJECT_BINARY_DIR}/doc/OpenThreadsReferenceDocs DESTINATION doc COMPONENT openthreads-doc)
++    INSTALL(DIRECTORY ${PROJECT_BINARY_DIR}/doc/OpenThreadsReferenceDocs DESTINATION ${CMAKE_INSTALL_DOCDIR} COMPONENT openthreads-doc)
+ 
+     # Process our other doxyfiles but don't create targets for these
+     CONFIGURE_FILE(${PROJECT_SOURCE_DIR}/doc/Doxyfiles/all_Doxyfile
+-- 
+2.20.1
+

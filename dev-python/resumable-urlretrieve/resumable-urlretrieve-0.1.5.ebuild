@@ -1,16 +1,16 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_{4,5,6} )
+PYTHON_COMPAT=( python3_{4,5,6,7} )
 
 inherit distutils-r1
 
 DESCRIPTION="Small library to fetch files over HTTP and resuming their download"
 HOMEPAGE="
 	https://github.com/berdario/resumable-urlretrieve
-	https://pypi.python.org/pypi/resumable-urlretrieve"
+	https://pypi.org/project/resumable-urlretrieve/"
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

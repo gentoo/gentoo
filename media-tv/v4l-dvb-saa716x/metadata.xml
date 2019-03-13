@@ -4,12 +4,10 @@
 	<maintainer type="person">
 		<email>martin.dummer@gmx.net</email>
 		<name>Martin Dummer</name>
-		<description>Proxied maintainer</description>
 	</maintainer>
 	<maintainer type="person">
 		<email>hd_brummy@gentoo.org</email>
 		<name>Joerg Bornkessel</name>
-		<description>Proxying maintainer</description>
 	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>

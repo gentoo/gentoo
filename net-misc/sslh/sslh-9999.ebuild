@@ -1,19 +1,19 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI="6"
 
 inherit flag-o-matic systemd toolchain-funcs
 
 DESCRIPTION="Port multiplexer - accept both HTTPS and SSH connections on the same port"
-HOMEPAGE="http://www.rutschle.net/tech/sslh.shtml"
+HOMEPAGE="https://www.rutschle.net/tech/sslh/README.html"
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/yrutschle/sslh.git"
 	inherit git-r3
 else
-	KEYWORDS="amd64 ~arm ~m68k ~mips ~s390 ~sh x86"
+	KEYWORDS="~amd64 ~arm ~m68k ~mips ~s390 ~sh ~x86"
 	MY_P="${PN}-v${PV}"
-	SRC_URI="http://www.rutschle.net/tech/${PN}/${MY_P}.tar.gz"
+	SRC_URI="https://www.rutschle.net/tech/${PN}/${MY_P}.tar.gz"
 	S=${WORKDIR}/${MY_P}
 fi
 
@@ -30,6 +30,14 @@ DEPEND="${RDEPEND}
 	pcre? ( dev-libs/libpcre:= )"
 
 RESTRICT="test"
+
+src_prepare() {
+	default
+	sed -i \
+		-e '/MAN/s:| gzip -9 - >:>:' \
+		-e '/MAN=sslh.8.gz/s:.gz::' \
+		Makefile || die
+}
 
 src_compile() {
 	# On older versions of GCC, the default gnu89 variant
@@ -51,12 +59,11 @@ src_install() {
 	dosbin sslh-{fork,select}
 	dosym sslh-fork /usr/sbin/sslh
 
-	gunzip ${PN}.8.gz
 	doman ${PN}.8
 
 	dodoc ChangeLog README.md
 
-	newinitd "${FILESDIR}"/sslh.init.d-2 sslh
+	newinitd "${FILESDIR}"/sslh.init.d-3 sslh
 	newconfd "${FILESDIR}"/sslh.conf.d-2 sslh
 
 	if use systemd; then

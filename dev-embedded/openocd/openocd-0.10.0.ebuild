@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -13,7 +13,7 @@ else
 	MY_PV="${PV/_/-}"
 	MY_P="${PN}-${MY_PV}"
 	S="${WORKDIR}"/${MY_P}
-	KEYWORDS="~amd64 ~arm ~x86"
+	KEYWORDS="amd64 ~arm x86"
 	SRC_URI="mirror://sourceforge/project/${PN}/${PN}/${MY_PV}/${MY_P}.tar.gz"
 fi
 
@@ -136,7 +136,6 @@ src_configure() {
 
 src_install() {
 	default
-	env -uRESTRICT prepstrip "${ED}"/usr/bin
 	udev_dorules "${D}"/usr/share/${PN}/contrib/*.rules
 }
 

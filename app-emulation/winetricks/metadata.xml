@@ -4,12 +4,10 @@
 	<maintainer type="person">
 		<email>Chiitoo@gentoo.org</email>
 		<name>Jimi Huotari</name>
-		<description>Proxied maintainer; assign all bugs to him</description>
 	</maintainer>
 	<maintainer type="person">
 		<email>NP-Hardass@gentoo.org</email>
 		<name>NP-Hardass</name>
-		<description>Proxy maintainer; CC on all bugs</description>
 	</maintainer>
 	<maintainer type="project">
 		<email>wine@gentoo.org</email>

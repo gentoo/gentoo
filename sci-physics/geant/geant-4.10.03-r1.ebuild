@@ -60,6 +60,7 @@ src_configure() {
 		-DGEANT4_USE_SYSTEM_CLHEP=ON
 		-DGEANT4_INSTALL_DATA=OFF
 		-DGEANT4_BUILD_MULTITHREADED=$(usex threads)
+		-DGEANT4_BUILD_TLS_MODEL=$(usex threads global-dynamic initial-exec)
 		-DGEANT4_USE_NETWORKDAWN=$(usex dawn)
 		-DGEANT4_USE_GDML=$(usex gdml)
 		-DGEANT4_USE_G3TOG4=$(usex geant3)

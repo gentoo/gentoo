@@ -1,0 +1,15 @@
+Upstream-Status: Submitted [bug-commoncpp@gnu.org]
+
+diff --git a/src/ssl.cpp b/src/ssl.cpp
+index 5bf526d..3cd7040 100644
+--- a/src/ssl.cpp
++++ b/src/ssl.cpp
+@@ -386,7 +386,7 @@ bool SSLStream::getSession(void)
+     if(so == INVALID_SOCKET)
+         return false;
+ 
+-    ctx = SSL_CTX_new(SSLv3_client_method());
++    ctx = SSL_CTX_new(SSLv23_client_method());
+     if(!ctx) {
+         SSL_CTX_free(ctx);
+         return false;

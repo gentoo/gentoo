@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-<email>alsa-bugs@gentoo.org</email>
-</maintainer>
-<upstream>
-<remote-id type="cpe">cpe:/a:alsa-project:alsa-plugins</remote-id>
-</upstream>
+	<maintainer type="project">
+		<email>alsa-bugs@gentoo.org</email>
+	</maintainer>
+	<use>
+		<flag name="arcam_av">Enables Arcam AV control plugin</flag>
+		<flag name="mix">Enables upmix and vdownmix plugin</flag>
+		<flag name="usb_stream">Enables usb_stream plugin</flag>
+	</use>
+	<upstream>
+		<remote-id type="cpe">cpe:/a:alsa-project:alsa-plugins</remote-id>
+	</upstream>
 </pkgmetadata>

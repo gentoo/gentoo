@@ -27,7 +27,7 @@ CDEPEND=">=dev-libs/libuv-1.2.0
 	)
 	tui? (
 		>=dev-libs/libtermkey-0.19
-		>=dev-libs/unibilium-1.1.1
+		>=dev-libs/unibilium-1.1.1:=
 	)
 	dev-libs/libvterm
 	dev-lua/lpeg[luajit=]

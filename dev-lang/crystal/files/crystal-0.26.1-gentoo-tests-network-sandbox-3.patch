@@ -1,0 +1,26 @@
+diff --git a/spec/std/http/server/server_spec.cr b/spec/std/http/server/server_spec.cr
+index 9de0c3f..59882db 100644
+--- a/spec/std/http/server/server_spec.cr
++++ b/spec/std/http/server/server_spec.cr
+@@ -400,7 +400,9 @@ module HTTP
+     end
+ 
+     describe "#bind_tls" do
+-      it "binds SSL server context" do
++      # gentoo's FEATURES=network-sandbox blocks external network:
++      #   connect: Connection timed out (Errno)
++      pending "binds SSL server context" do
+         server = Server.new do |context|
+           context.response.puts "Test Server (#{context.request.headers["Host"]?})"
+           context.response.close
+@@ -512,7 +514,9 @@ module HTTP
+       end
+     {% end %}
+ 
+-    it "handles exception during SSL handshake (#6577)" do
++    # gentoo's FEATURES=network-sandbox blocks external network:
++    #   connect: Connection timed out (Errno)
++    pending "handles exception during SSL handshake (#6577)" do
+       server = SilentErrorHTTPServer.new do |context|
+         context.response.print "ok"
+         context.response.close

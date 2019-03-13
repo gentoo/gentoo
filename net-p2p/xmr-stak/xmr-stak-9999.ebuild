@@ -1,16 +1,17 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit cmake-utils systemd
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/fireice-uk/xmr-stak.git"
+	EGIT_BRANCH="dev"
 	inherit git-r3
 	SRC_URI=""
 else
-	SRC_URI="https://github.com/fireice-uk/xmr-stak/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/fireice-uk/xmr-stak/archive/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64"
 fi
 
@@ -41,13 +42,15 @@ src_configure() {
 		-DMICROHTTPD_ENABLE=$(usex webserver)
 		-DOpenCL_ENABLE=$(usex opencl)
 		-DOpenSSL_ENABLE=$(usex ssl)
+		-DLIBRARY_OUTPUT_PATH=$(get_libdir)
 	)
 	cmake-utils_src_configure
 }
 
 src_install() {
 	cmake-utils_src_install
-	systemd_dounit "${FILESDIR}"/${PN}.service
+	systemd_newunit "${FILESDIR}"/${PN}-2.3.0.service ${PN}.service
+	doinitd "${FILESDIR}"/${PN}
 	dodir /etc/xmr-stak
 }
 
@@ -58,7 +61,7 @@ pkg_postinst() {
 			ewarn "As root or as a user that is a member of the 'video' group,"
 		fi
 		ewarn "run:"
-		ewarn "/usr/bin/xmr-stak --cpu /etc/xmr-stak/cpu.config --amd /etc/xmr-stak/amd.config --nvidia /etc/xmr-stak/nvidia.config -c /etc/xmr-stak/main.config"
-		ewarn "If the systemd will be used, xmr-stak can now be terminated and 'systemctl start xmr-stak' can be used."
+		ewarn "/usr/bin/xmr-stak --cpu /etc/xmr-stak/cpu.config --amd /etc/xmr-stak/amd.config --nvidia /etc/xmr-stak/nvidia.config -c /etc/xmr-stak/main.config -C /etc/xmr-stak/pools.txt"
+		ewarn "xmr-stak can now be terminated and 'systemctl start xmr-stak' or '/etc/init.d/xmr-stak start' can be used."
 	fi
 }

@@ -83,7 +83,10 @@ RDEPEND="${COMMON_DEPEND}
 
 S="${WORKDIR}/${MY_P}"
 
-PATCHES=( "${FILESDIR}"/${PN}-2.6.20-optional-pulse.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.6.20-optional-pulse.patch
+	"${FILESDIR}"/${P}-qt-5.11.patch
+)
 
 src_prepare() {
 	default

@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="project">
+		<email>prefix@gentoo.org</email>
+		<name>Gentoo Prefix</name>
+	</maintainer>
 	<longdescription lang="en">
 		The XAR project aims to provide an easily extensible archive format.
 		Important design decisions include an easily extensible XML table of
@@ -13,7 +16,4 @@
 		compressed and uncompressed form, and the ability to query the table of
 		content's rich meta-data.
 	</longdescription>
-	<upstream>
-		<remote-id type="github">mackyle/xar</remote-id>
-	</upstream>
 </pkgmetadata>

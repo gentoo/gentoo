@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
-<pkgmetadata>
-	<!-- maintainer-needed -->
-	<use>
-		<flag name="h323">Enable H.323 protocol</flag>
-		<flag name="shm">Enable the Shared Memory Extension from libXext</flag>
-	</use>
-</pkgmetadata>

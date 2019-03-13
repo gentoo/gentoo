@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # David Seifert <soap@gentoo.org> (17 Apr 2017)
@@ -13,6 +13,7 @@ sci-chemistry/pdb-tools python_single_target_python2_7 python_targets_python2_7
 
 # Michał Górny <mgorny@gentoo.org> (24 Sep 2016)
 # Enable the BPF target by default
+dev-ml/llvm-ocaml llvm_targets_BPF
 sys-devel/clang llvm_targets_BPF
 sys-devel/llvm llvm_targets_BPF
 

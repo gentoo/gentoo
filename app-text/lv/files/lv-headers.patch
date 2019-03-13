@@ -1,0 +1,26 @@
+Add missing string protos.
+
+ * src/guess.c:150:12: warning: implicit declaration of function ‘strncmp’ [-Wimplicit-function-declaration]
+ * src/guess.c:218:22: warning: implicit declaration of function ‘strcmp’ [-Wimplicit-function-declaration]
+ * src/guesslocale.c:42:9: warning: implicit declaration of function ‘toupper’ [-Wimplicit-function-declaration]
+
+--- a/src/guess.c
++++ b/src/guess.c
+@@ -21,6 +21,7 @@
+  */
+ 
+ #include <stdio.h>
++#include <string.h> /* strcmp */
+ 
+ #include <import.h>
+ #include <decode.h>
+--- a/src/guesslocale.c
++++ b/src/guesslocale.c
+@@ -29,6 +29,7 @@
+ #include <langinfo.h>
+ #endif
+ 
++#include <ctype.h> /* toupper */
+ #include <import.h>
+ #include <ctable.h>
+ #include <begin.h>

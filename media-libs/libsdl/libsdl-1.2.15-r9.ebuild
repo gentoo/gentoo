@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -17,10 +17,6 @@ KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~sh sparc x86 ~amd64-
 IUSE="oss alsa nas X dga xv xinerama fbcon tslib aalib opengl libcaca +sound +video +joystick custom-cflags pulseaudio static-libs"
 
 RDEPEND="
-	abi_x86_32? (
-		!app-emulation/emul-linux-x86-sdl[-abi_x86_32(-)]
-		!<=app-emulation/emul-linux-x86-sdl-20140406
-	)
 	sound? ( >=media-libs/audiofile-0.3.5[${MULTILIB_USEDEP}] )
 	alsa? ( >=media-libs/alsa-lib-1.0.27.2[${MULTILIB_USEDEP}] )
 	nas? (
@@ -43,14 +39,8 @@ RDEPEND="
 	tslib? ( >=x11-libs/tslib-1.0-r3[${MULTILIB_USEDEP}] )
 	pulseaudio? ( >=media-sound/pulseaudio-2.1-r1[${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}
-	nas? (
-		>=x11-proto/xextproto-7.2.1-r1[${MULTILIB_USEDEP}]
-		>=x11-proto/xproto-7.0.24[${MULTILIB_USEDEP}]
-	)
-	X? (
-		>=x11-proto/xextproto-7.2.1-r1[${MULTILIB_USEDEP}]
-		>=x11-proto/xproto-7.0.24[${MULTILIB_USEDEP}]
-	)
+	nas? ( x11-base/xorg-proto )
+	X? ( x11-base/xorg-proto )
 	x86? ( || ( >=dev-lang/yasm-0.6.0 >=dev-lang/nasm-0.98.39-r3 ) )"
 
 S=${WORKDIR}/SDL-${PV}

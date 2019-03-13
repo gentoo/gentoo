@@ -1,0 +1,23 @@
+From ee83e0f2c251072e47a2799619cdc79efe67e651 Mon Sep 17 00:00:00 2001
+From: David Faure <faure@kde.org>
+Date: Tue, 3 Apr 2018 00:31:19 +0200
+Subject: Fix compilation with Qt 5.11 (missing include)
+
+---
+ stage/part/KPrPresentationTool.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/stage/part/KPrPresentationTool.cpp b/stage/part/KPrPresentationTool.cpp
+index ae743da..3007f91 100644
+--- a/stage/part/KPrPresentationTool.cpp
++++ b/stage/part/KPrPresentationTool.cpp
+@@ -32,6 +32,7 @@
+ #include <QDesktopServices>
+ #include <QUrl>
+ #include <QDBusConnection>
++#include <QFrame>
+ 
+ #include <KoShape.h>
+ #include <KoShapeManager.h>
+-- 
+cgit v0.11.2

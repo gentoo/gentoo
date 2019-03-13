@@ -9,9 +9,6 @@
 		<email>mgorny@gentoo.org</email>
 		<name>Michał Górny</name>
 	</maintainer>
-	<use>
-		<flag name="valgrind">Enable usage of dev-util/valgrind in tests</flag>
-	</use>
 	<upstream>
 		<remote-id type="github">Cyan4973/lz4</remote-id>
 	</upstream>

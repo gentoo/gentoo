@@ -2,7 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>rainbow@irh.it</email>
+		<email>bu9zilla@gmail.com</email>
+		<name>Michael Mair-Keimberger</name>
 	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
@@ -10,5 +11,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="sourceforge">chaosreader</remote-id>
+		<remote-id type="github">brendangregg/chaosreader</remote-id>
 	</upstream>
 </pkgmetadata>

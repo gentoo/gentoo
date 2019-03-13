@@ -6,7 +6,7 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} pypy )
 inherit eutils distutils-r1
 
 DESCRIPTION="Extended pickling support for Python objects"
-HOMEPAGE="https://pypi.python.org/pypi/cloudpickle/"
+HOMEPAGE="https://pypi.org/project/cloudpickle/"
 SRC_URI="mirror://pypi/${PN::1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,11 +16,14 @@ KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
 DEPEND="
-	test? (
-		dev-python/pytest[${PYTHON_USEDEP}]
-		dev-python/pytest-cov[${PYTHON_USEDEP}]
-	)"
+	test? ( dev-python/pytest[${PYTHON_USEDEP}] )"
+
+src_prepare() {
+	default
+	# remove --cov args injection
+	rm pytest.ini || die
+}
 
 python_test() {
-	py.test || die
+	pytest || die
 }

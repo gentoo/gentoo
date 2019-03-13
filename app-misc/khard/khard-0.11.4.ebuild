@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,7 +15,7 @@ if [ "${PV}" == "9999" ]; then
 	EGIT_REPO_URI="https://github.com/scheibler/khard"
 else
 	SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~arm ~x86"
 fi
 
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
@@ -23,7 +23,6 @@ RDEPEND="
 	dev-python/atomicwrites[${PYTHON_USEDEP}]
 	dev-python/configobj[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
-	dev-python/vdirsyncer[${PYTHON_USEDEP}]
 	>dev-python/vobject-0.9.3[${PYTHON_USEDEP}]
 "
 # vobject-0.9.3 breaks khard, see

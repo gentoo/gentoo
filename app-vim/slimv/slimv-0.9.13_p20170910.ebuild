@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,10 +10,10 @@ inherit python-single-r1 vim-plugin vcs-snapshot
 COMMIT="acf9b30be71c54db4f4875d257b905941ca69ed8"
 
 DESCRIPTION="vim plugin: aid Lisp development by providing a SLIME-like Lisp and Clojure REPL"
-HOMEPAGE="https://github.com/kovisoft/slimv"
+HOMEPAGE="https://www.vim.org/scripts/script.php?script_id=2531 https://github.com/kovisoft/slimv"
 SRC_URI="https://github.com/kovisoft/slimv/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 LICENSE="public-domain"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND="
 	|| (

@@ -3,9 +3,8 @@
 <pkgmetadata>
 	<maintainer type="person">
 		<email>robbat2@gentoo.org</email>
-		<description>Upstream author</description>
 	</maintainer>
-<maintainer type="project">
+	<maintainer type="project">
 		<email>perl@gentoo.org</email>
 		<name>Gentoo Perl Project</name>
 	</maintainer>

@@ -13,15 +13,26 @@ SRC_URI="mirror://pypi/p/pathlib2/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
-IUSE=""
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ppc64 x86"
+IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
-	$(python_gen_cond_dep 'dev-python/scandir[${PYTHON_USEDEP}]' 'python2*' python3_4 pypy )
+	$(python_gen_cond_dep 'dev-python/scandir[${PYTHON_USEDEP}]' -2 python3_4 )
 	dev-python/six[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
-	dev-python/setuptools[${PYTHON_USEDEP}]"
+	dev-python/setuptools[${PYTHON_USEDEP}]
+	test? ( $(python_gen_cond_dep 'dev-python/mock[${PYTHON_USEDEP}]' -2) )"
+
+python_prepare_all() {
+	# stop using private Python API
+	# https://github.com/mcmtroffaes/pathlib2/issues/39
+	sed -i -e 's/support\.android_not_root/False/' test*.py || die
+
+	distutils-r1_python_prepare_all
+}
 
 python_test() {
-	"${EPYTHON}" test_pathlib2.py || die
+	"${EPYTHON}" test_pathlib2.py -v || die
+	"${EPYTHON}" test_pathlib2_with_py2_unicode_literals.py -v || die
 }

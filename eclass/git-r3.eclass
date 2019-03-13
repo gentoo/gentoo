@@ -1,16 +1,20 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: git-r3.eclass
 # @MAINTAINER:
 # Michał Górny <mgorny@gentoo.org>
+# @SUPPORTED_EAPIS: 4 5 6 7
 # @BLURB: Eclass for fetching and unpacking git repositories.
 # @DESCRIPTION:
 # Third generation eclass for easing maintenance of live ebuilds using
 # git as remote repository.
 
 case "${EAPI:-0}" in
-	0|1|2|3|4|5|6)
+	0|1|2|3)
+		die "Unsupported EAPI=${EAPI} (obsolete) for ${ECLASS}"
+		;;
+	4|5|6|7)
 		;;
 	*)
 		die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}"
@@ -22,7 +26,11 @@ EXPORT_FUNCTIONS src_unpack
 if [[ ! ${_GIT_R3} ]]; then
 
 if [[ ! ${_INHERITED_BY_GIT_2} ]]; then
-	DEPEND=">=dev-vcs/git-1.8.2.1"
+	if [[ ${EAPI:-0} != [0123456] ]]; then
+		BDEPEND=">=dev-vcs/git-1.8.2.1[curl]"
+	else
+		DEPEND=">=dev-vcs/git-1.8.2.1[curl]"
+	fi
 fi
 
 # @ECLASS-VARIABLE: EGIT_CLONE_TYPE
@@ -114,8 +122,6 @@ fi
 # URIs are completely unsecured and their use (even if only as
 # a fallback) renders the ebuild completely vulnerable to MITM attacks.
 #
-# It can be overridden via env using ${PN}_LIVE_REPO variable.
-#
 # Can be a whitespace-separated list or an array.
 #
 # Example:
@@ -144,8 +150,6 @@ fi
 # @DESCRIPTION:
 # The branch name to check out. If unset, the upstream default (HEAD)
 # will be used.
-#
-# It can be overriden via env using ${PN}_LIVE_BRANCH variable.
 
 # @ECLASS-VARIABLE: EGIT_COMMIT
 # @DEFAULT_UNSET
@@ -154,8 +158,6 @@ fi
 # commit from the branch will be used. Note that if set to a commit
 # not on HEAD branch, EGIT_BRANCH needs to be set to a branch on which
 # the commit is available.
-#
-# It can be overriden via env using ${PN}_LIVE_COMMIT variable.
 
 # @ECLASS-VARIABLE: EGIT_COMMIT_DATE
 # @DEFAULT_UNSET
@@ -170,8 +172,6 @@ fi
 # (assuming that merges are done correctly). In other words, each merge
 # will be considered alike a single commit with date corresponding
 # to the merge commit date.
-#
-# It can be overriden via env using ${PN}_LIVE_COMMIT_DATE variable.
 
 # @ECLASS-VARIABLE: EGIT_CHECKOUT_DIR
 # @DESCRIPTION:
@@ -254,6 +254,7 @@ _git-r3_env_setup() {
 	esc_pn=${PN//[-+]/_}
 	[[ ${esc_pn} == [0-9]* ]] && esc_pn=_${esc_pn}
 
+	# note: deprecated, use EGIT_OVERRIDE_* instead
 	livevar=${esc_pn}_LIVE_REPO
 	EGIT_REPO_URI=${!livevar-${EGIT_REPO_URI}}
 	[[ ${!livevar} ]] \
@@ -578,6 +579,8 @@ git-r3_fetch() {
 	local -x GIT_DIR
 	_git-r3_set_gitdir "${repos[0]}"
 
+	einfo "Repository id: ${GIT_DIR##*/}"
+
 	# prepend the local mirror if applicable
 	if [[ ${EGIT_MIRROR_URI} ]]; then
 		repos=(
@@ -610,10 +613,11 @@ git-r3_fetch() {
 			COMMIT_DATE:commit_date
 		)
 
-		local localvar livevar live_warn=
+		local localvar livevar live_warn= override_vars=()
 		for localvar in "${varmap[@]}"; do
 			livevar=EGIT_OVERRIDE_${localvar%:*}_${override_name}
 			localvar=${localvar#*:}
+			override_vars+=( "${livevar}" )
 
 			if [[ -n ${!livevar} ]]; then
 				[[ ${localvar} == repos ]] && repos=()
@@ -625,6 +629,13 @@ git-r3_fetch() {
 
 		if [[ ${live_warn} ]]; then
 			ewarn "No support will be provided."
+		else
+			einfo "To override fetched repository properties, use:"
+			local x
+			for x in "${override_vars[@]}"; do
+				einfo "  ${x}"
+			done
+			einfo
 		fi
 	fi
 
@@ -646,20 +657,6 @@ git-r3_fetch() {
 
 			local fetch_command=( git fetch "${r}" )
 			local clone_type=${EGIT_CLONE_TYPE}
-
-			if [[ ${r} == http://* || ${r} == https://* ]] &&
-					[[ ! ${EGIT_CURL_WARNED} ]] &&
-					! ROOT=/ has_version 'dev-vcs/git[curl]'
-			then
-				ewarn "git-r3: fetching from HTTP(S) requested. In order to support HTTP(S),"
-				ewarn "dev-vcs/git needs to be built with USE=curl. Example solution:"
-				ewarn
-				ewarn "	echo dev-vcs/git curl >> /etc/portage/package.use"
-				ewarn "	emerge -1v dev-vcs/git"
-				ewarn
-				ewarn "HTTP(S) URIs will be skipped."
-				EGIT_CURL_WARNED=1
-			fi
 
 			if [[ ${clone_type} == mirror ]]; then
 				fetch_command+=(

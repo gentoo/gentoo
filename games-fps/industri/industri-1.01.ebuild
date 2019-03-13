@@ -22,10 +22,7 @@ RDEPEND="virtual/opengl
 	media-libs/libpng:0
 	cdinstall? ( games-fps/quake1-data )"
 DEPEND="${RDEPEND}
-	x11-proto/xf86dgaproto
-	x11-proto/xextproto
-	x11-proto/xf86vidmodeproto
-	x11-proto/xproto
+	x11-base/xorg-proto
 	app-arch/unzip"
 
 S=${WORKDIR}/industri_BIN

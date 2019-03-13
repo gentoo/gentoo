@@ -1,10 +1,20 @@
---- libadalang-gps-src/ada/testsuite/testsuite_support/capi_driver.py	2017-07-30 16:01:31.495287196 +0200
-+++ libadalang-gps-src/ada/testsuite/testsuite_support/capi_driver.py.old	2017-07-30 16:00:08.104464440 +0200
-@@ -72,6 +72,7 @@
-                        --  different default standard.
+--- a/ada/testsuite/python_support/utils.py	2018-11-14 22:21:36.366873970 +0100
++++ b/ada/testsuite/python_support/utils.py	2018-11-14 22:21:59.397477086 +0100
+@@ -28,6 +28,7 @@
+     library_kind = 'static' if LAL_DISABLE_SHARED else 'relocatable'
+     argv.extend([
+         '-XLIBRARY_TYPE={}'.format(library_kind),
++        '-XGPR_BUILD={}'.format(library_kind),
+         '-XXMLADA_BUILD={}'.format(library_kind),
+     ])
+     subprocess.check_call(argv)
+--- a/ada/testsuite/testsuite_support/base_driver.py	2018-11-14 22:22:37.698817058 +0100
++++ b/ada/testsuite/testsuite_support/base_driver.py	2018-11-14 22:30:37.631613448 +0100
+@@ -310,6 +310,7 @@
+         """
+         library_type = 'static' if self.disable_shared else 'relocatable'
+         return ['-XLIBRARY_TYPE={}'.format(library_type),
++                '-XGPR_BUILD={}'.format(library_type),
+                 '-XXMLADA_BUILD={}'.format(library_type)]
  
-                        "-I{support_include_dir}", "-g");
-+                   for Driver ("C") use External ("GCC", "gcc");
-                 end Compiler;
-             end P;
-             '''.format(main_source=compile_units[0],
+     #

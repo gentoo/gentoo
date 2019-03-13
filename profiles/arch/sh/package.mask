@@ -1,7 +1,0 @@
-# Copyright 1999-2012 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-
-# Zac Medico <zmedico@gentoo.org> (09 Aug 2011)
-# Bug #377907 - Use package.mask for compatibility with PMS section 5.2.7, and
-# future versions of sys-apps/portage.
-<sys-devel/gcc-3.2

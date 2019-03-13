@@ -6,7 +6,6 @@
 		<name>BSD Project</name>
 	</maintainer>
 	<use>
-		<flag name="isdn">Enable ISDN support</flag>
 		<flag name="zfs">Enable ZFS support.</flag>
 	</use>
 </pkgmetadata>

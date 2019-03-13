@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -18,6 +18,7 @@ RESTRICT="mirror"
 RDEPEND="
 	sys-apps/dbus
 	xfce-base/xfce4-panel
+	dev-libs/dbus-glib
 	dev-libs/glib:2
 	dev-haskell/dbus
 	x11-libs/gtk+:3

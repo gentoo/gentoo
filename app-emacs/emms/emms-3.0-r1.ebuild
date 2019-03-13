@@ -7,7 +7,7 @@ inherit elisp toolchain-funcs
 
 DESCRIPTION="The Emacs Multimedia System"
 HOMEPAGE="https://www.gnu.org/software/emms/
-	http://www.emacswiki.org/emacs/EMMS"
+	https://www.emacswiki.org/emacs/EMMS"
 SRC_URI="https://www.gnu.org/software/emms/download/${P}.tar.gz"
 
 LICENSE="GPL-3+ FDL-1.1+"

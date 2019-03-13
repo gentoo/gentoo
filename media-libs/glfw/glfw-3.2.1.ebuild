@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit cmake-utils
 
 DESCRIPTION="The Portable OpenGL FrameWork"
-HOMEPAGE="http://www.glfw.org/"
+HOMEPAGE="https://www.glfw.org/"
 SRC_URI="mirror://sourceforge/glfw/${P}.tar.bz2"
 
 LICENSE="ZLIB"

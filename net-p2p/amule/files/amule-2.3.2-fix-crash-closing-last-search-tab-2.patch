@@ -1,0 +1,159 @@
+From 4c94c2d9f3be8b9068966f15aebc29b8c9b706ab Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?D=C3=A9vai=20Tam=C3=A1s?= <gonosztopi@amule.org>
+Date: Mon, 17 Oct 2016 22:14:26 +0200
+Subject: [PATCH] Apply the workaround only if needed
+
+This way it'll be easy for us to remove the workaround once wxWidgets fixes
+the bug.
+---
+ docs/Changelog       |  4 ++++
+ src/MuleNotebook.cpp | 19 ++++++++++++++-----
+ src/MuleNotebook.h   |  8 ++++++++
+ 3 files changed, 26 insertions(+), 5 deletions(-)
+
+diff --git a/docs/Changelog b/docs/Changelog
+index 7dbff70b2..e9176dd51 100644
+--- a/docs/Changelog
++++ b/docs/Changelog
+@@ -2,6 +2,10 @@ Version 2.4.0 - The river knows.
+ ----------
+ 201?-??-??
+ 
++	gaffatape:
++		* Workaround for bug in wxWidgets causing aMule to crash on
++		  closing the last search tab
++
+ 	GonoszTopi:
+ 		* Fix restoring toolbar orientation on 'Cancel'
+ 
+diff --git a/src/MuleNotebook.cpp b/src/MuleNotebook.cpp
+index 4ab23ce18..5d3ad0453 100644
+--- a/src/MuleNotebook.cpp
++++ b/src/MuleNotebook.cpp
+@@ -32,7 +32,10 @@
+ 
+ DEFINE_LOCAL_EVENT_TYPE(wxEVT_COMMAND_MULENOTEBOOK_PAGE_CLOSING)
+ DEFINE_LOCAL_EVENT_TYPE(wxEVT_COMMAND_MULENOTEBOOK_ALL_PAGES_CLOSED)
++
++#if MULE_NEEDS_DELETEPAGE_WORKAROUND
+ DEFINE_LOCAL_EVENT_TYPE(wxEVT_COMMAND_MULENOTEBOOK_DELETE_PAGE)
++#endif
+ 
+ BEGIN_EVENT_TABLE(CMuleNotebook, wxNotebook)
+ 	EVT_RIGHT_DOWN(CMuleNotebook::OnRMButton)
+@@ -45,9 +48,12 @@ BEGIN_EVENT_TABLE(CMuleNotebook, wxNotebook)
+ 	EVT_LEFT_UP(CMuleNotebook::OnMouseButtonRelease)
+ 	EVT_MIDDLE_UP(CMuleNotebook::OnMouseButtonRelease)
+ 	EVT_MOTION(CMuleNotebook::OnMouseMotion)
++#if MULE_NEEDS_DELETEPAGE_WORKAROUND
+ 	EVT_MULENOTEBOOK_DELETE_PAGE(wxID_ANY, CMuleNotebook::OnDeletePage)
++#endif
+ END_EVENT_TABLE()
+ 
++
+ CMuleNotebook::CMuleNotebook( wxWindow *parent, wxWindowID id, const wxPoint& pos, const wxSize& size, long style, const wxString& name )
+ 	: wxNotebook(parent, id, pos, size, style, name)
+ {
+@@ -62,11 +68,14 @@ CMuleNotebook::~CMuleNotebook()
+ 	DeleteAllPages();
+ }
+ 
++
++#if MULE_NEEDS_DELETEPAGE_WORKAROUND
+ void CMuleNotebook::OnDeletePage(wxBookCtrlEvent& evt)
+ {
+ 	int page = evt.GetSelection();
+ 	DeletePage(page);
+ }
++#endif // MULE_NEEDS_DELETEPAGE_WORKAROUND
+ 
+ 
+ bool CMuleNotebook::DeletePage(int nPage)
+@@ -208,7 +217,6 @@ void CMuleNotebook::OnPopupCloseOthers(wxCommandEvent& WXUNUSED(evt))
+ 
+ void CMuleNotebook::OnMouseButtonRelease(wxMouseEvent &event)
+ {
+-
+ 	if (GetImageList() == NULL) {
+ 		// This Mulenotebook has no images on tabs, so nothing to do.
+ 		event.Skip();
+@@ -224,7 +232,7 @@ void CMuleNotebook::OnMouseButtonRelease(wxMouseEvent &event)
+ 	if ((tab != -1) &&  (((flags == wxNB_HITTEST_ONICON) && event.LeftUp()) ||
+ 			((flags == wxNB_HITTEST_ONLABEL) && event.MiddleUp()))) {
+ 		// User did click on a 'x' or middle click on the label
+-
++#if MULE_NEEDS_DELETEPAGE_WORKAROUND
+ 		/*	WORKAROUND: Instead of calling DeletePage, we need to wait for the
+ 		 *	mouse release signal to reach Gtk. Inconsistent with normal wxEvent
+ 		 *	behaviour the button release handler in wxWidgets don't evaluate
+@@ -232,16 +240,18 @@ void CMuleNotebook::OnMouseButtonRelease(wxMouseEvent &event)
+ 		wxNotebookEvent evt( wxEVT_COMMAND_MULENOTEBOOK_DELETE_PAGE, GetId(), tab );
+ 		evt.SetEventObject(this);
+ 		AddPendingEvent( evt );
++#else
++		DeletePage(tab);
++#endif // MULE_NEEDS_DELETEPAGE_WORKAROUND
+ 	} else {
+ 		// Is not a 'x'. Send this event up.
+ 		event.Skip();
+ 	}
+-
+ }
+ 
++
+ void CMuleNotebook::OnMouseMotion(wxMouseEvent &event)
+ {
+-
+ 	if (GetImageList() == NULL) {
+ 		// This Mulenotebook has no images on tabs, so nothing to do.
+ 		event.Skip();
+@@ -263,7 +273,6 @@ void CMuleNotebook::OnMouseMotion(wxMouseEvent &event)
+ 		// Is not a 'x'. Send this event up.
+ 		event.Skip();
+ 	}
+-
+ }
+ 
+ // File_checked_for_headers
+diff --git a/src/MuleNotebook.h b/src/MuleNotebook.h
+index ab2809d88..14f61ee68 100644
+--- a/src/MuleNotebook.h
++++ b/src/MuleNotebook.h
+@@ -28,9 +28,13 @@
+ 
+ #include <wx/notebook.h>
+ 
++#define MULE_NEEDS_DELETEPAGE_WORKAROUND	wxCHECK_VERSION(3,0,2)
++
+ 
+ DECLARE_LOCAL_EVENT_TYPE(wxEVT_COMMAND_MULENOTEBOOK_PAGE_CLOSING, -1)
+ DECLARE_LOCAL_EVENT_TYPE(wxEVT_COMMAND_MULENOTEBOOK_ALL_PAGES_CLOSED, -1)
++
++#if MULE_NEEDS_DELETEPAGE_WORKAROUND
+ DECLARE_LOCAL_EVENT_TYPE(wxEVT_COMMAND_MULENOTEBOOK_DELETE_PAGE, -1)
+ 
+ #define EVT_MULENOTEBOOK_DELETE_PAGE(id, fn)						\
+@@ -41,6 +45,8 @@ DECLARE_LOCAL_EVENT_TYPE(wxEVT_COMMAND_MULENOTEBOOK_DELETE_PAGE, -1)
+ 		(wxObjectEventFunction)(wxEventFunction)(wxNotebookEventFunction) &fn,  \
+ 		NULL                                                                    \
+ 	),
++#endif // MULE_NEEDS_DELETEPAGE_WORKAROUND
++
+ #define EVT_MULENOTEBOOK_PAGE_CLOSING(id, fn)						\
+ 	DECLARE_EVENT_TABLE_ENTRY(							\
+ 		wxEVT_COMMAND_MULENOTEBOOK_PAGE_CLOSING,					\
+@@ -116,9 +122,11 @@ public:
+ 	 */
+ 	void SetPopupHandler( wxWindow* widget );
+ 
++#if MULE_NEEDS_DELETEPAGE_WORKAROUND
+ private:
+ 	// Internal handler. Workaround for wxWidgets Tab-Crash bug.
+ 	void OnDeletePage(wxBookCtrlEvent& evt);
++#endif // MULE_NEEDS_DELETEPAGE_WORKAROUND
+ 
+ protected:
+ 	/**
+-- 
+2.16.4
+

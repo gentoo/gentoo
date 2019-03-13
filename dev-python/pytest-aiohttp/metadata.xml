@@ -4,10 +4,6 @@
 	<maintainer type="project">
 		<email>python@gentoo.org</email>
 	</maintainer>
-	<maintainer type="person">
-		<email>alunduil@gentoo.org</email>
-		<name>Alex Brandt</name>
-	</maintainer>
 	<upstream>
 		<remote-id type="github">aio-libs/pytest-aiohttp</remote-id>
 		<remote-id type="pypi">pytest-aiohttp</remote-id>

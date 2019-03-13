@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -17,12 +17,12 @@ MY_PN="${PN##*-}"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Ivy is a free java based dependency manager"
-HOMEPAGE="http://ant.apache.org/ivy"
+HOMEPAGE="https://ant.apache.org/ivy/"
 SRC_URI="http://www.jaya.free.fr/downloads/ivy/${PV}/${MY_P}-src.zip"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64 ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-macos"
+KEYWORDS="~amd64 ~ppc64 ~x86 ~amd64-linux ~x86-linux ~x86-macos"
 
 COMMON_DEP="
 	dev-java/ant-core:0

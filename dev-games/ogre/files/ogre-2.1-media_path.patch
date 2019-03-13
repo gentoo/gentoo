@@ -1,0 +1,28 @@
+--- a/CMake/InstallResources.cmake	2018-03-23 10:49:24.620486243 +0100
++++ b/CMake/InstallResources.cmake	2018-03-23 10:50:52.089485597 +0100
+@@ -186,15 +186,16 @@
+ 
+ # CREATE CONFIG FILES - BUILD DIR VERSIONS
+ if (NOT (OGRE_BUILD_PLATFORM_APPLE_IOS OR WINDOWS_STORE OR WINDOWS_PHONE))
+-	if( NOT APPLE )
+-		set(OGRE_MEDIA_DIR_REL "${OGRE_SOURCE_DIR}/Samples/Media")
+-		set(OGRE_MEDIA_DIR_DBG "${OGRE_SOURCE_DIR}/Samples/Media")
+-	else()
+-		set(OGRE_MEDIA_DIR_REL "Contents/Resources")
+-		set(OGRE_MEDIA_DIR_DBG "Contents/Resources")
+-	endif()
+-	set(OGRE_TEST_MEDIA_DIR_REL "${OGRE_SOURCE_DIR}/Tests/Media")
+-	set(OGRE_TEST_MEDIA_DIR_DBG "${OGRE_SOURCE_DIR}/Tests/Media")
++# No, they were fine already
++#	if( NOT APPLE )
++#		set(OGRE_MEDIA_DIR_REL "${OGRE_SOURCE_DIR}/Samples/Media")
++#		set(OGRE_MEDIA_DIR_DBG "${OGRE_SOURCE_DIR}/Samples/Media")
++#	else()
++#		set(OGRE_MEDIA_DIR_REL "Contents/Resources")
++#		set(OGRE_MEDIA_DIR_DBG "Contents/Resources")
++#	endif()
++#	set(OGRE_TEST_MEDIA_DIR_REL "${OGRE_SOURCE_DIR}/Tests/Media")
++#	set(OGRE_TEST_MEDIA_DIR_DBG "${OGRE_SOURCE_DIR}/Tests/Media")
+ else ()
+ 	# iOS needs to use relative paths in the config files
+ 	set(OGRE_TEST_MEDIA_DIR_REL "${OGRE_MEDIA_PATH}")

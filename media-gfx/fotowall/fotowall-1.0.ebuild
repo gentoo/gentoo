@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -30,6 +30,8 @@ DEPEND="${RDEPEND}
 
 src_prepare() {
 	default
+
+	eapply "${FILESDIR}/${P}-qt-5.11.patch"
 
 	sed -i -e "s|linux/videodev.h|libv4l1-videodev.h|" \
 		3rdparty/videocapture/VideoDevice.h || die

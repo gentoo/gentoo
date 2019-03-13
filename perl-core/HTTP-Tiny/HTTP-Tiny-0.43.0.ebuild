@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -7,7 +7,7 @@ MODULE_VERSION=0.043
 inherit perl-module
 
 DESCRIPTION='A small, simple, correct HTTP/1.1 client'
-LICENSE=" || ( Artistic GPL-2 )"
+LICENSE="|| ( Artistic GPL-2 )"
 SLOT="0"
 KEYWORDS=""
 IUSE="test"

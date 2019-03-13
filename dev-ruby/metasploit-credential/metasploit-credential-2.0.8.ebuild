@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -25,4 +25,4 @@ ruby_add_rdepend "dev-ruby/metasploit-concern:2.0
 	dev-ruby/rubyzip:1
 	dev-ruby/rubyntlm
 	>=dev-ruby/railties-4.2.6:4.2
-	dev-ruby/pg"
+	dev-ruby/pg:*"

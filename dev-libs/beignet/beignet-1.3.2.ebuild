@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 CMAKE_BUILD_TYPE="Release"
 
-inherit python-any-r1 cmake-multilib flag-o-matic toolchain-funcs
+inherit python-any-r1 cmake-multilib flag-o-matic llvm toolchain-funcs
 
 DESCRIPTION="OpenCL implementation for Intel GPUs"
 HOMEPAGE="https://01.org/beignet"
@@ -18,16 +18,15 @@ IUSE="ocl-icd ocl20"
 if [[ "${PV}" == "9999" ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://anongit.freedesktop.org/git/beignet.git"
-	KEYWORDS=""
+	KEYWORDS="amd64"
 else
-	KEYWORDS="~amd64"
+	KEYWORDS="amd64"
 	SRC_URI="https://01.org/sites/default/files/${P}-source.tar.gz"
 	S=${WORKDIR}/Beignet-${PV}-Source
 fi
 
 COMMON="media-libs/mesa[${MULTILIB_USEDEP}]
-	sys-devel/clang:=[${MULTILIB_USEDEP}]
-	sys-devel/llvm:=[${MULTILIB_USEDEP}]
+	<sys-devel/clang-6.0.0:=[${MULTILIB_USEDEP}]
 	>=x11-libs/libdrm-2.4.70[video_cards_intel,${MULTILIB_USEDEP}]
 	x11-libs/libXext[${MULTILIB_USEDEP}]
 	x11-libs/libXfixes[${MULTILIB_USEDEP}]"
@@ -37,6 +36,8 @@ DEPEND="${COMMON}
 	${PYTHON_DEPS}
 	ocl-icd? ( dev-libs/ocl-icd )
 	virtual/pkgconfig"
+
+LLVM_MAX_SLOT=5
 
 PATCHES=(
 	"${FILESDIR}"/no-debian-multiarch.patch
@@ -62,6 +63,7 @@ pkg_pretend() {
 }
 
 pkg_setup() {
+	llvm_pkg_setup
 	python_setup
 }
 

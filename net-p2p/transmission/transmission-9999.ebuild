@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,8 +9,8 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/transmission/transmission"
 else
-	SRC_URI="https://github.com/transmission/transmission/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~mips ~ppc ~ppc64 ~x86 ~x86-fbsd ~amd64-linux"
+	SRC_URI="https://github.com/transmission/transmission-releases/raw/master/${P}.tar.xz"
+	KEYWORDS="~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~x86 ~x86-fbsd ~amd64-linux"
 fi
 
 DESCRIPTION="A fast, easy, and free BitTorrent client"
@@ -82,7 +82,6 @@ src_configure() {
 		-DENABLE_NLS=$(usex nls ON OFF)
 		-DENABLE_QT=$(usex qt5 ON OFF)
 		-DENABLE_TESTS=$(usex test ON OFF)
-		-DUSE_QT5=ON
 
 		-DUSE_SYSTEM_EVENT2=ON
 		-DUSE_SYSTEM_DHT=OFF

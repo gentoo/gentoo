@@ -1,6 +1,5 @@
-diff -Naur ntopng-3.0-orig/src/AddressResolution.cpp ntopng-3.0/src/AddressResolution.cpp
---- ntopng-3.0-orig/src/AddressResolution.cpp	2017-06-01 00:18:57.000000000 -0700
-+++ ntopng-3.0/src/AddressResolution.cpp	2017-11-27 23:13:50.158163187 -0800
+--- a/src/AddressResolution.cpp
++++ b/src/AddressResolution.cpp
 @@ -52,7 +52,7 @@
    u_int numeric_ip_len;
  

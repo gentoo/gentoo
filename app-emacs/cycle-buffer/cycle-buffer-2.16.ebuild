@@ -6,7 +6,7 @@ EAPI=6
 inherit elisp
 
 DESCRIPTION="Select buffer by cycling through"
-HOMEPAGE="http://www.emacswiki.org/emacs/cycle-buffer.el"
+HOMEPAGE="https://www.emacswiki.org/emacs/cycle-buffer.el"
 # taken from https://www.emacswiki.org/emacs/download/cycle-buffer.el
 SRC_URI="https://github.com/gavv/distfiles/raw/master/${P}.el.xz"
 

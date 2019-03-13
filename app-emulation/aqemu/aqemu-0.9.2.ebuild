@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 inherit cmake-utils
 
@@ -14,16 +14,16 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="vnc"
 
-DEPEND="${RDEPEND}"
 RDEPEND="app-emulation/qemu
-	vnc? ( net-libs/libvncserver )
 	dev-qt/qtcore:5
-	dev-qt/qtwidgets:5
 	dev-qt/qtnetwork:5
+	dev-qt/qtprintsupport:5
 	dev-qt/qttest:5
-	dev-qt/qtprintsupport:5"
+	dev-qt/qtwidgets:5
+	vnc? ( net-libs/libvncserver )"
+DEPEND="${RDEPEND}"
 
-DOCS="AUTHORS CHANGELOG README TODO"
+DOCS=( AUTHORS CHANGELOG README TODO )
 PATCHES=( "${FILESDIR}/${PN}-0.9.2-qtbindir.patch" )
 
 src_configure() {

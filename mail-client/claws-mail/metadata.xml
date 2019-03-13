@@ -11,6 +11,7 @@
 	</maintainer>
 	<use>
 		<flag name="archive">Enable archiving plugin</flag>
+		<flag name="dillo">Enable dillo html viewer plugin</flag>
 		<flag name="gdata">Enable plugin for access to Google
 		data providers</flag>
 		<flag name="gtk3">Build support for GTK+3</flag>

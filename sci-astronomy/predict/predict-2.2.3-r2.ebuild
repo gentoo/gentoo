@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,7 +9,7 @@ DEB_P=${PN}_${PV}
 DEB_PR=3.1
 
 DESCRIPTION="Satellite tracking and orbital prediction"
-HOMEPAGE="http://www.qsl.net/kd2bd/predict.html"
+HOMEPAGE="https://www.qsl.net/kd2bd/predict.html"
 SRC_URI="mirror://debian/pool/main/${PN:0:1}/${PN}/${DEB_P}.orig.tar.gz
 	mirror://debian/pool/main/${PN:0:1}/${PN}/${DEB_P}-${DEB_PR}.diff.gz"
 

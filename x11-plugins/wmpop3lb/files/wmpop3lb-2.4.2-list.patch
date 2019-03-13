@@ -1,6 +1,6 @@
-diff -Naur wmgeneral.orig/list.c wmgeneral/list.c
---- wmgeneral.orig/list.c	2016-01-04 13:22:26.492218531 +0100
-+++ wmgeneral/list.c	2016-01-04 13:22:59.018229270 +0100
+diff -Naur a/wmgeneral/list.c b/wmgeneral/list.c
+--- a/wmgeneral/list.c	2016-01-04 13:22:26.492218531 +0100
++++ b/wmgeneral/list.c	2016-01-04 13:22:59.018229270 +0100
 @@ -38,7 +38,7 @@
  
  /* Return a cons cell produced from (head . tail) */
@@ -82,9 +82,9 @@ diff -Naur wmgeneral.orig/list.c wmgeneral/list.c
  list_mapcar(LinkedList* list, void(*function)(void*))
  {
    while(list)
-diff -Naur wmgeneral.orig/list.h wmgeneral/list.h
---- wmgeneral.orig/list.h	2016-01-04 13:22:26.492218531 +0100
-+++ wmgeneral/list.h	2016-01-04 13:22:30.028219699 +0100
+diff -Naur a/wmgeneral/list.h b/wmgeneral/list.h
+--- a/wmgeneral/list.h	2016-01-04 13:22:26.492218531 +0100
++++ b/wmgeneral/list.h	2016-01-04 13:22:30.028219699 +0100
 @@ -29,31 +29,25 @@
  #ifndef __LIST_H_
  #define __LIST_H_

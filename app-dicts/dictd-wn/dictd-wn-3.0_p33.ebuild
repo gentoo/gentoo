@@ -1,11 +1,11 @@
-# Copyright 1999-2009 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit unpacker
 
 DESCRIPTION="WordNet for dict"
-HOMEPAGE="http://wordnet.princeton.edu/"
+HOMEPAGE="https://wordnet.princeton.edu/"
 SRC_URI="mirror://debian/pool/main/w/wordnet/dict-wn_${PV/_p/-}_all.deb"
 
 LICENSE="Princeton"

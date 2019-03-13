@@ -13,6 +13,7 @@
 	</longdescription>
 	<use>
 		<flag name="liblockfile">Enable support for liblockfile library</flag>
+		<flag name="lmdb">Use <pkg>dev-db/lmdb</pkg> as cache DB</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">dinhviethoa/libetpan</remote-id>

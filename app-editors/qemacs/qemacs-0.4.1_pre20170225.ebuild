@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,7 +12,7 @@ SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.tar.xz"
 
 LICENSE="LGPL-2.1+ GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~x86"
+KEYWORDS="amd64 arm ~ppc x86"
 IUSE="X png unicode xv"
 RESTRICT="test"
 
@@ -23,7 +23,8 @@ RDEPEND="
 	png? ( >=media-libs/libpng-1.2:0= )"
 
 DEPEND="${RDEPEND}
-	>=app-text/texi2html-5"
+	>=app-text/texi2html-5
+	X? ( x11-base/xorg-proto )"
 
 S="${WORKDIR}/${PN}"
 

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,12 +9,13 @@ PYTHON_REQ_USE="threads(+)"
 inherit distutils-r1 flag-o-matic
 
 DESCRIPTION="Python Cryptography Toolkit"
-HOMEPAGE="http://www.dlitz.net/software/pycrypto/ https://pypi.python.org/pypi/pycrypto"
+HOMEPAGE="https://www.dlitz.net/software/pycrypto/
+	https://pypi.org/project/pycrypto/"
 SRC_URI="http://ftp.dlitz.net/pub/dlitz/crypto/pycrypto/${P}.tar.gz"
 
 LICENSE="PSF-2 public-domain"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~ppc-aix ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~x86-solaris"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 s390 ~sh sparc x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~x86-solaris"
 IUSE="doc +gmp test"
 
 RDEPEND="gmp? ( dev-libs/gmp:0= )"

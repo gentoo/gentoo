@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=6
 
 MYSPELL_DICT=(
 	"sk_SK/sk_SK.aff"
@@ -21,7 +21,7 @@ inherit myspell-r2
 
 DESCRIPTION="Slovak dictionaries for myspell/hunspell"
 HOMEPAGE="http://www.liberix.cz/doplnky/slovniky/ooo/"
-SRC_URI="${HOMEPAGE}/dict-sk.oxt -> ${P}.zip"
+SRC_URI="http://www.liberix.cz/doplnky/slovniky/ooo/dict-sk.oxt -> ${P}.zip"
 
 LICENSE="GPL-2"
 SLOT="0"

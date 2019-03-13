@@ -1,99 +1,92 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-EGO_PN="golang.org/x/tools/..."
+EAPI=6
 EGO_SRC="golang.org/x/tools"
+EGO_PN="${EGO_SRC}/..."
+
+# vendor the net package due to a circular dependency
+GO_NET_COMMIT="aaf60122140d3fcf75376d319f0554393160eb50"
+EGO_VENDOR=( "golang.org/x/net ${GO_NET_COMMIT} github.com/golang/net" )
 
 if [[ ${PV} = *9999* ]]; then
+	ARCHIVE_URI=""
 	inherit golang-vcs
 else
-	EGIT_COMMIT="6c9aff3"
+	EGIT_COMMIT="7d1dc997617fb662918b6ea95efc19faa87e1cf8"
 	ARCHIVE_URI="https://github.com/golang/tools/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~arm ~x86"
 	inherit golang-vcs-snapshot
 fi
 inherit golang-build
 
 DESCRIPTION="Go Tools"
 HOMEPAGE="https://godoc.org/golang.org/x/tools"
+GO_FAVICON="go-favicon-20181103162401.ico"
 SRC_URI="${ARCHIVE_URI}
-	http://golang.org/favicon.ico -> go-favicon.ico"
+	https://github.com/golang/net/archive/${GO_NET_COMMIT}.tar.gz -> github.com-golang-net-${GO_NET_COMMIT}.tar.gz
+	mirror://gentoo/${GO_FAVICON}
+	https://dev.gentoo.org/~zmedico/distfiles/${GO_FAVICON}"
 LICENSE="BSD"
 SLOT="0/${PVR}"
-IUSE=""
-DEPEND="dev-go/go-net:="
-RDEPEND=""
+
+src_unpack() {
+	golang-vcs_src_unpack
+	mkdir -p "${WORKDIR}/${P}/src/${EGO_SRC}/vendor/golang.org/x/net" || die
+	tar -C "${WORKDIR}/${P}/src/${EGO_SRC}/vendor/golang.org/x/net" -x --strip-components 1 \
+		-f "${DISTDIR}/github.com-golang-net-${GO_NET_COMMIT}.tar.gz" || die
+}
 
 src_prepare() {
-	# disable broken tests
-	sed -e 's:TestWeb(:_\0:' \
-		-i src/${EGO_SRC}/cmd/godoc/godoc_test.go || die
-	sed -e 's:TestVet(:_\0:' \
-		-i src/${EGO_SRC}/cmd/vet/vet_test.go || die
-	sed -e 's:TestImport(:_\0:' \
-		-i src/${EGO_SRC}/go/gcimporter/gcimporter_test.go || die
-	sed -e 's:TestImportStdLib(:_\0:' \
-		-i src/${EGO_SRC}/go/importer/import_test.go || die
-	sed -e 's:TestStdlib(:_\0:' \
+	default
+	# Add favicon to the godoc web interface (bug 551030)
+	cp "${DISTDIR}"/${GO_FAVICON} "src/${EGO_SRC}/godoc/static/favicon.ico" ||
+		die
+	sed -e 's:"example.html",:\0\n\t"favicon.ico",:' \
+		-i src/${EGO_SRC}/godoc/static/gen.go || die
+	sed -e 's:<link type="text/css":<link rel="icon" type="image/png" href="/lib/godoc/favicon.ico">\n\0:' \
+		-i src/${EGO_SRC}/godoc/static/godoc.html || die
+	sed -e 's:TestVeryLongFile(:_\0:' \
+		-i src/${EGO_SRC}/go/internal/gcimporter/bexport_test.go || die
+	sed -e 's:TestLoadSyntaxOK(:_\0:' \
+		-i src/${EGO_SRC}/go/packages/packages_test.go || die
+	sed -e 's:TestCgoOption(:_\0:' \
+		-e 's:TestStdlib(:_\0:' \
 		-i src/${EGO_SRC}/go/loader/stdlib_test.go || die
 	sed -e 's:TestStdlib(:_\0:' \
 		-i src/${EGO_SRC}/go/ssa/stdlib_test.go || die
-	sed -e 's:TestGorootTest(:_\0:' \
-		-e 's:TestFoo(:_\0:' \
-		-e 's:TestTestmainPackage(:_\0:' \
-		-i src/${EGO_SRC}/go/ssa/interp/interp_test.go || die
-	sed -e 's:TestBar(:_\0:' \
-		-e 's:TestFoo(:_\0:' \
-		-i src/${EGO_SRC}/go/ssa/interp/testdata/a_test.go || die
-	sed -e 's:TestCheck(:_\0:' \
-		-i src/${EGO_SRC}/go/types/check_test.go || die
-	sed -e 's:TestStdlib(:_\0:' \
-		-e 's:TestStdFixed(:_\0:' \
-		-e 's:TestStdKen(:_\0:' \
-		-i src/${EGO_SRC}/go/types/stdlib_test.go || die
-	sed -e 's:TestRepoRootForImportPath(:_\0:' \
-		-i src/${EGO_SRC}/go/vcs/vcs_test.go || die
-	sed -e 's:TestStdlib(:_\0:' \
-	-i src/${EGO_SRC}/refactor/lexical/lexical_test.go || die
-
-	# Add favicon to the godoc web interface (bug 551030)
-	cp "${DISTDIR}"/go-favicon.ico "src/${EGO_SRC}/godoc/static/favicon.ico" ||
-		die
-	sed -e 's:"example.html",:\0\n\t"favicon.ico",:' \
-		-i src/${EGO_SRC}/godoc/static/makestatic.go || die
-	sed -e 's:<link type="text/css":<link rel="icon" type="image/png" href="/lib/godoc/favicon.ico">\n\0:' \
-		-i src/${EGO_SRC}/godoc/static/godoc.html || die
+	sed -e 's:TestWebIndex(:_\0:' \
+		-e 's:TestTypeAnalysis(:_\0:' \
+		-i src/${EGO_SRC}/cmd/godoc/godoc_test.go || die
+	sed -e 's:TestImportStdLib(:_\0:' \
+		-i src/${EGO_SRC}/go/internal/gcimporter/gcimporter_test.go || die
+	sed -e 's:TestVeryLongFile(:_\0:' \
+		-i src/${EGO_SRC}/go/internal/gcimporter/bexport_test.go || die
 }
 
 src_compile() {
 	# Generate static.go with favicon included
 	pushd src/golang.org/x/tools/godoc/static >/dev/null || die
-	go run makestatic.go || die
+	GOPATH="${S}" GOBIN="${S}/bin" \
+		go run makestatic.go || die
 	popd >/dev/null
 
-	golang-build_src_compile
+	GOPATH="${S}" GOBIN="${S}/bin" \
+		go install -v -work -x ${EGO_BUILD_FLAGS} "${EGO_PN}" || die
+}
+
+src_test() {
+	GOPATH="${S}" GOBIN="${S}/bin" \
+		go test -v -work -x "${EGO_PN}" || die
 }
 
 src_install() {
-	# Create a writable GOROOT in order to avoid sandbox violations.
-	cp -sR "$(go env GOROOT)" "${T}/goroot" || die
-
-	GOROOT="${T}/goroot" golang-build_src_install
+	rm -rf "${S}/src/${EGO_SRC}/"{.git,vendor} || die
+	golang_install_pkgs
 
 	# bug 558818: install binaries in $GOROOT/bin to avoid file collisions
 	exeinto "$(go env GOROOT)/bin"
-	doexe bin/* "${T}/goroot/bin/godoc"
+	doexe bin/*
 	dodir /usr/bin
 	ln "${ED}$(go env GOROOT)/bin/godoc" "${ED}usr/bin/godoc" || die
-
-	if has_version '<dev-lang/go-1.5'; then
-		exeinto "$(go env GOTOOLDIR)"
-		exeopts -m0755 -p # preserve timestamps for bug 551486
-		doexe "${T}/goroot/pkg/tool/$(go env GOOS)_$(go env GOARCH)/cover"
-		doexe "${T}/goroot/pkg/tool/$(go env GOOS)_$(go env GOARCH)/vet"
-	else
-		rm "${D}"$(go env GOROOT)/bin/{cover,vet} ||
-			die "unable to remove cover and vet"
-	fi
 }

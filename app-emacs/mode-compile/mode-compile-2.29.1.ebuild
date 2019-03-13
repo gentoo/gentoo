@@ -7,7 +7,7 @@ inherit elisp
 
 DESCRIPTION="Smart command for compiling files according to major-mode"
 HOMEPAGE="https://github.com/emacsmirror/mode-compile
-	http://www.emacswiki.org/emacs/ModeCompile"
+	https://www.emacswiki.org/emacs/ModeCompile"
 SRC_URI="https://github.com/emacsmirror/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"

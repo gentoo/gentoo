@@ -7,7 +7,7 @@ inherit elisp
 
 DESCRIPTION="An Emacs mode that reformats IETF RFCs for display"
 HOMEPAGE="http://www.loveshack.ukfsn.org/emacs/
-	http://www.emacswiki.org/emacs/RfcView"
+	https://www.emacswiki.org/emacs/RfcView"
 # taken from http://www.loveshack.ukfsn.org/emacs/${PN}.el
 SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.el.xz"
 

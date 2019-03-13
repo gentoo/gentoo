@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,15 +9,11 @@ DESCRIPTION="Command-line driven interactive plotting program"
 HOMEPAGE="http://www.gnuplot.info/"
 
 if [[ -z ${PV%%*9999} ]]; then
-	inherit cvs
-	ECVS_SERVER="gnuplot.cvs.sourceforge.net:/cvsroot/gnuplot"
-	ECVS_MODULE="gnuplot"
-	ECVS_BRANCH="branch-5-2-stable"
-	ECVS_USER="anonymous"
-	ECVS_CVS_OPTIONS="-dP"
+	inherit git-r3
+	EGIT_REPO_URI="https://git.code.sf.net/p/gnuplot/gnuplot-main"
+	EGIT_BRANCH="branch-5-2-stable"
 	MY_P="${PN}"
-	SRC_URI=""
-	KEYWORDS=""
+	EGIT_CHECKOUT_DIR="${WORKDIR}/${MY_P}"
 else
 	MY_P="${P/_/.}"
 	SRC_URI="mirror://sourceforge/gnuplot/${MY_P}.tar.gz"
@@ -93,10 +89,10 @@ src_prepare() {
 		SVGA console graphics, gnuplot needs to be set up as setuid root.
 		Please note that this is usually considered to be a security hazard.
 		As root, manually "chmod u+s /usr/bin/gnuplot".'
-	use gd && DOC_CONTENTS+='\n\nFor font support in png/jpeg/gif output,
+	use gd && DOC_CONTENTS+="\n\nFor font support in png/jpeg/gif output,
 		you may have to set the GDFONTPATH and GNUPLOT_DEFAULT_GDFONT
 		environment variables. See the FAQ file in /usr/share/doc/${PF}/
-		for more information.'
+		for more information."
 
 	eautoreconf
 
@@ -116,7 +112,7 @@ src_configure() {
 
 	if use wxwidgets; then
 		WX_GTK_VER="3.0"
-		need-wxwidgets unicode
+		setup-wxwidgets
 	fi
 
 	tc-export CC CXX			#453174

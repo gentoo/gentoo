@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # When you add an entry to the top of this file, add your name, the date, and
@@ -17,13 +17,72 @@
 
 #--- END OF EXAMPLES ---
 
+# Georgy Yakovlev <gyakovlev@gentoo.org> (05 March 2019)
+# freeipmi is supported on amd64
+app-admin/conserver -freeipmi
+
+# Thomas Deutschmann <whissi@gentoo.org> (15 Nov 2018)
+# - rdrand plugin is supported on amd64
+net-vpn/strongswan -strongswan_plugins_rdrand
+
+# James Le Cuirot <chewi@gentoo.org> (02 Nov 2018)
+# Vulkan is only available on amd64 at present.
+media-libs/libsdl2 -vulkan
+
+# Thomas Deutschmann <whissi@gentoo.org> (12 Oct 2018)
+# www-client/firefox and mail-client/thunderbird are
+# available on amd64
+app-misc/tracker -firefox-bookmarks -thunderbird
+
+# Michael Palimaka <kensington@gentoo.org> (12 Oct 2018)
+# Unmask arch-specific USE flags available on amd64
+net-analyzer/testssl -bundled-openssl -kerberos
+
+# Thomas Deutschmann <whissi@gentoo.org> (30 Sep 2018)
+# Unmask libheif support where media-libs/libheif is keyworded
+media-gfx/imagemagick -heif
+
+# Ben Kohler <bkohler@gentoo.org> (23 Aug 2018)
+# Unmask iwd support where net-wireless/iwd is keyworded
+net-misc/connman -iwd
+net-misc/networkmanager -iwd
+
+# Thomas Deutschmann <whissi@gentoo.org> (23 Aug 2018)
+# Dependency sys-cluster/ceph is keyworded for amd64
+net-fs/samba -ceph
+
+# Göktürk Yüksek <gokturk@gentoo.org> (6 Jul 2018)
+# Dependency app-crypt/jitterentropy is keyworded for amd64
+sys-apps/rng-tools -jitterentropy
+
+# Rick Farina <zerochaos@gentoo.org> (27 Jun 2018)
+# Catalyst has support for assembling bootloader on this arch
+dev-util/catalyst -system-bootloader
+
+# Ilya Tumaykin <itumaykin+gentoo@gmail.com> (17 Jun 2018)
+# Vulkan support is only available on few selected arches atm.
+# Mask everywhere, unmask where appropriate.
+media-video/mpv -vulkan
+
+# Mikle Kolyada <zlogene@gentoo.org> (02 Jun 2018)
+# Too many untested ruby dependencies
+<dev-ruby/haml-5 test
+
+# Nick Sarnie <sarnex@gentoo.org> (29 Apr 2018)
+# media-libs/vulkan-loader and app-emulation/vkd3d are keyworded on amd64
+app-emulation/wine-any -vkd3d -vulkan
+app-emulation/wine-d3d9 -vkd3d -vulkan
+app-emulation/wine-staging -vkd3d -vulkan
+app-emulation/wine-vanilla -vkd3d -vulkan
+
+# Richard Yao <ryao@gentoo.org> (16 Apr 2018)
+# sys-fs/zfs is keyworded on amd64
+sys-cluster/ceph -zfs
+sys-boot/grub -libzfs
+
 # Amy Liffey <amynka@gentoo.org> (19 Sep 2017)
 # [cuda] is unmasked in this profiles.
 media-libs/opencv -contrib_xfeatures2d
-
-# Brian Evans <grknight@gentoo.org> (21 Jul 2017)
-# app-crypt/argon2 is keyworded on amd64
-dev-lang/php -argon2
 
 # David Seifert <soap@gentoo.org> (20 May 2017)
 # cpyrit-cuda does not support GCC 4.9 or later
@@ -31,7 +90,7 @@ net-wireless/pyrit cuda
 
 # Rick Farina <zerochaos@gentoo.org> (11 May 2017)
 # nexpose and openvas work on amd64
-net-analyzer/metasploit nexpose openvas
+net-analyzer/metasploit -nexpose -openvas
 
 # Thomas Deutschmann <whissi@gentoo.org> (01 Mar 2017)
 # dev-libs/libmaxminddb is keyworded on amd64
@@ -62,7 +121,7 @@ media-libs/mlt vdpau
 
 # Thomas Deutschmann <whissi@gentoo.org> (22 Sep 2016)
 # Enable MQTT support on supported architectures
-app-admin/collectd -collectd_plugins_mqtt
+app-metrics/collectd -collectd_plugins_mqtt
 
 # Thomas Deutschmann <whissi@gentoo.org> (26 Aug 2016)
 # Enable numa support on supported architectures
@@ -106,11 +165,6 @@ sys-apps/systemd -gnuefi
 dev-java/oracle-jdk-bin -javafx -nsplugin
 dev-java/oracle-jre-bin -javafx -nsplugin
 
-# Michael Sterrett <mr_bones_@gentoo.org> (21 Apr 2015)
-# None of the fusionsound deps support multilib currently, maybe later.
-# Hiding the use flag fixes bug #545662 for now.
-media-libs/libsdl2 fusionsound
-
 # Ben de Groot <yngwin@gentoo.org> (15 Mar 2015)
 # media-libs/libbdplus is keyworded on amd64, so unmask the useflag
 media-libs/libbluray -bdplus
@@ -126,10 +180,6 @@ sys-apps/flashrom -atahpt -nic3com -nicnatsemi -nicrealtek -rayer_spi -satamv
 # Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org> (24 Apr 2014)
 # It's only supported on amd64
 dev-db/mariadb -tokudb
-
-# Matt Turner <mattst88@gentoo.org> (07 Mar 2014)
-# media-libs/libomxil-bellagio keyworded on amd64/x86
-media-libs/mesa -openmax
 
 # Samuli Suominen <ssuominen@gentoo.org> (16 Feb 2014)
 # Still considered experimental by upstream:
@@ -148,11 +198,6 @@ dev-libs/boost	-context
 # mupen64plus' 2.0 new dynamic recompiler is supported on x86 and arm
 # only.
 games-emulation/mupen64plus-core new-dynarec
-
-# Jeff Horelick <jdhore@gentoo.org> (1 Sep 2013)
-# Dependency (media-libs/libsidplayfp) only keyworded
-# on x86 and amd64. (masked in base)
->=media-plugins/audacious-plugins-3.4 -sid
 
 # Tim Harder <radhermit@gentoo.org> (13 Aug 2013)
 # dev-lang/luajit keyworded for amd64 (masked in base)
@@ -182,10 +227,6 @@ net-libs/gnutls -dane
 # Ben de Groot <yngwin@gentoo.org> (30 Jul 2012)
 # dependency keyworded here, masked in base
 media-libs/freetype -infinality
-
-# Mike Gilbert <floppym@gentoo.org> (29 Jun 2012)
-# sys-fs/zfs is not available everywhere.
-sys-boot/grub -libzfs
 
 # Alexandre Rostovtsev <tetromino@gentoo.org> (12 Apr 2012)
 # Temporary mask-in-base, unmask-in-arch for dev-python/mako keywording for
@@ -222,10 +263,6 @@ dev-qt/qtwebkit -jit
 # PPS should work on all arches, but only keyworded on amd64/x86
 >=net-misc/ntp-4.2.6_p3-r1 -parse-clocks
 
-# Alexey Shvetsov <alexxy@gentoo.org> (1 Jul 2011)
-# Use mask infiniband for stable corosync
-=sys-cluster/corosync-1.3.0 infiniband
-
 # Tim Harder <radhermit@gentoo.org> (13 Feb 2011)
 # Masked in base, unmask for amd64/x86
 >=media-video/mplayer-1.0_rc4_p20101219 -bluray
@@ -259,9 +296,6 @@ media-libs/imlib2 cpu_flags_x86_mmx
 # unmask USE=bindist on amd64 - also unmasking the other flags that were under a
 # bad comment heading. see bug #246144
 media-video/mplayer -cpudetection
-
-# Serkan Kaba <serkan@gentoo.org> (20 Jul 2008)
-app-text/enchant -zemberek
 
 # assembler-section
 

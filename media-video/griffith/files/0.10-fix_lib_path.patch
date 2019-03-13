@@ -1,7 +1,7 @@
 Index: lib/initialize.py
 ===================================================================
---- lib.orig/initialize.py
-+++ lib/initialize.py
+--- a/lib/initialize.py
++++ b/lib/initialize.py
 @@ -73,7 +73,7 @@ def locations(self, home_dir):
              os.environ['LANG'] = lang
  

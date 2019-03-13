@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -16,7 +16,7 @@ SRC_URI="mirror://sourceforge/${PN}/${MY_P}.zip"
 
 LICENSE="BSD GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ppc64 x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="amd64 ~arm ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 IUSE=""
 
 CDEPEND="
@@ -64,8 +64,8 @@ java_prepare() {
 	cp "${FILESDIR}/sqltool.rc" conf/ || die
 
 	# Missing source file - needed for tests
-	# http://hsqldb.cvs.sourceforge.net/*checkout*/hsqldb/hsqldb-dev/src/org/hsqldb/lib/StringComparator.java?revision=1.1&pathrev=hsqldb_1_8_0_10
-	# https://sourceforge.net/tracker/index.php?func=detail&aid=2008754&group_id=23316&atid=378131
+	# https://sourceforge.net/p/hsqldb/svn/HEAD/tree/base/trunk/src/org/hsqldb/lib/StringComparator.java
+	# https://sourceforge.net/p/hsqldb/bugs/815/
 	cp "${FILESDIR}/StringComparator.java" src/org/hsqldb/lib || die
 	cp "${FILESDIR}/TestBug1191815.java" src/org/hsqldb/test/ || die
 }

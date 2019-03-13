@@ -12,7 +12,7 @@ MY_PN="Flask-Admin"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Simple and extensible admin interface framework for Flask"
-HOMEPAGE="https://pypi.python.org/pypi/Flask-Admin"
+HOMEPAGE="https://pypi.org/project/Flask-Admin/"
 SRC_URI="mirror://pypi/${MY_P:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="BSD"

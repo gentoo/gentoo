@@ -1,0 +1,21 @@
+--- a/Makefile	2017-10-29 08:39:34.209474792 +0200
++++ b/Makefile	2017-10-29 15:11:02.082490459 +0200
+@@ -2,8 +2,7 @@
+ #EXTRAVERSION=-pre1
+ CC = gcc -Wall
+ #OPT = -g -O0
+-OPT = -O3
+-CFLAGS = $(OPT) $(NOIPV6)
++CFLAGS += $(OPT) $(NOIPV6)
+ LIBS = 
+ ifneq ($(NOIPV6),)
+ APPEXTV6=-noipv6
+@@ -53,7 +52,7 @@
+ #	$(MAKE) CC=icc OPT="-w -O3 -parallel -unroll -align -xM -vec_report -par_report2"
+ 
+ $(APP)$(EXTRAVERSION)$(APPEXT): $(APP)$(EXTRAVERSION).c $(LIBS)
+-	$(CC) $(CFLAGS) -o $@ $< $(LIBS)
++	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) -o $@ $< $(LIBS)
+ inet_ntop.o: missing/inet_ntop.c missing/config.h
+ 	$(CC) $(CFLAGS.MISSING) -o $@ -c $<
+ inet_pton.o: missing/inet_pton.c missing/config.h

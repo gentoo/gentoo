@@ -32,10 +32,7 @@ UIRDEPEND="
 	ode? ( dev-games/ode[double-precision] )
 	sdl? ( media-libs/libsdl2[X,sound,joystick,opengl,video,alsa?] )"
 UIDEPEND="
-	x11-proto/xextproto
-	x11-proto/xf86dgaproto
-	x11-proto/xf86vidmodeproto
-	x11-proto/xproto"
+	x11-base/xorg-proto"
 RDEPEND="
 	sys-libs/zlib
 	virtual/jpeg:0
@@ -110,9 +107,4 @@ src_install() {
 
 	insinto "/usr/share/${PN}"
 	doins -r key_0.d0pk server data
-}
-
-pkg_postinst() {
-	elog "If you are using opensource drivers you should consider installing: "
-	elog "    media-libs/libtxc_dxtn"
 }

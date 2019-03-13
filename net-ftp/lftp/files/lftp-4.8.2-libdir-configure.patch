@@ -1,0 +1,18 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -186,7 +186,6 @@
+ esac
+ 
+ if test x$socks_loc != x; then
+-   LDFLAGS="$LDFLAGS -L$socks_loc/lib"
+    CPPFLAGS="$CPPFLAGS -I$socks_loc/include"
+ fi
+ 
+@@ -307,7 +306,6 @@
+ AX_CHECK_ZLIB([
+    AC_SUBST([ZLIB],[-lz])
+    r=""; test "$enable_rpath" = yes -a "$ZLIB_HOME" != /usr && r=" -R${ZLIB_HOME}/lib"
+-   AC_SUBST([ZLIB_LDFLAGS],["-L${ZLIB_HOME}/lib$r"])
+    AC_SUBST([ZLIB_CPPFLAGS],["-I${ZLIB_HOME}/include"])
+ ],[
+    AC_MSG_ERROR([cannot find -lz library, install zlib-devel package])

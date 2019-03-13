@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 inherit distutils-r1
 
 DESCRIPTION="Pretending python is a shell"
-HOMEPAGE="https://pypi.python.org/pypi/whelk"
+HOMEPAGE="https://pypi.org/project/whelk/"
 SRC_URI="https://github.com/seveas/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"

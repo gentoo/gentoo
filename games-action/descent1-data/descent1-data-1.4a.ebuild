@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,7 +7,7 @@ CDROM_OPTIONAL="yes"
 inherit cdrom eutils
 
 # For GOG install
-MY_EXE="setup_descent_2.1.0.8.exe"
+MY_EXE="setup_descent_1.4a_(16596).exe"
 
 DESCRIPTION="Data files for Descent 1"
 HOMEPAGE="http://www.interplay.com/games/descent.php"
@@ -27,8 +27,8 @@ DEPEND="cdinstall? ( app-arch/unzip )
 S="${WORKDIR}"
 
 pkg_nofetch() {
-	elog "You must place a copy of, or symlink to, the GOG setup package here:"
-	elog "${DISTDIR}/${MY_EXE}"
+	elog "You must place a copy of, or symlink to, the GOG setup package in your"
+	elog "distfiles directory."
 	echo
 	elog "If you wish to install from CD-ROM instead, please enable the cdinstall flag."
 }

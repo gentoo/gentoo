@@ -1,0 +1,15 @@
+From: Stefan Hachmann <stefan@hachmann-it.de>
+To: 881536@bugs.debian.org
+Subject: Re: Bug#881536: ffmpeg: Breaks sound in kodi
+
+--- a/xbmc/cores/VideoPlayer/VideoPlayerAudio.cpp
++++ b/xbmc/cores/VideoPlayer/VideoPlayerAudio.cpp
+@@ -486,7 +486,7 @@
+         // guess next pts
+         m_audioClock += audioframe.duration;
+ 
+-        int ret = m_pAudioCodec->Decode(nullptr, 0, DVD_NOPTS_VALUE, DVD_NOPTS_VALUE);
++        int ret = 0;
+         if (ret < 0)
+         {
+           CLog::Log(LOGERROR, "CVideoPlayerAudio::DecodeFrame - Decode Error. Skipping audio packet (%d)", ret);

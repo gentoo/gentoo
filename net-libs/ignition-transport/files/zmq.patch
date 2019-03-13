@@ -1,0 +1,31 @@
+Index: ignition-transport4-4.0.0/src/NodeShared.cc
+===================================================================
+--- ignition-transport4-4.0.0.orig/src/NodeShared.cc
++++ ignition-transport4-4.0.0/src/NodeShared.cc
+@@ -92,7 +92,8 @@ bool userPass(std::string &_user, std::s
+ // Helper to send messages
+ int sendHelper(zmq::socket_t &_pub, const std::string &_data, int _type)
+ {
+-  zmq::message_t msg(_data.data(), _data.size());
++  zmq::message_t msg(_data.size());
++  memcpy(msg.data(), _data.data(), _data.size());
+   return _pub.send(msg, _type);
+ }
+ 
+@@ -278,10 +279,13 @@ bool NodeShared::Publish(
+   {
+     // Create the messages.
+     // Note that we use zero copy for passing the message data (msg2).
+-    zmq::message_t msg0(_topic.data(), _topic.size()),
+-                   msg1(this->myAddress.data(), this->myAddress.size()),
++    zmq::message_t msg0(_topic.size()),
++                   msg1(this->myAddress.size()),
+                    msg2(_data, _dataSize, _ffn, nullptr),
+-                   msg3(_msgType.data(), _msgType.size());
++                   msg3(_msgType.size());
++    memcpy(msg0.data(), _topic.data(), _topic.size());
++    memcpy(msg1.data(), this->myAddress.data(), this->myAddress.size());
++    memcpy(msg3.data(), _msgType.data(), _msgType.size());
+ 
+     // Send the messages
+     std::lock_guard<std::recursive_mutex> lock(this->mutex);

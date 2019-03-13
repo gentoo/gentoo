@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>gyakovlev@gentoo.org</email>
+		<name>Georgy Yakovlev</name>
+	</maintainer>
+	<longdescription lang="en">
+		Greps through binaries from various OSs and architectures, and colors them.
+		Current backends:
+
+			- ELF 32/64, arm, x86, openrisc - all others will parse and color, but relocations won't show properly
+			- Mach 32/64, arm, x86
+			- Unix and BSD archive printer
+			- PE (debug only)
+	</longdescription>
+	<upstream>
+		<bugs-to>https://github.com/m4b/bingrep/issues</bugs-to>
+		<remote-id type="github">m4b/bingrep</remote-id>
+	</upstream>
+</pkgmetadata>

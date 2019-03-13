@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,7 +17,7 @@ case ${PV} in
 	;;
 *)
 	KEYWORDS="~amd64 ~x86"
-	SRC_URI="https://github.com/peak3d/inputstream.adaptive/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/peak3d/inputstream.adaptive/archive/${PV}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/inputstream.adaptive-${PV}"
 	;;
 esac
@@ -27,8 +27,9 @@ SLOT="0"
 IUSE=""
 
 DEPEND="
-	=media-tv/kodi-9999
-	=media-libs/kodi-platform-9999
+	dev-libs/expat
+	~media-tv/kodi-9999
+	~media-libs/kodi-platform-9999
 	=dev-libs/libplatform-2*
 	"
 RDEPEND="

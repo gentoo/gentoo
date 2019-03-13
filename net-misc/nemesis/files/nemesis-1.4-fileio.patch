@@ -1,5 +1,5 @@
---- nemesis-1.4-orig/source/src/nemesis-fileio.c	Fri Oct 31 16:29:36 2003
-+++ nemesis-1.4/source/src/nemesis-fileio.c	Fri May 19 17:31:13 2006
+--- a/src/nemesis-fileio.c
++++ b/src/nemesis-fileio.c
 @@ -63,7 +63,7 @@
          fp = stdin;
          fd = fileno(fp);

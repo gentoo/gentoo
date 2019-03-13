@@ -7,6 +7,7 @@
 # @AUTHOR:
 # Original author: Jim Ramsay
 #   EAPI 6 author: David Seifert
+# @SUPPORTED_EAPIS: 6
 # @BLURB: Provides src_install used by (almost) all gkrellm plugins
 # @DESCRIPTION:
 # - Sets up default dependencies

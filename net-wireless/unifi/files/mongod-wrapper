@@ -1,0 +1,6 @@
+#!/bin/sh
+
+# Remove --nohttpinterface argument, since it does not exist on MongoDB >= 3.6.x anymore
+# See https://community.ubnt.com/t5/UniFi-Routing-Switching/MongoDB-3-6/td-p/2195435
+remove_nohttpinterface_arg=$(echo $* | sed -e 's/--nohttpinterface//')
+/usr/bin/mongod ${remove_nohttpinterface_arg}

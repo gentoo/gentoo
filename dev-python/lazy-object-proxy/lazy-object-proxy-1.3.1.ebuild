@@ -1,16 +1,16 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy )
+PYTHON_COMPAT=( python2_7 python3_{4,5,6,7} pypy )
 
 inherit distutils-r1
 
 DESCRIPTION="A fast and thorough lazy object proxy"
 HOMEPAGE="
 	https://github.com/ionelmc/python-lazy-object-proxy
-	https://pypi.python.org/pypi/lazy-object-proxy
+	https://pypi.org/project/lazy-object-proxy/
 	https://python-lazy-object-proxy.readthedocs.org/"
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 

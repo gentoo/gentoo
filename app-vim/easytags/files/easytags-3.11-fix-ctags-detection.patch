@@ -1,0 +1,54 @@
+From f5746bdfd9942b00c349e53f3f4917ae73bb6797 Mon Sep 17 00:00:00 2001
+From: Mathias Andersson <wraul@dbox.se>
+Date: Thu, 24 Dec 2015 14:24:34 +0100
+Subject: [PATCH] Fix detection of Universal Ctags.
+
+Recently Universal Ctags changed version from 'Development' to '0.0.0'
+which broke the detection.
+---
+ autoload/xolox/easytags.vim | 32 +++++++++++++++++++-------------
+ 1 file changed, 19 insertions(+), 13 deletions(-)
+
+diff --git a/autoload/xolox/easytags.vim b/autoload/xolox/easytags.vim
+index d0dec21..3c85e6a 100644
+--- a/autoload/xolox/easytags.vim
++++ b/autoload/xolox/easytags.vim
+@@ -78,19 +78,25 @@ function! xolox#easytags#check_ctags_compatible(name, min_version) " {{{2
+     call xolox#misc#msg#debug("easytags.vim %s: Command '%s' returned nonzero exit code %i!", g:xolox#easytags#version, a:name, result['exit_code'])
+   else
+     " Extract the version number from the output.
+-    let pattern = '\(Exuberant\|Universal\) Ctags \zs\(\d\+\(\.\d\+\)*\|Development\)'
+-    let g:easytags_ctags_version = matchstr(get(result['stdout'], 0, ''), pattern)
+-    " Deal with development builds.
+-    if g:easytags_ctags_version == 'Development'
+-      call xolox#misc#msg#debug("easytags.vim %s: Assuming development build is compatible ..", g:xolox#easytags#version, a:name)
+-      return 1
+-    endif
+-    " Make sure the version is compatible.
+-    if xolox#misc#version#at_least(a:min_version, g:easytags_ctags_version)
+-      call xolox#misc#msg#debug("easytags.vim %s: Version is compatible! :-)", g:xolox#easytags#version)
+-      return 1
+-    else
+-      call xolox#misc#msg#debug("easytags.vim %s: Version is not compatible! :-(", g:xolox#easytags#version)
++    let pattern = '\(\w\+\) Ctags \(\d\+\(\.\d\+\)*\|Development\)'
++    let match = matchlist(get(result['stdout'], 0, ''), pattern)
++    let g:easytags_ctags_fork = match[1]
++    let g:easytags_ctags_version = match[2]
++    if g:easytags_ctags_fork != '' && g:easytags_ctags_version != ''
++      call xolox#misc#msg#debug("easytags.vim %s: Detected %s Ctags %s", g:xolox#easytags#version, g:easytags_ctags_fork, g:easytags_ctags_version)
++      if g:easytags_ctags_fork == 'Universal'
++        " All versions should be compatible.
++        call xolox#misc#msg#debug("easytags.vim %s: Assuming all versions is compatible ..", g:xolox#easytags#version)
++        return 1
++      elseif g:easytags_ctags_fork == 'Exuberant'
++        " Make sure the version is compatible.
++        if xolox#misc#version#at_least(a:min_version, g:easytags_ctags_version)
++          call xolox#misc#msg#debug("easytags.vim %s: Version is compatible! :-)", g:xolox#easytags#version)
++          return 1
++        else
++          call xolox#misc#msg#debug("easytags.vim %s: Version is not compatible! :-(", g:xolox#easytags#version)
++        endif
++      endif
+     endif
+   endif
+   call xolox#misc#msg#debug("easytags.vim %s: Standard output of command: %s", g:xolox#easytags#version, string(result['stdout']))

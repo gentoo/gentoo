@@ -5,4 +5,8 @@
 		<email>gstreamer@gentoo.org</email>
 		<name>GStreamer package maintainers</name>
 	</maintainer>
+	<use>
+		<flag name="libav">Use bundled ffmpeg to support systems using
+			<pkg>media-video/libav</pkg> globally instead of <pkg>media-video/ffmpeg</pkg></flag>
+	</use>
 </pkgmetadata>

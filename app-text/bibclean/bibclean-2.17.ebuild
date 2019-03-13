@@ -1,9 +1,9 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-inherit toolchain-funcs eutils
+inherit toolchain-funcs
 
 DESCRIPTION="BibTeX bibliography prettyprinter and syntax checker"
 SRC_URI="http://www.math.utah.edu/pub/bibclean/${P}.tar.bz2"
@@ -11,7 +11,7 @@ HOMEPAGE="http://www.math.utah.edu/pub/bibclean/"
 
 # http://packages.debian.org/changelogs/pool/main/b/bibclean/bibclean_2.11.4-5/bibclean.copyright
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 SLOT="0"

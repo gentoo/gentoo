@@ -1,0 +1,17 @@
+# This is a partial list of copyright holders for Gentoo packages.
+# It is opt-in and manually maintained, so it will be neither complete
+# nor necessarily up to date. A more exhaustive list can be obtained
+# by additionally extracting author information from the commit history
+# of the Gentoo CVS and git repositories.
+#
+# Requests to be listed below can be filed at https://bugs.gentoo.org/
+# under the Gentoo Foundation product. To be considered, an entity must
+# have made a legally significant contribution, as determined by the
+# Board of Trustees. As a reference, the following guide can be used:
+# https://www.gnu.org/prep/maintain/html_node/Legally-Significant.html
+#
+# Entries are single lines and contain the entity's name and an optional
+# e-mail address. Keep the list sorted (use "LC_ALL=en_US.utf-8 sort").
+#
+Michał Górny <mgorny@gentoo.org>
+Sony Interactive Entertainment Inc.

@@ -1,0 +1,18 @@
+Fix build with jpeg-9, bug #520886
+
+--- a/jpeg/jpeg.c	2010-06-17 15:40:24.000000000 +0200
++++ b/jpeg/jpeg.c	2018-02-07 23:26:38.050073397 +0100
+@@ -53,6 +53,13 @@
+  */
+ 
+ #include "tkimg.h"
++#ifndef FALSE
++#define FALSE 0
++#endif
++#ifndef TRUE
++#define TRUE 1
++#endif
++#define HAVE_BOOLEAN
+ #include "jpegtcl.h"
+ 
+ static int SetupJPegLibrary(Tcl_Interp *interp);

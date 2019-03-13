@@ -5,8 +5,8 @@ Subject: build system
 respect flags, add LDFLAGS to linker line
 fix install rules
 
---- Makefile
-+++ Makefile
+--- a/Makefile
++++ b/Makefile
 @@ -15,13 +15,15 @@
  #    along with this program; if not, write to the Free Software
  #    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.

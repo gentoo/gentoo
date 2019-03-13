@@ -1,0 +1,31 @@
+http://bugs.gentoo.org/107435
+http://lists.gnu.org/archive/html/automake/2005-09/msg00088.html
+
+2005-09-27  Stepan Kasal  <address@hidden>
+
+	* automake.in (handle_single_transform): Direct suffix rule preserves
+	  the directory prefix, so the generated object name should contain
+	  it, too.
+
+--- a/automake.in	2005-09-17 15:05:39.000000000 +0200
++++ b/automake.in	2005-09-27 17:10:47.000000000 +0200
+@@ -1755,6 +1755,10 @@
+             # This is probably the result of a direct suffix rule.
+             # In this case we just accept the rewrite.
+             $object = "$base$extension";
++            if ($directory ne '')
++            {
++                $object = $directory . '/' . $object;
++            }
+             $linker = '';
+         }
+         else
+@@ -1824,7 +1828,7 @@
+ 
+ 		# For Java, the way we're handling it right now, a
+ 		# `..' component doesn't make sense.
+-                if ($lang->name eq 'java' && $object =~ /(\/|^)\.\.\//)
++                if ($lang && $lang->name eq 'java' && $object =~ /(\/|^)\.\.\//)
+ 		  {
+ 		    err_am "`$full' should not contain a `..' component";
+ 		  }

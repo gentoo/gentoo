@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit toolchain-funcs eutils
+inherit toolchain-funcs
 
 DESCRIPTION="Easily rename files"
 HOMEPAGE="http://rename.sourceforge.net/"
@@ -11,7 +11,7 @@ SRC_URI="http://${PN}/sourceforge.net/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="amd64 hppa ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 
 MY_PATCHES=(
 	"${FILESDIR}"/${P}-rename.patch
@@ -27,7 +27,7 @@ src_prepare() {
 		-e '/^CFLAGS/s:-O3:@CFLAGS@:' \
 		-e '/strip /s:.*::' \
 		Makefile.in || die
-	epatch "${MY_PATCHES[@]}"
+	eapply "${MY_PATCHES[@]}"
 	tc-export CC
 }
 

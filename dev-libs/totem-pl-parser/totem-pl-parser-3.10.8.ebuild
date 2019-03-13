@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -26,6 +26,7 @@ DEPEND="${RDEPEND}
 	!<media-video/totem-2.21
 	dev-libs/gobject-introspection-common
 	>=dev-util/intltool-0.35
+	dev-util/glib-utils
 	>=dev-util/gtk-doc-am-1.14
 	sys-devel/autoconf-archive
 	>=sys-devel/gettext-0.17

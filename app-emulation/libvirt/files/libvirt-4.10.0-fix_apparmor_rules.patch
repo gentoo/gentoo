@@ -1,0 +1,14 @@
+diff --git a/examples/apparmor/usr.lib.libvirt.virt-aa-helper b/examples/apparmor/usr.lib.libvirt.virt-aa-helper
+index de94368..5fbae27 100644
+--- a/examples/apparmor/usr.lib.libvirt.virt-aa-helper
++++ b/examples/apparmor/usr.lib.libvirt.virt-aa-helper
+@@ -39,6 +39,9 @@ profile virt-aa-helper /usr/{lib,lib64}/libvirt/virt-aa-helper {
+   /etc/apparmor.d/libvirt/* r,
+   /etc/apparmor.d/libvirt/libvirt-[0-9a-f]*-[0-9a-f]*-[0-9a-f]*-[0-9a-f]*-[0-9a-f]* rw,
+ 
++  # Gentoo specific path for uefi firmware
++  /usr/share/edk2-ovmf/* r,
++
+   # for backingstore -- allow access to non-hidden files in @{HOME} as well
+   # as storage pools
+   audit deny @{HOME}/.* mrwkl,

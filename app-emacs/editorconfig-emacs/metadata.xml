@@ -7,4 +7,9 @@
 	<maintainer type="person">
 		<email>zmedico@gentoo.org</email>
 	</maintainer>
+	<maintainer type="project">
+		<email>gnu-emacs@gentoo.org</email>
+		<name>Gentoo GNU Emacs project</name>
+	</maintainer>
+	<stabilize-allarches/>
 </pkgmetadata>

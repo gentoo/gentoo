@@ -1,0 +1,33 @@
+From a074a5462ab9749ad4aaca52e0202602897660aa Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Jo=C3=A3o=20Paulo=20Rechi=20Vita?= <jprvita@endlessm.com>
+Date: Thu, 1 Nov 2018 14:45:28 -0700
+Subject: [PATCH] daemon: Make comment more succinct
+
+This will help make it more clear when adding an extra state on the
+following commit. It also makes the language consistent between the
+different lines. There are no changes on the meaning of these lines nor
+any functional changes on this commit.
+---
+ src/up-daemon.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/up-daemon.c b/src/up-daemon.c
+index 1a5dddc..95fff6b 100644
+--- a/src/up-daemon.c
++++ b/src/up-daemon.c
+@@ -209,9 +209,9 @@ up_daemon_update_display_battery (UpDaemon *daemon)
+ 		    power_supply == FALSE)
+ 			continue;
+ 
+-		/* If one battery is charging, then the composite is charging
+-		 * If all batteries are discharging, then the composite is discharging
+-		 * If all batteries are fully charged, then they're all fully charged
++		/* If one battery is charging, the composite is charging
++		 * If all batteries are discharging, the composite is discharging
++		 * If all batteries are fully charged, the composite is fully charged
+ 		 * Everything else is unknown */
+ 		if (state == UP_DEVICE_STATE_CHARGING)
+ 			state_total = UP_DEVICE_STATE_CHARGING;
+-- 
+2.18.1
+

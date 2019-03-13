@@ -1,12 +1,12 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 inherit libtool
 
 DESCRIPTION="lib that implements the client side of the SMTP protocol"
-HOMEPAGE="http://www.stafford.uklinux.net/libesmtp/"
-SRC_URI="http://www.stafford.uklinux.net/${PN}/${P}.tar.bz2"
+HOMEPAGE="http://brianstafford.info/libesmtp/"
+SRC_URI="http://brianstafford.info/${PN}/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1 GPL-2"
 SLOT="0"

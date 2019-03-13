@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=6
 
 MYSPELL_DICT=(
 	"af_ZA.aff"
@@ -18,7 +18,7 @@ MYSPELL_THES=(
 inherit myspell-r2
 
 DESCRIPTION="Afrikaans dictionaries for myspell/hunspell"
-HOMEPAGE="http://extensions.services.openoffice.org/project/dict_af"
+HOMEPAGE="https://extensions.services.openoffice.org/project/dict_af"
 SRC_URI="mirror://sourceforge/aoo-extensions/1109/0/dict-af.oxt"
 
 LICENSE="LGPL-3"

@@ -1,15 +1,15 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=2
+EAPI=7
 
 DESCRIPTION="A collection of FluxBox themes from FluxMod"
-HOMEPAGE="http://tenr.de/styles/"
+HOMEPAGE="https://tenr.de/styles/"
 SRC_URI="mirror://gentoo/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~arm alpha amd64 hppa ia64 ~mips ppc ppc64 sparc x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 ~arm hppa ia64 ~mips ppc ppc64 sparc x86 ~x86-fbsd"
 IUSE=""
 
 RDEPEND=""
@@ -18,16 +18,18 @@ DEPEND=">=sys-apps/sed-4"
 src_prepare() {
 	# comment out every rootcommand
 	find . -name '*.cfg' -exec \
-		sed -i "{}" -e 's-^\(rootcommand\)-!!! \1-i' \;
+		sed -i "{}" -e 's-^\(rootcommand\)-!!! \1-i' \; || die "sed failed"
 	# weird tarball...
-	find . -exec chmod a+r '{}' \;
+	find . -exec chmod a+r '{}' \; || die "chmod on tarball failed"
+
+	eapply_user
 }
 
 src_install() {
 	insinto /usr/share/fluxbox/fluxmod/styles
-	doins -r * || die
+	doins -r *
 	insinto /usr/share/fluxbox/menu.d/styles
-	doins "${FILESDIR}"/styles-menu-fluxmod || die
+	doins "${FILESDIR}"/styles-menu-fluxmod
 }
 
 pkg_postinst() {

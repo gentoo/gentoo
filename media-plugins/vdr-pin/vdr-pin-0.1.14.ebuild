@@ -1,14 +1,14 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=7
 
 inherit vdr-plugin-2
 
 VERSION="1379" # every bump, new version
 
 DESCRIPTION="VDR plugin: enable/disable parentalrating in records"
-HOMEPAGE="http://projects.vdr-developer.org/projects/plg-${VDRPLUGIN}"
+HOMEPAGE="https://projects.vdr-developer.org/projects/plg-pin"
 SRC_URI="mirror://vdr-developerorg/${VERSION}/${P}.tgz"
 KEYWORDS="~amd64 ~x86"
 
@@ -23,6 +23,11 @@ src_prepare() {
 	vdr-plugin-2_src_prepare
 
 	sed -i "s:INCLUDES += -I\$(VDRINCDIR):INCLUDES += -I\$(VDRDIR)/include:" Makefile
+
+	if has_version ">=media-video/vdr-2.1.2"; then
+		sed -e "s#VideoDirectory#cVideoDirectory::Name\(\)#" \
+			-i pin.c
+	fi
 }
 
 src_install() {

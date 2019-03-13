@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: ghc-package.eclass
@@ -10,20 +10,26 @@
 # @DESCRIPTION:
 # Helper eclass to handle ghc installation/upgrade/deinstallation process.
 
-inherit multiprocessing versionator
+inherit multiprocessing
+
+# Maintain version-testing compatibility with ebuilds not using EAPI 7.
+case "${EAPI:-0}" in
+	4|5|6) inherit eapi7-ver ;;
+	*) ;;
+esac
 
 # @FUNCTION: ghc-getghc
 # @DESCRIPTION:
 # returns the name of the ghc executable
 ghc-getghc() {
-	type -P ghc
+	type -P ${HC:-ghc}
 }
 
 # @FUNCTION: ghc-getghcpkg
 # @DESCRIPTION:
 # Internal function determines returns the name of the ghc-pkg executable
 ghc-getghcpkg() {
-	type -P ghc-pkg
+	type -P ${HC_PKG:-ghc-pkg}
 }
 
 # @FUNCTION: ghc-getghcpkgbin
@@ -35,7 +41,7 @@ ghc-getghcpkg() {
 # because for some reason the global package file
 # must be specified
 ghc-getghcpkgbin() {
-	if version_is_at_least "7.9.20141222" "$(ghc-version)"; then
+	if ver_test "$(ghc-version)" -ge "7.9.20141222"; then
 		# ghc-7.10 stopped supporting single-file database
 		local empty_db="${T}/empty.conf.d" ghc_pkg="$(ghc-libdir)/bin/ghc-pkg"
 		if [[ ! -d ${empty_db} ]]; then
@@ -43,7 +49,7 @@ ghc-getghcpkgbin() {
 		fi
 		echo "$(ghc-libdir)/bin/ghc-pkg" "--global-package-db=${empty_db}"
 
-	elif version_is_at_least "7.7.20121101" "$(ghc-version)"; then
+	elif ver_test "$(ghc-version)" -ge "7.7.20121101"; then
 		# the ghc-pkg executable changed name in ghc 6.10, as it no longer needs
 		# the wrapper script with the static flags
 		# was moved to bin/ subtree by:
@@ -51,7 +57,7 @@ ghc-getghcpkgbin() {
 		echo '[]' > "${T}/empty.conf"
 		echo "$(ghc-libdir)/bin/ghc-pkg" "--global-package-db=${T}/empty.conf"
 
-	elif version_is_at_least "7.5.20120516" "$(ghc-version)"; then
+	elif ver_test "$(ghc-version)" -ge "7.5.20120516"; then
 		echo '[]' > "${T}/empty.conf"
 		echo "$(ghc-libdir)/ghc-pkg" "--global-package-db=${T}/empty.conf"
 
@@ -94,7 +100,7 @@ ghc-pm-version() {
 # @DESCRIPTION:
 # return version of the Cabal library bundled with ghc
 ghc-cabal-version() {
-	if version_is_at_least "7.9.20141222" "$(ghc-version)"; then
+	if ver_test "$(ghc-version)" -ge "7.9.20141222"; then
 		# outputs in format: 'version: 1.18.1.5'
 		set -- `$(ghc-getghcpkg) --package-db=$(ghc-libdir)/package.conf.d.initial field Cabal version`
 		echo "$2"
@@ -256,13 +262,14 @@ check-for-collisions() {
 # moves the local (package-specific) package configuration
 # file to its final destination
 ghc-install-pkg() {
-	local pkg_config_file=$1
 	local localpkgconf="${T}/$(ghc-localpkgconfd)"
 	local pkg_path pkg pkg_db="${D}/$(ghc-package-db)" hint_db="${D}/$(ghc-confdir)"
 
 	$(ghc-getghcpkgbin) init "${localpkgconf}" || die "Failed to initialize empty local db"
-	$(ghc-getghcpkgbin) -f "${localpkgconf}" update - --force \
-		< "${pkg_config_file}" || die "failed to register ${pkg}"
+	for pkg_config_file in "$@"; do
+		$(ghc-getghcpkgbin) -f "${localpkgconf}" update - --force \
+				< "${pkg_config_file}" || die "failed to register ${pkg}"
+	done
 
 	check-for-collisions "${localpkgconf}"
 
@@ -273,8 +280,11 @@ ghc-install-pkg() {
 	done
 
 	mkdir -p "${hint_db}" || die
-	cp "${pkg_config_file}" "${hint_db}/${PF}.conf" || die
-	chmod 0644 "${hint_db}/${PF}.conf" || die
+	for pkg_config_file in "$@"; do
+		local pkg_name="gentoo-${CATEGORY}-${PF}-"$(basename "${pkg_config_file}")
+		cp "${pkg_config_file}" "${hint_db}/${pkg_name}" || die
+		chmod 0644 "${hint_db}/${pkg_name}" || die
+	done
 }
 
 # @FUNCTION: ghc-recache-db

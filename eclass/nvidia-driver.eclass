@@ -34,7 +34,7 @@ output of nvidia-bug-report.sh included.
 "
 
 # the data below is derived from
-# http://us.download.nvidia.com/XFree86/Linux-x86_64/319.12/README/supportedchips.html
+# http://us.download.nvidia.com/XFree86/Linux-x86_64/396.18/README/supportedchips.html
 
 drv_71xx="
 	0020 0028 0029 002c 002d 00a0 0100 0101 0103 0150 0151 0152 0153
@@ -86,11 +86,23 @@ drv_340x="
 	0caf 0cb0 0cb1 0cbc 10c0 10c3 10c5 10d8
 "
 
+drv_390x="
+	06c0 06c4 06ca 06cd 06d1 06d2 06d8 06d9 06da 06dc 06dd 06de 06df 0dc0 0dc4
+	0dc5 0dc6 0dcd 0dce 0dd1 0dd2 0dd3 0dd6 0dd8 0dda 0de0 0de1 0de2 0de3 0de4
+	0de5 0de7 0de8 0de9 0dea 0deb 0dec 0ded 0dee 0def 0df0 0df1 0df2 0df3 0df4
+	0df5 0df6 0df7 0df8 0df9 0dfa 0dfc 0e22 0e23 0e24 0e30 0e31 0e3a 0e3b 0f00
+	0f01 0f02 0f03 1040 1042 1048 1049 104a 104b 104c 1050 1051 1052 1054 1055
+	1056 1057 1058 1059 105a 105b 107c 107d 1080 1081 1082 1084 1086 1087 1088
+	1089 108b 1091 1094 1096 109a 109b 1140 1200 1201 1203 1205 1206 1207 1208
+	1210 1211 1212 1213 1241 1243 1244 1245 1246 1247 1248 1249 124b 124d 1251
+"
+
 mask_71xx=">=x11-drivers/nvidia-drivers-72.0.0"
 mask_96xx=">=x11-drivers/nvidia-drivers-97.0.0"
 mask_173x=">=x11-drivers/nvidia-drivers-177.0.0"
 mask_304x=">=x11-drivers/nvidia-drivers-305.0.0"
 mask_340x=">=x11-drivers/nvidia-drivers-341.0.0"
+mask_390x=">=x11-drivers/nvidia-drivers-391.0.0"
 
 # @FUNCTION: nvidia-driver-get-card
 # @DESCRIPTION:
@@ -98,7 +110,7 @@ mask_340x=">=x11-drivers/nvidia-drivers-341.0.0"
 nvidia-driver-get-card() {
 	local NVIDIA_CARD=$(
 		[ -x /usr/sbin/lspci ] && /usr/sbin/lspci -d 10de: -n \
-			| awk -F'[: ]' '/ 0300: /{print $6}'
+			| awk -F'[: ]' '/ 03[0-9][0-9]: /{print $6}'
 	)
 
 	if [ -n "${NVIDIA_CARD}" ]; then
@@ -144,6 +156,13 @@ nvidia-driver-get-mask() {
 		for drv in ${drv_340x}; do
 			if [ "x${card}" = "x${drv}" ]; then
 				echo "${mask_340x}"
+				return 0
+			fi
+		done
+
+		for drv in ${drv_390x}; do
+			if [ "x${card}" = "x${drv}" ]; then
+				echo "${mask_390x}"
 				return 0
 			fi
 		done

@@ -6,7 +6,7 @@ inherit xfconf
 
 DESCRIPTION="A system load plug-in for the Xfce panel"
 HOMEPAGE="https://goodies.xfce.org/projects/panel-plugins/xfce4-cpugraph-plugin"
-SRC_URI="mirror://xfce/src/panel-plugins/${PN}/${PV%.*}/${P}.tar.bz2"
+SRC_URI="https://archive.xfce.org/src/panel-plugins/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="BSD-2 GPL-2"
 SLOT="0"

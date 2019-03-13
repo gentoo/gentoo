@@ -1,0 +1,14 @@
+diff -ur odt2txt-0.4/Makefile odt2txt-0.4/Makefile
+--- odt2txt-0.4/Makefile	2008-06-23 23:32:28 +0400
++++ odt2txt-0.4/Makefile	2010-05-24 15:39:16 +0400
+@@ -56,6 +56,9 @@
+ 	CFLAGS += -I$(ZLIB_DIR)
+ 	LIBS = $(ZLIB_DIR)/libz.a
+ endif
++ifeq ($(UNAME_S),Darwin)
++	LIBS += -liconv
++endif
+ ifeq ($(UNAME_O),Cygwin)
+ 	CFLAGS += -DICONV_CHAR="const char"
+ 	LIBS += -liconv
+

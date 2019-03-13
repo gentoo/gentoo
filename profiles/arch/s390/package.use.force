@@ -1,10 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-# Mike Frysinger <vapier@gentoo.org> (16 Mar 2015)
-# Needs dev-lang/luajit tested #499974
-dev-libs/efl oldlua
-
 # Mike Frysinger <vapier@gentoo.org> (09 Dec 2016)
 # The ABI changes when the flag is disabled.  Force it for now.
 # https://gmplib.org/list-archives/gmp-bugs/2016-December/004039.html

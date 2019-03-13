@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>gyakovlev@gentoo.org</email>
+		<name>Georgy Yakovlev</name>
+	</maintainer>
+	<longdescription lang="en">
+		This package provides a large size 512 glyph console font. It is
+		especially designed for prolonged word processing in multiple
+		languages.
+
+		Because this font contains over 256 glyphs the hardware bold text
+		property of your console will be turned off.
+
+		Characters Available: Latin, Greek, Cyrillic, Pinyin
+	</longdescription>
+	<upstream>
+		<remote-id type="github">talamus/solarize-12x29-psf</remote-id>
+	</upstream>
+</pkgmetadata>

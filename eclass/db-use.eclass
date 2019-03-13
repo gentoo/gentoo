@@ -1,10 +1,14 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # This is a common location for functions that aid the use of sys-libs/db
 #
 # Bugs: maintainer-needed@gentoo.org
 
-inherit versionator multilib
+# multilib is used for get_libname in all EAPI
+case "${EAPI:-0}" in
+	0|1|2|3|4|5|6) inherit eapi7-ver multilib ;;
+	*) inherit multilib ;;
+esac
 
 #Convert a version to a db slot
 db_ver_to_slot() {
@@ -38,7 +42,7 @@ db_findver() {
 	fi
 
 	PKG="$(best_version $1)"
-	VER="$(get_version_component_range 1-2 "${PKG/*db-/}")"
+	VER="$(ver_cut 1-2 "${PKG/*db-/}")"
 	if [ -d "${EPREFIX}"/usr/include/db$(db_ver_to_slot "$VER") ]; then
 		#einfo "Found db version ${VER}" >&2
 		echo -n "$VER"

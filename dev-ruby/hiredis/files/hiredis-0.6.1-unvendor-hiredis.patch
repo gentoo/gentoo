@@ -1,0 +1,20 @@
+--- a/ext/hiredis_ext/extconf.rb	2015-12-29 15:53:00.000000000 +0100
++++ b/ext/hiredis_ext/extconf.rb	2018-04-21 07:40:15.973747727 +0200
+@@ -27,15 +27,8 @@
+ end
+ 
+ if build_hiredis
+-  # Make sure hiredis is built...
+-  Dir.chdir(hiredis_dir) do
+-    success = system("#{make_program} static")
+-    raise "Building hiredis failed" if !success
+-  end
+-
+-  # Statically link to hiredis (mkmf can't do this for us)
+-  $CFLAGS << " -I#{hiredis_dir}"
+-  $LDFLAGS << " #{hiredis_dir}/libhiredis.a"
++  $CFLAGS << ' ' << `pkg-config hiredis --cflags-only-I`.chomp
++  $LDFLAGS << ' -lhiredis'
+ 
+   have_func("rb_thread_fd_select")
+   create_makefile('hiredis/ext/hiredis_ext')

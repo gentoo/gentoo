@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
@@ -28,9 +28,7 @@ DEPEND="
 	sys-devel/flex
 	virtual/pkgconfig
 	virtual/yacc
-	x11-proto/inputproto
-	x11-proto/xextproto
-	x11-proto/xproto
+	x11-base/xorg-proto
 "
 
 DOCS=( AUTHORS ChangeLog NEWS README TODO )

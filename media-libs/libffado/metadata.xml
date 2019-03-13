@@ -14,7 +14,6 @@
 		<name>Gentoo ProAudio Project</name>
 	</maintainer>
 	<use>
-		<flag name="qt4">Install qt4-based mixer frontend</flag>
 		<flag name="test-programs">Install standalone test programs</flag>
 	</use>
 </pkgmetadata>

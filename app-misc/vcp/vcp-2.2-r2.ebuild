@@ -11,21 +11,19 @@ SRC_URI="http://members.iinet.net.au/~lynx/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~sparc ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ppc ~sparc x86"
 
 DEPEND="sys-libs/ncurses:0="
 RDEPEND="${DEPEND}"
 
 DOCS=( Changelog README INSTALL )
-
-src_prepare() {
-	default
-	sed -i Makefile -e '/-o vcp/s|$(CFLAGS)|& $(LDFLAGS)|' || die "sed Makefile"
-}
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.2-tinfo.patch
+)
 
 src_compile() {
 	filter-lfs-flags
-	emake CC="$(tc-getCC)"
+	emake CC="$(tc-getCC)" PKG_CONFIG="$(tc-getPKG_CONFIG)"
 }
 
 src_install() {

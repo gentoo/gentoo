@@ -1,9 +1,8 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
 JAVA_PKG_IUSE="test doc source"
-WANT_ANT_TASKS="ant-nodeps"
 
 inherit java-pkg-2 java-ant-2 toolchain-funcs flag-o-matic vcs-snapshot
 
@@ -25,8 +24,8 @@ DEPEND="${CDEPEND}
 	virtual/pkgconfig
 	test? (
 		dev-java/junit:0
+		dev-java/ant-core:0
 		dev-java/ant-junit:0
-		dev-java/ant-trax:0
 	)"
 
 JAVA_ANT_REWRITE_CLASSPATH="true"
@@ -59,7 +58,7 @@ java_prepare() {
 
 EANT_EXTRA_ARGS="-Ddynlink.native=true"
 
-EANT_TEST_ANT_TASKS="ant-junit ant-nodeps ant-trax"
+EANT_TEST_ANT_TASKS="ant-junit ant-core"
 src_test() {
 	local sysprops=""
 

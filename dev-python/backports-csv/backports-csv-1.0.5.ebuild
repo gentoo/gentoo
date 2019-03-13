@@ -11,7 +11,7 @@ MY_PN=${PN/-/.}
 MY_P=${MY_PN}-${PV}
 
 DESCRIPTION="Backport of Python 3's 'csv' module"
-HOMEPAGE="https://github.com/ryanhiebert/backports.csv https://pypi.python.org/pypi/backports.csv/"
+HOMEPAGE="https://github.com/ryanhiebert/backports.csv https://pypi.org/project/backports.csv/"
 SRC_URI="mirror://pypi/${PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="PSF-2"

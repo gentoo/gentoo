@@ -1,5 +1,5 @@
---- enemies.h
-+++ enemies.h
+--- a/enemies.h
++++ b/enemies.h
 @@ -70,9 +70,9 @@
  extern const enemy_kind bomb2;
  extern const enemy_kind bombdeto;
@@ -21,8 +21,8 @@
  }
  
  
---- enemy.cpp
-+++ enemy.cpp
+--- a/enemy.cpp
++++ b/enemy.cpp
 @@ -713,7 +713,7 @@
  
  void _enemy::kill_cannon()

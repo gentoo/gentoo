@@ -1,0 +1,16 @@
+--- a/configure.ac	2018-04-30 19:03:56.000000000 +0200
++++ a/configure.ac.new	2018-05-22 12:23:30.371174341 +0200
+@@ -1946,11 +1946,11 @@
+   MAGICK_LIBS=
+ 
+   PKG_CHECK_EXISTS([$magick++], [
+-    dnl Make sure we only get -I, -L, and -l flags.
++    dnl Make sure we only get -I, -D, -L, and -l flags.
+     dnl Some Graphics/ImageMagick++ dnl packages add extra flags that are
+     dnl useful when building Graphics/ImageMagick++ extentions.  These extra
+     dnl flags break the Octave build.
+-    MAGICK_CPPFLAGS="$($PKG_CONFIG --cflags-only-I $magick++ | $SED -e 's/^ *$//')"
++    MAGICK_CPPFLAGS=`$PKG_CONFIG --cflags $magick++ | sed -e 's/\(-@<:@DI@:>@@<:@^ \t@:>@*\)\|\(-@<:@^ \t@:>@*\)/\1/g'`
+     MAGICK_LDFLAGS="$($PKG_CONFIG --libs-only-L $magick++ | $SED -e 's/^ *$//')"
+     MAGICK_LIBS="$($PKG_CONFIG --libs-only-l $magick++ | $SED -e 's/^ *$//')"
+ 

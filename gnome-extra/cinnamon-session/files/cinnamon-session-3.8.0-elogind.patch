@@ -1,0 +1,26 @@
+From e9857299d098d6e62d866fa738cf53197e45c8e3 Mon Sep 17 00:00:00 2001
+From: Kristian Fiskerstrand <kf@sumptuouscapital.com>
+Date: Mon, 9 Jul 2018 13:26:51 +0200
+Subject: [PATCH] ELOGIND also needs this code that is wrapped in LOGIND
+ condtional
+
+---
+ cinnamon-session/csm-systemd.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/cinnamon-session/csm-systemd.c b/cinnamon-session/csm-systemd.c
+index dc2aa2e..039abd9 100644
+--- a/cinnamon-session/csm-systemd.c
++++ b/cinnamon-session/csm-systemd.c
+@@ -23,7 +23,7 @@
+ #include "config.h"
+ #include "csm-systemd.h"
+ 
+-#ifdef HAVE_LOGIND
++#if defined(HAVE_LOGIND) || defined(HAVE_ELOGIND)
+ 
+ #include <errno.h>
+ #include <string.h>
+-- 
+2.16.4
+

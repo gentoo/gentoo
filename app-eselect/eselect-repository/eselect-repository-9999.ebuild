@@ -4,7 +4,7 @@
 EAPI=6
 
 EGIT_REPO_URI="https://github.com/mgorny/eselect-repository.git"
-PYTHON_COMPAT=( python{3_4,3_5,3_6} )
+PYTHON_COMPAT=( python{3_4,3_5,3_6,3_7} )
 inherit git-r3 python-single-r1
 
 DESCRIPTION="Manage repos.conf via eselect"
@@ -15,6 +15,7 @@ LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS=""
 IUSE=""
+REQUIRED_USE=${PYTHON_REQUIRED_USE}
 
 RDEPEND="${PYTHON_DEPS}
 	app-admin/eselect

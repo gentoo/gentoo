@@ -1,4 +1,4 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="2"
@@ -15,7 +15,7 @@ IUSE="examples"
 
 RDEPEND="virtual/latex-base"
 DEPEND="${RDEPEND}
-	|| ( >=media-fonts/culmus-0.110[fancy] <media-fonts/culmus-0.110 )
+	>=media-fonts/culmus-0.110[fancy]
 	app-text/t1utils"
 
 src_compile() {

@@ -1,0 +1,358 @@
+description: fix newlines
+Index: amphetamine-0.8.10/src/AmpHead.hpp
+===================================================================
+--- amphetamine-0.8.10.orig/src/AmpHead.hpp	2002-03-25 11:38:15.000000000 +0100
++++ amphetamine-0.8.10/src/AmpHead.hpp	2006-05-15 19:08:52.000000000 +0200
+@@ -185,4 +185,4 @@
+ 
+ #define MSG(message) if (logFile) fprintf(logFile, message); fflush(logFile)
+ 
+-#endif
+\ No newline at end of file
++#endif
+Index: amphetamine-0.8.10/src/Appl.cpp
+===================================================================
+--- amphetamine-0.8.10.orig/src/Appl.cpp	2002-03-25 12:47:49.000000000 +0100
++++ amphetamine-0.8.10/src/Appl.cpp	2006-05-15 19:08:52.000000000 +0200
+@@ -404,4 +404,4 @@
+ 	if (preRenderQueue == remove) bulletList = bulletList->nextBullet;
+ 	if (remove->nextBullet) remove->nextBullet->prevBullet = remove->prevBullet;
+ 	if (remove->prevBullet) remove->prevBullet->nextBullet = remove->nextBullet;
+-}*/
+\ No newline at end of file
++}*/
+Index: amphetamine-0.8.10/src/Appl.hpp
+===================================================================
+--- amphetamine-0.8.10.orig/src/Appl.hpp	2002-03-24 09:49:09.000000000 +0100
++++ amphetamine-0.8.10/src/Appl.hpp	2006-05-15 19:08:52.000000000 +0200
+@@ -102,4 +102,4 @@
+ 
+ };
+ 
+-#endif
+\ No newline at end of file
++#endif
+Index: amphetamine-0.8.10/src/Clut.hpp
+===================================================================
+--- amphetamine-0.8.10.orig/src/Clut.hpp	2002-03-24 09:49:09.000000000 +0100
++++ amphetamine-0.8.10/src/Clut.hpp	2006-05-15 19:08:52.000000000 +0200
+@@ -84,4 +84,4 @@
+ 
+ void	SwapBlackWhite(Graphic_file *gf);
+ 
+-#endif
+\ No newline at end of file
++#endif
+Index: amphetamine-0.8.10/src/ConstVal.cpp
+===================================================================
+--- amphetamine-0.8.10.orig/src/ConstVal.cpp	2002-03-24 09:49:09.000000000 +0100
++++ amphetamine-0.8.10/src/ConstVal.cpp	2006-05-15 19:08:52.000000000 +0200
+@@ -271,4 +271,5 @@
+ void	GetStringConstant(FILE *f, char *constName, char *buffer)
+ {
+ 	GetValue(f, constName, buffer);
+-}
+\ No newline at end of file
++}
++
+Index: amphetamine-0.8.10/src/ConstVal.hpp
+===================================================================
+--- amphetamine-0.8.10.orig/src/ConstVal.hpp	2002-03-24 09:49:09.000000000 +0100
++++ amphetamine-0.8.10/src/ConstVal.hpp	2006-05-15 19:08:52.000000000 +0200
+@@ -160,4 +160,4 @@
+ 	short	disableShapeModes;
+ };
+ 
+-#endif
+\ No newline at end of file
++#endif
+Index: amphetamine-0.8.10/src/Creeper.hpp
+===================================================================
+--- amphetamine-0.8.10.orig/src/Creeper.hpp	2002-03-24 09:49:09.000000000 +0100
++++ amphetamine-0.8.10/src/Creeper.hpp	2006-05-15 19:08:52.000000000 +0200
+@@ -4,4 +4,4 @@
+ #include "Monster.hpp"
+ 
+ 
+-#endif
+\ No newline at end of file
++#endif
+Index: amphetamine-0.8.10/src/Element.cpp
+===================================================================
+--- amphetamine-0.8.10.orig/src/Element.cpp	2002-03-24 09:49:09.000000000 +0100
++++ amphetamine-0.8.10/src/Element.cpp	2006-05-15 19:08:52.000000000 +0200
+@@ -373,4 +373,4 @@
+ 	CElement::Read(f);
+ 
+ 	OnAllocate();
+-}
+\ No newline at end of file
++}
+Index: amphetamine-0.8.10/src/File.cpp
+===================================================================
+--- amphetamine-0.8.10.orig/src/File.cpp	2002-03-24 09:49:09.000000000 +0100
++++ amphetamine-0.8.10/src/File.cpp	2006-05-15 19:08:52.000000000 +0200
+@@ -26,4 +26,4 @@
+ long	CFile::ReadData(void *data, long size)
+ {
+ 	return fread(data, size, 1, fileRef);
+-}
+\ No newline at end of file
++}
+Index: amphetamine-0.8.10/src/Graphfil.hpp
+===================================================================
+--- amphetamine-0.8.10.orig/src/Graphfil.hpp	2002-03-24 09:49:09.000000000 +0100
++++ amphetamine-0.8.10/src/Graphfil.hpp	2006-05-15 19:08:52.000000000 +0200
+@@ -54,4 +54,4 @@
+ Graphic_file *LoadGIF(FILE *fp, char *fname );
+ Graphic_file *LoadPICTR(FILE *fp, char *fname );
+ 
+-#endif
+\ No newline at end of file
++#endif
+Index: amphetamine-0.8.10/src/Gui.cpp
+===================================================================
+--- amphetamine-0.8.10.orig/src/Gui.cpp	2002-03-24 09:49:09.000000000 +0100
++++ amphetamine-0.8.10/src/Gui.cpp	2006-05-15 19:08:52.000000000 +0200
+@@ -796,4 +796,5 @@
+ 	fclose(f);
+ }
+ 
+-	
+\ No newline at end of file
++	
++
+Index: amphetamine-0.8.10/src/Gui.hpp
+===================================================================
+--- amphetamine-0.8.10.orig/src/Gui.hpp	2002-03-24 09:49:09.000000000 +0100
++++ amphetamine-0.8.10/src/Gui.hpp	2006-05-15 19:08:52.000000000 +0200
+@@ -183,4 +183,4 @@
+ 	void	DisplayInfotext(short num);
+ };
+ 
+-#endif
+\ No newline at end of file
++#endif
+Index: amphetamine-0.8.10/src/Item.cpp
+===================================================================
+--- amphetamine-0.8.10.orig/src/Item.cpp	2002-03-24 09:49:09.000000000 +0100
++++ amphetamine-0.8.10/src/Item.cpp	2006-05-15 19:08:52.000000000 +0200
+@@ -309,4 +309,4 @@
+ 
+ 	READDATA(pickedUp);
+ 	READDATA(type);
+-}
+\ No newline at end of file
++}
+Index: amphetamine-0.8.10/src/Item.hpp
+===================================================================
+--- amphetamine-0.8.10.orig/src/Item.hpp	2002-03-24 11:10:24.000000000 +0100
++++ amphetamine-0.8.10/src/Item.hpp	2006-05-15 19:08:52.000000000 +0200
+@@ -84,4 +84,4 @@
+ 	void	Read(FILE *f);
+ };
+ 
+-#endif
+\ No newline at end of file
++#endif
+Index: amphetamine-0.8.10/src/Level.hpp
+===================================================================
+--- amphetamine-0.8.10.orig/src/Level.hpp	2002-03-24 09:49:09.000000000 +0100
++++ amphetamine-0.8.10/src/Level.hpp	2006-05-15 19:08:52.000000000 +0200
+@@ -29,4 +29,4 @@
+ };
+ 
+ 
+-#endif
+\ No newline at end of file
++#endif
+Index: amphetamine-0.8.10/src/Main.cpp
+===================================================================
+--- amphetamine-0.8.10.orig/src/Main.cpp	2002-03-24 09:49:09.000000000 +0100
++++ amphetamine-0.8.10/src/Main.cpp	2006-05-15 19:08:52.000000000 +0200
+@@ -84,4 +84,4 @@
+ 	delete gApplication;
+ 
+ 	return 0;
+-}
+\ No newline at end of file
++}
+Index: amphetamine-0.8.10/src/Monster.cpp
+===================================================================
+--- amphetamine-0.8.10.orig/src/Monster.cpp	2002-03-25 11:53:27.000000000 +0100
++++ amphetamine-0.8.10/src/Monster.cpp	2006-05-15 19:08:52.000000000 +0200
+@@ -372,4 +372,4 @@
+ 	READDATA(health);
+ 
+ 	if (dieFrame != -1) gApplication->Dequeue(&gApplication->collisionThingList, this);
+-}
+\ No newline at end of file
++}
+Index: amphetamine-0.8.10/src/Monster.hpp
+===================================================================
+--- amphetamine-0.8.10.orig/src/Monster.hpp	2002-03-24 09:49:09.000000000 +0100
++++ amphetamine-0.8.10/src/Monster.hpp	2006-05-15 19:08:52.000000000 +0200
+@@ -86,4 +86,4 @@
+ 
+ 
+ 
+-#endif
+\ No newline at end of file
++#endif
+Index: amphetamine-0.8.10/src/Monstrxx.hpp
+===================================================================
+--- amphetamine-0.8.10.orig/src/Monstrxx.hpp	2002-03-24 09:49:09.000000000 +0100
++++ amphetamine-0.8.10/src/Monstrxx.hpp	2006-05-15 19:08:52.000000000 +0200
+@@ -123,4 +123,4 @@
+ 	void	Read(FILE *f);
+ };
+ 
+-#endif
+\ No newline at end of file
++#endif
+Index: amphetamine-0.8.10/src/ObjInfo.hpp
+===================================================================
+--- amphetamine-0.8.10.orig/src/ObjInfo.hpp	2002-03-24 09:49:09.000000000 +0100
++++ amphetamine-0.8.10/src/ObjInfo.hpp	2006-05-15 19:08:52.000000000 +0200
+@@ -97,4 +97,4 @@
+ 	tWeaponInfo	*FindWeapon(short ref);
+ };
+ 
+-#endif
+\ No newline at end of file
++#endif
+Index: amphetamine-0.8.10/src/Player.cpp
+===================================================================
+--- amphetamine-0.8.10.orig/src/Player.cpp	2002-03-24 09:49:09.000000000 +0100
++++ amphetamine-0.8.10/src/Player.cpp	2006-05-15 19:08:52.000000000 +0200
+@@ -527,4 +527,4 @@
+ 
+ 	READDATA(oxygen);
+ 	READDATA(lastOxygenDecTime);
+-}
+\ No newline at end of file
++}
+Index: amphetamine-0.8.10/src/Player.hpp
+===================================================================
+--- amphetamine-0.8.10.orig/src/Player.hpp	2002-03-24 11:10:24.000000000 +0100
++++ amphetamine-0.8.10/src/Player.hpp	2006-05-15 19:08:52.000000000 +0200
+@@ -81,4 +81,4 @@
+ 
+ };
+ 
+-#endif
+\ No newline at end of file
++#endif
+Index: amphetamine-0.8.10/src/Pltform.cpp
+===================================================================
+--- amphetamine-0.8.10.orig/src/Pltform.cpp	2002-03-24 09:49:09.000000000 +0100
++++ amphetamine-0.8.10/src/Pltform.cpp	2006-05-15 19:08:52.000000000 +0200
+@@ -276,4 +276,4 @@
+ 	fread(info, sizeof(tPlatformInfo), 1, f);
+ 
+ 	OnAllocate();
+-}
+\ No newline at end of file
++}
+Index: amphetamine-0.8.10/src/ShapeDes.hpp
+===================================================================
+--- amphetamine-0.8.10.orig/src/ShapeDes.hpp	2002-03-24 09:49:09.000000000 +0100
++++ amphetamine-0.8.10/src/ShapeDes.hpp	2006-05-15 19:08:52.000000000 +0200
+@@ -376,4 +376,4 @@
+ };
+ 
+ 
+-#endif
+\ No newline at end of file
++#endif
+Index: amphetamine-0.8.10/src/ShapeLd.cpp
+===================================================================
+--- amphetamine-0.8.10.orig/src/ShapeLd.cpp	2002-03-24 09:49:09.000000000 +0100
++++ amphetamine-0.8.10/src/ShapeLd.cpp	2006-05-15 19:08:52.000000000 +0200
+@@ -93,4 +93,4 @@
+ 	height = backgroundPicture->height;
+ 
+ 	return backgroundPicture->bitmap;
+-}
+\ No newline at end of file
++}
+Index: amphetamine-0.8.10/src/SndSys.cpp
+===================================================================
+--- amphetamine-0.8.10.orig/src/SndSys.cpp	2002-03-24 09:49:09.000000000 +0100
++++ amphetamine-0.8.10/src/SndSys.cpp	2006-05-15 19:08:52.000000000 +0200
+@@ -132,4 +132,5 @@
+         		playList->RemoveCurrent();
+         	}
+         }
+-}
+\ No newline at end of file
++}
++
+Index: amphetamine-0.8.10/src/SndSys.hpp
+===================================================================
+--- amphetamine-0.8.10.orig/src/SndSys.hpp	2002-03-24 09:49:09.000000000 +0100
++++ amphetamine-0.8.10/src/SndSys.hpp	2006-05-15 19:08:52.000000000 +0200
+@@ -99,4 +99,5 @@
+ 
+ };
+ 
+-#endif
+\ No newline at end of file
++#endif
++
+Index: amphetamine-0.8.10/src/SoundList.hpp
+===================================================================
+--- amphetamine-0.8.10.orig/src/SoundList.hpp	2002-03-24 09:49:09.000000000 +0100
++++ amphetamine-0.8.10/src/SoundList.hpp	2006-05-15 19:08:52.000000000 +0200
+@@ -55,4 +55,4 @@
+ 	SoundState *first, *prev, *current;
+ };
+ 
+-#endif 
+\ No newline at end of file
++#endif
+Index: amphetamine-0.8.10/src/System.cpp
+===================================================================
+--- amphetamine-0.8.10.orig/src/System.cpp	2002-03-25 10:31:27.000000000 +0100
++++ amphetamine-0.8.10/src/System.cpp	2006-05-15 19:08:52.000000000 +0200
+@@ -554,4 +554,5 @@
+ 		delete [] tmp;
+ 		
+ 	return NULL;  // failed
+-}
+\ No newline at end of file
++}
++
+Index: amphetamine-0.8.10/src/Thing.hpp
+===================================================================
+--- amphetamine-0.8.10.orig/src/Thing.hpp	2002-03-24 17:16:00.000000000 +0100
++++ amphetamine-0.8.10/src/Thing.hpp	2006-05-15 19:08:52.000000000 +0200
+@@ -64,4 +64,4 @@
+ 
+ };
+ 
+-#endif
+\ No newline at end of file
++#endif
+Index: amphetamine-0.8.10/src/Weapon.cpp
+===================================================================
+--- amphetamine-0.8.10.orig/src/Weapon.cpp	2002-03-24 09:49:09.000000000 +0100
++++ amphetamine-0.8.10/src/Weapon.cpp	2006-05-15 19:08:52.000000000 +0200
+@@ -467,4 +467,4 @@
+ 	READDATA(dx);
+ 	READDATA(dy);
+ 
+-}
+\ No newline at end of file
++}
+Index: amphetamine-0.8.10/src/Weapon.hpp
+===================================================================
+--- amphetamine-0.8.10.orig/src/Weapon.hpp	2002-03-24 17:16:14.000000000 +0100
++++ amphetamine-0.8.10/src/Weapon.hpp	2006-05-15 19:08:52.000000000 +0200
+@@ -152,4 +152,4 @@
+ 	short	Shoot(double directionx, double directiony, double targetpos);
+ };
+ 
+-#endif
+\ No newline at end of file
++#endif

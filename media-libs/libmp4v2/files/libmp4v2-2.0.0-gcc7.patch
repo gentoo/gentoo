@@ -1,0 +1,18 @@
+https://bugs.gentoo.org/show_bug.cgi?id=600892
+
+Description: Fix pointer comparison (FTBFS on GCC 7)
+Author: Philip Chung <philipchung1995@yahoo.com>
+Bug-Debian: https://bugs.debian.org/853560
+Last-Update: 2017-09-04
+
+--- a/src/rtphint.cpp
++++ b/src/rtphint.cpp
+@@ -339,7 +339,7 @@ void MP4RtpHintTrack::GetPayload(
+                 pSlash = strchr(pSlash, '/');
+                 if (pSlash != NULL) {
+                     pSlash++;
+-                    if (pSlash != '\0') {
++                    if (*pSlash != '\0') {
+                         length = (uint32_t)strlen(pRtpMap) - (pSlash - pRtpMap);
+                         *ppEncodingParams = (char *)MP4Calloc(length + 1);
+                         strncpy(*ppEncodingParams, pSlash, length);

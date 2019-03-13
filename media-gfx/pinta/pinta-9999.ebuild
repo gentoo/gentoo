@@ -6,7 +6,7 @@ EAPI=5
 inherit fdo-mime mono-env gnome2-utils autotools git-2
 
 DESCRIPTION="Simple Painting for Gtk"
-HOMEPAGE="http://pinta-project.com"
+HOMEPAGE="https://pinta-project.com"
 SRC_URI=""
 EGIT_REPO_URI="https://github.com/PintaProject/Pinta.git"
 

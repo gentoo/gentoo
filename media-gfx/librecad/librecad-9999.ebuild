@@ -1,67 +1,47 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-inherit eutils git-r3 qmake-utils
+inherit desktop git-r3 qmake-utils
 
 DESCRIPTION="Generic 2D CAD program"
-HOMEPAGE="http://www.librecad.org/"
-SRC_URI=""
+HOMEPAGE="https://www.librecad.org/"
 EGIT_REPO_URI="https://github.com/LibreCAD/LibreCAD.git"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="3d debug doc tools qt4 +qt5"
-REQUIRED_USE="|| ( qt4 qt5 )"
 
-DEPEND="
-	qt4? (
-		dev-qt/qtcore:4
-		dev-qt/qtgui:4
-		dev-qt/qtsvg:4
-		dev-qt/qthelp:4
-	)
-	qt5? (
-		dev-qt/qtcore:5
-		dev-qt/qtgui:5
-		dev-qt/qthelp:5
-		dev-qt/qtprintsupport:5
-		dev-qt/qtsvg:5
-		dev-qt/qtwidgets:5
-		dev-qt/qtxml:5
-	)
+IUSE="3d debug doc tools"
 
-	dev-libs/boost
+RDEPEND="
 	dev-cpp/muParser
-	media-libs/freetype"
+	dev-libs/boost:=
+	dev-qt/qtcore:5
+	dev-qt/qtgui:5
+	dev-qt/qtprintsupport:5
+	dev-qt/qtsvg:5
+	dev-qt/qtwidgets:5
+	media-libs/freetype:2"
+DEPEND="${RDEPEND}
+	dev-qt/linguist-tools:5
+	dev-qt/qthelp:5
+	dev-qt/qtxml:5
+"
 
-RDEPEND="${DEPEND}"
-S="${WORKDIR}/librecad-${PV}"
-
-src_prepare() {
-	# currently RS_VECTOR3D causes an internal compiler error on GCC-4.8
-	use 3d || sed -i -e '/RS_VECTOR2D/ s/^#//' librecad/src/src.pro || die
-}
+S="${WORKDIR}/LibreCAD-${PV}"
 
 src_configure() {
-	if use qt4
-	then
-		eqmake4 -r
-	else
-		eqmake5 -r
-	fi
+	eqmake5 -r
 }
 
 src_install() {
 	dobin unix/librecad
 	use tools && dobin unix/ttf2lff
-	insinto /usr/share
-	doins -r unix/appdata
 	insinto /usr/share/${PN}
 	doins -r unix/resources/*
-	use doc && dohtml -r librecad/support/doc/*
+	use doc && docinto html && dodoc -r librecad/support/doc/*
 	insinto /usr/share/appdata
 	doins unix/appdata/librecad.appdata.xml
 	doicon librecad/res/main/${PN}.png

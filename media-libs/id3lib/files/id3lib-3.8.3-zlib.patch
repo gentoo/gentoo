@@ -1,6 +1,6 @@
 diff -Naur id3lib-3.8.3.orig/Makefile.am id3lib-3.8.3/Makefile.am
---- id3lib-3.8.3.orig/Makefile.am	2003-03-01 16:23:00.000000000 -0800
-+++ id3lib-3.8.3/Makefile.am	2004-09-12 19:05:39.564456828 -0700
+--- a/Makefile.am	2003-03-01 16:23:00.000000000 -0800
++++ b/Makefile.am	2004-09-12 19:05:39.564456828 -0700
 @@ -28,7 +28,7 @@
  endif
  
@@ -11,8 +11,8 @@ diff -Naur id3lib-3.8.3.orig/Makefile.am id3lib-3.8.3/Makefile.am
  INCLUDES = @ID3LIB_DEBUG_FLAGS@
  
 diff -Naur id3lib-3.8.3.orig/src/Makefile.am id3lib-3.8.3/src/Makefile.am
---- id3lib-3.8.3.orig/src/Makefile.am	2003-03-01 16:23:00.000000000 -0800
-+++ id3lib-3.8.3/src/Makefile.am	2004-09-12 19:08:30.814149521 -0700
+--- a/src/Makefile.am	2003-03-01 16:23:00.000000000 -0800
++++ b/src/Makefile.am	2004-09-12 19:08:30.814149521 -0700
 @@ -77,6 +77,7 @@
  endif
  

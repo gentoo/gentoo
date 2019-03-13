@@ -1,52 +1,16 @@
 #!/sbin/openrc-run
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-BASENAME=$(echo $SVCNAME | cut -d '-' -f 1)
-SERVERNAME=$(echo $SVCNAME | cut -d '-' -f 2)
+description="Starts ${SVCNAME} service for OpenStack"
+
+command=/usr/bin/${SVCNAME}
+command_user="${HEAT_USER:-heat}"
+command_background=yes
+command_args="--config-file /etc/heat/heat.conf --log-file ${HEAT_LOGDIR:-/var/log/heat}/${SVCNAME}.log"
+pidfile=/run/${SVCNAME}.pid
+required_files=/etc/heat/heat.conf
 
 depend() {
     need net 
-}
-
-checkconfig() {
-    if [ ! -r /etc/conf.d/$BASENAME ]; then
-        eerror "No heat conf.d file found: /etc/conf.d/$BASENAME)"
-    else
-        . /etc/conf.d/$BASENAME
-    fi
-}
-
-start() {
-    checkconfig || return $?
-    
-    ebegin "Starting ${SVCNAME}"
-        if [ ! -d ${PID_PATH} ]; then
-                mkdir ${PID_PATH}
-        chown heat:root ${PID_PATH}
-        fi
-
-    start-stop-daemon --start \
-              --quiet \
-              --user heat \
-              --pidfile "${PID_PATH}/${SVCNAME}.pid" \
-              --make-pidfile \
-              --background \
-              --exec /usr/bin/heat-${SERVERNAME} --  --config-file /etc/heat/heat.conf --log-file /var/log/heat/heat-${SERVERNAME}
-    
-    eend $? "Failed to start ${SVCNAME}"
-}
-
-stop() {
-    checkconfig || return $?
-    
-    ebegin "Stopping ${SVCNAME}"
-    
-    start-stop-daemon --stop \
-              --quiet \
-              --user heat \
-              --pidfile "${PID_PATH}/${SVCNAME}.pid" \
-              --exec /usr/bin/heat-${SERVERNAME} --  --config-file /etc/heat/heat.conf
-
-    eend $? "Failed to stop ${SVCNAME}"
 }

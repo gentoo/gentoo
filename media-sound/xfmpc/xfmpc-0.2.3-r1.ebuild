@@ -6,7 +6,7 @@ inherit xdg-utils
 
 DESCRIPTION="Music Player Daemon (MPD) client for the Xfce desktop environment"
 HOMEPAGE="https://goodies.xfce.org/projects/applications/xfmpc"
-SRC_URI="mirror://xfce/src/apps/${PN}/0.2/${P}.tar.bz2"
+SRC_URI="https://archive.xfce.org/src/apps/${PN}/0.2/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

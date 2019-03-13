@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,14 +6,14 @@ EAPI=6
 MY_PV="${PV/_beta/b}"
 MY_P="${PN}-${MY_PV}"
 
-DESCRIPTION="fish is the Friendly Interactive SHell"
+DESCRIPTION="Friendly Interactive SHell"
 HOMEPAGE="http://fishshell.com/"
 SRC_URI="https://github.com/${PN}-shell/${PN}-shell/releases/download/${MY_PV}/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 [[ "${PV}" = *_* ]] || \
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris"
+KEYWORDS="amd64 ~arm ~arm64 ppc ~ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x86-solaris"
 IUSE="nls test"
 
 RDEPEND="
@@ -26,6 +26,9 @@ DEPEND="
 	nls? ( sys-devel/gettext )
 	test? ( dev-tcltk/expect )
 "
+
+PATCHES=( "${FILESDIR}/${P}-fix-printf-o-handling-on-ppc.patch"
+	"${FILESDIR}/fix-histfile-test-on-ppc.patch" )
 
 S="${WORKDIR}/${MY_P}"
 
@@ -48,7 +51,11 @@ src_install() {
 }
 
 src_test() {
-	emake V=1 test
+	if has_version ~${CATEGORY}/${P} ; then
+		emake -j1 V=1 SHOW_INTERACTIVE_LOG=1 test
+	else
+		ewarn "Some tests only work when the package is already installed"
+	fi
 }
 
 pkg_postinst() {

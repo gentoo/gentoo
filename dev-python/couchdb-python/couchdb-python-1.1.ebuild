@@ -11,7 +11,7 @@ MY_PN="CouchDB"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Python library for working with CouchDB"
-HOMEPAGE="https://github.com/djc/couchdb-python https://pypi.python.org/pypi/CouchDB"
+HOMEPAGE="https://github.com/djc/couchdb-python https://pypi.org/project/CouchDB/"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="BSD"

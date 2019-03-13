@@ -9,4 +9,8 @@
 		<email>printing@gentoo.org</email>
 		<name>Gentoo Printing Project</name>
 	</maintainer>
+	<use>
+		<flag name='foomaticdb'>Add support for the foomatic printing
+			driver database</flag>
+	</use>
 </pkgmetadata>

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # Mask useflags that require deps with missing keywords.
@@ -33,9 +33,6 @@ app-portage/layman darcs
 
 # dev-python/mysql-python
 dev-vcs/mercurial bugzilla
-
-# net-libs/axtls
-net-misc/curl curl_ssl_axtls
 
 # media-libs/libmetalink -> undefined references on TEMP_FAILURE_RETRY (macro
 # provided by glibc)
@@ -109,7 +106,6 @@ media-libs/xine-lib vaapi
 
 # media-libs/nas
 media-libs/libsdl nas
-dev-qt/qtgui nas
 app-editors/xemacs nas
 media-sound/mpg123 nas
 media-video/mplayer nas
@@ -136,19 +132,8 @@ media-libs/mesa video_cards_vmware
 x11-base/xorg-server glamor wayland
 x11-drivers/xf86-video-ati glamor
 
-# x11-drivers/xf86-video-sis
-x11-base/xorg-drivers video_cards_sis
-
 # x11-drivers/xf86-video-tdfx
 x11-base/xorg-drivers video_cards_tdfx
-
-# >=sys-auth/polkit-qt-0.103.0
-# >=kde-misc/polkit-kde-kcmodules-0.98_pre20101127
-# >=sys-auth/polkit-kde-agent-0.99
-kde-frameworks/kdelibs policykit
-
-# <=sci-geosciences/gpsd-2.95-r1
-app-misc/geoclue gps
 
 # >=sys-devel/binutils-2.22
 sys-devel/llvm gold
@@ -199,4 +184,4 @@ net-misc/wget uuid
 media-video/vlc rdp
 
 # net-wireless/bluez
-media-sound/pulseaudio bluetooth native-headset ofono-headset
+media-sound/pulseaudio native-headset ofono-headset

@@ -1,5 +1,5 @@
---- build/packaging.rb.~1~	2013-10-27 00:00:00.000000000 +0200
-+++ build/packaging.rb	2015-09-28 07:44:04.584236386 +0200
+--- a/build/packaging.rb.~1~	2013-10-27 00:00:00.000000000 +0200
++++ b/build/packaging.rb	2015-09-28 07:44:04.584236386 +0200
 @@ -575,7 +575,7 @@
    psg_ruby       = ENV['RUBY'] || "#{fs_bindir}/ruby"
    psg_free_ruby  = ENV['FREE_RUBY'] || "/usr/bin/env ruby"

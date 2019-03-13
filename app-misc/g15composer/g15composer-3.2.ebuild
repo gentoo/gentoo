@@ -1,8 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=2
-inherit eutils
+EAPI=6
+
+inherit autotools
 
 DESCRIPTION="A library to render text and shapes into a buffer usable by the Logitech G15"
 HOMEPAGE="https://sourceforge.net/projects/g15tools/"
@@ -15,20 +16,31 @@ IUSE="truetype examples"
 
 DEPEND="app-misc/g15daemon
 	>=dev-libs/libg15render-1.2[truetype?]
-	truetype? ( media-libs/freetype )"
+	truetype? (
+		media-libs/freetype
+		virtual/pkgconfig
+	)"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.2-freetype_pkgconfig.patch
+)
+
+src_prepare() {
+	default
+	mv configure.{in,ac} || die
+	eautoreconf
+}
 
 src_configure() {
-	econf \
-		$(use_enable truetype ttf)
+	econf $(use_enable truetype ttf)
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die "emake install failed"
+	local DOCS=( AUTHORS README ChangeLog )
+	default
 
 	newinitd "${FILESDIR}/${P}.initd" ${PN}
 	newconfd "${FILESDIR}/${P}.confd" ${PN}
-
-	dodoc AUTHORS README ChangeLog
 
 	if use examples ; then
 		exeinto "/usr/share/${PN}"

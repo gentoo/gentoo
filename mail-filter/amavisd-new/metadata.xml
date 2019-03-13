@@ -9,6 +9,10 @@
 		<email>antivirus@gentoo.org</email>
 		<name>Gentoo Antivirus Project</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>mjo@gentoo.org</email>
+		<name>Michael Orlitzky</name>
+	</maintainer>
 	<use>
 		<flag name="courier">Add courier support</flag>
 		<flag name="dkim">Add DomainKeys Identified Mail support</flag>

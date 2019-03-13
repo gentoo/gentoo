@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit autotools git-r3 user systemd
+inherit cmake-utils git-r3 systemd user
 
 DESCRIPTION="Encrypted P2P, messaging, and audio/video calling platform"
 HOMEPAGE="https://tox.chat"
@@ -11,43 +11,37 @@ SRC_URI=""
 EGIT_REPO_URI="https://github.com/TokTok/c-toxcore.git"
 
 LICENSE="GPL-3+"
-SLOT="0/0.1"
+SLOT="0/0.2"
 KEYWORDS=""
-IUSE="+av daemon log-debug log-error log-info log-trace log-warn +no-log ntox static-libs test"
+IUSE="+av daemon log-debug log-trace +no-log static-libs test"
 
-REQUIRED_USE="^^ ( no-log log-trace log-debug log-info log-warn log-error )"
+REQUIRED_USE="^^ ( no-log log-trace log-debug )"
 
 RDEPEND="
 	av? ( media-libs/libvpx:=
 		media-libs/opus )
 	daemon? ( dev-libs/libconfig )
-	ntox? ( sys-libs/ncurses:0= )
-	>=dev-libs/libsodium-0.6.1:=[asm,urandom]"
+	>=dev-libs/libsodium-0.6.1:=[asm,urandom,-minimal]"
 DEPEND="${RDEPEND}
-	test? ( dev-libs/check )
 	virtual/pkgconfig"
 
-src_prepare() {
-	default
-	eautoreconf
-}
-
 src_configure() {
-	econf \
-		$(usex log-trace "--enable-logging --with-log-level=TRACE" "") \
-		$(usex log-debug "--enable-logging --with-log-level=DEBUG" "") \
-		$(usex log-info "--enable-logging --with-log-level=INFO" "") \
-		$(usex log-warn "--enable-logging --with-log-level=WARNING" "") \
-		$(usex log-error "--enable-logging --with-log-level=ERROR" "") \
-		$(use_enable av) \
-		$(use_enable test tests) \
-		$(use_enable ntox) \
-		$(use_enable daemon) \
-		$(use_enable static-libs static)
+	local mycmakeargs=(
+		-DTRACE=$(usex log-trace)
+		-DDEBUG=$(usex log-debug)
+		-DBUILD_TOXAV=$(usex av)
+		-DMUST_BUILD_TOXAV=$(usex av)
+		-DBUILD_AV_TEST=$(usex av)
+		-DBOOTSTRAP_DAEMON=$(usex daemon)
+		-DENABLE_STATIC=$(usex static-libs)
+	)
+
+	cmake-utils_src_configure
 }
 
 src_install() {
-	default
+	cmake-utils_src_install
+
 	if use daemon; then
 		newinitd "${FILESDIR}"/initd tox-dht-daemon
 		newconfd "${FILESDIR}"/confd tox-dht-daemon
@@ -61,8 +55,8 @@ src_install() {
 
 pkg_postinst() {
 	if use daemon; then
-		enewgroup ${PN}
-		enewuser ${PN} -1 -1 -1 ${PN}
+		enewgroup tox
+		enewuser tox -1 -1 -1 tox
 		if [[ -f ${EROOT%/}/var/lib/tox-dht-bootstrap/key ]]; then
 			ewarn "Backwards compatability with the bootstrap daemon might have been"
 			ewarn "broken a while ago. To resolve this issue, REMOVE the following files:"

@@ -22,6 +22,7 @@
 # QA Team <qa@gentoo.org>
 # @AUTHOR:
 # Original author: Dan Armak <danarmak@gentoo.org>
+# @SUPPORTED_EAPIS: 0 1 2 3 4 5
 # @BLURB: The base eclass defines some default functions and variables.
 # @DESCRIPTION:
 # The base eclass defines some default functions and variables.
@@ -33,9 +34,9 @@ inherit eutils
 
 BASE_EXPF="src_unpack src_compile src_install"
 case "${EAPI:-0}" in
-	6) die "${ECLASS}.eclass is banned in EAPI ${EAPI}";;
+	0|1) ;;
 	2|3|4|5) BASE_EXPF+=" src_prepare src_configure" ;;
-	*) ;;
+	*) die "${ECLASS}.eclass is banned in EAPI ${EAPI}";;
 esac
 
 EXPORT_FUNCTIONS ${BASE_EXPF}

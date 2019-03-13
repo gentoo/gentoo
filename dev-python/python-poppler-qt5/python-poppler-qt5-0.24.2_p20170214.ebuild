@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,11 +13,11 @@ SRC_URI="https://github.com/wbsoft/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND="
-	app-text/poppler:=[qt5]
+	app-text/poppler[qt5]
 	dev-python/PyQt5[${PYTHON_USEDEP}]
 	>=dev-python/sip-4.19:=[${PYTHON_USEDEP}]
 "

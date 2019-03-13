@@ -5,7 +5,10 @@
 		<email>cjk@gentoo.org</email>
 		<name>Cjk</name>
 	</maintainer>
+	<use>
+		<flag name="gtk3">Enable support for <pkg>x11-libs/gtk+</pkg>:3</flag>
+	</use>
 	<upstream>
-		<remote-id type="google-code">sunpinyin</remote-id>
+		<remote-id type="github">sunpinyin/sunpinyin</remote-id>
 	</upstream>
 </pkgmetadata>

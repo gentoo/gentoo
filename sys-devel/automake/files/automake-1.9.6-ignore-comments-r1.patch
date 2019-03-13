@@ -1,0 +1,29 @@
+http://bugs.gentoo.org/126388
+
+2006-03-16  Mike Frysinger  <vapier@gentoo.org>
+
+	* aclocal.in (scan_configure_dep): Ignore ## lines.
+	(scan_file): Remove dnl and # comments.
+
+--- a/aclocal.in
++++ b/aclocal.in
+@@ -227,6 +227,8 @@
+   foreach (split ("\n", $contents))
+     {
+       ++$line;
++      # Ignore `##' lines.
++      next if /^##/;
+       # Remove comments from current line.
+       s/\bdnl\b.*$//;
+       s/\#.*$//;
+@@ -311,6 +313,10 @@
+ 
+       $contents .= $_;
+ 
++      # Remove comments from current line.
++      s/\bdnl\b.*$//;
++      s/\#.*$//;
++
+       while (/$ac_defun_rx/go)
+ 	{
+ 	  if (! defined $1)

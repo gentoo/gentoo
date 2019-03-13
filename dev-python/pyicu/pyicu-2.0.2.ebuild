@@ -16,7 +16,7 @@ SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="test"
 
 RDEPEND="${PYTHON_DEPS}
@@ -31,5 +31,10 @@ S="${WORKDIR}/${MY_P}"
 DOCS=(CHANGES CREDITS README.md)
 
 python_test() {
-	esetup.py test
+	if [[ ${EPYTHON} == python2* ]]; then
+		# See Bug #644226
+		ewarn "Skipping tests for ${EPYTHON} because they are known to fail"
+	else
+		esetup.py test
+	fi
 }

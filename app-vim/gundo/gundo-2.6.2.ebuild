@@ -12,7 +12,7 @@ HOMEPAGE="https://sjl.bitbucket.io/gundo.vim/"
 SRC_URI="https://bitbucket.org/sjl/gundo.vim/get/v${PV}.tar.bz2 -> ${P}.tar.bz2"
 
 LICENSE="GPL-2+"
-KEYWORDS="~amd64 ~x86 ~x64-macos"
+KEYWORDS="amd64 x86 ~x64-macos"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,7 +9,7 @@ HOMEPAGE="https://www.vpn.net/"
 SRC_URI="x86?	( https://www.vpn.net/installers/${P}-x86.tgz )
 	amd64?	( https://www.vpn.net/installers/${P}-x64.tgz )"
 
-LICENSE="LogMeIn"
+LICENSE="LogMeIn-2013"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
 IUSE=""
@@ -30,16 +30,16 @@ pkg_setup() {
 
 src_unpack() {
 	unpack ${A}
-	mv "${P}-$(use x86 && echo x86 || echo x64)" "${S}" || die
+	mv "${P}-$(usex x86 x86 x64)" "${S}" || die
 }
 
 src_install() {
 	into /opt/${PN}
 	dobin hamachid dnsup dnsdown
-	dosym /opt/${PN}/bin/hamachid /usr/bin/hamachi
+	dosym ../../opt/${PN}/bin/hamachid /usr/bin/hamachi
 
 	# Config and log directory
-	dodir /var/lib/${PN}
+	keepdir /var/lib/${PN}
 
 	newconfd "${FILESDIR}"/${PN}.confd ${PN}
 	newinitd "${FILESDIR}"/${PN}.initd ${PN}

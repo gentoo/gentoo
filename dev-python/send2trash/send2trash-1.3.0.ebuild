@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-PYTHON_COMPAT=( python{2_7,3_{4,5,6}} pypy )
+PYTHON_COMPAT=( python{2_7,3_{4,5,6,7}} pypy )
 
 inherit distutils-r1
 
@@ -13,7 +13,7 @@ MY_P="${MY_PN}-${PV}"
 DESCRIPTION="Sends files to the Trash (or Recycle Bin)"
 HOMEPAGE="
 	http://hg.hardcoded.net/send2trash
-	https://pypi.python.org/pypi/Send2Trash
+	https://pypi.org/project/Send2Trash/
 	https://github.com/hsoft/send2trash"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 

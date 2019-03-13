@@ -1,0 +1,177 @@
+From a698240df0c43278b2d1d7259c8e7a6926c63112 Mon Sep 17 00:00:00 2001
+From: "Matthew S. Turnbull" <sparky@bluefang-logic.com>
+Date: Sat, 24 Feb 2018 17:44:58 -0500
+Subject: grub-mkconfig/10_linux: Support multiple early initrd images
+
+Add support for multiple, shared, early initrd images. These early
+images will be loaded in the order declared, and all will be loaded
+before the initrd image.
+
+While many classes of data can be provided by early images, the
+immediate use case would be for distributions to provide CPU
+microcode to mitigate the Meltdown and Spectre vulnerabilities.
+
+There are two environment variables provided for declaring the early
+images.
+
+* GRUB_EARLY_INITRD_LINUX_STOCK is for the distribution declare
+  images that are provided by the distribution or installed packages.
+  If undeclared, this will default to a set of common microcode image
+  names.
+
+* GRUB_EARLY_INITRD_LINUX_CUSTOM is for user created images. User
+  images will be loaded after the stock images.
+
+These separate configurations allow the distribution and user to
+declare different image sets without clobbering each other.
+
+This also makes a minor update to ensure that UUID partition labels
+stay disabled when no initrd image is found, even if early images are
+present.
+
+This is a continuation of a previous patch published by Christian
+Hesse in 2016:
+http://lists.gnu.org/archive/html/grub-devel/2016-02/msg00025.html
+
+Down stream Gentoo bug:
+https://bugs.gentoo.org/645088
+
+Signed-off-by: Robin H. Johnson <robbat2@gentoo.org>
+Signed-off-by: Matthew S. Turnbull <sparky@bluefang-logic.com>
+Reviewed-by: Daniel Kiper <daniel.kiper@oracle.com>
+---
+ docs/grub.texi          | 19 +++++++++++++++++++
+ util/grub-mkconfig.in   |  8 ++++++++
+ util/grub.d/10_linux.in | 33 +++++++++++++++++++++++++++------
+ 3 files changed, 54 insertions(+), 6 deletions(-)
+
+diff --git a/docs/grub.texi b/docs/grub.texi
+index 137b894..65b4bbe 100644
+--- a/docs/grub.texi
++++ b/docs/grub.texi
+@@ -1398,6 +1398,25 @@ for all respectively normal entries.
+ The values of these options replace the values of @samp{GRUB_CMDLINE_LINUX}
+ and @samp{GRUB_CMDLINE_LINUX_DEFAULT} for Linux and Xen menu entries.
+ 
++@item GRUB_EARLY_INITRD_LINUX_CUSTOM
++@itemx GRUB_EARLY_INITRD_LINUX_STOCK
++List of space-separated early initrd images to be loaded from @samp{/boot}.
++This is for loading things like CPU microcode, firmware, ACPI tables, crypto
++keys, and so on. These early images will be loaded in the order declared,
++and all will be loaded before the actual functional initrd image.
++
++@samp{GRUB_EARLY_INITRD_LINUX_STOCK} is for your distribution to declare
++images that are provided by the distribution. It should not be modified
++without understanding the consequences. They will be loaded first.
++
++@samp{GRUB_EARLY_INITRD_LINUX_CUSTOM} is for your custom created images.
++
++The default stock images are as follows, though they may be overridden by
++your distribution:
++@example
++intel-uc.img intel-ucode.img amd-uc.img amd-ucode.img early_ucode.cpio microcode.cpio
++@end example
++
+ @item GRUB_DISABLE_LINUX_UUID
+ Normally, @command{grub-mkconfig} will generate menu entries that use
+ universally-unique identifiers (UUIDs) to identify the root filesystem to
+diff --git a/util/grub-mkconfig.in b/util/grub-mkconfig.in
+index f8496d2..35ef583 100644
+--- a/util/grub-mkconfig.in
++++ b/util/grub-mkconfig.in
+@@ -147,6 +147,12 @@ if [ x"$GRUB_FS" = xunknown ]; then
+     GRUB_FS="$(stat -f --printf=%T / || echo unknown)"
+ fi
+ 
++# Provide a default set of stock linux early initrd images.
++# Define here so the list can be modified in the sourced config file.
++if [ "x${GRUB_EARLY_INITRD_LINUX_STOCK}" = "x" ]; then
++	GRUB_EARLY_INITRD_LINUX_STOCK="intel-uc.img intel-ucode.img amd-uc.img amd-ucode.img early_ucode.cpio microcode.cpio"
++fi
++
+ if test -f ${sysconfdir}/default/grub ; then
+   . ${sysconfdir}/default/grub
+ fi
+@@ -211,6 +217,8 @@ export GRUB_DEFAULT \
+   GRUB_CMDLINE_NETBSD \
+   GRUB_CMDLINE_NETBSD_DEFAULT \
+   GRUB_CMDLINE_GNUMACH \
++  GRUB_EARLY_INITRD_LINUX_CUSTOM \
++  GRUB_EARLY_INITRD_LINUX_STOCK \
+   GRUB_TERMINAL_INPUT \
+   GRUB_TERMINAL_OUTPUT \
+   GRUB_SERIAL_COMMAND \
+diff --git a/util/grub.d/10_linux.in b/util/grub.d/10_linux.in
+index de9044c..faedf74 100644
+--- a/util/grub.d/10_linux.in
++++ b/util/grub.d/10_linux.in
+@@ -136,9 +136,13 @@ EOF
+   if test -n "${initrd}" ; then
+     # TRANSLATORS: ramdisk isn't identifier. Should be translated.
+     message="$(gettext_printf "Loading initial ramdisk ...")"
++    initrd_path=
++    for i in ${initrd}; do
++      initrd_path="${initrd_path} ${rel_dirname}/${i}"
++    done
+     sed "s/^/$submenu_indentation/" << EOF
+ 	echo	'$(echo "$message" | grub_quote)'
+-	initrd	${rel_dirname}/${initrd}
++	initrd	$(echo $initrd_path)
+ EOF
+   fi
+   sed "s/^/$submenu_indentation/" << EOF
+@@ -188,7 +192,15 @@ while [ "x$list" != "x" ] ; do
+   alt_version=`echo $version | sed -e "s,\.old$,,g"`
+   linux_root_device_thisversion="${LINUX_ROOT_DEVICE}"
+ 
+-  initrd=
++  initrd_early=
++  for i in ${GRUB_EARLY_INITRD_LINUX_STOCK} \
++	   ${GRUB_EARLY_INITRD_LINUX_CUSTOM}; do
++    if test -e "${dirname}/${i}" ; then
++      initrd_early="${initrd_early} ${i}"
++    fi
++  done
++
++  initrd_real=
+   for i in "initrd.img-${version}" "initrd-${version}.img" "initrd-${version}.gz" \
+ 	   "initrd-${version}" "initramfs-${version}.img" \
+ 	   "initrd.img-${alt_version}" "initrd-${alt_version}.img" \
+@@ -198,11 +210,22 @@ while [ "x$list" != "x" ] ; do
+ 	   "initramfs-genkernel-${GENKERNEL_ARCH}-${version}" \
+ 	   "initramfs-genkernel-${GENKERNEL_ARCH}-${alt_version}"; do
+     if test -e "${dirname}/${i}" ; then
+-      initrd="$i"
++      initrd_real="${i}"
+       break
+     fi
+   done
+ 
++  initrd=
++  if test -n "${initrd_early}" || test -n "${initrd_real}"; then
++    initrd="${initrd_early} ${initrd_real}"
++
++    initrd_display=
++    for i in ${initrd}; do
++      initrd_display="${initrd_display} ${dirname}/${i}"
++    done
++    gettext_printf "Found initrd image: %s\n" "$(echo $initrd_display)" >&2
++  fi
++
+   config=
+   for i in "${dirname}/config-${version}" "${dirname}/config-${alt_version}" "/etc/kernels/kernel-config-${version}" ; do
+     if test -e "${i}" ; then
+@@ -216,9 +239,7 @@ while [ "x$list" != "x" ] ; do
+       initramfs=`grep CONFIG_INITRAMFS_SOURCE= "${config}" | cut -f2 -d= | tr -d \"`
+   fi
+ 
+-  if test -n "${initrd}" ; then
+-    gettext_printf "Found initrd image: %s\n" "${dirname}/${initrd}" >&2
+-  elif test -z "${initramfs}" ; then
++  if test -z "${initramfs}" && test -z "${initrd_real}" ; then
+     # "UUID=" and "ZFS=" magic is parsed by initrd or initramfs.  Since there's
+     # no initrd or builtin initramfs, it can't work here.
+     linux_root_device_thisversion=${GRUB_DEVICE}
+-- 
+cgit v1.0-41-gc330
+

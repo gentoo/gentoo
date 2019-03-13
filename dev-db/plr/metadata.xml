@@ -15,7 +15,6 @@ not relevant for general metadata.xml files.
 <maintainer type="person">
 	<email>axs@gentoo.org</email>
 	<name>Ian Stakenvicius</name>
-	<description>Primary maintainer</description>
 </maintainer>
 <longdescription>
 An extension for postgresql databases to allow direct usage of <pkg>dev-lang/R</pkg>

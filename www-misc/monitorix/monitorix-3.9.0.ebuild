@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -6,12 +6,12 @@ EAPI="6"
 inherit systemd user
 
 DESCRIPTION="A lightweight system monitoring tool"
-HOMEPAGE="http://www.monitorix.org/"
+HOMEPAGE="https://www.monitorix.org/"
 SRC_URI="https://github.com/mikaku/Monitorix/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="apcupsd hddtemp httpd lm_sensors postfix"
 S="${WORKDIR}/Monitorix-${PV}"
 

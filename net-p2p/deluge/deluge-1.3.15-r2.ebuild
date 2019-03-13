@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -9,17 +9,16 @@ PLOCALES="af ar ast be bg bn bs ca cs cy da de el en_AU en_CA en_GB eo es et eu 
 inherit distutils-r1 eutils systemd user l10n
 
 DESCRIPTION="BitTorrent client with a client/server model"
-HOMEPAGE="http://deluge-torrent.org/"
+HOMEPAGE="https://deluge-torrent.org/"
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="git://deluge-torrent.org/${PN}.git
 		http://git.deluge-torrent.org/${PN}"
 	SRC_URI=""
-	KEYWORDS="~amd64 ~x86"
 else
 	SRC_URI="http://download.deluge-torrent.org/source/${P}.tar.bz2"
-	KEYWORDS="~amd64 ~ppc ~sparc ~x86"
+	KEYWORDS="amd64 ~arm ~ppc ~sparc x86"
 fi
 
 LICENSE="GPL-2"
@@ -139,6 +138,6 @@ pkg_postinst() {
 	elog "happens in /etc/systemd/system/deluged.service.d/00gentoo.conf"
 	elog "and /etc/systemd/system/deluge-web.service.d/00gentoo.conf"
 	elog
-	elog "For more information look at http://dev.deluge-torrent.org/wiki/Faq"
+	elog "For more information look at https://dev.deluge-torrent.org/wiki/Faq"
 	elog
 }

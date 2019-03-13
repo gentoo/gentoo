@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="festival gdal geotiff graphicsmagick"
+IUSE="festival gdal geotiff +graphicsmagick"
 
 DEPEND=">=x11-libs/motif-2.3:0
 	x11-libs/libXt
@@ -22,7 +22,7 @@ DEPEND=">=x11-libs/motif-2.3:0
 	net-misc/curl
 	sys-libs/db:4.8
 	sci-libs/shapelib
-	!graphicsmagick? ( media-gfx/imagemagick:=[-hdri,-q32] )
+	!graphicsmagick? ( <media-gfx/imagemagick-7:0=[-hdri,-q32] )
 	graphicsmagick? ( media-gfx/graphicsmagick:=[-q32] )
 	geotiff? ( sci-libs/proj
 		sci-libs/libgeotiff
@@ -36,7 +36,7 @@ src_prepare() {
 	epatch "${FILESDIR}"/${P}-scripts.diff
 
 	# fix __FORTIFY_SOURCE warning (bug #337365)
-	epatch 	"${FILESDIR}"/${PN}-2.0.4-fortify.diff
+	epatch "${FILESDIR}"/${PN}-2.0.4-fortify.diff
 
 	# do not use builtin shapelib if sci-libs/shapelib is not installed
 	# instead build without shapelib support (bug #430704)

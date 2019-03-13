@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 python3_4 )
 inherit distutils-r1
 
 DESCRIPTION="Geometric objects, predicates, and operations"
-HOMEPAGE="https://pypi.python.org/pypi/Shapely"
+HOMEPAGE="https://pypi.org/project/Shapely/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"

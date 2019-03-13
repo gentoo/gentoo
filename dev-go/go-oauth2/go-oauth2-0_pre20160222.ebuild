@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -9,8 +9,8 @@ MY_PN=${PN##*-}
 EGO_PN="golang.org/x/${MY_PN}/..."
 EGIT_COMMIT="2cd4472c321b6cba78e029d99f0e7fe51032fd21"
 
-HOMEPAGE="https://godoc.org/${EGO_PN%/*}"
 DESCRIPTION="Go client implementation for OAuth 2.0 spec"
+HOMEPAGE="https://godoc.org/golang.org/x/oauth2"
 SRC_URI="
 	https://github.com/golang/${MY_PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz
 	https://github.com/golang/net/archive/b6d7b1396ec874c3b00f6c84cd4301a17c56c8ed.tar.gz -> go-net-0_pre20160216.tar.gz
@@ -25,7 +25,6 @@ DEPEND="dev-go/go-tools"
 RDEPEND=""
 
 EGIT_CHECKOUT_DIR="${S}"
-STRIP_MASK="*.a"
 
 get_archive_go_package() {
 	local archive=${1} uri x

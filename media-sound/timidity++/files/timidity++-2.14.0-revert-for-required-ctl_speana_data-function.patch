@@ -8,8 +8,8 @@ Because otherwise TiMidity++ simply won't build as per:
 xskin_c.c:(.text+0x17c): undefined reference to `ctl_speana_data'
 collect2: error: ld returned 1 exit status
 
---- interface/xskin_c.c
-+++ interface/xskin_c.c
+--- a/interface/xskin_c.c
++++ b/interface/xskin_c.c
 @@ -228,7 +228,6 @@
      }
  }

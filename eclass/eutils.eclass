@@ -20,53 +20,10 @@ _EUTILS_ECLASS=1
 # implicitly inherited (now split) eclasses
 case ${EAPI:-0} in
 0|1|2|3|4|5|6)
-	inherit desktop epatch estack ltprune multilib preserve-libs toolchain-funcs
+	inherit desktop epatch estack ltprune multilib preserve-libs \
+		toolchain-funcs vcs-clean
 	;;
 esac
-
-# @FUNCTION: eqawarn
-# @USAGE: [message]
-# @DESCRIPTION:
-# Proxy to ewarn for package managers that don't provide eqawarn and use the PM
-# implementation if available. Reuses PORTAGE_ELOG_CLASSES as set by the dev
-# profile.
-if ! declare -F eqawarn >/dev/null ; then
-	eqawarn() {
-		has qa ${PORTAGE_ELOG_CLASSES} && ewarn "$@"
-		:
-	}
-fi
-
-# @FUNCTION: ecvs_clean
-# @USAGE: [list of dirs]
-# @DESCRIPTION:
-# Remove CVS directories recursiveley.  Useful when a source tarball contains
-# internal CVS directories.  Defaults to $PWD.
-ecvs_clean() {
-	[[ $# -eq 0 ]] && set -- .
-	find "$@" -type d -name 'CVS' -prune -print0 | xargs -0 rm -rf
-	find "$@" -type f -name '.cvs*' -print0 | xargs -0 rm -rf
-}
-
-# @FUNCTION: esvn_clean
-# @USAGE: [list of dirs]
-# @DESCRIPTION:
-# Remove .svn directories recursiveley.  Useful when a source tarball contains
-# internal Subversion directories.  Defaults to $PWD.
-esvn_clean() {
-	[[ $# -eq 0 ]] && set -- .
-	find "$@" -type d -name '.svn' -prune -print0 | xargs -0 rm -rf
-}
-
-# @FUNCTION: egit_clean
-# @USAGE: [list of dirs]
-# @DESCRIPTION:
-# Remove .git* directories/files recursiveley.  Useful when a source tarball
-# contains internal Git directories.  Defaults to $PWD.
-egit_clean() {
-	[[ $# -eq 0 ]] && set -- .
-	find "$@" -type d -name '.git*' -prune -print0 | xargs -0 rm -rf
-}
 
 # @FUNCTION: emktemp
 # @USAGE: [temp dir]
@@ -164,98 +121,6 @@ strip-linguas() {
 	export LINGUAS=${newls:1}
 }
 
-# @FUNCTION: built_with_use
-# @USAGE: [--hidden] [--missing <action>] [-a|-o] <DEPEND ATOM> <List of USE flags>
-# @DESCRIPTION:
-#
-# Deprecated: Use EAPI 2 use deps in DEPEND|RDEPEND and with has_version calls.
-#
-# A temporary hack until portage properly supports DEPENDing on USE
-# flags being enabled in packages.  This will check to see if the specified
-# DEPEND atom was built with the specified list of USE flags.  The
-# --missing option controls the behavior if called on a package that does
-# not actually support the defined USE flags (aka listed in IUSE).
-# The default is to abort (call die).  The -a and -o flags control
-# the requirements of the USE flags.  They correspond to "and" and "or"
-# logic.  So the -a flag means all listed USE flags must be enabled
-# while the -o flag means at least one of the listed IUSE flags must be
-# enabled.  The --hidden option is really for internal use only as it
-# means the USE flag we're checking is hidden expanded, so it won't be found
-# in IUSE like normal USE flags.
-#
-# Remember that this function isn't terribly intelligent so order of optional
-# flags matter.
-built_with_use() {
-	local hidden="no"
-	if [[ $1 == "--hidden" ]] ; then
-		hidden="yes"
-		shift
-	fi
-
-	local missing_action="die"
-	if [[ $1 == "--missing" ]] ; then
-		missing_action=$2
-		shift ; shift
-		case ${missing_action} in
-			true|false|die) ;;
-			*) die "unknown action '${missing_action}'";;
-		esac
-	fi
-
-	local opt=$1
-	[[ ${opt:0:1} = "-" ]] && shift || opt="-a"
-
-	local PKG=$(best_version $1)
-	[[ -z ${PKG} ]] && die "Unable to resolve $1 to an installed package"
-	shift
-
-	has "${EAPI:-0}" 0 1 2 && local EROOT=${ROOT}
-	local USEFILE=${EROOT}/var/db/pkg/${PKG}/USE
-	local IUSEFILE=${EROOT}/var/db/pkg/${PKG}/IUSE
-
-	# if the IUSE file doesn't exist, the read will error out, we need to handle
-	# this gracefully
-	if [[ ! -e ${USEFILE} ]] || [[ ! -e ${IUSEFILE} && ${hidden} == "no" ]] ; then
-		case ${missing_action} in
-			true)	return 0;;
-			false)	return 1;;
-			die)	die "Unable to determine what USE flags $PKG was built with";;
-		esac
-	fi
-
-	if [[ ${hidden} == "no" ]] ; then
-		local IUSE_BUILT=( $(<"${IUSEFILE}") )
-		# Don't check USE_EXPAND #147237
-		local expand
-		for expand in $(echo ${USE_EXPAND} | tr '[:upper:]' '[:lower:]') ; do
-			if [[ $1 == ${expand}_* ]] ; then
-				expand=""
-				break
-			fi
-		done
-		if [[ -n ${expand} ]] ; then
-			if ! has $1 ${IUSE_BUILT[@]#[-+]} ; then
-				case ${missing_action} in
-					true)  return 0;;
-					false) return 1;;
-					die)   die "$PKG does not actually support the $1 USE flag!";;
-				esac
-			fi
-		fi
-	fi
-
-	local USE_BUILT=$(<${USEFILE})
-	while [[ $# -gt 0 ]] ; do
-		if [[ ${opt} = "-o" ]] ; then
-			has $1 ${USE_BUILT} && return 0
-		else
-			has $1 ${USE_BUILT} || return 1
-		fi
-		shift
-	done
-	[[ ${opt} = "-a" ]]
-}
-
 # @FUNCTION: make_wrapper
 # @USAGE: <wrapper> <target> [chdir] [libpaths] [installpath]
 # @DESCRIPTION:
@@ -270,7 +135,6 @@ make_wrapper() {
 
 	(
 	echo '#!/bin/sh'
-	[[ -n ${chdir} ]] && printf 'cd "%s"\n' "${EPREFIX}${chdir}"
 	if [[ -n ${libdir} ]] ; then
 		local var
 		if [[ ${CHOST} == *-darwin* ]] ; then
@@ -286,6 +150,7 @@ make_wrapper() {
 			fi
 		EOF
 	fi
+	[[ -n ${chdir} ]] && printf 'cd "%s" &&\n' "${EPREFIX}${chdir}"
 	# We don't want to quote ${bin} so that people can pass complex
 	# things as ${bin} ... "./someprog --args"
 	printf 'exec %s "$@"\n' "${bin/#\//${EPREFIX}/}"
@@ -294,6 +159,7 @@ make_wrapper() {
 
 	if [[ -n ${path} ]] ; then
 		(
+		exeopts -m 0755
 		exeinto "${path}"
 		newexe "${tmpwrapper}" "${wrapper}"
 		) || die
@@ -302,33 +168,11 @@ make_wrapper() {
 	fi
 }
 
-# @FUNCTION: path_exists
-# @USAGE: [-a|-o] <paths>
-# @DESCRIPTION:
-# Check if the specified paths exist.  Works for all types of paths
-# (files/dirs/etc...).  The -a and -o flags control the requirements
-# of the paths.  They correspond to "and" and "or" logic.  So the -a
-# flag means all the paths must exist while the -o flag means at least
-# one of the paths must exist.  The default behavior is "and".  If no
-# paths are specified, then the return value is "false".
 path_exists() {
-	local opt=$1
-	[[ ${opt} == -[ao] ]] && shift || opt="-a"
-
-	# no paths -> return false
-	# same behavior as: [[ -e "" ]]
-	[[ $# -eq 0 ]] && return 1
-
-	local p r=0
-	for p in "$@" ; do
-		[[ -e ${p} ]]
-		: $(( r += $? ))
-	done
-
-	case ${opt} in
-		-a) return $(( r != 0 )) ;;
-		-o) return $(( r == $# )) ;;
-	esac
+	eerror "path_exists has been removed.  Please see the following post"
+	eerror "for a replacement snippet:"
+	eerror "https://blogs.gentoo.org/mgorny/2018/08/09/inlining-path_exists/"
+	die "path_exists is banned"
 }
 
 # @FUNCTION: use_if_iuse
@@ -454,12 +298,14 @@ case ${EAPI:-0} in
 
 # @FUNCTION: einstalldocs
 # @DESCRIPTION:
-# Install documentation using DOCS and HTML_DOCS.
+# Install documentation using DOCS and HTML_DOCS, in EAPIs that do not
+# provide this function.  When available (i.e., in EAPI 6 or later),
+# the package manager implementation should be used instead.
 #
 # If DOCS is declared and non-empty, all files listed in it are
-# installed. The files must exist, otherwise the function will fail.
-# In EAPI 4 and subsequent EAPIs DOCS may specify directories as well,
-# in other EAPIs using directories is unsupported.
+# installed.  The files must exist, otherwise the function will fail.
+# In EAPI 4 and 5, DOCS may specify directories as well; in earlier
+# EAPIs using directories is unsupported.
 #
 # If DOCS is not declared, the files matching patterns given
 # in the default EAPI implementation of src_install will be installed.
@@ -516,10 +362,11 @@ einstalldocs() {
 # @FUNCTION: in_iuse
 # @USAGE: <flag>
 # @DESCRIPTION:
-# Determines whether the given flag is in IUSE. Strips IUSE default prefixes
-# as necessary.
+# Determines whether the given flag is in IUSE.  Strips IUSE default
+# prefixes as necessary.  In EAPIs where it is available (i.e., EAPI 6
+# or later), the package manager implementation should be used instead.
 #
-# Note that this function should not be used in the global scope.
+# Note that this function must not be used in the global scope.
 in_iuse() {
 	debug-print-function ${FUNCNAME} "${@}"
 	[[ ${#} -eq 1 ]] || die "Invalid args to ${FUNCNAME}()"
@@ -529,6 +376,25 @@ in_iuse() {
 
 	has "${flag}" "${liuse[@]#[+-]}"
 }
+
+;;
+esac
+
+case ${EAPI:-0} in
+0|1|2|3|4|5|6)
+
+# @FUNCTION: eqawarn
+# @USAGE: [message]
+# @DESCRIPTION:
+# Proxy to ewarn for package managers that don't provide eqawarn and use the PM
+# implementation if available. Reuses PORTAGE_ELOG_CLASSES as set by the dev
+# profile.
+if ! declare -F eqawarn >/dev/null ; then
+	eqawarn() {
+		has qa ${PORTAGE_ELOG_CLASSES} && ewarn "$@"
+		:
+	}
+fi
 
 ;;
 esac

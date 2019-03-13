@@ -1,6 +1,0 @@
-# Copyright 1999-2015 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-
-# Mike Frysinger <vapier@gentoo.org> (16 Mar 2015)
-# Needs dev-lang/luajit tested #499974
-dev-libs/efl oldlua

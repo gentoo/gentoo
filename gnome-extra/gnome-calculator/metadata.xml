@@ -5,4 +5,8 @@
 	<email>gnome@gentoo.org</email>
 	<name>Gentoo GNOME Desktop</name>
 </maintainer>
+<longdescription lang="en">
+	GNOME Calculator is an application that solves mathematical equations and is
+	suitable as a default application in a Desktop environment.
+</longdescription>
 </pkgmetadata>

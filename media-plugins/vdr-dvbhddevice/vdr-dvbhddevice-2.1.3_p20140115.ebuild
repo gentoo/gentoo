@@ -1,7 +1,7 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 inherit vdr-plugin-2
 
@@ -10,8 +10,8 @@ HG_REVISION_DATE="20140115"
 
 DESCRIPTION="VDR Plugin: output device for the 'Full Featured' TechnoTrend
 S2-6400 DVB Card"
-HOMEPAGE="http://powarman.dyndns.org/hg/dvbhddevice"
-SRC_URI="http://powarman.dyndns.org/hgwebdir.cgi/dvbhddevice/archive/${HG_REVISION}.tar.gz
+HOMEPAGE="https://bitbucket.org/powARman/dvbhddevice"
+SRC_URI="https://bitbucket.org/powARman/dvbhddevice/get/${HG_REVISION}.tar.gz
 -> dvbhddevice-2.1.3_p${HG_REVISION_DATE}.tar.gz"
 
 KEYWORDS="amd64 x86"

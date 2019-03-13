@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 KDE_AUTODEPS="false"
 KDE_TEST="forceoptional"
@@ -13,9 +13,12 @@ HOMEPAGE="http://milianw.de/blog/heaptrack-a-heap-memory-profiler-for-linux"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS=""
-IUSE="+qt5"
+IUSE="+qt5 zstd"
 
-COMMON_DEPEND="
+BDEPEND="
+	$(add_frameworks_dep extra-cmake-modules)
+"
+DEPEND="
 	dev-libs/boost:=
 	sys-libs/libunwind
 	sys-libs/zlib
@@ -33,17 +36,16 @@ COMMON_DEPEND="
 		$(add_qt_dep qtwidgets)
 		dev-libs/kdiagram:5
 	)
+	zstd? ( app-arch/zstd:= )
 "
-DEPEND="${COMMON_DEPEND}
-	$(add_frameworks_dep extra-cmake-modules)
-"
-RDEPEND="${COMMON_DEPEND}
+RDEPEND="${DEPEND}
 	qt5? ( >=kde-frameworks/kf-env-4 )
 "
 
 src_configure() {
 	local mycmakeargs=(
 		-DHEAPTRACK_BUILD_GUI=$(usex qt5)
+		$(cmake-utils_use_find_package zstd Zstd)
 	)
 
 	kde5_src_configure

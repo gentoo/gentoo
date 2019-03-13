@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,7 +12,7 @@ USE_PHP="php7-0 php7-1 php7-2" # But only truly build for these two.
 DESCRIPTION="Interface PHP with memcached via libmemcached library"
 LICENSE="PHP-3"
 SLOT="7"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="examples igbinary json sasl +session "
 
 COMMON_DEPEND=">=dev-libs/libmemcached-1.0.14[sasl?]
@@ -54,8 +54,6 @@ src_configure() {
 }
 
 src_install(){
-	use examples && dodoc -r server-example
-
 	if use php_targets_php7-0 || use php_targets_php7-1 || use php_targets_php7-2 ; then
 		php-ext-source-r3_src_install
 	fi

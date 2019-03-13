@@ -1,10 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
-
 JAVA_PKG_IUSE="examples source"
-WANT_ANT_TASKS="ant-nodeps"
 
 inherit eutils java-pkg-2 java-ant-2
 

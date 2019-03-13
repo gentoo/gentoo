@@ -1,5 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+EAPI=0
 
 inherit java-pkg-2
 
@@ -9,7 +11,7 @@ HOMEPAGE="https://jai.dev.java.net/"
 SRC_URI="http://download.java.net/media/jai/builds/release/${MY_PV}/jai-${MY_PV}-lib-linux-i586.tar.gz"
 LICENSE="sun-bcla-jai"
 SLOT="0"
-KEYWORDS="amd64 ppc64 x86 ~x86-fbsd"
+KEYWORDS="amd64 ppc64 x86"
 DEPEND="app-arch/unzip"
 RDEPEND=">=virtual/jre-1.3"
 IUSE=""

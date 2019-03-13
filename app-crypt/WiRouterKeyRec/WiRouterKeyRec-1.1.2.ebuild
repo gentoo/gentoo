@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -9,8 +9,8 @@ MY_PN="WiRouter_KeyRec"
 MY_P="${MY_PN}_${PV}"
 
 DESCRIPTION="Recovery tool for wpa passphrase"
-HOMEPAGE="http://www.salvatorefresta.net"
-SRC_URI="http://tools.salvatorefresta.net/${MY_P}.zip -> ${P}.zip"
+HOMEPAGE="https://www.salvatorefresta.net"
+SRC_URI="https://tools.salvatorefresta.net/${MY_P}.zip -> ${P}.zip"
 
 KEYWORDS="amd64 ppc x86"
 IUSE=""

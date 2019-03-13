@@ -5,8 +5,8 @@ does not have a semicolon (';') as trailing character
 
 leafpad.desktop: warning: key "Encoding" in group "Desktop Entry" is deprecated
 
---- data/leafpad.desktop.in
-+++ data/leafpad.desktop.in
+--- a/data/leafpad.desktop.in
++++ b/data/leafpad.desktop.in
 @@ -1,10 +1,9 @@
  [Desktop Entry]
 -Encoding=UTF-8

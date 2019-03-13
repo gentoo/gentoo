@@ -1,0 +1,14 @@
+Next to a CalDAV server, you need access to a mysql or postgresql
+database to use agendav.
+
+Read http://docs.agendav.org/en/2.2.0/admin/installation/ for
+installation instructions of the database.  This includes loading the
+SQL statements using agendavcli utility.
+
+Next you have to edit all config files in your installation's
+  /path/to/hostroot/agendav/config.
+
+Before you can use agendav, you need to upgrade the database (you also
+need this on a new install) using:
+
+  $ /path/to/hostroot/agendav/agendavcli dbupdate

@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -9,8 +9,8 @@ AUTOTOOLS_AUTO_DEPEND=no
 inherit eutils multilib systemd toolchain-funcs autotools
 
 DESCRIPTION="Linux kernel (2.4+) firewall, NAT and packet mangling tools"
-HOMEPAGE="http://www.netfilter.org/projects/iptables/"
-SRC_URI="http://www.netfilter.org/projects/iptables/files/${P}.tar.bz2"
+HOMEPAGE="https://www.netfilter.org/projects/iptables/"
+SRC_URI="https://www.netfilter.org/projects/iptables/files/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

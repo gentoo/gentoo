@@ -1,0 +1,26 @@
+From 4558d6753611ab1bf21765017e5b451aee8409f6 Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Sun, 18 Mar 2018 14:23:28 +0000
+Subject: [PATCH] configure: Don't quote $CC when calling it
+
+It might have additional arguments.
+---
+ configure | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure b/configure
+index f480f7b..8ebb929 100755
+--- a/configure
++++ b/configure
+@@ -480,7 +480,7 @@ if test "$(basename $CC)" = "icc" || test "$(basename $CC)" = "ecc"; then
+ else
+   CC_TMP="$CC"
+   for CC in "$CC_TMP" gcc cc ; do
+-    if "$CC" -v >/dev/null 2>&1; then
++    if $CC -v >/dev/null 2>&1; then
+       cc_name_tmp=$($CC -v 2>&1 | tail -n 1 | cut -d ' ' -f 1)
+       if test "$cc_name_tmp" = "gcc"; then
+         cc_name=$cc_name_tmp
+-- 
+2.16.1
+

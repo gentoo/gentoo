@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -20,12 +20,10 @@ RDEPEND="x11-libs/gtk+:2
 	x11-libs/libXft
 	xinerama? ( x11-libs/libXinerama )"
 DEPEND="${RDEPEND}
-	x11-proto/xextproto
-	x11-proto/xproto
-	x11-libs/libXt
 	virtual/pkgconfig
-	nls? ( sys-devel/gettext )
-	xinerama? ( x11-proto/xineramaproto )"
+	x11-base/xorg-proto
+	x11-libs/libXt
+	nls? ( sys-devel/gettext )"
 
 DOCS="AUTHORS ChangeLog NEWS README"
 

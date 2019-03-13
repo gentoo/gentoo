@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit eutils python-single-r1 cmake-utils
 
 DESCRIPTION="Alembic is an open framework for storing and sharing scene data"
-HOMEPAGE="http://alembic.io/"
+HOMEPAGE="https://www.alembic.io"
 SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
@@ -38,6 +38,7 @@ DOCS=( ACKNOWLEDGEMENTS.txt FEEDBACK.txt NEWS.txt README.txt )
 PATCHES=(
 	"${FILESDIR}/${PN}-FindIlmBase-pkgconfig.patch"
 	"${FILESDIR}/${PN}-CMakeLists-fix_lib.patch"
+	"${FILESDIR}/${PN}-fix-importerror.patch"
 )
 
 pkg_setup() {

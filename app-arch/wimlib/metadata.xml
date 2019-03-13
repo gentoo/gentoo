@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>slis@gentoo.org</email>
+  </maintainer>
+  <use>
+    <flag name="fuse">
+      Use fuse libraries
+    </flag>
+    <flag name="iso">
+      Install app-cdr/cdrtools in order to prepare iso images
+    </flag>
+    <flag name="ntfs">
+      Use libntfs-3g library from sys-fs/ntfs3g
+    </flag>
+    <flag name="openssl">
+      Use the SHA-1 message digest from libcrypto instead of compilling another implementation
+    </flag>
+    <flag name="yasm">
+      Use yasm assembler instead of nasm
+    </flag>
+  </use>
+</pkgmetadata>

@@ -21,6 +21,7 @@
 		most common Linux/UNIX commands, reducing the amount of typing sysadmins and
 		programmers need to do on a daily basis.
 	</longdescription>
+	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="bitbucket">mgorny/bashcomp2</remote-id>
 		<remote-id type="github">scop/bash-completion</remote-id>

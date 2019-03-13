@@ -5,8 +5,8 @@ Subject: build system
 fix underlinking in test phase
 wrt https://bugs.gentoo.org/show_bug.cgi?id=418447
 
---- build/Makefile.test
-+++ build/Makefile.test
+--- a/build/Makefile.test
++++ b/build/Makefile.test
 @@ -48,8 +48,8 @@
      USE_PROXY_FLAG = $(DEFINE_KEY)HARNESS_USE_PROXY
      CPLUS_FLAGS += $(USE_PROXY_FLAG)

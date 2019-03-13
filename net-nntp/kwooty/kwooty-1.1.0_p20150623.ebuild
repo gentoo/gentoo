@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit kde5
 
@@ -38,10 +38,11 @@ RDEPEND="${DEPEND}
 	!net-nntp/kwooty:4
 "
 
+PATCHES=( "${FILESDIR}/${P}-dep.patch" )
+
 src_prepare() {
 	kde5_src_prepare
-
-	sed -i -e "/KF5DocTools/d" CMakeLists.txt || die
+	punt_bogus_dep KF5 DocTools
 }
 
 pkg_postinst() {

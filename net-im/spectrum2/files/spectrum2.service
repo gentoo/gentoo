@@ -1,0 +1,12 @@
+[Unit]
+Description=Spectrum2 Transport
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/spectrum2_manager start
+ExecStop=/usr/bin/spectrum2_manager stop
+User=spectrum
+Group=spectrum
+
+[Install]
+WantedBy=multi-user.target

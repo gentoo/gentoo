@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -43,7 +43,10 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}/${PN}-${MY_PV}"
 
-PATCHES=( "${FILESDIR}"/${P}-gcc5.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-gcc5.patch
+	"${FILESDIR}"/${P}-xgetbv.patch
+)
 
 clean_locale() {
 	rm -R "${S}"/locales/"${1}" || die

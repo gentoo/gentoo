@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -40,7 +40,7 @@ DOCS=( NOTICE )
 
 src_configure() {
 	mycmakeargs=(
-		-DWITH_GSL=$(usex gsl)
+		-DCMAKE_DISABLE_FIND_PACKAGE_GSL=$(usex '!gsl')
 		-DWITH_FFTW=$(usex fftw)
 		-DWITH_SQLITE3=$(usex sqlite)
 		-DWITH_RC_FILES=OFF

@@ -1,8 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-USE_RUBY="ruby21 ruby22 ruby23 ruby24"
+USE_RUBY="ruby23 ruby24 ruby25 ruby26"
 
 RUBY_FAKEGEM_TASK_DOC=""
 RUBY_FAKEGEM_EXTRADOC="README.md"
@@ -21,11 +21,15 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
 IUSE=""
 
-ruby_add_rdepend ">=dev-ruby/mocha-1.1:1.0"
+ruby_add_rdepend ">=dev-ruby/mocha-1.5.0:1.0"
 
 ruby_add_bdepend "test? ( dev-ruby/test-unit:2 )"
 
 all_ruby_prepare() {
 	sed -i -e '/git ls-files/d' "${RUBY_FAKEGEM_GEMSPEC}" || die
 	sed -i -e '/bundler/d' Rakefile || die
+
+	# Fix tests to work with mocha 1.5.0 or newer where reset_instance is gone
+	sed -i -e '/reset_instance/ s:^:#:' test/unit/*received_test.rb || die
+	sed -i -e 's/Mockery.reset_instance/mocha_teardown/' test/unit/mockery_test.rb || die
 }

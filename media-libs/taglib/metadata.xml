@@ -5,9 +5,6 @@
 		<email>kde@gentoo.org</email>
 		<name>Gentoo KDE Project</name>
 	</maintainer>
-	<use>
-		<flag name="boost">Use <pkg>dev-libs/boost</pkg> instead of GCC built-ins</flag>
-	</use>
 	<upstream>
 		<remote-id type="github">taglib/taglib</remote-id>
 	</upstream>

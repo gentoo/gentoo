@@ -1,7 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+
 inherit autotools xdg-utils
 
 DESCRIPTION="A lightweight GTK image viewer forked from GQview"
@@ -10,30 +11,34 @@ SRC_URI="http://www.geeqie.org/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 IUSE="debug doc exif ffmpegthumbnailer gpu-accel gtk3 jpeg lcms lirc lua map tiff xmp"
 
-RDEPEND="gtk3? ( x11-libs/gtk+:3 )
-	!gtk3? ( x11-libs/gtk+:2 )
+RDEPEND="
 	virtual/libintl
 	doc? ( app-text/gnome-doc-utils )
 	ffmpegthumbnailer? ( media-video/ffmpegthumbnailer )
 	gpu-accel? ( media-libs/clutter-gtk )
+	gtk3? ( x11-libs/gtk+:3 )
+	!gtk3? ( x11-libs/gtk+:2 )
 	jpeg? ( virtual/jpeg:0 )
 	lcms? ( media-libs/lcms:2 )
 	lirc? ( app-misc/lirc )
 	lua? ( >=dev-lang/lua-5.1:= )
 	map? ( media-libs/libchamplain:0.12 )
+	tiff? ( media-libs/tiff:0 )
 	xmp? ( >=media-gfx/exiv2-0.17:=[xmp] )
-	!xmp? ( exif? ( >=media-gfx/exiv2-0.17:= ) )
-	tiff? ( media-libs/tiff:0 )"
+	!xmp? ( exif? ( >=media-gfx/exiv2-0.17:= ) )"
 DEPEND="${RDEPEND}
-	virtual/pkgconfig
+	dev-util/glib-utils
 	dev-util/intltool
-	sys-devel/gettext"
+	sys-devel/gettext
+	virtual/pkgconfig"
 
 REQUIRED_USE="gpu-accel? ( gtk3 )
 	map? ( gpu-accel )"
+
+PATCHES=( "${FILESDIR}/${P}-exiv2-0.27.patch" ) # bug 674044
 
 src_prepare() {
 	default

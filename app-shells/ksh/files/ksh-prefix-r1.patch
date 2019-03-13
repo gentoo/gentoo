@@ -1,0 +1,51 @@
+From b7769b1f336ba533c4510f1b112fecf84a638a08 Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Sun, 28 Jan 2018 16:14:42 -0500
+Subject: [PATCH] EPREFIX support
+
+---
+ src/cmd/ksh93/data/msg.c | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/src/cmd/ksh93/data/msg.c b/src/cmd/ksh93/data/msg.c
+index eabe59e2..61512280 100644
+--- a/src/cmd/ksh93/data/msg.c
++++ b/src/cmd/ksh93/data/msg.c
+@@ -182,7 +182,7 @@ const char e_heading[] = "Current option settings";
+ const char e_sptbnl[] = " \t\n";
+ const char e_tolower[] = "tolower";
+ const char e_toupper[] = "toupper";
+-const char e_defpath[] = "/bin:/usr/bin:";
++const char e_defpath[] = "@GENTOO_PORTAGE_EPREFIX@/bin:@GENTOO_PORTAGE_EPREFIX@/usr/bin:";
+ const char e_defedit[] = _pth_ed;
+ const char e_unknown[] = "<command unknown>";
+ const char e_devnull[] = "/dev/null";
+@@ -190,19 +190,19 @@ const char e_traceprompt[] = "+ ";
+ const char e_supprompt[] = "# ";
+ const char e_stdprompt[] = "$ ";
+ const char e_profile[] = "$HOME/.profile";
+-const char e_sysprofile[] = "/etc/profile";
+-const char e_suidprofile[] = "/etc/suid_profile";
+-const char e_sysrc[] = "/etc/ksh.kshrc";
++const char e_sysprofile[] = "@GENTOO_PORTAGE_EPREFIX@/etc/profile";
++const char e_suidprofile[] = "@GENTOO_PORTAGE_EPREFIX@/etc/suid_profile";
++const char e_sysrc[] = "@GENTOO_PORTAGE_EPREFIX@/etc/ksh.kshrc";
+ #if SHOPT_BASH
+-const char e_bash_sysrc[] = "/etc/bash.bashrc";
++const char e_bash_sysrc[] = "@GENTOO_PORTAGE_EPREFIX@/etc/bash/bashrc";
+ const char e_bash_rc[] = "$HOME/.bashrc";
+ const char e_bash_login[] = "$HOME/.bash_login";
+ const char e_bash_logout[] = "$HOME/.bash_logout";
+ const char e_bash_profile[] = "$HOME/.bash_profile";
+ #endif  // SHOPT_BASH
+-const char e_crondir[] = "/usr/spool/cron/atjobs";
++const char e_crondir[] = "@GENTOO_PORTAGE_EPREFIX@/usr/spool/cron/atjobs";
+ const char e_prohibited[] = "login setuid/setgid shells prohibited";
+-const char e_suidexec[] = "/etc/suid_exec";
++const char e_suidexec[] = "@GENTOO_PORTAGE_EPREFIX@/etc/suid_exec";
+ const char hist_fname[] = "/.sh_history";
+ const char e_dot[] = ".";
+ const char e_envmarker[] = "A__z";
+-- 
+2.16.1
+

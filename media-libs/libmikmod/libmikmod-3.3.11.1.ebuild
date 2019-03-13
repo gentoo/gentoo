@@ -19,9 +19,7 @@ RDEPEND="alsa? ( >=media-libs/alsa-lib-1.0.27.2:=[${MULTILIB_USEDEP}] )
 	nas? ( >=media-libs/nas-1.9.4:=[${MULTILIB_USEDEP}] )
 	openal? ( >=media-libs/openal-1.15.1-r1[${MULTILIB_USEDEP}] )
 	pulseaudio? ( >=media-sound/pulseaudio-5.0[${MULTILIB_USEDEP}] )
-	!${CATEGORY}/${PN}:2
-	abi_x86_32? ( !<=app-emulation/emul-linux-x86-soundlibs-20130224-r3
-					!app-emulation/emul-linux-x86-soundlibs[-abi_x86_32(-)] )"
+	!${CATEGORY}/${PN}:2"
 DEPEND="${RDEPEND}
 	sys-apps/texinfo
 	oss? ( virtual/os-headers )"

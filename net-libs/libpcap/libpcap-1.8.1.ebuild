@@ -1,8 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools eutils multilib-minimal
+inherit autotools multilib-minimal ltprune
 
 DESCRIPTION="A system-independent library for user-level network packet capture"
 HOMEPAGE="
@@ -15,7 +15,7 @@ SRC_URI="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
 IUSE="bluetooth dbus netlink static-libs usb"
 
 RDEPEND="
@@ -38,12 +38,11 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.8.1-darwin.patch
 	"${FILESDIR}"/${PN}-1.8.1-libnl.patch
 	"${FILESDIR}"/${PN}-1.8.1-usbmon.patch
+	"${FILESDIR}"/${PN}-9999-parallel.patch
 )
 
 src_prepare() {
 	default
-
-	eapply_user
 
 	echo ${PV} > VERSION || die
 

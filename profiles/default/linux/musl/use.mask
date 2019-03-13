@@ -6,7 +6,6 @@ elibc_uclibc
 elibc_glibc
 
 # video cards that work on musl
--video_cards_cirrus
 -video_cards_i915
 -video_cards_intel
 -video_cards_virtualbox

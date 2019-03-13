@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="Draws Python object reference graphs with graphviz"
-HOMEPAGE="http://mg.pov.lt/objgraph/"
+HOMEPAGE="https://mg.pov.lt/objgraph/"
 SRC_URI="mirror://pypi/o/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"

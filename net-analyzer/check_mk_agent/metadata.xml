@@ -10,6 +10,7 @@
 		Nagios/Icigna centralized monitoring servers.
 	</longdescription>
 	<use>
+		<flag name="inventory">Install check_mk-agent linux inventory plugin.</flag>
 		<flag name="logwatch">Install check_mk-agent logwatch plugin.</flag>
 		<flag name="smart">Install check_mk-agent S.M.A.R.T plugin.</flag>
 		<flag name="mysql">Install check_mk-agent mysql plugin.</flag>

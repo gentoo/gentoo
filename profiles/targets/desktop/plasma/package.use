@@ -1,7 +1,10 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-# Required by kde-apps/okteta
+# Required by >=dev-qt/qtwebengine-5.9
+dev-libs/libxml2 icu
+
+# Required by app-editors/okteta
 dev-qt/qtscript:5 scripttools
 
 # Required by kde-apps/akonadi
@@ -9,6 +12,9 @@ dev-qt/qtsql:5 mysql
 
 # Required by kde-apps/ktp-text-ui
 kde-apps/ktp-common-internals otr
+
+# Enable by default, requires kde-frameworks/kwayland
+kde-misc/yakuake absolute-position
 
 # Required by kde-apps/libkexiv2
 media-gfx/exiv2 xmp
@@ -23,13 +29,7 @@ media-libs/gd fontconfig
 media-libs/mesa egl wayland
 
 # Required by kde-apps/kdenlive
->=media-libs/mlt-0.9.8-r2 ffmpeg kdenlive melt
-
-# Required by app-office/libreoffice
-media-libs/phonon designer
-
-# Required by kde-plasma/plasma-pa
-media-sound/pulseaudio gnome
+media-libs/mlt ffmpeg frei0r kdenlive melt
 
 # Required by kde-frameworks/kactivities
 sys-libs/zlib minizip

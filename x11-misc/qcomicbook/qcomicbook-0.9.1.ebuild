@@ -1,30 +1,35 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
+MY_PN="QComicBook"
 CMAKE_IN_SOURCE_BUILD=1
 PLOCALES="cs_CZ de_DE es_ES fi_FI fr_CA fr_FR it_IT ko_KR nl_NL pl_PL pt_BR ru_RU uk_UA zh_CN"
-inherit cmake-utils flag-o-matic l10n vcs-snapshot
+inherit cmake-utils flag-o-matic l10n
 
 DESCRIPTION="A viewer for comic book archives containing jpeg/png images"
-HOMEPAGE="http://qcomicbook.org/"
-SRC_URI="https://github.com/stolowski/QComicBook/archive/${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/stolowski/QComicBook"
+SRC_URI="https://github.com/stolowski/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~ppc x86"
 IUSE="debug"
 
-DEPEND="app-text/poppler[qt5]
+RDEPEND="app-text/poppler[qt5]
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtprintsupport:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtx11extras:5"
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}
+	dev-qt/linguist-tools:5
+"
 
 DOCS=( AUTHORS ChangeLog NEWS README THANKS TODO )
+
+S="${WORKDIR}/${MY_PN}-${PV}"
 
 src_prepare() {
 	rm_loc() {

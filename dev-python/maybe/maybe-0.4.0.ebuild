@@ -1,14 +1,14 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_{4,5}} )
+PYTHON_COMPAT=( python{2_7,3_{4,5,6}} )
 
 inherit distutils-r1
 
 DESCRIPTION="See what a program does before deciding whether you really want it to happen"
-HOMEPAGE="https://github.com/p-e-w/maybe http://pypi.python.org/pypi/maybe"
+HOMEPAGE="https://github.com/p-e-w/maybe https://pypi.org/project/maybe/"
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"

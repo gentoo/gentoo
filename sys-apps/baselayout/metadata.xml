@@ -10,6 +10,6 @@
 	<name>Gentoo Base System</name>
 </maintainer>
 <use>
-	<flag name="usrmerge">Activate the /usr merge when stages are built</flag>
+	<flag name="split-usr">Enable this if /bin and /usr/bin are separate directories</flag>
 </use>
 </pkgmetadata>

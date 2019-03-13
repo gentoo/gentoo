@@ -4,6 +4,21 @@
 # Unmask the flag which corresponds to ARCH.
 -x86
 
+# Andreas Sturmlechner <asturm@gentoo.org> (17 Nov 2018)
+# media-sound/audacious is keyworded on x86
+-audacious
+
+# Matt Turner <mattst88@gentoo.org> (11 Nov 2018)
+# d3d9 works on x86
+-d3d9
+
+# Michał Górny <mgorny@gentoo.org> (16 Jul 2018)
+# Python 3.7 support requires fresh versions of packages which are stuck
+# at keywordreqs.
+# bug #661320: dev-python/twisted
+python_targets_python3_7
+python_single_target_python3_7
+
 # Michael Orlitzky <mjo@gentoo.org> (13 Jan 2018)
 # Oracle database stuff should work on x86.
 -oci8
@@ -138,6 +153,7 @@
 -video_cards_siliconmotion
 -video_cards_vmware
 -video_cards_geode
+-video_cards_vesa
 -video_cards_via
 -video_cards_virtualbox
 -video_cards_qxl

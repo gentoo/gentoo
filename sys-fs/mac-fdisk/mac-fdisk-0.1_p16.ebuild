@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -34,6 +34,8 @@ src_prepare() {
 	### Note that >=2TB disks may not work due to limitations of the Mac
 	### Partition Table structure, this needs to be investigated
 	epatch "${FILESDIR}"/big_pt.patch
+
+	epatch "${FILESDIR}"/${PN}-0.1_p16-ppc-inline.patch
 }
 
 src_compile() {

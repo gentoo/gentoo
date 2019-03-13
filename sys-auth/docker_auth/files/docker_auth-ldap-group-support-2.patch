@@ -1,0 +1,427 @@
+From 2ee85ad8040bab72a929958b4c3c8037dbcd31ae Mon Sep 17 00:00:00 2001
+From: Kevin <kcd83@users.noreply.github.com>
+Date: Mon, 27 Feb 2017 19:09:52 +1300
+Subject: [PATCH 1/5] Initial proof of concept mapping memberOf CN to the label
+ groups #63
+
+(cherry picked from commit 4a33badac6b74617dfe3797a716a6907cf018b27)
+---
+ auth_server/authn/ldap_auth.go | 73 ++++++++++++++++++++++++++++++++++--------
+ 1 file changed, 60 insertions(+), 13 deletions(-)
+
+diff --git a/auth_server/authn/ldap_auth.go b/auth_server/authn/ldap_auth.go
+index a3425ed..5769057 100644
+--- a/auth_server/authn/ldap_auth.go
++++ b/auth_server/authn/ldap_auth.go
+@@ -17,7 +17,6 @@
+ package authn
+ 
+ import (
+-	"bytes"
+ 	"crypto/tls"
+ 	"crypto/x509"
+ 	"fmt"
+@@ -73,10 +72,20 @@ func (la *LDAPAuth) Authenticate(account string, password PasswordString) (bool,
+ 	account = la.escapeAccountInput(account)
+ 
+ 	filter := la.getFilter(account)
+-	accountEntryDN, uSearchErr := la.ldapSearch(l, &la.config.Base, &filter, &[]string{})
++
++	// dnAndGroupAttr := []string{"DN"} // example of no groups mapping attribute
++	groupAttribute := "memberOf"
++	dnAndGroupAttr := []string{"DN", groupAttribute}
++
++	entryAttrMap, uSearchErr := la.ldapSearch(l, &la.config.Base, &filter, &dnAndGroupAttr)
+ 	if uSearchErr != nil {
+ 		return false, nil, uSearchErr
+ 	}
++	if len(entryAttrMap) < 1 || entryAttrMap["DN"] == nil || len(entryAttrMap["DN"]) != 1 {
++		return false, nil, NoMatch // User does not exist
++	}
++
++	accountEntryDN := entryAttrMap["DN"][0]
+ 	if accountEntryDN == "" {
+ 		return false, nil, NoMatch // User does not exist
+ 	}
+@@ -95,6 +104,20 @@ func (la *LDAPAuth) Authenticate(account string, password PasswordString) (bool,
+ 		return false, nil, bindErr
+ 	}
+ 
++	// Extract group names from the attribute values
++	if entryAttrMap[groupAttribute] != nil {
++		rawGroups := entryAttrMap[groupAttribute]
++		labels := make(map[string][]string)
++		var groups []string
++		for _, value := range rawGroups {
++			cn := la.getCNFromDN(value)
++			groups = append(groups, cn)
++		}
++		labels["groups"] = groups
++
++		return true, labels, nil
++	}
++
+ 	return true, nil, nil
+ }
+ 
+@@ -185,9 +208,9 @@ func (la *LDAPAuth) getFilter(account string) string {
+ 
+ //ldap search and return required attributes' value from searched entries
+ //default return entry's DN value if you leave attrs array empty
+-func (la *LDAPAuth) ldapSearch(l *ldap.Conn, baseDN *string, filter *string, attrs *[]string) (string, error) {
++func (la *LDAPAuth) ldapSearch(l *ldap.Conn, baseDN *string, filter *string, attrs *[]string) (map[string][]string, error) {
+ 	if l == nil {
+-		return "", fmt.Errorf("No ldap connection!")
++		return nil, fmt.Errorf("No ldap connection!")
+ 	}
+ 	glog.V(2).Infof("Searching...basedDN:%s, filter:%s", *baseDN, *filter)
+ 	searchRequest := ldap.NewSearchRequest(
+@@ -198,30 +221,54 @@ func (la *LDAPAuth) ldapSearch(l *ldap.Conn, baseDN *string, filter *string, att
+ 		nil)
+ 	sr, err := l.Search(searchRequest)
+ 	if err != nil {
+-		return "", err
++		return nil, err
+ 	}
+ 
+ 	if len(sr.Entries) == 0 {
+-		return "", nil // User does not exist
++		return nil, nil // User does not exist
+ 	} else if len(sr.Entries) > 1 {
+-		return "", fmt.Errorf("Too many entries returned.")
++		return nil, fmt.Errorf("Too many entries returned.")
+ 	}
+ 
+-	var buffer bytes.Buffer
++	result := make(map[string][]string)
+ 	for _, entry := range sr.Entries {
++
+ 		if len(*attrs) == 0 {
+ 			glog.V(2).Infof("Entry DN = %s", entry.DN)
+-			buffer.WriteString(entry.DN)
++			result["DN"] = []string{entry.DN}
+ 		} else {
+ 			for _, attr := range *attrs {
+-				values := strings.Join(entry.GetAttributeValues(attr), " ")
+-				glog.V(2).Infof("Entry %s = %s", attr, values)
+-				buffer.WriteString(values)
++				var values []string
++				if attr == "DN" {
++					// DN is excluded from attributes
++					values = []string{entry.DN}
++				} else {
++					values = entry.GetAttributeValues(attr)
++				}
++				valuesString := strings.Join(values, "\n")
++				glog.V(2).Infof("Entry %s = %s", attr, valuesString)
++				result[attr] = values
++			}
++		}
++	}
++
++	return result, nil
++}
++
++func (la *LDAPAuth) getCNFromDN(dn string) string {
++	parsedDN, err := ldap.ParseDN(dn)
++	if err != nil || len(parsedDN.RDNs) > 0 {
++		for _, rdn := range parsedDN.RDNs {
++			for _, rdnAttr := range rdn.Attributes {
++				if rdnAttr.Type == "CN" {
++					return rdnAttr.Value
++				}
+ 			}
+ 		}
+ 	}
+ 
+-	return buffer.String(), nil
++	// else try using raw DN
++	return dn
+ }
+ 
+ func (la *LDAPAuth) Stop() {
+
+From 3f5e1b78519238ca65e6084f48cbdd56531e4c84 Mon Sep 17 00:00:00 2001
+From: Kevin <kcd83@users.noreply.github.com>
+Date: Tue, 28 Feb 2017 18:09:55 +1300
+Subject: [PATCH 2/5] Apply attribute mapping from configuration
+
+(cherry picked from commit ddde2fa779e746d7e74cd972a4c6795c72f17ee6)
+---
+ auth_server/authn/ldap_auth.go | 127 ++++++++++++++++++++++++-----------------
+ 1 file changed, 75 insertions(+), 52 deletions(-)
+
+diff --git a/auth_server/authn/ldap_auth.go b/auth_server/authn/ldap_auth.go
+index 5769057..99c9146 100644
+--- a/auth_server/authn/ldap_auth.go
++++ b/auth_server/authn/ldap_auth.go
+@@ -27,17 +27,23 @@ import (
+ 	"github.com/cesanta/glog"
+ )
+ 
++type LabelMap struct {
++	Attribute string `yaml:"attribute,omitempty"`
++	ParseCN   bool   `yaml:"parse_cn,omitempty"`
++}
++
+ type LDAPAuthConfig struct {
+-	Addr                  string `yaml:"addr,omitempty"`
+-	TLS                   string `yaml:"tls,omitempty"`
+-	InsecureTLSSkipVerify bool   `yaml:"insecure_tls_skip_verify,omitempty"`
+-	CACertificate         string `yaml:"ca_certificate,omitempty"`
+-	Base                  string `yaml:"base,omitempty"`
+-	Filter                string `yaml:"filter,omitempty"`
+-	BindDN                string `yaml:"bind_dn,omitempty"`
+-	BindPasswordFile      string `yaml:"bind_password_file,omitempty"`
+-	GroupBaseDN           string `yaml:"group_base_dn,omitempty"`
+-	GroupFilter           string `yaml:"group_filter,omitempty"`
++	Addr                  string              `yaml:"addr,omitempty"`
++	TLS                   string              `yaml:"tls,omitempty"`
++	InsecureTLSSkipVerify bool                `yaml:"insecure_tls_skip_verify,omitempty"`
++	CACertificate         string              `yaml:"ca_certificate,omitempty"`
++	Base                  string              `yaml:"base,omitempty"`
++	Filter                string              `yaml:"filter,omitempty"`
++	BindDN                string              `yaml:"bind_dn,omitempty"`
++	BindPasswordFile      string              `yaml:"bind_password_file,omitempty"`
++	LabelMaps             map[string]LabelMap `yaml:"labels,omitempty"`
++	GroupBaseDN           string              `yaml:"group_base_dn,omitempty"`
++	GroupFilter           string              `yaml:"group_filter,omitempty"`
+ }
+ 
+ type LDAPAuth struct {
+@@ -73,22 +79,19 @@ func (la *LDAPAuth) Authenticate(account string, password PasswordString) (bool,
+ 
+ 	filter := la.getFilter(account)
+ 
+-	// dnAndGroupAttr := []string{"DN"} // example of no groups mapping attribute
+-	groupAttribute := "memberOf"
+-	dnAndGroupAttr := []string{"DN", groupAttribute}
++	labelAttributes, labelsConfigErr := la.getLabelAttributes()
++	if labelsConfigErr != nil {
++		return false, nil, labelsConfigErr
++	}
+ 
+-	entryAttrMap, uSearchErr := la.ldapSearch(l, &la.config.Base, &filter, &dnAndGroupAttr)
++	accountEntryDN, entryAttrMap, uSearchErr := la.ldapSearch(l, &la.config.Base, &filter, &labelAttributes)
+ 	if uSearchErr != nil {
+ 		return false, nil, uSearchErr
+ 	}
+-	if len(entryAttrMap) < 1 || entryAttrMap["DN"] == nil || len(entryAttrMap["DN"]) != 1 {
+-		return false, nil, NoMatch // User does not exist
+-	}
+-
+-	accountEntryDN := entryAttrMap["DN"][0]
+ 	if accountEntryDN == "" {
+ 		return false, nil, NoMatch // User does not exist
+ 	}
++
+ 	// Bind as the user to verify their password
+ 	if len(accountEntryDN) > 0 {
+ 		err := l.Bind(accountEntryDN, string(password))
+@@ -104,21 +107,13 @@ func (la *LDAPAuth) Authenticate(account string, password PasswordString) (bool,
+ 		return false, nil, bindErr
+ 	}
+ 
+-	// Extract group names from the attribute values
+-	if entryAttrMap[groupAttribute] != nil {
+-		rawGroups := entryAttrMap[groupAttribute]
+-		labels := make(map[string][]string)
+-		var groups []string
+-		for _, value := range rawGroups {
+-			cn := la.getCNFromDN(value)
+-			groups = append(groups, cn)
+-		}
+-		labels["groups"] = groups
+-
+-		return true, labels, nil
++	// Extract labels from the attribute values
++	labels, labelsExtractErr := la.getLabelsFromMap(entryAttrMap)
++	if labelsExtractErr != nil {
++		return false, nil, labelsExtractErr
+ 	}
+ 
+-	return true, nil, nil
++	return true, labels, nil
+ }
+ 
+ func (la *LDAPAuth) bindReadOnlyUser(l *ldap.Conn) error {
+@@ -208,9 +203,9 @@ func (la *LDAPAuth) getFilter(account string) string {
+ 
+ //ldap search and return required attributes' value from searched entries
+ //default return entry's DN value if you leave attrs array empty
+-func (la *LDAPAuth) ldapSearch(l *ldap.Conn, baseDN *string, filter *string, attrs *[]string) (map[string][]string, error) {
++func (la *LDAPAuth) ldapSearch(l *ldap.Conn, baseDN *string, filter *string, attrs *[]string) (string, map[string][]string, error) {
+ 	if l == nil {
+-		return nil, fmt.Errorf("No ldap connection!")
++		return "", nil, fmt.Errorf("No ldap connection!")
+ 	}
+ 	glog.V(2).Infof("Searching...basedDN:%s, filter:%s", *baseDN, *filter)
+ 	searchRequest := ldap.NewSearchRequest(
+@@ -221,38 +216,66 @@ func (la *LDAPAuth) ldapSearch(l *ldap.Conn, baseDN *string, filter *string, att
+ 		nil)
+ 	sr, err := l.Search(searchRequest)
+ 	if err != nil {
+-		return nil, err
++		return "", nil, err
+ 	}
+ 
+ 	if len(sr.Entries) == 0 {
+-		return nil, nil // User does not exist
++		return "", nil, nil // User does not exist
+ 	} else if len(sr.Entries) > 1 {
+-		return nil, fmt.Errorf("Too many entries returned.")
++		return "", nil, fmt.Errorf("Too many entries returned.")
+ 	}
+ 
+-	result := make(map[string][]string)
++	attributes := make(map[string][]string)
++	var entryDn string
+ 	for _, entry := range sr.Entries {
+-
++		entryDn = entry.DN
+ 		if len(*attrs) == 0 {
+-			glog.V(2).Infof("Entry DN = %s", entry.DN)
+-			result["DN"] = []string{entry.DN}
++			glog.V(2).Infof("Entry DN = %s", entryDn)
+ 		} else {
+ 			for _, attr := range *attrs {
+-				var values []string
+-				if attr == "DN" {
+-					// DN is excluded from attributes
+-					values = []string{entry.DN}
+-				} else {
+-					values = entry.GetAttributeValues(attr)
+-				}
+-				valuesString := strings.Join(values, "\n")
+-				glog.V(2).Infof("Entry %s = %s", attr, valuesString)
+-				result[attr] = values
++				values := entry.GetAttributeValues(attr)
++				glog.V(2).Infof("Entry %s = %s", attr, strings.Join(values, "\n"))
++				attributes[attr] = values
+ 			}
+ 		}
+ 	}
+ 
+-	return result, nil
++	return entryDn, attributes, nil
++}
++
++func (la *LDAPAuth) getLabelAttributes() ([]string, error) {
++	labelAttributes := make([]string, len(la.config.LabelMaps))
++	i := 0
++	for key, mapping := range la.config.LabelMaps {
++		if mapping.Attribute == "" {
++			return nil, fmt.Errorf("Label %s is missing 'attribute' to map from", key)
++		}
++		labelAttributes[i] = mapping.Attribute
++		i++
++	}
++	return labelAttributes, nil
++}
++
++func (la *LDAPAuth) getLabelsFromMap(attrMap map[string][]string) (map[string][]string, error) {
++	labels := make(map[string][]string)
++	for key, mapping := range la.config.LabelMaps {
++		if mapping.Attribute == "" {
++			return nil, fmt.Errorf("Label %s is missing 'attribute' to map from", key)
++		}
++
++		mappingValues := attrMap[mapping.Attribute]
++		if mappingValues != nil {
++			if mapping.ParseCN {
++				// shorten attribute to its common name
++				for i, value := range mappingValues {
++					cn := la.getCNFromDN(value)
++					mappingValues[i] = cn
++				}
++			}
++			labels[key] = mappingValues
++		}
++	}
++	return labels, nil
+ }
+ 
+ func (la *LDAPAuth) getCNFromDN(dn string) string {
+
+From 98c4191ee4eae3e3e823c91226179c740e77f3a9 Mon Sep 17 00:00:00 2001
+From: Kevin <kcd83@users.noreply.github.com>
+Date: Tue, 28 Feb 2017 18:27:16 +1300
+Subject: [PATCH 3/5] Remove unused configuration fields, never implemented?
+
+(cherry picked from commit cd37001980267a99a9faa19f1927891af63acb90)
+---
+ auth_server/authn/ldap_auth.go | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/auth_server/authn/ldap_auth.go b/auth_server/authn/ldap_auth.go
+index 99c9146..1135dad 100644
+--- a/auth_server/authn/ldap_auth.go
++++ b/auth_server/authn/ldap_auth.go
+@@ -42,8 +42,6 @@ type LDAPAuthConfig struct {
+ 	BindDN                string              `yaml:"bind_dn,omitempty"`
+ 	BindPasswordFile      string              `yaml:"bind_password_file,omitempty"`
+ 	LabelMaps             map[string]LabelMap `yaml:"labels,omitempty"`
+-	GroupBaseDN           string              `yaml:"group_base_dn,omitempty"`
+-	GroupFilter           string              `yaml:"group_filter,omitempty"`
+ }
+ 
+ type LDAPAuth struct {
+
+From 1b5d134966c8bd1cba9afaeca284476e66a495e5 Mon Sep 17 00:00:00 2001
+From: Kevin <kcd83@users.noreply.github.com>
+Date: Fri, 1 Sep 2017 22:50:19 +1200
+Subject: [PATCH 4/5] Add LDAP label map examples to the reference config
+
+(cherry picked from commit 2fd43be4e5c2cfe177d9e1d36bcd1b29f4d6f262)
+---
+ examples/reference.yml | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+diff --git a/examples/reference.yml b/examples/reference.yml
+index 6ab4ba2..26182fd 100644
+--- a/examples/reference.yml
++++ b/examples/reference.yml
+@@ -140,6 +140,16 @@ ldap_auth:
+   # User query settings. ${account} is expanded from auth request 
+   base: o=example.com
+   filter: (&(uid=${account})(objectClass=person))
++  # Labels can be mapped from LDAP attributes
++  labels:
++    # Add the user's title to a label called title
++    title:
++      attribute: title
++    # Add the user's memberOf values to a label called groups
++    groups:
++      attribute: memberOf
++      # Special handling to simplify the values to just the common name
++      parse_cn: true
+ 
+ mongo_auth:
+   # Essentially all options are described here: https://godoc.org/gopkg.in/mgo.v2#DialInfo
+
+From 1bc75974e70ff7a84bdf3323889b81e44ea3dc00 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Manuel=20R=C3=BCger?= <manuel@rueg.eu>
+Date: Thu, 12 Apr 2018 15:00:51 +0200
+Subject: [PATCH 5/5] reference.yml: Add example ACL
+
+---
+ examples/reference.yml | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/examples/reference.yml b/examples/reference.yml
+index 26182fd..4bdec24 100644
+--- a/examples/reference.yml
++++ b/examples/reference.yml
+@@ -263,6 +263,12 @@ acl:
+   - match: {name: "${labels:project}-{labels:tier}/*"}
+     actions: ["push", "pull"]
+     comment: "Users can push to a project-tier/* that they are assigned to"
++  - match: {labels: {"title": "Developer"}}
++    actions: ["*"]
++    comment: "If you call yourself a developer you can do anything (this ACL is an example for LDAP labels as defined above)"
++  - match: {labels: {"groups": "Admin"}}
++    actions: ["push"]
++    comment: "If you are part of the admin group you can push. (this ACL is an example for LDAP labels as defined above)"
+   # Access is denied by default.
+ 
+ # (optional) Define to query ACL from a MongoDB server.

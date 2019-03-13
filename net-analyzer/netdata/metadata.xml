@@ -10,9 +10,10 @@
         <flag name="ipmi">Install <pkg>sys-apps/ipmitool</pkg> required for monitoring IPMI sensors.</flag>
         <flag name="nfacct">Enable the nfacct plugin</flag>
         <flag name="nodejs">Enable use of nodejs (which some plugins use)</flag>
+        <flag name="tor">Enable monitoring of tor</flag>
     </use>
     <upstream>
-        <remote-id type="github">firehol/netdata</remote-id>
+        <remote-id type="github">netdata/netdata</remote-id>
     </upstream>
     <longdescription lang="en">
         Linux real time system monitoring web interface

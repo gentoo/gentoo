@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,7 +15,7 @@ SLOT="1"
 IUSE="debug +exif +introspection +jpeg lcms +svg tiff xmp"
 REQUIRED_USE="exif? ( jpeg )"
 
-KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86 ~x86-fbsd"
 
 RDEPEND="
 	>=dev-libs/glib-2.42.0:2[dbus]
@@ -36,6 +36,7 @@ RDEPEND="
 	xmp? ( media-libs/exempi:2 )
 "
 DEPEND="${RDEPEND}
+	dev-util/glib-utils
 	>=dev-util/gtk-doc-am-1.16
 	>=dev-util/intltool-0.50.1
 	dev-util/itstool

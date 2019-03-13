@@ -1,88 +1,67 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI="6"
 
-inherit autotools eutils
-
-IUSE="aria2 +curl gnutls gstreamer hide-temp-files libnotify nls"
-
-if [[ ${PV} == *9999* ]]; then
-	inherit git-2
-	KEYWORDS=""
-	SRC_URI=""
-	EGIT_REPO_URI="git://git.code.sf.net/p/urlget/uget"
-else
-	KEYWORDS="~amd64 ~arm ~ppc ~x86"
-	SRC_URI="mirror://sourceforge/urlget/${P}.tar.gz"
-fi
+inherit gnome2-utils xdg-utils git-r3 autotools
 
 DESCRIPTION="Download manager using gtk+ and libcurl"
 HOMEPAGE="http://www.ugetdm.com"
+SRC_URI=""
+EGIT_REPO_URI="git://git.code.sf.net/p/urlget/uget2"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-
-REQUIRED_USE="|| ( aria2 curl )"
+KEYWORDS=""
+IUSE="aria2 ayatana control-socket +gnutls gstreamer libnotify nls openssl rss"
 
 RDEPEND="
+	>=net-misc/curl-7.19.1
 	dev-libs/libpcre
 	>=dev-libs/glib-2.32:2
 	>=x11-libs/gtk+-3.4:3
-	curl? ( >=net-misc/curl-7.10 )
-	gnutls? ( net-libs/gnutls dev-libs/libgcrypt )
-	gstreamer? ( media-libs/gstreamer:0.10 )
+	gnutls? (
+		net-libs/gnutls
+		dev-libs/libgcrypt:0
+	)
+	aria2? ( net-misc/aria2[xmlrpc] )
+	ayatana? ( dev-libs/libappindicator:3 )
+	gstreamer? ( media-libs/gstreamer:1.0 )
 	libnotify? ( x11-libs/libnotify )
 	"
 DEPEND="${RDEPEND}
 	dev-util/intltool
 	virtual/pkgconfig
-	sys-devel/gettext"
+	sys-devel/gettext
+	"
 
 src_prepare() {
-	if [[ ${PV} == *9999* ]]; then
-		intltoolize || die "intltoolize failed"
-		eautoreconf
-	fi
-
-	# fix LINGUAS not getting applied
-	epatch "${FILESDIR}"/${PN}-1.10.4-linguas-fix.patch
+	eapply_user
+	eautoreconf
 }
 
 src_configure() {
-	econf $(use_enable nls) \
-		  $(use_enable curl plugin-curl) \
-		  $(use_enable aria2 plugin-aria2) \
-		  $(use_with gnutls) \
-		  $(use_enable gstreamer) \
-		  $(use_enable hide-temp-files hidden) \
-		  $(use_enable libnotify notify)
-}
+	local myconf=(
+		$(use_enable ayatana appindicator)
+		$(use_enable control-socket unix_socket)
+		$(use_enable gstreamer)
+		$(use_enable libnotify notify)
+		$(use_enable nls)
+		$(use_enable rss rss_notify)
+		$(use_with gnutls)
+		$(use_with openssl)
+		--disable-pwmd
+	)
 
-src_compile() {
-	emake || die "emake failed"
-}
-
-src_install() {
-	emake DESTDIR="${D}" install
-
-	# the build system forgets this :p
-	dobin uget-cmd/uget-cmd
-
-	if [[ ${PV} == *9999* ]]; then
-		dodoc AUTHORS ChangeLog README
-	else
-		dodoc AUTHORS ChangeLog NEWS README
-	fi
+	econf "${myconf[@]}"
 }
 
 pkg_postinst() {
-	if use aria2; then
-		echo
-		elog "You've enabled the aria2 USE flag, so the aria2 plug-in has been"
-		elog "built. This allows you to control a local or remote instance of aria2"
-		elog "through xmlrpc. To use aria2 locally you have to emerge"
-		elog "net-misc/aria2 with the xmlrpc USE enabled manually."
-		echo
-	fi
+	xdg_desktop_database_update
+	gnome2_icon_cache_update
+}
+
+pkg_postrm() {
+	xdg_desktop_database_update
+	gnome2_icon_cache_update
 }

@@ -1,0 +1,22 @@
+--- a/libinterp/corefcn/__magick_read__.cc	2018-05-22 12:25:37.688173855 +0200
++++ a/libinterp/corefcn/__magick_read__.cc.new	2018-05-22 12:32:51.475172200 +0200
+@@ -817,10 +817,19 @@
+       // depth is 8, there's a good chance that we will be limited.  It
+       // is also the GraphicsMagick recommended setting and the default
+       // for ImageMagick.
++#ifdef QuantumDepth
+       if (QuantumDepth < 16)
++#else
++      using namespace Magick;
++      if (MAGICKCORE_QUANTUM_DEPTH < 16)
++#endif
+         warning_with_id ("Octave:GraphicsMagick-Quantum-Depth",
+                          "your version of %s limits images to %d bits per pixel\n",
++#ifdef QuantumDepth
+                          MagickPackageName, QuantumDepth);
++#else
++                         MagickPackageName, MAGICKCORE_QUANTUM_DEPTH);
++#endif
+ 
+       initialized = true;
+     }

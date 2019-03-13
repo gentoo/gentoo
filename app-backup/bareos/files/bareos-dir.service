@@ -1,0 +1,13 @@
+[Unit]
+	Description=Bareos Director
+	After=syslog.target network.target
+	Requires=bareos-sd.service bareos-fd.service
+
+[Install]
+	WantedBy=multi-user.target
+
+[Service]
+	Type=forking
+	User=root
+	ExecStartPre=-/bin/mkdir /run/bareos
+	ExecStart=/usr/sbin/bareos-dir

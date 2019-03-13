@@ -1,8 +1,8 @@
 Patch by Jason Bucata.
 http://bugs.gentoo.org/84187
 
---- configure
-+++ configure
+--- a/configure
++++ b/configure
 @@ -5515,7 +5515,11 @@
  fi
  

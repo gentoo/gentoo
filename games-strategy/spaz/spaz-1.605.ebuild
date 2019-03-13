@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
@@ -12,7 +12,7 @@ LICENSE="LOKI-EULA"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
 IUSE="alsa pulseaudio"
-RESTRICT="fetch strip"
+RESTRICT="bindist fetch strip"
 
 DEPEND="app-arch/unzip"
 RDEPEND=">=media-libs/openal-1.15.1[alsa?,pulseaudio?,abi_x86_32(-)]

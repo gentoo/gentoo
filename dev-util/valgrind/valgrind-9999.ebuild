@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=6
 inherit autotools flag-o-matic toolchain-funcs multilib pax-utils
 
 DESCRIPTION="An open-source memory debugger for GNU/Linux"
@@ -31,6 +31,15 @@ src_prepare() {
 	# Respect CFLAGS, LDFLAGS
 	eapply "${FILESDIR}"/${PN}-3.7.0-respect-flags.patch
 
+	if [[ ${CHOST} == *-solaris* ]] ; then
+		# upstream doesn't support this, but we don't build with
+		# Sun/Oracle ld, we have a GNU toolchain, so get some things
+		# working the Linux/GNU way
+		find "${S}" -name "Makefile.am" -o -name "Makefile.tool.am" | xargs \
+			sed -i -e 's:-M,/usr/lib/ld/map.noexstk:-z,noexecstack:' || die
+		cp "${S}"/coregrind/link_tool_exe_{linux,solaris}.in
+	fi
+
 	# Allow users to test their own patches
 	eapply_user
 
@@ -39,7 +48,7 @@ src_prepare() {
 }
 
 src_configure() {
-	local myconf
+	local myconf=()
 
 	# Respect ar, bug #468114
 	tc-export AR
@@ -61,23 +70,23 @@ src_configure() {
 	replace-flags -ggdb3 -ggdb2
 
 	if use amd64 || use ppc64; then
-		! has_multilib_profile && myconf="${myconf} --enable-only64bit"
+		! has_multilib_profile && myconf+=("--enable-only64bit")
 	fi
 
 	# Force bitness on darwin, bug #306467
-	use x86-macos && myconf="${myconf} --enable-only32bit"
-	use x64-macos && myconf="${myconf} --enable-only64bit"
+	use x86-macos && myconf+=("--enable-only32bit")
+	use x64-macos && myconf+=("--enable-only64bit")
 
 	# Don't use mpicc unless the user asked for it (bug #258832)
 	if ! use mpi; then
-		myconf="${myconf} --without-mpicc"
+		myconf+=("--without-mpicc")
 	fi
 
-	econf ${myconf}
+	econf "${myconf[@]}"
 }
 
 src_install() {
-	emake DESTDIR="${D}" install
+	default
 
 	if [[ ${PV} == "9999" ]]; then
 		# Otherwise FAQ.txt won't exist:
@@ -85,7 +94,7 @@ src_install() {
 		mv docs/FAQ.txt . || die "Couldn't move FAQ.txt"
 	fi
 
-	dodoc AUTHORS FAQ.txt NEWS README*
+	dodoc FAQ.txt
 
 	pax-mark m "${ED}"/usr/$(get_libdir)/valgrind/*-*-linux
 

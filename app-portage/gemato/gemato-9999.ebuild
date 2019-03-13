@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-# backports.lzma is broken with pypy
 # pyblake2 & pysha3 are broken with pypy3
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6,3_7} pypy )
+PYTHON_REQ_USE='threads(+)'
 inherit distutils-r1 git-r3
 
 DESCRIPTION="Stand-alone Manifest generation & verification tool"
@@ -16,7 +16,7 @@ EGIT_REPO_URI="https://github.com/mgorny/gemato.git"
 LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="+blake2 bzip2 +gpg lzma +portage-postsync sha3 test"
+IUSE="+blake2 bzip2 +gpg lzma sha3 test tools"
 
 MODULE_RDEPEND="
 	blake2? ( $(python_gen_cond_dep 'dev-python/pyblake2[${PYTHON_USEDEP}]' python{2_7,3_4,3_5} pypy{,3}) )
@@ -26,9 +26,8 @@ MODULE_RDEPEND="
 	sha3? ( $(python_gen_cond_dep 'dev-python/pysha3[${PYTHON_USEDEP}]' python{2_7,3_4,3_5} pypy{,3}) )"
 
 RDEPEND="${MODULE_RDEPEND}
-	dev-python/setuptools[${PYTHON_USEDEP}]
-	portage-postsync? ( app-crypt/gentoo-keys )"
-DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
+	dev-python/setuptools[${PYTHON_USEDEP}]"
+DEPEND=">=dev-python/setuptools-34[${PYTHON_USEDEP}]
 	test? ( ${MODULE_RDEPEND} )"
 
 python_test() {
@@ -38,8 +37,8 @@ python_test() {
 python_install_all() {
 	distutils-r1_python_install_all
 
-	if use portage-postsync; then
-		exeinto /etc/portage/repo.postsync.d
-		doexe utils/repo.postsync.d/00gemato
+	if use tools; then
+		exeinto /usr/share/gemato
+		doexe utils/*.{bash,py}
 	fi
 }

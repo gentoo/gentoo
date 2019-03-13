@@ -1,7 +1,7 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=2
+EAPI=6
 
 DESCRIPTION="JPEG image to ASCII art converter"
 HOMEPAGE="http://csl.sublevel3.org/jp2a/"
@@ -17,13 +17,9 @@ RDEPEND="sys-libs/ncurses
 	curl? ( net-misc/curl )"
 DEPEND="${RDEPEND}"
 
+HTML_DOCS=( man/jp2a.html )
+
 src_configure() {
 	econf \
 		$(use_enable curl)
-}
-
-src_install() {
-	emake DESTDIR="${D}" install || die
-	dodoc AUTHORS ChangeLog NEWS README
-	dohtml man/jp2a.html
 }

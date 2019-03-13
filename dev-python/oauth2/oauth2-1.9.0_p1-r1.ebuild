@@ -10,7 +10,7 @@ inherit distutils-r1
 MY_P="${P/_p/.post}"
 
 DESCRIPTION="Library for OAuth version 1.0"
-HOMEPAGE="https://pypi.python.org/pypi/oauth2"
+HOMEPAGE="https://pypi.org/project/oauth2/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${MY_P}.tar.gz"
 
 LICENSE="MIT"

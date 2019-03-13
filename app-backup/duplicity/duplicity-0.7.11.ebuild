@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -46,6 +46,6 @@ python_test() {
 }
 
 pkg_postinst() {
-	einfo "Duplicity has many optional dependencies to support various backends."
-	einfo "Currently it's up to you to install them as necessary."
+	elog "Duplicity has many optional dependencies to support various backends."
+	elog "Currently it's up to you to install them as necessary."
 }

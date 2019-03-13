@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+	<maintainer type="project">
+		<email>ada@gentoo.org</email>
+	</maintainer>
 	<maintainer type="person">
 		<email>tupone@gentoo.org</email>
 		<name>Tupone Alfredo</name>
@@ -11,7 +14,6 @@
 		<flag name="projects">Adds support for projects</flag>
 		<flag name="pygobject">Adds support for pygobject</flag>
 		<flag name="shared">Build shared library</flag>
-		<flag name="static">Build static library</flag>
 		<flag name="tools">Build associated tools</flag>
 	</use>
 	<longdescription lang="en">

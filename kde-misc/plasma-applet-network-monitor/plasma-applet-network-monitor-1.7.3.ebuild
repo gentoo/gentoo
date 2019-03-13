@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 inherit kde5
 
 DESCRIPTION="Plasma 5 applet for monitoring active network connections"
-HOMEPAGE="http://kde-look.org/content/show.php/Network+Monitor?content=169377
+HOMEPAGE="https://store.kde.org/content/show.php/Network+Monitor?content=169377
 https://github.com/kotelnik/plasma-applet-network-monitor"
 
 if [[ ${KDE_BUILD_TYPE} = live ]] ; then

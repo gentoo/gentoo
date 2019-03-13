@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -22,7 +22,7 @@ IUSE="latex +recording +sound test"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
-	dev-python/PyQt5[gui,svg,webkit,${PYTHON_USEDEP}]
+	dev-python/PyQt5[gui,svg,webengine,widgets,${PYTHON_USEDEP}]
 	>=dev-python/httplib2-0.7.4[${PYTHON_USEDEP}]
 	dev-python/beautifulsoup:4[${PYTHON_USEDEP}]
 	dev-python/decorator[${PYTHON_USEDEP}]

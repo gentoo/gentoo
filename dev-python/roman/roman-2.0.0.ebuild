@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} pypy )
 inherit distutils-r1
 
 DESCRIPTION="An Integer to Roman numerals converter"
-HOMEPAGE="https://pypi.python.org/pypi/roman/"
+HOMEPAGE="https://pypi.org/project/roman/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.zip"
 
 LICENSE="PSF-2"

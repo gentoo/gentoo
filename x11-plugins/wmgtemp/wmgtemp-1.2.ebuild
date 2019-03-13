@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 DESCRIPTION="CPU and SYS temperature dockapp"
-HOMEPAGE="http://www.dockapps.net/wmgtemp"
-SRC_URI="http://www.dockapps.net/download/${P}.tar.gz"
+HOMEPAGE="https://www.dockapps.net/wmgtemp"
+SRC_URI="https://www.dockapps.net/download/${P}.tar.gz"
 
 LICENSE="Artistic"
 SLOT="0"

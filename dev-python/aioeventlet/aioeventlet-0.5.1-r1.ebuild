@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 inherit distutils-r1
 
 DESCRIPTION="asyncio event loop scheduling callbacks in eventlet"
-HOMEPAGE="https://pypi.python.org/pypi/aioeventlet https://bitbucket.org/haypo/aioeventlet"
+HOMEPAGE="https://pypi.org/project/aioeventlet/"
 SRC_URI="mirror://pypi/a/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"

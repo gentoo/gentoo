@@ -16,7 +16,6 @@
 		<flag name="l16">Include Linear/L16 codec family in the build</flag>
 		<flag name="libyuv">Include libyuv in the build</flag>
 		<flag name="openh264">Include Open H.264 support in the build</flag>
-		<flag name="opus">Include OPUS support in the build</flag>
 		<flag name="resample">Include resampling implementations in the build</flag>
 		<flag name="silk">Include SILK support in the build</flag>
 		<flag name="webrtc">Enable WebRTC support</flag>

@@ -1,28 +1,33 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-SCM=""
-[[ "${PV}" == 9999 ]] && SCM="git-r3"
-inherit cmake-utils gnome2-utils xdg-utils ${SCM}
-unset SCM
+inherit cmake-utils xdg
 
 DESCRIPTION="KeePassXC - KeePass Cross-platform Community Edition"
 HOMEPAGE="https://keepassxc.org"
 
 if [[ "${PV}" != 9999 ]] ; then
-	SRC_URI="https://github.com/keepassxreboot/keepassxc/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	if [[ "${PV}" == *_beta* ]] ; then
+		SRC_URI="https://github.com/keepassxreboot/keepassxc/archive/${PV/_/-}.tar.gz -> ${P}.tar.gz"
+		S="${WORKDIR}/${P/_/-}"
+	else
+		#SRC_URI="https://github.com/keepassxreboot/keepassxc/archive/${PV}.tar.gz -> ${P}.tar.gz"
+		SRC_URI="https://github.com/keepassxreboot/keepassxc/releases/download/${PV}/${P}-src.tar.xz"
+		KEYWORDS="~amd64 ~x86"
+	fi
 else
+	inherit git-r3
 	EGIT_REPO_URI="https://github.com/keepassxreboot/${PN}"
 fi
 
 LICENSE="LGPL-2.1 GPL-2 GPL-3"
 SLOT="0"
-IUSE="autotype debug http test yubikey"
+IUSE="autotype browser debug network test yubikey"
 
 RDEPEND="
+	app-crypt/argon2:=
 	dev-libs/libgcrypt:=
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
@@ -36,14 +41,20 @@ RDEPEND="
 		x11-libs/libXi
 		x11-libs/libXtst
 	)
+	browser? ( >=dev-libs/libsodium-1.0.12 )
 	yubikey? ( sys-auth/ykpers )
 "
 
 DEPEND="
 	${RDEPEND}
 	dev-qt/linguist-tools:5
+	dev-qt/qttest:5
 	dev-qt/qtconcurrent:5
-	test? ( dev-qt/qttest:5 )
+"
+
+# Not a runtime dependency but still needed (see bug #667092)
+PDEPEND="
+	x11-misc/xsel
 "
 
 src_prepare() {
@@ -58,20 +69,26 @@ src_configure() {
 		-DWITH_GUI_TESTS=OFF
 		-DWITH_TESTS="$(usex test)"
 		-DWITH_XC_AUTOTYPE="$(usex autotype)"
-		-DWITH_XC_HTTP="$(usex http)"
+		-DWITH_XC_BROWSER="$(usex browser)"
+		-DWITH_XC_HTTP=OFF
+		-DWITH_XC_NETWORKING="$(usex network)"
+		-DWITH_XC_SSHAGENT=ON
 		-DWITH_XC_YUBIKEY="$(usex yubikey)"
 	)
+	if [[ "${PV}" == *_beta* ]] ; then
+		mycmakeargs+=( -DOVERRIDE_VERSION="${PV/_/-}" )
+	fi
 	cmake-utils_src_configure
 }
 
+pkg_preinst() {
+	xdg_pkg_preinst
+}
+
 pkg_postinst() {
-	gnome2_icon_cache_update
-	xdg_desktop_database_update
-	xdg_mimeinfo_database_update
+	xdg_pkg_postinst
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
-	xdg_desktop_database_update
-	xdg_mimeinfo_database_update
+	xdg_pkg_postrm
 }

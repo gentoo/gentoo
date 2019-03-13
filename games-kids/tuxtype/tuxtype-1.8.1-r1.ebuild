@@ -1,12 +1,12 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit eutils user
 
 DESCRIPTION="Typing tutorial with lots of eye-candy"
-HOMEPAGE="http://alioth.debian.org/projects/tux4kids/"
-SRC_URI="http://alioth.debian.org/frs/download.php/3270/tuxtype_w_fonts-${PV}.tar.gz"
+HOMEPAGE="https://alioth.debian.org/projects/tux4kids"
+SRC_URI="https://alioth.debian.org/frs/download.php/3270/tuxtype_w_fonts-${PV}.tar.gz"
 
 LICENSE="GPL-2 OFL-1.1"
 SLOT="0"

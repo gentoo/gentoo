@@ -12,6 +12,7 @@
 		<flag name="gbm">Use the Graphics Buffer Manager for EGL on KMS.</flag>
 		<flag name="gles">Enable support for GLES</flag>
 		<flag name="lirc">Enable support for controlling Totem with a remote control using <pkg>app-misc/lirc</pkg></flag>
+		<flag name="mariadb">Add MariaDB support</flag>
 		<flag name="nfs">Enable NFS client support</flag>
 		<flag name="nonfree">Enable non-free components</flag>
 		<flag name="dvd">Enable optical (CD/DVD drive) support</flag>

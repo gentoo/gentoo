@@ -1,13 +1,13 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_{4,5,6}} )
+PYTHON_COMPAT=( python{2_7,3_{4,5,6,7}} )
 inherit distutils-r1
 
 DESCRIPTION="Python (ctypes) bindings for SDL2 libraries"
-HOMEPAGE="https://github.com/marcusva/py-sdl2 https://pypi.python.org/pypi/PySDL2"
+HOMEPAGE="https://github.com/marcusva/py-sdl2 https://pypi.org/project/PySDL2/"
 SRC_URI="mirror://pypi/${PN::1}/${PN}/${P}.tar.gz"
 
 LICENSE="|| ( public-domain CC0-1.0 ZLIB )"

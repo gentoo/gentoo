@@ -1,5 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+EAPI=0
 
 IUSE="l10n_de l10n_es l10n_fr l10n_it l10n_la l10n_pl l10n_ro l10n_sv"
 

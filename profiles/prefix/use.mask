@@ -1,5 +1,16 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+
+# Fabian Groffen <grobian@gentoo.org> (29 Dec 2018)
+# separate /usr has been disabled for long in Prefix, so ensure we don't
+# accidentially trigger stuff (for now in sys-apps/coreutils)
+split-usr
+
+# Michael Haubenwallner <haubi@gentoo.org> (21 Jun 2018)
+# sys-libs/libseccomp is a linux interface, not sure if it will work
+# in prefix for Linux either, bug #585756
+seccomp
 
 # Mask all glibc/linux combination, unmasked in the appropriate profiles
 elibc_glibc
@@ -10,9 +21,9 @@ kernel_linux
 # coreutils on darwin.
 acl
 
-# Prefix removed python3_4 from PYTHON_TARGETS and PYTHON_SINGLE_TARGET
-python_targets_python3_4
-python_single_target_python3_4
+# Prefix removed python3_5 from PYTHON_TARGETS and PYTHON_SINGLE_TARGET
+python_targets_python3_5
+python_single_target_python3_5
 
-# Similar for Ruby 2.1
-ruby_targets_ruby21
+# Similar for Ruby 2.3
+ruby_targets_ruby23

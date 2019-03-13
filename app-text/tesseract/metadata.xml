@@ -17,7 +17,6 @@
     <remote-id type="github">tesseract-ocr/tessdata</remote-id>
   </upstream>
   <use>
-    <flag name="webp"> Enable support for webp image format.</flag>
     <flag name="math"> Enable support for recognition of equations.</flag>
     <flag name="scrollview"> Install viewer to debug recognition (ScrollView).</flag>
     <flag name="osd"> Enable support orientation and script detection.</flag>

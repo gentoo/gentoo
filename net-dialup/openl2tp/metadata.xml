@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="person">
+	<email>bircoph@gentoo.org</email>
+	<name>Andrew Savchenko</name>
+</maintainer>
+<use>
+	<flag name='client'>Enable l2tp client.</flag>
+	<flag name='dmalloc'>Enable debugging using <pkg>dev-libs/dmalloc</pkg>.</flag>
+	<flag name='rpc'>Enable RPC control management. This flag is required for
+		l2tpconfig to be built and used.</flag>
+	<flag name='server'>Enable l2tp server.</flag>
+	<flag name='stats'>Enable status files. Note: when they are used, this
+		hampers performance of the daemon.</flag>
+</use>
+</pkgmetadata>

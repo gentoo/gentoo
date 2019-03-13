@@ -7,14 +7,17 @@
 	</maintainer>
 	<use>
 		<flag name="artist-screen">Enable artist screen</flag>
+		<flag name="async-connect">Enable asynchronous connect</flag>
 		<flag name="chat-screen">Enable the chat screen</flag>
-		<flag name="colors">Enable color support</flag>
 		<flag name="help-screen">Enable the help screen</flag>
 		<flag name="key-screen">Enable key editor screen</flag>
+		<flag name="library-screen">Enable library screen</flag>
 		<flag name="lyrics-screen">Enable lyrics screen</flag>
 		<flag name="mouse">Enable curses getmouse support</flag>
+		<flag name="outputs-screen">Enable the outputs screen</flag>
 		<flag name="search-screen">Enable search screen</flag>
 		<flag name="song-screen">Enable song viewer screen</flag>
+		<flag name="tcp">Enable TCP support</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">MusicPlayerDaemon/ncmpc</remote-id>

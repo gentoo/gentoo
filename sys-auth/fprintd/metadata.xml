@@ -2,7 +2,10 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <maintainer type="person">
-<email>xmw@gentoo.org</email>
-<name>Michael Weber</name>
+	<email>maksbotan@gentoo.org</email>
+	<name>Maxim Koltsov</name>
 </maintainer>
+<upstream>
+	<bugs-to>https://gitlab.freedesktop.org/libfprint/fprintd/issues</bugs-to>
+</upstream>
 </pkgmetadata>

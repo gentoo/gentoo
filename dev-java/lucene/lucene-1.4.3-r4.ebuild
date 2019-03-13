@@ -11,7 +11,7 @@ DESCRIPTION="High-performance, full-featured Java text search engine"
 HOMEPAGE="https://lucene.apache.org"
 SRC_URI="mirror://apache/lucene/java/archive/${P}-src.tar.gz"
 
-KEYWORDS="amd64 x86 ~x86-fbsd"
+KEYWORDS="amd64 x86"
 LICENSE="Apache-1.1"
 SLOT="1"
 

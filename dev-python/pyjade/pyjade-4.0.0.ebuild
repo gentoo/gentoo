@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,17 +13,17 @@ SRC_URI="https://pypi.python.org/packages/4a/04/396ec24e806fd3af7ea5d0f3cb6c7bbd
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="test"
+
+RESTRICT="test" # Need broken pyramid, bug #509518
+IUSE="" #test
 
 RDEPEND="dev-python/six[${PYTHON_USEDEP}]"
-DEPEND="
-	${RDEPEND}
-	test? (
-		dev-python/nose[${PYTHON_USEDEP}]
-		dev-python/django[${PYTHON_USEDEP}]
-		dev-python/jinja[${PYTHON_USEDEP}]
-		www-servers/tornado[${PYTHON_USEDEP}]
-		dev-python/pyramid[${PYTHON_USEDEP}]
-		dev-python/mako[${PYTHON_USEDEP}]
-	)
-"
+DEPEND="${RDEPEND}"
+#	test? (
+#		dev-python/nose[${PYTHON_USEDEP}]
+#		dev-python/django[${PYTHON_USEDEP}]
+#		dev-python/jinja[${PYTHON_USEDEP}]
+#		www-servers/tornado[${PYTHON_USEDEP}]
+#		dev-python/pyramid[${PYTHON_USEDEP}]
+#		dev-python/mako[${PYTHON_USEDEP}]
+#	)

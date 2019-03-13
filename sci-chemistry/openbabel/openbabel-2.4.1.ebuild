@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -31,6 +31,7 @@ DOCS=( AUTHORS NEWS.md README.md THANKS doc/dioxin.{inc,mol2} doc/README.{dioxin
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.3.2-gcc-6_and_7-backport.patch
+	"${FILESDIR}"/${P}-gcc-8.patch
 	)
 
 pkg_setup() {

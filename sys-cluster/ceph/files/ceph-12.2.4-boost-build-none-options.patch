@@ -1,0 +1,26 @@
+diff --git a/src/boost/tools/build/src/tools/features/debug-feature.jam b/src/boost/tools/build/src/tools/features/debug-feature.jam
+index 04958f9a..38b6acf1 100644
+--- a/src/boost/tools/build/src/tools/features/debug-feature.jam
++++ b/src/boost/tools/build/src/tools/features/debug-feature.jam
+@@ -8,7 +8,7 @@
+ import feature ;
+ 
+ feature.feature debug-symbols
+-    : on off
++    : on off none
+     : propagated ;
+ 
+ feature.feature profiling
+diff --git a/src/boost/tools/build/src/tools/features/optimization-feature.jam b/src/boost/tools/build/src/tools/features/optimization-feature.jam
+index 761f76f1..fb2a5dec 100644
+--- a/src/boost/tools/build/src/tools/features/optimization-feature.jam
++++ b/src/boost/tools/build/src/tools/features/optimization-feature.jam
+@@ -8,7 +8,7 @@
+ import feature ;
+ 
+ feature.feature optimization
+-    : off speed space
++    : off none speed space
+     : propagated ;
+ 
+ feature.feature inlining

@@ -1,8 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python{3_4,3_5} )
+PYTHON_COMPAT=( python{3_4,3_5,3_6} )
 
 inherit gnome2 python-single-r1
 
@@ -14,11 +14,11 @@ SLOT="0"
 IUSE=""
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 COMMON_DEPEND="
 	${PYTHON_DEPS}
-	>=app-misc/tracker-1.11.1[introspection(+)]
+	>=app-misc/tracker-1.11.1:0/100[introspection(+)]
 	>=dev-python/pygobject-3.21.1:3[cairo,${PYTHON_USEDEP}]
 	>=dev-libs/glib-2.28:2
 	>=dev-libs/gobject-introspection-1.35.9:=
@@ -43,10 +43,11 @@ RDEPEND="${COMMON_DEPEND}
 	x11-misc/xdg-user-dirs
 "
 DEPEND="${COMMON_DEPEND}
-	app-text/yelp-tools
 	>=dev-util/intltool-0.26
+	dev-util/itstool
 	virtual/pkgconfig
 "
+# eautoreconf needs app-text/yelp-tools
 
 pkg_setup() {
 	python_setup

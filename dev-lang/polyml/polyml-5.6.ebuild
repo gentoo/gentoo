@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -6,7 +6,7 @@ EAPI="6"
 inherit autotools pax-utils
 
 DESCRIPTION="Poly/ML is a full implementation of Standard ML"
-HOMEPAGE="http://www.polyml.org"
+HOMEPAGE="https://www.polyml.org"
 SRC_URI="https://codeload.github.com/polyml/polyml/tar.gz/v${PV} -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1"

@@ -1,0 +1,166 @@
+From d3e2d1d29615f4861fd3354353d426bd8701389d Mon Sep 17 00:00:00 2001
+From: Lars Wendler <polynomial-c@gentoo.org>
+Date: Tue, 13 Nov 2018 10:37:42 +0100
+Subject: [PATCH] Rename some executables which have too generic names
+
+to be placed in /usr/bin - this patch prefixes them with 'hunspell-'
+
+Real authorship is a bit unclear as Gentoo is using this kind of patch since
+hunspell-1.1.3 which was added to Gentoo back in 2006-01-29 and the
+corresponding bug report didn't mention the patch at all:
+
+https://bugs.gentoo.org/114482
+https://sources.gentoo.org/cgi-bin/viewvc.cgi/gentoo-x86/app-text/hunspell/files/hunspell-1.1.3-renameexes.patch?hideattic=0&view=log
+---
+ src/tools/Makefile.am | 14 +++++++-------
+ src/tools/chmorph.cxx |  6 +++---
+ src/tools/example.cxx |  4 ++--
+ src/tools/munch.cxx   |  4 ++--
+ src/tools/unmunch.cxx |  4 ++--
+ tests/Makefile.am     |  2 +-
+ tests/test.sh         |  2 +-
+ 7 files changed, 18 insertions(+), 18 deletions(-)
+
+diff --git a/src/tools/Makefile.am b/src/tools/Makefile.am
+index 1786e8e..190bffe 100644
+--- a/src/tools/Makefile.am
++++ b/src/tools/Makefile.am
+@@ -1,4 +1,4 @@
+-bin_PROGRAMS=analyze chmorph hunspell munch unmunch hzip hunzip
++bin_PROGRAMS=hunspell-analyze hunspell-chmorph hunspell hunspell-munch hunspell-unmunch hzip hunzip
+ 
+ AM_CPPFLAGS=-I${top_builddir}/src/hunspell -I${top_srcdir}/src/hunspell -I${top_srcdir}/src/parsers
+ 
+@@ -6,8 +6,8 @@ hzip_SOURCES=hzip.cxx
+ hunzip_SOURCES=hunzip.cxx
+ hunzip_LDADD = ../hunspell/libhunspell-1.7.la
+ 
+-munch_SOURCES=munch.cxx munch.h
+-unmunch_SOURCES=unmunch.cxx unmunch.h
++hunspell_munch_SOURCES=munch.cxx munch.h
++hunspell_unmunch_SOURCES=unmunch.cxx unmunch.h
+ 
+ example_SOURCES=example.cxx
+ example_LDADD = ../hunspell/libhunspell-1.7.la
+@@ -17,11 +17,11 @@ nodist_hunspell_SOURCES= ../../config.h
+ hunspell_LDADD = @LIBINTL@ @LIBICONV@ ../parsers/libparsers.a \
+ 	../hunspell/libhunspell-1.7.la @CURSESLIB@ @READLINELIB@
+ 
+-analyze_SOURCES=analyze.cxx
+-analyze_LDADD = ../hunspell/libhunspell-1.7.la
++hunspell_analyze_SOURCES=analyze.cxx
++hunspell_analyze_LDADD = ../hunspell/libhunspell-1.7.la
+ 
+-chmorph_SOURCES=chmorph.cxx
+-chmorph_LDADD = ../parsers/libparsers.a ../hunspell/libhunspell-1.7.la
++hunspell_chmorph_SOURCES=chmorph.cxx
++hunspell_chmorph_LDADD = ../parsers/libparsers.a ../hunspell/libhunspell-1.7.la
+ 
+ noinst_PROGRAMS=example 
+ 
+diff --git a/src/tools/chmorph.cxx b/src/tools/chmorph.cxx
+index 6e5add6..163186d 100644
+--- a/src/tools/chmorph.cxx
++++ b/src/tools/chmorph.cxx
+@@ -55,11 +55,11 @@ int main(int, char** argv) {
+     if (!argv[i]) {
+       fprintf(
+           stderr,
+-          "chmorph - change affixes by morphological analysis and generation\n"
+-          "correct syntax is:\nchmorph affix_file "
++          "hunspell-chmorph - change affixes by morphological analysis and generation\n"
++          "correct syntax is:\nhunspell-chmorph affix_file "
+           "dictionary_file file_to_convert STRING1 STRING2\n"
+           "STRINGS may be arbitrary parts of the morphological descriptions\n"
+-          "example: chmorph hu.aff hu.dic hu.txt SG_2 SG_3 "
++          "example: hunspell-chmorph hu.aff hu.dic hu.txt SG_2 SG_3 "
+           " (convert informal Hungarian second person texts to formal third "
+           "person texts)\n");
+       exit(1);
+diff --git a/src/tools/example.cxx b/src/tools/example.cxx
+index 8213a5f..c3cc76a 100644
+--- a/src/tools/example.cxx
++++ b/src/tools/example.cxx
+@@ -48,9 +48,9 @@ int main(int argc, char** argv) {
+   /* first parse the command line options */
+ 
+   if (argc < 4) {
+-    fprintf(stderr, "example (now it works with more dictionary files):\n");
++    fprintf(stderr, "hunspell-example (now it works with more dictionary files):\n");
+     fprintf(stderr,
+-            "example affix_file dictionary_file(s) file_of_words_to_check\n");
++            "hunspell-example affix_file dictionary_file(s) file_of_words_to_check\n");
+     exit(1);
+   }
+ 
+diff --git a/src/tools/munch.cxx b/src/tools/munch.cxx
+index 5f51fc6..c8f8beb 100644
+--- a/src/tools/munch.cxx
++++ b/src/tools/munch.cxx
+@@ -78,14 +78,14 @@ int main(int argc, char** argv) {
+     wf = mystrdup(argv[1]);
+   } else {
+     fprintf(stderr, "correct syntax is:\n");
+-    fprintf(stderr, "munch word_list_file affix_file\n");
++    fprintf(stderr, "hunspell-munch word_list_file affix_file\n");
+     exit(1);
+   }
+   if (argv[2]) {
+     af = mystrdup(argv[2]);
+   } else {
+     fprintf(stderr, "correct syntax is:\n");
+-    fprintf(stderr, "munch word_list_file affix_file\n");
++    fprintf(stderr, "hunspell-munch word_list_file affix_file\n");
+     exit(1);
+   }
+ 
+diff --git a/src/tools/unmunch.cxx b/src/tools/unmunch.cxx
+index 82c2f9d..663e8ea 100644
+--- a/src/tools/unmunch.cxx
++++ b/src/tools/unmunch.cxx
+@@ -73,14 +73,14 @@ int main(int argc, char** argv) {
+     wf = mystrdup(argv[1]);
+   } else {
+     fprintf(stderr, "correct syntax is:\n");
+-    fprintf(stderr, "unmunch dic_file affix_file\n");
++    fprintf(stderr, "hunspell-unmunch dic_file affix_file\n");
+     exit(1);
+   }
+   if (argv[2]) {
+     af = mystrdup(argv[2]);
+   } else {
+     fprintf(stderr, "correct syntax is:\n");
+-    fprintf(stderr, "unmunch dic_file affix_file\n");
++    fprintf(stderr, "hunspell-unmunch dic_file affix_file\n");
+     exit(1);
+   }
+ 
+diff --git a/tests/Makefile.am b/tests/Makefile.am
+index 6dc3e93..88d882c 100644
+--- a/tests/Makefile.am
++++ b/tests/Makefile.am
+@@ -4,7 +4,7 @@ SUBDIRS = suggestiontest
+ 
+ TEST_EXTENSIONS = .dic
+ AM_TESTS_ENVIRONMENT = export HUNSPELL=$(top_builddir)/src/tools/hunspell; \
+-                       export ANALYZE=$(top_builddir)/src/tools/analyze; \
++                       export ANALYZE=$(top_builddir)/src/tools/hunspell-analyze; \
+                        export LIBTOOL=$(top_builddir)/libtool;
+ DIC_LOG_COMPILER = $(top_srcdir)/tests/test.sh
+ 
+diff --git a/tests/test.sh b/tests/test.sh
+index 3fcf42c..8580d09 100755
+--- a/tests/test.sh
++++ b/tests/test.sh
+@@ -64,7 +64,7 @@ fi
+ shopt -s expand_aliases
+ 
+ [[ "$HUNSPELL" = "" ]] && HUNSPELL="$(dirname $0)"/../src/tools/hunspell
+-[[ "$ANALYZE" = "" ]] && ANALYZE="$(dirname $0)"/../src/tools/analyze
++[[ "$ANALYZE" = "" ]] && ANALYZE="$(dirname $0)"/../src/tools/hunspell-analyze
+ [[ "$LIBTOOL" = "" ]] && LIBTOOL="$(dirname $0)"/../libtool
+ alias hunspell='"$LIBTOOL" --mode=execute "$HUNSPELL"'
+ alias analyze='"$LIBTOOL" --mode=execute "$ANALYZE"'
+-- 
+2.19.1
+

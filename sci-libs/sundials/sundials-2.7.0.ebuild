@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,8 +9,8 @@ FORTRAN_STANDARD=90
 inherit cmake-utils toolchain-funcs fortran-2 versionator
 
 DESCRIPTION="Suite of nonlinear solvers"
-HOMEPAGE="http://computation.llnl.gov/projects/sundials"
-SRC_URI="http://computation.llnl.gov/projects/sundials/download/${P}.tar.gz"
+HOMEPAGE="https://computation.llnl.gov/projects/sundials"
+SRC_URI="https://computation.llnl.gov/projects/sundials/download/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/$(get_major_version)"

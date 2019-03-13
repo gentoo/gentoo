@@ -2,8 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>xmw@gentoo.org</email>
-		<name>Michael Weber</name>
+		<name>Mikle Kolyada</name>
+		<email>zlogene@gentoo.org</email>
 	</maintainer>
 	<use>
 		<flag name="magic">Use libmagic to determine mimetypes</flag>

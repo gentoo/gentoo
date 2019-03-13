@@ -1,9 +1,7 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-
-WANT_ANT_TASKS="ant-nodeps"
 JAVA_PKG_IUSE="doc source test"
 
 inherit eutils java-pkg-2 java-ant-2
@@ -24,7 +22,7 @@ RDEPEND="
 DEPEND="
 	>=virtual/jdk-1.4
 	test? (
-		dev-java/ant-junit
+		dev-java/ant-junit:0
 	)"
 
 S="${WORKDIR}/${MY_P}"
@@ -55,7 +53,7 @@ src_compile() {
 }
 
 src_test() {
-	ANT_TASKS="ant-junit ant-nodeps" eant -Dbits="${BITS}" test
+	ANT_TASKS="ant-junit" eant -Dbits="${BITS}" test
 }
 
 src_install() {

@@ -1,7 +1,5 @@
-Index: stk-4.5.0/configure.ac
-===================================================================
---- stk-4.5.0.orig/configure.ac
-+++ stk-4.5.0/configure.ac
+--- a/configure.ac
++++ b/configure.ac
 @@ -100,7 +100,7 @@ fi
  CPPFLAGS="$CPPFLAGS $cppflag"
  

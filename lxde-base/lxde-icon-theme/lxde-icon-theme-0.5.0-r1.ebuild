@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -6,12 +6,12 @@ EAPI="5"
 inherit gnome2-utils
 
 DESCRIPTION="nuoveXT2 iconset"
-HOMEPAGE="http://lxde.sf.net/"
+HOMEPAGE="https://lxde.sf.net/"
 SRC_URI="mirror://sourceforge/lxde/LXDE%20Icon%20Theme/${P}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~arm64 ppc x86 ~arm-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm ~arm64 ppc x86 ~x86-linux"
 IUSE=""
 
 RDEPEND="x11-libs/gtk+:2"

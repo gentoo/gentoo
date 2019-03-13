@@ -4,6 +4,7 @@
 # @ECLASS: systemd.eclass
 # @MAINTAINER:
 # systemd@gentoo.org
+# @SUPPORTED_EAPIS: 0 1 2 3 4 5 6 7
 # @BLURB: helper functions to install systemd units
 # @DESCRIPTION:
 # This eclass provides a set of functions to install unit files for
@@ -26,11 +27,15 @@
 inherit toolchain-funcs
 
 case ${EAPI:-0} in
-	0|1|2|3|4|5|6) ;;
+	0|1|2|3|4|5|6|7) ;;
 	*) die "${ECLASS}.eclass API in EAPI ${EAPI} not yet established."
 esac
 
-DEPEND="virtual/pkgconfig"
+if [[ ${EAPI:-0} == [0123456] ]]; then
+	DEPEND="virtual/pkgconfig"
+else
+	BDEPEND="virtual/pkgconfig"
+fi
 
 # @FUNCTION: _systemd_get_dir
 # @USAGE: <variable-name> <fallback-directory>
@@ -58,7 +63,7 @@ _systemd_get_dir() {
 # @DESCRIPTION:
 # Get unprefixed unitdir.
 _systemd_get_systemunitdir() {
-	_systemd_get_dir systemdsystemunitdir /usr/lib/systemd/system
+	_systemd_get_dir systemdsystemunitdir /lib/systemd/system
 }
 
 # @FUNCTION: systemd_get_systemunitdir
@@ -107,7 +112,7 @@ systemd_get_userunitdir() {
 # @DESCRIPTION:
 # Get unprefixed utildir.
 _systemd_get_utildir() {
-	_systemd_get_dir systemdutildir /usr/lib/systemd
+	_systemd_get_dir systemdutildir /lib/systemd
 }
 
 # @FUNCTION: systemd_get_utildir
@@ -127,7 +132,7 @@ systemd_get_utildir() {
 # @DESCRIPTION:
 # Get unprefixed systemgeneratordir.
 _systemd_get_systemgeneratordir() {
-	_systemd_get_dir systemdsystemgeneratordir /usr/lib/systemd/system-generators
+	_systemd_get_dir systemdsystemgeneratordir /lib/systemd/system-generators
 }
 
 # @FUNCTION: systemd_get_systemgeneratordir
@@ -151,6 +156,7 @@ systemd_dounit() {
 	debug-print-function ${FUNCNAME} "${@}"
 
 	(
+		insopts -m 0644
 		insinto "$(_systemd_get_systemunitdir)"
 		doins "${@}"
 	)
@@ -165,6 +171,7 @@ systemd_newunit() {
 	debug-print-function ${FUNCNAME} "${@}"
 
 	(
+		insopts -m 0644
 		insinto "$(_systemd_get_systemunitdir)"
 		newins "${@}"
 	)
@@ -179,6 +186,7 @@ systemd_douserunit() {
 	debug-print-function ${FUNCNAME} "${@}"
 
 	(
+		insopts -m 0644
 		insinto "$(_systemd_get_userunitdir)"
 		doins "${@}"
 	)
@@ -193,6 +201,7 @@ systemd_newuserunit() {
 	debug-print-function ${FUNCNAME} "${@}"
 
 	(
+		insopts -m 0644
 		insinto "$(_systemd_get_userunitdir)"
 		newins "${@}"
 	)
@@ -222,6 +231,7 @@ systemd_install_serviced() {
 	[[ ${service} == *.d ]] && die "Service must not have .d suffix"
 
 	(
+		insopts -m 0644
 		insinto /etc/systemd/system/"${service}".d
 		newins "${src}" 00gentoo.conf
 	)
@@ -241,6 +251,7 @@ systemd_dotmpfilesd() {
 	done
 
 	(
+		insopts -m 0644
 		insinto /usr/lib/tmpfiles.d/
 		doins "${@}"
 	)
@@ -258,6 +269,7 @@ systemd_newtmpfilesd() {
 		|| die 'tmpfiles.d files need to have .conf suffix.'
 
 	(
+		insopts -m 0644
 		insinto /usr/lib/tmpfiles.d/
 		newins "${@}"
 	)
@@ -320,6 +332,7 @@ systemd_enable_ntpunit() {
 	done
 
 	(
+		insopts -m 0644
 		insinto "$(_systemd_get_utildir)"/ntp-units.d
 		doins "${T}"/${ntpunit_name}.list
 	)
@@ -455,8 +468,8 @@ systemd_reenable() {
 	type systemctl &>/dev/null || return 0
 	local x
 	for x; do
-		if systemctl --quiet --root="${ROOT}" is-enabled "${x}"; then
-			systemctl --root="${ROOT}" reenable "${x}"
+		if systemctl --quiet --root="${ROOT:-/}" is-enabled "${x}"; then
+			systemctl --root="${ROOT:-/}" reenable "${x}"
 		fi
 	done
 }

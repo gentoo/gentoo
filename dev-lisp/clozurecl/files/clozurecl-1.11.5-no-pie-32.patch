@@ -1,0 +1,7 @@
+--- a/lisp-kernel/linuxx8632/Makefile
++++ b/lisp-kernel/linuxx8632/Makefile
+@@ -76,3 +76,3 @@ USE_LINK_SCRIPT = # -T $(LINK_SCRIPT)
+ ../../lx86cl:	$(KSPOBJ) $(KERNELOBJ) $(DEBUGOBJ) Makefile  $(LINK_SCRIPT)
+-	$(CC)  -m32 $(CDEBUG)  -Wl,--export-dynamic $(HASH_STYLE) -o $@ $(USE_LINK_SCRIPT) $(KSPOBJ) $(KERNELOBJ) $(DEBUGOBJ) -Wl,--no-as-needed $(OSLIBS)
++	$(CC)  -m32 $(CDEBUG)  -Wl,--export-dynamic $(HASH_STYLE) -no-pie -o $@ $(USE_LINK_SCRIPT) $(KSPOBJ) $(KERNELOBJ) $(DEBUGOBJ) -Wl,--no-as-needed $(OSLIBS)
+ 

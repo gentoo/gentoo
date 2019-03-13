@@ -32,7 +32,6 @@ RDEPEND="
 	wavpack? ( media-sound/wavpack )
 	replaygain? (
 		mp3? ( media-sound/mp3gain )
-		mp4? ( media-sound/aacgain )
 		ogg? ( media-sound/vorbisgain )
 	)
 	imagemagick? ( media-gfx/imagemagick )

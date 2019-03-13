@@ -1,0 +1,25 @@
+From cac07e9ef273b065eeebbeeaa27155c8402a36e1 Mon Sep 17 00:00:00 2001
+From: Brian Dolbec <dolsen@gentoo.org>
+Date: Sat, 7 Jul 2018 11:37:23 -0700
+Subject: [PATCH] Disable writing of plugin cache
+
+---
+ src/twisted/plugin.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/twisted/plugin.py b/src/twisted/plugin.py
+index 82522ee..e5849d6 100644
+--- a/src/twisted/plugin.py
++++ b/src/twisted/plugin.py
+@@ -180,7 +180,7 @@ def getCache(module):
+             if pluginKey not in existingKeys:
+                 del dropinDotCache[pluginKey]
+                 needsWrite = True
+-        if needsWrite:
++        if needsWrite and os.environ.get("TWISTED_DISABLE_WRITING_OF_PLUGIN_CACHE") is None:
+             try:
+                 dropinPath.setContent(pickle.dumps(dropinDotCache))
+             except OSError as e:
+--
+libgit2 0.26.4
+

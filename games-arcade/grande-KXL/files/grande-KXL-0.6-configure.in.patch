@@ -1,5 +1,5 @@
---- configure.in
-+++ configure.in
+--- a/configure.in
++++ b/configure.in
 @@ -17,12 +17,8 @@
  AC_CHECK_HEADERS(unistd.h)
  

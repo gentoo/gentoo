@@ -1,0 +1,113 @@
+From 12c2e06a88832fa208c9c0361e5ce91436a5d5ac Mon Sep 17 00:00:00 2001
+From: Tim Harder <radhermit@gmail.com>
+Date: Thu, 27 Dec 2018 01:42:45 -0600
+Subject: [PATCH] Use mock from unittest for python3.
+
+---
+ aniso8601/tests/test_builder.py  | 5 ++++-
+ aniso8601/tests/test_date.py     | 5 ++++-
+ aniso8601/tests/test_duration.py | 5 ++++-
+ aniso8601/tests/test_interval.py | 5 ++++-
+ aniso8601/tests/test_time.py     | 5 ++++-
+ aniso8601/tests/test_timezone.py | 5 ++++-
+ 6 files changed, 24 insertions(+), 6 deletions(-)
+
+diff --git a/aniso8601/tests/test_builder.py b/aniso8601/tests/test_builder.py
+index 453f781..aafc7fe 100644
+--- a/aniso8601/tests/test_builder.py
++++ b/aniso8601/tests/test_builder.py
+@@ -9,7 +9,10 @@
+ import datetime
+ import pickle
+ import unittest
+-import mock
++try:
++    from unittest import mock
++except ImportError:
++    import mock
+ import aniso8601
+ import dateutil.relativedelta
+ 
+diff --git a/aniso8601/tests/test_date.py b/aniso8601/tests/test_date.py
+index 2c60245..a991be1 100644
+--- a/aniso8601/tests/test_date.py
++++ b/aniso8601/tests/test_date.py
+@@ -7,7 +7,10 @@
+ # of the BSD license.  See the LICENSE file for details.
+ 
+ import unittest
+-import mock
++try:
++    from unittest import mock
++except ImportError:
++    import mock
+ import aniso8601
+ 
+ from aniso8601.exceptions import ISOFormatError
+diff --git a/aniso8601/tests/test_duration.py b/aniso8601/tests/test_duration.py
+index ed8383f..b835e1b 100644
+--- a/aniso8601/tests/test_duration.py
++++ b/aniso8601/tests/test_duration.py
+@@ -7,7 +7,10 @@
+ # of the BSD license.  See the LICENSE file for details.
+ 
+ import unittest
+-import mock
++try:
++    from unittest import mock
++except ImportError:
++    import mock
+ import aniso8601
+ 
+ from aniso8601.exceptions import ISOFormatError, NegativeDurationError
+diff --git a/aniso8601/tests/test_interval.py b/aniso8601/tests/test_interval.py
+index d05909d..d14045d 100644
+--- a/aniso8601/tests/test_interval.py
++++ b/aniso8601/tests/test_interval.py
+@@ -7,7 +7,10 @@
+ # of the BSD license.  See the LICENSE file for details.
+ 
+ import unittest
+-import mock
++try:
++    from unittest import mock
++except ImportError:
++    import mock
+ import aniso8601
+ 
+ from aniso8601.exceptions import ISOFormatError
+diff --git a/aniso8601/tests/test_time.py b/aniso8601/tests/test_time.py
+index 6cca13d..bade083 100644
+--- a/aniso8601/tests/test_time.py
++++ b/aniso8601/tests/test_time.py
+@@ -7,7 +7,10 @@
+ # of the BSD license.  See the LICENSE file for details.
+ 
+ import unittest
+-import mock
++try:
++    from unittest import mock
++except ImportError:
++    import mock
+ import aniso8601
+ 
+ from aniso8601.resolution import TimeResolution
+diff --git a/aniso8601/tests/test_timezone.py b/aniso8601/tests/test_timezone.py
+index 77903cb..1f43052 100644
+--- a/aniso8601/tests/test_timezone.py
++++ b/aniso8601/tests/test_timezone.py
+@@ -7,7 +7,10 @@
+ # of the BSD license.  See the LICENSE file for details.
+ 
+ import unittest
+-import mock
++try:
++    from unittest import mock
++except ImportError:
++    import mock
+ import aniso8601
+ 
+ from aniso8601.exceptions import ISOFormatError
+-- 
+2.20.1
+

@@ -6,6 +6,7 @@
 		<name>Python</name>
 	</maintainer>
 	<upstream>
+		<remote-id type="github">agronholm/pythonfutures</remote-id>
 		<remote-id type="pypi">futures</remote-id>
 	</upstream>
 </pkgmetadata>

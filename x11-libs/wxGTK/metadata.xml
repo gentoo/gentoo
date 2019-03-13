@@ -10,9 +10,6 @@
 			Enable the wxMediaCtrl class for playing audio and video through
 			gstreamer.
 		</flag>
-		<flag name="gnome">
-			Use <pkg>gnome-base/libgnomeprintui</pkg> for printing tasks.
-		</flag>
 		<flag name="sdl">
 			Use Simple Directmedia Layer (<pkg>media-libs/libsdl</pkg>) for
 			audio.

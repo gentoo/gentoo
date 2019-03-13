@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="Websocket handler for the gevent pywsgi server"
-HOMEPAGE="https://pypi.python.org/pypi/gevent-websocket/"
+HOMEPAGE="https://pypi.org/project/gevent-websocket/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"

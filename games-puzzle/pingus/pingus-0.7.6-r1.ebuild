@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit scons-utils toolchain-funcs flag-o-matic xdg-utils
 
 DESCRIPTION="free Lemmings clone"
-HOMEPAGE="http://pingus.seul.org/"
+HOMEPAGE="https://pingus.seul.org"
 SRC_URI="https://pingus.googlecode.com/files/${P}.tar.bz2"
 
 LICENSE="GPL-3"

@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,7 +6,7 @@ EAPI=5
 S=${WORKDIR}/${P/_*/}
 
 DESCRIPTION="Ninja IRC Client"
-HOMEPAGE="http://ninja.qoop.org/"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 SRC_URI="ftp://qoop.org/ninja/stable/${P/_/}.tar.gz"
 SLOT="0"
 LICENSE="GPL-2"

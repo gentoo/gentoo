@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>zerochaos@gentoo.org</email>
+		<name>Rick Farina</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>radio@gentoo.org</email>
+		<name>Radio</name>
+	</maintainer>
+	<use>
+		<flag name="faster">Use <pkg>sci-libs/scipy</pkg> to speed up drawing</flag>
+		<flag name="fastest">Use <pkg>dev-python/pyFFTW</pkg> to speed up drawing to the max</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">csete/gqrx</remote-id>
+	</upstream>
+</pkgmetadata>

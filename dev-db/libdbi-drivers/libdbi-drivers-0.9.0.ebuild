@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
@@ -64,6 +64,7 @@ src_configure() {
 	econf \
 		$(use_enable doc docs) \
 		$(use_enable static-libs static) \
+		--with-dbi-libdir=/usr/$(get_libdir) \
 		${myconf}
 }
 

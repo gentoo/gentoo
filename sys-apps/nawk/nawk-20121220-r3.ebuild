@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 inherit toolchain-funcs
 
 DESCRIPTION="Brian Kernighan's pattern scanning and processing language"
-HOMEPAGE="http://cm.bell-labs.com/cm/cs/awkbook/index.html"
+HOMEPAGE="https://www.cs.princeton.edu/~bwk/btl.mirror/"
 SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="MIT"

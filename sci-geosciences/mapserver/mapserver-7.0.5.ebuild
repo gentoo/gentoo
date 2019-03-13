@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -21,8 +21,8 @@ WEBAPP_MANUAL_SLOT=yes
 inherit eutils depend.apache webapp distutils-r1 flag-o-matic perl-module php-ext-source-r3 multilib cmake-utils # ruby-ng
 
 DESCRIPTION="Development environment for building spatially enabled webapps"
-HOMEPAGE="http://mapserver.org/"
-SRC_URI="http://download.osgeo.org/mapserver/${MY_P}.tar.gz"
+HOMEPAGE="https://mapserver.org/"
+SRC_URI="https://download.osgeo.org/mapserver/${MY_P}.tar.gz"
 
 LICENSE="MIT"
 KEYWORDS="~amd64 ~x86"
@@ -83,12 +83,10 @@ pkg_setup() {
 }
 
 src_unpack() {
-	# unpack A and then copy the php thingies into workdir/php-slot
-	php-ext-source-r3_src_unpack
-	# HACK: and then remove it and replace by symlink
+	default
+	# HACK: Make symlinks for php targets
 	local slot
 	for slot in $(php_get_slots); do
-		rm -rf "${WORKDIR}/${slot}" || die
 		ln -s "${PHP_EXT_S}" "${WORKDIR}/${slot}" || die
 	done
 }

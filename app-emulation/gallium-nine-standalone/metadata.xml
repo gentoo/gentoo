@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>chewi@gentoo.org</email>
+		<name>James Le Cuirot</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>wine@gentoo.org</email>
+		<name>Wine</name>
+	</maintainer>
+	<longdescription>
+Gallium Nine Standalone, as the name implies, is a standalone version of the WINE parts of Gallium Nine.
+
+This decouples Gallium Nine from the WINE tree, so that it can be used with any WINE version. There is no need for any WINE patches. A stable, development, or staging WINE release is sufficient.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">iXit/wine-nine-standalone</remote-id>
+	</upstream>
+</pkgmetadata>

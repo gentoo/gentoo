@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -18,7 +18,7 @@ IUSE="libnotify"
 RDEPEND="
 	dev-python/pygtk:2[${PYTHON_USEDEP}]
 	dev-python/dbus-python[${PYTHON_USEDEP}]
-	|| ( sys-power/upower sys-power/upower-pm-utils )
+	sys-power/upower
 	x11-themes/hicolor-icon-theme
 	libnotify? ( x11-libs/libnotify )
 "

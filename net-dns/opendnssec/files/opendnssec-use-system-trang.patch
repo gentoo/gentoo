@@ -1,5 +1,5 @@
---- conf/Makefile.am.orig	2013-05-12 22:45:26.514768943 +0200
-+++ conf/Makefile.am	2013-05-12 22:46:33.399545628 +0200
+--- a/conf/Makefile.am.orig	2013-05-12 22:45:26.514768943 +0200
++++ b/conf/Makefile.am	2013-05-12 22:46:33.399545628 +0200
 @@ -7,7 +7,7 @@
  XML =	addns.xml conf.xml kasp.xml zonelist.xml signconf.xml enforcerstate.xml
  XSL=	kasp2html.xsl

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,7 +8,7 @@ is it ja kk km ko lg lt lv ms nl pa pl pt pt_BR ro ru si sk sl sr sr@latin sv
 te th tr tt_RU ug uk vi zh_CN zh_TW"
 PLOCALE_BACKUP="en_GB"
 
-inherit autotools eutils fdo-mime l10n readme.gentoo-r1
+inherit autotools eutils xdg-utils l10n readme.gentoo-r1
 
 if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="git://git.lxde.org/git/lxde/${PN}"
@@ -69,12 +69,12 @@ src_install() {
 }
 
 pkg_postinst() {
-	fdo-mime_desktop_database_update
-	fdo-mime_mime_database_update
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 	readme.gentoo_print_elog
 }
 
 pkg_postrm() {
-	fdo-mime_desktop_database_update
-	fdo-mime_mime_database_update
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 }

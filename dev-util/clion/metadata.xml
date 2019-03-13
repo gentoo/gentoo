@@ -4,7 +4,6 @@
 	<maintainer type="person">
 		<email>c.a.strahl@gmail.com</email>
 		<name>Christian Strahl</name>
-		<description>Proxy maintainer. Assign bugs to him.</description>
 	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
@@ -13,4 +12,7 @@
 	<longdescription lang="en">
 		Fully Integrated C/C++ Development Environment.
 	</longdescription>
+	<use>
+		<flag name="custom-jdk">Install and use IntelliJ's custom JRE.</flag>
+	</use>
 </pkgmetadata>

@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # Based on the ac-wrapper.pl script provided by MandrakeSoft
@@ -155,7 +155,7 @@ if [ "${WANT_AUTOCONF:-2.1}" = "2.1" ] && [ -n "${WANT_AUTOMAKE}" ] ; then
 	# is set to an older version, let's do some sanity checks.
 	case "${WANT_AUTOMAKE}" in
 	1.[456])
-		acfiles=$(ls ac{local,include}.m4 configure.{in,ac} 2>/dev/null)
+		acfiles=$(ls aclocal.m4 acinclude.m4 configure.in configure.ac 2>/dev/null)
 		[ -n "${acfiles}" ] && confversion=$(acprereq_version ${acfiles})
 
 		[ -z "${confversion}" ] && [ -r "configure" ] \

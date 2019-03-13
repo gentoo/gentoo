@@ -10,6 +10,6 @@
 			<email>agaida@siduction.org</email>
 			<name>Alf Gaida</name>
 		</maintainer>
-		<remote-id type="github">QtDesktop/screengrab</remote-id>
+		<remote-id type="github">lxqt/screengrab</remote-id>
 	</upstream>
 </pkgmetadata>

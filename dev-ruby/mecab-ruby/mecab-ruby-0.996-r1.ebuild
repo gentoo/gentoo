@@ -1,15 +1,15 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI="6"
 
-USE_RUBY="ruby21 ruby22 ruby23 ruby24"
+USE_RUBY="ruby23 ruby24 ruby25 ruby26"
 
 inherit ruby-ng
 
 DESCRIPTION="Ruby binding for MeCab"
-HOMEPAGE="http://mecab.sourceforge.net/"
-SRC_URI="https://mecab.googlecode.com/files/${P}.tar.gz"
+HOMEPAGE="http://taku910.github.io/mecab/"
+SRC_URI="https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/${PN%-*}/${P}.tar.gz"
 
 LICENSE="|| ( BSD LGPL-2.1 GPL-2 )"
 SLOT="0"
@@ -18,6 +18,9 @@ IUSE=""
 
 DEPEND="~app-text/mecab-${PV}"
 RDEPEND="${DEPEND}"
+
+DOCS=( AUTHORS README test.rb )
+HTML_DOCS=( bindings.html )
 
 each_ruby_configure() {
 	${RUBY} extconf.rb || die
@@ -32,6 +35,5 @@ each_ruby_install() {
 }
 
 all_ruby_install() {
-	dodoc AUTHORS README test.rb
-	dohtml bindings.html
+	einstalldocs
 }

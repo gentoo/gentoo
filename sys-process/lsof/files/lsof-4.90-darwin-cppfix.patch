@@ -1,0 +1,12 @@
+diff -Naur a/dialects/darwin/libproc/dfile.c b/dialects/darwin/libproc/dfile.c
+--- a/dialects/darwin/libproc/dfile.c	2018-02-19 15:04:26.011578124 +0800
++++ b/dialects/darwin/libproc/dfile.c	2018-02-19 15:04:45.006502653 +0800
+@@ -43,7 +43,7 @@
+ #include "lsof.h"
+ 
+ #if	defined(PROC_FP_GUARDED)
+-#extern	struct pff_tab	Pgf_tab[];
++extern	struct pff_tab	Pgf_tab[];
+ #endif	/* defined(PROC_FP_GUARDED) */
+ 
+ 

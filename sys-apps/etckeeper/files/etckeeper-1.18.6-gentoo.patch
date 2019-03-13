@@ -27,7 +27,7 @@ index 0d268bd..81214c7 100644
 -HIGHLEVEL_PACKAGE_MANAGER=apt
 +#HIGHLEVEL_PACKAGE_MANAGER=apt
 +
-+# Gentoo specific:                                                                                                                                                                                                                                
++# Gentoo specific:
 +# For portage this is emerge
 +# For paludis this is cave
 +HIGHLEVEL_PACKAGE_MANAGER=emerge

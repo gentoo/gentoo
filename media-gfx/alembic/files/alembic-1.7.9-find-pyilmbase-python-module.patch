@@ -1,0 +1,13 @@
+diff --git a/cmake/Modules/FindPyIlmBase.cmake b/cmake/Modules/FindPyIlmBase.cmake
+index 5cb9108..c3f80a2 100644
+--- a/cmake/Modules/FindPyIlmBase.cmake
++++ b/cmake/Modules/FindPyIlmBase.cmake
+@@ -44,7 +44,7 @@ ELSE()
+               SET(ALEMBIC_PYILMBASE_ROOT NOTFOUND)
+             ELSE()
+               # TODO: set to default install path when shipping out
+-              SET(ALEMBIC_PYILMBASE_ROOT "/usr/local/pyilmbase/")
++              SET(ALEMBIC_PYILMBASE_ROOT "/usr")
+             ENDIF()
+         ELSE()
+             IF (${WINDOWS})

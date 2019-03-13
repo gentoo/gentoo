@@ -1,0 +1,18 @@
+--- a/uim/Makefile.am
++++ b/uim/Makefile.am
+@@ -181,6 +181,7 @@
+ libuim_eb_la_CFLAGS = @EBCONF_PTHREAD_CFLAGS@ -Wall
+ endif
+ 
++if LIBUIM_X_UTIL
+ if XKB
+ uim_plugin_LTLIBRARIES += libuim-xkb.la
+ libuim_xkb_la_SOURCES = uim-xkb.c
+@@ -189,6 +190,7 @@
+ libuim_xkb_la_CFLAGS = @X11_CFLAGS@
+ libuim_xkb_la_CPPFLAGS = -I$(top_srcdir)
+ endif
++endif
+ 
+ if OSX_DCS
+ uim_plugin_LTLIBRARIES += libuim-osx-dcs.la

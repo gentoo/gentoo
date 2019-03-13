@@ -1,12 +1,12 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 inherit eutils user systemd
 
 DESCRIPTION="A powerful latency measurement tool"
-HOMEPAGE="http://oss.oetiker.ch/smokeping/"
-SRC_URI="http://oss.oetiker.ch/smokeping/pub/${P}.tar.gz"
+HOMEPAGE="https://oss.oetiker.ch/smokeping/"
+SRC_URI="https://oss.oetiker.ch/smokeping/pub/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -31,7 +31,7 @@ DEPEND="
 	radius? ( dev-perl/Authen-Radius )
 	ssh? ( dev-perl/Net-OpenSSH )
 	telnet? ( dev-perl/Net-Telnet )
-	|| ( dev-perl/CGI-Fast <dev-perl/CGI-4 )
+	dev-perl/CGI-Fast
 	>=dev-lang/perl-5.8.8-r8
 	>=dev-perl/SNMP_Session-1.13
 	>=net-analyzer/fping-2.4_beta2-r2[suid]

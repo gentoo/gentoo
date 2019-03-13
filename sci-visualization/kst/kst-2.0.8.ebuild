@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-inherit cmake-utils multilib
+inherit cmake-utils xdg-utils
 
 MY_P=Kst-${PV}
 
@@ -34,13 +34,19 @@ RDEPEND="
 	sci-libs/netcdf-cxx:3
 "
 DEPEND="${RDEPEND}
+	dev-qt/linguist-tools:5
 	test? ( dev-qt/qttest:5 )
 "
 
 S=${WORKDIR}/${MY_P}
 
 DOCS=( AUTHORS README.kstScript )
-PATCHES=( "${FILESDIR}/${P}-includes.patch" )
+
+PATCHES=(
+	"${FILESDIR}/${P}-includes.patch"
+	"${FILESDIR}/${P}-qt-5.11.patch"
+	"${FILESDIR}/${P}-gsl-2.0.patch"
+)
 
 src_configure() {
 	local mycmakeargs=(
@@ -50,8 +56,16 @@ src_configure() {
 		-Dkst_release=$(usex debug OFF ON)
 		-Dkst_rpath=OFF
 		-Dkst_svnversion=OFF
-		$(cmake-utils_use test kst_test)
+		-Dkst_test=$(usex test)
 	)
 
 	cmake-utils_src_configure
+}
+
+pkg_postinst() {
+	xdg_desktop_database_update
+}
+
+pkg_postrm() {
+	xdg_desktop_database_update
 }

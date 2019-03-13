@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="4"
@@ -10,7 +10,7 @@ inherit webapp eutils multilib user toolchain-funcs git-2
 [[ -z "${CGIT_CACHEDIR}" ]] && CGIT_CACHEDIR="/var/cache/${PN}/"
 
 DESCRIPTION="a fast web-interface for git repositories"
-HOMEPAGE="http://git.zx2c4.com/cgit/about"
+HOMEPAGE="https://git.zx2c4.com/cgit/about"
 SRC_URI=""
 EGIT_REPO_URI="https://git.zx2c4.com/cgit"
 

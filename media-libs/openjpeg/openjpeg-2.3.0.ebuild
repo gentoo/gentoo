@@ -1,21 +1,22 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit multilib cmake-multilib
+
+inherit cmake-multilib
 
 # Make sure that test data are not newer than release;
 # otherwise we will see "Found-But-No-Test" test failures!
 MY_TESTDATA_COMMIT="c07f38fae1e67adc288c2d6679df5d3652017fbe"
 
 DESCRIPTION="An open-source JPEG 2000 library"
-HOMEPAGE="http://www.openjpeg.org"
+HOMEPAGE="https://www.openjpeg.org"
 SRC_URI="https://github.com/uclouvain/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	test? ( https://github.com/uclouvain/openjpeg-data/archive/${MY_TESTDATA_COMMIT}.tar.gz -> ${PN}-data_20170814.tar.gz )"
 
 LICENSE="BSD-2"
 SLOT="2/7" # based on SONAME
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~sparc-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 IUSE="doc static-libs test"
 
 RDEPEND="media-libs/lcms:2=
@@ -55,7 +56,6 @@ multilib_src_configure() {
 		mycmakeargs=(
 			-DOPENJPEG_INSTALL_LIB_DIR="$(get_libdir)"
 			-DBUILD_TESTING="$(usex test)"
-			-DBUILD_SHARED_LIBS=OFF
 			-DBUILD_CODEC="$(usex test)"
 			)
 		BUILD_DIR=${BUILD_DIR}_static cmake-utils_src_configure

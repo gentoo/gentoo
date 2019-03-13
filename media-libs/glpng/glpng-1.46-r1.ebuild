@@ -1,7 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
+
 inherit cmake-multilib
 
 DESCRIPTION="An OpenGL PNG image library"
@@ -13,15 +14,17 @@ SLOT="0"
 KEYWORDS="amd64 ppc x86"
 IUSE="static-libs"
 
-RDEPEND="virtual/opengl[${MULTILIB_USEDEP}]
-	virtual/glu[${MULTILIB_USEDEP}]
+RDEPEND="
 	media-libs/libpng:0=[${MULTILIB_USEDEP}]
-	sys-libs/zlib:=[${MULTILIB_USEDEP}]"
+	sys-libs/zlib:=[${MULTILIB_USEDEP}]
+	virtual/glu[${MULTILIB_USEDEP}]
+	virtual/opengl[${MULTILIB_USEDEP}]
+"
 DEPEND=${RDEPEND}
 
 S=${WORKDIR}/${PN}
 
 src_configure() {
-	local mycmakeargs=( "$(cmake-utils_use_build static-libs STATIC_LIBS)" )
+	local mycmakeargs=( -DBUILD_STATIC_LIBS=$(usex static-libs) )
 	cmake-multilib_src_configure
 }

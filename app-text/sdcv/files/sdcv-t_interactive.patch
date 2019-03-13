@@ -1,0 +1,11 @@
+--- sdcv-0.5.2/tests/t_interactive.orig	2018-08-26 15:04:39.174389830 +0300
++++ sdcv-0.5.2/tests/t_interactive	2018-08-26 15:05:01.494995830 +0300
+@@ -10,7 +10,7 @@
+ 
+ "$PATH_TO_SDCV" -n >/dev/null 2>&1 &
+ PID=$!
+-sleep 1
++sleep 5
+ 
+ if kill -0 $PID >/dev/null 2>&1 ; then
+ 	echo "process wait input: $PID, test failed" >&2

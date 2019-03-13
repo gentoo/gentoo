@@ -1,5 +1,5 @@
---- png.c
-+++ png.c
+--- a/png.c
++++ b/png.c
 @@ -75,7 +75,7 @@
  {
    debug(" #error ");

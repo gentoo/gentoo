@@ -1,0 +1,24 @@
+diff -u ./Common.mak ../../openhome/ohNetGenerated/Common.mak
+--- ./Common.mak	2017-09-19 10:51:13.000000000 +0200
++++ ./Common.mak	2017-09-19 13:21:25.984071432 +0200
+@@ -17,20 +17,6 @@
+ $(objdir)ohnet-generated.jar : CpProxyJavaClasses DvDeviceJavaClasses
+ 	$(jar) $(jarflags) $(objdir)ohnet-generated.jar -C $(objdir) org
+ 
+-Generated$(dirsep)GenerateSourceFiles.mak : $(tt) OpenHome$(dirsep)Net$(dirsep)Service$(dirsep)Services.xml OpenHome/Net/T4/Templates/UpnpMakeT4.tt
+-	$(mkdir) Generated
+-	$(t4) -o Generated$(dirsep)GenerateSourceFiles.mak OpenHome/Net/T4/Templates/UpnpMakeT4.tt -a xml:OpenHome/Net/Service/Services.xml
+-	@echo Attention: a makefile has been re-generated.
+-
+-Generated$(dirsep)Proxies.mak : $(tt) OpenHome$(dirsep)Net$(dirsep)Service$(dirsep)Services.xml OpenHome/Net/T4/Templates/CpUpnpMakeProxies.tt
+-	$(mkdir) Generated
+-	$(t4) -o Generated$(dirsep)Proxies.mak OpenHome/Net/T4/Templates/CpUpnpMakeProxies.tt -a xml:OpenHome/Net/Service/Services.xml
+-	@echo Attention: a makefile has been re-generated.
+-
+-Generated$(dirsep)Devices.mak : $(tt) OpenHome$(dirsep)Net$(dirsep)Service$(dirsep)Services.xml OpenHome/Net/T4/Templates/DvUpnpMakeDevices.tt
+-	$(mkdir) Generated
+-	$(t4) -o Generated$(dirsep)Devices.mak OpenHome/Net/T4/Templates/DvUpnpMakeDevices.tt -a xml:OpenHome/Net/Service/Services.xml
+-	@echo Attention: a makefile has been re-generated.
+ 
+ native_targets = make_obj_dir copy_build_includes proxies devices
+ 

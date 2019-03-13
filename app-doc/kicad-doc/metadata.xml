@@ -4,7 +4,6 @@
 	<maintainer type="person">
 		<email>zoltan@sinustrom.info</email>
 		<name>Zoltan Puskas</name>
-		<description>Proxied maintainer. Assign bugs to him.</description>
 	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>

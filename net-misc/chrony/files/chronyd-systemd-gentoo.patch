@@ -1,0 +1,28 @@
+From ba3ddefc90f58d30a365104cf6e930333e3a2704 Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Tue, 4 Sep 2018 13:01:06 -0400
+Subject: [PATCH] Tweak chronyd.service for Gentoo
+
+---
+ examples/chronyd.service | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/examples/chronyd.service b/examples/chronyd.service
+index 1777413..ceed830 100644
+--- a/examples/chronyd.service
++++ b/examples/chronyd.service
+@@ -7,9 +7,8 @@ ConditionCapability=CAP_SYS_TIME
+ 
+ [Service]
+ Type=forking
+-PIDFile=/var/run/chrony/chronyd.pid
+-EnvironmentFile=-/etc/sysconfig/chronyd
+-ExecStart=/usr/sbin/chronyd $OPTIONS
++PIDFile=/run/chrony/chronyd.pid
++ExecStart=/usr/sbin/chronyd
+ PrivateTmp=yes
+ ProtectHome=yes
+ ProtectSystem=full
+-- 
+2.18.0
+

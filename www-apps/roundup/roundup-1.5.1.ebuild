@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,12 +7,12 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="Issue-tracking system with command-line, web, and e-mail interfaces"
-HOMEPAGE="http://roundup.sourceforge.net https://pypi.python.org/pypi/roundup"
+HOMEPAGE="http://roundup.sourceforge.net https://pypi.org/project/roundup/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT ZPL"
 SLOT="0"
-KEYWORDS="amd64 ppc ~sparc x86"
+KEYWORDS="amd64 ppc sparc x86"
 
 DEPEND=""
 RDEPEND="${DEPEND}"

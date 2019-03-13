@@ -1,0 +1,59 @@
+--- a/src/CMakeLists.txt	2018-07-28 16:37:01.180598992 +0200
++++ a/src/CMakeLists.txt.new	2018-07-28 17:14:49.147775461 +0200
+@@ -1,7 +1,3 @@
+-INCLUDE_DIRECTORIES(
+-  ${HDF5_INCLUDE_DIRS}
+-  ${MPI_INCLUDE_DIRS})
+-
+ # On Win platform, we need to make sure symbols are properly exported in
+ # the intermediary OBJECT targes built in the sub-directories:
+ # The definition "-D<target>_EXPORTS" is normally added automatically by CMake
+@@ -19,6 +15,12 @@
+ INCLUDE_DIRECTORIES(${PROJECT_BINARY_DIR}/include 
+     ${PROJECT_SOURCE_DIR}/include)
+
++# these includes must go after project ones to avoid masking by
++# previous versions already installed
++INCLUDE_DIRECTORIES(
++  ${HDF5_INCLUDE_DIRS}
++  ${MPI_INCLUDE_DIRS})
++
+ # Get pure C intermediary targets:
+ ADD_SUBDIRECTORY(hdfi)
+ ADD_SUBDIRECTORY(ci)
+--- a/tools/mdump/CMakeLists.txt	2018-07-29 09:24:35.714930029 +0200
++++ a/tools/mdump/CMakeLists.txt.new	2018-07-29 09:58:48.667089767 +0200
+@@ -33,6 +33,6 @@
+ CONFIGURE_FILE(xmdump3.in ${PROJECT_BINARY_DIR}/xmdump3 @ONLY)
+ 
+ INSTALL(PROGRAMS ${PROJECT_BINARY_DIR}/xmdump2 ${PROJECT_BINARY_DIR}/xmdump3 DESTINATION bin)
+-INSTALL(CODE "EXECUTE_PROCESS(COMMAND ${CMAKE_COMMAND} -E create_symlink mdump3 mdump WORKING_DIRECTORY ${DESTDIR}${CMAKE_INSTALL_PREFIX}/bin)")
+-INSTALL(CODE "EXECUTE_PROCESS(COMMAND ${CMAKE_COMMAND} -E create_symlink xmdump3 xmdump WORKING_DIRECTORY ${DESTDIR}${CMAKE_INSTALL_PREFIX}/bin)")
++INSTALL(CODE "EXECUTE_PROCESS(COMMAND ${CMAKE_COMMAND} -E create_symlink mdump3 mdump WORKING_DIRECTORY \"\$ENV{DESTDIR}\${CMAKE_INSTALL_PREFIX}/bin\")")
++INSTALL(CODE "EXECUTE_PROCESS(COMMAND ${CMAKE_COMMAND} -E create_symlink xmdump3 xmdump WORKING_DIRECTORY \"\$ENV{DESTDIR}\${CMAKE_INSTALL_PREFIX}/bin\")")
+ 
+--- a/src/2.3.6/CMakeLists.txt	2018-07-30 22:45:56.205079148 +0200
++++ a/src/2.3.6/CMakeLists.txt.new	2018-07-30 22:49:43.520096835 +0200
+@@ -1,8 +1,3 @@
+-INCLUDE_DIRECTORIES(
+-  ${HDF5_INCLUDE_DIRS}
+-  ${MPI_INCLUDE_DIRS}
+-)
+- 
+ SET(med236_SOURCES MEDaffiche.c)
+ 
+ # Definitions
+@@ -13,6 +8,13 @@
+     "${PROJECT_BINARY_DIR}/include/2.3.6"
+     "${PROJECT_SOURCE_DIR}/include/2.3.6")
+ 
++# these includes must go after project ones to avoid masking by
++# previous versions already installed
++INCLUDE_DIRECTORIES(
++  ${HDF5_INCLUDE_DIRS}
++  ${MPI_INCLUDE_DIRS}
++)
++ 
+ # Build intermediate targets _cfi236, _hdfi236, _misc236 and _ci236 
+ # (and their static counterpart):
+ ADD_SUBDIRECTORY(cfi)

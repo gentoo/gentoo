@@ -1,0 +1,44 @@
+https://bugs.launchpad.net/percona-toolkit/+bug/962330
+https://bugs.launchpad.net/percona-toolkit/+bug/1095476
+
+diff --git a/bin/pt-slave-delay b/bin/pt-slave-delay
+index 750b733..fca04e4 100755
+--- a/bin/pt-slave-delay
++++ b/bin/pt-slave-delay
+@@ -4244,6 +4244,7 @@ sub main {
+    my ( $TS, $FILE, $POS ) = ( 0, 1, 2 );
+    my @positions;
+    my $next_start = 0;
++   my $initial_delay = 0;
+    $now    = time();
+    my $end = $now + ( $o->get('run-time') || 0 );    # When we should exit
+ 
+@@ -4258,6 +4259,10 @@ sub main {
+       die "Slave SQL thread is not running";
+    }
+ 
++   if (defined $status->{seconds_behind_master} and $status->{seconds_behind_master} > 0) {
++      $initial_delay = $status->{seconds_behind_master};
++   }
++
+    my $master_dbh;
+    if ( $master_dsn ) {
+       PTDEBUG && _d('Connecting to master via DSN from cmd-line');
+@@ -4383,7 +4388,7 @@ sub main {
+             || $pos->[$POS] != $res->{position} )
+          {
+             push @positions,
+-               [ $now, $res->{file}, $res->{position} ];
++               [ $now - ( $initial_delay || 0 ), $res->{file}, $res->{position} ];
+          }
+       }
+       else {
+@@ -4403,7 +4408,7 @@ sub main {
+                 # That happened because for an already lagged slave, $now
+                 # isn't the correct time, but is actually
+                 # $now - $seconds_lagged.
+-                 $now - ( $status->{seconds_behind_master} || 0 ),
++                 $now - ( $initial_delay || 0 ),
+                  $status->{master_log_file},
+                  $status->{read_master_log_pos}
+             ];

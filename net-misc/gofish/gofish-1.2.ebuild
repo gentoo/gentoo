@@ -1,9 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=2
+EAPI=6
 
-inherit eutils user
+inherit user
 
 DESCRIPTION="Gofish gopher server"
 HOMEPAGE="http://gofish.sourceforge.net"
@@ -27,14 +27,12 @@ pkg_setup() {
 src_configure() {
 	econf \
 		--localstatedir=/var \
-		--disable-mmap-cache || die
+		--disable-mmap-cache
 }
 
 src_install () {
-	make DESTDIR="${D}" install || die
-
-	newinitd "${FILESDIR}"/gofish.rc gofish || die
-	newconfd "${FILESDIR}"/gofish.confd gofish || die
-
-	dodoc AUTHORS ChangeLog Configure_GoFish README TODO || die
+	default
+	dodoc Configure_GoFish
+	newinitd "${FILESDIR}"/gofish.rc gofish
+	newconfd "${FILESDIR}"/gofish.confd gofish
 }

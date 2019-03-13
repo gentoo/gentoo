@@ -6,11 +6,11 @@ EAPI="6"
 inherit systemd
 
 DESCRIPTION="PaX flags maintenance daemon"
-HOMEPAGE="http://www.grsecurity.net/"
+HOMEPAGE="https://www.grsecurity.net/"
 SRC_URI="https://www.grsecurity.net/${PN}/${PN}_${PV}.orig.tar.gz
 	https://dev.gentoo.org/~blueness/hardened-sources/${PN}/${PN}_${PV}.orig.tar.gz"
-LICENSE="GPL-2"
 
+LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 IUSE="pam"

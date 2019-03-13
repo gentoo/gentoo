@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 
-inherit autotools eutils flag-o-matic multilib pam systemd toolchain-funcs versionator
+inherit autotools eutils flag-o-matic multilib pam systemd toolchain-funcs
 
-MY_PV=$(delete_version_separator '_')
+MY_PV=${PV/_/}
 MY_P="${PN}-${MY_PV}"
 PVER="20170822"
 
@@ -21,13 +21,13 @@ SRC_URI="
 
 LICENSE="IBM BSD openafs-krb5-a APSL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
 
 IUSE="bitmap-later debug doc fuse kerberos +modules ncurses pam pthreaded-ubik +supergroups"
 
 CDEPEND="
 	virtual/libintl
-	fuse? ( sys-fs/fuse )
+	fuse? ( sys-fs/fuse:0= )
 	kerberos? ( virtual/krb5 )
 	ncurses? ( sys-libs/ncurses:0= )
 	pam? ( virtual/pam )"

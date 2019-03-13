@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 python3_4 python3_5 )
 inherit distutils-r1
 
 DESCRIPTION="Python binding for the PowerVM REST API"
-HOMEPAGE="https://pypi.python.org/pypi/pypowervm"
+HOMEPAGE="https://pypi.org/project/pypowervm/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"

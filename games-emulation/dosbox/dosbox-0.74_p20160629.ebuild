@@ -1,8 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools eutils
+
+inherit autotools desktop
 
 PATCH=3989
 DESCRIPTION="DOS emulator"
@@ -27,7 +28,7 @@ DEPEND="${RDEPEND}
 S=${WORKDIR}/${PN}-code-0-${PATCH}-dosbox-trunk
 
 PATCHES=(
-"${FILESDIR}"/dosbox-0.74-gcc46.patch
+	"${FILESDIR}"/${PN}-0.74-gcc46.patch
 )
 
 src_prepare() {

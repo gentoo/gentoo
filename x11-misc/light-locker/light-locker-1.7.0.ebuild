@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -27,7 +27,7 @@ RDEPEND="dev-libs/dbus-glib
 	gtk3? ( x11-libs/gtk+:3 )
 	screensaver? ( x11-libs/libXScrnSaver )
 	systemd? ( sys-apps/systemd )
-	upower? ( || ( sys-power/upower sys-power/upower-pm-utils ) )"
+	upower? ( sys-power/upower )"
 DEPEND="${RDEPEND}
 	dev-lang/perl
 	dev-perl/XML-Parser

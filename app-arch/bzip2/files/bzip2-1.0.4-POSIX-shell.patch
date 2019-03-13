@@ -3,8 +3,8 @@ with calls to sed so POSIX shells work
 
 http://bugs.gentoo.org/193365
 
---- bzgrep
-+++ bzgrep
+--- a/bzgrep
++++ b/bzgrep
 @@ -63,10 +63,9 @@
      bzip2 -cdfq "$i" | $grep $opt "$pat"
      r=$?

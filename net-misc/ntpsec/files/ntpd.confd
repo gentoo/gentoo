@@ -1,0 +1,4 @@
+# /etc/conf.d/ntpd
+
+# Most people should leave this line alone.
+NTPD_OPTS="-g -u ntp:ntp"

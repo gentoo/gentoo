@@ -1,30 +1,25 @@
 #!/sbin/openrc-run
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 description="Starts ${SVCNAME} service for OpenStack"
 
-command="/usr/bin/${SVCNAME} -- --config-file /etc/nova/nova.conf"
-pidfile=/var/run/nova/${SVCNAME}.pid
+command="/usr/bin/${SVCNAME}"
+command_args="--config-file /etc/nova/nova.conf"
+pidfile=/run/${SVCNAME}.pid
+command_background=true
 required_files=/etc/nova/nova.conf
-start_stop_daemon_args="--quiet --user ${NOVA_USER:-nova}"
 if [ "$SVCNAME" == nova-compute ]; then
 	required_files="${required_files} /etc/nova/nova-compute.conf"
-	command="${command} --config-file /etc/nova/nova-compute.conf"
+	command_args="${command_args} --config-file /etc/nova/nova-compute.conf"
 fi
-
+start_stop_daemon_args="-u ${NOVA_USER:-nova}"
+retry="SIGTERM/15"
 
 depend() {
 	use net
 }
 
 start_pre() {
-	checkpath --directory --owner ${NOVA_USER:-nova}:${NOVA_GROUP:-nova} --mode 0775 ${NOVA_RUN:-/var/run/nova}
 	checkpath --directory --owner ${NOVA_USER:-nova}:${NOVA_GROUP:-nova} --mode 0775 ${NOVA_RUN:-/var/lock/nova}
-}
-
-start() {
-	ebegin "Starting ${SVCNAME}"
-	start-stop-daemon -S -b -m -p ${pidfile} -q -u ${NOVA_USER:-nova} -x ${command}
-	eend $?
 }

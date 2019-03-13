@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,10 +17,13 @@ IUSE=""
 DEPEND="dev-libs/glib:2
 	media-gfx/exiv2
 	>=x11-libs/gtk+-2.20:2
-	x11-misc/shared-mime-info"
-RDEPEND="${DEPEND}"
+	x11-misc/shared-mime-info
+"
+RDEPEND="${DEPEND}
+	dev-util/glib-utils
+"
 
-S=${WORKDIR}/${MY_PN}-${P}
+S="${WORKDIR}/${MY_PN}-${P}"
 
 src_prepare() {
 	default

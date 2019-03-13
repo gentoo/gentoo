@@ -1,0 +1,6 @@
+# The following are the upstream recommended and default settings.
+# For the full list of settings and their default values, see
+# /usr/share/doc/rabbitmq_exporter-*/README.md.
+
+# PUBLISH_PORT=9419
+# RABBIT_CAPABILITIES=bert,no_sort

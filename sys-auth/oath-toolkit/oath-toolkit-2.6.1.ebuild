@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
 inherit pam eutils autotools
 DESCRIPTION="Toolkit for using one-time password authentication with HOTP/TOTP algorithms"
-HOMEPAGE="http://www.nongnu.org/oath-toolkit/ http://gitorious.org/oath-toolkit/"
+HOMEPAGE="http://www.nongnu.org/oath-toolkit/"
 SRC_URI="http://download.savannah.gnu.org/releases/${PN}/${P}.tar.gz"
 LICENSE="GPL-3 LGPL-2.1"
 

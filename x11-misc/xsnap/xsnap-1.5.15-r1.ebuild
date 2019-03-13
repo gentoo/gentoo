@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -28,8 +28,8 @@ DEPEND="
 	${COMMON_DEPEND}
 	app-text/rman
 	dev-lang/perl
+	x11-base/xorg-proto
 	x11-misc/imake
-	x11-proto/xproto
 "
 
 DOCS=( AUTHORS Changelog README )

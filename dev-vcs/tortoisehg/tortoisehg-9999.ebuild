@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,7 +9,7 @@ inherit distutils-r1 eutils
 if [[ ${PV} != *9999* ]]; then
 	KEYWORDS="~amd64 ~x86"
 	SRC_URI="https://www.bitbucket.org/${PN}/targz/downloads/${P}.tar.gz"
-	HG_DEPEND=">=dev-vcs/mercurial-4.3 <dev-vcs/mercurial-4.5"
+	HG_DEPEND=">=dev-vcs/mercurial-4.4 <dev-vcs/mercurial-4.6"
 else
 	inherit mercurial
 	EHG_REPO_URI="https://bitbucket.org/tortoisehg/thg"
@@ -36,12 +36,12 @@ DEPEND="${RDEPEND}
 DISTUTILS_IN_SOURCE_BUILD=1
 
 python_prepare_all() {
-	if [[ ${LINGUAS+set} ]]; then
+	if [[ ${L10N+set} ]]; then
 		cd i18n/tortoisehg || die
 		local x y keep
 		for x in *.po; do
 			keep=false
-			for y in ${LINGUAS}; do
+			for y in ${L10N}; do
 				if [[ ${y} == ${x%.po}* ]]; then
 					keep=true
 					break
@@ -68,7 +68,7 @@ python_install_all() {
 	domenu contrib/thg.desktop
 
 	# Remove file that collides with >=mercurial-4.0 (bug #599266).
-	rm "${ED}"/usr/$(get_libdir)/${EPYTHON}/site-packages/hgext3rd/__init__.py \
+	rm "${ED%/}"/usr/$(get_libdir)/${EPYTHON}/site-packages/hgext3rd/__init__.py \
 		|| die
 }
 

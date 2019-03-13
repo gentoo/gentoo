@@ -1,0 +1,39 @@
+From b3db08ffccb78d680d8f7665ad9ed4cff6f92fcf Mon Sep 17 00:00:00 2001
+From: Millian Poquet <millian.poquet@inria.fr>
+Date: Mon, 10 Dec 2018 18:54:40 +0100
+Subject: [PATCH] pkg-config: Use CMake GnuInstallDirs FULL vars
+
+Fixes an installation problem in Nix packages, as non-FULL variables are
+already absolute paths in this case.
+---
+ CMakeLists.txt        | 2 +-
+ scripts/pugixml.pc.in | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index ddc5a5ad..e8c4f592 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -76,7 +76,7 @@ install(FILES ${HEADERS} DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}${INSTALL_SUFFIX
+ install(EXPORT pugixml-config DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/pugixml)
+ 
+ configure_file(scripts/pugixml.pc.in ${PROJECT_BINARY_DIR}/pugixml.pc @ONLY)
+-install(FILES ${PROJECT_BINARY_DIR}/pugixml.pc DESTINATION ${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}/pkgconfig)
++install(FILES ${PROJECT_BINARY_DIR}/pugixml.pc DESTINATION ${CMAKE_INSTALL_FULL_LIBDIR}/pkgconfig)
+ 
+ if(BUILD_TESTS)
+ 	file(GLOB TEST_SOURCES tests/*.cpp)
+diff --git a/scripts/pugixml.pc.in b/scripts/pugixml.pc.in
+index a1678272..f9c3fd45 100644
+--- a/scripts/pugixml.pc.in
++++ b/scripts/pugixml.pc.in
+@@ -1,7 +1,7 @@
+ prefix=@CMAKE_INSTALL_PREFIX@
+ exec_prefix=${prefix}
+-includedir=${prefix}/include@INSTALL_SUFFIX@
+-libdir=${exec_prefix}/@CMAKE_INSTALL_LIBDIR@@INSTALL_SUFFIX@
++includedir=@CMAKE_INSTALL_FULL_INCLUDEDIR@@INSTALL_SUFFIX@
++libdir=@CMAKE_INSTALL_FULL_LIBDIR@@INSTALL_SUFFIX@
+ 
+ Name: pugixml
+ Description: Light-weight, simple and fast XML parser for C++ with XPath support.

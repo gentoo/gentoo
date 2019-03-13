@@ -1,0 +1,10 @@
+--- a/configure.in
++++ b/configure.in
+@@ -125,6 +125,7 @@
+ AC_CHECK_HEADER(ncurses.h, [ncurses=yes])
+ test "x$ncurses" = "xyes" && AC_CHECK_LIB(ncurses, initscr, [LIBS="$LIBS -lncurses"; ncurses=yes], [ncurses=no])
+ test "x$ncurses" = "xno" && AC_MSG_ERROR([ncurses support required])
++AC_SEARCH_LIBS(curs_set, ncurses tinfo)
+ 
+ dnl Libetpan
+ libetpan=no

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,12 +6,12 @@ EAPI=6
 inherit cmake-utils multilib
 
 DESCRIPTION="A minimalistic plugin API for video effects"
-HOMEPAGE="http://www.dyne.org/software/frei0r/"
-SRC_URI="http://files.dyne.org/frei0r/releases/${P}.tar.gz"
+HOMEPAGE="https://www.dyne.org/software/frei0r/"
+SRC_URI="https://files.dyne.org/frei0r/releases/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ppc x86 ~amd64-fbsd ~x86-fbsd"
 IUSE="doc +facedetect +scale0tilt"
 
 RDEPEND="x11-libs/cairo

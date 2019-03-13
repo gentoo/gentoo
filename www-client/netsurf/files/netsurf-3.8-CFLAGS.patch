@@ -1,0 +1,79 @@
+diff --git a/Makefile.defaults b/Makefile.defaults
+index 51090109e..f1ec46f73 100644
+--- a/Makefile.defaults
++++ b/Makefile.defaults
+@@ -114,12 +114,6 @@ NETSURF_USE_SANITIZERS := NO
+ # But recover after sanitizer failure
+ NETSURF_RECOVER_SANITIZERS := YES
+ 
+-# Initial CFLAGS. Optimisation level etc. tend to be target specific.
+-CFLAGS :=
+-
+-# Initial CXXFLAGS. Optimisation level etc. tend to be target specific.
+-CXXFLAGS :=
+-
+ # Default installation/execution prefix
+ PREFIX ?= /usr/local
+ 
+diff --git a/frontends/framebuffer/Makefile b/frontends/framebuffer/Makefile
+index bdedd903b..35179138a 100644
+--- a/frontends/framebuffer/Makefile
++++ b/frontends/framebuffer/Makefile
+@@ -20,7 +20,7 @@ CFLAGS += '-DNETSURF_FB_FONT_MONOSPACE_BOLD="$(NETSURF_FB_FONT_MONOSPACE_BOLD)"'
+ CFLAGS += '-DNETSURF_FB_FONT_CURSIVE="$(NETSURF_FB_FONT_CURSIVE)"'
+ CFLAGS += '-DNETSURF_FB_FONT_FANTASY="$(NETSURF_FB_FONT_FANTASY)"'
+ 
+-CFLAGS += -std=c99 -g -Dsmall \
++CFLAGS += -std=c99 -Dsmall \
+ 	  -D_BSD_SOURCE \
+ 	  -D_DEFAULT_SOURCE \
+ 	  -D_XOPEN_SOURCE=600 \
+diff --git a/frontends/framebuffer/Makefile.defaults b/frontends/framebuffer/Makefile.defaults
+index cc712e992..f132c97d6 100644
+--- a/frontends/framebuffer/Makefile.defaults
++++ b/frontends/framebuffer/Makefile.defaults
+@@ -3,7 +3,7 @@
+ # ----------------------------------------------------------------------------
+ 
+ # Optimisation levels
+-CFLAGS += -O2
++CFLAGS += 
+ 
+ # Framebuffer default surface provider.
+ # Valid values are: x, sdl, linux, vnc, able,
+diff --git a/frontends/gtk/Makefile b/frontends/gtk/Makefile
+index ec60ce70c..04af6df8f 100644
+--- a/frontends/gtk/Makefile
++++ b/frontends/gtk/Makefile
+@@ -33,7 +33,7 @@ GTKDEPFLAGS += -DGTK_DISABLE_DEPRECATED
+ endif
+ 
+ 
+-GTKCFLAGS := -std=c99 -Dgtk -Dnsgtk -g \
++GTKCFLAGS := -std=c99 -Dgtk -Dnsgtk \
+ 		$(GTKDEPFLAGS) \
+ 		-D_BSD_SOURCE \
+ 		-D_DEFAULT_SOURCE \
+diff --git a/frontends/gtk/Makefile.defaults b/frontends/gtk/Makefile.defaults
+index a98043eb9..bb5371230 100644
+--- a/frontends/gtk/Makefile.defaults
++++ b/frontends/gtk/Makefile.defaults
+@@ -39,4 +39,4 @@ NETSURF_FS_BACKING_STORE := YES
+ NETSURF_GTK_MAJOR ?= 2
+ 
+ # Optimisation levels
+-CFLAGS += -O2
++CFLAGS += 
+diff --git a/test/Makefile b/test/Makefile
+index 4f9dd22c9..8bec9b88a 100644
+--- a/test/Makefile
++++ b/test/Makefile
+@@ -134,7 +134,7 @@ ifneq ($(CC_MAJOR),2)
+   COMMON_WARNFLAGS += -Wno-unused-parameter
+ endif
+ 
+-BASE_TESTCFLAGS := -std=c99 -g \
++BASE_TESTCFLAGS := -std=c99 \
+ 	$(COMMON_WARNFLAGS) \
+ 	-D_DEFAULT_SOURCE \
+ 	-D_POSIX_C_SOURCE=200809L \

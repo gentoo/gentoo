@@ -11,11 +11,6 @@ a command line of your desktop or server.
 
 Mega website can be found at http://mega.co.nz.
 </longdescription>
-	<use>
-		<flag name="fuse">
-		Enables support for the filesystem in userspace plugin through <pkg>sys-fs/fuse</pkg>.
-		</flag>
-	</use>
 	<upstream>
 		<remote-id type="github">megous/megatools</remote-id>
 	</upstream>

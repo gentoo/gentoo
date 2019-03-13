@@ -12,7 +12,6 @@
 	<use>
 		<flag name="fradj">Build FrAdj, the equalizer effect module</flag>
 		<flag name="graffiti">Build media tags editor plugin</flag>
-		<flag name="guess">Enable tags encoding guessing via the libguess library</flag>
 		<flag name="mpris">Enable MPRIS support</flag>
 		<flag name="mp3tunes">Build plugin for supporting the mp3tunes.com music locker service</flag>
 		<flag name="potorchu"> Enable the projectM-based visualization effects module for LMP</flag>

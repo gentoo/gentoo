@@ -2,10 +2,13 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <maintainer type="person">
-<email>lu_zero@gentoo.org</email>
+		<email>lu_zero@gentoo.org</email>
 </maintainer>
 <maintainer type="project">
-<email>toolchain@gentoo.org</email>
-<name>Gentoo Toolchain Project</name>
+		<email>toolchain@gentoo.org</email>
+		<name>Gentoo Toolchain Project</name>
 </maintainer>
+<use>
+		<flag name="nano">Build additional newlib-nano library</flag>
+</use>
 </pkgmetadata>

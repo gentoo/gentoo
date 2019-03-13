@@ -1,18 +1,19 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit eutils udev user
+EAPI=7
+
+inherit udev user
 
 if [[ ${PV} == 9999* ]]; then
-	EGIT_REPO_URI="git://git.code.sf.net/p/${PN}/code"
+	EGIT_REPO_URI="https://git.code.sf.net/p/${PN}/code"
 	inherit autotools git-r3
 else
 	SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~x86 ~amd64-fbsd ~x86-fbsd"
 fi
 
-DESCRIPTION="An implementation of Microsoft's Media Transfer Protocol (MTP)"
+DESCRIPTION="Implementation of Microsoft's Media Transfer Protocol (MTP)"
 HOMEPAGE="http://libmtp.sourceforge.net/"
 
 LICENSE="LGPL-2.1" # LGPL-2+ and LGPL-2.1+ ?
@@ -21,11 +22,13 @@ IUSE="+crypt doc examples static-libs"
 
 RDEPEND="virtual/libusb:1
 	crypt? ( >=dev-libs/libgcrypt-1.5.4:0= )"
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
+	>sys-devel/gettext-0.18.3
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )"
 
-DOCS="AUTHORS README TODO"
+DOCS=( AUTHORS README TODO )
 
 pkg_setup() {
 	enewgroup plugdev
@@ -35,33 +38,33 @@ src_prepare() {
 	default
 
 	# ChangeLog says "RETIRING THIS FILE ..pause..  GIT" (Last entry from start of 2011)
-	rm -f ChangeLog
+	rm ChangeLog || die
 
 	if [[ ${PV} == 9999* ]]; then
-		local crpthf=config.rpath
-		local crpthd=/usr/share/gettext/${crpthf}
-		if has_version '>sys-devel/gettext-0.18.3' && [[ -e ${crpthd} ]]; then
-			cp "${crpthd}" .
+		if [[ -e /usr/share/gettext/config.rpath ]]; then
+			cp /usr/share/gettext/config.rpath . || die
 		else
-			touch ${crpthf} # This is from upstream autogen.sh
+			touch config.rpath || die # This is from upstream autogen.sh
 		fi
 		eautoreconf
 	fi
 }
 
 src_configure() {
-	econf \
-		$(use_enable static-libs static) \
-		$(use_enable doc doxygen) \
-		$(use_enable crypt mtpz) \
-		--with-udev="$(get_udevdir)" \
-		--with-udev-group=plugdev \
+	local myeconfargs=(
+		$(use_enable crypt mtpz)
+		$(use_enable doc doxygen)
+		$(use_enable static-libs static)
+		--with-udev="$(get_udevdir)"
+		--with-udev-group=plugdev
 		--with-udev-mode=0660
+	)
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {
 	default
-	prune_libtool_files --all
+	find "${ED}" -name "*.la" -delete || die
 
 	if use examples; then
 		docinto examples

@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
@@ -17,7 +17,7 @@ IUSE=""
 DEPEND="media-libs/taglib
 	sys-libs/ncurses"
 RDEPEND="${DEPEND}
-	|| ( media-video/mplayer media-video/mplayer2 )"
+	media-video/mplayer"
 
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-asneeded.patch

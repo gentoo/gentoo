@@ -18,7 +18,7 @@ HOMEPAGE="https://git.kernel.org/?p=linux/kernel/git/davem/silo.git;a=summary"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="-* ~sparc"
+KEYWORDS="-* sparc"
 IUSE=""
 
 DEPEND="sys-fs/e2fsprogs
@@ -40,7 +40,9 @@ src_prepare() {
 	sed -i -e "s/1.4.14/1.4.14_git20120819_p1/g" Rules.make || die
 
 	# Fix build failure
-	sed -i -e "s/-fno-strict-aliasing/-fno-strict-aliasing -U_FORTIFY_SOURCE -mcpu=v9/g" Rules.make || die
+	# -fno-PIC is needed to shrink silo size back to manageable on
+	# profiles where gcc has -fPIC default (via --enable-default-pie).
+	sed -i -e "s/-fno-strict-aliasing/-fno-strict-aliasing -U_FORTIFY_SOURCE -mcpu=v9 -fno-PIC/g" Rules.make || die
 }
 
 src_compile() {

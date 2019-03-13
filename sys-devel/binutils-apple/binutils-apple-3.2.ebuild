@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -84,7 +84,6 @@ src_prepare() {
 	epatch "${WORKDIR}"/${PN}-3.1.1-nmedit.patch
 	epatch "${WORKDIR}"/${PN}-3.1.1-no-headers.patch
 	epatch "${WORKDIR}"/${PN}-3.1.1-no-oss-dir.patch
-	epatch "${WORKDIR}"/${P}-armv7-defines.patch
 
 	cd "${S}"/${LD64}
 	epatch "${WORKDIR}"/${PN}-3.1.1-testsuite.patch
@@ -120,6 +119,12 @@ src_configure() {
 		BINPATH=/usr/${CHOST}/${CTARGET}/binutils-bin/${PV}
 	else
 		BINPATH=/usr/${CTARGET}/binutils-bin/${PV}
+	fi
+
+	if tc-is-gcc && [[ $(gcc-fullversion) != 4.2.1 ]] ; then
+		# force gcc-apple
+		CC=${CTARGET}-gcc-4.2.1
+		CXX=${CTARGET}-g++-4.2.1
 	fi
 }
 

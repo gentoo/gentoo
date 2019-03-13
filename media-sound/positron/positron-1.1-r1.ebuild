@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,8 +7,8 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="Synchronization manager for the Neuros Audio Computer"
-HOMEPAGE="http://www.xiph.org/positron"
-SRC_URI="http://www.xiph.org/positron/files/source/${P}.tar.gz"
+HOMEPAGE="https://www.xiph.org/positron"
+SRC_URI="https://www.xiph.org/positron/files/source/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

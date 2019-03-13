@@ -1,0 +1,22 @@
+From: Xiaoguang Sun <sun.xiaoguang@yoyosys.com>
+Date: Tue, 11 Mar 2014 13:18:46 +0100
+Subject: MAC address format
+
+Forwarded: http://lists.beasts.org/pipermail/iftop-users/2014-March/000413.html
+---
+ iftop.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/iftop.c b/iftop.c
+index a090dcf..883782e 100644
+--- a/iftop.c
++++ b/iftop.c
+@@ -713,7 +713,7 @@ void packet_init() {
+     if(have_hw_addr) {
+       fprintf(stderr, "MAC address is:");
+       for (i = 0; i < 6; ++i)
+-	fprintf(stderr, "%c%02x", i ? ':' : ' ', (unsigned int)if_hw_addr[i]);
++	fprintf(stderr, "%c%02x", i ? ':' : ' ', (unsigned char)if_hw_addr[i]);
+       fprintf(stderr, "\n");
+     }
+     

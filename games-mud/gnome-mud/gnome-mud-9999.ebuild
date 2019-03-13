@@ -1,45 +1,50 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 GNOME2_EAUTORECONF="yes"
 
-inherit gnome2 git-r3
+inherit gnome2-utils git-r3 meson xdg
 
 DESCRIPTION="GNOME MUD client"
 HOMEPAGE="https://wiki.gnome.org/Apps/GnomeMud"
 SRC_URI=""
-EGIT_REPO_URI="git://git.gnome.org/gnome-mud"
+EGIT_REPO_URI="https://gitlab.gnome.org/GNOME/gnome-mud.git"
 
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS=""
 IUSE="debug gstreamer"
 
-RDEPEND="virtual/libintl
-	>=dev-libs/glib-2.36:2
-	>=x11-libs/gtk+-2.24.0:2
-	>=x11-libs/vte-0.11:0
+RDEPEND="
+	>=dev-libs/glib-2.48:2
+	>=x11-libs/gtk+-3.22:3
+	>=x11-libs/vte-0.37:2.91
 	dev-libs/libpcre
-	gnome-base/gconf:2
+	sys-libs/zlib
 	gstreamer? ( media-libs/gstreamer:1.0 )"
 DEPEND="${RDEPEND}
-	virtual/pkgconfig
-	app-text/rarian
-	>=dev-util/intltool-0.23
-	>=sys-devel/gettext-0.11.5"
+	dev-util/glib-utils
+	>=sys-devel/gettext-0.19.8
+	virtual/pkgconfig"
 
 src_configure() {
-	gnome2_src_configure \
-		$(use_enable gstreamer) \
-		$(use_enable debug debug-logger)
+	local emesonargs=(
+		-Dmccp=enabled
+		-Dgstreamer=$(usex gstreamer enabled disabled)
+		$(meson_use debug debug-logger)
+	)
+	meson_src_configure
 }
 
-src_install() {
-	DOCS="AUTHORS BUGS ChangeLog NEWS README ROADMAP" \
-		gnome2_src_install
+pkg_postinst() {
+	xdg_pkg_postinst
+	gnome2_icon_cache_update
+	gnome2_schemas_update
 }
 
-pkg_preinst() {
-	gnome2_pkg_preinst
+pkg_postrm() {
+	xdg_pkg_postrm
+	gnome2_icon_cache_update
+	gnome2_schemas_update
 }

@@ -1,23 +1,17 @@
 #!/sbin/openrc-run
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 description="Starts ${SVCNAME} service for OpenStack"
 
 command=/usr/bin/${SVCNAME}
 command_background=yes
-command_args="--config-file /etc/cinder/cinder.conf --log-file /var/log/cinder/${SVCNAME}.log"
-pidfile=/var/run/cinder/${SVCNAME}.pid
+command_args="--config-file /etc/cinder/cinder.conf --log-file ${CINDER_LOGDIR:-/var/log/cinder}/${SVCNAME}.log"
+command_user="${CINDER_USER:-cinder}"
+pidfile=/run/${SVCNAME}.pid
 required_files=/etc/cinder/cinder.conf
-
-start_stop_daemon_args="--quiet --user ${CINDER_USER:-cinder}"
+retry="SIGTERM/30"
 
 depend() {
 	need net
 }
-
-start_pre() {
-	checkpath --directory --owner ${CINDER_USER:-cinder}:${CINDER_GROUP:-cinder} --mode 0755 ${CINDER_RUN:-/var/run/cinder}
-  checkpath --directory --owner ${CINDER_USER:-cinder}:${CINDER_GROUP:-cinder} --mode 0755 ${CINDER_LOCK:-/var/lock/cinder}
-}
-

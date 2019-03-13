@@ -1,0 +1,45 @@
+--- a/apd.c
++++ b/apd.c
+@@ -893,6 +893,7 @@
+ 			return -ARS_ERROR;
+ 		err = ars_push_data(pkt, layer, binary, blen);
+ 		free(binary);
++		return err;
+ 	} else if (strcasecmp(f, "uint32") == 0) {
+ 		int err;
+ 		__u32 t, nt;
+--- a/ars.c
++++ b/ars.c
+@@ -906,15 +906,17 @@
+  * system isn't FreeBSD or NetBSD. */
+ int ars_bsd_fix(struct ars_packet *pkt, unsigned char *packet, size_t size)
+ {
++#if defined OSTYPE_DARWIN || defined OSTYPE_FREEBSD || defined OSTYPE_NETBSD || defined OSTYPE_BSDI
+ 	struct ars_iphdr *ip;
++#endif
+ 
+ 	if (pkt->p_layer[0].l_type != ARS_TYPE_IP ||
+ 	    size < sizeof(struct ars_iphdr)) {
+ 		ars_set_error(pkt, "BSD fix requested, but layer 0 not IP");
+ 		return -ARS_INVALID;
+ 	}
+-	ip = (struct ars_iphdr*) packet;
+ #if defined OSTYPE_DARWIN || defined OSTYPE_FREEBSD || defined OSTYPE_NETBSD || defined OSTYPE_BSDI
++	ip = (struct ars_iphdr*) packet;
+ 	ip->tot_len = ntohs(ip->tot_len);
+ 	ip->frag_off = ntohs(ip->frag_off);
+ #endif
+--- a/libpcap_stuff.c
++++ b/libpcap_stuff.c
+@@ -23,9 +23,11 @@
+ 
+ int open_pcap()
+ {
++#if (!defined OSTYPE_LINUX) && (!defined __sun__)
+ 	int on;
+ 
+ 	on = 1; /* no warning if BIOCIMMEDIATE will not be compiled */
++#endif
+ 	if (opt_debug)
+ 		printf("DEBUG: pcap_open_live(%s, 99999, 0, 1, %p)\n",
+ 			ifname, errbuf);

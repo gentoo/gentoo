@@ -1,5 +1,5 @@
---- makefile.old	2009-02-08 18:24:33.000000000 +0100
-+++ makefile	2009-02-08 18:29:12.000000000 +0100
+--- a/makefile.old	2009-02-08 18:24:33.000000000 +0100
++++ b/makefile	2009-02-08 18:29:12.000000000 +0100
 @@ -1,5 +1,4 @@
 -LFLAGS=-Wall -funroll-loops -fomit-frame-pointer -pipe -O9
 -CFLAGS=-Wall `sdl-config --cflags --libs` -funroll-loops -fomit-frame-pointer -pipe -O9 -lSDL_mixer

@@ -10,6 +10,7 @@
 # Saleem Abdulrasool <compnerd@gentoo.org>
 # foser <foser@gentoo.org>
 # zaheerm <zaheerm@gentoo.org>
+# @SUPPORTED_EAPIS: 5 6
 # @BLURB: Helps building core & split gstreamer plugins.
 # @DESCRIPTION:
 # Eclass to make external gst-plugins emergable on a per-plugin basis
@@ -113,13 +114,6 @@ if [[ ${PN} != ${GST_ORG_MODULE} ]]; then
 else
 	IUSE="nls"
 	DEPEND="${DEPEND} nls? ( >=sys-devel/gettext-0.17 )"
-fi
-
-if [[ ${SLOT} == "0.10" ]]; then
-	RDEPEND="${RDEPEND}
-		abi_x86_32? (
-			!app-emulation/emul-linux-x86-gstplugins[-abi_x86_32(-)]
-		)"
 fi
 
 DEPEND="${DEPEND} ${RDEPEND}"

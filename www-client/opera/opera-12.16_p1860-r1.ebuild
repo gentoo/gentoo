@@ -5,7 +5,7 @@ EAPI=6
 inherit eutils gnome2-utils multilib pax-utils versionator xdg-utils
 
 DESCRIPTION="A fast and secure web browser and Internet suite"
-HOMEPAGE="http://www.opera.com/"
+HOMEPAGE="https://www.opera.com/"
 
 SLOT="0"
 LICENSE="OPERA-12 LGPL-2 LGPL-3"
@@ -29,11 +29,11 @@ O_LINGUAS="
 # == End of variables that often change ==
 
 if [[ "pre${O_B/pre/}" = "${O_B}" ]]; then	# snapshot: _pre
-	HOMEPAGE="http://my.opera.com/desktopteam/blog/"
+	HOMEPAGE="https://my.opera.com/desktopteam/blog/"
 
 	O_D="${O_K}_${O_V}-${O_B/pre}"			# directory string
 	O_P="${PN}-${O_V}-${O_B/pre}"			# package string
-	O_U="http://snapshot.opera.com/unix/"	# base URI
+	O_U="https://snapshot.opera.com/unix/"	# base URI
 
 	SRC_URI="
 		amd64? ( ${O_U}${O_D}/${O_P}.x86_64.linux.tar.xz )

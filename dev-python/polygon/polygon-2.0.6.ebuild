@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="Python package to handle polygonal shapes in 2D"
-HOMEPAGE="http://www.j-raedler.de/projects/polygon/"
+HOMEPAGE="https://www.j-raedler.de/projects/polygon/"
 SRC_URI="https://www.bitbucket.org/jraedler/${PN}2/downloads/Polygon2-${PV}.zip"
 
 LICENSE="LGPL-2"

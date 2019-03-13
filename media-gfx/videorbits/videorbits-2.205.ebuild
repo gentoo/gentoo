@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/comparametric/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ppc x86"
 IUSE=""
 
 RDEPEND="x11-libs/libX11
@@ -26,6 +26,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-2.201-libpng15.patch"
 	"${FILESDIR}/${P}-qa-implicit-declarations.patch"
 	"${FILESDIR}/${P}-fix-buildsystem.patch"
+	"${FILESDIR}/${P}-remove-bits-nan.patch"
 )
 DOCS=( AUTHORS README README.MORE )
 

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
@@ -8,7 +8,7 @@ inherit latex-package elisp-common toolchain-funcs multilib eutils flag-o-matic
 MY_P="${P/-latex/}"
 
 DESCRIPTION="LaTeX package to use CJK (Chinese/Japanese/Korean) scripts in various encodings"
-HOMEPAGE="http://cjk.ffii.org/"
+HOMEPAGE="https://cjk.ffii.org/"
 # fonts are taken from ftp://ftp.ctan.org/tex-archive/fonts/CJK.zip
 SRC_URI="ftp://ftp.ffii.org/pub/cjk/${MY_P}.tar.gz
 	mirror://gentoo/${MY_P}-fonts.zip
@@ -16,7 +16,7 @@ SRC_URI="ftp://ftp.ffii.org/pub/cjk/${MY_P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~x64-macos"
 IUSE="doc emacs"
 
 RDEPEND="virtual/latex-base

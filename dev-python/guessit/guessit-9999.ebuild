@@ -1,15 +1,15 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_4,3_5} )
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 
 inherit distutils-r1 git-r3
 
 DESCRIPTION="Python library for guessing information from video filenames"
-HOMEPAGE="https://github.com/guessit-io/guessit https://pypi.python.org/pypi/guessit"
-EGIT_REPO_URI="https://github.com/${PN}-io/${PN}.git"
+HOMEPAGE="https://github.com/guessit-io/guessit https://pypi.org/project/guessit/"
+EGIT_REPO_URI="https://github.com/guessit-io/guessit.git"
 EGIT_BRANCH="develop"
 
 LICENSE="LGPL-3"
@@ -27,8 +27,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	test? (
-		>=dev-python/pytest-2.7.3[${PYTHON_USEDEP}]
-		dev-python/pytest-capturelog[${PYTHON_USEDEP}]
+		>=dev-python/pytest-3.4[${PYTHON_USEDEP}]
 		dev-python/pytest-runner[${PYTHON_USEDEP}]
 	)
 "

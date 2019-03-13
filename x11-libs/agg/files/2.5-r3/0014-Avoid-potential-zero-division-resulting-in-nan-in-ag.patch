@@ -1,0 +1,30 @@
+From 6433a64f4cd41e88499386b0b7c7ae05d30683b8 Mon Sep 17 00:00:00 2001
+From: Tom Hughes <tom@compton.nu>
+Date: Sat, 22 Jun 2013 12:33:32 +0100
+Subject: [PATCH 14/15] Avoid potential zero division resulting in nan in
+ agg::gamma_linear
+
+---
+ include/agg_gamma_functions.h | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/include/agg_gamma_functions.h b/include/agg_gamma_functions.h
+index fa38a45..beb0c04 100644
+--- a/include/agg_gamma_functions.h
++++ b/include/agg_gamma_functions.h
+@@ -94,7 +94,11 @@ namespace agg
+         {
+             if(x < m_start) return 0.0;
+             if(x > m_end) return 1.0;
+-            return (x - m_start) / (m_end - m_start);
++            double delta = m_end - m_start;
++            // avoid nan from potential zero division
++            // https://github.com/mapnik/mapnik/issues/761
++            if (delta <= 0.0) return 0.0;
++            return (x - m_start) / delta;
+         }
+ 
+     private:
+-- 
+1.8.1.4
+

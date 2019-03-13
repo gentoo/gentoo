@@ -1,4 +1,4 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=2
@@ -15,7 +15,7 @@ SRC_URI="http://mbsd.msk.ru/dist/${MY_P}.tar.bz2
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~sparc-fbsd ~x86-fbsd"
+KEYWORDS="~x86-fbsd"
 IUSE=""
 
 DEPEND="sys-freebsd/freebsd-mk-defs"

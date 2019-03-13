@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ SRC_URI="https://github.com/mariusmuja/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~ppc x86 ~amd64-linux ~x86-linux"
 IUSE="cuda doc examples mpi openmp octave static-libs"
 
 RDEPEND="
@@ -73,7 +73,7 @@ src_configure() {
 		-DUSE_OPENMP=$(usex openmp)
 	)
 	use cuda && mycmakeargs+=(
-		-DCUDA_NVCC_FLAGS="${NVCCFLAGS},-arsch"
+		-DCUDA_NVCC_FLAGS="${NVCCFLAGS} --linker-options \"-arsch\""
 	)
 	cmake-utils_src_configure
 }

@@ -1,8 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="2"
-WANT_ANT_TASKS="ant-nodeps"
 JAVA_PKG_IUSE="doc test examples"
 inherit eutils java-pkg-2 java-ant-2
 
@@ -40,7 +39,7 @@ src_prepare() {
 # Don't even compile
 RESTRICT="test"
 src_test() {
-	ANT_TASKS="ant-junit ant-nodeps" eant test \
+	ANT_TASKS="ant-junit" eant test \
 		-Dgentoo.classpath="$(java-pkg_getjars jzlib,junit):mindterm.jar"
 }
 

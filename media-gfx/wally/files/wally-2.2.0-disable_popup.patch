@@ -1,9 +1,0 @@
---- a/wallyplugin/CMakeLists.txt
-+++ b/wallyplugin/CMakeLists.txt
-@@ -26,6 +26,3 @@ install(TARGETS plasma_wallpaper_wallypl
- 
- install(FILES plasma-wallpaper-wallyplugin.desktop DESTINATION ${SERVICES_INSTALL_DIR})
- install(FILES wallyplugin.png DESTINATION ${ICON_INSTALL_DIR}/oxygen/16x16/apps)
--
--install(CODE "execute_process(COMMAND kbuildsycoca4 OUTPUT_QUIET ERROR_QUIET)")
--install(CODE "execute_process(COMMAND kdialog --title \"WallyPlugin\" --msgbox \"WallyPlugin will be loaded next time KDE is started. Please select it in Appearance Settings.\")")

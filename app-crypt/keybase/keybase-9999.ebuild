@@ -1,11 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit eutils versionator git-r3
-
-MY_PV=$(replace_version_separator 3 '-')
+inherit golang-build systemd git-r3
 
 DESCRIPTION="Client for keybase.io"
 HOMEPAGE="https://keybase.io/"
@@ -17,31 +15,40 @@ KEYWORDS=""
 IUSE=""
 
 DEPEND="
-	>=dev-lang/go-1.6:0"
+	~app-crypt/kbfs-${PV}"
 RDEPEND="
 	app-crypt/gnupg"
 
-S="${WORKDIR}/src/github.com/keybase/client"
-
 src_unpack() {
 	git-r3_src_unpack
-	mkdir -p "$(dirname "${S}")" || die
-	ln -s "${WORKDIR}/${PN}-${MY_PV}" "${S}" || die
+	ln -vs "client" "${P}" || die
+	mkdir -vp "${S}/src/github.com/keybase" || die
+	ln -vs "${S}" "${S}/src/github.com/keybase/client" || die
 }
 
 src_compile() {
-	GOPATH="${WORKDIR}:${S}/go/vendor" \
-		go build -v -x \
-		-tags production \
-		-o "${T}/keybase" \
-		github.com/keybase/client/go/keybase || die
+	EGO_PN="github.com/keybase/client/go/keybase" \
+		EGO_BUILD_FLAGS="-tags production -o ${T}/keybase" \
+		golang-build_src_compile
+}
+
+src_test() {
+	EGO_PN="github.com/keybase/client/go/keybase" \
+		golang-build_src_test
 }
 
 src_install() {
 	dobin "${T}/keybase"
+	dobin "${S}/packaging/linux/run_keybase"
+	systemd_douserunit "${S}/packaging/linux/systemd/keybase.service"
+	dodir "/opt/keybase"
+	insinto "/opt/keybase"
+	doins "${S}/packaging/linux/crypto_squirrel.txt"
 }
 
 pkg_postinst() {
-	elog "Run the service: keybase service"
-	elog "Run the client:  keybase login"
+	elog "Start/Restart keybase: run_keybase"
+	elog "Run the service:       keybase service"
+	elog "Run the client:        keybase login"
+	ewarn "Note that the user keybasehelper is obsolete and can be removed"
 }

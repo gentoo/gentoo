@@ -1,5 +1,5 @@
 #!/sbin/openrc-run
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 _get_lvm_path() {
@@ -23,6 +23,7 @@ _need_lvmlockd()
 	[ ! -x "${lvm_path}" ] && return 1
 	${lvm_path} dumpconfig global 2>/dev/null | grep -q 'use_lvmlockd=1'
 }
+
 depend() {
 	before checkfs fsck
 	after modules device-mapper
@@ -112,34 +113,37 @@ stop() {
 		eerror "Cannot find lvm binary in /sbin or /bin!"
 		return 1
 	fi
-# Stop LVM2
-if [ -x /sbin/vgs ] && \
-   [ -x /sbin/vgchange ] && \
-   [ -x /sbin/lvchange ] && \
-   [ -f /etc/lvmtab -o -d /etc/lvm ] && \
-   [ -d /proc/lvm  -o "`grep device-mapper /proc/misc 2>/dev/null`" ]
-then
-	einfo "Shutting down the Logical Volume Manager"
 
-        VGS=$($lvm_path vgs --config "${config}" -o vg_name --noheadings --nosuffix --rows 2> /dev/null)
+	# Stop LVM2
+	if [ -x /sbin/vgs ] && \
+		[ -x /sbin/vgchange ] && \
+		[ -x /sbin/lvchange ] && \
+		[ -f /etc/lvmtab -o -d /etc/lvm ] && \
+		[ -d /proc/lvm  -o "`grep device-mapper /proc/misc 2>/dev/null`" ]
+	then
+		einfo "Shutting down the Logical Volume Manager"
 
-        if [ "$VGS" ]
-        then
-            ebegin "  Shutting Down LVs & VGs"
-			#still echo stderr for debugging
-			lvm_commands="#!${lvm_path}\n"
-			# Extra PV find pass because some devices might not have been available until very recently
-			lvm_commands="${lvm_commands}lvchange --config '${config}' --sysinit -a ln ${VGS}\n"
-			# Now make the nodes
-			lvm_commands="${lvm_commands}vgchange --config '${config}' --sysinit -a ln ${VGS}\n"
-			# Order of this is important, have to work around dash and LVM readline
-			printf "%b\n" "${lvm_commands}" | $lvm_path /proc/self/fd/0 --config "${config}" >/dev/null
-			eend $? "Failed (possibly some LVs still needed for /usr or root)"
-        fi
+		VGS=$($lvm_path vgs --config "${config}" -o vg_name --noheadings --nosuffix --rows 2> /dev/null)
 
-	einfo "Finished shutting down the Logical Volume Manager"
-	return 0
-fi
+		if [ "$VGS" ]
+		then
+			local _ending="eend"
+			[ "$RC_RUNLEVEL" = shutdown ] && _ending="ewend"
+			ebegin "  Shutting Down LVs & VGs"
+				#still echo stderr for debugging
+				lvm_commands="#!${lvm_path}\n"
+				# Extra PV find pass because some devices might not have been available until very recently
+				lvm_commands="${lvm_commands}lvchange --config '${config}' --sysinit -a ln ${VGS}\n"
+				# Now make the nodes
+				lvm_commands="${lvm_commands}vgchange --config '${config}' --sysinit -a ln ${VGS}\n"
+				# Order of this is important, have to work around dash and LVM readline
+				printf "%b\n" "${lvm_commands}" | $lvm_path /proc/self/fd/0 --config "${config}" >/dev/null
+			${_ending} $? "Failed (possibly some LVs still needed for /usr or root)"
+		fi
+
+		einfo "Finished shutting down the Logical Volume Manager"
+		return 0
+	fi
 }
 
 # vim:ts=4
