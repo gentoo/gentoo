@@ -186,7 +186,6 @@ dev-libs/gost-engine
 # bug #504114, #486510, #510550, #511096, #517260, #551784, #616490, #
 net-voip/linphone
 net-libs/libeXosip
-net-libs/libosip
 
 # Aaron W. Swenson <titanofold@gentoo.org> (25 Oct 2018)
 # Fails to build against up to date OpenSSL library (Bug 663966). No longer
