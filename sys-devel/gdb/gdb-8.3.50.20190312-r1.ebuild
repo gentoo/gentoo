@@ -95,6 +95,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${P}-source-highlight.patch
+	"${FILESDIR}"/${P}-c++17.patch
 )
 
 S=${WORKDIR}/${PN}-${MY_PV}
