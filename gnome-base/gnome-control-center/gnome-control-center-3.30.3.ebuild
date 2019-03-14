@@ -119,6 +119,8 @@ PATCHES=(
 	# https://bugzilla.gnome.org/686840, 697478, 700145
 	# Fix some absolute paths to be appropriate for Gentoo
 	"${WORKDIR}"/patches/
+	# Extra patch to fix incomplete USE=-cups support in patchset; amend it into the cups optionality commit for next patchset
+	"${FILESDIR}"/${PV}-conditional-cups-tests.patch
 )
 
 src_configure() {
