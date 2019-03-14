@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -23,6 +23,7 @@ DEPEND="${RDEPEND}
 	dev-util/itstool
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
+	$(vala_depend)
 "
 
 src_prepare() {
