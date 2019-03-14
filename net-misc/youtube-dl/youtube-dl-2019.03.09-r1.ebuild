@@ -13,11 +13,15 @@ LICENSE="public-domain"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x86-solaris"
 RESTRICT="test"
 SLOT="0"
-RDEPEND="
+DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 "
-DEPEND="
-	${RDEPEND}
+RDEPEND="
+	${DEPEND}
+	|| (
+		dev-python/pycryptodome[${PYTHON_USEDEP}]
+		dev-python/pycrypto[${PYTHON_USEDEP}]
+	)
 "
 S="${WORKDIR}/${PN}"
 
