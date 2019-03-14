@@ -9,5 +9,5 @@ LICENSE=LGPL-2
 RDEPEND=berkdb? ( >=sys-libs/db-4 ) ldap? ( net-nds/openldap ) mysql? ( dev-db/mysql-connector-c:= ) pam? ( virtual/pam ) postgres? ( dev-db/postgresql[server] )
 SLOT=0
 SRC_URI=mirror://sourceforge/pll/libhome-0.10.2.tar.gz
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	db-use	501a5d0963e0d17f30260023f292ae8e	eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	db-use	501a5d0963e0d17f30260023f292ae8e	eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
 _md5_=f5c04be24b89700152d6bf43aebc5bb3

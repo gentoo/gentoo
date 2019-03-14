@@ -8,5 +8,5 @@ LICENSE=public-domain
 RDEPEND=x11-libs/libX11 x11-libs/libXext
 SLOT=0
 SRC_URI=http://www.daidouji.com/oneko/distfiles/oneko-1.2.sakura.5.tar.gz mirror://gentoo/oneko-1.2-cat.png mirror://gentoo/oneko-1.2-dog.png mirror://gentoo/oneko-1.2-sakura-nobsd.patch.bz2
-_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
 _md5_=302ddc8b5758f61b49e4eae558c51e30

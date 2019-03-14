@@ -8,5 +8,5 @@ LICENSE=MIT
 RDEPEND=>=dev-db/sqlite-3.5:3 >=dev-libs/stfl-0.21 >=net-misc/curl-7.18.0 >=dev-libs/json-c-0.11:= dev-libs/libxml2 sys-libs/ncurses:0=[unicode]
 SLOT=0
 SRC_URI=https://newsboat.org/releases/2.13/newsboat-2.13.tar.xz
-_eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
 _md5_=392f03e7bd85048fbdc737901c6def14

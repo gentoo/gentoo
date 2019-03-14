@@ -6,5 +6,5 @@ KEYWORDS=amd64 ~arm ia64 ppc sparc x86
 LICENSE=BSD-4
 SLOT=0
 SRC_URI=mirror://debian/pool/main/b/bing/bing_1.1.3.orig.tar.gz
-_eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
 _md5_=c05975bf973f02a9878370713b5aa810

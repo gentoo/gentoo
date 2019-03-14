@@ -11,5 +11,5 @@ RDEPEND=media-libs/fontconfig:1.0 media-libs/freetype:2 >=sys-libs/glibc-2.2.5:*
 RESTRICT=preserve-libs splitdebug
 SLOT=11
 SRC_URI=amd64? ( https://github.com/AdoptOpenJDK/openjdk11-binaries/releases/download/jdk-11.0.2+7/OpenJDK11U-jdk_x64_linux_hotspot_11.0.2_7.tar.gz ) arm64? ( https://github.com/AdoptOpenJDK/openjdk11-binaries/releases/download/jdk-11.0.2+7/OpenJDK11U-jdk_aarch64_linux_hotspot_11.0.2_7.tar.gz ) ppc64? ( https://github.com/AdoptOpenJDK/openjdk11-binaries/releases/download/jdk-11.0.2+7/OpenJDK11U-jdk_ppc64le_linux_hotspot_11.0.2_7.tar.gz )
-_eclasses_=java-vm-2	7cfcabfd055e69d3568103a4e0b0fae7	multilib	b2f01ad412baf81650c23fcf0975fa33	pax-utils	e85f015e815dd463b0c206d781ef45a5	prefix	e51c7882b7b721e54e684f7eb143cbfe	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	xdg-utils	14d00d009167652b1fa363e55effe213
+_eclasses_=java-vm-2	7cfcabfd055e69d3568103a4e0b0fae7	multilib	b2f01ad412baf81650c23fcf0975fa33	pax-utils	e85f015e815dd463b0c206d781ef45a5	prefix	e51c7882b7b721e54e684f7eb143cbfe	toolchain-funcs	b45201c4e6c096b98e250336954e64b9	xdg-utils	14d00d009167652b1fa363e55effe213
 _md5_=49531d74236cbdb4f5593da3725fc031

@@ -8,5 +8,5 @@ LICENSE=GPL-3
 RDEPEND=dev-libs/boost:= dev-qt/qtcore:5 dev-qt/qtopengl:5 dev-qt/qtsvg:5 dev-qt/qtwidgets:5 x11-libs/qwt:6[opengl,qt5(+),svg] net-wireless/iw sys-auth/polkit x11-libs/libxkbcommon[X]
 SLOT=0
 SRC_URI=mirror://sourceforge/linssid/linssid_3.6.orig.tar.gz
-_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	b2f01ad412baf81650c23fcf0975fa33	qmake-utils	bdf97e69a34b864d6d545f4ec3143ff7	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	xdg-utils	14d00d009167652b1fa363e55effe213
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	b2f01ad412baf81650c23fcf0975fa33	qmake-utils	bdf97e69a34b864d6d545f4ec3143ff7	toolchain-funcs	b45201c4e6c096b98e250336954e64b9	xdg-utils	14d00d009167652b1fa363e55effe213
 _md5_=86b2cf36002b47cae79436da8cd0f5a3

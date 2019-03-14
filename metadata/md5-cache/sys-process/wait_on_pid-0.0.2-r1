@@ -6,5 +6,5 @@ KEYWORDS=amd64 ~arm ~arm64 ~ppc x86 ~amd64-linux ~x86-linux
 LICENSE=GPL-2
 SLOT=0
 SRC_URI=mirror://gentoo/wait_on_pid-0.0.2.tar.bz2 https://dev.gentoo.org/~zzam/wait_on_pid/wait_on_pid-0.0.2.tar.bz2
-_eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
 _md5_=aea07d377cde46e91784806c3a20bb39

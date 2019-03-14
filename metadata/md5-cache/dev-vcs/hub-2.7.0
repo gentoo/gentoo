@@ -9,5 +9,5 @@ RDEPEND=>=dev-vcs/git-1.7.3
 RESTRICT=strip
 SLOT=0
 SRC_URI=https://github.com/github/hub/archive/v2.7.0.tar.gz -> hub-2.7.0.tar.gz https://github.com/github/hub/releases/download/v2.7.0/hub-linux-amd64-2.7.0.tgz
-_eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
 _md5_=eecb1880af33e55f82396ede1412cb4a

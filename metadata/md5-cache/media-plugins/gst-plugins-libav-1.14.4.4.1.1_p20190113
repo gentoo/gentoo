@@ -10,5 +10,5 @@ RDEPEND=>=dev-libs/glib-2.40.0:2[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,a
 RESTRICT=test
 SLOT=1.0
 SRC_URI=https://gstreamer.freedesktop.org/src/gst-libav/gst-libav-1.14.4.tar.xz https://dev.gentoo.org/~leio/distfiles/gst-libav-1.14.4-ffmpeg4-patchset.tar.xz libav? ( https://ffmpeg.org/releases/ffmpeg-4.1.1.tar.bz2 )
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	libtool	f143db5a74ccd9ca28c1234deffede96	multibuild	40fe59465edacd730c644ec2bc197809	multilib	b2f01ad412baf81650c23fcf0975fa33	multilib-build	b42436dc1260f475af229754c165cb6b	multilib-minimal	8bddda43703ba94d8341f4e247f97566	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	libtool	f143db5a74ccd9ca28c1234deffede96	multibuild	40fe59465edacd730c644ec2bc197809	multilib	b2f01ad412baf81650c23fcf0975fa33	multilib-build	b42436dc1260f475af229754c165cb6b	multilib-minimal	8bddda43703ba94d8341f4e247f97566	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
 _md5_=4e1dd23d702488d7c9f4b7226817235c

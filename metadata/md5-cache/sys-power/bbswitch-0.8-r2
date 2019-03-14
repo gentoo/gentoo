@@ -9,5 +9,5 @@ LICENSE=GPL-3+
 RDEPEND=kernel_linux? ( virtual/modutils )
 SLOT=0
 SRC_URI=https://github.com/Bumblebee-Project/bbswitch/archive/v0.8.tar.gz -> bbswitch-0.8.tar.gz
-_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	linux-info	953c3b1c472dcadbf62098a9301327f2	linux-mod	4b8528d500d6555ad20763a77b31766c	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	linux-info	953c3b1c472dcadbf62098a9301327f2	linux-mod	4b8528d500d6555ad20763a77b31766c	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
 _md5_=fcb02a85221473d90b0ee71ac2836dcd

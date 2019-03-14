@@ -9,5 +9,5 @@ LICENSE=GPL-2+
 RDEPEND=dev-perl/Config-General dev-perl/DBI dev-perl/HTTP-Server-Simple dev-perl/IO-Socket-SSL dev-perl/libwww-perl dev-perl/MIME-Lite dev-perl/XML-Simple net-analyzer/rrdtool[graph,perl] dev-perl/CGI apcupsd? ( sys-power/apcupsd ) hddtemp? ( app-admin/hddtemp ) httpd? ( virtual/httpd-cgi ) lm_sensors? ( sys-apps/lm_sensors ) postfix? ( net-mail/pflogsumm dev-perl/MailTools )
 SLOT=0
 SRC_URI=https://github.com/mikaku/Monitorix/archive/v3.9.0.tar.gz -> monitorix-3.9.0.tar.gz
-_eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	user	8bd74731cafdcdad8f7a63637302e073
+_eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	b45201c4e6c096b98e250336954e64b9	user	8bd74731cafdcdad8f7a63637302e073
 _md5_=1b2714a1dc1617b2e25ee9d7929d6642

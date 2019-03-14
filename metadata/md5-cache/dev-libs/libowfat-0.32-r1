@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=diet? ( >=dev-libs/dietlibc-0.33_pre20090721 )
 SLOT=0
 SRC_URI=https://www.fefe.de/libowfat/libowfat-0.32.tar.xz
-_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	a09389deba2c0a7108b581e02c7cecbf	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	a09389deba2c0a7108b581e02c7cecbf	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
 _md5_=21ed32e651df25025a67a5f111ed59c8

@@ -8,5 +8,5 @@ LICENSE=GPL-3
 RDEPEND=dev-qt/qtcore:5 dev-qt/qtdeclarative:5 dev-qt/qtgraphicaleffects:5 dev-qt/qtgui:5 dev-qt/qtmultimedia:5 dev-qt/qtnetwork:5 dev-qt/qtopengl:5 dev-qt/qtprintsupport:5 dev-qt/qtquickcontrols:5[widgets] dev-qt/qtsql:5 dev-qt/qtwebkit:5 dev-qt/qtwebsockets:5 dev-qt/qtwidgets:5 dev-qt/qtxml:5 media-libs/ladspa-sdk media-libs/libsdl:0 media-libs/libvpx >=media-libs/mlt-6.10.0-r1[ffmpeg,frei0r,qt5,sdl,xml] media-libs/x264 media-plugins/frei0r-plugins media-sound/lame media-video/ffmpeg virtual/jack
 SLOT=0
 SRC_URI=https://github.com/mltframework/shotcut/archive/v19.01.24.tar.gz -> shotcut-19.01.24.tar.gz
-_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	b2f01ad412baf81650c23fcf0975fa33	qmake-utils	bdf97e69a34b864d6d545f4ec3143ff7	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	14d00d009167652b1fa363e55effe213
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	b2f01ad412baf81650c23fcf0975fa33	qmake-utils	bdf97e69a34b864d6d545f4ec3143ff7	toolchain-funcs	b45201c4e6c096b98e250336954e64b9	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	14d00d009167652b1fa363e55effe213
 _md5_=607efc265ffdfc9bbc9bfad665793cde

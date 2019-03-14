@@ -11,5 +11,5 @@ RDEPEND=dev-libs/glib:2 dev-qt/qtcore:5 dev-qt/qtdbus:5 dev-qt/qtdeclarative:5 d
 RESTRICT=test
 SLOT=0
 SRC_URI=https://gitlab.com/accounts-sso/signon-ui/-/archive/4368bb77d9d1abc2978af514225ba4a42c29a646/signon-ui-4368bb77d9d1abc2978af514225ba4a42c29a646.tar.bz2 -> signon-ui-0.15_p20171022.tar.bz2
-_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	b2f01ad412baf81650c23fcf0975fa33	qmake-utils	bdf97e69a34b864d6d545f4ec3143ff7	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	b2f01ad412baf81650c23fcf0975fa33	qmake-utils	bdf97e69a34b864d6d545f4ec3143ff7	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
 _md5_=19d30af039b18dcd717cd89738540ee0

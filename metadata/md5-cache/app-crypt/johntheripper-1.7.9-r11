@@ -10,5 +10,5 @@ RDEPEND=!app-crypt/johntheripper-jumbo sys-libs/zlib !minimal? ( !libressl? ( de
 REQUIRED_USE=openmp? ( !minimal ) mpi? ( !minimal ) cuda? ( !minimal ) opencl? ( !minimal ) mozilla? ( !minimal )
 SLOT=0
 SRC_URI=https://www.openwall.com/john/g/john-1.7.9.tar.bz2 !minimal? ( https://www.openwall.com/john/g/john-1.7.9-jumbo-7.diff.gz )
-_eclasses_=cuda	bb861e5221b7272ac90c2f12791c1e66	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	a09389deba2c0a7108b581e02c7cecbf	multilib	b2f01ad412baf81650c23fcf0975fa33	pax-utils	e85f015e815dd463b0c206d781ef45a5	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_eclasses_=cuda	bb861e5221b7272ac90c2f12791c1e66	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	a09389deba2c0a7108b581e02c7cecbf	multilib	b2f01ad412baf81650c23fcf0975fa33	pax-utils	e85f015e815dd463b0c206d781ef45a5	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
 _md5_=86706d2ce0166260eb6449517997c1ed

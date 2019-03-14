@@ -10,5 +10,5 @@ RDEPEND=dev-libs/libltdl:0 virtual/mailx perl? ( dev-lang/perl:= ) web? ( app-ar
 REQUIRED_USE=apache2? ( !lighttpd )
 SLOT=0
 SRC_URI=mirror://sourceforge/nagios/nagios-4.4.3.tar.gz web? ( https://dev.gentoo.org/~mjo/distfiles/nagios-core-gentoo-icons-20141125.tar )
-_eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	user	8bd74731cafdcdad8f7a63637302e073
+_eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	b45201c4e6c096b98e250336954e64b9	user	8bd74731cafdcdad8f7a63637302e073
 _md5_=0e563849df14a1d55de951a281df6f40

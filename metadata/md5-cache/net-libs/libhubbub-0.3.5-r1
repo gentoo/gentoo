@@ -9,5 +9,5 @@ LICENSE=MIT
 RDEPEND=>=dev-libs/libparserutils-0.2.1-r1 !net-libs/hubbub
 SLOT=0/0.3.5
 SRC_URI=https://download.netsurf-browser.org/libs/releases/libhubbub-0.3.5-src.tar.gz
-_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	a09389deba2c0a7108b581e02c7cecbf	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	a09389deba2c0a7108b581e02c7cecbf	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
 _md5_=ab4ded5c69f5764918908f973fb3c86b

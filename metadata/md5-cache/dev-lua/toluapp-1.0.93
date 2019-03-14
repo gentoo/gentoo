@@ -8,5 +8,5 @@ LICENSE=MIT
 RDEPEND=>=dev-lang/lua-5.1.1[deprecated]
 SLOT=0
 SRC_URI=http://www.codenix.com/~tolua/tolua++-1.0.93.tar.bz2
-_eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
 _md5_=5f86c5c3e664644e64c16aadfeb43c3a

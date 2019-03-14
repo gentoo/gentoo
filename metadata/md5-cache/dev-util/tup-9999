@@ -8,5 +8,5 @@ IUSE=kernel_linux
 LICENSE=GPL-2 MIT public-domain BSD BSD-2
 RDEPEND=dev-db/sqlite:= dev-libs/libpcre:= sys-fs/fuse:=
 SLOT=0
-_eclasses_=git-r3	0d4635eeb5a96cd5315597a47eba25c9	linux-info	953c3b1c472dcadbf62098a9301327f2	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_eclasses_=git-r3	0d4635eeb5a96cd5315597a47eba25c9	linux-info	953c3b1c472dcadbf62098a9301327f2	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
 _md5_=819a832b3716c8d7d16d87d3525a5c33

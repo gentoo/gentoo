@@ -10,5 +10,5 @@ RDEPEND=>=media-libs/libebur128-1.2.2 ffmpeg? ( libav? ( >=media-video/libav-12:
 REQUIRED_USE=python? ( python_targets_python2_7 )
 SLOT=0
 SRC_URI=https://github.com/mltframework/mlt/releases/download/v6.12.0/mlt-6.12.0.tar.gz
-_eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	python-single-r1	3a0fc81f484bfdbd9c2b7448015a36e4	python-utils-r1	12114a2a9aab35b93efc037a196b3234	ruby-single	e6530f43a549f120f9396ccb852288f5	ruby-utils	10cec86289e60f4b0d731b2e4b545e5d	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	python-single-r1	3a0fc81f484bfdbd9c2b7448015a36e4	python-utils-r1	12114a2a9aab35b93efc037a196b3234	ruby-single	e6530f43a549f120f9396ccb852288f5	ruby-utils	10cec86289e60f4b0d731b2e4b545e5d	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
 _md5_=3b0d2e94095f7415099ee17db2b979d7

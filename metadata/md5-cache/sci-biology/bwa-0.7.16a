@@ -7,5 +7,5 @@ LICENSE=GPL-3
 RDEPEND=dev-lang/perl
 SLOT=0
 SRC_URI=mirror://sourceforge/bio-bwa/bwa-0.7.16a.tar.bz2
-_eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
 _md5_=b3702a6accf64398e32e84076031919b

@@ -8,5 +8,5 @@ LICENSE=Apache-2.0
 RDEPEND=dev-util/android-tools channel? ( net-misc/socat )
 SLOT=0
 SRC_URI=https://github.com/google/adb-sync/tarball/b0a2a10 -> adb-sync-0_p20181127.tar.gz
-_eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	python-single-r1	3a0fc81f484bfdbd9c2b7448015a36e4	python-utils-r1	12114a2a9aab35b93efc037a196b3234	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	python-single-r1	3a0fc81f484bfdbd9c2b7448015a36e4	python-utils-r1	12114a2a9aab35b93efc037a196b3234	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
 _md5_=4b21de56ac8f0456e8f1c546d2cf5e04

@@ -10,5 +10,5 @@ RDEPEND=>=net-libs/libmnl-1.0.3 json? ( >=dev-libs/jansson-2.3 )
 REQUIRED_USE=test? ( json )
 SLOT=0/7
 SRC_URI=https://netfilter.org/projects/libnftnl/files/libnftnl-1.1.1.tar.bz2
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	libtool	f143db5a74ccd9ca28c1234deffede96	linux-info	953c3b1c472dcadbf62098a9301327f2	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	libtool	f143db5a74ccd9ca28c1234deffede96	linux-info	953c3b1c472dcadbf62098a9301327f2	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
 _md5_=4b650914f6250b085631d789cb0e8480

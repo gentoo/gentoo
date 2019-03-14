@@ -8,5 +8,5 @@ LICENSE=BSD-2
 RDEPEND=dev-lang/erlang
 SLOT=0
 SRC_URI=https://github.com/rvirding/lfe/archive/v1.0.zip -> lfe-1.0.zip
-_eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
 _md5_=916ec18494330028d4fa26a6abb3094f

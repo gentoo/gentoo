@@ -9,5 +9,5 @@ LICENSE=MIT
 RDEPEND=ssl? ( dev-libs/openssl:0= )
 SLOT=0
 SRC_URI=http://www.cycom.se/uploads/36/19/rrs-1.70.tar.gz
-_eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
 _md5_=b477d3d09b924d49c7f8c26809dcefbd

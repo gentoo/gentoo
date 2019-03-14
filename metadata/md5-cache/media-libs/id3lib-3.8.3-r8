@@ -10,5 +10,5 @@ RDEPEND=sys-libs/zlib:=
 RESTRICT=test
 SLOT=0
 SRC_URI=mirror://sourceforge/id3lib/id3lib-3.8.3.tar.gz
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
 _md5_=b4cc5a3fe7c44d7bcafa5fb963a6b0de

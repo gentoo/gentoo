@@ -9,5 +9,5 @@ LICENSE=GPL-2 LGPL-2.1 BSD-2
 RDEPEND=virtual/libelf !<=dev-util/bcc-0.7.0
 SLOT=0/0.20190311
 SRC_URI=https://github.com/libbpf/libbpf/archive/cb658e9724e3c34973eee913b1ff0cb9c50b8e53.tar.gz -> libbpf-0.20190311.tar.gz
-_eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
 _md5_=a5dfd6521db24488d9b3aad53538ea9e

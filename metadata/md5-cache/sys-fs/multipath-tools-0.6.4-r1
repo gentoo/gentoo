@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=>=sys-fs/lvm2-2.02.45 >=virtual/udev-171 dev-libs/libaio dev-libs/userspace-rcu:= sys-libs/readline:0= rbd? ( sys-cluster/ceph ) systemd? ( sys-apps/systemd )
 SLOT=0
 SRC_URI=http://git.opensvc.com/?p=multipath-tools/.git;a=snapshot;h=0.6.4;sf=tgz -> multipath-tools-0.6.4.tar.gz
-_eclasses_=eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	linux-info	953c3b1c472dcadbf62098a9301327f2	multilib	b2f01ad412baf81650c23fcf0975fa33	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	udev	7752f306eec7b286d00bdb47b763e7ac	vcs-snapshot	b77011b62e2053c646ad720defe6d921
+_eclasses_=eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	linux-info	953c3b1c472dcadbf62098a9301327f2	multilib	b2f01ad412baf81650c23fcf0975fa33	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	b45201c4e6c096b98e250336954e64b9	udev	7752f306eec7b286d00bdb47b763e7ac	vcs-snapshot	b77011b62e2053c646ad720defe6d921
 _md5_=a5e69adfdcb4ae4ca5aa11bdd9094801

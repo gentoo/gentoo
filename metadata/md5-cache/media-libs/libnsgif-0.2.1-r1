@@ -7,5 +7,5 @@ KEYWORDS=~amd64 ~arm ~ppc ~ppc64 ~m68k-mint
 LICENSE=MIT
 SLOT=0
 SRC_URI=https://download.netsurf-browser.org/libs/releases/libnsgif-0.2.1-src.tar.gz
-_eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
 _md5_=4a34dc7c8ced05864a1d86d87d0b0899

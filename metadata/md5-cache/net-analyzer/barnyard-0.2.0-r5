@@ -10,5 +10,5 @@ LICENSE=QPL GPL-2
 RDEPEND=net-libs/libpcap mysql? ( dev-db/mysql-connector-c:0= ) postgres? ( dev-db/postgresql:*[server] ) sguil? ( dev-lang/tcl:0 ) net-analyzer/snort
 SLOT=0
 SRC_URI=mirror://sourceforge/barnyard/barnyard-0.2.0.tar.gz mirror://gentoo/barnyard-0.2.0-patches.tar.bz2
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
 _md5_=594c296ab46cd308a48fe3cb0e015784

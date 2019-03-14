@@ -12,5 +12,5 @@ REQUIRED_USE=?? ( cdda cdio ) cdda? ( udisks || ( cddb musicbrainz ) ) cddb? ( |
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/CDrummond/cantata/releases/download/v2.3.3/cantata-2.3.3.tar.bz2
-_eclasses_=cmake-utils	ab10bd85e5d38e2a32077bcd91faa1b6	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	a09389deba2c0a7108b581e02c7cecbf	l10n	97f2753e3f1f3753d53d856c7c0bbb0b	multilib	b2f01ad412baf81650c23fcf0975fa33	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	qmake-utils	bdf97e69a34b864d6d545f4ec3143ff7	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	14d00d009167652b1fa363e55effe213
+_eclasses_=cmake-utils	ab10bd85e5d38e2a32077bcd91faa1b6	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	a09389deba2c0a7108b581e02c7cecbf	l10n	97f2753e3f1f3753d53d856c7c0bbb0b	multilib	b2f01ad412baf81650c23fcf0975fa33	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	qmake-utils	bdf97e69a34b864d6d545f4ec3143ff7	toolchain-funcs	b45201c4e6c096b98e250336954e64b9	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	14d00d009167652b1fa363e55effe213
 _md5_=4a2dcd3596ecef6c235c34b21ed50128

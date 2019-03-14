@@ -9,5 +9,5 @@ LICENSE=GPL-2 LGPL-2.1 CDDL-Schily
 RDEPEND=sys-libs/libcap acl? ( sys-apps/acl ) xattr? ( sys-apps/attr )
 SLOT=0
 SRC_URI=mirror://sourceforge/s-tar/star-1.5.3.tar.bz2
-_eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
 _md5_=b733356f5125e9d21b17adab7462362e

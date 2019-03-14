@@ -10,5 +10,5 @@ RDEPEND=>=dev-libs/libparserutils-0.2.1-r1 >=dev-libs/libwapcaplet-0.3.0 >=net-l
 REQUIRED_USE=test? ( xml )
 SLOT=0/0.3.3
 SRC_URI=https://download.netsurf-browser.org/libs/releases/libdom-0.3.3-src.tar.gz
-_eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
 _md5_=d2a356396f91108e35c4b271ec88ca7b

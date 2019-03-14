@@ -10,5 +10,5 @@ RDEPEND=mysql? ( dev-db/mysql-connector-c:0= ) postgres? ( dev-db/postgresql ) v
 REQUIRED_USE=?? ( mysql postgres )
 SLOT=0
 SRC_URI=http://www.ezmlm.org/archive/7.0.0/ezmlm-idx-7.0.0.tar.gz
-_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	fixheadtails	6b7b3d896b0b285c12a94f3105c2a06c	flag-o-matic	a09389deba2c0a7108b581e02c7cecbf	multilib	b2f01ad412baf81650c23fcf0975fa33	qmail	0cddcd9f34297dbca4a09fbdafa7398a	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	user	8bd74731cafdcdad8f7a63637302e073
+_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	fixheadtails	6b7b3d896b0b285c12a94f3105c2a06c	flag-o-matic	a09389deba2c0a7108b581e02c7cecbf	multilib	b2f01ad412baf81650c23fcf0975fa33	qmail	0cddcd9f34297dbca4a09fbdafa7398a	toolchain-funcs	b45201c4e6c096b98e250336954e64b9	user	8bd74731cafdcdad8f7a63637302e073
 _md5_=cad3612a19b8b193c5372eb773c33216

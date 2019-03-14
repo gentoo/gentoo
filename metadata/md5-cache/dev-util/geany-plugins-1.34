@@ -11,5 +11,5 @@ RDEPEND=dev-libs/glib:2 >=dev-util/geany-1.34[gtk3=] gtk3? ( x11-libs/gtk+:3 ) !
 REQUIRED_USE=gtk3? ( !debugger !multiterm !python ) !gtk3? ( !markdown ) python? ( python_targets_python2_7 )
 SLOT=0
 SRC_URI=https://plugins.geany.org/geany-plugins/geany-plugins-1.34.tar.gz
-_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	multilib	b2f01ad412baf81650c23fcf0975fa33	python-single-r1	3a0fc81f484bfdbd9c2b7448015a36e4	python-utils-r1	12114a2a9aab35b93efc037a196b3234	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	vala	a94a0fb4c35fe91774bb72ec8f3c861f
+_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	multilib	b2f01ad412baf81650c23fcf0975fa33	python-single-r1	3a0fc81f484bfdbd9c2b7448015a36e4	python-utils-r1	12114a2a9aab35b93efc037a196b3234	toolchain-funcs	b45201c4e6c096b98e250336954e64b9	vala	a94a0fb4c35fe91774bb72ec8f3c861f
 _md5_=824be5e3034b47823882665c72fde4bb

@@ -9,5 +9,5 @@ RDEPEND=dev-db/mongodb dev-java/commons-daemon sys-apps/lsb-release sys-libs/lib
 RESTRICT=mirror
 SLOT=0
 SRC_URI=https://dl.ubnt.com/firmwares/ufv/v3.9.12/unifi-video.Ubuntu16.04_amd64.v3.9.12.deb
-_eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	user	8bd74731cafdcdad8f7a63637302e073
+_eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	b45201c4e6c096b98e250336954e64b9	user	8bd74731cafdcdad8f7a63637302e073
 _md5_=06f946574edac6b92e4dffac196ede3b

@@ -10,5 +10,5 @@ RDEPEND=module_config_rpcconfig? ( dev-libs/expat dev-libs/xmlrpc-c[abyss,cxx] )
 REQUIRED_USE=stargazer? ( ^^ ( module_store_files module_store_firebird module_store_mysql module_store_postgres ) )
 SLOT=0
 SRC_URI=http://stg.dp.ua/download/server/2.408/stg-2.408.tar.gz
-_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	a09389deba2c0a7108b581e02c7cecbf	linux-info	953c3b1c472dcadbf62098a9301327f2	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	user	8bd74731cafdcdad8f7a63637302e073
+_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	a09389deba2c0a7108b581e02c7cecbf	linux-info	953c3b1c472dcadbf62098a9301327f2	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	b45201c4e6c096b98e250336954e64b9	user	8bd74731cafdcdad8f7a63637302e073
 _md5_=76bae4821d6f6ee109b1358e4ca49f2b

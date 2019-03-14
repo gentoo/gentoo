@@ -9,5 +9,5 @@ LICENSE=GPL-3
 RDEPEND=sys-fs/fuse:0
 SLOT=0
 SRC_URI=http://mhddfs.uvw.ru/downloads/mhddfs_0.1.39.tar.gz
-_eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
 _md5_=53632eff990ee1b71bb2db68d3a747fb

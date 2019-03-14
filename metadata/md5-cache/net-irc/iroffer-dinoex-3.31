@@ -10,5 +10,5 @@ RDEPEND=chroot? ( dev-libs/nss ) curl? ( net-misc/curl[ssl?] gnutls? ( net-misc/
 REQUIRED_USE=admin? ( http ) gnutls? ( ssl )
 SLOT=0
 SRC_URI=http://iroffer.dinoex.net/iroffer-dinoex-3.31.tar.gz http://iroffer.dinoex.net/HISTORY/iroffer-dinoex-3.31.tar.gz
-_eclasses_=l10n	97f2753e3f1f3753d53d856c7c0bbb0b	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	user	8bd74731cafdcdad8f7a63637302e073
+_eclasses_=l10n	97f2753e3f1f3753d53d856c7c0bbb0b	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	b45201c4e6c096b98e250336954e64b9	user	8bd74731cafdcdad8f7a63637302e073
 _md5_=671b0c6771f0cdf3fb2d8689052b4851

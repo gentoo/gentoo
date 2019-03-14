@@ -9,5 +9,5 @@ LICENSE=MIT
 RDEPEND=sdl? ( >=media-libs/libsdl-1.2.15-r4 ) vnc? ( >=net-libs/libvncserver-0.9.9-r2 ) wayland? ( >=dev-libs/wayland-1.0.6 ) xcb? ( >=x11-libs/libxcb-1.9.1 >=x11-libs/xcb-util-0.3.9-r1 >=x11-libs/xcb-util-image-0.3.9-r1 >=x11-libs/xcb-util-keysyms-0.3.9-r1 )
 SLOT=0/0.2.0
 SRC_URI=https://download.netsurf-browser.org/libs/releases/libnsfb-0.2.0-src.tar.gz
-_eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
 _md5_=efbc89afea87b85b04f79e147072240b

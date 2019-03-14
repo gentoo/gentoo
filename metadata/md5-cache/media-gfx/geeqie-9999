@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=virtual/libintl doc? ( app-text/gnome-doc-utils ) ffmpegthumbnailer? ( media-video/ffmpegthumbnailer ) gpu-accel? ( media-libs/clutter-gtk ) gtk3? ( x11-libs/gtk+:3 ) !gtk3? ( x11-libs/gtk+:2 ) jpeg? ( virtual/jpeg:0 ) lcms? ( media-libs/lcms:2 ) lirc? ( app-misc/lirc ) lua? ( >=dev-lang/lua-5.1:= ) map? ( media-libs/libchamplain:0.12 ) tiff? ( media-libs/tiff:0 ) xmp? ( >=media-gfx/exiv2-0.17:=[xmp] ) !xmp? ( exif? ( >=media-gfx/exiv2-0.17:= ) )
 REQUIRED_USE=gpu-accel? ( gtk3 ) map? ( gpu-accel )
 SLOT=0
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	git-r3	0d4635eeb5a96cd5315597a47eba25c9	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	xdg-utils	14d00d009167652b1fa363e55effe213
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	git-r3	0d4635eeb5a96cd5315597a47eba25c9	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	b45201c4e6c096b98e250336954e64b9	xdg-utils	14d00d009167652b1fa363e55effe213
 _md5_=db3ac741397e89a8c3511c12a381c4a5

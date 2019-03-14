@@ -8,5 +8,5 @@ LICENSE=MIT
 RDEPEND=>=dev-lang/lua-5.1:= ~dev-lua/lua_cliargs-2.5_p5 >=dev-lua/luafilesystem-1.5.0 >=dev-lua/dkjson-2.1.0 >=dev-lua/say-1.3 >=dev-lua/luassert-1.7.8 >=dev-lua/lua-term-0.1_p1 >=dev-lua/penlight-1.3.2 >=dev-lua/mediator_lua-1.1.1_p0 >=dev-lua/luasocket-2.0.1
 SLOT=0
 SRC_URI=https://github.com/Olivine-Labs/busted/archive/v2.0.rc11-0.tar.gz -> busted-2.0_rc11_p0.tar.gz
-_eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
 _md5_=288d69ba714951577d91a0d44a41c859

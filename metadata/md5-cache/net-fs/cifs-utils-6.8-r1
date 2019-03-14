@@ -12,5 +12,5 @@ RDEPEND=!net-fs/mount-cifs !<net-fs/samba-3.6_rc1 sys-apps/keyutils ads? ( sys-l
 REQUIRED_USE=acl? ( ads )
 SLOT=0
 SRC_URI=https://ftp.samba.org/pub/linux-cifs/cifs-utils/cifs-utils-6.8.tar.bz2
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	a09389deba2c0a7108b581e02c7cecbf	libtool	f143db5a74ccd9ca28c1234deffede96	linux-info	953c3b1c472dcadbf62098a9301327f2	multilib	b2f01ad412baf81650c23fcf0975fa33	pam	3e788d86170dfcd5b06824d898315e18	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	a09389deba2c0a7108b581e02c7cecbf	libtool	f143db5a74ccd9ca28c1234deffede96	linux-info	953c3b1c472dcadbf62098a9301327f2	multilib	b2f01ad412baf81650c23fcf0975fa33	pam	3e788d86170dfcd5b06824d898315e18	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
 _md5_=5ce1be86def962c30f633700ce7beb95

@@ -10,5 +10,5 @@ LICENSE=GPL-2
 RDEPEND=>=x11-wm/windowmaker-0.70.0 x11-libs/libXmu x11-libs/libXpm x11-libs/libXt pam? ( virtual/pam ) truetype? ( x11-libs/libXft ) pam? ( >=sys-auth/pambase-20080219.1 )
 SLOT=0
 SRC_URI=http://voins.program.ru/wdm/wdm-1.28.tar.bz2
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	a09389deba2c0a7108b581e02c7cecbf	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	b2f01ad412baf81650c23fcf0975fa33	pam	3e788d86170dfcd5b06824d898315e18	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	a09389deba2c0a7108b581e02c7cecbf	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	b2f01ad412baf81650c23fcf0975fa33	pam	3e788d86170dfcd5b06824d898315e18	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
 _md5_=a4340aa18c2caebae274ed917b88330d

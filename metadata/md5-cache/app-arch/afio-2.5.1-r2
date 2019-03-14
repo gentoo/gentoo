@@ -6,5 +6,5 @@ KEYWORDS=alpha amd64 ~hppa ppc sparc x86
 LICENSE=Artistic LGPL-2
 SLOT=0
 SRC_URI=http://members.chello.nl/k.holtman/afio-2.5.1.tgz
-_eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
 _md5_=206c3dac05c3c4cac0ae2c27bd2b24c2

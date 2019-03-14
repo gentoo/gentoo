@@ -10,5 +10,5 @@ RDEPEND=>=dev-libs/libcss-0.8 >=net-libs/libdom-0.3 >=net-libs/libhubbub-0.3 >=d
 REQUIRED_USE=|| ( fbcon gtk gtk2 ) fbcon? ( || ( fbcon_frontend_sdl fbcon_frontend_vnc fbcon_frontend_x ) ) duktape? ( javascript )
 SLOT=0
 SRC_URI=http://download.netsurf-browser.org/netsurf/releases/source/netsurf-3.8-src.tar.gz
-_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
 _md5_=9fdf3cedbf4291a9081f96b71997f254

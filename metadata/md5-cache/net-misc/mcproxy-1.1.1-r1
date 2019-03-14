@@ -9,5 +9,5 @@ KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2+
 SLOT=0
 SRC_URI=https://github.com/mcproxy/mcproxy/archive/v1.1.1.tar.gz -> mcproxy-1.1.1.tar.gz
-_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	linux-info	953c3b1c472dcadbf62098a9301327f2	multilib	b2f01ad412baf81650c23fcf0975fa33	qmake-utils	bdf97e69a34b864d6d545f4ec3143ff7	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	linux-info	953c3b1c472dcadbf62098a9301327f2	multilib	b2f01ad412baf81650c23fcf0975fa33	qmake-utils	bdf97e69a34b864d6d545f4ec3143ff7	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
 _md5_=db2cf10fe81fdad10296cc6ff2f9014c

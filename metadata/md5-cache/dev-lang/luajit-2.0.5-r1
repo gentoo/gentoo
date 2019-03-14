@@ -7,5 +7,5 @@ KEYWORDS=amd64 arm ppc x86 ~amd64-linux ~x86-linux
 LICENSE=MIT
 SLOT=2
 SRC_URI=http://luajit.org/download/LuaJIT-2.0.5.tar.gz
-_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	b2f01ad412baf81650c23fcf0975fa33	pax-utils	e85f015e815dd463b0c206d781ef45a5	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	versionator	2352c3fc97241f6a02042773c8287748
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	b2f01ad412baf81650c23fcf0975fa33	pax-utils	e85f015e815dd463b0c206d781ef45a5	toolchain-funcs	b45201c4e6c096b98e250336954e64b9	versionator	2352c3fc97241f6a02042773c8287748
 _md5_=e671593bbc501382f0d5148640c8c21d

@@ -10,5 +10,5 @@ LICENSE=GPL-2
 RDEPEND=selinux? ( sys-libs/libselinux ) elibc_musl? ( sys-libs/queue-standalone )
 SLOT=0/5
 SRC_URI=https://dev.gentoo.org/~zlogene/distfiles/sys-fs/f2fs-tools/f2fs-tools-1.11.0.tar.gz
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
 _md5_=81fe46d8c6d40dfd2e28ad40be3bcbd7

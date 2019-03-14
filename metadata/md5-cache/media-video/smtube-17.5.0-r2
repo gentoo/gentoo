@@ -8,5 +8,5 @@ LICENSE=GPL-2+
 RDEPEND=dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5[ssl] dev-qt/qtscript:5 dev-qt/qtwebkit:5 dev-qt/qtwidgets:5 || ( media-video/smplayer media-video/mpv media-video/mplayer media-video/vlc media-video/totem )
 SLOT=0
 SRC_URI=mirror://sourceforge/smtube/smtube-17.5.0.tar.bz2
-_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	estack	43ddf5aaffa7a8d0482df54d25a66a1f	l10n	97f2753e3f1f3753d53d856c7c0bbb0b	multilib	b2f01ad412baf81650c23fcf0975fa33	qmake-utils	bdf97e69a34b864d6d545f4ec3143ff7	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	estack	43ddf5aaffa7a8d0482df54d25a66a1f	l10n	97f2753e3f1f3753d53d856c7c0bbb0b	multilib	b2f01ad412baf81650c23fcf0975fa33	qmake-utils	bdf97e69a34b864d6d545f4ec3143ff7	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
 _md5_=6ee5fae303f4f082696d317f01b5ff5f

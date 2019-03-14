@@ -11,5 +11,5 @@ RDEPEND=>=dev-libs/libtasn1-4.9:=[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,
 REQUIRED_USE=test-full? ( guile pkcs11 openpgp openssl idn seccomp tools zlib )
 SLOT=0/30
 SRC_URI=mirror://gnupg/gnutls/v3.5/gnutls-3.5.19.tar.xz
-_eclasses_=libtool	f143db5a74ccd9ca28c1234deffede96	multibuild	40fe59465edacd730c644ec2bc197809	multilib	b2f01ad412baf81650c23fcf0975fa33	multilib-build	b42436dc1260f475af229754c165cb6b	multilib-minimal	8bddda43703ba94d8341f4e247f97566	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_eclasses_=libtool	f143db5a74ccd9ca28c1234deffede96	multibuild	40fe59465edacd730c644ec2bc197809	multilib	b2f01ad412baf81650c23fcf0975fa33	multilib-build	b42436dc1260f475af229754c165cb6b	multilib-minimal	8bddda43703ba94d8341f4e247f97566	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
 _md5_=6d3189b0210de67c2c695d6dcceabd97

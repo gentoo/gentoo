@@ -10,5 +10,5 @@ RDEPEND=dev-python/bsddb3[python_targets_python2_7(-)?,-python_single_target_jyt
 REQUIRED_USE=python_targets_python2_7
 SLOT=0
 SRC_URI=mirror://gentoo/venus-20100911.tar.bz2
-_eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	python-single-r1	3a0fc81f484bfdbd9c2b7448015a36e4	python-utils-r1	12114a2a9aab35b93efc037a196b3234	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	webapp	16783e418aca3ffa461d68310bf7ab12
+_eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	python-single-r1	3a0fc81f484bfdbd9c2b7448015a36e4	python-utils-r1	12114a2a9aab35b93efc037a196b3234	toolchain-funcs	b45201c4e6c096b98e250336954e64b9	webapp	16783e418aca3ffa461d68310bf7ab12
 _md5_=ec78e405e6b81e317ecd95d72722601f

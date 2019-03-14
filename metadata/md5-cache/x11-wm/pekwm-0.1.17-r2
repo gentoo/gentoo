@@ -10,5 +10,5 @@ LICENSE=GPL-2
 RDEPEND=media-libs/libpng:0= virtual/jpeg:0 x11-libs/libXpm x11-libs/libXrandr x11-libs/libXrender truetype? ( x11-libs/libXft ) xinerama? ( x11-libs/libXinerama )
 SLOT=0
 SRC_URI=https://github.com/pekdon/pekwm/archive/release-0.1.17.tar.gz -> pekwm-0.1.17.tar.gz themes? ( https://dev.gentoo.org/~jer/pekwm-themes.tar.bz2 )
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	desktop	b1d22ac8bdd4679ab79c71aca235009d	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	desktop	b1d22ac8bdd4679ab79c71aca235009d	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
 _md5_=00f1f7e05531183fe02946c9b96182c7

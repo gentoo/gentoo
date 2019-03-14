@@ -7,5 +7,5 @@ LICENSE=UoI-NCSA
 PDEPEND=sys-devel/clang:*
 SLOT=0
 SRC_URI=https://prereleases.llvm.org/8.0.0/rc5/cfe-8.0.0rc5.src.tar.xz
-_eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
 _md5_=05d9912840c71b61301180561890f3ea

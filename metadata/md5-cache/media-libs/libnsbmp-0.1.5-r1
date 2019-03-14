@@ -7,5 +7,5 @@ KEYWORDS=~amd64 ~arm ~ppc ~ppc64 ~m68k-mint
 LICENSE=MIT
 SLOT=0/0.1.5
 SRC_URI=https://download.netsurf-browser.org/libs/releases/libnsbmp-0.1.5-src.tar.gz
-_eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	f164325a2cdb5b3ea39311d483988861
+_eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
 _md5_=e6da7f65f99ab7c6bacf3b248b12762b

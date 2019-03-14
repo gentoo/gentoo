@@ -9,5 +9,5 @@ LICENSE=LGPL-2.1
 RDEPEND=app-arch/brotli app-arch/bzip2 app-arch/xz-utils sys-apps/busybox[static] dev-db/sqlite dev-libs/editline:0= dev-libs/openssl:0= >=dev-libs/boost-1.66:0=[context] net-misc/curl sys-libs/libseccomp sys-libs/zlib gc? ( dev-libs/boehm-gc[cxx] ) doc? ( dev-libs/libxml2 dev-libs/libxslt app-text/docbook-xsl-stylesheets ) s3? ( dev-libs/aws-sdk-cpp ) sodium? ( dev-libs/libsodium:0= )
 SLOT=0
 SRC_URI=http://nixos.org/releases/nix/nix-2.2.1/nix-2.2.1.tar.xz
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	a09389deba2c0a7108b581e02c7cecbf	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	b2f01ad412baf81650c23fcf0975fa33	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	user	8bd74731cafdcdad8f7a63637302e073
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	a09389deba2c0a7108b581e02c7cecbf	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	b2f01ad412baf81650c23fcf0975fa33	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190	toolchain-funcs	b45201c4e6c096b98e250336954e64b9	user	8bd74731cafdcdad8f7a63637302e073
 _md5_=8a8554e385fe6d68e4be582ede7d3530

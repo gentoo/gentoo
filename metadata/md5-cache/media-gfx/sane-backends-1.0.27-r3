@@ -11,5 +11,5 @@ RDEPEND=sane_backends_dc210? ( >=virtual/jpeg-0-r2:0=[abi_x86_32(-)?,abi_x86_64(
 REQUIRED_USE=sane_backends_mustek_usb2? ( threads ) sane_backends_kvs40xx? ( threads )
 SLOT=0
 SRC_URI=https://alioth.debian.org/frs/download.php/file/4224/sane-backends-1.0.27.tar.gz
-_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	a09389deba2c0a7108b581e02c7cecbf	multibuild	40fe59465edacd730c644ec2bc197809	multilib	b2f01ad412baf81650c23fcf0975fa33	multilib-build	b42436dc1260f475af229754c165cb6b	multilib-minimal	8bddda43703ba94d8341f4e247f97566	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	udev	7752f306eec7b286d00bdb47b763e7ac	user	8bd74731cafdcdad8f7a63637302e073
+_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	a09389deba2c0a7108b581e02c7cecbf	multibuild	40fe59465edacd730c644ec2bc197809	multilib	b2f01ad412baf81650c23fcf0975fa33	multilib-build	b42436dc1260f475af229754c165cb6b	multilib-minimal	8bddda43703ba94d8341f4e247f97566	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	b45201c4e6c096b98e250336954e64b9	udev	7752f306eec7b286d00bdb47b763e7ac	user	8bd74731cafdcdad8f7a63637302e073
 _md5_=ab7b9b6243354866a5eea1a003fffdd8
