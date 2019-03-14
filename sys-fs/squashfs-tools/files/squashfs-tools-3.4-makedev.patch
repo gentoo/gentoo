@@ -1,5 +1,5 @@
---- a/squashfs-tools/mksquashfs.c
-+++ b/squashfs-tools/mksquashfs.c
+--- a/mksquashfs.c
++++ b/mksquashfs.c
 @@ -47,6 +47,7 @@
  #include <math.h>
  #include <regex.h>
@@ -8,8 +8,8 @@
  
  #ifndef linux
  #define __BYTE_ORDER BYTE_ORDER
---- a/squashfs-tools/unsquashfs.c
-+++ b/squashfs-tools/unsquashfs.c
+--- a/unsquashfs.c
++++ b/unsquashfs.c
 @@ -47,6 +47,7 @@
  #include <math.h>
  #include <sys/ioctl.h>
