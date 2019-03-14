@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201903-13">
+  <title>BIND: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in BIND, the worst of
+    which could result in a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">bind</product>
+  <announced>2019-03-14</announced>
+  <revised count="1">2019-03-14</revised>
+  <bug>657654</bug>
+  <bug>666946</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-dns/bind" auto="yes" arch="*">
+      <unaffected range="ge">9.12.1_p2-r1</unaffected>
+      <vulnerable range="lt">9.12.1_p2-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>BIND (Berkeley Internet Name Domain) is a Name Server.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in BIND. Please review the
+      CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>BIND can improperly permit recursive query service to unauthorized
+      clients possibly resulting in a Denial of Service condition or to be used
+      in DNS reflection attacks.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All bind users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-dns/bind-9.12.1_p2-r1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-5738">CVE-2018-5738</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-5740">CVE-2018-5740</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-5741">CVE-2018-5741</uri>
+  </references>
+  <metadata tag="requester" timestamp="2019-03-10T00:30:31Z">BlueKnight</metadata>
+  <metadata tag="submitter" timestamp="2019-03-14T01:41:21Z">BlueKnight</metadata>
+</glsa>
