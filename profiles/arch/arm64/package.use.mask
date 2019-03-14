@@ -1,6 +1,12 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Roy Bamford <neddyseagoon@gentoo.org> (14 Mar 2019)
+# mask mail-filter/spamassassin meanwhile. It builds with 
+# FEATURES=yes USE=test but ths allows kde-apps/kdepim-meta to 
+# get ~arm64 now. 
+kde-apps/kdepim-meta spamassassin
+
 # Roy Bamford <neddyseagoon@gentoo.org> (12 Mar 2019)
 # Let kde-apps/akonadi use mysql.
 kde-apps/akonadi -mysql
