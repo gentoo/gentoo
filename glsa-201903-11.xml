@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201903-11">
+  <title>XRootD: Remote code execution</title>
+  <synopsis>A vulnerability was discovered in XRootD which could lead to the
+    remote execution of code.
+  </synopsis>
+  <product type="ebuild">xrootd</product>
+  <announced>2019-03-14</announced>
+  <revised count="1">2019-03-14</revised>
+  <bug>638420</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-libs/xrootd" auto="yes" arch="*">
+      <unaffected range="ge">4.8.3</unaffected>
+      <vulnerable range="lt">4.8.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>A project that aims at giving high performance, scalable, and fault
+      tolerant access to data repositories of many kinds.
+    </p>
+  </background>
+  <description>
+    <p>A shell command injection was discovered in XRootD.</p>
+    
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could execute arbitrary code.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All XRootD users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-libs/xrootd-4.8.3"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-1000215">
+      CVE-2017-1000215
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2019-03-10T02:02:16Z">BlueKnight</metadata>
+  <metadata tag="submitter" timestamp="2019-03-14T01:35:58Z">b-man</metadata>
+</glsa>
