@@ -1,43 +1,28 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
+
+inherit git-r3
 
 DESCRIPTION="Collection of Gentoo eclass manpages"
 HOMEPAGE="https://www.gentoo.org/"
 SRC_URI=""
+EGIT_REPO_URI="https://anongit.gentoo.org/git/repo/gentoo.git
+	https://github.com/gentoo/gentoo.git"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
 IUSE=""
 
-DEPEND="
-	|| (
-		sys-apps/portage
-		sys-apps/portage-mgorny
-	)"
-
-S=${WORKDIR}
-
-genit() {
-	local e=${1:-${ECLASSDIR}}
-	einfo "Generating man pages from: ${e}"
-	# Need `bash` because the .sh isn't +x on the servers #451352
-	env ECLASSDIR=${e} bash "${FILESDIR}"/eclass-to-manpage.sh || die
+src_unpack() {
+	git-r3_fetch
+	git-r3_checkout '' '' '' eclass
 }
 
 src_compile() {
-	# First process any eclasses found in overlays.  Then process
-	# the main eclassdir last so that its output will clobber anything
-	# that might have come from overlays.  Main tree wins!
-	local o e
-	for o in $(portageq get_repos /) ; do
-		e="$(portageq get_repo_path / ${o})/eclass"
-		[[ -d ${e} ]] || continue
-		genit "${e}" || die
-	done
-	genit || die
+	env ECLASSDIR="${S}/eclass" bash "${FILESDIR}"/eclass-to-manpage.sh || die
 }
 
 src_install() {
