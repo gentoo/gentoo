@@ -218,13 +218,11 @@ tc-cpp-is-true() {
 }
 
 # @FUNCTION: tc-detect-is-softfloat
-# @RETURN:
-# Shell true if (positive or negative) detection was possible, shell
-# false otherwise. Also outputs a string when detection succeeds, see
-# tc-is-softfloat for the possible values.
+# @RETURN: Shell true if detection was possible, shell false otherwise
 # @DESCRIPTION:
 # Detect whether the CTARGET (or CHOST) toolchain is a softfloat based
-# one by examining the toolchain's output, if possible.
+# one by examining the toolchain's output, if possible.  Outputs a value
+# alike tc-is-softfloat if detection was possible.
 tc-detect-is-softfloat() {
 	# If fetching CPP falls back to the default (gcc -E) then fail
 	# detection as this may not be the correct toolchain.
