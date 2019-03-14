@@ -8,4 +8,4 @@ LICENSE=CC-BY-SA-2.0
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~hwoarang/distfiles/devmanual-0_pre20141116.tar.gz
 _eclasses_=readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190
-_md5_=29fc17a51063da4e25cb135e56d8ca87
+_md5_=1b730a09f75ef4924e50ae25dc88d910
