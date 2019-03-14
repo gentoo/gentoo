@@ -10,7 +10,7 @@ DESCRIPTION="An interactive, SSL-capable, man-in-the-middle HTTP proxy"
 HOMEPAGE="https://mitmproxy.org/"
 SRC_URI="https://github.com/mitmproxy/mitmproxy/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="GPL-3"
+LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
