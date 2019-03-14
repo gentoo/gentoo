@@ -13,11 +13,15 @@ LICENSE="public-domain"
 KEYWORDS=""
 RESTRICT="test"
 SLOT="0"
-RDEPEND="
+DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 "
-DEPEND="
-	${RDEPEND}
+RDEPEND="
+	${DEPEND}
+	|| (
+		dev-python/pycryptodome[${PYTHON_USEDEP}]
+		dev-python/pycrypto[${PYTHON_USEDEP}]
+	)
 "
 
 src_compile() {
