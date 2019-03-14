@@ -9,4 +9,4 @@ LICENSE=MIT
 RDEPEND=!<x11-apps/xkbcomp-1.2.3 !<x11-libs/libX11-1.4.3
 SLOT=0
 SRC_URI=mirror://xorg/data/xkeyboard-config/xkeyboard-config-2.26.tar.bz2
-_md5_=ceaee05b0584beb44f0de439b562406f
+_md5_=ac7cb8fdfee29031c725dc8039257427
