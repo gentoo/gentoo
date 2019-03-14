@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,9 +15,9 @@ IUSE=""
 RDEPEND=""
 DEPEND="
 	app-text/docbook-xml-dtd:4.1.2
-	app-text/docbook-xml-dtd:4.2
-	app-text/yelp-tools
+	app-text/docbook-xml-dtd:4.3
 	dev-libs/libxslt
+	dev-util/itstool
 	sys-devel/gettext
 	virtual/pkgconfig
 "
