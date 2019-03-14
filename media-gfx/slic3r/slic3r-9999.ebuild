@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 inherit eutils git-r3 perl-module
 
 DESCRIPTION="A mesh slicer to generate G-code for fused-filament-fabrication (3D printers)"
-HOMEPAGE="http://slic3r.org"
+HOMEPAGE="https://slic3r.org"
 SRC_URI=""
 EGIT_REPO_URI="https://github.com/alexrj/Slic3r.git"
 
