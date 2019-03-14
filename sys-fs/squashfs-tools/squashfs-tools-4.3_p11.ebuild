@@ -14,7 +14,7 @@ SRC_URI="
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
-IUSE="debug lz4 lzma lzo static xattr +xz"
+IUSE="debug lz4 lzma lzo static xattr +xz zstd"
 
 LIB_DEPEND="
 	sys-libs/zlib[static-libs(+)]
@@ -24,6 +24,7 @@ LIB_DEPEND="
 	lzo? ( dev-libs/lzo[static-libs(+)] )
 	xattr? ( sys-apps/attr[static-libs(+)] )
 	xz? ( app-arch/xz-utils[static-libs(+)] )
+	zstd? ( app-arch/zstd[static-libs(+)] )
 "
 RDEPEND="
 	!static? ( ${LIB_DEPEND//\[static-libs(+)]} )
@@ -63,6 +64,7 @@ src_configure() {
 		LZ4_SUPPORT=$(use10 lz4)
 		XATTR_SUPPORT=$(use10 xattr)
 		XZ_SUPPORT=$(use10 xz)
+		ZSTD_SUPPORT=$(use10 zstd)
 	)
 
 	tc-export CC
