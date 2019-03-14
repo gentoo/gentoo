@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201903-09">
+  <title>GNU C Library: Arbitrary descriptor allocation</title>
+  <synopsis>A vulnerability in the GNU C Library could result in a Denial of
+    Service condition.
+  </synopsis>
+  <product type="ebuild">glibc</product>
+  <announced>2019-03-14</announced>
+  <revised count="1">2019-03-14</revised>
+  <bug>617938</bug>
+  <access>remote</access>
+  <affected>
+    <package name="sys-libs/glibc" auto="yes" arch="*">
+      <unaffected range="ge">2.26.0</unaffected>
+      <vulnerable range="lt">2.26.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>The GNU C library is the standard C library used by Gentoo Linux
+      systems.
+    </p>
+  </background>
+  <description>
+    <p>A vulnerability was discovered in the GNU C Library functions xdr_bytes
+      and xdr_string.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker, by sending a crafted UDP packet, could cause a Denial
+      of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All GNU C Library users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-libs/glibc-2.26.0"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-19591">CVE-2018-19591</uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-12-30T15:32:10Z">Zlogene</metadata>
+  <metadata tag="submitter" timestamp="2019-03-14T01:31:55Z">Zlogene</metadata>
+</glsa>
