@@ -1,7 +1,7 @@
 #!/bin/bash
 
 : ${ECLASSDIR:=${0%/*}/../../../eclass}
-: ${FILESDIR:=${ECLASSDIR}/../app-portage/eclass-manpages/files}
+: ${FILESDIR:=${0%/*}}
 
 AWK="gawk"
 while [[ $# -gt 0 ]] ; do
