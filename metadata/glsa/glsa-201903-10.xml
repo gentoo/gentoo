@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201903-10">
+  <title>OpenSSL: Multiple vulnerabilities</title>
+  <synopsis>Multiple Information Disclosure vulnerabilities in OpenSSL allow
+    attackers to obtain sensitive information.
+  </synopsis>
+  <product type="ebuild">openssl</product>
+  <announced>2019-03-14</announced>
+  <revised count="1">2019-03-14</revised>
+  <bug>673056</bug>
+  <bug>678564</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="dev-libs/openssl" auto="yes" arch="*">
+      <unaffected range="ge">1.0.2r</unaffected>
+      <vulnerable range="lt">1.0.2r</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>OpenSSL is an Open Source toolkit implementing the Secure Sockets Layer
+      (SSL v2/v3) and Transport Layer Security (TLS v1) as well as a general
+      purpose cryptography library.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in OpenSSL. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker to obtain sensitive information, caused by the failure
+      to immediately close the TCP connection after the hosts encounter a
+      zero-length record with valid padding.
+    </p>
+    
+    <p>A local attacker could run a malicious process next to legitimate
+      processes using the architecture’s parallel thread running capabilities
+      to leak encrypted data from the CPU’s internal processes.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All OpenSSL users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-libs/openssl-1.0.2r"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-5407">CVE-2018-5407</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-1559">CVE-2019-1559</uri>
+  </references>
+  <metadata tag="requester" timestamp="2019-01-07T18:47:40Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2019-03-14T01:34:24Z">Zlogene</metadata>
+</glsa>

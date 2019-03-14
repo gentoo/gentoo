@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201903-12">
+  <title>WebkitGTK+: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in WebkitGTK+, the worst
+    of which could result in the arbitrary execution of code.
+  </synopsis>
+  <product type="ebuild">webkit-gtk</product>
+  <announced>2019-03-14</announced>
+  <revised count="1">2019-03-14</revised>
+  <bug>672108</bug>
+  <bug>674702</bug>
+  <bug>678334</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-libs/webkit-gtk" auto="yes" arch="*">
+      <unaffected range="ge">2.22.6</unaffected>
+      <vulnerable range="lt">2.22.6</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>WebKitGTK+ is a full-featured port of the WebKit rendering engine,
+      suitable for projects requiring any kind of web integration, from hybrid
+      HTML/CSS applications to full-fledged web browsers.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in WebKitGTK+. Please
+      review the referenced CVE identifiers for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>An attacker could execute arbitrary code or conduct cross-site
+      scripting.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All WebkitGTK+ users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-libs/webkit-gtk-2.22.6"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-6212">CVE-2019-6212</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-6215">CVE-2019-6215</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-6216">CVE-2019-6216</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-6217">CVE-2019-6217</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-6226">CVE-2019-6226</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-6227">CVE-2019-6227</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-6229">CVE-2019-6229</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-6233">CVE-2019-6233</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-6234">CVE-2019-6234</uri>
+  </references>
+  <metadata tag="requester" timestamp="2019-03-07T21:59:07Z">BlueKnight</metadata>
+  <metadata tag="submitter" timestamp="2019-03-14T01:37:23Z">b-man</metadata>
+</glsa>
