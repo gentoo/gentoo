@@ -1,6 +1,6 @@
 BDEPEND=>=dev-lang/go-1.10 virtual/pkgconfig >=dev-vcs/git-1.8.2.1[curl]
 DEFINED_PHASES=compile configure install postinst prepare setup test unpack
-DEPEND=filecaps? ( sys-libs/libcap )
+DEPEND=>=dev-lang/go-1.12 filecaps? ( sys-libs/libcap )
 DESCRIPTION=A flexible DNS proxy, with support for encrypted DNS protocols
 EAPI=7
 HOMEPAGE=https://github.com/jedisct1/dnscrypt-proxy
@@ -9,4 +9,4 @@ LICENSE=ISC
 RESTRICT=strip
 SLOT=0
 _eclasses_=fcaps	9445d60c1eb084a91c38ef4c070b2f16	git-r3	0d4635eeb5a96cd5315597a47eba25c9	golang-base	c57d2c3f9e1a02d0feb8b87c7b689892	golang-build	dc25bafa8fc1305a4de66a0a448472e7	multilib	b2f01ad412baf81650c23fcf0975fa33	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	f164325a2cdb5b3ea39311d483988861	user	8bd74731cafdcdad8f7a63637302e073
-_md5_=0f679049dd6172175075b6da031045cc
+_md5_=ccd30c07b2789b4c4bb561efec3b2ce9
