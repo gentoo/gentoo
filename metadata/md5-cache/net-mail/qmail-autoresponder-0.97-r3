@@ -4,10 +4,10 @@ DESCRIPTION=Rate-limited autoresponder for qmail
 EAPI=7
 HOMEPAGE=http://untroubled.org/qmail-autoresponder/
 IUSE=mysql
-KEYWORDS=~alpha ~amd64 ~hppa ~mips ~ppc ~sparc x86
+KEYWORDS=~alpha amd64 ~hppa ~mips ~ppc ~sparc x86
 LICENSE=GPL-2
 RDEPEND=>=dev-libs/bglibs-1.106 mysql? ( dev-db/mysql-connector-c:0= ) virtual/qmail mysql? ( virtual/mysql )
 SLOT=0
 SRC_URI=http://untroubled.org/qmail-autoresponder/archive/qmail-autoresponder-0.97.tar.gz
 _eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
-_md5_=6f72db81b587a34f71e666066b88027a
+_md5_=129d2a1cbdc861e2dd87642831abe90c
