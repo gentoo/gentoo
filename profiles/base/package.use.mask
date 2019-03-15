@@ -7,6 +7,13 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Brian Evans <grknight@gentoo.org> (15 Mar 2019)
+# Prepare to remove the mysqlcompat USE from mariadb-connector-c
+# Has multiple issues including symlinks and threading.
+# Packages should use and access libmariadb.so instead
+dev-db/mariadb-connector-c mysqlcompat
+media-tv/kodi mariadb
+
 # Georgy Yakovlev <gyakovlev@gentoo.org> (05 Mar 2019)
 # Not keyworded on non-x86 arches
 app-admin/conserver freeipmi
