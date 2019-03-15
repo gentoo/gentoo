@@ -11,7 +11,7 @@ SRC_URI="http://mirrors.ctan.org/macros/latex/contrib/${PN}.zip -> ${P}.zip"
 
 LICENSE="LPPL-1.2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~sparc x86"
+KEYWORDS="amd64 ppc ~sparc x86"
 IUSE="doc examples"
 
 RDEPEND=">=dev-texlive/texlive-latexextra-2010"
