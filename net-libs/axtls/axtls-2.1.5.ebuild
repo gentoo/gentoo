@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI="7"
 
-inherit eutils multilib multilib-minimal savedconfig toolchain-funcs user
+inherit multilib multilib-minimal savedconfig toolchain-funcs user
 
 ################################################################################
 # axtls CONFIG MINI-HOWTO
@@ -40,7 +40,7 @@ S="${WORKDIR}/${PN}-code"
 
 LICENSE="BSD GPL-2"
 SLOT="0/1"
-KEYWORDS="~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~s390 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
 
 IUSE="httpd cgi-lua cgi-php static static-libs doc"
 
@@ -73,12 +73,14 @@ pkg_setup() {
 src_prepare() {
 	tc-export AR CC
 
-	epatch "${FILESDIR}/explicit-libdir-r1.patch"
+	eapply "${FILESDIR}/explicit-libdir-r1.patch"
 
 	#We want CONFIG_DEBUG to avoid stripping
 	#but not for debugging info
 	sed -i -e 's: -g::' config/Rules.mak || die
 	sed -i -e 's: -g::' config/makefile.conf || die
+
+	eapply_user
 
 	multilib_copy_sources
 }
