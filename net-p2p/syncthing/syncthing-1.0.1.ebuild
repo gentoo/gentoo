@@ -5,7 +5,7 @@ EAPI=7
 
 EGO_PN="github.com/${PN}/${PN}"
 
-inherit golang-vcs-snapshot systemd user
+inherit golang-vcs-snapshot systemd user xdg-utils
 
 DESCRIPTION="Open Source Continuous File Synchronization"
 HOMEPAGE="https://syncthing.net"
@@ -35,6 +35,9 @@ pkg_setup() {
 }
 
 src_prepare() {
+	# Bug #679280
+	xdg_environment_reset
+
 	default
 	sed -i \
 		's|^ExecStart=.*|ExecStart=/usr/libexec/syncthing/strelaysrv|' \
