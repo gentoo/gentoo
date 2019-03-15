@@ -54,9 +54,10 @@ src_configure() {
 		--enable-all-engines
 		--enable-release-mode
 		--enable-zlib
+		--host="${CHOST}"
 		--prefix="${EPREFIX}/usr"
 	)
-	./configure "${myconf[@]}" || die "configure failed"
+	./configure "${myconf[@]}" "${EXTRA_ECONF}" || die
 }
 
 src_compile() {
@@ -67,8 +68,7 @@ src_compile() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install
-
+	default
 	doicon -s 256 icons/${PN}.png
 }
 
