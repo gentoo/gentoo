@@ -30,6 +30,20 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (15 Mar 2019)
+# Unmaintained in Gentoo, obsoleted upstream.  Tests fail (#632706).
+# Upstream suggests switching to Kubernetes.
+# Removal in 30 days.  Bug #676728.
+app-admin/fleet
+
+# Michał Górny <mgorny@gentoo.org> (15 Mar 2019)
+# Unmaintained in Gentoo, abandoned upstream.  Last commit in 2012.
+# Fails to build, in multiple ways (#638842, #672190, #672196).
+# One of the two remaining unconditional revdeps of dev-libs/dietlibc.
+# Many alternatives exist, starting with net-analyzer/dsniff.
+# Removal in 30 days.  Bug #678520.
+net-analyzer/dietsniff
+
+# Michał Górny <mgorny@gentoo.org> (15 Mar 2019)
 # Last reverse dependency of dev-libs/libgcrypt-1.5* (#656378).  Current
 # version is outdated, maintainer is MIA and the new versions are
 # in distro-unfriendly AppImage format (#661740).
