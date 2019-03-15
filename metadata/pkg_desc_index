@@ -1448,7 +1448,6 @@ app-text/qpdf 7.0.0 8.2.1: Command-line tool for structural, content-preserving 
 app-text/qpdfview 0.4.16: A tabbed document viewer
 app-text/rarian 0.8.1-r3: A documentation metadata library
 app-text/recode 3.6_p20-r1: Convert files between various character sets
-app-text/rfcutil 3.2.3-r2: return all related RFCs based upon a number or a search string
 app-text/rman 3.2-r1: PolyGlotMan man page translator AKA RosettaMan
 app-text/rnv 1.7.11-r1: A lightweight Relax NG Compact Syntax validator
 app-text/ronn 0.7.3-r3: Converts simple, human readable textfiles to roff for terminal display, and HTML
