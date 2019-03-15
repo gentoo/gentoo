@@ -1,12 +1,14 @@
-BDEPEND=virtual/pkgconfig >=dev-vcs/git-1.8.2.1[curl]
-DEFINED_PHASES=compile configure install postinst postrm preinst prepare unpack
+BDEPEND=virtual/pkgconfig
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare
 DEPEND=media-libs/glew:0= media-libs/libsdl2[X,sound,alsa,joystick,opengl,video] virtual/glu alsa? ( media-libs/alsa-lib ) jpeg? ( virtual/jpeg:0 ) mp3? ( media-libs/libmad ) mpeg2? ( media-libs/libmpeg2 ) opengl? ( virtual/opengl ) png? ( media-libs/libpng:0= ) truetype? ( media-libs/freetype:2 ) vorbis? ( media-libs/libvorbis ) zlib? ( sys-libs/zlib:= ) dev-util/desktop-file-utils x11-misc/shared-mime-info
 DESCRIPTION=A cross-platform 3D game interpreter for play LucasArts' LUA-based 3D adventures
 EAPI=7
 HOMEPAGE=http://www.residualvm.org/
 IUSE=alsa debug jpeg mpeg2 mp3 opengl png truetype vorbis zlib
+KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2 LGPL-2.1
 RDEPEND=media-libs/glew:0= media-libs/libsdl2[X,sound,alsa,joystick,opengl,video] virtual/glu alsa? ( media-libs/alsa-lib ) jpeg? ( virtual/jpeg:0 ) mp3? ( media-libs/libmad ) mpeg2? ( media-libs/libmpeg2 ) opengl? ( virtual/opengl ) png? ( media-libs/libpng:0= ) truetype? ( media-libs/freetype:2 ) vorbis? ( media-libs/libvorbis ) zlib? ( sys-libs/zlib:= )
 SLOT=0
-_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	git-r3	0d4635eeb5a96cd5315597a47eba25c9	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	b45201c4e6c096b98e250336954e64b9	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	14d00d009167652b1fa363e55effe213
-_md5_=9041f6dc32f9524a9969a0391034dd3c
+SRC_URI=http://www.residualvm.org/downloads/release/0.3.1/residualvm-0.3.1-sources.tar.bz2
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	b45201c4e6c096b98e250336954e64b9	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	14d00d009167652b1fa363e55effe213
+_md5_=244de965c807d2377ed40699dfbbbd55

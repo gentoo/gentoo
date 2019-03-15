@@ -792,7 +792,7 @@ app-eselect/eselect-cblas 0.1: C-language BLAS module for eselect
 app-eselect/eselect-cdparanoia 0.1: Manage /usr/bin/cdparanoia symlink
 app-eselect/eselect-ctags 1.18: Manages ctags implementations
 app-eselect/eselect-emacs 1.18: Manage multiple Emacs versions on one system
-app-eselect/eselect-fontconfig 1.0 1.1: An eselect module to manage /etc/fonts/conf.d symlinks
+app-eselect/eselect-fontconfig 1.0 1.1 1.1-r1: An eselect module to manage /etc/fonts/conf.d symlinks
 app-eselect/eselect-gnome-shell-extensions 20180306: Manages system defaults for GNOME Shell extensions
 app-eselect/eselect-infinality 1-r1 1.1: Eselect module to choose an infinality font configuration style
 app-eselect/eselect-java 0.4.0: A set of eselect modules for Java
@@ -6160,7 +6160,7 @@ dev-tex/chktex 1.7.1: Checks latex source for common mistakes
 dev-tex/cjk-latex 4.8.4: LaTeX package to use CJK (Chinese/Japanese/Korean) scripts in various encodings
 dev-tex/cpp2latex 2.3-r2: A program to convert C++ code to LaTeX source
 dev-tex/csindex 2.11c-r2: Utility for creating Czech/Slovak-sorted LaTeX index-files
-dev-tex/culmus-latex 0.7: Culmus fonts support for latex
+dev-tex/culmus-latex 0.7 0.7-r1: Culmus fonts support for latex
 dev-tex/currvita 0.9i-r1: A LaTeX package for typesetting a curriculum vitae
 dev-tex/curve 1.16-r1: LaTeX style for a CV (curriculum vitae) with flavour option
 dev-tex/detex 2.8-r1: A filter program that removes the LaTeX (or TeX) control sequences
@@ -7372,7 +7372,7 @@ media-gfx/exiftags 1.01: Extracts JPEG EXIF headers from digital camera photos
 media-gfx/exiv2 0.27.0-r2: EXIF, IPTC and XMP metadata C++ library and command line utility
 media-gfx/fbgrab 1.3: Framebuffer screenshot utility
 media-gfx/fbida 2.12: Image viewers for the framebuffer console (fbi) and X11 (ida)
-media-gfx/feh 2.18.3: A fast, lightweight imageviewer using imlib2
+media-gfx/feh 2.18.3 3.1.1: A fast, lightweight imageviewer using imlib2
 media-gfx/figurine 1.0.5-r1: A vector based graphics editor similar to xfig, but simpler
 media-gfx/flam3 3.0.1: Tools and a library for creating flame fractal images
 media-gfx/fondu 20060102-r1: Utilities for converting between and manipulating mac fonts and unix fonts
@@ -7766,7 +7766,7 @@ media-libs/openimageio 1.6.13 1.7.17: A library for reading and writing images
 media-libs/openjpeg 1.5.2-r1 2.3.0 2.3.0-r1: Open-source JPEG 2000 library
 media-libs/opensubdiv 3.3.0: An Open-Source subdivision surface library
 media-libs/opus 1.2.1: Open codec designed for internet transmission of interactive speech and audio
-media-libs/opusfile 0.6: A high-level decoding and seeking API for .opus files
+media-libs/opusfile 0.6 0.11: A high-level decoding and seeking API for .opus files
 media-libs/osl 1.8.12: Advanced shading language for production GI renderers
 media-libs/partio 1.1.0_p20170829: A library for particle IO and manipulation
 media-libs/phat 0.4.1-r1: PHAT is a collection of GTK+ widgets geared toward pro-audio apps
@@ -9530,7 +9530,7 @@ sci-mathematics/singular 3.1.6 4.0.2: Computer algebra system for polynomial com
 sci-mathematics/snns 4.3-r2: Stuttgart Neural Network Simulator
 sci-mathematics/unuran 1.8.1: Universal Non-Uniform Random number generator
 sci-mathematics/why3-for-spark 2018: Platform for deductive program verification
-sci-mathematics/wxmaxima 15.08.2: Graphical frontend to Maxima, using the wxWidgets toolkit
+sci-mathematics/wxmaxima 15.08.2 18.11.4: Graphical frontend to Maxima, using the wxWidgets toolkit
 sci-mathematics/xmds 2.2.2: XMDS - The eXtensible Multi-Dimensional Simulator
 sci-misc/nco 4.5.1-r2: Command line utilities for operating on netCDF files
 sci-misc/netlogo-bin 5.0.3-r1: Cross-platform multi-agent programmable modeling environment
@@ -9545,7 +9545,7 @@ sci-physics/pythia 6.4.28 8.1.86: Lund Monte Carlo high-energy physics event gen
 sci-visualization/epix 1.2.11-r1: 2- and 3-D plotter for creating images (to be used in LaTeX)
 sci-visualization/g3data 1.5.4: Tool for extracting data from graphs
 sci-visualization/ggobi 2.1.11: Visualization program for exploring high-dimensional data
-sci-visualization/gnuplot 5.0.7 5.2.2: Command-line driven interactive plotting program
+sci-visualization/gnuplot 5.0.7 5.2.2 5.2.5: Command-line driven interactive plotting program
 sci-visualization/gri 2.12.23-r1: Language for scientific graphics programming
 sci-visualization/gwyddion 2.44: Framework for Scanning Mode Microscopy data analysis
 sci-visualization/mayavi 4.3.0 4.5.0: Enthought Tool Suite: Scientific data 3-dimensional visualizer
