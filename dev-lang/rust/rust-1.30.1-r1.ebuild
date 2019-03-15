@@ -40,7 +40,7 @@ LICENSE="|| ( MIT Apache-2.0 ) BSD-1 BSD-2 BSD-4 UoI-NCSA"
 
 IUSE="clippy cpu_flags_x86_sse2 debug doc +jemalloc libressl rls rustfmt system-llvm wasm ${ALL_LLVM_TARGETS[*]}"
 
-COMMON_DEPEND=">=app-eselect/eselect-rust-0.3_pre20150425
+COMMON_DEPEND=">=app-eselect/eselect-rust-20190311
 		jemalloc? ( dev-libs/jemalloc )
 		sys-libs/zlib
 		!libressl? ( dev-libs/openssl:0= )
