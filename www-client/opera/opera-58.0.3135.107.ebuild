@@ -24,7 +24,7 @@ SRC_URI+="
 	"${uri}${PN}/desktop/${PV}/linux/${PN}-stable_${PV}_amd64.deb"
 "
 done
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 RDEPEND="
 	dev-libs/expat
