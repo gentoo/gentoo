@@ -9530,7 +9530,7 @@ sci-mathematics/rngstreams 1.0.1: Multiple independent streams of pseudo-random 
 sci-mathematics/singular 3.1.6 4.0.2: Computer algebra system for polynomial computations
 sci-mathematics/snns 4.3-r2: Stuttgart Neural Network Simulator
 sci-mathematics/unuran 1.8.1: Universal Non-Uniform Random number generator
-sci-mathematics/why3-for-spark 2017 2018: Platform for deductive program verification
+sci-mathematics/why3-for-spark 2018: Platform for deductive program verification
 sci-mathematics/wxmaxima 15.08.2: Graphical frontend to Maxima, using the wxWidgets toolkit
 sci-mathematics/xmds 2.2.2: XMDS - The eXtensible Multi-Dimensional Simulator
 sci-misc/nco 4.5.1-r2: Command line utilities for operating on netCDF files
