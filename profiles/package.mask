@@ -30,6 +30,12 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (15 Mar 2019)
+# Upstream website disappeared, and along with it remote index needed
+# for the program to work.  No maintainer; package last touched in 2012.
+# Removal in 30 days.  Bug #673600.
+app-text/rfcutil
+
+# Michał Górny <mgorny@gentoo.org> (15 Mar 2019)
 # Unmaintained in Gentoo, obsoleted upstream.  Tests fail (#632706).
 # Upstream suggests switching to Kubernetes.
 # Removal in 30 days.  Bug #676728.
