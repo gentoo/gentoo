@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=firmware? ( sys-firmware/tt-s2-6400-firmware ) kernel_linux? ( virtual/modutils )
 SLOT=0
 SRC_URI=https://bitbucket.org/powARman/v4l-dvb-saa716x/get/3b9fce66666a.tar.gz -> v4l-dvb-saa716x-0.0.1_p20160322.tar.gz
-_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	linux-info	953c3b1c472dcadbf62098a9301327f2	linux-mod	4b8528d500d6555ad20763a77b31766c	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
+_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	linux-info	953c3b1c472dcadbf62098a9301327f2	linux-mod	dc67f5064036fbaf4bb77b68a9caeda0	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
 _md5_=2a41856fe7597009515b5f37a77101ac

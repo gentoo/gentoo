@@ -11,5 +11,5 @@ PDEPEND=X? ( x11-drivers/xf86-video-vboxvideo )
 RDEPEND=X? ( x11-apps/xrandr x11-apps/xrefresh x11-libs/libXmu x11-libs/libX11 x11-libs/libXt x11-libs/libXext x11-libs/libXau x11-libs/libXdmcp x11-libs/libSM x11-libs/libICE ) sys-apps/dbus kernel_linux? ( virtual/modutils )
 SLOT=0
 SRC_URI=https://download.virtualbox.org/virtualbox/5.2.26/VirtualBox-5.2.26.tar.bz2 https://dev.gentoo.org/~polynomial-c/virtualbox/patchsets/virtualbox-5.2.16-patches-02.tar.xz
-_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	linux-info	953c3b1c472dcadbf62098a9301327f2	linux-mod	4b8528d500d6555ad20763a77b31766c	multilib	b2f01ad412baf81650c23fcf0975fa33	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	b45201c4e6c096b98e250336954e64b9	user	8bd74731cafdcdad8f7a63637302e073
+_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	linux-info	953c3b1c472dcadbf62098a9301327f2	linux-mod	dc67f5064036fbaf4bb77b68a9caeda0	multilib	b2f01ad412baf81650c23fcf0975fa33	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	b45201c4e6c096b98e250336954e64b9	user	8bd74731cafdcdad8f7a63637302e073
 _md5_=a770a42ad258811deee46a5355322f61

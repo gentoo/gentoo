@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=kernel_linux? ( virtual/modutils )
 SLOT=0
 SRC_URI=mirror://sourceforge/loop-aes/loop-AES-v3.7m.tar.bz2
-_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	linux-info	953c3b1c472dcadbf62098a9301327f2	linux-mod	4b8528d500d6555ad20763a77b31766c	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
+_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	linux-info	953c3b1c472dcadbf62098a9301327f2	linux-mod	dc67f5064036fbaf4bb77b68a9caeda0	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
 _md5_=bfc55533051af96954be584432d355a5
