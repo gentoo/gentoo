@@ -948,12 +948,6 @@ app-eselect/eselect-lua
 # experimental features and accept a more unstable release.
 www-plugins/chrome-binary-plugins:unstable
 
-# Michael Weber <xmw@gentoo.org> (17 Jul 2013)
-# Upstream next versions
-# Michał Górny <mgorny@gentoo.org> (15 Mar 2019)
-# No single unmasked version since.  Removal in 30 days.  Bug #671238.
->=sys-boot/raspberrypi-firmware-1_pre
-
 # Diego E. Pettenò <flameeyes@gentoo.org> (03 Jan 2009)
 # These packages are not supposed to be merged directly, instead
 # please use sys-devel/crossdev to install them.
