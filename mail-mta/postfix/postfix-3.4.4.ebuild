@@ -60,8 +60,6 @@ REQUIRED_USE="ldap-bind? ( ldap sasl )"
 
 S="${WORKDIR}/${MY_SRC}"
 
-PATCHES=( "${FILESDIR}/${PN}-linux-5.patch" )
-
 pkg_setup() {
 	if use libressl; then
 		die "LibreSSL patches are not yet available for postfix-3.4 releases."
