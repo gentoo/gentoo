@@ -30,6 +30,13 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (15 Mar 2019)
+# The current release is from 2005, upstream is gone.  Last patch
+# added in 2010, since then the package is completely unmaintained.
+# Very bad ebuild quality, blocking strictening of Portage behavior.
+# Removal in 30 days.  Bug #587306.
+sys-boot/quik
+
+# Michał Górny <mgorny@gentoo.org> (15 Mar 2019)
 # Upstream website disappeared, and along with it remote index needed
 # for the program to work.  No maintainer; package last touched in 2012.
 # Removal in 30 days.  Bug #673600.
