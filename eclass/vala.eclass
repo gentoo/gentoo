@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: vala.eclass
@@ -32,7 +32,7 @@ VALA_MIN_API_VERSION=${VALA_MIN_API_VERSION:-0.32}
 # @ECLASS-VARIABLE: VALA_MAX_API_VERSION
 # @DESCRIPTION:
 # Maximum vala API version (e.g. 0.32).
-VALA_MAX_API_VERSION=${VALA_MAX_API_VERSION:-0.44}
+VALA_MAX_API_VERSION=${VALA_MAX_API_VERSION:-0.42}
 
 # @ECLASS-VARIABLE: VALA_USE_DEPEND
 # @DEFAULT_UNSET
