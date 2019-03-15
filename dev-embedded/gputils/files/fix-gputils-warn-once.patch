@@ -1,0 +1,25 @@
+--- gputils-1.5.0/configure	2019-03-15 20:38:51.406938046 +0200
++++ gputils-1.5.0/configure	2019-03-15 20:39:35.146939171 +0200
+@@ -5614,7 +5614,7 @@
+   *cygwin* )
+     if test "x$GCC" = "xyes"; then
+       AM_CFLAGS="-Wall -pedantic"
+-      AM_LDFLAGS="-Wl,-warn-common -Wl,-warn-once"
++      AM_LDFLAGS="-Wl,-warn-common"
+     fi
+     ;;
+   *darwin* )
+@@ -5625,11 +5625,11 @@
+   *linux* )
+     if test "x$CC" = "xclang"; then
+       AM_CFLAGS="-Wall -pedantic -Wformat -Wtautological-compare -Wimplicit-function-declaration -Wformat-security"
+-      AM_LDFLAGS="-Wl,-warn-common -Wl,-warn-once"
++      AM_LDFLAGS="-Wl,-warn-common"
+     else
+       if test "x$GCC" = "xyes"; then
+         AM_CFLAGS="-Wall -pedantic -Wformat -Wimplicit-function-declaration -Wformat-security"
+-        AM_LDFLAGS="-Wl,-warn-common -Wl,-warn-once"
++        AM_LDFLAGS="-Wl,-warn-common"
+       fi
+     fi
+     ;;
