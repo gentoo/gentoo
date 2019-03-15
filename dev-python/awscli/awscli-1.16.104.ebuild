@@ -21,7 +21,7 @@ IUSE="test"
 RESTRICT="test"
 
 RDEPEND="
-	>=dev-python/botocore-1.12[${PYTHON_USEDEP}]
+	>=dev-python/botocore-1.12.81[${PYTHON_USEDEP}]
 	<dev-python/colorama-0.3.9.0[${PYTHON_USEDEP}]
 	dev-python/docutils[${PYTHON_USEDEP}]
 	<dev-python/rsa-3.5.0.0[${PYTHON_USEDEP}]
