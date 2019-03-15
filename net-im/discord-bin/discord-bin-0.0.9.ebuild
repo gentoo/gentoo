@@ -58,7 +58,6 @@ QA_PREBUILT="
 	opt/discord/swiftshader/libEGL.so
 	opt/discord/swiftshader/libGLESv2.so
 	opt/discord/libVkICD_mock_icd.so
-	opt/discord/libnode.so
 	opt/discord/libffmpeg.so
 "
 
