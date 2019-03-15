@@ -16,17 +16,18 @@ if [[ $PV == *9999 ]]; then
 	EGIT_REPO_URI="git://xenbits.xen.org/${REPO}"
 	S="${WORKDIR}/${REPO}"
 else
-	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
-	UPSTREAM_VER=0
+	#KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+	KEYWORDS=""
+	UPSTREAM_VER=
 	SECURITY_VER=
 	# xen-tools's gentoo patches tarball
-	GENTOO_VER=14
+	GENTOO_VER=16
 	# xen-tools's gentoo patches version which apply to this specific ebuild
 	GENTOO_GPV=0
 	# xen-tools ovmf's patches
 	OVMF_VER=3
 
-	SEABIOS_VER=1.10.0
+	SEABIOS_VER=1.12.0
 	# OVMF upstream 5920a9d16b1ab887c2858224316a98e961d71b05
 	OVMF_PV=20170321
 
@@ -42,7 +43,7 @@ else
 		OVMF_PATCHSET_URI="https://dev.gentoo.org/~dlan/distfiles/${PN/-tools}-ovmf-patches-${OVMF_VER}.tar.xz"
 
 	SRC_URI="https://downloads.xenproject.org/release/xen/${MY_PV}/xen-${MY_PV}.tar.gz
-	http://code.coreboot.org/p/seabios/downloads/get/seabios-${SEABIOS_VER}.tar.gz
+	https://www.seabios.org/downloads/seabios-${SEABIOS_VER}.tar.gz
 	https://dev.gentoo.org/~dlan/distfiles/seabios-${SEABIOS_VER}.tar.gz
 	ovmf? ( https://dev.gentoo.org/~dlan/distfiles/ovmf-${OVMF_PV}.tar.xz
 		${OVMF_PATCHSET_URI} )
@@ -55,7 +56,7 @@ fi
 
 DESCRIPTION="Xen tools including QEMU and xl"
 HOMEPAGE="https://www.xenproject.org"
-DOCS=( README docs/README.xen-bugtool )
+DOCS=( README )
 
 LICENSE="GPL-2"
 SLOT="0/$(ver_cut 1-2)"
@@ -130,6 +131,7 @@ RDEPEND="${COMMON_DEPEND}
 # Approved by QA team in bug #144032
 QA_WX_LOAD="
 	usr/libexec/xen/boot/hvmloader
+	usr/share/qemu-xen/qemu/hppa-firmware.img
 	usr/share/qemu-xen/qemu/s390-ccw.img
 	usr/share/qemu-xen/qemu/u-boot.e500
 "
@@ -350,6 +352,7 @@ src_configure() {
 		--disable-xen \
 		--enable-tools \
 		--enable-docs \
+		--with-system-ipxe=${PREFIX}/usr/share/ipxe \
 		$(use_enable pam) \
 		$(use_enable api xenapi) \
 		$(use_enable ovmf) \

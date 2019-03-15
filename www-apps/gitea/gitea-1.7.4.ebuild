@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 inherit golang-build golang-vcs-snapshot systemd user
 
 EGO_PN="code.gitea.io/gitea"
@@ -57,6 +57,7 @@ pkg_postinst() {
 		elog "No app.ini found, copying initial config over"
 		cp "${FILESDIR}"/app.ini "${EROOT}"/var/lib/gitea/conf/ || die
 		chown git:git /var/lib/gitea/conf/app.ini
+		elog "Please make sure that your 'git' user has the correct homedir (/var/lib/gitea)."
 	else
 		elog "app.ini found, please check example file for possible changes"
 		ewarn "Please note that environment variables have been changed:"

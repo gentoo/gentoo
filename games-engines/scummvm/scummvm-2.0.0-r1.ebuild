@@ -1,8 +1,8 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit eutils flag-o-matic gnome2-utils toolchain-funcs
+EAPI=7
+inherit desktop flag-o-matic toolchain-funcs xdg
 
 DESCRIPTION="Reimplementation of the SCUMM game engine used in Lucasarts adventures"
 HOMEPAGE="http://scummvm.sourceforge.net/"
@@ -15,10 +15,13 @@ IUSE="aac alsa debug flac fluidsynth jpeg mpeg2 mp3 opengl png theora truetype u
 RESTRICT="test"  # it only looks like there's a test there #77507
 
 RDEPEND=">=media-libs/libsdl2-2.0.0[sound,joystick,video]
-	zlib? ( sys-libs/zlib )
+	zlib? ( sys-libs/zlib:= )
 	jpeg? ( virtual/jpeg:0 )
 	png? ( media-libs/libpng:0 )
-	vorbis? ( media-libs/libogg media-libs/libvorbis )
+	vorbis? (
+		media-libs/libogg
+		media-libs/libvorbis
+	)
 	theora? ( media-libs/libtheora )
 	aac? ( media-libs/faad2 )
 	alsa? ( media-libs/alsa-lib )
@@ -28,11 +31,16 @@ RDEPEND=">=media-libs/libsdl2-2.0.0[sound,joystick,video]
 	opengl? ( virtual/opengl )
 	truetype? ( media-libs/freetype:2 )
 	fluidsynth? ( media-sound/fluidsynth )"
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	app-arch/xz-utils
-	x86? ( dev-lang/nasm )"
+	truetype? ( virtual/pkgconfig )
+	x86? ( dev-lang/nasm )
+"
 
-S=${WORKDIR}/${P/_/}
+S="${WORKDIR}/${P/_/}"
+
+PATCHES=( "${FILESDIR}/${PN}-2.0.0-freetype_pkgconfig.patch" )
 
 src_prepare() {
 	default
@@ -51,52 +59,52 @@ src_prepare() {
 src_configure() {
 	use x86 && append-ldflags -Wl,-z,noexecstack
 
+	local myconf=(
+		--backend=sdl
+		--host=${CHOST}
+		--enable-verbose-build
+		--prefix="${EPREFIX}/usr"
+		--libdir="${EPREFIX}/usr/$(get_libdir)"
+		--opengl-mode=$(usex opengl auto none)
+		$(use_enable aac faad)
+		$(use_enable alsa)
+		$(use_enable debug)
+		$(use_enable !debug release-mode)
+		$(use_enable flac)
+		$(usex fluidsynth '' --disable-fluidsynth)
+		$(use_enable jpeg)
+		$(use_enable mp3 mad)
+		$(use_enable mpeg2)
+		$(use_enable png)
+		$(use_enable theora theoradec)
+		$(use_enable truetype freetype2)
+		$(usex unsupported --enable-all-engines '')
+		$(use_enable vorbis)
+		$(use_enable zlib)
+		$(use_enable x86 nasm)
+	)
 	# NOT AN AUTOCONF SCRIPT SO DONT CALL ECONF
 	SDL_CONFIG="sdl2-config" \
-	./configure \
-		--backend=sdl \
-		--host=${CHOST} \
-		--enable-verbose-build \
-		--prefix=/usr \
-		--libdir="/usr/$(get_libdir)" \
-		--opengl-mode=$(usex opengl auto none) \
-		$(use_enable aac faad) \
-		$(use_enable alsa) \
-		$(use_enable debug) \
-		$(use_enable !debug release-mode) \
-		$(use_enable flac) \
-		$(usex fluidsynth '' --disable-fluidsynth) \
-		$(use_enable jpeg) \
-		$(use_enable mp3 mad) \
-		$(use_enable mpeg2) \
-		$(use_enable png) \
-		$(use_enable theora theoradec) \
-		$(use_enable truetype freetype2) \
-		$(usex unsupported --enable-all-engines '') \
-		$(use_enable vorbis) \
-		$(use_enable zlib) \
-		$(use_enable x86 nasm) \
-		${myconf} ${EXTRA_ECONF} || die
+	./configure "${myconf[@]}" "${EXTRA_ECONF}" || die
 }
 
 src_compile() {
-	emake AR="$(tc-getAR) cru" RANLIB=$(tc-getRANLIB)
+	emake AR="$(tc-getAR) cru" RANLIB="$(tc-getRANLIB)"
 }
 
 src_install() {
 	default
 	doicon -s scalable icons/scummvm.svg
-	make_desktop_entry scummvm ScummVM scummvm "Game;AdventureGame"
 }
 
 pkg_preinst() {
-	gnome2_icon_savelist
+	xdg_pkg_preinst
 }
 
 pkg_postinst() {
-	gnome2_icon_cache_update
+	xdg_pkg_postinst
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
+	xdg_pkg_postrm
 }
