@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit gnome2-utils toolchain-funcs xdg-utils
+EAPI=7
+inherit desktop toolchain-funcs xdg
 
 DESCRIPTION="A cross-platform 3D game interpreter for play LucasArts' LUA-based 3D adventures"
 HOMEPAGE="http://www.residualvm.org/"
@@ -25,11 +25,18 @@ RDEPEND="
 	media-libs/glew:0=
 	media-libs/libpng:0=
 	media-libs/libsdl2[X,sound,alsa,joystick,opengl,video]
-	sys-libs/zlib
+	sys-libs/zlib:=
 	virtual/glu
 	virtual/jpeg:0
 	virtual/opengl"
 DEPEND="${RDEPEND}"
+BDEPEND="
+	virtual/pkgconfig
+"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-freetype_pkgconfig.patch
+)
 
 src_configure() {
 	# not an autotools script
@@ -51,6 +58,7 @@ src_configure() {
 		--enable-all-engines
 		--enable-release-mode
 		--enable-zlib
+		--prefix="${EPREFIX}/usr"
 	)
 	./configure "${myconf[@]}" || die "configure failed"
 }
@@ -63,29 +71,19 @@ src_compile() {
 }
 
 src_install() {
-	dobin residualvm
+	emake DESTDIR="${D}" install
 
-	insinto "/usr/share/${PN}"
-	doins gui/themes/modern.zip dists/engine-data/residualvm-grim-patch.lab
-
-	doicon -s scalable icons/${PN}.svg
 	doicon -s 256 icons/${PN}.png
-	domenu dists/${PN}.desktop
-
-	doman dists/${PN}.6
-	dodoc AUTHORS README.md KNOWN_BUGS TODO
 }
 
 pkg_preinst() {
-	gnome2_icon_savelist
+	xdg_pkg_preinst
 }
 
 pkg_postinst() {
-	gnome2_icon_cache_update
-	xdg_desktop_database_update
+	xdg_pkg_postinst
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
-	xdg_desktop_database_update
+	xdg_pkg_postrm
 }
