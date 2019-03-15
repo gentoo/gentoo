@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,8 +6,8 @@ PYTHON_COMPAT=( python2_7 )
 inherit autotools-utils eutils python-single-r1 versionator
 
 DESCRIPTION="Text-based, multi-protocol instant messenger"
-HOMEPAGE="http://www.ekg2.org"
-SRC_URI="http://pl.ekg2.org/${P}.tar.gz"
+HOMEPAGE="https://github.com/ekg2/ekg2/"
+SRC_URI="https://dev.gentoo.org/~mgorny/dist/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
