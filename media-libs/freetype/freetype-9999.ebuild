@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit flag-o-matic libtool multilib multilib-build multilib-minimal toolchain-funcs
+inherit flag-o-matic libtool multilib-build multilib-minimal toolchain-funcs
 
 DESCRIPTION="A high-quality and portable font engine"
 HOMEPAGE="https://www.freetype.org/"
@@ -26,7 +26,8 @@ LICENSE="|| ( FTL GPL-2+ )"
 SLOT="2"
 RESTRICT="!bindist? ( bindist )" # bug 541408
 
-RDEPEND=">=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}]
+RDEPEND="
+	>=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}]
 	bzip2? ( >=app-arch/bzip2-1.0.6-r4[${MULTILIB_USEDEP}] )
 	harfbuzz? ( >=media-libs/harfbuzz-1.3.0[truetype,${MULTILIB_USEDEP}] )
 	png? ( >=media-libs/libpng-1.2.51:0=[${MULTILIB_USEDEP}] )
@@ -37,8 +38,10 @@ RDEPEND=">=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}]
 			>=x11-libs/libXdmcp-1.1.1-r1[${MULTILIB_USEDEP}]
 		)
 	)"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
+BDEPEND="
+	virtual/pkgconfig
+"
 PDEPEND="infinality? ( media-libs/fontconfig-infinality )"
 
 PATCHES=(
@@ -71,11 +74,11 @@ _egit_repo_handler() {
 }
 
 src_fetch() {
-	_egit_repo_handler fetch
+	_egit_repo_handler ${EBUILD_PHASE}
 }
 
 src_unpack() {
-	_egit_repo_handler unpack
+	_egit_repo_handler ${EBUILD_PHASE}
 }
 
 src_prepare() {
@@ -207,7 +210,7 @@ multilib_src_install() {
 		local ft2demo
 		for ft2demo in ../ft2demos-${PV}/bin/*; do
 			./libtool --mode=install $(type -P install) -m 755 "$ft2demo" \
-				"${ED%/}"/usr/bin || die
+				"${ED}"/usr/bin || die
 		done
 	fi
 }
@@ -219,8 +222,8 @@ multilib_src_install_all() {
 		local header
 		find src/truetype include/freetype/internal -name '*.h' | \
 		while read header; do
-			mkdir -p "${ED%/}/usr/include/freetype2/internal4fontforge/$(dirname ${header})" || die
-			cp ${header} "${ED%/}/usr/include/freetype2/internal4fontforge/$(dirname ${header})" || die
+			mkdir -p "${ED}/usr/include/freetype2/internal4fontforge/$(dirname ${header})" || die
+			cp ${header} "${ED}/usr/include/freetype2/internal4fontforge/$(dirname ${header})" || die
 		done
 	fi
 
