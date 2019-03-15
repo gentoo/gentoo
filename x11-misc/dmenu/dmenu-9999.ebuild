@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 inherit git-r3 savedconfig toolchain-funcs
 
 DESCRIPTION="a generic, highly customizable, and efficient menu for the X Window System"
@@ -32,7 +32,6 @@ src_prepare() {
 
 	sed -i \
 		-e 's|^	@|	|g' \
-		-e 's|${CC} -o|$(CC) $(CFLAGS) -o|g' \
 		-e '/^	echo/d' \
 		Makefile || die
 
@@ -41,15 +40,18 @@ src_prepare() {
 
 src_compile() {
 	emake CC=$(tc-getCC) \
-		INCS=" \
-			$(usex xinerama "-DXINERAMA" '') \
-			$(
-				$(tc-getPKG_CONFIG) --cflags fontconfig freetype2 x11 xft $(usex xinerama xinerama '')
-			)" \
-		LIBS=" \
-			$(
-				$(tc-getPKG_CONFIG) --libs fontconfig x11 xft $(usex xinerama xinerama '')
-			)"
+		"FREETYPEINC=$( $(tc-getPKG_CONFIG) --cflags x11 fontconfig xft 2>/dev/null )" \
+		"FREETYPELIBS=$( $(tc-getPKG_CONFIG) --libs x11 fontconfig xft 2>/dev/null )" \
+		"X11INC=$( $(tc-getPKG_CONFIG) --cflags x11 2>/dev/null )" \
+		"X11LIB=$( $(tc-getPKG_CONFIG) --libs x11 2>/dev/null )" \
+		"XINERAMAFLAGS=$(
+			usex xinerama "-DXINERAMA $(
+				$(tc-getPKG_CONFIG) --cflags xinerama 2>/dev/null
+			)" ''
+		)" \
+		"XINERAMALIBS=$(
+			usex xinerama "$( $(tc-getPKG_CONFIG) --libs xinerama 2>/dev/null)" ''
+		)"
 }
 
 src_install() {
