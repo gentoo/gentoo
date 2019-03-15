@@ -9,6 +9,6 @@ KEYWORDS=~amd64 ~arm ~x86
 LICENSE=ISC
 RESTRICT=strip
 SLOT=0
-SRC_URI=https://github.com/jedisct1/dnscrypt-proxy/archive/2.0.20.tar.gz -> dnscrypt-proxy-2.0.20.tar.gz
+SRC_URI=https://github.com/jedisct1/dnscrypt-proxy/archive/2.0.21.tar.gz -> dnscrypt-proxy-2.0.21.tar.gz
 _eclasses_=fcaps	9445d60c1eb084a91c38ef4c070b2f16	golang-base	c57d2c3f9e1a02d0feb8b87c7b689892	golang-build	dc25bafa8fc1305a4de66a0a448472e7	multilib	b2f01ad412baf81650c23fcf0975fa33	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	b45201c4e6c096b98e250336954e64b9	user	8bd74731cafdcdad8f7a63637302e073
 _md5_=ccd30c07b2789b4c4bb561efec3b2ce9
