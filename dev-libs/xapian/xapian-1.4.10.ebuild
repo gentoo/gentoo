@@ -69,6 +69,8 @@ multilib_src_install_all() {
 	use doc || rm -rf "${D}usr/share/doc/xapian-core-${PV}"
 
 	dodoc AUTHORS HACKING PLATFORMS README NEWS
+
+	find "${D}" -name "*.la" -type f -delete || die
 }
 
 multilib_src_test() {
