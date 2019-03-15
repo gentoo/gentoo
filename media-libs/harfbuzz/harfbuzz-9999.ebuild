@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -34,10 +34,10 @@ RDEPEND="
 	truetype? ( >=media-libs/freetype-2.5.0.1:2=[${MULTILIB_USEDEP}] )
 "
 DEPEND="${RDEPEND}
-	dev-util/gtk-doc-am
 	test? ( ${PYTHON_DEPS} )
 "
 BDEPEND="
+	dev-util/gtk-doc-am
 	virtual/pkgconfig
 "
 # eautoreconf requires gobject-introspection-common
