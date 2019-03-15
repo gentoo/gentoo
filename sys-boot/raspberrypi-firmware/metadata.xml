@@ -1,8 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="person">
+		<email>ck+gentoo@bl4ckb0x.de</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>andrey_utkin@gentoo.org</email>
+		<name>Andrey Utkin</name>
+	</maintainer>
+	<longdescription>
+		These are the pre-compiled binaries of the current
+		Raspberry Pi bootloader and gpu firmware.
+	</longdescription>
 	<upstream>
+		<bugs-to>https://github.com/raspberrypi/firmware/issues</bugs-to>
 		<remote-id type="github">raspberrypi/firmware</remote-id>
 	</upstream>
 </pkgmetadata>

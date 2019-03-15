@@ -1,0 +1,147 @@
+# Audio
+# disable_audio_dither=1
+# enable_audio_dither=1
+# pwm_sample_bits=11
+
+# Boot
+# boot_delay=1
+# boot_delay_ms=0
+# bootcode_delay=0
+# cmdline=cmdline.txt
+# disable_commandline_tags=1
+# disable_splash=1
+# init_uart_baud=115200
+# init_uart_clock=48000000
+# initramfs=
+# kernel=kernel.img
+# kernel_address=0x8000
+# kernel_old=1
+# ramfsaddr=
+# ramfsfile=
+# start_debug=start_db.elf
+# start_file=start.elf
+# start_x=start_x.elf
+# fixup_file=fixup.dat
+
+# Camera
+# disable_camera_led=1
+
+# Conditional Filters
+# [0x12345678]
+# [all]
+# [EDID=*]
+# [gpio=*]
+# [none]
+# [pi0]
+# [pi0w]
+# [pi1]
+# [pi2]
+# [pi3]
+# [pi3+]
+
+# GPIOs
+# gpio=
+
+# Licence Keys / Codecs
+# decode_MPG2=
+# decode_WVC1=
+
+# Memory
+# disable_l2cache=0
+# gpu_mem=64
+# gpu_mem_256=192
+# gpu_mem_512=448
+# gpu_mem_1024=994
+
+# Miscellaneous
+# arm_64bit
+# arm_control=0x200
+# avoid_warnings=1
+# include
+# logging_level=
+
+# Overclocking
+# arm_freq=
+# arm_freq_min=
+# core_freq=
+# core_freq_min=
+# gpu_freq=
+# gpu_freq_min=
+# force_turbo=1
+# h264_freq=
+# h264_freq_min=
+# initial_turbo=0
+# isp_freq=
+# isp_freq_min=
+# over_voltage=
+# over_voltage_min=
+# over_voltage_sdram=
+# over_voltage_sdram_c=
+# over_voltage_sdram_i=
+# over_voltage_sdram_p=
+# sdram_freq=
+# sdram_freq_min=
+# temp_limit=85
+# temp_soft_limit=60
+# v3d_freq=
+# v3d_freq_min=
+
+# Ports and Device Tree
+# device_tree_address=
+# device_tree_end=
+# dtdebug=
+# dtparam=
+# enable_uart=1
+# overlay_prefix=
+
+# Video / Display
+# cec_osd_name=
+# config_hdmi_boost=0
+# display_default_lcd=0
+# display_hdmi_rotate=0
+# display_lcd_rotate=0
+# disable_overscan=0
+# display_rotate=0
+# disable_touchscreen=1
+# dispmanx_offline=
+# dpi_group=0
+# dpi_output_format=
+# dpi_timings=
+# edid_content_type=0
+# enable_dpi_lcd=1
+# framebuffer_depth=32
+# framebuffer_height=
+# framebuffer_ignore_alpha=1
+# framebuffer_width=
+# hdmi_blanking=1
+# hdmi_cvt=
+# hdmi_drive=2
+# hdmi_edid_file=1
+# hdmi_force_edid_3d=1 
+# hdmi_force_edid_audio=1
+# hdmi_force_hotplug=1
+# hdmi_force_mode=1
+# hdmi_group=0
+# hdmi_ignore_cec=1
+# hdmi_ignore_cec_init=1
+# hdmi_ignore_edid=0xa5000080
+# hdmi_ignore_edid_audio=1
+# hdmi_ignore_hotplug=1
+# hdmi_mode=16
+# hdmi_pixel_encoding=0
+# hdmi_safe=1
+# hdmi_timings=
+# ignore_lcd=0
+# lcd_framerate=60
+# lcd_rotate=2
+# max_framebuffer_height=
+# max_framebuffer_width=
+# overscan_bottom=0
+# overscan_left=0
+# overscan_right=0
+# overscan_scale=0
+# overscan_top=0
+# sdtv_aspect=0
+# sdtv_disable_colourburst=0
+# sdtv_mode=0
+# test_mode=1

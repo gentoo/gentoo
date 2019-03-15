@@ -1,0 +1,19 @@
+In order to configure the Raspberry Pi firmware,
+you have to setup two configuration files.
+Default examples have been installed.
+
+1) config.txt: system configuration parameters
+* This file contains all settings for the bootloader.
+*
+* An official documentation can be found here:
+* https://www.raspberrypi.org/documentation/configuration/config-txt/README.md
+*
+* An unofficial documentation can be found here:
+* https://elinux.org/RPiconfig
+
+2) cmdline.txt: kernel arguments
+* This file contains a list of all parameters,
+* which will be passed by the bootloader to the kernel.
+*
+* An unofficial documentation can be found here:
+* https://elinux.org/RPi_cmdline.txt
