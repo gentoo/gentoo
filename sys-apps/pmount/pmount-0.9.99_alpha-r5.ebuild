@@ -11,7 +11,7 @@ SRC_URI="mirror://debian/pool/main/p/${PN}/${PN}_${PV/_/-}.orig.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm hppa ~ia64 ~ppc ~ppc64 ~sh sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm hppa ~ia64 ~ppc ~ppc64 ~sh sparc ~x86"
 IUSE="crypt"
 
 RDEPEND=">=sys-apps/util-linux-2.17.2
