@@ -68,7 +68,7 @@ python_install_all() {
 	domenu contrib/thg.desktop
 
 	# Remove file that collides with >=mercurial-4.0 (bug #599266).
-	rm "${ED}"/usr/$(get_libdir)/${EPYTHON}/site-packages/hgext3rd/__init__.py \
+	rm "${ED}"/usr/$(get_libdir)/${EPYTHON}/site-packages/hgext3rd/__init__.py* \
 		|| die
 }
 
