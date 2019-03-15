@@ -11,4 +11,4 @@ REQUIRED_USE=inmemory? ( chert )
 SLOT=0/30
 SRC_URI=http://oligarchy.co.uk/xapian/1.4.10/xapian-core-1.4.10.tar.xz
 _eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	multibuild	40fe59465edacd730c644ec2bc197809	multilib	b2f01ad412baf81650c23fcf0975fa33	multilib-build	b42436dc1260f475af229754c165cb6b	multilib-minimal	8bddda43703ba94d8341f4e247f97566	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
-_md5_=ca590524592044e626ed3a5385bd3522
+_md5_=c30dece6fb66c940ab5c49ce1434919f
