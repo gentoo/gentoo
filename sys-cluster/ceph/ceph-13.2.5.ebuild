@@ -1,5 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
-# Copyright 2017-2018 Sony Interactive Entertainment Inc.
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,8 +14,7 @@ if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/ceph/ceph.git"
 	SRC_URI=""
 else
-	SRC_URI="https://download.ceph.com/tarballs/${P}.tar.gz
-		mgr-frontend? ( mirror://gentoo/${P}-frontend-node-modules.tar.xz )"
+	SRC_URI="https://download.ceph.com/tarballs/${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 fi
 
@@ -28,7 +26,7 @@ SLOT="0"
 
 CPU_FLAGS_X86=(sse{,2,3,4_1,4_2} ssse3)
 
-IUSE="babeltrace cephfs dpdk fuse jemalloc ldap lttng +mgr mgr-frontend"
+IUSE="babeltrace cephfs dpdk fuse jemalloc ldap lttng +mgr"
 IUSE+=" +radosgw +ssl static-libs +system-boost systemd +tcmalloc test"
 IUSE+=" xfs zfs"
 IUSE+=" $(printf "cpu_flags_x86_%s\n" ${CPU_FLAGS_X86[@]})"
@@ -59,11 +57,6 @@ COMMON_DEPEND="
 	ssl? ( dev-libs/openssl:=[static-libs?] )
 	xfs? ( sys-fs/xfsprogs:=[static-libs?] )
 	zfs? ( sys-fs/zfs:=[static-libs?] )
-	mgr? (
-		<net-libs/nodejs-9.0
-		>net-libs/nodejs-8.10
-	)
-	mgr-frontend? ( net-libs/nodejs[npm] )
 	radosgw? (
 		dev-libs/expat:=[static-libs?]
 		dev-libs/openssl:=[static-libs?]
@@ -115,12 +108,8 @@ RDEPEND="${COMMON_DEPEND}
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
 	|| ( $(python_gen_useflags 'python3*') )
-	mgr-frontend? ( mgr || ( $(python_gen_useflags 'python2*') ) )
 	?? ( jemalloc tcmalloc )
 	"
-
-# building npm stuff is currently broken
-REQUIRED_USE="!mgr-frontend"
 
 # the tests need root access
 RESTRICT="test? ( userpriv )"
@@ -167,15 +156,6 @@ user_setup() {
 }
 
 pkg_pretend() {
-	if use cephfs; then
-		eerror "Cephfs support is broken in 13.2.2, please mask ${PF} if"
-		eerror "you need cephfs support: "
-		eerror " # echo '=${CATEGORY}/${PF}' >> /etc/portage/package.mask"
-		eerror
-		eerror "See https://bugs.gentoo.org/670592 for more information"
-		die "CephFS support is currently broken"
-	fi
-
 	check-reqs_export_vars
 	check-reqs_pkg_pretend
 }
@@ -212,7 +192,7 @@ ceph_src_configure() {
 		-DWITH_FUSE=$(usex fuse)
 		-DWITH_LTTNG=$(usex lttng)
 		-DWITH_MGR=$(usex mgr)
-		-DWITH_MGR_DASHBOARD_FRONTEND=$(usex mgr-frontend)
+		-DWITH_MGR_DASHBOARD_FRONTEND=NO
 		-DWITH_OPENLDAP=$(usex ldap)
 		-DWITH_RADOSGW=$(usex radosgw)
 		-DWITH_SSL=$(usex ssl)
@@ -267,35 +247,6 @@ python_compile() {
 }
 
 src_compile() {
-	if use mgr-frontend; then
-		# npm likes trying to create /etc/npm
-		addpredict /etc/npm
-
-		# subshell to avoid polluting the environment
-		(
-			python_setup 'python2*'
-
-			export CC="$(tc-getCC)" CXX="$(tc-getCXX)"
-
-			set -e
-
-			pushd src/pybind/mgr/dashboard/frontend >/dev/null
-
-			npm install --offline --no-save --verbose --parseable \
-				--no-rollback --no-progress --fetch-retries=0 \
-				--nodedir="/usr/include/node" \
-				--cache="${WORKDIR}/${P}-npm-cache" \
-				--registry="http://npmjs.invalid" \
-				--sass-binary-site="http://sass.invalid"
-
-			# this tends to get installed to the system if it's still here
-			rm -rf node_modules/node-sass/build
-
-			popd >/dev/null
-
-		) || die "failed to build node modules for mgr-frontend"
-	fi
-
 	cmake-utils_src_make VERBOSE=1 all
 
 	# we have to do this here to prevent from building everything multiple times
@@ -331,7 +282,7 @@ src_install() {
 	fowners -R ceph:ceph /var/lib/ceph /var/log/ceph
 
 	newinitd "${FILESDIR}/rbdmap.initd" rbdmap
-	newinitd "${FILESDIR}/${PN}.initd-r10" ${PN}
+	newinitd "${FILESDIR}/${PN}.initd-r11" ${PN}
 	newconfd "${FILESDIR}/${PN}.confd-r5" ${PN}
 
 	insinto /etc/sysctl.d

@@ -26,7 +26,6 @@
     <flag name="libaio">Use libaio as asynchronous input/output library</flag>
     <flag name="lttng">Add support for LTTng</flag>
     <flag name="mgr">Build the ceph-mgr daemon</flag>
-    <flag name="mgr-frontend">Build the mgr/dashboard frontend with npm, this is not required for the frontend to work</flag>
     <flag name="nss">Use <pkg>dev-libs/nss</pkg> for cryptography</flag>
     <flag name="radosgw">Add radosgw support</flag>
     <flag name="system-boost">Use system <pkg>dev-libs/boost</pkg> instead of the bundled one</flag>
