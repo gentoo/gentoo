@@ -162,9 +162,9 @@ KDE_UNRELEASED=( )
 if [[ ${KDEBASE} = kdevelop ]]; then
 	HOMEPAGE="https://www.kdevelop.org/"
 elif [[ ${KMNAME} = kdepim ]]; then
-	HOMEPAGE="https://www.kde.org/applications/office/kontact/"
+	HOMEPAGE="https://kde.org/applications/office/kontact/"
 else
-	HOMEPAGE="https://www.kde.org/"
+	HOMEPAGE="https://kde.org/"
 fi
 
 LICENSE="GPL-2"
