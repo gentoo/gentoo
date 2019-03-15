@@ -6163,7 +6163,7 @@ dev-tex/cpp2latex 2.3-r2: A program to convert C++ code to LaTeX source
 dev-tex/csindex 2.11c-r2: Utility for creating Czech/Slovak-sorted LaTeX index-files
 dev-tex/culmus-latex 0.7: Culmus fonts support for latex
 dev-tex/currvita 0.9i-r1: A LaTeX package for typesetting a curriculum vitae
-dev-tex/curve 1.16: LaTeX style for a CV (curriculum vitae) with flavour option
+dev-tex/curve 1.16-r1: LaTeX style for a CV (curriculum vitae) with flavour option
 dev-tex/detex 2.8-r1: A filter program that removes the LaTeX (or TeX) control sequences
 dev-tex/dot2tex 2.9.0: A Graphviz to LaTeX converter
 dev-tex/dot2texi 3.0: Create graphs within LaTeX using the dot2tex tool
