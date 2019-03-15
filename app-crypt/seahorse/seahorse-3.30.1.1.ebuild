@@ -18,7 +18,7 @@ RDEPEND="
 	>=app-crypt/gpgme-1.7.0
 	>=x11-libs/gtk+-3.22.0:3
 	>=app-crypt/gnupg-2.0.12
-	>=app-crypt/libsecret-0.16
+	>=app-crypt/libsecret-0.16[vala]
 	net-misc/openssh
 	ldap? ( net-nds/openldap:= )
 	>=net-libs/libsoup-2.33.92:2.4
