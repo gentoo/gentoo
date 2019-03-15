@@ -16,8 +16,9 @@ SLOT="stable"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 IUSE="clippy cpu_flags_x86_sse2 doc libressl rustfmt"
 
-DEPEND=">=app-eselect/eselect-rust-20190311"
-RDEPEND="sys-libs/zlib
+DEPEND=""
+RDEPEND=">=app-eselect/eselect-rust-20190311
+	sys-libs/zlib
 	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:0= )
 	net-libs/libssh2
