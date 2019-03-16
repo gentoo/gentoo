@@ -29,7 +29,7 @@
 
 #--- END OF EXAMPLES ---
 
-# Michał Górny <mgorny@gentoo.org> (15 Mar 2019)
+# Michał Górny <mgorny@gentoo.org> (16 Mar 2019)
 # ProDy was added in 2015 and not bumped since (with upstream making
 # frequent releases).  The primary maintainer abandoned it.  The Gentoo
 # version requires Python 2, while it depends on IPython which dropped
