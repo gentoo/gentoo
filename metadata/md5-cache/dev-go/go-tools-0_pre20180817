@@ -9,4 +9,4 @@ RESTRICT=strip
 SLOT=0/0_pre20180817
 SRC_URI=https://github.com/golang/tools/archive/7d1dc997617fb662918b6ea95efc19faa87e1cf8.tar.gz -> go-tools-0_pre20180817.tar.gz https://github.com/golang/net/archive/aaf60122140d3fcf75376d319f0554393160eb50.tar.gz -> github.com-golang-net-aaf60122140d3fcf75376d319f0554393160eb50.tar.gz mirror://gentoo/go-favicon-20181103162401.ico https://dev.gentoo.org/~zmedico/distfiles/go-favicon-20181103162401.ico
 _eclasses_=golang-base	c57d2c3f9e1a02d0feb8b87c7b689892	golang-build	dc25bafa8fc1305a4de66a0a448472e7	golang-vcs-snapshot	12177e83bede6f7fb87eae383864b40b
-_md5_=ec567047c1ffd8353f14eee26a1adab6
+_md5_=b1f83a3ea1f4c9ed302ef5c2edb083fa
