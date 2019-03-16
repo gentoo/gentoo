@@ -279,7 +279,6 @@ sys-fs/cryptmount
 # Matt Turner <mattst88@gentoo.org> (02 Mar 2019)
 # Old, unused drivers.
 # Masked for removal in 30 days. Bug #679256
-x11-drivers/xf86-input-elographics
 x11-drivers/xf86-video-newport
 x11-drivers/xf86-video-tdfx
 x11-drivers/xf86-video-voodoo
