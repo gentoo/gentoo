@@ -13,8 +13,7 @@ if [[ ${PV} =~ 9{4,} ]]; then
 	EGIT_REPO_URI="https://github.com/iovisor/${PN}"
 	BDEPEND=""
 else
-	SRC_URI="mirror://gentoo/${P}.tar.xz"
-	#SRC_URI="https://github.com/iovisor/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/iovisor/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 	BDEPEND="app-arch/xz-utils "
 fi
@@ -34,8 +33,9 @@ BDEPEND+="dev-util/cmake
 	sys-devel/flex
 	sys-devel/bison"
 
+QA_DT_NEEDED="/usr/lib.*/libbpftraceresources.so"
+
 PATCHES=(
-	"${FILESDIR}/bpftrace-0.9_pre20190311-bcc-0.9.patch"
 	"${FILESDIR}/bpftrace-0.9_pre20190311-install-libs.patch"
 	"${FILESDIR}/bpftrace-mandir.patch"
 )

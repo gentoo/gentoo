@@ -68,7 +68,9 @@ x11-drivers/xf86-video-tseng
 # not build for quite some time (#590226), also -client fails with new
 # openssl (#674424).  Upstream has stopped releasing non-proprietary
 # versions.  While at it, remove prelude-nessus that practically
-# has not been touched since 2003.
+# has not been touched since 2003.  net-analyzer/openvas is a suggested
+# open source replacement; net-analyzer/nessus-bin provides (outdated)
+# proprietary versions of Nessus.
 # Removal in 30 days.  Bug #680636.
 net-analyzer/libnasl
 net-analyzer/nessus
