@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit desktop distutils-r1
 
 if [[ ${PV} != *9999* ]]; then
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 ~x86"
 	SRC_URI="https://www.bitbucket.org/${PN}/targz/downloads/${P}.tar.gz"
 	HG_DEPEND=">=dev-vcs/mercurial-4.8 <dev-vcs/mercurial-4.10"
 else
