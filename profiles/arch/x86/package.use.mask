@@ -3,6 +3,10 @@
 
 # This file requires >=portage-2.1.1
 
+# Sergei Trofimovich <slyfox@gentoo.org> (16 Mar 2019)
+# sys-block/megactl works on x86 and amd64
+www-apps/phpsysinfo -megactl
+
 # Georgy Yakovlev <gyakovlev@gentoo.org> (05 March 2019)
 # freeipmi is supported on x86
 app-admin/conserver -freeipmi

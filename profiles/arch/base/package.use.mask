@@ -1,6 +1,10 @@
 # Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sergei Trofimovich <slyfox@gentoo.org> (16 Mar 2019)
+# sys-block/megactl works only on amd64 and x86 so far, bug #670564
+www-apps/phpsysinfo megactl
+
 # Thomas Deutschmann <whissi@gentoo.org> (15 Nov 2018)
 # - rdrand plugin is only supported on amd64 and x86
 # - padlock plugin is only supported on amd64 and x86
