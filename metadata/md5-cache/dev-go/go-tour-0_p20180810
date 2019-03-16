@@ -9,4 +9,4 @@ RESTRICT=strip
 SLOT=0
 SRC_URI=https://github.com/golang/tour/archive/d642b9371986f5bb2152547a0d525a57f634c3ef.tar.gz -> go-tour-0_p20180810.tar.gz
 _eclasses_=golang-base	c57d2c3f9e1a02d0feb8b87c7b689892	golang-build	dc25bafa8fc1305a4de66a0a448472e7	golang-vcs-snapshot	12177e83bede6f7fb87eae383864b40b
-_md5_=d9a983488cfdac8fa3d86f95fd4bef7e
+_md5_=80a103862a2fdf173c206cbb21160864
