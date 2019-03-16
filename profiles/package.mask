@@ -30,6 +30,13 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (16 Mar 2019)
+# The current Gentoo version has been added in 2011, and a bump is
+# pending since at least 2012.  Last touched upstream in 2015.
+# A library with no reverse dependencies.
+# Removal in 30 days.  Bug #404299.
+media-libs/rply
+
+# Michał Górny <mgorny@gentoo.org> (16 Mar 2019)
 # Current Gentoo release is from 2006, last upstream release from 2008.
 # No maintainer.  Fails to build with parallel make.
 # Removal in 30 days.  Bug #315577.
