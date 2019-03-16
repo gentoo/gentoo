@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install postinst prepare pretend setup
+DEPEND=>=app-crypt/argon2-20171227-r1:= dev-libs/openssl:0= dev-libs/libpcre2 dev-libs/tre >=net-dns/c-ares-1.7:= net-libs/libnsl:= sys-libs/zlib curl? ( net-misc/curl[adns] ) virtual/pkgconfig || ( dev-libs/openssl:0 dev-libs/libressl:0 )
+DESCRIPTION=An advanced Internet Relay Chat daemon
+EAPI=6
+HOMEPAGE=https://www.unrealircd.org/
+IUSE=class-nofakelag curl +extban-stacking +operoverride operoverride-verify +prefixaq showlistmodes shunnotices topicisnuhost +usermod
+KEYWORDS=~amd64 ~ppc ~x86 ~x86-fbsd ~amd64-linux
+LICENSE=GPL-2
+RDEPEND=>=app-crypt/argon2-20171227-r1:= dev-libs/openssl:0= dev-libs/libpcre2 dev-libs/tre >=net-dns/c-ares-1.7:= net-libs/libnsl:= sys-libs/zlib curl? ( net-misc/curl[adns] )
+SLOT=0
+SRC_URI=https://www.unrealircd.org/unrealircd4/unrealircd-4.2.2.tar.gz
+_eclasses_=eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	ssl-cert	a1a4daed6b2479901759d6fe367c4c29	user	8bd74731cafdcdad8f7a63637302e073
+_md5_=52b3c7dae3c596ce3813b475a7a5d2ef
