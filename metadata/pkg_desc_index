@@ -8443,7 +8443,6 @@ net-analyzer/nagios-plugins 2.2.1-r3: Official plugins for Nagios
 net-analyzer/nagios-plugins-snmp 0.6.0-r2: Additional Nagios plugins for monitoring SNMP capable devices
 net-analyzer/nagstamon 2.0.1: Nagstamon is a systray monitor for displaying realtime status of a Nagios box
 net-analyzer/nbtscan 1.5.1-r3: NBTscan is a program for scanning IP networks for NetBIOS name information
-net-analyzer/nessus-client 1.0.2-r2: A client for the Nessus vulnerability scanner
 net-analyzer/net-snmp 5.7.3-r5: Software for generating and retrieving SNMP data
 net-analyzer/netcat 110-r9: the network swiss army knife
 net-analyzer/nethogs 0.8.1 0.8.5-r1: A small 'net top' tool, grouping bandwidth by process
@@ -9676,7 +9675,6 @@ sec-policy/selinux-mutt 2.20180114-r1 2.20180114-r2 2.20180701-r1: SELinux polic
 sec-policy/selinux-mysql 2.20180114-r1 2.20180114-r2 2.20180701-r1: SELinux policy for mysql
 sec-policy/selinux-nagios 2.20180114-r1 2.20180114-r2 2.20180701-r1: SELinux policy for nagios
 sec-policy/selinux-ncftool 2.20180114-r1 2.20180114-r2 2.20180701-r1: SELinux policy for ncftool
-sec-policy/selinux-nessus 2.20180114-r1 2.20180114-r2 2.20180701-r1: SELinux policy for nessus
 sec-policy/selinux-networkmanager 2.20180114-r1 2.20180114-r2 2.20180701-r1: SELinux policy for networkmanager
 sec-policy/selinux-nginx 2.20180114-r1 2.20180114-r2 2.20180701-r1: SELinux policy for nginx
 sec-policy/selinux-nslcd 2.20180114-r1 2.20180114-r2 2.20180701-r1: SELinux policy for nslcd
