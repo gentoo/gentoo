@@ -44,4 +44,3 @@ src_configure() {
 	mate_src_configure \
 		$(use_enable systemd)
 }
-
