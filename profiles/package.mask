@@ -37,6 +37,7 @@
 # has not been touched since 2003.
 # Removal in 30 days.  Bug #680636.
 net-analyzer/libnasl
+net-analyzer/nessus
 net-analyzer/nessus-client
 net-analyzer/nessus-core
 net-analyzer/nessus-libraries
