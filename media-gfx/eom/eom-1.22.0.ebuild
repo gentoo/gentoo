@@ -32,10 +32,10 @@ COMMON_DEPEND="
 	dbus? ( >=dev-libs/dbus-glib-0.71 )
 	exif? (
 		>=media-libs/libexif-0.6.14
-		virtual/jpeg
+		virtual/jpeg:0
 	)
 	introspection? ( >=dev-libs/gobject-introspection-0.9.3:= )
-	jpeg? ( virtual/jpeg )
+	jpeg? ( virtual/jpeg:0 )
 	lcms? ( media-libs/lcms:2 )
 	svg? ( >=gnome-base/librsvg-2.36.2:2 )
 	xmp? ( >=media-libs/exempi-1.99.5:2 )
