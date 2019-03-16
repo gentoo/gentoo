@@ -2960,6 +2960,7 @@ media-libs/libgphoto2:serial - Enable serial port support
 media-libs/libgpod:gtk - Enable ArtworkDB support
 media-libs/liblastfm:fingerprint - Build the lastfm-fingerprint library
 media-libs/libmp4v2:utils - Install command-line utilities
+media-libs/libmypaint:gegl - Add support for media-libs/gegl
 media-libs/libpagemaker:tools - Build command line file format conversion tools
 media-libs/libpng:apng - support unofficial APNG (Animated PNG) spec
 media-libs/libpostproc:pic - Force shared libraries to be built as PIC (this is slower).
