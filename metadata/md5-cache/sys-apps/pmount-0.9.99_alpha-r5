@@ -4,10 +4,10 @@ DESCRIPTION=Policy based mounter that gives the ability to mount removable devic
 EAPI=5
 HOMEPAGE=http://pmount.alioth.debian.org/
 IUSE=crypt
-KEYWORDS=~alpha amd64 arm hppa ~ia64 ppc ~ppc64 ~sh sparc ~x86
+KEYWORDS=~alpha amd64 arm hppa ~ia64 ppc ppc64 ~sh sparc ~x86
 LICENSE=GPL-2
 RDEPEND=>=sys-apps/util-linux-2.17.2 crypt? ( >=sys-fs/cryptsetup-1.0.6-r2 )
 SLOT=0
 SRC_URI=mirror://debian/pool/main/p/pmount/pmount_0.9.99-alpha.orig.tar.bz2
 _eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	b2f01ad412baf81650c23fcf0975fa33	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	b45201c4e6c096b98e250336954e64b9	user	8bd74731cafdcdad8f7a63637302e073	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
-_md5_=0f600cf1655cb1eb06cf2c74b036682c
+_md5_=cd0d65b069b5c0aa5102a4872c9ee2d8
