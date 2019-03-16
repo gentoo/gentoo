@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -24,6 +24,7 @@ src_compile() {
 	for x in net tools; do
 		ln -s "$(get_golibdir_gopath)/src/golang.org/x/${x}" "${T}/golibdir/src/golang.org/x/${x}" || die
 	done
+	export -n GOCACHE XDG_CACHE_HOME #567192
 	GOPATH="${S}:${T}/golibdir" GOBIN="${S}/bin" \
 		go install -v -work -x ${EGO_BUILD_FLAGS} "${EGO_PN}"
 	[[ -x bin/gotour ]] || die "gotour not found"
