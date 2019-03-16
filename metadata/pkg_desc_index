@@ -5795,6 +5795,7 @@ dev-python/zope-deprecation 4.2.0: Zope Deprecation Infrastructure
 dev-python/zope-event 4.2.0: Event publishing / dispatch, used by Zope Component Architecture
 dev-python/zope-interface 4.1.1 4.3.2 4.4.3: Interfaces for Python
 dev-python/zsi 2.1_alpha1-r1: Web Services for Python
+dev-python/zstandard 0.8.1: Zstandard Bindings for Python
 dev-qt/assistant 5.11.3: Tool for viewing on-line documentation in Qt help file format
 dev-qt/designer 5.11.3: WYSIWYG tool for designing and building Qt-based GUIs
 dev-qt/linguist 5.11.3: Graphical tool for translating Qt applications
@@ -6485,7 +6486,7 @@ dev-vcs/guilt 0.36-r1: A series of bash scripts which add a quilt-like interface
 dev-vcs/hg-git 0.8.8: push to and pull from a Git repository using Mercurial
 dev-vcs/hgsubversion 1.9.2: hgsubversion is a Mercurial extension for working with Subversion repositories
 dev-vcs/kdesvn 2.0.0: A frontend to the subversion vcs
-dev-vcs/mercurial 4.5.2 4.6.2: Scalable distributed SCM
+dev-vcs/mercurial 4.5.2 4.6.2 4.9: Scalable distributed SCM
 dev-vcs/mr 1.20170129 1.20171231: Multiple Repository management tool
 dev-vcs/qgit 2.8: Qt GUI for git repositories
 dev-vcs/rapidsvn 0.12.1-r3: Cross-platform GUI front-end for the Subversion revision system
@@ -6496,7 +6497,7 @@ dev-vcs/svn2cl 0.12: Create a GNU-style ChangeLog from subversion's svn log --xm
 dev-vcs/tig 2.3.3: text mode interface for git
 dev-vcs/tkcvs 8.2.2 8.2.3: Tcl/Tk-based graphical interface to CVS with Subversion support
 dev-vcs/topgit 0.9-r1: A different patch queue manager
-dev-vcs/tortoisehg 4.5.2: Set of graphical tools for Mercurial
+dev-vcs/tortoisehg 4.5.2 4.9: Set of graphical tools for Mercurial
 dev-vcs/vcsh 1.20151229.1: Manage config files in $HOME via fake bare git repositories
 games-action/supermariowar 2.0_beta1-r1: Fan-made multiplayer Super Mario Bros. style deathmatch game
 games-arcade/blobwars 2.00: Platform game about a blob and his quest to rescue MIAs from an alien invader
