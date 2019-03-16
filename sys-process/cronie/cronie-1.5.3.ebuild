@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit autotools cron flag-o-matic pam systemd user
 
@@ -10,15 +10,19 @@ HOMEPAGE="https://github.com/cronie-crond/cronie"
 SRC_URI="https://github.com/cronie-crond/cronie/archive/${P}.tar.gz"
 
 LICENSE="ISC BSD BSD-2 GPL-2"
-KEYWORDS="alpha amd64 arm arm64 ~hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 IUSE="+anacron +inotify pam selinux"
 
-DEPEND="pam? ( virtual/pam )
+DEPEND="
+	pam? ( virtual/pam )
 	anacron? ( !sys-process/anacron
 		elibc_musl? ( sys-libs/obstack-standalone )
-	)"
-RDEPEND="${DEPEND}
-	sys-apps/debianutils"
+	)
+"
+RDEPEND="${DEPEND}"
+BDEPEND="
+	sys-apps/debianutils
+"
 
 #cronie supports /etc/crontab
 CRON_SYSTEM_CRONTAB="yes"
@@ -26,7 +30,7 @@ CRON_SYSTEM_CRONTAB="yes"
 S="${WORKDIR}/${PN}-${P}"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-1.5.2-systemd.patch"
+	"${FILESDIR}/${PN}-1.5.3-systemd.patch"
 )
 
 pkg_setup() {
@@ -58,7 +62,7 @@ src_configure() {
 }
 
 src_install() {
-	emake install DESTDIR="${D}"
+	default
 
 	docrondir -m 1730 -o root -g crontab
 	fowners root:crontab /usr/bin/crontab

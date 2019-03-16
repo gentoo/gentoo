@@ -82,7 +82,7 @@ RDEPEND="
 	>=x11-libs/libxcb-1.13:=[${MULTILIB_USEDEP}]
 	x11-libs/libXfixes:=[${MULTILIB_USEDEP}]
 	libglvnd? (
-		media-libs/libglvnd
+		media-libs/libglvnd[${MULTILIB_USEDEP}]
 		!app-eselect/eselect-opengl
 	)
 	!libglvnd? (
@@ -140,8 +140,8 @@ RDEPEND="${RDEPEND}
 #
 # How to use it:
 # 1. List all the working slots (with min versions) in ||, newest first.
-# 2. Update the := to specify *max* version, e.g. < 7.
-# 3. Specify LLVM_MAX_SLOT, e.g. 6.
+# 2. Update the := to specify *max* version, e.g. < 10.
+# 3. Specify LLVM_MAX_SLOT, e.g. 9.
 LLVM_MAX_SLOT="9"
 LLVM_DEPSTR="
 	|| (

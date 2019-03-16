@@ -8,8 +8,8 @@ GENTOO_DEPEND_ON_PERL=no
 inherit perl-module systemd flag-o-matic
 
 if [[ "${PV}" == "9999" ]] ; then
-	inherit bzr autotools
-	EBZR_REPO_URI="http://bzr.linuxfoundation.org/openprinting/cups-filters"
+	inherit autotools git-r3
+	EGIT_REPO_URI="https://github.com/OpenPrinting/cups-filters.git"
 else
 	SRC_URI="http://www.openprinting.org/download/${PN}/${P}.tar.xz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-fbsd ~m68k-mint"
@@ -36,7 +36,6 @@ RDEPEND="
 	foomatic? ( !net-print/foomatic-filters )
 	jpeg? ( virtual/jpeg:0 )
 	ldap? ( net-nds/openldap )
-	pclm? ( >=app-text/qpdf-8.1.0:= )
 	pdf? ( app-text/mupdf )
 	perl? ( dev-lang/perl:= )
 	png? ( media-libs/libpng:0= )
@@ -59,7 +58,6 @@ src_prepare() {
 
 src_configure() {
 	local myeconfargs=(
-		--docdir="${EPREFIX}/usr/share/doc/${PF}"
 		--enable-imagefilters
 		--localstatedir="${EPREFIX}"/var
 		--with-browseremoteprotocols=DNSSD,CUPS

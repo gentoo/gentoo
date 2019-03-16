@@ -9,7 +9,7 @@ SRC_URI="mirror://debian/pool/main/p/posh/${P/-/_}.tar.xz"
 
 LICENSE="GPL-2+ BSD public-domain"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~x86"
+KEYWORDS="amd64 ppc ~x86"
 IUSE=""
 
 DEPEND="app-arch/xz-utils"
