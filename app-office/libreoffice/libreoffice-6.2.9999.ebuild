@@ -247,7 +247,9 @@ fi
 PATCHES=(
 	# master branch
 	"${FILESDIR}/${PN}-6.2-ldap-optional.patch"
-	"${WORKDIR}"/${PATCHSET/.tar.xz/}
+	"${WORKDIR}"/${PATCHSET/.tar.xz/}/001-qt5-change-salgraphics-gettextlayout-def.patch
+	"${WORKDIR}"/${PATCHSET/.tar.xz/}/002-qt5-assert-missing-salgraphics-font-on-gettextlayout.patch
+	"${WORKDIR}"/${PATCHSET/.tar.xz/}/003-qt5-fpicker-honor-autoextension.patch
 
 	# not upstreamable stuff
 	"${FILESDIR}/${PN}-5.4-system-pyuno.patch"
