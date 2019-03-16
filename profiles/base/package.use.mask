@@ -7,6 +7,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Michał Górny <mgorny@gentoo.org> (16 Mar 2019)
+# Requires last rited dev-python/scimath.
+dev-python/construct python_targets_python2_7
+
 # Brian Evans <grknight@gentoo.org> (15 Mar 2019)
 # Prepare to remove the mysqlcompat USE from mariadb-connector-c
 # Has multiple issues including symlinks and threading.
