@@ -117,6 +117,11 @@ src_prepare() {
 		-i swig/python/setup.cfg || die "sed python setup.cfg failed"
 
 	default
+
+	# fixed in git master or what will become 2.4.1:
+	has_version ">=app-text/poppler-0.72.0" && eapply "${FILESDIR}/${PN}-2.3.1-poppler-0.72.0.patch"
+	has_version ">=app-text/poppler-0.73.0" && eapply "${FILESDIR}/${PN}-2.3.1-poppler-0.73.0.patch"
+
 	eautoreconf
 }
 

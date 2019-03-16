@@ -64,7 +64,7 @@ DEPEND="${CDEPEND}
 	test? (
 		>=dev-qt/qtdeclarative-${QT_PV}[localstorage]
 		|| (
-			>=dev-qt/qtxmlpatterns-5.12.1-r1:5
+			>=dev-qt/qtxmlpatterns-5.12.1-r1:5[qml(+)]
 			<dev-qt/qtdeclarative-5.12.0[xml]
 		)
 		>=dev-qt/qtquickcontrols2-${QT_PV}
