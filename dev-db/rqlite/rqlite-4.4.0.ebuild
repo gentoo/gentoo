@@ -37,6 +37,7 @@ SRC_URI="https://${EGO_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 S="${WORKDIR}/${P}/src/${EGO_PN}"
 
 src_compile() {
+	export -n GOCACHE XDG_CACHE_HOME #678966
 	GOPATH="${WORKDIR}/${P}" \
 	GOBIN="${WORKDIR}/${P}/bin" \
 		go install \
