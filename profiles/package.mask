@@ -29,6 +29,20 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (15 Mar 2019)
+# ProDy was added in 2015 and not bumped since (with upstream making
+# frequent releases).  The primary maintainer abandoned it.  The Gentoo
+# version requires Python 2, while it depends on IPython which dropped
+# support for Python 2.
+#
+# pymol-plugins-dynamics is its only revdep, added and abandoned
+# by the primary maintainer about the same time as ProDy.  Last bumped
+# in 2017, making it behind upstream.
+#
+# Removal in 30 days.  Bug #672410.
+sci-chemistry/prody
+sci-chemistry/pymol-plugins-dynamics
+
 # Michał Górny <mgorny@gentoo.org> (16 Mar 2019)
 # Major browsers stopped supporting NPAPI plugins a while ago.
 # Furthermore, modern browsers carry built-in multimedia support,
