@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,7 +7,7 @@ MY_PN="${PN/PEAR-/}"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="The Log framework provides an abstracted logging system"
-HOMEPAGE="http://pear.php.net/package/${MY_PN}"
+HOMEPAGE="https://pear.php.net/package/${MY_PN}"
 SRC_URI="http://download.pear.php.net/package/${MY_P}.tgz"
 LICENSE="MIT"
 SLOT="0"
