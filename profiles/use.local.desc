@@ -473,6 +473,7 @@ app-emulation/vkd3d:spirv-tools - Enable SPIRV shader debugging support using de
 app-emulation/wine-vanilla:capi - Enable ISDN support via CAPI
 app-emulation/wine-vanilla:custom-cflags - Bypass strip-flags; use at your own peril
 app-emulation/wine-vanilla:dos - Pull in games-emulation/dosbox to run DOS applications
+app-emulation/wine-vanilla:faudio - Pull in app-emulation/faudio to provide XAudio2 functionality
 app-emulation/wine-vanilla:gecko - Add support for the Gecko engine when using iexplore
 app-emulation/wine-vanilla:gssapi - Use GSSAPI (Kerberos SSP support)
 app-emulation/wine-vanilla:gstreamer - Use media-libs/gstreamer to provide DirectShow functionality;
