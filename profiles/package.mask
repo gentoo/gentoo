@@ -30,6 +30,21 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (16 Mar 2019)
+# The current Gentoo version of Nessus is from 2006 (!).  It does
+# not build for quite some time (#590226), also -client fails with new
+# openssl (#674424).  Upstream has stopped releasing non-proprietary
+# versions.  While at it, remove prelude-nessus that practically
+# has not been touched since 2003.
+# Removal in 30 days.  Bug #680636.
+net-analyzer/libnasl
+net-analyzer/nessus-client
+net-analyzer/nessus-core
+net-analyzer/nessus-libraries
+net-analyzer/nessus-plugins
+net-analyzer/prelude-nessus
+sec-policy/selinux-nessus
+
+# Michał Górny <mgorny@gentoo.org> (16 Mar 2019)
 # MayaVi requires Python 2, at the same time depending on IPython
 # which removed Python 2 support.  The current Gentoo version is
 # from 2016 and has not been bumped.  It fails with various versions
