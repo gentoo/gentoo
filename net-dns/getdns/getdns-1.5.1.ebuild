@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit user fcaps systemd
+inherit fcaps systemd user
 
 DESCRIPTION="Modern asynchronous DNS API"
 HOMEPAGE="https://getdnsapi.net/"
@@ -12,7 +12,7 @@ SRC_URI="https://getdnsapi.net/releases/${P//./-}/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="stubby +getdns_query +getdns_server_mon libressl +idn +unbound libevent libev libuv +threads static-libs"
+IUSE="doc +getdns_query +getdns_server_mon +idn libev libevent libressl libuv static-libs stubby +threads +unbound"
 
 # https://bugs.gentoo.org/661760
 # https://github.com/getdnsapi/getdns/issues/407
@@ -21,17 +21,20 @@ RESTRICT="test"
 DEPEND="
 	dev-libs/libbsd:=
 	dev-libs/libyaml:=
+	idn? ( net-dns/libidn2:= )
 	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:0= )
-	idn? ( net-dns/libidn2:= )
-	unbound? ( >=net-dns/unbound-1.4.16:= )
-	libevent? ( dev-libs/libevent:= )
 	libev? ( dev-libs/libev:= )
+	libevent? ( dev-libs/libevent:= )
 	libuv? ( dev-libs/libuv:= )
+	unbound? ( >=net-dns/unbound-1.4.16:= )
 "
 RDEPEND="
 	${DEPEND}
 	stubby? ( sys-libs/libcap:= )
+"
+BDEPEND="
+	doc? ( app-doc/doxygen )
 "
 
 PATCHES=( "${FILESDIR}/${PN}-1.4.2-stubby.service.patch" )
@@ -39,18 +42,18 @@ PATCHES=( "${FILESDIR}/${PN}-1.4.2-stubby.service.patch" )
 src_configure() {
 	econf \
 		--runstatedir=/var/run \
-		--with-piddir=/var/run/stubby \
-		$(use_with stubby) \
+		$(use_enable static-libs static) \
 		$(use_with getdns_query) \
 		$(use_with getdns_server_mon) \
 		$(use_with idn libidn2) \
-		--without-libidn \
-		$(use_with unbound libunbound) \
-		$(use_with libevent) \
 		$(use_with libev) \
+		$(use_with libevent) \
 		$(use_with libuv) \
+		$(use_with stubby) \
 		$(use_with threads libpthread) \
-		$(use_enable static-libs static)
+		$(use_with unbound libunbound) \
+		--without-libidn \
+		--with-piddir=/var/run/stubby
 }
 
 src_install() {
