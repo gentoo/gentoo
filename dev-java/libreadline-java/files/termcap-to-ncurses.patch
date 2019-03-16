@@ -1,5 +1,5 @@
---- src/native/Makefile.org	2004-09-07 16:43:16.703100016 +0200
-+++ src/native/Makefile	2004-09-07 16:43:28.804919625 +0200
+--- a/src/native/Makefile.org	2004-09-07 16:43:16.703100016 +0200
++++ b/src/native/Makefile	2004-09-07 16:43:28.804919625 +0200
 @@ -45,8 +45,8 @@
  CFLAGS=-DWIN32=$(WIN32) -D__IBMC__
  else
