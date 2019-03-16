@@ -1065,7 +1065,8 @@ python_wrapper_setup() {
 				exec "${pysysroot}/usr/bin/${EPYTHON}-config" "\${@}"
 			_EOF_
 			cp "${workdir}"/bin/{python,python${pyver}}-config  || die
-			chmod +x "${workdir}"/bin/{python,python${pyver}}-config || die
+			cp "${workdir}"/bin/{python,${EPYTHON}}-config  || die
+			chmod +x "${workdir}"/bin/{python,python${pyver},${EPYTHON}}-config || die
 
 			if [[ -n ${pysysroot} ]]; then
 				# Use host-specific data from SYSROOT. Python 2 looks
