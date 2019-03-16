@@ -285,8 +285,7 @@ app-arch/freeze
 # Jeroen Roovers <jer@gentoo.org> (31 Jan 2019)
 # Depends on =dev-libs/openssl-1.1.1*
 # bug #670574
-=net-libs/nodejs-11.10*
-=net-libs/nodejs-11.11*
+=net-libs/nodejs-11*
 
 # Dennis Lamm <expeditioneer@gentoo.org> (29 Jan 2019)
 # Depends on >=app-text/enchant-2.0.0 which is masked
