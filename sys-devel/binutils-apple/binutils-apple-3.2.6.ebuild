@@ -13,7 +13,7 @@ LIBUNWIND=libunwind-30
 DYLD=dyld-132.13
 
 DESCRIPTION="Darwin assembler as(1) and static linker ld(1), Xcode Tools 3.2.6"
-HOMEPAGE="http://www.opensource.apple.com/darwinsource/"
+HOMEPAGE="http://www.opensource.apple.com/"
 SRC_URI="https://opensource.apple.com/tarballs/ld64/${LD64}.tar.gz
 	https://opensource.apple.com/tarballs/cctools/${CCTOOLS}.tar.gz
 	http://www.opensource.apple.com/tarballs/libunwind/${LIBUNWIND}.tar.gz

@@ -39,7 +39,6 @@ DEPEND="
 "
 PATCHES=(
 	"${FILESDIR}"/${PN}-10.3.0-global-npm-config.patch
-	"${FILESDIR}"/${PN}-11.4.0-stdarg_h.patch
 	"${FILESDIR}"/${PN}-99999999-llhttp.patch
 )
 S="${WORKDIR}/node-v${PV}"
