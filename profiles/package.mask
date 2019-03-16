@@ -30,6 +30,38 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (16 Mar 2019)
+# MayaVi requires Python 2, at the same time depending on IPython
+# which removed Python 2 support.  The current Gentoo version is
+# from 2016 and has not been bumped.  It fails with various versions
+# of sci-libs/vtk (#624082, #663152).
+#
+# ETS is a suite of NIH packages that have no reverse dependencies
+# except for MayaVi and Py2.7 support in recently added
+# dev-python/construct.  The packages were added without a dedicated
+# maintainer and were incidentally updated since.  Some of them have
+# various unsolved issues including segfaults (#654090), bundled
+# libraries (#450466), semi-broken ebuilds (#678042).
+#
+# Removal in 30 days.  Bug #672412.
+dev-python/apptools
+dev-python/blockcanvas
+dev-python/chaco
+dev-python/codetools
+dev-python/enable
+dev-python/enaml
+dev-python/encore
+dev-python/envisage
+dev-python/ets
+dev-python/etsdevtools
+dev-python/etsproxy
+dev-python/graphcanvas
+dev-python/pyface
+dev-python/scimath
+dev-python/traits
+dev-python/traitsui
+sci-visualization/mayavi
+
+# Michał Górny <mgorny@gentoo.org> (16 Mar 2019)
 # ProDy was added in 2015 and not bumped since (with upstream making
 # frequent releases).  The primary maintainer abandoned it.  The Gentoo
 # version requires Python 2, while it depends on IPython which dropped
