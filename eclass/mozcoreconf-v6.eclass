@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 #
 # @ECLASS: mozcoreconf-v6.eclass
@@ -108,6 +108,10 @@ moz_pkgsetup() {
 		ewarn "outdated compilers. Bugs opened with gcc-3 will be closed"
 		ewarn "invalid."
 	fi
+
+	# Use build system's Python. python-any-r1 does this for us but
+	# python_export does not.
+	local SYSROOT ESYSROOT=${BROOT-${EPREFIX}}
 
 	python-any-r1_pkg_setup
 	# workaround to set python3 into PYTHON3 until mozilla doesn't need py2
