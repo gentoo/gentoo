@@ -3,12 +3,12 @@ DEFINED_PHASES=compile configure install prepare setup unpack
 DEPEND=>=x11-libs/libdrm-2.4.89[video_cards_amdgpu] x11-base/xorg-server[glamor(-)] udev? ( virtual/libudev:= ) ppc-aix? ( >=sys-devel/libtool-2.2.6a sys-devel/m4 >=x11-misc/util-macros-1.18 >=media-fonts/font-util-1.2.0 ) x86-winnt? ( >=sys-devel/libtool-2.2.6a sys-devel/m4 >=x11-misc/util-macros-1.18 >=media-fonts/font-util-1.2.0 ) virtual/pkgconfig x11-base/xorg-proto x11-base/xorg-server[-minimal] x11-libs/libdrm >=x11-base/xorg-server-1.20[xorg] >=x11-libs/libpciaccess-0.14
 DESCRIPTION=Accelerated Open Source driver for AMDGPU cards
 EAPI=7
-HOMEPAGE=https://www.x.org/wiki/ https://cgit.freedesktop.org/
+HOMEPAGE=https://www.x.org/wiki/ https://gitlab.freedesktop.org/xorg/driver/xf86-video-amdgpu
 IUSE=udev
 KEYWORDS=~amd64 ~x86
 LICENSE=MIT
 RDEPEND=>=x11-libs/libdrm-2.4.89[video_cards_amdgpu] x11-base/xorg-server[glamor(-)] udev? ( virtual/libudev:= ) x11-base/xorg-server:= x11-base/xorg-server[-minimal] x11-libs/libdrm >=x11-base/xorg-server-1.20[xorg] >=x11-libs/libpciaccess-0.14
 SLOT=0
 SRC_URI=https://www.x.org/releases/individual/driver/xf86-video-amdgpu-19.0.0.tar.bz2
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	a09389deba2c0a7108b581e02c7cecbf	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	b45201c4e6c096b98e250336954e64b9	xorg-3	2cbdb63dc35f80a1b136a4dd02490a1c
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	a09389deba2c0a7108b581e02c7cecbf	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	b45201c4e6c096b98e250336954e64b9	xorg-3	0bdf280c1b3fa548bf2088a60879a664
 _md5_=1d6f4a172a3c9eb992323e91b1ec3d70

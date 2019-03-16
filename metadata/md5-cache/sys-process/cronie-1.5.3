@@ -1,0 +1,14 @@
+BDEPEND=sys-apps/debianutils >=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig
+DEFINED_PHASES=configure install postinst prepare setup
+DEPEND=pam? ( virtual/pam ) anacron? ( !sys-process/anacron elibc_musl? ( sys-libs/obstack-standalone ) ) >=sys-apps/sed-4.0.5
+DESCRIPTION=Cronie is a standard UNIX daemon cron based on the original vixie-cron
+EAPI=7
+HOMEPAGE=https://github.com/cronie-crond/cronie
+IUSE=+anacron +inotify pam selinux
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86
+LICENSE=ISC BSD BSD-2 GPL-2
+RDEPEND=pam? ( virtual/pam ) anacron? ( !sys-process/anacron elibc_musl? ( sys-libs/obstack-standalone ) ) >=sys-process/cronbase-0.3.2 !sys-process/vixie-cron !sys-process/bcron !sys-process/dcron !sys-process/fcron
+SLOT=0
+SRC_URI=https://github.com/cronie-crond/cronie/archive/cronie-1.5.3.tar.gz
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	cron	b29901646c18b46ca4547af882b796ee	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	a09389deba2c0a7108b581e02c7cecbf	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	b2f01ad412baf81650c23fcf0975fa33	pam	3e788d86170dfcd5b06824d898315e18	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	b45201c4e6c096b98e250336954e64b9	user	8bd74731cafdcdad8f7a63637302e073
+_md5_=5ada206d00f4dd613c8381decbfd29d1
