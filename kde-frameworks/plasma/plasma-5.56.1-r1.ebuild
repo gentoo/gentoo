@@ -8,6 +8,8 @@ VIRTUALX_REQUIRED="test"
 inherit kde5
 
 DESCRIPTION="Plasma framework"
+SRC_URI+=" https://dev.gentoo.org/~asturm/distfiles/${P}-background-svgz.tar.xz"
+
 LICENSE="LGPL-2+"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE="gles2 wayland X"
@@ -57,6 +59,13 @@ DEPEND="${RDEPEND}
 "
 
 RESTRICT+=" test"
+
+src_prepare() {
+	kde5_src_prepare
+	# QtSvg 5.12.2 uncovered a bug: https://phabricator.kde.org/D19821, https://bugs.kde.org/show_bug.cgi?id=405548
+	cp -v "${WORKDIR}"/{${KMNAME},${KMNAME}-${PV}}/src/desktoptheme/breeze/dialogs/background.svgz || die
+	cp -v "${WORKDIR}"/{${KMNAME},${KMNAME}-${PV}}/src/desktoptheme/breeze/translucent/dialogs/background.svgz || die
+}
 
 src_configure() {
 	local mycmakeargs=(
