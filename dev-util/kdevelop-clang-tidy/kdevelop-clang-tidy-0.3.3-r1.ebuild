@@ -1,23 +1,26 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-KDEBASE="kdevelop"
 KDE_TEST="true"
 KMNAME="kdev-clang-tidy"
 VIRTUALX_REQUIRED="test"
 inherit kde5
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
-	SRC_URI="mirror://kde/stable/${PN/kdevelop/kdev}/${PV}/src/${P/kdevelop/kdev}.tar.xz"
+	SRC_URI="mirror://kde/stable/${KMNAME}/${PV}/src/${KMNAME}-${PV}.tar.xz"
 	KEYWORDS="~amd64 ~x86"
 fi
 
 DESCRIPTION="KDevelop plugin for clang-tidy static analysis support"
+HOMEPAGE="https://www.kdevelop.org/"
 LICENSE="GPL-2+"
 IUSE=""
 
+BDEPEND="
+	dev-util/kdevelop:5[test?]
+"
 COMMON_DEPEND="
 	$(add_frameworks_dep kconfig)
 	$(add_frameworks_dep kcoreaddons)
@@ -31,16 +34,14 @@ COMMON_DEPEND="
 	$(add_qt_dep qtwidgets)
 	>=dev-util/kdevelop-5.2.3:5
 "
-RDEPEND="${COMMON_DEPEND}
-	sys-devel/clang:*
-"
 DEPEND="${COMMON_DEPEND}
 	dev-libs/boost
-	dev-util/kdevelop:5[test?]
+"
+RDEPEND="${COMMON_DEPEND}
+	sys-devel/clang:*
 "
 
 src_prepare() {
 	kde5_src_prepare
-	# drop when upstream depends on >=kdevelop-5.2.2
-	sed -e "/KF_ADDITIONAL_REQ_COMPONENTS/d" -i CMakeLists.txt
+	sed -e "/KF_ADDITIONAL_REQ_COMPONENTS/d" -i CMakeLists.txt || die
 }

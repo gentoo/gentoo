@@ -3,17 +3,21 @@
 
 EAPI=7
 
-EGIT_BRANCH="5.3"
 KDE_HANDBOOK="forceoptional"
 KDE_TEST="true"
 VIRTUALDBUS_TEST="true"
 VIRTUALX_REQUIRED="test"
 inherit kde5
 
+if [[ ${KDE_BUILD_TYPE} = release ]]; then
+	SRC_URI="mirror://kde/stable/kdevelop/${PV}/src/${P}.tar.xz"
+	KEYWORDS="~amd64 ~x86"
+fi
+
 DESCRIPTION="Integrated Development Environment, supporting KF5/Qt, C/C++ and much more"
+HOMEPAGE="https://www.kdevelop.org/"
 LICENSE="GPL-2 LGPL-2"
 IUSE="+gdbui hex +plasma +qmake reviewboard subversion webkit"
-[[ ${KDE_BUILD_TYPE} = release ]] && KEYWORDS="~amd64 ~x86"
 
 COMMON_DEPEND="
 	$(add_frameworks_dep karchive)

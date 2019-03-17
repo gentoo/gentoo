@@ -3,8 +3,6 @@
 
 EAPI=7
 
-EGIT_BRANCH="5.3"
-KDEBASE="kdevelop"
 KDE_DOC_DIR="docs"
 KDE_HANDBOOK="forceoptional"
 KDE_TEST="true"
@@ -12,10 +10,15 @@ KMNAME="kdev-php"
 VIRTUALX_REQUIRED="test"
 inherit kde5
 
+if [[ ${KDE_BUILD_TYPE} = release ]]; then
+	SRC_URI="mirror://kde/stable/kdevelop/${PV}/src/${KMNAME}-${PV}.tar.xz"
+	KEYWORDS="~amd64 ~x86"
+fi
+
 DESCRIPTION="PHP plugin for KDevelop"
+HOMEPAGE="https://www.kdevelop.org/"
 LICENSE="GPL-2 LGPL-2"
 IUSE=""
-[[ ${KDE_BUILD_TYPE} = release ]] && KEYWORDS="~amd64 ~x86"
 
 BDEPEND="
 	test? ( dev-util/kdevelop:5[test] )
