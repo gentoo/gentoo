@@ -32,6 +32,7 @@ RDEPEND="${COMMON_DEPEND}"
 
 DEPEND="${COMMON_DEPEND}
 	app-text/docbook-xml-dtd:4.1.2
+	app-text/iso-codes
 	dev-util/gtk-doc
 	dev-util/gtk-doc-am
 	>=dev-util/intltool-0.40:*

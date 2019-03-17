@@ -58,11 +58,25 @@ src_configure() {
 		fi
 
 		if use ssl; then
-			mycmakeargs+=(
-				-DENABLE_GNUTLS=$(usex gnutls)
-				-DENABLE_MBEDTLS=$(usex mbedtls)
-				-DENABLE_OPENSSL=$(usex !gnutls)
-			)
+			if use gnutls; then
+				mycmakeargs+=(
+					-DENABLE_GNUTLS=$(usex gnutls)
+					-DENABLE_MBEDTLS=OFF
+					-DENABLE_OPENSSL=OFF
+				)
+			elif use mbedtls; then
+				mycmakeargs+=(
+					-DENABLE_GNUTLS=OFF
+					-DENABLE_MBEDTLS=$(usex mbedtls)
+					-DENABLE_OPENSSL=OFF
+				)
+			else
+				mycmakeargs+=(
+					-DENABLE_GNUTLS=OFF
+					-DENABLE_MBEDTLS=OFF
+					-DENABLE_OPENSSL=ON
+				)
+			fi
 		else
 			mycmakeargs+=(
 				-DENABLE_GNUTLS=OFF
