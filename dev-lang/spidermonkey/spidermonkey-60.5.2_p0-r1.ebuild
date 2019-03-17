@@ -63,7 +63,7 @@ src_configure() {
 
 	ECONF_SOURCE="${S}/js/src" \
 	econf \
-		--enable-jemalloc \
+		--disable-jemalloc \
 		--enable-readline \
 		--with-system-nspr \
 		--disable-optimize \
