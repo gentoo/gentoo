@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -29,6 +29,9 @@ DEPEND="emacs? ( virtual/emacs )
 	dev-python/docutils[${PYTHON_USEDEP}]"
 
 SITEFILE="70${PN}-gentoo.el"
+
+# Too many tests fail #608720
+RESTRICT="test"
 
 python_prepare_all() {
 	# fix up logic that won't work in Gentoo Prefix (also won't outside in

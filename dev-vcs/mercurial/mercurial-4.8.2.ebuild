@@ -29,6 +29,9 @@ DEPEND="emacs? ( virtual/emacs )
 
 SITEFILE="70${PN}-gentoo.el"
 
+# Too many tests fail #608720
+RESTRICT="test"
+
 PATCHES=(
 	"${FILESDIR}/${PN}-3.0.1-po_fixes.patch"
 	"${FILESDIR}/${PN}-4.8.1-unbundle_zstd.patch"
