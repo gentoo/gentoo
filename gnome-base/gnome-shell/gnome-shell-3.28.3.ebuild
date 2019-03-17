@@ -29,6 +29,7 @@ COMMON_DEPEND="
 	>=dev-libs/glib-2.56.0:2
 	>=dev-libs/gobject-introspection-1.49.1:=
 	>=dev-libs/gjs-1.47.0
+	<dev-libs/gjs-1.53
 	>=x11-libs/gtk+-3.15.0:3[introspection]
 	nsplugin? ( >=dev-libs/json-glib-0.13.2 )
 	>=x11-wm/mutter-3.28.0:0/2[introspection]
