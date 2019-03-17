@@ -230,8 +230,9 @@ src_prepare() {
 		# bug #377279
 		./bootstrap || die "bootstrap failed"
 		(
-			git submodule status | sed 's/^[ +-]//;s/ .*//'
-			git hash-object bootstrap.conf
+		    git submodule status .gnulib | awk '{ print $1 }'
+		    git hash-object bootstrap.conf
+		    git ls-tree -d HEAD gnulib/local | awk '{ print $3 }'
 		) >.git-module-status
 	fi
 
