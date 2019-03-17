@@ -30,6 +30,13 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (17 Mar 2019)
+# Unmaintained.  Last bump in 2016, leaving Gentoo a few releases
+# behind.  The current version fails to build, with two different
+# issues (#610966, #651278).
+# Removal in 30 days.  Bug #610966.
+net-analyzer/netsniff-ng
+
+# Michał Górny <mgorny@gentoo.org> (17 Mar 2019)
 # Unmaintained.  Does not work with current Gentoo versions
 # of dev-python/python-fastimport.  No upstream release since 2012.
 # Removal in 30 days.  Bug #591446.
