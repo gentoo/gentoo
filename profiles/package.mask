@@ -30,6 +30,13 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (17 Mar 2019)
+# The current Gentoo version has been added in 2015 and has not been
+# bumped since.  It fails to build with new versions of gperf (#609272)
+# and ffmpeg (#671256).  No maintainer.
+# Removal in 30 days.  Bug #680800.
+media-sound/forked-daapd
+
+# Michał Górny <mgorny@gentoo.org> (17 Mar 2019)
 # Unmaintained.  Last bump in 2016, leaving Gentoo a few releases
 # behind.  The current version fails to build, with two different
 # issues (#610966, #651278).
