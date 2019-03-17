@@ -29,7 +29,7 @@ BUILDDIR="${S}/jsobj"
 RDEPEND=">=dev-libs/nspr-4.13.1
 	virtual/libffi
 	sys-libs/readline:0=
-	>=sys-libs/zlib-1.2.3
+	>=sys-libs/zlib-1.2.3:=
 	system-icu? ( >=dev-libs/icu-59.1:= )"
 DEPEND="${RDEPEND}"
 
@@ -66,6 +66,7 @@ src_configure() {
 		--disable-jemalloc \
 		--enable-readline \
 		--with-system-nspr \
+		--with-system-zlib \
 		--disable-optimize \
 		--with-intl-api \
 		$(use_with system-icu) \
