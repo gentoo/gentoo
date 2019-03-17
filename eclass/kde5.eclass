@@ -343,14 +343,14 @@ _calculate_src_uri() {
 			;;
 	esac
 
-	if [[ -z ${SRC_URI} && -n ${KDEBASE} ]] ; then
+	if [[ ${PN} = kdevelop* ]]; then
 		case ${PV} in
 			*.*.[6-9]? )
-				SRC_URI="mirror://kde/unstable/${KDEBASE}/${PV}/src/${_kmname}-${PV}.tar.xz"
+				SRC_URI="mirror://kde/unstable/kdevelop/${PV}/src/${_kmname}-${PV}.tar.xz"
 				RESTRICT+=" mirror"
 				;;
 			*)
-				SRC_URI="mirror://kde/stable/${KDEBASE}/${PV}/src/${_kmname}-${PV}.tar.xz" ;;
+				SRC_URI="mirror://kde/stable/kdevelop/${PV}/src/${_kmname}-${PV}.tar.xz" ;;
 		esac
 	fi
 
