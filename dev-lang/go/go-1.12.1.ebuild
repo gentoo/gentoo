@@ -13,19 +13,17 @@ inherit toolchain-funcs
 BOOTSTRAP_DIST="https://dev.gentoo.org/~williamh/dist"
 BOOTSTRAP_VERSION="bootstrap-1.8"
 BOOTSTRAP_URI="
-amd64? ( ${BOOTSTRAP_DIST}/go-linux-amd64-${BOOTSTRAP_VERSION}.tbz )
-arm? ( ${BOOTSTRAP_DIST}/go-linux-arm-${BOOTSTRAP_VERSION}.tbz )
-arm64? ( ${BOOTSTRAP_DIST}/go-linux-arm64-${BOOTSTRAP_VERSION}.tbz )
-ppc64? (
+	${BOOTSTRAP_DIST}/go-linux-amd64-${BOOTSTRAP_VERSION}.tbz
+	${BOOTSTRAP_DIST}/go-linux-arm-${BOOTSTRAP_VERSION}.tbz
+	${BOOTSTRAP_DIST}/go-linux-arm64-${BOOTSTRAP_VERSION}.tbz
 	${BOOTSTRAP_DIST}/go-linux-ppc64-${BOOTSTRAP_VERSION}.tbz
 	${BOOTSTRAP_DIST}/go-linux-ppc64le-${BOOTSTRAP_VERSION}.tbz
-)
-s390? ( ${BOOTSTRAP_DIST}/go-linux-s390x-${BOOTSTRAP_VERSION}.tbz )
-x86? ( ${BOOTSTRAP_DIST}/go-linux-386-${BOOTSTRAP_VERSION}.tbz )
-amd64-fbsd? ( ${BOOTSTRAP_DIST}/go-freebsd-amd64-${BOOTSTRAP_VERSION}.tbz )
-x86-fbsd? ( ${BOOTSTRAP_DIST}/go-freebsd-386-${BOOTSTRAP_VERSION}.tbz )
-x64-macos? ( ${BOOTSTRAP_DIST}/go-darwin-amd64-${BOOTSTRAP_VERSION}.tbz )
-x64-solaris? ( ${BOOTSTRAP_DIST}/go-solaris-amd64-${BOOTSTRAP_VERSION}.tbz )
+	${BOOTSTRAP_DIST}/go-linux-s390x-${BOOTSTRAP_VERSION}.tbz
+	${BOOTSTRAP_DIST}/go-linux-386-${BOOTSTRAP_VERSION}.tbz
+	${BOOTSTRAP_DIST}/go-freebsd-amd64-${BOOTSTRAP_VERSION}.tbz
+	${BOOTSTRAP_DIST}/go-freebsd-386-${BOOTSTRAP_VERSION}.tbz
+	${BOOTSTRAP_DIST}/go-darwin-amd64-${BOOTSTRAP_VERSION}.tbz
+	${BOOTSTRAP_DIST}/go-solaris-amd64-${BOOTSTRAP_VERSION}.tbz
 "
 
 case ${PV}  in
@@ -158,7 +156,7 @@ src_unpack()
 
 src_compile()
 {
-	export GOROOT_BOOTSTRAP="${WORKDIR}"/go-$(go_os)-$(go_arch)-bootstrap
+	export GOROOT_BOOTSTRAP="${WORKDIR}"/go-$(go_os ${CBUILD})-$(go_arch ${CBUILD})-bootstrap
 	if use gccgo; then
 		mkdir -p "${GOROOT_BOOTSTRAP}/bin" || die
 		local go_binary=$(gcc-config --get-bin-path)/go-$(gcc-major-version)
@@ -185,7 +183,6 @@ src_compile()
 	if [[ ${ARCH} == arm ]]; then
 		export GOARM=$(go_arm)
 	fi
-	einfo "GOROOT_BOOTSTRAP is ${GOROOT_BOOTSTRAP}"
 
 	cd src
 	./make.bash || die "build failed"
