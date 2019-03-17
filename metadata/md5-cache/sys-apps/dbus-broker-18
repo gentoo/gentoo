@@ -1,0 +1,14 @@
+BDEPEND=doc? ( dev-python/docutils ) dev-python/docutils virtual/pkgconfig >=dev-util/meson-0.48.2 >=dev-util/ninja-1.7.2
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=audit? ( >=sys-process/audit-2.7 >=sys-libs/libcap-ng-0.6 ) launcher? ( >=dev-libs/expat-2.2 >=sys-apps/systemd-230:0= ) selinux? ( sys-libs/libselinux )
+DESCRIPTION=Linux D-Bus Message Broker
+EAPI=7
+HOMEPAGE=https://github.com/bus1/dbus-broker/wiki
+IUSE=audit doc +launcher selinux
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+RDEPEND=audit? ( >=sys-process/audit-2.7 >=sys-libs/libcap-ng-0.6 ) launcher? ( >=dev-libs/expat-2.2 >=sys-apps/systemd-230:0= ) selinux? ( sys-libs/libselinux )
+SLOT=0
+SRC_URI=https://github.com/bus1/dbus-broker/archive/v18/dbus-broker-18.tar.gz https://github.com/c-util/c-dvar/archive/9fcd89593f8b7fb5c9f1c32f0b82f518eda4be46/c-dvar-9fcd89593f8b7fb5c9f1c32f0b82f518eda4be46.tar.gz https://github.com/c-util/c-ini/archive/979a18fdd59f05f927d6cdf624d8ded6f81c6776/c-ini-979a18fdd59f05f927d6cdf624d8ded6f81c6776.tar.gz https://github.com/c-util/c-list/archive/dda36d30c7d655b4d61358519168fa7ce0e9dae9/c-list-dda36d30c7d655b4d61358519168fa7ce0e9dae9.tar.gz https://github.com/c-util/c-rbtree/archive/bf627e0c32241915108f66ad9738444e4d045b45/c-rbtree-bf627e0c32241915108f66ad9738444e4d045b45.tar.gz https://github.com/c-util/c-shquote/archive/b7e325c7ff098787f2937dd91597677374f038b6/c-shquote-b7e325c7ff098787f2937dd91597677374f038b6.tar.gz https://github.com/c-util/c-sundry/archive/50c8ccf01b39b3f11e59c69d1cafea5bef5a9769/c-sundry-50c8ccf01b39b3f11e59c69d1cafea5bef5a9769.tar.gz https://github.com/c-util/c-utf8/archive/b245df543717ee19ad398f8139447e3807c11c96/c-utf8-b245df543717ee19ad398f8139447e3807c11c96.tar.gz
+_eclasses_=meson	e53acc5913e5581a8a71be22731d8f36	multilib	b2f01ad412baf81650c23fcf0975fa33	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	12114a2a9aab35b93efc037a196b3234	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
+_md5_=a5982ecca69c64feb2006ea1aadbf690
