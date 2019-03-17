@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,8 @@ SRC_URI="https://github.com/linuxmint/cinnamon-session/archive/${PV}.tar.gz -> $
 LICENSE="GPL-2+ FDL-1.1+ LGPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="doc ipv6 systemd"
+IUSE="doc elogind ipv6 systemd"
+REQUIRED_USE="^^ ( elogind systemd )"
 
 COMMON_DEPEND="
 	>=dev-libs/dbus-glib-0.88
@@ -33,13 +34,13 @@ COMMON_DEPEND="
 	virtual/opengl
 	systemd? ( >=sys-apps/systemd-183
 			   sys-auth/polkit )
-	!systemd? ( sys-power/upower
+	elogind? ( sys-power/upower
 			   sys-auth/polkit[elogind] )
 "
 
 RDEPEND="${COMMON_DEPEND}
 	>=gnome-extra/cinnamon-desktop-2.6[systemd=]
-	!systemd? ( sys-auth/elogind[policykit] )
+	elogind? ( sys-auth/elogind[policykit] )
 "
 DEPEND="${COMMON_DEPEND}
 	dev-libs/libxslt
