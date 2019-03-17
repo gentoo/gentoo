@@ -96,7 +96,7 @@ CDEPEND="
 	)
 	system-icu? ( >=dev-libs/icu-59.1:= )
 	system-jpeg? ( >=media-libs/libjpeg-turbo-1.2.1:= )
-	system-libevent? ( >=dev-libs/libevent-2.0:0= )
+	system-libevent? ( >=dev-libs/libevent-2.0:0=[threads] )
 	system-libvpx? (
 		>=media-libs/libvpx-1.5.0:0=[postproc]
 		<media-libs/libvpx-1.8:0=[postproc]
