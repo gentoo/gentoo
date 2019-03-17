@@ -44,7 +44,7 @@ COMMON_DEPEND=">=app-text/poppler-0.22[cairo]
 	gnome-keyring? ( >=app-crypt/libsecret-0.5 )
 	introspection? ( >=dev-libs/gobject-introspection-0.6:= )
 	postscript? ( >=app-text/libspectre-0.2 )
-	tiff? ( >=media-libs/tiff-3.6 )
+	tiff? ( >=media-libs/tiff-3.6:0 )
 	xps? ( >=app-text/libgxps-0.2.1 )
 	!!app-text/mate-document-viewer"
 
