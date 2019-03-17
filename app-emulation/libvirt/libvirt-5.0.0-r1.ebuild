@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=( python3_{4,5,6} )
+PYTHON_COMPAT=( python3_{4,5,6,7} )
 
 inherit autotools bash-completion-r1 eutils linux-info python-any-r1 readme.gentoo-r1 systemd user
 
@@ -11,7 +11,7 @@ if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://libvirt.org/git/libvirt.git"
 	SRC_URI=""
-	KEYWORDS="amd64 x86"
+	KEYWORDS=""
 	SLOT="0"
 else
 	# Versions with 4 numbers are stable updates:
@@ -20,7 +20,7 @@ else
 	else
 		SRC_URI="https://libvirt.org/sources/${P}.tar.xz"
 	fi
-	KEYWORDS="amd64 ~arm64 x86"
+	KEYWORDS="~amd64 ~arm64 ~x86"
 	SLOT="0/${PV}"
 fi
 
@@ -28,20 +28,19 @@ DESCRIPTION="C toolkit to manipulate virtual machines"
 HOMEPAGE="http://www.libvirt.org/"
 LICENSE="LGPL-2.1"
 IUSE="
-	apparmor audit +caps +dbus firewalld fuse glusterfs iscsi +libvirtd lvm
-	libssh lxc +macvtap nfs nls numa openvz parted pcap phyp policykit
-	+qemu rbd sasl selinux +udev uml +vepa virtualbox virt-network
+	apparmor audit +caps +dbus firewalld fuse glusterfs iscsi iscsi-direct
+	+libvirtd lvm libssh lxc +macvtap nfs nls numa openvz parted pcap phyp
+	policykit +qemu rbd sasl selinux +udev +vepa virtualbox virt-network
 	wireshark-plugins xen zeroconf zfs
 "
 
 REQUIRED_USE="
 	firewalld? ( virt-network )
-	libvirtd? ( || ( lxc openvz qemu uml virtualbox xen ) )
+	libvirtd? ( || ( lxc openvz qemu virtualbox xen ) )
 	lxc? ( caps libvirtd )
 	openvz? ( libvirtd )
 	policykit? ( dbus )
 	qemu? ( libvirtd )
-	uml? ( libvirtd )
 	vepa? ( macvtap )
 	virt-network? ( libvirtd )
 	virtualbox? ( libvirtd )
@@ -57,7 +56,11 @@ RDEPEND="
 	dev-libs/libgcrypt:0
 	dev-libs/libnl:3
 	>=dev-libs/libxml2-2.7.6
-	|| ( >=net-analyzer/netcat6-1.0-r2 >=net-analyzer/openbsd-netcat-1.105-r1 )
+	|| (
+		>=net-analyzer/gnu-netcat-0.7.1-r3
+		>=net-analyzer/netcat-110-r9
+		>=net-analyzer/openbsd-netcat-1.105-r1
+	)
 	>=net-libs/gnutls-1.0.25:0=
 	net-libs/libssh2
 	net-libs/libtirpc
@@ -76,6 +79,7 @@ RDEPEND="
 	fuse? ( >=sys-fs/fuse-2.8.6:= )
 	glusterfs? ( >=sys-cluster/glusterfs-3.4.1 )
 	iscsi? ( sys-block/open-iscsi )
+	iscsi-direct? ( >=net-libs/libiscsi-1.18.0 )
 	libssh? ( net-libs/libssh )
 	lvm? ( >=sys-fs/lvm2-2.02.48-r2[-device-mapper-only(-)] )
 	nfs? ( net-fs/nfs-utils )
@@ -90,7 +94,7 @@ RDEPEND="
 	pcap? ( >=net-libs/libpcap-1.0.0 )
 	policykit? ( >=sys-auth/polkit-0.9 )
 	qemu? (
-		>=app-emulation/qemu-0.13.0
+		>=app-emulation/qemu-1.5.0
 		dev-libs/yajl
 	)
 	rbd? ( sys-cluster/ceph )
@@ -106,7 +110,7 @@ RDEPEND="
 	virtualbox? ( || ( app-emulation/virtualbox >=app-emulation/virtualbox-bin-2.2.0 ) )
 	wireshark-plugins? ( net-analyzer/wireshark:= )
 	xen? (
-		app-emulation/xen
+		>=app-emulation/xen-4.6.0
 		app-emulation/xen-tools:=
 	)
 	udev? (
@@ -125,10 +129,9 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-4.5.0-do_not_use_sysconf.patch
+	"${FILESDIR}"/${PN}-5.0.0-do-not-use-sysconf.patch
 	"${FILESDIR}"/${PN}-1.2.16-fix_paths_in_libvirt-guests_sh.patch
-	"${FILESDIR}"/${PN}-3.10.0-r2-fix_paths_for_apparmor.patch
-	"${FILESDIR}"/${PN}-4.5.0-fix_typo_in_apparmor_rule.patch
+	"${FILESDIR}"/${PN}-5.0.0-fix-paths-for-apparmor.patch
 )
 
 pkg_setup() {
@@ -192,6 +195,7 @@ pkg_setup() {
 	# Bandwidth Limiting Support
 	use virt-network && CONFIG_CHECK+="
 		~BRIDGE_EBT_T_NAT
+		~IP_NF_TARGET_REJECT
 		~NET_ACT_POLICE
 		~NET_CLS_FW
 		~NET_CLS_U32
@@ -219,13 +223,16 @@ src_prepare() {
 	default
 
 	if [[ ${PV} = *9999* ]]; then
+		# Reinitialize submodules as this is required for gnulib's bootstrap
+		git submodule init
 		# git checkouts require bootstrapping to create the configure script.
 		# Additionally the submodules must be cloned to the right locations
 		# bug #377279
 		./bootstrap || die "bootstrap failed"
 		(
-			git submodule status | sed 's/^[ +-]//;s/ .*//'
-			git hash-object bootstrap.conf
+		    git submodule status .gnulib | awk '{ print $1 }'
+		    git hash-object bootstrap.conf
+		    git ls-tree -d HEAD gnulib/local | awk '{ print $3 }'
 		) >.git-module-status
 	fi
 
@@ -252,6 +259,7 @@ src_configure() {
 		$(use_with glusterfs)
 		$(use_with glusterfs storage-gluster)
 		$(use_with iscsi storage-iscsi)
+		$(use_with iscsi-direct storage-iscsi-direct)
 		$(use_with libvirtd)
 		$(use_with libssh)
 		$(use_with lvm storage-lvm)
@@ -272,7 +280,6 @@ src_configure() {
 		$(use_with sasl)
 		$(use_with selinux)
 		$(use_with udev)
-		$(use_with uml)
 		$(use_with vepa virtualport)
 		$(use_with virt-network network)
 		$(use_with wireshark-plugins wireshark-dissector)
@@ -283,7 +290,6 @@ src_configure() {
 		--without-hal
 		--without-netcf
 		--without-sanlock
-		--without-xenapi
 
 		--with-esx
 		--with-init-script=systemd
@@ -349,7 +355,7 @@ src_install() {
 	systemd_newtmpfilesd "${FILESDIR}"/libvirtd.tmpfiles.conf libvirtd.conf
 
 	newinitd "${S}/libvirtd.init" libvirtd || die
-	newinitd "${FILESDIR}/libvirt-guests.init-r2" libvirt-guests || die
+	newinitd "${FILESDIR}/libvirt-guests.init-r3" libvirt-guests || die
 	newinitd "${FILESDIR}/virtlockd.init-r1" virtlockd || die
 	newinitd "${FILESDIR}/virtlogd.init-r1" virtlogd || die
 

@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 PYTHON_COMPAT=( python3_{4,5,6,7} )
 
@@ -28,9 +28,9 @@ DESCRIPTION="C toolkit to manipulate virtual machines"
 HOMEPAGE="http://www.libvirt.org/"
 LICENSE="LGPL-2.1"
 IUSE="
-	apparmor audit +caps +dbus firewalld fuse glusterfs iscsi +libvirtd lvm
-	libssh lxc +macvtap nfs nls numa openvz parted pcap phyp policykit
-	+qemu rbd sasl selinux +udev +vepa virtualbox virt-network
+	apparmor audit +caps +dbus firewalld fuse glusterfs iscsi iscsi-direct
+	+libvirtd lvm libssh lxc +macvtap nfs nls numa openvz parted pcap phyp
+	policykit +qemu rbd sasl selinux +udev +vepa virtualbox virt-network
 	wireshark-plugins xen zeroconf zfs
 "
 
@@ -56,7 +56,11 @@ RDEPEND="
 	dev-libs/libgcrypt:0
 	dev-libs/libnl:3
 	>=dev-libs/libxml2-2.7.6
-	|| ( >=net-analyzer/netcat6-1.0-r2 >=net-analyzer/openbsd-netcat-1.105-r1 )
+	|| (
+		>=net-analyzer/gnu-netcat-0.7.1-r3
+		>=net-analyzer/netcat-110-r9
+		>=net-analyzer/openbsd-netcat-1.105-r1
+	)
 	>=net-libs/gnutls-1.0.25:0=
 	net-libs/libssh2
 	net-libs/libtirpc
@@ -75,6 +79,7 @@ RDEPEND="
 	fuse? ( >=sys-fs/fuse-2.8.6:= )
 	glusterfs? ( >=sys-cluster/glusterfs-3.4.1 )
 	iscsi? ( sys-block/open-iscsi )
+	iscsi-direct? ( >=net-libs/libiscsi-1.18.0 )
 	libssh? ( net-libs/libssh )
 	lvm? ( >=sys-fs/lvm2-2.02.48-r2[-device-mapper-only(-)] )
 	nfs? ( net-fs/nfs-utils )
@@ -124,7 +129,7 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-5.0.0-do-not-use-sysconf.patch
+	"${FILESDIR}"/${PN}-5.1.0-do-not-use-sysconf.patch
 	"${FILESDIR}"/${PN}-1.2.16-fix_paths_in_libvirt-guests_sh.patch
 	"${FILESDIR}"/${PN}-5.0.0-fix-paths-for-apparmor.patch
 )
@@ -225,8 +230,9 @@ src_prepare() {
 		# bug #377279
 		./bootstrap || die "bootstrap failed"
 		(
-			git submodule status | sed 's/^[ +-]//;s/ .*//'
-			git hash-object bootstrap.conf
+		    git submodule status .gnulib | awk '{ print $1 }'
+		    git hash-object bootstrap.conf
+		    git ls-tree -d HEAD gnulib/local | awk '{ print $3 }'
 		) >.git-module-status
 	fi
 
@@ -253,6 +259,7 @@ src_configure() {
 		$(use_with glusterfs)
 		$(use_with glusterfs storage-gluster)
 		$(use_with iscsi storage-iscsi)
+		$(use_with iscsi-direct storage-iscsi-direct)
 		$(use_with libvirtd)
 		$(use_with libssh)
 		$(use_with lvm storage-lvm)

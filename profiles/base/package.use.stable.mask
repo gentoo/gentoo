@@ -113,10 +113,6 @@ net-misc/asterisk osplookup
 # Requires testing version of media-libs/opencv
 media-libs/mlt opencv
 
-# Matthias Maier <tamiko@gentoo.org> (22 Jan 2017)
-# sys-fs/zfs isn't going to be marked stable anytime soon
-app-emulation/libvirt zfs
-
 # Michael Palimaka <kensington@gentoo.org (18 Jan 2017)
 # www-client/weboob is horribly outdated and not stable
 app-office/kmymoney weboob
