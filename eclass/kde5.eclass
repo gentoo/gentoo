@@ -270,14 +270,6 @@ if [[ -n ${KMNAME} && ${KMNAME} != ${PN} && ${KDE_BUILD_TYPE} = release ]]; then
 	S=${WORKDIR}/${KMNAME}-${PV}
 fi
 
-if [[ -n ${KDEBASE} && ${KDEBASE} = kdevelop && ${KDE_BUILD_TYPE} = release ]]; then
-	if [[ -n ${KMNAME} ]]; then
-		S=${WORKDIR}/${KMNAME}-${PV}
-	else
-		S=${WORKDIR}/${P}
-	fi
-fi
-
 _kde_is_unreleased() {
 	local pair
 	for pair in "${KDE_UNRELEASED[@]}" ; do
