@@ -98,7 +98,7 @@ CDEPEND="
 	system-harfbuzz? ( >=media-libs/harfbuzz-2.3.1:0= >=media-gfx/graphite2-1.3.13 )
 	system-icu? ( >=dev-libs/icu-63.1:= )
 	system-jpeg? ( >=media-libs/libjpeg-turbo-1.2.1 )
-	system-libevent? ( >=dev-libs/libevent-2.0:0= )
+	system-libevent? ( >=dev-libs/libevent-2.0:0=[threads] )
 	system-libvpx? (
 		>=media-libs/libvpx-1.7.0:0=[postproc]
 		<media-libs/libvpx-1.8:0=[postproc]

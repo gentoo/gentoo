@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit autotools eutils python-single-r1
 
 DESCRIPTION="Arcade game with elements of economy and adventure"
-HOMEPAGE="http://gamediameter.sourceforge.net/"
+HOMEPAGE="https://sourceforge.net/projects/gamediameter/"
 SRC_URI="mirror://sourceforge/gamediameter/${P}.tar.bz2"
 
 LICENSE="GPL-2"
