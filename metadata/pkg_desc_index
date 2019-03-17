@@ -2522,7 +2522,6 @@ dev-java/dtdparser 1.21-r2: A Java DTD Parser
 dev-java/dynalang 0.4-r1: Library of interoperable metaobject protocols for dynamic languages
 dev-java/easymock 3.3.1: Mock Objects for interfaces in JUnit tests by generating them on the fly
 dev-java/easymock-classextension 3.2-r1: Mock Objects for interfaces in JUnit tests by generating them on the fly
-dev-java/echo2 2.1.1: Echo2 is the next-generation of the Echo Web Framework
 dev-java/eclipse-ecj 4.2.1 4.4.2-r1 4.5.1: Eclipse Compiler for Java
 dev-java/ecs 1.4.2-r2: Java library to generate markup language text such as HTML and XML
 dev-java/edtftpj 2.4.0: FTP client library written in Java
@@ -2886,7 +2885,6 @@ dev-java/xsom 20140925: XSOM is a Java library allows to easily parse and inspec
 dev-java/xstream 1.4.8-r2: A text-processing Java API that serialize objects to XML and back again
 dev-java/xz-java 1.5: Implementation of xz data compression in pure java
 dev-java/yanfs 1.0: Yet Another NFS - a Java NFS library
-dev-java/zemberek 2.1.1: Zemberek NLP library
 dev-java/zeus-jscl 1.64-r1: Zeus Java Swing Components Library
 dev-lang/R 3.2.2 3.4.1: Language and environment for statistical computing and graphics
 dev-lang/bff 1.0.5: A brainfuck interpreter
@@ -6560,7 +6558,7 @@ gnome-extra/cinnamon-control-center 3.6.5: Cinnamons's main interface to configu
 gnome-extra/cinnamon-desktop 3.6.2: A collection of libraries and utilites used by Cinnamon
 gnome-extra/cinnamon-menus 3.6.0: Cinnamon's library for the Desktop Menu fd.o specification
 gnome-extra/cinnamon-screensaver 3.6.1-r1: Screensaver for Cinnamon
-gnome-extra/cinnamon-session 3.6.1-r4: Cinnamon session manager
+gnome-extra/cinnamon-session 3.6.1-r5: Cinnamon session manager
 gnome-extra/cinnamon-settings-daemon 3.6.1-r1: Cinnamon's settings daemon
 gnome-extra/cinnamon-translations 3.6.3: Translation data for Cinnamon
 gnome-extra/cjs 3.6.1: Linux Mint's fork of gjs for Cinnamon
