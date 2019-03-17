@@ -5,9 +5,8 @@ EAPI=6
 GNOME2_LA_PUNT="yes"
 VALA_MIN_API_VERSION="0.28"
 
-inherit gnome2 multilib toolchain-funcs vala versionator
+inherit gnome2 multilib toolchain-funcs vala
 
-MY_PV=$(get_version_component_range 1-2)
 DESCRIPTION="Open source photo manager for GNOME"
 HOMEPAGE="https://wiki.gnome.org/Apps/Shotwell"
 
