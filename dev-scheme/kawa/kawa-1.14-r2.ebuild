@@ -21,17 +21,18 @@ KEYWORDS="x86"
 IUSE="+awt +frontend jemacs krl +sax servlets +swing +xml xqtests"
 
 CDEPEND="
-	>=virtual/jdk-1.6
 	frontend? ( sys-libs/readline:0 )
 	sax? ( dev-java/sax:0 )
 	servlets? ( java-virtuals/servlet-api:3.0 )"
 
 DEPEND="
 	${CDEPEND}
+	>=virtual/jdk-1.6
 	xqtests? ( app-arch/unzip:0 )"
 
 RDEPEND="
-	${CDEPEND}"
+	${CDEPEND}
+	>=virtual/jre-1.6"
 
 xtestsuite="XQTS_${XQTS_Ver}"
 
