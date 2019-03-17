@@ -20,6 +20,11 @@ DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/${MY_P}"
 
+src_prepare() {
+	default
+	sed -i 's/"installationMethod": "tar"/"installationMethod": "portage"/g' "${S}/package.json" || die
+}
+
 src_install() {
 	local install_dir="/usr/$(get_libdir)/node_modules/yarn" path shebang
 	insinto "${install_dir}"

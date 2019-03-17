@@ -15,9 +15,7 @@ DESCRIPTION="MATE menu system, implementing the F.D.O cross-desktop spec"
 LICENSE="GPL-2 LGPL-2"
 SLOT="0"
 
-IUSE="debug +introspection python"
-
-REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
+IUSE="debug +introspection"
 
 COMMON_DEPEND=">=dev-libs/glib-2.50:2
 	virtual/libintl
