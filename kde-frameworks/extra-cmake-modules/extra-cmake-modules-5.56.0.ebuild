@@ -43,6 +43,13 @@ pkg_setup() {
 	use doc && python-any-r1_pkg_setup
 }
 
+src_prepare() {
+	kde5_src_prepare
+	# Requires PyQt5, bug #680256
+	sed -i -e "/^if(NOT SIP_Qt5Core_Mod_FILE)/s/NOT SIP_Qt5Core_Mod_FILE/TRUE/" \
+		tests/CMakeLists.txt || die "failed to disable GenerateSipBindings tests"
+}
+
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_QTHELP_DOCS=$(usex doc)
@@ -50,7 +57,6 @@ src_configure() {
 		-DBUILD_MAN_DOCS=$(usex doc)
 		-DDOC_INSTALL_DIR=/usr/share/doc/"${PF}"
 	)
-	use test && mycmakeargs+=( -DCMAKE_DISABLE_FIND_PACKAGE_PythonModuleGeneration=ON )
 
 	kde5_src_configure
 }

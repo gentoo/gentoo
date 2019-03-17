@@ -100,12 +100,6 @@ media-video/get_flash_videos
 media-libs/rply
 
 # Michał Górny <mgorny@gentoo.org> (16 Mar 2019)
-# Current Gentoo release is from 2006, last upstream release from 2008.
-# No maintainer.  Fails to build with parallel make.
-# Removal in 30 days.  Bug #315577.
-app-misc/fdutils
-
-# Michał Górny <mgorny@gentoo.org> (16 Mar 2019)
 # Added in 2004 and not updated since (even though upstream made new
 # releases).  Never had a dedicated maintainer.  Fails to build
 # with parallel make.
