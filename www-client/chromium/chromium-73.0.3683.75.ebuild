@@ -141,6 +141,7 @@ GTK+ icon theme.
 PATCHES=(
 	"${FILESDIR}/chromium-compiler-r7.patch"
 	"${FILESDIR}/chromium-widevine-r4.patch"
+	"${FILESDIR}/chromium-fix-char_traits.patch"
 	"${FILESDIR}/chromium-73-gcc-0.patch"
 	"${FILESDIR}/chromium-73-gcc-1.patch"
 	"${FILESDIR}/chromium-73-gcc-2.patch"
