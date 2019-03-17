@@ -29,6 +29,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Lars Wendler <polynomial-c@gentoo.org> (17 Mar 2019)
+# Breaks user crontab (#680764)
+=sys-process/cronie-1.5.3-r1
+
 # Michał Górny <mgorny@gentoo.org> (16 Mar 2019)
 # The current Gentoo version has been added in 2011, and a bump is
 # pending since at least 2012.  Last touched upstream in 2015.
