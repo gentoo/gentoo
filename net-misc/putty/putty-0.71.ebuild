@@ -10,7 +10,7 @@ LICENSE="MIT"
 
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
-IUSE="doc +gtk ipv6 gssapi"
+IUSE="doc +gtk gtk2 ipv6 gssapi"
 SRC_URI="
 	https://dev.gentoo.org/~jer/${PN}-icons.tar.bz2
 	https://the.earth.li/~sgtatham/${PN}/latest/${P}.tar.gz
@@ -21,9 +21,10 @@ RDEPEND="
 	gtk? (
 		dev-libs/glib:2
 		x11-libs/gdk-pixbuf
-		x11-libs/gtk+:3[X]
 		x11-libs/libX11
 		x11-libs/pango
+		gtk2? ( x11-libs/gtk+:2 )
+		!gtk2? ( x11-libs/gtk+:3[X] )
 	)
 	gssapi? ( virtual/krb5 )
 "
@@ -48,7 +49,7 @@ src_configure() {
 	cd "${S}"/unix || die
 	econf \
 		$(use_with gssapi) \
-		$(use_with gtk)
+		$(usex gtk --with-gtk= --without-gtk $(usex gtk2 2 3 ) )
 }
 
 src_compile() {
