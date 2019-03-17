@@ -159,12 +159,7 @@ fi
 # a proper error message via pkg_nofetch.
 KDE_UNRELEASED=( )
 
-if [[ ${KDEBASE} = kdevelop ]]; then
-	HOMEPAGE="https://www.kdevelop.org/"
-else
-	HOMEPAGE="https://kde.org/"
-fi
-
+HOMEPAGE="https://kde.org/"
 LICENSE="GPL-2"
 
 SLOT=5
