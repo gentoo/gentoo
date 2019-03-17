@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 2012-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -8,7 +8,7 @@ inherit udev
 DESCRIPTION="Hardware (PCI, USB, OUI, IAB) IDs databases"
 HOMEPAGE="https://github.com/gentoo/hwids"
 if [[ ${PV} == "99999999" ]]; then
-	PYTHON_COMPAT=( python3_6 )
+	PYTHON_COMPAT=( python3_{6,7} )
 	inherit git-r3 python-any-r1
 	EGIT_REPO_URI="${HOMEPAGE}.git"
 else
