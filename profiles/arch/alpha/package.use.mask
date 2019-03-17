@@ -261,6 +261,7 @@ dev-haskell/vector test
 # Tobias Klausmann <klausman@gentoo.org> (20 Nov 2014)
 # OpenCV likely will never work on Alpha
 media-video/vlc opencv
+media-gfx/shotwell opencv
 
 # Pacho Ramos <pacho@gentoo.org> (11 Nov 2014)
 # Missing keywords, bug #523686
