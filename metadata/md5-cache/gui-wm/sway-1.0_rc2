@@ -11,5 +11,5 @@ RDEPEND=x11-misc/xkeyboard-config >=dev-libs/json-c-0.13:0= >=dev-libs/libinput-
 REQUIRED_USE=?? ( elogind systemd ) tray? ( || ( elogind systemd ) )
 SLOT=0
 SRC_URI=https://github.com/swaywm/sway/archive/1.0-rc2.tar.gz -> sway-1.0_rc2.tar.gz
-_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	meson	3c3f61163f786eebdbd8ad4f1e24ab7c	multilib	b2f01ad412baf81650c23fcf0975fa33	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	12114a2a9aab35b93efc037a196b3234	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
+_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	meson	e53acc5913e5581a8a71be22731d8f36	multilib	b2f01ad412baf81650c23fcf0975fa33	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	12114a2a9aab35b93efc037a196b3234	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
 _md5_=7f891bbcd06b6daec9975c972c788ef3

@@ -10,5 +10,5 @@ LICENSE=LGPL-2.1
 RDEPEND=dev-libs/glib:2 dev-libs/nss virtual/libusb:1= x11-libs/gtk+:3 x11-libs/pixman x11-libs/libX11 x11-libs/libXv
 SLOT=0
 SRC_URI=https://github.com/freedesktop/libfprint/archive/V_0_99_0.tar.gz -> libfprint-0.99.0.tar.gz
-_eclasses_=meson	3c3f61163f786eebdbd8ad4f1e24ab7c	multilib	b2f01ad412baf81650c23fcf0975fa33	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	12114a2a9aab35b93efc037a196b3234	toolchain-funcs	b45201c4e6c096b98e250336954e64b9	udev	7752f306eec7b286d00bdb47b763e7ac
+_eclasses_=meson	e53acc5913e5581a8a71be22731d8f36	multilib	b2f01ad412baf81650c23fcf0975fa33	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	12114a2a9aab35b93efc037a196b3234	toolchain-funcs	b45201c4e6c096b98e250336954e64b9	udev	7752f306eec7b286d00bdb47b763e7ac
 _md5_=93656c85e42f0c5519ab44b054129472

@@ -6445,7 +6445,6 @@ dev-util/xxdi 1.0.0: Simple alternative to vim's 'xxd -i' mode
 dev-util/xxdiff 4.0.1_p20170622: A graphical file and directories comparator and merge tool
 dev-util/yacc 1.9.1-r6: Yacc: Yet Another Compiler-Compiler
 dev-vcs/bzr 2.7.0: Bazaar is a next generation distributed version control system
-dev-vcs/bzr-fastimport 0.13.0: Plugin providing fast loading of revision control data into Bazaar
 dev-vcs/bzr-rewrite 0.6.3: Bazaar plugin that adds support for rebasing, similar to git rebase
 dev-vcs/bzr-xmloutput 0.8.8-r2: Bazaar plugin providing an option to generate XML output for builtin commands
 dev-vcs/bzrtools 2.5: bzrtools is a useful collection of utilities for bzr

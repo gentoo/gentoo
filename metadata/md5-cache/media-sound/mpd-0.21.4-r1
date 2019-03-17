@@ -12,5 +12,5 @@ REQUIRED_USE=|| ( alsa ao fifo jack network openal oss pipe pulseaudio recorder 
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://www.musicpd.org/download/mpd/0.21/mpd-0.21.4.tar.xz
-_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	a09389deba2c0a7108b581e02c7cecbf	linux-info	953c3b1c472dcadbf62098a9301327f2	meson	3c3f61163f786eebdbd8ad4f1e24ab7c	multilib	b2f01ad412baf81650c23fcf0975fa33	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	12114a2a9aab35b93efc037a196b3234	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	b45201c4e6c096b98e250336954e64b9	user	8bd74731cafdcdad8f7a63637302e073
+_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	a09389deba2c0a7108b581e02c7cecbf	linux-info	953c3b1c472dcadbf62098a9301327f2	meson	e53acc5913e5581a8a71be22731d8f36	multilib	b2f01ad412baf81650c23fcf0975fa33	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	12114a2a9aab35b93efc037a196b3234	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	b45201c4e6c096b98e250336954e64b9	user	8bd74731cafdcdad8f7a63637302e073
 _md5_=c58ad5d8532aba157038d50a2fb52a84
