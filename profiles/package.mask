@@ -29,6 +29,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (17 Mar 2019)
+# Unmaintained, the previous maintainer last touched it in ~2013
+# and others have bumped it since (last in 2017).  The current version
+# fails tests, is outdated and really needs a bump.  net-misc/youtube-dl
+# is a suitable (and more frequently updated) replacement.
+# Removal in 30 days.  Bug #407381.
+media-video/get_flash_videos
+
 # Mart Raudsepp <leio@gentoo.org> (17 Mar 2019)
 # Fails to configure with jemalloc-enabled dev-lang/spidermonkey:60 as
 # found in main tree currently.  Bug #680006.
