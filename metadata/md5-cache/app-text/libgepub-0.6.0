@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare test
+DEPEND=app-arch/libarchive dev-libs/glib:2 dev-libs/libxml2 net-libs/libsoup:2.4 net-libs/webkit-gtk:4 x11-libs/gtk+:3 introspection? ( >=dev-libs/gobject-introspection-1.30:= ) virtual/pkgconfig app-arch/xz-utils >=dev-util/meson-0.48.2 >=dev-util/ninja-1.7.2 dev-util/desktop-file-utils x11-misc/shared-mime-info
+DESCRIPTION=GObject based library for handling and rendering epub documents
+EAPI=6
+HOMEPAGE=https://git.gnome.org/browse/libgepub
+IUSE=+introspection
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-2+
+RDEPEND=app-arch/libarchive dev-libs/glib:2 dev-libs/libxml2 net-libs/libsoup:2.4 net-libs/webkit-gtk:4 x11-libs/gtk+:3 introspection? ( >=dev-libs/gobject-introspection-1.30:= )
+SLOT=0
+SRC_URI=mirror://gnome/sources/libgepub/0.6/libgepub-0.6.0.tar.xz
+_eclasses_=eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	estack	43ddf5aaffa7a8d0482df54d25a66a1f	gnome.org	532d56d07b9eace4831aaa817d2b756a	meson	3c3f61163f786eebdbd8ad4f1e24ab7c	multilib	b2f01ad412baf81650c23fcf0975fa33	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	12114a2a9aab35b93efc037a196b3234	toolchain-funcs	b45201c4e6c096b98e250336954e64b9	versionator	2352c3fc97241f6a02042773c8287748	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	14d00d009167652b1fa363e55effe213
+_md5_=26908ccde0e948b89fd6469ac2208440
