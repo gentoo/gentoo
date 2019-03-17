@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 JAVA_PKG_IUSE="source"
 
@@ -11,23 +11,28 @@ DESCRIPTION="Kawa, the Java-based Scheme system & Language Framework"
 HOMEPAGE="https://www.gnu.org/software/kawa/"
 XQTS_Ver="1_0_3"
 SRC_URI="mirror://gnu/kawa/${P}.tar.gz
-		 xqtests? ( http://www.w3.org/XML/Query/test-suite/XQTS_${XQTS_Ver}.zip )"
+	xqtests? ( http://www.w3.org/XML/Query/test-suite/XQTS_${XQTS_Ver}.zip )"
 
 LICENSE="MIT public-domain
-		 jemacs? ( GPL-2 )
-		 krl? ( GPL-2 )"
+	jemacs? ( GPL-2 )
+	krl? ( GPL-2 )"
 SLOT="0"
 KEYWORDS="x86"
-IUSE="+awt echo2 +frontend jemacs krl +sax servlets +swing +xml xqtests"
+IUSE="+awt +frontend jemacs krl +sax servlets +swing +xml xqtests"
 
-CDEPEND="( >=virtual/jdk-1.6 )
+CDEPEND="
 	frontend? ( sys-libs/readline:0 )
 	sax? ( dev-java/sax:0 )
-	echo2? ( dev-java/echo2 )
 	servlets? ( java-virtuals/servlet-api:3.0 )"
-DEPEND="${CDEPEND}
-		xqtests? ( app-arch/unzip:0 )"
-RDEPEND="${CDEPEND}"
+
+DEPEND="
+	${CDEPEND}
+	>=virtual/jdk-1.6
+	xqtests? ( app-arch/unzip:0 )"
+
+RDEPEND="
+	${CDEPEND}
+	>=virtual/jre-1.6"
 
 xtestsuite="XQTS_${XQTS_Ver}"
 
@@ -64,42 +69,41 @@ src_configure() {
 	fi
 
 	econf ${myconf} $(use_enable frontend kawa-frontend) \
-		  $(use_enable xml) \
-		  $(use_enable krl brl) \
-		  $(use_enable echo2) \
-		  $(use_enable jemacs) \
-		  $(use_with awt) \
-		  $(use_with sax sax2) \
-		  --with-java-source=$(java-pkg_get-source) || die "econf failed."
+		$(use_enable xml) \
+		$(use_enable krl brl) \
+		$(use_enable jemacs) \
+		$(use_with awt) \
+		$(use_with sax sax2) \
+		--with-java-source=$(java-pkg_get-source)
 }
 
 src_compile() {
-	emake -j1 || die "emake failed."
+	emake -j1
 }
 
 src_install () {
-	emake -j1 DESTDIR="${D}" install || die "emake install failed"
+	emake -j1 DESTDIR="${D}" install
 	rm -rv "${D}"/usr/share/java/ || die "rm -rv failed"
 
-	java-pkg_newjar kawa-${PV}.jar || die
+	java-pkg_newjar kawa-${PV}.jar
 
-	java-pkg_dolauncher "kawa" --main kawa.repl || die "dolauncher failed"
-	java-pkg_dolauncher "qexo" --main kawa.repl --pkg_args \
-		"--xquery" || die "dolauncher qexo failed"
+	java-pkg_dolauncher "kawa" --main kawa.repl
+	java-pkg_dolauncher "qexo" --main kawa.repl --pkg_args \ "--xquery"
 	if use servlets; then
 		java-pkg_dolauncher "kawa-cgi-servlet" --main \
-			gnu.kawa.servlet.CGIServletWrapper || die
+			gnu.kawa.servlet.CGIServletWrapper
 	fi
 	if use jemacs; then
 		java-pkg_dolauncher "jemacs" --main \
-			gnu.jemacs.lang.ELisp || die
+			gnu.jemacs.lang.ELisp
 	fi
 
 	use source && java-pkg_dosrc kawa/* gnu/*
 
-	dodoc ChangeLog TODO README NEWS || die
-	doinfo doc/kawa.info* || die
+	dodoc ChangeLog TODO README NEWS
+	doinfo doc/kawa.info*
+	doman doc/*.2
+
 	cp doc/kawa.man doc/kawa.2 || die
 	cp doc/qexo.man doc/qexo.2 || die
-	doman doc/*.2 || die
 }
