@@ -9870,7 +9870,7 @@ sys-apps/hexdump-esr 1.8: Eric Raymond's hex dumper
 sys-apps/hotplug2stdout 1.2.1: A tool for reading kernel uevent(s) to stdout
 sys-apps/hponcfg 4.6.0.0: HP Lights-Out Online Configuration Utility (HPONCFG)
 sys-apps/hwdata-gentoo 0.4: Data for the hwsetup program
-sys-apps/hwids 20170328 20171003 20180917: Hardware (PCI, USB, OUI, IAB) IDs databases
+sys-apps/hwids 20171003 20180917: Hardware (PCI, USB, OUI, IAB) IDs databases
 sys-apps/hwinfo 21.4 21.23: Hardware detection tool used in SuSE Linux
 sys-apps/hwloc 1.11.2-r1: displays the hardware topology in convenient formats
 sys-apps/hwsetup 1.2-r3: Hardware setup program from Knoppix - used only on LiveCD
