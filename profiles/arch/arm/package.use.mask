@@ -1,6 +1,10 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Anthony G. Basile <blueness@gentoo.org> (16 Mar 2019)
+# to avoid a circular dependency
+dev-python/async_timeout test
+
 # Anthony G. Basile <blueness@gentoo.org> (8 Mar 2019)
 # hipe code is missing in erlang for arm
 dev-lang/erlang hipe
