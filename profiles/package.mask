@@ -45,9 +45,10 @@ x11-misc/xwinwrap
 media-video/get_flash_videos
 
 # Mart Raudsepp <leio@gentoo.org> (17 Mar 2019)
-# Fails to configure with jemalloc-enabled dev-lang/spidermonkey:60 as
-# found in main tree currently.  Bug #680006.
+# gjs-1.54 fails to configure with jemalloc-enabled dev-lang/spidermonkey:60
+# as found in main tree currently.  Bug #680006.
 ~dev-libs/gjs-1.54.3
+~net-irc/polari-3.30.2
 
 # Lars Wendler <polynomial-c@gentoo.org> (17 Mar 2019)
 # Breaks user crontab (#680764)
