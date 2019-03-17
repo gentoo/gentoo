@@ -17,7 +17,7 @@ IUSE="doc static-libs"
 DEPEND="doc? ( app-text/xmlto )"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-5.1.6-gentoo.patch
+	"${FILESDIR}"/${PN}-5.1.8-gentoo.patch
 )
 
 src_prepare() {

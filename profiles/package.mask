@@ -37,10 +37,17 @@
 net-analyzer/netsniff-ng
 
 # Michał Górny <mgorny@gentoo.org> (17 Mar 2019)
-# Unmaintained.  Does not work with current Gentoo versions
-# of dev-python/python-fastimport.  No upstream release since 2012.
+# bzr-fastimport: Unmaintained.  Does not work with current Gentoo
+# versions of dev-python/python-fastimport.  No upstream release since
+# 2012.
+#
+# git-bzr-ng: Unmaintained.  Reverse depedency of bzr-fastimport.
+# Gentoo carries a 2012 snapshot, upstream did not touch the code
+# since 2013.
+#
 # Removal in 30 days.  Bug #591446.
 dev-vcs/bzr-fastimport
+dev-vcs/git-bzr-ng
 
 # Michał Górny <mgorny@gentoo.org> (17 Mar 2019)
 # Live ebuild adde in 2012 and not touched by the maintainer since.
