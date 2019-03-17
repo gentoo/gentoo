@@ -1,0 +1,12 @@
+BDEPEND=app-arch/p7zip
+DEFINED_PHASES=install prepare
+DESCRIPTION=Qt5 documentation, for use with Qt Creator and other tools
+EAPI=7
+HOMEPAGE=https://doc.qt.io/
+IUSE=3d bluetooth charts datavis declarative graphicaleffects +html location multimedia networkauth +qch script sensors virtualkeyboard webengine
+KEYWORDS=~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86
+LICENSE=FDL-1.3
+REQUIRED_USE=|| ( html qch )
+SLOT=5
+SRC_URI=https://download.qt.io/online/qtsdkrepository/linux_x64/desktop/qt5_5122_src_doc_examples/qt.qt5.5122.doc/5.12.2-0-201903121945qt-everywhere-documentation.7z charts? ( https://download.qt.io/online/qtsdkrepository/linux_x64/desktop/qt5_5122_src_doc_examples/qt.qt5.5122.doc.qtcharts/5.12.2-0-201903121945qtcharts-documentation.7z ) datavis? ( https://download.qt.io/online/qtsdkrepository/linux_x64/desktop/qt5_5122_src_doc_examples/qt.qt5.5122.doc.qtdatavis3d/5.12.2-0-201903121945qtdatavisualization-documentation.7z ) networkauth? ( https://download.qt.io/online/qtsdkrepository/linux_x64/desktop/qt5_5122_src_doc_examples/qt.qt5.5122.doc.qtnetworkauth/5.12.2-0-201903121945qtnetworkauth-documentation.7z ) script? ( https://download.qt.io/online/qtsdkrepository/linux_x64/desktop/qt5_5122_src_doc_examples/qt.qt5.5122.doc.qtscript/5.12.2-0-201903121945qtscript-documentation.7z https://download.qt.io/online/qtsdkrepository/linux_x64/desktop/qt5_5122_src_doc_examples/qt.qt5.5122.doc.qtscript/5.12.2-0-201903121945qtscripttools-documentation.7z ) virtualkeyboard? ( https://download.qt.io/online/qtsdkrepository/linux_x64/desktop/qt5_5122_src_doc_examples/qt.qt5.5122.doc.qtvirtualkeyboard/5.12.2-0-201903121945qtvirtualkeyboard-documentation.7z ) webengine? ( https://download.qt.io/online/qtsdkrepository/linux_x64/desktop/qt5_5122_src_doc_examples/qt.qt5.5122.doc.qtwebengine/5.12.2-0-201903121945qtwebengine-documentation.7z )
+_md5_=0fe0457a5fdbb5e7e9a7cbf3f8a9789d
