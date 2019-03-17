@@ -409,6 +409,10 @@ _calculate_live_repo() {
 		EGIT_BRANCH="Plasma/$(ver_cut 1-2)"
 	fi
 
+	if [[ ${PV} != 9999 && ${PN} = kdevelop* ]]; then
+		EGIT_BRANCH="$(ver_cut 1-2)"
+	fi
+
 	EGIT_REPO_URI="${EGIT_MIRROR}/${_kmname}"
 }
 
