@@ -784,7 +784,7 @@ app-emulation/winetricks 20170823: Easy way to install DLLs needed to work aroun
 app-emulation/x48 0.6.4-r1: HP48 Calculator Emulator
 app-emulation/xen 4.10.2-r2 4.10.3-r1: The Xen virtual machine monitor
 app-emulation/xen-pvgrub 4.10.2 4.10.3: allows to boot Xen domU kernels from a menu.lst laying inside guest filesystem
-app-emulation/xen-tools 4.10.2-r1 4.10.3-r1: Xen tools including QEMU and xl
+app-emulation/xen-tools 4.10.2-r1 4.10.3-r1 4.10.3-r2: Xen tools including QEMU and xl
 app-emulation/xtrs 4.9d-r4: Radio Shack TRS-80 emulator
 app-eselect/eselect-awk 0.2: Manages the {,/usr}/bin/awk symlink
 app-eselect/eselect-blas 0.1: BLAS module for eselect
@@ -10621,7 +10621,7 @@ www-apps/trac 1.0.9: Enhanced wiki and issue tracking system for software develo
 www-apps/venus 20100911-r1: A feed aggregator application
 www-apps/viewvc 1.1.26: ViewVC, a web interface to CVS and Subversion
 www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositories in PHP
-www-client/chromium 72.0.3626.121: Open-source version of Google Chrome web browser
+www-client/chromium 72.0.3626.121 73.0.3683.75: Open-source version of Google Chrome web browser
 www-client/dillo 3.0.5: Lean FLTK based web browser
 www-client/elinks 0.12_pre6-r1: Advanced and well-established text-mode web browser
 www-client/epiphany 3.30.2: GNOME webbrowser based on Webkit
