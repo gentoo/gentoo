@@ -30,6 +30,12 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (17 Mar 2019)
+# Unmaintained.  Does not work with current Gentoo versions
+# of dev-python/python-fastimport.  No upstream release since 2012.
+# Removal in 30 days.  Bug #591446.
+dev-vcs/bzr-fastimport
+
+# Michał Górny <mgorny@gentoo.org> (17 Mar 2019)
 # Live ebuild adde in 2012 and not touched by the maintainer since.
 # Never seen a release ebuild or a snapshot.
 # Removal in 30 days.  Bug #680790.
