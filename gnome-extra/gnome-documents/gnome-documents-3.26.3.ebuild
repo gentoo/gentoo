@@ -17,6 +17,7 @@ COMMON_DEPEND="
 	>=app-text/evince-3.13.3[introspection]
 	>=net-libs/webkit-gtk-2.6:4[introspection]
 	>=dev-libs/gjs-1.48.0
+	<dev-libs/gjs-1.53
 	>=dev-libs/glib-2.39.3:2
 	>=dev-libs/gobject-introspection-1.31.6:=
 	>=x11-libs/gtk+-3.22.15:3[introspection]

@@ -21,7 +21,7 @@ Project Website: http://fna-xna.github.io/
 		<flag name="xnasong">Build support for optional XNG_SONG component (note: this not required by
 			<pkg>app-emulation/wine-staging</pkg>, <pkg>app-emulation/wine-vanilla</pkg> for faudio XAudio support).</flag>
 		<flag name="test">Build and run faudio testsuite.</flag>
-		<flag name="utils">Build all faudio utilties.</flag>
+		<flag name="utils">Build all faudio utilities.</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">FNA-XNA/FAudio</remote-id>
