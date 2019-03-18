@@ -1,12 +1,12 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 inherit eutils games
 
 DESCRIPTION="Precursor to the Dominions series"
-HOMEPAGE="http://www.shrapnelgames.com/Illwinter/CoE2/"
-SRC_URI="http://download.shrapnelgames.com/downloads/${PN}_${PV}.zip"
+HOMEPAGE="https://www.shrapnelgames.com/Our_Games/Free_Games.html"
+SRC_URI="https://download.shrapnelgames.com/downloads/${PN}_${PV}.zip"
 
 LICENSE="all-rights-reserved"
 SLOT="0"
