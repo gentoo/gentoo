@@ -50,7 +50,6 @@ multilib_src_install() {
 		DESTDIR="${D}" \
 		PREFIX="${EPREFIX}/usr" \
 		LIBDIR="${EPREFIX}/usr/$(get_libdir)" \
-		MANDIR="${EPREFIX}/usr/share/man/man1" \
 		install
 
 	if ! use static-libs ; then
