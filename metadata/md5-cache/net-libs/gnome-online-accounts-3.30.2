@@ -1,0 +1,15 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare
+DEPEND=>=dev-libs/glib-2.52:2 >=app-crypt/libsecret-0.5 >=dev-libs/json-glib-0.16 dev-libs/libxml2:2 >=net-libs/libsoup-2.42:2.4 net-libs/rest:0.7 >=net-libs/webkit-gtk-2.12.0:4 >=x11-libs/gtk+-3.19.12:3 x11-libs/pango introspection? ( >=dev-libs/gobject-introspection-0.6.2:= ) kerberos? ( app-crypt/gcr:0=[gtk] app-crypt/mit-krb5 ) vala? ( || ( dev-lang/vala:0.44[vapigen(+)] dev-lang/vala:0.42[vapigen(+)] dev-lang/vala:0.40[vapigen(+)] dev-lang/vala:0.36[vapigen(+)] dev-lang/vala:0.34[vapigen(+)] dev-lang/vala:0.32[vapigen(+)] ) ) dev-libs/libxslt >=dev-util/gtk-doc-am-1.3 >=dev-util/gdbus-codegen-2.30.0 >=sys-devel/gettext-0.19.8 virtual/pkgconfig dev-libs/gobject-introspection-common gnome-base/gnome-common >=app-portage/elt-patches-20170815 app-arch/xz-utils dev-util/desktop-file-utils x11-misc/shared-mime-info
+DESCRIPTION=GNOME framework for accessing online accounts
+EAPI=6
+HOMEPAGE=https://wiki.gnome.org/Projects/GnomeOnlineAccounts
+IUSE=debug gnome +introspection kerberos +vala
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=LGPL-2+
+PDEPEND=gnome? ( >=gnome-base/gnome-control-center-3.2[gnome-online-accounts(+)] )
+RDEPEND=>=dev-libs/glib-2.52:2 >=app-crypt/libsecret-0.5 >=dev-libs/json-glib-0.16 dev-libs/libxml2:2 >=net-libs/libsoup-2.42:2.4 net-libs/rest:0.7 >=net-libs/webkit-gtk-2.12.0:4 >=x11-libs/gtk+-3.19.12:3 x11-libs/pango introspection? ( >=dev-libs/gobject-introspection-0.6.2:= ) kerberos? ( app-crypt/gcr:0=[gtk] app-crypt/mit-krb5 )
+REQUIRED_USE=vala? ( introspection )
+SLOT=0/1
+SRC_URI=mirror://gnome/sources/gnome-online-accounts/3.30/gnome-online-accounts-3.30.2.tar.xz
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	gnome.org	532d56d07b9eace4831aaa817d2b756a	gnome2	1a42e8c41af42cb294817dcc5b7e3df6	gnome2-utils	532371cfcba45b2ab0d2950547c97d95	libtool	f143db5a74ccd9ca28c1234deffede96	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	b2f01ad412baf81650c23fcf0975fa33	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	b45201c4e6c096b98e250336954e64b9	vala	a94a0fb4c35fe91774bb72ec8f3c861f	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	versionator	2352c3fc97241f6a02042773c8287748	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	14d00d009167652b1fa363e55effe213
+_md5_=a9c52040297b6fea09aee1389cdb0bae
