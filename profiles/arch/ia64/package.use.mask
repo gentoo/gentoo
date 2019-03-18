@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Mart Raudsepp <leio@gentoo.org> (17 Mar 2019)
-# Unkeyworded media-libs/opencv dependency
+# Unkeyworded media-libs/opencv dependency, bug #680656
 media-gfx/shotwell opencv
 
 # Sergei Trofimovich <slyfox@gentoo.org> (13 Oct 2018)
