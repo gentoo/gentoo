@@ -184,7 +184,8 @@ dev-python/etsproxy
 dev-python/graphcanvas
 dev-python/pyface
 dev-python/scimath
-dev-python/traits
+=dev-python/traits-4.5.0
+=dev-python/traits-4.6.0
 dev-python/traitsui
 sci-visualization/mayavi
 
