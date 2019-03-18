@@ -1,0 +1,15 @@
+BDEPEND=virtual/pkgconfig
+DEFINED_PHASES=configure prepare setup
+DEPEND=gcrypt? ( dev-libs/libgcrypt:0= ) nls? ( sys-devel/gettext ) luks? ( sys-fs/cryptsetup ) openssl? ( dev-libs/openssl:0= ) systemd? ( sys-apps/systemd ) udev? ( virtual/udev ) virtual/libiconv virtual/libintl sys-kernel/linux-headers
+DESCRIPTION=A utility for management and user-mode mounting of encrypted filesystems
+EAPI=7
+HOMEPAGE=http://cryptmount.sourceforge.net/
+IUSE=argv0switch cswap fsck +gcrypt +largefile mount +nls +luks +openssl selinux systemd udev kernel_linux
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2+
+RDEPEND=gcrypt? ( dev-libs/libgcrypt:0= ) nls? ( sys-devel/gettext ) luks? ( sys-fs/cryptsetup ) openssl? ( dev-libs/openssl:0= ) systemd? ( sys-apps/systemd ) udev? ( virtual/udev ) virtual/libiconv virtual/libintl
+REQUIRED_USE=luks? ( gcrypt ) openssl? ( gcrypt )
+SLOT=0
+SRC_URI=mirror://sourceforge/cryptmount/cryptmount-5.3.1.tar.gz
+_eclasses_=linux-info	953c3b1c472dcadbf62098a9301327f2	multilib	b2f01ad412baf81650c23fcf0975fa33	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
+_md5_=478602c395d9695367258215fa765a6f
