@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst prepare pretend test
+DEPEND=dev-db/sqlite:3 <dev-games/openscenegraph-3.5.6:=[jpeg,png] ~dev-games/simgear-2018.3.2[gdal=] media-libs/openal >=media-libs/speex-1.2.0:0 media-libs/speexdsp:0 media-sound/gsm sys-libs/zlib virtual/glu x11-libs/libX11 dbus? ( >=sys-apps/dbus-1.6.18-r1 ) gdal? ( >=sci-libs/gdal-2.0.0:0 ) qt5? ( >=dev-qt/qtcore-5.7.1:5 >=dev-qt/qtdeclarative-5.7.1:5 >=dev-qt/qtgui-5.7.1:5 >=dev-qt/qtnetwork-5.7.1:5 >=dev-qt/qtwidgets-5.7.1:5 ) udev? ( virtual/udev ) utils? ( media-libs/freeglut media-libs/freetype:2 media-libs/glew:0 media-libs/libpng:0 virtual/opengl qt5? ( >=dev-qt/qtwebsockets-5.7.1:5 ) ) >=dev-libs/boost-1.44 >=media-libs/plib-1.8.5 utils? ( x11-libs/libXi x11-libs/libXmu ) sys-devel/make >=dev-util/cmake-3.9.6
+DESCRIPTION=Open Source Flight Simulator
+EAPI=6
+HOMEPAGE=http://www.flightgear.org/
+IUSE=cpu_flags_x86_sse2 dbus debug examples gdal openmp qt5 +udev +utils vim-syntax
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-db/sqlite:3 <dev-games/openscenegraph-3.5.6:=[jpeg,png] ~dev-games/simgear-2018.3.2[gdal=] media-libs/openal >=media-libs/speex-1.2.0:0 media-libs/speexdsp:0 media-sound/gsm sys-libs/zlib virtual/glu x11-libs/libX11 dbus? ( >=sys-apps/dbus-1.6.18-r1 ) gdal? ( >=sci-libs/gdal-2.0.0:0 ) qt5? ( >=dev-qt/qtcore-5.7.1:5 >=dev-qt/qtdeclarative-5.7.1:5 >=dev-qt/qtgui-5.7.1:5 >=dev-qt/qtnetwork-5.7.1:5 >=dev-qt/qtwidgets-5.7.1:5 ) udev? ( virtual/udev ) utils? ( media-libs/freeglut media-libs/freetype:2 media-libs/glew:0 media-libs/libpng:0 virtual/opengl qt5? ( >=dev-qt/qtwebsockets-5.7.1:5 ) ) ~games-simulation/flightgear-data-2018.3.2
+RESTRICT=test
+SLOT=0
+SRC_URI=mirror://sourceforge/flightgear/flightgear-2018.3.2.tar.bz2
+_eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	cmake-utils	ab10bd85e5d38e2a32077bcd91faa1b6	desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	a09389deba2c0a7108b581e02c7cecbf	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	b2f01ad412baf81650c23fcf0975fa33	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	b45201c4e6c096b98e250336954e64b9	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	14d00d009167652b1fa363e55effe213
+_md5_=b04644f131efa32b2997911aacb0bec2
