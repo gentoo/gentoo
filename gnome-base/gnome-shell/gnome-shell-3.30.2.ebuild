@@ -26,21 +26,20 @@ COMMON_DEPEND="
 	>=gnome-extra/evolution-data-server-3.17.2:=
 	>=app-crypt/gcr-3.7.5[introspection]
 	>=gnome-base/gnome-desktop-3.7.90:3=[introspection]
-	>=dev-libs/glib-2.56.0:2
+	>=dev-libs/glib-2.57.2:2
 	>=dev-libs/gobject-introspection-1.49.1:=
 	>=dev-libs/gjs-1.47.0
-	<dev-libs/gjs-1.53
 	>=x11-libs/gtk+-3.15.0:3[introspection]
 	nsplugin? ( >=dev-libs/json-glib-0.13.2 )
-	>=x11-wm/mutter-3.28.0:0/2[introspection]
+	>=x11-wm/mutter-3.30.1:0/3[introspection]
 	>=sys-auth/polkit-0.100[introspection]
-	>=gnome-base/gsettings-desktop-schemas-3.21.3
+	>=gnome-base/gsettings-desktop-schemas-3.27.90
 	>=x11-libs/startup-notification-0.11
 	>=app-i18n/ibus-1.5.2
 	bluetooth? ( >=net-wireless/gnome-bluetooth-3.9[introspection] )
 	>=media-libs/gstreamer-0.11.92:1.0
 	networkmanager? (
-		>=net-misc/networkmanager-0.9.8:=[introspection]
+		>=net-misc/networkmanager-1.10.4:=[introspection]
 		>=app-crypt/libsecret-0.18
 		dev-libs/dbus-glib )
 	systemd? ( >=sys-apps/systemd-31 )
@@ -50,7 +49,6 @@ COMMON_DEPEND="
 	media-libs/libcanberra[gtk3]
 	x11-libs/gdk-pixbuf:2[introspection]
 	dev-libs/libxml2:2
-	>=net-libs/libsoup-2.40:2.4[introspection]
 	x11-libs/libX11
 
 	>=media-sound/pulseaudio-2[glib]
@@ -119,14 +117,12 @@ DEPEND="${COMMON_DEPEND}
 "
 
 PATCHES=(
-	# Patches from gnome-3-28 branch on top of 3.28.3
+	# Patches from gnome-3-28 branch on top of 3.30.2
 	"${WORKDIR}"/patches/
 	# Change favorites defaults, bug #479918
-	"${FILESDIR}"/${PV}-defaults.patch
+	"${FILESDIR}"/3.28.3-defaults.patch
 	# Fix automagic gnome-bluetooth dep, bug #398145
-	"${FILESDIR}"/${PV}-optional-bluetooth.patch
-	# Fix gtk-doc build with >=meson-0.47
-	"${FILESDIR}"/${PV}-fix-gtk-doc-meson.patch
+	"${FILESDIR}"/3.28.3-optional-bluetooth.patch
 )
 
 src_prepare() {

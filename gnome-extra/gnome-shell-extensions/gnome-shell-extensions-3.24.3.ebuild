@@ -23,6 +23,7 @@ RDEPEND="${COMMON_DEPEND}
 	dev-libs/atk[introspection]
 	gnome-base/gnome-menus:3[introspection]
 	>=gnome-base/gnome-shell-3.14.2
+	<gnome-base/gnome-shell-3.29
 	media-libs/clutter:1.0[introspection]
 	net-libs/telepathy-glib[introspection]
 	x11-libs/gdk-pixbuf:2[introspection]
@@ -30,6 +31,7 @@ RDEPEND="${COMMON_DEPEND}
 	x11-libs/pango[introspection]
 	x11-themes/adwaita-icon-theme
 	x11-wm/mutter[introspection]
+	<x11-wm/mutter-3.29
 "
 DEPEND="${COMMON_DEPEND}
 	>=sys-devel/gettext-0.19.6

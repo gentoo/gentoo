@@ -10,10 +10,12 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/mutter/"
 SRC_URI+=" https://dev.gentoo.org/~leio/distfiles/${P}-patchset.tar.xz"
 
 LICENSE="GPL-2+"
-SLOT="0/2" # 0/libmutter_api_version - ONLY gnome-shell (or anything using mutter-clutter-<api_version>.pc) should use the subslot
+SLOT="0/3" # 0/libmutter_api_version - ONLY gnome-shell (or anything using mutter-clutter-<api_version>.pc) should use the subslot
 
 IUSE="debug elogind gles2 input_devices_wacom +introspection systemd test udev wayland"
-REQUIRED_USE="wayland? ( ^^ ( elogind systemd ) )"
+# native backend requires gles3 for hybrid graphics blitting support and a logind provider
+REQUIRED_USE="
+	wayland? ( ^^ ( elogind systemd ) )"
 
 KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 
@@ -33,7 +35,6 @@ RDEPEND="
 	>=x11-libs/libXcomposite-0.2
 	>=gnome-base/gsettings-desktop-schemas-3.21.4[introspection?]
 	gnome-base/gnome-desktop:3=
-	>sys-power/upower-0.99:=
 
 	x11-libs/libICE
 	x11-libs/libSM
@@ -61,8 +62,8 @@ RDEPEND="
 	wayland? (
 		>=dev-libs/libinput-1.4
 		>=dev-libs/wayland-1.13.0
-		>=dev-libs/wayland-protocols-1.12
-		>=media-libs/mesa-10.3[egl,gbm,wayland]
+		>=dev-libs/wayland-protocols-1.16
+		>=media-libs/mesa-10.3[egl,gbm,wayland,gles2]
 		systemd? ( sys-apps/systemd )
 		elogind? ( sys-auth/elogind )
 		>=virtual/libgudev-232:=
@@ -81,8 +82,10 @@ DEPEND="${RDEPEND}
 "
 
 PATCHES=(
-	# Lots of patches from gnome-3-28 branch on top of 3.28.3
+	# Some patches from gnome-3-30 branch on top of 3.30.2
 	"${WORKDIR}"/patches/
+	# Hack to not fail USE="-wayland,-gles2" builds with no mesa[gles2]
+	"${FILESDIR}"/3.28.3-no-gles2-fix.patch # requires eautoreconf
 )
 
 src_prepare() {

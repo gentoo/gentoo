@@ -86,12 +86,6 @@ x11-misc/xwinwrap
 # Removal in 30 days.  Bug #407381.
 media-video/get_flash_videos
 
-# Mart Raudsepp <leio@gentoo.org> (17 Mar 2019)
-# gjs-1.54 fails to configure with jemalloc-enabled dev-lang/spidermonkey:60
-# as found in main tree currently.  Bug #680006.
-~dev-libs/gjs-1.54.3
-~net-irc/polari-3.30.2
-
 # Lars Wendler <polynomial-c@gentoo.org> (17 Mar 2019)
 # Breaks user crontab (#680764)
 =sys-process/cronie-1.5.3-r1
