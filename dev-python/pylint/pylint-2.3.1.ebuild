@@ -31,6 +31,10 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 		dev-python/six[${PYTHON_USEDEP}]
 	)"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-2.3.1-sphinx-theme.patch"
+)
+
 python_compile_all() {
 	# selection of straight html triggers a trivial annoying bug, we skirt it
 	use doc && PYTHONPATH="${S}" emake -e -C doc singlehtml
