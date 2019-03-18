@@ -3,16 +3,14 @@
 
 EAPI=6
 
-inherit eutils cmake-utils toolchain-funcs flag-o-matic git-r3
+inherit cmake-utils toolchain-funcs flag-o-matic
 
 DESCRIPTION="Development library for simulation games"
 HOMEPAGE="http://www.simgear.org/"
-EGIT_REPO_URI="git://git.code.sf.net/p/flightgear/${PN}
-	git://mapserver.flightgear.org/${PN}"
-EGIT_BRANCH="next"
+SRC_URI="mirror://sourceforge/flightgear/${P}.tar.bz2"
 
 LICENSE="GPL-2"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 SLOT="0"
 IUSE="cpu_flags_x86_sse2 +dns debug gdal openmp subversion test"
 

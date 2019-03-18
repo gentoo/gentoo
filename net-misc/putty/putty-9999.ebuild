@@ -12,16 +12,17 @@ LICENSE="MIT"
 
 SLOT="0"
 KEYWORDS=""
-IUSE="doc +gtk ipv6 gssapi"
+IUSE="doc +gtk gtk2 ipv6 gssapi"
 
 RDEPEND="
 	!net-misc/pssh
 	gtk? (
 		dev-libs/glib:2
 		x11-libs/gdk-pixbuf
-		x11-libs/gtk+:3[X]
 		x11-libs/libX11
 		x11-libs/pango
+		gtk2? ( x11-libs/gtk+:2 )
+		!gtk2? ( x11-libs/gtk+:3[X] )
 	)
 	gssapi? ( virtual/krb5 )
 "
@@ -54,7 +55,7 @@ src_configure() {
 	cd "${S}"/unix || die
 	econf \
 		$(use_with gssapi) \
-		$(use_with gtk gtk=3)
+		$(usex gtk --with-gtk= --without-gtk $(usex gtk2 2 3 ) )
 }
 
 src_compile() {
