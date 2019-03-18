@@ -2822,7 +2822,7 @@ dev-java/stax2-api 4.0.0: Extended Stax (STandard Api for Xml procesing) API
 dev-java/stringtemplate 3.2.1-r1 4.0.8: A Java template engine
 dev-java/sun-dtdparser 1.0: Sun DTDParser
 dev-java/sun-httpserver-bin 2.0.1-r1: Sun sun.net.httpserver classes
-dev-java/sun-jaf 1.1.1 1.1.1-r1: Sun's JavaBeans Activation Framework (JAF)
+dev-java/sun-jaf 1.1.1-r1: Sun's JavaBeans Activation Framework (JAF)
 dev-java/sun-jai-bin 1.1.3 1.1.3-r1: JAI is a class library for managing images
 dev-java/sun-java3d-bin 1.3.2-r1 1.4.0_pre5-r1: Sun Java3D API Core
 dev-java/sun-jms 1.1-r2: The Java Message Service (JMS) API
