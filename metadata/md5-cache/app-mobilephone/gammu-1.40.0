@@ -1,0 +1,14 @@
+BDEPEND=dev-libs/glib:2= virtual/libgudev:= bluetooth? ( net-wireless/bluez:= ) curl? ( net-misc/curl:= ) dbi? ( >=dev-db/libdbi-0.8.3:= ) mysql? ( dev-db/mysql-connector-c:= ) odbc? ( dev-db/unixODBC ) postgres? ( dev-db/postgresql:= ) usb? ( virtual/libusb:1= ) irda? ( virtual/os-headers ) nls? ( sys-devel/gettext ) dev-util/ninja >=dev-util/cmake-3.9.6
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-libs/glib:2= virtual/libgudev:= bluetooth? ( net-wireless/bluez:= ) curl? ( net-misc/curl:= ) dbi? ( >=dev-db/libdbi-0.8.3:= ) mysql? ( dev-db/mysql-connector-c:= ) odbc? ( dev-db/unixODBC ) postgres? ( dev-db/postgresql:= ) usb? ( virtual/libusb:1= )
+DESCRIPTION=A tool to handle your cellular phone
+EAPI=7
+HOMEPAGE=https://wammu.eu/gammu/
+IUSE=bluetooth curl dbi debug irda mysql nls odbc postgres usb
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-libs/glib:2= virtual/libgudev:= bluetooth? ( net-wireless/bluez:= ) curl? ( net-misc/curl:= ) dbi? ( >=dev-db/libdbi-0.8.3:= ) mysql? ( dev-db/mysql-connector-c:= ) odbc? ( dev-db/unixODBC ) postgres? ( dev-db/postgresql:= ) usb? ( virtual/libusb:1= ) dev-util/dialog virtual/libiconv
+SLOT=0
+SRC_URI=https://dl.cihar.com/gammu/releases/gammu-1.40.0.tar.bz2
+_eclasses_=cmake-utils	ab10bd85e5d38e2a32077bcd91faa1b6	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	a09389deba2c0a7108b581e02c7cecbf	multilib	b2f01ad412baf81650c23fcf0975fa33	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	b45201c4e6c096b98e250336954e64b9	xdg-utils	14d00d009167652b1fa363e55effe213
+_md5_=c42e24fc7c92456c8dad794e58ebc755
