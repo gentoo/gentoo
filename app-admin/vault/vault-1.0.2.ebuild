@@ -56,6 +56,7 @@ pkg_setup() {
 
 src_compile() {
 	mkdir bin || die
+	export -n GOCACHE XDG_CACHE_HOME #678970
 	export GOBIN=${S}/bin GOPATH=${S}
 	cd src/${EGO_PN} || die
 	# The fmt target may need to be executed if it was previously

@@ -132,8 +132,8 @@ RDEPEND="${RDEPEND}
 #
 # How to use it:
 # 1. List all the working slots (with min versions) in ||, newest first.
-# 2. Update the := to specify *max* version, e.g. < 7.
-# 3. Specify LLVM_MAX_SLOT, e.g. 6.
+# 2. Update the := to specify *max* version, e.g. < 8.
+# 3. Specify LLVM_MAX_SLOT, e.g. 7.
 LLVM_MAX_SLOT="7"
 LLVM_DEPSTR="
 	|| (
@@ -141,9 +141,8 @@ LLVM_DEPSTR="
 		sys-devel/llvm:6[${MULTILIB_USEDEP}]
 		sys-devel/llvm:5[${MULTILIB_USEDEP}]
 		sys-devel/llvm:4[${MULTILIB_USEDEP}]
-		>=sys-devel/llvm-3.9.0:0[${MULTILIB_USEDEP}]
 	)
-	sys-devel/llvm:=[${MULTILIB_USEDEP}]
+	<sys-devel/llvm-8:=[${MULTILIB_USEDEP}]
 "
 LLVM_DEPSTR_AMDGPU=${LLVM_DEPSTR//]/,llvm_targets_AMDGPU(-)]}
 CLANG_DEPSTR=${LLVM_DEPSTR//llvm/clang}
@@ -301,7 +300,7 @@ pkg_pretend() {
 }
 
 python_check_deps() {
-	has_version ">=dev-python/mako-0.8.0[${PYTHON_USEDEP}]"
+	has_version --host-root ">=dev-python/mako-0.8.0[${PYTHON_USEDEP}]"
 }
 
 pkg_setup() {

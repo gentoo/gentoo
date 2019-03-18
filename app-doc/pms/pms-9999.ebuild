@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -25,10 +25,7 @@ BDEPEND="dev-tex/leaflet
 	dev-texlive/texlive-latexextra
 	dev-texlive/texlive-latexrecommended
 	dev-texlive/texlive-mathscience
-	html? (
-		app-text/recode
-		>=dev-tex/tex4ht-20090611_p1038-r5
-	)"
+	html? ( >=dev-tex/tex4ht-20090611_p1038-r5 )"
 
 src_compile() {
 	# just in case; we shouldn't be generating any fonts

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -86,13 +86,14 @@ src_prepare() {
 }
 
 src_compile() {
+	export -n GOCACHE XDG_CACHE_HOME #678856
 	mkdir -p "${S}/src/github.com/pquerna" || die
 	ln -s "${S}/src/${EGO_PN}/vendor/github.com/pquerna/ffjson" "${WORKDIR}/${P}/src/github.com/pquerna/ffjson" || die
 	mkdir -p "${S}/bin" || die
 	cd "${S}/bin" || die
-	GOPATH="${S}" GOBIN="${S}/bin" GOCACHE=off \
+	GOPATH="${S}" GOBIN="${S}/bin" \
 		go build -v -work -x ${EGO_BUILD_FLAGS} "${S}/src/github.com/pquerna/ffjson/ffjson.go" || die
-	GOPATH="${S}" GOBIN="${S}/bin" PATH="${S}/bin:${PATH}" GOCACHE=off \
+	GOPATH="${S}" GOBIN="${S}/bin" PATH="${S}/bin:${PATH}" \
 		emake -C "${S}/src/${EGO_PN}" containers-storage docs
 }
 

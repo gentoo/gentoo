@@ -1,10 +1,10 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=2
+EAPI=7
 
 DESCRIPTION="Graphical frontend for managing and running SSH and SCP connections"
-HOMEPAGE="http://themediahost.de/secpanel/"
+HOMEPAGE="https://themediahost.de/secpanel/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tgz"
 
 LICENSE="GPL-2"
@@ -14,7 +14,8 @@ IUSE="gif"
 
 DEPEND="!gif? ( virtual/imagemagick-tools )"
 
-RDEPEND="virtual/ssh dev-lang/tk"
+RDEPEND="dev-lang/tk
+		virtual/ssh"
 
 S=${WORKDIR}/usr/local
 
@@ -37,11 +38,13 @@ src_prepare() {
 			rm -v "${i}" || die
 		done
 	fi
+
+	eapply_user
 }
 
 src_install() {
-	dobin bin/secpanel || die
+	dobin bin/secpanel
 
 	insinto /usr/share/secpanel
-	doins -r lib/secpanel/{*.{tcl,config,profile,wait,txt,sh},images,spdistkey} || die
+	doins -r lib/secpanel/{*.{tcl,config,profile,wait,txt,sh},images,spdistkey}
 }

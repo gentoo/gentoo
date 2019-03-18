@@ -7,9 +7,6 @@ sys-libs/glibc
 # 0.40 is broken on musl, 0.38 and 0.41 are okay
 =sys-apps/openrc-0.40*
 
-# Older versions of net-mail/mailutils fail on musl, bug #604212
-<net-mail/mailutils-3.2
-
 # We use eudev which is tested on both uclibc and musl
 sys-apps/systemd
 sys-fs/udev

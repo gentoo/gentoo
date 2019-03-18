@@ -28,7 +28,7 @@ HOMEPAGE="https://mariadb.org/"
 LICENSE="LGPL-2.1"
 
 SLOT="0/3"
-IUSE="+curl gnutls kerberos libressl mysqlcompat +ssl static-libs test"
+IUSE="+curl gnutls kerberos libressl +ssl static-libs test"
 
 DEPEND="sys-libs/zlib:=[${MULTILIB_USEDEP}]
 	virtual/libiconv:=[${MULTILIB_USEDEP}]
@@ -43,16 +43,7 @@ DEPEND="sys-libs/zlib:=[${MULTILIB_USEDEP}]
 		)
 	)
 	"
-RDEPEND="${DEPEND}
-	mysqlcompat? (
-	!dev-db/mysql[client-libs(+)]
-	!dev-db/mysql-cluster[client-libs(+)]
-	!dev-db/mariadb[client-libs(+)]
-	!dev-db/mariadb-galera[client-libs(+)]
-	!dev-db/percona-server[client-libs(+)]
-	!dev-db/mysql-connector-c )
-	!>=dev-db/mariadb-10.2.0[client-libs(+)]
-	"
+RDEPEND="${DEPEND}"
 PATCHES=(
 	"${FILESDIR}"/gentoo-layout-3.0.patch
 	"${FILESDIR}"/${PN}-3.0.8-fix-pkconfig-file.patch
@@ -86,18 +77,10 @@ multilib_src_compile() {
 
 multilib_src_install() {
 	cmake-utils_src_install
-	if use mysqlcompat ; then
-		dosym libmariadb.so.3 /usr/$(get_libdir)/libmysqlclient.so.19
-		dosym libmariadb.so.3 /usr/$(get_libdir)/libmysqlclient.so
-	fi
 }
 
 multilib_src_install_all() {
 	if ! use static-libs ; then
 		find "${D}" -name "*.a" -delete || die
-	fi
-	if use mysqlcompat ; then
-		dosym mariadb_config /usr/bin/mysql_config
-		dosym mariadb /usr/include/mysql
 	fi
 }

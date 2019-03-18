@@ -90,6 +90,7 @@ src_install() {
 
 	insinto /usr/share/${PN}
 	doins -r log_tools
+	doins Makefile.inc
 
 	#dodoc CHANGELOG RELEASENOTES.txt README* docs/DEVEL.client docs/README.newcore
 	dodoc CHANGELOG README*

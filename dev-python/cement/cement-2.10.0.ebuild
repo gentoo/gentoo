@@ -1,17 +1,15 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1 versionator
-
-PV_MAJOR_MINOR=$(get_version_component_range 1-2)
+inherit distutils-r1
 
 DESCRIPTION="CLI Application Framework for Python"
-HOMEPAGE="http://builtoncement.com/"
-SRC_URI="http://builtoncement.com/${PN}/${PV_MAJOR_MINOR}/source/${P}.tar.gz"
+HOMEPAGE="https://builtoncement.com/"
+SRC_URI="https://github.com/datafolklabs/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

@@ -7,7 +7,7 @@ inherit toolchain-funcs flag-o-matic
 
 DESCRIPTION="General purpose filter and file cleaning program"
 HOMEPAGE="http://hannemyr.com/enjoy/pep.html"
-SRC_URI="http://hannemyr.com/enjoy/${PN}${PV//./}.zip"
+SRC_URI="http://hannemyr.com/enjoy/${PN}${PV//./}.zip -> ${P}.zip"
 
 LICENSE="GPL-2"
 SLOT="0"

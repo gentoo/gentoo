@@ -30,8 +30,8 @@ sys-devel/clang-runtime crt
 net-analyzer/wireshark doc
 
 # Andreas Sturmlechner <asturm@gentoo.org> (29 May 2018)
-# Depends on unstable media-libs/libaom, media-libs/dav1d, net-libs/srt
-media-video/vlc aom dav1d srt
+# Depends on unstable media-libs/libaom, net-libs/srt
+media-video/vlc aom srt
 
 # Andreas Sturmlechner <asturm@gentoo.org> (21 May 2018)
 # Depends on lots of unstable dependencies
@@ -112,10 +112,6 @@ net-misc/asterisk osplookup
 # Michael Palimaka <kensington@gentoo.org (26 Jan 2017)
 # Requires testing version of media-libs/opencv
 media-libs/mlt opencv
-
-# Matthias Maier <tamiko@gentoo.org> (22 Jan 2017)
-# sys-fs/zfs isn't going to be marked stable anytime soon
-app-emulation/libvirt zfs
 
 # Michael Palimaka <kensington@gentoo.org (18 Jan 2017)
 # www-client/weboob is horribly outdated and not stable

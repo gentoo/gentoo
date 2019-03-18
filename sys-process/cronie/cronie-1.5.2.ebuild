@@ -26,7 +26,7 @@ CRON_SYSTEM_CRONTAB="yes"
 S="${WORKDIR}/${PN}-${P}"
 
 PATCHES=(
-	"${FILESDIR}/cronie-systemd.patch"
+	"${FILESDIR}/${PN}-1.5.2-systemd.patch"
 )
 
 pkg_setup() {

@@ -1,17 +1,22 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit cmake-utils gnome2-utils xdg-utils
+inherit cmake-utils xdg
 
 DESCRIPTION="KeePassXC - KeePass Cross-platform Community Edition"
 HOMEPAGE="https://keepassxc.org"
 
 if [[ "${PV}" != 9999 ]] ; then
-	#SRC_URI="https://github.com/keepassxreboot/keepassxc/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	SRC_URI="https://github.com/keepassxreboot/keepassxc/releases/download/${PV}/${P}-src.tar.xz"
-	KEYWORDS="~amd64 ~x86"
+	if [[ "${PV}" == *_beta* ]] ; then
+		SRC_URI="https://github.com/keepassxreboot/keepassxc/archive/${PV/_/-}.tar.gz -> ${P}.tar.gz"
+		S="${WORKDIR}/${P/_/-}"
+	else
+		#SRC_URI="https://github.com/keepassxreboot/keepassxc/archive/${PV}.tar.gz -> ${P}.tar.gz"
+		SRC_URI="https://github.com/keepassxreboot/keepassxc/releases/download/${PV}/${P}-src.tar.xz"
+		KEYWORDS="~amd64 ~x86"
+	fi
 else
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/keepassxreboot/${PN}"
@@ -47,6 +52,11 @@ DEPEND="
 	dev-qt/qtconcurrent:5
 "
 
+# Not a runtime dependency but still needed (see bug #667092)
+PDEPEND="
+	x11-misc/xsel
+"
+
 src_prepare() {
 	 use test || \
 		sed -e "/^find_package(Qt5Test/d" -i CMakeLists.txt || die
@@ -65,17 +75,20 @@ src_configure() {
 		-DWITH_XC_SSHAGENT=ON
 		-DWITH_XC_YUBIKEY="$(usex yubikey)"
 	)
+	if [[ "${PV}" == *_beta* ]] ; then
+		mycmakeargs+=( -DOVERRIDE_VERSION="${PV/_/-}" )
+	fi
 	cmake-utils_src_configure
 }
 
+pkg_preinst() {
+	xdg_pkg_preinst
+}
+
 pkg_postinst() {
-	gnome2_icon_cache_update
-	xdg_desktop_database_update
-	xdg_mimeinfo_database_update
+	xdg_pkg_postinst
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
-	xdg_desktop_database_update
-	xdg_mimeinfo_database_update
+	xdg_pkg_postrm
 }

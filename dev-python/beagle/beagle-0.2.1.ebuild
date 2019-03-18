@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python3_5 python3_6 )
 inherit distutils-r1
 
-DESCRIPTION="Beagle is a command line client for Hound, the code search tool."
+DESCRIPTION="Command line client for Hound, the code search tool."
 HOMEPAGE="https://beagle-hound.readthedocs.io/en/latest/
 	https://github.com/dhellmann/beagle"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"

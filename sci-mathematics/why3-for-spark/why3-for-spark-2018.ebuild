@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -23,7 +23,7 @@ DEPEND=">=dev-lang/ocaml-4.02.3[ocamlopt?]
 	coq? ( sci-mathematics/coq )
 	doc? ( dev-tex/rubber )
 	gtk? ( dev-ml/lablgtk[sourceview] )
-	emacs? ( app-editors/emacs:* )
+	emacs? ( virtual/emacs )
 	html? ( dev-tex/hevea )
 	hypothesis-selection? ( dev-ml/ocamlgraph )
 	zarith? ( dev-ml/zarith )

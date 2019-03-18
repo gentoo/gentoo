@@ -6,7 +6,7 @@ EAPI=6
 GENTOO_DEPEND_ON_PERL=no
 
 # bug #329479: git-remote-testgit is not multiple-version aware
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python{2_7,3_{4,5,6,7}} )
 PLOCALES="bg ca de es fr is it ko pt_PT ru sv vi zh_CN"
 if [[ ${PV} == *9999 ]]; then
 	SCM="git-r3"
@@ -140,9 +140,6 @@ PATCHES=(
 	"${FILESDIR}"/git-2.18.0_rc1-optional-cvs.patch
 
 	"${FILESDIR}"/git-2.2.0-svn-fe-linking.patch
-
-	# Bug #493306, where FreeBSD 10.x merged libiconv into its libc.
-	"${FILESDIR}"/git-2.5.1-freebsd-10.x-no-iconv.patch
 )
 
 pkg_setup() {

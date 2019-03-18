@@ -1,6 +1,31 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Mart Raudsepp <leio@gentoo.org> (11 Mar 2019)
+# media-libs/bcg729 not keyworded yet
+net-analyzer/wireshark bcg729
+
+# Roy Bamford <neddyseagoon@gentoo.org> (11 Mar 2019)
+# net-misc/dropbox is binary amd64/x86 only
+kde-apps/kdenetwork-meta dropbox
+
+# Roy Bamford <neddyseagoon@gentoo.org> (10 Mar 2019)
+# sci-chemistry/openbabel is not keyworded/fails to build
+kde-apps/kalzium editor
+
+# Roy Bamford <neddyseagoon@gentoo.org> (10 Mar 2019)
+# No arm64 ever had bios, but sys-apps/fwupdate needs
+# to be refactored to separate bios and uefi
+kde-plasma/discover firmware
+
+# Jimi Huotari <chiitoo@gentoo.org> (10 Mar 2019)
+# dev-qt/qttranslations is not yet keyworded, bug #680082
+lxqt-base/lxqt-meta nls
+
+# Mart Raudsepp <leio@gentoo.org> (23 Feb 2019)
+# x11-libs/libXTrap not keyworded yet
+x11-misc/x11vnc xtrap
+
 # Roy Bamford <neddyseagoon@gentoo.org> (24 Feb 19)
 # sdl is in use.mask and lots of things remain untested with USE=sdl
 # list packages here that have been tested.
@@ -64,7 +89,8 @@ sci-electronics/kicad occ oce ngspice
 # Andreas Sturmlechner <asturm@gentoo.org> (01 Sep 2018)
 # media-libs/aribb24 not yet keyworded, bug #665048
 # net-libs/libmicrodns not yet keyworded, bug #653800
-media-video/vlc aribsub chromecast
+# media-libs/dav1d is not yet keyworded
+media-video/vlc aribsub chromecast dav1d
 
 # Matthew Thode <prometheanfire@gentoo.org> (30 Aug 2018)
 # Needs pillow and it's deps to build docs
@@ -440,7 +466,7 @@ media-gfx/fim graphicsmagick svg
 
 # Markus Meier <maekke@gentoo.org> (04 Aug 2013)
 # Unkeyworded deps, bug #474026
-app-admin/conky lua-cairo lua-imlib xmms2 audacious moc
+app-admin/conky lua-cairo lua-imlib xmms2 moc
 
 # Sergey Popov <pinkbyte@gentoo.org> (30 Jul 2013)
 # Not tested
@@ -500,10 +526,6 @@ app-accessibility/speech-dispatcher flite
 # Markus Meier <maekke@gentoo.org> (08 Dec 2012)
 # mask app-office/libreoffice java extensions
 app-office/libreoffice libreoffice_extensions_scripting-beanshell libreoffice_extensions_scripting-javascript libreoffice_extensions_wiki-publisher
-
-# Steev Klimaszewski <steev@gentoo.org> (03 Aug 2012)
-# No java on ARM
-net-analyzer/wireshark doc-pdf
 
 # Markus Meier <maekke@gentoo.org> (25 Jul 2012)
 # no stable media-video/vlc yet, bug #401313

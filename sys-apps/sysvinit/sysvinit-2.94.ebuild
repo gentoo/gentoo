@@ -36,7 +36,10 @@ PATCHES=(
 
 src_prepare() {
 	default
-	sed -i '/^CPPFLAGS =$/d' src/Makefile || die
+	sed -i \
+		-e '/^CPPFLAGS =$/d' \
+		-e '/^override CFLAGS +=/s/ -fstack-protector-strong//' \
+		src/Makefile || die
 
 	# last/lastb/mesg/mountpoint/sulogin/utmpdump/wall have moved to util-linux
 	sed -i -r \

@@ -1,9 +1,10 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 VALA_MIN_API_VERSION="0.34"
+VALA_MAX_API_VERSION="0.42"
 VALA_USE_DEPEND="vapigen"
 
 inherit autotools bash-completion-r1 gnome2-utils python-r1 vala virtualx xdg-utils

@@ -10,7 +10,9 @@
 # It is suggested that you use the latest EAPI approved by the Council.
 # The PMS contains specifications for all EAPIs. Eclasses will test for this
 # variable if they need to use features that are not universal in all EAPIs.
-EAPI=6
+# If an eclass doesn't support latest EAPI, use the previous EAPI instead.
+EAPI=7
+
 
 # inherit lists eclasses to inherit functions from. For example, an ebuild
 # that needs the eautoreconf function from autotools.eclass won't work
@@ -76,24 +78,31 @@ IUSE="gnome X"
 #RESTRICT="strip"
 
 
-# Build-time dependencies, such as
-#    ssl? ( >=dev-libs/openssl-0.9.6b )
-#    >=dev-lang/perl-5.6.1-r1
+# Run-time dependencies. Must be defined to whatever this depends on to run.
+# Example:
+#    ssl? ( >=dev-libs/openssl-1.0.2q:0= )
+#    >=dev-lang/perl-5.24.3-r1
 # It is advisable to use the >= syntax show above, to reflect what you
 # had installed on your system when you tested the package.  Then
 # other users hopefully won't be caught without the right version of
 # a dependency.
-#DEPEND=""
+#RDEPEND=""
 
-# Run-time dependencies. Must be defined to whatever this depends on to run.
+# Build-time dependencies that need to be binary compatible with the system
+# being built (CHOST). These include libraries that we link against.
 # The below is valid if the same run-time depends are required to compile.
-RDEPEND="${DEPEND}"
+#DEPEND="${RDEPEND}"
+
+# Build-time dependencies that are executed during the emerge process, and
+# only need to be present in the native build system (CBUILD). Example:
+#BDEPEND="virtual/pkgconfig"
+
 
 # Source directory; the dir where the sources can be found (automatically
 # unpacked) inside ${WORKDIR}.  The default value for S is ${WORKDIR}/${P}
 # If you don't need to change it, leave the S= line out of the ebuild
 # to keep it tidy.
-#S=${WORKDIR}/${P}
+#S="${WORKDIR}/${P}"
 
 
 # The following src_configure function is implemented as default by portage, so
@@ -116,7 +125,7 @@ RDEPEND="${DEPEND}"
 	#	--mandir=/usr/share/man || die
 	# Note the use of --infodir and --mandir, above. This is to make
 	# this package FHS 2.2-compliant.  For more information, see
-	#   https://www.pathname.com/fhs/
+	#   https://wiki.linuxfoundation.org/lsb/fhs
 #}
 
 # The following src_compile function is implemented as default by portage, so

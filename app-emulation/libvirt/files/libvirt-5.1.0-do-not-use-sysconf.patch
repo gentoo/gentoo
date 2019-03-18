@@ -1,22 +1,5 @@
-From cbc26250bcdc4eb3b1c4e7e09c824f3504d41b27 Mon Sep 17 00:00:00 2001
-Message-Id: <cbc26250bcdc4eb3b1c4e7e09c824f3504d41b27.1548428073.git.mprivozn@redhat.com>
-From: Michal Privoznik <mprivozn@redhat.com>
-Date: Tue, 26 Jun 2018 06:51:06 +0200
-Subject: [PATCH] gentoo: do not use sysconf
-
-Signed-off-by: Michal Privoznik <mprivozn@redhat.com>
----
- src/Makefile.am                  | 29 ++++++-----------------------
- src/locking/virtlockd.service.in |  3 +--
- src/logging/virtlogd.service.in  |  3 +--
- src/remote/libvirtd.service.in   |  3 +--
- tools/Makefile.am                | 17 ++++-------------
- tools/libvirt-guests.service.in  |  2 +-
- tools/libvirt-guests.sysconf     |  7 +++++++
- 7 files changed, 21 insertions(+), 43 deletions(-)
-
 diff --git a/src/Makefile.am b/src/Makefile.am
-index 8c8dfe3dcf..25ced3abf3 100644
+index 8c8dfe3..25ced3a 100644
 --- a/src/Makefile.am
 +++ b/src/Makefile.am
 @@ -756,23 +756,6 @@ endif WITH_SETUID_RPC_CLIENT
@@ -96,7 +79,7 @@ index 8c8dfe3dcf..25ced3abf3 100644
  	do \
  	  tgt=`basename $$f` ; \
 diff --git a/src/locking/virtlockd.service.in b/src/locking/virtlockd.service.in
-index 3c9d587032..2449b201d9 100644
+index 3c9d587..2449b20 100644
 --- a/src/locking/virtlockd.service.in
 +++ b/src/locking/virtlockd.service.in
 @@ -7,8 +7,7 @@ Documentation=man:virtlockd(8)
@@ -110,7 +93,7 @@ index 3c9d587032..2449b201d9 100644
  # Loosing the locks is a really bad thing that will
  # cause the machine to be fenced (rebooted), so make
 diff --git a/src/logging/virtlogd.service.in b/src/logging/virtlogd.service.in
-index 3d9ae36150..43736191d5 100644
+index 3d9ae36..4373619 100644
 --- a/src/logging/virtlogd.service.in
 +++ b/src/logging/virtlogd.service.in
 @@ -7,8 +7,7 @@ Documentation=man:virtlogd(8)
@@ -124,7 +107,7 @@ index 3d9ae36150..43736191d5 100644
  # Loosing the logs is a really bad thing that will
  # cause the machine to be fenced (rebooted), so make
 diff --git a/src/remote/libvirtd.service.in b/src/remote/libvirtd.service.in
-index 7f689e08a8..239beeced9 100644
+index 7f689e0..239beec 100644
 --- a/src/remote/libvirtd.service.in
 +++ b/src/remote/libvirtd.service.in
 @@ -22,8 +22,7 @@ Documentation=https://libvirt.org
@@ -138,7 +121,7 @@ index 7f689e08a8..239beeced9 100644
  KillMode=process
  Restart=on-failure
 diff --git a/tools/Makefile.am b/tools/Makefile.am
-index 613c9a77f0..224b511074 100644
+index f2f84f7..1188d3c 100644
 --- a/tools/Makefile.am
 +++ b/tools/Makefile.am
 @@ -339,15 +339,6 @@ install-data-local: install-init install-systemd install-nss \
@@ -184,7 +167,7 @@ index 613c9a77f0..224b511074 100644
  	rmdir $(DESTDIR)$(SYSTEMD_UNIT_DIR) ||:
  
 diff --git a/tools/libvirt-guests.service.in b/tools/libvirt-guests.service.in
-index 491ca62138..f0f417bffb 100644
+index 491ca62..f0f417b 100644
 --- a/tools/libvirt-guests.service.in
 +++ b/tools/libvirt-guests.service.in
 @@ -10,7 +10,7 @@ Documentation=man:libvirtd(8)
@@ -197,7 +180,7 @@ index 491ca62138..f0f417bffb 100644
  # out the code
  ExecStart=@libexecdir@/libvirt-guests.sh start
 diff --git a/tools/libvirt-guests.sysconf b/tools/libvirt-guests.sysconf
-index 669b046507..45b0b9ea46 100644
+index 669b046..45b0b9e 100644
 --- a/tools/libvirt-guests.sysconf
 +++ b/tools/libvirt-guests.sysconf
 @@ -1,3 +1,10 @@
@@ -211,6 +194,3 @@ index 669b046507..45b0b9ea46 100644
  # URIs to check for running guests
  # example: URIS='default xen:///system vbox+tcp://host/system lxc:///system'
  #URIS=default
--- 
-2.19.2
-

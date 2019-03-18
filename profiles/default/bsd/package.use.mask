@@ -79,6 +79,7 @@ media-libs/mesa gbm dri3 d3d9 vulkan
 x11-base/xorg-drivers video_cards_radeonsi
 x11-drivers/xf86-video-ati glamor
 media-libs/gst-plugins-base gbm
+>=gnome-base/gvfs-1.38 cdda gphoto2 mtp udisks
 
 # udisks is linux only (for now?)
 gnome-base/gvfs udisks

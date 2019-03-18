@@ -1,0 +1,34 @@
+ configure.ac | 10 ++++++++--
+ 1 file changed, 8 insertions(+), 2 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index db973f7..64a0e37 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -330,7 +330,13 @@ AC_SUBST(SHELL_CMD)
+ 
+ PKG_CHECK_MODULES(XDM, [xmu x11 xau xproto >= 7.0.17])
+ 
+-PKG_CHECK_EXISTS(xinerama, [
++AC_ARG_WITH(xinerama,
++	AS_HELP_STRING([--with-xinerama],
++			[Use Xinerama (default is YES if installed)]),
++	[USE_XINERAMA="$withval"],
++	PKG_CHECK_EXISTS(xinerama, [USE_XINERAMA="yes"], [USE_XINERAMA="no"]))
++
++if test "x$USE_XINERAMA" = "xyes" ; then
+ 	AC_DEFINE([USE_XINERAMA], 1,
+ 		[Define to 1 to use XINERAMA in greeter & chooser])
+ 	PKG_CHECK_MODULES(XINERAMA, xinerama)
+@@ -338,7 +344,7 @@ PKG_CHECK_EXISTS(xinerama, [
+ 	CHOOSER_LIBS="$CHOOSER_LIBS $XINERAMA_LIBS"
+ 	GREETER_CFLAGS="$GREETER_CFLAGS $XINERAMA_CFLAGS"
+ 	GREETER_LIBS="$GREETER_LIBS $XINERAMA_LIBS"
+-])
++fi
+ 
+ # Xft text drawing for the greeter screen
+ AC_ARG_WITH(xft,
+-- 
+2.19.2
+

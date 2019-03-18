@@ -1,0 +1,182 @@
+--- a/config.c
++++ b/config.c
+@@ -2442,10 +2442,12 @@
+ 			      HELPCTX(ssh_kexlist),
+ 			      kexlist_handler, P(NULL));
+             c->listbox.height = KEX_MAX;
++#ifndef NO_GSSAPI
+ 	    ctrl_checkbox(s, "Attempt GSSAPI key exchange",
+ 			  'k', HELPCTX(ssh_gssapi),
+ 			  conf_checkbox_handler,
+ 			  I(CONF_try_gssapi_kex));
++#endif
+ 
+ 	    s = ctrl_getset(b, "Connection/SSH/Kex", "repeat",
+ 			    "Options controlling key re-exchange");
+@@ -2455,11 +2457,13 @@
+ 			 conf_editbox_handler,
+ 			 I(CONF_ssh_rekey_time),
+ 			 I(-1));
++#ifndef NO_GSSAPI
+             ctrl_editbox(s, "Minutes between GSS checks (0 for never)", NO_SHORTCUT, 20,
+                          HELPCTX(ssh_kex_repeat),
+                          conf_editbox_handler,
+                          I(CONF_gssapirekey),
+                          I(-1));
++#endif
+ 	    ctrl_editbox(s, "Max data before rekey (0 for no limit)", 'x', 20,
+ 			 HELPCTX(ssh_kex_repeat),
+ 			 conf_editbox_handler,
+--- a/settings.c
++++ b/settings.c
+@@ -990,7 +990,9 @@
+     gprefs(sesskey, "HostKey", "ed25519,ecdsa,rsa,dsa,WARN",
+            hknames, HK_MAX, conf, CONF_ssh_hklist);
+     gppi(sesskey, "RekeyTime", 60, conf, CONF_ssh_rekey_time);
++#ifndef NO_GSSAPI
+     gppi(sesskey, "GssapiRekey", GSS_DEF_REKEY_MINS, conf, CONF_gssapirekey);
++#endif
+     gpps(sesskey, "RekeyBytes", "1G", conf, CONF_ssh_rekey_data);
+     {
+ 	/* SSH-2 only by default */
+--- a/ssh.c
++++ b/ssh.c
+@@ -50,7 +50,9 @@
+     ssh_sharing_state *connshare;
+     bool attempting_connshare;
+ 
++#ifndef NO_GSSAPI
+     struct ssh_connection_shared_gss_state gss_state;
++#endif
+ 
+     char *savedhost;
+     int savedport;
+@@ -257,7 +257,11 @@
+                     conf_get_bool(ssh->conf, CONF_try_gssapi_auth),
+                     conf_get_bool(ssh->conf, CONF_try_gssapi_kex),
+                     conf_get_bool(ssh->conf, CONF_gssapifwd),
++#ifndef NO_GSSAPI
+                     &ssh->gss_state);
++#else
++                    NULL);
++#endif
+                 ssh_connect_ppl(ssh, userauth_layer);
+                 transport_child_layer = userauth_layer;
+ 
+@@ -269,7 +273,11 @@
+                 ssh->fullhostname,
+                 ssh_verstring_get_local(old_bpp),
+                 ssh_verstring_get_remote(old_bpp),
++#ifndef NO_GSSAPI
+                 &ssh->gss_state,
++#else
++				NULL,
++#endif
+                 &ssh->stats, transport_child_layer, false);
+             ssh_connect_ppl(ssh, ssh->base_layer);
+ 
+--- a/sshserver.c
++++ b/sshserver.c
+@@ -50,7 +50,9 @@
+     PacketProtocolLayer *base_layer;
+     ConnectionLayer *cl;
+ 
++#ifndef NO_GSSAPI
+     struct ssh_connection_shared_gss_state gss_state;
++#endif
+ };
+ 
+ static void ssh_server_free_callback(void *vsrv);
+@@ -246,8 +248,10 @@
+     bufchain_init(&srv->dummy_user_input);
+ 
+     /* FIXME: replace with sensible */
++#ifndef NO_GSSAPI
+     srv->gss_state.libs = snew(struct ssh_gss_liblist);
+     srv->gss_state.libs->nlibraries = 0;
++#endif
+ 
+     return &srv->plug;
+ }
+@@ -297,7 +301,9 @@
+     conf_free(srv->conf);
+     log_free(srv->logctx);
+ 
++#ifndef NO_GSSAPI
+     sfree(srv->gss_state.libs);        /* FIXME: replace with sensible */
++#endif
+ 
+     sfree(srv);
+ 
+@@ -442,7 +448,11 @@
+             srv->conf, NULL, 0, NULL,
+             ssh_verstring_get_remote(old_bpp),
+             ssh_verstring_get_local(old_bpp),
++#ifndef NO_GSSAPI
+             &srv->gss_state, &srv->stats, transport_child_layer, true);
++#else
++            NULL, &srv->stats, transport_child_layer, true);
++#endif
+         ssh2_transport_provide_hostkeys(
+             srv->base_layer, srv->hostkeys, srv->nhostkeys);
+         if (userauth_layer)
+--- a/ssh2userauth.c
++++ b/ssh2userauth.c
+@@ -241,7 +241,9 @@
+      * Misc one-time setup for authentication.
+      */
+     s->publickey_blob = NULL;
++#ifndef NO_GSSAPI
+     s->session_id = ssh2_transport_get_session_id(s->transport_layer);
++#endif
+ 
+     /*
+      * Load the public half of any configured public key file for
+@@ -613,8 +615,12 @@
+                  * Scan it for method identifiers we know about.
+                  */
+                 bool srv_pubkey = false, srv_passwd = false;
++#ifndef NO_GSSAPI
+                 bool srv_keyb_inter = false, srv_gssapi = false;
+                 bool srv_gssapi_keyex_auth = false;
++#else
++                bool srv_keyb_inter = false;
++#endif
+ 
+                 for (ptrlen method; get_commasep_word(&methods, &method) ;) {
+                     if (ptrlen_eq_string(method, "publickey"))
+@@ -623,10 +629,12 @@
+                         srv_passwd = true;
+                     else if (ptrlen_eq_string(method, "keyboard-interactive"))
+                         srv_keyb_inter = true;
++#ifndef NO_GSSAPI
+                     else if (ptrlen_eq_string(method, "gssapi-with-mic"))
+                         srv_gssapi = true;
+                     else if (ptrlen_eq_string(method, "gssapi-keyex"))
+                         srv_gssapi_keyex_auth = true;
++#endif
+                 }
+ 
+                 /*
+@@ -1640,7 +1648,9 @@
+      * any packets since. Signal the transport layer to consider
+      * doing an immediate rekey, if it has any reason to want to.
+      */
++#ifndef NO_GSSAPI
+     ssh2_transport_notify_auth_done(s->transport_layer);
++#endif
+ 
+     /*
+      * Finally, hand over to our successor layer, and return
+--- a/ssh2userauth-server.c
++++ b/ssh2userauth-server.c
+@@ -122,7 +122,9 @@
+ 
+     crBegin(s->crState);
+ 
++#ifndef NO_GSSAPI
+     s->session_id = ssh2_transport_get_session_id(s->transport_layer);
++#endif
+ 
+     while (1) {
+         crMaybeWaitUntilV((pktin = ssh2_userauth_server_pop(s)) != NULL);

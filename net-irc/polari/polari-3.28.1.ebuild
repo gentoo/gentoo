@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,6 +19,7 @@ COMMON_DEPEND="
 	net-libs/telepathy-glib[introspection]
 	>=dev-libs/gobject-introspection-1.50:=
 	>=dev-libs/gjs-1.50
+	<dev-libs/gjs-1.53
 
 	x11-libs/gdk-pixbuf:2[introspection]
 	>=app-text/gspell-1.4.0[introspection]

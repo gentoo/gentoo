@@ -67,7 +67,7 @@ DEPEND="
 		>=media-libs/flac-1.2.1-r1
 		>=media-libs/libvorbis-1.0
 	)
-	fluidsynth? ( media-sound/fluidsynth )
+	fluidsynth? ( media-sound/fluidsynth:= )
 	http? ( >=net-libs/neon-0.26.4 )
 	jack? (
 		>=media-libs/bio2jack-0.4

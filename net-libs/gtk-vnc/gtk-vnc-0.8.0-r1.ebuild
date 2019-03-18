@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,7 +15,7 @@ HOMEPAGE="https://wiki.gnome.org/Projects/gtk-vnc"
 LICENSE="LGPL-2.1+"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
-IUSE="examples +introspection pulseaudio sasl vala"
+IUSE="examples +introspection pulseaudio sasl +vala"
 REQUIRED_USE="
 	vala? ( introspection )
 "

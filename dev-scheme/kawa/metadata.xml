@@ -14,8 +14,6 @@
 </longdescription>
 <use>
   <flag name="awt">Assume AWT is available</flag>
-  <flag name="echo2">Enable support for the Echo2 web toolkit with
-    <pkg>dev-java/echo2</pkg></flag>
   <flag name="frontend">Build "kawa" front-end program using
     <pkg>sys-libs/readline</pkg></flag> 
   <flag name="jemacs">Build JEmacs</flag>

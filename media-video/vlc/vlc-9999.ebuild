@@ -27,7 +27,7 @@ DESCRIPTION="Media player and framework with support for most multimedia files a
 HOMEPAGE="https://www.videolan.org/vlc/"
 
 LICENSE="LGPL-2.1 GPL-2"
-SLOT="0/5-9" # vlc - vlccore
+SLOT="0/12-9" # vlc - vlccore
 
 IUSE="a52 alsa altivec aom archive aribsub bidi bluray cddb chromaprint chromecast
 	dav1d dbus dc1394 debug directx dts +dvbpsi dvd +encode faad fdk +ffmpeg flac
@@ -233,7 +233,6 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.1.0-fix-libtremor-libs.patch # build system
-	"${FILESDIR}"/${PN}-2.2.4-libav-11.7.patch # bug #593460
 	"${FILESDIR}"/${PN}-2.2.8-freerdp-2.patch # bug 590164
 )
 

@@ -12,7 +12,7 @@ HOMEPAGE="https://github.com/commonmark/cmark"
 SRC_URI="https://github.com/commonmark/cmark/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD-2"
-SLOT="0"
+SLOT="0/0.28.3"
 KEYWORDS="amd64 ppc ~ppc64 x86"
 IUSE="test"
 

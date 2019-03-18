@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="person">
-	<email>tetromino@gentoo.org</email>
-	<name>Alexandre Rostovtsev</name>
-</maintainer>
+<!-- maintainer-needed -->
 <longdescription lang="en">
 	SassC is a wrapper around libsass (http://github.com/sass/libsass)
 	used to generate a useful command-line application that can be

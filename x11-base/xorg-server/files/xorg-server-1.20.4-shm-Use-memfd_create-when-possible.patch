@@ -1,0 +1,89 @@
+From f6753c117ef0f83499d5e2d6dda226fec9ddf803 Mon Sep 17 00:00:00 2001
+From: Alexander Volkov <a.volkov@rusbitech.ru>
+Date: Mon, 11 Feb 2019 18:54:10 +0300
+Subject: [PATCH xserver] shm: Use memfd_create when possible
+
+It doesn't require shared memory dir and thus allows
+to avoid cases when this dir is detected incorrectly,
+as in https://bugreports.qt.io/browse/QTBUG-71440
+
+Signed-off-by: Alexander Volkov <a.volkov@rusbitech.ru>
+---
+ Xext/shm.c              | 12 ++++++++++++
+ configure.ac            |  2 +-
+ include/dix-config.h.in |  3 +++
+ include/meson.build     |  1 +
+ 4 files changed, 17 insertions(+), 1 deletion(-)
+
+diff --git a/Xext/shm.c b/Xext/shm.c
+index 2739a59e7..506fd4df1 100644
+--- a/Xext/shm.c
++++ b/Xext/shm.c
+@@ -35,6 +35,9 @@ in this Software without prior written authorization from The Open Group.
+ #include <sys/types.h>
+ #include <sys/ipc.h>
+ #include <sys/shm.h>
++#ifdef HAVE_MEMFD_CREATE
++#include <sys/mman.h>
++#endif
+ #include <unistd.h>
+ #include <sys/stat.h>
+ #include <fcntl.h>
+@@ -1201,6 +1204,15 @@ shm_tmpfile(void)
+     };
+     int	fd;
+ 
++#ifdef HAVE_MEMFD_CREATE
++    fd = memfd_create("xorg", MFD_CLOEXEC|MFD_ALLOW_SEALING);
++    if (fd != -1) {
++        fcntl(fd, F_ADD_SEALS, F_SEAL_SHRINK);
++        DebugF ("Using memfd_create\n");
++        return fd;
++    }
++#endif
++
+ #ifdef O_TMPFILE
+     for (int i = 0; i < ARRAY_SIZE(shmdirs); i++) {
+         fd = open(shmdirs[i], O_TMPFILE|O_RDWR|O_CLOEXEC|O_EXCL, 0666);
+diff --git a/configure.ac b/configure.ac
+index 0ca96aeb8..79ff7fa64 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -159,7 +159,7 @@ dnl Checks for library functions.
+ AC_CHECK_FUNCS([backtrace geteuid getuid issetugid getresuid \
+ 	getdtablesize getifaddrs getpeereid getpeerucred getprogname getzoneid \
+ 	mmap posix_fallocate seteuid shmctl64 strncasecmp vasprintf vsnprintf \
+-	walkcontext setitimer poll epoll_create1 mkostemp])
++	walkcontext setitimer poll epoll_create1 mkostemp memfd_create])
+ AC_CONFIG_LIBOBJ_DIR([os])
+ AC_REPLACE_FUNCS([reallocarray strcasecmp strcasestr strlcat strlcpy strndup\
+ 	timingsafe_memcmp])
+diff --git a/include/dix-config.h.in b/include/dix-config.h.in
+index 855b3d50c..9eb1a924e 100644
+--- a/include/dix-config.h.in
++++ b/include/dix-config.h.in
+@@ -128,6 +128,9 @@
+ /* Define to 1 if you have the <linux/fb.h> header file. */
+ #undef HAVE_LINUX_FB_H
+ 
++/* Define to 1 if you have the `memfd_create' function. */
++#undef HAVE_MEMFD_CREATE
++
+ /* Define to 1 if you have the `mkostemp' function. */
+ #undef HAVE_MKOSTEMP
+ 
+diff --git a/include/meson.build b/include/meson.build
+index 04c41e999..bbd5a6690 100644
+--- a/include/meson.build
++++ b/include/meson.build
+@@ -141,6 +141,7 @@ conf_data.set('HAVE_GETPEEREID', cc.has_function('getpeereid'))
+ conf_data.set('HAVE_GETPEERUCRED', cc.has_function('getpeerucred'))
+ conf_data.set('HAVE_GETPROGNAME', cc.has_function('getprogname'))
+ conf_data.set('HAVE_GETZONEID', cc.has_function('getzoneid'))
++conf_data.set('HAVE_MEMFD_CREATE', cc.has_function('memfd_create'))
+ conf_data.set('HAVE_MKOSTEMP', cc.has_function('mkostemp'))
+ conf_data.set('HAVE_MMAP', cc.has_function('mmap'))
+ conf_data.set('HAVE_POLL', cc.has_function('poll'))
+-- 
+2.19.2
+

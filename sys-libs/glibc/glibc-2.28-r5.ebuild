@@ -18,7 +18,7 @@ if [[ ${PV} == 9999* ]]; then
 	EGIT_REPO_URI="https://sourceware.org/git/glibc.git"
 	inherit git-r3
 else
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+	KEYWORDS="~alpha ~amd64 arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 s390 ~sh sparc ~x86"
 	SRC_URI="mirror://gnu/glibc/${P}.tar.xz"
 fi
 
@@ -32,7 +32,7 @@ PATCH_VER=8
 SRC_URI+=" https://dev.gentoo.org/~dilfridge/distfiles/${P}-patches-${PATCH_VER}.tar.xz"
 SRC_URI+=" multilib? ( https://dev.gentoo.org/~dilfridge/distfiles/gcc-multilib-bootstrap-${GCC_BOOTSTRAP_VER}.tar.xz )"
 
-IUSE="audit caps cet compile-locales doc gd headers-only +multiarch multilib nscd profile selinux suid systemtap test vanilla"
+IUSE="audit caps cet compile-locales doc gd headers-only +multiarch multilib nscd profile selinux +ssp suid systemtap test vanilla"
 
 # Minimum kernel version that glibc requires
 MIN_KERN_VER="3.2.0"
@@ -813,7 +813,7 @@ glibc_do_configure() {
 			myconf+=( --enable-stack-protector=no )
 			;;
 		*)
-			myconf+=( --enable-stack-protector=all )
+			myconf+=( --enable-stack-protector=$(usex ssp all no) )
 			;;
 	esac
 	myconf+=( --enable-stackguard-randomization )

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -40,8 +40,7 @@ LICENSE="|| ( MIT Apache-2.0 ) BSD-1 BSD-2 BSD-4 UoI-NCSA"
 
 IUSE="cargo clippy cpu_flags_x86_sse2 debug doc +jemalloc libressl rls rustfmt wasm ${ALL_LLVM_TARGETS[*]}"
 
-COMMON_DEPEND=">=app-eselect/eselect-rust-0.3_pre20150425
-		jemalloc? ( dev-libs/jemalloc )
+COMMON_DEPEND="jemalloc? ( dev-libs/jemalloc )
 		cargo? (
 			sys-libs/zlib
 			!libressl? ( dev-libs/openssl:0= )
@@ -58,6 +57,7 @@ DEPEND="${COMMON_DEPEND}
 	)
 	dev-util/cmake"
 RDEPEND="${COMMOND_DEPEND}
+	>=app-eselect/eselect-rust-0.3_pre20150425
 	cargo? ( !dev-util/cargo )
 	rustfmt? ( !dev-util/rustfmt )"
 PDEPEND="!cargo? ( >=dev-util/cargo-${CARGO_DEPEND_VERSION} )"

@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-inherit eutils libtool linux-info multilib-minimal
+inherit libtool linux-info multilib-minimal
 
 MY_P="v4l-utils-${PV}"
 
@@ -59,5 +59,5 @@ multilib_src_install() {
 
 multilib_src_install_all() {
 	dodoc ChangeLog README.lib* TODO
-	prune_libtool_files --all
+	find "${ED}" \( -name "*.a" -o -name "*.la" \) -delete || die
 }

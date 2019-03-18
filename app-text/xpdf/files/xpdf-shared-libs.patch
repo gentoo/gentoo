@@ -1,0 +1,54 @@
+diff '--color=auto' -Naurd xpdf-4.01.orig/cmake-config.txt xpdf-4.01/cmake-config.txt
+--- xpdf-4.01.orig/cmake-config.txt	2019-03-10 21:32:18.000000000 +0300
++++ xpdf-4.01/cmake-config.txt	2019-03-11 09:03:37.025125528 +0300
+@@ -12,6 +12,9 @@
+ include(CheckCXXSourceCompiles)
+ include(GNUInstallDirs)
+ 
++set(XPDF_LIBDIR ${CMAKE_INSTALL_LIBDIR}/xpdf)
++set(CMAKE_INSTALL_RPATH ${CMAKE_INSTALL_FULL_LIBDIR}/xpdf)
++
+ enable_language(CXX)
+ 
+ #--- set default C/C++ compiler flags for Unix
+diff '--color=auto' -Naurd xpdf-4.01.orig/fofi/CMakeLists.txt xpdf-4.01/fofi/CMakeLists.txt
+--- xpdf-4.01.orig/fofi/CMakeLists.txt	2019-03-10 21:32:19.000000000 +0300
++++ xpdf-4.01/fofi/CMakeLists.txt	2019-03-11 09:04:16.257526539 +0300
+@@ -24,3 +24,6 @@
+ add_library(fofi
+   $<TARGET_OBJECTS:fofi_objs>
+ )
++
++set_target_properties(fofi_objs PROPERTIES COMPILE_FLAGS "-fPIC")
++install(TARGETS fofi LIBRARY DESTINATION ${XPDF_LIBDIR})
+diff '--color=auto' -Naurd xpdf-4.01.orig/goo/CMakeLists.txt xpdf-4.01/goo/CMakeLists.txt
+--- xpdf-4.01.orig/goo/CMakeLists.txt	2019-03-11 09:03:04.000000000 +0300
++++ xpdf-4.01/goo/CMakeLists.txt	2019-03-11 09:02:51.638793035 +0300
+@@ -25,3 +25,6 @@
+ add_library(goo
+   $<TARGET_OBJECTS:goo_objs>
+ )
++
++set_target_properties(goo_objs PROPERTIES COMPILE_FLAGS "-fPIC")
++install(TARGETS goo LIBRARY DESTINATION ${XPDF_LIBDIR})
+diff '--color=auto' -Naurd xpdf-4.01.orig/splash/CMakeLists.txt xpdf-4.01/splash/CMakeLists.txt
+--- xpdf-4.01.orig/splash/CMakeLists.txt	2019-03-10 21:32:19.000000000 +0300
++++ xpdf-4.01/splash/CMakeLists.txt	2019-03-11 09:04:48.885028391 +0300
+@@ -44,4 +44,7 @@
+   add_library(splash
+     $<TARGET_OBJECTS:splash_objs>
+   )
++
++  set_target_properties(splash_objs PROPERTIES COMPILE_FLAGS "-fPIC")
++  install(TARGETS splash LIBRARY DESTINATION ${XPDF_LIBDIR})
+ endif ()
+--- xpdf-4.01.orig/xpdf-qt/CMakeLists.txt	2019-02-18 21:24:19.000000000 +0300
++++ xpdf-4.01/xpdf-qt/CMakeLists.txt	2019-03-11 17:29:55.445451783 +0300
+@@ -93,6 +93,7 @@
+   else ()
+     set_property(TARGET xpdf PROPERTY Qt5_NO_LINK_QTMAIN ON)
+   endif ()
++  set_property(TARGET xpdf PROPERTY INSTALL_RPATH "")
+ 
+   install(TARGETS xpdf RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
+   install(FILES ${PROJECT_SOURCE_DIR}/doc/xpdf.1 DESTINATION ${CMAKE_INSTALL_MANDIR}/man1)

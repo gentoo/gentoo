@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 PYTHON_COMPAT=( python2_7 )
 
 # vala and introspection support is broken, bug #468208
@@ -24,7 +24,7 @@ HOMEPAGE="http://www.gegl.org/"
 LICENSE="|| ( GPL-3+ LGPL-3 )"
 SLOT="0.4"
 
-IUSE="cairo cpu_flags_x86_mmx cpu_flags_x86_sse debug ffmpeg +introspection jpeg2k lcms lensfun libav openexr raw sdl svg test tiff umfpack vala v4l webp"
+IUSE="cairo cpu_flags_x86_mmx cpu_flags_x86_sse debug ffmpeg +introspection jpeg2k lcms lensfun libav openexr pdf raw sdl svg test tiff umfpack vala v4l webp zlib"
 REQUIRED_USE="
 	svg? ( cairo )
 	vala? ( introspection )
@@ -36,9 +36,8 @@ REQUIRED_USE="
 RDEPEND="
 	>=dev-libs/glib-2.44:2
 	dev-libs/json-glib
-	>=media-libs/babl-0.1.56
+	>=media-libs/babl-0.1.62
 	>=media-libs/libpng-1.6.0:0=
-	sys-libs/zlib
 	virtual/jpeg:0=
 	>=x11-libs/gdk-pixbuf-2.32:2
 	x11-libs/pango
@@ -52,6 +51,7 @@ RDEPEND="
 	lcms? ( >=media-libs/lcms-2.8:2 )
 	lensfun? ( >=media-libs/lensfun-0.2.5 )
 	openexr? ( >=media-libs/openexr-2.2.0:= )
+	pdf? ( >=app-text/poppler-0.71.0[cairo] )
 	raw? ( >=media-libs/libraw-0.15.4:0= )
 	sdl? ( >=media-libs/libsdl-1.2.0 )
 	svg? ( >=gnome-base/librsvg-2.40.6:2 )
@@ -59,6 +59,7 @@ RDEPEND="
 	umfpack? ( sci-libs/umfpack )
 	v4l? ( >=media-libs/libv4l-1.0.1 )
 	webp? ( >=media-libs/libwebp-0.5.0:= )
+	zlib? ( >=sys-libs/zlib-1.2.0 )
 "
 DEPEND="${RDEPEND}
 	dev-lang/perl
@@ -135,6 +136,7 @@ src_configure() {
 		$(use_with lcms)
 		$(use_with lensfun)
 		$(use_with openexr)
+		$(use_with pdf popplerglib)
 		$(use_with raw libraw)
 		$(use_with sdl)
 		$(use_with svg librsvg)
@@ -146,6 +148,7 @@ src_configure() {
 		$(use_with v4l libv4l2)
 		$(use_with vala)
 		$(use_with webp)
+		$(use_with zlib)
 	)
 
 	if use test; then

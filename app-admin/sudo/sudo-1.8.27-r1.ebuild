@@ -31,20 +31,25 @@ fi
 # 3-clause BSD license
 LICENSE="ISC BSD"
 SLOT="0"
-IUSE="gcrypt ldap nls offensive openssl pam sasl +secure-path selinux +sendmail skey sssd"
+IUSE="gcrypt ldap libressl nls offensive pam sasl +secure-path selinux +sendmail skey sssd system-digest"
 
 CDEPEND="
 	sys-libs/zlib:=
-	gcrypt? ( dev-libs/libgcrypt:= )
 	ldap? (
 		>=net-nds/openldap-2.1.30-r1
 		dev-libs/cyrus-sasl
 	)
-	openssl? ( dev-libs/openssl:0= )
 	pam? ( virtual/pam )
 	sasl? ( dev-libs/cyrus-sasl )
 	skey? ( >=sys-auth/skey-1.1.5-r1 )
 	sssd? ( sys-auth/sssd[sudo] )
+	system-digest? (
+		gcrypt? ( dev-libs/libgcrypt:= )
+		!gcrypt? (
+			!libressl? ( dev-libs/openssl:0= )
+			libressl? ( dev-libs/libressl:0= )
+		)
+	)
 "
 RDEPEND="
 	${CDEPEND}
@@ -65,7 +70,6 @@ S="${WORKDIR}/${MY_P}"
 REQUIRED_USE="
 	pam? ( !skey )
 	skey? ( !pam )
-	?? ( gcrypt openssl )
 "
 
 MAKEOPTS+=" SAMPLES="
@@ -145,7 +149,6 @@ src_configure() {
 		--without-opie
 		$(use_enable gcrypt)
 		$(use_enable nls)
-		$(use_enable openssl)
 		$(use_enable sasl)
 		$(use_with offensive insults)
 		$(use_with offensive all-insults)
@@ -157,6 +160,13 @@ src_configure() {
 		$(use_with selinux)
 		$(use_with sendmail)
 	)
+
+	if use system-digest && ! use gcrypt; then
+		myeconfargs+=("--enable-openssl")
+	else
+		myeconfargs+=("--disable-openssl")
+	fi
+
 	econf "${myeconfargs[@]}"
 }
 

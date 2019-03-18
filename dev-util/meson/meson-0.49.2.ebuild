@@ -33,6 +33,10 @@ DEPEND="${RDEPEND}
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}/meson-0.49-python3.5-tests.patch"
+)
+
 python_prepare_all() {
 	# ASAN and sandbox both want control over LD_PRELOAD
 	# https://bugs.gentoo.org/673016
@@ -42,13 +46,12 @@ python_prepare_all() {
 }
 
 src_test() {
-	if tc-is-gcc; then
-		# LTO fails for static libs because the bfd plugin in missing.
-		# Remove this workaround after sys-devel/gcc-config-2.0 is stable.
-		# https://bugs.gentoo.org/672706
-		tc-getPROG AR gcc-ar >/dev/null
+	tc-export PKG_CONFIG
+	if ${PKG_CONFIG} --exists Qt5Core && ! ${PKG_CONFIG} --exists Qt5Gui; then
+		ewarn "Found Qt5Core but not Qt5Gui; skipping tests"
+	else
+		distutils-r1_src_test
 	fi
-	distutils-r1_src_test
 }
 
 python_test() {

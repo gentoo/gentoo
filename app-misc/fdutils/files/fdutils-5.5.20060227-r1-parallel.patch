@@ -1,0 +1,18 @@
+The Makefile implicit archive format ('Archives' in make.info)  from, e.g.
+'libfdutils.a($(LIBFILES))' does not support parallel operations. Convert to
+parallel-safe structure.
+
+Signed-off-by: Robin H. Johnson <robbat2@gentoo.org>
+
+--- fdutils-5.5-20060227.orig/src/Makefile.in	2019-03-17 13:25:43.891918479 -0700
++++ fdutils-5.5-20060227/src/Makefile.in	2019-03-17 13:30:05.067424657 -0700
+@@ -67,7 +67,7 @@
+ lex.%.c: %.lex
+ 	lex -P$* $<
+
+-libfdutils.a: libfdutils.a($(LIBFILES))
+-	ranlib libfdutils.a
++libfdutils.a: $(LIBFILES)
++	ar rcs $@ $^
+ 
+ floppycontrol.o getfdprm setfdprm: /usr/include/linux/fd.h

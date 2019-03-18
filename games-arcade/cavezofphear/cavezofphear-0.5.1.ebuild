@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,8 +6,7 @@ inherit eutils games
 
 DESCRIPTION="A boulder dash / digger-like game for console using ncurses"
 HOMEPAGE="http://www.x86.no/cavezofphear/"
-SRC_URI="http://www.x86.no/${PN}/${P/cavezof}.tar.bz2"
-
+SRC_URI="mirror://gentoo/phear-${PV}.tar.bz2"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc64 ~x86 ~x86-fbsd"

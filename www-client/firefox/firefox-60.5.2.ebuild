@@ -32,6 +32,8 @@ MOZ_HTTP_URI="https://archive.mozilla.org/pub/${PN}/releases"
 
 MOZCONFIG_OPTIONAL_WIFI=1
 
+LLVM_MAX_SLOT=8
+
 inherit check-reqs flag-o-matic toolchain-funcs eutils gnome2-utils llvm \
 		mozconfig-v6.60 pax-utils xdg-utils autotools mozlinguas-v2
 
@@ -63,8 +65,6 @@ RDEPEND="
 	selinux? ( sec-policy/selinux-mozilla )"
 
 DEPEND="${RDEPEND}
-	>=sys-devel/llvm-4.0.1
-	>=sys-devel/clang-4.0.1
 	amd64? ( ${ASM_DEPEND} virtual/opengl )
 	x86? ( ${ASM_DEPEND} virtual/opengl )"
 
@@ -81,7 +81,19 @@ if [[ -z $GMP_PLUGIN_LIST ]]; then
 fi
 
 llvm_check_deps() {
-	has_version "sys-devel/clang:${LLVM_SLOT}"
+	if ! has_version --host-root "sys-devel/clang:${LLVM_SLOT}" ; then
+		ewarn "sys-devel/clang:${LLVM_SLOT} is missing! Cannot use LLVM slot ${LLVM_SLOT} ..."
+		return 1
+	fi
+
+	if use clang ; then
+		if ! has_version --host-root "=sys-devel/lld-${LLVM_SLOT}*" ; then
+			ewarn "=sys-devel/lld-${LLVM_SLOT}* is missing! Cannot use LLVM slot ${LLVM_SLOT} ..."
+			return 1
+		fi
+	fi
+
+	einfo "Will use LLVM slot ${LLVM_SLOT}!"
 }
 
 pkg_setup() {

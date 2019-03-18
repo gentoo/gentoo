@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -32,11 +32,9 @@ src_prepare() {
 pkg_postinst() {
 	xdg_pkg_postinst
 	gnome2_schemas_update
-	gnome2_icon_cache_update
 }
 
 pkg_postrm() {
 	xdg_pkg_postrm
 	gnome2_schemas_update
-	gnome2_icon_cache_update
 }

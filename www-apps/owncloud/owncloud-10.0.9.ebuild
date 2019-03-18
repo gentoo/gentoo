@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,8 +6,8 @@ EAPI=6
 inherit eutils webapp
 
 DESCRIPTION="Web-based storage application where all your data is under your own control"
-HOMEPAGE="http://owncloud.org"
-SRC_URI="http://download.owncloud.org/community/${P}.tar.bz2 -> ${PF}.tar.bz2"
+HOMEPAGE="https://owncloud.org"
+SRC_URI="https://download.owncloud.org/community/${P}.tar.bz2 -> ${PF}.tar.bz2"
 LICENSE="AGPL-3"
 
 KEYWORDS="~amd64 ~arm ~x86"

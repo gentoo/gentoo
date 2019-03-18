@@ -46,7 +46,7 @@ src_prepare() {
 		eapply "${WORKDIR}/patch"/*.patch
 	fi
 
-	# Fix cross-compile relinking issue.
+	# Fix cross-compile relinking issue, bug #626402
 	elibtoolize
 
 	default

@@ -1,0 +1,51 @@
+From 29cab25240cf30f546671f265167a2eeadfd4c75 Mon Sep 17 00:00:00 2001
+From: Alan Coopersmith <alan.coopersmith@oracle.com>
+Date: Thu, 7 Mar 2019 13:23:00 -0800
+Subject: [PATCH app/mkfontscale] Revert "Use autoconf instead of sed to
+ substitute @bindir@ in mkfontdir.in"
+
+This reverts commit 1f9d14bec07092d62da29a5a233cefbf84d47289.
+It caused https://gitlab.freedesktop.org/xorg/app/mkfontscale/issues/5
+---
+ Makefile.am  | 9 ++++++++-
+ configure.ac | 1 -
+ 2 files changed, 8 insertions(+), 2 deletions(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index 7bb11ea..c36d171 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -23,6 +23,13 @@ SUBDIRS = man
+ bin_PROGRAMS = mkfontscale
+ bin_SCRIPTS = mkfontdir
+ 
++CLEANFILES = $(bin_SCRIPTS)
++EXTRA_DIST = $(bin_SCRIPTS:=.in)
++DIR_SUBSTS = -e 's|@bindir[@]|$(bindir)|g'
++
++mkfontdir: mkfontdir.in
++	$(AM_V_GEN)$(SED) $(DIR_SUBSTS) < $(srcdir)/mkfontdir.in > $@
++
+ AM_CPPFLAGS = @MKFONTSCALE_CFLAGS@ @X11_CFLAGS@ -D_BSD_SOURCE
+ AM_CFLAGS = $(CWARNFLAGS)
+ mkfontscale_LDADD  = @MKFONTSCALE_LIBS@
+@@ -59,4 +66,4 @@ lint:
+ 	$(LINT) $(ALL_LINT_FLAGS) $(mkfontscale_SOURCES)
+ endif LINT
+ 
+-EXTRA_DIST = README.md
++EXTRA_DIST += README.md
+diff --git a/configure.ac b/configure.ac
+index 5f5e463..7363bba 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -63,6 +63,5 @@ XORG_WITH_LINT
+ 
+ AC_CONFIG_FILES([
+ 	Makefile
+-	mkfontdir
+ 	man/Makefile])
+ AC_OUTPUT
+-- 
+2.19.2
+

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ EAPI=7
 inherit autotools multilib-minimal
 
 DESCRIPTION="AAC audio decoding library"
-HOMEPAGE="http://www.audiocoding.com/faad2.html"
+HOMEPAGE="https://www.audiocoding.com/faad2.html"
 SRC_URI="mirror://sourceforge/faac/${P}.tar.gz"
 
 LICENSE="GPL-2+"

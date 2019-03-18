@@ -31,7 +31,7 @@ DEPEND="${RDEPEND}
 	>=app-eselect/eselect-pinentry-0.5
 	app-text/docbook-xml-dtd:4.3
 	dev-libs/libxslt
-	>=sys-devel/gettext-0.9.18
+	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
 	test? ( ${PYTHON_DEPS} )
 "

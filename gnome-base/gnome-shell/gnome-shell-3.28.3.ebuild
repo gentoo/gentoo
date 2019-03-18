@@ -12,11 +12,11 @@ SRC_URI+=" https://dev.gentoo.org/~leio/distfiles/${P}-patchset.tar.xz"
 
 LICENSE="GPL-2+ LGPL-2+"
 SLOT="0"
-IUSE="+bluetooth +browser-extension elogind +ibus +networkmanager nsplugin systemd telepathy"
+IUSE="+bluetooth +browser-extension elogind gtk-doc +ibus +networkmanager nsplugin systemd telepathy"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	?? ( elogind systemd )"
 
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
 
 # libXfixes-5.0 needed for pointer barriers and #include <X11/extensions/Xfixes.h>
 # FIXME:
@@ -29,6 +29,7 @@ COMMON_DEPEND="
 	>=dev-libs/glib-2.56.0:2
 	>=dev-libs/gobject-introspection-1.49.1:=
 	>=dev-libs/gjs-1.47.0
+	<dev-libs/gjs-1.53
 	>=x11-libs/gtk+-3.15.0:3[introspection]
 	nsplugin? ( >=dev-libs/json-glib-0.13.2 )
 	>=x11-wm/mutter-3.28.0:0/2[introspection]
@@ -74,7 +75,8 @@ COMMON_DEPEND="
 # 7. mobile-broadband-provider-info, timezone-data for shell-mobile-providers.c  # TODO: Review
 # 8. IBus is needed for nls integration
 # 9. Optional telepathy chat integration
-# 10. TODO: semi-optional webkit-gtk[introspection] for captive portal helper
+# 10. Cantarell font used in gnome-shell global CSS (if removing this for some reason, make sure it's pulled in somehow for non-meta users still too)
+# 11. TODO: semi-optional webkit-gtk[introspection] for captive portal helper
 RDEPEND="${COMMON_DEPEND}
 	>=sys-apps/accountsservice-0.6.14[introspection]
 	app-accessibility/at-spi2-core:2[introspection]
@@ -98,6 +100,7 @@ RDEPEND="${COMMON_DEPEND}
 	telepathy? (
 		>=net-im/telepathy-logger-0.2.4[introspection]
 		>=net-libs/telepathy-glib-0.19[introspection] )
+	media-fonts/cantarell
 "
 # avoid circular dependency, see bug #546134
 PDEPEND="
@@ -110,9 +113,10 @@ DEPEND="${COMMON_DEPEND}
 	dev-libs/libxslt
 	>=dev-util/gdbus-codegen-2.45.3
 	dev-util/glib-utils
+	gtk-doc? ( >=dev-util/gtk-doc-1.17 )
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
-" #gtk-doc? ( >=dev-util/gtk-doc-1.17 )
+"
 
 PATCHES=(
 	# Patches from gnome-3-26 branch on top of 3.26.2
@@ -121,6 +125,8 @@ PATCHES=(
 	"${FILESDIR}"/${PV}-defaults.patch
 	# Fix automagic gnome-bluetooth dep, bug #398145
 	"${FILESDIR}"/${PV}-optional-bluetooth.patch
+	# Fix gtk-doc build with >=meson-0.47
+	"${FILESDIR}"/${PV}-fix-gtk-doc-meson.patch
 )
 
 src_prepare() {
@@ -135,7 +141,7 @@ src_configure() {
 	local emesonargs=(
 		$(meson_use bluetooth)
 		$(meson_use nsplugin browser_plugin)
-		#$(meson_use gtk-doc gtk_doc) # fails in gtkdoc-scangobj call with gtk-doc-1.25 (perl regex parenthesis issue); probably needs newer python-based gtk-doc to work
+		$(meson_use gtk-doc gtk_doc)
 		-Dman=true
 		$(meson_use networkmanager)
 		$(meson_use systemd) # this controls journald integration only as of 3.26.2 (structured logging and having gnome-shell launched apps use its own identifier instead of gnome-session)

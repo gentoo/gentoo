@@ -13,7 +13,7 @@ LICENSE="GPL-2+"
 SLOT="0/2" # 0/libmutter_api_version - ONLY gnome-shell (or anything using mutter-clutter-<api_version>.pc) should use the subslot
 
 IUSE="debug elogind gles2 input_devices_wacom +introspection systemd test udev wayland"
-REQUIRED_USE="wayland? ( ?? ( elogind systemd ) )"
+REQUIRED_USE="wayland? ( ^^ ( elogind systemd ) )"
 
 KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 

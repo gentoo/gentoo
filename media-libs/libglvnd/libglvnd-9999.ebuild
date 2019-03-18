@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 2018-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 EGIT_REPO_URI="https://github.com/NVIDIA/${PN}.git"
 
@@ -51,4 +51,8 @@ multilib_src_configure() {
 multilib_src_install() {
 	default
 	find "${D}" -name '*.la' -delete || die
+}
+
+multilib_src_test() {
+	emake check
 }

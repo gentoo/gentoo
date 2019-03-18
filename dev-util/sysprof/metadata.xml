@@ -5,10 +5,6 @@
 	<email>gnome@gentoo.org</email>
 	<name>Gentoo GNOME Desktop</name>
 </maintainer>
-<maintainer type="person">
-	<email>tetromino@gentoo.org</email>
-	<name>Alexandre Rostovtsev</name>
-</maintainer>
 <longdescription lang="en">
 	Sysprof is a sampling CPU profiler for Linux that profiles the entire system,
 	not just a single application.

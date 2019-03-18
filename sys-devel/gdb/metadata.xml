@@ -11,6 +11,7 @@
  <flag name="multitarget">Support all known targets in one gdb binary</flag>
  <flag name="python">Enable support for the new internal scripting language, as well as extended pretty printers</flag>
  <flag name="server">Install the "gdbserver" program (useful for embedded/remote targets)</flag>
+ <flag name="source-highlight">Enable listing highlighting via <pkg>dev-util/source-highlight</pkg></flag>
  <flag name="xml">Support parsing XML data files needed (at least) for cpu features, memory maps, and syscall tracing</flag>
 </use>
 <upstream>

@@ -15,12 +15,12 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 else
 	SRC_URI="mirror://gnome/sources/${PN}/$(ver_cut 1-2)/${P}.tar.xz"
-	KEYWORDS="alpha amd64 arm ~arm64 ~hppa ~ia64 ppc ppc64 sparc x86 ~amd64-fbsd"
+	KEYWORDS="alpha amd64 arm ~arm64 ~hppa ia64 ppc ppc64 sparc x86 ~amd64-fbsd"
 fi
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-IUSE="gtk-doc +introspection python static-libs test vala"
+IUSE="gtk-doc +introspection python static-libs test +vala"
 
 REQUIRED_USE="
 	python? ( introspection ${PYTHON_REQUIRED_USE} )

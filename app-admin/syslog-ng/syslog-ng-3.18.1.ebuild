@@ -24,7 +24,7 @@ RDEPEND="
 	>=dev-libs/ivykis-0.42.3
 	>=dev-libs/libpcre-6.1:=
 	!dev-libs/eventlog
-	amqp? ( >=net-libs/rabbitmq-c-0.8.0:= )
+	amqp? ( >=net-libs/rabbitmq-c-0.8.0:=[ssl] )
 	caps? ( sys-libs/libcap )
 	dbi? ( >=dev-db/libdbi-0.9.0 )
 	geoip? ( >=dev-libs/geoip-1.5.0 )

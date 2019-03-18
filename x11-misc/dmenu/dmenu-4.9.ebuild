@@ -32,7 +32,6 @@ src_prepare() {
 
 	sed -i \
 		-e 's|^	@|	|g' \
-		-e 's|${CC} -o|$(CC) $(CFLAGS) -o|g' \
 		-e '/^	echo/d' \
 		Makefile || die
 

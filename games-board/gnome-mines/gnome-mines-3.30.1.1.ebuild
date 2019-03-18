@@ -17,7 +17,7 @@ RDEPEND="
 	dev-libs/libgee:0.8
 	>=x11-libs/gtk+-3.12:3
 	dev-libs/libgnome-games-support:1=
-	>=gnome-base/librsvg-2.32.0:2[vala]
+	>=gnome-base/librsvg-2.32.0:2
 "
 DEPEND="${RDEPEND}
 	$(vala_depend)
@@ -26,6 +26,7 @@ DEPEND="${RDEPEND}
 	dev-util/itstool
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
+	gnome-base/librsvg:2[vala]
 "
 
 src_prepare() {
@@ -35,12 +36,10 @@ src_prepare() {
 
 pkg_postinst() {
 	xdg_pkg_postinst
-	gnome2_icon_cache_update
 	gnome2_schemas_update
 }
 
 pkg_postrm() {
 	xdg_pkg_postrm
-	gnome2_icon_cache_update
 	gnome2_schemas_update
 }

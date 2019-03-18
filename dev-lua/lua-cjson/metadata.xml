@@ -6,7 +6,7 @@
 		<name>Georgy Yakovlev</name>
 	</maintainer>
 	<longdescription lang="en">
-			Fork of mpx/lua-cjson is included in the OpenResty bundle and includes a few bugfixes and improvements,
+			OpenResty fork of mpx/lua-cjson, includes a few bugfixes and improvements,
 			especially to facilitate the encoding of empty tables as JSON Arrays.
 	</longdescription>
 	<use>

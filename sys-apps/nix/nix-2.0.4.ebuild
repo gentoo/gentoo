@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -41,6 +41,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.11.6-respect-CXXFLAGS.patch
 	"${FILESDIR}"/${PN}-1.11.6-respect-LDFLAGS.patch
 	"${FILESDIR}"/${PN}-2.0-user-path.patch
+	"${FILESDIR}"/${PN}-2.0.4-bdwgc-8.patch
 )
 
 DISABLE_AUTOFORMATTING=yes

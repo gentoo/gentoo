@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools eutils multilib toolchain-funcs multilib-minimal
+inherit autotools toolchain-funcs multilib-minimal
 
 MIN_PV="$(ver_cut 2)"
 
@@ -103,16 +103,16 @@ multilib_src_install() {
 	emake DESTDIR="${D}" install
 
 	einfo "removing static libraries as upstream has requested!"
-	rm "${ED%/}"/usr/$(get_libdir)/*.a || die "failed to remove static libraries."
+	rm "${ED}"/usr/$(get_libdir)/*.a || die "failed to remove static libraries."
 
 	# install nspr-config
 	dobin config/nspr-config
 
 	# Remove stupid files in /usr/bin
-	rm "${ED%/}"/usr/bin/prerr.properties || die
+	rm "${ED}"/usr/bin/prerr.properties || die
 
 	# This is used only to generate prerr.c and prerr.h at build time.
 	# No other projects use it, and we don't want to depend on perl.
 	# Talked to upstream and they agreed w/punting.
-	rm "${ED%/}"/usr/bin/compile-et.pl || die
+	rm "${ED}"/usr/bin/compile-et.pl || die
 }

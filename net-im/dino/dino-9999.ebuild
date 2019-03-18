@@ -11,7 +11,7 @@ DESCRIPTION="Modern Jabber/XMPP Client using GTK+/Vala"
 HOMEPAGE="https://dino.im"
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="+gnupg +http +omemo"
+IUSE="+gpg +http +omemo"
 
 MY_REPO_URI="https://github.com/dino/dino"
 if [[ ${PV} == "9999" ]]; then
@@ -32,7 +32,7 @@ RDEPEND="
 	x11-libs/gdk-pixbuf:2
 	x11-libs/gtk+:3
 	x11-libs/pango
-	gnupg? ( app-crypt/gpgme:1 )
+	gpg? ( app-crypt/gpgme:1 )
 	http? ( net-libs/libsoup:2.4 )
 	omemo? (
 		dev-libs/libgcrypt:0
@@ -52,7 +52,7 @@ src_prepare() {
 
 src_configure() {
 	local disabled_plugins=(
-		$(usex gnupg "" "openpgp")
+		$(usex gpg "" "openpgp")
 		$(usex omemo "" "omemo")
 		$(usex http  "" "http-files")
 	)
