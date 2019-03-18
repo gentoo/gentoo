@@ -32,6 +32,13 @@ src_unpack() {
 	mv ${MY_P} "${S}" || die
 }
 
+src_prepare() {
+	default
+
+	# allow building with go 1.12 #678924
+	sed -i 's/_Ctype_struct_/C.struct_/' vendor/github.com/google/gopacket/pcap/pcap.go || die
+}
+
 src_compile() {
 	local myconf=()
 
