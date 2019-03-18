@@ -29,7 +29,44 @@
  			 conf_editbox_handler,
 --- a/settings.c
 +++ b/settings.c
-@@ -990,7 +990,9 @@
+@@ -592,21 +592,25 @@
+     write_setting_b(sesskey, "Compression", conf_get_bool(conf, CONF_compression));
+     write_setting_b(sesskey, "TryAgent", conf_get_bool(conf, CONF_tryagent));
+     write_setting_b(sesskey, "AgentFwd", conf_get_bool(conf, CONF_agentfwd));
++#ifndef NO_GSSAPI
+     write_setting_b(sesskey, "GssapiFwd", conf_get_bool(conf, CONF_gssapifwd));
++#endif
+     write_setting_b(sesskey, "ChangeUsername", conf_get_bool(conf, CONF_change_username));
+     wprefs(sesskey, "Cipher", ciphernames, CIPHER_MAX, conf, CONF_ssh_cipherlist);
+     wprefs(sesskey, "KEX", kexnames, KEX_MAX, conf, CONF_ssh_kexlist);
+     wprefs(sesskey, "HostKey", hknames, HK_MAX, conf, CONF_ssh_hklist);
+     write_setting_i(sesskey, "RekeyTime", conf_get_int(conf, CONF_ssh_rekey_time));
++#ifndef NO_GSSAPI
+     write_setting_i(sesskey, "GssapiRekey", conf_get_int(conf, CONF_gssapirekey));
++#endif
+     write_setting_s(sesskey, "RekeyBytes", conf_get_str(conf, CONF_ssh_rekey_data));
+     write_setting_b(sesskey, "SshNoAuth", conf_get_bool(conf, CONF_ssh_no_userauth));
+     write_setting_b(sesskey, "SshBanner", conf_get_bool(conf, CONF_ssh_show_banner));
+     write_setting_b(sesskey, "AuthTIS", conf_get_bool(conf, CONF_try_tis_auth));
+     write_setting_b(sesskey, "AuthKI", conf_get_bool(conf, CONF_try_ki_auth));
++#ifndef NO_GSSAPI
+     write_setting_b(sesskey, "AuthGSSAPI", conf_get_bool(conf, CONF_try_gssapi_auth));
+     write_setting_b(sesskey, "AuthGSSAPIKEX", conf_get_bool(conf, CONF_try_gssapi_kex));
+-#ifndef NO_GSSAPI
+     wprefs(sesskey, "GSSLibs", gsslibkeywords, ngsslibs, conf, CONF_ssh_gsslist);
+     write_setting_filename(sesskey, "GSSCustom", conf_get_filename(conf, CONF_ssh_gss_custom));
+ #endif
+@@ -937,7 +941,9 @@
+     gppb(sesskey, "TryAgent", true, conf, CONF_tryagent);
+     gppb(sesskey, "AgentFwd", false, conf, CONF_agentfwd);
+     gppb(sesskey, "ChangeUsername", false, conf, CONF_change_username);
++#ifndef NO_GSSAPI
+     gppb(sesskey, "GssapiFwd", false, conf, CONF_gssapifwd);
++#endif
+     gprefs(sesskey, "Cipher", "\0",
+ 	   ciphernames, CIPHER_MAX, conf, CONF_ssh_cipherlist);
+     {
+@@ -990,7 +996,9 @@
      gprefs(sesskey, "HostKey", "ed25519,ecdsa,rsa,dsa,WARN",
             hknames, HK_MAX, conf, CONF_ssh_hklist);
      gppi(sesskey, "RekeyTime", 60, conf, CONF_ssh_rekey_time);
@@ -39,6 +76,17 @@
      gpps(sesskey, "RekeyBytes", "1G", conf, CONF_ssh_rekey_data);
      {
  	/* SSH-2 only by default */
+@@ -1007,9 +1015,9 @@
+     gppb(sesskey, "SshBanner", true, conf, CONF_ssh_show_banner);
+     gppb(sesskey, "AuthTIS", false, conf, CONF_try_tis_auth);
+     gppb(sesskey, "AuthKI", true, conf, CONF_try_ki_auth);
++#ifndef NO_GSSAPI
+     gppb(sesskey, "AuthGSSAPI", true, conf, CONF_try_gssapi_auth);
+     gppb(sesskey, "AuthGSSAPIKEX", true, conf, CONF_try_gssapi_kex);
+-#ifndef NO_GSSAPI
+     gprefs(sesskey, "GSSLibs", "\0",
+ 	   gsslibkeywords, ngsslibs, conf, CONF_ssh_gsslist);
+     gppfile(sesskey, "GSSCustom", conf, CONF_ssh_gss_custom);
 --- a/ssh.c
 +++ b/ssh.c
 @@ -50,7 +50,9 @@
@@ -51,19 +99,25 @@
  
      char *savedhost;
      int savedport;
-@@ -257,7 +257,11 @@
+@@ -252,10 +254,17 @@
+                     conf_get_bool(ssh->conf, CONF_tryagent), username,
+                     conf_get_bool(ssh->conf, CONF_change_username),
+                     conf_get_bool(ssh->conf, CONF_try_ki_auth),
++#ifndef NO_GSSAPI
                      conf_get_bool(ssh->conf, CONF_try_gssapi_auth),
                      conf_get_bool(ssh->conf, CONF_try_gssapi_kex),
                      conf_get_bool(ssh->conf, CONF_gssapifwd),
-+#ifndef NO_GSSAPI
                      &ssh->gss_state);
 +#else
++                    NULL,
++                    NULL,
++                    NULL,
 +                    NULL);
 +#endif
                  ssh_connect_ppl(ssh, userauth_layer);
                  transport_child_layer = userauth_layer;
  
-@@ -269,7 +273,11 @@
+@@ -267,7 +276,11 @@
                  ssh->fullhostname,
                  ssh_verstring_get_local(old_bpp),
                  ssh_verstring_get_remote(old_bpp),
