@@ -3,6 +3,8 @@
 
 EAPI=7
 
+inherit multilib-minimal
+
 DESCRIPTION="C library for the Public Suffix List"
 HOMEPAGE="https://github.com/rockdaboot/libpsl"
 SRC_URI="https://github.com/rockdaboot/${PN}/releases/download/${P}/${P}.tar.gz"
@@ -15,10 +17,10 @@ IUSE="icu +idn +man"
 REQUIRED_USE="^^ ( icu idn )"
 
 RDEPEND="
-	icu? ( dev-libs/icu:= )
+	icu? ( dev-libs/icu:=[${MULTILIB_USEDEP}] )
 	idn? (
-		dev-libs/libunistring
-		net-dns/libidn2:=
+		dev-libs/libunistring[${MULTILIB_USEDEP}]
+		net-dns/libidn2:=[${MULTILIB_USEDEP}]
 	)
 "
 
@@ -32,7 +34,7 @@ BDEPEND="
 	man? ( dev-libs/libxslt )
 "
 
-src_configure() {
+multilib_src_configure() {
 	local myeconfargs=(
 		--enable-ubsan
 		--disable-asan
@@ -57,10 +59,10 @@ src_configure() {
 		myeconfargs+=( --disable-runtime )
 	fi
 
-	econf "${myeconfargs[@]}"
+	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
 }
 
-src_install() {
+multilib_src_install() {
 	default
 
 	find "${ED}" \( -name "*.a" -o -name "*.la" \) -delete || die
