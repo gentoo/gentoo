@@ -1,0 +1,40 @@
+commit 0665920329e86ca96128538ce4f846538ab10b70
+gpg: Signature made Mon 18 Mar 2019 01:35:49 AM PDT
+gpg:                using RSA key 00CE76D1834960DFCE886DF8EF4CA1502CCBAB41
+gpg:                issuer "palmer@dabbelt.com"
+gpg: Good signature from "Palmer Dabbelt <palmer@dabbelt.com>" [ultimate]
+gpg:                 aka "Palmer Dabbelt <palmer@sifive.com>" [ultimate]
+Author: Palmer Dabbelt <palmer@sifive.com>
+Date:   Mon Mar 18 01:24:37 2019 -0700
+
+    Respect CPPFLAGS when generating stdio-lim.h
+    
+    The RISC-V port expects that the C compiler provides a handful of
+    definitions that determine the ABI to build for, but some users go
+    through the glibc build process before there is a suitable cross
+    compiler and therefor are compiling with some arbitrary complier.  Since
+    we only look at the C preprocessor during the headers build process this
+    should be fine as long as users set CPPFLAGS on their own.
+    
+    Unfortunately, stdio-lim.h isn't respecting CPPFLAGS and instead uses
+    CPPUNDEFS, a variable that isn't standard.  This varibale is meant to
+    undefine _FORTIFY_SOURCE, and overriding it to also add definitions
+    seems ugly.  Instead I think the cleaner fix is to make the stdio-lib.h
+    generation precoss respect CPPFLAGS like the rest of the build process
+    does.
+    
+            * Makerules (stdio-lim.h): Add $(CPPFLAGS) to CC invocation.
+
+diff --git a/Makerules b/Makerules
+index 83bdd3a44d0d..a81395b4b62e 100644
+--- a/Makerules
++++ b/Makerules
+@@ -1423,7 +1423,7 @@ $(stdio_lim:h=st): $(..)stdio-common/stdio_lim.h.in $(..)Rules \
+ 	{ echo '#include "$(..)posix/bits/posix1_lim.h"';		\
+ 	} |								\
+ 	$(CC) -E -dM -MD -MP -MF $(@:st=dT) -MT '$(@:st=h) $(@:st=d)' 	\
+-	      $(CPPUNDEFS) $(+includes) -xc - -o $(@:st=hT)
++	      $(CPPUNDEFS) $(CPPFLAGS) $(+includes) -xc - -o $(@:st=hT)
+ 	sed $(sed-remove-objpfx) $(sed-remove-dotdot)			\
+ 	    $(@:st=dT) > $(@:st=dt)
+ 	mv -f $(@:st=dt) $(@:st=d)

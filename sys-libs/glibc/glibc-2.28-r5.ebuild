@@ -738,6 +738,8 @@ src_unpack() {
 }
 
 src_prepare() {
+	epatch "${FILESDIR}"/${PV}/0001-cppflags.patch
+
 	if ! use vanilla ; then
 		elog "Applying Gentoo Glibc Patchset ${RELEASE_VER}-${PATCH_VER}"
 		eapply "${WORKDIR}"/patches
