@@ -33,6 +33,9 @@ DEPEND="
 	dev-lang/perl
 	virtual/pkgconfig
 "
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.71-no-gssapi.patch
+)
 
 src_prepare() {
 	default
