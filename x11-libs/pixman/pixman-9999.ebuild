@@ -40,6 +40,7 @@ multilib_src_configure() {
 		$(meson_feature loongson2f loongson-mmi)
 		-Dgtk=disabled
 		-Dlibpng=disabled
+		-Dopenmp=auto # only used in unit tests
 	)
 	meson_src_configure
 }
