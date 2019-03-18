@@ -1,0 +1,289 @@
+From aa9e66f2d1e96937c56e4141bf8c966a8a59983f Mon Sep 17 00:00:00 2001
+From: Brian Paul <brianp@vmware.com>
+Date: Wed, 28 Feb 2018 11:14:34 -0700
+Subject: [PATCH 1/4] glxinfo/wglinfo: remove print_shader_limits() code
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+And add queries of GL 2.0 limits.  All the VS, FS, GS limits which were
+reported with print_shader_limits() are also covered by the GL 2.0 and
+3.2 queries.
+
+Bugzilla: https://bugs.freedesktop.org/show_bug.cgi?id=105285
+Reviewed-by: Mathias Fröhlich <mathias.froehlich@web.de>
+Reviewed-by: Emil Velikov <emil.velikov@collabora.com>
+---
+ src/xdemos/glinfo_common.c | 89 +++++---------------------------------
+ 1 file changed, 11 insertions(+), 78 deletions(-)
+
+diff --git a/src/xdemos/glinfo_common.c b/src/xdemos/glinfo_common.c
+index 3668026b..7ffbeac5 100644
+--- a/src/xdemos/glinfo_common.c
++++ b/src/xdemos/glinfo_common.c
+@@ -378,74 +378,6 @@ struct token_name
+ };
+ 
+ 
+-static void
+-print_shader_limit_list(const struct token_name *lim)
+-{
+-   GLint max[1];
+-   unsigned i;
+-
+-   for (i = 0; lim[i].token; i++) {
+-      glGetIntegerv(lim[i].token, max);
+-      if (glGetError() == GL_NO_ERROR) {
+-	 printf("        %s = %d\n", lim[i].name, max[0]);
+-      }
+-   }
+-}
+-
+-
+-/**
+- * Print interesting limits for vertex/fragment shaders.
+- */
+-static void
+-print_shader_limits(GLenum target)
+-{
+-   static const struct token_name vertex_limits[] = {
+-      { GL_MAX_VERTEX_UNIFORM_COMPONENTS_ARB, "GL_MAX_VERTEX_UNIFORM_COMPONENTS_ARB" },
+-      { GL_MAX_VARYING_FLOATS_ARB, "GL_MAX_VARYING_FLOATS_ARB" },
+-      { GL_MAX_VERTEX_ATTRIBS_ARB, "GL_MAX_VERTEX_ATTRIBS_ARB" },
+-      { GL_MAX_TEXTURE_IMAGE_UNITS_ARB, "GL_MAX_TEXTURE_IMAGE_UNITS_ARB" },
+-      { GL_MAX_VERTEX_TEXTURE_IMAGE_UNITS_ARB, "GL_MAX_VERTEX_TEXTURE_IMAGE_UNITS_ARB" },
+-      { GL_MAX_COMBINED_TEXTURE_IMAGE_UNITS_ARB, "GL_MAX_COMBINED_TEXTURE_IMAGE_UNITS_ARB" },
+-      { GL_MAX_TEXTURE_COORDS_ARB, "GL_MAX_TEXTURE_COORDS_ARB" },
+-      { GL_MAX_VERTEX_OUTPUT_COMPONENTS  , "GL_MAX_VERTEX_OUTPUT_COMPONENTS  " },
+-      { (GLenum) 0, NULL }
+-   };
+-   static const struct token_name fragment_limits[] = {
+-      { GL_MAX_FRAGMENT_UNIFORM_COMPONENTS_ARB, "GL_MAX_FRAGMENT_UNIFORM_COMPONENTS_ARB" },
+-      { GL_MAX_TEXTURE_COORDS_ARB, "GL_MAX_TEXTURE_COORDS_ARB" },
+-      { GL_MAX_TEXTURE_IMAGE_UNITS_ARB, "GL_MAX_TEXTURE_IMAGE_UNITS_ARB" },
+-      { GL_MAX_FRAGMENT_INPUT_COMPONENTS , "GL_MAX_FRAGMENT_INPUT_COMPONENTS " },
+-      { (GLenum) 0, NULL }
+-   };
+-   static const struct token_name geometry_limits[] = {
+-      { GL_MAX_GEOMETRY_UNIFORM_COMPONENTS, "GL_MAX_GEOMETRY_UNIFORM_COMPONENTS" },
+-      { GL_MAX_GEOMETRY_TEXTURE_IMAGE_UNITS, "GL_MAX_GEOMETRY_TEXTURE_IMAGE_UNITS" },
+-      { GL_MAX_GEOMETRY_OUTPUT_VERTICES  , "GL_MAX_GEOMETRY_OUTPUT_VERTICES  " },
+-      { GL_MAX_GEOMETRY_TOTAL_OUTPUT_COMPONENTS, "GL_MAX_GEOMETRY_TOTAL_OUTPUT_COMPONENTS" },
+-      { GL_MAX_GEOMETRY_INPUT_COMPONENTS , "GL_MAX_GEOMETRY_INPUT_COMPONENTS " },
+-      { GL_MAX_GEOMETRY_OUTPUT_COMPONENTS, "GL_MAX_GEOMETRY_OUTPUT_COMPONENTS" },
+-      { (GLenum) 0, NULL }
+-   };
+-
+-   switch (target) {
+-   case GL_VERTEX_SHADER:
+-      printf("    GL_VERTEX_SHADER_ARB:\n");
+-      print_shader_limit_list(vertex_limits);
+-      break;
+-
+-   case GL_FRAGMENT_SHADER:
+-      printf("    GL_FRAGMENT_SHADER_ARB:\n");
+-      print_shader_limit_list(fragment_limits);
+-      break;
+-
+-   case GL_GEOMETRY_SHADER:
+-      printf("    GL_GEOMETRY_SHADER:\n");
+-      print_shader_limit_list(geometry_limits);
+-      break;
+-   }
+-}
+-
+-
+ /**
+  * Print interesting limits for vertex/fragment programs.
+  */
+@@ -627,7 +559,17 @@ print_limits(const char *extensions, const char *oglstring, int version,
+       { 1, GL_MAX_TESS_EVALUATION_OUTPUT_COMPONENTS, "GL_MAX_TESS_EVALUATION_OUTPUT_COMPONENTS", "GL_ARB_tessellation_shader" },
+       { 1, GL_MAX_COMBINED_TESS_EVALUATION_UNIFORM_COMPONENTS, "GL_MAX_COMBINED_TESS_EVALUATION_UNIFORM_COMPONENTS", "GL_ARB_tessellation_shader" },
+ #endif
+-
++#if defined(GL_VERSION_2_0)
++      { 1, GL_MAX_COMBINED_TEXTURE_IMAGE_UNITS, "GL_MAX_COMBINED_TEXTURE_IMAGE_UNITS", "2.0" },
++      { 1, GL_MAX_DRAW_BUFFERS, "GL_MAX_DRAW_BUFFERS", "2.0" },
++      { 1, GL_MAX_FRAGMENT_UNIFORM_COMPONENTS, "GL_MAX_FRAGMENT_UNIFORM_COMPONENTS", "2.0" },
++      { 1, GL_MAX_TEXTURE_COORDS, "GL_MAX_TEXTURE_COORDS", "2.0" },
++      { 1, GL_MAX_TEXTURE_IMAGE_UNITS, "GL_MAX_TEXTURE_IMAGE_UNITS", "2.0" },
++      { 1, GL_MAX_VARYING_FLOATS, "GL_MAX_VARYING_FLOATS", "2.0" },
++      { 1, GL_MAX_VERTEX_ATTRIBS, "GL_MAX_VERTEX_ATTRIBS", "2.0" },
++      { 1, GL_MAX_VERTEX_UNIFORM_COMPONENTS, "GL_MAX_VERTEX_UNIFORM_COMPONENTS", "2.0" },
++      { 1, GL_MAX_VERTEX_TEXTURE_IMAGE_UNITS, "GL_MAX_VERTEX_TEXTURE_IMAGE_UNITS", "2.0" },
++#endif
+ #if defined(GL_VERSION_3_0)
+       { 1, GL_MAX_TRANSFORM_FEEDBACK_INTERLEAVED_COMPONENTS, "GL_MAX_TRANSFORM_FEEDBACK_INTERLEAVED_COMPONENTS", "3.0" },
+       { 1, GL_MAX_TRANSFORM_FEEDBACK_SEPARATE_ATTRIBS, "GL_MAX_TRANSFORM_FEEDBACK_SEPARATE_ATTRIBS", "3.0" },
+@@ -819,15 +761,6 @@ print_limits(const char *extensions, const char *oglstring, int version,
+       print_program_limits(GL_FRAGMENT_PROGRAM_ARB, extfuncs);
+    }
+ #endif
+-   if (extension_supported("GL_ARB_vertex_shader", extensions)) {
+-      print_shader_limits(GL_VERTEX_SHADER_ARB);
+-   }
+-   if (extension_supported("GL_ARB_fragment_shader", extensions)) {
+-      print_shader_limits(GL_FRAGMENT_SHADER_ARB);
+-   }
+-   if (version >= 32) {
+-      print_shader_limits(GL_GEOMETRY_SHADER);
+-   }
+ }
+ 
+ 
+-- 
+2.19.2
+
+From 9804a083feb676cf810905a6826f708f54a15be2 Mon Sep 17 00:00:00 2001
+From: Brian Paul <brianp@vmware.com>
+Date: Wed, 28 Feb 2018 11:19:43 -0700
+Subject: [PATCH 2/4] glxinfo/wglinfo: fix VP/FP strings, indentation
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Print extensions string instead of program target.
+Use less indentation to match other sections.
+
+Bugzilla: https://bugs.freedesktop.org/show_bug.cgi?id=105285
+Reviewed-by: Mathias Fröhlich <mathias.froehlich@web.de>
+Reviewed-by: Emil Velikov <emil.velikov@collabora.com>
+---
+ src/xdemos/glinfo_common.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/src/xdemos/glinfo_common.c b/src/xdemos/glinfo_common.c
+index 7ffbeac5..57dccc82 100644
+--- a/src/xdemos/glinfo_common.c
++++ b/src/xdemos/glinfo_common.c
+@@ -419,10 +419,10 @@ print_program_limits(GLenum target,
+    int i;
+ 
+    if (target == GL_VERTEX_PROGRAM_ARB) {
+-      printf("    GL_VERTEX_PROGRAM_ARB:\n");
++      printf("  GL_ARB_vertex_program:\n");
+    }
+    else if (target == GL_FRAGMENT_PROGRAM_ARB) {
+-      printf("    GL_FRAGMENT_PROGRAM_ARB:\n");
++      printf("  GL_ARB_fragment_program:\n");
+    }
+    else {
+       return; /* something's wrong */
+@@ -431,14 +431,14 @@ print_program_limits(GLenum target,
+    for (i = 0; common_limits[i].token; i++) {
+       extfuncs->GetProgramivARB(target, common_limits[i].token, max);
+       if (glGetError() == GL_NO_ERROR) {
+-         printf("        %s = %d\n", common_limits[i].name, max[0]);
++         printf("    %s = %d\n", common_limits[i].name, max[0]);
+       }
+    }
+    if (target == GL_FRAGMENT_PROGRAM_ARB) {
+       for (i = 0; fragment_limits[i].token; i++) {
+          extfuncs->GetProgramivARB(target, fragment_limits[i].token, max);
+          if (glGetError() == GL_NO_ERROR) {
+-            printf("        %s = %d\n", fragment_limits[i].name, max[0]);
++            printf("    %s = %d\n", fragment_limits[i].name, max[0]);
+          }
+       }
+    }
+-- 
+2.19.2
+
+From 6a7cee63b714699b98a31b3e57039d26506465ae Mon Sep 17 00:00:00 2001
+From: Brian Paul <brianp@vmware.com>
+Date: Mon, 5 Mar 2018 09:37:17 -0700
+Subject: [PATCH 3/4] glxinfo/wglinfo: print (110) instead of empty line
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+The GL_SHADING_LANGUAGE_VERSION query returns an empty string for
+GLSL 1.10.  Instead of printing an empty line, print (110).
+
+Bugzilla: https://bugs.freedesktop.org/show_bug.cgi?id=105285
+Reviewed-by: Mathias Fröhlich <mathias.froehlich@web.de>
+Reviewed-by: Emil Velikov <emil.velikov@collabora.com>
+---
+ src/xdemos/glinfo_common.c | 13 +++++++++++--
+ 1 file changed, 11 insertions(+), 2 deletions(-)
+
+diff --git a/src/xdemos/glinfo_common.c b/src/xdemos/glinfo_common.c
+index 57dccc82..a8ec12e7 100644
+--- a/src/xdemos/glinfo_common.c
++++ b/src/xdemos/glinfo_common.c
+@@ -745,8 +745,17 @@ print_limits(const char *extensions, const char *oglstring, int version,
+       glGetIntegerv(GL_NUM_SHADING_LANGUAGE_VERSIONS, &n);
+       printf("    GL_NUM_SHADING_LANGUAGE_VERSIONS = %d\n", n);
+       for (i = 0; i < n; i++) {
+-         printf("      %s\n", (const char *)
+-                extfuncs->GetStringi(GL_SHADING_LANGUAGE_VERSION, i));
++         const char *lang = (const char *)
++            extfuncs->GetStringi(GL_SHADING_LANGUAGE_VERSION, i);
++         if (lang[0] == 0) {
++            /* The empty string is really GLSL 1.10.  Instead of
++             * printing an empty line, print (110).  For more info,
++             * see the GL 4.3 compatibility profile specification,
++             * page 628.
++             */
++            lang = "(110)";
++         }
++         printf("      %s\n", lang);
+       }
+    }
+ #endif
+-- 
+2.19.2
+
+From 27a0e5af804b3d28c51bd05ad38d25a2c8b4112d Mon Sep 17 00:00:00 2001
+From: Brian Paul <brianp@vmware.com>
+Date: Mon, 5 Mar 2018 09:44:41 -0700
+Subject: [PATCH 4/4] glxinfo/wglinfo: improve GL_ARB_imaging query code
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Print GL_MAX_CONVOLUTION_WIDTH, HEIGHT on separate lines.
+Print GL_MAX_COLOR_MATRIX_STACK_DEPTH in same section.
+
+Reviewed-by: Mathias Fröhlich <mathias.froehlich@web.de>
+Reviewed-by: Emil Velikov <emil.velikov@collabora.com>
+---
+ src/xdemos/glinfo_common.c | 13 ++++++++-----
+ 1 file changed, 8 insertions(+), 5 deletions(-)
+
+diff --git a/src/xdemos/glinfo_common.c b/src/xdemos/glinfo_common.c
+index a8ec12e7..92467d67 100644
+--- a/src/xdemos/glinfo_common.c
++++ b/src/xdemos/glinfo_common.c
+@@ -464,7 +464,6 @@ print_limits(const char *extensions, const char *oglstring, int version,
+       { 1, GL_MAX_ATTRIB_STACK_DEPTH, "GL_MAX_ATTRIB_STACK_DEPTH", NULL },
+       { 1, GL_MAX_CLIENT_ATTRIB_STACK_DEPTH, "GL_MAX_CLIENT_ATTRIB_STACK_DEPTH", NULL },
+       { 1, GL_MAX_CLIP_PLANES, "GL_MAX_CLIP_PLANES", NULL },
+-      { 1, GL_MAX_COLOR_MATRIX_STACK_DEPTH, "GL_MAX_COLOR_MATRIX_STACK_DEPTH", "GL_ARB_imaging" },
+       { 1, GL_MAX_ELEMENTS_VERTICES, "GL_MAX_ELEMENTS_VERTICES", NULL },
+       { 1, GL_MAX_ELEMENTS_INDICES, "GL_MAX_ELEMENTS_INDICES", NULL },
+       { 1, GL_MAX_EVAL_ORDER, "GL_MAX_EVAL_ORDER", NULL },
+@@ -716,12 +715,16 @@ print_limits(const char *extensions, const char *oglstring, int version,
+ 
+    /* these don't fit into the above mechanism, unfortunately */
+    if (extension_supported("GL_ARB_imaging", extensions)) {
++      GLint d;
++      printf("  GL_ARB_imaging:\n");
+       extfuncs->GetConvolutionParameteriv(GL_CONVOLUTION_2D,
+-                                          GL_MAX_CONVOLUTION_WIDTH, max);
++                                          GL_MAX_CONVOLUTION_WIDTH, &d);
++      printf("    GL_MAX_CONVOLUTION_WIDTH = %d\n", d);
+       extfuncs->GetConvolutionParameteriv(GL_CONVOLUTION_2D,
+-                                          GL_MAX_CONVOLUTION_HEIGHT, max+1);
+-      printf("  GL_ARB_imaging:\n");
+-      printf("    GL_MAX_CONVOLUTION_WIDTH/HEIGHT = %d, %d\n", max[0], max[1]);
++                                          GL_MAX_CONVOLUTION_HEIGHT, &d);
++      printf("    GL_MAX_CONVOLUTION_HEIGHT = %d\n", d);
++      glGetIntegerv(GL_MAX_COLOR_MATRIX_STACK_DEPTH, &d);
++      printf("    GL_MAX_COLOR_MATRIX_STACK_DEPTH = %d\n", d);
+    }
+ 
+    if (extension_supported("GL_ARB_texture_compression", extensions)) {
+-- 
+2.19.2
+
