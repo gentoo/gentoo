@@ -27,7 +27,7 @@ if [[ ${MOZ_ESR} == 1 ]] ; then
 fi
 
 # Patch version
-PATCH="${PN}-66.0-patches-04"
+PATCH="${PN}-66.0-patches-05"
 
 MOZ_HTTP_URI="https://archive.mozilla.org/pub/${PN}/releases"
 MOZ_SRC_URI="${MOZ_HTTP_URI}/${MOZ_PV}/source/firefox-${MOZ_PV}.source.tar.xz"
@@ -244,7 +244,6 @@ src_unpack() {
 }
 
 src_prepare() {
-	rm "${WORKDIR}"/firefox/3000_use_the_Mozilla_location_service_when_no_Google_key_is_available.patch # remove for release
 	eapply "${WORKDIR}/firefox"
 
 	# Allow user to apply any additional patches without modifing ebuild
