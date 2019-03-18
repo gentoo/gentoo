@@ -20,10 +20,9 @@ KEYWORDS="~amd64 ~arm ~ia64 ~ppc64 ~sparc ~x86"
 IUSE="doc examples test"
 
 RDEPEND="
-	>=dev-python/astroid-2.0.0[${PYTHON_USEDEP}]
+	>=dev-python/astroid-2.2.0[${PYTHON_USEDEP}]
 	>=dev-python/isort-4.2.5[${PYTHON_USEDEP}]
-	dev-python/mccabe[${PYTHON_USEDEP}]
-	virtual/python-singledispatch[${PYTHON_USEDEP}]"
+	dev-python/mccabe[${PYTHON_USEDEP}]"
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/pytest-runner[${PYTHON_USEDEP}]
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )

@@ -21,7 +21,7 @@ RDEPEND="
 	dev-python/lazy-object-proxy[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
 	dev-python/wrapt[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep '<=dev-python/typed-ast-1.2.0[${PYTHON_USEDEP}]' python3_5 python3_6)"
+	>=dev-python/typed-ast-1.3.0[${PYTHON_USEDEP}]"
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
@@ -33,7 +33,6 @@ DEPEND="
 	)"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-2.1.0-fix-tests.patch"
 	"${FILESDIR}/${PN}-2.1.0-no-pytest-runner.patch"
 )
 
