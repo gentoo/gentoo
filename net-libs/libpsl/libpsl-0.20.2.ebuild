@@ -28,7 +28,7 @@ DEPEND="
 	${RDEPEND}
 "
 BDEPEND="
-	dev-util/gtk-doc
+	dev-util/gtk-doc-am
 	sys-devel/gettext
 	virtual/pkgconfig
 	man? ( dev-libs/libxslt )
