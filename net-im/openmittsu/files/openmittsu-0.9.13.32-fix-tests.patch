@@ -1,0 +1,11 @@
+--- openmittsu-0.9.13.32-orig/CMakeLists.txt
++++ openmittsu-0.9.13.32/CMakeLists.txt
+@@ -570,7 +570,7 @@
+ target_link_libraries(openMittsu openMittsuCore Qt5::Core Qt5::Gui Qt5::Widgets Qt5::Network Qt5::Multimedia Qt5::MultimediaWidgets Qt5::Sql)
+ target_link_libraries(openMittsuVersionInfo Qt5::Core)
+ if (OPENMITTSU_ENABLE_TESTS)
+-	target_link_libraries(openMittsuTests openMittsuCore Qt5::Core Qt5::Network Qt5::Multimedia Qt5::MultimediaWidgets Qt5::Sql gmock gtest)
++	target_link_libraries(openMittsuTests openMittsuCore Qt5::Core Qt5::Network Qt5::Multimedia Qt5::MultimediaWidgets Qt5::Sql gmock gtest pthread)
+ endif (OPENMITTSU_ENABLE_TESTS)
+ 
+ # Link against libc++abi if requested.
