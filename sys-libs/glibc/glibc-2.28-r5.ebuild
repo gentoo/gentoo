@@ -1036,7 +1036,7 @@ glibc_headers_configure() {
 	# So forcing CC/CFLAGS is sane.
 	local headers_only_CC=$(tc-getBUILD_CC)
 	local headers_only_CFLAGS="-O1 -pipe"
-	local headers_only_CPPFLAGS="-U_FORTIFY_SOURCE ${headers_only_arch_CPPFLAGS[*]}"
+	local headers_only_CPPFLAGS="-O1 -U_FORTIFY_SOURCE ${headers_only_arch_CPPFLAGS[*]}"
 	local headers_only_LDFLAGS=""
 	set -- "${S}"/configure "${myconf[@]}"
 	echo \
