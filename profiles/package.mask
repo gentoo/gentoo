@@ -86,17 +86,6 @@ x11-misc/xwinwrap
 # Removal in 30 days.  Bug #407381.
 media-video/get_flash_videos
 
-# Mart Raudsepp <leio@gentoo.org> (17 Mar 2019)
-# Batched transition to spidermonkey:60 based gjs
-~dev-libs/gjs-1.54.3
-~net-irc/polari-3.30.2
-~x11-wm/mutter-3.30.2
-~gnome-base/gnome-shell-3.30.2
-~gnome-extra/gnome-shell-extensions-3.30.1
-~x11-themes/zuki-themes-3.30.1
-~gnome-extra/gnome-shell-frippery-3.30.2
-~gnome-base/gnome-light-3.30.2
-
 # Lars Wendler <polynomial-c@gentoo.org> (17 Mar 2019)
 # Breaks user crontab (#680764)
 =sys-process/cronie-1.5.3-r1
