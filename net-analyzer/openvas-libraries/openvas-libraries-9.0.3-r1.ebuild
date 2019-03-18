@@ -17,6 +17,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="extras ldap radius"
 
 DEPEND="
+	app-crypt/gpgme:=
 	dev-libs/hiredis
 	dev-libs/libgcrypt:0=
 	dev-libs/libksba
