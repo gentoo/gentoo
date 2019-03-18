@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -34,6 +34,7 @@ src_prepare() {
 	epatch "${FILESDIR}"/${PN}-0.7.3-alpha-protos.patch
 	epatch "${FILESDIR}"/${PN}-0.7.3-ia64.patch
 	epatch "${FILESDIR}"/${PN}-0.7.3-print-test-pie.patch
+	epatch "${FILESDIR}"/${PN}-0.7.3-ia64-pid_t.patch
 	sed -i '/^dist_doc_DATA/d' Makefile.am || die
 	eautoreconf
 }
