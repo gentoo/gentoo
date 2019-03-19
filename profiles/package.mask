@@ -29,6 +29,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Miroslav Šulc <fordfrog@gentoo.org> (19 Mar 2019)
+# Depends on >=virtual/{jdk,jre}-11 which is masked
+=www-servers/tomcat-9.0.17
+
 # Sobhan Mohammadpour <sobhan@gentoo.org> (17 Mar 2019)
 # Masked for testing
 =mail-client/geary-3.32.0-r1
