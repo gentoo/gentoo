@@ -9,4 +9,4 @@ RESTRICT=strip
 SLOT=0/0_pre20160211
 SRC_URI=https://github.com/golang/text/archive/07b9a78963006a15c538ec5175243979025fa7a8.tar.gz -> go-text-0_pre20160211.tar.gz
 _eclasses_=golang-base	c57d2c3f9e1a02d0feb8b87c7b689892	golang-build	dc25bafa8fc1305a4de66a0a448472e7	golang-vcs-snapshot	12177e83bede6f7fb87eae383864b40b
-_md5_=35775eee1181dd397eb3fac57ce7c809
+_md5_=68be12f589fbf0cd0f65f7925bb87106
