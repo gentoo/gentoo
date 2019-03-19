@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-VALA_MIN_API_VERSION="0.36"
+VALA_MIN_API_VERSION="0.40"
 
 inherit gnome.org gnome2-utils meson readme.gentoo-r1 vala xdg
 

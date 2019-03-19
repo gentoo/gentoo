@@ -17,6 +17,8 @@ SLOT="0"
 
 IUSE="debug elibc_FreeBSD gnome-keyring ipv6 systemd +xtrans"
 
+PATCHES=( "${FILESDIR}"/${P}-fix-systemd-regression.patch )
+
 # x11-misc/xdg-user-dirs{,-gtk} are needed to create the various XDG_*_DIRs, and
 # create .config/user-dirs.dirs which is read by glib to get G_USER_DIRECTORY_*
 # xdg-user-dirs-update is run during login (see 10-user-dirs-update-gnome below).
