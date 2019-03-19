@@ -4,10 +4,10 @@ DESCRIPTION=Bayesian spam filter designed with fast algorithms, and tuned for sp
 EAPI=6
 HOMEPAGE=http://bogofilter.sourceforge.net/
 IUSE=berkdb sqlite tokyocabinet
-KEYWORDS=alpha amd64 arm ~hppa ia64 ppc ppc64 ~sh ~sparc x86 ~x86-fbsd
+KEYWORDS=alpha amd64 arm ~arm64 ~hppa ia64 ppc ppc64 ~sh ~sparc x86 ~x86-fbsd
 LICENSE=GPL-2
 RDEPEND=app-arch/pax sci-libs/gsl:= virtual/libiconv berkdb? ( >=sys-libs/db-3.2:* ) !berkdb? ( sqlite? ( >=dev-db/sqlite-3.6.22 ) !sqlite? ( tokyocabinet? ( dev-db/tokyocabinet ) !tokyocabinet? ( >=sys-libs/db-3.2:* ) ) )
 SLOT=0
 SRC_URI=mirror://sourceforge/bogofilter/bogofilter-1.2.4.tar.bz2
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	db-use	501a5d0963e0d17f30260023f292ae8e	desktop	b1d22ac8bdd4679ab79c71aca235009d	eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	a09389deba2c0a7108b581e02c7cecbf	libtool	f143db5a74ccd9ca28c1234deffede96	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	b2f01ad412baf81650c23fcf0975fa33	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	b45201c4e6c096b98e250336954e64b9	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
-_md5_=398b6074b7a0a6ab320f435d4bd4ea7e
+_md5_=b5f35761c580891cd147e29af2f0548f

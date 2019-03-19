@@ -6896,7 +6896,7 @@ kde-frameworks/karchive 5.54.0: Framework for reading, creation, and manipulatio
 kde-frameworks/kauth 5.54.0-r1: Framework to let applications perform actions as a privileged user
 kde-frameworks/kbookmarks 5.54.0: Framework for managing bookmarks stored in XBEL format
 kde-frameworks/kcmutils 5.54.0: Framework to work with KDE System Settings modules
-kde-frameworks/kcodecs 5.54.0 5.54.0-r1: Framework for manipulating strings using various encodings
+kde-frameworks/kcodecs 5.54.0-r1: Framework for manipulating strings using various encodings
 kde-frameworks/kcompletion 5.54.0: Framework for common completion tasks such as filename or URL completion
 kde-frameworks/kconfig 5.54.0-r1: Framework for reading and writing configuration
 kde-frameworks/kconfigwidgets 5.54.0: Framework providing an assortment of configuration-related widgets
@@ -8033,7 +8033,7 @@ media-sound/alsa-tools 1.1.0 1.1.6: Advanced Linux Sound Architecture tools
 media-sound/alsa-utils 1.1.2 1.1.6: Advanced Linux Sound Architecture Utils (alsactl, alsamixer, etc.)
 media-sound/alsamixergui 0.9.0.1.2-r4: FLTK based amixer Frontend
 media-sound/alsaplayer 0.99.81: A heavily multi-threaded pluggable audio player
-media-sound/amsynth 1.5.1-r1 1.7.1-r1: Virtual analogue synthesizer
+media-sound/amsynth 1.7.1-r1: Virtual analogue synthesizer
 media-sound/apetag 1.12-r2: Command-line ape 2.0 tagger
 media-sound/apulse 0.1.12-r4: PulseAudio emulation for ALSA
 media-sound/aqualung 1.0-r2: Music player for a wide range of formats designed for gapless playback
@@ -8184,7 +8184,7 @@ media-sound/qastools 0.21.0: Qt5 GUI ALSA tools: mixer, configuration browser
 media-sound/qjackctl 0.4.5: Qt GUI to control the JACK Audio Connection Kit and ALSA sequencer connections
 media-sound/qmidiroute 0.4.0: QMidiRoute is a filter/router for MIDI events
 media-sound/qmmp 1.2.6: Qt5-based audio player with winamp/xmms skins support
-media-sound/qsynth 0.5.0 0.5.3: A Qt application to control FluidSynth
+media-sound/qsynth 0.5.3: A Qt application to control FluidSynth
 media-sound/qtscrobbler 0.11_pre20130123: Updates last.fm profiles using information from supported portable music players
 media-sound/quimup 1.4.3: A Qt5 client for the music player daemon (MPD) written in C++
 media-sound/quodlibet 3.8.1-r1 3.9.1 4.1.0: audio library tagger, manager, and player for GTK+
