@@ -68,11 +68,8 @@ src_prepare() {
 	# mono build system can fail otherwise
 	strip-flags
 
-	# prebuilt files were left in tarball by accident:
-	rm -rv external/corefx/src/Native/Unix/System.Native/.libs || die
-	rm -rv external/corefx/src/Native/Unix/System.Native/*.{o,lo} || die
-
 	default
+
 	# PATCHES contains configure.ac patch
 	eautoreconf
 	multilib_copy_sources
