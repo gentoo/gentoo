@@ -12,7 +12,7 @@ SRC_URI="http://zhevny.com/${PN}/files/${PN}-${MY_PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc sparc ~x86"
+KEYWORDS="~amd64 ~ppc sparc x86"
 IUSE="lash"
 
 BDEPEND="

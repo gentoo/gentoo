@@ -12,7 +12,7 @@ HOMEPAGE="https://www.cacti.net/"
 SRC_URI="https://www.cacti.net/downloads/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
-KEYWORDS="~alpha amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc x86"
 IUSE="snmp doc"
 
 need_httpd

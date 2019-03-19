@@ -11,7 +11,7 @@ SRC_URI="https://download.enlightenment.org/rel/apps/${PN}/${P}.tar.xz"
 
 LICENSE="BSD-2"
 SLOT="0.17/${PV%%_*}"
-KEYWORDS="amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 IUSE="acpi bluetooth connman doc geolocation nls packagekit pam systemd udisks wayland wifi"
 
 RDEPEND="
