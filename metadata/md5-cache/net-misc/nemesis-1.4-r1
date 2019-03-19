@@ -3,10 +3,10 @@ DEPEND=net-libs/libpcap =net-libs/libnet-1.0* >=app-portage/elt-patches-20170815
 DESCRIPTION=A commandline-based, portable human IP stack for UNIX/Linux
 EAPI=6
 HOMEPAGE=http://nemesis.sourceforge.net/
-KEYWORDS=~alpha amd64 sparc ~x86
+KEYWORDS=~alpha amd64 sparc x86
 LICENSE=BSD
 RDEPEND=net-libs/libpcap
 SLOT=0
 SRC_URI=mirror://sourceforge/nemesis/nemesis-1.4.tar.gz
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
-_md5_=ce8fca5421b15b8586ea4adb823184ea
+_md5_=fb9ffe1933031b37773dbfb79a64aca6
