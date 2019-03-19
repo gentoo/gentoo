@@ -5,6 +5,8 @@
     <email>sci-geosciences@gentoo.org</email>
     <name>Gentoo Geosciences Project</name>
   </maintainer>
-  <longdescription>Proj.4 cartograpic projection code for forward and inverse 
-coordinate and projection transformations.</longdescription>
+  <longdescription>
+    PROJ enables the transformation of geospatial coordinates
+    between coordinate reference systems.
+  </longdescription>
 </pkgmetadata>
