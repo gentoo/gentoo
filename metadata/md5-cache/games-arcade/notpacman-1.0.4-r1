@@ -7,6 +7,6 @@ KEYWORDS=~amd64 ~x86
 LICENSE=WTFPL-2
 RDEPEND=>=games-engines/love-0.7.2:0.7 media-libs/devil[png]
 SLOT=0
-SRC_URI=http://stabyourself.net/dl.php?file=notpacman-1004/notpacman-linux.zip -> notpacman-1.0.4.zip https://dev.gentoo.org/~hasufell/distfiles/notpacman.png
+SRC_URI=http://stabyourself.net/dl.php?file=notpacman-1004/notpacman-linux.zip -> notpacman-1.0.4.zip https://dev.gentoo.org/~chewi/distfiles/notpacman.png
 _eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	gnome2-utils	532371cfcba45b2ab0d2950547c97d95	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	b2f01ad412baf81650c23fcf0975fa33	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	b45201c4e6c096b98e250336954e64b9	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	14d00d009167652b1fa363e55effe213
-_md5_=020c89ae37fa4ef945968bff3cc8c7d6
+_md5_=6d615a2edd3a44ccc145eaf82c3c3ad2
