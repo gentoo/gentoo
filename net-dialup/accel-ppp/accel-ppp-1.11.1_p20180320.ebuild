@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 inherit cmake-utils flag-o-matic linux-info linux-mod
 
 DESCRIPTION="High performance PPTP, PPPoE and L2TP server"
-HOMEPAGE="http://accel-ppp.sourceforge.net/"
+HOMEPAGE="https://sourceforge.net/projects/accel-ppp/"
 SRC_URI="https://dev.gentoo.org/~pinkbyte/distfiles/snapshots/${P}.tar.bz2"
 
 LICENSE="GPL-2"
