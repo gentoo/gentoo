@@ -36,9 +36,9 @@ BDEPEND="
 
 multilib_src_configure() {
 	local myeconfargs=(
-		--enable-ubsan
 		--disable-asan
 		--disable-cfi
+		--didable-ubsan
 		$(use_enable man)
 	)
 
