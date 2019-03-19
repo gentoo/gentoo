@@ -19,6 +19,3 @@ RDEPEND="dev-python/jsonschema[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]"
-
-S="${WORKDIR}/swagger_spec_validator"
-
