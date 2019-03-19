@@ -14,7 +14,7 @@ SRC_URI="https://github.com/walac/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~ppc ~x86"
+KEYWORDS="amd64 ~arm ~ppc x86"
 IUSE=""
 
 ### This version is compatible with both 0.X and 1.X versions of libusb
