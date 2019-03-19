@@ -39,7 +39,7 @@ DEPEND="
 	app-text/enchant
 	>=dev-libs/folks-0.11:0
 	dev-libs/json-glib
-	>=sys-libs/libunwind-1.1:7
+	unwind? ( >=sys-libs/libunwind-1.1:7 )
 "
 RDEPEND="${DEPEND}
 	gnome-base/dconf
@@ -64,8 +64,6 @@ src_prepare() {
 		done
 	fi
 
-	meson_src_prepare
-	gnome2_src_prepare
 	vala_src_prepare
 	xdg_src_prepare
 }
