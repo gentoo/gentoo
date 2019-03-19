@@ -3,6 +3,7 @@
 
 # Roy Bamford <neddyseagoon@gentoo.org> (19 Mar 2019)
 # Let kde-apps/akonadi use mysql.
+dev-qt/qtsql -mysql
 kde-apps/akonadi -mysql
 
 # Andreas Sturmlechner <asturm@gentoo.org> (19 Mar 2019)
