@@ -38,7 +38,7 @@ multilib_src_configure() {
 	local myeconfargs=(
 		--disable-asan
 		--disable-cfi
-		--didable-ubsan
+		--disable-ubsan
 		$(use_enable man)
 	)
 
