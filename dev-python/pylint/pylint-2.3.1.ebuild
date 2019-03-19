@@ -24,12 +24,16 @@ RDEPEND="
 	>=dev-python/isort-4.2.5[${PYTHON_USEDEP}]
 	dev-python/mccabe[${PYTHON_USEDEP}]"
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
-	dev-python/pytest-runner[${PYTHON_USEDEP}]
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
 	test? ( ${RDEPEND}
 		dev-python/pytest[${PYTHON_USEDEP}]
 		dev-python/six[${PYTHON_USEDEP}]
 	)"
+
+PATCHES=(
+	"${FILESDIR}/${PN}-2.3.1-sphinx-theme.patch"
+	"${FILESDIR}/${PN}-2.3.1-no-pytest-runner.patch"
+)
 
 python_compile_all() {
 	# selection of straight html triggers a trivial annoying bug, we skirt it
