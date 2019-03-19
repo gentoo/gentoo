@@ -61,7 +61,7 @@ src_compile() {
 	mkdir -p bin || die
 	for i in bsondump mongostat mongofiles mongoexport mongoimport mongorestore mongodump mongotop mongoreplay; do
 		echo "Building $i"
-		GOROOT="${PREFIX}/usr/$(get_libdir)/go" GOPATH="${WORKDIR}" go build -buildmode="${buildmode}" -o "bin/$i" \
+		GOROOT="$(go env GOROOT)" GOPATH="${WORKDIR}" go build -buildmode="${buildmode}" -o "bin/$i" \
 			-ldflags "-X ${EGO_PN}/common/options.VersionStr=${PV}" --tags "${myconf[*]}" "$i/main/$i.go" || die
 	done
 }
