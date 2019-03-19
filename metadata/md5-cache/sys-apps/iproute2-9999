@@ -1,11 +1,11 @@
 DEFINED_PHASES=compile configure install prepare unpack
-DEPEND=!net-misc/arpd !minimal? ( net-libs/libmnl ) caps? ( sys-libs/libcap ) elf? ( virtual/libelf ) iptables? ( >=net-firewall/iptables-1.4.20:= ) berkdb? ( sys-libs/db:= ) atm? ( net-dialup/linux-atm ) selinux? ( sys-libs/libselinux ) app-arch/xz-utils iptables? ( virtual/pkgconfig ) >=sys-devel/bison-2.4 sys-devel/flex >=sys-kernel/linux-headers-3.16 elibc_glibc? ( >=sys-libs/glibc-2.7 ) >=dev-vcs/git-1.8.2.1[curl]
+DEPEND=!net-misc/arpd dev-libs/libbsd !minimal? ( net-libs/libmnl ) caps? ( sys-libs/libcap ) elf? ( virtual/libelf ) iptables? ( >=net-firewall/iptables-1.4.20:= ) berkdb? ( sys-libs/db:= ) atm? ( net-dialup/linux-atm ) selinux? ( sys-libs/libselinux ) app-arch/xz-utils iptables? ( virtual/pkgconfig ) >=sys-devel/bison-2.4 sys-devel/flex >=sys-kernel/linux-headers-3.16 virtual/pkgconfig elibc_glibc? ( >=sys-libs/glibc-2.7 ) >=dev-vcs/git-1.8.2.1[curl]
 DESCRIPTION=kernel routing and traffic control utilities
 EAPI=6
 HOMEPAGE=https://wiki.linuxfoundation.org/networking/iproute2
-IUSE=atm caps berkdb elf +iptables ipv6 minimal selinux
+IUSE=atm berkdb caps elf +iptables ipv6 minimal selinux
 LICENSE=GPL-2
-RDEPEND=!net-misc/arpd !minimal? ( net-libs/libmnl ) caps? ( sys-libs/libcap ) elf? ( virtual/libelf ) iptables? ( >=net-firewall/iptables-1.4.20:= ) berkdb? ( sys-libs/db:= ) atm? ( net-dialup/linux-atm ) selinux? ( sys-libs/libselinux )
+RDEPEND=!net-misc/arpd dev-libs/libbsd !minimal? ( net-libs/libmnl ) caps? ( sys-libs/libcap ) elf? ( virtual/libelf ) iptables? ( >=net-firewall/iptables-1.4.20:= ) berkdb? ( sys-libs/db:= ) atm? ( net-dialup/linux-atm ) selinux? ( sys-libs/libselinux )
 SLOT=0
 _eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	a09389deba2c0a7108b581e02c7cecbf	git-r3	0d4635eeb5a96cd5315597a47eba25c9	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	b2f01ad412baf81650c23fcf0975fa33	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	b45201c4e6c096b98e250336954e64b9	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
-_md5_=6adb16a788b8a98d8f3593d8012ff236
+_md5_=d610f0c75391ef037f4222a9c1337b67
