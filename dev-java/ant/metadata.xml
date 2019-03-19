@@ -26,5 +26,6 @@
     <flag name="resolver">Enable Apache Resolver Ant tasks</flag>
     <flag name="swing">Enable Swing Ant tasks</flag>
     <flag name="testutil">Enable optional test util classes</flag>
+    <flag name="xz">Enable XZ Ant tasks</flag>
   </use>
 </pkgmetadata>
