@@ -31,7 +31,7 @@
 
 # Sobhan Mohammadpour <sobhan@gentoo.org> (17 Mar 2019)
 # Masked for testing
-=mail-client/geary-3.32.0
+=mail-client/geary-3.32.0-r1
 
 # Patrice Clement <monsieurp@gentoo.org> (17 Mar 2019)
 # Old and unmaintained Java libraries. Removal in 30 days.
