@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -69,10 +69,12 @@ src_configure() {
 	done
 
 	# Don't require mpers support on non-multilib systems. #649560
-	econf \
-		--enable-mpers=check \
-		$(use_with unwind libunwind) \
+	local myeconfargs=(
+		--enable-mpers=check
+		$(use_with unwind libunwind)
 		$(use_with elfutils libdw)
+	)
+	econf "${myeconfargs[@]}"
 }
 
 src_test() {
