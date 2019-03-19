@@ -13,7 +13,7 @@ MY_P=${PN}_gpl-${PV/_pre/.dev}
 if [[ ${PV} == *_pre* ]]; then
 	SRC_URI="https://dev.gentoo.org/~pesa/distfiles/${MY_P}.tar.gz"
 else
-	SRC_URI="mirror://sourceforge/pyqt/${MY_P}.tar.gz"
+	SRC_URI="https://www.riverbankcomputing.com/static/Downloads/PyQt5/${MY_P}.tar.gz"
 fi
 
 LICENSE="GPL-3"
