@@ -217,9 +217,6 @@ src_install() {
 	fi
 
 	prune_libtool_files
-
-	mv "${D}"/usr/share/doc/${PN}/* "${D}"/usr/share/doc/${PF}/ || die
-	rmdir "${D}"/usr/share/doc/${PN} || die
 }
 
 pkg_postinst() {
