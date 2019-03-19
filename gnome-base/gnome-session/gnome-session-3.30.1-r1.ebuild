@@ -10,7 +10,10 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/gnome-session"
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-solaris"
-IUSE="consolekit doc systemd"
+IUSE="consolekit doc elogind systemd"
+# There is a null backend available, thus ?? not ^^
+# consolekit can be enabled alone, or together with a logind provider; in latter case CK is used as fallback
+REQUIRED_USE="?? ( elogind systemd )"
 
 COMMON_DEPEND="
 	>=dev-libs/glib-2.46.0:2
@@ -25,6 +28,7 @@ COMMON_DEPEND="
 	x11-libs/libXcomposite
 
 	systemd? ( >=sys-apps/systemd-183:0= )
+	elogind? ( >=sys-auth/elogind-239.4 )
 	consolekit? ( >=dev-libs/dbus-glib-0.76 )
 "
 
@@ -57,6 +61,10 @@ DEPEND="${COMMON_DEPEND}
 		app-text/docbook-xml-dtd:4.1.2 )
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PV}-elogind-support.patch
+)
+
 src_prepare() {
 	xdg_src_prepare
 	# Install USE=doc in $PF if enabled
@@ -66,6 +74,7 @@ src_prepare() {
 src_configure() {
 	local emesonargs=(
 		-Ddeprecation_flags=false
+		$(meson_use elogind)
 		-Dsession_selector=true # gnome-custom-session
 		$(meson_use systemd)
 		$(meson_use systemd systemd_journal)
@@ -108,8 +117,8 @@ pkg_postinst() {
 		ewarn "make sure that the commands in the xinitrc.d scripts are run."
 	fi
 
-	if ! use systemd && ! use consolekit; then
-		ewarn "You are building without systemd and/or consolekit support."
+	if ! use systemd && ! use elogind && ! use consolekit; then
+		ewarn "You are building without systemd, elogind and/or consolekit support."
 		ewarn "gnome-session won't be able to correctly track and manage your session."
 	fi
 }
