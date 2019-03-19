@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit autotools desktop
 
 DESCRIPTION="Super-Pang clone (destroy bouncing balloons with your grapnel)"
-HOMEPAGE="http://www.loosersjuegos.com.ar/juegos/ceferino"
+HOMEPAGE="http://www.losersjuegos.com.ar/juegos/ceferino"
 SRC_URI="mirror://debian/pool/main/c/ceferino/${PN}_${PV}+svn37.orig.tar.gz"
 
 LICENSE="GPL-2+"
