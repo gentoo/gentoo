@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -57,7 +57,7 @@ QT_PV="5.10:5"
 
 RDEPEND="
 	${PYTHON_DEPS}
-	>=dev-python/PyQt5-sip-4.19.14_pre:=[${PYTHON_USEDEP}]
+	>=dev-python/PyQt5-sip-4.19.14:=[${PYTHON_USEDEP}]
 	>=dev-qt/qtcore-${QT_PV}
 	>=dev-qt/qtxml-${QT_PV}
 	virtual/python-enum34[${PYTHON_USEDEP}]
@@ -90,7 +90,7 @@ RDEPEND="
 	xmlpatterns? ( >=dev-qt/qtxmlpatterns-${QT_PV} )
 "
 DEPEND="${RDEPEND}
-	>=dev-python/sip-4.19.14_pre[${PYTHON_USEDEP}]
+	>=dev-python/sip-4.19.14[${PYTHON_USEDEP}]
 	dbus? ( virtual/pkgconfig )
 "
 
