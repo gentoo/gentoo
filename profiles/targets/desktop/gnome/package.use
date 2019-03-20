@@ -1,6 +1,9 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Needed by gnome-photos
+media-libs/gegl jpeg2k raw
+
 # Needed by a global USE=wayland right now; some REQUIRED_USE may be outdated and need review
 >=media-libs/cogl-1.18.2-r1 gles2
 >=media-libs/clutter-1.20 egl
