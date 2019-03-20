@@ -33,3 +33,12 @@ RDEPEND="${DEPEND}
 	!kde-apps/kdepim-l10n
 	!<kde-apps/kdepim-runtime-18.07.80:5
 "
+
+src_test() {
+	# bug 679764
+	local myctestargs=(
+		-E "(contacts-contactcreatejobtest|contacts-contactmodifyjobtest)"
+	)
+
+	kde5_src_test
+}
