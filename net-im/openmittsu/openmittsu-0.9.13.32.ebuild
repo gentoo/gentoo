@@ -19,7 +19,7 @@ RDEPEND="dev-db/qt5-sqlcipher
 	>=dev-libs/libsodium-1.0.11:=
 	>=dev-qt/qtcore-5.7.1:5=
 	>=dev-qt/qtgui-5.7.1:5=
-	>=dev-qt/qtmultimedia-5.7.1:5=
+	>=dev-qt/qtmultimedia-5.7.1:5=[widgets]
 	>=dev-qt/qtnetwork-5.7.1:5=[ssl]
 	>=dev-qt/qtsql-5.7.1:5=[sqlite]
 	>=dev-qt/qtwidgets-5.7.1:5=
