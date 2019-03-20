@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,7 +14,6 @@ HOMEPAGE="http://libbtbb.sourceforge.net/"
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/greatscottgadgets/libbtbb.git"
 	inherit git-r3
-	KEYWORDS=""
 else
 	MY_PV=${PV/\./-}
 	MY_PV=${MY_PV/./-R}
