@@ -85,6 +85,7 @@ coreaudio
 prefix
 prefix-chain
 prefix-guest
+prefix-stack
 
 # Diego E. Pettenò <flameeyes@gentoo.org> (19 Oct 2010)
 # masking flags that only apply to FreeBSD
