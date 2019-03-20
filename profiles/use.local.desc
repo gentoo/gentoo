@@ -3219,11 +3219,13 @@ media-sound/clementine:projectm - Build with ProjectM visualization
 media-sound/clementine:seafile - Enable support for seafile: a file sync service
 media-sound/clementine:skydrive - Enable Skydrive support
 media-sound/clementine:wiimote - Enable support for Wii remote
-media-sound/cmus:cdio - use libcdio for CD support
-media-sound/cmus:cue - enable CUE sheet parsing
-media-sound/cmus:discid - enable reading the ID of the inserted CD
-media-sound/cmus:pidgin - install support script for net-im/pidgin
-media-sound/cmus:tremor - use libivorbis from media-libs/tremor instead of media-libs/libvorbis
+media-sound/cmus:cdio - Use libcdio for CD support
+media-sound/cmus:cue - Enable CUE sheet parsing
+media-sound/cmus:discid - Enable reading the ID of the inserted CD
+media-sound/cmus:elogind - Enable MPRIS support via sys-auth/elogind
+media-sound/cmus:pidgin - Install support script for net-im/pidgin
+media-sound/cmus:systemd - Enable MPRIS support via sys-apps/systemd
+media-sound/cmus:tremor - Use libivorbis from media-libs/tremor instead of media-libs/libvorbis
 media-sound/darkice:aacplus - AAC+ encoding via media-libs/libaacplus
 media-sound/darkice:twolame - Build with twolame support
 media-sound/dir2ogg:mac - Add support for decoding Monkey's Audio files
