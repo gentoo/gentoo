@@ -2,11 +2,11 @@ DEFINED_PHASES=install postinst postrm setup unpack
 DEPEND=X? ( || ( >=x11-apps/mkfontscale-1.2.0 x11-apps/mkfontdir ) media-fonts/encodings )
 DESCRIPTION=Font designed for aircraft cockpit displays
 EAPI=6
-HOMEPAGE=http://b612-font.com/
+HOMEPAGE=https://b612-font.com/
 IUSE=X
 KEYWORDS=~amd64 ~arm ~ppc ~ppc64 ~x86
 LICENSE=EPL-1.0
 SLOT=0
 SRC_URI=https://git.polarsys.org/c/b612/b612.git/snapshot/b612-bd14fde2544566e620eab106eb8d6f2b7fb1347e.tar.bz2 -> polarsys-b612-fonts-1.003.tar.bz2
 _eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	font	d4df4f26ea28a5f7037dbbd6d17cc49f	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	b2f01ad412baf81650c23fcf0975fa33	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	b45201c4e6c096b98e250336954e64b9	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	vcs-snapshot	b77011b62e2053c646ad720defe6d921
-_md5_=77dbe947e7f928cc1f3774a96c115314
+_md5_=2eb4ec5e0cf9e1186f28e1959ea71ea1
