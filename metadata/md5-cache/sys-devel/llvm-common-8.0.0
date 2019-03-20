@@ -6,5 +6,5 @@ KEYWORDS=~amd64 ~arm ~arm64 ~ppc64 ~x86 ~amd64-fbsd ~amd64-linux ~ppc-macos ~x64
 LICENSE=UoI-NCSA
 RDEPEND=!sys-devel/llvm:0
 SLOT=0
-SRC_URI=https://prereleases.llvm.org/8.0.0/rc5/llvm-8.0.0rc5.src.tar.xz
-_md5_=27bfbef661e2f8a482d6d903d79615b7
+SRC_URI=https://releases.llvm.org/8.0.0/llvm-8.0.0.src.tar.xz
+_md5_=1797fa51e00186267b6a6b0b88ce4847
