@@ -34,6 +34,7 @@ RDEPEND="
 	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5
 	dev-qt/qtwidgets:5
+	media-gfx/qrencode:=
 	sys-libs/zlib
 	autotype? (
 		dev-qt/qtx11extras:5
