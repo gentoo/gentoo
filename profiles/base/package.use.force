@@ -1,6 +1,10 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Lars Wendler <polynomial-c@gentoo.org> (20 Mar 2019)
+# USE="-gnutls" is broken (#675694)
+>=net-fs/samba-4.10.0_rc1 gnutls
+
 # Mart Raudsepp <leio@gentoo.org> (14 Dec 2018)
 # Security is not optional if available for the architecture/kernel.
 gnome-base/gnome-desktop seccomp
