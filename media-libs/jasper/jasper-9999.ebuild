@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit cmake-multilib
 
@@ -12,17 +12,17 @@ if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/mdadams/jasper.git"
 else
-	inherit vcs-snapshot
 	SRC_URI="https://github.com/mdadams/${PN}/archive/version-${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
+	S="${WORKDIR}/${PN}-version-${PV}"
 fi
 
 # We limit memory usage to 128 MiB by default, specified in bytes
 : ${JASPER_MEM_LIMIT:=134217728}
 
 LICENSE="JasPer2.0"
-SLOT="0"
-IUSE="doc jpeg opengl"
+SLOT="0/4"
+IUSE="doc jpeg opengl test"
 
 RDEPEND="
 	jpeg? ( >=virtual/jpeg-0-r2:0[${MULTILIB_USEDEP}] )
@@ -33,8 +33,10 @@ RDEPEND="
 		x11-libs/libXi[${MULTILIB_USEDEP}]
 		x11-libs/libXmu[${MULTILIB_USEDEP}]
 	)"
-DEPEND="${RDEPEND}
-	doc? ( app-doc/doxygen )"
+DEPEND="${RDEPEND}"
+BDEPEND="
+	doc? ( app-doc/doxygen )
+"
 
 multilib_src_configure() {
 	local mycmakeargs=(
@@ -58,6 +60,8 @@ multilib_src_configure() {
 
 		# Doxygen
 		-DCMAKE_DISABLE_FIND_PACKAGE_Doxygen=$(multilib_native_usex doc OFF ON)
+
+		-DJAS_ENABLE_PROGRAMS=$(usex test)
 	)
 	cmake-utils_src_configure
 }
