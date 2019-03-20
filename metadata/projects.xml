@@ -323,6 +323,7 @@
     <subproject ref="openrc@gentoo.org"/>
     <subproject ref="pam-bugs@gentoo.org"/>
     <subproject ref="ppc@gentoo.org"/>
+    <subproject ref="riscv@gentoo.org"/>
     <subproject ref="s390@gentoo.org"/>
     <subproject ref="sparc@gentoo.org"/>
     <subproject ref="sh@gentoo.org"/>
