@@ -12,10 +12,10 @@
 # dev-java/ant-* packages easily.
 
 case "${EAPI:-0}" in
-	0|1|2|3|4)
+	0|1|2|3|4|5)
 		die "ant-tasks.eclass: EAPI ${EAPI} is too old."
 		;;
-	5|6|7)
+	6|7)
 		;;
 	*)
 		die "ant-tasks.eclass: EAPI ${EAPI} is not supported yet."
@@ -27,7 +27,7 @@ JAVA_ANT_DISABLE_ANT_CORE_DEP=true
 # rewriting build.xml for are the testcases has no reason atm
 JAVA_PKG_BSFIX_ALL=no
 inherit java-pkg-2 java-ant-2
-[[ ${EAPI:-0} == [56] ]] && inherit eapi7-ver
+[[ ${EAPI:-0} -eq 6 ]] && inherit eapi7-ver
 
 EXPORT_FUNCTIONS src_unpack src_compile src_install
 
@@ -68,16 +68,9 @@ ANT_TASK_PV="${PV}"
 
 # default for final releases
 MY_PV=${PV}
-case ${PV} in
-1.9.2)
-	UPSTREAM_PREFIX="https://archive.apache.org/dist/ant/source"
-	GENTOO_PREFIX="https://dev.gentoo.org/~tomwij/files/dist"
-	;;
-*)
-	UPSTREAM_PREFIX="mirror://apache/ant/source"
-	GENTOO_PREFIX="https://dev.gentoo.org/~fordfrog/distfiles"
-	;;
-esac
+
+UPSTREAM_PREFIX="mirror://apache/ant/source"
+GENTOO_PREFIX="https://dev.gentoo.org/~fordfrog/distfiles"
 
 # source/workdir name
 MY_P="apache-ant-${MY_PV}"
@@ -123,10 +116,6 @@ ant-tasks_src_unpack() {
 
 				# replace build.xml with our modified for split building
 				if [ -e "${WORKDIR}"/${PV}-build.patch ] ; then
-					if [ ${EAPI:-0} -eq 5 ]; then
-						die "ant-tasks.eclass: build.xml patching not supported for EAPI 5 ebuilds"
-					fi
-
 					eapply "${WORKDIR}"/${PV}-build.patch
 				else
 					mv -f "${WORKDIR}"/build.xml .
