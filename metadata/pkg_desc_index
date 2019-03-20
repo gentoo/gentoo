@@ -225,7 +225,7 @@ app-arch/unzip 6.0_p20 6.0_p21-r2: unzipper for pkzip-compressed files
 app-arch/xar 1.8-r1: An easily extensible archive format
 app-arch/xarchiver 0.5.4.13: A GTK+ archive manager that can be used with Thunar
 app-arch/xdms 1.3.2-r1: xDMS - Amiga DMS disk image decompressor
-app-arch/xz-utils 5.2.3: utils for managing LZMA compressed files
+app-arch/xz-utils 5.2.3 5.2.4-r2: utils for managing LZMA compressed files
 app-arch/zip 3.0-r3: Info ZIP (encryption support)
 app-arch/zoo 2.10-r5: Manipulate archives of files in compressed form
 app-arch/zopfli 1.0.2: Very good, but slow, deflate or zlib compression
@@ -2917,7 +2917,7 @@ dev-lang/nasm 2.14.02: groovy little assembler
 dev-lang/ocaml 4.04.2-r1: Type-inferring functional programming language descended from the ML family
 dev-lang/orc 0.4.28-r1: The Oil Runtime Compiler, a just-in-time compiler for array operations
 dev-lang/perl 5.24.3-r1 5.26.2: Larry Wall's Practical Extraction and Report Language
-dev-lang/php 5.6.40 7.1.26 7.2.14: The PHP language runtime engine
+dev-lang/php 5.6.40 5.6.40-r1 7.1.26 7.1.27 7.2.14 7.2.16: The PHP language runtime engine
 dev-lang/python 2.7.15 3.4.5-r1 3.4.8 3.5.4-r1 3.5.5 3.6.3-r1 3.6.5: An interpreted, interactive, object-oriented programming language
 dev-lang/python-exec 2.4.6: Python script wrapper
 dev-lang/qu-prolog 10.1: Extended Prolog supporting quantifiers, object-variables and substitutions
