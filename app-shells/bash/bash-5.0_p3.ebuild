@@ -63,6 +63,14 @@ RDEPEND="
 
 S="${WORKDIR}/${MY_P}"
 
+PATCHES=(
+	# Patches from Chet sent to bashbug ml
+	"${FILESDIR}"/${PN}-5.0-history-zero-length.patch
+	"${FILESDIR}"/${PN}-5.0-history-append.patch
+	"${FILESDIR}"/${PN}-5.0-optimize-connection-fork.patch
+	"${FILESDIR}"/${PN}-5.0-syslog-history-extern.patch
+)
+
 pkg_setup() {
 	if is-flag -malign-double ; then #7332
 		eerror "Detected bad CFLAGS '-malign-double'.  Do not use this"
@@ -97,6 +105,7 @@ src_prepare() {
 	sed -i -r '/^(HS|RL)USER/s:=.*:=:' doc/Makefile.in || die
 	touch -r . doc/*
 
+	eapply -p0 "${PATCHES[@]}"
 	eapply_user
 }
 
