@@ -70,12 +70,11 @@ src_configure() {
 		-DWITH_TESTS="$(usex test)"
 		-DWITH_XC_AUTOTYPE="$(usex autotype)"
 		-DWITH_XC_BROWSER="$(usex browser)"
-		-DWITH_XC_HTTP=OFF
 		-DWITH_XC_NETWORKING="$(usex network)"
 		-DWITH_XC_SSHAGENT=ON
 		-DWITH_XC_YUBIKEY="$(usex yubikey)"
 	)
-	if [[ "${PV}" == *_beta* ]] ; then
+	if [[ "${PV}" != 9999 ]] ; then
 		mycmakeargs+=( -DOVERRIDE_VERSION="${PV/_/-}" )
 	fi
 	cmake-utils_src_configure
