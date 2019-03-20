@@ -38,6 +38,7 @@ QA_DT_NEEDED="/usr/lib.*/libbpftraceresources.so"
 PATCHES=(
 	"${FILESDIR}/bpftrace-0.9_pre20190311-install-libs.patch"
 	"${FILESDIR}/bpftrace-mandir.patch"
+	"${FILESDIR}/bpftrace-0.9-llvm-8.patch"
 )
 
 # lots of fixing needed
