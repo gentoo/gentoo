@@ -16,12 +16,14 @@ else
 	if [[ "${PV}" == *_pre* ]] ; then
 		MY_P="${MY_PN}-${PV}"
 		SRC_URI="https://dev.gentoo.org/~polynomial-c/dist/${MY_P}.tar.xz"
+		S="${WORKDIR}/${MY_P}"
 	else
-		MY_P="${MY_PN}-${PV/_/~}"
-		SRC_URI="https://mumble.info/snapshot/${MY_P}.tar.gz"
+		MY_PV="${PV/_/-}"
+		MY_P="${MY_PN}-${MY_PV}"
+		SRC_URI="https://github.com/mumble-voip/mumble/releases/download/${MY_PV}/${MY_P}.tar.gz"
+		S="${WORKDIR}/${MY_PN}-${PV/_*}"
 	fi
 	KEYWORDS="~amd64 ~arm ~x86"
-	S="${WORKDIR}/${MY_P}"
 fi
 
 LICENSE="BSD"
