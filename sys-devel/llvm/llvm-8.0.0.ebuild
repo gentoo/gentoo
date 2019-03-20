@@ -13,8 +13,8 @@ inherit cmake-utils eapi7-ver flag-o-matic multilib-minimal \
 
 DESCRIPTION="Low Level Virtual Machine"
 HOMEPAGE="https://llvm.org/"
-SRC_URI="https://prereleases.llvm.org/${PV/_//}/${P/_/}.src.tar.xz"
-#	!doc? ( https://dev.gentoo.org/~mgorny/dist/llvm/${P}-manpages.tar.bz2 )"
+SRC_URI="https://releases.llvm.org/${PV/_//}/${P/_/}.src.tar.xz
+	!doc? ( https://dev.gentoo.org/~mgorny/dist/llvm/${P}-manpages.tar.bz2 )"
 
 # Keep in sync with CMakeLists.txt
 ALL_LLVM_TARGETS=( AArch64 AMDGPU ARM BPF Hexagon Lanai Mips MSP430
@@ -278,11 +278,11 @@ multilib_src_install_all() {
 	_EOF_
 
 	# install pre-generated manpages
-#	if ! use doc; then
-#		# (doman does not support custom paths)
-#		insinto "/usr/lib/llvm/${SLOT}/share/man/man1"
-#		doins "${WORKDIR}/${P}-manpages/llvm"/*.1
-#	fi
+	if ! use doc; then
+		# (doman does not support custom paths)
+		insinto "/usr/lib/llvm/${SLOT}/share/man/man1"
+		doins "${WORKDIR}/${P}-manpages/llvm"/*.1
+	fi
 
 	docompress "/usr/lib/llvm/${SLOT}/share/man"
 }

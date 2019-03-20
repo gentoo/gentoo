@@ -12,7 +12,7 @@ inherit cmake-multilib linux-info multiprocessing python-any-r1
 
 DESCRIPTION="OpenMP runtime library for LLVM/clang compiler"
 HOMEPAGE="https://openmp.llvm.org"
-SRC_URI="https://prereleases.llvm.org/${PV/_//}/openmp-${PV/_/}.src.tar.xz"
+SRC_URI="https://releases.llvm.org/${PV/_//}/openmp-${PV/_/}.src.tar.xz"
 
 # Additional licenses:
 # - MIT-licensed Intel code,
