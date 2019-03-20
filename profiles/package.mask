@@ -411,26 +411,6 @@ media-libs/libsub
 # Removal in 30 days.
 app-arch/freeze
 
-# Michał Górny <mgorny@gentoo.org> (13 Feb 2019)
-# Release candidate, masked for testing.
-=sys-devel/llvm-common-8.0.0_rc*
-=sys-devel/llvm-8.0.0_rc*
-=sys-devel/llvmgold-8
-=dev-python/lit-8.0.0_rc*
-=dev-ml/llvm-ocaml-8.0.0_rc*
-=sys-devel/lld-8.0.0_rc*
-=sys-devel/clang-common-8.0.0_rc*
-=sys-devel/clang-8.0.0_rc*
-=dev-python/clang-python-8.0.0_rc*
-=dev-util/lldb-8.0.0_rc*
-=sys-libs/compiler-rt-8.0.0_rc*
-=sys-libs/compiler-rt-sanitizers-8.0.0_rc*
-=sys-libs/llvm-libunwind-8.0.0_rc*
-=sys-libs/libcxxabi-8.0.0_rc*
-=sys-libs/libcxx-8.0.0_rc*
-=sys-libs/libomp-8.0.0_rc*
-=sys-devel/clang-runtime-8.0.0_rc*
-
 # Miroslav Šulc <fordfrog@gentoo.org> (10 Feb 2019)
 # Depends on >=virtual/{jdk,jre}-11 which is masked
 =www-servers/tomcat-9.0.16
