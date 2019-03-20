@@ -1,11 +1,13 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-# Needed by mutter defaults, bug #547300
+# Needed by a global USE=wayland right now; some REQUIRED_USE may be outdated and need review
+>=media-libs/cogl-1.18.2-r1 gles2
 >=media-libs/clutter-1.20 egl
 media-libs/cogl kms
+
+# Needed by mutter defaults and USE=wayland, bug #547300
 >=media-libs/mesa-10.3 gbm gles2
->=media-libs/cogl-1.18.2-r1 gles2
 
 # For eautoreconf in =app-crypt/seahorse-3.10.2-r1
 app-crypt/gcr vala
