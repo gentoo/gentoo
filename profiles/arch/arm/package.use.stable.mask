@@ -62,7 +62,7 @@ media-sound/mpd fluidsynth
 # Alexis Ballier <aballier@gentoo.org> (29 May 2017)
 # frei0r-plugins is not stable yet, mask it on stable versions
 <media-video/libav-13 frei0r
-<=media-video/ffmpeg-3.3.6 frei0r sofalizer
+<=media-video/ffmpeg-3.4.5 frei0r sofalizer
 
 # Alexis Ballier <aballier@gentoo.org> (18 Apr 2017)
 # No gst-plugins-vp8:0.10, gst-plugins-musepack:0.10 stable
