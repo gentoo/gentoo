@@ -66,7 +66,10 @@ REQUIRED_USE="tremor? ( vorbis )
 
 DOCS=( AUTHORS README.md )
 
-PATCHES=( "${FILESDIR}/${P}-elogind.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-elogind.patch"
+	"${FILESDIR}/${P}-ffmpeg-deprecations.patch"
+)
 
 S="${WORKDIR}/${P/_/-}"
 
