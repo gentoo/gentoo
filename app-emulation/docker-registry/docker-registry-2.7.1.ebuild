@@ -31,6 +31,7 @@ src_prepare() {
 }
 
 src_compile() {
+	export -n GOCACHE XDG_CACHE_HOME #681072
 	GOPATH="${S}" GO_BUILD_FLAGS="-v" emake -C src/${EGO_PN} binaries
 }
 
