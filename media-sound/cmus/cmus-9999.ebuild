@@ -36,7 +36,7 @@ DEPEND="
 	discid? ( media-libs/libdiscid )
 	ffmpeg? ( media-video/ffmpeg:= )
 	flac? ( media-libs/flac )
-	jack? ( media-sound/jack-audio-connection-kit )
+	jack? ( virtual/jack )
 	libsamplerate? ( media-libs/libsamplerate )
 	mad? ( >=media-libs/libmad-0.14 )
 	mikmod? ( media-libs/libmikmod:0 )
