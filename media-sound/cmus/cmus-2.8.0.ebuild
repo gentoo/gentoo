@@ -69,6 +69,7 @@ DOCS=( AUTHORS README.md )
 PATCHES=(
 	"${FILESDIR}/${P}-elogind.patch"
 	"${FILESDIR}/${P}-ffmpeg-deprecations.patch"
+	"${FILESDIR}/${P}-opus.patch"
 )
 
 S="${WORKDIR}/${P/_/-}"
