@@ -29,6 +29,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (20 Mar 2019)
+# Unmaintained since 2015, with occasional uncoordinated updates
+# by varying developers.  The current version is outdated, and fails
+# to build.
+# Removal in 30 days.  Bug #669604.
+dev-util/trinity
+
 # Miroslav Šulc <fordfrog@gentoo.org> (19 Mar 2019)
 # Depends on >=virtual/{jdk,jre}-11 which is masked
 =www-servers/tomcat-9.0.17
