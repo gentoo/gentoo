@@ -49,10 +49,6 @@ DEPEND="${COMMON_DEPEND}
 		dev-qt/qttest:5
 	)"
 
-PATCHES=(
-	"${FILESDIR}"/${P}-missing_qt_include.patch
-	)
-
 S=${WORKDIR}/desktop-${PV/_/-}
 
 src_prepare() {

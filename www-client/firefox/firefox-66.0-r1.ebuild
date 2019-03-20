@@ -27,7 +27,7 @@ if [[ ${MOZ_ESR} == 1 ]] ; then
 fi
 
 # Patch version
-PATCH="${PN}-66.0-patches-06"
+PATCH="${PN}-66.0-patches-07"
 
 MOZ_HTTP_URI="https://archive.mozilla.org/pub/${PN}/releases"
 MOZ_SRC_URI="${MOZ_HTTP_URI}/${MOZ_PV}/source/firefox-${MOZ_PV}.source.tar.xz"
@@ -108,7 +108,7 @@ CDEPEND="
 		<media-libs/libvpx-1.8:0=[postproc]
 	)
 	system-sqlite? ( >=dev-db/sqlite-3.26:3[secure-delete,debug=] )
-	system-webp? ( >=media-libs/libwebp-1.0.1:0= )
+	system-webp? ( >=media-libs/libwebp-1.0.2:0= )
 	wifi? ( kernel_linux? ( >=sys-apps/dbus-0.60
 			>=dev-libs/dbus-glib-0.72
 			net-misc/networkmanager ) )
@@ -158,8 +158,8 @@ DEPEND="${CDEPEND}
 		)
 	)
 	pulseaudio? ( media-sound/pulseaudio )
-	>=virtual/cargo-1.30.0
-	>=virtual/rust-1.30.0
+	>=virtual/cargo-1.31.0
+	>=virtual/rust-1.31.0
 	wayland? ( >=x11-libs/gtk+-3.11:3[wayland] )
 	amd64? ( >=dev-lang/yasm-1.1 virtual/opengl )
 	x86? ( >=dev-lang/yasm-1.1 virtual/opengl )
