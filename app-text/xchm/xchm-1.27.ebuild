@@ -1,25 +1,26 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=6
 WX_GTK_VER="3.0-gtk3"
 
 inherit wxwidgets xdg-utils
 
 DESCRIPTION="Utility for viewing Compiled HTML Help (CHM) files"
-HOMEPAGE="http://xchm.sourceforge.net/"
-SRC_URI="mirror://sourceforge/xchm/${P}.tar.gz"
+HOMEPAGE="https://github.com/rzvncj/xCHM/"
+SRC_URI="${HOMEPAGE}releases/download/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 
-IUSE=""
-DEPEND=">=dev-libs/chmlib-0.36
-	x11-libs/wxGTK:${WX_GTK_VER}[X]"
-RDEPEND=${DEPEND}
-
-PATCHES=( "${FILESDIR}"/${P}-wx3.0-compat.patch )
+DEPEND="
+	>=dev-libs/chmlib-0.36
+	x11-libs/wxGTK:${WX_GTK_VER}[X]
+"
+RDEPEND="
+	${DEPEND}
+"
 
 src_prepare() {
 	setup-wxwidgets
