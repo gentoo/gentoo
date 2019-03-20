@@ -14,7 +14,7 @@ SRC_URI="https://archive.mozilla.org/pub/nspr/releases/v${PV}/src/${P}.tar.gz"
 LICENSE="|| ( MPL-2.0 GPL-2 LGPL-2.1 )"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
-IUSE="debug"
+IUSE="debug elibc_musl"
 
 MULTILIB_CHOST_TOOLS=(
 	/usr/bin/nspr-config
@@ -34,6 +34,8 @@ src_prepare() {
 	cd "${S}"/nspr || die
 
 	default
+
+	use elibc_musl && eapply "${FILESDIR}"/${PN}-4.21-ipv6-musl-support.patch
 
 	# rename configure.in to configure.ac for new autotools compatibility
 	if [[ -e "${S}"/nspr/configure.in ]] ; then
