@@ -7339,7 +7339,7 @@ media-gfx/colorhug-client 0.2.8: Client tools for the ColorHug display colorimet
 media-gfx/comix 4.0.4-r1: A GTK image viewer specifically designed to handle comic books
 media-gfx/cropgui 0.2-r1: GUI for lossless cropping of jpeg images
 media-gfx/crwinfo 0.2: Canon raw image (CRW) information and thumbnail extractor
-media-gfx/darktable 2.2.5 2.4.3 2.6.1: A virtual lighttable and darkroom for photographers
+media-gfx/darktable 2.6.1: A virtual lighttable and darkroom for photographers
 media-gfx/dawn 3.90b-r1: 3D geometrical postscript renderer
 media-gfx/dcraw 9.28.0: Command-line decoder for raw digital photos
 media-gfx/digikam 6.0.0: Digital photo management application
