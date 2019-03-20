@@ -21,7 +21,7 @@ else
 		SRC_URI+=" https://w1.fi/releases/${P}.tar.gz"
 	fi
 	# Never stabilize snapshot ebuilds please
-	KEYWORDS="amd64 ~arm ~mips ppc ~x86"
+	KEYWORDS="amd64 arm ~mips ppc ~x86"
 fi
 
 LICENSE="BSD"
