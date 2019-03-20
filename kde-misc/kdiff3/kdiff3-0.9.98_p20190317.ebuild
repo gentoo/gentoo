@@ -3,7 +3,7 @@
 
 EAPI=7
 
-COMMIT="5a8ebed6a30bba2e001fc5c5acc4f414d6405005"
+COMMIT="d9a7796cc8989885fec921723da0bfa88a6ae939"
 KDE_HANDBOOK="forceoptional"
 inherit kde5
 
@@ -35,7 +35,5 @@ RDEPEND="${DEPEND}
 	sys-apps/diffutils
 	!kde-misc/kdiff3:4
 "
-
-PATCHES=( "${FILESDIR}/${P}-clangtidy-optional.patch" )
 
 S="${WORKDIR}/${PN}-${COMMIT}"
