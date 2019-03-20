@@ -108,7 +108,7 @@ CDEPEND="
 		<media-libs/libvpx-1.8:0=[postproc]
 	)
 	system-sqlite? ( >=dev-db/sqlite-3.26:3[secure-delete,debug=] )
-	system-webp? ( >=media-libs/libwebp-1.0.1:0= )
+	system-webp? ( >=media-libs/libwebp-1.0.2:0= )
 	wifi? ( kernel_linux? ( >=sys-apps/dbus-0.60
 			>=dev-libs/dbus-glib-0.72
 			net-misc/networkmanager ) )
