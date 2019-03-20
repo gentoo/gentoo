@@ -22,11 +22,13 @@
     <flag name="cephfs">Build support for cephfs, a POSIX compatible filesystem built on top of ceph</flag>
     <flag name="dpdk">Enable DPDK messaging</flag>
     <flag name="fuse">Build fuse client</flag>
+    <flag name="grafana">Install grafana dashboards</flag>
     <flag name="libatomic">Use libatomic instead of builtin atomic operations</flag>
     <flag name="libaio">Use libaio as asynchronous input/output library</flag>
     <flag name="lttng">Add support for LTTng</flag>
     <flag name="mgr">Build the ceph-mgr daemon</flag>
     <flag name="nss">Use <pkg>dev-libs/nss</pkg> for cryptography</flag>
+    <flag name="rabbitmq">Use rabbitmq-c to build rgw amqp push endpoint</flag>
     <flag name="radosgw">Add radosgw support</flag>
     <flag name="system-boost">Use system <pkg>dev-libs/boost</pkg> instead of the bundled one</flag>
     <flag name="xfs">Add xfs support</flag>
