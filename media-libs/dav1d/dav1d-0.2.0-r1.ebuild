@@ -18,7 +18,7 @@ DESCRIPTION="dav1d is an AV1 Decoder :)"
 HOMEPAGE="https://code.videolan.org/videolan/dav1d"
 
 LICENSE="BSD-2"
-SLOT="0"
+SLOT="0/1"
 IUSE="+8bit +10bit +asm"
 
 ASM_DEPEND=">=dev-lang/nasm-2.13"
