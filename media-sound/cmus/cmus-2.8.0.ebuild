@@ -66,6 +66,8 @@ REQUIRED_USE="tremor? ( vorbis )
 
 DOCS=( AUTHORS README.md )
 
+PATCHES=( "${FILESDIR}/${P}-elogind.patch" )
+
 S="${WORKDIR}/${P/_/-}"
 
 my_config() {
