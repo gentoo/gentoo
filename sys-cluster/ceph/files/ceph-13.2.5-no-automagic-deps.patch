@@ -1,0 +1,37 @@
+--- ceph-13.2.5.orig/src/rocksdb/CMakeLists.txt	2019-03-20 11:39:25.065954652 -0700
++++ ceph-13.2.5/src/rocksdb/CMakeLists.txt	2019-03-20 13:18:01.548085828 -0700
+@@ -286,18 +286,24 @@
+   endif()
+ endif()
+ 
+-find_package(NUMA)
+-if(NUMA_FOUND)
+-  add_definitions(-DNUMA)
+-  include_directories(${NUMA_INCLUDE_DIR})
+-  list(APPEND THIRDPARTY_LIBS ${NUMA_LIBRARIES})
++option(WITH_NUMA "build with UBSAN" OFF)
++if(WITH_NUMA)
++  find_package(NUMA)
++  if(NUMA_FOUND)
++    add_definitions(-DNUMA)
++    include_directories(${NUMA_INCLUDE_DIR})
++    list(APPEND THIRDPARTY_LIBS ${NUMA_LIBRARIES})
++  endif()
+ endif()
+ 
+-find_package(TBB)
+-if(TBB_FOUND)
+-  add_definitions(-DTBB)
+-  include_directories(${TBB_INCLUDE_DIR})
+-  list(APPEND THIRDPARTY_LIBS ${TBB_LIBRARIES})
++option(WITH_TBB "build with UBSAN" OFF)
++if(WITH_TBB)
++  find_package(TBB)
++  if(TBB_FOUND)
++    add_definitions(-DTBB)
++    include_directories(${TBB_INCLUDE_DIR})
++    list(APPEND THIRDPARTY_LIBS ${TBB_LIBRARIES})
++  endif()
+ endif()
+ 
+ # Used to run CI build and tests so we can run faster
