@@ -30,6 +30,12 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (21 Mar 2019)
+# Library with no maintainer and no reverse dependencies.  Fails
+# to build with sandbox violations.
+# Removal in 30 days.  Bug #676190.
+x11-libs/hippo-canvas
+
+# Michał Górny <mgorny@gentoo.org> (21 Mar 2019)
 # The following packages are unmaintained and fail to build against
 # openssl-1.1+.
 #
