@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -25,7 +25,6 @@ IUSE=""
 
 DEPEND="
 	${PYTHON_DEPS}
-	python_targets_python3_4? ( dev-python/configparser )
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
 	dev-python/pycairo[${PYTHON_USEDEP}]
