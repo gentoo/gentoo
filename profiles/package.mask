@@ -69,7 +69,9 @@ x11-libs/hippo-canvas
 # mail-filter/libdkim: #674892, no revdeps, last release in 2010
 # net-analyzer/bro: #675014, needs bump, current version is from 2015
 # net-analyzer/ffp: #674244, dead homepage, current version added 2005
+# net-analyzer/nodebrain: #674796, last commits in 2015
 # net-analyzer/postal: #677478, last release in 2012
+# net-ftp/netkit-ftpd: #676000, last rel in 2000, also #236290, #540330
 # net-im/ayttm: #676242, last commits in 2011 (+ one secfix in 2015)
 # net-im/climm: #674160, dead homepage, last commits in 2010
 # net-irc/bip: #674240, may need new snapshot, current ver is from 2013
@@ -97,7 +99,9 @@ mail-client/nmh
 mail-filter/libdkim
 net-analyzer/bro
 net-analyzer/ffp
+net-analyzer/nodebrain
 net-analyzer/postal
+net-ftp/netkit-ftpd
 net-im/ayttm
 net-im/climm
 net-irc/bip
