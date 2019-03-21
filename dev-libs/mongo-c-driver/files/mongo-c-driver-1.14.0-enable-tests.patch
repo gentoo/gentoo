@@ -1,0 +1,25 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index c0e01a8..3371dae 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -163,7 +163,6 @@ if (ENABLE_BSON STREQUAL SYSTEM)
+       message ("--   libbson include path \"${BSON_INCLUDE_DIRS}\"")
+       message ("--   libbson libraries \"${BSON_LIBRARIES}\"")
+       message ("--   disabling test-libmongoc since using system libbson")
+-      SET (ENABLE_TESTS OFF)
+ 
+       if (ENABLE_STATIC MATCHES "ON|AUTO")
+          find_package (libbson-static-1.0
+diff --git a/src/libbson/tests/test-bson.c b/src/libbson/tests/test-bson.c
+index 95356fa..9f9aea3 100644
+--- a/src/libbson/tests/test-bson.c
++++ b/src/libbson/tests/test-bson.c
+@@ -17,7 +17,7 @@
+ 
+ #include <bson/bson.h>
+ #include <bson/bcon.h>
+-#include <bson/bson-private.h>
++#include "bson/bson-private.h"
+ #include <fcntl.h>
+ #include <time.h>
+ 
