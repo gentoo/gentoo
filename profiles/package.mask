@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (21 Mar 2019)
+# Replaced by split packages: kde-apps/dolphin-plugins-bazaar,
+# -dropbox, -git, -mercurial, -subversion. Masked for removal in 30 days.
+kde-apps/dolphin-plugins
+
 # Michał Górny <mgorny@gentoo.org> (21 Mar 2019)
 # Not really maintained anymore.  Last upstream release is from 2015.
 # Fails to build against modern versions of app-crypt/mit-krb5, may have
