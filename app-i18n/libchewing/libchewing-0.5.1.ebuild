@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 2004-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 
 if [[ "${PV}" == "9999" ]]; then
 	inherit autotools git-r3
@@ -21,6 +21,7 @@ LICENSE="LGPL-2.1"
 SLOT="0/3"
 KEYWORDS="amd64 ~arm ~arm64 ppc ppc64 x86"
 IUSE="static-libs test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="dev-db/sqlite:3"
 DEPEND="${RDEPEND}

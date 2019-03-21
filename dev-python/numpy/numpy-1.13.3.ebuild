@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -127,7 +127,7 @@ python_prepare_all() {
 }
 
 python_compile() {
-	export MAKEOPTS=-j1 # bug #660754
+	export MAKEOPTS=-j1 #660754
 
 	local python_makeopts_jobs=""
 	python_is_python3 || python_makeopts_jobs="-j $(makeopts_jobs)"

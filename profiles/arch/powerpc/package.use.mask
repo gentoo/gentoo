@@ -1,5 +1,18 @@
-# Copyright 1999-2019 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Virgil Dupras <vdupras@gentoo.org> (03 Mar 2019)
+# Tests fail with jpeg2k flag. Bug #662686
+dev-python/pillow jpeg2k
+
+# Andreas Sturmlechner <asturm@gentoo.org> (28 Feb 2019)
+# media-libs/dav1d is not yet keyworded
+media-video/vlc dav1d
+
+# Thomas Deutschmann <whissi@gentoo.org> (26 Feb 2019)
+# nginx_modules_http_lua requires USE=luajit which requires
+# dev-lang/luajit which is not keyworded on PowerPC
+www-servers/nginx luajit nginx_modules_http_lua
 
 # Alon Bar-Lev <alonbl@gentoo.org> (21 Dec 2018)
 # Requires USE=dane that is masked in this profile.
@@ -137,10 +150,6 @@ net-wireless/blueman appindicator
 # Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (26 Oct 2015)
 # x11-drivers/xf86-video-amdgpu is not keyworded
 x11-base/xorg-drivers video_cards_amdgpu
-
-# Bernard Cafarelli <voyageur@gentoo.org> (06 Aug 2015)
-# Dependencies missing keywords, bug #543604
-sys-devel/llvm ocaml
 
 # Gilles Dartiguelongue <eva@gentoo.org> (10 Jun 2015)
 # net-libs/dleyna-connector-dbus lack ppc/ppc64 keyword, bug #551634

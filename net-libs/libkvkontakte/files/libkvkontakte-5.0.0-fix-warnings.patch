@@ -1,0 +1,386 @@
+From ba1f7e7f7424df2bf96513c14f10d3cff47f48a4 Mon Sep 17 00:00:00 2001
+From: Pino Toscano <pino@kde.org>
+Date: Sat, 9 Sep 2017 15:20:05 +0200
+Subject: use Q_DECL_OVERRIDE
+
+---
+ src/albumlistjob.h                 | 2 +-
+ src/allmessageslistjob.h           | 2 +-
+ src/allnoteslistjob.h              | 2 +-
+ src/cidsnamesjob.h                 | 2 +-
+ src/createalbumjob.h               | 2 +-
+ src/deletealbumjob.h               | 2 +-
+ src/discussionslistjob.h           | 2 +-
+ src/editalbumjob.h                 | 2 +-
+ src/friendlistjob.h                | 2 +-
+ src/getapplicationpermissionsjob.h | 2 +-
+ src/getinfojob.h                   | 2 +-
+ src/getphotouploadserverjob.h      | 4 ++--
+ src/getvariablejob.h               | 2 +-
+ src/grouplistjob.h                 | 2 +-
+ src/messageslistjob.h              | 2 +-
+ src/noteaddjob.h                   | 2 +-
+ src/notejob.h                      | 2 +-
+ src/noteslistjob.h                 | 2 +-
+ src/photojob.h                     | 2 +-
+ src/photolistjob.h                 | 2 +-
+ src/photopostjob.h                 | 2 +-
+ src/savephotojob.h                 | 2 +-
+ src/uploadphotosjob.h              | 2 +-
+ src/userinfojob.h                  | 4 ++--
+ src/vkontaktejobs.h                | 6 +++---
+ 25 files changed, 29 insertions(+), 29 deletions(-)
+
+diff --git a/src/albumlistjob.h b/src/albumlistjob.h
+index 0e91af0..70dc29e 100644
+--- a/src/albumlistjob.h
++++ b/src/albumlistjob.h
+@@ -38,7 +38,7 @@ public:
+     QList<AlbumInfo> list() const;
+ 
+ protected:
+-    virtual void handleData(const QJsonValue &data);
++    void handleData(const QJsonValue &data) Q_DECL_OVERRIDE;
+ 
+     void handleItem(const QVariant &data);
+ 
+diff --git a/src/allmessageslistjob.h b/src/allmessageslistjob.h
+index e714526..4bf067c 100644
+--- a/src/allmessageslistjob.h
++++ b/src/allmessageslistjob.h
+@@ -44,7 +44,7 @@ public:
+                        int filters = 0, int timeOffset = 0);
+     ~AllMessagesListJob();
+ 
+-    virtual void start();
++    void start() Q_DECL_OVERRIDE;
+ 
+     QList<MessageInfoPtr> list() const;
+     int count() const;
+diff --git a/src/allnoteslistjob.h b/src/allnoteslistjob.h
+index 1228bb8..661107a 100644
+--- a/src/allnoteslistjob.h
++++ b/src/allnoteslistjob.h
+@@ -33,7 +33,7 @@ public:
+     AllNotesListJob(const QString &accessToken, int uid);
+     ~AllNotesListJob();
+ 
+-    virtual void start();
++    void start() Q_DECL_OVERRIDE;
+ 
+     QList<NoteInfoPtr> list() const;
+     int count() const;
+diff --git a/src/cidsnamesjob.h b/src/cidsnamesjob.h
+index 9bd142c..c6878a1 100644
+--- a/src/cidsnamesjob.h
++++ b/src/cidsnamesjob.h
+@@ -40,7 +40,7 @@ public:
+     QMap<int, QString> names() const;
+ 
+ protected:
+-    virtual void handleData(const QVariant &data);
++    void handleData(const QVariant &data) Q_DECL_OVERRIDE;
+ 
+ private:
+     class Private;
+diff --git a/src/createalbumjob.h b/src/createalbumjob.h
+index 8d7ec17..09c68e9 100644
+--- a/src/createalbumjob.h
++++ b/src/createalbumjob.h
+@@ -40,7 +40,7 @@ public:
+     AlbumInfo album() const;
+ 
+ protected:
+-    virtual void handleData(const QJsonValue &data);
++    void handleData(const QJsonValue &data) Q_DECL_OVERRIDE;
+ 
+ private:
+     class Private;
+diff --git a/src/deletealbumjob.h b/src/deletealbumjob.h
+index ef1f001..84fcfb5 100644
+--- a/src/deletealbumjob.h
++++ b/src/deletealbumjob.h
+@@ -33,7 +33,7 @@ public:
+     DeleteAlbumJob(const QString &accessToken, int aid);
+ 
+ protected:
+-    virtual void handleData(const QJsonValue &data);
++    void handleData(const QJsonValue &data) Q_DECL_OVERRIDE;
+ 
+ private:
+     class Private;
+diff --git a/src/discussionslistjob.h b/src/discussionslistjob.h
+index 79e801a..63cd825 100644
+--- a/src/discussionslistjob.h
++++ b/src/discussionslistjob.h
+@@ -46,7 +46,7 @@ public:
+     int totalCount() const;
+ 
+ protected:
+-    virtual void handleData(const QVariant &data);
++    void handleData(const QVariant &data) Q_DECL_OVERRIDE;
+ 
+     void handleItem(const QVariant &data);
+ 
+diff --git a/src/editalbumjob.h b/src/editalbumjob.h
+index d9d76b6..eb52fe4 100644
+--- a/src/editalbumjob.h
++++ b/src/editalbumjob.h
+@@ -36,7 +36,7 @@ public:
+                  int comment_privacy = AlbumInfo::PRIVACY_UNKNOWN);
+ 
+ protected:
+-    virtual void handleData(const QJsonValue &data);
++    void handleData(const QJsonValue &data) Q_DECL_OVERRIDE;
+ 
+ private:
+     class Private;
+diff --git a/src/friendlistjob.h b/src/friendlistjob.h
+index 6a7de49..465a109 100644
+--- a/src/friendlistjob.h
++++ b/src/friendlistjob.h
+@@ -39,7 +39,7 @@ public:
+     QList<UserInfoPtr> list() const;
+ 
+ protected:
+-    virtual void handleData(const QVariant &data);
++    void handleData(const QVariant &data) Q_DECL_OVERRIDE;
+ 
+ private:
+     class Private;
+diff --git a/src/getapplicationpermissionsjob.h b/src/getapplicationpermissionsjob.h
+index 72b6759..4165a1b 100644
+--- a/src/getapplicationpermissionsjob.h
++++ b/src/getapplicationpermissionsjob.h
+@@ -35,7 +35,7 @@ public:
+     int permissions() const;
+ 
+ protected:
+-    virtual void handleData(const QJsonValue &data);
++    void handleData(const QJsonValue &data) Q_DECL_OVERRIDE;
+ 
+ private:
+     class Private;
+diff --git a/src/getinfojob.h b/src/getinfojob.h
+index 98df0db..19b8f31 100644
+--- a/src/getinfojob.h
++++ b/src/getinfojob.h
+@@ -38,7 +38,7 @@ public:
+     QVariantMap info();
+ 
+ protected:
+-    virtual void handleData(const QVariant &data);
++    void handleData(const QVariant &data) Q_DECL_OVERRIDE;
+ 
+ private:
+     class Private;
+diff --git a/src/getphotouploadserverjob.h b/src/getphotouploadserverjob.h
+index af65921..3a3e9b0 100644
+--- a/src/getphotouploadserverjob.h
++++ b/src/getphotouploadserverjob.h
+@@ -41,8 +41,8 @@ public:
+ 
+ protected:
+     static QString getMethod(enum UploadPhotosJob::Dest dest);
+-    virtual void prepareQueryItems();
+-    virtual void handleData(const QJsonValue &data);
++    void prepareQueryItems() Q_DECL_OVERRIDE;
++    void handleData(const QJsonValue &data) Q_DECL_OVERRIDE;
+ 
+ private:
+     UploadPhotosJob::Dest m_dest;
+diff --git a/src/getvariablejob.h b/src/getvariablejob.h
+index f80ceb7..5250c6e 100644
+--- a/src/getvariablejob.h
++++ b/src/getvariablejob.h
+@@ -41,7 +41,7 @@ public:
+     QVariant variable() const;
+ 
+ protected:
+-    virtual void handleData(const QVariant &data);
++    void handleData(const QVariant &data) Q_DECL_OVERRIDE;
+     
+ private:
+     class Private;
+diff --git a/src/grouplistjob.h b/src/grouplistjob.h
+index 29628f3..d41e1dc 100644
+--- a/src/grouplistjob.h
++++ b/src/grouplistjob.h
+@@ -42,7 +42,7 @@ public:
+ 
+ protected:
+     GroupInfoPtr handleSingleData(const QVariant &data);
+-    virtual void handleData(const QVariant &data);
++    void handleData(const QVariant &data) Q_DECL_OVERRIDE;
+ 
+ private:
+     class Private;
+diff --git a/src/messageslistjob.h b/src/messageslistjob.h
+index 0f67360..091ef60 100644
+--- a/src/messageslistjob.h
++++ b/src/messageslistjob.h
+@@ -57,7 +57,7 @@ public:
+     int out() const;
+ 
+ protected:
+-    virtual void handleData(const QVariant &data);
++    void handleData(const QVariant &data) Q_DECL_OVERRIDE;
+ 
+     void handleItem(const QVariant &data);
+ 
+diff --git a/src/noteaddjob.h b/src/noteaddjob.h
+index 84cc63f..6c37efb 100644
+--- a/src/noteaddjob.h
++++ b/src/noteaddjob.h
+@@ -41,7 +41,7 @@ public:
+     int nid() const;
+ 
+ protected:
+-    virtual void handleData(const QVariant &data);
++    void handleData(const QVariant &data) Q_DECL_OVERRIDE;
+     
+ private:
+     class Private;
+diff --git a/src/notejob.h b/src/notejob.h
+index dfeefc2..340eaef 100644
+--- a/src/notejob.h
++++ b/src/notejob.h
+@@ -37,7 +37,7 @@ public:
+     NoteInfoPtr noteInfo();
+     
+ protected:
+-    virtual void handleData(const QVariant &data);
++    void handleData(const QVariant &data) Q_DECL_OVERRIDE;
+     
+ private:
+     class Private;
+diff --git a/src/noteslistjob.h b/src/noteslistjob.h
+index 3ea51a7..d36e0bf 100644
+--- a/src/noteslistjob.h
++++ b/src/noteslistjob.h
+@@ -49,7 +49,7 @@ protected:
+     * @brief Handles the data returned by the VkontakteGetJob
+     * @param data A JSON string containing the data.
+     */
+-    virtual void handleData(const QVariant &data);
++    void handleData(const QVariant &data) Q_DECL_OVERRIDE;
+ 
+     void handleItem(const QVariant &data);
+ 
+diff --git a/src/photojob.h b/src/photojob.h
+index b8af5b3..b230c29 100644
+--- a/src/photojob.h
++++ b/src/photojob.h
+@@ -35,7 +35,7 @@ public:
+     PhotoJob(const QUrl &urlString);
+     ~PhotoJob();
+ 
+-    virtual void start();
++    void start() Q_DECL_OVERRIDE;
+     QImage photo() const;
+ 
+ private Q_SLOTS:
+diff --git a/src/photolistjob.h b/src/photolistjob.h
+index 4b38a12..a0c868f 100644
+--- a/src/photolistjob.h
++++ b/src/photolistjob.h
+@@ -42,7 +42,7 @@ protected:
+     * @brief Handles the data returned by VkontakteJob
+     * @param data JSON value containing an array of photos.
+     */
+-    virtual void handleData(const QJsonValue &data);
++    void handleData(const QJsonValue &data) Q_DECL_OVERRIDE;
+ 
+ private:
+     class Private;
+diff --git a/src/photopostjob.h b/src/photopostjob.h
+index 712906d..1f7b2ec 100644
+--- a/src/photopostjob.h
++++ b/src/photopostjob.h
+@@ -43,7 +43,7 @@ public:
+     // files.size <= 5
+     PhotoPostJob(Vkontakte::UploadPhotosJob::Dest dest, const QUrl &url, const QStringList &files);
+ 
+-    virtual void start();
++    void start() Q_DECL_OVERRIDE;
+     QVariantMap response() const;
+ 
+ protected:
+diff --git a/src/savephotojob.h b/src/savephotojob.h
+index af2a795..cd4ab85 100644
+--- a/src/savephotojob.h
++++ b/src/savephotojob.h
+@@ -46,7 +46,7 @@ public:
+ protected:
+     QString getMethod(Vkontakte::UploadPhotosJob::Dest dest);
+     void handleItem(const QJsonValue &item);
+-    virtual void handleData(const QJsonValue &data);
++    void handleData(const QJsonValue &data) Q_DECL_OVERRIDE;
+ 
+ private:
+     UploadPhotosJob::Dest m_dest;
+diff --git a/src/uploadphotosjob.h b/src/uploadphotosjob.h
+index 461f62a..d9290c4 100644
+--- a/src/uploadphotosjob.h
++++ b/src/uploadphotosjob.h
+@@ -43,7 +43,7 @@ public:
+                     const QStringList &files, bool saveBig, int aid, int gid = -1);
+     ~UploadPhotosJob();
+ 
+-    virtual void start();
++    void start() Q_DECL_OVERRIDE;
+ 
+     QList<PhotoInfo> list() const;
+ 
+diff --git a/src/userinfojob.h b/src/userinfojob.h
+index 85e6b86..5090ab3 100644
+--- a/src/userinfojob.h
++++ b/src/userinfojob.h
+@@ -71,12 +71,12 @@ protected:
+     * @brief Handles the data returned by the VkontakteGetJob
+     * @param data A JSON string containing the data.
+     */
+-    virtual void handleData(const QJsonValue &data);
++    void handleData(const QJsonValue &data) Q_DECL_OVERRIDE;
+ 
+     /**
+      * @brief Prepares m_queryItems by several addQueryItem calls
+      **/
+-    virtual void prepareQueryItems();
++    void prepareQueryItems() Q_DECL_OVERRIDE;
+ 
+ private:
+     class Private;
+diff --git a/src/vkontaktejobs.h b/src/vkontaktejobs.h
+index 9429da8..af04aa9 100644
+--- a/src/vkontaktejobs.h
++++ b/src/vkontaktejobs.h
+@@ -38,7 +38,7 @@ class LIBKVKONTAKTE_EXPORT KJobWithSubjob : public KJob
+ {
+ protected:
+     /** Kill the currentjobs and its subjobs */
+-    virtual bool doKill();
++    bool doKill() Q_DECL_OVERRIDE;
+ 
+     QPointer<KJob> m_job; /** Pointer to the running job */
+ };
+@@ -47,7 +47,7 @@ class LIBKVKONTAKTE_EXPORT KJobWithSubjobs : public KJob
+ {
+ protected:
+     /** Kill the currentjobs and its subjobs */
+-    virtual bool doKill();
++    bool doKill() Q_DECL_OVERRIDE;
+ 
+     QList<KJob *> m_jobs; /** Pointers to running jobs */
+ };
+@@ -68,7 +68,7 @@ public:
+      * */
+     VkontakteJob(const QString &accessToken, const QString &method, bool httpPost = false);
+ 
+-    virtual void start();
++    void start() Q_DECL_OVERRIDE;
+ 
+     enum JobErrorType { AuthenticationProblem = KJob::UserDefinedError + 42 };
+ 
+-- 
+cgit v1.1

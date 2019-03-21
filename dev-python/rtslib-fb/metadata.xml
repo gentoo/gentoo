@@ -13,7 +13,12 @@
      A Python object API for managing the Linux LIO kernel target
   </longdescription>
   <upstream>
+    <maintainer status="active">
+      <email>mlombard@redhat.com</email>
+      <name>Maurizio Lombardi</name>
+    </maintainer>
     <remote-id type="pypi">rtslib-fb</remote-id>
-    <remote-id type="github">agrover/rtslib-fb</remote-id>
+    <remote-id type="github">open-iscsi/rtslib-fb</remote-id>
+    <bugs-to>https://github.com/open-iscsi/rtslib-fb/issues</bugs-to>
   </upstream>
 </pkgmetadata>

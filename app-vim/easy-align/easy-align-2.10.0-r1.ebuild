@@ -19,5 +19,6 @@ VIM_PLUGIN_HELPFILES="${PN}"
 S="${WORKDIR}/${MY_PN}-${PV}"
 
 src_prepare() {
+	default
 	rm -rv test || die
 }

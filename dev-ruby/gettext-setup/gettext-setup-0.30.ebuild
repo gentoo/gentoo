@@ -24,7 +24,7 @@ KEYWORDS="amd64 ~arm ~hppa ~ppc ~ppc64 x86"
 IUSE=""
 
 ruby_add_rdepend "
-	>=dev-ruby/fast_gettext-1.1.0
+	>=dev-ruby/fast_gettext-1.1.0:0
 	>=dev-ruby/ruby-gettext-3.0.2
 	dev-ruby/locale
 "

@@ -40,8 +40,7 @@ LICENSE="|| ( MIT Apache-2.0 ) BSD-1 BSD-2 BSD-4 UoI-NCSA"
 
 IUSE="clippy cpu_flags_x86_sse2 debug doc +jemalloc libressl rls rustfmt system-llvm wasm ${ALL_LLVM_TARGETS[*]}"
 
-COMMON_DEPEND=">=app-eselect/eselect-rust-0.3_pre20150425
-		jemalloc? ( dev-libs/jemalloc )
+COMMON_DEPEND="jemalloc? ( dev-libs/jemalloc )
 		sys-libs/zlib
 		!libressl? ( dev-libs/openssl:0= )
 		libressl? ( dev-libs/libressl:0= )
@@ -57,6 +56,7 @@ DEPEND="${COMMON_DEPEND}
 	)
 	dev-util/cmake"
 RDEPEND="${COMMON_DEPEND}
+	>=app-eselect/eselect-rust-20190311
 	!dev-util/cargo
 	rustfmt? ( !dev-util/rustfmt )"
 REQUIRED_USE="|| ( ${ALL_LLVM_TARGETS[*]} )
@@ -137,7 +137,7 @@ src_configure() {
 		release-debuginfo = $(toml_usex debug)
 		assertions = $(toml_usex debug)
 		targets = "${LLVM_TARGETS// /;}"
-		experimental-targets = ""
+		experimental-targets = "$(usex wasm WebAssembly '')"
 		link-shared = $(toml_usex system-llvm)
 		[build]
 		build = "${rust_target}"

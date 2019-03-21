@@ -77,6 +77,7 @@ src_configure() {
 		--with-system-nspr \
 		--disable-optimize \
 		--with-intl-api \
+		--disable-gold \
 		$(use_with system-icu) \
 		$(use_enable debug) \
 		$(use_enable test tests) \

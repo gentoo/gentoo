@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -72,6 +72,7 @@ DEPEND="${COMMON_DEPEND}
 	app-text/docbook-xml-dtd:4.1.2
 	dev-util/gdbus-codegen
 	dev-util/glib-utils
+	dev-util/itstool
 	gtk-doc? ( dev-util/gtk-doc )
 	>=dev-util/intltool-0.40.0
 	>=sys-devel/gettext-0.18.3

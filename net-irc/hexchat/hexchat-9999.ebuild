@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 PYTHON_COMPAT=( python3_{4,5,6,7} )
 
-inherit gnome2-utils meson mono-env python-single-r1 xdg-utils
+inherit meson mono-env python-single-r1 xdg
 
 DESCRIPTION="Graphical IRC client based on XChat"
 HOMEPAGE="https://hexchat.github.io/"
@@ -24,7 +24,7 @@ SLOT="0"
 IUSE="dbus debug +gtk libcanberra libnotify libproxy libressl lua perl plugin-checksum plugin-fishlim plugin-sysinfo python ssl theme-manager"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
-COMMON_DEPEND="
+RDEPEND="
 	dev-libs/glib:2
 	dbus? ( dev-libs/dbus-glib )
 	gtk? (
@@ -51,9 +51,8 @@ COMMON_DEPEND="
 		)
 	)"
 
-RDEPEND="${COMMON_DEPEND}"
-DEPEND="
-	${COMMON_DEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	dev-util/glib-utils
 	app-arch/xz-utils
 	app-text/iso-codes
@@ -100,15 +99,13 @@ src_install() {
 
 pkg_preinst() {
 	if use gtk ; then
-		gnome2_icon_savelist
+		xdg_pkg_preinst
 	fi
 }
 
 pkg_postinst() {
 	if use gtk ; then
-		gnome2_icon_cache_update
-		xdg_desktop_database_update
-		xdg_mimeinfo_database_update
+		xdg_pkg_postinst
 	else
 		elog "You have disabled the gtk USE flag. This means you don't have"
 		elog "the GTK-GUI for HexChat but only a text interface called \"hexchat-text\"."
@@ -130,8 +127,6 @@ pkg_postinst() {
 
 pkg_postrm() {
 	if use gtk ; then
-		gnome2_icon_cache_update
-		xdg_desktop_database_update
-		xdg_mimeinfo_database_update
+		xdg_pkg_postrm
 	fi
 }

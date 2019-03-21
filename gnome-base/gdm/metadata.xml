@@ -6,6 +6,7 @@
 	<name>Gentoo GNOME Desktop</name>
 </maintainer>
 <use>
+	<flag name="elogind">Use <pkg>sys-auth/elogind</pkg> for session management</flag>
 	<flag name="fprint">Enables experimental fingerprint authentication using
 		<pkg>sys-auth/fprintd</pkg></flag>
 	<flag name="plymouth">Enable support for smooth transition from

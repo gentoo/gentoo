@@ -70,7 +70,7 @@ multilib_src_install_all() {
 
 	dodoc AUTHORS HACKING PLATFORMS README NEWS
 
-	prune_libtool_files --all
+	find "${D}" -name "*.la" -type f -delete || die
 }
 
 multilib_src_test() {

@@ -30,28 +30,30 @@ RESTRICT="
 "
 
 RADEON_CARDS="r100 r200 r300 r600 radeon radeonsi"
-VIDEO_CARDS="${RADEON_CARDS} freedreno i915 i965 imx intel nouveau vc4 virgl vivante vmware"
+VIDEO_CARDS="${RADEON_CARDS} freedreno i915 i965 imx intel iris nouveau vc4 virgl vivante vmware"
 for card in ${VIDEO_CARDS}; do
 	IUSE_VIDEO_CARDS+=" video_cards_${card}"
 done
 
 IUSE="${IUSE_VIDEO_CARDS}
-	+classic d3d9 debug +dri3 +egl +gallium +gbm gles1 gles2 +llvm lm_sensors
-	opencl osmesa pax_kernel pic selinux test unwind vaapi valgrind vdpau
-	vulkan wayland xa xvmc"
+	+classic d3d9 debug +dri3 +egl +gallium +gbm gles1 +gles2 +libglvnd +llvm
+	lm_sensors opencl osmesa pax_kernel pic selinux test unwind vaapi valgrind
+	vdpau vulkan vulkan-overlay wayland xa xvmc"
 
 REQUIRED_USE="
-	d3d9?   ( dri3 || ( video_cards_r300 video_cards_r600 video_cards_radeonsi video_cards_nouveau video_cards_vmware ) )
+	d3d9?   ( dri3 || ( video_cards_iris video_cards_r300 video_cards_r600 video_cards_radeonsi video_cards_nouveau video_cards_vmware ) )
 	gles1?  ( egl )
 	gles2?  ( egl )
 	vulkan? ( dri3
-			  || ( video_cards_i965 video_cards_radeonsi )
+			  || ( video_cards_i965 video_cards_iris video_cards_radeonsi )
 			  video_cards_radeonsi? ( llvm ) )
+	vulkan-overlay? ( vulkan )
 	wayland? ( egl gbm )
 	video_cards_freedreno?  ( gallium )
 	video_cards_intel?  ( classic )
 	video_cards_i915?   ( || ( classic gallium ) )
 	video_cards_i965?   ( classic )
+	video_cards_iris?   ( gallium )
 	video_cards_imx?    ( gallium video_cards_vivante )
 	video_cards_nouveau? ( || ( classic gallium ) )
 	video_cards_radeon? ( || ( classic gallium )
@@ -70,7 +72,6 @@ REQUIRED_USE="
 LIBDRM_DEPSTRING=">=x11-libs/libdrm-2.4.97"
 RDEPEND="
 	!app-eselect/eselect-mesa
-	>=app-eselect/eselect-opengl-1.3.0
 	>=dev-libs/expat-2.1.0-r3:=[${MULTILIB_USEDEP}]
 	>=sys-libs/zlib-1.2.8[${MULTILIB_USEDEP}]
 	>=x11-libs/libX11-1.6.2:=[${MULTILIB_USEDEP}]
@@ -80,6 +81,13 @@ RDEPEND="
 	>=x11-libs/libXxf86vm-1.1.3:=[${MULTILIB_USEDEP}]
 	>=x11-libs/libxcb-1.13:=[${MULTILIB_USEDEP}]
 	x11-libs/libXfixes:=[${MULTILIB_USEDEP}]
+	libglvnd? (
+		media-libs/libglvnd[${MULTILIB_USEDEP}]
+		!app-eselect/eselect-opengl
+	)
+	!libglvnd? (
+		>=app-eselect/eselect-opengl-1.3.0
+	)
 	gallium? (
 		unwind? ( sys-libs/libunwind[${MULTILIB_USEDEP}] )
 		llvm? (
@@ -132,10 +140,12 @@ RDEPEND="${RDEPEND}
 #
 # How to use it:
 # 1. List all the working slots (with min versions) in ||, newest first.
-# 2. Update the := to specify *max* version, e.g. < 7.
-# 3. Specify LLVM_MAX_SLOT, e.g. 6.
+# 2. Update the := to specify *max* version, e.g. < 10.
+# 3. Specify LLVM_MAX_SLOT, e.g. 9.
+LLVM_MAX_SLOT="9"
 LLVM_DEPSTR="
 	|| (
+		sys-devel/llvm:9[${MULTILIB_USEDEP}]
 		sys-devel/llvm:8[${MULTILIB_USEDEP}]
 		sys-devel/llvm:7[${MULTILIB_USEDEP}]
 	)
@@ -297,7 +307,7 @@ pkg_pretend() {
 }
 
 python_check_deps() {
-	has_version ">=dev-python/mako-0.8.0[${PYTHON_USEDEP}]"
+	has_version --host-root ">=dev-python/mako-0.8.0[${PYTHON_USEDEP}]"
 }
 
 pkg_setup() {
@@ -346,7 +356,8 @@ multilib_src_configure() {
 			$(meson_use unwind libunwind)
 		)
 
-		if use video_cards_r300 ||
+		if use video_cards_iris ||
+		   use video_cards_r300 ||
 		   use video_cards_r600 ||
 		   use video_cards_radeonsi ||
 		   use video_cards_nouveau ||
@@ -404,6 +415,8 @@ multilib_src_configure() {
 			fi
 		fi
 
+		gallium_enable video_cards_iris iris
+
 		gallium_enable video_cards_r300 r300
 		gallium_enable video_cards_r600 r600
 		gallium_enable video_cards_radeonsi radeonsi
@@ -423,6 +436,7 @@ multilib_src_configure() {
 
 	if use vulkan; then
 		vulkan_enable video_cards_i965 intel
+		vulkan_enable video_cards_iris intel
 		vulkan_enable video_cards_radeonsi amd
 	fi
 
@@ -458,11 +472,13 @@ multilib_src_configure() {
 		$(meson_use gbm)
 		$(meson_use gles1)
 		$(meson_use gles2)
+		$(meson_use libglvnd glvnd)
 		$(meson_use selinux)
 		-Dvalgrind=$(usex valgrind auto false)
 		-Ddri-drivers=$(driver_list "${DRI_DRIVERS[*]}")
 		-Dgallium-drivers=$(driver_list "${GALLIUM_DRIVERS[*]}")
 		-Dvulkan-drivers=$(driver_list "${VULKAN_DRIVERS[*]}")
+		$(meson_use vulkan-overlay vulkan-overlay-layer)
 		--buildtype $(usex debug debug plain)
 		-Db_ndebug=$(usex debug false true)
 	)
@@ -475,6 +491,8 @@ multilib_src_compile() {
 
 multilib_src_install() {
 	meson_src_install
+
+	use libglvnd && rm -f "${D}"/usr/$(get_libdir)/libGLESv{1_CM,2}.so*
 }
 
 multilib_src_install_all() {

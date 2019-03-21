@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,8 +9,8 @@ FORTRAN_STANDARD=90
 inherit autotools fortran-2
 
 DESCRIPTION="Arbitrary precision float arithmetics and functions"
-HOMEPAGE="http://crd-legacy.lbl.gov/~dhbailey/mpdist/"
-SRC_URI="http://crd.lbl.gov/~dhbailey/mpdist/${P}.tar.gz"
+HOMEPAGE="https://crd-legacy.lbl.gov/~dhbailey/mpdist/"
+SRC_URI="https://crd.lbl.gov/~dhbailey/mpdist/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="BSD"

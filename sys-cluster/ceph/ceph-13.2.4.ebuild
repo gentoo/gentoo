@@ -57,10 +57,6 @@ COMMON_DEPEND="
 	ssl? ( dev-libs/openssl:=[static-libs?] )
 	xfs? ( sys-fs/xfsprogs:=[static-libs?] )
 	zfs? ( sys-fs/zfs:=[static-libs?] )
-	mgr? (
-		<net-libs/nodejs-9.0
-		>net-libs/nodejs-8.10
-	)
 	radosgw? (
 		dev-libs/expat:=[static-libs?]
 		dev-libs/openssl:=[static-libs?]

@@ -13,11 +13,12 @@ SRC_URI="https://dev.mysql.com/get/Downloads/${URI_DIR}/${P}.tar.gz"
 LICENSE="Artistic GPL-2"
 SLOT="0/7"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc ~x86"
-IUSE="debug examples gcov static-libs"
+IUSE="debug examples gcov libressl static-libs"
 
 DEPEND="virtual/libmysqlclient:=
 	dev-libs/boost:=
-	dev-libs/openssl:0=
+	!libressl? ( dev-libs/openssl:0= )
+	libressl? ( dev-libs/libressl:0= )
 	!<dev-db/mysql-connector-c-6.1.8"
 RDEPEND="${DEPEND}"
 

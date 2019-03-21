@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,6 +19,7 @@ COMMON_DEPEND="
 	>=dev-libs/glib-2.43.4:2
 	>=dev-libs/gobject-introspection-1.50:=
 	>=dev-libs/gjs-1.45.3
+	<dev-libs/gjs-1.53
 	x11-libs/gdk-pixbuf:2[introspection]
 	>=app-text/gspell-1.4.0[introspection]
 	x11-libs/pango[introspection]

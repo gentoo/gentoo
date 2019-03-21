@@ -6,6 +6,6 @@
 		<name>Mike Auty</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">JukkaL/mypy</remote-id>
+		<remote-id type="github">python/mypy</remote-id>
 	</upstream>
 </pkgmetadata>

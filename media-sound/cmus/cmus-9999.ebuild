@@ -1,8 +1,9 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit bash-completion-r1 multilib
+
+inherit bash-completion-r1
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/cmus/cmus.git"
@@ -12,28 +13,33 @@ else
 	KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-solaris"
 fi
 
-DESCRIPTION="A ncurses based music player with plugin support for many formats"
+DESCRIPTION="Ncurses based music player with plugin support for many formats"
 HOMEPAGE="https://cmus.github.io/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="aac alsa ao cue cdio cddb discid debug examples ffmpeg +flac jack libsamplerate
-	+mad mikmod modplug mp4 musepack opus oss pidgin pulseaudio tremor +unicode
+IUSE="aac alsa ao cddb cdio cue debug discid elogind examples ffmpeg +flac jack libsamplerate
+	+mad mikmod modplug mp4 musepack opus oss pidgin pulseaudio systemd tremor +unicode
 	+vorbis wavpack"
 
-S="${WORKDIR}/${P/_/-}"
+REQUIRED_USE="?? ( elogind systemd )"
 
-CDEPEND="sys-libs/ncurses:0=[unicode?]
+BDEPEND="
+	virtual/pkgconfig
+"
+DEPEND="
+	sys-libs/ncurses:0=[unicode?]
 	aac? ( media-libs/faad2 )
 	alsa? ( >=media-libs/alsa-lib-1.0.11 )
 	ao? ( media-libs/libao )
-	cue? ( media-libs/libcue )
-	cdio? ( dev-libs/libcdio-paranoia )
 	cddb? ( media-libs/libcddb )
+	cdio? ( dev-libs/libcdio-paranoia )
+	cue? ( media-libs/libcue )
 	discid? ( media-libs/libdiscid )
+	elogind? ( sys-auth/elogind )
 	ffmpeg? ( media-video/ffmpeg:= )
 	flac? ( media-libs/flac )
-	jack? ( media-sound/jack-audio-connection-kit )
+	jack? ( virtual/jack )
 	libsamplerate? ( media-libs/libsamplerate )
 	mad? ( >=media-libs/libmad-0.14 )
 	mikmod? ( media-libs/libmikmod:0 )
@@ -42,19 +48,25 @@ CDEPEND="sys-libs/ncurses:0=[unicode?]
 	musepack? ( >=media-sound/musepack-tools-444 )
 	opus? ( media-libs/opusfile )
 	pulseaudio? ( media-sound/pulseaudio )
+	systemd? ( sys-apps/systemd )
 	tremor? ( media-libs/tremor )
 	!tremor? ( vorbis? ( >=media-libs/libvorbis-1.0 ) )
-	wavpack? ( media-sound/wavpack )"
-DEPEND="${CDEPEND}
-	virtual/pkgconfig"
-RDEPEND="${CDEPEND}
-	pidgin? ( net-im/pidgin dev-python/dbus-python )"
+	wavpack? ( media-sound/wavpack )
+"
+RDEPEND="${DEPEND}
+	pidgin? (
+		dev-python/dbus-python
+		net-im/pidgin
+	)
+"
 
 # Both CONFIG_TREMOR=y and CONFIG_VORBIS=y are required to link to tremor libs instead of vorbis libs
 REQUIRED_USE="tremor? ( vorbis )
 	mp4? ( aac )" # enabling mp4 adds -lfaad
 
-DOCS="AUTHORS README.md"
+DOCS=( AUTHORS README.md )
+
+S="${WORKDIR}/${P/_/-}"
 
 my_config() {
 	local value
@@ -90,6 +102,12 @@ src_configure() {
 	my_config ao CONFIG_AO
 	my_config oss CONFIG_OSS
 
+	if use elogind || use systemd; then
+		myconf="${myconf} CONFIG_MPRIS=a"
+	else
+		myconf="${myconf} CONFIG_MPRIS=n"
+	fi
+
 	./configure prefix="${EPREFIX}"/usr ${myconf} \
 		exampledir="${EPREFIX}"/usr/share/doc/${PF}/examples \
 		libdir="${EPREFIX}"/usr/$(get_libdir) DEBUG=${debuglevel} || die
@@ -106,7 +124,9 @@ src_compile() {
 src_install() {
 	default
 
-	use examples || rm -rf "${ED}"/usr/share/doc/${PF}/examples
+	if ! use examples; then
+		rm -rf "${ED}"/usr/share/doc/${PF}/examples || die
+	fi
 
 	insinto /usr/share/zsh/site-functions
 	doins contrib/_cmus
@@ -116,9 +136,4 @@ src_install() {
 	if use pidgin; then
 		newbin contrib/cmus-updatepidgin.py cmus-updatepidgin
 	fi
-}
-
-pkg_postinst() {
-	einfo "USE flag 'wma' was replaced by 'ffmpeg'"
-	einfo "Details here - https://bugs.gentoo.org/show_bug.cgi?id=553834"
 }

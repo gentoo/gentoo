@@ -58,7 +58,7 @@ src_install() {
 
 	dodoc AUTHORS HACKING PLATFORMS README NEWS
 
-	prune_libtool_files --all
+	find "${D}" -name "*.la" -type f -delete || die
 }
 
 src_test() {

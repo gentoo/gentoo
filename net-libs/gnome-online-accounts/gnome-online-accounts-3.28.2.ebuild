@@ -14,7 +14,7 @@ LICENSE="LGPL-2+"
 SLOT="0/1"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 
-IUSE="debug gnome +introspection kerberos vala" # telepathy"
+IUSE="debug gnome +introspection kerberos +vala" # telepathy"
 REQUIRED_USE="vala? ( introspection )"
 
 # pango used in goaeditablelabel

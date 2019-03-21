@@ -1,12 +1,12 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit eutils
 
 DESCRIPTION="A library that measures and reports on packet flows"
-HOMEPAGE="http://research.wand.net.nz/software/libflowmanager.php"
-SRC_URI="http://research.wand.net.nz/software/${PN}/${P}.tar.gz"
+HOMEPAGE="https://research.wand.net.nz/software/libflowmanager.php"
+SRC_URI="https://research.wand.net.nz/software/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0/3"

@@ -21,6 +21,8 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
+PATCHES=( "${FILESDIR}/${P}-gcc-8.3.patch" ) # bug 678640
+
 src_prepare() {
 	qt_use_disable_mod scripttools widgets \
 		src/src.pro

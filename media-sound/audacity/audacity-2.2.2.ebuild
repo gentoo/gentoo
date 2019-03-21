@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -24,7 +24,8 @@ RESTRICT="test"
 RDEPEND=">=app-arch/zip-2.3
 	dev-libs/expat
 	>=media-libs/libsndfile-1.0.0
-	=media-libs/portaudio-19*
+	>=media-libs/portaudio-19_pre
+	<media-libs/portaudio-19.06.00-r2
 	media-libs/soxr
 	x11-libs/wxGTK:3.0[X]
 	alsa? ( media-libs/alsa-lib )

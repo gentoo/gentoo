@@ -31,7 +31,7 @@ src_install() {
 	exeinto /etc/cron.daily
 	newexe debian/cron.daily tmpreaper
 	doman debian/tmpreaper.conf.5
-	dodoc README ChangeLog debian/README*
+	dodoc README debian/changelog debian/README*
 }
 
 pkg_postinst() {

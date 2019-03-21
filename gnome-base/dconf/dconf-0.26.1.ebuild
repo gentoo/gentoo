@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit gnome2 bash-completion-r1 virtualx
 
 DESCRIPTION="Simple low-level configuration system"
-HOMEPAGE="https://wiki.gnome.org/action/show/Projects/dconf"
+HOMEPAGE="https://wiki.gnome.org/Projects/dconf"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"

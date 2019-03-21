@@ -9,12 +9,12 @@ VALA_MAX_API_VERSION="0.36" # fix sed line if you increase this
 inherit vala cmake-utils
 
 DESCRIPTION="Presenter console with multi-monitor support for PDF files"
-HOMEPAGE="http://pdfpc.github.io"
+HOMEPAGE="https://pdfpc.github.io"
 SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 IUSE="gstreamer"
 
 RDEPEND="app-text/poppler[cairo]

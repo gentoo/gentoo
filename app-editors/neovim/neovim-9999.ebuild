@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,7 +18,7 @@ fi
 
 LICENSE="Apache-2.0 vim"
 SLOT="0"
-IUSE="+clipboard +luajit +nvimpager python remote ruby +tui +jemalloc"
+IUSE="+clipboard +luajit +nvimpager python remote ruby +tui"
 
 CDEPEND=">=dev-libs/libuv-1.2.0:0=
 	>=dev-libs/msgpack-1.0.0:0=
@@ -28,13 +28,12 @@ CDEPEND=">=dev-libs/libuv-1.2.0:0=
 		dev-lua/LuaBitOp
 	)
 	tui? (
-		>=dev-libs/libtermkey-0.19
+		>=dev-libs/libtermkey-0.21.1
 		>=dev-libs/unibilium-2.0.0:0=
 	)
 	dev-libs/libvterm
 	dev-lua/lpeg[luajit=]
 	dev-lua/mpack[luajit=]
-	jemalloc? ( dev-libs/jemalloc )
 	net-libs/libnsl"
 
 DEPEND="
@@ -66,7 +65,6 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=(
 		-DFEAT_TUI=$(usex tui)
-		-DENABLE_JEMALLOC=$(usex jemalloc)
 		-DPREFER_LUA=$(usex luajit no yes)
 	)
 	cmake-utils_src_configure

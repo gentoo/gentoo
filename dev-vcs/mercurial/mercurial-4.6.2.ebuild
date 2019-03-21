@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -26,6 +26,9 @@ DEPEND="emacs? ( virtual/emacs )
 		dev-python/pygments[${PYTHON_USEDEP}] )"
 
 SITEFILE="70${PN}-gentoo.el"
+
+# Too many tests fail #608720
+RESTRICT="test"
 
 PATCHES=( "${FILESDIR}/${PN}-3.0.1-po_fixes.patch" )
 

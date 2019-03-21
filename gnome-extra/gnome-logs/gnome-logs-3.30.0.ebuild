@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -23,12 +23,13 @@ DEPEND="${RDEPEND}
 	dev-util/glib-utils
 	>=sys-devel/gettext-0.19.8
 	~app-text/docbook-xml-dtd-4.3
-	dev-libs/appstream-glib
 	dev-libs/libxml2:2
 	dev-libs/libxslt
 	dev-util/itstool
 	virtual/pkgconfig
 "
+
+RESTRICT="!test? ( test )"
 
 src_configure() {
 	local emesonargs=(
@@ -44,12 +45,10 @@ src_test() {
 
 pkg_postinst() {
 	xdg_pkg_postinst
-	gnome2_icon_cache_update
 	gnome2_schemas_update
 }
 
 pkg_postrm() {
 	xdg_pkg_postrm
-	gnome2_icon_cache_update
 	gnome2_schemas_update
 }

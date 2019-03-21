@@ -39,6 +39,7 @@ pkg_setup() {
 }
 
 src_compile() {
+	export -n GOCACHE XDG_CACHE_HOME #651934
 	export GOPATH=${S}
 	pushd src/${EGO_PN} || die
 	GO_BUILD_FLAGS=-v ./build || die

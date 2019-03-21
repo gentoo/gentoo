@@ -62,6 +62,7 @@ src_configure() {
 	local mywafconfargs=(
 		--enable-complex
 		--docdir="${EPREFIX}"/usr/share/doc/${PF}
+		$(use_enable doc docs)
 		$(use_enable double-precision double)
 		$(use_enable fftw fftw3)
 		$(use_enable ffmpeg avcodec)

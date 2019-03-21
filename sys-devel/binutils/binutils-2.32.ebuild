@@ -45,8 +45,7 @@ case ${PV} in
 	*)
 		SRC_URI="mirror://gnu/binutils/binutils-${PV}.tar.xz"
 		SLOT=$(get_version_component_range 1-2)
-		# no keywords yet. Needs some testing
-		#KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd"
+		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd"
 		;;
 esac
 
@@ -292,7 +291,8 @@ src_test() {
 	# bug 637066
 	filter-flags -Wall -Wreturn-type
 
-	emake -k check
+	# enable verbose test run and result logging
+	emake -k check RUNTESTFLAGS='-a -v' VERBOSE=1
 }
 
 src_install() {

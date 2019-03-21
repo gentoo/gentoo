@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
@@ -202,10 +202,6 @@ app-office/lyx gnumeric
 # Jeroen Roovers <jer@gentoo.org> (24 Feb 2011)
 # Needs Java (bug #355353)
 app-text/texlive pdfannotextractor
-
-# Jeroen Roovers <jer@gentoo.org> (30 Nov 2010)
-# Mask doc-pdf because of Java dependencies (bug #347259)
-net-analyzer/wireshark doc-pdf
 
 # Justin Lecher <jlec@gentoo.org> (13 Aug 2010)
 # MKL not available on this arch

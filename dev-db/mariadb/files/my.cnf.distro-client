@@ -4,7 +4,7 @@
 [client]
 socket						= @GENTOO_PORTAGE_EPREFIX@/var/run/mysqld/mysqld.sock
 character-sets-dir				= @GENTOO_PORTAGE_EPREFIX@/usr/share/mariadb/charsets
-default-character-set=utf8
+loose-default-character-set=utf8
 
 [mysql]
 # uncomment the next directive if you are not familiar with SQL

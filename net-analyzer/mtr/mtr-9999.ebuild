@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -27,7 +27,7 @@ DEPEND="
 	virtual/pkgconfig
 "
 
-DOCS=( AUTHORS FORMATS NEWS README SECURITY TODO )
+DOCS=( AUTHORS FORMATS NEWS README.md SECURITY TODO )
 FILECAPS=( cap_net_raw usr/sbin/mtr-packet )
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.88-tinfo.patch

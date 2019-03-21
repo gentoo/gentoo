@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Sergei Trofimovich <slyfox@gentoo.org> (17 Mar 2019)
+# net-analyzer/nagios (or icinga) has no stable keywords, bug #676222
+sys-libs/freeipmi nagios
+
 # Andreas Sturmlechner <asturm@gentoo.org> (02 Dec 2018)
 # gnome-base/nautilus is not stable
 media-sound/easytag nautilus

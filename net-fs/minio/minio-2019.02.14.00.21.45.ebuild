@@ -35,6 +35,8 @@ src_prepare() {
 }
 
 src_compile() {
+	unset XDG_CACHE_HOME
+
 	pushd src/${EGO_PN} || die
 	MINIO_RELEASE="${MY_PV}"
 	go run buildscripts/gen-ldflags.go

@@ -1,7 +1,7 @@
 # Patch by Vlastimil Babka <caster@gentoo.org>
 # Some JDK's such as ibm-jdk-bin don't have jni_md.h, so make the test more robust
---- configure.ac.orig	2009-01-10 00:29:01.000000000 +0100
-+++ configure.ac	2010-04-05 12:17:35.000000000 +0200
+--- a/configure.ac	2009-01-10 00:29:01.000000000 +0100
++++ b/configure.ac	2010-04-05 12:17:35.000000000 +0200
 @@ -24,22 +24,16 @@
    JAVA_HOME=/usr/local/jdk
  fi

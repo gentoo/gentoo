@@ -12,7 +12,7 @@ if [[ ${PV} == *9999* ]]; then
 	EGIT_BRANCH="next"
 	inherit git-r3
 else
-	KEYWORDS="~amd64 x86"
+	KEYWORDS="amd64 x86"
 	SRC_URI="https://github.com/IgnorantGuru/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 fi
 

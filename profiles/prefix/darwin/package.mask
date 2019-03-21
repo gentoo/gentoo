@@ -1,11 +1,5 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-
-# Fabian Groffen <grobian@gentoo.org> (31 May 2015)
-# fails to compile due to some missing compilerrt stuff, hints at asan,
-# not sure what the problem actually is, 3.7 and 3.8 compile just fine
-=sys-devel/llvm-3.6*
-=sys-devel/clang-3.6*
 
 # Fabian Groffen <grobian@gentoo.org> (14 Jan 2014)
 # util-linux has no business on Darwin systems

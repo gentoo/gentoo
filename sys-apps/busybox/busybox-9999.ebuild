@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # See `man savedconfig.eclass` for info on how to use USE=savedconfig.
@@ -177,6 +177,10 @@ src_configure() {
 
 	# this opt only controls mounting with <linux-2.6.23
 	busybox_config_option n FEATURE_MOUNT_NFS
+
+	# glibc-2.26 and later does not ship RPC implientation
+	busybox_config_option n FEATURE_HAVE_RPC
+	busybox_config_option n FEATURE_INETD_RPC
 
 	# default a bunch of uncommon options to off
 	local opt

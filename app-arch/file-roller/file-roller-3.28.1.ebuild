@@ -29,9 +29,7 @@ RDEPEND="
 	nautilus? ( >=gnome-base/nautilus-2.22.2 )
 	packagekit? ( app-admin/packagekit-base )
 "
-# libxml2 required for glib-compile-resources
 DEPEND="${RDEPEND}
-	dev-libs/libxml2:2
 	dev-util/glib-utils
 	dev-util/itstool
 	>=sys-devel/gettext-0.19.8
@@ -84,13 +82,11 @@ src_install() {
 
 pkg_postinst() {
 	xdg_pkg_postinst
-	gnome2_icon_cache_update
 	gnome2_schemas_update
 	readme.gentoo_print_elog
 }
 
 pkg_postrm() {
 	xdg_pkg_postrm
-	gnome2_icon_cache_update
 	gnome2_schemas_update
 }

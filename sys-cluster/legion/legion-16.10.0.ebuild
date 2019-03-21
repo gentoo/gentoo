@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 inherit cmake-utils
 
 DESCRIPTION="A data-centric parallel programming system"
-HOMEPAGE="http://legion.stanford.edu/"
+HOMEPAGE="https://legion.stanford.edu/"
 SRC_URI="https://github.com/StanfordLegion/${PN}/archive/${P}.tar.gz"
 
 LICENSE="BSD"

@@ -11,7 +11,7 @@ SRC_URI="https://dev.yorhel.nl/download/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~sparc x86"
+KEYWORDS="amd64 ~ppc ~sparc x86"
 IUSE="geoip"
 
 RDEPEND="app-arch/bzip2

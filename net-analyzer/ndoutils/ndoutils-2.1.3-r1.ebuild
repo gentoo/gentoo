@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit systemd
 
 DESCRIPTION="Nagios addon to store Nagios data in a MySQL database"
-HOMEPAGE="http://www.nagios.org/"
+HOMEPAGE="https://www.nagios.org/"
 SRC_URI="https://github.com/NagiosEnterprises/${PN}/archive/${P}.tar.gz"
 
 LICENSE="GPL-2"

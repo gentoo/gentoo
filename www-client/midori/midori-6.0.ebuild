@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,7 +9,7 @@ inherit cmake-utils eapi7-ver eutils gnome2-utils vala xdg-utils
 
 MY_P=${PN}-v${PV}
 DESCRIPTION="A lightweight web browser based on WebKitGTK+"
-HOMEPAGE="http://www.midori-browser.org/"
+HOMEPAGE="https://www.midori-browser.org/"
 SRC_URI="https://github.com/midori-browser/core/releases/download/v$(ver_cut 1)/${MY_P}.tar.gz"
 
 LICENSE="LGPL-2.1+"

@@ -5,12 +5,6 @@
 # All the Mac OS X profiles inherit from their matching arch profile here.
 
 
-# Fabian Groffen <grobian@gentoo.org> (25 Dec 2018)
-# GCC-8.2.0 has a faulty libgcc_s, which causes C++ exceptions not the
-# caught in certain conditions.  ld64 is the notable condition leading
-# to configure believing every function it checks is available.
->=sys-devel/gcc-8
-
 # Fabian Groffen <grobian@gentoo.org> (22 Dec 2018)
 # this version of libffi causes gcc to buserror
 =dev-libs/libffi-3.3_rc0

@@ -1,5 +1,5 @@
---- build.xml.orig	2005-02-05 23:34:43.000000000 +0100
-+++ build.xml	2005-02-06 00:02:39.392389088 +0100
+--- a/src/build.xml	2005-02-05 23:34:43.000000000 +0100
++++ b/src/build.xml	2005-02-06 00:02:39.392389088 +0100
 @@ -1,9 +1,9 @@
 -<project name="JDBM" default="main" basedir=".">
 +<project name="JDBM" default="main" basedir="..">

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ inherit toolchain-funcs multilib-minimal
 
 DESCRIPTION="Compat library for functions like strlcpy(), strlcat(), strnlen(), getline()"
 HOMEPAGE="http://ohnopub.net/~ohnobinki/libstrl/"
-SRC_URI="ftp://mirror.ohnopub.net/mirror/${P}.tar.bz2"
+SRC_URI="http://mirror.ohnopub.net/mirror/${P}.tar.bz2"
 
 LICENSE="LGPL-3"
 SLOT="0"

@@ -41,7 +41,7 @@ RDEPEND="
 	>=app-dicts/gnome-dictionary-3.26.1
 	>=mail-client/evolution-${PV}
 	>=net-analyzer/gnome-nettool-3.8.1
-	>=gnome-extra/gnome-tweak-tool-3.26.3
+	>=gnome-extra/gnome-tweaks-3.26.3
 	>=gnome-extra/nautilus-sendto-3.8.6
 	>=net-misc/vinagre-3.22.0
 

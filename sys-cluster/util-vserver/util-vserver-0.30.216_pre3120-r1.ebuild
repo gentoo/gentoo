@@ -30,6 +30,10 @@ RDEPEND="
 
 S="${WORKDIR}/${MY_P}"
 
+PATCHES=(
+	"${FILESDIR}/${P}-vserver-init-functions.patch"
+)
+
 DOCS=( README ChangeLog NEWS AUTHORS THANKS util-vserver.spec )
 
 pkg_setup() {

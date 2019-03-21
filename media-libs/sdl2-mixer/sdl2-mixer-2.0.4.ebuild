@@ -29,7 +29,7 @@ RDEPEND="
 	>=media-libs/libsdl2-2.0.7[${MULTILIB_USEDEP}]
 	flac? ( >=media-libs/flac-1.2.1-r5[${MULTILIB_USEDEP}] )
 	midi? (
-		fluidsynth? ( >=media-sound/fluidsynth-1.1.6-r1[${MULTILIB_USEDEP}] )
+		fluidsynth? ( >=media-sound/fluidsynth-1.1.6-r1:=[${MULTILIB_USEDEP}] )
 		timidity? ( media-sound/timidity++ )
 	)
 	mod? (

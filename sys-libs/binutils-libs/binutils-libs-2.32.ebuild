@@ -21,8 +21,7 @@ SRC_URI="mirror://gnu/binutils/${MY_P}.tar.xz
 LICENSE="|| ( GPL-3 LGPL-3 )"
 SLOT="0/${PV}"
 IUSE="64-bit-bfd multitarget nls static-libs"
-# no keywords yet. Needs some testing
-#KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd"
 
 COMMON_DEPEND="sys-libs/zlib[${MULTILIB_USEDEP}]"
 DEPEND="${COMMON_DEPEND}
@@ -48,7 +47,7 @@ src_prepare() {
 		eapply "${WORKDIR}/patch"/*.patch
 	fi
 
-	# Fix cross-compile relinking issue.
+	# Fix cross-compile relinking issue, bug #626402
 	elibtoolize
 
 	default

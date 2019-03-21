@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -36,6 +36,9 @@ REQUIRED_USE="
 DOCS=( README.md )
 
 src_prepare() {
+	# bug #678502
+	eapply "${FILESDIR}/${P}-libressl-2.8.patch"
+
 	append-cflags -DSQLITE_HAS_CODEC
 	eapply_user
 	eautoreconf

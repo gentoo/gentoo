@@ -105,7 +105,6 @@ games-rpg/dear-esther
 games-rpg/eschalon-book-1-demo
 games-server/etqw-ded
 games-server/nwn-ded
-games-server/ut2003-ded
 games-simulation/bcs-demo
 games-strategy/darwinia
 games-strategy/darwinia-demo
@@ -129,4 +128,3 @@ sci-chemistry/cara-bin
 sci-chemistry/mars
 sci-chemistry/xdsstat-bin
 sys-libs/lib-compat-loki
-<sys-boot/grub-1.99

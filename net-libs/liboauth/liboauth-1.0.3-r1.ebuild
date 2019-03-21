@@ -30,7 +30,7 @@ CDEPEND="
 	)
 	!nss? (
 		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:= )
+		libressl? ( dev-libs/libressl:0= )
 		curl? ( || (
 			net-misc/curl[ssl,curl_ssl_openssl]
 			net-misc/curl[-ssl]
