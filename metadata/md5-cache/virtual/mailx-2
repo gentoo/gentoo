@@ -1,0 +1,7 @@
+DEFINED_PHASES=-
+DESCRIPTION=Virtual for mail implementations
+EAPI=7
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos
+RDEPEND=|| ( net-mail/mailutils mail-client/mailx mail-client/s-nail mail-client/nail sys-freebsd/freebsd-ubin )
+SLOT=0
+_md5_=cf55f31f04d6b33f86b087a79441bb14
