@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 if [[ ${PV} == 9999  ]]; then
 	GRUB_AUTORECONF=1
@@ -64,22 +64,7 @@ REQUIRED_USE="
 	grub_platforms_loongson? ( fonts )
 "
 
-# os-prober: Used on runtime to detect other OSes
-# xorriso (dev-libs/libisoburn): Used on runtime for mkrescue
-COMMON_DEPEND="
-	app-arch/xz-utils
-	>=sys-libs/ncurses-5.2-r5:0=
-	debug? (
-		sdl? ( media-libs/libsdl )
-	)
-	device-mapper? ( >=sys-fs/lvm2-2.02.45 )
-	libzfs? ( sys-fs/zfs )
-	mount? ( sys-fs/fuse:0 )
-	truetype? ( media-libs/freetype:2= )
-	ppc? ( >=sys-apps/ibm-powerpc-utils-1.3.5 )
-	ppc64? ( >=sys-apps/ibm-powerpc-utils-1.3.5 )
-"
-DEPEND="${COMMON_DEPEND}
+BDEPEND="
 	${PYTHON_DEPS}
 	app-misc/pax-utils
 	sys-devel/flex
@@ -89,17 +74,6 @@ DEPEND="${COMMON_DEPEND}
 	fonts? (
 		media-libs/freetype:2
 		virtual/pkgconfig
-	)
-	grub_platforms_xen? ( app-emulation/xen-tools:= )
-	grub_platforms_xen-32? ( app-emulation/xen-tools:= )
-	static? (
-		app-arch/xz-utils[static-libs(+)]
-		truetype? (
-			app-arch/bzip2[static-libs(+)]
-			media-libs/freetype[static-libs(+)]
-			sys-libs/zlib[static-libs(+)]
-			virtual/pkgconfig
-		)
 	)
 	test? (
 		app-admin/genromfs
@@ -117,6 +91,32 @@ DEPEND="${COMMON_DEPEND}
 		virtual/pkgconfig
 	)
 	truetype? ( virtual/pkgconfig )
+"
+COMMON_DEPEND="
+	app-arch/xz-utils
+	>=sys-libs/ncurses-5.2-r5:0=
+	debug? (
+		sdl? ( media-libs/libsdl )
+	)
+	device-mapper? ( >=sys-fs/lvm2-2.02.45 )
+	libzfs? ( sys-fs/zfs )
+	mount? ( sys-fs/fuse:0 )
+	truetype? ( media-libs/freetype:2= )
+	ppc? ( >=sys-apps/ibm-powerpc-utils-1.3.5 )
+	ppc64? ( >=sys-apps/ibm-powerpc-utils-1.3.5 )
+	grub_platforms_xen? ( app-emulation/xen-tools:= )
+	grub_platforms_xen-32? ( app-emulation/xen-tools:= )
+"
+DEPEND="${COMMON_DEPEND}
+	static? (
+		app-arch/xz-utils[static-libs(+)]
+		truetype? (
+			app-arch/bzip2[static-libs(+)]
+			media-libs/freetype[static-libs(+)]
+			sys-libs/zlib[static-libs(+)]
+			virtual/pkgconfig
+		)
+	)
 "
 RDEPEND="${COMMON_DEPEND}
 	kernel_linux? (
@@ -293,7 +293,7 @@ src_install() {
 	einstalldocs
 
 	if use multislot; then
-		mv "${ED%/}"/usr/share/info/grub{,2}.info || die
+		mv "${ED}"/usr/share/info/grub{,2}.info || die
 	fi
 
 	insinto /etc/default
