@@ -4369,9 +4369,6 @@ net-mail/notmuch:nmbug - Install experimental tag sharing / pseudo-bug-tracking 
 net-mail/notmuch:valgrind - Depend on dev-util/vagrind for test suite
 net-mail/offlineimap:sqlite - Enable runtime support for sqlite mail status backend.
 net-mail/qmailadmin:maildrop - Filter spam using maildrop
-net-mail/qpopper:apop - Enables the pop.auth file in /etc/pop.auth
-net-mail/qpopper:mailbox - Enables mail spool file is in home directory ~/Mailbox
-net-mail/uw-imap:clearpasswd - Enables cleartext logins outside of SSL sessions
 net-mail/vchkuser:debug - Enables debug messages to syslog
 net-mail/vpopmail:clearpasswd - Enables cleartext password storage in the vpasswd files
 net-mail/vpopmail:ipalias - Enables enable-ip-alias-domains

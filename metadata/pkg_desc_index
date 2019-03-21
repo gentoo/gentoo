@@ -7096,7 +7096,6 @@ mail-filter/dkimproxy 1.4.1: An SMTP proxy server for adding DKIM headers
 mail-filter/dspam 3.10.2-r1: A statistical-algorithmic hybrid anti-spam filter
 mail-filter/gld 1.7-r2: A standalone anti-spam greylisting algorithm on top of Postfix
 mail-filter/imapfilter 2.5.4 2.5.6: An IMAP mail filtering utility
-mail-filter/libdkim 1.0.21-r3: DomainKeys Identified Mail library from Alt-N Inc
 mail-filter/libmilter 1.0.2: The Sendmail Filter API (Milter)
 mail-filter/libsieve 2.2.7: A library for parsing, sorting and filtering your mail
 mail-filter/libspf2 1.2.9-r3 1.2.10: libspf2 implements the Sender Policy Framework, a part of the SPF/SRS protocols
@@ -8867,7 +8866,6 @@ net-mail/qmail-notify 0.93-r1: Delayed delivery notification for qmail
 net-mail/qmail-qfilter 2.1: qmail-queue multi-filter front end
 net-mail/qmailadmin 1.2.15-r1: A web interface for managing a qmail system with virtual domains
 net-mail/qmhandle 1.3.2: Qmail message queue tool
-net-mail/qpopper 4.1.0: A POP3 Server
 net-mail/qprint 1.1: MIME quoted-printable data encoding and decoding utility
 net-mail/queue-fix 1.4-r2: Qmail Queue Repair Application with support for big-todo
 net-mail/queue-repair 0.9.0-r1: A toolkit for dealing with the qmail queue directory structure
@@ -8881,9 +8879,6 @@ net-mail/smtptools 0.2.3: A collection of tools to send or receive mails with SM
 net-mail/swaks 20130209.0-r1: Swiss Army Knife SMTP; Command line SMTP testing, including TLS and AUTH
 net-mail/t-prot 3.4: TOFU protection - display filter for RFC822 messages
 net-mail/tnef 1.4.15: Decodes MS-TNEF MIME attachments
-net-mail/up-imapproxy 1.2.7: Proxy IMAP transactions between an IMAP client and an IMAP server
-net-mail/uw-imap 2007f 2007f-r1: UW server daemons for IMAP and POP network mail protocols
-net-mail/uw-mailutils 2007f: Mail utilities from the UW
 net-mail/vacation 1.2.7.0: automatic mail answering program
 net-mail/vchkuser 0.4: qmail-spp plugin to check recipient existance with vpopmail
 net-mail/vpopmail 5.4.33: Collection of programs to manage virtual email on Qmail servers
