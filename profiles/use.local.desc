@@ -4154,7 +4154,6 @@ net-irc/quassel:phonon - Build client with phonon backend support. This enables 
 net-irc/quassel:server - Build the server binary. If this USE flag is disabled, the 'core' server binary for quassel is not built, and cannot be used. You need this enabled on the server, but you might want to disable it on the client.
 net-irc/quassel:snorenotify - Support for Snore notification framework.
 net-irc/quassel:urlpreview - Use QtWebEngine rendering engine for showing URL thumbnails.
-net-irc/shadowircd:largenet - Enable support/tweaks for large networks
 net-irc/unrealircd:class-nofakelag - Enable an unsupported class::options flag called “nofakelag” allowing you to grant fakelag exemption to normal user (instead of just opers).
 net-irc/unrealircd:extban-stacking - Enable extended channel bans (such as +b ~c: and +b ~n:) to contain other extended bans instead of just hostmasks.
 net-irc/unrealircd:operoverride - Enable OperOverride extension

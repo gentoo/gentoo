@@ -7367,7 +7367,7 @@ media-gfx/fotoxx 15.05: Program for improving image files made with a digital ca
 media-gfx/freepv 0.3.0-r5: Panorama viewer (Quicktime, PangeaVR, GLPanoView formats)
 media-gfx/galleryadd 2.30: Perl script to recursively adds directories/images to Gallery
 media-gfx/geeqie 1.4-r1: A lightweight GTK image viewer forked from GQview
-media-gfx/gif2png 2.5.8 2.5.9: Converts images from gif format to png format
+media-gfx/gif2png 2.5.9: Converts images from gif format to png format
 media-gfx/gifsicle 1.91: Create, manipulate, and optimize GIF images and animations
 media-gfx/gimageview 0.2.27-r4: Powerful GTK+ based image & movie viewer
 media-gfx/gimp 2.8.22-r1: GNU Image Manipulation Program
@@ -8621,7 +8621,6 @@ net-ftp/weex 2.6.1.5-r1: Automates maintaining a web page or other FTP archive
 net-im/bitlbee 3.5.1: irc to IM gateway that support multiple IM protocols
 net-im/centerim 5.0.1: CenterIM is a ncurses ICQ/Yahoo!/AIM/IRC/MSN/Jabber/GaduGadu/RSS/LiveJournal Client
 net-im/choqok 1.6.0-r1: Free/Open Source micro-blogging client by KDE
-net-im/climm 0.7.1: ICQ text-mode client with many features
 net-im/dianara 1.3.7-r1: Qt-based client for the pump.io distributed social network
 net-im/ejabberd 17.04-r2: Robust, scalable and extensible XMPP server
 net-im/empathy 3.12.14: Telepathy instant messaging and video/audio call client for GNOME
@@ -8672,7 +8671,6 @@ net-irc/polari 3.24.2: An IRC client for Gnome
 net-irc/quassel 0.12.5-r2: Qt/KDE IRC client supporting a remote daemon for 24/7 connectivity
 net-irc/rhapsody 0.28b: IRC client intended to be displayed on a text console
 net-irc/scrollz 2.2.1: Advanced IRC client based on ircII
-net-irc/shadowircd 6.3.3-r1: An IRCd based on charybdis that adds several useful features
 net-irc/sic 1.2-r1: An extremly simple IRC client
 net-irc/telepathy-idle 0.2.0: Full-featured IRC connection manager for Telepathy
 net-irc/unrealircd 4.0.18-r1: An advanced Internet Relay Chat daemon
