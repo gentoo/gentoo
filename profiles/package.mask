@@ -59,6 +59,7 @@ x11-libs/hippo-canvas
 # dev-util/skipfish: #675124, last upstream commit in 2012
 # dev-util/wsta: #674004, no fix upstream, also #631610, #674526
 # games-util/gtkevemon: #675988, upstream API shut down
+# mail-filter/libdkim: #674892, no revdeps, last release in 2010
 # net-analyzer/bro: #675014, needs bump, current version is from 2015
 # net-analyzer/ffp: #674244, dead homepage, current version added 2005
 # net-im/ayttm: #676242, last commits in 2011 (+ one secfix in 2015)
@@ -66,6 +67,10 @@ x11-libs/hippo-canvas
 # net-irc/bip: #674240, may need new snapshot, current ver is from 2013
 # net-irc/epic4: #677734, needs bump, current is from 2009, also #613120
 # net-irc/shadowircd:  #674528, dead homepage, last commits in 2012
+# net-mail/qpopper: #674896, discontinued, from 2011, also #541996
+# net-mail/up-imapproxy: #674234, last commits in 2016, also #643898
+# net-mail/uw-imap: #678606, last upstream release in 2011
+# net-mail/uw-mailutils: #674174, same as uw-imap
 # net-misc/sslwrap: #674524, last updated upstream in 2000
 # net-misc/stone: #675612, needs new snapshot, current ver is from 2008
 # net-misc/tn5250: #678684, last commits in 2012
@@ -77,6 +82,7 @@ app-crypt/keynote
 dev-util/skipfish
 dev-util/wsta
 games-util/gtkevemon
+mail-filter/libdkim
 net-analyzer/bro
 net-analyzer/ffp
 net-im/ayttm
@@ -84,6 +90,10 @@ net-im/climm
 net-irc/bip
 net-irc/epic4
 net-irc/shadowircd
+net-mail/qpopper
+net-mail/up-imapproxy
+net-mail/uw-imap
+net-mail/uw-mailutils
 net-misc/sslwrap
 net-misc/stone
 net-misc/tn5250
