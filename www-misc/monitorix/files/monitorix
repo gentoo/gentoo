@@ -1,0 +1,30 @@
+#!/sbin/openrc-run
+# Copyright 1999-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+name="Monitorix"
+description="Monitorix is a lightweight system monitoring tool"
+command=/usr/sbin/monitorix
+command_args="-c /etc/monitorix/monitorix.conf -p /var/run/$name.pid"
+pidfile=/var/run/monitorix.pid
+
+checkconfig() {
+    if [[ ! -e /etc/monitorix/monitorix.conf ]]; then
+        eerror "Please check that the configuration file exists."
+        return 1
+    fi
+}
+
+start() {
+    checkconfig || return 1
+    ebegin "Starting $name"
+    start-stop-daemon --start --name $name --pidfile /var/run/$name.pid --exec $command -- $command_args
+    eend $?
+}
+
+stop() {
+    ebegin "Stopping $name"
+    start-stop-daemon --stop --pidfile /var/run/$name.pid
+    eend $?
+}
+
