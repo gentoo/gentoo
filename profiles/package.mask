@@ -33,8 +33,10 @@
 # Not really maintained anymore.  Last upstream release is from 2015.
 # Fails to build against modern versions of app-crypt/mit-krb5, may have
 # more hidden issues.  It is probably time to move to net-print/cups.
+# net-print/magicfilter is the only reverse dependency (from 2011).
 # Removal in 30 days.  Bug #496922.
 net-print/lprng
+net-print/magicfilter
 
 # Michał Górny <mgorny@gentoo.org> (21 Mar 2019)
 # Fails to build on modern systems.  Really bad quality ebuild (#670524)
