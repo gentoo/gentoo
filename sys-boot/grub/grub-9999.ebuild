@@ -52,7 +52,7 @@ HOMEPAGE="https://www.gnu.org/software/grub/"
 # Includes licenses for dejavu and unifont
 LICENSE="GPL-3 fonts? ( GPL-2-with-font-exception ) themes? ( BitstreamVera )"
 SLOT="2/${PVR}"
-IUSE="debug device-mapper doc efiemu +fonts mount multislot nls static sdl test +themes truetype libzfs"
+IUSE="debug device-mapper doc efiemu +fonts mount nls static sdl test +themes truetype libzfs"
 
 GRUB_ALL_PLATFORMS=( coreboot efi-32 efi-64 emu ieee1275 loongson multiboot qemu qemu-mips pc uboot xen xen-32 )
 IUSE+=" ${GRUB_ALL_PLATFORMS[@]/#/grub_platforms_}"
@@ -123,7 +123,7 @@ RDEPEND="${COMMON_DEPEND}
 		grub_platforms_efi-32? ( sys-boot/efibootmgr )
 		grub_platforms_efi-64? ( sys-boot/efibootmgr )
 	)
-	!multislot? ( !sys-boot/grub:0 !sys-boot/grub-static )
+	!sys-boot/grub:0 !sys-boot/grub-static
 	nls? ( sys-devel/gettext )
 "
 
@@ -149,11 +149,6 @@ src_prepare() {
 	default
 
 	sed -i -e /autoreconf/d autogen.sh || die
-
-	if use multislot; then
-		# fix texinfo file name, bug 416035
-		sed -i -e 's/^\* GRUB:/* GRUB2:/' -e 's/(grub)/(grub2)/' docs/grub.texi || die
-	fi
 
 	# Nothing in Gentoo packages 'american-english' in the exact path
 	# wanted for the test, but all that is needed is a compressible text
@@ -229,10 +224,6 @@ grub_configure() {
 		$(usex efiemu '' '--disable-efiemu')
 	)
 
-	if use multislot; then
-		myeconfargs+=( --program-transform-name="s,grub,grub2," )
-	fi
-
 	# Set up font symlinks
 	ln -s "${WORKDIR}/${UNIFONT}.pcf" unifont.pcf || die
 	if use themes; then
@@ -291,10 +282,6 @@ src_install() {
 	use doc && grub_do_once emake -C docs install-html DESTDIR="${D}"
 
 	einstalldocs
-
-	if use multislot; then
-		mv "${ED}"/usr/share/info/grub{,2}.info || die
-	fi
 
 	insinto /etc/default
 	newins "${FILESDIR}"/grub.default-3 grub
