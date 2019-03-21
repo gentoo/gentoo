@@ -136,11 +136,12 @@ QA_MULTILIB_PATHS="usr/lib/grub/.*"
 src_unpack() {
 	if [[ ${PV} == 9999 ]]; then
 		git-r3_src_unpack
-		cd "${P}" || die
+		pushd "${P}" >/dev/null || die
 		local GNULIB_URI="https://git.savannah.gnu.org/git/gnulib.git"
 		local GNULIB_REVISION=$(source bootstrap.conf >/dev/null; echo "${GNULIB_REVISION}")
 		git-r3_fetch "${GNULIB_URI}" "${GNULIB_REVISION}"
 		git-r3_checkout "${GNULIB_URI}" gnulib
+		popd >/dev/null || die
 	fi
 	default
 }
@@ -224,10 +225,12 @@ grub_configure() {
 		$(usex efiemu '' '--disable-efiemu')
 	)
 
-	# Set up font symlinks
-	mv "${WORKDIR}/${UNIFONT}.pcf" unifont.pcf || die
+	if use fonts; then
+		ln -rs "${WORKDIR}/${UNIFONT}.pcf" unifont.pcf || die
+	fi
+
 	if use themes; then
-		mv "${WORKDIR}/${DEJAVU}/ttf/DejaVuSans.ttf" DejaVuSans.ttf || die
+		ln -rs "${WORKDIR}/${DEJAVU}/ttf/DejaVuSans.ttf" DejaVuSans.ttf || die
 	fi
 
 	local ECONF_SOURCE="${S}"
