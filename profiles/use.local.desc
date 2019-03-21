@@ -2375,6 +2375,7 @@ kde-apps/kio-extras:phonon - Enable file audio preview plugin using media-libs/p
 kde-apps/kio-extras:sftp - Enable SFTP protocol support using net-libs/libssh
 kde-apps/kio-extras:taglib - Enable audio thumbnails via media-libs/taglib
 kde-apps/kmag:keyboardfocus - Enable keyboard focus tracking
+kde-apps/knights:speech - Enable text-to-speech support
 kde-apps/konqueror:activities - Enable kactivities support
 kde-apps/konqueror:speech - Build text-to-speech plugin
 kde-apps/konqueror:webengine - Enable dev-qt/qtwebengine as web browser engine (fallback is kde-misc/kwebkitpart)
