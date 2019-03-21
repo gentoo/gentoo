@@ -128,7 +128,6 @@ src_install() {
 		for tool in "maildirmake" "deliverquota"; do
 			rm "${D}/usr/bin/${tool}" || die
 			rm "${D}/usr/share/man/man"[0-9]"/${tool}."[0-9] || die
-			rm "${D}/usr/share/maildrop/html/${tool}.html" || die
 		done
 		rm "${D}/usr/share/man/man5/maildir.5" || die
 	fi
