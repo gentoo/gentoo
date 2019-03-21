@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer restrict="&gt;=media-gfx/blender-2.77" type="person">
+	<maintainer type="person">
 		<email>dracwyrm@gentoo.org</email>
 		<name>Jonathan Scruggs</name>
 	</maintainer>
-	<maintainer restrict="&gt;=media-gfx/blender-2.77" type="person">
+	<maintainer type="person">
 		<email>agrigo2001@yahoo.com.au</email>
 		<name>Adrian Grigo</name>
 	</maintainer>
@@ -20,9 +20,6 @@
 	</longdescription>
 
 	<use>
-		<flag name="boost">
-			Enable features depending on boost.
-		</flag>
 		<flag name="bullet">
 			Enable Bullet (Physics Engine).
 		</flag>
@@ -50,49 +47,42 @@
 		<flag name="elbeem">
 			Adds surface fluid simulation to Blender using El'Beem library.
 		</flag>
-		<flag name="game-engine" restrict="&gt;=media-gfx/blender-2.50">
+		<flag name="game-engine">
 			Adds Game Engine support to Blender.
 		</flag>
-		<flag name="headless" restrict="&gt;=media-gfx/blender-2.77">
+		<flag name="headless">
 			Build without graphical support (renderfarm, server mode only).
 		</flag>
-		<flag name="llvm" restrict="&gt;=media-gfx/blender-2.77">
+		<flag name="llvm">
 			Enable features depending on llvm.
 		</flag>
-		<flag name="man" restrict="&gt;=media-gfx/blender-2.77">
+		<flag name="man">
 			Build and install man pages.
 		</flag>
 		<flag name="ndof">
 			Enable NDOF input devices (SpaceNavigator and friends).
 		</flag>
-		<flag name="opencl" restrict="&lt;=media-gfx/blender-2.79">
+		<flag name="opencl">
 			Allow OpenCL Graphics Acceleration. This may
 			require extra graphics card drivers.</flag>
 		<flag name="openimageio">Enable OpenImageIO Support</flag>
-		<flag name="opennl" restrict="&lt;=media-gfx/blender-2.73">
-			Enable use of Open Numerical Library
-		</flag>
-		<flag name="opensubdiv" restrict="&gt;=media-gfx/blender-2.77">
+		<flag name="opensubdiv">
 			Add rendering support form OpenSubdiv from Dreamworks Animation
 			through <pkg>media-libs/opensubdiv</pkg>.
 		</flag>
-		<flag name="openvdb" restrict="&gt;=media-gfx/blender-2.77">
+		<flag name="openvdb">
 			Add GPU preview rendering. Only works with nVidia cards.
 		</flag>
-		<flag name="osl" restrict="&gt;=media-gfx/blender-2.79">
+		<flag name="osl">
 			Add support for OpenShadingLanguage scripting.
 		</flag>
 		<flag name="player">
 			Build the Blender Player. THis requires the Game engine.
 		</flag>
-		<flag name="redcode" restrict="&lt;=media-gfx/blender-2.73">
-			This flag add support for RED CODE camera digital format (5K HD
-			images *.r3d) - EXPERIMENTAL.
-		</flag>
-		<flag name="test" restrict="&gt;=media-gfx/blender-2.77">
+		<flag name="test">
 			Build the provided unit tests.
 		</flag>
-		<flag name="valgrind" restrict="&gt;=media-gfx/blender-2.77">
+		<flag name="valgrind">
 			Add support for memory debugging using
 			<pkg>dev-util/valgrind</pkg>
 		</flag>
