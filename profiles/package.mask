@@ -30,6 +30,23 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (21 Mar 2019)
+# The following packages are unmaintained and fail to build against
+# openssl-1.1+.
+#
+# dev-util/wsta: #674004, no fix upstream, also #631610, #674526
+# net-analyzer/ffp: #674244, dead homepage, current version added 2005
+# net-im/climm: #674160, dead homepage, last commits in 2010
+# net-irc/shadowircd:  #674528, dead homepage, last commits in 2012
+# net-misc/sslwrap: #674524, last updated upstream in 2000
+#
+# Removal in 30 days.
+dev-util/wsta
+net-analyzer/ffp
+net-im/climm
+net-irc/shadowircd
+net-misc/sslwrap
+
+# Michał Górny <mgorny@gentoo.org> (21 Mar 2019)
 # Last release in 2010.  No reverse dependencies.  No maintainer.
 # Apparently bundles libraries.
 # Removal in 30 days.  Bug #252500.
