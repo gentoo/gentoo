@@ -45,3 +45,4 @@ sys-apps/dbus-broker
 app-admin/gnome-abrt
 >=dev-libs/libreport-2.9
 games-util/gamemode
+gnome-extra/gnome-user-share
