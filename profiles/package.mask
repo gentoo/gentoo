@@ -30,6 +30,12 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (21 Mar 2019)
+# Upstream EOL-ed Python 3.4 on 2019-03-19.  The last release fails
+# to build against openssl-1.1+.
+# Removal in 30 days.  Bug #673960.
+=dev-lang/python-3.4*
+
+# Michał Górny <mgorny@gentoo.org> (21 Mar 2019)
 # Not really maintained anymore.  Last upstream release is from 2015.
 # Fails to build against modern versions of app-crypt/mit-krb5, may have
 # more hidden issues.  It is probably time to move to net-print/cups.
