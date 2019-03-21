@@ -165,7 +165,7 @@ src_compile() {
 src_install() {
 	installation() {
 		local tmp_root=${D}/${PN}_tmp_root
-		# parallel install fails (same issue as qscintilla-python-2.10.8)
+		# parallel install fails because mk_distinfo.py runs too early
 		emake -j1 INSTALL_ROOT="${tmp_root}" install
 
 		local bin_dir=${tmp_root}${EPREFIX}/usr/bin

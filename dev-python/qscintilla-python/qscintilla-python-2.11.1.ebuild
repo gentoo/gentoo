@@ -10,11 +10,11 @@ MY_P=QScintilla_gpl-${PV/_pre/.dev}
 
 DESCRIPTION="Python bindings for QScintilla"
 HOMEPAGE="https://www.riverbankcomputing.com/software/qscintilla/intro"
-SRC_URI="mirror://sourceforge/pyqt/${MY_P}.tar.gz"
+SRC_URI="https://www.riverbankcomputing.com/static/Downloads/QScintilla/${MY_P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~ppc64 x86"
+KEYWORDS="~amd64 ~ppc64 ~x86"
 IUSE="debug"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
@@ -48,7 +48,6 @@ src_configure() {
 			--sip-incdir="$(python_get_includedir)"
 			$(usex debug '--debug --trace' '')
 			--verbose
-			--no-dist-info # causes parallel build failures, reported upstream
 		)
 		echo "${myconf[@]}"
 		"${myconf[@]}" || die
@@ -65,7 +64,8 @@ src_compile() {
 
 src_install() {
 	installation() {
-		emake INSTALL_ROOT="${D}" install
+		# parallel install fails because mk_distinfo.py runs too early
+		emake -j1 INSTALL_ROOT="${D}" install
 		python_optimize
 	}
 	python_foreach_impl run_in_build_dir installation
