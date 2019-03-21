@@ -1,10 +1,6 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Michał Górny <mgorny@gentoo.org> (20 Mar 2019)
-# sci-mathematics/z3 is not keyworded here.
-sys-devel/clang z3
-
 # Roy Bamford <neddyseagoon@gentoo.org> (19 Mar 2019)
 # Let kde-apps/akonadi use mysql.
 dev-qt/qtsql -mysql
