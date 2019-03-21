@@ -26,9 +26,9 @@ SLOT="0"
 
 CPU_FLAGS_X86=(sse{,2,3,4_1,4_2} ssse3)
 
-IUSE="babeltrace cephfs dpdk fuse grafana jemalloc kerberos ldap lttng +mgr"
-IUSE+=" numa rabbitmq +radosgw +ssl static-libs +system-boost systemd"
-IUSE+=" +tcmalloc test xfs zfs"
+IUSE="babeltrace cephfs dpdk fuse grafana jemalloc kerberos ldap libressl"
+IUSE+=" lttng +mgr numa rabbitmq +radosgw +ssl static-libs +system-boost"
+IUSE+=" systemd +tcmalloc test xfs zfs"
 IUSE+=" $(printf "cpu_flags_x86_%s\n" ${CPU_FLAGS_X86[@]})"
 
 COMMON_DEPEND="
@@ -54,13 +54,22 @@ COMMON_DEPEND="
 	fuse? ( sys-fs/fuse:0=[static-libs?] )
 	kerberos? ( virtual/krb5 )
 	rabbitmq? ( net-libs/rabbitmq-c:=[static-libs?] )
-	ssl? ( dev-libs/openssl:=[static-libs?] )
+	ssl? (
+		!libressl? ( dev-libs/openssl:=[static-libs?] )
+		libressl? ( dev-libs/libressl:=[static-libs?] )
+	)
 	xfs? ( sys-fs/xfsprogs:=[static-libs?] )
 	zfs? ( sys-fs/zfs:=[static-libs?] )
 	radosgw? (
 		dev-libs/expat:=[static-libs?]
-		dev-libs/openssl:=[static-libs?]
-		net-misc/curl:=[curl_ssl_openssl,static-libs?]
+		!libressl? (
+			dev-libs/openssl:=[static-libs?]
+			net-misc/curl:=[curl_ssl_openssl,static-libs?]
+		)
+		libressl? (
+			dev-libs/libressl:=[static-libs?]
+			net-misc/curl:=[curl_ssl_libressl,static-libs?]
+		)
 	)
 	system-boost? (
 		>=dev-libs/boost-1.67:=[threads,context,python,static-libs?,${PYTHON_USEDEP}]
