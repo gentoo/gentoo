@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (21 Mar 2019)
+# Last release in 2010.  No reverse dependencies.  No maintainer.
+# Apparently bundles libraries.
+# Removal in 30 days.  Bug #252500.
+dev-util/synopsis
+
 # Michał Górny <mgorny@gentoo.org> (20 Mar 2019)
 # Unmaintained since 2015, with occasional uncoordinated updates
 # by varying developers.  The current version is outdated, and fails
