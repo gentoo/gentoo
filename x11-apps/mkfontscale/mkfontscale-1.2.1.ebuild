@@ -3,7 +3,6 @@
 
 EAPI=7
 
-XORG_EAUTORECONF="yes"
 inherit xorg-3
 
 DESCRIPTION="create an index of scalable font files for X"
@@ -20,10 +19,6 @@ DEPEND="${COMMON_DEPEND}
 	x11-base/xorg-proto"
 RDEPEND="${COMMON_DEPEND}
 	!<x11-apps/mkfontdir-1.2.0"
-
-PATCHES=(
-	"${FILESDIR}"/${P}-Revert-Use-autoconf-instead-of-sed-to-substitute-bin.patch
-)
 
 XORG_CONFIGURE_OPTIONS=(
 	--with-bzip2
