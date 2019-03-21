@@ -20,7 +20,8 @@ RDEPEND="
 	crypt? ( dev-libs/libgcrypt:0= )
 	introspection? ( >=dev-libs/gobject-introspection-1.54:= )
 "
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	dev-util/glib-utils
 	gtk-doc? (
 		>=dev-util/gtk-doc-1.14
