@@ -324,7 +324,7 @@ src_install() {
 
 	# python_fix_shebang apparently is not idempotent
 	sed -i -r  's:(/usr/lib/python-exec/python[0-9]\.[0-9]/python)[0-9]\.[0-9]:\1:' \
-		"${ED}"/usr/sbin/{mount.fuse.ceph,ceph-volume{,-systemd}} || die "sed failed"
+		"${ED}"/usr/sbin/{mount.*,ceph-volume{,-systemd}} || die "sed failed"
 }
 
 pkg_postinst() {
