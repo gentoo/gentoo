@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,6 +6,7 @@ EAPI=6
 if [[ ${PV} == 9999  ]]; then
 	GRUB_AUTOGEN=1
 	GRUB_AUTORECONF=1
+	GRUB_BOOTSTRAP=1
 fi
 
 if [[ -n ${GRUB_AUTOGEN} ]]; then
@@ -136,6 +137,11 @@ QA_MULTILIB_PATHS="usr/lib/grub/.*"
 src_unpack() {
 	if [[ ${PV} == 9999 ]]; then
 		git-r3_src_unpack
+		cd "${P}" || die
+		local GNULIB_URI="https://git.savannah.gnu.org/git/gnulib.git"
+		local GNULIB_REVISION=$(source bootstrap.conf; echo "${GNULIB_REVISION}")
+		git-r3_fetch "${GNULIB_URI}" "${GNULIB_REVISION}"
+		git-r3_checkout "${GNULIB_URI}" gnulib
 	fi
 	default
 }
@@ -160,11 +166,15 @@ src_prepare() {
 
 	if [[ -n ${GRUB_AUTOGEN} ]]; then
 		python_setup
-		bash autogen.sh || die
+		if [[ -n ${GRUB_BOOTSTRAP} ]]; then
+			eautopoint --force
+			AUTOPOINT=: AUTORECONF=: ./bootstrap || die
+		else
+			./autogen.sh || die
+		fi
 	fi
 
 	if [[ -n ${GRUB_AUTORECONF} ]]; then
-		autopoint() { :; }
 		eautoreconf
 	fi
 }
