@@ -5,8 +5,6 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 python3_{5,6,7} pypy )
 
-LLVM_MAX_SLOT=8
-
 inherit check-reqs eapi7-ver estack flag-o-matic llvm multiprocessing multilib-build python-any-r1 rust-toolchain toolchain-funcs
 
 if [[ ${PV} = *beta* ]]; then
@@ -40,13 +38,34 @@ LICENSE="|| ( MIT Apache-2.0 ) BSD-1 BSD-2 BSD-4 UoI-NCSA"
 
 IUSE="clippy cpu_flags_x86_sse2 debug doc libressl rls rustfmt system-llvm wasm ${ALL_LLVM_TARGETS[*]}"
 
-COMMON_DEPEND="sys-libs/zlib
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:0= )
-		net-libs/libssh2
-		net-libs/http-parser:=
-		net-misc/curl[ssl]
-		system-llvm? ( >=sys-devel/llvm-7:= )"
+# Please keep the LLVM dependency block separate. Since LLVM is slotted,
+# we need to *really* make sure we're not pulling one than more slot
+# simultaneously.
+
+# How to use it:
+# 1. List all the working slots (with min versions) in ||, newest first.
+# 2. Update the := to specify *max* version, e.g. < 8.
+# 3. Specify LLVM_MAX_SLOT, e.g. 7.
+LLVM_DEPEND="
+	|| (
+		sys-devel/llvm:7
+	)
+	<sys-devel/llvm-8:=
+"
+LLVM_MAX_SLOT=7
+
+COMMON_DEPEND="
+	sys-libs/zlib
+	!libressl? ( dev-libs/openssl:0= )
+	libressl? ( dev-libs/libressl:0= )
+	net-libs/libssh2
+	net-libs/http-parser:=
+	net-misc/curl[ssl]
+	system-llvm? (
+		${LLVM_DEPEND}
+	)
+"
+
 DEPEND="${COMMON_DEPEND}
 	${PYTHON_DEPS}
 	|| (
@@ -91,9 +110,7 @@ pkg_pretend() {
 pkg_setup() {
 	pre_build_checks
 	python-any-r1_pkg_setup
-	if use system-llvm; then
-		llvm_pkg_setup
-	fi
+	use system-llvm && llvm_pkg_setup
 }
 
 src_prepare() {
