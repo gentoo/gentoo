@@ -4,12 +4,11 @@
 EAPI=6
 
 if [[ ${PV} == 9999  ]]; then
-	GRUB_AUTOGEN=1
 	GRUB_AUTORECONF=1
 	GRUB_BOOTSTRAP=1
 fi
 
-if [[ -n ${GRUB_AUTOGEN} ]]; then
+if [[ -n ${GRUB_AUTOGEN} || -n ${GRUB_BOOTSTRAP} ]]; then
 	PYTHON_COMPAT=( python{2_7,3_3,3_4,3_5,3_6} )
 	inherit python-any-r1
 fi
@@ -164,14 +163,15 @@ src_prepare() {
 		tests/util/grub-fs-tester.in \
 		|| die
 
-	if [[ -n ${GRUB_AUTOGEN} ]]; then
+	if [[ -n ${GRUB_AUTOGEN} || -n ${GRUB_BOOTSTRAP} ]]; then
 		python_setup
-		if [[ -n ${GRUB_BOOTSTRAP} ]]; then
-			eautopoint --force
-			AUTOPOINT=: AUTORECONF=: ./bootstrap || die
-		else
-			./autogen.sh || die
-		fi
+	fi
+
+	if [[ -n ${GRUB_BOOTSTRAP} ]]; then
+		eautopoint --force
+		AUTOPOINT=: AUTORECONF=: ./bootstrap || die
+	elif [[ -n ${GRUB_AUTOGEN} ]]; then
+		./autogen.sh || die
 	fi
 
 	if [[ -n ${GRUB_AUTORECONF} ]]; then
