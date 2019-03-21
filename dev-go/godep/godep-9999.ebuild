@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -22,7 +22,12 @@ IUSE=""
 DEPEND=""
 RDEPEND=""
 
+src_compile() {
+	export -n GOCACHE XDG_CACHE_HOME #681204
+	golang-build_src_compile
+}
+
 src_install() {
 	dobin godep
-dodoc src/${EGO_PN}/*.md
+	dodoc src/${EGO_PN}/*.md
 }
