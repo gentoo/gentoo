@@ -7,6 +7,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Michał Górny <mgorny@gentoo.org> (21 Mar 2019)
+# net-mail/uw-imap masked for removal.
+dev-perl/NetxAP test
+
 # Michał Górny <mgorny@gentoo.org> (16 Mar 2019)
 # Requires last rited dev-python/scimath.
 dev-python/construct python_targets_python2_7
