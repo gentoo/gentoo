@@ -42,7 +42,7 @@ PATCHES=(
 )
 
 DEJAVU=dejavu-sans-ttf-2.37
-UNIFONT=unifont-9.0.06
+UNIFONT=unifont-12.0.01
 SRC_URI+=" fonts? ( mirror://gnu/unifont/${UNIFONT}/${UNIFONT}.pcf.gz )
 	themes? ( mirror://sourceforge/dejavu/${DEJAVU}.zip )"
 
@@ -225,9 +225,9 @@ grub_configure() {
 	)
 
 	# Set up font symlinks
-	ln -s "${WORKDIR}/${UNIFONT}.pcf" unifont.pcf || die
+	mv "${WORKDIR}/${UNIFONT}.pcf" unifont.pcf || die
 	if use themes; then
-		ln -s "${WORKDIR}/${DEJAVU}/ttf/DejaVuSans.ttf" DejaVuSans.ttf || die
+		mv "${WORKDIR}/${DEJAVU}/ttf/DejaVuSans.ttf" DejaVuSans.ttf || die
 	fi
 
 	local ECONF_SOURCE="${S}"
