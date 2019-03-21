@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
@@ -6,7 +6,7 @@ EAPI=4
 inherit eutils
 
 DESCRIPTION="A dockapp for keeping small notes around on the desktop"
-HOMEPAGE="http://wmstickynotes.sourceforge.net/"
+HOMEPAGE="https://sourceforge.net/projects/wmstickynotes/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"
