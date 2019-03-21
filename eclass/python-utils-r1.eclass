@@ -60,6 +60,18 @@ readonly _PYTHON_ALL_IMPLS
 # which can involve revisions of this eclass that support a different
 # set of Python implementations.
 
+# @ECLASS-VARIABLE: PYTHON_COMPAT_ALLOW_EMPTY
+# @INTERNAL
+# @DESCRIPTION:
+# Set to a non-empty value in order to make eclass tolerate PYTHON_COMPAT
+# having no supported implementations in the depend phase.
+#
+# This is intended to be set by the user when using ebuilds that may
+# have unknown (newer) implementations in PYTHON_COMPAT. The assumption
+# is that the ebuilds are intended to be used within multiple contexts
+# which can involve revisions of this eclass that support a different
+# set of Python implementations.
+
 # @FUNCTION: _python_impl_supported
 # @USAGE: <impl>
 # @INTERNAL
@@ -139,6 +151,9 @@ _python_set_impls() {
 	done
 
 	if [[ ! ${supp[@]} ]]; then
+		[[ ${EBUILD_PHASE} == "depend" && -n ${PYTHON_COMPAT_ALLOW_EMPTY} ]] && \
+			return 1
+
 		die "No supported implementation in PYTHON_COMPAT."
 	fi
 
