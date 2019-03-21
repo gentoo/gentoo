@@ -138,7 +138,7 @@ src_unpack() {
 		git-r3_src_unpack
 		cd "${P}" || die
 		local GNULIB_URI="https://git.savannah.gnu.org/git/gnulib.git"
-		local GNULIB_REVISION=$(source bootstrap.conf; echo "${GNULIB_REVISION}")
+		local GNULIB_REVISION=$(source bootstrap.conf >/dev/null; echo "${GNULIB_REVISION}")
 		git-r3_fetch "${GNULIB_URI}" "${GNULIB_REVISION}"
 		git-r3_checkout "${GNULIB_URI}" gnulib
 	fi
