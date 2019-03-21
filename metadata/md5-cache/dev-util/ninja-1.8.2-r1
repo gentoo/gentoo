@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile install postinst postrm setup test
-DEPEND=|| ( dev-lang/python:3.6 dev-lang/python:3.5 dev-lang/python:3.4 >=dev-lang/python-2.7.5-r2:2.7 ) dev-util/re2c doc? ( app-text/asciidoc app-doc/doxygen dev-libs/libxslt ) test? ( dev-cpp/gtest )
+DEPEND=|| ( dev-lang/python:3.6 dev-lang/python:3.5 >=dev-lang/python-2.7.5-r2:2.7 ) dev-util/re2c doc? ( app-text/asciidoc app-doc/doxygen dev-libs/libxslt ) test? ( dev-cpp/gtest )
 DESCRIPTION=A small build system similar to make
 EAPI=6
 HOMEPAGE=https://ninja-build.org/
@@ -9,5 +9,5 @@ LICENSE=Apache-2.0
 RDEPEND=emacs? ( virtual/emacs ) vim-syntax? ( || ( app-editors/vim app-editors/gvim ) ) !<net-irc/ninja-1.5.9_pre14-r1
 SLOT=0
 SRC_URI=https://github.com/Kitware/ninja/archive/v1.8.2.g3bbbe.kitware.dyndep-1.jobserver-1.tar.gz -> ninja-1.8.2.g3bbbe.kitware.dyndep-1.jobserver-1.tar.gz
-_eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	elisp-common	23f47b2e1de7abf387105eddd1318738	multilib	b2f01ad412baf81650c23fcf0975fa33	python-any-r1	4900ae970f827a22d33d41bd8b8f9ace	python-utils-r1	12114a2a9aab35b93efc037a196b3234	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
+_eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	elisp-common	23f47b2e1de7abf387105eddd1318738	multilib	b2f01ad412baf81650c23fcf0975fa33	python-any-r1	4900ae970f827a22d33d41bd8b8f9ace	python-utils-r1	08e17157a6807add7db1f8d01e7e391f	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
 _md5_=0c6a20f6ac370de6da7500977c00a775

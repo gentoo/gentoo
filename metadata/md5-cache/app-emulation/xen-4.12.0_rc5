@@ -10,5 +10,5 @@ REQUIRED_USE=arm? ( debug )
 RESTRICT=test splitdebug strip
 SLOT=0
 SRC_URI=https://downloads.xenproject.org/release/xen/4.12.0-rc5/xen-4.12.0-rc5.tar.gz
-_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	a09389deba2c0a7108b581e02c7cecbf	mount-boot	1e82d96b7a7dcb483b412497a90bb646	multilib	b2f01ad412baf81650c23fcf0975fa33	python-any-r1	4900ae970f827a22d33d41bd8b8f9ace	python-utils-r1	12114a2a9aab35b93efc037a196b3234	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
+_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	a09389deba2c0a7108b581e02c7cecbf	mount-boot	1e82d96b7a7dcb483b412497a90bb646	multilib	b2f01ad412baf81650c23fcf0975fa33	python-any-r1	4900ae970f827a22d33d41bd8b8f9ace	python-utils-r1	08e17157a6807add7db1f8d01e7e391f	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
 _md5_=f6a6aa93ca16a3df219a9405200e3926

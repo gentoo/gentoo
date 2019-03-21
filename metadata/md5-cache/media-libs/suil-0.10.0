@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install prepare setup
-DEPEND=>=media-libs/lv2-1.12.0 gtk? ( x11-libs/gtk+:2 ) qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 ) || ( dev-lang/python:3.6[threads(+)] dev-lang/python:3.5[threads(+)] dev-lang/python:3.4[threads(+)] >=dev-lang/python-2.7.5-r2:2.7[threads(+)] ) doc? ( app-doc/doxygen ) virtual/pkgconfig
+DEPEND=>=media-libs/lv2-1.12.0 gtk? ( x11-libs/gtk+:2 ) qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 ) || ( dev-lang/python:3.6[threads(+)] dev-lang/python:3.5[threads(+)] >=dev-lang/python-2.7.5-r2:2.7[threads(+)] ) doc? ( app-doc/doxygen ) virtual/pkgconfig
 DESCRIPTION=Lightweight C library for loading and wrapping LV2 plugin UIs
 EAPI=6
 HOMEPAGE=http://drobilla.net/software/suil/
@@ -9,5 +9,5 @@ LICENSE=ISC
 RDEPEND=>=media-libs/lv2-1.12.0 gtk? ( x11-libs/gtk+:2 ) qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 )
 SLOT=0
 SRC_URI=http://download.drobilla.net/suil-0.10.0.tar.bz2
-_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	a09389deba2c0a7108b581e02c7cecbf	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	b2f01ad412baf81650c23fcf0975fa33	multiprocessing	cac3169468f893670dac3e7cb940e045	preserve-libs	ef207dc62baddfddfd39a164d9797648	python-any-r1	4900ae970f827a22d33d41bd8b8f9ace	python-utils-r1	12114a2a9aab35b93efc037a196b3234	toolchain-funcs	b45201c4e6c096b98e250336954e64b9	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	waf-utils	1fab5379519d4b71bff5790435a71986
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	a09389deba2c0a7108b581e02c7cecbf	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	b2f01ad412baf81650c23fcf0975fa33	multiprocessing	cac3169468f893670dac3e7cb940e045	preserve-libs	ef207dc62baddfddfd39a164d9797648	python-any-r1	4900ae970f827a22d33d41bd8b8f9ace	python-utils-r1	08e17157a6807add7db1f8d01e7e391f	toolchain-funcs	b45201c4e6c096b98e250336954e64b9	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	waf-utils	1fab5379519d4b71bff5790435a71986
 _md5_=66840644042f5fa1fb94b89e19ac35b0

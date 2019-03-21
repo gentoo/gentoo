@@ -10,5 +10,5 @@ RDEPEND=>=app-text/djvu-3.5.21:= >=app-text/poppler-0.16.7:= dev-libs/libxml2:= 
 REQUIRED_USE=test? ( graphicsmagick )
 SLOT=0
 SRC_URI=https://github.com/jwilk/pdf2djvu/releases/download/0.9.12/pdf2djvu-0.9.12.tar.xz
-_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	a09389deba2c0a7108b581e02c7cecbf	multilib	b2f01ad412baf81650c23fcf0975fa33	python-any-r1	4900ae970f827a22d33d41bd8b8f9ace	python-utils-r1	12114a2a9aab35b93efc037a196b3234	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
+_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	a09389deba2c0a7108b581e02c7cecbf	multilib	b2f01ad412baf81650c23fcf0975fa33	python-any-r1	4900ae970f827a22d33d41bd8b8f9ace	python-utils-r1	08e17157a6807add7db1f8d01e7e391f	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
 _md5_=82f98b45b5a1facbf952ea65c822fe68

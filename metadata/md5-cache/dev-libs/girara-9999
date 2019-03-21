@@ -8,5 +8,5 @@ IUSE=doc libnotify test test
 LICENSE=ZLIB
 RDEPEND=dev-libs/glib:2 dev-libs/json-c >=x11-libs/gtk+-3.20:3 >=x11-libs/pango-1.14 libnotify? ( x11-libs/libnotify )
 SLOT=0
-_eclasses_=git-r3	0d4635eeb5a96cd5315597a47eba25c9	meson	e53acc5913e5581a8a71be22731d8f36	multilib	b2f01ad412baf81650c23fcf0975fa33	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	12114a2a9aab35b93efc037a196b3234	toolchain-funcs	b45201c4e6c096b98e250336954e64b9	virtualx	401b718cc14d43a5a7fbe062c4851ba5
+_eclasses_=git-r3	0d4635eeb5a96cd5315597a47eba25c9	meson	e53acc5913e5581a8a71be22731d8f36	multilib	b2f01ad412baf81650c23fcf0975fa33	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	08e17157a6807add7db1f8d01e7e391f	toolchain-funcs	b45201c4e6c096b98e250336954e64b9	virtualx	401b718cc14d43a5a7fbe062c4851ba5
 _md5_=8f6aa51bbc5c6103abb0f4ccb50cc43e
