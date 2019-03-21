@@ -7,7 +7,7 @@ inherit kde5
 
 DESCRIPTION="Library for playing & ripping CDs"
 LICENSE="GPL-2+ LGPL-2+"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE="alsa"
 
 DEPEND="

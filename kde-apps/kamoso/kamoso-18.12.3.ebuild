@@ -11,7 +11,7 @@ DESCRIPTION="Application to take pictures and videos from your webcam by KDE"
 HOMEPAGE="https://userbase.kde.org/Kamoso"
 
 LICENSE="GPL-2+"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE=""
 
 DEPEND="

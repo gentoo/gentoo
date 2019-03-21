@@ -8,7 +8,7 @@ inherit kde5
 
 DESCRIPTION="Music Education software by KDE"
 HOMEPAGE="https://minuet.kde.org/"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE=""
 
 BDEPEND="

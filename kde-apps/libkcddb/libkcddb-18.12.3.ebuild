@@ -9,7 +9,7 @@ inherit kde5
 
 DESCRIPTION="KDE library for CDDB"
 LICENSE="GPL-2+ handbook? ( FDL-1.2 )"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE="musicbrainz"
 
 DEPEND="

@@ -10,7 +10,7 @@ inherit kde5
 DESCRIPTION="A tile matching game for one or two players"
 HOMEPAGE="https://www.kde.org/applications/games/kmahjongg/
 https://games.kde.org/game.php?game=kmahjongg"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE=""
 
 DEPEND="

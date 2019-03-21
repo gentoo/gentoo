@@ -6,7 +6,7 @@ EAPI=7
 inherit kde5
 
 DESCRIPTION="Qt Quick plugin for beautiful and interactive charts"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE=""
 
 DEPEND="

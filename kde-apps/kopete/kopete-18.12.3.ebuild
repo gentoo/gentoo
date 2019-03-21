@@ -9,7 +9,7 @@ inherit kde5
 
 DESCRIPTION="Multi-protocol IM client based on KDE Frameworks"
 HOMEPAGE="https://userbase.kde.org/Kopete https://www.kde.org/applications/internet/kopete"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE="ssl v4l"
 
 # Available plugins

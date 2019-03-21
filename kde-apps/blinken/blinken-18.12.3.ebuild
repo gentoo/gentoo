@@ -9,7 +9,7 @@ inherit kde5
 DESCRIPTION="Memory enhancement game based on KDE Frameworks"
 HOMEPAGE="https://www.kde.org/applications/education/blinken
 https://edu.kde.org/blinken/"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE=""
 
 DEPEND="

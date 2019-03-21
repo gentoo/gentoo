@@ -7,7 +7,7 @@ inherit kde5
 
 DESCRIPTION="Kpart for viewing SVGs"
 LICENSE="GPL-2+"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE=""
 
 DEPEND="

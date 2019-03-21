@@ -11,7 +11,7 @@ DESCRIPTION="Simple chess board based on KDE Frameworks"
 HOMEPAGE="https://www.kde.org/applications/games/knights/"
 
 LICENSE="GPL-2+"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE="speech"
 
 DEPEND="

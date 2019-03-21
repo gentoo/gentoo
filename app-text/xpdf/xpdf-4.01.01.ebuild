@@ -5,10 +5,9 @@ EAPI=7
 
 inherit cmake-utils
 
-MY_P=${PN}-$(ver_rs 2 "")
 DESCRIPTION="The PDF viewer and tools"
 HOMEPAGE="https://www.xpdfreader.com"
-SRC_URI="https://xpdfreader-dl.s3.amazonaws.com/${MY_P}.tar.gz
+SRC_URI="https://xpdfreader-dl.s3.amazonaws.com/${P}.tar.gz
 	i18n? (
 		https://xpdfreader-dl.s3.amazonaws.com/xpdf-arabic.tar.gz
 		https://xpdfreader-dl.s3.amazonaws.com/xpdf-chinese-simplified.tar.gz
@@ -49,8 +48,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-visibility.patch
 	"${FILESDIR}"/${PN}-shared-libs.patch
 )
-
-S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
 	sed -i \

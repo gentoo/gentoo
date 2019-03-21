@@ -9,7 +9,7 @@ DESCRIPTION="KDE accounts providers"
 HOMEPAGE="https://community.kde.org/KTp"
 LICENSE="LGPL-2.1"
 
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE=""
 
 BDEPEND="

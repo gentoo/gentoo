@@ -10,7 +10,7 @@ inherit kde5
 
 DESCRIPTION="A textedit with PIM-specific features"
 LICENSE="LGPL-2.1+"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE=""
 
 COMMON_DEPEND="

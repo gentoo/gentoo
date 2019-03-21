@@ -9,7 +9,7 @@ inherit kde5
 DESCRIPTION="An addictive and fun dice game"
 HOMEPAGE="https://www.kde.org/applications/games/kiriki/
 https://games.kde.org/game.php?game=kiriki"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE=""
 
 DEPEND="

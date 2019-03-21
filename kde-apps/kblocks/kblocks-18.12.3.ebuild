@@ -8,7 +8,7 @@ inherit kde5
 
 DESCRIPTION="Single-player Tetris-like KDE game"
 HOMEPAGE="https://www.kde.org/applications/games/kblocks/"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE=""
 
 DEPEND="

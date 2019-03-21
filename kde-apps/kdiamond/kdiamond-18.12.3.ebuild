@@ -9,7 +9,7 @@ inherit kde5
 DESCRIPTION="Single player three-in-a-row game"
 HOMEPAGE="https://www.kde.org/applications/games/kdiamond/
 https://games.kde.org/game.php?game=kdiamond"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE=""
 
 DEPEND="

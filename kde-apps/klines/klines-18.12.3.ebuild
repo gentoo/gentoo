@@ -10,7 +10,7 @@ inherit kde5
 DESCRIPTION="A little KDE game about balls and how to get rid of them"
 HOMEPAGE="https://www.kde.org/applications/games/klines/
 https://games.kde.org/game.php?game=klines"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE=""
 
 DEPEND="

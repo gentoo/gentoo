@@ -33,18 +33,28 @@
 # The following packages are unmaintained and fail to build against
 # openssl-1.1+.
 #
+# dev-util/skipfish: #675124, last upstream commit in 2012
 # dev-util/wsta: #674004, no fix upstream, also #631610, #674526
+# games-util/gtkevemon: #675988, upstream API shut down
+# net-analyzer/bro: #675014, needs bump, current version is from 2015
 # net-analyzer/ffp: #674244, dead homepage, current version added 2005
 # net-im/climm: #674160, dead homepage, last commits in 2010
 # net-irc/shadowircd:  #674528, dead homepage, last commits in 2012
 # net-misc/sslwrap: #674524, last updated upstream in 2000
+# net-misc/stone: #675612, needs new snapshot, current ver is from 2008
+# sys-apps/nca: #676240, last updated upstream in 2004
 #
 # Removal in 30 days.
+dev-util/skipfish
 dev-util/wsta
+games-util/gtkevemon
+net-analyzer/bro
 net-analyzer/ffp
 net-im/climm
 net-irc/shadowircd
 net-misc/sslwrap
+net-misc/stone
+sys-apps/nca
 
 # Michał Górny <mgorny@gentoo.org> (21 Mar 2019)
 # Last release in 2010.  No reverse dependencies.  No maintainer.

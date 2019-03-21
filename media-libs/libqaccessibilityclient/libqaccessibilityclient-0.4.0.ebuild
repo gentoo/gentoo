@@ -14,7 +14,7 @@ HOMEPAGE="https://accessibility.kde.org/ https://cgit.kde.org/libqaccessibilityc
 SRC_URI="mirror://kde/stable/${PN}/${P}.tar.xz"
 
 LICENSE="LGPL-2.1"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE=""
 
 DEPEND="

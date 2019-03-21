@@ -10,7 +10,7 @@ inherit kde5
 DESCRIPTION="Game of action and puzzle solving by KDE"
 HOMEPAGE="https://www.kde.org/applications/games/kgoldrunner/
 https://games.kde.org/game.php?game=kgoldrunner"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE=""
 
 DEPEND="
