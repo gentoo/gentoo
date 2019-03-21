@@ -10051,7 +10051,7 @@ sys-block/viaideinfo 0.5: Query VIA IDE controllers for various information
 sys-block/zram-init 7.1-r1: Scripts to support compressed swap devices or ramdisks with zram
 sys-boot/efibootmgr 14 15 16: User-space application to modify the EFI boot manager
 sys-boot/gnu-efi 3.0.3: Library for build EFI Applications
-sys-boot/grub 2.02-r1: GNU GRUB boot loader
+sys-boot/grub 2.02-r3: GNU GRUB boot loader
 sys-boot/lilo 22.8-r2 24.0-r1: Standard Linux boot loader
 sys-boot/mbr 1.1.11-r1: A replacement master boot record for IBM-PC compatible computers
 sys-boot/os-prober 1.76-r1: Utility to detect other OSs on a set of drives
