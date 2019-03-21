@@ -9,7 +9,7 @@ SRC_URI="mirror://debian/pool/main/f/${PN}/${PN}_${PV}.orig.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ppc ppc64 ~s390 ~sparc x86"
+KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~ia64 ppc ppc64 ~s390 ~sparc x86"
 
 RESTRICT="test"
 
