@@ -17,23 +17,10 @@
   <access>remote</access>
   <affected>
     <package name="dev-lang/python" auto="yes" arch="*">
-      <unaffected range="rge">3.2.5-r1</unaffected>
-      <unaffected range="rge">2.6.8</unaffected>
-      <unaffected range="rge">2.7.3-r1</unaffected>
+      <unaffected range="ge">3.2.5-r1</unaffected>
+      <unaffected range="ge">2.6.8</unaffected>
+      <unaffected range="ge">2.7.3-r1</unaffected>
       <unaffected range="ge">3.3.2-r1</unaffected>
-      <unaffected range="rge">2.6.9</unaffected>
-      <unaffected range="rge">2.7.4</unaffected>
-      <unaffected range="rge">2.7.5</unaffected>
-      <unaffected range="rge">2.7.6</unaffected>
-      <unaffected range="rge">2.7.7</unaffected>
-      <unaffected range="rge">2.7.8</unaffected>
-      <unaffected range="rge">2.7.9</unaffected>
-      <unaffected range="rge">2.7.10</unaffected>
-      <unaffected range="rge">2.7.11</unaffected>
-      <unaffected range="rge">2.7.12</unaffected>
-      <unaffected range="rge">2.7.13</unaffected>
-      <unaffected range="rge">2.7.14</unaffected>
-      <unaffected range="rge">2.7.15</unaffected>
       <vulnerable range="lt">3.3.2-r1</vulnerable>
     </package>
   </affected>

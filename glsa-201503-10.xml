@@ -19,13 +19,7 @@
   <affected>
     <package name="dev-lang/python" auto="yes" arch="*">
       <unaffected range="ge">3.3.5-r1</unaffected>
-      <unaffected range="rge">2.7.9-r1</unaffected>
-      <unaffected range="rge">2.7.10</unaffected>
-      <unaffected range="rge">2.7.11</unaffected>
-      <unaffected range="rge">2.7.12</unaffected>
-      <unaffected range="rge">2.7.13</unaffected>
-      <unaffected range="rge">2.7.14</unaffected>
-      <unaffected range="rge">2.7.15</unaffected>
+      <unaffected range="ge">2.7.9-r1</unaffected>
       <vulnerable range="lt">3.3.5-r1</vulnerable>
     </package>
   </affected>
