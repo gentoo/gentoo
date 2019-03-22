@@ -8,7 +8,7 @@ EAPI=5 # approved 2012.09.11, required by all profiles since 2014.03.12
 
 inherit bash-completion-r1 epatch estack
 
-VERSION_BUSYBOX='1.27.2' # warning, be sure to bump patches
+VERSION_BUSYBOX='1.30.1' # warning, be sure to bump patches
 VERSION_DMRAID='1.0.0.rc16-3' # warning, be sure to bump patches
 VERSION_LIBAIO='0.3.110' # warning, be sure to bump patches
 VERSION_MDADM='4.1' # warning, be sure to bump patches
@@ -16,7 +16,7 @@ VERSION_FUSE='2.8.6' # warning, be sure to bump patches
 VERSION_ISCSI='2.0-872' # warning, be sure to bump patches
 VERSION_LVM='2.02.183' # warning, be sure to bump patches
 VERSION_UNIONFS_FUSE='0.24'
-VERSION_GPG='1.4.22'
+VERSION_GPG='1.4.23'
 
 RH_HOME="ftp://sourceware.org/pub"
 DM_HOME="https://people.redhat.com/~heinzm/sw/dmraid/src"
