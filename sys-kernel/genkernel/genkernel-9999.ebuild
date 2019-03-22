@@ -16,7 +16,7 @@ VERSION_FUSE='2.8.6' # warning, be sure to bump patches
 VERSION_ISCSI='2.0-872' # warning, be sure to bump patches
 VERSION_LVM='2.02.183' # warning, be sure to bump patches
 VERSION_UNIONFS_FUSE='0.24'
-VERSION_GPG='1.4.22'
+VERSION_GPG='1.4.23'
 
 RH_HOME="ftp://sourceware.org/pub"
 DM_HOME="https://people.redhat.com/~heinzm/sw/dmraid/src"
