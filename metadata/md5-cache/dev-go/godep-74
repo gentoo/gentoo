@@ -9,4 +9,4 @@ RESTRICT=strip
 SLOT=0
 SRC_URI=https://github.com/tools/godep/archive/v74.tar.gz -> godep-74.tar.gz
 _eclasses_=golang-base	c57d2c3f9e1a02d0feb8b87c7b689892	golang-build	dc25bafa8fc1305a4de66a0a448472e7	golang-vcs-snapshot	12177e83bede6f7fb87eae383864b40b
-_md5_=b14c461ff3de6201c7bd1dec917e15f9
+_md5_=7c2391e9a22f872e92f81650b52363ba
