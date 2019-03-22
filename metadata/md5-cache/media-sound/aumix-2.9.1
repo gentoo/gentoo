@@ -1,13 +1,14 @@
-DEFINED_PHASES=configure install
-DEPEND=sys-libs/ncurses:0 gpm? ( sys-libs/gpm ) gtk? ( x11-libs/gtk+:2 ) nls? ( virtual/libintl ) virtual/pkgconfig nls? ( sys-devel/gettext )
+BDEPEND=virtual/pkgconfig nls? ( sys-devel/gettext ) >=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=configure install prepare
+DEPEND=sys-libs/ncurses:0= gpm? ( sys-libs/gpm ) gtk? ( x11-libs/gtk+:2 ) nls? ( virtual/libintl )
 DESCRIPTION=Aumix volume/mixer control program
 EAPI=7
 HOMEPAGE=http://jpj.net/~trevor/aumix.html
 IUSE=gpm gtk nls
 KEYWORDS=alpha amd64 arm hppa ia64 ~mips ppc ppc64 sh sparc x86
 LICENSE=GPL-2
-RDEPEND=sys-libs/ncurses:0 gpm? ( sys-libs/gpm ) gtk? ( x11-libs/gtk+:2 ) nls? ( virtual/libintl )
+RDEPEND=sys-libs/ncurses:0= gpm? ( sys-libs/gpm ) gtk? ( x11-libs/gtk+:2 ) nls? ( virtual/libintl )
 SLOT=0
 SRC_URI=http://jpj.net/~trevor/aumix/releases/aumix-2.9.1.tar.bz2
-_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d
-_md5_=496c12696e43e3e80850b743a5dc56b0
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	desktop	b1d22ac8bdd4679ab79c71aca235009d	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
+_md5_=80b18742dc81d49c09b21a4402460eba
