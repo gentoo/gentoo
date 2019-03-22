@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit desktop
+inherit autotools desktop
 
 DESCRIPTION="Aumix volume/mixer control program"
 HOMEPAGE="http://jpj.net/~trevor/aumix.html"
@@ -14,24 +14,33 @@ SLOT="0"
 KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 sh sparc x86"
 IUSE="gpm gtk nls"
 
-RDEPEND="sys-libs/ncurses:0
+RDEPEND="sys-libs/ncurses:0=
 	gpm? ( sys-libs/gpm )
 	gtk? ( x11-libs/gtk+:2 )
 	nls? ( virtual/libintl )"
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	virtual/pkgconfig
-	nls? ( sys-devel/gettext )"
+	nls? ( sys-devel/gettext )
+"
+
+PATCHES=(
+	"${FILESDIR}/${P}-tinfo.patch" #578722
+)
+
+src_prepare() {
+	default
+	eautoreconf #578722
+}
 
 src_configure() {
-	local myconf
+	local myeconfargs=(
+		$(use_enable nls)
+		$(usex gtk '' --without-gtk)
+		$(usex gpm '' --without-gpm)
+	)
 
-	use gtk || myconf="${myconf} --without-gtk"
-	use gpm || myconf="${myconf} --without-gpm"
-
-	econf \
-		$(use_enable nls) \
-		--disable-dependency-tracking \
-		${myconf}
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {
