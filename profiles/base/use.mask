@@ -7,7 +7,6 @@
 # Matt Turner <mattst88@gentoo.org> (02 Mar 2019)
 # For ancient hardware. Tired of maintaining. Masked for removal in 30 days.
 # Bug #679256
-video_cards_newport
 video_cards_tdfx
 video_cards_voodoo
 
