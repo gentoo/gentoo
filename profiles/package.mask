@@ -30,6 +30,13 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (22 Mar 2019)
+# Unmaintained, dead homepage (#680752).  Fails to build against
+# ncurses[tinfo] (#459490), fails to build against ncurses-6 (#649794).
+# Also has some unresolved segv (#407983).
+# Removal in 30 days.  Bug #459490.
+games-roguelike/rogue
+
+# Michał Górny <mgorny@gentoo.org> (22 Mar 2019)
 # SixXS has been discontinued, rendering the package defunct.
 # Removal in 30 days.  Bug #670678.
 net-vpn/aiccu
