@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 export CBUILD=${CBUILD:-${CHOST}}
 export CTARGET=${CTARGET:-${CHOST}}
@@ -10,22 +10,20 @@ MY_PV=${PV/_/}
 
 inherit toolchain-funcs
 
-BOOTSTRAP_DIST="https://dev.gentoo.org/~williamh/dist"
 BOOTSTRAP_VERSION="bootstrap-1.8"
+BOOTSTRAP_DIST="https://dev.gentoo.org/~williamh/dist"
 BOOTSTRAP_URI="
-amd64? ( ${BOOTSTRAP_DIST}/go-linux-amd64-${BOOTSTRAP_VERSION}.tbz )
-arm? ( ${BOOTSTRAP_DIST}/go-linux-arm-${BOOTSTRAP_VERSION}.tbz )
-arm64? ( ${BOOTSTRAP_DIST}/go-linux-arm64-${BOOTSTRAP_VERSION}.tbz )
-ppc64? (
+	${BOOTSTRAP_DIST}/go-linux-amd64-${BOOTSTRAP_VERSION}.tbz
+	${BOOTSTRAP_DIST}/go-linux-arm-${BOOTSTRAP_VERSION}.tbz
+	${BOOTSTRAP_DIST}/go-linux-arm64-${BOOTSTRAP_VERSION}.tbz
 	${BOOTSTRAP_DIST}/go-linux-ppc64-${BOOTSTRAP_VERSION}.tbz
 	${BOOTSTRAP_DIST}/go-linux-ppc64le-${BOOTSTRAP_VERSION}.tbz
-)
-s390? ( ${BOOTSTRAP_DIST}/go-linux-s390x-${BOOTSTRAP_VERSION}.tbz )
-x86? ( ${BOOTSTRAP_DIST}/go-linux-386-${BOOTSTRAP_VERSION}.tbz )
-amd64-fbsd? ( ${BOOTSTRAP_DIST}/go-freebsd-amd64-${BOOTSTRAP_VERSION}.tbz )
-x86-fbsd? ( ${BOOTSTRAP_DIST}/go-freebsd-386-${BOOTSTRAP_VERSION}.tbz )
-x64-macos? ( ${BOOTSTRAP_DIST}/go-darwin-amd64-${BOOTSTRAP_VERSION}.tbz )
-x64-solaris? ( ${BOOTSTRAP_DIST}/go-solaris-amd64-${BOOTSTRAP_VERSION}.tbz )
+	${BOOTSTRAP_DIST}/go-linux-s390x-${BOOTSTRAP_VERSION}.tbz
+	${BOOTSTRAP_DIST}/go-linux-386-${BOOTSTRAP_VERSION}.tbz
+	${BOOTSTRAP_DIST}/go-freebsd-amd64-${BOOTSTRAP_VERSION}.tbz
+	${BOOTSTRAP_DIST}/go-freebsd-386-${BOOTSTRAP_VERSION}.tbz
+	${BOOTSTRAP_DIST}/go-darwin-amd64-${BOOTSTRAP_VERSION}.tbz
+	${BOOTSTRAP_DIST}/go-solaris-amd64-${BOOTSTRAP_VERSION}.tbz
 "
 
 case ${PV}  in
@@ -39,7 +37,7 @@ case ${PV}  in
 	case ${PV} in
 	*_beta*|*_rc*) ;;
 	*)
-		KEYWORDS="-* ~amd64 ~arm ~arm64 ~ppc64 ~x86 ~amd64-fbsd ~x86-fbsd ~x64-macos ~x64-solaris"
+		KEYWORDS="-* ~amd64 ~arm ~arm64 ~ppc64 ~s390 ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x64-macos ~x64-solaris"
 		# The upstream tests fail under portage but pass if the build is
 		# run according to their documentation [1].
 		# I am restricting the tests on released versions until this is
@@ -49,6 +47,13 @@ case ${PV}  in
 		;;
 	esac
 esac
+
+# If gccgo is not being used to build Go, there is no way to know the
+# architecture or operating system of the build machine, so we need to
+# download all of our bootstrap archives to allow this ebuild to work
+# under crossdev.
+#
+# https://bugs.gentoo.org/671394
 SRC_URI+="!gccgo? ( ${BOOTSTRAP_URI} )"
 
 DESCRIPTION="A concurrent garbage collected and typesafe programming language"
@@ -58,15 +63,13 @@ LICENSE="BSD"
 SLOT="0/${PV}"
 IUSE="gccgo"
 
-DEPEND="gccgo? ( >=sys-devel/gcc-5[go] )"
+BDEPEND="gccgo? ( >=sys-devel/gcc-5[go] )"
 RDEPEND="!<dev-go/go-tools-0_pre20150902"
 
 # These test data objects have writable/executable stacks.
 QA_EXECSTACK="
 	usr/lib/go/src/debug/elf/testdata/*.obj
-	usr/lib/go/src/go/internal/gccgoimporter/testdata/escapeinfo.gox
-	usr/lib/go/src/go/internal/gccgoimporter/testdata/unicode.gox
-	usr/lib/go/src/go/internal/gccgoimporter/testdata/time.gox
+	usr/lib/go/src/*.gox
 	"
 
 # Do not complain about CFLAGS, etc, since Go doesn't use them.
@@ -160,7 +163,7 @@ src_unpack()
 
 src_compile()
 {
-	export GOROOT_BOOTSTRAP="${WORKDIR}"/go-$(go_os)-$(go_arch)-bootstrap
+	export GOROOT_BOOTSTRAP="${WORKDIR}"/go-$(go_os ${CBUILD})-$(go_arch ${CBUILD})-bootstrap
 	if use gccgo; then
 		mkdir -p "${GOROOT_BOOTSTRAP}/bin" || die
 		local go_binary=$(gcc-config --get-bin-path)/go-$(gcc-major-version)
@@ -187,7 +190,6 @@ src_compile()
 	if [[ ${ARCH} == arm ]]; then
 		export GOARM=$(go_arm)
 	fi
-	einfo "GOROOT_BOOTSTRAP is ${GOROOT_BOOTSTRAP}"
 
 	cd src
 	./make.bash || die "build failed"
