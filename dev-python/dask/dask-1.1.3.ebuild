@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 python3_{5,6} )
 inherit distutils-r1
 
 DESCRIPTION="Task scheduling and blocked algorithms for parallel processing"
-HOMEPAGE="http://dask.pydata.org/"
+HOMEPAGE="https://dask.org/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
