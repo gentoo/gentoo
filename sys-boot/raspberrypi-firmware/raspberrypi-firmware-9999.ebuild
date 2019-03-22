@@ -3,14 +3,22 @@
 
 EAPI=7
 
-inherit git-r3 mount-boot readme.gentoo-r1
+inherit mount-boot readme.gentoo-r1
 
 DESCRIPTION="Raspberry PI boot loader and firmware"
 HOMEPAGE="https://github.com/raspberrypi/firmware"
 LICENSE="GPL-2 raspberrypi-videocore-bin"
 SLOT="0"
-EGIT_REPO_URI="https://github.com/raspberrypi/firmware"
-EGIT_CLONE_TYPE="shallow"
+
+if [[ "${PV}" == 9999 ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/raspberrypi/firmware"
+	EGIT_CLONE_TYPE="shallow"
+else
+	SRC_URI="https://github.com/raspberrypi/firmware/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="-* ~arm ~arm64"
+	S="${WORKDIR}/firmware-${PV}"
+fi
 
 RESTRICT="binchecks strip"
 
