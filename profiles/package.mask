@@ -30,6 +30,13 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (22 Mar 2019)
+# Unmaintained.  No reverse dependencies.  The current Gentoo version
+# is from 2015, and upstream has made a lot of releases since.
+# It suffers from heavy bundling of dependencies.
+# Removal in 30 days.  Bug #469194.
+dev-lua/luvit
+
+# Michał Górny <mgorny@gentoo.org> (22 Mar 2019)
 # Unmaintained.  Last release in 2013, last commits in 2015.  Nested
 # bundled libraries (#253259, also causing #515384).  Fails to build
 # with [-dbus] (#560208).
