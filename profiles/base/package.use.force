@@ -1,6 +1,14 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (22 Mar 2019)
+# Force building separate tinfo to maintain stable library API.  This
+# is backwards-compatible with packages linked to -lncurses, so neither
+# installed packages nor pre-built software should be negatively
+# affected.  On the other hand, disabling USE=tinfo is capable of
+# breaking installed packages.
+sys-libs/ncurses tinfo
+
 # Lars Wendler <polynomial-c@gentoo.org> (20 Mar 2019)
 # USE="-gnutls" is broken (#675694)
 >=net-fs/samba-4.10.0_rc1 gnutls
