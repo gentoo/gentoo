@@ -29,6 +29,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (23 Mar 2019)
+# Everything breaks again. bug #681336
+>=app-text/poppler-0.75.0
+
 # Michał Górny <mgorny@gentoo.org> (22 Mar 2019)
 # Unmaintained.  No reverse dependencies.  The current Gentoo version
 # is from 2015, and upstream has made a lot of releases since.
