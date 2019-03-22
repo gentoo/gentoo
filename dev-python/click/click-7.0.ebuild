@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="A Python package for creating beautiful command line interfaces"
 SRC_URI="https://github.com/pallets/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
-HOMEPAGE="http://click.pocoo.org/ https://pypi.org/project/click/"
+HOMEPAGE="https://palletsprojects.com/p/click/ https://pypi.org/project/click/"
 
 LICENSE="BSD"
 SLOT="0"
