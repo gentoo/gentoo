@@ -116,6 +116,12 @@ src_prepare() {
 	# bug (320097)
 	eapply "${FILESDIR}/${PN}-2.6-do-not-call-dbus-functions-with-NULL-path.patch"
 
+	# fix undefined reference to remove_ie()
+	eapply "${FILESDIR}/${P}-fix-undefined-remove-ie.patch"
+
+	# bug (672632)
+	eapply "${FILESDIR}/${P}-libressl.patch"
+
 	# bug (640492)
 	sed -i 's#-Werror ##' wpa_supplicant/Makefile || die
 }
@@ -246,7 +252,6 @@ src_configure() {
 		if use macsec ; then
 			#requires something, no idea what
 			#Kconfig_style_config DRIVER_MACSEC_QCA
-			Kconfig_style_config DRIVER_MACSEC_LINUX
 			Kconfig_style_config MACSEC
 		fi
 
@@ -381,7 +386,7 @@ src_install() {
 		insinto /etc/dbus-1/system.d
 		newins dbus-wpa_supplicant.conf wpa_supplicant.conf
 		insinto /usr/share/dbus-1/system-services
-		doins fi.w1.wpa_supplicant1.service
+		doins fi.epitest.hostap.WPASupplicant.service fi.w1.wpa_supplicant1.service
 		popd > /dev/null || die
 
 		# This unit relies on dbus support, bug 538600.
