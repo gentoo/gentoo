@@ -38,7 +38,6 @@ COMMON_DEPEND="
 	app-arch/snappy:=[static-libs?]
 	app-arch/zstd:=[static-libs?]
 	app-misc/jq:=[static-libs?]
-	dev-libs/crc32c:=
 	dev-libs/crypto++:=[static-libs?]
 	dev-libs/leveldb:=[snappy,static-libs?,tcmalloc?]
 	dev-libs/libaio:=[static-libs?]
