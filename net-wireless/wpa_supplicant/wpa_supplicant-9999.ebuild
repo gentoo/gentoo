@@ -18,7 +18,7 @@ else
 fi
 
 SLOT="0"
-IUSE="ap bindist dbus eap-sim eapol_test fasteap gnutls +hs2-0 libressl p2p privsep ps3 qt5 readline selinux smartcard ssl suiteb tdls uncommon-eap-types wimax wps kernel_linux kernel_FreeBSD"
+IUSE="ap bindist dbus eap-sim eapol_test fasteap gnutls +hs2-0 libressl macsec p2p privsep ps3 qt5 readline selinux smartcard ssl suiteb tdls uncommon-eap-types wimax wps kernel_linux kernel_FreeBSD"
 REQUIRED_USE="smartcard? ( ssl )"
 
 CDEPEND="dbus? ( sys-apps/dbus )
@@ -90,7 +90,7 @@ Kconfig_style_config() {
 pkg_setup() {
 	if use ssl ; then
 		if use gnutls && use libressl ; then
-			elog "You have both 'gnutls' and 'libressl' USE flags enabled: defaulting to USE=\"gnutls\""
+			elog "You have both 'gnutls' and 'libressl' USE flags enabled: defaulting to USE=\"libressl\""
 		fi
 	else
 		elog "You have 'ssl' USE flag disabled: defaulting to internal TLS implementation"
@@ -153,6 +153,11 @@ src_configure() {
 	Kconfig_style_config IBSS_RSN
 	Kconfig_style_config IEEE80211W
 	Kconfig_style_config IEEE80211R
+	Kconfig_style_config HT_OVERRIDES
+	Kconfig_style_config VHT_OVERRIDES
+	Kconfig_style_config OCV
+	Kconfig_style_config TLSV11
+	Kconfig_style_config TLSV12
 
 	# Basic authentication methods
 	# NOTE: we don't set GPSK or SAKE as they conflict
@@ -176,6 +181,13 @@ src_configure() {
 	# Enabling background scanning.
 	Kconfig_style_config BGSCAN_SIMPLE
 	Kconfig_style_config BGSCAN_LEARN
+
+	if use macsec ; then
+		#requires something, no idea what
+		#Kconfig_style_config DRIVER_MACSEC_QCA
+		Kconfig_style_config DRIVER_MACSEC_LINUX
+		Kconfig_style_config MACSEC
+	fi
 
 	if use dbus ; then
 		Kconfig_style_config CTRL_IFACE_DBUS
@@ -233,25 +245,34 @@ src_configure() {
 		if use gnutls ; then
 			Kconfig_style_config TLS gnutls
 			Kconfig_style_config GNUTLS_EXTRA
+			Kconfig_style_config EAP_PWD n
+			Kconfig_style_config SAE n
+			Kconfig_style_config DPP n
 		else
 			#this fails for gnutls
 			Kconfig_style_config SUITEB192
 			Kconfig_style_config TLS openssl
+			Kconfig_style_config FST
 			if ! use bindist; then
 			  #this fails for gnutls
 			  Kconfig_style_config EAP_PWD
+			  Kconfig_style_config FILS
+			  Kconfig_style_config FILS_SK_PFS
 			  # SAE fails on gnutls and everything below here needs SAE
 			  # Enabling mesh networks.
 			  Kconfig_style_config MESH
 			  #WPA3
 			  Kconfig_style_config OWE
 			  Kconfig_style_config SAE
-			  #we also need to disable FILS, except that isn't enabled yet
+			  Kconfig_style_config DPP
 			fi
 
 		fi
 	else
 		Kconfig_style_config TLS internal
+		Kconfig_style_config EAP_PWD n
+		Kconfig_style_config SAE n
+		Kconfig_style_config DPP n
 	fi
 
 	if use smartcard ; then
@@ -403,7 +424,7 @@ src_install() {
 		insinto /etc/dbus-1/system.d
 		newins dbus-wpa_supplicant.conf wpa_supplicant.conf
 		insinto /usr/share/dbus-1/system-services
-		doins fi.epitest.hostap.WPASupplicant.service fi.w1.wpa_supplicant1.service
+		doins fi.w1.wpa_supplicant1.service
 		popd > /dev/null || die
 
 		# This unit relies on dbus support, bug 538600.
@@ -430,7 +451,7 @@ pkg_postinst() {
 
 	if use bindist || use gnutls; then
 		if ! use libressl; then
-			ewarn "Using bindist or gnutls use flags presently breaks WPA3 (specifically SAE and OWE)."
+			ewarn "Using bindist or gnutls use flags presently breaks WPA3 (specifically SAE, OWE, DPP, and FILS)."
 			ewarn "This is incredibly undesirable"
 		fi
 	fi
