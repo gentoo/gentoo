@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DESCRIPTION=Tool to ease merging Pull Requests and git patches
+EAPI=7
+HOMEPAGE=https://github.com/mgorny/pram
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD-2
+RDEPEND=dev-vcs/git net-misc/wget[ssl] virtual/editor !dev-perl/Gentoo-App-Pram
+SLOT=0
+SRC_URI=https://github.com/mgorny/pram/archive/v2.tar.gz -> pram-2.tar.gz
+_md5_=25622f6020d6039b7d7c2e1c50c99489
