@@ -7,6 +7,7 @@
 </maintainer>
 <use>
 	<flag name="bluetooth">Build Bluetooth protocol support in socket module</flag>
+	<flag name="systemtap">Enable UDST probes for use by SystemTap, DTrace or eBPF.</flag>
 	<flag name="threads">Enable threading support. (DON'T DISABLE THIS UNLESS YOU KNOW WHAT YOU'RE DOING)</flag>
 	<flag name="wide-unicode">Enable wide Unicode implementation which uses 4-byte Unicode characters. Switching of this USE flag changes ABI of Python and requires reinstallation of many Python modules. (DON'T DISABLE THIS UNLESS YOU KNOW WHAT YOU'RE DOING)</flag>
 	<flag name="wininst">Install Windows executables required to create an executable installer for MS Windows.</flag>
