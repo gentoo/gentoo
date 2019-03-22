@@ -52,4 +52,8 @@ src_install() {
 	readme.gentoo_create_doc
 }
 
+pkg_postinst() {
+	readme.gentoo_print_elog
+}
+
 DOC_CONTENTS="Please configure your ram setup by editing /boot/config.txt"
