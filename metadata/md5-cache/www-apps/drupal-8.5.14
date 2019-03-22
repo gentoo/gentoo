@@ -8,7 +8,7 @@ KEYWORDS=~alpha ~amd64 ~ppc ~x86
 LICENSE=GPL-2
 RDEPEND=dev-lang/php[gd,hash,pdo,postgres?,simplexml,xml] virtual/httpd-php accelerator? ( || ( dev-php/xcache ( >=dev-lang/php-5.5[opcache] dev-php/pecl-apcu ) ) ) uploadprogress? ( dev-php/pecl-uploadprogress ) mysql? ( || ( dev-lang/php[mysql] dev-lang/php[mysqli] ) ) sqlite? ( dev-lang/php[sqlite] ) >=app-admin/webapp-config-1.50.15
 REQUIRED_USE=|| ( mysql postgres sqlite )
-SLOT=8.5.11
-SRC_URI=https://ftp.drupal.org/files/projects/drupal-8.5.11.tar.gz
+SLOT=8.5.14
+SRC_URI=https://ftp.drupal.org/files/projects/drupal-8.5.14.tar.gz
 _eclasses_=webapp	16783e418aca3ffa461d68310bf7ab12
 _md5_=daaf68e6aae38be5ba496d91b5d77ae6
