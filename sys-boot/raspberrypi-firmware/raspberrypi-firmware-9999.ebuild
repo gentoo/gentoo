@@ -7,16 +7,8 @@ inherit git-r3 mount-boot readme.gentoo-r1
 
 DESCRIPTION="Raspberry PI boot loader and firmware"
 HOMEPAGE="https://github.com/raspberrypi/firmware"
-SRC_URI=""
-
 LICENSE="GPL-2 raspberrypi-videocore-bin"
 SLOT="0"
-KEYWORDS=""
-IUSE=""
-
-DEPEND=""
-RDEPEND=""
-
 EGIT_REPO_URI="https://github.com/raspberrypi/firmware"
 EGIT_CLONE_TYPE="shallow"
 
