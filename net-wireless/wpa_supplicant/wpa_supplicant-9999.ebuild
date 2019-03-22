@@ -18,8 +18,7 @@ else
 fi
 
 SLOT="0"
-IUSE="ap bindist dbus eap-sim eapol_test fasteap gnutls +hs2-0 libressl macsec p2p privsep ps3 qt5 readline selinux smartcard ssl suiteb tdls uncommon-eap-types wimax wps kernel_linux kernel_FreeBSD"
-REQUIRED_USE="smartcard? ( ssl )"
+IUSE="ap bindist dbus eap-sim eapol_test fasteap +hs2-0 libressl macsec p2p privsep ps3 qt5 readline selinux smartcard suiteb tdls uncommon-eap-types wimax wps kernel_linux kernel_FreeBSD"
 
 CDEPEND="dbus? ( sys-apps/dbus )
 	kernel_linux? (
@@ -38,17 +37,8 @@ CDEPEND="dbus? ( sys-apps/dbus )
 		sys-libs/ncurses:0=
 		sys-libs/readline:0=
 	)
-	ssl? (
-		gnutls? (
-			dev-libs/libgcrypt:0=
-			net-libs/gnutls:=
-		)
-		!gnutls? (
-			!libressl? ( >=dev-libs/openssl-1.0.2k:0=[bindist=] )
-			libressl? ( dev-libs/libressl:0= )
-		)
-	)
-	!ssl? ( dev-libs/libtommath )
+	!libressl? ( >=dev-libs/openssl-1.0.2k:0=[bindist=] )
+	libressl? ( dev-libs/libressl:0= )
 "
 DEPEND="${CDEPEND}
 	virtual/pkgconfig
@@ -85,16 +75,6 @@ Kconfig_style_config() {
 			#ensure item commented out
 			sed -i "/^$CONFIG_PARAM/s/$CONFIG_PARAM/# $CONFIG_PARAM/" .config || echo "Kconfig_style_config error commenting $CONFIG_PARAM"
 		fi
-}
-
-pkg_setup() {
-	if use ssl ; then
-		if use gnutls && use libressl ; then
-			elog "You have both 'gnutls' and 'libressl' USE flags enabled: defaulting to USE=\"libressl\""
-		fi
-	else
-		elog "You have 'ssl' USE flag disabled: defaulting to internal TLS implementation"
-	fi
 }
 
 src_prepare() {
@@ -182,13 +162,6 @@ src_configure() {
 	Kconfig_style_config BGSCAN_SIMPLE
 	Kconfig_style_config BGSCAN_LEARN
 
-	if use macsec ; then
-		#requires something, no idea what
-		#Kconfig_style_config DRIVER_MACSEC_QCA
-		Kconfig_style_config DRIVER_MACSEC_LINUX
-		Kconfig_style_config MACSEC
-	fi
-
 	if use dbus ; then
 		Kconfig_style_config CTRL_IFACE_DBUS
 		Kconfig_style_config CTRL_IFACE_DBUS_NEW
@@ -240,39 +213,19 @@ src_configure() {
 		Kconfig_style_config SUITEB
 	fi
 
-	# SSL authentication methods
-	if use ssl ; then
-		if use gnutls ; then
-			Kconfig_style_config TLS gnutls
-			Kconfig_style_config GNUTLS_EXTRA
-			Kconfig_style_config EAP_PWD n
-			Kconfig_style_config SAE n
-			Kconfig_style_config DPP n
-		else
-			#this fails for gnutls
-			Kconfig_style_config SUITEB192
-			Kconfig_style_config TLS openssl
-			Kconfig_style_config FST
-			if ! use bindist; then
-			  #this fails for gnutls
-			  Kconfig_style_config EAP_PWD
-			  Kconfig_style_config FILS
-			  Kconfig_style_config FILS_SK_PFS
-			  # SAE fails on gnutls and everything below here needs SAE
-			  # Enabling mesh networks.
-			  Kconfig_style_config MESH
-			  #WPA3
-			  Kconfig_style_config OWE
-			  Kconfig_style_config SAE
-			  Kconfig_style_config DPP
-			fi
-
-		fi
-	else
-		Kconfig_style_config TLS internal
-		Kconfig_style_config EAP_PWD n
-		Kconfig_style_config SAE n
-		Kconfig_style_config DPP n
+	Kconfig_style_config SUITEB192
+	Kconfig_style_config TLS openssl
+	Kconfig_style_config FST
+	if ! use bindist; then
+		Kconfig_style_config EAP_PWD
+		Kconfig_style_config FILS
+		Kconfig_style_config FILS_SK_PFS
+		# Enabling mesh networks.
+		Kconfig_style_config MESH
+		#WPA3
+		Kconfig_style_config OWE
+		Kconfig_style_config SAE
+		Kconfig_style_config DPP
 	fi
 
 	if use smartcard ; then
@@ -292,6 +245,13 @@ src_configure() {
 		Kconfig_style_config DRIVER_RALINK
 		Kconfig_style_config DRIVER_WEXT
 		Kconfig_style_config DRIVER_WIRED
+
+		if use macsec ; then
+			#requires something, no idea what
+			#Kconfig_style_config DRIVER_MACSEC_QCA
+			Kconfig_style_config DRIVER_MACSEC_LINUX
+			Kconfig_style_config MACSEC
+		fi
 
 		if use ps3 ; then
 			Kconfig_style_config DRIVER_PS3
@@ -449,9 +409,9 @@ pkg_postinst() {
 		ewarn "needs to be moved to ${EROOT%/}/etc/wpa_supplicant/wpa_supplicant.conf"
 	fi
 
-	if use bindist || use gnutls; then
+	if use bindist; then
 		if ! use libressl; then
-			ewarn "Using bindist or gnutls use flags presently breaks WPA3 (specifically SAE, OWE, DPP, and FILS)."
+			ewarn "Using bindist use flags presently breaks WPA3 (specifically SAE, OWE, DPP, and FILS)."
 			ewarn "This is incredibly undesirable"
 		fi
 	fi
