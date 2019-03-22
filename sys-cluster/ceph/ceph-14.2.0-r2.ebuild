@@ -38,6 +38,7 @@ COMMON_DEPEND="
 	app-arch/snappy:=[static-libs?]
 	app-arch/zstd:=[static-libs?]
 	app-misc/jq:=[static-libs?]
+	dev-libs/crc32c:=
 	dev-libs/crypto++:=[static-libs?]
 	dev-libs/leveldb:=[snappy,static-libs?,tcmalloc?]
 	dev-libs/libaio:=[static-libs?]
@@ -149,6 +150,7 @@ PATCHES=(
 	"${FILESDIR}/ceph-14.2.0-no-virtualenvs.patch"
 	"${FILESDIR}/ceph-13.2.2-dont-install-sysvinit-script.patch"
 	"${FILESDIR}/ceph-14.2.0-dpdk-cflags.patch"
+	"${FILESDIR}/ceph-14.2.0-link-crc32-statically.patch"
 )
 
 # dpdk and ninja don't get along
@@ -228,7 +230,7 @@ ceph_src_configure() {
 		-DWITH_TBB=no
 		-DSYSTEMD_UNITDIR=$(systemd_get_systemunitdir)
 		-DEPYTHON_VERSION="${EPYTHON#python}"
-		-DCMAKE_INSTALL_DOCDIR="${EPREFIX}/usr/share/doc/${P}"
+		-DCMAKE_INSTALL_DOCDIR="${EPREFIX}/usr/share/doc/${PN}"
 		-DCMAKE_INSTALL_SYSCONFDIR="${EPREFIX}/etc"
 		-Wno-dev
 	)

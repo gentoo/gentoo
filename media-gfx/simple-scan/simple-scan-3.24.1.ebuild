@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+VALA_MAX_API_VERSION="0.40"
 inherit gnome2 vala versionator
 
 DESCRIPTION="Simple document scanning utility"
