@@ -9,4 +9,4 @@ RESTRICT=strip
 SLOT=0
 SRC_URI=https://github.com/chouquette/coveraggregator/archive/af12d4d73479a1b49a16bbed8e5c182999dd62be.tar.gz -> coveraggregator-0_pre20170216.tar.gz
 _eclasses_=golang-base	c57d2c3f9e1a02d0feb8b87c7b689892	golang-build	dc25bafa8fc1305a4de66a0a448472e7	golang-vcs-snapshot	12177e83bede6f7fb87eae383864b40b
-_md5_=63ef8c713cb98485f2677bc7a0a4bc7d
+_md5_=abdfff6bc034fce02460b82c24b0f86f
