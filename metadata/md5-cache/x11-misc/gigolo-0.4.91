@@ -1,0 +1,12 @@
+DEFINED_PHASES=postinst postrm prepare
+DEPEND=>=dev-libs/glib-2.16 >=x11-libs/gtk+-3.14:3 dev-util/intltool virtual/pkgconfig
+DESCRIPTION=a frontend to easily manage connections to remote filesystems using GIO/GVfs
+EAPI=6
+HOMEPAGE=https://www.uvena.de/gigolo/ https://goodies.xfce.org/projects/applications/gigolo
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2+
+RDEPEND=>=dev-libs/glib-2.16 >=x11-libs/gtk+-3.14:3
+SLOT=0
+SRC_URI=https://archive.xfce.org/src/apps/gigolo/0.4/gigolo-0.4.91.tar.bz2
+_eclasses_=xdg-utils	14d00d009167652b1fa363e55effe213
+_md5_=66fbc6916ed96b709d2b585c253ba946
