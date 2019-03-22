@@ -35,7 +35,7 @@
 net-vpn/aiccu
 
 # Michał Górny <mgorny@gentoo.org> (22 Mar 2019)
-# omepage dead, and package is mirror-restricted.  Current release
+# Homepage dead, and package is mirror-restricted.  Current release
 # was added in 2006 and has not been updated since.
 # Removal in 30 days.  Bug #681230.
 net-misc/sjphone
