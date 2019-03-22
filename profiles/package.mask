@@ -30,6 +30,13 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (22 Mar 2019)
+# Unmaintained.  Last release in 2013, last commits in 2015.  Nested
+# bundled libraries (#253259, also causing #515384).  Fails to build
+# with [-dbus] (#560208).
+# Removal in 30 days.  Bug #681294.
+x11-wm/afterstep
+
+# Michał Górny <mgorny@gentoo.org> (22 Mar 2019)
 # Unmaintained, dead homepage (#680752).  Fails to build against
 # ncurses[tinfo] (#459490), fails to build against ncurses-6 (#649794).
 # Also has some unresolved segv (#407983).

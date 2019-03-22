@@ -8,6 +8,10 @@
 # mask everywhere, unmask on arch/*) use arch/base.
 
 # Michał Górny <mgorny@gentoo.org> (21 Mar 2019)
+# x11-wm/afterstep is slated for removal.
+x11-terms/aterm background
+
+# Michał Górny <mgorny@gentoo.org> (21 Mar 2019)
 # net-mail/uw-imap masked for removal.
 dev-perl/NetxAP test
 
