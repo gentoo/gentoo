@@ -9180,7 +9180,6 @@ net-voip/telepathy-haze 0.8.0-r1 0.8.0-r2: Telepathy connection manager providin
 net-voip/telepathy-rakia 0.8.0: A SIP connection manager for Telepathy based around the Sofia-SIP library
 net-voip/telepathy-salut 0.8.1-r1 0.8.1-r2: A link-local XMPP connection manager for Telepathy
 net-vpn/6tunnel 0.12: TCP proxy for applications that don't speak IPv6
-net-vpn/aiccu 2007.01.15-r5: AICCU Client to configure an IPv6 tunnel to SixXS
 net-vpn/badvpn 1.999.127 1.999.129: Peer-to-peer VPN, NCD scripting language, tun2socks proxifier
 net-vpn/corkscrew 2.0: a tool for tunneling SSH through HTTP proxies
 net-vpn/httptunnel 3.3-r2: httptunnel can create IP tunnels through firewalls/proxies using HTTP
