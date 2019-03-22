@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit git-r3 mount-boot readme.gentoo
+inherit git-r3 mount-boot readme.gentoo-r1
 
 DESCRIPTION="Raspberry PI boot loader and firmware"
 HOMEPAGE="https://github.com/raspberrypi/firmware"
