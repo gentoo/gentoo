@@ -252,7 +252,6 @@ src_configure() {
 		if use macsec ; then
 			#requires something, no idea what
 			#Kconfig_style_config DRIVER_MACSEC_QCA
-			Kconfig_style_config DRIVER_MACSEC_LINUX
 			Kconfig_style_config MACSEC
 		fi
 
