@@ -44,7 +44,7 @@ pkg_preinst() {
 src_install() {
 	insinto /boot
 	cd boot
-	doins bootcode.bin COPYING.linux fixup*.dat LICENCE.broadcom start*elf
+	doins bootcode.bin fixup*.dat start*elf
 	doins *.dtb
 	doins -r overlays
 	newins "${FILESDIR}"/${PN}-0_p20130711-config.txt config.txt
