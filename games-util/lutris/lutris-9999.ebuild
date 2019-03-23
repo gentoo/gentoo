@@ -34,6 +34,7 @@ RDEPEND="
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
 	dev-python/python-evdev[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
+	dev-python/requests[${PYTHON_USEDEP}]
 	gnome-base/gnome-desktop[introspection]
 	media-sound/fluid-soundfont
 	net-libs/libsoup
