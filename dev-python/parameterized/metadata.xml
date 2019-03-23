@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>dolsen@gentoo.org</email>
+	</maintainer>
+	<upstream>
+		<maintainer>
+			<email>david@wolever.net</email>
+			<name>David Wolever</name>
+		</maintainer>
+		<remote-id type="pypi">parameterized</remote-id>
+	</upstream>
+	<longdescription>Parameterized testing in Python sucks.  'parameterized'
+		fixes that. For everything. Parameterized testing for nose,
+		parameterized testing for py.test, parameterized testing for unittest.
+		This package replaces dev-python/nose-parameterized (code migration is
+		required).
+	</longdescription>
+</pkgmetadata>
