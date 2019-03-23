@@ -5,11 +5,12 @@ EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit autotools flag-o-matic linux-info xdg multilib-minimal pam user systemd toolchain-funcs
+inherit autotools flag-o-matic linux-info xdg multilib-minimal pam python-single-r1 user java-pkg-opt-2 systemd toolchain-funcs
 
+MY_P="${P/_rc/rc}"
+MY_P="${MY_P/_beta/b}"
 MY_PV="${PV/_rc/rc}"
 MY_PV="${MY_PV/_beta/b}"
-MY_P="${PN}-${MY_PV}"
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
@@ -19,18 +20,16 @@ if [[ ${PV} == *9999 ]]; then
 	fi
 else
 	#SRC_URI="https://github.com/apple/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	SRC_URI="https://github.com/apple/cups/releases/download/v${MY_PV}/${MY_P}-source.tar.gz"
-	if [[ "${PV}" != *_beta* ]] && [[ "${PV}" != *_rc* ]] ; then
-		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~m68k-mint"
-	fi
+	SRC_URI="https://github.com/apple/cups/releases/download/v${PV}/${P}-source.tar.gz"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~m68k-mint"
 fi
 
 DESCRIPTION="The Common Unix Printing System"
 HOMEPAGE="https://www.cups.org/"
 
-LICENSE="Apache-2.0"
+LICENSE="GPL-2"
 SLOT="0"
-IUSE="acl dbus debug kerberos lprng-compat pam selinux +ssl static-libs systemd +threads usb X xinetd zeroconf"
+IUSE="acl dbus debug java kerberos lprng-compat pam python selinux +ssl static-libs systemd +threads usb X xinetd zeroconf"
 
 CDEPEND="
 	app-text/libpaper
@@ -42,9 +41,11 @@ CDEPEND="
 		)
 	)
 	dbus? ( >=sys-apps/dbus-1.6.18-r1[${MULTILIB_USEDEP}] )
+	java? ( >=virtual/jre-1.6:* )
 	kerberos? ( >=virtual/krb5-0-r1[${MULTILIB_USEDEP}] )
 	!lprng-compat? ( !net-print/lprng )
 	pam? ( virtual/pam )
+	python? ( ${PYTHON_DEPS} )
 	ssl? ( >=net-libs/gnutls-2.12.23-r6:0=[${MULTILIB_USEDEP}] )
 	systemd? ( sys-apps/systemd )
 	usb? ( virtual/libusb:1 )
@@ -65,6 +66,7 @@ RDEPEND="${CDEPEND}
 PDEPEND=">=net-print/cups-filters-1.0.43"
 
 REQUIRED_USE="
+	python? ( ${PYTHON_REQUIRED_USE} )
 	usb? ( threads )
 "
 
@@ -84,12 +86,12 @@ MULTILIB_CHOST_TOOLS=(
 	/usr/bin/cups-config
 )
 
-S="${WORKDIR}/${MY_P}"
-
 pkg_setup() {
 	enewgroup lp
 	enewuser lp -1 -1 -1 lp
 	enewgroup lpadmin 106
+
+	use python && python-single-r1_pkg_setup
 
 	if use kernel_linux; then
 		linux-info_pkg_setup
@@ -167,8 +169,10 @@ multilib_src_configure() {
 		$(use_enable debug)
 		$(use_enable debug debug-guards)
 		$(use_enable debug debug-printfs)
+		$(multilib_native_use_with java)
 		$(use_enable kerberos gssapi)
 		$(multilib_native_use_enable pam)
+		$(multilib_native_use_with python python "${PYTHON}")
 		$(use_enable static-libs static)
 		$(use_enable threads)
 		$(use_enable ssl gnutls)
@@ -176,6 +180,8 @@ multilib_src_configure() {
 		$(multilib_native_use_enable usb libusb)
 		$(use_enable zeroconf avahi)
 		--disable-dnssd
+		--without-perl
+		--without-php
 		$(multilib_is_native_abi && echo --enable-libpaper || echo --disable-libpaper)
 	)
 
