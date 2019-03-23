@@ -32,3 +32,9 @@ DEPEND="
 	=media-libs/kodi-platform-18*
 	=media-tv/kodi-18*
 	"
+
+pkg_postinst() {
+	elog "${PN} competes with media-plugins/kodi-vfs-libarchive."
+	elog "Both plugins register the RAR extension resulting in Kodi not"
+	elog "recognizing RAR at all. So be aware to activate only one of them."
+}
