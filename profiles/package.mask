@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (23 Mar 2019)
+# Proprietary executable with unclear license.  Unmaintained.
+# The current version in Gentoo is from 2004.  QA issues (#430712).
+# Removal in 30 days.  Bug #681360.
+app-cdr/poweriso
+
 # Andreas Sturmlechner <asturm@gentoo.org> (23 Mar 2019)
 # Everything breaks again. bug #681336
 >=app-text/poppler-0.75.0
