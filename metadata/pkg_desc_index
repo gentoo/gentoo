@@ -1848,7 +1848,6 @@ dev-cpp/gtest 1.7.0-r1 1.8.0-r1: Google C++ Testing Framework
 dev-cpp/gtkglextmm 1.2.0-r1 1.2.0-r2: C++ bindings for gtkglext
 dev-cpp/gtkmm 2.24.5 3.22.2 3.24.0: C++ interface for GTK+
 dev-cpp/gtksourceviewmm 2.10.3-r1 3.18.0: C++ bindings for gtksourceview
-dev-cpp/libassa 3.5.1-r2: A networking library based on Adaptive Communication Patterns
 dev-cpp/libbinio 1.4-r1: Binary I/O stream class library
 dev-cpp/libcmis 0.5.2: C++ client library for the CMIS interface
 dev-cpp/libglademm 2.6.7-r2: C++ bindings for libglade
