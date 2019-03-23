@@ -5,7 +5,7 @@ EAPI=7
 
 inherit mount-boot readme.gentoo-r1
 
-DESCRIPTION="Raspberry PI boot loader and firmware"
+DESCRIPTION="Raspberry Pi (all versions) bootloader and GPU firmware"
 HOMEPAGE="https://github.com/raspberrypi/firmware"
 LICENSE="GPL-2 raspberrypi-videocore-bin"
 SLOT="0"
