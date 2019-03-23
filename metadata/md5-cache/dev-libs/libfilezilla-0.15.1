@@ -1,12 +1,13 @@
 DEFINED_PHASES=pretend
-DEPEND=test? ( dev-util/cppunit )
+DEPEND=dev-libs/nettle:0= test? ( dev-util/cppunit )
 DESCRIPTION=C++ library offering some basic functionality for platform-independent programs
 EAPI=7
 HOMEPAGE=https://lib.filezilla-project.org/
 IUSE=test
 KEYWORDS=amd64 ~arm ~ia64 ~ppc x86
 LICENSE=GPL-2+
+RDEPEND=dev-libs/nettle:0=
 SLOT=0
 SRC_URI=https://download.filezilla-project.org/libfilezilla/libfilezilla-0.15.1.tar.bz2
 _eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	a09389deba2c0a7108b581e02c7cecbf	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
-_md5_=c259e50308223d609e40f6da13ba6563
+_md5_=d1de4ee91fe7da41b712f23ebaa9aeac
