@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 python3_{4,5,6,7} )
 inherit distutils-r1
 
 DESCRIPTION="Parameterized testing with any Python test framework"
-HOMEPAGE="https://github.com/kgrandis/nose-exclude"
+HOMEPAGE="https://pypi.org/project/nose-parameterized/ https://github.com/kgrandis/nose-exclude"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"

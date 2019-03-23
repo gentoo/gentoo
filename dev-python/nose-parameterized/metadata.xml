@@ -6,7 +6,12 @@
     <name>Python</name>
   </maintainer>
   <longdescription lang="en">
-    Parameterized testing for nose, parameterized testing for py.test, parameterized testing for unittest.
+    NOTE: This package is deprecated upstream. use dev-python/parameterized for
+    new code instead.  See: https://pypi.org/project/nose-parameterized/ for
+    migration instructions.
+
+    Parameterized testing for nose, parameterized testing for
+    py.test, parameterized testing for unittest.
   </longdescription>
   <upstream>
     <remote-id type="pypi">nose-parameterized</remote-id>
