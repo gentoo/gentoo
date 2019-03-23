@@ -2153,7 +2153,8 @@ dev-util/strace:aio - Enable dev-libs/libaio support for tracing Asynchronous I/
 dev-util/strace:elfutils - Enable stack backtraces (-k flag) via dev-libs/elfutils
 dev-util/strace:unwind - Enable stack backtraces (-k flag) via sys-libs/libunwind
 dev-util/suse-build:symlink - Provide compatibility symlinks with original openSUSE package (might clash with other packages)
-dev-util/sysprof:systemd - Build the sysprofd daemon service, required to run the UI without root permissions. Relies on sys-apps/systemd running as the init system.
+dev-util/sysprof:elogind - Build the sysprofd daemon service, required to run the UI without root permissions. Relies on sys-auth/elogind for sd-bus API.
+dev-util/sysprof:systemd - Build the sysprofd daemon service, required to run the UI without root permissions. Relies on sys-apps/systemd for sd-bus API.
 dev-util/systemtap:libvirt - Support probing of libvirt domains.
 dev-util/vulkan-tools:cube - Build the cube/cubepp demos
 dev-util/vulkan-tools:vulkaninfo - Build the vulkaninfo utility
