@@ -30,6 +30,11 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (23 Mar 2019)
+# Unmaintained.  Vulnerable.  Fails to build (#612236, #620916).
+# Removal in 30 days.  Bug #670028.
+app-misc/freeplane
+
+# Michał Górny <mgorny@gentoo.org> (23 Mar 2019)
 # Unmaintained.  No reverse dependencies.  Fails to link.  Last upstream
 # activity in 2012.
 # Removal in 30 days.  Bug #632066.
