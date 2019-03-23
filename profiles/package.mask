@@ -30,6 +30,12 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (23 Mar 2019)
+# Unmaintained.  Fails to build against current sys-auth/libfprint.
+# Obsoleted upstream, in favor of libfprint[examples].
+# Removal in 30 days.  Bug #665174.
+sys-auth/fprint_demo
+
+# Michał Górny <mgorny@gentoo.org> (23 Mar 2019)
 # Unmaintained.  Fails to build.  Probably needs a fresh snapshot.
 # Removal in 30 days.  Bug #669592.
 net-misc/casync
