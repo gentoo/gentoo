@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 2018-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -21,8 +21,7 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/gn-gen-r2.patch
-	"${FILESDIR}"/gn-numerics-arm.patch
+	"${FILESDIR}"/gn-gen-r3.patch
 )
 
 pkg_setup() {
@@ -33,8 +32,8 @@ src_configure() {
 	python_setup
 	tc-export AR CC CXX
 	unset CFLAGS
-	set -- ${EPYTHON} build/gen.py --no-sysroot --no-last-commit-position
-	echo "$@"
+	set -- ${EPYTHON} build/gen.py --no-last-commit-position --no-strip
+	echo "$@" >&2
 	"$@" || die
 	cat >out/last_commit_position.h <<-EOF || die
 	#ifndef OUT_LAST_COMMIT_POSITION_H_
