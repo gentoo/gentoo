@@ -1,0 +1,15 @@
+BDEPEND=dev-util/ninja >=dev-util/cmake-3.9.6
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=virtual/pkgconfig
+DESCRIPTION=C++ libraries for building network-based applications
+EAPI=7
+HOMEPAGE=https://pocoproject.org/
+IUSE=7z cppparser +crypto +data examples +file2pagecompiler +json +pagecompiler iodbc libressl mariadb +mongodb mysql +net odbc pdf pocodoc sqlite +ssl test +util +xml +zip
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=Boost-1.0
+RDEPEND=>=dev-libs/libpcre-8.42 xml? ( dev-libs/expat ) mysql? ( !mariadb? ( dev-db/mysql-connector-c:0= ) mariadb? ( dev-db/mariadb-connector-c:0= ) ) odbc? ( iodbc? ( dev-db/libiodbc ) !iodbc? ( dev-db/unixODBC ) ) ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) ) sqlite? ( dev-db/sqlite:3 ) zip? ( sys-libs/zlib )
+REQUIRED_USE=7z? ( xml ) file2pagecompiler? ( pagecompiler ) iodbc? ( odbc ) mongodb? ( data ) mysql? ( data ) odbc? ( data ) pagecompiler? ( json net util xml ) pocodoc? ( cppparser util xml ) ssl? ( util ) sqlite? ( data ) test? ( data? ( sqlite ) json util xml )
+SLOT=0
+SRC_URI=https://github.com/pocoproject/poco/archive/poco-1.9.0-release.tar.gz -> poco-1.9.0.tar.gz
+_eclasses_=cmake-utils	ab10bd85e5d38e2a32077bcd91faa1b6	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	a09389deba2c0a7108b581e02c7cecbf	multilib	b2f01ad412baf81650c23fcf0975fa33	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	b45201c4e6c096b98e250336954e64b9	xdg-utils	14d00d009167652b1fa363e55effe213
+_md5_=f21c75c1080a845f1f2440c3d9697879
