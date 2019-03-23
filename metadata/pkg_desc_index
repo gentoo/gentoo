@@ -7359,7 +7359,7 @@ media-gfx/feh 2.18.3 3.1.1: A fast, lightweight imageviewer using imlib2
 media-gfx/figurine 1.0.5-r1: A vector based graphics editor similar to xfig, but simpler
 media-gfx/flam3 3.0.1: Tools and a library for creating flame fractal images
 media-gfx/fondu 20060102-r1: Utilities for converting between and manipulating mac fonts and unix fonts
-media-gfx/fontforge 20170731-r3 20170731-r4: postscript font editor and converter
+media-gfx/fontforge 20170731-r4: postscript font editor and converter
 media-gfx/fontypython 0.4.4-r3: Font preview application
 media-gfx/fotowall 1.0: Qt5 tool for creating wallpapers
 media-gfx/fotoxx 15.05: Program for improving image files made with a digital camera
