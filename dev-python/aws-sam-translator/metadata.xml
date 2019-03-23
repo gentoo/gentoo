@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>chutzpah@gentoo.org</email>
+	</maintainer>
+	<maintainer type="person">
+		<email>dolsen@gentoo.org</email>
+	</maintainer>
+	<maintainer type="project">
+		<email>python@gentoo.org</email>
+		<name>Python</name>
+	</maintainer>
+	<upstream>
+		<maintainer>
+			<email>aws-sam-developers@amazon.com</email>
+			<name>Amazon Web Services</name>
+		</maintainer>
+		<remote-id type="pypi">aws-sam-translator</remote-id>
+	</upstream>
+	<longdescription>This GitHub project is the starting point for AWS SAM. It
+		contains the SAM specification, the code that translates SAM templates
+		into AWS CloudFormation stacks, general information about the model, and
+		examples of common applications.
+	</longdescription>
+</pkgmetadata>
