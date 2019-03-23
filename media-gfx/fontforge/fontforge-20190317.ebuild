@@ -20,6 +20,7 @@ RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
 	cairo? ( png )
+	gtk? ( cairo )
 	python? ( ${PYTHON_REQUIRED_USE} )
 	test? ( png python )
 "
