@@ -1,0 +1,35 @@
+From b30057251d3f2b5860b36505fed440a6bebe0359 Mon Sep 17 00:00:00 2001
+From: Shiba <not@telling.you>
+Date: Wed, 19 Dec 2018 00:37:57 +0100
+Subject: [PATCH] elogind support
+
+---
+ daemon/meson.build | 11 ++++++++++-
+ 2 files changed, 11 insertions(+), 2 deletions(-)
+
+diff --git a/daemon/meson.build b/daemon/meson.build
+index d0cf87c..c7f85d7 100644
+--- a/daemon/meson.build
++++ b/daemon/meson.build
+@@ -11,8 +11,17 @@ sysprofd_sources = [
+ # NOTE: This is used in data/meson.build
+ pkglibexecdir = join_paths(get_option('prefix'), get_option('libexecdir'), 'sysprof')
+ 
++# Check for sd-bus support either by systemd or elogind
++sdbus_dep = dependency('libsystemd', version: '>=222', required: false)
++if not sdbus_dep.found()
++  sdbus_dep = dependency('libelogind', version: '>=239.3', required: false)
++  if not sdbus_dep.found()
++    error('sysprofd requires sd-bus but neither systemd nor elogind were found')
++  endif
++endif
++
+ sysprofd_deps = [
+-  dependency('libsystemd', version: '>=222'),
++  sdbus_dep,
+   dependency('glib-2.0'),
+ ]
+ 
+-- 
+2.18.1
+

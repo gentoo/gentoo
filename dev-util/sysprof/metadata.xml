@@ -12,7 +12,9 @@
 	In fact they don't even have to be restarted.
 </longdescription>
 <use>
+	<flag name="elogind">Build the sysprofd daemon service, required to run the UI without root permissions.
+		Relies on <pkg>sys-auth/elogind</pkg> for sd-bus API.</flag>
 	<flag name="systemd">Build the sysprofd daemon service, required to run the UI without root permissions.
-		Relies on <pkg>sys-apps/systemd</pkg> running as the init system.</flag>
+		Relies on <pkg>sys-apps/systemd</pkg> for sd-bus API.</flag>
 </use>
 </pkgmetadata>
