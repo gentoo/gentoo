@@ -13,7 +13,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-fbsd ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-fbsd ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="test"
 
 # When bumping, please check setup.py for the proper py version
@@ -24,7 +24,9 @@ PY_VER="1.5.0"
 RDEPEND="
 	>=dev-python/atomicwrites-1.0[${PYTHON_USEDEP}]
 	>=dev-python/attrs-17.4.0[${PYTHON_USEDEP}]
-	>=dev-python/more-itertools-4.0.0[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '>=dev-python/more-itertools-4.0.0[${PYTHON_USEDEP}]' python2_7 )
+	$(python_gen_cond_dep '<dev-python/more-itertools-6.0.0[${PYTHON_USEDEP}]' python2_7 )
+	$(python_gen_cond_dep '>=dev-python/more-itertools-4.0.0[${PYTHON_USEDEP}]' python3_{4,5,6,7} pypy{,3} )
 	$(python_gen_cond_dep 'dev-python/pathlib2[${PYTHON_USEDEP}]' python2_7 python3_{4,5} )
 	>=dev-python/pluggy-0.7[${PYTHON_USEDEP}]
 	>=dev-python/py-${PY_VER}[${PYTHON_USEDEP}]
