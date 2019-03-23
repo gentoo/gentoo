@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure
+DEPEND=dev-libs/glib:2 media-libs/alsa-lib x11-libs/gtk+:3[X] x11-libs/libX11 libnotify? ( >=x11-libs/libnotify-0.7 ) dev-util/intltool sys-devel/gettext virtual/pkgconfig
+DESCRIPTION=A lightweight volume control that sits in your systray
+EAPI=7
+HOMEPAGE=http://nullwise.com/volumeicon.html
+IUSE=libnotify
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=dev-libs/glib:2 media-libs/alsa-lib x11-libs/gtk+:3[X] x11-libs/libX11 libnotify? ( >=x11-libs/libnotify-0.7 )
+SLOT=0
+SRC_URI=http://nullwise.com/volumeicon/volumeicon-0.5.1.tar.gz
+_md5_=42e96e3726526bdd665c6eb483ef771d
