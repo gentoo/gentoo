@@ -40,7 +40,7 @@ RDEPEND="
 		dev-qt/qtwidgets:5
 		dev-qt/qtconcurrent:5
 		dev-qt/qtmultimedia:5
-		app-text/cmark
+		app-text/cmark:0=
 	)
 "
 DEPEND="${RDEPEND}
