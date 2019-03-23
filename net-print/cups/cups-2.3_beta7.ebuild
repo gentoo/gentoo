@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit autotools eapi7-ver gnome2-utils flag-o-matic linux-info xdg-utils multilib multilib-minimal pam user systemd toolchain-funcs
+inherit autotools flag-o-matic linux-info xdg multilib-minimal pam user systemd toolchain-funcs
 
 MY_PV="${PV/_rc/rc}"
 MY_PV="${MY_PV/_beta/b}"
@@ -53,7 +53,8 @@ CDEPEND="
 	zeroconf? ( >=net-dns/avahi-0.6.31-r2[${MULTILIB_USEDEP}] )
 "
 
-DEPEND="${CDEPEND}
+DEPEND="${CDEPEND}"
+BDEPEND="
 	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]
 "
 
@@ -77,7 +78,6 @@ PATCHES=(
 	"${FILESDIR}/${PN}-1.4.4-nostrip.patch"
 	"${FILESDIR}/${PN}-2.0.2-rename-systemd-service-files.patch"
 	"${FILESDIR}/${PN}-2.0.1-xinetd-installation-fix.patch"
-	"${FILESDIR}/${P}-usage_argument_fix.patch"
 )
 
 MULTILIB_CHOST_TOOLS=(
@@ -227,11 +227,11 @@ multilib_src_install_all() {
 	dodoc {CHANGES,CREDITS,README}.md
 
 	# move the default config file to docs
-	dodoc "${ED%/}"/etc/cups/cupsd.conf.default
-	rm -f "${ED%/}"/etc/cups/cupsd.conf.default
+	dodoc "${ED}"/etc/cups/cupsd.conf.default
+	rm -f "${ED}"/etc/cups/cupsd.conf.default
 
 	# clean out cups init scripts
-	rm -rf "${ED%/}"/etc/{init.d/cups,rc*,pam.d/cups}
+	rm -rf "${ED}"/etc/{init.d/cups,rc*,pam.d/cups}
 
 	# install our init script
 	local neededservices
@@ -251,16 +251,16 @@ multilib_src_install_all() {
 		# correct path
 		sed -i \
 			-e "s:server = .*:server = /usr/libexec/cups/daemon/cups-lpd:" \
-			"${ED%/}"/etc/xinetd.d/cups-lpd || die
+			"${ED}"/etc/xinetd.d/cups-lpd || die
 		# it is safer to disable this by default, bug #137130
-		grep -w 'disable' "${ED%/}"/etc/xinetd.d/cups-lpd || \
-			{ sed -i -e "s:}:\tdisable = yes\n}:" "${ED%/}"/etc/xinetd.d/cups-lpd || die ; }
+		grep -w 'disable' "${ED}"/etc/xinetd.d/cups-lpd || \
+			{ sed -i -e "s:}:\tdisable = yes\n}:" "${ED}"/etc/xinetd.d/cups-lpd || die ; }
 		# write permission for file owner (root), bug #296221
 		fperms u+w /etc/xinetd.d/cups-lpd || die "fperms failed"
 	else
 		# always configure with --with-xinetd= and clean up later,
 		# bug #525604
-		rm -rf "${ED%/}"/etc/xinetd.d
+		rm -rf "${ED}"/etc/xinetd.d
 	fi
 
 	keepdir /usr/libexec/cups/driver /usr/share/cups/{model,profiles} \
@@ -269,25 +269,25 @@ multilib_src_install_all() {
 	keepdir /etc/cups/{interfaces,ppd,ssl}
 
 	if ! use X ; then
-		rm -r "${ED%/}"/usr/share/applications || die
+		rm -r "${ED}"/usr/share/applications || die
 	fi
 
 	# create /etc/cups/client.conf, bug #196967 and #266678
-	echo "ServerName ${EPREFIX}/run/cups/cups.sock" >> "${ED%/}"/etc/cups/client.conf
+	echo "ServerName ${EPREFIX}/run/cups/cups.sock" >> "${ED}"/etc/cups/client.conf
 
 	# the following file is now provided by cups-filters:
-	rm -r "${ED%/}"/usr/share/cups/banners || die
+	rm -r "${ED}"/usr/share/cups/banners || die
 
 	# the following are created by the init script
-	rm -r "${ED%/}"/var/cache/cups || die
-	rm -r "${ED%/}"/run || die
+	rm -r "${ED}"/var/cache/cups || die
+	rm -r "${ED}"/run || die
 
 	# for the special case of running lprng and cups together, bug 467226
 	if use lprng-compat ; then
-		rm -fv "${ED%/}"/usr/bin/{lp*,cancel}
-		rm -fv "${ED%/}"/usr/sbin/lp*
-		rm -fv "${ED%/}"/usr/share/man/man1/{lp*,cancel*}
-		rm -fv "${ED%/}"/usr/share/man/man8/lp*
+		rm -fv "${ED}"/usr/bin/{lp*,cancel}
+		rm -fv "${ED}"/usr/sbin/lp*
+		rm -fv "${ED}"/usr/share/man/man1/{lp*,cancel*}
+		rm -fv "${ED}"/usr/share/man/man8/lp*
 		ewarn "Not installing lp... binaries, since the lprng-compat useflag is set."
 		ewarn "Unless you plan to install an exotic server setup, you most likely"
 		ewarn "do not want this. Disable the useflag then and all will be fine."
@@ -295,13 +295,12 @@ multilib_src_install_all() {
 }
 
 pkg_preinst() {
-	gnome2_icon_savelist
+	xdg_pkg_preinst
 }
 
 pkg_postinst() {
 	# Update desktop file database and gtk icon cache (bug 370059)
-	gnome2_icon_cache_update
-	xdg_desktop_database_update
+	xdg_pkg_postinst
 
 	local v
 
@@ -327,6 +326,5 @@ pkg_postinst() {
 
 pkg_postrm() {
 	# Update desktop file database and gtk icon cache (bug 370059)
-	gnome2_icon_cache_update
-	xdg_desktop_database_update
+	xdg_pkg_postrm
 }
