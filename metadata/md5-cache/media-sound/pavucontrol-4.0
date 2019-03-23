@@ -1,14 +1,14 @@
 BDEPEND=virtual/pkgconfig nls? ( dev-util/intltool sys-devel/gettext )
 DEFINED_PHASES=configure
-DEPEND=>=dev-cpp/gtkmm-3.0:3.0 >=dev-libs/libsigc++-2.2:2 >=media-libs/libcanberra-0.16[gtk3] >=media-sound/pulseaudio-5[glib] virtual/freedesktop-icon-theme
+DEPEND=>=dev-cpp/gtkmm-3.0:3.0[X] >=dev-libs/libsigc++-2.2:2 >=media-libs/libcanberra-0.16[gtk3] >=media-sound/pulseaudio-5[glib] virtual/freedesktop-icon-theme
 DESCRIPTION=Pulseaudio Volume Control, GTK based mixer for Pulseaudio
 EAPI=7
 HOMEPAGE=https://freedesktop.org/software/pulseaudio/pavucontrol/
 IUSE=nls
 KEYWORDS=~amd64 ~arm64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd
 LICENSE=GPL-2
-RDEPEND=>=dev-cpp/gtkmm-3.0:3.0 >=dev-libs/libsigc++-2.2:2 >=media-libs/libcanberra-0.16[gtk3] >=media-sound/pulseaudio-5[glib] virtual/freedesktop-icon-theme
+RDEPEND=>=dev-cpp/gtkmm-3.0:3.0[X] >=dev-libs/libsigc++-2.2:2 >=media-libs/libcanberra-0.16[gtk3] >=media-sound/pulseaudio-5[glib] virtual/freedesktop-icon-theme
 SLOT=0
 SRC_URI=https://freedesktop.org/software/pulseaudio/pavucontrol/pavucontrol-4.0.tar.xz
 _eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	a09389deba2c0a7108b581e02c7cecbf	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
-_md5_=5a9a5c7276c7ec95407cb25ec616b816
+_md5_=95a9e227adaf66f61835df08aa0bf511
