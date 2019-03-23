@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>chutzpah@gentoo.org</email>
+	</maintainer>
+	<maintainer type="person">
+		<email>dolsen@gentoo.org</email>
+	</maintainer>
+	<maintainer type="project">
+		<email>python@gentoo.org</email>
+		<name>Python</name>
+	</maintainer>
+	<upstream>
+		<maintainer>
+			<email>kddejong@amazon.com</email>
+			<name>kddejong</name>
+		</maintainer>
+		<remote-id type="pypi">cfn-lint</remote-id>
+	</upstream>
+	<longdescription>Validate CloudFormation yaml/json templates against the
+		CloudFormation spec and additional checks. Includes checking valid
+		values for resource properties and best practices.
+	</longdescription>
+</pkgmetadata>
