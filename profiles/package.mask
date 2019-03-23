@@ -30,6 +30,12 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (23 Mar 2019)
+# Unmaintained and ancient.  Upstream has abandoned the PAR 2.0 spec
+# effort in 2003-2004, and the code has not seen any attention since.
+# Removal in 30 days.  Bug #681364.
+app-arch/par
+
+# Michał Górny <mgorny@gentoo.org> (23 Mar 2019)
 # No maintainer.  Both the program and the ebuild are of bad quality,
 # the former requiring a patch and the latter failing to build in some
 # circumstances.  Last upstream activity in 2005.
