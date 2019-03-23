@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit eapi7-ver gnome2-utils xdg
+EAPI=7
+inherit xdg
 
 MY_PV="$(ver_cut 4)"
 
@@ -99,19 +99,4 @@ src_install() {
 	doins -r "${S}"/office6
 
 	fperms 0755 /opt/kingsoft/wps-office/office6/{wps,wpp,et}
-}
-
-pkg_preinst() {
-	xdg_pkg_preinst
-	gnome2_icon_savelist
-}
-
-pkg_postinst() {
-	xdg_pkg_postinst
-	gnome2_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_pkg_postrm
-	gnome2_icon_cache_update
 }
