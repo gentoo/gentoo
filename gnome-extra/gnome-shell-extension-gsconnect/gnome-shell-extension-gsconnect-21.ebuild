@@ -26,9 +26,8 @@ RDEPEND="${COMMON_DEPEND}
 		dev-python/nautilus-python
 		gnome-base/nautilus[introspection] )
 "
-DEPEND="${COMMON_DEPEND}
-	virtual/pkgconfig
-"
+DEPEND="${COMMON_DEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 DISABLE_AUTOFORMATTING="yes"
 DOC_CONTENTS="For knowing more about how to do the setup, please visit:
