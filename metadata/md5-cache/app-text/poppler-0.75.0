@@ -1,13 +1,15 @@
-BDEPEND=dev-util/glib-utils virtual/pkgconfig dev-util/ninja >=dev-util/cmake-3.9.6 >=dev-vcs/git-1.8.2.1[curl]
-DEFINED_PHASES=compile configure install prepare test unpack
+BDEPEND=dev-util/glib-utils virtual/pkgconfig dev-util/ninja >=dev-util/cmake-3.9.6
+DEFINED_PHASES=compile configure install prepare test
 DEPEND=media-libs/fontconfig media-libs/freetype sys-libs/zlib cairo? ( dev-libs/glib:2 x11-libs/cairo introspection? ( dev-libs/gobject-introspection:= ) ) curl? ( net-misc/curl ) jpeg? ( virtual/jpeg:0 ) jpeg2k? ( >=media-libs/openjpeg-2.3.0-r1:2= ) lcms? ( media-libs/lcms:2 ) nss? ( >=dev-libs/nss-3.19:0 ) png? ( media-libs/libpng:0= ) qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtxml:5 ) tiff? ( media-libs/tiff:0 )
 DESCRIPTION=PDF rendering library based on the xpdf-3.0 code base
 EAPI=7
 HOMEPAGE=https://poppler.freedesktop.org/
 IUSE=cairo cjk curl cxx debug doc +introspection +jpeg +jpeg2k +lcms nss png qt5 tiff +utils
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
 LICENSE=GPL-2
 RDEPEND=media-libs/fontconfig media-libs/freetype sys-libs/zlib cairo? ( dev-libs/glib:2 x11-libs/cairo introspection? ( dev-libs/gobject-introspection:= ) ) curl? ( net-misc/curl ) jpeg? ( virtual/jpeg:0 ) jpeg2k? ( >=media-libs/openjpeg-2.3.0-r1:2= ) lcms? ( media-libs/lcms:2 ) nss? ( >=dev-libs/nss-3.19:0 ) png? ( media-libs/libpng:0= ) qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtxml:5 ) tiff? ( media-libs/tiff:0 ) cjk? ( app-text/poppler-data )
 RESTRICT=test
-SLOT=0/9999
-_eclasses_=cmake-utils	ab10bd85e5d38e2a32077bcd91faa1b6	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	a09389deba2c0a7108b581e02c7cecbf	git-r3	0d4635eeb5a96cd5315597a47eba25c9	multilib	b2f01ad412baf81650c23fcf0975fa33	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	b45201c4e6c096b98e250336954e64b9	xdg-utils	14d00d009167652b1fa363e55effe213
+SLOT=0/86
+SRC_URI=https://poppler.freedesktop.org/poppler-0.75.0.tar.xz
+_eclasses_=cmake-utils	ab10bd85e5d38e2a32077bcd91faa1b6	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	a09389deba2c0a7108b581e02c7cecbf	multilib	b2f01ad412baf81650c23fcf0975fa33	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	b45201c4e6c096b98e250336954e64b9	xdg-utils	14d00d009167652b1fa363e55effe213
 _md5_=32e0d1010acf5de155b3bc2d12b32143
