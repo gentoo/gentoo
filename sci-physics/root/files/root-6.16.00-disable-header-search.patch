@@ -1,0 +1,38 @@
+From: Benda Xu <heroxbd@gentoo.org>
+Date: 2019-03-23
+Subject: Remove header expansion logic from module cmake helper.
+
+Description: ROOT module cmake helper by default expands header inclusion to
+absolute path.  In Gentoo, that will capture PORTAGE_TMPDIR resulting in various
+runtime bugs. By removing this convolved logic, headers are untouched and become
+more predictible for rootcling at runtime.
+
+Typical bug it solves:
+
+  Error in cling::AutoloadingVisitor::InsertIntoAutoloadingState:
+    Missing FileEntry for /var/tmp/portage/sci-physics/JSAP-479/work/JSAP-479/DataType/JPSimOutput.hh
+    requested to autoload type JPSimTruthTree_t
+  Error in cling::AutoloadingVisitor::InsertIntoAutoloadingState:
+    Missing FileEntry for /var/tmp/portage/sci-physics/JSAP-479/work/JSAP-479/DataType/JPSimOutput.hh
+    requested to autoload type JPSimTriggerInfoTree_t
+
+Forwarded: No need. Gentoo specific.
+
+--- a/cmake/modules/RootNewMacros.cmake	2019-01-23 16:23:37.000000000 +0800
++++ b/cmake/modules/RootNewMacros.cmake	2019-02-25 00:18:04.000000000 +0800
+@@ -250,14 +250,7 @@ function(ROOT_GENERATE_DICTIONARY dictio
+       list(APPEND headerfiles ${fp})
+       list(APPEND _list_of_header_dependencies ${fp})
+     else()
+-      find_file(headerFile ${fp} HINTS ${localinclude} ${incdirs} NO_DEFAULT_PATH)
+-      find_file(headerFile ${fp} NO_SYSTEM_ENVIRONMENT_PATH)
+-      if(headerFile)
+-        list(APPEND headerfiles ${headerFile})
+-        list(APPEND _list_of_header_dependencies ${headerFile})
+-      else()
+-        list(APPEND headerfiles ${fp})
+-      endif()
++      list(APPEND headerfiles ${fp})
+       unset(headerFile CACHE)
+     endif()
+   endforeach()
