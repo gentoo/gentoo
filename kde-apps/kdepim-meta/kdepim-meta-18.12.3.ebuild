@@ -8,7 +8,7 @@ HOMEPAGE="https://www.kde.org/applications/development"
 
 LICENSE="metapackage"
 SLOT="5"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE="bogofilter clamav spamassassin"
 
 RDEPEND="
