@@ -3312,6 +3312,7 @@ media-sound/pulseaudio:X - Build the X11 publish module to export PulseAudio inf
 media-sound/pulseaudio:alsa-plugin - Request installing media-plugins/alsa-plugins with PulseAudio plugin enabled. This ensures that clients supporting ALSA only will use PulseAudio.
 media-sound/pulseaudio:asyncns - Use libasyncns for asynchronous name resolution.
 media-sound/pulseaudio:doc - Build the doxygen-described API documentation.
+media-sound/pulseaudio:elogind - Use sys-auth/elogind for giving each session a PA client
 media-sound/pulseaudio:equalizer - Enable the equalizer module (requires sci-libs/fftw).
 media-sound/pulseaudio:gconf - Ensure gnome-base/gconf is present for pulseaudio GConf to GSettings module automatic migration (keeping the user configuration)
 media-sound/pulseaudio:gdbm - Use sys-libs/gdbm to store PulseAudio databases. Recommended for desktop usage. This flag causes the whole package to be licensed under GPL-2 or later.
