@@ -42,7 +42,7 @@ src_compile() {
 
 src_install() {
 	java-pkg-simple_src_install
-	dodoc README.md release-notes/{CREDITS,VERSION}
+	dodoc README.md release-notes/{CREDITS,VERSION}-${SLOT}.x
 }
 
 src_test() {
