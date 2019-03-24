@@ -27,6 +27,5 @@ src_install() {
 	insinto /lib/modules
 	doins -r modules/*
 	insinto /boot
-	newins boot/kernel.img kernel.img
-	newins boot/kernel7.img kernel7.img
+	doins boot/*.img
 }
