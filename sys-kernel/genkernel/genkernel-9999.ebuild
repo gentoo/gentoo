@@ -12,10 +12,10 @@ VERSION_BUSYBOX='1.30.1' # warning, be sure to bump patches
 VERSION_DMRAID='1.0.0.rc16-3' # warning, be sure to bump patches
 VERSION_LIBAIO='0.3.110' # warning, be sure to bump patches
 VERSION_MDADM='4.1' # warning, be sure to bump patches
-VERSION_FUSE='2.8.6' # warning, be sure to bump patches
+VERSION_FUSE='2.9.9' # warning, be sure to bump patches
 VERSION_ISCSI='2.0-872' # warning, be sure to bump patches
 VERSION_LVM='2.02.183' # warning, be sure to bump patches
-VERSION_UNIONFS_FUSE='0.24'
+VERSION_UNIONFS_FUSE='2.0'
 VERSION_GPG='1.4.23'
 
 RH_HOME="ftp://sourceware.org/pub"
@@ -30,10 +30,9 @@ COMMON_URI="${DM_HOME}/dmraid-${VERSION_DMRAID}.tar.bz2
 		${BB_HOME}/busybox-${VERSION_BUSYBOX}.tar.bz2
 		http://www.open-iscsi.org/bits/open-iscsi-${VERSION_ISCSI}.tar.gz
 		mirror://gentoo/open-iscsi-${VERSION_ISCSI}.tar.gz
-		mirror://sourceforge/fuse/fuse-${VERSION_FUSE}.tar.gz
+		https://github.com/libfuse/libfuse/releases/download/fuse-${VERSION_FUSE}/fuse-${VERSION_FUSE}.tar.gz
 		mirror://debian/pool/main/liba/libaio/libaio_${VERSION_LIBAIO}.orig.tar.gz -> libaio-${VERSION_LIBAIO}.tar.gz
-		http://podgorny.cz/unionfs-fuse/releases/unionfs-fuse-${VERSION_UNIONFS_FUSE}.tar.bz2
-		mirror://gentoo/unionfs-fuse-${VERSION_UNIONFS_FUSE}.tar.bz2
+		https://github.com/rpodgorny/unionfs-fuse/archive/v${VERSION_UNIONFS_FUSE}.tar.gz -> unionfs-fuse-${VERSION_UNIONFS_FUSE}.tar.gz
 		mirror://gnupg/gnupg/gnupg-${VERSION_GPG}.tar.bz2"
 
 if [[ ${PV} == 9999* ]]
