@@ -8,7 +8,7 @@ MY_PN="${PN/gnome-shell-extension-/}"
 MY_P="${MY_PN}-${PV}"
 DESCRIPTION="An icon taskbar for the Gnome Shell"
 HOMEPAGE="https://github.com/home-sweet-gnome/dash-to-panel"
-SRC_URI="https://github.com/home-sweet-gnome/dash-to-panel/archive/v19.tar.gz"
+SRC_URI="https://github.com/home-sweet-gnome/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
