@@ -19,10 +19,6 @@ DOC_CONTENTS="Please configure your ram setup by editing /boot/config.txt"
 
 RESTRICT="binchecks strip"
 
-src_configure() { :; }
-
-src_compile() { :; }
-
 src_install() {
 	insinto /lib/modules
 	doins -r modules/*
