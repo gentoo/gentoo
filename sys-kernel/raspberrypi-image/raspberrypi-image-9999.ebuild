@@ -3,14 +3,13 @@
 
 EAPI=5
 
-inherit git-r3 mount-boot readme.gentoo-r1
+inherit git-r3 mount-boot
 
 DESCRIPTION="Raspberry Pi (all versions) kernel and modules"
 HOMEPAGE="https://github.com/raspberrypi/firmware"
 LICENSE="GPL-2 raspberrypi-videocore-bin"
 SLOT="0"
 EGIT_REPO_URI="https://github.com/raspberrypi/firmware"
-DOC_CONTENTS="Please configure your ram setup by editing /boot/config.txt"
 RESTRICT="binchecks strip"
 
 src_install() {
@@ -19,6 +18,4 @@ src_install() {
 	insinto /boot
 	newins boot/kernel.img kernel.img
 	newins boot/kernel7.img kernel7.img
-
-	readme.gentoo_create_doc
 }
