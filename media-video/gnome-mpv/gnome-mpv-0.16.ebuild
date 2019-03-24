@@ -11,7 +11,7 @@ SRC_URI="https://github.com/gnome-mpv/gnome-mpv/releases/download/v${PV}/${P}.ta
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 RDEPEND=">=dev-libs/glib-2.44
 	>=x11-libs/gtk+-3.22.23:3
