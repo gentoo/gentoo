@@ -18,7 +18,7 @@ else
 fi
 
 SLOT="0"
-IUSE="ap bindist dbus eap-sim eapol_test fasteap +hs2-0 libressl macsec p2p privsep ps3 qt5 readline selinux smartcard tdls uncommon-eap-types wimax wps kernel_linux kernel_FreeBSD"
+IUSE="ap bindist dbus eap-sim eapol_test fasteap +hs2-0 libressl macsec p2p privsep ps3 qt5 readline selinux smartcard suiteb tdls uncommon-eap-types wimax wps kernel_linux kernel_FreeBSD"
 
 CDEPEND="dbus? ( sys-apps/dbus )
 	kernel_linux? (
@@ -227,7 +227,9 @@ src_configure() {
 		Kconfig_style_config OWE
 		Kconfig_style_config SAE
 		Kconfig_style_config DPP
-		Kconfig_style_config SUITEB
+		if use suiteb; then
+			Kconfig_style_config SUITEB
+		fi
 		Kconfig_style_config SUITEB192
 	fi
 
