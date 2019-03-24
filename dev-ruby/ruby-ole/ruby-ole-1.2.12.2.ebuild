@@ -9,22 +9,20 @@ RUBY_FAKEGEM_RECIPE_TEST=none
 
 # Same thing for the docs whose rake target just calls rdoc.
 RUBY_FAKEGEM_RECIPE_DOC=rdoc
-RUBY_FAKEGEM_EXTRADOC="GUIDE.md History.md README.md"
+RUBY_FAKEGEM_EXTRADOC="ChangeLog README.rdoc"
 
 inherit ruby-fakegem
 
-DESCRIPTION="Ruby library to read and write spreadsheet documents"
-HOMEPAGE="https://github.com/zdavatz/spreadsheet"
-SRC_URI="https://github.com/zdavatz/spreadsheet/archive/${PV}.tar.gz -> ${P}.tar.gz"
+DESCRIPTION="Ruby library for easy read/write access to OLE compound documents"
+HOMEPAGE="https://github.com/aquasync/ruby-ole"
 
-LICENSE="GPL-3"
+LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
 
 ruby_add_bdepend "test? ( dev-ruby/test-unit:2 )"
-ruby_add_rdepend ">=dev-ruby/ruby-ole-1.0"
 
 each_ruby_test() {
-	ruby-ng_testrb-2 --pattern='.+.rb' --exclude='suite\.rb' test/
+	ruby-ng_testrb-2 --pattern='test.*\.rb' test/
 }
