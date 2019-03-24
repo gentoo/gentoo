@@ -4,8 +4,9 @@
 EAPI=7
 
 PYTHON_COMPAT=( python{2_7,3_{5,6,7}} )
+VIRTUALX_REQUIRED="manual"
 
-inherit python-single-r1 xdg
+inherit python-single-r1 virtualx xdg
 
 DESCRIPTION="postscript font editor and converter"
 HOMEPAGE="http://fontforge.github.io/"
@@ -56,6 +57,7 @@ DEPEND="${RDEPEND}
 BDEPEND="
 	sys-devel/gettext
 	virtual/pkgconfig
+	test? ( gtk? ( ${VIRTUALX_DEPEND} ) )
 "
 
 # Needs keywording on many arches.
@@ -104,6 +106,14 @@ src_compile() {
 	# Build system deps are broken
 	emake -C plugins
 	emake
+}
+
+src_test() {
+	if use gtk; then
+		virtx emake check
+	else
+		emake check
+	fi
 }
 
 src_install() {
