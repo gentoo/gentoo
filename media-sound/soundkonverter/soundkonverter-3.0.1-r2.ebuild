@@ -1,20 +1,22 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit kde5
 
 DESCRIPTION="Frontend to various audio converters"
-HOMEPAGE="https://www.linux-apps.com/search?projectSearchText=soundKonverter
-	https://github.com/dfaust/soundkonverter"
+HOMEPAGE="https://www.linux-apps.com/p/1126634/ https://github.com/dfaust/soundkonverter"
 SRC_URI="https://github.com/dfaust/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-COMMON_DEPEND="
+BDEPEND="
+	sys-devel/gettext
+"
+DEPEND="
 	$(add_frameworks_dep kcompletion)
 	$(add_frameworks_dep kconfig)
 	$(add_frameworks_dep kconfigwidgets)
@@ -36,14 +38,15 @@ COMMON_DEPEND="
 	>=media-libs/taglib-1.10
 	media-sound/cdparanoia
 "
-DEPEND="${COMMON_DEPEND}
-	sys-devel/gettext
-"
-RDEPEND="${COMMON_DEPEND}
+RDEPEND="${DEPEND}
 	!media-sound/soundkonverter:4
 "
 
-PATCHES=( "${FILESDIR}/${PN}-3.0.0-deps.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-3.0.0-deps.patch"
+	"${FILESDIR}/${P}-fix-add-dirs.patch"
+	"${FILESDIR}/${P}-metainfodir.patch"
+)
 
 S="${WORKDIR}"/${P}/src
 

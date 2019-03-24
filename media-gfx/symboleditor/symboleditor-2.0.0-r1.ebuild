@@ -1,12 +1,12 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-KDE_HANDBOOK="true"
+KDE_HANDBOOK="optional"
 inherit kde5
 
-DESCRIPTION="Application to create libraries of QPainterPath objects with redering hints"
+DESCRIPTION="Application to create libraries of QPainterPath objects with rendering hints"
 HOMEPAGE="https://userbase.kde.org/SymbolEditor"
 if [[ ${KDE_BUILD_TYPE} != live ]]; then
 	MY_P=SymbolEditor-${PV}
@@ -18,7 +18,10 @@ LICENSE="GPL-2"
 KEYWORDS="amd64"
 IUSE=""
 
-COMMON_DEPEND="
+BDEPEND="
+	sys-devel/gettext
+"
+DEPEND="
 	$(add_frameworks_dep kconfig)
 	$(add_frameworks_dep kconfigwidgets)
 	$(add_frameworks_dep kcoreaddons)
@@ -29,17 +32,16 @@ COMMON_DEPEND="
 	$(add_qt_dep qtgui)
 	$(add_qt_dep qtwidgets)
 "
-DEPEND="${COMMON_DEPEND}
-	sys-devel/gettext
-	x11-misc/shared-mime-info
-"
-RDEPEND="${COMMON_DEPEND}
-	!media-gfx/symboleditor:4
-"
+RDEPEND="${DEPEND}"
+
+PATCHES=(
+	"${FILESDIR}/${P}-cmake.patch"
+	"${FILESDIR}/${P}-doc-optional.patch"
+)
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_find_package handbook KF5DocTools)
+		-DCMAKE_DISABLE_FIND_PACKAGE_Doxygen=ON
 	)
 
 	kde5_src_configure
