@@ -1,13 +1,14 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit kde5
 
 DESCRIPTION="Provides interfaces and session daemon to colord"
-HOMEPAGE="http://projects.kde.org/projects/playground/graphics/colord-kde"
-SRC_URI="mirror://kde/stable/${PN}/${PV}/src/${P}.tar.xz"
+HOMEPAGE="https://cgit.kde.org/colord-kde.git"
+SRC_URI="mirror://kde/stable/${PN}/${PV}/src/${P}.tar.xz
+https://dev.gentoo.org/~asturm/distfiles/${P}-patches.tar.xz"
 
 LICENSE="GPL-2+"
 KEYWORDS="~amd64 ~x86"
@@ -38,7 +39,7 @@ RDEPEND="${COMMON_DEPEND}
 	x11-misc/colord
 "
 
-PATCHES=( "${FILESDIR}/${P}-unused-deps.patch" )
+PATCHES=( "${WORKDIR}/${P}-patches" )
 
 pkg_postinst() {
 	kde5_pkg_postinst
