@@ -1,4 +1,4 @@
-# Copyright 2018 Gentoo Authors
+# Copyright 2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,6 +18,7 @@ KEYWORDS="~amd64 ~x86"
 DEPEND="virtual/linux-sources"
 PATCHES=(
 	"${FILESDIR}/rts_pstor-makefile.patch"
+	"${FILESDIR}/fix-compile-kernel-5.0.0.patch"
 )
 S="${WORKDIR}/RTS5209-linux-driver-${GIT_COMMIT}"
 
