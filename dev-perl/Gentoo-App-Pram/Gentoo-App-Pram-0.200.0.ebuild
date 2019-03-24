@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -23,7 +23,8 @@ RDEPEND="
 	virtual/perl-File-Temp
 	virtual/perl-HTTP-Tiny
 	virtual/perl-Getopt-Long
-	virtual/perl-Term-ANSIColor"
+	virtual/perl-Term-ANSIColor
+	!app-portage/pram"
 
 DEPEND="
 	${RDEPEND}
