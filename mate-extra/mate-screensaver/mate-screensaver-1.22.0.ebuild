@@ -10,10 +10,11 @@ if [[ ${PV} != 9999 ]]; then
 fi
 
 DESCRIPTION="Replaces xscreensaver, integrating with the MATE desktop"
+
 LICENSE="GPL-2"
 SLOT="0"
-
-IUSE="X debug consolekit kernel_linux libnotify opengl pam systemd"
+IUSE="X debug consolekit elogind kernel_linux libnotify opengl pam systemd"
+REQUIRED_USE="?? ( elogind systemd )"
 
 DOC_CONTENTS="
 	Information for converting screensavers is located in
@@ -45,6 +46,7 @@ COMMON_DEPEND="
 	opengl? ( virtual/opengl )
 	pam? ( gnome-base/gnome-keyring virtual/pam )
 	!pam? ( kernel_linux? ( sys-apps/shadow ) )
+	elogind? ( sys-auth/elogind )
 	systemd? ( sys-apps/systemd:= )
 	!!<gnome-extra/gnome-screensaver-3"
 
@@ -58,19 +60,30 @@ DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig:*"
 
 src_configure() {
-	mate_src_configure \
-		--enable-locking \
-		--with-kbd-layout-indicator \
-		--with-xf86gamma-ext \
-		--with-xscreensaverdir=/usr/share/xscreensaver/config \
-		--with-xscreensaverhackdir=/usr/$(get_libdir)/misc/xscreensaver \
-		$(use_with X x) \
-		$(use_with consolekit console-kit) \
-		$(use_with libnotify) \
-		$(use_with opengl libgl) \
-		$(use_with systemd) \
-		$(use_enable debug) \
+	local myconf=(
+		--enable-locking
+		--with-kbd-layout-indicator
+		--with-xf86gamma-ext
+		--with-xscreensaverdir=/usr/share/xscreensaver/config
+		--with-xscreensaverhackdir=/usr/$(get_libdir)/misc/xscreensaver
+		$(use_with X x)
+		$(use_with consolekit console-kit)
+		$(use_with libnotify)
+		$(use_with opengl libgl)
+		$(use_with systemd)
+		$(use_enable debug)
 		$(use_enable pam)
+	)
+
+	if use elogind; then
+		myconf+=(
+			--with-systemd
+			SYSTEMD_CFLAGS=`pkg-config --cflags "libelogind" 2>/dev/null`
+			SYSTEMD_LIBS=`pkg-config --libs "libelogind" 2>/dev/null`
+		)
+	fi
+
+	mate_src_configure "${myconf[@]}"
 }
 
 src_install() {
