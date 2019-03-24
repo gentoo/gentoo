@@ -11,7 +11,7 @@ SRC_URI="https://github.com/rockdaboot/${PN}/releases/download/${P}/${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 
-KEYWORDS="~amd64 ~hppa ~sparc ~x86"
+KEYWORDS="~amd64 ~hppa ~ia64 ~sparc ~x86"
 IUSE="icu +idn +man"
 
 RDEPEND="
