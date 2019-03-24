@@ -206,7 +206,7 @@ app-arch/pxz 5.0_pre20151029: Parallel implementation of the XZ compression util
 app-arch/rpm 4.14.1: Red Hat Package Management Utils
 app-arch/rpm2targz 9.0.0.5g: Convert a .rpm file to a .tar.gz archive
 app-arch/rzip 2.1-r3: Compression program for large files
-app-arch/sharutils 4.14-r1: Tools to deal with shar archives
+app-arch/sharutils 4.14-r1 4.15.2-r1: Tools to deal with shar archives
 app-arch/snappy 1.1.7: A high-speed compression/decompression library by Google
 app-arch/stuffit 5.2.0.611: Aladdin Software's StuffIt and StuffIt Expander
 app-arch/tar 1.31-r1: Use this to make tarballs :)
@@ -8549,7 +8549,7 @@ net-dns/dnswalk 2.0.2: dnswalk is a DNS database debugger
 net-dns/idnkit 1.0-r2: Toolkit for Internationalized Domain Names (IDN)
 net-dns/ldns-utils 1.7.0-r1: Set of utilities to simplify various dns(sec) tasks
 net-dns/libidn 1.33-r2 1.33-r99 1.35: Internationalized Domain Names (IDN) implementation
-net-dns/libidn2 2.0.4: An implementation of the IDNA2008 specifications (RFCs 5890, 5891, 5892, 5893)
+net-dns/libidn2 2.0.4 2.1.1a: An implementation of the IDNA2008 specifications (RFCs 5890, 5891, 5892, 5893)
 net-dns/maradns 2.0.09-r2: A security-aware DNS server
 net-dns/mydns 1.2.8.31-r1: A DNS-Server which gets its data from a MySQL-/PostgreSQL-database
 net-dns/ndu 0.4-r4: DNS serial number incrementer and reverse zone builder
@@ -10250,7 +10250,7 @@ sys-libs/efivar 30 31 37: Tools and library to manipulate EFI variables
 sys-libs/freeipmi 1.4.8 1.5.7: Provides Remote-Console and System Management Software as per IPMI v1.5/2.0
 sys-libs/fts-standalone 0.2-r1 1.2.7: Standalone fts library for use with musl
 sys-libs/gdbm 1.13-r2: Standard GNU database libraries
-sys-libs/glibc 2.27-r6: GNU libc C library
+sys-libs/glibc 2.27-r6 2.28-r5: GNU libc C library
 sys-libs/gpm 1.20.7-r2: Console-based mouse driver
 sys-libs/gwenhywfar 4.20.0: A multi-platform helper library for other libraries
 sys-libs/kpmcore 3.3.0: Library for managing partitions
