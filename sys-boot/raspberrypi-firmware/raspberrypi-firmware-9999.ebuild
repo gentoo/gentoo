@@ -43,7 +43,7 @@ pkg_preinst() {
 
 src_install() {
 	insinto /boot
-	cd boot
+	cd boot || die
 	doins bootcode.bin fixup*.dat start*elf
 	doins *.dtb
 	doins -r overlays
