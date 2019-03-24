@@ -10,7 +10,7 @@ HOMEPAGE="https://wiki.gnome.org/Projects/Amtk"
 
 LICENSE="LGPL-2.1+"
 SLOT="5"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~sparc"
 IUSE="+introspection"
 
 RDEPEND="
