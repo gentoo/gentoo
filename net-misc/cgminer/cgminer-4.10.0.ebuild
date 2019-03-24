@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit eutils flag-o-matic
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="Bitcoin CPU/GPU/FPGA/ASIC miner in C"
 HOMEPAGE="https://bitcointalk.org/?topic=28402.msg357369 https://github.com/ckolivas/cgminer"
@@ -24,46 +24,50 @@ RDEPEND="net-misc/curl
 	virtual/libusb:1[udev]
 	ncurses? ( sys-libs/ncurses:0= )
 	udev? ( virtual/libudev )"
-DEPEND="virtual/pkgconfig
-	${RDEPEND}"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 src_configure() {
 	use hardened && append-cflags "-nopie"
 
 	# PKG_CHECK_MODULES needs PKG_CONFIG for --with-system-jansson.
-	export PKG_CONFIG=/usr/bin/pkg-config
-	econf $(use_with ncurses curses) \
-		$(use_enable ants1) \
-		$(use_enable ants2) \
-		$(use_enable ants3) \
-		$(use_enable avalon) \
-		$(use_enable avalon2) \
-		$(use_enable avalon4) \
-		$(use_enable avalon7) \
-		$(use_enable avalon-miner) \
-		$(use_enable bab) \
-		$(use_enable bitmine_A1) \
-		$(use_enable bflsc) \
-		$(use_enable bitforce) \
-		$(use_enable bitfury) \
-		$(use_enable blockerupter) \
-		$(use_enable cointerra) \
-		$(use_enable drillbit) \
-		$(use_enable hashfast) \
-		$(use_enable hashratio) \
-		$(use_enable icarus) \
-		$(use_enable klondike) \
-		$(use_enable knc) \
-		$(use_enable minion) \
-		$(use_enable modminer) \
-		$(use_enable sp10) \
-		$(use_enable sp30) \
-		$(use_enable udev) \
-		--disable-forcecombo \
-		--with-system-libusb \
+	export PKG_CONFIG="$(tc-getPKG_CONFIG)"
+	local myeconfargs=(
+		$(use_with ncurses curses)
+		$(use_enable ants1)
+		$(use_enable ants2)
+		$(use_enable ants3)
+		$(use_enable avalon)
+		$(use_enable avalon2)
+		$(use_enable avalon4)
+		$(use_enable avalon7)
+		$(use_enable avalon-miner)
+		$(use_enable bab)
+		$(use_enable bitmine_A1)
+		$(use_enable bflsc)
+		$(use_enable bitforce)
+		$(use_enable bitfury)
+		$(use_enable blockerupter)
+		$(use_enable cointerra)
+		$(use_enable drillbit)
+		$(use_enable hashfast)
+		$(use_enable hashratio)
+		$(use_enable icarus)
+		$(use_enable klondike)
+		$(use_enable knc)
+		$(use_enable minion)
+		$(use_enable modminer)
+		$(use_enable sp10)
+		$(use_enable sp30)
+		$(use_enable udev)
+		--disable-forcecombo
+		--with-system-libusb
 		--with-system-jansson
+	)
+	econf "${myeconfargs[@]}" \
+	NCURSES_LIBS="$(${PKG_CONFIG} --libs ncurses)"
 	# sanitize directories (is this still needed?)
-	sed -i 's~^\(\#define CGMINER_PREFIX \).*$~\1"'"${EPREFIX}/usr/lib/cgminer"'"~' config.h
+	sed -i 's~^\(\#define CGMINER_PREFIX \).*$~\1"'"${EPREFIX}/usr/lib/cgminer"'"~' config.h || die
 }
 
 src_install() { # How about using some make install?
