@@ -5,10 +5,10 @@ DESCRIPTION=Small, lightweight Qt text editor
 EAPI=7
 HOMEPAGE=https://tea.ourproject.org/
 IUSE=aspell djvu hunspell pdf +qml
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 ~x86
 LICENSE=GPL-3+
 RDEPEND=dev-qt/qtcore:5 dev-qt/qtdeclarative:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtprintsupport:5 dev-qt/qtwidgets:5 sys-libs/zlib aspell? ( app-text/aspell ) djvu? ( app-text/djvu ) hunspell? ( app-text/hunspell:= ) pdf? ( app-text/poppler[qt5] ) qml? ( dev-qt/qtdeclarative:5 )
 SLOT=0
 SRC_URI=https://tea.ourproject.org/dloads/tea-47.0.0.tar.bz2
 _eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	b2f01ad412baf81650c23fcf0975fa33	qmake-utils	bdf97e69a34b864d6d545f4ec3143ff7	toolchain-funcs	b45201c4e6c096b98e250336954e64b9	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	14d00d009167652b1fa363e55effe213
-_md5_=241d679a79fdf5fd05e8dcc3ec349a1e
+_md5_=1af376f94e91be525328c9d16eb4f3ac
