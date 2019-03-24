@@ -10,7 +10,7 @@ MY_PV=$(ver_cut 1-2)-u$(ver_cut 3)-b$(ver_cut 4)-s$(ver_cut 5)
 MY_P=${MY_PN}_${MY_PV}
 
 DESCRIPTION="Monkey's Audio Codecs"
-HOMEPAGE="http://etree.org/shnutils/shntool/ http://www.deb-multimedia.org/dists/testing/main/binary-amd64/package/monkeys-audio.php"
+HOMEPAGE="http://www.deb-multimedia.org/dists/testing/main/binary-amd64/package/monkeys-audio.php"
 SRC_URI="http://www.deb-multimedia.org/pool/main/m/monkeys-audio/${MY_P}.orig.tar.gz"
 
 LICENSE="mac"
