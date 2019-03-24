@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 MY_P="${P/_/-}"
 DESCRIPTION="A portable high-level Jabber/XMPP library for C++"
@@ -23,22 +23,27 @@ DEPEND="idn? ( net-dns/libidn:= )
 
 RDEPEND="${DEPEND}"
 
+# GnuTLS checks hang forever
+RESTRICT="test"
+
 S="${WORKDIR}/${MY_P}"
 
 src_configure() {
 	# Examples are not installed anyway, so - why should we build them?
-	econf \
-		--without-examples \
-		$(usex debug "--enable-debug" '') \
-		$(use_enable static-libs static) \
-		$(use_with idn libidn) \
-		$(use_with gnutls) \
-		$(use_with ssl openssl) \
-		$(use_with test tests) \
+	local myeconfargs=(
+		--without-examples
+		$(usex debug "--enable-debug" '')
+		$(use_enable static-libs static)
+		$(use_with idn libidn)
+		$(use_with gnutls)
+		$(use_with ssl openssl)
+		$(use_with test tests)
 		$(use_with zlib)
+	)
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {
 	default
-	find "${ED}" \( -name "*.a" -o -name "*.la" \) -delete || die
+	find "${ED}" -name "*.la" -delete || die
 }
