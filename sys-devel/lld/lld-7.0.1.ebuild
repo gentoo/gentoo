@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -20,7 +20,7 @@ SRC_URI="https://releases.llvm.org/${PV/_//}/${MY_P}.tar.xz
 
 LICENSE="UoI-NCSA"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86 ~amd64-fbsd"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86 ~amd64-fbsd"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
