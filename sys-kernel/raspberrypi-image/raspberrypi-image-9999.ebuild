@@ -14,6 +14,7 @@ RESTRICT="binchecks strip"
 if [[ "${PV}" == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/raspberrypi/firmware"
+	EGIT_CLONE_TYPE="shallow"
 else
 	[[ "$(ver_cut 4)" == 'p' ]] || die "Unsupported version format, tweak the ebuild."
 	MY_PV="1.$(ver_cut 5)"
