@@ -1,23 +1,24 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit git-r3 readme.gentoo
+inherit mount-boot readme.gentoo-r1
 
-DESCRIPTION="Raspberry PI boot loader and firmware"
+DESCRIPTION="Raspberry Pi (all versions) bootloader and GPU firmware"
 HOMEPAGE="https://github.com/raspberrypi/firmware"
-SRC_URI=""
-
 LICENSE="GPL-2 raspberrypi-videocore-bin"
 SLOT="0"
-KEYWORDS=""
-IUSE=""
 
-DEPEND=""
-RDEPEND="!sys-boot/raspberrypi-loader"
-
-EGIT_REPO_URI="https://github.com/raspberrypi/firmware"
+if [[ "${PV}" == 9999 ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/raspberrypi/firmware"
+	EGIT_CLONE_TYPE="shallow"
+else
+	SRC_URI="https://github.com/raspberrypi/firmware/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="-* ~arm ~arm64"
+	S="${WORKDIR}/firmware-${PV}"
+fi
 
 RESTRICT="binchecks strip"
 
@@ -42,14 +43,18 @@ pkg_preinst() {
 
 src_install() {
 	insinto /boot
-	cd boot
-	doins bootcode.bin COPYING.linux fixup*.dat LICENCE.broadcom start*elf
+	cd boot || die
+	doins bootcode.bin fixup*.dat start*elf
 	doins *.dtb
 	doins -r overlays
 	newins "${FILESDIR}"/${PN}-0_p20130711-config.txt config.txt
 	newins "${FILESDIR}"/${PN}-0_p20130711-cmdline.txt cmdline.txt
 	newenvd "${FILESDIR}"/${PN}-0_p20130711-envd 90${PN}
 	readme.gentoo_create_doc
+}
+
+pkg_postinst() {
+	readme.gentoo_print_elog
 }
 
 DOC_CONTENTS="Please configure your ram setup by editing /boot/config.txt"
