@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 KDE_HANDBOOK="forceoptional"
 inherit kde5
@@ -15,7 +15,10 @@ SLOT="5"
 KEYWORDS="~amd64"
 IUSE=""
 
-COMMON_DEPEND="
+BDEPEND="
+	sys-devel/gettext
+"
+DEPEND="
 	$(add_frameworks_dep kcompletion)
 	$(add_frameworks_dep kconfig)
 	$(add_frameworks_dep kconfigwidgets)
@@ -33,10 +36,7 @@ COMMON_DEPEND="
 	media-gfx/imagemagick[cxx]
 	x11-libs/libX11
 "
-DEPEND="${COMMON_DEPEND}
-	sys-devel/gettext
-"
-RDEPEND="${COMMON_DEPEND}
+RDEPEND="${DEPEND}
 	!media-gfx/kxstitch:4
 "
 

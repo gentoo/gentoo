@@ -1,13 +1,13 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 KDE_TEST="forceoptional"
 inherit kde5
 
 DESCRIPTION="KIO Slave and daemon to stash discontinuous file selections"
-HOMEPAGE="http://arnavdhamija.com/blog/kio-stash-release.html https://cgit.kde.org/kio-stash.git"
+HOMEPAGE="http://arnavdhamija.com/2017/07/04/kio-stash-shipped/index.html https://cgit.kde.org/kio-stash.git"
 SRC_URI="mirror://kde/stable/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-2+"
@@ -26,4 +26,7 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
-PATCHES=( "${FILESDIR}/${P}-no-kf5config.patch" )
+PATCHES=(
+	"${FILESDIR}"/${P}-no-kf5config.patch
+	"${FILESDIR}"/${P}-kioslave-no-desktop-app.patch
+)
