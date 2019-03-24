@@ -7,16 +7,10 @@ inherit git-r3 mount-boot readme.gentoo-r1
 
 DESCRIPTION="Raspberry Pi (all versions) kernel and modules"
 HOMEPAGE="https://github.com/raspberrypi/firmware"
-SRC_URI=""
-
 LICENSE="GPL-2 raspberrypi-videocore-bin"
 SLOT="0"
-KEYWORDS=""
-IUSE=""
-
 EGIT_REPO_URI="https://github.com/raspberrypi/firmware"
 DOC_CONTENTS="Please configure your ram setup by editing /boot/config.txt"
-
 RESTRICT="binchecks strip"
 
 src_install() {
