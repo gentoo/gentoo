@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 DATE=20160521
 JAVA_PKG_IUSE="doc source"
@@ -10,9 +10,10 @@ inherit eutils java-pkg-2 java-ant-2 multilib systemd user
 
 DESCRIPTION="An encrypted network without censorship"
 HOMEPAGE="https://freenetproject.org/"
+#	https://github.com/${PN}/seedrefs/archive/build0${PV#*p}.zip -> seednodes-${PV}.zip
 SRC_URI="
 	https://github.com/${PN}/fred/archive/build0${PV#*p}.zip -> ${P}.zip
-	mirror://gentoo/seednodes-${DATE}.fref.bz2
+	https://github.com/${PN}/seedrefs/archive/build01480.zip -> seednodes-0.7.5_p1480.zip
 	mirror://gentoo/freenet-ant-1.7.1.jar"
 
 LICENSE="GPL-2+ GPL-2 MIT BSD-2 Apache-2.0"
@@ -25,6 +26,7 @@ CDEPEND="dev-java/bcprov:1.54
 	dev-java/fec:0
 	dev-java/java-service-wrapper:0
 	dev-java/jbitcollider-core:0
+	dev-java/jna:0
 	dev-java/lzma:0
 	dev-java/lzmajio:0
 	dev-java/mersennetwister:0"
@@ -54,7 +56,7 @@ JAVA_ANT_ENCODING="utf8"
 EANT_BUILD_TARGET="package"
 EANT_TEST_TARGET="unit"
 EANT_BUILD_XML="build-clean.xml"
-EANT_GENTOO_CLASSPATH="bcprov-1.54,commons-compress,fec,java-service-wrapper,jbitcollider-core,lzma,lzmajio,mersennetwister"
+EANT_GENTOO_CLASSPATH="bcprov-1.54,commons-compress,fec,java-service-wrapper,jbitcollider-core,jna,lzma,lzmajio,mersennetwister"
 EANT_EXTRA_ARGS="-Dsuppress.gjs=true -Dlib.contrib.present=true -Dlib.bouncycastle.present=true -Dlib.junit.present=true -Dtest.skip=true"
 
 S="${WORKDIR}/fred-build0${PV#*p}"
@@ -62,7 +64,7 @@ S="${WORKDIR}/fred-build0${PV#*p}"
 RESTRICT="test" # they're broken in the last release.
 
 MY_PATCHES=(
-	"${FILESDIR}"/0.7.5_p1321-ext.patch
+	"${FILESDIR}"/0.7.5_p1483-ext.patch
 	"${FILESDIR}/"0.7.5_p1475-remove-git.patch
 )
 
@@ -79,12 +81,17 @@ pkg_setup() {
 }
 
 src_unpack() {
-	unpack ${P}.zip seednodes-${DATE}.fref.bz2
+#	unpack ${P}.zip seednodes-${PV}.zip
+	unpack ${P}.zip seednodes-0.7.5_p1480.zip
 }
 
-java_prepare() {
+src_prepare() {
+#	cat "${WORKDIR}"/seedrefs-build0${PV#*p}/* > "${S}"/seednodes.fref
+	cat "${WORKDIR}"/seedrefs-build01480/* > "${S}"/seednodes.fref
 	cp "${FILESDIR}"/freenet-0.7.5_p1474-wrapper.conf freenet-wrapper.conf || die
 	cp "${FILESDIR}"/run.sh-20090501 run.sh || die
+	cp "${FILESDIR}"/build-clean.xml build-clean.xml || die
+	cp "${FILESDIR}"/build.properties build.properties || die
 
 	epatch "${MY_PATCHES[@]}"
 
@@ -106,6 +113,7 @@ java_prepare() {
 	echo "wrapper.java.classpath.$((i++))=/usr/share/freenet/lib/ant.jar" >> freenet-wrapper.conf || die
 
 	cp "${DISTDIR}"/freenet-ant-1.7.1.jar lib/ant.jar || die
+	eapply_user
 }
 
 EANT_TEST_EXTRA_ARGS="-Dtest.skip=false"
@@ -131,8 +139,7 @@ src_install() {
 	insinto /etc
 	doins freenet-wrapper.conf
 	insinto /var/freenet
-	doins run.sh
-	newins "${WORKDIR}"/seednodes-${DATE}.fref seednodes.fref
+	doins run.sh seednodes.fref
 	fperms +x /var/freenet/run.sh
 	dosym java-service-wrapper/libwrapper.so /usr/$(get_libdir)/libwrapper.so
 	use doc && java-pkg_dojavadoc javadoc
