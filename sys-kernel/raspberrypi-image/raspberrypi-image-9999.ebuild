@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit git-r3 readme.gentoo-r1
+inherit git-r3 mount-boot readme.gentoo-r1
 
 DESCRIPTION="Raspberry Pi (all versions) kernel and modules"
 HOMEPAGE="https://github.com/raspberrypi/firmware"
