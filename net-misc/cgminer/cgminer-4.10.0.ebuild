@@ -65,7 +65,7 @@ src_configure() {
 		--with-system-jansson
 	)
 	econf "${myeconfargs[@]}" \
-	NCURSES_LIBS="$(pkg-config --libs ncurses)"
+	NCURSES_LIBS="$(${PKG_CONFIG} --libs ncurses)"
 	# sanitize directories (is this still needed?)
 	sed -i 's~^\(\#define CGMINER_PREFIX \).*$~\1"'"${EPREFIX}/usr/lib/cgminer"'"~' config.h || die
 }
