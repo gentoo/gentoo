@@ -1,0 +1,37 @@
+From adda48379077a9bff37520ee03d3c4c687fbb4a8 Mon Sep 17 00:00:00 2001
+From: Lukas Holecek <hluk@email.cz>
+Date: Sat, 2 Feb 2019 19:38:28 +0100
+Subject: [PATCH] Fix tray icon in KDE
+
+This partially reverts "Fix small icon in Gnome tray" (commit
+43903e99afc26fdcb111de8816b56f070cce2065).
+
+Fixes #1078
+Signed-off-by: Lukas Holecek <hluk@email.cz>
+---
+ src/gui/iconfactory.cpp | 11 +++++++----
+ 1 file changed, 7 insertions(+), 4 deletions(-)
+
+diff --git a/src/gui/iconfactory.cpp b/src/gui/iconfactory.cpp
+index bdad59198..1580d3edf 100644
+--- a/src/gui/iconfactory.cpp
++++ b/src/gui/iconfactory.cpp
+@@ -362,11 +362,14 @@ class BaseIconEngine : public QIconEngine
+         return taggedIcon(&pixmap);
+     }
+ 
+-    QList<QSize> availableSizes(QIcon::Mode mode, QIcon::State state) const override
++    QList<QSize> availableSizes(QIcon::Mode, QIcon::State) const override
+     {
+-        auto sizes = QIconEngine::availableSizes(mode, state);
+-        if ( !sizes.isEmpty() )
+-            sizes.append( sizes.last() * 2 );
++        static const auto sizes = QList<QSize>()
++                << QSize(32, 32)
++                << QSize(48, 48)
++                << QSize(64, 64)
++                << QSize(96, 96)
++                << QSize(128, 128);
+         return sizes;
+     }
+ 
