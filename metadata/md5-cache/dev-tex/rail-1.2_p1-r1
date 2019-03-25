@@ -1,0 +1,12 @@
+BDEPEND=app-arch/unzip sys-devel/bison sys-devel/flex virtual/latex-base >=sys-apps/texinfo-4.2-r5
+DEFINED_PHASES=compile install postinst postrm
+DESCRIPTION=Offers syntax/railroad diagrams
+EAPI=7
+HOMEPAGE=http://www.ctan.org/tex-archive/support/rail/
+KEYWORDS=~amd64 ~x86
+LICENSE=public-domain
+RDEPEND=virtual/latex-base
+SLOT=0
+SRC_URI=http://mirror.ctan.org/support/rail.zip -> rail-1.2_p1.zip
+_eclasses_=latex-package	17f13abe0de88340745e52e6b627aee7	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
+_md5_=b6f42f84c82eb5040565f66ee5744af7
