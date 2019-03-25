@@ -10,4 +10,4 @@ RDEPEND=dev-libs/expat media-libs/libsndfile doc? ( dev-lang/php:* ) jack? ( vir
 REQUIRED_USE=|| ( jack ladspa lv2 )
 SLOT=0
 _eclasses_=git-r3	0d4635eeb5a96cd5315597a47eba25c9
-_md5_=eddeea915c30725792c535f1c1814106
+_md5_=f35bff986dcd7e31ccb5549bd4a943c8
