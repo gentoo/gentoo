@@ -13,7 +13,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Devhelp"
 
 LICENSE="GPL-3+"
 SLOT="0/3-6" # subslot = 3-(libdevhelp-3 soname version)
-KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc"
+KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~sparc"
 IUSE="gedit gtk-doc +introspection"
 REQUIRED_USE="gedit? ( ${PYTHON_REQUIRED_USE} )"
 
