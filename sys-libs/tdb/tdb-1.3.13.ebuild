@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,7 +19,8 @@ IUSE="python"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-RDEPEND="python? ( ${PYTHON_DEPS} )"
+RDEPEND="!elibc_FreeBSD? ( dev-libs/libbsd[${MULTILIB_USEDEP}] )
+	python? ( ${PYTHON_DEPS} )"
 DEPEND="
 	${RDEPEND}
 	${PYTHON_DEPS}

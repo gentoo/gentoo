@@ -19,7 +19,8 @@ IUSE="python"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-RDEPEND="python? ( ${PYTHON_DEPS} )"
+RDEPEND="!elibc_FreeBSD? ( dev-libs/libbsd[${MULTILIB_USEDEP}] )
+	python? ( ${PYTHON_DEPS} )"
 DEPEND="
 	${RDEPEND}
 	${PYTHON_DEPS}
