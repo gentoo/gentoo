@@ -4,11 +4,11 @@ DESCRIPTION=Useful Apache tools - htdigest, htpasswd, ab, htdbm
 EAPI=7
 HOMEPAGE=https://httpd.apache.org/
 IUSE=libressl ssl
-KEYWORDS=~alpha amd64 arm ~arm64 ~hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc64-solaris ~x64-solaris
+KEYWORDS=~alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc64-solaris ~x64-solaris
 LICENSE=Apache-2.0
 RDEPEND=>=dev-libs/apr-1.5.0:1= dev-libs/apr-util:1= dev-libs/expat dev-libs/libpcre kernel_linux? ( sys-apps/util-linux ) ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) )
 RESTRICT=test
 SLOT=0
 SRC_URI=mirror://apache/httpd/httpd-2.4.38.tar.bz2
 _eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	a09389deba2c0a7108b581e02c7cecbf	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
-_md5_=f42fe0533009115e892bbbdf55774fa5
+_md5_=2ad33e4d2fda998e9135a90f41b64e30
