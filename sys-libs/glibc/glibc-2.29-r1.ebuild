@@ -86,7 +86,6 @@ DEPEND="${COMMON_DEPEND}
 	test? ( >=net-dns/libidn2-2.0.5 )
 "
 RDEPEND="${COMMON_DEPEND}
-	>=net-dns/libidn2-2.0.5
 	sys-apps/gentoo-functions
 	!sys-kernel/ps3-sources
 	!sys-libs/nss-db
@@ -104,7 +103,10 @@ else
 		>=sys-devel/gcc-6
 		virtual/os-headers
 	"
-	RDEPEND+=" vanilla? ( !sys-libs/timezone-data )"
+	RDEPEND+="
+		>=net-dns/libidn2-2.0.5
+		vanilla? ( !sys-libs/timezone-data )
+	"
 	PDEPEND+=" !vanilla? ( sys-libs/timezone-data )"
 fi
 
