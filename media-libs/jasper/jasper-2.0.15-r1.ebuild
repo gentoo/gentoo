@@ -61,7 +61,7 @@ multilib_src_configure() {
 		# Doxygen
 		-DCMAKE_DISABLE_FIND_PACKAGE_Doxygen=$(multilib_native_usex doc OFF ON)
 
-		-DJAS_ENABLE_PROGRAMS=$(usex test)
+		#-DJAS_ENABLE_PROGRAMS=$(usex test)
 	)
 	cmake-utils_src_configure
 }
