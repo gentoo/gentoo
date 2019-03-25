@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michael Haubenwallner <haubi@gentoo.org> (25 Mar 2019)
+# Obsolete, in favor of app-portage/prefix-toolkit.
+# Removal in 30 days.  Bug #658572
+app-portage/prefix-chain-setup
+sys-apps/prefix-chain-utils
+
 # Michał Górny <mgorny@gentoo.org> (23 Mar 2019)
 # Unmaintained.  Fails to build against current sys-auth/libfprint.
 # Obsoleted upstream, in favor of libfprint[examples].
