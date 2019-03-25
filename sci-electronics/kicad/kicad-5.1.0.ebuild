@@ -1,6 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Can switch to EAPI=7 when wxwidgets eclass also supports it
 EAPI=6
 PYTHON_COMPAT=( python2_7 )
 
@@ -10,7 +11,7 @@ inherit check-reqs cmake-utils eapi7-ver eutils gnome2-utils python-single-r1 to
 
 DESCRIPTION="Electronic Schematic and PCB design tools"
 HOMEPAGE="http://www.kicad-pcb.org"
-SRC_URI="https://launchpad.net/${PN}/$(ver_cut 1-2)/${PV}/+download/${P}.tar.xz"
+SRC_URI="https://launchpad.net/${PN}/5.0/${PV}/+download/${P}.tar.xz"
 
 LICENSE="GPL-2+ GPL-3+ Boost-1.0"
 SLOT="0"
@@ -49,8 +50,7 @@ RDEPEND="${COMMON_DEPEND}
 CHECKREQS_DISK_BUILD="800M"
 
 PATCHES=(
-	"${FILESDIR}"/"${PN}-5.0.0-curl.patch"
-	"${FILESDIR}"/"${PN}-5.0.0-help.patch"
+	"${FILESDIR}"/"${PN}-5.1.0-help.patch"
 )
 
 pkg_setup() {
