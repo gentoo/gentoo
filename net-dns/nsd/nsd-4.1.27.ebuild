@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,12 +15,16 @@ HOMEPAGE="http://www.nlnetlabs.nl/projects/nsd"
 SRC_URI="http://www.nlnetlabs.nl/downloads/${PN}/${MY_P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 x86"
-IUSE="bind8-stats ipv6 libevent minimal-responses mmap munin +nsec3 ratelimit root-server runtime-checks ssl systemd libressl"
+KEYWORDS="~amd64 ~x86"
+IUSE="bind8-stats dnstap ipv6 libevent minimal-responses mmap munin +nsec3 ratelimit root-server runtime-checks ssl systemd libressl"
 
 S="${WORKDIR}/${MY_P}"
 
 RDEPEND="
+	dnstap? (
+		dev-libs/fstrm
+		dev-libs/protobuf-c
+	)
 	libevent? ( dev-libs/libevent )
 	munin? ( net-analyzer/munin )
 	ssl? (
@@ -29,8 +33,8 @@ RDEPEND="
 	)
 	systemd? ( sys-apps/systemd )
 "
-DEPEND="
-	${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	sys-devel/flex
 	virtual/yacc
 	systemd? ( virtual/pkgconfig )
@@ -60,6 +64,7 @@ src_configure() {
 		--with-zonesdir="${EPREFIX}"/var/lib/nsd
 		$(use_enable bind8-stats)
 		$(use_enable bind8-stats zone-stats)
+		$(use_enable dnstap)
 		$(use_enable ipv6)
 		$(use_enable minimal-responses)
 		$(use_enable mmap)
