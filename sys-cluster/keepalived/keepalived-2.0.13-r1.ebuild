@@ -58,8 +58,6 @@ src_configure() {
 		$(use_enable regex) \
 		$(use_enable regex regex-timers ) \
 		$(use_enable snmp) \
-		$(use_enable snmp) \
-		$(use_enable snmp) \
 		$(use_enable snmp snmp-checker) \
 		$(use_enable snmp snmp-rfc) \
 		$(use_enable snmp snmp-rfcv2) \
