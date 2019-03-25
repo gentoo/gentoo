@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ PATCH=s$(get_version_component_range 5)
 MY_P=${MY_PN}_${MY_PV}-${PATCH}
 
 DESCRIPTION="Monkey's Audio Codecs"
-HOMEPAGE="http://etree.org/shnutils/shntool/ http://www.deb-multimedia.org/dists/testing/main/binary-amd64/package/monkeys-audio.php"
+HOMEPAGE="http://www.deb-multimedia.org/dists/testing/main/binary-amd64/package/monkeys-audio.php"
 SRC_URI="http://www.deb-multimedia.org/pool/main/m/monkeys-audio/${MY_P}.orig.tar.gz"
 
 LICENSE="mac"

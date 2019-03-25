@@ -2,12 +2,13 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+VALA_MIN_API_VERSION="0.34"
 inherit gnome.org gnome2-utils meson vala xdg
 
 DESCRIPTION="Simple document scanning utility"
-HOMEPAGE="https://launchpad.net/simple-scan"
+HOMEPAGE="https://gitlab.gnome.org/GNOME/simple-scan"
 
-LICENSE="GPL-3"
+LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~ppc64 ~x86"
 IUSE="colord webp" # packagekit
@@ -33,7 +34,7 @@ DEPEND="${COMMON_DEPEND}
 	$(vala_depend)
 	dev-libs/libxml2:2
 	dev-util/itstool
-	>=sys-devel/gettext-0.19.7
+	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
 	>=dev-libs/libgusb-0.2.7[vala]
 	colord? ( >=x11-misc/colord-0.1.24:=[vala] )
@@ -51,8 +52,8 @@ src_prepare() {
 
 src_configure() {
 	local emesonargs=(
-		-Dpackagekit=false
 		$(meson_use colord)
+		-Dpackagekit=false
 		$(meson_use webp)
 	)
 	meson_src_configure
@@ -61,11 +62,9 @@ src_configure() {
 pkg_postinst() {
 	xdg_pkg_postinst
 	gnome2_schemas_update
-	gnome2_icon_cache_update
 }
 
 pkg_postrm() {
 	xdg_pkg_postrm
 	gnome2_schemas_update
-	gnome2_icon_cache_update
 }

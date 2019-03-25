@@ -29,32 +29,196 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (23 Mar 2019)
+# Unmaintained.  Fails to build against current sys-auth/libfprint.
+# Obsoleted upstream, in favor of libfprint[examples].
+# Removal in 30 days.  Bug #665174.
+sys-auth/fprint_demo
+
+# Michał Górny <mgorny@gentoo.org> (23 Mar 2019)
+# Unmaintained.  Fails to build.  Probably needs a fresh snapshot.
+# Removal in 30 days.  Bug #669592.
+net-misc/casync
+
+# Michał Górny <mgorny@gentoo.org> (23 Mar 2019)
+# Unmaintained.  Fails to build due to patch that does not apply.
+# Even if that weren't the case, it would need to be updated for modern
+# kernel versions.
+# Removal in 30 days.  Bug #663180.
+sys-power/phc-intel
+
+# Michał Górny <mgorny@gentoo.org> (23 Mar 2019)
+# Unmaintained.  Fails to build, probably due to Linux kernel changes.
+# Removal in 30 days.  Bug #646806.
+net-misc/batman-adv
+
+# Michał Górny <mgorny@gentoo.org> (23 Mar 2019)
+# Unmaintained.  Fails to build against ncurses[tinfo].  Last upstream
+# release in 2009.  No apparent fix in upstream git.
+# Removal in 30 days.  Bug #646922.
+app-editors/efte
+
+# Michał Górny <mgorny@gentoo.org> (23 Mar 2019)
+# Unmaintained.  Vulnerable.  Fails to build (#612236, #620916).
+# Removal in 30 days.  Bug #670028.
+app-misc/freeplane
+
+# Michał Górny <mgorny@gentoo.org> (23 Mar 2019)
+# Unmaintained.  No reverse dependencies.  Fails to link.  Last upstream
+# activity in 2012.
+# Removal in 30 days.  Bug #632066.
+dev-cpp/libassa
+
+# Michał Górny <mgorny@gentoo.org> (23 Mar 2019)
+# Unmaintained and ancient.  Upstream has abandoned the PAR 2.0 spec
+# effort in 2003-2004, and the code has not seen any attention since.
+# Removal in 30 days.  Bug #681364.
+app-arch/par
+
+# Michał Górny <mgorny@gentoo.org> (23 Mar 2019)
+# No maintainer.  Both the program and the ebuild are of bad quality,
+# the former requiring a patch and the latter failing to build in some
+# circumstances.  Last upstream activity in 2005.
+# Removal in 30 days.  Bug #456954.
+app-benchmarks/gtkperf
+
+# Michał Górny <mgorny@gentoo.org> (23 Mar 2019)
+# Proprietary executable with unclear license.  Unmaintained.
+# The current version in Gentoo is from 2004.  QA issues (#430712).
+# Removal in 30 days.  Bug #681360.
+app-cdr/poweriso
+
+# Andreas Sturmlechner <asturm@gentoo.org> (23 Mar 2019)
+# Everything breaks again. bug #681336
+>=app-text/poppler-0.75.0
+
+# Michał Górny <mgorny@gentoo.org> (22 Mar 2019)
+# Unmaintained.  No reverse dependencies.  The current Gentoo version
+# is from 2015, and upstream has made a lot of releases since.
+# It suffers from heavy bundling of dependencies.
+# Removal in 30 days.  Bug #469194.
+dev-lua/luvit
+
+# Michał Górny <mgorny@gentoo.org> (22 Mar 2019)
+# Unmaintained.  Last release in 2013, last commits in 2015.  Nested
+# bundled libraries (#253259, also causing #515384).  Fails to build
+# with [-dbus] (#560208).
+# Removal in 30 days.  Bug #681294.
+x11-wm/afterstep
+
+# Michał Górny <mgorny@gentoo.org> (22 Mar 2019)
+# Unmaintained, dead homepage (#680752).  Fails to build against
+# ncurses[tinfo] (#459490), fails to build against ncurses-6 (#649794).
+# Also has some unresolved segv (#407983).
+# Removal in 30 days.  Bug #459490.
+games-roguelike/rogue
+
+# Michał Górny <mgorny@gentoo.org> (22 Mar 2019)
+# SixXS has been discontinued, rendering the package defunct.
+# Removal in 30 days.  Bug #670678.
+net-vpn/aiccu
+
+# Michał Górny <mgorny@gentoo.org> (22 Mar 2019)
+# Homepage dead, and package is mirror-restricted.  Current release
+# was added in 2006 and has not been updated since.
+# Removal in 30 days.  Bug #681230.
+net-misc/sjphone
+
+# Michał Górny <mgorny@gentoo.org> (21 Mar 2019)
+# Upstream EOL-ed Python 3.4 on 2019-03-19.  The last release fails
+# to build against openssl-1.1+.
+# Removal in 30 days.  Bug #673960.
+=dev-lang/python-3.4*
+
+# Andreas Sturmlechner <asturm@gentoo.org> (21 Mar 2019)
+# Replaced by split packages: kde-apps/dolphin-plugins-bazaar,
+# -dropbox, -git, -mercurial, -subversion. Masked for removal in 30 days.
+kde-apps/dolphin-plugins
+
+# Michał Górny <mgorny@gentoo.org> (21 Mar 2019)
+# Not really maintained anymore.  Last upstream release is from 2015.
+# Fails to build against modern versions of app-crypt/mit-krb5, may have
+# more hidden issues.  It is probably time to move to net-print/cups.
+# net-print/magicfilter is the only reverse dependency (from 2011).
+# Removal in 30 days.  Bug #496922.
+net-print/lprng
+net-print/magicfilter
+
+# Michał Górny <mgorny@gentoo.org> (21 Mar 2019)
+# Fails to build on modern systems.  Really bad quality ebuild (#670524)
+# with a growing pile of patches.  The current version dates back
+# to 2003.  The homepage is dead.  No reverse dependencies.
+# Removal in 30 days.  Bug #542924.
+dev-libs/libmcal
+
+# Michał Górny <mgorny@gentoo.org> (21 Mar 2019)
+# Library with no maintainer and no reverse dependencies.  Fails
+# to build with sandbox violations.
+# Removal in 30 days.  Bug #676190.
+x11-libs/hippo-canvas
+
 # Michał Górny <mgorny@gentoo.org> (21 Mar 2019)
 # The following packages are unmaintained and fail to build against
 # openssl-1.1+.
 #
+# app-crypt/keynote: #675010, last updated upstream in 2000
 # dev-util/skipfish: #675124, last upstream commit in 2012
 # dev-util/wsta: #674004, no fix upstream, also #631610, #674526
 # games-util/gtkevemon: #675988, upstream API shut down
+# mail-client/nail: #676008, last commit in 2010, also #508480
+# mail-client/nmh: #676938, needs bump, 2014, also #676938, #680596
+# mail-filter/libdkim: #674892, no revdeps, last release in 2010
 # net-analyzer/bro: #675014, needs bump, current version is from 2015
 # net-analyzer/ffp: #674244, dead homepage, current version added 2005
+# net-analyzer/nodebrain: #674796, last commits in 2015
+# net-analyzer/postal: #677478, last release in 2012
+# net-ftp/netkit-ftpd: #676000, last rel in 2000, also #236290, #540330
+# net-im/ayttm: #676242, last commits in 2011 (+ one secfix in 2015)
 # net-im/climm: #674160, dead homepage, last commits in 2010
+# net-irc/bip: #674240, may need new snapshot, current ver is from 2013
+# net-irc/epic4: #677734, needs bump, current is from 2009, also #613120
 # net-irc/shadowircd:  #674528, dead homepage, last commits in 2012
+# net-mail/peephole: #675012, last release from 2006
+# net-mail/qpopper: #674896, discontinued, from 2011, also #541996
+# net-mail/up-imapproxy: #674234, last commits in 2016, also #643898
+# net-mail/uw-imap: #678606, last upstream release in 2011
+# net-mail/uw-mailutils: #674174, same as uw-imap
 # net-misc/sslwrap: #674524, last updated upstream in 2000
 # net-misc/stone: #675612, needs new snapshot, current ver is from 2008
+# net-misc/tn5250: #678684, last commits in 2012
+# net-proxy/ufdbguard: #677482, needs bump, current ver is from 2016
 # sys-apps/nca: #676240, last updated upstream in 2004
+# x11-plugins/wmpeople: revdep of net-mail/peephole, from 2004
 #
 # Removal in 30 days.
+app-crypt/keynote
 dev-util/skipfish
 dev-util/wsta
 games-util/gtkevemon
+mail-client/nail
+mail-client/nmh
+mail-filter/libdkim
 net-analyzer/bro
 net-analyzer/ffp
+net-analyzer/nodebrain
+net-analyzer/postal
+net-ftp/netkit-ftpd
+net-im/ayttm
 net-im/climm
+net-irc/bip
+net-irc/epic4
 net-irc/shadowircd
+net-mail/peephole
+net-mail/qpopper
+net-mail/up-imapproxy
+net-mail/uw-imap
+net-mail/uw-mailutils
 net-misc/sslwrap
 net-misc/stone
+net-misc/tn5250
+net-proxy/ufdbguard
 sys-apps/nca
+x11-plugins/wmpeople
 
 # Michał Górny <mgorny@gentoo.org> (21 Mar 2019)
 # Last release in 2010.  No reverse dependencies.  No maintainer.
@@ -783,12 +947,6 @@ app-eselect/eselect-lua
 # Dev channel releases are only for people who are developers or want more
 # experimental features and accept a more unstable release.
 www-plugins/chrome-binary-plugins:unstable
-
-# Michael Weber <xmw@gentoo.org> (17 Jul 2013)
-# Upstream next versions
-# Michał Górny <mgorny@gentoo.org> (15 Mar 2019)
-# No single unmasked version since.  Removal in 30 days.  Bug #671238.
->=sys-boot/raspberrypi-firmware-1_pre
 
 # Diego E. Pettenò <flameeyes@gentoo.org> (03 Jan 2009)
 # These packages are not supposed to be merged directly, instead

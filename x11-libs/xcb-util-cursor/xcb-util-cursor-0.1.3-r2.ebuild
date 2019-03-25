@@ -9,11 +9,11 @@ XORG_DOC=doc
 XORG_MULTILIB=yes
 inherit xorg-2
 
-EGIT_REPO_URI="https://anongit.freedesktop.org/git/xcb/util-cursor.git"
+EGIT_REPO_URI="https://gitlab.freedesktop.org/xorg/lib/libxcb-cursor.git"
 EGIT_HAS_SUBMODULES=yes
 
 DESCRIPTION="X C-language Bindings sample implementations"
-HOMEPAGE="https://xcb.freedesktop.org/"
+HOMEPAGE="https://xcb.freedesktop.org/ https://gitlab.freedesktop.org/xorg/lib/libxcb-cursor"
 
 KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x64-solaris"
 IUSE="test"

@@ -31,7 +31,6 @@ DEPEND="${RDEPEND}
 "
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.75-tinyxml2.patch
-	"${FILESDIR}"/${PN}-1.85-ldflags.patch
 )
 
 src_prepare() {

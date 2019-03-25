@@ -44,9 +44,6 @@ net-libs/libproxy python
 # For net-misc/vinagre-3.4 and gnome-boxes
 net-misc/spice-gtk gtk3
 
-# for gnome-extra/gnome-user-share
-www-servers/apache apache2_modules_dav apache2_modules_dav_fs apache2_modules_authn_file apache2_modules_auth_digest apache2_modules_authz_groupfile
-
 # Alexandre Rostovtsev <tetromino@gentoo.org> (19 Feb 2015)
 # Set reasonable default toolkit for gnome users to prevent emerge error
 # when USE=tools

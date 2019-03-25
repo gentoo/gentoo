@@ -14,7 +14,7 @@ KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
 IUSE="nls"
 
 RDEPEND="
-	>=dev-cpp/gtkmm-3.0:3.0
+	>=dev-cpp/gtkmm-3.0:3.0[X]
 	>=dev-libs/libsigc++-2.2:2
 	>=media-libs/libcanberra-0.16[gtk3]
 	>=media-sound/pulseaudio-5[glib]

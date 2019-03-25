@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=0
@@ -14,6 +14,7 @@ LICENSE="SJ-Labs IJG libpng ZLIB RSA W3C BSD"
 SLOT="0"
 KEYWORDS="~x86"
 IUSE=""
+RESTRICT="strip mirror bindist"
 
 RDEPEND="x11-libs/libSM
 	x11-libs/libICE
@@ -22,8 +23,6 @@ RDEPEND="x11-libs/libSM
 	x11-libs/libXau
 	x11-libs/libXdmcp"
 S=${WORKDIR}/${MY_P}
-
-RESTRICT="strip"
 
 src_install() {
 	insinto /opt/sjphone

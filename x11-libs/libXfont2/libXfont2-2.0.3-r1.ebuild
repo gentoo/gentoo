@@ -3,6 +3,7 @@
 
 EAPI=5
 
+XORG_PACKAGE_NAME=libxfont
 XORG_DOC=doc
 inherit xorg-2
 

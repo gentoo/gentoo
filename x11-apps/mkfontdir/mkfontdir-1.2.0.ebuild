@@ -4,7 +4,7 @@
 EAPI=7
 
 DESCRIPTION="create an index of X font files in a directory"
-HOMEPAGE="https://www.x.org/wiki/ https://cgit.freedesktop.org/"
+HOMEPAGE="https://www.x.org/wiki/ https://gitlab.freedesktop.org/xorg/app/mkfontdir"
 
 LICENSE="MIT"
 SLOT="0"

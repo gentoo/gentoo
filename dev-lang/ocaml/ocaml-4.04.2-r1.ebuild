@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -43,6 +43,7 @@ pkg_setup() {
 
 src_prepare() {
 	EPATCH_SUFFIX="patch" epatch "${WORKDIR}/patches"
+	epatch "${FILESDIR}/${PN}-4.04.2-tinfo.patch" #459512
 }
 
 src_configure() {

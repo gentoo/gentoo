@@ -3,9 +3,7 @@
 
 EAPI=7
 
-ECM_KDEINSTALLDIRS="false"
-KDE_HANDBOOK="false" # buildsystem applies broken python hacks, bug #614950
-inherit kde5
+inherit cmake-utils xdg
 
 DESCRIPTION="Simple tag editor based on Qt"
 HOMEPAGE="https://kid3.sourceforge.io/"
@@ -18,14 +16,18 @@ IUSE="acoustid flac kde mp3 mp4 +taglib vorbis"
 
 REQUIRED_USE="flac? ( vorbis )"
 
-COMMON_DEPEND="
-	$(add_qt_dep qtdbus)
-	$(add_qt_dep qtdeclarative)
-	$(add_qt_dep qtgui)
-	$(add_qt_dep qtmultimedia)
-	$(add_qt_dep qtnetwork)
-	$(add_qt_dep qtwidgets)
-	$(add_qt_dep qtxml)
+BDEPEND="
+	dev-qt/linguist-tools:5
+"
+DEPEND="
+	dev-qt/qtcore:5
+	dev-qt/qtdbus:5
+	dev-qt/qtdeclarative:5
+	dev-qt/qtgui:5
+	dev-qt/qtmultimedia:5
+	dev-qt/qtnetwork:5
+	dev-qt/qtwidgets:5
+	dev-qt/qtxml:5
 	sys-libs/readline:0=
 	acoustid? (
 		media-libs/chromaprint
@@ -36,11 +38,11 @@ COMMON_DEPEND="
 		media-libs/libvorbis
 	)
 	kde? (
-		$(add_frameworks_dep kconfig)
-		$(add_frameworks_dep kconfigwidgets)
-		$(add_frameworks_dep kcoreaddons)
-		$(add_frameworks_dep kwidgetsaddons)
-		$(add_frameworks_dep kxmlgui)
+		kde-frameworks/kconfig:5
+		kde-frameworks/kconfigwidgets:5
+		kde-frameworks/kcoreaddons:5
+		kde-frameworks/kwidgetsaddons:5
+		kde-frameworks/kxmlgui:5
 	)
 	mp3? ( media-libs/id3lib )
 	mp4? ( media-libs/libmp4v2:0 )
@@ -50,24 +52,15 @@ COMMON_DEPEND="
 		media-libs/libvorbis
 	)
 "
-RDEPEND="${COMMON_DEPEND}
+RDEPEND="${DEPEND}
 	!media-sound/kid3:4
-"
-DEPEND="${COMMON_DEPEND}"
-BDEPEND="
-	$(add_qt_dep linguist-tools)
 "
 
 src_prepare() {
 	# overengineered upstream build system
-	# kde5 eclass src_prepare leads to compile failure
-
-	# only enable handbook when required
-	if ! use_if_iuse handbook ; then
-		cmake_comment_add_subdirectory ${KDE_DOC_DIR}
-	fi
-
 	cmake-utils_src_prepare
+	# applies broken python hacks, bug #614950
+	cmake_comment_add_subdirectory doc
 }
 
 src_configure() {
@@ -86,5 +79,5 @@ src_configure() {
 		mycmakeargs+=( "-DWITH_APPS=Qt;CLI" )
 	fi
 
-	kde5_src_configure
+	cmake-utils_src_configure
 }

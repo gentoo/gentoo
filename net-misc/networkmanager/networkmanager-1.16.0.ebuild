@@ -177,6 +177,8 @@ multilib_src_configure() {
 		$(multilib_native_enable concheck)
 		--with-crypto=$(usex nss nss gnutls)
 		--with-session-tracking=$(multilib_native_usex systemd systemd $(multilib_native_usex elogind elogind $(multilib_native_usex consolekit consolekit no)))
+		# ConsoleKit has no build-time dependency, so use it as the default case.
+		# There is no off switch, and we do not support upower.
 		--with-suspend-resume=$(multilib_native_usex systemd systemd $(multilib_native_usex elogind elogind consolekit))
 		$(multilib_native_use_with audit libaudit)
 		$(multilib_native_use_enable bluetooth bluez5-dun)

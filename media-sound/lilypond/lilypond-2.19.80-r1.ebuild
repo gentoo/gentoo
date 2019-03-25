@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -23,7 +23,7 @@ IUSE="debug emacs guile2 profile vim-syntax"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND=">=app-text/ghostscript-gpl-8.15
-	>=dev-scheme/guile-1.8.2:12[deprecated,regex]
+	>=dev-scheme/guile-1.8.2:12=[deprecated,regex]
 	media-fonts/tex-gyre
 	media-libs/fontconfig
 	media-libs/freetype:2
@@ -31,7 +31,7 @@ RDEPEND=">=app-text/ghostscript-gpl-8.15
 	emacs? ( virtual/emacs )
 	guile2? ( >=dev-scheme/guile-2:12 )
 	!guile2? (
-		>=dev-scheme/guile-1.8.2:12[deprecated,regex]
+		>=dev-scheme/guile-1.8.2:12=[deprecated,regex]
 		<dev-scheme/guile-2.0:12
 	)
 	${PYTHON_DEPS}"
