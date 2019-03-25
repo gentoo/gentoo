@@ -22,7 +22,7 @@ fi
 
 LICENSE="JasPer2.0"
 SLOT="0/4"
-IUSE="doc jpeg opengl test"
+IUSE="doc jpeg opengl"
 
 RDEPEND="
 	jpeg? ( >=virtual/jpeg-0-r2:0[${MULTILIB_USEDEP}] )
@@ -60,8 +60,6 @@ multilib_src_configure() {
 
 		# Doxygen
 		-DCMAKE_DISABLE_FIND_PACKAGE_Doxygen=$(multilib_native_usex doc OFF ON)
-
-		-DJAS_ENABLE_PROGRAMS=$(usex test)
 	)
 	cmake-utils_src_configure
 }
