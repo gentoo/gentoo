@@ -29,6 +29,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Robin H. Johnson <robbat2@gentoo.org> (25 Mar 2019)
+# Requires >=dev-lang/lua-5.3 which is masked
+sys-apps/likwid
+
 # Michael Haubenwallner <haubi@gentoo.org> (25 Mar 2019)
 # Obsolete, in favor of app-portage/prefix-toolkit.
 # Removal in 30 days.  Bug #658572
