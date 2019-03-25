@@ -108,6 +108,8 @@ src_compile() {
 }
 
 src_install() {
-	default
+	emake DESTDIR="${D}" HTDOCS_SUBDIR=/html install
+	docompress -x /usr/share/doc/${PF}/html
+	einstalldocs
 	find "${ED}" -name '*.la' -type f -delete || die
 }
