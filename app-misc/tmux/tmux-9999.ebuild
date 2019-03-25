@@ -45,8 +45,6 @@ PATCHES=(
 	# upstream fixes (can be removed with next version bump)
 )
 
-S="${WORKDIR}/${P/_/-}"
-
 src_prepare() {
 	# bug 438558
 	# 1.7 segfaults when entering copy mode if compiled with -Os
