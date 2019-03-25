@@ -26,7 +26,7 @@ BDEPEND="
 	virtual/pkgconfig"
 
 RDEPEND="
-	${CDEPEND}
+	${DEPEND}
 	selinux? ( sec-policy/selinux-screen )
 	vim-syntax? ( app-vim/vim-tmux )"
 

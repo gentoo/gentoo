@@ -21,7 +21,7 @@ LICENSE="ISC"
 SLOT="0"
 IUSE="debug selinux utempter vim-syntax kernel_FreeBSD kernel_linux"
 
-CDEPEND="
+DEPEND="
 	dev-libs/libevent:0=
 	sys-libs/ncurses:0=
 	utempter? (
@@ -29,12 +29,11 @@ CDEPEND="
 		kernel_FreeBSD? ( || ( >=sys-freebsd/freebsd-lib-9.0 sys-libs/libutempter ) )
 	)"
 
-DEPEND="
-	${CDEPEND}
+BDEPEND="
 	virtual/pkgconfig"
 
 RDEPEND="
-	${CDEPEND}
+	${DEPEND}
 	selinux? ( sec-policy/selinux-screen )
 	vim-syntax? ( app-vim/vim-tmux )"
 
@@ -43,7 +42,7 @@ DOCS=( CHANGES README TODO )
 PATCHES=(
 	"${FILESDIR}/${PN}-2.4-flags.patch"
 
-	# usptream fixes (can be removed with next version bump)
+	# upstream fixes (can be removed with next version bump)
 )
 
 S="${WORKDIR}/${P/_/-}"
