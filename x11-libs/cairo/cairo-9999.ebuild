@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,7 +7,7 @@ inherit eutils flag-o-matic autotools multilib-minimal
 
 if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="https://anongit.freedesktop.org/git/cairo"
+	EGIT_REPO_URI="https://gitlab.freedesktop.org/cairo/cairo.git"
 	SRC_URI=""
 else
 	SRC_URI="https://www.cairographics.org/releases/${P}.tar.xz"
@@ -15,7 +15,7 @@ else
 fi
 
 DESCRIPTION="A vector graphics library with cross-device output support"
-HOMEPAGE="https://www.cairographics.org"
+HOMEPAGE="https://www.cairographics.org/ https://gitlab.freedesktop.org/cairo/cairo"
 LICENSE="|| ( LGPL-2.1 MPL-1.1 )"
 SLOT="0"
 IUSE="X aqua debug gles2 +glib opengl static-libs +svg utils valgrind xcb"
