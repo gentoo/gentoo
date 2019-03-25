@@ -32,6 +32,7 @@ S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
 	"${FILESDIR}/${P}-vserver-init-functions.patch"
+	"${FILESDIR}/${P}-dietlibc.patch"
 )
 
 DOCS=( README ChangeLog NEWS AUTHORS THANKS util-vserver.spec )
