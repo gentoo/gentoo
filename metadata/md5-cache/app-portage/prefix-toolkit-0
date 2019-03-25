@@ -1,0 +1,9 @@
+DEFINED_PHASES=configure install unpack
+DESCRIPTION=Utilities for users of Gentoo Prefix
+EAPI=7
+HOMEPAGE=https://prefix.gentoo.org/
+KEYWORDS=~x64-cygwin ~amd64-linux ~x86-linux ~x86-winnt
+LICENSE=GPL-3
+RDEPEND=>sys-apps/portage-2.3.62 !app-portage/prefix-chain-setup !sys-apps/prefix-chain-utils prefix-stack? ( >=sys-apps/baselayout-prefix-2.6 )
+SLOT=0
+_md5_=bf00f9feff064dfa4f7b676c027c53bd

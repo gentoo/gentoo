@@ -1,4 +1,4 @@
-DEFINED_PHASES=install postinst preinst prepare
+DEFINED_PHASES=install postinst preinst
 DEPEND=sys-apps/gentoo-functions >=app-portage/elt-patches-20170815
 DESCRIPTION=Minimal baselayout for Gentoo Prefix installs
 EAPI=6
@@ -9,4 +9,4 @@ RDEPEND=sys-apps/gentoo-functions
 SLOT=0
 SRC_URI=mirror://gentoo/baselayout-2.2.tar.bz2 https://dev.gentoo.org/~vapier/dist/baselayout-2.2.tar.bz2
 _eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	libtool	f143db5a74ccd9ca28c1234deffede96	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	b2f01ad412baf81650c23fcf0975fa33	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	b45201c4e6c096b98e250336954e64b9	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
-_md5_=3a467986001b6f3d8b3a3d5f7bc53710
+_md5_=7709c470bcec2e8a57618fa24e040e74
