@@ -103,8 +103,8 @@ src_configure() {
 
 src_compile() {
 	# Build system deps are broken
-	emake -C plugins
-	emake
+	emake -C plugins HTDOCS_SUBDIR=/html
+	emake HTDOCS_SUBDIR=/html
 }
 
 src_install() {
