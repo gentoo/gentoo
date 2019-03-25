@@ -36,6 +36,7 @@ DEPEND="${RDEPEND}
 	dev-qt/qtconcurrent:5
 	test? ( dev-qt/qttest:5 )
 "
+PATCHES=( "${FILESDIR}"/${P}-libressl.patch )
 
 S="${WORKDIR}"
 core_build_dir="${S}/output/build"
