@@ -28,7 +28,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
 src_configure() {
-	use hardened && append-cflags "-nopie"
+	use hardened && append-cflags "-no-pie"
 
 	# PKG_CHECK_MODULES needs PKG_CONFIG for --with-system-jansson.
 	export PKG_CONFIG="$(tc-getPKG_CONFIG)"
