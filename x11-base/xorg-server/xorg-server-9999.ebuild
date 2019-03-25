@@ -5,7 +5,7 @@ EAPI=7
 
 XORG_DOC=doc
 inherit xorg-3 multilib flag-o-matic
-EGIT_REPO_URI="https://anongit.freedesktop.org/git/xorg/xserver.git"
+EGIT_REPO_URI="https://gitlab.freedesktop.org/xorg/xserver.git"
 
 DESCRIPTION="X.Org X servers"
 SLOT="0/${PV}"
