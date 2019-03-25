@@ -79,7 +79,7 @@ LICENSE="BSD"
 SLOT="$(ver_cut 1-2)"
 KEYWORDS="~amd64"
 IUSE="cups custom-cflags gconf gnome-keyring kerberos lto neon pic
-	  +proprietary-codecs pulseaudio selinux +system-ffmpeg +tcmalloc"
+	+proprietary-codecs pulseaudio selinux +system-ffmpeg +system-ssl +tcmalloc"
 RESTRICT="!system-ffmpeg? ( proprietary-codecs? ( bindist ) )"
 
 # Native Client binaries are compiled with different set of flags, bug #452066.
@@ -100,7 +100,7 @@ COMMON_DEPEND="
 	dev-libs/libxslt:=
 	dev-libs/nspr:=
 	>=dev-libs/nss-3.14.3:=
-	<dev-libs/openssl-1.1:0=
+	system-ssl? ( <dev-libs/openssl-1.1:0= )
 	>=dev-libs/re2-0.2016.05.01:=
 	gconf? ( >=gnome-base/gconf-2.24.0:= )
 	gnome-keyring? ( >=gnome-base/libgnome-keyring-3.12:= )
@@ -533,7 +533,6 @@ src_configure() {
 	# TODO: use_system_libsrtp (bug #459932).
 	# TODO: xml (bug #616818).
 	# TODO: use_system_protobuf (bug #525560).
-	# TODO: use_system_ssl (http://crbug.com/58087).
 	# TODO: use_system_sqlite (http://crbug.com/22208).
 
 	# libevent: https://bugs.gentoo.org/593458
@@ -688,7 +687,8 @@ src_configure() {
 	# --shared-libuv cannot be used as electron's node fork
 	# patches uv_loop structure.
 	./configure --shared --without-bundled-v8 \
-		--shared-openssl --shared-http-parser --shared-zlib \
+		$(usex system-ssl '--shared-openssl' '' ) \
+		--shared-http-parser --shared-zlib \
 		--shared-nghttp2 --shared-cares \
 		--without-npm --with-intl=system-icu --without-dtrace \
 		--dest-cpu=${target_arch} --prefix="" || die
