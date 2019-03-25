@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,7 @@ MY_PN="${PN/progs/demos}"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Mesa's OpenGL utility and demo programs (glxgears and glxinfo)"
-HOMEPAGE="https://www.mesa3d.org/ https://mesa.freedesktop.org/"
+HOMEPAGE="https://www.mesa3d.org/ https://mesa.freedesktop.org/ https://gitlab.freedesktop.org/mesa/demos"
 if [[ ${PV} = 9999* ]]; then
 	inherit autotools git-r3
 	EGIT_REPO_URI="https://gitlab.freedesktop.org/mesa/demos.git"

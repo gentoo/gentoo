@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -10,8 +10,8 @@ XORG_STATIC=no
 inherit python-r1 xorg-2
 
 DESCRIPTION="X C-language Bindings protocol headers"
-HOMEPAGE="https://xcb.freedesktop.org/"
-EGIT_REPO_URI="https://anongit.freedesktop.org/git/xcb/proto.git"
+HOMEPAGE="https://xcb.freedesktop.org/ https://gitlab.freedesktop.org/xorg/proto/xcbproto"
+EGIT_REPO_URI="https://gitlab.freedesktop.org/xorg/proto/xcbproto.git"
 [[ ${PV} != 9999* ]] && \
 	SRC_URI="https://xcb.freedesktop.org/dist/${P}.tar.bz2"
 
