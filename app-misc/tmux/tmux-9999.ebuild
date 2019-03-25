@@ -1,21 +1,27 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit autotools git-r3 flag-o-matic versionator
+inherit autotools flag-o-matic
 
 DESCRIPTION="Terminal multiplexer"
 HOMEPAGE="https://tmux.github.io/"
-SRC_URI="https://raw.githubusercontent.com/przepompownia/tmux-bash-completion/678a27616b70c649c6701cae9cd8c92b58cc051b/completions/tmux -> tmux-bash-completion-678a27616b70c649c6701cae9cd8c92b58cc051b"
-EGIT_REPO_URI="https://github.com/tmux/tmux.git"
+if [[ "${PV}" == 9999 ]] ; then
+	inherit git-r3
+	SRC_URI="https://raw.githubusercontent.com/przepompownia/tmux-bash-completion/678a27616b70c649c6701cae9cd8c92b58cc051b/completions/tmux -> tmux-bash-completion-678a27616b70c649c6701cae9cd8c92b58cc051b"
+	EGIT_REPO_URI="https://github.com/tmux/tmux.git"
+else
+	SRC_URI="https://github.com/tmux/tmux/releases/download/$(ver_cut 1-2)/${P}.tar.gz"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+	S="${WORKDIR}/${P/_/-}"
+fi
 
 LICENSE="ISC"
 SLOT="0"
-KEYWORDS=""
 IUSE="debug selinux utempter vim-syntax kernel_FreeBSD kernel_linux"
 
-CDEPEND="
+DEPEND="
 	dev-libs/libevent:0=
 	sys-libs/ncurses:0=
 	utempter? (
@@ -23,12 +29,11 @@ CDEPEND="
 		kernel_FreeBSD? ( || ( >=sys-freebsd/freebsd-lib-9.0 sys-libs/libutempter ) )
 	)"
 
-DEPEND="
-	${CDEPEND}
+BDEPEND="
 	virtual/pkgconfig"
 
 RDEPEND="
-	${CDEPEND}
+	${DEPEND}
 	selinux? ( sec-policy/selinux-screen )
 	vim-syntax? ( app-vim/vim-tmux )"
 
@@ -37,18 +42,13 @@ DOCS=( CHANGES README TODO )
 PATCHES=(
 	"${FILESDIR}/${PN}-2.4-flags.patch"
 
-	# usptream fixes (can be removed with next version bump)
+	# upstream fixes (can be removed with next version bump)
 )
-
-S="${WORKDIR}/${P/_/-}"
 
 src_prepare() {
 	# bug 438558
 	# 1.7 segfaults when entering copy mode if compiled with -Os
 	replace-flags -Os -O2
-
-	# regenerate aclocal.m4 to support earlier automake versions
-	rm -f aclocal.m4 || die
 
 	default
 	eautoreconf
@@ -60,7 +60,6 @@ src_configure() {
 		$(use_enable debug)
 		$(use_enable utempter)
 	)
-
 	econf "${myeconfargs[@]}"
 }
 
@@ -74,7 +73,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	if ! version_is_at_least 1.9a ${REPLACING_VERSIONS:-1.9a}; then
+	if ! ver_test 1.9a -ge ${REPLACING_VERSIONS:-1.9a}; then
 		echo
 		ewarn "Some configuration options changed in this release."
 		ewarn "Please read the CHANGES file in /usr/share/doc/${PF}/"
