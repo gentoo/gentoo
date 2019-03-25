@@ -16,6 +16,8 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE="doc"
 
+RESTRICT="test" # bug 675854
+
 RDEPEND="~sys-libs/libapparmor-${PV}"
 DEPEND="${RDEPEND}
 	dev-lang/perl
