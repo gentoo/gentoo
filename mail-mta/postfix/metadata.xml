@@ -2,6 +2,12 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<!-- maintainer-needed -->
+	<maintainer type="person">
+		<email>williamh@gentoo.org</email>
+		<name>
+			William Hubbs
+		</name>
+	</maintainer>
 	<use>
 		<flag name="dovecot-sasl">Enable <pkg>net-mail/dovecot</pkg> protocol
 			version 1 (server only) SASL implementation</flag>
