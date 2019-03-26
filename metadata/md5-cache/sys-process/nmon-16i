@@ -1,0 +1,13 @@
+BDEPEND=virtual/pkgconfig
+DEFINED_PHASES=compile configure install unpack
+DEPEND=sys-libs/ncurses:0=
+DESCRIPTION=Nigel's performance MONitor for CPU, memory, network, disks, etc...
+EAPI=7
+HOMEPAGE=http://nmon.sourceforge.net/
+KEYWORDS=~amd64 ~arm ~ppc64 ~x86
+LICENSE=GPL-3
+RDEPEND=sys-libs/ncurses:0=
+SLOT=0
+SRC_URI=mirror://sourceforge/nmon/lmon16i.c
+_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	a09389deba2c0a7108b581e02c7cecbf	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
+_md5_=8672e1243dc0ee7c7881827743c9d446
