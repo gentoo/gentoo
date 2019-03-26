@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{4,5,6} )
 inherit gnome2 python-single-r1
 
 DESCRIPTION="A simple audiofile converter application for the GNOME environment"
-HOMEPAGE="http://soundconverter.org/"
+HOMEPAGE="https://soundconverter.org/"
 MY_PV="${PV/_/-}"
 SRC_URI="https://launchpad.net/${PN}/trunk/${MY_PV}/+download/${PN}-${MY_PV}.tar.xz"
 S="${WORKDIR}/${PN}-${MY_PV}"
