@@ -108,7 +108,7 @@ src_install() {
 
 	newinitd "${FILESDIR}"/spectrum2.initd spectrum2
 	systemd_newunit "${FILESDIR}"/spectrum2.service spectrum2.service
-	systemd_newtmpfilesd "${FILESDIR}"/spectrum2.tmpfiles spectrum2.conf
+	systemd_newtmpfilesd "${FILESDIR}"/spectrum2.tmpfiles-r1 spectrum2.conf
 
 	einstalldocs
 }
