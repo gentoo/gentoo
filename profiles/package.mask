@@ -749,11 +749,6 @@ media-libs/libglvnd
 # Masked for initial testing
 >=dev-db/mysql-connector-c++-8.0.0
 
-# Eray Aslan <eras@gentoo.org> (22 Jan 2018)
-# Vulnerable - see https://bugs.gentoo.org/630684
-# Please migrate to cyrus-imapd-3.0 releases
-=net-mail/cyrus-imapd-2.5*
-
 # James Le Cuirot <chewi@gentoo.org> (17 Dec 2017)
 # Java 9+ is not yet fully supported on Gentoo. Packages cannot depend
 # on it so these virtuals are not yet required. If you wish to use
