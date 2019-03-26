@@ -2,8 +2,11 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>junghans@gentoo.org</email>
-		<name>Christoph Junghans</name>
+		<email>chutzpah@gentoo.org</email>
+		<name>Patrick McLean</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>python@gentoo.org</email>
 	</maintainer>
 	<upstream>
 		<remote-id type="github">gcovr/gcovr</remote-id>
