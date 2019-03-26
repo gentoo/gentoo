@@ -1,0 +1,13 @@
+BDEPEND=>=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1[curl]
+DEFINED_PHASES=configure install postinst prepare unpack
+DEPEND=caps? ( sys-libs/libcap ) ldap? ( >=net-nds/openldap-2.0.25 ) mysql? ( || ( dev-db/mariadb-connector-c dev-db/mysql-connector-c ) ) pam? ( virtual/pam ) postgres? ( dev-db/postgresql:= ) ssl? ( !libressl? ( >=dev-libs/openssl-0.9.6g:0=[-bindist] ) libressl? ( dev-libs/libressl:= ) ) sysquota? ( sys-fs/quota[-rpc] ) xinetd? ( virtual/inetd )
+DESCRIPTION=Fast, production-quality, standard-conformant FTP server
+EAPI=7
+HOMEPAGE=http://www.pureftpd.org/
+IUSE=anondel anonperm anonren anonres caps implicittls ldap libressl mysql noiplog pam paranoidmsg postgres resolveids selinux ssl sysquota vchroot xinetd
+LICENSE=BSD
+RDEPEND=caps? ( sys-libs/libcap ) ldap? ( >=net-nds/openldap-2.0.25 ) mysql? ( || ( dev-db/mariadb-connector-c dev-db/mysql-connector-c ) ) pam? ( virtual/pam ) postgres? ( dev-db/postgresql:= ) ssl? ( !libressl? ( >=dev-libs/openssl-0.9.6g:0=[-bindist] ) libressl? ( dev-libs/libressl:= ) ) sysquota? ( sys-fs/quota[-rpc] ) xinetd? ( virtual/inetd ) dev-libs/libsodium:= net-ftp/ftpbase selinux? ( sec-policy/selinux-ftp )
+REQUIRED_USE=implicittls? ( ssl )
+SLOT=0
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	a09389deba2c0a7108b581e02c7cecbf	git-r3	0d4635eeb5a96cd5315597a47eba25c9	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
+_md5_=a7ee8ebc47d8b9257c3296c0b627241b
