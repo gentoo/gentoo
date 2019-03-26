@@ -4,10 +4,6 @@
   <maintainer type="person">
     <email>hanno@gentoo.org</email>
   </maintainer>
-  <maintainer type="project">
-    <email>net-mail@gentoo.org</email>
-    <name>Net-Mail</name>
-  </maintainer>
   <use>
     <flag name="vpopmail">Enable vpopmail support</flag>
   </use>
