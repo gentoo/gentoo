@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=app-arch/unzip >=dev-libs/libpcre-3.4 >=media-libs/gd-1.8.4-r2[jpeg,png] sys-libs/zlib
+DESCRIPTION=A webserver log analyzer
+EAPI=7
+HOMEPAGE=https://www.c-amie.co.uk/software/analog/
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=app-arch/unzip >=dev-libs/libpcre-3.4 >=media-libs/gd-1.8.4-r2[jpeg,png] sys-libs/zlib
+SLOT=0
+SRC_URI=http://www.c-amie.co.uk/static/analog/6013/analog-src-6013ce.zip
+_eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
+_md5_=cd852e268732a4918edeb5fd52e47120
