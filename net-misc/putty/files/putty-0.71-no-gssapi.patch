@@ -1,6 +1,27 @@
+From 7ad08649a223a4cd61e67d8334a147f55c79399d Mon Sep 17 00:00:00 2001
+From: Jacob Nevins <jacobn@chiark.greenend.org.uk>
+Date: Mon, 25 Mar 2019 23:46:59 +0000
+Subject: [PATCH] Fix compilation with NO_GSSAPI.
+
+This is a fairly shallow patch, which removes the UI and interactions
+with external libraries. Some other machinery (which is dead code in
+this configuration) is left in place.
+
+Adapted by me from a patch by Jeroen Roovers.
+---
+ config.c        |  4 ++++
+ settings.c      | 12 ++++++++++--
+ ssh.c           | 16 +++++++++++++++-
+ ssh2transport.c |  3 +--
+ ssh2userauth.c  |  8 ++++++--
+ sshserver.c     | 13 ++++++++++++-
+ 6 files changed, 48 insertions(+), 8 deletions(-)
+
+diff --git a/config.c b/config.c
+index 9c299fee..6528a969 100644
 --- a/config.c
 +++ b/config.c
-@@ -2442,10 +2442,12 @@
+@@ -2442,10 +2442,12 @@ void setup_config_box(struct controlbox *b, bool midsession,
  			      HELPCTX(ssh_kexlist),
  			      kexlist_handler, P(NULL));
              c->listbox.height = KEX_MAX;
@@ -13,7 +34,7 @@
  
  	    s = ctrl_getset(b, "Connection/SSH/Kex", "repeat",
  			    "Options controlling key re-exchange");
-@@ -2455,11 +2457,13 @@
+@@ -2455,11 +2457,13 @@ void setup_config_box(struct controlbox *b, bool midsession,
  			 conf_editbox_handler,
  			 I(CONF_ssh_rekey_time),
  			 I(-1));
@@ -27,9 +48,11 @@
  	    ctrl_editbox(s, "Max data before rekey (0 for no limit)", 'x', 20,
  			 HELPCTX(ssh_kex_repeat),
  			 conf_editbox_handler,
+diff --git a/settings.c b/settings.c
+index 8d563026..54f5ab7b 100644
 --- a/settings.c
 +++ b/settings.c
-@@ -592,21 +592,25 @@
+@@ -592,21 +592,25 @@ void save_open_settings(settings_w *sesskey, Conf *conf)
      write_setting_b(sesskey, "Compression", conf_get_bool(conf, CONF_compression));
      write_setting_b(sesskey, "TryAgent", conf_get_bool(conf, CONF_tryagent));
      write_setting_b(sesskey, "AgentFwd", conf_get_bool(conf, CONF_agentfwd));
@@ -56,7 +79,7 @@
      wprefs(sesskey, "GSSLibs", gsslibkeywords, ngsslibs, conf, CONF_ssh_gsslist);
      write_setting_filename(sesskey, "GSSCustom", conf_get_filename(conf, CONF_ssh_gss_custom));
  #endif
-@@ -937,7 +941,9 @@
+@@ -937,7 +941,9 @@ void load_open_settings(settings_r *sesskey, Conf *conf)
      gppb(sesskey, "TryAgent", true, conf, CONF_tryagent);
      gppb(sesskey, "AgentFwd", false, conf, CONF_agentfwd);
      gppb(sesskey, "ChangeUsername", false, conf, CONF_change_username);
@@ -66,7 +89,7 @@
      gprefs(sesskey, "Cipher", "\0",
  	   ciphernames, CIPHER_MAX, conf, CONF_ssh_cipherlist);
      {
-@@ -990,7 +996,9 @@
+@@ -990,7 +996,9 @@ void load_open_settings(settings_r *sesskey, Conf *conf)
      gprefs(sesskey, "HostKey", "ed25519,ecdsa,rsa,dsa,WARN",
             hknames, HK_MAX, conf, CONF_ssh_hklist);
      gppi(sesskey, "RekeyTime", 60, conf, CONF_ssh_rekey_time);
@@ -76,7 +99,7 @@
      gpps(sesskey, "RekeyBytes", "1G", conf, CONF_ssh_rekey_data);
      {
  	/* SSH-2 only by default */
-@@ -1007,9 +1015,9 @@
+@@ -1007,9 +1015,9 @@ void load_open_settings(settings_r *sesskey, Conf *conf)
      gppb(sesskey, "SshBanner", true, conf, CONF_ssh_show_banner);
      gppb(sesskey, "AuthTIS", false, conf, CONF_try_tis_auth);
      gppb(sesskey, "AuthKI", true, conf, CONF_try_ki_auth);
@@ -87,9 +110,11 @@
      gprefs(sesskey, "GSSLibs", "\0",
  	   gsslibkeywords, ngsslibs, conf, CONF_ssh_gsslist);
      gppfile(sesskey, "GSSCustom", conf, CONF_ssh_gss_custom);
+diff --git a/ssh.c b/ssh.c
+index e35ebc64..e8ad61b8 100644
 --- a/ssh.c
 +++ b/ssh.c
-@@ -50,7 +50,9 @@
+@@ -50,7 +50,9 @@ struct Ssh {
      ssh_sharing_state *connshare;
      bool attempting_connshare;
  
@@ -99,7 +124,7 @@
  
      char *savedhost;
      int savedport;
-@@ -252,10 +254,17 @@
+@@ -252,10 +254,18 @@ static void ssh_got_ssh_version(struct ssh_version_receiver *rcv,
                      conf_get_bool(ssh->conf, CONF_tryagent), username,
                      conf_get_bool(ssh->conf, CONF_change_username),
                      conf_get_bool(ssh->conf, CONF_try_ki_auth),
@@ -107,99 +132,69 @@
                      conf_get_bool(ssh->conf, CONF_try_gssapi_auth),
                      conf_get_bool(ssh->conf, CONF_try_gssapi_kex),
                      conf_get_bool(ssh->conf, CONF_gssapifwd),
-                     &ssh->gss_state);
+-                    &ssh->gss_state);
++                    &ssh->gss_state
 +#else
-+                    NULL,
-+                    NULL,
-+                    NULL,
-+                    NULL);
++                    false,
++                    false,
++                    false,
++                    NULL
 +#endif
++                    );
                  ssh_connect_ppl(ssh, userauth_layer);
                  transport_child_layer = userauth_layer;
  
-@@ -267,7 +276,11 @@
+@@ -267,7 +277,11 @@ static void ssh_got_ssh_version(struct ssh_version_receiver *rcv,
                  ssh->fullhostname,
                  ssh_verstring_get_local(old_bpp),
                  ssh_verstring_get_remote(old_bpp),
 +#ifndef NO_GSSAPI
                  &ssh->gss_state,
 +#else
-+				NULL,
++                NULL,
 +#endif
                  &ssh->stats, transport_child_layer, false);
              ssh_connect_ppl(ssh, ssh->base_layer);
  
---- a/sshserver.c
-+++ b/sshserver.c
-@@ -50,7 +50,9 @@
-     PacketProtocolLayer *base_layer;
-     ConnectionLayer *cl;
- 
-+#ifndef NO_GSSAPI
-     struct ssh_connection_shared_gss_state gss_state;
-+#endif
- };
- 
- static void ssh_server_free_callback(void *vsrv);
-@@ -246,8 +248,10 @@
-     bufchain_init(&srv->dummy_user_input);
- 
-     /* FIXME: replace with sensible */
-+#ifndef NO_GSSAPI
-     srv->gss_state.libs = snew(struct ssh_gss_liblist);
-     srv->gss_state.libs->nlibraries = 0;
-+#endif
- 
-     return &srv->plug;
+diff --git a/ssh2transport.c b/ssh2transport.c
+index 8640d89d..5e8955a0 100644
+--- a/ssh2transport.c
++++ b/ssh2transport.c
+@@ -1781,6 +1781,7 @@ static void ssh2_transport_gss_update(struct ssh2_transport_state *s,
+     if (mins > 0 && s->gss_ctxt_lifetime <= mins * 60)
+         s->gss_status |= GSS_CTXT_EXPIRES;
  }
-@@ -297,7 +301,9 @@
-     conf_free(srv->conf);
-     log_free(srv->logctx);
++#endif /* NO_GSSAPI */
  
-+#ifndef NO_GSSAPI
-     sfree(srv->gss_state.libs);        /* FIXME: replace with sensible */
-+#endif
+ ptrlen ssh2_transport_get_session_id(PacketProtocolLayer *ppl)
+ {
+@@ -1805,8 +1806,6 @@ void ssh2_transport_notify_auth_done(PacketProtocolLayer *ppl)
+     queue_idempotent_callback(&s->ppl.ic_process_queue);
+ }
  
-     sfree(srv);
- 
-@@ -442,7 +448,11 @@
-             srv->conf, NULL, 0, NULL,
-             ssh_verstring_get_remote(old_bpp),
-             ssh_verstring_get_local(old_bpp),
-+#ifndef NO_GSSAPI
-             &srv->gss_state, &srv->stats, transport_child_layer, true);
-+#else
-+            NULL, &srv->stats, transport_child_layer, true);
-+#endif
-         ssh2_transport_provide_hostkeys(
-             srv->base_layer, srv->hostkeys, srv->nhostkeys);
-         if (userauth_layer)
+-#endif /* NO_GSSAPI */
+-
+ static bool ssh2_transport_get_specials(
+     PacketProtocolLayer *ppl, add_special_fn_t add_special, void *ctx)
+ {
+diff --git a/ssh2userauth.c b/ssh2userauth.c
+index fc413923..7f5a1292 100644
 --- a/ssh2userauth.c
 +++ b/ssh2userauth.c
-@@ -241,7 +241,9 @@
-      * Misc one-time setup for authentication.
-      */
-     s->publickey_blob = NULL;
-+#ifndef NO_GSSAPI
-     s->session_id = ssh2_transport_get_session_id(s->transport_layer);
-+#endif
- 
-     /*
-      * Load the public half of any configured public key file for
-@@ -613,8 +615,12 @@
+@@ -613,8 +613,10 @@ static void ssh2_userauth_process_queue(PacketProtocolLayer *ppl)
                   * Scan it for method identifiers we know about.
                   */
                  bool srv_pubkey = false, srv_passwd = false;
-+#ifndef NO_GSSAPI
-                 bool srv_keyb_inter = false, srv_gssapi = false;
-                 bool srv_gssapi_keyex_auth = false;
-+#else
+-                bool srv_keyb_inter = false, srv_gssapi = false;
+-                bool srv_gssapi_keyex_auth = false;
 +                bool srv_keyb_inter = false;
++#ifndef NO_GSSAPI
++                bool srv_gssapi = false, srv_gssapi_keyex_auth = false;
 +#endif
  
                  for (ptrlen method; get_commasep_word(&methods, &method) ;) {
                      if (ptrlen_eq_string(method, "publickey"))
-@@ -623,10 +629,12 @@
+@@ -623,10 +625,12 @@ static void ssh2_userauth_process_queue(PacketProtocolLayer *ppl)
                          srv_passwd = true;
                      else if (ptrlen_eq_string(method, "keyboard-interactive"))
                          srv_keyb_inter = true;
@@ -212,25 +207,56 @@
                  }
  
                  /*
-@@ -1640,7 +1648,9 @@
-      * any packets since. Signal the transport layer to consider
-      * doing an immediate rekey, if it has any reason to want to.
-      */
-+#ifndef NO_GSSAPI
-     ssh2_transport_notify_auth_done(s->transport_layer);
-+#endif
- 
-     /*
-      * Finally, hand over to our successor layer, and return
---- a/ssh2userauth-server.c
-+++ b/ssh2userauth-server.c
-@@ -122,7 +122,9 @@
- 
-     crBegin(s->crState);
+diff --git a/sshserver.c b/sshserver.c
+index 5f6e7dde..5c34bb35 100644
+--- a/sshserver.c
++++ b/sshserver.c
+@@ -50,7 +50,9 @@ struct server {
+     PacketProtocolLayer *base_layer;
+     ConnectionLayer *cl;
  
 +#ifndef NO_GSSAPI
-     s->session_id = ssh2_transport_get_session_id(s->transport_layer);
+     struct ssh_connection_shared_gss_state gss_state;
++#endif
+ };
+ 
+ static void ssh_server_free_callback(void *vsrv);
+@@ -245,9 +247,11 @@ Plug *ssh_server_plug(
+     bufchain_init(&srv->out_raw);
+     bufchain_init(&srv->dummy_user_input);
+ 
++#ifndef NO_GSSAPI
+     /* FIXME: replace with sensible */
+     srv->gss_state.libs = snew(struct ssh_gss_liblist);
+     srv->gss_state.libs->nlibraries = 0;
 +#endif
  
-     while (1) {
-         crMaybeWaitUntilV((pktin = ssh2_userauth_server_pop(s)) != NULL);
+     return &srv->plug;
+ }
+@@ -297,7 +301,9 @@ static void ssh_server_free_callback(void *vsrv)
+     conf_free(srv->conf);
+     log_free(srv->logctx);
+ 
++#ifndef NO_GSSAPI
+     sfree(srv->gss_state.libs);        /* FIXME: replace with sensible */
++#endif
+ 
+     sfree(srv);
+ 
+@@ -442,7 +448,12 @@ static void server_got_ssh_version(struct ssh_version_receiver *rcv,
+             srv->conf, NULL, 0, NULL,
+             ssh_verstring_get_remote(old_bpp),
+             ssh_verstring_get_local(old_bpp),
+-            &srv->gss_state, &srv->stats, transport_child_layer, true);
++#ifndef NO_GSSAPI
++            &srv->gss_state,
++#else
++            NULL,
++#endif
++            &srv->stats, transport_child_layer, true);
+         ssh2_transport_provide_hostkeys(
+             srv->base_layer, srv->hostkeys, srv->nhostkeys);
+         if (userauth_layer)
+-- 
+2.11.0
+
