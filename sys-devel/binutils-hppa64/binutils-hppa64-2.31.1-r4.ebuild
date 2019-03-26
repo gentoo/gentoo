@@ -3,13 +3,17 @@
 
 EAPI=6
 
+export CTARGET=hppa64-${CHOST#*-}
+
 inherit eutils libtool flag-o-matic gnuconfig multilib versionator
 
 DESCRIPTION="Tools necessary to build programs"
 HOMEPAGE="https://sourceware.org/binutils/"
 LICENSE="GPL-3+"
-IUSE="+cxx default-gold doc multitarget +nls static-libs test"
-REQUIRED_USE="default-gold? ( cxx )"
+# USE="+cxx" is a transitional flag until llvm migrates to new flags:
+#    bug #677888
+IUSE="+cxx default-gold doc +gold multitarget +nls +plugins static-libs test"
+REQUIRED_USE="cxx? ( gold plugins ) default-gold? ( gold )"
 
 # Variables that can be set here:
 # PATCH_VER          - the patchset version
@@ -18,7 +22,7 @@ REQUIRED_USE="default-gold? ( cxx )"
 #                    - Default: PV
 # PATCH_DEV          - Use download URI https://dev.gentoo.org/~{PATCH_DEV}/distfiles/...
 #                      for the patchsets
-#                      Default: dilfridge :)
+#                      Default: slyfox
 
 PATCH_VER=5
 PATCH_DEV=dilfridge
@@ -43,9 +47,10 @@ case ${PV} in
 	*)
 		SRC_URI="mirror://gnu/binutils/binutils-${PV}.tar.xz"
 		SLOT=$(get_version_component_range 1-2)
-		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd"
 		;;
 esac
+SLOT=$(get_version_component_range 1-2)
+KEYWORDS="-* ~hppa"
 
 #
 # The Gentoo patchset
@@ -83,6 +88,7 @@ DEPEND="${RDEPEND}
 "
 
 MY_BUILDDIR=${WORKDIR}/build
+S=${WORKDIR}/${P/-hppa64/}
 
 src_unpack() {
 	case ${PV} in
@@ -176,10 +182,12 @@ src_configure() {
 	cd "${MY_BUILDDIR}"
 	local myconf=()
 
-	# enable gold (installed as ld.gold) and ld's plugin architecture
-	if use cxx ; then
-		myconf+=( --enable-gold )
+	if use plugins ; then
 		myconf+=( --enable-plugins )
+	fi
+	# enable gold (installed as ld.gold) and ld's plugin architecture
+	if use gold ; then
+		myconf+=( --enable-gold )
 		if use default-gold; then
 			myconf+=( --enable-gold=default )
 		fi
@@ -370,6 +378,11 @@ src_install() {
 
 	# Trim all empty dirs
 	find "${ED}" -depth -type d -exec rmdir {} + 2>/dev/null
+
+	# the hppa64 hack; this should go into 9999 as a PN-conditional
+	# tweak the default fake list a little bit
+	cd "${D}"/etc/env.d/binutils
+	sed -i '/FAKE_TARGETS=/s:"$: hppa64-linux":' ${CTARGET}-${PV} || die
 }
 
 pkg_postinst() {
