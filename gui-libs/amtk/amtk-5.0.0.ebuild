@@ -20,6 +20,7 @@ RDEPEND="
 "
 DEPEND="${DEPEND}
 	>=sys-devel/gettext-0.19.4
+	dev-util/glib-utils
 	>=dev-util/gtk-doc-am-1.25
 	virtual/pkgconfig
 "
