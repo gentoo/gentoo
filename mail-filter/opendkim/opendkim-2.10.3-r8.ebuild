@@ -56,9 +56,6 @@ src_prepare() {
 	# We delete the "Socket" setting because it's overridden by our
 	# conf.d file.
 	sed -e 's:/var/db/dkim:/var/lib/opendkim:g' \
-		-e 's:/var/db/opendkim:/var/lib/opendkim:g' \
-		-e 's:/etc/mail:/etc/opendkim:g' \
-		-e 's:mailnull:opendkim:g' \
 		-e '/^[[:space:]]*Socket/d' \
 		-i opendkim/opendkim.conf.sample opendkim/opendkim.conf.simple.in \
 		stats/opendkim-reportstats{,.in} || die
