@@ -2,6 +2,12 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
+		<email>eras@gentoo.org</email>
+		<name>
+			Eray Aslan
+		</name>
+	</maintainer>
+	<maintainer type="person">
 		<email>williamh@gentoo.org</email>
 		<name>
 			William Hubbs
