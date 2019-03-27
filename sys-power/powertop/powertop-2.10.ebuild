@@ -38,6 +38,10 @@ RDEPEND="
 	virtual/libintl
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.8-ncurses_tinfo.patch
+)
+
 pkg_setup() {
 	CONFIG_CHECK="
 		~X86_MSR
