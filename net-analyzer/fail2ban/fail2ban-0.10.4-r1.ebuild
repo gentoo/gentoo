@@ -1,11 +1,11 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} pypy )
 DISTUTILS_SINGLE_IMPL=1
 
-inherit distutils-r1 eutils systemd vcs-snapshot
+inherit distutils-r1 eutils systemd
 
 DESCRIPTION="scans log files and bans IPs that show malicious signs"
 HOMEPAGE="http://www.fail2ban.org/"
@@ -32,6 +32,11 @@ RDEPEND="
 REQUIRED_USE="systemd? ( !python_single_target_pypy )"
 RESTRICT="test"
 DOCS=( ChangeLog DEVELOP README.md THANKS TODO doc/run-rootless.txt )
+
+src_unpack() {
+	default
+	mv ${PN}-${PN}-* ${P} || die
+}
 
 python_prepare_all() {
 	eapply_user
