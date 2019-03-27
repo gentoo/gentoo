@@ -8,7 +8,7 @@ CHROMIUM_LANGS="
 	mr ms nb nl nn pl pt-BR pt-PT ro ru sc sk sl sq sr sv sw ta te th tr uk vi
 	zh-CN zh-TW
 "
-inherit chromium-2 gnome2-utils multilib unpacker toolchain-funcs xdg-utils
+inherit chromium-2 multilib unpacker toolchain-funcs xdg-utils
 
 #VIVALDI_BRANCH="snapshot"
 
@@ -113,16 +113,12 @@ src_install() {
 	fperms 4711 /${VIVALDI_HOME}/${PN}-sandbox
 }
 
-pkg_preinst() {
-	gnome2_icon_savelist
-}
-
 pkg_postrm() {
-	gnome2_icon_cache_update
 	xdg_desktop_database_update
+	xdg_icon_cache_update
 }
 
 pkg_postinst() {
-	gnome2_icon_cache_update
 	xdg_desktop_database_update
+	xdg_icon_cache_update
 }
