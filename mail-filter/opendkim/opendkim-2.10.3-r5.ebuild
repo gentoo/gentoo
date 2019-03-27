@@ -152,10 +152,6 @@ pkg_postinst() {
 		elog "  emerge --config ${CATEGORY}/${PN}"
 		elog "It will help you create your key and give you hints on how"
 		elog "to configure your DNS and MTA."
-
-		ewarn "Make sure your MTA has r/w access to the socket file."
-		ewarn "This can be done either by setting UMask to 002 and adding MTA's user"
-		ewarn "to milter group or you can simply set UMask to 000."
 	fi
 }
 
