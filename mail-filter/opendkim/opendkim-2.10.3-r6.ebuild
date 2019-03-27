@@ -64,8 +64,9 @@ src_prepare() {
 	sed -i -e 's:dist_doc_DATA:dist_html_DATA:' libopendkim/docs/Makefile.am \
 		|| die
 
-	sed -i -e '/sock.*mt.getcwd/s:mt.getcwd():"/tmp":' opendkim/tests/*.lua
-	sed -i -e '/sock.*mt.getcwd/s:mt.getcwd():"/proc/self/cwd":' opendkim/tests/*.lua
+	sed -e '/sock.*mt.getcwd/s:mt.getcwd():"/tmp":' \
+		-e '/sock.*mt.getcwd/s:mt.getcwd():"/proc/self/cwd":' \
+		-i opendkim/tests/*.lua || die
 
 	eautoreconf
 }
