@@ -6,7 +6,7 @@ EAPI=6
 inherit autotools db-use eutils systemd user
 
 DESCRIPTION="A milter providing DKIM signing and verification"
-HOMEPAGE="http://opendkim.org"
+HOMEPAGE="http://opendkim.org/"
 SRC_URI="mirror://sourceforge/opendkim/${P}.tar.gz"
 
 # The GPL-2 is for the init script, bug 425960.
