@@ -184,10 +184,12 @@ src_install() {
 	systemd_dounit Autostart/Systemd/brltty@.service
 	systemd_dotmpfilesd "${FILESDIR}/${PN}.tmpfiles.conf"
 
-	local libdir="$(get_libdir)"
-	mkdir -p "${ED}"/usr/${libdir}/ || die
-	mv "${ED}"/${libdir}/*.a "${ED}"/usr/${libdir}/ || die
-	gen_usr_ldscript libbrlapi.so
+	if use api ; then
+		local libdir="$(get_libdir)"
+		mkdir -p "${ED}"/usr/${libdir}/ || die
+		mv "${ED}"/${libdir}/*.a "${ED}"/usr/${libdir}/ || die
+		gen_usr_ldscript libbrlapi.so
+	fi
 
 	cd Documents || die
 	mv Manual-BRLTTY/English/BRLTTY.txt BRLTTY-en.txt || die
