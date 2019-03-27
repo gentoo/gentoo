@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=virtual/perl-ExtUtils-MakeMaker dev-lang/perl:=
+DESCRIPTION=A license identification tool for source code
+EAPI=6
+HOMEPAGE=http://ninka.turingmachine.org/
+IUSE=sqlite
+KEYWORDS=~amd64
+LICENSE=GPL-2+ myspell-en_CA-KevinAtkinson public-domain Princeton Ispell
+RDEPEND=dev-perl/IO-CaptureOutput dev-perl/Spreadsheet-WriteExcel virtual/perl-File-Temp sqlite? ( dev-perl/DBD-SQLite dev-perl/DBI ) dev-lang/perl:=
+RESTRICT=test
+SLOT=0
+SRC_URI=https://dev.gentoo.org/~ulm/distfiles/ninka-2.0_pre1_p20170402.tar.xz
+_eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	71c828c354a4cddced2641dda2695de5	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
+_md5_=bbbdbf8180c5c75dbe62160da5d02b57
