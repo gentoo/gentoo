@@ -17,6 +17,7 @@ if [[ ${PV} == *9999* ]] ; then
 else
 	SRC_URI="https://lutris.net/releases/${P/-/_}.tar.xz"
 	KEYWORDS="~amd64 ~x86"
+	S="${WORKDIR}/${PN}"
 fi
 
 LICENSE="GPL-3"
@@ -45,8 +46,6 @@ RDEPEND="
 	x11-libs/gtk+:3[introspection]
 	x11-libs/libnotify
 "
-
-S="${WORKDIR}/${PN}"
 
 python_install_all() {
 	local DOCS=( AUTHORS README.rst docs/installers.rst )
