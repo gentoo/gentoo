@@ -1,14 +1,9 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 inherit autotools db-use eutils systemd user
-
-# for betas
-#MY_P=${P/_b/.B}
-#S=${WORKDIR}/${PN}-2.8.0
-#SRC_URI="mirror://sourceforge/opendkim/${MY_P}.tar.gz"
 
 DESCRIPTION="A milter-based application to provide DKIM signing and verification"
 HOMEPAGE="http://opendkim.org"
@@ -60,10 +55,10 @@ src_prepare() {
 	default
 
 	sed -i -e 's:/var/db/dkim:/etc/opendkim:g' \
-	       -e 's:/var/db/opendkim:/var/lib/opendkim:g' \
-	       -e 's:/etc/mail:/etc/opendkim:g' \
-	       -e 's:mailnull:milter:g' \
-	       -e 's:^#[[:space:]]*PidFile.*:PidFile /run/opendkim/opendkim.pid:' \
+		   -e 's:/var/db/opendkim:/var/lib/opendkim:g' \
+		   -e 's:/etc/mail:/etc/opendkim:g' \
+		   -e 's:mailnull:milter:g' \
+		   -e 's:^#[[:space:]]*PidFile.*:PidFile /run/opendkim/opendkim.pid:' \
 		   opendkim/opendkim.conf.sample opendkim/opendkim.conf.simple.in \
 		   stats/opendkim-reportstats{,.in} || die
 
