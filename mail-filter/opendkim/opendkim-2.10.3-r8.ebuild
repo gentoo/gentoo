@@ -55,7 +55,7 @@ src_prepare() {
 
 	# We delete the "Socket" setting because it's overridden by our
 	# conf.d file.
-	sed -e 's:/var/db/dkim:/etc/opendkim:g' \
+	sed -e 's:/var/db/dkim:/var/lib/opendkim:g' \
 		-e 's:/var/db/opendkim:/var/lib/opendkim:g' \
 		-e 's:/etc/mail:/etc/opendkim:g' \
 		-e 's:mailnull:opendkim:g' \
@@ -183,28 +183,32 @@ pkg_config() {
 	local selector keysize pubkey
 
 	read -p "Enter the selector name (default ${HOSTNAME}): " selector
-	[[ -n "${selector}" ]] || selector=${HOSTNAME}
+	[[ -n "${selector}" ]] || selector="${HOSTNAME}"
 	if [[ -z "${selector}" ]]; then
 		eerror "Oddly enough, you don't have a HOSTNAME."
 		return 1
 	fi
-	if [[ -f "${ROOT}"etc/opendkim/${selector}.private ]]; then
+	if [[ -f "${ROOT}var/lib/opendkim/${selector}.private" ]]; then
 		ewarn "The private key for this selector already exists."
 	else
 		keysize=1024
-		# generate the private and public keys
-		opendkim-genkey -b ${keysize} -D "${ROOT}"etc/opendkim/ \
-			-s ${selector} -d '(your domain)' && \
-			chown opendkim:opendkim \
-			"${ROOT}"etc/opendkim/"${selector}".private || \
-				{ eerror "Failed to create private and public keys." ; return 1; }
-		chmod go-r "${ROOT}"etc/opendkim/"${selector}".private
+		# Generate the private and public keys. Note that opendkim-genkeys
+		# sets umask=077 on its own to keep these safe. However, we want
+		# them to be readable (only!) to the opendkim user, and we manage
+		# that by changing their groups and making everything group-readable.
+		opendkim-genkey -b ${keysize} -D "${ROOT}"var/lib/opendkim/ \
+			-s "${selector}" -d '(your domain)' && \
+			chgrp --no-dereference opendkim \
+				  "${ROOT}var/lib/opendkim/${selector}".{private,txt} || \
+				{ eerror "Failed to create private and public keys." ;
+				  return 1; }
+		chmod g+r "${ROOT}var/lib/opendkim/${selector}".{private,txt}
 	fi
 
 	# opendkim selector configuration
 	echo
 	einfo "Make sure you have the following settings in your /etc/opendkim/opendkim.conf:"
-	einfo "  Keyfile /etc/opendkim/${selector}.private"
+	einfo "  Keyfile /var/lib/opendkim/${selector}.private"
 	einfo "  Selector ${selector}"
 
 	# MTA configuration
@@ -216,7 +220,7 @@ pkg_config() {
 
 	# DNS configuration
 	einfo "After you configured your MTA, publish your key by adding this TXT record to your domain:"
-	cat "${ROOT}"etc/opendkim/${selector}.txt
+	cat "${ROOT}var/lib/opendkim/${selector}.txt"
 	einfo "t=y signifies you only test the DKIM on your domain. See following page for the complete list of tags:"
 	einfo "  http://www.dkim.org/specs/rfc4871-dkimbase.html#key-text"
 }
