@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -28,6 +28,8 @@ RDEPEND="
 	dev-ros/genpy[${PYTHON_USEDEP}]
 	dev-ros/rospy[${PYTHON_USEDEP}]
 	dev-libs/console_bridge:=
+	dev-python/pycrypto[${PYTHON_USEDEP}]
+	dev-python/python-gnupg[${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}"
 RDEPEND="${RDEPEND}
