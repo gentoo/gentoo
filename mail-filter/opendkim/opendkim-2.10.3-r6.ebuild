@@ -5,7 +5,7 @@ EAPI=6
 
 inherit autotools db-use eutils systemd user
 
-DESCRIPTION="A milter-based application to provide DKIM signing and verification"
+DESCRIPTION="A milter providing DKIM signing and verification"
 HOMEPAGE="http://opendkim.org"
 SRC_URI="mirror://sourceforge/opendkim/${P}.tar.gz"
 
