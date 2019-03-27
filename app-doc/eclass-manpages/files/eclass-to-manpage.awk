@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # This awk converts the comment documentation found in eclasses
@@ -93,7 +93,7 @@ function xfail(text) {
 
 function eat_line() {
 	ret = $0
-	sub(/^# @[A-Z]*:[[:space:]]*/,"",ret)
+	sub(/^# @[^:]+:[[:space:]]*/,"",ret)
 	getline
 	return ret
 }
@@ -200,6 +200,10 @@ function handle_eclass() {
 	if (desc != "") {
 		print ".SH \"DESCRIPTION\""
 		print man_text(desc)
+	}
+	if (supported_eapis != "") {
+		print ".SH \"SUPPORTED EAPIS\""
+		print man_text(supported_eapis)
 	}
 	if (example != "") {
 		print ".SH \"EXAMPLE\""
