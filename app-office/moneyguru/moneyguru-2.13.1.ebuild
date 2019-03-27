@@ -23,7 +23,7 @@ RDEPEND="${PYTHON_DEPS}
 	dev-qt/qttranslations"
 DEPEND="${RDEPEND}
 	test? (
-		dev-python/pytest[${PYTHON_USEDEP}]
+		<dev-python/pytest-4[${PYTHON_USEDEP}]
 		dev-util/cunit
 	)"
 
