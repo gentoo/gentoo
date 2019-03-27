@@ -228,7 +228,7 @@ app-arch/xz-utils 5.2.3 5.2.4-r2: utils for managing LZMA compressed files
 app-arch/zip 3.0-r3: Info ZIP (encryption support)
 app-arch/zoo 2.10-r5: Manipulate archives of files in compressed form
 app-arch/zopfli 1.0.2: Very good, but slow, deflate or zlib compression
-app-arch/zstd 1.1.3 1.3.2 1.3.4-r1: zstd fast compression library
+app-arch/zstd 1.1.3 1.3.2 1.3.4-r1 1.3.7-r1: zstd fast compression library
 app-backup/amanda 3.3.9: The Advanced Maryland Automatic Network Disk Archiver
 app-backup/backintime 1.2.0_pre20180221: Backup system inspired by TimeVault and FlyBack
 app-backup/backup-manager 0.7.14: Backup Manager is a command line backup tool for GNU/Linux
@@ -237,7 +237,7 @@ app-backup/backuppc 3.3.1-r5: High-performance backups to a server's disk
 app-backup/bacula 9.0.8-r1: Featureful client/server network backup suite
 app-backup/borgbackup 1.1.8: Deduplicating backup program with compression and authenticated encryption
 app-backup/btrbk 0.24.0-r1 0.25.1-r1 0.27.0: Tool for creating snapshots and remote backups of btrfs subvolumes
-app-backup/burp 2.1.32: Network backup and restore client and server for Unix and Windows
+app-backup/burp 2.1.32 2.1.32-r1: Network backup and restore client and server for Unix and Windows
 app-backup/ccollect 0.8: Pseudo incremental backup with different exclude lists using hardlinks and rsync
 app-backup/cdbkup 1.0-r2: performs full/incremental backups of local/remote filesystems onto CD-R(W)s
 app-backup/dar 2.5.11: A full featured backup tool, aimed for disks
@@ -1844,7 +1844,7 @@ dev-cpp/glibmm 2.56.0: C++ interface for glib2
 dev-cpp/glog 0.3.3-r1 0.3.4-r1: Google's C++ logging library
 dev-cpp/gnome-vfsmm 2.26.0-r1: C++ bindings for gnome-vfs
 dev-cpp/gstreamermm 0.10.11 1.10.0: C++ interface for GStreamer
-dev-cpp/gtest 1.7.0-r1 1.8.0-r1: Google C++ Testing Framework
+dev-cpp/gtest 1.7.0-r1 1.8.0-r1 1.8.1: Google C++ Testing Framework
 dev-cpp/gtkglextmm 1.2.0-r1 1.2.0-r2: C++ bindings for gtkglext
 dev-cpp/gtkmm 2.24.5 3.22.2 3.24.0: C++ interface for GTK+
 dev-cpp/gtksourceviewmm 2.10.3-r1 3.18.0: C++ bindings for gtksourceview
@@ -3280,7 +3280,7 @@ dev-libs/udis86 1.7-r2: Disassembler library for the x86/-64 architecture sets
 dev-libs/unibilium 1.2.1: A very basic terminfo library
 dev-libs/unittest++ 2.0.0: A lightweight unit testing framework for C++
 dev-libs/univalue 1.0.2: C++ universal value object and JSON library
-dev-libs/uriparser 0.8.4-r1: Uriparser is a strictly RFC 3986 compliant URI parsing library in C
+dev-libs/uriparser 0.8.4-r1 0.9.1: Uriparser is a strictly RFC 3986 compliant URI parsing library in C
 dev-libs/userspace-rcu 0.9.1 0.10.1: userspace RCU (read-copy-update) library
 dev-libs/ustr 1.0.4-r5 1.0.4-r8: Low-overhead managed string library for C
 dev-libs/utfcpp 2.3.4: A portable and lightweight generic library for handling UTF-8 strings
@@ -7807,7 +7807,7 @@ media-libs/stops 0.3.0: Organ stops for aeolus by Fons Adriaensen <fons.adriaens
 media-libs/t1lib 5.1.2-r2: A Type 1 Font Rasterizer Library for UNIX/X11
 media-libs/taglib 1.11.1_p20181028: A library for reading and editing audio meta data
 media-libs/taglib-extras 1.0.1-r1: Unofficial taglib plugins maintained by the Amarok team
-media-libs/tiff 4.0.9-r4: Tag Image File Format (TIFF) library
+media-libs/tiff 4.0.9-r4 4.0.10: Tag Image File Format (TIFF) library
 media-libs/tremor 0_pre20130223-r1: A fixed-point version of the Ogg Vorbis decoder (also known as libvorbisidec)
 media-libs/tse3 0.3.1-r1: TSE3 Sequencer library
 media-libs/urt 3.1b-r1: the Utah Raster Toolkit is a library for dealing with raster images
@@ -8839,7 +8839,7 @@ net-mail/libpst 0.6.66-r1: Tools and library for reading Outlook files (.pst for
 net-mail/mailbase 1.1: MTA layout package
 net-mail/maildirtree 0.6-r1: A utility that prints trees of Courier-style Maildirs
 net-mail/mailgraph 1.14-r2: A mail statistics RRDtool frontend for Postfix
-net-mail/mailman 2.1.26: A python-based mailing list server with an extensive web interface
+net-mail/mailman 2.1.26 2.1.29: A python-based mailing list server with an extensive web interface
 net-mail/mailutils 3.4-r2: A useful collection of mail servers, clients, and filters
 net-mail/mairix 0.23: Indexes and searches Maildir/MH folders
 net-mail/mess822 0.58-r2: Collection of utilities for parsing Internet mail messages
