@@ -1,16 +1,16 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit eutils gnome2-utils
+inherit desktop gnome2-utils
 
 # get the major version from PV
 MV=${PV:0:1}
 MY_PV=${PV#*_p}
 
 DESCRIPTION="Sophisticated text editor for code, markup and prose"
-HOMEPAGE="http://www.sublimetext.com"
+HOMEPAGE="https://www.sublimetext.com"
 SRC_URI="
 	amd64? ( https://download.sublimetext.com/sublime_text_${MV}_build_${MY_PV}_x64.tar.bz2 )
 	x86? ( https://download.sublimetext.com/sublime_text_${MV}_build_${MY_PV}_x32.tar.bz2 )"
