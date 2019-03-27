@@ -111,8 +111,6 @@ src_configure() {
 		--enable-sender_macro \
 		--enable-vbr \
 		--disable-live-testing
-		#--with-test-socket=/tmp/opendkim-$(echo ${RANDOM})-S
-		#--disable-rpath
 }
 
 src_install() {
