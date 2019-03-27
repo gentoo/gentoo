@@ -29,6 +29,10 @@ DEPEND="${RDEPEND}
 
 HTML_DOCS=( doc/. )
 
+PATCHES=(
+	"${FILESDIR}"/${P}-drop-unnecessary-x11-libs.patch
+)
+
 src_configure() {
 	local mycmakeargs=(
 		"-DFREEGLUT_GLES=OFF"
