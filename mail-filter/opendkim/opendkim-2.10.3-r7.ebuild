@@ -153,6 +153,18 @@ pkg_postinst() {
 		elog "  emerge --config ${CATEGORY}/${PN}"
 		elog "It will help you create your key and give you hints on how"
 		elog "to configure your DNS and MTA."
+
+		# TODO: This is tricky, we really need a good wiki page showing
+		# how to share a local socket with an MTA!
+		elog "If you are using a local (UNIX) socket, then you will"
+		elog "need to make sure that your MTA has read/write access"
+		elog "to the socket file. This is best accomplished by creating"
+		elog "a completely-new group with only your MTA user and the "
+		elog "\"opendkim\" user in it. You would then set \"UMask 0112\""
+		elog "in your opendkim.conf, and switch the primary group of your"
+		elog "\"opendkim\" user to the group that you just created. The"
+		elog "last step is necessary for the socket to be created as the"
+		elog "new group (and not as group \"opendkim\")".
 	else
 		ewarn "The user account for the OpenDKIM daemon has changed"
 		ewarn "from \"milter\" to \"opendkim\" to prevent unrelated services"
