@@ -13,7 +13,7 @@ SRC_URI="https://download.hardcoded.net/${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="amd64"
+KEYWORDS="~amd64"
 IUSE="test"
 
 RDEPEND="${PYTHON_DEPS}
@@ -23,7 +23,7 @@ RDEPEND="${PYTHON_DEPS}
 	dev-qt/qttranslations"
 DEPEND="${RDEPEND}
 	test? (
-		<dev-python/pytest-4[${PYTHON_USEDEP}]
+		dev-python/pytest[${PYTHON_USEDEP}]
 		dev-util/cunit
 	)"
 
