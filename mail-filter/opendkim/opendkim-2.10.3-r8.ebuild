@@ -135,15 +135,17 @@ src_install() {
 	fowners root:opendkim /var/lib/opendkim
 	fperms 750 /var/lib/opendkim
 
-	# default configuration
-	if [ ! -f "${ROOT}"/etc/opendkim/opendkim.conf ]; then
-		grep ^[^#] "${S}"/opendkim/opendkim.conf.simple \
-			> "${D}"/etc/opendkim/opendkim.conf
-		if use unbound; then
-			echo TrustAnchorFile /etc/dnssec/root-anchors.txt >> "${D}"/etc/opendkim/opendkim.conf
-		fi
-		echo UserID opendkim >> "${D}"/etc/opendkim/opendkim.conf
-	fi
+	# Strip the comments out of the "simple" example configuration...
+	grep ^[^#] "${S}"/opendkim/opendkim.conf.simple \
+		 > "${T}/opendkim.conf" || die
+
+	# and tweak it a bit before installing it unconditionally.
+	echo "# For use with unbound" >> "${T}/opendkim.conf" || die
+	echo "#TrustAnchorFile /etc/dnssec/root-anchors.txt" \
+		 >> "${T}/opendkim.conf" || die
+	echo UserID opendkim >> "${T}/opendkim.conf" || die
+	insinto /etc/opendkim
+	doins "${T}/opendkim.conf"
 }
 
 pkg_postinst() {
