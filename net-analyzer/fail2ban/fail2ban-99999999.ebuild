@@ -16,11 +16,7 @@ SLOT="0"
 KEYWORDS=""
 IUSE="selinux systemd"
 
-# TODO support ipfw and ipfilter
 RDEPEND="
-	kernel_linux? ( net-firewall/iptables )
-	kernel_FreeBSD? ( sys-freebsd/freebsd-pf )
-	net-misc/whois
 	virtual/logger
 	virtual/mta
 	selinux? ( sec-policy/selinux-fail2ban )
