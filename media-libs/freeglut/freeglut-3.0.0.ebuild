@@ -31,6 +31,7 @@ HTML_DOCS=( doc/. )
 
 PATCHES=(
 	"${FILESDIR}"/${P}-drop-unnecessary-x11-libs.patch
+	"${FILESDIR}"/${P}-bsd-usb-joystick.patch
 )
 
 src_configure() {
