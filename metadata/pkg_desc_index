@@ -4697,8 +4697,8 @@ dev-python/blosc 1.2.8: High performance compressor optimized for binary data
 dev-python/bokeh 0.11.1 0.12.6: Statistical and interactive HTML plots for Python
 dev-python/booleanOperations 0.8.0: Boolean operations on paths
 dev-python/boto 2.41.0: Amazon Web Services API
-dev-python/boto3 1.7.19 1.9.4-r1: The AWS SDK for Python
-dev-python/botocore 1.10.19 1.12.4-r1: Low-level, data-driven core of boto 3.
+dev-python/boto3 1.9.4-r1: The AWS SDK for Python
+dev-python/botocore 1.12.4-r1: Low-level, data-driven core of boto 3.
 dev-python/bottle 0.12.12: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 1.0.0: Fast NumPy array functions written in Cython
 dev-python/bpython 0.16 0.17.1: Syntax highlighting and autocompletion for the Python interpreter
@@ -5567,7 +5567,7 @@ dev-python/ruamel-std-pathlib 0.6.3: Ruamel enhancements to pathlib and pathlib2
 dev-python/ruamel-yaml 0.15.35: YAML parser/emitter that supports roundtrip comment preservation
 dev-python/ryu 4.14 4.21 4.26: Component-based Software-defined Networking Framework
 dev-python/s3fs 0.1.2: Pythonic file interface to S3
-dev-python/s3transfer 0.1.11 0.1.13-r1: An Amazon S3 Transfer Manager
+dev-python/s3transfer 0.1.13-r1: An Amazon S3 Transfer Manager
 dev-python/sampy 1.2.1: Simple Application Messaging Protocol messaging system implementation in Python
 dev-python/sancho 2.4-r1: Sancho is a unit testing framework
 dev-python/scandir 1.7 1.9.0: A better directory iterator and faster os.walk()
