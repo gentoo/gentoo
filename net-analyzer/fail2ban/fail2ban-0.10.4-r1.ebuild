@@ -5,7 +5,7 @@ EAPI=7
 PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} pypy )
 DISTUTILS_SINGLE_IMPL=1
 
-inherit distutils-r1 eutils systemd
+inherit distutils-r1 systemd
 
 DESCRIPTION="scans log files and bans IPs that show malicious signs"
 HOMEPAGE="http://www.fail2ban.org/"
@@ -39,7 +39,7 @@ src_unpack() {
 }
 
 python_prepare_all() {
-	eapply_user
+	default
 
 	# Replace /var/run with /run, but not in the top source directory
 	find . -mindepth 2 -type f -exec \
