@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<!-- maintainer-needed -->
+  <maintainer type="person">
+    <email>eras@gentoo.org</email>
+    <name>Eray Aslan</name>
+ </maintainer>
 <use>
   <flag name="tokyocabinet">Enable Tokyo Cabinet database support</flag>
   <flag name="kyotocabinet">Enable Kyoto Cabinet database support</flag>
