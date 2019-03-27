@@ -45,11 +45,9 @@ PATCHES=(
 )
 
 pkg_setup() {
-	enewgroup milter
-	# mail-milter/spamass-milter creates milter user with this home directory
-	# For consistency reasons, milter user must be created here with this home directory
-	# even though this package doesn't need a home directory for this user (#280571)
-	enewuser milter -1 -1 /var/lib/milter milter
+	# This user can read your private keys, and must therefore not be
+	# shared with any other package.
+	enewuser opendkim
 }
 
 src_prepare() {
@@ -58,7 +56,7 @@ src_prepare() {
 	sed -i -e 's:/var/db/dkim:/etc/opendkim:g' \
 		   -e 's:/var/db/opendkim:/var/lib/opendkim:g' \
 		   -e 's:/etc/mail:/etc/opendkim:g' \
-		   -e 's:mailnull:milter:g' \
+		   -e 's:mailnull:opendkim:g' \
 		   -e 's:^#[[:space:]]*PidFile.*:PidFile /run/opendkim/opendkim.pid:' \
 		   opendkim/opendkim.conf.sample opendkim/opendkim.conf.simple.in \
 		   stats/opendkim-reportstats{,.in} || die
@@ -123,12 +121,16 @@ src_install() {
 
 	dosbin stats/opendkim-reportstats
 
-	newinitd "${FILESDIR}/opendkim.init.r3" opendkim
-	systemd_newunit "${FILESDIR}/opendkim-r1.service" opendkim.service
+	newinitd "${FILESDIR}/opendkim.init.r4" opendkim
+	systemd_newunit "${FILESDIR}/opendkim-r2.service" opendkim.service
 
 	dodir /etc/opendkim
 	keepdir /var/lib/opendkim
-	fowners milter:milter /var/lib/opendkim
+
+	# The OpenDKIM data (particularly, your keys) should be read-only to
+	# the UserID that the daemon runs as.
+	fowners root:opendkim /var/lib/opendkim
+	fperms 750 /var/lib/opendkim
 
 	# default configuration
 	if [ ! -f "${ROOT}"/etc/opendkim/opendkim.conf ]; then
@@ -137,11 +139,7 @@ src_install() {
 		if use unbound; then
 			echo TrustAnchorFile /etc/dnssec/root-anchors.txt >> "${D}"/etc/opendkim/opendkim.conf
 		fi
-		echo UserID milter >> "${D}"/etc/opendkim/opendkim.conf
-		if use berkdb; then
-			echo Statistics /var/lib/opendkim/stats.dat >> \
-				"${D}"/etc/opendkim/opendkim.conf
-		fi
+		echo UserID opendkim >> "${D}"/etc/opendkim/opendkim.conf
 	fi
 }
 
@@ -152,6 +150,15 @@ pkg_postinst() {
 		elog "  emerge --config ${CATEGORY}/${PN}"
 		elog "It will help you create your key and give you hints on how"
 		elog "to configure your DNS and MTA."
+	else
+		ewarn "The user account for the OpenDKIM daemon has changed"
+		ewarn "from \"milter\" to \"opendkim\" to prevent unrelated services"
+		ewarn "from being able to read your private keys. You should"
+		ewarn "adjust your existing configuration to use the \"opendkim\""
+		ewarn "user and group, and change the permissions on"
+		ewarn "${ROOT}var/lib/opendkim to root:opendkim with mode 0750."
+		ewarn "The owner and group of the files within that directory"
+		ewarn "will likely need to be adjusted as well."
 	fi
 }
 
@@ -171,7 +178,7 @@ pkg_config() {
 		# generate the private and public keys
 		opendkim-genkey -b ${keysize} -D "${ROOT}"etc/opendkim/ \
 			-s ${selector} -d '(your domain)' && \
-			chown milter:milter \
+			chown opendkim:opendkim \
 			"${ROOT}"etc/opendkim/"${selector}".private || \
 				{ eerror "Failed to create private and public keys." ; return 1; }
 		chmod go-r "${ROOT}"etc/opendkim/"${selector}".private
