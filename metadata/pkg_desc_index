@@ -1175,6 +1175,7 @@ app-office/libreoffice-bin-debug 6.1.5.2: LibreOffice, a full office productivit
 app-office/libreoffice-l10n 6.1.5.2: Translations for the Libreoffice suite
 app-office/lyx 2.3.0: WYSIWYM frontend for LaTeX, DocBook, etc.
 app-office/mdbtools 0.7.1-r2: Set of libraries and utilities for reading Microsoft Access database (MDB) files
+app-office/moneyguru 2.13.1: Future-aware personal finances management
 app-office/ooextras 20060909: OOExtras: Extra Templates for OpenOffice.org!
 app-office/openoffice-bin 4.1.6: Apache OpenOffice productivity suite
 app-office/orage 4.12.1-r1: A time managing application (and panel plug-in) for the Xfce desktop environment
