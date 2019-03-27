@@ -4,7 +4,7 @@ Documentation=man:opendkim(8) man:opendkim.conf(5) man:opendkim-genkey(8) man:op
 After=network.target nss-lookup.target syslog.target
 
 [Service]
-ExecStart=/usr/sbin/opendkim -f -x /etc/opendkim/opendkim.conf
+ExecStart=/usr/sbin/opendkim -f -x /etc/opendkim/opendkim.conf -p $OPENDKIM_SOCKET
 ExecReload=/bin/kill -USR1 $MAINPID
 RuntimeDirectory=opendkim
 RuntimeDirectoryMode=0750

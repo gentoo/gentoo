@@ -53,13 +53,15 @@ pkg_setup() {
 src_prepare() {
 	default
 
-	sed -i -e 's:/var/db/dkim:/etc/opendkim:g' \
-		   -e 's:/var/db/opendkim:/var/lib/opendkim:g' \
-		   -e 's:/etc/mail:/etc/opendkim:g' \
-		   -e 's:mailnull:opendkim:g' \
-		   -e 's:^#[[:space:]]*PidFile.*:PidFile /run/opendkim/opendkim.pid:' \
-		   opendkim/opendkim.conf.sample opendkim/opendkim.conf.simple.in \
-		   stats/opendkim-reportstats{,.in} || die
+	# We delete the "Socket" setting because it's overridden by our
+	# conf.d file.
+	sed -e 's:/var/db/dkim:/etc/opendkim:g' \
+		-e 's:/var/db/opendkim:/var/lib/opendkim:g' \
+		-e 's:/etc/mail:/etc/opendkim:g' \
+		-e 's:mailnull:opendkim:g' \
+		-e '/^[[:space:]]*Socket/d' \
+		-i opendkim/opendkim.conf.sample opendkim/opendkim.conf.simple.in \
+		stats/opendkim-reportstats{,.in} || die
 
 	sed -i -e 's:dist_doc_DATA:dist_html_DATA:' libopendkim/docs/Makefile.am \
 		|| die
@@ -120,8 +122,10 @@ src_install() {
 
 	dosbin stats/opendkim-reportstats
 
-	newinitd "${FILESDIR}/opendkim.init.r4" opendkim
-	systemd_newunit "${FILESDIR}/opendkim-r2.service" opendkim.service
+	newinitd "${FILESDIR}/opendkim.init.r5" opendkim
+	newconfd "${FILESDIR}/opendkim.confd" opendkim
+	systemd_newunit "${FILESDIR}/opendkim-r3.service" opendkim.service
+	systemd_install_serviced "${FILESDIR}/${PN}.service.conf" "${PN}.service"
 
 	dodir /etc/opendkim
 	keepdir /var/lib/opendkim
@@ -192,8 +196,8 @@ pkg_config() {
 	# MTA configuration
 	echo
 	einfo "If you are using Postfix, add following lines to your main.cf:"
-	einfo "  smtpd_milters     = unix:/var/run/opendkim/opendkim.sock"
-	einfo "  non_smtpd_milters = unix:/var/run/opendkim/opendkim.sock"
+	einfo "  smtpd_milters     = unix:/run/opendkim/opendkim.sock"
+	einfo "  non_smtpd_milters = unix:/run/opendkim/opendkim.sock"
 	einfo "  and read http://www.postfix.org/MILTER_README.html"
 
 	# DNS configuration
