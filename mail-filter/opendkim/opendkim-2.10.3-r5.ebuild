@@ -126,7 +126,8 @@ src_install() {
 	newinitd "${FILESDIR}/opendkim.init.r3" opendkim
 	systemd_newunit "${FILESDIR}/opendkim-r1.service" opendkim.service
 
-	dodir /etc/opendkim /var/lib/opendkim
+	dodir /etc/opendkim
+	keepdir /var/lib/opendkim
 	fowners milter:milter /var/lib/opendkim
 
 	# default configuration
