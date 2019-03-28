@@ -22,6 +22,7 @@ RDEPEND="~sys-libs/libapparmor-${PV}"
 DEPEND="${RDEPEND}
 	dev-lang/perl
 	sys-devel/bison
+	sys-devel/gettext
 	sys-devel/flex
 	doc? ( dev-tex/latex2html )
 "
