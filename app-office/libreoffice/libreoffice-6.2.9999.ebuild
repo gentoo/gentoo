@@ -18,7 +18,7 @@ DEV_URI="
 ADDONS_URI="https://dev-www.libreoffice.org/src/"
 
 BRANDING="${PN}-branding-gentoo-0.8.tar.xz"
-PATCHSET="${PN}-6.2.1.1-patchset-01.tar.xz"
+# PATCHSET="${P}-patchset-01.tar.xz"
 
 [[ ${MY_PV} == *9999* ]] && inherit git-r3
 inherit autotools bash-completion-r1 check-reqs flag-o-matic java-pkg-opt-2 multiprocessing pax-utils python-single-r1 qmake-utils toolchain-funcs xdg
@@ -247,9 +247,7 @@ fi
 PATCHES=(
 	# master branch
 	"${FILESDIR}/${PN}-6.2-ldap-optional.patch"
-	"${WORKDIR}"/${PATCHSET/.tar.xz/}/001-qt5-change-salgraphics-gettextlayout-def.patch
-	"${WORKDIR}"/${PATCHSET/.tar.xz/}/002-qt5-assert-missing-salgraphics-font-on-gettextlayout.patch
-	"${WORKDIR}"/${PATCHSET/.tar.xz/}/003-qt5-fpicker-honor-autoextension.patch
+	# "${WORKDIR}"/${PATCHSET/.tar.xz/}
 
 	# not upstreamable stuff
 	"${FILESDIR}/${PN}-5.4-system-pyuno.patch"
