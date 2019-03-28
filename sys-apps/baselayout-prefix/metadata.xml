@@ -6,5 +6,7 @@
 </maintainer>
 <use>
 	<flag name="split-usr">Enable this if /bin and /usr/bin are separate directories</flag>
+	<flag name="prefix-stack">Add support for stacked Prefix install</flag>
+	<flag name="prefix-guest">Configure for Prefix on top of host OS libc</flag>
 </use>
 </pkgmetadata>
