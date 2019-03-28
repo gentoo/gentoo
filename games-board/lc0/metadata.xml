@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>hasan.calisir@psauxit.com</email>
+		<name>Hasan ÇALIŞIR</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<use>
+		<flag name="amd-gpupro-opencl">OpenCL backend for lc0, AMD-GPUPRO</flag>
+		<flag name="amd-opencl">OpenCL backend for lc0, AMD-GPU</flag>
+		<flag name="blas-ext">External OpenBLAS-0.3.5 backend for lc0, CPU</flag>
+		<flag name="blas-int">Internal OpenBLAS backend for lc0, CPU</flag>
+		<flag name="mkl">Intel MKL backend for lc0, CPU</flag>
+		<flag name="nvidia-cudnn">cuDNN backend for lc0, NVIDIA-GPU</flag>
+		<flag name="nvidia-opencl">OpenCL backend for lc0, NVIDIA-GPU</flag>
+		<flag name="switch">Use global switch for all backends if they fulfilled already in your system</flag>
+	</use>
+	<longdescription lang="en">
+	Lc0 is a UCI-compliant chess engine designed to play chess via neural network.
+	Like all other Chess (or Go) engines, Leela maintains a tree of potential future moves and game states. 
+	Each potential game state is called a node in the tree, and each node has a list of child nodes corresponding 
+	to the potential moves (edges) for that board position.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">LeelaChessZero/lc0</remote-id>
+	</upstream>
+</pkgmetadata>

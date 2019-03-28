@@ -1,0 +1,13 @@
+--- a/meson.build	2019-03-23 10:22:14.000000000 +0300
++++ b/meson.build	2019-04-06 02:02:14.711711295 +0300
+@@ -183,7 +183,9 @@
+   accelerate_lib = dependency('Accelerate', required: false)
+ 
+   mkl_libdirs = get_option('mkl_libdirs')
+-  mkl_lib = cc.find_library('mkl_rt', dirs: mkl_libdirs, required: false)
++  mkl_lib = cc.find_library('mkl_core', dirs: mkl_libdirs, required: false)
++  mkl_lib = cc.find_library('mkl_avx2', dirs: mkl_libdirs, required: false)
++  mkl_lib = cc.find_library('mkl_sequential', dirs: mkl_libdirs, required: false)
+   if not mkl_lib.found()
+     mkl_lib = cc.find_library('mklml', dirs: mkl_libdirs, required: false)
+   endif

@@ -1,0 +1,10 @@
+--- a/meson.build	2019-03-23 10:22:14.000000000 +0300
++++ b/meson.build	2019-03-28 00:58:04.494274757 +0300
+@@ -192,6 +192,7 @@
+   openblas_lib = cc.find_library('openblas.dll', dirs: openblas_libdirs, required: false)
+   if not openblas_lib.found()
+     openblas_lib = cc.find_library('openblas', dirs: openblas_libdirs, required: false)
++    openblas_lib = cc.find_library('openblas_threads', dirs: openblas_libdirs, required: false)
+   endif
+ 
+   if get_option('blas')
