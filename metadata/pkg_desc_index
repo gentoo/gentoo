@@ -1869,6 +1869,7 @@ dev-cpp/yaml-cpp 0.6.2: YAML parser and emitter in C++
 dev-db/bucardo 5.4.1: An asynchronous PostgreSQL replication system
 dev-db/cdb 0.75-r4: Fast, reliable, simple package for creating and reading constant databases
 dev-db/db-je 3.3.75: A high performance, transactional storage engine written entirely in Java
+dev-db/etcd 3.3.12: Highly-available key value store for shared configuration and service discovery
 dev-db/freetds 1.00.341-r1: Tabular Datastream Library
 dev-db/henplus 0.9.8-r1: Java-based multisession SQL shell for databases with JDBC support
 dev-db/hsqldb 1.8.1.3-r2: The leading SQL relational database engine written in Java
