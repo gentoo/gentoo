@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 EGIT_REPO_URI="https://github.com/PowerDNS/pdns.git"
 
@@ -24,18 +24,25 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="dnscrypt luajit regex remote-logging snmp +ssl test"
-REQUIRED_USE="dnscrypt? ( ssl )"
+IUSE="dnscrypt gnutls fstrm luajit regex remote-logging snmp +ssl systemd test"
+REQUIRED_USE="dnscrypt? ( ssl )
+		gnutls? ( ssl )"
 
 DEPEND="
 	>=dev-libs/boost-1.35:=
 	dev-libs/libedit:=
+	fstrm? ( dev-libs/fstrm:= )
 	luajit? ( dev-lang/luajit:= )
 	!luajit? ( >=dev-lang/lua-5.1:= )
-	remote-logging? ( dev-libs/protobuf:= )
+	remote-logging? ( >=dev-libs/protobuf-3:= )
 	regex? ( dev-libs/re2:= )
 	snmp? ( net-analyzer/net-snmp:= )
-	ssl? ( dev-libs/libsodium:= )
+	ssl? (
+		dev-libs/libsodium:=
+		gnutls? ( net-libs/gnutls:= )
+		!gnutls? ( dev-libs/openssl:= )
+	)
+	systemd? ( sys-apps/systemd:0= )
 "
 
 RDEPEND="${DEPEND}"
@@ -53,13 +60,20 @@ src_prepare() {
 src_configure() {
 	econf \
 		--sysconfdir=/etc/dnsdist \
-		$(use_enable ssl libsodium) \
-		$(use_with remote-logging protobuf) \
-		$(use_enable regex re2) \
 		$(use_enable dnscrypt) \
-		$(use_with luajit) \
-		$(use_enable test unit-tests) \
-		$(use_with snmp net-snmp)
+		$(use_enable fstrm) \
+		$(use luajit && echo "--with-lua=luajit" || echo "--with-lua=lua" ) \
+		$(use_enable regex re2) \
+		$(use_with remote-logging protobuf) \
+		$(use_with snmp net-snmp) \
+		$(use_enable ssl libsodium) \
+		$(use ssl && { echo "--enable-dns-over-tls" && use_enable gnutls && use_enable !gnutls libssl;} || echo "--disable-gnutls --disable-libssl") \
+		$(use_enable systemd) \
+		$(use_enable test unit-tests)
+		if [ ${PV} == "1.3.3" ]; then
+			sed 's/hardcode_libdir_flag_spec_CXX='\''$wl-rpath $wl$libdir'\''/hardcode_libdir_flag_spec_CXX='\''$wl-rpath $wl\/$libdir'\''/g' \
+			-i "${S}/configure"
+		fi
 }
 
 src_install() {

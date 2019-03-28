@@ -488,12 +488,6 @@ sys-apps/yum
 sys-cluster/util-vserver
 
 # Michał Górny <mgorny@gentoo.org> (13 Mar 2019)
-# Unresolved vulnerability (CVE-2018-14663).  The maintainer is inactive
-# for over a year.
-# Removal in 30 days.  Bug #670214.
-net-dns/dnsdist
-
-# Michał Górny <mgorny@gentoo.org> (13 Mar 2019)
 # Contains vulnerability (CVE-2016-2049) that has not been resolved
 # for almost 3 years.  No reverse dependencies.
 # Removal in 30 days.  Bug #572882.
@@ -576,10 +570,6 @@ app-arch/star
 # Fails to build with ffmpeg-4 (bug #673352). Dead upstream.
 # Masked for removal in 30 days.
 media-sound/karlyriceditor
-
-# Mikle Kolyada <zlogene@gentoo.org> (04 Mar 2019)
-# Mask Squid-4.x for testing
-=net-proxy/squid-4*
 
 # Matt Turner <mattst88@gentoo.org> (02 Mar 2019)
 # Old, unused drivers.
