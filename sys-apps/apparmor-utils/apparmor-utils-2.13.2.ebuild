@@ -20,11 +20,14 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RESTRICT="test"
 
-DEPEND="
+COMMON_DEPEND="
 	dev-lang/perl
 	~sys-libs/libapparmor-${PV}
 	${PYTHON_DEPS}"
-RDEPEND="${DEPEND}
+DEPEND="${COMMON_DEPEND}
+	sys-devel/gettext
+"
+RDEPEND="${COMMON_DEPEND}
 	~sys-libs/libapparmor-${PV}[perl,python]
 	~sys-apps/apparmor-${PV}
 	dev-perl/Locale-gettext
