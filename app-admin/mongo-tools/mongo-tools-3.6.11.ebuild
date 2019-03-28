@@ -15,9 +15,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE="sasl ssl"
 
-RDEPEND="!<dev-db/mongodb-3.0.0"
-DEPEND="${RDEPEND}
-	dev-lang/go:=
+DEPEND="dev-lang/go:=
 	net-libs/libpcap
 	sasl? ( dev-libs/cyrus-sasl )
 	ssl? ( dev-libs/openssl:0= )"
@@ -25,27 +23,20 @@ DEPEND="${RDEPEND}
 # Do not complain about CFLAGS etc since go projects do not use them.
 QA_FLAGS_IGNORED='.*'
 
-S=${WORKDIR}/${MY_P}
+EGO_PN="github.com/mongodb/mongo-tools"
+S="${WORKDIR}/src/${EGO_PN}"
+
+src_unpack() {
+	mkdir -p "${S%/*}" || die
+	default
+	mv ${MY_P} "${S}" || die
+}
 
 src_prepare() {
 	default
 
-	# 1) ensure we use bash wrt #582906
-	# 2) do not substitute version because it uses git
-	sed -e 's@/bin/sh@/bin/bash@g' \
-		-e '/^sed/,+3d' \
-		-e '/^stty/d' \
-		-e '/^mv/d' \
-		-i build.sh || die
-
-	# build pie to avoid text relocations wrt #582854
-	# skip on ppc64 wrt #610984
-	if ! use ppc64; then
-		sed -i 's/\(go build\)/\1 -buildmode=pie/g' build.sh || die
-	fi
-
 	# allow building with go 1.12 #678924
-	sed -i 's/_Ctype_struct_/C.struct_/' vendor/src/github.com/google/gopacket/pcap/pcap.go || die
+	sed -i 's/_Ctype_struct_/C.struct_/' vendor/github.com/google/gopacket/pcap/pcap.go || die
 }
 
 src_compile() {
@@ -59,7 +50,20 @@ src_compile() {
 		myconf+=(ssl)
 	fi
 
-	./build.sh "${myconf[@]}" || die "build failed"
+	# build pie to avoid text relocations wrt #582854
+	local buildmode="pie"
+
+	# skip on ppc64 wrt #610984
+	if use ppc64; then
+		buildmode="default"
+	fi
+
+	mkdir -p bin || die
+	for i in bsondump mongostat mongofiles mongoexport mongoimport mongorestore mongodump mongotop mongoreplay; do
+		echo "Building $i"
+		GOROOT="$(go env GOROOT)" GOPATH="${WORKDIR}" go build -buildmode="${buildmode}" -o "bin/$i" \
+			-ldflags "-X ${EGO_PN}/common/options.VersionStr=${PV}" --tags "${myconf[*]}" "$i/main/$i.go" || die
+	done
 }
 
 src_install() {
