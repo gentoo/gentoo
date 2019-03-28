@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201903-21">
+  <title>Apache: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Apache Web Server, the
+    worst of which could result in a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">apache</product>
+  <announced>2019-03-28</announced>
+  <revised count="1">2019-03-28</revised>
+  <bug>676064</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-servers/apache" auto="yes" arch="*">
+      <unaffected range="ge">2.4.38-r1</unaffected>
+      <vulnerable range="lt">2.4.38-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>The Apache HTTP server is one of the most popular web servers on the
+      Internet.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Apache. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker can possibly cause a Denial of Service condition or
+      could bypass mod_session_cookie expiration time.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Apache users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=www-servers/apache-2.4.38-r1"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-17189">CVE-2018-17189</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-17190">CVE-2018-17190</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-17199">CVE-2018-17199</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-0190">CVE-2019-0190</uri>
+  </references>
+  <metadata tag="requester" timestamp="2019-03-24T13:34:22Z">BlueKnight</metadata>
+  <metadata tag="submitter" timestamp="2019-03-28T02:17:53Z">Zlogene</metadata>
+</glsa>
