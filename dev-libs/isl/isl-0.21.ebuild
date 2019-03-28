@@ -41,11 +41,13 @@ multilib_src_install_all() {
 pkg_preinst() {
 	preserve_old_lib \
 		/usr/$(get_libdir)/libisl$(get_libname 14) \
-		/usr/$(get_libdir)/libisl$(get_libname 15)
+		/usr/$(get_libdir)/libisl$(get_libname 15) \
+		/usr/$(get_libdir)/libisl$(get_libname 19)
 }
 
 pkg_postinst() {
 	preserve_old_lib_notify \
 		/usr/$(get_libdir)/libisl$(get_libname 14) \
-		/usr/$(get_libdir)/libisl$(get_libname 15)
+		/usr/$(get_libdir)/libisl$(get_libname 15) \
+		/usr/$(get_libdir)/libisl$(get_libname 19)
 }
