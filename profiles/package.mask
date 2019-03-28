@@ -571,10 +571,6 @@ app-arch/star
 # Masked for removal in 30 days.
 media-sound/karlyriceditor
 
-# Mikle Kolyada <zlogene@gentoo.org> (04 Mar 2019)
-# Mask Squid-4.x for testing
-=net-proxy/squid-4*
-
 # Matt Turner <mattst88@gentoo.org> (02 Mar 2019)
 # Old, unused drivers.
 # Masked for removal in 30 days. Bug #679256
