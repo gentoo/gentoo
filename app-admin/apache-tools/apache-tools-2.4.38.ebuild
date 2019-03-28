@@ -49,7 +49,7 @@ src_prepare() {
 	done
 	exec ${PKG_CONFIG} libpcre "${flags[@]}"
 	EOF
-	chmod a+x "${T}"/pcre-config
+	chmod a+x "${T}"/pcre-config || die
 }
 
 src_configure() {
