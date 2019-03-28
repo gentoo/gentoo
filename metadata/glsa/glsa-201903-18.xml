@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201903-18">
+  <title>GD: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in GD, the worst of which
+    could result in the remote execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">gd</product>
+  <announced>2019-03-28</announced>
+  <revised count="1">2019-03-28</revised>
+  <bug>664732</bug>
+  <bug>679702</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="media-libs/gd" auto="yes" arch="*">
+      <unaffected range="ge">2.2.5-r2</unaffected>
+      <vulnerable range="lt">2.2.5-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>GD is a graphic library for fast image creation.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in GD. Please review the
+      CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to process a specially crafted
+      image, possibly resulting in execution of arbitrary code or a Denial of
+      Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All GD users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-libs/gd-2.2.5-r2"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-1000222">
+      CVE-2018-1000222
+    </uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-5711">CVE-2018-5711</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-6977">CVE-2019-6977</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-6978">CVE-2019-6978</uri>
+  </references>
+  <metadata tag="requester" timestamp="2019-03-10T05:25:03Z">BlueKnight</metadata>
+  <metadata tag="submitter" timestamp="2019-03-28T02:09:10Z">b-man</metadata>
+</glsa>

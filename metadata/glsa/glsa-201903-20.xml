@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201903-20">
+  <title>cabextract, libmspack: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in cabextract and
+    libmspack, the worst of which could result in a Denial of Service.
+  </synopsis>
+  <product type="ebuild">cabextract, libmspack</product>
+  <announced>2019-03-28</announced>
+  <revised count="1">2019-03-28</revised>
+  <bug>662874</bug>
+  <bug>669280</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-arch/cabextract" auto="yes" arch="*">
+      <unaffected range="ge">1.8</unaffected>
+      <vulnerable range="lt">1.8</vulnerable>
+    </package>
+    <package name="dev-libs/libmspack" auto="yes" arch="*">
+      <unaffected range="ge">0.8_alpha</unaffected>
+      <vulnerable range="lt">0.8_alpha</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>cabextract is free software for extracting Microsoft cabinet files.</p>
+    
+    <p>libmspack is a portable library for some loosely related Microsoft
+      compression formats
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in cabextract and
+      libmspack. Please review the CVE identifiers referenced below for
+      details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Please review the referenced CVE’s for details.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All cabextract users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-arch/cabextract-1.8"
+    </code>
+    
+    <p>All libmspack users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-libs/libmspack-0.8_alpha"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-14679">CVE-2018-14679</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-14680">CVE-2018-14680</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-14681">CVE-2018-14681</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-14682">CVE-2018-14682</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-18584">CVE-2018-18584</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-18585">CVE-2018-18585</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-18586">CVE-2018-18586</uri>
+  </references>
+  <metadata tag="requester" timestamp="2019-03-24T19:20:01Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2019-03-28T02:14:01Z">b-man</metadata>
+</glsa>

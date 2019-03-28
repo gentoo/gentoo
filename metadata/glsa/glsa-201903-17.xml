@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201903-17">
+  <title>SDL2_Image: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in the image loading
+    library
+    for Simple DirectMedia Layer, the worst of which could result in the remote
+    execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">sdl_image</product>
+  <announced>2019-03-28</announced>
+  <revised count="1">2019-03-28</revised>
+  <bug>655226</bug>
+  <bug>674132</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="media-libs/sdl2-image" auto="yes" arch="*">
+      <unaffected range="ge">2.0.4</unaffected>
+      <vulnerable range="lt">2.0.4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>SDL_image is an image file library that loads images as SDL surfaces,
+      and supports various formats like BMP, GIF, JPEG, LBM, PCX, PNG, PNM,
+      TGA, TIFF, XCF, XPM, and XV.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in SDL2_Image. Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker, by enticing a user to process a specially crafted
+      image file, could execute arbitrary code, cause a Denial of Service
+      condition, or obtain sensitive information.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All SDL2_Image users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-libs/sdl2-image-2.0.4"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-12122">CVE-2017-12122</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-14440">CVE-2017-14440</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-14441">CVE-2017-14441</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-14442">CVE-2017-14442</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-14448">CVE-2017-14448</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-14449">CVE-2017-14449</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-14450">CVE-2017-14450</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-3837">CVE-2018-3837</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-3838">CVE-2018-3838</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-3839">CVE-2018-3839</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-3977">CVE-2018-3977</uri>
+  </references>
+  <metadata tag="requester" timestamp="2018-12-02T21:13:59Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2019-03-28T02:06:35Z">b-man</metadata>
+</glsa>
