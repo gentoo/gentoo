@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201903-23">
+  <title>Chromium: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Chromium, the worst of
+    which could result in the remote execution of code.
+  </synopsis>
+  <product type="ebuild">chromium</product>
+  <announced>2019-03-28</announced>
+  <revised count="1">2019-03-28</revised>
+  <bug>671550</bug>
+  <bug>677066</bug>
+  <bug>679530</bug>
+  <bug>680242</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-client/chromium" auto="yes" arch="*">
+      <unaffected range="ge">73.0.3683.75</unaffected>
+      <vulnerable range="lt">73.0.3683.75</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Chromium is an open-source browser project that aims to build a safer,
+      faster, and more stable way for all users to experience the web.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Chromium and Google
+      Chrome. Please review the referenced CVE identifiers and Google Chrome
+      Releases for details.
+    </p>
+  </description>
+  <impact type="high">
+    <p>Please review the referenced CVE identifiers and Google Chrome Releases
+      for details.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Chromium users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=www-client/chromium-73.0.3683.75"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-17479">CVE-2018-17479</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5786">CVE-2019-5786</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5786">CVE-2019-5786</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5787">CVE-2019-5787</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5788">CVE-2019-5788</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5789">CVE-2019-5789</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5790">CVE-2019-5790</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5791">CVE-2019-5791</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5792">CVE-2019-5792</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5793">CVE-2019-5793</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5794">CVE-2019-5794</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5795">CVE-2019-5795</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5796">CVE-2019-5796</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5797">CVE-2019-5797</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5798">CVE-2019-5798</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5799">CVE-2019-5799</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5800">CVE-2019-5800</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5801">CVE-2019-5801</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5802">CVE-2019-5802</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5803">CVE-2019-5803</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5804">CVE-2019-5804</uri>
+  </references>
+  <metadata tag="requester" timestamp="2019-03-24T22:13:31Z">BlueKnight</metadata>
+  <metadata tag="submitter" timestamp="2019-03-28T02:22:18Z">b-man</metadata>
+</glsa>
