@@ -6463,7 +6463,7 @@ dev-vcs/guilt 0.36-r1: A series of bash scripts which add a quilt-like interface
 dev-vcs/hg-git 0.8.8: push to and pull from a Git repository using Mercurial
 dev-vcs/hgsubversion 1.9.2: hgsubversion is a Mercurial extension for working with Subversion repositories
 dev-vcs/kdesvn 2.0.0: A frontend to the subversion vcs
-dev-vcs/mercurial 4.5.2 4.6.2 4.9: Scalable distributed SCM
+dev-vcs/mercurial 4.5.2 4.6.2 4.9-r1: Scalable distributed SCM
 dev-vcs/mr 1.20170129 1.20171231: Multiple Repository management tool
 dev-vcs/qgit 2.8: Qt GUI for git repositories
 dev-vcs/rapidsvn 0.12.1-r3: Cross-platform GUI front-end for the Subversion revision system
@@ -8562,7 +8562,7 @@ net-dns/pdns-recursor 4.1.10: The PowerDNS Recursor
 net-dns/pdnsd 1.2.9a-r1: Proxy DNS server with permanent caching
 net-dns/rbldnsd 0.998: DNS server designed to serve blacklist zones
 net-dns/resolv_wrapper 1.1.5: A wrapper for DNS name resolving or DNS faking
-net-dns/unbound 1.8.0-r1 1.9.0: A validating, recursive and caching DNS resolver
+net-dns/unbound 1.9.0: A validating, recursive and caching DNS resolver
 net-dns/updatedd 2.6-r5: Dynamic DNS client with plugins for several dynamic dns services
 net-firewall/arno-iptables-firewall 2.0.1e 2.0.3: Arno's iptables firewall script
 net-firewall/arptables 0.0.4: set up, maintain, and inspect the tables of ARP rules in the Linux kernel
