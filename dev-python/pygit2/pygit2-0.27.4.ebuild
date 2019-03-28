@@ -13,6 +13,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 LICENSE="GPL-2-with-linking-exception"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+IUSE="test"
 
 RDEPEND="
 	=dev-libs/libgit2-$(ver_cut 1-2)*
@@ -20,7 +21,9 @@ RDEPEND="
 	dev-python/six[${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}
-	dev-python/pytest[${PYTHON_USEDEP}]"
+	test? ( dev-python/pytest[${PYTHON_USEDEP}] )"
+
+RESTRICT="!test? ( test )"
 
 python_prepare_all() {
 	sed -i -e '/pycparser/s:<2.18::' setup.py || die
