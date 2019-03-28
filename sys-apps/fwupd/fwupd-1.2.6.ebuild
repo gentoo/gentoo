@@ -13,8 +13,8 @@ SRC_URI="https://github.com/hughsie/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
-IUSE="colorhug dell doc elogind +gpg +man nvme pkcs7 redfish systemd test thunderbolt uefi"
+KEYWORDS="~amd64 ~arm ~x86"
+IUSE="agent colorhug dell doc elogind +gpg +man nvme pkcs7 redfish systemd test thunderbolt uefi"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	?? ( elogind systemd )
@@ -80,8 +80,6 @@ BDEPEND="
 # NOT a build time dependency. The build system does not check for dbus.
 PDEPEND="sys-apps/dbus"
 
-PATCHES=( "${FILESDIR}/${P}-elogind.patch" ) # bug 668522
-
 src_prepare() {
 	default
 	sed -e "s/'--create'/'--absolute-name', '--create'/" \
@@ -95,12 +93,15 @@ src_configure() {
 	xdg_environment_reset
 	local emesonargs=(
 		--localstatedir "${EPREFIX}"/var
+		-Dagent="$(usex agent true false)"
 		-Dgtkdoc="$(usex doc true false)"
 		-Delogind="$(usex elogind true false)"
 		-Dgpg="$(usex gpg true false)"
 		-Dman="$(usex man true false)"
 		-Dpkcs7="$(usex pkcs7 true false)"
 		-Dplugin_dell="$(usex dell true false)"
+		# Dependencies are not available (yet?)
+		-Dplugin_modem_manager="false"
 		-Dplugin_nvme="$(usex nvme true false)"
 		-Dplugin_redfish="$(usex redfish true false)"
 		-Dplugin_synaptics="$(usex dell true false)"
@@ -109,7 +110,13 @@ src_configure() {
 		-Dsystemd="$(usex systemd true false)"
 		-Dtests="$(usex test true false)"
 	)
-	use elogind || use systemd || emesonargs+=( -Dconsolekit=true )
+
+	if use elogind || use systemd ; then
+		emesonargs+=( -Dconsolekit=false )
+	else
+		emesonargs+=( -Dconsolekit=true )
+	fi
+
 	meson_src_configure
 }
 
@@ -117,7 +124,7 @@ src_install() {
 	meson_src_install
 	doinitd "${FILESDIR}"/${PN}
 
-	if ! use systemd && ! use elogind ; then
+	if ! use systemd ; then
 		# Don't timeout when fwupd is running (#673140)
 		sed '/^IdleTimeout=/s@=[[:digit:]]\+@=0@' \
 			-i "${ED}"/etc/${PN}/daemon.conf || die
