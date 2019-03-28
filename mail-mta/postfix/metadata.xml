@@ -13,6 +13,12 @@
 			William Hubbs
 		</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>gentoo@seichter.de</email>
+		<name>
+			Ralph Seichter
+		</name>
+	</maintainer>
 	<use>
 		<flag name="dovecot-sasl">Enable <pkg>net-mail/dovecot</pkg> protocol
 			version 1 (server only) SASL implementation</flag>
