@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201903-22">
+  <title>ZeroMQ: Code execution</title>
+  <synopsis>An overflow was discovered in ZeroMQ which could lead to arbitrary
+    code execution.
+  </synopsis>
+  <product type="ebuild">zeromq</product>
+  <announced>2019-03-28</announced>
+  <revised count="1">2019-03-28</revised>
+  <bug>675376</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="net-libs/zeromq" auto="yes" arch="*">
+      <unaffected range="ge">4.3.1</unaffected>
+      <vulnerable range="lt">4.3.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Looks like an embeddable networking library but acts like a concurrency
+      framework
+    </p>
+  </background>
+  <description>
+    <p>Please reference the CVE for details.</p>
+  </description>
+  <impact type="high">
+    <p>Please reference the CVE for details.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All ZeroMQ users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-libs/zeromq-4.3.1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-6250">CVE-2019-6250</uri>
+  </references>
+  <metadata tag="requester" timestamp="2019-03-24T14:21:11Z">BlueKnight</metadata>
+  <metadata tag="submitter" timestamp="2019-03-28T02:20:04Z">b-man</metadata>
+</glsa>
