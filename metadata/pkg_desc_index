@@ -729,7 +729,7 @@ app-emacs/zenburn 20110907: Zenburn color theme for Emacs
 app-emacs/zenirc 2.112-r1: A full-featured scriptable IRC client for the Emacs text editor
 app-emulation/aqemu 0.9.2: Graphical interface for QEMU and KVM emulators, using Qt5
 app-emulation/cloud-init 17.2: cloud initialisation magic
-app-emulation/containerd 1.1.2 1.2.2 1.2.5: A daemon to control runC
+app-emulation/containerd 1.1.2 1.2.5: A daemon to control runC
 app-emulation/dinero 4.7-r1: Cache simulator
 app-emulation/diskimage-builder 2.20.3: Golden Disk Image builder.
 app-emulation/docker 18.06.2 18.09.4: The core functions you need to create Docker images and run Docker containers
