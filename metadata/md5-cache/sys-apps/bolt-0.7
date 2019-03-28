@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install test
+DEPEND=>=dev-libs/glib-2.50.0:2 dev-util/glib-utils virtual/libudev virtual/udev dev-util/umockdev sys-auth/polkit[introspection] systemd? ( sys-apps/systemd:0= ) doc? ( app-text/asciidoc ) >=dev-util/meson-0.48.2 >=dev-util/ninja-1.7.2 virtual/pkgconfig
+DESCRIPTION=Userspace system daemon to enable security levels for Thunderbolt 3.
+EAPI=6
+HOMEPAGE=https://gitlab.freedesktop.org/bolt/bolt
+IUSE=doc systemd
+KEYWORDS=~amd64
+LICENSE=LGPL-2.1
+RDEPEND=>=dev-libs/glib-2.50.0:2 dev-util/glib-utils virtual/libudev virtual/udev dev-util/umockdev sys-auth/polkit[introspection] systemd? ( sys-apps/systemd:0= ) doc? ( app-text/asciidoc )
+SLOT=0
+SRC_URI=https://gitlab.freedesktop.org/bolt/bolt/-/archive/0.7/bolt-0.7.tar.gz
+_eclasses_=meson	e53acc5913e5581a8a71be22731d8f36	multilib	b2f01ad412baf81650c23fcf0975fa33	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	08e17157a6807add7db1f8d01e7e391f	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
+_md5_=8d87fc7d20dc743649d3eabff05764b6
