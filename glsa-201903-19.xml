@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201903-19">
+  <title>NASM: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in NASM, the worst of
+    which could result in the remote execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">nasm</product>
+  <announced>2019-03-28</announced>
+  <revised count="1">2019-03-28</revised>
+  <bug>635358</bug>
+  <bug>659550</bug>
+  <bug>670884</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-lang/nasm" auto="yes" arch="*">
+      <unaffected range="ge">2.14.02</unaffected>
+      <vulnerable range="lt">2.14.02</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>NASM is a 80x86 assembler that has been created for portability and
+      modularity. NASM supports Pentium, P6, SSE MMX, and 3DNow extensions. It
+      also supports a wide range of objects formats (ELF, a.out, COFF, etc),
+      and has its own disassembler.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in NASM. Please review the
+      CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A remote attacker could cause a Denial of Service condition or execute
+      arbitrary code.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All NASM users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-lang/nasm-2.14.02"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-10686">CVE-2017-10686</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-11111">CVE-2017-11111</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-14228">CVE-2017-14228</uri>
+  </references>
+  <metadata tag="requester" timestamp="2019-03-10T04:10:57Z">BlueKnight</metadata>
+  <metadata tag="submitter" timestamp="2019-03-28T02:11:39Z">b-man</metadata>
+</glsa>
