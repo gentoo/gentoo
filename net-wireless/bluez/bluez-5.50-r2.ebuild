@@ -22,7 +22,6 @@ REQUIRED_USE="
 	extra-tools? ( deprecated readline )
 	test? ( ${PYTHON_REQUIRED_USE} )
 	test-programs? ( ${PYTHON_REQUIRED_USE} )
-	user-session? ( systemd )
 "
 
 TEST_DEPS="${PYTHON_DEPS}
@@ -35,7 +34,6 @@ BDEPEND="
 "
 DEPEND="
 	>=dev-libs/glib-2.28:2[${MULTILIB_USEDEP}]
-	>=sys-apps/dbus-1.6:=[user-session=]
 	>=sys-apps/hwids-20121202.2
 	alsa? ( media-libs/alsa-lib )
 	btpclient? ( >=dev-libs/ell-0.3 )
@@ -47,7 +45,11 @@ DEPEND="
 	)
 	obex? ( dev-libs/libical:= )
 	readline? ( sys-libs/readline:0= )
-	systemd? ( sys-apps/systemd )
+	systemd? (
+		>=sys-apps/dbus-1.6:=[user-session=]
+		sys-apps/systemd
+	)
+	!systemd? ( >=sys-apps/dbus-1.6:= )
 	udev? ( >=virtual/udev-172 )
 "
 RDEPEND="${DEPEND}
@@ -103,7 +105,9 @@ src_prepare() {
 	default
 
 	# http://www.spinics.net/lists/linux-bluetooth/msg38490.html
-	! use user-session && eapply "${FILESDIR}"/0001-Allow-using-obexd-without-systemd-in-the-user-sessio.patch
+	if ! use user-session || ! use systemd; then
+		eapply "${FILESDIR}"/0001-Allow-using-obexd-without-systemd-in-the-user-sessio.patch
+	fi
 
 	if use cups; then
 		sed -i \
@@ -233,7 +237,9 @@ multilib_src_install_all() {
 	# https://bugs.archlinux.org/task/45816
 	# https://bugzilla.redhat.com/show_bug.cgi?id=1318441
 	# https://bugzilla.redhat.com/show_bug.cgi?id=1389347
-	use user-session && ln -s "${ED}"/usr/lib/systemd/user/obex.service "${ED}"/usr/lib/systemd/user/dbus-org.bluez.obex.service
+	if use user-session && use systemd; then
+		ln -s "${ED}"/usr/lib/systemd/user/obex.service "${ED}"/usr/lib/systemd/user/dbus-org.bluez.obex.service
+	fi
 
 	find "${D}" -name '*.la' -delete || die
 
