@@ -732,7 +732,7 @@ app-emulation/cloud-init 17.2: cloud initialisation magic
 app-emulation/containerd 1.1.2 1.2.2 1.2.5: A daemon to control runC
 app-emulation/dinero 4.7-r1: Cache simulator
 app-emulation/diskimage-builder 2.20.3: Golden Disk Image builder.
-app-emulation/docker 18.06.2 18.09.2: The core functions you need to create Docker images and run Docker containers
+app-emulation/docker 18.06.2 18.09.4: The core functions you need to create Docker images and run Docker containers
 app-emulation/docker-compose 1.23.2: Multi-container orchestration for Docker
 app-emulation/docker-proxy 0.8.0_p20180411 0.8.0_p20180626 0.8.0_p20181207 0.8.0_p20190301: Docker container networking
 app-emulation/docker-runc 1.0.0_rc4_p20180122: runc container cli tools (docker fork)
@@ -7620,7 +7620,7 @@ media-libs/libebur128 1.2.3: A library implementing the EBU R128 loudness standa
 media-libs/libemf 1.0.4-r1 1.0.7: Library implementation of ECMA-234 API for the generation of enhanced metafiles
 media-libs/libeot 0.01: Library for parsing Embedded OpenType files (Microsoft embedded font 'standard')
 media-libs/libepoxy 1.5.3: Epoxy is a library for handling OpenGL function pointer management for you
-media-libs/libexif 0.6.21-r2 0.6.21-r3: Library for parsing, editing, and saving EXIF data
+media-libs/libexif 0.6.21-r3: Library for parsing, editing, and saving EXIF data
 media-libs/libexif-gtk 0.3.5-r2: GTK+ frontend to the libexif library (parsing, editing, and saving EXIF data)
 media-libs/libextractor 1.8-r1: Library to extract metadata from files of arbitrary type
 media-libs/libfame 0.9.1-r1 0.9.1-r2: MPEG-1 and MPEG-4 video encoding library
@@ -8566,7 +8566,7 @@ net-dns/unbound 1.8.0-r1 1.9.0: A validating, recursive and caching DNS resolver
 net-dns/updatedd 2.6-r5: Dynamic DNS client with plugins for several dynamic dns services
 net-firewall/arno-iptables-firewall 2.0.1e 2.0.3: Arno's iptables firewall script
 net-firewall/arptables 0.0.4: set up, maintain, and inspect the tables of ARP rules in the Linux kernel
-net-firewall/conntrack-tools 1.4.2 1.4.4-r1: Connection tracking userspace tools
+net-firewall/conntrack-tools 1.4.4-r1: Connection tracking userspace tools
 net-firewall/dshieldpy 3.2-r2: Python script to submit firewall logs to dshield.org
 net-firewall/ebtables 2.0.10.4: Controls Ethernet frame filtering on a Linux bridge, MAC NAT and brouting
 net-firewall/ferm 2.4 2.4.1: Command line util for managing firewall rules
