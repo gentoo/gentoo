@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="project">
-    <email>pam-bugs@gentoo.org</email>
-    <name>Pluggable Authentication Method maintenance</name>
-  </maintainer>
+  <!-- maintainer-needed -->
   <longdescription lang="en">
 PAM module that provides auto blacklisting of hosts and users responsible for repeated failed authentication attempts.
 Once a host is blacklisted it is guaranteed to fail authentication even if the correct credentials are provided.
