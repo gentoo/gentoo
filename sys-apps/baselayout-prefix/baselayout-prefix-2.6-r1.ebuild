@@ -22,7 +22,7 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="build kernel_FreeBSD kernel_linux +split-usr prefix-stack prefix-guest"
+IUSE="build kernel_FreeBSD kernel_linux +split-usr"
 
 my_prefix_commits=(
 	# commits in reverse order as listed by:
