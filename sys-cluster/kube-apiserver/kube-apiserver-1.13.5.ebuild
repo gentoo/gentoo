@@ -8,14 +8,15 @@ EGO_PN="k8s.io/kubernetes"
 ARCHIVE_URI="https://github.com/kubernetes/kubernetes/archive/v${PV}.tar.gz -> kubernetes-${PV}.tar.gz"
 KEYWORDS="~amd64"
 
-DESCRIPTION="Kubernetes Controller Manager"
+DESCRIPTION="Kubernetes API server"
 HOMEPAGE="https://github.com/kubernetes/kubernetes https://kubernetes.io"
 SRC_URI="${ARCHIVE_URI}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
 
-DEPEND="dev-go/go-bindata"
+DEPEND="dev-go/go-bindata
+	>=dev-lang/go-1.11"
 
 RESTRICT="test"
 
@@ -26,7 +27,7 @@ pkg_setup() {
 
 src_prepare() {
 	default
-	sed -i -e "/vendor\/github.com\/jteeuwen\/go-bindata\/go-bindata/d" src/${EGO_PN}/hack/lib/golang.sh || die
+	sed -i -e "/vendor\/github.com\/jteeuwen\/go-bindata\/go-bindata/d" -e "s/-s -w/-w/" src/${EGO_PN}/hack/lib/golang.sh || die
 	sed -i -e "/export PATH/d" src/${EGO_PN}/hack/generate-bindata.sh || die
 }
 
