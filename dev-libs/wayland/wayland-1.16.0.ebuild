@@ -3,7 +3,7 @@
 
 EAPI=6
 
-EGIT_REPO_URI="https://anongit.freedesktop.org/git/wayland/wayland.git"
+EGIT_REPO_URI="https://gitlab.freedesktop.org/wayland/wayland.git"
 
 if [[ ${PV} = 9999* ]]; then
 	GIT_ECLASS="git-r3"
@@ -12,7 +12,7 @@ fi
 inherit autotools libtool multilib-minimal toolchain-funcs $GIT_ECLASS
 
 DESCRIPTION="Wayland protocol libraries"
-HOMEPAGE="https://wayland.freedesktop.org/"
+HOMEPAGE="https://wayland.freedesktop.org/ https://gitlab.freedesktop.org/wayland/wayland"
 
 if [[ $PV = 9999* ]]; then
 	SRC_URI=""

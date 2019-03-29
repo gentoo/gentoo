@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python{2_7,3_{4,5,6,7}} )
 inherit meson python-any-r1 udev
 
 DESCRIPTION="Library to handle input devices in Wayland"
-HOMEPAGE="https://www.freedesktop.org/wiki/Software/libinput/"
+HOMEPAGE="https://www.freedesktop.org/wiki/Software/libinput/ https://gitlab.freedesktop.org/libinput/libinput"
 SRC_URI="https://www.freedesktop.org/software/${PN}/${P}.tar.xz"
 
 LICENSE="MIT"

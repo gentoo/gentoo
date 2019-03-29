@@ -5,7 +5,7 @@ EAPI=6
 inherit multilib-minimal
 
 DESCRIPTION="An library to provide useful functions commonly found on BSD systems"
-HOMEPAGE="https://libbsd.freedesktop.org/wiki/"
+HOMEPAGE="https://libbsd.freedesktop.org/wiki/ https://gitlab.freedesktop.org/libbsd/libbsd"
 SRC_URI="https://${PN}.freedesktop.org/releases/${P}.tar.xz"
 
 LICENSE="BSD BSD-2 BSD-4 ISC"
@@ -34,7 +34,7 @@ pkg_setup() {
 multilib_src_configure() {
 	# The build system will install libbsd-ctor.a despite of USE="-static-libs"
 	# which is correct, see:
-	# https://cgit.freedesktop.org/libbsd/commit/?id=c5b959028734ca2281250c85773d9b5e1d259bc8
+	# https://gitlab.freedesktop.org/libbsd/libbsd/commit/c5b959028734ca2281250c85773d9b5e1d259bc8
 	ECONF_SOURCE="${S}" econf $(use_enable static-libs static)
 }
 
