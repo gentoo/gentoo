@@ -3,9 +3,9 @@ DEFINED_PHASES=configure prepare unpack
 DEPEND=>=x11-misc/util-macros-1.18
 DESCRIPTION=X keyboard configuration database
 EAPI=7
-HOMEPAGE=https://www.freedesktop.org/wiki/Software/XKeyboardConfig
+HOMEPAGE=https://www.freedesktop.org/wiki/Software/XKeyboardConfig https://gitlab.freedesktop.org/xkeyboard-config/xkeyboard-config
 LICENSE=MIT
 RDEPEND=!<x11-apps/xkbcomp-1.2.3 !<x11-libs/libX11-1.4.3
 SLOT=0
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	git-r3	0d4635eeb5a96cd5315597a47eba25c9	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
-_md5_=ceaee05b0584beb44f0de439b562406f
+_md5_=6fb7e18e3b92eb0a4b63104719d628c2

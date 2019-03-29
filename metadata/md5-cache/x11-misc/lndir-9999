@@ -3,8 +3,8 @@ DEFINED_PHASES=configure prepare unpack
 DEPEND=>=x11-misc/util-macros-1.18 x11-base/xorg-proto
 DESCRIPTION=create a shadow directory of symbolic links to another directory tree
 EAPI=7
-HOMEPAGE=https://www.x.org/wiki/ https://cgit.freedesktop.org/
+HOMEPAGE=https://www.x.org/wiki/ https://gitlab.freedesktop.org/xorg/util/lndir
 LICENSE=MIT
 SLOT=0
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	git-r3	0d4635eeb5a96cd5315597a47eba25c9	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
-_md5_=a38070e869fd33e65976e48284b1ea93
+_md5_=b13289061fecc7fff23b4db84500c303
