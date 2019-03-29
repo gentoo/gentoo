@@ -16,8 +16,7 @@ if [[ $PV == *9999 ]]; then
 	EGIT_REPO_URI="git://xenbits.xen.org/${REPO}"
 	S="${WORKDIR}/${REPO}"
 else
-	#KEYWORDS="~amd64 ~arm ~arm64 ~x86"
-	KEYWORDS=""
+	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 	UPSTREAM_VER=
 	SECURITY_VER=
 	# xen-tools's gentoo patches tarball
@@ -25,11 +24,10 @@ else
 	# xen-tools's gentoo patches version which apply to this specific ebuild
 	GENTOO_GPV=0
 	# xen-tools ovmf's patches
-	OVMF_VER=3
+	OVMF_VER=
 
 	SEABIOS_VER=1.12.0
-	# OVMF upstream 5920a9d16b1ab887c2858224316a98e961d71b05
-	OVMF_PV=20170321
+	EDK2_COMMIT=ef529e6ab7c31290a33045bb1f1837447cc0eb56
 
 	[[ -n ${UPSTREAM_VER} ]] && \
 		UPSTREAM_PATCHSET_URI="https://dev.gentoo.org/~dlan/distfiles/${P/-tools/}-upstream-patches-${UPSTREAM_VER}.tar.xz
@@ -45,7 +43,7 @@ else
 	SRC_URI="https://downloads.xenproject.org/release/xen/${MY_PV}/xen-${MY_PV}.tar.gz
 	https://www.seabios.org/downloads/seabios-${SEABIOS_VER}.tar.gz
 	https://dev.gentoo.org/~dlan/distfiles/seabios-${SEABIOS_VER}.tar.gz
-	ovmf? ( https://dev.gentoo.org/~dlan/distfiles/ovmf-${OVMF_PV}.tar.xz
+	ovmf? ( https://github.com/tianocore/edk2/archive/${EDK2_COMMIT}.tar.gz -> edk2-${EDK2_COMMIT}.tar.gz
 		${OVMF_PATCHSET_URI} )
 	${UPSTREAM_PATCHSET_URI}
 	${SECURITY_PATCHSET_URI}
@@ -237,11 +235,12 @@ src_prepare() {
 	if use ovmf; then
 		if [[ -n ${OVMF_VER} ]];then
 			einfo "Try to apply Ovmf patch set"
-			pushd "${WORKDIR}"/ovmf-*/ > /dev/null
+			pushd "${WORKDIR}"/edk2-*/ > /dev/null
 			eapply "${WORKDIR}"/patches-ovmf
 			popd > /dev/null
 		fi
-		mv ../ovmf-${OVMF_PV} tools/firmware/ovmf-dir-remote || die
+		mv ../edk2-${EDK2_COMMIT} tools/firmware/ovmf-dir-remote || die
+		cp tools/firmware/ovmf-makefile tools/firmware/ovmf-dir-remote/Makefile || die
 	fi
 
 	mv tools/qemu-xen/qemu-bridge-helper.c tools/qemu-xen/xen-bridge-helper.c || die
@@ -338,6 +337,10 @@ src_prepare() {
 
 	# disable capstone (Bug #673474)
 	sed -e "s:\$\$source/configure:\0 --disable-capstone:" \
+		-i tools/Makefile || die
+
+	# disable glusterfs
+	sed -e "s:\$\$source/configure:\0 --disable-glusterfs:" \
 		-i tools/Makefile || die
 
 	default
