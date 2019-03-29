@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -206,6 +206,8 @@ src_configure() {
 			$(use_enable perl perlinterp)
 			$(use_enable python pythoninterp)
 			$(use_enable python python3interp)
+			$(use_with python python-command $(type -P $(eselect python show --python2)))
+			$(use_with python python3-command $(type -P $(eselect python show --python3)))
 			$(use_enable racket mzschemeinterp)
 			$(use_enable ruby rubyinterp)
 			$(use_enable selinux)

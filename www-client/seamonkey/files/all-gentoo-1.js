@@ -17,3 +17,4 @@ pref("general.useragent.locale",            "chrome://global/locale/intl.propert
 pref("extensions.autoDisableScopes",        0);
 pref("layout.css.dpi",                      0);
 pref("browser.tabs.mouseScrollAdvancesTab", 0);
+pref("app.updatecheck.override",            true);

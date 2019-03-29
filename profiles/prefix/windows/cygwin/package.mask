@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-# Michael Haubenwallner <haubi@gentoo.org> (27 Feb 2020)
+# Michael Haubenwallner <haubi@gentoo.org> (27 Feb 2019)
 # Cygwin does not provide this new version yet in it's repo.
 >=sys-devel/gcc-7.4
 

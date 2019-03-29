@@ -9,10 +9,6 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
-	<maintainer type="project">
-		<email>net-mail@gentoo.org</email>
-		<name>Net-Mail</name>
-	</maintainer>
 	<longdescription>
 		milter-regex is a very simple milter-based plugin that rejects or
 		discards messages matching regular expressions. It doesn't add much

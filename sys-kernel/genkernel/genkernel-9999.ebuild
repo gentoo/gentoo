@@ -29,7 +29,7 @@ COMMON_URI="${DM_HOME}/dmraid-${VERSION_DMRAID}.tar.bz2
 		${RH_HOME}/lvm2/LVM2.${VERSION_LVM}.tgz
 		${RH_HOME}/lvm2/old/LVM2.${VERSION_LVM}.tgz
 		${BB_HOME}/busybox-${VERSION_BUSYBOX}.tar.bz2
-		https://github.com/open-iscsi/open-iscsi/archive/${VERSION_ISCSI}.tar.gz -> open-isns-${VERSION_ISCSI}.tar.gz
+		https://github.com/open-iscsi/open-iscsi/archive/${VERSION_ISCSI}.tar.gz -> open-iscsi-${VERSION_ISCSI}.tar.gz
 		https://github.com/open-iscsi/open-isns/archive/v${VERSION_ISCSI_ISNS}.tar.gz -> open-isns-${VERSION_ISCSI_ISNS}.tar.gz
 		https://github.com/libfuse/libfuse/releases/download/fuse-${VERSION_FUSE}/fuse-${VERSION_FUSE}.tar.gz
 		mirror://debian/pool/main/liba/libaio/libaio_${VERSION_LIBAIO}.orig.tar.gz -> libaio-${VERSION_LIBAIO}.tar.gz

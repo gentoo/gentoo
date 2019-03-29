@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
@@ -6,8 +6,8 @@ EAPI=4
 inherit eutils toolchain-funcs
 
 DESCRIPTION="A webserver log analyzer"
-HOMEPAGE="http://www.c-amie.co.uk/analog/"
-SRC_URI="http://www.analog.cx/${P}.tar.gz"
+HOMEPAGE="https://www.c-amie.co.uk/software/analog/"
+SRC_URI="https://web.archive.org/web/20140331011039/http://www.analog.cx/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

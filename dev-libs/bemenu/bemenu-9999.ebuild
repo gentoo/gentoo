@@ -12,22 +12,37 @@ EGIT_REPO_URI="https://github.com/Cloudef/bemenu.git"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS=""
-IUSE="doc"
+IUSE="doc ncurses wayland X"
+
+# Require at least one backend be built
+REQUIRED_USE="|| ( ncurses wayland X )"
 
 DEPEND="
-	x11-libs/cairo
-	x11-libs/pango
-	dev-libs/wayland
-	x11-libs/libxcb
-	dev-libs/wayland-protocols
-	sys-libs/ncurses:0
-	x11-libs/libXext
-	x11-libs/libX11"
+	ncurses? ( sys-libs/ncurses:0 )
+	wayland? (
+		dev-libs/wayland
+		dev-libs/wayland-protocols
+		x11-libs/cairo
+		x11-libs/pango
+	)
+	X? (
+		x11-libs/libxcb
+		x11-libs/libXext
+		x11-libs/libX11
+		x11-libs/cairo[X]
+		x11-libs/pango[X]
+	)
+"
 RDEPEND="${DEPEND}"
 BDEPEND="doc? ( app-doc/doxygen )"
 
 src_configure() {
-	local mycmakeargs=(-DCURSES_LIBRARY=/usr/$(get_libdir)/libncursesw.so)
+	local mycmakeargs=(
+		-DCURSES_LIBRARY=/usr/$(get_libdir)/libncursesw.so
+		-DBEMENU_CURSES_RENDERER=$(usex ncurses ON OFF)
+		-DBEMENU_WAYLAND_RENDERER=$(usex wayland ON OFF)
+		-DBEMENU_X11_RENDERER=$(usex X ON OFF)
+	)
 	cmake-utils_src_configure
 }
 

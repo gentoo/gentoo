@@ -16,11 +16,7 @@ SLOT="0"
 KEYWORDS=""
 IUSE="selinux systemd"
 
-# TODO support ipfw and ipfilter
 RDEPEND="
-	kernel_linux? ( net-firewall/iptables )
-	kernel_FreeBSD? ( sys-freebsd/freebsd-pf )
-	net-misc/whois
 	virtual/logger
 	virtual/mta
 	selinux? ( sec-policy/selinux-fail2ban )
@@ -29,9 +25,8 @@ RDEPEND="
 		sys-apps/systemd[python(-),${PYTHON_USEDEP}]
 	)' 'python*' ) )
 "
-
 REQUIRED_USE="systemd? ( !python_single_target_pypy )"
-
+RESTRICT="test"
 DOCS=( ChangeLog DEVELOP README.md THANKS TODO doc/run-rootless.txt )
 
 python_prepare_all() {
@@ -44,10 +39,6 @@ python_prepare_all() {
 	sed -i -e 's|runscript|openrc-run|g' files/gentoo-initd || die
 
 	distutils-r1_python_prepare_all
-}
-
-python_test() {
-	"${PYTHON}" "bin/${PN}-testcases" || die "tests failed with ${EPYTHON}"
 }
 
 python_install_all() {

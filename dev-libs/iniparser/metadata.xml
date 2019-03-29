@@ -5,6 +5,10 @@
 		<email>samba@gentoo.org</email>
 		<name>Samba Team</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>grobian@gentoo.org</email>
+		<name>Fabian Groffen</name>
+	</maintainer>
 	<upstream>
 		<remote-id type="github">ndevilla/iniparser</remote-id>
 	</upstream>

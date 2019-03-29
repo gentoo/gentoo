@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,8 +8,8 @@ PYTHON_COMPAT=( python2_7 )
 inherit eutils python-single-r1
 
 DESCRIPTION="A Python wrapper for the Amazon web API"
-HOMEPAGE="http://www.josephson.org/projects/pyamazon"
-SRC_URI="http://www.josephson.org/projects/${PN}/files/${P}.zip"
+HOMEPAGE="https://www.josephson.org/projects/pyamazon/"
+SRC_URI="https://www.josephson.org/projects/${PN}/files/${P}.zip"
 
 LICENSE="PSF-2"
 SLOT="0"

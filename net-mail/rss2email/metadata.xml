@@ -5,10 +5,6 @@
 		<email>sping@gentoo.org</email>
 		<name>Sebastian Pipping</name>
 	</maintainer>
-	<maintainer type="project">
-		<email>net-mail@gentoo.org</email>
-		<name>Net-Mail</name>
-	</maintainer>
 	<longdescription>
 		rss2email is a simple Python script that lets you subscribe to a
 		list of XML newsfeeds (RSS or Atom) and get new items sent to

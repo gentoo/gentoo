@@ -1,6 +1,12 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Fabian Groffen <grobian@gentoo.org> (26 Mar 2019)
+# LLVM/clang 8 cannot compile itself, fails with the linker complaining
+# about a missing symbol (clang::clangd::detail::log(..,..))
+=sys-devel/clang-8.0.0*
+=sys-devel/llvm-8.0.0*
+
 # Fabian Groffen <grobian@gentoo.org> (22 Mar 2019)
 # Newer versions break because they insist on sysroot usage lacking
 # -lSystem as looked for by clang/llvm.  If your system got this
