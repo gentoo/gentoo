@@ -33,4 +33,5 @@ src_install() {
 
 pkg_postinst() {
 	ewarn "For this to work you need to install cross-avr/gcc[-ssp,-pie]"
+	ewarn "Something like USE='-pie -ssp' crossdev -S -s4 avr"
 }
