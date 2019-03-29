@@ -332,6 +332,10 @@ src_prepare() {
 		-e 's:^#vif.default.script=:vif.default.script=:' \
 		-i tools/examples/xl.conf  || die
 
+	# disable glusterfs
+	sed -e "s:\$\$source/configure:\0 --disable-glusterfs:" \
+		-i tools/Makefile || die
+
 	default
 }
 
