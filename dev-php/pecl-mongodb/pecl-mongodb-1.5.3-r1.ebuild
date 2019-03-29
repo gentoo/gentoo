@@ -1,11 +1,10 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 PHP_EXT_NAME="mongodb"
-USE_PHP="php5-6 php7-0 php7-1"
-DOCS=( README.md )
+USE_PHP="php5-6 php7-1 php7-2 php7-3"
 
 inherit php-ext-pecl-r3
 
@@ -16,18 +15,20 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="libressl sasl"
 
-RDEPEND="
+COMMON_DEPEND="
 	php_targets_php5-6? ( dev-lang/php:5.6[json,ssl,zlib] )
-	php_targets_php7-0? ( dev-lang/php:7.0[json,ssl,zlib] )
 	php_targets_php7-1? ( dev-lang/php:7.1[json,ssl,zlib] )
-	>=dev-libs/libbson-1.6.0
-	>=dev-libs/mongo-c-driver-1.6.0[sasl?,ssl]
+	php_targets_php7-2? ( dev-lang/php:7.2[json,ssl,zlib] )
+	php_targets_php7-3? ( dev-lang/php:7.3[json,ssl,zlib] )"
+DEPEND="${COMMON_DEPEND}
+	>=dev-libs/libbson-1.13.0
+	>=dev-libs/mongo-c-driver-1.13.0[sasl?,ssl]
 	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:0= )
-	sasl? ( dev-libs/cyrus-sasl )
-"
-# pkgconfig needed if system libraries are used for bson and libmongoc
-DEPEND="${RDEPEND} virtual/pkgconfig"
+	sasl? ( dev-libs/cyrus-sasl )"
+RDEPEND="${DEPEND}"
+BDEPEND="${COMMON_DEPEND}
+	virtual/pkgconfig"
 
 src_configure() {
 	local PHP_EXT_ECONF_ARGS=(
