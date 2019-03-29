@@ -58,6 +58,9 @@ PATCH_DEV=${PATCH_DEV:-slyfox}
 [[ -z ${PATCH_VER} ]] || SRC_URI="${SRC_URI}
 	https://dev.gentoo.org/~${PATCH_DEV}/distfiles/binutils-${PATCH_BINUTILS_VER}-patches-${PATCH_VER}.tar.xz"
 
+# Disable gold testsuite since it always fails.
+PATCHES=( "${FILESDIR}/${PN}-2.29.1-nogoldtest.patch" )
+
 #
 # The cross-compile logic
 #
