@@ -1,12 +1,12 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
+XORG_PACKAGE_NAME=xf86-video-vbox
 
 inherit xorg-2
 
 DESCRIPTION="VirtualBox guest video driver"
-HOMEPAGE="https://cgit.freedesktop.org/xorg/driver/xf86-video-vbox/"
 
 KEYWORDS="amd64 x86"
 IUSE=""

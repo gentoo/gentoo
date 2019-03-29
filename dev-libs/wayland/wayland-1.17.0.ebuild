@@ -13,7 +13,7 @@ fi
 inherit autotools libtool multilib-minimal toolchain-funcs
 
 DESCRIPTION="Wayland protocol libraries"
-HOMEPAGE="https://wayland.freedesktop.org/"
+HOMEPAGE="https://wayland.freedesktop.org/ https://gitlab.freedesktop.org/wayland/wayland"
 
 LICENSE="MIT"
 SLOT="0"

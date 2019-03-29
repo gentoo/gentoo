@@ -5,7 +5,7 @@ EAPI=6
 inherit meson udev
 
 DESCRIPTION="Library to handle input devices in Wayland"
-HOMEPAGE="https://www.freedesktop.org/wiki/Software/libinput/"
+HOMEPAGE="https://www.freedesktop.org/wiki/Software/libinput/ https://gitlab.freedesktop.org/libinput/libinput"
 SRC_URI="https://www.freedesktop.org/software/${PN}/${P}.tar.xz"
 
 LICENSE="MIT"
