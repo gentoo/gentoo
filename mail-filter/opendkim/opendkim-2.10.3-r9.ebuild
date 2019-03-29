@@ -45,9 +45,12 @@ PATCHES=(
 )
 
 pkg_setup() {
-	# This user can read your private keys, and must therefore not be
-	# shared with any other package.
-	enewuser opendkim
+	# This group can be shared between OpenDKIM and the MTA. Members
+	# are meant to have write access to the local socket.
+	enewgroup dkimsocket
+	# This user can read your private DKIM signing keys, and must
+	# therefore not be shared with any other package.
+	enewuser opendkim -1 -1 -1 "opendkim,dkimsocket"
 }
 
 src_prepare() {
@@ -63,7 +66,7 @@ src_prepare() {
 	sed -i -e 's:dist_doc_DATA:dist_html_DATA:' libopendkim/docs/Makefile.am \
 		|| die
 
-	# TODO: what purpose does this serve, do the tests even get run?
+	# TODO: what purpose does this serve?
 	sed -e "/sock.*mt.getcwd/s:mt.getcwd():${T}:" \
 		-i opendkim/tests/*.lua || die
 
@@ -120,7 +123,7 @@ src_install() {
 	dosbin stats/opendkim-reportstats
 
 	newinitd "${FILESDIR}/opendkim.init.r6" opendkim
-	newconfd "${FILESDIR}/opendkim.confd" opendkim
+	newconfd "${FILESDIR}/opendkim.confd.r2" opendkim
 	systemd_newunit "${FILESDIR}/opendkim.service.r4" opendkim.service
 	systemd_install_serviced "${FILESDIR}/${PN}.service.conf" "${PN}.service"
 
@@ -134,13 +137,20 @@ src_install() {
 
 	# Strip the comments out of the "simple" example configuration...
 	grep ^[^#] "${S}"/opendkim/opendkim.conf.simple \
-		 > "${T}/opendkim.conf" || die
-
+		> "${T}/opendkim.conf" || die
 	# and tweak it a bit before installing it unconditionally.
-	echo "# For use with unbound" >> "${T}/opendkim.conf" || die
-	echo "#TrustAnchorFile /etc/dnssec/root-anchors.txt" \
-		 >> "${T}/opendkim.conf" || die
-	echo UserID opendkim >> "${T}/opendkim.conf" || die
+	cat <<EOT >>"${T}/opendkim.conf" || die
+
+# For use with a local (UNIX) socket
+UserID opendkim:dkimsocket
+UMask 0117
+
+# For use with a TCP socket
+#UserID opendkim
+
+# For use with unbound
+#TrustAnchorFile /etc/dnssec/root-anchors.txt
+EOT
 	insinto /etc/opendkim
 	doins "${T}/opendkim.conf"
 }

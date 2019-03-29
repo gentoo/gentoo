@@ -59,8 +59,8 @@ start_pre() {
 	# the opendkim(8) man page says).
 	if [ "${OPENDKIM_SOCKET#local:}" != "${OPENDKIM_SOCKET}" ]; then
 		# The socket begins with "local:"
-		OPENDKIM_SOCKET_PATH="${OPENDKIM_SOCKET#local:}"
-		OPENDKIM_SOCKET_DIR="${OPENDKIM_SOCKET_PATH%/*}"
+		local OPENDKIM_SOCKET_PATH="${OPENDKIM_SOCKET#local:}"
+		local OPENDKIM_SOCKET_DIR="${OPENDKIM_SOCKET_PATH%/*}"
 
 		# This is dangerous, but there's a big warning about it
 		# in the conf.d file.
