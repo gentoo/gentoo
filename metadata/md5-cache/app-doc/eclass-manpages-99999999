@@ -1,9 +1,10 @@
 BDEPEND=>=dev-vcs/git-1.8.2.1[curl]
 DEFINED_PHASES=compile install unpack
+DEPEND=sys-apps/gawk
 DESCRIPTION=Collection of Gentoo eclass manpages
 EAPI=7
 HOMEPAGE=https://www.gentoo.org/
 LICENSE=GPL-2
 SLOT=0
 _eclasses_=git-r3	0d4635eeb5a96cd5315597a47eba25c9
-_md5_=a3d0ebf13d08471fbf8fce54166307f5
+_md5_=ce6d71394608e26c301acded1bf3f77a
