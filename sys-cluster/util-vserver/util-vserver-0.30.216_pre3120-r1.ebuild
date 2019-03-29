@@ -14,6 +14,7 @@ SRC_URI="http://people.linux-vserver.org/~dhozac/t/uv-testing/${MY_P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~x86"
+IUSE="+dietlibc"
 
 CDEPEND="
 	net-misc/vconfig
@@ -23,19 +24,22 @@ CDEPEND="
 
 DEPEND="
 	${CDEPEND}
-	>dev-libs/dietlibc-0.33"
+	dietlibc? ( >dev-libs/dietlibc-0.33 )"
 
 RDEPEND="
 	${CDEPEND}"
 
 S="${WORKDIR}/${MY_P}"
 
-PATCHES=(
-	"${FILESDIR}/${P}-vserver-init-functions.patch"
-	"${FILESDIR}/${P}-dietlibc.patch"
-)
-
 DOCS=( README ChangeLog NEWS AUTHORS THANKS util-vserver.spec )
+
+src_prepare() {
+	if use dietlibc ; then
+		eapply "${FILESDIR}/${P}-dietlibc.patch"
+	fi
+	eapply "${FILESDIR}/${PN}-init-functions.patch"
+	eapply_user
+}
 
 pkg_setup() {
 	if [[ -z "${VDIRBASE}" ]]; then
@@ -65,6 +69,12 @@ src_configure() {
 		--localstatedir=/var
 	)
 
+	if ! use dietlibc ; then
+		myeconf=( ${myeconf} 
+			--disable-dietlibc
+		)
+	fi
+	
 	econf "${myeconf[@]}"
 }
 
@@ -88,6 +98,23 @@ src_install() {
 }
 
 pkg_postinst() {
+	if ! use dietlibc ; then
+		ewarn "dietlibc isn't just used to replace glibc, it is used to"
+		ewarn "build static binaries which are actually 'static'"
+		ewarn "note that glibc cannot build self contained binaries"
+		ewarn "anymore, even if you build them 'statically' they will"
+		ewarn "dynamically load resolver libraries, which in the case"
+		ewarn "of guest management might be from the host or from the"
+		ewarn "guest."
+		ewarn "Anytime you start or enter the guest, you"
+		ewarn "have a certain chance that the host will execute some"
+		ewarn "code from the guest system (nss) which in turn gives"
+		ewarn "guest root a good chance to do evil things on the host"
+		ewarn "and even if security is not a concern in your case, you"
+		ewarn "ight end up with unexpected failures"
+		ewarn ""
+		ewarn ""
+	fi
 	# Create VDIRBASE in postinst, so it is (a) not unmerged and (b) also
 	# present when merging.
 	mkdir -p "${VDIRBASE}" || die
