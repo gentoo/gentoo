@@ -6,7 +6,7 @@ EAPI="7"
 inherit git-r3
 
 DESCRIPTION="Collection of Gentoo eclass manpages"
-HOMEPAGE="https://www.gentoo.org/"
+HOMEPAGE="https://github.com/mgorny/eclass-to-manpage"
 SRC_URI=""
 EGIT_REPO_URI="https://anongit.gentoo.org/git/repo/gentoo.git
 	https://github.com/gentoo/gentoo.git"
