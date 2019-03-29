@@ -30,6 +30,13 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (29 Mar 2019)
+# Unmaintained.  Fails to build with ncurses[tinfo]; fixing it reveals
+# further build failures.  Last release in 2001.  Upstream has shortly
+# revived coding in 2015 but did not finish the update.
+# Removal in 30 days.  Bug #617184.
+media-sound/playmidi
+
+# Michał Górny <mgorny@gentoo.org> (29 Mar 2019)
 # Unmaintained.  The current version was added in 2008, and a bump
 # was requested in 2010.  Since then, upstream has disappeared,
 # and the tool requires fetching extra files from the upstream website.
