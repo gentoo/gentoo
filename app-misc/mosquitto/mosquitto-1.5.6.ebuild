@@ -13,13 +13,19 @@ SRC_URI="https://mosquitto.org/files/source/${P}.tar.gz"
 LICENSE="EPL-1.0"
 SLOT="0"
 KEYWORDS="amd64 arm x86"
-IUSE="bridge examples +persistence +srv ssl tcpd test websockets"
+IUSE="bridge examples libressl +persistence +srv ssl tcpd test websockets"
 
-REQUIRED_USE="test? ( bridge )"
+REQUIRED_USE="
+	libressl? ( ssl )
+	test? ( bridge )
+"
 
 RDEPEND="tcpd? ( sys-apps/tcp-wrappers )
 	srv? ( net-dns/c-ares )
-	ssl? ( dev-libs/openssl:0= )"
+	ssl? (
+		!libressl? ( dev-libs/openssl:0= )
+		libressl? ( dev-libs/libressl:0= )
+	)"
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
 	websockets? ( net-libs/libwebsockets )"

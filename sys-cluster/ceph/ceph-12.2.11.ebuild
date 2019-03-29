@@ -134,6 +134,7 @@ PATCHES=(
 	"${FILESDIR}/ceph-12.2.4-rocksdb-cflags.patch"
 	"${FILESDIR}/ceph-12.2.5-no-werror.patch"
 	"${FILESDIR}/ceph-13.2.2-dont-install-sysvinit-script.patch"
+	"${FILESDIR}/ceph-12.2.11-fix-min-call.patch"
 )
 
 check-reqs_export_vars() {

@@ -27,7 +27,7 @@ if [[ ${MOZ_ESR} == 1 ]]; then
 fi
 
 # Patch version
-PATCH="${PN}-60.6-patches-01"
+PATCH="${PN}-60.6-patches-02"
 MOZ_HTTP_URI="https://archive.mozilla.org/pub/${PN}/releases"
 
 MOZCONFIG_OPTIONAL_WIFI=1
@@ -40,7 +40,7 @@ inherit check-reqs flag-o-matic toolchain-funcs eutils gnome2-utils llvm \
 DESCRIPTION="Firefox Web Browser"
 HOMEPAGE="https://www.mozilla.com/firefox"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 SLOT="0"
 LICENSE="MPL-2.0 GPL-2 LGPL-2.1"

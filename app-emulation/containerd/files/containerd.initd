@@ -18,3 +18,7 @@ start_pre() {
 
 	return 0
 }
+
+start_post() {
+	ewaitfile 5 /run/containerd/containerd.sock
+}

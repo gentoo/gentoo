@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 inherit autotools flag-o-matic pam qmake-utils readme.gentoo-r1 systemd vala xdg-utils
 
 DESCRIPTION="A lightweight display manager"
-HOMEPAGE="https://www.freedesktop.org/wiki/Software/LightDM"
+HOMEPAGE="https://github.com/CanonicalLtd/lightdm"
 SRC_URI="https://github.com/CanonicalLtd/lightdm/releases/download/${PV}/${P}.tar.xz
 	mirror://gentoo/introspection-20110205.m4.tar.bz2"
 

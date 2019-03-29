@@ -33,10 +33,6 @@ RDEPEND=">=dev-libs/glib-2.26[dbus,${MULTILIB_USEDEP}]
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-1.4.0-ldac_pkgconfig_checks.patch
-)
-
 src_prepare() {
 	default
 	eautoreconf

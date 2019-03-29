@@ -3,4 +3,4 @@
 
 # Michael Haubenwallner <haubi@gentoo.org> (13 Feb 2019)
 # A little less broken on Cygwin than openssl-1.1.0j.
-~dev-libs/openssl-1.1.1a
+=dev-libs/openssl-1.1.1*
