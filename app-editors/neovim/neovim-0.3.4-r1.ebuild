@@ -18,22 +18,24 @@ fi
 
 LICENSE="Apache-2.0 vim"
 SLOT="0"
-IUSE="+clipboard +luajit +nvimpager python remote ruby +tui"
+IUSE="+clipboard +luajit +nvimpager python remote ruby +tui +jemalloc"
 
-CDEPEND=">=dev-libs/libuv-1.2.0:0=
-	>=dev-libs/msgpack-1.0.0:0=
+CDEPEND="
+	dev-libs/libuv:0=
+	dev-libs/msgpack:0=
 	luajit? ( dev-lang/luajit:2 )
 	!luajit? (
 		dev-lang/lua:=
 		dev-lua/LuaBitOp
 	)
 	tui? (
-		>=dev-libs/libtermkey-0.21.1
+		dev-libs/libtermkey
 		>=dev-libs/unibilium-2.0.0:0=
 	)
 	dev-libs/libvterm
 	dev-lua/lpeg[luajit=]
 	dev-lua/mpack[luajit=]
+	jemalloc? ( dev-libs/jemalloc )
 	net-libs/libnsl"
 
 DEPEND="
@@ -66,6 +68,7 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=(
 		-DFEAT_TUI=$(usex tui)
+		-DENABLE_JEMALLOC=$(usex jemalloc)
 		-DPREFER_LUA=$(usex luajit no yes)
 	)
 	cmake-utils_src_configure
