@@ -13,4 +13,7 @@
 		Virtual servers are unable to interact with each other, or
 		the main server.
 	</longdescription>
+	<use>
+		<flag name="dietlibc">Compile against dev-libs/dietlibc</flag>
+	</use>
 </pkgmetadata>
