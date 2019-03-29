@@ -6453,7 +6453,7 @@ dev-vcs/cvsgraph 1.7.0: CVS/RCS repository grapher
 dev-vcs/cvsps 2.1-r1: Generates patchset information from a CVS repository
 dev-vcs/darcs 2.8.4-r6 2.12.0 2.12.5: a distributed, interactive, smart revision control system
 dev-vcs/fossil 2.6: Simple, high-reliability, source control management, and more
-dev-vcs/git 2.19.2: stupid content tracker: distributed VCS designed for speed and efficiency
+dev-vcs/git 2.19.2 2.20.1 2.21.0: stupid content tracker: distributed VCS designed for speed and efficiency
 dev-vcs/git-cola 2.11: The highly caffeinated git GUI
 dev-vcs/git-flow 1.11.0: Git extensions to provide high-level repository operations
 dev-vcs/gitg 3.26.0: git repository viewer for GNOME
