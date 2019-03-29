@@ -1,0 +1,6 @@
+  # Merge master
+  git checkout -b gentoo-master master
+  git pull https://github.com/gentoo/gentoo.git master
+  git checkout master
+  git merge --no-ff gentoo-master
+  git push origin master
