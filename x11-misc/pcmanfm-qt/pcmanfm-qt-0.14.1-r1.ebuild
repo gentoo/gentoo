@@ -42,6 +42,13 @@ RDEPEND="${DEPEND}
 
 pkg_postinst() {
 	xdg_desktop_database_update
+
+	if ! has_version lxqt-base/lxqt-meta && ! has_version gnome-base/gvfs; then
+		elog
+		elog "To make use of the 'trash' functionality, please install"
+		elog "the 'gnome-base/gvfs' package."
+		elog
+	fi
 }
 
 pkg_postrm() {
