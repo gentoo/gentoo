@@ -17,7 +17,7 @@ IUSE="doc static-libs"
 DEPEND="doc? ( app-text/xmlto )"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-5.1.6-gentoo.patch
+	"${FILESDIR}"/${PN}-5.1.9-gentoo.patch
 )
 
 src_prepare() {
@@ -50,7 +50,6 @@ multilib_src_install() {
 		DESTDIR="${D}" \
 		PREFIX="${EPREFIX}/usr" \
 		LIBDIR="${EPREFIX}/usr/$(get_libdir)" \
-		MANDIR="${EPREFIX}/usr/share/man/man1" \
 		install
 
 	if ! use static-libs ; then
