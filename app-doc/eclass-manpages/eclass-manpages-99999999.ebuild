@@ -16,15 +16,20 @@ SLOT="0"
 KEYWORDS=""
 IUSE=""
 
+DEPEND="sys-apps/gawk"
+
 src_unpack() {
 	git-r3_fetch
+	git-r3_fetch "https://github.com/mgorny/eclass-to-manpage"
+
 	git-r3_checkout '' '' '' eclass
+	git-r3_checkout "https://github.com/mgorny/eclass-to-manpage"
 }
 
 src_compile() {
-	env ECLASSDIR="${S}/eclass" bash "${FILESDIR}"/eclass-to-manpage.sh || die
+	emake ECLASSDIR=eclass
 }
 
 src_install() {
-	doman *.5
+	emake install ECLASSDIR=eclass DESTDIR="${D}" PREFIX=/usr
 }
