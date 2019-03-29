@@ -1,0 +1,11 @@
+BDEPEND=>=dev-vcs/git-1.8.2.1[curl]
+DEFINED_PHASES=install postinst prepare unpack
+DESCRIPTION=freaklabs fork of the lightweight wireless sensor library for Arduino
+EAPI=7
+HOMEPAGE=https://freaklabs.org/chibiarduino/
+IUSE=+promisc
+LICENSE=BSD
+PDEPEND=dev-embedded/arduino dev-embedded/freaklabs-boards
+SLOT=0
+_eclasses_=git-r3	0d4635eeb5a96cd5315597a47eba25c9
+_md5_=b714d09fb453644e429b6511461a28a7
