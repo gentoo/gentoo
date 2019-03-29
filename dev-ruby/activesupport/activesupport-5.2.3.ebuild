@@ -28,7 +28,7 @@ RUBY_S="rails-${PV}/${PN}"
 
 ruby_add_rdepend "
 	>=dev-ruby/concurrent-ruby-1.0.2:1
-	|| ( dev-ruby/i18n:1 dev-ruby/i18n:0.9 dev-ruby/i18n:0.8 dev-ruby/i18n:0.7 )
+	dev-ruby/i18n:1
 	>=dev-ruby/tzinfo-1.1:1
 	>=dev-ruby/minitest-5.1:5"
 
