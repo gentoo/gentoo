@@ -1,12 +1,12 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 DESCRIPTION="C preprocessor interface to the make utility"
-HOMEPAGE="https://www.x.org/wiki/ https://cgit.freedesktop.org/"
+HOMEPAGE="https://www.x.org/wiki/ https://gitlab.freedesktop.org/xorg/util/imake"
 if [[ ${PV} == 9999 ]]; then
-	EGIT_REPO_URI="https://anongit.freedesktop.org/git/xorg/util/imake.git"
+	EGIT_REPO_URI="https://gitlab.freedesktop.org/xorg/util/imake.git"
 	inherit autotools git-r3
 	# x11-misc-util/macros only required on live ebuilds
 	LIVE_DEPEND=">=x11-misc/util-macros-1.18"

@@ -1,10 +1,10 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 DESCRIPTION="Old Imake-related build files"
-HOMEPAGE="https://www.x.org/wiki/ https://cgit.freedesktop.org/"
+HOMEPAGE="https://www.x.org/wiki/ https://gitlab.freedesktop.org/xorg/util/cf"
 SRC_URI="mirror://xorg/util/${P}.tar.bz2
 	https://dev.gentoo.org/~mattst88/distfiles/${PN}-1.0.6-solaris-prefix.patch.bz2"
 
