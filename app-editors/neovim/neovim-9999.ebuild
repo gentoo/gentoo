@@ -39,8 +39,9 @@ CDEPEND=">=dev-libs/libuv-1.2.0:0=
 DEPEND="
 	${CDEPEND}
 	dev-util/gperf
+	virtual/libintl
 	virtual/libiconv
-	virtual/libintl"
+	app-eselect/eselect-vi"
 
 RDEPEND="
 	${CDEPEND}
