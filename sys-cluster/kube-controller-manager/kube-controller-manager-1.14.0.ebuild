@@ -27,7 +27,7 @@ pkg_setup() {
 
 src_prepare() {
 	default
-	sed -i -e "/vendor\/github.com\/jteeuwen\/go-bindata\/go-bindata/d" -e "s/-s -w/-s" src/${EGO_PN}/hack/lib/golang.sh || die
+	sed -i -e "/vendor\/github.com\/jteeuwen\/go-bindata\/go-bindata/d" -e "s/-s -w/-s/" src/${EGO_PN}/hack/lib/golang.sh || die
 	sed -i -e "/export PATH/d" src/${EGO_PN}/hack/generate-bindata.sh || die
 }
 
