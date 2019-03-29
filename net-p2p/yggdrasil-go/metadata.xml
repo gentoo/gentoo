@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+	<maintainer type="person">
+		<email>william@willeponken.me</email>
+		<name>William Wennerström</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		Yggdrasil is an early-stage implementation of a fully end-to-end
+		encrypted IPv6 network. It is lightweight, self-arranging,
+		supported on multiple platforms and allows pretty much any
+		IPv6-capable application to communicate securely with other
+		Yggdrasil nodes. Yggdrasil does not require you to have IPv6
+		Internet connectivity - it also works over IPv4.
+	</longdescription>
+</pkgmetadata>
