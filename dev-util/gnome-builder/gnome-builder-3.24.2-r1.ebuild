@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -41,7 +41,7 @@ RDEPEND="
 	>=dev-libs/libxml2-2.9.0
 	>=x11-libs/pango-1.38.0
 	>=dev-libs/libpeas-1.18.0[python,${PYTHON_USEDEP}]
-	>=dev-libs/json-glib-1.2.0
+	>=dev-libs/json-glib-1.2.0[introspection]
 	>=app-text/gspell-1.2.0
 	>=app-text/enchant-1.6.0
 	webkit? ( >=net-libs/webkit-gtk-2.12.0:4=[introspection] )
