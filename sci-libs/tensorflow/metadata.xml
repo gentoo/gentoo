@@ -10,7 +10,6 @@
 	</longdescription>
 	<use>
 		<flag name="cuda">Enable support for nVidia CUDA</flag>
-		<flag name="mpi">Enable support for MPI</flag>
 		<flag name="system-libs">Link with system instead of bundled libraries</flag>
 	</use>
 	<upstream>
