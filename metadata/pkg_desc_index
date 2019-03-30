@@ -3163,7 +3163,7 @@ dev-libs/librevenge 0.0.4-r1: A helper library for REVerse ENGineered formats fi
 dev-libs/libsass 3.4.7 3.5.2: A C/C++ implementation of a Sass CSS compiler
 dev-libs/libsecp256k1 0.0.0_pre20151118: Optimized C library for EC operations on curve secp256k1
 dev-libs/libserialport 0.1.1: Cross platform serial port access library
-dev-libs/libsigc++ 1.2.7 2.10.0 2.10.1: Typesafe callback system for standard C++
+dev-libs/libsigc++ 1.2.7 2.10.1: Typesafe callback system for standard C++
 dev-libs/libsigsegv 2.11 2.12 2.12-r1: Library for handling page faults in user mode
 dev-libs/libslz 1.1.0: stateless, zlib-compatible, and very fast compression library
 dev-libs/libsodium 1.0.11-r1 1.0.15-r1 1.0.16-r2: A portable fork of NaCl, a higher-level cryptographic library
@@ -3196,7 +3196,7 @@ dev-libs/libx86emu 1.1: A library for emulating x86
 dev-libs/libxdg-basedir 1.2.0-r1: Small library to access XDG Base Directories Specification paths
 dev-libs/libxdiff 0.23-r2: Library for creating diff files
 dev-libs/libxls 1.4.0-r1: A library which can read Excel (xls) files
-dev-libs/libxml2 2.9.8 2.9.9: XML C parser and toolkit
+dev-libs/libxml2 2.9.9: XML C parser and toolkit
 dev-libs/libxslt 1.1.32: XSLT libraries and tools
 dev-libs/libyaml 0.1.7: YAML 1.1 parser and emitter written in C
 dev-libs/libzia 4.11 4.14: platform abstraction code for tucnak package
