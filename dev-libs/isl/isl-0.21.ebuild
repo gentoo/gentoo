@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI="6"
 
 inherit eutils multilib-minimal preserve-libs
 
@@ -22,11 +22,13 @@ DEPEND="${RDEPEND}
 DOCS=( ChangeLog AUTHORS doc/manual.pdf )
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-0.19-gdb-autoload-dir.patch
+	eapply "${FILESDIR}"/${PN}-0.19-gdb-autoload-dir.patch
 
 	# m4/ax_create_pkgconfig_info.m4 is broken but avoid eautoreconf
 	# https://groups.google.com/group/isl-development/t/37ad876557e50f2c
 	sed -i -e '/Libs:/s:@LDFLAGS@ ::' configure || die #382737
+
+	eapply_user
 }
 
 multilib_src_configure() {
@@ -35,7 +37,7 @@ multilib_src_configure() {
 
 multilib_src_install_all() {
 	einstalldocs
-	prune_libtool_files
+	find "${ED}" -type f -name '*.la' -delete
 }
 
 pkg_preinst() {
