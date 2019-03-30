@@ -34,11 +34,6 @@ DEPEND="
 	nls? ( sys-devel/gettext )
 "
 
-PATCHES=(
-	"${FILESDIR}/${P}-glibc226.patch"
-	"${FILESDIR}/${P}-Listen-on-a-TCP-socket.patch"
-)
-
 src_prepare() {
 	default
 	eautoreconf
