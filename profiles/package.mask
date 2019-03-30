@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Anthony G. Basile <blueness@gentoo.org>
+# Mask because it breaks the toolchain if
+# lto is enabled. Bug #682018
+=dev-libs/isl-0.21
+
 # Aaron Bauamn <bman@gentoo.org> (29 Mar 2019)
 # Longstanding security vulnerabilities
 # No upstream releases in years
