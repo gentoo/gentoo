@@ -3103,7 +3103,7 @@ dev-libs/libgpg-error 1.27-r1 1.29: Contains error handling functions used by Gn
 dev-libs/libgudev 232: GObject bindings for libudev
 dev-libs/libgusb 0.2.11: GObject wrapper for libusb
 dev-libs/libgweather 3.24.1: Library to access weather information from online services
-dev-libs/libical 2.0.0-r3 3.0.4: An implementation of basic iCAL protocols
+dev-libs/libical 3.0.4: An implementation of basic iCAL protocols
 dev-libs/libiconv 1.14 1.14-r1: GNU charset conversion library for libc which doesn't implement it
 dev-libs/libindicate 12.10.1-r3: Library to raise flags on DBus for other components of the desktop
 dev-libs/libindicator 12.10.1-r201 12.10.1-r301: A set of symbols and convience functions that all indicators would like to use
@@ -6978,7 +6978,7 @@ kde-misc/kwebkitpart 1.4.0_pre20190110: WebKit KPart for Konqueror
 kde-misc/latte-dock 0.8.7: Elegant dock, based on KDE Frameworks
 kde-misc/openofficeorg-thumbnail 1.0.0-r500: KDE thumbnail-plugin that generates thumbnails for ODF files
 kde-misc/plasma-pass 1.0.0: Plasma applet to access password from pass
-kde-misc/plasma-redshift-control 1.0.18: Plasma 5 applet for controlling redshift
+kde-misc/plasma-redshift-control 1.0.18-r1: Plasma 5 applet for controlling redshift
 kde-misc/rsibreak 0.12.9-r1: Small utility which bothers you at certain intervals
 kde-misc/skanlite 2.1.0.1: KDE image scanning application
 kde-misc/systemd-kcm 1.2.1: Plasma control module for systemd

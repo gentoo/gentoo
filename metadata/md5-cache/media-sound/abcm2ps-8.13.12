@@ -1,7 +1,8 @@
+BDEPEND=virtual/pkgconfig
 DEFINED_PHASES=compile configure install
-DEPEND=pango? ( x11-libs/pango media-libs/freetype:2 ) virtual/pkgconfig
-DESCRIPTION=A program to convert abc files to Postscript files
-EAPI=6
+DEPEND=pango? ( x11-libs/pango media-libs/freetype:2 )
+DESCRIPTION=Program to convert abc files to Postscript files
+EAPI=7
 HOMEPAGE=http://moinejf.free.fr/
 IUSE=examples pango
 KEYWORDS=~amd64 ~ppc ~x86
@@ -10,4 +11,4 @@ RDEPEND=pango? ( x11-libs/pango media-libs/freetype:2 )
 SLOT=0
 SRC_URI=http://moinejf.free.fr/abcm2ps-8.13.12.tar.gz http://moinejf.free.fr/transpose_abc.pl
 _eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
-_md5_=e8a4a8589ab81dc7366128d9561d1b6f
+_md5_=06e37cc7118d5cb854a73bd24027799c

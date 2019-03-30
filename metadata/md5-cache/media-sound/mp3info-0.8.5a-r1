@@ -1,13 +1,14 @@
+BDEPEND=virtual/pkgconfig
 DEFINED_PHASES=compile install
-DEPEND=gtk? ( >=x11-libs/gtk+-2.6.10:2 ) sys-libs/ncurses:0= virtual/pkgconfig
+DEPEND=sys-libs/ncurses:0= gtk? ( >=x11-libs/gtk+-2.6.10:2 )
 DESCRIPTION=An MP3 technical info viewer and ID3 1.x tag editor
-EAPI=6
-HOMEPAGE=http://ibiblio.org/mp3info/
+EAPI=7
+HOMEPAGE=https://ibiblio.org/mp3info/
 IUSE=gtk
 KEYWORDS=~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris
 LICENSE=GPL-2
-RDEPEND=gtk? ( >=x11-libs/gtk+-2.6.10:2 ) sys-libs/ncurses:0=
+RDEPEND=sys-libs/ncurses:0= gtk? ( >=x11-libs/gtk+-2.6.10:2 )
 SLOT=0
-SRC_URI=http://ibiblio.org/pub/linux/apps/sound/mp3-utils/mp3info/mp3info-0.8.5a.tgz
+SRC_URI=https://ibiblio.org/pub/linux/apps/sound/mp3-utils/mp3info/mp3info-0.8.5a.tgz
 _eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
-_md5_=320587e7b2c7773abb03fce1d28aa200
+_md5_=c7cde9ac0804d8dd42763a81afd2cbb6
