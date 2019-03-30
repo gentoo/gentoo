@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+	<maintainer type="person">
+		<email>relkochta@lightn1ng.space</email>
+		<name>Ryan El Kochta</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+		Flameshot is a powerful, simple, customizable screenshot application written in C++ using Qt. Flameshot allows for easy annotating, copying, pasting, uploading, and more. It is licensed under the GNU General Public License version 3 or higher.
+	</longdescription>
+</pkgmetadata>
