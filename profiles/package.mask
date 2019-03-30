@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Aaron Bauamn <bman@gentoo.org> (29 Mar 2019)
+# Longstanding security vulnerabilities
+# No upstream releases in years
+# Removal in 30 days. Bug #650888
+media-gfx/swftools
+
 # Michał Górny <mgorny@gentoo.org> (29 Mar 2019)
 # Unmaintained.  Fails to build with ncurses[tinfo]; fixing it reveals
 # further build failures.  Last release in 2001.  Upstream has shortly
