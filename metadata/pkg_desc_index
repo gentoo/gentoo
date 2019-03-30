@@ -554,7 +554,7 @@ app-editors/gedit 3.28.1: A text editor for the GNOME desktop
 app-editors/gedit-plugins 3.28.1: Official plugins for gedit
 app-editors/ghex 3.18.3: GNOME hexadecimal editor
 app-editors/gummi 0.6.6-r2: Simple LaTeX editor for GTK+ users
-app-editors/gvim 8.0.1298: GUI version of the Vim text editor
+app-editors/gvim 8.0.1298 8.1.0648-r1: GUI version of the Vim text editor
 app-editors/hexcurse 1.55: ncurses based hex editor
 app-editors/hexedit 1.2.13: View and edit files in hex or ASCII
 app-editors/hteditor 2.1.0: A file viewer, editor and analyzer for text, binary, and executable files
