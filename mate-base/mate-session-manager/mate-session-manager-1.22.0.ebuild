@@ -14,10 +14,9 @@ HOMEPAGE="http://mate-desktop.org/"
 
 LICENSE="GPL-2 LGPL-2 FDL-1.1"
 SLOT="0"
+IUSE="debug elibc_FreeBSD elogind gnome-keyring ipv6 systemd +xtrans"
 
-IUSE="debug elibc_FreeBSD gnome-keyring ipv6 systemd +xtrans"
-
-PATCHES=( "${FILESDIR}"/${P}-fix-systemd-regression.patch )
+REQUIRED_USE="?? ( elogind systemd )"
 
 # x11-misc/xdg-user-dirs{,-gtk} are needed to create the various XDG_*_DIRs, and
 # create .config/user-dirs.dirs which is read by glib to get G_USER_DIRECTORY_*
@@ -40,7 +39,10 @@ COMMON_DEPEND=">=dev-libs/dbus-glib-0.76
 	virtual/libintl
 	elibc_FreeBSD? ( || ( dev-libs/libexecinfo >=sys-freebsd/freebsd-lib-10.0 ) )
 	systemd? ( sys-apps/systemd )
-	!systemd? ( >=sys-auth/consolekit-0.9.2 )
+	!systemd? (
+		elogind? ( sys-auth/elogind )
+		!elogind? ( >=sys-auth/consolekit-0.9.2 )
+	)
 	xtrans? ( x11-libs/xtrans )"
 
 RDEPEND="${COMMON_DEPEND}
@@ -56,11 +58,17 @@ DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig:*
 	!<gnome-base/gdm-2.20.4"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-fix-systemd-regression.patch
+	"${FILESDIR}"/${P}-elogind.patch
+)
+
 MATE_FORCE_AUTORECONF=true
 
 src_configure() {
 	mate_src_configure \
 		--docdir="${EPREFIX}/usr/share/doc/${PF}" \
+		$(use_with elogind) \
 		$(use_with systemd) \
 		$(use_with xtrans)  \
 		$(use_enable debug) \
