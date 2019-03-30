@@ -2953,7 +2953,7 @@ dev-libs/bitset 2.8.4-r1: A compressed bitset with supporting data structures an
 dev-libs/boehm-gc 7.2e 7.4.2 7.6.4: The Boehm-Demers-Weiser conservative garbage collector
 dev-libs/boost 1.63.0 1.65.0: Boost Libraries for C++
 dev-libs/botan 1.10.17-r2 2.7.0: A C++ crypto library
-dev-libs/btparser 0.24 0.25 0.26: Parser and analyzer for backtraces produced by GDB
+dev-libs/btparser 0.26: Parser and analyzer for backtraces produced by GDB
 dev-libs/c-blosc 1.11.2: Blocking, shuffling and lossless compression library
 dev-libs/cdk 5.0.20160131: A library of curses widgets
 dev-libs/cgicc 3.2.9 3.2.16: A C++ class library for writing CGI applications
