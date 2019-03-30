@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -18,7 +18,7 @@ SRC_URI="https://gstreamer.freedesktop.org/src/${MY_PN}/${MY_P}.tar.xz
 
 LICENSE="LGPL-2+"
 SLOT="1.0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~x86 ~x86-fbsd"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~x86 ~x86-fbsd"
 IUSE="libav +orc"
 
 RDEPEND="
@@ -41,6 +41,8 @@ S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
 	"${WORKDIR}"/patches # ffmpeg-4 compat and more from git up to 20181115; requires eautoreconf
+	"${FILESDIR}"/AVOptionsRanges-leak-fix.patch # extra patch from Jan 2019 for a leak fix
+	"${FILESDIR}"/fix-negative-pts.patch # extra patch from Feb 2019 to fix negative pts if start_time is bigger than the ts
 	"${FILESDIR}"/external-ffmpeg4-dep.patch # Automatically rescan available elements for registry when system ffmpeg changes
 )
 
