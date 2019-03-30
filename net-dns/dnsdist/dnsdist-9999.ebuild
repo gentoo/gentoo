@@ -28,7 +28,7 @@ IUSE="dnscrypt gnutls fstrm luajit regex remote-logging snmp +ssl systemd test"
 REQUIRED_USE="dnscrypt? ( ssl )
 		gnutls? ( ssl )"
 
-DEPEND="
+RDEPEND="
 	>=dev-libs/boost-1.35:=
 	dev-libs/libedit:=
 	fstrm? ( dev-libs/fstrm:= )
@@ -45,11 +45,14 @@ DEPEND="
 	systemd? ( sys-apps/systemd:0= )
 "
 
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}
+	virtual/pkgconfig
+"
 
 [[ ${PV} == 9999 ]] && DEPEND+="
 	app-text/pandoc
 	dev-util/ragel
+	dev-python/virtualenv
 "
 
 src_prepare() {

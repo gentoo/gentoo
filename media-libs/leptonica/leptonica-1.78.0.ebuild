@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit ltprune multilib-minimal
+inherit multilib-minimal
 
 DESCRIPTION="C library for image processing and analysis"
 HOMEPAGE="http://www.leptonica.org/"
@@ -27,6 +27,10 @@ RDEPEND="gif? ( >=media-libs/giflib-5.1.3:=[${MULTILIB_USEDEP}] )
 
 DEPEND="${RDEPEND}
 	test? ( media-libs/tiff:0[zlib] )"
+
+PATCHES=(
+	"${FILESDIR}"/${PV}-gnuplot.patch
+)
 
 ECONF_SOURCE="${S}"
 DOCS=( README version-notes )
@@ -65,7 +69,7 @@ multilib_src_test() {
 	rm -rf /tmp/lept/ || die
 }
 
-src_install() {
-	multilib-minimal_src_install
-	prune_libtool_files
+multilib_src_install_all() {
+	# libtool archives covered by pkg-config.
+	find "${D}" -name "*.la" -delete || die
 }
