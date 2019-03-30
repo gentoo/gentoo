@@ -1858,7 +1858,7 @@ dev-cpp/lucene++ 3.0.7-r1: C++ port of Lucene library, a high-performance, full-
 dev-cpp/mm-common 0.9.12: Build infrastructure and utilities for GNOME C++ bindings
 dev-cpp/ms-gsl 2.0.0: Guideline Support Library implementation by Microsoft
 dev-cpp/muParser 2.2.5: Library for parsing mathematical expressions
-dev-cpp/pangomm 2.40.1 2.42.0: C++ interface for pango
+dev-cpp/pangomm 2.42.0: C++ interface for pango
 dev-cpp/pngpp 0.2.9: A simple but powerful C++ interface to libpng
 dev-cpp/sparsehash 1.10 2.0.3-r1: An extremely memory-efficient hash_map implementation
 dev-cpp/tbb 4.3.20150611 2017.20161128: High level abstract threading library
