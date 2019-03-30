@@ -56,7 +56,8 @@ src_prepare() {
 	eapply "${FILESDIR}/${PN}-3.22-glibc-2.10.patch"
 
 	# Fix security bugs #522114 and #638108
-	eapply "${FILESDIR}/${PN}-CVE-2014-3618-16844.patch"
+	eapply "${FILESDIR}/${PN}-3.22-CVE-2014-3618.patch"
+	eapply "${FILESDIR}/${PN}-3.22-CVE-2017-16844.patch"
 
 	eapply "${FILESDIR}/${PN}-3.22-crash-fix.patch"
 
