@@ -6976,7 +6976,7 @@ kde-misc/krusader 2.7.1: Advanced twin-panel (commander-style) file-manager with
 kde-misc/kshutdown 4.2: Shutdown manager for desktop environments like KDE Plasma
 kde-misc/kwebkitpart 1.4.0_pre20190110: WebKit KPart for Konqueror
 kde-misc/latte-dock 0.8.7: Elegant dock, based on KDE Frameworks
-kde-misc/openofficeorg-thumbnail 1.0.0-r500: KDE thumbnail-plugin that generates thumbnails for ODF files
+kde-misc/openofficeorg-thumbnail 1.0.0-r500: Thumbnail-plugin that generates thumbnails for ODF files
 kde-misc/plasma-pass 1.0.0: Plasma applet to access password from pass
 kde-misc/plasma-redshift-control 1.0.18-r1: Plasma 5 applet for controlling redshift
 kde-misc/rsibreak 0.12.9-r1: Small utility which bothers you at certain intervals
