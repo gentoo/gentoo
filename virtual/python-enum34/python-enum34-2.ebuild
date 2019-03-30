@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 PYTHON_COMPAT=( python2_7 python3_{4,5,6,7} pypy pypy3 )
 
@@ -14,4 +14,4 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
 	$(python_gen_cond_dep 'dev-python/enum34[${PYTHON_USEDEP}]' \
-	'python2*' python3_3 'pypy*')"
+	'python2*' python3_3 pypy)"
