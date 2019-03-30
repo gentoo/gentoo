@@ -1,19 +1,22 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit kde5
 
 DESCRIPTION="Function key (FN) monitoring for Toshiba laptops"
 HOMEPAGE="http://ktoshiba.sourceforge.net/"
 SRC_URI="http://prdownloads.sourceforge.net/${PN}/${P}.tar.xz"
-LICENSE="GPL-2"
 
+LICENSE="GPL-2"
 KEYWORDS="~amd64"
 IUSE=""
 
-RDEPEND="
+BDEPEND="
+	sys-devel/gettext
+"
+DEPEND="
 	$(add_frameworks_dep kauth)
 	$(add_frameworks_dep kcmutils)
 	$(add_frameworks_dep kconfig)
@@ -28,9 +31,7 @@ RDEPEND="
 	$(add_qt_dep qtwidgets)
 	net-libs/libmnl
 "
-DEPEND="${RDEPEND}
-	sys-devel/gettext
-"
+RDEPEND="${DEPEND}"
 
 PATCHES=( "${FILESDIR}/${P}-qt-5.11.patch" )
 
