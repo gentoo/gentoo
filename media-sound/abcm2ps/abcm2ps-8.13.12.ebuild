@@ -1,10 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
+
 inherit toolchain-funcs
 
-DESCRIPTION="A program to convert abc files to Postscript files"
+DESCRIPTION="Program to convert abc files to Postscript files"
 HOMEPAGE="http://moinejf.free.fr/"
 SRC_URI="http://moinejf.free.fr/${P}.tar.gz
 	http://moinejf.free.fr/transpose_abc.pl"
@@ -14,9 +15,11 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="examples pango"
 
-RDEPEND="pango? ( x11-libs/pango media-libs/freetype:2 )"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+BDEPEND="
+	virtual/pkgconfig
+"
+DEPEND="pango? ( x11-libs/pango media-libs/freetype:2 )"
+RDEPEND="${DEPEND}"
 
 src_configure() {
 	econf \
