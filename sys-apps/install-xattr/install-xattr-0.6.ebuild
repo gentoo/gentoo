@@ -1,12 +1,12 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 DESCRIPTION="Wrapper to coreutil's install to preserve Filesystem Extended Attributes"
 HOMEPAGE="https://dev.gentoo.org/~blueness/install-xattr/"
 
-inherit toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/elfix.git"
@@ -23,6 +23,7 @@ SLOT="0"
 src_prepare() {
 	default
 	tc-export CC
+	append-cppflags "-D_FILE_OFFSET_BITS=64"
 }
 
 src_compile() {
