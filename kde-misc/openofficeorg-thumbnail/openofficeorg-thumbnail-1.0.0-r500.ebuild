@@ -1,13 +1,13 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 MY_PN="OpenOfficeorgThumbnail"
 MY_P="${MY_PN}-${PV}"
 inherit kde5
 
-DESCRIPTION="KDE thumbnail-plugin that generates thumbnails for ODF files"
+DESCRIPTION="Thumbnail-plugin that generates thumbnails for ODF files"
 HOMEPAGE="https://www.kde-apps.org/content/show.php?content=110864"
 SRC_URI="http://arielch.fedorapeople.org/devel/src/${MY_P}.tar.gz"
 
