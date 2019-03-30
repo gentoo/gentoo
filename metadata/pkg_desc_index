@@ -4854,7 +4854,7 @@ dev-python/elib-intl 0_pre20110711: Enhanced internationalization (I18N) service
 dev-python/embedly 0.5.0-r1: Python Library for Embedly
 dev-python/empy 3.3-r1: A powerful and robust templating system for Python
 dev-python/entrypoints 0.2.3: Discover and load entry points from installed packages
-dev-python/enum34 1.1.6: Python 3.4 Enum backported
+dev-python/enum34 1.1.6-r1: Python 3.4 Enum backported
 dev-python/envoy 0.0.3: Simple API for running external processes
 dev-python/enzyme 0.4.1-r2: Python video metadata parser
 dev-python/epsilon 0.7.0: Epsilon is a Python utilities package, most famous for its Time class
@@ -10527,7 +10527,7 @@ virtual/podofo-build 0.9.6_pre20170508-r1: Virtual package for building against 
 virtual/python-backports_abc 0: A virtual for the Python 3.3+ collections.abc module
 virtual/python-cffi 0: A virtual for the Python cffi package
 virtual/python-dnspython 2: A virtual for dnspython, for Python 2 & 3
-virtual/python-enum34 1: A virtual for Python enum34 module
+virtual/python-enum34 2: A virtual for Python enum34 module
 virtual/python-funcsigs 2: A Virtual for Python function signatures from PEP362 (py3.6 variant)
 virtual/python-futures 0 1: A virtual for the Python concurrent.futures module
 virtual/python-greenlet 1.0: A virtual for Python greenlet module
