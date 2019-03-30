@@ -10,10 +10,12 @@ if [[ ${PV} != 9999 ]]; then
 fi
 
 DESCRIPTION="A session daemon for MATE that makes it easy to manage your laptop or desktop"
+
 LICENSE="GPL-2"
 SLOT="0"
+IUSE="+applet elogind gnome-keyring policykit systemd test"
 
-IUSE="+applet gnome-keyring policykit systemd test"
+REQUIRED_USE="?? ( elogind systemd )"
 
 # Interactive testsuite.
 RESTRICT="test"
@@ -33,12 +35,15 @@ COMMON_DEPEND=">=dev-libs/dbus-glib-0.70
 	x11-libs/pango
 	applet? ( >=mate-base/mate-panel-1.17.0 )
 	gnome-keyring? ( >=gnome-base/libgnome-keyring-3 )
-	>=sys-power/upower-0.9.23:=
-	systemd? ( sys-apps/systemd )
-	!systemd? ( >=sys-auth/consolekit-0.9.2 )"
+	>=sys-power/upower-0.9.23:="
 
 RDEPEND="${COMMON_DEPEND}
-	policykit? ( >=mate-extra/mate-polkit-1.6 )"
+	policykit? ( >=mate-extra/mate-polkit-1.6 )
+	systemd? ( sys-apps/systemd )
+	!systemd? (
+		elogind? ( sys-auth/elogind )
+		!elogind? ( >=sys-auth/consolekit-0.9.2 )
+	)"
 
 DEPEND="${COMMON_DEPEND}
 	app-text/docbook-xml-dtd:4.3
