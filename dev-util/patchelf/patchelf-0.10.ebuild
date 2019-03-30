@@ -1,14 +1,13 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit autotools vcs-snapshot
+inherit autotools
 
 DESCRIPTION="Small utility to modify the dynamic linker and RPATH of ELF executables"
-HOMEPAGE="http://nixos.org/patchelf.html"
-COMMIT=1fa4d36fead44333528cbee4b5c04c207ce77ca4
-SRC_URI="https://github.com/NixOS/${PN^}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://nixos.org/patchelf.html"
+SRC_URI="https://nixos.org/releases/${PN}/${P}/${P}.tar.bz2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
 LICENSE="GPL-3"
@@ -19,7 +18,6 @@ src_prepare() {
 
 	sed -i \
 		-e 's:-Werror::g' \
-		-e 's:parallel-tests:serial-tests:g' \
 		configure.ac || die
 
 	eautoreconf
