@@ -1,0 +1,257 @@
+diff --git a/README b/README
+index 330ec82..d16cc6b 100644
+--- a/README
++++ b/README
+@@ -34,6 +34,7 @@ Most of these configurations will be enabled automatically when their dependenci
+ Here is a list of the different dependencies and there configuration flags:
+   --with-gtk2: This decides between the Gtk+-3.0 and Gtk+-2.0 dependency.
+   --with-systemd: This adds the support for systemd logind. This option requires the development files to be installed.
++  --with-elogind: This adds support for elogind, a standalone version of systemd's logind daemon. Requires the elogind development files be installed. This option cannot be enabled at the same time as the --with-systemd option above.
+   --with-console-kit: This adds the support for ConsoleKit.
+   --with-upower: This adds the support for UPower.
+   --with-mit-ext: This enables the lock-after-screensaver feature. This options requires the X11 Screen Saver extension development files to be installed.
+diff --git a/configure.ac.in b/configure.ac.in
+index 929befd..8639583 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -447,6 +447,42 @@ fi
+ AC_SUBST(SYSTEMD_CFLAGS)
+ AC_SUBST(SYSTEMD_LIBS)
+ 
++dnl ---------------------------------------------------------------------------
++dnl elogind
++dnl ---------------------------------------------------------------------------
++
++AC_ARG_WITH(elogind,
++            AS_HELP_STRING([--with-elogind],
++                           [Add elogind support]),
++            [with_elogind=$withval], [with_elogind=auto])
++
++if test "x$with_systemd" = "xyes" && test "x$with_elogind" = "xyes"; then
++    AC_MSG_ERROR([Conflicting options: --with-systemd and --with-elogind])
++fi
++
++PKG_CHECK_MODULES(ELOGIND,
++                  [libelogind],
++                  [have_elogind=yes], [have_elogind=no])
++
++if test "x$with_elogind" = "xauto" ; then
++        if test x$have_elogind = xno ; then
++                use_elogind=no
++        else
++                use_elogind=yes
++        fi
++else
++	use_elogind=$with_elogind
++fi
++
++if test "x$use_elogind" = "xyes"; then
++        if test "x$have_elogind" = "xno"; then
++                AC_MSG_ERROR([Elogind support explicitly required, but elogind not found])
++        fi
++        AC_DEFINE(WITH_ELOGIND, 1, [elogind support])
++fi
++AC_SUBST(ELOGIND_CFLAGS)
++AC_SUBST(ELOGIND_LIBS)
++
+ dnl ---------------------------------------------------------------------------
+ dnl UPower
+ dnl ---------------------------------------------------------------------------
+@@ -668,6 +704,7 @@ echo "
+         systemd:                  ${use_systemd}
+         ConsoleKit:               ${use_console_kit}
+         UPower:                   ${use_upower}
++        elogind:                  ${use_elogind}
+ 
+                     Features:
+                     ---------
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 0fa4ef9..7c6a46f 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -90,7 +90,8 @@ light_locker_SOURCES =	\
+ light_locker_LDADD =		\
+ 	$(LIGHT_LOCKER_LIBS)	\
+ 	$(SAVER_LIBS)			\
+-	$(SYSTEMD_LIBS)                 \
++	$(SYSTEMD_LIBS)		\
++	$(ELOGIND_LIBS)		\
+ 	$(NULL)
+ 
+ light_locker_LDFLAGS = -export-dynamic
+diff --git a/src/gs-listener-dbus.c b/src/gs-listener-dbus.c
+index cab6a9e..8928cbf 100644
+--- a/src/gs-listener-dbus.c
++++ b/src/gs-listener-dbus.c
+@@ -47,6 +47,10 @@
+ #include <systemd/sd-login.h>
+ #endif
+ 
++#ifdef WITH_ELOGIND
++#include <elogind/systemd/sd-login.h>
++#endif
++
+ #include "gs-listener-dbus.h"
+ #include "gs-marshal.h"
+ #include "gs-debug.h"
+@@ -82,7 +86,7 @@ struct GSListenerPrivate
+         char           *session_id;
+         char           *seat_path;
+ 
+-#ifdef WITH_SYSTEMD
++#if defined(WITH_SYSTEMD) || defined(WITH_ELOGIND)
+         gboolean        have_systemd;
+         char           *sd_session_id;
+         int             delay_fd;
+@@ -138,7 +142,7 @@ gs_listener_send_switch_greeter (GSListener *listener)
+ 
+         gs_debug ("Send switch greeter");
+ 
+-#ifdef WITH_SYSTEMD
++#if defined(WITH_SYSTEMD) || defined(WITH_ELOGIND)
+         /* Compare with 0. On failure this will return < 0.
+          * In the later case we probably aren't using systemd.
+          */
+@@ -179,7 +183,7 @@ gs_listener_send_lock_session (GSListener *listener)
+ 
+         gs_debug ("Send lock session");
+ 
+-#ifdef WITH_SYSTEMD
++#if defined(WITH_SYSTEMD) || defined(WITH_ELOGIND)
+         /* Compare with 0. On failure this will return < 0.
+          * In the later case we probably aren't using systemd.
+          */
+@@ -363,7 +367,7 @@ gs_listener_set_idle_hint (GSListener *listener, gboolean idle)
+ 
+         gs_debug ("Send idle hint: %d", idle);
+ 
+-#ifdef WITH_SYSTEMD
++#if defined(WITH_SYSTEMD) || defined(WITH_ELOGIND)
+         if (listener->priv->have_systemd) {
+ 
+                 if (listener->priv->system_connection == NULL) {
+@@ -436,7 +440,7 @@ gs_listener_set_idle_hint (GSListener *listener, gboolean idle)
+ void
+ gs_listener_delay_suspend (GSListener *listener)
+ {
+-#ifdef WITH_SYSTEMD
++#if defined(WITH_SYSTEMD) || defined(WITH_ELOGIND)
+         DBusMessage    *message;
+         DBusMessage    *reply;
+         DBusError       error;
+@@ -509,7 +513,7 @@ gs_listener_delay_suspend (GSListener *listener)
+ void
+ gs_listener_resume_suspend (GSListener *listener)
+ {
+-#ifdef WITH_SYSTEMD
++#if defined(WITH_SYSTEMD) || defined(WITH_ELOGIND)
+         gs_debug ("Resume suspend: fd=%d", listener->priv->delay_fd);
+ 
+         if (listener->priv->delay_fd >= 0) {
+@@ -1112,7 +1116,7 @@ _listener_message_path_is_our_session (GSListener  *listener,
+         return FALSE;
+ }
+ 
+-#ifdef WITH_SYSTEMD
++#if defined(WITH_SYSTEMD) || defined(WITH_ELOGIND)
+ static gboolean
+ query_session_active (GSListener *listener)
+ {
+@@ -1248,7 +1252,7 @@ query_lid_closed (GSListener *listener)
+ #endif
+ #endif
+ 
+-#if defined(WITH_SYSTEMD) || (defined(WITH_UPOWER) && defined(WITH_LOCK_ON_LID))
++#if defined(WITH_SYSTEMD) || defined(WITH_ELOGIND) || (defined(WITH_UPOWER) && defined(WITH_LOCK_ON_LID))
+ static gboolean
+ properties_changed_match (DBusMessage *message,
+                           const char  *property)
+@@ -1343,7 +1347,7 @@ listener_dbus_handle_system_message (DBusConnection *connection,
+                   dbus_message_get_destination (message));
+ #endif
+ 
+-#ifdef WITH_SYSTEMD
++#if defined(WITH_SYSTEMD) || defined(WITH_ELOGIND)
+ 
+         if (listener->priv->have_systemd) {
+ 
+@@ -1963,7 +1967,7 @@ gs_listener_acquire (GSListener *listener,
+                                             listener_dbus_system_filter_function,
+                                             listener,
+                                             NULL);
+-#ifdef WITH_SYSTEMD
++#if defined(WITH_SYSTEMD) || defined(WITH_ELOGIND)
+                 if (listener->priv->have_systemd) {
+                         dbus_bus_add_match (listener->priv->system_connection,
+                                             "type='signal'"
+@@ -2075,7 +2079,7 @@ query_session_id (GSListener *listener)
+ 
+         dbus_error_init (&error);
+ 
+-#ifdef WITH_SYSTEMD
++#if defined(WITH_SYSTEMD) || defined(WITH_ELOGIND)
+         if (listener->priv->have_systemd) {
+                 dbus_uint32_t pid = getpid();
+ 
+@@ -2164,7 +2168,7 @@ query_session_id (GSListener *listener)
+ #endif
+ }
+ 
+-#ifdef WITH_SYSTEMD
++#if defined(WITH_SYSTEMD) || defined(WITH_ELOGIND)
+ static char *
+ query_sd_session_id (GSListener *listener)
+ {
+@@ -2192,7 +2196,7 @@ init_session_id (GSListener *listener)
+         listener->priv->session_id = query_session_id (listener);
+         gs_debug ("Got session-id: %s", listener->priv->session_id);
+ 
+-#ifdef WITH_SYSTEMD
++#if defined(WITH_SYSTEMD) || defined(WITH_ELOGIND)
+         g_free (listener->priv->sd_session_id);
+         listener->priv->sd_session_id = query_sd_session_id (listener);
+         gs_debug ("Got sd-session-id: %s", listener->priv->sd_session_id);
+@@ -2284,7 +2288,7 @@ gs_listener_init (GSListener *listener)
+ {
+         listener->priv = GS_LISTENER_GET_PRIVATE (listener);
+ 
+-#ifdef WITH_SYSTEMD
++#if defined(WITH_SYSTEMD) || defined(WITH_ELOGIND)
+         /* check if logind is running */
+         listener->priv->have_systemd = (access("/run/systemd/seats/", F_OK) >= 0);
+         listener->priv->delay_fd = -1;
+@@ -2313,7 +2317,7 @@ gs_listener_finalize (GObject *object)
+         g_free (listener->priv->session_id);
+         g_free (listener->priv->seat_path);
+ 
+-#ifdef WITH_SYSTEMD
++#if defined(WITH_SYSTEMD) || defined(WITH_ELOGIND)
+         g_free (listener->priv->sd_session_id);
+ #endif
+ 
+diff --git a/src/light-locker.c b/src/light-locker.c
+index 264b033..79de29a 100644
+--- a/src/light-locker.c
++++ b/src/light-locker.c
+@@ -144,7 +144,8 @@ main (int    argc,
+                   "gtk:        %d\n"
+                   "systemd:    %s\n"
+                   "ConsoleKit: %s\n"
+-                  "UPower:     %s",
++                  "UPower:     %s\n"
++                  "elogind:    %s",
+                   GTK_MAJOR_VERSION,
+ #ifdef WITH_SYSTEMD
+                   "yes",
+@@ -160,6 +161,11 @@ main (int    argc,
+                   "yes"
+ #else
+                   "no"
++#endif
++#ifdef WITH_ELOGIND
++                  "yes"
++#else
++                  "no"
+ #endif
+                   );
+         gs_debug ("Features:\n"
