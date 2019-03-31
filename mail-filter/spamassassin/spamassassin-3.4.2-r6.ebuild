@@ -196,7 +196,7 @@ src_install () {
 	if use cron; then
 		# Install the cron job if they want it.
 		exeinto /etc/cron.daily
-		newexe "${FILESDIR}/update-spamassassin-rules.cron" \
+		newexe "${FILESDIR}/update-spamassassin-rules-r1.cron" \
 			   update-spamassassin-rules
 	fi
 
