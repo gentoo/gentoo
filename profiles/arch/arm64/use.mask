@@ -26,6 +26,10 @@
 -neon
 -armvfp
 
+# Andreas Sturmlechner <asturm@gentoo.org> (31 Mar 2019)
+# Unmask elogind since it is keyworded here.
+-elogind
+
 # Mart Raudsepp <leio@gentoo.org> (07 Jan 2019)
 # Does not work on arm64 until dev-lang/luajit-2.1
 # https://github.com/LuaJIT/LuaJIT/issues/26
