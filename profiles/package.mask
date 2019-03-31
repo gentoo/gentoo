@@ -30,6 +30,14 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (31 Mar 2019)
+# Unmaintained.  The current snapshot was added by a non-maintainer to
+# stop blocking Qt4 removal.  Fails to build with new glibc.
+# Last upstream release in 2015, latest commits mid-2018.
+# No reverse dependencies.
+# Removal in 30 days.  Bug #656096.
+sci-chemistry/ball
+
+# Michał Górny <mgorny@gentoo.org> (31 Mar 2019)
 # Undermaintained.  Fails to build with new glibc (#638048), OpenGL
 # headers (#516292).  Missing dependencies (#586186).  No reverse
 # dependencies.
