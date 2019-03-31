@@ -37,7 +37,7 @@ DEPEND="${RDEPEND}
 	dev-libs/gobject-introspection-common
 	dev-util/glib-utils
 	>=dev-util/gtk-doc-am-1.10
-	>=dev-util/intltool-0.40.0
+	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
 	test? (
 		<=sys-apps/osinfo-db-20190304
