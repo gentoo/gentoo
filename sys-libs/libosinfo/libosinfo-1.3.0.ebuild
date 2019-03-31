@@ -40,10 +40,10 @@ DEPEND="${RDEPEND}
 	>=dev-util/intltool-0.40.0
 	virtual/pkgconfig
 	test? (
-		>=sys-apps/osinfo-db-20180612
+		<=sys-apps/osinfo-db-20190304
 	)
 	vala? ( $(vala_depend) )
-"
+" # osinfo-db-20190319 and newer make tests fail; next libosinfo will remove the failing tests (moved to a future osinfo-db itself)
 
 src_prepare() {
 	gnome2_src_prepare
