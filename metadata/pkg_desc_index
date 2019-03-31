@@ -10558,7 +10558,6 @@ virtual/wine 0-r5: Virtual for Wine that supports multiple variants and slotting
 virtual/yacc 0: virtual for yacc (yet another compiler compiler)
 www-apache/libapreq2 2.13-r1: A library for manipulating client request data via the Apache API
 www-apache/mod_auth_kerb 5.4-r2: An Apache authentication module using Kerberos
-www-apache/mod_authnz_external 3.3.2: An Apache2 authentication DSO using external programs
 www-apache/mod_bw 0.9.2-r1: Bandwidth Management Module for Apache2
 www-apache/mod_common_redirect 0.1.1: mod_common_redirect implements common redirects without mod_rewrite overhead
 www-apache/mod_dnssd 0.6-r1: mod_dnssd is an Apache module which adds Zeroconf support via DNS-SD using Avahi
