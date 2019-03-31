@@ -15,7 +15,7 @@ KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~m68k ~mips ppc ppc64 s390 ~sh sparc x
 IUSE="static"
 
 RDEPEND="!<net-misc/iputils-20121221-r1
-	!net-misc/iputils[traceroute]"
+	!net-misc/iputils[traceroute6]"
 
 src_compile() {
 	use static && append-ldflags -static

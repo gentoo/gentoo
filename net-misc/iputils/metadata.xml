@@ -10,12 +10,11 @@
     <flag name="clockdiff">Build and install clockdiff -- tool for comparing clocks via ICMP packets</flag>
     <flag name="gcrypt">Use <pkg>dev-libs/libgcrypt</pkg> for md5 support</flag>
     <flag name="nettle">Use <pkg>dev-libs/nettle</pkg> for md5 support</flag>
-    <flag name="openssl">Use <pkg>dev-libs/openssl</pkg> for md5 support</flag>
     <flag name="rarpd">Build and install rarpd -- server for handling RARP (reverse ARP) requests; generally only used by old systems</flag>
     <flag name="rdisc">Build and install rdisc -- server for the client side of the ICMP router discover protocol</flag>
     <flag name="tftpd">Build and install tftpd -- server for the Trivial File Transfer Protocol (see also <pkg>net-ftp/tftp-hpa</pkg>)</flag>
     <flag name="tracepath">Build and install tracepath -- tool for tracing network paths for discovering MTU values</flag>
-    <flag name="traceroute">Build and install traceroute -- tool for tracing network paths (see also <pkg>net-analyzer/traceroute</pkg>)</flag>
+    <flag name="traceroute6">Build and install deprecated traceroute6 tool. It's recommended to use <pkg>net-analyzer/traceroute</pkg> instead.</flag>
     <flag name="SECURITY_HAZARD">Allow non-root users to flood (ping -f). This is generally a very bad idea.</flag>
   </use>
   <upstream>
