@@ -10,4 +10,4 @@ RDEPEND=dev-lang/perl:= dev-perl/HTML-Parser dev-perl/Net-DNS dev-perl/NetAddr-I
 SLOT=0
 SRC_URI=mirror://apache/spamassassin/source/Mail-SpamAssassin-3.4.2.tar.bz2
 _eclasses_=eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	multilib	b2f01ad412baf81650c23fcf0975fa33	perl-functions	f2e3420aed32cf1abe33b4129b842636	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	b45201c4e6c096b98e250336954e64b9	user	8bd74731cafdcdad8f7a63637302e073
-_md5_=e27e0a7965f234f172d100e4eee438ac
+_md5_=231ea816de97caaad801d71c450de0bb
