@@ -43,9 +43,9 @@ src_prepare() {
 	cp "${FILESDIR}/maven-build.properties" . || die
 	java-ant_ignore-system-classes
 
+	mkdir lib || die
+	cd lib || die
 	if use test; then
-	    mkdir lib || die
-	    cd lib || die
 		java-pkg_jar-from --build-only junit
 	fi
 }
