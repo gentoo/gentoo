@@ -2966,10 +2966,6 @@
       <role>Cafepress store, Facebook (admin), G+ (primary owner), Twitter, Telegram (admin), Slack (admin)</role>
     </member>
     <member>
-      <email>nightmorph@gentoo.org</email>
-      <name>Joshua Saddler</name>
-    </member>
-    <member>
       <email>sping@gentoo.org</email>
       <name>Sebastian Pipping</name>
     </member>
@@ -3239,11 +3235,6 @@
       <email>maffblaster@gentoo.org</email>
       <name>Matthew Marchese</name>
       <role>Documentation Helper</role>
-    </member>
-    <member>
-      <email>nightmorph@gentoo.org</email>
-      <name>Joshua Saddler</name>
-      <role>Documentation Liaison</role>
     </member>
     <member>
       <email>robbat2@gentoo.org</email>
@@ -4062,10 +4053,6 @@
       <email>maffblaster@gentoo.org</email>
       <name>Matthew Marchese</name>
       <role>Maintainer</role>
-    </member>
-    <member>
-      <email>nightmorph@gentoo.org</email>
-      <name>Joshua Saddler</name>
     </member>
   </project>
   <project>
