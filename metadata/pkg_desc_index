@@ -3008,7 +3008,6 @@ dev-libs/gobject-introspection-common 1.56.1: Build infrastructure for GObject I
 dev-libs/gom 0.3.2-r1: GObject to SQLite object mapper library
 dev-libs/granite 0.5.0: Elementary OS library that extends Gtk+
 dev-libs/grantlee 5.1.0: C++ string template engine based on the Django template system
-dev-libs/grok 0.9.2-r2: DRY and RAD for regular expressions
 dev-libs/gtx 0.2.2: Small collection of functions intended to enhance the GLib testing framework
 dev-libs/hashit 0.9.8: Generic C hash library which supports multiple collision handling methods
 dev-libs/hidapi 0.8.0_rc1_p20140719: A multi-platform library for USB and Bluetooth HID-Class devices
