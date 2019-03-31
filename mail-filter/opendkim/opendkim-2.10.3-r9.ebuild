@@ -140,7 +140,13 @@ src_install() {
 	echo "# For use with unbound" >> "${T}/opendkim.conf" || die
 	echo "#TrustAnchorFile /etc/dnssec/root-anchors.txt" \
 		 >> "${T}/opendkim.conf" || die
-	echo UserID opendkim >> "${T}/opendkim.conf" || die
+	echo "UserID opendkim" >> "${T}/opendkim.conf" || die
+
+	# The UMask is really only used for the PID file (root:root) and the
+	# local UNIX socket, if you're using one. It should be 0117 for the
+	# socket, so we might as well set that unconditionally here.
+	echo "UMask 0117" >> "${T}/opendkim.conf" || die
+
 	insinto /etc/opendkim
 	doins "${T}/opendkim.conf"
 }
