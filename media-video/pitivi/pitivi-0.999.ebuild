@@ -43,7 +43,7 @@ RDEPEND="${COMMON_DEPEND}
 
 	gnome-base/librsvg:=
 	>=media-libs/gsound-1.0
-	
+
 	>=media-libs/gstreamer-editing-services-${GST_VER}:1.0[introspection]
 	>=media-libs/gst-plugins-base-${GST_VER}:1.0[introspection]
 	>=media-libs/gst-plugins-bad-${GST_VER}:1.0[gtk]
