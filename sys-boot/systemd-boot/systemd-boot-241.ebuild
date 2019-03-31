@@ -22,6 +22,7 @@ BDEPEND="
 	dev-libs/libxslt:0
 	>=dev-util/intltool-0.50
 	dev-util/gperf
+	dev-util/patchelf
 	virtual/pkgconfig
 "
 COMMON_DEPEND="
@@ -96,7 +97,9 @@ src_compile() {
 		src/boot/efi/linux${efi_arch}.efi.stub
 		src/boot/efi/systemd-boot${efi_arch}.efi
 	)
-	eninja -C "${BUILD_DIR}" "${targets[@]}" || die
+	cd "${BUILD_DIR}" || die
+	eninja "${targets[@]}"
+	patchelf --remove-rpath bootctl || die
 }
 
 src_install() {
