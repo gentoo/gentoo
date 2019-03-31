@@ -30,6 +30,13 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (31 Mar 2019)
+# Unmaintained.  Still broken with new glibc.  Carries a lot of local
+# patches.  Last upstream release in 2011, with a few commits in git
+# since.  The only revdep is app-admin/rsyslog[grok].
+# Removal in 30 days.  Bug #660332.
+dev-libs/grok
+
+# Michał Górny <mgorny@gentoo.org> (31 Mar 2019)
 # Unmaintained.  Needs bump.  The current Gentoo version is from 2004,
 # with last upstream release in 2015.  Carries local patches and hacks
 # to even build.  Has format-security warnings.

@@ -71,7 +71,6 @@ DOCS=( README.md doc/AUTHORS )
 src_configure() {
 	local mycmakeargs+=(
 		-DUSE_WERROR=FALSE
-		-DWANT_SYSTEM_SR=TRUE
 		-DWANT_CAPS=FALSE
 		-DWANT_TAP=FALSE
 		-DWANT_SWH=FALSE
