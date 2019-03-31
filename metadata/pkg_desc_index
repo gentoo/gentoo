@@ -7562,7 +7562,7 @@ media-libs/gst-rtsp-server 0.10.8-r1 1.14.2: A GStreamer based RTSP server
 media-libs/gstreamer 0.10.36-r2 1.14.4: Open source multimedia framework
 media-libs/gstreamer-editing-services 1.14.3: SDK for making video editors and more
 media-libs/guilib 1.2.1: a simple widget set for SDL
-media-libs/gupnp-dlna 0.10.4 0.10.5: Library providing DLNA-related functionality for MediaServers
+media-libs/gupnp-dlna 0.10.5: Library providing DLNA-related functionality for MediaServers
 media-libs/hamlib 3.1 3.2 3.3: Ham radio backend rig control libraries
 media-libs/harfbuzz 2.0.2-r1 2.3.1: An OpenType text shaping engine
 media-libs/id3lib 3.8.3-r8: Id3 library for C/C++
@@ -7896,7 +7896,7 @@ media-plugins/gst-plugins-libpng 0.10.31-r1 1.14.4: PNG image encoder/decoder pl
 media-plugins/gst-plugins-libvisual 0.10.36-r1 1.14.4: Visualization elements for GStreamer
 media-plugins/gst-plugins-lv2 1.14.3: Lv2 elements for Gstreamer
 media-plugins/gst-plugins-mad 0.10.19-r1: plugin for gstreamer
-media-plugins/gst-plugins-meta 0.10-r11 1.14.1 1.14.3: Meta ebuild to pull in gst plugins for apps
+media-plugins/gst-plugins-meta 0.10-r11 1.14.3: Meta ebuild to pull in gst plugins for apps
 media-plugins/gst-plugins-modplug 0.10.23-r1 1.14.3: MOD audio decoder plugin for GStreamer
 media-plugins/gst-plugins-mpeg2dec 0.10.19-r1 1.14.3: MPEG2 decoder plugin for GStreamer
 media-plugins/gst-plugins-mpeg2enc 0.10.23-r1 1.14.3: MPEG-1/2 video encoding plugin for GStreamer
