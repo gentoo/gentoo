@@ -38,7 +38,7 @@ src_configure() {
 	# so, we must find llvm based on the installed clang version.
 	# bug #681568
 	local clang_version=$(best_version sys-devel/clang)
-	export LLVM_ROOT="/usr/lib/llvm/$(ver_cut 1 ${clang_version##sys-devel/clang-})s"
+	export LLVM_ROOT="/usr/lib/llvm/$(ver_cut 1 ${clang_version##sys-devel/clang-})"
 	cmake-utils_src_configure
 }
 
