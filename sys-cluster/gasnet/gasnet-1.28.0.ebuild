@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,8 +7,8 @@ inherit autotools toolchain-funcs multilib
 
 MY_P="${PN^^[gasn]}-${PV}"
 DESCRIPTION="Networking middleware for partitioned global address space (PGAS) language"
-HOMEPAGE="http://gasnet.lbl.gov/"
-SRC_URI="http://gasnet.lbl.gov/${MY_P}.tar.gz"
+HOMEPAGE="https://gasnet.lbl.gov/"
+SRC_URI="https://gasnet.lbl.gov/download/${MY_P}.tar.gz"
 
 SOVER="${PV%%.*}"
 LICENSE="BSD"
