@@ -1,0 +1,14 @@
+BDEPEND=|| ( dev-lang/python:3.7 dev-lang/python:3.6 dev-lang/python:3.5 ) doc? ( dev-util/gtk-doc app-text/docbook-xml-dtd:4.3 ) virtual/pkgconfig >=dev-util/meson-0.48.2 >=dev-util/ninja-1.7.2
+DEFINED_PHASES=compile configure install prepare setup test
+DEPEND=>=dev-libs/glib-2.30.0:2[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_ppc_32(-)?,abi_ppc_64(-)?,abi_s390_32(-)?,abi_s390_64(-)?] introspection? ( dev-libs/gobject-introspection:= )
+DESCRIPTION=A thin layer of types for graphic libraries
+EAPI=7
+HOMEPAGE=https://ebassi.github.io/graphene/
+IUSE=cpu_flags_arm_neon cpu_flags_x86_sse2 doc +introspection test abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_ppc_32 abi_ppc_64 abi_s390_32 abi_s390_64
+KEYWORDS=~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd
+LICENSE=MIT
+RDEPEND=>=dev-libs/glib-2.30.0:2[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_ppc_32(-)?,abi_ppc_64(-)?,abi_s390_32(-)?,abi_s390_64(-)?] introspection? ( dev-libs/gobject-introspection:= )
+SLOT=0
+SRC_URI=https://github.com/ebassi/graphene/releases/download/1.8.6/graphene-1.8.6.tar.xz
+_eclasses_=meson	e53acc5913e5581a8a71be22731d8f36	multibuild	40fe59465edacd730c644ec2bc197809	multilib	b2f01ad412baf81650c23fcf0975fa33	multilib-build	b42436dc1260f475af229754c165cb6b	multilib-minimal	8bddda43703ba94d8341f4e247f97566	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-any-r1	4900ae970f827a22d33d41bd8b8f9ace	python-utils-r1	08e17157a6807add7db1f8d01e7e391f	toolchain-funcs	b45201c4e6c096b98e250336954e64b9	xdg-utils	14d00d009167652b1fa363e55effe213
+_md5_=ed757fe2c2ba47d1531980e7ab8b8b82
