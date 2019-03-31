@@ -23,13 +23,13 @@ REQUIRED_USE="
 "
 
 RDEPEND="
-	>=dev-libs/libuv-1.26.0:=
+	>=dev-libs/libuv-1.27.0:=
 	>=net-dns/c-ares-1.15.0
 	>=net-libs/http-parser-2.9.0:=
 	>=net-libs/nghttp2-1.34.0
 	sys-libs/zlib
 	icu? ( >=dev-libs/icu-63.1:= )
-	ssl? ( =dev-libs/openssl-1.1.1*:0= )
+	ssl? ( >=dev-libs/openssl-1.1:0= )
 "
 DEPEND="
 	${RDEPEND}
