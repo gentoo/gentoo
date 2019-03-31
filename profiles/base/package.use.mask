@@ -7,6 +7,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Michał Górny <mgorny@gentoo.org> (31 Mar 2019)
+# dev-libs/grok is slated for removal.
+app-admin/rsyslog grok
+
 # Michał Górny <mgorny@gentoo.org> (21 Mar 2019)
 # x11-wm/afterstep is slated for removal.
 x11-terms/aterm background
