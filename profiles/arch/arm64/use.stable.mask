@@ -4,6 +4,10 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in use.mask
 
+# Andreas Sturmlechner <asturm@gentoo.org> (31 Mar 2019)
+# sys-auth/elogind not stable yet
+elogind
+
 # Mart Raudsepp <leio@gentoo.org> (07 Feb 2019)
 # app-misc/tracker not stable yet
 tracker
