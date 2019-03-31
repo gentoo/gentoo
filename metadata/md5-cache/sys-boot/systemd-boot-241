@@ -1,13 +1,14 @@
+BDEPEND=app-text/docbook-xml-dtd:4.2 app-text/docbook-xml-dtd:4.5 app-text/docbook-xsl-stylesheets dev-libs/libxslt:0 >=dev-util/intltool-0.50 dev-util/gperf dev-util/patchelf virtual/pkgconfig >=dev-util/meson-0.48.2 >=dev-util/ninja-1.7.2
 DEFINED_PHASES=compile configure install test
-DEPEND=>=sys-apps/util-linux-2.30 app-text/docbook-xml-dtd:4.2 app-text/docbook-xml-dtd:4.5 app-text/docbook-xsl-stylesheets dev-libs/libxslt:0 >=dev-util/intltool-0.50 dev-util/gperf >=sys-boot/gnu-efi-3.0.2 sys-libs/libcap virtual/pkgconfig >=dev-util/meson-0.48.2 >=dev-util/ninja-1.7.2
+DEPEND=>=sys-apps/util-linux-2.30 >=sys-boot/gnu-efi-3.0.2 sys-libs/libcap
 DESCRIPTION=UEFI boot manager from systemd (formerly gummiboot)
-EAPI=6
+EAPI=7
 HOMEPAGE=https://www.freedesktop.org/wiki/Software/systemd/systemd-boot/
 KEYWORDS=~amd64
 LICENSE=GPL-2 LGPL-2.1 MIT public-domain
 RDEPEND=>=sys-apps/util-linux-2.30 !sys-apps/systemd
 RESTRICT=test
 SLOT=0
-SRC_URI=https://github.com/systemd/systemd/archive/v235.tar.gz -> systemd-235.tar.gz
+SRC_URI=https://github.com/systemd/systemd/archive/v241.tar.gz -> systemd-241.tar.gz
 _eclasses_=meson	e53acc5913e5581a8a71be22731d8f36	multilib	b2f01ad412baf81650c23fcf0975fa33	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	08e17157a6807add7db1f8d01e7e391f	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
-_md5_=0e8f207e74923b79c4bc3d1d8fb86b27
+_md5_=34c421a12df697b2ae22469bfb366437
