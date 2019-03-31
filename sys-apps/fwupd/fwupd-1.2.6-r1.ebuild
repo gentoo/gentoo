@@ -122,7 +122,11 @@ src_configure() {
 
 src_install() {
 	meson_src_install
-	doinitd "${FILESDIR}"/${PN}
+
+	sed "s@%SEAT_MANAGER%@$(usex elogind elogind consolekit)@" \
+		"${FILESDIR}"/${PN}-r1 \
+		> "${T}"/${PN} || die
+	doinitd "${T}"/${PN}
 
 	if ! use systemd ; then
 		# Don't timeout when fwupd is running (#673140)
