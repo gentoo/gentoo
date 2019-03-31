@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 2016-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit meson toolchain-funcs
 
@@ -15,19 +15,22 @@ KEYWORDS="~amd64"
 IUSE=""
 RESTRICT="test"
 
-COMMON_DEPEND="
-	>=sys-apps/util-linux-2.30
-"
-DEPEND="${COMMON_DEPEND}
+BDEPEND="
 	app-text/docbook-xml-dtd:4.2
 	app-text/docbook-xml-dtd:4.5
 	app-text/docbook-xsl-stylesheets
 	dev-libs/libxslt:0
 	>=dev-util/intltool-0.50
 	dev-util/gperf
+	dev-util/patchelf
+	virtual/pkgconfig
+"
+COMMON_DEPEND="
+	>=sys-apps/util-linux-2.30
+"
+DEPEND="${COMMON_DEPEND}
 	>=sys-boot/gnu-efi-3.0.2
 	sys-libs/libcap
-	virtual/pkgconfig
 "
 RDEPEND="${COMMON_DEPEND}
 	!sys-apps/systemd
@@ -41,36 +44,36 @@ PATCHES=(
 
 src_configure() {
 	local emesonargs=(
-		-D blkid=true
-		-D efi=true
-		-D gnu-efi=true
-		-D efi-cc="$(tc-getCC)"
-		-D efi-ld="$(tc-getLD)"
-		-D split-usr=true
-		-D rootprefix="${EPREFIX:-/}"
+		-Dblkid=true
+		-Defi=true
+		-Dgnu-efi=true
+		-Defi-cc="$(tc-getCC)"
+		-Defi-ld="$(tc-getLD)"
+		-Dsplit-usr=true
+		-Drootprefix="${EPREFIX:-/}"
 
-		-D acl=false
-		-D apparmor=false
-		-D audit=false
-		-D bzip2=false
-		-D elfutils=false
-		-D gcrypt=false
-		-D gnutls=false
-		-D kmod=false
-		-D libcryptsetup=false
-		-D libcurl=false
-		-D libidn=false
-		-D libidn2=false
-		-D libiptc=false
-		-D lz4=false
-		-D microhttpd=false
-		-D myhostname=false
-		-D pam=false
-		-D qrencode=false
-		-D seccomp=false
-		-D selinux=false
-		-D xkbcommon=false
-		-D xz=false
+		-Dacl=false
+		-Dapparmor=false
+		-Daudit=false
+		-Dbzip2=false
+		-Delfutils=false
+		-Dgcrypt=false
+		-Dgnutls=false
+		-Dkmod=false
+		-Dlibcryptsetup=false
+		-Dlibcurl=false
+		-Dlibidn=false
+		-Dlibidn2=false
+		-Dlibiptc=false
+		-Dlz4=false
+		-Dmicrohttpd=false
+		-Dmyhostname=false
+		-Dpam=false
+		-Dqrencode=false
+		-Dseccomp=false
+		-Dselinux=false
+		-Dxkbcommon=false
+		-Dxz=false
 	)
 	meson_src_configure
 }
@@ -94,7 +97,9 @@ src_compile() {
 		src/boot/efi/linux${efi_arch}.efi.stub
 		src/boot/efi/systemd-boot${efi_arch}.efi
 	)
-	eninja -C "${BUILD_DIR}" "${targets[@]}" || die
+	cd "${BUILD_DIR}" || die
+	eninja "${targets[@]}"
+	patchelf --remove-rpath bootctl || die
 }
 
 src_install() {
