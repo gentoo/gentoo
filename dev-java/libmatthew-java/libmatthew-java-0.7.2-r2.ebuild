@@ -4,6 +4,7 @@
 EAPI=6
 
 JAVA_PKG_IUSE="doc source"
+
 inherit eutils java-pkg-2 flag-o-matic toolchain-funcs
 
 DESCRIPTION="A selection of libraries for Java"
@@ -12,7 +13,7 @@ SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64 ~x86"
+KEYWORDS="amd64 ppc64 x86"
 
 RDEPEND="
 	>=virtual/jre-1.5"
