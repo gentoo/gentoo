@@ -26,10 +26,6 @@ postgres_targets_postgres12
 # Unkeyworded on most arches, unmasked in supported arch profiles.
 audacious
 
-# Michael Palimaka <kensington@gentoo.org> (03 Jun 2017)
-# Unkeyworded on most arches, unmasked in supported arch profiles.
-elogind
-
 # CURL_SSL=winssl is for prefix/windows/winnt only
 curl_ssl_winssl
 

@@ -1,5 +1,5 @@
-# Copyright 1999-2018 Gentoo Foundation.
-# Distributed under the terms of the GNU General Public License, v2
+# Copyright 1999-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
 
 # Unmask the flag which corresponds to ARCH.
 -amd64-fbsd
@@ -32,6 +32,10 @@
 # Unmask vmware drivers
 #-video_cards_vmware
 -input_devices_vmmouse
+
+# Andreas Sturmlechner <asturm@gentoo.org> (31 Mar 2019)
+# sys-auth/elogind is not keyworded here.
+elogind
 
 # Ulrich Müller <ulm@gentoo.org> (01 May 2018)
 # virtual/mysql is not keyworded.
