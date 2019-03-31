@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{4,5,6,7} pypy pypy3 )
+PYTHON_COMPAT=( python2_7 python3_{5,6,7} pypy pypy3 )
 
 inherit python-r1
 
@@ -14,4 +14,4 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
 	$(python_gen_cond_dep 'dev-python/pathlib[${PYTHON_USEDEP}]' \
-		python{2_7,3_3} pypy pypy3)"
+		python2_7 pypy)"
