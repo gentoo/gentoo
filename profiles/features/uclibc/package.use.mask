@@ -1,6 +1,10 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Anthony G. Basile <blueness@gentoo.org>
+# sanitize is broken on at least all hardened uclibc
+sys-devel/gcc sanitize
+
 # Michał Górny <mgorny@gentoo.org> (12 Jan 2018)
 # Those require USE=java that is masked in this profile.
 app-emulation/virtualbox vboxwebsrv
