@@ -30,6 +30,13 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (31 Mar 2019)
+# Unmaintained.  Broken with new openssl (#674192) and new glibc
+# (#643460).  Last upstream beta release in 2002.  Carries ever-growing
+# pile of patches.  No reverse dependencies.
+# Removal in 30 days.  Bug #674192.
+net-analyzer/dsniff
+
+# Michał Górny <mgorny@gentoo.org> (31 Mar 2019)
 # Unmaintained.  The current snapshot was added by a non-maintainer to
 # stop blocking Qt4 removal.  Fails to build with new glibc.
 # Last upstream release in 2015, latest commits mid-2018.
