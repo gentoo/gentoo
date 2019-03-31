@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install postinst postrm
+DEPEND=>=sys-libs/zlib-1.2.5.1-r1 !libressl? ( dev-libs/openssl:= ) libressl? ( dev-libs/libressl )
+DESCRIPTION=HTTrack Website Copier, Open Source Offline Browser
+EAPI=7
+HOMEPAGE=https://www.httrack.com/
+IUSE=libressl static-libs
+KEYWORDS=~amd64 ~ppc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux
+LICENSE=GPL-3
+RDEPEND=>=sys-libs/zlib-1.2.5.1-r1 !libressl? ( dev-libs/openssl:= ) libressl? ( dev-libs/libressl )
+SLOT=0
+SRC_URI=https://mirror.httrack.com/historical/httrack-3.49.2.tar.gz
+_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	xdg-utils	14d00d009167652b1fa363e55effe213
+_md5_=4080243c6975ea45b4a4a1c3b90b6836
