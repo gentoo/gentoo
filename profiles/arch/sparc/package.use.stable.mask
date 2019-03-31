@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Sergei Trofimovich <slyfox@gentoo.org> (31 Mar 2019)
+# No stable dovecot on net-mail/dovecot, bug #634822.
+mail-filter/maildrop dovecot
+
 # Sergei Trofimovich <slyfox@gentoo.org> (25 Dec 2018)
 # Needs net-mail/mailutils and net-libs/webkit-gtk which are not
 # stable (yet?), bug #663248
