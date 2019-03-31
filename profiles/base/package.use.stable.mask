@@ -141,10 +141,6 @@ app-admin/packagekit-base entropy
 dev-db/mariadb sst-xtrabackup
 dev-db/mariadb-galera sst-xtrabackup
 
-# William Hubbs <williamh@gentoo.org (13 Apr 2016)
-# Needs gcc-5 which is currently unstable
-dev-lang/go gccgo
-
 # Sergey Popov <pinkbyte@gentoo.org> (15 Feb 2016)
 # Mask monitoring capabilities of Ganeti on stable branches
 app-emulation/ganeti monitoring
