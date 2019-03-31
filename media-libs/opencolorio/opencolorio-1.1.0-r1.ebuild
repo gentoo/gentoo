@@ -45,6 +45,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-use-GNUInstallDirs-and-fix-cmake-install-location.patch"
 	"${FILESDIR}/${P}-remove-building-of-bundled-programs.patch"
 	"${FILESDIR}/${P}-yaml-cpp-0.6.patch"
+	"${FILESDIR}/${P}-remove-Werror.patch"
 )
 
 pkg_setup() {
