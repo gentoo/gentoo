@@ -11,7 +11,7 @@ MY_PN="xml-apis"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Externally-defined set of standard interfaces, namely DOM, SAX, and JAXP"
-HOMEPAGE="http://xerces.apache.org/xml-commons/components/external/"
+HOMEPAGE="https://xerces.apache.org/xml-commons/components/external/"
 SRC_URI="https://repo1.maven.org/maven2/${MY_PN}/${MY_PN}/${PV}/${MY_P}-sources.jar -> ${P}.jar"
 
 LICENSE="Apache-2.0"
