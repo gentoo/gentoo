@@ -144,15 +144,15 @@ python_install_all() {
 	doexe tests/check-requirements
 
 	# users normally would want it
-	docinto "/usr/share/doc/${PF}/logging/syslog-ng"
+	insinto "/usr/share/doc/${PF}/logging/syslog-ng"
 	doins -r "${FILESDIR}"/syslog-ng/*
 
-	docinto "/usr/share/doc/${PF}/logging/rsyslog"
+	insinto "/usr/share/doc/${PF}/logging/rsyslog"
 	doins -r "${FILESDIR}"/rsyslog/*
 	doins doc/rsyslog.example
 
 	if use examples; then
-		docinto "/usr/share/doc/${PF}/examples"
+		insinto "/usr/share/doc/${PF}/examples"
 		doins -r examples/*
 	fi
 	newbashcomp shell-completion/bash "${PN}"
