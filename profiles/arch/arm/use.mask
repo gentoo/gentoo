@@ -15,10 +15,6 @@ python_single_target_python3_7
 # No ACPI support on arm. Bug #657332
 acpi
 
-# Michael Palimaka <kensington@gentoo.org> (03 Jun 2017)
-# Unmask elogind since it is keyworded here.
--elogind
-
 # Patrick Lauer <patrick@gentoo.org> (28 Apr 2015)
 # Dependencies not keyworded
 ayatana

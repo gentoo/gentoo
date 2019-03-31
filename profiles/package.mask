@@ -657,14 +657,6 @@ x11-drivers/xf86-video-voodoo
 # Masked for removal in 30 days. Bug #679256
 x11-libs/libxkbui
 
-# Andreas Sturmlechner <asturm@gentoo.org> (02 Mar 2019)
-# Completely broken. Masked for removal in 30 days.
-# Bugs 630924, 639310, 640728, 644654, 654892, 655096, 670822
-media-video/dcpomatic
-media-libs/libasdcp-cth
-media-libs/libdcp
-media-libs/libsub
-
 # Eray Aslan <eras@gentoo.org> (01 Mar 2019)
 # Mask experimental software
 =mail-mta/postfix-3.5*
@@ -929,10 +921,6 @@ app-admin/amazon-ec2-init
 # Masked for testing
 =sys-fs/fuse-3*
 =net-fs/sshfs-3*
-
-# Denis Dupeyron <calchan@gentoo.org> (12 Sep 2016)
-# Masked for testing, see bug #588894.
-=x11-misc/light-locker-1.7.0-r1
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (03 Apr 2016)
 # Can exhaust all available memory depending on task

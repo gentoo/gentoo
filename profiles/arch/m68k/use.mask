@@ -1,8 +1,12 @@
-# Copyright 1999-2017 Gentoo Foundation.
-# Distributed under the terms of the GNU General Public License, v2
+# Copyright 1999-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
 
 # Unmask the flag which corresponds to ARCH.
 -m68k
+
+# Andreas Sturmlechner <asturm@gentoo.org> (31 Mar 2019)
+# sys-auth/elogind is not keyworded here.
+elogind
 
 # James Le Cuirot <chewi@gentoo.org> (29 Jun 2017)
 # Unmask as this profile is big endian.

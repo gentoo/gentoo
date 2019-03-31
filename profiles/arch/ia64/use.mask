@@ -3,6 +3,10 @@
 
 # This is a list of USE flags that should not be used on ia64.
 
+# Andreas Sturmlechner <asturm@gentoo.org> (31 Mar 2019)
+# sys-auth/elogind is not yet keyworded here. bug #681200
+elogind
+
 # Michał Górny <mgorny@gentoo.org> (16 Jul 2018)
 # Python 3.7 support requires fresh versions of packages which are stuck
 # at keywordreqs.

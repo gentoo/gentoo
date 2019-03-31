@@ -1,5 +1,5 @@
-# Copyright 1999-2017 Gentoo Foundation.
-# Distributed under the terms of the GNU General Public License, v2
+# Copyright 1999-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
 
 # Unmask the flag which corresponds to ARCH.
 -x86
@@ -24,10 +24,6 @@ python_single_target_python3_7
 -oci8
 -oci8-instant-client
 -oracle
-
-# Michael Palimaka <kensington@gentoo.org> (03 Jun 2017)
-# Unmask elogind since it is keyworded here.
--elogind
 
 # Sven Wegener <swegener@gentoo.org> (31 May 2017)
 # libvirt is supported on x86
