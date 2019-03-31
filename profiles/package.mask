@@ -638,11 +638,6 @@ media-libs/libsub
 # Depends on >=virtual/{jdk,jre}-11 which is masked
 =www-servers/tomcat-9.0.16
 
-# Jeroen Roovers <jer@gentoo.org> (31 Jan 2019)
-# Depends on =dev-libs/openssl-1.1.1*
-# bug #670574
-=net-libs/nodejs-11*
-
 # Dennis Lamm <expeditioneer@gentoo.org> (29 Jan 2019)
 # Depends on >=app-text/enchant-2.0.0 which is masked
 =gnome-extra/gtkhtml-4.10.0-r1
