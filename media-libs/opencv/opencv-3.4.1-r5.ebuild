@@ -234,6 +234,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-remove-git-autodetect.patch"
 	"${FILESDIR}/${P}-fix-build-with-va.patch" # bug https://bugs.gentoo.org/656576
 	"${FILESDIR}/${P}-popcnt.patch" # https://bugs.gentoo.org/633900
+	"${FILESDIR}/${P}-fix-on-x86.patch" # https://bugs.gentoo.org/682104
 )
 
 pkg_pretend() {
