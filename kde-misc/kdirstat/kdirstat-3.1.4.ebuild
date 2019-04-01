@@ -11,7 +11,7 @@ HOMEPAGE="https://bitbucket.org/jeromerobert/k4dirstat/"
 SRC_URI="https://bitbucket.org/jeromerobert/k4dirstat/get/k4dirstat-${PV}.tar.bz2"
 
 LICENSE="GPL-2"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 BDEPEND="
