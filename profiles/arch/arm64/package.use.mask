@@ -6,10 +6,6 @@
 dev-qt/qtsql -mysql
 kde-apps/akonadi -mysql
 
-# Andreas Sturmlechner <asturm@gentoo.org> (19 Mar 2019)
-# mail-filter/spamassassin is not yet keyworded
-kde-apps/kdepim-meta spamassassin
-
 # Mart Raudsepp <leio@gentoo.org> (11 Mar 2019)
 # media-libs/bcg729 not keyworded yet
 net-analyzer/wireshark bcg729
