@@ -8747,7 +8747,7 @@ net-libs/libnids 1.24-r6: an implementation of an E-component of Network Intrusi
 net-libs/libnsl 1.2.0: Public client interface for NIS(YP) and NIS+ in a IPv6 ready version
 net-libs/libntlm 1.3 1.4: Microsoft's NTLM authentication (libntlm) library
 net-libs/libnxml 0.18.3: A C-library for parsing and writing XML 1.0/1.1 files or streams
-net-libs/liboauth 1.0.3: C library implementing the OAuth secure authentication protocol
+net-libs/liboauth 1.0.3 1.0.3-r1: C library implementing the OAuth secure authentication protocol
 net-libs/liboping 1.10.0-r1: Protocol independent ANSI-C ping library and command line utility
 net-libs/libotr 4.1.1: (OTR) Messaging allows you to have private conversations over instant messaging
 net-libs/libpcap 1.8.1: A system-independent library for user-level network packet capture
