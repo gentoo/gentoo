@@ -20,7 +20,7 @@ RDEPEND="
 	fontconfig? ( media-libs/fontconfig:1.0= )
 	g15? ( app-misc/g15daemon )
 	graphicsmagick? ( media-gfx/graphicsmagick:0/1.3 )
-	imagemagick? ( media-gfx/imagemagick:0/6.9.10.28 )
+	imagemagick? ( <media-gfx/imagemagick-7 )
 	lcd_devices_ax206dpf? ( virtual/libusb:0 )
 	lcd_devices_picolcd_256x64? ( virtual/libusb:0 )
 	lcd_devices_vnc? ( net-libs/libvncserver )
