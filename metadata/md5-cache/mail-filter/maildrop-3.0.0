@@ -5,11 +5,11 @@ DESCRIPTION=Mail delivery agent/filter
 EAPI=7
 HOMEPAGE=https://www.courier-mta.org/maildrop/
 IUSE=berkdb debug dovecot fam gdbm ldap mysql postgres static-libs authlib +tools trashquota
-KEYWORDS=~alpha amd64 ~arm hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc x86
+KEYWORDS=~alpha amd64 ~arm hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh sparc x86
 LICENSE=GPL-3
 RDEPEND=!mail-mta/courier net-mail/mailbase dev-libs/libpcre net-dns/libidn:0= >=net-libs/courier-unicode-2.0 gdbm? ( >=sys-libs/gdbm-1.8.0 ) mysql? ( net-libs/courier-authlib ) postgres? ( net-libs/courier-authlib ) ldap? ( net-libs/courier-authlib ) authlib? ( net-libs/courier-authlib ) fam? ( virtual/fam ) !gdbm? ( berkdb? ( >=sys-libs/db-3:= ) ) tools? ( !mail-mta/netqmail !net-mail/courier-imap !mail-mta/mini-qmail !mail-mta/qmail-ldap ) dev-lang/perl dovecot? ( net-mail/dovecot )
 REQUIRED_USE=mysql? ( authlib ) postgres? ( authlib ) ldap? ( authlib )
 SLOT=0
 SRC_URI=mirror://sourceforge/courier/maildrop-3.0.0.tar.bz2
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	a09389deba2c0a7108b581e02c7cecbf	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
-_md5_=1a9e96f70c88a3fa121c9f50fd5879c6
+_md5_=769c1f188b1040613e237fba78fe8f1a
