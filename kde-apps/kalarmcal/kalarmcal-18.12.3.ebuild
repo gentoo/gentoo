@@ -29,4 +29,6 @@ RDEPEND="${COMMON_DEPEND}
 	!<kde-apps/kdepim-runtime-18.03.80
 "
 
-RESTRICT+=" test" # broken within Plasma session, bug #665626
+src_test() {
+	LANG="C" kde5_src_test #bug 665626
+}
