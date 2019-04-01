@@ -36,7 +36,6 @@ src_configure() {
 		-Dfuse="$(usex fuse true false)"
 		-Dman="$(usex man true false)"
 		-Dselinux="$(usex selinux true false)"
-		-Dtests="$(usex test true false)"
 		-Dudev="$(usex udev true false)"
 	)
 	meson_src_configure
