@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install prepare
-DEPEND=>=dev-libs/glib-2.32:2 virtual/libgudev:= dev-util/gtk-doc-am virtual/pkgconfig
+DEPEND=>=dev-libs/glib-2.32:2 virtual/libgudev:= dev-util/glib-utils dev-util/gtk-doc-am virtual/pkgconfig
 DESCRIPTION=MBIM modem protocol helper library
 EAPI=5
 HOMEPAGE=https://cgit.freedesktop.org/libmbim/
@@ -10,4 +10,4 @@ RDEPEND=>=dev-libs/glib-2.32:2 virtual/libgudev:=
 SLOT=0
 SRC_URI=https://www.freedesktop.org/software/libmbim/libmbim-1.10.0.tar.xz
 _eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
-_md5_=b61b8b90bd5a1a7851b1e18cd5ced12f
+_md5_=f1021b8de087ab957e5cb3ad41840bba
