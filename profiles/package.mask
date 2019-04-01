@@ -337,11 +337,6 @@ sys-apps/prefix-chain-utils
 sys-auth/fprint_demo
 
 # Michał Górny <mgorny@gentoo.org> (23 Mar 2019)
-# Unmaintained.  Fails to build.  Probably needs a fresh snapshot.
-# Removal in 30 days.  Bug #669592.
-net-misc/casync
-
-# Michał Górny <mgorny@gentoo.org> (23 Mar 2019)
 # Unmaintained.  Fails to build due to patch that does not apply.
 # Even if that weren't the case, it would need to be updated for modern
 # kernel versions.
