@@ -17,6 +17,8 @@ DEPEND="isohybrid? ( >=sys-boot/syslinux-4 )"
 
 S=${WORKDIR}
 
+RESTRICT="bindist mirror"
+
 src_install() {
 	insinto "/usr/share/${PN%-*}"
 	doins "${DISTDIR}/${P}.iso"

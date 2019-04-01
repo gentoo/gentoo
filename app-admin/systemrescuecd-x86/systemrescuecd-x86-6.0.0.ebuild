@@ -24,6 +24,8 @@ pkg_pretend() {
 	ewarn "systems is no longer supported."
 }
 
+RESTRICT="bindist mirror"
+
 src_install() {
 	insinto "/usr/share/${PN%-*}"
 	doins "${DISTDIR}/${MY_P}.iso"
