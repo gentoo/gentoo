@@ -8966,7 +8966,7 @@ net-misc/memcached 1.4.39 1.5.2 1.5.10 1.5.12: High-performance, distributed mem
 net-misc/mindterm 3.4: A Java SSH Client
 net-misc/minidlna 1.1.5-r1 1.2.1-r1: DLNA/UPnP-AV compliant media server
 net-misc/mobile-broadband-provider-info 20170310: Database of mobile broadband service providers
-net-misc/modemmanager 1.8.2: Modem and mobile broadband management libraries
+net-misc/modemmanager 1.8.2 1.8.2-r1: Modem and mobile broadband management libraries
 net-misc/mosh 1.2.6 1.3.2: Mobile shell that supports roaming and intelligent local echo
 net-misc/mrouted 3.9.5-r1: IP multicast routing daemon
 net-misc/nat-traverse 0.6: Traverse NAT gateways with the Use of UDP
