@@ -2674,6 +2674,7 @@ dev-java/jopt-simple 4.6 5.0: A Java library for parsing command line options
 dev-java/jortho 1.0: A Java spell-checking library
 dev-java/jrexx 1.1.1-r2: API for textual pattern matching based on the finite state automaton theory
 dev-java/jrobin 1.6.0-r1: JRobin is a 100% pure Java alternative to RRDTool
+dev-java/jrrd 1.0.1-r2: Java Interface to Tobias Oetiker's RRDtool
 dev-java/jsap 2.1-r2: Java Simple Arguments Parser (JSAP)
 dev-java/jsch 0.1.52: JSch is a pure Java implementation of SSH2
 dev-java/json 20150729: Java implementation of the JavaScript Object Notation
