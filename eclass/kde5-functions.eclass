@@ -75,17 +75,6 @@ esac
 # Minimum version of active GCC to require. This is checked in kde5.eclass in
 # kde5_pkg_pretend and kde5_pkg_setup.
 
-# @ECLASS-VARIABLE: KDEBASE
-# @DEFAULT_UNSET
-# @DESCRIPTION:
-# This gets set to a non-zero value when a package is considered a
-# kdevelop ebuild.
-if [[ ${KMNAME-${PN}} = kdevelop ]]; then
-	KDEBASE=kdevelop
-fi
-
-debug-print "${ECLASS}: ${KDEBASE} ebuild recognized"
-
 # @FUNCTION: _check_gcc_version
 # @INTERNAL
 # @DESCRIPTION:
