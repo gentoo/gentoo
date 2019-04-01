@@ -1,0 +1,12 @@
+BDEPEND=virtual/pkgconfig
+DEFINED_PHASES=install postinst setup
+DESCRIPTION=Versatile Postfix policy server with a flexible ruleset based configuration
+EAPI=7
+HOMEPAGE=https://www.postfwd.org/
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+RDEPEND=>=dev-lang/perl-5.16.3 dev-perl/Net-CIDR-Lite dev-perl/Net-DNS dev-perl/Net-Server dev-perl/NetAddr-IP virtual/perl-Digest-MD5 virtual/perl-Storable virtual/perl-Sys-Syslog virtual/perl-Time-HiRes
+SLOT=0
+SRC_URI=https://www.postfwd.org/postfwd-2.00.tar.gz
+_eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	b45201c4e6c096b98e250336954e64b9	user	8bd74731cafdcdad8f7a63637302e073
+_md5_=0034452284c972a10f35cadbeb813cf0
