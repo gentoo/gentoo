@@ -2728,7 +2728,7 @@ dev-java/metainf-services 1.6: Generates META-INF/services files automatically
 dev-java/microba 0.4.4.3-r1: Swing components for date operations and palettes
 dev-java/miglayout 4.0: Easy to use yet very powerful Java Swing layout manager
 dev-java/mimepull 1.9.6-r2: Pull API for parsing MIME messages
-dev-java/mina-core 1.1.7-r1: Apache MINA Project
+dev-java/mina-core 1.1.7-r1 2.0.7-r1: Apache MINA Project
 dev-java/minlog 1.2: Minimal overhead Java logging
 dev-java/mockito 1.9.5-r1: A mocking framework for Java
 dev-java/mojarra 2.2.12-r1: Project Mojarra - GlassFish's Implementation for JavaServer Faces API
@@ -8654,7 +8654,7 @@ net-irc/ircii 20110228 20111115: An IRC and ICB client that runs under most UNIX
 net-irc/iroffer-dinoex 3.30-r1: IRC fileserver using DCC
 net-irc/irssi 1.1.2: A modular textUI IRC client with IPv6 support
 net-irc/irssi-otr 1.0.0-r1 1.0.2: Off-The-Record messaging (OTR) for irssi
-net-irc/irssistats 0.75 0.75-r1: Generates HTML IRC stats based on irssi logs
+net-irc/irssistats 0.75-r1: Generates HTML IRC stats based on irssi logs
 net-irc/konversation 1.7.5: A user friendly IRC Client
 net-irc/kvirc 5.0_pre20180819121252 5.0_pre20181013192652 5.0_pre20181205184837: Advanced IRC Client
 net-irc/muh 2.2a-r1: Persistent IRC bouncer
