@@ -9,4 +9,14 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
+	<longdescription>
+		This package contains the visual basic runtime and compiler,
+		which are used by the mono project, to make
+		Visual Basic .NET projects run under linux.
+		Current compatibility level is Visual Basic 8 / .NET 2.0.
+	</longdescription>
+	<upstream>
+		<bugs-to>https://github.com/mono/mono-basic/issues</bugs-to>
+		<remote-id type="github">mono/mono-basic</remote-id>
+	</upstream>
 </pkgmetadata>
