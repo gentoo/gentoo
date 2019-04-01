@@ -10,4 +10,4 @@ RDEPEND=dev-libs/libevent:0= sys-libs/ncurses:0= utempter? ( kernel_linux? ( sys
 SLOT=0
 SRC_URI=https://raw.githubusercontent.com/przepompownia/tmux-bash-completion/678a27616b70c649c6701cae9cd8c92b58cc051b/completions/tmux -> tmux-bash-completion-678a27616b70c649c6701cae9cd8c92b58cc051b
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	a09389deba2c0a7108b581e02c7cecbf	git-r3	0d4635eeb5a96cd5315597a47eba25c9	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
-_md5_=91ac35ec87dfa2fd8c93f196cec484bc
+_md5_=f3288dd127d1949fcf4026e42520470c
