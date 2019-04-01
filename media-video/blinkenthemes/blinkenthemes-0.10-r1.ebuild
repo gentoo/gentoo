@@ -9,7 +9,7 @@ SRC_URI="http://blinkenlights.de/dist/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 DEPEND="media-libs/blib"
 BDEPEND="virtual/pkgconfig"

@@ -9,7 +9,7 @@ SRC_URI="https://www.kokkonen.net/tjko/src/${P}.tar.gz"
 
 LICENSE="GPL-2+" # While COPYING is plain GPL-2, COPYRIGHT is clarifying it to be 'any later version'
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="amd64 ~ppc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 
 DEPEND="virtual/jpeg:0"
 RDEPEND="${DEPEND}"
