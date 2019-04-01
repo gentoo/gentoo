@@ -34,7 +34,7 @@ COMMON_DEPEND="
 	$(add_qt_dep qtdbus)
 	$(add_qt_dep qtgui)
 	$(add_qt_dep qtwidgets)
-	>=dev-libs/xapian-1.3:=[chert]
+	>=dev-libs/xapian-1.3:=[chert(+)]
 "
 DEPEND="${COMMON_DEPEND}
 	dev-libs/boost
