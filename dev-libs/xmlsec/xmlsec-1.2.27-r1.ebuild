@@ -56,11 +56,11 @@ src_configure() {
 		--enable-pkgconfig \
 		--with-html-dir=/usr/share/doc/${PF}/html \
 		$(use_enable static-libs static) \
-		$(use_with gcrypt gcrypt "") \
-		$(use_with gnutls gnutls "") \
-		$(use_with nss nspr "") \
-		$(use_with nss nss "") \
-		$(use_with openssl openssl "") \
+		$(use_with gcrypt) \
+		$(use_with gnutls) \
+		$(use_with nss) \
+		$(use_with nss nspr) \
+		$(use_with openssl) \
 		$(use_enable openssl aes)
 }
 
