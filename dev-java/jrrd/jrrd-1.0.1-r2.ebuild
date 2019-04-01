@@ -11,7 +11,7 @@ DESCRIPTION="Java Interface to Tobias Oetiker's RRDtool"
 
 SRC_URI="mirror://sourceforge/opennms/${P}.tar.gz"
 HOMEPAGE="http://www.opennms.org/"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 LICENSE="GPL-2"
 
 SLOT="0"
