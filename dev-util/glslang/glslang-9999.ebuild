@@ -11,5 +11,5 @@ SRC_URI=""
 DESCRIPTION="Khronos reference front-end for GLSL and ESSL, and sample SPIR-V generator"
 HOMEPAGE="https://www.khronos.org/opengles/sdk/tools/Reference-Compiler/"
 
-LICENSE="BSD"
+LICENSE="BSD Apache-2.0"
 SLOT="0"
