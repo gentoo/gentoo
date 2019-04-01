@@ -9229,7 +9229,7 @@ perl-core/Time-Local 1.230.0-r1: Implements timelocal() and timegm()
 perl-core/Unicode-Collate 1.250.0: Unicode Collate Algorithm
 sci-astronomy/celestia 1.6.1-r1: OpenGL 3D space simulator
 sci-astronomy/erfa 1.2.0 1.4.0: Essential Routines for Fundamental Astronomy
-sci-astronomy/kstars 3.0.0: Desktop Planetarium
+sci-astronomy/kstars 3.1.1: Desktop Planetarium
 sci-astronomy/predict 2.2.3-r2: Satellite tracking and orbital prediction
 sci-astronomy/pyephem 3.7.5.3 3.7.6.0: Astronomical routines for the python programming language
 sci-astronomy/stellarium 0.18.2: 3D photo-realistic skies in real time
