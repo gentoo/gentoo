@@ -3,10 +3,10 @@ DEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
 DESCRIPTION=vim plugin: SELinux type enforcement policy syntax
 EAPI=7
 HOMEPAGE=http://www.cip.ifi.lmu.de/~bleher/selinux/
-KEYWORDS=~alpha ~amd64 ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86
+KEYWORDS=alpha amd64 ia64 ~mips ppc ppc64 sparc x86
 LICENSE=vim
 RDEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
 SLOT=0
 SRC_URI=mirror://gentoo/selinux-syntax-20041225.tar.bz2 https://dev.gentoo.org/~radhermit/vim/selinux-syntax-20041225.tar.bz2
 _eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	vim-doc	af2c81a1feeb0a99e91bee3e20769edb	vim-plugin	3160d9cb05ef44497be1485db0fe7590
-_md5_=caada6f2bde6b90e7ca7418c0befe003
+_md5_=b058516f5e0406fbe7dca71e6de17a5a
