@@ -2939,7 +2939,7 @@ dev-lang/yasm 1.2.0-r1 1.3.0: An assembler for x86 and x86_64 instruction sets
 dev-libs/9libs 1.0-r3: A package of Plan 9 compatibility libraries
 dev-libs/Ice 3.6.3-r1 3.6.4: ICE middleware C++ library and generator tools
 dev-libs/ace 5.7.2: The Adaptive Communications Environment
-dev-libs/appstream 0.12.3 0.12.6: Cross-distro effort for providing metadata for software in the Linux ecosystem
+dev-libs/appstream 0.12.6: Cross-distro effort for providing metadata for software in the Linux ecosystem
 dev-libs/appstream-glib 0.7.9: Provides GObjects and helper methods to read and write AppStream metadata
 dev-libs/apr 1.5.2 1.6.3-r3: Apache Portable Runtime Library
 dev-libs/apr-util 1.5.4 1.6.1-r3: Apache Portable Runtime Utility Library
@@ -6653,7 +6653,7 @@ kde-apps/akonadi-contacts 18.12.3: Library for akonadi contact integration
 kde-apps/akonadi-import-wizard 18.12.3: Assistant to import PIM data from other applications into Akonadi
 kde-apps/akonadi-mime 18.12.3: Library for akonadi mime types
 kde-apps/akonadi-notes 18.12.3: Library for akonadi notes integration
-kde-apps/akonadi-search 18.12.3: Libraries and daemons to implement searching in Akonadi
+kde-apps/akonadi-search 18.12.3-r1: Libraries and daemons to implement searching in Akonadi
 kde-apps/akonadiconsole 18.12.3: Application for debugging Akonadi Resources
 kde-apps/akregator 18.12.3: News feed aggregator
 kde-apps/analitza 18.12.3: KDE library for mathematical features
@@ -8111,7 +8111,7 @@ media-sound/jack-keyboard 2.5: A virtual MIDI keyboard for JACK MIDI
 media-sound/jack-rack 1.4.7-r1 1.4.8_rc1: JACK Rack is an effects rack for the JACK low latency audio API
 media-sound/jamin 0.95.0-r3: JAMin is the JACK Audio Connection Kit (JACK) Audio Mastering interface
 media-sound/jtagger 1.0-r1: Powerful MP3 tag and filename editor
-media-sound/kaudiocreator 1.3_p20170806: CD ripper and audio encoder frontend based on KDE Frameworks
+media-sound/kaudiocreator 1.3_p20190225: CD ripper and audio encoder frontend based on KDE Frameworks
 media-sound/kid3 3.7.0: Simple tag editor based on Qt
 media-sound/kmetronome 1.0.0: MIDI based metronome using ALSA sequencer
 media-sound/lame 3.100-r1: LAME Ain't an MP3 Encoder
