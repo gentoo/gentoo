@@ -1,23 +1,19 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=( python3_{4,5,6} )
+PYTHON_COMPAT=( python3_{5,6,7} )
 PYTHON_REQ_USE='sqlite?,threads(+)'
-WEBAPP_NO_AUTO_INSTALL="yes"
 
-inherit bash-completion-r1 distutils-r1 eutils eapi7-ver webapp
+inherit bash-completion-r1 distutils-r1 eutils
 
 MY_PN="Django"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="High-level Python web framework"
 HOMEPAGE="https://www.djangoproject.com/ https://pypi.org/project/Django/"
-SRC_URI="
-	https://www.djangoproject.com/m/releases/$(ver_cut 1-2)/${MY_P}.tar.gz
-	mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz
-	"
+SRC_URI="https://www.djangoproject.com/m/releases/$(ver_cut 1-2)/${MY_P}.tar.gz"
 
 LICENSE="BSD"
 # admin fonts: Roboto (media-fonts/roboto)
@@ -25,34 +21,30 @@ LICENSE+=" Apache-2.0"
 # admin icons, jquery, xregexp.js
 LICENSE+=" MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ~ia64 ~ppc ~ppc64 ~sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="~amd64"
 IUSE="doc sqlite test"
 
-RDEPEND=""
-DEPEND="${RDEPEND}
+RDEPEND="
 	dev-python/pytz[${PYTHON_USEDEP}]
+	dev-python/sqlparse[${PYTHON_USEDEP}]"
+BDEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	doc? ( >=dev-python/sphinx-1.0.7[${PYTHON_USEDEP}] )
+	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
 	test? (
 		$(python_gen_impl_dep sqlite)
 		dev-python/docutils[${PYTHON_USEDEP}]
+		dev-python/jinja[${PYTHON_USEDEP}]
 		dev-python/numpy[${PYTHON_USEDEP}]
-		dev-python/pillow[${PYTHON_USEDEP}]
+		dev-python/pillow[webp,${PYTHON_USEDEP}]
 		dev-python/pyyaml[${PYTHON_USEDEP}]
-		dev-python/mock[${PYTHON_USEDEP}]
+		dev-python/tblib[${PYTHON_USEDEP}]
 	)"
 
 S="${WORKDIR}/${MY_P}"
 
-WEBAPP_MANUAL_SLOT="yes"
-
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.0.7-bashcomp.patch
 )
-
-pkg_setup() {
-	webapp_pkg_setup
-}
 
 python_prepare_all() {
 	# Prevent d'loading in the doc build
@@ -68,7 +60,7 @@ python_compile_all() {
 python_test() {
 	# Tests have non-standard assumptions about PYTHONPATH,
 	# and don't work with ${BUILD_DIR}/lib.
-	PYTHONPATH=. "${PYTHON}" tests/runtests.py --settings=test_sqlite -v2 --parallel 1 \
+	PYTHONPATH=. "${PYTHON}" tests/runtests.py --settings=test_sqlite -v2 \
 		|| die "Tests fail with ${EPYTHON}"
 }
 
@@ -81,14 +73,7 @@ python_install_all() {
 		local HTML_DOCS=( docs/_build/html/. )
 	fi
 
-	insinto "${MY_HTDOCSDIR#${EPREFIX}}"
-	doins -r django/contrib/admin/static/admin/.
 	distutils-r1_python_install_all
-}
-
-src_install() {
-	distutils-r1_src_install
-	webapp_src_install
 }
 
 pkg_postinst() {
@@ -102,9 +87,4 @@ pkg_postinst() {
 	optfeature "ImageField Support" dev-python/pillow
 	optfeature "Password encryption" dev-python/bcrypt
 	optfeature "High-level abstractions for Django forms" dev-python/django-formtools
-	echo ""
-	elog "A copy of the admin media is available to webapp-config for installation in a"
-	elog "webroot, as well as the traditional location in python's site-packages dir"
-	elog "for easy development."
-	webapp_pkg_postinst
 }
