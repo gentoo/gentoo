@@ -8693,7 +8693,7 @@ net-libs/ftplib 3.1.1: A set of routines that implement the FTP protocol
 net-libs/glib-networking 2.50.0 2.58.0: Network-related giomodules for glib
 net-libs/gnet 2.0.8-r2: A simple network library
 net-libs/gnome-online-accounts 3.24.5: GNOME framework for accessing online accounts
-net-libs/gnutls 3.5.19 3.6.6: A TLS 1.2 and SSL 3.0 implementation for the GNU project
+net-libs/gnutls 3.5.19 3.6.6 3.6.7: A TLS 1.2 and SSL 3.0 implementation for the GNU project
 net-libs/gsnmp 0.3.0: An SNMP library based on glib and gnet
 net-libs/gsoap 2.8.70: A cross-platform open source C and C++ SDK for SOAP/XML Web services
 net-libs/gssdp 1.0.2: A GObject-based API for handling resource discovery and announcement over SSDP
