@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -29,7 +29,7 @@ SRC_URI="https://git.archlinux.org/svntogit/community.git/snapshot/community-0ff
 # The entire source code is Apache-2.0, except for fastboot which is BSD-2.
 LICENSE="Apache-2.0 BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86 ~x86-linux"
+KEYWORDS="~amd64 ~arm x86 ~x86-linux"
 IUSE="python"
 
 DEPEND="sys-libs/zlib:=
