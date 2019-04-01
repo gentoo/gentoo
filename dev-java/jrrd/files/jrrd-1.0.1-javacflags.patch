@@ -1,7 +1,5 @@
-Index: Makefile.am
-===================================================================
---- Makefile.am	(revision 7413)
-+++ Makefile.am	(working copy)
+--- a/Makefile.am	(revision 7413)
++++ b/Makefile.am	(working copy)
 @@ -15,7 +15,7 @@
  
  .java.class:
