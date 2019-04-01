@@ -48,7 +48,7 @@ S=${WORKDIR}/${P/_p*}
 src_prepare() {
 	default
 
-	eapply $(awk '{ print "'${WORKDIR}'/debian/patches/" $0; }' < ${WORKDIR}/debian/patches/series)
+	eapply $(awk '{ print "'"${WORKDIR}"'/debian/patches/" $0; }' < "${WORKDIR}"/debian/patches/series)
 
 	eautoreconf
 }
