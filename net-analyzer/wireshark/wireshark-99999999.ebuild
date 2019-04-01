@@ -3,7 +3,7 @@
 
 EAPI=6
 PYTHON_COMPAT=( python3_{4,5,6,7} )
-inherit cmake-utils eutils fcaps flag-o-matic git-r3 gnome2-utils ltprune multilib python-r1 qmake-utils user xdg-utils
+inherit cmake-utils fcaps flag-o-matic git-r3 ltprune multilib python-r1 qmake-utils user xdg-utils
 
 DESCRIPTION="A network protocol analyzer formerly known as ethereal"
 HOMEPAGE="https://www.wireshark.org/"
@@ -220,8 +220,8 @@ src_install() {
 }
 
 pkg_postinst() {
-	gnome2_icon_cache_update
 	xdg_desktop_database_update
+	xdg_icon_cache_update
 	xdg_mimeinfo_database_update
 
 	# Add group for users allowed to sniff.
@@ -240,7 +240,7 @@ pkg_postinst() {
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
 	xdg_desktop_database_update
+	xdg_icon_cache_update
 	xdg_mimeinfo_database_update
 }
