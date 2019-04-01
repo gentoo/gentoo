@@ -1226,7 +1226,7 @@ app-portage/flaggie 0.2.1-r1: A smart CLI mangler for package.* files
 app-portage/g-cpan 0.16.5 0.16.9-r1: Autogenerate and install ebuilds for CPAN modules
 app-portage/gemato 14.0: Stand-alone Manifest generation & verification tool
 app-portage/genlop 0.30.9-r1: A nice emerge.log parser
-app-portage/gentoolkit 0.3.3 0.4.0 0.4.2-r1: Collection of administration scripts for Gentoo
+app-portage/gentoolkit 0.4.2-r1: Collection of administration scripts for Gentoo
 app-portage/gentoopm 0.3.0: A common interface to Gentoo package managers
 app-portage/gpyutils 0.2.2: Utitilies for maintaining Python packages
 app-portage/grs 0.6-r1 0.7: Suite to build Gentoo Reference Systems
