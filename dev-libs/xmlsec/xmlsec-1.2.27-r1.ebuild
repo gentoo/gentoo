@@ -38,6 +38,10 @@ BDEPEND="virtual/pkgconfig
 
 S="${WORKDIR}/${PN}1-${PV}"
 
+PATCHES=(
+	"${FILESDIR}/${P}-gnutls.patch"
+)
+
 src_prepare() {
 	default
 	# conditionally install extra documentation
