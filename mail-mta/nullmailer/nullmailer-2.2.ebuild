@@ -11,7 +11,7 @@ SRC_URI="http://untroubled.org/${PN}/archive/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~x86"
+KEYWORDS="~amd64 ~arm ~ppc ~x86 ~x64-cygwin"
 IUSE="ssl test"
 
 DEPEND="
