@@ -9,7 +9,7 @@ inherit autotools elisp-common flag-o-matic multilib readme.gentoo-r1
 DESCRIPTION="The extensible, customizable, self-documenting real-time display editor"
 HOMEPAGE="https://www.gnu.org/software/emacs/"
 SRC_URI="mirror://gnu/emacs/${P}.tar.bz2
-	https://dev.gentoo.org/~ulm/emacs/${P}-patches-22.tar.xz"
+	https://dev.gentoo.org/~ulm/emacs/${P}-patches-23.tar.xz"
 
 LICENSE="GPL-3+ FDL-1.3+ BSD HPND MIT W3C unicode PSF-2"
 SLOT="23"
