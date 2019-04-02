@@ -43,7 +43,8 @@ src_prepare() {
 	# Install Python modules into site-packages directories.
 	find -name Makefile.am | xargs sed -i \
 		-e "/^pybdir[[:space:]]*=[[:space:]]*/s:\$(datadir):$(python_get_sitedir):" || die "sed failed"
-	sed -i -e "s:\@datapyb@:$(python_get_sitedir)/${PN}:" pybliographer.in || die
+	sed -i -e 's:prefix=:cd @datapyb@ \&\& prefix=:' scripts/pybscript.in || die
+	sed -i -e "s:\@datapyb@:$(python_get_sitedir)/${PN}:g" pybliographer.in scripts/pybscript.in || die
 	sed -i \
 		-e "s:gladedir = \$(datadir):gladedir = $(python_get_sitedir):" \
 		Pyblio/GnomeUI/glade/Makefile.am || die "sed failed"
@@ -59,4 +60,6 @@ src_configure() {
 src_install() {
 	gnome2_src_install
 	python_fix_shebang "${D}"
+	dodir /usr/share/${PN}
+	mv "${ED}/$(python_get_sitedir)/${PN}/pixmaps" "${ED}"/usr/share/${PN} || die
 }

@@ -11,7 +11,7 @@ MY_P="${MY_PN}-${PV}"
 SRC_URI="https://github.com/fedoradesign/backgrounds/releases/download/v${PV}/${MY_P}.tar.xz"
 
 LICENSE="CC-BY-SA-4.0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 SLOT="$(ver_cut 1)"
 
