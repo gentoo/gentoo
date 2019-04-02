@@ -8609,7 +8609,7 @@ net-ftp/lftp 4.7.5 4.8.4: A sophisticated ftp/sftp/http/https/torrent client and
 net-ftp/linksys-tftp 1.2.1-r3: TFTP client suitable for uploading to the Linksys WRT54G Wireless Router
 net-ftp/ncftp 3.2.6: An extremely configurable ftp client
 net-ftp/oftpd 0.3.7-r10: Secure, small, anonymous only ftpd
-net-ftp/proftpd 1.3.5e: An advanced and very configurable FTP server
+net-ftp/proftpd 1.3.5e 1.3.6-r3: An advanced and very configurable FTP server
 net-ftp/pure-ftpd 1.0.47-r4: Fast, production-quality, standard-conformant FTP server
 net-ftp/pureadmin 0.4-r1: GUI tool used to make the management of Pure-FTPd a little easier
 net-ftp/tftp-hpa 5.2-r1: port of the OpenBSD TFTP server
@@ -8670,7 +8670,7 @@ net-irc/sic 1.2-r1: An extremly simple IRC client
 net-irc/telepathy-idle 0.2.0: Full-featured IRC connection manager for Telepathy
 net-irc/unrealircd 4.0.18-r1: An advanced Internet Relay Chat daemon
 net-irc/weechat 2.3: Portable and multi-interface IRC client
-net-irc/znc 1.7.1: An advanced IRC Bouncer
+net-irc/znc 1.7.1 1.7.3: An advanced IRC Bouncer
 net-libs/accounts-qt 1.15: Qt5 bindings for libaccounts-glib
 net-libs/aqbanking 5.7.8: Generic Online Banking Interface
 net-libs/axtls 1.5.3 2.1.3: Embedded client/server TLSv1 SSL library and small HTTP(S) server
