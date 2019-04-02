@@ -29,7 +29,7 @@ app-accessibility/yasr 0.6.9-r1: General-purpose console screen reader
 app-admin/abrt 2.10.10-r2: Automatic bug detection and reporting tool
 app-admin/analog 6.0-r4: A webserver log analyzer
 app-admin/ansible 2.5.14 2.6.14 2.7.8: Model-driven deployment, config management, and command execution framework
-app-admin/apache-tools 2.2.34 2.4.34 2.4.38: Useful Apache tools - htdigest, htpasswd, ab, htdbm
+app-admin/apache-tools 2.2.34 2.4.34 2.4.38 2.4.39: Useful Apache tools - htdigest, htpasswd, ab, htdbm
 app-admin/apachetop 0.12.6-r2: A realtime Apache log analyzer
 app-admin/apg 2.3.0b-r7: Another Password Generator
 app-admin/augeas 1.10.1 1.11.0 1.11.0-r1: A library for changing configuration files
@@ -10638,7 +10638,7 @@ www-misc/urlwatch 2.13: A tool for monitoring webpages for updates
 www-misc/vdradmin-am 3.6.9: WWW Admin for the Video Disk Recorder
 www-misc/visitors 0.7-r2: Fast web log analyzer
 www-plugins/freshplayerplugin 0.3.5-r2 0.3.9: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
-www-servers/apache 2.2.34 2.4.34-r2 2.4.38-r1: The Apache Web Server
+www-servers/apache 2.2.34 2.4.34-r2 2.4.38-r1 2.4.39: The Apache Web Server
 www-servers/caddy 0.10.11: Fast, cross-platform HTTP/2 web server with automatic HTTPS
 www-servers/gunicorn 19.8.1: A WSGI HTTP Server for UNIX
 www-servers/lighttpd 1.4.51: Lightweight high-performance web server
