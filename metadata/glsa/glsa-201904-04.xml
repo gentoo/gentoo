@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201904-04">
+  <title>Poppler: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Poppler, the worst of
+    which could allow a Denial of Service.
+  </synopsis>
+  <product type="ebuild">poppler</product>
+  <announced>2019-04-02</announced>
+  <revised count="1">2019-04-02</revised>
+  <bug>659828</bug>
+  <bug>670880</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-text/poppler" auto="yes" arch="*">
+      <unaffected range="ge">0.70.0</unaffected>
+      <vulnerable range="lt">0.70.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Poppler is a PDF rendering library based on the xpdf-3.0 code base.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Poppler. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Please review the referenced CVE identifiers for details.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Poppler users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-text/poppler-0.70.0"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-19149">CVE-2018-19149</uri>
+  </references>
+  <metadata tag="requester" timestamp="2019-03-27T05:17:10Z">BlueKnight</metadata>
+  <metadata tag="submitter" timestamp="2019-04-02T04:21:51Z">b-man</metadata>
+</glsa>
