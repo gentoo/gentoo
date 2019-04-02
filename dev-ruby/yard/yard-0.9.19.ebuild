@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-USE_RUBY="ruby23 ruby24 ruby25"
+USE_RUBY="ruby23 ruby24 ruby25 ruby26"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 RUBY_FAKEGEM_TASK_DOC="yard"
@@ -33,6 +33,8 @@ ruby_add_bdepend "test? ( >=dev-ruby/ruby-gettext-2.3.8 dev-ruby/rack )"
 all_ruby_prepare() {
 	sed -i -e '/[Bb]undler/ s:^:#:' spec/spec_helper.rb || die
 
+	sed -i -e '/samus/I s:^:#:' Rakefile || die
+
 	# Avoid specs that make assumptions on load ordering that are not
 	# true for us. This may be related to how we install in Gentoo. This
 	# also drops a test requirement on dev-ruby/rack.
@@ -43,4 +45,7 @@ all_ruby_prepare() {
 
 	# Avoid redcarpet-specific spec that is not optional
 	sed -i -e '/autolinks URLs/askip "make redcarpet optional"' spec/templates/helpers/html_helper_spec.rb || die
+
+	# Avoid asciidoc-specific spec that is not optional
+	sed -i -e '/\(AsciiDoc specific\|AsciiDoc header\)/askip "skipping asciidoc test"' spec/templates/helpers/html_helper_spec.rb || die
 }
