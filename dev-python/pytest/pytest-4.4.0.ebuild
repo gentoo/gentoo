@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{4,5,6,7} pypy{,3} )
+PYTHON_COMPAT=( python2_7 python3_{5,6,7} pypy{,3} )
 
 inherit distutils-r1
 
@@ -24,11 +24,9 @@ PY_VER="1.5.0"
 RDEPEND="
 	>=dev-python/atomicwrites-1.0[${PYTHON_USEDEP}]
 	>=dev-python/attrs-17.4.0[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep '>=dev-python/more-itertools-4.0.0[${PYTHON_USEDEP}]' python2_7 )
-	$(python_gen_cond_dep '<dev-python/more-itertools-6.0.0[${PYTHON_USEDEP}]' python2_7 )
-	$(python_gen_cond_dep '>=dev-python/more-itertools-4.0.0[${PYTHON_USEDEP}]' python3_{4,5,6,7} pypy{,3} )
-	$(python_gen_cond_dep 'dev-python/pathlib2[${PYTHON_USEDEP}]' python2_7 python3_{4,5} )
-	>=dev-python/pluggy-0.7[${PYTHON_USEDEP}]
+	>=dev-python/more-itertools-4.0.0[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep 'dev-python/pathlib2[${PYTHON_USEDEP}]' python2_7 python3_5 )
+	>=dev-python/pluggy-0.9[${PYTHON_USEDEP}]
 	>=dev-python/py-${PY_VER}[${PYTHON_USEDEP}]
 	>=dev-python/setuptools-40[${PYTHON_USEDEP}]
 	>=dev-python/six-1.10.0[${PYTHON_USEDEP}]
@@ -43,7 +41,6 @@ DEPEND="${RDEPEND}
 		$(python_gen_cond_dep 'dev-python/mock[${PYTHON_USEDEP}]' -2)
 		dev-python/requests[${PYTHON_USEDEP}]
 		!!dev-python/flaky
-		!!dev-python/pytest-capturelog
 		!!<dev-python/pytest-xdist-1.22
 	)"
 

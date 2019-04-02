@@ -71,13 +71,6 @@ dev-libs/grok
 # Removal in 30 days.  Bug #532502.
 net-ftp/weex
 
-# Michał Górny <mgorny@gentoo.org> (31 Mar 2019)
-# Unmaintained.  The current version is apparently broken, and it is
-# unclear if the problem was ever fixed upstream.  Last release in 2011,
-# with low commit activity since.
-# Removal in 30 days.  Bug #389391.
-www-apache/mod_authnz_external
-
 # Anthony G. Basile <blueness@gentoo.org>
 # Mask because it breaks the toolchain if
 # lto is enabled. Bug #682018

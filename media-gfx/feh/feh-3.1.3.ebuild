@@ -27,6 +27,7 @@ DEPEND="${COMMON_DEPEND}
 	test? (
 		>=dev-lang/perl-5.10
 		dev-perl/Test-Command
+		media-libs/imlib2[gif,jpeg,png]
 	)"
 
 PATCHES=( "${FILESDIR}"/${PN}-2.6.2-debug-cflags.patch )
