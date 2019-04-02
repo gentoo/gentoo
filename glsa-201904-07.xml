@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201904-07">
+  <title>Mozilla Thunderbird and Firefox: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Mozilla Thunderbird and
+    Firefox, the worst of which could lead to the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">thunderbird,firefox,mozilla</product>
+  <announced>2019-04-02</announced>
+  <revised count="1">2019-04-02</revised>
+  <bug>676954</bug>
+  <bug>678072</bug>
+  <bug>681834</bug>
+  <bug>681836</bug>
+  <access>remote</access>
+  <affected>
+    <package name="mail-client/thunderbird" auto="yes" arch="*">
+      <unaffected range="ge">60.6.1</unaffected>
+      <vulnerable range="lt">60.6.1</vulnerable>
+    </package>
+    <package name="mail-client/thunderbird-bin" auto="yes" arch="*">
+      <unaffected range="ge">60.6.1</unaffected>
+      <vulnerable range="lt">60.6.1</vulnerable>
+    </package>
+    <package name="www-client/firefox" auto="yes" arch="*">
+      <unaffected range="ge">60.6.1</unaffected>
+      <vulnerable range="lt">60.6.1</vulnerable>
+    </package>
+    <package name="www-client/firefox-bin" auto="yes" arch="*">
+      <unaffected range="ge">60.6.1</unaffected>
+      <vulnerable range="lt">60.6.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Mozilla Thunderbird is a popular open-source email client from the
+      Mozilla project.
+      Mozilla Firefox is a popular open-source web browser from the Mozilla
+      Project.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Mozilla Thunderbird and
+      Firefox. Please review the referenced Mozilla Foundation Security
+      Advisories and CVE identifiers below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Please review the referenced Mozilla Foundation Security Advisories and
+      CVE identifiers below for details.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Thunderbird users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=mail-client/thunderbird-60.6.1"
+    </code>
+    
+    <p>All Thunderbird bin users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=mail-client/thunderbird-bin-60.6.1"
+    </code>
+    
+    <p>All Firefox users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=www-client/firefox-60.6.1"
+    </code>
+    
+    <p>All Firefox bin users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=www-client/firefox-bin-60.6.1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2016-5824">CVE-2016-5824</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-18335">CVE-2018-18335</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-18356">CVE-2018-18356</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-18500">CVE-2018-18500</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-18501">CVE-2018-18501</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-18505">CVE-2018-18505</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-18506">CVE-2018-18506</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-18509">CVE-2018-18509</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-18512">CVE-2018-18512</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-18513">CVE-2018-18513</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5785">CVE-2019-5785</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-9788">CVE-2019-9788</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-9790">CVE-2019-9790</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-9791">CVE-2019-9791</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-9792">CVE-2019-9792</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-9793">CVE-2019-9793</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-9795">CVE-2019-9795</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-9796">CVE-2019-9796</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-9810">CVE-2019-9810</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-9813">CVE-2019-9813</uri>
+  </references>
+  <metadata tag="requester" timestamp="2019-03-27T02:10:22Z">BlueKnight</metadata>
+  <metadata tag="submitter" timestamp="2019-04-02T04:32:51Z">b-man</metadata>
+</glsa>
