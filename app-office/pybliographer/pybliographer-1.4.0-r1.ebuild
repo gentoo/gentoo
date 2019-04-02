@@ -43,7 +43,7 @@ src_prepare() {
 	# Install Python modules into site-packages directories.
 	find -name Makefile.am | xargs sed -i \
 		-e "/^pybdir[[:space:]]*=[[:space:]]*/s:\$(datadir):$(python_get_sitedir):" || die "sed failed"
-	sed -i -e 's:prefix=:cd @datapyb@ \&\& prefix=:' scripts/pybscript.in
+	sed -i -e 's:prefix=:cd @datapyb@ \&\& prefix=:' scripts/pybscript.in || die
 	sed -i -e "s:\@datapyb@:$(python_get_sitedir)/${PN}:g" pybliographer.in scripts/pybscript.in || die
 	sed -i \
 		-e "s:gladedir = \$(datadir):gladedir = $(python_get_sitedir):" \
