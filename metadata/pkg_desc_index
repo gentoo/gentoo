@@ -11233,6 +11233,7 @@ x11-themes/commonbox-styles-extra 0.2-r2: Extra styles pack for flux|black|open(
 x11-themes/constantine-backgrounds 12.1.1.4-r1: Fedora 12 official background artwork
 x11-themes/experience 3.04-r1: GTK+2 themes which copy and improve the look of XP Luna
 x11-themes/faenza-icon-theme 1.3.1: A scalable icon theme called Faenza
+x11-themes/fedora-backgrounds 27.0.1 28.1.5 29.1.3 30.0.0: A set of default and supplemental wallpapers for Fedora
 x11-themes/flatsvg 1.0: Flat SVG icon set
 x11-themes/fluxbox-styles-fluxmod 20050128-r1: A collection of FluxBox themes from FluxMod
 x11-themes/fvwm-crystal 3.2.3-r1: Configurable FVWM theme with transparency and freedesktop compatible menu
