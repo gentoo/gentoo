@@ -6,7 +6,7 @@ After=syslog.target
 ExecStart=/usr/sbin/gpm -m /dev/input/mice -t exps2
 StandardOutput=syslog
 Type=forking
-PIDFile=/var/run/gpm.pid
+PIDFile=/run/gpm.pid
 
 [Install]
 WantedBy=multi-user.target
