@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201904-06">
+  <title>GlusterFS: Multiple Vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in GlusterFS, the worst of
+    which could result in the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">glusterfs</product>
+  <announced>2019-04-02</announced>
+  <revised count="2">2019-04-02</revised>
+  <bug>653070</bug>
+  <bug>658606</bug>
+  <bug>664336</bug>
+  <bug>670088</bug>
+  <access>remote</access>
+  <affected>
+    <package name="sys-cluster/glusterfs" auto="yes" arch="*">
+      <unaffected range="ge">4.1.8</unaffected>
+      <vulnerable range="lt">4.1.8</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>A free and open source software scalable network filesystem.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in GlusterFS. Please
+      review the referenced CVE identifiers for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Please review the referenced CVE identifiers for details.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All GlusterFS users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-cluster/glusterfs-4.1.8"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-10841">CVE-2018-10841</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-1088">CVE-2018-1088</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-10904">CVE-2018-10904</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-10907">CVE-2018-10907</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-10911">CVE-2018-10911</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-10913">CVE-2018-10913</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-10914">CVE-2018-10914</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-10923">CVE-2018-10923</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-10924">CVE-2018-10924</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-10926">CVE-2018-10926</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-10927">CVE-2018-10927</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-10928">CVE-2018-10928</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-10929">CVE-2018-10929</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-10930">CVE-2018-10930</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-14651">CVE-2018-14651</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-14652">CVE-2018-14652</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-14653">CVE-2018-14653</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-14654">CVE-2018-14654</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-14659">CVE-2018-14659</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-14660">CVE-2018-14660</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-14661">CVE-2018-14661</uri>
+  </references>
+  <metadata tag="requester" timestamp="2019-03-24T12:37:38Z">BlueKnight</metadata>
+  <metadata tag="submitter" timestamp="2019-04-02T04:26:59Z">b-man</metadata>
+</glsa>
