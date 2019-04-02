@@ -95,6 +95,7 @@ RDEPEND="${COMMON_DEPEND}
 	udisks? ( || ( sys-fs/udisks:2 sys-fs/udisks:0 ) )"
 DEPEND="${COMMON_DEPEND}
 	>=dev-python/setuptools-23.1.0[${PYTHON_USEDEP}]
+	dev-python/sip[${PYTHON_USEDEP}]
 	>=virtual/podofo-build-0.9.6_pre20171027
 	virtual/pkgconfig"
 

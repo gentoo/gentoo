@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -93,6 +93,7 @@ RDEPEND="${COMMON_DEPEND}
 	udisks? ( || ( sys-fs/udisks:2 sys-fs/udisks:0 ) )"
 DEPEND="${COMMON_DEPEND}
 	>=dev-python/setuptools-23.1.0[${PYTHON_USEDEP}]
+	dev-python/sip[${PYTHON_USEDEP}]
 	>=virtual/podofo-build-0.9.4
 	virtual/pkgconfig"
 
