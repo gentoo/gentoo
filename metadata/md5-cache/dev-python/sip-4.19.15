@@ -9,6 +9,6 @@ LICENSE=|| ( GPL-2 GPL-3 SIP )
 RDEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_targets_python3_5? ( dev-lang/python:3.5 ) python_targets_python3_6? ( dev-lang/python:3.6 ) python_targets_python3_7? ( dev-lang/python:3.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_5(-)?,python_targets_python3_6(-)?,python_targets_python3_7(-)?,-python_single_target_python2_7(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),-python_single_target_python3_7(-)]
 REQUIRED_USE=|| ( python_targets_python2_7 python_targets_python3_5 python_targets_python3_6 python_targets_python3_7 )
 SLOT=0/12
-SRC_URI=https://www.riverbankcomputing.com/static/Downloads/sip/sip-4.19.15.tar.gz
+SRC_URI=https://www.riverbankcomputing.com/static/Downloads/sip/4.19.15/sip-4.19.15.tar.gz
 _eclasses_=multibuild	40fe59465edacd730c644ec2bc197809	multilib	b2f01ad412baf81650c23fcf0975fa33	python-r1	ce1cd23cfdc1848e8e32743efe34f299	python-utils-r1	08e17157a6807add7db1f8d01e7e391f	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
-_md5_=033a88f76caf56c93c0afac5ffe86966
+_md5_=d05855d07dd6d3e3f9f841a6f26182e9
