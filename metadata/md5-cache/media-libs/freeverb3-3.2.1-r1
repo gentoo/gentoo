@@ -4,10 +4,10 @@ DESCRIPTION=Reverb and Impulse Response Convolution plug-ins (Audacious/JACK)
 EAPI=7
 HOMEPAGE=https://savannah.nongnu.org/projects/freeverb3
 IUSE=audacious forcefpu jack openmp plugdouble threads
-KEYWORDS=~amd64 ~x86
+KEYWORDS=~amd64 x86
 LICENSE=GPL-2
 RDEPEND=sci-libs/fftw:3.0= audacious? ( >=dev-libs/glib-2.4.7:2 x11-libs/cairo x11-libs/gtk+:3 x11-libs/pango =media-sound/audacious-3.9*[gtk3(+)] media-libs/libsndfile ) jack? ( >=dev-libs/glib-2.4.7:2 x11-libs/cairo x11-libs/gtk+:3 x11-libs/pango virtual/jack media-libs/libsndfile )
 REQUIRED_USE=jack? ( audacious )
 SLOT=0
 SRC_URI=mirror://nongnu/freeverb3/freeverb3-3.2.1.tar.xz
-_md5_=a32abe3a30ad77218015470b86ee0145
+_md5_=5cbaf151812adc59a5b806acb7f6b919

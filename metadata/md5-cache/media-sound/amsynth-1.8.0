@@ -5,11 +5,11 @@ DESCRIPTION=Virtual analogue synthesizer
 EAPI=7
 HOMEPAGE=https://github.com/amsynth/amsynth
 IUSE=alsa dssi gtk jack lash lv2 oss sndfile
-KEYWORDS=~amd64 ~ppc ~x86
+KEYWORDS=~amd64 ~ppc x86
 LICENSE=GPL-2
 RDEPEND=alsa? ( media-libs/alsa-lib:= media-sound/alsa-utils ) dssi? ( media-libs/dssi:= media-libs/liblo:= ) gtk? ( >=x11-libs/gtk+-2.20:2 ) jack? ( virtual/jack ) lash? ( media-sound/lash ) lv2? ( media-libs/lv2 ) sndfile? ( >=media-libs/libsndfile-1:= )
 REQUIRED_USE=dssi? ( gtk ) lv2? ( gtk )
 SLOT=0
 SRC_URI=https://github.com/amsynth/amsynth/releases/download/release-1.8.0/amsynth-1.8.0.tar.bz2
 _eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	a09389deba2c0a7108b581e02c7cecbf	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
-_md5_=7ede2d0820228bbc04ac664045f9206d
+_md5_=4179ff6d2c0e5fe39fbbc0188c37e446
