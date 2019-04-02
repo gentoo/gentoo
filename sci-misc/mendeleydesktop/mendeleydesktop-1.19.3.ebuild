@@ -1,11 +1,10 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
+PYTHON_COMPAT=( python{2_7,3_5,3_6,3_7} )
 
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
-
-inherit desktop gnome2-utils python-single-r1 xdg-utils
+inherit desktop python-single-r1 xdg
 
 MY_P_AMD64="${P}-linux-x86_64"
 MY_P_X86="${P}-linux-i486"
@@ -27,7 +26,8 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RESTRICT="fetch"
 
 DEPEND=""
-RDEPEND="
+BDEPEND=""
+RDEPEND="${PYTHON_DEPS}
 	dev-qt/qtcore:5
 	dev-qt/qtdeclarative:5
 	dev-qt/qtgui:5
@@ -41,7 +41,7 @@ RDEPEND="
 	sys-libs/zlib
 	virtual/opengl
 	x11-libs/libX11
-	${PYTHON_DEPS}"
+"
 
 QA_PREBUILT="/opt/mendeleydesktop/.*"
 
@@ -70,7 +70,7 @@ src_unpack() {
 }
 
 src_prepare() {
-	default
+	xdg_src_prepare
 
 	# remove bundled Qt libraries
 	rm -r lib/mendeleydesktop/plugins \
@@ -78,7 +78,7 @@ src_prepare() {
 	rm -r lib/qt || die
 
 	# fix qt library path
-	sed -e "s:/usr/lib/qt5/plugins:${EROOT}usr/$(get_libdir)/qt5/plugins:g" \
+	sed -e "s:/usr/lib/qt5/plugins:${EROOT}/usr/$(get_libdir)/qt5/plugins:g" \
 		-i bin/mendeleydesktop || die
 
 	# fix library paths
@@ -124,14 +124,4 @@ src_install() {
 
 	# symlink launch script
 	dosym ../mendeleydesktop/bin/mendeleydesktop /opt/bin/mendeleydesktop
-}
-
-pkg_postinst() {
-	xdg_pkg_postinst
-	gnome2_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_pkg_postrm
-	gnome2_icon_cache_update
 }
