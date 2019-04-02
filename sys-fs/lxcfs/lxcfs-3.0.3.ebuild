@@ -17,7 +17,7 @@ if [[ ${PV} == "9999" ]] ; then
 	KEYWORDS=""
 else
 	SRC_URI="https://github.com/lxc/lxcfs/archive/${P}.tar.gz"
-	KEYWORDS="~amd64"
+	KEYWORDS="amd64"
 fi
 
 # Omit all dbus.  Upstream appears to require it because systemd, but
