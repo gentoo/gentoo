@@ -750,7 +750,7 @@ app-emulation/libvirt 4.9.0: C toolkit to manipulate virtual machines
 app-emulation/libvirt-glib 1.0.0-r1 2.0.0: GLib and GObject mappings for libvirt
 app-emulation/lxc 2.1.1-r1 3.0.3: LinuX Containers userspace utilities
 app-emulation/lxc-templates 3.0.3: Old style template scripts for LXC
-app-emulation/lxd 3.7 3.8 3.9 3.10: Fast, dense and secure container management
+app-emulation/lxd 3.10: Fast, dense and secure container management
 app-emulation/nemu 2.1.0: ncurses interface for QEMU
 app-emulation/q4wine 1.3.11: Qt GUI configuration tool for Wine
 app-emulation/qemu 3.1.0-r1: QEMU + Kernel-based Virtual Machine userland tools
@@ -5943,7 +5943,7 @@ dev-ruby/net-ssh 4.2.0: Non-interactive SSH processing in pure Ruby
 dev-ruby/net-ssh-gateway 1.3.0: A simple library to assist in enabling tunneled Net::SSH connections
 dev-ruby/net-telnet 0.1.1-r1: Provides telnet client functionality
 dev-ruby/netrc 0.11.0: This library reads and writes .netrc files
-dev-ruby/nokogiri 1.8.1: Nokogiri is an HTML, XML, SAX, and Reader parser
+dev-ruby/nokogiri 1.8.1 1.8.4: Nokogiri is an HTML, XML, SAX, and Reader parser
 dev-ruby/nokogiri-diff 0.2.0-r2: Calculate the differences between two XML/HTML documents
 dev-ruby/ntlm-http 0.1.1-r2: Ruby/NTLM HTTP provides NTLM authentication over http
 dev-ruby/ox 2.8.2 2.9.4: A fast XML parser and Object marshaller
@@ -10193,7 +10193,7 @@ sys-fs/jfsutils 1.1.15: IBM's Journaling Filesystem (JFS) Utilities
 sys-fs/lessfs 1.5.13 1.7.0: A high performance inline data deduplicating filesystem
 sys-fs/lsscsi 0.29: SCSI sysfs query tool
 sys-fs/lvm2 2.02.116 2.02.145-r2: User-land utilities for LVM2 (device-mapper) software
-sys-fs/lxcfs 3.0.2: FUSE filesystem for LXC
+sys-fs/lxcfs 3.0.3: FUSE filesystem for LXC
 sys-fs/mac-fdisk 0.1-r7: Mac/PowerMac disk partitioning utility
 sys-fs/mdadm 4.1: Tool for running RAID systems - replacement for the raidtools
 sys-fs/mhddfs 0.1.39-r1: Fuse multi harddrive filesystem
@@ -10578,7 +10578,7 @@ www-apache/mod_xml2enc 1.0.3: An Apache2 module to provide libxml2 encoding
 www-apache/mod_xsendfile 1.0_beta1: Apache module that processes X-SENDFILE headers registered by the output handler
 www-apache/modsecurity-crs 3.0.2: Core Rule Set for ModSecurity
 www-apache/mpm_itk 2.4.7_p4-r1: Run virtual hosts under separate users/groups
-www-apache/passenger 5.3.7: Passenger makes deployment of Ruby on Rails applications a breeze
+www-apache/passenger 5.3.7 6.0.2: Passenger makes deployment of Ruby on Rails applications a breeze
 www-apps/Apache-Gallery 1.0_rc3-r1: Apache gallery for mod_perl
 www-apps/ampache 3.8.3: PHP-based tool for managing,updating and playing audio files via a web interface
 www-apps/bugzilla 4.4.12-r2 5.0.3-r2: Bugzilla is the Bug-Tracking System from the Mozilla project
