@@ -2933,7 +2933,7 @@ dev-lang/swig 2.0.9 3.0.12: Simplified Wrapper and Interface Generator
 dev-lang/tcl 8.5.17-r1 8.6.8: Tool Command Language
 dev-lang/tk 8.5.17-r1 8.6.8: Tk Widget Set
 dev-lang/tuprolog 2.9.2: tuProlog is a light-weight Prolog for Internet applications and infrastructures
-dev-lang/vala 0.32.1 0.34.16 0.36.15: Compiler for the GObject type system
+dev-lang/vala 0.32.1 0.34.16 0.36.15 0.36.18 0.40.14: Compiler for the GObject type system
 dev-lang/xsb 3.6.0: XSB is a logic programming and deductive database system
 dev-lang/yap 6.3.3: YAP is a high-performance Prolog compiler
 dev-lang/yasm 1.2.0-r1 1.3.0: An assembler for x86 and x86_64 instruction sets
@@ -3287,7 +3287,7 @@ dev-libs/ustr 1.0.4-r5 1.0.4-r8: Low-overhead managed string library for C
 dev-libs/utfcpp 2.3.4: A portable and lightweight generic library for handling UTF-8 strings
 dev-libs/uthash 2.0.2: An easy-to-use hash implementation for C programmers
 dev-libs/uulib 0.5.20-r1: Library that supports Base64 (MIME), uuencode, xxencode and binhex coding
-dev-libs/vala-common 0.36.15: Build infrastructure for packages that use Vala
+dev-libs/vala-common 0.36.15 0.40.14: Build infrastructure for packages that use Vala
 dev-libs/vanessa-logger 0.0.10: Generic logging layer that to log to syslog, an open file handle or a file name
 dev-libs/vc 1.3.0: SIMD Vector Class Library for C++
 dev-libs/volume_key 0.3.11: Library for manipulating and storing storage volume encryption keys
@@ -6224,8 +6224,8 @@ dev-texlive/texlive-pstricks 2017: TeXLive PSTricks
 dev-texlive/texlive-publishers 2017: TeXLive Publisher styles, theses, etc.
 dev-texlive/texlive-xetex 2017: TeXLive XeTeX and packages
 dev-util/android-studio 3.2.1.0.181.5056338: A new Android development environment based on IntelliJ IDEA
-dev-util/android-tools 5.1.1_p13 6.0.1_p79 8.1.0_p1: Android platform tools (adb, fastboot, and mkbootimg)
-dev-util/anjuta 3.22.0: A versatile IDE for GNOME
+dev-util/android-tools 5.1.1_p13 6.0.1_p79 8.1.0_p1 9.0.0_p3: Android platform tools (adb, fastboot, and mkbootimg)
+dev-util/anjuta 3.22.0 3.28.0-r1: A versatile IDE for GNOME
 dev-util/antlrworks 1.2.3: A novel grammar development environment for ANTLR v3 grammars
 dev-util/appdata-tools 0.1.7 0.1.8-r1: CLI designed to validate AppData descriptions for standards and style compliance
 dev-util/argouml 0.34: Modelling tool that helps you do your design using UML
@@ -6271,7 +6271,7 @@ dev-util/cproto 4.7e: Generate C function prototypes from C source code
 dev-util/cpuinfo-collection 20070104: huge collection of /proc/cpuinfo files
 dev-util/cram 0.7: Functional testing framework for command line applications
 dev-util/cscope 15.8a-r1: Interactively examine a C program
-dev-util/ctags 20161028: Exuberant Ctags creates tags files for code browsing in editors
+dev-util/ctags 20161028 20190331: Exuberant Ctags creates tags files for code browsing in editors
 dev-util/cucumber 2.4.0-r1: Executable feature scenarios
 dev-util/cucumber-core 1.5.0: Executable feature scenarios
 dev-util/cucumber-wire 0.0.1: Executable feature scenarios
@@ -8176,7 +8176,7 @@ media-sound/pnmixer 0.7.2: Volume mixer for the system tray
 media-sound/podracer 1.4-r2: A simple podcast aggregator, designed for cron
 media-sound/positron 1.1-r1: Synchronization manager for the Neuros Audio Computer
 media-sound/pragha 1.3.3: A lightweight music player (for Xfce)
-media-sound/pulseaudio 12.2: A networked sound server with an advanced plugin system
+media-sound/pulseaudio 12.2 12.2-r1: A networked sound server with an advanced plugin system
 media-sound/pulseeffects 3.2.3-r1 4.4.7: Limiter, compressor, reverberation, equalizer auto volume effects for Pulseaudio
 media-sound/pympd 0.08.1-r1: a Rhythmbox-like PyGTK+ client for Music Player Daemon
 media-sound/qastools 0.21.0: Qt5 GUI ALSA tools: mixer, configuration browser
@@ -8905,7 +8905,7 @@ net-misc/cni-plugins 0.7.4: Standard networking plugins for container networking
 net-misc/connect 1.103: network connection relaying command (proxy)
 net-misc/connman 1.35-r1: Provides a daemon for managing internet connections
 net-misc/connman-gtk 1.1.1: GTK GUI for Connman
-net-misc/curl 7.64.0: A Client that groks URLs
+net-misc/curl 7.64.0 7.64.1: A Client that groks URLs
 net-misc/dahdi 2.10.0.1 2.10.1 2.10.2-r2: Kernel modules for Digium compatible hardware (formerly known as Zaptel)
 net-misc/dahdi-tools 2.6.2 2.8.0 2.9.0.1 2.10.0 2.10.1: Userspace tools to configure the kernel modules from net-misc/dahdi
 net-misc/dhcp 4.3.6_p1 4.4.1: ISC Dynamic Host Configuration Protocol (DHCP) client/server
@@ -9009,7 +9009,7 @@ net-misc/pps-tools 0.0.20120407: User-space tools for LinuxPPS
 net-misc/proxychains 4.12-r1: force any tcp connections to flow through a proxy (or proxy chain)
 net-misc/pssh 2.3.1-r1: PSSH provides parallel versions of OpenSSH and related tools
 net-misc/pump 0.8.24-r4: This is the DHCP/BOOTP client written by RedHat
-net-misc/putty 0.68: A Free Telnet/SSH Client
+net-misc/putty 0.68 0.71-r2: A Free Telnet/SSH Client
 net-misc/pycnb 0.0.4-r1: Access cnb.cz daily rates with the comfort of your command line
 net-misc/pytvshows 0.2-r3: downloads torrents for TV shows from RSS feeds provided by ezrss.it
 net-misc/qtm 1.3.19: Qt blogging client
@@ -10075,6 +10075,7 @@ sys-cluster/pacemaker 1.1.16: Pacemaker CRM
 sys-cluster/ploop 1.14.1: openvz tool and a library to control ploop block devices
 sys-cluster/polysh 0.4-r1: Aggregate several remote shells into one
 sys-cluster/resource-agents 3.9.6: Resources pack for Heartbeat / Pacemaker
+sys-cluster/sanlock 3.6.0: shared storage lock manager
 sys-cluster/swift 2.20.0: A highly available, distributed, and eventually consistent object/blob store
 sys-cluster/torque 4.1.7-r1: Resource manager and queuing system based on OpenPBS
 sys-cluster/vzctl 4.9.4: OpenVZ ConTainers control utility
@@ -10192,7 +10193,7 @@ sys-fs/inotify-tools 3.14 3.20.1: a set of command-line programs providing a sim
 sys-fs/jfsutils 1.1.15: IBM's Journaling Filesystem (JFS) Utilities
 sys-fs/lessfs 1.5.13 1.7.0: A high performance inline data deduplicating filesystem
 sys-fs/lsscsi 0.29: SCSI sysfs query tool
-sys-fs/lvm2 2.02.116 2.02.145-r2: User-land utilities for LVM2 (device-mapper) software
+sys-fs/lvm2 2.02.116 2.02.145-r2 2.02.183: User-land utilities for LVM2 (device-mapper) software
 sys-fs/lxcfs 3.0.3: FUSE filesystem for LXC
 sys-fs/mac-fdisk 0.1-r7: Mac/PowerMac disk partitioning utility
 sys-fs/mdadm 4.1: Tool for running RAID systems - replacement for the raidtools
@@ -10208,7 +10209,7 @@ sys-fs/ntfs3g 2016.2.22-r2 2017.3.23-r1: Open source read-write NTFS driver that
 sys-fs/owfs 3.2_p2-r2: Access 1-Wire devices like a filesystem
 sys-fs/progsreiserfs 0.3.1_rc8: Library for accessing and manipulating reiserfs partitions
 sys-fs/pysize 0.2-r1: A graphical and console tool for exploring the size of directories
-sys-fs/quota 4.03 4.04-r1: Linux quota tools
+sys-fs/quota 4.03 4.04-r1 4.04-r2: Linux quota tools
 sys-fs/reiser4progs 1.1.0: reiser4progs: mkfs, fsck, etc...
 sys-fs/reiserfsprogs 3.6.25 3.6.27: Reiserfs Utilities
 sys-fs/safecopy 1.7: Tool for fault-tolerant data recovery from damaged (io-errors) devices or files
