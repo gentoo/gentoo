@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/opendkim/${P}.tar.gz"
 # The GPL-2 is for the init script, bug 425960.
 LICENSE="BSD GPL-2 Sendmail-Open-Source"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE="+berkdb gnutls ldap libressl lmdb lua memcached opendbx poll sasl selinux +ssl static-libs unbound"
 
 DEPEND="|| ( mail-filter/libmilter mail-mta/sendmail )
