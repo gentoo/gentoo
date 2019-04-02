@@ -9,11 +9,12 @@ inherit multibuild python-r1 qmake-utils
 DESCRIPTION="Python bindings for the Qt framework"
 HOMEPAGE="https://www.riverbankcomputing.com/software/pyqt/intro"
 
-MY_P=${PN}_gpl-${PV/_pre/.dev}
+MY_PN=PyQt5
+MY_P=${MY_PN}_gpl-${PV/_pre/.dev}
 if [[ ${PV} == *_pre* ]]; then
-	SRC_URI="https://dev.gentoo.org/~pesa/distfiles/${MY_P}.tar.xz"
+	SRC_URI="https://dev.gentoo.org/~pesa/distfiles/${MY_P}.tar.gz"
 else
-	SRC_URI="mirror://sourceforge/pyqt/${MY_P}.tar.gz"
+	SRC_URI="https://www.riverbankcomputing.com/static/Downloads/${MY_PN}/${PV}/${MY_P}.tar.gz"
 fi
 
 LICENSE="GPL-3"
@@ -158,7 +159,7 @@ src_configure() {
 		echo "${myconf[@]}"
 		"${myconf[@]}" || die
 
-		eqmake5 -recursive ${PN}.pro
+		eqmake5 -recursive ${MY_PN}.pro
 	}
 	python_foreach_impl run_in_build_dir configuration
 }
