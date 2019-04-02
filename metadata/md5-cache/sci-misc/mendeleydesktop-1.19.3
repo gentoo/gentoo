@@ -1,0 +1,15 @@
+DEFINED_PHASES=install nofetch postinst postrm preinst prepare setup unpack
+DEPEND=dev-util/desktop-file-utils x11-misc/shared-mime-info
+DESCRIPTION=Research management tool for desktop and web
+EAPI=7
+HOMEPAGE=https://www.mendeley.com/
+IUSE=python_targets_python2_7 python_targets_python3_5 python_targets_python3_6 python_targets_python3_7 python_single_target_python2_7 python_single_target_python3_5 python_single_target_python3_6 python_single_target_python3_7
+KEYWORDS=~amd64 ~x86
+LICENSE=Mendeley-terms
+RDEPEND=python_single_target_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_single_target_python3_5? ( dev-lang/python:3.5 ) python_single_target_python3_6? ( dev-lang/python:3.6 ) python_single_target_python3_7? ( dev-lang/python:3.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_5(-)?,python_targets_python3_6(-)?,python_targets_python3_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),python_single_target_python2_7(+)?,python_single_target_python3_5(+)?,python_single_target_python3_6(+)?,python_single_target_python3_7(+)?] dev-qt/qtcore:5 dev-qt/qtdeclarative:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtpositioning:5 dev-qt/qtprintsupport:5 dev-qt/qtsvg:5 dev-qt/qtwebengine:5[widgets] dev-qt/qtwebkit:5 dev-qt/qtxml:5 sys-libs/zlib virtual/opengl x11-libs/libX11
+REQUIRED_USE=^^ ( python_single_target_python2_7 python_single_target_python3_5 python_single_target_python3_6 python_single_target_python3_7 ) python_single_target_python2_7? ( python_targets_python2_7 ) python_single_target_python3_5? ( python_targets_python3_5 ) python_single_target_python3_6? ( python_targets_python3_6 ) python_single_target_python3_7? ( python_targets_python3_7 )
+RESTRICT=fetch
+SLOT=0
+SRC_URI=amd64? ( mendeleydesktop-1.19.3-linux-x86_64.tar.bz2 ) x86? ( mendeleydesktop-1.19.3-linux-i486.tar.bz2 ) amd64-linux? ( mendeleydesktop-1.19.3-linux-x86_64.tar.bz2 ) x86-linux? ( mendeleydesktop-1.19.3-linux-i486.tar.bz2 )
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	multilib	b2f01ad412baf81650c23fcf0975fa33	python-single-r1	3a0fc81f484bfdbd9c2b7448015a36e4	python-utils-r1	08e17157a6807add7db1f8d01e7e391f	toolchain-funcs	b45201c4e6c096b98e250336954e64b9	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	14d00d009167652b1fa363e55effe213
+_md5_=1f3bbb88402b1df89eb0969080e852c3
