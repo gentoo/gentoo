@@ -116,7 +116,6 @@ oracle
 
 # not keyworded on non-x86 systems
 video_cards_geode
-video_cards_voodoo
 
 # not needed on non-x86, non-amd64 systems
 input_devices_vmmouse

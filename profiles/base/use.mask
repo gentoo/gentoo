@@ -4,12 +4,6 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
-# Matt Turner <mattst88@gentoo.org> (02 Mar 2019)
-# For ancient hardware. Tired of maintaining. Masked for removal in 30 days.
-# Bug #679256
-video_cards_tdfx
-video_cards_voodoo
-
 # Brian Evans <grknight@gentoo.org> (11 Jan 2019)
 # Mask PHP 7.0 target as EOL
 php_targets_php7-0

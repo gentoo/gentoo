@@ -247,8 +247,6 @@ video_cards_r300
 video_cards_r600
 video_cards_radeon
 video_cards_radeonsi
-video_cards_tdfx
-video_cards_voodoo
 
 # 25 Jul 2005 Guy Martin <gmsoft@gentoo.org>
 # lm_sensors not supported on hppa and ieee1394 not tested

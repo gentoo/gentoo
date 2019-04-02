@@ -32,7 +32,6 @@ r600 - VIDEO_CARDS setting to build only r600, r700, Evergreen and Northern Isla
 radeon - VIDEO_CARDS setting to build driver for ATI radeon video cards
 radeonsi - VIDEO_CARDS setting to build only Southern Islands based chips code for radeon
 siliconmotion - VIDEO_CARDS setting to build driver for siliconmotion video cards
-tdfx - VIDEO_CARDS setting to build driver for tdfx video cards
 tegra - VIDEO_CARDS setting to build driver for tegra video cards
 vc4 - VIDEO_CARDS setting to build driver for vc4 video cards
 vesa - VIDEO_CARDS setting to build driver for vesa video cards
@@ -41,4 +40,3 @@ virgl - VIDEO_CARDS setting to build driver for virgil (virtual 3D GPU)
 virtualbox - VIDEO_CARDS setting to build driver for virtualbox emulation
 vivante - VIDEO_CARDS setting to build etnaviv driver for vivante video cards
 vmware - VIDEO_CARDS setting to build driver for vmware video cards
-voodoo - VIDEO_CARDS setting to build driver for voodoo video cards

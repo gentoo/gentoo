@@ -37,7 +37,7 @@ MULTILIB_STRICT_DIRS="/lib32 /usr/lib32 /usr/kde/*/lib32 /usr/qt/*/lib32 /usr/X1
 
 # 2006/10/05 - Gustavo Zacarias <gustavoz@gentoo.org>
 # Defaults for video drivers
-VIDEO_CARDS="fbdev glint mga r128 radeon tdfx voodoo"
+VIDEO_CARDS="fbdev glint mga r128 radeon"
 
 # Sergei Trofimovich <slyfox@gentoo.org> (24 Jun 2018)
 # Enable USE=libtirpc by default, to ease dependency resolution during

@@ -43,14 +43,12 @@ IUSE_VIDEO_CARDS="
 	video_cards_radeon
 	video_cards_radeonsi
 	video_cards_siliconmotion
-	video_cards_tdfx
 	video_cards_tegra
 	video_cards_vc4
 	video_cards_vesa
 	video_cards_via
 	video_cards_virtualbox
 	video_cards_vmware
-	video_cards_voodoo
 	video_cards_nvidia
 "
 
@@ -88,14 +86,12 @@ PDEPEND="
 	video_cards_radeon?        ( >=x11-drivers/xf86-video-ati-18.0.1-r1 )
 	video_cards_radeonsi?      ( >=x11-drivers/xf86-video-ati-18.0.1-r1[glamor] )
 	video_cards_siliconmotion? ( >=x11-drivers/xf86-video-siliconmotion-1.7.9 )
-	video_cards_tdfx?          ( >=x11-drivers/xf86-video-tdfx-1.4.7 )
 	video_cards_tegra?         ( >=x11-base/xorg-server-${PV}[glamor] )
 	video_cards_vc4?           ( >=x11-base/xorg-server-${PV}[glamor] )
 	video_cards_vesa?          ( x11-drivers/xf86-video-vesa )
 	video_cards_via?           ( x11-drivers/xf86-video-openchrome )
 	video_cards_virtualbox?    ( x11-drivers/xf86-video-vboxvideo )
 	video_cards_vmware?        ( >=x11-drivers/xf86-video-vmware-13.3.0 )
-	video_cards_voodoo?        ( x11-drivers/xf86-video-voodoo )
 
 	!<x11-drivers/xf86-input-evdev-2.10.4
 "

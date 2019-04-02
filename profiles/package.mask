@@ -416,9 +416,11 @@ x11-drivers/xf86-video-suncg6
 x11-drivers/xf86-video-sunffb
 x11-drivers/xf86-video-sunleo
 x11-drivers/xf86-video-suntcx
+x11-drivers/xf86-video-tdfx
 x11-drivers/xf86-video-tga
 x11-drivers/xf86-video-trident
 x11-drivers/xf86-video-tseng
+x11-drivers/xf86-video-voodoo
 
 # Michał Górny <mgorny@gentoo.org> (16 Mar 2019)
 # The current Gentoo version of Nessus is from 2006 (!).  It does
@@ -644,18 +646,6 @@ app-arch/star
 # Fails to build with ffmpeg-4 (bug #673352). Dead upstream.
 # Masked for removal in 30 days.
 media-sound/karlyriceditor
-
-# Matt Turner <mattst88@gentoo.org> (02 Mar 2019)
-# Old, unused drivers.
-# Masked for removal in 30 days. Bug #679256
-x11-drivers/xf86-video-newport
-x11-drivers/xf86-video-tdfx
-x11-drivers/xf86-video-voodoo
-
-# Matt Turner <mattst88@gentoo.org> (02 Mar 2019)
-# No reverse dependencies. No releases in 13 years.
-# Masked for removal in 30 days. Bug #679256
-x11-libs/libxkbui
 
 # Eray Aslan <eras@gentoo.org> (01 Mar 2019)
 # Mask experimental software
