@@ -8556,7 +8556,7 @@ net-dns/ndu 0.4-r4: DNS serial number incrementer and reverse zone builder
 net-dns/nsd 4.1.26: An authoritative only, high performance, open source name server
 net-dns/openresolv 3.9.0: A framework for managing DNS information
 net-dns/pdns 4.1.7: The PowerDNS Daemon
-net-dns/pdns-recursor 4.1.10: The PowerDNS Recursor
+net-dns/pdns-recursor 4.1.10 4.1.11: The PowerDNS Recursor
 net-dns/pdnsd 1.2.9a-r1: Proxy DNS server with permanent caching
 net-dns/rbldnsd 0.998: DNS server designed to serve blacklist zones
 net-dns/resolv_wrapper 1.1.5: A wrapper for DNS name resolving or DNS faking
@@ -8652,7 +8652,7 @@ net-irc/hexchat 2.12.4-r2: Graphical IRC client based on XChat
 net-irc/inspircd 2.0.25: Inspire IRCd - The Stable, High-Performance Modular IRCd
 net-irc/ircii 20110228 20111115: An IRC and ICB client that runs under most UNIX platforms
 net-irc/iroffer-dinoex 3.30-r1: IRC fileserver using DCC
-net-irc/irssi 1.1.2: A modular textUI IRC client with IPv6 support
+net-irc/irssi 1.1.2 1.2.0-r2: A modular textUI IRC client with IPv6 support
 net-irc/irssi-otr 1.0.0-r1 1.0.2: Off-The-Record messaging (OTR) for irssi
 net-irc/irssistats 0.75-r1: Generates HTML IRC stats based on irssi logs
 net-irc/konversation 1.7.5: A user friendly IRC Client
