@@ -41,19 +41,32 @@ CDEPEND="
 	"
 DEPEND="${CDEPEND}
 	virtual/pkgconfig
-	doc? ( app-doc/doxygen )
-	test? ( app-misc/dtach || ( >=app-editors/emacs-23[libxml2]
-		>=app-editors/emacs-vcs-23[libxml2] ) sys-devel/gdb
-		crypt? ( app-crypt/gnupg dev-libs/openssl ) )
+	doc? (
+		app-doc/doxygen
+		dev-python/mock[${PYTHON_USEDEP}]
+	)
+	test? (
+		app-misc/dtach
+		|| ( >=app-editors/emacs-23[libxml2] >=app-editors/emacs-vcs-23[libxml2] )
+		sys-devel/gdb
+		crypt? ( app-crypt/gnupg dev-libs/openssl )
+	)
 	valgrind? ( dev-util/valgrind )
 	"
 RDEPEND="${CDEPEND}
 	crypt? ( app-crypt/gnupg )
 	nmbug? ( dev-vcs/git )
-	mutt? ( dev-perl/File-Which dev-perl/Mail-Box dev-perl/MailTools
-		dev-perl/String-ShellQuote dev-perl/Term-ReadLine-Gnu
-		virtual/perl-Digest-SHA virtual/perl-File-Path virtual/perl-Getopt-Long
-		virtual/perl-Pod-Parser )
+	mutt? (
+		dev-perl/File-Which
+		dev-perl/Mail-Box
+		dev-perl/MailTools
+		dev-perl/String-ShellQuote
+		dev-perl/Term-ReadLine-Gnu
+		virtual/perl-Digest-SHA
+		virtual/perl-File-Path
+		virtual/perl-Getopt-Long
+		virtual/perl-Pod-Parser
+	)
 	"
 
 DOCS=( AUTHORS NEWS README )
@@ -169,7 +182,9 @@ src_test() {
 src_install() {
 	default
 
-	doman doc/_build/man/man?/*.?
+	if use doc; then
+		doman doc/_build/man/man?/*.?
+	fi
 
 	if use emacs; then
 		elisp-site-file-install "${FILESDIR}/${SITEFILE}" || die
