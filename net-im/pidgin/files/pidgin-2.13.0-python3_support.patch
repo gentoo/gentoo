@@ -1,0 +1,37 @@
+# HG changeset patch
+# User John Bailey <rekkanoryo@rekkanoryo.org>
+# Date 1527918187 14400
+#      Sat Jun 02 01:43:07 2018 -0400
+# Branch upstream-fedora-patches
+# Node ID ab3a54cf9afbd2a1cb6736c7ee424d8fc82e7b14
+# Parent  de18cefddad5ffe593a192f3a20f6f91165ab516
+Modified Jan Synacek's purple-remote python3 compatibility patch to make it
+compatible with both python2 and python3.
+
+diff --git a/COPYRIGHT b/COPYRIGHT
+--- a/COPYRIGHT
++++ b/COPYRIGHT
+@@ -544,6 +544,7 @@
+ Sun Microsystems
+ Marcus Sundberg
+ Mårten Svantesson (fursten)
++Jan Synacek <jsynacek@redhat.com>
+ Amir Szekely (kichik)
+ Gábor Szuromi (kukkerman)
+ Jakub Szypulka
+diff --git a/libpurple/purple-remote b/libpurple/purple-remote
+--- a/libpurple/purple-remote
++++ b/libpurple/purple-remote
+@@ -14,7 +14,11 @@
+ import xml.dom.minidom 
+ 
+ sys.stdin = codecs.getwriter('utf-8')(sys.stdin);
+-sys.stdout = codecs.getwriter('utf-8')(sys.stdout);
++
++if(sys.version_info > (3,0)):
++    sys.stdout = codecs.getwriter('utf-8')(sys.stdout.detach());
++else:
++    sys.stdout = codecs.getwriter('utf-8')(sys.stdout);
+ 
+ xml.dom.minidom.Element.all   = xml.dom.minidom.Element.getElementsByTagName
+ 
