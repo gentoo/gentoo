@@ -3,8 +3,8 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 )
-inherit flag-o-matic gnome2-utils java-pkg-opt-2 linux-info pax-utils python-single-r1 tmpfiles toolchain-funcs udev xdg-utils
+PYTHON_COMPAT=( python{2_7,3_{5,6,7}} )
+inherit flag-o-matic java-pkg-opt-2 linux-info pax-utils python-single-r1 tmpfiles toolchain-funcs udev xdg
 
 MY_PV="${PV/beta/BETA}"
 MY_PV="${MY_PV/rc/RC}"
@@ -435,9 +435,12 @@ src_install() {
 	newtmpfiles "${FILESDIR}"/${PN}-vboxusb_tmpfilesd ${PN}-vboxusb.conf
 }
 
+pkg_preinst() {
+	xdg_pkg_preinst
+}
+
 pkg_postinst() {
-	gnome2_icon_cache_update
-	xdg_desktop_database_update
+	xdg_pkg_postinst
 
 	if use udev ; then
 		udevadm control --reload-rules \
@@ -479,6 +482,5 @@ pkg_postinst() {
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
-	xdg_desktop_database_update
+	xdg_pkg_postrm
 }
