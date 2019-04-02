@@ -29,6 +29,8 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
+PATCHES=( "${FILESDIR}"/${P}-makefile.patch )
+
 src_prepare() {
 	restore_config config.h
 	default
