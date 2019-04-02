@@ -13,10 +13,10 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 BDEPEND="virtual/pkgconfig
-		>=sys-devel/gettext-0.19.8"
+    >=sys-devel/gettext-0.19.8"
 
 RDEPEND=">=dev-cpp/gtkmm-3.22:3.0
-		>=dev-libs/libsigc++-2.10:2
-		gnome-base/librsvg"
+    >=dev-libs/libsigc++-2.10:2
+    gnome-base/librsvg"
 
 DEPEND="${RDEPEND}"
