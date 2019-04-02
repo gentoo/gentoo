@@ -84,8 +84,8 @@ media-libs/gst-plugins-base gbm
 # udisks is linux only (for now?)
 gnome-base/gvfs udisks
 
-# joystick and video_cards_tdfx useflag are linux only #477750
-media-video/mplayer joystick video_cards_tdfx
+# joystick useflag is linux only #477750
+media-video/mplayer joystick
 
 # linux only
 media-libs/opencv ieee1394 cuda

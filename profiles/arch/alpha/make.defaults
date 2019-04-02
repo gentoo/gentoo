@@ -21,7 +21,7 @@ LIBDIR_alpha="lib"
 
 # 2006/08/18 - Donnie Berkholz <dberkholz@gentoo.org>
 # Defaults for video drivers
-VIDEO_CARDS="fbdev glint mga nv r128 radeon tdfx voodoo"
+VIDEO_CARDS="fbdev glint mga nv r128 radeon"
 
 # 2007/02/05 - Chris Gianelloni <wolf31o2@gentoo.org>
 # Defaults for audio drivers. These are copied from x86 (minus modems), since

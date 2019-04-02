@@ -127,7 +127,6 @@ dri
 
 # Stephen P. Becker <geoman@gentoo.org>
 # more modular X stuff
-video_cards_tdfx
 video_cards_mga
 video_cards_nouveau
 video_cards_nv
@@ -141,7 +140,6 @@ input_devices_wacom
 input_devices_joystick
 video_cards_glint
 video_cards_nvidia
-video_cards_voodoo
 
 # Matt Turner <mattst88@gentoo.org>
 # Mask more VIDEO_CARDs added with mesa-8.0

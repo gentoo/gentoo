@@ -416,9 +416,11 @@ x11-drivers/xf86-video-suncg6
 x11-drivers/xf86-video-sunffb
 x11-drivers/xf86-video-sunleo
 x11-drivers/xf86-video-suntcx
+x11-drivers/xf86-video-tdfx
 x11-drivers/xf86-video-tga
 x11-drivers/xf86-video-trident
 x11-drivers/xf86-video-tseng
+x11-drivers/xf86-video-voodoo
 
 # Michał Górny <mgorny@gentoo.org> (16 Mar 2019)
 # The current Gentoo version of Nessus is from 2006 (!).  It does

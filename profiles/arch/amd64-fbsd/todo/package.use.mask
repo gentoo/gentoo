@@ -132,9 +132,6 @@ media-libs/mesa video_cards_vmware
 x11-base/xorg-server glamor wayland
 x11-drivers/xf86-video-ati glamor
 
-# x11-drivers/xf86-video-tdfx
-x11-base/xorg-drivers video_cards_tdfx
-
 # >=sys-devel/binutils-2.22
 sys-devel/llvm gold
 
