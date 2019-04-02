@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -44,6 +44,7 @@ src_configure() {
 		--with-completiondir="$(get_bashcompdir)" \
 		--disable-openpace \
 		--disable-static \
+		--disable-strict \
 		--enable-man \
 		$(use_enable ctapi) \
 		$(use_enable doc) \
