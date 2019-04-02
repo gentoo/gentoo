@@ -5,10 +5,10 @@ DESCRIPTION=Fast, dense and secure container management
 EAPI=7
 HOMEPAGE=https://linuxcontainers.org/lxd/introduction/
 IUSE=+daemon +ipv6 +dnsmasq nls test tools kernel_linux
-KEYWORDS=~amd64
+KEYWORDS=amd64
 LICENSE=Apache-2.0 BSD BSD-2 LGPL-3 MIT MPL-2.0
 RDEPEND=daemon? ( app-arch/xz-utils >=app-emulation/lxc-2.0.7[seccomp] dev-libs/libuv dev-libs/lzo dev-util/xdelta:3 dnsmasq? ( net-dns/dnsmasq[dhcp,ipv6?] ) net-firewall/ebtables net-firewall/iptables[ipv6?] net-libs/libnfnetlink net-libs/libnsl:0= net-misc/rsync[xattr] sys-apps/iproute2[ipv6?] sys-fs/fuse sys-fs/lxcfs sys-fs/squashfs-tools virtual/acl )
 SLOT=0
 SRC_URI=https://linuxcontainers.org/downloads/lxd/lxd-3.10.tar.gz
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	bash-completion-r1	47a7402d95930413ce25ba8d857339bb	libtool	f143db5a74ccd9ca28c1234deffede96	linux-info	953c3b1c472dcadbf62098a9301327f2	multilib	b2f01ad412baf81650c23fcf0975fa33	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	b45201c4e6c096b98e250336954e64b9	user	8bd74731cafdcdad8f7a63637302e073
-_md5_=6b1209c780acc9d3c4cf25dca7987eb0
+_md5_=84116ec8465f4877b4e0d5c6375c82b7
