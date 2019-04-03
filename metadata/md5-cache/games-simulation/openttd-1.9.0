@@ -1,14 +1,16 @@
-BDEPEND=virtual/pkgconfig >=dev-vcs/git-1.8.2.1[curl]
-DEFINED_PHASES=compile configure install postinst postrm preinst prepare unpack
+BDEPEND=virtual/pkgconfig
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare
 DEPEND=!dedicated? ( media-libs/libsdl[sound,X,video] icu? ( dev-libs/icu-layoutex dev-libs/icu-le-hb >=dev-libs/icu-58.1:= ) truetype? ( media-libs/fontconfig media-libs/freetype:2 sys-libs/zlib:= ) ) lzo? ( dev-libs/lzo:2 ) iconv? ( virtual/libiconv ) png? ( media-libs/libpng:0 sys-libs/zlib:= ) zlib? ( sys-libs/zlib:= ) dev-util/desktop-file-utils x11-misc/shared-mime-info
 DESCRIPTION=OpenTTD is a clone of Transport Tycoon Deluxe
 EAPI=7
 HOMEPAGE=http://www.openttd.org/
 IUSE=aplaymidi debug dedicated iconv icu lzo +openmedia +png cpu_flags_x86_sse +timidity +truetype zlib
+KEYWORDS=~amd64 ~ppc64 ~x86
 LICENSE=GPL-2
 PDEPEND=!dedicated? ( openmedia? ( games-misc/openmsx games-misc/opensfx ) aplaymidi? ( media-sound/alsa-utils ) !aplaymidi? ( timidity? ( media-sound/timidity++ ) ) ) openmedia? ( >=games-misc/opengfx-0.4.7 )
 RDEPEND=!dedicated? ( media-libs/libsdl[sound,X,video] icu? ( dev-libs/icu-layoutex dev-libs/icu-le-hb >=dev-libs/icu-58.1:= ) truetype? ( media-libs/fontconfig media-libs/freetype:2 sys-libs/zlib:= ) ) lzo? ( dev-libs/lzo:2 ) iconv? ( virtual/libiconv ) png? ( media-libs/libpng:0 sys-libs/zlib:= ) zlib? ( sys-libs/zlib:= )
 RESTRICT=test
 SLOT=0
-_eclasses_=git-r3	0d4635eeb5a96cd5315597a47eba25c9	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	14d00d009167652b1fa363e55effe213
-_md5_=a3dd0653de796d614193352059dbebed
+SRC_URI=https://proxy.binaries.openttd.org/openttd-releases/1.9.0/openttd-1.9.0-source.tar.xz
+_eclasses_=xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	14d00d009167652b1fa363e55effe213
+_md5_=957104a2ba31bf6974c1c7a56d7458c5
