@@ -2,15 +2,14 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit autotools git-r3
 
 DESCRIPTION="featureful ncurses based MPD client inspired by ncmpc"
-HOMEPAGE="http://ncmpcpp.rybczak.net/"
-EGIT_REPO_URI="git://repo.or.cz/ncmpcpp.git"
-LICENSE="GPL-2"
+HOMEPAGE="https://rybczak.net/ncmpcpp/"
+SRC_URI="${HOMEPAGE}stable/${P}.tar.bz2"
 
+LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86"
 IUSE="clock icu outputs taglib visualizer"
 
 RDEPEND="
@@ -32,10 +31,8 @@ DEPEND="
 src_prepare() {
 	default
 
-	sed -i -e '/^docdir/d' {,doc/}Makefile.am || die
-	sed -i -e 's|COPYING||g' Makefile.am || die
-
-	eautoreconf
+	sed -i -e '/^docdir/d' {,doc/}Makefile{.am,.in} || die
+	sed -i -e 's|COPYING||g' Makefile{.am,.in} || die
 }
 
 src_configure() {
