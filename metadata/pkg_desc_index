@@ -6249,7 +6249,7 @@ dev-util/catalyst 2.0.18-r1 2.0.18-r4 3.0.2 3.0.2-r1 3.0.3: Release metatool use
 dev-util/catfish 1.2.2 1.4.6: A frontend for find, (s)locate, doodle, tracker, beagle, strigi and pinot
 dev-util/ccache 3.2.4 3.3.4-r1: fast compiler cache
 dev-util/cdiff 1.0: Colored, side-by-side diff terminal viewer
-dev-util/cgdb 0.6.6 0.6.7 0.6.8: A curses front-end for GDB, the GNU debugger
+dev-util/cgdb 0.6.8: A curses front-end for GDB, the GNU debugger
 dev-util/cgvg 1.6.2: A tiny version of cscope that is much more useful in certian instances
 dev-util/checkbashisms 2.18.11: Perl script to check for commonly used bash features not defined by POSIX
 dev-util/checkstyle 7.2: Development tool to help write Java code that adheres to a coding standard
