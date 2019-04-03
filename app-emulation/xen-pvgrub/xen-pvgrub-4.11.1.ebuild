@@ -1,12 +1,12 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE='xml,threads'
 
-inherit eutils flag-o-matic multilib python-single-r1 toolchain-funcs
+inherit flag-o-matic multilib python-single-r1 toolchain-funcs
 
 XEN_EXTFILES_URL="http://xenbits.xensource.com/xen-extfiles"
 LIBPCI_URL=ftp://atrey.karlin.mff.cuni.cz/pub/linux/pci
@@ -54,21 +54,21 @@ retar-externals() {
 	# Purely to unclutter src_prepare
 	local set="grub-0.97.tar.gz lwip-1.3.0.tar.gz newlib-1.16.0.tar.gz polarssl-1.1.4-gpl.tgz zlib-1.2.3.tar.gz"
 
-	# epatch can't patch in $WORKDIR, requires a sed; Bug #455194. Patchable, but sed informative
+	# eapply can't patch in $WORKDIR, requires a sed; Bug #455194. Patchable, but sed informative
 	sed -e s':AR=${AR-"ar rc"}:AR=${AR-"ar"}:' \
-		-i "${WORKDIR}"/zlib-1.2.3/configure
+		-i "${WORKDIR}"/zlib-1.2.3/configure || die
 	sed -e 's:^AR=ar rc:AR=ar:' \
 		-e s':$(AR) $@:$(AR) rc $@:' \
-		-i "${WORKDIR}"/zlib-1.2.3/{Makefile,Makefile.in}
+		-i "${WORKDIR}"/zlib-1.2.3/{Makefile,Makefile.in} || die
 	einfo "zlib Makefile edited"
 
-	cd "${WORKDIR}"
-	tar czp zlib-1.2.3 -f zlib-1.2.3.tar.gz
-	tar czp grub-0.97 -f grub-0.97.tar.gz
-	tar czp lwip -f lwip-1.3.0.tar.gz
-	tar czp newlib-1.16.0 -f newlib-1.16.0.tar.gz
-	tar czp polarssl-1.1.4 -f polarssl-1.1.4-gpl.tgz
-	mv $set "${S}"/stubdom/
+	cd "${WORKDIR}" || die
+	tar czp zlib-1.2.3 -f zlib-1.2.3.tar.gz || die
+	tar czp grub-0.97 -f grub-0.97.tar.gz || die
+	tar czp lwip -f lwip-1.3.0.tar.gz || die
+	tar czp newlib-1.16.0 -f newlib-1.16.0.tar.gz || die
+	tar czp polarssl-1.1.4 -f polarssl-1.1.4-gpl.tgz || die
+	mv $set "${S}"/stubdom/ || die
 	einfo "tarballs moved to source"
 }
 
@@ -79,7 +79,7 @@ src_prepare() {
 		EPATCH_SUFFIX="patch" \
 		EPATCH_FORCE="yes" \
 		EPATCH_OPTS="-p1" \
-			epatch "${WORKDIR}"/patches-upstream
+			eapply "${WORKDIR}"/patches-upstream
 	fi
 
 	# if the user *really* wants to use their own custom-cflags, let them
@@ -99,10 +99,10 @@ src_prepare() {
 	cp "${FILESDIR}"/newlib-implicits.patch stubdom || die
 
 	# Patch stubdom/Makefile to patch insource newlib & prevent internal downloading
-	epatch "${FILESDIR}"/${PN/-pvgrub/}-4.3-externals.patch
+	eapply "${FILESDIR}"/${PN/-pvgrub/}-4.10-externals.patch
 
 	# fix jobserver in Makefile
-	epatch "${FILESDIR}"/${PN}-4.8-jserver.patch
+	eapply "${FILESDIR}"/${PN}-4.8-jserver.patch
 
 	#Substitute for internal downloading. pciutils copied only due to the only .bz2
 	cp "${DISTDIR}"/pciutils-2.2.9.tar.bz2 ./stubdom/ || die "pciutils not copied to stubdom"

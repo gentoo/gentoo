@@ -338,6 +338,10 @@ src_prepare() {
 	sed -e "s:\$\$source/configure:\0 --disable-capstone:" \
 		-i tools/Makefile || die
 
+	# disable glusterfs
+	sed -e "s:\$\$source/configure:\0 --disable-glusterfs:" \
+		-i tools/Makefile || die
+
 	default
 }
 
