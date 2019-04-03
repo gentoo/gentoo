@@ -44,7 +44,11 @@ RDEPEND="
 			app-editors/gvim
 		)
 	)
-	!<net-irc/ninja-1.5.9_pre14-r1" #436804
+"
+
+PATCHES=(
+	"${FILESDIR}/ninja-1.9.0-musl.patch"
+)
 
 run_for_build() {
 	if tc-is-cross-compiler; then

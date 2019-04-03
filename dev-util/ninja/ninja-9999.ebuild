@@ -44,7 +44,7 @@ RDEPEND="
 			app-editors/gvim
 		)
 	)
-	!<net-irc/ninja-1.5.9_pre14-r1" #436804
+"
 
 run_for_build() {
 	if tc-is-cross-compiler; then
