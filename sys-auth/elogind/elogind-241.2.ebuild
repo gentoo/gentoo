@@ -86,6 +86,7 @@ src_configure() {
 		-Dhtml=$(usex doc auto false)
 		-Dpam=$(usex pam true false)
 		-Dselinux=$(usex selinux true false)
+		-Dutmp=$(usex elibc_musl false true)
 	)
 
 	meson_src_configure
