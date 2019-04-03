@@ -16,13 +16,13 @@ IUSE="doc gcrypt gnutls libressl nss +openssl static-libs test"
 REQUIRED_USE="|| ( gcrypt gnutls nss openssl )
 	gnutls? ( gcrypt )"
 
-RDEPEND=">=dev-libs/libxml2-2.7.4
-	>=dev-libs/libxslt-1.0.20
-	gcrypt? ( >=dev-libs/libgcrypt-1.4.0:0 )
-	gnutls? ( >=net-libs/gnutls-2.8.0 )
+RDEPEND=">=dev-libs/libxml2-2.7.4:=
+	>=dev-libs/libxslt-1.0.20:=
+	gcrypt? ( >=dev-libs/libgcrypt-1.4.0:0= )
+	gnutls? ( >=net-libs/gnutls-2.8.0:= )
 	nss? (
-		>=dev-libs/nspr-4.4.1
-		>=dev-libs/nss-3.9
+		>=dev-libs/nspr-4.4.1:=
+		>=dev-libs/nss-3.9:=
 	)
 	openssl? (
 		!libressl? ( dev-libs/openssl:0= )
