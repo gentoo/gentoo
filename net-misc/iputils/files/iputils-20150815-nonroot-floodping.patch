@@ -1,0 +1,11 @@
+--- iputils-s20150815/ping.h
++++ iputils-s20150815/ping.h
+@@ -61,7 +61,7 @@
+ 
+ #define	MAXWAIT		10		/* max seconds to wait for response */
+ #define MININTERVAL	10		/* Minimal interpacket gap */
+-#define MINUSERINTERVAL	200		/* Minimal allowed interval for non-root */
++#define MINUSERINTERVAL	0		/* Minimal allowed interval for non-root */
+ 
+ #define SCHINT(a)	(((a) <= MININTERVAL) ? MININTERVAL : (a))
+ 
