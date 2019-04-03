@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,23 +12,27 @@ HOMEPAGE="https://signal.org/
 	https://github.com/WhisperSystems/Signal-Desktop"
 SRC_URI="https://updates.signal.org/desktop/apt/pool/main/s/${MY_PN}/${MY_PN}_${PV}_amd64.deb"
 
-LICENSE="GPL-3"
+LICENSE="GPL-3 MIT MIT-with-advertising BSD-1 BSD-2 BSD Apache-2.0 ISC openssl ZLIB APSL-2 icu Artistic-2 LGPL-2.1"
 SLOT="0"
 KEYWORDS="-* ~amd64"
 IUSE=""
 
 RDEPEND="
-	gnome-base/gconf:2
 	dev-libs/nss
+	gnome-base/gconf:2
+	media-libs/mesa
+	net-print/cups
 	x11-libs/gtk+:3[X]
 	x11-libs/libXScrnSaver
 	x11-libs/libXtst
-	net-print/cups
 	"
 
 QA_PREBUILT="opt/Signal/signal-desktop
+	opt/Signal/libffmpeg.so
+	opt/Signal/libGLESv2.so
 	opt/Signal/libnode.so
-	opt/Signal/libffmpeg.so"
+	opt/Signal/libVkICD_mock_icd.so
+	opt/Signal/swiftshader/libGLESv2.so"
 
 S="${WORKDIR}"
 
@@ -50,6 +54,8 @@ src_install() {
 	pax-mark m opt/Signal/signal-desktop
 
 	dosym ../../opt/Signal/${MY_PN} /usr/bin/${MY_PN}
+	dosym ../../usr/lib64/libEGL.so opt/Signal/libEGL.so
+	dosym ../../../usr/lib64/libEGL.so opt/Signal/swiftshader/libEGL.so
 }
 
 pkg_postinst() {
