@@ -36,13 +36,6 @@
 games-roguelike/zangband
 
 # Michał Górny <mgorny@gentoo.org> (03 Apr 2019)
-# Does not build with ncurses[tinfo].  The current version is from 2016.
-# At the very least, needs a version bump.  A dedicated maintainer
-# would probably also be beneficial.
-# Removal in 30 days.  Bug #679942.
-games-roguelike/angband
-
-# Michał Górny <mgorny@gentoo.org> (03 Apr 2019)
 # Does not build against libffi-3.3.  Also other unsolved build failures
 # (#619662, #606096).  Needs version bump for almost 2 years.
 # Removal in 30 days.  Bug #667476.
