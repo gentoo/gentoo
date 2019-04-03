@@ -1,12 +1,12 @@
-BDEPEND=>=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1[curl]
-DEFINED_PHASES=configure install postinst prepare unpack
+DEFINED_PHASES=configure install postinst prepare
 DEPEND=!dev-libs/boost:0/1.57.0 >=media-libs/libmpdclient-2.1 dev-libs/boost:=[icu?,nls,threads] net-misc/curl sys-libs/ncurses:= sys-libs/readline:* icu? ( dev-libs/icu:= ) taglib? ( media-libs/taglib ) visualizer? ( sci-libs/fftw:3.0= ) virtual/pkgconfig
 DESCRIPTION=featureful ncurses based MPD client inspired by ncmpc
 EAPI=7
-HOMEPAGE=http://ncmpcpp.rybczak.net/
+HOMEPAGE=https://rybczak.net/ncmpcpp/
 IUSE=clock icu outputs taglib visualizer
+KEYWORDS=~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86
 LICENSE=GPL-2
 RDEPEND=!dev-libs/boost:0/1.57.0 >=media-libs/libmpdclient-2.1 dev-libs/boost:=[icu?,nls,threads] net-misc/curl sys-libs/ncurses:= sys-libs/readline:* icu? ( dev-libs/icu:= ) taglib? ( media-libs/taglib ) visualizer? ( sci-libs/fftw:3.0= )
 SLOT=0
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	git-r3	0d4635eeb5a96cd5315597a47eba25c9	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
-_md5_=db250fcfa55421da9a713fe893d63a47
+SRC_URI=https://rybczak.net/ncmpcpp/stable/ncmpcpp-0.8.2.tar.bz2
+_md5_=706abda68882df79bd4877cf0ae79044
