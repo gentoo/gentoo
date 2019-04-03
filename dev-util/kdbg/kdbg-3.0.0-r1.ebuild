@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 KDE_HANDBOOK="true"
 inherit kde5
@@ -11,10 +11,10 @@ HOMEPAGE="http://www.kdbg.org/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
-KEYWORDS=""
 KEYWORDS="~amd64 ~x86"
+IUSE=""
 
-COMMON_DEPEND="
+DEPEND="
 	$(add_frameworks_dep kconfig)
 	$(add_frameworks_dep kconfigwidgets)
 	$(add_frameworks_dep kcoreaddons)
@@ -26,26 +26,18 @@ COMMON_DEPEND="
 	$(add_qt_dep qtgui)
 	$(add_qt_dep qtwidgets)
 "
-RDEPEND="${COMMON_DEPEND}
+RDEPEND="${DEPEND}
 	!dev-util/kdbg:4
 	sys-devel/gdb
 "
-DEPEND="${COMMON_DEPEND}
-	media-libs/libpng:0
-"
+
+PATCHES=( "${FILESDIR}/${P}-no-png-install.patch" )
 
 src_prepare() {
 	# allow documentation to be handled by eclass
 	mv kdbg/doc . || die
 	sed -i -e '/add_subdirectory(doc)/d' kdbg/CMakeLists.txt || die
 	echo "add_subdirectory ( doc ) " >> CMakeLists.txt || die
-
-	local png
-	for png in kdbg/pics/*.png; do
-		pngfix -q --out=${png/.png/fixed.png} ${png}
-		[[ $? -gt 15 ]] && die "Failed to fix ${png}"
-		mv -f ${png/.png/fixed.png} ${png} || die
-	done
 
 	kde5_src_prepare
 }
