@@ -24,17 +24,19 @@ IUSE="debug"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-DEPEND="
+RDEPEND="
 	${PYTHON_DEPS}
-	>=dev-python/sip-4.19:=[${PYTHON_USEDEP}]
-	dev-python/PyQt5[gui,printsupport,widgets,${PYTHON_USEDEP}]
+	>=dev-python/PyQt5-5.12[gui,printsupport,widgets,${PYTHON_USEDEP}]
+	>=dev-python/PyQt5-sip-4.19.14:=[${PYTHON_USEDEP}]
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtprintsupport:5
 	dev-qt/qtwidgets:5
 	~x11-libs/qscintilla-${PV}:=
 "
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}
+	>=dev-python/sip-4.19.14[${PYTHON_USEDEP}]
+"
 
 S=${WORKDIR}/${MY_P}/Python
 
