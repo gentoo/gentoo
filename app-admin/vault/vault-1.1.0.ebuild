@@ -21,7 +21,7 @@ IUSE="+webui"
 
 RESTRICT="test"
 
-DEPEND=">=dev-lang/go-1.10:=
+DEPEND=">=dev-lang/go-1.11:=
 	dev-go/gox"
 
 FILECAPS=(
