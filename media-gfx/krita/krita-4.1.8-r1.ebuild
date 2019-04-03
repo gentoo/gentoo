@@ -88,7 +88,11 @@ RDEPEND="${COMMON_DEPEND}
 # bug 630508
 RESTRICT+=" test"
 
-PATCHES=( "${FILESDIR}/${PN}-4.0.3-tests-optional.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-4.0.3-tests-optional.patch"
+	"${FILESDIR}/${P}-qt-5.12-fix-unsupported-composition-mode.patch"
+	"${FILESDIR}/${P}-fix-pre-5.12-tablet-support.patch"
+)
 
 pkg_setup() {
 	python-single-r1_pkg_setup
