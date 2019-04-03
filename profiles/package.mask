@@ -30,6 +30,12 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (03 Apr 2019)
+# Does not build with ncurses[tinfo].  The current version is from 2004,
+# and it seems to have been abandoned upstream.
+# Removal in 30 days.  Bug #678866.
+games-roguelike/zangband
+
+# Michał Górny <mgorny@gentoo.org> (03 Apr 2019)
 # Does not build against libffi-3.3.  Also other unsolved build failures
 # (#619662, #606096).  Needs version bump for almost 2 years.
 # Removal in 30 days.  Bug #667476.
