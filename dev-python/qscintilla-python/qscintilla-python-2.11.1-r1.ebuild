@@ -6,11 +6,16 @@ EAPI=7
 PYTHON_COMPAT=( python2_7 python3_{5,6,7} )
 inherit python-r1 qmake-utils
 
-MY_P=QScintilla_gpl-${PV/_pre/.dev}
-
 DESCRIPTION="Python bindings for QScintilla"
 HOMEPAGE="https://www.riverbankcomputing.com/software/qscintilla/intro"
-SRC_URI="https://www.riverbankcomputing.com/static/Downloads/QScintilla/${MY_P}.tar.gz"
+
+MY_PN=QScintilla
+MY_P=${MY_PN}_gpl-${PV/_pre/.dev}
+if [[ ${PV} == *_pre* ]]; then
+	SRC_URI="https://dev.gentoo.org/~pesa/distfiles/${MY_P}.tar.gz"
+else
+	SRC_URI="https://www.riverbankcomputing.com/static/Downloads/${MY_PN}/${PV}/${MY_P}.tar.gz"
+fi
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -19,41 +24,40 @@ IUSE="debug"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-DEPEND="
+RDEPEND="
 	${PYTHON_DEPS}
-	>=dev-python/sip-4.19:=[${PYTHON_USEDEP}]
-	dev-python/PyQt5[gui,printsupport,widgets,${PYTHON_USEDEP}]
+	>=dev-python/PyQt5-5.12[gui,printsupport,widgets,${PYTHON_USEDEP}]
+	>=dev-python/PyQt5-sip-4.19.14:=[${PYTHON_USEDEP}]
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtprintsupport:5
 	dev-qt/qtwidgets:5
 	~x11-libs/qscintilla-${PV}:=
 "
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}
+	>=dev-python/sip-4.19.14[${PYTHON_USEDEP}]
+"
 
 S=${WORKDIR}/${MY_P}/Python
-
-src_prepare() {
-	default
-	python_copy_sources
-}
 
 src_configure() {
 	configuration() {
 		local myconf=(
 			"${PYTHON}"
-			configure.py
+			"${S}"/configure.py
 			--pyqt=PyQt5
 			--qmake="$(qt5_get_bindir)"/qmake
-			--sip-incdir="$(python_get_includedir)"
 			$(usex debug '--debug --trace' '')
 			--verbose
 		)
 		echo "${myconf[@]}"
 		"${myconf[@]}" || die
 
-		# Run eqmake to respect toolchain, build flags, and prevent stripping
-		eqmake5 -recursive
+		# Fix parallel install failure
+		sed -i -e '/INSTALLS += distinfo/i distinfo.depends = install_subtargets' ${MY_PN}.pro || die
+
+		# Run eqmake to respect toolchain and build flags
+		eqmake5 -recursive ${MY_PN}.pro
 	}
 	python_foreach_impl run_in_build_dir configuration
 }
@@ -64,8 +68,7 @@ src_compile() {
 
 src_install() {
 	installation() {
-		# parallel install fails because mk_distinfo.py runs too early
-		emake -j1 INSTALL_ROOT="${D}" install
+		emake INSTALL_ROOT="${D}" install
 		python_optimize
 	}
 	python_foreach_impl run_in_build_dir installation
