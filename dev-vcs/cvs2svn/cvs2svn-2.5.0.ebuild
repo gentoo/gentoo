@@ -21,8 +21,8 @@ IUSE="bazaar git test"
 
 DEPEND=">=dev-vcs/subversion-1.0.9"
 RDEPEND="${DEPEND}
-	bazaar? ( >=dev-vcs/bzr-1.13[${PYTHON_USEDEP}] )
-	git? ( >=dev-vcs/git-1.5.4.4[${PYTHON_USEDEP}] )
+	bazaar? ( >=dev-vcs/bzr-1.13 )
+	git? ( >=dev-vcs/git-1.5.4.4 )
 	dev-vcs/rcs"
 
 pkg_setup() {
