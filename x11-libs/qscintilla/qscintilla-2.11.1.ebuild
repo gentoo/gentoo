@@ -5,25 +5,30 @@ EAPI=7
 
 inherit flag-o-matic qmake-utils
 
-MY_P=QScintilla_gpl-${PV/_pre/.dev}
-
 DESCRIPTION="Qt port of Neil Hodgson's Scintilla C++ editor control"
 HOMEPAGE="https://www.riverbankcomputing.com/software/qscintilla/intro"
-SRC_URI="https://www.riverbankcomputing.com/static/Downloads/QScintilla/${MY_P}.tar.gz"
+
+MY_PN=QScintilla
+MY_P=${MY_PN}_gpl-${PV/_pre/.dev}
+if [[ ${PV} == *_pre* ]]; then
+	SRC_URI="https://dev.gentoo.org/~pesa/distfiles/${MY_P}.tar.gz"
+else
+	SRC_URI="https://www.riverbankcomputing.com/static/Downloads/${MY_PN}/${PV}/${MY_P}.tar.gz"
+fi
 
 LICENSE="GPL-3"
 SLOT="0/15"
 KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
 IUSE="designer doc"
 
-DEPEND="
+RDEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtprintsupport:5
 	dev-qt/qtwidgets:5
 	designer? ( dev-qt/designer:5 )
 "
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}"
 
 S=${WORKDIR}/${MY_P}
 
