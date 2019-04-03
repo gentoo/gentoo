@@ -7980,7 +7980,6 @@ media-plugins/vdr-fritzbox 1.5.3: VDR Plugin: Inform about incoming phone-calls 
 media-plugins/vdr-lcr 0.0.9 0.0.9-r1: VDR Plugin: informe about Least Cost Routing (LCR)
 media-plugins/vdr-live 0.3.0_p20130504-r1: VDR Plugin: Web Access To Settings
 media-plugins/vdr-mailbox 0.7.0-r1: VDR plugin: MailBox provides access to multiple e-mail accounts
-media-plugins/vdr-markad 0.1.4 0.1.4-r1: VDR Plugin: marks advertisements in VDR recordings
 media-plugins/vdr-mlist 1.0.2: VDR plugin: Show a history of the last OSD message
 media-plugins/vdr-osdpip 0.1.2-r1: VDR plugin: Show another channel in the OSD
 media-plugins/vdr-osdteletext 0.9.4-r1: VDR Plugin: Osd-Teletext displays the teletext on the OSD
