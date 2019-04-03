@@ -29,6 +29,18 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (03 Apr 2019)
+# Does not build against libffi-3.3.  Also other unsolved build failures
+# (#619662, #606096).  Needs version bump for almost 2 years.
+# Removal in 30 days.  Bug #667476.
+dev-lang/polyml
+
+# Michał Górny <mgorny@gentoo.org> (03 Apr 2019)
+# Does not build against ffmpeg-4.  Last release in 2012.  Last upstream
+# commits in 2017.
+# Removal in 30 days.  Bug #673826.
+media-plugins/vdr-markad
+
 # Virgil Dupras <vdupras@gentoo.org> (31 Mar 2019)
 # Unmaintained, no revdeps.
 # Removal in 30 days. Bug #616596
