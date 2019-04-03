@@ -24,10 +24,8 @@ RDEPEND="
 	taglib? ( media-libs/taglib )
 	visualizer? ( sci-libs/fftw:3.0= )
 "
-DEPEND="
-	${RDEPEND}
-	virtual/pkgconfig
-"
+DEPEND="${RDEPEND}"
+BDEPDND="virtual/pkgconfig"
 
 src_prepare() {
 	default
