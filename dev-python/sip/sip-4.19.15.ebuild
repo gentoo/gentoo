@@ -9,11 +9,12 @@ inherit python-r1 toolchain-funcs
 DESCRIPTION="Python extension module generator for C and C++ libraries"
 HOMEPAGE="https://www.riverbankcomputing.com/software/sip/intro"
 
-MY_P=sip-${PV/_pre/.dev}
+MY_PN=sip
+MY_P=${MY_PN}-${PV/_pre/.dev}
 if [[ ${PV} == *_pre* ]]; then
 	SRC_URI="https://dev.gentoo.org/~pesa/distfiles/${MY_P}.tar.gz"
 else
-	SRC_URI="https://www.riverbankcomputing.com/static/Downloads/${PN}/${PV}/${MY_P}.tar.gz"
+	SRC_URI="https://www.riverbankcomputing.com/static/Downloads/${MY_PN}/${PV}/${MY_P}.tar.gz"
 fi
 
 # Sub-slot based on SIP_API_MAJOR_NR from siplib/sip.h
