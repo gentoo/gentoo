@@ -1,16 +1,25 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit eutils gnome2-utils
+EAPI=7
+inherit xdg
+
+MY_PV="${PV/_rc/-RC}"
+MY_P="${PN}-${MY_PV}"
 
 DESCRIPTION="OpenTTD is a clone of Transport Tycoon Deluxe"
 HOMEPAGE="http://www.openttd.org/"
-SRC_URI="http://binaries.openttd.org/releases/${PV}/${P}-source.tar.gz"
+if [[ "${PV}" == *9999 ]] ; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/OpenTTD/OpenTTD.git"
+else
+	SRC_URI="https://proxy.binaries.openttd.org/openttd-releases/${MY_PV}/${MY_P}-source.tar.xz"
+	KEYWORDS="~amd64 ~ppc64 ~x86"
+	S="${WORKDIR}/${MY_P}"
+fi
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64 ~x86"
 IUSE="aplaymidi debug dedicated iconv icu lzo +openmedia +png cpu_flags_x86_sse +timidity +truetype zlib"
 RESTRICT="test" # needs a graphics set in order to test
 
@@ -24,14 +33,18 @@ RDEPEND="!dedicated? (
 		truetype? (
 			media-libs/fontconfig
 			media-libs/freetype:2
-			sys-libs/zlib
+			sys-libs/zlib:=
 		)
 	)
 	lzo? ( dev-libs/lzo:2 )
 	iconv? ( virtual/libiconv )
-	png? ( media-libs/libpng:0 )
-	zlib? ( sys-libs/zlib )"
-DEPEND="${RDEPEND}
+	png? (
+		media-libs/libpng:0
+		sys-libs/zlib:=
+	)
+	zlib? ( sys-libs/zlib:= )"
+DEPEND="${RDEPEND}"
+BDEPEND="
 	virtual/pkgconfig"
 PDEPEND="
 	!dedicated? (
@@ -45,28 +58,41 @@ PDEPEND="
 	openmedia? ( >=games-misc/opengfx-0.4.7 )"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.6.0-cflags.patch
+	"${FILESDIR}"/${PN}-1.9.0-cflags.patch
+	"${FILESDIR}"/${PN}-1.9.0-dont_compress_manpages.patch
 )
 
 src_configure() {
-	local myopts=()
-	# there is an allegro interface available as well as sdl, but
-	# the configure for it looks broken so the sdl interface is
-	# always built instead.
-	local myopts+=( --without-allegro )
+	local myopts=(
+		--binary-dir="bin"
+		--disable-strip
+		--doc-dir="share/doc/${PF}"
+		--install-dir="${D}"
+		--menu-group="Game;Simulation;"
+		--prefix-dir="${EPREFIX}/usr"
+		$(use_with cpu_flags_x86_sse sse)
+		$(use_with iconv)
+		$(use_with lzo liblzo2)
+		$(use_with png)
+		$(usex debug '--enable-debug=3' '')
+		# there is an allegro interface available as well as sdl, but
+		# the configure for it looks broken so the sdl interface is
+		# always built instead.
+		--without-allegro
 
-	# libtimidity not needed except for some embedded platform
-	# nevertheless, it will be automagically linked if it is
-	# installed. Hence, we disable it.
-	myopts+=( --without-libtimidity )
+		# libtimidity not needed except for some embedded platform
+		# nevertheless, it will be automagically linked if it is
+		# installed. Hence, we disable it.
+		--without-libtimidity
 
-	use debug && myopts+=( --enable-debug=3 )
+		--without-fluidsynth
+	)
 
 	if use dedicated ; then
 		myopts+=( --enable-dedicated )
 	else
-		use aplaymidi && myopts+=( --with-midi='/usr/bin/aplaymidi' )
 		myopts+=(
+			$(usex aplaymidi '--with-midi=/usr/bin/aplaymidi' '')
 			$(use_with truetype freetype)
 			$(use_with icu)
 			--with-sdl
@@ -80,18 +106,7 @@ src_configure() {
 
 	# configure is a hand-written bash-script, so econf will not work.
 	# It's all built as C++, upstream uses CFLAGS internally.
-	CFLAGS="" ./configure \
-		--disable-strip \
-		--prefix-dir="${EPREFIX%/}/usr" \
-		--binary-dir="bin" \
-		--install-dir="${D}" \
-		--menu-group="Game;Simulation;" \
-		${myopts[@]} \
-		$(use_with iconv) \
-		$(use_with png) \
-		$(use_with cpu_flags_x86_sse sse) \
-		$(use_with lzo liblzo2) \
-		|| die
+	CFLAGS="" ./configure ${myopts[@]} || die
 }
 
 src_compile() {
@@ -108,11 +123,11 @@ src_install() {
 }
 
 pkg_preinst() {
-	gnome2_icon_savelist
+	xdg_pkg_preinst
 }
 
 pkg_postinst() {
-	gnome2_icon_cache_update
+	xdg_pkg_postinst
 
 	if ! use lzo ; then
 		elog "OpenTTD was built without 'lzo' in USE. While 'lzo' is not"
@@ -166,5 +181,5 @@ pkg_postinst() {
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
+	xdg_pkg_postrm
 }
