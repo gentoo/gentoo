@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst postrm prepare
+DEPEND=media-libs/libsdl[joystick,opengl?,video] media-libs/sdl-image[png] media-libs/sdl-mixer music? ( media-libs/sdl-mixer[mod] ) opengl? ( virtual/opengl ) media-libs/libpng:0= dev-libs/boost:= virtual/pkgconfig dev-util/scons[python_targets_python2_7]
+DESCRIPTION=free Lemmings clone
+EAPI=6
+HOMEPAGE=https://pingus.seul.org
+IUSE=opengl music
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=media-libs/libsdl[joystick,opengl?,video] media-libs/sdl-image[png] media-libs/sdl-mixer music? ( media-libs/sdl-mixer[mod] ) opengl? ( virtual/opengl ) media-libs/libpng:0= dev-libs/boost:=
+SLOT=0
+SRC_URI=https://pingus.googlecode.com/files/pingus-0.7.6.tar.bz2
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	a09389deba2c0a7108b581e02c7cecbf	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	b2f01ad412baf81650c23fcf0975fa33	multiprocessing	cac3169468f893670dac3e7cb940e045	preserve-libs	ef207dc62baddfddfd39a164d9797648	scons-utils	741000d14c0b59263aac3f3cf6e39909	toolchain-funcs	b45201c4e6c096b98e250336954e64b9	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	14d00d009167652b1fa363e55effe213
+_md5_=6f245dff8bee814bd274931213f28ea7
