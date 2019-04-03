@@ -7,5 +7,5 @@ KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
 LICENSE=GPL-3
 RDEPEND=dev-lang/perl:= dev-perl/Devel-Size virtual/perl-Data-Dumper virtual/perl-File-Temp virtual/perl-IO
 SLOT=0
-SRC_URI=mirror://gnu/parallel/parallel-20190122.tar.bz2
+SRC_URI=mirror://gnu/parallel/parallel-20190322.tar.bz2
 _md5_=5095bf588219a0ccfd5b9f6c883b73dc
