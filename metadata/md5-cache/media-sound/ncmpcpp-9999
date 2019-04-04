@@ -3,10 +3,10 @@ DEFINED_PHASES=configure install postinst prepare unpack
 DEPEND=!dev-libs/boost:0/1.57.0 >=media-libs/libmpdclient-2.1 dev-libs/boost:=[icu?,nls,threads] net-misc/curl sys-libs/ncurses:= sys-libs/readline:* icu? ( dev-libs/icu:= ) taglib? ( media-libs/taglib ) visualizer? ( sci-libs/fftw:3.0= ) virtual/pkgconfig
 DESCRIPTION=featureful ncurses based MPD client inspired by ncmpc
 EAPI=7
-HOMEPAGE=http://ncmpcpp.rybczak.net/
+HOMEPAGE=https://ncmpcpp.rybczak.net/
 IUSE=clock icu outputs taglib visualizer
 LICENSE=GPL-2
 RDEPEND=!dev-libs/boost:0/1.57.0 >=media-libs/libmpdclient-2.1 dev-libs/boost:=[icu?,nls,threads] net-misc/curl sys-libs/ncurses:= sys-libs/readline:* icu? ( dev-libs/icu:= ) taglib? ( media-libs/taglib ) visualizer? ( sci-libs/fftw:3.0= )
 SLOT=0
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	git-r3	0d4635eeb5a96cd5315597a47eba25c9	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
-_md5_=db250fcfa55421da9a713fe893d63a47
+_md5_=4a2742eb7a5e348e1af753c6cbab4b17
