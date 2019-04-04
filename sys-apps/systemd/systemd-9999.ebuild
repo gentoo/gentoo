@@ -393,7 +393,8 @@ migrate_locale() {
 }
 
 save_enabled_units() {
-	[[ -z ${ROOT} ]] || return
+	ENABLED_UNITS=()
+	type systemctl &>/dev/null || return
 	for x; do
 		if systemctl --quiet --root="${ROOT:-/}" is-enabled "${x}"; then
 			ENABLED_UNITS+=( "${x}" )
