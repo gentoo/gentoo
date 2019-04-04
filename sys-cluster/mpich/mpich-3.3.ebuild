@@ -90,7 +90,7 @@ multilib_src_configure() {
 		--enable-versioning \
 		$(use_enable romio) \
 		$(use_enable cxx) \
-		$(multilib_native_use_enable fortran fortran all)
+		$(use_enable fortran fortran all)
 }
 
 multilib_src_test() {
