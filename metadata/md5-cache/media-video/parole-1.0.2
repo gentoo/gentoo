@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install postinst postrm
+DEPEND=>=dev-libs/dbus-glib-0.100:= >=dev-libs/glib-2.32:2= media-libs/gstreamer:1.0= media-libs/gst-plugins-base:1.0= sys-apps/dbus:0= >=x11-libs/gtk+-3.20:3= x11-libs/libX11:0= >=xfce-base/libxfce4ui-4.11:0=[gtk3(+)] >=xfce-base/libxfce4util-4.11:0= >=xfce-base/xfconf-4.10:0= libnotify? ( >=x11-libs/libnotify-0.7:0= ) taglib? ( >=media-libs/taglib-1.6:0= ) dev-util/glib-utils dev-util/intltool sys-devel/gettext virtual/pkgconfig x11-base/xorg-proto
+DESCRIPTION=A simple Xfce4 media player using GStreamer
+EAPI=6
+HOMEPAGE=https://docs.xfce.org/apps/parole/start
+IUSE=libnotify taglib
+KEYWORDS=~amd64 ~mips ~x86
+LICENSE=GPL-2+
+RDEPEND=>=dev-libs/dbus-glib-0.100:= >=dev-libs/glib-2.32:2= media-libs/gstreamer:1.0= media-libs/gst-plugins-base:1.0= sys-apps/dbus:0= >=x11-libs/gtk+-3.20:3= x11-libs/libX11:0= >=xfce-base/libxfce4ui-4.11:0=[gtk3(+)] >=xfce-base/libxfce4util-4.11:0= >=xfce-base/xfconf-4.10:0= libnotify? ( >=x11-libs/libnotify-0.7:0= ) taglib? ( >=media-libs/taglib-1.6:0= ) media-plugins/gst-plugins-meta:1.0
+SLOT=0
+SRC_URI=https://archive.xfce.org/src/apps/parole/1.0/parole-1.0.2.tar.bz2
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	gnome2-utils	532371cfcba45b2ab0d2950547c97d95	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	b2f01ad412baf81650c23fcf0975fa33	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	b45201c4e6c096b98e250336954e64b9	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	14d00d009167652b1fa363e55effe213
+_md5_=47e6e2f9b3b3826be739a467e11f62ce
