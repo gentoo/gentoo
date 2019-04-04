@@ -1,28 +1,31 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
+VALA_MIN_API_VERSION="0.34"
 VALA_USE_DEPEND="vapigen"
+GNOME_ORG_MODULE="latexila"
 
 inherit gnome2 vala
 
 DESCRIPTION="Integrated LaTeX environment for GNOME"
-HOMEPAGE="https://wiki.gnome.org/Apps/LaTeXila"
+HOMEPAGE="https://wiki.gnome.org/Apps/GNOME-LaTeX"
 
-LICENSE="GPL-3"
+LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="+introspection +latexmk rubber"
 
 COMMON_DEPEND="
 	$(vala_depend)
 	app-text/enchant
 	>=app-text/gspell-1.0:0=
-	>=dev-libs/glib-2.40:2[dbus]
+	>=dev-libs/glib-2.50:2[dbus]
 	>=dev-libs/libgee-0.10:0.8=
 	gnome-base/gsettings-desktop-schemas
+	>=x11-libs/gtef-2.0
 	>=x11-libs/gtk+-3.20:3
-	>=x11-libs/gtksourceview-3.18:3.0=
+	>=x11-libs/gtksourceview-3.24:3.0=
 	x11-libs/gdk-pixbuf:2
 	x11-libs/pango
 	introspection? ( >=dev-libs/gobject-introspection-1.30.0:= )
