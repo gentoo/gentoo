@@ -14,6 +14,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND=">=virtual/jre-1.8
+	dev-libs/libdbusmenu
 	dev-python/pip"
 
 RESTRICT="mirror strip"
