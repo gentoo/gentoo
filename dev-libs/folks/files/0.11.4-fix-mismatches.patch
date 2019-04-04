@@ -1,0 +1,59 @@
+From 5ca9ad02a48f45a9367b24fb4a248845bf8482f6 Mon Sep 17 00:00:00 2001
+From: Rico Tzschichholz <ricotz@ubuntu.com>
+Date: Mon, 5 Nov 2018 15:17:07 +0100
+Subject: [PATCH] Fix type-argument mismatches related to
+ GLib.GenericArray/List
+
+---
+ backends/bluez/bluez-persona.vala             | 4 ++--
+ backends/telepathy/lib/tpf-persona-store.vala | 6 +++---
+ 2 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/backends/bluez/bluez-persona.vala b/backends/bluez/bluez-persona.vala
+index 12fd8773..7d0fdc4d 100644
+--- a/backends/bluez/bluez-persona.vala
++++ b/backends/bluez/bluez-persona.vala
+@@ -265,7 +265,7 @@ public class Folks.Backends.BlueZ.Persona : Folks.Persona,
+       /* Parse the attributes by iterating over the vCard’s attribute list once
+        * only. Convenience functions like E.VCard.get_attribute() cause multiple
+        * iterations over the list. */
+-      unowned GLib.List<unowned E.VCardAttribute> attrs =
++      unowned GLib.List<E.VCardAttribute> attrs =
+           card.get_attributes ();
+ 
+       foreach (var attr in attrs)
+@@ -314,7 +314,7 @@ public class Folks.Backends.BlueZ.Persona : Folks.Persona,
+               new_nickname = attr.get_value ();
+           else if (attr_name == "N")
+             {
+-              unowned GLib.List<unowned string> values = attr.get_values ();
++              unowned GLib.List<string> values = attr.get_values ();
+               unowned string? family_name = null, given_name = null,
+                   additional_names = null, prefixes = null, suffixes = null;
+ 
+diff --git a/backends/telepathy/lib/tpf-persona-store.vala b/backends/telepathy/lib/tpf-persona-store.vala
+index ef2e9ca1..510c0bac 100644
+--- a/backends/telepathy/lib/tpf-persona-store.vala
++++ b/backends/telepathy/lib/tpf-persona-store.vala
+@@ -1173,15 +1173,15 @@ public class Tpf.PersonaStore : Folks.PersonaStore
+ 
+       this._conn.contact_list_changed.connect (this._contact_list_changed_cb);
+       this._contact_list_changed_cb (this._conn.dup_contact_list (),
+-          new GLib.GenericArray<TelepathyGLib.Contact> ());
++          new GLib.GenericArray<weak TelepathyGLib.Contact> ());
+ 
+       this._got_initial_members = true;
+       this._populate_counters.begin ();
+       this._notify_if_is_quiescent ();
+     }
+ 
+-  private void _contact_list_changed_cb (GLib.GenericArray<TelepathyGLib.Contact> added,
+-      GLib.GenericArray<TelepathyGLib.Contact> removed)
++  private void _contact_list_changed_cb (GLib.GenericArray<weak TelepathyGLib.Contact> added,
++      GLib.GenericArray<weak TelepathyGLib.Contact> removed)
+     {
+       var personas_added = new HashSet<Persona> ();
+       var personas_removed = new HashSet<Persona> ();
+-- 
+2.18.1
+
