@@ -7,17 +7,17 @@
   </synopsis>
   <product type="ebuild">xen</product>
   <announced>2019-04-04</announced>
-  <revised count="1">2019-04-04</revised>
+  <revised count="2">2019-04-04</revised>
   <bug>679580</bug>
   <access>remote</access>
   <affected>
     <package name="app-emulation/xen" auto="yes" arch="*">
-      <unaffected range="ge">4.10.3-r2</unaffected>
-      <vulnerable range="lt">4.10.3-r2</vulnerable>
+      <unaffected range="ge">4.10.3-r1</unaffected>
+      <vulnerable range="lt">4.10.3-r1</vulnerable>
     </package>
     <package name="app-emulation/xen-pvgrub" auto="yes" arch="*">
-      <unaffected range="ge">4.10.3-r2</unaffected>
-      <vulnerable range="lt">4.10.3-r2</vulnerable>
+      <unaffected range="ge">4.10.3</unaffected>
+      <vulnerable range="lt">4.10.3</vulnerable>
     </package>
     <package name="app-emulation/xen-tools" auto="yes" arch="*">
       <unaffected range="ge">4.10.3-r2</unaffected>
@@ -66,5 +66,5 @@
     <uri link="http://xenbits.xen.org/xsa/">XSA Security Advisory</uri>
   </references>
   <metadata tag="requester" timestamp="2019-03-28T03:48:31Z">BlueKnight</metadata>
-  <metadata tag="submitter" timestamp="2019-04-04T04:59:26Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2019-04-04T18:34:06Z">b-man</metadata>
 </glsa>
