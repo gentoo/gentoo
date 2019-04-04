@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -25,7 +25,7 @@ RDEPEND="
 	dev-qt/qtconcurrent:5
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
-	dev-qt/qtprintsupport:5
+	dev-qt/qtprintsupport:5[cups?]
 	dev-qt/qtwidgets:5
 	dbus? ( dev-qt/qtdbus:5 )
 	pdf? ( >=app-text/poppler-0.35[qt5]

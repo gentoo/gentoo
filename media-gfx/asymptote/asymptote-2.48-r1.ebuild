@@ -25,7 +25,7 @@ RDEPEND="
 	>=sys-libs/ncurses-5.4-r5:0=
 	>=sys-libs/readline-4.3-r5:0=
 	imagemagick? ( media-gfx/imagemagick[png] )
-	opengl? ( >=media-libs/mesa-8 )
+	opengl? ( media-libs/mesa media-libs/freeglut media-libs/glew:0 media-libs/glm )
 	offscreen? ( media-libs/mesa[osmesa] )
 	svg? ( app-text/dvisvgm )
 	sigsegv? ( dev-libs/libsigsegv )
