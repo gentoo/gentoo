@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=virtual/libelf !<=dev-util/bcc-0.7.0 sys-kernel/linux-headers
+DESCRIPTION=Stand-alone build of libbpf from the Linux kernel
+EAPI=7
+HOMEPAGE=https://github.com/libbpf/libbpf
+IUSE=static-libs
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2 LGPL-2.1 BSD-2
+RDEPEND=virtual/libelf !<=dev-util/bcc-0.7.0
+SLOT=0/0.20190404
+SRC_URI=https://github.com/libbpf/libbpf/archive/7c27c6306160f630c3c4f4b4971deb657126d681.tar.gz -> libbpf-0.20190404.tar.gz
+_eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
+_md5_=95be3679b03035480ca89cb3c11c423b
