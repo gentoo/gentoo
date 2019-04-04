@@ -445,6 +445,10 @@ pkg_postinst() {
 		systemctl --root="${ROOT:-/}" enable "${ENABLED_UNITS[@]}"
 	fi
 
+	if [[ -L ${EROOT}/var/lib/systemd/timesync ]]; then
+		rm "${EROOT}/var/lib/systemd/timesync"
+	fi
+
 	if [[ -z ${ROOT} && -d /run/systemd/system ]]; then
 		ebegin "Reexecuting system manager"
 		systemctl daemon-reexec
