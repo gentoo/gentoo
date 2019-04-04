@@ -1,14 +1,16 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
+
+PYTHON_COMPAT=( python{2_7,3_5,3_6,3_7} )
 
 MY_P="${PN}-3-${PV}"
 
-inherit scons-utils toolchain-funcs user flag-o-matic
+inherit python-any-r1 scons-utils toolchain-funcs user flag-o-matic
 DESCRIPTION="Synchronous multi-master replication engine that provides the wsrep API"
 HOMEPAGE="http://galeracluster.com"
-SRC_URI="http://releases.galeracluster.com/${PN}-3/source/galera-3-${PV}.tar.gz"
+SRC_URI="http://nyc2.mirrors.digitalocean.com/mariadb/mariadb-10.3.14/${P}/src/${P}.tar.gz"
 LICENSE="GPL-2 BSD"
 
 SLOT="0"
@@ -20,19 +22,19 @@ CDEPEND="
 	dev-libs/openssl:0=
 	>=dev-libs/boost-1.41:0=
 	"
-DEPEND="${DEPEND}
+BDEPEND=">=sys-devel/gcc-4.4"
+DEPEND="${BDEPEND}
 	${CDEPEND}
 	dev-libs/check
-	>=sys-devel/gcc-4.4
 	>=dev-cpp/asio-1.10.1[ssl]
 	<dev-cpp/asio-1.12.0
 	"
 #Run time only
 RDEPEND="${CDEPEND}"
 
-S="${WORKDIR}/${MY_P}"
+#S="${WORKDIR}/${MY_P}"
 # Respect {C,LD}FLAGS.
-PATCHES=( "${FILESDIR}/galera-3.15-strip-extra-cflags.patch" )
+PATCHES=( "${FILESDIR}/galera-4.1-strip-extra-cflags.patch" )
 
 pkg_preinst() {
 	if use garbd ; then
