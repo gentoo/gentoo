@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<longdescription lang="en">
+		FreeBASIC is a completely free, open-source, multi-platform
+		BASIC compiler, with syntax similar to MS-QuickBASIC, that adds
+		new features such as pointers, unsigned data types, inline
+		assembly, object orientation, and many others.
+	</longdescription>
+	<maintainer type="person">
+		<email>vilhelm.gray@gmail.com</email>
+		<name>William Breathitt Gray</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<upstream>
+		<bugs-to>https://github.com/freebasic/fbc/issues</bugs-to>
+		<doc lang="en">https://www.freebasic.net</doc>
+		<remote-id type="github">freebasic/fbc</remote-id>
+	</upstream>
+</pkgmetadata>
