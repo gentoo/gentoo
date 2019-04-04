@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>horea.christ@gmail.com</email>
+		<name>Horea Christian</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+		Provides a publish-subscribe API to facilitate event-based or message-based
+		architecture in a single-process application. It is centered on the notion
+		of a topic; senders publish messages of a given topic, and listeners
+		subscribe to messages of a given topic, all inside the same process. The
+		package also supports a variety of advanced features that facilitate
+		debugging and maintaining topics and messages in larger desktop- or
+		server-based applications.
+	</longdescription>
+</pkgmetadata>
