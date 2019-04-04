@@ -30,6 +30,8 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
+PATCHES=( "${FILESDIR}/${P}-mbedtls.patch" ) # bug 680820
+
 pkg_setup() {
 	# Upstream doesn't support building dynamic & static
 	# simultaneously: https://github.com/nih-at/libzip/issues/76
