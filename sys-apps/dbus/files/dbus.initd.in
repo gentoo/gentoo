@@ -1,0 +1,36 @@
+#!/sbin/openrc-run
+# Copyright 1999-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License, v2 or later
+
+extra_started_commands="reload"
+
+description="An IPC message bus daemon"
+pidfile="@rundir@/dbus.pid"
+command="/usr/bin/dbus-daemon"
+command_args="--system"
+
+dbus_socket="@rundir@/dbus/system_bus_socket"
+
+depend() {
+	need localmount
+	after bootmisc
+}
+
+start_pre() {
+	/usr/bin/dbus-uuidgen --ensure=/etc/machine-id
+
+	# We need to test if /var/run/dbus exists, since script will fail if it does not
+	checkpath -q -d "@rundir@/dbus"
+}
+
+stop_post() {
+	[ ! -S "${dbus_socket}" ] || rm -f "${dbus_socket}"
+}
+
+reload() {
+	ebegin "Reloading D-BUS messagebus config"
+	dbus-send --print-reply --system --type=method_call \
+			--dest=org.freedesktop.DBus \
+			/ org.freedesktop.DBus.ReloadConfig > /dev/null
+	eend $?
+}
