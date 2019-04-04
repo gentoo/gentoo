@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit autotools toolchain-funcs
 
 DESCRIPTION="A window switcher, run dialog and dmenu replacement"
-HOMEPAGE="https://github.com/DaveDavenport/rofi/"
+HOMEPAGE="https://github.com/davatorium/rofi"
 SRC_URI="${HOMEPAGE}/releases/download/${PV}/${P}.tar.xz"
 
 LICENSE="MIT"
