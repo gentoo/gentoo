@@ -1,10 +1,11 @@
+BDEPEND=>=dev-vcs/git-1.8.2.1[curl]
 DEFINED_PHASES=compile install prepare test unpack
-DEPEND=dev-db/sqlite >=dev-vcs/git-1.8.2.1[curl]
+DEPEND=dev-db/sqlite
 DESCRIPTION=static analysis tool for C
-EAPI=4
+EAPI=7
 HOMEPAGE=http://smatch.sourceforge.net/
 LICENSE=OSL-1.1
 RDEPEND=dev-db/sqlite
 SLOT=0
 _eclasses_=git-r3	0d4635eeb5a96cd5315597a47eba25c9	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
-_md5_=56543250af4c114a7bbb389c4ddaab5c
+_md5_=ef2a31d9046422a5dc5247a4585fc6bf
