@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201904-09">
+  <title>Xen: Multiple Vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Xen, the worst of which
+    could result in privilege escalation.
+  </synopsis>
+  <product type="ebuild">xen</product>
+  <announced>2019-04-04</announced>
+  <revised count="1">2019-04-04</revised>
+  <bug>679580</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-emulation/xen" auto="yes" arch="*">
+      <unaffected range="ge">4.10.3-r2</unaffected>
+      <vulnerable range="lt">4.10.3-r2</vulnerable>
+    </package>
+    <package name="app-emulation/xen-pvgrub" auto="yes" arch="*">
+      <unaffected range="ge">4.10.3-r2</unaffected>
+      <vulnerable range="lt">4.10.3-r2</vulnerable>
+    </package>
+    <package name="app-emulation/xen-tools" auto="yes" arch="*">
+      <unaffected range="ge">4.10.3-r2</unaffected>
+      <vulnerable range="lt">4.10.3-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Xen is a bare-metal hypervisor.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Xen. Please review the
+      referenced XSA security advisories.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Please review the referenced XSA security advisories for details.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Xen users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-emulation/xen-4.10.3-r2"
+    </code>
+    
+    <p>All Xen pvgrub users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=app-emulation/xen-pvgrub-4.10.3-r2"
+    </code>
+    
+    <p>All Xen tools users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=app-emulation/xen-tools-4.10.3-r2"
+    </code>
+  </resolution>
+  <references>
+    <uri link="http://xenbits.xen.org/xsa/">XSA Security Advisory</uri>
+  </references>
+  <metadata tag="requester" timestamp="2019-03-28T03:48:31Z">BlueKnight</metadata>
+  <metadata tag="submitter" timestamp="2019-04-04T04:59:26Z">b-man</metadata>
+</glsa>
