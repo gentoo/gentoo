@@ -19,7 +19,7 @@ fi
 
 LICENSE="Apache-2.0"
 SLOT="0"
-IUSE="proxy account container object +memcached"
+IUSE="account container doc +memcached object proxy"
 REQUIRED_USE="|| ( proxy account container object )"
 
 CDEPEND=">=dev-python/pbr-1.8.0[${PYTHON_USEDEP}]"
@@ -107,6 +107,11 @@ python_install_all() {
 		newinitd "${FILESDIR}/swift-object.initd" "swift-object"
 		newins "etc/object-server.conf-sample" "object-server.conf"
 		newins "etc/object-expirer.conf-sample" "object-expirer.conf"
+	fi
+
+	if use doc; then
+		doman doc/manpages/*
+		dodoc -r doc/{s3api,saio,source}
 	fi
 
 	fowners root:swift "/etc/swift" || die "fowners failed"
