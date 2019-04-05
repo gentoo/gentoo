@@ -23,6 +23,7 @@ SLOT="0"
 IUSE="test"
 
 COMMON_DEPEND="sys-devel/clang:=
+	dev-libs/libbpf:=
 	>=sys-devel/llvm-3.7.1:=[llvm_targets_BPF(+)]
 	>=dev-util/bcc-0.9.0:=
 	virtual/libelf"
