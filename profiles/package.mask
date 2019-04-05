@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Zac Medico <zmedico@gentoo.org> (04 Apr 2019)
+# Ebuild is not needed since consumers use EGO_VENDOR.
+# Removal in 30 days.  Bug #656972.
+dev-go/go-resiliency
+
 # Michał Górny <mgorny@gentoo.org> (03 Apr 2019)
 # Does not build with ncurses[tinfo].  The current version is from 2004,
 # and it seems to have been abandoned upstream.
