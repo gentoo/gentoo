@@ -1,8 +1,8 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
-PYTHON_COMPAT=( python{2_7,3_{5,6,7}} )
+EAPI=6
+PYTHON_COMPAT=( python{2_7,3_{4,5,6}} )
 DISTUTILS_OPTIONAL=1
 
 inherit check-reqs bash-completion-r1 cmake-utils distutils-r1 flag-o-matic \
@@ -26,11 +26,14 @@ SLOT="0"
 
 CPU_FLAGS_X86=(sse{,2,3,4_1,4_2} ssse3)
 
-IUSE="babeltrace cephfs dpdk fuse grafana jemalloc kerberos ldap libressl"
-IUSE+=" lttng +mgr numa rabbitmq +radosgw +ssl static-libs +system-boost"
-IUSE+=" systemd +tcmalloc test xfs zfs"
+IUSE="babeltrace cephfs dpdk fuse jemalloc ldap libressl lttng +mgr"
+IUSE+=" numa +radosgw +ssl static-libs +system-boost systemd +tcmalloc"
+IUSE+=" test xfs zfs"
 IUSE+=" $(printf "cpu_flags_x86_%s\n" ${CPU_FLAGS_X86[@]})"
 
+# unbundling code commented out pending bugs 584056 and 584058
+#>=dev-libs/jerasure-2.0.0-r1
+#>=dev-libs/gf-complete-2.0.0
 COMMON_DEPEND="
 	virtual/libudev:=
 	app-arch/bzip2:=[static-libs?]
@@ -46,14 +49,12 @@ COMMON_DEPEND="
 	sys-auth/oath-toolkit:=
 	sys-apps/keyutils:=[static-libs?]
 	sys-apps/util-linux:=[static-libs?]
-	sys-libs/ncurses:0=[static-libs?]
 	sys-libs/zlib:=[static-libs?]
 	babeltrace? ( dev-util/babeltrace )
 	ldap? ( net-nds/openldap:=[static-libs?] )
 	lttng? ( dev-util/lttng-ust:= )
 	fuse? ( sys-fs/fuse:0=[static-libs?] )
-	kerberos? ( virtual/krb5 )
-	rabbitmq? ( net-libs/rabbitmq-c:=[static-libs?] )
+	numa? ( sys-process/numactl:=[static-libs?] )
 	ssl? (
 		!libressl? ( dev-libs/openssl:=[static-libs?] )
 		libressl? ( dev-libs/libressl:=[static-libs?] )
@@ -81,25 +82,22 @@ COMMON_DEPEND="
 DEPEND="${COMMON_DEPEND}
 	amd64? ( dev-lang/yasm )
 	x86? ( dev-lang/yasm )
+	app-arch/cpio
 	dev-python/cython[${PYTHON_USEDEP}]
 	dev-python/sphinx
 	dev-util/cunit
+	dev-util/gperf
+	dev-util/valgrind
+	sys-apps/which
+	sys-devel/bc
+	virtual/pkgconfig
 	test? (
 		dev-python/coverage[${PYTHON_USEDEP}]
 		dev-python/tox[${PYTHON_USEDEP}]
 		dev-python/virtualenv[${PYTHON_USEDEP}]
 		sys-apps/grep[pcre]
 		sys-fs/btrfs-progs
-	)
-	"
-BDEPEND="	app-arch/cpio
-	>=dev-util/cmake-3.5.0
-	dev-util/gperf
-	dev-util/valgrind
-	sys-apps/which
-	sys-devel/bc
-	virtual/pkgconfig
-	"
+	)"
 RDEPEND="${COMMON_DEPEND}
 	net-misc/socat
 	sys-apps/gptfdisk
@@ -121,7 +119,6 @@ REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
 	|| ( $(python_gen_useflags 'python3*') )
 	?? ( jemalloc tcmalloc )
-	rabbitmq? ( radosgw )
 	"
 
 # the tests need root access
@@ -142,18 +139,16 @@ UNBUNDLE_LIBS=(
 
 PATCHES=(
 	"${FILESDIR}/ceph-12.2.0-use-provided-cpu-flag-values.patch"
-	"${FILESDIR}/ceph-14.2.0-cflags.patch"
+	"${FILESDIR}/ceph-12.2.0-cflags.patch"
 	"${FILESDIR}/ceph-12.2.4-boost-build-none-options.patch"
 	"${FILESDIR}/ceph-13.2.0-cflags.patch"
-	"${FILESDIR}/ceph-14.2.0-mgr-python-version.patch"
-	"${FILESDIR}/ceph-14.2.0-no-virtualenvs.patch"
+	"${FILESDIR}/ceph-12.2.4-rocksdb-cflags.patch"
+	"${FILESDIR}/ceph-13.2.0-mgr-python-version.patch"
+	"${FILESDIR}/ceph-13.2.0-no-virtualenvs.patch"
 	"${FILESDIR}/ceph-13.2.2-dont-install-sysvinit-script.patch"
-	"${FILESDIR}/ceph-14.2.0-dpdk-cflags.patch"
-	"${FILESDIR}/ceph-14.2.0-link-crc32-statically.patch"
+	"${FILESDIR}/ceph-13.2.5-no-automagic-deps.patch"
+	"${FILESDIR}/ceph-14.2.0-cython-0.29.patch"
 )
-
-# dpdk and ninja don't get along
-CMAKE_MAKEFILE_GENERATOR="emake"
 
 check-reqs_export_vars() {
 	if use amd64; then
@@ -188,7 +183,7 @@ src_prepare() {
 	cmake-utils_src_prepare
 
 	if use system-boost; then
-		eapply "${FILESDIR}/ceph-14.2.0-boost-sonames.patch"
+		eapply "${FILESDIR}/ceph-13.2.0-boost-sonames.patch"
 	fi
 
 	sed -i -r "s:DESTINATION .+\\):DESTINATION $(get_bashcompdir)\\):" \
@@ -208,20 +203,17 @@ ceph_src_configure() {
 		-DWITH_DPDK=$(usex dpdk)
 		-DWITH_FUSE=$(usex fuse)
 		-DWITH_LTTNG=$(usex lttng)
-		-DWITH_GSSAPI=$(usex kerberos)
-		-DWITH_GRAFANA=$(usex grafana)
 		-DWITH_MGR=$(usex mgr)
 		-DWITH_MGR_DASHBOARD_FRONTEND=NO
 		-DWITH_NUMA=$(usex numa)
 		-DWITH_OPENLDAP=$(usex ldap)
 		-DWITH_RADOSGW=$(usex radosgw)
-		-DWITH_RADOSGW_AMQP_ENDPOINT=$(usex rabbitmq)
 		-DWITH_SSL=$(usex ssl)
 		-DWITH_SYSTEMD=$(usex systemd)
 		-DWITH_TESTS=$(usex test)
 		-DWITH_XFS=$(usex xfs)
 		-DWITH_ZFS=$(usex zfs)
-		-DENABLE_SHARED=$(usex static-libs '' 'ON' 'OFF')
+		-DENABLE_SHARED=$(usex static-libs '' 'yes' 'no')
 		-DALLOCATOR=$(usex tcmalloc 'tcmalloc' "$(usex jemalloc 'jemalloc' 'libc')")
 		-DWITH_SYSTEM_BOOST=$(usex system-boost)
 		-DBOOST_J=$(makeopts_jobs)
@@ -229,7 +221,7 @@ ceph_src_configure() {
 		-DWITH_TBB=no
 		-DSYSTEMD_UNITDIR=$(systemd_get_systemunitdir)
 		-DEPYTHON_VERSION="${EPYTHON#python}"
-		-DCMAKE_INSTALL_DOCDIR="${EPREFIX}/usr/share/doc/${PN}"
+		-DCMAKE_INSTALL_DOCDIR="${EPREFIX}/usr/share/doc/${P}"
 		-DCMAKE_INSTALL_SYSCONFDIR="${EPREFIX}/etc"
 		-Wno-dev
 	)
@@ -255,6 +247,8 @@ src_configure() {
 python_compile() {
 	local CMAKE_USE_DIR="${S}"
 	ceph_src_configure
+
+	rm -r "${BUILD_DIR}/lib/cython_modules" || die
 
 	pushd "${BUILD_DIR}/src/pybind" >/dev/null || die
 	emake VERBOSE=1 clean
@@ -289,10 +283,10 @@ src_install() {
 	cmake-utils_src_install
 	python_foreach_impl python_install
 
-	find "${ED}" -name '*.la' -type f -delete || die
+	prune_libtool_files --all
 
 	exeinto /usr/$(get_libdir)/ceph
-	newexe "${BUILD_DIR}/bin/init-ceph" init-ceph
+	newexe "${CMAKE_BUILD_DIR}/bin/init-ceph" ceph_init.sh
 
 	insinto /etc/logrotate.d/
 	newins "${FILESDIR}"/ceph.logrotate-r2 ${PN}
@@ -334,7 +328,7 @@ src_install() {
 
 	# python_fix_shebang apparently is not idempotent
 	sed -i -r  's:(/usr/lib/python-exec/python[0-9]\.[0-9]/python)[0-9]\.[0-9]:\1:' \
-		"${ED}"/usr/sbin/{mount.*,ceph-volume{,-systemd}} || die "sed failed"
+		"${ED}"/usr/{sbin/ceph-disk,bin/ceph-detect-init} || die "sed failed"
 }
 
 pkg_postinst() {
