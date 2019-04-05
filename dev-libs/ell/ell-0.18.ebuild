@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,17 +7,27 @@ inherit multilib-minimal
 
 DESCRIPTION="Embedded Linux Library provides core, low-level functionality for system daemons"
 HOMEPAGE="https://01.org/ell"
-SRC_URI="https://mirrors.edge.kernel.org/pub/linux/libs/${PN}/${P}.tar.xz"
+if [[ "${PV}" == *9999 ]] ; then
+	inherit autotools git-r3
+	EGIT_REPO_URI="https://git.kernel.org/pub/scm/libs/ell/ell.git"
+else
+	SRC_URI="https://mirrors.edge.kernel.org/pub/linux/libs/${PN}/${P}.tar.xz"
+	KEYWORDS="~amd64 ~arm ~mips ~ppc ~ppc64 ~x86"
+fi
 LICENSE="LGPL-2.1"
 SLOT="0"
 
-KEYWORDS="~amd64 ~arm ~mips ~ppc ~ppc64 ~x86"
 IUSE="glib pie"
 
 RDEPEND="
 	glib? ( dev-libs/glib:2[${MULTILIB_USEDEP}] )
 "
 DEPEND="${RDEPEND}"
+
+src_prepare() {
+	default
+	[[ "${PV}" == *9999 ]] && eautoreconf
+}
 
 multilib_src_configure() {
 	local myeconfargs=(
