@@ -1,15 +1,15 @@
 BDEPEND=app-arch/xz-utils dev-util/cmake sys-devel/flex sys-devel/bison dev-util/ninja >=dev-util/cmake-3.9.6
 DEFINED_PHASES=compile configure install prepare test
-DEPEND=sys-devel/clang:= >=sys-devel/llvm-3.7.1:=[llvm_targets_BPF(+)] >=dev-util/bcc-0.9.0:= virtual/libelf test? ( dev-cpp/gtest )
+DEPEND=sys-devel/clang:= dev-libs/libbpf:= >=sys-devel/llvm-3.7.1:=[llvm_targets_BPF(+)] >=dev-util/bcc-0.9.0:= virtual/libelf test? ( dev-cpp/gtest )
 DESCRIPTION=High-level tracing language for eBPF
 EAPI=7
 HOMEPAGE=https://github.com/iovisor/bpftrace
 IUSE=test
 KEYWORDS=~amd64 ~x86
 LICENSE=Apache-2.0
-RDEPEND=sys-devel/clang:= >=sys-devel/llvm-3.7.1:=[llvm_targets_BPF(+)] >=dev-util/bcc-0.9.0:= virtual/libelf
+RDEPEND=sys-devel/clang:= dev-libs/libbpf:= >=sys-devel/llvm-3.7.1:=[llvm_targets_BPF(+)] >=dev-util/bcc-0.9.0:= virtual/libelf
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/iovisor/bpftrace/archive/v0.9.tar.gz -> bpftrace-0.9.tar.gz
 _eclasses_=cmake-utils	ab10bd85e5d38e2a32077bcd91faa1b6	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	a09389deba2c0a7108b581e02c7cecbf	multilib	b2f01ad412baf81650c23fcf0975fa33	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	b45201c4e6c096b98e250336954e64b9	xdg-utils	14d00d009167652b1fa363e55effe213
-_md5_=8f7fda8dcc0e90b1bd1777f7cfaed5fd
+_md5_=b7092cdb5c284c233869de3b783efc52
