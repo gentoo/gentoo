@@ -10,7 +10,7 @@ LICENSE="BSD GPL-3"
 SRC_URI="https://github.com/appneta/${PN}/releases/download/v${PV/_/-}/${P/_/-}.tar.xz -> ${P}.tar.xz"
 
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~sparc ~x86"
+KEYWORDS="amd64 ~arm ~sparc ~x86"
 IUSE="debug pcapnav +tcpdump"
 
 DEPEND="
