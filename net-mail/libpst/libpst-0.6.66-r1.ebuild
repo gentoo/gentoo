@@ -7,8 +7,8 @@ PYTHON_COMPAT=( python2_7 )
 inherit autotools python-single-r1
 
 DESCRIPTION="Tools and library for reading Outlook files (.pst format)"
-HOMEPAGE="http://www.five-ten-sg.com/libpst/"
-SRC_URI="http://www.five-ten-sg.com/${PN}/packages/${P}.tar.gz"
+HOMEPAGE="https://www.five-ten-sg.com/libpst/"
+SRC_URI="https://www.five-ten-sg.com/${PN}/packages/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
