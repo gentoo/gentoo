@@ -37,6 +37,8 @@ DEPEND="${RDEPEND}"
 BDEPEND="dev-python/docutils
 	virtual/pkgconfig"
 
+PATCHES=( "${FILESDIR}"/${P}-tinfo.patch )
+
 src_prepare() {
 	default
 
