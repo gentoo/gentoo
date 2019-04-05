@@ -1,12 +1,13 @@
 DEFINED_PHASES=compile configure postinst postrm preinst prepare test unpack
-DEPEND=x11-libs/wxGTK:3.0[X,opengl,debug?] dev-lang/luajit:2[lua52compat] dev-libs/boost:=[icu,nls,threads] dev-libs/icu:= media-libs/ffmpegsource:= media-libs/fontconfig media-libs/freetype media-libs/libass:=[fontconfig] sys-libs/zlib virtual/libiconv virtual/opengl alsa? ( media-libs/alsa-lib ) fftw? ( >=sci-libs/fftw-3.3:= ) openal? ( media-libs/openal ) portaudio? ( =media-libs/portaudio-19* ) pulseaudio? ( media-sound/pulseaudio ) spell? ( app-text/hunspell:= ) uchardet? ( app-i18n/uchardet ) dev-util/intltool sys-devel/gettext virtual/pkgconfig test? ( ~dev-cpp/gtest-1.7.0 dev-lua/busted dev-lua/luarocks ) >=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1[curl]
+DEPEND=x11-libs/wxGTK:3.0[X,opengl,debug?] dev-lang/luajit:2[lua52compat] dev-libs/boost:=[icu,nls,threads] dev-libs/icu:= media-libs/ffmpegsource:= media-libs/fontconfig media-libs/freetype media-libs/libass:=[fontconfig] sys-libs/zlib virtual/libiconv virtual/opengl alsa? ( media-libs/alsa-lib ) fftw? ( >=sci-libs/fftw-3.3:= ) openal? ( media-libs/openal ) portaudio? ( =media-libs/portaudio-19* ) pulseaudio? ( media-sound/pulseaudio ) spell? ( app-text/hunspell:= ) uchardet? ( app-i18n/uchardet ) dev-util/intltool sys-devel/gettext virtual/pkgconfig >=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1[curl]
 DESCRIPTION=Advanced subtitle editor
 EAPI=6
 HOMEPAGE=http://www.aegisub.org/ https://github.com/Aegisub/Aegisub
-IUSE=+alsa debug +fftw openal oss portaudio pulseaudio spell test +uchardet
+IUSE=+alsa debug +fftw openal oss portaudio pulseaudio spell +uchardet
 LICENSE=BSD MIT
 RDEPEND=x11-libs/wxGTK:3.0[X,opengl,debug?] dev-lang/luajit:2[lua52compat] dev-libs/boost:=[icu,nls,threads] dev-libs/icu:= media-libs/ffmpegsource:= media-libs/fontconfig media-libs/freetype media-libs/libass:=[fontconfig] sys-libs/zlib virtual/libiconv virtual/opengl alsa? ( media-libs/alsa-lib ) fftw? ( >=sci-libs/fftw-3.3:= ) openal? ( media-libs/openal ) portaudio? ( =media-libs/portaudio-19* ) pulseaudio? ( media-sound/pulseaudio ) spell? ( app-text/hunspell:= ) uchardet? ( app-i18n/uchardet )
 REQUIRED_USE=|| ( alsa openal oss portaudio pulseaudio )
+RESTRICT=test
 SLOT=0
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	a09389deba2c0a7108b581e02c7cecbf	git-r3	0d4635eeb5a96cd5315597a47eba25c9	gnome2-utils	532371cfcba45b2ab0d2950547c97d95	l10n	97f2753e3f1f3753d53d856c7c0bbb0b	libtool	f143db5a74ccd9ca28c1234deffede96	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	b2f01ad412baf81650c23fcf0975fa33	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	b45201c4e6c096b98e250336954e64b9	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	wxwidgets	ed63935305b6de2210ae97a407719d89	xdg-utils	14d00d009167652b1fa363e55effe213
-_md5_=8adba77664c64a1e143a8b129653d61c
+_md5_=6a18a0a26d42bb38aa3185fcb1ce21b0
