@@ -1,0 +1,81 @@
+From 32e4f55732e42103cd7ba5e84ddd086bf8103948 Mon Sep 17 00:00:00 2001
+From: Stefan Strogin <stefan.strogin@gmail.com>
+Date: Fri, 5 Apr 2019 09:57:14 +0300
+Subject: [PATCH] Fix build with LibreSSL
+
+Provide RSA_meth_set_{sign,verify} for LibreSSL.
+Do not redefine M_ASN1_IA5STRING_new and RSA_F_RSA_EAY_PRIVATE_DECRYPT.
+
+Upstream-Status: Submitted [https://phabricator.kde.org/D20259]
+Signed-off-by: Stefan Strogin <stefan.strogin@gmail.com>
+---
+ plugins/qca-ossl/ossl110-compat.h | 34 ++++++++++++++++---------------
+ plugins/qca-ossl/qca-ossl.cpp     |  2 +-
+ 2 files changed, 19 insertions(+), 17 deletions(-)
+
+diff --git a/plugins/qca-ossl/ossl110-compat.h b/plugins/qca-ossl/ossl110-compat.h
+index ec15475..2d47835 100644
+--- a/plugins/qca-ossl/ossl110-compat.h
++++ b/plugins/qca-ossl/ossl110-compat.h
+@@ -213,22 +213,6 @@ static int RSA_meth_set_priv_dec(RSA_METHOD *rsa, int (*priv_dec) (int flen, con
+     return 1;
+ }
+ 
+-static int RSA_meth_set_sign(RSA_METHOD *meth, int (*sign) (int type, const unsigned char *m,
+-    unsigned int m_length, unsigned char *sigret, unsigned int *siglen, const RSA *rsa))
+-{
+-    if (!meth) return 0;
+-    meth->rsa_sign = sign;
+-    return 1;
+-}
+-
+-static int RSA_meth_set_verify(RSA_METHOD *meth, int (*verify) (int dtype, const unsigned char *m,
+-    unsigned int m_length, const unsigned char *sigbuf, unsigned int siglen, const RSA *rsa))
+-{
+-    if (!meth) return 0;
+-    meth->rsa_verify = verify;
+-    return 1;
+-}
+-
+ static int RSA_meth_set_finish(RSA_METHOD *meth, int (*finish) (RSA *rsa))
+ {
+     if (!meth) return 0;
+@@ -280,4 +264,22 @@ static void HMAC_CTX_free(HMAC_CTX *ctx)
+ 
+ #endif // OPENSSL_VERSION_NUMBER < 0x10100000L
+ 
++#if (OPENSSL_VERSION_NUMBER < 0x10100000L) || defined(LIBRESSL_VERSION_NUMBER)
++static int RSA_meth_set_sign(RSA_METHOD *meth, int (*sign) (int type, const unsigned char *m,
++    unsigned int m_length, unsigned char *sigret, unsigned int *siglen, const RSA *rsa))
++{
++    if (!meth) return 0;
++    meth->rsa_sign = sign;
++    return 1;
++}
++
++static int RSA_meth_set_verify(RSA_METHOD *meth, int (*verify) (int dtype, const unsigned char *m,
++    unsigned int m_length, const unsigned char *sigbuf, unsigned int siglen, const RSA *rsa))
++{
++    if (!meth) return 0;
++    meth->rsa_verify = verify;
++    return 1;
++}
++#endif // (OPENSSL_VERSION_NUMBER < 0x10100000L) || defined(LIBRESSL_VERSION_NUMBER)
++
+ #endif // OSSL110COMPAT_H
+diff --git a/plugins/qca-ossl/qca-ossl.cpp b/plugins/qca-ossl/qca-ossl.cpp
+index 39dbc2b..1216bef 100644
+--- a/plugins/qca-ossl/qca-ossl.cpp
++++ b/plugins/qca-ossl/qca-ossl.cpp
+@@ -61,7 +61,7 @@
+ #endif
+ 
+ // OpenSSL 1.1.0 compatibility macros
+-#ifdef OSSL_110
++#if defined(OSSL_110) && !defined(LIBRESSL_VERSION_NUMBER)
+ #define M_ASN1_IA5STRING_new() ASN1_IA5STRING_new()
+ #define RSA_F_RSA_EAY_PRIVATE_DECRYPT RSA_F_RSA_OSSL_PRIVATE_DECRYPT
+ #endif
+-- 
+2.21.0
+
