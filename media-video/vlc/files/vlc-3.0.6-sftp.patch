@@ -1,0 +1,24 @@
+From 11449b5cd8b415768e010d9b7c1d6ba3cea21f82 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?R=C3=A9mi=20Denis-Courmont?= <remi@remlab.net>
+Date: Wed, 20 Mar 2019 05:20:30 +0200
+Subject: [PATCH] sftp: fix version for ECDSA known hosts (fixes #22060)
+
+1.8.x is a stable branch, separate from the feature branch that contains
+the ECDSA support.
+---
+ modules/access/sftp.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/modules/access/sftp.c b/modules/access/sftp.c
+index e420b91ca93..dc7f6cc27f7 100644
+--- a/modules/access/sftp.c
++++ b/modules/access/sftp.c
+@@ -307,7 +307,7 @@ static int Open( vlc_object_t* p_this )
+         case LIBSSH2_HOSTKEY_TYPE_DSS:
+             knownhost_fingerprint_algo = LIBSSH2_KNOWNHOST_KEY_SSHDSS;
+             break;
+-#if LIBSSH2_VERSION_NUM >= 0x010801
++#if LIBSSH2_VERSION_NUM >= 0x010900
+         case LIBSSH2_HOSTKEY_TYPE_ECDSA_256:
+             knownhost_fingerprint_algo = LIBSSH2_KNOWNHOST_KEY_ECDSA_256;
+             break;
