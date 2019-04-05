@@ -19,6 +19,12 @@ RDEPEND="${DEPEND}"
 
 DOCS="CHANGES.txt doc/*.txt"
 
+PATCHES=(
+	"${FILESDIR}/${P}-configparser.patch"
+	"${FILESDIR}/${P}-csrf-headers.patch"
+	"${FILESDIR}/${P}-xss.patch"
+)
+
 python_install_all() {
 	distutils-r1_python_install_all
 	rm -r "${ED}"/usr/share/doc/${PN} || die
