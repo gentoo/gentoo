@@ -27,6 +27,7 @@ IUSE="X acl cscope debug gpm lua luajit minimal nls perl python racket ruby seli
 REQUIRED_USE="
 	luajit? ( lua )
 	python? ( ${PYTHON_REQUIRED_USE} )
+	vim-pager? ( !minimal )
 "
 
 RDEPEND="
@@ -57,6 +58,7 @@ DEPEND="
 	${RDEPEND}
 	sys-devel/autoconf
 	nls? ( sys-devel/gettext )
+	vim-pager? ( app-editors/vim-core[-minimal] )
 "
 
 pkg_setup() {

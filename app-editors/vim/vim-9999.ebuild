@@ -51,12 +51,14 @@ RDEPEND="
 	selinux? ( sys-libs/libselinux )
 	tcl? ( dev-lang/tcl:0= )
 	X? ( x11-libs/libXt )
+	vim-pager? ( !minimal )
 "
 
 DEPEND="
 	${RDEPEND}
 	sys-devel/autoconf
 	nls? ( sys-devel/gettext )
+	vim-pager? ( app-editors/vim-core[-minimal] )
 "
 
 pkg_setup() {
