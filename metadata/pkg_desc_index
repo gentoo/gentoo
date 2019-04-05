@@ -8807,7 +8807,7 @@ net-libs/uhttpmock 0.5.1: HTTP web service mocking library
 net-libs/webkit-gtk 2.22.6: Open source web browser engine
 net-libs/wvstreams 4.6.1-r3: A network programming library in C++
 net-libs/xrootd 4.8.3: Extended ROOT remote file server
-net-libs/zeromq 2.2.0 3.2.3 3.2.5 4.1.1 4.1.6 4.2.1 4.2.2-r2 4.3.0 4.3.1: A brokerless kernel
+net-libs/zeromq 2.2.0 3.2.5 4.3.1: A brokerless kernel
 net-mail/altermime 0.3.11: alterMIME is a small program which is used to alter your mime-encoded mailpacks
 net-mail/amavis-logwatch 1.51.03-r3: A log analyzer for amavisd-new
 net-mail/archivemail 0.9.0-r1: Tool written archiving old email in mailboxes
