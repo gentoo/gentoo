@@ -27,6 +27,7 @@ IUSE="X acl cscope debug gpm lua luajit minimal nls perl python racket ruby seli
 REQUIRED_USE="
 	luajit? ( lua )
 	python? ( ${PYTHON_REQUIRED_USE} )
+	vim-pager? ( !minimal )
 "
 
 RDEPEND="
@@ -57,6 +58,7 @@ DEPEND="
 	${RDEPEND}
 	sys-devel/autoconf
 	nls? ( sys-devel/gettext )
+	vim-pager? ( app-editors/vim-core[-minimal] )
 "
 
 pkg_setup() {
@@ -144,7 +146,9 @@ src_prepare() {
 }
 
 src_configure() {
-	local myconf=()
+	local myconf=(
+		--enable-multibyte
+	)
 
 	# Fix bug 37354: Disallow -funroll-all-loops on amd64
 	# Bug 57859 suggests that we want to do this for all archs
@@ -173,10 +177,9 @@ src_configure() {
 	done
 
 	if use minimal; then
-		myconf=(
+		myconf+=(
 			--with-features=tiny
 			--disable-nls
-			--disable-multibyte
 			--disable-acl
 			--enable-gui=no
 			--without-x
@@ -193,9 +196,8 @@ src_configure() {
 	else
 		use debug && append-flags "-DDEBUG"
 
-		myconf=(
+		myconf+=(
 			--with-features=huge
-			--enable-multibyte
 			$(use_enable acl)
 			$(use_enable cscope)
 			$(use_enable gpm)
