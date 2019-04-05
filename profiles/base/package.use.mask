@@ -7,13 +7,6 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
-# Michał Górny <mgorny@gentoo.org> (03 Apr 2019)
-# sci-mathematics/isabelle is slated for removal.
-sci-mathematics/cvc3 isabelle
-sci-mathematics/e isabelle
-sci-mathematics/kodkodi isabelle
-sci-mathematics/spass isabelle
-
 # Michał Górny <mgorny@gentoo.org> (31 Mar 2019)
 # dev-libs/grok is slated for removal.
 app-admin/rsyslog grok
