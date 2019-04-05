@@ -20,6 +20,7 @@ DEPEND="
 	dev-qt/qtgui:5
 	dev-qt/qtsvg:5
 	dev-qt/qtx11extras:5
+	kde-frameworks/kwindowsystem
 	x11-libs/libXext
 "
 RDEPEND="${DEPEND}"
