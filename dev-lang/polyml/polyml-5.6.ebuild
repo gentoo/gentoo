@@ -20,7 +20,10 @@ RDEPEND="X? ( x11-libs/motif:0 )
 		virtual/libffi"
 DEPEND="${RDEPEND}"
 
-PATCHES=( "${FILESDIR}"/${P}-configure.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-configure.patch
+	"${FILESDIR}"/${P}-ffi3.patch
+)
 
 src_prepare() {
 	default
