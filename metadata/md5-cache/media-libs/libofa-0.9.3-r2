@@ -5,10 +5,10 @@ DESCRIPTION=Open Fingerprint Architecture
 EAPI=7
 HOMEPAGE=https://code.google.com/p/musicip-libofa/
 IUSE=abi_x86_32 abi_x86_64 abi_x86_x32 abi_mips_n32 abi_mips_n64 abi_mips_o32 abi_ppc_32 abi_ppc_64 abi_s390_32 abi_s390_64
-KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 sparc ~x86 ~amd64-linux ~x86-linux
 LICENSE=|| ( APL-1.0 GPL-2 )
 RDEPEND=>=sci-libs/fftw-3.3.3-r2[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_ppc_32(-)?,abi_ppc_64(-)?,abi_s390_32(-)?,abi_s390_64(-)?]
 SLOT=0
 SRC_URI=https://musicip-libofa.googlecode.com/files/libofa-0.9.3.tar.gz
 _eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	a09389deba2c0a7108b581e02c7cecbf	multibuild	40fe59465edacd730c644ec2bc197809	multilib	b2f01ad412baf81650c23fcf0975fa33	multilib-build	b42436dc1260f475af229754c165cb6b	multilib-minimal	8bddda43703ba94d8341f4e247f97566	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
-_md5_=c0c427889b43d621990171bd930bd689
+_md5_=510c40ca8bdb86c8561afa446ce5a16a
