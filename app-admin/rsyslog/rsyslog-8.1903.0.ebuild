@@ -100,7 +100,10 @@ if [[ ${PV} == "9999" ]]; then
 	DEPEND+=" >=dev-python/docutils-0.12"
 fi
 
-PATCHES=( "${FILESDIR}"/${P}-add-missing-tests.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-add-missing-tests.patch
+	"${FILESDIR}"/${P}-add-py3-support-to-omhttp-test.patch.patch
+)
 
 CONFIG_CHECK="~INOTIFY_USER"
 WARNING_INOTIFY_USER="CONFIG_INOTIFY_USER isn't set. Imfile module on this system will only support polling mode!"
