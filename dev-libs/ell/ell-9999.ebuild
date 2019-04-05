@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit multilib-minimal
+inherit flag-o-matic multilib-minimal
 
 DESCRIPTION="Embedded Linux Library provides core, low-level functionality for system daemons"
 HOMEPAGE="https://01.org/ell"
@@ -30,6 +30,7 @@ src_prepare() {
 }
 
 multilib_src_configure() {
+	append-cflags "-fsigned-char" #662694
 	local myeconfargs=(
 		$(use_enable glib)
 		$(use_enable pie)
