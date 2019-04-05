@@ -5,7 +5,7 @@ EAPI=6
 inherit autotools flag-o-matic pam ssl-cert user
 
 DESCRIPTION="The Cyrus IMAP Server"
-HOMEPAGE="http://www.cyrusimap.org/"
+HOMEPAGE="https://www.cyrusimap.org/"
 SRC_URI="https://github.com/cyrusimap/${PN}/releases/download/${P}/${P}.tar.gz"
 
 LICENSE="BSD-with-attribution"
@@ -208,7 +208,7 @@ pkg_postinst() {
 	fi
 
 	echo
-	einfo "Please see http://www.cyrusimap.org/imap/download/upgrade.html"
+	einfo "Please see https://www.cyrusimap.org/imap/download/upgrade.html"
 	einfo "for upgrade instructions."
 	echo
 }
