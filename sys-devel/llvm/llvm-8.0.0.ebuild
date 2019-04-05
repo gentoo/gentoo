@@ -93,6 +93,10 @@ python_check_deps() {
 }
 
 src_prepare() {
+	# Fix failures when /usr/include contains dangling symlinks
+	# https://bugs.gentoo.org/674662
+	eapply "${FILESDIR}"/8.0.0/0001-llvm-cmake-Add-additional-headers-only-if-they-exist.patch
+
 	# Fix llvm-config for shared linking and sane flags
 	# https://bugs.gentoo.org/show_bug.cgi?id=565358
 	eapply "${FILESDIR}"/9999/0007-llvm-config-Clean-up-exported-values-update-for-shar.patch
