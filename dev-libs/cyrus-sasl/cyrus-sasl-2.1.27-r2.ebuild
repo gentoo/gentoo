@@ -34,6 +34,8 @@ CDEPEND="
 	)
 	java? ( >=virtual/jdk-1.6:= )"
 
+REQUIRED_USE="ldapdb? ( openldap )"
+
 RDEPEND="
 	${CDEPEND}
 	selinux? ( sec-policy/selinux-sasl )"
