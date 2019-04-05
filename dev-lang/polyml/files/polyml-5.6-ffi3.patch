@@ -1,0 +1,18 @@
+--- a/libpolyml/polyffi.cpp	2019-04-05 23:10:23.509729312 +0200
++++ b/libpolyml/polyffi.cpp	2019-04-05 23:10:38.895485058 +0200
+@@ -89,7 +89,6 @@
+ // Unfortunately the ABI entries are enums rather than #defines so we
+ // can't test individual entries.
+ #ifdef X86_WIN32
+-    {"sysv", FFI_SYSV},
+     {"stdcall", FFI_STDCALL},
+     {"thiscall", FFI_THISCALL},
+     {"fastcall", FFI_FASTCALL},
+@@ -97,7 +96,6 @@
+ #elif defined(X86_WIN64)
+     {"win64", FFI_WIN64},
+ #elif defined(X86_ANY)
+-    {"sysv", FFI_SYSV},
+     {"unix64", FFI_UNIX64},
+ #endif
+     { "default", FFI_DEFAULT_ABI}
