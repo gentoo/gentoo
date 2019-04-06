@@ -21,8 +21,8 @@ RDEPEND="X? ( x11-libs/motif:0 )
 DEPEND="${RDEPEND}"
 
 PATCHES=(
-	"${FILESDIR}"/${P}-configure.patch
-	"${FILESDIR}"/${P}-ffi3.patch
+	"${FILESDIR}"/${PN}-5.6-configure.patch
+	"${FILESDIR}"/${PN}-5.6-ffi3.patch
 )
 
 src_prepare() {
