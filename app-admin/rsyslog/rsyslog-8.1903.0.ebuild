@@ -102,7 +102,8 @@ fi
 
 PATCHES=(
 	"${FILESDIR}"/${P}-add-missing-tests.patch
-	"${FILESDIR}"/${P}-add-py3-support-to-omhttp-test.patch.patch
+	"${FILESDIR}"/${P}-add-py3-support-to-omhttp-test.patch
+	"${FILESDIR}"/${P}-fix-py3-compatibility-in-diag.sh.patch
 )
 
 CONFIG_CHECK="~INOTIFY_USER"
