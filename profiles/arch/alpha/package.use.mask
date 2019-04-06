@@ -20,10 +20,6 @@ app-admin/sudo sssd
 # Optional dependency blocking security cleanup, bug #627316
 media-sound/mpd wildmidi
 
-# Joonas Niilola <juippis@gmail.com> (09 Sep 2018)
-# Optional dependency blocking updates.
-media-plugins/imlib2_loaders eet
-
 # Joonas Niilola <juippis@gmail.com> (17 Jun 2018)
 # Optional dependency not available for this arch
 dev-libs/efl vlc
