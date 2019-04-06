@@ -77,7 +77,7 @@ PDEPEND="
 S="${WORKDIR}/${MY_P}"
 
 dual_scripts() {
-	src_remove_dual      perl-core/Archive-Tar        2.280.0       ptar ptardiff ptargrep
+	src_remove_dual      perl-core/Archive-Tar        2.300.0       ptar ptardiff ptargrep
 	src_remove_dual      perl-core/CPAN               2.200.0       cpan
 	src_remove_dual      perl-core/Digest-SHA         6.10.0        shasum
 	src_remove_dual      perl-core/Encode             2.970.0       enc2xs piconv
@@ -85,7 +85,7 @@ dual_scripts() {
 	src_remove_dual      perl-core/ExtUtils-ParseXS   3.390.0       xsubpp
 	src_remove_dual      perl-core/IO-Compress        2.74.0        zipdetails
 	src_remove_dual      perl-core/JSON-PP            2.970.10      json_pp
-	src_remove_dual      perl-core/Module-CoreList    5.201.806.220 corelist
+	src_remove_dual      perl-core/Module-CoreList    5.201.904.190 corelist
 	src_remove_dual      perl-core/Pod-Parser         1.630.0       pod2usage podchecker podselect
 	src_remove_dual      perl-core/Pod-Perldoc        3.280.100     perldoc
 	src_remove_dual      perl-core/Test-Harness       3.420.0       prove
