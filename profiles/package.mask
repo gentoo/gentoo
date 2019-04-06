@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas K. Hüttel <dilfridge@gentoo.org> (06 Apr 2019)
+# Preparations for the Perl 5.28.2 version bump.
+# DO NOT USE, work in progress.
+=dev-lang/perl-5.28.2*
+
 # Zac Medico <zmedico@gentoo.org> (04 Apr 2019)
 # Ebuild is not needed since consumers use EGO_VENDOR.
 # Removal in 30 days.  Bug #656972.

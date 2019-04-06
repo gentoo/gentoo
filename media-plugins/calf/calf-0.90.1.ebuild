@@ -46,6 +46,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-no-automagic.patch"
 	"${FILESDIR}/${P}-htmldir.patch"
 	"${FILESDIR}/${P}-desktop.patch"
+	"${FILESDIR}/${P}-fluidsynth-2.patch"
 )
 
 src_prepare() {
@@ -72,5 +73,5 @@ src_configure() {
 src_install() {
 	default
 	mv "${ED}"/usr/share/bash-completion/completions/calf \
-		"${ED}"/usr/share/bash-completion/completions/calfjackhost
+		"${ED}"/usr/share/bash-completion/completions/calfjackhost || die
 }
