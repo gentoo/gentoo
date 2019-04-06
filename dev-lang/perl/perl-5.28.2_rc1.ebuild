@@ -7,7 +7,8 @@ inherit eutils alternatives flag-o-matic toolchain-funcs multilib multiprocessin
 
 PATCH_VER=1
 CROSS_VER=1.2.2
-PATCH_BASE="perl-5.28.0-patches-${PATCH_VER}"
+PATCH_BASE="perl-5.28.2-patches-${PATCH_VER}"
+PATCH_DEV=dilfridge
 
 DIST_AUTHOR=XSAWYERX
 
@@ -40,7 +41,7 @@ SRC_URI="
 	mirror://cpan/authors/id/${DIST_AUTHOR:0:1}/${DIST_AUTHOR:0:2}/${DIST_AUTHOR}/${MY_P}.tar.xz
 	https://github.com/gentoo-perl/perl-patchset/releases/download/${PATCH_BASE}/${PATCH_BASE}.tar.xz
 	mirror://gentoo/${PATCH_BASE}.tar.xz
-	https://dev.gentoo.org/~kentnl/distfiles/${PATCH_BASE}.tar.xz
+	https://dev.gentoo.org/~${PATCH_DEV}/distfiles/${PATCH_BASE}.tar.xz
 	https://github.com/arsv/perl-cross/releases/download/${CROSS_VER}/perl-cross-${CROSS_VER}.tar.gz
 "
 HOMEPAGE="https://www.perl.org/"
