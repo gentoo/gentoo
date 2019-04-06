@@ -18,7 +18,7 @@ SLOT="0"
 IUSE="+introspection +python gtk-doc vala"
 REQUIRED_USE="python? ( introspection ${PYTHON_REQUIRED_USE} )"
 
-KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64"
 
 # X libs are not needed for OSX (aqua)
 COMMON_DEPEND="
@@ -27,7 +27,7 @@ COMMON_DEPEND="
 	>=x11-libs/gtk+-3.22.0:3[introspection?]
 	>=x11-libs/gtksourceview-4.0.2:4[introspection?]
 	>=dev-libs/libpeas-1.14.1[gtk]
-    >=net-libs/libsoup-2.60:2.4
+	>=net-libs/libsoup-2.60:2.4
 
 	gnome-base/gsettings-desktop-schemas
 	gnome-base/gvfs
@@ -69,15 +69,15 @@ src_configure() {
 		$(meson_use gtk-doc documentation)
 		$(meson_use introspection)
 		$(meson_use python plugins)
-        $(meson_use vala vapi)
-	)   
+		$(meson_use vala vapi)
+	)
 	meson_src_configure
 }
 
 src_test() { :; }
 
 src_install() {
-    meson_src_install
+	meson_src_install
 }
 
 pkg_postinst() {
