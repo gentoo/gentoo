@@ -939,16 +939,19 @@ app-text/wdiff:experimental - Build experimental utilities (mdiff, unify, wdiff2
 app-text/wklej:vim - Install the vim plugin allowing to paste through ':Wklej'.
 app-text/writerperfect:abiword - Add support for abiword format using app-text/libabw
 app-text/writerperfect:ebook - Add support for various ebook formats using app-text/libebook
+app-text/writerperfect:epub - Add support for conversion to ePub format using app-text/libepubgen
 app-text/writerperfect:freehand - Add support for freehand format using media-libs/libfreehand
 app-text/writerperfect:gsf - Add support for structured files using gnome-extra/libgsf
 app-text/writerperfect:keynote - Add support for keynote format using app-text/libetonyek
 app-text/writerperfect:mspub - Add support to mspub format using app-text/libmspub
 app-text/writerperfect:mwaw - Add support to mwaw formats using app-text/libmwaw
 app-text/writerperfect:pagemaker - Add support to pagemaker formats using media-libs/libpagemaker
+app-text/writerperfect:qxp - Add support for QuarkXpress documents using app-text/libqxp
 app-text/writerperfect:visio - Add support for visio format using media-libs/libvisio
 app-text/writerperfect:wpd - Add support for wpd format using app-text/libwpd
 app-text/writerperfect:wpg - Add support for wpg format using app-text/libwpg
 app-text/writerperfect:wps - Add support for wps format using app-text/libwps
+app-text/writerperfect:zmf - Add support for Zoner Callisto/Draw documents format using media-libs/libzmf
 app-text/wv:tools - Install optional utilities considered deprecated in favor of using AbiWord.
 app-text/xmlto:text - Support conversion from XML to plain text
 app-text/zathura:magic - Use libmagic to determine mimetypes
