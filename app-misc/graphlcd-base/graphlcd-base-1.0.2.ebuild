@@ -16,14 +16,14 @@ IUSE="fontconfig freetype g15 graphicsmagick imagemagick lcd_devices_ax206dpf lc
 REQUIRED_USE="?? ( graphicsmagick imagemagick )"
 
 RDEPEND="
+	dev-libs/libhid
+	net-libs/libvncserver
 	freetype? ( media-libs/freetype:2= )
 	fontconfig? ( media-libs/fontconfig:1.0= )
-	g15? ( app-misc/g15daemon )
 	graphicsmagick? ( media-gfx/graphicsmagick:0/1.3 )
 	imagemagick? ( <media-gfx/imagemagick-7 )
 	lcd_devices_ax206dpf? ( virtual/libusb:0 )
 	lcd_devices_picolcd_256x64? ( virtual/libusb:0 )
-	lcd_devices_vnc? ( net-libs/libvncserver )
 "
 
 DEPEND="${RDEPEND}"
@@ -38,8 +38,8 @@ src_prepare() {
 	# Change '/usr/lib' to '/usr/$(get_libdir)'
 	sed -e "34s:/usr/local:/usr:" -e "37s:/lib:/$(get_libdir):" -i Make.config || die
 
-	# Fix pkg-config names for GraphicsMagick/ImageMagick
-	sed -e 's/GraphicsMagick++/GraphicsMagick/g' -e 's/ImageMagick++/ImageMagick/g' -i glcdgraphics/Makefile || die
+	# Fix newer GCC version with the Futaba MDM166A lcd driver
+	sed -e "s:0xff7f0004:(int) 0xff7f0004:" -i glcddrivers/futabaMDM166A.c || die
 
 	tc-export CC CXX
 }
@@ -79,6 +79,8 @@ src_install() {
 
 pkg_postinst() {
 	udev_reload
+
+	optfeature "supporting the logitech g15 keyboard lcd." app-misc/g15daemon
 }
 
 pkg_postrm() {
