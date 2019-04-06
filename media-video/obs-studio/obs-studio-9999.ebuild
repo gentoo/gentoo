@@ -3,9 +3,9 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python{3_4,3_5,3_6,3_7} )
+PYTHON_COMPAT=( python{3_5,3_6,3_7} )
 
-inherit cmake-utils gnome2-utils python-single-r1
+inherit cmake-utils python-single-r1 xdg-utils
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
@@ -102,7 +102,7 @@ src_configure() {
 }
 
 pkg_postinst() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 
 	if ! use alsa && ! use pulseaudio; then
 		elog
@@ -124,5 +124,5 @@ pkg_postinst() {
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }
