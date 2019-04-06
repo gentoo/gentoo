@@ -3,7 +3,6 @@
 
 EAPI=6
 WX_GTK_VER="3.0-gtk3"
-
 inherit autotools git-r3 wxwidgets xdg-utils
 
 DESCRIPTION="Utility for viewing Compiled HTML Help (CHM) files"
@@ -15,12 +14,14 @@ SLOT="0"
 KEYWORDS=""
 IUSE="nls"
 
-DEPEND="
+RDEPEND="
 	>=dev-libs/chmlib-0.36
 	x11-libs/wxGTK:${WX_GTK_VER}[X]
+	nls? ( virtual/libintl )
 "
-RDEPEND="
-	${DEPEND}
+DEPEND="
+	${RDEPEND}
+	nls? ( sys-devel/gettext )
 "
 
 src_prepare() {
