@@ -51,4 +51,8 @@ src_install() {
 	make_wrapper "${PN}" "${dir}/bin/${PN}.sh"
 	newicon "bin/${PN}.svg" "${PN}.svg"
 	make_desktop_entry "${PN}" "${PN}" "${PN}" "Development;IDE;"
+
+	# recommended by: https://confluence.jetbrains.com/display/IDEADEV/Inotify+Watches+Limit
+	dodir /etc/sysctl.d/
+	echo "fs.inotify.max_user_watches = 524288" > "${D}/etc/sysctl.d/30-webstorm-inotify-watches.conf" || die
 }
