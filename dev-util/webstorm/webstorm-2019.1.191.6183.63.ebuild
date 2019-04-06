@@ -17,7 +17,8 @@ LICENSE="IDEA || ( IDEA_Academic IDEA_Classroom IDEA_OpenSource IDEA_Personal )"
 
 KEYWORDS="~amd64 ~x86"
 SLOT="2019"
-RDEPEND=">=virtual/jre-1.8"
+IUSE="custom-jdk"
+RDEPEND="!custom-jdk? ( >=virtual/jre-1.8 )"
 
 RESTRICT="splitdebug" #656858
 
@@ -28,8 +29,8 @@ src_prepare() {
 
 	declare -a remove_me
 
-	remove_me+=( bin/fsnotifier-arm )
-	remove_me+=( jre64 )
+	use arm || remove_me+=( bin/fsnotifier-arm )
+	use custom-jdk || remove_me+=( jre64 )
 
 	rm -rv "${remove_me[@]}" || die
 }
@@ -40,6 +41,12 @@ src_install() {
 	insinto "${dir}"
 	doins -r *
 	fperms 755 "${dir}"/bin/{webstorm.sh,fsnotifier{,64}}
+
+	if use custom-jdk; then
+		if [[ -d jre64 ]]; then
+			fperms 775 "${dir}"/jre64/bin/{clhsdb,hsdb,java,jjs,keytool,orbd,pack200,policytool,rmid,rmiregistry,servertool,tnameserv,unpack200}
+		fi
+	fi
 
 	make_wrapper "${PN}" "${dir}/bin/${PN}.sh"
 	newicon "bin/${PN}.svg" "${PN}.svg"

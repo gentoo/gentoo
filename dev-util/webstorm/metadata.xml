@@ -5,4 +5,7 @@
 <longdescription lang="en">
 WebStorm is a lightweight yet powerful IDE, perfectly equipped for complex client-side development and server-side development with Node.js
 </longdescription>
+<use>
+	<flag name="custom-jdk">Install and use WebStorm's custom JRE.</flag>
+</use>
 </pkgmetadata>
