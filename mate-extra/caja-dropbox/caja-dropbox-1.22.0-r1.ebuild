@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python3_{5,6,7} )
 MATE_LA_PUNT="yes"
 
 inherit mate python-single-r1 linux-info user
@@ -21,9 +21,8 @@ IUSE="debug"
 COMMON_DEPEND="
 	dev-libs/atk
 	>=dev-libs/glib-2.50:2
-	dev-python/pygtk:2[${PYTHON_USEDEP}]
-	dev-python/pygobject:2[${PYTHON_USEDEP}]
-	>=mate-base/caja-1.17.1
+	dev-python/pygobject:3[${PYTHON_USEDEP}]
+	>=mate-base/caja-1.19.1
 	media-libs/fontconfig:1.0
 	media-libs/freetype:2
 	x11-libs/cairo
@@ -55,7 +54,7 @@ src_prepare() {
 		-e 's|\(DROPBOXD_PATH = \).*|\1"/opt/dropbox/dropboxd"|' \
 			-i caja-dropbox.in || die
 
-	sed  's|\(rst2man\)|\1.py|' configure.ac || die
+	sed -e 's|\[rst2man\]|\[rst2man\.py\]|' -i configure.ac || die
 
 	mate_src_prepare
 }
@@ -85,7 +84,7 @@ pkg_postinst () {
 
 	elog
 	elog "Add any users who wish to have access to the dropbox caja"
-	elog "plugin to the group 'dropbox'. You need to setup a drobox account"
+	elog "plugin to the group 'dropbox'. You need to setup a Dropbox account"
 	elog "before using this plugin. Visit ${HOMEPAGE} for more information."
 	elog
 }
