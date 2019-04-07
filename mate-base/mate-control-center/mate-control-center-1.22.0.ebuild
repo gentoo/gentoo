@@ -17,7 +17,7 @@ SLOT="0"
 
 IUSE="appindicator debug"
 
-COMMON_DEPEND="
+RDEPEND="
 	dev-libs/atk
 	>=dev-libs/dbus-glib-0.73
 	>=dev-libs/glib-2.50:2
@@ -51,17 +51,16 @@ COMMON_DEPEND="
 	virtual/libintl
 	appindicator? ( dev-libs/libappindicator:3 )"
 
-RDEPEND="${COMMON_DEPEND}"
-
-DEPEND="${COMMON_DEPEND}
+DEPEND="${RDEPEND}
 	app-text/rarian
 	>=app-text/scrollkeeper-dtd-1:1.0
 	app-text/yelp-tools
 	dev-util/desktop-file-utils
+	dev-util/glib-utils
 	>=dev-util/intltool-0.50.1
-	sys-devel/gettext:*
+	sys-devel/gettext
 	x11-base/xorg-proto
-	virtual/pkgconfig:*"
+	virtual/pkgconfig"
 
 src_configure() {
 	mate_src_configure \
