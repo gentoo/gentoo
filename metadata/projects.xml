@@ -130,6 +130,11 @@
     <url>https://wiki.gentoo.org/wiki/Project-3AARM64</url>
     <description>The ARM64 project is devoted to getting and keeping Gentoo in good shape on the ARM AArch64 architecture.</description>
     <member>
+      <email>bman@gentoo.org</email>
+      <name>Aaron Bauman</name>
+      <role>Lead Minion</role>
+    </member>
+    <member>
       <email>kentnl@gentoo.org</email>
       <name>Kent Fredric</name>
       <role>Minion</role>
