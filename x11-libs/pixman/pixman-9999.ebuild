@@ -51,7 +51,7 @@ multilib_src_compile() {
 }
 
 multilib_src_test() {
-	meson_src_test
+	meson test -v -C "${BUILD_DIR}" -t 100
 }
 
 multilib_src_install() {
