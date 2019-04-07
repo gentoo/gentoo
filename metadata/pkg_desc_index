@@ -222,7 +222,7 @@ app-arch/unrar 5.6.6 5.6.8: Uncompress rar files
 app-arch/unshield 1.4: InstallShield CAB file extractor
 app-arch/unzip 6.0_p20 6.0_p21-r2: unzipper for pkzip-compressed files
 app-arch/xar 1.8-r1: An easily extensible archive format
-app-arch/xarchiver 0.5.4.13: A GTK+ archive manager that can be used with Thunar
+app-arch/xarchiver 0.5.4.13 0.5.4.14: A GTK+ archive manager that can be used with Thunar
 app-arch/xdms 1.3.2-r1: xDMS - Amiga DMS disk image decompressor
 app-arch/xz-utils 5.2.3 5.2.4-r2: utils for managing LZMA compressed files
 app-arch/zip 3.0-r3: Info ZIP (encryption support)
@@ -6246,7 +6246,7 @@ dev-util/bustle 0.4.2-r1 0.5.4: Draw sequence diagrams of D-Bus traffic
 dev-util/byacc 20170201: the best variant of the Yacc parser generator
 dev-util/cargo 0.30.0-r1: The Rust's package manager
 dev-util/catalyst 2.0.18-r1 2.0.18-r4 3.0.2 3.0.2-r1 3.0.3: Release metatool used for creating releases based on Gentoo Linux
-dev-util/catfish 1.4.6: A frontend for find, (s)locate, doodle, tracker, beagle, strigi and pinot
+dev-util/catfish 1.4.6 1.4.7: A frontend for find, (s)locate, doodle, tracker, beagle, strigi and pinot
 dev-util/ccache 3.2.4 3.3.4-r1: fast compiler cache
 dev-util/cdiff 1.0: Colored, side-by-side diff terminal viewer
 dev-util/cgdb 0.6.8: A curses front-end for GDB, the GNU debugger
@@ -8175,7 +8175,7 @@ media-sound/playerctl 0.5.0: A CLI utility to control media players over MPRIS
 media-sound/pnmixer 0.7.2: Volume mixer for the system tray
 media-sound/podracer 1.4-r2: A simple podcast aggregator, designed for cron
 media-sound/positron 1.1-r1: Synchronization manager for the Neuros Audio Computer
-media-sound/pragha 1.3.3: A lightweight music player (for Xfce)
+media-sound/pragha 1.3.3 1.3.4: A lightweight music player (for Xfce)
 media-sound/pulseaudio 12.2 12.2-r1: A networked sound server with an advanced plugin system
 media-sound/pulseeffects 3.2.3-r1 4.4.7: Limiter, compressor, reverberation, equalizer auto volume effects for Pulseaudio
 media-sound/pympd 0.08.1-r1: a Rhythmbox-like PyGTK+ client for Music Player Daemon
@@ -8882,7 +8882,7 @@ net-misc/adjtimex 1.29-r1: display or set the kernel time variables
 net-misc/aget 0.4.1-r2: multithreaded HTTP download accelerator
 net-misc/aggregate 1.6: Take a list of prefixes and perform two optimisations to reduce the length of the prefix list
 net-misc/aggregate-flim 1.0.2: aggregate is a tool for aggregating CIDR networks
-net-misc/aria2 1.34.0: A download utility with segmented downloading with BitTorrent support
+net-misc/aria2 1.34.0 1.34.0-r1: A download utility with segmented downloading with BitTorrent support
 net-misc/arpd 0.2-r1: ARP server claiming all unassigned addresses (for network monitoring/simulation)
 net-misc/asterisk 11.25.3 13.23.1: Asterisk: A Modular Open Source PBX System
 net-misc/asterisk-core-sounds 1.4.21-r1 1.4.22: Core sounds for asterisk
@@ -9220,6 +9220,7 @@ net-wireless/wifi-radar 2.0.8-r2: WiFi Radar is a Python/PyGTK2 utility for mana
 net-wireless/wireless-regdb 20181024 20190301: Binary regulatory database for CRDA
 net-wireless/wireless-tools 30_pre9: A collection of tools to configure IEEE 802.11 wireless LAN cards
 net-wireless/wpa_supplicant 2.6-r10: IEEE 802.1X/WPA supplicant for secure wireless transfers
+perl-core/Archive-Tar 2.300.0: A Perl module for creation and manipulation of tar files
 perl-core/ExtUtils-Constant 0.230.0-r1: Generate XS code to import C header constants
 perl-core/File-Path 2.130.0: File path and name utilities
 perl-core/File-Temp 0.230.400-r1: File::Temp can be used to create and open temporary files in a safe way
@@ -10431,7 +10432,7 @@ virtual/os-headers 0: Virtual for operating system headers
 virtual/package-manager 1: Virtual for the package manager
 virtual/pager 0: Virtual for command-line pagers
 virtual/pam 0-r1: Virtual for PAM (Pluggable Authentication Modules)
-virtual/perl-Archive-Tar 2.40.100_rc-r6 2.240.0: Virtual for Archive-Tar
+virtual/perl-Archive-Tar 2.40.100_rc-r6 2.240.0 2.300.0-r1: Virtual for Archive-Tar
 virtual/perl-Attribute-Handlers 0.990.0-r2: Virtual for Attribute-Handlers
 virtual/perl-AutoLoader 5.740.0-r6: Virtual for AutoLoader
 virtual/perl-B-Debug 1.230.0-r3 1.240.0: Virtual for B-Debug
@@ -10617,6 +10618,7 @@ www-client/firefox-bin 60.6.1 66.0.2: Firefox Web Browser
 www-client/httrack 3.48.21-r1: HTTrack Website Copier, Open Source Offline Browser
 www-client/links 2.14-r1: A fast and lightweight web browser running in both graphics and text mode
 www-client/lynx 2.8.9_pre16: An excellent console-based web browser with ssl support
+www-client/midori 7.0: A lightweight web browser based on WebKitGTK+
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/pybugz 0.13: Command line interface to (Gentoo) Bugzilla
 www-client/ripe-atlas-cousteau 1.0.7 1.2: A Python wrapper around the RIPE Atlas API
@@ -11362,18 +11364,18 @@ x11-wm/wm2 4-r1: Small, unconfigurable window manager
 x11-wm/xmonad 0.11-r1 0.12 0.13: A tiling window manager
 x11-wm/xmonad-contrib 0.11.2 0.12 0.13: Third party extensions for xmonad
 x11-wm/xpra 2.2.2-r1: X Persistent Remote Apps (xpra) and Partitioning WM (parti) based on wimpiggy
-xfce-base/exo 0.12.3: Extensions, widgets and framework library with session support for Xfce
-xfce-base/garcon 0.6.1: Xfce's freedesktop.org specification compatible menu implementation library
+xfce-base/exo 0.12.3 0.12.4: Extensions, widgets and framework library with session support for Xfce
+xfce-base/garcon 0.6.1 0.6.2: Xfce's freedesktop.org specification compatible menu implementation library
 xfce-base/libxfce4ui 4.13.4: Unified widget and session management libs for Xfce
 xfce-base/libxfce4util 4.13.2: A basic utility library for the Xfce desktop environment
 xfce-base/libxfcegui4 4.10.0-r2: A compability library for unported Xfce 4.6 plugins (DEPRECATED)
-xfce-base/thunar 1.6.14: File manager for the Xfce desktop environment
+xfce-base/thunar 1.6.14 1.6.16: File manager for the Xfce desktop environment
 xfce-base/xfce4-appfinder 4.12.0-r2: A tool to find and launch installed applications for the Xfce desktop
 xfce-base/xfce4-meta 4.12-r1: The Xfce Desktop Environment (meta package)
-xfce-base/xfce4-panel 4.12.2: Panel for the Xfce desktop environment
+xfce-base/xfce4-panel 4.12.2 4.13.4: Panel for the Xfce desktop environment
 xfce-base/xfce4-session 4.12.1-r2: A session manager for the Xfce desktop environment
 xfce-base/xfce4-settings 4.12.4: Configuration system for the Xfce desktop environment
-xfce-base/xfconf 4.12.1-r1: A configuration management system for Xfce
+xfce-base/xfconf 4.12.1-r1 4.13.5: A configuration management system for Xfce
 xfce-base/xfdesktop 4.12.4: Desktop manager for the Xfce desktop environment
 xfce-base/xfwm4 4.12.5: Window manager for the Xfce desktop environment
 xfce-extra/multiload-nandhp 0.3-r1: A port of the GNOME multiload applet for the Xfce panel
@@ -11384,15 +11386,15 @@ xfce-extra/thunar-vcs-plugin 0.1.5-r1: Adds Subversion and GIT actions to the co
 xfce-extra/thunar-volman 0.8.1-r1: Daemon that enforces volume-related policies
 xfce-extra/transd 0_p20120503-r1: A small daemon to watch for window creation and set window transparency values
 xfce-extra/tumbler 0.2.0 0.2.3: A thumbnail service for Thunar
-xfce-extra/xfce4-alsa-plugin 0.1.1: Simple ALSA volume control for xfce4-panel
-xfce-extra/xfce4-battery-plugin 1.1.1: A battery monitor panel plugin for the Xfce desktop environment
+xfce-extra/xfce4-alsa-plugin 0.1.1 0.2.0: Simple ALSA volume control for xfce4-panel
+xfce-extra/xfce4-battery-plugin 1.1.1 1.1.2: A battery monitor panel plugin for the Xfce desktop environment
 xfce-extra/xfce4-cellmodem-plugin 0.0.5-r1: A panel plug-in with monitoring support for GPRS/UMTS(3G)/HSDPA(3.5G) modems
 xfce-extra/xfce4-clipman-plugin 1.4.3: A clipboard manager plug-in for the Xfce panel
 xfce-extra/xfce4-composite-editor 0-r1: An graphical interface to modify composite settings
 xfce-extra/xfce4-cpufreq-plugin 1.2.1: A panel plugin for showing information about cpufreq settings
 xfce-extra/xfce4-cpugraph-plugin 1.0.5-r1: A system load plug-in for the Xfce panel
 xfce-extra/xfce4-datetime-plugin 0.7.0: A panel plug-in with date, time and embedded calender
-xfce-extra/xfce4-dict 0.8.1: A dict.org querying application and panel plug-in for the Xfce desktop
+xfce-extra/xfce4-dict 0.8.1 0.8.2: A dict.org querying application and panel plug-in for the Xfce desktop
 xfce-extra/xfce4-diskperf-plugin 2.6.1-r1: A panel plug-in for disk usage and performance statistics
 xfce-extra/xfce4-embed-plugin 1.6.0-r1: A plug-in for embedding arbitrary application windows into the Xfce panel
 xfce-extra/xfce4-equake-plugin 1.3.8.1: Panel plug-in that displays information about earthquakes at regular intervals
@@ -11407,7 +11409,7 @@ xfce-extra/xfce4-mailwatch-plugin 1.2.0 1.2.0-r1: An mail notification panel plu
 xfce-extra/xfce4-messenger-plugin 0.1.0-r1: A plugin that listens DBus messages and displays received messages
 xfce-extra/xfce4-modemlights-plugin 0.1.3.99-r1: A panel plug-in intended to simplify establishing a ppp connection
 xfce-extra/xfce4-mount-plugin 1.1.3: An mount plug-in for the Xfce panel
-xfce-extra/xfce4-mpc-plugin 0.5.0: Music Player Daemon (mpd) panel plugin
+xfce-extra/xfce4-mpc-plugin 0.5.0 0.5.1: Music Player Daemon (mpd) panel plugin
 xfce-extra/xfce4-netload-plugin 1.3.1: A network load plug-in for the Xfce panel
 xfce-extra/xfce4-netspeed-plugin 0.3.1: A network transfer rate monitor for the panel
 xfce-extra/xfce4-notes-plugin 1.8.1: Xfce4 panel sticky notes plugin
@@ -11418,20 +11420,20 @@ xfce-extra/xfce4-power-manager 1.6.1: Power manager for the Xfce desktop environ
 xfce-extra/xfce4-pulseaudio-plugin 0.4.1: A panel plug-in for PulseAudio volume control
 xfce-extra/xfce4-quicklauncher-plugin 1.9.4-r1: A quicklauncher plug-in for the Xfce panel
 xfce-extra/xfce4-radio-plugin 0.5.1-r1: V4L radio device control plug-in for the Xfce desktop environment
-xfce-extra/xfce4-screenshooter 1.9.3: Xfce4 screenshooter application and panel plugin
+xfce-extra/xfce4-screenshooter 1.9.3 1.9.5: Xfce4 screenshooter application and panel plugin
 xfce-extra/xfce4-sensors-plugin 1.3.0: A panel plug-in for acpi, lm_sensors and hddtemp sensors
 xfce-extra/xfce4-smartbookmark-plugin 0.5.0: Smart bookmark plug-in for the Xfce desktop environment
 xfce-extra/xfce4-soundmenu-plugin 0.7.0: A panel plug-in to control MPRIS2 compatible players like Pragha
-xfce-extra/xfce4-systemload-plugin 1.2.1: System load plug-in for Xfce panel
-xfce-extra/xfce4-taskmanager 1.2.1: Easy to use task manager
+xfce-extra/xfce4-systemload-plugin 1.2.1 1.2.2: System load plug-in for Xfce panel
+xfce-extra/xfce4-taskmanager 1.2.1 1.2.2: Easy to use task manager
 xfce-extra/xfce4-time-out-plugin 1.0.2: A panel plug-in to take periodical breaks from the computer
 xfce-extra/xfce4-timer-plugin 1.7.0: A simple timer plug-in for the Xfce desktop environment
 xfce-extra/xfce4-vala 4.10.3-r3: Vala bindings for the Xfce desktop environment
 xfce-extra/xfce4-verve-plugin 2.0.0: A comfortable command line plugin for the Xfce panel
 xfce-extra/xfce4-volumed-pulse 0.2.3: Daemon to control volume up/down and mute keys for pulseaudio
 xfce-extra/xfce4-wavelan-plugin 0.6.0: A panel plug-in to display wireless interface statistics
-xfce-extra/xfce4-weather-plugin 0.9.0: A weather plug-in for the Xfce desktop environment
-xfce-extra/xfce4-whiskermenu-plugin 2.3.0: Alternate application launcher for Xfce
+xfce-extra/xfce4-weather-plugin 0.9.0 0.9.1: A weather plug-in for the Xfce desktop environment
+xfce-extra/xfce4-whiskermenu-plugin 2.3.0 2.3.2: Alternate application launcher for Xfce
 xfce-extra/xfce4-windowck-plugin 0.2.4: Xfce plugin puts the maximized window title and windows buttons on the panel
 xfce-extra/xfce4-wmdock-plugin 0.6.0: a compatibility layer for running WindowMaker dockapps on Xfce4
 xfce-extra/xfce4-xkb-plugin 0.8.1: XKB layout switching panel plug-in for the Xfce desktop environment
