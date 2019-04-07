@@ -367,6 +367,11 @@ xorg-3_src_install() {
 		emake DESTDIR="${D}" "${install_args[@]}" "$@" install || die "emake install failed"
 	fi
 
+	# Many X11 libraries unconditionally install developer documentation
+	if ! use_if_iuse doc; then
+		rm -rf "${D}"/usr/share/man/*
+	fi
+
 	# Don't install libtool archives (even for modules)
 	find "${D}" -type f -name '*.la' -delete || die
 }
