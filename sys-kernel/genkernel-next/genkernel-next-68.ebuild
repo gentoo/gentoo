@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,7 +8,7 @@ KEYWORDS="~alpha amd64 ~arm ~hppa ia64 ppc ppc64 x86"
 inherit bash-completion-r1
 
 DESCRIPTION="Gentoo automatic kernel building scripts, reloaded"
-HOMEPAGE="https://www.gentoo.org/"
+HOMEPAGE="https://github.com/Sabayon/genkernel-next/"
 
 LICENSE="GPL-2"
 SLOT="0"
