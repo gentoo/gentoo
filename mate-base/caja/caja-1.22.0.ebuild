@@ -17,7 +17,8 @@ SLOT="0"
 
 IUSE="+introspection +mate packagekit xmp"
 
-COMMON_DEPEND="dev-libs/atk
+RDEPEND="
+	dev-libs/atk
 	>=dev-libs/glib-2.50:2
 	>=dev-libs/libxml2-2.4.7:2
 	gnome-base/dconf
@@ -41,16 +42,15 @@ COMMON_DEPEND="dev-libs/atk
 	xmp? ( >=media-libs/exempi-1.99.5:2 )
 	!!mate-base/mate-file-manager"
 
-RDEPEND="${COMMON_DEPEND}"
-
-DEPEND="${COMMON_DEPEND}
+DEPEND="${RDEPEND}
 	>=dev-lang/perl-5:=
 	dev-util/gdbus-codegen
+	dev-util/glib-utils
 	dev-util/gtk-doc
 	dev-util/gtk-doc-am
 	>=dev-util/intltool-0.40.1
-	sys-devel/gettext:*
-	virtual/pkgconfig:*"
+	sys-devel/gettext
+	virtual/pkgconfig"
 
 PDEPEND="mate? ( >=x11-themes/mate-icon-theme-${MATE_BRANCH} )"
 
