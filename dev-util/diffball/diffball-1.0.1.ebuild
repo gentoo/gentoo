@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,8 +6,8 @@ EAPI=6
 inherit flag-o-matic
 
 DESCRIPTION="Delta compression suite for using/generating binary patches"
-HOMEPAGE="https://diffball.googlecode.com/"
-SRC_URI="https://diffball.googlecode.com/files/${P}.tar.bz2"
+HOMEPAGE="https://github.com/rafaelmartins/diffball"
+SRC_URI="https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/${PN}/${P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"
