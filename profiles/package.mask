@@ -34,6 +34,7 @@
 # DO NOT USE, work in progress.
 =dev-lang/perl-5.28.2*
 =virtual/perl-Module-CoreList-5.201.904.190
+=virtual/perl-Storable-3.80.100_rc
 
 # Zac Medico <zmedico@gentoo.org> (04 Apr 2019)
 # Ebuild is not needed since consumers use EGO_VENDOR.

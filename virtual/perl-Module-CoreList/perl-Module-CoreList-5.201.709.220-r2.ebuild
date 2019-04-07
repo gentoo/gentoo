@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,7 +10,7 @@ KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc
 # Check https://wiki.gentoo.org/wiki/Project:Perl/maint-notes/virtual/perl-Module-CoreList
 # When bumping this package.
 RDEPEND="
-	|| ( =dev-lang/perl-5.26.1* =dev-lang/perl-5.24.3* ~perl-core/${PN#perl-}-${PV} )
+	|| ( =dev-lang/perl-5.24.3* ~perl-core/${PN#perl-}-${PV} )
 	dev-lang/perl:=
 	!<perl-core/${PN#perl-}-${PV}
 	!>perl-core/${PN#perl-}-${PV}-r999
