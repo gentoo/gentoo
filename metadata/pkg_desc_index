@@ -11372,10 +11372,10 @@ xfce-base/libxfcegui4 4.10.0-r2: A compability library for unported Xfce 4.6 plu
 xfce-base/thunar 1.6.14 1.6.16: File manager for the Xfce desktop environment
 xfce-base/xfce4-appfinder 4.12.0-r2: A tool to find and launch installed applications for the Xfce desktop
 xfce-base/xfce4-meta 4.12-r1: The Xfce Desktop Environment (meta package)
-xfce-base/xfce4-panel 4.12.2 4.13.4: Panel for the Xfce desktop environment
+xfce-base/xfce4-panel 4.12.2: Panel for the Xfce desktop environment
 xfce-base/xfce4-session 4.12.1-r2: A session manager for the Xfce desktop environment
 xfce-base/xfce4-settings 4.12.4: Configuration system for the Xfce desktop environment
-xfce-base/xfconf 4.12.1-r1 4.13.5: A configuration management system for Xfce
+xfce-base/xfconf 4.12.1-r1: A configuration management system for Xfce
 xfce-base/xfdesktop 4.12.4: Desktop manager for the Xfce desktop environment
 xfce-base/xfwm4 4.12.5: Window manager for the Xfce desktop environment
 xfce-extra/multiload-nandhp 0.3-r1: A port of the GNOME multiload applet for the Xfce panel
@@ -11386,7 +11386,7 @@ xfce-extra/thunar-vcs-plugin 0.1.5-r1: Adds Subversion and GIT actions to the co
 xfce-extra/thunar-volman 0.8.1-r1: Daemon that enforces volume-related policies
 xfce-extra/transd 0_p20120503-r1: A small daemon to watch for window creation and set window transparency values
 xfce-extra/tumbler 0.2.0 0.2.3: A thumbnail service for Thunar
-xfce-extra/xfce4-alsa-plugin 0.1.1 0.2.0: Simple ALSA volume control for xfce4-panel
+xfce-extra/xfce4-alsa-plugin 0.1.1: Simple ALSA volume control for xfce4-panel
 xfce-extra/xfce4-battery-plugin 1.1.1 1.1.2: A battery monitor panel plugin for the Xfce desktop environment
 xfce-extra/xfce4-cellmodem-plugin 0.0.5-r1: A panel plug-in with monitoring support for GPRS/UMTS(3G)/HSDPA(3.5G) modems
 xfce-extra/xfce4-clipman-plugin 1.4.3: A clipboard manager plug-in for the Xfce panel
