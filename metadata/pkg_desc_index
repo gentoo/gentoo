@@ -1846,7 +1846,7 @@ dev-cpp/gnome-vfsmm 2.26.0-r1: C++ bindings for gnome-vfs
 dev-cpp/gstreamermm 0.10.11 1.10.0: C++ interface for GStreamer
 dev-cpp/gtest 1.7.0-r1 1.8.0-r1 1.8.1: Google C++ Testing Framework
 dev-cpp/gtkglextmm 1.2.0-r2: C++ bindings for gtkglext
-dev-cpp/gtkmm 2.24.5 3.22.2 3.24.0: C++ interface for GTK+
+dev-cpp/gtkmm 2.24.5 3.24.0: C++ interface for GTK+
 dev-cpp/gtksourceviewmm 2.10.3-r1 3.18.0: C++ bindings for gtksourceview
 dev-cpp/libbinio 1.4-r1: Binary I/O stream class library
 dev-cpp/libcmis 0.5.2: C++ client library for the CMIS interface
