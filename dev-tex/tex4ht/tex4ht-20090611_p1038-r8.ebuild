@@ -41,7 +41,7 @@ src_prepare() {
 	sed -i \
 		-e "s#~/tex4ht.dir#${EPREFIX}/usr/share#" \
 		-e "s#tpath/tex/texmf/fonts/tfm/!#t${EPREFIX}/usr/share/texmf-dist/fonts/tfm/!\nt${EPREFIX}/usr/local/share/texmf/fonts/tfm/!\nt${EPREFIX}/var/cache/fonts/tfm/!\nt${EPREFIX}${TEXMF}/fonts/tfm/!#" \
-		-e "s#%%~/texmf-dist#${EPREFIX}${TEXMF}#g" \
+		-e "s#%%~#${EPREFIX}${TEXMF}#g" \
 		-e "s#/usr/share/texmf/#${EPREFIX}${TEXMF}/#" \
 		tex4ht.env \
 		|| die "sed of tex4ht.env failed"
