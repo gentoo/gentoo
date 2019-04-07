@@ -14,7 +14,7 @@ SRC_URI="https://github.com/midori-browser/core/releases/download/v$(ver_cut 1)/
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~mips ~x86"
+KEYWORDS="amd64 ~arm ~mips x86"
 IUSE=""
 
 RDEPEND="
