@@ -22,7 +22,8 @@ REQUIRED_USE="?? ( elogind systemd )"
 # create .config/user-dirs.dirs which is read by glib to get G_USER_DIRECTORY_*
 # xdg-user-dirs-update is run during login (see 10-user-dirs-update-gnome below).
 
-COMMON_DEPEND=">=dev-libs/dbus-glib-0.76
+COMMON_DEPEND="
+	>=dev-libs/dbus-glib-0.76
 	>=dev-libs/glib-2.50:2
 	dev-libs/libxslt
 	sys-apps/dbus
@@ -49,14 +50,15 @@ RDEPEND="${COMMON_DEPEND}
 	x11-apps/xdpyinfo
 	x11-misc/xdg-user-dirs
 	x11-misc/xdg-user-dirs-gtk
-	gnome-keyring? ( gnome-base/gnome-keyring )"
+	gnome-keyring? ( gnome-base/gnome-keyring )
+	!<gnome-base/gdm-2.20.4"
 
 DEPEND="${COMMON_DEPEND}
-	>=dev-util/intltool-0.40
 	>=dev-lang/perl-5
-	>=sys-devel/gettext-0.10.40:*
-	virtual/pkgconfig:*
-	!<gnome-base/gdm-2.20.4"
+	dev-util/glib-utils
+	>=dev-util/intltool-0.40
+	>=sys-devel/gettext-0.10.40
+	virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-fix-systemd-regression.patch

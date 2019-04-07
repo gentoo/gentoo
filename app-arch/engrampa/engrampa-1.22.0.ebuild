@@ -17,25 +17,24 @@ SLOT="0"
 
 IUSE="caja magic packagekit"
 
-COMMON_DEPEND="
+RDEPEND="
 	>=dev-libs/glib-2.50:2
 	>=dev-libs/json-glib-0.14
-	x11-libs/gdk-pixbuf:2
-	x11-libs/pango
 	virtual/libintl
-	caja? ( >=mate-base/caja-1.17.1 )
+	x11-libs/gdk-pixbuf:2
 	>=x11-libs/gtk+-3.22:3[X]
+	x11-libs/pango
+	caja? ( >=mate-base/caja-1.17.1 )
 	magic? ( sys-apps/file )
 	packagekit? ( app-admin/packagekit-base )
 	!!app-arch/mate-file-archiver"
 
-RDEPEND="${COMMON_DEPEND}"
-
-DEPEND="${COMMON_DEPEND}
+DEPEND="${RDEPEND}
 	app-text/yelp-tools
+	dev-util/glib-utils
 	>=dev-util/intltool-0.50.1
-	sys-devel/gettext:*
-	virtual/pkgconfig:*"
+	sys-devel/gettext
+	virtual/pkgconfig"
 
 src_configure() {
 	mate_src_configure \
