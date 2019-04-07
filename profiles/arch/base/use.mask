@@ -90,6 +90,7 @@ cpu_flags_arm_aes
 cpu_flags_arm_crc32
 cpu_flags_arm_edsp
 cpu_flags_arm_iwmmxt
+cpu_flags_arm_iwmmxt2
 cpu_flags_arm_neon
 cpu_flags_arm_sha1
 cpu_flags_arm_sha2
