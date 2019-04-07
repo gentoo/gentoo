@@ -137,7 +137,7 @@ app-admin/syslog-summary 1.14-r1: Summarizes the contents of a syslog log file
 app-admin/sysstat 11.4.0: System performance tools for Linux
 app-admin/system-config-printer 1.5.11-r1: Graphical user interface for CUPS administration
 app-admin/system-tools-backends 2.10.2: Tools aimed to make easy the administration of UNIX systems
-app-admin/systemrescuecd-x86 5.1.2 5.2.1 5.2.2 5.3.1 5.3.2: The .iso image of SystemRescueCD rescue disk, x86 (+ amd64) variant
+app-admin/systemrescuecd-x86 5.1.2 5.2.2 5.3.2: The .iso image of SystemRescueCD rescue disk, x86 (+ amd64) variant
 app-admin/tenshi 0.17: Log parsing and notification program
 app-admin/testdisk 7.1_pre20180922: Checks and undeletes partitions + PhotoRec, signature based recovery tool
 app-admin/tmpreaper 1.6.14: A utility for removing files based on when they were last accessed
@@ -188,7 +188,7 @@ app-arch/libpar2 0.4: A library for par2, extracted from par2cmdline
 app-arch/lrzip 0.621: Long Range ZIP or Lzma RZIP optimized for compressing large files
 app-arch/lz4 1.8.2 1.8.3: Extremely Fast Compression algorithm
 app-arch/lzip 1.20 1.21: lossless data compressor based on the LZMA algorithm
-app-arch/lziprecover 1.20 1.21: Lziprecover is a data recovery tool and decompressor for lzip compressed files
+app-arch/lziprecover 1.21: Lziprecover is a data recovery tool and decompressor for lzip compressed files
 app-arch/lzop 1.04: Utility for fast (even real-time) compression/decompression
 app-arch/makeself 2.2.0-r2: shell script that generates a self-extractible tar.gz
 app-arch/mscompress 0.3-r1: Microsoft compress.exe/expand.exe compatible (de)compressor
@@ -810,7 +810,7 @@ app-eselect/eselect-postgresql 2.4: Utility to select the default PostgreSQL slo
 app-eselect/eselect-python 20160516 20171204: Eselect module for management of multiple Python versions
 app-eselect/eselect-rails 0.23: Manages Ruby on Rails symlinks
 app-eselect/eselect-renpy 0.7: Manages renpy symlink
-app-eselect/eselect-repository 4 6: Manage repos.conf via eselect
+app-eselect/eselect-repository 6: Manage repos.conf via eselect
 app-eselect/eselect-ruby 20170723: Manages multiple Ruby versions
 app-eselect/eselect-rust 20190311: Eselect module for management of multiple Rust versions
 app-eselect/eselect-scala 0.1.1: Manages multiple Scala versions
@@ -1266,7 +1266,7 @@ app-shells/mksh 56c: MirBSD KSH Shell
 app-shells/mpv-bash-completion 3.3.16 3.3.17: Bash completion for the mpv video player
 app-shells/pdmenu 1.3.4-r1: A simple console menu program
 app-shells/pdsh 2.26-r1: A high-performance, parallel remote shell utility
-app-shells/posh 0.13.1 0.13.2: Reimplementation of Bourne shell based on pdksh
+app-shells/posh 0.13.2: Reimplementation of Bourne shell based on pdksh
 app-shells/push 2.0-r1: A POSIX shell function to treat a variable like an array, quoting args
 app-shells/quoter 3.0_p2-r1: Quote arguments or standard input for usage in POSIX shell by eval
 app-shells/rrs 1.70-r2: Reverse Remote Shell
@@ -8964,7 +8964,7 @@ net-misc/lksctp-tools 1.0.13 1.0.16 1.0.17: Tools for Linux Kernel Stream Contro
 net-misc/lldpd 0.9.3-r1: Implementation of IEEE 802.1ab (LLDP)
 net-misc/memcached 1.4.39 1.5.2 1.5.10 1.5.12: High-performance, distributed memory object caching system
 net-misc/mindterm 3.4: A Java SSH Client
-net-misc/minidlna 1.1.5-r1 1.2.1-r1: DLNA/UPnP-AV compliant media server
+net-misc/minidlna 1.2.1-r1: DLNA/UPnP-AV compliant media server
 net-misc/mobile-broadband-provider-info 20170310: Database of mobile broadband service providers
 net-misc/modemmanager 1.8.2 1.8.2-r1: Modem and mobile broadband management libraries
 net-misc/mosh 1.2.6 1.3.2: Mobile shell that supports roaming and intelligent local echo
