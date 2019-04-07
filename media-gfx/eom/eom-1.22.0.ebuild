@@ -13,7 +13,7 @@ DESCRIPTION="The MATE image viewer"
 LICENSE="GPL-2"
 SLOT="0"
 
-IUSE="X debug dbus exif +introspection jpeg lcms svg tiff xmp"
+IUSE="X debug exif +introspection jpeg lcms svg tiff xmp"
 
 RDEPEND="
 	dev-libs/atk
@@ -29,7 +29,6 @@ RDEPEND="
 	x11-libs/libX11
 	>=x11-misc/shared-mime-info-0.20
 	virtual/libintl
-	dbus? ( >=dev-libs/dbus-glib-0.71 )
 	exif? (
 		>=media-libs/libexif-0.6.14
 		virtual/jpeg:0
@@ -55,7 +54,6 @@ src_configure() {
 		$(use_enable debug) \
 		$(use_enable introspection) \
 		$(use_with X x) \
-		$(use_with dbus) \
 		$(use_with exif libexif) \
 		$(use_with jpeg libjpeg) \
 		$(use_with lcms cms) \
