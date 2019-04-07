@@ -8335,7 +8335,7 @@ media-video/openshot 2.4.0-r1: Free, open-source, non-linear video editor to cre
 media-video/parole 1.0.1: A simple Xfce4 media player using GStreamer
 media-video/pitivi 0.97.1: A non-linear video editor using the GStreamer multimedia framework
 media-video/plasma-mediacenter 5.7.5: Unified media experience for any device capable of running KDE Plasma
-media-video/projectx 0.91.0.10 0.91.0.10-r1: Converts, splits and demuxes DVB and other MPEG recordings
+media-video/projectx 0.91.0.10-r1: Converts, splits and demuxes DVB and other MPEG recordings
 media-video/pymp 1.1-r1: a lean, flexible frontend to mplayer written in python
 media-video/recordmydesktop 0.3.8.1-r6: A desktop session recorder producing Ogg video/audio files
 media-video/rovclock 0.6e-r1: Overclocking utility for ATI Radeon cards
