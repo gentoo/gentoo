@@ -17,7 +17,7 @@ SLOT="0"
 
 IUSE="X applet debug ipv6 test"
 
-COMMON_DEPEND="
+RDEPEND="
 	dev-libs/atk
 	>=dev-libs/glib-2.50:2
 	>=gnome-base/libgtop-2.12:2=
@@ -33,18 +33,17 @@ COMMON_DEPEND="
 	x11-libs/pango
 	applet? ( >=mate-base/mate-panel-1.17.0 )"
 
-RDEPEND="${COMMON_DEPEND}"
-
-DEPEND="${COMMON_DEPEND}
+DEPEND="${RDEPEND}
 	app-text/rarian
 	>=app-text/scrollkeeper-dtd-1:1.0
 	app-text/yelp-tools
+	dev-util/glib-utils
 	dev-util/gtk-doc
 	dev-util/gtk-doc-am
 	>=dev-util/intltool-0.50.1
-	x11-base/xorg-proto
-	sys-devel/gettext:*
-	virtual/pkgconfig:*"
+	sys-devel/gettext
+	virtual/pkgconfig
+	x11-base/xorg-proto"
 
 src_prepare() {
 	# Make apps visible in all DEs.
