@@ -9,7 +9,7 @@ SRC_URI="https://github.com/bbidulock/${PN}/releases/download/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~ppc ~sparc x86"
+KEYWORDS="~alpha amd64 ppc ~sparc x86"
 IUSE=""
 
 RDEPEND="x11-libs/libX11
