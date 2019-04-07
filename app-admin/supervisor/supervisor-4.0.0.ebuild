@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=( python2_7 )	# py2 only
+PYTHON_COMPAT=( python{2_7,3_{5,6,7}} )
 # xml.etree.ElementTree module required.
-PYTHON_REQ_USE="xml"
+PYTHON_REQ_USE="xml(+)"
 
 inherit distutils-r1 systemd user
 
@@ -21,10 +21,10 @@ KEYWORDS="~amd64 ~x86"
 IUSE="doc test"
 
 RDEPEND="
-	dev-python/meld3[${PYTHON_USEDEP}]
+	>=dev-python/meld3-1.0.0[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
 "
-DEPEND="
+BDEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
 	test? (
@@ -34,12 +34,6 @@ DEPEND="
 "
 
 S="${WORKDIR}/${PN}-${MY_PV}"
-
-python_prepare_all() {
-	# https://wiki.gentoo.org/wiki/Project:Python/Namespace_packages
-	sed -i '/namespace_packages=/d' setup.py || die
-	distutils-r1_python_prepare_all
-}
 
 python_compile_all() {
 	if use doc; then
