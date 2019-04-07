@@ -19,5 +19,6 @@ RDEPEND="dev-vcs/git
 
 src_install() {
 	dobin pram
+	doman pram.1
 	einstalldocs
 }
