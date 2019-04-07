@@ -8137,7 +8137,7 @@ media-sound/mp3blaster 3.2.6: Text console based program for playing audio files
 media-sound/mp3c 0.31-r1: console based mp3 ripper, with cddb support
 media-sound/mp3check 0.8.4 0.8.7: Checks mp3 files for consistency and prints several errors and warnings
 media-sound/mp3gain 1.6.1: A program to analyze and adjust MP3 files to same volume
-media-sound/mp3info 0.8.5a: An MP3 technical info viewer and ID3 1.x tag editor
+media-sound/mp3info 0.8.5a 0.8.5a-r1: An MP3 technical info viewer and ID3 1.x tag editor
 media-sound/mp3splt 2.6.1a 2.6.2: a command line utility to split mp3 and ogg files without decoding
 media-sound/mp3splt-gtk 0.9.2-r1: a GTK+ based utility to split mp3 and ogg files without decoding
 media-sound/mp3wrap 0.5: Command-line utility that wraps quickly two or more mp3 files in one single large playable mp3
