@@ -15,7 +15,7 @@ SLOT="0"
 
 IUSE="X debug dbus exif +introspection jpeg lcms svg tiff xmp"
 
-COMMON_DEPEND="
+RDEPEND="
 	dev-libs/atk
 	>=dev-libs/glib-2.50:2
 	>=dev-libs/libpeas-1.8.0[gtk]
@@ -41,15 +41,14 @@ COMMON_DEPEND="
 	xmp? ( >=media-libs/exempi-1.99.5:2 )
 	!!media-gfx/mate-image-viewer"
 
-RDEPEND="${COMMON_DEPEND}"
-
-DEPEND="${COMMON_DEPEND}
+DEPEND="${RDEPEND}
 	app-text/yelp-tools
+	dev-util/glib-utils
 	dev-util/gtk-doc
 	dev-util/gtk-doc-am
 	>=dev-util/intltool-0.50.1
-	sys-devel/gettext:*
-	virtual/pkgconfig:*"
+	sys-devel/gettext
+	virtual/pkgconfig"
 
 src_configure() {
 	mate_src_configure \
