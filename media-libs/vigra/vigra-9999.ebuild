@@ -100,10 +100,10 @@ src_configure() {
 			-DAUTOEXEC_TESTS=OFF
 			-DDOCDIR="${BUILD_DIR}/doc"
 			-DDOCINSTALL="share/doc/${PF}"
-			-DWITH_HDF5=$(usex hdf5 ON OFF)
-			-DWITH_OPENEXR=$(usex openexr ON OFF)
-			-DWITH_VALGRIND=$(usex valgrind ON OFF)
-			-DWITH_VIGRANUMPY=$(usex python ON OFF)
+			-DWITH_HDF5=$(usex hdf5)
+			-DWITH_OPENEXR=$(usex openexr)
+			-DWITH_VALGRIND=$(usex valgrind)
+			-DWITH_VIGRANUMPY=$(usex python)
 		)
 		cmake-utils_src_configure
 	}
