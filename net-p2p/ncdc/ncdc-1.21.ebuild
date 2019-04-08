@@ -3,12 +3,12 @@
 
 EAPI=7
 
-inherit toolchain-funcs
+inherit autotools toolchain-funcs
 
 DESCRIPTION="ncurses directconnect client"
 HOMEPAGE="https://dev.yorhel.nl/ncdc"
 if [[ "${PV}" == *9999 ]] ; then
-	inherit autotools git-r3
+	inherit git-r3
 	EGIT_REPO_URI="git://g.blicky.net/ncdc.git"
 else
 	SRC_URI="https://dev.yorhel.nl/download/${P}.tar.gz"
@@ -33,9 +33,13 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	"${FILESDIR}/${PN}-1.21-tinfo.patch"
+)
+
 src_prepare() {
 	default
-	[[ "${PV}" == *9999 ]] && eautoreconf
+	eautoreconf
 }
 
 src_configure() {
