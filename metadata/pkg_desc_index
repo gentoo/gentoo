@@ -8028,7 +8028,7 @@ media-sound/SmarTagger 0.1-r2: Perl script for renaming and tagging mp3s
 media-sound/a2jmidid 8-r2: Daemon for exposing legacy ALSA sequencer applications in JACK MIDI system
 media-sound/abcde 2.5.4-r1 2.8.1: A command line CD encoder
 media-sound/abcm2ps 8.12.9 8.13.12: Program to convert abc files to Postscript files
-media-sound/adplay 1.7: A console player for AdLib music
+media-sound/adplay 1.7 1.8: A console player for AdLib music
 media-sound/aeolus 0.9.0 0.9.5: A synthesised pipe organ emulator
 media-sound/alac_decoder 0.2.0-r1: Basic decoder for Apple Lossless Audio Codec files (ALAC)
 media-sound/alsa-tools 1.1.0 1.1.6 1.1.7: Advanced Linux Sound Architecture tools
@@ -8045,7 +8045,7 @@ media-sound/asunder 2.9.2-r2 2.9.3-r1: Graphical Audio CD ripper and encoder wit
 media-sound/audacity 2.2.2: Free crossplatform audio editor
 media-sound/audiotag 0.19: A command-line tool for mass tagging/renaming of audio files
 media-sound/aumix 2.9.1: Aumix volume/mixer control program
-media-sound/awesfx 0.5.1d: AWE32 Sound Driver Utility Programs
+media-sound/awesfx 0.5.1d 0.5.1e: AWE32 Sound Driver Utility Programs
 media-sound/aylet 0.5: Aylet plays music files in the .ay format
 media-sound/bladeenc 0.94.2-r1: An mp3 encoder
 media-sound/bplay 0.991: No-frills command-line buffered player and recorder
@@ -8097,7 +8097,7 @@ media-sound/gramofile 1.6_p9: Transfer sound from gramophone records to CD
 media-sound/grip 3.9.0: GTK+ based Audio CD Player/Ripper
 media-sound/gsm 1.0.13-r1: Lossy speech compression library and tool
 media-sound/gstreamripper 0.2: A GTK+ toolkit based frontend for streamripper
-media-sound/gtick 0.5.0: a metronome application supporting different meters and speeds ranging
+media-sound/gtick 0.5.0 0.5.4: Metronome application supporting different meters and speeds ranging
 media-sound/guayadeque 0.4.5_p20170110: Music management program designed for all music enthusiasts
 media-sound/herrie 2.2-r1: Herrie is a command line music player
 media-sound/horgand 1.14-r1: Opensource software organ
