@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
 
@@ -16,16 +16,22 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="doc examples"
 
+DEPEND="doc? ( dev-python/sphinx )"
+
 python_compile_all() {
-	use doc && emake -C doc html
+	if use doc; then
+		emake -C doc html
+		HTML_DOCS=( doc/_build/html/. )
+		rm -rf doc/_build/html/{objects.inv,_sources} || die
+	fi
 }
 
 python_install_all() {
-	dodoc README
-	use doc && dohtml -r doc/_build/html/
+	distutils-r1_python_install_all
+
 	if use examples; then
-		docompress -x usr/share/doc/${PF}/examples/
-		insinto usr/share/doc/${PF}/examples/
-		doins example.py
+		docinto examples
+		dodoc example.py
+		docompress -x /usr/share/doc/${PF}/examples/
 	fi
 }
