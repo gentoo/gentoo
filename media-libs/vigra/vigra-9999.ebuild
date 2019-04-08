@@ -39,13 +39,16 @@ BDEPEND="
 # runtime dependency on python:2.7 is required by the vigra-config script
 DEPEND="
 	dev-lang/python:2.7
-	>=dev-libs/boost-1.52.0-r6:=[python?,${PYTHON_USEDEP}]
 	fftw? ( sci-libs/fftw:3.0 )
 	hdf5? ( >=sci-libs/hdf5-1.8.0:=[mpi=] )
 	jpeg? ( virtual/jpeg:0 )
 	openexr? ( media-libs/openexr:= )
 	png? ( media-libs/libpng:0= )
-	python? ( ${PYTHON_DEPS} dev-python/numpy[${PYTHON_USEDEP}] )
+	python? (
+		dev-libs/boost:=[python?,${PYTHON_USEDEP}]
+		dev-python/numpy[${PYTHON_USEDEP}]
+		${PYTHON_DEPS}
+	)
 	tiff? ( media-libs/tiff:0= )
 	valgrind? ( dev-util/valgrind )
 	zlib? ( sys-libs/zlib )
