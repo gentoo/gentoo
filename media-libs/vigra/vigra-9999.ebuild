@@ -42,7 +42,10 @@ DEPEND="
 	fftw? ( sci-libs/fftw:3.0 )
 	hdf5? ( >=sci-libs/hdf5-1.8.0:=[mpi=] )
 	jpeg? ( virtual/jpeg:0 )
-	openexr? ( media-libs/openexr:= )
+	openexr? (
+		media-libs/openexr:=
+		media-libs/ilmbase:=
+	)
 	png? ( media-libs/libpng:0= )
 	python? (
 		dev-libs/boost:=[python?,${PYTHON_USEDEP}]
