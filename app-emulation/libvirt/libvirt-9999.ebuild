@@ -365,8 +365,8 @@ src_install() {
 	newconfd "${FILESDIR}/libvirtd.confd-r5" libvirtd || die
 	newconfd "${FILESDIR}/libvirt-guests.confd" libvirt-guests || die
 
-	newbashcomp "${S}/tools/bash-completion/vsh" vsh
-	bashcomp_alias vsh virsh virt-admin
+	newbashcomp "${S}/tools/bash-completion/vsh" virsh
+	bashcomp_alias virsh virt-admin
 
 	DOC_CONTENTS=$(<"${FILESDIR}/README.gentoo-r2")
 	DISABLE_AUTOFORMATTING=true
