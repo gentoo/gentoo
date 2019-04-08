@@ -34,7 +34,6 @@
 		<flag name="airplay">Support for airplay format</flag>
 		<flag name="asf">Support for Monkey's Audio (APE) format with help of bundled libasf</flag>
 		<flag name="fluidsynth">Enable fluidsynth support (MIDI)</flag>
-		<flag name="gvfs">Transport for glibs virtual filesystem</flag>
 		<flag name="ices">Icecast source output plugin</flag>
 		<flag name="mac">Support for Monkey's Audio (APE) format with help of <pkg>media-sound/mac</pkg></flag>
 		<flag name="ofa">Support for Open Fingerprint Architecture (OFA)</flag>
