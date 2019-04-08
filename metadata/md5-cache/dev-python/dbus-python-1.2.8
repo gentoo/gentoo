@@ -4,7 +4,7 @@ DESCRIPTION=Python bindings for the D-Bus messagebus
 EAPI=6
 HOMEPAGE=https://www.freedesktop.org/wiki/Software/DBusBindings https://dbus.freedesktop.org/doc/dbus-python/
 IUSE=doc examples test python_targets_python2_7 python_targets_python3_5 python_targets_python3_6 python_targets_python3_7
-KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-fbsd
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-fbsd
 LICENSE=MIT
 RDEPEND=>=sys-apps/dbus-1.8:= >=dev-libs/glib-2.40 python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[threads(+)] ) python_targets_python3_5? ( dev-lang/python:3.5[threads(+)] ) python_targets_python3_6? ( dev-lang/python:3.6[threads(+)] ) python_targets_python3_7? ( dev-lang/python:3.7[threads(+)] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_5(-)?,python_targets_python3_6(-)?,python_targets_python3_7(-)?,-python_single_target_python2_7(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),-python_single_target_python3_7(-)]
 REQUIRED_USE=|| ( python_targets_python2_7 python_targets_python3_5 python_targets_python3_6 python_targets_python3_7 )
@@ -12,4 +12,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://dbus.freedesktop.org/releases/dbus-python/dbus-python-1.2.8.tar.gz
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multibuild	40fe59465edacd730c644ec2bc197809	multilib	b2f01ad412baf81650c23fcf0975fa33	python-r1	ce1cd23cfdc1848e8e32743efe34f299	python-utils-r1	08e17157a6807add7db1f8d01e7e391f	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
-_md5_=9ab190e1a7d6ca4c1a7c98fb184e1bbb
+_md5_=b7da7afc01295c90ee1d5bf3ebba0cbf
