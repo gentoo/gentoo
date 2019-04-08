@@ -7327,8 +7327,8 @@ media-fonts/x11fonts-jmk 3.0-r1: This package contains character-cell fonts for 
 media-fonts/zh-kcfonts 1.05-r3: Kuo Chauo Chinese Fonts collection in BIG5 encoding
 media-gfx/aaphoto 0.45: Automatic color correction and resizing of photos
 media-gfx/aewan 1.0.01-r1: A curses-based ascii-art editor
-media-gfx/album 4.07: HTML photo album generator
-media-gfx/apngasm 2.7: create an APNG from multiple PNG files
+media-gfx/album 4.07 4.13-r1: HTML photo album generator
+media-gfx/apngasm 2.7 2.91: create an APNG from multiple PNG files
 media-gfx/argyllcms 1.9.2: Open source, ICC compatible color management system
 media-gfx/asymptote 2.41-r1: A vector graphics language that provides a framework for technical drawing
 media-gfx/autopano-sift-C 2.5.1: SIFT algorithm for automatic panorama creation in C
@@ -7383,7 +7383,7 @@ media-gfx/gnome-screenshot 3.22.0: Screenshot utility for GNOME
 media-gfx/gozer 0.7-r3: tool for rendering arbitrary text as graphics, using ttfs and styles
 media-gfx/gphoto2 2.5.15 2.5.20: Free, redistributable digital camera software application
 media-gfx/gphotofs 0.5: FUSE file system for interfacing with digital cameras using gphoto2
-media-gfx/gpicview 0.2.4 0.2.5: A Simple and Fast Image Viewer for X
+media-gfx/gpicview 0.2.4 0.2.5 0.2.5-r1: A Simple and Fast Image Viewer for X
 media-gfx/gqview 2.1.5-r1: A GTK-based image browser
 media-gfx/graphicsmagick 1.3.30: Collection of tools and libraries for many image formats
 media-gfx/graphite2 1.3.10 1.3.13: Library providing rendering capabilities for complex non-Roman writing systems
@@ -7403,7 +7403,7 @@ media-gfx/inkscape 0.92.3-r1: SVG based generic vector-drawing program
 media-gfx/iscan 2.30.2.2 2.30.3.1: EPSON Image Scan! for Linux (including sane-epkowa backend)
 media-gfx/iscan-data 1.36.0.1 1.39.0.1: Image Scan! for Linux data files
 media-gfx/iscan-plugin-gt-f720 0.0.1.2: Epson Perfection V300 PHOTO scanner plugin for SANE 'epkowa' backend
-media-gfx/jhead 2.97: Exif Jpeg camera setting parser and thumbnail remover
+media-gfx/jhead 2.97 3.00-r2: Exif Jpeg camera setting parser and thumbnail remover
 media-gfx/jigl 2.0.1-r1: Jason's Image Gallery
 media-gfx/jp2a 1.0.6-r1: JPEG image to ASCII art converter
 media-gfx/jpeg2ps 1.9-r1: Converts JPEG images to Postscript using a wrapper
@@ -10747,7 +10747,7 @@ x11-base/xorg-drivers 1.20: Meta package containing deps on all xorg drivers
 x11-base/xorg-proto 2018.4: X.Org combined protocol headers
 x11-base/xorg-server 1.20.3: X.Org X servers
 x11-base/xorg-x11 7.4-r3: An X11 implementation maintained by the X.Org Foundation (meta package)
-x11-drivers/nvidia-drivers 340.107 390.116 410.104 415.27 418.43: NVIDIA Accelerated Graphics Driver
+x11-drivers/nvidia-drivers 340.107 340.107-r1 390.116 390.116-r2 410.104 410.104-r2 415.27 415.27-r2 418.43 418.56: NVIDIA Accelerated Graphics Driver
 x11-drivers/xf86-input-elographics 1.4.1: Elographics input driver
 x11-drivers/xf86-input-evdev 2.10.6: Generic Linux input driver
 x11-drivers/xf86-input-joystick 1.6.3: X.Org driver for joystick input devices
