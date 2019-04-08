@@ -14,7 +14,7 @@ else
 	inherit git-r3
 fi
 
-inherit cmake-utils
+inherit cmake-utils xdg-utils
 
 DESCRIPTION="Phonon GStreamer backend"
 HOMEPAGE="https://phonon.kde.org/"
@@ -51,4 +51,12 @@ PATCHES=(
 src_configure() {
 	local mycmakeargs=( -DPHONON_BUILD_PHONON4QT5=ON )
 	cmake-utils_src_configure
+}
+
+pkg_postinst() {
+	xdg_icon_cache_update
+}
+
+pkg_postrm() {
+	xdg_icon_cache_update
 }
