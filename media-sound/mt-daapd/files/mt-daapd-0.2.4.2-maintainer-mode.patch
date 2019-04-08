@@ -1,5 +1,5 @@
---- configure.in.orig	2008-07-06 23:57:08.000000000 +0200
-+++ configure.in	2008-07-06 23:57:46.000000000 +0200
+--- a/configure.in
++++ b/configure.in
 @@ -17,10 +17,12 @@
  rend_posix=true
  
