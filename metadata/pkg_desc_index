@@ -1903,7 +1903,7 @@ dev-db/oracle-instantclient-sqlplus 11.2.0.3 11.2.0.3-r1 11.2.0.4: Oracle 11g In
 dev-db/percona-toolkit 2.2.11 2.2.20: Advanced command-line tools to perform a variety of MySQL and system tasks
 dev-db/percona-xtrabackup 2.4.12: Hot backup utility for MySQL based servers
 dev-db/pg_top 3.7.0: 'top' for PostgreSQL
-dev-db/pgadmin4 3.0: GUI administration and development platform for PostgreSQL
+dev-db/pgadmin4 3.0 4.3: GUI administration and development platform for PostgreSQL
 dev-db/pgagent 3.4.0-r3: pgAgent is a job scheduler for PostgreSQL
 dev-db/pgbadger 10.0: pgBadger is a PostgreSQL log analyzer.
 dev-db/pgbouncer 1.9.0: Lightweight connection pooler for PostgreSQL
@@ -5625,6 +5625,7 @@ dev-python/sphinxtogithub 1.1.0: A python script for preparing the html output o
 dev-python/sqlalchemy 0.7.10 0.9.8 1.0.17 1.1.12 1.2.4 1.2.7: Python SQL toolkit and Object Relational Mapper
 dev-python/sqlalchemy-migrate 0.7.2-r1 0.9.2 0.11.0 0.11.0-r1: SQLAlchemy Schema Migration Tools
 dev-python/sqlitecachec 1.1.4-r1: sqlite cacher for python applications
+dev-python/sshtunnel 0.1.4-r1: Pure python SSH tunnels
 dev-python/ssl-fetch 0.2 0.3 0.4: A small convenience library for fetching files securely
 dev-python/statsd 3.2.1: A simple statsd client
 dev-python/statsmodels 0.6.1: Statistical computations and models for use with SciPy
@@ -7632,7 +7633,7 @@ media-libs/libggigcp 1.0.2-r1: Libggi extension for advanced color and palette h
 media-libs/libggimisc 2.2.2-r1: Adds support for some special graphical target features
 media-libs/libggiwmh 0.3.2-r1: Window manager hints extensions for libggi
 media-libs/libgig 4.1.0: C++ library for loading Gigasampler and DLS level 1/2 files
-media-libs/libgii 1.0.2-r1: Easy to use, but yet powerful, API for all possible input sources
+media-libs/libgii 1.0.2-r1 1.0.2-r2: Easy to use, but yet powerful, API for all possible input sources
 media-libs/libgphoto2 2.5.16 2.5.20: Library that implements support for numerous digital cameras
 media-libs/libgpod 0.8.3-r2: Shared library to access the contents of an iPod
 media-libs/libharu 2.3.0-r1: C/C++ library for PDF generation
@@ -8810,7 +8811,7 @@ net-libs/wvstreams 4.6.1-r3: A network programming library in C++
 net-libs/xrootd 4.8.3: Extended ROOT remote file server
 net-libs/zeromq 2.2.0 3.2.5 4.3.1: A brokerless kernel
 net-mail/altermime 0.3.11: alterMIME is a small program which is used to alter your mime-encoded mailpacks
-net-mail/amavis-logwatch 1.51.03-r3: A log analyzer for amavisd-new
+net-mail/amavis-logwatch 1.51.03-r5: A log analyzer for amavisd-new
 net-mail/archivemail 0.9.0-r1: Tool written archiving old email in mailboxes
 net-mail/automx 0.10.2-r1 0.10.2-r2: A mail user agent auto configuration service
 net-mail/autorespond 2.0.4: Autoresponder add on package for qmailadmin
@@ -8837,7 +8838,7 @@ net-mail/libpst 0.6.66-r1: Tools and library for reading Outlook files (.pst for
 net-mail/mailbase 1.1: MTA layout package
 net-mail/maildirtree 0.6-r1: A utility that prints trees of Courier-style Maildirs
 net-mail/mailgraph 1.14-r2: A mail statistics RRDtool frontend for Postfix
-net-mail/mailman 2.1.26 2.1.29: A python-based mailing list server with an extensive web interface
+net-mail/mailman 2.1.29: A python-based mailing list server with an extensive web interface
 net-mail/mailutils 3.4-r2: A useful collection of mail servers, clients, and filters
 net-mail/mairix 0.23: Indexes and searches Maildir/MH folders
 net-mail/mess822 0.58-r2: Collection of utilities for parsing Internet mail messages
@@ -8854,7 +8855,7 @@ net-mail/pfqueue 0.5.6: pfqueue is an ncurses console-based tool for managing Po
 net-mail/pop-before-smtp 1.42: a simple daemon to allow email relay control based on successful POP or IMAP logins
 net-mail/popa3d 1.0.2-r1: A security oriented POP3 server
 net-mail/poppassd_ceti 1.8.5-r2: Password change daemon with PAM support
-net-mail/postfix-logwatch 1.40.03-r2: A log analyzer for postfix
+net-mail/postfix-logwatch 1.40.03-r3: A log analyzer for postfix
 net-mail/qmail-autoresponder 0.97-r1 0.97-r3: Rate-limited autoresponder for qmail
 net-mail/qmail-notify 0.93-r1: Delayed delivery notification for qmail
 net-mail/qmail-qfilter 2.1: qmail-queue multi-filter front end
@@ -9486,7 +9487,7 @@ sci-mathematics/gmm 5.1: Generic C++ template library for sparse, dense and skyl
 sci-mathematics/jags 3.4.0 4.2.0: Just Another Gibbs Sampler for Bayesian MCMC simulation
 sci-mathematics/lpsolve 5.5.2.0: Mixed Integer Linear Programming (MILP) solver
 sci-mathematics/mathomatic 15.8.5: Automatic algebraic manipulator
-sci-mathematics/maxima 5.38.1: Free computer algebra environment based on Macsyma
+sci-mathematics/maxima 5.38.1 5.42.1: Free computer algebra environment based on Macsyma
 sci-mathematics/nauty 2.5.9: Computing automorphism groups of graphs and digraphs
 sci-mathematics/normaliz 2.12.2 3.1.1 3.1.3: Tool for computations in affine monoids and more
 sci-mathematics/octave 4.2.2: High-level interactive language for numerical computations
