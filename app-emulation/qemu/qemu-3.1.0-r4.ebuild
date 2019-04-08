@@ -774,7 +774,7 @@ pkg_postinst() {
 		udev_reload
 	fi
 
-	[[ -f ${D}/usr/libexec/qemu-bridge-helper ]] && \
+	[[ -f ${EROOT}/usr/libexec/qemu-bridge-helper ]] && \
 		fcaps cap_net_admin /usr/libexec/qemu-bridge-helper
 
 	DISABLE_AUTOFORMATTING=true
