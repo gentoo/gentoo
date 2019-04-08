@@ -7585,7 +7585,7 @@ media-libs/lensfun 0.3.2-r1: Library for rectifying and simulating photographic 
 media-libs/leptonica 1.74.4: C library for image processing and analysis
 media-libs/lib3ds 1.3.0-r1 2.0.0_rc1: library for managing 3D-Studio Release 3 and 4 .3DS files
 media-libs/libXcm 0.5.4: Reference implementation of the X Color Management specification
-media-libs/libaacplus 2.0.2-r2: HE-AAC+ v2 library, based on the reference implementation
+media-libs/libaacplus 2.0.2-r2 2.0.2-r3: HE-AAC+ v2 library, based on the reference implementation
 media-libs/libaacs 0.7.1: Open implementation of the Advanced Access Content System (AACS) specification
 media-libs/libafterimage 1.20-r2: Afterstep's standalone generic image manipulation library
 media-libs/libao 1.2.2: The Audio Output library
@@ -7610,7 +7610,7 @@ media-libs/libcuefile 477-r1: Cue File library from Musepack
 media-libs/libdc1394 2.2.5-r1: Library to interface with IEEE 1394 cameras following the IIDC specification
 media-libs/libdca 0.0.5-r3: library for decoding DTS Coherent Acoustics streams used in DVD
 media-libs/libde265 1.0.3: Open h.265 video codec implementation
-media-libs/libdiscid 0.6.1: Client library to create MusicBrainz enabled tagging applications
+media-libs/libdiscid 0.6.1 0.6.2: Client library to create MusicBrainz enabled tagging applications
 media-libs/libdmtx 0.7.4: Barcode data matrix reading and writing library
 media-libs/libdv 1.0.0-r2 1.0.0-r3: Software codec for dv-format video (camcorders etc)
 media-libs/libdvbpsi 1.3.1: library for MPEG TS/DVB PSI tables decoding and generation
@@ -8065,13 +8065,13 @@ media-sound/daudio 0.3-r1: Distributed audio on the local network
 media-sound/dcadec 0.2.0: DTS Coherent Acoustics decoder with support for HD extensions
 media-sound/dcd 0.95: A simple command-line based CD Player
 media-sound/dir2ogg 0.11.6: Converts mp3, m4a, wma, and wav files to Ogg Vorbis format
-media-sound/drumstick 1.1.0 1.1.1: Qt/C++ wrapper for ALSA sequencer
+media-sound/drumstick 1.1.0 1.1.1 1.1.2: Qt/C++ wrapper for ALSA sequencer
 media-sound/easytag 2.4.3-r1: GTK+ utility for editing MP2, MP3, MP4, FLAC, Ogg and other media tags
 media-sound/ecasound 2.6.0-r1: a package for multitrack audio processing
 media-sound/edna 0.6: Greg Stein's python streaming audio server for desktop or LAN use
 media-sound/erec 2.2.0.1: A shared audio recording server
 media-sound/exaile 4.0.0_rc3: GTK+ based media player aiming to be similar to Amarok
-media-sound/fapg 0.41: Fast Audio Playlist Generator
+media-sound/fapg 0.41 0.42: Fast Audio Playlist Generator
 media-sound/flac123 0.0.12: console app for playing FLAC audio files
 media-sound/flacon 4.1.0: Extracts audio tracks from an audio CD image to separate tracks
 media-sound/flake 0.11: An alternative to the FLAC reference encoder
@@ -8126,7 +8126,7 @@ media-sound/mangler 1.2.5-r1: Open source VOIP client capable of connecting to V
 media-sound/mcdp 0.4a 0.4b: A very small console cd player
 media-sound/meterbridge 0.9.3: Software meterbridge for the UNIX based JACK audio system
 media-sound/mhwaveedit 1.4.22: GTK+ Sound file editor (wav, and a few others.)
-media-sound/mikmod 3.2.6: A console MOD-Player based on libmikmod
+media-sound/mikmod 3.2.6 3.2.8: A console MOD-Player based on libmikmod
 media-sound/mixxx 2.1.1-r1: Advanced Digital DJ tool based on Qt
 media-sound/moc 2.5.2 2.6_alpha3: Music On Console - ncurses interface for playing audio files
 media-sound/modplugtools 0.5.1: libmodplug based module players modplug123 and modplugplay
@@ -8565,7 +8565,7 @@ net-dns/unbound 1.9.0: A validating, recursive and caching DNS resolver
 net-dns/updatedd 2.6-r5: Dynamic DNS client with plugins for several dynamic dns services
 net-firewall/arno-iptables-firewall 2.0.1e 2.0.3: Arno's iptables firewall script
 net-firewall/arptables 0.0.4: set up, maintain, and inspect the tables of ARP rules in the Linux kernel
-net-firewall/conntrack-tools 1.4.4-r1: Connection tracking userspace tools
+net-firewall/conntrack-tools 1.4.4-r1 1.4.5: Connection tracking userspace tools
 net-firewall/dshieldpy 3.2-r2: Python script to submit firewall logs to dshield.org
 net-firewall/ebtables 2.0.10.4: Controls Ethernet frame filtering on a Linux bridge, MAC NAT and brouting
 net-firewall/ferm 2.4 2.4.1: Command line util for managing firewall rules
@@ -8735,7 +8735,7 @@ net-libs/libnatpmp 20130911: An alternative protocol to UPnP IGD specification
 net-libs/libndp 1.6-r1: Library for Neighbor Discovery Protocol
 net-libs/libnet 1.0.2a-r5 1.2_rc3-r1: library providing an API for commonly used low-level network functions
 net-libs/libnetfilter_acct 1.0.2: Userspace library providing interface to extended accounting infrastructure of NetFilter
-net-libs/libnetfilter_conntrack 1.0.4 1.0.6: programming interface (API) to the in-kernel connection tracking state table
+net-libs/libnetfilter_conntrack 1.0.4 1.0.6 1.0.7: programming interface (API) to the in-kernel connection tracking state table
 net-libs/libnetfilter_cthelper 1.0.0: userspace library that provides the programming interface to the user-space helper infrastructure
 net-libs/libnetfilter_cttimeout 1.0.0: netlink interface to the connection tracking timeout infrastructure in the kernel packet filter
 net-libs/libnetfilter_log 1.0.1: interface to packets that have been logged by the kernel packet filter
