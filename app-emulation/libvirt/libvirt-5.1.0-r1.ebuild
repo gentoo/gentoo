@@ -71,7 +71,7 @@ RDEPEND="
 	audit? ( sys-process/audit )
 	caps? ( sys-libs/libcap-ng )
 	dbus? ( sys-apps/dbus )
-	firewalld? ( net-firewall/firewalld )
+	firewalld? ( >=net-firewall/firewalld-0.6.3 )
 	fuse? ( >=sys-fs/fuse-2.8.6:= )
 	glusterfs? ( >=sys-cluster/glusterfs-3.4.1 )
 	iscsi? ( sys-block/open-iscsi )
