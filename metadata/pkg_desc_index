@@ -6248,7 +6248,7 @@ dev-util/bustle 0.4.2-r1 0.5.4: Draw sequence diagrams of D-Bus traffic
 dev-util/byacc 20170201: the best variant of the Yacc parser generator
 dev-util/cargo 0.30.0-r1: The Rust's package manager
 dev-util/catalyst 2.0.18-r1 2.0.18-r4 3.0.2 3.0.2-r1 3.0.3: Release metatool used for creating releases based on Gentoo Linux
-dev-util/catfish 1.4.6 1.4.7: A frontend for find, (s)locate, doodle, tracker, beagle, strigi and pinot
+dev-util/catfish 1.4.7: A frontend for find, (s)locate, doodle, tracker, beagle, strigi and pinot
 dev-util/ccache 3.2.4 3.3.4-r1: fast compiler cache
 dev-util/cdiff 1.0: Colored, side-by-side diff terminal viewer
 dev-util/cgdb 0.6.8: A curses front-end for GDB, the GNU debugger
@@ -7375,7 +7375,7 @@ media-gfx/gimageview 0.2.27-r4: Powerful GTK+ based image & movie viewer
 media-gfx/gimp 2.8.22-r1: GNU Image Manipulation Program
 media-gfx/gimp-arrow-brushes 20120122: Brushes for GIMP with the styles arrow, handpointer, button arrow and cursor
 media-gfx/gliv 1.9.7: An image viewer that uses OpenGL
-media-gfx/gnofract4d 3.14-r1: A program for drawing beautiful mathematically-based images known as fractals
+media-gfx/gnofract4d 3.14-r1 3.14.1: A program for drawing beautiful mathematically-based images known as fractals
 media-gfx/gnome-font-viewer 3.30.0: Font viewer utility for GNOME
 media-gfx/gnome-photos 3.24.6: Access, organize and share your photos on GNOME
 media-gfx/gnome-raw-thumbnailer 3.0.0-r1: A lightweight and fast raw image thumbnailer for GNOME
@@ -8177,7 +8177,7 @@ media-sound/playerctl 0.5.0: A CLI utility to control media players over MPRIS
 media-sound/pnmixer 0.7.2: Volume mixer for the system tray
 media-sound/podracer 1.4-r2: A simple podcast aggregator, designed for cron
 media-sound/positron 1.1-r1: Synchronization manager for the Neuros Audio Computer
-media-sound/pragha 1.3.3 1.3.4: A lightweight music player (for Xfce)
+media-sound/pragha 1.3.4: A lightweight music player (for Xfce)
 media-sound/pulseaudio 12.2 12.2-r1: A networked sound server with an advanced plugin system
 media-sound/pulseeffects 3.2.3-r1 4.4.7: Limiter, compressor, reverberation, equalizer auto volume effects for Pulseaudio
 media-sound/pympd 0.08.1-r1: a Rhythmbox-like PyGTK+ client for Music Player Daemon
@@ -8356,7 +8356,7 @@ media-video/tovid 0.35.2-r1: A collection of DVD authoring tools
 media-video/transcode 1.1.7-r3: A suite of utilities for transcoding video and audio codecs in different containers
 media-video/ttcut 0.19.6_p1: Tool for cutting MPEG files especially for removing commercials
 media-video/ushare 1.1a-r8: uShare is a UPnP (TM) A/V & DLNA Media Server
-media-video/vamps 0.99.2: Very fast requantisizing tool for backup DVDs
+media-video/vamps 0.99.2 0.99.2-r1: Very fast requantisizing tool for backup DVDs
 media-video/vcdimager 0.7.24 2.0.1: GNU VCDimager
 media-video/vdr 2.0.6-r1 2.2.0-r1: Video Disk Recorder - turns a pc into a powerful set top box for DVB
 media-video/vdr2jpeg 0.1.9-r1 0.2.0: Addon needed for XXV - WWW Admin for the Video Disk Recorder
@@ -11387,9 +11387,9 @@ xfce-extra/thunar-shares-plugin 0.2.0_p20101105-r1: Thunar plugin to share files
 xfce-extra/thunar-vcs-plugin 0.1.5-r1: Adds Subversion and GIT actions to the context menu of thunar
 xfce-extra/thunar-volman 0.8.1-r1: Daemon that enforces volume-related policies
 xfce-extra/transd 0_p20120503-r1: A small daemon to watch for window creation and set window transparency values
-xfce-extra/tumbler 0.2.0 0.2.3: A thumbnail service for Thunar
+xfce-extra/tumbler 0.2.3: A thumbnail service for Thunar
 xfce-extra/xfce4-alsa-plugin 0.1.1: Simple ALSA volume control for xfce4-panel
-xfce-extra/xfce4-battery-plugin 1.1.1 1.1.2: A battery monitor panel plugin for the Xfce desktop environment
+xfce-extra/xfce4-battery-plugin 1.1.2: A battery monitor panel plugin for the Xfce desktop environment
 xfce-extra/xfce4-cellmodem-plugin 0.0.5-r1: A panel plug-in with monitoring support for GPRS/UMTS(3G)/HSDPA(3.5G) modems
 xfce-extra/xfce4-clipman-plugin 1.4.3: A clipboard manager plug-in for the Xfce panel
 xfce-extra/xfce4-composite-editor 0-r1: An graphical interface to modify composite settings
@@ -11407,11 +11407,11 @@ xfce-extra/xfce4-gvfs-mount 0.0.4-r1: A panel plug-in to mount remote filesystem
 xfce-extra/xfce4-hdaps 0.0.9-r1: A plugin to indicate the status of the IBM Hard Drive Active Protection System
 xfce-extra/xfce4-kbdleds-plugin 0.0.6-r1: A panel plug-in to show state of Caps, Num and Scroll Lock keys
 xfce-extra/xfce4-linelight-plugin 0.1.7-r1: A simple locate based search plug-in for the Xfce panel
-xfce-extra/xfce4-mailwatch-plugin 1.2.0 1.2.0-r1: An mail notification panel plug-in for the Xfce desktop environment
+xfce-extra/xfce4-mailwatch-plugin 1.2.0-r1: An mail notification panel plug-in for the Xfce desktop environment
 xfce-extra/xfce4-messenger-plugin 0.1.0-r1: A plugin that listens DBus messages and displays received messages
 xfce-extra/xfce4-modemlights-plugin 0.1.3.99-r1: A panel plug-in intended to simplify establishing a ppp connection
 xfce-extra/xfce4-mount-plugin 1.1.3: An mount plug-in for the Xfce panel
-xfce-extra/xfce4-mpc-plugin 0.5.0 0.5.1: Music Player Daemon (mpd) panel plugin
+xfce-extra/xfce4-mpc-plugin 0.5.1: Music Player Daemon (mpd) panel plugin
 xfce-extra/xfce4-netload-plugin 1.3.1: A network load plug-in for the Xfce panel
 xfce-extra/xfce4-netspeed-plugin 0.3.1: A network transfer rate monitor for the panel
 xfce-extra/xfce4-notes-plugin 1.8.1: Xfce4 panel sticky notes plugin
@@ -11426,7 +11426,7 @@ xfce-extra/xfce4-screenshooter 1.9.3 1.9.5: Xfce4 screenshooter application and 
 xfce-extra/xfce4-sensors-plugin 1.3.0: A panel plug-in for acpi, lm_sensors and hddtemp sensors
 xfce-extra/xfce4-smartbookmark-plugin 0.5.0: Smart bookmark plug-in for the Xfce desktop environment
 xfce-extra/xfce4-soundmenu-plugin 0.7.0: A panel plug-in to control MPRIS2 compatible players like Pragha
-xfce-extra/xfce4-systemload-plugin 1.2.1 1.2.2: System load plug-in for Xfce panel
+xfce-extra/xfce4-systemload-plugin 1.2.2: System load plug-in for Xfce panel
 xfce-extra/xfce4-taskmanager 1.2.1 1.2.2: Easy to use task manager
 xfce-extra/xfce4-time-out-plugin 1.0.2: A panel plug-in to take periodical breaks from the computer
 xfce-extra/xfce4-timer-plugin 1.7.0: A simple timer plug-in for the Xfce desktop environment
@@ -11434,8 +11434,8 @@ xfce-extra/xfce4-vala 4.10.3-r3: Vala bindings for the Xfce desktop environment
 xfce-extra/xfce4-verve-plugin 2.0.0: A comfortable command line plugin for the Xfce panel
 xfce-extra/xfce4-volumed-pulse 0.2.3: Daemon to control volume up/down and mute keys for pulseaudio
 xfce-extra/xfce4-wavelan-plugin 0.6.0: A panel plug-in to display wireless interface statistics
-xfce-extra/xfce4-weather-plugin 0.9.0 0.9.1: A weather plug-in for the Xfce desktop environment
-xfce-extra/xfce4-whiskermenu-plugin 2.3.0 2.3.2: Alternate application launcher for Xfce
+xfce-extra/xfce4-weather-plugin 0.9.1: A weather plug-in for the Xfce desktop environment
+xfce-extra/xfce4-whiskermenu-plugin 2.3.2: Alternate application launcher for Xfce
 xfce-extra/xfce4-windowck-plugin 0.2.4: Xfce plugin puts the maximized window title and windows buttons on the panel
 xfce-extra/xfce4-wmdock-plugin 0.6.0: a compatibility layer for running WindowMaker dockapps on Xfce4
 xfce-extra/xfce4-xkb-plugin 0.8.1: XKB layout switching panel plug-in for the Xfce desktop environment
