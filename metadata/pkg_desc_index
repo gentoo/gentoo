@@ -3254,7 +3254,7 @@ dev-libs/quazip 0.7.6: Simple C++ wrapper over Gilles Vollant's ZIP/UNZIP packag
 dev-libs/rapidjson 1.1.0-r1: A fast JSON parser/generator for C++ with both SAX/DOM style API
 dev-libs/rasqal 0.9.33: Library that handles Resource Description Framework (RDF)
 dev-libs/re2 0.2016.05.01 0.2018.10.01: An efficient, principled regular expression library
-dev-libs/redland 1.0.17-r1: High-level interface for the Resource Description Framework
+dev-libs/redland 1.0.17-r1 1.0.17-r2: High-level interface for the Resource Description Framework
 dev-libs/redland-bindings 1.0.14.1-r2: Language bindings for Redland
 dev-libs/rlog 1.4: A C++ logging library
 dev-libs/satyr 0.26: Satyr is a collection of low-level algorithms for program failure processing
@@ -8203,7 +8203,7 @@ media-sound/schismtracker 20180810: Free implementation of Impulse Tracker, a to
 media-sound/scmpc 0.4.1: a client for MPD which submits your tracks to last.fm
 media-sound/seq24 0.9.3 0.9.3-r1: Loop based MIDI sequencer with focus on live performances
 media-sound/setmixer 19941227_p1: A commandline mixer
-media-sound/sexypsf 0.4.7: sexyPSF is an open-source PSF1 (Playstation music) file player
+media-sound/sexypsf 0.4.7 0.4.8: Open-source PSF1 (Playstation music) file player
 media-sound/sfc 0.018-r1: SoundFontCombi is an opensource software pseudo synthesizer
 media-sound/shntool 3.0.10-r1: A multi-purpose WAVE data processing and reporting utility
 media-sound/shorten 3.6.1: fast, low complexity waveform coder (i.e. audio compressor)
@@ -8281,7 +8281,7 @@ media-video/binkplayer 1.99w: Bink Video! Player
 media-video/bino 1.6.7: Stereoscopic and multi-display media player
 media-video/blinkensim 2.7-r1: Graphical Blinkenlights simulator with networking support
 media-video/blinkenthemes 0.10 0.10-r1: Themes for blinkensim
-media-video/ccextractor 0.59: Extract closed captioning subtitles from video to SRT
+media-video/ccextractor 0.59 0.85-r2: Extract closed captioning subtitles from video to SRT
 media-video/cclive 0.9.3-r2: Command line tool for extracting videos from various websites
 media-video/chaplin 1.10-r2: This is a program to raw copy chapters from a dvd using libdvdread
 media-video/cheese 3.28.0: A cheesy program to take pictures and videos from your webcam
