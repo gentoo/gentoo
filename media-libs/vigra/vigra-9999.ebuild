@@ -1,12 +1,12 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
+
 MY_P="${P}-src"
 MY_V="${PV//\./-}"
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="threads,xml"
-
 inherit cmake-utils python-r1
 
 DESCRIPTION="C++ computer vision library emphasizing customizable algorithms and structures"
@@ -24,8 +24,20 @@ LICENSE="MIT"
 SLOT="0"
 IUSE="doc +fftw +hdf5 +jpeg mpi openexr +png +python test +tiff valgrind"
 
+REQUIRED_USE="
+	doc? ( hdf5 fftw )
+	python? ( hdf5 ${PYTHON_REQUIRED_USE} )
+	test? ( hdf5 python fftw )"
+
+BDEPEND="
+	doc? (
+		app-doc/doxygen
+		python? ( >=dev-python/sphinx-1.1.3-r5[${PYTHON_USEDEP}] )
+	)
+	test? ( >=dev-python/nose-1.1.2-r1[${PYTHON_USEDEP}] )
+"
 # runtime dependency on python:2.7 is required by the vigra-config script
-RDEPEND="
+DEPEND="
 	dev-lang/python:2.7
 	>=dev-libs/boost-1.52.0-r6:=[python?,${PYTHON_USEDEP}]
 	fftw? ( sci-libs/fftw:3.0 )
@@ -35,34 +47,23 @@ RDEPEND="
 	png? ( media-libs/libpng:0= )
 	python? ( ${PYTHON_DEPS} dev-python/numpy[${PYTHON_USEDEP}] )
 	tiff? ( media-libs/tiff:0= )
-	valgrind? ( dev-util/valgrind )"
-
-DEPEND="${RDEPEND}
-	doc? (
-		app-doc/doxygen
-		python? ( >=dev-python/sphinx-1.1.3-r5[${PYTHON_USEDEP}] )
-	)
-	test? ( >=dev-python/nose-1.1.2-r1[${PYTHON_USEDEP}] )"
-
-REQUIRED_USE="
-	doc? ( hdf5 fftw )
-	python? ( hdf5 ${PYTHON_REQUIRED_USE} )
-	test? ( hdf5 python fftw )"
+	valgrind? ( dev-util/valgrind )
+"
+RDEPEND="${DEPEND}"
 
 # Severely broken, also disabled in Fedora, bugs #390447, #653442
 RESTRICT="test"
-
-DOCS=( README.md )
 
 pkg_setup() {
 	use python && python_setup
 }
 
 src_prepare() {
-	einfo "Removing shipped docs and VCS files"
-	rm -rf doc || die
-
 	cmake-utils_src_prepare
+
+	if [[ ${PV} != *9999 ]]; then
+		rm -r doc || die "failed to remove shipped docs"
+	fi
 
 	# Don't use python_fix_shebang because we can't put this behind USE="python"
 	sed -i -e '/env/s:python:python2:' config/vigra-config.in || die
