@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201904-11">
+  <title>Portage: Man-in-the-middle</title>
+  <synopsis>A vulnerability in emerge-delta-webrsync and Portage could result
+    in a man-in-the-middle attack.
+  </synopsis>
+  <product type="ebuild">portage</product>
+  <announced>2019-04-08</announced>
+  <revised count="1">2019-04-08</revised>
+  <bug>646212</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-portage/emerge-delta-webrsync" auto="yes" arch="*">
+      <unaffected range="ge">3.7.4</unaffected>
+      <vulnerable range="lt">3.7.4</vulnerable>
+    </package>
+    <package name="sys-apps/portage" auto="yes" arch="*">
+      <unaffected range="ge">2.3.22</unaffected>
+      <vulnerable range="lt">2.3.22</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Portage is the package management and distribution system for Gentoo.</p>
+  </background>
+  <description>
+    <p>A vulnerability was discovered in emerge-delta-webrsync and Portage that
+      did not properly validate the revocation status of GPG keys.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could conduct a man-in-the-middle attack.  Please
+      review the referenced bug for specific details.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All emerge-delta-webrsync users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=app-portage/emerge-delta-webrsync-3.7.4"
+    </code>
+    
+    <p>All Portage users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-apps/portage-2.3.22"
+    </code>
+  </resolution>
+  <references>
+  </references>
+  <metadata tag="requester" timestamp="2019-03-24T23:20:15Z">BlueKnight</metadata>
+  <metadata tag="submitter" timestamp="2019-04-08T15:21:14Z">b-man</metadata>
+</glsa>
