@@ -59,11 +59,24 @@ pkg_setup() {
 }
 
 src_prepare() {
+	vigra_disable() {
+		if ! use ${1}; then
+			sed -e "/^VIGRA_FIND_PACKAGE.*${2:-$1}/Is/^/#disabled by USE=${1}: /" \
+				-i CMakeLists.txt || die "failed to disable ${1}"
+		fi
+	}
+
 	cmake-utils_src_prepare
 
 	if [[ ${PV} != *9999 ]]; then
 		rm -r doc || die "failed to remove shipped docs"
 	fi
+
+	vigra_disable fftw fftw3
+	vigra_disable fftw fftw3f
+	vigra_disable jpeg
+	vigra_disable png
+	vigra_disable tiff
 
 	# Don't use python_fix_shebang because we can't put this behind USE="python"
 	sed -i -e '/env/s:python:python2:' config/vigra-config.in || die
@@ -79,11 +92,7 @@ src_configure() {
 			-DDOCINSTALL="share/doc/${P}"
 			-DLIBDIR_SUFFIX="${libdir/lib}"
 			-DUSE_DOC=$(usex doc ON OFF) # unused
-			-DUSE_FFTW3=$(usex fftw ON OFF) # unused
-			-DUSE_JPEG=$(usex jpeg ON OFF) # unused
 			-DUSE_MPI=$(usex mpi ON OFF) # unused
-			-DUSE_PNG=$(usex png ON OFF) # unused
-			-DUSE_TIFF=$(usex tiff ON OFF) # unused
 			-DWITH_HDF5=$(usex hdf5 ON OFF)
 			-DWITH_OPENEXR=$(usex openexr ON OFF)
 			-DWITH_VALGRIND=$(usex valgrind ON OFF)
