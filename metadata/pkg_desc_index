@@ -8024,7 +8024,7 @@ media-radio/xdx 2.5.0: a GTK+ TCP/IP DX-cluster and ON4KST chat client
 media-radio/xlog 2.0.15: An amateur radio logging program
 media-sound/SmarTagger 0.1-r2: Perl script for renaming and tagging mp3s
 media-sound/a2jmidid 8-r2: Daemon for exposing legacy ALSA sequencer applications in JACK MIDI system
-media-sound/abcde 2.5.4-r1: A command line CD encoder
+media-sound/abcde 2.5.4-r1 2.8.1: A command line CD encoder
 media-sound/abcm2ps 8.12.9: A program to convert abc files to Postscript files
 media-sound/adplay 1.7: A console player for AdLib music
 media-sound/aeolus 0.9.0 0.9.5: A synthesised pipe organ emulator
