@@ -641,9 +641,11 @@ generate_initd() {
 		sparc*) qcpu="sparc";;
 		esac
 
+		# we use 'printf' here to be portable across 'sh'
+		# implementations: #679168
 		cat <<EOF >>"${out}"
 	if [ "\${cpu}" != "${qcpu}" -a -x "${interpreter}" ] ; then
-		echo ':${package}:M::${magic}:${mask}:${interpreter}:'"\${QEMU_BINFMT_FLAGS}" >/proc/sys/fs/binfmt_misc/register
+		printf '%s\n' ':${package}:M::${magic}:${mask}:${interpreter}:'"\${QEMU_BINFMT_FLAGS}" >/proc/sys/fs/binfmt_misc/register
 	fi
 EOF
 
