@@ -22,7 +22,7 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="doc +fftw +hdf5 +jpeg mpi openexr +png +python test +tiff valgrind"
+IUSE="doc +fftw +hdf5 +jpeg mpi openexr +png +python test +tiff valgrind +zlib"
 
 REQUIRED_USE="
 	doc? ( hdf5 fftw )
@@ -48,6 +48,7 @@ DEPEND="
 	python? ( ${PYTHON_DEPS} dev-python/numpy[${PYTHON_USEDEP}] )
 	tiff? ( media-libs/tiff:0= )
 	valgrind? ( dev-util/valgrind )
+	zlib? ( sys-libs/zlib )
 "
 RDEPEND="${DEPEND}"
 
@@ -77,6 +78,7 @@ src_prepare() {
 	vigra_disable jpeg
 	vigra_disable png
 	vigra_disable tiff
+	vigra_disable zlib
 
 	# Don't use python_fix_shebang because we can't put this behind USE="python"
 	sed -i -e '/env/s:python:python2:' config/vigra-config.in || die
