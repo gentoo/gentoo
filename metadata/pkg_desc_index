@@ -209,7 +209,7 @@ app-arch/rzip 2.1-r3: Compression program for large files
 app-arch/sharutils 4.14-r1 4.15.2-r1: Tools to deal with shar archives
 app-arch/snappy 1.1.7: A high-speed compression/decompression library by Google
 app-arch/stuffit 5.2.0.611: Aladdin Software's StuffIt and StuffIt Expander
-app-arch/tar 1.31-r1 1.32: Use this to make tarballs :)
+app-arch/tar 1.32: Use this to make tarballs :)
 app-arch/tarsync 0.2.1-r1: Delta compression suite for using/generating binary patches
 app-arch/torrentzip 0.9: Create identical zip archives over multiple systems
 app-arch/unace 2.5-r5: ACE unarchiver
