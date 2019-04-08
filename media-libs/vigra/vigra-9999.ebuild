@@ -34,7 +34,10 @@ BDEPEND="
 		app-doc/doxygen
 		python? ( >=dev-python/sphinx-1.1.3-r5[${PYTHON_USEDEP}] )
 	)
-	test? ( >=dev-python/nose-1.1.2-r1[${PYTHON_USEDEP}] )
+	test? (
+		>=dev-python/nose-1.1.2-r1[${PYTHON_USEDEP}]
+		valgrind? ( dev-util/valgrind )
+	)
 "
 # runtime dependency on python:2.7 is required by the vigra-config script
 DEPEND="
@@ -53,7 +56,6 @@ DEPEND="
 		${PYTHON_DEPS}
 	)
 	tiff? ( media-libs/tiff:0= )
-	valgrind? ( dev-util/valgrind )
 	zlib? ( sys-libs/zlib )
 "
 RDEPEND="${DEPEND}"
