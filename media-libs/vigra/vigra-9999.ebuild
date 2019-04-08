@@ -93,14 +93,10 @@ src_configure() {
 			-DDOCDIR="${BUILD_DIR}/doc"
 			-DDOCINSTALL="share/doc/${P}"
 			-DLIBDIR_SUFFIX="${libdir/lib}"
-			-DUSE_DOC=$(usex doc ON OFF) # unused
 			-DWITH_HDF5=$(usex hdf5 ON OFF)
 			-DWITH_OPENEXR=$(usex openexr ON OFF)
 			-DWITH_VALGRIND=$(usex valgrind ON OFF)
 			-DWITH_VIGRANUMPY=$(usex python ON OFF)
-			-DBUILD_TESTING=$(usex test ON OFF) # unused
-			-DUSE_AUTOBUILD_TESTS=$(usex test ON OFF) # unused
-			-DUSE_CREATE_CTEST_TARGETS=$(usex test ON OFF) # unused
 		)
 		cmake-utils_src_configure
 	}
