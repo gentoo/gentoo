@@ -32,7 +32,7 @@ REQUIRED_USE="
 BDEPEND="
 	doc? (
 		app-doc/doxygen
-		python? ( >=dev-python/sphinx-1.1.3-r5[${PYTHON_USEDEP}] )
+		>=dev-python/sphinx-1.1.3-r5[${PYTHON_USEDEP}]
 	)
 	test? (
 		>=dev-python/nose-1.1.2-r1[${PYTHON_USEDEP}]
@@ -66,7 +66,9 @@ RESTRICT="test"
 PATCHES=( "${FILESDIR}/${PN}-1.11.1-lib_suffix.patch" )
 
 pkg_setup() {
-	use python && python_setup
+	if use python || use doc; then
+		python_setup
+	fi
 }
 
 src_prepare() {
