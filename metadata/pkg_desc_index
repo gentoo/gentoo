@@ -2765,7 +2765,7 @@ dev-java/ognl 3.0.8: Object-Graph Navigation Language: get/set properties of obj
 dev-java/opencsv 2.3: A very simple csv (comma-separated values) parser library for Java
 dev-java/oracle-javamail 1.5.2: A Java-based framework to build multiplatform mail and messaging applications
 dev-java/osgi-compendium 4.3.1: OSGi Service Platform Compendium API (Companion Code)
-dev-java/osgi-core-api 5.0.0: OSGi Service Platform Core API (Companion Code)
+dev-java/osgi-core-api 5.0.0 5.0.0-r1: OSGi Service Platform Core API (Companion Code)
 dev-java/osgi-enterprise-api 5.0.0: OSGi Enterprise Release 5 Companion Code
 dev-java/osgi-foundation 1.2.0-r1: OSGi R4 Foundation EE by Apache Felix
 dev-java/osgi-obr 1.0.2: OSGi Service OBR by Apache
@@ -8453,7 +8453,7 @@ net-analyzer/ngrep 1.45-r3: A grep for network layers
 net-analyzer/nload 0.7.4: console application which monitors network traffic and bandwidth usage in real time
 net-analyzer/nmap 7.70: A utility for network discovery and security auditing
 net-analyzer/nmbscan 1.2.5-r1: Scans the shares of a SMB/NetBIOS network
-net-analyzer/nrpe 2.15-r3: Nagios Remote Plugin Executor
+net-analyzer/nrpe 2.15-r3 3.2.1-r1: Nagios Remote Plugin Executor
 net-analyzer/nsca 2.7.2-r103: Nagios Service Check Acceptor
 net-analyzer/nstats 0.4-r2: Displays statistics about ethernet traffic including protocol breakdown
 net-analyzer/nttcp 1.47-r1 1.47-r3: tool to test TCP and UDP throughput
