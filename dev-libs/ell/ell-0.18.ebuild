@@ -12,7 +12,7 @@ if [[ "${PV}" == *9999 ]] ; then
 	EGIT_REPO_URI="https://git.kernel.org/pub/scm/libs/ell/ell.git"
 else
 	SRC_URI="https://mirrors.edge.kernel.org/pub/linux/libs/${PN}/${P}.tar.xz"
-	KEYWORDS="~amd64 ~arm ~mips ~ppc ~ppc64 ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~x86"
 fi
 LICENSE="LGPL-2.1"
 SLOT="0"
