@@ -1,7 +1,8 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
+
 PYTHON_COMPAT=( python2_7 )
 
 inherit distutils-r1
@@ -24,11 +25,16 @@ DEPEND="${RDEPEND}
 S="${WORKDIR}/${MYP}"
 
 python_test() {
-	pushd data > /dev/null
-		"${PYTHON}" -c "from PyML.demo import pyml_test; pyml_test.test('svm')" || die "tests failed"
-	popd > /dev/null
+	pushd data >/dev/null || die
+		"${EPYTHON}" -c "from PyML.demo import pyml_test; pyml_test.test('svm')" || die "tests failed"
+	popd >/dev/null || die
 }
 
 python_install_all() {
-	use doc && dodoc doc/tutorial.pdf && dohtml -r doc/autodoc/*
+	if use doc; then
+		dodoc doc/tutorial.pdf
+		HTML_DOCS=( doc/autodoc/. )
+	fi
+
+	distutils-r1_python_install_all
 }
