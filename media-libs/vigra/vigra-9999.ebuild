@@ -91,7 +91,7 @@ src_configure() {
 		local mycmakeargs=(
 			-DAUTOEXEC_TESTS=OFF
 			-DDOCDIR="${BUILD_DIR}/doc"
-			-DDOCINSTALL="share/doc/${P}"
+			-DDOCINSTALL="share/doc/${PF}"
 			-DLIBDIR_SUFFIX="${libdir/lib}"
 			-DWITH_HDF5=$(usex hdf5 ON OFF)
 			-DWITH_OPENEXR=$(usex openexr ON OFF)
