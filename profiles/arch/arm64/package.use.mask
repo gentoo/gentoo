@@ -1,6 +1,10 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Aaron Bauman <bman@gentoo.org> (8 Apr 2019)
+# app-text/dblatex not keyword yet
+net-firewall/nftables doc
+
 # Hans de Graaff <graaff@gentoo.org> (08 Apr 2019)
 # Obsolete ruby version, no newer versions keyworded or stable.
 dev-vcs/subversion ruby
