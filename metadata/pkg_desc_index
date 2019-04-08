@@ -6471,7 +6471,7 @@ dev-vcs/qgit 2.8: Qt GUI for git repositories
 dev-vcs/rapidsvn 0.12.1-r3: Cross-platform GUI front-end for the Subversion revision system
 dev-vcs/rcs 5.8.2 5.9.3: Revision Control System
 dev-vcs/stgit 0.16-r2: Manage a stack of patches using GIT as a backend
-dev-vcs/subversion 1.9.7-r1 1.10.4: Advanced version control system
+dev-vcs/subversion 1.10.4: Advanced version control system
 dev-vcs/svn2cl 0.12: Create a GNU-style ChangeLog from subversion's svn log --xml output
 dev-vcs/tig 2.3.3: text mode interface for git
 dev-vcs/tkcvs 8.2.2 8.2.3: Tcl/Tk-based graphical interface to CVS with Subversion support
@@ -8065,7 +8065,7 @@ media-sound/darksnow 0.7.1: Streaming GTK+ Front-End based on Darkice Ice Stream
 media-sound/daudio 0.3-r1: Distributed audio on the local network
 media-sound/dcadec 0.2.0: DTS Coherent Acoustics decoder with support for HD extensions
 media-sound/dcd 0.95: A simple command-line based CD Player
-media-sound/dir2ogg 0.11.6: Converts mp3, m4a, wma, and wav files to Ogg Vorbis format
+media-sound/dir2ogg 0.11.6 0.12: Converts mp3, m4a, wma, and wav files to Ogg Vorbis format
 media-sound/drumstick 1.1.0 1.1.1 1.1.2: Qt/C++ wrapper for ALSA sequencer
 media-sound/easytag 2.4.3-r1: GTK+ utility for editing MP2, MP3, MP4, FLAC, Ogg and other media tags
 media-sound/ecasound 2.6.0-r1: a package for multitrack audio processing
@@ -8255,7 +8255,7 @@ media-sound/wildmidi 0.3.13: Midi processing library and a midi player using the
 media-sound/wmsound-data 1.0.0: A bunch of sounds for WindowMaker Sound Server
 media-sound/xfmpc 0.2.3-r1: Music Player Daemon (MPD) client for the Xfce desktop environment
 media-sound/xineadump 0.1-r1: Utility for Xine decoding support in transKode
-media-sound/xmms2 0.8_p20161122 0.8_p20161122-r4: X(cross)platform Music Multiplexing System. Next generation of the XMMS player
+media-sound/xmms2 0.8_p20161122-r4: X(cross)platform Music Multiplexing System. Next generation of the XMMS player
 media-sound/xnoise 0.2.21: A media player for Gtk+ with a slick GUI, great speed and lots of features
 media-sound/xwax 1.5 1.6: Digital vinyl emulation software
 media-sound/zynaddsubfx 3.0.3-r1: Software synthesizer capable of making a countless number of instruments

@@ -3381,7 +3381,6 @@ media-sound/wildmidi:player - Install the wildmidi player
 media-sound/xmms2:airplay - Support for airplay format
 media-sound/xmms2:asf - Support for Monkey's Audio (APE) format with help of bundled libasf
 media-sound/xmms2:fluidsynth - Enable fluidsynth support (MIDI)
-media-sound/xmms2:gvfs - Transport for glibs virtual filesystem
 media-sound/xmms2:ices - Icecast source output plugin
 media-sound/xmms2:mac - Support for Monkey's Audio (APE) format with help of media-sound/mac
 media-sound/xmms2:mlib-update - Enable building of xmms2-mlib-updater client
