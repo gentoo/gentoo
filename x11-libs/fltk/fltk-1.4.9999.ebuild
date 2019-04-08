@@ -1,14 +1,12 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit autotools fdo-mime flag-o-matic multilib-minimal subversion
+EAPI=7
+inherit autotools fdo-mime flag-o-matic git-r3 multilib-minimal
 
 DESCRIPTION="C++ user interface toolkit for X and OpenGL"
 HOMEPAGE="http://www.fltk.org/"
-ESVN_REPO_URI="http://seriss.com/public/fltk/fltk/branches/branch-1.4/"
-ESVN_USER=""
-ESVN_PASSWORD=""
+EGIT_REPO_URI="https://github.com/fltk/fltk"
 
 SLOT="1"
 LICENSE="FLTK LGPL-2"
@@ -35,23 +33,35 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
+	virtual/pkgconfig
 	x11-base/xorg-proto
 	doc? ( app-doc/doxygen )
 "
-
 DOCS=(
 	ANNOUNCEMENT
-	CHANGES
-	CREDITS
-	README
+	CHANGES.txt
+	CHANGES_1.0.txt
+	CHANGES_1.1.txt
+	CHANGES_1.3.txt
+	CREDITS.txt
+	README.Android.md
+	README.CMake.txt
+	README.Cairo.txt
+	README.IDE.txt
+	README.Pico.txt
+	README.Unix.txt
+	README.Windows.txt
+	README.abi-version.txt
+	README.bundled-libs.txt
+	README.macOS.md
+	README.md
+	README.txt
 )
-
 FLTK_GAMES="
 	blocks
 	checkers
 	sudoku
 "
-
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.3.0-share.patch
 	"${FILESDIR}"/${PN}-1.3.3-makefile-dirs.patch
@@ -143,22 +153,23 @@ multilib_src_install() {
 
 	if multilib_is_native_abi; then
 		emake -C fluid \
-			  DESTDIR="${D}" install-linux
+			DESTDIR="${D}" install-linux
 
 		use doc &&
 			emake -C documentation \
-				  DESTDIR="${D}" install
+				DESTDIR="${D}" install
 
 		use games &&
 			emake -C test \
-				  DESTDIR="${D}" install-linux
+				DESTDIR="${D}" install-linux
 	fi
 }
 
 multilib_src_install_all() {
 	for app in fluid $(usex games "${FLTK_GAMES}" ''); do
-		dosym /usr/share/icons/hicolor/32x32/apps/${app}.png \
-			  /usr/share/pixmaps/${app}.png
+		dosym \
+			/usr/share/icons/hicolor/32x32/apps/${app}.png \
+			/usr/share/pixmaps/${app}.png
 	done
 
 	if use examples; then
@@ -179,7 +190,7 @@ multilib_src_install_all() {
 		rm "${ED}"/usr/lib*/fltk/*.a || die
 	fi
 
-	prune_libtool_files
+	find "${D}" -name '*.la' -delete || die
 }
 
 pkg_postinst() {

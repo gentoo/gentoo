@@ -2,16 +2,15 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit autotools fdo-mime flag-o-matic git-r3 multilib-minimal
+inherit autotools fdo-mime flag-o-matic multilib-minimal
 
 DESCRIPTION="C++ user interface toolkit for X and OpenGL"
 HOMEPAGE="http://www.fltk.org/"
-EGIT_REPO_URI="https://github.com/fltk/fltk"
-EGIT_OVERRIDE_BRANCH_FLTK_FLTK="branch-1.3"
+SRC_URI="http://fltk.org/pub/${PN}/${PV}/${P}-source.tar.gz"
 
 SLOT="1"
 LICENSE="FLTK LGPL-2"
-KEYWORDS=""
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~x86-macos"
 IUSE="cairo debug doc examples games +opengl static-libs +threads +xft +xinerama"
 
 RDEPEND="
@@ -59,14 +58,11 @@ FLTK_GAMES="
 "
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.3.0-share.patch
-	"${FILESDIR}"/${PN}-1.3.9999-conf-tests.patch
+	"${FILESDIR}"/${PN}-1.3.3-fltk-config.patch
 	"${FILESDIR}"/${PN}-1.3.3-makefile-dirs.patch
 	"${FILESDIR}"/${PN}-1.3.3-visibility.patch
+	"${FILESDIR}"/${PN}-1.3.4-conf-tests.patch
 )
-
-pkg_setup() {
-	unset FLTK_LIBDIRS
-}
 
 src_prepare() {
 	default
@@ -75,12 +71,6 @@ src_prepare() {
 
 	sed -i \
 		-e 's:@HLINKS@::g' FL/Makefile.in || die
-	sed -i \
-		-e '/x-fluid/d' fluid/Makefile || die
-	sed -i \
-		-e '/C\(XX\)\?FLAGS=/s:@C\(XX\)\?FLAGS@::' \
-		-e '/^LDFLAGS=/d' \
-		"${S}/fltk-config.in" || die
 	# docs in proper docdir
 	sed -i \
 		-e "/^docdir/s:fltk:${PF}/html:" \
@@ -94,11 +84,16 @@ src_prepare() {
 	# also in Makefile:config.guess config.sub:
 	cp misc/config.{guess,sub} . || die
 
+	cp fluid/{,x-}fluid.desktop || die
+
+	eaclocal
 	eautoconf
 	multilib_copy_sources
 }
 
 multilib_src_configure() {
+	unset FLTK_LIBDIRS
+
 	local FLTK_INCDIR=${EPREFIX}/usr/include/fltk
 	local FLTK_LIBDIR=${EPREFIX}/usr/$(get_libdir)/fltk
 	FLTK_LIBDIRS+=${FLTK_LIBDIRS+:}${FLTK_LIBDIR}
@@ -148,16 +143,13 @@ multilib_src_install() {
 	default
 
 	if multilib_is_native_abi; then
-		emake -C fluid \
-			DESTDIR="${D}" install-linux
+		emake -C fluid DESTDIR="${D}" install-linux install
 
-		use doc &&
-			emake -C documentation \
-				DESTDIR="${D}" install
+		use doc && \
+			emake -C documentation DESTDIR="${D}" install
 
-		use games &&
-			emake -C test \
-				DESTDIR="${D}" install-linux
+		use games && \
+			emake -C test DESTDIR="${D}" install-linux
 	fi
 }
 
