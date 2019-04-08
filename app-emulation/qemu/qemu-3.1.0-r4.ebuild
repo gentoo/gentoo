@@ -22,7 +22,7 @@ else
 	KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86 ~x86-fbsd"
 
 	# Gentoo specific patchsets:
-	#SRC_URI+=" https://dev.gentoo.org/~tamiko/distfiles/${P}-patches-r1.tar.xz"
+	SRC_URI+=" https://dev.gentoo.org/~tamiko/distfiles/${P}-patches-r1.tar.xz"
 fi
 
 DESCRIPTION="QEMU + Kernel-based Virtual Machine userland tools"
@@ -208,9 +208,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.5.0-cflags.patch
 	"${FILESDIR}"/${PN}-2.5.0-sysmacros.patch
 	"${FILESDIR}"/${PN}-2.11.1-capstone_include_path.patch
-	"${FILESDIR}"/${PN}-3.1.0-CVE-2018-20123.patch
-	"${FILESDIR}"/${PN}-3.1.0-CVE-2019-3812.patch
-	#"${WORKDIR}"/patches
+	"${WORKDIR}"/patches
 )
 
 QA_PREBUILT="
@@ -648,9 +646,11 @@ generate_initd() {
 		sparc*) qcpu="sparc";;
 		esac
 
+		# we use 'printf' here to be portable across 'sh'
+		# implementations: #679168
 		cat <<EOF >>"${out}"
 	if [ "\${cpu}" != "${qcpu}" -a -x "${interpreter}" ] ; then
-		echo ':${package}:M::${magic}:${mask}:${interpreter}:'"\${QEMU_BINFMT_FLAGS}" >/proc/sys/fs/binfmt_misc/register
+		printf '%s\n' ':${package}:M::${magic}:${mask}:${interpreter}:'"\${QEMU_BINFMT_FLAGS}" >/proc/sys/fs/binfmt_misc/register
 	fi
 EOF
 
@@ -772,7 +772,7 @@ pkg_postinst() {
 		udev_reload
 	fi
 
-	[[ -f ${D}/usr/libexec/qemu-bridge-helper ]] && \
+	[[ -f ${EROOT}/usr/libexec/qemu-bridge-helper ]] && \
 		fcaps cap_net_admin /usr/libexec/qemu-bridge-helper
 
 	DISABLE_AUTOFORMATTING=true

@@ -71,7 +71,7 @@ RDEPEND="
 	audit? ( sys-process/audit )
 	caps? ( sys-libs/libcap-ng )
 	dbus? ( sys-apps/dbus )
-	firewalld? ( net-firewall/firewalld )
+	firewalld? ( >=net-firewall/firewalld-0.6.3 )
 	fuse? ( >=sys-fs/fuse-2.8.6:= )
 	glusterfs? ( >=sys-cluster/glusterfs-3.4.1 )
 	iscsi? ( sys-block/open-iscsi )
@@ -187,7 +187,14 @@ pkg_setup() {
 		~NETFILTER_ADVANCED
 		~NETFILTER_XT_CONNMARK
 		~NETFILTER_XT_MARK
-		~NETFILTER_XT_TARGET_CHECKSUM"
+		~NETFILTER_XT_TARGET_CHECKSUM
+		~IP_NF_FILTER
+		~IP_NF_MANGLE
+		~IP_NF_NAT
+		~IP_NF_TARGET_MASQUERADE
+		~IP6_NF_FILTER
+		~IP6_NF_MANGLE
+		~IP6_NF_NAT"
 	# Bandwidth Limiting Support
 	use virt-network && CONFIG_CHECK+="
 		~BRIDGE_EBT_T_NAT
@@ -358,8 +365,8 @@ src_install() {
 	newconfd "${FILESDIR}/libvirtd.confd-r5" libvirtd || die
 	newconfd "${FILESDIR}/libvirt-guests.confd" libvirt-guests || die
 
-	newbashcomp "${S}/tools/bash-completion/vsh" vsh
-	bashcomp_alias vsh virsh virt-admin
+	newbashcomp "${S}/tools/bash-completion/vsh" virsh
+	bashcomp_alias virsh virt-admin
 
 	DOC_CONTENTS=$(<"${FILESDIR}/README.gentoo-r2")
 	DISABLE_AUTOFORMATTING=true
