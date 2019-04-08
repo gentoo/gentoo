@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~alpha amd64 ppc ~sparc ~x86"
+KEYWORDS="~alpha amd64 ppc sparc ~x86"
 IUSE="ncurses oss"
 
 DEPEND="ncurses? ( >=sys-libs/ncurses-5.2:= )"
