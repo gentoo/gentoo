@@ -41,7 +41,7 @@ DEPEND="
 	dev-lang/python:2.7
 	>=dev-libs/boost-1.52.0-r6:=[python?,${PYTHON_USEDEP}]
 	fftw? ( sci-libs/fftw:3.0 )
-	hdf5? ( >=sci-libs/hdf5-1.8.0:=[mpi?] )
+	hdf5? ( >=sci-libs/hdf5-1.8.0:=[mpi=] )
 	jpeg? ( virtual/jpeg:0 )
 	openexr? ( media-libs/openexr:= )
 	png? ( media-libs/libpng:0= )
@@ -94,7 +94,6 @@ src_configure() {
 			-DDOCINSTALL="share/doc/${P}"
 			-DLIBDIR_SUFFIX="${libdir/lib}"
 			-DUSE_DOC=$(usex doc ON OFF) # unused
-			-DUSE_MPI=$(usex mpi ON OFF) # unused
 			-DWITH_HDF5=$(usex hdf5 ON OFF)
 			-DWITH_OPENEXR=$(usex openexr ON OFF)
 			-DWITH_VALGRIND=$(usex valgrind ON OFF)
