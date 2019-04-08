@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201904-12">
+  <title>ClamAV: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in ClamAV, the worst of
+    which could result in a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">clamav</product>
+  <announced>2019-04-08</announced>
+  <revised count="1">2019-04-08</revised>
+  <bug>660820</bug>
+  <bug>667900</bug>
+  <bug>681840</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-antivirus/clamav" auto="yes" arch="*">
+      <unaffected range="ge">0.101.2</unaffected>
+      <vulnerable range="lt">0.101.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>ClamAV is a GPL virus scanner.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in ClamAV. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Please review the referenced CVE identifiers for details.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All ClamAV users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-antivirus/clamav-0.101.2"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-0360">CVE-2018-0360</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-0361">CVE-2018-0361</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-15378">CVE-2018-15378</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-1785">CVE-2019-1785</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-1786">CVE-2019-1786</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-1787">CVE-2019-1787</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-1788">CVE-2019-1788</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-1789">CVE-2019-1789</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-1798">CVE-2019-1798</uri>
+  </references>
+  <metadata tag="requester" timestamp="2019-03-29T21:05:49Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2019-04-08T15:22:53Z">b-man</metadata>
+</glsa>
