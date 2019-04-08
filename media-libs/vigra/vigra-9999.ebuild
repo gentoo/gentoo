@@ -61,6 +61,8 @@ RDEPEND="${DEPEND}"
 # Severely broken, also disabled in Fedora, bugs #390447, #653442
 RESTRICT="test"
 
+PATCHES=( "${FILESDIR}/${PN}-1.11.1-lib_suffix.patch" )
+
 pkg_setup() {
 	use python && python_setup
 }
@@ -92,13 +94,10 @@ src_prepare() {
 
 src_configure() {
 	vigra_configure() {
-		local libdir="$(get_libdir)"
-
 		local mycmakeargs=(
 			-DAUTOEXEC_TESTS=OFF
 			-DDOCDIR="${BUILD_DIR}/doc"
 			-DDOCINSTALL="share/doc/${PF}"
-			-DLIBDIR_SUFFIX="${libdir/lib}"
 			-DWITH_HDF5=$(usex hdf5 ON OFF)
 			-DWITH_OPENEXR=$(usex openexr ON OFF)
 			-DWITH_VALGRIND=$(usex valgrind ON OFF)
