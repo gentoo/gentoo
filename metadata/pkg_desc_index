@@ -8034,7 +8034,7 @@ media-sound/alsa-tools 1.1.0 1.1.6 1.1.7: Advanced Linux Sound Architecture tool
 media-sound/alsa-utils 1.1.2 1.1.6 1.1.8: Advanced Linux Sound Architecture Utils (alsactl, alsamixer, etc.)
 media-sound/alsamixergui 0.9.0.1.2-r4: FLTK based amixer Frontend
 media-sound/alsaplayer 0.99.81: A heavily multi-threaded pluggable audio player
-media-sound/amsynth 1.7.1-r1: Virtual analogue synthesizer
+media-sound/amsynth 1.7.1-r1 1.8.0: Virtual analogue synthesizer
 media-sound/apetag 1.12-r2: Command-line ape 2.0 tagger
 media-sound/apulse 0.1.12-r4: PulseAudio emulation for ALSA
 media-sound/aqualung 1.0-r2: Music player for a wide range of formats designed for gapless playback
