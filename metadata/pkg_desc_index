@@ -8310,7 +8310,7 @@ media-video/griffith 0.13-r2: Movie collection manager
 media-video/gtk-recordmydesktop 0.3.8-r3: GTK+ interface for RecordMyDesktop
 media-video/guvcview 2.0.6: Simple Qt5 or GTK+3 interface for capturing and viewing video from v4l2 devices
 media-video/gxine 0.5.907-r1: GTK+ Front-End for libxine
-media-video/hasciicam 1.1.1: a webcam software displaying ascii art using aalib
+media-video/hasciicam 1.1.1 1.1.2: A webcam software displaying ascii art using aalib
 media-video/isight-firmware-tools 1.6-r1: Extract, load or export firmware for the iSight webcams
 media-video/jubler 5.1: Java subtitle editor
 media-video/kaffeine 2.0.16.2: Media player with digital TV support by KDE
