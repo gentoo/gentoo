@@ -1304,6 +1304,22 @@
     </member>
   </project>
   <project>
+    <email>guru@gentoo.org</email>
+    <name>GURU</name>
+    <url>https://wiki.gentoo.org/wiki/Project-3AGURU</url>
+    <description>Ebuild repository entirely maintained by Gentoo users</description>
+    <member>
+      <email>bman@gentoo.org</email>
+      <name>Aaron Bauman</name>
+      <role>Comedic Relief</role>
+    </member>
+    <member is-lead="1">
+      <email>mgorny@gentoo.org</email>
+      <name>Michał Górny</name>
+      <role>Initiator</role>
+    </member>
+  </project>
+  <project>
     <email>games@gentoo.org</email>
     <name>Gentoo Games Project</name>
     <url>https://wiki.gentoo.org/wiki/Project-3AGames</url>
