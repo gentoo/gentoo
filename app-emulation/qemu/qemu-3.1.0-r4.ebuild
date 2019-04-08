@@ -22,7 +22,7 @@ else
 	KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86 ~x86-fbsd"
 
 	# Gentoo specific patchsets:
-	#SRC_URI+=" https://dev.gentoo.org/~tamiko/distfiles/${P}-patches-r1.tar.xz"
+	SRC_URI+=" https://dev.gentoo.org/~tamiko/distfiles/${P}-patches-r1.tar.xz"
 fi
 
 DESCRIPTION="QEMU + Kernel-based Virtual Machine userland tools"
@@ -208,9 +208,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.5.0-cflags.patch
 	"${FILESDIR}"/${PN}-2.5.0-sysmacros.patch
 	"${FILESDIR}"/${PN}-2.11.1-capstone_include_path.patch
-	"${FILESDIR}"/${PN}-3.1.0-CVE-2018-20123.patch
-	"${FILESDIR}"/${PN}-3.1.0-CVE-2019-3812.patch
-	#"${WORKDIR}"/patches
+	"${WORKDIR}"/patches
 )
 
 QA_PREBUILT="
