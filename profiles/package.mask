@@ -29,6 +29,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (09 Apr 2019)
+# Unofficial panel plugin that has been abandoned upstream.
+# Last activity in 2013.  Unlikely to be ported to GTK+3.  Ebuild still
+# uses xfconf.eclass.
+# Removal in 30 days.  Bug #682928.
+xfce-extra/xfce4-netspeed-plugin
+
 # Hans de Graaff <graaff@gentoo.org> (8 Apr 2019)
 # Ruby 2.3 is no longer maintained and only receives security patches
 # until March 2019. Please use Ruby 2.4 or newer instead.
@@ -660,24 +667,6 @@ net-misc/rancid-git
 # Hans de Graaff <graaff@gentoo.org> (12 Mar 2019)
 # Mask unused obsolete slot for removal in 30 days.
 dev-ruby/trollop:0
-
-# Virgil Dupras <vdupras@gentoo.org> (10 Mar 2019)
-# Merged in pytest, no revdep. Removal in 30 days. Bug #668746
-dev-python/pytest-capturelog
-
-# Michał Górny <mgorny@gentoo.org> (09 Mar 2019)
-# According to bug #678914, our version is over 5 years old.  It has
-# open bugs (#671742, #671990) and is non-trivial to bump due to being
-# merged into schily-tools (#672060).  It lacks dedicated maintainer
-# interested in doing that.  app-arch/tar (GPL) and app-arch/libarchive
-# (BSD) are good replacements for modern uses.
-# Removal in 30 days.  Bug #679030.
-app-arch/star
-
-# Michael Palimaka <kensington@gentoo.org> (07 Mar 2019)
-# Fails to build with ffmpeg-4 (bug #673352). Dead upstream.
-# Masked for removal in 30 days.
-media-sound/karlyriceditor
 
 # Eray Aslan <eras@gentoo.org> (01 Mar 2019)
 # Mask experimental software
