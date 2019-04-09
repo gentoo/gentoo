@@ -89,6 +89,7 @@ PATCHES=(
 	"${WORKDIR}"/${PN}-1.8.18-patchset/${PN}-1.8.16-javadoc-nolint.patch
 	"${FILESDIR}"/${P}-kf5.patch
 	"${FILESDIR}"/${PN}-1.9.7-fix-wc-queries-test-test.patch
+	"${FILESDIR}"/${PN}-1.11.1-allow-apr-1.7.0+.patch
 )
 
 want_apache
@@ -130,6 +131,9 @@ pkg_setup() {
 		ewarn "Consider enabling \"http\" USE flag"
 		echo -ne "\a"
 	fi
+
+	# https://issues.apache.org/jira/browse/SVN-4813#comment-16813739
+	append-cppflags -P
 
 	if use debug ; then
 		append-cppflags -DSVN_DEBUG -DAP_DEBUG

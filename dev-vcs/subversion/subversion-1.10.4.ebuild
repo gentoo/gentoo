@@ -130,6 +130,9 @@ pkg_setup() {
 		append-cppflags -DSVN_DEBUG -DAP_DEBUG
 	fi
 
+	# https://issues.apache.org/jira/browse/SVN-4813#comment-16813739
+	append-cppflags -P
+
 	# http://mail-archives.apache.org/mod_mbox/subversion-dev/201306.mbox/%3C51C42014.3060700@wandisco.com%3E
 	[[ ${CHOST} == *-solaris2* ]] && append-cppflags -D__EXTENSIONS__
 
@@ -152,6 +155,7 @@ pkg_setup() {
 src_prepare() {
 	eapply "${WORKDIR}/patches"
 	eapply "${FILESDIR}"/${PN}-1.9.7-fix-wc-queries-test-test.patch
+	eapply "${FILESDIR}"/${PN}-1.11.1-allow-apr-1.7.0+.patch
 	eapply_user
 
 	fperms +x build/transform_libtool_scripts.sh
