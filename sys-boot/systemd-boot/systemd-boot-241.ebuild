@@ -22,7 +22,7 @@ BDEPEND="
 	dev-libs/libxslt:0
 	>=dev-util/intltool-0.50
 	dev-util/gperf
-	dev-util/patchelf
+	>=dev-util/patchelf-0.10
 	virtual/pkgconfig
 "
 COMMON_DEPEND="
@@ -67,7 +67,6 @@ src_configure() {
 		-Dlibiptc=false
 		-Dlz4=false
 		-Dmicrohttpd=false
-		-Dmyhostname=false
 		-Dpam=false
 		-Dqrencode=false
 		-Dseccomp=false
