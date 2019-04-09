@@ -5,6 +5,10 @@
     <email>gokturk@gentoo.org</email>
     <name>Göktürk Yüksek</name>
   </maintainer>
+  <maintainer type="person">
+    <email>kuzetsa@poindexter.ovh</email>
+    <name>kuzetsa</name>
+  </maintainer>
   <use>
     <flag name="deblob">Remove binary blobs from kernel sources to provide
       libre license compliance.
