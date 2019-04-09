@@ -101,3 +101,4 @@ dev-libs/libverto tevent
 # systemtap is not yet stable on arm64
 dev-libs/glib systemtap
 sys-libs/glibc systemtap
+sys-devel/gcc systemtap
