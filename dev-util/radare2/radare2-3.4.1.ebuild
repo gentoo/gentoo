@@ -37,6 +37,12 @@ src_configure() {
 		$(use_with ssl openssl)
 }
 
+src_compile() {
+	# bug #682564: upstream build system has a problem with
+	# 'hexagon_disas.o'. Workaround it until the fix is found.
+	emake -j1
+}
+
 src_install() {
 	default
 
