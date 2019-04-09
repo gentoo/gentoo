@@ -30,6 +30,12 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (09 Apr 2019)
+# Marked as deprecated upstream.  Does not build against modern kernels.
+# Little chances of GTK+3 port.  Still uses xfconf.eclass.
+# Removal in 30 days.  Bug #604134.
+xfce-extra/xfce4-radio-plugin
+
+# Michał Górny <mgorny@gentoo.org> (09 Apr 2019)
 # Marked as deprecated upstream.  Little chances of GTK+3 port.
 # Still uses xfconf.eclass.
 # Removal in 30 days.  Bug #682934.
