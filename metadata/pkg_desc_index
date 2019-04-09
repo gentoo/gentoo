@@ -2909,7 +2909,7 @@ dev-lang/mercury 14.01.1-r1: Mercury is a modern general-purpose logic/functiona
 dev-lang/mercury-extras 14.01.1: Additional libraries and tools that are not part of the Mercury standard library
 dev-lang/mmix 20131017 20160804: Donald Knuth's MMIX Assembler and Simulator
 dev-lang/mono 4.4.1.0 4.8.0.524: Mono runtime and class libraries, a C# compiler/interpreter
-dev-lang/mono-basic 4.6-r1 4.7-r1: Visual Basic Compiler and Runtime
+dev-lang/mono-basic 4.7-r1: Visual Basic Compiler and Runtime
 dev-lang/mujs 1.0.5: An embeddable Javascript interpreter in C.
 dev-lang/nasm 2.14.02: groovy little assembler
 dev-lang/ocaml 4.04.2-r1: Type-inferring functional programming language descended from the ML family
@@ -6570,7 +6570,7 @@ gnome-extra/gnome-calendar 3.24.3: Manage your online calendars with simple and 
 gnome-extra/gnome-characters 3.26.2: Unicode character map viewer and library
 gnome-extra/gnome-clocks 3.24.0: Clocks application for GNOME
 gnome-extra/gnome-color-manager 3.24.0: Color profile manager for the GNOME desktop
-gnome-extra/gnome-commander 1.6.3 1.8.1: A graphical, full featured, twin-panel file manager
+gnome-extra/gnome-commander 1.8.1: A graphical, full featured, twin-panel file manager
 gnome-extra/gnome-contacts 3.22.1-r1: GNOME contact management application
 gnome-extra/gnome-directory-thumbnailer 0.1.10: Thumbnail generator for directories
 gnome-extra/gnome-documents 3.24.3: A document manager application for GNOME
