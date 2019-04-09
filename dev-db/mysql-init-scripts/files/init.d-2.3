@@ -74,6 +74,7 @@ start() {
 	fi
 
 	# tail -n1 is critical as these we only want the last instance of the option
+	local user=$(get_config "${MY_CNF}" user | tail -n1)
 	local basedir=$(get_config "${MY_CNF}" basedir | tail -n1)
 	local pidfile=$(get_config "${MY_CNF}" 'pid[_-]file' | tail -n1)
 	local socket=$(get_config "${MY_CNF}" socket | tail -n1)
@@ -113,7 +114,7 @@ start() {
 	fi
 
 	local piddir="${pidfile%/*}"
-	checkpath -d --owner mysql:mysql --mode 0755 "$piddir"
+	checkpath -d --owner ${user:=mysql}:${user:=mysql} --mode 0755 "$piddir"
 	rc=$?
 	if [ $rc -ne 0 ]; then
 		eerror "Directory $piddir for pidfile does not exist and cannot be created"
