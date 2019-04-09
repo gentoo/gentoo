@@ -29,6 +29,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (09 Apr 2019)
+# Unofficial panel plugin that has been abandoned upstream.
+# Last activity in 2013.  Unlikely to be ported to GTK+3.  Ebuild still
+# uses xfconf.eclass.
+# Removal in 30 days.  Bug #682928.
+xfce-extra/xfce4-netspeed-plugin
+
 # Hans de Graaff <graaff@gentoo.org> (8 Apr 2019)
 # Ruby 2.3 is no longer maintained and only receives security patches
 # until March 2019. Please use Ruby 2.4 or newer instead.
