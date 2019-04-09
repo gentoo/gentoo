@@ -1,6 +1,10 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Hans de Graaff <graaff@gentoo.org> (08 Apr 2019)
+# Obsolete ruby version, no newer versions keyworded or stable.
+dev-vcs/subversion ruby
+
 # Michał Górny <mgorny@gentoo.org> (20 Mar 2019)
 # Z3 fails to link on FreeBSD but linker produces no error messages.
 sys-devel/clang z3
