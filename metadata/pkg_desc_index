@@ -264,6 +264,7 @@ app-benchmarks/cpuburn 1.4a-r1: Designed to heavily load CPU chips [testing purp
 app-benchmarks/dbench 4.0: Popular filesystem benchmark
 app-benchmarks/httperf 0.9.1_p20161228: A tool from HP for measuring web server performance
 app-benchmarks/i7z 93_p20131012-r2: A better i7 (and now i3, i5) reporting tool for Linux
+app-benchmarks/interbench 0.31: A Linux interactivity benchmark
 app-benchmarks/iozone 3.471: Filesystem benchmarking program
 app-benchmarks/nbench 2.2.3-r1: Linux/Unix of release 2 of BYTE Magazine's BYTEmark benchmark
 app-benchmarks/pipebench 0.40-r2: Measures the speed of stdin/stdout communication
@@ -7719,7 +7720,7 @@ media-libs/libtiger 0.3.4-r1: A rendering library for Kate streams using Pango a
 media-libs/libtimidity 0.1.0-r2 0.2.4: MIDI to WAVE converter library
 media-libs/libtxc_dxtn 1.0.1-r4: Helper library for S3TC texture (de)compression
 media-libs/libuninameslist 20091231-r1: Library of unicode annotation data
-media-libs/libv4l 1.6.2 1.10.1: Separate libraries ebuild from upstream v4l-utils package
+media-libs/libv4l 1.6.2 1.10.1 1.16.3: Separate libraries ebuild from upstream v4l-utils package
 media-libs/libvisio 0.1.6: Library parsing the visio documents
 media-libs/libvisual 0.4.0-r3: Libvisual is an abstraction library that comes between applications and audio visualisation plugins
 media-libs/libvorbis 1.3.6: The Ogg Vorbis sound file format library
@@ -7816,7 +7817,7 @@ media-libs/tremor 0_pre20130223-r1: A fixed-point version of the Ogg Vorbis deco
 media-libs/tse3 0.3.1-r1: TSE3 Sequencer library
 media-libs/urt 3.1b-r1: the Utah Raster Toolkit is a library for dealing with raster images
 media-libs/vamp-plugin-sdk 2.7.1: Audio processing system for plugins to extract information from audio data
-media-libs/vigra 1.11.1: C++ computer vision library emphasizing customizable algorithms and structures
+media-libs/vigra 1.11.1 1.11.1-r2: C++ computer vision library emphasizing customizable algorithms and structures
 media-libs/virglrenderer 0.6.0: library used implement a virtual 3D GPU used by qemu
 media-libs/vo-aacenc 0.1.3: VisualOn AAC encoder library
 media-libs/vo-amrwbenc 0.1.2-r1 0.1.3: VisualOn AMR-WB encoder library
@@ -8270,7 +8271,7 @@ media-tv/plex-media-server 1.11.3 1.12.3 1.13.2-r1: A free media library that is
 media-tv/shoutcast2vdr 0.0.8 0.0.8-r1: VDR script: generate shoutcast playlists
 media-tv/tvnamer 2.4: Automatic TV episode file renamer, data from thetvdb.com
 media-tv/v4l-dvb-saa716x 0.0.1_p20170225: driver for saa716x based dvb cards like TT S2-6400 or Skystar 2 eXpress HD
-media-tv/v4l-utils 1.10.1: Separate utilities ebuild from upstream v4l-utils package
+media-tv/v4l-utils 1.10.1 1.16.3-r1: Separate utilities ebuild from upstream v4l-utils package
 media-tv/w_scan 20141122: Scan for DVB-C/DVB-T/DVB-S channels without prior knowledge of frequencies and modulations
 media-tv/xmltv 0.5.70: Set of utilities to manage TV listings stored in the XMLTV format
 media-video/acidrip 0.14-r4: A gtk-perl mplayer/mencoder frontend for ripping DVDs
@@ -11053,7 +11054,7 @@ x11-misc/xdotool 3.20150503.1-r1: Simulate keyboard input and mouse activity, mo
 x11-misc/xearth 1.1-r1: Xearth sets the X root window to an image of the Earth
 x11-misc/xfe 1.42: MS-Explorer-like minimalist file manager for X
 x11-misc/xfishtank 2.1-r2: Turns your root window into an aquarium
-x11-misc/xflux-gui 1.1.10: A GUI for f.lux
+x11-misc/xflux-gui 1.1.10 1.1.10_p20180910: A GUI for f.lux
 x11-misc/xfractint 20.04_p12: A fractal generator
 x11-misc/xkbd 0.8.16-r1: onscreen soft keyboard for X11
 x11-misc/xkeyboard-config 2.25: X keyboard configuration database
@@ -11416,11 +11417,8 @@ xfce-extra/xfce4-netload-plugin 1.3.1: A network load plug-in for the Xfce panel
 xfce-extra/xfce4-notes-plugin 1.8.1: Xfce4 panel sticky notes plugin
 xfce-extra/xfce4-notifyd 0.4.3-r1: Notification daemon for the Xfce desktop environment
 xfce-extra/xfce4-places-plugin 1.7.0: A panel plug-in to provide quick access to files, folders and removable media
-xfce-extra/xfce4-playercontrol-plugin 0.3.0: Audacious and MPD panel plugins
 xfce-extra/xfce4-power-manager 1.6.1: Power manager for the Xfce desktop environment
 xfce-extra/xfce4-pulseaudio-plugin 0.4.1: A panel plug-in for PulseAudio volume control
-xfce-extra/xfce4-quicklauncher-plugin 1.9.4-r1: A quicklauncher plug-in for the Xfce panel
-xfce-extra/xfce4-radio-plugin 0.5.1-r1: V4L radio device control plug-in for the Xfce desktop environment
 xfce-extra/xfce4-screenshooter 1.9.3 1.9.5: Xfce4 screenshooter application and panel plugin
 xfce-extra/xfce4-sensors-plugin 1.3.0: A panel plug-in for acpi, lm_sensors and hddtemp sensors
 xfce-extra/xfce4-smartbookmark-plugin 0.5.0: Smart bookmark plug-in for the Xfce desktop environment

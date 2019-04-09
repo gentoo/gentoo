@@ -6272,8 +6272,6 @@ xfce-base/xfwm4:xpresent - Enable the XPresent extension for sync to vblank
 xfce-extra/tumbler:odf - Enable support for .odf thumbnailers by using gnome-extra/libgsf
 xfce-extra/xfce4-clipman-plugin:qrcode - Enable support for media-gfx/qrencode
 xfce-extra/xfce4-mpc-plugin:libmpd - Build using media-libs/libmpd backend, instead of native fallback which is preferred
-xfce-extra/xfce4-playercontrol-plugin:audacious - Enable Audacious support
-xfce-extra/xfce4-playercontrol-plugin:mpd - Enable Music Player Daemon support
 xfce-extra/xfce4-power-manager:panel-plugin - Build the power management plugin for the XFCE panel
 xfce-extra/xfce4-pulseaudio-plugin:keybinder - Enable support for global hotkeys using dev-libs/keybinder.
 xfce-extra/xfce4-pulseaudio-plugin:wnck - Enable experimental support for raising media player windows using x11-libs/libwnck.
