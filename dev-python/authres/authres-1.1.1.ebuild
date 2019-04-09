@@ -16,6 +16,6 @@ SLOT="0"
 IUSE=""
 
 python_test() {
-	"${PYTHON}" -c "import sys, authres, doctest; f, t = doctest.testfile('authres/tests'); \
-		sys.exit(bool(f))" || die "Tests fail with ${EPYTHON}"
+	"${EPYTHON}" -m doctest -v authres/tests ||
+		die "Tests fail with ${EPYTHON}"
 }
