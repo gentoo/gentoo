@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DEPEND=dev-lang/mozart
+DESCRIPTION=The Mozart Standard Library
+EAPI=7
+HOMEPAGE=https://mozart.github.io/ https://github.com/mozart/mozart
+KEYWORDS=-amd64 ~ppc -ppc64 ~x86
+LICENSE=Mozart
+RDEPEND=dev-lang/mozart
+SLOT=0
+SRC_URI=mirror://sourceforge/project/mozart-oz/v1/1.4.0-2008-07-02-tar/mozart-1.4.0.20080704-std.tar.gz
+_md5_=6d2369660b27fcb4cdcec9068931c495

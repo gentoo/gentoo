@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install
+DEPEND=doc? ( app-text/texi2html )
+DESCRIPTION=Compiler-compiler tool for aspect-oriented programming
+EAPI=7
+HOMEPAGE=https://www.gnu.org/software/dotgnu
+IUSE=doc examples
+KEYWORDS=~alpha ~amd64 ~amd64-linux ~arm ~hppa ~ia64 ~mips ~ppc ~ppc-macos ~ppc64 ~s390 ~sparc ~sparc-solaris ~x86 ~x86-linux
+LICENSE=GPL-2+
+SLOT=0
+SRC_URI=https://download.savannah.gnu.org/releases/dotgnu-pnet/treecc-0.3.10.tar.gz
+_md5_=0f24b6cb6a2625c081010ff13476196c
