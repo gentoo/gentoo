@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=0
+EAPI=7
 
 inherit vim-plugin
 
@@ -10,7 +10,6 @@ HOMEPAGE="https://www.vim.org/scripts/script.php?script_id=494"
 LICENSE="public-domain"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86 ~sparc"
-IUSE=""
 
 RDEPEND="dev-lang/ruby"
 
