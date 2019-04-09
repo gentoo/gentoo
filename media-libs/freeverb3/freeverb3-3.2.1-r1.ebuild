@@ -9,7 +9,7 @@ SRC_URI="mirror://nongnu/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 IUSE="audacious forcefpu jack openmp plugdouble threads"
 
 REQUIRED_USE="jack? ( audacious )"
