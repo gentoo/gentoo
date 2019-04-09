@@ -25,7 +25,6 @@ RDEPEND="
 	x11-libs/libXxf86vm:=
 	>=x11-libs/libXrandr-1.3:=
 	>=x11-libs/libxklavier-5.2:=
-	x11-misc/xscreensaver
 	>=xfce-base/garcon-0.5.0:=
 	>=xfce-base/libxfce4ui-4.12.1:=
 	>=xfce-base/libxfce4util-4.12.1:=

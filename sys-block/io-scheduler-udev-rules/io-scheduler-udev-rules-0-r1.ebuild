@@ -14,7 +14,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND=""
-RDEPEND=""
+RDEPEND="virtual/udev"
 BDEPEND=""
 
 src_install() {
@@ -22,4 +22,8 @@ src_install() {
 	doins etc/default/io-scheduler
 	udev_dorules udev/rules.d/60-io-scheduler.rules
 	einstalldocs
+}
+
+pkg_postinst() {
+	udev_reload
 }
