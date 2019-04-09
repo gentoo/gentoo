@@ -31,6 +31,12 @@
 
 # Michał Górny <mgorny@gentoo.org> (09 Apr 2019)
 # Marked deprecated upstream.  Uses xfce-base/libxfcegui4.  Unlikely
+# to be ported to GTK+3.
+# Removal in 30 days.  Bug #682954.
+xfce-extra/xfce4-cellmodem-plugin
+
+# Michał Górny <mgorny@gentoo.org> (09 Apr 2019)
+# Marked deprecated upstream.  Uses xfce-base/libxfcegui4.  Unlikely
 # to be ported to GTK+3.  Still uses xfconf.eclass.
 # Removal in 30 days.  Bug #682950.
 xfce-extra/xfswitch-plugin
