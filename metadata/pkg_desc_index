@@ -10778,7 +10778,7 @@ x11-drivers/xf86-video-vesa 2.4.0: Generic VESA video driver
 x11-drivers/xf86-video-vmware 13.3.0: VMware SVGA video driver
 x11-libs/agg 2.5-r3: High quality rendering engine library for C++
 x11-libs/c++-gtk-utils 2.0.27 2.2.10: A number of classes and functions for programming GTK+ programs using C++
-x11-libs/cairo 1.16.0-r2 1.16.0-r3: A vector graphics library with cross-device output support
+x11-libs/cairo 1.16.0-r3: A vector graphics library with cross-device output support
 x11-libs/colord-gtk 0.1.26: GTK support library for colord
 x11-libs/dnd 1.1-r3: OffiX' Drag'n'drop library
 x11-libs/flowcanvas 0.7.1-r1 0.7.1-r2: Gtkmm/Gnomecanvasmm widget for boxes and lines environments

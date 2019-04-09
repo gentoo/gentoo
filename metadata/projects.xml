@@ -1344,11 +1344,6 @@
       <name>Mike Frysinger</name>
       <role>Lead ( Team Lead )</role>
     </member>
-    <member>
-      <email>wizardedit@gentoo.org</email>
-      <name>Austin English</name>
-      <role>Member ( general, eclass cleanup )</role>
-    </member>
   </project>
   <project>
     <email>genkernel@gentoo.org</email>
@@ -1587,11 +1582,6 @@
       <name>William Hubbs</name>
       <role>PaX markings</role>
     </member>
-    <member>
-      <email>wizardedit@gentoo.org</email>
-      <name>Austin English</name>
-      <role>PaX markings</role>
-    </member>
     <member is-lead="1">
       <email>zorry@gentoo.org</email>
       <name>Magnus Granberg</name>
@@ -1797,11 +1787,6 @@
       <name>Patrice Clement</name>
       <role>Developer</role>
     </member>
-    <member>
-      <email>wizardedit@gentoo.org</email>
-      <name>Austin English</name>
-      <role>Developer</role>
-    </member>
   </project>
   <project>
     <email>kde@gentoo.org</email>
@@ -1960,11 +1945,6 @@
     <member>
       <email>williamh@gentoo.org</email>
       <name>William Hubbs</name>
-      <role>Member</role>
-    </member>
-    <member>
-      <email>wizardedit@gentoo.org</email>
-      <name>Austin English</name>
       <role>Member</role>
     </member>
   </project>
@@ -2401,11 +2381,6 @@
       <email>williamh@gentoo.org</email>
       <name>William Hubbs</name>
       <role>Lead</role>
-    </member>
-    <member>
-      <email>wizardedit@gentoo.org</email>
-      <name>Austin English</name>
-      <role>Member</role>
     </member>
   </project>
   <project>
@@ -3054,11 +3029,6 @@
     <member>
       <email>vdupras@gentoo.org</email>
       <name>Virgil Dupras</name>
-      <role>Member</role>
-    </member>
-    <member>
-      <email>wizardedit@gentoo.org</email>
-      <name>Austin English</name>
       <role>Member</role>
     </member>
   </project>
@@ -4129,10 +4099,6 @@
       <email>vapier@gentoo.org</email>
       <name>Mike Frysinger</name>
     </member>
-    <member>
-      <email>wizardedit@gentoo.org</email>
-      <name>Austin English</name>
-    </member>
   </project>
   <project>
     <email>wxwidgets@gentoo.org</email>
@@ -4262,11 +4228,6 @@
     <member>
       <email>perfinion@gentoo.org</email>
       <name>Jason Zaman</name>
-      <role>Member</role>
-    </member>
-    <member>
-      <email>wizardedit@gentoo.org</email>
-      <name>Austin English</name>
       <role>Member</role>
     </member>
   </project>
