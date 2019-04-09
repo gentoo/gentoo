@@ -12,6 +12,7 @@ if [[ "${PV}" == *9999 ]] ; then
 	inherit autotools git-r3
 	EGIT_REPO_URI="https://github.com/storaged-project/libblockdev.git"
 	BDEPEND="
+		sys-devel/autoconf-archive
 		gtk-doc? ( dev-util/gtk-doc )
 	"
 else
@@ -54,10 +55,10 @@ RDEPEND="
 
 DEPEND="
 	${RDEPEND}
-	>=dev-libs/gobject-introspection-1.3.0
 "
 
 BDEPEND+="
+	>=dev-libs/gobject-introspection-1.3.0
 	dev-util/gtk-doc-am
 "
 
