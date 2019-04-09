@@ -9051,7 +9051,7 @@ net-misc/sslh 1.19c: Port multiplexer - accept both HTTPS and SSH connections on
 net-misc/sstp-client 1.0.10-r1: A client implementation of Secure Socket Tunneling Protocol (SSTP)
 net-misc/ssvnc 1.0.29-r2: VNC viewer that adds encryption security to VNC connections
 net-misc/streamtuner 0.99.99-r5: Stream directory browser for browsing internet radio streams
-net-misc/stunnel 5.36 5.43: TLS/SSL - Port Wrapper
+net-misc/stunnel 5.36 5.43 5.50-r1: TLS/SSL - Port Wrapper
 net-misc/suite3270 3.4_p10 3.5_p10: Complete 3270 access package
 net-misc/taylor-uucp 1.07-r2 1.07-r3: Taylor UUCP
 net-misc/tcpsound 0.3.1-r1: Play sounds in response to network traffic
