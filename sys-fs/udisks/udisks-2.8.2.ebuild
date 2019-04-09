@@ -8,7 +8,7 @@ DESCRIPTION="Daemon providing interfaces to work with storage devices"
 HOMEPAGE="https://www.freedesktop.org/wiki/Software/udisks"
 SRC_URI="https://github.com/storaged-project/udisks/releases/download/${P}/${P}.tar.bz2"
 
-LICENSE="GPL-2"
+LICENSE="LGPL-2+ GPL-2+"
 SLOT="2"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 IUSE="acl debug elogind +introspection lvm nls selinux systemd vdo"
@@ -43,11 +43,10 @@ BDEPEND="
 	>=dev-util/gdbus-codegen-2.32
 	>=dev-util/gtk-doc-am-1.3
 	virtual/pkgconfig
-	nls? ( sys-devel/gettext )
+	nls? ( >=sys-devel/gettext-0.19.8 )
 "
 # If adding a eautoreconf, then these might be needed at buildtime:
 # dev-libs/gobject-introspection-common
-# gnome-base/gnome-common:3
 # sys-devel/autoconf-archive
 
 DOCS=( AUTHORS HACKING NEWS README.md )

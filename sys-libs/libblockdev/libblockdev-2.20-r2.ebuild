@@ -45,7 +45,10 @@ RDEPEND="
 
 DEPEND="
 	${RDEPEND}
+"
+BDEPEND="
 	>=dev-libs/gobject-introspection-1.3.0
+	sys-devel/autoconf-archive
 	doc? ( dev-util/gtk-doc )
 "
 
