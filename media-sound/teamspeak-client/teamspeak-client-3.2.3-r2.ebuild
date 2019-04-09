@@ -20,7 +20,7 @@ REQUIRED_USE="|| ( alsa pulseaudio )"
 
 RDEPEND="
 	app-arch/snappy:0/1
-	=dev-libs/openssl-1.0*:*
+	dev-libs/openssl:0
 	dev-libs/quazip
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5[accessibility,dbus,xcb]
