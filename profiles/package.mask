@@ -30,6 +30,12 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (09 Apr 2019)
+# Marked deprecated upstream.  Still uses xfce-base/libxfcegui4.
+# Unlikely to be ported to GTK+3.
+# Removal in 30 days.  Bug #682956.
+app-text/xfbib
+
+# Michał Górny <mgorny@gentoo.org> (09 Apr 2019)
 # Marked deprecated upstream.  Uses xfce-base/libxfcegui4.  Unlikely
 # to be ported to GTK+3.
 # Removal in 30 days.  Bug #682954.
