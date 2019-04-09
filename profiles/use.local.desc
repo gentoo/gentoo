@@ -6276,6 +6276,3 @@ xfce-extra/xfce4-power-manager:panel-plugin - Build the power management plugin 
 xfce-extra/xfce4-pulseaudio-plugin:keybinder - Enable support for global hotkeys using dev-libs/keybinder.
 xfce-extra/xfce4-pulseaudio-plugin:wnck - Enable experimental support for raising media player windows using x11-libs/libwnck.
 xfce-extra/xfce4-taskmanager:gtk3 - Use GTK+3 instead of GTK+2
-xfce-extra/xfswitch-plugin:gdm - Compatibility with gnome-base/gdm only
-xfce-extra/xfswitch-plugin:lightdm - Compatibility with x11-misc/lightdm only
-xfce-extra/xfswitch-plugin:lxdm - Compatibility with lxde-base/lxdm only

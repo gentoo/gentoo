@@ -11435,4 +11435,3 @@ xfce-extra/xfce4-whiskermenu-plugin 2.3.2: Alternate application launcher for Xf
 xfce-extra/xfce4-windowck-plugin 0.2.4: Xfce plugin puts the maximized window title and windows buttons on the panel
 xfce-extra/xfce4-xkb-plugin 0.8.1: XKB layout switching panel plug-in for the Xfce desktop environment
 xfce-extra/xfdashboard 0.4.0: Maybe a GNOME shell like dashboard for the Xfce desktop environment
-xfce-extra/xfswitch-plugin 0.0.1-r2: A panel plug-in for user switching (using lightdm or gdm or ldm)
