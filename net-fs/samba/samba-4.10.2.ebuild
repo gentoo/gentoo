@@ -133,6 +133,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-4.4.0-pam.patch"
 	"${FILESDIR}/${PN}-4.5.1-compile_et_fix.patch"
 	"${FILESDIR}/${PN}-4.9.2-timespec.patch"
+	"${FILESDIR}/${PN}-4.10.0-disable_gnutls_build_fix.patch"
 )
 
 #CONFDIR="${FILESDIR}/$(get_version_component_range 1-2)"
