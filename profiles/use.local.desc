@@ -699,6 +699,12 @@ app-misc/tracker:playlist - Add support for playlists
 app-misc/tracker:stemmer - Add word stemming via dev-libs/snowball-stemmer.
 app-misc/tracker:thunderbird - Install email data miner plugin for mail-client/thunderbird and mail-client/thunderbird-bin
 app-misc/tracker:xps - Add support for XPS file format through app-text/libgxps.
+app-misc/tracker-miners:cue - Enable cue sheet parsing
+app-misc/tracker-miners:gsf - Enable gnome-extra/libgsf based data extractor and for ODT.
+app-misc/tracker-miners:iptc - Enable extraction of IPTC data from pictures
+app-misc/tracker-miners:iso - Enable extraction of metadata from ISO disk images
+app-misc/tracker-miners:playlist - Add support for playlists
+app-misc/tracker-miners:xps - Add support for XPS file format through app-text/libgxps.
 app-misc/unfoo:minimal - Do not install all support archive binaries
 app-misc/vifm:X - Add support for X11
 app-misc/vifm:developer - Enable features of interest to developers
