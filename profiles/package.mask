@@ -30,6 +30,13 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (09 Apr 2019)
+# Unofficial plugin abandoned upstream.  The only release is from 2014,
+# last commits are from 2015.  Little chances of porting to GTK+3.
+# Still uses xfconf.eclass.
+# Removal in 30 days.  Bug #682940.
+xfce-extra/xfce4-soundmenu-plugin
+
+# Michał Górny <mgorny@gentoo.org> (09 Apr 2019)
 # Marked deprecated upstream.  Uses xfce-base/libxfcegui4.  Little
 # chances of porting to GTK+3.  Still uses xfconf.eclass.
 # Removal in 30 days.  Bug #682938.
