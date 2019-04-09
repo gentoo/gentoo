@@ -4,6 +4,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Hans de Graaff <graaff@gentoo.org> (7 Apr 2019)
+# Mask Ruby 2.3 as EOL
+ruby_targets_ruby23
+
 # Brian Evans <grknight@gentoo.org> (11 Jan 2019)
 # Mask PHP 7.0 target as EOL
 php_targets_php7-0
