@@ -12,7 +12,7 @@ HOMEPAGE="
 "
 SRC_URI="https://github.com/ckolivas/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 LICENSE="GPL-2+"
 SLOT="0"
 
