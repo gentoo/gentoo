@@ -30,6 +30,13 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (09 Apr 2019)
+# Unofficial panel plugin whose upstream disappeared and sources are
+# nowhere to be found.  Possibly does not even work (#499156).
+# Unlikely to be ported to GTK+3.  Still uses xfconf.eclass.
+# Removal in 30 days.  Bug #682930.
+xfce-extra/xfce4-playercontrol-plugin
+
+# Michał Górny <mgorny@gentoo.org> (09 Apr 2019)
 # Unofficial panel plugin that has been abandoned upstream.
 # Last activity in 2013.  Unlikely to be ported to GTK+3.  Ebuild still
 # uses xfconf.eclass.
