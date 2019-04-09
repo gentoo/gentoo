@@ -661,10 +661,6 @@ net-misc/rancid-git
 # Mask unused obsolete slot for removal in 30 days.
 dev-ruby/trollop:0
 
-# Virgil Dupras <vdupras@gentoo.org> (10 Mar 2019)
-# Merged in pytest, no revdep. Removal in 30 days. Bug #668746
-dev-python/pytest-capturelog
-
 # Eray Aslan <eras@gentoo.org> (01 Mar 2019)
 # Mask experimental software
 =mail-mta/postfix-3.5*
