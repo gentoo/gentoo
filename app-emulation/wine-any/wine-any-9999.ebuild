@@ -28,7 +28,7 @@ STAGING_P="wine-staging-${PV}"
 STAGING_DIR="${WORKDIR}/${STAGING_P}"
 D3D9_P="wine-d3d9-${PV}"
 D3D9_DIR="${WORKDIR}/wine-d3d9-patches-${D3D9_P}"
-GWP_V="20180120"
+GWP_V="20190316"
 PATCHDIR="${WORKDIR}/gentoo-wine-patches"
 
 DESCRIPTION="Free implementation of Windows(tm) on Unix, with optional external patchsets"
@@ -173,7 +173,7 @@ usr/share/applications/wine-uninstaller.desktop
 usr/share/applications/wine-winecfg.desktop"
 
 PATCHES=(
-	"${PATCHDIR}/patches/${MY_PN}-1.5.26-winegcc.patch" #260726
+	"${PATCHDIR}/patches/${MY_PN}-4.4-winegcc.patch" #260726
 	"${PATCHDIR}/patches/${MY_PN}-1.9.5-multilib-portage.patch" #395615
 	"${PATCHDIR}/patches/${MY_PN}-1.6-memset-O3.patch" #480508
 	"${PATCHDIR}/patches/${MY_PN}-2.0-multislot-apploader.patch" #310611
