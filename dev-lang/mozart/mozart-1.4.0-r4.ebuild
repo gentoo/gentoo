@@ -1,9 +1,9 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit elisp-common eutils
+inherit elisp-common
 
 PATCHSET_VER="5"
 MY_P="mozart-${PV}.20080704"
@@ -17,7 +17,7 @@ SRC_URI="
 
 SLOT="0"
 LICENSE="Mozart"
-KEYWORDS="-amd64 ppc -ppc64 x86"
+KEYWORDS="-amd64 ~ppc -ppc64 ~x86"
 IUSE="doc emacs examples gdbm static tcl threads tk"
 
 RDEPEND="
@@ -41,9 +41,8 @@ SITEFILE=50${PN}-gentoo.el
 S="${WORKDIR}"/${MY_P}
 
 src_prepare() {
-	EPATCH_FORCE=yes
-	EPATCH_SUFFIX=patch
-	epatch "${WORKDIR}"/${PV}
+	default
+	eapply "${WORKDIR}"/${PV}
 }
 
 src_configure() {
@@ -104,7 +103,10 @@ src_install() {
 	fi
 
 	dodoc "${S}"/README
-	use doc && dohtml -r "${WORKDIR}"/mozart/doc/*
+	if use doc ; then
+		docinto html
+		dodoc -r "${WORKDIR}"/mozart/doc/*
+	fi
 
 	if use examples; then
 		cd "${S}"/share || die

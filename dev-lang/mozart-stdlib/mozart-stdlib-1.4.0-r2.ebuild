@@ -1,9 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="2"
-
-inherit eutils
+EAPI=7
 
 MY_P="mozart-${PV}.20080704-std"
 
@@ -13,28 +11,25 @@ SRC_URI="mirror://sourceforge/project/mozart-oz/v1/1.4.0-2008-07-02-tar/${MY_P}.
 LICENSE="Mozart"
 
 SLOT="0"
-KEYWORDS="-amd64 ppc -ppc64 x86"
-IUSE=""
+KEYWORDS="-amd64 ~ppc -ppc64 ~x86"
 
 DEPEND="dev-lang/mozart"
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}"/${MY_P}
 
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-ozload.patch
-	epatch "${FILESDIR}"/${P}-docroot.patch
-}
+PATCHES=( "${FILESDIR}"/${P}-ozload.patch
+	"${FILESDIR}"/${P}-docroot.patch )
 
 src_install() {
 	emake \
 		PREFIX="${D}"/usr/lib/mozart \
 		DOCROOT="${D}"/usr/share/doc/${PF} \
-		install || die "emake install failed"
+		install
 
-	dosym /usr/lib/mozart/bin/ozmake /usr/bin/ozmake || die
+	dosym /usr/lib/mozart/bin/ozmake /usr/bin/ozmake
 
-	doman ozmake/ozmake.1 || die
+	doman ozmake/ozmake.1
 	docinto mozart-ozmake
-	dodoc ozmake/{DESIGN,NOTES,README} || die
+	dodoc ozmake/{DESIGN,NOTES,README}
 }

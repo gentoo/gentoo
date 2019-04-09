@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <!-- maintainer-needed -->
-  <upstream>
-    <remote-id type="github">major/MySQLTuner-perl</remote-id>
-    <bugs-to>https://github.com/major/MySQLTuner-perl/issues</bugs-to>
-  </upstream>
+	<maintainer type="person">
+		<email>hasan.calisir@psauxit.com</email>
+		<name>Hasan ÇALIŞIR</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 </pkgmetadata>

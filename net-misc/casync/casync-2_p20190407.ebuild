@@ -1,10 +1,10 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit vcs-snapshot meson
 
-COMMIT="a755da21d3ba5d9cbb002dfc86a3ab0d46b82176"
+COMMIT="6d185a540c54195a919d4b44f9bf28c341da3bf1"
 DESCRIPTION=" Content-Addressable Data Synchronization Tool"
 HOMEPAGE="https://github.com/systemd/casync"
 SRC_URI="https://github.com/systemd/casync/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
