@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -23,6 +23,7 @@ src_configure() {
 	append-cxxflags -std=c++14
 
 	econf \
+		--with-boost="${EPREFIX}/usr" \
 		--with-boost-regex="boost_regex" \
 		--without-bash-completion \
 		$(use_enable static-libs static)
