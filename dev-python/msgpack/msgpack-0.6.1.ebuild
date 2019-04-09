@@ -30,7 +30,7 @@ DEPEND="
 
 python_prepare_all() {
 	# Remove pre-generated cython files
-	rm msgpack/{_packer,_unpacker}.cpp || die
+	rm msgpack/{_packer,_unpacker,_cmsgpack}.pyx || die
 
 	if ! use native-extensions ; then
 		sed -i -e "/have_cython/s:True:False:" ./setup.py || die
