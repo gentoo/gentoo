@@ -1,0 +1,36 @@
+--- a/rtsx.h
++++ b/rtsx.h
+@@ -81,6 +81,17 @@
+ 	pci_get_domain_bus_and_slot(0, (bus), (devfn))
+ #endif
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5, 0, 0)
++static void do_gettimeofday(struct timeval *tv)
++{
++	struct timespec64 now;
++
++	ktime_get_real_ts64(&now);
++	tv->tv_sec = now.tv_sec;
++	tv->tv_usec = now.tv_nsec / 1000;
++}
++#endif
++
+ /*
+  * macros for easy use
+  */
+--- a/rtsx.c
++++ b/rtsx.c
+@@ -300,11 +300,13 @@
+ 	
+ 	.max_sectors =                  240,
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 0, 0)
+ 	/* merge commands... this seems to help performance, but
+ 	 * periodically someone should test to see which setting is more
+ 	 * optimal.
+ 	 */
+ 	.use_clustering =		1,
++#endif
+ 
+ 	
+ 	.emulated =			1,
