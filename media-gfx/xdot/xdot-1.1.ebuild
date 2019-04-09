@@ -1,21 +1,29 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-PYTHON_COMPAT=( python3_4 python3_5 python3_6 )
-
-inherit distutils-r1
+EAPI=7
+PYTHON_COMPAT=( python3_{5,6,7} )
 
 MY_PN=xdot.py
-MY_P="${MY_PN}-${PV}"
+EGIT_REPO_URI="https://github.com/jrfonseca/${MY_PN}"
+
+if [[ ${PV} = 9999* ]]; then
+	GIT_ECLASS="git-r3"
+	SRC_URI=""
+else
+	KEYWORDS="~amd64 ~x86"
+	MY_P="${MY_PN}-${PV}"
+	S="${WORKDIR}/${MY_P}"
+	SRC_URI="https://github.com/jrfonseca/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+fi
+
+inherit ${GIT_ECLASS} distutils-r1
 
 DESCRIPTION="Interactive viewer for Graphviz dot files"
 HOMEPAGE="https://github.com/jrfonseca/xdot.py"
-SRC_URI="https://github.com/jrfonseca/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
 
 DEPEND="
 	dev-python/pycairo[${PYTHON_USEDEP}]
@@ -25,7 +33,10 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
-S="${WORKDIR}/${MY_P}"
+src_unpack() {
+	default
+	[[ $PV = 9999* ]] && git-r3_src_unpack
+}
 
 src_prepare() {
 	eapply_user
