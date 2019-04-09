@@ -55,12 +55,19 @@ QA_PREBUILT="opt/${PN}-${MY_PV}/*"
 # jbr11 binary doesn't unpack nicely into a single folder
 src_unpack() {
 if use !jbr11 ; then
-default_src_unpack
+	default_src_unpack
 else
-cd "${WORKDIR}"
-unpack ${MY_PN}IC-${PV_STRING}.tar.gz
-cd "${S}"
-mkdir jre64 && cd jre64 && unpack jbr-${JRE11_BASE}-linux-x64-b${JRE11_VER}.tar.gz
+	cd "${WORKDIR}"
+	unpack ${MY_PN}IC-${PV_STRING}.tar.gz
+	cd "${S}"
+	if use amd64; then
+		JRE_DIR=jre64
+		JRE_ARCH=x64
+	else #Other Arch without prebuilt binaries
+		return 0
+	fi
+mkdir $JRE_DIR && cd $JRE_DIR && unpack jbr-${JRE11_BASE}-linux-${JRE_ARCH}-b${JRE11_VER}.tar.gz
+
 fi
 }
 src_prepare() {
@@ -70,7 +77,9 @@ src_prepare() {
 		JRE_DIR=jre
 	fi
 	if use jbr8; then
+		if [[ -d "${WORKDIR}/jre" ]]; then #avoid error if an arch without jbr8 binaries
 			mv "${WORKDIR}/jre" ./"${JRE_DIR}"
+		fi
 	fi
 	if ! use arm; then
 		rm bin/fsnotifier-arm || die
@@ -109,4 +118,14 @@ src_install() {
 	# recommended by: https://confluence.jetbrains.com/display/IDEADEV/Inotify+Watches+Limit
 	mkdir -p "${D}/etc/sysctl.d/" || die
 	echo "fs.inotify.max_user_watches = 524288" > "${D}/etc/sysctl.d/30-idea-inotify-watches.conf" || die
+}
+pkg_postinst() {
+	if use jbr8 && ! ( use amd64 || use x86 ); then
+	ewarn "Jetbrains Runtime 8 binaries are only available for amd64 and x86, and have not been installed"
+	ewarn "To silence this warning disable the jbr8 useflag"
+	fi
+	if use jbr11 && ! use amd64; then
+	ewarn "Jetbrains Runtime 11 binaries are only available for amd64 and have not been installed"
+	ewarn "To silence this warning disable the jbr11 useflag"
+	fi
 }
