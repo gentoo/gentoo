@@ -64,7 +64,6 @@ BDEPEND+="
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 		escrow? ( cryptsetup )"
 
-
 pkg_setup() {
 	python-single-r1_pkg_setup
 }
