@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -24,7 +24,7 @@ SRC_URI="
 
 LICENSE="|| ( Artistic GPL-1+ )"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="kde nautilus nemo +nls thunar"
 REQUIRED_USE="nautilus? ( ${PYTHON_REQUIRED_USE} )"
 
