@@ -1,4 +1,4 @@
-DEFINED_PHASES=install postinst
+DEFINED_PHASES=install postinst postrm
 DEPEND=x11-libs/gtk+:2 x11-libs/libX11:= >=xfce-base/libxfce4ui-4.8:= >=xfce-base/libxfce4util-4.8:= >=xfce-base/xfce4-panel-4.8:= dev-util/intltool virtual/pkgconfig
 DESCRIPTION=A panel plug-in to take periodical breaks from the computer
 EAPI=7
@@ -9,4 +9,4 @@ RDEPEND=x11-libs/gtk+:2 x11-libs/libX11:= >=xfce-base/libxfce4ui-4.8:= >=xfce-ba
 SLOT=0
 SRC_URI=https://archive.xfce.org/src/panel-plugins/xfce4-time-out-plugin/1.0/xfce4-time-out-plugin-1.0.2.tar.bz2
 _eclasses_=xdg-utils	14d00d009167652b1fa363e55effe213
-_md5_=02bb75b414c8a0ec7f0bb4a6be91df61
+_md5_=059fb517182ed2dce9d91246dee5f8c6

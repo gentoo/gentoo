@@ -1,4 +1,4 @@
-DEFINED_PHASES=install postinst
+DEFINED_PHASES=install postinst postrm
 DEPEND=>=dev-libs/glib-2.24:2 >=x11-libs/gtk+-2.20:2 >=xfce-base/libxfce4ui-4.10:= >=xfce-base/libxfce4util-4.10:= >=xfce-base/xfce4-panel-4.10:= >=xfce-base/xfconf-4.10:= dev-libs/libunique:1= virtual/pkgconfig dev-util/intltool
 DESCRIPTION=Xfce4 panel sticky notes plugin
 EAPI=7
@@ -9,4 +9,4 @@ RDEPEND=>=dev-libs/glib-2.24:2 >=x11-libs/gtk+-2.20:2 >=xfce-base/libxfce4ui-4.1
 SLOT=0
 SRC_URI=https://archive.xfce.org/src/panel-plugins/xfce4-notes-plugin/1.8/xfce4-notes-plugin-1.8.1.tar.bz2
 _eclasses_=xdg-utils	14d00d009167652b1fa363e55effe213
-_md5_=5c7d9aa6e5fe054a84ad1e6824934871
+_md5_=5836c46d8de10618ba5ac4125ea37848
