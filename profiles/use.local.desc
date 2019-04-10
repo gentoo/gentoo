@@ -165,6 +165,10 @@ app-antivirus/clamav:clamdtop - A Top like tool which shows what clamd is curren
 app-antivirus/clamav:metadata-analysis-api - Enables collection of file property metadata using ClamAV API for analysis by ClamAV bytecode programs.
 app-antivirus/clamav:system-libmspack - Use system libmspack instead of built in
 app-antivirus/clamav:xml - DMG and XAR support
+app-antivirus/clamtk:kde - Install the Dolphin plugin.
+app-antivirus/clamtk:nautilus - Install the Nautilus plugin.
+app-antivirus/clamtk:nemo - Install the Nemo plugin.
+app-antivirus/clamtk:thunar - Install the Thunar plugin.
 app-arch/cabextract:extras - Install experimental extra tools: wince_info and wince_rename for examining and processing Windows CE installation cabinet header files; cabinfo for examining the structure of a cab file.
 app-arch/cfv:bittorrent - Enable support for checking .torrent files
 app-arch/dpkg:libmd - Use app-crypt/libmd library for message digest functions

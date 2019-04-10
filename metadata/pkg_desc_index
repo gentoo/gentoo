@@ -155,6 +155,7 @@ app-admin/xtail 2.1-r1: Tail multiple logfiles at once, even if rotated
 app-admin/yaala 0.7.3-r2: Yet Another Log Analyzer
 app-antivirus/clamav 0.101.2: Clam Anti-Virus Scanner
 app-antivirus/clamav-unofficial-sigs 5.6.2: Download and install third-party clamav signatures
+app-antivirus/clamtk 6.00: A graphical front-end for ClamAV
 app-arch/advancecomp 2.2_pre20190301: Recompress ZIP, PNG and MNG, considerably improving compression
 app-arch/afio 2.5.1-r2: Afio creates cpio-format archives.
 app-arch/alien 8.95: Converts between the rpm, dpkg, stampede slp, and slackware tgz file formats
@@ -1453,7 +1454,7 @@ app-text/ronn 0.7.3-r3: Converts simple, human readable textfiles to roff for te
 app-text/rpl 1.5.5-r1: Intelligent recursive search/replace utility
 app-text/sablotron 1.0.3-r1: An XSLT Parser in C++
 app-text/sary 1.2.0-r1: Sary: suffix array library and tools
-app-text/scdoc 1.9.3: Standalone tool for generating man pages with a simple syntax
+app-text/scdoc 1.9.3 1.9.3-r1: Standalone tool for generating man pages with a simple syntax
 app-text/scrollkeeper 9999-r2: Dummy scrollkeeper for testing rarian
 app-text/scrollkeeper-dtd 1.0-r1: DTD from the Scrollkeeper package
 app-text/sdcv 0.5.0_beta2-r1: Console version of Stardict program
@@ -3475,6 +3476,7 @@ dev-perl/Cache-Cache 1.80.0: Generic cache interface and implementations
 dev-perl/Cache-Memcached 1.300.0-r1: Perl API for memcached
 dev-perl/Cache-Simple-TimedExpiry 0.270.0-r1: A lightweight cache with timed expiration
 dev-perl/Cairo 1.106.0: Perl interface to the cairo library
+dev-perl/Cairo-GObject 1.4.0-r1: Integrate Cairo into the Glib type system
 dev-perl/Calendar-Simple 1.230.0: Perl extension to create simple calendars
 dev-perl/Canary-Stability 2012.0.0: Canary to check perl compatibility for schmorp's modules
 dev-perl/Capture-Tiny 0.460.0 0.480.0: Capture STDOUT and STDERR from Perl, XS or external programs
@@ -3800,6 +3802,7 @@ dev-perl/Gtk2-Ex-Simple-List 0.500.0-r2: A simple interface to Gtk2's complex MV
 dev-perl/Gtk2-ImageView 0.50.0-r2: Perl binding for the GtkImageView image viewer widget
 dev-perl/Gtk2-Notify 0.50.0: A perl interface to the notification library
 dev-perl/Gtk2-Unique 0.50.0-r2: Perl binding for C libunique library
+dev-perl/Gtk3 0.34.0: Perl interface to the 3.x series of the gtk+ toolkit
 dev-perl/Guard 1.23.0: Safe cleanup blocks
 dev-perl/HTML-Clean 0.800.0-r1 0.800.0-r2: Cleans up HTML code for web browsers, not humans
 dev-perl/HTML-Element-Extended 1.180.0-r1: Extension for manipulating a table composed of HTML::Element style components
@@ -3904,6 +3907,7 @@ dev-perl/LWP-MediaTypes 6.20.0-r1: Media types and mailcap processing
 dev-perl/LWP-Online 1.80.0-r2: Does your process have access to the web
 dev-perl/LWP-Protocol-http10 6.30.0: Legacy HTTP/1.0 support for LWP
 dev-perl/LWP-Protocol-https 6.60.0 6.70.0: Provide https support for LWP::UserAgent
+dev-perl/LWP-UserAgent-Cached 0.60.0-r1: LWP::UserAgent with simple caching mechanism
 dev-perl/LWPx-ParanoidAgent 1.120.0: Subclass of LWP::UserAgent that protects you from harm
 dev-perl/LaTeX-Driver 0.200.4 0.300.2: Perl encapsulation of invoking the Latex programs
 dev-perl/LaTeX-Encode 0.91.6-r1 0.92.0: Encode characters for LaTeX formatting
@@ -4269,6 +4273,7 @@ dev-perl/Test-LeakTrace 0.150.0 0.160.0: Traces memory leaks
 dev-perl/Test-LongString 0.170.0: A library to test long strings
 dev-perl/Test-Manifest 2.20.0: Interact with a t/test_manifest file
 dev-perl/Test-Memory-Cycle 1.60.0: Check for memory leaks and circular memory references
+dev-perl/Test-Mock-LWP-Dispatch 0.80.0: Mocks LWP::UserAgent and dispatches your requests/responses
 dev-perl/Test-MockModule 0.110.0 0.130.0: Override subroutines in a module for unit testing
 dev-perl/Test-MockObject 1.201.505.270-r1 1.201.612.20: Perl extension for emulating troublesome interfaces
 dev-perl/Test-MockRandom 1.10.0: Replaces random number generation with non-random number generation
