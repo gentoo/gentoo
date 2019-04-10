@@ -41,8 +41,8 @@ CONFIG_CHECK="
 	~BLK_DEV_IO_TRACE"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-2.7-makefile.patch
-	"${FILESDIR}"/${PN}-2.7-soname.patch
+	"${FILESDIR}"/trace-cmd-2.7-makefile.patch
+	"${FILESDIR}"/trace-cmd-2.7-soname.patch
 )
 
 pkg_setup() {
@@ -51,30 +51,33 @@ pkg_setup() {
 }
 
 src_configure() {
-	MAKEOPTS+=" prefix=/usr
-		libdir=/usr/$(get_libdir)
-		CC=$(tc-getCC)
-		AR=$(tc-getAR)
-		$(usex audit '' '' 'NO_AUDIT=1')"
+	EMAKE_FLAGS=(
+		"prefix=/usr"
+		"libdir=/usr/$(get_libdir)"
+		"CC=$(tc-getCC)"
+		"AR=$(tc-getAR)"
+		$(usex audit '' '' 'NO_AUDIT=1')
+		$(usex udis86 '' '' 'NO_UDIS86=1')
+	)
 
 	if use python; then
-		MAKEOPTS+=" PYTHON_VERS=${EPYTHON//python/python-}"
-		MAKEOPTS+=" python_dir=$(python_get_sitedir)/${PN}"
+		EMAKE_FLAGS+=(
+			"PYTHON_VERS=${EPYTHON//python/python-}"
+			"python_dir=$(python_get_sitedir)/${PN}"
+		)
 	else
-		MAKEOPTS+=" NO_PYTHON=1"
+		EMAKE_FLAGS+=("NO_PYTHON=1")
 	fi
-
-	use udis86 || MAKEOPTS+=" NO_UDIS86=1"
 }
 
 src_compile() {
-	emake V=1 all_cmd libs
+	emake "${EMAKE_FLAGS[@]}" all_cmd libs
 	use doc && emake doc
 
 }
 
 src_install() {
-	emake DESTDIR="${D}" V=1 install install_libs
+	emake "${EMAKE_FLAGS[@]}" DESTDIR="${D}" V=1 install install_libs
 	use doc && emake DESTDIR="${D}" install_doc
 
 }
