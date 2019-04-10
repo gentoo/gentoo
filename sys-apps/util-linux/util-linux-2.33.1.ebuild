@@ -63,6 +63,15 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 S="${WORKDIR}/${MY_P}"
 
+PATCHES=(
+	# In glibc-2.29+, a lot of changes were made to arch-specific
+	# handling of `struct termios', which breaks atleast MIPS.
+	# The below patch from upstream fixes this, and should be
+	# in the next release.
+	# See: https://git.kernel.org/pub/scm/utils/util-linux/util-linux.git/commit/?id=963413a1adf6767ab17712097e288e1a346f63a7
+	"${FILESDIR}/${P}-fix-struct_termios-check.patch"
+)
+
 src_prepare() {
 	default
 
@@ -90,13 +99,6 @@ src_prepare() {
 		configure || die
 
 	elibtoolize
-
-	# In glibc-2.29+, a lot of changes were made to arch-specific
-	# handling of `struct termios', which breaks atleast MIPS.
-	# The below patch from upstream fixes this, and should be
-	# in the next release.
-	# See: https://git.kernel.org/pub/scm/utils/util-linux/util-linux.git/commit/?id=963413a1adf6767ab17712097e288e1a346f63a7
-	epatch "${FILESDIR}/${P}-fix-struct_termios-check.patch"
 }
 
 lfs_fallocate_test() {
