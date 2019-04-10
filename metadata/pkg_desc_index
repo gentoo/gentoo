@@ -188,7 +188,7 @@ app-arch/libarchive 3.3.1: Multi-format archive and compression library
 app-arch/libpar2 0.4: A library for par2, extracted from par2cmdline
 app-arch/lrzip 0.621: Long Range ZIP or Lzma RZIP optimized for compressing large files
 app-arch/lz4 1.8.2 1.8.3: Extremely Fast Compression algorithm
-app-arch/lzip 1.20 1.21: lossless data compressor based on the LZMA algorithm
+app-arch/lzip 1.21: lossless data compressor based on the LZMA algorithm
 app-arch/lziprecover 1.21: Lziprecover is a data recovery tool and decompressor for lzip compressed files
 app-arch/lzop 1.04: Utility for fast (even real-time) compression/decompression
 app-arch/makeself 2.2.0-r2: shell script that generates a self-extractible tar.gz
@@ -285,8 +285,8 @@ app-cdr/brasero 3.12.2-r1: CD/DVD burning application for the GNOME desktop
 app-cdr/burn-cd 1.8.1: Smart console frontend for the cdrkit/cdrtools & dvd+rw-tools
 app-cdr/burncdda 1.8.3: Console app for copying burning audio cds
 app-cdr/ccd2iso 0.3: Convert CD images from ccd (CloneCD) to iso
-app-cdr/cdemu 3.2.0 3.2.1: Command-line tool for controlling cdemu-daemon
-app-cdr/cdemu-daemon 3.2.1 3.2.2: Daemon of the CDEmu optical media image mounting suite
+app-cdr/cdemu 3.2.1: Command-line tool for controlling cdemu-daemon
+app-cdr/cdemu-daemon 3.2.2: Daemon of the CDEmu optical media image mounting suite
 app-cdr/cdlabelgen 4.3.0: CD cover, tray card and envelope generator
 app-cdr/cdrdao 1.2.4: Burn CDs in disk-at-once mode -- with optional GUI frontend
 app-cdr/cdrtools 3.02_alpha09: A set of tools for CD/DVD reading and recording, including cdrecord
@@ -298,7 +298,7 @@ app-cdr/dvd+rw-tools 7.1-r3: A set of tools for DVD+RW/-RW drives
 app-cdr/dvdisaster 0.72.4 0.79.5: Tool for creating error correction data (ecc) for optical media (DVD, CD, BD)
 app-cdr/extract-xiso 2.7.1: Tool for extracting and creating optimised Xbox ISO images
 app-cdr/gaffitter 0.6.0-r1: Genetic Algorithm File Fitter
-app-cdr/gcdemu 3.2.0 3.2.1: Gtk+ GUI for controlling cdemu-daemon
+app-cdr/gcdemu 3.2.1: Gtk+ GUI for controlling cdemu-daemon
 app-cdr/graveman 0.3.12_p5-r2: Graphical frontend for cdrecord, mkisofs, readcd and sox using GTK+2
 app-cdr/gtkcdlabel 1.15: A GUI for cdlabelgen that generates CD labels
 app-cdr/iat 0.1.7-r1: BIN, MDF, PDI, CDI, NRG, and B5I converters
@@ -1215,7 +1215,7 @@ app-portage/cfg-update 1.8.9: Easy to use GUI & CLI alternative for etc-update
 app-portage/conf-update 1.0.3-r1: conf-update is a ncurses-based config management utility
 app-portage/cpuid2cpuflags 1 5: Tool to guess CPU_FLAGS_* flags for the host
 app-portage/demerge 0.047-r3: demerge - revert to previous installation states
-app-portage/eix 0.33.5 0.33.7: Search and query ebuilds
+app-portage/eix 0.33.7: Search and query ebuilds
 app-portage/elogv 0.7.6.1-r1: Curses based utility to parse the contents of elogs created by Portage
 app-portage/elogviewer 2.7-r2 2.9: Elog viewer for Gentoo
 app-portage/elt-patches 20170317 20170422 20170815: Collection of patches for libtool.eclass
@@ -3130,7 +3130,7 @@ dev-libs/libmaxminddb 1.2.1 1.3.2: C library for the MaxMind DB file format
 dev-libs/libmba 0.9.1-r3: A library of generic C modules
 dev-libs/libmcrypt 2.5.8-r4: libmcrypt provides uniform interface to access several encryption algorithms
 dev-libs/libmemcached 1.0.18-r3: a C client library to the memcached server
-dev-libs/libmirage 3.2.0 3.2.2: CD and DVD image access library
+dev-libs/libmirage 3.2.2: CD and DVD image access library
 dev-libs/libmix 2.05-r7: Programs Crypto/Network/Multipurpose Library
 dev-libs/libmodbus 3.1.4: Modbus library which supports RTU communication over a serial line or a TCP link
 dev-libs/libmoe 1.5.8-r3: Multi octet character encoding handling library
@@ -5116,7 +5116,7 @@ dev-python/mimeparse 0.1.4-r1 1.6.0: Basic functions for handling mime-types in 
 dev-python/mimerender 0.6.0: RESTful HTTP Content Negotiation for Flask, Bottle, web.py and webapp2
 dev-python/minidb 2.0.2: Simple SQLite-based object store
 dev-python/minimock 1.2.8-r1: The simplest possible mock library
-dev-python/miniupnpc 2.0.20180503 2.1.20190210: Python bindings for UPnP client library
+dev-python/miniupnpc 2.1.20190210: Python bindings for UPnP client library
 dev-python/mistune 0.8.3: The fastest markdown parser in pure Python
 dev-python/mkdocs 0.15.3: Project documentation with Markdown.
 dev-python/mkdocs-bootstrap 0.1.1: Bootstrap theme for MkDocs
@@ -8790,7 +8790,7 @@ net-libs/libzapojit 0.0.3: GLib/GObject wrapper for the SkyDrive and Hotmail RES
 net-libs/loudmouth 1.5.3-r1 1.5.3-r3: Lightweight C Jabber library
 net-libs/mbedtls 2.10.0 2.12.0: Cryptographic library for embedded systems
 net-libs/meanwhile 1.0.2-r1: Meanwhile (Sametime protocol) library
-net-libs/miniupnpc 2.0.20180503 2.1.20190210: UPnP client library and a simple UPnP client
+net-libs/miniupnpc 2.1.20190210: UPnP client library and a simple UPnP client
 net-libs/nativebiginteger 0.8.7: jbigi JNI library for net.i2p.util.NativeBigInteger java-class from I2P
 net-libs/neon 0.30.2: HTTP and WebDAV client library
 net-libs/net6 1.3.14-r2: Network access framework for IPv4/IPv6 written in C++
@@ -8898,7 +8898,7 @@ net-misc/adjtimex 1.29-r1: display or set the kernel time variables
 net-misc/aget 0.4.1-r2: multithreaded HTTP download accelerator
 net-misc/aggregate 1.6: Take a list of prefixes and perform two optimisations to reduce the length of the prefix list
 net-misc/aggregate-flim 1.0.2: aggregate is a tool for aggregating CIDR networks
-net-misc/aria2 1.34.0 1.34.0-r1: A download utility with segmented downloading with BitTorrent support
+net-misc/aria2 1.34.0-r1: A download utility with segmented downloading with BitTorrent support
 net-misc/arpd 0.2-r1: ARP server claiming all unassigned addresses (for network monitoring/simulation)
 net-misc/asterisk 11.25.3 13.23.1: Asterisk: A Modular Open Source PBX System
 net-misc/asterisk-core-sounds 1.4.21-r1 1.4.22: Core sounds for asterisk
@@ -10113,7 +10113,7 @@ sys-devel/clang-common 6.0.1: Common files shared between multiple slots of clan
 sys-devel/clang-runtime 4.0.1 5.0.2 6.0.1: Meta-ebuild for clang runtime libraries
 sys-devel/crossdev 20181020 20181202: Gentoo Cross-toolchain generator
 sys-devel/dev86 0.16.21-r3: Bruce's C compiler - Simple C compiler to generate 8086 code
-sys-devel/distcc 3.2_rc1-r4 3.3.2-r4 3.3.2-r5: Distribute compilation of C code across several machines on a network
+sys-devel/distcc 3.2_rc1-r4 3.3.2-r5: Distribute compilation of C code across several machines on a network
 sys-devel/flex 2.6.1 2.6.4-r1: The Fast Lexical Analyzer
 sys-devel/gcc 6.4.0-r1 7.3.0-r3 8.2.0-r6: The GNU Compiler Collection
 sys-devel/gcc-config 1.8-r1 2.0: Utility to manage compilers
@@ -10242,7 +10242,7 @@ sys-fs/udev-init-scripts 32 33: udev startup scripts for openrc
 sys-fs/udftools 2.0-r2 2.1: Ben Fennema's tools for packet writing and the UDF filesystem
 sys-fs/udiskie 1.1.1: An automatic disk mounting service using udisks
 sys-fs/udisks 1.0.5-r2 2.7.4-r1 2.8.1: Daemon providing interfaces to work with storage devices
-sys-fs/vhba 20170610 20190302: Virtual (SCSI) Host Bus Adapter kernel module for the CDEmu suite
+sys-fs/vhba 20190302: Virtual (SCSI) Host Bus Adapter kernel module for the CDEmu suite
 sys-fs/vzquota 3.1: OpenVZ VPS disk quota utility
 sys-fs/xfsdump 3.1.6 3.1.8: xfs dump/restore utilities
 sys-fs/xfsprogs 4.17.0-r1: xfs filesystem utilities
