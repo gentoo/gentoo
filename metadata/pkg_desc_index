@@ -3147,7 +3147,7 @@ dev-libs/libotf 0.9.13: Library for handling OpenType fonts (OTF)
 dev-libs/libowfat 0.31-r1: reimplement libdjb - excellent libraries from Dan Bernstein
 dev-libs/libp11 0.4.4 0.4.9: Abstraction layer to simplify PKCS#11 API
 dev-libs/libparserutils 0.2.3: library for building efficient parsers, written in C
-dev-libs/libpcre 8.41-r1 8.42: Perl-compatible regular expression library
+dev-libs/libpcre 8.42: Perl-compatible regular expression library
 dev-libs/libpcre2 10.30: Perl-compatible regular expression library
 dev-libs/libpeas 1.22.0: A GObject plugins library
 dev-libs/libpipeline 1.4.2: a pipeline manipulation library
