@@ -953,7 +953,7 @@ app-misc/beanstalkd 1.10: A simple, fast work queue
 app-misc/beep 1.3-r3: The advanced PC speaker beeper
 app-misc/bfm 1.2-r2: File manager and first person shooter written in Java3D, shoot to remove files
 app-misc/bfr 1.6-r2: General-purpose command-line pipe buffer
-app-misc/bijiben 3.26.1 3.26.2: Note editor designed to remain simple to use
+app-misc/bijiben 3.26.2: Note editor designed to remain simple to use
 app-misc/binclock 1.5: Displays a binary clock in your terminal
 app-misc/binwalk 2.1.1: A tool for identifying files embedded inside firmware images
 app-misc/birthday 1.6.2-r1: Displays a list of events happening in the near future
@@ -1122,7 +1122,7 @@ app-misc/toilet 0.3: The Other Implementations letters. Figlet replacement
 app-misc/towitoko 2.0.7-r3: Driver for Towitoko smartcard readers
 app-misc/tpconfig 3.1.3-r2: Touchpad config for ALPS and Synaptics TPs. Controls tap/click behaviour
 app-misc/tpipe 1.6-r1: Command to duplicate standard input to more than one program
-app-misc/tracker 1.12.4-r1 2.1.8: A tagging metadata database, search tool and indexer
+app-misc/tracker 2.1.8: A tagging metadata database, search tool and indexer
 app-misc/tracker-miners 2.1.6: Collection of data extractors for Tracker/Nepomuk
 app-misc/trash-cli 0.12.9.14-r2 0.17.1.14_p20170816: Python scripts to manipulate trash cans via the command line
 app-misc/ttyload 0.5.3: color-coded graph of load averages over time
@@ -1386,7 +1386,7 @@ app-text/libebook 0.1.2-r1: Library parsing various ebook formats
 app-text/libepubgen 0.1.1: EPUB generator for librevenge
 app-text/libetonyek 0.1.9: Library parsing Apple Keynote presentations
 app-text/libexttextcat 3.4.5: Library implementing N-gram-based text categorization
-app-text/libgepub 0.4 0.5.3: GObject based library for handling and rendering epub documents
+app-text/libgepub 0.5.3: GObject based library for handling and rendering epub documents
 app-text/libgxps 0.3.0: Library for handling and rendering XPS documents
 app-text/liblangtag 0.6.2: An interface library to access tags for identifying languages
 app-text/libmspub 0.1.4: Library parsing Microsoft Publisher documents
@@ -2993,7 +2993,7 @@ dev-libs/fddl 20111124-r1: Free Decision Diagram Library
 dev-libs/ferrisloki 3.0.13-r2: Loki C++ library from Modern C++ Design
 dev-libs/ffcall 2.1: Build foreign function call interfaces in embedded interpreter
 dev-libs/flatbuffers 1.10.0: Memory efficient serialization library
-dev-libs/folks 0.11.4 0.11.4-r1: Library for aggregating people from multiple sources
+dev-libs/folks 0.11.4-r1: Library for aggregating people from multiple sources
 dev-libs/freexl 1.0.1: Simple XLS data extraction library
 dev-libs/fribidi 1.0.5: A free implementation of the unicode bidirectional algorithm
 dev-libs/fstrm 0.3.0: Frame Streams implementation in C
@@ -6554,7 +6554,7 @@ gnome-base/libgnomekbd 3.26.0: Gnome keyboard configuration library
 gnome-base/libgnomeui 2.24.5-r1: User Interface routines for Gnome
 gnome-base/libgtop 2.36.0: A library that provides top functionality to applications
 gnome-base/librsvg 2.40.18: Scalable Vector Graphics (SVG) rendering library
-gnome-base/nautilus 3.24.2.1-r2 3.26.4-r2: A file manager for the GNOME desktop
+gnome-base/nautilus 3.26.4-r2: A file manager for the GNOME desktop
 gnome-base/orbit 2.14.19-r5: ORBit2 is a high-performance CORBA ORB
 gnome-extra/assogiate 0.2.1-r1: assoGiate is an editor of the file types database for GNOME
 gnome-extra/chrome-gnome-shell 10: GNOME Shell integration for Chrome/Chromium, Firefox, Vivaldi, Opera browsers
@@ -6571,7 +6571,7 @@ gnome-extra/eiciel 0.9.11-r1: ACL editor for GNOME, with Nautilus extension
 gnome-extra/evolution-data-server 3.24.7: Evolution groupware backend
 gnome-extra/evolution-ews 3.24.6: Evolution module for connecting to Microsoft Exchange Web Services
 gnome-extra/gconf-editor 3.0.1-r1: An editor to the GNOME config system
-gnome-extra/gnome-boxes 3.24.1-r1 3.26.4: Simple GNOME 3 application to access remote or virtual systems
+gnome-extra/gnome-boxes 3.26.4: Simple GNOME 3 application to access remote or virtual systems
 gnome-extra/gnome-calculator 3.24.0: A calculator application for GNOME
 gnome-extra/gnome-calendar 3.24.3: Manage your online calendars with simple and modern interface
 gnome-extra/gnome-characters 3.26.2: Unicode character map viewer and library
@@ -6580,7 +6580,7 @@ gnome-extra/gnome-color-manager 3.24.0: Color profile manager for the GNOME desk
 gnome-extra/gnome-commander 1.8.1: A graphical, full featured, twin-panel file manager
 gnome-extra/gnome-contacts 3.22.1-r1: GNOME contact management application
 gnome-extra/gnome-directory-thumbnailer 0.1.10: Thumbnail generator for directories
-gnome-extra/gnome-documents 3.24.3 3.26.3: A document manager application for GNOME
+gnome-extra/gnome-documents 3.26.3: A document manager application for GNOME
 gnome-extra/gnome-dvb-daemon 0.2.90: Setup your DVB devices, record and watch TV shows and browse EPG using GStreamer
 gnome-extra/gnome-getting-started-docs 3.24.1: Help a new user get started in GNOME
 gnome-extra/gnome-integration-spotify 20140907-r1: GNOME integration for Spotify
@@ -6605,7 +6605,7 @@ gnome-extra/mousetweaks 3.12.0: Mouse accessibility enhancements for the GNOME d
 gnome-extra/nautilus-actions 3.2.4: Configures programs to be launched when files are selected in Nautilus
 gnome-extra/nautilus-dropbox 1.6.2: Store, Sync and Share Files Online
 gnome-extra/nautilus-sendto 3.8.6: A nautilus extension for sending files to locations
-gnome-extra/nemo 3.6.4 3.6.4-r1: A file manager for Cinnamon, forked from Nautilus
+gnome-extra/nemo 3.6.4-r1: A file manager for Cinnamon, forked from Nautilus
 gnome-extra/nm-applet 1.8.18: GNOME applet for NetworkManager
 gnome-extra/office-runner 1.0.2: Lighthearted tool to temporarily inhibit GNOME's suspend on lid close behavior
 gnome-extra/polkit-gnome 0.105-r1: A dbus session bus service that is used to bring up authentication dialogs
@@ -7390,7 +7390,7 @@ media-gfx/gimp-arrow-brushes 20120122: Brushes for GIMP with the styles arrow, h
 media-gfx/gliv 1.9.7: An image viewer that uses OpenGL
 media-gfx/gnofract4d 3.14-r1 3.14.1: A program for drawing beautiful mathematically-based images known as fractals
 media-gfx/gnome-font-viewer 3.30.0: Font viewer utility for GNOME
-media-gfx/gnome-photos 3.24.6 3.26.4: Access, organize and share your photos on GNOME
+media-gfx/gnome-photos 3.26.4: Access, organize and share your photos on GNOME
 media-gfx/gnome-raw-thumbnailer 3.0.0-r1: A lightweight and fast raw image thumbnailer for GNOME
 media-gfx/gnome-screenshot 3.22.0: Screenshot utility for GNOME
 media-gfx/gozer 0.7-r3: tool for rendering arbitrary text as graphics, using ttfs and styles
@@ -8103,7 +8103,7 @@ media-sound/gmorgan 0.79-r1: Opensource software rhythm station
 media-sound/gmpc 11.8.16-r1: A GTK+2 client for the Music Player Daemon
 media-sound/gmusicbrowser 1.1.15-r3 1.1.15_p20160530: An open-source jukebox for large collections of mp3/ogg/flac files
 media-sound/gnomad 2.9.6: A GTK+ music manager and swiss army knife for the Portable Digital Entertainment (PDE) protocol
-media-sound/gnome-music 3.24.2 3.26.2: Music management for Gnome
+media-sound/gnome-music 3.26.2: Music management for Gnome
 media-sound/gnome-sound-recorder 3.24.0.1: Simple sound recorder
 media-sound/gnump3d 3.0-r1 3.0-r2: A streaming server for MP3, OGG vorbis and other streamable files
 media-sound/gom 0.29.103-r1: Console Mixer Program for OSS
@@ -8716,7 +8716,7 @@ net-libs/gsoap 2.8.70: A cross-platform open source C and C++ SDK for SOAP/XML W
 net-libs/gssdp 1.0.2 1.0.3: A GObject-based API for handling resource discovery and announcement over SSDP
 net-libs/gtk-vnc 0.8.0: VNC viewer widget for GTK
 net-libs/gupnp 1.0.3: An object-oriented framework for creating UPnP devs and control points
-net-libs/gupnp-av 0.12.10 0.12.11: Utility library aiming to ease the handling UPnP A/V profiles
+net-libs/gupnp-av 0.12.11: Utility library aiming to ease the handling UPnP A/V profiles
 net-libs/gupnp-igd 0.2.5: Library to handle UPnP IGD port mapping for GUPnP
 net-libs/http-parser 2.8.1: HTTP request/response parser for C
 net-libs/ldns 1.7.0-r2: a library with the aim to simplify DNS programming in C
@@ -8941,7 +8941,7 @@ net-misc/freerdp 2.0.0_rc2-r1 2.0.0_rc4: Free implementation of the Remote Deskt
 net-misc/gcap 0.1.1-r1: Command line tool for downloading Youtube closed captions
 net-misc/geoipupdate 2.3.1: performs automatic updates of GeoIP2 and GeoIP Legacy binary databases
 net-misc/getdate 1.2-r1: Network Date/Time Query and Set Local Date/Time Utility
-net-misc/gnome-online-miners 3.24.0 3.26.0: Crawls through your online content
+net-misc/gnome-online-miners 3.26.0: Crawls through your online content
 net-misc/gofish 1.2: Gofish gopher server
 net-misc/grdesktop 0.23-r1: Gtk2 frontend for rdesktop
 net-misc/gsasl 1.8.0-r1: The GNU SASL client, server, and library
@@ -9040,7 +9040,7 @@ net-misc/redir 3.2: Redir is a port redirector
 net-misc/remmina 1.2.0_rc24 1.2.31.3: A GTK+ RDP, SPICE, VNC, XDMCP and SSH client
 net-misc/rinetd 0.62-r2: redirects TCP connections from one IP address and port to another
 net-misc/rsync 3.1.3: File transfer program to keep remote files into sync
-net-misc/rygel 0.34.0 0.36.2: Rygel is an open source UPnP/DLNA MediaServer
+net-misc/rygel 0.36.2: Rygel is an open source UPnP/DLNA MediaServer
 net-misc/s3cmd 1.6.1 2.0.0: Command line client for Amazon S3
 net-misc/scponly 4.8-r5: A tiny pseudoshell which only permits scp and sftp
 net-misc/secpanel 0.6.1-r1: Graphical frontend for managing and running SSH and SCP connections

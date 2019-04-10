@@ -692,17 +692,8 @@ app-misc/sphinx:stemmer - Enable language stemming support
 app-misc/task:sync - Enable "task sync" support
 app-misc/tmux:utempter - Include libutempter support
 app-misc/towitoko:moneyplex - Makes libtowitoko work for the moneyplex home banking software
-app-misc/tracker:cue - Enable cue sheet parsing
-app-misc/tracker:firefox-bookmarks - Install bookmark data miner plugin for www-client/firefox and www-client/firefox-bin
-app-misc/tracker:gsf - Enable gnome-extra/libgsf based data extractor and for ODT.
-app-misc/tracker:iptc - Enable extraction of IPTC data from pictures
-app-misc/tracker:iso - Enable extraction of metadata from ISO disk images
-app-misc/tracker:miner-fs - Enable tracker-miner-fs (required for filesystem indexing)
 app-misc/tracker:miners - Install the app-misc/tracker-miners package for actual data mining support for tracker
-app-misc/tracker:playlist - Add support for playlists
 app-misc/tracker:stemmer - Add word stemming via dev-libs/snowball-stemmer.
-app-misc/tracker:thunderbird - Install email data miner plugin for mail-client/thunderbird and mail-client/thunderbird-bin
-app-misc/tracker:xps - Add support for XPS file format through app-text/libgxps.
 app-misc/tracker-miners:cue - Enable cue sheet parsing
 app-misc/tracker-miners:gsf - Enable gnome-extra/libgsf based data extractor and for ODT.
 app-misc/tracker-miners:iptc - Enable extraction of IPTC data from pictures
