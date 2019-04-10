@@ -56,8 +56,8 @@ src_configure() {
 		"libdir=/usr/$(get_libdir)"
 		"CC=$(tc-getCC)"
 		"AR=$(tc-getAR)"
-		$(usex audit '' '' 'NO_AUDIT=1')
-		$(usex udis86 '' '' 'NO_UDIS86=1')
+		$(usex audit '' '' '' 'NO_AUDIT=1')
+		$(usex udis86 '' '' '' 'NO_UDIS86=1')
 	)
 
 	if use python; then
