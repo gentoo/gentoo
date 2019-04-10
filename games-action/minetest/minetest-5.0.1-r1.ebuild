@@ -12,11 +12,12 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="LGPL-2.1+ CC-BY-SA-3.0 OFL-1.1 Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="+curl dedicated doc jsoncpp +leveldb luajit ncurses nls postgres redis +server +sound spatial +truetype"
+IUSE="+curl dedicated doc +leveldb luajit ncurses nls postgres redis +server +sound spatial +truetype"
 
 RDEPEND="
 	dev-db/sqlite:3
 	dev-libs/gmp:0=
+	dev-libs/jsoncpp:=
 	sys-libs/zlib
 	curl? ( net-misc/curl )
 	!dedicated? (
@@ -34,7 +35,6 @@ RDEPEND="
 		)
 		truetype? ( media-libs/freetype:2 )
 	)
-	jsoncpp? ( dev-libs/jsoncpp )
 	leveldb? ( dev-libs/leveldb:= )
 	luajit? ( dev-lang/luajit:2 )
 	ncurses? ( sys-libs/ncurses:0= )
@@ -64,6 +64,9 @@ src_prepare() {
 		-e "s#@BINDIR@#${EPREFIX}/usr/bin#g" \
 		-e "s#@GROUP@#${PN}#g" \
 		"${FILESDIR}"/minetestserver.confd > "${T}"/minetestserver.confd || die
+
+	# remove bundled gmp/jsoncpp
+	rm -rf lib/{gmp,jsoncpp} || die
 }
 
 src_configure() {
@@ -85,7 +88,7 @@ src_configure() {
 		-DENABLE_REDIS=$(usex redis)
 		-DENABLE_SPATIAL=$(usex spatial)
 		-DENABLE_SOUND=$(usex sound)
-		-DENABLE_SYSTEM_JSONCPP=$(usex jsoncpp)
+		-DENABLE_SYSTEM_JSONCPP=1
 		-DRUN_IN_PLACE=0
 	)
 
