@@ -334,23 +334,18 @@ ppc64		hardened/linux/powerpc/ppc64/64bit-userland		dev
 amd64		default/linux/amd64/17.0/musl				exp
 amd64		default/linux/amd64/17.0/musl/hardened			exp
 amd64		default/linux/amd64/17.0/musl/hardened/selinux		exp
-arm		default/linux/musl/arm/armv7a				exp
-arm		hardened/linux/musl/arm/armv7a				exp
 arm		default/linux/arm/17.0/musl/armv6j			exp
 arm		default/linux/arm/17.0/musl/armv6j/hardened		exp
 arm		default/linux/arm/17.0/musl/armv7a			exp
 arm		default/linux/arm/17.0/musl/armv7a/hardened		exp
-arm64		default/linux/musl/arm64 				exp
-arm64		hardened/linux/musl/arm64 				exp
+arm64		default/linux/arm64/17.0/musl				exp
+arm64		default/linux/arm64/17.0/musl/hardened			exp
 mips		default/linux/musl/mips					exp
 mips		hardened/linux/musl/mips				exp
 mips		default/linux/musl/mips/mipsel				exp
 mips		hardened/linux/musl/mips/mipsel				exp
-ppc		default/linux/musl/ppc					exp
-ppc		hardened/linux/musl/ppc					exp
 ppc		default/linux/powerpc/ppc32/17.0/musl			exp
 ppc		default/linux/powerpc/ppc32/17.0/musl/hardened		exp
-x86		default/linux/musl/x86					exp
 x86		default/linux/x86/17.0/musl				exp
 x86		default/linux/x86/17.0/musl/selinux			exp
 

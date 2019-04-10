@@ -69,7 +69,7 @@ PATCHES=(
 	# The below patch from upstream fixes this, and should be
 	# in the next release.
 	# See: https://git.kernel.org/pub/scm/utils/util-linux/util-linux.git/commit/?id=963413a1adf6767ab17712097e288e1a346f63a7
-	"${FILESDIR}/${P}-fix-struct_termios-check.patch"
+	"${FILESDIR}/${PN}-2.33.1-fix-struct_termios-check.patch"
 )
 
 src_prepare() {
