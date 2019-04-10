@@ -5967,7 +5967,7 @@ dev-ruby/racc 1.4.14: A LALR(1) parser generator for Ruby
 dev-ruby/rack 1.6.11 2.0.6: A modular Ruby webserver interface
 dev-ruby/rack-cache 1.7.1 1.8.0: Enable HTTP caching for Rack-based applications that produce freshness info
 dev-ruby/rack-protection 1.5.5: This gem protects against typical web attacks
-dev-ruby/rack-test 0.6.3: Rack::Test is a small, simple testing API for Rack apps
+dev-ruby/rack-test 0.6.3 1.0.0: Rack::Test is a small, simple testing API for Rack apps
 dev-ruby/rails-dom-testing 2.0.3: Compare doms and assert certain elements exists in doms using Nokogiri
 dev-ruby/rails-html-sanitizer 1.0.3-r1: Sanitize HTML fragments in Rails applications
 dev-ruby/railties 5.1.6.2: Tools for creating, working with, and running Rails applications
@@ -6017,7 +6017,7 @@ dev-ruby/ruby-gtk3 3.1.1: Ruby Gtk3 bindings
 dev-ruby/ruby-gtksourceview 3.1.1: Ruby bindings for gtksourceview
 dev-ruby/ruby-gtksourceview3 3.1.1: Ruby Gtk3 bindings
 dev-ruby/ruby-ldap 0.9.19: A Ruby interface to some LDAP libraries
-dev-ruby/ruby-oci8 2.2.4.1: A Ruby library for Oracle OCI8
+dev-ruby/ruby-oci8 2.2.5.1: A Ruby library for Oracle OCI8
 dev-ruby/ruby-odbc 0.99999: RubyODBC - For accessing ODBC data sources from the Ruby language
 dev-ruby/ruby-opengl 0.10.0: OpenGL / GLUT bindings for ruby
 dev-ruby/ruby-openid 2.7.0: A robust library for verifying and serving OpenID identities
