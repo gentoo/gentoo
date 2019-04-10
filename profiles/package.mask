@@ -30,6 +30,13 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (10 Apr 2019)
+# Unresolved vulnerability.  Last apparent upstream activity in 2015,
+# with the code last touched in 2010.  Local patches are already
+# necessary for it to build.
+# Removal in 30 days.  Bug #630254.
+media-sound/aacplusenc
+
+# Michał Górny <mgorny@gentoo.org> (10 Apr 2019)
 # Fails to build for more than 3 years.  The project has been abandoned
 # upstream, with the current (and last) release made in 2010.
 # The author itself suggests media-gfx/eog as a replacement, though
