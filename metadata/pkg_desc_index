@@ -9811,7 +9811,7 @@ sys-apps/cciss_vol_status 1.12: Shows status of logical drives attached to HP Sm
 sys-apps/checkpolicy 2.7 2.8: SELinux policy compiler
 sys-apps/chname 1.1: Run a command with a new system hostname
 sys-apps/clrngd 1.0.3: Clock randomness gathering daemon
-sys-apps/collectl 3.7.4: Performance monitoring tool capable of interactive reporting and logging to disk
+sys-apps/collectl 3.7.4 4.3.1: Performance monitoring tool capable of interactive reporting and logging to disk
 sys-apps/colorized-logs 2.4: Tools for logs with ANSI color
 sys-apps/conspy 1.10: Remote control for Linux virtual consoles
 sys-apps/coreutils 8.30: Standard GNU utilities (chmod, cp, dd, ls, sort, tr, head, wc, who,...)
@@ -9995,7 +9995,7 @@ sys-auth/pam_fprint 0.2-r1: a simple PAM module which uses libfprint's functiona
 sys-auth/pam_krb5 4.6: Kerberos V PAM Authentication Module
 sys-auth/pam_ldap 186-r1: PAM LDAP Module
 sys-auth/pam_mktemp 1.1.1: Create per-user private temporary directories during login
-sys-auth/pam_mount 2.14 2.15 2.16: A PAM module that can mount volumes for a user session
+sys-auth/pam_mount 2.16: A PAM module that can mount volumes for a user session
 sys-auth/pam_mysql 0.8.1-r1: pam_mysql is a module for pam to authenticate users with mysql
 sys-auth/pam_p11 0.2.0: PAM module for authenticating against PKCS#11 tokens
 sys-auth/pam_passwdqc 1.0.5: Password strength checking for PAM aware password changing programs
@@ -10282,7 +10282,7 @@ sys-libs/libcxx 6.0.1: New implementation of the C++ standard library, targeting
 sys-libs/libcxxabi 6.0.1: Low level support for a standard C++ library
 sys-libs/libcxxrt 0.0_p20170515: C++ Runtime from PathScale, FreeBSD and NetBSD
 sys-libs/libfaketime 0.9.6-r1 0.9.6-r2: Report faked system time to programs
-sys-libs/libhx 3.16 3.22-r1: Platform independent library providing basic system functions
+sys-libs/libhx 3.22-r1: Platform independent library providing basic system functions
 sys-libs/libieee1284 0.2.11-r4 0.2.11-r5 0.2.11-r6: Library to query devices using IEEE1284
 sys-libs/libkudzu 1.2.57.1: Red Hat Hardware detection tools
 sys-libs/libmath++ 0.0.4-r1: C++ Template math library, for symbolic and numeric calculus applications
