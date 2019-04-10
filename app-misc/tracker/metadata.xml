@@ -6,23 +6,7 @@
     <name>Gentoo GNOME Desktop</name>
   </maintainer>
   <use>
-    <flag name="cue">Enable cue sheet parsing</flag>
-    <!-- 'firefox-bookmarks' instead of 'firefox' to prevent most users from
-       enabling this by accident; it has some stability problems and
-       performance implications -->
-    <flag name="firefox-bookmarks">Install bookmark data miner plugin for
-    <pkg>www-client/firefox</pkg> and <pkg>www-client/firefox-bin</pkg></flag>
-    <flag name="gsf">Enable <pkg>gnome-extra/libgsf</pkg> based data extractor and
-  for ODT.</flag>
-    <flag name="iptc">Enable extraction of IPTC data from pictures</flag>
-    <flag name="iso">Enable extraction of metadata from ISO disk images</flag>
     <flag name="miners">Install the <pkg>app-misc/tracker-miners</pkg> package for actual data mining support for tracker</flag>
-    <flag name="miner-fs">Enable tracker-miner-fs (required for filesystem indexing)</flag>
-    <flag name="playlist">Add support for playlists</flag>
     <flag name="stemmer">Add word stemming via <pkg>dev-libs/snowball-stemmer</pkg>.</flag>
-    <flag name="thunderbird">Install email data miner plugin for
-    <pkg>mail-client/thunderbird</pkg> and
-    <pkg>mail-client/thunderbird-bin</pkg></flag>
-    <flag name="xps">Add support for XPS file format through <pkg>app-text/libgxps</pkg>.</flag>
   </use>
 </pkgmetadata>
