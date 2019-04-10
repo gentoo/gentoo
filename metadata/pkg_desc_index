@@ -7387,7 +7387,6 @@ media-gfx/gifsicle 1.91: Create, manipulate, and optimize GIF images and animati
 media-gfx/gimageview 0.2.27-r4: Powerful GTK+ based image & movie viewer
 media-gfx/gimp 2.8.22-r1: GNU Image Manipulation Program
 media-gfx/gimp-arrow-brushes 20120122: Brushes for GIMP with the styles arrow, handpointer, button arrow and cursor
-media-gfx/gliv 1.9.7: An image viewer that uses OpenGL
 media-gfx/gnofract4d 3.14-r1 3.14.1: A program for drawing beautiful mathematically-based images known as fractals
 media-gfx/gnome-font-viewer 3.30.0: Font viewer utility for GNOME
 media-gfx/gnome-photos 3.26.4: Access, organize and share your photos on GNOME
