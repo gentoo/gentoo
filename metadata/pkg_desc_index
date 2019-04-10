@@ -1038,7 +1038,7 @@ app-misc/joy2key 1.6.3-r1: An application that translates joystick events to key
 app-misc/joymouse 0.5: An application that translates joystick events to mouse events
 app-misc/jq 1.5-r3: A lightweight and flexible command-line JSON processor
 app-misc/kanatest 0.4.8: Visual flashcard tool for memorizing the Japanese Hiragana and Katakana alphabet
-app-misc/khard 0.12.2: Console CardDAV client
+app-misc/khard 0.12.2 0.13.0: Console CardDAV client
 app-misc/klavaro 3.0.1: Another free touch typing tutor program
 app-misc/ktoblzcheck 1.49: Library to check account numbers and bank codes of German banks
 app-misc/lcd4linux 0.11.0_pre20170527: A small program that grabs information and displays it on an external LCD
@@ -1453,6 +1453,7 @@ app-text/ronn 0.7.3-r3: Converts simple, human readable textfiles to roff for te
 app-text/rpl 1.5.5-r1: Intelligent recursive search/replace utility
 app-text/sablotron 1.0.3-r1: An XSLT Parser in C++
 app-text/sary 1.2.0-r1: Sary: suffix array library and tools
+app-text/scdoc 1.9.3: Standalone tool for generating man pages with a simple syntax
 app-text/scrollkeeper 9999-r2: Dummy scrollkeeper for testing rarian
 app-text/scrollkeeper-dtd 1.0-r1: DTD from the Scrollkeeper package
 app-text/sdcv 0.5.0_beta2-r1: Console version of Stardict program
@@ -6641,6 +6642,12 @@ gnustep-libs/highlighterkit 0.1.3: Syntax highlighter framework
 gnustep-libs/netclasses 1.1.0: An asynchronous networking library for GNUstep
 gnustep-libs/pantomime 1.2.2: A set of Objective-C classes that model a mail system
 gnustep-libs/renaissance 0.9.0-r1: GNUstep Renaissance allows to describe user interfaces XML files
+gui-apps/mako 1.2: A lightweight notification daemon for Wayland. Works on Sway.
+gui-apps/swayidle 1.2: Idle management daemon for Wayland
+gui-apps/swaylock 1.3: Screen locker for Wayland
+gui-apps/wl-clipboard 1.0.0: Wayland clipboard utilities
+gui-libs/wlroots 0.5.0: Pluggable, composable, unopinionated modules for building a Wayland compositor
+gui-wm/sway 1.0: i3-compatible Wayland window manager
 java-virtuals/ejb-api 0: Virtual for Enterprise JavaBeans API (javax.ejb)
 java-virtuals/interceptor-api 0: Virtual for Interceptor API (javax.interceptor)
 java-virtuals/jms 1.1: Virtual for Java Message Service (JMS) API

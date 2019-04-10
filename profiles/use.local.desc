@@ -2321,6 +2321,30 @@ gnustep-base/gnustep-back-xlib:xim - Enable X11 XiM input method
 gnustep-base/gnustep-gui:speech - Audio support using app-accessibility/flite
 gnustep-base/gnustep-make:libobjc2 - Enables use of the GNUstep Objective-C runtime (gnustep-base/libobjc2) with non-fragile ABI and sys-devel/clang compiler
 gnustep-base/gnustep-make:native-exceptions - Enables use of the native Objective-C exception support (@try/@catch/@finally) built-in objective-c exceptions with compilers that support it
+gui-apps/mako:icons - Enable support for icons
+gui-apps/swayidle:elogind - Enable support for rootless session via elogind
+gui-apps/swayidle:fish-completion - Enable fish completion support
+gui-apps/swayidle:man - Build and install man pages
+gui-apps/swaylock:fish-completion - Enable fish completion support
+gui-apps/swaylock:gdk-pixbuf - Enable additional image format support via the x11-libs/gdk-pixbuf library
+gui-apps/swaylock:man - Build and install man pages
+gui-libs/wlroots:X - Enable support for X11 applications (XWayland)
+gui-libs/wlroots:elogind - Enable support for rootless session via elogind
+gui-libs/wlroots:icccm - Use xcb-icccm (from x11-libs/xcb-util-wm) util library for improved Xwayland introspection
+gui-libs/wlroots:rootston - Build the rootston example compositor
+gui-libs/wlroots:x11-backend - Enable support for handling input/output devices through x11-libs/libxcb
+gui-wm/sway:X - Enable support for X11 applications (XWayland)
+gui-wm/sway:elogind - Enable support for rootless session via elogind
+gui-wm/sway:fish-completion - Enable fish completion support
+gui-wm/sway:man - Build and install man pages
+gui-wm/sway:swaybar - Install 'swaybar': sway's status bar component
+gui-wm/sway:swaybg - Install 'swaybg': allows to set a desktop background image
+gui-wm/sway:swayidle - Install 'swayidle': idle manager to run commands when user is inactive
+gui-wm/sway:swaylock - Install 'swaylock': sway's screen locker
+gui-wm/sway:swaymsg - Install 'swaymsg': tool for communicating with a running sway instance
+gui-wm/sway:swaynag - Install 'swaynag': shows a message with buttons
+gui-wm/sway:tray - Enable support for StatusNotifierItem tray specification
+gui-wm/sway:wallpapers - Install sway's default wallpaper image
 kde-apps/akonadi:designer - Install plugin for dev-qt/designer
 kde-apps/akonadi:tools - Install tools for developers and testing
 kde-apps/analitza:eigen - Enable dev-cpp/eigen mathematical templates support
