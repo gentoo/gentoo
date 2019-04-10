@@ -21,7 +21,7 @@ RDEPEND="app-misc/ca-certificates"
 # tests connect to random remote sites
 RESTRICT="test"
 
-PATCHES=( "${FILESDIR}"/${PN}-0.11.3-use-system-cacerts.patch )
+PATCHES=( "${FILESDIR}"/${PN}-0.12.1-use-system-cacerts.patch )
 
 python_prepare_all() {
 	chmod o+r */*egg*/* || die
