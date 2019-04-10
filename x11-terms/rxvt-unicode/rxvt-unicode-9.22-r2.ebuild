@@ -2,17 +2,15 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit autotools cvs desktop vcs-clean
+inherit autotools desktop
 
 DESCRIPTION="rxvt clone with xft and unicode support"
 HOMEPAGE="http://software.schmorp.de/pkg/rxvt-unicode.html"
-ECVS_SERVER="cvs.schmorp.de/schmorpforge"
-ECVS_USER="anonymous"
-ECVS_MODULE="rxvt-unicode"
+SRC_URI="http://dist.schmorp.de/rxvt-unicode/Attic/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris"
 IUSE="
 	256-color blink fading-colors +font-styles iso14755 +mousewheel +perl
 	pixbuf startup-notification unicode3 +utmp +wtmp xft
@@ -35,6 +33,10 @@ DEPEND="
 	virtual/pkgconfig
 	x11-base/xorg-proto
 "
+PATCHES=(
+	"${FILESDIR}"/${PN}-9.06-case-insensitive-fs.patch
+	"${FILESDIR}"/${PN}-9.21-xsubpp.patch
+)
 DOCS=(
 	Changes
 	README.FAQ
@@ -43,15 +45,9 @@ DOCS=(
 	doc/etc/${PN}.term{cap,info}
 	doc/rxvt-tabbed
 )
-S=${WORKDIR}/${PN}
 
 src_prepare() {
-	ecvs_clean
-	eapply \
-		"${FILESDIR}"/${PN}-9.06-case-insensitive-fs.patch \
-		"${FILESDIR}"/${PN}-9.21-xsubpp.patch
-
-	eapply_user
+	default
 
 	# kill the rxvt-unicode terminfo file - #192083
 	sed -i -e "/rxvt-unicode.terminfo/d" doc/Makefile.in || die "sed failed"
