@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -190,6 +190,8 @@ pkg_postinst() {
 	# https://bugs.gentoo.org/246847
 	# https://bugs.gentoo.org/514174
 	enewgroup input
+	enewgroup kvm 78
+	enewgroup render
 
 	# REPLACING_VERSIONS should only ever have zero or 1 values but in case it doesn't,
 	# process it as a list.  We only care about the zero case (new install) or the case where
