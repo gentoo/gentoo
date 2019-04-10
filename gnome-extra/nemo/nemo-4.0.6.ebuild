@@ -2,8 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-GNOME2_LA_PUNT="yes"
-PYTHON_COMPAT=( python3_{4,5,6} )
+PYTHON_COMPAT=( python3_{5,6} )
 
 inherit meson eutils gnome2 python-any-r1 virtualx
 
@@ -66,10 +65,6 @@ DEPEND="${COMMON_DEPEND}
 #	gnome-base/gnome-common, dev-util/gtk-doc (not only -am!)
 
 PATCHES=( "${FILESDIR}"/tracker-2.patch ) # https://github.com/linuxmint/nemo/issues/2065
-
-src_prepare() {
-	gnome2_src_prepare
-}
 
 src_configure() {
 	meson_src_configure \

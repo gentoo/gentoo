@@ -2,8 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-GNOME2_LA_PUNT="yes"
-PYTHON_COMPAT=( python3_{4,5,6} )
+PYTHON_COMPAT=( python3_{5,6} )
 
 inherit meson eutils gnome2 python-any-r1 virtualx
 
@@ -34,7 +33,7 @@ COMMON_DEPEND="
 
 	exif? ( >=media-libs/libexif-0.6.20:= )
 	introspection? ( >=dev-libs/gobject-introspection-0.6.4:= )
-	tracker? ( >=app-misc/tracker-0.12:0/100 )
+	tracker? ( >=app-misc/tracker-0.12:= )
 	xmp? ( >=media-libs/exempi-2.2.0:= )
 	selinux? ( sys-libs/libselinux )
 "
@@ -65,9 +64,7 @@ DEPEND="${COMMON_DEPEND}
 # For eautoreconf
 #	gnome-base/gnome-common, dev-util/gtk-doc (not only -am!)
 
-src_prepare() {
-	gnome2_src_prepare
-}
+PATCHES=( "${FILESDIR}"/tracker-2.patch ) # https://github.com/linuxmint/nemo/issues/2065
 
 src_configure() {
 	meson_src_configure \
