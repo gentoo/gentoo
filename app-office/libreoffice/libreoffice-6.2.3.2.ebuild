@@ -249,8 +249,7 @@ PATCHES=(
 	# master branch
 	"${FILESDIR}/${PN}-6.2-ldap-optional.patch"
 	# 6.2 stable branch
-	"${FILESDIR}/${P}-qt5-kf5-disable-qt-hidpi-scaling.patch"
-	"${FILESDIR}/${P}-kf5-update-delayed-frame-destruct.patch"
+	"${FILESDIR}/${PN}-6.2.3.1-qt5-kf5-disable-qt-hidpi-scaling.patch"
 	# "${WORKDIR}"/${PATCHSET/.tar.xz/}
 
 	# not upstreamable stuff
