@@ -22,7 +22,8 @@ COMMON_DEPEND="
 	jpeg2k? ( media-libs/jasper:= )
 	gimp? ( media-gfx/gimp )
 "
-DEPEND="${COMMON_DEPEND}
+DEPEND="${COMMON_DEPEND}"
+BDEPEND="
 	nls? ( sys-devel/gettext )
 	gimp? ( virtual/pkgconfig )
 "
