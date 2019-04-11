@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit cmake-utils desktop
 
@@ -15,11 +15,11 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="
-	media-libs/libpng:0
-	media-libs/libsdl[opengl,video]
-	media-libs/libvorbis
-	media-libs/openal
-	sys-libs/zlib
+	media-libs/libpng:0=
+	media-libs/libsdl:=[opengl,video]
+	media-libs/libvorbis:=
+	media-libs/openal:=
+	sys-libs/zlib:=
 	virtual/glu
 	virtual/jpeg:0
 	virtual/opengl"
@@ -27,7 +27,8 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 PATCHES=(
-	"${FILESDIR}/${P}-dir.patch"
+	"${FILESDIR}"/${P}-dir.patch
+	"${FILESDIR}"/${P}-jpeg-9c.patch
 )
 
 src_prepare() {
@@ -39,21 +40,17 @@ src_prepare() {
 }
 
 src_configure() {
-	mycmakeargs=(
-		"-DCMAKE_VERBOSE_MAKEFILE=TRUE"
-		"-DLUGARU_FORCE_INTERNAL_OPENGL=False"
+	local mycmakeargs=(
+		-DCMAKE_VERBOSE_MAKEFILE=TRUE
+		-DLUGARU_FORCE_INTERNAL_OPENGL=False
 	)
 	cmake-utils_src_configure
 }
 
-src_compile() {
-	cmake-utils_src_compile
-}
-
 src_install() {
-	dobin "${WORKDIR}/${P}_build/lugaru"
+	dobin "${BUILD_DIR}"/lugaru
 	insinto /usr/share/${PN}
-	doins -r Data/
+	doins -r Data
 	newicon Source/win-res/Lugaru.png ${PN}.png
 	make_desktop_entry ${PN} Lugaru ${PN}
 }
