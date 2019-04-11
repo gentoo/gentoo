@@ -42,6 +42,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-0.4_rc3-poppler031.patch"
 	"${FILESDIR}/${PN}-0.5_rc3-jpeg.patch"
 	"${FILESDIR}/${PN}-0.5_rc3-libsdl.patch"
+	"${FILESDIR}/${PN}-0.5_rc3-jpeg-9c.patch"
 )
 
 src_prepare() {
