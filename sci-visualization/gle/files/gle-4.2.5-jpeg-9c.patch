@@ -1,0 +1,22 @@
+https://bugs.gentoo.org/647626
+
+--- a/src/gle/gle-poppler.cpp
++++ b/src/gle/gle-poppler.cpp
+@@ -194,7 +194,7 @@
+ boolean gle_jpeg_empty_output_buffer(j_compress_ptr cinfo) {
+ 	gle_jpeg_term_destination(cinfo);
+ 	gle_jpeg_init_destination(cinfo);
+-	return true;
++	return TRUE;
+ }
+ 
+ void gle_jpeg_memory_dest(j_compress_ptr cinfo, JOCTET* buffer, GLEWriteFuncAndClosure writeCallback) {
+@@ -237,7 +237,7 @@
+     	cinfo.in_color_space = JCS_RGB;
+     }
+     jpeg_set_defaults(&cinfo);
+-    jpeg_start_compress(&cinfo, true);
++    jpeg_start_compress(&cinfo, TRUE);
+     JSAMPROW row = new JSAMPLE[cinfo.input_components * width];
+     JSAMPROW row_pointer[1];
+     row_pointer[0] = row;
