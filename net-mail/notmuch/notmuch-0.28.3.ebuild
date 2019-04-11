@@ -136,6 +136,8 @@ src_prepare() {
 }
 
 src_configure() {
+	python_setup  # for sphinx
+
 	local myeconfargs=(
 		--bashcompletiondir="$(get_bashcompdir)"
 		--emacslispdir="${EPREFIX}/${SITELISP}/${PN}"
@@ -151,6 +153,8 @@ src_configure() {
 }
 
 src_compile() {
+	python_setup  # for sphinx
+
 	V=1 default
 	bindings python distutils-r1_src_compile
 
