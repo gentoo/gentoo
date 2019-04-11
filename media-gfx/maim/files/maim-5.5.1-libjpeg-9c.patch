@@ -1,0 +1,16 @@
+Allow building with libjpeg-9c
+Bug: https://bugs.gentoo.org/656520
+
+--- a/src/image.cpp
++++ b/src/image.cpp
+@@ -187,8 +187,8 @@
+  
+     jpeg_set_defaults(&cinfo);
+     // Convert quality from scale 1-10 to 0-100
+-    jpeg_set_quality (&cinfo, (int)((float)quality-1.f)*(100.f/9.f), true);
+-    jpeg_start_compress(&cinfo, true);
++    jpeg_set_quality (&cinfo, (int)((float)quality-1.f)*(100.f/9.f), TRUE);
++    jpeg_start_compress(&cinfo, TRUE);
+  
+     JSAMPROW row_pointer;
+     unsigned char* buffer    = (unsigned char*)data;
