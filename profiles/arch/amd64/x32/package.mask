@@ -18,6 +18,7 @@ dev-libs/amdgpu-pro-opencl
 # Broken multilib dependencies.
 net-im/mattermost-desktop-bin
 net-im/skypeforlinux
+net-im/skype-dbus-mock
 net-im/slack-bin
 
 # Pawel Hajdan jr <phajdan.jr@gentoo.org> (2012-10-07)
