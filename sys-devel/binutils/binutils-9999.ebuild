@@ -21,7 +21,7 @@ REQUIRED_USE="cxx? ( gold plugins ) default-gold? ( gold )"
 # PATCH_DEV          - Use download URI https://dev.gentoo.org/~{PATCH_DEV}/distfiles/...
 #                      for the patchsets
 
-PATCH_VER=3
+PATCH_VER=4
 PATCH_BINUTILS_VER=9999
 
 case ${PV} in
