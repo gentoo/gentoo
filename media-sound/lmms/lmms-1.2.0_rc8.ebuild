@@ -54,7 +54,9 @@ COMMON_DEPEND="
 	stk? ( media-libs/stk )
 	vst? ( virtual/wine )
 "
-DEPEND="${COMMON_DEPEND}"
+DEPEND="${COMMON_DEPEND}
+	dev-qt/qtx11extras:5
+"
 BDEPEND="
 	dev-qt/linguist-tools:5
 "
