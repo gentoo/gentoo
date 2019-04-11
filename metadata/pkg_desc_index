@@ -7588,7 +7588,7 @@ media-libs/jasper 2.0.14: Implementation of the codec specified in the JPEG-2000
 media-libs/jbig2dec 0.13-r4: A decoder implementation of the JBIG2 image compression format
 media-libs/jbig2enc 0.28-r1: JBIG2 Encoder and libs
 media-libs/jbigkit 2.1: data compression algorithm for bi-level high-resolution images
-media-libs/jpeg 6b-r12 8d-r1 9c: Library to load, handle and manipulate images in the JPEG format
+media-libs/jpeg 6b-r12 9c: Library to load, handle and manipulate images in the JPEG format
 media-libs/kvazaar 1.1.0 1.2.0-r1: Open-source HEVC encoder
 media-libs/ladspa-cmt 1.16-r4: CMT (computer music toolkit) LADSPA library plugins
 media-libs/ladspa-sdk 1.13-r2: The Linux Audio Developer's Simple Plugin API
@@ -10414,7 +10414,7 @@ virtual/imap-c-client 0 1 2: Virtual for IMAP c-client
 virtual/inetd 0: Virtual for the internet super-server daemon
 virtual/jack 0: Virtual for JACK Audio Connection Kit
 virtual/jdk 1.8.0-r3: Virtual for Java Development Kit (JDK)
-virtual/jpeg 0-r2 62: A virtual for the libjpeg.so.62 ABI for binary-only programs
+virtual/jpeg 0-r3 62: A virtual for the libjpeg.so.62 ABI for binary-only programs
 virtual/jre 1.8.0-r1: Virtual for Java Runtime Environment (JRE)
 virtual/krb5 0 0-r1: Virtual for Kerberos V implementation
 virtual/lapack 3.0 3.1: Virtual for Linear Algebra Package FORTRAN 77 (LAPACK) implementation
