@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201904-13">
+  <title>Git: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Git, the worst of which
+    could result in the arbitrary execution of code.
+  </synopsis>
+  <product type="ebuild">git</product>
+  <announced>2019-04-11</announced>
+  <revised count="1">2019-04-11</revised>
+  <bug>671988</bug>
+  <bug>676262</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-vcs/git" auto="yes" arch="*">
+      <unaffected range="ge">2.20.1</unaffected>
+      <vulnerable range="lt">2.20.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Git is a free and open source distributed version control system
+      designed to handle everything from small to very large projects with
+      speed and efficiency.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Git. Please review the
+      referenced CVE identifiers for details
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Please review the referenced CVE identifier and bugs for details.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Git users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-vcs/git-2.19.2"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-19486">CVE-2018-19486</uri>
+  </references>
+  <metadata tag="requester" timestamp="2019-03-10T06:15:06Z">BlueKnight</metadata>
+  <metadata tag="submitter" timestamp="2019-04-11T01:14:55Z">b-man</metadata>
+</glsa>
