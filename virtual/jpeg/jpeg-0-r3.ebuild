@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 inherit multilib-build
 
@@ -11,6 +11,6 @@ KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86
 IUSE="static-libs"
 
 RDEPEND="|| (
-		>=media-libs/libjpeg-turbo-1.3.0-r3:0[static-libs?,${MULTILIB_USEDEP}]
-		>=media-libs/jpeg-8d-r1:0[static-libs?,${MULTILIB_USEDEP}]
+		>=media-libs/libjpeg-turbo-1.5.3-r2:0[static-libs?,${MULTILIB_USEDEP}]
+		>=media-libs/jpeg-9c:0[static-libs?,${MULTILIB_USEDEP}]
 		)"
