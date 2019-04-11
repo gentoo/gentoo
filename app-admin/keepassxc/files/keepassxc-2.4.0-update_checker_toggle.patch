@@ -1,4 +1,4 @@
-From 64fe9de385be43212a83c0c89791a95af203eef9 Mon Sep 17 00:00:00 2001
+From 28994fef0d2c04690490f34b5da87c42e60a6b5e Mon Sep 17 00:00:00 2001
 From: Jonathan White <support@dmapps.us>
 Date: Tue, 9 Apr 2019 21:06:13 -0400
 Subject: [PATCH] Enhance update checker
@@ -14,13 +14,13 @@ Subject: [PATCH] Enhance update checker
  src/config-keepassx.h.cmake                 |  1 +
  src/core/Clock.cpp                          |  1 +
  src/gui/ApplicationSettingsWidget.cpp       | 25 ++++++-
- src/gui/ApplicationSettingsWidget.h         |  1 +
+ src/gui/ApplicationSettingsWidget.h         |  2 +
  src/gui/ApplicationSettingsWidgetGeneral.ui | 39 +++++++---
  src/gui/MainWindow.cpp                      | 12 ++--
  src/updatecheck/UpdateChecker.cpp           | 79 +++++++++++++--------
  src/updatecheck/UpdateChecker.h             |  2 +-
  tests/TestUpdateCheck.cpp                   | 35 ++++++---
- 11 files changed, 146 insertions(+), 55 deletions(-)
+ 11 files changed, 147 insertions(+), 55 deletions(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
 index 658548f7..4f8a419c 100644
@@ -123,13 +123,14 @@ index 90b851bd..e6a7068d 100644
 +    m_generalUi->checkForUpdatesIncludeBetasCheckBox->setEnabled(checked);
 +}
 diff --git a/src/gui/ApplicationSettingsWidget.h b/src/gui/ApplicationSettingsWidget.h
-index ffcfea2b..8cdc7ed7 100644
+index ffcfea2b..86688b70 100644
 --- a/src/gui/ApplicationSettingsWidget.h
 +++ b/src/gui/ApplicationSettingsWidget.h
-@@ -56,6 +56,7 @@ private slots:
+@@ -56,6 +56,8 @@ private slots:
      void autoSaveToggled(bool checked);
      void systrayToggled(bool checked);
      void enableToolbarSettings(bool checked);
++    void rememberDatabasesToggled(bool checked);
 +    void checkUpdatesToggled(bool checked);
  
  private:
