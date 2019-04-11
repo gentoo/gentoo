@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python{2_7,3_5,3_6,3_7} )
 
-inherit bash-completion-r1 python-r1 vcs-snapshot
+inherit bash-completion-r1 python-r1 vcs-snapshot prefix
 
 DESCRIPTION="change directory command that learns"
 HOMEPAGE="https://github.com/wting/autojump"
@@ -24,13 +24,14 @@ DEPEND="${PYTHON_DEPS}"
 
 src_prepare() {
 	eapply_user
-	sed -e "s: \(/etc/profile.d\): \"${EPREFIX}\1\":" \
-		-e "s:/usr/local/share:/usr/share:" \
+	sed -e "s:/usr/local/share:/usr/share:" \
 		-i bin/autojump.sh || die
 
 	# autojump_argparse is only there for Python 2.6 compatibility
 	sed -e "s:autojump_argparse:argparse:" \
 		-i bin/autojump || die
+
+	hprefixify -q '"' -w '/usr\/share/' bin/autojump.sh
 }
 
 src_compile() {
