@@ -17,7 +17,7 @@ IUSE="doc"
 
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 
-DOCS=( docs/README.rst )
+DOCS=( README.rst )
 
 python_test() {
 	"${PYTHON}" src/tests/test.py || die "Tests fail with ${EPYTHON}"
