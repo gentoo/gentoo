@@ -8,7 +8,4 @@
 	<use>
 		<flag name="lyx">Install with <pkg>app-office/lyx</pkg> layout</flag>
 	</use>
-	<upstream>
-		<remote-id type="sourceforge">abntex</remote-id>
-	</upstream>
 </pkgmetadata>
