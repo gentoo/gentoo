@@ -5,10 +5,6 @@
 		<email>floppym@gentoo.org</email>
 		<name>Mike Gilbert</name>
 	</maintainer>
-	<maintainer type="project">
-		<email>vmware@gentoo.org</email>
-		<name>Gentoo VMware Project</name>
-	</maintainer>
 	<longdescription>
 		The Open Virtual Machine Tools (open-vm-tools) are the open source
 		implementation of VMware Tools. They are a set of guest operating system
