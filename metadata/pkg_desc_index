@@ -5441,7 +5441,7 @@ dev-python/pytest-runner 2.6.2: Adds support for tests during installation of se
 dev-python/pytest-shutil 1.2.11: A goodie-bag of unix shell and environment tools for py.test
 dev-python/pytest-timeout 1.2.0: py.test plugin to abort hanging tests
 dev-python/pytest-virtualenv 1.2.11: Virtualenv fixture for py.test
-dev-python/pytest-xdist 1.15.0 1.23.2: Distributed testing and loop-on-failing modes
+dev-python/pytest-xdist 1.23.2: Distributed testing and loop-on-failing modes
 dev-python/pytest-xprocess 0.12.1: Manage external processes across test runs
 dev-python/python-augeas 0.5.0: Python bindings for Augeas
 dev-python/python-barbicanclient 4.5.2 4.6.0: Client library for Barbican API.
@@ -5535,7 +5535,6 @@ dev-python/quex 0.65.4: Mode Oriented Directly Coded Lexical Analyser Generator
 dev-python/quixote 2.8: Python HTML templating framework for developing web applications
 dev-python/rarfile 3.0: Module for RAR archive reading
 dev-python/rdflib 4.2.1 4.2.2: RDF library containing a triple store and parser/serializer
-dev-python/readme 0.6.0: a library for rendering "readme" descriptions for Warehouse
 dev-python/rebulk 0.9.0: Python library that performs advanced searches in strings
 dev-python/recommonmark 0.4.0 0.5.0_pre20181012 0.5.0_pre20181012-r1: Python docutils-compatibility bridge to CommonMark
 dev-python/redis-py 2.9.1 2.10.5: Python client for Redis key-value store
