@@ -8,7 +8,7 @@ HOMEPAGE="https://openstack.org"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-IUSE="cinder glance heat keystone neutron nova swift"
+IUSE="cinder glance heat keystone neutron nova placement swift"
 
 DEPEND=""
 RDEPEND="
@@ -19,4 +19,5 @@ RDEPEND="
 	cinder? ( ~sys-cluster/cinder-${PV} )
 	nova? ( ~sys-cluster/nova-${PV} )
 	heat? ( ~sys-cluster/heat-${PV} )
+	placement? ( ~sys-cluster/placement-${PV} )
 "
