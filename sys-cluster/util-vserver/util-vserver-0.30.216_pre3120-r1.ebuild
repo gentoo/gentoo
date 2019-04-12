@@ -63,19 +63,13 @@ src_test() {
 }
 
 src_configure() {
-	local myeconf=(
-		--with-vrootdir="${VDIRBASE}"
-		--with-initscripts=gentoo
-		--localstatedir=/var
-	)
+	local myeconf=" --with-vrootdir=${VDIRBASE} --with-initscripts=gentoo --localstatedir=/var"
 
 	if ! use dietlibc ; then
-		myeconf=( ${myeconf} 
-			--disable-dietlibc
-		)
+		myeconf+=" --disable-dietlibc"
 	fi
 	
-	econf "${myeconf[@]}"
+	econf ${myeconf} 
 }
 
 src_compile() {
