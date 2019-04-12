@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit toolchain-funcs cmake-utils
+inherit toolchain-funcs linux-info cmake-utils
 
 DESCRIPTION="High-level tracing language for eBPF"
 HOMEPAGE="https://github.com/iovisor/bpftrace"
@@ -44,6 +44,12 @@ PATCHES=(
 
 # lots of fixing needed
 RESTRICT="test"
+
+pkg_pretend() {
+	local CONFIG_CHECK="~BPF ~BPF_SYSCALL ~BPF_JIT ~BPF_EVENTS"
+
+	check_extra_config
+}
 
 src_prepare() {
 	cmake-utils_src_prepare
