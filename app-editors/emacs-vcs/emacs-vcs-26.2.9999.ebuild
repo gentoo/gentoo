@@ -121,6 +121,9 @@ BDEPEND="virtual/pkgconfig
 if [[ ${PV##*.} = 9999 ]]; then
 	DEPEND="${DEPEND}
 	sys-apps/texinfo"
+
+	RDEPEND="${RDEPEND}
+	!=app-editors/emacs-${PV%.*}*"
 fi
 
 EMACS_SUFFIX="${PN/emacs/emacs-${SLOT}}"
