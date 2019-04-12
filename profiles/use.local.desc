@@ -311,6 +311,7 @@ app-editors/gedit-plugins:terminal - Embed a terminal in the bottom pane
 app-editors/gnome-latex:latexmk - Install dev-tex/latexmk (used by default for the build tools)
 app-editors/gnome-latex:rubber - Install dev-tex/rubber (can be used for the build tools)
 app-editors/gvim:cscope - Enable cscope interface
+app-editors/gvim:gtk2 - Enable GTK+2 interface
 app-editors/gvim:gtk3 - Enable GTK+3 interface
 app-editors/gvim:netbeans - Include netbeans external editor integration support
 app-editors/gvim:racket - Enable support for Scheme using dev-scheme/racket
