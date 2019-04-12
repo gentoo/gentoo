@@ -46,7 +46,7 @@ PATCHES=(
 RESTRICT="test"
 
 pkg_pretend() {
-	local CONFIG_CHECK="~BPF ~BPF_SYSCALL ~BPF_JIT ~EBPF_JIT BPF_EVENTS"
+	local CONFIG_CHECK="~BPF ~BPF_SYSCALL ~BPF_JIT ~BPF_EVENTS"
 
 	check_extra_config
 }
