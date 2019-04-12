@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -27,7 +27,7 @@ RDEPEND="
 
 src_prepare() {
 	local PATCHES=(
-		"${FILESDIR}"/jq-1.6-never-bundle-oniguruma.patch
+		"${FILESDIR}"/jq-1.6-r3-never-bundle-oniguruma.patch
 		"${FILESDIR}"/jq-1.6-runpath.patch
 		"${FILESDIR}"/jq-1.6-segfault-fix.patch
 	)
@@ -48,7 +48,7 @@ src_configure() {
 		--disable-maintainer-mode
 		--enable-rpathhack
 		$(use_enable static-libs static)
-		$(use_with oniguruma)
+		$(use_with oniguruma oniguruma yes)
 	)
 	econf "${econfargs[@]}"
 }
