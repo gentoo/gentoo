@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Georgy Yakovlev  (11 Apr 2019)
+# Rust provides zsh completion.
+# This one is old, unmaintained obsolete version.
+# Removal in 30 days.
+app-shells/rust-zshcomp
+
 # Michał Górny <mgorny@gentoo.org> (10 Apr 2019)
 # Unresolved vulnerability.  Last apparent upstream activity in 2015,
 # with the code last touched in 2010.  Local patches are already
