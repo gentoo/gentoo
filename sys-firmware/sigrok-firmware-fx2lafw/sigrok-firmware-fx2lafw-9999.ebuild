@@ -3,7 +3,8 @@
 
 EAPI="6"
 
-SDCC_DEPEND=">=dev-embedded/sdcc-3.4.0[device-lib(+),mcs51(+)]"
+SDCC_DEPEND=">=dev-embedded/sdcc-3.4.0[device-lib(+),mcs51(+)]
+	<dev-embedded/sdcc-3.8.6"
 
 if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="git://sigrok.org/${PN}"
