@@ -42,7 +42,7 @@ CDEPEND="
 	!~dev-python/setuptools-34.3.2[${PYTHON_USEDEP}]
 	!~dev-python/setuptools-36.2.0[${PYTHON_USEDEP}]
 	>=dev-python/pbr-2.0.0[${PYTHON_USEDEP}]
-	!~dev-python/pbr-2.1.0"
+	!~dev-python/pbr-2.1.0[${PYTHON_USEDEP}]"
 DEPEND="
 	${CDEPEND}
 	app-admin/sudo"
