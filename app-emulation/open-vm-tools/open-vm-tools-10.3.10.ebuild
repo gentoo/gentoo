@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 2007-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,7 @@ inherit autotools linux-info pam systemd toolchain-funcs user
 
 DESCRIPTION="Opensourced tools for VMware guests"
 HOMEPAGE="https://github.com/vmware/open-vm-tools"
-MY_P="${P}-10430147"
+MY_P="${P}-12406962"
 SRC_URI="https://github.com/vmware/open-vm-tools/releases/download/stable-${PV}/${MY_P}.tar.gz"
 
 LICENSE="LGPL-2.1"
