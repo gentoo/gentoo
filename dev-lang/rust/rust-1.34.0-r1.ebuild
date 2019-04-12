@@ -82,6 +82,8 @@ REQUIRED_USE="|| ( ${ALL_LLVM_TARGETS[*]} )
 	x86? ( cpu_flags_x86_sse2 )
 "
 
+PATCHES=( "${FILESDIR}"/0001-llvm-cmake-Add-additional-headers-only-if-they-exist.patch )
+
 S="${WORKDIR}/${MY_P}-src"
 
 toml_usex() {
@@ -159,6 +161,7 @@ src_configure() {
 		release-debuginfo = $(toml_usex debug)
 		assertions = $(toml_usex debug)
 		targets = "${LLVM_TARGETS// /;}"
+		experimental-targets = ""
 		link-shared = $(toml_usex system-llvm)
 		[build]
 		build = "${rust_target}"
