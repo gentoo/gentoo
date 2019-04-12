@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Virgil Dupras <vdupras@gentoo.org> (12 Apr 2019)
+# Dead upstream, no revdeps.
+# Removal in 30 days. Bug #683146
+dev-python/readme
+
 # Georgy Yakovlev  (11 Apr 2019)
 # Rust provides zsh completion.
 # This one is old, unmaintained obsolete version.
