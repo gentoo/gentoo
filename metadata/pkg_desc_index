@@ -8636,7 +8636,7 @@ net-im/choqok 1.6.0-r1: Free/Open Source micro-blogging client by KDE
 net-im/dianara 1.3.7-r1 1.4.2: Qt-based client for the pump.io distributed social network
 net-im/ejabberd 17.04-r2: Robust, scalable and extensible XMPP server
 net-im/empathy 3.12.14: Telepathy instant messaging and video/audio call client for GNOME
-net-im/gajim 0.16.6-r1 1.0.3: Jabber client written in PyGTK
+net-im/gajim 1.0.3: Jabber client written in PyGTK
 net-im/gg-transport 2.2.4-r1 2.2.6: Gadu-Gadu transport for Jabber
 net-im/jabber-base 0.01: Jabber servers and transports layout package
 net-im/kadu 4.3-r2: An open source Gadu-Gadu and Jabber/XMPP protocol Instant Messenger client
@@ -8711,7 +8711,7 @@ net-libs/gnome-online-accounts 3.24.5: GNOME framework for accessing online acco
 net-libs/gnutls 3.5.19 3.6.6 3.6.7: A TLS 1.2 and SSL 3.0 implementation for the GNU project
 net-libs/gsnmp 0.3.0: An SNMP library based on glib and gnet
 net-libs/gsoap 2.8.70: A cross-platform open source C and C++ SDK for SOAP/XML Web services
-net-libs/gssdp 1.0.2 1.0.3: A GObject-based API for handling resource discovery and announcement over SSDP
+net-libs/gssdp 1.0.3: A GObject-based API for handling resource discovery and announcement over SSDP
 net-libs/gtk-vnc 0.8.0: VNC viewer widget for GTK
 net-libs/gupnp 1.0.3: An object-oriented framework for creating UPnP devs and control points
 net-libs/gupnp-av 0.12.11: Utility library aiming to ease the handling UPnP A/V profiles

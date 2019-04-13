@@ -4098,18 +4098,14 @@ net-im/empathy:gnome-online-accounts - Enable using net-libs/gnome-online-accoun
 net-im/empathy:map - Enable world map support through media-libs/libchamplain
 net-im/gajim:crypt - End to end encryption and GPG encryption
 net-im/gajim:geolocation - Sharing your location
-net-im/gajim:idle - Enable idle module
 net-im/gajim:jingle - Audio and video calls
 net-im/gajim:keyring - Saving your password to your system keyring
 net-im/gajim:networkmanager - Network lose detection using NetworkManager
 net-im/gajim:remote - Controling Gajim instance from command line with gajim-remote
 net-im/gajim:rst - Generating XHTML output from RST code
 net-im/gajim:spell - Spellchecking of composed messages
-net-im/gajim:srv - SRV capabilities
 net-im/gajim:upnp - Ability to request your router to forward port for file transfer
 net-im/gajim:webp - Support WebP avatars
-net-im/gajim:xhtml - Enable XHTML support
-net-im/gajim:zeroconf - Serverless chatting with autodetected clients in a local network
 net-im/kadu:gadu - Enables Gadu communication protocol
 net-im/kadu:mpd - Enables Music Player Daemon support
 net-im/kadu:otr - Enable char encryption via OTR library
