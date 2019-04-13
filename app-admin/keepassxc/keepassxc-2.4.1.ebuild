@@ -24,7 +24,7 @@ fi
 
 LICENSE="LGPL-2.1 GPL-2 GPL-3"
 SLOT="0"
-IUSE="autotype browser debug network test yubikey"
+IUSE="autotype browser debug +network test yubikey"
 
 RDEPEND="
 	app-crypt/argon2:=
@@ -59,11 +59,6 @@ PDEPEND="
 	x11-misc/xsel
 "
 
-PATCHES=(
-	"${FILESDIR}/${PN}-dont_call_mandb.patch"
-	"${FILESDIR}/${P}-build_fix.patch"
-)
-
 src_prepare() {
 	 use test || \
 		sed -e "/^find_package(Qt5Test/d" -i CMakeLists.txt || die
@@ -79,6 +74,7 @@ src_configure() {
 		-DWITH_XC_BROWSER="$(usex browser)"
 		-DWITH_XC_NETWORKING="$(usex network)"
 		-DWITH_XC_SSHAGENT=ON
+		-DWITH_XC_UPDATECHECK=OFF
 		-DWITH_XC_YUBIKEY="$(usex yubikey)"
 	)
 	if [[ "${PV}" == *_beta* ]] ; then
