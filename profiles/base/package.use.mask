@@ -7,6 +7,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Michał Górny <mgorny@gentoo.org> (13 Apr 2019)
+# net-libs/ftplib is slated for removal.
+app-cdr/xbiso ftp
+
 # Michał Górny <mgorny@gentoo.org> (10 Apr 2019)
 # media-sound/aacplusenc is slated for removal.
 media-video/h264enc aac
