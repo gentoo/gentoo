@@ -29,6 +29,18 @@
 
 #--- END OF EXAMPLES ---
 
+# Aaron Bauman <bman@gentoo.org> (12 Apr 2019)
+# Multiple security vulnerabilities
+# No revbumps in several years
+# Removal in 30 days. Bug #675682
+dev-java/jackson-databind
+# rdeps
+app-text/languagetool
+app-vim/languagetool
+dev-java/jackson-dataformat-xml
+dev-java/jackson-dataformat-yaml
+dev-java/jackson-module-jaxb-annotations
+
 # Virgil Dupras <vdupras@gentoo.org> (12 Apr 2019)
 # Dead upstream, no revdeps.
 # Removal in 30 days. Bug #683146
