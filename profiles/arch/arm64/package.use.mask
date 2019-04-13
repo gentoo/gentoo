@@ -82,11 +82,6 @@ dev-ruby/capybara test
 dev-lang/rust doc
 dev-lang/rust-bin doc
 
-# Michał Górny <mgorny@gentoo.org> (20 Sep 2018)
-# dev-libs/libpfm not keyworded here (and unclear if it supports ARM64).
-# Bug #666651.
-sys-devel/llvm exegesis
-
 # Virgil Dupras <vdupras@gentoo.org> (06 Sep 2018)
 # sci-electronics/ngspice not yet keyworded, bug #665416
 # sci-libs/opencascade not yet keyworded
