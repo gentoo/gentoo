@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -23,7 +23,7 @@ SRC_URI="https://github.com/signal11/${PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}
 
 LICENSE="|| ( BSD GPL-3 HIDAPI )"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 x86"
 IUSE="doc fox static-libs"
 
 RDEPEND="virtual/libusb:1[${MULTILIB_USEDEP}]

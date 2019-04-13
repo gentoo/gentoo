@@ -1,4 +1,4 @@
-# Copyright 2018 Gentoo Authors
+# Copyright 2018-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,7 +13,7 @@ SRC_URI="https://github.com/docker/compose/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="test"
 
 RDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
@@ -32,7 +32,6 @@ RDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	>=dev-python/pyyaml-3.10[${PYTHON_USEDEP}]
 	<dev-python/pyyaml-4
 	>=dev-python/requests-2.6.1[${PYTHON_USEDEP}]
-	<dev-python/requests-2.21
 	>=dev-python/six-1.3.0[${PYTHON_USEDEP}]
 	<dev-python/six-2
 	>=dev-python/texttable-0.9.0[${PYTHON_USEDEP}]
@@ -52,6 +51,9 @@ S="${WORKDIR}/compose-${PV}"
 src_prepare() {
 	# Address QA issue "docker-compose.exe: missing alias (symlink) for completed command."
 	sed 's,^\(complete.*\) docker-compose\.exe\(.*\),\1\2,' -i contrib/completion/bash/docker-compose || die
+
+	# Get rid of requests boundary
+	sed -i -e  "/^.*requests/s/, <.*/',/" setup.py || die
 
 	default
 

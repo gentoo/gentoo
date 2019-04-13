@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -17,7 +17,7 @@ HOMEPAGE="https://www.x.org/wiki/ati/"
 
 IUSE="+glamor udev"
 
-RDEPEND=">=x11-libs/libdrm-2.4.78[video_cards_radeon]
+RDEPEND=">=x11-libs/libdrm-2.4.89[video_cards_radeon]
 	>=x11-libs/libpciaccess-0.8.0
 	glamor? ( x11-base/xorg-server[glamor] )
 	udev? ( virtual/libudev:= )"

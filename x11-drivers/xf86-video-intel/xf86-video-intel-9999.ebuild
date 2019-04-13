@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -12,8 +12,8 @@ if [[ ${PV} == 9999* ]]; then
 else
 	KEYWORDS="~amd64 ~x86"
 	COMMIT_ID=""
-	SRC_URI="https://cgit.freedesktop.org/xorg/driver/xf86-video-intel/snapshot/${COMMIT_ID}.tar.xz -> ${P}.tar.xz"
-	S=${WORKDIR}/${COMMIT_ID}
+	SRC_URI="https://gitlab.freedesktop.org/xorg/driver/xf86-video-intel/-/archive/${COMMIT_ID}/${P}.tar.bz2"
+	S="${WORKDIR}/${PN}-${COMMIT_ID}"
 fi
 
 DESCRIPTION="X.Org driver for Intel cards"

@@ -1,0 +1,25 @@
+https://github.com/georgmartius/vid.stab/pull/69
+
+From dff58ee5a26569a7eeb881d204b428ee5da40746 Mon Sep 17 00:00:00 2001
+From: Craig Andrews <candrews@integralblue.com>
+Date: Thu, 10 Jan 2019 13:47:10 -0500
+Subject: [PATCH] tests should exit with code 0 on success
+
+Exit code 0 indicates success, anything else indicates failure. Therefore, unittest_summary() should return 0 if no tests failed.
+---
+ tests/testframework.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/testframework.c b/tests/testframework.c
+index a38851c..a889560 100644
+--- a/tests/testframework.c
++++ b/tests/testframework.c
+@@ -36,7 +36,7 @@ int unittest_summary(){
+   fprintf(stderr, "UNIT TESTs succeeded:\t %s%i/%i\033[0m\n",
+           units_failed>0 ? "\033[1;31m" : "\033[1;32m",
+           units_success, units_success + units_failed);
+-  return units_failed==0;
++  return units_failed!=0;
+ 
+ }
+ 

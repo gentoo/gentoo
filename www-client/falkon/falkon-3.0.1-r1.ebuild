@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,7 +15,7 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE="dbus gnome-keyring kwallet libressl +X"
 
 COMMON_DEPEND="
@@ -58,6 +58,9 @@ PATCHES=(
 	"${FILESDIR}/${P}-qtwebengine-version.patch"
 	"${FILESDIR}/${P}-webinspector.patch"
 )
+
+# bug 653046
+RESTRICT+=" test"
 
 src_configure() {
 	local mycmakeargs=(

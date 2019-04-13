@@ -1,13 +1,17 @@
-# Copyright 1999-2017 Gentoo Foundation.
-# Distributed under the terms of the GNU General Public License, v2
-
-# Michael Palimaka <kensington@gentoo.org> (21 Jun 2016)
-# Unkeyworded
-qt5
+# Copyright 1999-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
 
 # Unmask the flag which corresponds to ARCH.
 -x86-fbsd
 -abi_x86_32
+
+# Andreas Sturmlechner <asturm@gentoo.org> (31 Mar 2019)
+# sys-auth/elogind is not keyworded here.
+elogind
+
+# Michael Palimaka <kensington@gentoo.org> (21 Jun 2016)
+# Unkeyworded
+qt5
 
 # Diego Elio Pettenò <flameeyes@gentoo.org> (21 Aug 2012)
 # IPMI is only implemented for x86, amd64 and ia64

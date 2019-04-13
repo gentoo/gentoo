@@ -3,6 +3,7 @@
 
 # Unmask arm arch specific flags
 -cpu_flags_arm_iwmmxt
+-cpu_flags_arm_iwmmxt2
 
 # Michał Górny <mgorny@gentoo.org> (16 Jul 2018)
 # Python 3.7 support requires fresh versions of packages which are stuck
@@ -14,10 +15,6 @@ python_single_target_python3_7
 # Andrey Utkin <andrey_utkin@gentoo.org> (13 Jun 2018)
 # No ACPI support on arm. Bug #657332
 acpi
-
-# Michael Palimaka <kensington@gentoo.org> (03 Jun 2017)
-# Unmask elogind since it is keyworded here.
--elogind
 
 # Patrick Lauer <patrick@gentoo.org> (28 Apr 2015)
 # Dependencies not keyworded
@@ -120,8 +117,6 @@ video_cards_nouveau
 video_cards_nv
 video_cards_r128
 video_cards_radeon
-video_cards_tdfx
-video_cards_voodoo
 
 # Matt Turner <mattst88@gentoo.org>
 # Mask more VIDEO_CARDs added with mesa-8.0

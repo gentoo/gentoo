@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -25,10 +25,35 @@ pkg_setup() {
 
 # Create our multilib dirs - the Makefile has no knowledge of this
 multilib_layout() {
-	local def_libdir libdir libdirs
+	local dir def_libdir libdir libdirs
+	local prefix prefix_lst
 	def_libdir=$(get_abi_LIBDIR $DEFAULT_ABI)
 	libdirs=$(get_all_libdirs)
 	: ${libdirs:=lib}	# it isn't that we don't trust multilib.eclass...
+
+	if [[ -z "${SYMLINK_LIB}" || ${SYMLINK_LIB} = no ]] ; then
+		prefix_lst=( "${EROOT}"{,usr/,usr/local/} )
+		for prefix in ${prefix_lst[@]}; do
+			for libdir in ${libdirs}; do
+				dir="${prefix}${libdir}"
+				if [[ -e "${dir}" ]]; then
+					[[ ! -d "${dir}" ]] &&
+						die "${dir} exists but is not a directory"
+					continue
+				fi
+				if ! use split-usr && [[ ${prefix} = ${EROOT} ]]; then
+					einfo "symlinking ${dir} to usr/${libdir}"
+					ln -s usr/${libdir} ${dir} ||
+						die " Unable to make ${dir} symlink"
+				else
+					einfo "creating directory ${dir}"
+					mkdir -p "${dir}" ||
+						die "Unable to create ${dir} directory"
+				fi
+			done
+		done
+		return 0
+	fi
 
 	[ -z "${def_libdir}" ] &&
 		die "your DEFAULT_ABI=$DEFAULT_ABI appears to be invalid"
@@ -62,7 +87,6 @@ multilib_layout() {
 
 	# setup symlinks and dirs where we expect them to be; do not migrate
 	# data ... just fall over in that case.
-	local prefix prefix_lst
 	if use split-usr ; then
 		prefix_lst=( "${EROOT}"{,usr/,usr/local/} )
 	else

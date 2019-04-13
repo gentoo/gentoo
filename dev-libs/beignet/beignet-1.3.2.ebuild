@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,7 +9,7 @@ CMAKE_BUILD_TYPE="Release"
 inherit python-any-r1 cmake-multilib flag-o-matic llvm toolchain-funcs
 
 DESCRIPTION="OpenCL implementation for Intel GPUs"
-HOMEPAGE="https://01.org/beignet"
+HOMEPAGE="https://01.org/beignet https://gitlab.freedesktop.org/beignet/beignet"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
@@ -17,7 +17,7 @@ IUSE="ocl-icd ocl20"
 
 if [[ "${PV}" == "9999" ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="https://anongit.freedesktop.org/git/beignet.git"
+	EGIT_REPO_URI="https://gitlab.freedesktop.org/beignet/beignet.git"
 	KEYWORDS="amd64"
 else
 	KEYWORDS="amd64"

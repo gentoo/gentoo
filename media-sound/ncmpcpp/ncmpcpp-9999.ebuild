@@ -1,12 +1,12 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 inherit autotools git-r3
 
 DESCRIPTION="featureful ncurses based MPD client inspired by ncmpc"
-HOMEPAGE="http://ncmpcpp.rybczak.net/"
-EGIT_REPO_URI="git://repo.or.cz/ncmpcpp.git"
+HOMEPAGE="https://ncmpcpp.rybczak.net/"
+EGIT_REPO_URI="https://repo.or.cz/ncmpcpp.git"
 LICENSE="GPL-2"
 
 SLOT="0"
@@ -20,7 +20,7 @@ RDEPEND="
 	net-misc/curl
 	sys-libs/ncurses:=
 	sys-libs/readline:*
-	icu? ( dev-libs/icu )
+	icu? ( dev-libs/icu:= )
 	taglib? ( media-libs/taglib )
 	visualizer? ( sci-libs/fftw:3.0= )
 "

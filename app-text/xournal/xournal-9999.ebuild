@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -21,7 +21,7 @@ HOMEPAGE="http://xournal.sourceforge.net/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="+pdf vanilla"
+IUSE="+pdf"
 
 COMMONDEPEND="
 	app-text/poppler[cairo]
@@ -43,17 +43,9 @@ DEPEND="${COMMONDEPEND}
 	virtual/pkgconfig
 "
 
-src_prepare() {
-	default_src_prepare
-	if ! use vanilla; then
-		eapply "${FILESDIR}"/xournal-0.4.8-aspectratio.patch
-	fi
-}
-
 src_install() {
-	emake DESTDIR="${D}" install
+	default
 	emake DESTDIR="${D}" desktop-install
 
-	dodoc ChangeLog AUTHORS README
 	dodoc -r html-doc/*
 }

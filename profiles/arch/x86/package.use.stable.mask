@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Amy Liffey <amynka@gentoo.org> (15 Jan 2019)
+# Mask experimental contrib repo
+media-libs/opencv contrib contrib_cvv contrib_dnn contrib_hdf contrib_sfm contrib_xfeatures2d gflags glog tesseract
+
 # Brian Evans <grknight@gentoo.org> (06 Dec 2018)
 # Unmask argon2 for php
 dev-lang/php -argon2

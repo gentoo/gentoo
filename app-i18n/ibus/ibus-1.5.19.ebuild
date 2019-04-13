@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6,3_7} )
 VALA_MIN_API_VERSION="0.34"
 VALA_USE_DEPEND="vapigen"
 
@@ -14,7 +14,7 @@ SRC_URI="https://github.com/${PN}/${PN}/releases/download/${PV}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="~alpha amd64 arm ~arm64 ia64 ppc ppc64 sparc x86 ~x86-fbsd"
 IUSE="+X +emoji gconf +gtk +gtk2 +introspection kde +libnotify nls +python test +unicode vala wayland"
 REQUIRED_USE="emoji? ( gtk )
 	gtk2? ( gtk )
@@ -63,6 +63,7 @@ RDEPEND="${CDEPEND}
 	)"
 DEPEND="${CDEPEND}
 	$(vala_depend)
+	dev-util/glib-utils
 	dev-util/intltool
 	virtual/pkgconfig
 	emoji? (
@@ -72,7 +73,10 @@ DEPEND="${CDEPEND}
 	nls? ( sys-devel/gettext )
 	unicode? ( app-i18n/unicode-data )"
 
-PATCHES=( "${FILESDIR}"/${P}-gdk-wayland.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-gdk-wayland.patch
+	"${FILESDIR}"/${P}-vala-0.43.4.patch
+)
 
 src_prepare() {
 	vala_src_prepare --ignore-use

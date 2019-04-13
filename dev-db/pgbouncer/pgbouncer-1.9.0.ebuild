@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -20,7 +20,7 @@ RDEPEND="
 	>=dev-libs/libevent-2.0
 	>=sys-libs/glibc-2.10
 	c-ares? ( >=net-dns/c-ares-1.10 )
-	ssl? ( >=dev-libs/openssl-1.0.1:=[-bindist] )
+	ssl? ( >=dev-libs/openssl-1.0.1:0=[-bindist] )
 	udns? ( >=net-libs/udns-0.1 )
 "
 

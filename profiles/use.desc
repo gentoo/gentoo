@@ -75,6 +75,7 @@ dvb - Add support for DVB (Digital Video Broadcasting)
 dvd - Add support for DVDs
 dvdr - Add support for DVD writer hardware (e.g. in xcdroast)
 eds - Enable support for Evolution-Data-Server (EDS)
+elogind - Enable session tracking via sys-auth/elogind
 emacs - Add support for GNU Emacs
 emboss - Add support for the European Molecular Biology Open Software Suite
 encode - Add support for encoding of audio or video files

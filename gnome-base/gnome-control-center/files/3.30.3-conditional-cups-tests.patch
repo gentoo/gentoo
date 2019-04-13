@@ -1,0 +1,28 @@
+From f724fb0f41672bfa5cd6fe098223acc795de90a4 Mon Sep 17 00:00:00 2001
+From: Mart Raudsepp <leio@gentoo.org>
+Date: Thu, 14 Mar 2019 23:35:08 +0200
+Subject: [PATCH] build: Conditionalize printer panel tests with enable_cups
+
+3.30 moved various tests from being alongside the panels to a
+separate toplevel tests/ subdirectory, which was missed while
+porting the patchset. Fix it.
+---
+ tests/meson.build | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/tests/meson.build b/tests/meson.build
+index 7c894e480..fb39c9f48 100644
+--- a/tests/meson.build
++++ b/tests/meson.build
+@@ -3,5 +3,7 @@ subdir('common')
+ #if host_is_linux
+ #  subdir('network')
+ #endif
+-subdir('printers')
++if enable_cups
++  subdir('printers')
++endif
+ subdir('info')
+-- 
+2.17.0
+

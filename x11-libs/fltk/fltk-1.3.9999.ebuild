@@ -1,14 +1,13 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit autotools fdo-mime flag-o-matic multilib-minimal subversion
+EAPI=7
+inherit autotools fdo-mime flag-o-matic git-r3 multilib-minimal
 
 DESCRIPTION="C++ user interface toolkit for X and OpenGL"
 HOMEPAGE="http://www.fltk.org/"
-ESVN_REPO_URI="http://seriss.com/public/fltk/fltk/branches/branch-1.3/"
-ESVN_USER=""
-ESVN_PASSWORD=""
+EGIT_REPO_URI="https://github.com/fltk/fltk"
+EGIT_OVERRIDE_BRANCH_FLTK_FLTK="branch-1.3"
 
 SLOT="1"
 LICENSE="FLTK LGPL-2"
@@ -35,23 +34,29 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
+	virtual/pkgconfig
 	x11-base/xorg-proto
 	doc? ( app-doc/doxygen )
 "
-
 DOCS=(
 	ANNOUNCEMENT
 	CHANGES
+	CHANGES_1.0
+	CHANGES_1.1
 	CREDITS
 	README
+	README.abi-version.txt
+	README.Cairo.txt
+	README.CMake.txt
+	README.MSWindows.txt
+	README.OSX.txt
+	README.Unix.txt
 )
-
 FLTK_GAMES="
 	blocks
 	checkers
 	sudoku
 "
-
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.3.0-share.patch
 	"${FILESDIR}"/${PN}-1.3.9999-conf-tests.patch
@@ -144,22 +149,23 @@ multilib_src_install() {
 
 	if multilib_is_native_abi; then
 		emake -C fluid \
-			  DESTDIR="${D}" install-linux
+			DESTDIR="${D}" install-linux
 
 		use doc &&
 			emake -C documentation \
-				  DESTDIR="${D}" install
+				DESTDIR="${D}" install
 
 		use games &&
 			emake -C test \
-				  DESTDIR="${D}" install-linux
+				DESTDIR="${D}" install-linux
 	fi
 }
 
 multilib_src_install_all() {
 	for app in fluid $(usex games "${FLTK_GAMES}" ''); do
-		dosym /usr/share/icons/hicolor/32x32/apps/${app}.png \
-			  /usr/share/pixmaps/${app}.png
+		dosym \
+			/usr/share/icons/hicolor/32x32/apps/${app}.png \
+			/usr/share/pixmaps/${app}.png
 	done
 
 	if use examples; then
@@ -180,7 +186,7 @@ multilib_src_install_all() {
 		rm "${ED}"/usr/lib*/fltk/*.a || die
 	fi
 
-	prune_libtool_files
+	find "${D}" -name '*.la' -delete || die
 }
 
 pkg_postinst() {

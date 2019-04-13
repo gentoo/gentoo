@@ -1,13 +1,13 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit gnome.org gnome2-utils meson virtualx xdg
 
-DESCRIPTION="GNOME power management service"
+DESCRIPTION="GNOME power statistics"
 HOMEPAGE="https://projects.gnome.org/gnome-power-manager/"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 IUSE="test"
 KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
@@ -47,11 +47,9 @@ src_test() {
 pkg_postinst() {
 	xdg_pkg_postinst
 	gnome2_schemas_update
-	gnome2_icon_cache_update
 }
 
 pkg_postrm() {
 	xdg_pkg_postrm
 	gnome2_schemas_update
-	gnome2_icon_cache_update
 }

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -26,7 +26,7 @@ IUSE="+cube +vulkaninfo X wayland"
 
 DEPEND="${PYTHON_DEPS}
 	cube? ( dev-util/glslang:=[${MULTILIB_USEDEP}] )
-	dev-util/vulkan-headers
+	>=dev-util/vulkan-headers-1.1.101
 	media-libs/vulkan-loader:=[${MULTILIB_USEDEP},wayland?,X?]
 	wayland? ( dev-libs/wayland:=[${MULTILIB_USEDEP}] )
 	X? (
@@ -60,7 +60,6 @@ multilib_src_configure() {
 		-DCMAKE_SKIP_RPATH=True
 		-DBUILD_CUBE=$(usex cube)
 		-DBUILD_VULKANINFO=$(usex vulkaninfo)
-		-DBUILD_WSI_MIR_SUPPORT=False
 		-DBUILD_WSI_WAYLAND_SUPPORT=$(usex wayland)
 		-DBUILD_WSI_XCB_SUPPORT=$(usex X)
 		-DBUILD_WSI_XLIB_SUPPORT=$(usex X)
@@ -76,7 +75,6 @@ multilib_src_configure() {
 	if use X; then
 		mycmakeargs+=(
 			-DCUBE_WSI_SELECTION="XCB"
-			-DVULKANINFO_WSI_SELECTION="XCB"
 		)
 	fi
 

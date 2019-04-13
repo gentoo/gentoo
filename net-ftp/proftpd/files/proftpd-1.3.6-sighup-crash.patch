@@ -1,0 +1,81 @@
+https://bugs.gentoo.org/678490
+
+From 345aa19ee2a98a3612d9b64a49107461455031a0 Mon Sep 17 00:00:00 2001
+From: TJ Saunders <tj@castaglia.org>
+Date: Tue, 18 Jul 2017 23:00:22 -0700
+Subject: [PATCH] Bug#4310: Use of mod_facl as static module causes ProFTPD to
+ die on SIGHUP/restart.
+
+---
+ modules/mod_facl.c | 35 +++++++++++++++++++++++++++++++----
+ 1 file changed, 31 insertions(+), 4 deletions(-)
+
+diff --git a/modules/mod_facl.c b/modules/mod_facl.c
+index b3ac42b7b..258708cf5 100644
+--- a/modules/mod_facl.c
++++ b/modules/mod_facl.c
+@@ -1260,16 +1260,34 @@ MODRET set_faclengine(cmd_rec *cmd) {
+   return PR_HANDLED(cmd);
+ }
+ 
++/* Event listeners
++ */
++
++static void unmount_facl(void) {
++  pr_fs_t *fs;
++
++  fs = pr_unmount_fs("/", "facl");
++  if (fs != NULL) {
++    destroy_pool(fs->fs_pool);
++    fs->fs_pool = NULL;
++    return;
++  }
++
++  if (errno != ENOENT) {
++    pr_log_debug(DEBUG0, MOD_FACL_VERSION
++      ": error unmounting 'facl' FS: %s", strerror(errno));
++  }
++}
++
+ #if defined(PR_SHARED_MODULE) && \
+     defined(PR_USE_FACL) && \
+     defined(HAVE_POSIX_ACL)
+ static void facl_mod_unload_ev(const void *event_data, void *user_data) {
+   if (strcmp("mod_facl.c", (const char *) event_data) == 0) {
++    pr_fs_t *fs;
++
+     pr_event_unregister(&facl_module, NULL, NULL);
+-    if (pr_unregister_fs("/") < 0) {
+-      pr_log_debug(DEBUG0, MOD_FACL_VERSION
+-        ": error unregistering 'facl' FS: %s", strerror(errno));
+-    }
++    unmount_facl();
+   }
+ }
+ #endif /* !PR_SHARED_MODULE */
+@@ -1303,6 +1321,14 @@ static void facl_postparse_ev(const void *event_data, void *user_data) {
+ #endif /* PR_USE_FACL and HAVE_POSIX_ACL */
+ }
+ 
++static void facl_restart_ev(const void *event_data, void *user_data) {
++  if (facl_engine == FALSE) {
++    return;
++  }
++
++  unmount_facl();
++}
++
+ /* Initialization routines
+  */
+ 
+@@ -1315,6 +1341,7 @@ static int facl_init(void) {
+ # endif /* !PR_SHARED_MODULE */
+ #endif /* PR_USE_FACL and HAVE_POSIX_ACL */
+   pr_event_register(&facl_module, "core.postparse", facl_postparse_ev, NULL);
++  pr_event_register(&facl_module, "core.restart", facl_restart_ev, NULL);
+ 
+   return 0;
+ }
+-- 
+2.20.1
+

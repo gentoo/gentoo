@@ -15,6 +15,14 @@
 		libs. Each directory directory contains multiple 3D model files, with
 		the following supported file formats: WRL, STEP.
 	</longdescription>
+	<use>
+		<flag name="occ">
+			Use <pkg>sci-libs/opencascade</pkg> for data exchange
+		</flag>
+		<flag name="oce">
+			Use <pkg>sci-libs/oce</pkg> for data exchange
+		</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">kicad/kicad-packages3d</remote-id>
 	</upstream>

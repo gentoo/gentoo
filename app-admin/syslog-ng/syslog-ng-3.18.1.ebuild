@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,7 +13,7 @@ SRC_URI="https://github.com/balabit/syslog-ng/releases/download/${P}/${P}.tar.gz
 
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86"
 IUSE="amqp caps dbi geoip geoip2 http ipv6 json libressl mongodb pacct python redis smtp spoof-source systemd tcpd"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 # unit tests require https://github.com/Snaipe/Criterion with additional deps
@@ -24,7 +24,7 @@ RDEPEND="
 	>=dev-libs/ivykis-0.42.3
 	>=dev-libs/libpcre-6.1:=
 	!dev-libs/eventlog
-	amqp? ( >=net-libs/rabbitmq-c-0.8.0:= )
+	amqp? ( >=net-libs/rabbitmq-c-0.8.0:=[ssl] )
 	caps? ( sys-libs/libcap )
 	dbi? ( >=dev-db/libdbi-0.9.0 )
 	geoip? ( >=dev-libs/geoip-1.5.0 )

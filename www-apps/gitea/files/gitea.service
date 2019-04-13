@@ -1,6 +1,6 @@
 [Unit]
 Description=Gitea service
-Documentation=https://gitea.io
+Documentation=https://docs.gitea.io/
 
 AssertPathIsDirectory=/var/lib/gitea
 AssertPathIsReadWrite=/var/lib/gitea
@@ -8,13 +8,15 @@ AssertPathIsReadWrite=/var/lib/gitea
 After=network.target
 Requires=network.target
 After=mysqld.service
-Requires=mysqld.service
+After=postgresql.service
+After=memcached.service
+After=redis.service
 
 [Service]
 User=git
 Group=git
 
-Environment="GITEA_CUSTOM=/var/lib/gitea"
+Environment="GITEA_WORK_DIR=/var/lib/gitea GITEA_CUSTOM=/var/lib/gitea"
 WorkingDirectory=/var/lib/gitea
 ExecStart=/usr/bin/gitea web -c /var/lib/gitea/conf/app.ini
 

@@ -11,6 +11,7 @@
 		to have a customizable look using pixmaps.
 	</longdescription>
 	<upstream>
+		<remote-id type="github">ice-wm/icewm</remote-id>
 		<remote-id type="github">bbidulock/icewm</remote-id>
 		<remote-id type="sourceforge">icewm</remote-id>
 	</upstream>

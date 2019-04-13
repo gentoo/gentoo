@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,7 +15,7 @@ SRC_URI="https://portland.freedesktop.org/download/${MY_P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 s390 ~sh sparc x86 ~amd64-fbsd"
 IUSE="doc"
 
 RDEPEND="
@@ -74,5 +74,5 @@ src_install() {
 
 pkg_postinst() {
 	[[ -x $(type -P gtk-update-icon-cache) ]] \
-		|| elog "Install x11-libs/gtk+:2 for the gtk-update-icon-cache command."
+		|| elog "Install dev-util/gtk-update-icon-cache for the gtk-update-icon-cache command."
 }

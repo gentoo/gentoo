@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -23,7 +23,7 @@ S="${WORKDIR}"/${MY_PN}_database
 
 pkg_nofetch() {
 	einfo "Go to ${HOMEPAGE} and get ${A}"
-	einfo "which must be placed in ${DISTDIR}"
+	einfo "which must be placed into your DISTDIR directory."
 }
 
 src_install() {

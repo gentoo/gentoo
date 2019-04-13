@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -33,10 +33,10 @@ S="${WORKDIR}/${MY_P}"
 pkg_nofetch() {
 	elog "LSI has a mandatory click-through license on thier binaries."
 	elog "Please visit $HOMEPAGE and download ${DISTFILE_BIN} from the Mangement Software section."
-	elog "After downloading, move ${MY_P} into $DISTDIR"
+	elog "After downloading, move ${MY_P} into your DISTDIR directory"
 	if use doc; then
 		elog "Please also download 'SAS-3 Integrated RAID Configuration Utility User Guide' (${DISTFILE_DOC}) "
-		elog "and also place it into $DISTDIR"
+		elog "and also place it into your DISTDIR directory"
 	fi
 }
 

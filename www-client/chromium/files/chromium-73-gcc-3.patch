@@ -1,0 +1,69 @@
+From c33e832cc145c696d2157796c7640e659740dafa Mon Sep 17 00:00:00 2001
+From: Raphael Kubo da Costa <raphael.kubo.da.costa@intel.com>
+Date: Fri, 8 Feb 2019 08:44:00 +0000
+Subject: [PATCH] quic_flags_impl: Fix GCC build after #618558
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Due to https://gcc.gnu.org/bugzilla/show_bug.cgi?id=84849, having
+base::NoDestructor<T<U>> and passing an initializer list of Us does not
+work if this is not done explicitly, as GCC incorrectly fails to determine
+which constructor overload to use:
+
+    ../../net/third_party/quic/platform/impl/quic_flags_impl.cc: In member function ‘bool quic::TypedQuicFlagHelper<T>::SetFlag(const string&) const [with T = bool; std::__cxx11::string = std::__cxx11::basic_string<char>]’:
+    ../../net/third_party/quic/platform/impl/quic_flags_impl.cc:156:41: error: call of overloaded ‘NoDestructor(<brace-enclosed initializer list>)’ is ambiguous
+           {"", "1", "t", "true", "y", "yes"});
+                                         ^
+    In file included from ../../net/third_party/quic/platform/impl/quic_flags_impl.h:16,
+                     from ../../net/third_party/quic/platform/impl/quic_flags_impl.cc:5:
+    ../../base/no_destructor.h:62:3: note: candidate: ‘base::NoDestructor<T>::NoDestructor(const base::NoDestructor<T>&) [with T = std::set<std::__cxx11::basic_string<char> >]’ <deleted>
+       NoDestructor(const NoDestructor&) = delete;
+       ^~~~~~~~~~~~
+    ../../base/no_destructor.h:60:12: note: candidate: ‘base::NoDestructor<T>::NoDestructor(T&&) [with T = std::set<std::__cxx11::basic_string<char> >]’
+       explicit NoDestructor(T&& x) { new (storage_) T(std::move(x)); }
+                ^~~~~~~~~~~~
+    ../../base/no_destructor.h:59:12: note: candidate: ‘base::NoDestructor<T>::NoDestructor(const T&) [with T = std::set<std::__cxx11::basic_string<char> >]’
+       explicit NoDestructor(const T& x) { new (storage_) T(x); }
+                ^~~~~~~~~~~~
+
+Explicitly use an std::initializer_list to make the build work everywhere.
+
+Bug: 819294
+Change-Id: I775be20e3766a88a656b58c94c40869cb1bee2a8
+Reviewed-on: https://chromium-review.googlesource.com/c/1458214
+Auto-Submit: Raphael Kubo da Costa <raphael.kubo.da.costa@intel.com>
+Reviewed-by: Ryan Hamilton <rch@chromium.org>
+Commit-Queue: Raphael Kubo da Costa <raphael.kubo.da.costa@intel.com>
+Cr-Commit-Position: refs/heads/master@{#630249}
+---
+ net/third_party/quic/platform/impl/quic_flags_impl.cc | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/net/third_party/quic/platform/impl/quic_flags_impl.cc b/net/third_party/quic/platform/impl/quic_flags_impl.cc
+index 5e6962d1e770..3fa45fc6892d 100644
+--- a/net/third_party/quic/platform/impl/quic_flags_impl.cc
++++ b/net/third_party/quic/platform/impl/quic_flags_impl.cc
+@@ -5,6 +5,7 @@
+ #include "net/third_party/quic/platform/impl/quic_flags_impl.h"
+ 
+ #include <algorithm>
++#include <initializer_list>
+ #include <iostream>
+ #include <set>
+ 
+@@ -153,9 +154,9 @@ std::string QuicFlagRegistry::GetHelp() const {
+ template <>
+ bool TypedQuicFlagHelper<bool>::SetFlag(const std::string& s) const {
+   static const base::NoDestructor<std::set<std::string>> kTrueValues(
+-      {"", "1", "t", "true", "y", "yes"});
++      std::initializer_list<std::string>({"", "1", "t", "true", "y", "yes"}));
+   static const base::NoDestructor<std::set<std::string>> kFalseValues(
+-      {"0", "f", "false", "n", "no"});
++      std::initializer_list<std::string>({"0", "f", "false", "n", "no"}));
+   if (kTrueValues->find(base::ToLowerASCII(s)) != kTrueValues->end()) {
+     *flag_ = true;
+     return true;
+-- 
+2.20.1
+

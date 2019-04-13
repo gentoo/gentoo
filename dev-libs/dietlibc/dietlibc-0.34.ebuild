@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -13,23 +13,10 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~mips ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
-DEPEND=""
+DEPEND=">=sys-devel/binutils-2.31.1-r4"
 RDEPEND=""
 
 DIETHOME="/usr/diet"
-
-pkg_pretend() {
-	if [[ ${MERGE_TYPE} != binary ]]; then
-		if $(tc-getLD) --version | grep -q "2.31.1"; then
-			ewarn "${PN} does not work with unpatched binutils-2.31.1,"
-			ewarn "see \"${S}/FAQ\""
-			ewarn "and https://bugs.gentoo.org/672126 for details."
-			ewarn "In the meanwhile you can install another binutils version"
-			ewarn "and use binutils-config to switch version."
-			sleep 10
-		fi
-	fi
-}
 
 src_prepare() {
 	default
@@ -56,7 +43,7 @@ src_prepare() {
 }
 
 src_compile() {
-	emake -j1 prefix="${EPREFIX}"${DIETHOME} \
+	emake prefix="${EPREFIX}"${DIETHOME} \
 		CC="$(tc-getCC)" \
 		CFLAGS="${CFLAGS}" \
 		STRIP=":"

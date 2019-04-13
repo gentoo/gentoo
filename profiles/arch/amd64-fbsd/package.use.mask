@@ -1,5 +1,17 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Hans de Graaff <graaff@gentoo.org> (08 Apr 2019)
+# Obsolete ruby version, no newer versions keyworded or stable.
+dev-vcs/subversion ruby
+
+# Michał Górny <mgorny@gentoo.org> (20 Mar 2019)
+# Z3 fails to link on FreeBSD but linker produces no error messages.
+sys-devel/clang z3
+
+# Michał Górny <mgorny@gentoo.org> (22 Jan 2019)
+# Missing keywords on dependencies.
+app-arch/libarchive zstd
 
 # Mikle Kolyada <zlogene@gentoo.org> (05 Oct 2018)
 # Not keyworded
@@ -84,17 +96,6 @@ virtual/notification-daemon kde
 # Michał Górny <mgorny@gentoo.org> (15 Feb 2018)
 # Requires USE=seccomp that is masked in this profile.
 net-libs/gnutls test-full
-
-# Michał Górny <mgorny@gentoo.org> (20 Jan 2018)
-# Needs sys-libs/libomp which is not keyworded. Leaving the decision
-# whether sys-libs/libomp should eventually be keyworded to when new
-# LLVM is going to be keyworded.
-<sys-devel/clang-runtime-4 openmp
-
-# Michał Górny <mgorny@gentoo.org> (20 Jan 2018)
-# Needs dev-ml/ocaml-ctypes which is not keyworded. Newer versions
-# no longer have the flag, so no point in keywording it for old.
-sys-devel/llvm ocaml
 
 # Ulrich Müller <ulm@gentoo.org> (23 Oct 2017)
 # Needs net-mail/mailutils which is not keyworded, bug #635216.

@@ -1,8 +1,36 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 #
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in use.mask
+
+# Andreas Sturmlechner <asturm@gentoo.org> (31 Mar 2019)
+# sys-auth/elogind not stable yet. bug #682158
+elogind
+
+# Mart Raudsepp <leio@gentoo.org> (07 Feb 2019)
+# app-misc/tracker not stable yet
+tracker
+
+# Mart Raudsepp <leio@gentoo.org> (07 Feb 2019)
+# media-sound/musepack-tools not stable yet
+musepack
+
+# Mart Raudsepp <leio@gentoo.org> (07 Feb 2019)
+# media-libs/portaudio not stable yet
+portaudio
+
+# Mart Raudsepp <leio@gentoo.org> (07 Feb 2019)
+# net-fs/samba not stable yet
+samba
+
+# Mart Raudsepp <leio@gentoo.org> (07 Feb 2019)
+# x11-misc/colord not stable yet
+colord
+
+# Mart Raudsepp <leio@gentoo.org> (18 Jan 2019)
+# x11-libs/libva not stable yet
+vaapi
 
 # Mart Raudsepp <leio@gentoo.org> (27 Nov 2018)
 # x11-libs/fltk not stable yet
@@ -22,20 +50,8 @@ cups
 vala
 
 # Mart Raudsepp <leio@gentoo.org> (02 Mar 2018)
-# Neither x11-libs/gtk+ SLOT marked stable yet
-gtk
-
-# Mart Raudsepp <leio@gentoo.org> (02 Mar 2018)
 # app-crypt/libsecret and co not marked stable yet
 gnome-keyring
-
-# Michał Górny <mgorny@gentoo.org> (19 Feb 2018)
-# net-dns/avahi is not stable here (not even GTK+).
-zeroconf
-
-# Michał Górny <mgorny@gentoo.org> (19 Feb 2018)
-# GNOME is not stable here (not even GTK+).
-gnome
 
 # Michał Górny <mgorny@gentoo.org> (19 Feb 2018)
 # virtual/{jdk,jre} are not stable here.
@@ -52,10 +68,6 @@ tk
 # Mart Raudsepp <leio@gentoo.org> (24 Dec 2017)
 # dev-libs/libressl not marked stable yet
 libressl
-
-# Hans de Graaff <graaff@gentoo.org> (17 Apr 2017)
-# Temporary mask to support stable bug 615818
-ruby_targets_ruby22
 
 # Mart Raudsepp <leio@gentoo.org> (04 Feb 2017)
 # dev-vcs/subversion not marked stable yet

@@ -1,0 +1,65 @@
+Force en_US locale for certain tests.
+
+--- maildrop-3.0.0/libs/maildrop/Makefile.am
++++ maildrop-3.0.0/libs/maildrop/Makefile.am
+@@ -69,9 +69,11 @@
+ 	maildrop.lsm testsuite.txt.idn testsuite2
+ 
+ check-am:
++if HAS_EN_US
+ 	@chmod +x testsuite
+ 	./testsuite | cmp -s - $(srcdir)/testsuite.txt.idn
+ 	@SHELL@ $(srcdir)/testsuite2
++endif
+ 
+ noinst_DATA=maildrop.html maildrop.1 maildropfilter.html maildropfilter.7 \
+ 	maildropgdbm.html maildropgdbm.7
+--- maildrop-3.0.0/libs/maildrop/configure.ac
++++ maildrop-3.0.0/libs/maildrop/configure.ac
+@@ -195,6 +195,15 @@
+ AC_DEFINE_UNQUOTED(MAXLONGSIZE, $MAXLONGSIZE,
+ 				[ Maximum character size of a long ])
+ 
++dnl check for en_US locale
++check_en_US() {
++	locale -a | grep en_US.utf8 > /dev/null
++	return $?
++}
++AC_MSG_CHECKING([for en_US.utf8])
++AM_CONDITIONAL([HAS_EN_US], [check_en_US])
++AM_COND_IF([HAS_EN_US],[AC_MSG_RESULT([yes])],[AC_MSG_RESULT([not found])])
++
+ dnl Checks for library functions.
+ 
+ AC_FUNC_CLOSEDIR_VOID
+--- maildrop-3.0.0/libs/rfc2045/Makefile.am
++++ maildrop-3.0.0/libs/rfc2045/Makefile.am
+@@ -84,7 +84,10 @@
+ endif
+ 
+ check-am:
++if HAS_EN_US
+ 	@SHELL@ $(srcdir)/testsuite | cmp -s - $(srcdir)/$(TESTSUITE)
+ 	@SHELL@ $(srcdir)/testsuitemm | cmp -s - $(srcdir)/testsuitemm.txt
+ 	@SHELL@ $(srcdir)/testrfc3676parsersuite | diff -U 3 $(srcdir)/testrfc3676parsersuite.txt -
+ 	./testrfc6533parser
++endif
++
+--- maildrop-3.0.0/libs/rfc2045/configure.ac
++++ maildrop-3.0.0/libs/rfc2045/configure.ac
+@@ -62,6 +62,15 @@
+ AC_CHECK_FUNC(strncasecmp,,CFLAGS="$CFLAGS -Dstrncasecmp=strnicmp")
+ AC_CHECK_FUNC(strcasecmp,,CFLAGS="$CFLAGS -Dstrcasecmp=stricmp")
+ 
++dnl check for en_US locale
++check_en_US() {
++	locale -a | grep en_US.utf8 > /dev/null
++	return $?
++}
++AC_MSG_CHECKING([for en_US.utf8])
++AM_CONDITIONAL([HAS_EN_US], [check_en_US])
++AM_COND_IF([HAS_EN_US],[AC_MSG_RESULT([yes])],[AC_MSG_RESULT([not found])])
++
+ AC_ARG_WITH(package, [], package="$withval",
+ 	[
+ 		package="$PACKAGE"

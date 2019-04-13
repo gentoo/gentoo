@@ -1,0 +1,15 @@
+#!/sbin/openrc-run
+# Copyright 1999-2018 Gentoo Authors
+# Distributed under the terms of the GNU General Public License, v2 or later
+
+description="TPM2 Access Broker & Resource Manager"
+command="/usr/sbin/tpm2-abrmd"
+command_args="${TPM2_ABRMD_ARGS} --logger=syslog"
+command_background=1
+command_user="tss:tss"
+pidfile="/var/run/${RC_SVCNAME}.pid"
+
+depend() {
+	use logger
+	after coldplug
+}

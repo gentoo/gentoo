@@ -1,39 +1,41 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=7
 
-inherit eutils linux-info
+EGIT_REPO_URI="https://github.com/fenrus75/powertop.git"
+
 if [[ ${PV} == "9999" ]] ; then
-	EGIT_REPO_URI="https://github.com/fenrus75/powertop.git"
-	inherit git-r3 autotools
+	GIT_ECLASS="git-r3"
 	SRC_URI=""
 else
+	SRC_URI="https://01.org/sites/default/files/downloads/${PN}-v${PV}.tar.gz"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux"
 	MY_P="${PN}-v${PV}"
-	SRC_URI="https://01.org/sites/default/files/downloads/${PN}/${MY_P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux"
 	S="${WORKDIR}/${MY_P}"
 fi
 
-DESCRIPTION="tool that helps you find what software is using the most power"
-HOMEPAGE="https://01.org/powertop/"
+inherit autotools ${GIT_ECLASS} linux-info
+
+DESCRIPTION="tool to diagnose issues with power consumption and power management"
+HOMEPAGE="https://01.org/powertop/ https://github.com/fenrus75/powertop/"
 
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="nls unicode X"
 
-COMMON_DEPEND="
+DEPEND="
 	dev-libs/libnl:3
 	sys-apps/pciutils
 	sys-libs/ncurses:=[unicode?]
 "
 
-DEPEND="${COMMON_DEPEND}
+BDEPEND="
 	virtual/pkgconfig
 	sys-devel/gettext
 "
 RDEPEND="
-	${COMMON_DEPEND}
+	${DEPEND}
 	X? ( x11-apps/xset )
 	virtual/libintl
 "
@@ -98,11 +100,16 @@ pkg_setup() {
 
 src_prepare() {
 	default
+
+	# Bug 599114
+	sed -i '1s|^|AX_REQUIRE_DEFINED([AX_CXX_COMPILE_STDCXX_11])|' configure.ac || die
+
 	if [[ ${PV} == "9999" ]] ; then
 		chmod +x scripts/version || die "Failed to make 'scripts/version' executable"
 		scripts/version || die "Failed to extract version information"
-		eautoreconf
 	fi
+
+	eautoreconf
 }
 
 src_configure() {

@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 #
 # System-wide defaults for the Portage system
 # See portage(5) manpage
 
 # Profile IUSE injection (applies only to ebuilds which use EAPI 5 or later)
-IUSE_IMPLICIT="prefix prefix-chain prefix-guest"
+IUSE_IMPLICIT="prefix prefix-guest prefix-stack"
 USE_EXPAND_IMPLICIT="ELIBC KERNEL USERLAND"
 USE_EXPAND_VALUES_ELIBC="AIX bionic Cygwin Darwin DragonFly FreeBSD glibc HPUX Interix mingw mintlib musl NetBSD OpenBSD SunOS uclibc Winnt"
 USE_EXPAND_VALUES_KERNEL="AIX Darwin FreeBSD freemint HPUX linux NetBSD OpenBSD SunOS Winnt"
@@ -13,7 +13,7 @@ USE_EXPAND_VALUES_USERLAND="BSD GNU"
 
 # Env vars to expand into USE vars.  Modifying this requires prior
 # discussion on gentoo-dev@lists.gentoo.org.
-USE_EXPAND="ABI_MIPS ABI_PPC ABI_S390 ABI_X86 ALSA_CARDS APACHE2_MODULES APACHE2_MPMS CALLIGRA_FEATURES CALLIGRA_EXPERIMENTAL_FEATURES CAMERAS COLLECTD_PLUGINS CPU_FLAGS_ARM CPU_FLAGS_X86 CURL_SSL ELIBC ENLIGHTENMENT_MODULES FFTOOLS GPSD_PROTOCOLS GRUB_PLATFORMS INPUT_DEVICES KERNEL L10N LCD_DEVICES LIBREOFFICE_EXTENSIONS LIRC_DEVICES LLVM_TARGETS MONKEYD_PLUGINS NETBEANS_MODULES NGINX_MODULES_HTTP NGINX_MODULES_MAIL NGINX_MODULES_STREAM OFED_DRIVERS OFFICE_IMPLEMENTATION OPENMPI_FABRICS OPENMPI_OFED_FEATURES OPENMPI_RM PHP_TARGETS POSTGRES_TARGETS PYTHON_SINGLE_TARGET PYTHON_TARGETS QEMU_SOFTMMU_TARGETS QEMU_USER_TARGETS ROS_MESSAGES RUBY_TARGETS SANE_BACKENDS USERLAND UWSGI_PLUGINS VIDEO_CARDS VOICEMAIL_STORAGE XFCE_PLUGINS XTABLES_ADDONS"
+USE_EXPAND="ABI_MIPS ABI_PPC ABI_S390 ABI_X86 ALSA_CARDS APACHE2_MODULES APACHE2_MPMS CALLIGRA_FEATURES CAMERAS COLLECTD_PLUGINS CPU_FLAGS_ARM CPU_FLAGS_X86 CURL_SSL ELIBC ENLIGHTENMENT_MODULES FFTOOLS GPSD_PROTOCOLS GRUB_PLATFORMS INPUT_DEVICES KERNEL L10N LCD_DEVICES LIBREOFFICE_EXTENSIONS LIRC_DEVICES LLVM_TARGETS MONKEYD_PLUGINS NETBEANS_MODULES NGINX_MODULES_HTTP NGINX_MODULES_MAIL NGINX_MODULES_STREAM OFED_DRIVERS OFFICE_IMPLEMENTATION OPENMPI_FABRICS OPENMPI_OFED_FEATURES OPENMPI_RM PHP_TARGETS POSTGRES_TARGETS PYTHON_SINGLE_TARGET PYTHON_TARGETS QEMU_SOFTMMU_TARGETS QEMU_USER_TARGETS ROS_MESSAGES RUBY_TARGETS SANE_BACKENDS USERLAND UWSGI_PLUGINS VIDEO_CARDS VOICEMAIL_STORAGE XFCE_PLUGINS XTABLES_ADDONS"
 
 # USE_EXPAND variables whose contents are not shown in package manager
 # output. Changes need discussion on gentoo-dev.
@@ -52,6 +52,9 @@ KERNEL="linux"
 USERLAND="GNU"
 INPUT_DEVICES="keyboard mouse"
 
+# Accept any license except those in the EULA license group.
+ACCEPT_LICENSE="* -@EULA"
+
 # Tomáš Chvátal <scarabeus@gentoo.org> (23 Mar 2013)
 # By default enable libreoffice implementation only.
 OFFICE_IMPLEMENTATION="libreoffice"
@@ -64,11 +67,11 @@ GRUB_PLATFORMS=""
 # By default enable all extensions with no dependencies
 LIBREOFFICE_EXTENSIONS="presenter-console presenter-minimizer"
 
-# Tomáš Chvátal <scarabeus@gentoo.org> (15 May 2011)
 # Andreas K. Hüttel <dilfridge@gentoo.org> (19 Aug 2011, 25 Mar 2012)
 # Johannes Huber <johu@gentoo.org> (15 Apr 2018)
-# By default build all calligra features.
-CALLIGRA_FEATURES="karbon plan sheets stage words"
+# Andreas Sturmlechner <asturm@gentoo.org> (01 Jan 2019)
+# By default build all calligra features (except unmaintained: stage).
+CALLIGRA_FEATURES="karbon sheets words"
 
 # Andreas K. Huettel <dilfridge@gentoo.org> (28 Sep 2010)
 # Small default list of enabled plugins for collectd
@@ -94,12 +97,12 @@ LCD_DEVICES="bayrad cfontz cfontz633 glk hd44780 lb216 lcdm001 mtxorb ncurses te
 
 # Miroslav Šulc <fordfrog@gentoo.org> (19 Nov 2008)
 # Netbeans modules/clusters
-NETBEANS="apisupport cnd groovy gsf harness ide identity j2ee java mobility nb php profiler soa visualweb webcommon websvccommon xml"
+NETBEANS_MODULES="apisupport cnd groovy gsf harness ide identity j2ee java mobility nb php profiler soa visualweb webcommon websvccommon xml"
 
 # Manuel Rüger <mrueg@gentoo.org> (09 Sep 2015)
 # Default Ruby build target(s)
 # Updated to include ruby24 on 12 Nov 2018
-RUBY_TARGETS="ruby23 ruby24"
+RUBY_TARGETS="ruby24"
 
 # Samuli Suominen <ssuominen@gentoo.org> (03 Dec 2009)
 # Enable USE cxx by default so base-system and toolchain pkgs can start using USE cxx
@@ -122,7 +125,7 @@ PYTHONDONTWRITEBYTECODE="1"
 # This MUST be kept in sync with the PYTHON_TARGETS below
 # Mike Gilbert <floppym@gentoo.org> (23 May 2018)
 # sys-apps/baslayout-2.5 needs split-usr enabled.
-BOOTSTRAP_USE="cxx unicode internal-glib split-usr python_targets_python3_6 python_targets_python2_7"
+BOOTSTRAP_USE="unicode internal-glib pkg-config split-usr python_targets_python3_6 python_targets_python2_7"
 
 # Mike Gilbert <floppym@gentoo.org> (15 May 2012)
 # Default target(s) for python-r1.eclass

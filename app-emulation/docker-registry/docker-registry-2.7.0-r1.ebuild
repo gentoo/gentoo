@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -28,6 +28,7 @@ src_prepare() {
 }
 
 src_compile() {
+	export -n GOCACHE XDG_CACHE_HOME #681072
 	GOPATH="${S}" \
 		go install -v -work -x ${EGO_BUILD_FLAGS} "${EGO_PN}/..." || die
 }

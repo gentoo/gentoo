@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -9,7 +9,7 @@ DESCRIPTION="Perl client used to update dynamic DNS entries"
 HOMEPAGE="https://sourceforge.net/projects/ddclient/"
 SRC_URI="mirror://sourceforge/ddclient/${P}.tar.gz"
 
-KEYWORDS="~alpha amd64 ~arm ~ia64 ~mips ~ppc ~ppc64 ~sparc x86 ~x86-fbsd"
+KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc x86 ~x86-fbsd"
 LICENSE="GPL-2+"
 SLOT="0"
 IUSE="examples iproute2"

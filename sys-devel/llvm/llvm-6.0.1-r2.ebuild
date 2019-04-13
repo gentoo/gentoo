@@ -89,7 +89,7 @@ src_prepare() {
 
 	# Fix x86 codegen bug triggered by Chromium
 	# https://bugs.gentoo.org/664868
-	eapply "${FILESDIR}"/7.0.0/0001-X86-Stop-X86DomainReassignment-from-creating-copies-.patch
+	eapply "${FILESDIR}"/6.0.1/0003-X86-Stop-X86DomainReassignment-from-creating-copies-.patch
 
 	# disable use of SDK on OSX, bug #568758
 	sed -i -e 's/xcrun/false/' utils/lit/lit/util.py || die

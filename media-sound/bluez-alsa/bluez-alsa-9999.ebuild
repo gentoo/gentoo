@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,19 +17,21 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="aac debug hcitop static-libs"
+IUSE="aac debug hcitop ldac ofono static-libs test"
 
 RDEPEND=">=dev-libs/glib-2.26[dbus,${MULTILIB_USEDEP}]
-	>=media-libs/alsa-lib-1.0[${MULTILIB_USEDEP}]
+	>=media-libs/alsa-lib-1.1.2[${MULTILIB_USEDEP}]
 	>=media-libs/sbc-1.2[${MULTILIB_USEDEP}]
 	>=net-wireless/bluez-5.0[${MULTILIB_USEDEP}]
+	sys-libs/readline:0=
 	aac? ( >=media-libs/fdk-aac-0.1.1:=[${MULTILIB_USEDEP}] )
 	hcitop? (
 		dev-libs/libbsd
 		sys-libs/ncurses:0=
-	)"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+	)
+	ldac? ( >=media-libs/libldac-2.0.0 )"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 src_prepare() {
 	default
@@ -41,8 +43,11 @@ multilib_src_configure() {
 		--enable-rfcomm
 		$(use_enable aac)
 		$(use_enable debug)
+		$(use_enable ofono)
 		$(use_enable static-libs static)
+		$(use_enable test)
 		$(multilib_native_use_enable hcitop)
+		$(multilib_native_use_enable ldac)
 	)
 	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
 }

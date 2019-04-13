@@ -71,6 +71,10 @@ CMAKE_BUILD_TYPE=RelWithDebInfo
 PATCHES=(
 	# add Prefix include paths for Darwin
 	"${FILESDIR}"/6.0.1/darwin_prefix-include-paths.patch
+
+	# fix detecting atomics library in clangd
+	# https://bugs.gentoo.org/667016
+	"${FILESDIR}"/7.0.1/0001-clangd-Fix-detecting-atomics-in-stand-alone-builds.patch
 )
 
 # Multilib notes:

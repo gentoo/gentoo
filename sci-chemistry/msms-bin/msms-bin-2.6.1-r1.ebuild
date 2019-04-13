@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
@@ -22,7 +22,8 @@ S="${WORKDIR}"
 QA_PREBUILT="${EROOT#/}opt/bin/.*"
 
 pkg_nofetch() {
-	einfo "Please download ${A} from http://mgltools.scripps.edu/downloads#msms and place it to ${DISTDIR}"
+	einfo "Please download ${A} from http://mgltools.scripps.edu/downloads#msms and"
+	einfo "place it into your DISTDIR directory."
 }
 
 src_install() {

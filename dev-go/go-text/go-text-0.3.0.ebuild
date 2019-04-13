@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -24,6 +24,7 @@ DEPEND=">=dev-go/go-tools-0_pre20180817"
 RDEPEND=""
 
 src_compile() {
+	export -n GOCACHE XDG_CACHE_HOME #680946
 	# Create an isolated golibdir in order to avoid an
 	# "use of internal package not allowed" error when
 	# and older version is installed.

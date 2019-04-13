@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,7 +8,7 @@ DIST_VERSION=0.200000
 
 inherit perl-module
 
-DESCRIPTION="Utility to merge PRs from the Gentoo Github repository"
+DESCRIPTION="Official tool to merge PRs from the Gentoo Github repository"
 HOMEPAGE="https://github.com/monsieurp/Gentoo-App-Pram"
 SLOT="0"
 KEYWORDS="amd64 ~arm x86 ~amd64-fbsd"
@@ -23,7 +23,8 @@ RDEPEND="
 	virtual/perl-File-Temp
 	virtual/perl-HTTP-Tiny
 	virtual/perl-Getopt-Long
-	virtual/perl-Term-ANSIColor"
+	virtual/perl-Term-ANSIColor
+	!app-portage/pram"
 
 DEPEND="
 	${RDEPEND}

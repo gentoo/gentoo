@@ -76,6 +76,9 @@ gnome-extra
 gnustep-apps
 gnustep-base
 gnustep-libs
+gui-apps
+gui-libs
+gui-wm
 java-virtuals
 kde-apps
 kde-frameworks

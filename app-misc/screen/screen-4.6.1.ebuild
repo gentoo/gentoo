@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -59,9 +59,12 @@ src_prepare() {
 		doc/screen.1 \
 		|| die
 
-	if [[ ${CHOST} == *-darwin* ]] ; then
+	if [[ ${CHOST} == *-darwin* ]] || use elibc_musl ; then
 		sed -i -e '/^#define UTMPOK/s/define/undef/' acconfig.h || die
 	fi
+
+	# disable musl dummy headers for utmp[x]
+	use elibc_musl && append-cppflags "-D_UTMP_H -D_UTMPX_H"
 
 	# reconfigure
 	eautoreconf

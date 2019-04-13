@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -341,6 +341,8 @@ pkg_postinst() {
 		elog "If command-line completion doesn't work after mpv update,"
 		elog "please rebuild app-shells/mpv-bash-completion."
 	fi
+
+	elog "If you want URL support, please install net-misc/youtube-dl."
 
 	gnome2_icon_cache_update
 	xdg_desktop_database_update

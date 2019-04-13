@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,7 +16,7 @@ IUSE="doc devtools +qt5"
 
 RDEPEND="
 	dev-games/mygui
-	>=dev-games/openscenegraph-3.5.5[ffmpeg,jpeg,png,sdl,svg,truetype,zlib]
+	>=dev-games/openscenegraph-3.5.5:=[ffmpeg,jpeg,png,sdl,svg,truetype,zlib]
 	dev-games/openscenegraph-qt
 	dev-libs/boost:=[threads]
 	dev-libs/tinyxml[stl]
@@ -28,6 +28,7 @@ RDEPEND="
 	qt5? (
 		app-arch/unshield
 		dev-qt/qtcore:5
+		dev-qt/qtgui:5
 		dev-qt/qtnetwork:5
 		dev-qt/qtopengl:5
 		dev-qt/qtwidgets:5
@@ -35,7 +36,11 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
-	doc? ( app-doc/doxygen[doc] dev-python/sphinx )"
+	doc? (
+		app-doc/doxygen[doc]
+		dev-python/sphinx
+	)
+"
 
 S="${WORKDIR}/${PN}-${P}"
 
@@ -109,10 +114,6 @@ src_install() {
 	fi
 
 	readme.gentoo_create_doc
-}
-
-pkg_preinst() {
-	gnome2_icon_savelist
 }
 
 pkg_postinst() {

@@ -22,7 +22,7 @@ SRC_TEST=do
 # The test dependencies are from CPAN (Bundle::Apache2).
 
 # When all MPMs are disabled via useflags, the apache ebuild selects a
-# default one, which will likely need threading...
+# default one, which will likely need threading.
 
 RDEPEND="
 	dev-lang/perl[ithreads=]

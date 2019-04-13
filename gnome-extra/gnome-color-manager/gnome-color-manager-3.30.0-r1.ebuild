@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit gnome.org gnome2-utils meson virtualx xdg
+inherit gnome.org meson virtualx xdg
 
-DESCRIPTION="Color profile manager for the GNOME desktop"
-HOMEPAGE="https://git.gnome.org/browse/gnome-color-manager"
+DESCRIPTION="GNOME color profile tools"
+HOMEPAGE="https://gitlab.gnome.org/GNOME/gnome-color-manager/"
 
 LICENSE="GPL-2+"
 SLOT="0"
@@ -42,6 +42,9 @@ DEPEND="${RDEPEND}
 PATCHES=(
 	# https://bugzilla.gnome.org/show_bug.cgi?id=796428
 	"${FILESDIR}"/3.28-remove-unwvanted-check.patch
+
+	# https://gitlab.gnome.org/GNOME/gnome-color-manager/issues/4
+	"${FILESDIR}"/${PN}-3.24.0-exiv2-0.27.patch # bug 674086
 )
 
 src_prepare() {
@@ -68,7 +71,6 @@ src_test() {
 
 pkg_postinst() {
 	xdg_pkg_postinst
-	gnome2_icon_cache_update
 
 	if ! has_version media-gfx/argyllcms ; then
 		elog "If you want to do display or scanner calibration, you will need to"
@@ -78,5 +80,4 @@ pkg_postinst() {
 
 pkg_postrm() {
 	xdg_pkg_postrm
-	gnome2_icon_cache_update
 }

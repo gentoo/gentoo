@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,7 +6,7 @@ EAPI=5
 inherit autotools eutils
 
 DESCRIPTION="A small, fast, full-featured window manager for X"
-HOMEPAGE="http://blackboxwm.sourceforge.net/"
+HOMEPAGE="https://github.com/bbidulock/blackboxwm"
 SRC_URI="mirror://sourceforge/${PN}wm/${P}.tar.bz2"
 
 LICENSE="MIT"

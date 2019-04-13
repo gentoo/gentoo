@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,7 +8,10 @@ inherit eutils libtool flag-o-matic gnuconfig multilib versionator
 DESCRIPTION="Tools necessary to build programs"
 HOMEPAGE="https://sourceware.org/binutils/"
 LICENSE="GPL-3+"
-IUSE="+cxx doc multitarget +nls static-libs test"
+# USE="+cxx" is a transitional flag until llvm migrates to new flags:
+#    bug #677888
+IUSE="+cxx default-gold doc +gold multitarget +nls +plugins static-libs test"
+REQUIRED_USE="cxx? ( gold plugins ) default-gold? ( gold )"
 
 # Variables that can be set here:
 # PATCH_VER          - the patchset version
@@ -17,9 +20,8 @@ IUSE="+cxx doc multitarget +nls static-libs test"
 #                    - Default: PV
 # PATCH_DEV          - Use download URI https://dev.gentoo.org/~{PATCH_DEV}/distfiles/...
 #                      for the patchsets
-#                      Default: dilfridge :)
 
-PATCH_VER=2
+PATCH_VER=4
 PATCH_BINUTILS_VER=9999
 
 case ${PV} in
@@ -174,10 +176,15 @@ src_configure() {
 	cd "${MY_BUILDDIR}"
 	local myconf=()
 
-	# enable gold (installed as ld.gold) and ld's plugin architecture
-	if use cxx ; then
-		myconf+=( --enable-gold )
+	if use plugins ; then
 		myconf+=( --enable-plugins )
+	fi
+	# enable gold (installed as ld.gold) and ld's plugin architecture
+	if use gold ; then
+		myconf+=( --enable-gold )
+		if use default-gold; then
+			myconf+=( --enable-gold=default )
+		fi
 	fi
 
 	if use nls ; then
@@ -279,7 +286,8 @@ src_test() {
 	# bug 637066
 	filter-flags -Wall -Wreturn-type
 
-	emake -k check
+	# enable verbose test run and result logging
+	emake -k check RUNTESTFLAGS='-a -v' VERBOSE=1
 }
 
 src_install() {

@@ -1,5 +1,76 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Aaron Bauman <bman@gentoo.org> (8 Apr 2019)
+# app-text/dblatex not keyword yet
+net-firewall/nftables doc
+
+# Hans de Graaff <graaff@gentoo.org> (08 Apr 2019)
+# Obsolete ruby version, no newer versions keyworded or stable.
+dev-vcs/subversion ruby
+
+# Roy Bamford <neddyseagoon@gentoo.org> (19 Mar 2019)
+# Let kde-apps/akonadi use mysql.
+dev-qt/qtsql -mysql
+kde-apps/akonadi -mysql
+
+# Mart Raudsepp <leio@gentoo.org> (11 Mar 2019)
+# media-libs/bcg729 not keyworded yet
+net-analyzer/wireshark bcg729
+
+# Roy Bamford <neddyseagoon@gentoo.org> (11 Mar 2019)
+# net-misc/dropbox is binary amd64/x86 only
+kde-apps/kdenetwork-meta dropbox
+
+# Roy Bamford <neddyseagoon@gentoo.org> (10 Mar 2019)
+# sci-chemistry/openbabel is not keyworded/fails to build
+kde-apps/kalzium editor
+
+# Roy Bamford <neddyseagoon@gentoo.org> (10 Mar 2019)
+# No arm64 ever had bios, but sys-apps/fwupdate needs
+# to be refactored to separate bios and uefi
+kde-plasma/discover firmware
+
+# Jimi Huotari <chiitoo@gentoo.org> (10 Mar 2019)
+# dev-qt/qttranslations is not yet keyworded, bug #680082
+lxqt-base/lxqt-meta nls
+
+# Mart Raudsepp <leio@gentoo.org> (23 Feb 2019)
+# x11-libs/libXTrap not keyworded yet
+x11-misc/x11vnc xtrap
+
+# Roy Bamford <neddyseagoon@gentoo.org> (24 Feb 19)
+# sdl is in use.mask and lots of things remain untested with USE=sdl
+# list packages here that have been tested.
+app-emulation/qemu -sdl
+dev-libs/zziplib -sdl
+media-libs/libmpeg2 -sdl
+media-libs/mediastreamer -sdl
+media-libs/mlt -sdl
+media-libs/openal -sdl
+media-sound/mpg123 -sdl
+media-video/ffmpeg -sdl
+media-video/libav -sdl
+media-video/mplayer -sdl
+media-video/mpv -sdl
+media-video/transcode -sdl
+net-libs/libvncserver -sdl
+virtual/ffmpeg -sdl
+>=x11-libs/wxGTK-3 -sdl
+
+# Roy Bamford <neddyseagoon@gentoo.org> (24 Feb 19)
+# kde-apps/cantor lua means luajit which needs luajit-2.1.0_beta3 for arm64
+# It builds OK but is not yet in ::gentoo. bug #678404
+kde-apps/cantor lua
+
+# Mart Raudsepp <leio@gentoo.org> (23 Feb 2019)
+# app-text/gspell not keyworded yet
+app-text/evince spell
+
+# Davide Pesavento <pesa@gentoo.org> (27 Dec 2018)
+# The corresponding Qt5 modules are not keyworded on arm64, and we don't want to
+# keyword them solely because of PyQt5 while there are no other in-tree users.
+dev-python/PyQt5 networkauth
 
 # Thomas Deutschmann <whissi@gentoo.org> (12 Oct 2018)
 # Requires www-client/firefox which isn't yet keyworded on ARM64
@@ -10,11 +81,6 @@ dev-ruby/capybara test
 # Bug #660512.
 dev-lang/rust doc
 dev-lang/rust-bin doc
-
-# Michał Górny <mgorny@gentoo.org> (20 Sep 2018)
-# dev-libs/libpfm not keyworded here (and unclear if it supports ARM64).
-# Bug #666651.
-sys-devel/llvm exegesis
 
 # Virgil Dupras <vdupras@gentoo.org> (06 Sep 2018)
 # sci-electronics/ngspice not yet keyworded, bug #665416
@@ -29,13 +95,10 @@ sci-electronics/kicad occ oce ngspice
 <app-editors/emacs-26.1-r3:26 imagemagick
 
 # Andreas Sturmlechner <asturm@gentoo.org> (01 Sep 2018)
-# media-libs/libaom not yet keyworded
 # media-libs/aribb24 not yet keyworded, bug #665048
-# net-libs/srt not yet keyworded
 # net-libs/libmicrodns not yet keyworded, bug #653800
-# projectm not yet keyworded, bug #314969
-# net-misc/freerdp not yet keyworded
-media-video/vlc aom aribsub chromaprint chromecast opencv projectm rdp srt
+# media-libs/dav1d is not yet keyworded
+media-video/vlc aribsub chromecast dav1d
 
 # Matthew Thode <prometheanfire@gentoo.org> (30 Aug 2018)
 # Needs pillow and it's deps to build docs
@@ -122,14 +185,11 @@ net-fs/samba addc addns ads cluster python test
 app-text/tesseract scrollview
 dev-cpp/eigen test
 kde-frameworks/frameworkintegration appstream
-kde-frameworks/knotifications speech
-kde-frameworks/ktextwidgets speech
 kde-plasma/plasma-workspace geolocation
 mate-base/mate help
 mate-base/mate-applets-meta appindicator sensors
 mate-extra/caja-extensions gajim
 net-fs/samba dmapi
-net-im/pidgin gadu
 net-misc/ntpsec rclock_oncore rclock_pps
 sci-libs/gdal armadillo netcdf
 sys-fs/btrfs-progs reiserfs
@@ -150,7 +210,7 @@ sys-cluster/neutron haproxy
 # Requires unkeyworded dependencies.
 dev-python/ipython notebook
 dev-python/networkx scipy
-<dev-ruby/haml-5 test
+dev-ruby/haml test
 media-libs/ming php
 media-libs/opencv contrib_dnn
 net-analyzer/icinga2 classicui
@@ -214,7 +274,6 @@ app-emulation/libvirt xen
 
 # Michał Górny <mgorny@gentoo.org> (12 Jan 2018)
 # Requires USE=sdl that is masked in this profile.
-app-emulation/qemu sdl2
 media-video/mjpegtools sdlgfx
 
 # Michał Górny <mgorny@gentoo.org> (12 Jan 2018)
@@ -343,7 +402,6 @@ net-libs/libpcap bluetooth
 # Mart Raudsepp <leio@gentoo.org> (16 Feb 2017)
 # Not yet tested features/dependencies
 app-text/evince dvi nautilus postscript t1lib xps
-xfce-extra/xfce4-taskmanager gtk3
 net-wireless/blueman appindicator
 x11-libs/gtk+ cloudprint
 
@@ -376,7 +434,7 @@ www-client/chromium tcmalloc
 # Mart Raudsepp <leio@gentoo.org> (04 Feb 2017)
 # Needs deps tested.
 dev-python/pycurl curl_ssl_libressl
-net-misc/curl curl_ssl_axtls curl_ssl_libressl metalink
+net-misc/curl curl_ssl_libressl metalink
 
 # Mike Frysinger <vapier@gentoo.org> (16 Mar 2015)
 # Needs sci-physics/bullet tested #499974
@@ -416,15 +474,11 @@ media-gfx/fim graphicsmagick svg
 
 # Markus Meier <maekke@gentoo.org> (04 Aug 2013)
 # Unkeyworded deps, bug #474026
-app-admin/conky lua-cairo lua-imlib xmms2 audacious moc
+app-admin/conky lua-cairo lua-imlib xmms2 moc
 
 # Sergey Popov <pinkbyte@gentoo.org> (30 Jul 2013)
 # Not tested
 media-libs/devil allegro nvtt
-
-# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (13 Jul 2013)
-# requires net-misc/freerdp which is not keyworded on arm
-dev-libs/weston rdp
 
 # Andreas K. Huettel <dilfridge@gentoo.org> (27 May 2013)
 # Firmware loader not keyworded yet
@@ -477,20 +531,9 @@ dev-util/devhelp gedit
 # unkeyworded deps for app-accessibility/speech-dispatcher
 app-accessibility/speech-dispatcher flite
 
-# Markus Meier <maekke@gentoo.org> (23 Dec 2012)
-# mask kde-apps/* flags due to unkeyworded dependencies
-kde-apps/kalzium editor solver
-kde-apps/okular chm
-kde-apps/kdeutils-meta floppy
-sci-astronomy/kstars indi
-
 # Markus Meier <maekke@gentoo.org> (08 Dec 2012)
 # mask app-office/libreoffice java extensions
 app-office/libreoffice libreoffice_extensions_scripting-beanshell libreoffice_extensions_scripting-javascript libreoffice_extensions_wiki-publisher
-
-# Steev Klimaszewski <steev@gentoo.org> (03 Aug 2012)
-# No java on ARM
-net-analyzer/wireshark doc-pdf
 
 # Markus Meier <maekke@gentoo.org> (25 Jul 2012)
 # no stable media-video/vlc yet, bug #401313
@@ -523,21 +566,9 @@ app-admin/packagekit-base entropy
 # Remove this for your arch after you keyword dev-utils/google-perftools and virtual/gsasl (bug #381737)
 dev-libs/libmemcached sasl
 
-# Markus Meier <maekke@gentoo.org> (13 Mar 2011)
-# needs stable kde stuff
-sys-auth/polkit kde
-
 # Sebastian Pipping <sping@gentoo.org> (22 Feb 2011)
 # No media-sound/lilypond here, yet (bug #356069)
 app-text/asciidoc test
-
-# Michael Weber <xmw@gentoo.org> (10 Feb 2011)
-# kde-frameworks/kconfig is not stable for arm
-net-libs/libproxy kde
-
-# Raúl Porcel <armin76@gentoo.org> (28 Mar 2010)
-# Needs kde-frameworks/kwallet, kde-frameworks/ki18n and kde-frameworks/kconfig stable
-dev-vcs/subversion kwallet
 
 # Jim Ramsay <lack@gentoo.org> (5 Nov 2008)
 # app-admin/gkrellm may pull in net-libs/libntlm, which is not keyworded

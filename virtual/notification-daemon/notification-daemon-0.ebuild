@@ -18,7 +18,7 @@ RDEPEND="
 		xfce-extra/xfce4-notifyd
 		x11-misc/notify-osd
 		x11-misc/dunst
-		>=x11-wm/awesome-3.4.4
+		>=x11-wm/awesome-3.4.4[dbus]
 		x11-wm/enlightenment[enlightenment_modules_notification]
 		x11-wm/enlightenment[e_modules_notification]
 		x11-misc/mate-notification-daemon

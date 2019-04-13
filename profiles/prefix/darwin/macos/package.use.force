@@ -1,9 +1,5 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-
-# Fabian Groffen <grobian@gentoo.org> (31 May 2015)
-# for clang ebuild to work, llvm must build the clang frontend
-sys-devel/llvm clang
 
 # Fabian Groffen <grobian@gentoo.org> (24 Mar 2012)
 # Non-threaded target doesn't exist for Mac OS X Intel

@@ -1,0 +1,29 @@
+--- aiksaurus-1.2.1/base/caiksaurus.cpp.orig	2014-06-07 21:14:03.869649696 +0100
++++ aiksaurus-1.2.1/base/caiksaurus.cpp	2014-06-07 21:33:06.241471066 +0100
+@@ -254,7 +254,7 @@
+         /* see if we got --version. */
+         if ( !strcmp(arg, "--version") || !strcmp(arg, "-v") )
+         {
+-            printf(version);
++            printf("%s", version);
+             exit(0);
+         }
+ 
+@@ -262,7 +262,7 @@
+         else if ( !strcmp(arg, "--help") || !strcmp(arg, "-h") )
+         {
+             printf("Usage: %s [word]\n\n", argv[0]);
+-            printf(help);
++            printf("%s", help);
+             exit(0);
+         }   
+     }
+@@ -271,7 +271,7 @@
+     if (argc != 2)
+     {
+         printf("Usage: %s [word]\n", argv[0]);
+-        printf(help);
++        printf("%s", help);
+         exit(1);
+     }
+ }

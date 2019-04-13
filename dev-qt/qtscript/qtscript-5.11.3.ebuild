@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,7 +7,7 @@ inherit qt5-build
 DESCRIPTION="Application scripting library for the Qt5 framework (deprecated)"
 
 if [[ ${QT5_BUILD_TYPE} == release ]]; then
-	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd"
+	KEYWORDS="amd64 ~arm ~arm64 ~hppa ppc ppc64 ~sparc x86 ~amd64-fbsd"
 fi
 
 IUSE="+jit scripttools"
@@ -20,6 +20,8 @@ DEPEND="
 	)
 "
 RDEPEND="${DEPEND}"
+
+PATCHES=( "${FILESDIR}/${P}-gcc-8.3.patch" ) # bug 678640
 
 src_prepare() {
 	qt_use_disable_mod scripttools widgets \

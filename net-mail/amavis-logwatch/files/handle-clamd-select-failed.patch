@@ -1,0 +1,38 @@
+From 869fa9d8b2113f50c3a97ef9f4a1f95171702be4 Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Wed, 13 Feb 2019 11:25:33 -0500
+Subject: [PATCH 1/1] Catch "Select failed: Interrupted system call" entries
+ from clamd.
+
+When a select() call in clamd is interrupted, amavis logs the
+following warning:
+
+  ClamAV-clamd: Select failed: Interrupted system call at /usr/sbin/amavisd
+  line 8472, <GEN16> line 296., retrying (1)
+
+These are harmless in and of themselves, but we would like to classify
+them as warnings. Currently they are unmatched. This commit adds a
+pattern for them, moving them from the "Unmatched Entries" heading to
+"Miscellaneous warnings" instead. Afterwards, the report looks like,
+
+  24   Miscellaneous warnings --------------------------------
+   2      ClamAV-clamd: Select failed: Interrupted system call
+---
+ amavis-logwatch | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/amavis-logwatch b/amavis-logwatch
+index 044c94d..4c9b59f 100644
+--- a/amavis-logwatch
++++ b/amavis-logwatch
+@@ -2817,6 +2817,7 @@ while (<>) {
+           ($p1 =~ /^TROUBLE/) or
+           ($p1 =~ /Can't (?:connect to UNIX|send to) socket/) or
+           ($p1 =~ /: Empty result from /) or
++          ($p1 =~ /: Select failed: Interrupted system call/) or
+           ($p1 =~ /: Error reading from socket: Connection reset by peer/) or
+           ($p1 =~ /open\(.*\): Permission denied/) or
+           ($p1 =~ /^_?WARN: /) or
+-- 
+2.19.2
+

@@ -1,8 +1,12 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Unmask the flag which corresponds to ARCH.
 -mips
+
+# Andreas Sturmlechner <asturm@gentoo.org> (31 Mar 2019)
+# sys-auth/elogind is not yet keyworded here. bug #681200
+elogind
 
 # Matt Turner <mattst88@gentoo.org> (25 Mar 2018)
 # Unmask systemd since it is keyworded here.
@@ -118,13 +122,11 @@ fuse
 dri
 
 # Available on for mips.
--video_cards_newport
 -video_cards_siliconmotion
 -video_cards_vivante
 
 # Stephen P. Becker <geoman@gentoo.org>
 # more modular X stuff
-video_cards_tdfx
 video_cards_mga
 video_cards_nouveau
 video_cards_nv
@@ -138,7 +140,6 @@ input_devices_wacom
 input_devices_joystick
 video_cards_glint
 video_cards_nvidia
-video_cards_voodoo
 
 # Matt Turner <mattst88@gentoo.org>
 # Mask more VIDEO_CARDs added with mesa-8.0

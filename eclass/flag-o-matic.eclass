@@ -69,6 +69,13 @@ setup-allowed-flags() {
 		# gcc 4.9
 		-mno-avx512cd -mno-avx512er -mno-avx512f -mno-avx512pf -mno-sha
 	)
+
+	# Allow some safe individual flags. Should come along with the bug reference.
+	ALLOWED_FLAGS+=(
+		# Allow explicit stack realignment to run non-conformant
+		# binaries: bug #677852
+		-mstackrealign
+	)
 }
 
 # inverted filters for hardened compiler.  This is trying to unpick

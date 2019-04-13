@@ -60,6 +60,11 @@ DEPEND="${RDEPEND}
 # Due to sub-configure
 QA_CONFIGURE_OPTIONS=".*"
 
+PATCHES=(
+	"${FILESDIR}"/${PV}-glib-2.58-compat.patch
+	"${FILESDIR}"/glib-2.58-compat2.patch
+)
+
 src_prepare() {
 	use vala && vala_src_prepare
 	gnome2_src_prepare

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -44,6 +44,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-drop_superfluous_abs.patch
 	"${FILESDIR}"/${P}-fix-unsigned-char.patch
 	"${FILESDIR}"/${P}-jpeg9.patch
+	"${FILESDIR}"/${P}-exiv2-0.27.patch
 )
 
 src_prepare() {

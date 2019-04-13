@@ -10,5 +10,7 @@
   </upstream>
   <use>
     <flag name="hcitop">Enable top-like monitoring tool for HCI</flag>
+    <flag name="ldac">Enable support for AOSP <pkg>media-libs/libldac</pkg> dispatcher</flag>
+    <flag name="ofono">Enable ofono elephony support</flag>
   </use>
 </pkgmetadata>

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -26,6 +26,8 @@ src_configure() {
 
 	# --disable-pie needed on x86, bug #512734
 	use x86 && myconf="${myconf} --disable-pie"
+	# --disable-ssp is needed on musl x86
+	use x86 && use elibc_musl && myconf+="${myconf} --disable-ssp"
 
 	econf \
 		$(use_enable asm) \

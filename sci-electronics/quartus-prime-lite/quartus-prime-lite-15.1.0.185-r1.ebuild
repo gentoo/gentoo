@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -36,12 +36,12 @@ pkg_nofetch() {
 	elog "For Quartus :"
 	elog "Please navigate to ${DOWNLOADPAGE}"
 	elog "Sign in with your Altera account (you need to register)"
-	elog "Download Quartus-lite-${PV}-linux.tar  and place it into ${DISTDIR}"
+	elog "Download Quartus-lite-${PV}-linux.tar  and place it into your DISTDIR directory"
 	elog "-------------------------------------------------------"
 	elog "For Freetype libary :"
 	elog "Please download the following file :"
 	elog "${DOWNLOADFT}"
-	elog "Please place this into ${DISTDIR}"
+	elog "Please place this into your DISTDIR directory"
 	elog "-------------------------------------------------------"
 	elog "And restart the installation."
 }

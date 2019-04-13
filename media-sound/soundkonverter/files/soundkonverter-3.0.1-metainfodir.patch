@@ -1,0 +1,23 @@
+From 8589c87095466f0785902dea6367192bcd813eb3 Mon Sep 17 00:00:00 2001
+From: eclipseo <30413512+eclipseo@users.noreply.github.com>
+Date: Fri, 7 Sep 2018 18:15:43 +0200
+Subject: [PATCH] Install appdata in /usr/share/metainfo
+
+appdata file should now be installed in /usr/share/metainfo.  /usr/share/appdata is deprecated.
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index a0e36de..521d0da 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -135,7 +135,7 @@ install(FILES soundkonverter_replaygainplugin.desktop DESTINATION ${SERVICETYPES
+ install(FILES soundkonverter_ripperplugin.desktop DESTINATION ${SERVICETYPES_INSTALL_DIR})
+ install(FILES soundkonverter-rip-audiocd.desktop DESTINATION ${DATA_INSTALL_DIR}/solid/actions)
+ 
+-install(FILES soundkonverter.appdata.xml DESTINATION ${SHARE_INSTALL_PREFIX}/appdata)
++install(FILES soundkonverter.appdata.xml DESTINATION ${SHARE_INSTALL_PREFIX}/metainfo)
+ 
+ add_subdirectory(icons)
+ add_subdirectory(images)

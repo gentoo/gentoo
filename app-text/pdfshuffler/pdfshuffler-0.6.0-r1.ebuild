@@ -1,10 +1,10 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
-PYTHON_COMPAT=( python2_7 )
+EAPI=7
 
-inherit distutils-r1 gnome2-utils xdg-utils
+PYTHON_COMPAT=( python2_7 )
+inherit distutils-r1 xdg
 
 DESCRIPTION="GUI app that can merge or split pdfs and rotate, crop and rearrange their pages"
 HOMEPAGE="https://sourceforge.net/projects/pdfshuffler/"
@@ -19,21 +19,6 @@ DEPEND="|| ( dev-python/PyPDF2 dev-python/pyPdf )
 	dev-python/python-poppler"
 RDEPEND="${DEPEND}"
 
-DOCS="ChangeLog README TODO AUTHORS"
+DOCS=( ChangeLog README TODO AUTHORS )
+
 PATCHES=( "${FILESDIR}"/${PN}-PyPDF2.patch )
-
-pkg_preinst() {
-	gnome2_icon_savelist
-}
-
-pkg_postinst() {
-	xdg_desktop_database_update
-	xdg_mimeinfo_database_update
-	gnome2_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_desktop_database_update
-	xdg_mimeinfo_database_update
-	gnome2_icon_cache_update
-}

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,7 +17,11 @@ KEYWORDS="alpha amd64 arm ~arm64 ia64 ~mips ppc ppc64 s390 ~sparc x86"
 IUSE="libvirt sqlite"
 
 RDEPEND=">=dev-libs/elfutils-0.142
-	sys-libs/libcap
+	dev-libs/json-c:=
+	dev-libs/nspr
+	dev-libs/nss
+	sys-libs/ncurses:0=
+	sys-libs/readline:0=
 	${PYTHON_DEPS}
 	libvirt? ( >=app-emulation/libvirt-1.0.2 )
 	sqlite? ( dev-db/sqlite:3 )"

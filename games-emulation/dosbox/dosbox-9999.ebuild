@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,20 +17,22 @@ else
 fi
 
 DESCRIPTION="DOS emulator"
-HOMEPAGE="http://dosbox.sourceforge.net/"
+HOMEPAGE="https://www.dosbox.com/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="alsa debug glide hardened opengl"
+IUSE="alsa +core-inline debug glide hardened opengl X"
 
 DEPEND="alsa? ( media-libs/alsa-lib )
 	glide? ( media-libs/openglide )
 	opengl? ( virtual/glu virtual/opengl )
 	debug? ( sys-libs/ncurses:0 )
-	media-libs/libpng:0
-	media-libs/libsdl[joystick,video,X]
+	X? ( x11-libs/libX11 )
+	media-libs/libpng:0=
+	media-libs/libsdl[joystick,opengl?,video,X]
 	media-libs/sdl-net
-	media-libs/sdl-sound"
+	media-libs/sdl-sound
+	sys-libs/zlib"
 RDEPEND=${DEPEND}
 
 if [[ ${PV} = 9999 ]]; then
@@ -50,8 +52,10 @@ src_prepare() {
 src_configure() {
 	use glide && append-cppflags -I"${EPREFIX}"/usr/include/openglide
 
+	ac_cv_lib_X11_main=$(usex X yes no) \
 	econf \
 		$(use_enable alsa alsa-midi) \
+		$(use_enable core-inline) \
 		$(use_enable !hardened dynamic-core) \
 		$(use_enable !hardened dynamic-x86) \
 		$(use_enable debug) \

@@ -16,7 +16,6 @@
   <flag name="rocksdb">Add support for RocksDB; a key/value, LSM database optimized for flash storage</flag>
   <flag name="server">Build the server program</flag>
   <flag name="systemtap">Build support for profiling and tracing using <pkg>dev-util/systemtap</pkg></flag>
-  <flag name="test-suite">Install upstream testsuites for end use.</flag>
   <flag name="tokudb">Add support for TokuDB storage engine</flag>
   <flag name="tokudb-backup-plugin">Builds the TokuDB backup plugin</flag>
   <flag name="yassl">Enable SSL connections and crypto functions using the bundled yaSSL</flag>

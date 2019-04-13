@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit gnome.org gnome2-utils meson readme.gentoo-r1 xdg
 
 DESCRIPTION="Screenshot utility for GNOME"
-HOMEPAGE="https://wiki.gnome.org/Apps/Attic/GnomeUtils"
+HOMEPAGE="https://gitlab.gnome.org/GNOME/gnome-screenshot"
 
 LICENSE="GPL-2+"
 SLOT="0"

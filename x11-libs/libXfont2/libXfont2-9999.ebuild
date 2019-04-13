@@ -1,10 +1,10 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
+XORG_PACKAGE_NAME=libxfont
 XORG_DOC=doc
-EGIT_REPO_URI="https://anongit.freedesktop.org/git/xorg/lib/libXfont.git"
 inherit xorg-2
 
 DESCRIPTION="X.Org Xfont library"

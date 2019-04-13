@@ -638,6 +638,8 @@ linux-mod_src_compile() {
 	set_arch_to_kernel
 	ABI="${KERNEL_ABI}"
 
+	[[ -n ${KERNEL_DIR} ]] && addpredict "${KERNEL_DIR}/null.dwo"
+
 	BUILD_TARGETS=${BUILD_TARGETS:-clean module}
 	strip_modulenames;
 	cd "${S}"
@@ -701,6 +703,8 @@ linux-mod_src_install() {
 	[ -n "${MODULES_OPTIONAL_USE}" ] && use !${MODULES_OPTIONAL_USE} && return
 
 	local modulename libdir srcdir objdir i n
+
+	[[ -n ${KERNEL_DIR} ]] && addpredict "${KERNEL_DIR}/null.dwo"
 
 	strip_modulenames;
 	for i in ${MODULE_NAMES}

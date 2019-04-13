@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/gthumb"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~x86-solaris"
+KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux ~x86-solaris"
 IUSE="cdr colord debug exif gnome-keyring gstreamer http jpeg json lcms raw slideshow svg tiff test webkit webp"
 
 RDEPEND="
@@ -53,6 +53,8 @@ DEPEND="${RDEPEND}
 "
 # eautoreconf needs:
 #	gnome-base/gnome-common
+
+PATCHES=( "${FILESDIR}/${P}-exiv2-0.27.patch" ) # bug 674092
 
 src_prepare() {
 	# Remove unwanted CFLAGS added with USE=debug

@@ -1,0 +1,25 @@
+--- a/etc/Makefile.am
++++ b/etc/Makefile.am
+@@ -3,6 +3,6 @@ EXTRA_DIST = rrdcached-default-redhat rrdcached-init-redhat rrdcached-default-ls
+ 
+ if HAVE_SYSTEMD
+ systemdsystemunit_DATA = \
+-	etc/rrdcached.socket \
+-	etc/rrdcached.service
++	rrdcached.socket \
++	rrdcached.service
+ endif
+\ No newline at end of file
+--- a/etc/Makefile.in
++++ b/etc/Makefile.in
+@@ -368,8 +368,8 @@ EXTRA_DIST = rrdcached-default-redhat rrdcached-init-redhat rrdcached-default-ls
+ 	rrdcached.socket.in rrdcached.service.in
+ 
+ @HAVE_SYSTEMD_TRUE@systemdsystemunit_DATA = \
+-@HAVE_SYSTEMD_TRUE@	etc/rrdcached.socket \
+-@HAVE_SYSTEMD_TRUE@	etc/rrdcached.service
++@HAVE_SYSTEMD_TRUE@	rrdcached.socket \
++@HAVE_SYSTEMD_TRUE@	rrdcached.service
+ 
+ all: all-am
+ 

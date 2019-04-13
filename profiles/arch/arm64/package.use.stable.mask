@@ -1,5 +1,25 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+# Andreas Sturmlechner <asturm@gentoo.org> (24 Feb 2019)
+# media-libs/libsdl is not stable yet
+dev-libs/zziplib sdl
+
+# Mart Raudsepp <leio@gentoo.org> (18 Feb 2019)
+# app-text/aspell not stable yet
+app-misc/mc spell
+
+# Andreas Sturmlechner <asturm@gentoo.org> (10 Feb 2019)
+# kde-frameworks/kconfig is not stable for arm64
+net-libs/libproxy kde
+
+# Andreas Sturmlechner <asturm@gentoo.org> (10 Feb 2019)
+# kde-plasma/polkit-kde-agent is not stable for arm64
+sys-auth/polkit kde
+
+# Mart Raudsepp <leio@gentoo.org> (18 Jan 2019)
+# Respective x11-drivers/ not tested and stable yet
+x11-base/xorg-drivers input_devices_elographics input_devices_joystick input_devices_void video_cards_dummy video_cards_fbdev video_cards_nouveau
 
 # Mart Raudsepp <leio@gentoo.org> (11 Sep 2018)
 # net-wireless/bluez not stable yet
@@ -47,13 +67,8 @@ app-admin/syslog-ng spoof-source
 app-portage/layman cvs subversion test
 app-text/xmlto latex
 dev-libs/apr-util freetds odbc
-gnome-base/dconf test
-gnome-base/librsvg tools
-net-dns/avahi bookmarks gtk3 utils
-net-misc/openssh X
-sys-apps/dbus test
 sys-apps/man-pages l10n_fr
-sys-apps/systemd cryptsetup http policykit qrcode xkb
+sys-apps/systemd cryptsetup policykit qrcode
 sys-auth/pambase consolekit pam_krb5 pam_ssh passwdqc
 sys-block/thin-provisioning-tools test
 sys-devel/distcc gssapi
@@ -61,28 +76,18 @@ sys-devel/gettext cvs
 
 # Michał Górny <mgorny@gentoo.org> (03 Mar 2018)
 # Requires masked dependent flags.
-net-dns/avahi howl-compat python
-
-# Mart Raudsepp <leio@gentoo.org> (02 Mar 2018)
-# Requires xorg-server[xvfb] for tests
-net-libs/glib-networking test
-dev-util/cmake test
-dev-libs/glib test
-app-crypt/heimdal test
+net-dns/avahi python
 
 # Michał Górny <mgorny@gentoo.org> (28 Feb 2018)
 # Requires masked dependent flags.
-net-dns/avahi mdnsresponder-compat
 net-fs/samba ads
 
 # Michał Górny <mgorny@gentoo.org> (19 Feb 2018)
 # Masked due to unstable deps.
 dev-db/redis tcmalloc
-dev-libs/glib test
 dev-python/hgdistver test
 dev-python/pycurl test
 dev-python/pyopenssl test
-dev-python/pyyaml libyaml
 dev-python/setuptools_scm mercurial test
 dev-python/sphinx latex test
 dev-python/twisted-core gtk serial
@@ -96,7 +101,4 @@ dev-libs/libverto tevent
 # systemtap is not yet stable on arm64
 dev-libs/glib systemtap
 sys-libs/glibc systemtap
-
-# Michael Weber <xmw@gentoo.org> (29 Mar 2017)
-# unstable deps mesa llvm et al.
-x11-libs/cairo gles2 opengl
+sys-devel/gcc systemtap

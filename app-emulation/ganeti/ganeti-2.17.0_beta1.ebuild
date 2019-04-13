@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -62,7 +62,10 @@ DEPEND="
 	dev-python/bitarray[${PYTHON_USEDEP}]
 	dev-python/docutils[${PYTHON_USEDEP}]
 	dev-python/fdsend[${PYTHON_USEDEP}]
-	net-analyzer/arping
+	|| (
+		net-misc/iputils[arping]
+		net-analyzer/arping
+	)
 	net-analyzer/fping
 	net-misc/bridge-utils
 	net-misc/curl[ssl]

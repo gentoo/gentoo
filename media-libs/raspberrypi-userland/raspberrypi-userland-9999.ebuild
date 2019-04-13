@@ -18,8 +18,6 @@ RDEPEND=""
 
 EGIT_REPO_URI="https://github.com/raspberrypi/userland"
 
-PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
-
 pkg_setup() {
 	append-ldflags $(no-as-needed)
 }

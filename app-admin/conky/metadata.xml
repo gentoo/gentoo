@@ -16,7 +16,6 @@
 	<longdescription>Conky is a system monitor that sits in the corner of your desktop. It is a fork of Torsmo that is actually maintained.</longdescription>
 	<use>
 		<flag name="apcupsd">Enable support for <pkg>sys-power/apcupsd</pkg></flag>
-		<flag name="audacious">Enable monitoring of music played by <pkg>media-sound/audacious</pkg></flag>
 		<flag name="cmus">Enable monitoring of music played by <pkg>media-sound/cmus</pkg></flag>
 		<flag name="eve">Enable support for the eve-online skill monitor</flag>
 		<flag name="ical">Enable support for events from iCalendar (RFC 5545) files using <pkg>dev-libs/libical</pkg></flag>
@@ -33,7 +32,6 @@
 		<flag name="portmon">Enable support for tcp (ip4) port monitoring</flag>
 		<flag name="thinkpad">Enable support for IBM/Lenovo notebooks</flag>
 		<flag name="weather-metar">Enable support for metar weather service</flag>
-		<flag name="weather-xoap">Enable support for metar and xoap weather service</flag>
 		<flag name="webserver">Enable support to act as a webserver serving conkys output using <pkg>net-libs/libmicrohttpd</pkg></flag>
 		<flag name="xmms2">Enable monitoring of music played by <pkg>media-sound/xmms2</pkg></flag>
 	</use>

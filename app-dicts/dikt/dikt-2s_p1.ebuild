@@ -1,13 +1,12 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 MY_P=${P/_p/}
-
 inherit kde5
 
-DESCRIPTION="A dictionary application that implements the Dict protocol"
+DESCRIPTION="Dictionary application that implements the Dict protocol"
 HOMEPAGE="https://www.dikt.tv/"
 SRC_URI="https://bitbucket.org/dikt/code/downloads/${MY_P}.txz -> ${MY_P}.tar.xz"
 

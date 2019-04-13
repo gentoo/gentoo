@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,16 +19,16 @@ SRC_URI="
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ppc ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="debug gps media nls stars test"
 
 RDEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
-	dev-qt/qtopengl:5
-	dev-qt/qtscript:5
 	dev-qt/qtnetwork:5
+	dev-qt/qtopengl:5
 	dev-qt/qtprintsupport:5
+	dev-qt/qtscript:5
 	dev-qt/qtserialport:5
 	dev-qt/qtwidgets:5
 	media-fonts/dejavu
@@ -43,7 +43,10 @@ DEPEND="${RDEPEND}
 	test? ( dev-qt/qttest:5 )
 "
 
-PATCHES=( "${FILESDIR}"/${P}.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-as-needed.patch
+	"${FILESDIR}"/${P}-fix-test.patch
+)
 
 src_prepare() {
 	cmake-utils_src_prepare
@@ -53,8 +56,8 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=(
 		-DENABLE_GPS="$(usex gps)"
-		-DENABLE_NLS="$(usex nls)"
 		-DENABLE_MEDIA="$(usex media)"
+		-DENABLE_NLS="$(usex nls)"
 		-DENABLE_TESTING="$(usex test)"
 	)
 	cmake-utils_src_configure

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,7 +12,7 @@ X86_FBSD_NV_PACKAGE="NVIDIA-FreeBSD-x86-${PV}"
 AMD64_FBSD_NV_PACKAGE="NVIDIA-FreeBSD-x86_64-${PV}"
 
 DESCRIPTION="NVIDIA Accelerated Graphics Driver"
-HOMEPAGE="http://www.nvidia.com/ http://www.nvidia.com/Download/Find.aspx"
+HOMEPAGE="http://www.nvidia.com/"
 SRC_URI="
 	amd64-fbsd? ( ${NV_URI}FreeBSD-x86_64/${PV}/${AMD64_FBSD_NV_PACKAGE}.tar.gz )
 	amd64? ( ${NV_URI}Linux-x86_64/${PV}/${AMD64_NV_PACKAGE}.run )
@@ -26,7 +26,7 @@ SRC_URI="
 LICENSE="GPL-2 NVIDIA-r2"
 SLOT="0/${PV%.*}"
 KEYWORDS="-* amd64 x86 ~amd64-fbsd ~x86-fbsd"
-IUSE="acpi multilib kernel_FreeBSD kernel_linux pax_kernel static-libs +tools +X"
+IUSE="acpi multilib kernel_FreeBSD kernel_linux static-libs +tools +X"
 RESTRICT="bindist mirror"
 EMULTILIB_PKG="true"
 
@@ -172,14 +172,6 @@ src_prepare() {
 #		convert_to_m "${NV_SRC}"/Makefile.kbuild
 	fi
 
-	if use pax_kernel; then
-		ewarn "Using PAX patches is not supported. You will be asked to"
-		ewarn "use a standard kernel should you have issues. Should you"
-		ewarn "need support with these patches, contact the PaX team."
-		eapply "${FILESDIR}"/${PN}-331.13-pax-usercopy.patch
-		eapply "${FILESDIR}"/${PN}-337.12-pax-constify.patch
-	fi
-
 	local man_file
 	for man_file in "${NV_MAN}"/*1.gz; do
 		gunzip $man_file || die
@@ -199,7 +191,7 @@ src_compile() {
 		MAKE="$(get_bmake)" CFLAGS="-Wno-sign-compare" emake CC="$(tc-getCC)" \
 			LD="$(tc-getLD)" LDFLAGS="$(raw-ldflags)" || die
 	elif use kernel_linux; then
-		linux-mod_src_compile
+		BUILD_TARGETS=module linux-mod_src_compile
 	fi
 
 	if use tools; then

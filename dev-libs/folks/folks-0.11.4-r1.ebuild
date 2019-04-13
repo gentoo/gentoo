@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,7 +12,7 @@ HOMEPAGE="https://wiki.gnome.org/Projects/Folks"
 
 LICENSE="LGPL-2.1+"
 SLOT="0/25" # subslot = libfolks soname version
-KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-linux"
+KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86 ~x86-linux"
 
 # TODO: --enable-profiling
 # Vala isn't really optional, https://bugzilla.gnome.org/show_bug.cgi?id=701099
@@ -55,6 +55,10 @@ DEPEND="${COMMON_DEPEND}
 			>=gnome-extra/evolution-data-server-3.9.1
 			>=dev-libs/glib-2.40:2 ) )
 "
+
+PATCHES=(
+	"${FILESDIR}"/${PV}-vala-0.42-compat.patch
+)
 
 src_prepare() {
 	# Force re-generation of introspection files, otherwise it does not match installed libs

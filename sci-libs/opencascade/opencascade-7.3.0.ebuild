@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,7 +8,7 @@ inherit check-reqs cmake-utils eapi7-ver java-pkg-opt-2
 MY_PV="$(ver_rs 1- '_')"
 
 DESCRIPTION="Development platform for CAD/CAE, 3D surface/solid modeling and data exchange"
-HOMEPAGE="http://www.opencascade.com/"
+HOMEPAGE="https://www.opencascade.com/"
 SRC_URI="https://git.dev.opencascade.org/gitweb/?p=occt.git;a=snapshot;h=refs/tags/V${MY_PV};sf=tgz -> ${P}.tar.gz"
 
 LICENSE="|| ( Open-CASCADE-LGPL-2.1-Exception-1.0 LGPL-2.1 )"

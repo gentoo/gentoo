@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,7 +14,7 @@ inherit php-ext-pecl-r3
 DESCRIPTION="Bindings for the libmcrypt library"
 LICENSE="PHP-3.01"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 DEPEND="dev-libs/libmcrypt"
 RDEPEND="${DEPEND}"

@@ -1,0 +1,85 @@
+From 72dae8c23604288331c9a7f03f60ec792a384121 Mon Sep 17 00:00:00 2001
+From: christoph junghans <junghans@votca.org>
+Date: Mon, 22 Oct 2018 21:00:00 -0600
+Subject: [PATCH] cmake: minor distribution tweaks
+
+- use gnuinstalldirs to allow to configure install dirs
+- allow to disable injecting c flags
+
+signed-off-by: christoph junghans <junghans@votca.org>
+Signed-off-by: Alexey Shvetsov <alexxy@gentoo.org>
+---
+ CMakeLists.txt     | 10 +++++++---
+ lib/CMakeLists.txt |  4 ++--
+ man/CMakeLists.txt |  4 ++--
+ 3 files changed, 11 insertions(+), 7 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index dbb571e..279f06a 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -4,7 +4,7 @@ cmake_policy(SET CMP0048 NEW)
+ list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
+ include(PreventInSourceBuilds)
+ 
+-project(lmfit VERSION 8.2.1 LANGUAGES C)
++project(lmfit VERSION 8.2.2 LANGUAGES C)
+ 
+ # --- Declare project-wide user flags, and set default values ---
+ option(FITTEST "Build with FitTest" OFF)
+@@ -23,12 +23,16 @@ else()
+ endif()
+ 
+ include(CTest)
++include(GNUInstallDirs)
+ 
+-set(destination ${CMAKE_INSTALL_PREFIX})
++option(INJECT_C_FLAGS "Inject a bunch of useful c flags" ON)
++if (INJECT_C_FLAGS)
++    set(CMAKE_C_FLAGS "${CMAKE_CXX_FLAGS} -g -O2 -pedantic -Wall -Wno-sign-compare -Wno-unused-result -Wno-parentheses  -Wno-unknown-pragmas")
++endif()
+ 
+ configure_file("lmfit.pc.in" "lmfit.pc" @ONLY)
+ install(FILES "${CMAKE_CURRENT_BINARY_DIR}/lmfit.pc"
+-    DESTINATION "${destination}/lib/pkgconfig/")
++	DESTINATION "${CMAKE_INSTALL_LIBDIR}/pkgconfig/")
+ 
+ add_subdirectory(lib)
+ add_subdirectory(demo)
+diff --git a/lib/CMakeLists.txt b/lib/CMakeLists.txt
+index a266f4e..e071a3c 100644
+--- a/lib/CMakeLists.txt
++++ b/lib/CMakeLists.txt
+@@ -18,9 +18,9 @@ link_libm(${library_name})
+ 
+ install(
+     TARGETS ${library_name} LIBRARY
+-    DESTINATION ${destination}/lib
++    DESTINATION ${CMAKE_INSTALL_LIBDIR}
+     COMPONENT Libraries)
+ install(
+     FILES ${inc_files}
+-    DESTINATION ${destination}/include
++    DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+     COMPONENT Headers)
+diff --git a/man/CMakeLists.txt b/man/CMakeLists.txt
+index d4595fd..5505713 100644
+--- a/man/CMakeLists.txt
++++ b/man/CMakeLists.txt
+@@ -15,11 +15,11 @@ function(one_page pname section)
+         )
+     install(
+         FILES ${CMAKE_CURRENT_BINARY_DIR}/${pname}.${section}
+-        DESTINATION "${CMAKE_INSTALL_PREFIX}/share/man/man${section}"
++        DESTINATION "${CMAKE_INSTALL_MANDIR}/man${section}"
+         )
+     install(
+         FILES ${CMAKE_CURRENT_BINARY_DIR}/${pname}.html
+-        DESTINATION "${CMAKE_INSTALL_PREFIX}/share/doc/lmfit/html"
++	DESTINATION "${CMAKE_INSTALL_DOCDIR}-${CMAKE_PROJECT_VERSION}/html"
+         )
+ endfunction()
+ 
+-- 
+2.20.1
+

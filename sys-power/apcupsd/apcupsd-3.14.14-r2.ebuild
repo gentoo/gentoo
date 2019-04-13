@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/apcupsd/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~arm ppc x86 ~x86-fbsd"
-IUSE="snmp +usb +modbus cgi nls gnome kernel_linux"
+IUSE="snmp +usb +modbus cgi gnome kernel_linux"
 
 DEPEND="
 	||	( >=sys-apps/util-linux-2.23[tty-helpers(-)]
@@ -20,7 +20,6 @@ DEPEND="
 		)
 	modbus? ( usb? ( virtual/libusb:0 ) )
 	cgi? ( >=media-libs/gd-1.8.4 )
-	nls? ( sys-devel/gettext )
 	snmp? ( >=net-analyzer/net-snmp-5.7.2 )
 	gnome? ( >=x11-libs/gtk+-2.4.0:2
 		dev-libs/glib:2

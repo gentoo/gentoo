@@ -9,10 +9,6 @@
 		<email>blueness@gentoo.org</email>
 		<name>Anthony G. Basile</name>
 	</maintainer>
-	<maintainer type="project">
-		<email>cron-bugs@gentoo.org</email>
-		<name>Gentoo Cron Project</name>
-	</maintainer>
 	<use>
 		<flag name="debug">
 			Enable debug code and output. Since version 3.0.5 this will no

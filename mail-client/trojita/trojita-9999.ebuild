@@ -1,18 +1,19 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-EGIT_REPO_URI="https://anongit.kde.org/${PN}.git"
-inherit cmake-utils gnome2-utils virtualx xdg-utils
-[[ ${PV} == 9999 ]] && inherit git-r3
-
-DESCRIPTION="A Qt IMAP e-mail client"
-HOMEPAGE="http://trojita.flaska.net/"
-if [[ ${PV} != 9999 ]]; then
+if [[ ${PV} = *9999* ]]; then
+	EGIT_REPO_URI="https://anongit.kde.org/${PN}.git"
+	inherit git-r3
+else
 	SRC_URI="mirror://sourceforge/${PN}/${P}.tar.xz"
 	KEYWORDS="~amd64 ~x86"
 fi
+inherit cmake-utils virtualx xdg
+
+DESCRIPTION="A Qt IMAP e-mail client"
+HOMEPAGE="http://trojita.flaska.net/"
 
 LICENSE="|| ( GPL-2 GPL-3 )"
 SLOT="0"
@@ -20,7 +21,12 @@ IUSE="+crypt +dbus debug +password test +zlib"
 
 REQUIRED_USE="password? ( dbus )"
 
-RDEPEND="
+BDEPEND="
+	dev-qt/linguist-tools:5
+	test? ( dev-qt/qttest:5 )
+	zlib? ( virtual/pkgconfig )
+"
+DEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5[ssl]
@@ -36,11 +42,7 @@ RDEPEND="
 	password? ( dev-libs/qtkeychain[qt5(+)] )
 	zlib? ( sys-libs/zlib )
 "
-DEPEND="${RDEPEND}
-	dev-qt/linguist-tools:5
-	test? ( dev-qt/qttest:5 )
-	zlib? ( virtual/pkgconfig )
-"
+RDEPEND="${DEPEND}"
 
 DOCS=( README LICENSE )
 
@@ -49,7 +51,7 @@ src_prepare() {
 
 	# the build system is taking a look at `git describe ... --dirty` and
 	# gentoo's modifications to CMakeLists.txt break these
-	sed -i "s/--dirty//" "${S}/cmake/TrojitaVersion.cmake" || die "Cannot fix the version check"
+	sed -e "s/--dirty//" -i cmake/TrojitaVersion.cmake || die "Cannot fix the version check"
 }
 
 src_configure() {
@@ -68,18 +70,4 @@ src_configure() {
 
 src_test() {
 	virtx cmake-utils_src_test
-}
-
-pkg_preinst() {
-	gnome2_icon_savelist
-}
-
-pkg_postinst() {
-	xdg_desktop_database_update
-	gnome2_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_desktop_database_update
-	gnome2_icon_cache_update
 }

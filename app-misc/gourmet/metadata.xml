@@ -2,10 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<!--maintainer-needed-->
-	<maintainer type="person">
-		<email>nixphoeni@gentoo.org</email>
-		<name>Joe Sapp</name>
-	</maintainer>
 	<longdescription>
 		Gourmet Recipe Manager is an application to store, organize
 		and search recipes. Gourmet also makes it easy to create

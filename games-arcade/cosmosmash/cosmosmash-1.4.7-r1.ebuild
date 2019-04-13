@@ -1,12 +1,12 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit autotools
 
 DESCRIPTION="A space rock shooting video game"
-HOMEPAGE="http://perso.b2b2c.ca/sarrazip/dev/cosmosmash.html"
-SRC_URI="http://perso.b2b2c.ca/sarrazip/dev/${P}.tar.gz"
+HOMEPAGE="https://perso.b2b2c.ca/~sarrazip/dev/cosmosmash.html"
+SRC_URI="https://perso.b2b2c.ca/~sarrazip/dev/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

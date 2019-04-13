@@ -5,7 +5,7 @@
 # selinux - Enable SELinux support
 USE="selinux"
 
-FEATURES="selinux sesandbox sfperms"
+FEATURES="selinux sesandbox sfperms -pid-sandbox"
 
 POLICY_TYPES="strict targeted"
 PORTAGE_T="portage_t"

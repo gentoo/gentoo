@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
+PYTHON_COMPAT=( python{2_7,3_{4,5,6}} )
 VIRTUALX_REQUIRED="manual"
 
-inherit autotools db-use eutils multilib multilib-minimal python-any-r1 virtualx flag-o-matic
+inherit autotools db-use multilib multilib-minimal python-any-r1 virtualx flag-o-matic
 
 MY_P="${P}"
 DESCRIPTION="Kerberos 5 implementation from KTH"
@@ -19,11 +19,11 @@ IUSE="afs +berkdb caps hdb-ldap ipv6 libressl otp +pkinit selinux ssl static-lib
 
 CDEPEND="
 	ssl? (
-		!libressl? ( >=dev-libs/openssl-1.0.1h-r2[${MULTILIB_USEDEP}] )
-		libressl? ( dev-libs/libressl[${MULTILIB_USEDEP}] )
+		!libressl? ( >=dev-libs/openssl-1.0.1h-r2:0=[${MULTILIB_USEDEP}] )
+		libressl? ( dev-libs/libressl:=[${MULTILIB_USEDEP}] )
 	)
 	berkdb? ( >=sys-libs/db-4.8.30-r1:*[${MULTILIB_USEDEP}] )
-	!berkdb? ( >=sys-libs/gdbm-1.10-r1[${MULTILIB_USEDEP}] )
+	!berkdb? ( >=sys-libs/gdbm-1.10-r1:=[${MULTILIB_USEDEP}] )
 	caps? ( sys-libs/libcap-ng )
 	>=dev-db/sqlite-3.8.2[${MULTILIB_USEDEP}]
 	>=sys-libs/e2fsprogs-libs-1.42.9[${MULTILIB_USEDEP}]
@@ -66,8 +66,8 @@ MULTILIB_CHOST_TOOLS=(
 src_prepare() {
 	eapply "${FILESDIR}/heimdal_disable-check-iprop.patch"
 	eapply "${FILESDIR}/heimdal_tinfo.patch"
-	eautoreconf
 	eapply_user
+	eautoreconf
 }
 
 src_configure() {
@@ -78,39 +78,38 @@ src_configure() {
 }
 
 multilib_src_configure() {
-	local myconf=()
+	local myeconfargs=(
+		--enable-kcm
+		--disable-osfc2
+		--enable-shared
+		--with-libintl="${EPREFIX}"/usr
+		--with-readline="${EPREFIX}"/usr
+		--with-sqlite3="${EPREFIX}"/usr
+		--libexecdir="${EPREFIX}"/usr/sbin
+		--enable-pthread-support
+		$(use_enable afs afs-support)
+		$(use_enable otp)
+		$(use_enable pkinit kx509)
+		$(use_enable pkinit pk-init)
+		$(use_enable static-libs static)
+		$(multilib_native_use_with caps capng)
+		$(multilib_native_use_with hdb-ldap openldap "${EPREFIX}"/usr)
+		$(use_with ipv6)
+		$(use_with ssl openssl "${EPREFIX}"/usr)
+		$(multilib_native_use_with X x)
+	)
 	if use berkdb; then
-		myconf+=(
+		myeconfargs+=(
 			--with-berkeley-db
 			--with-berkeley-db-include="$(db_includedir)"
 		)
 	else
-		myconf+=(
+		myeconfargs+=(
 			--without-berkeley-db
 		)
 	fi
 
-	ECONF_SOURCE=${S} \
-	econf \
-		--enable-kcm \
-		--disable-osfc2 \
-		--enable-shared \
-		--with-libintl=/usr \
-		--with-readline=/usr \
-		--with-sqlite3=/usr \
-		--libexecdir=/usr/sbin \
-		--enable-pthread-support \
-		$(use_enable afs afs-support) \
-		$(use_enable otp) \
-		$(use_enable pkinit kx509) \
-		$(use_enable pkinit pk-init) \
-		$(use_enable static-libs static) \
-		$(multilib_native_use_with caps capng) \
-		$(multilib_native_use_with hdb-ldap openldap /usr) \
-		$(use_with ipv6) \
-		$(use_with ssl openssl /usr) \
-		$(multilib_native_use_with X x) \
-		"${myconf[@]}"
+	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
 }
 
 multilib_src_compile() {
@@ -145,8 +144,8 @@ multilib_src_install_all() {
 	dodoc ChangeLog* README NEWS TODO
 
 	# client rename
-	mv "${D}"/usr/share/man/man1/{,k}su.1
-	mv "${D}"/usr/bin/{,k}su
+	mv "${ED%/}"/usr/share/man/man1/{,k}su.1
+	mv "${ED%/}"/usr/bin/{,k}su
 
 	newinitd "${FILESDIR}"/heimdal-kdc.initd-r2 heimdal-kdc
 	newinitd "${FILESDIR}"/heimdal-kadmind.initd-r2 heimdal-kadmind
@@ -166,7 +165,7 @@ multilib_src_install_all() {
 		doins "${S}/lib/hdb/hdb.schema"
 	fi
 
-	prune_libtool_files
+	find "${ED}" -name "*.la" -delete || die
 
 	# default database dir
 	keepdir /var/heimdal

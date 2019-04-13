@@ -1,14 +1,13 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
+XORG_MODULE=app/
 XORG_STATIC=no
 inherit xorg-2
 
 DESCRIPTION="X Compositing manager"
-HOMEPAGE="https://freedesktop.org/wiki/Software/xapps"
-SRC_URI="https://www.x.org/releases/individual/app/${P}.tar.bz2"
 
 LICENSE="BSD"
 KEYWORDS="amd64 ppc ppc64 sparc x86"

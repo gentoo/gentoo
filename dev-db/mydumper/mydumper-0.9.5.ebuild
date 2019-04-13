@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,7 +15,7 @@ IUSE="doc"
 
 CDEPEND="dev-libs/glib:=
 	dev-libs/libpcre:=
-	dev-libs/openssl:=
+	dev-libs/openssl:0=
 	sys-libs/zlib:=
 	virtual/mysql"
 DEPEND="${CDEPEND}

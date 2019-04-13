@@ -1,7 +1,5 @@
-Index: zynaddsubfx-2.5.2/CMakeLists.txt
-===================================================================
---- zynaddsubfx-2.5.2.orig/CMakeLists.txt
-+++ zynaddsubfx-2.5.2/CMakeLists.txt
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
 @@ -28,9 +28,6 @@ include(CTestConfig.cmake)
  #Currently the only directory that uses cmake
  add_subdirectory(src)

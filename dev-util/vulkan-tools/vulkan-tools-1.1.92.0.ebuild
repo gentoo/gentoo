@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,7 +10,7 @@ if [[ "${PV}" == "9999" ]]; then
 	inherit git-r3
 else
 	EGIT_COMMIT="9bbdd552f0fd62741aa1f1e02ab3eafc45cf3c1e"
-	KEYWORDS="~amd64"
+	KEYWORDS="amd64"
 	SRC_URI="https://github.com/KhronosGroup/Vulkan-Tools/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/Vulkan-Tools-${EGIT_COMMIT}"
 fi
@@ -60,7 +60,6 @@ multilib_src_configure() {
 		-DCMAKE_SKIP_RPATH=True
 		-DBUILD_CUBE=$(usex cube)
 		-DBUILD_VULKANINFO=$(usex vulkaninfo)
-		-DBUILD_WSI_MIR_SUPPORT=False
 		-DBUILD_WSI_WAYLAND_SUPPORT=$(usex wayland)
 		-DBUILD_WSI_XCB_SUPPORT=$(usex X)
 		-DBUILD_WSI_XLIB_SUPPORT=$(usex X)
@@ -76,7 +75,6 @@ multilib_src_configure() {
 	if use X; then
 		mycmakeargs+=(
 			-DCUBE_WSI_SELECTION="XCB"
-			-DVULKANINFO_WSI_SELECTION="XCB"
 		)
 	fi
 

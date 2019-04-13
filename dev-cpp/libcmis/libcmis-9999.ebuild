@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -22,7 +22,7 @@ SLOT="0.5"
 
 # Don't move KEYWORDS on the previous line or ekeyword won't work # 399061
 [[ ${PV} == 9999 ]] || \
-KEYWORDS="~amd64 ~arm ~arm64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 
 IUSE="man static-libs test"
 
@@ -50,20 +50,22 @@ RESTRICT="test"
 
 src_prepare() {
 	default
-	[[ ${PV} = *_pre* || ${PV} = 9999 ]] && eautoreconf
+	eautoreconf
 }
 
 src_configure() {
 	# bug 618778
 	append-cxxflags -std=c++14
 
-	econf \
-		--program-suffix=-$(ver_cut 1-2) \
-		--disable-werror \
-		$(use_with man) \
-		$(use_enable static-libs static) \
-		$(use_enable test tests) \
+	local myeconfargs=(
+		--program-suffix=-$(ver_cut 1-2)
+		--disable-werror
+		$(use_with man)
+		$(use_enable static-libs static)
+		$(use_enable test tests)
 		--enable-client
+	)
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {

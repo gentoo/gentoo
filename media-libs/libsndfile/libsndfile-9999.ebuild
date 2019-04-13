@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} pypy{,3} )
+PYTHON_COMPAT=( python{2_7,3_5,3_6,3_7} pypy{,3} )
 
 if [[ ${PV} == *9999 ]]; then
 	inherit autotools git-r3
@@ -23,18 +23,18 @@ IUSE="alsa minimal sqlite static-libs test"
 
 RDEPEND="
 	!minimal? (
-		>=media-libs/flac-1.2.1-r5[${MULTILIB_USEDEP}]
-		>=media-libs/libogg-1.3.0[${MULTILIB_USEDEP}]
-		>=media-libs/libvorbis-1.3.3-r1[${MULTILIB_USEDEP}]
+		>=media-libs/flac-1.2.1-r5:=[${MULTILIB_USEDEP}]
+		>=media-libs/libogg-1.3.0:=[${MULTILIB_USEDEP}]
+		>=media-libs/libvorbis-1.3.3-r1:=[${MULTILIB_USEDEP}]
 	)
-	alsa? ( media-libs/alsa-lib )
+	alsa? ( media-libs/alsa-lib:= )
 	sqlite? ( >=dev-db/sqlite-3.2 )"
 DEPEND="${RDEPEND}"
 BDEPEND="
 	virtual/pkgconfig
 	test? ( ${PYTHON_DEPS} )"
 if [[ ${PV} == *9999 ]]; then
-	BDEPEND="
+	BDEPEND+="
 		${PYTHON_DEPS}
 		sys-devel/autogen
 	"

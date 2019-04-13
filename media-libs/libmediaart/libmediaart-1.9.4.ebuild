@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -9,7 +9,7 @@ VALA_MIN_API_VERSION="0.16"
 inherit autotools flag-o-matic gnome2 vala virtualx
 
 DESCRIPTION="Manages, extracts and handles media art caches"
-HOMEPAGE="https://github.com/GNOME/libmediaart"
+HOMEPAGE="https://gitlab.gnome.org/GNOME/libmediaart"
 
 LICENSE="LGPL-2.1+"
 SLOT="2.0"

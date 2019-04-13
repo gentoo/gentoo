@@ -33,7 +33,7 @@ RDEPEND="
 	offload? (
 		virtual/libelf:=[${MULTILIB_USEDEP}]
 		virtual/libffi:=[${MULTILIB_USEDEP}]
-		cuda? ( dev-util/nvidia-cuda-sdk:= )
+		cuda? ( dev-util/nvidia-cuda-toolkit:= )
 	)"
 # tests:
 # - dev-python/lit provides the test runner

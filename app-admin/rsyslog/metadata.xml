@@ -6,6 +6,7 @@
 		<name>Thomas Deutschmann</name>
 	</maintainer>
 	<use>
+		<flag name="clickhouse">Build the ClickHouse output module (requires <pkg>net-misc/curl</pkg>)</flag>
 		<flag name="curl">Enable http_request() function in RainerScript (requires <pkg>net-misc/curl</pkg>)</flag>
 		<flag name="dbi">Build the general database output module (requires <pkg>dev-db/libdbi</pkg>)</flag>
 		<flag name="elasticsearch">Build the Elasticsearch output module (requires <pkg>net-misc/curl</pkg>)</flag>

@@ -12,6 +12,7 @@
 		<flag name="lightdm">Install <pkg>x11-misc/lightdm</pkg>display manager</flag>
 		<flag name="lximage">Install <pkg>media-gfx/lximage-qt</pkg>image viewer</flag>
 		<flag name="minimal">Do not install <pkg>x11-wm/openbox</pkg>window manager</flag>
+		<flag name="nls">Install <pkg>dev-qt/qttranslations</pkg> to better support different locales</flag>
 		<flag name="powermanagement">Install <pkg>lxqt-base/lxqt-powermanagement</pkg> package</flag>
 		<flag name="processviewer">Install <pkg>x11-misc/qps</pkg> package</flag>
 		<flag name="screenshot">Install <pkg>x11-misc/screengrab</pkg> package</flag>

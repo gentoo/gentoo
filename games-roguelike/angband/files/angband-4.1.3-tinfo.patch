@@ -1,0 +1,29 @@
+From de53f9644323af0ff084bc82ef17b26aa6db250e Mon Sep 17 00:00:00 2001
+From: Stefan Strogin <stefan.strogin@gmail.com>
+Date: Thu, 4 Apr 2019 04:24:49 +0300
+Subject: [PATCH] Link against tinfow or tinfo if needed
+
+It is needed on systems where libtinfo is separate from libncurses.
+See: https://bugs.gentoo.org/679942
+
+Upstream-Status: Submitted [https://github.com/angband/angband/pull/522]
+Signed-off-by: Stefan Strogin <stefan.strogin@gmail.com>
+---
+ configure.ac | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/configure.ac b/configure.ac
+index 4a671f33..04fa8cae 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -244,6 +244,7 @@ if test "$enable_curses" = "yes"; then
+ 			LIBS="${LIBS} -lncursesw"
+ 			MAINFILES="${MAINFILES} \$(GCUMAINFILES)"
+ 		])
++		AC_SEARCH_LIBS([keypad], [tinfow tinfo])
+ 	fi
+ fi
+ 
+-- 
+2.21.0
+

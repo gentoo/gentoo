@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,18 +9,19 @@ inherit distutils-r1
 
 DESCRIPTION="A Python package for creating beautiful command line interfaces"
 SRC_URI="https://github.com/pallets/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
-HOMEPAGE="http://click.pocoo.org/ https://pypi.org/project/click/"
+HOMEPAGE="https://palletsprojects.com/p/click/ https://pypi.org/project/click/"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ia64 ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm ~ia64 ~ppc ~ppc64 ~s390 ~x86"
 IUSE="doc examples test"
 
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? ( dev-python/pytest[${PYTHON_USEDEP}] )
-	doc? ( dev-python/sphinx[${PYTHON_USEDEP}]
-		dev-python/pallets-sphinx-themes[${PYTHON_USEDEP}] )"
+	doc? ( >=dev-python/docutils-0.14[${PYTHON_USEDEP}]
+		dev-python/pallets-sphinx-themes[${PYTHON_USEDEP}]
+		>=dev-python/sphinx-1.7.5-r1[${PYTHON_USEDEP}] )"
 
 python_prepare_all() {
 	# Prevent un-needed d'loading

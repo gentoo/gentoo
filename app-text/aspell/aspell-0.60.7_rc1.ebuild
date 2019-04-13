@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -72,7 +72,7 @@ src_prepare() {
 
 	# unicode patch breaks on Darwin, NCURSES_WIDECHAR won't get set
 	# any more.  Fix this.
-	[[ ${CHOST} == *-darwin* ]] && use unicode && \
+	[[ ${CHOST} == *-darwin* ]] || [[ ${CHOST} == *-musl* ]] && use unicode && \
 		append-cppflags -DNCURSES_WIDECHAR=1
 }
 

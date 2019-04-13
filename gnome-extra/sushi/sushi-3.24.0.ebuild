@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -37,6 +37,7 @@ COMMON_DEPEND="
 	office? ( app-office/unoconv )
 "
 DEPEND="${RDEPEND}
+	dev-util/glib-utils
 	>=dev-util/intltool-0.40
 	virtual/pkgconfig
 "

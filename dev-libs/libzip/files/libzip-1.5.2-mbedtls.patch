@@ -1,0 +1,23 @@
+From e34b2ed6116ba5e6d3c25cd504d91bb680db92e8 Mon Sep 17 00:00:00 2001
+From: Thomas Klausner <tk@giga.or.at>
+Date: Tue, 2 Apr 2019 15:26:06 +0200
+Subject: [PATCH] mbedtls: link against the correct library
+
+Inspired by https://github.com/nih-at/libzip/pull/88
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 3f252b3f7..f8eb16eeb 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -42,7 +42,7 @@ ELSE()
+ ENDIF()
+ IF(ENABLE_MBEDTLS)
+   FIND_PATH(MBEDTLS_INCLUDE_DIR mbedtls/aes.h)
+-  FIND_LIBRARY(MBEDTLS_LIBRARIES NAMES mbedtls)
++  FIND_LIBRARY(MBEDTLS_LIBRARIES NAMES mbedcrypto)
+ ELSE()
+   SET(MBEDTLS_LIBRARIES FALSE)
+ ENDIF()

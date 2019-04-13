@@ -127,6 +127,25 @@ Fix various QA violations, due to
     printf( "x = %d\n", pEvent->x );
     printf( "y = %d\n", pEvent->y );
     printf( "x_root = %d\n", pEvent->x_root );
+--- a/parseAceFile.cpp
++++ b/parseAceFile.cpp
+@@ -45,6 +45,7 @@
+ using namespace std;
+ #include    "basesegment.h"
+ #include    <stdio.h>
++#include    <stddef.h>
+ #include    <string.h>
+ #include    <sstream>
+ #include    "mbt_errors.h"
+@@ -292,7 +293,7 @@
+    char* szPossibleComp = szReadName + nLength - nCOMP;
+ 
+    if (memcmp( szPossibleComp, szCOMP, nCOMP ) == 0 ) {
+-      szPossibleComp = '\0';
++      szPossibleComp = NULL;
+       return( true );
+    }
+    else
 --- a/phaster2PhdBall.cpp
 +++ b/phaster2PhdBall.cpp
 @@ -547,7 +547,7 @@

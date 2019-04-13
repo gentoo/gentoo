@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -23,12 +23,12 @@ RDEPEND=">=dev-libs/libtasn1-4.9:=[${MULTILIB_USEDEP}]
 	dev-libs/libunistring:=[${MULTILIB_USEDEP}]
 	>=dev-libs/nettle-3.4.1:=[gmp,${MULTILIB_USEDEP}]
 	>=dev-libs/gmp-5.1.3-r1:=[${MULTILIB_USEDEP}]
-	tools? ( sys-devel/autogen )
+	tools? ( sys-devel/autogen:= )
 	dane? ( >=net-dns/unbound-1.4.20:=[${MULTILIB_USEDEP}] )
 	guile? ( >=dev-scheme/guile-2:=[networking] )
-	nls? ( >=virtual/libintl-0-r1[${MULTILIB_USEDEP}] )
-	pkcs11? ( >=app-crypt/p11-kit-0.23.1[${MULTILIB_USEDEP}] )
-	idn? ( >=net-dns/libidn2-0.16-r1[${MULTILIB_USEDEP}] )"
+	nls? ( >=virtual/libintl-0-r1:=[${MULTILIB_USEDEP}] )
+	pkcs11? ( >=app-crypt/p11-kit-0.23.1:=[${MULTILIB_USEDEP}] )
+	idn? ( >=net-dns/libidn2-0.16-r1:=[${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}
 	test? (
 		seccomp? ( sys-libs/libseccomp )
@@ -53,6 +53,11 @@ DOCS=(
 
 HTML_DOCS=()
 
+PATCHES=(
+	"${FILESDIR}/${P}-build.patch"
+	"${FILESDIR}/${P}-libressl.patch"
+)
+
 pkg_setup() {
 	# bug#520818
 	export TZ=UTC
@@ -73,6 +78,11 @@ src_prepare() {
 
 	# Use sane .so versioning on FreeBSD.
 	elibtoolize
+
+	# detect also guile-2.2, bug#673574
+	# aclocal/autoreconf will require more dependencies
+	# that we want to have
+	sed -i 's/\(_guile_versions_to_search="\)\(.*\)\("\)/\1\2 2.2\3/' configure || die
 }
 
 multilib_src_configure() {

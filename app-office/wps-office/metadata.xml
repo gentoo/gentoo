@@ -5,7 +5,4 @@
 	<email>pacho@gentoo.org</email>
 	<name>Pacho Ramos</name>
 </maintainer>
-<use>
-	<flag name="sharedfonts">Install WPS fonts available system wide</flag>
-</use>
 </pkgmetadata>

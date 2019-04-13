@@ -1,15 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!--maintainer-needed-->
-	<longdescription lang="en">
-		wrk is a modern HTTP benchmarking tool capable of generating
-		significant load when run on a single multi-core CPU. It combines a
-		multithreaded design with scalable event notification systems such as
-		epoll and kqueue.  An optional LuaJIT script can perform HTTP request
-		generation, response processing, and custom reporting.
+	<maintainer type="person">
+		<email>ck+gentoo@bl4ckb0x.de</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		WRK is a modern HTTP benchmarking tool capable of generating
+		significant load when run on a single multi-core CPU.
+		It combines a multithreaded design with scalable event
+		notification systems such as epoll and kqueue.
+		An optional LuaJIT script can perform HTTP request generation,
+		response processing, and custom reporting.
 	</longdescription>
 	<upstream>
+		<bugs-to>https://www.github.com/wg/wrk/issues</bugs-to>
 		<remote-id type="github">wg/wrk</remote-id>
 	</upstream>
 </pkgmetadata>

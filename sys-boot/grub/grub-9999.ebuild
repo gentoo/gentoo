@@ -1,14 +1,14 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 if [[ ${PV} == 9999  ]]; then
-	GRUB_AUTOGEN=1
 	GRUB_AUTORECONF=1
+	GRUB_BOOTSTRAP=1
 fi
 
-if [[ -n ${GRUB_AUTOGEN} ]]; then
+if [[ -n ${GRUB_AUTOGEN} || -n ${GRUB_BOOTSTRAP} ]]; then
 	PYTHON_COMPAT=( python{2_7,3_3,3_4,3_5,3_6} )
 	inherit python-any-r1
 fi
@@ -42,7 +42,7 @@ PATCHES=(
 )
 
 DEJAVU=dejavu-sans-ttf-2.37
-UNIFONT=unifont-9.0.06
+UNIFONT=unifont-12.0.01
 SRC_URI+=" fonts? ( mirror://gnu/unifont/${UNIFONT}/${UNIFONT}.pcf.gz )
 	themes? ( mirror://sourceforge/dejavu/${DEJAVU}.zip )"
 
@@ -52,7 +52,7 @@ HOMEPAGE="https://www.gnu.org/software/grub/"
 # Includes licenses for dejavu and unifont
 LICENSE="GPL-3 fonts? ( GPL-2-with-font-exception ) themes? ( BitstreamVera )"
 SLOT="2/${PVR}"
-IUSE="debug device-mapper doc efiemu +fonts mount multislot nls static sdl test +themes truetype libzfs"
+IUSE="debug device-mapper doc efiemu +fonts mount nls static sdl test +themes truetype libzfs"
 
 GRUB_ALL_PLATFORMS=( coreboot efi-32 efi-64 emu ieee1275 loongson multiboot qemu qemu-mips pc uboot xen xen-32 )
 IUSE+=" ${GRUB_ALL_PLATFORMS[@]/#/grub_platforms_}"
@@ -64,22 +64,7 @@ REQUIRED_USE="
 	grub_platforms_loongson? ( fonts )
 "
 
-# os-prober: Used on runtime to detect other OSes
-# xorriso (dev-libs/libisoburn): Used on runtime for mkrescue
-COMMON_DEPEND="
-	app-arch/xz-utils
-	>=sys-libs/ncurses-5.2-r5:0=
-	debug? (
-		sdl? ( media-libs/libsdl )
-	)
-	device-mapper? ( >=sys-fs/lvm2-2.02.45 )
-	libzfs? ( sys-fs/zfs )
-	mount? ( sys-fs/fuse:0 )
-	truetype? ( media-libs/freetype:2= )
-	ppc? ( >=sys-apps/ibm-powerpc-utils-1.3.5 )
-	ppc64? ( >=sys-apps/ibm-powerpc-utils-1.3.5 )
-"
-DEPEND="${COMMON_DEPEND}
+BDEPEND="
 	${PYTHON_DEPS}
 	app-misc/pax-utils
 	sys-devel/flex
@@ -89,17 +74,6 @@ DEPEND="${COMMON_DEPEND}
 	fonts? (
 		media-libs/freetype:2
 		virtual/pkgconfig
-	)
-	grub_platforms_xen? ( app-emulation/xen-tools:= )
-	grub_platforms_xen-32? ( app-emulation/xen-tools:= )
-	static? (
-		app-arch/xz-utils[static-libs(+)]
-		truetype? (
-			app-arch/bzip2[static-libs(+)]
-			media-libs/freetype[static-libs(+)]
-			sys-libs/zlib[static-libs(+)]
-			virtual/pkgconfig
-		)
 	)
 	test? (
 		app-admin/genromfs
@@ -118,12 +92,38 @@ DEPEND="${COMMON_DEPEND}
 	)
 	truetype? ( virtual/pkgconfig )
 "
+COMMON_DEPEND="
+	app-arch/xz-utils
+	>=sys-libs/ncurses-5.2-r5:0=
+	debug? (
+		sdl? ( media-libs/libsdl )
+	)
+	device-mapper? ( >=sys-fs/lvm2-2.02.45 )
+	libzfs? ( sys-fs/zfs )
+	mount? ( sys-fs/fuse:0 )
+	truetype? ( media-libs/freetype:2= )
+	ppc? ( >=sys-apps/ibm-powerpc-utils-1.3.5 )
+	ppc64? ( >=sys-apps/ibm-powerpc-utils-1.3.5 )
+	grub_platforms_xen? ( app-emulation/xen-tools:= )
+	grub_platforms_xen-32? ( app-emulation/xen-tools:= )
+"
+DEPEND="${COMMON_DEPEND}
+	static? (
+		app-arch/xz-utils[static-libs(+)]
+		truetype? (
+			app-arch/bzip2[static-libs(+)]
+			media-libs/freetype[static-libs(+)]
+			sys-libs/zlib[static-libs(+)]
+			virtual/pkgconfig
+		)
+	)
+"
 RDEPEND="${COMMON_DEPEND}
 	kernel_linux? (
 		grub_platforms_efi-32? ( sys-boot/efibootmgr )
 		grub_platforms_efi-64? ( sys-boot/efibootmgr )
 	)
-	!multislot? ( !sys-boot/grub:0 !sys-boot/grub-static )
+	!sys-boot/grub:0 !sys-boot/grub-static
 	nls? ( sys-devel/gettext )
 "
 
@@ -136,6 +136,12 @@ QA_MULTILIB_PATHS="usr/lib/grub/.*"
 src_unpack() {
 	if [[ ${PV} == 9999 ]]; then
 		git-r3_src_unpack
+		pushd "${P}" >/dev/null || die
+		local GNULIB_URI="https://git.savannah.gnu.org/git/gnulib.git"
+		local GNULIB_REVISION=$(source bootstrap.conf >/dev/null; echo "${GNULIB_REVISION}")
+		git-r3_fetch "${GNULIB_URI}" "${GNULIB_REVISION}"
+		git-r3_checkout "${GNULIB_URI}" gnulib
+		popd >/dev/null || die
 	fi
 	default
 }
@@ -145,11 +151,6 @@ src_prepare() {
 
 	sed -i -e /autoreconf/d autogen.sh || die
 
-	if use multislot; then
-		# fix texinfo file name, bug 416035
-		sed -i -e 's/^\* GRUB:/* GRUB2:/' -e 's/(grub)/(grub2)/' docs/grub.texi || die
-	fi
-
 	# Nothing in Gentoo packages 'american-english' in the exact path
 	# wanted for the test, but all that is needed is a compressible text
 	# file, and we do have 'words' from miscfiles in the same path.
@@ -158,13 +159,18 @@ src_prepare() {
 		tests/util/grub-fs-tester.in \
 		|| die
 
-	if [[ -n ${GRUB_AUTOGEN} ]]; then
+	if [[ -n ${GRUB_AUTOGEN} || -n ${GRUB_BOOTSTRAP} ]]; then
 		python_setup
-		bash autogen.sh || die
+	fi
+
+	if [[ -n ${GRUB_BOOTSTRAP} ]]; then
+		eautopoint --force
+		AUTOPOINT=: AUTORECONF=: ./bootstrap || die
+	elif [[ -n ${GRUB_AUTOGEN} ]]; then
+		./autogen.sh || die
 	fi
 
 	if [[ -n ${GRUB_AUTORECONF} ]]; then
-		autopoint() { :; }
 		eautoreconf
 	fi
 }
@@ -219,14 +225,12 @@ grub_configure() {
 		$(usex efiemu '' '--disable-efiemu')
 	)
 
-	if use multislot; then
-		myeconfargs+=( --program-transform-name="s,grub,grub2," )
+	if use fonts; then
+		ln -rs "${WORKDIR}/${UNIFONT}.pcf" unifont.pcf || die
 	fi
 
-	# Set up font symlinks
-	ln -s "${WORKDIR}/${UNIFONT}.pcf" unifont.pcf || die
 	if use themes; then
-		ln -s "${WORKDIR}/${DEJAVU}/ttf/DejaVuSans.ttf" DejaVuSans.ttf || die
+		ln -rs "${WORKDIR}/${DEJAVU}/ttf/DejaVuSans.ttf" DejaVuSans.ttf || die
 	fi
 
 	local ECONF_SOURCE="${S}"
@@ -281,10 +285,6 @@ src_install() {
 	use doc && grub_do_once emake -C docs install-html DESTDIR="${D}"
 
 	einstalldocs
-
-	if use multislot; then
-		mv "${ED%/}"/usr/share/info/grub{,2}.info || die
-	fi
 
 	insinto /etc/default
 	newins "${FILESDIR}"/grub.default-3 grub

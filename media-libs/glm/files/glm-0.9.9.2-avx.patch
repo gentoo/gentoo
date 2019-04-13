@@ -1,0 +1,30 @@
+--- a/glm/simd/platform.h	2019-03-06 18:57:53.309630574 +0100
++++ b/glm/simd/platform.h	2019-03-06 18:58:30.796988006 +0100
+@@ -233,7 +233,7 @@
+ #define GLM_ARCH_SSSE3_BIT	(0x00000010)
+ #define GLM_ARCH_SSE41_BIT	(0x00000020)
+ #define GLM_ARCH_SSE42_BIT	(0x00000040)
+-#define GLM_ARCH_AVX_BIT	(0x00000080)
++#define GLM_ARCH_AVX_BIT	(0x00000000)
+ #define GLM_ARCH_AVX2_BIT	(0x00000100)
+ 
+ #define GLM_ARCH_UNKNOWN	(0)
+--- a/CMakeLists.txt	2019-03-06 19:27:14.052353176 +0100
++++ b/CMakeLists.txt	2019-03-06 19:27:05.161503895 +0100
+@@ -203,7 +203,6 @@
+ 		message("GLM: GCC - ${CMAKE_CXX_COMPILER_ID} compiler")
+ 	endif()
+ 
+-	add_compile_options(-O2)
+ 	add_compile_options(-Wno-long-long)
+ 
+ elseif(CMAKE_CXX_COMPILER_ID MATCHES "Intel")
+--- a/test/perf/CMakeLists.txt.old	2019-03-18 20:18:58.397352048 +0100
++++ b/test/perf/CMakeLists.txt	2019-03-18 20:19:08.466182370 +0100
+@@ -1,6 +1,3 @@
+-glmCreateTestGTC(perf_matrix_div)
+ glmCreateTestGTC(perf_matrix_inverse)
+-glmCreateTestGTC(perf_matrix_mul)
+-glmCreateTestGTC(perf_matrix_mul_vector)
+ glmCreateTestGTC(perf_matrix_transpose)
+ glmCreateTestGTC(perf_vector_mul_matrix)

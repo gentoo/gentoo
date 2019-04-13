@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,7 +8,7 @@ MY_PV="${PV/_/}"
 MY_P="${MY_PN}-${MY_PV}"
 
 DESCRIPTION="PHP interface to the GNU Privacy Guard (GnuPG)"
-HOMEPAGE="http://pear.php.net/package/${MY_PN}"
+HOMEPAGE="https://pear.php.net/package/${MY_PN}"
 SRC_URI="http://download.pear.php.net/package/${MY_P}.tgz"
 LICENSE="LGPL-2.1"
 SLOT="0"

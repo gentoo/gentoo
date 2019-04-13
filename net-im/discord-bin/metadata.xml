@@ -5,4 +5,7 @@
 		<email>johu@gentoo.org</email>
 		<name>Johannes Huber</name>
 	</maintainer>
+	<use>
+		<flag name="pax_kernel">Triggers a paxmarking of the binary</flag>
+	</use>
 </pkgmetadata>

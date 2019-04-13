@@ -44,6 +44,11 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-0.26.1-gentoo-tests-sandbox.patch
 	"${FILESDIR}"/${PN}-0.26.1-gentoo-tests-network-sandbox-3.patch
 	"${FILESDIR}"/${PN}-0.27.0-extra-spec-flags.patch
+	"${FILESDIR}"/${PN}-0.27.0-max-age-0-test.patch
+	"${FILESDIR}"/${PN}-0.27.0-gentoo-tests-network-sandbox.patch
+	"${FILESDIR}"/${PN}-0.27.0-gentoo-tests-long-unix.patch
+	"${FILESDIR}"/${PN}-0.27.0-gentoo-tests-long-unix-2.patch
+	"${FILESDIR}"/${PN}-0.27.0-tcp-server-test.patch
 )
 
 src_prepare() {

@@ -1,0 +1,39 @@
+From 3784fdf0259a14f1f7b20c156dcfe42b45d76896 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Thu, 24 Jan 2019 23:55:02 +0100
+Subject: [PATCH] Fix build with poppler-0.72
+
+This is a downstream fix without backwards compat, not upstreamable.
+---
+ filters/karbon/pdf/SvgOutputDev.cpp | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/filters/karbon/pdf/SvgOutputDev.cpp b/filters/karbon/pdf/SvgOutputDev.cpp
+index 391e86cc117..bc72a003efb 100644
+--- a/filters/karbon/pdf/SvgOutputDev.cpp
++++ b/filters/karbon/pdf/SvgOutputDev.cpp
+@@ -402,7 +402,7 @@ void SvgOutputDev::drawString(GfxState * state, const GooString * s)
+ 
+     QString str;
+ 
+-    const char * p = s->getCString();
++    const char * p = s->c_str();
+     int len = s->getLength();
+     CharCode code;
+     Unicode *u = nullptr;
+@@ -451,10 +451,10 @@ void SvgOutputDev::drawString(GfxState * state, const GooString * s)
+     *d->body << " y=\"" << y << "px\"";
+ 
+     if (font && font->getFamily()) {
+-        *d->body << " font-family=\"" << QString::fromLatin1(font->getFamily()->getCString()) << "\"";
++        *d->body << " font-family=\"" << QString::fromLatin1(font->getFamily()->c_str()) << "\"";
+         //debugPdf << "font family:" << QString::fromLatin1( font->getFamily()->getCString() );
+     } else if (font && font->getName()) {
+-        *d->body << " font-family=\"" << QString::fromLatin1(font->getName()->getCString()) << "\"";
++        *d->body << " font-family=\"" << QString::fromLatin1(font->getName()->c_str()) << "\"";
+         //debugPdf << "font name:" << QString::fromLatin1( font->getName()->getCString() );
+     }
+     *d->body << " font-size=\"" << qMax(state->getFontSize(), state->getTransformedFontSize()) << "px\"";
+-- 
+2.20.1
+

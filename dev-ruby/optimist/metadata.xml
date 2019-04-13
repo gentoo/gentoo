@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>ruby@gentoo.org</email>
+    <name>Gentoo Ruby Project</name>
+  </maintainer>
+  <longdescription>
+    Optimist is a commandline option parser for Ruby that just gets
+    out of your way. One line of code per option is all you need to
+    write. For that, you get a nice automatically-generated help page,
+    robust option parsing, command subcompletion, and sensible
+    defaults for everything you don't specify.
+  </longdescription>
+</pkgmetadata>

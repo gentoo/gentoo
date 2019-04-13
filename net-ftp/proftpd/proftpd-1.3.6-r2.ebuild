@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -29,7 +29,7 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
 IUSE="acl authfile ban +caps case clamav copy ctrls deflate diskuse doc dso dynmasq exec ifsession ifversion ident ipv6
 	kerberos ldap libressl log_forensic memcache msg mysql ncurses nls pam +pcre postgres qos radius
-	ratio readme rewrite selinux sftp shaper sitemisc snmp softquota sqlite ssl tcpd test unique_id vroot xinetd"
+	ratio readme rewrite selinux sftp shaper sitemisc snmp sodium softquota sqlite ssl tcpd test unique_id vroot xinetd"
 # TODO: geoip
 REQUIRED_USE="ban? ( ctrls )
 	msg? ( ctrls )
@@ -52,6 +52,7 @@ CDEPEND="acl? ( virtual/acl )
 	pam? ( virtual/pam )
 	pcre? ( dev-libs/libpcre )
 	postgres? ( dev-db/postgresql:= )
+	sodium? ( dev-libs/libsodium:0= )
 	sqlite? ( dev-db/sqlite:3 )
 	xinetd? ( virtual/inetd )"
 DEPEND="${CDEPEND}
@@ -220,6 +221,7 @@ src_configure() {
 		$(use_enable ssl openssl) \
 		$(use_enable pam auth-pam) \
 		$(use_enable pcre) \
+		$(use_enable sodium) \
 		$(use_enable test tests) \
 		--enable-trace \
 		$(use_enable userland_GNU shadow) \

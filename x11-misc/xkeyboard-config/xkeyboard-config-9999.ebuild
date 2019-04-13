@@ -1,13 +1,13 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 DESCRIPTION="X keyboard configuration database"
-HOMEPAGE="https://www.freedesktop.org/wiki/Software/XKeyboardConfig"
+HOMEPAGE="https://www.freedesktop.org/wiki/Software/XKeyboardConfig https://gitlab.freedesktop.org/xkeyboard-config/xkeyboard-config"
 
 if [[ ${PV} == 9999 ]]; then
-	EGIT_REPO_URI="https://anongit.freedesktop.org/git/xkeyboard-config.git"
+	EGIT_REPO_URI="https://gitlab.freedesktop.org/xkeyboard-config/xkeyboard-config.git"
 	inherit autotools git-r3
 	# x11-misc/util-macros only required on live ebuilds
 	LIVE_DEPEND=">=x11-misc/util-macros-1.18"
@@ -21,6 +21,8 @@ SLOT="0"
 IUSE=""
 
 BDEPEND="
+	dev-util/intltool
+	sys-devel/gettext
 	virtual/pkgconfig
 "
 RDEPEND="
@@ -29,8 +31,6 @@ RDEPEND="
 "
 DEPEND="
 	${LIVE_DEPEND}
-	dev-util/intltool
-	sys-devel/gettext
 "
 
 src_prepare() {

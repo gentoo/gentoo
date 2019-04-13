@@ -1,6 +1,5 @@
-diff -ur mt-daapd-0.2.4.1.orig/configure.in mt-daapd-0.2.4.1/configure.in
---- mt-daapd-0.2.4.1.orig/configure.in	2007-10-22 02:50:24.000000000 +0300
-+++ mt-daapd-0.2.4.1/configure.in	2007-10-28 23:31:43.000000000 +0200
+--- a/configure.in
++++ b/configure.in
 @@ -20,8 +20,9 @@
  CPPFLAGS="${CPPFLAGS} -g"
  
@@ -126,8 +125,8 @@ diff -ur mt-daapd-0.2.4.1.orig/configure.in mt-daapd-0.2.4.1/configure.in
    fi
  fi
 diff -ur mt-daapd-0.2.4.1.orig/src/Makefile.am mt-daapd-0.2.4.1/src/Makefile.am
---- mt-daapd-0.2.4.1.orig/src/Makefile.am	2007-10-22 03:32:27.000000000 +0300
-+++ mt-daapd-0.2.4.1/src/Makefile.am	2007-10-28 23:31:33.000000000 +0200
+--- a/src/Makefile.am
++++ b/src/Makefile.am
 @@ -34,6 +34,9 @@
  	redblack.c redblack.h dynamic-art.c dynamic-art.h query.c query.h \
  	$(PRENDSRC) $(ORENDSRC) $(HRENDSRC) $(OGGVORBISSRC) $(ARENDSRC)

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ HOMEPAGE="https://kile.sourceforge.io/"
 [[ ${PV} != *9999* ]] && SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 
 LICENSE="FDL-1.2 GPL-2"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="+pdf +png"
 
 DEPEND="
@@ -19,7 +19,6 @@ DEPEND="
 	$(add_frameworks_dep kcoreaddons)
 	$(add_frameworks_dep kcrash)
 	$(add_frameworks_dep kdbusaddons)
-	$(add_frameworks_dep kdoctools)
 	$(add_frameworks_dep kguiaddons)
 	$(add_frameworks_dep khtml)
 	$(add_frameworks_dep ki18n)
@@ -57,6 +56,7 @@ DOCS=( AUTHORS ChangeLog kile-remote-control.txt README README.cwl )
 
 PATCHES=(
 	"${FILESDIR}/${P}-cmake.patch"
+	"${FILESDIR}/${P}-kf5doctools.patch"
 	"${FILESDIR}/${P}-desktopfile.patch"
 	"${FILESDIR}/${P}-no-empty-filename.patch"
 	"${FILESDIR}/${P}-viewtab-crash.patch"

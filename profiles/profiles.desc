@@ -334,23 +334,18 @@ ppc64		hardened/linux/powerpc/ppc64/64bit-userland		dev
 amd64		default/linux/amd64/17.0/musl				exp
 amd64		default/linux/amd64/17.0/musl/hardened			exp
 amd64		default/linux/amd64/17.0/musl/hardened/selinux		exp
-arm		default/linux/musl/arm/armv7a				exp
-arm		hardened/linux/musl/arm/armv7a				exp
 arm		default/linux/arm/17.0/musl/armv6j			exp
 arm		default/linux/arm/17.0/musl/armv6j/hardened		exp
 arm		default/linux/arm/17.0/musl/armv7a			exp
 arm		default/linux/arm/17.0/musl/armv7a/hardened		exp
-arm64		default/linux/musl/arm64 				exp
-arm64		hardened/linux/musl/arm64 				exp
+arm64		default/linux/arm64/17.0/musl				exp
+arm64		default/linux/arm64/17.0/musl/hardened			exp
 mips		default/linux/musl/mips					exp
 mips		hardened/linux/musl/mips				exp
 mips		default/linux/musl/mips/mipsel				exp
 mips		hardened/linux/musl/mips/mipsel				exp
-ppc		default/linux/musl/ppc					exp
-ppc		hardened/linux/musl/ppc					exp
 ppc		default/linux/powerpc/ppc32/17.0/musl			exp
 ppc		default/linux/powerpc/ppc32/17.0/musl/hardened		exp
-x86		default/linux/musl/x86					exp
 x86		default/linux/x86/17.0/musl				exp
 x86		default/linux/x86/17.0/musl/selinux			exp
 
@@ -385,21 +380,14 @@ ppc64-linux		prefix/linux/ppc64				exp
 x86-linux		prefix/linux/x86				exp
 
 # Linux Standalone Profiles
-amd64-linux		prefix/linux-standalone/amd64			exp
-amd64-linux		prefix/linux-standalone/amd64/legacy		exp
 amd64-linux		default/linux/amd64/17.0/no-multilib/prefix/kernel-3.2+		exp
 amd64-linux		default/linux/amd64/17.0/no-multilib/prefix/kernel-2.6.32+	exp
 amd64-linux		default/linux/amd64/17.0/no-multilib/prefix/kernel-2.6.16+	exp
-x86-linux		prefix/linux-standalone/x86			exp
-x86-linux		prefix/linux-standalone/x86/legacy		exp
 x86-linux		default/linux/x86/17.0/prefix/kernel-3.2+	exp
 x86-linux		default/linux/x86/17.0/prefix/kernel-2.6.32+	exp
 x86-linux		default/linux/x86/17.0/prefix/kernel-2.6.16+	exp
 arm-linux		default/linux/arm/17.0/armv7a/prefix/kernel-3.2+		exp
-arm-linux		prefix/linux-standalone/arm/armv7a		exp
 arm64-linux		default/linux/arm64/17.0/prefix/kernel-3.2+	exp
-arm64-linux		prefix/linux-standalone/arm64			exp
-ppc64-linux		prefix/linux-standalone/ppc64			exp
 
 # Mac OS X Profiles
 ppc-macos		prefix/darwin/macos/10.4/ppc			exp

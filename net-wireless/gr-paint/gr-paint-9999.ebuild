@@ -1,39 +1,44 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit git-r3
+if [[ ${PV} == 9999* ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/drmpeg/gr-paint.git"
+else
+	KEYWORDS=""
+fi
 inherit cmake-utils python-single-r1
 
-DESCRIPTION="paints monochrome images into the waterfall of a receiver"
+DESCRIPTION="Paints monochrome images into the waterfall of a receiver"
 HOMEPAGE="https://github.com/drmpeg/gr-paint"
-SRC_URI=""
-EGIT_REPO_URI="https://github.com/drmpeg/gr-paint.git"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS=""
 IUSE="doc"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-COMMON_DEPEND="${PYTHON_DEPS}
-		net-wireless/gnuradio:=[${PYTHON_USEDEP}]
-		dev-libs/boost:=[${PYTHON_USEDEP}]"
-RDEPEND="${COMMON_DEPEND}
-	media-gfx/imagemagick"
-DEPEND="${COMMON_DEPEND}
-	virtual/pkgconfig
-	dev-util/cppunit
+DEPEND="${PYTHON_DEPS}
+	dev-libs/boost:=[${PYTHON_USEDEP}]
+	net-wireless/gnuradio:=[${PYTHON_USEDEP}]
+"
+RDEPEND="${DEPEND}
+	media-gfx/imagemagick
+"
+BDEPEND="
 	dev-lang/swig
-	doc? ( app-doc/doxygen )"
+	dev-util/cppunit
+	virtual/pkgconfig
+	doc? ( app-doc/doxygen )
+"
 
 src_configure() {
-	mycmakeargs=(
-		$(cmake-utils_use_enable doc DOXYGEN)
+	local mycmakeargs=(
+		-DENABLE_DOXYGEN=$(usex doc)
 		-DPYTHON_EXECUTABLE="${PYTHON}"
 	)
 	cmake-utils_src_configure

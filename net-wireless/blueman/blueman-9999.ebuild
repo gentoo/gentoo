@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -44,7 +44,10 @@ RDEPEND="${COMMON_DEPEND}
 	appindicator? ( dev-libs/libappindicator:3[introspection] )
 	network? (
 		net-firewall/iptables
-		sys-apps/net-tools
+		|| (
+			sys-apps/net-tools
+			sys-apps/iproute2
+		)
 		|| (
 			net-dns/dnsmasq
 			net-misc/dhcp
@@ -105,11 +108,6 @@ src_install() {
 
 	python_fix_shebang "${D}"
 	rm "${D}"/$(python_get_sitedir)/*.la || die
-}
-
-pkg_preinst() {
-	gnome2_icon_savelist
-	gnome2_schemas_savelist
 }
 
 pkg_postinst() {

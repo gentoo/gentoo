@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -63,6 +63,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-gentoo.patch
 	"${FILESDIR}"/${P}-linguas.patch
 	"${FILESDIR}"/${P}-nomancompress.patch
+	"${FILESDIR}"/${P}-jpeg-9c.patch
 )
 
 src_prepare() {

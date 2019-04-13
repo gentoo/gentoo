@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -23,7 +23,7 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="BSD"
 SLOT="0/3.4.1" # subslot = libopencv* soname version
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 x86 ~amd64-linux"
 IUSE="contrib contrib_cvv contrib_dnn contrib_hdf contrib_sfm contrib_xfeatures2d cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse3 cpu_flags_x86_ssse3 cpu_flags_x86_sse4_1 cpu_flags_x86_sse4_2 cpu_flags_x86_popcnt cpu_flags_x86_avx cpu_flags_x86_avx2 cpu_flags_x86_fma3 cuda debug dnn_samples +eigen examples ffmpeg gdal gflags glog gphoto2 gstreamer gtk ieee1394 jpeg jpeg2k lapack libav opencl openexr opengl openmp pch png +python qt5 tesseract testprograms threads tiff vaapi v4l vtk webp xine"
 # OpenGL needs gtk or Qt installed to activate, otherwise build system
 # will silently disable it Wwithout the user knowing, which defeats the
@@ -105,7 +105,8 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig[${MULTILIB_USEDEP}]
 	contrib_dnn? ( dev-libs/cereal )
 	eigen? ( dev-cpp/eigen:3 )
-	java?  ( >=virtual/jdk-1.6 )"
+	java?  ( >=virtual/jdk-1.6 )
+	vaapi?  ( x11-libs/libva )"
 
 MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/opencv2/cvconfig.h
@@ -230,6 +231,10 @@ PATCHES=(
 	"${FILESDIR}/${P}-compilation-C-mode.patch" # https://bugs.gentoo.org/656530
 	"${FILESDIR}/${P}-python-lib-suffix-hack.patch"
 	"${FILESDIR}/${P}-cuda-add-relaxed-constexpr.patch"
+	"${FILESDIR}/${P}-remove-git-autodetect.patch"
+	"${FILESDIR}/${P}-fix-build-with-va.patch" # bug https://bugs.gentoo.org/656576
+	"${FILESDIR}/${P}-popcnt.patch" # https://bugs.gentoo.org/633900
+	"${FILESDIR}/${P}-fix-on-x86.patch" # https://bugs.gentoo.org/682104
 )
 
 pkg_pretend() {
@@ -468,10 +473,9 @@ python_module_compile() {
 
 	# Set all python variables to load the correct Gentoo paths
 	mycmakeargs+=(
-		# cheap trick: python_setup sets one of them as a symlink
-		# to the correct interpreter, and the other to fail-wrapper
-		-DPYTHON2_EXECUTABLE=$(type -P python2)
-		-DPYTHON3_EXECUTABLE=$(type -P python3)
+		# python_setup alters PATH and sets this as wrapper
+		# to the correct interpreter we are building for
+		-DPYTHON_DEFAULT_EXECUTABLE=python
 		-DINSTALL_PYTHON_EXAMPLES=$(usex examples)
 		-DLIBPY_SUFFIX=64
 	)

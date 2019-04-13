@@ -1,8 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit desktop gnome2-utils toolchain-funcs xdg-utils vcs-snapshot
+
+inherit desktop toolchain-funcs vcs-snapshot xdg
 
 DESCRIPTION="Quick Image Viewer"
 HOMEPAGE="http://spiegl.de/qiv/ https://bitbucket.org/ciberandy/qiv"
@@ -13,8 +14,9 @@ SLOT="0"
 KEYWORDS="~amd64 ~mips ~x86"
 IUSE="exif lcms magic"
 
-RDEPEND=">=x11-libs/gtk+-2.12:2
+RDEPEND="
 	media-libs/imlib2[X]
+	>=x11-libs/gtk+-2.12:2
 	exif? ( media-libs/libexif )
 	lcms? (
 		media-libs/lcms:2
@@ -58,14 +60,4 @@ src_install() {
 
 	domenu qiv.desktop
 	doicon qiv.png
-}
-
-pkg_postinst() {
-	xdg_desktop_database_update
-	gnome2_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_desktop_database_update
-	gnome2_icon_cache_update
 }

@@ -1,0 +1,24 @@
+From aa3ebbd2eb4b4a6ab92833060c212255d90c68b4 Mon Sep 17 00:00:00 2001
+From: Stefan Strogin <stefan.strogin@gmail.com>
+Date: Mon, 11 Feb 2019 01:53:10 +0200
+Subject: [PATCH] Find NCurses library on Linux/Mac
+
+---
+ CMakeLists.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 372d838..f39ebcd 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -261,6 +261,7 @@ elseif ((MSYS OR MINGW) AND NOT "$ENV{MINGW}" STREQUAL "")
+     set(CURSES_LIBRARIES "/$ENV{MINGW}/lib/libncurses.a")
+ else ()
+     message(STATUS "NOTE: Configuring build for macOS/Linux release...")
++    set(CURSES_NEED_NCURSES TRUE)
+     find_package(Curses REQUIRED)
+ endif ()
+ 
+-- 
+2.20.1
+

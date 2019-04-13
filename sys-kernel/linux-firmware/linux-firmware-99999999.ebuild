@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -17,7 +17,7 @@ fi
 DESCRIPTION="Linux firmware files"
 HOMEPAGE="https://git.kernel.org/?p=linux/kernel/git/firmware/linux-firmware.git"
 
-LICENSE="linux-firmware ( BSD ISC MIT no-source-code ) GPL-2 GPL-2+ freedist"
+LICENSE="linux-firmware ( BSD ISC MIT no-source-code ) GPL-2 GPL-2+"
 SLOT="0"
 IUSE="savedconfig"
 
@@ -84,10 +84,31 @@ src_prepare() {
 	if use savedconfig; then
 		restore_config ${PN}.conf
 		ebegin "Removing all files not listed in config"
-		find * \( \! -type d -and \! -name ${PN}.conf \) \
-			| sort ${PN}.conf ${PN}.conf - \
-			| uniq -u | xargs -r rm
-		eend $? || die
+
+		local file delete_file preserved_file preserved_files=()
+
+		while IFS= read -r file; do
+			# Ignore comments.
+			if [[ ${file} != "#"* ]]; then
+				preserved_files+=("${file}")
+			fi
+		done < ${PN}.conf || die
+
+		while IFS= read -d "" -r file; do
+			delete_file=true
+			for preserved_file in "${preserved_files[@]}"; do
+				if [[ "${file}" == "${preserved_file}" ]]; then
+					delete_file=false
+				fi
+			done
+
+			if ${delete_file}; then
+				rm "${file}" || die
+			fi
+		done < <(find * \( \! -type d -and \! -name ${PN}.conf \) -print0 || die)
+
+		eend || die
+
 		# remove empty directories, bug #396073
 		find -type d -empty -delete || die
 	fi

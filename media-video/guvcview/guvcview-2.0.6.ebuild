@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="gsl libav pulseaudio qt5"
 
 RDEPEND="
@@ -51,6 +51,7 @@ S="${WORKDIR}/${MY_P}"
 src_prepare() {
 	default
 	sed -i '/^docdir/,/^$/d' Makefile.am || die
+	echo "guvcview/gui_qt5_audioctrls.cpp" >> po/POTFILES.skip || die # bug 630984
 	eautoreconf
 }
 

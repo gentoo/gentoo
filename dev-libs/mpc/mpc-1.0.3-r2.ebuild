@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,7 +7,7 @@ inherit eutils libtool multilib-minimal
 
 DESCRIPTION="A library for multiprecision complex arithmetic with exact rounding"
 HOMEPAGE="http://mpc.multiprecision.org/"
-SRC_URI="http://www.multiprecision.org/mpc/download/${P}.tar.gz"
+SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0/3"

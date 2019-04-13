@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -49,7 +49,7 @@ src_prepare() {
 	done
 	exec ${PKG_CONFIG} libpcre "${flags[@]}"
 	EOF
-	chmod a+x "${T}"/pcre-config
+	chmod a+x "${T}"/pcre-config || die
 }
 
 src_configure() {

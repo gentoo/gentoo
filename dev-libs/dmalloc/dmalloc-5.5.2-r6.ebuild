@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -80,6 +80,6 @@ src_install() {
 	done
 
 	if ! use static-libs; then
-		rm "${D}"/usr/$(get_libdir)/lib${PN}*.a || die
+		rm "${ED}"/usr/$(get_libdir)/lib${PN}*.a || die
 	fi
 }

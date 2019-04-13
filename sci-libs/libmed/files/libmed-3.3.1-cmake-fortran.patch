@@ -1,0 +1,21 @@
+Make cmake properly disable fortran upon user requirments
+
+--- ./CMakeLists.txt.orig	2016-07-01 15:28:57.139304608 +0300
++++ ./CMakeLists.txt	2016-07-01 15:34:22.295899455 +0300
+@@ -8,10 +8,13 @@
+ 
+ INCLUDE(CheckLanguage)
+ CHECK_LANGUAGE(Fortran)
+-IF(CMAKE_Fortran_COMPILER)
++OPTION (MEDFILE_BUILD_FORTRAN "Build fortran library" ON)
++IF(MEDFILE_BUILD_FORTRAN)
+   ENABLE_LANGUAGE(Fortran)
++  IF(NOT CMAKE_Fortran_COMPILER)
++      MESSAGE(FATAL_EROOR "Fortran support was requested but not found")
++  ENDIF()
+ ELSE()
+-  MESSAGE(STATUS "No Fortran support")
+ ENDIF()
+ 
+ ## Version number 
+

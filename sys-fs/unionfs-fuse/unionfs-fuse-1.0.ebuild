@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -13,7 +13,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86 ~x86-linux"
 IUSE=""
 
-DEPEND="sys-fs/fuse"
+DEPEND="sys-fs/fuse:0"
 RDEPEND="${DEPEND}"
 
 src_install() {

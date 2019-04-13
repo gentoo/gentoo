@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -22,7 +22,7 @@ KEYWORDS="~amd64"
 IUSE=""
 
 ruby_add_bdepend "test? ( dev-ruby/rails:5.2 dev-ruby/activerecord:5.2[sqlite] dev-ruby/temple )"
-ruby_add_rdepend ">=dev-ruby/fast_gettext-0.9.0"
+ruby_add_rdepend ">=dev-ruby/fast_gettext-0.9.0:*"
 
 all_ruby_prepare() {
 	rm Gemfile Gemfile.lock || die

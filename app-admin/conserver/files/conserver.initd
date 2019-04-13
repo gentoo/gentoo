@@ -1,5 +1,5 @@
 #!/sbin/openrc-run
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 depend() {
@@ -25,7 +25,7 @@ checkconfig() {
 start() {
 	checkconfig || return 1
 	ebegin "Starting conserver"
-	start-stop-daemon --start --quiet --exec \
+	start-stop-daemon --start --quiet --pidfile /var/run/conserver.pid --exec \
 		/usr/sbin/conserver -- ${CONSERVER_OPTS} 1>/dev/null
 	eend $? "Failed to start conserver"
 }

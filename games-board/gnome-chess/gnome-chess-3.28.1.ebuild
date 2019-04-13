@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,11 +17,11 @@ IUSE=""
 RDEPEND="
 	>=dev-libs/glib-2.44:2
 	>=x11-libs/gtk+-3.19:3
-	>=gnome-base/librsvg-2.32.0:2
+	>=gnome-base/librsvg-2.32.0:2[vala]
 "
 DEPEND="${RDEPEND}
 	$(vala_depend)
-	app-text/yelp-tools
+	dev-util/itstool
 	dev-libs/appstream-glib
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig

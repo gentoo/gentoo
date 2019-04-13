@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,11 +13,11 @@ SRC_URI="$(rust_all_arch_uris ${MY_P})"
 
 LICENSE="|| ( MIT Apache-2.0 ) BSD-1 BSD-2 BSD-4 UoI-NCSA"
 SLOT="stable"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 IUSE="clippy cpu_flags_x86_sse2 doc libressl rustfmt"
 
 DEPEND=""
-RDEPEND=">=app-eselect/eselect-rust-0.3_pre20150425
+RDEPEND=">=app-eselect/eselect-rust-20190311
 	sys-libs/zlib
 	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:0= )

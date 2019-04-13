@@ -17,6 +17,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Sergei Trofimovich <slyfox@gentoo.org> (16 Mar 2019)
+# sys-block/megactl works on x86 and amd64
+www-apps/phpsysinfo -megactl
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (05 March 2019)
+# freeipmi is supported on amd64
+app-admin/conserver -freeipmi
+
 # Thomas Deutschmann <whissi@gentoo.org> (15 Nov 2018)
 # - rdrand plugin is supported on amd64
 net-vpn/strongswan -strongswan_plugins_rdrand
@@ -194,11 +202,6 @@ dev-libs/boost	-context
 # mupen64plus' 2.0 new dynamic recompiler is supported on x86 and arm
 # only.
 games-emulation/mupen64plus-core new-dynarec
-
-# Jeff Horelick <jdhore@gentoo.org> (1 Sep 2013)
-# Dependency (media-libs/libsidplayfp) only keyworded
-# on x86 and amd64. (masked in base)
->=media-plugins/audacious-plugins-3.4 -sid
 
 # Tim Harder <radhermit@gentoo.org> (13 Aug 2013)
 # dev-lang/luajit keyworded for amd64 (masked in base)

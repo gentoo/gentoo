@@ -17,6 +17,15 @@
 
 #--- END OF EXAMPLES ---
 
+# Sergei Trofimovich <slyfox@gentoo.org> (31 Mar 2019)
+# No stable dovecot on net-mail/dovecot, bug #634822.
+mail-filter/maildrop dovecot
+
+# Sergei Trofimovich <slyfox@gentoo.org> (25 Dec 2018)
+# Needs net-mail/mailutils and net-libs/webkit-gtk which are not
+# stable (yet?), bug #663248
+app-editors/emacs mailutils xwidgets
+
 # Andreas Sturmlechner <asturm@gentoo.org> (14 Sep 2018)
 # media-libs/libraw is not stable
 media-gfx/imagemagick raw
@@ -41,10 +50,6 @@ media-libs/libcanberra gstreamer
 app-admin/augeas test
 app-text/texlive context l10n_ja
 sys-block/thin-provisioning-tools test
-
-# Davide Pesavento <pesa@gentoo.org> (18 Oct 2015)
-# Requires dev-python/PyQt5, which is not stable on sparc
-media-sound/pulseaudio equalizer
 
 # Pacho Ramos <pacho@gentoo.org> (02 Aug 2015)
 # Missing keywords

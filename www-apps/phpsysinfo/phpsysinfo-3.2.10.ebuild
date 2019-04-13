@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,7 +10,7 @@ HOMEPAGE="https://rk4an.github.com/phpsysinfo/"
 SRC_URI="https://github.com/rk4an/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="apcupsd dmraid freeipmi hddtemp ipmitool ipmiutil iptables lm_sensors mdadm megactl nut quota smart snmp uptime"
 RDEPEND="dev-lang/php[simplexml,xml,xsl(+),xslt(+),unicode]
 	virtual/httpd-php

@@ -1,13 +1,14 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI=7
+
+PYTHON_COMPAT=( python2_7 python3_{5,6,7} )
+
+inherit distutils-r1
 
 MY_PN="RTIMULib"
 MY_P="${MY_PN}-${PV}"
-PYTHON_COMPAT=( python2_7 python3_{4,5,6,7} )
-
-inherit distutils-r1
 
 DESCRIPTION="Python Binding for RTIMULib, a versatile IMU library"
 HOMEPAGE="https://github.com/RPi-Distro/RTIMULib"

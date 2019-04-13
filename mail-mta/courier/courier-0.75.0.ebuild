@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -11,14 +11,14 @@ SLOT="0"
 LICENSE="GPL-2"
 # not in keywords due to missing dependencies:
 # ~s390 ~ppc64 ~alpha ~ia64 ~sparc ~x86
-KEYWORDS="alpha amd64 ~arm hppa ia64 ppc sparc x86"
+KEYWORDS="alpha amd64 ~arm hppa ia64 ppc s390 sparc x86"
 IUSE="postgres ldap mysql pam nls ipv6 spell fax crypt norewrite \
 	fam web webmail gnutls"
 
 DEPEND="
 	>=net-libs/courier-authlib-0.66.3
 	>=net-libs/courier-unicode-1.3
-	!gnutls? ( dev-libs/openssl:= )
+	!gnutls? ( dev-libs/openssl:0= )
 	gnutls? ( net-libs/gnutls )
 	>=sys-libs/gdbm-1.8.0
 	dev-libs/libpcre

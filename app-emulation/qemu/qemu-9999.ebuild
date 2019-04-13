@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -91,7 +91,7 @@ SOFTMMU_TOOLS_DEPEND="
 	aio? ( dev-libs/libaio[static-libs(+)] )
 	alsa? ( >=media-libs/alsa-lib-1.0.13 )
 	bzip2? ( app-arch/bzip2[static-libs(+)] )
-	capstone? ( dev-libs/capstone )
+	capstone? ( dev-libs/capstone:= )
 	caps? ( sys-libs/libcap-ng[static-libs(+)] )
 	curl? ( >=net-misc/curl-7.15.4[static-libs(+)] )
 	fdt? ( >=sys-apps/dtc-1.4.2[static-libs(+)] )
@@ -170,6 +170,17 @@ PPC64_FIRMWARE_DEPEND="
 	)
 "
 
+BDEPEND="
+	${PYTHON_DEPS}
+	dev-lang/perl
+	sys-apps/texinfo
+	virtual/pkgconfig
+	gtk? ( nls? ( sys-devel/gettext ) )
+	test? (
+		dev-libs/glib[utils]
+		sys-devel/bc
+	)
+"
 CDEPEND="
 	!static? (
 		${ALL_DEPEND//\[static-libs(+)]}
@@ -181,21 +192,12 @@ CDEPEND="
 "
 DEPEND="${CDEPEND}
 	${PYTHON_DEPS}
-	dev-lang/perl
-	=dev-lang/python-2*
-	sys-apps/texinfo
-	virtual/pkgconfig
 	kernel_linux? ( >=sys-kernel/linux-headers-2.6.35 )
-	gtk? ( nls? ( sys-devel/gettext ) )
 	static? (
 		${ALL_DEPEND}
 		${SOFTMMU_TOOLS_DEPEND}
 	)
-	static-user? ( ${ALL_DEPEND} )
-	test? (
-		dev-libs/glib[utils]
-		sys-devel/bc
-	)"
+	static-user? ( ${ALL_DEPEND} )"
 RDEPEND="${CDEPEND}
 	selinux? ( sec-policy/selinux-qemu )"
 
@@ -482,7 +484,6 @@ qemu_src_configure() {
 		conf_opts+=(
 			--audio-drv-list="${audio_opts}"
 		)
-		use sdl && conf_opts+=( --with-sdlabi=2.0 )
 	fi
 
 	case ${buildtype} in
@@ -594,7 +595,7 @@ src_test() {
 }
 
 qemu_python_install() {
-	python_domodule "${S}/scripts/qmp/qmp.py"
+	python_domodule "${S}/python/qemu/qmp.py"
 
 	python_doscript "${S}/scripts/kvm/vmxcap"
 	python_doscript "${S}/scripts/qmp/qmp-shell"
@@ -640,9 +641,11 @@ generate_initd() {
 		sparc*) qcpu="sparc";;
 		esac
 
+		# we use 'printf' here to be portable across 'sh'
+		# implementations: #679168
 		cat <<EOF >>"${out}"
 	if [ "\${cpu}" != "${qcpu}" -a -x "${interpreter}" ] ; then
-		echo ':${package}:M::${magic}:${mask}:${interpreter}:'"\${QEMU_BINFMT_FLAGS}" >/proc/sys/fs/binfmt_misc/register
+		printf '%s\n' ':${package}:M::${magic}:${mask}:${interpreter}:'"\${QEMU_BINFMT_FLAGS}" >/proc/sys/fs/binfmt_misc/register
 	fi
 EOF
 
@@ -749,7 +752,7 @@ src_install() {
 firmware_abi_change() {
 	local pv
 	for pv in ${REPLACING_VERSIONS}; do
-		if ! version_is_at_least ${FIRMWARE_ABI_VERSION} ${pv}; then
+		if ver_test $pv -lt ${FIRMWARE_ABI_VERSION}; then
 			return 0
 		fi
 	done
@@ -761,7 +764,8 @@ pkg_postinst() {
 		udev_reload
 	fi
 
-	fcaps cap_net_admin /usr/libexec/qemu-bridge-helper
+	[[ -f ${D}/usr/libexec/qemu-bridge-helper ]] && \
+		fcaps cap_net_admin /usr/libexec/qemu-bridge-helper
 
 	DISABLE_AUTOFORMATTING=true
 	readme.gentoo_print_elog

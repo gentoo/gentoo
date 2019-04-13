@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -29,6 +29,7 @@ IUSE=""
 
 DEPEND="
 	~media-tv/kodi-9999
+	=dev-libs/libplatform-2*
 	"
 RDEPEND="
 	${DEPEND}

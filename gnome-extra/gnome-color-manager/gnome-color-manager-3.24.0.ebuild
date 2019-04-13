@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit gnome2 virtualx
 
 DESCRIPTION="Color profile manager for the GNOME desktop"
-HOMEPAGE="https://git.gnome.org/browse/gnome-color-manager"
+HOMEPAGE="https://gitlab.gnome.org/GNOME/gnome-color-manager/"
 
 LICENSE="GPL-2+"
 SLOT="0"
@@ -38,6 +38,11 @@ DEPEND="${RDEPEND}
 	>=sys-devel/gettext-0.19.7
 	virtual/pkgconfig
 "
+
+PATCHES=(
+	# https://gitlab.gnome.org/GNOME/gnome-color-manager/issues/4
+	"${FILESDIR}"/${P}-exiv2-0.27.patch # bug 674086
+)
 
 src_configure() {
 	# Always enable tests since they are check_PROGRAMS anyway

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,12 +8,12 @@ HOMEPAGE="https://www.opendnssec.org/"
 SRC_URI="https://www.opendnssec.org/files/source/${P}.tar.gz"
 
 KEYWORDS="~alpha ~amd64 ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
-IUSE="bindist libressl migration-tool test"
+IUSE="bindist gost libressl migration-tool test"
 SLOT="2"
 LICENSE="BSD"
 
 RDEPEND="migration-tool? ( dev-db/sqlite:3= )
-	!libressl? ( dev-libs/openssl:=[bindist=] )
+	!libressl? ( dev-libs/openssl:0=[bindist=] )
 	libressl? ( dev-libs/libressl:= )
 	!~dev-libs/softhsm-2.0.0:0"
 DEPEND="${RDEPEND}"
@@ -37,7 +37,7 @@ src_configure() {
 		--disable-p11-kit \
 		--localstatedir="${EROOT}/var" \
 		$(use_enable !bindist ecc) \
-		$(use_enable !libressl gost) \
+		$(use_enable gost) \
 		$(use_with migration-tool migrate)
 }
 

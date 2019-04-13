@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -69,7 +69,7 @@ DEPEND="mail-mta/opensmtpd
 	filter-lua? ( luajit? ( dev-lang/luajit:2 ) !luajit? ( dev-lang/lua:* ) )
 	filter-dnsbl? ( net-libs/libasr )
 	table-sqlite? ( dev-db/sqlite:3 )
-	table-mysql? ( virtual/mysql )
+	table-mysql? ( dev-db/mysql-connector-c:0= )
 	table-postgres? ( dev-db/postgresql:* )
 	table-redis? ( dev-libs/hiredis )
 	table-python? ( dev-lang/python:2.7 )

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,7 +12,7 @@ HOMEPAGE="https://www.linux-apps.com/content/show.php?action=content&content=114
 SRC_URI="mirror://kde/stable/${PN}/${PV}/${P}.tar.xz"
 
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 CDEPEND="
@@ -40,8 +40,18 @@ CDEPEND="
 DEPEND="${CDEPEND}
 	sys-devel/gettext
 	x11-base/xorg-proto
-	x11-libs/libX11
 "
 RDEPEND="${CDEPEND}
 	!kde-misc/wacomtablet:4
 "
+
+PATCHES=( "${FILESDIR}/${P}-xlib-optional.patch" ) # bug 681674
+
+src_test() {
+	# test needs DBus, bug 675548
+	local myctestargs=(
+		-E "(Test.KDED.DBusTabletService)"
+	)
+
+	kde5_src_test
+}

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,7 +19,7 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="aac doc ffmpeg hid mp3 mp4 opus shout wavpack"
+IUSE="aac doc ffmpeg hid lv2 mp3 mp4 opus shout wavpack"
 
 # fails to compile system-fidlib. Add ">media-libs/fidlib-0.9.10-r1" once this
 # got fixed
@@ -29,6 +29,7 @@ RDEPEND="
 	dev-libs/protobuf:0=
 	dev-qt/qtconcurrent:5
 	dev-qt/qtcore:5
+	dev-qt/qtdbus:5
 	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5
 	dev-qt/qtopengl:5
@@ -36,6 +37,7 @@ RDEPEND="
 	dev-qt/qtsql:5
 	dev-qt/qtsvg:5
 	dev-qt/qtwidgets:5
+	dev-qt/qtx11extras:5
 	dev-qt/qtxml:5
 	media-libs/chromaprint
 	media-libs/flac
@@ -59,6 +61,7 @@ RDEPEND="
 		media-libs/libmp4v2:0
 	)
 	hid? ( dev-libs/hidapi )
+	lv2? ( >=media-libs/lilv-0.24.2-r3 )
 	mp3? ( media-libs/libmad )
 	mp4? ( media-libs/libmp4v2:= )
 	opus? (	media-libs/opusfile )
@@ -75,12 +78,12 @@ DEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-2.0.0-docs.patch
+	"${FILESDIR}"/${PN}-2.2.0-lilv_include_fix.patch
 )
 
 src_prepare() {
 	# use multilib compatible directory for plugins
-	sed -i -e "/unix_lib_path =/s/'lib'/'$(get_libdir)'/" src/SConscript || die
+	sed -i -e "/env.Alias('install', docs)/d;"'/unix_lib_path =/!b;n;'"s/'lib'/'$(get_libdir)'/" SConscript || die
 
 	default
 }
@@ -107,6 +110,7 @@ src_configure() {
 		ffmpeg="$(usex ffmpeg 1 0)"
 		hid="$(usex hid 1 0)"
 		hifieq=1
+		lilv="$(usex lv2 1 0)"
 		m4a="$(usex mp4 1 0)"
 		mad="$(usex mp3 1 0)"
 		optimize="${myoptimize}"

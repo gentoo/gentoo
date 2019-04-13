@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Maintainer: Toolchain Ninjas <toolchain@gentoo.org>
-# @SUPPORTED_EAPIS: 5
+# @SUPPORTED_EAPIS: 5 6
 
 DESCRIPTION="The GNU Compiler Collection"
 HOMEPAGE="https://gcc.gnu.org/"
@@ -26,7 +26,7 @@ FEATURES=${FEATURES/multilib-strict/}
 
 case ${EAPI:-0} in
 	0|1|2|3|4*) die "Need to upgrade to at least EAPI=5" ;;
-	5*) inherit eapi7-ver ;;
+	5*|6) inherit eapi7-ver ;;
 	*) die "I don't speak EAPI ${EAPI}." ;;
 esac
 EXPORT_FUNCTIONS pkg_pretend pkg_setup src_unpack src_prepare src_configure \
@@ -128,38 +128,51 @@ else
 	LICENSE="GPL-2+ LGPL-2.1+ FDL-1.1+"
 fi
 
-IUSE="regression-test vanilla"
-IUSE_DEF=( nls nptl )
+if tc_version_is_at_least 8.3; then
+	GCC_EBUILD_TEST_FLAG='test'
+else
+	# Don't force USE regression-test->test change on every
+	# gcc ebuild just yet. Let's do the change when >=gcc-8.3
+	# is commonly used as a main compiler.
+	GCC_EBUILD_TEST_FLAG='regression-test'
+fi
+IUSE="${GCC_EBUILD_TEST_FLAG} vanilla +nls +nptl"
+
+TC_FEATURES=()
+
+tc_has_feature() {
+	has "$1" "${TC_FEATURES[@]}"
+}
 
 if [[ ${PN} != "kgcc64" && ${PN} != gcc-* ]] ; then
-	IUSE+=" altivec debug"
-	IUSE_DEF+=( cxx fortran )
+	IUSE+=" altivec debug +cxx +fortran" TC_FEATURES+=(fortran)
 	[[ -n ${PIE_VER} ]] && IUSE+=" nopie"
 	[[ -n ${HTB_VER} ]] && IUSE+=" boundschecking"
 	[[ -n ${D_VER}   ]] && IUSE+=" d"
 	[[ -n ${SPECS_VER} ]] && IUSE+=" nossp"
 	tc_version_is_at_least 3 && IUSE+=" doc hardened multilib objc"
-	tc_version_is_between 3 7 && IUSE+=" awt gcj"
+	tc_version_is_between 3 7 && IUSE+=" awt gcj" TC_FEATURES+=(gcj)
 	tc_version_is_at_least 3.3 && IUSE+=" pgo"
-	tc_version_is_at_least 4.0 && IUSE+=" objc-gc"
+	tc_version_is_at_least 4.0 &&
+		IUSE+=" objc-gc" TC_FEATURES+=(objc-gc)
 	tc_version_is_between 4.0 4.9 && IUSE+=" mudflap"
 	tc_version_is_at_least 4.1 && IUSE+=" libssp objc++"
-	tc_version_is_at_least 4.2 && IUSE_DEF+=( openmp )
+	tc_version_is_at_least 4.2 && IUSE+=" +openmp"
 	tc_version_is_at_least 4.3 && IUSE+=" fixed-point"
 	tc_version_is_at_least 4.7 && IUSE+=" go"
 	# Note: while <=gcc-4.7 also supported graphite, it required forked ppl
 	# versions which we dropped.  Since graphite was also experimental in
 	# the older versions, we don't want to bother supporting it.  #448024
-	tc_version_is_at_least 4.8 && IUSE+=" graphite" IUSE_DEF+=( sanitize )
+	tc_version_is_at_least 4.8 &&
+		IUSE+=" graphite +sanitize" TC_FEATURES+=(graphite)
 	tc_version_is_between 4.9 8 && IUSE+=" cilk"
 	tc_version_is_at_least 4.9 && IUSE+=" +vtv"
 	tc_version_is_at_least 5.0 && IUSE+=" jit mpx"
 	tc_version_is_at_least 6.0 && IUSE+=" +pie +ssp +pch"
 	# systemtap is a gentoo-specific switch: bug #654748
-	tc_version_is_at_least 8.0 && IUSE+=" systemtap"
+	tc_version_is_at_least 8.0 &&
+		IUSE+=" systemtap" TC_FEATURES+=(systemtap)
 fi
-
-IUSE+=" ${IUSE_DEF[*]/#/+}"
 
 SLOT="${GCC_CONFIG_VER}"
 
@@ -174,20 +187,20 @@ if tc_version_is_at_least 4 ; then
 	GMP_MPFR_DEPS=">=dev-libs/gmp-4.3.2:0= >=dev-libs/mpfr-2.4.2:0="
 	if tc_version_is_at_least 4.3 ; then
 		RDEPEND+=" ${GMP_MPFR_DEPS}"
-	elif in_iuse fortran ; then
+	elif tc_has_feature fortran ; then
 		RDEPEND+=" fortran? ( ${GMP_MPFR_DEPS} )"
 	fi
 fi
 
 tc_version_is_at_least 4.5 && RDEPEND+=" >=dev-libs/mpc-0.8.1:0="
 
-if in_iuse objc-gc ; then
+if tc_has_feature objc-gc ; then
 	if tc_version_is_at_least 7 ; then
 		RDEPEND+=" objc-gc? ( >=dev-libs/boehm-gc-7.4.2 )"
 	fi
 fi
 
-if in_iuse graphite ; then
+if tc_has_feature graphite ; then
 	if tc_version_is_at_least 5.0 ; then
 		RDEPEND+=" graphite? ( >=dev-libs/isl-0.14:0= )"
 	elif tc_version_is_at_least 4.8 ; then
@@ -203,12 +216,12 @@ DEPEND="${RDEPEND}
 	>=sys-devel/bison-1.875
 	>=sys-devel/flex-2.5.4
 	nls? ( sys-devel/gettext )
-	regression-test? (
+	${GCC_EBUILD_TEST_FLAG}? (
 		>=dev-util/dejagnu-1.4.4
 		>=sys-devel/autogen-5.5.4
 	)"
 
-if in_iuse gcj ; then
+if tc_has_feature gcj ; then
 	GCJ_DEPS=">=media-libs/libart_lgpl-2.1"
 	GCJ_GTK_DEPS="
 		x11-base/xorg-proto
@@ -223,7 +236,7 @@ if in_iuse gcj ; then
 	DEPEND+=" gcj? ( awt? ( ${GCJ_GTK_DEPS} ) ${GCJ_DEPS} )"
 fi
 
-if in_iuse systemtap ; then
+if tc_has_feature systemtap ; then
 	# gcc needs sys/sdt.h headers on target
 	DEPEND+=" systemtap? ( dev-util/systemtap )"
 fi
@@ -376,7 +389,7 @@ get_gcc_src_uri() {
 	[[ -n ${D_VER} ]] && \
 		GCC_SRC_URI+=" d? ( mirror://sourceforge/dgcc/gdc-${D_VER}-src.tar.bz2 )"
 
-	if in_iuse gcj ; then
+	if tc_has_feature gcj ; then
 		if tc_version_is_at_least 4.5 ; then
 			GCC_SRC_URI+=" gcj? ( ftp://sourceware.org/pub/java/ecj-4.5.jar )"
 		elif tc_version_is_at_least 4.3 ; then
@@ -522,7 +535,12 @@ toolchain_src_prepare() {
 	do_gcc_HTB_patches
 	do_gcc_PIE_patches
 	do_gcc_CYGWINPORTS_patches
-	epatch_user
+
+	case ${EAPI:-0} in
+		5*) epatch_user;;
+		6) eapply_user ;;
+		*) die "Update toolchain_src_prepare() for ${EAPI}." ;;
+	esac
 
 	if ( tc_version_is_at_least 4.8.2 || use_if_iuse hardened ) && ! use vanilla ; then
 		make_gcc_hard
@@ -1274,7 +1292,8 @@ toolchain_src_configure() {
 	if in_iuse vtv ; then
 		confgcc+=(
 			$(use_enable vtv vtable-verify)
-			$(use_enable vtv libvtv)
+			# See Note [implicitly enabled flags]
+			$(usex vtv '' --disable-libvtv)
 		)
 	fi
 
@@ -1303,7 +1322,8 @@ toolchain_src_configure() {
 	fi
 
 	if tc_version_is_at_least 4.8 && in_iuse sanitize ; then
-		confgcc+=( $(use_enable sanitize libsanitizer) )
+		# See Note [implicitly enabled flags]
+		confgcc+=( $(usex sanitize '' --disable-libsanitizer) )
 	fi
 
 	if tc_version_is_at_least 6.0 && in_iuse pie ; then
@@ -1723,9 +1743,10 @@ gcc_do_make() {
 #---->> src_test <<----
 
 toolchain_src_test() {
-	if use regression-test ; then
+	if use ${GCC_EBUILD_TEST_FLAG} ; then
 		cd "${WORKDIR}"/build
-		emake -k check
+		# enable verbose test run and result logging
+		emake -k check RUNTESTFLAGS='-a -v'
 	fi
 }
 
@@ -1863,7 +1884,7 @@ toolchain_src_install() {
 	find "${ED}" -depth -type d -delete 2>/dev/null
 
 	# install testsuite results
-	if use regression-test; then
+	if use ${GCC_EBUILD_TEST_FLAG}; then
 		docinto testsuite
 		find "${WORKDIR}"/build -type f -name "*.sum" -exec dodoc {} +
 		find "${WORKDIR}"/build -type f -path "*/testsuite/*.log" -exec dodoc {} +
@@ -2191,7 +2212,7 @@ toolchain_pkg_postinst() {
 		cp "${ROOT%/}${DATAPATH}"/c{89,99} "${EROOT%/}"/usr/bin/ 2>/dev/null
 	fi
 
-	if use regression-test ; then
+	if use ${GCC_EBUILD_TEST_FLAG} ; then
 		elog "Testsuite results have been installed into /usr/share/doc/${PF}/testsuite"
 		echo
 	fi
@@ -2498,3 +2519,21 @@ toolchain_death_notice() {
 		popd >/dev/null
 	fi
 }
+
+# Note [implicitly enabled flags]
+# -------------------------------
+# Usually configure-based packages handle explicit feature requests
+# like
+#     ./configure --enable-foo
+# as explicit request to check for support of 'foo' and bail out at
+# configure time.
+#
+# GCC does not follow this pattern and instead overrides autodetection
+# of the feature and enables it unconditionally.
+# See bugs:
+#    https://gcc.gnu.org/PR85663 (libsanitizer on mips)
+#    https://bugs.gentoo.org/661252 (libvtv on powerpc64)
+#
+# Thus safer way to enable/disable the feature is to rely on implicit
+# enabled-by-default state:
+#    econf $(usex foo '' --disable-foo)

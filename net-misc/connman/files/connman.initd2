@@ -1,6 +1,6 @@
 #!/sbin/openrc-run
-# Copyright 1999-2013 Gentoo Foundation
-# Distributed under the terms of the GNU General Purpose License v2
+# Copyright 1999-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
 
 depend() {
    need dbus

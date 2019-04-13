@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -32,11 +32,11 @@ RDEPEND="
 		)
 	)
 	libressl? ( dev-libs/libressl:0= )
-	$(python_gen_cond_dep 'dev-python/enum34[${PYTHON_USEDEP}]' python2_7 pypy{,3})
 	>=dev-python/idna-2.1[${PYTHON_USEDEP}]
 	>=dev-python/asn1crypto-0.21.0[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	>=dev-python/six-1.4.1[${PYTHON_USEDEP}]
+	virtual/python-enum34[${PYTHON_USEDEP}]
 	virtual/python-ipaddress[${PYTHON_USEDEP}]
 	"
 DEPEND="${RDEPEND}

@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/project/libcg/${PN}/v${PV}/${P}.tar.bz2"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="amd64 arm ~ppc ~ppc64 x86"
-IUSE="+daemon elibc_musl pam static-libs +tools"
+IUSE="+daemon elibc_musl pam static-libs test +tools"
 
 RDEPEND="pam? ( virtual/pam )"
 
@@ -50,6 +50,11 @@ src_prepare() {
 	sed -e 's:\(pam_cgroup_la_LDFLAGS.*\):\1\ -avoid-version:' \
 		-i src/pam/Makefile.am || die "sed failed"
 	sed -e 's#/var/run#/run#g' -i configure.in || die "sed failed"
+
+	# If we're not running tests, don't bother building them.
+	if ! use test; then
+		sed -i '/^SUBDIRS/s:tests::' Makefile.am || die
+	fi
 
 	eautoreconf
 }

@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="2"
@@ -6,8 +6,8 @@ EAPI="2"
 inherit user toolchain-funcs flag-o-matic
 
 DESCRIPTION="Add and remove SCSI devices from your Linux system during runtime"
-HOMEPAGE="http://llg.cubic.org/tools/"
-SRC_URI="http://llg.cubic.org/tools/${P}.tar.gz"
+HOMEPAGE="https://llg.cubic.org/tools/"
+SRC_URI="https://llg.cubic.org/tools/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>prometheanfire@gentoo.org</email>
+		<name>Matthew Thode</name>
+	</maintainer>
+	<longdescription lang="en">
+		LSP (Linux Studio Plugins) is a collection of open-source plugins
+		currently compatible with LADSPA, LV2 and LinuxVST formats.
+	</longdescription>
+	<use>
+		<flag name="lv2">build lv2 plugins</flag>
+	</use>
+</pkgmetadata>

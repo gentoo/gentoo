@@ -1,4 +1,4 @@
-# Copyright 2009-2018 Gentoo Authors
+# Copyright 2009-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -13,7 +13,7 @@ SRC_URI="https://sites.google.com/site/nihilistorguk/${MY_P}.zip"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE=""
 RESTRICT="binchecks"
 

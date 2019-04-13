@@ -1,13 +1,13 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 
-inherit toolchain-funcs eutils systemd savedconfig
+inherit toolchain-funcs systemd savedconfig
 
 DESCRIPTION="IEEE 802.11 wireless LAN Host AP daemon"
 HOMEPAGE="http://w1.fi"
-EXTRAS_VER="2.6-r5"
+EXTRAS_VER="2.7-r2"
 EXTRAS_NAME="${CATEGORY}_${PN}_${EXTRAS_VER}_extras"
 SRC_URI="https://dev.gentoo.org/~andrey_utkin/distfiles/${EXTRAS_NAME}.tar.xz"
 

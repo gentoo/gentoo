@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,7 +8,7 @@ inherit multiprocessing pax-utils python-any-r1 qt5-build
 DESCRIPTION="Library for rendering dynamic web content in Qt5 C++ and QML applications"
 
 if [[ ${QT5_BUILD_TYPE} == release ]]; then
-	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 x86"
 fi
 
 IUSE="alsa bindist designer geolocation +jumbo-build pax_kernel pulseaudio
@@ -38,6 +38,7 @@ RDEPEND="
 	media-libs/libjpeg-turbo:=
 	media-libs/libpng:0=
 	>=media-libs/libvpx-1.5:=[svc]
+	<media-libs/libvpx-1.8
 	media-libs/libwebp:=
 	media-libs/mesa[egl]
 	media-libs/opus

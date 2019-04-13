@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Web"
 LICENSE="GPL-3+"
 SLOT="0"
 IUSE="test"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86"
 
 COMMON_DEPEND="
 	>=dev-libs/glib-2.52.0:2
@@ -36,8 +36,7 @@ COMMON_DEPEND="
 "
 RDEPEND="${COMMON_DEPEND}
 	x11-themes/adwaita-icon-theme
-	!<media-plugins/gst-plugins-opus-1.14.4-r1
-" # Ensure opusparse is present, if gstreamer support is included in webkit
+"
 # paxctl needed for bug #407085
 # appstream-glib needed for appdata.xml gettext translation
 DEPEND="${COMMON_DEPEND}

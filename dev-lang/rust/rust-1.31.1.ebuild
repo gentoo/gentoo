@@ -1,9 +1,11 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 PYTHON_COMPAT=( python2_7 python3_{5,6} pypy )
+
+LLVM_MAX_SLOT=7
 
 inherit check-reqs eapi7-ver estack flag-o-matic llvm multiprocessing multilib-build python-any-r1 rust-toolchain toolchain-funcs
 
@@ -18,7 +20,7 @@ else
 	SLOT="stable/${ABI_VER}"
 	MY_P="rustc-${PV}"
 	SRC="${MY_P}-src.tar.xz"
-	KEYWORDS="~amd64 ~arm64 ~x86"
+	KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 fi
 
 RUST_STAGE0_VERSION="1.$(($(ver_cut 2) - 1)).1"
@@ -38,8 +40,7 @@ LICENSE="|| ( MIT Apache-2.0 ) BSD-1 BSD-2 BSD-4 UoI-NCSA"
 
 IUSE="clippy cpu_flags_x86_sse2 debug doc +jemalloc libressl rls rustfmt system-llvm wasm ${ALL_LLVM_TARGETS[*]}"
 
-COMMON_DEPEND=">=app-eselect/eselect-rust-0.3_pre20150425
-		jemalloc? ( dev-libs/jemalloc )
+COMMON_DEPEND="jemalloc? ( dev-libs/jemalloc )
 		sys-libs/zlib
 		!libressl? ( dev-libs/openssl:0= )
 		libressl? ( dev-libs/libressl:0= )
@@ -55,6 +56,7 @@ DEPEND="${COMMON_DEPEND}
 	)
 	dev-util/cmake"
 RDEPEND="${COMMON_DEPEND}
+	>=app-eselect/eselect-rust-20190311
 	!dev-util/cargo
 	rustfmt? ( !dev-util/rustfmt )"
 REQUIRED_USE="|| ( ${ALL_LLVM_TARGETS[*]} )
@@ -135,6 +137,7 @@ src_configure() {
 		release-debuginfo = $(toml_usex debug)
 		assertions = $(toml_usex debug)
 		targets = "${LLVM_TARGETS// /;}"
+		experimental-targets = "$(usex wasm WebAssembly '')"
 		link-shared = $(toml_usex system-llvm)
 		[build]
 		build = "${rust_target}"
@@ -182,7 +185,7 @@ src_configure() {
 		EOF
 		if use system-llvm; then
 			cat <<- EOF >> "${S}"/config.toml
-			    llvm-config = "$(get_llvm_prefix)/bin/llvm-config"
+				llvm-config = "$(get_llvm_prefix "${LLVM_MAX_SLOT}")/bin/llvm-config"
 			EOF
 		fi
 	done

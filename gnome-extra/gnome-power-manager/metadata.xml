@@ -6,7 +6,10 @@
 		<name>Gentoo GNOME Desktop</name>
 	</maintainer>
 	<longdescription lang="en">
-		Power Manager daemon for the GNOME desktop environment that makes it
-		easy to manage your laptop or desktop system.
+		Power Statistics can show historical and current battery information and
+		programs waking up that use power.
+		You probably only need to install this package if you are having
+		problems with your laptop battery, or are trying to work out what programs
+		are using significant amounts of power.
 	</longdescription>
 </pkgmetadata>

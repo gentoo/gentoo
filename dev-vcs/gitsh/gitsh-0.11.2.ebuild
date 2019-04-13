@@ -9,6 +9,7 @@ RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 
 RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 RUBY_FAKEGEM_EXTRADOC="README.md"
+RUBY_FAKEGEM_EXTRAINSTALL="ext"
 
 inherit autotools ruby-fakegem
 

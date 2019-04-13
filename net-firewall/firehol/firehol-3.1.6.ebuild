@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/firehol/firehol/releases/download/v${PV}/${P}.tar.xz
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="doc ipv6 ipset"
-KEYWORDS="~amd64 ~arm ~ppc ~x86"
+KEYWORDS="amd64 arm ~ppc ~x86"
 
 RDEPEND="net-firewall/iptables
 	sys-apps/iproute2[-minimal,ipv6?]
@@ -27,13 +27,15 @@ RDEPEND="net-firewall/iptables
 DEPEND="${RDEPEND}"
 
 pkg_setup() {
-	local KCONFIG_OPTS=" \
+	local CONFIG_CHECK=" \
 		~IP_NF_FILTER \
 		~IP_NF_IPTABLES \
 		~IP_NF_MANGLE \
 		~IP_NF_TARGET_MASQUERADE
 		~IP_NF_TARGET_REDIRECT \
 		~IP_NF_TARGET_REJECT \
+		~NETFILTER_XT_CONNMARK \
+		~NETFILTER_XT_MATCH_HELPER \
 		~NETFILTER_XT_MATCH_LIMIT \
 		~NETFILTER_XT_MATCH_OWNER \
 		~NETFILTER_XT_MATCH_STATE \
@@ -58,8 +60,8 @@ src_configure() {
 src_install() {
 	default
 
-	newconfd "${FILESDIR}"/firehol.conf.d firehol
-	newinitd "${FILESDIR}"/firehol.initrd firehol
-	newconfd "${FILESDIR}"/fireqos.conf.d fireqos
-	newinitd "${FILESDIR}"/fireqos.initrd fireqos
+	newconfd "${FILESDIR}"/firehol.confd firehol
+	newinitd "${FILESDIR}"/firehol.initd firehol
+	newconfd "${FILESDIR}"/fireqos.confd fireqos
+	newinitd "${FILESDIR}"/fireqos.initd fireqos
 }

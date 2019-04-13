@@ -1,0 +1,37 @@
+--- a/Makefile	2018-01-21 07:00:58.000000000 +0100
++++ b/Makefile	2018-11-09 11:58:57.000000000 +0100
+@@ -1,4 +1,4 @@
+-CFLAGS  += -std=c99 -Wall -O2 -D_REENTRANT
++CFLAGS  += -std=c99 -Wall -D_REENTRANT
+ LIBS    := -lpthread -lm -lssl -lcrypto
+ 
+ TARGET  := $(shell uname -s | tr '[A-Z]' '[a-z]' 2>/dev/null || echo unknown)
+@@ -24,7 +24,7 @@
+ 
+ ODIR := obj
+ OBJ  := $(patsubst %.c,$(ODIR)/%.o,$(SRC)) $(ODIR)/bytecode.o $(ODIR)/version.o
+-LIBS := -lluajit-5.1 $(LIBS)
++LIBS := $(shell pkg-config luajit --libs) $(LIBS)
+ 
+ DEPS    :=
+ CFLAGS  += -I$(ODIR)/include
+@@ -51,8 +51,7 @@
+ 	$(RM) -rf $(BIN) obj/*
+ 
+ $(BIN): $(OBJ)
+-	@echo LINK $(BIN)
+-	@$(CC) $(LDFLAGS) -o $@ $^ $(LIBS)
++	$(CC) $(LDFLAGS) -o $@ $^ $(LIBS)
+ 
+ $(OBJ): config.h Makefile $(DEPS) | $(ODIR)
+ 
+@@ -67,8 +66,7 @@
+ 	@echo 'const char *VERSION="$(VER)";' | $(CC) -xc -c -o $@ -
+ 
+ $(ODIR)/%.o : %.c
+-	@echo CC $<
+-	@$(CC) $(CFLAGS) -c -o $@ $<
++	$(CC) $(CFLAGS) -c -o $@ $<
+ 
+ # Dependencies
+ 

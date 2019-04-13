@@ -7,6 +7,5 @@
 </maintainer>
 <use>
 	<flag name="asm">Enable use of hand optimized assembly routines (faster execution)</flag>
-	<flag name="pgo">After building gmp, run some tests against to produce faster libraries -- this option will double the compile time</flag>
 </use>
 </pkgmetadata>

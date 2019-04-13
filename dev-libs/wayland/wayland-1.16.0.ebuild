@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-EGIT_REPO_URI="https://anongit.freedesktop.org/git/wayland/wayland.git"
+EGIT_REPO_URI="https://gitlab.freedesktop.org/wayland/wayland.git"
 
 if [[ ${PV} = 9999* ]]; then
 	GIT_ECLASS="git-r3"
@@ -12,13 +12,13 @@ fi
 inherit autotools libtool multilib-minimal toolchain-funcs $GIT_ECLASS
 
 DESCRIPTION="Wayland protocol libraries"
-HOMEPAGE="https://wayland.freedesktop.org/"
+HOMEPAGE="https://wayland.freedesktop.org/ https://gitlab.freedesktop.org/wayland/wayland"
 
 if [[ $PV = 9999* ]]; then
 	SRC_URI=""
 else
 	SRC_URI="https://wayland.freedesktop.org/releases/${P}.tar.xz"
-	KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 s390 ~sh sparc x86"
+	KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~m68k ~mips ppc ppc64 s390 ~sh sparc x86"
 fi
 
 LICENSE="MIT"

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -20,7 +20,7 @@ S=${WORKDIR}
 # TODO: check accessibility completeness
 RDEPEND="
 	>=gnome-base/gnome-core-libs-${PV}[cups?]
-	>=gnome-base/gnome-core-apps-${PV}[cups?,bluetooth?,cdr?]
+	>=gnome-base/gnome-core-apps-${PV}[cups?,bluetooth?,cdr(+)?]
 
 	>=gnome-base/gdm-${PV}
 

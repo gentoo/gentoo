@@ -1,7 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+VALA_MAX_API_VERSION="0.40"
 inherit gnome2 vala versionator
 
 DESCRIPTION="Simple document scanning utility"
@@ -12,7 +13,7 @@ SRC_URI="https://launchpad.net/${PN}/${MY_PV}/${PV}/+download/${P}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~arm x86"
+KEYWORDS="amd64 ~arm ~ppc64 x86"
 IUSE="colord" # packagekit
 
 COMMON_DEPEND="

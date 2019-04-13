@@ -1,0 +1,104 @@
+#!/sbin/openrc-run
+# Copyright 1999-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+extra_commands="check clear list panic save soft_panic"
+extra_started_commands="reload"
+
+depend() {
+	need localmount #434774
+	before net
+}
+
+checkkernel() {
+	if ! /sbin/nft list ruleset >/dev/null 2>/dev/null ; then
+		eerror "Your kernel lacks nftables support, please load"
+		eerror "appropriate modules and try again."
+		return 1
+	fi
+	return 0
+}
+
+checkconfig() {
+	if [ -z "${NFTABLES_SAVE}" -o ! -f "${NFTABLES_SAVE}" ] ; then
+		eerror "Not starting nftables. First create some rules then run:"
+		eerror "/etc/init.d/${SVCNAME} save"
+		return 1
+	fi
+	return 0
+}
+
+start_pre() {
+	checkconfig || return 1
+	checkkernel || return 1
+	check || return 1
+}
+
+start() {
+	ebegin "Loading ${SVCNAME} state and starting firewall"
+	/usr/libexec/nftables/nftables.sh load "${NFTABLES_SAVE}"
+	eend $?
+}
+
+stop() {
+	if [ "${SAVE_ON_STOP}" = "yes" ] ; then
+		save || return 1
+	fi
+
+	ebegin "Stopping firewall"
+	if [ "${PANIC_ON_STOP}" = "hard" ]; then
+		/usr/libexec/nftables/nftables.sh panic
+	elif [ "${PANIC_ON_STOP}" = "soft" ]; then
+		/usr/libexec/nftables/nftables.sh soft_panic
+	else
+		/usr/libexec/nftables/nftables.sh clear
+	fi
+	eend $?
+}
+
+reload() {
+	start_pre || return 1
+	start
+}
+
+clear() {
+	ebegin "Clearing rules"
+	/usr/libexec/nftables/nftables.sh clear
+	eend $?
+}
+
+list() {
+	/usr/libexec/nftables/nftables.sh list
+}
+
+check() {
+	ebegin "Checking rules"
+	/usr/libexec/nftables/nftables.sh check "${NFTABLES_SAVE}"
+	eend $?
+}
+
+save() {
+	ebegin "Saving ${SVCNAME} state"
+	checkpath -q -d "$(dirname "${NFTABLES_SAVE}")"
+	checkpath -q -m 0600 -f "${NFTABLES_SAVE}"
+	/usr/libexec/nftables/nftables.sh store "${NFTABLES_SAVE}"
+	eend $?
+}
+
+panic() {
+	if service_started ${SVCNAME}; then
+		rc-service ${SVCNAME} zap
+	fi
+	ebegin "Dropping all packets"
+	/usr/libexec/nftables/nftables.sh panic
+	eend $?
+}
+
+soft_panic() {
+	if service_started ${SVCNAME}; then
+		rc-service ${SVCNAME} zap
+	fi
+	ebegin "Dropping new connections"
+	/usr/libexec/nftables/nftables.sh soft_panic
+	eend $?
+}

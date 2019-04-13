@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -36,10 +36,12 @@ DEPEND="${RDEPEND}
 	dev-util/glib-utils
 	>=dev-util/gtk-doc-am-1.25
 	>=dev-util/intltool-0.40
+	sys-devel/autoconf-archive
 	virtual/pkgconfig
 	test? ( >=net-libs/uhttpmock-0.5 )
 	vala? ( $(vala_depend) )
 "
+# eautoreconf needs autoconf-archive
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.17.8-disable-demos.patch

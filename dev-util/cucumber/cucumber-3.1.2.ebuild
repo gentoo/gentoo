@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,7 +19,7 @@ SRC_URI="https://github.com/cucumber/cucumber-ruby/archive/v${PV}.tar.gz -> ${P}
 RUBY_S="cucumber-ruby-${PV}"
 LICENSE="Ruby"
 
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86"
 SLOT="0"
 IUSE="examples test"
 
@@ -30,7 +30,7 @@ ruby_add_bdepend "
 		>=dev-ruby/nokogiri-1.5.2
 		>=dev-ruby/syntax-1.0.0
 		>=dev-util/aruba-0.6.1 =dev-util/aruba-0.6*
-		>=dev-ruby/json-1.7
+		>=dev-ruby/json-1.8.6:0
 		>=dev-util/cucumber-3
 		>=dev-ruby/mime-types-2.99:2
 	)"

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # For released versions, we precompile the man/html pages and store
@@ -25,7 +25,7 @@ HOMEPAGE="https://wiki.linuxfoundation.org/networking/iputils"
 
 LICENSE="BSD GPL-2+ rdisc"
 SLOT="0"
-IUSE="+arping caps clockdiff doc gcrypt idn ipv6 libressl nettle rarpd rdisc SECURITY_HAZARD ssl static tftpd tracepath traceroute"
+IUSE="+arping caps clockdiff doc gcrypt idn ipv6 libressl nettle rarpd rdisc SECURITY_HAZARD ssl static tftpd tracepath traceroute6"
 
 LIB_DEPEND="
 	caps? ( sys-libs/libcap[static-libs(+)] )
@@ -46,7 +46,7 @@ LIB_DEPEND="
 RDEPEND="
 	arping? ( !net-misc/arping )
 	rarpd? ( !net-misc/rarpd )
-	traceroute? ( !net-analyzer/traceroute )
+	traceroute6? ( !net-analyzer/traceroute )
 	!static? ( ${LIB_DEPEND//\[static-libs(+)]} )
 "
 DEPEND="
@@ -88,7 +88,7 @@ src_configure() {
 		-DENABLE_RDISC_SERVER="$(usex rdisc true false)"
 		-DBUILD_TFTPD="$(usex tftpd true false)"
 		-DBUILD_TRACEPATH="$(usex tracepath true false)"
-		-DBUILD_TRACEROUTE6="$(usex ipv6 $(usex traceroute true false) false)"
+		-DBUILD_TRACEROUTE6="$(usex ipv6 $(usex traceroute6 true false) false)"
 		-DBUILD_NINFOD="false"
 		-DNINFOD_MESSAGES="false"
 		-DBUILD_HTML_MANS="$(usex doc true false)"

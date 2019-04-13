@@ -1,9 +1,0 @@
-<?xml version="1.0" ?>
-<accessible description="Root of the accessible tree" name="root_object" role="accelerator label">
-	<accessible_editable_text description="first child" name="obj0" role="entry">
-		<text_edit_node text="test text"/>
-	</accessible_editable_text>
-	<accessible_editable_text description="second child" name="obj1" role="entry">
-		<text_edit_node text="second test text"/>
-	</accessible_editable_text>
-</accessible>

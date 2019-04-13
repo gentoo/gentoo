@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -30,7 +30,7 @@ PATCHES=(
 pkg_nofetch() {
 	eerror "Please go to https://deviceatlas.com/deviceatlas-haproxy-module"
 	eerror "And download DeviceAtlas C API"
-	eerror "Then place the file in ${DISTDIR}/${MY_P}.tgz"
+	eerror "Save the file as ${MY_P}.tgz in your DISTDIR directory."
 }
 
 multilib_src_install_all() {

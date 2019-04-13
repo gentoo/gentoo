@@ -10,7 +10,7 @@
 		<remote-id type="github">dino/dino</remote-id>
 	</upstream>
 	<use>
-		<flag name="gnupg">Enable OpenPGP encryption plugin</flag>
+		<flag name="gpg">Enable OpenPGP encryption plugin</flag>
 		<flag name="http">Enable HTTP file upload plugin</flag>
 		<flag name="omemo">Enable OMEMO encryption plugin</flag>
 	</use>

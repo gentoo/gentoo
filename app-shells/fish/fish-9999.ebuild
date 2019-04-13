@@ -25,9 +25,8 @@ SLOT="0"
 IUSE="doc nls test"
 
 RDEPEND="
-	>=dev-libs/libpcre2-10.21[pcre32]
-	sys-devel/bc
-	sys-libs/ncurses:0=
+	>=dev-libs/libpcre2-10.32[pcre32]
+	sys-libs/ncurses:0=[unicode]
 "
 
 DEPEND="${RDEPEND}
@@ -50,6 +49,7 @@ src_configure() {
 		-DCMAKE_INSTALL_BINDIR="${EPREFIX}/bin"
 		-DCMAKE_INSTALL_DOCDIR="share/doc/${PF}"
 		-DCMAKE_INSTALL_SYSCONFDIR="${EPREFIX}/etc"
+		-DCURSES_NEED_NCURSES=ON
 		-DINTERNAL_WCWIDTH=OFF
 		-DBUILD_DOCS="$(usex doc)"
 		-DWITH_GETTEXT="$(usex nls)"

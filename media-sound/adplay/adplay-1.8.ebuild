@@ -9,7 +9,7 @@ SRC_URI="https://github.com/adplug/adplay-unix/releases/download/v${PV}/${P}.tar
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc ~x86"
 IUSE="alsa ao oss sdl"
 
 RDEPEND=">=media-libs/adplug-2.2.1

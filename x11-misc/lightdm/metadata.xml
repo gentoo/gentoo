@@ -9,6 +9,6 @@
 		<flag name="gtk">Pull in the gtk+ greeter</flag>
 	</use>
 	<upstream>
-		<remote-id type="launchpad">lightdm</remote-id>
+		<remote-id type="github">CanonicalLtd/lightdm</remote-id>
 	</upstream>
 </pkgmetadata>

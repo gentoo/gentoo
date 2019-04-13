@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,14 +11,14 @@ LICENSE="GPL-2"
 
 SRC_URI="https://www.lesbonscomptes.com/upmpdcli/downloads/${P}.tar.gz"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="thirdparty"
 
 DEPEND="
 	dev-libs/jsoncpp
 	media-libs/libmpdclient
 	net-libs/libmicrohttpd
-	net-libs/libupnpp
+	<net-libs/libupnpp-0.17.0
 "
 RDEPEND="
 	${DEPEND}
@@ -33,7 +33,7 @@ pkg_setup() {
 
 src_install() {
 	default
-	newinitd "${FILESDIR}/${PN}.initd" "${PN}"
+	newinitd "${FILESDIR}/${P}.initd" "${PN}"
 	newconfd "${FILESDIR}/${PN}.confd" "${PN}"
 	systemd_dounit systemd/upmpdcli.service
 }

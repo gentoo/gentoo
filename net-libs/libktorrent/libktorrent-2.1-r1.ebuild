@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,7 +12,7 @@ HOMEPAGE="https://www.kde.org/applications/internet/ktorrent/"
 SRC_URI="mirror://kde/stable/ktorrent/5.1/${P}.tar.xz"
 
 LICENSE="GPL-2+"
-KEYWORDS="amd64 ~arm x86"
+KEYWORDS="amd64 ~arm ~arm64 x86"
 IUSE=""
 
 COMMON_DEPEND="

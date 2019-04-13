@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -46,6 +46,11 @@ pkg_setup() {
 src_prepare() {
 	sed -i -e 's:-ggdb::' CMakeLists.txt || die
 
+	local PATCHES=(
+		# compatibility with kernel 5.0.0
+		# https://bugs.gentoo.org/680084
+		"${FILESDIR}"/sysdig-0.24.2-kernel-5.0.0.patch
+	)
 	cmake-utils_src_prepare
 }
 

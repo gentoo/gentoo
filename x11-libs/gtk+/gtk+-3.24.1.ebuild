@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,13 +12,13 @@ HOMEPAGE="https://www.gtk.org/"
 
 LICENSE="LGPL-2+"
 SLOT="3"
-IUSE="aqua broadway cloudprint colord cups examples +introspection test vim-syntax wayland +X xinerama"
+IUSE="aqua broadway cloudprint colord cups examples gtk-doc +introspection test vim-syntax wayland +X xinerama"
 REQUIRED_USE="
 	|| ( aqua wayland X )
 	xinerama? ( X )
 "
 
-KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ia64 ~mips ppc ppc64 s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 
 # Upstream wants us to do their job:
 # https://bugzilla.gnome.org/show_bug.cgi?id=768662#c1
@@ -70,6 +70,7 @@ DEPEND="${COMMON_DEPEND}
 	>=dev-util/gdbus-codegen-2.48
 	dev-util/glib-utils
 	>=dev-util/gtk-doc-am-1.20
+	gtk-doc? ( >=dev-util/gtk-doc-1.20 )
 	>=sys-devel/gettext-0.19.7[${MULTILIB_USEDEP}]
 	virtual/pkgconfig[${MULTILIB_USEDEP}]
 	X? ( x11-base/xorg-proto )
@@ -140,6 +141,7 @@ multilib_src_configure() {
 		$(use_enable cloudprint) \
 		$(use_enable colord) \
 		$(use_enable cups cups auto) \
+		$(multilib_native_use_enable gtk-doc) \
 		$(multilib_native_use_enable introspection) \
 		$(use_enable wayland wayland-backend) \
 		$(use_enable X x11-backend) \

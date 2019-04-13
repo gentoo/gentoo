@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -32,7 +32,10 @@ DEPEND="${RDEPEND}
 		virtual/pkgconfig
 	)"
 
-PATCHES=( "${FILESDIR}"/${PN}-2.2-mruby.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.2-libressl-2.7.patch
+	"${FILESDIR}"/${PN}-2.2-mruby.patch
+)
 
 pkg_setup() {
 	enewgroup ${PN}

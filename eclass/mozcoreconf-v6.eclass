@@ -21,6 +21,7 @@ inherit multilib toolchain-funcs flag-o-matic python-any-r1 versionator
 IUSE="${IUSE} custom-cflags custom-optimization"
 
 DEPEND="virtual/pkgconfig
+	dev-lang/python:2.7[ncurses,sqlite,ssl,threads(+)]
 	${PYTHON_DEPS}"
 
 # @FUNCTION: mozconfig_annotate

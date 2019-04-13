@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
@@ -14,7 +14,7 @@ HOMEPAGE="http://www.washington.edu/imap/"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 sparc x86"
+KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 s390 sparc x86"
 IUSE="ipv6 +ssl kerberos clearpasswd"
 
 DEPEND="!net-libs/c-client

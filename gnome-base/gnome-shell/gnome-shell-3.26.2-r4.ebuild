@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -29,6 +29,7 @@ COMMON_DEPEND="
 	>=dev-libs/glib-2.53.0:2
 	>=dev-libs/gobject-introspection-1.49.1:=
 	>=dev-libs/gjs-1.47.0
+	<dev-libs/gjs-1.53
 	>=x11-libs/gtk+-3.15.0:3[introspection]
 	nsplugin? ( >=dev-libs/json-glib-0.13.2 )
 	>=x11-wm/mutter-3.24.0:0/1[introspection]

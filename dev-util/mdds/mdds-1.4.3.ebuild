@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,7 +8,7 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://kohei.us/files/${PN}/src/${P}.tar.bz2"
-# 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 fi
 inherit autotools toolchain-funcs
 
@@ -19,8 +19,6 @@ LICENSE="MIT"
 SLOT="1/${PV%.*}"
 IUSE="doc valgrind"
 
-RDEPEND="dev-libs/boost:="
-DEPEND="${RDEPEND}"
 BDEPEND="
 	doc? (
 		app-doc/doxygen
@@ -28,6 +26,8 @@ BDEPEND="
 	)
 	valgrind? ( dev-util/valgrind )
 "
+DEPEND="dev-libs/boost:="
+RDEPEND="${DEPEND}"
 
 PATCHES=( "${FILESDIR}/${P}-buildsystem.patch" )
 

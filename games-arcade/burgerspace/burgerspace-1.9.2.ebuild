@@ -1,12 +1,12 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 inherit autotools games
 
 DESCRIPTION="Clone of the 1982 BurgerTime video game by Data East"
-HOMEPAGE="http://perso.b2b2c.ca/sarrazip/dev/burgerspace.html"
-SRC_URI="http://perso.b2b2c.ca/sarrazip/dev/${P}.tar.gz"
+HOMEPAGE="https://perso.b2b2c.ca/~sarrazip/dev/burgerspace.html"
+SRC_URI="https://perso.b2b2c.ca/~sarrazip/dev/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -23,9 +23,9 @@ RDEPEND="
 	virtual/libiconv
 	dbus? ( sys-apps/dbus )
 	dvbcsa? ( media-libs/libdvbcsa )
-	ffmpeg? ( media-video/ffmpeg:0/55.57.57[opus?,vpx?,x264?,x265?] )
+	ffmpeg? ( media-video/ffmpeg:0=[opus?,vpx?,x264?,x265?] )
 	hdhomerun? ( media-libs/libhdhomerun )
-	!libressl? ( dev-libs/openssl:= )
+	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:= )
 	uriparser? ( dev-libs/uriparser )
 	zeroconf? ( net-dns/avahi )
@@ -57,7 +57,7 @@ REQUIRED_USE="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.0.9-use_system_queue.patch
-	"${FILESDIR}"/${PN}-4.2.1-hdhomerun.patch
+	"${FILESDIR}"/${PN}-4.3-hdhomerun.patch
 	"${FILESDIR}"/${PN}-4.2.2-dtv_scan_tables.patch
 )
 

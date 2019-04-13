@@ -1,0 +1,33 @@
+--- splix-2.0.0_p20130826/src/algo0x11.cpp.orig	2018-12-19 20:55:03.216127909 +0100
++++ splix-2.0.0_p20130826/src/algo0x11.cpp	2018-12-19 20:58:21.986353903 +0100
+@@ -89,7 +89,8 @@
+ 
+     // Print the table
+     for (unsigned long i=0; i < TABLE_PTR_SIZE; i++, w += 2) {
+-        *(uint16_t *)(out + w) = (uint16_t)_ptrArray[i];
++        out[w + 0] = (uint8_t)_ptrArray[i];
++        out[w + 1] = (uint8_t)(_ptrArray[i] >> 8);
+         if (_ptrArray[i] > uncompSize)
+             uncompSize = _ptrArray[i];
+     }
+@@ -97,7 +98,10 @@
+     // Print the first uncompressed bytes
+     if (uncompSize > MAX_UNCOMPRESSED_BYTES)
+         uncompSize = MAX_UNCOMPRESSED_BYTES;
+-    *(uint32_t *)out = (uint32_t)uncompSize;
++    out[0] = (uint8_t)uncompSize;
++    out[1] = (uint8_t)(uncompSize >> 8);
++    out[2] = (uint8_t)(uncompSize >> 16);
++    out[3] = (uint8_t)(uncompSize >> 24);
+     for (r=0; r < uncompSize; r++, w++)
+         out[w] = data[r];
+ 
+@@ -234,7 +238,7 @@
+     // Register the result into a band plane
+     plane = new BandPlane();
+     plane->setData(output, outputSize);
+-    plane->setEndian(BandPlane::Dependant);
++    plane->setEndian(BandPlane::LittleEndian);
+     plane->setCompression(0x11);
+ 
+     return plane;

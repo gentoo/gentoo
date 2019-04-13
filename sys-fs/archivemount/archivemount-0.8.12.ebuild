@@ -4,7 +4,7 @@
 EAPI=6
 
 DESCRIPTION="Mount archives using libarchive and FUSE"
-HOMEPAGE="https://www.cybernoia.de/software/archivemount.html"
+HOMEPAGE="https://www.cybernoia.de/software/archivemount.html https://github.com/cybernoid/archivemount.git"
 SRC_URI="https://www.cybernoia.de/software/archivemount/${P}.tar.gz"
 
 LICENSE="GPL-2"

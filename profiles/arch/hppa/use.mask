@@ -1,7 +1,12 @@
-# Copyright 1999-2017 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
 
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
+
+# Andreas Sturmlechner <asturm@gentoo.org> (31 Mar 2019)
+# sys-auth/elogind is not yet keyworded here. bug #681200
+elogind
 
 # Michał Górny <mgorny@gentoo.org> (16 Jul 2018)
 # Python 3.7 support requires fresh versions of packages which are stuck
@@ -242,8 +247,6 @@ video_cards_r300
 video_cards_r600
 video_cards_radeon
 video_cards_radeonsi
-video_cards_tdfx
-video_cards_voodoo
 
 # 25 Jul 2005 Guy Martin <gmsoft@gentoo.org>
 # lm_sensors not supported on hppa and ieee1394 not tested

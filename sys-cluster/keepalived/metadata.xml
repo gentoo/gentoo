@@ -9,6 +9,8 @@
 		VRRP2 implementation. Used for setting up high availability clusters.
 	</longdescription>
 	<use>
+		<flag name="bfd">compile with support for Bidirectional Forwarding Detection (BFD).</flag>
 		<flag name="json">compile with signal to dump configuration and stats as JSON.</flag>
+		<flag name="regex">compile with support for regex in health checks</flag>
 	</use>
 </pkgmetadata>

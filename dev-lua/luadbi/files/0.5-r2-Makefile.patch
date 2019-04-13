@@ -1,5 +1,5 @@
---- Makefile.orig	2013-02-01 13:34:54.490898002 +0400
-+++ Makefile	2013-02-01 13:44:25.927772130 +0400
+--- a/Makefile	2013-02-01 13:34:54.490898002 +0400
++++ b/Makefile	2013-02-01 13:44:25.927772130 +0400
 @@ -1,5 +1,6 @@
  CC=gcc
 -CFLAGS=-g -pedantic -Wall -O2 -shared -fpic -I /usr/include/lua5.1 -I /usr/include/mysql -I /usr/include/postgresql/ -I /opt/ibm/db2exc/V9.5/include/ -I /usr/lib/oracle/xe/app/oracle/product/10.2.0/client/rdbms/public/ -I .

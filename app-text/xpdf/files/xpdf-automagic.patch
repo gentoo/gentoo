@@ -1,0 +1,36 @@
+--- xpdf-4.01.orig/cmake-config.txt	2019-02-18 21:24:19.000000000 +0300
++++ xpdf-4.01/cmake-config.txt	2019-03-10 20:59:59.769610445 +0300
+@@ -93,6 +93,10 @@
+   option(XPDFWIDGET_PRINTING "include printing support in XpdfWidget" ON)
+ endif ()
+ 
++#--- disable lib dep automagick ---
++option(WITH_LIBPAPER "Enable libpaper support for getting paper size preferences" ON)
++option(WITH_LIBPNG "Enable png support via libpng" ON)
++
+ #--- check for various library functions
+ check_function_exists(mkstemp HAVE_MKSTEMP)
+ check_function_exists(mkstemps HAVE_MKSTEMPS)
+@@ -182,7 +186,9 @@
+ find_package(ZLIB)
+ 
+ #--- look for libpng
++if (WITH_LIBPNG)
+ find_package(PNG)
++endif ()
+ 
+ 
+ 
+@@ -239,10 +245,12 @@
+ endif()
+ 
+ #--- look for libpaper
++if (WITH_LIBPAPER)
+ find_library(PAPER_LIBRARY
+              NAMES paper libpaper
+              PATH_SUFFIXES lib64 lib
+ )
++endif ()
+ if (PAPER_LIBRARY)
+   set(HAVE_PAPER_H TRUE)
+ else ()

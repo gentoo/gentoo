@@ -1,0 +1,17 @@
+--- a/configure.ac	2019-03-31 12:55:38.555837300 +0300
++++ b/configure.ac	2019-03-31 12:55:53.882694611 +0300
+@@ -190,11 +190,11 @@
+ 
+ build_tracker=no
+ if test "x$enable_tracker" != "xno"; then
+-  PKG_CHECK_MODULES(TRACKER, tracker-sparql-1.0, 
++  PKG_CHECK_MODULES(TRACKER, tracker-sparql-2.0, 
+                     [build_tracker=yes],
+-  [PKG_CHECK_MODULES(TRACKER, tracker-sparql-0.18,
++  [PKG_CHECK_MODULES(TRACKER, tracker-sparql-1.0,
+                     [build_tracker=yes],
+-                    [PKG_CHECK_MODULES(TRACKER, tracker-sparql-0.16,
++                    [PKG_CHECK_MODULES(TRACKER, tracker-sparql-0.18,
+ 		                       [build_tracker=yes],
+                                        [build_tracker=no])])])
+   if test "x$build_tracker" = "xyes"; then

@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 KDE_HANDBOOK="forceoptional"
 KDE_TEST="forceoptional"
@@ -15,7 +15,11 @@ LICENSE="GPL-2"
 KEYWORDS=""
 IUSE="cantor fftw fits hdf5 libcerf netcdf root"
 
-COMMON_DEPEND="
+BDEPEND="
+	sys-devel/bison
+	sys-devel/gettext
+"
+DEPEND="
 	$(add_frameworks_dep karchive)
 	$(add_frameworks_dep kcompletion)
 	$(add_frameworks_dep kconfig)
@@ -52,12 +56,7 @@ COMMON_DEPEND="
 		sys-libs/zlib
 	)
 "
-DEPEND="${COMMON_DEPEND}
-	sys-devel/bison
-	sys-devel/gettext
-	x11-misc/shared-mime-info
-"
-RDEPEND="${COMMON_DEPEND}
+RDEPEND="${DEPEND}
 	!sci-visualization/labplot:4
 "
 

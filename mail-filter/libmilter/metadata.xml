@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-	<email>net-mail@gentoo.org</email>
-	<name>Net-Mail</name>
-</maintainer>
+<!-- maintainer-needed -->
 <longdescription>The Sendmail filter API (Milter)</longdescription>
 <use>
 	<flag name="poll">Use poll instead of select</flag>

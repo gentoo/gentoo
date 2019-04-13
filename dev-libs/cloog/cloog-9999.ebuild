@@ -1,13 +1,13 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI="7"
 
 inherit eutils multilib-minimal
 
 if [[ ${PV} == *9999 ]] ; then
-	EGIT_REPO_URI="git://repo.or.cz/cloog.git"
 	inherit autotools git-r3
+	EGIT_REPO_URI="https://repo.or.cz/cloog.git"
 else
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd"
 	SRC_URI="http://www.bastoul.net/cloog/pages/download/${P}.tar.gz"
@@ -29,6 +29,8 @@ DEPEND="${DEPEND}
 DOCS=( README )
 
 src_prepare() {
+	default
+
 	if [[ ${PV} == "9999" ]] ; then
 		./get_submodules.sh
 		eautoreconf -i
@@ -58,5 +60,5 @@ multilib_src_test () {
 
 multilib_src_install_all() {
 	einstalldocs
-	prune_libtool_files
+	find "${ED}" -type f -name '*.la' -delete
 }

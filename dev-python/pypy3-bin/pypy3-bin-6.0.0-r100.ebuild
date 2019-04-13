@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,23 +7,23 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 pypy )
 inherit pax-utils python-any-r1 unpacker versionator
 
-BINHOST="https://dev.gentoo.org/~mgorny/dist/pypy3-bin/${PV}-ffi7"
+BINHOST="https://dev.gentoo.org/~mgorny/dist/pypy3-bin/${PV}.ffi7"
 MY_P=pypy3-v${PV}
 
 DESCRIPTION="A fast, compliant alternative implementation of Python 3.3 (binary package)"
 HOMEPAGE="http://pypy.org/"
 SRC_URI="https://bitbucket.org/pypy/pypy/downloads/${MY_P}-src.tar.bz2
 	amd64? (
-		jit? ( ${BINHOST}/${P}-ffi7-amd64+bzip2+jit+ncurses.tar.lz )
-		!jit? ( ${BINHOST}/${P}-ffi7-amd64+bzip2+ncurses.tar.lz )
+		jit? ( ${BINHOST}/${P}-amd64+bzip2+jit+ncurses.ffi7.tar.lz )
+		!jit? ( ${BINHOST}/${P}-amd64+bzip2+ncurses.ffi7.tar.lz )
 	)
 	x86? (
 		cpu_flags_x86_sse2? (
-			jit? ( ${BINHOST}/${P}-ffi7-x86+bzip2+jit+ncurses+sse2.tar.lz )
-			!jit? ( ${BINHOST}/${P}-ffi7-x86+bzip2+ncurses+sse2.tar.lz )
+			jit? ( ${BINHOST}/${P}-x86+bzip2+jit+ncurses+sse2.ffi7.tar.lz )
+			!jit? ( ${BINHOST}/${P}-x86+bzip2+ncurses+sse2.ffi7.tar.lz )
 		)
 		!cpu_flags_x86_sse2? (
-			!jit? ( ${BINHOST}/${P}-ffi7-x86+bzip2+ncurses.tar.lz )
+			!jit? ( ${BINHOST}/${P}-x86+bzip2+ncurses.ffi7.tar.lz )
 		)
 	)"
 

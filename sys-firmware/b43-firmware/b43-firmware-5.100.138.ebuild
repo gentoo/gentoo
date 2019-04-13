@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -14,7 +14,7 @@ LICENSE="Broadcom"
 SLOT="b43"
 KEYWORDS="~amd64 ppc ~x86"
 IUSE=""
-RESTRICT="binchecks strip"
+RESTRICT="binchecks strip bindist"
 
 DEPEND=">=net-wireless/b43-fwcutter-015"
 RDEPEND=""

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,9 +16,9 @@ HOMEPAGE="https://www.pytables.org/"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 LICENSE="BSD"
-IUSE="doc examples"
+IUSE="doc examples test"
 
 RDEPEND="
 	app-arch/bzip2:0=
@@ -33,6 +33,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	>=dev-python/cython-0.21[${PYTHON_USEDEP}]
+	test? ( dev-python/mock[${PYTHON_USEDEP}] )
 "
 
 S="${WORKDIR}/${MY_P}"
@@ -64,7 +65,6 @@ python_test() {
 
 python_install_all() {
 	if use doc; then
-		HTML_DOCS=( doc/html/. )
 		DOCS+=( doc/scripts )
 	fi
 	distutils-r1_python_install_all

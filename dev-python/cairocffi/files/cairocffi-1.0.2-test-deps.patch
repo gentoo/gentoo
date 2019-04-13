@@ -1,0 +1,41 @@
+Remove unnecessary test deps.
+
+--- cairocffi-1.0.2/setup.cfg
++++ cairocffi-1.0.2/setup.cfg
+@@ -36,16 +36,10 @@
+ packages = find:
+ setup_requires = 
+ 	cffi >= 1.1.0
+-	pytest-runner
+ 	setuptools
+ install_requires = 
+ 	cffi >= 1.1.0
+ 	setuptools >= 39.2.0
+-tests_require = 
+-	pytest-cov
+-	pytest-flake8
+-	pytest-isort
+-	pytest-runner
+ python_requires = >= 3.5
+ 
+ [options.package_data]
+@@ -58,11 +52,6 @@
+ doc = 
+ 	sphinx
+ 	sphinx_rtd_theme
+-test = 
+-	pytest-runner
+-	pytest-cov
+-	pytest-flake8
+-	pytest-isort
+ xcb = 
+ 	xcffib >= 0.3.2
+ 
+@@ -74,7 +63,6 @@
+ test = pytest
+ 
+ [tool:pytest]
+-addopts = --flake8 --isort
+ norecursedirs = build dist .cache .eggs .git
+ 
+ [flake8]

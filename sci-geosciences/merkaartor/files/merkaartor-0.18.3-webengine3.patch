@@ -1,0 +1,135 @@
+From 3019f1d2c76a0ae0c51e70d34bc25a49cb030845 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ladislav=20L=C3=A1ska?= <krakonos@krakonos.org>
+Date: Wed, 28 Sep 2016 21:41:02 +0200
+Subject: [PATCH] Removed webengine from LicenseDisplayDialog and renamed
+ conditional.
+
+This removes the QWebEngine dependency for most build configurations.
+None of the code actually uses it, but there are some plugins that do.
+I expect they are all obsolete, but will keep it in until they are
+replaced/deemed not working.
+---
+ COMPILE.md                         |  2 +-
+ src/Layers/ImageMapLayer.cpp       |  2 +-
+ src/Layers/LicenseDisplayDialog.ui | 29 +++++++++++++++--------------
+ src/QMapControl.pri                | 14 ++++++--------
+ src/src.pro                        |  2 +-
+ 5 files changed, 24 insertions(+), 25 deletions(-)
+
+diff --git a/COMPILE.md b/COMPILE.md
+index 9324019d..108a2eee 100644
+--- a/COMPILE.md
++++ b/COMPILE.md
+@@ -151,7 +151,7 @@ There are some parameters you can pass to qmake to customize build:
+ | TRANSDIR_MERKAARTOR=<path>  | where will the Merkaartor translations be installed |
+ | TRANSDIR_SYSTEM=<path>      | where your global Qt translation directory is | 
+ | NODEBUG=1                   | release target |
+-| NOUSEWEBKIT                 | disable use of WebKit (Yahoo adapter) |
++| USEWEBENGINE=1              | enable use of WebEngine (required for some external plugins) |
+ | SYSTEM_QTSA                 | use system copy of qtsingleapplication instead of internal |
+ 
+ 
+diff --git a/src/Layers/ImageMapLayer.cpp b/src/Layers/ImageMapLayer.cpp
+index 31966b09..b46199b9 100644
+--- a/src/Layers/ImageMapLayer.cpp
++++ b/src/Layers/ImageMapLayer.cpp
+@@ -263,7 +263,7 @@ void ImageMapLayer::setMapAdapter(const QUuid& theAdapterUid, const QString& ser
+                     QDialog dlg;
+                     ui.setupUi(&dlg);
+                     dlg.setWindowTitle(tr("Licensing Terms: %1").arg(name()));
+-                    ui.webView->load(u);
++                    ui.urlLabel->setText(QString("<a href='%1'>%2</a>").arg(u.toString()).arg(u.toString()));
+ 
+                     bool OK = false;
+                     while (!OK) {
+diff --git a/src/Layers/LicenseDisplayDialog.ui b/src/Layers/LicenseDisplayDialog.ui
+index 3dabd130..dd748e41 100755
+--- a/src/Layers/LicenseDisplayDialog.ui
++++ b/src/Layers/LicenseDisplayDialog.ui
+@@ -6,8 +6,8 @@
+    <rect>
+     <x>0</x>
+     <y>0</y>
+-    <width>650</width>
+-    <height>400</height>
++    <width>786</width>
++    <height>171</height>
+    </rect>
+   </property>
+   <property name="windowTitle">
+@@ -15,11 +15,19 @@
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+-    <widget class="QWebEngineView" name="webView">
+-     <property name="url">
+-      <url>
+-       <string>about:blank</string>
+-      </url>
++    <widget class="QLabel" name="label">
++     <property name="text">
++      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The content selected is shared under a non-standard license agreement. The full text is available on the following URL. It is your reponsibility to read, understand and agree to the license.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
++     </property>
++     <property name="wordWrap">
++      <bool>true</bool>
++     </property>
++    </widget>
++   </item>
++   <item>
++    <widget class="QLabel" name="urlLabel">
++     <property name="text">
++      <string>TextLabel</string>
+      </property>
+     </widget>
+    </item>
+@@ -39,13 +47,6 @@
+    </item>
+   </layout>
+  </widget>
+- <customwidgets>
+-  <customwidget>
+-   <class>QWebEngineView</class>
+-   <extends>QWidget</extends>
+-   <header>QWebEngineView</header>
+-  </customwidget>
+- </customwidgets>
+  <resources/>
+  <connections>
+   <connection>
+diff --git a/src/QMapControl.pri b/src/QMapControl.pri
+index 92769565..3491c8b1 100644
+--- a/src/QMapControl.pri
++++ b/src/QMapControl.pri
+@@ -21,13 +21,11 @@ SOURCES += \
+ 
+ QT += network
+ 
+-!contains(NOUSEWEBKIT,1) {
+-    greaterThan(QT_VER_MAJ, 3) : greaterThan(QT_VER_MIN, 3) {
+-        DEFINES += USE_WEBKIT
+-        SOURCES += browserimagemanager.cpp
+-        HEADERS += browserimagemanager.h
+-        QT += webenginewidgets
+-        contains(THREADED_BROWSERIMAGEMANAGER,1): DEFINES += BROWSERIMAGEMANAGER_IS_THREADED
+-    }
++contains(USEWEBENGINE,1) {
++    DEFINES += USE_WEBKIT
++    SOURCES += browserimagemanager.cpp
++    HEADERS += browserimagemanager.h
++    QT += webenginewidgets
++    contains(THREADED_BROWSERIMAGEMANAGER,1): DEFINES += BROWSERIMAGEMANAGER_IS_THREADED
+ }
+ 
+diff --git a/src/src.pro b/src/src.pro
+index 137d7e14..81a65f34 100644
+--- a/src/src.pro
++++ b/src/src.pro
+@@ -34,7 +34,7 @@ TEMPLATE = app
+ 
+ CONFIG += rtti stl exceptions
+ #CONFIG -= exceptions
+-QT += svg network xml core gui webenginewidgets concurrent printsupport
++QT += svg network xml core gui concurrent printsupport
+ win32-msvc* {
+     LIBS += -lzlib
+ } else {

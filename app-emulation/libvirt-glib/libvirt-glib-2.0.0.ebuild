@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,7 +12,7 @@ SRC_URI="ftp://libvirt.org/libvirt/glib/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="+introspection nls +vala"
 REQUIRED_USE="vala? ( introspection )"
 
@@ -25,6 +25,7 @@ RDEPEND="
 	>=dev-libs/glib-2.38.0:2
 	introspection? ( >=dev-libs/gobject-introspection-0.10.8:= )"
 DEPEND="${RDEPEND}
+	dev-util/glib-utils
 	dev-util/gtk-doc-am
 	>=dev-util/intltool-0.35.0
 	virtual/pkgconfig

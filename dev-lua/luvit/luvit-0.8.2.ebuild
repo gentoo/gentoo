@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -11,7 +11,7 @@ DESCRIPTION="Takes node.js' architecture and dependencies and fits it in the Lua
 HOMEPAGE="https://luvit.io/"
 SRC_URI="https://luvit.io/dist/latest/${P}.tar.gz"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 SLOT="0"
 IUSE="bundled-libs examples libressl"
 # luvit Apache-2.0

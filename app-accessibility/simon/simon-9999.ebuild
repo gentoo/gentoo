@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 EGIT_BRANCH="kf5"
 KDE_HANDBOOK="forceoptional"
@@ -9,7 +9,7 @@ KDE_TEST="forceoptional"
 inherit kde5
 
 DESCRIPTION="Open-source speech recognition program for replacing mouse and keyboard"
-HOMEPAGE="http://simon-listens.org/"
+HOMEPAGE="https://simon-listens.org/"
 [[ ${PV} != *9999* ]] && SRC_URI="mirror://kde/unstable/simon/${PV}/${P}.tar.xz"
 
 LICENSE="GPL-2"

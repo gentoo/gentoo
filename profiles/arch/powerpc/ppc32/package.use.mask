@@ -1,5 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Andreas Sturmlechner <asturm@gentoo.org> (16 Feb 2019)
+# app-text/libwpd and app-text/libwpg are not keyworded
+media-gfx/inkscape cdr visio wpg
 
 # Matt Turner <mattst88@gentoo.org> (07 Oct 2018)
 # media-libs/x265[power8] fails to build on 32-bit ppc.
@@ -8,11 +12,6 @@ media-libs/x265 power8
 # Mikle Kolyada <zlogene@gentoo.org> (01 Sep 2018)
 # The dependency is not keyworded
 net-analyzer/wireshark bcg729
-
-# Andreas Sturmlechner <asturm@gentoo.org> (29 Jan 2018)
-# Requires media-libs/libffado, which requires dev-python/PyQt5,
-# which is not keyworded.
-media-sound/jack2 ieee1394
 
 # Sergei Trofimovich <slyfox@gentoo.org> (3 Oct 2017)
 # Incomplete support, bug #605878.
@@ -51,11 +50,6 @@ net-irc/kvirc kde
 # Missing keywords on app-text/gspell - bug #587368
 >=app-editors/gedit-3.20 spell
 
-# Davide Pesavento <pesa@gentoo.org> (06 Jun 2016)
-# Requires unkeyworded dev-qt/qtmultimedia:5
-media-plugins/audacious-plugins qt5
-net-analyzer/wireshark qt5
-
 # James Le Cuirot <chewi@gentoo.org> (30 Jan 2016)
 # scrollview requires Java, which is unsupported on ppc.
 app-text/tesseract scrollview
@@ -65,7 +59,6 @@ app-text/tesseract scrollview
 app-text/texlive pdfannotextractor
 dev-lang/logtalk fop
 gnome-extra/libgda reports
-net-analyzer/wireshark doc-pdf
 
 # Anthony G. Basile <blueness@gentoo.org> (26 Oct 2015)
 # Mask x265 on vlc for bug #564138

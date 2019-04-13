@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -25,11 +25,15 @@ DEPEND="${RDEPEND}
 	test? ( dev-qt/qttest:5 )
 "
 
+# bug 682258
+RESTRICT="test"
+
 DOCS=( AUTHORS CHANGELOG README.md )
 
 PATCHES=(
 	"${FILESDIR}/${PN}-0.3.0-nonfatal-warnings.patch"
-	"${FILESDIR}/${PN}-5.1.0-slot.patch"
+	"${FILESDIR}/${P}-slot.patch"
+	"${FILESDIR}/${P}-qt-5.13.patch"
 )
 
 src_prepare() {

@@ -1,8 +1,0 @@
-/var/log/gitea/* {
-	su git git
-	missingok
-	size 5M
-	rotate 3
-	compress
-	copytruncate
-}

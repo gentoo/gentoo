@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="project">
-		<email>net-mail@gentoo.org</email>
-		<name>Net-Mail</name>
+	<maintainer type="person">
+		<email>eras@gentoo.org</email>
+		<name>
+			Eray Aslan
+		</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>williamh@gentoo.org</email>
+		<name>
+			William Hubbs
+		</name>
 	</maintainer>
 	<use>
 		<flag name="dovecot-sasl">Enable <pkg>net-mail/dovecot</pkg> protocol

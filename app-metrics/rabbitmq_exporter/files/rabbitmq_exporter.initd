@@ -1,0 +1,79 @@
+#!/sbin/openrc-run
+
+description="rabbitmq exporter for Prometheus"
+command=/usr/bin/rabbitmq_exporter
+command_background=yes
+command_user=${RC_SVCNAME}:${RC_SVCNAME}
+pidfile=/var/run/${RC_SVCNAME}.pid
+error_log="/var/log/${RC_SVCNAME}/${RC_SVCNAME}.log"
+output_log="/var/log/${RC_SVCNAME}/${RC_SVCNAME}.log"
+
+depend() {
+	after net
+}
+
+start_pre() {
+	local env_args
+	if [ -n "${RABBIT_URL}" ]; then
+		env_args="${env_args} -e RABBIT_URL=${RABBIT_URL}"
+	fi
+	if [ -n "${RABBIT_USER}" ]; then
+		env_args="${env_args} -e RABBIT_USER=${RABBIT_USER}"
+	fi
+	if [ -n "${RABBIT_PASSWORD}" ]; then
+		env_args="${env_args} -e RABBIT_PASSWORD=${RABBIT_PASSWORD}"
+	fi
+	if [ -n "${RABBIT_USER_FILE}" ]; then
+		env_args="${env_args} -e RABBIT_USER_FILE=${RABBIT_USER_FILE}"
+	fi
+	if [ -n "${RABBIT_PASSWORD_FILE}" ]; then
+		env_args="${env_args} -e RABBIT_PASSWORD_FILE=${RABBIT_PASSWORD_FILE}"
+	fi
+	if [ -n "${PUBLISH_PORT}" ]; then
+		env_args="${env_args} -e PUBLISH_PORT=${PUBLISH_PORT}"
+	else
+		env_args="${env_args} -e PUBLISH_PORT=9419"
+	fi
+	if [ -n "${PUBLISH_ADDR}" ]; then
+		env_args="${env_args} -e PUBLISH_ADDR=${PUBLISH_ADDR}"
+	fi
+	if [ -n "${OUTPUT_FORMAT}" ]; then
+		env_args="${env_args} -e OUTPUT_FORMAT=${OUTPUT_FORMAT}"
+	fi
+	if [ -n "${LOG_LEVEL}" ]; then
+	env_args="${env_args} -e LOG_LEVEL=${LOG_LEVEL}"
+	fi
+	if [ -n "${CAFILE}" ]; then
+	env_args="${env_args} -e CAFILE=${CAFILE}"
+	fi
+	if [ -n "${SKIPVERIFY}" ]; then
+		env_args="${env_args} -e SKIPVERIFY=${SKIPVERIFY}"
+	fi
+	if [ -n "${SKIP_VHOST}" ]; then
+		env_args="${env_args} -e SKIP_VHOST=${SKIP_VHOST}"
+	fi
+	if [ -n "${INCLUDE_VHOST}" ]; then
+		env_args="${env_args} -e INCLUDE_VHOST=${INCLUDE_VHOST}"
+	fi
+	if [ -n "${INCLUDE_QUEUES}" ]; then
+		env_args="${env_args} -e INCLUDE_QUEUES=${INCLUDE_QUEUES}"
+	fi
+	if [ -n "${SKIP_QUEUES}" ]; then
+		env_args="${env_args} -e SKIP_QUEUES=${SKIP_QUEUES}"
+	fi
+	if [ -n "${RABBIT_CAPABILITIES}" ]; then
+		env_args="${env_args} -e RABBIT_CAPABILITIES=${RABBIT_CAPABILITIES}"
+	fi
+	if [ -n "${RABBIT_EXPORTERS}" ]; then
+		env_args="${env_args} -e RABBIT_EXPORTERS=${RABBIT_EXPORTERS}"
+	fi
+	if [ -n "${RABBIT_TIMEOUT}" ]; then
+		env_args="${env_args} -e RABBIT_TIMEOUT=${RABBIT_TIMEOUT}"
+	fi
+	if [ -n "${MAX_QUEUES}" ]; then
+		env_args="${env_args} -e MAX_QUEUES=${MAX_QUEUES}"
+	fi
+	start_stop_daemon_args="${start_stop_daemon_args} ${env_args}"
+	supervise_daemon_args="${supervise_daemon_args} ${env_args}"
+	return 0
+}

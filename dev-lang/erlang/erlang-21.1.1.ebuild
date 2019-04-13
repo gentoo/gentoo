@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,8 +19,8 @@ SRC_URI="https://github.com/erlang/otp/archive/OTP-${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris"
-IUSE="doc emacs +hipe java +kpoll libressl odbc pgo sctp ssl systemd tk +wxwidgets"
+KEYWORDS="alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris"
+IUSE="doc emacs +hipe java +kpoll libressl odbc pgo sctp ssl systemd tk wxwidgets"
 
 RDEPEND="
 	sys-libs/ncurses:0
@@ -71,7 +71,7 @@ src_configure() {
 		$(use_with odbc)
 		$(use_enable sctp)
 		$(use_with ssl)
-		$(use_with ssl ssl-rpath "no")
+		$(usex ssl "--with-ssl-rpath" "")
 		$(use_enable ssl dynamic-ssl-lib)
 		$(use_enable systemd)
 		$(use_enable pgo)

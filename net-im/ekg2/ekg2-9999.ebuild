@@ -1,33 +1,27 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-
-#if LIVE
-AUTOTOOLS_AUTORECONF=yes
-EGIT_REPO_URI="https://github.com/leafnode/${PN}.git"
-
-inherit git-r3
-#endif
+EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
-inherit autotools-utils python-single-r1
+inherit autotools git-r3 python-single-r1
 
 DESCRIPTION="Text-based, multi-protocol instant messenger"
-HOMEPAGE="http://www.ekg2.org"
-SRC_URI="http://pl.ekg2.org/${P}.tar.gz"
+HOMEPAGE="https://github.com/ekg2/ekg2/"
+SRC_URI=""
+EGIT_REPO_URI="https://github.com/ekg2/${PN}.git"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS=""
 IUSE="gadu gpm gpg gtk minimal ncurses nls nntp openssl
 	perl python readline rss spell sqlite ssl xmpp unicode zlib"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
-RDEPEND="dev-libs/glib:2=
+RDEPEND="dev-libs/glib:2
 	gadu? ( <net-libs/libgadu-1.12:0= )
 	gpg? ( app-crypt/gpgme:1= )
-	gtk? ( x11-libs/gtk+:2= )
+	gtk? ( x11-libs/gtk+:2 )
 	nls? ( virtual/libintl:0= )
 	openssl? ( dev-libs/openssl:0= )
 	perl? ( dev-lang/perl:0= )
@@ -53,11 +47,6 @@ DOCS=(
 	docs/ui-ncurses.txt docs/ui-ncurses-en.txt
 )
 
-#if LIVE
-KEYWORDS=
-SRC_URI=
-#endif
-
 pkg_pretend() {
 	if ! use gtk && ! use ncurses && ! use readline; then
 		ewarn 'ekg2 is being compiled without any frontend. You should consider'
@@ -66,8 +55,13 @@ pkg_pretend() {
 	fi
 }
 
+src_prepare() {
+	default
+	eautoreconf
+}
+
 src_configure() {
-	myeconfargs=(
+	local myconf=(
 		# direct plugin references
 		$(use_enable gadu gg)
 		$(use_enable gpg)
@@ -104,5 +98,10 @@ src_configure() {
 		--with-perl-module-build-flags='INSTALLDIRS=vendor'
 		--enable-fast-configure
 	)
-	autotools-utils_src_configure
+	econf "${myconf[@]}"
+}
+
+src_install() {
+	default
+	find "${D}" -name '*.la' -delete || die
 }

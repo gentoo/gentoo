@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -20,7 +20,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="Subversion GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 s390 ~sh sparc x86 ~ppc-aix ~x64-cygwin ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~arm64 ~mips s390 ~sh ~ppc-aix ~x64-cygwin ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="apache2 berkdb ctypes-python debug doc +dso extras gnome-keyring +http java kwallet nls perl python ruby sasl test vim-syntax"
 
 COMMON_DEPEND="
@@ -88,6 +88,8 @@ PATCHES=(
 	"${WORKDIR}"/${PN}-1.8.18-patchset/${PN}-1.8.1-revert_bdb6check.patch
 	"${WORKDIR}"/${PN}-1.8.18-patchset/${PN}-1.8.16-javadoc-nolint.patch
 	"${FILESDIR}"/${P}-kf5.patch
+	"${FILESDIR}"/${PN}-1.9.7-fix-wc-queries-test-test.patch
+	"${FILESDIR}"/${PN}-1.11.1-allow-apr-1.7.0+.patch
 )
 
 want_apache
@@ -129,6 +131,9 @@ pkg_setup() {
 		ewarn "Consider enabling \"http\" USE flag"
 		echo -ne "\a"
 	fi
+
+	# https://issues.apache.org/jira/browse/SVN-4813#comment-16813739
+	append-cppflags -P
 
 	if use debug ; then
 		append-cppflags -DSVN_DEBUG -DAP_DEBUG

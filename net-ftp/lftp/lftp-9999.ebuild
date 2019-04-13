@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit autotools eutils git-r3 libtool
+EAPI=7
+inherit autotools git-r3 libtool xdg-utils
 
 DESCRIPTION="A sophisticated ftp/sftp/http/https/torrent client and file transfer program"
 HOMEPAGE="https://lftp.tech/"
@@ -19,7 +19,7 @@ RDEPEND="
 	dev-libs/expat
 	sys-libs/zlib
 	convert-mozilla-cookies? ( dev-perl/DBI )
-	idn? ( net-dns/libidn2 )
+	idn? ( net-dns/libidn2:= )
 	socks5? (
 		>=net-proxy/dante-1.1.12
 		virtual/pam
@@ -94,4 +94,12 @@ src_install() {
 	for script in {convert-mozilla-cookies,verify-file}; do
 		use ${script} || { rm "${ED}"/usr/share/${PN}/${script} || die ;}
 	done
+}
+
+pkg_postinst() {
+	xdg_icon_cache_update
+}
+
+pkg_postrm() {
+	xdg_icon_cache_update
 }

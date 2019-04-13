@@ -14,6 +14,7 @@
 		<flag name="qr">Enable QR code password display</flag>
 		<flag name="yubikey">Enable support for Yubikey</flag>
 		<flag name="xml">Enable XML import support</flag>
+		<flag name="xvkbd">Install <pkg>x11-misc/xvkbd</pkg> on-screen keyboard</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">pwsafe/pwsafe</remote-id>

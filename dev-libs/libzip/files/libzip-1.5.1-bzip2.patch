@@ -1,0 +1,53 @@
+From 028c492c9d45ca29e2fbec79a203ba492016f15e Mon Sep 17 00:00:00 2001
+From: Miklos Vajna <vmiklos@collabora.co.uk>
+Date: Fri, 7 Sep 2018 23:12:36 +0200
+Subject: [PATCH] Add an option to disable bzip2 support
+
+The explicit switch is still on by default, but this way it's possible
+to explicitly disable bzip2 support even if bzip2 is available on the
+system.
+
+This is useful if bzip2 is not needed, but would automatically lead to
+an unwanted dependency.
+---
+ CMakeLists.txt | 19 +++++++++++--------
+ 1 file changed, 11 insertions(+), 8 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 73a34855..879e0f21 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -10,6 +10,7 @@ PROJECT(libzip C)
+ OPTION(ENABLE_GNUTLS "Enable use of GnuTLS" ON)
+ OPTION(ENABLE_OPENSSL "Enable use of OpenSSL" ON)
+ OPTION(ENABLE_COMMONCRYPTO "Enable use of CommonCrypto" ON)
++OPTION(ENABLE_BZIP2 "Enable use of BZip2" ON)
+ 
+ OPTION(BUILD_TOOLS "Build tools in the src directory (zipcmp, zipmerge, ziptool)" ON)
+ OPTION(BUILD_REGRESS "Build regression tests" ON)
+@@ -186,15 +187,17 @@ IF(ZLIB_VERSION_STRING VERSION_LESS "1.1.2")
+   MESSAGE(FATAL_ERROR "-- ZLIB version too old, please install at least v1.1.2")
+ ENDIF(ZLIB_VERSION_STRING VERSION_LESS "1.1.2")
+ 
+-FIND_PACKAGE(BZip2)
+-IF(BZIP2_FOUND)
+-  SET (HAVE_LIBBZ2 1)
++IF(ENABLE_BZIP2)
++  FIND_PACKAGE(BZip2)
++  IF(BZIP2_FOUND)
++    SET (HAVE_LIBBZ2 1)
+ 
+-  INCLUDE_DIRECTORIES(${BZIP2_INCLUDE_DIR})
+-  SET (OPTIONAL_LIBRARY ${BZIP2_LIBRARY})
+-ELSE()
+-  MESSAGE(WARNING "-- bzip2 library not found; bzip2 support disabled")
+-ENDIF(BZIP2_FOUND)
++    INCLUDE_DIRECTORIES(${BZIP2_INCLUDE_DIR})
++    SET (OPTIONAL_LIBRARY ${BZIP2_LIBRARY})
++  ELSE()
++    MESSAGE(WARNING "-- bzip2 library not found; bzip2 support disabled")
++  ENDIF(BZIP2_FOUND)
++ENDIF(ENABLE_BZIP2)
+ 
+ IF (COMMONCRYPTO_FOUND)
+   SET (HAVE_CRYPTO 1)

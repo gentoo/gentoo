@@ -1,9 +1,9 @@
 # Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 
-inherit flag-o-matic multilib savedconfig toolchain-funcs versionator
+inherit flag-o-matic multilib savedconfig toolchain-funcs
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="git://uclibc-ng.org/git/uclibc-ng"
@@ -257,22 +257,24 @@ src_prepare() {
 	# Upstream sets MAJOR_VERSION = 1 which breaks runtime linking.
 	# If we really want the ABI bump, we'll have to hack the gcc
 	# spec file and change the '*link:' rule.
-	version=( $(get_version_components) )
-	if [[ -z ${version[1]} ]]; then
+	version_0=$(ver_cut 1)
+	version_1=$(ver_cut 2)
+	version_2=$(ver_cut 3)
+	if [[ -z ${version_1} ]]; then
 		subversion=0
 		extraversion=0
 	else
-		subversion=${version[1]}
-		if [[ -z ${version[2]} ]]; then
+		subversion=${version_1}
+		if [[ -z ${version_2} ]]; then
 			extraversion=0
 		else
-			extraversion=.${version[2]}
+			extraversion=.${version_2}
 		fi
 	fi
 
 	sed -i \
 		-e "/^MAJOR_VERSION/s|:=.*|:= 0|" \
-		-e "/^MINOR_VERSION/s|:=.*|:= ${version[0]}|" \
+		-e "/^MINOR_VERSION/s|:=.*|:= ${version_0}|" \
 		-e "/^SUBLEVEL/s|:=.*|:= ${subversion}|" \
 		-e "/^EXTRAVERSION/s|:=.*|:= ${extraversion}|" \
 		Rules.mak || die

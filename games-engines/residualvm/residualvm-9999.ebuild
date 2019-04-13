@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit gnome2-utils toolchain-funcs xdg-utils
+EAPI=7
+inherit desktop toolchain-funcs xdg
 
 DESCRIPTION="A cross-platform 3D game interpreter for play LucasArts' LUA-based 3D adventures"
 HOMEPAGE="http://www.residualvm.org/"
@@ -15,77 +15,80 @@ else
 fi
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-IUSE=""
+IUSE="alsa debug jpeg mpeg2 mp3 opengl png truetype vorbis zlib"
 
 # TODO: fix dynamic plugin support
 # games crash without media-libs/libsdl[alsa]
 RDEPEND="
-	media-libs/alsa-lib
-	media-libs/freetype:2
 	media-libs/glew:0=
-	media-libs/libpng:0=
 	media-libs/libsdl2[X,sound,alsa,joystick,opengl,video]
-	sys-libs/zlib
 	virtual/glu
-	virtual/jpeg:0
-	virtual/opengl"
+	alsa? ( media-libs/alsa-lib )
+	jpeg? ( virtual/jpeg:0 )
+	mp3? ( media-libs/libmad )
+	mpeg2? ( media-libs/libmpeg2 )
+	opengl? ( virtual/opengl )
+	png? ( media-libs/libpng:0= )
+	truetype? ( media-libs/freetype:2 )
+	vorbis? ( media-libs/libvorbis )
+	zlib? ( sys-libs/zlib:= )
+"
 DEPEND="${RDEPEND}"
+BDEPEND="
+	virtual/pkgconfig
+"
 
 src_configure() {
 	# not an autotools script
-	# most configure options currently do nothing, verify on version bump !!!
+	# some configure options currently do nothing, verify on version bump !!!
 	# disable explicitly, otherwise we get unneeded linkage (some copy-paste build system)
 	local myconf=(
 		--backend=sdl
-		--disable-debug
 		--disable-faad
 		--disable-flac
 		--disable-fluidsynth
 		--disable-libunity
-		--disable-mad
 		--disable-sparkle
-		--disable-translation
 		--disable-tremor
-		--disable-vorbis
 		--docdir="/usr/share/doc/${PF}"
 		--enable-all-engines
-		--enable-release-mode
-		--enable-zlib
+		--enable-verbose-build
+		--libdir="${EPREFIX}/usr/$(get_libdir)"
+		--host="${CHOST}"
+		--prefix="${EPREFIX}/usr"
+		$(use_enable alsa)
+		$(use_enable debug)
+		$(use_enable !debug release-mode)
+		$(use_enable jpeg)
+		$(use_enable mp3 mad)
+		$(use_enable mpeg2)
+		$(use_enable opengl)
+		$(use_enable opengl opengl-shaders)
+		$(use_enable png)
+		$(use_enable truetype freetype2)
+		$(use_enable vorbis)
+		$(use_enable zlib)
 	)
-	./configure "${myconf[@]}" || die "configure failed"
+	./configure "${myconf[@]}" "${EXTRA_ECONF}" || die
 }
 
 src_compile() {
-	emake \
-		VERBOSE_BUILD=1 \
-		AR="$(tc-getAR) cru" \
-		RANLIB=$(tc-getRANLIB)
+	emake AR="$(tc-getAR) cru" RANLIB=$(tc-getRANLIB)
 }
 
 src_install() {
-	dobin residualvm
-
-	insinto "/usr/share/${PN}"
-	doins gui/themes/modern.zip dists/engine-data/residualvm-grim-patch.lab
-
-	doicon -s scalable icons/${PN}.svg
+	default
 	doicon -s 256 icons/${PN}.png
-	domenu dists/${PN}.desktop
-
-	doman dists/${PN}.6
-	dodoc AUTHORS README.md KNOWN_BUGS TODO
 }
 
 pkg_preinst() {
-	gnome2_icon_savelist
+	xdg_pkg_preinst
 }
 
 pkg_postinst() {
-	gnome2_icon_cache_update
-	xdg_desktop_database_update
+	xdg_pkg_postinst
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
-	xdg_desktop_database_update
+	xdg_pkg_postrm
 }

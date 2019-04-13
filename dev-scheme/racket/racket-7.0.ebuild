@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,8 +6,8 @@ EAPI=7
 inherit pax-utils
 
 DESCRIPTION="General purpose, multi-paradigm Lisp-Scheme programming language"
-HOMEPAGE="http://racket-lang.org/"
-SRC_URI="minimal? ( http://download.racket-lang.org/installers/${PV}/${PN}-minimal-${PV}-src-builtpkgs.tgz ) !minimal? ( http://download.racket-lang.org/installers/${PV}/${P}-src-builtpkgs.tgz )"
+HOMEPAGE="https://racket-lang.org/"
+SRC_URI="minimal? ( https://download.racket-lang.org/installers/${PV}/${PN}-minimal-${PV}-src-builtpkgs.tgz ) !minimal? ( https://download.racket-lang.org/installers/${PV}/${P}-src-builtpkgs.tgz )"
 LICENSE="GPL-3+ LGPL-3"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86"

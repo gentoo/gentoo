@@ -1,0 +1,11 @@
+--- src/lib/crypto.c.orig       2018-02-02 15:34:39.420489000 -0600
++++ src/lib/crypto.c    2018-02-02 15:35:44.000524000 -0600
+@@ -195,7 +195,7 @@
+ IMPLEMENT_ASN1_FUNCTIONS(SignatureData)
+ IMPLEMENT_ASN1_FUNCTIONS(CryptoData)
+
+-#if defined(DEFINE_STACK_OF)
++#if ( (OPENSSL_VERSION_NUMBER >= 0x10100000L) && !defined(LIBRESSL_VERSION_NUMBER) )
+ DEFINE_STACK_OF(SignerInfo);
+ DEFINE_STACK_OF(RecipientInfo);
+ #else

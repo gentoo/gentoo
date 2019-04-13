@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ SRC_URI="https://mupdf.com/downloads/archive/${P}-source.tar.xz"
 
 LICENSE="AGPL-3"
 SLOT="0/${PV}"
-KEYWORDS="alpha amd64 arm ~arm64 ~hppa ia64 ppc ppc64 ~s390 x86 ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="alpha amd64 arm ~arm64 ~hppa ia64 ppc ppc64 s390 x86 ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="X curl +javascript libressl opengl +openssl static-libs +vanilla"
 
 RDEPEND="

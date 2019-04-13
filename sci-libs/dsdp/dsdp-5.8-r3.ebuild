@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,8 +8,8 @@ inherit multilib toolchain-funcs versionator
 MY_P="${PN^^}${PV}"
 
 DESCRIPTION="Software for interior-point for semidefinite programming"
-HOMEPAGE="http://www.mcs.anl.gov/hs/software/DSDP/"
-SRC_URI="http://www.mcs.anl.gov/hs/software/DSDP/${MY_P}.tar.gz"
+HOMEPAGE="https://www.mcs.anl.gov/hs/software/DSDP/"
+SRC_URI="https://www.mcs.anl.gov/hs/software/DSDP/${MY_P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

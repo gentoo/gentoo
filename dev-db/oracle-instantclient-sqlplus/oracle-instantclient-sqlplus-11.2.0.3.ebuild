@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="4"
@@ -50,8 +50,7 @@ pkg_nofetch() {
 	eerror "  and download"
 	eerror "Instant Client for ${MY_PLAT}"
 	eerror "    SQL*Plus: ${MY_A}"
-	eerror "After downloading, put it in:"
-	eerror "  ${DISTDIR}/"
+	eerror "After downloading, put it into your DISTDIR directory."
 }
 
 src_install() {

@@ -8,7 +8,7 @@ KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 s390 sh sparc x86 ~x86-fbsd"
 
 DESCRIPTION="Courier authentication library"
 SRC_URI="mirror://sourceforge/courier/${P}.tar.bz2"
-HOMEPAGE="http://www.courier-mta.org/"
+HOMEPAGE="https://www.courier-mta.org/authlib/"
 LICENSE="GPL-3"
 SLOT="0"
 IUSE="berkdb crypt debug gdbm ldap mysql pam postgres sqlite static-libs vpopmail"

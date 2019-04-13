@@ -1,5 +1,18 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Virgil Dupras <vdupras@gentoo.org> (03 Mar 2019)
+# Tests fail with jpeg2k flag. Bug #662686
+dev-python/pillow jpeg2k
+
+# Andreas Sturmlechner <asturm@gentoo.org> (28 Feb 2019)
+# media-libs/dav1d is not yet keyworded
+media-video/vlc dav1d
+
+# Thomas Deutschmann <whissi@gentoo.org> (26 Feb 2019)
+# nginx_modules_http_lua requires USE=luajit which requires
+# dev-lang/luajit which is not keyworded on PowerPC
+www-servers/nginx luajit nginx_modules_http_lua
 
 # Alon Bar-Lev <alonbl@gentoo.org> (21 Dec 2018)
 # Requires USE=dane that is masked in this profile.
@@ -9,19 +22,9 @@ net-libs/gnutls test-full
 # dev-db/mariadb-connector-c not yet keyworded
 net-analyzer/icinga2 mariadb
 
-# Andreas Sturmlechner <asturm@gentoo.org> (01 Sep 2018)
-# media-libs/libaom not yet keyworded
-media-video/vlc aom
-
 # Luca Barbato <lu_zero@gentoo.org> (12 Aug 2018)
 # grub pc is not supported on powerpc
 sys-boot/grub:2 grub_platforms_pc grub_platforms_efi-32 grub_platforms_efi-64 grub_platforms_xen
-
-# Pacho Ramos <pacho@gentoo.org> (27 May 2018)
-# kde-frameworks/kdelibs4support not keyworded on ppc
-# Michał Górny <mgorny@gentoo.org> (09 Jul 2018)
-# Moved to parent powerpc profile as it applies to ppc64 as well
-x11-wm/sawfish kde
 
 # Luke Dashjr <luke-jr+gentoobugs@utopios.org> (08 Jun 2018)
 # Requires unported sys-libs/netbsd-csu
@@ -91,11 +94,6 @@ media-libs/mesa vulkan
 # Requires USE=opencl that is masked in this profile.
 net-misc/bfgminer adl lm_sensors
 
-# Andreas Sturmlechner <asturm@gentoo.org> (31 Jul 2017)
-# Mask for removal of ancient versions of media-libs/libvisio,
-# media-libs/libcdr, app-text/libwpd and app-text/libwpg
-media-gfx/inkscape cdr visio wpg
-
 # Jason Zaman <perfinion@gentoo.org> (09 May 2017)
 # x11-libs/libXpresent is not keyworded on ppc
 xfce-base/xfwm4 xpresent
@@ -125,21 +123,17 @@ dev-db/percona-server -numa
 # Davide Pesavento <pesa@gentoo.org> (28 Jul 2016)
 # The corresponding Qt5 modules are not keyworded on ppc, and we don't want to
 # keyword them solely because of PyQt5 while there are no other in-tree users.
-dev-python/PyQt5 bluetooth location webengine
+dev-python/PyQt5 bluetooth location networkauth webengine
 
 # Michael Palimaka <kensington@gentoo.org> (07 Jul 2016)
 # Requires unkeyworded dependencies
 dev-vcs/subversion kwallet
-games-arcade/jumpnbump kde
-net-irc/quassel kde
+net-irc/quassel kde snorenotify
 net-libs/libproxy kde
 sys-auth/polkit kde
 sys-block/gparted kde
 virtual/notification-daemon kde
-
-# Johannes Huber <johu@gentoo.org> (26 Mar 2016)
-# Unkeyworded dependency x11-libs/snorenotify
-net-irc/quassel snorenotify
+x11-wm/sawfish kde
 
 # Justin Lecher <jlec@gentoo.org> (22 Feb 2016)
 # Missing test deps keyword #575366
@@ -157,17 +151,9 @@ net-wireless/blueman appindicator
 # x11-drivers/xf86-video-amdgpu is not keyworded
 x11-base/xorg-drivers video_cards_amdgpu
 
-# Bernard Cafarelli <voyageur@gentoo.org> (06 Aug 2015)
-# Dependencies missing keywords, bug #543604
-sys-devel/llvm ocaml
-
 # Gilles Dartiguelongue <eva@gentoo.org> (10 Jun 2015)
 # net-libs/dleyna-connector-dbus lack ppc/ppc64 keyword, bug #551634
 >=media-plugins/grilo-plugins-0.2.14 upnp-av
-
-# Justin Lecher <jlec@gentoo> (18 May 2015)
-# missing keywords
-dev-python/matplotlib qt5 test
 
 # Pacho Ramos <pacho@gentoo.org> (15 May 2015)
 # Missing keywords
@@ -234,10 +220,6 @@ sys-block/fio rbd
 # dependency sci-libs/vtk not keyworded on ppc yet
 media-libs/opencv vtk
 
-# Johannes Huber <johu@gentoo.org> (16 Apr 2014)
-# unkeyworded deps
-kde-apps/gwenview semantic-desktop
-
 # Pacho Ramos <pacho@gentoo.org> (22 Feb 2013)
 # Missing keywords, bug #495250
 >=gnome-base/gnome-extra-apps-3.10 tracker
@@ -300,10 +282,6 @@ dev-ruby/rack-test test
 # Anthony G. Basile <blueness@gentoo.org> (21 Aug 2012)
 # Does not work on ppc/ppc64
 net-vpn/tor tor-hardening
-
-# Brent Baude <ranger@gentoo.org> (06 Mar 2012)
-# masking kde on gajim
-net-im/gajim kde
 
 # Pacho Ramos <pacho@gentoo.org> (07 May 2012)
 # libhid is not keyworded

@@ -1,0 +1,35 @@
+From 3829d0b867f6aa4bde8798147dee74a86435d12c Mon Sep 17 00:00:00 2001
+From: Georgy Yakovlev <gyakovlev@gentoo.org>
+Date: Fri, 22 Mar 2019 22:04:40 -0700
+Subject: [PATCH] contrib/bash_completion.d/zfs: remove sudo reference
+
+---
+ contrib/bash_completion.d/zfs | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/contrib/bash_completion.d/zfs b/contrib/bash_completion.d/zfs
+index 914db43c..b1aded36 100644
+--- a/contrib/bash_completion.d/zfs
++++ b/contrib/bash_completion.d/zfs
+@@ -21,13 +21,13 @@
+ # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ # OTHER DEALINGS IN THE SOFTWARE.
+ 
+-if [[ -w /dev/zfs ]]; then
++#if [[ -w /dev/zfs ]]; then
+     __ZFS_CMD="zfs"
+     __ZPOOL_CMD="zpool"
+-else
+-    __ZFS_CMD="sudo zfs"
+-    __ZPOOL_CMD="sudo zpool"
+-fi
++#else
++#    __ZFS_CMD="sudo zfs"
++#    __ZPOOL_CMD="sudo zpool"
++#fi
+ 
+ __zfs_get_commands()
+ {
+-- 
+2.21.0
+

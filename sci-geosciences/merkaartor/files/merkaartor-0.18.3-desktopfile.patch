@@ -1,0 +1,30 @@
+From 85ee9b1855bf3256daf4decd1f25021c1a28abdc Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ladislav=20L=C3=A1ska?= <krakonos@krakonos.org>
+Date: Sat, 19 May 2018 13:43:24 +0200
+Subject: [PATCH] Renamed merkaartor.desktop to 
+ org.merkaartor.merkaartor.desktop
+
+A possible solution for issue #150.
+---
+ src/{merkaartor.desktop => org.merkaartor.merkaartor.desktop} | 0
+ src/src.pro                                                   | 2 +-
+ 2 files changed, 1 insertion(+), 1 deletion(-)
+ rename src/{merkaartor.desktop => org.merkaartor.merkaartor.desktop} (100%)
+
+diff --git a/src/merkaartor.desktop b/src/org.merkaartor.merkaartor.desktop
+similarity index 100%
+rename from src/merkaartor.desktop
+rename to src/org.merkaartor.merkaartor.desktop
+diff --git a/src/src.pro b/src/src.pro
+index 81a65f34..477c459e 100644
+--- a/src/src.pro
++++ b/src/src.pro
+@@ -289,7 +289,7 @@ contains(SANITIZE, 2) {
+ 
+ unix:!macx {
+     desktop.path = $${PREFIX}/share/applications
+-    desktop.files = merkaartor.desktop
++    desktop.files = org.merkaartor.merkaartor.desktop 
+     desktopicon8x8.path = $${PREFIX}/share/icons/hicolor/8x8/apps/
+     desktopicon8x8.files = $$PWD/../Icons/8x8/merkaartor.png
+     desktopicon16x16.path = $${PREFIX}/share/icons/hicolor/16x16/apps/

@@ -1,9 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit cmake-utils xdg-utils
+# The order is important here! Both, cmake-utils and xdg define src_prepare.
+# We need the one from cmake-utils
+inherit xdg cmake-utils
 
 DESCRIPTION="Cross-platform music production software"
 HOMEPAGE="https://lmms.io"
@@ -11,7 +13,7 @@ if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="https://github.com/LMMS/lmms.git"
 	inherit git-r3
 else
-	SRC_URI="https://github.com/LMMS/${PN}/archive/v${PV/_/-}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/LMMS/lmms/releases/download/v${PV/_/-}/${P/_/-}.tar.xz -> ${P}.tar.xz"
 	KEYWORDS="~amd64 ~x86"
 	S="${WORKDIR}/${P/_/-}"
 fi
@@ -24,6 +26,8 @@ IUSE="alsa debug fluidsynth jack libgig mp3 ogg portaudio pulseaudio sdl soundio
 COMMON_DEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
+	dev-qt/qtwidgets:5
+	dev-qt/qtxml:5
 	>=media-libs/libsamplerate-0.1.8
 	>=media-libs/libsndfile-1.0.11
 	sci-libs/fftw:3.0
@@ -49,8 +53,10 @@ COMMON_DEPEND="
 	vst? ( virtual/wine )
 "
 DEPEND="${COMMON_DEPEND}
+	dev-qt/qtx11extras:5
+"
+BDEPEND="
 	dev-qt/linguist-tools:5
-	>=dev-util/cmake-2.4.5
 "
 RDEPEND="${COMMON_DEPEND}
 	media-libs/ladspa-cmt
@@ -65,14 +71,12 @@ DOCS=( README.md doc/AUTHORS )
 src_configure() {
 	local mycmakeargs+=(
 		-DUSE_WERROR=FALSE
-		-DWANT_SYSTEM_SR=TRUE
 		-DWANT_CAPS=FALSE
 		-DWANT_TAP=FALSE
 		-DWANT_SWH=FALSE
 		-DWANT_CMT=FALSE
 		-DWANT_CALF=FALSE
 		-DWANT_QT5=TRUE
-		-DCMAKE_INSTALL_LIBDIR=$(get_libdir)
 		-DWANT_ALSA=$(usex alsa)
 		-DWANT_JACK=$(usex jack)
 		-DWANT_GIG=$(usex libgig)
@@ -89,12 +93,14 @@ src_configure() {
 	cmake-utils_src_configure
 }
 
+pkg_preinst() {
+	xdg_pkg_preinst
+}
+
 pkg_postinst() {
-	xdg_mimeinfo_database_update
-	xdg_desktop_database_update
+	xdg_pkg_postinst
 }
 
 pkg_postrm() {
-	xdg_mimeinfo_database_update
-	xdg_desktop_database_update
+	xdg_pkg_postrm
 }

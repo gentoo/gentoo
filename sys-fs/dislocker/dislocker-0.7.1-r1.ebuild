@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -22,7 +22,7 @@ IUSE="ruby"
 
 DEPEND="sys-fs/fuse:*
 	net-libs/mbedtls
-	ruby? ( dev-lang/ruby:2.3 )"
+	ruby? ( dev-lang/ruby:2.4 )"
 
 RDEPEND="${DEPEND}"
 

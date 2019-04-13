@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-USE_RUBY="ruby23 ruby24 ruby25"
+USE_RUBY="ruby23 ruby24 ruby25 ruby26"
 
 RUBY_FAKEGEM_TASK_DOC=""
 RUBY_FAKEGEM_EXTRADOC="CHANGELOG.md README.md docs/TEMPLATES.md"
@@ -22,7 +22,6 @@ IUSE=""
 # are optional for the test suite, and we don't want to depend on all of
 # them to faciliate keywording and stabling.
 ruby_add_bdepend "test? (
-	dev-ruby/bluecloth
 	dev-ruby/coffee-script
 	dev-ruby/erubis
 	dev-ruby/nokogiri

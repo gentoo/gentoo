@@ -1,49 +1,48 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
+
+inherit autotools
 
 if [[ ${PV} = *9999 ]]; then
-	GITECLASS="git-r3"
 	EGIT_REPO_URI="https://github.com/oyranos-cms/libxcm.git"
+	inherit git-r3
+else
+	SRC_URI="https://github.com/oyranos-cms/${PN,,}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~amd64 ~ppc ~x86"
+	S="${WORKDIR}/${P,,}"
 fi
-inherit autotools multilib-minimal ${GITECLASS}
-unset GITECLASS
 
 DESCRIPTION="Reference implementation of the X Color Management specification"
-HOMEPAGE="http://www.oyranos.org/libxcm/"
-[[ ${PV} != *9999 ]] && \
-SRC_URI="https://github.com/oyranos-cms/${PN,,}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://www.oyranos.org/libxcm/"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS=""
 IUSE="static-libs X"
 
 RDEPEND="
 	X? (
-		x11-libs/libX11[${MULTILIB_USEDEP}]
-		x11-libs/libXfixes[${MULTILIB_USEDEP}]
-		x11-libs/libXmu[${MULTILIB_USEDEP}]
+		x11-libs/libX11
+		x11-libs/libXfixes
+		x11-libs/libXmu
 	)
 "
 DEPEND="${RDEPEND}
 	x11-base/xorg-proto"
 
-[[ ${PV} != *9999 ]] && S="${WORKDIR}/${P,,}"
-
 src_prepare() {
 	default
 	eautoreconf
-	multilib_copy_sources
 }
 
-multilib_src_configure() {
+src_configure() {
 	econf \
 		$(use_enable static-libs static) \
 		$(use_with X x11)
 }
 
-multilib_src_install_all() {
-	find "${D}" -name '*.la' -delete || die
+src_install() {
+	default
+	find "${D}" -name '*.la' -type f -delete || die
 }

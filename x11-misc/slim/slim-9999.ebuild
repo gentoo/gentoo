@@ -1,14 +1,13 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-inherit cmake-utils pam eutils systemd versionator
+inherit cmake-utils pam systemd versionator
 
 if [[ ${PV} = 9999* ]]; then
 	EGIT_REPO_URI="https://github.com/axs-gentoo/slim-git.git"
 	inherit git-r3
-	KEYWORDS=""
 else
 	SRC_URI="mirror://sourceforge/project/${PN}.berlios/${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
@@ -31,7 +30,7 @@ RDEPEND="x11-libs/libXmu
 	x11-apps/sessreg
 	consolekit? ( sys-auth/consolekit
 		sys-apps/dbus )
-	pam? (	virtual/pam
+	pam? ( virtual/pam
 		!x11-misc/slimlock )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
@@ -59,8 +58,8 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use pam USE_PAM)
-		$(cmake-utils_use consolekit USE_CONSOLEKIT)
+		-DUSE_PAM=$(usex pam)
+		-DUSE_CONSOLEKIT=$(usex consolekit)
 	)
 
 	cmake-utils_src_configure

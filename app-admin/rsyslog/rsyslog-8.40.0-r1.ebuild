@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -16,7 +16,7 @@ if [[ ${PV} == "9999" ]]; then
 
 	inherit git-r3
 else
-	KEYWORDS="amd64 ~arm ~arm64 ~hppa x86"
+	KEYWORDS="amd64 arm ~arm64 ~hppa x86"
 
 	SRC_URI="
 		https://www.rsyslog.com/files/download/${PN}/${P}.tar.gz
@@ -81,6 +81,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	>=sys-devel/autoconf-archive-2015.02.24
 	virtual/pkgconfig
+	elibc_musl? ( sys-libs/queue-standalone )
 	test? (
 		>=dev-libs/liblogging-1.0.1[stdlog]
 		jemalloc? ( <sys-libs/libfaketime-0.9.7 )

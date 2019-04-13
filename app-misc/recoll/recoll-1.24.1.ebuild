@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,8 +8,8 @@ PYTHON_COMPAT=( python2_7 )
 inherit eutils linux-info python-single-r1 qmake-utils
 
 DESCRIPTION="A personal full text search package"
-HOMEPAGE="http://www.lesbonscomptes.com/recoll/"
-SRC_URI="http://www.lesbonscomptes.com/recoll/${P}.tar.gz"
+HOMEPAGE="https://www.lesbonscomptes.com/recoll/"
+SRC_URI="https://www.lesbonscomptes.com/recoll/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

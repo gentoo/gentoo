@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -33,7 +33,7 @@ HOMEPAGE="http://www.exim.org/"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="alpha amd64 arm ~hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd ~x86-solaris"
+KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd ~x86-solaris"
 
 COMMON_DEPEND=">=sys-apps/sed-4.0.5
 	( >=sys-libs/db-3.2:= <sys-libs/db-6:= )
@@ -307,7 +307,7 @@ src_configure() {
 	fi
 
 	# Transport post-delivery actions
-	if ! use tpda; then
+	if use !tpda && use !dane; then
 		# EVENT is enabled by default
 		cat >> Makefile <<- EOC
 			DISABLE_EVENT=yes

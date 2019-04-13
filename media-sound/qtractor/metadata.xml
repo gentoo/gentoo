@@ -5,6 +5,14 @@
 		<email>proaudio@gentoo.org</email>
 		<name>Gentoo ProAudio Project</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>simon.vanderveldt+gentoo@gmail.com</email>
+		<name>Simon van der Veldt</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<use>
 		<flag name="dssi">Enable support for DSSI Soft Synth Interface</flag>
 		<flag name="rubberband">Enable support for in-place audio clip pitch-shifting through the rubberband library</flag>

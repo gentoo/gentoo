@@ -1,0 +1,12 @@
+diff -Naur a/setup.py b/setup.py
+--- a/setup.py	2019-01-08 23:06:33.082873069 +0000
++++ b/setup.py	2019-01-08 23:06:47.707165225 +0000
+@@ -356,7 +356,7 @@
+                 for d in os.environ[k].split(os.path.pathsep):
+                     _add_directory(library_dirs, d)
+ 
+-        prefix = sysconfig.get_config_var("prefix")
++        prefix = None
+         if prefix:
+             _add_directory(library_dirs, os.path.join(prefix, "lib"))
+             _add_directory(include_dirs, os.path.join(prefix, "include"))

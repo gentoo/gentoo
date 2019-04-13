@@ -1,9 +1,11 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit prefix eutils eapi7-ver toolchain-funcs flag-o-matic gnuconfig \
+PYTHON_COMPAT=( python3_{4,5,6,7} )
+
+inherit python-any-r1 prefix eutils eapi7-ver toolchain-funcs flag-o-matic gnuconfig \
 	multilib systemd multiprocessing
 
 DESCRIPTION="GNU libc C library"
@@ -28,12 +30,12 @@ RELEASE_VER=${PV}
 GCC_BOOTSTRAP_VER=20180511
 
 # Gentoo patchset
-PATCH_VER=10
+PATCH_VER=11
 
-SRC_URI+=" https://dev.gentoo.org/~dilfridge/distfiles/${P}-patches-${PATCH_VER}.tar.xz"
+SRC_URI+=" https://dev.gentoo.org/~slyfox/distfiles/${P}-patches-${PATCH_VER}.tar.xz"
 SRC_URI+=" multilib? ( https://dev.gentoo.org/~dilfridge/distfiles/gcc-multilib-bootstrap-${GCC_BOOTSTRAP_VER}.tar.xz )"
 
-IUSE="audit caps cet compile-locales doc gd headers-only +multiarch multilib nscd profile selinux suid systemtap test vanilla"
+IUSE="audit caps cet compile-locales doc gd headers-only +multiarch multilib nscd profile selinux +ssp suid systemtap test vanilla"
 
 # Minimum kernel version that glibc requires
 MIN_KERN_VER="3.2.0"
@@ -73,6 +75,7 @@ COMMON_DEPEND="
 	systemtap? ( dev-util/systemtap )
 "
 DEPEND="${COMMON_DEPEND}
+	${PYTHON_DEPS}
 	>=app-misc/pax-utils-0.1.10
 	sys-devel/bison
 	!<sys-apps/sandbox-1.6
@@ -83,7 +86,6 @@ DEPEND="${COMMON_DEPEND}
 	test? ( >=net-dns/libidn2-2.0.5 )
 "
 RDEPEND="${COMMON_DEPEND}
-	>=net-dns/libidn2-2.0.5
 	sys-apps/gentoo-functions
 	!sys-kernel/ps3-sources
 	!sys-libs/nss-db
@@ -101,7 +103,10 @@ else
 		>=sys-devel/gcc-6
 		virtual/os-headers
 	"
-	RDEPEND+=" vanilla? ( !sys-libs/timezone-data )"
+	RDEPEND+="
+		>=net-dns/libidn2-2.0.5
+		vanilla? ( !sys-libs/timezone-data )
+	"
 	PDEPEND+=" !vanilla? ( sys-libs/timezone-data )"
 fi
 
@@ -449,7 +454,7 @@ setup_env() {
 
 	export ABI=${ABI:-${DEFAULT_ABI:-default}}
 
-	if use headers-only ; then
+	if just_headers ; then
 		# Avoid mixing host's CC and target's CFLAGS_${ABI}:
 		# At this bootstrap stage we have only binutils for
 		# target but not compiler yet.
@@ -731,9 +736,6 @@ src_unpack() {
 		unpack ${P}.tar.xz
 	fi
 
-	cd "${S}" || die
-	touch locale/C-translit.h || die #185476 #218003
-
 	cd "${WORKDIR}" || die
 	unpack glibc-${RELEASE_VER}-patches-${PATCH_VER}.tar.xz
 }
@@ -800,6 +802,11 @@ glibc_do_configure() {
 	local myconf=()
 
 	case ${CTARGET} in
+		m68k*)
+			# setjmp() is not compatible with stack protection:
+			# https://sourceware.org/PR24202
+			myconf+=( --enable-stack-protector=no )
+			;;
 		powerpc-*)
 			# Currently gcc on powerpc32 generates invalid code for
 			# __builtin_return_address(0) calls. Normally programs
@@ -809,7 +816,7 @@ glibc_do_configure() {
 			myconf+=( --enable-stack-protector=no )
 			;;
 		*)
-			myconf+=( --enable-stack-protector=all )
+			myconf+=( --enable-stack-protector=$(usex ssp all no) )
 			;;
 	esac
 	myconf+=( --enable-stackguard-randomization )

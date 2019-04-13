@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -24,6 +24,7 @@ IUSE="+magic seccomp sqlite synctex test"
 RDEPEND=">=dev-libs/girara-0.3.1
 	>=dev-libs/glib-2.50:2
 	dev-python/sphinx
+	>=sys-devel/gettext-0.19.8
 	x11-libs/cairo
 	>=x11-libs/gtk+-3.22:3
 	magic? ( sys-apps/file )
@@ -38,7 +39,6 @@ BDEPEND="virtual/pkgconfig"
 
 src_configure() {
 	local emesonargs=(
-		--libdir=/usr/$(get_libdir)
 		-Denable-magic=$(usex magic true false)
 		-Denable-seccomp=$(usex seccomp true false)
 		-Denable-sqlite=$(usex sqlite true false)

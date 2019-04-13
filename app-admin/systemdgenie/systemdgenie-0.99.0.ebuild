@@ -1,7 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit kde5
 
@@ -15,7 +15,8 @@ HOMEPAGE="https://cgit.kde.org/systemdgenie.git"
 LICENSE="GPL-2+"
 IUSE=""
 
-RDEPEND="
+BDEPEND="sys-devel/gettext"
+DEPEND="
 	$(add_frameworks_dep kauth)
 	$(add_frameworks_dep kconfigwidgets)
 	$(add_frameworks_dep kcoreaddons)
@@ -26,8 +27,6 @@ RDEPEND="
 	$(add_qt_dep qtdbus)
 	$(add_qt_dep qtgui)
 	$(add_qt_dep qtwidgets)
-	sys-apps/systemd
+	sys-apps/systemd:=
 "
-DEPEND="${RDEPEND}
-	sys-devel/gettext
-"
+RDEPEND="${DEPEND}"

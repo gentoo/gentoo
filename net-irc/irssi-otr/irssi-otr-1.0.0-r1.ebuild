@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -17,6 +17,7 @@ IUSE=""
 # please note >=libotr-4.1.0 is required due to critical bugfix
 # d748757e581b74e7298df155ad49174cb914102b, see README.md
 RDEPEND="
+	!=net-irc/irssi-1.2*
 	>=dev-libs/glib-2.22.0:2
 	>=dev-libs/libgcrypt-1.2.0:0
 	>=net-libs/libotr-4.1.0

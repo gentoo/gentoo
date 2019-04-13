@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -22,7 +22,7 @@ RDEPEND="
 	<dev-python/pyflakes-2.1.0[${PYTHON_USEDEP}]
 	>=dev-python/pycodestyle-2.4.0[${PYTHON_USEDEP}]
 	<dev-python/pycodestyle-2.5.0[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep 'dev-python/enum34[${PYTHON_USEDEP}]' 'python2*' 'pypy*' )
+	virtual/python-enum34[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep 'dev-python/configparser[${PYTHON_USEDEP}]' 'python2*' pypy )
 "
 PDEPEND="

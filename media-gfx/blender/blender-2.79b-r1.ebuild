@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,9 +9,9 @@ inherit check-reqs cmake-utils xdg-utils flag-o-matic gnome2-utils \
 	pax-utils python-single-r1 toolchain-funcs eapi7-ver
 
 DESCRIPTION="3D Creation/Animation/Publishing System"
-HOMEPAGE="http://www.blender.org"
+HOMEPAGE="https://www.blender.org"
 
-SRC_URI="http://download.blender.org/source/${P}.tar.gz"
+SRC_URI="https://download.blender.org/source/${P}.tar.gz"
 
 # Blender can have letters in the version string,
 # so strip off the letter if it exists.
@@ -19,7 +19,7 @@ MY_PV="$(ver_cut 1-2)"
 
 SLOT="0"
 LICENSE="|| ( GPL-2 BL )"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="+bullet +dds +elbeem +game-engine +openexr collada colorio \
 	cuda cycles debug doc ffmpeg fftw headless jack jemalloc jpeg2k libav \
 	llvm man ndof nls openal opencl openimageio openmp opensubdiv openvdb \
