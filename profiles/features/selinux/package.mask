@@ -34,6 +34,7 @@ gnome-extra/gnome-shell-extension-gsconnect
 gnome-extra/gnome-tweaks
 x11-themes/zukitwo-shell
 gnome-extra/office-runner
+gnome-extra/pch-session
 kde-misc/systemd-kcm
 net-firewall/firewalld
 sys-apps/gentoo-systemd-integration
