@@ -59,6 +59,14 @@ src_prepare() {
 	sed -i \
 		-e '/torture_keyfiles/d' \
 		tests/unittests/CMakeLists.txt || die
+
+	# disable tests that take too long (bug #677006)
+	if use sparc; then
+		sed -i \
+			-e '/torture_threads_pki_rsa/d' \
+			-e '/torture_pki_dsa/d' \
+			tests/unittests/CMakeLists.txt || die
+	fi
 }
 
 multilib_src_configure() {

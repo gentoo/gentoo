@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -57,6 +57,14 @@ src_prepare() {
 	sed -i \
 		-e '/torture_keyfiles/d' \
 		tests/unittests/CMakeLists.txt || die
+
+	# disable tests that take too long (bug #677006)
+	if use sparc; then
+		sed -i \
+			-e '/torture_threads_pki_rsa/d' \
+			-e '/torture_pki_dsa/d' \
+			tests/unittests/CMakeLists.txt || die
+	fi
 }
 
 multilib_src_configure() {
