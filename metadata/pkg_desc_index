@@ -8410,7 +8410,7 @@ net-analyzer/driftnet 0.1.6_p20090401-r1: A program which listens to network tra
 net-analyzer/echoping 6.0.2_p434-r2: Small program to test performances of remote servers
 net-analyzer/egressor 1.0-r2: tool for checking router configuration
 net-analyzer/etherape 0.9.14: A graphical network monitor for Unix modeled after etherman
-net-analyzer/ettercap 0.8.2 0.8.2-r2: A suite for man in the middle attacks
+net-analyzer/ettercap 0.8.2-r2: A suite for man in the middle attacks
 net-analyzer/fail2ban 0.10.4: scans log files and bans IPs that show malicious signs
 net-analyzer/firewalk 5.0-r1: A tool for determining a firewall's rule set
 net-analyzer/flow-tools 0.68.5.1-r2 0.68.5.1-r9: library and programs to process reports from NetFlow data
