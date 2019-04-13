@@ -165,7 +165,7 @@ NJS_MODULE_WD="${WORKDIR}/njs-${NJS_MODULE_PV}"
 SSL_DEPS_SKIP=1
 AUTOTOOLS_AUTO_DEPEND="no"
 
-inherit autotools ssl-cert toolchain-funcs perl-module flag-o-matic user systemd versionator multilib
+inherit autotools ssl-cert toolchain-funcs perl-module flag-o-matic user systemd versionator multilib pax-utils
 
 DESCRIPTION="Robust, small and high performance http and reverse proxy server"
 HOMEPAGE="https://nginx.org"
@@ -750,6 +750,10 @@ src_install() {
 	# logrotate
 	insinto /etc/logrotate.d
 	newins "${FILESDIR}"/nginx.logrotate-r1 nginx
+
+	if use luajit; then
+		pax-mark m "${ED%/}/usr/sbin/nginx"
+	fi
 
 	if use nginx_modules_http_perl; then
 		cd "${S}"/objs/src/http/modules/perl/ || die
