@@ -758,16 +758,6 @@ net-libs/libinfinity
 # Removal in 30 days.  Bug #513238.
 net-libs/adns
 
-# Michał Górny <mgorny@gentoo.org> (13 Mar 2019)
-# Ancient event-loop library with no reverse dependencies.  The current
-# version has been released in 2003, and has no maintainer since
-# at least 2006 (when metadata.xml was added).  Upstream released 1.0.1
-# at some point but there's probably no use in bumping it.  Blocks
-# removal of net-libs/adns.  Alternatives includes dev-libs/glib,
-# dev-libs/libevent, dev-libs/libev and many more.
-# Removal in 30 days.  Bug #680212.
-dev-libs/liboop
-
 # Eray Aslan <eras@gentoo.org> (01 Mar 2019)
 # Mask experimental software
 =mail-mta/postfix-3.5*
