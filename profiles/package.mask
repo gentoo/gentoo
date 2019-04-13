@@ -736,13 +736,6 @@ sys-cluster/util-vserver
 # Removal in 30 days.  Bug #572882.
 dev-php/php-openid
 
-# Michał Górny <mgorny@gentoo.org> (13 Mar 2019)
-# The eselect module is obsolete, now that dev-lang/gnat-gpl is the only
-# implementation in Gentoo.  It is unmaintained and has unresolved QA
-# issues.
-# Removal in 30 days.  Bug #362753.
-app-eselect/eselect-gnat
-
 # Eray Aslan <eras@gentoo.org> (01 Mar 2019)
 # Mask experimental software
 =mail-mta/postfix-3.5*
