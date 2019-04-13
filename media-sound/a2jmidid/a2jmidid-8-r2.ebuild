@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -9,7 +9,7 @@ NO_WAF_LIBDIR=1
 inherit python-single-r1 toolchain-funcs waf-utils eutils
 
 DESCRIPTION="Daemon for exposing legacy ALSA sequencer applications in JACK MIDI system"
-HOMEPAGE="http://home.gna.org/a2jmidid/"
+HOMEPAGE="https://repo.or.cz/a2jmidid.git"
 SRC_URI="http://download.gna.org/a2jmidid/${P}.tar.bz2"
 
 LICENSE="GPL-2"
