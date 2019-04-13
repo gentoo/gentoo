@@ -66,6 +66,10 @@ src_configure() {
 	# pyside is staticly disabled
 	export ovs_cv_pyuic4="no"
 
+	# flake8 is primarily a style guide tool, running it as part of the tests
+	# in Gentoo does not make much sense, only breaks them: bug 607280
+	export ovs_cv_flake8="no"
+
 	local linux_config
 	use modules && linux_config="--with-linux=${KV_OUT_DIR}"
 
