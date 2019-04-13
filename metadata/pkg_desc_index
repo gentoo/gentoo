@@ -5583,7 +5583,7 @@ dev-python/s3fs 0.1.2: Pythonic file interface to S3
 dev-python/s3transfer 0.1.13-r1: An Amazon S3 Transfer Manager
 dev-python/sampy 1.2.1: Simple Application Messaging Protocol messaging system implementation in Python
 dev-python/sancho 2.4-r1: Sancho is a unit testing framework
-dev-python/scandir 1.7 1.9.0: A better directory iterator and faster os.walk()
+dev-python/scandir 1.9.0: A better directory iterator and faster os.walk()
 dev-python/scripttest 1.2-r1: A very small text templating language
 dev-python/scrypt 0.8.0: Bindings for the scrypt key derivation function library
 dev-python/secretstorage 2.3.1: Python bindings to FreeDesktop.org Secret Service API.
