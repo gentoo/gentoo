@@ -741,13 +741,6 @@ net-analyzer/netcat6
 # Removal in 30 days.  Bug #545818.
 media-libs/ccaudio2
 
-# Michał Górny <mgorny@gentoo.org> (13 Mar 2019)
-# Library part of the gobby editor that has been removed in 2016.
-# It has no maintainer, no revdeps and suffers from GID collision
-# (#537488).
-# Removal in 30 days.  Bug #680216.
-net-libs/libinfinity
-
 # Eray Aslan <eras@gentoo.org> (01 Mar 2019)
 # Mask experimental software
 =mail-mta/postfix-3.5*
