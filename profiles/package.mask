@@ -743,14 +743,6 @@ dev-php/php-openid
 # Removal in 30 days.  Bug #362753.
 app-eselect/eselect-gnat
 
-# Michał Górny <mgorny@gentoo.org> (13 Mar 2019)
-# An ancient netcat clone that has been declared obsolete upstream,
-# yet keeps confusing Gentoo users into thinking it's better than
-# the original.  Recommended alternatives are net-analyzer/netcat,
-# net-analyzer/openbsd-netcat, net-misc/socat...
-# Removal in 30 days.  Bug #573814.
-net-analyzer/netcat6
-
 # Eray Aslan <eras@gentoo.org> (01 Mar 2019)
 # Mask experimental software
 =mail-mta/postfix-3.5*
