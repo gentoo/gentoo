@@ -9,7 +9,6 @@ inherit distutils-r1
 DESCRIPTION="OpenStack Cinder brick library for managing local volume attaches"
 HOMEPAGE="https://github.com/openstack/os-ken"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/os-ken-${PV}.tar.gz"
-S="${WORKDIR}/os_vif-${PV}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
