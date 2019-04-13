@@ -209,7 +209,7 @@ multilib_src_install() {
 		dodir /usr/bin #654780
 		local ft2demo
 		for ft2demo in ../ft2demos-${PV}/bin/*; do
-			./libtool --mode=install $(type -P install) -m 755 "$ft2demo" \
+			./libtool --mode=install $(type -P install) -m 755 "${ft2demo}" \
 				"${ED}"/usr/bin || die
 		done
 	fi
