@@ -30,6 +30,12 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (13 Apr 2019)
+# Unmaintained.  Does not build (again).  Last release in 2000.  Carries
+# a large number of patches already.
+# Removal in 30 days.  Bug #637484.
+net-misc/netkit-rwho
+
+# Michał Górny <mgorny@gentoo.org> (13 Apr 2019)
 # Apparently this was last updated in 2012.  It's unclear if the proxied
 # maintainer actually ever maintained it since it was imported in 2010.
 # The HOMEPAGE is now empty.  app-admin/pass is a good alternative.
