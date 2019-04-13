@@ -73,6 +73,10 @@ src_configure() {
 	sed -i \
 		-e '/^#DEFINE.*\<[nt]roff\>/{s:^#::;s:$: -c:}' \
 		src/man_db.conf || die
+
+	cat > 15man-db <<-EOF || die
+	SANDBOX_PREDICT="/var/cache/man"
+	EOF
 }
 
 src_install() {
@@ -82,6 +86,9 @@ src_install() {
 
 	exeinto /etc/cron.daily
 	newexe "${FILESDIR}"/man-db.cron-r1 man-db #289884
+
+	insinto /etc/sandbox.d
+	doins 15man-db
 }
 
 pkg_preinst() {
@@ -92,7 +99,7 @@ pkg_preinst() {
 	local _replacing_version=
 	local _setgid_vuln=0
 	for _replacing_version in ${REPLACING_VERSIONS}; do
-		if ver_test '2.7.6.1-r2' -gt "${_replacing_version}"; then
+		if ver_test '2.7.6.1-r2' -le "${_replacing_version}"; then
 			debug-print "Skipping security bug #602588 ... existing installation (${_replacing_version}) should not be affected!"
 		else
 			_setgid_vuln=1
