@@ -1,0 +1,12 @@
+diff -up source-highlight-3.1.8/src/esc.style.no-black source-highlight-3.1.8/src/esc.style
+--- source-highlight-3.1.8/src/esc.style.no-black	2019-03-20 16:52:33.053965325 +0000
++++ source-highlight-3.1.8/src/esc.style	2019-03-20 16:52:42.502965289 +0000
+@@ -7,7 +7,7 @@ comment cyan i ;
+ number purple ;
+ preproc darkblue b ;
+ symbol darkred ;
+-function black b;
++function b;
+ cbracket red;
+ variable darkgreen ;
+ 
