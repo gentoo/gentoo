@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile configure install
+DEPEND=dev-libs/boehm-gc sys-libs/libunwind
+DESCRIPTION=OpenDylan language runtime environment (prebuilt)
+EAPI=7
+HOMEPAGE=http://opendylan.org
+KEYWORDS=~x86 ~amd64
+LICENSE=Opendylan
+RDEPEND=dev-libs/boehm-gc sys-libs/libunwind
+SLOT=0
+SRC_URI=amd64? ( http://opendylan.org/downloads/opendylan/2019.1/opendylan-2019.1-x86_64-linux.tar.bz2 ) x86? ( http://opendylan.org/downloads/opendylan/2019.1/opendylan-2019.1-x86-linux.tar.bz2 )
+_md5_=4c66ed29222d98786517c11db3b856a8
