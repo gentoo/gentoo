@@ -30,6 +30,22 @@
 #--- END OF EXAMPLES ---
 
 # Hans de Graaff <graaff@gentoo.org> (13 Apr 2019)
+# Old ruby24-only slots of Rails-related packages
+# These no longer have reverse dependencies or newer
+# versions are available.
+# Masked for removal in 30 days.
+dev-ruby/arel:7.0
+dev-ruby/coffee-rails:4.1
+dev-ruby/d3_rails:0
+dev-ruby/i18n:0.6
+dev-ruby/i18n:0.8
+dev-ruby/mail:2.6
+dev-ruby/mysql2:0.3
+dev-ruby/sprockets-rails:2.3
+dev-ruby/uglifier:0
+dev-ruby/uglifier:3
+
+# Hans de Graaff <graaff@gentoo.org> (13 Apr 2019)
 # No longer maintained upstream. Does not work
 # with ruby25.
 # Masked for removal in 30 days.
@@ -705,76 +721,6 @@ dev-util/staruml-bin
 app-arch/createrepo
 dev-python/pyliblzma
 sys-apps/yum
-
-# Michał Górny <mgorny@gentoo.org> (13 Mar 2019)
-# Obscure package with multiple bugs open.  Blocks removal
-# of dev-libs/dietlibc (#498256) and dev-libs/beecrypt (#666599).
-# Unresolved segfaults (#641112) or build failures (#650578), depending
-# on the GCC version/profile.
-# Removal in 30 days.  Bug #680264.
-sys-cluster/util-vserver
-
-# Michał Górny <mgorny@gentoo.org> (13 Mar 2019)
-# Contains vulnerability (CVE-2016-2049) that has not been resolved
-# for almost 3 years.  No reverse dependencies.
-# Removal in 30 days.  Bug #572882.
-dev-php/php-openid
-
-# Michał Górny <mgorny@gentoo.org> (13 Mar 2019)
-# The eselect module is obsolete, now that dev-lang/gnat-gpl is the only
-# implementation in Gentoo.  It is unmaintained and has unresolved QA
-# issues.
-# Removal in 30 days.  Bug #362753.
-app-eselect/eselect-gnat
-
-# Michał Górny <mgorny@gentoo.org> (13 Mar 2019)
-# An ancient netcat clone that has been declared obsolete upstream,
-# yet keeps confusing Gentoo users into thinking it's better than
-# the original.  Recommended alternatives are net-analyzer/netcat,
-# net-analyzer/openbsd-netcat, net-misc/socat...
-# Removal in 30 days.  Bug #573814.
-net-analyzer/netcat6
-
-# Michał Górny <mgorny@gentoo.org> (13 Mar 2019)
-# An obscure GNU audio file library with no reverse dependencies.  Last
-# release in 2015 (and we are one release behind).  Fails to build.
-# Removal in 30 days.  Bug #545818.
-media-libs/ccaudio2
-
-# Michał Górny <mgorny@gentoo.org> (13 Mar 2019)
-# Library part of the gobby editor that has been removed in 2016.
-# It has no maintainer, no revdeps and suffers from GID collision
-# (#537488).
-# Removal in 30 days.  Bug #680216.
-net-libs/libinfinity
-
-# Michał Górny <mgorny@gentoo.org> (13 Mar 2019)
-# Ancient asynchronous DNS library.  The current Gentoo version is
-# from 2006, and lacks support for IPv6, NSS, /etc/hosts.  There were
-# some new upstream activity in 2014-2016 but there is probably
-# no reason to bump it, now that it has no reverse dependencies anymore.
-# It had no Gentoo maintainer since 2004, when metadata.xml was added.
-# A good alternative is net-dns/c-ares.
-# Removal in 30 days.  Bug #513238.
-net-libs/adns
-
-# Michał Górny <mgorny@gentoo.org> (13 Mar 2019)
-# Ancient event-loop library with no reverse dependencies.  The current
-# version has been released in 2003, and has no maintainer since
-# at least 2006 (when metadata.xml was added).  Upstream released 1.0.1
-# at some point but there's probably no use in bumping it.  Blocks
-# removal of net-libs/adns.  Alternatives includes dev-libs/glib,
-# dev-libs/libevent, dev-libs/libev and many more.
-# Removal in 30 days.  Bug #680212.
-dev-libs/liboop
-
-# Michał Górny <mgorny@gentoo.org> (13 Mar 2019)
-# Both packages duplicate each other (#511032) and share the same bugs.
-# They are both unmaintained, apparently fail to build (#541894)
-# and have a bump pending for over 3 years (#557284).
-# Removal in 30 days.  Bug #680208.
-net-misc/rancid
-net-misc/rancid-git
 
 # Eray Aslan <eras@gentoo.org> (01 Mar 2019)
 # Mask experimental software

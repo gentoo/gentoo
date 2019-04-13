@@ -26,6 +26,12 @@ DEPEND="${RDEPEND}
 		>=virtual/perl-Test-Simple-0.960.0
 	)
 "
+
+PATCHES=(
+	# Fixed in next version, bug #683046
+	"${FILESDIR}"/${P}-gdk-pixbuf-test.patch
+)
+
 src_test() {
 	virtx perl-module_src_test
 }
