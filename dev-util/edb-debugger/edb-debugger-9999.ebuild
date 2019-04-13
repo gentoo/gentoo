@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit cmake-utils git-r3
 
@@ -12,7 +12,7 @@ EGIT_REPO_URI="https://github.com/eteran/edb-debugger.git"
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS=""
-IUSE="graphviz"
+IUSE="graphviz jumbo-build"
 
 RDEPEND="
 	dev-libs/capstone:=
@@ -38,4 +38,11 @@ src_prepare() {
 		sed -i -e '/pkg_check_modules(GRAPHVIZ/d' CMakeLists.txt || die
 	fi
 	cmake-utils_src_prepare
+}
+
+src_configure() {
+	local mycmakeargs=(
+		-DBUILD_JUMBO=$(usex jumbo-build)
+	)
+	cmake-utils_src_configure
 }
