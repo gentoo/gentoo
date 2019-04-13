@@ -35,7 +35,7 @@ PATCH_VER=11
 SRC_URI+=" https://dev.gentoo.org/~slyfox/distfiles/${P}-patches-${PATCH_VER}.tar.xz"
 SRC_URI+=" multilib? ( https://dev.gentoo.org/~dilfridge/distfiles/gcc-multilib-bootstrap-${GCC_BOOTSTRAP_VER}.tar.xz )"
 
-IUSE="audit caps cet compile-locales doc gd headers-only +multiarch multilib nscd profile selinux +ssp suid systemtap test vanilla"
+IUSE="audit caps cet compile-locales doc gd headers-only +multiarch multilib nscd profile selinux +ssp +static-libs suid systemtap test vanilla"
 
 # Minimum kernel version that glibc requires
 MIN_KERN_VER="3.2.0"
@@ -1331,6 +1331,12 @@ src_install() {
 	fi
 
 	foreach_abi glibc_do_src_install
+
+	if ! use static-libs ; then
+		elog "Not installing static glibc libraries"
+		find "${ED}" -name "*.a" -and -not -name "*_nonshared.a" -delete
+	fi
+
 	src_strip
 }
 
