@@ -14,7 +14,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86 ~x86-fbsd ~amd64-linux"
 IUSE="class-nofakelag curl +extban-stacking libressl +operoverride operoverride-verify
-	+prefixaq showlistmodes shunnotices topicisnuhost +usermod"
+	+prefixaq showlistmodes shunnotices +usermod"
 
 RDEPEND="
 	>=app-crypt/argon2-20171227-r1:=
@@ -90,7 +90,6 @@ src_configure() {
 		$(use_enable curl libcurl "${EPREFIX}"/usr) \
 		$(use_enable prefixaq) \
 		$(use_with showlistmodes) \
-		$(use_with topicisnuhost) \
 		$(use_with shunnotices) \
 		$(use_with !operoverride no-operoverride) \
 		$(use_with operoverride-verify) \
