@@ -730,12 +730,6 @@ sys-apps/yum
 # Removal in 30 days.  Bug #680264.
 sys-cluster/util-vserver
 
-# Michał Górny <mgorny@gentoo.org> (13 Mar 2019)
-# Contains vulnerability (CVE-2016-2049) that has not been resolved
-# for almost 3 years.  No reverse dependencies.
-# Removal in 30 days.  Bug #572882.
-dev-php/php-openid
-
 # Eray Aslan <eras@gentoo.org> (01 Mar 2019)
 # Mask experimental software
 =mail-mta/postfix-3.5*
