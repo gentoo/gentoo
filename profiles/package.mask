@@ -35,13 +35,6 @@
 # Removal in 30 days.  Bug #654564.
 games-strategy/freecol
 
-# Michał Górny <mgorny@gentoo.org> (13 Apr 2019)
-# Fails to build.  The current (beta) release is from 2013, and upstream
-# had not made a release since.  Few commits since 2014.
-# Uses games.eclass.
-# Removal in 30 days.  Bug #654552.
-games-simulation/lincity-ng
-
 # Hans de Graaff <graaff@gentoo.org> (13 Apr 2019)
 # Old ruby24-only slots of Rails-related packages
 # These no longer have reverse dependencies or newer
