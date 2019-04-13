@@ -25,6 +25,9 @@ DEPEND="${RDEPEND}
 	test? ( dev-qt/qttest:5 )
 "
 
+# bug 682258
+RESTRICT="test"
+
 DOCS=( AUTHORS CHANGELOG README.md )
 
 PATCHES=(
