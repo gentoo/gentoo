@@ -73,6 +73,10 @@ src_configure() {
 	sed -i \
 		-e '/^#DEFINE.*\<[nt]roff\>/{s:^#::;s:$: -c:}' \
 		src/man_db.conf || die
+
+	cat > 15man-db <<-EOF || die
+	SANDBOX_PREDICT="/var/cache/man"
+	EOF
 }
 
 src_install() {
@@ -82,6 +86,9 @@ src_install() {
 
 	exeinto /etc/cron.daily
 	newexe "${FILESDIR}"/man-db.cron-r1 man-db #289884
+
+	insinto /etc/sandbox.d
+	doins 15man-db
 }
 
 pkg_preinst() {
