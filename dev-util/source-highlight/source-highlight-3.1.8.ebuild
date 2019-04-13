@@ -44,5 +44,7 @@ src_install () {
 
 src_test() {
 	export LD_LIBRARY_PATH="${S}/lib/srchilite/.libs/"
-	default
+	# upstream uses the same temporary filenames in numerous places
+	# see https://bugs.gentoo.org/635100
+	emake -j1 check
 }
