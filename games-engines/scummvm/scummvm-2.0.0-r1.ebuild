@@ -5,8 +5,8 @@ EAPI=7
 inherit desktop flag-o-matic toolchain-funcs xdg
 
 DESCRIPTION="Reimplementation of the SCUMM game engine used in Lucasarts adventures"
-HOMEPAGE="http://scummvm.sourceforge.net/"
-SRC_URI="http://scummvm.org/frs/scummvm/${PV}/${P}.tar.xz"
+HOMEPAGE="https://www.scummvm.org/"
+SRC_URI="https://scummvm.org/frs/scummvm/${PV}/${P}.tar.xz"
 
 LICENSE="GPL-2+ LGPL-2.1 BSD GPL-3-with-font-exception"
 SLOT="0"
