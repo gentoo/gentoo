@@ -774,7 +774,6 @@ dev-libs/liboop
 # and have a bump pending for over 3 years (#557284).
 # Removal in 30 days.  Bug #680208.
 net-misc/rancid
-net-misc/rancid-git
 
 # Eray Aslan <eras@gentoo.org> (01 Mar 2019)
 # Mask experimental software
