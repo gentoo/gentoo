@@ -47,6 +47,7 @@ app-admin/cpulimit 1.8: Limits the CPU usage of a process
 app-admin/cronolog 1.6.2-r5: Log rotation software
 app-admin/denyhosts 2.9 3.0 3.0-r1: DenyHosts is a utility to help sys admins thwart ssh hackers
 app-admin/diamond 4.0-r1: Python daemon that collects and publishes system metrics
+app-admin/dio 1.5.2-r1: A device I/O monitoring tool
 app-admin/diradm 2.9.7.1: A nearly complete nss/shadow suite for managing POSIX users/groups/data in LDAP
 app-admin/doas 6.0: Run commands as super user or another user, alternative to sudo from OpenBSD
 app-admin/drush 6.7.0-r1: Command line shell and scripting interface for Drupal
@@ -261,7 +262,7 @@ app-benchmarks/bashmark 0.6.2: Geno's cross platform benchmarking suite
 app-benchmarks/bonnie 2.0.6-r2: Performance Test of Filesystem I/O using standard C library calls
 app-benchmarks/bonnie++ 1.97.2 1.97.3: Hard drive bottleneck testing benchmark suite
 app-benchmarks/contest 0.61-r1: Test system responsiveness to compare different kernels
-app-benchmarks/cpuburn 1.4a-r1: Designed to heavily load CPU chips [testing purposes]
+app-benchmarks/cpuburn 1.4a-r1 1.4a-r3: CPU testing utilities in optimized assembler for maximum loading
 app-benchmarks/dbench 4.0: Popular filesystem benchmark
 app-benchmarks/httperf 0.9.1_p20161228: A tool from HP for measuring web server performance
 app-benchmarks/i7z 93_p20131012-r2: A better i7 (and now i3, i5) reporting tool for Linux
@@ -272,11 +273,11 @@ app-benchmarks/pipebench 0.40-r2: Measures the speed of stdin/stdout communicati
 app-benchmarks/ramspeed 3.5.0-r2: Benchmarking for memory and cache
 app-benchmarks/siege 4.0.4: A HTTP regression testing and benchmarking utility
 app-benchmarks/spew 1.0.8-r1: Measures I/O performance and/or generates I/O load
-app-benchmarks/stress 1.0.4-r1: Imposes stressful loads on different aspects of the system
+app-benchmarks/stress 1.0.4-r1 1.0.4-r2: A deliberately simple workload generator for POSIX systems
 app-benchmarks/sysbench 1.0.10 1.0.15: System performance benchmark
 app-benchmarks/tiobench 0.4.2: Portable, robust, fully-threaded I/O benchmark program
 app-benchmarks/volanomark 2.5.0.9: Java server benchmark utility
-app-benchmarks/wrk 3.1.2: A modern HTTP benchmarking tool
+app-benchmarks/wrk 3.1.2 4.1.0-r1: A HTTP benchmarking tool
 app-cdr/b5i2iso 0.2-r1: Convert CD images from b5i (BlindWrite) to iso
 app-cdr/bashburn 3.1.0: A shell script for burning optical media
 app-cdr/bchunk 1.2.0-r4: Convert CD images from bin/cue to iso+wav/cdr
@@ -370,6 +371,7 @@ app-crypt/sign 1.0.7: File signing and signature verification utility
 app-crypt/signing-party 2.7: A collection of several tools related to OpenPGP
 app-crypt/ssdeep 2.14.1: Computes context triggered piecewise hashes (fuzzy hashes)
 app-crypt/ssh-multiadd 1.3.2-r1: Adds multiple ssh keys to the ssh authentication agent
+app-crypt/ssss 0.5: Shamir's Secret Sharing Scheme
 app-crypt/stan 0.4.1-r1: Stan analyzes binary streams and calculates statistical information
 app-crypt/stoken 0.92: Software Token for Linux/UNIX
 app-crypt/tpm-tools 1.3.9.1: TrouSerS' support tools for the Trusted Platform Modules
@@ -1000,6 +1002,7 @@ app-misc/empty 0.6.20b: Small shell utility, similar to expect(1)
 app-misc/esekeyd 1.2.7: Multimedia key daemon that uses the Linux event interface
 app-misc/evtest 1.30: test program for capturing input device events
 app-misc/fdupes 1.5.1: Identify/delete duplicate files residing within specified directories
+app-misc/fhem 5.9: A GPL'd perl server for house automation
 app-misc/figlet 2.2.5: program for making large letters out of ordinary text
 app-misc/freemind 1.0.1-r3: Mind-mapping software written in Java
 app-misc/fslint 2.46: A utility to find various forms of lint on a filesystem
@@ -1065,6 +1068,7 @@ app-misc/mouseremote 0.90-r2: X10 MouseRemote
 app-misc/mtail 1.1.1-r3: Tail workalike, that performs output colourising
 app-misc/muttprint 0.73-r4: Script for pretty printing of your mails
 app-misc/mvcase 0.1-r2: A modified version of mv, used to convert filenames to lower/upper case
+app-misc/mx5000tools 0.1.2: Tools for controlling the LCD on a Logitech MX5000 keyboard
 app-misc/neofetch 5.0.0: Simple information system script
 app-misc/note 1.3.3-r1: A note taking perl program
 app-misc/nut 20.1: Record what you eat and analyze your nutrient levels
@@ -1184,7 +1188,7 @@ app-office/openoffice-bin 4.1.6: Apache OpenOffice productivity suite
 app-office/orage 4.12.1-r1: A time managing application (and panel plug-in) for the Xfce desktop environment
 app-office/pinpoint 0.1.8-r1: A tool for making hackers do excellent presentations
 app-office/planner 0.14.6_p20130520: Project manager for Gnome
-app-office/pybliographer 1.2.18: Pybliographer is a tool for working with bibliographic databases
+app-office/pybliographer 1.2.18 1.4.0-r1: Pybliographer is a tool for working with bibliographic databases
 app-office/sc 7.16-r2: Spreadsheet Calculator
 app-office/scribus 1.5.5_pre20190124: Desktop publishing (DTP) and layout program
 app-office/skrooge 2.18.0: Personal finances manager, aiming at being simple and intuitive
@@ -3269,6 +3273,7 @@ dev-libs/snowball-stemmer 0.20140325: All you need to include the snowball stemm
 dev-libs/socketstream 0.7.0-r1: C++ Streaming sockets library
 dev-libs/sord 0.16.0-r1: Library for storing RDF data in memory
 dev-libs/spdlog 1.2.1: Very fast, header only, C++ logging library
+dev-libs/spsdeclib 5.1-r1: Kryoflux SPS Decoder Library
 dev-libs/starpu 1.2.6: Unified runtime system for heterogeneous multicore architectures
 dev-libs/stfl 0.24: A library which implements a curses-based widget set for text terminals
 dev-libs/svrcore 4.0.4-r1: Mozilla LDAP C SDK
@@ -4779,7 +4784,7 @@ dev-python/cursive 0.1.1 0.1.2 0.2.1: Cursive implements OpenStack-specific vali
 dev-python/curtsies 0.2.11: Curses-like terminal wrapper, with colored strings
 dev-python/cx_Freeze 4.3.4 5.0.2: Create standalone executables from Python scripts
 dev-python/cycler 0.10.0: Composable style cycles
-dev-python/cython 0.25.2: A Python to C compiler
+dev-python/cython 0.25.2 0.29.4: A Python to C compiler
 dev-python/cytoolz 0.8.0: Cython implementation of Toolz: High performance functional utilities
 dev-python/d2to1 0.2.12_p1: Allows using distutils2-like setup.cfg files for a package metadata
 dev-python/dap 2.2.6.7-r1: Data Access Protocol client and server
@@ -5340,7 +5345,7 @@ dev-python/pyfltk 1.3.3: Python interface to Fltk library
 dev-python/pyftpdlib 1.5.1 1.5.3 1.5.4: Python FTP server library
 dev-python/pygal 2.1.1 2.4.0: A python SVG charts generator
 dev-python/pygame 1.9.2_pre20120101-r2 1.9.3: Python bindings for SDL multimedia library
-dev-python/pygame_sdl2 6.99.12.4: Reimplementation of portions of the pygame API using SDL2
+dev-python/pygame_sdl2 6.99.12.4 6.99.12.4-r1: Reimplementation of portions of the pygame API using SDL2
 dev-python/pygit2 0.26.4: Python bindings for libgit2
 dev-python/pyglet 1.2.4: Cross-platform windowing and multimedia library for Python
 dev-python/pygments 2.2.0: Pygments is a syntax highlighting package written in Python
@@ -7469,7 +7474,7 @@ media-gfx/pstoedit 3.70-r1: Translate PostScript and PDF graphics into other vec
 media-gfx/qrencode 4.0.2: C library for encoding data in a QR Code symbol
 media-gfx/quat 1.20-r1: A 3D quaternionic fractal generator
 media-gfx/raw-thumbnailer 0.2.1-r1: A lightweight and fast raw image thumbnailer
-media-gfx/rawtherapee 5.4: A powerful cross-platform raw image processing program
+media-gfx/rawtherapee 5.4 5.5: A powerful cross-platform raw image processing program
 media-gfx/recoverjpeg 2.2.3-r1: Recover JPEG pictures from a possibly corrupted disk image
 media-gfx/ristretto 0.8.3: A fast and lightweight picture viewer for Xfce
 media-gfx/rotoscope 0.2: Graphics program that can be used to give photos a cartoon-like appearance
@@ -7586,7 +7591,7 @@ media-libs/ilmbase 1.0.2 2.1.0 2.2.0-r1 2.3.0: OpenEXR ILM Base libraries
 media-libs/imlib 1.9.15-r5: Image loading and rendering library
 media-libs/imlib2 1.5.1-r1: Version 2 of an advanced replacement library for libraries like libXpm
 media-libs/jasper 2.0.14: Implementation of the codec specified in the JPEG-2000 Part-1 standard
-media-libs/jbig2dec 0.13-r4: A decoder implementation of the JBIG2 image compression format
+media-libs/jbig2dec 0.13-r4 0.14: A decoder implementation of the JBIG2 image compression format
 media-libs/jbig2enc 0.28-r1: JBIG2 Encoder and libs
 media-libs/jbigkit 2.1: data compression algorithm for bi-level high-resolution images
 media-libs/jpeg 6b-r12 9c: Library to load, handle and manipulate images in the JPEG format
@@ -7651,7 +7656,7 @@ media-libs/libgig 4.1.0: C++ library for loading Gigasampler and DLS level 1/2 f
 media-libs/libgii 1.0.2-r1 1.0.2-r2: Easy to use, but yet powerful, API for all possible input sources
 media-libs/libgphoto2 2.5.16 2.5.20: Library that implements support for numerous digital cameras
 media-libs/libgpod 0.8.3-r2: Shared library to access the contents of an iPod
-media-libs/libharu 2.3.0-r1: C/C++ library for PDF generation
+media-libs/libharu 2.3.0-r1 2.3.0-r2: C/C++ library for PDF generation
 media-libs/libheif 1.3.2-r1: ISO/IEC 23008-12:2017 HEIF file format decoder and encoder
 media-libs/libicns 0.8.1: A library for manipulating MacOS X .icns icon format
 media-libs/libid3tag 0.15.1b-r4: The MAD id3tag library
@@ -7828,7 +7833,7 @@ media-libs/taglib-extras 1.0.1-r1: Unofficial taglib plugins maintained by the A
 media-libs/tiff 4.0.9-r4 4.0.10: Tag Image File Format (TIFF) library
 media-libs/tremor 0_pre20130223-r1: A fixed-point version of the Ogg Vorbis decoder (also known as libvorbisidec)
 media-libs/tse3 0.3.1-r1: TSE3 Sequencer library
-media-libs/urt 3.1b-r1: the Utah Raster Toolkit is a library for dealing with raster images
+media-libs/urt 3.1b-r1 3.1b-r3: the Utah Raster Toolkit is a library for dealing with raster images
 media-libs/vamp-plugin-sdk 2.7.1: Audio processing system for plugins to extract information from audio data
 media-libs/vigra 1.11.1 1.11.1-r2: C++ computer vision library emphasizing customizable algorithms and structures
 media-libs/virglrenderer 0.6.0: library used implement a virtual 3D GPU used by qemu
@@ -8344,7 +8349,7 @@ media-video/mpeg2vidcodec 12-r1: MPEG Library
 media-video/mpgtx 1.3.1-r2: Command line MPEG audio/video/system file toolbox
 media-video/mplayer 1.3.0-r5: Media Player for Linux
 media-video/mpv 0.27.2: Media player based on MPlayer and mplayer2
-media-video/noad 0.7.3-r1 0.8.6-r1: Mark commercial breaks in VDR recordings
+media-video/noad 0.7.3-r1 0.8.6-r1 0.8.6-r3: Mark commercial breaks in VDR recordings
 media-video/nvidia_video_sdk 6.0.1: NVIDIA Video Codec SDK
 media-video/openshot 2.4.0-r1: Free, open-source, non-linear video editor to create and edit videos and movies
 media-video/parole 1.0.1: A simple Xfce4 media player using GStreamer
@@ -8387,7 +8392,7 @@ net-analyzer/arping 2.17: A utility to see if a specific IP address is taken and
 net-analyzer/arpoison 0.6-r2: A utility to poison ARP caches
 net-analyzer/arpon 2.7.2: ArpON (Arp handler inspectiON) is a portable Arp handler
 net-analyzer/arpwatch 2.1.15-r8: An ethernet monitor program that keeps track of ethernet/ip address pairings
-net-analyzer/authforce 0.9.9-r1: An HTTP authentication brute forcer
+net-analyzer/authforce 0.9.9-r1 0.9.9-r2: An HTTP authentication brute forcer
 net-analyzer/bigeye 0.3-r3: network utility dump and simple honeypot utility
 net-analyzer/bing 1.1.3-r2: A point-to-point bandwidth measurement tool
 net-analyzer/bmon 4.0: interface bandwidth monitor
@@ -8499,7 +8504,7 @@ net-analyzer/speedtest-cli 2.0.2: Command line interface for testing internet ba
 net-analyzer/squid-graph 3.2-r1: Squid logfile analyzer and traffic grapher
 net-analyzer/squidsites 1.01-r2: A tool that parses Squid access log file and generates a report of the most visited sites
 net-analyzer/ssldump 0.9_beta3: An SSLv3/TLS network protocol analyzer
-net-analyzer/sslscan 1.11.11: Fast SSL configuration scanner
+net-analyzer/sslscan 1.11.11 1.11.12: Fast SSL configuration scanner
 net-analyzer/ssmping 0.9.1: Tool for testing multicast connectivity
 net-analyzer/synscan 5.01: A fast asynchronous half-open TCP portscanner
 net-analyzer/tcpdump 4.9.2: A Tool for network monitoring and data acquisition
@@ -8640,6 +8645,7 @@ net-im/gg-transport 2.2.4-r1 2.2.6: Gadu-Gadu transport for Jabber
 net-im/jabber-base 0.01: Jabber servers and transports layout package
 net-im/kadu 4.3-r2: An open source Gadu-Gadu and Jabber/XMPP protocol Instant Messenger client
 net-im/kouchat 1.1.0: KouChat is a simple serverless chat client for local area networks
+net-im/libcommuni 3.5.0_p20180116: A cross-platform IRC framework written with Qt
 net-im/librvp 0.9.7: An RVP (Microsoft Exchange Instant Messaging) plugin for Pidgin
 net-im/mcabber 1.1.0-r1: A small Jabber console client with various features, like MUC, SSL, PGP
 net-im/minbif 1.0.5-r2: IRC gateway to IM networks
@@ -8650,6 +8656,7 @@ net-im/purple-events 0.99.1: Allows a fine-grained control over libpurple events
 net-im/pyicq-t 0.8.1.5-r6: Python based jabber transport for ICQ
 net-im/sendxmpp 1.24: A perl-script to send xmpp (jabber), similar to what mail(1) does for mail
 net-im/silc-toolkit 1.1.10: SDK for the SILC protocol
+net-im/swift 4.0.2-r1: An elegant, secure, adaptable and intuitive XMPP Client
 net-im/telepathy-connection-managers 2-r2: Meta-package for Telepathy Connection Managers
 net-im/telepathy-logger 0.8.2: Daemon that centralizes the communication logging within the Telepathy framework
 net-im/telepathy-mission-control 5.16.4: An account manager and channel dispatcher for the Telepathy framework
@@ -8955,7 +8962,7 @@ net-misc/icaclient 19.1.0.9: ICA Client for Citrix Presentation servers
 net-misc/icecast 2.4.4: Opensource alternative to shoutcast that supports mp3, ogg and aac streaming
 net-misc/ices 2.0.1-r1 2.0.2: Icecast OGG streaming client, supports on the fly re-encoding
 net-misc/ifenslave 1.1.0-r6: Attach and detach slave interfaces to a bonding device
-net-misc/igmpproxy 0.1-r2 0.2.1: A multicast routing daemon which uses IGMP forwarding
+net-misc/igmpproxy 0.1-r2 0.2.1 0.2.1-r2: A multicast routing daemon which uses IGMP forwarding
 net-misc/ipcalc 0.41: IP Calculator prints broadcast/network/etc for an IP address and netmask
 net-misc/iperf 2.0.9 3.1.3: A TCP, UDP, and SCTP network bandwidth measurement tool
 net-misc/iprange 1.0.4: iprange utility
@@ -8975,6 +8982,7 @@ net-misc/l7-protocols 2009.05.28: Protocol definitions of l7-filter kernel modul
 net-misc/libteam 1.22: Library and tools set for controlling team network device
 net-misc/lksctp-tools 1.0.13 1.0.16 1.0.17: Tools for Linux Kernel Stream Control Transmission Protocol implementation
 net-misc/lldpd 0.9.3-r1: Implementation of IEEE 802.1ab (LLDP)
+net-misc/mcproxy 1.1.1-r1: A multicast proxy for IGMP/MLD
 net-misc/memcached 1.4.39 1.5.2 1.5.10 1.5.12: High-performance, distributed memory object caching system
 net-misc/mindterm 3.4: A Java SSH Client
 net-misc/minidlna 1.2.1-r1: DLNA/UPnP-AV compliant media server
@@ -9199,6 +9207,7 @@ net-vpn/networkmanager-libreswan 1.2.6: NetworkManager libreswan plugin
 net-vpn/networkmanager-openconnect 1.2.4-r1: NetworkManager OpenConnect plugin
 net-vpn/networkmanager-openvpn 1.8.8: NetworkManager OpenVPN plugin
 net-vpn/networkmanager-pptp 1.2.8: NetworkManager PPTP VPN plugin
+net-vpn/networkmanager-strongswan 1.4.4-r1: NetworkManager StrongSwan plugin
 net-vpn/networkmanager-vpnc 1.2.6: NetworkManager VPNC plugin
 net-vpn/nstx 1.1_beta6-r3: IP over DNS tunnel
 net-vpn/openconnect 7.08-r1: Free client for Cisco AnyConnect SSL VPN software
@@ -9221,6 +9230,7 @@ net-wireless/hostapd 2.7-r2: IEEE 802.11 wireless LAN Host AP daemon
 net-wireless/irda-utils 0.9.18-r6: IrDA management and handling utilities
 net-wireless/iw 3.17 4.9: nl80211-based configuration utility for wireless devices using the mac80211 kernel stack
 net-wireless/kismet 2016.07.1-r2: IEEE 802.11 wireless LAN sniffer
+net-wireless/linssid 3.6-r1: Graphical wireless scanning for Linux
 net-wireless/lorcon 0.0_p20150109: A generic library for injecting 802.11 frames
 net-wireless/ndiswrapper 1.61: Wrapper for using Windows drivers for some wireless cards
 net-wireless/python-wifi 0.5.0-r3: Provides r/w access to a wireless network card's capabilities
@@ -9867,6 +9877,7 @@ sys-apps/hwinfo 21.4 21.23: Hardware detection tool used in SuSE Linux
 sys-apps/hwloc 1.11.2-r1: displays the hardware topology in convenient formats
 sys-apps/hwsetup 1.2-r3: Hardware setup program from Knoppix - used only on LiveCD
 sys-apps/i2c-tools 4.0: I2C tools for bus probing, chip dumping, EEPROM decoding, and more
+sys-apps/idle3-tools 0.9.3_pre20120123-r1: Set, get or disable the value of the idle3 timer found on WD HDDs
 sys-apps/ifplugd 0.28-r10: Brings up/down ethernet ports automatically with cable detection
 sys-apps/init-system-helpers 1.49-r1: Helper scripts useful for both OpenRC and systemd
 sys-apps/input-utils 1.2: Small collection of linux input layer utils
@@ -9912,6 +9923,7 @@ sys-apps/netkit-base 0.17-r9: Old-style inetd
 sys-apps/netplug 1.2.9.2-r1 1.2.9.2-r2: Brings up/down ethernet ports automatically with cable detection
 sys-apps/noexec 1.1.0-r1: a package for preventing processes from using exec system calls
 sys-apps/nvme-cli 1.6-r1: NVM-Express user space tooling for Linux
+sys-apps/onerng 3.6-r1: Software for the Open Hardware Random Number Generator called OneRNG
 sys-apps/openrc 0.34.11 0.38.3 0.38.3-r1: OpenRC manages the services, startup and shutdown of a host
 sys-apps/opentmpfiles 0.1.1 0.1.2 0.1.3 0.2: A standalone utility to process systemd-style tmpfiles.d files
 sys-apps/osinfo-db 20190218: osinfo database files
@@ -10598,6 +10610,7 @@ www-apps/Apache-Gallery 1.0_rc3-r1: Apache gallery for mod_perl
 www-apps/ampache 3.8.3: PHP-based tool for managing,updating and playing audio files via a web interface
 www-apps/bugzilla 4.4.12-r2 5.0.3-r2: Bugzilla is the Bug-Tracking System from the Mozilla project
 www-apps/cgit 1.2.1: a fast web-interface for git repositories
+www-apps/cgp 1_p20181209: A graphical web-based front-end for visualizing RRD collected by collectd
 www-apps/curator 3.0_p20110120-r2: Gallery generator
 www-apps/dspam-web 3.10.1: Web based administration and user controls for dspam
 www-apps/grafana-bin 5.4.3-r1: Gorgeous metric viz, dashboards & editors for Graphite, InfluxDB & OpenTSDB
@@ -10845,7 +10858,7 @@ x11-libs/libXxf86vm 1.1.4-r1: X.Org Xxf86vm library
 x11-libs/libaosd 0.2.7: An advanced on screen display (OSD) library
 x11-libs/libast 0.7-r2: LIBrary of Assorted Spiffy Things
 x11-libs/libcryptui 3.12.2-r1: User interface components for OpenPGP
-x11-libs/libdlo 0.1.2: A fully open source driver which supports all DisplayLink devices
+x11-libs/libdlo 0.1.2 0.1.2-r1: A fully open source driver which supports all DisplayLink devices
 x11-libs/libdmx 1.1.4: X.Org dmx library
 x11-libs/libdockapp 0.7.2: Window Maker Dock Applet Library
 x11-libs/libdrm 2.4.96 2.4.97: X.Org libdrm library
