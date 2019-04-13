@@ -751,12 +751,6 @@ app-eselect/eselect-gnat
 # Removal in 30 days.  Bug #573814.
 net-analyzer/netcat6
 
-# Michał Górny <mgorny@gentoo.org> (13 Mar 2019)
-# An obscure GNU audio file library with no reverse dependencies.  Last
-# release in 2015 (and we are one release behind).  Fails to build.
-# Removal in 30 days.  Bug #545818.
-media-libs/ccaudio2
-
 # Eray Aslan <eras@gentoo.org> (01 Mar 2019)
 # Mask experimental software
 =mail-mta/postfix-3.5*
