@@ -720,6 +720,10 @@ pkg_pretend() {
 	sanity_prechecks
 }
 
+pkg_setup() {
+	[[ -z ${BOOTSTRAP_RAP} ]] && python-any-r1_pkg_setup
+}
+
 # src_unpack
 
 src_unpack() {
