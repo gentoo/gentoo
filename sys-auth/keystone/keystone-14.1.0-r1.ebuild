@@ -2,7 +2,6 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-
 PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 
 inherit distutils-r1 user
@@ -19,7 +18,7 @@ else
 	SRC_URI="https://dev.gentoo.org/~prometheanfire/dist/openstack/keystone/rocky/keystone.conf.sample -> keystone.conf.sample-${PV}
 	https://dev.gentoo.org/~prometheanfire/dist/openstack/keystone/rocky/keystone.policy.yaml.sample -> keystone.policy.yaml.sample-${PV}
 	https://tarballs.openstack.org/${PN}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm64 ~x86"
+	KEYWORDS="amd64 ~arm64 x86"
 fi
 
 LICENSE="Apache-2.0"
@@ -104,8 +103,8 @@ RDEPEND="
 		!~dev-python/pymongo-3.1[${PYTHON_USEDEP}]
 	)
 	ldap? (
-		>=dev-python/pyldap-2.4.20[${PYTHON_USEDEP}]
-		>=dev-python/ldappool-2.0.0[${PYTHON_USEDEP}]
+		>=dev-python/python-ldap-3.0.0[${PYTHON_USEDEP}]
+		>=dev-python/ldappool-2.3.1[${PYTHON_USEDEP}]
 	)
 	|| (
 		www-servers/uwsgi[python,${PYTHON_USEDEP}]

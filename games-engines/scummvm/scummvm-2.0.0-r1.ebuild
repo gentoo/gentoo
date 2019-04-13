@@ -5,8 +5,8 @@ EAPI=7
 inherit desktop flag-o-matic toolchain-funcs xdg
 
 DESCRIPTION="Reimplementation of the SCUMM game engine used in Lucasarts adventures"
-HOMEPAGE="http://scummvm.sourceforge.net/"
-SRC_URI="http://scummvm.org/frs/scummvm/${PV}/${P}.tar.xz"
+HOMEPAGE="https://www.scummvm.org/"
+SRC_URI="https://scummvm.org/frs/scummvm/${PV}/${P}.tar.xz"
 
 LICENSE="GPL-2+ LGPL-2.1 BSD GPL-3-with-font-exception"
 SLOT="0"
@@ -43,7 +43,7 @@ S="${WORKDIR}/${P/_/}"
 PATCHES=( "${FILESDIR}/${PN}-2.0.0-freetype_pkgconfig.patch" )
 
 src_prepare() {
-	default
+	xdg_src_prepare
 
 	# -g isn't needed for nasm here
 	sed -i \
@@ -95,16 +95,4 @@ src_compile() {
 src_install() {
 	default
 	doicon -s scalable icons/scummvm.svg
-}
-
-pkg_preinst() {
-	xdg_pkg_preinst
-}
-
-pkg_postinst() {
-	xdg_pkg_postinst
-}
-
-pkg_postrm() {
-	xdg_pkg_postrm
 }
