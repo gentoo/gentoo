@@ -73,12 +73,6 @@ net-misc/netkit-rwho
 # Removal in 30 days.  Bug #682914.
 app-crypt/sgeps
 
-# Michał Górny <mgorny@gentoo.org> (13 Apr 2019)
-# Fails to run.  The current release is from 2015, and upstream has not
-# made a release since.  Uses games.eclass.
-# Removal in 30 days.  Bug #654564.
-games-strategy/freecol
-
 # Hans de Graaff <graaff@gentoo.org> (13 Apr 2019)
 # Old ruby24-only slots of Rails-related packages
 # These no longer have reverse dependencies or newer
