@@ -8994,7 +8994,6 @@ net-misc/netkit-bootparamd 0.17-r4: Netkit - bootparamd
 net-misc/netkit-bootpd 2.4-r1: Netkit - bootp
 net-misc/netkit-fingerd 0.17-r3: Netkit - fingerd and finger client
 net-misc/netkit-rsh 0.17-r10: Netkit's Remote Shell Suite: rexec{,d} rlogin{,d} rsh{,d}
-net-misc/netkit-rwho 0.17-r4: Netkit - ruptime/rwho/rwhod
 net-misc/netkit-talk 0.17-r5: Netkit - talkd
 net-misc/netkit-telnetd 0.17-r10: Standard Linux telnet client and server
 net-misc/netkit-timed 0.17-r10: Netkit - timed
