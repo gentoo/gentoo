@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -206,7 +206,7 @@ multilib_src_install() {
 		dodir /usr/bin #654780
 		local ft2demo
 		for ft2demo in ../ft2demos-${PV}/bin/*; do
-			./libtool --mode=install $(type -P install) -m 755 "$ft2demo" \
+			./libtool --mode=install $(type -P install) -m 755 "${ft2demo}" \
 				"${ED%/}"/usr/bin || die
 		done
 	fi
