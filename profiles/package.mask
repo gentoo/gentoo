@@ -768,13 +768,6 @@ net-libs/adns
 # Removal in 30 days.  Bug #680212.
 dev-libs/liboop
 
-# Michał Górny <mgorny@gentoo.org> (13 Mar 2019)
-# Both packages duplicate each other (#511032) and share the same bugs.
-# They are both unmaintained, apparently fail to build (#541894)
-# and have a bump pending for over 3 years (#557284).
-# Removal in 30 days.  Bug #680208.
-net-misc/rancid
-
 # Eray Aslan <eras@gentoo.org> (01 Mar 2019)
 # Mask experimental software
 =mail-mta/postfix-3.5*
