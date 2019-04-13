@@ -30,6 +30,22 @@
 #--- END OF EXAMPLES ---
 
 # Hans de Graaff <graaff@gentoo.org> (13 Apr 2019)
+# Old ruby24-only slots of Rails-related packages
+# These no longer have reverse dependencies or newer
+# versions are available.
+# Masked for removal in 30 days.
+dev-ruby/arel:7.0
+dev-ruby/coffee-rails:4.1
+dev-ruby/d3_rails:0
+dev-ruby/i18n:0.6
+dev-ruby/i18n:0.8
+dev-ruby/mail:2.6
+dev-ruby/mysql2:0.3
+dev-ruby/sprockets-rails:2.3
+dev-ruby/uglifier:0
+dev-ruby/uglifier:3
+
+# Hans de Graaff <graaff@gentoo.org> (13 Apr 2019)
 # No longer maintained upstream. Does not work
 # with ruby25.
 # Masked for removal in 30 days.
