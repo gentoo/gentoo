@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -22,8 +22,8 @@ RESTRICT="mirror bindist strip" #299368
 
 RDEPEND="
 	|| (
-		sys-auth/elogind[${MULTILIB_USEDEP}]
-		sys-apps/systemd[${MULTILIB_USEDEP}]
+		sys-auth/elogind
+		sys-apps/systemd
 	)
 	dev-libs/atk[${MULTILIB_USEDEP}]
 	dev-libs/expat[${MULTILIB_USEDEP}]
