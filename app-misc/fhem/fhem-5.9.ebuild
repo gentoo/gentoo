@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -9,7 +9,7 @@ DESCRIPTION="A GPL'd perl server for house automation"
 HOMEPAGE="https://www.fhem.de/"
 SRC_URI="https://www.fhem.de/${P}.tar.gz"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 LICENSE="GPL-2+"
 SLOT="0"
 IUSE="doc"
