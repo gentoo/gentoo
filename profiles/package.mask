@@ -36,6 +36,17 @@
 app-emacs/prom-wl
 
 # Michał Górny <mgorny@gentoo.org> (13 Apr 2019)
+# Unmaintained.  Contains vulnerable code and a large number of unsolved
+# (upstream) issues, including licensing issues that prevented Debian
+# from including it.  The current version is from 2004, and carries
+# some local patches.  Last upstream commits are from 2013, and involve
+# three successive branches, the 0.7.x not having a release since 2004,
+# and the two remaining branches never seeing a single release.
+# The suggested alternatives are net-analyzer/{netcat,openbsd-netcat}.
+# Removal in 30 days.  Bug #601742.
+net-analyzer/gnu-netcat
+
+# Michał Górny <mgorny@gentoo.org> (13 Apr 2019)
 # net-libs/ftplib: Unmaintained.  The ebuild suffers build failures due
 # to broken multilib conversion.  Last bumped in 2014, and needs local
 # patches to even work.  Obscure library with only two revdeps.
