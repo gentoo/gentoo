@@ -36,6 +36,12 @@ src_prepare() {
 	sed -i -r "s:(m4_define\(\[jq_version\],) .+\):\1 \[${PV}\]):" \
 		configure.ac || die
 
+	# jq-1.6-r3-never-bundle-oniguruma makes sure we build with the system oniguruma,
+	# but the bundled copy of oniguruma still gets eautoreconf'd since it
+	# exists; save the cycles by nuking it.
+	sed -i -e '/modules\/oniguruma/d' Makefile.am || die
+	rm -rf "${S}"/modules/oniguruma || die
+
 	default
 	eautoreconf
 }
