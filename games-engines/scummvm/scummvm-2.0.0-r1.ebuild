@@ -43,7 +43,7 @@ S="${WORKDIR}/${P/_/}"
 PATCHES=( "${FILESDIR}/${PN}-2.0.0-freetype_pkgconfig.patch" )
 
 src_prepare() {
-	default
+	xdg_src_prepare
 
 	# -g isn't needed for nasm here
 	sed -i \
@@ -95,16 +95,4 @@ src_compile() {
 src_install() {
 	default
 	doicon -s scalable icons/scummvm.svg
-}
-
-pkg_preinst() {
-	xdg_pkg_preinst
-}
-
-pkg_postinst() {
-	xdg_pkg_postinst
-}
-
-pkg_postrm() {
-	xdg_pkg_postrm
 }
