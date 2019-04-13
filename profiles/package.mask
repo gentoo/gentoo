@@ -30,6 +30,12 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (13 Apr 2019)
+# Fails to run.  The current release is from 2015, and upstream has not
+# made a release since.  Uses games.eclass.
+# Removal in 30 days.  Bug #654564.
+games-strategy/freecol
+
+# Michał Górny <mgorny@gentoo.org> (13 Apr 2019)
 # Fails to build.  The current (beta) release is from 2013, and upstream
 # had not made a release since.  Few commits since 2014.
 # Uses games.eclass.
