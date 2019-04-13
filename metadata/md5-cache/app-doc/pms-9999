@@ -7,4 +7,4 @@ IUSE=html twoside
 LICENSE=CC-BY-SA-3.0
 SLOT=live
 _eclasses_=git-r3	0d4635eeb5a96cd5315597a47eba25c9
-_md5_=2f2249f1f32ebfe5517472ed581985ee
+_md5_=bba7a3eb88948d791cee170f59403a7a
