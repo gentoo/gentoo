@@ -722,14 +722,6 @@ app-arch/createrepo
 dev-python/pyliblzma
 sys-apps/yum
 
-# Michał Górny <mgorny@gentoo.org> (13 Mar 2019)
-# Obscure package with multiple bugs open.  Blocks removal
-# of dev-libs/dietlibc (#498256) and dev-libs/beecrypt (#666599).
-# Unresolved segfaults (#641112) or build failures (#650578), depending
-# on the GCC version/profile.
-# Removal in 30 days.  Bug #680264.
-sys-cluster/util-vserver
-
 # Eray Aslan <eras@gentoo.org> (01 Mar 2019)
 # Mask experimental software
 =mail-mta/postfix-3.5*
