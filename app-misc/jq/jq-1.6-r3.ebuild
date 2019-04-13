@@ -14,14 +14,15 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x64-macos"
 IUSE="oniguruma static-libs"
 
+ONIGURUMA_MINPV='>=dev-libs/oniguruma-6.1.3' # Keep this in sync with bundled modules/oniguruma/
 DEPEND="
 	>=sys-devel/bison-3.0
 	sys-devel/flex
-	oniguruma? ( dev-libs/oniguruma:=[static-libs?] )
+	oniguruma? ( ${ONIGURUMA_MINPV}:=[static-libs?] )
 "
 RDEPEND="
 	!static-libs? (
-		oniguruma? ( dev-libs/oniguruma[static-libs?] )
+		oniguruma? ( ${ONIGURUMA_MINPV}[static-libs?] )
 	)
 "
 
