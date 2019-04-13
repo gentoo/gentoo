@@ -29,6 +29,18 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (13 Apr 2019)
+# No longer maintained upstream. Does not work
+# with ruby25.
+# Masked for removal in 30 days.
+dev-ruby/celluloid
+dev-ruby/celluloid-essentials
+dev-ruby/celluloid-extras
+dev-ruby/celluloid-fsm
+dev-ruby/celluloid-io
+dev-ruby/celluloid-pool
+dev-ruby/celluloid-supervision
+
 # Aaron Bauman <bman@gentoo.org> (12 Apr 2019)
 # Multiple security vulnerabilities
 # No revbumps in several years
@@ -763,10 +775,6 @@ dev-libs/liboop
 # Removal in 30 days.  Bug #680208.
 net-misc/rancid
 net-misc/rancid-git
-
-# Hans de Graaff <graaff@gentoo.org> (12 Mar 2019)
-# Mask unused obsolete slot for removal in 30 days.
-dev-ruby/trollop:0
 
 # Eray Aslan <eras@gentoo.org> (01 Mar 2019)
 # Mask experimental software

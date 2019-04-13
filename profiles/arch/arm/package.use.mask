@@ -48,11 +48,6 @@ sys-devel/clang-runtime crt
 # due to dev-lang/rust requirement
 dev-ruby/capybara test
 
-# Michał Górny <mgorny@gentoo.org> (20 Sep 2018)
-# dev-libs/libpfm not keyworded here (and unclear if it supports ARM).
-# Bug #666651.
-sys-devel/llvm exegesis
-
 # Christian Ruppert <idl0r@gentoo.org> (25 Aug 2018)
 # pre-built, no ARM support
 net-wireless/gr-osmosdr sdrplay
