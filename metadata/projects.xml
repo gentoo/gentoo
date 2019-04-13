@@ -130,6 +130,11 @@
     <url>https://wiki.gentoo.org/wiki/Project:ARM64</url>
     <description>The ARM64 project is devoted to getting and keeping Gentoo in good shape on the ARM AArch64 architecture.</description>
     <member>
+      <email>blueness@gentoo.org</email>
+      <name>Anthony G. Basile</name>
+      <role>catalyst builds for systemd and musl</role>
+    </member>
+    <member>
       <email>bman@gentoo.org</email>
       <name>Aaron Bauman</name>
       <role>Lead Minion</role>
