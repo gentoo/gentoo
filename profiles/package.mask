@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Ulrich Müller <ulm@gentoo.org> (13 Apr 2019)
+# Last release in 2001, HOMEPAGE and SRC_URI are gone.
+# Byte-compilation with recent Emacs versions fails.
+# Masked for removal in 30 days, bug #683248.
+app-emacs/prom-wl
+
 # Michał Górny <mgorny@gentoo.org> (13 Apr 2019)
 # net-libs/ftplib: Unmaintained.  The ebuild suffers build failures due
 # to broken multilib conversion.  Last bumped in 2014, and needs local

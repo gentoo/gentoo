@@ -59,6 +59,8 @@ RDEPEND="${DEPEND}
 	!net-wireless/gnome-bluetooth
 "
 
+S=${WORKDIR}/${P/_/.}
+
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 pkg_pretend() {
