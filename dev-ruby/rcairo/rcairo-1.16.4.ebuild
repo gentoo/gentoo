@@ -24,7 +24,7 @@ IUSE=""
 
 SLOT="0"
 LICENSE="|| ( Ruby GPL-2 )"
-KEYWORDS="amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~ppc ~x86"
 
 RDEPEND="${RDEPEND}
 	>=x11-libs/cairo-1.2.0[svg]"
@@ -38,7 +38,10 @@ ruby_add_bdepend "
 
 all_ruby_prepare() {
 	# Avoid unneeded dependency
-	sed -i -e '/native-package-installer/ s:^:#:' ext/cairo/extconf.rb || die
+	sed -e '/native-package-installer/ s:^:#:' \
+		-e '/def required_pkg_config_package/areturn true' \
+		-e '/checking_for/,/^end/ s:^:#:' \
+		-i ext/cairo/extconf.rb || die
 	sed -i -e '/native-package-installer/,/Gem::Dependency/ d' ../metadata || die
 
 	# Avoid test that requires unpackaged fixture
