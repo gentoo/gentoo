@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -42,6 +42,7 @@ DEPEND="${CDEPEND}
 
 DOCS=( authors.txt bugs.txt changes.txt credits.txt readme.txt )
 
+RESTRICT=strip
 S=${WORKDIR}/${MY_P}
 
 SITEFILE=50coccinelle-gentoo.el
@@ -109,8 +110,6 @@ src_install() {
 	fi
 
 	use python && python_optimize
-
-	export STRIP_MASK='*/coccinelle/spatch'
 }
 
 pkg_postinst() {
