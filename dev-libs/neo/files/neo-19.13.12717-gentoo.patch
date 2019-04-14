@@ -1,0 +1,41 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 7170553..c4a7552 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -587,7 +587,6 @@ if(NOT MSVC)
+ 			set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-noexcept-type")	# Added for gtest
+ 		endif()
+ 	endif()
+-	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror")
+ endif()
+ 
+ # Compile code with defenses enabled (settings to be used for production release code)
+diff --git a/offline_compiler/CMakeLists.txt b/offline_compiler/CMakeLists.txt
+index 9871174..b9fe044 100644
+--- a/offline_compiler/CMakeLists.txt
++++ b/offline_compiler/CMakeLists.txt
+@@ -105,6 +105,10 @@ set_target_properties(ocloc PROPERTIES FOLDER "offline_compiler")
+ add_custom_target(copy_compiler_files DEPENDS ${IGDRCL__IGC_TARGETS})
+ set_target_properties(copy_compiler_files PROPERTIES FOLDER "opencl runtime")
+ 
++if (NOT BUILD_OCL)
++  set_target_properties(ocloc PROPERTIES EXCLUDE_FROM_ALL 1 EXCLUDE_FROM_DEFAULT_BUILD 1)
++endif()
++
+ if(WIN32)
+   foreach(TARGET_tmp ${IGDRCL__IGC_TARGETS})
+     add_custom_command(
+diff --git a/package.cmake b/package.cmake
+index df818f7..a9f86d7 100644
+--- a/package.cmake
++++ b/package.cmake
+@@ -47,8 +47,7 @@ if(UNIX)
+     CODE "file( COPY ${IGDRCL_BINARY_DIR}/tmp/postrm DESTINATION ${IGDRCL_BINARY_DIR} FILE_PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE )"
+     COMPONENT opencl
+   )
+-  install(FILES ${IGDRCL_BINARY_DIR}/libintelopencl.conf DESTINATION ${_dir_etc}/ld.so.conf.d COMPONENT opencl)
+-  install(FILES ${IGDRCL_BINARY_DIR}/intel.icd DESTINATION ${_dir_etc}/OpenCL/vendors/ COMPONENT opencl)
++  install(FILES ${IGDRCL_BINARY_DIR}/intel.icd RENAME intel${ICD_SUFFIX}.icd DESTINATION ${_dir_etc}/OpenCL/vendors/ COMPONENT opencl)
+ 
+   install(FILES $<TARGET_FILE:ocloc>
+     DESTINATION ${CMAKE_INSTALL_BINDIR}
