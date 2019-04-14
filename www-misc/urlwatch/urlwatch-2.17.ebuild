@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,6 +17,7 @@ IUSE="test"
 
 RDEPEND="
 	dev-python/appdirs[${PYTHON_USEDEP}]
+	dev-python/cssselect[${PYTHON_USEDEP}]
 	dev-python/keyring[${PYTHON_USEDEP}]
 	dev-python/lxml[${PYTHON_USEDEP}]
 	dev-python/minidb[${PYTHON_USEDEP}]
@@ -33,6 +34,9 @@ BDEPEND="
 "
 
 DOCS=( CHANGELOG.md README.md )
+
+# https://github.com/thp/urlwatch/pull/382
+PATCHES=( "${FILESDIR}/${P}-fix-yaml.load.patch" )
 
 python_test() {
 	nosetests -v test || die "tests failed with ${EPYTHON}"

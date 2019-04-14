@@ -21,7 +21,7 @@ RDEPEND="
 	dev-python/keyring[${PYTHON_USEDEP}]
 	dev-python/lxml[${PYTHON_USEDEP}]
 	dev-python/minidb[${PYTHON_USEDEP}]
-	dev-python/pyyaml[${PYTHON_USEDEP}]
+	<dev-python/pyyaml-5[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
 "
 BDEPEND="
