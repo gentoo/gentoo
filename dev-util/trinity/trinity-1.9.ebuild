@@ -2,15 +2,15 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit toolchain-funcs git-r3
-
-EGIT_REPO_URI="https://github.com/kernelslacker/trinity.git"
+inherit toolchain-funcs
 
 DESCRIPTION="A Linux system call fuzz tester"
 HOMEPAGE="http://codemonkey.org.uk/projects/trinity/ https://github.com/kernelslacker/trinity/"
+SRC_URI="http://codemonkey.org.uk/projects/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 IUSE="examples"
 
 # We need newer headers to avoid compilation failures in the BPF stuff.
