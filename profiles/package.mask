@@ -555,11 +555,6 @@ dev-util/synopsis
 # Masked for testing
 =mail-client/geary-3.32.0-r1
 
-# Patrice Clement <monsieurp@gentoo.org> (17 Mar 2019)
-# Old and unmaintained Java libraries. Removal in 30 days.
-dev-java/zemberek
-dev-java/echo2
-
 # Michał Górny <mgorny@gentoo.org> (17 Mar 2019)
 # The current Gentoo version has been added in 2015 and has not been
 # bumped since.  It fails to build with new versions of gperf (#609272)
