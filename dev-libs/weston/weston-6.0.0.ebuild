@@ -114,7 +114,7 @@ src_configure() {
 		-Dtools=debug,info,terminal
 		-Dsimple-dmabuf-drm=auto
 		$(meson_use examples demo-clients)
-		$(usex examples -Dsimple-clients=damage,img,egl,shm,touch "")
+		$(usex examples -Dsimple-clients=damage,dmabuf-v4l,im,shm,touch$(usex gles2 ,dmabuf-egl,egl "") "")
 		$(meson_use resize-optimization resize-pool)
 		-Dtest-junit-xml=false
 		"${myconf[@]}"
