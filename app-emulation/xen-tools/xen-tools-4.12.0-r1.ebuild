@@ -20,7 +20,7 @@ else
 	UPSTREAM_VER=
 	SECURITY_VER=
 	# xen-tools's gentoo patches tarball
-	GENTOO_VER=16
+	GENTOO_VER=17
 	# xen-tools's gentoo patches version which apply to this specific ebuild
 	GENTOO_GPV=0
 	# xen-tools ovmf's patches
@@ -28,6 +28,7 @@ else
 
 	SEABIOS_VER=1.12.0
 	EDK2_COMMIT=ef529e6ab7c31290a33045bb1f1837447cc0eb56
+	IPXE_COMMIT=d2063b7693e0e35db97b2264aa987eb6341ae779
 
 	[[ -n ${UPSTREAM_VER} ]] && \
 		UPSTREAM_PATCHSET_URI="https://dev.gentoo.org/~dlan/distfiles/${P/-tools/}-upstream-patches-${UPSTREAM_VER}.tar.xz
@@ -42,6 +43,7 @@ else
 
 	SRC_URI="https://downloads.xenproject.org/release/xen/${MY_PV}/xen-${MY_PV}.tar.gz
 	https://www.seabios.org/downloads/seabios-${SEABIOS_VER}.tar.gz
+	ipxe? ( http://xenbits.xen.org/xen-extfiles/ipxe-git-${IPXE_COMMIT}.tar.gz )
 	ovmf? ( https://github.com/tianocore/edk2/archive/${EDK2_COMMIT}.tar.gz -> edk2-${EDK2_COMMIT}.tar.gz
 		${OVMF_PATCHSET_URI} )
 	${UPSTREAM_PATCHSET_URI}
@@ -60,13 +62,17 @@ SLOT="0/$(ver_cut 1-2)"
 # Inclusion of IUSE ocaml on stabalizing requires maintainer of ocaml to (get off his hands and) make
 # >=dev-lang/ocaml-4 stable
 # Masked in profiles/eapi-5-files instead
-IUSE="api custom-cflags debug doc flask hvm ocaml ovmf +pam pygrub python +qemu +qemu-traditional screen sdl static-libs system-qemu system-seabios"
+IUSE="api custom-cflags debug doc flask +hvm +ipxe ocaml ovmf +pam pygrub python +qemu +qemu-traditional +rombios screen sdl static-libs system-ipxe system-qemu system-seabios"
 
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
-	pygrub? ( python )
+	ipxe? ( rombios )
 	ovmf? ( hvm )
-	^^ ( qemu system-qemu )"
+	pygrub? ( python )
+	rombios? ( hvm )
+	system-ipxe? ( rombios )
+	?? ( ipxe system-ipxe )
+	?? ( qemu system-qemu )"
 
 COMMON_DEPEND="
 	sys-apps/pciutils
@@ -92,11 +98,10 @@ DEPEND="${COMMON_DEPEND}
 		$(python_gen_impl_dep sqlite)
 		)
 	!amd64? ( >=sys-apps/dtc-1.4.0 )
-	amd64? ( sys-devel/bin86
+	amd64? ( sys-power/iasl
 		system-seabios? ( sys-firmware/seabios )
-		sys-firmware/ipxe
-		sys-devel/dev86
-		sys-power/iasl )
+		system-ipxe? ( sys-firmware/ipxe[qemu] )
+		rombios? ( sys-devel/bin86 sys-devel/dev86 ) )
 	dev-lang/perl
 	app-misc/pax-utils
 	doc? (
@@ -242,12 +247,17 @@ src_prepare() {
 		cp tools/firmware/ovmf-makefile tools/firmware/ovmf-dir-remote/Makefile || die
 	fi
 
+	# ipxe
+	if use ipxe; then
+		cp "${DISTDIR}/ipxe-git-${IPXE_COMMIT}.tar.gz" tools/firmware/etherboot/_ipxe.tar.gz || die
+	fi
+
 	mv tools/qemu-xen/qemu-bridge-helper.c tools/qemu-xen/xen-bridge-helper.c || die
 
 	# Fix texi2html build error with new texi2html, qemu.doc.html
 	sed -i -e "/texi2html -monolithic/s/-number//" tools/qemu-xen-traditional/Makefile || die
 
-	use api   || sed -e "/SUBDIRS-\$(LIBXENAPI_BINDINGS) += libxen/d" -i tools/Makefile || die
+	use api || sed -e "/SUBDIRS-\$(LIBXENAPI_BINDINGS) += libxen/d" -i tools/Makefile || die
 	sed -e 's:$(MAKE) PYTHON=$(PYTHON) subdirs-$@:LC_ALL=C "$(MAKE)" PYTHON=$(PYTHON) subdirs-$@:' \
 		-i tools/firmware/Makefile || die
 
@@ -354,11 +364,13 @@ src_configure() {
 		--disable-xen \
 		--enable-tools \
 		--enable-docs \
-		--with-system-ipxe=${PREFIX}/usr/share/ipxe \
-		$(use_enable pam) \
 		$(use_enable api xenapi) \
-		$(use_enable ovmf) \
+		$(use_enable ipxe) \
+		$(usex system-ipxe '--with-system-ipxe=/usr/share/ipxe' '') \
 		$(use_enable ocaml ocamltools) \
+		$(use_enable ovmf) \
+		$(use_enable pam) \
+		$(use_enable rombios) \
 		--with-xenstored=$(usex ocaml 'oxenstored' 'xenstored') \
 		"
 
