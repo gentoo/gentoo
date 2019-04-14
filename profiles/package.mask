@@ -713,13 +713,6 @@ sci-chemistry/pymol-plugins-dynamics
 # Removal in 30 days.  Bug #671854.
 www-plugins/mozplugger
 
-# Michał Górny <mgorny@gentoo.org> (15 Mar 2019)
-# Package added in 2014 and not updated since.  The current Gentoo
-# version used to violate multilib-strict (#627944), now it does not
-# build at all.
-# Removal in 30 days.  Bug #638500.
-dev-util/igprof
-
 # Eray Aslan <eras@gentoo.org> (01 Mar 2019)
 # Mask experimental software
 =mail-mta/postfix-3.5*
