@@ -75,7 +75,7 @@ start() {
 
 	# tail -n1 is critical as these we only want the last instance of the option
 	local user=$(get_config "${MY_CNF}" user | tail -n1)
-	local user=$(id --group --name $user)
+	local group=$(id --group --name $user)
 	local basedir=$(get_config "${MY_CNF}" basedir | tail -n1)
 	local pidfile=$(get_config "${MY_CNF}" 'pid[_-]file' | tail -n1)
 	local socket=$(get_config "${MY_CNF}" socket | tail -n1)
