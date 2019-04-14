@@ -1,6 +1,11 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andreas K. Hüttel <dilfridge@gentoo.org> (14 Apr 2019)
+# Make sure glibc static libs are installed for now. Not installing
+# them is an experimental feature and needs testing.
+sys-libs/glibc static-libs
+
 # Mart Raudsepp <leio@gentoo.org> (14 Dec 2018)
 # Security is not optional if available for the architecture/kernel.
 gnome-base/gnome-desktop seccomp
