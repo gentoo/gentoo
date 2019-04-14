@@ -82,7 +82,10 @@ REQUIRED_USE="|| ( ${ALL_LLVM_TARGETS[*]} )
 	x86? ( cpu_flags_x86_sse2 )
 "
 
-PATCHES=( "${FILESDIR}"/0001-llvm-cmake-Add-additional-headers-only-if-they-exist.patch )
+PATCHES=(
+	"${FILESDIR}"/0001-llvm-cmake-Add-additional-headers-only-if-they-exist.patch
+	"${FILESDIR}"/1.34.0-doc-build-fix.patch
+)
 
 S="${WORKDIR}/${MY_P}-src"
 
