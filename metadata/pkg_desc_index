@@ -173,7 +173,7 @@ app-arch/cpio 2.12-r1: A file archival tool which can also read and write tar fi
 app-arch/deb2targz 1-r2: Convert a .deb file to a .tar.gz archive
 app-arch/dpkg 1.19.0.5: Package maintenance system for Debian
 app-arch/dump 0.4.46: Dump/restore ext2fs backup utilities
-app-arch/engrampa 1.18.3: Engrampa archive manager for MATE
+app-arch/engrampa 1.18.3 1.22.0: Engrampa archive manager for MATE
 app-arch/fastjar 0.98-r2: A jar program written in C
 app-arch/file-roller 3.26.2: Archive manager for GNOME
 app-arch/funzix 1.0: unpacker for the bogus ZIX format
@@ -583,7 +583,7 @@ app-editors/nedit 5.6-r1: Multi-purpose text editor for the X Window System
 app-editors/ng 1.5_beta1-r2: Emacs like micro editor Ng -- based on mg2a
 app-editors/nvi 1.81.6-r7: Vi clone
 app-editors/okteta 0.25.5: Hex editor by KDE
-app-editors/pluma 1.18.3: Pluma text editor for the MATE desktop
+app-editors/pluma 1.18.3 1.22.0: Pluma text editor for the MATE desktop
 app-editors/qemacs 0.4.1_pre20150916 0.4.1_pre20170225: QEmacs is a very small but powerful UNIX editor
 app-editors/qxmledit 0.9.10: Simple Qt-based XML editor
 app-editors/retext 7.0.0 7.0.3: Simple editor for Markdown and reStructuredText
@@ -1296,7 +1296,7 @@ app-text/apvlv 0.1.5-r2: Alf's PDF Viewer Like Vim
 app-text/asa 1.1-r1: ASA Carriage control conversion for ouput by Fortran programs
 app-text/asciidoc 8.6.9-r2 8.6.10: A plain text human readable/writable document format
 app-text/aspell 0.60.7_rc1: A spell checker replacement for ispell
-app-text/atril 1.18.3: Atril document viewer for MATE
+app-text/atril 1.18.3 1.22.0: Atril document viewer for MATE
 app-text/barcode 0.98-r1: barcode generator
 app-text/bdf2psf 1.104: Converter to generate console fonts from BDF source fonts
 app-text/bibletime 2.11.0: Qt Bible study application using the SWORD library
@@ -3128,7 +3128,7 @@ dev-libs/libltdl 1.3.5 1.5.26 2.4.6: A shared library tool for developers
 dev-libs/liblzw 0.2-r1: small C library for reading LZW compressed files (.Z)
 dev-libs/libmaa 1.3.2: Library with low-level data structures which are helpful for writing compilers
 dev-libs/libmail 0.3-r3: A mail handling library
-dev-libs/libmateweather 1.18.2: MATE library to access weather information from online services
+dev-libs/libmateweather 1.18.2 1.22.0: MATE library to access weather information from online services
 dev-libs/libmaxminddb 1.2.1 1.3.2: C library for the MaxMind DB file format
 dev-libs/libmba 0.9.1-r3: A library of generic C modules
 dev-libs/libmcrypt 2.5.8-r4: libmcrypt provides uniform interface to access several encryption algorithms
@@ -5454,7 +5454,7 @@ dev-python/python-bibtex 1.2.7-r1: A Python extension to parse BibTeX files
 dev-python/python-biggles 1.6.6-r1: A Python module for creating publication-quality 2D scientific plots
 dev-python/python-blazarclient 2.0.0: This is a client for the OpenStack Blazar API
 dev-python/python-bugzilla 1.2.2: A python module for interacting with Bugzilla over XMLRPC
-dev-python/python-caja 1.18.1: Python bindings for the Caja file manager
+dev-python/python-caja 1.18.1 1.22.0: Python bindings for the Caja file manager
 dev-python/python-cdb 0.34-r1: A Python extension module for cdb
 dev-python/python-ceilometerclient 2.6.2: This is a client library for Ceilometer built on the Ceilometer API
 dev-python/python-cinderclient 3.1.0 3.5.0 4.0.1: A client for the OpenStack Cinder API
@@ -7153,32 +7153,32 @@ mail-mta/nullmailer 1.13-r5 2.0-r1: Simple relay-only local mail transport agent
 mail-mta/postfix 3.2.4 3.3.1-r1: A fast and secure drop-in replacement for sendmail
 mail-mta/sendmail 8.14.9: Widely-used Mail Transport Agent (MTA)
 mail-mta/ssmtp 2.64-r2 2.64-r3: Extremely simple MTA to get mail off the system to a Mailhub
-mate-base/caja 1.18.5: Caja file manager for the MATE desktop
-mate-base/libmatekbd 1.18.2: MATE keyboard configuration library
-mate-base/mate 1.18: Meta ebuild for MATE, a traditional desktop environment
-mate-base/mate-applets 1.18.2: Applets for the MATE Desktop and Panel
-mate-base/mate-applets-meta 1.18: Meta package for MATE panel applets
-mate-base/mate-common 1.18.0: Common files for development of MATE packages
-mate-base/mate-control-center 1.18.2: The MATE Desktop configuration tool
-mate-base/mate-desktop 1.18.0: Libraries for the MATE desktop that are not part of the UI
-mate-base/mate-menus 1.18.1: MATE menu system, implementing the F.D.O cross-desktop spec
-mate-base/mate-panel 1.18.7: The MATE panel
-mate-base/mate-session-manager 1.18.2-r1: MATE session manager
-mate-base/mate-settings-daemon 1.18.2: MATE Settings Daemon
-mate-extra/caja-dropbox 1.18.0: Store, Sync and Share Files Online
-mate-extra/caja-extensions 1.18.2: Several Caja extensions
-mate-extra/mate-calc 1.18.1: Calculator for MATE
-mate-extra/mate-indicator-applet 1.18.1: MATE indicator applet
-mate-extra/mate-media 1.18.2: Multimedia related programs for the MATE desktop
-mate-extra/mate-netbook 1.18.2: MATE utilities for netbooks
-mate-extra/mate-polkit 1.18.2: A MATE specific DBUS service that is used to bring up authentication dialogs
-mate-extra/mate-power-manager 1.18.1: A session daemon for MATE that makes it easy to manage your laptop or desktop
-mate-extra/mate-screensaver 1.18.2: Replaces xscreensaver, integrating with the MATE desktop
-mate-extra/mate-sensors-applet 1.18.3: MATE panel applet to display readings from hardware sensors
-mate-extra/mate-system-monitor 1.18.1: The MATE System Monitor
-mate-extra/mate-user-guide 1.18.0: User documentation for MATE Desktop
-mate-extra/mate-user-share 1.18.0: Personal file sharing for the MATE desktop
-mate-extra/mate-utils 1.18.3: Utilities for the MATE desktop
+mate-base/caja 1.18.5 1.22.0: Caja file manager for the MATE desktop
+mate-base/libmatekbd 1.18.2 1.22.0: MATE keyboard configuration library
+mate-base/mate 1.18 1.22: Meta ebuild for MATE, a traditional desktop environment
+mate-base/mate-applets 1.18.2 1.22.0: Applets for the MATE Desktop and Panel
+mate-base/mate-applets-meta 1.18 1.22.0: Meta package for MATE panel applets
+mate-base/mate-common 1.18.0 1.22.0: Common files for development of MATE packages
+mate-base/mate-control-center 1.18.2 1.22.0: The MATE Desktop configuration tool
+mate-base/mate-desktop 1.18.0 1.22.0: Libraries for the MATE desktop that are not part of the UI
+mate-base/mate-menus 1.18.1 1.22.0: MATE menu system, implementing the F.D.O cross-desktop spec
+mate-base/mate-panel 1.18.7 1.22.0: The MATE panel
+mate-base/mate-session-manager 1.18.2-r1 1.22.0: MATE session manager
+mate-base/mate-settings-daemon 1.18.2 1.22.0: MATE Settings Daemon
+mate-extra/caja-dropbox 1.18.0 1.22.0-r1: Store, Sync and Share Files Online
+mate-extra/caja-extensions 1.18.2 1.22.0: Several Caja extensions
+mate-extra/mate-calc 1.18.1 1.22.0: Calculator for MATE
+mate-extra/mate-indicator-applet 1.18.1 1.22.0: MATE indicator applet
+mate-extra/mate-media 1.18.2 1.22.0: Multimedia related programs for the MATE desktop
+mate-extra/mate-netbook 1.18.2 1.22.0: MATE utilities for netbooks
+mate-extra/mate-polkit 1.18.2 1.22.0: A MATE specific DBUS service that is used to bring up authentication dialogs
+mate-extra/mate-power-manager 1.18.1 1.22.0: A session daemon for MATE that makes it easy to manage your laptop or desktop
+mate-extra/mate-screensaver 1.18.2 1.22.0: Replaces xscreensaver, integrating with the MATE desktop
+mate-extra/mate-sensors-applet 1.18.3 1.22.0-r1: MATE panel applet to display readings from hardware sensors
+mate-extra/mate-system-monitor 1.18.1 1.22.0: The MATE System Monitor
+mate-extra/mate-user-guide 1.18.0 1.22.0: User documentation for MATE Desktop
+mate-extra/mate-user-share 1.18.0 1.22.0: Personal file sharing for the MATE desktop
+mate-extra/mate-utils 1.18.3 1.22.0: Utilities for the MATE desktop
 media-fonts/alee-fonts 13-r1: A Lee's Hangul truetype fonts
 media-fonts/alegreya-sans 2.008: A humanist sans-serif typeface with a calligraphic, dynamic feeling
 media-fonts/alegreya-serif 2.007: Alegreya serif type family
@@ -7370,7 +7370,7 @@ media-gfx/ebdftopcf 2: ebdftopcf optimially generators PCF files from BDF files
 media-gfx/enblend 4.2.0_p20161007-r1: Image Blending with Multiresolution Splines
 media-gfx/eog 3.24.1: The Eye of GNOME image viewer
 media-gfx/eog-plugins 3.16.6-r1: Eye of GNOME plugins
-media-gfx/eom 1.18.3: The MATE image viewer
+media-gfx/eom 1.18.3 1.22.0: The MATE image viewer
 media-gfx/evoluspencil 2.0.5: A simple GUI prototyping tool to create mockups
 media-gfx/exif 0.6.21: Small CLI util to show EXIF infos hidden in JPEG files
 media-gfx/exiftags 1.01: Extracts JPEG EXIF headers from digital camera photos
@@ -7678,7 +7678,7 @@ media-libs/liblqr 0.4.2-r1: An easy to use C/C++ seam carving library
 media-libs/liblrdf 0.6.1: Library for manipulation of RDF files in LADSPA plugins
 media-libs/liblscp 0.5.8-r1 0.6.0: C++ library for the Linux Sampler control protocol
 media-libs/libmad 0.15.1b-r9: "M"peg "A"udio "D"ecoder library
-media-libs/libmatemixer 1.18.0: Mixer library for MATE Desktop
+media-libs/libmatemixer 1.18.0 1.22.0: Mixer library for MATE Desktop
 media-libs/libmatroska 1.4.5 1.4.8 1.4.9: Extensible multimedia container format based on EBML
 media-libs/libmediaart 1.9.4: Manages, extracts and handles media art caches
 media-libs/libmediainfo 18.08.1: MediaInfo libraries
@@ -9176,7 +9176,6 @@ net-print/poster 20060221: small utility for making a poster from an EPS file or
 net-print/splix 2.0.0_p20130826: A set of CUPS printer drivers for SPL (Samsung Printer Language) printers
 net-proxy/3proxy 0.8.9: A really tiny cross-platform proxy servers set
 net-proxy/adzapper 20110915-r2: Redirector for squid to intercept advertising, page counters and web bugs
-net-proxy/bfilter 1.1.4-r4: Ad-filtering web proxy featuring an effective heuristic ad-detection algorithm
 net-proxy/dante 1.4.1-r1: A free socks4,5 and msproxy implementation
 net-proxy/dnsproxy 1.17: The dnsproxy daemon is a proxy for DNS queries
 net-proxy/haproxy 1.6.11-r2 1.7.10 1.8.9 1.8.13: A TCP/HTTP reverse proxy for high availability environments
@@ -10985,11 +10984,11 @@ x11-misc/lsw 0.3: list window names
 x11-misc/macopix 1.7.4-r1: MaCoPiX (Mascot Constructive Pilot for X) is a desktop mascot application
 x11-misc/makedepend 1.0.5-r1: create dependencies in makefiles
 x11-misc/matchbox-keyboard 0.1-r1: Matchbox-keyboard is an on screen 'virtual' or 'software' keyboard
-x11-misc/mate-notification-daemon 1.18.1: MATE Notification daemon
+x11-misc/mate-notification-daemon 1.18.1 1.22.0: MATE Notification daemon
 x11-misc/menulibre 2.1.3: Advanced freedesktop.org compliant menu editor
 x11-misc/menumaker 0.99.10: Utility that scans through the system and generates a menu of installed programs
 x11-misc/mixer_app 1.8.0-r1: mixer_app has volume controllers that can be configured to handle sound sources
-x11-misc/mozo 1.18.0: Mozo menu editor for MATE
+x11-misc/mozo 1.18.0 1.22.0: Mozo menu editor for MATE
 x11-misc/mugshot 0.4.1: A lightweight user-configuration application
 x11-misc/netwmpager 2.05: Pager that works with Openbox and other EWMH compliant window managers
 x11-misc/nitrogen 1.6.1: A background browser and setter for X
@@ -11233,7 +11232,7 @@ x11-terms/eterm 0.9.6-r2: A vt102 terminal emulator for X
 x11-terms/gnome-terminal 3.24.2: The Gnome Terminal
 x11-terms/guake 0.8.8 3.3.2: Drop-down terminal for GNOME
 x11-terms/kterm 6.2.0-r6: Japanese Kanji X Terminal
-x11-terms/mate-terminal 1.18.2: The MATE Terminal
+x11-terms/mate-terminal 1.18.2 1.22.0: The MATE Terminal
 x11-terms/mlterm 3.8.4: A multi-lingual terminal emulator
 x11-terms/mrxvt 0.5.4: Multi-tabbed rxvt clone with XFT, transparent background and CJK support
 x11-terms/multi-aterm 0.2.1-r1: rxvt compatible terminal emulator with transparency and tab support
@@ -11313,10 +11312,10 @@ x11-themes/leonidas-backgrounds 11.0.0.2-r1: Fedora 11 official background artwo
 x11-themes/light-themes 17.04_p20170406: GTK2/GTK3 Ambiance and Radiance themes from Ubuntu
 x11-themes/lovelock-backgrounds 14.91.1.1-r1: Fedora 15 official background artwork
 x11-themes/lxqt-themes 0.13.0: Themes, graphics and icons for LXQt
-x11-themes/mate-backgrounds 1.18.0: A set of backgrounds packaged with the MATE desktop
-x11-themes/mate-icon-theme 1.18.2: MATE default icon themes
+x11-themes/mate-backgrounds 1.18.0 1.22.0: A set of backgrounds packaged with the MATE desktop
+x11-themes/mate-icon-theme 1.18.2 1.22.0: MATE default icon themes
 x11-themes/mate-icon-theme-faenza 1.18.1: Faenza icon theme, that was adapted for MATE desktop
-x11-themes/mate-themes 3.22.18: A set of MATE themes, with sets for users with limited or low vision
+x11-themes/mate-themes 3.22.18 3.22.19: A set of MATE themes, with sets for users with limited or low vision
 x11-themes/mate-themes-meta 3-r2 3-r3: Meta package to facilitate easy use of x11-themes/mate-themes
 x11-themes/murrine-themes 0.98.0-r1: Themes for the Murrine GTK+2 Cairo Engine
 x11-themes/neutral-xcursors 20150106: A family of smoothed and shadowed cursors that resemble the standard X ones
@@ -11374,7 +11373,7 @@ x11-wm/jwm 2.3.2: Very fast and lightweight still powerful window manager for X
 x11-wm/larswm 7.5.3-r2: Tiling window manager for X11, based on 9wm by David Hogan
 x11-wm/lumina 1.3.0_p1: Lumina desktop environment
 x11-wm/lwm 1.2.4: The ultimate lightweight window manager
-x11-wm/marco 1.18.2: MATE default window manager
+x11-wm/marco 1.18.2 1.22.0: MATE default window manager
 x11-wm/muffin 3.6.0: Compositing window manager forked from Mutter for use with Cinnamon
 x11-wm/musca 0.9.24_p20100226-r3: A simple dynamic window manager, with features nicked from ratpoison and dwm
 x11-wm/mutter 3.24.4: GNOME 3 compositing window manager based on Clutter
