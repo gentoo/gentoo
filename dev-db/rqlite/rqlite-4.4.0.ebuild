@@ -45,6 +45,12 @@ src_compile() {
 			-v -work -x ${EGO_BUILD_FLAGS} ${EGO_PN}/cmd/... || die
 }
 
+src_test() {
+	GOPATH="${WORKDIR}/${P}" \
+	GOBIN="${WORKDIR}/${P}/bin" \
+		go test -v ./... || die
+}
+
 src_install() {
 	dobin "${WORKDIR}/${P}/bin"/${PN}{,d}
 	dodoc -r *.md DOC
