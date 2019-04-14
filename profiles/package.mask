@@ -720,13 +720,6 @@ www-plugins/mozplugger
 # Removal in 30 days.  Bug #638500.
 dev-util/igprof
 
-# Michał Górny <mgorny@gentoo.org> (15 Mar 2019)
-# The current release is from 2005, upstream is gone.  Last patch
-# added in 2010, since then the package is completely unmaintained.
-# Very bad ebuild quality, blocking strictening of Portage behavior.
-# Removal in 30 days.  Bug #587306.
-sys-boot/quik
-
 # Eray Aslan <eras@gentoo.org> (01 Mar 2019)
 # Mask experimental software
 =mail-mta/postfix-3.5*
