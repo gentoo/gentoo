@@ -1,6 +1,9 @@
 # Copyright 1999-2019 Gentoo Authors.
 # Distributed under the terms of the GNU General Public License v2
 
+# utmp/wtmp is not supported in musl
+x11-terms/rxvt-unicode utmp wtmp
+
 # See bug #604542
 net-misc/iputils idn
 
