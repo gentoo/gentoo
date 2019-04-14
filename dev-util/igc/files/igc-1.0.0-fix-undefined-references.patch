@@ -1,0 +1,178 @@
+From d76fdf8697c7d17e3dc7783b86f8cd278c27fb5e Mon Sep 17 00:00:00 2001
+From: Dmitry Rogozhkin <dmitry.v.rogozhkin@intel.com>
+Date: Wed, 10 Apr 2019 05:52:02 -0700
+Subject: [PATCH] build: link against all required libraries
+
+If OS libraries and IGC will be built with -Wl,--as-needed, then IGC
+targets will fail to link with couple of errors due to:
+* missed -ldl in the link command lines
+* missed some LLVM libraries: -lLLVMInstCombine -lLLVMBinaryFormat
+
+Build scripts had the code to add some of missing libs above, but
+it did not cover all the LLVM build variants we now have.
+
+Fixes: #83
+
+Signed-off-by: Dmitry Rogozhkin <dmitry.v.rogozhkin@intel.com>
+---
+ IGC/CMakeLists.txt | 107 +++++++++++++++++++--------------------------
+ 1 file changed, 45 insertions(+), 62 deletions(-)
+
+diff --git a/IGC/CMakeLists.txt b/IGC/CMakeLists.txt
+index 10cc596..68511f9 100644
+--- a/IGC/CMakeLists.txt
++++ b/IGC/CMakeLists.txt
+@@ -3225,52 +3225,6 @@ endif()
+ 
+ # ==================================== LLVM package ====================================================
+ 
+-# Start with preparing lists of libraries to link. Correct list will be selected
+-# depending on the source of package (build from sources vs system library).
+-
+-# Use dynamic libraries when linking with system libraries.
+-set(IGC_BUILD__LLVM_DYNAMIC_LIBS_TO_LINK "LLVM")
+-if(UNIX)
+-  # Include dynamic linker for POSIX systems
+-  list(APPEND IGC_BUILD__LLVM_DYNAMIC_LIBS_TO_LINK "dl")
+-endif()
+-
+-# Link targets/dependencies (in required link order).
+-# NOTE: Since the libraries are grouped in the same link group (in GCC/CLANG),
+-#       there is no longer need to order in most dependant first manner.
+-set(IGC_BUILD__LLVM_STATIC_LIBS_TO_LINK
+-    "LLVMipo"
+-    "LLVMIRReader"
+-    "LLVMBitWriter"
+-    "LLVMAsmParser"
+-    "LLVMBitReader"
+-    "LLVMLinker"
+-    "LLVMCodeGen"
+-    "LLVMScalarOpts"
+-    "LLVMTransformUtils"
+-    "LLVMAnalysis"
+-    "LLVMTarget"
+-    "LLVMObjCARCOpts"
+-    "LLVMVectorize"
+-    "LLVMInstrumentation"
+-    "LLVMObject"
+-    "LLVMMCParser"
+-    "LLVMProfileData"
+-    "LLVMMC"
+-    "LLVMCore"
+-    "LLVMSupport"
+-    "LLVMDemangle"
+-    )
+-	
+-
+-if(LLVM_VERSION_MAJOR EQUAL 8)
+-set(IGC_BUILD__LLVM_STATIC_LIBS_TO_LINK
+-	"${IGC_BUILD__LLVM_STATIC_LIBS_TO_LINK}"
+-	"LLVMInstCombine"
+-	)
+-endif()
+-	
+-
+ if(TARGET LLVMCore)
+     # LLVM targets have been already defined.
+     if(LLVM_USE_PREBUILT)
+@@ -3281,9 +3235,6 @@ if(TARGET LLVMCore)
+     endif()
+ 
+     message(STATUS "[IGC] Using LLVM includes from: ${LLVM_INCLUDE_DIRS}")
+-
+-    # Link with static libraries if we are builing the sources: 
+-    set(IGC_BUILD__LLVM_LIBS_TO_LINK ${IGC_BUILD__LLVM_STATIC_LIBS_TO_LINK})
+ else()
+ 
+     message(STATUS "[IGC] LLVM targets are not defined. Searching for LLVM.")
+@@ -3308,24 +3259,11 @@ else()
+           # Place LLVM build directory inside IGC build directory
+           add_subdirectory(${IGC_LLVM_HOME_DIR} ${CMAKE_CURRENT_BINARY_DIR}/llvm/build)
+       endif()
+-
+-      # Link with static libraries if we are builing the sources: 
+-      set(IGC_BUILD__LLVM_LIBS_TO_LINK ${IGC_BUILD__LLVM_STATIC_LIBS_TO_LINK})
+     else()
+         find_package(LLVM ${IGC_PREFERRED_LLVM_VERSION})  
+         if(LLVM_FOUND)
+           message(STATUS "[IGC] Using system LLVM ${LLVM_PACKAGE_VERSION}")
+           set(IGC_BUILD__USING_SYSTEM_LLVM TRUE)
+-          # Check if found package has dynamic library and select them if possible.
+-          llvm_map_components_to_libnames(llvm_libs all)       
+-          list(FIND llvm_libs "LLVM" DYN_LIB_INDEX)
+-          if(${DYN_LIB_INDEX} GREATER -1)
+-            message(STATUS "[IGC] Using dynamic LLVM.")
+-            set(IGC_BUILD__LLVM_LIBS_TO_LINK ${IGC_BUILD__LLVM_DYNAMIC_LIBS_TO_LINK})
+-          else()
+-            message(STATUS "[IGC] Using static LLVM.")
+-            set(IGC_BUILD__LLVM_LIBS_TO_LINK ${IGC_BUILD__LLVM_STATIC_LIBS_TO_LINK})
+-          endif()
+        else()
+           message(FATAL_ERROR "[IGC] Unknown location of LLVM component. Couldn't find neither LLVM package in the system nor LLVM source files.")
+        endif()
+@@ -3352,6 +3290,49 @@ else()
+     set(COMMON_CLANG_LIB_FULL_NAME "lib${COMMON_CLANG_LIBRARY_NAME}${CMAKE_SHARED_LIBRARY_SUFFIX}")
+ endif()
+ 
++if(LLVM_LINK_LLVM_DYLIB)
++    # LLVM was built and configured in a way that tools (in our case IGC) should be linked
++    # against single LLVM dynamic library.
++    message(STATUS "[IGC] Link against LLVM dylib")
++    set(IGC_BUILD__LLVM_LIBS_TO_LINK "LLVM")
++else()
++    # LLVM was built into multiple libraries (static or shared).
++    message(STATUS "[IGC] Link against LLVM static or shared component libs")
++
++    # Link targets/dependencies (in required link order).
++    # NOTE: Since the libraries are grouped in the same link group (in GCC/CLANG),
++    #       there is no longer need to order in most dependant first manner.
++    set(IGC_BUILD__LLVM_LIBS_TO_LINK
++        "LLVMipo"
++        "LLVMIRReader"
++        "LLVMBitWriter"
++        "LLVMBinaryFormat"
++        "LLVMAsmParser"
++        "LLVMBitReader"
++        "LLVMLinker"
++        "LLVMCodeGen"
++        "LLVMScalarOpts"
++        "LLVMTransformUtils"
++        "LLVMAnalysis"
++        "LLVMTarget"
++        "LLVMObjCARCOpts"
++        "LLVMVectorize"
++        "LLVMInstrumentation"
++        "LLVMObject"
++        "LLVMMCParser"
++        "LLVMProfileData"
++        "LLVMMC"
++        "LLVMCore"
++        "LLVMSupport"
++        "LLVMDemangle"
++        )
++
++    if(LLVM_VERSION_MAJOR EQUAL 8)
++        list(APPEND IGC_BUILD__LLVM_LIBS_TO_LINK
++            "LLVMInstCombine"
++        )
++    endif()
++endif()
+ 
+ # ==================================== WrapperLLVM package =============================================
+ 
+@@ -3759,6 +3740,7 @@ foreach(_libBuildSuffix ${IGC_BUILD__MAIN_IGC_LIB_SUFFIXES})
+   else()
+     target_link_libraries("${IGC_BUILD__PROJ${_libBuildSuffix}}" PRIVATE
+         ${_targetLinkLine}
++        ${CMAKE_DL_LIBS}
+       )
+     # Link line for shared / dynamic library requires only library project (all static libs are linked inside).
+     set_property(TARGET "${IGC_BUILD__PROJ${_libBuildSuffix}}" PROPERTY LINK_INTERFACE_LIBRARIES "")
+@@ -3828,6 +3810,7 @@ if(_targetIsStatic)
+     target_link_libraries("${IGC_BUILD__PROJ__fcl_dll}"
+         ${_targetLinkLine}
+         ${COMMON_CLANG}
++        ${CMAKE_DL_LIBS}
+       )
+     # Link line for shared / dynamic library requires only library project (all static libs are linked inside).
+     set_property(TARGET "${IGC_BUILD__PROJ__fcl_dll}" PROPERTY LINK_INTERFACE_LIBRARIES "")
