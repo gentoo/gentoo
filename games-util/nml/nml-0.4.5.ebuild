@@ -13,7 +13,7 @@ LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
 
-RDEPEND="dev-python/pillow[zlib,${PYTHON_USEDEP}]
+RDEPEND="<dev-python/pillow-6.0.0[zlib,${PYTHON_USEDEP}]
 	dev-python/ply[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]"
