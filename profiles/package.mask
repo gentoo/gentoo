@@ -30,6 +30,13 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (14 Apr 2019)
+# Unmaintained.  The ebuild violates EAPI and relies on STRIP_MASK.
+# Current Gentoo version is from 2012, and hasn't been bumped for over
+# a year.
+# Removal in 30 days.  Bug #651426.
+app-misc/ledit
+
+# Michał Górny <mgorny@gentoo.org> (14 Apr 2019)
 # Integrated into dev-python/python-ldap-3.0+, and declared a deprecated
 # fork by upstream.  No reverse dependencies left.
 # Removal in 30 days.  Bug #668066.
