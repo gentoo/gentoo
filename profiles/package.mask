@@ -776,7 +776,6 @@ dev-util/staruml-bin
 # it with DNF.
 #
 # Removal in 30 days.  Bug #643308.
-app-arch/createrepo
 dev-python/pyliblzma
 sys-apps/yum
 
