@@ -777,7 +777,6 @@ dev-util/staruml-bin
 #
 # Removal in 30 days.  Bug #643308.
 dev-python/pyliblzma
-sys-apps/yum
 
 # Eray Aslan <eras@gentoo.org> (01 Mar 2019)
 # Mask experimental software
