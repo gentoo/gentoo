@@ -1,0 +1,22 @@
+From c8f5db3ec008cb46b2525011ddc4f55b7d274657 Mon Sep 17 00:00:00 2001
+From: Jan Beich <jbeich@FreeBSD.org>
+Date: Sat, 13 Apr 2019 11:19:30 +0000
+Subject: [PATCH] Expand default PATCH_VERSION after afd15488255d
+
+---
+ Source/GmmLib/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Source/GmmLib/CMakeLists.txt b/Source/GmmLib/CMakeLists.txt
+index 16c207a..cfadca5 100644
+--- a/Source/GmmLib/CMakeLists.txt
++++ b/Source/GmmLib/CMakeLists.txt
+@@ -40,7 +40,7 @@ if(NOT DEFINED PATCH_VERSION)
+ endif()
+ 
+ if(NOT DEFINED GMMLIB_API_PATCH_VERSION)
+-    set(GMMLIB_API_PATCH_VERSION PATCH_VERSION)
++    set(GMMLIB_API_PATCH_VERSION ${PATCH_VERSION})
+ endif()
+ 
+ message(STATUS "API version: ${GMMLIB_API_MAJOR_VERSION}.${GMMLIB_API_MINOR_VERSION}.${GMMLIB_API_PATCH_VERSION}")
