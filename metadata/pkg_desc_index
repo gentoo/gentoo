@@ -2517,7 +2517,6 @@ dev-java/commons-validator 1.4.0: Commons component to validate user input, or d
 dev-java/commons-vfs 1.0-r1: A single Java API for accessing various different file systems
 dev-java/cortado 0.6.0-r1: Multimedia framework for Java written by Fluendo
 dev-java/cpptasks 1.0_beta5: Ant-tasks to compile various source languages and produce executables
-dev-java/dbus-java 2.7-r1: Java bindings for the D-Bus messagebus
 dev-java/dict4j 1.1: Dict protocol implementation in Java
 dev-java/disruptor 3.2.0: High Performance Inter-Thread Messaging Library
 dev-java/dnsjava 2.1.6: An implementation of DNS in Java
@@ -2652,11 +2651,9 @@ dev-java/jgoodies-forms 1.3.0-r1: JGoodies library
 dev-java/jgoodies-looks 1.2.2-r2 2.3.1-r1 2.6.0: JGoodies Looks Library
 dev-java/jgraph 5.12.0.4-r1: Open-source graph component for Java
 dev-java/jgrapht 0.8.3: Graph library that is a simpler and faster alternative to JGraph
-dev-java/jgroups 2.9.0: JGroups is a toolkit for reliable multicast communication
 dev-java/jibx 1.1.5-r3 1.2.6-r1: Bind XML to Java code
 dev-java/jibx-tools 1.1.5-r2: JiBX: Binding XML to Java Code - Generators
 dev-java/jid3 0.46-r2: ID3 Class Library Implementation
-dev-java/jinklevel 0.1: Java binding for libinklevel
 dev-java/jisp 2.5.1-r3: Java Indexed Serialization Package: A small, embedded database engine
 dev-java/jlayer 1.0.1: MP3 decoder/player/converter library for Java
 dev-java/jlex 1.2.6-r2: JLex: a lexical analyzer generator for Java
@@ -2720,7 +2717,6 @@ dev-java/laf-plugin 0.2-r2: Look'n'feel Java library
 dev-java/ldapsdk 4.1.7-r4: Netscape Directory SDK for Java
 dev-java/libg 2.1.0-r1: Lots of small utilities for bndlib, a swiss army knife for OSGi
 dev-java/libmatthew-java 0.7.2-r2: A selection of libraries for Java
-dev-java/libmso 0.1: Java library to detect printers
 dev-java/libreadline-java 0.8.0-r4: A JNI-wrapper to GNU Readline
 dev-java/log4j 1.2.17-r3: A low-overhead robust logging package for Java
 dev-java/logback 1.0.13-r1: A generic, reliable, fast & flexible logging framework for Java
@@ -2740,7 +2736,6 @@ dev-java/minlog 1.2: Minimal overhead Java logging
 dev-java/mockito 1.9.5-r1: A mocking framework for Java
 dev-java/mojarra 2.2.12-r1: Project Mojarra - GlassFish's Implementation for JavaServer Faces API
 dev-java/msv 20130601: Multi-Schema XML Validator, a Java tool for validating XML documents
-dev-java/nailgun 0.7.1-r1: A client, protocol and server for running without incurring JVM startup overhead
 dev-java/nekohtml 1.9.18-r1: A simple HTML scanner and tag balancer using standard XML interfaces
 dev-java/netbeans-apisupport 8.2: Netbeans API Support Cluster
 dev-java/netbeans-cnd 8.2: Netbeans CND Cluster
@@ -2783,7 +2778,6 @@ dev-java/piccolo2d 3.0-r1: A Structured 2D Graphics Framework
 dev-java/picocontainer 1.1-r1: Small footprint Dependency Injection container
 dev-java/portletapi 1.0-r1 2.0-r1: Portlet API 2.0 developed by the Java Community Process JSR-286
 dev-java/prefuse 20071021_beta: UI toolkit for building highly interactive visualizations of un-/structured data
-dev-java/proguard 4.5: Free Java class file shrinker, optimizer, and obfuscator
 dev-java/protobuf-java 3.5.1.1 3.5.2 3.6.1 3.6.1.3: Google's Protocol Buffers - Java bindings
 dev-java/qdox 1.6.3-r1 1.12.1-r1: Parser for extracting class/interface/method definitions
 dev-java/radeox 1.0_beta2-r1: Radeox Wiki render engine
@@ -2801,8 +2795,6 @@ dev-java/saaj 1.3.19-r2: SOAP with Attachments API for Java
 dev-java/sablecc 3.7-r1: Java based compiler / parser generator
 dev-java/sablecc-anttask 1.1.0-r2: Ant task for sablecc
 dev-java/sac 1.3-r2: SAC is a standard interface for CSS parser
-dev-java/sat4j-core 2.2.0 2.3.1-r1: Lightweight constraint programming with a SAT solver
-dev-java/sat4j-pseudo 2.2.0: Pseudo Boolean solvers
 dev-java/sax 2.2.1-r3: SAX: Simple API for XML in Java
 dev-java/saxon 6.5.5-r2 9.2.0.6-r2: A XSLT and XQuery Processor
 dev-java/saxpath 1.0-r3: Java XPath API
@@ -2833,7 +2825,6 @@ dev-java/sun-java3d-bin 1.3.2-r1 1.4.0_pre5-r1: Sun Java3D API Core
 dev-java/sun-jms 1.1-r2: The Java Message Service (JMS) API
 dev-java/super-csv 2.3.1: A fast, programmer-friendly, free CSV library for Java
 dev-java/svgsalamander 0.0-r2: a SVG engine for Java
-dev-java/swarmcache 1.0_pre20050106-r2: Cluster-aware Caching for Java
 dev-java/swing-layout 1.0.4-r1: Professional cross platform layouts with Swing
 dev-java/swt 3.7.2-r2 3.8.2-r2: GTK based SWT Library
 dev-java/tablelayout 1.0: Layout manager that makes creating user interfaces fast and easy
@@ -8133,7 +8124,6 @@ media-sound/jack-audio-connection-kit 0.125.0: A low-latency audio server
 media-sound/jack-keyboard 2.5: A virtual MIDI keyboard for JACK MIDI
 media-sound/jack-rack 1.4.7-r1 1.4.8_rc1: JACK Rack is an effects rack for the JACK low latency audio API
 media-sound/jamin 0.95.0-r3: JAMin is the JACK Audio Connection Kit (JACK) Audio Mastering interface
-media-sound/jtagger 1.0-r1: Powerful MP3 tag and filename editor
 media-sound/kaudiocreator 1.3_p20190225: CD ripper and audio encoder frontend based on KDE Frameworks
 media-sound/kid3 3.7.0: Simple tag editor based on Qt
 media-sound/kmetronome 1.0.0: MIDI based metronome using ALSA sequencer
