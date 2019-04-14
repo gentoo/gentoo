@@ -761,23 +761,6 @@ net-analyzer/dietsniff
 dev-util/staruml-bin
 =dev-libs/libgcrypt-1.5*
 
-# Michał Górny <mgorny@gentoo.org> (15 Mar 2019)
-# pyliblzma installs an old 'lzma' module that is incompatible with
-# the 'lzma' built-in in Python 3.  As a result, programs written
-# to conditionally import the latter when available (assuming it will
-# have Python 3 API) are broken by its presence.  The suggested
-# replacement is dev-python/backports-lzma that is backported
-# from Python 3.
-#
-# Yum is the only reverse dependency of pyliblzma left (#643312).  Its
-# last release is from 2011, and the current Gentoo snapshot is
-# from 2017.  Upstream git hosting / gitweb is broken and makes it
-# impossible to fetch current sources.  Fedora is apparently replacing
-# it with DNF.
-#
-# Removal in 30 days.  Bug #643308.
-dev-python/pyliblzma
-
 # Eray Aslan <eras@gentoo.org> (01 Mar 2019)
 # Mask experimental software
 =mail-mta/postfix-3.5*
