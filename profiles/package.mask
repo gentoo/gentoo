@@ -30,6 +30,12 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (14 Apr 2019)
+# The ebuild violates EAPI and relies on STRIP_MASK.  Also has
+# suspicious USE=debug logic.  Not touched since 2016.
+# Removal in 30 days.  Bug #651446.
+dev-util/cccc
+
+# Michał Górny <mgorny@gentoo.org> (14 Apr 2019)
 # Unmaintained.  The ebuild violates EAPI and relies on STRIP_MASK.
 # Current Gentoo version is from 2012, and hasn't been bumped for over
 # a year.
