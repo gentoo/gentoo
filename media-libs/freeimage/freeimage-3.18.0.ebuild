@@ -48,6 +48,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.18.0-rename-jpeg_read_icc_profile.patch
 	"${FILESDIR}"/${PN}-3.18.0-disable-plugin-G3.patch
 	"${FILESDIR}"/${PN}-3.18.0-raw.patch
+	"${FILESDIR}"/${PN}-3.18.0-libjpeg9.patch
 )
 
 src_prepare() {
