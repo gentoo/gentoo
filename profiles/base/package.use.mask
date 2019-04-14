@@ -334,10 +334,6 @@ mate-base/mate bluetooth
 app-editors/emacs cairo
 app-editors/emacs-vcs cairo
 
-# Gilles Dartiguelongue <eva@gentoo.org> (21 Aug 2016)
-# Needs a Gstreamer plugin from gst-plugins-bad that is not packaged to date
-media-plugins/grilo-plugins chromaprint
-
 # Michał Górny <mgorny@gentoo.org> (05 Jul 2016)
 # Mask system-clang support as it requires llvm-3.4 that is subject
 # to security bug cleanup, #585102.

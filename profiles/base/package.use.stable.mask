@@ -4,6 +4,11 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
+# Mart Raudsepp <leio@gentoo.org> (14 Apr 2019)
+# Needs media-plugins/gst-plugins-chromaprint, which is not stable
+# anywhere yet.
+media-plugins/grilo-plugins chromaprint
+
 # Andreas Sturmlechner <asturm@gentoo.org> (16 Feb 2019)
 # Unstable dependencies.
 media-gfx/digikam vkontakte
