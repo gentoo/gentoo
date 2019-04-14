@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit eutils toolchain-funcs
 
@@ -34,9 +34,10 @@ RDEPEND="
 		media-libs/tiff:0
 	)
 	webp? ( media-libs/libwebp:= )"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig
-	app-arch/unzip"
+DEPEND="${RDEPEND}"
+BDEPEND="
+	app-arch/unzip
+	virtual/pkgconfig"
 
 S=${WORKDIR}/${MY_PN}
 
