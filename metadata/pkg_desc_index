@@ -5364,7 +5364,6 @@ dev-python/pyinotify 0.9.6: Python module used for monitoring filesystems events
 dev-python/pyjwt 1.5.3: JSON Web Token implementation in Python
 dev-python/pykerberos 1.1.9: A high-level Python wrapper for Kerberos/GSSAPI operations
 dev-python/pylast 1.9.0: Python interface to last.fm and other api-compatible websites
-dev-python/pyldap 2.4.37: Various LDAP-related Python modules
 dev-python/pylibacl 0.5.0-r1: POSIX ACLs (Access Control Lists) for Python
 dev-python/pylibmc 1.5.1-r1: Libmemcached wrapper written as a Python extension
 dev-python/pylibpcap 0.6.4-r1: Python interface to libpcap
@@ -5412,7 +5411,7 @@ dev-python/pyrfc3339 1.0: Generates and parses RFC 3339 timestamps
 dev-python/pyro 3.16-r1 4.41 4.56: Distributed object middleware for Python (RPC)
 dev-python/pyroute2 0.4.12 0.4.21: A pure Python netlink and Linux network configuration library.
 dev-python/pyrsistent 0.13.0 0.14.2: Persistent/Functional/Immutable data structures
-dev-python/pysaml2 4.0.2-r3 4.6.3: Python implementation of SAML Version 2 to be used in a WSGI environment
+dev-python/pysaml2 4.6.3: Python implementation of SAML Version 2 to be used in a WSGI environment
 dev-python/pyscard 1.9.7: Smart cards support in python
 dev-python/pysendfile 2.0.1: A python interface to the sendfile(2) system call
 dev-python/pyserial 3.2.1: Python Serial Port extension
