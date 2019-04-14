@@ -15,9 +15,10 @@ LICENSE="MPL-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
+
 DEPEND=">=dev-lang/go-1.11.0"
 
-DOCS="README.md CHANGELOG.md"
+DOCS=( README.md CHANGELOG.md )
 
 src_compile() {
 	cd "src/${EGO_PN}" || die
@@ -28,9 +29,9 @@ src_compile() {
 src_install() {
 	dobin terraform
 
-	pushd "src/${EGO_PN}" || die
+	pushd "src/${EGO_PN}" >/dev/null || die
 	einstalldocs
-	popd || die
+	popd >/dev/null || die
 }
 
 pkg_postinst() {
