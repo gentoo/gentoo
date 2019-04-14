@@ -19,7 +19,6 @@ IUSE=""
 
 RDEPEND="
 	dev-libs/nss
-	gnome-base/gconf:2
 	media-libs/mesa
 	net-print/cups
 	x11-libs/gtk+:3[X]
