@@ -16,7 +16,7 @@ IUSE="debug libressl ntlm ssl static-libs threads"
 RDEPEND="
 	ssl? (
 		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:= )
+		libressl? ( dev-libs/libressl:0= )
 	)"
 DEPEND="${RDEPEND}"
 

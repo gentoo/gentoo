@@ -32,6 +32,7 @@ REQUIRED_USE="
 	screen-sharing? ( rdp )
 	test? ( desktop headless xwayland )
 	wayland-compositor? ( gles2 )
+	|| ( drm fbdev headless rdp wayland-compositor X )
 "
 
 RDEPEND="
@@ -98,6 +99,7 @@ src_configure() {
 		$(meson_use wayland-compositor backend-wayland)
 		$(meson_use X backend-x11)
 		$(meson_use fbdev backend-fbdev)
+		-Dbackend-default=auto
 		$(meson_use gles2 renderer-gl)
 		$(meson_use launch weston-launch)
 		$(meson_use xwayland)
@@ -114,7 +116,7 @@ src_configure() {
 		-Dtools=debug,info,terminal
 		-Dsimple-dmabuf-drm=auto
 		$(meson_use examples demo-clients)
-		$(usex examples -Dsimple-clients=damage,img,egl,shm,touch "")
+		$(usex examples -Dsimple-clients=damage,dmabuf-v4l,im,shm,touch$(usex gles2 ,dmabuf-egl,egl "") "")
 		$(meson_use resize-optimization resize-pool)
 		-Dtest-junit-xml=false
 		"${myconf[@]}"
