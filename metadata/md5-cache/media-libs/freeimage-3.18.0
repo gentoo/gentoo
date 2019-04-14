@@ -11,4 +11,4 @@ RDEPEND=sys-libs/zlib jpeg? ( virtual/jpeg:0 ) jpeg2k? ( media-libs/openjpeg:2= 
 SLOT=0
 SRC_URI=mirror://sourceforge/freeimage/FreeImage3180.zip mirror://sourceforge/freeimage/FreeImage3180.pdf
 _eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
-_md5_=c93ce92ae3cc080d6832297dd7ae21a7
+_md5_=ad0be71677808395dd0eecdd1b66d3a9

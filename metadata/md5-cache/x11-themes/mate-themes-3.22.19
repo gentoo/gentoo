@@ -4,11 +4,11 @@ DEPEND=>=x11-libs/gdk-pixbuf-2:2 >=x11-libs/gtk+-2:2 >=x11-themes/gtk-engines-2.
 DESCRIPTION=A set of MATE themes, with sets for users with limited or low vision
 EAPI=7
 HOMEPAGE=http://mate-desktop.org
-KEYWORDS=amd64 ~arm ~arm64 ~x86
+KEYWORDS=amd64 ~arm ~arm64 x86
 LICENSE=LGPL-2.1 GPL-3
 RDEPEND=>=x11-libs/gdk-pixbuf-2:2 >=x11-libs/gtk+-2:2 >=x11-themes/gtk-engines-2.15.3:2 x11-themes/gtk-engines-murrine
 RESTRICT=binchecks strip
 SLOT=0/3.22
 SRC_URI=http://pub.mate-desktop.org/releases/themes/3.22/mate-themes-3.22.19.tar.xz
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	b45201c4e6c096b98e250336954e64b9	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	14d00d009167652b1fa363e55effe213
-_md5_=62a7e06ab5ab2ca027e1ab060e8c4d39
+_md5_=9c741b2972ed9d06f065226febc744ae
