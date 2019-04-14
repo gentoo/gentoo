@@ -743,7 +743,7 @@ app-emulation/docker-runc 1.0.0_rc4_p20180122: runc container cli tools (docker 
 app-emulation/dosemu 1.4.1_pre20130107-r5: DOS Emulator
 app-emulation/e-uae 0.8.29_rc4-r3: The Ubiquitous Amiga Emulator with an emulation core largely based on WinUAE
 app-emulation/free42 2.0.20: An HP-42S Calculator Simulator
-app-emulation/ganeti 2.15.2-r5: Ganeti is a virtual server management software tool
+app-emulation/ganeti 2.15.2-r5 2.15.2-r8: Ganeti is a virtual server management software tool
 app-emulation/ganeti-instance-debootstrap 0.11: Scripts to build Ganeti VMs with debootstrap
 app-emulation/ganeti-instance-image 0.6: Scripts to build out CD or image based VMs using Ganeti
 app-emulation/grub-xen-host 1.0: Grub2 built as a PV grub per the Xen PV Boot Protocol
@@ -3656,7 +3656,7 @@ dev-perl/Devel-GlobalPhase 0.3.3: Detect perl's global phase on older perls
 dev-perl/Devel-Hide 0.0.900: Forces the unavailability of specified Perl modules (for testing)
 dev-perl/Devel-Leak 0.30.0: Utility for looking for perl objects that are not reclaimed
 dev-perl/Devel-LexAlias 0.50.0: Alias lexical variables
-dev-perl/Devel-NYTProf 6.40.0: Powerful feature-rich perl source code profiler
+dev-perl/Devel-NYTProf 6.40.0 6.60.0: Powerful feature-rich perl source code profiler
 dev-perl/Devel-OverloadInfo 0.4.0: Introspect overloaded operators
 dev-perl/Devel-PatchPerl 1.480.0 1.520.0: Patch perl source a la Devel::PPPort's buildperl.pl
 dev-perl/Devel-Size 0.810.0: Perl extension for finding the memory usage of Perl variables
@@ -4618,6 +4618,7 @@ dev-php/sebastian-recursion-context 2.0.0: Recursively process PHP variables
 dev-php/sebastian-resource-operations 1.0.0: Provides a list of PHP built-in functions that operate on resources
 dev-php/sebastian-version 2.0.1: Helps with managing the version number of Git-hosted PHP projects
 dev-php/smarty 3.1.30 3.1.33: A template engine for PHP
+dev-php/swoole 4.2.13: Event-driven asynchronous & concurrent & coroutine networking engine
 dev-php/symfony-yaml 2.1.0: Symfony YAML Component
 dev-php/webmozart-assert 1.2.0: Assertions to validate method input/output with nice error messages
 dev-php/xdebug 2.5.3 2.6.1: A PHP debugging and profiling extension
@@ -5165,6 +5166,7 @@ dev-python/nose 1.3.7-r1 1.3.7-r3: Unittest extension with automatic test suite 
 dev-python/nose-cover3 0.1.0-r1: Coverage 3.x support for Nose
 dev-python/nose-exclude 0.4.1: Exclude specific directories from nosetests runs
 dev-python/nose-show-skipped 0.1: A nose plugin to show skipped tests and their messages
+dev-python/nose2 0.6.5: nose2 is the next generation of nicer testing for Python
 dev-python/nose_fixes 1.3: A plugin to make nose behave better
 dev-python/nose_warnings_filters 0.1.5-r2: A python module to inject warning filters during nosetest
 dev-python/nosehtmloutput 0.0.5: Nose plugin to produce test results in html
@@ -7124,7 +7126,7 @@ mail-filter/milter-regex 1.9: A milter-based regular expression filter
 mail-filter/mimedefang 2.73 2.74: Antispam, antivirus and other customizable filters for MTAs with Milter support
 mail-filter/normalizemime 1.19: Helper program to normalize MIME encoded messages
 mail-filter/opendkim 2.10.3-r8: A milter providing DKIM signing and verification
-mail-filter/opendmarc 1.1.3: Open source DMARC implementation
+mail-filter/opendmarc 1.1.3 1.3.2-r2: Open source DMARC implementation
 mail-filter/policyd 1.82-r1: Policy daemon for postfix and other MTAs
 mail-filter/policyd-weight 0.1.15.2-r2: Weighted Policy daemon for Postfix
 mail-filter/popfile 1.1.3-r1: Anti-spam bayesian filter
@@ -8352,7 +8354,7 @@ media-video/noad 0.7.3-r1 0.8.6-r1 0.8.6-r3: Mark commercial breaks in VDR recor
 media-video/nvidia_video_sdk 6.0.1: NVIDIA Video Codec SDK
 media-video/openshot 2.4.0-r1: Free, open-source, non-linear video editor to create and edit videos and movies
 media-video/parole 1.0.1: A simple Xfce4 media player using GStreamer
-media-video/pitivi 0.97.1: A non-linear video editor using the GStreamer multimedia framework
+media-video/pitivi 0.97.1 0.999: A non-linear video editor using the GStreamer multimedia framework
 media-video/plasma-mediacenter 5.7.5: Unified media experience for any device capable of running KDE Plasma
 media-video/projectx 0.91.0.10-r1: Converts, splits and demuxes DVB and other MPEG recordings
 media-video/pymp 1.1-r1: a lean, flexible frontend to mplayer written in python
@@ -10164,6 +10166,8 @@ sys-fabric/rds-tools 2.0.4-r3: OpenIB userspace rds-tools
 sys-fabric/srptools 1.0.2: Tools for discovering and connecting to SRP CSI targets on InfiniBand fabrics
 sys-firmware/alsa-firmware 1.0.29: Advanced Linux Sound Architecture firmware
 sys-firmware/atmel-firmware 1.3-r1: Firmware and config for atmel and atmel_cs wlan drivers included in linux 2.6
+sys-firmware/b43-firmware 5.100.138: broadcom firmware for b43 LP PHY and >=linux-3.2
+sys-firmware/b43legacy-firmware 3.130.20.0: broadcom firmware for b43legacy/bcm43xx
 sys-firmware/bluez-firmware 1.2: Firmware for Broadcom BCM203x and STLC2300 Bluetooth chips
 sys-firmware/edk2-ovmf 2017_pre20170505-r1 2017_p20180211: UEFI firmware for 64-bit x86 virtual machines
 sys-firmware/intel-microcode 20180807a_p20190309: Intel IA32/IA64 microcode update data
