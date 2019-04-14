@@ -6,10 +6,6 @@
 		<name>Gentoo Games Project</name>
 	</maintainer>
 	<use>
-		<flag name="tremor">
-			Use <pkg>media-libs/tremor</pkg> as ogg decoder
-			instead of <pkg>media-libs/libvorbis</pkg>
-		</flag>
 		<flag name="downloader">Allows some Keen games to be downloaded from the menu</flag>
 	</use>
 	<upstream>
