@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="4"
+EAPI=7
 
 inherit toolchain-funcs
 
@@ -11,8 +11,7 @@ SRC_URI="http://zakalwe.fi/~shd/foss/cksfv/files/${P}.tar.bz2"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="alpha amd64 hppa ia64 ppc sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux"
-IUSE=""
+KEYWORDS="~alpha ~amd64 ~amd64-linux ~hppa ~ia64 ~ppc ~sparc ~x86 ~x86-fbsd ~x86-linux"
 
 src_configure() {
 	# note: not an autoconf configure script
@@ -22,9 +21,4 @@ src_configure() {
 		--package-prefix="${D}" \
 		--bindir="${EPREFIX}"/usr/bin \
 		--mandir="${EPREFIX}"/usr/share/man || die
-}
-
-src_install() {
-	emake install
-	dodoc ChangeLog README TODO
 }

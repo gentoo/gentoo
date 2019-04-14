@@ -3,17 +3,16 @@
 
 EAPI=7
 
-EGIT_REPO_URI="https://github.com/Neilpang/${PN/-/.}.git"
-
-inherit git-r3
+MY_PN="${PN/-/.}"
+MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="An ACME Shell script"
 HOMEPAGE="https://github.com/Neilpang/acme.sh"
-SRC_URI=""
+SRC_URI="https://github.com/Neilpang/${MY_PN}/archive/${PV}.tar.gz -> ${MY_P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="net-misc/curl
@@ -21,6 +20,8 @@ RDEPEND="net-misc/curl
 	|| ( net-analyzer/netcat net-analyzer/openbsd-netcat )
 	|| ( net-misc/socat www-servers/apache:2 www-servers/nginx )
 	virtual/cron"
+
+S="${WORKDIR}/${MY_P}"
 
 src_install() {
 	einstalldocs
