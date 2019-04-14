@@ -721,6 +721,7 @@ pkg_pretend() {
 }
 
 pkg_setup() {
+	# see bug 682570
 	[[ -z ${BOOTSTRAP_RAP} ]] && python-any-r1_pkg_setup
 }
 
