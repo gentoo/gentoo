@@ -15,7 +15,6 @@ LICENSE="MPL-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
-
 DEPEND=">=dev-lang/go-1.11.0"
 
 DOCS=( README.md CHANGELOG.md )
