@@ -67,12 +67,6 @@ RDEPEND="${COMMON_DEPEND}
 
 RESTRICT="test"
 
-src_prepare() {
-	default
-
-	use spell || eapply "${FILESDIR}/${PV}-0001-disable-gspell.patch"
-}
-
 pkg_postinst() {
 	gnome2_icon_cache_update
 	xdg_desktop_database_update
