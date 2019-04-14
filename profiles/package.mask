@@ -344,11 +344,6 @@ sys-apps/prefix-chain-utils
 sys-auth/fprint_demo
 
 # Michał Górny <mgorny@gentoo.org> (23 Mar 2019)
-# Unmaintained.  Fails to build.  Probably needs a fresh snapshot.
-# Removal in 30 days.  Bug #669592.
-net-misc/casync
-
-# Michał Górny <mgorny@gentoo.org> (23 Mar 2019)
 # Unmaintained.  Fails to build due to patch that does not apply.
 # Even if that weren't the case, it would need to be updated for modern
 # kernel versions.
@@ -717,32 +712,6 @@ sci-chemistry/pymol-plugins-dynamics
 # rendering media plugins redundant.  Last release in 2014.
 # Removal in 30 days.  Bug #671854.
 www-plugins/mozplugger
-
-# Michał Górny <mgorny@gentoo.org> (15 Mar 2019)
-# Package added in 2014 and not updated since.  The current Gentoo
-# version used to violate multilib-strict (#627944), now it does not
-# build at all.
-# Removal in 30 days.  Bug #638500.
-dev-util/igprof
-
-# Michał Górny <mgorny@gentoo.org> (15 Mar 2019)
-# The current release is from 2005, upstream is gone.  Last patch
-# added in 2010, since then the package is completely unmaintained.
-# Very bad ebuild quality, blocking strictening of Portage behavior.
-# Removal in 30 days.  Bug #587306.
-sys-boot/quik
-
-# Michał Górny <mgorny@gentoo.org> (15 Mar 2019)
-# Upstream website disappeared, and along with it remote index needed
-# for the program to work.  No maintainer; package last touched in 2012.
-# Removal in 30 days.  Bug #673600.
-app-text/rfcutil
-
-# Michał Górny <mgorny@gentoo.org> (15 Mar 2019)
-# Unmaintained in Gentoo, obsoleted upstream.  Tests fail (#632706).
-# Upstream suggests switching to Kubernetes.
-# Removal in 30 days.  Bug #676728.
-app-admin/fleet
 
 # Eray Aslan <eras@gentoo.org> (01 Mar 2019)
 # Mask experimental software
