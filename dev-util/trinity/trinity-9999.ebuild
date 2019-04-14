@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,11 +13,15 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE="examples"
 
-DEPEND="sys-kernel/linux-headers"
+# We need newer headers to avoid compilation failures in the BPF stuff.
+DEPEND="
+	>=sys-kernel/linux-headers-4.8
+"
 
 src_prepare() {
 	sed -e 's/-g -O2//' \
 		-e 's/-D_FORTIFY_SOURCE=2//' \
+		-e 's/-Werror//' \
 		-e '/-o $@/s/$(LDFLAGS) //' \
 		-i Makefile || die
 
@@ -32,6 +36,7 @@ src_compile() {
 src_install() {
 	dobin ${PN}
 	dodoc Documentation/* README
+	doman trinity.1
 
 	if use examples ; then
 		exeinto /usr/share/doc/${PF}/scripts
