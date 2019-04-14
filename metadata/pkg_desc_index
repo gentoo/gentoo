@@ -2946,7 +2946,6 @@ dev-lang/yap 6.3.3: YAP is a high-performance Prolog compiler
 dev-lang/yasm 1.2.0-r1 1.3.0: An assembler for x86 and x86_64 instruction sets
 dev-libs/9libs 1.0-r3: A package of Plan 9 compatibility libraries
 dev-libs/Ice 3.6.4: ICE middleware C++ library and generator tools
-dev-libs/ace 5.7.2: The Adaptive Communications Environment
 dev-libs/appstream 0.12.6: Cross-distro effort for providing metadata for software in the Linux ecosystem
 dev-libs/appstream-glib 0.7.9: Provides GObjects and helper methods to read and write AppStream metadata
 dev-libs/apr 1.5.2 1.6.3-r3: Apache Portable Runtime Library
@@ -9176,7 +9175,6 @@ net-print/poster 20060221: small utility for making a poster from an EPS file or
 net-print/splix 2.0.0_p20130826: A set of CUPS printer drivers for SPL (Samsung Printer Language) printers
 net-proxy/3proxy 0.8.9: A really tiny cross-platform proxy servers set
 net-proxy/adzapper 20110915-r2: Redirector for squid to intercept advertising, page counters and web bugs
-net-proxy/bfilter 1.1.4-r4: Ad-filtering web proxy featuring an effective heuristic ad-detection algorithm
 net-proxy/dante 1.4.1-r1: A free socks4,5 and msproxy implementation
 net-proxy/dnsproxy 1.17: The dnsproxy daemon is a proxy for DNS queries
 net-proxy/haproxy 1.6.11-r2 1.7.10 1.8.9 1.8.13: A TCP/HTTP reverse proxy for high availability environments
