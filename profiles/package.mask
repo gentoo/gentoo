@@ -753,13 +753,6 @@ app-admin/fleet
 # Removal in 30 days.  Bug #678520.
 net-analyzer/dietsniff
 
-# Michał Górny <mgorny@gentoo.org> (15 Mar 2019)
-# Last reverse dependency of dev-libs/libgcrypt-1.5* (#656378).  Current
-# version is outdated, maintainer is MIA and the new versions are
-# in distro-unfriendly AppImage format (#661740).
-# Removal in 30 days.  Bug #677486.
-=dev-libs/libgcrypt-1.5*
-
 # Eray Aslan <eras@gentoo.org> (01 Mar 2019)
 # Mask experimental software
 =mail-mta/postfix-3.5*
