@@ -29,6 +29,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Aaron Bauman <bman@gentoo.org> (13 Apr 2019)
+# Unmaintained in Gentoo and outstanding vulnerability
+# Masked for removal in 30 days. Bug #522578
+dev-libs/ace
+# rdeps
+dev-cpp/xsd
+net-proxy/bfilter
+
 # Ulrich Müller <ulm@gentoo.org> (13 Apr 2019)
 # Last release in 2001, HOMEPAGE and SRC_URI are gone.
 # Byte-compilation with recent Emacs versions fails.
