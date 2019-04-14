@@ -1,6 +1,10 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# David Seifert <soap@gentoo.org> (15 Apr 2019)
+# app-arch/zstd is not keyworded.
+dev-libs/boost zstd
+
 # Hans de Graaff <graaff@gentoo.org> (08 Apr 2019)
 # Obsolete ruby version, no newer versions keyworded or stable.
 dev-vcs/subversion ruby

@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (15 Apr 2019)
+# Masked for testing, Bug #653878.
+>=dev-libs/boost-1.70.0
+>=dev-util/boost-build-1.70.0
+
 # Patrice Clement <monsieurp@gentoo.org> (14 Apr 2019)
 # Old, unmaintained and sometimes abandoned Java libraries/programs.
 # Removal in 30 days.
