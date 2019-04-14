@@ -1,0 +1,33 @@
+Boost.Build errors out when passing multiple python impls to b2:
+
+    error: Name clash for '<p/var/tmp/portage/dev-libs/boost-1.70.0/image/usr/lib64/cmake/boost_python-1.70.0>libboost_python-variant-shared.cmake'
+    error:
+    error: Tried to build the target twice, with property sets having
+    error: these incompatible properties:
+    error:
+    error:     -  <python>2.7
+    error:     -  <python>3.6
+    error:
+    error: Please make sure to have consistent requirements for these
+    error: properties everywhere in your project, especially for install
+    error: targets.
+
+https://github.com/boostorg/python/issues/262
+
+--- a/tools/boost_install/boost-install.jam
++++ b/tools/boost_install/boost-install.jam
+@@ -870,12 +870,12 @@
+ 
+     $(p).mark-target-as-explicit install-libraries ;
+ 
+-    install-cmake-config $(libraries) ;
++    # install-cmake-config $(libraries) ;
+ 
+     generate install-dependencies : $(libraries) : <generating-rule>@boost-install%generate-dependencies <name>install ;
+     $(p).mark-target-as-explicit install-dependencies ;
+ 
+-    alias install : install-libraries install-cmake-config install-dependencies ;
++    alias install : install-libraries install-dependencies ;
+     $(p).mark-target-as-explicit install ;
+ 
+     # Target stage
