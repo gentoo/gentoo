@@ -1,0 +1,290 @@
+From c94ec28600255098ffb9d73d1b386a7c8a535590 Mon Sep 17 00:00:00 2001
+From: Andrew Savonichev <andrew.savonichev@intel.com>
+Date: Thu, 21 Feb 2019 11:02:10 +0000
+Subject: [PATCH 2/2] [OpenCL] Simplify LLVM IR generated for OpenCL blocks
+
+Summary:
+Emit direct call of block invoke functions when possible, i.e. in case the
+block is not passed as a function argument.
+Also doing some refactoring of `CodeGenFunction::EmitBlockCallExpr()`
+
+Reviewers: Anastasia, yaxunl, svenvh
+
+Reviewed By: Anastasia
+
+Subscribers: cfe-commits
+
+Tags: #clang
+
+Differential Revision: https://reviews.llvm.org/D58388
+
+git-svn-id: https://llvm.org/svn/llvm-project/cfe/trunk@354568 91177308-0d34-0410-b5e6-96231b3b80d8
+---
+ lib/CodeGen/CGBlocks.cpp                       | 77 +++++++++++++-------------
+ lib/CodeGen/CGOpenCLRuntime.cpp                | 30 +++++++---
+ lib/CodeGen/CGOpenCLRuntime.h                  |  4 ++
+ test/CodeGenOpenCL/blocks.cl                   | 10 +---
+ test/CodeGenOpenCL/cl20-device-side-enqueue.cl | 34 +++++++++---
+ 5 files changed, 91 insertions(+), 64 deletions(-)
+
+diff --git a/lib/CodeGen/CGBlocks.cpp b/lib/CodeGen/CGBlocks.cpp
+index fa3c3ee..10a0238 100644
+--- a/lib/CodeGen/CGBlocks.cpp
++++ b/lib/CodeGen/CGBlocks.cpp
+@@ -1261,52 +1261,49 @@ RValue CodeGenFunction::EmitBlockCallExpr(const CallExpr *E,
+                                           ReturnValueSlot ReturnValue) {
+   const BlockPointerType *BPT =
+     E->getCallee()->getType()->getAs<BlockPointerType>();
+-
+   llvm::Value *BlockPtr = EmitScalarExpr(E->getCallee());
+-
+-  // Get a pointer to the generic block literal.
+-  // For OpenCL we generate generic AS void ptr to be able to reuse the same
+-  // block definition for blocks with captures generated as private AS local
+-  // variables and without captures generated as global AS program scope
+-  // variables.
+-  unsigned AddrSpace = 0;
+-  if (getLangOpts().OpenCL)
+-    AddrSpace = getContext().getTargetAddressSpace(LangAS::opencl_generic);
+-
+-  llvm::Type *BlockLiteralTy =
+-      llvm::PointerType::get(CGM.getGenericBlockLiteralType(), AddrSpace);
+-
+-  // Bitcast the callee to a block literal.
+-  BlockPtr =
+-      Builder.CreatePointerCast(BlockPtr, BlockLiteralTy, "block.literal");
+-
+-  // Get the function pointer from the literal.
+-  llvm::Value *FuncPtr =
+-      Builder.CreateStructGEP(CGM.getGenericBlockLiteralType(), BlockPtr,
+-                              CGM.getLangOpts().OpenCL ? 2 : 3);
+-
+-  // Add the block literal.
++  llvm::Type *GenBlockTy = CGM.getGenericBlockLiteralType();
++  llvm::Value *Func = nullptr;
++  QualType FnType = BPT->getPointeeType();
++  ASTContext &Ctx = getContext();
+   CallArgList Args;
+ 
+-  QualType VoidPtrQualTy = getContext().VoidPtrTy;
+-  llvm::Type *GenericVoidPtrTy = VoidPtrTy;
+   if (getLangOpts().OpenCL) {
+-    GenericVoidPtrTy = CGM.getOpenCLRuntime().getGenericVoidPointerType();
+-    VoidPtrQualTy =
+-        getContext().getPointerType(getContext().getAddrSpaceQualType(
+-            getContext().VoidTy, LangAS::opencl_generic));
+-  }
+-
+-  BlockPtr = Builder.CreatePointerCast(BlockPtr, GenericVoidPtrTy);
+-  Args.add(RValue::get(BlockPtr), VoidPtrQualTy);
+-
+-  QualType FnType = BPT->getPointeeType();
++    // For OpenCL, BlockPtr is already casted to generic block literal.
++
++    // First argument of a block call is a generic block literal casted to
++    // generic void pointer, i.e. i8 addrspace(4)*
++    llvm::Value *BlockDescriptor = Builder.CreatePointerCast(
++        BlockPtr, CGM.getOpenCLRuntime().getGenericVoidPointerType());
++    QualType VoidPtrQualTy = Ctx.getPointerType(
++        Ctx.getAddrSpaceQualType(Ctx.VoidTy, LangAS::opencl_generic));
++    Args.add(RValue::get(BlockDescriptor), VoidPtrQualTy);
++    // And the rest of the arguments.
++    EmitCallArgs(Args, FnType->getAs<FunctionProtoType>(), E->arguments());
++
++    // We *can* call the block directly unless it is a function argument.
++    if (!isa<ParmVarDecl>(E->getCalleeDecl()))
++      Func = CGM.getOpenCLRuntime().getInvokeFunction(E->getCallee());
++    else {
++      llvm::Value *FuncPtr = Builder.CreateStructGEP(GenBlockTy, BlockPtr, 2);
++      Func = Builder.CreateAlignedLoad(FuncPtr, getPointerAlign());
++    }
++  } else {
++    // Bitcast the block literal to a generic block literal.
++    BlockPtr = Builder.CreatePointerCast(
++        BlockPtr, llvm::PointerType::get(GenBlockTy, 0), "block.literal");
++    // Get pointer to the block invoke function
++    llvm::Value *FuncPtr = Builder.CreateStructGEP(GenBlockTy, BlockPtr, 3);
+ 
+-  // And the rest of the arguments.
+-  EmitCallArgs(Args, FnType->getAs<FunctionProtoType>(), E->arguments());
++    // First argument is a block literal casted to a void pointer
++    BlockPtr = Builder.CreatePointerCast(BlockPtr, VoidPtrTy);
++    Args.add(RValue::get(BlockPtr), Ctx.VoidPtrTy);
++    // And the rest of the arguments.
++    EmitCallArgs(Args, FnType->getAs<FunctionProtoType>(), E->arguments());
+ 
+-  // Load the function.
+-  llvm::Value *Func = Builder.CreateAlignedLoad(FuncPtr, getPointerAlign());
++    // Load the function.
++    Func = Builder.CreateAlignedLoad(FuncPtr, getPointerAlign());
++  }
+ 
+   const FunctionType *FuncTy = FnType->castAs<FunctionType>();
+   const CGFunctionInfo &FnInfo =
+diff --git a/lib/CodeGen/CGOpenCLRuntime.cpp b/lib/CodeGen/CGOpenCLRuntime.cpp
+index 7f6f595..75003e5 100644
+--- a/lib/CodeGen/CGOpenCLRuntime.cpp
++++ b/lib/CodeGen/CGOpenCLRuntime.cpp
+@@ -123,6 +123,23 @@ llvm::PointerType *CGOpenCLRuntime::getGenericVoidPointerType() {
+       CGM.getContext().getTargetAddressSpace(LangAS::opencl_generic));
+ }
+ 
++// Get the block literal from an expression derived from the block expression.
++// OpenCL v2.0 s6.12.5:
++// Block variable declarations are implicitly qualified with const. Therefore
++// all block variables must be initialized at declaration time and may not be
++// reassigned.
++static const BlockExpr *getBlockExpr(const Expr *E) {
++  const Expr *Prev = nullptr; // to make sure we do not stuck in infinite loop.
++  while(!isa<BlockExpr>(E) && E != Prev) {
++    Prev = E;
++    E = E->IgnoreCasts();
++    if (auto DR = dyn_cast<DeclRefExpr>(E)) {
++      E = cast<VarDecl>(DR->getDecl())->getInit();
++    }
++  }
++  return cast<BlockExpr>(E);
++}
++
+ /// Record emitted llvm invoke function and llvm block literal for the
+ /// corresponding block expression.
+ void CGOpenCLRuntime::recordBlockInfo(const BlockExpr *E,
+@@ -137,20 +154,17 @@ void CGOpenCLRuntime::recordBlockInfo(const BlockExpr *E,
+   EnqueuedBlockMap[E].Kernel = nullptr;
+ }
+ 
++llvm::Function *CGOpenCLRuntime::getInvokeFunction(const Expr *E) {
++  return EnqueuedBlockMap[getBlockExpr(E)].InvokeFunc;
++}
++
+ CGOpenCLRuntime::EnqueuedBlockInfo
+ CGOpenCLRuntime::emitOpenCLEnqueuedBlock(CodeGenFunction &CGF, const Expr *E) {
+   CGF.EmitScalarExpr(E);
+ 
+   // The block literal may be assigned to a const variable. Chasing down
+   // to get the block literal.
+-  if (auto DR = dyn_cast<DeclRefExpr>(E)) {
+-    E = cast<VarDecl>(DR->getDecl())->getInit();
+-  }
+-  E = E->IgnoreImplicit();
+-  if (auto Cast = dyn_cast<CastExpr>(E)) {
+-    E = Cast->getSubExpr();
+-  }
+-  auto *Block = cast<BlockExpr>(E);
++  const BlockExpr *Block = getBlockExpr(E);
+ 
+   assert(EnqueuedBlockMap.find(Block) != EnqueuedBlockMap.end() &&
+          "Block expression not emitted");
+diff --git a/lib/CodeGen/CGOpenCLRuntime.h b/lib/CodeGen/CGOpenCLRuntime.h
+index 750721f..4effc7e 100644
+--- a/lib/CodeGen/CGOpenCLRuntime.h
++++ b/lib/CodeGen/CGOpenCLRuntime.h
+@@ -92,6 +92,10 @@ public:
+   /// \param Block block literal emitted for the block expression.
+   void recordBlockInfo(const BlockExpr *E, llvm::Function *InvokeF,
+                        llvm::Value *Block);
++
++  /// \return LLVM block invoke function emitted for an expression derived from
++  /// the block expression.
++  llvm::Function *getInvokeFunction(const Expr *E);
+ };
+ 
+ }
+diff --git a/test/CodeGenOpenCL/blocks.cl b/test/CodeGenOpenCL/blocks.cl
+index 19aacc3..ab5a2c6 100644
+--- a/test/CodeGenOpenCL/blocks.cl
++++ b/test/CodeGenOpenCL/blocks.cl
+@@ -39,11 +39,8 @@ void foo(){
+   // SPIR: %[[blk_gen_ptr:.*]] = addrspacecast %struct.__opencl_block_literal_generic* %[[blk_ptr]] to %struct.__opencl_block_literal_generic addrspace(4)*
+   // SPIR: store %struct.__opencl_block_literal_generic addrspace(4)* %[[blk_gen_ptr]], %struct.__opencl_block_literal_generic addrspace(4)** %[[block_B:.*]],
+   // SPIR: %[[block_literal:.*]] = load %struct.__opencl_block_literal_generic addrspace(4)*, %struct.__opencl_block_literal_generic addrspace(4)** %[[block_B]]
+-  // SPIR: %[[invoke_addr:.*]] = getelementptr inbounds %struct.__opencl_block_literal_generic, %struct.__opencl_block_literal_generic addrspace(4)* %[[block_literal]], i32 0, i32 2
+   // SPIR: %[[blk_gen_ptr:.*]] = bitcast %struct.__opencl_block_literal_generic addrspace(4)* %[[block_literal]] to i8 addrspace(4)*
+-  // SPIR: %[[invoke_func_ptr:.*]] = load i8 addrspace(4)*, i8 addrspace(4)* addrspace(4)* %[[invoke_addr]]
+-  // SPIR: %[[invoke_func:.*]] = addrspacecast i8 addrspace(4)* %[[invoke_func_ptr]] to i32 (i8 addrspace(4)*)*
+-  // SPIR: call {{.*}}i32 %[[invoke_func]](i8 addrspace(4)* %[[blk_gen_ptr]])
++  // SPIR: call {{.*}}i32 @__foo_block_invoke(i8 addrspace(4)* %[[blk_gen_ptr]])
+   // AMDGCN: %[[block_invoke:.*]] = getelementptr inbounds <{ i32, i32, i8*, i32 }>, <{ i32, i32, i8*, i32 }> addrspace(5)* %[[block:.*]], i32 0, i32 2
+   // AMDGCN: store i8* bitcast (i32 (i8*)* @__foo_block_invoke to i8*), i8* addrspace(5)* %[[block_invoke]]
+   // AMDGCN: %[[block_captured:.*]] = getelementptr inbounds <{ i32, i32, i8*, i32 }>, <{ i32, i32, i8*, i32 }> addrspace(5)* %[[block]], i32 0, i32 3
+@@ -53,11 +50,8 @@ void foo(){
+   // AMDGCN: %[[blk_gen_ptr:.*]] = addrspacecast %struct.__opencl_block_literal_generic addrspace(5)* %[[blk_ptr]] to %struct.__opencl_block_literal_generic*
+   // AMDGCN: store %struct.__opencl_block_literal_generic* %[[blk_gen_ptr]], %struct.__opencl_block_literal_generic* addrspace(5)* %[[block_B:.*]],
+   // AMDGCN: %[[block_literal:.*]] = load %struct.__opencl_block_literal_generic*, %struct.__opencl_block_literal_generic* addrspace(5)* %[[block_B]]
+-  // AMDGCN: %[[invoke_addr:.*]] = getelementptr inbounds %struct.__opencl_block_literal_generic, %struct.__opencl_block_literal_generic* %[[block_literal]], i32 0, i32 2
+   // AMDGCN: %[[blk_gen_ptr:.*]] = bitcast %struct.__opencl_block_literal_generic* %[[block_literal]] to i8*
+-  // AMDGCN: %[[invoke_func_ptr:.*]] = load i8*, i8** %[[invoke_addr]]
+-  // AMDGCN: %[[invoke_func:.*]] = bitcast i8* %[[invoke_func_ptr]] to i32 (i8*)*
+-  // AMDGCN: call {{.*}}i32 %[[invoke_func]](i8* %[[blk_gen_ptr]])
++  // AMDGCN: call {{.*}}i32 @__foo_block_invoke(i8* %[[blk_gen_ptr]])
+ 
+   int (^ block_B)(void) = ^{
+     return i;
+diff --git a/test/CodeGenOpenCL/cl20-device-side-enqueue.cl b/test/CodeGenOpenCL/cl20-device-side-enqueue.cl
+index 8445016..1566912 100644
+--- a/test/CodeGenOpenCL/cl20-device-side-enqueue.cl
++++ b/test/CodeGenOpenCL/cl20-device-side-enqueue.cl
+@@ -312,9 +312,7 @@ kernel void device_side_enqueue(global int *a, global int *b, int i) {
+   };
+ 
+   // Uses global block literal [[BLG8]] and invoke function [[INVG8]].
+-  // COMMON: [[r1:%.*]] = load i8 addrspace(4)*, i8 addrspace(4)* addrspace(4)* getelementptr inbounds (%struct.__opencl_block_literal_generic, %struct.__opencl_block_literal_generic addrspace(4)* addrspacecast (%struct.__opencl_block_literal_generic addrspace(1)* bitcast ({ i32, i32, i8 addrspace(4)* } addrspace(1)* [[BLG8]] to %struct.__opencl_block_literal_generic addrspace(1)*) to %struct.__opencl_block_literal_generic addrspace(4)*), i32 0, i32 2)
+-  // COMMON: [[r2:%.*]] = addrspacecast i8 addrspace(4)* [[r1]] to void (i8 addrspace(4)*)*
+-  // COMMON: call spir_func void [[r2]](i8 addrspace(4)* addrspacecast (i8 addrspace(1)* bitcast ({ i32, i32, i8 addrspace(4)* } addrspace(1)* [[BLG8]] to i8 addrspace(1)*) to i8 addrspace(4)*))
++  // COMMON: call spir_func void @__device_side_enqueue_block_invoke_11(i8 addrspace(4)* addrspacecast (i8 addrspace(1)* bitcast ({ i32, i32, i8 addrspace(4)* } addrspace(1)* [[BLG8]] to i8 addrspace(1)*) to i8 addrspace(4)*))
+   block_A();
+ 
+   // Emits global block literal [[BLG8]] and block kernel [[INVGK8]]. [[INVGK8]] calls [[INVG8]].
+@@ -333,15 +331,35 @@ kernel void device_side_enqueue(global int *a, global int *b, int i) {
+   unsigned size = get_kernel_work_group_size(block_A);
+ 
+   // Uses global block literal [[BLG8]] and invoke function [[INVG8]]. Make sure no redundant block literal and invoke functions are emitted.
+-  // COMMON: [[r1:%.*]] = load i8 addrspace(4)*, i8 addrspace(4)* addrspace(4)* getelementptr inbounds (%struct.__opencl_block_literal_generic, %struct.__opencl_block_literal_generic addrspace(4)* addrspacecast (%struct.__opencl_block_literal_generic addrspace(1)* bitcast ({ i32, i32, i8 addrspace(4)* } addrspace(1)* [[BLG8]] to %struct.__opencl_block_literal_generic addrspace(1)*) to %struct.__opencl_block_literal_generic addrspace(4)*), i32 0, i32 2)
+-  // COMMON: [[r2:%.*]] = addrspacecast i8 addrspace(4)* [[r1]] to void (i8 addrspace(4)*)*
+-  // COMMON: call spir_func void [[r2]](i8 addrspace(4)* addrspacecast (i8 addrspace(1)* bitcast ({ i32, i32, i8 addrspace(4)* } addrspace(1)* [[BLG8]] to i8 addrspace(1)*) to i8 addrspace(4)*))
++  // COMMON: call spir_func void @__device_side_enqueue_block_invoke_11(i8 addrspace(4)* addrspacecast (i8 addrspace(1)* bitcast ({ i32, i32, i8 addrspace(4)* } addrspace(1)* [[BLG8]] to i8 addrspace(1)*) to i8 addrspace(4)*))
+   block_A();
+ 
++  // Make sure that block invoke function is resolved correctly after sequence of assignements.
++  // COMMON: store %struct.__opencl_block_literal_generic addrspace(4)*
++  // COMMON-SAME: addrspacecast (%struct.__opencl_block_literal_generic addrspace(1)*
++  // COMMON-SAME: bitcast ({ i32, i32, i8 addrspace(4)* } addrspace(1)* [[BL_GLOBAL]] to %struct.__opencl_block_literal_generic addrspace(1)*)
++  // COMMON-SAME: to %struct.__opencl_block_literal_generic addrspace(4)*),
++  // COMMON-SAME: %struct.__opencl_block_literal_generic addrspace(4)** %b1,
++  bl_t b1 = block_G;
++  // COMMON: store %struct.__opencl_block_literal_generic addrspace(4)*
++  // COMMON-SAME: addrspacecast (%struct.__opencl_block_literal_generic addrspace(1)*
++  // COMMON-SAME: bitcast ({ i32, i32, i8 addrspace(4)* } addrspace(1)* [[BL_GLOBAL]] to %struct.__opencl_block_literal_generic addrspace(1)*)
++  // COMMON-SAME: to %struct.__opencl_block_literal_generic addrspace(4)*),
++  // COMMON-SAME: %struct.__opencl_block_literal_generic addrspace(4)** %b2,
++  bl_t b2 = b1;
++  // COMMON: call spir_func void @block_G_block_invoke(i8 addrspace(4)* addrspacecast (i8 addrspace(1)*
++  // COMMON-SAME: bitcast ({ i32, i32, i8 addrspace(4)* } addrspace(1)* [[BL_GLOBAL]] to i8 addrspace(1)*)
++  // COOMON-SAME: to i8 addrspace(4)*), i8 addrspace(3)* null)
++  b2(0);
++  // Uses global block literal [[BL_GLOBAL]] and block kernel [[INV_G_K]]. [[INV_G_K]] calls [[INV_G]].
++  // COMMON: call i32 @__get_kernel_preferred_work_group_size_multiple_impl(
++  // COMMON-SAME: i8 addrspace(4)* addrspacecast (i8* bitcast ({{.*}} [[INV_G_K:[^ ]+_kernel]] to i8*) to i8 addrspace(4)*),
++  // COMMON-SAME: i8 addrspace(4)* addrspacecast (i8 addrspace(1)* bitcast ({ i32, i32, i8 addrspace(4)* } addrspace(1)* [[BL_GLOBAL]] to i8 addrspace(1)*) to i8 addrspace(4)*))
++  size = get_kernel_preferred_work_group_size_multiple(b2);
++
+   void (^block_C)(void) = ^{
+     callee(i, a);
+   };
+-
+   // Emits block literal on stack and block kernel [[INVLK3]].
+   // COMMON: store i8 addrspace(4)* addrspacecast (i8* bitcast (void (i8 addrspace(4)*)* [[INVL3:@__device_side_enqueue_block_invoke[^ ]*]] to i8*) to i8 addrspace(4)*), i8 addrspace(4)** %block.invoke
+   // COMMON: [[DEF_Q:%[0-9]+]] = load %opencl.queue_t{{.*}}*, %opencl.queue_t{{.*}}** %default_queue
+@@ -404,8 +422,8 @@ kernel void device_side_enqueue(global int *a, global int *b, int i) {
+ // COMMON: define internal spir_func void [[INVG8]](i8 addrspace(4)*{{.*}})
+ // COMMON: define internal spir_func void [[INVG9]](i8 addrspace(4)*{{.*}}, i8 addrspace(3)* %{{.*}})
+ // COMMON: define internal spir_kernel void [[INVGK8]](i8 addrspace(4)*{{.*}})
++// COMMON: define internal spir_kernel void [[INV_G_K]](i8 addrspace(4)*{{.*}}, i8 addrspace(3)*{{.*}})
+ // COMMON: define internal spir_kernel void [[INVLK3]](i8 addrspace(4)*{{.*}})
+ // COMMON: define internal spir_kernel void [[INVGK9]](i8 addrspace(4)*{{.*}}, i8 addrspace(3)*{{.*}})
+-// COMMON: define internal spir_kernel void [[INV_G_K]](i8 addrspace(4)*{{.*}}, i8 addrspace(3)*{{.*}})
+ // COMMON: define internal spir_kernel void [[INVGK10]](i8 addrspace(4)*{{.*}})
+ // COMMON: define internal spir_kernel void [[INVGK11]](i8 addrspace(4)*{{.*}})
+-- 
+1.8.3.1
+

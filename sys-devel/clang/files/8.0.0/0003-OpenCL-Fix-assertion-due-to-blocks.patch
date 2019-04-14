@@ -1,0 +1,57 @@
+From 29e2813a2ab7d5569860bb07892dfef7b5374d96 Mon Sep 17 00:00:00 2001
+From: Yaxun Liu <Yaxun.Liu@amd.com>
+Date: Tue, 26 Feb 2019 16:20:41 +0000
+Subject: [PATCH] [OpenCL] Fix assertion due to blocks
+
+A recent change caused assertion in CodeGenFunction::EmitBlockCallExpr when a block is called.
+
+There is code
+
+  Func = CGM.getOpenCLRuntime().getInvokeFunction(E->getCallee());
+getCalleeDecl calls Expr::getReferencedDeclOfCallee, which does not handle
+BlockExpr and returns nullptr, which causes isa to assert.
+
+This patch fixes that.
+
+Differential Revision: https://reviews.llvm.org/D58658
+
+
+git-svn-id: https://llvm.org/svn/llvm-project/cfe/trunk@354893 91177308-0d34-0410-b5e6-96231b3b80d8
+---
+ lib/AST/Expr.cpp             | 2 ++
+ test/CodeGenOpenCL/blocks.cl | 6 ++++++
+ 2 files changed, 8 insertions(+)
+
+diff --git a/lib/AST/Expr.cpp b/lib/AST/Expr.cpp
+index aef1eab..85690c7 100644
+--- a/lib/AST/Expr.cpp
++++ b/lib/AST/Expr.cpp
+@@ -1358,6 +1358,8 @@ Decl *Expr::getReferencedDeclOfCallee() {
+     return DRE->getDecl();
+   if (MemberExpr *ME = dyn_cast<MemberExpr>(CEE))
+     return ME->getMemberDecl();
++  if (auto *BE = dyn_cast<BlockExpr>(CEE))
++    return BE->getBlockDecl();
+ 
+   return nullptr;
+ }
+diff --git a/test/CodeGenOpenCL/blocks.cl b/test/CodeGenOpenCL/blocks.cl
+index ab5a2c6..c3e2685 100644
+--- a/test/CodeGenOpenCL/blocks.cl
++++ b/test/CodeGenOpenCL/blocks.cl
+@@ -90,6 +90,12 @@ int get42() {
+   return blockArgFunc(^{return 42;});
+ }
+ 
++// COMMON-LABEL: define {{.*}}@call_block
++// call {{.*}}@__call_block_block_invoke
++int call_block() {
++  return ^int(int num) { return num; } (11);
++}
++
+ // CHECK-DEBUG: !DIDerivedType(tag: DW_TAG_member, name: "__size"
+ // CHECK-DEBUG: !DIDerivedType(tag: DW_TAG_member, name: "__align"
+ 
+-- 
+1.8.3.1
+
