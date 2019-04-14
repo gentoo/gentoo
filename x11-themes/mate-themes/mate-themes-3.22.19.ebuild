@@ -13,7 +13,7 @@ SRC_URI="http://pub.mate-desktop.org/releases/themes/${MATE_GTK_V}/${P}.tar.xz"
 
 LICENSE="LGPL-2.1 GPL-3"
 SLOT="0/${MATE_GTK_V}"
-KEYWORDS="amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 x86"
 
 RDEPEND="
 	>=x11-libs/gdk-pixbuf-2:2
