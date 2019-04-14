@@ -7751,6 +7751,7 @@ media-libs/libxtract 0.6.6: A simple, portable, lightweight library of audio fea
 media-libs/libzen 0.4.37: Shared library for libmediainfo and mediainfo
 media-libs/libzmf 0.0.2: Library for parsing Zoner Callisto/Draw documents
 media-libs/lilv 0.24.2-r2: Library to make the use of LV2 plugins as simple as possible for applications
+media-libs/lsp-plugins 1.1.7-r1: Linux Studio Plugins
 media-libs/lv2 1.14.0-r1: A simple but extensible successor of LADSPA
 media-libs/mediastreamer 2.9.0-r2: Mediastreaming library for telephony application
 media-libs/memphis 0.2.3: A map-rendering application and a library for OpenStreetMap
@@ -8198,7 +8199,7 @@ media-sound/podracer 1.4-r2: A simple podcast aggregator, designed for cron
 media-sound/positron 1.1-r1: Synchronization manager for the Neuros Audio Computer
 media-sound/pragha 1.3.4: A lightweight music player (for Xfce)
 media-sound/pulseaudio 12.2 12.2-r1: A networked sound server with an advanced plugin system
-media-sound/pulseeffects 3.2.3-r1 4.4.7: Limiter, compressor, reverberation, equalizer auto volume effects for Pulseaudio
+media-sound/pulseeffects 3.2.3-r1 4.4.7 4.5.9: Limiter, compressor, reverberation, equalizer auto volume effects for Pulseaudio
 media-sound/pympd 0.08.1-r1: a Rhythmbox-like PyGTK+ client for Music Player Daemon
 media-sound/qastools 0.21.0: Qt5 GUI ALSA tools: mixer, configuration browser
 media-sound/qjackctl 0.4.5: Qt GUI to control the JACK Audio Connection Kit and ALSA sequencer connections

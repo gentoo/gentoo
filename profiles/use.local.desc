@@ -3011,6 +3011,7 @@ media-libs/libwebp:experimental - Build with -DWEBP_EXPERIMENTAL_FEATURES
 media-libs/libwebp:swap-16bit-csp - Enable byte swapping for 16 bit colorspace
 media-libs/libzmf:tools - Build conversion tools
 media-libs/lilv:dyn-manifest - Add LV2 Dynamic Manifest support. See http://lv2plug.in/ns/ext/dynmanifest/
+media-libs/lsp-plugins:lv2 - build lv2 plugins
 media-libs/lv2:plugins - Enables examples plugins.
 media-libs/mediastreamer:amr - Use of AMR Narrow Band codec plugin
 media-libs/mediastreamer:filters - Enable compilation of filters
