@@ -29,6 +29,24 @@
 
 #--- END OF EXAMPLES ---
 
+# Patrice Clement <monsieurp@gentoo.org> (14 Apr 2019)
+# Old, unmaintained and sometimes abandoned Java libraries/programs.
+# Removal in 30 days.
+dev-java/idm-console-framework
+dev-java/matrix-toolkits-java
+dev-java/sat4j-pseudo
+dev-java/sat4j-core
+dev-java/swarmcache
+dev-java/dbus-java
+dev-java/jinklevel
+dev-java/proguard
+dev-java/nailgun
+dev-java/jgroups
+dev-java/libmso
+dev-java/jicmp
+media-sound/jtagger
+app-admin/389-console
+
 # Michał Górny <mgorny@gentoo.org> (14 Apr 2019)
 # The ebuild violates EAPI and relies on STRIP_MASK.  The default
 # behavior makes it capable of executing arbitrary commands when running
@@ -134,10 +152,9 @@ dev-ruby/celluloid-supervision
 
 # Aaron Bauman <bman@gentoo.org> (12 Apr 2019)
 # Multiple security vulnerabilities
-# No revbumps in several years
+# No revbumps in several years.
 # Removal in 30 days. Bug #675682
 dev-java/jackson-databind
-# rdeps
 app-text/languagetool
 app-vim/languagetool
 dev-java/jackson-dataformat-xml
