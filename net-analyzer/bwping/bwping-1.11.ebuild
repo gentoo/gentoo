@@ -5,7 +5,7 @@ EAPI=7
 inherit autotools
 
 DESCRIPTION="A tool to measure bandwidth and RTT between two hosts using ICMP"
-HOMEPAGE="http://bwping.sourceforge.net/"
+HOMEPAGE="https://bwping.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="BSD"
