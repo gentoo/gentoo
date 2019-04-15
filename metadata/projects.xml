@@ -1460,11 +1460,6 @@
       <role>Minor janitor</role>
     </member>
     <member>
-      <email>monsieurp@gentoo.org</email>
-      <name>Patrice Clement</name>
-      <role>Member</role>
-    </member>
-    <member>
       <email>perfinion@gentoo.org</email>
       <name>Jason Zaman</name>
       <role>Member</role>
@@ -2894,11 +2889,6 @@
       <role>Minor helper</role>
     </member>
     <member>
-      <email>monsieurp@gentoo.org</email>
-      <name>Patrice Clement</name>
-      <role>Member</role>
-    </member>
-    <member>
       <email>soap@gentoo.org</email>
       <name>David Seifert</name>
       <role>Member</role>
@@ -3273,11 +3263,6 @@
       <email>mgorny@gentoo.org</email>
       <name>Michał Górny</name>
       <role>Author &amp; maintainer</role>
-    </member>
-    <member>
-      <email>monsieurp@gentoo.org</email>
-      <name>Patrice Clement</name>
-      <role>Developer</role>
     </member>
   </project>
   <project>

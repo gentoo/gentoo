@@ -1,0 +1,15 @@
+BDEPEND=>=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 =sys-devel/automake-1.11* >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=configure install prepare pretend
+DEPEND=~sci-libs/libsc-2.2[mpi=,openmp=,romio=,static-libs=,threads=] dev-lang/lua:* sys-apps/util-linux virtual/blas virtual/lapack mpi? ( virtual/mpi[romio=] ) sys-devel/automake:1.11 virtual/pkgconfig
+DESCRIPTION=Scalable Algorithms for Parallel Adaptive Mesh Refinement on Forests of Octrees
+EAPI=7
+HOMEPAGE=http://www.p4est.org/
+IUSE=debug doc examples mpi openmp romio static-libs threads +vtk-binary
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2+
+RDEPEND=~sci-libs/libsc-2.2[mpi=,openmp=,romio=,static-libs=,threads=] dev-lang/lua:* sys-apps/util-linux virtual/blas virtual/lapack mpi? ( virtual/mpi[romio=] )
+REQUIRED_USE=romio? ( mpi )
+SLOT=0
+SRC_URI=https://github.com/cburstedde/p4est/archive/v2.2.tar.gz -> p4est-2.2.tar.gz https://github.com/cburstedde/libsc/archive/v2.2.tar.gz -> libsc-2.2.tar.gz
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
+_md5_=71871752f2c7614cb2bc7279d208cdb1
