@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 # The build system currently fails with everything newer than 1.11.
 WANT_AUTOMAKE=1.11
