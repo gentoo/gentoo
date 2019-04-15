@@ -16,7 +16,7 @@ EHG_REVISION="@"
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS=""
-IUSE="bugzilla emacs gpg test tk zsh-completion"
+IUSE="+chg bugzilla emacs gpg test tk zsh-completion"
 
 RDEPEND="bugzilla? ( dev-python/mysql-python[${PYTHON_USEDEP}] )
 	gpg? ( app-crypt/gnupg )
@@ -52,6 +52,9 @@ python_configure_all() {
 python_compile_all() {
 	rm -r contrib/{win32,macosx} || die
 	emake doc
+	if use chg; then
+		emake -C contrib/chg
+	fi
 	if use emacs; then
 		cd contrib || die
 		elisp-compile mercurial.el || die "elisp-compile failed!"
@@ -83,6 +86,13 @@ python_install_all() {
 
 	local RM_CONTRIB=(hgk hg-ssh bash_completion zsh_completion wix buildrpm plan9
 	                  *.el mercurial.spec)
+
+	if use chg; then
+		dobin contrib/chg/chg
+		doman contrib/chg/chg.1
+		RM_CONTRIB+=( chg )
+	fi
+
 	for f in ${RM_CONTRIB[@]}; do
 		rm -rf contrib/$f || die
 	done

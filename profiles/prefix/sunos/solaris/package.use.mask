@@ -1,6 +1,10 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+
+# Fabian Groffen <grobian@gentoo.org> (15 Apr 2019)
+# chg client fails to compile, bug #683374
+dev-vcs/mercurial chg
 
 # Fabian Groffen <grobian@gentoo.org> (06 Apr 2016)
 # dev-libs/re2 needs love, bug #563932
