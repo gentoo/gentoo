@@ -1,0 +1,30 @@
+--- a/kernel/Makefile.L3	2019-01-01 01:09:59.000000000 +0300
++++ b/kernel/Makefile.L3	2019-04-15 00:09:53.601653771 +0300
+@@ -24,7 +24,7 @@
+ USE_TRMM = 1
+ endif
+ 
+-ifeq ($(TARGET), GENERIC)
++ifeq ($(CORE), GENERIC)
+ USE_TRMM = 1
+ endif
+ 
+@@ -44,10 +44,18 @@
+ USE_TRMM = 1
+ endif
+ 
++ifeq ($(CORE), POWER9)
++USE_TRMM = 1
++endif
++
+ ifeq ($(ARCH), zarch)
+ USE_TRMM = 1
+ endif
+ 
++ifeq ($(CORE), Z14)
++USE_TRMM = 1
++endif
++
+ 
+ 
+ 

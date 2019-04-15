@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>hasan.calisir@psauxit.com</email>
+		<name>Hasan ÇALIŞIR</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>sci@gentoo.org</email>
+		<name>Gentoo Science Project</name>
+	</maintainer>
+	<use>
+		<flag name="cblas">Build with CBLAS support</flag>
+		<flag name="dynamic">Build dynamic architecture detection at run time (for multi targets)</flag>
+		<flag name="int64">Build with the 64 bits integer library</flag>
+		<flag name="lapack">Build with LAPACK support</flag>
+		<flag name="np2">2 instances run in parallel for OpenMP</flag>
+		<flag name="np4">4 instances run in parallel for OpenMP</flag>
+		<flag name="np8">8 instances run in parallel for OpenMP</flag>
+		<flag name="np16">16 instances run in parallel for OpenMP</flag>
+		<flag name="openmp">Build with OpenMP support</flag>
+		<flag name="static-libs">Build static libs only</flag>
+		<flag name="threads">Enable multithreading</flag>
+	</use>
+	<longdescription lang="en">
+	OpenBLAS is an optimized BLAS library based on GotoBLAS2.
+	The BLAS (Basic Linear Algebra Subprograms) are routines that provide standard building 
+	blocks for performing basic vector and matrix operations.
+	The Level 1 BLAS perform scalar, vector and vector-vector operations, 
+	the Level 2 BLAS perform matrix-vector operations, the Level 3 BLAS perform matrix-matrix operations.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">xianyi/OpenBLAS</remote-id>
+	</upstream>
+</pkgmetadata>

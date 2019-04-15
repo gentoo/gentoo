@@ -1,0 +1,664 @@
+#!/bin/bash
+# Copyright 1999-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+# This is OpenBLAS system-wide switch script between GENTOO/LINUX reference blas-lapack-cblas set.
+
+set -euo pipefail
+
+RED=$(tput setaf 1)
+GREEN=$(tput setaf 2)
+YELLOW=$(tput setaf 3)
+CYAN=$(tput setaf 6)
+B_CYAN=$(tput setab 6)
+B_GREEN=$(tput setab 2)
+B_RED=$(tput setab 1)
+RESET=$(tput sgr0)
+
+MY_LIB_DIR="/usr/lib64"
+MY_INCLUDE_DIR="/usr/include"
+MY_BLAS_DIR="/usr/lib64/blas/reference"
+MY_LAPACK_DIR="/usr/lib64/lapack/reference"
+MY_GSL_DIR="/usr/lib64/blas/gsl"
+
+check_reference() {
+	SILENT="FALSE"
+	if [[ "${1-}" == "--silent" ]]; then
+	   SILENT="TRUE"
+	fi
+	if [[ -e $MY_BLAS_DIR/blas.pc ]]; then
+	   if [[ "$(< $MY_BLAS_DIR/blas.pc grep -Po 'Version: \K.*')" == "20070226" ]]; then
+	      blas_version="20070226"
+	      if [[ "$SILENT" == "FALSE" ]]; then
+		 echo -e "${GREEN}*${RESET} GENTOO --> Found: blas-reference-${GREEN}$blas_version${RESET}"
+	      fi
+	   elif [[ "$(< $MY_BLAS_DIR/blas.pc grep -Po 'Version: \K.*')" == "3.6.0" ]]; then
+		blas_version="3.6.0"
+		if [[ "$SILENT" == "FALSE" ]]; then
+		   echo -e "${GREEN}*${RESET} GENTOO --> Found: blas-reference-${GREEN}$blas_version${RESET}"
+		fi
+	   elif [[ "$(< $MY_BLAS_DIR/blas.pc grep -Po 'Version: \K.*')" == "3.7.0" ]]; then
+		blas_version="3.7.0"
+		if [[ "$SILENT" == "FALSE" ]]; then
+		   echo -e "${GREEN}*${RESET} GENTOO --> Found: blas-reference-${GREEN}$blas_version${RESET}"
+		fi
+	   else
+		b_version="$(< $MY_BLAS_DIR/blas.pc grep -Po 'Version: \K.*')"
+		if [[ "$SILENT" == "FALSE" ]]; then
+		   echo -e "${RED}*${RESET} GENTOO --> Found: Unsupported version ${RED}blas-reference-$b_version${RESET}"
+		fi
+	   fi
+	   else
+		has_blas=1
+		if [[ "$SILENT" == "FALSE" ]]; then
+		   echo -e "${RED}*${RESET} GENTOO --> Not Found: blas-reference"
+		fi
+	fi
+	if [[ -e $MY_LAPACK_DIR/lapack.pc ]]; then
+	   if [[ "$(< $MY_LAPACK_DIR/lapack.pc grep -Po 'Version: \K.*')" == "3.2.1" ]]; then
+	      lapack_version="3.2.1"
+	      if [[ "$SILENT" == "FALSE" ]]; then
+		 echo -e "${GREEN}*${RESET} GENTOO --> Found: lapack-reference-${GREEN}$lapack_version${RESET}"
+	      fi
+	   elif [[ "$(< $MY_LAPACK_DIR/lapack.pc grep -Po 'Version: \K.*')" == "3.6.0" ]]; then
+	 	lapack_version="3.6.0"
+		if [[ "$SILENT" == "FALSE" ]]; then
+		   echo -e "${GREEN}*${RESET} GENTOO --> Found: lapack-reference-${GREEN}$lapack_version${RESET}"
+		fi
+	   elif [[ "$(< $MY_LAPACK_DIR/lapack.pc grep -Po 'Version: \K.*')" == "3.7.0" ]]; then
+                lapack_version="3.7.0"
+		if [[ "$SILENT" == "FALSE" ]]; then
+		   echo -e "${GREEN}*${RESET} GENTOO --> Found: lapack-reference-${GREEN}$lapack_version${RESET}"
+		fi
+	   else
+		l_version="$(< $MY_LAPACK_DIR/lapack.pc grep -Po 'Version: \K.*')"
+		if [[ "$SILENT" == "FALSE" ]]; then
+		   echo -e "${RED}*${RESET} GENTOO --> Found: Unsupported version ${RED}lapack-reference-$l_version${RESET}"
+		fi
+           fi
+	   else
+		has_lapack=1
+		if [[ "$SILENT" == "FALSE" ]]; then
+		   echo -e "${RED}*${RESET} GENTOO --> Not Found: lapack-reference"
+		fi
+	fi
+	if [[ -e $MY_BLAS_DIR/cblas.pc ]]; then
+	   if [[ "$(< $MY_BLAS_DIR/cblas.pc grep -Po 'Version: \K.*')" == "20030223" ]]; then
+	      cblas_version="20030223"
+	      if [[ "$SILENT" == "FALSE" ]]; then
+		 echo -e "${GREEN}*${RESET} GENTOO --> Found: cblas-reference-${GREEN}$cblas_version${RESET}"
+	      fi
+	   elif [[ "$(< $MY_BLAS_DIR/cblas.pc grep -Po 'Version: \K.*')" == "3.6.0" ]]; then
+                cblas_version="3.6.0"
+		if [[ ! -e $MY_BLAS_DIR/libcblas.so.3.6.0 ]]; then
+		mv $MY_BLAS_DIR/libcblas.so $MY_BLAS_DIR/libcblas.so.3.6.0 &&
+		cd $MY_BLAS_DIR && ln -sf libcblas.so.3.6.0 libcblas.so || exit 1
+		fi
+		if [[ -e $MY_BLAS_DIR/libcblas.so.3.7.0 ]]; then
+		   rm -rf $MY_BLAS_DIR/libcblas.so.3.7.0 &>/dev/null
+		fi
+		if [[ "$SILENT" == "FALSE" ]]; then
+		   echo -e "${GREEN}*${RESET} GENTOO --> Found: cblas-reference ${GREEN}$cblas_version${RESET}"
+		fi
+	   elif [[ "$(< $MY_BLAS_DIR/cblas.pc grep -Po 'Version: \K.*')" == "3.7.0" ]]; then
+                cblas_version="3.7.0"
+		if [[ ! -e $MY_BLAS_DIR/libcblas.so.3.7.0 ]]; then
+		mv $MY_BLAS_DIR/libcblas.so $MY_BLAS_DIR/libcblas.so.3.7.0 &&
+		cd $MY_BLAS_DIR && ln -sf libcblas.so.3.7.0 libcblas.so || exit 1
+		fi
+		if [[ -e $MY_BLAS_DIR/libcblas.so.3.6.0 ]]; then
+                   rm -rf $MY_BLAS_DIR/libcblas.so.3.6.0 &>/dev/null
+                fi
+		if [[ "$SILENT" == "FALSE" ]]; then
+		   echo -e "${GREEN}*${RESET} GENTOO --> Found: cblas-reference-${GREEN}$cblas_version${RESET}"
+		fi
+	   else
+		c_version="$(< $MY_BLAS_DIR/cblas.pc grep -Po 'Version: \K.*')"
+		if [[ "$SILENT" == "FALSE" ]]; then
+		   echo -e "${RED}*${RESET} GENTOO --> Found: Unsupported version ${RED}cblas-reference-$c_version${RESET}"
+		fi
+           fi
+	   else
+		has_cblas=1
+		if [[ "$SILENT" == "FALSE" ]]; then
+		   echo -e "${RED}*${RESET} GENTOO --> Not Found: cblas-reference"
+		fi
+	fi
+	if [[ -e $MY_GSL_DIR/cblas.pc ]]; then
+	   if [[ "$(< $MY_GSL_DIR/cblas.pc grep -Po 'Version: \K.*')" == "1.16" ]]; then
+	      gsl_version="1.16"
+	      if [[ "$SILENT" == "FALSE" ]]; then
+		 echo -e "${GREEN}*${RESET} GENTOO --> Found: gsl-${GREEN}$gsl_version${RESET}"
+	      fi
+	   elif [[ "$(< $MY_GSL_DIR/cblas.pc grep -Po 'Version: \K.*')" == "2.4" ]]; then
+	        gsl_version="2.4"
+		if [[ "$SILENT" == "FALSE" ]]; then
+		   echo -e "${GREEN}*${RESET} GENTOO --> Found: gsl-${GREEN}$gsl_version${RESET}"
+		fi
+	   elif [[ "$(< $MY_GSL_DIR/cblas.pc grep -Po 'Version: \K.*')" == "2.5" ]]; then
+	        gsl_version="2.5"
+		if [[ "$SILENT" == "FALSE" ]]; then
+		   echo -e "${GREEN}*${RESET} GENTOO --> Found: gsl-${GREEN}$gsl_version${RESET}"
+		fi
+	   else
+		g_version="$(< $MY_GSL_DIR/cblas.pc grep -Po 'Version: \K.*')"
+		if [[ "$SILENT" == "FALSE" ]]; then
+		   echo -e "${RED}*${RESET} GENTOO --> Found: Unsupported version ${RED}gsl-$g_version${RESET}"
+		fi
+	   fi
+	   else
+		has_gsl=1
+		if [[ "$SILENT" == "FALSE" ]]; then
+		   echo -e "${YELLOW}*${RESET} GENTOO --> Not Found: gsl (gnu scientific library)"
+		fi
+	fi
+}
+
+check_openblas() {
+	SILENT="FALSE"
+	if [[ "${1-}" == "--silent" ]]; then
+	   SILENT="TRUE"
+	fi
+	if [[ -e $MY_LIB_DIR/pkgconfig/openblas.pc ]]; then
+	   MY_OPENBLAS_VERSION="$(< $MY_LIB_DIR/pkgconfig/openblas.pc grep -Po 'version=\K.*')"
+	   if [[ "$SILENT" == "FALSE" ]]; then
+	   echo -e "${GREEN}*${RESET} GENTOO --> Found: openblas-${GREEN}$MY_OPENBLAS_VERSION${RESET} with ${GREEN}$openblas_supports${RESET} support"
+	   fi
+	   else
+		has_openblas=1
+		if [[ "$SILENT" == "FALSE" ]]; then
+		echo -e "${RED}*${RESET} GENTOO --> Not Found: openblas"
+		fi
+	fi
+}
+
+check_openblas_features() {
+	if [[ -e $MY_LIB_DIR/pkgconfig/openblas.pc ]]; then
+	   if [[ "$(< $MY_LIB_DIR/pkgconfig/openblas.pc grep -Po 'NO_LAPACK=\K.')" == "1" ]]; then
+   	      openblas_lapack_support=1
+	      else
+		 openblas_lapack_support=0
+		 openblas_supports="[BLAS] [LAPACK]"
+	   fi
+	fi
+	if [[ -e $MY_LIB_DIR/pkgconfig/openblas.pc ]]; then
+	   if [[ "$(< $MY_LIB_DIR/pkgconfig/openblas.pc grep -Po 'NO_CBLAS=\K.')" == "1" ]]; then
+	      openblas_cblas_support=1
+	      else
+		 openblas_cblas_support=0
+		 openblas_supports="[BLAS] [CBLAS]"
+	   fi
+	fi
+	if [[ ${openblas_lapack_support:-} -eq 0 ]] && [[ ${openblas_cblas_support:-} -eq 0 ]]; then
+	   openblas_supports="[BLAS] [LAPACK] [CBLAS]"
+	fi
+}
+
+find_targets() {
+	if { [[ $(basename "$(readlink $MY_BLAS_DIR/libblas.so)") == "libblas.so.0.0.0" ]] ||
+	     [[ $(basename "$(readlink $MY_BLAS_DIR/libblas.so)") == "libblas.so.3" ]]; } &>/dev/null; then
+	     blas_reference_active=0
+	     else
+		blas_reference_active=1
+	fi
+	if [[ $(basename "$(readlink $MY_BLAS_DIR/libblas.so)") == "libopenblas.so.0" ]] &>/dev/null; then
+	     openblas_blas_active=0
+	     else
+		openblas_blas_active=1
+	fi
+	if { [[ $(basename "$(readlink $MY_LAPACK_DIR/liblapack.so)") == "liblapack.so.0.0.0" ]] ||
+	     [[ $(basename "$(readlink $MY_LAPACK_DIR/liblapack.so)") == "liblapack.so.3" ]]; } &>/dev/null; then
+	     lapack_reference_active=0
+	     else
+		lapack_reference_active=1
+	fi
+	if [[ $(basename "$(readlink $MY_LAPACK_DIR/liblapack.so)") == "libopenblas.so.0" ]] &>/dev/null; then
+	     openblas_lapack_active=0
+	     else
+		openblas_lapack_active=1
+	fi
+	if { [[ $(basename "$(readlink $MY_BLAS_DIR/libcblas.so)") == "libcblas.so.0.0.0" ]] ||
+	     [[ $(basename "$(readlink $MY_BLAS_DIR/libcblas.so)") == "libcblas.so.3.6.0" ]] ||
+	     [[ $(basename "$(readlink $MY_BLAS_DIR/libcblas.so)") == "libcblas.so.3.7.0" ]]; } &&
+	     [[ $(basename "$(readlink $MY_LIB_DIR/libcblas.so)") != "libgslcblas.so" ]] &>/dev/null; then
+	     cblas_reference_active=0
+	     else
+		cblas_reference_active=1
+	fi
+	if [[ $(basename "$(readlink $MY_BLAS_DIR/libcblas.so)") == "libopenblas.so.0" ]] &&
+	   [[ $(basename "$(readlink -f $MY_LIB_DIR/libcblas.so)") != "libgslcblas.so.0.0.0" ]] &>/dev/null; then
+	     openblas_cblas_active=0
+	     else
+		openblas_cblas_active=1
+	fi
+	if [[ $(basename "$(readlink -f $MY_LIB_DIR/libcblas.so)") == "libgslcblas.so.0.0.0" ]] &>/dev/null; then
+	     gsl_active=0
+	     else
+		gsl_active=1
+	fi
+	if [[ $(basename "$(readlink $MY_LIB_DIR/libgslcblas.so)") == "libopenblas.so.0" ]] &>/dev/null; then
+	     openblas_gsl_active=0
+	     else
+		openblas_gsl_active=1
+	fi
+}
+
+blas_default_to_openblas() {
+	if [[ -z "${has_blas:-}" ]]; then
+	   if [[ -z "${b_version:-}" ]]; then
+	      if [[ -z "${has_openblas:-}" ]]; then
+		 if [[ $blas_reference_active -eq 0 ]]; then
+		 ln -sf "$MY_LIB_DIR"/libopenblas.so.0 "$MY_BLAS_DIR"/libblas.so &&
+		 cd $MY_INCLUDE_DIR && ln -sf $MY_INCLUDE_DIR/openblas/openblas_config.h . &&
+		 ln -sf $MY_INCLUDE_DIR/openblas/f77blas.h . &&
+		 echo -e "${GREEN}*${RESET} BLAS   --> ${B_GREEN}Switched to openblas-$MY_OPENBLAS_VERSION system-wide.${RESET}" || exit 1
+		 elif [[ $openblas_blas_active -eq 0 ]]; then
+		 echo -e "${GREEN}*${RESET} BLAS   --> ${B_GREEN}openblas-$MY_OPENBLAS_VERSION has already activated system-wide.${RESET}"
+		 else
+		 echo -e "${RED}*${RESET} BLAS   --> ${B_RED}Couldn't determine system BLAS implementation.${RESET}"
+		 fi
+	      fi
+	   fi
+	fi
+	if [[ -n "${has_blas:-}" ]]; then
+	   echo -e "${RED}*${RESET} BLAS     --> ${B_RED}Emerge me first!${RESET} -> ${B_GREEN}emerge --ask sci-libs/blas-reference${RESET}"
+	fi
+	if [[ -z "${has_blas:-}" ]] && [[ -n "${b_version:-}" ]]; then
+	   echo -e "${RED}*${RESET} BLAS     --> ${B_RED}Unsupported version blas-reference-$b_version${RESET}"
+	fi
+	if [[ -n "${has_openblas:-}" ]]; then
+	   echo -e "${RED}*${RESET} OPENBLAS --> ${B_RED}Emerge me first!${RESET} -> ${B_GREEN}emerge --ask sci-libs/openblas${RESET}"
+	fi
+}
+
+lapack_default_to_openblas() {
+	if [[ -z "${has_lapack:-}" ]]; then
+	   if [[ -z "${l_version:-}" ]]; then
+	      if [[ -z "${has_openblas:-}" ]]; then
+		 if [[ $openblas_lapack_support -eq 0 ]]; then
+		    if [[ $lapack_reference_active -eq 0 ]]; then
+	            ln -sf $MY_LIB_DIR/libopenblas.so.0 $MY_LAPACK_DIR/liblapack.so &&
+		    cd $MY_INCLUDE_DIR && ln -sf $MY_INCLUDE_DIR/openblas/openblas_config.h . &&
+		    ln -sf $MY_INCLUDE_DIR/openblas/lapacke*.h . &&
+	            echo -e "${GREEN}*${RESET} LAPACK --> ${B_GREEN}Switched to openblas-$MY_OPENBLAS_VERSION system-wide${RESET}" || exit 1
+	            elif [[ $openblas_lapack_active -eq 0 ]]; then
+	            echo -e "${GREEN}*${RESET} LAPACK --> ${B_GREEN}openblas-$MY_OPENBLAS_VERSION has already activated system-wide.${RESET}"
+	            else
+	            echo -e "${RED}*${RESET} LAPACK --> ${B_RED}Couldn't determine system LAPACK implementation.${RESET}"
+	            fi
+	            else
+	            echo -e "${RED}*${RESET} OPENBLAS --> ${B_RED}You have to re-build OpenBLAS with LAPACK support.${RESET}"
+		 fi
+	      fi
+	   fi
+	fi
+	if [[ -n "${has_lapack:-}" ]]; then
+	   echo -e "${RED}*${RESET} LAPACK   --> ${B_RED}Emerge me first!${RESET} -> ${B_GREEN}emerge --ask sci-libs/lapack-reference${RESET}"
+	fi
+	if [[ -z "${has_lapack:-}" ]] && [[ -n "${l_version:-}" ]]; then
+           echo -e "${RED}*${RESET} LAPACK   --> ${B_RED}Unsupported version lapack-reference-$l_version${RESET}"
+        fi
+	if [[ -n "${has_openblas:-}" ]]; then
+	   echo -e "${RED}*${RESET} OPENBLAS --> ${B_RED}Emerge me first!${RESET} -> ${B_GREEN}emerge --ask sci-libs/openblas${RESET}"
+	fi
+}
+
+cblas_reference_to_openblas() {
+	if [[ "$cblas_version" == "20070226" ]]; then
+	ln -sf $MY_LIB_DIR/libopenblas.so.0 $MY_BLAS_DIR/libcblas.so &&
+	cd $MY_INCLUDE_DIR/cblas && mv cblas.h cblas.h.old &&
+	ln -sf $MY_INCLUDE_DIR/openblas/cblas.h $MY_INCLUDE_DIR/cblas/cblas.h &&
+	cd $MY_INCLUDE_DIR && ln -sf $MY_INCLUDE_DIR/openblas/openblas_config.h . &&
+	echo -e "${GREEN}*${RESET} CBLAS  --> ${B_GREEN}Switched to openblas-$MY_OPENBLAS_VERSION system-wide.${RESET}" || exit 1
+	elif [[ "$cblas_version" == "3.6.0" ]] || [[ "$cblas_version" == "3.7.0" ]]; then
+	ln -sf $MY_LIB_DIR/libopenblas.so.0 $MY_BLAS_DIR/libcblas.so &&
+	cd $MY_BLAS_DIR && mv cblas.h cblas.h.old &&
+	ln -sf $MY_INCLUDE_DIR/openblas/cblas.h . &&
+	cd $MY_INCLUDE_DIR && ln -sf $MY_INCLUDE_DIR/openblas/openblas_config.h . &&
+	echo -e "${GREEN}*${RESET} CBLAS  --> ${B_GREEN}Switched to openblas-$MY_OPENBLAS_VERSION system-wide.${RESET}" || exit 1
+	fi
+}
+
+cblas_gsl_to_openblas() {
+	ln -sf $MY_LIB_DIR/libopenblas.so.0 $MY_LIB_DIR/libgslcblas.so &&
+	cd $MY_INCLUDE_DIR/gsl && mv gsl_cblas.h gsl_cblas.h.old &&
+	ln -sf $MY_INCLUDE_DIR/openblas/cblas.h $MY_INCLUDE_DIR/gsl/gsl_cblas.h &&
+	cd $MY_INCLUDE_DIR && ln -sf $MY_INCLUDE_DIR/openblas/openblas_config.h . &&
+	echo -e "${GREEN}*${RESET} CBLAS  --> ${B_GREEN}Switched to openblas-$MY_OPENBLAS_VERSION system-wide.${RESET}" || exit 1
+}
+
+cblas_default_to_openblas() {
+	if [[ -z "${has_cblas:-}" ]]; then
+	   if [[ -z "${c_version:-}" ]]; then
+	      if [[ -z "${has_openblas:-}" ]]; then
+		 if [[ $openblas_cblas_support -eq 0 ]]; then
+		    if [[ $cblas_reference_active -eq 0 ]]; then
+		    cblas_reference_to_openblas
+		    elif [[ $gsl_active -eq 0 ]]; then
+		    cblas_gsl_to_openblas
+		    elif [[ $openblas_cblas_active -eq 0 ]]; then
+		    echo -e "${GREEN}*${RESET} CBLAS  --> ${B_GREEN}openblas-$MY_OPENBLAS_VERSION has already activated system-wide.${RESET}"
+		    elif [[ $openblas_gsl_active -eq 0 ]]; then
+		    echo -e "${GREEN}*${RESET} CBLAS  --> ${B_GREEN}openblas-$MY_OPENBLAS_VERSION has already activated system-wide.${RESET}"
+		    else
+		    echo -e "${RED}*${RESET} CBLAS  --> ${B_RED}Couldn't determine system CBLAS implementation.${RESET}"
+		    fi
+		    else
+		    echo -e "${RED}*${RESET} OPENBLAS --> ${B_RED}You have to re-build OpenBLAS with CBLAS support.${RESET}"
+		 fi
+	      fi
+	   fi
+	fi
+	if [[ -n "${has_cblas:-}" ]]; then
+	   echo -e "${RED}*${RESET} CBLAS    --> ${B_RED}Emerge me first!${RESET} -> ${B_GREEN}emerge --ask sci-libs/cblas-reference${RESET}"
+	fi
+	if [[ -z "${has_cblas:-}" ]] && [[ -n "${c_version:-}" ]]; then
+           echo -e "${RED}*${RESET} CBLAS    --> ${B_RED}Unsupported version cblas-reference-$c_version${RESET}"
+        fi
+	if [[ -n "${has_openblas:-}" ]]; then
+	   echo -e "${RED}*${RESET} OPENBLAS --> ${B_RED}Emerge me first!${RESET} -> ${B_GREEN}emerge --ask sci-libs/openblas${RESET}"
+	fi
+}
+
+openblas_to_blas_default() {
+	if [[ -z "${has_blas:-}" ]]; then
+	   if [[ -z "${b_version:-}" ]]; then
+	      if [[ -z "${has_openblas:-}" ]]; then
+		 if [[ $openblas_blas_active -eq 0 ]]; then
+		    if [[ "$blas_version" == "20070226" ]]; then
+		    cd $MY_BLAS_DIR && ln -sf libblas.so.0.0.0 libblas.so &&
+		    echo -e "${GREEN}*${RESET} BLAS   --> ${B_GREEN}Switched to blas-reference-$blas_version system-wide.${RESET}" || exit 1
+		    cd $MY_INCLUDE_DIR && rm f77blas.h &>/dev/null
+		    elif [[ "$blas_version" == "3.6.0" ]] || [[ "$blas_version" == "3.7.0" ]]; then
+		    cd $MY_BLAS_DIR && ln -sf libblas.so.3 libblas.so &&
+		    echo -e "${GREEN}*${RESET} BLAS   --> ${B_GREEN}Switched to blas-reference-$blas_version system-wide.${RESET}" || exit 1
+		    cd $MY_INCLUDE_DIR && rm f77blas.h &>/dev/null
+	            fi
+	         elif [[ $blas_reference_active -eq 0 ]]; then
+	         echo -e "${GREEN}*${RESET} BLAS   --> ${B_GREEN}blas-reference-$blas_version has already activated system-wide.${RESET}"
+	         else
+	         echo -e "${RED}*${RESET} BLAS   --> ${B_RED}Couldn't determine system BLAS implementation.${RESET}"
+	         fi
+	      fi
+	   fi
+	fi
+	if [[ -n "${has_blas:-}" ]]; then
+	   echo -e "${RED}*${RESET} BLAS     --> ${B_RED}Emerge me first!${RESET} -> ${B_GREEN}emerge --ask sci-libs/blas-reference${RESET}"
+	fi
+	if [[ -z "${has_blas:-}" ]] && [[ -n "${b_version:-}" ]]; then
+	   echo -e "${RED}*${RESET} BLAS     --> ${B_RED}Unsupported version blas-reference-$b_version${RESET}"
+	fi
+	if [[ -n "${has_openblas:-}" ]]; then
+	   echo -e "${RED}*${RESET} OPENBLAS --> ${B_RED}Emerge me first!${RESET} -> ${B_GREEN}emerge --ask sci-libs/openblas${RESET}"
+	fi
+}
+
+openblas_to_lapack_default() {
+	if [[ -z "${has_lapack:-}" ]]; then
+	   if [[ -z "${l_version:-}" ]]; then
+	      if [[ -z "${has_openblas:-}" ]]; then
+		 if [[ $openblas_lapack_active -eq 0 ]]; then
+		    if [[ "$lapack_version" == "3.2.1" ]]; then
+		    cd $MY_LAPACK_DIR && ln -sf liblapack.so.0.0.0 liblapack.so &&
+		    echo -e "${GREEN}*${RESET} LAPACK --> ${B_GREEN}Switched to lapack-reference-$lapack_version system-wide.${RESET}" || exit 1
+		    cd $MY_INCLUDE_DIR && rm lapacke*.h &>/dev/null
+		    elif [[ "$lapack_version" == "3.6.0" ]] || [[ "$lapack_version" == "3.7.0" ]]; then
+		    cd $MY_LAPACK_DIR && ln -sf liblapack.so.3 liblapack.so &&
+		    echo -e "${GREEN}*${RESET} LAPACK --> ${B_GREEN}Switched to lapack-reference-$lapack_version system-wide.${RESET}" || exit 1
+		    cd $MY_INCLUDE_DIR && rm lapacke*.h &>/dev/null
+		    fi
+	         elif [[ $lapack_reference_active -eq 0 ]]; then
+	         echo -e "${GREEN}*${RESET} LAPACK --> ${B_GREEN}lapack-reference-$lapack_version has already activated system-wide.${RESET}"
+	         else
+	         echo -e "${RED}*${RESET} LAPACK --> ${B_RED}Couldn't determine system LAPACK implementation.${RESET}"
+	         fi
+	      fi
+	   fi
+	fi
+	if [[ -n "${has_lapack:-}" ]]; then
+	   echo -e "${RED}*${RESET} LAPACK   --> ${B_RED}Emerge me first!${RESET} -> ${B_GREEN}emerge --ask sci-libs/lapack-reference${RESET}"
+	fi
+	if [[ -z "${has_lapack:-}" ]] && [[ -n "${l_version:-}" ]]; then
+	   echo -e "${RED}*${RESET} LAPACK   --> ${B_RED}Unsupported version lapack-reference-$l_version${RESET}"
+	fi
+	if [[ -n "${has_openblas:-}" ]]; then
+	   echo -e "${RED}*${RESET} OPENBLAS --> ${B_RED}Emerge me first!${RESET} -> ${B_GREEN}emerge --ask sci-libs/openblas${RESET}"
+	fi
+}
+
+openblas_to_cblas_reference() {
+	if [[ "$cblas_version" == "20070226" ]]; then
+	cd $MY_BLAS_DIR && ln -sf libcblas.so.0.0.0 libcblas.so &&
+	cd $MY_INCLUDE_DIR/cblas && rm cblas.h && mv cblas.h.old cblas.h &&
+	cd $MY_INCLUDE_DIR && rm openblas_config.h &&
+	echo -e "${GREEN}*${RESET} CBLAS  --> ${B_GREEN}Switched to cblas-reference-$cblas_version system-wide.${RESET}" || exit 1
+	elif [[ "$cblas_version" == "3.6.0" ]]; then
+	cd $MY_BLAS_DIR && ln -sf libcblas.so.3.6.0 libcblas.so &&
+	rm cblas.h && mv cblas.h.old cblas.h &&
+	cd $MY_INCLUDE_DIR && rm openblas_config.h &&
+	echo -e "${GREEN}*${RESET} CBLAS  --> ${B_GREEN}Switched to cblas-reference-$cblas_version system-wide.${RESET}" || exit 1
+	elif [[ "$cblas_version" == "3.7.0" ]]; then
+	cd $MY_BLAS_DIR && ln -sf libcblas.so.3.7.0 libcblas.so &&
+	rm cblas.h && mv cblas.h.old cblas.h &&
+	cd $MY_INCLUDE_DIR && rm openblas_config.h &&
+	echo -e "${GREEN}*${RESET} CBLAS  --> ${B_GREEN}Switched to cblas-reference-$cblas_version system-wide.${RESET}" || exit 1
+	fi
+}
+
+openblas_to_cblas_gsl() {
+	cd $MY_LIB_DIR && ln -sf libgslcblas.so.0.0.0 libgslcblas.so &&
+	cd $MY_INCLUDE_DIR/gsl && rm gsl_cblas.h && mv gsl_cblas.h.old gsl_cblas.h &&
+	cd $MY_INCLUDE_DIR && rm openblas_config.h &&
+	echo -e "${GREEN}*${RESET} CBLAS  --> ${B_GREEN}Switched to gsl-$gsl_version system-wide.${RESET}" || exit 1
+}
+
+openblas_to_cblas_default() {
+	if [[ -z "${has_cblas:-}" ]] || [[ -z "${has_gsl:-}" ]]; then
+	   if [[ -z "${c_version:-}" ]] || [[ -z "${g_version:-}" ]]; then
+	      if [[ -z "${has_openblas:-}" ]]; then
+		 if [[ $openblas_cblas_active -eq 0 ]]; then
+		    if [[ $(eselect cblas list | grep "\*" | grep -oP "reference") == "reference" ]]; then
+		    openblas_to_cblas_reference
+		    elif [[ $(eselect cblas list | grep "\*" | grep -oP "gsl") == "gsl" ]]; then
+		    openblas_to_cblas_gsl
+		    fi
+		 elif [[ $openblas_gsl_active -eq 0 ]]; then
+		      if [[ $(eselect cblas list | grep "\*" | grep -oP "reference") == "reference" ]]; then
+		      openblas_to_cblas_reference
+		      elif [[ $(eselect cblas list | grep "\*" | grep -oP "gsl") == "gsl" ]]; then
+		      openblas_to_cblas_gsl
+		      fi
+		 elif [[ $cblas_reference_active -eq 0 ]]; then
+		 echo -e "${GREEN}*${RESET} CBLAS  --> ${B_GREEN}cblas-reference-$cblas_version has already activated system-wide.${RESET}"
+		 elif [[ $gsl_active -eq 0 ]]; then
+		 echo -e "${GREEN}*${RESET} CBLAS  --> ${B_GREEN}gsl-$gsl_version has already activated system-wide.${RESET}"
+		 else
+		 echo -e "${RED}*${RESET} CBLAS  --> ${B_RED}Couldn't determine system CBLAS implementation.${RESET}"
+		 fi
+	      fi
+	   fi
+	fi
+	if [[ -n "${has_cblas:-}" ]]; then
+	   echo -e "${RED}*${RESET} CBLAS    --> ${B_RED}Emerge me first!${RESET} -> ${B_GREEN}emerge --ask sci-libs/cblas-reference${RESET}"
+	fi
+	if [[ -n "${has_gsl:-}" ]]; then
+           echo -e "${RED}*${RESET} CBLAS    --> ${B_RED}Emerge me first!${RESET} -> ${B_GREEN}emerge --ask sci-libs/gsl${RESET}"
+        fi
+	if [[ -z "${has_cblas:-}" ]] && [[ -n "${c_version:-}" ]]; then
+           echo -e "${RED}*${RESET} CBLAS    --> ${B_RED}Unsupported version cblas-reference-$c_version${RESET}"
+        fi
+	if [[ -z "${has_gsl:-}" ]] && [[ -n "${g_version:-}" ]]; then
+           echo -e "${RED}*${RESET} CBLAS    --> ${B_RED}Unsupported version gsl-$gsl_version${RESET}"
+        fi
+	if [[ -n "${has_openblas:-}" ]]; then
+	   echo -e "${RED}*${RESET} OPENBLAS --> ${B_RED}Emerge me first!${RESET} -> ${B_GREEN}emerge --ask sci-libs/openblas${RESET}"
+	fi
+}
+
+status() {
+	SILENT="FALSE"
+
+	if [[ -z "${b_version:-}" ]] &&
+	   [[ -z "${has_blas:-}" ]] &&
+	   [[ $blas_reference_active -eq 0 ]]; then
+	   echo -e "${GREEN}*${RESET} BLAS   --> Active: blas-reference-${GREEN}$blas_version${RESET} system-wide."
+	fi
+	if [[ -z "${has_openblas:-}" ]] &&
+	   [[ $openblas_blas_active -eq 0 ]]; then
+	   echo -e "${GREEN}*${RESET} BLAS   --> Active: openblas-${GREEN}$MY_OPENBLAS_VERSION${RESET} system-wide."
+	fi
+	if [[ -z "${l_version:-}" ]] &&
+	   [[ -z "${has_lapack:-}" ]] &&
+	   [[ $lapack_reference_active -eq 0 ]]; then
+	   echo -e "${GREEN}*${RESET} LAPACK --> Active: lapack-reference-${GREEN}$lapack_version${RESET} system-wide."
+	fi
+	if [[ -z "${has_openblas:-}" ]] &&
+	   [[ $openblas_lapack_active -eq 0 ]]; then
+	   echo -e "${GREEN}*${RESET} LAPACK --> Active: openblas-${GREEN}$MY_OPENBLAS_VERSION${RESET} system-wide."
+	fi
+	if [[ -z "${c_version:-}" ]] &&
+	   [[ -z "${has_cblas:-}" ]] &&
+	   [[ $cblas_reference_active -eq 0 ]]; then
+	   echo -e "${GREEN}*${RESET} CBLAS  --> Active: cblas-reference-${GREEN}$cblas_version${RESET} system-wide."
+	fi
+	if [[ -z "${has_openblas:-}" ]] &&
+	   [[ $openblas_cblas_active -eq 0 ]]; then
+	   echo -e "${GREEN}*${RESET} CBLAS  --> Active: openblas-${GREEN}$MY_OPENBLAS_VERSION${RESET} system-wide."
+	fi
+	if [[ -z "${g_version:-}" ]] &&
+	   [[ -z "${has_gsl:-}" ]] &&
+	   [[ $gsl_active -eq 0 ]]; then
+	   echo -e "${GREEN}*${RESET} CBLAS  --> Active: gsl-${GREEN}$gsl_version${RESET} system-wide."
+	fi
+	if [[ -z "${has_openblas:-}" ]] &&
+	   [[ $openblas_gsl_active -eq 0 ]]; then
+	   echo -e "${GREEN}*${RESET} CBLAS  --> Active: openblas-${GREEN}$MY_OPENBLAS_VERSION${RESET} system-wide."
+	fi
+	if [[ ${has_blas:-} -eq 1 ]] &&
+	   [[ ${has_lapack:-} -eq 1 ]] &&
+	   [[ ${has_cblas:-} -eq 1 ]] &&
+	   [[ ${has_gsl:-} -eq 1 ]] &&
+	   [[ ${has_openblas:-} -eq 1 ]]; then
+	   echo -e "${RED}*${RESET} GENTOO --> Active: No ${RED}BLAS LAPACK CBLAS OPENBLAS${RESET} found on system."
+	fi
+}
+
+version() {
+	echo -e "${CYAN}# Version 0.1"
+	echo -e "# Copyright 1999-2019 Gentoo Authors"
+	echo -e "# Distributed under the terms of the GNU General Public License v2"
+	echo -e "# This is OpenBLAS system-wide switch script between GENTOO/LINUX reference blas-lapack-cblas set."
+	echo -e "# Package Maintainer: hasan.calisir@psauxit.com${RESET}"
+}
+
+usage() {
+	echo "$(tput setaf 6)usage: openblas [--cblas]$(tput sgr0)"
+	echo "  --openblas		*-default      -->  *-OpenBLAS"
+	echo "  --blas  		blas-default   -->  OpenBLAS"
+	echo "  --lapack 		lapack-default -->  OpenBLAS"
+	echo "  --cblas  		cblas-default  -->  OpenBLAS"
+	echo "  --default		*-OpenBLAS     -->  *-default"
+	echo "  --blas-default  	OpenBLAS       -->  blas-default"
+	echo "  --lapack-default 	OpenBLAS       -->  lapack-default"
+	echo "  --cblas-default 	OpenBLAS       -->  cblas-default"
+	echo "  --status 		show status"
+	echo "  --version 		display version"
+	echo "  --help  		display help"
+}
+
+while true; do
+  case "$@" in
+    --openblas )
+		check_openblas_features
+		check_openblas --silent
+		find_targets
+		check_reference --silent
+		blas_default_to_openblas
+		lapack_default_to_openblas
+		cblas_default_to_openblas
+		exit
+		;;
+    --blas )
+		check_openblas_features
+		check_openblas --silent
+		find_targets
+		check_reference --silent
+		blas_default_to_openblas
+		exit
+		;;
+    --lapack )
+		check_openblas_features
+		check_openblas --silent
+		find_targets
+		check_reference --silent
+		lapack_default_to_openblas
+		exit
+		;;
+    --cblas )
+		check_openblas_features
+		check_openblas --silent
+		find_targets
+		check_reference --silent
+		cblas_default_to_openblas
+		exit
+		;;
+    --default )
+		check_openblas_features
+		check_openblas --silent
+		find_targets
+		check_reference --silent
+		openblas_to_blas_default
+		openblas_to_lapack_default
+		openblas_to_cblas_default
+		exit
+		;;
+    --blas-default )
+		check_openblas_features
+		check_openblas --silent
+		find_targets
+		check_reference --silent
+		openblas_to_blas_default
+		exit
+		;;
+    --lapack-default )
+		check_openblas_features
+		check_openblas --silent
+		find_targets
+		check_reference --silent
+		openblas_to_lapack_default
+		exit
+		;;
+    --cblas-default )
+		check_openblas_features
+		check_openblas --silent
+		find_targets
+		check_reference --silent
+		openblas_to_cblas_default
+		exit
+		;;
+    --status )
+		echo -e "${B_CYAN}-----------------------------SYSTEM INFO-------------------------------${RESET}"
+		echo
+		check_reference
+		check_openblas_features
+		check_openblas
+		find_targets
+		echo
+		echo -e "${B_CYAN}----------------------------SYSTEM STATUS------------------------------${RESET}"
+		echo
+		status
+		echo
+		echo -e "${B_CYAN}---------------------------------END-----------------------------------${RESET}"
+		exit
+		;;
+    --help    ) usage
+		exit
+		;;
+    --version ) version
+		exit
+		;;
+    *         ) usage
+		exit
+		;;
+  esac
+  shift
+done
