@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -74,6 +74,7 @@ pkg_setup() {
 
 src_compile() {
 	local -a args=(
+		V=1
 		TARGET=linux2628
 		USE_GETADDRINFO=1
 		USE_TFO=1
@@ -102,8 +103,9 @@ src_compile() {
 
 	if use tools ; then
 		for contrib in ${CONTRIBS[@]} ; do
+			# Those two includes are a workaround for hpack Makefile missing those
 			emake -C contrib/${contrib} \
-				CFLAGS="${CFLAGS}" OPTIMIZE="${CFLAGS}" LDFLAGS="${LDFLAGS}" CC=$(tc-getCC) ${args[@]}
+				CFLAGS="${CFLAGS} -I../../include/ -I../../ebtree/" OPTIMIZE="${CFLAGS}" LDFLAGS="${LDFLAGS}" CC=$(tc-getCC) ${args[@]}
 		done
 	fi
 }
