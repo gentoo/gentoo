@@ -33,5 +33,5 @@ python_prepare_all() {
 
 python_test() {
 	distutils_install_for_testing
-	py.test -v || die "Tests failed under ${EPYTHON}"
+	py.test -v -p no:flaky || die "Tests failed under ${EPYTHON}"
 }
