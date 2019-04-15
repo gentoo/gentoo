@@ -238,6 +238,7 @@ src_install() {
 	mv "${ED}/usr/bin/rustc" "${ED}/usr/bin/rustc-${PV}" || die
 	mv "${ED}/usr/bin/rustdoc" "${ED}/usr/bin/rustdoc-${PV}" || die
 	mv "${ED}/usr/bin/rust-gdb" "${ED}/usr/bin/rust-gdb-${PV}" || die
+	mv "${ED}/usr/bin/rust-gdbgui" "${ED}/usr/bin/rust-gdbgui-${PV}" || die
 	mv "${ED}/usr/bin/rust-lldb" "${ED}/usr/bin/rust-lldb-${PV}" || die
 	mv "${ED}/usr/bin/cargo" "${ED}/usr/bin/cargo-${PV}" || die
 	if use clippy; then
@@ -280,6 +281,7 @@ src_install() {
 	cat <<-EOF > "${T}/provider-${P}"
 		/usr/bin/rustdoc
 		/usr/bin/rust-gdb
+		/usr/bin/rust-gdbgui
 		/usr/bin/rust-lldb
 	EOF
 	echo /usr/bin/cargo >> "${T}/provider-${P}"
