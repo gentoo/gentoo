@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python{2_7,3_{4,5,6}} )
+PYTHON_COMPAT=( python{2_7,3_{5,6}} )
 DISTUTILS_OPTIONAL=1
 
 inherit check-reqs cmake-utils distutils-r1 flag-o-matic multiprocessing \
@@ -140,6 +140,9 @@ PATCHES=(
 	"${FILESDIR}/ceph-12.2.12-qa-warning.patch"
 	"${FILESDIR}/ceph-12.2.12-ncurses-tinfo.patch"
 )
+
+# dpdk and ninja don't get along
+CMAKE_MAKEFILE_GENERATOR="emake"
 
 check-reqs_export_vars() {
 	if use amd64; then
