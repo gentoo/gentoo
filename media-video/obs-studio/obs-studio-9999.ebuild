@@ -37,6 +37,7 @@ DEPEND="
 	dev-qt/qtnetwork:5
 	dev-qt/qtquickcontrols:5
 	dev-qt/qtsql:5
+	dev-qt/qtsvg:5
 	dev-qt/qttest:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtx11extras:5
