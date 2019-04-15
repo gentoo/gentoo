@@ -141,9 +141,6 @@ PATCHES=(
 	"${FILESDIR}/ceph-12.2.12-ncurses-tinfo.patch"
 )
 
-# dpdk and ninja don't get along
-CMAKE_MAKEFILE_GENERATOR="emake"
-
 check-reqs_export_vars() {
 	if use amd64; then
 		CHECKREQS_DISK_BUILD="12G"
