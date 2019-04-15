@@ -10079,7 +10079,7 @@ sys-cluster/keepalived 2.0.10-r1: A strong & robust keepalive facility to the Li
 sys-cluster/kubectl 1.9.11: CLI to run commands against Kubernetes clusters
 sys-cluster/libqb 0.17.1 0.17.2: Library providing high performance logging, tracing, ipc, and poll
 sys-cluster/mpe2 1.0.6_p1-r2: MPI development tools
-sys-cluster/mpich 3.0.4 3.2-r1: A high performance and portable MPI implementation
+sys-cluster/mpich 3.0.4: A high performance and portable MPI implementation
 sys-cluster/mpich2 1.5: A high performance and portable MPI implementation
 sys-cluster/neutron 13.0.2-r1: A virtual network service for Openstack
 sys-cluster/nova 18.1.0: Cloud computing fabric controller (main part of an IaaS system) in Python
