@@ -64,16 +64,19 @@ src_install() {
 	local rustc=rustc-bin-${PV}
 	local rustdoc=rustdoc-bin-${PV}
 	local rustgdb=rust-gdb-bin-${PV}
+	local rustgdbgui=rust-gdbgui-bin-${PV}
 	local rustlldb=rust-lldb-bin-${PV}
 
 	mv "${D}/opt/${P}/bin/rustc" "${D}/opt/${P}/bin/${rustc}" || die
 	mv "${D}/opt/${P}/bin/rustdoc" "${D}/opt/${P}/bin/${rustdoc}" || die
 	mv "${D}/opt/${P}/bin/rust-gdb" "${D}/opt/${P}/bin/${rustgdb}" || die
+	mv "${D}/opt/${P}/bin/rust-gdbgui" "${D}/opt/${P}/bin/${rustgdbgui}" || die
 	mv "${D}/opt/${P}/bin/rust-lldb" "${D}/opt/${P}/bin/${rustlldb}" || die
 
 	dosym "../../opt/${P}/bin/${rustc}" "/usr/bin/${rustc}"
 	dosym "../../opt/${P}/bin/${rustdoc}" "/usr/bin/${rustdoc}"
 	dosym "../../opt/${P}/bin/${rustgdb}" "/usr/bin/${rustgdb}"
+	dosym "../../opt/${P}/bin/${rustgdbgui}" "/usr/bin/${rustgdbgui}"
 	dosym "../../opt/${P}/bin/${rustlldb}" "/usr/bin/${rustlldb}"
 
 	local cargo=cargo-bin-${PV}
@@ -116,6 +119,7 @@ src_install() {
 	cat <<-EOF > "${T}/provider-${P}"
 	/usr/bin/rustdoc
 	/usr/bin/rust-gdb
+	/usr/bin/rust-gdbgui
 	/usr/bin/rust-lldb
 	EOF
 	echo /usr/bin/cargo >> "${T}/provider-${P}"
