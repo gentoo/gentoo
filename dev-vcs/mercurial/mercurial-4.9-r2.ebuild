@@ -15,7 +15,7 @@ SRC_URI="https://www.mercurial-scm.org/release/${P}.tar.gz"
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="alpha amd64 arm ~arm64 hppa ~ia64 ~mips ~ppc ppc64 sparc ~x86 ~ppc-aix ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="bugzilla emacs gpg test tk"
+IUSE="+chg bugzilla emacs gpg test tk"
 
 RDEPEND="app-misc/ca-certificates
 	dev-python/zstandard[${PYTHON_USEDEP}]
@@ -58,7 +58,9 @@ python_configure_all() {
 
 python_compile_all() {
 	rm -r contrib/win32 || die
-	emake -C contrib/chg
+	if use chg; then
+		emake -C contrib/chg
+	fi
 	if use emacs; then
 		cd contrib || die
 		elisp-compile mercurial.el || die "elisp-compile failed!"
@@ -86,10 +88,14 @@ python_install_all() {
 		elisp-site-file-install "${FILESDIR}"/${SITEFILE}
 	fi
 
-	dobin contrib/chg/chg
-	doman contrib/chg/chg.1
+	local RM_CONTRIB=( hgk hg-ssh bash_completion zsh_completion wix plan9 *.el )
 
-	local RM_CONTRIB=( chg hgk hg-ssh bash_completion zsh_completion wix plan9 *.el )
+	if use chg; then
+		dobin contrib/chg/chg
+		doman contrib/chg/chg.1
+		RM_CONTRIB+=( chg )
+	fi
+
 	for f in ${RM_CONTRIB[@]}; do
 		rm -r contrib/${f} || die
 	done
