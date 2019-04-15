@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 FORTRAN_NEEDED=fortran
 FORTRAN_STANDARD="77 90"
 
-inherit fortran-2 multilib-minimal
+inherit fortran-2 multilib-minimal multilib autotools
 
 MY_PV=${PV/_/}
 DESCRIPTION="A high performance and portable MPI implementation"
@@ -15,12 +15,12 @@ SRC_URI="http://www.mpich.org/static/downloads/${PV}/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="mpich2"
-KEYWORDS="amd64 ~arm64 hppa ppc ppc64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~arm64 ~hppa ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="+cxx doc fortran mpi-threads romio threads"
 
 COMMON_DEPEND="
 	>=dev-libs/libaio-0.3.109-r5[${MULTILIB_USEDEP}]
-	<sys-apps/hwloc-2[${MULTILIB_USEDEP}]
+	>=sys-apps/hwloc-2.0.2[${MULTILIB_USEDEP}]
 	romio? ( net-fs/nfs-utils )"
 
 DEPEND="${COMMON_DEPEND}
@@ -40,6 +40,10 @@ MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/opa_config.h
 )
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.3-add-external-libdir-parameter.patch
+)
+
 src_prepare() {
 	default
 
@@ -48,6 +52,20 @@ src_prepare() {
 		src/packaging/pkgconfig/mpich.pc.in \
 		src/env/*.in \
 		|| die
+
+	# Fix m4 files to satisfy lib dir with multilib.
+	touch -r src/pm/hydra/confdb/aclocal_libs.m4 \
+		confdb/aclocal_libs.m4 \
+		|| die
+	cp -fp confdb/aclocal_libs.m4 \
+		src/pm/hydra/confdb/aclocal_libs.m4 \
+		|| die
+	cp -fp confdb/aclocal_libs.m4 \
+		src/pm/hydra/mpl/confdb/aclocal_libs.m4 \
+		|| die
+	cd src/pm/hydra/mpl; eautoreconf; cd -
+	cd src/pm/hydra; eautoreconf; cd -
+	eautoreconf
 }
 
 multilib_src_configure() {
@@ -84,13 +102,18 @@ multilib_src_configure() {
 	ECONF_SOURCE=${S} econf \
 		--enable-shared \
 		--with-hwloc-prefix="${EPREFIX}/usr" \
+		--with-hwloc-libdir="$(get_libdir)" \
+		--with-common-libdir="$(get_libdir)" \
+		--with-prefix-libdir="$(get_libdir)" \
+		--with-izem-libdir="$(get_libdir)" \
+		--with-fiprovider-libdir="$(get_libdir)" \
 		${c} \
 		--with-pm=hydra \
 		--disable-fast \
 		--enable-versioning \
 		$(use_enable romio) \
 		$(use_enable cxx) \
-		$(multilib_native_use_enable fortran fortran all)
+		$(use_enable fortran fortran all)
 }
 
 multilib_src_test() {
