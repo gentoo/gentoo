@@ -51,7 +51,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.48.0-disable_icu_rpath.patch
 	"${FILESDIR}"/${PN}-1.69.0-context-x32.patch
 	"${FILESDIR}"/${PN}-1.56.0-build-auto_index-tool.patch
-	"${FILESDIR}"/${PN}-1.70.0-fix-python-cmake-duplicate-target.patch
 )
 
 python_bindings_needed() {
@@ -174,6 +173,10 @@ src_configure() {
 		--boost-build="${EPREFIX}"/usr/share/boost-build
 		--prefix="${ED}/usr"
 		--layout=system
+		# CMake has issues working with multiple python impls,
+		# disable cmake config generation for the time being
+		# https://github.com/boostorg/python/issues/262#issuecomment-483069294
+		--no-cmake-config
 		# building with threading=single is currently not possible
 		# https://svn.boost.org/trac/boost/ticket/7105
 		threading=multi
