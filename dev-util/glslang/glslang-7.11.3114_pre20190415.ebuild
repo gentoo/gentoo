@@ -5,7 +5,7 @@ EAPI=6
 
 inherit cmake-multilib cmake-utils vcs-snapshot
 
-SNAPSHOT_COMMIT="7.11.3113"
+SNAPSHOT_COMMIT="0527c9db8148ce37442fa4a9c99a2a23ad50b0b7"
 SRC_URI="https://github.com/KhronosGroup/${PN}/archive/${SNAPSHOT_COMMIT}.tar.gz -> ${P}.tar.gz"
 KEYWORDS="~amd64 ~x86"
 
