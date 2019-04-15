@@ -9,8 +9,8 @@ if [[ "${PV}" == "9999" ]]; then
 	EGIT_SUBMODULES=()
 	inherit git-r3
 else
-	EGIT_COMMIT="89bbac497742d48c3d483f78b1bba99101784746"
-	KEYWORDS="~amd64"
+	EGIT_COMMIT="21638dfbe1f15091659a722a805c9020e87ddf49"
+	KEYWORDS="~amd64 ~x86"
 	SRC_URI="https://github.com/KhronosGroup/Vulkan-ValidationLayers/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/Vulkan-ValidationLayers-${EGIT_COMMIT}"
 fi
