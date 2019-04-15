@@ -4,7 +4,7 @@
 EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
-USE_RUBY="ruby26 ruby25 ruby24 ruby23"
+USE_RUBY="ruby26 ruby25 ruby24"
 DISTUTILS_OPTIONAL=1
 WANT_AUTOMAKE="none"
 GENTOO_DEPEND_ON_PERL="no"
@@ -21,7 +21,7 @@ S="${WORKDIR}/${MY_P}"
 LICENSE="Subversion GPL-2"
 SLOT="0"
 [[ "${PV}" = *_rc* ]] || \
-KEYWORDS="~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="apache2 berkdb ctypes-python debug doc +dso extras gnome-keyring +http java kwallet nls perl python ruby sasl test vim-syntax"
 
 COMMON_DEPEND="
