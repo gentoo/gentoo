@@ -3,7 +3,7 @@
 
 # Lars Wendler <polynomial-c@gentoo.org> (15 Apr 2019)
 # dev-vcs/subversion lacks amd64-fbsd keyword
-app-portage/layman subversion
+app-portage/layman subversion test
 dev-vcs/git subversion
 
 # David Seifert <soap@gentoo.org> (15 Apr 2019)
