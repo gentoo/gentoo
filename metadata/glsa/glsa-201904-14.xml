@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201904-14">
+  <title>GnuTLS: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in GnuTLS, the worst of
+    which could result in a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">gnutls</product>
+  <announced>2019-04-15</announced>
+  <revised count="1">2019-04-15</revised>
+  <bug>681846</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-libs/gnutls" auto="yes" arch="*">
+      <unaffected range="ge">3.6.7</unaffected>
+      <vulnerable range="lt">3.6.7</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>GnuTLS is a secure communications library implementing the SSL, TLS and
+      DTLS protocols and technologies around them.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in GnuTLS. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Please review the CVE identifiers referenced below for details.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All GnuTLS users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-libs/gnutls-3.6.7"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-3829">CVE-2019-3829</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-3836">CVE-2019-3836</uri>
+  </references>
+  <metadata tag="requester" timestamp="2019-04-02T06:51:08Z">BlueKnight</metadata>
+  <metadata tag="submitter" timestamp="2019-04-15T20:45:09Z">b-man</metadata>
+</glsa>
