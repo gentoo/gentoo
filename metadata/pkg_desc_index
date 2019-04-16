@@ -943,7 +943,7 @@ app-laptop/tpb 0.6.4-r1: IBM ThinkPad buttons utility
 app-leechcraft/liblaretz 0.1.0: Shared library to be used by the Laretz sync server and its clients
 app-metrics/collectd 5.8.0-r1 5.8.1: Collects system statistics and provides mechanisms to store the values
 app-metrics/node_exporter 0.16.0: Prometheus exporter for machine metrics
-app-metrics/prometheus 2.6.1: Prometheus monitoring system and time series database
+app-metrics/prometheus 2.6.1 2.8.1: Prometheus monitoring system and time series database
 app-misc/abook 0.6.1: Abook is a text-based addressbook program designed to use with mutt mail client
 app-misc/actkbd 0.2.8-r2: A keyboard shortcut daemon
 app-misc/asciinema 2.0.2: Command line recorder for asciinema.org service
@@ -5275,7 +5275,7 @@ dev-python/priority 1.3.0: A pure-Python implementation of the HTTP/2 priority t
 dev-python/process-tests 1.2.0: Tools for testing processes
 dev-python/progress 1.2: Easy to use progress bars
 dev-python/progressbar 2.3-r3: Text progressbar library for python
-dev-python/prometheus_client 0.5.0: Python client for the Prometheus monitoring system
+dev-python/prometheus_client 0.5.0 0.6.0: Python client for the Prometheus monitoring system
 dev-python/prompt_toolkit 1.0.15: Building powerful interactive command lines in Python
 dev-python/protobuf-python 3.5.1.1 3.5.2-r1 3.6.1 3.6.1.3: Google's Protocol Buffers - Python bindings
 dev-python/psutil 5.4.1 5.4.3 5.5.0: Retrieve information on running processes and system utilization
@@ -6383,7 +6383,7 @@ dev-util/pkgconf 1.3.7 1.5.4: pkg-config compatible replacement with no dependen
 dev-util/pkgconfig 0.28-r2 0.29.2: Package config system that manages compile/link flags
 dev-util/pmd 4.2.5: A Java source code analyzer
 dev-util/premake 3.7 4.3-r1: A makefile generation tool
-dev-util/promu 0.2.0: Prometheus Utility Tool
+dev-util/promu 0.2.0 0.3.0: Prometheus Utility Tool
 dev-util/pscan 20000721-r1: A limited problem scanner for C source files
 dev-util/pycharm-community 2018.3.4: Intelligent Python IDE with unique code assistance and analysis
 dev-util/pycharm-professional 2018.3.4: Intelligent Python IDE with unique code assistance and analysis
