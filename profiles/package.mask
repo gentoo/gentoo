@@ -638,14 +638,6 @@ dev-vcs/git-bzr-ng
 # Removal in 30 days.  Bug #434158.
 x11-misc/xwinwrap
 
-# Michał Górny <mgorny@gentoo.org> (17 Mar 2019)
-# Unmaintained, the previous maintainer last touched it in ~2013
-# and others have bumped it since (last in 2017).  The current version
-# fails tests, is outdated and really needs a bump.  net-misc/youtube-dl
-# is a suitable (and more frequently updated) replacement.
-# Removal in 30 days.  Bug #407381.
-media-video/get_flash_videos
-
 # Matt Turner <mattst88@gentoo.org> (16 Mar 2019)
 # Previously packaged drivers, now removed from Gentoo.
 # Keep this mask in place so users are aware, but can also easily unmask them
