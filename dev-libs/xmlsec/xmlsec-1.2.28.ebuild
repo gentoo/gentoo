@@ -11,18 +11,18 @@ SRC_URI="https://www.aleksey.com/xmlsec/download/${PN}1-${PV}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ppc ~ppc64 ~sparc x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="doc gcrypt gnutls libressl nss +openssl static-libs test"
 REQUIRED_USE="|| ( gcrypt gnutls nss openssl )
 	gnutls? ( gcrypt )"
 
-RDEPEND=">=dev-libs/libxml2-2.7.4
-	>=dev-libs/libxslt-1.0.20
-	gcrypt? ( >=dev-libs/libgcrypt-1.4.0:0 )
-	gnutls? ( >=net-libs/gnutls-2.8.0 )
+RDEPEND=">=dev-libs/libxml2-2.7.4:=
+	>=dev-libs/libxslt-1.0.20:=
+	gcrypt? ( >=dev-libs/libgcrypt-1.4.0:0= )
+	gnutls? ( >=net-libs/gnutls-2.8.0:= )
 	nss? (
-		>=dev-libs/nspr-4.4.1
-		>=dev-libs/nss-3.9
+		>=dev-libs/nspr-4.4.1:=
+		>=dev-libs/nss-3.9:=
 	)
 	openssl? (
 		!libressl? ( dev-libs/openssl:0= )
@@ -38,6 +38,10 @@ BDEPEND="virtual/pkgconfig
 
 S="${WORKDIR}/${PN}1-${PV}"
 
+PATCHES=(
+	"${FILESDIR}/${P}-test.patch"
+)
+
 src_prepare() {
 	default
 	# conditionally install extra documentation
@@ -52,11 +56,11 @@ src_configure() {
 		--enable-pkgconfig \
 		--with-html-dir=/usr/share/doc/${PF}/html \
 		$(use_enable static-libs static) \
-		$(use_with gcrypt gcrypt "") \
-		$(use_with gnutls gnutls "") \
-		$(use_with nss nspr "") \
-		$(use_with nss nss "") \
-		$(use_with openssl openssl "") \
+		$(use_with gcrypt) \
+		$(use_with gnutls) \
+		$(use_with nss) \
+		$(use_with nss nspr) \
+		$(use_with openssl) \
 		$(use_enable openssl aes)
 }
 

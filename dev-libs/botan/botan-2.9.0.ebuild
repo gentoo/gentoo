@@ -34,6 +34,10 @@ RDEPEND="${DEPEND}
 BDEPEND="dev-lang/python:*
 	doc? ( dev-python/sphinx )"
 
+PATCHES=(
+	"${FILESDIR}/${P}-build.patch"
+)
+
 src_configure() {
 	local disable_modules=()
 	use boost || disable_modules+=( "boost" )
