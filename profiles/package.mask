@@ -604,62 +604,6 @@ dev-util/synopsis
 # Masked for testing
 =mail-client/geary-3.32.0-r1
 
-# Michał Górny <mgorny@gentoo.org> (17 Mar 2019)
-# The current Gentoo version has been added in 2015 and has not been
-# bumped since.  It fails to build with new versions of gperf (#609272)
-# and ffmpeg (#671256).  No maintainer.
-# Removal in 30 days.  Bug #680800.
-media-sound/forked-daapd
-
-# Michał Górny <mgorny@gentoo.org> (17 Mar 2019)
-# Unmaintained.  Last bump in 2016, leaving Gentoo a few releases
-# behind.  The current version fails to build, with two different
-# issues (#610966, #651278).
-# Removal in 30 days.  Bug #610966.
-net-analyzer/netsniff-ng
-
-# Michał Górny <mgorny@gentoo.org> (17 Mar 2019)
-# bzr-fastimport: Unmaintained.  Does not work with current Gentoo
-# versions of dev-python/python-fastimport.  No upstream release since
-# 2012.
-#
-# git-bzr-ng: Unmaintained.  Reverse depedency of bzr-fastimport.
-# Gentoo carries a 2012 snapshot, upstream did not touch the code
-# since 2013.
-#
-# Removal in 30 days.  Bug #591446.
-dev-vcs/bzr-fastimport
-dev-vcs/git-bzr-ng
-
-# Michał Górny <mgorny@gentoo.org> (17 Mar 2019)
-# Added in 2012, started to fail at digest verification shortly
-# afterwards and not mirrored by Gentoo.  Not touched by maintainer
-# since.
-# Removal in 30 days.  Bug #434158.
-x11-misc/xwinwrap
-
-# Michał Górny <mgorny@gentoo.org> (17 Mar 2019)
-# Unmaintained, the previous maintainer last touched it in ~2013
-# and others have bumped it since (last in 2017).  The current version
-# fails tests, is outdated and really needs a bump.  net-misc/youtube-dl
-# is a suitable (and more frequently updated) replacement.
-# Removal in 30 days.  Bug #407381.
-media-video/get_flash_videos
-
-# Michał Górny <mgorny@gentoo.org> (16 Mar 2019)
-# The current Gentoo version has been added in 2011, and a bump is
-# pending since at least 2012.  Last touched upstream in 2015.
-# A library with no reverse dependencies.
-# Removal in 30 days.  Bug #404299.
-media-libs/rply
-
-# Michał Górny <mgorny@gentoo.org> (16 Mar 2019)
-# Added in 2004 and not updated since (even though upstream made new
-# releases).  Never had a dedicated maintainer.  Fails to build
-# with parallel make.
-# Removal in 30 days.  Bug #314667.
-net-nntp/xrn
-
 # Matt Turner <mattst88@gentoo.org> (16 Mar 2019)
 # Previously packaged drivers, now removed from Gentoo.
 # Keep this mask in place so users are aware, but can also easily unmask them
