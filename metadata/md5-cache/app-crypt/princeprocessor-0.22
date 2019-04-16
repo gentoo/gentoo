@@ -1,0 +1,9 @@
+DEFINED_PHASES=install prepare
+DESCRIPTION=Standalone password candidate generator using the PRINCE algorithm
+EAPI=7
+HOMEPAGE=https://github.com/hashcat/princeprocessor
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+SLOT=0
+SRC_URI=https://github.com/hashcat/princeprocessor/archive/v0.22.tar.gz
+_md5_=939ee13eeef993c3865fa806e22755ab
