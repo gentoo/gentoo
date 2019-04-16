@@ -448,6 +448,7 @@ sys-boot/systemrescuecd-x86-grub
 >=dev-libs/boost-1.70.0
 >=dev-util/boost-build-1.70.0
 >=net-mail/libpst-0.6.66-r2
+>=net-proxy/trojan-1.12.2
 
 # Robin H. Johnson <robbat2@gentoo.org> (25 Mar 2019)
 # Requires >=dev-lang/lua-5.3 which is masked
