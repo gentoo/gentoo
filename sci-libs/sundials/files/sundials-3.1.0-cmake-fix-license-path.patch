@@ -1,0 +1,11 @@
+diff -ru sundials-3.1.0.orig/CMakeLists.txt sundials-3.1.0/CMakeLists.txt
+--- sundials-3.1.0.orig/CMakeLists.txt	2017-11-07 23:47:45.000000000 -0000
++++ sundials-3.1.0/CMakeLists.txt	2019-04-15 13:50:11.264144132 -0000
+@@ -1620,4 +1620,5 @@
+ # install license file
+ INSTALL(
+   FILES ${PROJECT_SOURCE_DIR}/LICENSE
+-  DESTINATION .)
+\ No newline at end of file
++  DESTINATION include/sundials
++  )

@@ -27,7 +27,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
-PATCHES=( )
+PATCHES=( "${FILESDIR}"/${P}-cmake-fix-license-path.patch )
 
 pkg_setup() {
 	if [[ ${MERGE_TYPE} != binary ]] && use openmp && [[ $(tc-getCC) == *gcc ]] && ! tc-has-openmp; then
