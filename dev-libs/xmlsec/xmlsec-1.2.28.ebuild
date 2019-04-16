@@ -42,26 +42,17 @@ PATCHES=(
 	"${FILESDIR}/${P}-test.patch"
 )
 
-src_prepare() {
-	default
-	# conditionally install extra documentation
-	if ! use doc ; then
-		sed -i '/^SUBDIRS/s/docs//' Makefile.am || die
-		eautoreconf
-	fi
-}
-
 src_configure() {
 	econf \
-		--enable-pkgconfig \
-		--with-html-dir=/usr/share/doc/${PF}/html \
+		$(use_enable doc docs) \
 		$(use_enable static-libs static) \
 		$(use_with gcrypt) \
 		$(use_with gnutls) \
-		$(use_with nss) \
 		$(use_with nss nspr) \
+		$(use_with nss) \
 		$(use_with openssl) \
-		$(use_enable openssl aes)
+		--enable-mans \
+		--enable-pkgconfig
 }
 
 src_test() {
