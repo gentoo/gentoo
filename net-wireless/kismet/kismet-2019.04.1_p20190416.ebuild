@@ -16,7 +16,12 @@ else
 	MY_P=${MY_P/_beta/-BETA}
 	MY_P=${MY_P/./-R}
 	S=${WORKDIR}/${MY_P/BETA/beta}
-	SRC_URI="https://www.kismetwireless.net/code/${MY_P}.tar.xz"
+	#normally we want an official release
+	#SRC_URI="https://www.kismetwireless.net/code/${MY_P}.tar.xz"
+	#but sometimes we want a git commit
+	COMMIT="6d6d486831c0f7ac712ffb8a3ff122c5063c3b2a"
+	SRC_URI="https://github.com/kismetwireless/kismet/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
+	S="${WORKDIR}/${PN}-${COMMIT}"
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86"
 fi
 
@@ -64,8 +69,11 @@ src_prepare() {
 	sed -i -e 's| -s||g' \
 		-e 's|@mangrp@|root|g' Makefile.in
 
-	eapply "${FILESDIR}"/fix-setuptools4.patch
 	eapply_user
+
+	#just use set to fix setup.py
+	find . -name "Makefile.in" -exec sed -i 's#setup.py install#setup.py install --root=$(DESTDIR)#' {} + || die
+	find . -name "Makefile" -exec sed -i 's#setup.py install#setup.py install --root=$(DESTDIR)#' {} + || die
 
 	if [ "${PV}" = "9999" ]; then
 		eautoreconf
@@ -86,7 +94,7 @@ src_install() {
 	emake DESTDIR="${D}" forceconfigs
 
 	insinto /usr/share/${PN}
-	doins -r log_tools
+	doins Makefile.inc
 
 	#dodoc CHANGELOG RELEASENOTES.txt README* docs/DEVEL.client docs/README.newcore
 	dodoc CHANGELOG README*

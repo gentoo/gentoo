@@ -6,14 +6,14 @@ EAPI=7
 inherit desktop eutils
 
 DESCRIPTION="A complete toolset for C and C++ development"
-HOMEPAGE="http://www.jetbrains.com/clion"
-SRC_URI="http://download.jetbrains.com/cpp/CLion-${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://www.jetbrains.com/clion"
+SRC_URI="https://download.jetbrains.com/cpp/CLion-${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="IDEA
 	|| ( IDEA_Academic IDEA_Classroom IDEA_OpenSource IDEA_Personal )"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-RESTRICT="splitdebug"
+RESTRICT="mirror splitdebug"
 IUSE="custom-jdk"
 
 # RDEPENDS may cause false positives in repoman.
@@ -33,14 +33,11 @@ src_prepare() {
 		bin/lldb/linux
 		bin/cmake
 		license/CMake*
-		plugins/tfsIntegration/lib/native/hpux
-		plugins/tfsIntegration/lib/native/solaris
 	)
 
-	use amd64 || remove_me+=( plugins/tfsIntegration/lib/native/linux/x86_64 )
-	use arm || remove_me+=( bin/fsnotifier-arm plugins/tfsIntegration/lib/native/linux/arm )
-	use ppc || remove_me+=( plugins/tfsIntegration/lib/native/linux/ppc )
-	use x86 || remove_me+=( plugins/tfsIntegration/lib/native/linux/x86 )
+	use amd64 || remove_me+=( bin/fsnotifier64 )
+	use arm || remove_me+=( bin/fsnotifier-arm )
+	use x86 || remove_me+=( bin/fsnotifier )
 
 	use custom-jdk || remove_me+=( jre64 )
 
@@ -52,7 +49,17 @@ src_install() {
 
 	insinto "${dir}"
 	doins -r *
-	fperms 755 "${dir}"/bin/{clion.sh,fsnotifier{,64},clang/linux/clang{d,-tidy}}
+	fperms 755 "${dir}"/bin/{clion.sh,clang/linux/clang{d,-tidy}}
+
+	if use amd64; then
+		fperms 755 "${dir}"/bin/fsnotifier64
+	fi
+	if use arm; then
+		fperms 755 "${dir}"/bin/fsnotifier-arm
+	fi
+	if use x86; then
+		fperms 755 "${dir}"/bin/fsnotifier
+	fi
 
 	if use custom-jdk; then
 		if [[ -d jre64 ]]; then
