@@ -653,13 +653,6 @@ media-video/get_flash_videos
 # Removal in 30 days.  Bug #404299.
 media-libs/rply
 
-# Michał Górny <mgorny@gentoo.org> (16 Mar 2019)
-# Added in 2004 and not updated since (even though upstream made new
-# releases).  Never had a dedicated maintainer.  Fails to build
-# with parallel make.
-# Removal in 30 days.  Bug #314667.
-net-nntp/xrn
-
 # Matt Turner <mattst88@gentoo.org> (16 Mar 2019)
 # Previously packaged drivers, now removed from Gentoo.
 # Keep this mask in place so users are aware, but can also easily unmask them
