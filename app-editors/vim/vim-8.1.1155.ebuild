@@ -143,7 +143,7 @@ src_prepare() {
 }
 
 src_configure() {
-	local myconf=()
+	local myconf=( --enable-multibyte )
 
 	# Fix bug 37354: Disallow -funroll-all-loops on amd64
 	# Bug 57859 suggests that we want to do this for all archs
@@ -175,7 +175,6 @@ src_configure() {
 		myconf=(
 			--with-features=tiny
 			--disable-nls
-			--disable-multibyte
 			--disable-acl
 			--enable-gui=no
 			--without-x
@@ -194,7 +193,6 @@ src_configure() {
 
 		myconf=(
 			--with-features=huge
-			--enable-multibyte
 			$(use_enable acl)
 			$(use_enable cscope)
 			$(use_enable gpm)
