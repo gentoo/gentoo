@@ -22,6 +22,7 @@ IUSE="doc test"
 RDEPEND="dev-python/namespace-paste[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
+	dev-python/pytest-runner[${PYTHON_USEDEP}]
 	test? ( dev-python/nose[${PYTHON_USEDEP}] )"
 
 python_test() {
