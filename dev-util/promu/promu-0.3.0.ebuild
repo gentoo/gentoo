@@ -7,7 +7,7 @@ inherit golang-build golang-vcs-snapshot
 EGO_PN="github.com/prometheus/promu"
 EGIT_COMMIT="295a70a7f580b886572861b19545b28accfd4491"
 SRC_URI="https://${EGO_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 DESCRIPTION="Prometheus Utility Tool"
 HOMEPAGE="https://github.com/prometheus/promu"
