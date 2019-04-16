@@ -1,6 +1,12 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Patrick McLean <chutzpah@gentoo.org> (15 Apr 2019)
+# pending re-keyword request, bug 615400
+net-analyzer/rrdtool rados
+sys-fs/multipath-tools rbd
+www-servers/uwsgi uwsgi_plugins_rados
+
 # Aaron Bauman <bman@gentoo.org> (8 Apr 2019)
 # app-text/dblatex not keyword yet
 net-firewall/nftables doc
