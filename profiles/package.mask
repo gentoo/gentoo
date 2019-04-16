@@ -60,6 +60,7 @@ dev-util/cucumber-expressions:5.0
 # Masked for testing, Bug #653878.
 >=dev-libs/boost-1.70.0
 >=dev-util/boost-build-1.70.0
+>=net-mail/libpst-0.6.66-r2
 
 # Patrice Clement <monsieurp@gentoo.org> (14 Apr 2019)
 # Old, unmaintained and sometimes abandoned Java libraries/programs.
