@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{4,5,6,7} )
+PYTHON_COMPAT=( python3_{5,6,7} )
 inherit cmake-utils python-any-r1
 
 DESCRIPTION="An implementation of basic iCAL protocols"
