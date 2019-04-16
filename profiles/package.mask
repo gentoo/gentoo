@@ -631,13 +631,6 @@ net-analyzer/netsniff-ng
 dev-vcs/bzr-fastimport
 dev-vcs/git-bzr-ng
 
-# Michał Górny <mgorny@gentoo.org> (17 Mar 2019)
-# Added in 2012, started to fail at digest verification shortly
-# afterwards and not mirrored by Gentoo.  Not touched by maintainer
-# since.
-# Removal in 30 days.  Bug #434158.
-x11-misc/xwinwrap
-
 # Matt Turner <mattst88@gentoo.org> (16 Mar 2019)
 # Previously packaged drivers, now removed from Gentoo.
 # Keep this mask in place so users are aware, but can also easily unmask them
