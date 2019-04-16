@@ -16,7 +16,7 @@ KEYWORDS="~alpha amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc x86"
 IUSE="debug dii doc python static-libs"
 
 RDEPEND="dii? ( media-gfx/imagemagick:=[png] )
-	python? ( >=dev-libs/boost-1.48:=[python]
+	python? ( <dev-libs/boost-1.70:=[python]
 		${PYTHON_DEPS} )
 	gnome-extra/libgsf:="
 DEPEND="${RDEPEND}
