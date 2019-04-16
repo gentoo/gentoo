@@ -1,8 +1,8 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
-PYTHON_COMPAT=( python2_7 python3_{4,5,6,7} )
+EAPI=6
+PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 
 inherit distutils-r1 eutils linux-info user
 
@@ -11,11 +11,11 @@ HOMEPAGE="https://launchpad.net/heat"
 
 if [[ ${PV} == *9999 ]];then
 	inherit git-r3
-	SRC_URI="https://dev.gentoo.org/~prometheanfire/dist/openstack/heat/heat.conf.sample.stein -> heat.conf.sample-${PV}"
+	SRC_URI="https://dev.gentoo.org/~prometheanfire/dist/openstack/heat/heat.conf.sample.rocky -> heat.conf.sample-${PV}"
 	EGIT_REPO_URI="https://github.com/openstack/heat.git"
-	EGIT_BRANCH="stable/stein"
+	EGIT_BRANCH="stable/rocky"
 else
-	SRC_URI="https://dev.gentoo.org/~prometheanfire/dist/openstack/heat/heat.conf.sample.stein -> heat.conf.sample-${PV}
+	SRC_URI="https://dev.gentoo.org/~prometheanfire/dist/openstack/heat/heat.conf.sample.rocky -> heat.conf.sample-${PV}
 		https://tarballs.openstack.org/${PN}/openstack-${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm64 ~x86"
 fi
@@ -62,8 +62,7 @@ RDEPEND="
 	!~dev-python/oslo-serialization-2.19.1[${PYTHON_USEDEP}]
 	>=dev-python/oslo-service-1.24.0[${PYTHON_USEDEP}]
 	!~dev-python/oslo-service-1.28.1[${PYTHON_USEDEP}]
-	>=dev-python/oslo-upgradecheck-0.1.0[${PYTHON_USEDEP}]
-	>=dev-python/oslo-utils-3.37.0[${PYTHON_USEDEP}]
+	>=dev-python/oslo-utils-3.33.0[${PYTHON_USEDEP}]
 	>=dev-python/osprofiler-1.4.0[${PYTHON_USEDEP}]
 	>=dev-python/oslo-versionedobjects-1.31.2[${PYTHON_USEDEP}]
 	>=dev-python/pastedeploy-1.5.0[${PYTHON_USEDEP}]
@@ -159,5 +158,4 @@ python_install_all() {
 
 	dodir /var/log/heat
 	fowners heat:heat /var/log/heat
-	rm -r "${ED}"/usr/etc
 }
