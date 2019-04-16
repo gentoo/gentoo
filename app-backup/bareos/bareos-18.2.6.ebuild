@@ -20,7 +20,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="X acl cephfs clientonly +director fastlz glusterfs gnutls ipv6 jansson lmdb libressl
 	logwatch mysql ndmp +postgres python rados rados-striper readline scsi-crypto
-	sql-pooling sqlite ssl static +storage-daemon tcpd vim-syntax"
+	sql-pooling sqlite ssl static +storage-daemon systemd tcpd vim-syntax"
 REQUIRED_USE="!clientonly? ( || ( mysql postgres sqlite ) )"
 
 DEPEND="
@@ -152,7 +152,7 @@ src_configure() {
 	fi
 
 	for useflag in acl ipv6 ndmp readline scsi-crypto sql-pooling \
-		fastlz mysql python lmdb glusterfs rados \
+		systemd fastlz mysql python lmdb glusterfs rados \
 		rados-striper cephfs jansson; do
 
 		mycmakeargs+=( -D$useflag=$(usex $useflag) )
@@ -189,7 +189,6 @@ src_configure() {
 		-Dfd-user=root
 		-Dfd-group=bareos
 		-Dsbin-perm=0755
-		-Dsystemd=yes
 		-Ddb_password=`cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 16 | head -n 1`
 		-Ddynamic-cats-backends=yes
 		-Ddynamic-storage-backends=yes
@@ -267,7 +266,9 @@ src_install() {
 
 	rm -vf "${D}"/usr/share/man/man1/bareos-bwxconsole.1*
 	if use clientonly || ! use director; then
-		rm -vf "${D}"/lib/systemd/system/bareos-dir.service
+		if use systemd; then
+			rm -vf "${D}"/lib/systemd/system/bareos-dir.service
+		fi
 		rm -vf "${D}"/usr/share/man/man8/bareos-dir.8*
 		rm -vf "${D}"/usr/share/man/man8/bareos-dbcheck.8*
 		rm -vf "${D}"/usr/share/man/man1/bsmtp.1*
@@ -283,7 +284,9 @@ src_install() {
 		rm -vf "${D}"/usr/libexec/bareos/*_catalog_backup
 	fi
 	if use clientonly || ! use storage-daemon; then
-		rm -vf "${D}"/lib/systemd/system/bareos-sd.service
+		if use systemd; then
+			rm -vf "${D}"/lib/systemd/system/bareos-sd.service
+		fi
 		rm -vf "${D}"/usr/share/man/man8/bareos-sd.8*
 		rm -vf "${D}"/usr/share/man/man8/bcopy.8*
 		rm -vf "${D}"/usr/share/man/man8/bextract.8*
@@ -345,11 +348,13 @@ src_install() {
 	done
 
 	# install systemd unit files
-	if ! use clientonly; then
-		use director && systemd_dounit core/platforms/systemd/bareos-dir.service
-		use storage-daemon && systemd_dounit core/platforms/systemd/bareos-sd.service
+	if use systemd; then
+		if ! use clientonly; then
+			use director && systemd_dounit core/platforms/systemd/bareos-dir.service
+			use storage-daemon && systemd_dounit core/platforms/systemd/bareos-sd.service
+		fi
+		systemd_dounit core/platforms/systemd/bareos-fd.service
 	fi
-	systemd_dounit core/platforms/systemd/bareos-fd.service
 
 	# make sure the working directory exists
 	diropts -m0750
