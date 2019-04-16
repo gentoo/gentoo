@@ -1,6 +1,12 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Patrick McLean <chutzpah@gentoo.org> (15 Apr 2019)
+# pending re-keyword request, bug 615400
+net-analyzer/rrdtool rados
+sys-fs/multipath-tools rbd
+www-servers/uwsgi uwsgi_plugins_rados
+
 # Virgil Dupras <vdupras@gentoo.org> (03 Mar 2019)
 # Tests fail with jpeg2k flag. Bug #662686
 dev-python/pillow jpeg2k
