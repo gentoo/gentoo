@@ -611,13 +611,6 @@ dev-util/synopsis
 # Removal in 30 days.  Bug #680800.
 media-sound/forked-daapd
 
-# Michał Górny <mgorny@gentoo.org> (17 Mar 2019)
-# Unmaintained.  Last bump in 2016, leaving Gentoo a few releases
-# behind.  The current version fails to build, with two different
-# issues (#610966, #651278).
-# Removal in 30 days.  Bug #610966.
-net-analyzer/netsniff-ng
-
 # Matt Turner <mattst88@gentoo.org> (16 Mar 2019)
 # Previously packaged drivers, now removed from Gentoo.
 # Keep this mask in place so users are aware, but can also easily unmask them
