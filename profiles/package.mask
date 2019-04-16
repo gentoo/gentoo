@@ -629,7 +629,6 @@ net-analyzer/netsniff-ng
 #
 # Removal in 30 days.  Bug #591446.
 dev-vcs/bzr-fastimport
-dev-vcs/git-bzr-ng
 
 # Matt Turner <mattst88@gentoo.org> (16 Mar 2019)
 # Previously packaged drivers, now removed from Gentoo.
