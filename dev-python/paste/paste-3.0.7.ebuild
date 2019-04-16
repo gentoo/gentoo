@@ -25,6 +25,7 @@ RDEPEND="dev-python/namespace-paste[${PYTHON_USEDEP}]
 	openid? ( dev-python/python-openid[$(python_gen_usedep 'python2*')] )"
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
+	dev-python/pytest-runner[${PYTHON_USEDEP}]
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )"
 
 S="${WORKDIR}/${MY_P}"
