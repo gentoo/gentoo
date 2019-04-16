@@ -465,22 +465,6 @@
     </member>
   </project>
   <project>
-    <email>cpp@gentoo.org</email>
-    <name>Gentoo C++ Project</name>
-    <url>https://wiki.gentoo.org/wiki/Project:C++</url>
-    <description>Maintaining C++ libraries and tools</description>
-    <member>
-      <email>dev-zero@gentoo.org</email>
-      <name>Tiziano Müller</name>
-      <role>Developer</role>
-    </member>
-    <member is-lead="1">
-      <email>soap@gentoo.org</email>
-      <name>David Seifert</name>
-      <role>Lead</role>
-    </member>
-  </project>
-  <project>
     <email>catalyst@gentoo.org</email>
     <name>Catalyst</name>
     <url>https://wiki.gentoo.org/wiki/Project:Catalyst</url>
