@@ -64,6 +64,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-linguas.patch
 	"${FILESDIR}"/${P}-nomancompress.patch
 	"${FILESDIR}"/${P}-jpeg-9c.patch
+	"${FILESDIR}"/${P}-boost-1.70.patch
 )
 
 src_prepare() {
