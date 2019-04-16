@@ -646,13 +646,6 @@ x11-misc/xwinwrap
 # Removal in 30 days.  Bug #407381.
 media-video/get_flash_videos
 
-# Michał Górny <mgorny@gentoo.org> (16 Mar 2019)
-# The current Gentoo version has been added in 2011, and a bump is
-# pending since at least 2012.  Last touched upstream in 2015.
-# A library with no reverse dependencies.
-# Removal in 30 days.  Bug #404299.
-media-libs/rply
-
 # Matt Turner <mattst88@gentoo.org> (16 Mar 2019)
 # Previously packaged drivers, now removed from Gentoo.
 # Keep this mask in place so users are aware, but can also easily unmask them
