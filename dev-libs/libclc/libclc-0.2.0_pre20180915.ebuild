@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python2_7 python3_4 python3_5 python3_6 )
+PYTHON_COMPAT=( python2_7 python3_5 python3_6 )
 
 EGIT_REPO_URI="https://llvm.org/git/${PN}.git
 	https://github.com/llvm-mirror/${PN}.git"
