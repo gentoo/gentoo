@@ -17,10 +17,10 @@ if [[ $PV == *9999 ]]; then
 	S="${WORKDIR}/${REPO}"
 else
 	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
-	UPSTREAM_VER=0
+	UPSTREAM_VER=1
 	SECURITY_VER=
 	# xen-tools's gentoo patches tarball
-	GENTOO_VER=16
+	GENTOO_VER=17
 	# xen-tools's gentoo patches version which apply to this specific ebuild
 	GENTOO_GPV=0
 	# xen-tools ovmf's patches
@@ -60,13 +60,13 @@ SLOT="0/$(ver_cut 1-2)"
 # Inclusion of IUSE ocaml on stabalizing requires maintainer of ocaml to (get off his hands and) make
 # >=dev-lang/ocaml-4 stable
 # Masked in profiles/eapi-5-files instead
-IUSE="api custom-cflags debug doc flask hvm ocaml ovmf +pam pygrub python +qemu +qemu-traditional screen sdl static-libs system-qemu system-seabios"
+IUSE="api custom-cflags debug doc flask +hvm ocaml ovmf +pam pygrub python +qemu +qemu-traditional screen sdl static-libs system-qemu system-seabios"
 
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
-	pygrub? ( python )
 	ovmf? ( hvm )
-	^^ ( qemu system-qemu )"
+	pygrub? ( python )
+	?? ( qemu system-qemu )"
 
 COMMON_DEPEND="
 	sys-apps/pciutils
@@ -93,10 +93,10 @@ DEPEND="${COMMON_DEPEND}
 		)
 	!amd64? ( >=sys-apps/dtc-1.4.0 )
 	amd64? ( sys-devel/bin86
-		system-seabios? ( sys-firmware/seabios )
-		sys-firmware/ipxe
 		sys-devel/dev86
-		sys-power/iasl )
+		sys-firmware/ipxe[qemu]
+		sys-power/iasl
+		system-seabios? ( sys-firmware/seabios ) )
 	dev-lang/perl
 	app-misc/pax-utils
 	doc? (
@@ -246,7 +246,7 @@ src_prepare() {
 	# Fix texi2html build error with new texi2html, qemu.doc.html
 	sed -i -e "/texi2html -monolithic/s/-number//" tools/qemu-xen-traditional/Makefile || die
 
-	use api   || sed -e "/SUBDIRS-\$(LIBXENAPI_BINDINGS) += libxen/d" -i tools/Makefile || die
+	use api || sed -e "/SUBDIRS-\$(LIBXENAPI_BINDINGS) += libxen/d" -i tools/Makefile || die
 	sed -e 's:$(MAKE) PYTHON=$(PYTHON) subdirs-$@:LC_ALL=C "$(MAKE)" PYTHON=$(PYTHON) subdirs-$@:' \
 		-i tools/firmware/Makefile || die
 
@@ -353,10 +353,10 @@ src_configure() {
 		--disable-xen \
 		--enable-tools \
 		--enable-docs \
-		$(use_enable pam) \
 		$(use_enable api xenapi) \
-		$(use_enable ovmf) \
+		$(use_enable pam) \
 		$(use_enable ocaml ocamltools) \
+		$(use_enable ovmf) \
 		--with-xenstored=$(usex ocaml 'oxenstored' 'xenstored') \
 		"
 
