@@ -14,6 +14,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
+RESTICT="test"
+
 PATCHES=(
 	"${FILESDIR}/${P}-cmake.patch"
 	"${FILESDIR}/${P}-permission.patch"
@@ -30,5 +32,5 @@ src_configure() {
 }
 
 src_test() {
-	"${S}"/bin/unit_tests || die
+	"${BUILD_DIR}"/bin/unit_tests || die
 }
