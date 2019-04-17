@@ -138,7 +138,10 @@ stop() {
 				lvm_commands="${lvm_commands}vgchange --config '${config}' --sysinit -a ln ${VGS}\n"
 				# Order of this is important, have to work around dash and LVM readline
 				printf "%b\n" "${lvm_commands}" | $lvm_path /proc/self/fd/0 --config "${config}" >/dev/null
-			${_ending} $? "Failed (possibly some LVs still needed for /usr or root)"
+			rc=$?
+			msg="Failed (possibly some LVs still needed for /usr or root)"
+			[ "$RC_RUNLEVEL" = shutdown ] && msg="${msg} [rc=$rc]" && rc=0
+			${_ending} $rc "${msg}"
 		fi
 
 		einfo "Finished shutting down the Logical Volume Manager"
