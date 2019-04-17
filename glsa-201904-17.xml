@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201904-17">
+  <title>Patch: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Patch, the worst of
+    which could result in the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">patch</product>
+  <announced>2019-04-17</announced>
+  <revised count="1">2019-04-17</revised>
+  <bug>647792</bug>
+  <bug>647794</bug>
+  <bug>652710</bug>
+  <access>remote</access>
+  <affected>
+    <package name="sys-devel/patch" auto="yes" arch="*">
+      <unaffected range="ge">2.7.6-r3</unaffected>
+      <vulnerable range="lt">2.7.6-r3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Patch takes a patch file containing a difference listing produced by the
+      diff program and applies those differences to one or more original files,
+      producing patched versions.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Patch. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Please review the referenced CVE identifiers for details.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Patch users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-devel/patch-2.7.6-r3"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-1000156">
+      CVE-2018-1000156
+    </uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-6951">CVE-2018-6951</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-6952">CVE-2018-6952</uri>
+  </references>
+  <metadata tag="requester" timestamp="2019-04-11T21:19:29Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2019-04-17T18:28:49Z">b-man</metadata>
+</glsa>
