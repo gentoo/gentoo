@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201904-19">
+  <title>Dovecot: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Dovecot, the worst of
+    which could result in root privilege escalation.
+  </synopsis>
+  <product type="ebuild">dovecot</product>
+  <announced>2019-04-17</announced>
+  <revised count="1">2019-04-17</revised>
+  <bug>677350</bug>
+  <bug>681922</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-mail/dovecot" auto="yes" arch="*">
+      <unaffected range="ge">2.3.5.1</unaffected>
+      <vulnerable range="lt">2.3.5.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Dovecot is an open source IMAP and POP3 email server.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Dovecot. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Please review the referenced CVE identifiers for details</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Dovecot users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-mail/dovecot-2.3.5.1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-3814">CVE-2019-3814</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-7524">CVE-2019-7524</uri>
+  </references>
+  <metadata tag="requester" timestamp="2019-04-02T07:08:40Z">BlueKnight</metadata>
+  <metadata tag="submitter" timestamp="2019-04-17T18:33:06Z">b-man</metadata>
+</glsa>
