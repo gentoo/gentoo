@@ -65,6 +65,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.02.171-static-libm.patch #617756
 	"${FILESDIR}"/${PN}-2.02.166-HPPA-no-O_DIRECT.patch #657446
 	#"${FILESDIR}"/${PN}-2.02.145-mkdev.patch #580062 # Merged upstream
+	"${FILESDIR}"/${PN}-2.02.184-dmeventd-no-idle-exit.patch
 )
 
 pkg_setup() {
@@ -213,7 +214,7 @@ src_install() {
 	newconfd "${FILESDIR}"/device-mapper.conf-1.02.22-r3 device-mapper
 
 	if use !device-mapper-only ; then
-		newinitd "${FILESDIR}"/dmeventd.initd-2.02.67-r1 dmeventd
+		newinitd "${FILESDIR}"/dmeventd.initd-2.02.184-r2 dmeventd
 		newinitd "${FILESDIR}"/lvm.rc-2.02.183 lvm
 		newconfd "${FILESDIR}"/lvm.confd-2.02.28-r2 lvm
 
