@@ -29,6 +29,19 @@
 
 #--- END OF EXAMPLES ---
 
+# Georgy Yakovlev <gyakovlev@gentoo.org> (17 Apr 2019)
+# The Oracle JDK License has changed for releases starting April 16, 2019
+# While it may be fine to use for some usecases it's not comepletely clear
+# what is considered "personal use" and if we can legally distribute it.
+# License states:
+# "You may not:
+# make the Programs available in any manner to any third party"
+#
+# Alternatives: icedtea, icedtea-bin, openjdk, openjdk-bin, openjdk-jre-bin
+# removal in 30 days
+dev-java/oracle-jdk-bin
+dev-java/oracle-jre-bin
+
 # Hans de Graaff <graaff@gentoo.org> (15 Apr 2019)
 # Old, ruby24-only, slots of ruby packages without any reverse
 # dependencies. Use the newer slot version instead.
