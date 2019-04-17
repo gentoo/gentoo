@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
+PYTHON_COMPAT=( python{2_7,3_5,3_6} )
 inherit autotools python-r1 vcs-snapshot xdg-utils
 
 DESCRIPTION="GLib binding for the D-Bus API provided by signond"

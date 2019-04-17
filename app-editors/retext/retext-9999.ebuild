@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 # no pypy{,3} support as PyQt5 does not support it at 2018-11-18
 # https://bitbucket.org/pypy/compatibility/wiki/Home#!gui-library-bindings
-PYTHON_COMPAT=( python3_{4,5,6,7} )
+PYTHON_COMPAT=( python3_{5,6,7} )
 
 inherit distutils-r1 gnome2-utils virtualx xdg-utils
 

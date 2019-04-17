@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
+PYTHON_COMPAT=( python{2_7,3_5,3_6} )
 
 : ${CMAKE_MAKEFILE_GENERATOR:=ninja}
 inherit java-pkg-opt-2 java-ant-2 python-r1 toolchain-funcs cmake-multilib

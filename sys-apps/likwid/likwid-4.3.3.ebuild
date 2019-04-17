@@ -4,7 +4,7 @@
 EAPI=6
 
 FORTRAN_NEEDED=fortran
-#PYTHON_COMPAT=( python3_{4,5,6,7} )
+#PYTHON_COMPAT=( python3_{5,6,7} )
 
 # 4.3.4 will need python-single-r1
 inherit fcaps fortran-2 linux-info toolchain-funcs
