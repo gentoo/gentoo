@@ -1,6 +1,10 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Thomas Deutschmann <whissi@gentoo.org> (18 Apr 2019)
+# app-arch/zstd is not keyworded.
+media-libs/tiff zstd
+
 # Lars Wendler <polynomial-c@gentoo.org> (15 Apr 2019)
 # dev-vcs/subversion lacks amd64-fbsd keyword
 app-portage/layman subversion test
