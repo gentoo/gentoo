@@ -36,11 +36,11 @@
 # License states:
 # "You may not:
 # make the Programs available in any manner to any third party"
-#
+# masking all future versions, removal will follow soon.
 # Alternatives: icedtea, icedtea-bin, openjdk, openjdk-bin, openjdk-jre-bin
-# removal in 30 days
-dev-java/oracle-jdk-bin
-dev-java/oracle-jre-bin
+# Bug: https://bugs.gentoo.org/681828
+>dev-java/oracle-jdk-bin-1.8.0.202:1.8
+>dev-java/oracle-jre-bin-1.8.0.202:1.8
 
 # Hans de Graaff <graaff@gentoo.org> (15 Apr 2019)
 # Old, ruby24-only, slots of ruby packages without any reverse
