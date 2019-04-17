@@ -4,7 +4,7 @@
 EAPI=7
 
 DESCRIPTION="Open Clip Art Library (openclipart.org)"
-HOMEPAGE="http://www.openclipart.org/"
+HOMEPAGE="https://www.openclipart.org/"
 SRC_URI="http://download.openclipart.org/downloads/${PV}/${P}.tar.bz2"
 
 LICENSE="public-domain"
