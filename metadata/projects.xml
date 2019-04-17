@@ -4198,10 +4198,10 @@
     <name>eselect configuration and management tool</name>
     <url>https://wiki.gentoo.org/wiki/Project:Eselect</url>
     <description>eselect is Gentoo's modular framework for configuration and administration utilities.</description>
-    <member is-lead="1">
+    <member>
       <email>ulm@gentoo.org</email>
       <name>Ulrich Müller</name>
-      <role>Lead</role>
+      <role>Member</role>
     </member>
   </project>
 </projects>
