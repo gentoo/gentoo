@@ -65,10 +65,6 @@ postgres
 # dev-lang/tk is not stable here.
 tk
 
-# Mart Raudsepp <leio@gentoo.org> (24 Dec 2017)
-# dev-libs/libressl not marked stable yet
-libressl
-
 # Mart Raudsepp <leio@gentoo.org> (04 Feb 2017)
 # dev-vcs/subversion not marked stable yet
 subversion
