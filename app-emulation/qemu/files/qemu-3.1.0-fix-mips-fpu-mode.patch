@@ -1,0 +1,31 @@
+From c4af335ad921a2218e7ea8a40ed3639291917458 Mon Sep 17 00:00:00 2001
+From: Daniel Santos <daniel.santos@pobox.com>
+Date: Wed, 17 Apr 2019 08:36:41 -0500
+Subject: 1825002 fix mips "Unexpected FPU mode"
+
+Sanitize interp_info and init fp_abi for TARGET_MIPS
+
+Signed-off-by: Daniel Santos <daniel.santos@pobox.com>
+---
+ linux-user/elfload.c | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/linux-user/elfload.c b/linux-user/elfload.c
+index 5bccd2e243..db8bdc34d1 100644
+--- a/linux-user/elfload.c
++++ b/linux-user/elfload.c
+@@ -2648,6 +2648,11 @@ int load_elf_binary(struct linux_binprm *bprm, struct image_info *info)
+     char *elf_interpreter = NULL;
+     char *scratch;
+ 
++    memset(&interp_info, 0, sizeof(interp_info));
++#ifdef TARGET_MIPS
++    interp_info.fp_abi = MIPS_ABI_FP_UNKNOWN;
++#endif
++
+     info->start_mmap = (abi_ulong)ELF_START_MMAP;
+ 
+     load_elf_image(bprm->filename, bprm->fd, info,
+-- 
+2.19.2
+
