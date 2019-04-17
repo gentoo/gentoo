@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201904-18">
+  <title>libseccomp: Privilege escalation</title>
+  <synopsis>A vulnerability in libseccomp allows for privilege escalation.</synopsis>
+  <product type="ebuild">libseccomp</product>
+  <announced>2019-04-17</announced>
+  <revised count="1">2019-04-17</revised>
+  <bug>680442</bug>
+  <access>remote</access>
+  <affected>
+    <package name="sys-libs/libseccomp" auto="yes" arch="*">
+      <unaffected range="ge">2.4.0</unaffected>
+      <vulnerable range="lt">2.4.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>A library that provides an easy to use, platform independent, interface
+      to the Linux Kernel’s syscall filtering mechanism.
+    </p>
+  </background>
+  <description>
+    <p>Please review the CVE identifier referenced below for details.</p>
+  </description>
+  <impact type="normal">
+    <p>Please review the referenced CVE identifier for details.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All libseccomp users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-libs/libseccomp-2.4.0"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-9893">CVE-2019-9893</uri>
+  </references>
+  <metadata tag="requester" timestamp="2019-03-24T13:22:58Z">BlueKnight</metadata>
+  <metadata tag="submitter" timestamp="2019-04-17T18:31:42Z">b-man</metadata>
+</glsa>
