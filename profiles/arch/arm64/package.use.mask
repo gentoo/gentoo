@@ -178,10 +178,6 @@ sys-devel/clang-runtime crt
 # Boost.Context can be built on arm64
 dev-libs/boost -context
 
-# Michał Górny <mgorny@gentoo.org> (12 Mar 2018)
-# Requires masked net-misc/curl with libressl.
-dev-libs/libgit2 libressl
-
 # Michał Górny <mgorny@gentoo.org> (03 Mar 2018)
 # Requires masked dependent flags.
 net-fs/samba addc addns ads cluster python test
@@ -439,8 +435,7 @@ www-client/chromium tcmalloc
 # Mike Frysinger <vapier@gentoo.org> (20 Jul 2015)
 # Mart Raudsepp <leio@gentoo.org> (04 Feb 2017)
 # Needs deps tested.
-dev-python/pycurl curl_ssl_libressl
-net-misc/curl curl_ssl_libressl metalink
+net-misc/curl  metalink
 
 # Mike Frysinger <vapier@gentoo.org> (16 Mar 2015)
 # Needs sci-physics/bullet tested #499974

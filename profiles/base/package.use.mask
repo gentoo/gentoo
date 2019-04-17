@@ -7,6 +7,11 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Georgy Yakovlev <gyakovlev@gentoo.org> (17 Apr 2019)
+# Mask jre useflags for use as system java-vm until it's proven to work
+dev-java/openjdk-jre-bin:8 gentoo-vm
+dev-java/openjdk-jre-bin:11 gentoo-vm
+
 # Michał Górny <mgorny@gentoo.org> (13 Apr 2019)
 # net-libs/ftplib is slated for removal.
 app-cdr/xbiso ftp

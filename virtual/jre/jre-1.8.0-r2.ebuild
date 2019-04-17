@@ -9,6 +9,6 @@ KEYWORDS="~amd64 ~arm ~arm64 ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-m
 
 RDEPEND="|| (
 		virtual/jdk:1.8
-		dev-java/openjdk-jre-bin:8
+		dev-java/openjdk-jre-bin:8[gentoo-vm(+)]
 		dev-java/oracle-jre-bin:1.8
 	)"
