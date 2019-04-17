@@ -53,10 +53,7 @@ COMMON_DEPEND="
 	fuse? ( sys-fs/fuse:0=[static-libs?] )
 	xfs? ( sys-fs/xfsprogs:=[static-libs?] )
 	zfs? ( sys-fs/zfs:=[static-libs?] )
-	ssl? (
-		<dev-libs/openssl-1.1:=[static-libs?]
-		!dev-libs/openssl:1.0.0
-	)
+	ssl? ( <dev-libs/openssl-1.1:0=[static-libs?] )
 	radosgw? (
 		dev-libs/expat:=[static-libs?]
 		<dev-libs/openssl-1.1:=[static-libs?]
