@@ -44,7 +44,6 @@ pcre2-0.2.0
 pcre2-sys-0.2.0
 pkg-config-0.3.14
 proc-macro2-0.4.27
-ripgrep-11.0.0
 quote-0.6.12
 rand-0.6.5
 rand_chacha-0.1.1
@@ -59,10 +58,11 @@ rand_xorshift-0.1.1
 rdrand-0.4.0
 redox_syscall-0.1.54
 redox_termios-0.1.1
-regex-1.1.5
+regex-1.1.6
 regex-automata-0.1.6
 regex-syntax-0.6.6
 remove_dir_all-0.5.1
+ripgrep-11.0.1
 ryu-0.2.7
 same-file-1.0.4
 serde-1.0.90
