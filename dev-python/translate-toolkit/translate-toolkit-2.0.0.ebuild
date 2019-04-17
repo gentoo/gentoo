@@ -5,7 +5,7 @@ EAPI=6
 
 MY_PN="${PN/-toolkit}"
 MY_PV="${PV/_beta/b}"
-PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
+PYTHON_COMPAT=( python2_7 python3_{5,6} )
 PYTHON_REQ_USE="sqlite"
 
 inherit distutils-r1

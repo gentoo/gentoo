@@ -9,7 +9,7 @@ CMAKE_MAKEFILE_GENERATOR=emake
 
 FORTRAN_NEEDED=fortran
 # NOTE:The build for multiple python versions should be possible but complecated for the build system
-PYTHON_COMPAT=( python2_7 python3_{3,4,5,6} )
+PYTHON_COMPAT=( python2_7 python3_{5,6} )
 
 inherit cmake-utils fortran-2 python-single-r1
 

@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_{4,5,6} )
+PYTHON_COMPAT=( python3_{5,6} )
 inherit eapi7-ver perl-module python-r1 toolchain-funcs
 
 MY_PV="$(ver_cut 1-2)"
