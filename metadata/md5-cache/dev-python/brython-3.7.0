@@ -11,4 +11,4 @@ REQUIRED_USE=^^ ( python_single_target_python2_7 python_single_target_python3_5 
 SLOT=3.7.0
 SRC_URI=https://github.com/brython-dev/brython/archive/3.7.0.tar.gz -> brython-3.7.0.tar.gz
 _eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	python-single-r1	3a0fc81f484bfdbd9c2b7448015a36e4	python-utils-r1	08e17157a6807add7db1f8d01e7e391f	toolchain-funcs	b45201c4e6c096b98e250336954e64b9	webapp	16783e418aca3ffa461d68310bf7ab12
-_md5_=23486b0c11f3d167c8910e370cfee367
+_md5_=ae5e2bb35207e64193290e2d9d4ce7ea
