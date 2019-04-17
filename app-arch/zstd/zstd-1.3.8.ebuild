@@ -23,47 +23,33 @@ src_prepare() {
 	multilib_copy_sources
 }
 
-multilib_src_compile() {
-	emake -C lib \
+mymake() {
+	emake \
 		CC="$(tc-getCC)" \
+		CXX="$(tc-getCXX)" \
 		AR="$(tc-getAR)" \
 		PREFIX="${EPREFIX}/usr" \
 		LIBDIR="${EPREFIX}/usr/$(get_libdir)" \
-		libzstd libzstd.a libzstd.pc
+		"${@}"
+}
+
+multilib_src_compile() {
+	mymake -C lib libzstd libzstd.a libzstd.pc
 
 	if multilib_is_native_abi ; then
-		emake \
-			CC="$(tc-getCC)" \
-			AR="$(tc-getAR)" \
-			HAVE_LZ4=$(usex lz4 1 0) \
-			PREFIX="${EPREFIX}/usr" \
-			LIBDIR="${EPREFIX}/usr/$(get_libdir)" zstd
+		mymake zstd
 
-		emake -C contrib/pzstd \
-			CC="$(tc-getCC)" \
-			CXX="$(tc-getCXX)" \
-			AR="$(tc-getAR)" \
-			PREFIX="${EPREFIX}/usr" \
-			LIBDIR="${EPREFIX}/usr/$(get_libdir)"
+		mymake -C contrib/pzstd
 	fi
 }
 
 multilib_src_install() {
-	emake -C lib \
-		DESTDIR="${D}" \
-		PREFIX="${EPREFIX}/usr" \
-		LIBDIR="${EPREFIX}/usr/$(get_libdir)" install
+	mymake -C lib DESTDIR="${D}" install
 
 	if multilib_is_native_abi ; then
-		emake -C programs \
-			DESTDIR="${D}" \
-			PREFIX="${EPREFIX}/usr" \
-			LIBDIR="${EPREFIX}/usr/$(get_libdir)" install
+		mymake -C programs DESTDIR="${D}" install
 
-		emake -C contrib/pzstd \
-			DESTDIR="${D}" \
-			PREFIX="${EPREFIX}/usr" \
-			LIBDIR="${EPREFIX}/usr/$(get_libdir)" install
+		mymake -C contrib/pzstd DESTDIR="${D}" install
 	fi
 }
 

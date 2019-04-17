@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -18,16 +18,18 @@ IUSE="pam static-libs"
 # While the build system optionally uses gperf, we don't DEPEND on it because
 # the build automatically falls back when it's unavailable.  #604802
 RDEPEND=">=sys-apps/attr-2.4.47-r1[${MULTILIB_USEDEP}]
-	pam? ( virtual/pam )"
+	pam? ( virtual/pam[${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}
 	sys-kernel/linux-headers"
 
+# Requires test suite being run as root (via sudo)
+RESTRICT="test"
+
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.25-build-system-fixes.patch
-	"${FILESDIR}"/${PN}-2.22-no-perl.patch
+	"${FILESDIR}"/${PN}-2.26-no-perl.patch
 	"${FILESDIR}"/${PN}-2.25-ignore-RAISE_SETFCAP-install-failures.patch
 	"${FILESDIR}"/${PN}-2.21-include.patch
-	"${FILESDIR}"/${PN}-2.25-gperf.patch
 )
 
 src_prepare() {
@@ -35,13 +37,16 @@ src_prepare() {
 	multilib_copy_sources
 }
 
-multilib_src_configure() {
-	sed -i \
-		-e "/^PAM_CAP/s:=.*:=$(multilib_native_usex pam yes no):" \
-		-e '/^DYNAMIC/s:=.*:=yes:' \
-		-e '/^lib_prefix=/s:=.*:=$(prefix):' \
-		-e "/^lib=/s:=.*:=$(get_libdir):" \
-		Make.Rules
+run_emake() {
+	local args=(
+		exec_prefix="${EPREFIX}"
+		lib_prefix="${EPREFIX}/usr"
+		lib="$(get_libdir)"
+		prefix="${EPREFIX}/usr"
+		PAM_CAP="$(usex pam yes no)"
+		DYNAMIC=yes
+	)
+	emake "${args[@]}" "$@"
 }
 
 multilib_src_compile() {
@@ -49,12 +54,12 @@ multilib_src_compile() {
 	local BUILD_CC
 	tc-export_build_env BUILD_CC
 
-	default
+	run_emake
 }
 
 multilib_src_install() {
 	# no configure, needs explicit install line #444724#c3
-	emake install DESTDIR="${ED}"
+	run_emake DESTDIR="${D}" install
 
 	gen_usr_ldscript -a cap
 	if ! use static-libs ; then
@@ -65,7 +70,7 @@ multilib_src_install() {
 		rm -r "${ED%/}"/usr/$(get_libdir)/security || die
 	fi
 
-	if multilib_is_native_abi && use pam; then
+	if use pam; then
 		dopammod pam_cap/pam_cap.so
 		dopamsecurity '' pam_cap/capability.conf
 	fi
