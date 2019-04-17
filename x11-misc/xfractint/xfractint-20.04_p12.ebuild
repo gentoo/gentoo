@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
@@ -8,8 +8,8 @@ inherit eutils toolchain-funcs
 MY_P=${P/_}
 
 DESCRIPTION="A fractal generator"
-HOMEPAGE="http://www.fractint.org"
-SRC_URI="http://www.fractint.org/ftp/current/linux/${MY_P}.tar.gz"
+HOMEPAGE="https://www.fractint.org"
+SRC_URI="https://www.fractint.org/ftp/old/linux/${MY_P}.tar.gz"
 
 LICENSE="freedist"
 SLOT="0"
