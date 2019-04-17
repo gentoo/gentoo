@@ -3453,7 +3453,7 @@ dev-perl/CDDB_get 2.280.0-r1: Read the CDDB entry for an audio CD in your drive
 dev-perl/CGI 4.220.0 4.360.0 4.400.0: Simple Common Gateway Interface Class
 dev-perl/CGI-Compile 0.220.0: Compile .cgi scripts to a code reference like ModPerl::Registry
 dev-perl/CGI-Emulate-PSGI 0.230.0: PSGI adapter for CGI
-dev-perl/CGI-Fast 2.100.0 2.120.0 2.130.0: CGI Interface for Fast CGI
+dev-perl/CGI-Fast 2.130.0: CGI Interface for Fast CGI
 dev-perl/CGI-FastTemplate 1.90.0-r2: High Performance Templates and Variable Interpolation
 dev-perl/CGI-FormBuilder 3.100.0: Extremely fast, reliable form generation and processing module
 dev-perl/CGI-PSGI 0.150.0-r1: Adapt CGI.pm to the PSGI protocol
