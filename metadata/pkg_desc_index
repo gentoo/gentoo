@@ -8176,7 +8176,7 @@ media-sound/pamix 1.5: A PulseAudio NCurses mixer
 media-sound/paprefs 0.9.11_pre20180621 1.1: PulseAudio Preferences, configuration dialog for PulseAudio
 media-sound/pasystray 0.7.1: PulseAudio system tray
 media-sound/patchage 0.5.0-r1: Modular patch bay for audio and MIDI systems
-media-sound/pavucontrol 3.0: Pulseaudio Volume Control, GTK based mixer for Pulseaudio
+media-sound/pavucontrol 3.0 4.0: Pulseaudio Volume Control, GTK based mixer for Pulseaudio
 media-sound/pavucontrol-qt 0.4.0: A Pulseaudio mixer in Qt (port of pavucontrol)
 media-sound/pavumeter 0.9.3-r1: PulseAudio Volume Meter, simple GTK volume meter for PulseAudio
 media-sound/peercast 0.1218-r2: A client and server for Peercast P2P-radio network
