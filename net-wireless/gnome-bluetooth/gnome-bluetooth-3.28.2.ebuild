@@ -10,7 +10,7 @@ HOMEPAGE="https://wiki.gnome.org/Projects/GnomeBluetooth"
 LICENSE="GPL-2+ LGPL-2.1+ FDL-1.1+"
 SLOT="2/13" # subslot = libgnome-bluetooth soname version
 IUSE="gtk-doc +introspection"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 x86"
 
 COMMON_DEPEND="
 	>=x11-libs/gtk+-3.12:3[introspection?]
