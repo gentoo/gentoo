@@ -8549,7 +8549,7 @@ net-dns/avahi 0.7-r1: System which facilitates service discovery on a local netw
 net-dns/bind 9.12.3_p4: BIND - Berkeley Internet Name Domain - Name Server
 net-dns/bind-tools 9.12.3_p4: bind tools: dig, nslookup, host, nsupdate, dnssec-keygen
 net-dns/c-ares 1.13.0: C library that resolves names asynchronously
-net-dns/ddclient 3.8.1-r5 3.9.0-r1 3.9.0-r2: Perl client used to update dynamic DNS entries
+net-dns/ddclient 3.9.0-r2: Perl client used to update dynamic DNS entries
 net-dns/djbdns 1.05-r32 1.05-r33: Collection of DNS client/server software
 net-dns/dnscrypt-proxy 2.0.19: A flexible DNS proxy, with support for encrypted DNS protocols
 net-dns/dnsmasq 2.79 2.80: Small forwarding DNS server
