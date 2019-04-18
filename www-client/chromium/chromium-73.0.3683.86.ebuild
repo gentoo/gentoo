@@ -149,6 +149,7 @@ PATCHES=(
 	"${FILESDIR}/chromium-73-gcc-4.patch"
 	"${FILESDIR}/chromium-73-gcc-5.patch"
 	"${FILESDIR}/chromium-73-gcc-6.patch"
+	"${FILESDIR}/chromium-73-xdg-current-desktop.patch"
 )
 
 pre_build_checks() {
