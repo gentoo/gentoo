@@ -1,9 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
-
-inherit bash-completion-r1
+EAPI="7"
 
 DESCRIPTION="crosstool-ng is a tool to build cross-compiling toolchains"
 HOMEPAGE="https://crosstool-ng.github.io/"
@@ -16,15 +14,14 @@ KEYWORDS="~amd64 ~x86"
 IUSE="doc"
 
 RDEPEND="net-misc/curl
-	<dev-util/gperf-3.1
+	dev-util/gperf
 	dev-vcs/cvs
 	dev-vcs/subversion"
 
-S="${WORKDIR}/crosstool-ng"
+S="${WORKDIR}/crosstool-ng-${PV}"
 
 src_install() {
 	emake DESTDIR="${D%/}" install
-	newbashcomp ${PN}.comp ${PN}
 	use doc && mv "${D}"/usr/share/doc/crosstool-ng/crosstool-ng-${PVR} \
 		"${D}"/usr/share/doc/
 	rm -rf "${D}"/usr/share/doc/crosstool-ng
