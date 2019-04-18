@@ -1,10 +1,10 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 DIST_AUTHOR=RJBS
-DIST_VERSION=1.300031
+DIST_VERSION=1.300030
 inherit perl-module
 
 DESCRIPTION="A library for sending email"
@@ -24,7 +24,6 @@ RDEPEND="
 	dev-perl/Module-Runtime
 	>=dev-perl/Moo-2.0.0
 	>=dev-perl/MooX-Types-MooseLike-0.150.0
-	dev-perl/Net-SMTP-SSL
 	>=virtual/perl-Scalar-List-Utils-1.450.0
 	dev-perl/Sub-Exporter
 	>=dev-perl/Throwable-0.200.3
