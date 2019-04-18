@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -11,7 +11,7 @@ SRC_URI="https://hal.freedesktop.org/releases/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="alpha amd64 arm ia64 ~mips ppc ppc64 ~sh sparc x86"
-IUSE="debug nls remote-access selinux"
+IUSE="debug +lvm nls remote-access selinux"
 
 COMMON_DEPEND=">=dev-libs/dbus-glib-0.100
 	>=dev-libs/glib-2.30
@@ -20,7 +20,10 @@ COMMON_DEPEND=">=dev-libs/dbus-glib-0.100
 	>=sys-apps/dbus-1.6
 	>=sys-apps/sg3_utils-1.27.20090411
 	>=sys-block/parted-3
-	>=sys-fs/lvm2-2.02.66
+	lvm? (
+		>=sys-fs/lvm2-2.02.66
+		<sys-fs/lvm2-2.02.183
+	)
 	virtual/libgudev:=
 	virtual/libudev:=
 	virtual/udev
@@ -69,7 +72,7 @@ src_configure() {
 		$(use_enable debug verbose-mode) \
 		--enable-man-pages \
 		--disable-gtk-doc \
-		--enable-lvm2 \
+		$(use_enable lvm lvm2) \
 		--enable-dmmp \
 		$(use_enable remote-access) \
 		$(use_enable nls) \
