@@ -23,12 +23,13 @@ RDEPEND="
 	tcmalloc? ( dev-util/google-perftools )
 	jemalloc? ( >=dev-libs/jemalloc-5.1:= )"
 
-DEPEND="
-	${RDEPEND}
-	test? ( dev-lang/tcl:0= )"
-
 BDEPEND="
+	${RDEPEND}
 	virtual/pkgconfig"
+
+# Tcl is only needed in the CHOST test env
+DEPEND="${RDEPEND}
+	test? ( dev-lang/tcl:0= )"
 
 REQUIRED_USE="?? ( tcmalloc jemalloc )"
 
