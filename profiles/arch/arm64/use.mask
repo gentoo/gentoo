@@ -72,10 +72,6 @@ valgrind
 # net-wireless/wimax not tested
 wimax
 
-# Markus Meier <maekke@gentoo.org> (21 Aug 2010)
-# app-antivirus/clamav not tested
-clamav
-
 # Kacper Kowalik <xarthisius@gentoo.org> (9 Aug 2010)
 # cblas-external as virtual/cblas is also masked
 cblas-external
