@@ -1006,25 +1006,6 @@ glibc_headers_configure() {
 		popd >/dev/null
 	fi
 
-	case ${CTARGET} in
-	riscv*)
-		# RISC-V interrogates the compiler to determine which target to
-		# build.  If building the headers then we don't strictly need a
-		# RISC-V compiler, so the built-in definitions that are provided
-		# along with all RISC-V compiler might not exist.  This causes
-		# glibc's RISC-V preconfigure script to blow up.  Since we're just
-		# building the headers any value will actually work here, so just
-		# pick the standard one (rv64g/lp64d) to make the build scripts
-		# happy for now -- the headers are all the same anyway so it
-		# doesn't matter.
-		headers_only_arch_CPPFLAGS+=(
-			-D__riscv_xlen=64
-			-D__riscv_flen=64
-			-D__riscv_float_abi_double=1
-			-D__riscv_atomic=1
-		) ;;
-	esac
-
 	local myconf=()
 	myconf+=(
 		--disable-sanity-checks
@@ -1042,6 +1023,24 @@ glibc_headers_configure() {
 	# Nothing is compiled here which would affect the headers for the target.
 	# So forcing CC/CFLAGS is sane.
 	local headers_only_CC=$(tc-getBUILD_CC)
+
+	case ${CTARGET} in
+	riscv*)
+		# RISC-V interrogates the compiler to determine which target to
+		# build.  If building the headers then we don't strictly need a
+		# RISC-V compiler, so the built-in definitions that are provided
+		# along with all RISC-V compiler might not exist.  This causes
+		# glibc's RISC-V preconfigure script to blow up.  Since we're just
+		# building the headers any value will actually work here, so just
+		# pick the standard one (rv64g/lp64d) to make the build scripts
+		# happy for now -- the headers are all the same anyway so it
+		# doesn't matter.
+		# It's not sufficient to shove the flags into CPPFLAGS, they need
+		# to really go *everywhere*.
+		headers_only_CC="${headers_only_CC} -D__riscv_xlen=64 -D__riscv_flen=64 -D__riscv_float_abi_double=1 -D__riscv_atomic=1"
+		;;
+	esac
+
 	local headers_only_CFLAGS="-O1 -pipe"
 	local headers_only_CPPFLAGS="-U_FORTIFY_SOURCE ${headers_only_arch_CPPFLAGS[*]}"
 	local headers_only_LDFLAGS=""
