@@ -21,7 +21,6 @@
 	</longdescription>
 	<use>
 		<flag name="examples">Install various example files, like for cron.</flag>
-		<flag name="hardened">Use iproute2 instead of ifconfig to grab an IP address</flag>
 		<flag name="iproute2">Use <pkg>sys-apps/iproute2</pkg> instead of <pkg>sys-apps/net-tools</pkg> for interaction.</flag>
 	</use>
 	<upstream>
