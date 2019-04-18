@@ -1,0 +1,38 @@
+When disabling OpenSSL support, nestlex.c still needs stddef.h which is
+magically included through the OpenSSL headers otherwise.
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -61,7 +61,7 @@
+ AC_CHECK_HEADERS(inttypes.h)
+ AC_HEADER_SYS_WAIT
+ AC_CHECK_HEADERS(fcntl.h limits.h strings.h sys/param.h sys/ioctl.h sys/time.h syslog.h unistd.h)
+-AC_CHECK_HEADERS(pwd.h grp.h stdint.h sys/types.h poll.h sys/poll.h sys/socket.h sys/uio.h sys/stat.h netdb.h sys/un.h)
++AC_CHECK_HEADERS(pwd.h grp.h stddef.h stdint.h sys/types.h poll.h sys/poll.h sys/socket.h sys/uio.h sys/stat.h netdb.h sys/un.h)
+ AC_CHECK_HEADERS(pty.h)
+ AC_CHECK_HEADERS(netinet/in.h netinet/in_systm.h)
+ AC_CHECK_HEADERS(netinet/ip.h, [], [], [AC_INCLUDES_DEFAULT
+--- a/config.h.in
++++ b/config.h.in
+@@ -189,6 +189,9 @@
+ /* Define if you have the <grp.h> header file.  */
+ #undef HAVE_GRP_H
+ 
++/* Define if you have the <stddef.h> header file.  */
++#undef HAVE_STDDEF_H
++
+ /* Define if you have the <stdint.h> header file.  */
+ #undef HAVE_STDINT_H
+ 
+--- a/sysincludes.h
++++ b/sysincludes.h
+@@ -51,6 +51,9 @@
+ #if HAVE_SYS_TIME_H
+ #include <sys/time.h>	/* select(); OpenBSD: struct timespec */
+ #endif
++#if HAVE_STDDEF_H
++#include <stddef.h>
++#endif
+ #if HAVE_STDINT_H
+ #include <stdint.h>	/* uint8_t */
+ #endif

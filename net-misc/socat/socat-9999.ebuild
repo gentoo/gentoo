@@ -34,8 +34,7 @@ DOCS=(
 )
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.7.3.0-filan-build.patch
-	"${FILESDIR}"/${PN}-1.7.3.1-stddef_h.patch
+	"${FILESDIR}"/${PN}-9999-stddef_h.patch
 )
 
 pkg_setup() {
