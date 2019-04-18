@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (18 Apr 2019)
+# All current versions of SystemRescueCD contain vulnerable packages.
+# Bug #683724.
+app-admin/systemrescuecd-x86
+sys-boot/systemrescuecd-x86-grub
+
 # Georgy Yakovlev <gyakovlev@gentoo.org> (17 Apr 2019)
 # The Oracle JDK License has changed for releases starting April 16, 2019
 # While it may be fine to use for some usecases it's not comepletely clear
