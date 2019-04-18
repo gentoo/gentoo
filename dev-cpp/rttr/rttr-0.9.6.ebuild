@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-RESTICT="test"
+RESTRICT="test"
 
 PATCHES=(
 	"${FILESDIR}/${P}-cmake.patch"
