@@ -5,6 +5,9 @@
 		<email>sci@gentoo.org</email>
 		<name>Gentoo Science Project</name>
 	</maintainer>
+	<maintainer type="project">
+		<email>qt@gentoo.org</email>
+	</maintainer>
 	<longdescription lang="en">
 		This library consists of efficient conversion routines that have
 		been extracted from the V8 JavaScript engine. The code has been
