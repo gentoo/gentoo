@@ -64,5 +64,7 @@ multilib_src_configure() {
 }
 
 multilib_src_install_all() {
-	use static-libs || find "${ED%/}"/usr -name '*.la' -delete
+	if ! use static-libs ; then
+		find "${ED}"/usr -name '*.la' -delete || die
+	fi
 }

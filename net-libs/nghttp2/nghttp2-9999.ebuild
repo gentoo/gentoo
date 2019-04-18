@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # TODO: Add python support.
@@ -69,5 +69,7 @@ multilib_src_configure() {
 }
 
 multilib_src_install_all() {
-	use static-libs || find "${ED%/}"/usr -name '*.la' -delete
+	if ! use static-libs ; then
+		find "${ED}"/usr -name '*.la' -delete || die
+	fi
 }
