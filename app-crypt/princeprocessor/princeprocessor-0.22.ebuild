@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="Standalone password candidate generator using the PRINCE algorithm"
 HOMEPAGE="https://github.com/hashcat/princeprocessor"
-SRC_URI="https://github.com/hashcat/princeprocessor/archive/v${PV}.tar.gz"
+SRC_URI="https://github.com/hashcat/princeprocessor/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
