@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 KDE_HANDBOOK="forceoptional"
 inherit kde5
@@ -36,10 +36,6 @@ RDEPEND="${DEPEND}
 "
 
 DOCS=( AUTHORS Changes.txt README.md Releasenotes.txt TODO )
-
-PATCHES=( "${FILESDIR}/${P}-qt-5.11.patch" )
-
-S="${WORKDIR}/${PN}-${PV/_/}"
 
 src_configure() {
 	local mycmakeargs=(

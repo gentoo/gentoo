@@ -11,10 +11,10 @@ SRC_URI="https://github.com/rttrorg/${PN}/releases/download/v${PV}/${P}-src.tar.
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE=""
 
-RESTICT="test"
+RESTRICT="test"
 
 PATCHES=(
 	"${FILESDIR}/${P}-cmake.patch"
