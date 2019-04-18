@@ -10,7 +10,8 @@
 		<name>Java</name>
 	</maintainer>
 	<longdescription>
-		Java™ is the world's leading programming language and platform. The code for Java is open source and available at OpenJDK™.
+		Java™ is the world's leading programming language and platform.
+		The code for Java is open source and available at OpenJDK™.
 		AdoptOpenJDK provides prebuilt OpenJDK JRE binaries from a fully open source set of build scripts and infrastructure.
 	</longdescription>
 	<use>
