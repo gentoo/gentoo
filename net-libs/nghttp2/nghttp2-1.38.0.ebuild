@@ -33,7 +33,7 @@ RDEPEND="
 	cxx? (
 		${SSL_DEPEND}
 		dev-libs/boost:=[${MULTILIB_USEDEP},threads]
-		>=net-libs/http-parser-2.9.1:=
+		>=net-libs/http-parser-2.9.1:=[${MULTILIB_USEDEP}]
 	)
 	hpack-tools? (
 		>=dev-libs/jansson-2.5
