@@ -20,8 +20,8 @@ DESCRIPTION="C language family frontend for LLVM"
 HOMEPAGE="https://llvm.org/"
 SRC_URI="https://releases.llvm.org/${PV/_//}/${MY_P}.tar.xz
 	https://releases.llvm.org/${PV/_//}/${EXTRA_P}.tar.xz
-	test? ( https://releases.llvm.org/${PV/_//}/${LLVM_P}.tar.xz )"
-#	!doc? ( https://dev.gentoo.org/~mgorny/dist/llvm/llvm-${PV}-manpages.tar.bz2 )"
+	test? ( https://releases.llvm.org/${PV/_//}/${LLVM_P}.tar.xz )
+	!doc? ( https://dev.gentoo.org/~mgorny/dist/llvm/llvm-${PV}-manpages.tar.bz2 )"
 
 # Keep in sync with sys-devel/llvm
 ALL_LLVM_TARGETS=( AArch64 AMDGPU ARM BPF Hexagon Lanai Mips MSP430
