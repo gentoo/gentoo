@@ -45,7 +45,7 @@ case ${CATEGORY} in
 		fi
 		;;
 	kde-apps)
-		[[ ${PV} = 19.04* ]] && : ${FRAMEWORKS_MINIMAL:=5.56.0}
+		[[ ${PV} = 19.04* ]] && : ${FRAMEWORKS_MINIMAL:=5.57.0}
 		;;
 esac
 
