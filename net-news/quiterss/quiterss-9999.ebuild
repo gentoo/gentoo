@@ -21,6 +21,7 @@ SLOT="0"
 IUSE=""
 
 BDEPEND="
+	dev-qt/linguist-tools:5
 	virtual/pkgconfig
 "
 DEPEND="
