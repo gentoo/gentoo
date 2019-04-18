@@ -20,7 +20,6 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="
 	dev-lang/perl
-	dev-libs/gnulib
 	dev-util/gengetopt
 	sys-apps/help2man
 "
