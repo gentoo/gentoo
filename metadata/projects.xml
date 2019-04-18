@@ -3964,27 +3964,6 @@
     </member>
   </project>
   <project>
-    <email>web-apps@gentoo.org</email>
-    <name>Gentoo Webapps</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Webapps</url>
-    <description>The web-apps team maintains web applications, an eclass to facilitate writing ebuilds for these packages, and the &lt;span style="font-family: monospace; font-size: 95%; font-weight: bold;" class="tripleclick-separator"&gt;webapp-config&lt;/span&gt; tool.</description>
-    <member>
-      <email>blueness@gentoo.org</email>
-      <name>Anthony G. Basile</name>
-      <role>Member</role>
-    </member>
-    <member>
-      <email>jmbsvicetto@gentoo.org</email>
-      <name>Jorge Manuel B. S. Vicetto</name>
-      <role>Member</role>
-    </member>
-    <member>
-      <email>maffblaster@gentoo.org</email>
-      <name>Matthew Marchese</name>
-      <role>Member</role>
-    </member>
-  </project>
-  <project>
     <email>www@gentoo.org</email>
     <name>Website maintainers</name>
     <url>https://wiki.gentoo.org/wiki/Project:Website</url>
@@ -4201,6 +4180,27 @@
     <member>
       <email>ulm@gentoo.org</email>
       <name>Ulrich Müller</name>
+      <role>Member</role>
+    </member>
+  </project>
+  <project>
+    <email>web-apps@gentoo.org</email>
+    <name>Gentoo Webapps</name>
+    <url>https://wiki.gentoo.org/wiki/Project:Webapps</url>
+    <description>The web-apps team maintains web applications, an eclass to facilitate writing ebuilds for these packages, and the &lt;span style="font-family: monospace; font-size: 95%; font-weight: bold;" class="tripleclick-separator"&gt;webapp-config&lt;/span&gt; tool.</description>
+    <member>
+      <email>blueness@gentoo.org</email>
+      <name>Anthony G. Basile</name>
+      <role>Member</role>
+    </member>
+    <member>
+      <email>jmbsvicetto@gentoo.org</email>
+      <name>Jorge Manuel B. S. Vicetto</name>
+      <role>Member</role>
+    </member>
+    <member>
+      <email>maffblaster@gentoo.org</email>
+      <name>Matthew Marchese</name>
       <role>Member</role>
     </member>
   </project>

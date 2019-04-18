@@ -8892,7 +8892,7 @@ net-mail/yosucker 73: Downloads mail from a Yahoo! webmail account to a local ma
 net-mail/ytnef 1.9.3: Yeraze's TNEF Stream Reader - for winmail.dat files
 net-misc/adjtimex 1.29-r1: display or set the kernel time variables
 net-misc/aget 0.4.1-r2: multithreaded HTTP download accelerator
-net-misc/aggregate 1.6: Take a list of prefixes and perform two optimisations to reduce the length of the prefix list
+net-misc/aggregate 1.6: Perform two optimisations on a list of prefixes to reduce the length of the list
 net-misc/aggregate-flim 1.0.2: aggregate is a tool for aggregating CIDR networks
 net-misc/aria2 1.34.0-r1: A download utility with segmented downloading with BitTorrent support
 net-misc/arpd 0.2-r1: ARP server claiming all unassigned addresses (for network monitoring/simulation)
