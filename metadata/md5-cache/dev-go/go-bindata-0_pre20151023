@@ -3,10 +3,10 @@ DEPEND=>=dev-lang/go-1.10
 DESCRIPTION=A small utility which generates Go code from any file
 EAPI=5
 HOMEPAGE=https://github.com/jteeuwen/go-bindata
-KEYWORDS=amd64 ~arm
+KEYWORDS=amd64 ~arm ~arm64
 LICENSE=CC-PD
 RESTRICT=strip
 SLOT=0/0_pre20151023
 SRC_URI=https://github.com/jteeuwen/go-bindata/archive/a0ff2567cfb70903282db057e799fd826784d41d.tar.gz -> go-bindata-0_pre20151023.tar.gz
 _eclasses_=golang-base	c57d2c3f9e1a02d0feb8b87c7b689892	golang-build	dc25bafa8fc1305a4de66a0a448472e7	golang-vcs-snapshot	12177e83bede6f7fb87eae383864b40b
-_md5_=b00790114e7913fcfcfe8113e0f39b45
+_md5_=cbf3f6d3d18839b4d7349e70de090486
