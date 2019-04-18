@@ -10240,7 +10240,7 @@ sys-fs/udev 236-r1 238 239: Linux dynamic and persistent device naming support (
 sys-fs/udev-init-scripts 32 33: udev startup scripts for openrc
 sys-fs/udftools 2.0-r2 2.1: Ben Fennema's tools for packet writing and the UDF filesystem
 sys-fs/udiskie 1.1.1: An automatic disk mounting service using udisks
-sys-fs/udisks 1.0.5-r2 2.7.4-r1 2.8.1: Daemon providing interfaces to work with storage devices
+sys-fs/udisks 1.0.5-r3 2.7.4-r1 2.8.1: Daemon providing interfaces to work with storage devices
 sys-fs/vhba 20190302: Virtual (SCSI) Host Bus Adapter kernel module for the CDEmu suite
 sys-fs/vzquota 3.1: OpenVZ VPS disk quota utility
 sys-fs/xfsdump 3.1.6 3.1.8: xfs dump/restore utilities
