@@ -30,6 +30,13 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (18 Apr 2019)
+# Unmaintained.  Fails to build.  Last bumped in 2016, and no new
+# releases since.  Still depends on dead app-text/htmltidy (#671442).
+# No reverse dependencies.
+# Removal in 30 days.  Bug #672886.
+dev-libs/xqilla
+
+# Michał Górny <mgorny@gentoo.org> (18 Apr 2019)
 # Another NIH all-in-one library with no reverse dependencies.  Last
 # bumped in 2015, with a broken patch.  Nobody reported this until
 # tinderbox catched it, indicating that nobody is using this package.
