@@ -1843,7 +1843,6 @@ dev-cpp/commoncpp2 1.8.1-r2 1.8.1-r3: C++ library offering portable support for 
 dev-cpp/cpp-hocon 0.1.4: Provides C++ support for the HOCON configuration file format
 dev-cpp/ctemplate 2.3-r1: A simple but powerful template language for C++
 dev-cpp/eigen 3.3.7: C++ template library for linear algebra
-dev-cpp/gccxml 0.9.0_pre20131217: XML output extension to GCC
 dev-cpp/gconfmm 2.28.3-r1: C++ bindings for GConf
 dev-cpp/gflags 2.2.0: Google's C++ argument parsing library
 dev-cpp/glibmm 2.56.1: C++ interface for glib2
@@ -3302,7 +3301,7 @@ dev-libs/xplc 0.3.13-r1: cross platform lightweight components library for C++
 dev-libs/xxhash 0.6.5: Extremely fast non-cryptographic hash algorithm
 dev-libs/yajl 2.1.0-r1: Small event-driven (SAX-style) JSON parser
 dev-libs/yaz 3.0.53: C/C++ toolkit for Z39.50v3 clients and servers
-dev-libs/zthread 2.3.2-r3 2.3.2-r4: platform-independent multi-threading and synchronization library for C++
+dev-libs/zthread 2.3.2-r4: platform-independent multi-threading and synchronization library for C++
 dev-libs/zziplib 0.13.69: Lightweight library for extracting data from files archived in a single zip file
 dev-lisp/abcl 1.5.0: Armed Bear Common Lisp is a Common Lisp implementation for the JVM.
 dev-lisp/asdf 3.1.5: ASDF is Another System Definition Facility for Common Lisp
