@@ -4,7 +4,7 @@
 EAPI=7
 
 DESCRIPTION="Apache C++ XML security libraries"
-HOMEPAGE="http://santuario.apache.org/"
+HOMEPAGE="https://santuario.apache.org/"
 SRC_URI="mirror://apache/santuario/c-library/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
