@@ -1,19 +1,17 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=0
 
-MY_PN="${PN/-flim}"
-MY_P="${MY_PN}-${PV}"
+MY_P="${PN/-flim}-${PV}"
 DESCRIPTION="aggregate is a tool for aggregating CIDR networks"
-HOMEPAGE="http://www.vergenet.net/linux/aggregate-flim/"
-SRC_URI="http://www.vergenet.net/linux/aggregate-flim/download/${MY_P}.tar.gz"
+HOMEPAGE="http://horms.net/projects/aggregate/"
+SRC_URI="http://horms.net/projects/aggregate/download/${MY_P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE=""
 DEPEND="dev-libs/vanessa-logger"
-#RDEPEND=""
 S=${WORKDIR}/${MY_P}
 
 src_install() {
