@@ -30,6 +30,8 @@ REQUIRED_USE="test? ( jpeg )" #483132
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.0.7-pdfium-0006-HeapBufferOverflow-ChopUpSingleUncompressedStrip.patch
 	"${FILESDIR}"/${PN}-4.0.7-pdfium-0008-HeapBufferOverflow-ChopUpSingleUncompressedStrip.patch
+	"${FILESDIR}"/${P}-CVE-2018-17000-tif_dirwrite-null-dereference.patch
+	"${FILESDIR}"/${P}-CVE-2019-6128-pal2rgb-leak.patch
 )
 
 MULTILIB_WRAPPED_HEADERS=(
