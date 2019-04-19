@@ -36,14 +36,14 @@ MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/cdio/version.h
 )
 
+PATCHES=(
+	"${FILESDIR}/${PN}-2.1.0-ncurses_pkgconfig.patch"
+)
+
 src_prepare() {
 	default
 
 	eautoreconf
-
-	#sed \
-	#	-e "s:-lncurses:$($(tc-getPKG_CONFIG) --libs ncurses):g" \
-	#	-i configure || die
 
 	elibtoolize # to prevent -L/usr/lib ending up in the linker line wrt 499510
 }
