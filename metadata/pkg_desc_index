@@ -595,6 +595,7 @@ app-editors/uemacs-pk 4.0.15_p20180117: uEmacs/PK is an enhanced version of Micr
 app-editors/vile 9.8r: VI Like Emacs -- yet another full-featured vi clone
 app-editors/vim 8.0.1298 8.1.0648-r1: Vim, an improved vi-style text editor
 app-editors/vim-core 8.0.1298 8.1.0648: vim and gvim shared files
+app-editors/wily 1.0-r2: An emulation of ACME, Plan9's hybrid window system, shell and editor
 app-editors/xemacs 21.4.24 21.4.24-r1: highly customizable open source text editor and application development system
 app-editors/xvile 9.8r-r1: VI Like Emacs -- yet another full-featured vi clone
 app-editors/yudit 2.9.6: Free (Y)unicode text editor for all unices
