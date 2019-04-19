@@ -18,7 +18,6 @@ KEYWORDS="~amd64 ~x86"
 IUSE="+gtk"
 
 RDEPEND="gtk? ( dev-python/pygtk:2[$PYTHON_USEDEP] )"
-DEPEND="${RDEPEND}"
 BDEPEND="sys-devel/gettext"
 
 python_prepare_all() {
