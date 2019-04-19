@@ -6429,7 +6429,7 @@ dev-util/txt2regex 0.8-r3: A Regular Expression wizard that converts human sente
 dev-util/uncrustify 0.66.1: C/C++/C#/D/Java/Pawn code indenter and beautifier
 dev-util/unifdef 2.10: remove #ifdef'ed lines from a file while otherwise leaving the file alone
 dev-util/usb-robot 0.2.0: USB Reverse engineering tools
-dev-util/valgrind 3.12.0 3.13.0: An open-source memory debugger for GNU/Linux
+dev-util/valgrind 3.12.0 3.13.0 3.14.0: An open-source memory debugger for GNU/Linux
 dev-util/vbindiff 3.0_beta4-r1 3.0_beta5: Visual binary diff utility
 dev-util/vint 0.3.18: Lint tool for Vim script language
 dev-util/vulkan-headers 1.1.92.0: Vulkan Header files and API registry
