@@ -1413,6 +1413,7 @@ app-text/mathtex 1.04: Lets you easily embed LaTeX math in your own html pages, 
 app-text/mecab 0.996-r1: Yet Another Part-of-Speech and Morphological Analyzer
 app-text/mftrace 1.2.18-r3: Traces TeX fonts to PFA or PFB fonts (formerly pktrace)
 app-text/mpage 2.5.6-r1: Many to one page printing utility
+app-text/msort 8.53: A program for sorting files in sophisticated ways
 app-text/multitail 6.4.1: Tail with multiple windows
 app-text/mupdf 1.14.0-r2: a lightweight PDF viewer and toolkit written in portable C
 app-text/mythes 1.2.4: A simple thesaurus for Libreoffice
@@ -3174,8 +3175,10 @@ dev-libs/libtermkey 0.20: Library for easy processing of keyboard entry from ter
 dev-libs/libtommath 0.42.0-r1: Optimized and portable routines for integer theoretic applications
 dev-libs/libtompoly 0.04: portable ISO C library for polynomial basis arithmetic
 dev-libs/libtubo 5.0.15: small and simple interprocess communication library
+dev-libs/libugpio 0.0.6: Lib for the use of linux kernel's sysfs gpio interface from C programs
 dev-libs/libunibreak 4.0: Line and word breaking library
 dev-libs/libunicode 0.4-r2: Unicode library
+dev-libs/libuninum 2.7: A library for converting unicode strings to numbers and vice versa
 dev-libs/libunique 1.1.6-r2 3.0.2-r1: A library for writing single instance application
 dev-libs/libunistring 0.9.10: Library for manipulating Unicode and C strings according to Unicode standard
 dev-libs/libusb 1.0.19-r1 1.0.21: Userspace access to USB devices
