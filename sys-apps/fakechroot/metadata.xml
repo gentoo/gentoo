@@ -4,4 +4,7 @@
 	<maintainer type="person">
 		<email>alonbl@gentoo.org</email>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">dex4er/fakechroot</remote-id>
+	</upstream>
 </pkgmetadata>

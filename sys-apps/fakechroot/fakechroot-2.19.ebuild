@@ -4,7 +4,7 @@
 EAPI=7
 
 DESCRIPTION="Provide a faked chroot environment without requiring root privileges"
-HOMEPAGE="http://fakechroot.alioth.debian.org/"
+HOMEPAGE="https://github.com/dex4er/fakechroot"
 SRC_URI="mirror://debian/pool/main/f/${PN}/${PN}_${PV}.orig.tar.gz"
 
 LICENSE="LGPL-2.1"
