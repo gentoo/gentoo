@@ -17,7 +17,7 @@ LICENSE="Apache-2.0 Artistic-2 BSD BSD-2 CC-BY-3.0 CC-BY-4.0 icu ISC MIT MPL-2.0
 SLOT="0"
 KEYWORDS="~amd64"
 
-RDEPEND=">=net-libs/nodejs-6.16.0"
+RDEPEND=">=net-libs/nodejs-6.17.0"
 
 # Do not complain about CFLAGS etc since kibana does not use them.
 QA_FLAGS_IGNORED='.*'
