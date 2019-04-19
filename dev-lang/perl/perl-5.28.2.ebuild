@@ -10,7 +10,7 @@ CROSS_VER=1.2.2
 PATCH_BASE="perl-5.28.2-patches-${PATCH_VER}"
 PATCH_DEV=dilfridge
 
-DIST_AUTHOR=XSAWYERX
+DIST_AUTHOR=SHAY
 
 # Greatest first, don't include yourself
 # Devel point-releases are not ABI-intercompatible, but stable point releases are
