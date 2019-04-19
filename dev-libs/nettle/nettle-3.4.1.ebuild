@@ -25,6 +25,10 @@ MULTILIB_WRAPPED_HEADERS=(
 DOCS=()
 HTML_DOCS=()
 
+PATCHES=(
+	"${FILESDIR}/${P}-build.patch"
+)
+
 pkg_setup() {
 	use doc && DOCS+=(
 		nettle.pdf
