@@ -29,6 +29,15 @@
 
 #--- END OF EXAMPLES ---
 
+# Patrice Clement <monsieurp@gentoo.org> (19 Apr 2019)
+# Another round of abandoned Java libraries that must go.
+# Removal in 30 days.
+dev-java/lucene-analyzers
+dev-java/sun-java3d-bin
+dev-java/sun-dtdparser
+dev-java/stax
+app-misc/bfm
+
 # Georgy Yakovlev <gyakovlev@gentoo.org> (18 Apr 2019)
 # This version is provided for testing of the upcoming 0.8.0 release.
 # It is not recommended for use, it contains known bugs.
