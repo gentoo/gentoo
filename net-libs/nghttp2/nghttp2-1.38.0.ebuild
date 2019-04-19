@@ -52,7 +52,8 @@ DEPEND="${RDEPEND}
 	test? ( >=dev-util/cunit-2.1[${MULTILIB_USEDEP}] )"
 
 PATCHES=(
-	"${WORKDIR}/${PN}-1.38.0-unbundle_http_parser.patch"
+	"${WORKDIR}/${PN}-1.38.0-unbundle_http_parser.patch" # 675772
+	"${FILESDIR}/${P}-boost-1.70.0.patch" #683368
 )
 
 src_prepare() {
