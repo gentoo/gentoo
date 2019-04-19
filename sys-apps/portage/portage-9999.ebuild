@@ -247,16 +247,15 @@ python_install_all() {
 }
 
 pkg_preinst() {
-	# comment out sanity test until it is fixed to work
-	# with the new PORTAGE_PYM_PATH
-	#if [[ $ROOT == / ]] ; then
-		## Run some minimal tests as a sanity check.
-		#local test_runner=$(find "${ED}" -name runTests)
-		#if [[ -n $test_runner && -x $test_runner ]] ; then
-			#einfo "Running preinst sanity tests..."
-			#"$test_runner" || die "preinst sanity tests failed"
-		#fi
-	#fi
+	python_setup
+	python_export PYTHON_SITEDIR
+	env -u DISTDIR \
+		-u PORTAGE_OVERRIDE_EPREFIX \
+		-u PORTAGE_REPOSITORIES \
+		-u PORTDIR \
+		-u PORTDIR_OVERLAY \
+		PYTHONPATH="${ED%/}${PYTHON_SITEDIR}${PYTHONPATH:+:${PYTHONPATH}}" \
+		"${PYTHON}" -m portage._compat_upgrade.default_locations || die
 
 	# elog dir must exist to avoid logrotate error for bug #415911.
 	# This code runs in preinst in order to bypass the mapping of
