@@ -63,6 +63,7 @@ S=${WORKDIR}/${MY_P}/source
 S_TEST=${WORKDIR}/${MY_P}_test/source
 PATCHES=(
 	"${FILESDIR}"/gitless.patch
+	"${FILESDIR}"/pyyaml-safe-load.patch
 	"${FILESDIR}"/rltiles-ldflags-libs.patch
 )
 
