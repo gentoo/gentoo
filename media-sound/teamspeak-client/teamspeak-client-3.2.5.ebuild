@@ -52,7 +52,7 @@ QA_PREBUILT="
 "
 
 PATCHES=(
-	"${FILESDIR}/${P}-qt-5.12-symbol-reexports.patch"
+	"${FILESDIR}/${PN}-3.2.5-qt-5.12-symbol-reexports.patch"
 )
 
 src_prepare() {
