@@ -33,8 +33,8 @@
 # This version is provided for testing of the upcoming 0.8.0 release.
 # It is not recommended for use, it contains known bugs.
 # This version supports TRIM.
->=sys-fs/zfs-kmod-0.8.0_rc4
->=sys-fs/zfs-0.8.0_rc4
+=sys-fs/zfs-kmod-0.8.0_rc*
+=sys-fs/zfs-0.8.0_rc*
 
 # Michał Górny <mgorny@gentoo.org> (18 Apr 2019)
 # Unmaintained.  Fails to build.  Last bumped in 2016, and no new
