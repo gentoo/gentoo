@@ -1,4 +1,4 @@
-# Copyright 2008-2018 Gentoo Authors
+# Copyright 2008-2019 Arfrever Frehtes Taifersar Arahesis and others
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -6,12 +6,23 @@ JAVA_PKG_IUSE="doc source"
 
 inherit java-pkg-2 java-pkg-simple
 
+if [[ "${PV}" == "9999" ]]; then
+	inherit git-r3
+
+	EGIT_REPO_URI="https://github.com/protocolbuffers/protobuf"
+	EGIT_SUBMODULES=()
+fi
+
 DESCRIPTION="Google's Protocol Buffers - Java bindings"
 HOMEPAGE="https://developers.google.com/protocol-buffers/ https://github.com/protocolbuffers/protobuf"
-SRC_URI="https://github.com/protocolbuffers/protobuf/archive/v${PV}.tar.gz -> protobuf-${PV}.tar.gz"
+if [[ "${PV}" == "9999" ]]; then
+	SRC_URI=""
+else
+	SRC_URI="https://github.com/protocolbuffers/protobuf/archive/v${PV}.tar.gz -> protobuf-${PV}.tar.gz"
+fi
 
 LICENSE="BSD"
-SLOT="0/17"
+SLOT="0/18"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~sh ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
 IUSE=""
 
@@ -21,6 +32,10 @@ RDEPEND=">=virtual/jre-1.7
 	!<dev-libs/protobuf-3[java(-)]"
 
 S="${WORKDIR}/protobuf-${PV}/java"
+
+if [[ "${PV}" == "9999" ]]; then
+	EGIT_CHECKOUT_DIR="${WORKDIR}/protobuf-${PV}"
+fi
 
 src_prepare() {
 	default

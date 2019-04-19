@@ -2,7 +2,7 @@ https://github.com/protocolbuffers/protobuf/pull/235
 
 --- /src/google/protobuf/compiler/command_line_interface.cc
 +++ /src/google/protobuf/compiler/command_line_interface.cc
-@@ -942,6 +942,28 @@
+@@ -951,6 +951,28 @@
    }
  
    if (mode_ == MODE_ENCODE || mode_ == MODE_DECODE) {
@@ -31,7 +31,7 @@ https://github.com/protocolbuffers/protobuf/pull/235
      if (codec_type_.empty()) {
        // HACK:  Define an EmptyMessage type to use for decoding.
        DescriptorPool pool;
-@@ -950,13 +972,20 @@
+@@ -959,13 +981,20 @@
        file.add_message_type()->set_name("EmptyMessage");
        GOOGLE_CHECK(pool.BuildFile(file) != NULL);
        codec_type_ = "EmptyMessage";
@@ -58,7 +58,7 @@ https://github.com/protocolbuffers/protobuf/pull/235
      }
    }
  
-@@ -994,6 +1023,11 @@
+@@ -1003,6 +1032,11 @@
    for (int i = 0; i < proto_path_.size(); i++) {
      source_tree->MapPath(proto_path_[i].first, proto_path_[i].second);
    }
@@ -69,8 +69,8 @@ https://github.com/protocolbuffers/protobuf/pull/235
 +  }
  
    // Map input files to virtual paths if possible.
-   if (!MakeInputsBeProtoPathRelative(source_tree)) {
-@@ -1561,6 +1595,12 @@
+   if (!MakeInputsBeProtoPathRelative(source_tree, fallback_database)) {
+@@ -1622,6 +1656,12 @@
  
      codec_type_ = value;
  
@@ -83,7 +83,7 @@ https://github.com/protocolbuffers/protobuf/pull/235
    } else if (name == "--error_format") {
      if (value == "gcc") {
        error_format_ = ERROR_FORMAT_GCC;
-@@ -1684,18 +1724,29 @@
+@@ -1749,18 +1789,31 @@
  "  --version                   Show version info and exit.\n"
  "  -h, --help                  Show this text and exit.\n"
  "  --encode=MESSAGE_TYPE       Read a text-format message of the given type\n"
@@ -93,7 +93,7 @@ https://github.com/protocolbuffers/protobuf/pull/235
 -"  --decode=MESSAGE_TYPE       Read a binary message of the given type from\n"
 -"                              standard input and write it in text format\n"
 -"                              to standard output.  The message type must\n"
-+"                              an write it in binary.  The message type must\n"
++"                              and write it in binary.  The message type must\n"
  "                              be defined in PROTO_FILES or their imports.\n"
 -"  --decode_raw                Read an arbitrary protocol message from\n"
 -"                              standard input and write the raw tag/value\n"
@@ -103,27 +103,29 @@ https://github.com/protocolbuffers/protobuf/pull/235
 +"                              command line flags.\n"
 +"  --decode=MESSAGE_TYPE       Read a binary message of the given type and\n"
 +"                              write it in text format.  The message type\n"
-+"                              must be defined in PROTO_FILES or their\n"
-+"                              imports. The input/output protobuf files are\n"
-+"                              specified using the --protobuf_in and \n"
-+"                              --protobuf_out command line flags.\n"
++"                              must be defined in PROTO_FILES or their imports.\n"
++"                              The input/output protobuf files are specified\n"
++"                              using the --protobuf_in and --protobuf_out\n"
++"                              command line flags.\n"
 +"  --decode_raw                Read an arbitrary protocol message and write\n"
 +"                              the raw tag/value pairs in text format.  No\n"
  "                              PROTO_FILES should be given when using this\n"
 -"                              flag.\n"
-+"                              flag. The input/output protobuf files are\n"
-+"                              specified using the --protobuf_in and \n"
++"                              flag.  The input/output protobuf files are\n"
++"                              specified using the --protobuf_in and\n"
 +"                              --protobuf_out command line flags.\n"
-+"  --protobuf_in               Absolute path to the protobuf file to read to\n"
-+"                              encode/decode.  If omitted, file will be read\n"
-+"                              from STDIN.\n"
-+"  --protobuf_out              Absolute path to the protobuf file to write to\n"
-+"                              after encode/decode operation.  If omitted,\n"
-+"                              output is written to STDOUT.\n"
++"  --protobuf_in=FILE          Absolute path to the protobuf file from which\n"
++"                              input of encoding/decoding operation will be\n"
++"                              read.  If omitted, input will be read from\n"
++"                              standard input.\n"
++"  --protobuf_out=FILE         Absolute path to the protobuf file to which\n"
++"                              output of encoding/decoding operation will be\n"
++"                              written.  If omitted, output will be written to\n"
++"                              standard output.\n"
  "  --descriptor_set_in=FILES   Specifies a delimited list of FILES\n"
  "                              each containing a FileDescriptorSet (a\n"
  "                              protocol buffer defined in descriptor.proto).\n"
-@@ -1957,7 +2008,9 @@
+@@ -2039,7 +2092,9 @@
    return true;
  }
  
@@ -134,8 +136,8 @@ https://github.com/protocolbuffers/protobuf/pull/235
    // Look up the type.
    const Descriptor* type = pool->FindMessageTypeByName(codec_type_);
    if (type == NULL) {
-@@ -1969,15 +2022,15 @@
-   google::protobuf::scoped_ptr<Message> message(dynamic_factory.GetPrototype(type)->New());
+@@ -2051,15 +2106,15 @@
+   std::unique_ptr<Message> message(dynamic_factory.GetPrototype(type)->New());
  
    if (mode_ == MODE_ENCODE) {
 -    SetFdToTextMode(STDIN_FILENO);
@@ -158,8 +160,8 @@ https://github.com/protocolbuffers/protobuf/pull/235
      // Input is text.
 --- /src/google/protobuf/compiler/command_line_interface.h
 +++ /src/google/protobuf/compiler/command_line_interface.h
-@@ -269,7 +269,9 @@
-       GeneratorContext* generator_context, string* error);
+@@ -285,7 +285,9 @@
+       GeneratorContext* generator_context, std::string* error);
  
    // Implements --encode and --decode.
 -  bool EncodeOrDecode(const DescriptorPool* pool);
@@ -169,20 +171,20 @@ https://github.com/protocolbuffers/protobuf/pull/235
  
    // Implements the --descriptor_set_out option.
    bool WriteDescriptorSet(
-@@ -402,6 +404,13 @@
+@@ -418,6 +420,13 @@
    // parsed FileDescriptorSets to be used for loading protos.  Otherwise, empty.
-   std::vector<string> descriptor_set_in_names_;
+   std::vector<std::string> descriptor_set_in_names_;
  
 +  // When using --encode / --decode / --decode_raw absolute path to the output
 +  // file. (Empty string indicates write to STDOUT).
-+  string protobuf_out_path_;
++  std::string protobuf_out_path_;
 +  // When using --encode / --decode / --decode_raw, absolute path to the input
 +  // file. (Empty string indicates read from STDIN).
-+  string protobuf_in_path_;
++  std::string protobuf_in_path_;
 +
    // If --descriptor_set_out was given, this is the filename to which the
    // FileDescriptorSet should be written.  Otherwise, empty.
-   string descriptor_set_out_name_;
+   std::string descriptor_set_out_name_;
 --- /src/google/protobuf/compiler/command_line_interface_unittest.cc
 +++ /src/google/protobuf/compiler/command_line_interface_unittest.cc
 @@ -95,7 +95,7 @@
@@ -194,7 +196,7 @@ https://github.com/protocolbuffers/protobuf/pull/235
    // command is automatically split on spaces, and the string "$tmpdir"
    // is replaced with TestTempDir().
    void Run(const string& command);
-@@ -2308,6 +2308,17 @@
+@@ -2367,6 +2367,17 @@
      EXPECT_EQ(StripCR(expected_text), StripCR(captured_stderr_));
    }
  
@@ -212,20 +214,21 @@ https://github.com/protocolbuffers/protobuf/pull/235
   private:
    void WriteUnittestProtoDescriptorSet() {
      unittest_proto_descriptor_set_filename_ =
-@@ -2398,6 +2409,18 @@
-       "google/protobuf/no_such_file.proto: No such file or directory\n");
+@@ -2463,6 +2474,19 @@
+       "net/proto2/internal/no_such_file.proto: No such file or directory\n");
  }
  
 +TEST_P(EncodeDecodeTest, RedirectInputOutput) {
 +  string out_file = TestTempDir() + "/golden_message_out.pbf";
-+  string cmd = "";
-+  cmd += "google/protobuf/unittest.proto ";
-+  cmd += "--encode=protobuf_unittest.TestAllTypes ";
-+  cmd += "--protobuf_in=" + TestSourceDir() +
-+         "/google/protobuf/testdata/text_format_unittest_data_oneof_implemented.txt ";
-+  cmd += "--protobuf_out=" + out_file;
-+  EXPECT_TRUE(Run(cmd));
-+  ExpectBinaryFilesMatch(out_file, TestSourceDir() + "/google/protobuf/testdata/golden_message_oneof_implemented");
++  EXPECT_TRUE(
++      Run(TestUtil::MaybeTranslatePath("net/proto2/internal/unittest.proto") +
++          " --encode=protobuf_unittest.TestAllTypes" +
++          " --protobuf_in=" + TestUtil::GetTestDataPath(
++              "net/proto2/internal/"
++              "testdata/text_format_unittest_data_oneof_implemented.txt") +
++          " --protobuf_out=" + out_file));
++  ExpectBinaryFilesMatch(out_file, TestUtil::GetTestDataPath(
++      "net/proto2/internal/testdata/golden_message_oneof_implemented"));
 +}
 +
  INSTANTIATE_TEST_CASE_P(FileDescriptorSetSource,

@@ -1,29 +1,41 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 2008-2019 Arfrever Frehtes Taifersar Arahesis and others
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 
 inherit autotools elisp-common flag-o-matic multilib-minimal toolchain-funcs
 
+if [[ "${PV}" == "9999" ]]; then
+	inherit git-r3
+
+	EGIT_REPO_URI="https://github.com/protocolbuffers/protobuf"
+	EGIT_SUBMODULES=()
+fi
+
 DESCRIPTION="Google's Protocol Buffers - Extensible mechanism for serializing structured data"
 HOMEPAGE="https://developers.google.com/protocol-buffers/ https://github.com/protocolbuffers/protobuf"
-SRC_URI="https://github.com/protocolbuffers/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+if [[ "${PV}" == "9999" ]]; then
+	SRC_URI=""
+else
+	SRC_URI="https://github.com/protocolbuffers/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+fi
 
 LICENSE="BSD"
-SLOT="0/15"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 ~sh sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
+SLOT="0/18"
+KEYWORDS=""
 IUSE="emacs examples static-libs test zlib"
+RESTRICT="!test? ( test )"
 
+BDEPEND="emacs? ( virtual/emacs )"
+DEPEND="test? ( >=dev-cpp/gtest-1.8.0[${MULTILIB_USEDEP}] )
+	zlib? ( sys-libs/zlib[${MULTILIB_USEDEP}] )"
 RDEPEND="emacs? ( virtual/emacs )
 	zlib? ( sys-libs/zlib[${MULTILIB_USEDEP}] )"
-DEPEND="${RDEPEND}
-	test? ( >=dev-cpp/gtest-1.8.0[${MULTILIB_USEDEP}] )"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-3.4.0-disable_no-warning-test.patch"
-	"${FILESDIR}/${PN}-3.4.0-system_libraries.patch"
-	"${FILESDIR}/${PN}-3.4.0-protoc_input_output_files.patch"
-	"${FILESDIR}/${PN}-3.5.0-atomic_operations.patch"
+	"${FILESDIR}/${PN}-3.7.0-disable_no-warning-test.patch"
+	"${FILESDIR}/${PN}-3.7.1-system_libraries.patch"
+	"${FILESDIR}/${PN}-3.8.0-protoc_input_output_files.patch"
 )
 
 DOCS=(CHANGES.txt CONTRIBUTORS.txt README.md)
@@ -77,6 +89,8 @@ multilib_src_test() {
 }
 
 multilib_src_install_all() {
+	find "${D}" -name "*.la" -delete || die
+
 	insinto /usr/share/vim/vimfiles/syntax
 	doins editors/proto.vim
 	insinto /usr/share/vim/vimfiles/ftdetect

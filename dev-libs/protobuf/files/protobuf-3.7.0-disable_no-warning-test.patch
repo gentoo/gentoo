@@ -2,16 +2,16 @@ Disable no-warning-test which is compiled with -Werror option and whose only pur
 
 --- /src/Makefile.am
 +++ /src/Makefile.am
-@@ -750,7 +750,7 @@
- 
+@@ -709,7 +709,7 @@
+ GOOGLEMOCK_SRC_DIR=$(srcdir)/../third_party/googletest/googlemock
  check_PROGRAMS = protoc protobuf-test protobuf-lazy-descriptor-test \
                   protobuf-lite-test test_plugin protobuf-lite-arena-test \
 -                 no-warning-test $(GZCHECKPROGRAMS)
 +                 $(GZCHECKPROGRAMS)
  protobuf_test_LDADD = $(PTHREAD_LIBS) libprotobuf.la libprotoc.la \
-                       ../gmock/gtest/lib/libgtest.la              \
-                       ../gmock/lib/libgmock.la                    \
-@@ -931,4 +931,4 @@
+                       $(GOOGLETEST_BUILD_DIR)/lib/libgtest.la     \
+                       $(GOOGLEMOCK_BUILD_DIR)/lib/libgmock.la     \
+@@ -893,4 +893,4 @@
  
  TESTS = protobuf-test protobuf-lazy-descriptor-test protobuf-lite-test \
          google/protobuf/compiler/zip_output_unittest.sh $(GZTESTS)     \
