@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=5
 
 PYTHON_COMPAT=(
 	pypy
@@ -10,13 +10,13 @@ PYTHON_COMPAT=(
 )
 PYTHON_REQ_USE='bzip2(+),threads(+)'
 
-inherit distutils-r1 git-r3 linux-info systemd
+inherit distutils-r1 epatch linux-info systemd prefix
 
 DESCRIPTION="Portage is the package management and distribution system for Gentoo"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Portage"
 
 LICENSE="GPL-2"
-KEYWORDS=""
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-fbsd"
 SLOT="0"
 IUSE="build doc epydoc gentoo-dev +ipc +native-extensions +rsync-verify selinux xattr"
 
@@ -62,7 +62,8 @@ RDEPEND="
 		$(python_gen_cond_dep 'dev-python/pyxattr[${PYTHON_USEDEP}]' \
 			python2_7 pypy)
 	) )
-	!<app-admin/logrotate-3.8.0"
+	!<app-admin/logrotate-3.8.0
+	!<app-portage/repoman-2.3.10"
 PDEPEND="
 	!build? (
 		>=net-misc/rsync-2.6.4
@@ -73,7 +74,7 @@ PDEPEND="
 
 REQUIRED_USE="epydoc? ( $(python_gen_useflags 'python2*') )"
 
-SRC_ARCHIVES="https://dev.gentoo.org/~dolsen/releases/portage"
+SRC_ARCHIVES="https://dev.gentoo.org/~zmedico/portage/archives"
 
 prefix_src_archives() {
 	local x y
@@ -84,8 +85,9 @@ prefix_src_archives() {
 	done
 }
 
-EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/portage.git
-	https://github.com/gentoo/portage.git"
+TARBALL_PV=${PV}
+SRC_URI="mirror://gentoo/${PN}-${TARBALL_PV}.tar.bz2
+	$(prefix_src_archives ${PN}-${TARBALL_PV}.tar.bz2)"
 
 pkg_pretend() {
 	local CONFIG_CHECK="~IPC_NS ~PID_NS ~NET_NS"
@@ -136,14 +138,8 @@ python_prepare_all() {
 
 	if [[ -n ${EPREFIX} ]] ; then
 		einfo "Setting portage.const.EPREFIX ..."
-		sed -e "s|^\(SANDBOX_BINARY[[:space:]]*=[[:space:]]*\"\)\(/usr/bin/sandbox\"\)|\\1${EPREFIX}\\2|" \
-			-e "s|^\(FAKEROOT_BINARY[[:space:]]*=[[:space:]]*\"\)\(/usr/bin/fakeroot\"\)|\\1${EPREFIX}\\2|" \
-			-e "s|^\(BASH_BINARY[[:space:]]*=[[:space:]]*\"\)\(/bin/bash\"\)|\\1${EPREFIX}\\2|" \
-			-e "s|^\(MOVE_BINARY[[:space:]]*=[[:space:]]*\"\)\(/bin/mv\"\)|\\1${EPREFIX}\\2|" \
-			-e "s|^\(PRELINK_BINARY[[:space:]]*=[[:space:]]*\"\)\(/usr/sbin/prelink\"\)|\\1${EPREFIX}\\2|" \
-			-e "s|^\(EPREFIX[[:space:]]*=[[:space:]]*\"\).*|\\1${EPREFIX}\"|" \
-			-i lib/portage/const.py || \
-			die "Failed to patch portage.const.EPREFIX"
+		hprefixify -e "s|^(EPREFIX[[:space:]]*=[[:space:]]*\").*|\1${EPREFIX}\"|" \
+			-w "/_BINARY/" lib/portage/const.py
 
 		einfo "Prefixing shebangs ..."
 		while read -r -d $'\0' ; do
@@ -154,16 +150,10 @@ python_prepare_all() {
 			fi
 		done < <(find . -type f -print0)
 
-		einfo "Adjusting make.globals ..."
-		sed -e "s|\(/usr/portage\)|${EPREFIX}\\1|" \
-			-e "s|^\(PORTAGE_TMPDIR=\"\)\(/var/tmp\"\)|\\1${EPREFIX}\\2|" \
-			-i cnf/make.globals || die "sed failed"
+		einfo "Adjusting make.globals, repos.conf and etc-update ..."
+		hprefixify cnf/{make.globals,repos.conf} bin/etc-update
 
-		einfo "Adjusting repos.conf ..."
-		sed -e "s|^\(location = \)\(/usr/portage\)|\\1${EPREFIX}\\2|" \
-			-e "s|^\(sync-openpgp-key-path = \)\(.*\)|\\1${EPREFIX}\\2|" \
-			-i cnf/repos.conf || die "sed failed"
-		if prefix-guest ; then
+		if use prefix-guest ; then
 			sed -e "s|^\(main-repo = \).*|\\1gentoo_prefix|" \
 				-e "s|^\\[gentoo\\]|[gentoo_prefix]|" \
 				-e "s|^\(sync-uri = \).*|\\1rsync://rsync.prefix.bitzolder.nl/gentoo-portage-prefix|" \
@@ -236,7 +226,7 @@ python_install_all() {
 	systemd_dotmpfilesd "${FILESDIR}"/portage-ccache.conf
 
 	# Due to distutils/python-exec limitations
-	# they must be installed to /usr/bin.
+	# these must be installed to /usr/bin.
 	local sbin_relocations='archive-conf dispatch-conf emaint env-update etc-update fixpackages regenworld'
 	einfo "Moving admin scripts to the correct directory"
 	dodir /usr/sbin
