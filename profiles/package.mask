@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+
+# Miroslav Šulc <fordfrog@gentoo.org> (19 Apr 2019)
+# Depends on >=virtual/{jdk,jre}-11 which is masked
+=www-servers/tomcat-9.0.19
+
 # David Seifert <soap@gentoo.org> (19 Apr 2019)
 # Fails to build with >=dev-libs/boost-1.70 due to Boost.Signals1
 # removal. No development, no maintenance, no homepage.
@@ -719,10 +724,6 @@ x11-drivers/xf86-video-voodoo
 # Eray Aslan <eras@gentoo.org> (01 Mar 2019)
 # Mask experimental software
 =mail-mta/postfix-3.5*
-
-# Miroslav Šulc <fordfrog@gentoo.org> (10 Feb 2019)
-# Depends on >=virtual/{jdk,jre}-11 which is masked
-=www-servers/tomcat-9.0.16
 
 # Dennis Lamm <expeditioneer@gentoo.org> (29 Jan 2019)
 # Depends on >=app-text/enchant-2.0.0 which is masked
