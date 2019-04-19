@@ -2964,7 +2964,7 @@ dev-libs/crossguid 0_pre20150817: Lightweight cross platform C++ GUID/UUID libra
 dev-libs/crypto++ 5.6.5-r1 7.0.0-r3: C++ class library of cryptographic schemes
 dev-libs/cvector 1.0.3-r1: An ANSI C implementation of dynamic arrays (Approximation of C++ vectors)
 dev-libs/cxxtools 2.2.1: Collection of general purpose C++-classes
-dev-libs/cyberjack 3.99.5_p11: REINER SCT cyberJack pinpad/e-com USB user space driver library
+dev-libs/cyberjack 3.99.5_p11 3.99.5_p13: REINER SCT cyberJack USB chipcard reader user space driver
 dev-libs/cyrus-sasl 2.1.26-r9 2.1.26-r10 2.1.27-r2: The Cyrus SASL (Simple Authentication and Security Layer)
 dev-libs/d0_blind_id 0.5: Blind-ID library for user identification using RSA blind signatures
 dev-libs/darts 0.32: A C++ template library that implements Double-Array
@@ -5838,7 +5838,7 @@ dev-ruby/activemodel 5.1.6.2: Toolkit for building modeling frameworks like Acti
 dev-ruby/activesupport 5.1.6.2: Utility Classes and Extension to the Standard Library
 dev-ruby/addressable 2.5.2: A replacement for the URI implementation that is part of Ruby's standard library
 dev-ruby/allison 2.0.3-r3: A modern, pretty RDoc template
-dev-ruby/archive-tar-minitar 0.6.1: Provides POSIX tarchive management from Ruby programs
+dev-ruby/archive-tar-minitar 0.6.1 0.8: Provides POSIX tarchive management from Ruby programs
 dev-ruby/asciidoctor 1.5.7.1: Processor for converting AsciiDoc into HTML 5, DocBook 4.5 and other formats
 dev-ruby/asciimath 1.0.4: A pure Ruby AsciiMath parsing and conversion library
 dev-ruby/atomic 1.1.101: An atomic reference implementation for JRuby, Rubinius, and MRI
@@ -8721,7 +8721,7 @@ net-libs/libblkmaker 0.3.2: C implementation of getblocktemplate (BIP 22)
 net-libs/libcapi 3.0.7-r1: CAPI library used by AVM products
 net-libs/libdmapsharing 2.9.39: A library that implements the DMAP family of protocols
 net-libs/libecap 0.2.0 1.0.0: API for implementing ICAP content analysis and adaptation
-net-libs/libesmtp 1.0.6-r1: lib that implements the client side of the SMTP protocol
+net-libs/libesmtp 1.0.6-r1 1.0.6-r3: lib that implements the client side of the SMTP protocol
 net-libs/libetpan 1.8: A portable, efficient middleware for different kinds of mail access
 net-libs/libgadu 1.11.4 1.12.2: This library implements the client side of the Gadu-Gadu protocol
 net-libs/libgfbgraph 0.2.3-r1: A GObject library for Facebook Graph API
