@@ -800,6 +800,17 @@ glibc_do_configure() {
 
 	# Some of the tests are written in C++, so we need to force our multlib abis in, bug 623548
 	export CXX="$(tc-getCXX ${CTARGET}) $(get_abi_CFLAGS) ${CFLAGS}"
+
+	if is_crosscompile; then
+		# Assume worst-case bootstrap: glibc is buil first time
+		# when ${CTARGET}-g++ is not available yet. We avoid
+		# building auxiliary programs that require C++: bug #683074
+		# It should not affect final result.
+		export libc_cv_cxx_link_ok=no
+		# The line above has the same effect. We set CXX explicitly
+		# to make build logs less confusing.
+		export CXX=
+	fi
 	einfo " $(printf '%15s' 'Manual CXX:')   ${CXX}"
 
 	echo
