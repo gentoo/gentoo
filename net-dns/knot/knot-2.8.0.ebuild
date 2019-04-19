@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit systemd user
 
@@ -26,27 +26,28 @@ KNOT_MODULES=(
 	"+synthrecord"
 	"+whoami"
 )
-IUSE="doc caps +fastparser idn libidn2 systemd +utils ${KNOT_MODULES[@]}"
+IUSE="doc caps +fastparser idn +libidn2 systemd +utils ${KNOT_MODULES[@]}"
 
 RDEPEND="
 	dev-db/lmdb
 	dev-libs/libedit
 	dev-libs/userspace-rcu:=
 	dev-python/lmdb
-	net-libs/gnutls
+	net-libs/gnutls:=
 	caps? ( sys-libs/libcap-ng )
 	dnstap? (
 		dev-libs/fstrm
-		dev-libs/protobuf-c
+		dev-libs/protobuf-c:=
 	)
-	geoip? ( dev-libs/libmaxminddb )
+	geoip? ( dev-libs/libmaxminddb:= )
 	idn? (
-		!libidn2? ( net-dns/libidn:* )
-		libidn2? ( net-dns/libidn2 )
+		!libidn2? ( net-dns/libidn:0= !net-dns/libidn2 )
+		libidn2? ( net-dns/libidn2:= )
 	)
-	systemd? ( sys-apps/systemd )
+	systemd? ( sys-apps/systemd:= )
 "
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	virtual/pkgconfig
 	doc? ( dev-python/sphinx )
 "
@@ -89,7 +90,7 @@ src_test() {
 src_install() {
 	default
 
-	rmdir "${D}var/run/${PN}" "${D}var/run/" || die
+	rmdir "${D}/var/run/${PN}" "${D}/var/run/" || die
 	keepdir /var/lib/${PN}
 
 	newinitd "${FILESDIR}/knot.init" knot

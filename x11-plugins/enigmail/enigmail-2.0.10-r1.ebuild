@@ -44,6 +44,8 @@ DEPEND="${RDEPEND}
 	dev-lang/perl
 	"
 
+PATCHES=( "${FILESDIR}"/enigmail-no_pEp_auto_download.patch )
+
 src_compile() {
 	emake ipc public ui package lang stdlib
 	emake xpi
