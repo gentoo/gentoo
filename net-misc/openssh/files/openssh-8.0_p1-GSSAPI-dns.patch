@@ -5,7 +5,7 @@ index 8696f258..f4cd70a3 100644
 @@ -723,120 +723,6 @@ fakepw(void)
  	return (&fake);
  }
- 
+
 -/*
 - * Returns the remote DNS hostname as a string. The returned string must not
 - * be freed. NB. this will usually trigger a DNS query the first time it is
@@ -272,7 +272,7 @@ index 71a5c795..2a8c6990 100644
 @@ -993,6 +996,10 @@ parse_time:
  		intptr = &options->gss_deleg_creds;
  		goto parse_flag;
- 
+
 +	case oGssTrustDns:
 +		intptr = &options->gss_trust_dns;
 +		goto parse_flag;
@@ -342,10 +342,10 @@ index dffee90b..a25a32b9 100644
 +
 +	if (options.gss_trust_dns) {
 +		extern const char *auth_get_canonical_hostname(struct ssh *ssh, int use_dns);
-+		gss_host = auth_get_canonical_hostname(active_state, 1);
++		gss_host = auth_get_canonical_hostname(ssh, 1);
 +	} else
 +		gss_host = authctxt->host;
- 
+
  	/* Try one GSSAPI method at a time, rather than sending them all at
  	 * once. */
 @@ -712,7 +719,7 @@ userauth_gssapi(struct ssh *ssh)
