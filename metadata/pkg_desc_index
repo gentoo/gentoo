@@ -5250,7 +5250,7 @@ dev-python/piddle 1.0.15-r1: Cross-media, cross-platform 2D graphics package
 dev-python/piexif 1.0.12: Exif manipulation with pure Python
 dev-python/pika 0.10.0: Pure-Python implementation of the AMQP
 dev-python/pika-pool 0.1.3: A connection pool for pika.
-dev-python/pillow 3.4.2-r1 5.2.0 5.4.1: Python Imaging Library (fork)
+dev-python/pillow 3.4.2-r1 5.2.0 5.4.1 6.0.0: Python Imaging Library (fork)
 dev-python/pip 7.1.2 9.0.1-r1: Installs python packages -- replacement for easy_install
 dev-python/pkgconfig 1.2.2: Interface Python with pkg-config
 dev-python/pkginfo 1.2.1: Provides an API for querying the distutils metadata written in a PKG-INFO file
@@ -5494,6 +5494,7 @@ dev-python/python-poppler-qt5 0.24.2_p20170214: A python binding for libpoppler-
 dev-python/python-ptrace 0.8.1-r1: A debugger using ptrace (Linux, BSD and Darwin system call to trace processes)
 dev-python/python-saharaclient 1.1.0 1.5.0: This is a client for the OpenStack Sahara API, aka HADOOP
 dev-python/python-senlinclient 1.0.0 1.2.0: A client for the OpenStack Senlin API
+dev-python/python-sense-hat 2.2.0-r1: Raspberry Pi Sense HAT python library
 dev-python/python-slip 0.6.5: Miscellaneous convenience, extension and workaround code for Python
 dev-python/python-sqlparse 0.2.3 0.2.4: A non-validating SQL parser module for Python
 dev-python/python-swiftclient 3.0.0 3.1.0 3.3.0 3.4.0 3.5.0: Python bindings to the OpenStack Object Storage API
@@ -5565,6 +5566,7 @@ dev-python/rpyc 3.4.4: Remote Python Call (RPyC), a transparent and symmetric RP
 dev-python/rsa 3.2.3-r1: Pure-Python RSA implementation
 dev-python/rst-linker 1.7 1.9-r1: Sphinx plugin to add links and timestamps to the changelog
 dev-python/rst2pdf 0.93-r3: Tool for transforming reStructuredText to PDF using ReportLab
+dev-python/rtimulib 7.2.1-r1: Python Binding for RTIMULib, a versatile IMU library
 dev-python/rtslib-fb 2.1.62 2.1.66 2.1.66-r1: A Python object API for managing the Linux LIO kernel target
 dev-python/ruamel-std-pathlib 0.6.3: Ruamel enhancements to pathlib and pathlib2
 dev-python/ruamel-yaml 0.15.35: YAML parser/emitter that supports roundtrip comment preservation
@@ -6373,7 +6375,7 @@ dev-util/obs-service-set_version 0.3: Open Build Service client module - set_ver
 dev-util/obs-service-source_validator 0.3: Open Build Service client module - source_validator service
 dev-util/obs-service-tar_scm 0.3.1: Open Build Service client module - tar_scm service
 dev-util/obs-service-verify_file 20130403: Open Build Service client module - verify_file service
-dev-util/oprofile 1.2.0-r1: A transparent low-overhead system-wide profiler
+dev-util/oprofile 1.2.0-r1 1.3.0: A transparent low-overhead system-wide profiler
 dev-util/osc 0.152.0: Command line tool for Open Build Service
 dev-util/patchbin 20160208: Apply binary patches without git
 dev-util/patchelf 0.8: Small utility to modify the dynamic linker and RPATH of ELF executables
