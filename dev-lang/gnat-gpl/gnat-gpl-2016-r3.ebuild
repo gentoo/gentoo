@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -146,6 +146,8 @@ src_prepare() {
 	epatch "${FILESDIR}/${P}-finalization.patch"
 	# add profile for gnat_util compatibility
 	epatch "${FILESDIR}/${P}-profile.patch"
+	# fix missing ustat.h
+	epatch "${FILESDIR}/${P}-ustat.patch"
 
 	toolchain_src_prepare
 
