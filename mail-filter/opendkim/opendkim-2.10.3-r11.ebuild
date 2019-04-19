@@ -40,7 +40,7 @@ REQUIRED_USE="sasl? ( ldap )"
 
 PATCHES=(
 	"${FILESDIR}/${P}-openrc.patch"
-	"${FILESDIR}/${P}-openssl-1.1.1.patch"
+	"${FILESDIR}/${P}-openssl-1.1.1.patch.r2"
 )
 
 pkg_setup() {
