@@ -363,9 +363,10 @@ src_compile() {
 		use iconv && use !elibc_glibc && nlsiconv+=( -liconv )
 		git_emake EXTLIBS="${EXTLIBS} ${nlsiconv[@]}" \
 			|| die "emake svn-fe failed"
+		git_emake svn-fe.1 || die "emake svn-fe.1 failed"
 		if use doc ; then
-			git_emake svn-fe.{1,html} \
-				|| die "emake svn-fe.1 svn-fe.html failed"
+			git_emake svn-fe.html \
+				|| die "svn-fe.html failed"
 		fi
 		popd &>/dev/null || die
 	fi
@@ -377,8 +378,8 @@ src_compile() {
 	fi
 
 	pushd contrib/subtree &>/dev/null || die
-	git_emake
-	use doc && git_emake doc
+	git_emake git-subtree{,.1}
+	use doc && git_emake git-subtree.html
 	popd &>/dev/null || die
 
 	pushd contrib/diff-highlight &>/dev/null || die
@@ -394,9 +395,7 @@ src_compile() {
 }
 
 src_install() {
-	git_emake \
-		install || \
-		die "make install failed"
+	git_emake install || die "make install failed"
 
 	if [[ ${CHOST} == *-darwin* ]]; then
 		dobin contrib/credential/osxkeychain/git-credential-osxkeychain
@@ -446,9 +445,9 @@ src_install() {
 
 	# git-subtree
 	pushd contrib/subtree &>/dev/null || die
-	git_emake install || die "Failed to emake install git-subtree"
+	git_emake install install-man || die "Failed to emake install install-man git-subtree"
 	if use doc ; then
-		git_emake install-man install-doc || die "Failed to emake install-doc install-mangit-subtree"
+		git_emake install-html || die "Failed to emake install-html git-subtree"
 	fi
 	newdoc README README.git-subtree
 	dodoc git-subtree.txt
@@ -483,9 +482,9 @@ src_install() {
 	if use subversion ; then
 		pushd contrib/svn-fe &>/dev/null || die
 		dobin svn-fe
+		doman svn-fe.1
 		dodoc svn-fe.txt
 		if use doc ; then
-			doman svn-fe.1
 			docinto html
 			dodoc svn-fe.html
 		fi
