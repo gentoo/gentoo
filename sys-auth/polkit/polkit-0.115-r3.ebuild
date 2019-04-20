@@ -11,10 +11,10 @@ SRC_URI="https://www.freedesktop.org/software/${PN}/releases/${P}.tar.gz"
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
-IUSE="elogind examples gtk +introspection jit kde nls pam selinux systemd test"
+KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~mips ppc ppc64 s390 ~sh ~sparc x86"
+IUSE="consolekit elogind examples gtk +introspection jit kde nls pam selinux systemd test"
 
-REQUIRED_USE="?? ( elogind systemd )"
+REQUIRED_USE="^^ ( consolekit elogind systemd )"
 
 CDEPEND="
 	dev-lang/spidermonkey:52[-debug]
@@ -43,12 +43,12 @@ RDEPEND="${CDEPEND}
 	selinux? ( sec-policy/selinux-policykit )
 "
 PDEPEND="
+	consolekit? ( sys-auth/consolekit[policykit] )
 	gtk? ( || (
 		>=gnome-extra/polkit-gnome-0.105
 		>=lxde-base/lxsession-0.5.2
 	) )
 	kde? ( kde-plasma/polkit-kde-agent )
-	!systemd? ( !elogind? ( sys-auth/consolekit[policykit] ) )
 "
 
 DOCS=( docs/TODO HACKING NEWS README )
