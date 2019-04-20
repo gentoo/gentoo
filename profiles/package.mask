@@ -588,13 +588,6 @@ kde-apps/dolphin-plugins
 net-print/lprng
 net-print/magicfilter
 
-# Michał Górny <mgorny@gentoo.org> (21 Mar 2019)
-# Fails to build on modern systems.  Really bad quality ebuild (#670524)
-# with a growing pile of patches.  The current version dates back
-# to 2003.  The homepage is dead.  No reverse dependencies.
-# Removal in 30 days.  Bug #542924.
-dev-libs/libmcal
-
 # Miroslav Šulc <fordfrog@gentoo.org> (19 Mar 2019)
 # Depends on >=virtual/{jdk,jre}-11 which is masked
 =www-servers/tomcat-9.0.17
