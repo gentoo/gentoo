@@ -1,0 +1,11 @@
+BDEPEND=>=dev-vcs/git-1.8.2.1[curl]
+DEFINED_PHASES=configure install postinst prepare unpack
+DEPEND=dev-qt/qtcharts:5 dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtwidgets:5 x11-libs/libX11 x11-libs/libXrandr media-libs/mesa x11-libs/libdrm
+DESCRIPTION=Read current clocks of ATi/AMD Radeon cards
+EAPI=7
+HOMEPAGE=https://github.com/marazmista/radeon-profile
+LICENSE=GPL-2
+RDEPEND=dev-qt/qtcharts:5 dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtwidgets:5 x11-libs/libX11 x11-libs/libXrandr
+SLOT=0
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	git-r3	0d4635eeb5a96cd5315597a47eba25c9	multilib	b2f01ad412baf81650c23fcf0975fa33	qmake-utils	bdf97e69a34b864d6d545f4ec3143ff7	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
+_md5_=e5c04ca910bab42c9253e998ed9c64c0

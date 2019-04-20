@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install postinst prepare
+DEPEND=dev-qt/qtcharts:5 dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtwidgets:5 x11-libs/libX11 x11-libs/libXrandr media-libs/mesa x11-libs/libdrm
+DESCRIPTION=Read current clocks of ATi/AMD Radeon cards
+EAPI=7
+HOMEPAGE=https://github.com/marazmista/radeon-profile
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-qt/qtcharts:5 dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtwidgets:5 x11-libs/libX11 x11-libs/libXrandr
+SLOT=0
+SRC_URI=https://github.com/marazmista/radeon-profile/archive/20190311.tar.gz -> radeon-profile-20190311.tar.gz
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	b2f01ad412baf81650c23fcf0975fa33	qmake-utils	bdf97e69a34b864d6d545f4ec3143ff7	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
+_md5_=e5c04ca910bab42c9253e998ed9c64c0
