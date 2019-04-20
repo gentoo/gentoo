@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (20 Apr 2019)
+# Completely broken build system, massive maintenance
+# burden, no new release since 2014.
+# Removal in 30 days.  Bug #671432.
+sci-biology/cufflinks
+
 # James Le Cuirot <chewi@gentoo.org> (20 Apr 2019)
 # Ancient and long dead upstream. Use app-emulation/fs-uae
 # instead. Removal in 30 days. Bugs #432092, #602966.
