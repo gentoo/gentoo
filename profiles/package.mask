@@ -622,17 +622,10 @@ x11-libs/hippo-canvas
 # net-irc/bip: #674240, may need new snapshot, current ver is from 2013
 # net-irc/epic4: #677734, needs bump, current is from 2009, also #613120
 # net-irc/shadowircd:  #674528, dead homepage, last commits in 2012
-# net-mail/peephole: #675012, last release from 2006
 # net-mail/qpopper: #674896, discontinued, from 2011, also #541996
 # net-mail/up-imapproxy: #674234, last commits in 2016, also #643898
 # net-mail/uw-imap: #678606, last upstream release in 2011
 # net-mail/uw-mailutils: #674174, same as uw-imap
-# net-misc/sslwrap: #674524, last updated upstream in 2000
-# net-misc/stone: #675612, needs new snapshot, current ver is from 2008
-# net-misc/tn5250: #678684, last commits in 2012
-# net-proxy/ufdbguard: #677482, needs bump, current ver is from 2016
-# sys-apps/nca: #676240, last updated upstream in 2004
-# x11-plugins/wmpeople: revdep of net-mail/peephole, from 2004
 #
 # Removal in 30 days.
 app-crypt/keynote
@@ -652,23 +645,10 @@ net-im/climm
 net-irc/bip
 net-irc/epic4
 net-irc/shadowircd
-net-mail/peephole
 net-mail/qpopper
 net-mail/up-imapproxy
 net-mail/uw-imap
 net-mail/uw-mailutils
-net-misc/sslwrap
-net-misc/stone
-net-misc/tn5250
-net-proxy/ufdbguard
-sys-apps/nca
-x11-plugins/wmpeople
-
-# Michał Górny <mgorny@gentoo.org> (21 Mar 2019)
-# Last release in 2010.  No reverse dependencies.  No maintainer.
-# Apparently bundles libraries.
-# Removal in 30 days.  Bug #252500.
-dev-util/synopsis
 
 # Miroslav Šulc <fordfrog@gentoo.org> (19 Mar 2019)
 # Depends on >=virtual/{jdk,jre}-11 which is masked
