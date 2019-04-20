@@ -741,7 +741,6 @@ app-emulation/docker-compose 1.23.2: Multi-container orchestration for Docker
 app-emulation/docker-proxy 0.8.0_p20180411 0.8.0_p20180626 0.8.0_p20181207 0.8.0_p20190301: Docker container networking
 app-emulation/docker-runc 1.0.0_rc4_p20180122: runc container cli tools (docker fork)
 app-emulation/dosemu 1.4.1_pre20130107-r5: DOS Emulator
-app-emulation/e-uae 0.8.29_rc4-r3: The Ubiquitous Amiga Emulator with an emulation core largely based on WinUAE
 app-emulation/free42 2.0.20: An HP-42S Calculator Simulator
 app-emulation/ganeti 2.15.2-r5 2.15.2-r8: Ganeti is a virtual server management software tool
 app-emulation/ganeti-instance-debootstrap 0.11: Scripts to build Ganeti VMs with debootstrap
