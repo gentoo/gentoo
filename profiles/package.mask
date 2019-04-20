@@ -624,7 +624,6 @@ x11-libs/hippo-canvas
 # net-irc/shadowircd:  #674528, dead homepage, last commits in 2012
 # net-mail/qpopper: #674896, discontinued, from 2011, also #541996
 # net-mail/up-imapproxy: #674234, last commits in 2016, also #643898
-# net-mail/uw-imap: #678606, last upstream release in 2011
 #
 # Removal in 30 days.
 app-crypt/keynote
@@ -646,7 +645,6 @@ net-irc/epic4
 net-irc/shadowircd
 net-mail/qpopper
 net-mail/up-imapproxy
-net-mail/uw-imap
 
 # Miroslav Šulc <fordfrog@gentoo.org> (19 Mar 2019)
 # Depends on >=virtual/{jdk,jre}-11 which is masked
