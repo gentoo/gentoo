@@ -15,10 +15,10 @@ HOMEPAGE="https://www.virtualbox.org/"
 SRC_URI="https://download.virtualbox.org/virtualbox/${MY_PV}/${MY_P}.tar.bz2
 	https://dev.gentoo.org/~polynomial-c/${PN}/patchsets/${PN}-5.2.16-patches-02.tar.xz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2 dtrace? ( CDDL )"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="alsa debug doc headless java libressl lvm +opus pam pax_kernel pulseaudio +opengl python +qt5 +sdk +udev vboxwebsrv vnc"
+IUSE="alsa debug doc dtrace headless java libressl lvm +opus pam pax_kernel pulseaudio +opengl python +qt5 +sdk +udev vboxwebsrv vnc"
 
 RDEPEND="!app-emulation/virtualbox-bin
 	~app-emulation/virtualbox-modules-${PV}
@@ -422,6 +422,22 @@ src_install() {
 		dosym ${vbox_inst_path}/VBox /usr/bin/vboxwebsrv
 		newinitd "${FILESDIR}"/vboxwebsrv-initd vboxwebsrv
 		newconfd "${FILESDIR}"/vboxwebsrv-confd vboxwebsrv
+	fi
+
+	# Fix version string in extensions or else they don't get accepted
+	# by the virtualbox host process (see bug #438930)
+	find ExtensionPacks -type f -name "ExtPack.xml" -print0 \
+		| xargs --no-run-if-empty --null sed -i '/Version/s@_Gentoo@@' \
+		|| die
+
+	if use vnc ; then
+		insinto ${vbox_inst_path}/ExtensionPacks
+		doins -r ExtensionPacks/VNC
+	fi
+
+	if use dtrace ; then
+		insinto ${vbox_inst_path}/ExtensionPacks
+		doins -r ExtensionPacks/Oracle_VBoxDTrace_Extension_Pack
 	fi
 
 	if use doc ; then
