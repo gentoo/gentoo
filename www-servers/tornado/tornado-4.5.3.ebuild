@@ -20,7 +20,7 @@ IUSE="doc examples test"
 CDEPEND="
 	dev-python/certifi[${PYTHON_USEDEP}]
 	>=dev-python/pycurl-7.19.3.1[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep '>=dev-python/backports-ssl-match-hostname-3.5[${PYTHON_USEDEP}]' 'python2_7' 'python3_4')
+	$(python_gen_cond_dep '>=dev-python/backports-ssl-match-hostname-3.5[${PYTHON_USEDEP}]' 'python2_7')
 	|| (
 		>=dev-python/twisted-16.0.0[${PYTHON_USEDEP}]
 		(	$(python_gen_cond_dep 'dev-python/twisted-names[${PYTHON_USEDEP}]' 'python2_7')
@@ -63,6 +63,6 @@ python_install_all() {
 		insinto /usr/share/doc/${PF}/examples
 		doins -r demos/.
 		docompress -x /usr/share/doc/${PF}/examples
-fi
+	fi
 	distutils-r1_python_install_all
 }

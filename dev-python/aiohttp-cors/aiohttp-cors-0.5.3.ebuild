@@ -17,8 +17,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
-RDEPEND=">=dev-python/aiohttp-1.1.1[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep 'dev-python/typing[${PYTHON_USEDEP}]' python3_4)"
+RDEPEND=">=dev-python/aiohttp-1.1.1[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (

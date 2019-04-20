@@ -18,7 +18,7 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	$(python_gen_cond_dep 'dev-python/scandir[${PYTHON_USEDEP}]' -2 python3_4 )
+	$(python_gen_cond_dep 'dev-python/scandir[${PYTHON_USEDEP}]' -2 )
 	dev-python/six[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
