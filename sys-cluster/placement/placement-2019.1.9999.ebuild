@@ -102,4 +102,7 @@ python_install_all() {
 	insinto /etc/placement
 	insopts -m 0640 -o placement -g placement
 	newins "${DISTDIR}/placement.conf.sample-${PV}" placement.conf.sample
+
+	dobin tools/mysql-migrate-db.sh
+	dobin tools/postgresql-migrate-db.sh
 }
