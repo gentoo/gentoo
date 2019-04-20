@@ -1,5 +1,5 @@
 BDEPEND=>=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
-DEFINED_PHASES=compile install prepare
+DEFINED_PHASES=compile install prepare setup
 DEPEND=sys-apps/texinfo sys-devel/flex sys-devel/gettext virtual/yacc
 DESCRIPTION=A makefile framework for writing simple makefiles for complex tasks
 EAPI=7
@@ -9,4 +9,4 @@ LICENSE=GPL-3+
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~polynomial-c/kbuild-0.1.9998.3149-src.tar.xz
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
-_md5_=94b8630f0973c4cb9a400e9a5d13ae99
+_md5_=4bf3c3e7e7df81b4275e5eec64906e93
