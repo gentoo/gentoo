@@ -68,7 +68,7 @@ app-portage/layman cvs subversion test
 app-text/xmlto latex
 dev-libs/apr-util freetds odbc
 sys-apps/man-pages l10n_fr
-sys-apps/systemd cryptsetup policykit qrcode
+sys-apps/systemd cryptsetup qrcode
 sys-auth/pambase pam_krb5 pam_ssh passwdqc
 sys-block/thin-provisioning-tools test
 sys-devel/distcc gssapi
