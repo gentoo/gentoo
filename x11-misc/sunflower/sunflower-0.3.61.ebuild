@@ -24,7 +24,10 @@ DEPEND="${PYTHON_DEPS}"
 RDEPEND="${DEPEND}
 	>=dev-python/pygtk-2.15.0:2[${PYTHON_USEDEP}]
 	>=dev-python/notify-python-0.1[${PYTHON_USEDEP}]
-	gnome-base/librsvg:2"
+	gnome-base/librsvg:2
+	dev-python/chardet[${PYTHON_USEDEP}]
+	dev-python/pycairo[${PYTHON_USEDEP}]
+"
 
 S=${WORKDIR}/${MY_PN}-$MY_PV
 
