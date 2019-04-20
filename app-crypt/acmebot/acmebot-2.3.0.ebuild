@@ -28,7 +28,7 @@ CDEPEND="
 	>=dev-python/pydns-3.1.0:3[${PYTHON_USEDEP}]
 	>=dev-python/cryptography-2.1.4[${PYTHON_USEDEP}]
 	>=dev-python/asn1crypto-0.24.0[${PYTHON_USEDEP}]
-	>=dev-python/acme-0.25.1[${PYTHON_USEDEP}]
+	>=app-crypt/acme-0.25.1[${PYTHON_USEDEP}]
 	"
 RDEPEND="${CDEPEND}"
 DEPEND=""
