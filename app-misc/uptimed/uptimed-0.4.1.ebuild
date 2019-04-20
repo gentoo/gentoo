@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -33,16 +33,23 @@ src_configure() {
 src_install() {
 	local DOCS=( ChangeLog README.md TODO AUTHORS CREDITS INSTALL.cgi sample-cgi/* )
 	default
-	find "${ED}" \( -name '*.a' -o -name '*.la' \) -delete || die
-	keepdir /var/spool/uptimed
-	fowners uptimed:uptimed /var/spool/uptimed
+	find "${ED}" -name '*.la' -delete || die
+
+	local spooldir="/var/spool/${PN}"
+	keepdir ${spooldir}
+	fowners uptimed:uptimed ${spooldir}
+
 	newinitd "${FILESDIR}"/${PN}.init-r1 uptimed
 	systemd_dounit "${FILESDIR}/${PN}.service"
 }
 
 pkg_postinst() {
-	einfo "Fixing permissions in /var/spool/${PN}"
-	chown -R uptimed:uptimed /var/spool/${PN}
+	local spooldir="/var/spool/${PN}"
+	if [[ -d "${spooldir}" ]] ; then
+		einfo "Fixing permissions in ${spooldir}"
+		find ${spooldir} -type f -print0 \
+			| xargs --null chown uptimed:uptimed || die
+	fi
 	echo
 	elog "Start uptimed with '/etc/init.d/uptimed start' (for openRC)"
 	elog "or systemctl start uptimed (for systemd)"
