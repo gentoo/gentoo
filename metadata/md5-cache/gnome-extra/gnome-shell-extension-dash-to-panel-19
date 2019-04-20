@@ -10,4 +10,4 @@ RDEPEND=dev-libs/glib:2 app-eselect/eselect-gnome-shell-extensions >=gnome-base/
 SLOT=0
 SRC_URI=https://github.com/home-sweet-gnome/dash-to-panel/archive/v19.tar.gz -> gnome-shell-extension-dash-to-panel-19.tar.gz
 _eclasses_=gnome2-utils	532371cfcba45b2ab0d2950547c97d95	xdg-utils	14d00d009167652b1fa363e55effe213
-_md5_=e07548de94e823d88f2599149714b56b
+_md5_=170baab5da3318211be59afc6cfbd2fb
