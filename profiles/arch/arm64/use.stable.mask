@@ -8,10 +8,6 @@
 # sys-auth/consolekit will not be stabilised anymore.
 consolekit
 
-# Andreas Sturmlechner <asturm@gentoo.org> (31 Mar 2019)
-# sys-auth/elogind not stable yet. bug #682158
-elogind
-
 # Mart Raudsepp <leio@gentoo.org> (07 Feb 2019)
 # app-misc/tracker not stable yet
 tracker
