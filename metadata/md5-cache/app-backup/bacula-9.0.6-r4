@@ -2,7 +2,7 @@ DEFINED_PHASES=compile configure install postinst prepare setup
 DEPEND=dev-libs/gmp:0 !bacula-clientonly? ( postgres? ( dev-db/postgresql:=[threads] ) mysql? ( dev-db/mysql-connector-c:= ) sqlite? ( dev-db/sqlite:3 ) !bacula-nodir? ( virtual/mta ) ) qt5? ( dev-qt/qtsvg:5 x11-libs/qwt:6 ) logwatch? ( sys-apps/logwatch ) tcpd? ( >=sys-apps/tcp-wrappers-7.6 ) readline? ( sys-libs/readline:0 ) static? ( acl? ( virtual/acl[static-libs] ) sys-libs/zlib[static-libs] dev-libs/lzo[static-libs] sys-libs/ncurses:=[static-libs] ssl? ( !libressl? ( dev-libs/openssl:0=[static-libs] ) libressl? ( dev-libs/libressl:0=[static-libs] ) ) ) !static? ( acl? ( virtual/acl ) sys-libs/zlib dev-libs/lzo sys-libs/ncurses:= ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) ) ) virtual/pkgconfig >=app-portage/elt-patches-20170815
 DESCRIPTION=Featureful client/server network backup suite
 EAPI=6
-HOMEPAGE=http://www.bacula.org/
+HOMEPAGE=https://www.bacula.org/
 IUSE=acl bacula-clientonly bacula-nodir bacula-nosd examples ipv6 libressl logwatch mysql postgres qt5 readline +sqlite ssl static tcpd vim-syntax X
 KEYWORDS=~amd64 ~ppc ~sparc ~x86
 LICENSE=AGPL-3
@@ -11,4 +11,4 @@ REQUIRED_USE=!bacula-clientonly? ( ^^ ( mysql postgres sqlite ) ) static? ( bacu
 SLOT=0
 SRC_URI=mirror://sourceforge/bacula/bacula-9.0.6.tar.gz
 _eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	estack	43ddf5aaffa7a8d0482df54d25a66a1f	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	b2f01ad412baf81650c23fcf0975fa33	qmake-utils	bdf97e69a34b864d6d545f4ec3143ff7	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	b45201c4e6c096b98e250336954e64b9	user	8bd74731cafdcdad8f7a63637302e073
-_md5_=2c7fd86b0d3192f51008db3a67b5cffa
+_md5_=f052db95ac0fc6ce22c24d1fd838dd5f
