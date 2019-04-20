@@ -1,0 +1,17 @@
+Description: Usual double rounding issue with x87
+Author: Mathieu Malaterre <malat@debian.org>
+Bug-Debian: https://bugs.debian.org/909865
+Forwarded: https://github.com/openexr/openexr/issues/346
+Last-Update: 2018-12-19
+
+--- openexr-2.3.0.orig/IlmImfTest/Makefile.am
++++ openexr-2.3.0/IlmImfTest/Makefile.am
+@@ -54,6 +54,8 @@ IlmImfTest_SOURCES = main.cpp tmpDir.h t
+ 
+ AM_CPPFLAGS = -DILM_IMF_TEST_IMAGEDIR=\"$(srcdir)/\"
+ 
++AM_CPPFLAGS += -ffloat-store
++
+ if BUILD_IMFHUGETEST
+ IlmImfTest_SOURCES += testDeepScanLineHuge.cpp testDeepScanLineHuge.h
+ AM_CPPFLAGS += -DENABLE_IMFHUGETEST

@@ -31,6 +31,12 @@ PATCHES=(
 	"${FILESDIR}/${PN}-2.2.0-fix-config.h-collision.patch"
 	"${FILESDIR}/${PN}-2.2.0-Install-missing-header-files.patch"
 	"${FILESDIR}/${P}-fix-build-system.patch"
+	# From Debian
+	"${FILESDIR}/${PN}-2.3.0-tests-32bits.patch"
+	"${FILESDIR}/${PN}-2.3.0-skip-bogus-tests.patch"
+	"${FILESDIR}/${PN}-2.3.0-bigendian.patch"
+	"${FILESDIR}/${PN}-2.3.0-bigendian2.patch"
+	"${FILESDIR}/${PN}-2.3.0-tests-32bits-2.patch"
 )
 
 src_prepare() {
@@ -66,6 +72,5 @@ multilib_src_install_all() {
 		rm -rf "${ED%/}"/usr/share/doc/${PF}/examples || die
 	fi
 
-	# package provides .pc files
-	find "${D}" -name '*.la' -delete || die
+	find "${D}" -name '*.la' -type f -delete || die
 }
