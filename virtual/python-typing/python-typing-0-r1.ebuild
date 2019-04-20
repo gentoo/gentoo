@@ -14,4 +14,4 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
 	$(python_gen_cond_dep 'dev-python/typing[${PYTHON_USEDEP}]' \
-	'python2*' python3_4 pypy)"
+	'python2*' pypy)"

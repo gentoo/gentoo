@@ -52,8 +52,8 @@ DEPEND="
 		>=dev-python/sphinx_celery-1.3[${PYTHON_USEDEP}]
 		dev-python/jinja[${PYTHON_USEDEP}]
 		dev-python/sqlalchemy[${PYTHON_USEDEP}]
-		$(python_gen_cond_dep 'dev-python/typing[${PYTHON_USEDEP}]' python2_7 python3_4)
-		)"
+		$(python_gen_cond_dep 'dev-python/typing[${PYTHON_USEDEP}]' python2_7)
+	)"
 
 # testsuite needs it own source
 DISTUTILS_IN_SOURCE_BUILD=1

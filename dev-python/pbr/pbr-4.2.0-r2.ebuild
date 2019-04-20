@@ -35,7 +35,7 @@ DEPEND="
 		>=dev-python/testscenarios-0.4[${PYTHON_USEDEP}]
 		>=dev-python/testtools-2.2.0[${PYTHON_USEDEP}]
 		>=dev-python/virtualenv-14.0.6[${PYTHON_USEDEP}]
-		>=dev-python/stestr-2.1.0[$(python_gen_usedep python{2_7,3_4,3_5,3_6})]
+		>=dev-python/stestr-2.1.0[$(python_gen_usedep python{2_7,3_5,3_6})]
 		dev-python/sphinx[${PYTHON_USEDEP}]
 		dev-python/wheel[${PYTHON_USEDEP}]
 		dev-vcs/git

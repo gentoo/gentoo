@@ -19,7 +19,7 @@ IUSE="test"
 RDEPEND="
 	>=dev-python/blessings-1.5[${PYTHON_USEDEP}]
 	>=dev-python/wcwidth-0.1.4[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep 'dev-python/typing[${PYTHON_USEDEP}]' python{2_7,3_4})
+	$(python_gen_cond_dep 'dev-python/typing[${PYTHON_USEDEP}]' python2_7)
 "
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
