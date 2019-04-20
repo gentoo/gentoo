@@ -1,6 +1,10 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sergei Trofimovich <slyfox@gentoo.org> (20 Apr 2019)
+# No ffmpeg keywords on sparc
+media-sound/dir2ogg aac wma
+
 # Sergei Trofimovich <slyfox@gentoo.org> (28 Sep 2018)
 # No stable nftables yet. Let new iptables stabilization
 # to pick nftables up. Meanwhile keep old iptables off
