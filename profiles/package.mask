@@ -609,14 +609,12 @@ x11-libs/hippo-canvas
 # dev-util/skipfish: #675124, last upstream commit in 2012
 # dev-util/wsta: #674004, no fix upstream, also #631610, #674526
 # games-util/gtkevemon: #675988, upstream API shut down
-# mail-client/nail: #676008, last commit in 2010, also #508480
 #
 # Removal in 30 days.
 app-crypt/keynote
 dev-util/skipfish
 dev-util/wsta
 games-util/gtkevemon
-mail-client/nail
 
 # Miroslav Šulc <fordfrog@gentoo.org> (19 Mar 2019)
 # Depends on >=virtual/{jdk,jre}-11 which is masked
