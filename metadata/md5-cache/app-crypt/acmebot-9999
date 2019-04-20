@@ -1,0 +1,12 @@
+BDEPEND=>=dev-vcs/git-1.8.2.1[curl]
+DEFINED_PHASES=install unpack
+DESCRIPTION=Certificate manager bot using ACME protocol
+EAPI=7
+HOMEPAGE=https://github.com/plinss/acmebot
+IUSE=python_targets_python3_5 python_targets_python3_6
+LICENSE=GPL-3
+RDEPEND=>=dev-python/appdirs-1.4.3[python_targets_python3_5(-)?,python_targets_python3_6(-)?,-python_single_target_python3_5(-),-python_single_target_python3_6(-)] >=dev-python/pyparsing-2.2.0[python_targets_python3_5(-)?,python_targets_python3_6(-)?,-python_single_target_python3_5(-),-python_single_target_python3_6(-)] >=dev-python/packaging-16.8[python_targets_python3_5(-)?,python_targets_python3_6(-)?,-python_single_target_python3_5(-),-python_single_target_python3_6(-)] >=dev-python/pyopenssl-17.5.0[python_targets_python3_5(-)?,python_targets_python3_6(-)?,-python_single_target_python3_5(-),-python_single_target_python3_6(-)] >=dev-python/pydns-3.1.0:3[python_targets_python3_5(-)?,python_targets_python3_6(-)?,-python_single_target_python3_5(-),-python_single_target_python3_6(-)] >=dev-python/cryptography-2.1.4[python_targets_python3_5(-)?,python_targets_python3_6(-)?,-python_single_target_python3_5(-),-python_single_target_python3_6(-)] >=dev-python/asn1crypto-0.24.0[python_targets_python3_5(-)?,python_targets_python3_6(-)?,-python_single_target_python3_5(-),-python_single_target_python3_6(-)] >=dev-python/acme-0.25.1[python_targets_python3_5(-)?,python_targets_python3_6(-)?,-python_single_target_python3_5(-),-python_single_target_python3_6(-)]
+REQUIRED_USE=|| ( python_targets_python3_5 python_targets_python3_6 )
+SLOT=0
+_eclasses_=git-r3	0d4635eeb5a96cd5315597a47eba25c9	multibuild	40fe59465edacd730c644ec2bc197809	multilib	b2f01ad412baf81650c23fcf0975fa33	python-r1	ce1cd23cfdc1848e8e32743efe34f299	python-utils-r1	08e17157a6807add7db1f8d01e7e391f	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
+_md5_=06bae16c7bd01f6f04144c2d23d825b0
