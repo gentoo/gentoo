@@ -1,13 +1,13 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit desktop eutils
 
-CTF_V=1.05
-ROGUE_V=2.04
-XATRIX_V=2.05
+CTF_V=1.06
+ROGUE_V=2.05
+XATRIX_V=2.06
 
 DESCRIPTION="Quake 2 engine focused on single player"
 HOMEPAGE="https://www.yamagi.org/quake2/"
@@ -19,16 +19,12 @@ SRC_URI="https://deponie.yamagi.org/quake2/quake2-${PV}.tar.xz
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="+client ctf dedicated ogg openal +opengl rogue softrender xatrix"
+IUSE="+client ctf dedicated openal +opengl rogue softrender xatrix"
 REQUIRED_USE="|| ( client dedicated ) client? ( || ( opengl softrender ) )"
 
-RDEPEND="sys-libs/zlib:0=
+COMMON_DEPEND="
 	client? (
 		media-libs/libsdl2[video]
-		ogg? (
-			media-libs/libogg
-			media-libs/libvorbis
-		)
 		openal? ( media-libs/openal )
 		!openal? ( media-libs/libsdl2[sound] )
 		opengl? (
@@ -37,26 +33,24 @@ RDEPEND="sys-libs/zlib:0=
 		)
 	)
 "
+RDEPEND="${COMMON_DEPEND}
+	client? ( openal? ( media-libs/openal ) )
+"
 
-DEPEND="${RDEPEND}"
+DEPEND="${COMMON_DEPEND}"
 
 S="${WORKDIR}/quake2-${PV}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-respect-flags.patch
-	"${FILESDIR}"/${PN}-zlib.patch
 )
-DOCS=( CHANGELOG CONTRIBUTE README.md )
+DOCS=( CHANGELOG README.md doc/. )
 
 mymake() {
 	emake \
 		VERBOSE=1 \
-		DLOPEN_OPENAL=no \
-		WITH_CDA=no \
 		WITH_SYSTEMWIDE=yes \
 		WITH_SYSTEMDIR="${EPREFIX}"/usr/share/games/quake2 \
-		WITH_ZIP=yes \
-		WITH_OGG=$(usex ogg) \
 		WITH_OPENAL=$(usex openal) \
 		"$@"
 }
@@ -67,7 +61,7 @@ src_prepare() {
 		use ${addon} || continue
 
 		pushd "${WORKDIR}"/quake2-${addon}-* >/dev/null || die
-		eapply -l -- "${FILESDIR}"/${PN}-addon-respect-flags.patch
+		eapply -l -- "${FILESDIR}"/${PN}-addon-respect-flags-r2.patch
 		popd >/dev/null || die
 	done
 
