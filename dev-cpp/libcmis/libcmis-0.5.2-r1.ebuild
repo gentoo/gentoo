@@ -40,6 +40,8 @@ RDEPEND="${DEPEND}"
 
 RESTRICT="test"
 
+PATCHES=( "${FILESDIR}/${P}-icu-64.2.patch" )
+
 src_prepare() {
 	default
 	eautoreconf
