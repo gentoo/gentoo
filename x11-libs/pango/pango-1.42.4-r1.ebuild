@@ -7,7 +7,7 @@ GNOME2_LA_PUNT="yes"
 inherit gnome2 multilib-minimal toolchain-funcs
 
 DESCRIPTION="Internationalized text layout and rendering library"
-HOMEPAGE="http://www.pango.org/"
+HOMEPAGE="https://www.pango.org/"
 SRC_URI+=" https://dev.gentoo.org/~leio/distfiles/${P}-patchset.tar.xz"
 
 LICENSE="LGPL-2+ FTL"
