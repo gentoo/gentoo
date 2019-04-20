@@ -595,12 +595,6 @@ net-print/magicfilter
 # Removal in 30 days.  Bug #542924.
 dev-libs/libmcal
 
-# Michał Górny <mgorny@gentoo.org> (21 Mar 2019)
-# Library with no maintainer and no reverse dependencies.  Fails
-# to build with sandbox violations.
-# Removal in 30 days.  Bug #676190.
-x11-libs/hippo-canvas
-
 # Miroslav Šulc <fordfrog@gentoo.org> (19 Mar 2019)
 # Depends on >=virtual/{jdk,jre}-11 which is masked
 =www-servers/tomcat-9.0.17
