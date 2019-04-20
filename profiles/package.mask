@@ -615,7 +615,6 @@ x11-libs/hippo-canvas
 # net-analyzer/bro: #675014, needs bump, current version is from 2015
 # net-analyzer/ffp: #674244, dead homepage, current version added 2005
 # net-analyzer/nodebrain: #674796, last commits in 2015
-# net-analyzer/postal: #677478, last release in 2012
 #
 # Removal in 30 days.
 app-crypt/keynote
@@ -628,7 +627,6 @@ mail-filter/libdkim
 net-analyzer/bro
 net-analyzer/ffp
 net-analyzer/nodebrain
-net-analyzer/postal
 
 # Miroslav Šulc <fordfrog@gentoo.org> (19 Mar 2019)
 # Depends on >=virtual/{jdk,jre}-11 which is masked
