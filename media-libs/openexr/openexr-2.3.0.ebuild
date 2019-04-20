@@ -23,6 +23,8 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig[${MULTILIB_USEDEP}]
 "
 
+RESTRICT="test" # Tests broken upstream doesn't really care about them, bug #656680
+
 DOCS=( AUTHORS ChangeLog NEWS README.md )
 MULTILIB_WRAPPED_HEADERS=( /usr/include/OpenEXR/OpenEXRConfig.h )
 
