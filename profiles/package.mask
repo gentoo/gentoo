@@ -616,7 +616,6 @@ x11-libs/hippo-canvas
 # net-analyzer/ffp: #674244, dead homepage, current version added 2005
 # net-analyzer/nodebrain: #674796, last commits in 2015
 # net-analyzer/postal: #677478, last release in 2012
-# net-ftp/netkit-ftpd: #676000, last rel in 2000, also #236290, #540330
 #
 # Removal in 30 days.
 app-crypt/keynote
@@ -630,7 +629,6 @@ net-analyzer/bro
 net-analyzer/ffp
 net-analyzer/nodebrain
 net-analyzer/postal
-net-ftp/netkit-ftpd
 
 # Miroslav Šulc <fordfrog@gentoo.org> (19 Mar 2019)
 # Depends on >=virtual/{jdk,jre}-11 which is masked
