@@ -8,5 +8,5 @@ KEYWORDS=amd64 -arm ~arm64 ~mips x86
 LICENSE=GPL-2
 PDEPEND=unconfined? ( sec-policy/selinux-unconfined )
 SLOT=0
-SRC_URI=https://raw.githubusercontent.com/wiki/TresysTechnology/refpolicy/files/refpolicy-2.20180114.tar.bz2 https://dev.gentoo.org/~swift/patches/selinux-base-policy/patchbundle-selinux-base-policy-2.20180114-r1.tar.bz2
-_md5_=bcfa22d4c98af5b9a07d309091d623a3
+SRC_URI=https://raw.githubusercontent.com/wiki/TresysTechnology/refpolicy/files/refpolicy-2.20180114.tar.bz2 https://dev.gentoo.org/~perfinion/patches/selinux-base-policy/patchbundle-selinux-base-policy-2.20180114-r1.tar.bz2
+_md5_=df91de8d9f8543f273fefa54fa9aa18a

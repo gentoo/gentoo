@@ -8,5 +8,5 @@ KEYWORDS=amd64 -arm ~arm64 ~mips x86
 LICENSE=GPL-2
 RDEPEND=>=sys-apps/policycoreutils-2.8 virtual/udev
 SLOT=0
-SRC_URI=https://github.com/SELinuxProject/refpolicy/releases/download/RELEASE_2_20180701/refpolicy-2.20180701.tar.bz2 https://dev.gentoo.org/~swift/patches/selinux-base-policy/patchbundle-selinux-base-policy-2.20180701-r1.tar.bz2
-_md5_=b81a556fcc8fd26bc68fbf2381c0f358
+SRC_URI=https://github.com/SELinuxProject/refpolicy/releases/download/RELEASE_2_20180701/refpolicy-2.20180701.tar.bz2 https://dev.gentoo.org/~perfinion/patches/selinux-base-policy/patchbundle-selinux-base-policy-2.20180701-r1.tar.bz2
+_md5_=9ab898639cb806c0342c76ea78399872

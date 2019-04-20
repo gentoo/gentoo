@@ -8,4 +8,4 @@ LICENSE=GPL-2
 RDEPEND=>=sys-apps/policycoreutils-2.8 virtual/udev
 SLOT=0
 _eclasses_=git-r3	0d4635eeb5a96cd5315597a47eba25c9
-_md5_=2fc724b9e2781b1ce6541d1eb4045c0a
+_md5_=f50a35ee2788477f473a4b978c5c7504

@@ -9,5 +9,5 @@ LICENSE=GPL-2
 PDEPEND=unconfined? ( sec-policy/selinux-unconfined )
 RDEPEND==sec-policy/selinux-base-2.20180701-r2[systemd?]
 SLOT=0
-SRC_URI=https://github.com/SELinuxProject/refpolicy/releases/download/RELEASE_2_20180701/refpolicy-2.20180701.tar.bz2 https://dev.gentoo.org/~swift/patches/selinux-base-policy/patchbundle-selinux-base-policy-2.20180701-r2.tar.bz2
-_md5_=1f43343561c3b9ce63fdd3b730979ca7
+SRC_URI=https://github.com/SELinuxProject/refpolicy/releases/download/RELEASE_2_20180701/refpolicy-2.20180701.tar.bz2 https://dev.gentoo.org/~perfinion/patches/selinux-base-policy/patchbundle-selinux-base-policy-2.20180701-r2.tar.bz2
+_md5_=8217ecccdcff546f287da55e51c9cb22
