@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-USE_RUBY="ruby23 ruby24 ruby25"
+USE_RUBY="ruby24 ruby25 ruby26"
 
 RUBY_FAKEGEM_RECIPE_TEST="rake"
 RUBY_FAKEGEM_RECIPE_DOC="rdoc"
@@ -29,6 +29,8 @@ all_ruby_prepare() {
 	rm tests/bug_postfields_crash.rb || die
 	sed -e '/test_easy_http_verbs_must_respond_to_str/,/^  end/ s:^:#:' \
 		-i tests/tc_curl_easy.rb || die
+	sed -e '/test_connection_keepalive/aomit "network connection needed"' \
+		-i tests/tc_curl_multi.rb || die
 
 	# avoid failing tests where failure condition seems weird, no
 	# upstream travis so not clear if the test is indeed broken.
