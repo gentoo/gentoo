@@ -622,7 +622,6 @@ x11-libs/hippo-canvas
 # net-irc/bip: #674240, may need new snapshot, current ver is from 2013
 # net-irc/epic4: #677734, needs bump, current is from 2009, also #613120
 # net-irc/shadowircd:  #674528, dead homepage, last commits in 2012
-# net-mail/qpopper: #674896, discontinued, from 2011, also #541996
 #
 # Removal in 30 days.
 app-crypt/keynote
@@ -642,7 +641,6 @@ net-im/climm
 net-irc/bip
 net-irc/epic4
 net-irc/shadowircd
-net-mail/qpopper
 
 # Miroslav Šulc <fordfrog@gentoo.org> (19 Mar 2019)
 # Depends on >=virtual/{jdk,jre}-11 which is masked
