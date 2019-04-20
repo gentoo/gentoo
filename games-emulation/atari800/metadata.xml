@@ -25,5 +25,6 @@ ways :
 </longdescription>
   <upstream>
     <remote-id type="sourceforge">atari800</remote-id>
+    <remote-id type="github">atari800/atari800</remote-id>
   </upstream>
 </pkgmetadata>
