@@ -67,7 +67,7 @@ all_ruby_prepare() {
 	rm spec/lib/matchers/json.rb $( grep -Rl matchers/json spec) || die
 
 	# can't be run within portage.
-	epatch "${FILESDIR}/puppet-fix-tests-6.0.0.patch"
+	epatch "${FILESDIR}/puppet-fix-tests-6.4.1.patch"
 
 	# fix systemd path
 	epatch "${FILESDIR}/puppet-systemd.patch"
