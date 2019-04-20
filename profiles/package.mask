@@ -622,7 +622,6 @@ x11-libs/hippo-canvas
 # net-irc/bip: #674240, may need new snapshot, current ver is from 2013
 # net-irc/epic4: #677734, needs bump, current is from 2009, also #613120
 # net-irc/shadowircd:  #674528, dead homepage, last commits in 2012
-# net-mail/peephole: #675012, last release from 2006
 # net-mail/qpopper: #674896, discontinued, from 2011, also #541996
 # net-mail/up-imapproxy: #674234, last commits in 2016, also #643898
 # net-mail/uw-imap: #678606, last upstream release in 2011
@@ -651,7 +650,6 @@ net-im/climm
 net-irc/bip
 net-irc/epic4
 net-irc/shadowircd
-net-mail/peephole
 net-mail/qpopper
 net-mail/up-imapproxy
 net-mail/uw-imap
