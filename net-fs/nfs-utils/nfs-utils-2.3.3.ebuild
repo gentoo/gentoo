@@ -68,6 +68,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.2.8-cross-build.patch
 	"${FILESDIR}"/${PN}-2.3.2-junction_libs.patch
 	"${FILESDIR}"/${PN}-2.3.2-no-werror.patch
+	"${FILESDIR}"/${PN}-2.3.1-limits.patch #651080
 	"${FILESDIR}"/${PN}-2.3.4_rc2-improved_res_querydomain_check.patch #651080
 )
 

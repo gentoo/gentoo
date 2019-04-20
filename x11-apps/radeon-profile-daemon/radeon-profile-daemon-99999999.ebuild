@@ -27,6 +27,9 @@ src_prepare() {
 		-e '/^bin\.path/s@/bin@/sbin@' \
 		-e "/^service\.path/s@=.*\$@= $(systemd_get_systemunitdir)@" \
 		-i radeon-profile-daemon.pro || die
+	sed \
+		-e '/^ExecStart/s@/bin/@/sbin/@' \
+		-i extra/${PN}.service || die
 }
 
 src_configure() {
