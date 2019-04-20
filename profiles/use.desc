@@ -375,3 +375,4 @@ zeroconf - Support for DNS Service Discovery (DNS-SD)
 zip - Enable support for ZIP archives
 zlib - Add support for zlib (de)compression
 zsh-completion - Enable zsh completion support
+zstd - Enable support for ZSTD compression
