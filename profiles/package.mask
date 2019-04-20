@@ -611,7 +611,6 @@ x11-libs/hippo-canvas
 # games-util/gtkevemon: #675988, upstream API shut down
 # mail-client/nail: #676008, last commit in 2010, also #508480
 # mail-client/nmh: #676938, needs bump, 2014, also #676938, #680596
-# mail-filter/libdkim: #674892, no revdeps, last release in 2010
 #
 # Removal in 30 days.
 app-crypt/keynote
@@ -620,7 +619,6 @@ dev-util/wsta
 games-util/gtkevemon
 mail-client/nail
 mail-client/nmh
-mail-filter/libdkim
 
 # Miroslav Šulc <fordfrog@gentoo.org> (19 Mar 2019)
 # Depends on >=virtual/{jdk,jre}-11 which is masked
