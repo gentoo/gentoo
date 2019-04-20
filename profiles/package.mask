@@ -629,7 +629,6 @@ x11-libs/hippo-canvas
 # net-misc/sslwrap: #674524, last updated upstream in 2000
 # net-misc/stone: #675612, needs new snapshot, current ver is from 2008
 # net-misc/tn5250: #678684, last commits in 2012
-# net-proxy/ufdbguard: #677482, needs bump, current ver is from 2016
 #
 # Removal in 30 days.
 app-crypt/keynote
@@ -656,7 +655,6 @@ net-mail/uw-mailutils
 net-misc/sslwrap
 net-misc/stone
 net-misc/tn5250
-net-proxy/ufdbguard
 
 # Miroslav Šulc <fordfrog@gentoo.org> (19 Mar 2019)
 # Depends on >=virtual/{jdk,jre}-11 which is masked
