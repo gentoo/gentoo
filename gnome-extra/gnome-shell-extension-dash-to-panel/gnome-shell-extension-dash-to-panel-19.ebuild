@@ -30,8 +30,12 @@ S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
 	default
+
 	# Set correct version
 	export VERSION="${PV}"
+
+	# Don't install README and COPYING in unwanted locations
+	sed -i -e 's/COPYING//g' -e 's/README.md//g' Makefile || die
 }
 
 pkg_preinst() {
