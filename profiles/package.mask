@@ -606,11 +606,9 @@ x11-libs/hippo-canvas
 # openssl-1.1+.
 #
 # app-crypt/keynote: #675010, last updated upstream in 2000
-# dev-util/skipfish: #675124, last upstream commit in 2012
 #
 # Removal in 30 days.
 app-crypt/keynote
-dev-util/skipfish
 
 # Miroslav Šulc <fordfrog@gentoo.org> (19 Mar 2019)
 # Depends on >=virtual/{jdk,jre}-11 which is masked
