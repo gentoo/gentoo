@@ -154,6 +154,7 @@ RDEPEND="
 	>=dev-python/futurist-1.8.0[$(python_gen_usedep 'python2_7')]
 	dev-python/libvirt-python[${PYTHON_USEDEP}]
 	app-emulation/libvirt[iscsi?]
+	app-emulation/spice-html5
 	novncproxy? ( www-apps/novnc )
 	sys-apps/iproute2
 	openvswitch? ( net-misc/openvswitch )

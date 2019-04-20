@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,8 +6,8 @@ EAPI=7
 inherit flag-o-matic
 
 DESCRIPTION="microwave CAD software"
-HOMEPAGE="http://wwwhome.cs.utwente.nl/~ptdeboer/ham/puff/"
-SRC_URI="http://wwwhome.cs.utwente.nl/~ptdeboer/ham/${PN}/${P}.tgz"
+HOMEPAGE="https://wwwhome.cs.utwente.nl/~ptdeboer/ham/puff/"
+SRC_URI="https://wwwhome.cs.utwente.nl/~ptdeboer/ham/${PN}/${P}.tgz"
 
 LICENSE="GPL-3"
 SLOT="0"
