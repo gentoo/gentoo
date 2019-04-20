@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Alexys Jacob <ultrabug@gentoo.org> (20 Apr 2019)
+# Unmaintained. Only version in portage has been EOL for a while.
+# No strong user base or herd support. Breaks fuse-3.
+# Removal in 30 days.  Bug #650256, #673672.
+sys-cluster/moosefs
+
 # David Seifert <soap@gentoo.org> (20 Apr 2019)
 # Completely broken build system, massive maintenance
 # burden, no new release since 2014.
