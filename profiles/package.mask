@@ -601,15 +601,6 @@ dev-libs/libmcal
 # Removal in 30 days.  Bug #676190.
 x11-libs/hippo-canvas
 
-# Michał Górny <mgorny@gentoo.org> (21 Mar 2019)
-# The following packages are unmaintained and fail to build against
-# openssl-1.1+.
-#
-# app-crypt/keynote: #675010, last updated upstream in 2000
-#
-# Removal in 30 days.
-app-crypt/keynote
-
 # Miroslav Šulc <fordfrog@gentoo.org> (19 Mar 2019)
 # Depends on >=virtual/{jdk,jre}-11 which is masked
 =www-servers/tomcat-9.0.17
