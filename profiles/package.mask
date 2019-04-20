@@ -632,7 +632,6 @@ x11-libs/hippo-canvas
 # net-misc/tn5250: #678684, last commits in 2012
 # net-proxy/ufdbguard: #677482, needs bump, current ver is from 2016
 # sys-apps/nca: #676240, last updated upstream in 2004
-# x11-plugins/wmpeople: revdep of net-mail/peephole, from 2004
 #
 # Removal in 30 days.
 app-crypt/keynote
@@ -662,7 +661,6 @@ net-misc/stone
 net-misc/tn5250
 net-proxy/ufdbguard
 sys-apps/nca
-x11-plugins/wmpeople
 
 # Miroslav Šulc <fordfrog@gentoo.org> (19 Mar 2019)
 # Depends on >=virtual/{jdk,jre}-11 which is masked
