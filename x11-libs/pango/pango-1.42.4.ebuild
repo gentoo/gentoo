@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,7 +7,7 @@ GNOME2_LA_PUNT="yes"
 inherit gnome2 multilib-minimal toolchain-funcs
 
 DESCRIPTION="Internationalized text layout and rendering library"
-HOMEPAGE="http://www.pango.org/"
+HOMEPAGE="https://www.pango.org/"
 
 LICENSE="LGPL-2+ FTL"
 SLOT="0"
