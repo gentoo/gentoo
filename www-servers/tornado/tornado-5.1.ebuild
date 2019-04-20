@@ -57,6 +57,6 @@ python_install_all() {
 		insinto /usr/share/doc/${PF}/examples
 		doins -r demos/.
 		docompress -x /usr/share/doc/${PF}/examples
-fi
+	fi
 	distutils-r1_python_install_all
 }

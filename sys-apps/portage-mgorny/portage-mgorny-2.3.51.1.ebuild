@@ -30,7 +30,7 @@ RDEPEND="
 		>=app-portage/gemato-10[${PYTHON_USEDEP}]
 		app-shells/bash:0[readline]
 		$(python_gen_cond_dep 'dev-python/pyblake2[${PYTHON_USEDEP}]' \
-			python{2_7,3_4,3_5} pypy)
+			python{2_7,3_5} pypy)
 		>=dev-python/lxml-3.6.0[${PYTHON_USEDEP}]
 		>=sys-apps/sed-4.0.5
 	)
