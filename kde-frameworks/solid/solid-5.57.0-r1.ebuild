@@ -20,7 +20,7 @@ RDEPEND="
 	$(add_qt_dep qtwidgets)
 	$(add_qt_dep qtxml)
 	sys-fs/udisks:2
-	udev? ( virtual/udev )
+	udev? ( virtual/libudev:= )
 "
 DEPEND="${RDEPEND}
 	test? ( $(add_qt_dep qtconcurrent) )
