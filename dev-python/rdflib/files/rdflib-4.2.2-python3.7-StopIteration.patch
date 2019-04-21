@@ -1,0 +1,72 @@
+Traceback (most recent call last):
+  File "/var/tmp/portage/dev-python/rdflib-4.2.2/work/rdflib-4.2.2-python3_7/build/src/rdflib/plugins/sparql/evaluate.py", line 330, in evalSlice
+    next(res)
+StopIteration
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3.7/site-packages/nose/case.py", line 197, in runTest
+    self.test(*self.arg)
+  File "/var/tmp/portage/dev-python/rdflib-4.2.2/work/rdflib-4.2.2-python3_7/build/src/test/test_dawg.py", line 434, in query_test
+    set(res2)
+  File "/var/tmp/portage/dev-python/rdflib-4.2.2/work/rdflib-4.2.2-python3_7/build/src/rdflib/query.py", line 258, in __iter__
+    for b in self._genbindings:
+RuntimeError: generator raised StopIteration
+
+Patch backported from
+https://github.com/RDFLib/rdflib/commit/58c45d6f30af88a22f60edcb9a459648a885e226
+
+--- a/rdflib/plugins/sparql/evaluate.py
++++ b/rdflib/plugins/sparql/evaluate.py
+@@ -15,6 +15,7 @@
+ """
+ 
+ import collections
++import itertools
+ 
+ from rdflib import Variable, Graph, BNode, URIRef, Literal
+ 
+@@ -323,22 +324,9 @@
+ 
+ 
+ def evalSlice(ctx, slice):
+-    # import pdb; pdb.set_trace()
+     res = evalPart(ctx, slice.p)
+-    i = 0
+-    while i < slice.start:
+-        res.next()
+-        i += 1
+-    i = 0
+-    for x in res:
+-        i += 1
+-        if slice.length is None:
+-            yield x
+-        else:
+-            if i <= slice.length:
+-                yield x
+-            else:
+-                break
++
++    return itertools.islice(res, slice.start, slice.start+slice.length if slice.length is not None else None)
+ 
+ 
+ def evalReduced(ctx, part):
+--- a/rdflib/query.py
++++ b/rdflib/query.py
+@@ -1,5 +1,6 @@
+ 
+ import os
++import itertools
+ import shutil
+ import tempfile
+ import warnings
+@@ -181,7 +182,7 @@
+         return self._bindings
+ 
+     def _set_bindings(self, b):
+-        if isinstance(b, types.GeneratorType):
++        if isinstance(b, (types.GeneratorType, itertools.islice)):
+             self._genbindings = b
+             self._bindings = []
+         else:
