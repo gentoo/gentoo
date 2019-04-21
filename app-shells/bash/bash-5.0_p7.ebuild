@@ -67,8 +67,8 @@ PATCHES=(
 	# Patches from Chet sent to bashbug ml
 	"${FILESDIR}"/${PN}-5.0-history-zero-length.patch
 	"${FILESDIR}"/${PN}-5.0-history-append.patch
-	"${FILESDIR}"/${PN}-5.0-optimize-connection-fork.patch
 	"${FILESDIR}"/${PN}-5.0-syslog-history-extern.patch
+	"${FILESDIR}"/${PN}-5.0-assignment-preceding-builtin.patch
 )
 
 pkg_setup() {
