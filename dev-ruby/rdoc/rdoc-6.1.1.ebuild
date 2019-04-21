@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -27,6 +27,7 @@ RDEPEND+=">=app-eselect/eselect-ruby-20181225"
 ruby_add_bdepend "
 	>=dev-ruby/kpeg-1.1.0-r1
 	>dev-ruby/racc-1.4.10
+	dev-ruby/rake
 	test? (
 		dev-ruby/bundler
 		>=dev-ruby/minitest-5.8:5
