@@ -25,7 +25,8 @@ DEPEND="${DEPEND}
 	dev-util/ragel"
 
 ruby_add_bdepend "dev-ruby/rake
-	doc? ( dev-ruby/rdoc )"
+	doc? ( dev-ruby/rdoc )
+	test? ( dev-ruby/test-unit:2 )"
 
 all_ruby_prepare() {
 	# Avoid building the extension twice!
