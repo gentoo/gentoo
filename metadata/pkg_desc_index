@@ -1908,7 +1908,7 @@ dev-db/oracle-instantclient-jdbc 11.2.0.3 11.2.0.4: Oracle 11g Instant Client: J
 dev-db/oracle-instantclient-odbc 11.2.0.3 11.2.0.4: Oracle 11g Instant Client: ODBC supplement
 dev-db/oracle-instantclient-sqlplus 11.2.0.3 11.2.0.3-r1 11.2.0.4: Oracle 11g Instant Client: SQL*Plus
 dev-db/percona-toolkit 2.2.11 2.2.20 3.0.13: Advanced command-line tools to perform a variety of MySQL and system tasks
-dev-db/percona-xtrabackup 2.4.12 2.4.13: Hot backup utility for MySQL based servers
+dev-db/percona-xtrabackup 2.4.13: Hot backup utility for MySQL based servers
 dev-db/pg_top 3.7.0: 'top' for PostgreSQL
 dev-db/pgadmin4 3.0 4.3: GUI administration and development platform for PostgreSQL
 dev-db/pgagent 3.4.0-r3: pgAgent is a job scheduler for PostgreSQL
@@ -2949,7 +2949,7 @@ dev-libs/beignet 1.3.2: OpenCL implementation for Intel GPUs
 dev-libs/bglibs 1.041 1.106-r1: Bruce Guenters Libraries Collection
 dev-libs/bitset 2.8.4-r1: A compressed bitset with supporting data structures and algorithms
 dev-libs/boehm-gc 7.2e 7.4.2 7.6.4: The Boehm-Demers-Weiser conservative garbage collector
-dev-libs/boost 1.63.0 1.65.0: Boost Libraries for C++
+dev-libs/boost 1.65.0: Boost Libraries for C++
 dev-libs/botan 1.10.17-r2 2.7.0 2.9.0: A C++ crypto library
 dev-libs/btparser 0.26: Parser and analyzer for backtraces produced by GDB
 dev-libs/c-blosc 1.11.2: Blocking, shuffling and lossless compression library
@@ -6255,7 +6255,7 @@ dev-util/bbe 0.2.2: Sed-like editor for binary files
 dev-util/bcpp 20150811-r1: Indents C/C++ source code
 dev-util/biew 6.1.0-r3: A portable viewer of binary files, hexadecimal and disassembler modes
 dev-util/bitcoin-tx 0.16.3: Command-line Bitcoin transaction tool
-dev-util/boost-build 1.63.0 1.65.0: A system for large project software construction, simple to use and powerful
+dev-util/boost-build 1.65.0: A system for large project software construction, simple to use and powerful
 dev-util/bsdiff 4.3-r3: bsdiff: Binary Differencer using a suffix alg
 dev-util/buildbot 0.8.12-r3: BuildBot build automation system
 dev-util/buildbot-slave 0.8.12: BuildBot Slave Daemon
@@ -11435,9 +11435,9 @@ xfce-extra/xfce4-mailwatch-plugin 1.2.0-r1: An mail notification panel plug-in f
 xfce-extra/xfce4-mount-plugin 1.1.3: An mount plug-in for the Xfce panel
 xfce-extra/xfce4-mpc-plugin 0.5.1: Music Player Daemon (mpd) panel plugin
 xfce-extra/xfce4-netload-plugin 1.3.1: A network load plug-in for the Xfce panel
-xfce-extra/xfce4-notes-plugin 1.8.1: Xfce4 panel sticky notes plugin
+xfce-extra/xfce4-notes-plugin 1.8.1 1.8.1-r1: Xfce4 panel sticky notes plugin
 xfce-extra/xfce4-notifyd 0.4.3-r1: Notification daemon for the Xfce desktop environment
-xfce-extra/xfce4-places-plugin 1.7.0: A panel plug-in to provide quick access to files, folders and removable media
+xfce-extra/xfce4-places-plugin 1.7.0 1.7.0-r1: A panel plug-in to provide quick access to files, folders and removable media
 xfce-extra/xfce4-power-manager 1.6.1: Power manager for the Xfce desktop environment
 xfce-extra/xfce4-pulseaudio-plugin 0.4.1: A panel plug-in for PulseAudio volume control
 xfce-extra/xfce4-screenshooter 1.9.3 1.9.5: Xfce4 screenshooter application and panel plugin
@@ -11445,14 +11445,14 @@ xfce-extra/xfce4-sensors-plugin 1.3.0-r1: A panel plug-in for acpi, lm_sensors a
 xfce-extra/xfce4-smartbookmark-plugin 0.5.0: Smart bookmark plug-in for the Xfce desktop environment
 xfce-extra/xfce4-systemload-plugin 1.2.2: System load plug-in for Xfce panel
 xfce-extra/xfce4-taskmanager 1.2.1 1.2.2: Easy to use task manager
-xfce-extra/xfce4-time-out-plugin 1.0.2: A panel plug-in to take periodical breaks from the computer
+xfce-extra/xfce4-time-out-plugin 1.0.2 1.0.2-r1: A panel plug-in to take periodical breaks from the computer
 xfce-extra/xfce4-timer-plugin 1.7.0: A simple timer plug-in for the Xfce desktop environment
-xfce-extra/xfce4-vala 4.10.3-r3: Vala bindings for the Xfce desktop environment
+xfce-extra/xfce4-vala 4.10.3-r3 4.10.3-r5: Vala bindings for the Xfce desktop environment
 xfce-extra/xfce4-verve-plugin 2.0.0: A comfortable command line plugin for the Xfce panel
 xfce-extra/xfce4-volumed-pulse 0.2.3: Daemon to control volume up/down and mute keys for pulseaudio
 xfce-extra/xfce4-wavelan-plugin 0.6.0: A panel plug-in to display wireless interface statistics
 xfce-extra/xfce4-weather-plugin 0.9.1: A weather plug-in for the Xfce desktop environment
 xfce-extra/xfce4-whiskermenu-plugin 2.3.2: Alternate application launcher for Xfce
-xfce-extra/xfce4-windowck-plugin 0.2.4: Xfce plugin puts the maximized window title and windows buttons on the panel
+xfce-extra/xfce4-windowck-plugin 0.2.4 0.4.5: Xfce plugin puts the maximized window title and windows buttons on the panel
 xfce-extra/xfce4-xkb-plugin 0.8.1: XKB layout switching panel plug-in for the Xfce desktop environment
-xfce-extra/xfdashboard 0.4.0: Maybe a GNOME shell like dashboard for the Xfce desktop environment
+xfce-extra/xfdashboard 0.4.0 0.6.1: Maybe a GNOME shell like dashboard for the Xfce desktop environment
