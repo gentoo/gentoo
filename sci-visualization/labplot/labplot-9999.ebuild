@@ -15,6 +15,7 @@ LICENSE="GPL-2"
 KEYWORDS=""
 IUSE="cantor fftw fits hdf5 libcerf netcdf root"
 
+# not packaged: dev-qt/qtmqtt, bug 683994
 BDEPEND="
 	sys-devel/bison
 	sys-devel/gettext
@@ -28,6 +29,7 @@ DEPEND="
 	$(add_frameworks_dep ki18n)
 	$(add_frameworks_dep kiconthemes)
 	$(add_frameworks_dep knewstuff)
+	$(add_frameworks_dep kcrash)
 	$(add_frameworks_dep ktextwidgets)
 	$(add_frameworks_dep kwidgetsaddons)
 	$(add_frameworks_dep kxmlgui)
@@ -67,7 +69,8 @@ src_configure() {
 		-DENABLE_LIBCERF=$(usex libcerf)
 		-DENABLE_NETCDF=$(usex netcdf)
 		-DENABLE_ROOT=$(usex root)
-		-DENABLE_TEST=$(usex test)
+		-DENABLE_TESTS=$(usex test)
+		-DENABLE_MQTT=OFF
 	)
 
 	kde5_src_configure
