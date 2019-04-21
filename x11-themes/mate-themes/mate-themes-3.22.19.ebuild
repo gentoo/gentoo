@@ -7,9 +7,9 @@ inherit autotools xdg
 
 MATE_GTK_V="$(ver_cut 1-2)"
 
-HOMEPAGE="http://mate-desktop.org"
+HOMEPAGE="https://mate-desktop.org"
 DESCRIPTION="A set of MATE themes, with sets for users with limited or low vision"
-SRC_URI="http://pub.mate-desktop.org/releases/themes/${MATE_GTK_V}/${P}.tar.xz"
+SRC_URI="https://pub.mate-desktop.org/releases/themes/${MATE_GTK_V}/${P}.tar.xz"
 
 LICENSE="LGPL-2.1 GPL-3"
 SLOT="0/${MATE_GTK_V}"
