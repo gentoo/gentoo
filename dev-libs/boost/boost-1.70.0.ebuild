@@ -171,6 +171,7 @@ src_configure() {
 		$(usex nls '' '--without-locale')
 		$(usex context '' '--without-context --without-coroutine --without-fiber')
 		$(usex threads '' '--without-thread')
+		--without-stacktrace
 		--boost-build="${EPREFIX}"/usr/share/boost-build
 		--prefix="${ED}/usr"
 		--layout=system
