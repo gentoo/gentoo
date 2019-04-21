@@ -25,7 +25,6 @@ SLOT="0"
 LICENSE="vim"
 IUSE="X acl cscope debug gpm lua luajit minimal nls perl python racket ruby selinux tcl terminal vim-pager"
 REQUIRED_USE="
-	luajit? ( lua )
 	python? ( ${PYTHON_REQUIRED_USE} )
 	vim-pager? ( !minimal )
 "
@@ -143,7 +142,7 @@ src_prepare() {
 }
 
 src_configure() {
-	local myconf=( --enable-multibyte )
+	local myconf=()
 
 	# Fix bug 37354: Disallow -funroll-all-loops on amd64
 	# Bug 57859 suggests that we want to do this for all archs
