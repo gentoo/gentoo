@@ -10,7 +10,7 @@ if [[ ${PV} != 9999 ]]; then
 fi
 
 DESCRIPTION="MATE session manager"
-HOMEPAGE="http://mate-desktop.org/"
+HOMEPAGE="https://mate-desktop.org/"
 
 LICENSE="GPL-2 LGPL-2 FDL-1.1"
 SLOT="0"
