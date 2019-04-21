@@ -26,7 +26,6 @@ SLOT="0"
 LICENSE="vim"
 IUSE="acl aqua cscope debug gtk gtk2 lua luajit motif neXt netbeans nls perl python racket ruby selinux session tcl"
 REQUIRED_USE="
-	luajit? ( lua )
 	python? ( ${PYTHON_REQUIRED_USE} )
 "
 
@@ -190,7 +189,6 @@ src_configure() {
 	myconf=(
 		--with-features=huge
 		--disable-gpm
-		--enable-multibyte
 		--with-gnome=no
 		$(use_enable acl)
 		$(use_enable cscope)
