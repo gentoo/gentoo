@@ -43,8 +43,8 @@ RDEPEND="
 	)
 	zlib? ( sys-libs/zlib:=[${MULTILIB_USEDEP}] )
 	zstd? ( app-arch/zstd:=[${MULTILIB_USEDEP}] )"
-DEPEND="${RDEPEND}
-	=dev-util/boost-build-${MAJOR_V}*"
+DEPEND="${RDEPEND}"
+BDEPEND="=dev-util/boost-build-${MAJOR_V}*"
 
 S="${WORKDIR}/${MY_P}"
 
