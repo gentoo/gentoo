@@ -3,18 +3,17 @@
 
 EAPI="6"
 
-EGIT_REPO_URI="https://github.com/csmith-project/${PN}"
-
 : ${CMAKE_MAKEFILE_GENERATOR=ninja}
-inherit cmake-utils git-r3 llvm
+inherit cmake-utils llvm
 
+EGIT_COMMIT="095c551a5f9ccaf2986edb836e7be9872d36c233"
 DESCRIPTION="C-Reduce - a plugin-based C program reducer"
 HOMEPAGE="https://embed.cs.utah.edu/creduce/"
-SRC_URI=""
+SRC_URI="https://github.com/csmith-project/${PN}/archive/${EGIT_COMMIT}.tar.gz -> ${PN}-${EGIT_COMMIT}.tar.gz"
 
 LICENSE="UoI-NCSA"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 LLVM_MAX_SLOT=7
@@ -32,6 +31,8 @@ RDEPEND="${COMMON_DEPEND}
 	dev-util/astyle
 	dev-util/indent"
 DEPEND="${COMMON_DEPEND}"
+
+S="${WORKDIR}/${PN}-${EGIT_COMMIT}"
 
 PATCHES=(
 	"${FILESDIR}"/creduce-2.8.0-link-libs.patch
