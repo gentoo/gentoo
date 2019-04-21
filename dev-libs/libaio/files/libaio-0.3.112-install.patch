@@ -1,0 +1,60 @@
+From f8fbbc9733035c96ffb085726bf24d15502e1095 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Sun, 21 Apr 2019 13:02:16 +0200
+Subject: [PATCH 1/2] fix up install paths
+
+This is similar to the Fedora patch, but this uses more common conventions
+like "DESTDIR" instead of "destdir".
+
+Signed-off-by: Mike Frysinger <vapier@gentoo.org>
+---
+ Makefile     |  2 +-
+ src/Makefile | 11 ++++++-----
+ 2 files changed, 7 insertions(+), 6 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index c1fb831..e9dbdb0 100644
+--- a/Makefile
++++ b/Makefile
+@@ -14,7 +14,7 @@ all:
+ 	@$(MAKE) -C src
+ 
+ install:
+-	@$(MAKE) -C src install prefix=$(DESTDIR)$(prefix) includedir=$(DESTDIR)$(includedir) libdir=$(DESTDIR)$(libdir)
++	@$(MAKE) -C src install prefix=$(prefix) includedir=$(includedir) libdir=$(libdir)
+ 
+ check:
+ 	@$(MAKE) -C harness check
+diff --git a/src/Makefile b/src/Makefile
+index 37ae219..66534b9 100644
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -1,6 +1,7 @@
+ prefix=/usr
+ includedir=$(prefix)/include
+ libdir=$(prefix)/lib
++usrlibdir=$(libdir)
+ 
+ CFLAGS ?= -g -fomit-frame-pointer -O2
+ CFLAGS += -Wall -I. -fPIC
+@@ -58,12 +59,12 @@ $(libname): $(libaio_sobjs) libaio.map
+ 	$(CC) $(SO_CFLAGS) -Wl,--version-script=libaio.map -Wl,-soname=$(soname) -o $@ $(libaio_sobjs) $(LINK_FLAGS)
+ 
+ install: $(all_targets)
+-	install -D -m 644 libaio.h $(includedir)/libaio.h
+-	install -D -m 644 libaio.a $(libdir)/libaio.a
++	install -D -m 644 libaio.h $(DESTDIR)$(includedir)/libaio.h
++	install -D -m 644 libaio.a $(DESTDIR)$(usrlibdir)/libaio.a
+ ifeq ($(ENABLE_SHARED),1)
+-	install -D -m 755 $(libname) $(libdir)/$(libname)
+-	ln -sf $(libname) $(libdir)/$(soname)
+-	ln -sf $(libname) $(libdir)/libaio.so
++	install -D -m 755 $(libname) $(DESTDIR)$(libdir)/$(libname)
++	ln -sf $(libname) $(DESTDIR)$(usrlibdir)/$(soname)
++	ln -sf $(libname) $(DESTDIR)$(usrlibdir)/libaio.so
+ endif
+ 
+ $(libaio_objs): libaio.h
+-- 
+2.21.0
+

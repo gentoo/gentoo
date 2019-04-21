@@ -1,0 +1,25 @@
+From 1df69d571c5b764c42ba17970707cc29d2394a25 Mon Sep 17 00:00:00 2001
+From: Mike Frysinger <vapier@gentoo.org>
+Date: Sun, 21 Apr 2019 13:04:24 +0200
+Subject: [PATCH 2/2] respect env CPPFLAGS
+
+Signed-off-by: Mike Frysinger <vapier@gentoo.org>
+---
+ src/Makefile | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/Makefile b/src/Makefile
+index 66534b9..44bbef8 100644
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -5,6 +5,7 @@ usrlibdir=$(libdir)
+ 
+ CFLAGS ?= -g -fomit-frame-pointer -O2
+ CFLAGS += -Wall -I. -fPIC
++CFLAGS += $(CPPFLAGS)
+ SO_CFLAGS=-shared $(CFLAGS)
+ L_CFLAGS=$(CFLAGS)
+ LINK_FLAGS=
+-- 
+2.21.0
+
