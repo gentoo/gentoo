@@ -97,7 +97,7 @@ RDEPEND="${DEPEND_COM}
 		ipmi? ( >=sys-libs/freeipmi-1.1.6-r1 )
 		java? (
 			>=virtual/jre-1.5
-			|| ( net-analyzer/netcat6 net-analyzer/netcat )
+			net-analyzer/netcat
 		)
 		!minimal? (
 			virtual/cron
