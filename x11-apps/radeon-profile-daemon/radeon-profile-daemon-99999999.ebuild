@@ -19,6 +19,12 @@ SLOT="0"
 
 IUSE=""
 
+RDEPEND="
+	dev-qt/qtcore:5
+	dev-qt/qtnetwork:5
+"
+DEPEND="${RDEPEND}"
+
 S="${WORKDIR}/${P}/${PN}"
 
 src_prepare() {
