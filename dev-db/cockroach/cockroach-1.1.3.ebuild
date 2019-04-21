@@ -29,6 +29,11 @@ pkg_pretend() {
 		eerror "You need at least gcc-6.0"
 		die "Your C compiler is too old for this package."
 	fi
+	if [[ ${MERGE_TYPE} != binary && $(gcc-major-version) -gt 7 ]]; then
+		eerror "This version of Cockroach cannot be built with gcc-8 and newer."
+		eerror "You need at least cockroach-2.1.5"
+		die "Your C compiler is too recent for this package."
+	fi
 }
 
 pkg_setup() {
