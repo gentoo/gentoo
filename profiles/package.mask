@@ -29,6 +29,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Lars Wendler <polynomial-c@gentoo.org> (21 Apr 2019)
+# Masked for removal (bug #683926)
+sys-libs/ntdb
+
 # Alexys Jacob <ultrabug@gentoo.org> (20 Apr 2019)
 # Unmaintained. Not active any more with latest release Jul 23, 2017.
 # Does not build with recent openssl. Dropping useless python driver as well.
