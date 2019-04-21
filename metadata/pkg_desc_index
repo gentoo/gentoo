@@ -1132,7 +1132,7 @@ app-misc/trash-cli 0.12.9.14-r2 0.17.1.14_p20170816: Python scripts to manipulat
 app-misc/ttyload 0.5.3: color-coded graph of load averages over time
 app-misc/ttyrec 1.0.8-r2: ttyrec provides tools to record and replay a terminal session
 app-misc/unfoo 1.0.8: A simple bash driven frontend to simplify decompression of files
-app-misc/uptimed 0.4.0-r1: System uptime record daemon that keeps track of your highest uptimes
+app-misc/uptimed 0.4.0-r1 0.4.1: System uptime record daemon that keeps track of your highest uptimes
 app-misc/utimer 0.4-r1: A command line timer and stopwatch
 app-misc/vcp 2.2-r2: Copy files/directories in a curses interface
 app-misc/vifm 0.9.1: Console file manager with vi(m)-like keybindings
