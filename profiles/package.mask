@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (21 Apr 2019)
+# Ancient, last release over 8 years ago, GTK2,
+# broken USE=doc, multiple QA violations.
+# Removal in 30 days.  Bug #636580, #683486.
+dev-python/python-gtkmvc
+
 # Lars Wendler <polynomial-c@gentoo.org> (21 Apr 2019)
 # Masked for removal (bug #683926)
 sys-libs/ntdb
