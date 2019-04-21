@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit gnome2-utils prefix qmake-utils xdg-utils
+inherit prefix qmake-utils xdg-utils desktop
 
 MY_PV="${PV/_/}"
 
@@ -74,16 +74,12 @@ src_install() {
 	emake DESTDIR="${D}" INSTALL_ROOT="${ED}" install
 }
 
-pkg_preinst() {
-	gnome2_icon_savelist
-}
-
 pkg_postinst() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 	xdg_desktop_database_update
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 	xdg_desktop_database_update
 }
