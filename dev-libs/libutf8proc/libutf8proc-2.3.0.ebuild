@@ -13,13 +13,17 @@ SRC_URI="https://github.com/JuliaStrings/utf8proc/archive/v${PV}.tar.gz -> ${P}.
 LICENSE="MIT"
 SLOT="0/${PV}"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
-IUSE=""
+IUSE="test"
 
 S="${WORKDIR}/${MY_P}"
+
+BDEPEND="test? ( =app-i18n/unicode-data-12.0* )"
 
 PATCHES=(
 	# Don't build or install static libs
 	"${FILESDIR}/${PN}-2.3.0-no-static.patch"
+	# use app-i18n/unicode-data for test data instead of curl
+	"${FILESDIR}/${PN}-2.3.0-tests-nofetch.patch"
 )
 
 src_install() {
