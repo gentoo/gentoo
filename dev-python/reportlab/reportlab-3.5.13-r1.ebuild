@@ -29,6 +29,7 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${PN}-3.5.13-disable-network-tests.patch"
+	"${FILESDIR}/${PN}-3.5.13-pillow-VERSION.patch"
 )
 
 src_unpack() {

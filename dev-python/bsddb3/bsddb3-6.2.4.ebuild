@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{5,6} )
+PYTHON_COMPAT=( python2_7 python3_{5,6,7} )
 PYTHON_REQ_USE="threads(+)"
 
 inherit db-use distutils-r1
@@ -25,8 +25,7 @@ RDEPEND="
 		sys-libs/db:5.1
 		sys-libs/db:4.8
 		sys-libs/db:4.7
-	)
-"
+	)"
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]"
 
@@ -52,7 +51,7 @@ python_prepare_all() {
 	distutils-r1_python_prepare_all
 }
 
-src_configure() {
+python_configure_all() {
 	# These are needed for both build and install.
 	export BERKELEYDB_DIR="${EPREFIX}/usr"
 	export BERKELEYDB_INCDIR="$(db_includedir ${DB_VER})"
@@ -69,8 +68,8 @@ python_compile() {
 
 python_test() {
 	if python_is_python3; then
-		PYTHONPATH=Lib3 "${PYTHON}" test3.py -v || die "Testing failed with ${EPYTHON}"
+		PYTHONPATH=Lib3 "${EPYTHON}" test3.py -v || die "Testing failed with ${EPYTHON}"
 	else
-		PYTHONPATH=Lib "${PYTHON}" test.py -v || die "Testing failed with ${EPYTHON}"
+		PYTHONPATH=Lib "${EPYTHON}" test.py -v || die "Testing failed with ${EPYTHON}"
 	fi
 }
