@@ -23,15 +23,12 @@ COMMON_DEPEND="
 	>=dev-lang/perl-5.10.0
 	sys-devel/clang:${LLVM_MAX_SLOT}"
 RDEPEND="${COMMON_DEPEND}
-	dev-perl/Benchmark-Timer
 	dev-perl/Exporter-Lite
 	dev-perl/File-Which
 	dev-perl/Getopt-Tabular
-	dev-perl/Regexp-Common
-	dev-perl/Sys-CPU
-	dev-util/astyle
-	dev-util/indent"
-DEPEND="${COMMON_DEPEND}"
+	dev-perl/Regexp-Common"
+DEPEND="${COMMON_DEPEND}
+	sys-devel/flex"
 
 PATCHES=(
 	"${FILESDIR}"/creduce-2.8.0-link-libs.patch
