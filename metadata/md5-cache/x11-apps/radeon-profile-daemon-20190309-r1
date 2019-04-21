@@ -1,11 +1,13 @@
 BDEPEND=virtual/pkgconfig
 DEFINED_PHASES=configure install prepare
+DEPEND=dev-qt/qtcore:5 dev-qt/qtnetwork:5
 DESCRIPTION=Daemon for radeon-profile GUI
 EAPI=7
 HOMEPAGE=https://github.com/marazmista/radeon-profile-daemon
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
+RDEPEND=dev-qt/qtcore:5 dev-qt/qtnetwork:5
 SLOT=0
 SRC_URI=https://github.com/marazmista/radeon-profile-daemon/archive/20190309.tar.gz -> radeon-profile-daemon-20190309.tar.gz
 _eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	b2f01ad412baf81650c23fcf0975fa33	qmake-utils	bdf97e69a34b864d6d545f4ec3143ff7	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
-_md5_=3d08163f48c07e08be759625dc2aeb09
+_md5_=329ee77c0fdf83b24b0c7885dc975c38
