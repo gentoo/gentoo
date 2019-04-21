@@ -3,7 +3,7 @@
 
 EAPI=7
 
-KDE_TEST="optional"
+KDE_TEST="true"
 inherit kde5
 
 DESCRIPTION="KDE library to compare files and strings"
