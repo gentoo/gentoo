@@ -56,9 +56,7 @@ DEPEND="
 		sys-libs/zlib
 	)
 "
-RDEPEND="${DEPEND}
-	!sci-visualization/labplot:4
-"
+RDEPEND="${DEPEND}"
 
 src_configure() {
 	local mycmakeargs=(
