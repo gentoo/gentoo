@@ -32,6 +32,7 @@ S=${WORKDIR}/${P/_/}
 
 PATCHES=(
 	"${FILESDIR}"/llvmlite-0.15.0-use-system-six.patch
+	"${FILESDIR}"/llvmlite-0.28.0-llvm710.patch
 )
 
 python_configure_all() {
