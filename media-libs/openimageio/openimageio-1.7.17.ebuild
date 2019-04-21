@@ -61,6 +61,7 @@ DEPEND="${RDEPEND}
 PATCHES=(
 	"${FILESDIR}/${P}-use-gnuinstalldirs.patch"
 	"${FILESDIR}/${P}-make-python-and-boost-detection-more-generic.patch"
+	"${FILESDIR}/${P}-openexr-2.3.0.patch" # bug 683126
 )
 
 DOCS=( CHANGES.md CREDITS.md README.md src/doc/${PN}.pdf )
