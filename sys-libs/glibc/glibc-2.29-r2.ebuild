@@ -1262,6 +1262,17 @@ glibc_do_src_install() {
 		fi
 	done
 
+	# HACK: If we're building for riscv, we need to additionally make sure that
+	# we can find the locale archive afterwards
+	case ${CTARGET} in
+		riscv*)
+			if [[ ! -e ${ED}/usr/lib/locale ]] ; then
+				dosym ../$(get_libdir)/locale /usr/lib/locale
+			fi
+			;;
+		*) ;;
+	esac
+
 	cd "${S}"
 
 	# Install misc network config files
