@@ -14,10 +14,10 @@ SRC_URI="https://github.com/hughsie/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="LGPL-2.1+"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
-IUSE="agent colorhug dell doc elogind +gpg +man nvme pkcs7 redfish systemd test thunderbolt uefi"
+IUSE="agent colorhug consolekit dell doc elogind +gpg +man nvme pkcs7 redfish systemd test thunderbolt uefi"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
-	?? ( elogind systemd )
+	^^ ( consolekit elogind systemd )
 	dell? ( uefi )
 "
 
@@ -38,10 +38,12 @@ RDEPEND="${PYTHON_DEPS}
 	>=sys-auth/polkit-0.103
 	virtual/libelf:0=
 	colorhug? ( >=x11-misc/colord-1.2.12:0= )
+	consolekit? ( >=sys-auth/consolekit-1.0.0 )
 	dell? (
 		sys-libs/efivar
 		>=sys-libs/libsmbios-2.4.0
 	)
+	elogind? ( sys-auth/elogind )
 	gpg? (
 		app-crypt/gpgme
 		dev-libs/libgpg-error
@@ -49,10 +51,6 @@ RDEPEND="${PYTHON_DEPS}
 	nvme? ( sys-libs/efivar )
 	pkcs7? ( >=net-libs/gnutls-3.4.4.1:= )
 	redfish? ( sys-libs/efivar )
-	!systemd? (
-		!elogind? ( >=sys-auth/consolekit-1.0.0 )
-		elogind? ( sys-auth/elogind )
-	)
 	systemd? ( >=sys-apps/systemd-211 )
 	thunderbolt? ( sys-apps/thunderbolt-software-user-space )
 	uefi? (
@@ -94,6 +92,7 @@ src_configure() {
 	local emesonargs=(
 		--localstatedir "${EPREFIX}"/var
 		-Dagent="$(usex agent true false)"
+		-Dconsolekit="$(usex consolekit true false)"
 		-Dgtkdoc="$(usex doc true false)"
 		-Delogind="$(usex elogind true false)"
 		-Dgpg="$(usex gpg true false)"
@@ -110,12 +109,6 @@ src_configure() {
 		-Dsystemd="$(usex systemd true false)"
 		-Dtests="$(usex test true false)"
 	)
-
-	if use elogind || use systemd ; then
-		emesonargs+=( -Dconsolekit=false )
-	else
-		emesonargs+=( -Dconsolekit=true )
-	fi
 
 	meson_src_configure
 }
