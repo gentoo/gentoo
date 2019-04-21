@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -99,6 +99,7 @@ src_install() {
 
 aslts_test() {
 	export	ASL="${S}"/generate/unix/bin/iasl \
+		acpibin="${S}"/generate/unix/bin/acpibin \
 		acpiexec="${S}"/generate/unix/bin/acpiexec \
 		ASLTSDIR="${WORKDIR}/${MY_TESTS_P}"/tests/aslts
 	export	PATH="${PATH}:${ASLTSDIR}/bin"
