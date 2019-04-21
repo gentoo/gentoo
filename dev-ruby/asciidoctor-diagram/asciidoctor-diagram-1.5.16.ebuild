@@ -23,7 +23,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
 
-ruby_add_rdepend "=dev-ruby/asciidoctor-1.5* <dev-ruby/asciidoctor-3"
+ruby_add_rdepend ">=dev-ruby/asciidoctor-1.5.0 <dev-ruby/asciidoctor-3"
 
 all_ruby_prepare() {
 	rm Gemfile || die
