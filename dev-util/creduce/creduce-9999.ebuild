@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -17,9 +17,11 @@ SLOT="0"
 KEYWORDS=""
 IUSE=""
 
+LLVM_MAX_SLOT=7
+
 COMMON_DEPEND="
 	>=dev-lang/perl-5.10.0
-	>=sys-devel/clang-4:="
+	sys-devel/clang:${LLVM_MAX_SLOT}"
 RDEPEND="${COMMON_DEPEND}
 	dev-perl/Benchmark-Timer
 	dev-perl/Exporter-Lite
@@ -30,6 +32,10 @@ RDEPEND="${COMMON_DEPEND}
 	dev-util/astyle
 	dev-util/indent"
 DEPEND="${COMMON_DEPEND}"
+
+PATCHES=(
+	"${FILESDIR}"/creduce-2.8.0-link-libs.patch
+)
 
 llvm_check_deps() {
 	has_version "sys-devel/clang:${LLVM_SLOT}"
