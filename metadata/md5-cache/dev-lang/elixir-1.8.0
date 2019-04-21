@@ -3,9 +3,9 @@ DEPEND=>=dev-lang/erlang-18[ssl]
 DESCRIPTION=Elixir programming language
 EAPI=7
 HOMEPAGE=https://elixir-lang.org
-KEYWORDS=~amd64 ~arm ~ia64 ~ppc ~sparc ~x86
+KEYWORDS=~amd64 ~arm ~arm64 ~ia64 ~ppc ~sparc ~x86
 LICENSE=Apache-2.0 ErlPL-1.1
 RDEPEND=>=dev-lang/erlang-18[ssl] !!sci-biology/phylip
 SLOT=0
 SRC_URI=https://github.com/elixir-lang/elixir/archive/v1.8.0.tar.gz -> elixir-1.8.0.tar.gz
-_md5_=5bb087bde682e9f14de7da8dcb6a2b5a
+_md5_=f2cfde5228ddcac141af10f7d5126c3e
