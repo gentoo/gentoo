@@ -13,6 +13,7 @@ SRC_URI="https://www.jetico.com/linux/${MY_PN}-${PV}.tar.gz"
 LICENSE="bestcrypt"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+RESTRICT="mirror bindist"
 
 DEPEND="virtual/linux-sources
 	app-shells/bash"

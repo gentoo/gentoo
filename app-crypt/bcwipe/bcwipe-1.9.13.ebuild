@@ -14,6 +14,7 @@ LICENSE="bestcrypt"
 SLOT="0"
 IUSE="doc"
 KEYWORDS="amd64 ~arm ppc x86"
+RESTRICT="mirror bindist"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.9.7-fix_warnings.patch"
