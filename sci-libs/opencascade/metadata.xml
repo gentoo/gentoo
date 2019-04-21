@@ -14,6 +14,6 @@
 	<flag name="gl2ps">Use gl2ps PostScript printing library</flag>
 	<flag name="gles2">Use OpenGL ES 2.0</flag>
 	<flag name="tbb">Enable multithreading with the Intel Threads Building Block dev-cpp/tbb</flag>
-	<flag name="vtk">Enable Virtualisation Toolkit</flag>
+	<flag name="vtk">Enable Visualization Toolkit</flag>
 </use>
 </pkgmetadata>
