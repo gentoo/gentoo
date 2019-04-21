@@ -66,7 +66,7 @@ python_install_all() {
 	systemd_dotmpfilesd files/${PN}-tmpfiles.conf
 	doman man/*.{1,5}
 
-	# Use INSTALL_MASK  if you do not want to touch /etc/logrotate.d.
+	# Use INSTALL_MASK if you do not want to touch /etc/logrotate.d.
 	# See http://thread.gmane.org/gmane.linux.gentoo.devel/35675
 	insinto /etc/logrotate.d
 	newins files/${PN}-logrotate ${PN}
@@ -101,7 +101,9 @@ pkg_postinst() {
 
 	if ! has_version dev-lang/python[sqlite]; then
 		elog "If you want to use ${PN}'s persistent database, then reinstall"
-		elog "dev-lang/python with USE=sqlite"
+		elog "dev-lang/python with USE=sqlite. If you do not use the"
+		elog "persistent database feature, then you should set"
+		elog "dbfile = :memory: in fail2ban.conf accordingly."
 	fi
 
 	if has_version sys-apps/systemd[-python]; then
