@@ -13,7 +13,7 @@ LICENSE="GPL-2"
 SLOT="0/${PV}"
 KEYWORDS=""
 IUSE="
-	adns androiddump bcg729 +capinfos +captype ciscodump +dftest doc dpauxmon
+	adns androiddump bcg729 brotli +capinfos +captype ciscodump +dftest doc dpauxmon
 	+dumpcap +editcap kerberos libxml2 lua lz4 maxminddb +mergecap +netlink
 	nghttp2 +pcap +qt5 +randpkt +randpktdump +reordercap sbc selinux +sharkd
 	smi snappy spandsp sshdump ssl sdjournal +text2pcap tfshark +tshark
@@ -27,6 +27,7 @@ CDEPEND="
 	dev-libs/libgcrypt:0
 	adns? ( >=net-dns/c-ares-1.5 )
 	bcg729? ( media-libs/bcg729 )
+	brotli? ( app-arch/brotli )
 	ciscodump? ( >=net-libs/libssh-0.6 )
 	filecaps? ( sys-libs/libcap )
 	kerberos? ( virtual/krb5 )
@@ -147,6 +148,7 @@ src_configure() {
 		-DCMAKE_INSTALL_DOCDIR="/usr/share/doc/${PF}"
 		-DDISABLE_WERROR=yes
 		-DENABLE_BCG729=$(usex bcg729)
+		-DENABLE_BROTLI=$(usex brotli)
 		-DENABLE_CAP=$(usex filecaps caps)
 		-DENABLE_CARES=$(usex adns)
 		-DENABLE_GNUTLS=$(usex ssl)
