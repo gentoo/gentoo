@@ -1,20 +1,20 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 DESCRIPTION="Online command-line translator"
 HOMEPAGE="https://www.soimort.org/translate-shell/"
 SRC_URI="https://github.com/soimort/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="public-domain"
+LICENSE="Unlicense"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="+curl +bidi test tts"
+IUSE="+bidi +curl test tts"
 
 RDEPEND="
 	app-misc/rlwrap
-	>=sys-apps/gawk-4.0.2
+	=sys-apps/gawk-4*
 	curl? ( net-misc/curl[ssl] )
 	bidi? ( dev-libs/fribidi )
 	tts? ( || (
@@ -25,12 +25,12 @@ RDEPEND="
 		)
 	)"
 DEPEND="${RDEPEND}
-	test? ( app-editors/emacs )
+	test? ( virtual/emacs )
 	"
 
-PATCHES=(
-	"${FILESDIR}/${P}-remove-online-tests.patch"
-)
+src_test() {
+	emake NETWORK_ACCESS=no test
+}
 
 src_install() {
 	emake PREFIX="${D}/usr" install
