@@ -8255,7 +8255,7 @@ media-sound/tudor-volumed 0_pre20110427: Lightweight, desktop environment agnost
 media-sound/twolame 0.3.13-r2: An optimised MPEG Audio Layer 2 (MP2) encoder
 media-sound/umix 1.0.2 1.0.2-r1: Program for adjusting soundcard volumes
 media-sound/umurmur 0.2.16a-r1: Minimalistic Murmur (Mumble server)
-media-sound/upmpdcli 1.3.6: UPnP Media Renderer front-end for MPD, the Music Player Daemon
+media-sound/upmpdcli 1.3.6 1.4.0: UPnP Media Renderer front-end for MPD, the Music Player Daemon
 media-sound/vbrfixc 0.24: Vbrfix fixes MP3s and re-constructs VBR headers
 media-sound/ventrilo-server-bin 3.0.3: The Ventrilo Voice Communication Server
 media-sound/vimpc 0.09.1: An ncurses based mpd client with vi like key bindings
@@ -8791,7 +8791,7 @@ net-libs/libtirpc 1.0.2-r1: Transport Independent RPC library (SunRPC replacemen
 net-libs/libtorrent 0.13.7-r1: BitTorrent library written in C++ for *nix
 net-libs/libtorrent-rasterbar 1.1.10 1.1.12: C++ BitTorrent implementation focusing on efficiency and scalability
 net-libs/libupnp 1.6.21: An Portable Open Source UPnP Development Kit
-net-libs/libupnpp 0.16.1: The libupnpp C++ library wraps libupnp for easier use by upmpdcli and upplay
+net-libs/libupnpp 0.16.1 0.17.0: The libupnpp C++ library wraps libupnp for easier use by upmpdcli and upplay
 net-libs/libvncserver 0.9.11-r1: library for creating vnc servers
 net-libs/libwebsockets 2.1.1: canonical libwebsockets.org websocket library
 net-libs/libzapojit 0.0.3: GLib/GObject wrapper for the SkyDrive and Hotmail REST APIs
