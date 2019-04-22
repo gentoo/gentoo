@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-USE_RUBY="ruby23 ruby24 ruby25"
+USE_RUBY="ruby24 ruby25"
 
 # Skip integration tests since they require additional unpackaged
 # dependencies and running daemons.
@@ -19,7 +19,7 @@ DESCRIPTION="A DSL for blocking & throttling abusive clients"
 HOMEPAGE="https://github.com/kickstarter/rack-attack"
 
 LICENSE="MIT"
-SLOT="5"
+SLOT="6"
 KEYWORDS="~amd64"
 IUSE="test"
 
