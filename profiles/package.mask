@@ -512,12 +512,6 @@ sys-apps/likwid
 app-portage/prefix-chain-setup
 sys-apps/prefix-chain-utils
 
-# Michał Górny <mgorny@gentoo.org> (23 Mar 2019)
-# Unmaintained.  Fails to build against current sys-auth/libfprint.
-# Obsoleted upstream, in favor of libfprint[examples].
-# Removal in 30 days.  Bug #665174.
-sys-auth/fprint_demo
-
 # Andreas Sturmlechner <asturm@gentoo.org> (23 Mar 2019)
 # Everything breaks again. bug #681336
 >=app-text/poppler-0.75.0
