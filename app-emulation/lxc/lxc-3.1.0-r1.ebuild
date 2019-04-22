@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -134,7 +134,7 @@ src_install() {
 	find "${D}" -name '*.la' -delete
 
 	# Gentoo-specific additions!
-	newinitd "${FILESDIR}/${PN}.initd.7" ${PN}
+	newinitd "${FILESDIR}/${PN}.initd.8" ${PN}
 
 	# Remember to compare our systemd unit file with the upstream one
 	# config/init/systemd/lxc.service.in
