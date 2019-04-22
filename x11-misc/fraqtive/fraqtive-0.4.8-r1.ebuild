@@ -1,10 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils gnome2-utils qmake-utils toolchain-funcs
+EAPI=7
 
-DESCRIPTION="an open source, multi-platform generator of the Mandelbrot family fractals"
+inherit qmake-utils toolchain-funcs xdg
+
+DESCRIPTION="Open source, multi-platform generator of the Mandelbrot family fractals"
 HOMEPAGE="https://fraqtive.mimec.org/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 
@@ -13,20 +14,20 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="cpu_flags_x86_sse2"
 
-RDEPEND="
+BDEPEND="
+	virtual/pkgconfig
+"
+DEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtopengl:5
 	virtual/glu
 "
-DEPEND="
-	${RDEPEND}
-	virtual/pkgconfig
-"
+RDEPEND="${DEPEND}"
+
+PATCHES=( "${FILESDIR}/${P}-qt-includes.patch" )
 
 src_configure() {
-	epatch "${FILESDIR}/${P}-qt-includes.patch"
-
 	tc-export PKG_CONFIG
 	sed -i -e "s|-lGLU|$( ${PKG_CONFIG} --libs glu )|g" src/src.pro || die
 	local conf="release"
@@ -37,26 +38,14 @@ src_configure() {
 		conf="$conf no-sse2"
 	fi
 
-	echo "CONFIG += $conf" > "${S}"/config.pri
-	echo "PREFIX = ${EPREFIX}/usr" >> "${S}"/config.pri
+	echo "CONFIG += $conf" > config.pri
+	echo "PREFIX = ${EPREFIX}/usr" >> config.pri
 	# Don't strip wrt #252096
-	echo "QMAKE_STRIP =" >> "${S}"/config.pri
+	echo "QMAKE_STRIP =" >> config.pri
 
 	eqmake5
 }
 
 src_install() {
 	emake INSTALL_ROOT="${D}" install
-}
-
-pkg_preinst() {
-	gnome2_icon_savelist
-}
-
-pkg_postinst() {
-	gnome2_icon_cache_update
-}
-
-pkg_postrm() {
-	gnome2_icon_cache_update
 }

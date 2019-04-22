@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 VIRTUALX_REQUIRED="test"
 inherit kde5
@@ -11,7 +11,10 @@ LICENSE="LGPL-2+"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE="editorconfig git"
 
-RDEPEND="
+BDEPEND="
+	test? ( $(add_frameworks_dep kservice) )
+"
+DEPEND="
 	$(add_frameworks_dep karchive)
 	$(add_frameworks_dep kauth)
 	$(add_frameworks_dep kcodecs)
@@ -39,11 +42,11 @@ RDEPEND="
 	editorconfig? ( app-text/editorconfig-core-c )
 	git? ( dev-libs/libgit2:= )
 "
-DEPEND="${RDEPEND}
-	test? ( $(add_frameworks_dep kservice) )
-"
+RDEPEND="${DEPEND}"
 
 RESTRICT+=" test"
+
+PATCHES=( "${FILESDIR}/${P}-shortcuts.patch" )
 
 src_configure() {
 	local mycmakeargs=(
