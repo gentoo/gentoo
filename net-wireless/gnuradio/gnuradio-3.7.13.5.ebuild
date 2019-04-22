@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,7 +17,7 @@ if [[ ${PV} =~ "9999" ]]; then
 	inherit git-r3
 	KEYWORDS=""
 else
-	SRC_URI="https://www.gnuradio.org/releases/gnuradio/${P}.tar.gz
+	SRC_URI="https://github.com/gnuradio/gnuradio/releases/download/v${PV}/${P}.tar.xz
 		https://dev.gentoo.org/~zerochaos/patches/${PN}-3.7.13-1-qt5.tar.xz
 		https://dev.gentoo.org/~zerochaos/patches/${PN}-3.7.13-codec2.tar.xz"
 	KEYWORDS="~amd64 ~arm ~x86"
