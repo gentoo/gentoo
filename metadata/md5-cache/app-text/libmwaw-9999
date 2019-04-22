@@ -1,11 +1,12 @@
+BDEPEND=sys-devel/libtool virtual/pkgconfig doc? ( app-doc/doxygen ) >=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1[curl]
 DEFINED_PHASES=configure install prepare unpack
-DEPEND=dev-libs/librevenge sys-libs/zlib sys-devel/libtool virtual/pkgconfig doc? ( app-doc/doxygen ) >=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1[curl]
+DEPEND=dev-libs/librevenge sys-libs/zlib
 DESCRIPTION=Library parsing many pre-OSX MAC text formats
-EAPI=6
+EAPI=7
 HOMEPAGE=https://sourceforge.net/p/libmwaw/wiki/Home/
 IUSE=doc static-libs tools
 LICENSE=LGPL-2.1
 RDEPEND=dev-libs/librevenge sys-libs/zlib
 SLOT=0
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	git-r3	0d4635eeb5a96cd5315597a47eba25c9	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
-_md5_=63f310924a8e292f1df26e4d4a88d3bc
+_md5_=ffdc05ab4dc5a4f159ce0963f4ac08f5
