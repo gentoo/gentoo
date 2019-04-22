@@ -41,6 +41,11 @@ BDEPEND="
 	vala? ( $(vala_depend) )
 "
 
+PATCHES=(
+	# Fix compilation against clutter[-gtk]
+	"${FILESDIR}"/${PV}-gdk-meson-fixes.patch # https://gitlab.gnome.org/GNOME/libchamplain/merge_requests/8
+)
+
 src_prepare() {
 	xdg_src_prepare
 	use vala && vala_src_prepare
