@@ -13,6 +13,8 @@ RUBY_FAKEGEM_EXTRAINSTALL="NEWS.md README.md"
 
 RUBY_FAKEGEM_GEMSPEC="${PN}.gemspec"
 
+RUBY_FAKEGEM_BINWRAP=""
+
 inherit ruby-fakegem
 
 DESCRIPTION="Making tests easy on the fingers and eyes"
