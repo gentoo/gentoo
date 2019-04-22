@@ -54,10 +54,6 @@ dev-lang/python threads
 # Workaround until resolved upstream (bug #586840)
 >=dev-games/simgear-2016.2.1 dns
 
-# Lars Wendler <polynomial-c@gentoo.org> (11 Sep 2015)
-# Package fails to build with dbus USE flag being disabled (bug #560208)
-=x11-wm/afterstep-2.2.12 dbus
-
 # Justin Lecher <jlec@gentoo.org> (10 Aug 2014)
 # Doesn't work without acl support
 # No patch yet, #516626
