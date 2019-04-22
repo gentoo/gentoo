@@ -553,13 +553,6 @@ dev-cpp/libassa
 # Removal in 30 days.  Bug #681364.
 app-arch/par
 
-# Michał Górny <mgorny@gentoo.org> (23 Mar 2019)
-# No maintainer.  Both the program and the ebuild are of bad quality,
-# the former requiring a patch and the latter failing to build in some
-# circumstances.  Last upstream activity in 2005.
-# Removal in 30 days.  Bug #456954.
-app-benchmarks/gtkperf
-
 # Andreas Sturmlechner <asturm@gentoo.org> (23 Mar 2019)
 # Everything breaks again. bug #681336
 >=app-text/poppler-0.75.0
