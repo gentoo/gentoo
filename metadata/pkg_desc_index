@@ -3101,7 +3101,7 @@ dev-libs/libgudev 232: GObject bindings for libudev
 dev-libs/libgusb 0.2.11: GObject wrapper for libusb
 dev-libs/libgweather 3.24.1: Library to access weather information from online services
 dev-libs/libical 3.0.4: An implementation of basic iCAL protocols
-dev-libs/libiconv 1.14 1.14-r1: GNU charset conversion library for libc which doesn't implement it
+dev-libs/libiconv 1.14-r1: GNU charset conversion library for libc which doesn't implement it
 dev-libs/libindicate 12.10.1-r3: Library to raise flags on DBus for other components of the desktop
 dev-libs/libindicator 12.10.1-r201 12.10.1-r301: A set of symbols and convience functions that all indicators would like to use
 dev-libs/libinput 1.12.6: Library to handle input devices in Wayland
@@ -9127,7 +9127,7 @@ net-nntp/nzbget 20.0: A command-line based binary newsgrabber supporting .nzb fi
 net-nntp/pan 0.145: A newsreader for GNOME
 net-nntp/slrn 1.0.2 1.0.3: A s-lang based newsreader
 net-nntp/tin 2.4.2: A threaded NNTP and spool based UseNet newsreader
-net-p2p/amule 2.3.2-r1 2.3.2-r2: aMule, the all-platform eMule p2p client
+net-p2p/amule 2.3.2-r2: aMule, the all-platform eMule p2p client
 net-p2p/bitcoin-cli 0.16.3: Command-line JSON-RPC client specifically for interfacing with bitcoind
 net-p2p/bitcoin-qt 0.16.3: An end-user Qt GUI for the Bitcoin crypto-currency
 net-p2p/bitcoind 0.16.3: Original Bitcoin crypto-currency wallet for automated services
