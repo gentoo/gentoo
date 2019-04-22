@@ -1,11 +1,11 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 MY_PN="${PN/-bin/}"
 
-inherit gnome2-utils pax-utils unpacker xdg-utils
+inherit pax-utils unpacker xdg-utils
 
 DESCRIPTION="Allows you to send and receive messages of Signal Messenger on your computer"
 HOMEPAGE="https://signal.org/
@@ -59,10 +59,10 @@ src_install() {
 
 pkg_postinst() {
 	xdg_desktop_database_update
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }
 
 pkg_postrm() {
 	xdg_desktop_database_update
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }
