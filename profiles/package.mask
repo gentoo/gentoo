@@ -547,12 +547,6 @@ app-misc/freeplane
 # Removal in 30 days.  Bug #632066.
 dev-cpp/libassa
 
-# Michał Górny <mgorny@gentoo.org> (23 Mar 2019)
-# Unmaintained and ancient.  Upstream has abandoned the PAR 2.0 spec
-# effort in 2003-2004, and the code has not seen any attention since.
-# Removal in 30 days.  Bug #681364.
-app-arch/par
-
 # Andreas Sturmlechner <asturm@gentoo.org> (23 Mar 2019)
 # Everything breaks again. bug #681336
 >=app-text/poppler-0.75.0
