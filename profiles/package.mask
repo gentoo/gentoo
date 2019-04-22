@@ -591,11 +591,6 @@ x11-wm/afterstep
 # Removal in 30 days.  Bug #459490.
 games-roguelike/rogue
 
-# Michał Górny <mgorny@gentoo.org> (22 Mar 2019)
-# SixXS has been discontinued, rendering the package defunct.
-# Removal in 30 days.  Bug #670678.
-net-vpn/aiccu
-
 # Miroslav Šulc <fordfrog@gentoo.org> (19 Mar 2019)
 # Depends on >=virtual/{jdk,jre}-11 which is masked
 =www-servers/tomcat-9.0.17
