@@ -525,11 +525,6 @@ sys-auth/fprint_demo
 # Removal in 30 days.  Bug #663180.
 sys-power/phc-intel
 
-# Michał Górny <mgorny@gentoo.org> (23 Mar 2019)
-# Unmaintained.  Fails to build, probably due to Linux kernel changes.
-# Removal in 30 days.  Bug #646806.
-net-misc/batman-adv
-
 # Andreas Sturmlechner <asturm@gentoo.org> (23 Mar 2019)
 # Everything breaks again. bug #681336
 >=app-text/poppler-0.75.0
