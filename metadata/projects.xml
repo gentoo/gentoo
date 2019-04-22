@@ -458,6 +458,11 @@
       <name>Marek Szuba</name>
       <role>Member</role>
     </member>
+    <member>
+      <email>mgorny@gentoo.org</email>
+      <name>Michał Górny</name>
+      <role>Accidental helper</role>
+    </member>
     <member is-lead="1">
       <email>wraeth@gentoo.org</email>
       <name>Sam Jorna</name>
