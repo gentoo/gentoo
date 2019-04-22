@@ -541,12 +541,6 @@ app-editors/efte
 # Removal in 30 days.  Bug #670028.
 app-misc/freeplane
 
-# Michał Górny <mgorny@gentoo.org> (23 Mar 2019)
-# Unmaintained.  No reverse dependencies.  Fails to link.  Last upstream
-# activity in 2012.
-# Removal in 30 days.  Bug #632066.
-dev-cpp/libassa
-
 # Andreas Sturmlechner <asturm@gentoo.org> (23 Mar 2019)
 # Everything breaks again. bug #681336
 >=app-text/poppler-0.75.0
