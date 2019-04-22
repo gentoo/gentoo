@@ -166,13 +166,13 @@ src_configure() {
 		-q
 		-d+2
 		pch=off
-		$(usex icu "-sICU_PATH=${EPREFIX}/usr" '--disable-icu boost.locale.icu=off')
+		$(usex icu "-sICU_PATH=${ESYSROOT}/usr" '--disable-icu boost.locale.icu=off')
 		$(usex mpi '' '--without-mpi')
 		$(usex nls '' '--without-locale')
 		$(usex context '' '--without-context --without-coroutine --without-fiber')
 		$(usex threads '' '--without-thread')
 		--without-stacktrace
-		--boost-build="${EPREFIX}"/usr/share/boost-build
+		--boost-build="${BROOT}"/usr/share/boost-build
 		--prefix="${ED}/usr"
 		--layout=system
 		# CMake has issues working with multiple python impls,
