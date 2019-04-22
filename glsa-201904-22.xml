@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201904-22">
+  <title>OpenDKIM: Root privilege escalation</title>
+  <synopsis>A vulnerability was discovered in Gentoo's ebuild for OpenDKIM
+    which could lead to root privilege escalation.
+  </synopsis>
+  <product type="ebuild">opendkim</product>
+  <announced>2019-04-22</announced>
+  <revised count="1">2019-04-22</revised>
+  <bug>629914</bug>
+  <access>remote</access>
+  <affected>
+    <package name="mail-filter/opendkim" auto="yes" arch="*">
+      <unaffected range="ge">2.10.3-r8</unaffected>
+      <vulnerable range="lt">2.10.3-r8</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>A community effort to develop and maintain a C library for producing
+      DKIM-aware applications and an open source milter for providing DKIM
+      service.
+    </p>
+  </background>
+  <description>
+    <p>It was discovered that Gentoo’s OpenDKIM ebuild does not properly set
+      permissions or place the pid file in a safe directory.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A local attacker could escalate privileges.</p>
+  </impact>
+  <workaround>
+    <p>Users should ensure the proper permissions are set as discussed in the
+      referenced bugs.
+    </p>
+  </workaround>
+  <resolution>
+    <p>All OpenDKIM users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=mail-filter/opendkim-2.10.3-r8"
+    </code>
+  </resolution>
+  <references>
+  </references>
+  <metadata tag="requester" timestamp="2019-04-02T07:15:45Z">BlueKnight</metadata>
+  <metadata tag="submitter" timestamp="2019-04-22T23:34:15Z">b-man</metadata>
+</glsa>
