@@ -78,6 +78,7 @@ DEPEND="
 "
 
 PATCHES=(
+	"${FILESDIR}/${P}-wad2map-buildfix.patch"
 	"${FILESDIR}/log-to-tmpdir.patch"
 	"${FILESDIR}/search-duke3d-path.patch"
 )
