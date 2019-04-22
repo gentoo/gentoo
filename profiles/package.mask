@@ -530,42 +530,6 @@ sys-power/phc-intel
 # Removal in 30 days.  Bug #646806.
 net-misc/batman-adv
 
-# Michał Górny <mgorny@gentoo.org> (23 Mar 2019)
-# Unmaintained.  Fails to build against ncurses[tinfo].  Last upstream
-# release in 2009.  No apparent fix in upstream git.
-# Removal in 30 days.  Bug #646922.
-app-editors/efte
-
-# Michał Górny <mgorny@gentoo.org> (23 Mar 2019)
-# Unmaintained.  Vulnerable.  Fails to build (#612236, #620916).
-# Removal in 30 days.  Bug #670028.
-app-misc/freeplane
-
-# Michał Górny <mgorny@gentoo.org> (23 Mar 2019)
-# Unmaintained.  No reverse dependencies.  Fails to link.  Last upstream
-# activity in 2012.
-# Removal in 30 days.  Bug #632066.
-dev-cpp/libassa
-
-# Michał Górny <mgorny@gentoo.org> (23 Mar 2019)
-# Unmaintained and ancient.  Upstream has abandoned the PAR 2.0 spec
-# effort in 2003-2004, and the code has not seen any attention since.
-# Removal in 30 days.  Bug #681364.
-app-arch/par
-
-# Michał Górny <mgorny@gentoo.org> (23 Mar 2019)
-# No maintainer.  Both the program and the ebuild are of bad quality,
-# the former requiring a patch and the latter failing to build in some
-# circumstances.  Last upstream activity in 2005.
-# Removal in 30 days.  Bug #456954.
-app-benchmarks/gtkperf
-
-# Michał Górny <mgorny@gentoo.org> (23 Mar 2019)
-# Proprietary executable with unclear license.  Unmaintained.
-# The current version in Gentoo is from 2004.  QA issues (#430712).
-# Removal in 30 days.  Bug #681360.
-app-cdr/poweriso
-
 # Andreas Sturmlechner <asturm@gentoo.org> (23 Mar 2019)
 # Everything breaks again. bug #681336
 >=app-text/poppler-0.75.0
