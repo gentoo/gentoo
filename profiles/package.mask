@@ -570,38 +570,6 @@ app-cdr/poweriso
 # Everything breaks again. bug #681336
 >=app-text/poppler-0.75.0
 
-# Michał Górny <mgorny@gentoo.org> (22 Mar 2019)
-# Unmaintained.  No reverse dependencies.  The current Gentoo version
-# is from 2015, and upstream has made a lot of releases since.
-# It suffers from heavy bundling of dependencies.
-# Removal in 30 days.  Bug #469194.
-dev-lua/luvit
-
-# Michał Górny <mgorny@gentoo.org> (22 Mar 2019)
-# Unmaintained.  Last release in 2013, last commits in 2015.  Nested
-# bundled libraries (#253259, also causing #515384).  Fails to build
-# with [-dbus] (#560208).
-# Removal in 30 days.  Bug #681294.
-x11-wm/afterstep
-
-# Michał Górny <mgorny@gentoo.org> (22 Mar 2019)
-# Unmaintained, dead homepage (#680752).  Fails to build against
-# ncurses[tinfo] (#459490), fails to build against ncurses-6 (#649794).
-# Also has some unresolved segv (#407983).
-# Removal in 30 days.  Bug #459490.
-games-roguelike/rogue
-
-# Michał Górny <mgorny@gentoo.org> (22 Mar 2019)
-# SixXS has been discontinued, rendering the package defunct.
-# Removal in 30 days.  Bug #670678.
-net-vpn/aiccu
-
-# Michał Górny <mgorny@gentoo.org> (22 Mar 2019)
-# Homepage dead, and package is mirror-restricted.  Current release
-# was added in 2006 and has not been updated since.
-# Removal in 30 days.  Bug #681230.
-net-misc/sjphone
-
 # Miroslav Šulc <fordfrog@gentoo.org> (19 Mar 2019)
 # Depends on >=virtual/{jdk,jre}-11 which is masked
 =www-servers/tomcat-9.0.17
