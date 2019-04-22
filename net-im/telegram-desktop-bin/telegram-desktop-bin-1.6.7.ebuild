@@ -1,9 +1,9 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit desktop gnome2-utils xdg
+inherit desktop xdg
 
 DESCRIPTION="Official desktop client for Telegram (binary package)"
 HOMEPAGE="https://desktop.telegram.org"
@@ -51,7 +51,6 @@ pkg_preinst() {
 
 pkg_postinst() {
 	xdg_pkg_postinst
-	gnome2_icon_cache_update
 	einfo
 	einfo "Previous versions of ${PN} have created "
 	einfo "\"~/.local/share/applications/telegram.desktop\". These files"
@@ -61,5 +60,4 @@ pkg_postinst() {
 
 pkg_postrm() {
 	xdg_pkg_postrm
-	gnome2_icon_cache_update
 }
