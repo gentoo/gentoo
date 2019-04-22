@@ -80,6 +80,8 @@ src_install() {
 	insinto /etc/gss/mech.d
 	newins examples/mech gssproxy.conf
 
+	keepdir /var/lib/gssproxy
+
 	# The build installs a bunch of empty dirs, so prune them.
 	find "${ED}" -depth -type d -empty -delete || die
 }
