@@ -530,11 +530,6 @@ sys-power/phc-intel
 # Removal in 30 days.  Bug #646806.
 net-misc/batman-adv
 
-# Michał Górny <mgorny@gentoo.org> (23 Mar 2019)
-# Unmaintained.  Vulnerable.  Fails to build (#612236, #620916).
-# Removal in 30 days.  Bug #670028.
-app-misc/freeplane
-
 # Andreas Sturmlechner <asturm@gentoo.org> (23 Mar 2019)
 # Everything breaks again. bug #681336
 >=app-text/poppler-0.75.0
