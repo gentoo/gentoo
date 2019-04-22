@@ -15,7 +15,7 @@ fi
 
 SRC_URI=""
 DESCRIPTION="Meta ebuild for MATE, a traditional desktop environment"
-HOMEPAGE="http://mate-desktop.org"
+HOMEPAGE="https://mate-desktop.org"
 
 LICENSE="metapackage"
 
