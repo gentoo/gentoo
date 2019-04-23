@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,8 +8,8 @@ PLOCALES="af am ar as ast az be bg bn bn_IN br bs byn ca crh cs cy da de dz el e
 inherit eutils l10n python-any-r1
 
 DESCRIPTION="ISO language, territory, currency, script codes and their translations"
-HOMEPAGE="http://pkg-isocodes.alioth.debian.org/"
-SRC_URI="http://pkg-isocodes.alioth.debian.org/downloads/${P}.tar.xz"
+HOMEPAGE="https://salsa.debian.org/iso-codes-team/iso-codes"
+SRC_URI="https://salsa.debian.org/${PN}-team/${PN}/-/archive/${P}/${PN}-${P}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
@@ -18,9 +18,9 @@ IUSE=""
 
 RDEPEND=""
 DEPEND="${PYTHON_DEPS}
-	app-arch/xz-utils
 	sys-devel/gettext
 "
+S="${WORKDIR}/${PN}-${P}"
 
 # This ebuild does not install any binaries.
 RESTRICT="binchecks strip"
