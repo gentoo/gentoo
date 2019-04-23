@@ -9,6 +9,10 @@
 		<email>sarnex@gentoo.org</email>
 		<name>Nick Sarnie</name>
 	</maintainer>
+	<use>
+		<flag name="cube">Build the cube/cubepp demos</flag>
+		<flag name="vulkaninfo">Build the vulkaninfo utility</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">KhronosGroup/Vulkan-Tools</remote-id>
 	</upstream>

@@ -1,0 +1,47 @@
+From 75678e4b0d1b25fc15f0399f1496db6e0287b72f Mon Sep 17 00:00:00 2001
+From: Georgy Yakovlev <gyakovlev@gentoo.org>
+Date: Tue, 12 Feb 2019 13:32:38 -0800
+Subject: [PATCH] Fix Encode sparse array as object test
+
+Port of this commit from upstream
+https://github.com/mpx/lua-cjson/commit/98eb1d01e952fc60a36f47846f905b86c92a4f58
+---
+ tests/test.lua | 15 +++++++++++++--
+ 1 file changed, 13 insertions(+), 2 deletions(-)
+
+diff --git a/tests/test.lua b/tests/test.lua
+index d1bf7e4..be5e19c 100755
+--- a/tests/test.lua
++++ b/tests/test.lua
+@@ -10,6 +10,17 @@ local json = require "cjson"
+ local json_safe = require "cjson.safe"
+ local util = require "cjson.util"
+ 
++local function json_encode_output_type(value)
++    local text = json.encode(value)
++    if string.match(text, "{.*}") then
++        return "object"
++    elseif string.match(text, "%[.*%]") then
++        return "array"
++    else
++        return "scalar"
++    end
++end
++
+ local function gen_raw_octets()
+     local chars = {}
+     for i = 0, 255 do chars[i + 1] = string.char(i) end
+@@ -292,8 +303,8 @@ local cjson_tests = {
+       json.encode, { { [1] = "one", [4] = "sparse test" } },
+       true, { '["one",null,null,"sparse test"]' } },
+     { "Encode sparse array as object",
+-      json.encode, { { [1] = "one", [5] = "sparse test" } },
+-      true, { '{"5":"sparse test","1":"one"}' } },
++      json_encode_output_type, { { [1] = "one", [5] = "sparse test" } },
++      true, { 'object' } },
+     { "Encode table with numeric string key as object",
+       json.encode, { { ["2"] = "numeric string key test" } },
+       true, { '{"2":"numeric string key test"}' } },
+-- 
+2.20.1
+

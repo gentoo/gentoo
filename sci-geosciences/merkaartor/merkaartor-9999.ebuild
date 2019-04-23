@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -39,6 +39,8 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 "
 
+PATCHES=( "${FILESDIR}/${PN}-0.18.3-sharedir-pluginsdir.patch" ) # bug 621826
+
 DOCS=( AUTHORS CHANGELOG )
 
 src_unpack() {
@@ -67,9 +69,11 @@ src_prepare() {
 src_configure() {
 	# TRANSDIR_SYSTEM is for bug #385671
 	eqmake5 \
-		PREFIX="${ED}usr" \
-		LIBDIR="${ED}usr/$(get_libdir)" \
-		TRANSDIR_MERKAARTOR="${ED}usr/share/${PN}/translations" \
+		PREFIX="${ED%/}/usr" \
+		LIBDIR="${ED%/}/usr/$(get_libdir)" \
+		PLUGINS_DIR="/usr/$(get_libdir)/${PN}/plugins" \
+		SHARE_DIR_PATH="/usr/share/${PN}" \
+		TRANSDIR_MERKAARTOR="${ED%/}/usr/share/${PN}/translations" \
 		TRANSDIR_SYSTEM="${EPREFIX}/usr/share/qt5/translations" \
 		SYSTEM_QTSA=1 \
 		NODEBUG=$(usex debug 0 1) \
@@ -78,10 +82,6 @@ src_configure() {
 		LIBPROXY=$(usex libproxy 1 0) \
 		USEWEBENGINE=$(usex webengine 1 0) \
 		Merkaartor.pro
-}
-
-pkg_preinst() {
-	gnome2_icon_savelist
 }
 
 pkg_postinst() {

@@ -14,7 +14,7 @@ SRC_URI="
 
 LICENSE="CC-BY-ND-3.0 FTL MIT LGPL-2 openssl dropbox"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~x86-linux"
+KEYWORDS="amd64 x86 ~x86-linux"
 IUSE="+librsync-bundled selinux X"
 RESTRICT="mirror strip"
 
@@ -58,10 +58,7 @@ RDEPEND="${PYTHON_DEPS}
 	net-misc/wget
 	>=sys-devel/gcc-4.2.0
 	sys-libs/zlib
-	|| (
-		sys-libs/ncurses:5/5
-		sys-libs/ncurses:0/5
-	)"
+	sys-libs/ncurses:5/5"
 
 src_unpack() {
 	unpack ${A}

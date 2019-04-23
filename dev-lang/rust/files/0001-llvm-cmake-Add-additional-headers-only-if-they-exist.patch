@@ -1,0 +1,41 @@
+From 1f68002cb725c6a8fb5ca8425c1c86495a053f4f Mon Sep 17 00:00:00 2001
+From: Michal Gorny <mgorny@gentoo.org>
+Date: Thu, 4 Apr 2019 14:21:38 +0000
+Subject: [PATCH] [llvm] [cmake] Add additional headers only if they exist
+
+Modify the add_header_files_for_glob() function to only add files
+that do exist, rather than all matches of the glob.  This fixes CMake
+error when one of the include directories (which happen to include
+/usr/include) contain broken symlinks.
+
+Differential Revision: https://reviews.llvm.org/D59632
+
+llvm-svn: 357701
+---
+ llvm/cmake/modules/LLVMProcessSources.cmake | 10 +++++++++-
+ 1 file changed, 9 insertions(+), 1 deletion(-)
+
+diff --git a/cmake/modules/LLVMProcessSources.cmake b/cmake/modules/LLVMProcessSources.cmake
+index 7cbd2863500..d0be0e8b3ba 100644
+--- a/src/llvm-project/llvm/cmake/modules/LLVMProcessSources.cmake
++++ b/src/llvm-project/llvm/cmake/modules/LLVMProcessSources.cmake
+@@ -30,7 +30,15 @@ endmacro(add_td_sources)
+
+ function(add_header_files_for_glob hdrs_out glob)
+   file(GLOB hds ${glob})
+-  set(${hdrs_out} ${hds} PARENT_SCOPE)
++  set(filtered)
++  foreach(file ${hds})
++    # Explicit existence check is necessary to filter dangling symlinks
++    # out.  See https://bugs.gentoo.org/674662.
++    if(EXISTS ${file})
++      list(APPEND filtered ${file})
++    endif()
++  endforeach()
++  set(${hdrs_out} ${filtered} PARENT_SCOPE)
+ endfunction(add_header_files_for_glob)
+
+ function(find_all_header_files hdrs_out additional_headerdirs)
+--
+2.21.0
+

@@ -1,8 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
-PYTHON_COMPAT=( python{3_4,3_5,3_6} )
+PYTHON_COMPAT=( python{3_5,3_6} )
 PYTHON_REQ_USE="sqlite(+)"
 
 inherit python-single-r1
@@ -13,7 +13,7 @@ SRC_URI="https://github.com/kaio/${PN}/releases/download/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="nls"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -28,11 +28,6 @@ DEPEND="${RDEPEND}
 
 src_prepare() {
 	python_fix_shebang .
-
-	sed -i \
-		"s/python/${EPYTHON}/" \
-		engine/${PN}-createdb.in \
-		engine/${PN/-/-engine-}.in
 
 	default
 }

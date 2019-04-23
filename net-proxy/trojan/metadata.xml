@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>yangmame@icloud.com</email>
+		<name>Xin Yang</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+		An unidentifiable mechanism that helps you bypass GFW.
+		Trojan features multiple protocols over TLS to avoid both
+		active/passive detections and ISP QoS limitations.
+		Trojan is not a fixed program or protocol. It's an idea,
+		an idea that imitating the most common service, to an extent
+		that it behaves identically, could help you get across the
+		Great FireWall permanently, without being identified ever.
+		We are the GreatER Fire; we ship Trojan Horses.
+	</longdescription>
+	<use>
+		<flag name="mysql">build with MySQL support</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">trojan-gfw/trojan</remote-id>
+	</upstream>
+</pkgmetadata>

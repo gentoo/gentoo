@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python3_{4,5,6} )
+PYTHON_COMPAT=( python3_{5,6} )
 VALA_USE_DEPEND=vapigen
 
 inherit gnome2 multilib-minimal python-any-r1 vala virtualx
@@ -18,7 +18,7 @@ IUSE="+crypt +introspection test vala"
 REQUIRED_USE="test? ( introspection )
 	vala? ( introspection )"
 
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ia64 ~mips ~ppc ~ppc64 sparc x86 ~amd64-fbsd"
+KEYWORDS="alpha amd64 arm ~arm64 ia64 ~mips ppc ppc64 sparc x86 ~amd64-fbsd"
 
 RDEPEND="
 	>=dev-libs/glib-2.38:2[${MULTILIB_USEDEP}]

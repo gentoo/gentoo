@@ -1,33 +1,38 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit autotools eutils gnome2-utils wxwidgets xdg-utils
+EAPI=6
+
+inherit autotools gnome2-utils wxwidgets xdg-utils
 
 MY_P="${PN}-minsrc-${PV}"
 DOC_PV="${PV}"
 DESCRIPTION="Free crossplatform audio editor"
-HOMEPAGE="http://web.audacityteam.org/"
+HOMEPAGE="https://web.audacityteam.org/"
 SRC_URI="https://dev.gentoo.org/~polynomial-c/dist/${MY_P}.tar.xz
 	doc? ( https://dev.gentoo.org/~polynomial-c/dist/${PN}-manual-${DOC_PV}.zip )"
 	# wget doesn't seem to work on FossHub links, so we mirror
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~mips ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~mips ppc ppc64 x86"
 IUSE="alsa cpu_flags_x86_sse doc ffmpeg +flac id3tag jack +ladspa +lame libav
 	+lv2 mad +midi nls +portmixer sbsms +soundtouch twolame vamp +vorbis +vst"
+
 RESTRICT="test"
 
 RDEPEND=">=app-arch/zip-2.3
 	dev-libs/expat
 	>=media-libs/libsndfile-1.0.0
-	=media-libs/portaudio-19*
+	>=media-libs/portaudio-19_pre
+	<media-libs/portaudio-19.06.00-r2
 	media-libs/soxr
 	x11-libs/wxGTK:3.0[X]
 	alsa? ( media-libs/alsa-lib )
-	ffmpeg? ( libav? ( media-video/libav:= )
-		!libav? ( >=media-video/ffmpeg-1.2:= ) )
+	ffmpeg? (
+		libav? ( media-video/libav:= )
+		!libav? ( >=media-video/ffmpeg-1.2:= )
+	)
 	flac? ( >=media-libs/flac-1.3.1[cxx] )
 	id3tag? ( media-libs/libid3tag )
 	jack? ( virtual/jack )
@@ -41,7 +46,6 @@ RDEPEND=">=app-arch/zip-2.3
 	vamp? ( >=media-libs/vamp-plugin-sdk-2.0 )
 	vorbis? ( >=media-libs/libvorbis-1.0 )"
 DEPEND="${RDEPEND}
-	app-arch/xz-utils
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )"
 
@@ -56,8 +60,7 @@ PATCHES=(
 )
 
 src_prepare() {
-	epatch "${PATCHES[@]}"
-
+	default
 	# needed because of portmixer patch
 	eautoreconf
 }
@@ -108,7 +111,7 @@ src_install() {
 	rm -r "${D%/}"/usr/share/doc || die
 
 	# Install our docs
-	dodoc README.txt
+	einstalldocs
 
 	if use doc ; then
 		docinto html

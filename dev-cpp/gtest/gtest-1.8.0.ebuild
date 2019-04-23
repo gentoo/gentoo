@@ -4,7 +4,7 @@
 EAPI=6
 
 # Python is required for tests and some build tasks.
-PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy )
+PYTHON_COMPAT=( python2_7 python3_{5,6} pypy )
 
 inherit python-any-r1 cmake-multilib
 
@@ -22,7 +22,7 @@ RDEPEND="!dev-cpp/gmock"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-9999-fix-py-tests.patch
-	"${FILESDIR}"/${PN}-9999-fix-gcc6-undefined-behavior.patch
+	"${FILESDIR}"/${PN}-1.8.0-fix-gcc6-undefined-behavior.patch
 	"${FILESDIR}"/${PN}-1.8.0-multilib-strict.patch
 	"${FILESDIR}"/${PN}-1.8.0-increase-clone-stack-size.patch
 )

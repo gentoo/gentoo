@@ -6,6 +6,7 @@
 # ros@gentoo.org
 # @AUTHOR:
 # Alexis Ballier <aballier@gentoo.org>
+# @SUPPORTED_EAPIS: 5 6 7
 # @BLURB: Template eclass for catkin based ROS packages.
 # @DESCRIPTION:
 # Provides function for building ROS packages on Gentoo.
@@ -224,11 +225,7 @@ ros-catkin_src_test() {
 		einfo "Regenerating setup_cached.sh for tests"
 		${PYTHON:-python} catkin_generated/generate_cached_setup.py || die
 	fi
-	# Using cmake-utils_src_make with nonfatal does not work and breaks e.g.
-	# dev-ros/rviz.
-	if nonfatal emake tests -n &> /dev/null ; then
-		cmake-utils_src_make tests
-	fi
+	nonfatal cmake-utils_src_make tests
 	cmake-utils_src_test "${@}"
 }
 

@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
+PYTHON_COMPAT=( python{2_7,3_5,3_6} )
 DISTUTILS_IN_SOURCE_BUILD=1
 
 inherit distutils-r1 scons-utils toolchain-funcs
@@ -18,7 +18,7 @@ SRC_URI="
 
 LICENSE="LGPL-2.1 MPL-1.1 GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~x86"
+KEYWORDS="amd64 ppc x86"
 IUSE="3ds"
 
 RDEPEND="

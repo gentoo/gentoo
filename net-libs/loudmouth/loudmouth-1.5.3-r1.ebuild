@@ -10,7 +10,7 @@ SRC_URI="https://github.com/mcabber/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="alpha amd64 ~arm ia64 ~ppc ppc64 sparc x86 ~ppc-macos"
+KEYWORDS="alpha amd64 ~arm ia64 ppc ppc64 sparc x86 ~ppc-macos"
 
 IUSE="asyncns ssl openssl static-libs test"
 
@@ -27,11 +27,12 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	test? ( dev-libs/check )
 	virtual/pkgconfig
-	>=dev-util/gtk-doc-1
-	>=dev-util/gtk-doc-am-1
 "
 
-PATCHES=( "${FILESDIR}"/${P}-gcc7.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-gcc7.patch
+	"${FILESDIR}"/${P}-skip-gtk-doc.patch
+)
 
 src_prepare() {
 	default

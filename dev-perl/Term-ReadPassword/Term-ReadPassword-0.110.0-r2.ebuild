@@ -10,6 +10,6 @@ inherit perl-module
 DESCRIPTION="Asking the user for a password"
 
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~ppc64 x86"
 IUSE=""
 PERL_RM_FILES=( "t/2_interactive.t" )

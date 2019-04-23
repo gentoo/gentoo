@@ -1,20 +1,20 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 MY_PN="phonon-backend-gstreamer"
 MY_P=${MY_PN}-${PV}
 
 if [[ ${PV} != *9999* ]]; then
 	SRC_URI="mirror://kde/stable/phonon/${MY_PN}/${PV}/${MY_P}.tar.xz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-fbsd"
 else
 	EGIT_REPO_URI=( "git://anongit.kde.org/${PN}" )
 	inherit git-r3
 fi
 
-inherit cmake-utils
+inherit cmake-utils xdg-utils
 
 DESCRIPTION="Phonon GStreamer backend"
 HOMEPAGE="https://phonon.kde.org/"
@@ -38,11 +38,20 @@ RDEPEND="
 	virtual/opengl
 	network? ( media-plugins/gst-plugins-soup:1.0 )
 "
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	virtual/pkgconfig
 "
 
 src_configure() {
 	local mycmakeargs=( -DPHONON_BUILD_PHONON4QT5=ON )
 	cmake-utils_src_configure
+}
+
+pkg_postinst() {
+	xdg_icon_cache_update
+}
+
+pkg_postrm() {
+	xdg_icon_cache_update
 }

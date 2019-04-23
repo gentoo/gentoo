@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -7,7 +7,7 @@ AUTOTOOLS_IN_SOURCE_BUILD=1
 
 FORTRAN_NEEDED=fortran
 FORTRAN_STANDARD="77 90"
-PYTHON_COMPAT=( python{2_7,3_4} )
+PYTHON_COMPAT=( python2_7 )
 
 inherit autotools-utils toolchain-funcs fortran-2 python-single-r1
 

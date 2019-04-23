@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Michał Górny <mgorny@gentoo.org> (06 Apr 2018)
@@ -108,10 +108,6 @@ net-fs/samba dmapi
 # Naohiro Aota <naota@gentoo.org> (15 Oct 2012)
 # Mask numa on sys-apps/hwloc. numactl not available on FreeBSD
 sys-apps/hwloc numa
-
-# Matt Turner <mattst88@gentoo.org> (07 Mar 2014)
-# media-libs/libomxil-bellagio keyworded on amd64/x86
-media-libs/mesa openmax
 
 # Naohiro Aota <naota@gentoo.org> (07 Jul 2014)
 # xattr support is not available on BSD #501534

@@ -1,0 +1,39 @@
+--- a/tool/rbinstall.rb.~1~	2018-12-27 07:43:59.938638174 +0100
++++ b/tool/rbinstall.rb	2018-12-27 07:51:09.096382161 +0100
+@@ -723,17 +723,7 @@
+ # :startdoc:
+ 
+ install?(:ext, :arch, :gem, :'default-gems', :'default-gems-arch') do
+-  install_default_gem('ext', srcdir) do |path|
+-    # assume that gemspec and extconf.rb are placed in the same directory
+-    success = false
+-    begin
+-      IO.foreach(File.dirname(path[(srcdir.size+1)..-1]) + "/Makefile") do |l|
+-        break success = true if /^TARGET\s*=/ =~ l
+-      end
+-    rescue Errno::ENOENT
+-    end
+-    success
+-  end
++  # Gems are unbundled in Gentoo
+ end
+ 
+ def load_gemspec(file)
+@@ -743,7 +743,7 @@
+ end
+ 
+ def install_default_gem(dir, srcdir)
+-  gem_dir = Gem.default_dir
++  gem_dir = ENV['GEM_DESTDIR'] ; puts "gem_dir for default gems = #{gem_dir}"
+   directories = Gem.ensure_gem_subdirectories(gem_dir, :mode => $dir_mode)
+   prepare "default gems from #{dir}", gem_dir, directories
+ 
+@@ -777,7 +777,7 @@
+ end
+ 
+ install?(:ext, :comm, :gem, :'bundled-gems') do
+-  gem_dir = Gem.default_dir
++  gem_dir = ENV['GEM_DESTDIR']
+   directories = Gem.ensure_gem_subdirectories(gem_dir, :mode => $dir_mode)
+   prepare "bundled gems", gem_dir, directories
+   install_dir = with_destdir(gem_dir)

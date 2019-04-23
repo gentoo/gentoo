@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -14,9 +14,12 @@ HOMEPAGE="https://github.com/yuki24/did_you_mean"
 
 LICENSE="MIT"
 SLOT="2.4"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 s390 ~sh sparc x86 ~amd64-fbsd ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE=""
 
 all_ruby_prepare() {
 	sed -i -e '/bundler/ s:^:#:' Rakefile || die
+
+	# Skip test that is broken with newer ruby releases
+	sed -i -e  '/test_message/,/^  end/ s:^:#:' test/core_ext/name_error_extension_test.rb || die
 }

@@ -33,9 +33,9 @@ MOZCONFIG_OPTIONAL_WIFI=1
 inherit check-reqs flag-o-matic toolchain-funcs eutils gnome2-utils mozconfig-v6.52 pax-utils xdg-utils autotools virtualx mozlinguas-v2
 
 DESCRIPTION="Firefox Web Browser"
-HOMEPAGE="https://www.mozilla.org/en-US/firefox/"
+HOMEPAGE="https://www.mozilla.org/firefox"
 
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
 
 SLOT="0"
 LICENSE="MPL-2.0 GPL-2 LGPL-2.1"
@@ -126,6 +126,8 @@ src_prepare() {
 	# Apply our patches
 	rm -f "${WORKDIR}"/firefox/2007_fix_nvidia_latest.patch
 	eapply "${WORKDIR}/firefox"
+
+	eapply "${FILESDIR}"/${P}-blessings-TERM.patch # 654316
 
 	# Enable gnomebreakpad
 	if use debug ; then

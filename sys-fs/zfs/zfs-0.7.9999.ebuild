@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
+PYTHON_COMPAT=( python{2_7,3_5,3_6} )
 
 if [[ ${PV} == *"9999" ]] ; then
 	AUTOTOOLS_AUTORECONF="1"
@@ -17,7 +17,7 @@ fi
 inherit autotools-utils bash-completion-r1 flag-o-matic linux-info python-r1 systemd toolchain-funcs udev
 
 DESCRIPTION="Userland utilities for ZFS Linux kernel module"
-HOMEPAGE="http://zfsonlinux.org/"
+HOMEPAGE="https://zfsonlinux.org/"
 
 LICENSE="BSD-2 CDDL MIT"
 SLOT="0"

@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="+lv2"
 
 RDEPEND="
-	>=dev-libs/mini-xml-2.5
+	>=dev-libs/mxml-2.5
 	>=media-libs/alsa-lib-1.0.17
 	media-libs/fontconfig
 	media-libs/libsndfile

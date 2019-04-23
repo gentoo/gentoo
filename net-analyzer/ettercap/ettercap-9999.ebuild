@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 inherit cmake-utils
 
@@ -16,10 +16,10 @@ if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/Ettercap/${PN}.git"
 else
 	SRC_URI="https://github.com/Ettercap/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz" #mirror does not work
-	KEYWORDS="~alpha ~amd64 ~arm ~sparc ~x86 ~x86-fbsd"
+	KEYWORDS="~alpha ~amd64 ~arm ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
 fi
-#IUSE="doc gtk ipv6 ncurses +plugins test"
-IUSE="doc gtk ipv6 libressl ncurses +plugins"
+
+IUSE="doc gtk ipv6 libressl ncurses +plugins test"
 
 RDEPEND="dev-libs/libbsd
 	dev-libs/libpcre
@@ -37,11 +37,12 @@ RDEPEND="dev-libs/libbsd
 		>=x11-libs/gtk+-2.2.2:2
 		>=x11-libs/pango-1.2.3
 	)
-	ncurses? ( sys-libs/ncurses:0= )
+	ncurses? ( >=sys-libs/ncurses-5.3:= )
 	plugins? ( >=net-misc/curl-7.26.0 )"
 DEPEND="${RDEPEND}
 	doc? ( app-text/ghostscript-gpl
 		sys-apps/groff )
+	test? ( dev-libs/check )
 	sys-devel/flex
 	virtual/yacc"
 
@@ -52,21 +53,17 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_enable ncurses CURSES)
-		$(cmake-utils_use_enable gtk)
-		$(cmake-utils_use_enable plugins)
-		$(cmake-utils_use_enable ipv6)
-		$(cmake-utils_use_enable doc PDF_DOCS)
+		-DENABLE_CURSES="$(usex ncurses)"
+		-DENABLE_GTK="$(usex gtk)"
+		-DENABLE_PLUGINS="$(usex plugins)"
+		-DENABLE_IPV6="$(usex ipv6)"
+		-DENABLE_TESTS="$(usex test)"
+		-DENABLE_PDF_DOCS="$(usex doc)"
 		-DBUNDLED_LIBS=OFF
 		-DSYSTEM_LIBS=ON
 		-DINSTALL_SYSCONFDIR="${EROOT}"etc
 	)
 		#right now we only support gtk2, but ettercap also supports gtk3
 		#do we care? do we want to support both?
-
-		#we want to enable testing but it fails right now
-		#we want to disable the bundled crap, but we are missing at least "libcheck"
-		#if we want to enable tests, we need to fix it, and either package libcheck or allow bundled version
-		#$(cmake-utils_use_enable test TESTS)
 	cmake-utils_src_configure
 }

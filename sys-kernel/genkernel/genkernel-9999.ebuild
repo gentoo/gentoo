@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # genkernel-9999        -> latest Git branch "master"
@@ -6,16 +6,18 @@
 
 EAPI=5 # approved 2012.09.11, required by all profiles since 2014.03.12
 
-inherit bash-completion-r1 epatch
+inherit bash-completion-r1 epatch estack
 
-VERSION_BUSYBOX='1.27.2' # warning, be sure to bump patches
+VERSION_BUSYBOX='1.30.1' # warning, be sure to bump patches
 VERSION_DMRAID='1.0.0.rc16-3' # warning, be sure to bump patches
-VERSION_MDADM='4.0' # warning, be sure to bump patches
-VERSION_FUSE='2.8.6' # warning, be sure to bump patches
-VERSION_ISCSI='2.0-872' # warning, be sure to bump patches
-VERSION_LVM='2.02.173' # warning, be sure to bump patches
-VERSION_UNIONFS_FUSE='0.24'
-VERSION_GPG='1.4.22'
+VERSION_LIBAIO='0.3.110' # warning, be sure to bump patches
+VERSION_MDADM='4.1' # warning, be sure to bump patches
+VERSION_FUSE='2.9.9' # warning, be sure to bump patches
+VERSION_ISCSI='2.0.875' # warning, be sure to bump patches
+VERSION_ISCSI_ISNS='0.99' # warning, be sure to bump patches
+VERSION_LVM='2.02.183' # warning, be sure to bump patches
+VERSION_UNIONFS_FUSE='2.0'
+VERSION_GPG='1.4.23'
 
 RH_HOME="ftp://sourceware.org/pub"
 DM_HOME="https://people.redhat.com/~heinzm/sw/dmraid/src"
@@ -27,11 +29,11 @@ COMMON_URI="${DM_HOME}/dmraid-${VERSION_DMRAID}.tar.bz2
 		${RH_HOME}/lvm2/LVM2.${VERSION_LVM}.tgz
 		${RH_HOME}/lvm2/old/LVM2.${VERSION_LVM}.tgz
 		${BB_HOME}/busybox-${VERSION_BUSYBOX}.tar.bz2
-		http://www.open-iscsi.org/bits/open-iscsi-${VERSION_ISCSI}.tar.gz
-		mirror://gentoo/open-iscsi-${VERSION_ISCSI}.tar.gz
-		mirror://sourceforge/fuse/fuse-${VERSION_FUSE}.tar.gz
-		http://podgorny.cz/unionfs-fuse/releases/unionfs-fuse-${VERSION_UNIONFS_FUSE}.tar.bz2
-		mirror://gentoo/unionfs-fuse-${VERSION_UNIONFS_FUSE}.tar.bz2
+		https://github.com/open-iscsi/open-iscsi/archive/${VERSION_ISCSI}.tar.gz -> open-iscsi-${VERSION_ISCSI}.tar.gz
+		https://github.com/open-iscsi/open-isns/archive/v${VERSION_ISCSI_ISNS}.tar.gz -> open-isns-${VERSION_ISCSI_ISNS}.tar.gz
+		https://github.com/libfuse/libfuse/releases/download/fuse-${VERSION_FUSE}/fuse-${VERSION_FUSE}.tar.gz
+		mirror://debian/pool/main/liba/libaio/libaio_${VERSION_LIBAIO}.orig.tar.gz -> libaio-${VERSION_LIBAIO}.tar.gz
+		https://github.com/rpodgorny/unionfs-fuse/archive/v${VERSION_UNIONFS_FUSE}.tar.gz -> unionfs-fuse-${VERSION_UNIONFS_FUSE}.tar.gz
 		mirror://gnupg/gnupg/gnupg-${VERSION_GPG}.tar.bz2"
 
 if [[ ${PV} == 9999* ]]
@@ -43,7 +45,7 @@ then
 else
 	SRC_URI="mirror://gentoo/${P}.tar.xz
 		${COMMON_URI}"
-	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 fi
 
 DESCRIPTION="Gentoo automatic kernel building scripts"
@@ -99,7 +101,9 @@ src_prepare() {
 		-e "s:VERSION_MDADM:$VERSION_MDADM:" \
 		-e "s:VERSION_DMRAID:$VERSION_DMRAID:" \
 		-e "s:VERSION_FUSE:$VERSION_FUSE:" \
+		-e "s:VERSION_ISCSI_ISNS:$VERSION_ISCSI_ISNS:" \
 		-e "s:VERSION_ISCSI:$VERSION_ISCSI:" \
+		-e "s:VERSION_LIBAIO:$VERSION_LIBAIO:" \
 		-e "s:VERSION_LVM:$VERSION_LVM:" \
 		-e "s:VERSION_UNIONFS_FUSE:$VERSION_UNIONFS_FUSE:" \
 		-e "s:VERSION_GPG:$VERSION_GPG:" \

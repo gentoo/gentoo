@@ -1,0 +1,68 @@
+From 71b54b5bbfd58e2b3ca84398e7b2fe1c93474092 Mon Sep 17 00:00:00 2001
+From: David Rosca <nowrep@gmail.com>
+Date: Wed, 20 Mar 2019 11:40:11 +0100
+Subject: Use correct package name for Intl
+
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index fe9de5a..94fe67e 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -129,7 +129,7 @@ if (PySide2_FOUND AND Shiboken2_FOUND AND PythonLibs_FOUND)
+     set(ENABLE_PYTHON_PLUGINS TRUE)
+ endif()
+ 
+-find_package(LibIntl)
++find_package(Intl)
+ 
+ # Git revision
+ if (EXISTS "${CMAKE_SOURCE_DIR}/.git")
+
+From 797e4c12a26196b3811848fc8b40f1bb19c5c2ce Mon Sep 17 00:00:00 2001
+From: David Rosca <nowrep@gmail.com>
+Date: Wed, 20 Mar 2019 11:53:31 +0100
+Subject: QML Plugins: Fix exporting i18n functions
+
+---
+ CMakeLists.txt                          | 3 +++
+ src/lib/plugins/qml/qmlpluginloader.cpp | 8 ++++----
+ 2 files changed, 7 insertions(+), 4 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 94fe67e..5977df0 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -130,6 +130,9 @@ if (PySide2_FOUND AND Shiboken2_FOUND AND PythonLibs_FOUND)
+ endif()
+ 
+ find_package(Intl)
++if (Intl_FOUND)
++    set(HAVE_LIBINTL TRUE)
++endif()
+ 
+ # Git revision
+ if (EXISTS "${CMAKE_SOURCE_DIR}/.git")
+diff --git a/src/lib/plugins/qml/qmlpluginloader.cpp b/src/lib/plugins/qml/qmlpluginloader.cpp
+index 8159b4b..2f393ff 100644
+--- a/src/lib/plugins/qml/qmlpluginloader.cpp
++++ b/src/lib/plugins/qml/qmlpluginloader.cpp
+@@ -69,10 +69,10 @@ void QmlPluginLoader::initEngineAndComponent()
+ #if HAVE_LIBINTL
+     auto i18n = new QmlI18n(m_name);
+     m_engine->globalObject().setProperty(QSL("__falkon_i18n"), m_engine->newQObject(i18n));
+-    m_engine->globalObject().setProperty(QSL("i18n"), m_engine->evaluate(QSL("function (s) { return __falkon_i18n.i18n(s) }")));
+-    m_engine->globalObject().setProperty(QSL("i18np"), m_engine->evaluate(QSL("function (s1, s2) { return __falkon_i18n.i18np(s1, s2) }")));
++    m_engine->evaluate(QSL("i18n = function (s) { return __falkon_i18n.i18n(s) };"));
++    m_engine->evaluate(QSL("i18np = function (s1, s2) { return __falkon_i18n.i18np(s1, s2) }"));
+ #else
+-    m_engine->globalObject().setProperty(QSL("i18n"), m_engine->evaluate(QSL("function (s) { return s }")));
+-    m_engine->globalObject().setProperty(QSL("i18np"), m_engine->evaluate(QSL("function (s1, s2) { return s1 }")));
++    m_engine->evaluate(QSL("i18n = function (s) { return s; };"));
++    m_engine->evaluate(QSL("i18np = function (s1, s2) { return s1; }"));
+ #endif
+ }
+-- 
+cgit v1.1

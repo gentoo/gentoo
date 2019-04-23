@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -13,8 +13,8 @@ HOMEPAGE="http://pub.ks-and-ks.ne.jp/prog/w3mmee/"
 SRC_URI="http://pub.ks-and-ks.ne.jp/prog/pub/${MY_P}.tar.gz"
 
 SLOT="0"
-LICENSE="public-domain"
-KEYWORDS="~amd64 ~ppc ~x86"
+LICENSE="w3m"
+KEYWORDS="amd64 ppc x86"
 IUSE="gpm imlib libressl nls ssl xface"
 
 DEPEND=">=dev-libs/boehm-gc-7.2
@@ -51,6 +51,7 @@ HTML_DOCS=( 00INCOMPATIBLE.html )
 src_prepare() {
 	default
 
+	sed -i "s:/lib\([^a-z$]\):/$(get_libdir)\1:g" configure
 	sed -i "/^AR=/s:ar:$(tc-getAR):" XMakefile
 }
 

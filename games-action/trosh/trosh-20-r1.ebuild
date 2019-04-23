@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils gnome2-utils
+
+inherit desktop eutils gnome2-utils
 
 DESCRIPTION="A game made in 20 hours for a friend. It has explosions"
 HOMEPAGE="http://stabyourself.net/trosh/"

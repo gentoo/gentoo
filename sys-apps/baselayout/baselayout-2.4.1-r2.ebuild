@@ -23,7 +23,8 @@ multilib_layout() {
 	local libdir libdirs=$(get_all_libdirs) def_libdir=$(get_abi_LIBDIR $DEFAULT_ABI)
 	: ${libdirs:=lib}	# it isn't that we don't trust multilib.eclass...
 
-	[ -z "${def_libdir}" ] && die "your DEFAULT_ABI=$DEFAULT_ABI appears to be invalid"
+	[ -z "${def_libdir}" ] &&
+		die "your DEFAULT_ABI=$DEFAULT_ABI appears to be invalid"
 
 	# figure out which paths should be symlinks and which should be directories
 	local dirs syms exp d

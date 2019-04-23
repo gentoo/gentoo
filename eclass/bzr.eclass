@@ -9,6 +9,7 @@
 # Mark Lee <bzr-gentoo-overlay@lazymalevolence.com>
 # Ulrich Müller <ulm@gentoo.org>
 # Christian Faulhammer <fauli@gentoo.org>
+# @SUPPORTED_EAPIS: 2 3 4 5 6 7
 # @BLURB: generic fetching functions for the Bazaar VCS
 # @DESCRIPTION:
 # The bzr.eclass provides functions to fetch and unpack sources from

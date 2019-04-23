@@ -9,6 +9,7 @@
     <flag name="pastebin">pastebin.com support</flag>
     <flag name="clipboard">copying of URLs with -x/--copy</flag>
     <flag name="github">Github authentication</flag>
+    <flag name="gitlab">Ensure git is installed for reading/passing GitLab authentication</flag>
     <flag name="browser">Spawn browser with pasted page</flag>
   </use>
   <upstream>
@@ -19,6 +20,7 @@
     <remote-id type="cpan-module">App::Nopaste::Service::Codepeek</remote-id>
     <remote-id type="cpan-module">App::Nopaste::Service::Debian</remote-id>
     <remote-id type="cpan-module">App::Nopaste::Service::Gist</remote-id>
+    <remote-id type="cpan-module">App::Nopaste::Service::GitLab</remote-id>
     <remote-id type="cpan-module">App::Nopaste::Service::Mojopaste</remote-id>
     <remote-id type="cpan-module">App::Nopaste::Service::PastebinCom</remote-id>
     <remote-id type="cpan-module">App::Nopaste::Service::Pastie</remote-id>

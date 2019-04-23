@@ -8,7 +8,7 @@ DESCRIPTION="Library for Neighbor Discovery Protocol"
 HOMEPAGE="http://libndp.org"
 SRC_URI="http://libndp.org/files/${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="LGPL-2.1+"
 SLOT="0"
 IUSE=""
 

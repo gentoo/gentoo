@@ -1,0 +1,196 @@
+From ee8a65b3fd7636a60f8a2b2e509376cbbd8326cb Mon Sep 17 00:00:00 2001
+From: Sven Eden <yamakuzure@gmx.net>
+Date: Tue, 11 Dec 2018 16:59:28 +0100
+Subject: [PATCH 2/2] Add elogind support
+
+Closes: https://bugs.gentoo.org/620948
+Signed-off-by: Ettore Di Giacinto <mudler@gentoo.org>
+---
+ configure.ac    | 20 +++++++++++++++++++-
+ src/Makefile.am |  4 ++++
+ src/pk-dbus.c   |  8 ++++----
+ src/pk-engine.c | 12 ++++++------
+ 4 files changed, 33 insertions(+), 11 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 737c1d4dc..0778c57d3 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -216,7 +216,6 @@ if test x$enable_systemd = xyes; then
+ 		    AS_HELP_STRING([--with-systemdsystemunitdir=DIR], [Directory for systemd service files]),
+ 		    [has_systemdsystemunitdir=$with_systemdsystemunitdir],
+ 		    [has_systemdsystemunitdir=$($PKG_CONFIG --variable=systemdsystemunitdir systemd)])
+-	AC_DEFINE(HAVE_SYSTEMD,1,[Build systemd code])
+ 	AC_SUBST([systemdsystemunitdir], [$has_systemdsystemunitdir])
+ fi
+ AM_CONDITIONAL(HAVE_SYSTEMD, [test -n "$has_systemdsystemunitdir"])
+@@ -228,6 +227,24 @@ AC_ARG_ENABLE(offline-update, AS_HELP_STRING([--enable-offline-update],[enable o
+ 	      enable_offline_update=$enableval,enable_offline_update=yes)
+ AM_CONDITIONAL(ENABLE_OFFLINE_UPDATE, [test x$enable_systemd = xyes -a x$enable_offline_update = xyes])
+ 
++dnl ---------------------------------------------------------------------------
++dnl - Use elogind instead of systemd-login
++dnl ---------------------------------------------------------------------------
++AC_ARG_ENABLE(elogind, AS_HELP_STRING([--enable-elogind],[enable elogind session tracker]),
++	      enable_elogind=$enableval,enable_elogind=no)
++if test x$enable_elogind = xyes; then
++	PKG_CHECK_MODULES(ELOGIND, [libelogind >= 229.4], [have_elogind=yes], [have_elogind=no])
++else
++	have_elogind=no
++fi
++
++dnl ---------------------------------------------------------------------------
++dnl --- Is systemd/sd-login.h, either from systemd or elogind, available?
++dnl ---------------------------------------------------------------------------
++if test -n "$has_systemdsystemunitdir" -o "x$have_elogind" != "xno" ; then
++		AC_DEFINE(HAVE_SYSTEMD_SD_LOGIN_H,1,[Build systemd-login code])
++fi
++
+ dnl ---------------------------------------------------------------------------
+ dnl - Generate man pages ? (default enabled)
+ dnl ---------------------------------------------------------------------------
+@@ -590,6 +607,7 @@ echo "
+         cflags:                    ${CFLAGS}
+         cppflags:                  ${CPPFLAGS}
+         Able to run locally:       ${enable_local}
++        Use elogind:               ${enable_elogind}
+         Use systemd:               ${enable_systemd}
+         Enable offline update:     ${enable_offline_update}
+         GStreamer plugin:          ${build_gstreamer_plugin}
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 24c9a0b9a..468f31d04 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -9,6 +9,7 @@ AM_CPPFLAGS =						\
+ 	$(SQLITE_CFLAGS)				\
+ 	$(POLKIT_CFLAGS)				\
+ 	$(PYTHON_CFLAGS)				\
++	$(ELOGIND_CFLAGS)				\
+ 	$(SYSTEMD_CFLAGS)				\
+ 	-DPACKAGE_LOCALE_DIR=\"$(localedir)\"		\
+ 	-DBINDIR=\"$(bindir)\"				\
+@@ -100,6 +101,7 @@ packagekit_direct_LDADD =				\
+ 	$(POLKIT_LIBS)					\
+ 	$(GIO_LIBS)					\
+ 	$(ARCHIVE_LIBS)					\
++	$(ELOGIND_LIBS)					\
+ 	$(SYSTEMD_LIBS)
+ 
+ packagekit_direct_LDFLAGS =				\
+@@ -128,6 +130,7 @@ packagekitd_LDADD =					\
+ 	$(POLKIT_LIBS)					\
+ 	$(GIO_LIBS)					\
+ 	$(ARCHIVE_LIBS)					\
++	$(ELOGIND_LIBS)					\
+ 	$(SYSTEMD_LIBS)
+ 
+ packagekitd_LDFLAGS =					\
+@@ -153,6 +156,7 @@ pk_self_test_LDADD =					\
+ 	$(POLKIT_LIBS)					\
+ 	$(GIO_LIBS)					\
+ 	$(ARCHIVE_LIBS)					\
++	$(ELOGIND_LIBS)					\
+ 	$(SYSTEMD_LIBS)
+ 
+ pk_self_test_CPPFLAGS =					\
+diff --git a/src/pk-dbus.c b/src/pk-dbus.c
+index 0cf512f38..37cc1d83c 100644
+--- a/src/pk-dbus.c
++++ b/src/pk-dbus.c
+@@ -27,7 +27,7 @@
+ #include <glib.h>
+ #include <gio/gio.h>
+ 
+-#ifdef HAVE_SYSTEMD
++#ifdef HAVE_SYSTEMD_SD_LOGIN_H
+  #include <systemd/sd-login.h>
+ #endif
+ 
+@@ -177,7 +177,7 @@ pk_dbus_get_cmdline (PkDbus *dbus, const gchar *sender)
+ 	return cmdline;
+ }
+ 
+-#ifdef HAVE_SYSTEMD
++#ifdef HAVE_SYSTEMD_SD_LOGIN_H
+ static gchar *
+ pk_dbus_make_logind_session_id (const gchar *session)
+ {
+@@ -218,7 +218,7 @@ gchar *
+ pk_dbus_get_session (PkDbus *dbus, const gchar *sender)
+ {
+ 	gchar *session = NULL;
+-#ifndef HAVE_SYSTEMD
++#ifndef HAVE_SYSTEMD_SD_LOGIN_H
+ 	g_autoptr(GError) error = NULL;
+ #endif
+ 	guint pid;
+@@ -248,7 +248,7 @@ pk_dbus_get_session (PkDbus *dbus, const gchar *sender)
+ 	}
+ 
+ 	/* get session from systemd or ConsoleKit */
+-#ifdef HAVE_SYSTEMD
++#ifdef HAVE_SYSTEMD_SD_LOGIN_H
+ 	session = pk_dbus_get_session_systemd (pid);
+ 	if (session == NULL)
+ 		g_warning ("failed to get session for pid %u", pid);
+diff --git a/src/pk-engine.c b/src/pk-engine.c
+index f63058fbc..7ea87a448 100644
+--- a/src/pk-engine.c
++++ b/src/pk-engine.c
+@@ -98,7 +98,7 @@ struct PkEnginePrivate
+ 	guint			 owner_id;
+ 	GDBusNodeInfo		*introspection;
+ 	GDBusConnection		*connection;
+-#ifdef HAVE_SYSTEMD
++#ifdef HAVE_SYSTEMD_SD_LOGIN_H
+ 	GDBusProxy		*logind_proxy;
+ 	gint			 logind_fd;
+ #endif
+@@ -256,7 +256,7 @@ pk_engine_emit_offline_property_changed (PkEngine *engine,
+ static void
+ pk_engine_inhibit (PkEngine *engine)
+ {
+-#ifdef HAVE_SYSTEMD
++#ifdef HAVE_SYSTEMD_SD_LOGIN_H
+ 	g_autoptr(GError) error = NULL;
+ 	g_autoptr(GUnixFDList) out_fd_list = NULL;
+ 	g_autoptr(GVariant) res = NULL;
+@@ -303,7 +303,7 @@ pk_engine_inhibit (PkEngine *engine)
+ static void
+ pk_engine_uninhibit (PkEngine *engine)
+ {
+-#ifdef HAVE_SYSTEMD
++#ifdef HAVE_SYSTEMD_SD_LOGIN_H
+ 	if (engine->priv->logind_fd == 0)
+ 		return;
+ 	g_debug ("closed logind fd %i", engine->priv->logind_fd);
+@@ -1701,7 +1701,7 @@ pk_engine_offline_method_call (GDBusConnection *connection_, const gchar *sender
+ 	}
+ }
+ 
+-#ifdef HAVE_SYSTEMD
++#ifdef HAVE_SYSTEMD_SD_LOGIN_H
+ static void
+ pk_engine_proxy_logind_cb (GObject *source_object,
+ 			   GAsyncResult *res,
+@@ -1737,7 +1737,7 @@ pk_engine_on_bus_acquired_cb (GDBusConnection *connection,
+ 	/* save copy for emitting signals */
+ 	engine->priv->connection = g_object_ref (connection);
+ 
+-#ifdef HAVE_SYSTEMD
++#ifdef HAVE_SYSTEMD_SD_LOGIN_H
+ 	/* connect to logind */
+ 	g_dbus_proxy_new (connection,
+ 			  G_DBUS_PROXY_FLAGS_DO_NOT_LOAD_PROPERTIES,
+@@ -1883,7 +1883,7 @@ pk_engine_finalize (GObject *object)
+ 	if (engine->priv->connection != NULL)
+ 		g_object_unref (engine->priv->connection);
+ 
+-#ifdef HAVE_SYSTEMD
++#ifdef HAVE_SYSTEMD_SD_LOGIN_H
+ 	/* uninhibit */
+ 	if (engine->priv->logind_fd != 0)
+ 		close (engine->priv->logind_fd);
+-- 
+2.19.2
+

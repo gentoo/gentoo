@@ -7,12 +7,11 @@ Documentation=https://github.com/jedisct1/dnscrypt-proxy/wiki
 ## If you enable this, the `listen_addresses` list in the main configuration file can be empty.
 ## Or, at least, the addresses it contains should not overlap with the systemd socket addresses.
 
-# Requires=dnscrypt-proxy.socket
-
-After=network.target
-Wants=network.target
+#Requires=dnscrypt-proxy.socket
 Before=nss-lookup.target
-Wants=nss-lookup.target
+After=network.target
+Wants=network.target nss-lookup.target
+
 
 [Service]
 ExecStart=/usr/bin/dnscrypt-proxy --config /etc/dnscrypt-proxy/dnscrypt-proxy.toml
@@ -35,5 +34,5 @@ CapabilityBoundingSet=CAP_NET_BIND_SERVICE
 AmbientCapabilities=CAP_NET_BIND_SERVICE
 
 [Install]
-Also=dnscrypt-proxy.socket
+#Also=dnscrypt-proxy.socket
 WantedBy=multi-user.target

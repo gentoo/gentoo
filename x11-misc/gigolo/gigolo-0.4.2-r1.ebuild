@@ -7,7 +7,7 @@ inherit xdg-utils
 
 DESCRIPTION="a frontend to easily manage connections to remote filesystems using GIO/GVfs"
 HOMEPAGE="https://www.uvena.de/gigolo/ https://goodies.xfce.org/projects/applications/gigolo"
-SRC_URI="mirror://xfce/src/apps/${PN}/${PV%.*}/${P}.tar.bz2"
+SRC_URI="https://archive.xfce.org/src/apps/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
+PYTHON_COMPAT=( python2_7 python3_{5,6} )
 PYTHON_REQ_USE='threads(+)'
 
 inherit flag-o-matic python-r1 waf-utils systemd user
@@ -33,7 +33,7 @@ IUSE_NTPSEC_REFCLOCK=${NTPSEC_REFCLOCK[@]/#/rclock_}
 LICENSE="HPND MIT BSD-2 BSD CC-BY-SA-4.0"
 SLOT="0"
 IUSE="${IUSE_NTPSEC_REFCLOCK} debug doc early gdb heat libressl nist ntpviz samba seccomp smear tests" #ionice
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+REQUIRED_USE="${PYTHON_REQUIRED_USE} nist? ( rclock_local )"
 
 # net-misc/pps-tools oncore,pps
 CDEPEND="${PYTHON_DEPS}

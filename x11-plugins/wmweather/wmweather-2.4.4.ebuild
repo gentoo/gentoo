@@ -1,10 +1,10 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=0
 
 DESCRIPTION="a dockable weather monitor for standard METAR stations using ICAO location"
-HOMEPAGE="http://www.godisch.de/debian/wmweather"
+HOMEPAGE="https://people.debian.org/~godisch/wmweather/"
 SRC_URI="mirror://debian/pool/main/w/${PN}/${PN}_${PV}.orig.tar.gz"
 
 LICENSE="GPL-2"

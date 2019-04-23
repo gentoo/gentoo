@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,11 +14,10 @@ if [[ $PV = *9999* ]]; then
 		http://repo.or.cz/r/gromacs.git"
 	[[ $PV = 9999 ]] && EGIT_BRANCH="master" || EGIT_BRANCH="release-${PV:0:4}"
 	inherit git-r3
-	KEYWORDS=""
 else
 	SRC_URI="ftp://ftp.gromacs.org/pub/${PN}/${PN}-${PV/_/-}.tar.gz
 		test? ( http://gerrit.gromacs.org/download/regressiontests-${PV/_/-}.tar.gz )"
-	KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
+	KEYWORDS="amd64 arm x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
 fi
 
 ACCE_IUSE="cpu_flags_x86_sse2 cpu_flags_x86_sse4_1 cpu_flags_x86_fma4 cpu_flags_x86_avx cpu_flags_x86_avx2"
@@ -42,7 +41,7 @@ CDEPEND="
 	blas? ( virtual/blas )
 	cuda? ( >=dev-util/nvidia-cuda-toolkit-4.2.9-r1 )
 	fftw? ( sci-libs/fftw:3.0 )
-	hwloc? ( sys-apps/hwloc )
+	hwloc? ( <sys-apps/hwloc-2 )
 	lapack? ( virtual/lapack )
 	mkl? ( sci-libs/mkl )
 	mpi? ( virtual/mpi )

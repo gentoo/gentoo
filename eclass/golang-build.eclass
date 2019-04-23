@@ -4,6 +4,7 @@
 # @ECLASS: golang-build.eclass
 # @MAINTAINER:
 # William Hubbs <williamh@gentoo.org>
+# @SUPPORTED_EAPIS: 5 6 7
 # @BLURB: Eclass for compiling go packages.
 # @DESCRIPTION:
 # This eclass provides default  src_compile, src_test and src_install
@@ -12,7 +13,7 @@
 inherit golang-base
 
 case "${EAPI:-0}" in
-	5|6)
+	5|6|7)
 		;;
 	*)
 		die "${ECLASS}: Unsupported eapi (EAPI=${EAPI})"
@@ -54,6 +55,7 @@ golang-build_src_compile() {
 
 	ego_pn_check
 	set -- env GOPATH="${WORKDIR}/${P}:$(get_golibdir_gopath)" \
+		GOCACHE="${T}/go-cache" \
 		go build -v -work -x ${EGO_BUILD_FLAGS} "${EGO_PN}"
 	echo "$@"
 	"$@" || die

@@ -2,8 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
-    <email>herb@hlmjr.com</email>
-    <name>Herb Miller Jr. (herbmillerjr)</name>
+    <email>geaaru@gmail.com</email>
+    <name>Daniele Rondina</name>
   </maintainer>
   <maintainer type="project">
     <email>proxy-maint@gentoo.org</email>
@@ -18,6 +18,9 @@
     </flag>
     <flag name="rest">
       Include support for sending and receiving HTTP requests
+    </flag>
+    <flag name="redis">
+      Include support for Redis database
     </flag>
   </use>
 </pkgmetadata>

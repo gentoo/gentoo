@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -11,7 +11,7 @@ MY_PV="$(get_version_component_range 1)${trarr:$(get_version_component_range 2):
 
 DESCRIPTION="Portable Scheme library for all standard Scheme implementations"
 HOMEPAGE="http://people.csail.mit.edu/jaffer/SLIB"
-SRC_URI="http://swiss.csail.mit.edu/ftpdir/scm/${PN}-${MY_PV}.tar.gz"
+SRC_URI="http://groups.csail.mit.edu/mac/ftpdir/scm/${PN}-${MY_PV}.zip"
 
 RESTRICT="mirror"
 
@@ -25,7 +25,8 @@ RDEPEND="
 	>=dev-scheme/guile-1.8.8:=
 	gambit? ( dev-scheme/gambit )
 	scm? ( dev-scheme/scm )"
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	app-arch/unzip"
 
 DOCS=( ANNOUNCE COPYING FAQ README ChangeLog slib.{txt,html} )
 
@@ -34,7 +35,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-fix-makefile-guile.patch"
 )
 
-S=${WORKDIR}/${PN}-${MY_PV}
+S="${WORKDIR}/${PN}"
 
 src_configure() {
 	./configure \

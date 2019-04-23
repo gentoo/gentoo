@@ -17,6 +17,26 @@
 
 #--- END OF EXAMPLES ---
 
+# Amy Liffey <amynka@gentoo.org> (15 Jan 2019)
+# Mask experimental contrib repo
+media-libs/opencv contrib contrib_cvv contrib_dnn contrib_hdf contrib_sfm contrib_xfeatures2d gflags glog tesseract
+
+# Brian Evans <grknight@gentoo.org> (06 Dec 2018)
+# Unmask argon2 for php
+dev-lang/php -argon2
+
+# Mikle Kolyada <zlogene@gentoo.org> (07 Nov 2018)
+# unmask sssd for sudo
+app-admin/sudo -sssd
+
+# Mart Raudsepp <leio@gentoo.org> (01 Nov 2018)
+# net-wireless/iwd not stable yet
+net-misc/networkmanager iwd
+
+# Thomas Deutschmann <whissi@gentoo.org> (27 Sep 2018)
+# sys-devel/lld is unstable
+www-client/firefox clang
+
 # Thomas Deutschmann <whissi@gentoo.org> (01 Jun 2018)
 net-analyzer/wireshark -doc
 

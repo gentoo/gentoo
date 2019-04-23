@@ -1,7 +1,5 @@
-Index: libreadline-java-0.8.0/src/native/Makefile
-===================================================================
---- libreadline-java-0.8.0.orig/src/native/Makefile
-+++ libreadline-java-0.8.0/src/native/Makefile
+--- a/src/native/Makefile
++++ b/src/native/Makefile
 @@ -69,13 +69,13 @@ all: $(T_LIBS) 
  lib: $(ROOTDIR)/$(LIB_PRE)$(TG).$(LIB_EXT)
  

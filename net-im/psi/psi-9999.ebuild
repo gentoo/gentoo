@@ -1,12 +1,12 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 PLOCALES="be bg ca cs de en eo es et fa fi fr he hu it ja kk mk nl pl pt pt_BR ru sk sl sr@latin sv sw uk ur_PK vi zh_CN zh_TW"
 PLOCALE_BACKUP="en"
 
-inherit l10n git-r3 qmake-utils gnome2-utils xdg-utils
+inherit l10n git-r3 qmake-utils xdg
 
 DESCRIPTION="Qt XMPP client"
 HOMEPAGE="https://psi-im.org"
@@ -20,7 +20,7 @@ EGIT_MIN_CLONE_TYPE="single"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="aspell crypt dbus debug doc enchant extras +hunspell iconsets sql ssl webengine webkit whiteboarding xscreensaver"
+IUSE="aspell crypt dbus debug doc enchant extras +hunspell iconsets sql webengine webkit whiteboarding xscreensaver"
 
 REQUIRED_USE="
 	?? ( aspell enchant hunspell )
@@ -29,44 +29,42 @@ REQUIRED_USE="
 	webengine? ( !webkit )
 "
 
-RDEPEND="
-	app-crypt/qca:2[qt5(+)]
+BDEPEND="
+	dev-qt/linguist-tools:5
+	virtual/pkgconfig
+	doc? ( app-doc/doxygen )
+	extras? ( >=sys-devel/qconf-2.4 )
+"
+DEPEND="
+	app-crypt/qca:2[ssl]
 	dev-qt/qtconcurrent:5
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtmultimedia:5
 	dev-qt/qtnetwork:5
+	dev-qt/qtsql:5[sqlite]
 	dev-qt/qtwidgets:5
 	dev-qt/qtx11extras:5
 	dev-qt/qtxml:5
-	net-dns/libidn
+	net-dns/libidn:0
 	sys-libs/zlib[minizip]
 	x11-libs/libX11
 	x11-libs/libxcb
 	aspell? ( app-text/aspell )
 	dbus? ( dev-qt/qtdbus:5 )
 	enchant? ( >=app-text/enchant-1.3.0 )
-	extras? (
-		sql? ( dev-qt/qtsql:5 )
-	)
 	hunspell? ( app-text/hunspell:= )
 	webengine? (
 		dev-qt/qtwebchannel:5
 		dev-qt/qtwebengine:5[widgets]
+		net-libs/http-parser
 	)
 	webkit? ( dev-qt/qtwebkit:5 )
 	whiteboarding? ( dev-qt/qtsvg:5 )
 	xscreensaver? ( x11-libs/libXScrnSaver )
 "
-DEPEND="${RDEPEND}
-	dev-qt/linguist-tools:5
-	virtual/pkgconfig
-	doc? ( app-doc/doxygen )
-	extras? ( >=sys-devel/qconf-2.4 )
-"
-PDEPEND="
-	crypt? ( app-crypt/qca[gpg] )
-	ssl? ( app-crypt/qca:2[ssl] )
+RDEPEND="${DEPEND}
+	dev-qt/qtimageformats
 "
 
 RESTRICT="test iconsets? ( bindist )"
@@ -75,14 +73,12 @@ pkg_setup() {
 	MY_PN=psi
 	if use extras; then
 		MY_PN=psi-plus
-		echo
 		ewarn "You're about to build patched version of Psi called Psi+."
 		ewarn "It has new nice features not yet included to Psi."
 		ewarn "Take a look at homepage for more info: http://psi-plus.com/"
-		echo
 
 		if use iconsets; then
-			echo
+			ewarn
 			ewarn "Some artwork is from open source projects, but some is provided 'as-is'"
 			ewarn "and has not clear licensing."
 			ewarn "Possibly this build is not redistributable in some countries."
@@ -170,11 +166,11 @@ src_install() {
 	emake INSTALL_ROOT="${D}" install
 
 	# this way the docs will be installed in the standard gentoo dir
-	rm "${ED}"/usr/share/${MY_PN}/{COPYING,README} || die "Installed file set seems to be changed by upstream"
+	rm "${ED}"/usr/share/${MY_PN}/{COPYING,README.html} || die "doc files set seems to have changed"
 	newdoc iconsets/roster/README README.roster
 	newdoc iconsets/system/README README.system
 	newdoc certs/README README.certs
-	dodoc README
+	dodoc README.html
 
 	use doc && HTML_DOCS=( doc/api/. )
 	einstalldocs
@@ -191,11 +187,6 @@ src_install() {
 }
 
 pkg_postinst() {
-	gnome2_icon_cache_update
-	xdg_desktop_database_update
-}
-
-pkg_postrm() {
-	gnome2_icon_cache_update
-	xdg_desktop_database_update
+	xdg_pkg_postinst
+	einfo "For GPG support make sure app-crypt/qca is compiled with gpg USE flag."
 }

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: ruby-fakegem.eclass
@@ -7,6 +7,7 @@
 # @AUTHOR:
 # Author: Diego E. Pettenò <flameeyes@gentoo.org>
 # Author: Alex Legler <a3li@gentoo.org>
+# @SUPPORTED_EAPIS: 0 1 2 3 4 5 6
 # @BLURB: An eclass for installing Ruby packages to behave like RubyGems.
 # @DESCRIPTION:
 # This eclass allows to install arbitrary Ruby libraries (including Gems),
@@ -379,6 +380,7 @@ all_fakegem_compile() {
 				;;
 			rdoc)
 				rdoc ${RUBY_FAKEGEM_DOC_SOURCES} || die "failed to (re)build documentation"
+				rm -f doc/js/*.gz || die "failed to remove duplicated compressed javascript files"
 				;;
 			yard)
 				yard doc ${RUBY_FAKEGEM_DOC_SOURCES} || die "failed to (re)build documentation"

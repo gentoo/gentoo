@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 
-inherit autotools toolchain-funcs libtool flag-o-matic
+inherit autotools toolchain-funcs flag-o-matic
 
 MY_PV="${PV/_/-}"
 MY_P="util-linux-${MY_PV}"

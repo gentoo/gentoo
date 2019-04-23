@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
+PYTHON_COMPAT=( python{2_7,3_5,3_6} )
 
 inherit distutils-r1 virtualx xdg-utils
 
@@ -21,7 +21,7 @@ LICENSE="AFL-3.0"
 IUSE="test"
 
 RDEPEND="
-	<=dev-python/CommonMark-0.5.4[${PYTHON_USEDEP}]
+	<=dev-python/commonmark-0.5.4[${PYTHON_USEDEP}]
 	>=dev-python/joblib-0.9[${PYTHON_USEDEP}]
 	>=dev-python/numpy-1.11[${PYTHON_USEDEP},lapack]
 	>=dev-python/matplotlib-1.5[${PYTHON_USEDEP}]

@@ -1,17 +1,17 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy pypy3 )
+PYTHON_COMPAT=( python2_7 python3_{5,6} pypy pypy3 )
 
 inherit distutils-r1
 
 MY_P="PyYAML-${PV}"
 
 DESCRIPTION="YAML parser and emitter for Python"
-HOMEPAGE="http://pyyaml.org/wiki/PyYAML https://pypi.org/project/PyYAML/"
-SRC_URI="http://pyyaml.org/download/${PN}/${MY_P}.tar.gz"
+HOMEPAGE="https://pyyaml.org/wiki/PyYAML https://pypi.org/project/PyYAML/"
+SRC_URI="https://pyyaml.org/download/${PN}/${MY_P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

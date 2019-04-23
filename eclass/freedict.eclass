@@ -6,6 +6,7 @@
 # maintainer-needed@gentoo.org
 # @AUTHOR:
 # Original author: Seemant Kulleen
+# @SUPPORTED_EAPIS: 6
 # @BLURB: Ease the installation of freedict translation dictionaries
 # @DESCRIPTION:
 # This eclass exists to ease the installation of freedict translation

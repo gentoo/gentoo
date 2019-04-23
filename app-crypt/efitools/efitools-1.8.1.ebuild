@@ -21,7 +21,7 @@ RDEPEND="!static? ( ${LIB_DEPEND//\[static-libs(+)]} )
 	sys-apps/util-linux"
 
 DEPEND="${RDEPEND}
-	app-crypt/sbsigntool
+	app-crypt/sbsigntools
 	dev-perl/File-Slurp
 	static? ( ${LIB_DEPEND} )
 	sys-apps/help2man

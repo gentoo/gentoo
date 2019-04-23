@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -12,7 +12,7 @@ SRC_URI="https://www.freedesktop.org/software/${PN}/releases/${MY_PV}/${P}.tar.x
 
 LICENSE="LGPL-2"
 SLOT="2.0"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~sparc x86 ~amd64-fbsd"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ~mips ppc ppc64 ~sparc x86 ~amd64-fbsd"
 IUSE="+introspection +modemmanager zeroconf"
 
 RDEPEND="
@@ -27,6 +27,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	dev-util/gdbus-codegen
+	dev-util/glib-utils
 	>=dev-util/gtk-doc-am-1
 	>=dev-util/intltool-0.40
 	sys-devel/gettext

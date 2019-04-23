@@ -1,0 +1,15 @@
+diff -ruN linux-gpib-kernel-4.2.0_rc1.orig/drivers/Makefile.am linux-gpib-kernel-4.2.0_rc1/drivers/Makefile.am
+--- linux-gpib-kernel-4.2.0_rc1.orig/drivers/Makefile.am	2018-10-02 11:32:11.000000000 +0200
++++ linux-gpib-kernel-4.2.0_rc1/drivers/Makefile.am	2018-10-09 12:03:21.272433209 +0200
+@@ -14,10 +14,8 @@
+ 
+ -include $(top_srcdir)/util/linux_flags/flags
+ 
+-#ignore errors from kernel's make modules in all-local, to avoid failure of make install
+-#on nfs filesystem with root_squash
+ all-local:
+-	-$(MAKE) -C $(LINUX_SRCDIR) V=1 modules\
++	$(MAKE) -C $(LINUX_SRCDIR) V=1 modules\
+ 		CC="$(LINUX_CC) -I@abs_top_srcdir@ -I@abs_top_srcdir@/compat/include" \
+ 		CONFIG_GPIB_ISA="$(ENABLE_ISA)" \
+ 		SUBDIRS="$(GPIB_ABS_MODULE_SUBDIR)"

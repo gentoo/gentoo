@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -39,7 +39,7 @@ pkg_nofetch() {
 	einfo " 1. Visit ${download_url}"
 	einfo " 2. Select 'JDBC Standard Extension Source 2.0'"
 	einfo " 3. Download ${stdext_src}"
-	einfo " 4. Move to ${DISTDIR}"
+	einfo " 4. Move to your DISTDIR directory"
 	einfo
 	einfo " Run emerge on this package again to complete"
 	einfo

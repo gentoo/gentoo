@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -15,13 +15,12 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-# Drop the libtool dep once libltdl goes stable.
 RDEPEND="virtual/opengl
 	x11-libs/libSM
 	media-libs/libsdl[joystick,opengl,video,X]
 	media-libs/sdl-image[png]
 	media-libs/sdl-mixer[vorbis]
-	|| ( dev-libs/libltdl:0 <sys-devel/libtool-2.4.3-r2:2 )"
+	dev-libs/libltdl:0"
 DEPEND="${RDEPEND}
 	x11-libs/libXt"
 

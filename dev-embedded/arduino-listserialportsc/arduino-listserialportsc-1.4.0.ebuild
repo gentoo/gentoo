@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,10 +10,11 @@ HOMEPAGE="https://github.com/arduino/listSerialPortsC"
 SRC_URI="https://github.com/arduino/listSerialPortsC/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="LGPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND=">=dev-libs/libserialport-0.1.1"
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	>=virtual/jdk-1.8"
 
 S="${WORKDIR}/listSerialPortsC-${PV}"
 

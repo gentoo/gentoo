@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit cmake-utils versionator
+inherit cmake-utils
 
 if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
@@ -26,7 +26,12 @@ RDEPEND="
 	root? ( sci-physics/root:= )
 	geant4? ( >=sci-physics/geant-4.10.03 )"
 DEPEND="${RDEPEND}
-	doc? ( app-doc/doxygen[dot] )"
+	doc? ( app-doc/doxygen[dot] )
+	test? ( sci-physics/geant-vmc[g4root] )"
+RESTRICT="
+	!geant4? ( test )
+	!root? ( test )
+	!test? ( test )"
 
 DOCS=(
 	doc/README

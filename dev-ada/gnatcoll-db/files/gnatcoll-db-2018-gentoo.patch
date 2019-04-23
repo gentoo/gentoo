@@ -9,13 +9,3 @@
  
     Thread_Lib := ();
  
---- a/postgres/gnatcoll_postgres.gpr	2018-06-24 16:39:56.345322365 +0200
-+++ b/postgres/gnatcoll_postgres.gpr	2018-06-24 16:40:30.737772583 +0200
-@@ -81,6 +81,7 @@
-             for Switches ("Ada") use ("-O2", "-gnatn", "-gnatwaCJ");
-             for Switches ("C") use ("-O2", "-Wunreachable-code") & PQP_Flag;
-       end case;
-+      for Driver ("C") use External ("GCC", "gcc");
-    end Compiler;
- 
-    package Binder is

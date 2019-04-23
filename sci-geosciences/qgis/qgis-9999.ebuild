@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,7 +15,7 @@ else
 	GIT_ECLASS="git-r3"
 	EGIT_REPO_URI="https://github.com/${PN}/${PN^^}.git"
 fi
-inherit cmake-utils eutils ${GIT_ECLASS} gnome2-utils python-single-r1 qmake-utils xdg-utils
+inherit cmake-utils desktop ${GIT_ECLASS} gnome2-utils python-single-r1 qmake-utils xdg-utils
 unset GIT_ECLASS
 
 DESCRIPTION="User friendly Geographic Information System"
@@ -101,8 +101,6 @@ RESTRICT="test"
 PATCHES=(
 	# git master
 	"${FILESDIR}/${PN}-2.18.12-cmake-lib-suffix.patch"
-	# TODO upstream
-	"${FILESDIR}/${PN}-3.0.0-featuresummary.patch"
 )
 
 pkg_setup() {

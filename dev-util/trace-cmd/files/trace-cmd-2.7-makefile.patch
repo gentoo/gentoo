@@ -1,0 +1,36 @@
+diff --git a/Makefile b/Makefile
+index a5d2c38..a99e5a4 100644
+--- a/Makefile
++++ b/Makefile
+@@ -63,7 +63,7 @@ python_dir = $(HOME)/.trace-cmd/python
+ var_dir = $(HOME)/.trace-cmd/
+ else
+ plugin_dir = $(libdir)/trace-cmd/plugins
+-python_dir = $(libdir)/trace-cmd/python
++python_dir ?= $(libdir)/trace-cmd/python
+ PLUGIN_DIR = -DPLUGIN_DIR="$(plugin_dir)"
+ PYTHON_DIR = -DPYTHON_DIR="$(python_dir)"
+ PLUGIN_DIR_SQ = '$(subst ','\'',$(PLUGIN_DIR))'
+@@ -119,8 +119,13 @@ endif # NO_PYTHON
+ test-build = $(if $(shell sh -c 'echo "$(1)" | \
+ 	$(CC) -o /dev/null -c -x c - > /dev/null 2>&1 && echo y'), $2)
+ 
++ifndef NO_UDIS86
+ # have udis86 disassembler library?
+-udis86-flags := $(call test-build,\#include <udis86.h>,-DHAVE_UDIS86 -ludis86)
++udis86-flags := -DHAVE_UDIS86
++udis86-ldflags := -ludis86
++else
++udis86-flags := -UHAVE_UDIS86
++endif # NO_UDIS86
+ 
+ define BLK_TC_FLUSH_SOURCE
+ #include <linux/blktrace_api.h>
+@@ -276,6 +281,7 @@ endif
+ # Append required CFLAGS
+ override CFLAGS += $(CONFIG_FLAGS) $(INCLUDES) $(PLUGIN_DIR_SQ) $(VAR_DIR)
+ override CFLAGS += $(udis86-flags) $(blk-flags)
++override LDFLAGS += $(udis86-ldflags)
+ 
+ ifeq ($(VERBOSE),1)
+   Q =

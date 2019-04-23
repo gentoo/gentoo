@@ -7,6 +7,5 @@
 	</maintainer>
 	<use>
 		<flag name="mac">Support for creation of Monkey's Audio files (APE)</flag>
-		<flag name="opus">Support for creation of Opus files</flag>
 	</use>
 </pkgmetadata>

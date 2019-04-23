@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -10,12 +10,13 @@ SRC_URI="https://launchpad.net/${PN}/${PV%.*}/${PV}/+download/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="3"
-KEYWORDS="amd64 ~arm ~arm64 x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 x86"
 IUSE="test"
 
 RDEPEND=">=dev-libs/glib-2.22[${MULTILIB_USEDEP}]
 	>=x11-libs/gtk+-3.2:3[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}
+	dev-util/glib-utils
 	virtual/pkgconfig[${MULTILIB_USEDEP}]
 	test? ( dev-util/dbus-test-runner )"
 

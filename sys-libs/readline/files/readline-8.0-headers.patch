@@ -1,0 +1,17 @@
+Required by bash-5.0 or else compilation fails:
+
+ bashline.c:69:10: fatal error: readline/rlmbutil.h: No such file or directory
+  #include <readline/rlmbutil.h>
+           ^~~~~~~~~~~~~~~~~~~~~
+
+--- readline-8.0/Makefile.in
++++ readline-8.0/Makefile.in
+@@ -153,7 +153,7 @@
+ CREATED_TAGS = TAGS tags
+ 
+ INSTALLED_HEADERS = readline.h chardefs.h keymaps.h history.h tilde.h \
+-		    rlstdc.h rlconf.h rltypedefs.h
++		    rlstdc.h rlconf.h rltypedefs.h rlmbutil.h
+ 
+ OTHER_DOCS = $(srcdir)/CHANGES $(srcdir)/INSTALL $(srcdir)/README
+ OTHER_INSTALLED_DOCS = CHANGES INSTALL README

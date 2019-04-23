@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,8 +6,8 @@ EAPI=6
 inherit eutils
 
 DESCRIPTION="GDAL plugin to access GRASS data"
-HOMEPAGE="http://www.gdal.org/"
-SRC_URI="http://download.osgeo.org/gdal/${PV}/${P}.tar.gz"
+HOMEPAGE="https://www.gdal.org/"
+SRC_URI="https://download.osgeo.org/gdal/${PV}/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="MIT"

@@ -1,18 +1,19 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 DESCRIPTION="A replacement master boot record for IBM-PC compatible computers"
-HOMEPAGE="http://www.chiark.greenend.org.uk/~neilt/mbr/"
-SRC_URI="http://www.chiark.greenend.org.uk/~neilt/mbr/${P}.tar.gz"
+HOMEPAGE="https://www.chiark.greenend.org.uk/~neilt/mbr/"
+SRC_URI="https://www.chiark.greenend.org.uk/~neilt/mbr/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="-alpha ~amd64 -ppc -sparc ~x86"
+KEYWORDS="-alpha amd64 -ppc -sparc x86"
 IUSE="test"
 
-DEPEND="sys-devel/bin86
+DEPEND="
+	sys-devel/bin86
 	test? ( dev-vcs/rcs )"
 RDEPEND=""
 

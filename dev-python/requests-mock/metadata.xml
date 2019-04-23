@@ -8,5 +8,6 @@
 	<upstream>
 		<remote-id type="pypi">requests-mock</remote-id>
 		<remote-id type="github">jamielennox/requests-mock</remote-id>
+		<bugs-to>https://github.com/jamielennox/requests-mock/issues</bugs-to>
 	</upstream>
 </pkgmetadata>

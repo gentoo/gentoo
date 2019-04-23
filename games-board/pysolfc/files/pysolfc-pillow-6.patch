@@ -1,0 +1,20 @@
+diff -U2 -r PySolFC-pysolfc-2.6.2.orig/pysollib/mfxutil.py PySolFC-pysolfc-2.6.2/pysollib/mfxutil.py
+--- PySolFC-pysolfc-2.6.2.orig/pysollib/mfxutil.py	2019-02-27 21:52:26.000000000 +0100
++++ PySolFC-pysolfc-2.6.2/pysollib/mfxutil.py	2019-04-03 14:09:51.059349643 +0200
+@@ -52,5 +52,5 @@
+         Image._initialized = 2
+ USE_PIL = False
+-if TOOLKIT == 'tk' and Image and Image.VERSION >= '1.1.7':
++if TOOLKIT == 'tk' and Image:
+     USE_PIL = True
+ 
+diff -U2 -r PySolFC-pysolfc-2.6.2.orig/pysollib/ui/tktile/tkutil.py PySolFC-pysolfc-2.6.2/pysollib/ui/tktile/tkutil.py
+--- PySolFC-pysolfc-2.6.2.orig/pysollib/ui/tktile/tkutil.py	2019-02-27 21:52:26.000000000 +0100
++++ PySolFC-pysolfc-2.6.2/pysollib/ui/tktile/tkutil.py	2019-04-03 14:19:22.450363811 +0200
+@@ -354,5 +354,5 @@
+         return None
+     im = image._pil_image
+-    if Image.VERSION >= '1.1.7':
++    if True:
+         # use an alpha image
+         sh = Image.new('RGBA', im.size, color)

@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 MY_PN="phonon-backend-vlc"
 
@@ -29,7 +29,8 @@ RDEPEND="
 	>=media-libs/phonon-4.10.0
 	media-video/vlc:=[dbus,ogg,vorbis]
 "
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	virtual/pkgconfig
 "
 

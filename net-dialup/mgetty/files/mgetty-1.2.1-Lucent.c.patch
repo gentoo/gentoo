@@ -1,0 +1,16 @@
+--- a/voice/libvoice/Lucent.c
++++ b/voice/libvoice/Lucent.c
+@@ -96,6 +96,13 @@
+      if (voice_command("AT+VLS=0", "OK") != VMA_USER_1)
+           lprintf(L_WARN, "can't deselect all input/output devices");
+ 
++     /* the Lucent chips DO support Caller ID, this command is OK */
++     /* Just borrowed from the V253modem.c file */
++     /* enable callerid (if supported) and setformat */
++     if (voice_command("AT+VCID=1", "OK") != VMA_USER_1)
++          lprintf(L_WARN, "can't set caller ID output");     
++     /* mgetty supports formated callerid output */
++
+      voice_modem_state = IDLE;
+      return(OK);
+      }

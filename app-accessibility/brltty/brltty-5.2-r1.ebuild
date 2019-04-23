@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
+PYTHON_COMPAT=( python2_7 python3_{5,6} )
 FINDLIB_USE="ocaml"
 
 inherit findlib eutils multilib toolchain-funcs java-pkg-opt-2 flag-o-matic \
@@ -169,7 +169,7 @@ src_install() {
 
 	libdir="$(get_libdir)"
 	mkdir -p "${D}"/usr/${libdir}/
-	mv "${D}"/${libdir}/*.a "${D}"/usr/${libdir}/ || die
+	mv "${D}"/${libdir}/*.a "${D}"/usr/${libdir}/
 	gen_usr_ldscript libbrlapi.so
 
 	cd Documents || die

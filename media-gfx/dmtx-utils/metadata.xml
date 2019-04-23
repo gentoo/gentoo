@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+    <maintainer type="person">
+        <email>ahippo@yandex.ru</email>
+        <name>Andrey Mazo</name>
+    </maintainer>
+    <maintainer type="project">
+        <email>proxy-maint@gentoo.org</email>
+        <name>Proxy Maintainers</name>
+    </maintainer>
+    <longdescription>
+        Tools for reading and writing two-dimensional Data Matrix barcodes.
+        The tools are based on libdmtx library.
+    </longdescription>
+    <upstream>
+        <remote-id type="github">dmtx/dmtx-utils</remote-id>
+        <remote-id type="sourceforge">libdmtx</remote-id>
+        <bugs-to>https://github.com/dmtx/dmtx-utils/issues</bugs-to>
+    </upstream>
+</pkgmetadata>

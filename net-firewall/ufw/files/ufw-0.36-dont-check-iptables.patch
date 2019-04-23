@@ -1,0 +1,45 @@
+--- a/setup.py	2019-03-21 01:32:28.500245586 +0300
++++ b/setup.py	2019-03-21 01:39:17.166095026 +0300
+@@ -257,41 +257,7 @@
+ os.unlink(os.path.join('staging', 'ufw-init'))
+ os.unlink(os.path.join('staging', 'ufw-init-functions'))
+ 
+-iptables_exe = ''
+-iptables_dir = ''
+-
+-for e in ['iptables']:
+-    for dir in ['/sbin', '/bin', '/usr/sbin', '/usr/bin', '/usr/local/sbin', \
+-                '/usr/local/bin']:
+-        if e == "iptables":
+-            if os.path.exists(os.path.join(dir, e)):
+-                iptables_dir = dir
+-                iptables_exe = os.path.join(iptables_dir, "iptables")
+-                print("Found '%s'" % iptables_exe)
+-            else:
+-                continue
+-
+-        if iptables_exe != "":
+-            break
+-
+-
+-if iptables_exe == '':
+-    print("ERROR: could not find required binary 'iptables'", file=sys.stderr)
+-    sys.exit(1)
+-
+-for e in ['ip6tables', 'iptables-restore', 'ip6tables-restore']:
+-    if not os.path.exists(os.path.join(iptables_dir, e)):
+-        print("ERROR: could not find required binary '%s'" % (e), file=sys.stderr)
+-        sys.exit(1)
+-
+-(rc, out) = cmd([iptables_exe, '-V'])
+-if rc != 0:
+-    raise OSError(errno.ENOENT, "Could not find version for '%s'" % \
+-                  (iptables_exe))
+-version = re.sub('^v', '', re.split('\s', str(out))[1])
+-print("Found '%s' version '%s'" % (iptables_exe, version))
+-if version < "1.4":
+-    print("WARN: version '%s' has limited IPv6 support. See README for details." % (version), file=sys.stderr)
++iptables_dir = '/sbin'
+ 
+ setup (name='ufw',
+       version=ufw_version,

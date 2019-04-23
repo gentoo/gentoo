@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
+PYTHON_COMPAT=( python{2_7,3_5,3_6} )
 
 inherit gnome2 python-any-r1 virtualx
 
@@ -23,8 +23,10 @@ RDEPEND="
 	gnome-base/gsettings-desktop-schemas
 	>=x11-libs/gtk+-3.11.4:3
 "
+# libxml2 required for glib-compile-resources
 DEPEND="${RDEPEND}
 	dev-libs/appstream-glib
+	dev-libs/libxml2:2
 	>=dev-util/intltool-0.26
 	virtual/pkgconfig
 	test? (

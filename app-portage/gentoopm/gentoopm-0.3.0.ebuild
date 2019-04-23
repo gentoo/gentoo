@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} pypy )
+PYTHON_COMPAT=( python{2_7,3_5,3_6,3_7} pypy )
 
 inherit distutils-r1
 
@@ -19,8 +19,7 @@ RDEPEND="
 	|| (
 		>=sys-apps/pkgcore-0.9.4[${PYTHON_USEDEP}]
 		>=sys-apps/portage-2.1.10.3[${PYTHON_USEDEP}]
-		sys-apps/portage-mgorny[${PYTHON_USEDEP}]
-		>=sys-apps/paludis-3.0.0_pre20170219[python,${PYTHON_USEDEP}] )"
+		sys-apps/portage-mgorny[${PYTHON_USEDEP}] )"
 PDEPEND="app-eselect/eselect-package-manager"
 
 python_test() {

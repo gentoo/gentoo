@@ -1,0 +1,42 @@
+--- a/CMakeLists.txt	2019-01-10 19:29:06.831367707 +0100
++++ b/CMakeLists.txt	2019-01-10 19:30:11.125364384 +0100
+@@ -522,23 +522,23 @@
+ # ----------------------------------------------------------------------------
+ #  Autodetect if we are in a GIT repository
+ # ----------------------------------------------------------------------------
+-find_host_package(Git QUIET)
++# find_host_package(Git QUIET)
+ 
+-if(NOT DEFINED OPENCV_VCSVERSION AND GIT_FOUND)
+-  execute_process(COMMAND "${GIT_EXECUTABLE}" describe --tags --always --dirty --match "[0-9].[0-9].[0-9]*"
+-    WORKING_DIRECTORY "${OpenCV_SOURCE_DIR}"
+-    OUTPUT_VARIABLE OPENCV_VCSVERSION
+-    RESULT_VARIABLE GIT_RESULT
+-    ERROR_QUIET
+-    OUTPUT_STRIP_TRAILING_WHITESPACE
+-  )
+-  if(NOT GIT_RESULT EQUAL 0)
+-    set(OPENCV_VCSVERSION "unknown")
+-  endif()
+-elseif(NOT DEFINED OPENCV_VCSVERSION)
+-  # We don't have git:
+-  set(OPENCV_VCSVERSION "unknown")
+-endif()
++# if(NOT DEFINED OPENCV_VCSVERSION AND GIT_FOUND)
++#  execute_process(COMMAND "${GIT_EXECUTABLE}" describe --tags --always --dirty --match "[0-9].[0-9].[0-9]*"
++#    WORKING_DIRECTORY "${OpenCV_SOURCE_DIR}"
++#    OUTPUT_VARIABLE OPENCV_VCSVERSION
++#    RESULT_VARIABLE GIT_RESULT
++#    ERROR_QUIET
++#    OUTPUT_STRIP_TRAILING_WHITESPACE
++#  )
++#  if(NOT GIT_RESULT EQUAL 0)
++#    set(OPENCV_VCSVERSION "unknown")
++#  endif()
++# elseif(NOT DEFINED OPENCV_VCSVERSION)
++#  # We don't have git:
++# set(OPENCV_VCSVERSION "unknown")
++#endif()
+ 
+ 
+ # ----------------------------------------------------------------------------

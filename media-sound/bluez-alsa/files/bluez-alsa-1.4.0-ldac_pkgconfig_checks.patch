@@ -1,0 +1,31 @@
+From 52b08766b08ec7ef8393343553934ca148c175af Mon Sep 17 00:00:00 2001
+From: Lars Wendler <polynomial-c@gentoo.org>
+Date: Sun, 24 Mar 2019 13:04:24 +0100
+Subject: [PATCH] configure.ac: Fix pkg-config checks for libldac
+
+libldac actually provides the following two pkgconfig files:
+
+ldacBT-enc.pc
+ldacBT-abr.pc
+---
+ configure.ac | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 270a74c..6f0b04b 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -81,8 +81,8 @@ AC_ARG_ENABLE([ldac],
+ 	[AS_HELP_STRING([--enable-ldac], [enable LDAC support])])
+ AM_CONDITIONAL([ENABLE_LDAC], [test "x$enable_ldac" = "xyes"])
+ AM_COND_IF([ENABLE_LDAC], [
+-	PKG_CHECK_MODULES([LDAC], [libldacBT >= 2.0.0])
+-	PKG_CHECK_MODULES([LDAC_ABR], [libldacBT_abr >= 2.0.0])
++	PKG_CHECK_MODULES([LDAC], [ldacBT-enc >= 2.0.0])
++	PKG_CHECK_MODULES([LDAC_ABR], [ldacBT-abr >= 2.0.0])
+ 	AC_DEFINE([ENABLE_LDAC], [1], [Define to 1 if LDAC is enabled.])
+ ])
+ 
+-- 
+2.21.0
+

@@ -17,7 +17,6 @@ portaudio
 
 # mask mozilla/firefox (bug #108020)
 mozilla
-seamonkey
 
 # Masked p2p for bug #155302 <josejx@gentoo.org>
 p2p

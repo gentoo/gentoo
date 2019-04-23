@@ -1,0 +1,38 @@
+From 9347112a77b3b628af8c0b8d4d7cbc0929eede9e Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Wolthera=20van=20H=C3=B6vell=20tot=20Westerflier?=
+ <griffinvalley@gmail.com>
+Date: Sat, 30 Mar 2019 21:47:37 +0100
+Subject: BUG:406032 Fix crash caused by unsupported composition mode in QT
+ 5.12
+
+Qt 5.12 doesn't support QPainter::RasterOp_SourceXorDestination anymore.
+
+Trying to paint with a painter that uses this while opengl is enabled
+will lead to a crash. The only relevant place this enum value is still used
+is in kis_tool.cc, where it is only painted on the regular non-accelerated canvas.
+
+Anyhow, told the smartpatch to use this function instead of doing something itself.
+
+The whole thing is a little bizar.
+---
+ plugins/tools/tool_smart_patch/kis_tool_smart_patch.cpp | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/plugins/tools/tool_smart_patch/kis_tool_smart_patch.cpp b/plugins/tools/tool_smart_patch/kis_tool_smart_patch.cpp
+index 656ba38..32577a3 100644
+--- a/plugins/tools/tool_smart_patch/kis_tool_smart_patch.cpp
++++ b/plugins/tools/tool_smart_patch/kis_tool_smart_patch.cpp
+@@ -245,9 +245,8 @@ void KisToolSmartPatch::paint(QPainter &painter, const KoViewConverter &converte
+     Q_UNUSED(converter);
+ 
+     painter.save();
+-    painter.setCompositionMode(QPainter::RasterOp_SourceXorDestination);
+-    painter.setPen(QColor(128, 255, 128));
+-    painter.drawPath(pixelToView(m_d->brushOutline));
++    QPainterPath path = pixelToView(m_d->brushOutline);
++    paintToolOutline(&painter, path);
+     painter.restore();
+ 
+     painter.save();
+-- 
+cgit v1.1

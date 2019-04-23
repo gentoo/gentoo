@@ -1,0 +1,34 @@
+From d8db73615e68d1c549b3ed50057a49d84a31b334 Mon Sep 17 00:00:00 2001
+From: "Robin H. Johnson" <robbat2@gentoo.org>
+Date: Tue, 9 Apr 2019 10:27:11 -0700
+Subject: [PATCH] g10: support --quiet for --send-key
+
+The --recv-key command supports --quiet, but --send-key does not.
+Add support for it for parity and better scripting.
+
+Signed-off-by: Robin H. Johnson <robbat2@gentoo.org>
+---
+ g10/keyserver.c | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/g10/keyserver.c b/g10/keyserver.c
+index 66900f7a9..e5fc011c0 100644
+--- a/g10/keyserver.c
++++ b/g10/keyserver.c
+@@ -1814,9 +1814,10 @@ keyserver_put (ctrl_t ctrl, strlist_t keyspecs)
+         log_error (_("skipped \"%s\": %s\n"), kspec->d, gpg_strerror (err));
+       else
+         {
+-          log_info (_("sending key %s to %s\n"),
+-                    keystr (keyblock->pkt->pkt.public_key->keyid),
+-                    ksurl?ksurl:"[?]");
++	  if (!opt.quiet)
++            log_info (_("sending key %s to %s\n"),
++                      keystr (keyblock->pkt->pkt.public_key->keyid),
++                      ksurl?ksurl:"[?]");
+ 
+           err = gpg_dirmngr_ks_put (ctrl, data, datalen, keyblock);
+           release_kbnode (keyblock);
+-- 
+2.21.0
+

@@ -21,16 +21,12 @@ LIBDIR_alpha="lib"
 
 # 2006/08/18 - Donnie Berkholz <dberkholz@gentoo.org>
 # Defaults for video drivers
-VIDEO_CARDS="fbdev glint mga nv r128 radeon tdfx voodoo"
+VIDEO_CARDS="fbdev glint mga nv r128 radeon"
 
 # 2007/02/05 - Chris Gianelloni <wolf31o2@gentoo.org>
 # Defaults for audio drivers. These are copied from x86 (minus modems), since
 # Alpha supports the same busses.
 ALSA_CARDS="ali5451 als4000 bt87x ca0106 cmipci emu10k1 ens1370 ens1371 es1938 es1968 fm801 hda-intel intel8x0 maestro3 trident usb-audio via82xx ymfpci"
-
-# Hans de Graaff <graaff@gentoo.org> (21 Jan 2018)
-# Temporary entry to support stable bug 639476
-RUBY_TARGETS="ruby22"
 
 # Tobias Klausmann <klausman@gentoo.org> (25 Jun 2018)
 # Enable USE=libtirpc by default, to ease dependency resolution during

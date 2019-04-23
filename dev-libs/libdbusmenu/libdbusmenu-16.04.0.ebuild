@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,7 +17,7 @@ SRC_URI="https://launchpad.net/${PN/lib}/${PV%.*}/${PV}/+download/${P}.tar.gz"
 
 LICENSE="LGPL-2.1 LGPL-3"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="alpha amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 sparc x86"
 IUSE="debug gtk gtk3 +introspection test"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
@@ -34,6 +34,7 @@ RDEPEND="
 # tests also have optional dep on valgrind which we do not enforce
 DEPEND="${RDEPEND}
 	app-text/gnome-doc-utils
+	dev-util/glib-utils
 	dev-util/intltool
 	sys-devel/gettext
 	virtual/pkgconfig[${MULTILIB_USEDEP}]

@@ -1,0 +1,6 @@
+# /etc/conf.d/numad: config file for /etc/init.d/numad
+#
+# Options to pass to the numad daemon.
+# See the numad(8) man page for more info.
+
+#NUMAD_OPTS="-v"

@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
+PYTHON_COMPAT=( python{2_7,3_5,3_6} )
 PYTHON_REQ_USE="threads,xml"
 
 # 14 and 15 spit out a lot of warnings about subdirs
@@ -18,7 +18,7 @@ SRC_URI="mirror://sourceforge/hplip/${P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 arm ~ppc ~ppc64 x86"
+KEYWORDS="amd64 arm ppc ppc64 x86"
 
 IUSE="doc fax +hpcups hpijs kde libressl -libusb0 minimal parport policykit qt5 scanner +snmp static-ppds X"
 

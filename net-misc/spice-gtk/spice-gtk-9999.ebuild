@@ -1,12 +1,13 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 GCONF_DEBUG="no"
+WANT_AUTOMAKE="1.12"
 VALA_MIN_API_VERSION="0.14"
 VALA_USE_DEPEND="vapigen"
 
-inherit autotools eutils xdg-utils vala readme.gentoo-r1
+inherit autotools eutils git-r3 readme.gentoo-r1 vala xdg-utils
 
 DESCRIPTION="Set of GObject and Gtk objects for connecting to Spice servers and a client GUI"
 HOMEPAGE="https://www.spice-space.org https://cgit.freedesktop.org/spice/spice-gtk/"
@@ -39,7 +40,7 @@ RDEPEND="
 	>=x11-libs/pixman-0.17.7
 	media-libs/opus
 	gtk3? ( x11-libs/gtk+:3[introspection?] )
-	>=dev-libs/glib-2.36:2
+	>=dev-libs/glib-2.46:2
 	>=x11-libs/cairo-1.2
 	virtual/jpeg:0=
 	sys-libs/zlib
@@ -59,12 +60,12 @@ RDEPEND="
 		)
 	webdav? (
 		net-libs/phodav:2.0
-		>=dev-libs/glib-2.43.90:2
 		>=net-libs/libsoup-2.49.91 )
 "
 DEPEND="${RDEPEND}
-	=app-emulation/spice-protocol-9999
+	~app-emulation/spice-protocol-9999
 	dev-perl/Text-CSV
+	dev-util/glib-utils
 	>=dev-util/gtk-doc-am-1.14
 	>=dev-util/intltool-0.40.0
 	>=sys-devel/gettext-0.17
@@ -94,12 +95,6 @@ src_configure() {
 	xdg_environment_reset
 
 	local myconf
-
-	if use vala ; then
-		# force vala regen for MinGW, etc
-		rm -fv gtk/controller/controller.{c,vala.stamp} gtk/controller/menu.c
-	fi
-
 	myconf="
 		$(use_enable static-libs static)
 		$(use_enable introspection)
@@ -138,7 +133,7 @@ src_compile() {
 src_install() {
 	default
 
-	dodoc AUTHORS NEWS README TODO
+	dodoc AUTHORS NEWS README
 
 	# Remove .la files if they're not needed
 	use static-libs || prune_libtool_files

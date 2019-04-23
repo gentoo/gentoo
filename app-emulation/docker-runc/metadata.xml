@@ -5,10 +5,7 @@
 		runc is a CLI tool for spawning and running containers according
 		to the OCF (Open Container Format) specification.
 	</longdescription>
-	<maintainer type="person">
-		<email>mrueg@gentoo.org</email>
-		<name>Manuel Rüger</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<use>
 		<flag name="ambient">Enable support for ambient capability</flag>
 		<flag name="apparmor">Enable AppArmor support</flag>

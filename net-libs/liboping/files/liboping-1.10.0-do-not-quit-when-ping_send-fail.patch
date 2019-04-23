@@ -1,0 +1,53 @@
+From c768cc2270d49247357aa6c527f4c8fe2f81d493 Mon Sep 17 00:00:00 2001
+From: Florian Forster <ff@octo.it>
+Date: Thu, 14 Sep 2017 08:35:27 +0200
+Subject: [PATCH] src/oping.c: Don't quit when ping_send() fails.
+
+It appears that sendto(2) sometimes returns ENOBUFS when the upstream link
+is saturated, causing [n]oping to quit.
+
+Fixes: #28
+---
+ src/oping.c | 12 +++---------
+ 1 file changed, 3 insertions(+), 9 deletions(-)
+
+diff --git a/src/oping.c b/src/oping.c
+index 36cdf16..c087c80 100644
+--- a/src/oping.c
++++ b/src/oping.c
+@@ -2042,7 +2042,6 @@ int main (int argc, char **argv) /* {{{ */
+ 	while (opt_count != 0)
+ 	{
+ 		int index;
+-		int status;
+ 
+ 		if (gettimeofday (&tv_begin, NULL) < 0)
+ 		{
+@@ -2050,16 +2049,11 @@ int main (int argc, char **argv) /* {{{ */
+ 			return (1);
+ 		}
+ 
+-		status = ping_send (ping);
+-		if (status == -EINTR)
+-		{
+-			continue;
+-		}
+-		else if (status < 0)
++		if (ping_send (ping) < 0)
+ 		{
+ 			fprintf (stderr, "ping_send failed: %s\n",
+ 					ping_get_error (ping));
+-			return (1);
++			continue;
+ 		}
+ 
+ 		index = 0;
+@@ -2086,7 +2080,7 @@ int main (int argc, char **argv) /* {{{ */
+ 		time_calc (&ts_wait, &ts_int, &tv_begin, &tv_end);
+ 
+ 		/* printf ("Sleeping for %i.%09li seconds\n", (int) ts_wait.tv_sec, ts_wait.tv_nsec); */
+-		while ((status = nanosleep (&ts_wait, &ts_wait)) != 0)
++		while (nanosleep (&ts_wait, &ts_wait) != 0)
+ 		{
+ 			if (errno == EINTR)
+ 			{

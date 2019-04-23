@@ -1,0 +1,16 @@
+Fix of snprintf bug in upstream's 20081027 diff.
+
+Signed-off-by: Robin H. Johnson <robbat2@gentoo.org>
+
+diff -Nuar --exclude '*.orig' --exclude '*~' fdutils-5.5-20060227.orig/src/superformat.c fdutils-5.5-20060227/src/superformat.c
+--- fdutils-5.5-20060227.orig/src/superformat.c	2019-03-17 14:46:44.051851597 -0700
++++ fdutils-5.5-20060227/src/superformat.c	2019-03-17 14:48:34.550873108 -0700
+@@ -1140,7 +1140,7 @@
+ 		if (verbosity >= 5)
+ 			printf("calling mformat\n");
+ 		if (use_2m)
+-			snprintf(twom_buffer, 5, "-2 %2d", fd0.dsect);
++			snprintf(twom_buffer, 6, "-2 %2d", fd0.dsect);
+ 		else
+ 			twom_buffer[0]='\0';
+ 		snprintf(command_buffer, 79,

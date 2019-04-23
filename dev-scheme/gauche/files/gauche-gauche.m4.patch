@@ -16,3 +16,12 @@
  OPTFLAGS="$GCCOPT $I686OPT"
  AC_SUBST(OPTFLAGS)
  ])
+@@ -150,7 +147,7 @@
+ dnl
+ AC_DEFUN([AC_GAUCHE_MAKE_GPD],
+ 	 [
+-GAUCHE_PACKAGE_CONFIGURE_ARGS=`echo "$ac_configure_args" | sed 's/@<:@\\"\`\$@:>@/\\\\&/g'`
++GAUCHE_PACKAGE_CONFIGURE_ARGS=`echo "$ac_configure_args" | sed 's/@<:@\$\\"\`@:>@/\\\\&/g'`
+ AC_MSG_NOTICE([creating ${PACKAGE_NAME}.gpd])
+ $GAUCHE_PACKAGE make-gpd "$PACKAGE_NAME" \
+   -version "$PACKAGE_VERSION" \

@@ -1,0 +1,21 @@
+https://bugs.gentoo.org/553796
+
+Author: Peter Levine <plevine457@gmail.com>
+
+--- a/src/slm/tslmpack/common.h
++++ b/src/slm/tslmpack/common.h
+@@ -53,10 +53,10 @@
+ typedef std::map<float, int> RealIndexMap;  // map real values to their indices
+ typedef std::map<std::string, unsigned int> TLexicon; // map word to wid
+ 
+-#define EffectivePr(a)  (float((usingLogPr) ? ((a) / log(2.0)) : (-log2((a)))))
+-#define OriginalPr(b)   (float((usingLogPr) ? ((b) * log(2.0)) : (exp2(-(b)))))
+-#define EffectiveBow(a) (float((usingLogPr) ? (exp(-(a))) : ((a))))
+-#define OriginalBow(b)  (float((usingLogPr) ? (-log((b))) : ((b))))
++#define EffectivePr(a)  (float((usingLogPr) ? ((a) / logf(2.0f)) : (-log2f((a)))))
++#define OriginalPr(b)   (float((usingLogPr) ? ((b) * logf(2.0f)) : (exp2f(-(b)))))
++#define EffectiveBow(a) (float((usingLogPr) ? (expf(-(a))) : ((a))))
++#define OriginalBow(b)  (float((usingLogPr) ? (-logf((b))) : ((b))))
+ 
+ #endif //_SLM_PACK_COMMON_H
+ 

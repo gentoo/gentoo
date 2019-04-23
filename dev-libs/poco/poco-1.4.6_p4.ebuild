@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -23,7 +23,7 @@ DEPEND=">=dev-libs/libpcre-8.13
 	mysql? ( virtual/mysql )
 	odbc? ( iodbc? ( dev-db/libiodbc )
 		!iodbc? ( dev-db/unixODBC ) )
-	ssl? ( dev-libs/openssl )
+	ssl? ( dev-libs/openssl:0= )
 	sqlite? ( dev-db/sqlite:3 )"
 RDEPEND="${DEPEND}"
 

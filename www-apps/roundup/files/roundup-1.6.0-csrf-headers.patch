@@ -1,0 +1,150 @@
+changeset:   5629:8e3df461d316
+branch:      maint-1.6
+user:        John Rouillard <rouilj@ieee.org>
+date:        Wed Feb 27 21:47:39 2019 -0500
+files:       CHANGES.txt roundup/cgi/client.py roundup/scripts/roundup_server.py test/test_cgi.py
+description:
+issue2551023: Fix CSRF headers for use with wsgi and cgi. The
+env variable array used - separators rather than _. Compare:
+HTTP_X-REQUESTED-WITH to HTTP_X_REQUESTED_WITH. The last is
+correct. Also fix roundup-server to produce the latter form. (Patch
+by Cédric Krier)
+
+
+diff -r 64ceb9c14b28 -r 8e3df461d316 roundup/cgi/client.py
+--- a/roundup/cgi/client.py	Tue Feb 12 21:31:41 2019 -0500
++++ b/roundup/cgi/client.py	Wed Feb 27 21:47:39 2019 -0500
+@@ -1026,7 +1026,7 @@
+         # If required headers are missing, raise an error
+         for header in header_names:
+             if (config["WEB_CSRF_ENFORCE_HEADER_%s"%header] == 'required'
+-                    and "HTTP_%s"%header not in self.env):
++                    and "HTTP_%s" % header.replace('-', '_') not in self.env):
+                 logger.error(self._("csrf header %s required but missing for user%s."), header, current_user)
+                 raise Unauthorised, self._("Missing header: %s")%header
+                 
+@@ -1062,9 +1062,9 @@
+                 header_pass += 1
+                 
+         enforce=config['WEB_CSRF_ENFORCE_HEADER_X-FORWARDED-HOST']
+-        if 'HTTP_X-FORWARDED-HOST' in self.env:
++        if 'HTTP_X_FORWARDED_HOST' in self.env:
+             if enforce != "no":
+-                host = self.env['HTTP_X-FORWARDED-HOST']
++                host = self.env['HTTP_X_FORWARDED_HOST']
+                 foundat = self.base.find('://' + host + '/')
+                 # 4 means self.base has http:/ prefix, 5 means https:/ prefix
+                 if foundat not in [4, 5]:
+@@ -1111,7 +1111,7 @@
+                 # Note we do not use CSRF nonces for xmlrpc requests.
+                 #
+                 # see: https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)_Prevention_Cheat_Sheet#Protecting_REST_Services:_Use_of_Custom_Request_Headers
+-                if 'HTTP_X-REQUESTED-WITH' not in self.env:
++                if 'HTTP_X_REQUESTED_WITH' not in self.env:
+                     logger.error(self._("csrf X-REQUESTED-WITH xmlrpc required header check failed for user%s."), current_user)
+                     raise UsageError, self._("Required Header Missing")
+ 
+diff -r 64ceb9c14b28 -r 8e3df461d316 roundup/scripts/roundup_server.py
+--- a/roundup/scripts/roundup_server.py	Tue Feb 12 21:31:41 2019 -0500
++++ b/roundup/scripts/roundup_server.py	Wed Feb 27 21:47:39 2019 -0500
+@@ -384,8 +384,8 @@
+             # If behind a proxy, this is the hostname supplied
+             # via the Host header to the proxy. Used by core code.
+             # Controlled by the CSRF settings.
+-            env['HTTP_X-FORWARDED-HOST'] = xfh
+-        xff = self.headers.getheader('X-Forwarded-For', None)
++            env['HTTP_X_FORWARDED_HOST'] = xfh
++        xff = self.headers.get('X-Forwarded-For', None)
+         if xff:
+             # xff is a list of ip addresses for original client/proxies:
+             # X-Forwarded-For: clientIP, proxy1IP, proxy2IP
+@@ -394,8 +394,8 @@
+             # Made available for extensions if the user trusts it.
+             # E.g. you may wish to disable recaptcha validation extension
+             # if the ip of the client matches 172.16.0.0.
+-            env['HTTP_X-FORWARDED-FOR'] = xff
+-        xfp = self.headers.getheader('X-Forwarded-Proto', None)
++            env['HTTP_X_FORWARDED_FOR'] = xff
++        xfp = self.headers.get('X-Forwarded-Proto', None)
+         if xfp:
+             # xfp is the protocol (http/https) seen by proxies in the
+             # path of the request. I am not sure if there is only
+@@ -408,8 +408,8 @@
+             # May not be trustworthy. Do not use in core without
+             # config option to control its use.
+             # Made available for extensions if the user trusts it.
+-            env['HTTP_X-FORWARDED-PROTO'] = xfp
+-        if os.environ.has_key('CGI_SHOW_TIMING'):
++            env['HTTP_X_FORWARDED_PROTO'] = xfp
++        if 'CGI_SHOW_TIMING' in os.environ:
+             env['CGI_SHOW_TIMING'] = os.environ['CGI_SHOW_TIMING']
+         env['HTTP_ACCEPT_LANGUAGE'] = self.headers.get('accept-language')
+         referer = self.headers.get('Referer')
+@@ -420,8 +420,8 @@
+             env['HTTP_ORIGIN'] = origin
+         xrw = self.headers.get('x-requested-with')
+         if xrw:
+-            env['HTTP_X-REQUESTED-WITH'] = xrw
+-        range = self.headers.getheader('range')
++            env['HTTP_X_REQUESTED_WITH'] = xrw
++        range = self.headers.get('range')
+         if range:
+             env['HTTP_RANGE'] = range
+ 
+diff -r 64ceb9c14b28 -r 8e3df461d316 test/test_cgi.py
+--- a/test/test_cgi.py	Tue Feb 12 21:31:41 2019 -0500
++++ b/test/test_cgi.py	Wed Feb 27 21:47:39 2019 -0500
+@@ -888,7 +888,7 @@
+         del(cl.env['HTTP_ORIGIN'])
+         del(out[0])
+ 
+-        cl.env['HTTP_X-FORWARDED-HOST'] = 'whoami.com'
++        cl.env['HTTP_X_FORWARDED_HOST'] = 'whoami.com'
+         # if there is an X-FORWARDED-HOST header it is used and
+         # HOST header is ignored. X-FORWARDED-HOST should only be
+         # passed/set by a proxy. In this case the HOST header is
+@@ -899,7 +899,7 @@
+         match_at=out[0].find('Redirecting to <a href="http://whoami.com/path/issue1?@ok_message')
+         print "result of subtest 4:", out[0]
+         self.assertNotEqual(match_at, -1)
+-        del(cl.env['HTTP_X-FORWARDED-HOST'])
++        del(cl.env['HTTP_X_FORWARDED_HOST'])
+         del(cl.env['HTTP_HOST'])
+         del(out[0])
+ 
+@@ -912,14 +912,14 @@
+         del(out[0])
+ 
+         # try failing headers
+-        cl.env['HTTP_X-FORWARDED-HOST'] = 'whoami.net'
++        cl.env['HTTP_X_FORWARDED_HOST'] = 'whoami.net'
+         # this raises an error as the header check passes and 
+         # it did the edit and tries to send mail.
+         cl.inner_main()
+         match_at=out[0].find('Invalid X-FORWARDED-HOST whoami.net')
+         print "result of subtest 6:", out[0]
+         self.assertNotEqual(match_at, -1)
+-        del(cl.env['HTTP_X-FORWARDED-HOST'])
++        del(cl.env['HTTP_X_FORWARDED_HOST'])
+         del(out[0])
+ 
+         # header checks succeed
+@@ -1031,7 +1031,7 @@
+                             'CONTENT_TYPE': 'text/plain',
+                             'HTTP_AUTHORIZATION': 'Basic YWRtaW46YWRtaW4=',
+                             'HTTP_REFERER': 'http://whoami.com/path/',
+-                            'HTTP_X-REQUESTED-WITH': "XMLHttpRequest"
++                            'HTTP_X_REQUESTED_WITH': "XMLHttpRequest"
+                         }, form)
+         cl.db = self.db
+         cl.base = 'http://whoami.com/path/'
+@@ -1059,7 +1059,7 @@
+         del(out[0])
+ 
+         # remove the X-REQUESTED-WITH header and get an xmlrpc fault returned
+-        del(cl.env['HTTP_X-REQUESTED-WITH'])
++        del(cl.env['HTTP_X_REQUESTED_WITH'])
+         cl.handle_xmlrpc()
+         output="<?xml version='1.0'?>\n<methodResponse>\n<fault>\n<value><struct>\n<member>\n<name>faultCode</name>\n<value><int>1</int></value>\n</member>\n<member>\n<name>faultString</name>\n<value><string>&lt;class 'roundup.exceptions.UsageError'&gt;:Required Header Missing</string></value>\n</member>\n</struct></value>\n</fault>\n</methodResponse>\n"
+         print out[0]
+

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,7 +12,7 @@ SRC_URI="https://fontconfig.org/release/${P}.tar.bz2"
 LICENSE="MIT"
 SLOT="1.0"
 [[ $(ver_cut 3) -ge 90 ]] || \
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~m68k ~mips ppc ppc64 s390 ~sh sparc x86 ~amd64-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="doc static-libs"
 
 # Purposefully dropped the xml USE flag and libxml2 support.  Expat is the
@@ -24,6 +24,7 @@ RDEPEND=">=dev-libs/expat-2.1.0-r3[${MULTILIB_USEDEP}]
 	virtual/libintl[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
+	>=sys-devel/gettext-0.19.8
 	doc? ( =app-text/docbook-sgml-dtd-3.1*
 		app-text/docbook-sgml-utils[jadetex] )"
 PDEPEND="!x86-winnt? ( app-eselect/eselect-fontconfig )
@@ -52,6 +53,7 @@ src_prepare() {
 	sed -i -e 's/FC_GPERF_SIZE_T="unsigned int"/FC_GPERF_SIZE_T=size_t/' \
 		configure.ac || die # rest of gperf dependency fix, #631920
 	eautoreconf
+	rm test/out.expected || die #662048
 }
 
 multilib_src_configure() {

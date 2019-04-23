@@ -1,5 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+# Thomas Deutschmann <whissi@gentoo.org> (10 Dec 2018)
+# dev-lang/luajit lacks ppc64 keyword. luajit upstream does not support ppc64
+net-analyzer/snort open-appid
 
 # Andreas Sturmlechner <asturm@gentoo.org> (13 Mar 2018)
 # missing keyword on media-libs/portmidi
@@ -34,6 +38,8 @@ dev-db/redis luajit
 # Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (01 Aug 2016)
 # kde-frameworks/*:5 not keyworded.
 net-irc/kvirc kde
+app-arch/p7zip kde
+dev-vcs/subversion kwallet
 
 # Alexandre Rostovtsev <tetromino@gentoo.org> (28 Jun 2016)
 # Missing keywords on app-text/gspell - bug #587368
@@ -46,17 +52,9 @@ dev-java/batik python
 dev-java/bsf python
 dev-java/ant-apache-bsf python
 
-# Michael Weber <xmw@gentoo.org> (09 Jan 2016)
-# no ppc64 support in media-libs/glfw
-app-text/mupdf opengl
-
 # Jeroen Roovers <jer@gentoo.org> (26 Dec 2015)
 # Mask until >sys-cluster/ceph-0.94 goes stable
 net-analyzer/rrdtool rados
-
-# Justin Lecher <jlec@gentoo.org> (3 Dec 2015)
-# Missing keywords on deps #567458
-kde-apps/kalzium editor
 
 # Ben de Groot <yngwin@gentoo.org> (20 Jul 2015)
 # missing keywords
@@ -84,20 +82,6 @@ gnome-extra/sushi office
 # Kacper Kowalik <xarthisius@gentoo.org> (02 Sep 2011)
 # Mask www-client/seamonkey[ipc] on ppc64 wrt #381191
 www-client/seamonkey ipc
-
-# Kacper Kowalik <xarthisius@gentoo.org> (22 Mar 2011)
-# Mask polkit[kde] wrt #354509
-sys-auth/polkit kde
-
-# Alexey Shvetsov <alexxy@gentoo.org> (26 Jan 2011)
-# Mask gps for marble
-kde-apps/marble	gps
-
-# Samuli Suominen <ssuominen@gentoo.org> (21 Jun 2010)
-# These need stable kdelibs-4.
-app-arch/p7zip kde
-dev-vcs/subversion kwallet
-net-libs/libproxy kde
 
 # Kacper Kowalik <xarthisius@gentoo.org> (30 May 2010)
 # quesoglc is not keyworded

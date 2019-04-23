@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,38 +17,43 @@ HOMEPAGE="https://mkvtoolnix.download/ https://gitlab.com/mbunkus/mkvtoolnix"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="debug pch test qt5"
+IUSE="debug nls pch test qt5"
 
 # check NEWS.md for build system changes entries for boost/libebml/libmatroska
 # version requirement updates and other packaging info
 RDEPEND="
+	dev-libs/libfmt:=
 	>=dev-libs/boost-1.49.0:=
-	>=dev-libs/libebml-1.3.5:=
-	dev-libs/jsoncpp:=
+	>=dev-libs/libebml-1.3.7:=
 	dev-libs/pugixml
 	media-libs/flac
-	>=media-libs/libmatroska-1.4.8:=
+	>=media-libs/libmatroska-1.5.0:=
 	media-libs/libogg
 	media-libs/libvorbis
 	sys-apps/file
 	sys-libs/zlib
 	qt5? (
 		dev-qt/qtcore:5
+		dev-qt/qtdbus:5
 		dev-qt/qtgui:5
 		dev-qt/qtnetwork:5
 		dev-qt/qtwidgets:5
 		dev-qt/qtconcurrent:5
 		dev-qt/qtmultimedia:5
-		app-text/cmark
+		app-text/cmark:0=
 	)
 "
 DEPEND="${RDEPEND}
+	dev-cpp/nlohmann_json
+	dev-libs/utfcpp
 	dev-ruby/rake
-	sys-devel/gettext
 	virtual/pkgconfig
 	dev-libs/libxslt
 	app-text/docbook-xsl-stylesheets
-	app-text/po4a
+	nls? (
+		sys-devel/gettext
+		app-text/po4a
+	)
 	test? ( dev-cpp/gtest )
 "
 
@@ -70,11 +75,22 @@ src_prepare() {
 }
 
 src_configure() {
-	local myconf
+	local myeconfargs=(
+		$(use_enable debug)
+		$(usex pch "" --disable-precompiled-headers)
+		$(use_enable qt5 qt)
+		$(use_with nls gettext)
+		$(usex nls "" --with-po4a-translate=false)
+		--disable-update-check
+		--disable-optimization
+		--docdir="${EPREFIX}"/usr/share/doc/${PF}
+		--with-boost="${EPREFIX}"/usr
+		--with-boost-libdir="${EPREFIX}"/usr/$(get_libdir)
+	)
 
 	if use qt5 ; then
 		# ac/qt5.m4 finds default Qt version set by qtchooser, bug #532600
-		myconf+=(
+		myeconfargs+=(
 			--with-moc=$(qt5_get_bindir)/moc
 			--with-uic=$(qt5_get_bindir)/uic
 			--with-rcc=$(qt5_get_bindir)/rcc
@@ -82,16 +98,7 @@ src_configure() {
 		)
 	fi
 
-	econf \
-		$(use_enable debug) \
-		$(use_enable qt5 qt) \
-		$(usex pch "" --disable-precompiled-headers) \
-		"${myconf[@]}" \
-		--disable-update-check \
-		--disable-optimization \
-		--docdir="${EPREFIX}"/usr/share/doc/${PF} \
-		--with-boost="${EPREFIX}"/usr \
-		--with-boost-libdir="${EPREFIX}"/usr/$(get_libdir)
+	econf "${myeconfargs[@]}"
 }
 
 src_compile() {

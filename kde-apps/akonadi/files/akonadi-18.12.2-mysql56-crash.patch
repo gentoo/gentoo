@@ -1,0 +1,52 @@
+From b2ebd0e2d594ae71d4e1db4874f72a655f9eeb12 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <andreas.sturmlechner@gmail.com>
+Date: Sat, 26 Jan 2019 21:09:14 +0100
+Subject: [PATCH] Find mysql_install_db and add required option
+
+Rebase patch onto 19.03.80
+Gentoo-bug: 530012
+---
+ src/server/storage/dbconfigmysql.cpp | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/src/server/storage/dbconfigmysql.cpp b/src/server/storage/dbconfigmysql.cpp
+index dfff6fc29..80039c8ba 100644
+--- a/src/server/storage/dbconfigmysql.cpp
++++ b/src/server/storage/dbconfigmysql.cpp
+@@ -66,6 +66,7 @@ static QString findExecutable(const QString &bin)
+         QStringLiteral("/usr/local/sbin"),
+         QStringLiteral("/usr/local/libexec"),
+         QStringLiteral("/usr/libexec"),
++        QStringLiteral("/usr/share/mysql/scripts"),
+         QStringLiteral("/opt/mysql/libexec"),
+         QStringLiteral("/opt/local/lib/mysql5/bin"),
+         QStringLiteral("/opt/mysql/sbin"),
+@@ -588,7 +589,7 @@ bool DbConfigMysql::initializeMariaDBDatabase(const QString &confFile, const QSt
+     return 0 == execute(mMysqlInstallDbPath, {
+         QStringLiteral("--defaults-file=%1").arg(confFile),
+         QStringLiteral("--force"),
+-        QStringLiteral("--basedir=%1").arg(baseDir),
++        QStringLiteral("--basedir=/usr"),
+         QStringLiteral("--datadir=%1/").arg(dataDir)
+     });
+ }
+@@ -602,6 +603,7 @@ bool DbConfigMysql::initializeMySQL5_7_6Database(const QString &confFile, const
+     return 0 == execute(mMysqldPath, {
+         QStringLiteral("--defaults-file=%1").arg(confFile),
+         QStringLiteral("--initialize"),
++        QStringLiteral("--basedir=/usr"),
+         QStringLiteral("--datadir=%1/").arg(dataDir)
+     });
+ }
+@@ -622,7 +624,7 @@ bool DbConfigMysql::initializeMySQLDatabase(const QString &confFile, const QStri
+     // Don't use --force, it has been removed in MySQL 5.7.5
+     return 0 == execute(mMysqlInstallDbPath, {
+         QStringLiteral("--defaults-file=%1").arg(confFile),
+-        QStringLiteral("--basedir=%1").arg(baseDir),
++        QStringLiteral("--basedir=/usr"),
+         QStringLiteral("--datadir=%1/").arg(dataDir)
+     });
+ }
+-- 
+2.20.1
+

@@ -27,7 +27,6 @@ RDEPEND="app-shells/bash
 	|| (
 		( sys-apps/portage app-portage/portage-utils )
 		sys-apps/pkgcore
-		sys-apps/paludis
 	)
 "
 

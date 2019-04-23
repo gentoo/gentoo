@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,8 +15,8 @@ SRC_URI="${MY_URI}/${MY_SRC}.tar.gz"
 
 LICENSE="|| ( IBM EPL-2.0 )"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~x86-fbsd"
-IUSE="+berkdb cdb doc dovecot-sasl +eai hardened ldap ldap-bind libressl lmdb memcached mbox mysql nis pam postgres sasl selinux sqlite ssl"
+KEYWORDS="alpha amd64 arm ~hppa ia64 ~mips ppc ppc64 ~sh ~sparc x86 ~x86-fbsd"
+IUSE="+berkdb cdb dovecot-sasl +eai hardened ldap ldap-bind libressl lmdb memcached mbox mysql nis pam postgres sasl selinux sqlite ssl"
 
 DEPEND=">=dev-libs/libpcre-3.4
 	dev-lang/perl
@@ -33,7 +33,7 @@ DEPEND=">=dev-libs/libpcre-3.4
 	sasl? (  >=dev-libs/cyrus-sasl-2 )
 	sqlite? ( dev-db/sqlite:3 )
 	ssl? (
-		!libressl? ( dev-libs/openssl:0 )
+		!libressl? ( dev-libs/openssl:0= )
 		libressl? ( dev-libs/libressl )
 	)"
 
@@ -196,10 +196,6 @@ src_configure() {
 }
 
 src_install () {
-	local myconf
-	use doc && myconf="readme_directory=\"/usr/share/doc/${PF}/readme\" \
-		html_directory=\"/usr/share/doc/${PF}/html\""
-
 	LD_LIBRARY_PATH="${S}/lib" \
 	/bin/sh postfix-install \
 		-non-interactive \
@@ -210,7 +206,6 @@ src_install () {
 		mailq_path="/usr/bin/mailq" \
 		newaliases_path="/usr/bin/newaliases" \
 		sendmail_path="/usr/sbin/sendmail" \
-		${myconf} \
 		|| die "postfix-install failed"
 
 	# Fix spool removal on upgrade
@@ -236,6 +231,7 @@ src_install () {
 	doman man/man1/smtp-{source,sink}.1 man/man1/qmqp-{source,sink}.1
 
 	keepdir /etc/postfix
+	keepdir /etc/postfix/postfix-files.d
 	if use mbox; then
 		mypostconf="mail_spool_directory=/var/spool/mail"
 	else
@@ -255,7 +251,9 @@ src_install () {
 	use postgres || sed -i -e "s/postgresql //" "${D}/etc/init.d/postfix"
 
 	dodoc *README COMPATIBILITY HISTORY PORTING RELEASE_NOTES*
-	use doc && mv "${S}"/examples "${D}"/usr/share/doc/${PF}/
+	mv "${S}"/examples "${D}"/usr/share/doc/${PF}/
+	# postfix set-permissions expects uncompressed man files
+	docompress -x /usr/share/man
 
 	pamd_mimic_system smtp auth account
 
@@ -286,7 +284,7 @@ pkg_postinst() {
 	fi
 
 	# check and fix file permissions
-	"${EROOT}"/usr/sbin/postfix set-permissions 2>/dev/null
+	"${EROOT}"/usr/sbin/postfix set-permissions
 
 	# configure tls
 	if use ssl ; then

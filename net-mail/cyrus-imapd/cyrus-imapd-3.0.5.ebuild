@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,7 +7,7 @@ inherit autotools flag-o-matic pam ssl-cert user
 MY_P=${P/_/}
 
 DESCRIPTION="The Cyrus IMAP Server"
-HOMEPAGE="http://www.cyrusimap.org/"
+HOMEPAGE="https://www.cyrusimap.org/"
 SRC_URI="ftp://ftp.cyrusimap.org/cyrus-imapd/${MY_P}.tar.gz"
 
 LICENSE="BSD-with-attribution"
@@ -215,7 +215,7 @@ pkg_postinst() {
 	fi
 
 	echo
-	ewarn "Please see http://www.cyrusimap.org/imap/download/upgrade.html"
+	ewarn "Please see https://www.cyrusimap.org/imap/download/upgrade.html"
 	ewarn "for upgrade instructions."
 	echo
 }

@@ -5,12 +5,9 @@
 		<email>polynomial-c@gentoo.org</email>
 		<name>Lars Wendler</name>
 	</maintainer>
-	<maintainer type="project">
-		<email>net-mail@gentoo.org</email>
-		<name>Net-Mail</name>
-	</maintainer>
 	<use>
 		<flag name="archive">Enable archiving plugin</flag>
+		<flag name="dillo">Enable dillo html viewer plugin</flag>
 		<flag name="gdata">Enable plugin for access to Google
 		data providers</flag>
 		<flag name="gtk3">Build support for GTK+3</flag>

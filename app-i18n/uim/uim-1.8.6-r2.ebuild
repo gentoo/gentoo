@@ -12,11 +12,10 @@ SRC_URI="https://github.com/${PN}/${PN}/releases/download/${P}/${P}.tar.bz2"
 LICENSE="BSD GPL-2 LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86"
-IUSE="X +anthy canna curl eb emacs expat libffi gtk gtk2 l10n_ja l10n_ko l10n_zh-CN l10n_zh-TW libedit libnotify libressl m17n-lib ncurses nls qt4 skk sqlite ssl static-libs xft"
+IUSE="X +anthy canna curl eb emacs expat libffi gtk gtk2 l10n_ja l10n_ko l10n_zh-CN l10n_zh-TW libedit libnotify libressl m17n-lib ncurses nls skk sqlite ssl static-libs xft"
 RESTRICT="test"
 REQUIRED_USE="gtk? ( X )
 	gtk2? ( X )
-	qt4? ( X )
 	xft? ( X )"
 
 CDEPEND="!dev-scheme/sigscheme
@@ -43,7 +42,6 @@ CDEPEND="!dev-scheme/sigscheme
 	m17n-lib? ( dev-libs/m17n-lib )
 	ncurses? ( sys-libs/ncurses:0= )
 	nls? ( virtual/libintl )
-	qt4? ( dev-qt/qtgui:4[qt3support] )
 	skk? ( app-i18n/skk-jisyo )
 	sqlite? ( dev-db/sqlite:3 )
 	ssl? (
@@ -115,16 +113,16 @@ src_configure() {
 		$(use_with m17n-lib m17nlib)
 		$(use_enable ncurses fep)
 		$(use_enable nls)
-		$(use_with qt4 qt4)
-		$(use_with qt4 qt4-immodule)
-		$(use_enable qt4 qt4-qt3support)
+		--without-qt4
+		--without-qt4-immodule
+		--disable-qt4-qt3support
 		$(use_with skk)
 		$(use_with sqlite sqlite3)
 		$(use_enable ssl openssl)
 		$(use_enable static-libs static)
 		$(use_with xft)
 		--without-anthy
-		--enable-default-toolkit=$(usex gtk gtk3 $(usex gtk2 gtk $(usex qt4 qt4)))
+		--enable-default-toolkit=$(usex gtk gtk3 $(usex gtk2 gtk))
 		--disable-gnome-applet
 		--disable-gnome3-applet
 		--disable-kde-applet
@@ -143,13 +141,12 @@ src_configure() {
 		myconf+=( --enable-notify=libnotify )
 	fi
 
-	if use gtk || use gtk2 || use qt4; then
+	if use gtk || use gtk2; then
 		myconf+=( --enable-pref )
 	else
 		myconf+=( --disable-pref )
 	fi
 
-	export QT4DIR="$(qt4_get_libdir)"
 	econf "${myconf[@]}"
 }
 
@@ -194,7 +191,7 @@ pkg_postinst() {
 	elog "to your ~/.uim."
 	elog
 	elog "All input methods can be found by running uim-im-switcher-gtk, "
-	elog "uim-im-switcher-gtk3 or uim-im-switcher-qt4."
+	elog "uim-im-switcher-gtk3."
 
 	if use emacs; then
 		elisp-site-regen

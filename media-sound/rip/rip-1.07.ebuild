@@ -20,7 +20,7 @@ RDEPEND="media-sound/cdparanoia
 	dev-lang/perl
 	>=dev-perl/CDDB_get-2.10
 	>=dev-perl/MP3-Info-0.91
-	|| ( media-sound/vorbis-tools media-sound/lame media-libs/flac media-sound/bladeenc media-sound/gogo )"
+	|| ( media-sound/vorbis-tools media-sound/lame media-libs/flac media-sound/bladeenc )"
 
 src_compile() {
 	#the thing itself is just a perl script

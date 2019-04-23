@@ -8,6 +8,7 @@
 # @AUTHOR:
 # Mike Gilbert <floppym@gentoo.org>
 # William Hubbs <williamh@gentoo.org>
+# @SUPPORTED_EAPIS: 5 6 7
 # @BLURB: Functions related to tmpfiles.d files
 # @DESCRIPTION:
 # This eclass provides functionality related to installing and
@@ -55,7 +56,7 @@ if [[ -z ${TMPFILES_ECLASS} ]]; then
 TMPFILES_ECLASS=1
 
 case "${EAPI}" in
-5|6) ;;
+5|6|7) ;;
 *) die "API is undefined for EAPI ${EAPI}" ;;
 esac
 

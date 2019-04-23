@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-EGIT_REPO_URI="git://git.videolan.org/ffmpeg.git"
+EGIT_REPO_URI="https://git.ffmpeg.org/ffmpeg.git"
 ESVN_REPO_URI="svn://svn.mplayerhq.hu/mplayer/trunk"
-[[ ${PV} = *9999* ]] && SVN_ECLASS="subversion git-r3" || SVN_ECLASS=""
+[[ ${PV} = *9999* ]] && SVN_ECLASS="subversion git-r3"
 
 inherit toolchain-funcs flag-o-matic ${SVN_ECLASS}
 
@@ -17,9 +17,9 @@ ftp gif ggi gsm +iconv ipv6 jack joystick jpeg kernel_linux ladspa
 +network nut openal opengl +osdmenu oss png pnm pulseaudio pvr
 radio rar rtc rtmp samba selinux +shm sdl speex cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_ssse3
 tga theora tremor +truetype toolame twolame +unicode v4l vcd vdpau vidix
-vorbis +X x264 xinerama +xscreensaver +xv xvid xvmc yuv4mpeg zoran"
+vorbis +X x264 xinerama +xscreensaver +xv xvid yuv4mpeg zoran"
 
-VIDEO_CARDS="mga tdfx"
+VIDEO_CARDS="mga"
 for x in ${VIDEO_CARDS}; do
 	IUSE+=" video_cards_${x}"
 done
@@ -71,7 +71,6 @@ RDEPEND+="
 	dga? ( x11-libs/libXxf86dga )
 	dts? ( media-libs/libdca )
 	dv? ( media-libs/libdv )
-	dvb? ( virtual/linuxtv-dvb-headers )
 	dvd? ( >=media-libs/libdvdread-4.1.3 )
 	dvdnav? ( >=media-libs/libdvdnav-4.1.3 )
 	encode? (
@@ -126,13 +125,13 @@ RDEPEND+="
 	xinerama? ( x11-libs/libXinerama )
 	xscreensaver? ( x11-libs/libXScrnSaver )
 	xv? ( x11-libs/libXv )
-	xvmc? ( x11-libs/libXvMC )
 "
 
 ASM_DEP="dev-lang/yasm"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	dga? ( x11-base/xorg-proto )
+	dvb? ( virtual/linuxtv-dvb-headers )
 	X? ( x11-base/xorg-proto )
 	xinerama? ( x11-base/xorg-proto )
 	xscreensaver? ( x11-base/xorg-proto )
@@ -152,8 +151,6 @@ SLOT="0"
 LICENSE="GPL-2"
 if [[ ${PV} != *9999* ]]; then
 	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
-else
-	KEYWORDS=""
 fi
 
 # faac codecs are nonfree
@@ -162,7 +159,6 @@ fi
 # ass and freetype font require iconv and ass requires freetype fonts
 # unicode transformations are usefull only with iconv
 # radio requires oss or alsa backend
-# xvmc requires xvideo support
 REQUIRED_USE="
 	dga? ( X )
 	dvdnav? ( dvd )
@@ -176,8 +172,7 @@ REQUIRED_USE="
 	vidix? ( X )
 	xinerama? ( X )
 	xscreensaver? ( X )
-	xv? ( X )
-	xvmc? ( xv )"
+	xv? ( X )"
 RESTRICT="faac? ( bindist )"
 
 pkg_setup() {
@@ -213,7 +208,7 @@ src_unpack() {
 		subversion_src_unpack
 		cd "${WORKDIR}"
 		rm -rf "${WORKDIR}/${P}/ffmpeg/"
-		( S="${WORKDIR}/${P}/ffmpeg/" git-2_src_unpack )
+		( EGIT_CHECKOUT_DIR="${WORKDIR}/${P}/ffmpeg/" git-r3_src_unpack )
 	else
 		unpack ${A}
 	fi
@@ -279,9 +274,11 @@ src_configure() {
 		--disable-svga --disable-svgalib_helper
 		--disable-ass-internal
 		--disable-arts
+		--disable-directfb
 		--disable-kai
 		--disable-libopus
 		--disable-libilbc
+		--disable-xvmc
 		$(use_enable network networking)
 		$(use_enable joystick)
 	"
@@ -422,18 +419,11 @@ src_configure() {
 		 myconf+=" --disable-mga --disable-xmga"
 	fi
 
-	if use video_cards_tdfx; then
-		myconf+="
-			$(use_enable video_cards_tdfx tdfxvid)
-			$(use_enable fbcon tdfxfb)
-		"
-	else
-		myconf+="
-			--disable-3dfx
-			--disable-tdfxvid
-			--disable-tdfxfb
-		"
-	fi
+	myconf+="
+		--disable-3dfx
+		--disable-tdfxvid
+		--disable-tdfxfb
+	"
 
 	# sun card, disable by default, see bug #258729
 	myconf+=" --disable-xvr100"
@@ -489,11 +479,6 @@ src_configure() {
 	use vidix        || myconf+=" --disable-vidix --disable-vidix-pcidb"
 	use xscreensaver || myconf+=" --disable-xss"
 	use X            || myconf+=" --disable-x11"
-	if use xvmc; then
-		myconf+=" --enable-xvmc --with-xvmclib=XvMCW"
-	else
-		myconf+=" --disable-xvmc"
-	fi
 
 	############################
 	# OSX (aqua) configuration #

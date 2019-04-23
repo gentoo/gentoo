@@ -8,6 +8,5 @@
 <flag name="fbcon">Install the framebuffer image viewer "fbi"</flag>
 <flag name="ghostscript">Install the framebuffer ghostscript viewer "fbgs"</flag>
 <flag name="X">Install the Motif based image viewer "ida"</flag>
-<flag name="webp">Enable support for the WebP image format</flag>
 </use>
 </pkgmetadata>

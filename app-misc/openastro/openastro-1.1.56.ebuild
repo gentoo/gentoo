@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,7 +10,7 @@ inherit distutils-r1
 MY_PN=${PN}.org
 
 DESCRIPTION="A fully-featured Open Source Astrology Program"
-HOMEPAGE="http://openastro.org"
+HOMEPAGE="https://www.openastro.org"
 SRC_URI="http://ppa.launchpad.net/pellesimon/ubuntu/pool/main/o/${MY_PN}/${MY_PN}_${PV}.orig.tar.gz"
 
 LICENSE="GPL-3+"

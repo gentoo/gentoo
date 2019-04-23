@@ -148,9 +148,20 @@ src_compile() {
 
 src_test() {
 	# (unset)
-	local -x PYTHONDONTWRITEBYTECODE
+	local -x PYTHONDONTWRITEBYTECODE=
 
-	./pypy-c ./pypy/test_all.py --pypy=./pypy-c lib-python || die
+	local ignored_tests=(
+		# network
+		--ignore=lib-python/2.7/test/test_urllibnet.py
+		--ignore=lib-python/2.7/test/test_urllib2net.py
+		# lots of free space
+		--ignore=lib-python/2.7/test/test_zipfile64.py
+		# no module named 'worker' -- a lot
+		--ignore=lib-python/2.7/test/test_xpickle.py
+	)
+
+	./pypy-c ./pypy/test_all.py --pypy=./pypy-c -vv \
+		"${ignored_tests[@]}" lib-python || die
 }
 
 src_install() {

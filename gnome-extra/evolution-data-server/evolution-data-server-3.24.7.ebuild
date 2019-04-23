@@ -3,7 +3,7 @@
 
 EAPI=6
 GNOME2_LA_PUNT="yes"
-PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy )
+PYTHON_COMPAT=( python2_7 python3_{5,6} pypy )
 VALA_USE_DEPEND="vapigen"
 
 inherit cmake-utils db-use flag-o-matic gnome2 python-any-r1 systemd vala virtualx
@@ -76,6 +76,7 @@ RESTRICT="test"
 PATCHES=(
 	"${FILESDIR}"/${PV}-DESTDIR-honoring.patch
 	"${FILESDIR}"/${PV}-libical3-compat.patch
+	"${FILESDIR}"/icu61-compat.patch
 )
 
 pkg_setup() {

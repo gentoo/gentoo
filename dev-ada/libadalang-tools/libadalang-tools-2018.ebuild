@@ -16,7 +16,7 @@ IUSE="gnat_2016 gnat_2017 +gnat_2018"
 
 RDEPEND=""
 DEPEND="${RDEPEND}
-	dev-ada/libadalang[gnat_2016=,gnat_2017=,gnat_2018=]"
+	dev-ada/libadalang[gnat_2016=,gnat_2017=,gnat_2018=,static-libs]"
 
 S="${WORKDIR}"/${PN}-src
 

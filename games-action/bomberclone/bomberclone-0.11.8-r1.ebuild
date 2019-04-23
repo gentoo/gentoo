@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils autotools
+inherit autotools desktop vcs-clean
 
 DESCRIPTION="BomberMan clone with network game support"
 HOMEPAGE="https://www.bomberclone.de/"
@@ -39,7 +39,7 @@ src_prepare() {
 src_configure() {
 	econf \
 		$(use_with X x) \
-		--datadir=/usr/share
+		--datadir="${EPREFIX}"/usr/share
 	sed -i \
 		-e "/PACKAGE_DATA_DIR/ s:/usr/games/share/games/:/usr/share:" \
 		config.h || die
@@ -52,7 +52,7 @@ src_install() {
 
 	insinto /usr/share/${PN}
 	doins -r data/{gfx,maps,player,tileset,music}
-	find "${D}" -name "Makefile*" -exec rm -f '{}' +
+	find "${D}" -name "Makefile*" -exec rm -f '{}' + || die
 
 	doicon data/pixmaps/bomberclone.png
 	make_desktop_entry bomberclone Bomberclone

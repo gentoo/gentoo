@@ -1,6 +1,10 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (20 Sep 2018)
+# dev-libs/libpfm has broken install rules for FreeBSD. Bug #666649.
+sys-devel/llvm exegesis
+
 # Fabian Groffen <grobian@gentoo.org> (07 Dec 2016)
 # unkeyworded notmuch dependency, bug #587560
 mail-client/mutt notmuch
@@ -71,19 +75,17 @@ www-client/links livecd
 
 # needs udev
 media-libs/libsdl2 kms
-media-libs/mesa gbm dri3 d3d9
+media-libs/mesa gbm dri3 d3d9 vulkan
 x11-base/xorg-drivers video_cards_radeonsi
 x11-drivers/xf86-video-ati glamor
 media-libs/gst-plugins-base gbm
+>=gnome-base/gvfs-1.38 cdda gphoto2 mtp udisks
 
 # udisks is linux only (for now?)
 gnome-base/gvfs udisks
 
-# joystick and video_cards_tdfx useflag are linux only #477750
-media-video/mplayer joystick video_cards_tdfx
+# joystick useflag is linux only #477750
+media-video/mplayer joystick
 
 # linux only
 media-libs/opencv ieee1394 cuda
-
-# depends on networkmanager
-app-misc/geoclue skyhook

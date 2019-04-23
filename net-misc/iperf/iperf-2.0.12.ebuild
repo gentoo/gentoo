@@ -13,6 +13,9 @@ KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-
 IUSE="ipv6 threads debug"
 
 DOCS="INSTALL README"
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.0.12-ipv6.patch
+)
 
 src_configure() {
 	econf \

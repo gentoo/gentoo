@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
@@ -10,7 +10,7 @@ MY_PV="${PV/50/5}"
 
 DESCRIPTION="ARCLoad - SGI Multi-bootloader.  Able to bootload many different SGI Systems"
 HOMEPAGE="https://www.linux-mips.org/wiki/ARCLoad"
-SRC_URI="https//www.linux-mips.org/pub/linux/mips/people/skylark/arcload-${MY_PV}.tar.bz2"
+SRC_URI="https://www.linux-mips.org/pub/linux/mips/people/skylark/arcload-${MY_PV}.tar.bz2"
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="-* ~mips"

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>ck+gentoo@bl4ckb0x.de</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		Collectd Graph Panel (CGP) is a graphical web-based front-end
+		for visualizing RRD collected by collectd, written in the PHP language.
+	</longdescription>
+	<upstream>
+		<bugs-to>https://github.com/pommi/CGP/issues</bugs-to>
+		<remote-id type="github">pommi/CGP</remote-id>
+	</upstream>
+</pkgmetadata>

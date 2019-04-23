@@ -14,5 +14,6 @@
 	<upstream>
 		<remote-id type="pypi">decorator</remote-id>
 		<remote-id type="github">micheles/decorator</remote-id>
+		<bugs-to>https://github.com/micheles/decorator/issues</bugs-to>
 	</upstream>
 </pkgmetadata>

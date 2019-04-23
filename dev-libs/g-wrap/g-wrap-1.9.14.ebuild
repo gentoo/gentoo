@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
@@ -7,7 +7,7 @@ inherit autotools-utils
 
 DESCRIPTION="A tool for exporting C libraries into Scheme"
 HOMEPAGE="http://www.nongnu.org/g-wrap/"
-SRC_URI="http://download.savannah.gnu.org/releases/g-wrap/${P}.tar.gz"
+SRC_URI="http://download.savannah.gnu.org/releases/g-wrap/old/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"

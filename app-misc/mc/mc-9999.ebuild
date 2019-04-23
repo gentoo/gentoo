@@ -1,10 +1,10 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 if [[ ${PV} = *9999* ]]; then
-	EGIT_REPO_URI="https://github.com/MidnightCommander/mc.git git://repo.or.cz/midnight-commander.git"
+	EGIT_REPO_URI="https://github.com/MidnightCommander/mc.git"
 	LIVE_ECLASSES="git-r3 autotools"
 	LIVE_EBUILD=yes
 fi
@@ -15,7 +15,7 @@ MY_P=${P/_/-}
 
 if [[ -z ${LIVE_EBUILD} ]]; then
 	SRC_URI="http://ftp.midnight-commander.org/${MY_P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x86-solaris"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x86-solaris"
 fi
 
 DESCRIPTION="GNU Midnight Commander is a text based file manager"
@@ -68,7 +68,7 @@ src_configure() {
 		--enable-charset
 		--enable-vfs
 		--with-homedir=$(usex xdg 'XDG' '.mc')
-		--with-screen=$(usex slang 'slang' "ncurses$(usex unicode 'w')")
+		--with-screen=$(usex slang 'slang' "ncurses$(usex unicode 'w' '')")
 		$(use_enable kernel_linux vfs-undelfs)
 		$(use_enable mclib)
 		$(use_enable nls)
@@ -83,6 +83,14 @@ src_configure() {
 	econf "${myeconfargs[@]}"
 }
 
+src_test() {
+	# CK_FORK=no to avoid using fork() in check library
+	# as mc mocks fork() itself: bug #644462.
+	#
+	# VERBOSE=1 to make test failures contain detailed
+	# information.
+	CK_FORK=no emake check VERBOSE=1
+}
 src_install() {
 	emake DESTDIR="${D}" install
 	dodoc AUTHORS doc/{FAQ,NEWS,README}

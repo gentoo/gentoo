@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_4 python3_5 python3_6 )
+PYTHON_COMPAT=( python2_7 python3_5 python3_6 )
 
 inherit eutils python-r1 toolchain-funcs
 
@@ -87,6 +87,10 @@ src_install() {
 	emake install DESTDIR="${D}" prefix="${EPREFIX}/usr" mandir="${EPREFIX}/usr/share/man"
 
 	if use gnuplot ; then
+		sed -i 's:python2.7:python:g' \
+			"${ED}/usr/bin/fio2gnuplot" \
+			"${ED}/usr/bin/fiologparser_hist.py" \
+			"${ED}/usr/bin/fiologparser.py"
 		python_replicate_script \
 			"${ED}/usr/bin/fio2gnuplot" \
 			"${ED}/usr/bin/fiologparser_hist.py" \

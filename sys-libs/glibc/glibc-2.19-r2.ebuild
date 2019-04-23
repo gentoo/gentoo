@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -35,8 +35,8 @@ SRC_URI+=" multilib? ( https://dev.gentoo.org/~dilfridge/distfiles/gcc-${GCC_BOO
 IUSE="audit caps compile-locales debug doc gd hardened headers-only multilib nscd profile selinux suid systemtap vanilla"
 
 # Minimum kernel version that glibc requires
-# Everyone except hppa could also use 2.6.16
-MIN_KERN_VER="2.6.20"
+# hppa requires 2.6.20
+MIN_KERN_VER="2.6.16"
 
 # Here's how the cross-compile logic breaks down ...
 #  CTARGET - machine that will target the binaries
@@ -627,9 +627,6 @@ sanity_prechecks() {
 		ewarn "This will result in a 50% performance penalty when running with a 32bit"
 		ewarn "hypervisor, which is probably not what you want."
 	fi
-
-	use hardened && ! tc-enables-pie && \
-		ewarn "PIE hardening not applied, as your compiler doesn't default to PIE"
 
 	# Check for sanity of /etc/nsswitch.conf
 	if [[ -e ${EROOT}/etc/nsswitch.conf ]] ; then

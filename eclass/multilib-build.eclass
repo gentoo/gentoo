@@ -6,6 +6,7 @@
 # gx86-multilib team <multilib@gentoo.org>
 # @AUTHOR:
 # Author: Michał Górny <mgorny@gentoo.org>
+# @SUPPORTED_EAPIS: 4 5 6 7
 # @BLURB: flags and utility functions for building multilib packages
 # @DESCRIPTION:
 # The multilib-build.eclass exports USE flags and utility functions

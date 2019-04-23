@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -19,7 +19,6 @@ KEYWORDS="~amd64 ~x86"
 IUSE="doc gles2 gtk libcaca +maps nls +ogg openmp readline test"
 
 # yes, cunit is rdep
-# Drop the libtool dep once libltdl goes stable.
 RDEPEND="dev-db/sqlite:3
 	dev-libs/expat
 	dev-scheme/guile:12
@@ -30,7 +29,7 @@ RDEPEND="dev-db/sqlite:3
 	media-libs/sdl-image[jpeg,png]
 	media-libs/sdl-ttf
 	net-misc/curl
-	|| ( dev-libs/libltdl:0 <sys-devel/libtool-2.4.3-r2:2 )
+	dev-libs/libltdl:0
 	sys-libs/zlib
 	virtual/glu
 	virtual/jpeg:0

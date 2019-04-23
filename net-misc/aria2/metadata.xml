@@ -11,7 +11,6 @@
 	</maintainer>
 	<use>
 		<flag name="bittorrent">Enable support for the bittorrent protocol.</flag>
-		<flag name="jemalloc">Use <pkg>dev-libs/jemalloc</pkg> to replace the malloc() implementation with a possibly faster one</flag>
 		<flag name="libuv">Use <pkg>dev-libs/libuv</pkg> backend.</flag>
 		<flag name="libxml2">Use <pkg>dev-libs/libxml2</pkg> for XML parsing (preferred) instead of <pkg>dev-libs/expat</pkg>.</flag>
 		<flag name="nettle">Use <pkg>dev-libs/nettle</pkg> and <pkg>dev-libs/gmp</pkg> for bittorrent/metalink crypto instead of <pkg>dev-libs/libgcrypt</pkg> (when <pkg>dev-libs/openssl</pkg> is not being used).</flag>

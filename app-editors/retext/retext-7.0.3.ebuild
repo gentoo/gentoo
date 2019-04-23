@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_{4,5,6} )
+PYTHON_COMPAT=( python3_{5,6} )
 
 PLOCALES="ca cs cy da de es et eu fr hu it ja pl pt pt_BR ru sk sr sr@latin uk zh_TW"
 
@@ -21,7 +21,7 @@ if [[ ${PV} == *9999 ]]
 		EGIT_REPO_URI="https://github.com/retext-project/retext.git"
 	else
 		SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
-		KEYWORDS="~amd64 ~x86"
+		KEYWORDS="amd64 x86"
 		S="${WORKDIR}"/${MY_P}
 fi
 

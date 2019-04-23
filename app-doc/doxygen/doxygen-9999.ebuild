@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
+PYTHON_COMPAT=( python{2_7,3_5,3_6} )
 
 inherit cmake-utils eutils python-any-r1
 if [[ ${PV} = *9999* ]]; then
@@ -58,7 +58,7 @@ DEPEND="sys-devel/flex
 # src_test() defaults to make -C testing but there is no such directory (bug #504448)
 RESTRICT="test"
 
-PATCHES=( "${FILESDIR}/${PN}-1.8.11-link_with_pthread.patch" )
+PATCHES=( "${FILESDIR}/${PN}-1.8.12-link_with_pthread.patch" )
 DOCS=( LANGUAGE.HOWTO README.md )
 
 pkg_setup() {

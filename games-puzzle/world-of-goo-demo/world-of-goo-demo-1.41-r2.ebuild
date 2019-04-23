@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -42,9 +42,9 @@ QA_PREBUILT="
 pkg_nofetch() {
 	if [[ ${PN} == *-demo ]] ; then
 		elog "To download the demo, visit http://worldofgoo.com/dl2.php?lk=demo"
-		elog "and download ${A} and place it in ${DISTDIR}"
+		elog "and download ${A} and place it into your DISTDIR directory."
 	else
-		elog "Download ${A} from ${HOMEPAGE} and place it in ${DISTDIR}"
+		elog "Download ${A} from ${HOMEPAGE} and place it into your DISTDIR directory."
 	fi
 }
 

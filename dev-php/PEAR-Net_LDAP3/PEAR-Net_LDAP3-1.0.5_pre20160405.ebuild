@@ -9,7 +9,7 @@ SRC_URI="https://dev.gentoo.org/~pinkbyte/distfiles/snapshots/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 arm ~hppa ppc ppc64 ~sparc x86"
+KEYWORDS="amd64 arm ~hppa ppc ppc64 sparc x86"
 
 RDEPEND="
 	dev-lang/php:*[ldap]

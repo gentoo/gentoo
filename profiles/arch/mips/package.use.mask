@@ -1,10 +1,6 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-# Michał Górny <mgorny@gentoo.org> (15 Feb 2018)
-# Requires USE=networkmanager that is masked in this profile.
-app-misc/geoclue skyhook
-
 # Michał Górny <mgorny@gentoo.org> (23 Jan 2018)
 # USE=collab requires unkeyworded net-libs/loudmouth & dev-cpp/asio.
 # USE=grammar requires dev-libs/link-grammar.
@@ -41,7 +37,6 @@ app-shells/bash-completion test
 # Mart Raudsepp <leio@gentoo.org> (27 May 2017)
 # app-pda/libimobiledevice, app-pda/libplist and co not tested
 sys-power/upower ios
-sys-power/upower-pm-utils ios
 gnome-base/gvfs ios
 
 # Mart Raudsepp <leio@gentoo.org> (27 May 2017)
@@ -70,14 +65,6 @@ net-dns/dnsmasq conntrack
 # Thomas Deutschmann <whissi@gentoo.org> (23 Aug 2016)
 # net-libs/openpgm is not keyworded on mips
 net-libs/zeromq pgm
-
-# Mike Frysinger <vapier@gentoo.org> 21 Feb 2016
-# Needs arch love for elementary. #575322
-media-libs/elementary javascript
-
-# Mike Frysinger <vapier@gentoo.org> (17 Dec 2015)
-# The tlsdate seccomp logic is open-coded and doesn't support this arch yet.
-net-misc/tlsdate seccomp
 
 # Davide Pesavento <pesa@gentoo.org> (26 Oct 2015)
 # Tests require non-keyworded qt5
@@ -120,10 +107,6 @@ app-text/tesseract	webp
 # CONFIG_AUDITSYSCALL=y is not implemented, bug #438368
 sys-auth/consolekit pam
 sys-auth/pambase consolekit
-
-# Kacper Kowalik <xarthisius@gentoo.org> (20 May 2011)
-# depends on dev-libs/dmalloc which is not keyworded
-net-nds/ypbind debug
 
 # Richard Brown <rbrown@gentoo.org> (21 Jan 2008)
 # Needs dev-ruby/builder, which isn't keyworded

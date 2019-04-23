@@ -1,7 +1,7 @@
 http://bugs.gentoo.org/484264
 
---- configure.ac
-+++ configure.ac
+--- a/configure.ac
++++ b/configure.ac
 @@ -27,6 +27,7 @@
  AC_LANG_CPLUSPLUS dnl switch to C++
  AC_TYPE_SIZE_T
@@ -10,8 +10,8 @@ http://bugs.gentoo.org/484264
  AC_CHECK_RANGE_FOR_SUPPORT
  AC_CHECK_LAMBDA_SUPPORT
  
---- m4/ax_check_compile_flag.m4
-+++ m4/ax_check_compile_flag.m4
+--- a/m4/ax_check_compile_flag.m4
++++ b/m4/ax_check_compile_flag.m4
 @@ -0,0 +1,16 @@
 +# This macro is part of autoconf-archive with license GPL-3 or any later version
 +AC_DEFUN([AX_CHECK_COMPILE_FLAG],

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -126,7 +126,6 @@ src_configure() {
 
 src_install() {
 	default
-	env -uRESTRICT prepstrip "${ED}"/usr/bin
 	udev_dorules "${D}"/usr/share/${PN}/contrib/*.rules
 }
 

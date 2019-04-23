@@ -5,6 +5,14 @@
 	<email>tcltk@gentoo.org</email>
 	<name>Gentoo Tcltk Project</name>
 </maintainer>
+<use>
+	<flag name="ode">
+		Enable support for physics engine from <pkg>dev-games/ode</pkg>
+	</flag>
+	<flag name="osg">
+		Enable support for 3D toolkit from <pkg>dev-games/openscenegraph</pkg>
+	</flag>
+</use>
 <longdescription>
 Tcl3D offers the 3D functionality of OpenGL and other 3D libraries at the Tcl scripting level.
 The Tcl3D package currently consists of the following modules:

@@ -13,7 +13,7 @@ SLOT="${PV}"
 KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sh sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE=""
 
-S=${WORKDIR}/${MY_P}
+S=${WORKDIR}
 
 src_install() {
 	dodoc -r *

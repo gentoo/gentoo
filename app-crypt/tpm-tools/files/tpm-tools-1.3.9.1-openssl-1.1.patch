@@ -1,0 +1,241 @@
+From 31d9cebc43833de939a0e13be0110ed830b66cbd Mon Sep 17 00:00:00 2001
+From: Alon Bar-Lev <alon.barlev@gmail.com>
+Date: Sat, 8 Dec 2018 23:28:54 +0200
+Subject: [PATCH] data_import.c: support openssl-1.1
+
+Signed-off-by: Alon Bar-Lev <alon.barlev@gmail.com>
+Bug: https://sourceforge.net/p/trousers/bugs/227/
+---
+ src/data_mgmt/data_import.c | 159 +++++++++++++++++++++++++-----------
+ 1 file changed, 112 insertions(+), 47 deletions(-)
+
+diff --git a/src/data_mgmt/data_import.c b/src/data_mgmt/data_import.c
+index f534717..33c76e7 100644
+--- a/src/data_mgmt/data_import.c
++++ b/src/data_mgmt/data_import.c
+@@ -39,6 +39,30 @@
+ #include <openssl/evp.h>
+ #include <openssl/err.h>
+ 
++#if OPENSSL_VERSION_NUMBER < 0x10100000L || (defined(LIBRESSL_VERSION_NUMBER) && LIBRESSL_VERSION_NUMBER < 0x20700000L)
++static void RSA_get0_key(const RSA *r, const BIGNUM **n, const BIGNUM **e, const BIGNUM **d) {
++	if ( n )
++		*n = r->n;
++	if ( e )
++		*e = r->e;
++	if ( d )
++		*d = r->d;
++}
++static void RSA_get0_factors(const RSA *r, const BIGNUM **p, const BIGNUM **q) {
++	if ( p )
++		*p = r->p;
++	if ( q )
++		*q = r->q;
++}
++static void RSA_get0_crt_params(const RSA *r, const BIGNUM **dmp1, const BIGNUM **dmq1, const BIGNUM **iqmp) {
++	if ( dmp1 )
++		*dmp1 = r->dmp1;
++	if ( dmq1 )
++		*dmq1 = r->dmq1;
++	if ( iqmp )
++		*iqmp = r->iqmp;
++}
++#endif
+ 
+ /*
+  * Global variables
+@@ -372,7 +396,7 @@ readX509Cert( const char  *a_pszFile,
+ 		goto out;
+ 	}
+ 
+-	if ( EVP_PKEY_type( pKey->type ) != EVP_PKEY_RSA ) {
++	if ( EVP_PKEY_base_id( pKey ) != EVP_PKEY_RSA ) {
+ 		logError( TOKEN_RSA_KEY_ERROR );
+ 
+ 		X509_free( pX509 );
+@@ -691,17 +715,35 @@ createRsaPubKeyObject( RSA               *a_pRsa,
+ 
+ 	int  rc = -1;
+ 
+-	int  nLen = BN_num_bytes( a_pRsa->n );
+-	int  eLen = BN_num_bytes( a_pRsa->e );
++	const BIGNUM *bn;
++	const BIGNUM *be;
++	int  nLen;
++	int  eLen;
++	CK_BYTE *n = NULL;
++	CK_BYTE *e = NULL;
++
++	RSA_get0_key( a_pRsa, &bn, &be, NULL );
++
++	nLen = BN_num_bytes( bn );
++	eLen = BN_num_bytes( be );
++	n = malloc( nLen );
++	e = malloc( eLen );
++
++	if ( !n || !e ) {
++		logError( TOKEN_MEMORY_ERROR );
++		goto out;
++	}
++
++	// Get binary representations of the RSA key information
++	BN_bn2bin( bn, n );
++	BN_bn2bin( be, e );
+ 
++	{
+ 	CK_RV  rv;
+ 
+ 	CK_BBOOL  bTrue  = TRUE;
+ 	CK_BBOOL  bFalse = FALSE;
+ 
+-	CK_BYTE *n = malloc( nLen );
+-	CK_BYTE *e = malloc( eLen );
+-
+ 	CK_OBJECT_CLASS  clPubClass  = CKO_PUBLIC_KEY;
+ 	CK_KEY_TYPE      tKeyType    = CKK_RSA;
+ 	CK_BBOOL         bPrivate    = ( !g_bPublic ) ? TRUE : FALSE;
+@@ -726,21 +768,13 @@ createRsaPubKeyObject( RSA               *a_pRsa,
+ 
+ 	*a_hObject = 0;
+ 
+-	if ( !n || !e ) {
+-		logError( TOKEN_MEMORY_ERROR );
+-		goto out;
+-	}
+-
+-	// Get binary representations of the RSA key information
+-	BN_bn2bin( a_pRsa->n, n );
+-	BN_bn2bin( a_pRsa->e, e );
+-
+ 	// Create the RSA public key object
+ 	rv = createObject( a_hSession, tAttr, ulAttrCount, a_hObject );
+ 	if ( rv != CKR_OK )
+ 		goto out;
+ 
+ 	rc = 0;
++	}
+ 
+ out:
+ 	free( n );
+@@ -760,29 +794,74 @@ createRsaPrivKeyObject( RSA               *a_pRsa,
+ 
+ 	int  rc = -1;
+ 
+-	int  nLen = BN_num_bytes( a_pRsa->n );
+-	int  eLen = BN_num_bytes( a_pRsa->e );
+-	int  dLen = BN_num_bytes( a_pRsa->d );
+-	int  pLen = BN_num_bytes( a_pRsa->p );
+-	int  qLen = BN_num_bytes( a_pRsa->q );
+-	int  dmp1Len = BN_num_bytes( a_pRsa->dmp1 );
+-	int  dmq1Len = BN_num_bytes( a_pRsa->dmq1 );
+-	int  iqmpLen = BN_num_bytes( a_pRsa->iqmp );
++	const BIGNUM *bn;
++	const BIGNUM *be;
++	const BIGNUM *bd;
++	const BIGNUM *bp;
++	const BIGNUM *bq;
++	const BIGNUM *bdmp1;
++	const BIGNUM *bdmq1;
++	const BIGNUM *biqmp;
++	int  nLen;
++	int  eLen;
++	int  dLen;
++	int  pLen;
++	int  qLen;
++	int  dmp1Len;
++	int  dmq1Len;
++	int  iqmpLen;
++	CK_BYTE *n = NULL;
++	CK_BYTE *e = NULL;
++	CK_BYTE *d = NULL;
++	CK_BYTE *p = NULL;
++	CK_BYTE *q = NULL;
++	CK_BYTE *dmp1 = NULL;
++	CK_BYTE *dmq1 = NULL;
++	CK_BYTE *iqmp = NULL;
++
++	RSA_get0_key( a_pRsa, &bn, &be, &bd);
++	RSA_get0_factors( a_pRsa, &bp, &bq);
++	RSA_get0_crt_params( a_pRsa, &bdmp1, &bdmq1, &biqmp );
++
++	nLen = BN_num_bytes( bn );
++	eLen = BN_num_bytes( be );
++	dLen = BN_num_bytes( bd );
++	pLen = BN_num_bytes( bp );
++	qLen = BN_num_bytes( bq );
++	dmp1Len = BN_num_bytes( bdmp1 );
++	dmq1Len = BN_num_bytes( bdmq1 );
++	iqmpLen = BN_num_bytes( biqmp );
++
++	n = malloc( nLen );
++	e = malloc( eLen );
++	d = malloc( dLen );
++	p = malloc( pLen );
++	q = malloc( qLen );
++	dmp1 = malloc( dmp1Len );
++	dmq1 = malloc( dmq1Len );
++	iqmp = malloc( iqmpLen );
+ 
++	if ( !n || !e || !d || !p || !q || !dmp1 || !dmq1 || !iqmp ) {
++		logError( TOKEN_MEMORY_ERROR );
++		goto out;
++	}
++
++	// Get binary representations of the RSA key information
++	BN_bn2bin( bn, n );
++	BN_bn2bin( be, e );
++	BN_bn2bin( bd, d );
++	BN_bn2bin( bp, p );
++	BN_bn2bin( bq, q );
++	BN_bn2bin( bdmp1, dmp1 );
++	BN_bn2bin( bdmq1, dmq1 );
++	BN_bn2bin( biqmp, iqmp );
++
++	{
+ 	CK_RV  rv;
+ 
+ 	CK_BBOOL  bTrue  = TRUE;
+ 	CK_BBOOL  bFalse = FALSE;
+ 
+-	CK_BYTE *n = malloc( nLen );
+-	CK_BYTE *e = malloc( eLen );
+-	CK_BYTE *d = malloc( dLen );
+-	CK_BYTE *p = malloc( pLen );
+-	CK_BYTE *q = malloc( qLen );
+-	CK_BYTE *dmp1 = malloc( dmp1Len );
+-	CK_BYTE *dmq1 = malloc( dmq1Len );
+-	CK_BYTE *iqmp = malloc( iqmpLen );
+-
+ 	CK_OBJECT_CLASS  clPrivClass = CKO_PRIVATE_KEY;
+ 	CK_KEY_TYPE      tKeyType    = CKK_RSA;
+ 	CK_BBOOL         bPrivate    = ( !g_bPublic ) ? TRUE : FALSE;
+@@ -815,25 +894,11 @@ createRsaPrivKeyObject( RSA               *a_pRsa,
+ 
+ 	*a_hObject = 0;
+ 
+-	if ( !n || !e || !d || !p || !q || !dmp1 || !dmq1 || !iqmp ) {
+-		logError( TOKEN_MEMORY_ERROR );
+-		goto out;
+-	}
+-
+-	// Get binary representations of the RSA key information
+-	BN_bn2bin( a_pRsa->n, n );
+-	BN_bn2bin( a_pRsa->e, e );
+-	BN_bn2bin( a_pRsa->d, d );
+-	BN_bn2bin( a_pRsa->p, p );
+-	BN_bn2bin( a_pRsa->q, q );
+-	BN_bn2bin( a_pRsa->dmp1, dmp1 );
+-	BN_bn2bin( a_pRsa->dmq1, dmq1 );
+-	BN_bn2bin( a_pRsa->iqmp, iqmp );
+-
+ 	// Create the RSA private key object
+ 	rv = createObject( a_hSession, tAttr, ulAttrCount, a_hObject );
+ 	if ( rv != CKR_OK )
+ 		goto out;
++	}
+ 
+ 	rc = 0;
+ 
+-- 
+2.19.2
+

@@ -7,7 +7,7 @@ inherit eutils toolchain-funcs
 
 DESCRIPTION="DNS serial number incrementer and reverse zone builder"
 SRC_URI="http://uranus.it.swin.edu.au/~jn/linux/${P}.tar.gz"
-HOMEPAGE="http://uranus.it.swin.edu.au/~jn/linux/dns.htm"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ppc x86"

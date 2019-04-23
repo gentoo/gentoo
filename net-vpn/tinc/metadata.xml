@@ -14,7 +14,6 @@
 		<!--
 		<flag name="gcrypt">Add support for encrypted log files using <pkg>dev-libs/libgcrypt</pkg></flag>
 		-->
-		<flag name="gui">Add GUI support, using <pkg>dev-python/wxpython</pkg></flag>
 		<flag name="uml"> Enable support for User Mode Linux Sockets</flag>
 		<flag name="vde"> Enable Virtual Distributed Ethernet (VDE) based networking</flag>
 	</use>

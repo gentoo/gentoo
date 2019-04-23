@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,7 +17,7 @@ if [[ ${PV} == *9999 ]] ; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/miloyip/rapidjson/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 	S="${WORKDIR}/rapidjson-${PV}"
 fi
 
@@ -32,6 +32,13 @@ RDEPEND=""
 PATCHES=(
 	"${FILESDIR}/${P}-gcc-7.patch"
 )
+
+src_prepare() {
+	cmake-utils_src_prepare
+
+	sed -i -e 's|-Werror||g' CMakeLists.txt || die
+	sed -i -e 's|-Werror||g' example/CMakeLists.txt || die
+}
 
 src_configure() {
 	local mycmakeargs=(

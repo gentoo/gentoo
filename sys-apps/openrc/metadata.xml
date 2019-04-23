@@ -6,6 +6,9 @@
 		<name>Gentoo OpenRC Project</name>
 	</maintainer>
 	<use>
+		<flag name="bash">
+			enable the use of bash in service scripts (experimental)
+		</flag>
 		<flag name="netifrc">enable Gentoo's network stack (net.* scripts)</flag>
 		<flag name="newnet">enable the new network stack (experimental)</flag>
 	</use>

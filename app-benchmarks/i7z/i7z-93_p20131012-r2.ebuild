@@ -10,7 +10,7 @@ HOMEPAGE="https://github.com/ajaiantilal/i7z"
 SRC_URI="https://github.com/ajaiantilal/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 IUSE="qt5"
 
 RDEPEND="
@@ -40,7 +40,7 @@ PATCHES=(
 S="${WORKDIR}/${PN}-${COMMIT}"
 
 src_configure() {
-	tc-export CC
+	tc-export CC PKG_CONFIG
 	cd GUI || die
 	use qt5 && eqmake5 ${PN}_GUI.pro
 }

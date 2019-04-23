@@ -1,5 +1,22 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Thomas Deutschmann <whissi@gentoo.org> (23 Oct 2018)
+# requires >=net-libs/nodejs-8.11.0
+>=www-client/firefox-63.0
+
+# Tomáš Mózes <hydrapolic@gmail.com> (17 Sep 2018)
+# requires >=nodejs-8 which is not available in 13.0 based profiles.
+>=www-apps/kibana-bin-6
+
+# Mike Gilbert <floppym@gentoo.org> (16 Sep 2018)
+# requires >=nodejs-7.6.0 which is not available in 13.0 based profiles.
+>=www-client/chromium-70
+
+# Patrick McLean <chutzpah@gentoo.org> (10 Jul 2018)
+# requires >=nodejs-8.10 which is not available in 13.0 based profiles.
+# Please migrate to one of the 17.0 release profiles
+>=sys-cluster/ceph-13
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (29 Jan 2018)
 # Requires >=icu-60, which is not available in 13.0 based profiles.

@@ -1,0 +1,10 @@
+#!/sbin/openrc-run
+# Copyright 1999-2018 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+description="Starts ${SVCNAME} service for rasdaemon"
+
+command="/usr/sbin/${SVCNAME}"
+command_args="--register-labels"
+pidfile=/run/${SVCNAME}.pid
+command_background=true

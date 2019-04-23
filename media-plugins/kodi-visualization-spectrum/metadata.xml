@@ -7,6 +7,6 @@
     </maintainer>
     <longdescription>Spectrum visualizer for Kodi</longdescription>
     <upstream>
-        <remote-id type="github">notspiff/visualization.spectrum</remote-id>
+        <remote-id type="github">xbmc/visualization.spectrum</remote-id>
     </upstream>
 </pkgmetadata>

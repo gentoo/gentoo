@@ -1,16 +1,16 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit cmake-utils
 
 DESCRIPTION="A simple CLI tool that display file system usage, with colors"
-HOMEPAGE="http://projects.gw-computing.net/projects/dfc"
-SRC_URI="http://projects.gw-computing.net/attachments/download/615/${P}.tar.gz"
+HOMEPAGE="https://projects.gw-computing.net/projects/dfc"
+SRC_URI="https://projects.gw-computing.net/attachments/download/615/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm ~arm64 x86"
 IUSE="nls"
 
 DEPEND="nls? (
@@ -28,7 +28,6 @@ src_configure() {
 		# disable automagic dependency
 		-DNLS_ENABLED="$(usex nls)"
 		-DLFS_ENABLED=ON
-		-DGRIM=OFF
 	)
 
 	cmake-utils_src_configure

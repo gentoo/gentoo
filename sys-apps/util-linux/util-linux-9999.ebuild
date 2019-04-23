@@ -1,12 +1,13 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors and others
+# Copyright 2018 Sony Interactive Entertainment Inc.
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
+PYTHON_COMPAT=( python2_7 python3_{5,6,7} )
 
 inherit toolchain-funcs libtool flag-o-matic bash-completion-r1 \
-	pam python-single-r1 multilib-minimal multiprocessing systemd
+	pam python-r1 multilib-minimal multiprocessing systemd
 
 MY_PV="${PV/_/-}"
 MY_P="${PN}-${MY_PV}"
@@ -16,7 +17,7 @@ if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://git.kernel.org/pub/scm/utils/util-linux/util-linux.git"
 else
 	[[ "${PV}" = *_rc* ]] || \
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~amd64-linux ~arm-linux ~x86-linux"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~amd64-linux ~x86-linux"
 	SRC_URI="mirror://kernel/linux/utils/util-linux/v${PV:0:4}/${MY_P}.tar.xz"
 fi
 
@@ -62,9 +63,9 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 S="${WORKDIR}/${MY_P}"
 
-pkg_setup() {
-	use python && python-single-r1_pkg_setup
-}
+PATCHES=(
+	"${FILESDIR}/util-linux-2.32.1-skip-oids-test-when-uuidgen-is-not-available.patch"
+)
 
 src_prepare() {
 	default
@@ -108,6 +109,26 @@ lfs_fallocate_test() {
 	rm -f "${T}"/fallocate.${ABI}.c
 }
 
+python_configure() {
+	local myeconfargs=(
+		--disable-all-programs
+		--disable-bash-completion
+		--without-systemdsystemunitdir
+		--with-python
+	)
+	if use userland_GNU; then
+		myeconfargs+=(
+			--enable-libblkid
+			--enable-libmount
+			--enable-pylibmount
+		)
+	fi
+	mkdir "${BUILD_DIR}" || die
+	pushd "${BUILD_DIR}" >/dev/null || die
+	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
+	popd >/dev/null || die
+}
+
 multilib_src_configure() {
 	lfs_fallocate_test
 	# The scanf test in a run-time test which fails while cross-compiling.
@@ -120,9 +141,9 @@ multilib_src_configure() {
 	local myeconfargs=(
 		--enable-fs-paths-extra="${EPREFIX}/usr/sbin:${EPREFIX}/bin:${EPREFIX}/usr/bin"
 		--with-bashcompletiondir="$(get_bashcompdir)"
+		--without-python
 		$(multilib_native_use_enable suid makeinstall-chown)
 		$(multilib_native_use_enable suid makeinstall-setuid)
-		$(multilib_native_use_with python)
 		$(multilib_native_use_with readline)
 		$(multilib_native_use_with slang)
 		$(multilib_native_use_with systemd)
@@ -133,8 +154,8 @@ multilib_src_configure() {
 		$(use_enable nls)
 		$(use_enable unicode widechar)
 		$(use_enable static-libs static)
+		$(use_with ncurses tinfo)
 		$(use_with selinux)
-		$(usex ncurses '' '--without-tinfo')
 	)
 	# build programs only on GNU, on *BSD we want libraries only
 	if multilib_is_native_abi && use userland_GNU; then
@@ -142,6 +163,7 @@ multilib_src_configure() {
 			--disable-chfn-chsh
 			--disable-login
 			--disable-nologin
+			--disable-pylibmount
 			--disable-su
 			--enable-agetty
 			--enable-bash-completion
@@ -179,10 +201,44 @@ multilib_src_configure() {
 		fi
 	fi
 	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
+
+	if multilib_is_native_abi && use python; then
+		python_foreach_impl python_configure
+	fi
+}
+
+python_compile() {
+	pushd "${BUILD_DIR}" >/dev/null || die
+	emake all
+	popd >/dev/null || die
+}
+
+multilib_src_compile() {
+	emake all
+
+	if multilib_is_native_abi && use python; then
+		python_foreach_impl python_compile
+	fi
+}
+
+python_test() {
+	pushd "${BUILD_DIR}" >/dev/null || die
+	emake check TS_OPTS="--parallel=$(makeopts_jobs) --nonroot"
+	popd >/dev/null || die
 }
 
 multilib_src_test() {
 	emake check TS_OPTS="--parallel=$(makeopts_jobs) --nonroot"
+	if multilib_is_native_abi && use python; then
+		python_foreach_impl python_test
+	fi
+}
+
+python_install() {
+	pushd "${BUILD_DIR}" >/dev/null || die
+	emake DESTDIR="${D}" install
+	python_optimize
+	popd >/dev/null || die
 }
 
 multilib_src_install() {
@@ -191,8 +247,10 @@ multilib_src_install() {
 	if multilib_is_native_abi && use userland_GNU; then
 		# need the libs in /
 		gen_usr_ldscript -a blkid fdisk mount smartcols uuid
+	fi
 
-		use python && python_optimize
+	if multilib_is_native_abi && use python; then
+		python_foreach_impl python_install
 	fi
 }
 
@@ -212,6 +270,14 @@ multilib_src_install_all() {
 		newpamd "${FILESDIR}/runuser.pamd" runuser
 		newpamd "${FILESDIR}/runuser-l.pamd" runuser-l
 	fi
+
+	# Note:
+	# Bash completion for "runuser" command is provided by same file which
+	# would also provide bash completion for "su" command. However, we don't
+	# use "su" command from this package.
+	# This triggers a known QA warning which we ignore for now to magically
+	# keep bash completion for "su" command which shadow package does not
+	# provide.
 }
 
 pkg_postinst() {

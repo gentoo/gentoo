@@ -13,7 +13,7 @@ SRC_URI="https://i3wm.org/downloads/${P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE="doc debug test"
 
 CDEPEND="dev-libs/libev
@@ -31,8 +31,6 @@ CDEPEND="dev-libs/libev
 	>=x11-libs/cairo-1.14.4[X,xcb]
 	>=x11-libs/pango-1.30.0[X]"
 DEPEND="${CDEPEND}
-	app-text/asciidoc
-	doc? ( app-text/xmlto dev-lang/perl )
 	test? (
 		dev-perl/AnyEvent
 		>=dev-perl/X11-XCB-0.120.0
@@ -102,10 +100,13 @@ my_src_install_all() {
 }
 
 pkg_postinst() {
-	einfo "There are several packages that you may find useful with ${PN} and"
-	einfo "their usage is suggested by the upstream maintainers, namely:"
-	einfo "  x11-misc/dmenu"
-	einfo "  x11-misc/i3status"
-	einfo "  x11-misc/i3lock"
-	einfo "Please refer to their description for additional info."
+	# Only show the elog information on a new install
+	if [[ ! ${REPLACING_VERSIONS} ]]; then
+		elog "There are several packages that you may find useful with ${PN} and"
+		elog "their usage is suggested by the upstream maintainers, namely:"
+		elog "  x11-misc/dmenu"
+		elog "  x11-misc/i3status"
+		elog "  x11-misc/i3lock"
+		elog "Please refer to their description for additional info."
+	fi
 }

@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # TODO: unbundle libsdl-2
@@ -51,7 +51,7 @@ S=${WORKDIR}/data
 pkg_nofetch() {
 	einfo "Please buy & download ${SRC_URI} from:"
 	einfo "  https://www.humblebundle.com/store"
-	einfo "and move it to ${DISTDIR}"
+	einfo "and move it to your DISTDIR directory."
 }
 
 src_unpack() {

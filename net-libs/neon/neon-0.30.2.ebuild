@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 2001-2019 Arfrever Frehtes Taifersar Arahesis and others
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -6,8 +6,8 @@ EAPI="6"
 inherit autotools libtool multilib-minimal
 
 DESCRIPTION="HTTP and WebDAV client library"
-HOMEPAGE="http://www.webdav.org/neon/"
-SRC_URI="http://www.webdav.org/neon/${P}.tar.gz"
+HOMEPAGE="http://webdav.org/neon/"
+SRC_URI="http://webdav.org/neon/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0/27"
@@ -41,6 +41,9 @@ MULTILIB_CHOST_TOOLS=(
 src_prepare() {
 	# Use CHOST-prefixed version of xml2-config for cross-compilation.
 	sed -e "s/AC_CHECK_PROG(XML2_CONFIG,/AC_CHECK_TOOL(XML2_CONFIG,/" -i macros/neon-xml-parser.m4 || die "sed failed"
+
+	# Fix compatibility with OpenSSL >=1.1.
+	sed -e "s/RSA_F_RSA_PRIVATE_ENCRYPT/RSA_F_RSA_OSSL_PRIVATE_ENCRYPT/" -i src/ne_pkcs11.c || die "sed failed"
 
 	# Use OpenSSL <1.1 compatibility code with LibreSSL.
 	# Functions EVP_PKEY_up_ref(), EVP_PKEY_get0_RSA(), RSA_meth_get0_app_data(), RSA_meth_new(), RSA_meth_free(),

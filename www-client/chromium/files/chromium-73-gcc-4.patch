@@ -1,0 +1,59 @@
+From bdd76190e54e6a0e11343dd19e4bf1d06956fa48 Mon Sep 17 00:00:00 2001
+From: Raphael Kubo da Costa <raphael.kubo.da.costa@intel.com>
+Date: Wed, 13 Feb 2019 01:02:27 +0000
+Subject: [PATCH] BaseRenderingContext2D: Use base::CheckMul and simplify code
+ in putImageData()
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Follow-up to commit e0b3253a56 ("Fix image conversion truncation issues").
+The current code does not build with GCC due to
+https://gcc.gnu.org/bugzilla/show_bug.cgi?id=89287:
+
+    ../../third_party/blink/renderer/modules/canvas/canvas2d/base_rendering_context_2d.cc: In member function ‘void blink::BaseRenderingContext2D::putImageData(blink::ImageData*, int, int, int, int, int, int, blink::ExceptionState&)’:
+    ../../third_party/blink/renderer/modules/canvas/canvas2d/base_rendering_context_2d.cc:1777:44: error: default type conversion can't deduce template argument for ‘template<class Dst, typename std::enable_if<base::internal::IsNumericRangeContained<Dst, long unsigned int, void>::value, void>::type* <anonymous> > constexpr base::internal::StrictNumeric<T>::operator Dst() const [with Dst = Dst; typename std::enable_if<base::internal::IsNumericRangeContained<Dst, T>::value>::type* <anonymous> = <enumerator>; T = long unsigned int]’
+             new uint8_t[data_length.ValueOrDie()]);
+                                                ^
+
+Work around it by using the more idiomatic base::CheckMul() with
+AssignIfValid, so that we can have |data_length| be a size_t again and not
+leave it to the compiler to figure out the type we want when creating the
+|converted_pixels| array.
+
+Bug: 819294
+Change-Id: Id124cc4f3d749b45def4708e21e4badafd708578
+Reviewed-on: https://chromium-review.googlesource.com/c/1467201
+Auto-Submit: Raphael Kubo da Costa <raphael.kubo.da.costa@intel.com>
+Commit-Queue: Kentaro Hara <haraken@chromium.org>
+Reviewed-by: Kentaro Hara <haraken@chromium.org>
+Cr-Commit-Position: refs/heads/master@{#631472}
+---
+ .../canvas/canvas2d/base_rendering_context_2d.cc       | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/third_party/blink/renderer/modules/canvas/canvas2d/base_rendering_context_2d.cc b/third_party/blink/renderer/modules/canvas/canvas2d/base_rendering_context_2d.cc
+index d9fa696c9a9d..34a8a202bfd3 100644
+--- a/third_party/blink/renderer/modules/canvas/canvas2d/base_rendering_context_2d.cc
++++ b/third_party/blink/renderer/modules/canvas/canvas2d/base_rendering_context_2d.cc
+@@ -1769,12 +1769,12 @@ void BaseRenderingContext2D::putImageData(ImageData* data,
+       CanvasColorParams(ColorParams().ColorSpace(), PixelFormat(), kNonOpaque);
+   if (data_color_params.NeedsColorConversion(context_color_params) ||
+       PixelFormat() == kF16CanvasPixelFormat) {
+-    base::CheckedNumeric<size_t> data_length = data->Size().Area();
+-    data_length *= context_color_params.BytesPerPixel();
+-    if (!data_length.IsValid())
++    size_t data_length;
++    if (!base::CheckMul(data->Size().Area(),
++                        context_color_params.BytesPerPixel())
++             .AssignIfValid(&data_length))
+       return;
+-    std::unique_ptr<uint8_t[]> converted_pixels(
+-        new uint8_t[data_length.ValueOrDie()]);
++    std::unique_ptr<uint8_t[]> converted_pixels(new uint8_t[data_length]);
+     if (data->ImageDataInCanvasColorSettings(
+             ColorParams().ColorSpace(), PixelFormat(), converted_pixels.get(),
+             kRGBAColorType)) {
+-- 
+2.20.1
+

@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( pypy{,3} python{2_7,3_{4,5,6}} )
+PYTHON_COMPAT=( pypy{,3} python{2_7,3_{5,6}} )
 
 inherit distutils-r1
 
@@ -21,9 +21,7 @@ RDEPEND="
 	dev-python/pytz[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
 "
-# The calc-prorate binary used to be part of jaraco.utils
 DEPEND="
-	!<=dev-python/jaraco-utils-10.0.2
 	>=dev-python/setuptools_scm-1.15.0[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	doc? (

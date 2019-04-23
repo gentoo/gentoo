@@ -14,6 +14,6 @@
 		<bugs-to>https://github.com/bitrise-io/bitrise/issues</bugs-to>
 		<changelog>https://github.com/bitrise-io/bitrise/blob/master/CHANGELOG.md</changelog>
 		<doc>https://github.com/bitrise-io/bitrise/blob/master/README.md</doc>
-		<remote-id type="github">bitriseio/bitrise</remote-id>
+		<remote-id type="github">bitrise-io/bitrise</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit libtool pam multilib
+inherit libtool pam
 
 DESCRIPTION="Utilities to deal with user accounts"
 HOMEPAGE="https://github.com/shadow-maint/shadow http://pkg-shadow.alioth.debian.org/"
@@ -110,6 +110,7 @@ src_install() {
 	doins "${FILESDIR}"/default/useradd
 
 	# move passwd to / to help recover broke systems #64441
+	dodir /bin
 	mv "${ED%/}"/usr/bin/passwd "${ED%/}"/bin/ || die
 	dosym ../../bin/passwd /usr/bin/passwd
 

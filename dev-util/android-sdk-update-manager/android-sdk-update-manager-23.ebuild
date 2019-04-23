@@ -21,7 +21,7 @@ DEPEND="app-arch/tar
 		app-arch/gzip"
 RDEPEND=">=virtual/jdk-1.5
 	>=dev-java/ant-core-1.6.5
-	|| ( dev-java/swt:3.7[cairo] dev-java/swt:3.6[cairo] )
+	dev-java/swt:3.7[cairo]
 	sys-libs/zlib[abi_x86_32(-)]
 "
 

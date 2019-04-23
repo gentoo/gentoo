@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,17 +14,18 @@ SRC_URI="http://mirrors.cdn.adacore.com/art/5b0819dfc7a447df26c27a72 ->
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="gnat_2016 gnat_2017 +gnat_2018"
 
 RDEPEND=""
-DEPEND="dev-ada/gprbuild[gnat_2016=,gnat_2017=,gnat_2018=]"
+DEPEND="dev-ada/gprbuild[gnat_2016=,gnat_2017=,gnat_2018=]
+	sys-libs/binutils-libs"
 
 REQUIRED_USE="^^ ( gnat_2016 gnat_2017 gnat_2018 )"
 
 S="${WORKDIR}"/${MYP}
 
-PATCHES=( "${FILESDIR}"/${PN}-2016-gentoo.patch )
+PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
 
 src_prepare() {
 	default

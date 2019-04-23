@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,23 +14,24 @@ SLOT="0"
 KEYWORDS="amd64 ppc x86 ~x86-fbsd"
 IUSE="libressl selinux ssl static +tools"
 
-DEPEND="sys-devel/automake
-	sys-devel/autoconf
+DEPEND="
 	ssl? (
 		!libressl? ( dev-libs/openssl:0= )
 		libressl? ( dev-libs/libressl:0= )
-	)"
-RDEPEND="virtual/cron
+	)
+"
+RDEPEND="${DEPEND}
+	virtual/cron
 	virtual/mta
 	selinux? ( sec-policy/selinux-tripwire )
-	ssl? ( dev-libs/openssl )"
+"
 PDEPEND="tools? ( app-admin/mktwpol )"
 
 S="${WORKDIR}/tripwire-open-source-${PV}"
 
 src_prepare() {
+	default
 	eautoreconf
-	eapply_user
 }
 
 src_configure() {

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -33,4 +33,4 @@ DEPEND="
 	virtual/latex-base
 	dev-tex/pgf
 	>=app-text/txt2tags-2.5
-	=sci-chemistry/votca-csg-${PV}"
+	~sci-chemistry/votca-csg-${PV}"

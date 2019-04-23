@@ -1,18 +1,25 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit eutils flag-o-matic toolchain-funcs pam autotools user git-r3
+inherit autotools eutils flag-o-matic pam tmpfiles toolchain-funcs user
 
 DESCRIPTION="screen manager with VT100/ANSI terminal emulation"
 HOMEPAGE="https://www.gnu.org/software/screen/"
-EGIT_REPO_URI="https://git.savannah.gnu.org/git/screen.git"
-EGIT_CHECKOUT_DIR="${WORKDIR}/${P}" # needed for setting S later on
+
+if [[ "${PV}" != 9999 ]] ; then
+	SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+else
+	inherit git-r3
+	EGIT_REPO_URI="https://git.savannah.gnu.org/git/screen.git"
+	EGIT_CHECKOUT_DIR="${WORKDIR}/${P}" # needed for setting S later on
+	S="${WORKDIR}"/${P}/src
+fi
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
 IUSE="debug nethack pam selinux multiuser utmp"
 
 CDEPEND="
@@ -29,7 +36,6 @@ DEPEND="${CDEPEND}
 	sys-apps/texinfo"
 
 RESTRICT="test"
-S="${WORKDIR}"/${P}/src
 
 pkg_setup() {
 	# Make sure utmp group exists, as it's used later on.
@@ -87,41 +93,38 @@ src_compile() {
 }
 
 src_install() {
-	local tmpfiles_perms tmpfiles_group
+	local DOCS=(
+		README ChangeLog INSTALL TODO NEWS*
+		doc/{FAQ,README.DOTSCREEN,fdpat.ps,window_to_display.ps}
+	)
 
-	dobin screen
+	emake DESTDIR="${D}" SCREEN=screen-${PV} install
+
+	local tmpfiles_perms tmpfiles_group
 
 	if use multiuser || use prefix
 	then
-		fperms 4755 /usr/bin/screen
+		fperms 4755 /usr/bin/screen-${PV}
 		tmpfiles_perms="0755"
 		tmpfiles_group="root"
 	else
-		fowners root:utmp /usr/bin/screen
-		fperms 2755 /usr/bin/screen
+		fowners root:utmp /usr/bin/screen-${PV}
+		fperms 2755 /usr/bin/screen-${PV}
 		tmpfiles_perms="0775"
 		tmpfiles_group="utmp"
 	fi
 
-	dodir /etc/tmpfiles.d
-	echo "d /tmp/screen ${tmpfiles_perms} root ${tmpfiles_group}" \
-		>"${ED}"/etc/tmpfiles.d/screen.conf
+	newtmpfiles - screen.conf <<<"d /tmp/screen ${tmpfiles_perms} root ${tmpfiles_group}"
 
 	insinto /usr/share/screen
 	doins terminfo/{screencap,screeninfo.src}
-	insinto /usr/share/screen/utf8encodings
-	doins utf8encodings/??
+
 	insinto /etc
 	doins "${FILESDIR}"/screenrc
 
 	pamd_mimic_system screen auth
 
-	dodoc \
-		README ChangeLog INSTALL TODO NEWS* \
-		doc/{FAQ,README.DOTSCREEN,fdpat.ps,window_to_display.ps}
-
-	doman doc/screen.1
-	doinfo doc/screen.info
+	dodoc "${DOCS[@]}"
 }
 
 pkg_postinst() {
@@ -145,5 +148,5 @@ pkg_postinst() {
 		chgrp ${tmpfiles_group} "${rundir}"
 	fi
 
-	ewarn "This revision changes the screen socket location to /run/screen."
+	ewarn "This revision changes the screen socket location to ${rundir}"
 }

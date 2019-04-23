@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 GNOME2_LA_PUNT="yes"
-PYTHON_COMPAT=( python3_{4,5,6} )
+PYTHON_COMPAT=( python3_{5,6} )
 PYTHON_REQ_USE="xml"
 
 inherit eutils gnome2 python-single-r1 multilib virtualx
@@ -77,12 +77,13 @@ RDEPEND="${COMMON_DEPEND}
 		>=media-plugins/grilo-plugins-0.3:0.3[upnp-av] )
 "
 DEPEND="${COMMON_DEPEND}
-	app-text/yelp-tools
 	dev-util/gtk-doc-am
 	>=dev-util/intltool-0.35
+	dev-util/itstool
 	virtual/pkgconfig
 	test? ( dev-libs/check )
 "
+# eautoreconf needs yelp-tools
 
 PATCHES=(
 	"${FILESDIR}"/${P}-gstreamer-1.14.patch

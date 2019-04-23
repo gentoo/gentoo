@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="A tool that figures out the differences between two similar XML files"
-HOMEPAGE="https://www.logilab.org/project/xmldiff"
+HOMEPAGE="https://github.com/Shoobx/xmldiff https://www.logilab.org/project/xmldiff"
 SRC_URI="ftp://ftp.logilab.fr/pub/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"

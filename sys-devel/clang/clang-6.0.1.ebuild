@@ -31,7 +31,7 @@ LLVM_TARGET_USEDEPS=${ALL_LLVM_TARGETS[@]/%/?}
 
 LICENSE="UoI-NCSA"
 SLOT="$(ver_cut 1)"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86 ~amd64-fbsd ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="amd64 arm64 ~ppc64 x86 ~amd64-fbsd ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="debug default-compiler-rt default-libcxx doc +static-analyzer
 	test xml z3 kernel_FreeBSD ${ALL_LLVM_TARGETS[*]}"
 RESTRICT="!test? ( test )"
@@ -40,7 +40,7 @@ RDEPEND="
 	~sys-devel/llvm-${PV}:${SLOT}=[debug=,${LLVM_TARGET_USEDEPS// /,},${MULTILIB_USEDEP}]
 	static-analyzer? (
 		dev-lang/perl:*
-		z3? ( sci-mathematics/z3:0= )
+		z3? ( <sci-mathematics/z3-4.6:0= )
 	)
 	xml? ( dev-libs/libxml2:2=[${MULTILIB_USEDEP}] )
 	${PYTHON_DEPS}"
@@ -70,7 +70,7 @@ CMAKE_BUILD_TYPE=RelWithDebInfo
 
 PATCHES=(
 	# add Prefix include paths for Darwin
-	"${FILESDIR}"/5.0.1/darwin_prefix-include-paths.patch
+	"${FILESDIR}"/6.0.1/darwin_prefix-include-paths.patch
 
 	# fix test failure with default-compiler-rt
 	# https://bugs.gentoo.org/650316

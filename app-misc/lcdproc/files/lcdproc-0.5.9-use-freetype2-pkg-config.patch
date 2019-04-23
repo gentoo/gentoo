@@ -1,0 +1,15 @@
+--- a/configure.ac	2017-06-18 22:33:56.000000000 +0200
++++ b/configure.ac	2018-10-04 22:30:22.668770478 +0200
+@@ -389,11 +389,7 @@
+ AC_MSG_RESULT($enable_freetype)
+ 
+ if test "$enable_freetype" = "yes"; then
+-	ifdef([AC_CHECK_FT2],
+-		[AC_CHECK_FT2([],
+-			[AC_DEFINE(HAVE_FT2, [1], [Define to 1 if you have freetype])],
+-			[enable_freetype=no])],
+-		[AC_MSG_WARN([freetype does not seem to be installed])])
++	PKG_CHECK_MODULES(FT2, freetype2 >= 7.0.1, [enable_freetype="yes"],[enable_freetype="no"])
+ fi
+ AC_SUBST([FT2_CFLAGS])
+ AC_SUBST([FT2_LIBS])

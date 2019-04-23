@@ -5,3 +5,7 @@
 -elibc_musl
 elibc_uclibc
 elibc_glibc
+
+# Musl doesn't have support for utmp/wtmp by design
+utmp
+wtmp

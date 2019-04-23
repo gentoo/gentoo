@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
+PYTHON_COMPAT=( python2_7 python3_{5,6,7} )
 PYTHON_REQ_USE="ncurses(+)"
 
 inherit distutils-r1 linux-info
@@ -21,7 +21,12 @@ CONFIG_CHECK="~TASK_IO_ACCOUNTING ~TASK_DELAY_ACCT ~TASKSTATS ~VM_EVENT_COUNTERS
 
 DOCS=( NEWS README THANKS ChangeLog )
 
-PATCHES=( "${FILESDIR}"/${P}-setup.py3.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-setup.py3.patch
+	"${FILESDIR}"/${P}-Only-split-proc-status-lines-on-the-character.patch
+	"${FILESDIR}"/${P}-Ignore-invalid-lines-in-proc-status-files.patch
+	"${FILESDIR}"/${P}-Actually-skip-invalid-lines-in-proc-status.patch
+)
 
 pkg_setup() {
 	linux-info_pkg_setup

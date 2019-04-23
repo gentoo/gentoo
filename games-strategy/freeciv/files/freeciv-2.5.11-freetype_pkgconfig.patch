@@ -1,4 +1,4 @@
-From fe3eaf658c256a1ee1aac645c004625e9f345421 Mon Sep 17 00:00:00 2001
+From f2eafd087a20b4236c1f2f1324e8644cb5055bf9 Mon Sep 17 00:00:00 2001
 From: Lars Wendler <polynomial-c@gentoo.org>
 Date: Wed, 16 May 2018 20:41:22 +0200
 Subject: [PATCH] Use pkg-config to find freetype
@@ -6,11 +6,24 @@ Subject: [PATCH] Use pkg-config to find freetype
 As of freetype-2.9.1 the freetype-config script no longer gets installed
 by default.
 ---
+ Makefile.am      |   1 -
  m4/freetype2.m4  | 194 -----------------------------------------------
  m4/sdl-client.m4 |   2 +-
- 2 files changed, 1 insertion(+), 195 deletions(-)
+ 3 files changed, 1 insertion(+), 196 deletions(-)
  delete mode 100644 m4/freetype2.m4
 
+diff --git a/Makefile.am b/Makefile.am
+index 5d5a187d47..51791433ab 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -64,7 +64,6 @@ EXTRA_DIST =	autogen.sh 			\
+ 		m4/fcdb-postgres.m4		\
+ 		m4/fcdb-sqlite3.m4		\
+ 		m4/features.m4			\
+-		m4/freetype2.m4			\
+ 		m4/gettimeofday.m4		\
+ 		m4/ggz.m4			\
+ 		m4/freeciv-gettext.m4		\
 diff --git a/m4/freetype2.m4 b/m4/freetype2.m4
 deleted file mode 100644
 index 3d0ecb3554..0000000000
@@ -225,5 +238,5 @@ index 095cd0b287..015d948d95 100644
  	  gui_sdl_cflags="$gui_sdl_cflags $FT2_CFLAGS"
  	  gui_sdl_libs="$gui_sdl_libs $FT2_LIBS"
 -- 
-2.17.0
+2.18.0
 

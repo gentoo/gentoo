@@ -1,0 +1,35 @@
+From 20edcc7e85413e60ff180bd9f20e5428e5729222 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ladislav=20L=C3=A1ska?= <krakonos@krakonos.org>
+Date: Mon, 26 Sep 2016 13:11:33 +0200
+Subject: [PATCH] Replaced missing QT += webkit, updated linux package list.
+
+---
+ ci/travis-linux-install.sh | 3 +--
+ src/QMapControl.pri        | 2 +-
+ 2 files changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/ci/travis-linux-install.sh b/ci/travis-linux-install.sh
+index 79975d27..4e83c9bb 100755
+--- a/ci/travis-linux-install.sh
++++ b/ci/travis-linux-install.sh
+@@ -8,6 +8,5 @@ sudo apt-add-repository -y ppa:ubuntu-sdk-team/ppa
+ sudo apt-get update -qq
+ sudo apt-cache search qt
+ sudo apt-get -qq install gdb libgdal-dev libproj-dev
+-sudo apt-get -qq install libqt4-xml libqt4-network libqt4-gui libqt4-svg libqt4-webkit libqt4-dev qt4-qmake
+-sudo apt-get -qq install libqt5xml5* libqt5network5* libqt5gui5* libqt5svg5* libqt5webkit5* libqt5quick5* qtdeclarative5-dev qttools5-dev qtbase5-dev qt5-qmake qtchooser
++sudo apt-get -qq install libqt5xml5* libqt5network5* libqt5gui5* libqt5svg5* libqt5webengine5{,-dev} libqt5quick5* qtdeclarative5-dev qttools5-dev qtbase5-dev qt5-qmake qtchooser
+ qtchooser -list-versions
+diff --git a/src/QMapControl.pri b/src/QMapControl.pri
+index bbfc09b5..92769565 100644
+--- a/src/QMapControl.pri
++++ b/src/QMapControl.pri
+@@ -26,7 +26,7 @@ QT += network
+         DEFINES += USE_WEBKIT
+         SOURCES += browserimagemanager.cpp
+         HEADERS += browserimagemanager.h
+-        QT += webkit
++        QT += webenginewidgets
+         contains(THREADED_BROWSERIMAGEMANAGER,1): DEFINES += BROWSERIMAGEMANAGER_IS_THREADED
+     }
+ }

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -45,7 +45,7 @@ pkg_nofetch() {
 	einfo "Please download ${MY_PN}_${PV}_Source.tar.gz from"
 	einfo "${NAMD_DOWNLOAD}"
 	einfo "after agreeing to the license and then move it to"
-	einfo "${DISTDIR}"
+	einfo "your DISTDIR directory."
 	einfo "Be sure to select the ${PV} version!"
 	echo
 }

@@ -4,6 +4,7 @@
 # @ECLASS: autotools.eclass
 # @MAINTAINER:
 # base-system@gentoo.org
+# @SUPPORTED_EAPIS: 0 1 2 3 4 5 6 7
 # @BLURB: Regenerates auto* build scripts
 # @DESCRIPTION:
 # This eclass is for safely handling autotooled software packages that need to
@@ -24,6 +25,11 @@ fi
 
 if [[ -z ${_AUTOTOOLS_ECLASS} ]]; then
 _AUTOTOOLS_ECLASS=1
+
+case ${EAPI:-0} in
+	0|1|2|3|4|5|6|7) ;;
+	*) die "${ECLASS}: EAPI ${EAPI} not supported" ;;
+esac
 
 inherit libtool
 
@@ -118,7 +124,10 @@ RDEPEND=""
 # their own DEPEND string.
 : ${AUTOTOOLS_AUTO_DEPEND:=yes}
 if [[ ${AUTOTOOLS_AUTO_DEPEND} != "no" ]] ; then
-	DEPEND=${AUTOTOOLS_DEPEND}
+	case ${EAPI:-0} in
+		0|1|2|3|4|5|6) DEPEND=${AUTOTOOLS_DEPEND} ;;
+		7) BDEPEND=${AUTOTOOLS_DEPEND} ;;
+	esac
 fi
 __AUTOTOOLS_AUTO_DEPEND=${AUTOTOOLS_AUTO_DEPEND} # See top of eclass
 

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,7 +13,7 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3 autotools
 else
 	ARCHIVE_URI="ftp://ftp.infradead.org/pub/${PN}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+	KEYWORDS="amd64 arm ~arm64 ppc64 x86"
 fi
 VPNC_VER=20180227
 SRC_URI="${ARCHIVE_URI}
@@ -157,6 +157,6 @@ pkg_postinst() {
 	if [[ -z ${REPLACING_VERSIONS} ]]; then
 		elog
 		elog "You may want to consider installing the following optional packages."
-		optfeature "resolvconf support" net-dns/openresolv
+		optfeature "resolvconf support" virtual/resolvconf
 	fi
 }

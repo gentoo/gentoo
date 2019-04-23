@@ -4,6 +4,7 @@
     <longdescription>Apple airplay and raop protocol server</longdescription>
     <use>
         <flag name='alac'>Add support for Apple Lossless Audio Codec files</flag>
+        <flag name='playfair'>Add support for handling fairplay handshake (used in for example screen mirroring)</flag>
         <flag name='tools'>Build and install a binary shairplay in /usr/bin</flag>
     </use>
     <maintainer type="person">

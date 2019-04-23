@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -307,6 +307,10 @@ src_prepare() {
 	local patch
 	EPATCH_OPTS+=" -p1"
 
+	if use hppa ; then
+		epatch "${FILESDIR}/${PN}-5.26.2-hppa.patch" # bug 634162
+	fi
+
 	if [[ ${CHOST} == *-solaris* ]] ; then
 		# do NOT mess with nsl, on Solaris this is always necessary,
 		# when -lsocket is used e.g. to get h_errno
@@ -331,7 +335,7 @@ src_prepare() {
 	fi
 
 	# Use errno.h from prefix rather than from host system, bug #645804
-	if use prefix && ! use prefix-guest; then
+	if use prefix && [[ -e "${EPREFIX}"/usr/include/errno.h ]] ; then
 		sed -i "/my..sysroot/s:'':'${EPREFIX}':" ext/Errno/Errno_pm.PL || die
 	fi
 
@@ -454,6 +458,11 @@ src_configure() {
 	# target to override hardcoded 10.3 which breaks on modern OSX
 	[[ ${CHOST} == *-darwin* ]] && \
 		myconf "-Dld=env MACOSX_DEPLOYMENT_TARGET=${MACOSX_DEPLOYMENT_TARGET} $(tc-getCC)"
+
+	# Older macOS with non-Apple GCC chokes on inline in system headers
+	# using c89 mode as injected by cflags.SH
+	[[ ${CHOST} == *-darwin* && ${CHOST##*darwin} -le 9 ]] && tc-is-gcc && \
+		append-cflags -Dinline=__inline__
 
 	# Prefix: the host system needs not to follow Gentoo multilib stuff, and in
 	# Prefix itself we don't do multilib either, so make sure perl can find

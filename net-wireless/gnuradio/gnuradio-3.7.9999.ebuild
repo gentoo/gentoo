@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 PYTHON_COMPAT=( python2_7 )
 
 CMAKE_BUILD_TYPE="None"
-inherit cmake-utils eutils gnome2-utils python-single-r1 xdg-utils
+inherit cmake-utils eutils gnome2-utils python-single-r1 python-utils-r1 xdg-utils
 
 DESCRIPTION="Toolkit that provides signal processing blocks to implement software radios"
 HOMEPAGE="https://www.gnuradio.org/"
@@ -21,12 +21,10 @@ else
 	KEYWORDS="~amd64 ~arm ~x86"
 fi
 if [[ ${PV} == "3.7.9999" ]]; then
-	EGIT_BRANCH="maint"
-elif [[ ${PV} == "3.8.9999" ]]; then
-	EGIT_BRANCH="next"
+	EGIT_BRANCH="maint-3.7"
 fi
 
-IUSE="+audio +alsa atsc +analog +digital channels doc dtv examples fcd fec +filter grc jack log noaa oss pager performance-counters portaudio +qt4 sdl test trellis uhd vocoder +utils wavelet wxwidgets zeromq"
+IUSE="+audio +alsa atsc +analog +digital channels doc dtv examples fcd fec +filter grc jack log noaa oss pager performance-counters portaudio sdl test trellis uhd vocoder +utils wavelet wxwidgets zeromq"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 		audio? ( || ( alsa oss jack portaudio ) )
@@ -38,7 +36,6 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 		digital? ( filter analog )
 		dtv? ( fec )
 		pager? ( filter analog )
-		qt4? ( filter )
 		uhd? ( filter analog )
 		fcd? ( || ( alsa oss ) )
 		wavelet? ( analog )
@@ -51,7 +48,8 @@ RDEPEND="${PYTHON_DEPS}
 	>=dev-lang/orc-0.4.12
 	dev-libs/boost:0=[${PYTHON_USEDEP}]
 	!<=dev-libs/boost-1.52.0-r6:0/1.52
-	dev-python/numpy[${PYTHON_USEDEP}]
+	dev-python/mako[${PYTHON_USEDEP}]
+	dev-python/six[${PYTHON_USEDEP}]
 	sci-libs/fftw:3.0=
 	alsa? (
 		media-libs/alsa-lib:=
@@ -62,6 +60,7 @@ RDEPEND="${PYTHON_DEPS}
 		dev-python/cheetah[${PYTHON_USEDEP}]
 		dev-python/lxml[${PYTHON_USEDEP}]
 		>=dev-python/pygtk-2.10:2[${PYTHON_USEDEP}]
+		dev-python/numpy[${PYTHON_USEDEP}]
 	)
 	jack? (
 		media-sound/jack-audio-connection-kit
@@ -70,24 +69,17 @@ RDEPEND="${PYTHON_DEPS}
 	portaudio? (
 		>=media-libs/portaudio-19_pre
 	)
-	qt4? (
-		>=dev-python/PyQt4-4.4[X,opengl,${PYTHON_USEDEP}]
-		>=dev-python/pyqwt-5.2:5[${PYTHON_USEDEP}]
-		>=dev-qt/qtcore-4.4:4
-		>=dev-qt/qtgui-4.4:4
-		x11-libs/qwt:6[qt4(-)]
-	)
 	sdl? ( >=media-libs/libsdl-1.2.0 )
 	uhd? ( >=net-wireless/uhd-3.9.6:=[${PYTHON_USEDEP}] )
 	utils? ( dev-python/matplotlib[${PYTHON_USEDEP}] )
-	vocoder? ( media-sound/gsm )
+	vocoder? ( media-sound/gsm
+		>=media-libs/codec2-0.8.1 )
 	wavelet? (
 		>=sci-libs/gsl-1.10
 	)
 	wxwidgets? (
-		dev-python/lxml[${PYTHON_USEDEP}]
-		dev-python/numpy[${PYTHON_USEDEP}]
 		dev-python/wxpython:3.0[${PYTHON_USEDEP}]
+		dev-python/numpy[${PYTHON_USEDEP}]
 	)
 	zeromq? ( >=net-libs/zeromq-2.1.11 )
 	"
@@ -95,7 +87,6 @@ RDEPEND="${PYTHON_DEPS}
 DEPEND="${RDEPEND}
 	app-text/docbook-xml-dtd:4.2
 	>=dev-lang/swig-3.0.5
-	dev-python/cheetah[${PYTHON_USEDEP}]
 	virtual/pkgconfig
 	doc? (
 		>=app-doc/doxygen-1.5.7.1
@@ -110,27 +101,24 @@ DEPEND="${RDEPEND}
 src_prepare() {
 	gnome2_environment_reset #534582
 
-	if [[ ${PV} == "3.8.9999" ]]; then
+	if [[ ${PV} == "9999" ]]; then
 		true
 	else
 		epatch "${FILESDIR}"/gnuradio-wxpy3.0-compat.patch
 	fi
 	# Useless UI element would require qt3support, bug #365019
 	sed -i '/qPixmapFromMimeSource/d' "${S}"/gr-qtgui/lib/spectrumdisplayform.ui || die
+
+	use !alsa && sed -i 's#version.h#version-nonexistant.h#' cmake/Modules/FindALSA.cmake
+	use !jack && sed -i 's#jack.h#jack-nonexistant.h#' cmake/Modules/FindJack.cmake
+	use !portaudio && sed -i 's#portaudio.h#portaudio-nonexistant.h#' cmake/Modules/FindPortaudio.cmake
+
 	cmake-utils_src_prepare
 }
 
 src_configure() {
-	# SYSCONFDIR/GR_PREFSDIR default to install below CMAKE_INSTALL_PREFIX
-	#audio provider is still automagic
 	#zeromq missing deps isn't fatal
-	#remaining QA issues, these appear broken:
-	#ENABLE_ENABLE_PERFORMANCE_COUNTERS
-	#ENABLE_GR_AUDIO_ALSA
-	#ENABLE_GR_AUDIO_JACK
-	#ENABLE_GR_AUDIO_OSS
-	#ENABLE_GR_AUDIO_PORTAUDIO
-	#ENABLE_GR_CORE
+	python_export PYTHON_SITEDIR
 	mycmakeargs=(
 		-DENABLE_DEFAULT=OFF
 		-DENABLE_GNURADIO_RUNTIME=ON
@@ -165,12 +153,13 @@ src_configure() {
 		-DENABLE_GR_VOCODER="$(usex vocoder)"
 		-DENABLE_GR_WAVELET="$(usex wavelet)"
 		-DENABLE_GR_WXGUI="$(usex wxwidgets)"
-		-DENABLE_GR_QTGUI="$(usex qt4)"
+		-DENABLE_GR_QTGUI=OFF
 		-DENABLE_GR_VIDEO_SDL="$(usex sdl)"
 		-DENABLE_GR_ZEROMQ="$(usex zeromq)"
 		-DENABLE_GR_CORE=ON
 		-DSYSCONFDIR="${EPREFIX}"/etc
 		-DPYTHON_EXECUTABLE="${PYTHON}"
+		-DGR_PYTHON_DIR="${PYTHON_SITEDIR}"
 		-DGR_PKG_DOC_DIR="${EPREFIX}/usr/share/doc/${PF}"
 	)
 	use vocoder && mycmakeargs+=( -DGR_USE_SYSTEM_LIBGSM=TRUE )
@@ -222,7 +211,7 @@ pkg_postinst()
 
 	if use grc ; then
 		xdg_desktop_database_update
-		xdg_mime_database_update
+		xdg_mimeinfo_database_update
 		for size in ${GRC_ICON_SIZES} ; do
 			xdg-icon-resource install --noupdate --context mimetypes --size ${size} \
 				"${EROOT}/usr/share/pixmaps/grc-icon-${size}.png" application-gnuradio-grc \
@@ -241,7 +230,7 @@ pkg_postrm()
 
 	if use grc ; then
 		xdg_desktop_database_update
-		xdg_mime_database_update
+		xdg_mimeinfo_database_update
 		for size in ${GRC_ICON_SIZES} ; do
 			xdg-icon-resource uninstall --noupdate --context mimetypes --size ${size} \
 				application-gnuradio-grc || ewarn "icon uninstall failed"

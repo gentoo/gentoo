@@ -10,6 +10,5 @@
 			says: "If you don't know what it is you probably don't need
 			it."</flag>
 		<flag name="xrandr">Enable XRandR window extension support</flag>
-		<flag name="webp">Enables WebP image format support using <pkg>media-libs/libwebp</pkg></flag>
 	</use>
 </pkgmetadata>

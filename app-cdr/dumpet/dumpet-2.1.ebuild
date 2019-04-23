@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 inherit rpm
 
 DESCRIPTION="A tool to dump and debug bootable CD-like images"
-HOMEPAGE="https://fedora.pkgs.org/rawhide/fedora-x86_64/dumpet-2.1-15.fc27.x86_64.rpm.html"
+HOMEPAGE="https://github.com/rhboot/dumpet"
 SRC_URI="http://dl.fedoraproject.org/pub/fedora/linux/releases/27/Everything/source/tree/Packages/d/dumpet-${PV}-15.fc27.src.rpm"
 
 LICENSE="GPL-2"

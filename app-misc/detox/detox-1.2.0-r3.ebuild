@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -18,8 +18,12 @@ IUSE=""
 
 S="${WORKDIR}"/${MY_P}
 
-RDEPEND="dev-libs/popt"
-DEPEND="${RDEPEND}
+RDEPEND="
+	dev-libs/popt
+	!dev-python/detox"
+
+DEPEND="
+	${RDEPEND}
 	sys-devel/flex
 	sys-devel/bison"
 

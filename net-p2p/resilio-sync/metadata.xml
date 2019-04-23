@@ -18,7 +18,7 @@
 		<flag name="pax_kernel">Use paxctl to mark binaries</flag>
 	</use>
 	<upstream>
-		<doc>https://help.getsync.com/</doc>
-		<bugs-to>https://help.getsync.com/hc/en-us/requests/new?ticket_form_id=91563</bugs-to>
+		<doc>https://help.resilio.com/</doc>
+		<bugs-to>https://help.resilio.com/hc/en-us/requests/new?ticket_form_id=91563</bugs-to>
 	</upstream>
 </pkgmetadata>

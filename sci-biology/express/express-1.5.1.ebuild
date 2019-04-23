@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 inherit cmake-utils
 
@@ -18,8 +18,9 @@ DEPEND="
 	>=dev-libs/boost-1.52.0:=
 	dev-libs/protobuf
 	dev-util/google-perftools
+	sci-biology/bamtools
 	sys-libs/zlib
-	sci-biology/bamtools"
+"
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${P}-src"

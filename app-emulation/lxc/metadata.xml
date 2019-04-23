@@ -9,6 +9,7 @@
     <name>Gentoo Virtualization Project</name>
   </maintainer>
   <use>
+    <flag name="apparmor">Enable AppArmor support</flag>
     <flag name="cgmanager">Enable support for cgroup management using <pkg>app-admin/cgmanager</pkg></flag>
     <flag name="templates">Install old style templates through <pkg>app-emulation/lxc-templates</pkg></flag>
   </use>

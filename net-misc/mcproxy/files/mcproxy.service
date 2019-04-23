@@ -1,0 +1,10 @@
+[Unit]
+After=network-online.target
+Description=Mcproxy
+
+[Service]
+ExecStart=/usr/bin/mcproxy -f /etc/mcproxy.conf
+Type=simple
+
+[Install]
+WantedBy=network.target

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,7 +7,7 @@ inherit virtualx xdg-utils
 
 DESCRIPTION="A configuration management system for Xfce"
 HOMEPAGE="https://www.xfce.org/projects/"
-SRC_URI="mirror://xfce/src/xfce/${PN}/${PV%.*}/${P}.tar.bz2"
+SRC_URI="https://archive.xfce.org/src/xfce/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0/3"
@@ -24,6 +24,7 @@ RDEPEND=">=dev-libs/glib-2.30:=
 	!<xfce-base/xfce4-settings-4.13.1"
 DEPEND="${RDEPEND}
 	dev-util/gdbus-codegen
+	dev-util/glib-utils
 	dev-util/intltool
 	virtual/pkgconfig
 	sys-devel/gettext

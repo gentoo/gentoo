@@ -25,10 +25,6 @@ media-gfx/tachyon mpi
 # gdb server is not supported on this platform
 sys-devel/gdb server
 
-# Fabian Groffen <grobian@gentoo.org> (16 Feb 2011)
-# De-mask of OSX-specific USE-flags that are useful for VLC
-media-video/vlc -audioqueue -macosx-dialog-provider -macosx-eyetv -macosx-quartztext
-
 # Fabian Groffen <grobian@gentoo.org> (08 Jan 2011)
 # Darwin has libuuid from util-linux
 x11-libs/libSM -uuid

@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
-MY_EXTRAS_VER="20180621-0218Z"
+MY_EXTRAS_VER="20180809-1700Z"
 SUBSLOT="18"
 
 JAVA_PKG_OPT_USE="jdbc"
@@ -23,7 +23,7 @@ if [[ "${MY_EXTRAS_VER}" != "live" && "${MY_EXTRAS_VER}" != "none" ]]; then
 		https://dev.gentoo.org/~jmbsvicetto/distfiles/mysql-extras-${MY_EXTRAS_VER}.tar.bz2"
 fi
 
-HOMEPAGE="http://mariadb.org/"
+HOMEPAGE="https://mariadb.org/"
 DESCRIPTION="An enhanced, drop-in replacement for MySQL"
 LICENSE="GPL-2"
 SLOT="0/${SUBSLOT:-0}"
@@ -40,7 +40,7 @@ REQUIRED_USE="jdbc? ( extraengine server !static )
 	?? ( tcmalloc jemalloc )
 	static? ( yassl !pam )"
 
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
+KEYWORDS="alpha amd64 arm ~arm64 ~hppa ia64 ~mips ppc ppc64 ~s390 ~sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
 
 # Shorten the path because the socket path length must be shorter than 107 chars
 # and we will run a mysql server during test phase
@@ -234,7 +234,6 @@ src_prepare() {
 		echo > "${S%/}/plugin/${1}/CMakeLists.txt" || die
 	}
 
-	java-pkg-opt-2_src_prepare
 	if use tcmalloc; then
 		echo "TARGET_LINK_LIBRARIES(mysqld tcmalloc)" >> "${S%/}/sql/CMakeLists.txt" || die
 	fi
@@ -269,6 +268,7 @@ src_prepare() {
 	_disable_engine example
 
 	cmake-utils_src_prepare
+	java-pkg-opt-2_src_prepare
 }
 
 src_configure(){
@@ -491,6 +491,10 @@ src_install() {
 		for script in "${S}"/scripts/mysql* ; do
 			[[ ( -f "$script" ) && ( "${script%.sh}" == "${script}" ) ]] && dodoc "${script}"
 		done
+		# Manually install supporting files that conflict with other packages
+		# but are needed for galera and initial installation
+		exeinto /usr/libexec/mariadb
+		doexe "${BUILD_DIR}/extra/my_print_defaults" "${BUILD_DIR}/extra/perror"
 	fi
 
 	#Remove mytop if perl is not selected
@@ -571,6 +575,8 @@ src_test() {
 	if ! use client-libs ; then
 		_disable_test main.plugin_auth "Needs client libraries built"
 	fi
+
+	_disable_test sys_vars.sysvars_server_notembedded "Broken test" # bug #661700 required profiling always on
 
 	# run mysql-test tests
 	perl mysql-test-run.pl --force --vardir="${T}/var-tests" --reorder --skip-test=tokudb --skip-test-list="${T}/disabled.def"
@@ -774,7 +780,7 @@ pkg_config() {
 	local sqltmp="$(emktemp)"
 
 	# Fix bug 446200. Don't reference host my.cnf, needs to come first,
-	# see http://bugs.mysql.com/bug.php?id=31312
+	# see https://bugs.mysql.com/bug.php?id=31312
 	use prefix && options="${options} '--defaults-file=${MY_SYSCONFDIR}/my.cnf'"
 
 	# Figure out which options we need to disable to do the setup
@@ -803,7 +809,7 @@ pkg_config() {
 	pushd "${TMPDIR}" &>/dev/null || die
 
 	# Filling timezones, see
-	# http://dev.mysql.com/doc/mysql/en/time-zone-support.html
+	# https://dev.mysql.com/doc/mysql/en/time-zone-support.html
 	"${EROOT}/usr/bin/mysql_tzinfo_to_sql" "${EROOT}/usr/share/zoneinfo" > "${sqltmp}" 2>/dev/null
 
 	local cmd=( "${EROOT}usr/share/mariadb/scripts/mysql_install_db" )

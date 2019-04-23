@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 #
-# @ECLASS: mozcoreconf-v5.eclass
+# @ECLASS: mozcoreconf-v6.eclass
 # @MAINTAINER:
 # Mozilla team <mozilla@gentoo.org>
 # @BLURB: core options and configuration functions for mozilla
@@ -16,14 +16,12 @@
 
 if [[ ! ${_MOZCORECONF} ]]; then
 
-PYTHON_COMPAT=( python2_7 )
-PYTHON_REQ_USE='ncurses,sqlite,ssl,threads'
-
 inherit multilib toolchain-funcs flag-o-matic python-any-r1 versionator
 
 IUSE="${IUSE} custom-cflags custom-optimization"
 
 DEPEND="virtual/pkgconfig
+	dev-lang/python:2.7[ncurses,sqlite,ssl,threads(+)]
 	${PYTHON_DEPS}"
 
 # @FUNCTION: mozconfig_annotate
@@ -112,6 +110,11 @@ moz_pkgsetup() {
 	fi
 
 	python-any-r1_pkg_setup
+	# workaround to set python3 into PYTHON3 until mozilla doesn't need py2
+	if [[ "${PYTHON_COMPAT[@]}" != "${PYTHON_COMPAT[@]#python3*}" ]]; then
+		export PYTHON3=${PYTHON}
+		python_export python2_7 PYTHON EPYTHON
+	fi
 }
 
 # @FUNCTION: mozconfig_init
@@ -124,6 +127,7 @@ mozconfig_init() {
 	declare FF=$([[ ${PN} == firefox ]] && echo true || echo false)
 	declare SM=$([[ ${PN} == seamonkey ]] && echo true || echo false)
 	declare TB=$([[ ${PN} == thunderbird ]] && echo true || echo false)
+	declare TRB=$([[ ${PN} == torbrowser ]] && echo true || echo false)
 
 	####################################
 	#
@@ -139,14 +143,19 @@ mozconfig_init() {
 		*firefox)
 			cp browser/config/mozconfig .mozconfig \
 				|| die "cp browser/config/mozconfig failed" ;;
+		*torbrowser)
+			cp browser/config/mozconfig .mozconfig \
+				|| die "cp browser/config/mozconfig failed" ;;
 		seamonkey)
 			# Must create the initial mozconfig to enable application
 			: >.mozconfig || die "initial mozconfig creation failed"
-			mozconfig_annotate "" --enable-application=suite ;;
+			# NOTE--this is not compatible with mozilla prior to v60
+			mozconfig_annotate "" --enable-application=comm/suite ;;
 		*thunderbird)
 			# Must create the initial mozconfig to enable application
 			: >.mozconfig || die "initial mozconfig creation failed"
-			mozconfig_annotate "" --enable-application=mail ;;
+			# NOTE--this is not compatible with mozilla prior to v60
+			mozconfig_annotate "" --enable-application=comm/mail ;;
 	esac
 
 	####################################
@@ -156,7 +165,7 @@ mozconfig_init() {
 	####################################
 
 	# Set optimization level
-	if [[ $(gcc-major-version) -ge 7 ]]; then
+	if [[ $(gcc-major-version) -eq 7 ]]; then
 		mozconfig_annotate "Workaround known breakage" --enable-optimize=-O2
 	elif [[ ${ARCH} == hppa ]]; then
 		mozconfig_annotate "more than -O0 causes a segfault on hppa" --enable-optimize=-O0
@@ -196,7 +205,14 @@ mozconfig_init() {
 	case "${ARCH}" in
 	arm)
 		# Reduce the memory requirements for linking
-		append-ldflags -Wl,--no-keep-memory -Wl,--reduce-memory-overheads
+		if use clang ; then
+			# Nothing to do
+			:;
+		elif tc-ld-is-gold ; then
+			append-ldflags -Wl,--no-keep-memory
+		else
+			append-ldflags -Wl,--no-keep-memory -Wl,--reduce-memory-overheads
+		fi
 		;;
 	alpha)
 		# Historically we have needed to add -fPIC manually for 64-bit.
@@ -211,7 +227,14 @@ mozconfig_init() {
 	ppc64)
 		append-flags -fPIC -mminimal-toc
 		# Reduce the memory requirements for linking
-		append-ldflags -Wl,--no-keep-memory -Wl,--reduce-memory-overheads
+		if use clang ; then
+			# Nothing to do
+			:;
+		elif tc-ld-is-gold ; then
+			append-ldflags -Wl,--no-keep-memory
+		else
+			append-ldflags -Wl,--no-keep-memory -Wl,--reduce-memory-overheads
+		fi
 		;;
 	esac
 

@@ -1,13 +1,12 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="4"
+EAPI=7
 
 inherit toolchain-funcs
 if [[ ${PV} == "9999" ]] ; then
-	EGIT_REPO_URI="git://repo.or.cz/${PN}.git
-		http://repo.or.cz/r/${PN}.git"
 	inherit git-r3
+	EGIT_REPO_URI="https://repo.or.cz/r/${PN}.git"
 else
 	SRC_URI="http://repo.or.cz/w/smatch.git/snapshot/${PV}.tar.gz -> ${P}.tar.gz
 		mirror://gentoo/${P}.tar.gz"
@@ -26,6 +25,8 @@ RDEPEND="dev-db/sqlite"
 DEPEND="${RDEPEND}"
 
 src_prepare() {
+	default
+
 	sed -i \
 		-e '/^CFLAGS =/{s:=:+=:;s:-O2 -finline-functions:${CPPFLAGS}:}' \
 		Makefile || die

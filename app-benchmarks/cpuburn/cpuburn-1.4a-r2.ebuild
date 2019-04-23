@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,7 +13,7 @@ KEYWORDS="-* ~amd64 ~arm ~x86"
 LICENSE="GPL-2"
 SLOT="0"
 
-PATCHES=( "${FILESDIR}/01-variables.patch" )
+PATCHES=( "${FILESDIR}/${P}-variables.patch" )
 
 QA_FLAGS_IGNORED="usr/bin/burnBX
 	usr/bin/burnK6

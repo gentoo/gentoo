@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/scim/${P}.tar.gz"
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~hppa ~ppc64 ~x86"
-IUSE="doc gtk qt4"
+IUSE="doc gtk"
 
 RESTRICT="test"
 
@@ -20,11 +20,6 @@ RDEPEND="
 	>=app-i18n/scim-1.4.6
 	gtk? (
 		>=x11-libs/gtk+-2.2:2
-		>=x11-libs/pango-1.1
-	)
-	qt4? (
-		dev-qt/qtgui:4
-		dev-qt/qtcore:4
 		>=x11-libs/pango-1.1
 	)
 "
@@ -66,13 +61,8 @@ src_configure() {
 
 	# Qt3 is no longer supported, bug 283429
 	myconf="${myconf} --enable-qt3-immodule=no"
-
-	if use qt4 ; then
-		myconf="${myconf} --enable-qt4-immodule=yes"
-		export QT_SELECT="4"
-	else
-		myconf="${myconf} --enable-qt4-immodule=no"
-	fi
+	# Qt4 neither
+	myconf="${myconf} --enable-qt4-immodule=no"
 
 	econf \
 		--disable-static \

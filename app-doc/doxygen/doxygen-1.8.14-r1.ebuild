@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
+PYTHON_COMPAT=( python{2_7,3_5,3_6} )
 
 inherit cmake-utils eutils python-any-r1
 if [[ ${PV} = *9999* ]]; then
@@ -11,7 +11,7 @@ if [[ ${PV} = *9999* ]]; then
 	SRC_URI=""
 else
 	SRC_URI="https://ftp.stack.nl/pub/users/dimitri/${P}.src.tar.gz"
-	KEYWORDS="alpha amd64 ~arm arm64 ~hppa ia64 ~mips ppc ppc64 s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x86-solaris"
+	KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 fi
 
 DESCRIPTION="Documentation system for most programming languages"
@@ -30,7 +30,7 @@ RDEPEND="app-text/ghostscript-gpl
 		media-gfx/graphviz
 		media-libs/freetype
 	)
-	doxysearch? ( dev-libs/xapian )
+	doxysearch? ( dev-libs/xapian:= )
 	latex? (
 		dev-texlive/texlive-bibtexextra
 		dev-texlive/texlive-fontsextra
@@ -59,6 +59,7 @@ RESTRICT="test"
 PATCHES=(
 	"${FILESDIR}/${PN}-1.8.9.1-empty-line-sigsegv.patch" #454348
 	"${FILESDIR}/${PN}-1.8.12-link_with_pthread.patch"
+	"${FILESDIR}/${PN}-1.8.14-llvm7.patch" #666692
 )
 
 DOCS=( LANGUAGE.HOWTO README.md )

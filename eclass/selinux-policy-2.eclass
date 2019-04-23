@@ -7,6 +7,7 @@
 # @ECLASS: selinux-policy-2.eclass
 # @MAINTAINER:
 # selinux@gentoo.org
+# @SUPPORTED_EAPIS: 5 6
 # @BLURB: This eclass supports the deployment of the various SELinux modules in sec-policy
 # @DESCRIPTION:
 # The selinux-policy-2.eclass supports deployment of the various SELinux modules
@@ -94,10 +95,10 @@ IUSE=""
 
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:SELinux"
 if [[ -n ${BASEPOL} ]] && [[ "${BASEPOL}" != "9999" ]]; then
-	SRC_URI="https://raw.githubusercontent.com/wiki/TresysTechnology/refpolicy/files/refpolicy-${PV}.tar.bz2
-		https://dev.gentoo.org/~swift/patches/selinux-base-policy/patchbundle-selinux-base-policy-${BASEPOL}.tar.bz2"
+	SRC_URI="https://github.com/SELinuxProject/refpolicy/releases/download/RELEASE_${PV/./_}/refpolicy-${PV}.tar.bz2
+		https://dev.gentoo.org/~perfinion/patches/selinux-base-policy/patchbundle-selinux-base-policy-${BASEPOL}.tar.bz2"
 elif [[ "${BASEPOL}" != "9999" ]]; then
-	SRC_URI="https://raw.githubusercontent.com/wiki/TresysTechnology/refpolicy/files/refpolicy-${PV}.tar.bz2"
+	SRC_URI="https://github.com/SELinuxProject/refpolicy/releases/download/RELEASE_${PV/./_}/refpolicy-${PV}.tar.bz2"
 else
 	SRC_URI=""
 fi

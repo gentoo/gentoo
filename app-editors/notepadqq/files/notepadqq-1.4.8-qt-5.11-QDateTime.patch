@@ -1,0 +1,25 @@
+From 8d5dc3dfb279f8420457fbc04a3ff6fb5f3f8a21 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <andreas.sturmlechner@gmail.com>
+Date: Tue, 26 Feb 2019 00:47:26 +0100
+Subject: [PATCH] Fix build with Qt 5.11 (add missing QDateTime include)
+
+Downstream report: https://bugs.gentoo.org/668392
+---
+ src/ui/stats.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/ui/stats.cpp b/src/ui/stats.cpp
+index 59837c9..e0f3cbd 100644
+--- a/src/ui/stats.cpp
++++ b/src/ui/stats.cpp
+@@ -3,6 +3,7 @@
+ #include <QNetworkAccessManager>
+ #include <QJsonDocument>
+ #include <QNetworkRequest>
++#include <QDateTime>
+ #include <QNetworkReply>
+ #include <QSysInfo>
+ #include <QTimer>
+-- 
+2.21.0
+

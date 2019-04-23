@@ -7,6 +7,7 @@
 # @AUTHOR:
 # Ulrich Müller <ulm@gentoo.org>
 # Michał Górny <mgorny@gentoo.org>
+# @SUPPORTED_EAPIS: 0 1 2 3 4 5 6
 # @BLURB: Testing implementation of EAPI 7 version manipulators
 # @DESCRIPTION:
 # A stand-alone implementation of the version manipulation functions

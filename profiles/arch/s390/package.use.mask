@@ -1,5 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Hans de Graaff <graaff@gentoo.org> (08 Apr 2019)
+# Obsolete ruby version, no newer versions keyworded or stable.
+dev-vcs/subversion ruby
 
 # Mikle Kolyada <zlogene@gentoo.org> (03 Jun 2018)
 # Not tested
@@ -9,7 +13,22 @@ dev-vcs/subversion kwallet
 app-text/ghostscript-gpl cups
 # not really interested in supporting alternative
 # VCS for oberlays yet.
-app-portage/layman darcs mercurial
+app-portage/layman bazaar darcs mercurial
+dev-python/setuptools_scm mercurial test
+# no nmap gui
+net-analyzer/nmap zenmap
+# no lua support for vim
+app-editors/vim luajit lua
+# not keyworded yet
+media-gfx/imagemagick raw
+dev-db/mariadb numa
+# ipython is not really tested
+dev-python/restkit cli
+# not tested yet
+app-misc/mc samba
+app-arch/rpm test
+# no ceph keyworded
+net-analyzer/rrdtool rados
 
 
 # Michał Górny <mgorny@gentoo.org> (08 Aug 2017)
@@ -61,10 +80,6 @@ dev-libs/libpcre jit
 # Sebastian Pipping <sping@gentoo.org> (22 Feb 2011)
 # No media-sound/lilypond here, yet (bug #356069)
 app-text/asciidoc test
-
-# Mike Frysinger <vapier@gentoo.org> (10 Feb 2011)
-# Waiting for keywording #354309
-net-firewall/iptables netlink
 
 # Raúl Porcel <armin76@gentoo.org> (27 Mar 2008)
 # Needs gtk USE-flag

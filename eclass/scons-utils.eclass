@@ -4,6 +4,7 @@
 # @ECLASS: scons-utils.eclass
 # @MAINTAINER:
 # mgorny@gentoo.org
+# @SUPPORTED_EAPIS: 0 1 2 3 4 5 6 7
 # @BLURB: helper functions to deal with SCons buildsystem
 # @DESCRIPTION:
 # This eclass provides a set of function to help developers sanely call

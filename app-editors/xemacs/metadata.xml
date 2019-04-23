@@ -10,6 +10,7 @@
       drag-n-drop library</flag>
     <flag name="eolconv">Support detection and translation of newline
       conventions</flag>
+    <flag name="mule">Add multi-language support to XEmacs</flag>
     <flag name="pop">Support POP for mail retrieval</flag>
     <flag name="xim">Enable X11 XiM input method</flag>
   </use>

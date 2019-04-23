@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="tk?"
 CMAKE_MAKEFILE_GENERATOR=ninja
 
-inherit cmake-utils desktop flag-o-matic gnome2-utils python-single-r1 subversion xdg-utils
+inherit cmake-utils desktop flag-o-matic python-single-r1 subversion xdg
 
 DESCRIPTION="Desktop publishing (DTP) and layout program"
 HOMEPAGE="https://www.scribus.net/"
@@ -43,25 +43,24 @@ for l in ${IUSE_L10N}; do
 done
 unset l prev_l
 
-REQUIRED_USE="
-	${PYTHON_REQUIRED_USE}
+REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	tk? ( scripts )"
 
 # osg
 # couple of third_party libs bundled
 COMMON_DEPEND="${PYTHON_DEPS}
 	app-text/libmspub
+	app-text/libqxp
 	app-text/poppler:=
 	dev-libs/hyphen
 	>=dev-libs/icu-58.2:0=
 	dev-libs/librevenge
 	dev-libs/libxml2
 	dev-qt/qtcore:5
-	dev-qt/qtgui:5
+	dev-qt/qtgui:5[-gles2]
 	dev-qt/qtnetwork:5
 	dev-qt/qtopengl:5
 	dev-qt/qtprintsupport:5
-	dev-qt/qtquickcontrols:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtxml:5
 	media-libs/fontconfig
@@ -73,18 +72,18 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	media-libs/libpagemaker
 	media-libs/libpng:0=
 	media-libs/libvisio
+	media-libs/libzmf
 	media-libs/tiff:0
 	net-print/cups
 	sys-libs/zlib[minizip]
 	virtual/jpeg:0=
 	>=x11-libs/cairo-1.10.0[X,svg]
 	boost? ( >=dev-libs/boost-1.62:= )
-	hunspell? ( app-text/hunspell )
-	graphicsmagick? ( media-gfx/graphicsmagick )
-	osg? ( dev-games/openscenegraph )
+	hunspell? ( app-text/hunspell:= )
+	graphicsmagick? ( media-gfx/graphicsmagick:= )
+	osg? ( dev-games/openscenegraph:= )
 	pdf? ( app-text/podofo:0= )
 	scripts? ( dev-python/pillow[tk?,${PYTHON_USEDEP}] )
-	tk? ( dev-python/pillow[tk?,${PYTHON_USEDEP}] )
 "
 RDEPEND="${COMMON_DEPEND}
 	app-text/ghostscript-gpl
@@ -118,6 +117,10 @@ src_prepare() {
 	sed \
 		-e 's:\(${CMAKE_INSTALL_PREFIX}\):./\1:g' \
 		-i resources/templates/CMakeLists.txt || die
+
+	sed \
+		-e "/^add_subdirectory(ui\/qml)/s/^/#DONT/" \
+		-i scribus/CMakeLists.txt || die # nothing but a bogus Hello World test
 
 	cmake-utils_src_prepare
 }
@@ -207,18 +210,6 @@ src_install() {
 	newicon -s 64 resources/iconsets/artwork/icon_32x32@2x.png scribus.png
 	doicon resources/iconsets/*/scribus.png
 	domenu scribus.desktop
-}
-
-pkg_postinst() {
-	xdg_desktop_database_update
-	xdg_mimeinfo_database_update
-	gnome2_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_desktop_database_update
-	xdg_mimeinfo_database_update
-	gnome2_icon_cache_update
 }
 
 safe_delete () {

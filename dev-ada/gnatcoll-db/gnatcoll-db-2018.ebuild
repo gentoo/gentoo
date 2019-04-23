@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,7 +14,7 @@ SRC_URI="http://mirrors.cdn.adacore.com/art/5b0ce9cbc7a4475263382be6
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="gnat_2016 gnat_2017 +gnat_2018 gnatcoll_db2ada gnatinspect postgres
 	+shared sql sqlite static-libs static-pic xref"
 
@@ -29,10 +29,9 @@ RDEPEND="dev-ada/gnatcoll-core[gnat_2016=,gnat_2017=,gnat_2018=]
 DEPEND="${RDEPEND}
 	dev-ada/gprbuild[gnat_2016=,gnat_2017=,gnat_2018=]"
 
-REQUIRED_USE="!gnat_2016
-	sqlite? ( sql )
+REQUIRED_USE="gnatinspect? ( xref )
 	xref? ( sqlite )
-	gnatinspect? ( xref )
+	sqlite? ( sql )
 	gnatcoll_db2ada? ( sql )"
 
 S="${WORKDIR}"/${MYP}-src
@@ -40,10 +39,8 @@ S="${WORKDIR}"/${MYP}-src
 PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
 
 src_compile() {
-	GCC_PV=7.3.1
 	build () {
-		GCC=${CHOST}-gcc-${GCC_PV} \
-			GPR_PROJECT_PATH="${S}/sql":"${S}/sqlite":"${S}/xref" \
+		GPR_PROJECT_PATH="${S}/sql":"${S}/sqlite":"${S}/xref" \
 			gprbuild -p -m -v -j$(makeopts_jobs) -XGNATCOLL_SQLITE=external \
 			-XGNATCOLL_VERSION=2018 \
 			-XBUILD=PROD -XLIBRARY_TYPE=$2 -XXMLADA_BUILD=$2 -XGPR_BUILD=$2 \
@@ -99,6 +96,6 @@ src_install() {
 			build $dir $lib ${dir}
 		fi
 	done
-	rm -r "${D}"/usr/share/gpr/manifests || die
+	rm -rf "${D}"/usr/share/gpr/manifests
 	einstalldocs
 }

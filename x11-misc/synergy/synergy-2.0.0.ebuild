@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -27,8 +27,8 @@ COMMON_DEPEND="
 	x11-libs/libXinerama
 	x11-libs/libXrandr
 	x11-libs/libXtst
-	!libressl? ( dev-libs/openssl:* )
-	libressl? ( dev-libs/libressl )
+	!libressl? ( dev-libs/openssl:= )
+	libressl? ( dev-libs/libressl:= )
 "
 DEPEND="
 	${COMMON_DEPEND}

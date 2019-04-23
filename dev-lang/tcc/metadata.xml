@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
-    <email>wizardedit@gentoo.org</email>
-    <name>Austin English</name>
-  </maintainer>
-  <longdescription>
-  Tiny C compiler
-  </longdescription>
+	<maintainer type="person">
+		<email>dlan@gentoo.org</email>
+		<name>Yixun Lan</name>
+	</maintainer>
+	<longdescription>
+	Tiny C compiler
+	</longdescription>
 </pkgmetadata>

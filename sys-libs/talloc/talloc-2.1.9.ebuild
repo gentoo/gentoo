@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,12 +14,13 @@ SRC_URI="https://www.samba.org/ftp/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3 LGPL-3+ LGPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 ~hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~x64-macos ~sparc-solaris"
+KEYWORDS="alpha amd64 arm ~arm64 ~hppa ia64 ~m68k ~mips ppc ppc64 s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~x64-macos ~sparc-solaris"
 IUSE="compat +python"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-RDEPEND="python? ( ${PYTHON_DEPS} )
+RDEPEND="!elibc_FreeBSD? ( dev-libs/libbsd[${MULTILIB_USEDEP}] )
+	python? ( ${PYTHON_DEPS} )
 	!!<sys-libs/talloc-2.0.5"
 DEPEND="${RDEPEND}
 	sys-devel/gettext

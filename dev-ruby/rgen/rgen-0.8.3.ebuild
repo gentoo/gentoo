@@ -17,7 +17,7 @@ SRC_URI="https://github.com/mthiede/rgen/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 IUSE=""
-KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc x86"
 
 ruby_add_bdepend "doc? ( >=dev-ruby/rdoc-4.2.0 )
 	test? ( >=dev-ruby/minitest-5.10:5 >=dev-ruby/nokogiri-1.6.8.1 )

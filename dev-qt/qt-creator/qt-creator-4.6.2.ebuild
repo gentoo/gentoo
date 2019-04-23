@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,7 +19,7 @@ else
 	MY_P=${PN}-opensource-src-${MY_PV}
 	[[ ${MY_PV} == ${PV} ]] && MY_REL=official || MY_REL=development
 	SRC_URI="https://download.qt.io/${MY_REL}_releases/${PN/-}/${PV%.*}/${MY_PV}/${MY_P}.tar.xz"
-	KEYWORDS="~amd64 ~arm ~x86"
+	KEYWORDS="amd64 ~arm ~x86"
 	S=${WORKDIR}/${MY_P}
 fi
 
@@ -53,7 +53,7 @@ CDEPEND="
 	>=dev-qt/qtxml-${QT_PV}
 	clangcodemodel? ( >=sys-devel/clang-5:= )
 	designer? ( >=dev-qt/designer-${QT_PV} )
-	qbs? ( >=dev-util/qbs-1.11.1 )
+	qbs? ( ~dev-util/qbs-1.11.1 )
 	systemd? ( sys-apps/systemd:= )
 	webengine? ( >=dev-qt/qtwebengine-${QT_PV}[widgets] )
 "
@@ -62,7 +62,11 @@ DEPEND="${CDEPEND}
 	virtual/pkgconfig
 	doc? ( >=dev-qt/qdoc-${QT_PV} )
 	test? (
-		>=dev-qt/qtdeclarative-${QT_PV}[localstorage,xml]
+		>=dev-qt/qtdeclarative-${QT_PV}[localstorage]
+		|| (
+			>=dev-qt/qtxmlpatterns-5.12.1-r1:5[qml(+)]
+			<dev-qt/qtdeclarative-5.12.0[xml]
+		)
 		>=dev-qt/qtquickcontrols2-${QT_PV}
 		>=dev-qt/qttest-${QT_PV}
 	)

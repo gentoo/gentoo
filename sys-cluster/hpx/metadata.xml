@@ -14,7 +14,6 @@
     <email>slis@gentoo.org</email>
   </maintainer>
   <use>
-    <flag name="jemalloc">Use <pkg>dev-libs/jemalloc</pkg> for memory allocation</flag>
     <flag name="perftools">Use <pkg>dev-util/google-perftools</pkg> for
   memory allocation</flag>
     <flag name="tbb">Use <pkg>dev-cpp/tbb</pkg> for memory

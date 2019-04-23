@@ -1,5 +1,31 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Sergei Trofimovich <slyfox@gentoo.org> (16 Mar 2019)
+# sys-block/megactl works only on amd64 and x86 so far, bug #670564
+www-apps/phpsysinfo megactl
+
+# Thomas Deutschmann <whissi@gentoo.org> (15 Nov 2018)
+# - rdrand plugin is only supported on amd64 and x86
+# - padlock plugin is only supported on amd64 and x86
+net-vpn/strongswan strongswan_plugins_rdrand strongswan_plugins_padlock
+
+# James Le Cuirot <chewi@gentoo.org> (02 Nov 2018)
+# Vulkan is only available on amd64 at present.
+media-libs/libsdl2 vulkan
+
+# Michael Palimaka <kensington@gentoo.org> (12 Oct 2018)
+# Only available on amd64/x86
+net-analyzer/testssl bundled-openssl kerberos
+
+# Thomas Deutschmann <whissi@gentoo.org> (30 Sep 2018)
+# Requires media-libs/libheif which is only keyworded for amd64 and x86
+media-gfx/imagemagick heif
+
+# Ben Kohler <bkohler@gentoo.org> (23 Aug 2018)
+# Mask iwd support until net-wireless/iwd is keyworded
+net-misc/connman iwd
+net-misc/networkmanager iwd
 
 # Rick Farina <zerochaos@gentoo.org> (27 Jun 2018)
 # Catalyst only has support for assembling bootloader on some arches
@@ -148,11 +174,6 @@ dev-vcs/git mediawiki mediawiki-experimental
 # Sergey Popov <pinkbyte@gentoo.org> (27 Dec 2013)
 # Mask because Boost.Context library does not work on most of arches
 dev-libs/boost context
-
-# Jeff Horelick <jdhore@gentoo.org> (1 Sep 2013)
-# Dependency (media-libs/libsidplayfp) only keyworded
-# on x86 and amd64. Will unmask there.
->=media-plugins/audacious-plugins-3.4 sid
 
 # Tim Harder <radhermit@gentoo.org> (13 Aug 2013)
 # Related deps dev-lang/luajit and dev-scheme/racket are not keyworded by most arches.

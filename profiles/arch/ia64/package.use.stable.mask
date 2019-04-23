@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # When you add an entry to the top of this file, add your name, the date, and
@@ -17,6 +17,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Ulrich Müller <ulm@gentoo.org> (09 Aug 2018)
+# Needs net-mail/mailutils and net-libs/webkit-gtk which are not
+# stable (yet?), bug #663248
+app-editors/emacs mailutils xwidgets
+
 # Andreas K. Hüttel <dilfridge@gentoo.org> (6 Jan 2018)
 # Please unmask after newer dietlibc is finally stable on ia64
 sys-fs/dmraid dietlibc
@@ -32,8 +37,3 @@ dev-util/geany-plugins gtkspell
 >=gnome-base/gnome-desktop-2.32.1-r2 license-docs
 gnome-base/gvfs google
 >=x11-libs/gtk+-3.12.2 cloudprint
-x11-libs/gksu gnome
-
-# sufficiently recent wayland is not stable yet, bug #559062
-~dev-libs/efl-1.17.0 wayland
-~media-libs/elementary-1.17.0 wayland

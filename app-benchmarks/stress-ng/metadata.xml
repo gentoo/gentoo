@@ -17,4 +17,8 @@
 		that exercise floating point, integer, bit manipulation and control flow
 		and over 20 virtual memory stress tests.
 	</longdescription>
+	<upstream>
+		<bugs-to>https://github.com/ColinIanKing/stress-ng/issues</bugs-to>
+		<remote-id type="github">ColinIanKing/stress-ng</remote-id>
+	</upstream>
 </pkgmetadata>

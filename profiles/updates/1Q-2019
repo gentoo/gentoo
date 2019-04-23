@@ -1,0 +1,17 @@
+move dev-libs/sway gui-wm/sway
+move dev-libs/swayidle gui-apps/swayidle
+move dev-libs/swaylock gui-apps/swaylock
+move dev-libs/wlroots gui-libs/wlroots
+move dev-libs/wl-clipboard gui-apps/wl-clipboard
+move net-misc/networkmanager-fortisslvpn net-vpn/networkmanager-fortisslvpn
+move net-misc/networkmanager-libreswan net-vpn/networkmanager-libreswan
+move net-misc/networkmanager-openconnect net-vpn/networkmanager-openconnect
+move net-misc/networkmanager-openvpn net-vpn/networkmanager-openvpn
+move net-misc/networkmanager-pptp net-vpn/networkmanager-pptp
+move net-misc/networkmanager-strongswan net-vpn/networkmanager-strongswan
+move net-misc/networkmanager-vpnc net-vpn/networkmanager-vpnc
+move net-misc/networkmanager-sstp net-vpn/networkmanager-sstp
+move gnome-extra/gnome-tweak-tool gnome-extra/gnome-tweaks
+move app-portage/eclass-manpages app-doc/eclass-manpages
+move app-editors/latexila app-editors/gnome-latex
+move dev-libs/rttr dev-cpp/rttr

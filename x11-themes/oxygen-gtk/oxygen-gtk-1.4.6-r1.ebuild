@@ -1,23 +1,23 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 MY_PN=${PN}2
 MY_P=${MY_PN}-${PV}
-
 inherit cmake-multilib
 
 DESCRIPTION="Official GTK+:2 port of KDE's Oxygen widget style"
-HOMEPAGE="https://store.kde.org/content/show.php/?content=136216"
+HOMEPAGE="https://store.kde.org/p/1005553/"
 SRC_URI="mirror://kde/stable/${MY_PN}/${PV}/src/${MY_P}.tar.bz2"
 
 LICENSE="LGPL-2.1"
 KEYWORDS="amd64 ~ppc x86"
 SLOT="2"
-IUSE="debug doc"
+IUSE="debug"
 
-COMMON_DEPEND="
+BDEPEND="virtual/pkgconfig"
+DEPEND="
 	dev-libs/dbus-glib[${MULTILIB_USEDEP}]
 	dev-libs/glib:2[${MULTILIB_USEDEP}]
 	x11-libs/cairo[${MULTILIB_USEDEP}]
@@ -26,11 +26,7 @@ COMMON_DEPEND="
 	x11-libs/libX11[${MULTILIB_USEDEP}]
 	x11-libs/pango[${MULTILIB_USEDEP}]
 "
-DEPEND="${COMMON_DEPEND}
-	virtual/pkgconfig
-	doc? ( app-doc/doxygen )
-"
-RDEPEND="${COMMON_DEPEND}
+RDEPEND="${DEPEND}
 	!x11-themes/oxygen-gtk:0
 "
 
@@ -55,11 +51,6 @@ multilib_src_configure() {
 }
 
 src_install() {
-	if use doc; then
-		doxygen Doxyfile || die "Generating documentation failed"
-		HTML_DOCS=( doc/html/. )
-	fi
-
 	cmake-multilib_src_install
 
 	cat <<-EOF > 99oxygen-gtk2

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,12 +14,16 @@ EGIT_BRANCH="next"
 LICENSE="GPL-2"
 KEYWORDS=""
 SLOT="0"
-IUSE="dbus debug examples gdal openmp qt5 test +udev +utils vim-syntax"
+IUSE="dbus debug examples gdal openmp qt5 +udev +utils vim-syntax"
+
+# Needs --fg-root with path to flightgear-data passed to test runner passed,
+# not really worth patching
+RESTRICT="test"
 
 # zlib is some strange auto-dep from simgear
 COMMON_DEPEND="
 	dev-db/sqlite:3
-	>=dev-games/openscenegraph-3.2.0[jpeg,png]
+	<dev-games/openscenegraph-3.5.6:=[jpeg,png]
 	~dev-games/simgear-${PV}[gdal=]
 	media-libs/openal
 	>=media-libs/speex-1.2.0:0
@@ -68,11 +72,10 @@ pkg_pretend() {
 
 src_configure() {
 	local mycmakeargs=(
-		-DENABLE_DEMCONVERT=$(usex gdal && usex utils)
+		-DENABLE_AUTOTESTING=OFF
 		-DENABLE_FGCOM=$(usex utils)
 		-DENABLE_FGELEV=$(usex utils)
 		-DENABLE_FGJS=$(usex utils)
-		-DENABLE_FGQCANVAS=$(usex qt5 && usex utils)
 		-DENABLE_FGVIEWER=$(usex utils)
 		-DENABLE_FLITE=OFF
 		-DENABLE_GDAL=$(usex gdal)
@@ -83,11 +86,12 @@ src_configure() {
 		-DENABLE_LARCSIM=ON
 		-DENABLE_METAR=$(usex utils)
 		-DENABLE_OPENMP=$(usex openmp)
+		-DENABLE_PLIB_JOYSTICK=ON # NOTE look for defaults changes in CMake
 		-DENABLE_PROFILE=OFF
 		-DENABLE_QT=$(usex qt5)
 		-DENABLE_RTI=OFF
+		-DENABLE_STGMERGE=ON
 		-DENABLE_TERRASYNC=$(usex utils)
-		-DENABLE_TESTS=$(usex test)
 		-DENABLE_TRAFFIC=$(usex utils)
 		-DENABLE_UIUC_MODEL=ON
 		-DENABLE_YASIM=ON
@@ -97,6 +101,7 @@ src_configure() {
 		-DJSBSIM_TERRAIN=ON
 		-DOSG_FSTREAM_EXPORT_FIXED=OFF # TODO also see simgear
 		-DSP_FDMS=ON
+		-DSYSTEM_CPPUNIT=OFF # NOTE we do not build tests anyway
 		-DSYSTEM_FLITE=ON
 		-DSYSTEM_HTS_ENGINE=ON
 		-DSYSTEM_SPEEX=ON
@@ -106,6 +111,16 @@ src_configure() {
 		-DUSE_DBUS=$(usex dbus)
 		-DWITH_FGPANEL=$(usex utils)
 	)
+	if use gdal && use utils; then
+		mycmakeargs+=(-DENABLE_DEMCONVERT=ON)
+	else
+		mycmakeargs+=(-DENABLE_DEMCONVERT=OFF)
+	fi
+	if use qt5 && use utils; then
+		mycmakeargs+=(-DENABLE_FGQCANVAS=ON)
+	else
+		mycmakeargs+=(-DENABLE_FGQCANVAS=OFF)
+	fi
 
 	cmake-utils_src_configure
 }

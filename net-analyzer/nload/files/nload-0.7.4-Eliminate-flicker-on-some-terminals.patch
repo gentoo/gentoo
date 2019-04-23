@@ -1,0 +1,26 @@
+From 8a93886e0fb33a81b8fe32e88ee106a581fedd34 Mon Sep 17 00:00:00 2001
+From: Roland Riegel <roland@roland-riegel.de>
+Date: Sun, 28 Jan 2018 16:59:39 +0100
+Subject: [PATCH 1/1] Eliminate flicker on some terminals like rxvt (thanks to
+ Alex Wilson)
+
+---
+ src/window.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/window.cpp b/src/window.cpp
+index bfa7701..2083fd0 100644
+--- a/src/window.cpp
++++ b/src/window.cpp
+@@ -108,7 +108,7 @@ void Window::refresh()
+ void Window::clear()
+ {
+     if(m_window)
+-        wclear(m_window);
++        werase(m_window);
+ }
+ 
+ // move and resize window
+-- 
+2.16.4
+

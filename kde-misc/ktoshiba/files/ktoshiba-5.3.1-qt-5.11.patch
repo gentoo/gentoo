@@ -1,0 +1,10 @@
+--- a/src/fnactions.cpp	2016-06-06 17:41:50.425121940 +0200
++++ b/src/fnactions.cpp	2018-10-24 20:10:45.872718660 +0200
+@@ -17,6 +17,7 @@
+ */
+ 
+ #include <QDesktopWidget>
++#include <QIcon>
+ #include <QTimer>
+ 
+ #include <KLocalizedString>

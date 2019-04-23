@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Cycle through a list of values via a scalar"
 LICENSE="Artistic-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~x86"
 IUSE="test"
 
 PATCHES=( "${FILESDIR}/${PN}-1.225-nopodtests.patch" )

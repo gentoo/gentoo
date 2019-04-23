@@ -4,10 +4,6 @@
 	<maintainer type="person">
 		<email>grobian@gentoo.org</email>
 	</maintainer>
-	<maintainer type="project">
-		<email>net-mail@gentoo.org</email>
-		<name>Net-Mail</name>
-	</maintainer>
 	<use>
 		<flag name="berkdb">Enable <pkg>sys-libs/db</pkg> database backend
 			for header caching</flag>
@@ -19,7 +15,6 @@
 			header caching</flag>
 		<flag name="notmuch">Enable support for <pkg>net-mail/notmuch</pkg></flag>
 		<flag name="pop">Enable support for POP3 mailboxes</flag>
-		<flag name="sidebar">Enable the sidebar feature</flag>
 		<flag name="smtp">Enable support for direct SMTP delivery</flag>
 		<flag name="tokyocabinet">Enable <pkg>dev-db/tokyocabinet</pkg>
 			database backend for header caching</flag>

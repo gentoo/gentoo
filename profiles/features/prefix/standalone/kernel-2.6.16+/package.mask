@@ -6,3 +6,7 @@
 # which requires >=linux-2.6.24.
 # python-3.3 seems to be unconditionally using utimensat.
 >=dev-lang/python-3
+
+# Tupone Alfredo <tupone@gentoo.org> (4 Nov 2018)
+# require newer glibc
+dev-lang/gnat-gpl

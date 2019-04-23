@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,7 +14,7 @@ SRC_URI="https://www.process-one.net/downloads/${PN}/${PV}/${P}.tgz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~ia64 ~ppc ~sparc x86"
+KEYWORDS="amd64 ~arm ~ia64 ppc ~sparc x86"
 REQUIRED_USE="mssql? ( odbc )"
 # TODO: Add 'tools' flag.
 IUSE="captcha debug full-xml hipe ldap mssql mysql nls odbc pam postgres redis
@@ -41,6 +41,7 @@ CDEPEND="
 	>=dev-erlang/stringprep-1.0.8
 	>=dev-erlang/stun-1.0.10
 	>=dev-erlang/xmpp-1.1.9
+	<dev-erlang/xmpp-1.2.0
 	>=dev-lang/erlang-17.1[hipe?,odbc?,ssl]
 	>=net-im/jabber-base-0.01
 	ldap? ( =net-nds/openldap-2* )

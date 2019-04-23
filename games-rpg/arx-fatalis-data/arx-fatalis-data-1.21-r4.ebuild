@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -8,7 +8,7 @@ inherit eutils cdrom check-reqs
 
 DESCRIPTION="Arx Fatalis data files"
 HOMEPAGE="https://www.arkane-studios.com/uk/arx.php"
-SRC_URI="cdinstall? ( http://download.zenimax.com/arxfatalis/patches/1.21/ArxFatalis_1.21_MULTILANG.exe )
+SRC_URI="cdinstall? ( https://cdn.bethsoft.com/arxfatalis/patches/1.21/ArxFatalis_1.21_MULTILANG.exe )
 	gog? ( setup_arx_fatalis_2.0.0.7.exe )"
 
 LICENSE="cdinstall? ( ArxFatalis-EULA-JoWooD ) gog? ( GOG-EULA )"
@@ -57,7 +57,7 @@ detect_language() {
 
 pkg_nofetch() {
 	einfo "Please download ${A} from your GOG.com account after buying Arx Fatalis"
-	einfo "and put it into ${DISTDIR}."
+	einfo "and put it into your DISTDIR directory."
 }
 
 src_unpack() {

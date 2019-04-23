@@ -1,0 +1,10 @@
+--- cvoicecontrol-0.9alpha/configure.in
++++ cvoicecontrol-0.9alpha/configure.in
+@@ -12,6 +12,7 @@
+ AC_CHECK_LIB(pthread, main, [LIBPTHREAD="-lpthread"], LIBPTHREAD= )
+ AC_SUBST(LIBPTHREAD)
+ AC_CHECK_LIB(ncurses, main, [LIBNCURSES="-lncurses"], LIBNCURSES= )
++AC_CHECK_LIB(tinfo, keypad, [LIBNCURSES="$LIBNCURSES -ltinfo"])
+ AC_SUBST(LIBNCURSES)
+ dnl Checks for header files.
+ AC_CHECK_HEADERS(fcntl.h glob.h math.h ncurses.h pthread.h signal.h stdio.h stdlib.h string.h sys/ioctl.h sys/select.h sys/soundcard.h sys/time.h sys/types.h termios.h time.h unistd.h)

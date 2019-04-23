@@ -1,0 +1,335 @@
+Fix build failure on glibc-2.28:
+    fseeko.c: In function 'rpl_fseeko':
+    fseeko.c:110:4: error: #error "Please port gnulib fseeko.c to your platform! Look at the code in fseeko.c, then report this to bug-gnulib."
+       #error "Please port gnulib fseeko.c to your platform! Look at the code in fseeko.c, then report this to bug-gnulib."
+
+Patch by milan hodoscek.
+
+https://bugs.gentoo.org/663242
+--- a/old/stdio-impl.h
++++ b/gl/lib/stdio-impl.h
+@@ -1,5 +1,5 @@
+ /* Implementation details of FILE streams.
+-   Copyright (C) 2007-2008, 2010-2015 Free Software Foundation, Inc.
++   Copyright (C) 2007-2008, 2010-2018 Free Software Foundation, Inc.
+ 
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+@@ -12,12 +12,18 @@
+    GNU General Public License for more details.
+ 
+    You should have received a copy of the GNU General Public License
+-   along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
++   along with this program.  If not, see <https://www.gnu.org/licenses/>.  */
+ 
+ /* Many stdio implementations have the same logic and therefore can share
+    the same implementation of stdio extension API, except that some fields
+    have different naming conventions, or their access requires some casts.  */
+ 
++/* Glibc 2.28 made _IO_IN_BACKUP private.  For now, work around this
++   problem by defining it ourselves.  FIXME: Do not rely on glibc
++   internals.  */
++#if !defined _IO_IN_BACKUP && defined _IO_EOF_SEEN
++# define _IO_IN_BACKUP 0x100
++#endif
+ 
+ /* BSD stdio derived implementations.  */
+ 
+@@ -29,10 +35,10 @@
+ #include <errno.h>                             /* For detecting Plan9.  */
+ 
+ #if defined __sferror || defined __DragonFly__ || defined __ANDROID__
+-  /* FreeBSD, NetBSD, OpenBSD, DragonFly, Mac OS X, Cygwin, Android */
++  /* FreeBSD, NetBSD, OpenBSD, DragonFly, Mac OS X, Cygwin, Minix 3, Android */
+ 
+ # if defined __DragonFly__          /* DragonFly */
+-  /* See <http://www.dragonflybsd.org/cvsweb/src/lib/libc/stdio/priv_stdio.h?rev=HEAD&content-type=text/x-cvsweb-markup>.  */
++  /* See <https://gitweb.dragonflybsd.org/dragonfly.git/blob_plain/HEAD:/lib/libc/stdio/priv_stdio.h>.  */
+ #  define fp_ ((struct { struct __FILE_public pub; \
+                          struct { unsigned char *_base; int _size; } _bf; \
+                          void *cookie; \
+@@ -49,30 +55,84 @@
+                          fpos_t _offset; \
+                          /* More fields, not relevant here.  */ \
+                        } *) fp)
+-  /* See <http://www.dragonflybsd.org/cvsweb/src/include/stdio.h?rev=HEAD&content-type=text/x-cvsweb-markup>.  */
++  /* See <https://gitweb.dragonflybsd.org/dragonfly.git/blob_plain/HEAD:/include/stdio.h>.  */
+ #  define _p pub._p
+ #  define _flags pub._flags
+ #  define _r pub._r
+ #  define _w pub._w
++# elif defined __ANDROID__ /* Android */
++  /* Up to this commit from 2015-10-12
++     <https://android.googlesource.com/platform/bionic.git/+/f0141dfab10a4b332769d52fa76631a64741297a>
++     the innards of FILE were public, and fp_ub could be defined like for OpenBSD,
++     see <https://android.googlesource.com/platform/bionic.git/+/e78392637d5086384a5631ddfdfa8d7ec8326ee3/libc/stdio/fileext.h>
++     and <https://android.googlesource.com/platform/bionic.git/+/e78392637d5086384a5631ddfdfa8d7ec8326ee3/libc/stdio/local.h>.
++     After this commit, the innards of FILE are hidden.  */
++#  define fp_ ((struct { unsigned char *_p; \
++                         int _r; \
++                         int _w; \
++                         int _flags; \
++                         int _file; \
++                         struct { unsigned char *_base; size_t _size; } _bf; \
++                         int _lbfsize; \
++                         void *_cookie; \
++                         void *_close; \
++                         void *_read; \
++                         void *_seek; \
++                         void *_write; \
++                         struct { unsigned char *_base; size_t _size; } _ext; \
++                         unsigned char *_up; \
++                         int _ur; \
++                         unsigned char _ubuf[3]; \
++                         unsigned char _nbuf[1]; \
++                         struct { unsigned char *_base; size_t _size; } _lb; \
++                         int _blksize; \
++                         fpos_t _offset; \
++                         /* More fields, not relevant here.  */ \
++                       } *) fp)
+ # else
+ #  define fp_ fp
+ # endif
+ 
+-# if (defined __NetBSD__ && __NetBSD_Version__ >= 105270000) || defined __OpenBSD__ || defined __ANDROID__ /* NetBSD >= 1.5ZA, OpenBSD, Android */
++# if (defined __NetBSD__ && __NetBSD_Version__ >= 105270000) || defined __OpenBSD__ || defined __minix /* NetBSD >= 1.5ZA, OpenBSD, Minix 3 */
+   /* See <http://cvsweb.netbsd.org/bsdweb.cgi/src/lib/libc/stdio/fileext.h?rev=HEAD&content-type=text/x-cvsweb-markup>
+-     and <http://www.openbsd.org/cgi-bin/cvsweb/src/lib/libc/stdio/fileext.h?rev=HEAD&content-type=text/x-cvsweb-markup> */
++     and <https://cvsweb.openbsd.org/cgi-bin/cvsweb/src/lib/libc/stdio/fileext.h?rev=HEAD&content-type=text/x-cvsweb-markup>
++     and <https://github.com/Stichting-MINIX-Research-Foundation/minix/blob/master/lib/libc/stdio/fileext.h> */
+   struct __sfileext
+     {
+       struct  __sbuf _ub; /* ungetc buffer */
+       /* More fields, not relevant here.  */
+     };
+ #  define fp_ub ((struct __sfileext *) fp->_ext._base)->_ub
+-# else                                         /* FreeBSD, NetBSD <= 1.5Z, DragonFly, Mac OS X, Cygwin, Android */
++# elif defined __ANDROID__                     /* Android */
++  struct __sfileext
++    {
++      struct { unsigned char *_base; size_t _size; } _ub; /* ungetc buffer */
++      /* More fields, not relevant here.  */
++    };
++#  define fp_ub ((struct __sfileext *) fp_->_ext._base)->_ub
++# else                                         /* FreeBSD, NetBSD <= 1.5Z, DragonFly, Mac OS X, Cygwin */
+ #  define fp_ub fp_->_ub
+ # endif
+ 
+ # define HASUB(fp) (fp_ub._base != NULL)
+ 
++# if defined __ANDROID__ /* Android */
++  /* Needed after this commit from 2016-01-25
++     <https://android.googlesource.com/platform/bionic.git/+/e70e0e9267d069bf56a5078c99307e08a7280de7> */
++#  ifndef __SEOF
++#   define __SLBF 1
++#   define __SNBF 2
++#   define __SRD 4
++#   define __SWR 8
++#   define __SRW 0x10
++#   define __SEOF 0x20
++#   define __SERR 0x40
++#  endif
++#  ifndef __SOFF
++#   define __SOFF 0x1000
++#  endif
++# endif
++
+ #endif
+ 
+ 
+@@ -81,7 +141,7 @@
+ #ifdef __TANDEM                     /* NonStop Kernel */
+ # ifndef _IOERR
+ /* These values were determined by the program 'stdioext-flags' at
+-   <http://lists.gnu.org/archive/html/bug-gnulib/2010-12/msg00165.html>.  */
++   <https://lists.gnu.org/r/bug-gnulib/2010-12/msg00165.html>.  */
+ #  define _IOERR   0x40
+ #  define _IOREAD  0x80
+ #  define _IOWRT    0x4
+@@ -99,6 +159,8 @@
+                          int _file; \
+                          unsigned int _flag; \
+                        } *) fp)
++# elif defined __VMS                /* OpenVMS */
++#  define fp_ ((struct _iobuf *) fp)
+ # else
+ #  define fp_ fp
+ # endif
+@@ -110,4 +172,31 @@
+ #  define _flag __flag
+ # endif
+ 
++#elif defined _WIN32 && ! defined __CYGWIN__  /* newer Windows with MSVC */
++
++/* <stdio.h> does not define the innards of FILE any more.  */
++# define WINDOWS_OPAQUE_FILE
++
++struct _gl_real_FILE
++{
++  /* Note: Compared to older Windows and to mingw, it has the fields
++     _base and _cnt swapped. */
++  unsigned char *_ptr;
++  unsigned char *_base;
++  int _cnt;
++  int _flag;
++  int _file;
++  int _charbuf;
++  int _bufsiz;
++};
++# define fp_ ((struct _gl_real_FILE *) fp)
++
++/* These values were determined by a program similar to the one at
++   <https://lists.gnu.org/r/bug-gnulib/2010-12/msg00165.html>.  */
++# define _IOREAD   0x1
++# define _IOWRT    0x2
++# define _IORW     0x4
++# define _IOEOF    0x8
++# define _IOERR   0x10
++
+ #endif
+--- a/old/fseeko.c
++++ b/gl/lib/fseeko.c
+@@ -1,5 +1,5 @@
+ /* An fseeko() function that, together with fflush(), is POSIX compliant.
+-   Copyright (C) 2007-2015 Free Software Foundation, Inc.
++   Copyright (C) 2007-2018 Free Software Foundation, Inc.
+ 
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+@@ -12,7 +12,7 @@
+    GNU General Public License for more details.
+ 
+    You should have received a copy of the GNU General Public License along
+-   with this program; if not, see <http://www.gnu.org/licenses/>.  */
++   with this program; if not, see <https://www.gnu.org/licenses/>.  */
+ 
+ #include <config.h>
+ 
+@@ -33,9 +33,9 @@ fseeko (FILE *fp, off_t offset, int whence)
+ #endif
+ #if _GL_WINDOWS_64_BIT_OFF_T
+ # undef fseeko
+-# if HAVE__FSEEKI64 /* msvc, mingw64 */
++# if HAVE__FSEEKI64 && HAVE_DECL__FSEEKI64 /* msvc, mingw since msvcrt8.0, mingw64 */
+ #  define fseeko _fseeki64
+-# else /* mingw */
++# else /* mingw before msvcrt8.0 */
+ #  define fseeko fseeko64
+ # endif
+ #endif
+@@ -47,12 +47,13 @@ fseeko (FILE *fp, off_t offset, int whence)
+ #endif
+ 
+   /* These tests are based on fpurge.c.  */
+-#if defined _IO_ftrylockfile || __GNU_LIBRARY__ == 1 /* GNU libc, BeOS, Haiku, Linux libc5 */
++#if defined _IO_EOF_SEEN || defined _IO_ftrylockfile || __GNU_LIBRARY__ == 1
++  /* GNU libc, BeOS, Haiku, Linux libc5 */
+   if (fp->_IO_read_end == fp->_IO_read_ptr
+       && fp->_IO_write_ptr == fp->_IO_write_base
+       && fp->_IO_save_base == NULL)
+ #elif defined __sferror || defined __DragonFly__ || defined __ANDROID__
+-  /* FreeBSD, NetBSD, OpenBSD, DragonFly, Mac OS X, Cygwin, Android */
++  /* FreeBSD, NetBSD, OpenBSD, DragonFly, Mac OS X, Cygwin, Minix 3, Android */
+ # if defined __SL64 && defined __SCLE /* Cygwin */
+   if ((fp->_flags & __SL64) == 0)
+     {
+@@ -80,7 +81,7 @@ fseeko (FILE *fp, off_t offset, int whence)
+ #elif defined __minix               /* Minix */
+   if (fp_->_ptr == fp_->_buf
+       && (fp_->_ptr == NULL || fp_->_count == 0))
+-#elif defined _IOERR                /* AIX, HP-UX, IRIX, OSF/1, Solaris, OpenServer, mingw, NonStop Kernel */
++#elif defined _IOERR                /* AIX, HP-UX, IRIX, OSF/1, Solaris, OpenServer, mingw, MSVC, NonStop Kernel, OpenVMS */
+   if (fp_->_ptr == fp_->_base
+       && (fp_->_ptr == NULL || fp_->_cnt == 0))
+ #elif defined __UCLIBC__            /* uClibc */
+@@ -117,18 +118,19 @@ fseeko (FILE *fp, off_t offset, int whence)
+       if (pos == -1)
+         {
+ #if defined __sferror || defined __DragonFly__ || defined __ANDROID__
+-          /* FreeBSD, NetBSD, OpenBSD, DragonFly, Mac OS X, Cygwin, Android */
++          /* FreeBSD, NetBSD, OpenBSD, DragonFly, Mac OS X, Cygwin, Minix 3, Android */
+           fp_->_flags &= ~__SOFF;
+ #endif
+           return -1;
+         }
+ 
+-#if defined _IO_ftrylockfile || __GNU_LIBRARY__ == 1 /* GNU libc, BeOS, Haiku, Linux libc5 */
++#if defined _IO_EOF_SEEN || defined _IO_ftrylockfile || __GNU_LIBRARY__ == 1
++      /* GNU libc, BeOS, Haiku, Linux libc5 */
+       fp->_flags &= ~_IO_EOF_SEEN;
+       fp->_offset = pos;
+ #elif defined __sferror || defined __DragonFly__ || defined __ANDROID__
+-      /* FreeBSD, NetBSD, OpenBSD, DragonFly, Mac OS X, Cygwin, Android */
+-# if defined __CYGWIN__ || (defined __NetBSD__ && __NetBSD_Version__ >= 600000000)
++      /* FreeBSD, NetBSD, OpenBSD, DragonFly, Mac OS X, Cygwin, Minix 3, Android */
++# if defined __CYGWIN__ || (defined __NetBSD__ && __NetBSD_Version__ >= 600000000) || defined __minix
+       /* fp_->_offset is typed as an integer.  */
+       fp_->_offset = pos;
+ # else
+@@ -150,8 +152,8 @@ fseeko (FILE *fp, off_t offset, int whence)
+       fp_->_flags &= ~__SEOF;
+ #elif defined __EMX__               /* emx+gcc */
+       fp->_flags &= ~_IOEOF;
+-#elif defined _IOERR                /* AIX, HP-UX, IRIX, OSF/1, Solaris, OpenServer, mingw, NonStop Kernel */
+-      fp->_flag &= ~_IOEOF;
++#elif defined _IOERR                /* AIX, HP-UX, IRIX, OSF/1, Solaris, OpenServer, mingw, MSVC, NonStop Kernel, OpenVMS */
++      fp_->_flag &= ~_IOEOF;
+ #elif defined __MINT__              /* Atari FreeMiNT */
+       fp->__offset = pos;
+       fp->__eof = 0;
+--- a/old/freadahead.c
++++ b/gl/lib/freadahead.c
+@@ -1,5 +1,5 @@
+ /* Retrieve information about a FILE stream.
+-   Copyright (C) 2007-2015 Free Software Foundation, Inc.
++   Copyright (C) 2007-2018 Free Software Foundation, Inc.
+ 
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+@@ -12,7 +12,7 @@
+    GNU General Public License for more details.
+ 
+    You should have received a copy of the GNU General Public License
+-   along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
++   along with this program.  If not, see <https://www.gnu.org/licenses/>.  */
+ 
+ #include <config.h>
+ 
+@@ -22,17 +22,26 @@
+ #include <stdlib.h>
+ #include "stdio-impl.h"
+ 
++#if defined __DragonFly__
++/* Defined in libc, but not declared in <stdio.h>.  */
++extern size_t __sreadahead (FILE *);
++#endif
++
++/* This file is not used on systems that have the __freadahead function,
++   namely musl libc.  */
++
+ size_t
+ freadahead (FILE *fp)
+ {
+-#if defined _IO_ftrylockfile || __GNU_LIBRARY__ == 1 /* GNU libc, BeOS, Haiku, Linux libc5 */
++#if defined _IO_EOF_SEEN || defined _IO_ftrylockfile || __GNU_LIBRARY__ == 1
++  /* GNU libc, BeOS, Haiku, Linux libc5 */
+   if (fp->_IO_write_ptr > fp->_IO_write_base)
+     return 0;
+   return (fp->_IO_read_end - fp->_IO_read_ptr)
+          + (fp->_flags & _IO_IN_BACKUP ? fp->_IO_save_end - fp->_IO_save_base :
+             0);
+ #elif defined __sferror || defined __DragonFly__ || defined __ANDROID__
+-  /* FreeBSD, NetBSD, OpenBSD, DragonFly, Mac OS X, Cygwin, Android */
++  /* FreeBSD, NetBSD, OpenBSD, DragonFly, Mac OS X, Cygwin, Minix 3, Android */
+   if ((fp_->_flags & __SWR) != 0 || fp_->_r < 0)
+     return 0;
+ # if defined __DragonFly__
+@@ -53,7 +62,7 @@ freadahead (FILE *fp)
+   if ((fp_->_flags & _IOWRITING) != 0)
+     return 0;
+   return fp_->_count;
+-#elif defined _IOERR                /* AIX, HP-UX, IRIX, OSF/1, Solaris, OpenServer, mingw, NonStop Kernel */
++#elif defined _IOERR                /* AIX, HP-UX, IRIX, OSF/1, Solaris, OpenServer, mingw, MSVC, NonStop Kernel, OpenVMS */
+   if ((fp_->_flag & _IOWRT) != 0)
+     return 0;
+   return fp_->_cnt;

@@ -1,0 +1,38 @@
+From d64070f1782ed06f83be7783e22cf86f4098f34e Mon Sep 17 00:00:00 2001
+From: Ettore Di Giacinto <mudler@gentoo.org>
+Date: Tue, 11 Dec 2018 16:54:42 +0100
+Subject: [PATCH 1/2] Drop $(localstatedir)/cache rules
+
+This directory can be flushed any moment and pre-existence of folders
+in it cannot be assumed.
+
+pk-transaction creates the downloads directory as needed. If backends
+need metadata folder they should create it if not found.
+
+Closes: https://github.com/gentoo/gentoo/pull/1760
+References: https://github.com/hughsie/PackageKit/issues/143
+---
+ src/Makefile.am | 7 -------
+ 1 file changed, 7 deletions(-)
+
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 830aaf873..24c9a0b9a 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -166,13 +166,6 @@ pk_self_test_CFLAGS =					\
+ 
+ TESTS = pk-self-test
+ 
+-install-data-hook:
+-	if test -w $(DESTDIR)$(prefix)/; then \
+-		mkdir -p $(DESTDIR)$(localstatedir)/cache/PackageKit/downloads; \
+-		mkdir -p $(DESTDIR)$(localstatedir)/cache/PackageKit/metadata; \
+-		mkdir -p $(DESTDIR)$(localstatedir)/log; \
+-	fi
+-
+ clean-local:
+ 	rm -f *~
+ 
+-- 
+2.19.2
+

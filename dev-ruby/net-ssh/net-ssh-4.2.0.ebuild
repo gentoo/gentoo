@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-USE_RUBY="ruby23 ruby24 ruby25"
+USE_RUBY="ruby23 ruby24 ruby25 ruby26"
 
 RUBY_FAKEGEM_DOCDIR="doc"
 RUBY_FAKEGEM_EXTRADOC="CHANGES.txt README.rdoc THANKS.txt"
@@ -17,7 +17,7 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> net-ssh-git-${P
 
 LICENSE="GPL-2"
 SLOT="4"
-KEYWORDS="amd64 ~ppc ppc64 x86"
+KEYWORDS="amd64 ~arm ppc ppc64 x86"
 IUSE="sodium test"
 
 ruby_add_rdepend "virtual/ruby-ssl sodium? ( dev-ruby/rbnacl:4 dev-ruby/bcrypt_pbkdf )"

@@ -5,6 +5,10 @@
 		<email>reagentoo@gmail.com</email>
 		<name>Dmitry Baranov</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>davidroman96@gmail.com</email>
+		<name>David Roman</name>
+	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>

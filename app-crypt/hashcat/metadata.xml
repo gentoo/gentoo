@@ -5,6 +5,9 @@
 		<email>zerochaos@gentoo.org</email>
 		<name>Rick Farina</name>
 	</maintainer>
+	<use>
+		<flag name="brain">Enable the hashcat brain</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">hashcat/hashcat</remote-id>
 	</upstream>

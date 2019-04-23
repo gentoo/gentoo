@@ -3,19 +3,22 @@ Description=tvheadend
 After=network.target
 
 [Service]
-Type=forking
+Type=simple
 User=tvheadend
 Group=video
 RuntimeDirectory=tvheadend
 PIDFile=/run/tvheadend/tvheadend.pid
-ExecStart=/usr/bin/tvheadend -6 -f -p /run/tvheadend.pid -C -c /etc/tvheadend
+EnvironmentFile=/etc/conf.d/tvheadend
+ExecStart=/usr/bin/tvheadend -p /run/tvheadend/tvheadend.pid -c "${TVHEADEND_CONFIG}" ${TVHEADEND_OPTIONS}
+TimeoutStartSec=1m
+TimeoutStopSec=20s
 Restart=always
-RestartSec=5
+RestartSec=5s
 DevicePolicy=closed
-DeviceAllow=char-DVB rw # DVB devices
-DeviceAllow=char-drm rw # GPUs for transcoding
+DeviceAllow=char-DVB rw
+DeviceAllow=char-drm rw
 RestrictAddressFamilies=AF_INET AF_INET6
-ProtectSystem=strict
+ProtectSystem=yes
 ProtectHome=yes
 NoNewPrivileges=yes
 

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,19 +17,20 @@ IUSE="+bluetooth +colord +cups debug +gnome-online-accounts +ibus input_devices_
 KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sh x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-solaris"
 
 # gnome-session-2.91.6-r1 is needed so that 10-user-dirs-update is run at login
-# g-s-d[policykit] needed for bug #403527
 # kerberos unfortunately means mit-krb5; build fails with heimdal
 # udev could be made optional, only conditions gsd-device-panel
 # (mouse, keyboards, touchscreen, etc)
 # display panel requires colord and gnome-settings-daemon[colord]
 # printer panel requires cups and smbclient (the latter is not patch yet to be separately optional)
+# Requires gnome_bg_set_color, which was replaced with gnome_bg_set_rgba in 3.27.90
 COMMON_DEPEND="
 	>=dev-libs/glib-2.44.0:2[dbus]
 	>=x11-libs/gdk-pixbuf-2.23.0:2
 	>=x11-libs/gtk+-3.22.0:3[X,wayland?]
 	>=gnome-base/gsettings-desktop-schemas-3.21.4
 	>=gnome-base/gnome-desktop-3.21.2:3=
-	>=gnome-base/gnome-settings-daemon-3.23.90[colord,policykit]
+	<gnome-base/gnome-desktop-3.27.90:3
+	>=gnome-base/gnome-settings-daemon-3.23.90[colord]
 	>=x11-misc/colord-0.1.34:0=
 
 	>=dev-libs/libpwquality-1.2.2

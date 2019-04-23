@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
@@ -11,16 +11,14 @@ SRC_URI="https://dev.gentoo.org/~flameeyes/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64-fbsd ~x86-fbsd"
 IUSE="debug +cracklib passwdqc consolekit gnome-keyring selinux mktemp pam_ssh +sha512 pam_krb5 minimal"
 RESTRICT="binchecks"
 
 RDEPEND="
 	|| (
 		>=sys-libs/pam-0.99.9.0-r1
-		( sys-auth/openpam
-		  || ( sys-freebsd/freebsd-pam-modules sys-netbsd/netbsd-pam-modules )
-		)
+		( sys-auth/openpam sys-freebsd/freebsd-pam-modules )
 	)
 	cracklib? ( >=sys-libs/pam-0.99[cracklib] )
 	consolekit? ( >=sys-auth/consolekit-0.3[pam] )

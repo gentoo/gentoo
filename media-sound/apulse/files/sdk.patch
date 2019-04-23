@@ -1,0 +1,103 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 072f3b1..5fe6bcd 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,5 +1,6 @@
+ project(apulse)
+ cmake_minimum_required (VERSION 2.8)
++include(GNUInstallDirs)
+ 
+ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=gnu99 -Wall -fPIC -fvisibility=hidden")
+ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Werror=implicit-function-declaration")
+@@ -28,6 +29,8 @@ else()
+     include_directories(${PA_INCLUDE_DIRECTORIES})
+ endif()
+ 
++set(INSTALL_SDK 0 CACHE BOOLEAN "Install SDK files to build applications with apulse (Pulse Audio headers and pkg-config files) instead of system ones")
++
+ link_directories(${REQ_LIBRARY_DIRS})
+ 
+ add_library(trace-helper STATIC
+@@ -72,12 +75,30 @@ target_link_libraries(pulse-simple ${SYMBOLMAP} trace-helper ${REQ_LIBRARIES})
+ 
+ add_subdirectory(tests)
+ 
+-set(APULSEPATH "${CMAKE_INSTALL_PREFIX}/lib/apulse" CACHE PATH "library installation directory")
+-set(APULSE_SEARCH_PATHS "${APULSEPATH}" CACHE PATH "directory list for LD_LIBRARY_PATH")
+-configure_file("${CMAKE_CURRENT_SOURCE_DIR}/src/apulse.template"
+-               "${CMAKE_CURRENT_BINARY_DIR}/apulse" @ONLY)
++if (${INSTALL_SDK})
++    set(APULSEPATH "${CMAKE_INSTALL_LIBDIR}" CACHE PATH "library installation directory")
++
++    configure_file("${CMAKE_CURRENT_SOURCE_DIR}/pkgconfig/libpulse.pc.in"
++                   "${CMAKE_CURRENT_BINARY_DIR}/pkgconfig/libpulse.pc" @ONLY)
++    configure_file("${CMAKE_CURRENT_SOURCE_DIR}/pkgconfig/libpulse-simple.pc.in"
++                   "${CMAKE_CURRENT_BINARY_DIR}/pkgconfig/libpulse-simple.pc" @ONLY)
++    configure_file("${CMAKE_CURRENT_SOURCE_DIR}/pkgconfig/libpulse-mainloop-glib.pc.in"
++                   "${CMAKE_CURRENT_BINARY_DIR}/pkgconfig/libpulse-mainloop-glib.pc" @ONLY)
++else()
++    set(APULSEPATH "${CMAKE_INSTALL_LIBDIR}/apulse" CACHE PATH "library installation directory")
++    set(APULSE_SEARCH_PATHS "${CMAKE_INSTALL_PREFIX}/${APULSEPATH}" CACHE PATH "directory list for LD_LIBRARY_PATH")
++
++    configure_file("${CMAKE_CURRENT_SOURCE_DIR}/src/apulse.template"
++                   "${CMAKE_CURRENT_BINARY_DIR}/apulse" @ONLY)
++endif()
+ 
+-install(FILES "${CMAKE_CURRENT_BINARY_DIR}/apulse" DESTINATION bin
+-        PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE)
+ install(TARGETS pulse-simple pulse pulse-mainloop-glib DESTINATION "${APULSEPATH}")
+-install(FILES "${CMAKE_SOURCE_DIR}/man/apulse.1" DESTINATION share/man/man1)
++
++if (${INSTALL_SDK})
++    install(DIRECTORY "${CMAKE_SOURCE_DIR}/3rdparty/pulseaudio-headers/pulse" DESTINATION include)
++    install(DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/pkgconfig" DESTINATION "${CMAKE_INSTALL_LIBDIR}")
++else()
++    install(FILES "${CMAKE_CURRENT_BINARY_DIR}/apulse" DESTINATION bin
++            PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE)
++    install(FILES "${CMAKE_SOURCE_DIR}/man/apulse.1" DESTINATION share/man/man1)
++endif()
+diff --git a/pkgconfig/libpulse-mainloop-glib.pc.in b/pkgconfig/libpulse-mainloop-glib.pc.in
+new file mode 100644
+index 0000000..957e3b2
+--- /dev/null
++++ b/pkgconfig/libpulse-mainloop-glib.pc.in
+@@ -0,0 +1,9 @@
++libdir=@CMAKE_INSTALL_FULL_LIBDIR@
++includedir=@CMAKE_INSTALL_FULL_INCLUDEDIR@
++
++Name: libpulse-mainloop-glib
++Description: PulseAudio GLib 2.0 Main Loop Wrapper (apulse)
++Version: 5.0
++Libs: -L${libdir} -lpulse-mainloop-glib -pthread
++Cflags: -I${includedir}
++Requires: glib-2.0
+diff --git a/pkgconfig/libpulse-simple.pc.in b/pkgconfig/libpulse-simple.pc.in
+new file mode 100644
+index 0000000..57d917f
+--- /dev/null
++++ b/pkgconfig/libpulse-simple.pc.in
+@@ -0,0 +1,9 @@
++libdir=@CMAKE_INSTALL_FULL_LIBDIR@
++includedir=@CMAKE_INSTALL_FULL_INCLUDEDIR@
++
++Name: libpulse-simple
++Description: PulseAudio Simplified Synchronous Client Interface (apulse)
++Version: 5.0
++Libs: -L${libdir} -lpulse-simple -pthread
++Cflags: -I${includedir}
++Requires: glib-2.0
+diff --git a/pkgconfig/libpulse.pc.in b/pkgconfig/libpulse.pc.in
+new file mode 100644
+index 0000000..edcbbd8
+--- /dev/null
++++ b/pkgconfig/libpulse.pc.in
+@@ -0,0 +1,9 @@
++libdir=@CMAKE_INSTALL_FULL_LIBDIR@
++includedir=@CMAKE_INSTALL_FULL_INCLUDEDIR@
++
++Name: libpulse
++Description: PulseAudio Client Interface (apulse)
++Version: 5.0
++Libs: -L${libdir} -lpulse -pthread
++Cflags: -I${includedir}
++Requires: glib-2.0 alsa

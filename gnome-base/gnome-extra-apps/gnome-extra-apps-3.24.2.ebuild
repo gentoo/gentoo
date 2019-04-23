@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,7 +7,7 @@ DESCRIPTION="Sub-meta package for the applications of GNOME 3"
 HOMEPAGE="https://www.gnome.org/"
 LICENSE="metapackage"
 SLOT="3.0"
-IUSE="+games +share +shotwell +tracker"
+IUSE="+games share +shotwell +tracker"
 
 KEYWORDS="amd64 x86"
 
@@ -40,7 +40,7 @@ RDEPEND="
 	>=app-dicts/gnome-dictionary-3.24.1
 	>=mail-client/evolution-${PV}
 	>=net-analyzer/gnome-nettool-3.8.1
-	>=gnome-extra/gnome-tweak-tool-3.24.1
+	>=gnome-extra/gnome-tweaks-3.24.1
 	>=gnome-extra/nautilus-sendto-3.8.4
 	>=net-misc/vinagre-3.22.0
 

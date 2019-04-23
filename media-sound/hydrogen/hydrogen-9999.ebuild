@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit cmake-utils git-r3 xdg-utils
+inherit git-r3 xdg cmake-utils
 
 DESCRIPTION="Advanced drum machine"
 HOMEPAGE="http://www.hydrogen-music.org/"
@@ -12,11 +12,15 @@ EGIT_REPO_URI="https://github.com/${PN}-music/${PN}"
 LICENSE="GPL-2 ZLIB"
 SLOT="0"
 KEYWORDS=""
-IUSE="alsa +archive jack ladspa lash osc oss portaudio portmidi pulseaudio"
+IUSE="alsa +archive doc jack ladspa lash osc oss portaudio portmidi pulseaudio"
 
 REQUIRED_USE="lash? ( alsa )"
 
-RDEPEND="
+BDEPEND="
+	virtual/pkgconfig
+	doc? ( app-doc/doxygen )
+"
+DEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5
@@ -35,13 +39,11 @@ RDEPEND="
 	portmidi? ( media-libs/portmidi )
 	pulseaudio? ( media-sound/pulseaudio )
 "
-DEPEND="${RDEPEND}
-	virtual/pkgconfig
-"
+RDEPEND="${DEPEND}"
 
 DOCS=( AUTHORS ChangeLog DEVELOPERS README.txt )
 
-PATCHES=( "${FILESDIR}/${PN}-1.0.0_pre20180301-gnuinstalldirs.patch" )
+PATCHES=( "${FILESDIR}/${P}-gnuinstalldirs.patch" )
 
 src_configure() {
 	local mycmakeargs=(
@@ -65,17 +67,12 @@ src_configure() {
 	cmake-utils_src_configure
 }
 
+src_compile() {
+	cmake-utils_src_compile
+	use doc && cmake-utils_src_compile doc
+}
+
 src_install() {
+	use doc && local HTML_DOCS=( "${BUILD_DIR}"/docs/html/. )
 	cmake-utils_src_install
-	dosym ../../${PN}/data/doc /usr/share/doc/${PF}/html
-}
-
-pkg_postinst() {
-	xdg_mimeinfo_database_update
-	xdg_desktop_database_update
-}
-
-pkg_postrm() {
-	xdg_mimeinfo_database_update
-	xdg_desktop_database_update
 }

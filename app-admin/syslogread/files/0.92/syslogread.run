@@ -1,2 +1,0 @@
-#!/bin/sh
-exec envuidgid syslog sysloglread -U /dev/log

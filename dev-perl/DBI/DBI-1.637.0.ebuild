@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -27,6 +27,10 @@ DEPEND="${RDEPEND}
 	)
 "
 src_test() {
+	if [[ $(makeopts_jobs) -gt 70 ]]; then
+		einfo "Reducing jobs to 70. Bug: https://bugs.gentoo.org/675164"
+		MAKEOPTS="${MAKEOPTS} -j70";
+	fi
 	perl_rm_files t/pod-coverage.t t/pod.t
 	perl-module_src_test
 }

@@ -3,7 +3,7 @@
 
 EAPI=6
 
-USE_RUBY="ruby22 ruby23 ruby24"
+USE_RUBY="ruby23 ruby24 ruby25"
 
 RUBY_FAKEGEM_EXTRADOC="README.md Changelog.markdown"
 RUBY_FAKEGEM_RECIPE_DOC="yard"
@@ -21,7 +21,7 @@ IUSE=""
 ruby_add_rdepend ">=dev-ruby/nokogiri-1.6.0
 	>=dev-ruby/erubis-2.7.0
 	>=dev-ruby/ruby_parser-3.5
-	>=dev-ruby/haml-4.0.0 <dev-ruby/haml-6"
+	|| ( dev-ruby/haml:5 dev-ruby/haml:4 )"
 
 ruby_add_bdepend "test? ( dev-ruby/minitest:0 )"
 

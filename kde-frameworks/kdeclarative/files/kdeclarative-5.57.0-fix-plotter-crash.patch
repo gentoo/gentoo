@@ -1,0 +1,262 @@
+From 0aab7d23a2ce155c4beb5cf77fcac02c93b183b7 Mon Sep 17 00:00:00 2001
+From: David Edmundson <kde@davidedmundson.co.uk>
+Date: Thu, 18 Apr 2019 11:15:06 +0100
+Subject: Plotter: Scope GL Program to lifespan of scenegraph node
+
+Summary:
+Currently the QOpenGLProgram was static. This works when you only have
+one OpenGL context that is never invalidated.
+
+Instead we shoul have a new program created for each context. There is
+no benefit of being static when we can use the cached shader loading.
+
+As we need a program per context, we would need to handle windowChanged
+and sceneGraphInvalidated manually. Instead we can scope the program to
+the QSGNode which will be deleted and recreated on the render thread
+automatically by the scene graph backend.
+
+We can also drop ManagedTextureNode and use
+QSGSimpleTextureNode::setOwnsTexture which does the same thing.
+
+BUG: 403453
+
+Test Plan:
+Created a CPU load viewer on my panel
+Dragged it to my desktop
+Previously that didn't render anything
+Now it does
+
+It should fix the crashes that we
+see on window moves and handling sceneGraphInvalidated
+
+Reviewers: #plasma
+
+Subscribers: kde-frameworks-devel
+
+Tags: #frameworks
+
+Differential Revision: https://phabricator.kde.org/D20656
+---
+ src/qmlcontrols/kquickcontrolsaddons/plotter.cpp | 106 ++++++++++++++---------
+ src/qmlcontrols/kquickcontrolsaddons/plotter.h   |  11 +--
+ 2 files changed, 68 insertions(+), 49 deletions(-)
+
+diff --git a/src/qmlcontrols/kquickcontrolsaddons/plotter.cpp b/src/qmlcontrols/kquickcontrolsaddons/plotter.cpp
+index 650151d..8495bbd 100644
+--- a/src/qmlcontrols/kquickcontrolsaddons/plotter.cpp
++++ b/src/qmlcontrols/kquickcontrolsaddons/plotter.cpp
+@@ -44,8 +44,6 @@
+ 
+ #include <QDebug>
+ 
+-#include <QuickAddons/ManagedTextureNode>
+-
+ #include <math.h>
+ 
+ //completely arbitrary
+@@ -262,16 +260,58 @@ void PlotTexture::recreate(const QSize &size)
+     m_size = size;
+ }
+ 
++class PlotSGNode: public QSGSimpleTextureNode
++{
++public:
++    PlotSGNode();
++    void bind() {
++        m_program->bind();
++    }
++    void setMatrix(const QMatrix4x4 &matrix) {
++        m_program->setUniformValue(u_matrix, matrix);
++    }
++    void setColor1(const QColor &color) {
++        m_program->setUniformValue(u_color1, color);
++    }
++    void setColor2(const QColor &color) {
++        m_program->setUniformValue(u_color2, color);
++    }
++    void setYMin(float min) {
++        m_program->setUniformValue(u_yMin, min);
++    }
++    void setYMax(float max) {
++        m_program->setUniformValue(u_yMax, max);
++    }
++    ~PlotSGNode() = default;
++private:
++    QScopedPointer<QOpenGLShaderProgram> m_program;
++    int u_matrix;
++    int u_color1;
++    int u_color2;
++    int u_yMin;
++    int u_yMax;
+ 
++};
++
++PlotSGNode::PlotSGNode():
++    m_program(new QOpenGLShaderProgram)
++{
++    setOwnsTexture(true);
++    m_program->addCacheableShaderFromSourceCode(QOpenGLShader::Vertex, vs_source);
++    m_program->addCacheableShaderFromSourceCode(QOpenGLShader::Fragment, fs_source);
++    m_program->bindAttributeLocation("vertex", 0);
++    m_program->link();
++
++    u_yMin = m_program->uniformLocation("yMin");
++    u_yMax = m_program->uniformLocation("yMax");
++    u_color1 = m_program->uniformLocation("color1");
++    u_color2 = m_program->uniformLocation("color2");
++    u_matrix = m_program->uniformLocation("matrix");
++}
+ 
+-// ----------------------
+ 
+-QOpenGLShaderProgram *Plotter::s_program = nullptr;
+-int Plotter::u_matrix;
+-int Plotter::u_color1;
+-int Plotter::u_color2;
+-int Plotter::u_yMin;
+-int Plotter::u_yMax;
++
++// ----------------------
+ 
+ Plotter::Plotter(QQuickItem *parent)
+     : QQuickItem(parent),
+@@ -652,18 +692,18 @@ void Plotter::render()
+     glEnableVertexAttribArray(0);
+ 
+     // Bind the shader program
+-    s_program->bind();
+-    s_program->setUniformValue(u_matrix, m_matrix);
++    m_node->bind();
++    m_node->setMatrix(m_matrix);
+ 
+     // Draw the lines
+     QColor color1 = m_gridColor;
+     QColor color2 = m_gridColor;
+     color1.setAlphaF(0.10);
+     color2.setAlphaF(0.40);
+-    s_program->setUniformValue(u_yMin, (float) 0.0);
+-    s_program->setUniformValue(u_yMax, (float) height());
+-    s_program->setUniformValue(u_color1, color1);
+-    s_program->setUniformValue(u_color2, color2);
++    m_node->setYMin((float) 0.0);
++    m_node->setYMax((float) height());
++    m_node->setColor1(color1);
++    m_node->setColor2(color2);
+ 
+     glDrawArrays(GL_LINES, 0, (m_horizontalLineCount+1) * 2 );
+ 
+@@ -677,18 +717,18 @@ void Plotter::render()
+         color2 = data->color();
+         color2.setAlphaF(0.60);
+         // Draw the graph
+-        s_program->setUniformValue(u_yMin, min);
+-        s_program->setUniformValue(u_yMax, max);
+-        s_program->setUniformValue(u_color1, data->color());
+-        s_program->setUniformValue(u_color2, color2);
++        m_node->setYMin(min);
++        m_node->setYMax(max);
++        m_node->setColor1(data->color());
++        m_node->setColor2(color2);
+ 
+         //+2 is for the bottom line
+         glDrawArrays(GL_TRIANGLE_STRIP, m_horizontalLineCount*2 + 2 + oldCount.first + oldCount.second, verticesCounts[data].first);
+ 
+         oldCount.first += verticesCounts[data].first;
+ 
+-        s_program->setUniformValue(u_color1, data->color());
+-        s_program->setUniformValue(u_color2, data->color());
++        m_node->setColor1(data->color());
++        m_node->setColor2(data->color());
+         glDrawArrays(GL_LINE_STRIP, m_horizontalLineCount*2 + 2 + oldCount.first + oldCount.second, verticesCounts[data].second);
+ 
+         oldCount.second += verticesCounts[data].second;
+@@ -697,8 +737,8 @@ void Plotter::render()
+ 
+     glDisable(GL_BLEND);
+ 
+-    s_program->setUniformValue(u_color1, m_gridColor);
+-    s_program->setUniformValue(u_color2, m_gridColor);
++    m_node->setColor1(m_gridColor);
++    m_node->setColor2(m_gridColor);
+     glDrawArrays(GL_LINES, vertices.count()-2, 2);
+ 
+     if (m_haveMSAA && m_haveFramebufferBlit) {
+@@ -723,7 +763,7 @@ QSGNode *Plotter::updatePaintNode(QSGNode *oldNode, UpdatePaintNodeData *updateP
+         return nullptr;
+     }
+ 
+-    ManagedTextureNode *n = static_cast<ManagedTextureNode *>(oldNode);
++    PlotSGNode *n = static_cast<PlotSGNode *>(oldNode);
+ 
+     if (width() == 0 && height() == 0) {
+         delete oldNode;
+@@ -731,8 +771,8 @@ QSGNode *Plotter::updatePaintNode(QSGNode *oldNode, UpdatePaintNodeData *updateP
+     }
+ 
+     if (!n) {
+-        n = new ManagedTextureNode();
+-        n->setTexture(QSharedPointer<QSGTexture>(new PlotTexture(window()->openglContext())));
++        n = new PlotSGNode();
++        n->setTexture(new PlotTexture(window()->openglContext()));
+         n->setFiltering(QSGTexture::Linear);
+ 
+         m_node = n;
+@@ -786,20 +826,6 @@ QSGNode *Plotter::updatePaintNode(QSGNode *oldNode, UpdatePaintNodeData *updateP
+         m_initialized = true;
+     }
+ 
+-    if (!s_program) {
+-        s_program = new QOpenGLShaderProgram;
+-        s_program->addShaderFromSourceCode(QOpenGLShader::Vertex, vs_source);
+-        s_program->addShaderFromSourceCode(QOpenGLShader::Fragment, fs_source);
+-        s_program->bindAttributeLocation("vertex", 0);
+-        s_program->link();
+-
+-        u_yMin = s_program->uniformLocation("yMin");
+-        u_yMax = s_program->uniformLocation("yMax");
+-        u_color1 = s_program->uniformLocation("color1");
+-        u_color2 = s_program->uniformLocation("color2");
+-        u_matrix = s_program->uniformLocation("matrix");
+-    }
+-
+     //we need a size always equal or smaller, size.toSize() won't do
+     const QSize targetTextureSize(qRound(boundingRect().size().width()), qRound(boundingRect().size().height()));
+     if (n->texture()->textureSize() != targetTextureSize) {
+diff --git a/src/qmlcontrols/kquickcontrolsaddons/plotter.h b/src/qmlcontrols/kquickcontrolsaddons/plotter.h
+index 01c0ef2..11ae233 100644
+--- a/src/qmlcontrols/kquickcontrolsaddons/plotter.h
++++ b/src/qmlcontrols/kquickcontrolsaddons/plotter.h
+@@ -47,7 +47,7 @@
+ #include <QQuickWindow>
+ #include <QMutex>
+ 
+-class ManagedTextureNode;
++class PlotSGNode;
+ 
+ /**
+  * a Plotter can draw a graph of values arriving from an arbitrary number of data sources
+@@ -242,7 +242,7 @@ private:
+     QList<PlotData *> m_plotData;
+ 
+     GLuint m_fbo = 0;
+-    ManagedTextureNode *m_node = nullptr;
++    PlotSGNode *m_node = nullptr;
+     qreal m_min;
+     qreal m_max;
+     qreal m_rangeMax;
+@@ -262,13 +262,6 @@ private:
+     int m_samples;
+     QPointer <QQuickWindow> m_window;
+     QMutex m_mutex;
+-
+-    static QOpenGLShaderProgram *s_program;
+-    static int u_matrix;
+-    static int u_color1;
+-    static int u_color2;
+-    static int u_yMin;
+-    static int u_yMax;
+ };
+ 
+ #endif
+-- 
+cgit v1.1

@@ -1,17 +1,17 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_{4,5,6} )
+PYTHON_COMPAT=( python3_{5,6} )
 inherit autotools python-single-r1
 
 MY_PV="${PV}-1"
 MY_P="${PN}-${MY_PV}"
 
 DESCRIPTION="A library for manipulating block devices"
-HOMEPAGE="https://github.com/rhinstaller/libblockdev"
-SRC_URI="https://github.com/rhinstaller/${PN}/archive/${MY_PV}.tar.gz -> ${MY_P}.tar.gz"
+HOMEPAGE="https://github.com/storaged-project/libblockdev"
+SRC_URI="https://github.com/storaged-project/${PN}/archive/${MY_PV}.tar.gz -> ${MY_P}.tar.gz"
 LICENSE="LGPL-2+"
 SLOT="0"
 KEYWORDS="alpha amd64 arm ~arm64 ia64 ppc ppc64 ~sparc x86"
@@ -42,6 +42,7 @@ CDEPEND="
 DEPEND="
 	${CDEPEND}
 	>=dev-libs/gobject-introspection-1.3.0
+	sys-devel/autoconf-archive
 	doc? ( dev-util/gtk-doc )
 "
 

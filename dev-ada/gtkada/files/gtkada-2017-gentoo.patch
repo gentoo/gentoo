@@ -1,14 +1,3 @@
---- gtkada-gpl-2015-src/shared.gpr.in.old	2017-01-05 23:28:35.838073270 +0100
-+++ gtkada-gpl-2015-src/shared.gpr.in	2017-01-05 23:30:17.752255709 +0100
-@@ -44,6 +44,8 @@
-              for Switches ("C") use ("-O2");
-       end case;
- 
-+      for Driver ("C") use External ("GCC", "gcc");
-+      for PIC_Option ("C") use ("-fPIC");
-       for Switches ("C") use Compiler'Switches ("C") & Gtk_Include;
-       for Switches ("Objective-C") use Compiler'Switches ("Objective-C") & Gtk_Include;
-    end Compiler;
 --- gtkada-gpl-2016-src/Makefile.in.old	2017-01-21 22:42:18.319969095 +0100
 +++ gtkada-gpl-2016-src/Makefile.in	2017-01-21 22:42:33.989700236 +0100
 @@ -60,30 +60,33 @@

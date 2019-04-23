@@ -16,12 +16,8 @@
 		<description>Backup to Robin. Please CC on bugs.</description>
 	</maintainer>
 	<use>
-		<flag name="clvm">Allow users to build clustered lvm2</flag>
-		<flag name="cman">Cman support for clustered lvm</flag>
-		<flag name="corosync">Corosync support for clustered lvm</flag>
 		<flag name="lvm1">Allow users to build lvm2 with lvm1 support</flag>
 		<flag name="lvm2create_initrd">Install lvm2create_initrd script and pull in <pkg>sys-apps/makedev</pkg> for the /sbin/MAKEDEV command</flag>
-		<flag name="openais">Openais support for clustered lvm</flag>
 		<flag name="thin">Support for thin volumes</flag>
 		<flag name="device-mapper-only">Build only device-mapper and not the rest of LVM2 (UNSUPPORTED)</flag>
 		<flag name="sanlock">Enable lvmlockd with support for sanlock</flag>

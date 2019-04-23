@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-USE_RUBY="ruby22 ruby23 ruby24"
+USE_RUBY="ruby23 ruby24 ruby25"
 
 RUBY_FAKEGEM_TASK_DOC=""
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
@@ -30,7 +30,6 @@ IUSE=""
 
 ruby_add_bdepend "
 	test? (
-		=dev-ruby/activesupport-4*
-		>=dev-ruby/i18n-0.6:0.6
+		|| ( dev-ruby/i18n:0.9 dev-ruby/i18n:0.8 dev-ruby/i18n:0.7 dev-ruby/i18n:0.6 )
 		dev-ruby/tzinfo
 	)"

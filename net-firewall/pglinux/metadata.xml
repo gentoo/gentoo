@@ -3,9 +3,9 @@
 <pkgmetadata>
 	<!-- maintainer-needed -->
 	<upstream>
-		<changelog>https://sourceforge.net/news/?group_id=131687</changelog>
+		<changelog>https://sourceforge.net/p/peerguardian/news/</changelog>
 		<doc lang="en">https://sourceforge.net/projects/peerguardian/support</doc>
-		<bugs-to>https://sourceforge.net/tracker/?group_id=131687</bugs-to>
+		<bugs-to>https://sourceforge.net/p/peerguardian/bugs/</bugs-to>
 		<remote-id type="sourceforge">peerguardian</remote-id>
 	</upstream>
 	<use>

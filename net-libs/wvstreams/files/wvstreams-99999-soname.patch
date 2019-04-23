@@ -1,0 +1,11 @@
+--- a/default.so.do
++++ b/default.so.do
+@@ -47,7 +47,7 @@
+     redo-ifchange "$OUT/$2.a"
+     ln -s $2.a "$sofile"
+ else
+-    $CXX -o "$sofile" -shared \
++    $CXX -o "$sofile" -shared -Wl,-soname,$sofile \
+         $zdefs \
+         $LDFLAGS \
+         $obj $libdep $libs

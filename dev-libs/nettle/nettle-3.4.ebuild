@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit autotools multilib-build multilib-minimal multilib toolchain-funcs
 
@@ -11,7 +11,7 @@ SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 
 LICENSE="|| ( LGPL-3 LGPL-2.1 )"
 SLOT="0/6.2" # subslot = libnettle soname version, .2 as broke ABI bug#601512 then fixed
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 ~sh ~sparc x86 ~x64-cygwin ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 ~sh sparc x86 ~x64-cygwin ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="doc +gmp neon static-libs test cpu_flags_x86_aes"
 
 DEPEND="gmp? ( >=dev-libs/gmp-5.0:0=[${MULTILIB_USEDEP}] )"
@@ -24,8 +24,6 @@ MULTILIB_WRAPPED_HEADERS=(
 
 DOCS=()
 HTML_DOCS=()
-
-S="${WORKDIR}/${PN}-3.4"
 
 pkg_setup() {
 	use doc && DOCS+=(

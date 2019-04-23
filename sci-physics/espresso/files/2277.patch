@@ -1,0 +1,19 @@
+From 46110a514ce2420a350cca8b9af28e0c4eb51861 Mon Sep 17 00:00:00 2001
+From: Christoph Junghans <junghans@votca.org>
+Date: Fri, 21 Sep 2018 06:57:16 -0600
+Subject: [PATCH] cmake: install libH5mdCore
+
+---
+ src/core/io/writer/CMakeLists.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/core/io/writer/CMakeLists.txt b/src/core/io/writer/CMakeLists.txt
+index e677ba273a..42b96c96af 100644
+--- a/src/core/io/writer/h5md/CMakeLists.txt
++++ b/src/core/io/writer/h5md/CMakeLists.txt
+@@ -4,4 +4,5 @@
+   "${CMAKE_SOURCE_DIR}/libs/h5xx"
+   )
+ add_dependencies(H5mdCore EspressoConfig)
++install(TARGETS H5mdCore LIBRARY DESTINATION ${LIBDIR})
+ 

@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy pypy3 )
+PYTHON_COMPAT=( python2_7 python3_{5,6,7} pypy pypy3 )
 
 inherit distutils-r1 bash-completion-r1 vcs-snapshot
 
@@ -31,6 +31,11 @@ DEPEND="${RDEPEND}
 # Tests pass without it
 
 S="${WORKDIR}/${MY_P}"
+
+PATCHES=(
+	# fix generators for python3.7+
+	"${FILESDIR}"/pygments-2.2.0-pep479.patch
+)
 
 python_compile_all() {
 	use doc && emake -C doc html

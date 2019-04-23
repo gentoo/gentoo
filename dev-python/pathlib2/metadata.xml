@@ -8,5 +8,6 @@
 	<upstream>
 		<remote-id type="pypi">pathlib2</remote-id>
 		<remote-id type="github">mcmtroffaes/pathlib2</remote-id>
+		<bugs-to>https://github.com/mcmtroffaes/pathlib2/issues</bugs-to>
 	</upstream>
 </pkgmetadata>

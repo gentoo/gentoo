@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 inherit cmake-multilib
 
@@ -10,7 +10,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/${PN}/${PN}-c.git"
 else
 	SRC_URI="https://github.com/${PN}/${PN}-c/releases/download/cpp-${PV}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
+	KEYWORDS="~amd64 ~arm ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 fi
 
 DESCRIPTION="MessagePack is a binary-based efficient data interchange format"
@@ -37,9 +37,9 @@ PATCHES=(
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use cxx MSGPACK_ENABLE_CXX)
-		$(cmake-utils_use static-libs MSGPACK_STATIC)
-		$(cmake-utils_use test MSGPACK_BUILD_TESTS)
+		-DMSGPACK_ENABLE_CXX=$(usex cxx)
+		-DMSGPACK_STATIC=$(usex static-libs)
+		-DMSGPACK_BUILD_TESTS=$(usex test)
 	)
 
 	cmake-multilib_src_configure

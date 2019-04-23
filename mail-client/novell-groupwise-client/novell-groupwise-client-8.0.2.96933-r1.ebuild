@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -78,7 +78,7 @@ src_install() {
 pkg_nofetch() {
 	einfo "You can obtain an evaluation version of the Groupwise client at"
 	einfo "${HOMEPAGE} - please download ${SRC_URI}"
-	einfo "and place it in ${DISTDIR}. Alternatively request the file"
-	einfo "from the Groupwise server provider of your organization."
+	einfo "and place it into your DISTDIR directory. Alternatively request"
+	einfo "the file from the Groupwise server provider of your organization."
 	einfo "Note that the client is useless without a server account."
 }

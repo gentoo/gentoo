@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -65,10 +65,9 @@ S=${WORKDIR}
 # If you want to fetch it yourself (not from the mirrors), there is an IP-based
 # clickthrough to accept the EULA.
 pkg_nofetch() {
-	einfo "Upstream has implement a mandatory clickthrough EULA for distfile download"
-	einfo "Please visit $SRC_URI in your browser. The clickthrough is IP-based,"
-	einfo "so no wget is possible."
-	einfo "And place $A in ${DISTDIR}"
+	einfo "Upstream has implemented a mandatory clickthrough EULA for distfile download"
+	einfo "Please visit ${SRC_URI}"
+	einfo "And place ${A} into your DISTDIR directory"
 }
 
 src_install() {

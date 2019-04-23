@@ -4,10 +4,6 @@
 	<maintainer type="person">
 		<email>grobian@gentoo.org</email>
 	</maintainer>
-	<maintainer type="project">
-		<email>net-mail@gentoo.org</email>
-		<name>Net-Mail</name>
-	</maintainer>
 	<longdescription>
 		Exim is a message transfer agent (MTA) developed at the University of
 		Cambridge for use on Unix systems connected to the Internet. It is

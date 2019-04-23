@@ -1,0 +1,83 @@
+From c82b747eaf96cc77efa530ca5844ba01b91bfc88 Mon Sep 17 00:00:00 2001
+From: Thomas Deutschmann <whissi@whissi.de>
+Date: Sat, 6 Apr 2019 00:28:54 +0200
+Subject: [PATCH] tests: omhttp: add Python 3 compatibility
+
+Fixes: https://github.com/rsyslog/rsyslog/issues/3599
+---
+ tests/omhttp_server.py | 22 +++++++++++-----------
+ 1 file changed, 11 insertions(+), 11 deletions(-)
+
+diff --git a/tests/omhttp_server.py b/tests/omhttp_server.py
+index 6962138fa..d3fdb3a9a 100644
+--- a/tests/omhttp_server.py
++++ b/tests/omhttp_server.py
+@@ -36,16 +36,16 @@ def validate_auth(self):
+         if 'Authorization' not in self.headers:
+             self.send_response(401)
+             self.end_headers()
+-            self.wfile.write('missing "Authorization" header')
++            self.wfile.write(b'missing "Authorization" header')
+             return False
+ 
+         auth_header = self.headers['Authorization']
+         _, b64userpwd = auth_header.split()
+-        userpwd = base64.b64decode(b64userpwd)
++        userpwd = base64.b64decode(b64userpwd).decode('utf-8')
+         if userpwd != metadata['userpwd']:
+             self.send_response(401)
+             self.end_headers()
+-            self.wfile.write('invalid auth: {0}'.format(userpwd))
++            self.wfile.write(b'invalid auth: {0}'.format(userpwd))
+             return False
+ 
+         return True
+@@ -60,16 +60,16 @@ def do_POST(self):
+         if metadata['fail_with_400_after'] != -1 and metadata['posts'] > metadata['fail_with_400_after']:
+             self.send_response(400)
+             self.end_headers()
+-            self.wfile.write('BAD REQUEST')
++            self.wfile.write(b'BAD REQUEST')
+             return
+ 
+         if metadata['posts'] > 1 and metadata['fail_every'] != -1 and metadata['posts'] % metadata['fail_every'] == 0:
+             self.send_response(500)
+             self.end_headers()
+-            self.wfile.write('INTERNAL ERROR')
++            self.wfile.write(b'INTERNAL ERROR')
+             return
+ 
+-        content_length = int(self.headers['Content-Length'])
++        content_length = int(self.headers['Content-Length'] or 0)
+         raw_data = self.rfile.read(content_length)
+ 
+         if metadata['decompress']:
+@@ -79,12 +79,12 @@ def do_POST(self):
+ 
+         if self.path not in data:
+             data[self.path] = []
+-        data[self.path].append(post_data)
++        data[self.path].append(post_data.decode('utf-8'))
+ 
+-        res = json.dumps({'msg': 'ok'})
++        res = json.dumps({'msg': 'ok'}).encode('utf8')
+ 
+         self.send_response(200)
+-        self.send_header('Content-Type', 'application/json')
++        self.send_header('Content-Type', 'application/json; charset=utf-8')
+         self.send_header('Content-Length', len(res))
+         self.end_headers()
+ 
+@@ -97,10 +97,10 @@ def do_GET(self):
+         else:
+             result = []
+ 
+-        res = json.dumps(result)
++        res = json.dumps(result).encode('utf8')
+ 
+         self.send_response(200)
+-        self.send_header('Content-Type', 'application/json')
++        self.send_header('Content-Type', 'application/json; charset=utf-8')
+         self.send_header('Content-Length', len(res))
+         self.end_headers()
+ 

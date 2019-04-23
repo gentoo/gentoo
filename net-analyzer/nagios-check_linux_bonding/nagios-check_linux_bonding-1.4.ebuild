@@ -13,7 +13,7 @@ SRC_URI="http://folk.uio.no/trondham/software/files/${MY_P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND="dev-lang/perl"

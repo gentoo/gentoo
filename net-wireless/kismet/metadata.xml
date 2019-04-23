@@ -12,6 +12,7 @@
 			this allows running kismet as a normal user, significantly
 			reducing security risks
 		</flag>
+		<flag name="mousejack">Add support for mousejack hardware using <pkg>dev-libs/libusb</pkg></flag>
 		<flag name="pcre">Build with pcre support</flag>
 		<flag name="speech">Audio support using <pkg>app-accessibility/flite</pkg></flag>
 		<flag name="plugin-autowep">Build the autowep plugin</flag>

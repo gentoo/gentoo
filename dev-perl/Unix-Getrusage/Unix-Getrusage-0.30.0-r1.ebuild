@@ -11,4 +11,4 @@ inherit perl-module
 DESCRIPTION="Perl interface to the Unix getrusage system call"
 
 SLOT="0"
-KEYWORDS="~amd64 ~mips ~x86"
+KEYWORDS="amd64 ~mips x86"

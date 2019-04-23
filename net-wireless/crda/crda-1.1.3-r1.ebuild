@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS="alpha amd64 arm ~arm64 ia64 ~mips ppc ppc64 sparc x86"
 IUSE=""
 
-RDEPEND="dev-libs/openssl:0
+RDEPEND="dev-libs/openssl:0=
 	dev-libs/libnl:3
 	net-wireless/wireless-regdb"
 DEPEND="${RDEPEND}

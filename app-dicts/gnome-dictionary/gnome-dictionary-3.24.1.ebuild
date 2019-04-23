@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -26,6 +26,7 @@ RDEPEND="${COMMON_DEPEND}
 # ${PN} was part of gnome-utils before 3.4
 DEPEND="${COMMON_DEPEND}
 	>=dev-util/gtk-doc-am-1.15
+	dev-util/glib-utils
 	>=dev-util/intltool-0.40
 	dev-util/itstool
 	>=sys-devel/gettext-0.17

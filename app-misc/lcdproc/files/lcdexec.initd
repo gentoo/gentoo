@@ -1,0 +1,16 @@
+#!/sbin/openrc-run
+# Copyright 1999-2018 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+instance="${SVCNAME}"
+name="LCDProc (${instance})"
+pidfile="/run/${instance}.pid"
+
+command="/usr/bin/lcdexec"
+command_args="-c /etc/${instance}.conf"
+
+depend() {
+	after ntp-client
+	use LCDd
+	use net
+}

@@ -1,21 +1,21 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit desktop flag-o-matic
 
 DESCRIPTION="A Boulderdash clone"
-HOMEPAGE="http://www.artsoft.org/rocksndiamonds/"
-SRC_URI="http://www.artsoft.org/RELEASES/unix/rocksndiamonds/${P}.tar.gz
-	http://www.artsoft.org/RELEASES/rocksndiamonds/levels/Contributions-1.2.0.zip
-	http://www.artsoft.org/RELEASES/rocksndiamonds/levels/BD2K3-1.0.0.zip
-	http://www.artsoft.org/RELEASES/rocksndiamonds/levels/Boulder_Dash_Dream-1.0.0.zip
-	http://www.artsoft.org/RELEASES/rocksndiamonds/levels/rnd-contrib-1.0.0.tar.gz
-	http://www.artsoft.org/RELEASES/rocksndiamonds/levels/Snake_Bite-1.0.0.zip
-	http://www.artsoft.org/RELEASES/rocksndiamonds/levels/Sokoban-1.0.0.zip
-	http://www.artsoft.org/RELEASES/unix/rocksndiamonds/levels/rockslevels-emc-1.0.tar.gz
-	http://www.artsoft.org/RELEASES/unix/rocksndiamonds/levels/rockslevels-sp-1.0.tar.gz
-	http://www.artsoft.org/RELEASES/unix/rocksndiamonds/levels/rockslevels-dx-1.0.tar.gz
+HOMEPAGE="https://www.artsoft.org/rocksndiamonds/"
+SRC_URI="https://www.artsoft.org/RELEASES/unix/rocksndiamonds/${P}.tar.gz
+	https://www.artsoft.org/RELEASES/rocksndiamonds/levels/Contributions-1.2.0.zip
+	https://www.artsoft.org/RELEASES/rocksndiamonds/levels/BD2K3-1.0.0.zip
+	https://www.artsoft.org/RELEASES/rocksndiamonds/levels/Boulder_Dash_Dream-1.0.0.zip
+	https://www.artsoft.org/RELEASES/rocksndiamonds/levels/rnd-contrib-1.0.0.tar.gz
+	https://www.artsoft.org/RELEASES/rocksndiamonds/levels/Snake_Bite-1.0.0.zip
+	https://www.artsoft.org/RELEASES/rocksndiamonds/levels/Sokoban-1.0.0.zip
+	https://www.artsoft.org/RELEASES/unix/rocksndiamonds/levels/rockslevels-emc-1.0.tar.gz
+	https://www.artsoft.org/RELEASES/unix/rocksndiamonds/levels/rockslevels-sp-1.0.tar.gz
+	https://www.artsoft.org/RELEASES/unix/rocksndiamonds/levels/rockslevels-dx-1.0.tar.gz
 	mirror://gentoo/rnd_jue-v8.tar.bz2"
 
 LICENSE="GPL-2"

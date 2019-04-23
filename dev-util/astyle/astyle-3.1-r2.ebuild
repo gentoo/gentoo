@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/astyle/astyle_${PV}_linux.tar.gz"
 
 LICENSE="MIT"
 SLOT="0/3.1"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
+KEYWORDS="amd64 ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
 IUSE="examples java static-libs"
 
 DEPEND="app-arch/xz-utils
@@ -54,7 +54,7 @@ src_install() {
 
 	local libastylename="lib${PN}.so.${PV}.0"
 	local libastylejname="lib${PN}j.so.${PV}.0"
-	local libdestdir="${EPREFIX}/usr/$(get_libdir)"
+	local libdestdir="/usr/$(get_libdir)"
 
 	dolib.so "${libastylename}"
 	dosym "${libastylename}" "${libdestdir}/lib${PN}.so.$(get_major_version)"

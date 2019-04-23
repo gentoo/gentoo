@@ -1,0 +1,38 @@
+From 39ff091cddf8fd5e01047d80c7ed60c150537705 Mon Sep 17 00:00:00 2001
+From: Thanos Doukoudakis <thanos.doukoudakis@isode.com>
+Date: Fri, 11 May 2018 11:26:39 +0100
+Subject: Make generated files handle Unicode characters
+
+This patch handles a case where some of the files used to generate COPYING,
+were containing unicode strings, which could lead to a failure when building
+sid package. The code now will check the type of the string before writing to
+the file, and if needed it will transform it to the appropriate format.
+
+Test-Information:
+Generated the sid package with package_all_platforms script with no problems.
+Created a debian sid box and tested the installation of the generated
+packages. Validated the output generated in Windows 10 and Ubuntu 16.04 builds
+through the "About" dialog in Swift.
+
+Change-Id: I05e518b758f316d9fbf23c1079be5a462e75106c
+
+diff --git a/BuildTools/SCons/Tools/textfile.py b/BuildTools/SCons/Tools/textfile.py
+index 89f8963..9b424f2 100644
+--- a/BuildTools/SCons/Tools/textfile.py
++++ b/BuildTools/SCons/Tools/textfile.py
+@@ -113,7 +113,11 @@ def _action(target, source, env):
+     lsep = None
+     for s in source:
+         if lsep: fd.write(lsep)
+-        fd.write(_do_subst(s, subs))
++        stringtowrite = _do_subst(s, subs)
++        if isinstance(stringtowrite, str):
++          fd.write(stringtowrite)
++        elif isinstance(stringtowrite, unicode):
++          fd.write(stringtowrite.encode('utf-8'))
+         lsep = linesep
+     fd.close()
+ 
+-- 
+cgit v0.10.2-6-g49f6
+

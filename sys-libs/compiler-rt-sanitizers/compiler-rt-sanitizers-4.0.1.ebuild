@@ -68,6 +68,10 @@ src_prepare() {
 	eapply "${WORKDIR}/${P}-patchset"
 	cmake-utils_src_prepare
 
+	# sys/ustat.h removed in glibc 2.28
+	# https://bugs.gentoo.org/675654
+	eapply "${FILESDIR}"/5.0.2/0001-sanitizer-Use-pre-computed-size-of-struct-ustat-for-.patch
+
 	if use test; then
 		# remove tests that are broken by new glibc
 		# (disabled in 6.0.0+, r313069)

@@ -1,0 +1,102 @@
+diff -urp cuneiform-1.1.0/cuneiform_src/Kern/hhh/tigerh/h/strings.h cuneiform-1.1.0-char/cuneiform_src/Kern/hhh/tigerh/h/strings.h
+--- cuneiform-1.1.0/cuneiform_src/Kern/hhh/tigerh/h/strings.h	2017-11-30 11:25:24.409125695 +0700
++++ cuneiform-1.1.0-char/cuneiform_src/Kern/hhh/tigerh/h/strings.h	2017-11-30 12:09:26.033501963 +0700
+@@ -80,6 +80,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ 
+ # include "ltconfig.h"
+ # include "c_types.h"
++# include "cttypes.h"
+ 
+ struct _String;
+ typedef struct _String STRING;
+diff -urp cuneiform-1.1.0/cuneiform_src/Kern/include/utf8-tables.h cuneiform-1.1.0-char/cuneiform_src/Kern/include/utf8-tables.h
+--- cuneiform-1.1.0/cuneiform_src/Kern/include/utf8-tables.h	2017-11-30 11:25:24.410125673 +0700
++++ cuneiform-1.1.0-char/cuneiform_src/Kern/include/utf8-tables.h	2017-11-30 11:32:05.974413875 +0700
+@@ -68,7 +68,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ #endif
+ 
+ 
+-const char win1250_to_utf8[][4] = {
++const unsigned char win1250_to_utf8[][4] = {
+   {0, 0, 0, 0},
+   {1, 0, 0, 0},
+   {2, 0, 0, 0},
+@@ -328,7 +328,7 @@ const char win1250_to_utf8[][4] = {
+ };
+ 
+ 
+-const char win1251_to_utf8[][4] = {
++const unsigned char win1251_to_utf8[][4] = {
+   {0, 0, 0, 0},
+   {1, 0, 0, 0},
+   {2, 0, 0, 0},
+@@ -587,7 +587,7 @@ const char win1251_to_utf8[][4] = {
+   {209, 143, 0, 0},
+ };
+ 
+-const char win1252_to_utf8[][4] = {
++const unsigned char win1252_to_utf8[][4] = {
+   {0, 0, 0, 0},
+   {1, 0, 0, 0},
+   {2, 0, 0, 0},
+@@ -847,7 +847,7 @@ const char win1252_to_utf8[][4] = {
+ };
+ 
+ 
+-const char win1254_to_utf8[][4] = {
++const unsigned char win1254_to_utf8[][4] = {
+   {0, 0, 0, 0},
+   {1, 0, 0, 0},
+   {2, 0, 0, 0},
+@@ -1107,7 +1107,7 @@ const char win1254_to_utf8[][4] = {
+ };
+ 
+ 
+-const char win1257_to_utf8[][4] = {
++const unsigned char win1257_to_utf8[][4] = {
+   {0, 0, 0, 0},
+   {1, 0, 0, 0},
+   {2, 0, 0, 0},
+diff -urp cuneiform-1.1.0/cuneiform_src/Kern/rout/src/codetables.cpp cuneiform-1.1.0-char/cuneiform_src/Kern/rout/src/codetables.cpp
+--- cuneiform-1.1.0/cuneiform_src/Kern/rout/src/codetables.cpp	2017-11-30 11:25:24.411125651 +0700
++++ cuneiform-1.1.0-char/cuneiform_src/Kern/rout/src/codetables.cpp	2017-11-30 11:47:51.856189912 +0700
+@@ -937,13 +937,13 @@ CP_TO_CP tab[] = {
+  * codepage.
+  */
+ 
+-const char * getUTF8Str(const unsigned char in, const int codepage) {
++const unsigned char * getUTF8Str(const unsigned char in, const int codepage) {
+   switch(codepage) {
+   case 1250 : return win1250_to_utf8[in];
+   case 1251 : return win1251_to_utf8[in];
+   case 1252 : return win1252_to_utf8[in];
+   case 1254 : return win1254_to_utf8[in];
+   case 1257 : return win1257_to_utf8[in];
+-  default : return "?";
++  default : return (const unsigned char *) "?";
+   }
+ }
+diff -urp cuneiform-1.1.0/cuneiform_src/Kern/rout/src/rout_own.h cuneiform-1.1.0-char/cuneiform_src/Kern/rout/src/rout_own.h
+--- cuneiform-1.1.0/cuneiform_src/Kern/rout/src/rout_own.h	2017-11-30 11:25:24.411125651 +0700
++++ cuneiform-1.1.0-char/cuneiform_src/Kern/rout/src/rout_own.h	2017-11-30 11:40:01.457220419 +0700
+@@ -458,7 +458,7 @@ Bool SetTableTextSeparators(char* s);
+ void ResetCodeTables();
+ Bool UpdateActiveCodeTable();
+ long GetCodePage();
+-const char * getUTF8Str(const unsigned char in, const int codepage);
++const unsigned char * getUTF8Str(const unsigned char in, const int codepage);
+ 
+ //*****************************************************************
+ // Rout.cpp
+diff -urp cuneiform-1.1.0/cuneiform_src/Kern/rout/src/text.cpp cuneiform-1.1.0-char/cuneiform_src/Kern/rout/src/text.cpp
+--- cuneiform-1.1.0/cuneiform_src/Kern/rout/src/text.cpp	2017-11-30 11:25:24.411125651 +0700
++++ cuneiform-1.1.0-char/cuneiform_src/Kern/rout/src/text.cpp	2017-11-30 11:40:43.571320319 +0700
+@@ -310,7 +310,7 @@ Bool OneChar(Handle charHandle)
+ 				*gMemCur++ = c2;
+ 		}
+ 		else {
+-			const char *utfchar;
++			const unsigned char *utfchar;
+ 			utfchar = getUTF8Str((char )c2, GetCodePage());
+ 			int i;
+ 			for(i=0; utfchar[i] != '\0' ;i++){

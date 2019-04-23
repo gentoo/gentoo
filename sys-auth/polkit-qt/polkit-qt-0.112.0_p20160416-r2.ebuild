@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,7 +13,7 @@ SRC_URI="https://dev.gentoo.org/~kensington/distfiles/${MY_P}.tar.xz"
 LICENSE="LGPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 x86 ~x86-fbsd"
-IUSE="debug examples"
+IUSE="debug"
 
 RDEPEND="
 	dev-libs/glib:2
@@ -22,7 +22,6 @@ RDEPEND="
 	dev-qt/qtgui:5
 	dev-qt/qtwidgets:5
 	>=sys-auth/polkit-0.103
-	examples? ( dev-qt/qtxml:5 )
 "
 DEPEND="${RDEPEND}"
 
@@ -32,7 +31,7 @@ S=${WORKDIR}/${MY_P}
 
 src_configure() {
 	local mycmakeargs=(
-		-DBUILD_EXAMPLES=$(usex examples)
+		-DBUILD_EXAMPLES=OFF
 		-DUSE_QT4=OFF
 		-DUSE_QT5=ON
 	)

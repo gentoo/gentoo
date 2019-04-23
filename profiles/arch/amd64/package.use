@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Mike Gilbert <floppym@gentoo.org> (17 Nov 2016)
@@ -8,6 +8,7 @@ sys-boot/grub:2 grub_platforms_efi-64 grub_platforms_pc
 
 # Michał Górny <mgorny@gentoo.org> (24 Sep 2016)
 # Enable the GPU targets matching the default VIDEO_CARDS
+dev-ml/llvm-ocaml llvm_targets_AMDGPU llvm_targets_NVPTX
 sys-devel/clang llvm_targets_AMDGPU llvm_targets_NVPTX
 sys-devel/llvm llvm_targets_AMDGPU llvm_targets_NVPTX
 

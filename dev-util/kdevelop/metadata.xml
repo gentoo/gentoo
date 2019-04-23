@@ -11,6 +11,5 @@
 		<flag name="qmake">Enable support for QMake build system</flag>
 		<flag name="reviewboard">Enable reviewboard support</flag>
 		<flag name="webkit">Enable deprecated <pkg>dev-qt/qtwebkit</pkg> instead of <pkg>dev-qt/qtwebengine</pkg> for integrated documentation</flag>
-		<flag name="welcomepage">Enable welcome page, requires <pkg>dev-qt/qtdeclarative</pkg></flag>
 	</use>
 </pkgmetadata>

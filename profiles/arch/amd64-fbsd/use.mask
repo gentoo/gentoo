@@ -1,5 +1,5 @@
-# Copyright 1999-2018 Gentoo Foundation.
-# Distributed under the terms of the GNU General Public License, v2
+# Copyright 1999-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
 
 # Unmask the flag which corresponds to ARCH.
 -amd64-fbsd
@@ -33,6 +33,10 @@
 #-video_cards_vmware
 -input_devices_vmmouse
 
+# Andreas Sturmlechner <asturm@gentoo.org> (31 Mar 2019)
+# sys-auth/elogind is not keyworded here.
+elogind
+
 # Ulrich Müller <ulm@gentoo.org> (01 May 2018)
 # virtual/mysql is not keyworded.
 mysql
@@ -60,10 +64,6 @@ audit
 # Michał Górny <mgorny@gentoo.org> (25 Feb 2018)
 # google-perftools does not work on FreeBSD.
 tcmalloc
-
-# Michał Górny <mgorny@gentoo.org> (19 Feb 2018)
-# dev-libs/DirectFB is not keyworded here.
-directfb
 
 # Michał Górny <mgorny@gentoo.org> (17 Feb 2018)
 # libraw is not keyworded here.

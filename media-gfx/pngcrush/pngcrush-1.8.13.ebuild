@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit toolchain-funcs
 
 DESCRIPTION="Portable Network Graphics (PNG) optimizing utility"
-HOMEPAGE="http://pmt.sourceforge.net/pngcrush/"
+HOMEPAGE="https://pmt.sourceforge.io/pngcrush/"
 SRC_URI="system-libs? ( mirror://sourceforge/pmt/${P}-nolib.tar.xz )
 	!system-libs? ( mirror://sourceforge/pmt/${P}.tar.xz )"
 

@@ -8,5 +8,6 @@
   <upstream>
     <remote-id type="pypi">pysendfile</remote-id>
     <remote-id type="github">giampaolo/pysendfile</remote-id>
+    <bugs-to>https://github.com/giampaolo/pysendfile/issues</bugs-to>
   </upstream>
 </pkgmetadata>

@@ -13,6 +13,9 @@ dev-qt/qtsql:5 mysql
 # Required by kde-apps/ktp-text-ui
 kde-apps/ktp-common-internals otr
 
+# Enable by default, requires kde-frameworks/kwayland
+kde-misc/yakuake absolute-position
+
 # Required by kde-apps/libkexiv2
 media-gfx/exiv2 xmp
 
@@ -26,10 +29,7 @@ media-libs/gd fontconfig
 media-libs/mesa egl wayland
 
 # Required by kde-apps/kdenlive
->=media-libs/mlt-0.9.8-r2 ffmpeg kdenlive melt
-
-# Required by kde-plasma/plasma-pa
-media-sound/pulseaudio gnome
+media-libs/mlt ffmpeg frei0r kdenlive melt
 
 # Required by kde-frameworks/kactivities
 sys-libs/zlib minizip

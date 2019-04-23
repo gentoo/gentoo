@@ -1,0 +1,23 @@
+From 59a038796e6bb55b11b6d82f7d5aae42399da38a Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Bj=C3=B6rn=20Kautler?= <Bjoern@Kautler.net>
+Date: Fri, 12 Apr 2019 01:39:51 +0200
+Subject: [PATCH] Fix evaluation of emptyness of SVN_LIBDIR that sometimes
+ always gives false, sometime always true, but never what is intended
+
+---
+ src/src.pro | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/src.pro b/src/src.pro
+index 426d304..cfbd865 100644
+--- a/src/src.pro
++++ b/src/src.pro
+@@ -28,7 +28,7 @@ DEPENDPATH += .
+ QT = core
+ 
+ INCLUDEPATH += . $$SVN_INCLUDE $$APR_INCLUDE
+-!isEmpty($$SVN_LIBDIR): LIBS += -L$$SVN_LIBDIR
++!isEmpty(SVN_LIBDIR): LIBS += -L$$SVN_LIBDIR
+ LIBS += -lsvn_fs-1 -lsvn_repos-1 -lapr-1 -lsvn_subr-1
+ 
+ # Input

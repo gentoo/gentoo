@@ -1,0 +1,13 @@
+https://bugs.gentoo.org/298988
+
+--- a/vboxguest/Makefile
++++ b/vboxguest/Makefile
+@@ -136,7 +136,7 @@
+ 	IN_MODULE \
+ 	RT_WITH_VBOX \
+ 	VBGL_VBOXGUEST \
+-	VBOX_WITH_HGCM
++	VBOX_WITH_HGCM LOG_USE_C99
+ ifeq ($(BUILD_TARGET_ARCH),amd64)
+ VBOXMOD_DEFS += VBOX_WITH_64_BITS_GUESTS
+ endif

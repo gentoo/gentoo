@@ -1,10 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
-WANT_AUTOMAKE="1.9"
 
-inherit autotools eutils
+inherit autotools
 
 MY_P="${P/6/5}"
 
@@ -36,11 +35,13 @@ PATCHES=(
 )
 
 src_prepare() {
-	epatch "${DISTDIR}"/zhcon-0.2.5-to-0.2.6.diff.gz
+	eapply "${WORKDIR}"/zhcon-0.2.5-to-0.2.6.diff
 	default
 	for f in $(grep -lir HAVE_GGI_LIB *); do
 		sed -i -e "s/HAVE_GGI_LIB/HAVE_LIBGGI/" "${f}" || die "sed failed"
 	done
+	# Required for newer automake
+	touch config.rpath || die
 	eautoreconf
 }
 

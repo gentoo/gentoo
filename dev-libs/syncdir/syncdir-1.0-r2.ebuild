@@ -11,7 +11,7 @@ SRC_URI="https://untroubled.org/syncdir/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 x86"
 IUSE="static-libs"
 
 src_prepare() {

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -87,7 +87,8 @@ multilib_src_configure() {
 }
 
 multilib_src_compile() {
-	gnome2_src_compile
+	# Parallel compilation fails, bug #635094
+	MAKEOPTS="${MAKEOPTS} -j1" gnome2_src_compile
 }
 
 multilib_src_install() {

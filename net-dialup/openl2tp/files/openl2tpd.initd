@@ -61,7 +61,7 @@ stop() {
     rc=$?
 
     if [ ${RC_CMD} = "restart" ]; then
-        einfo "sleepinng for server to finilize connections"
+        einfo "sleeping for server to finalize connections"
         sleep 2
     fi
 

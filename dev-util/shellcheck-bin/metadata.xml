@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>gyakovlev@gentoo.org</email>
+		<name>Georgy Yakovlev</name>
+	</maintainer>
+	<longdescription lang="en">
+		ShellCheck is tool that gives warnings and suggestions
+		for bash/sh shell scripts
+	</longdescription>
+	<upstream>
+		<remote-id type="github">koalaman/shellcheck</remote-id>
+	</upstream>
+</pkgmetadata>

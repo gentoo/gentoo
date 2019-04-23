@@ -13,6 +13,7 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 ppc ppc64 x86"
 IUSE="bidi cairo canna debug fbcon fcitx freewnn gtk gtk2 harfbuzz ibus libssh2 m17n-lib nls regis scim skk static-libs uim utempter xft"
+REQUIRED_USE="gtk2? ( gtk )"
 
 RDEPEND="x11-libs/libICE
 	x11-libs/libSM
@@ -51,7 +52,6 @@ RDEPEND="x11-libs/libICE
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )"
-REQUIRED_USE="gtk2? ( gtk )"
 
 PATCHES=( "${FILESDIR}"/${PN}-font.patch )
 DOCS=( doc/{en,ja} )
@@ -115,7 +115,7 @@ src_test() {
 
 src_install () {
 	default
-	prune_libtool_files
+	find "${ED}" -name '*.la' -delete || die
 
 	docinto contrib/icon
 	dodoc contrib/icon/README

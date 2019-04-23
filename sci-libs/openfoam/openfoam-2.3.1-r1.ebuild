@@ -16,7 +16,7 @@ SRC_URI="http://downloads.sourceforge.net/foam/${MY_P}.tgz"
 LICENSE="GPL-2"
 SLOT="2.3"
 KEYWORDS="amd64 x86"
-IUSE="doc examples opendx src paraview"
+IUSE="doc examples opendx src"
 
 RDEPEND="!=sci-libs/openfoam-bin-${MY_PV}*
 	!=sci-libs/openfoam-kernel-${MY_PV}*
@@ -28,8 +28,7 @@ RDEPEND="!=sci-libs/openfoam-bin-${MY_PV}*
 	sci-libs/parmgridgen
 	sci-libs/scotch
 	virtual/mpi
-	opendx? ( sci-visualization/opendx )
-	paraview? ( ~sci-visualization/paraview-4.1.0[development] )"
+	opendx? ( sci-visualization/opendx )"
 DEPEND="${DEPEND}
 	doc? ( app-doc/doxygen[dot] )"
 

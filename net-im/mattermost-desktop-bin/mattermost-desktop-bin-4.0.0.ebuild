@@ -4,9 +4,8 @@
 EAPI=6
 
 MY_PN="${PN%-*}"
-MULTILIB_COMPAT=( abi_x86_64 )
 
-inherit eutils multilib-build
+inherit eutils
 
 DESCRIPTION="Mattermost Desktop application"
 HOMEPAGE="https://about.mattermost.com/"
@@ -19,39 +18,39 @@ SRC_URI="
 
 LICENSE="Apache-2.0 GPL-2+ LGPL-2.1+ MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
-	gnome-base/gconf:2[${MULTILIB_USEDEP}]
-	dev-libs/atk:0[${MULTILIB_USEDEP}]
-	dev-libs/expat:0[${MULTILIB_USEDEP}]
-	dev-libs/glib:2[${MULTILIB_USEDEP}]
-	dev-libs/nspr:0[${MULTILIB_USEDEP}]
-	dev-libs/nss:0[${MULTILIB_USEDEP}]
-	gnome-base/gconf:2[${MULTILIB_USEDEP}]
-	media-libs/alsa-lib:0[${MULTILIB_USEDEP}]
-	media-libs/fontconfig:1.0[${MULTILIB_USEDEP}]
-	media-libs/freetype:2[${MULTILIB_USEDEP}]
-	net-print/cups:0[${MULTILIB_USEDEP}]
-	sys-apps/dbus:0[${MULTILIB_USEDEP}]
-	sys-devel/gcc[${MULTILIB_USEDEP}]
-	sys-libs/glibc:2.2[${MULTILIB_USEDEP}]
-	x11-libs/cairo:0[${MULTILIB_USEDEP}]
-	x11-libs/gdk-pixbuf:2[${MULTILIB_USEDEP}]
-	x11-libs/gtk+:2[${MULTILIB_USEDEP}]
-	x11-libs/libX11:0[${MULTILIB_USEDEP}]
-	x11-libs/libxcb:0/1.12[${MULTILIB_USEDEP}]
-	x11-libs/libXcomposite:0[${MULTILIB_USEDEP}]
-	x11-libs/libXcursor:0[${MULTILIB_USEDEP}]
-	x11-libs/libXdamage:0[${MULTILIB_USEDEP}]
-	x11-libs/libXext:0[${MULTILIB_USEDEP}]
-	x11-libs/libXfixes:0[${MULTILIB_USEDEP}]
-	x11-libs/libXi:0[${MULTILIB_USEDEP}]
-	x11-libs/libXrandr:0[${MULTILIB_USEDEP}]
-	x11-libs/libXrender:0[${MULTILIB_USEDEP}]
-	x11-libs/libXScrnSaver:0[${MULTILIB_USEDEP}]
-	x11-libs/libXtst:0[${MULTILIB_USEDEP}]
-	x11-libs/pango:0[${MULTILIB_USEDEP}]"
+	gnome-base/gconf:2
+	dev-libs/atk:0
+	dev-libs/expat:0
+	dev-libs/glib:2
+	dev-libs/nspr:0
+	dev-libs/nss:0
+	gnome-base/gconf:2
+	media-libs/alsa-lib:0
+	media-libs/fontconfig:1.0
+	media-libs/freetype:2
+	net-print/cups:0
+	sys-apps/dbus:0
+	sys-devel/gcc
+	sys-libs/glibc:2.2
+	x11-libs/cairo:0
+	x11-libs/gdk-pixbuf:2
+	x11-libs/gtk+:2
+	x11-libs/libX11:0
+	x11-libs/libxcb:0/1.12
+	x11-libs/libXcomposite:0
+	x11-libs/libXcursor:0
+	x11-libs/libXdamage:0
+	x11-libs/libXext:0
+	x11-libs/libXfixes:0
+	x11-libs/libXi:0
+	x11-libs/libXrandr:0
+	x11-libs/libXrender:0
+	x11-libs/libXScrnSaver:0
+	x11-libs/libXtst:0
+	x11-libs/pango:0"
 
 S="${WORKDIR}/mattermost-desktop-${PV}"
 

@@ -11,7 +11,7 @@ SRC_URI="http://www.libsdl.org/release/${MY_P}.tar.gz"
 
 LICENSE="ZLIB"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="alpha amd64 arm ~arm64 ~hppa ia64 ppc ppc64 ~sparc x86"
 
 IUSE="cpu_flags_x86_3dnow alsa altivec aqua custom-cflags dbus gles haptic libsamplerate +joystick kms cpu_flags_x86_mmx nas opengl oss pulseaudio +sound cpu_flags_x86_sse cpu_flags_x86_sse2 static-libs +threads tslib udev +video video_cards_vc4 wayland X xinerama xscreensaver"
 REQUIRED_USE="
@@ -75,6 +75,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.0.6-static-libs.patch
 	# https://bugzilla.libsdl.org/show_bug.cgi?id=4144
 	"${FILESDIR}"/${P}-rework-variables.patch
+	# https://bugzilla.libsdl.org/show_bug.cgi?id=3977
+	"${FILESDIR}"/${P}-wayland-headers.patch
 )
 
 S="${WORKDIR}/${MY_P}"

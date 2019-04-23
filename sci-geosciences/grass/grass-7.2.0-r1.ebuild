@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,8 +15,8 @@ MY_PM=${MY_PM/.}
 MY_P=${P/_rc/RC}
 
 DESCRIPTION="A free GIS with raster and vector functionality, as well as 3D vizualization"
-HOMEPAGE="http://grass.osgeo.org/"
-SRC_URI="http://grass.osgeo.org/${MY_PM}/source/${MY_P}.tar.gz"
+HOMEPAGE="https://grass.osgeo.org/"
+SRC_URI="https://grass.osgeo.org/${MY_PM}/source/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0/7.2.0"

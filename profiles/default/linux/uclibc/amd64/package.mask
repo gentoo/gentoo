@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # AMD64 Team <amd64@gentoo.org>
@@ -17,10 +17,8 @@ app-emulation/virtualbox-guest-additions
 >=app-i18n/atokx3-3.0.0
 app-office/ooextras
 app-emulation/winetricks
-app-text/acroread
 dev-embedded/libftd2xx
 dev-embedded/openocd
-dev-perl/Archive-Rar
 dev-util/android-sdk-update-manager
 dev-util/android-ndk
 dev-util/biew
@@ -65,7 +63,6 @@ games-fps/etqw-demo
 games-fps/glxquake-bin
 games-fps/legends
 games-fps/postal2
-games-fps/postal2mp-demo
 games-fps/quake3-bin
 games-fps/quake3-demo
 games-fps/quake3-ra3
@@ -79,29 +76,23 @@ games-fps/sauerbraten
 games-fps/serious-sam-tfe
 games-fps/serious-sam-tse
 games-fps/soldieroffortune
-games-fps/soldieroffortune-demo
 games-fps/unreal-tournament
 games-fps/ut2003
 games-fps/ut2003-demo
 games-fps/ut2004-demo
-games-puzzle/hoh-bin
 games-roguelike/adom
 games-rpg/eschalon-book-1-demo
-games-rpg/penumbra-collection
 games-server/etqw-ded
 games-server/nwn-ded
-games-server/ut2003-ded
 games-simulation/bcs-demo
 games-strategy/darwinia
 games-strategy/darwinia-demo
 games-strategy/defcon-demo
 games-strategy/dominions2
 games-strategy/heroes3
-games-strategy/heroes3-demo
 games-strategy/majesty-demo
 games-strategy/smac
 games-strategy/spaz
-media-fonts/acroread-asianfonts
 media-sound/ventrilo-server-bin
 media-video/binkplayer
 media-video/tsmuxer
@@ -113,10 +104,4 @@ sci-biology/foldingathome
 sci-electronics/eagle
 sci-chemistry/cara-bin
 sci-chemistry/mars
-sci-libs/ipp
 sys-libs/lib-compat-loki
-www-plugins/nspluginwrapper
-
-# AMD64 Team; <amd64@gentoo.org>
-# grub-1 is not available on no-multilib-profiles;
-<sys-boot/grub-1.99

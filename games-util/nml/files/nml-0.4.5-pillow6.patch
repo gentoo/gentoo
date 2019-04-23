@@ -1,0 +1,31 @@
+From fc7517a66fa6c0424d176a8a1d44659273a04a1d Mon Sep 17 00:00:00 2001
+From: Conrad Kostecki <conrad@kostecki.com>
+Date: Thu, 18 Apr 2019 22:14:49 +0200
+Subject: [PATCH] Add compatibility with >=pillow-6.0.0
+
+Changed VERSION to PILLOW_VERSION,
+as it got removed with >=pillow-6.0.0.
+
+Signed-off-by: Conrad Kostecki <conrad@kostecki.com>
+---
+ nml/version_info.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/nml/version_info.py b/nml/version_info.py
+index d7faec0..32aa3b1 100644
+--- a/nml/version_info.py
++++ b/nml/version_info.py
+@@ -139,11 +139,11 @@ def get_lib_versions():
+     #PIL
+     try:
+         from PIL import Image
+-        versions["PIL"] = Image.VERSION
++        versions["PIL"] = Image.PILLOW_VERSION
+     except ImportError:
+         try:
+             import Image
+-            versions["PIL"] = Image.VERSION
++            versions["PIL"] = Image.PILLOW_VERSION
+         except ImportError:
+             versions["PIL"] = "Not found!"
+ 

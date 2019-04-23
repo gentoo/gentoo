@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Perl extension for emulating troublesome interfaces"
 
 SLOT="0"
-KEYWORDS="amd64 ~arm ~ppc sparc x86 ~ppc-aix"
+KEYWORDS="amd64 ~arm ppc sparc x86 ~ppc-aix"
 IUSE="test"
 
 RDEPEND="

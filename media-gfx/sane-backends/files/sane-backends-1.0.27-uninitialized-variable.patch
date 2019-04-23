@@ -1,0 +1,25 @@
+From dd61ef1cc84299781e382b9258d97102cee192b4 Mon Sep 17 00:00:00 2001
+From: Olaf Meeuwissen <paddy-hack@member.fsf.org>
+Date: Thu, 3 Aug 2017 18:50:05 +0900
+Subject: [PATCH] genesys: Fix use of uninitialized variable
+
+See https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=869673
+---
+ backend/genesys.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/backend/genesys.c b/backend/genesys.c
+index 1c1bbf4..0b644c4 100644
+--- a/backend/genesys.c
++++ b/backend/genesys.c
+@@ -6237,6 +6237,7 @@ attach (SANE_String_Const devname, Genesys_Device ** devp, SANE_Bool may_wait)
+   dev->model = genesys_usb_device_list[i].model;
+   dev->vendorId = genesys_usb_device_list[i].vendor;
+   dev->productId = genesys_usb_device_list[i].product;
++  dev->usb_mode = 0;            /* i.e. unset */
+   dev->already_initialized = SANE_FALSE;
+ 
+   DBG (DBG_info, "attach: found %s flatbed scanner %s at %s\n",
+-- 
+2.1.4
+

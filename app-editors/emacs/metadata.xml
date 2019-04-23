@@ -31,6 +31,8 @@
     notification</flag>
   <flag name="gsettings">Use gsettings (<pkg>dev-libs/glib</pkg>) to read the
     system font name</flag>
+  <flag name="gtk2">Prefer version 2 of the GIMP Toolkit to version 3
+    (<pkg>x11-libs/gtk+</pkg>)</flag>
   <flag name="gtk3">Prefer version 3 of the GIMP Toolkit to version 2
     (<pkg>x11-libs/gtk+</pkg>)</flag>
   <flag name="gzip-el">Compress bundled Emacs Lisp source</flag>
@@ -47,7 +49,7 @@
   <flag name="wide-int">Prefer wide Emacs integers (typically 62-bit).
     This option has an effect only on architectures where "long" and
     "long long" types have different size.</flag>
-  <flag name='xwidgets'>Enable use of GTK widgets in Emacs buffers
+  <flag name="xwidgets">Enable use of GTK widgets in Emacs buffers
     (requires GTK3)</flag>
 </use>
 </pkgmetadata>

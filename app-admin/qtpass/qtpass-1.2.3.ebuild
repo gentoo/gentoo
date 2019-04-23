@@ -55,8 +55,7 @@ src_install() {
 	doins localization/*.qm
 
 	doman "${PN}".1
-	insinto /usr/share/applications
-	doins "${PN}".desktop
+	domenu "${PN}".desktop
 	newicon artwork/icon.png "${PN}"-icon.png
 	insinto /usr/share/appdata
 	doins qtpass.appdata.xml

@@ -1,8 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-USE_RUBY="ruby22 ruby23 ruby24"
+USE_RUBY="ruby23 ruby24"
 
 RUBY_FAKEGEM_TASK_DOC=""
 RUBY_FAKEGEM_EXTRADOC="README.md CHANGES.md PLUGINS.md"
@@ -23,7 +23,7 @@ IUSE="test"
 ruby_add_rdepend ">=dev-ruby/highline-1.6.19"
 ruby_add_rdepend "dev-ruby/trollop:2"
 
-ruby_add_bdepend "test? ( dev-util/cucumber ~dev-util/aruba-0.6.2 app-admin/puppet dev-ruby/hiera-eyaml-plaintext )"
+ruby_add_bdepend "test? ( dev-util/cucumber ~dev-util/aruba-0.6.2 <app-admin/puppet-5 dev-ruby/hiera-eyaml-plaintext )"
 
 all_ruby_prepare() {
 	# Fix highline dependency to be compatible with more versions.

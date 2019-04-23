@@ -29,6 +29,7 @@ PATCHES=(
 )
 
 src_prepare() {
+	sed -e 's#CPPFLAGS="-I/usr/include/mysql#CPPFLAGS="-I'"${EPREFIX}"'/usr/include/mysql#' -i configure.ac || die
 	use odbc && [[ -z $(type -P odbc_config) ]] && \
 		append-cppflags $($(tc-getPKG_CONFIG) --cflags libiodbc)
 

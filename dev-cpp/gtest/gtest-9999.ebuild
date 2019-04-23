@@ -4,9 +4,9 @@
 EAPI="6"
 
 # Python is required for tests and some build tasks.
-PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy )
+PYTHON_COMPAT=( python2_7 pypy )
 
-inherit python-any-r1 cmake-multilib
+inherit cmake-multilib python-any-r1
 
 if [[ ${PV} == "9999" ]]; then
 	inherit git-r3
@@ -30,26 +30,24 @@ RDEPEND="!dev-cpp/gmock"
 PATCHES=(
 	"${FILESDIR}"/${PN}-9999-fix-gcc6-undefined-behavior.patch
 	"${FILESDIR}"/${PN}-1.8.0-increase-clone-stack-size.patch
-	"${FILESDIR}"/${PN}-1.8.0-fix-doublefree.patch
 )
 
 pkg_setup() {
 	use test && python-any-r1_pkg_setup
 }
 
+src_prepare() {
+	cmake-utils_src_prepare
+
+	sed -i -e '/set(cxx_base_flags /s:-Werror::' \
+		googletest/cmake/internal_utils.cmake || die "sed failed!"
+}
+
 multilib_src_configure() {
 	local mycmakeargs=(
 		-DBUILD_GMOCK=ON
-		-DBUILD_GTEST=ON
-		-DINSTALL_GMOCK=ON
 		-DINSTALL_GTEST=ON
-		-Dgtest_build_samples=OFF
-		-Dgtest_disable_pthreads=OFF
-
-		# currently only static libs work
-		# due to numerous ODR violations
-		# https://github.com/google/googletest/issues/930
-		-DBUILD_SHARED_LIBS=OFF
+		-DBUILD_SHARED_LIBS=ON
 
 		# tests
 		-Dgmock_build_tests=$(usex test)
@@ -64,9 +62,9 @@ multilib_src_install_all() {
 
 	if use doc; then
 		docinto googletest
-		dodoc -r googletest/docs/*
+		dodoc -r googletest/docs/.
 		docinto googlemock
-		dodoc -r googlemock/docs/*
+		dodoc -r googlemock/docs/.
 	fi
 
 	if use examples; then

@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-inherit cmake-utils flag-o-matic gnome2-utils
+inherit cmake-utils flag-o-matic gnome2-utils virtualx
 
 MY_P="${P/_/-}"
 
@@ -12,7 +12,7 @@ HOMEPAGE="http://www.kadu.net"
 SRC_URI="http://download.kadu.im/stable/${P}.tar.bz2"
 
 LICENSE="GPL-2"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 SLOT="0"
 IUSE="+gadu mpd otr sdk speech spell xmpp"
 REQUIRED_USE="
@@ -131,6 +131,10 @@ src_configure() {
 	unset PLUGINS
 
 	cmake-utils_src_configure
+}
+
+src_test() {
+	virtx cmake-utils_src_test
 }
 
 pkg_postinst() {

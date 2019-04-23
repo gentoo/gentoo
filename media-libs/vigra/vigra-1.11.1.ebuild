@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,11 +11,17 @@ inherit cmake-utils python-r1
 
 DESCRIPTION="C++ computer vision library emphasizing customizable algorithms and structures"
 HOMEPAGE="https://ukoethe.github.io/vigra/"
-SRC_URI="https://github.com/ukoethe/vigra/releases/download/Version-${MY_V}/${MY_P}.tar.gz"
+
+if [[ ${PV} == *9999 ]] ; then
+	EGIT_REPO_URI="https://github.com/ukoethe/${PN}.git"
+	inherit git-r3
+else
+	SRC_URI="https://github.com/ukoethe/${PN}/releases/download/Version-${MY_V}/${MY_P}.tar.gz"
+	KEYWORDS="amd64 ~sparc x86 ~amd64-linux ~x86-linux ~sparc-solaris ~x64-solaris ~x86-solaris"
+fi
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~sparc x86 ~amd64-linux ~x86-linux ~sparc-solaris ~x64-solaris ~x86-solaris"
 IUSE="doc +fftw +hdf5 +jpeg mpi openexr +png +python test +tiff valgrind"
 
 # runtime dependency on python:2.7 is required by the vigra-config script
@@ -47,6 +53,10 @@ REQUIRED_USE="
 RESTRICT="test"
 
 DOCS=( README.md )
+
+PATCHES=(
+	"${FILESDIR}/${P}-fix-incorrect-template-parameter-type.patch"
+)
 
 pkg_setup() {
 	use python && python_setup

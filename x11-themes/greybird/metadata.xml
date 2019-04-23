@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="project">
-    <email>desktop-misc@gentoo.org</email>
-    <name>Gentoo Desktop Miscellaneous Project</name>
-  </maintainer>
-  <upstream>
-    <remote-id type="github">shimmerproject/Greybird</remote-id>
-  </upstream>
+<maintainer type="project">
+<email>desktop-misc@gentoo.org</email>
+<name>Gentoo Desktop Miscellaneous Project</name>
+</maintainer>
+<use>
+<flag name='xfce'>Install theme for <pkg>xfce-base/xfwm4</pkg></flag>
+</use>
+<upstream>
+<remote-id type="github">shimmerproject/Greybird</remote-id>
+</upstream>
 </pkgmetadata>

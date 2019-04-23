@@ -1,8 +1,8 @@
 http://bugs.gentoo.org/465450
 http://trac.xiph.org/ticket/1947
 
---- examples/png2theora.c
-+++ examples/png2theora.c
+--- a/examples/png2theora.c
++++ b/examples/png2theora.c
 @@ -462,9 +462,9 @@
    png_set_strip_alpha(png_ptr);
  

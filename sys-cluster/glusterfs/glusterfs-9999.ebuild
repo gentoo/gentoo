@@ -1,17 +1,17 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit autotools elisp-common python-single-r1 systemd user versionator
+inherit autotools elisp-common python-single-r1 systemd user
 
 if [[ ${PV#9999} != ${PV} ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/gluster/glusterfs.git"
 else
-	SRC_URI="https://download.gluster.org/pub/gluster/${PN}/$(get_version_component_range '1-2')/${PV}/${P}.tar.gz"
+	SRC_URI="https://download.gluster.org/pub/gluster/${PN}/$(ver_cut '1-2')/${PV}/${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 fi
 
@@ -20,7 +20,7 @@ HOMEPAGE="https://www.gluster.org/"
 
 LICENSE="|| ( GPL-2 LGPL-3+ )"
 SLOT="0"
-IUSE="bd-xlator crypt-xlator debug emacs +fuse +georeplication glupy infiniband ipv6 +libtirpc qemu-block rsyslog static-libs +syslog systemtap test +tiering vim-syntax +xml"
+IUSE="bd-xlator crypt-xlator debug emacs +fuse +georeplication glupy infiniband ipv6 libressl +libtirpc qemu-block rsyslog static-libs +syslog systemtap test +tiering vim-syntax +xml"
 
 REQUIRED_USE="georeplication? ( ${PYTHON_REQUIRED_USE} )
 	glupy? ( ${PYTHON_REQUIRED_USE} )
@@ -44,7 +44,8 @@ RDEPEND="bd-xlator? ( sys-fs/lvm2 )
 	xml? ( dev-libs/libxml2 )
 	sys-libs/readline:=
 	dev-libs/libaio
-	dev-libs/openssl:=[-bindist]
+	!libressl? ( dev-libs/openssl:=[-bindist] )
+	libressl? ( dev-libs/libressl:= )
 	dev-libs/userspace-rcu:=
 	net-libs/rpcsvc-proto
 	sys-apps/util-linux"
@@ -100,10 +101,6 @@ src_prepare() {
 }
 
 src_configure() {
-	# --without-ipv6-default and --with-libtirpc don't do what you they
-	# do. Chewi has given up fighting with upstream about this.
-	# https://bugzilla.redhat.com/show_bug.cgi?id=1553926
-
 	econf \
 		--disable-dependency-tracking \
 		--disable-silent-rules \
@@ -219,7 +216,7 @@ pkg_postinst() {
 	ewarn "run GlusterFS."
 	echo
 	elog "If you are upgrading from a previous version of ${PN}, please read:"
-	elog "  http://docs.gluster.org/en/latest/Upgrade-Guide/upgrade_to_$(get_version_component_range '1-2')/"
+	elog "  http://docs.gluster.org/en/latest/Upgrade-Guide/upgrade_to_$(ver_cut '1-2')/"
 
 	use emacs && elisp-site-regen
 }

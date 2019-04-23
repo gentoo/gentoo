@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_{4,5,6}} )
+PYTHON_COMPAT=( python{2_7,3_{5,6,7}} )
 
 inherit distutils-r1
 
@@ -20,7 +20,8 @@ IUSE=""
 
 RDEPEND=""
 DEPEND="${RDEPEND}
+	>=dev-python/pythonz-bd-1.11.2[${PYTHON_USEDEP}]
 	>=dev-python/setuptools-17.1[${PYTHON_USEDEP}]
+	>=dev-python/shutilwhich-1.1.0[${PYTHON_USEDEP}]
 	>=dev-python/virtualenv-1.11.6[${PYTHON_USEDEP}]
-	>=dev-python/virtualenv-clone-0.2.5[${PYTHON_USEDEP}]
-	>=dev-python/pythonz-bd-1.11.2[${PYTHON_USEDEP}]"
+	>=dev-python/virtualenv-clone-0.2.5[${PYTHON_USEDEP}]"

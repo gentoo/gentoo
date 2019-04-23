@@ -6,7 +6,8 @@
 		<name>Gentoo Office project</name>
 	</maintainer>
 	<use>
-		<flag name="man">Build and install man pages.</flag>
+		<flag name="man">Build and install man pages</flag>
+		<flag name="tools">Build client tool for testing and viewing features</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">tdf/libcmis</remote-id>

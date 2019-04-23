@@ -1,6 +1,6 @@
-diff -Naurp src/p_blowfish.c src/p_blowfish.c
---- src/p_blowfish.c	2007-02-26 12:16:53.000000000 +0000
-+++ src/p_blowfish.c	2007-02-26 12:17:11.000000000 +0000
+diff -Naurp a/src/p_blowfish.c b/src/p_blowfish.c
+--- a/src/p_blowfish.c	2007-02-26 12:16:53.000000000 +0000
++++ b/src/p_blowfish.c	2007-02-26 12:17:11.000000000 +0000
 @@ -31,7 +31,7 @@ static char rcsid[] = "@(#)# $Id$
  #include <string.h>
  #include <config.h>
@@ -10,9 +10,9 @@ diff -Naurp src/p_blowfish.c src/p_blowfish.c
  char *lngtxt(int msgnum);
  
  #define pcontext { strmncpy(ctxt,__FILE__,sizeof(ctxt));strmncpy(cfunc,__FUNCTION__,sizeof(cfunc)); cline=__LINE__; }
-diff -Naurp src/p_global.h src/p_global.h
---- src/p_global.h	2007-02-26 12:16:53.000000000 +0000
-+++ src/p_global.h	2007-02-26 12:17:11.000000000 +0000
+diff -Naurp a/src/p_global.h b/src/p_global.h
+--- a/src/p_global.h	2007-02-26 12:16:53.000000000 +0000
++++ b/src/p_global.h	2007-02-26 12:17:11.000000000 +0000
 @@ -972,8 +972,8 @@ int checklogging(int usern);
  #endif
  
@@ -33,9 +33,9 @@ diff -Naurp src/p_global.h src/p_global.h
  int strmncasecmp(char *one, char *two);
  int strmcmp(char *one, char *two);
  int strmwildcmp(char *line, char *wildcard);
-diff -Naurp src/p_memory.c src/p_memory.c
---- src/p_memory.c	2007-02-26 12:16:53.000000000 +0000
-+++ src/p_memory.c	2007-02-26 12:17:11.000000000 +0000
+diff -Naurp a/src/p_memory.c b/src/p_memory.c
+--- a/src/p_memory.c	2007-02-26 12:16:53.000000000 +0000
++++ b/src/p_memory.c	2007-02-26 12:17:11.000000000 +0000
 @@ -32,7 +32,7 @@ FILE *logm=NULL;
  
  /* malloc-wrapper. No memory will log an error entry and kill the bouncer */
@@ -54,9 +54,9 @@ diff -Naurp src/p_memory.c src/p_memory.c
  {
  #ifdef LOGALLOC
      if(logm==NULL)
-diff -Naurp src/p_string.c src/p_string.c
---- src/p_string.c	2007-02-26 12:16:53.000000000 +0000
-+++ src/p_string.c	2007-02-26 12:17:11.000000000 +0000
+diff -Naurp a/src/p_string.c b/src/p_string.c
+--- a/src/p_string.c	2007-02-26 12:16:53.000000000 +0000
++++ b/src/p_string.c	2007-02-26 12:17:11.000000000 +0000
 @@ -51,7 +51,7 @@ char *lngtxt(unsigned int msgnum)
  
  /* string copy with len and zero delimit */
@@ -66,9 +66,9 @@ diff -Naurp src/p_string.c src/p_string.c
  {
      char bf[strlen(source)+2];
      char *pt;
-diff -Naurp src/match.c src/match.c
---- src/match.c	2007-02-26 12:26:10.000000000 +0000
-+++ src/match.c	2007-02-26 12:26:17.000000000 +0000
+diff -Naurp a/src/match.c b/src/match.c
+--- a/src/match.c	2007-02-26 12:26:10.000000000 +0000
++++ b/src/match.c	2007-02-26 12:26:17.000000000 +0000
 @@ -36,6 +36,7 @@
  /* Remove the next line to use this in IrcII */
  #define EGGDROP

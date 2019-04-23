@@ -24,11 +24,7 @@ IUSE=""
 RDEPEND="
 	|| (
 		>=sys-apps/portage-2.2.0_alpha86
-		( >=sys-apps/portage-2.1.10.30
-			<sys-apps/portage-2.2.0_alpha )
 		sys-apps/portage-mgorny
-		( sys-apps/portage
-			app-portage/gentoolkit-dev )
 	)"
 #if LIVE
 

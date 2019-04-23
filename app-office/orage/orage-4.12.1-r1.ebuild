@@ -7,7 +7,7 @@ inherit gnome2-utils
 
 DESCRIPTION="A time managing application (and panel plug-in) for the Xfce desktop environment"
 HOMEPAGE="https://git.xfce.org/apps/orage/"
-SRC_URI="mirror://xfce/src/apps/${PN}/${PV%.*}/${P}.tar.bz2"
+SRC_URI="https://archive.xfce.org/src/apps/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -26,6 +26,10 @@ DEPEND="${RDEPEND}
 	sys-devel/gettext
 	>=sys-devel/libtool-2.2.6
 	virtual/pkgconfig"
+
+PATCHES=(
+	"${FILESDIR}"/0001-fix-build-with-libical-version-3.patch
+)
 
 src_configure() {
 	local myconf=(

@@ -2,11 +2,12 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>dlan@gentoo.org</email>
-		<name>Yixun Lan</name>
+		<email>bkohler@gentoo.org</email>
+		<name>Ben Kohler</name>
 	</maintainer>
 	<use>
 		<flag name="ethernet">Enable ethernet support.</flag>
+		<flag name="iwd">Enable wifi support via net-wireless/iwd</flag>
 		<flag name="l2tp">Use <pkg>net-dialup/xl2tpd</pkg> for L2TP VPN support.</flag>
 		<flag name="iptables">Use <pkg>net-firewall/iptables</pkg> as firewall.</flag>
 		<flag name="nftables">Use <pkg>net-firewall/nftables</pkg> as firewall.</flag>

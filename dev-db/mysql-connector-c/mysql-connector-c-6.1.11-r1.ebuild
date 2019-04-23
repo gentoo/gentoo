@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -18,18 +18,16 @@ LICENSE="GPL-2"
 
 SRC_URI="https://dev.mysql.com/get/Downloads/Connector-C/${P}-src.tar.gz"
 S="${WORKDIR}/${P}-src"
-KEYWORDS="alpha amd64 arm ~arm64 ~hppa ia64 ~mips ppc ppc64 ~s390 ~sparc x86"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 s390 sparc x86"
 
 SUBSLOT="18"
 SLOT="0/${SUBSLOT}"
-IUSE="libressl +ssl static-libs"
+IUSE="libressl static-libs"
 
 CDEPEND="
 	sys-libs/zlib:=[${MULTILIB_USEDEP}]
-	ssl? (
-		libressl? ( dev-libs/libressl:0=[${MULTILIB_USEDEP}] )
-		!libressl? ( dev-libs/openssl:0=[${MULTILIB_USEDEP}] )
-	)
+	libressl? ( dev-libs/libressl:0=[${MULTILIB_USEDEP}] )
+	!libressl? ( dev-libs/openssl:0=[${MULTILIB_USEDEP}] )
 	"
 RDEPEND="${CDEPEND}
 	!dev-db/mysql[client-libs(+)]
@@ -67,7 +65,7 @@ multilib_src_configure() {
 		-DMYSQL_UNIX_ADDR="${EPREFIX}/var/run/mysqld/mysqld.sock"
 		-DWITH_ZLIB=system
 		-DENABLE_DTRACE=OFF
-		-DWITH_SSL=$(usex ssl system bundled)
+		-DWITH_SSL=system
 		-DLIBMYSQL_OS_OUTPUT_NAME=mysqlclient
 		-DSHARED_LIB_PATCH_VERSION="0"
 	)

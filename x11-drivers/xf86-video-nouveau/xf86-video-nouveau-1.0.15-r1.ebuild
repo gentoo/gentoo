@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -11,7 +11,7 @@ if [[ ${PV} == 9999* ]]; then
 fi
 
 DESCRIPTION="Accelerated Open Source driver for nVidia cards"
-HOMEPAGE="https://nouveau.freedesktop.org/wiki/"
+HOMEPAGE="https://nouveau.freedesktop.org/wiki/ https://cgit.freedesktop.org/nouveau/xf86-video-nouveau"
 
 KEYWORDS="amd64 ~arm64 ppc ppc64 x86"
 IUSE=""

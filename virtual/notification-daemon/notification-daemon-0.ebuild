@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="Virtual for notification daemon dbus service"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 ia64 ~mips ppc ppc64 sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris"
+KEYWORDS="alpha amd64 arm ~arm64 ia64 ~mips ppc ppc64 sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris"
 IUSE="gnome kde"
 
 RDEPEND="
@@ -18,7 +18,7 @@ RDEPEND="
 		xfce-extra/xfce4-notifyd
 		x11-misc/notify-osd
 		x11-misc/dunst
-		>=x11-wm/awesome-3.4.4
+		>=x11-wm/awesome-3.4.4[dbus]
 		x11-wm/enlightenment[enlightenment_modules_notification]
 		x11-wm/enlightenment[e_modules_notification]
 		x11-misc/mate-notification-daemon

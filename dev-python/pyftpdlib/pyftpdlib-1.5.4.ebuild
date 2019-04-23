@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python{2_7,3_{4,5,6}} )
+PYTHON_COMPAT=( python{2_7,3_{5,6,7}} )
 PYTHON_REQ_USE="ssl(+)"
 
 inherit distutils-r1
@@ -13,7 +13,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~hppa ia64 ~m68k ~mips ppc64 ~s390 ~sh ~sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris"
+KEYWORDS="alpha amd64 arm ~hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris"
 IUSE="doc examples ssl test"
 
 RDEPEND="
@@ -64,8 +64,10 @@ python_test() {
 		test_nlst
 	)
 	skipped_tests=${skipped_tests[@]/%/ or}
-	py.test --ignore ${PN}/test/test_misc.py -k "not (${skipped_tests% or})" \
-		|| die "Tests failed with ${EPYTHON}"
+	# Tests fail with TZ=GMT, see https://bugs.gentoo.org/666623
+	TZ=UTC+1 pytest -vv \
+		--ignore ${PN}/test/test_misc.py -k "not (${skipped_tests% or})" \
+			|| die "Tests failed with ${EPYTHON}"
 }
 
 python_install_all() {

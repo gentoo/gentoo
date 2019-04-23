@@ -1,10 +1,10 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 BASHCOMP_P=bashcomp-2.0.2
-inherit versionator
+inherit eapi7-ver
 
 DESCRIPTION="Programmable Completion for bash"
 HOMEPAGE="https://github.com/scop/bash-completion"
@@ -14,8 +14,7 @@ SRC_URI="
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh
-~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris"
+KEYWORDS="alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ~ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris"
 IUSE="test"
 # Multiple test failures, need to investigate the exact problem
 RESTRICT="test"
@@ -112,7 +111,7 @@ src_install() {
 pkg_postinst() {
 	local v
 	for v in ${REPLACING_VERSIONS}; do
-		if ! version_is_at_least 2.1-r90 ${v}; then
+		if ver_test "${v}" -lt 2.1-r90; then
 			ewarn "For bash-completion autoloader to work, all completions need to"
 			ewarn "be installed in /usr/share/bash-completion/completions. You may"
 			ewarn "need to rebuild packages that installed completions in the old"

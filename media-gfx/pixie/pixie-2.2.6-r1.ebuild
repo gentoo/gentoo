@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="2"
@@ -11,10 +11,10 @@ MY_PN="Pixie"
 S="${WORKDIR}/${MY_PN}"
 
 DESCRIPTION="RenderMan like photorealistic renderer"
-HOMEPAGE="http://pixie.sourceforge.net/"
+HOMEPAGE="http://www.okanarikan.com/project/2005/05/24/Pixie.html"
 SRC_URI="mirror://sourceforge/${PN}/${MY_PN}-src-${PV}.tgz https://dev.gentoo.org/~dilfridge/distfiles/pixie-2.2.6-gcc6.patch.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 IUSE="X static-libs"
 SLOT="0"
 KEYWORDS="amd64 ~ppc sparc x86"

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -7,7 +7,7 @@ GCONF_DEBUG="no"
 inherit gnome2
 
 DESCRIPTION="Lightweight HTML rendering/printing/editing engine"
-HOMEPAGE="https://git.gnome.org/browse/gtkhtml"
+HOMEPAGE="https://gitlab.gnome.org/Archive/gtkhtml"
 
 LICENSE="GPL-2+ LGPL-2+"
 SLOT="4.0"
@@ -27,6 +27,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	x11-base/xorg-proto
 	sys-devel/gettext
+	dev-util/glib-utils
 	>=dev-util/intltool-0.40.0
 	virtual/pkgconfig
 "

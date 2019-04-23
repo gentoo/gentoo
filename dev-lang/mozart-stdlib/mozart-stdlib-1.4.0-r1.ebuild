@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="2"
@@ -8,8 +8,8 @@ inherit eutils
 MY_P="mozart-${PV}.20080704-std"
 
 DESCRIPTION="The Mozart Standard Library"
-HOMEPAGE="http://www.mozart-oz.org/"
-SRC_URI="http://www.mozart-oz.org/download/mozart-ftp/store/1.4.0-2008-07-02-tar/mozart-1.4.0.20080704-std.tar.gz"
+HOMEPAGE="https://mozart.github.io/ https://github.com/mozart/mozart"
+SRC_URI="mirror://sourceforge/project/mozart-oz/v1/1.4.0-2008-07-02-tar/${MY_P}.tar.gz"
 LICENSE="Mozart"
 
 SLOT="0"

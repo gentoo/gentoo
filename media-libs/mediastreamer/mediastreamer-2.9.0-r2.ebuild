@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,13 +11,13 @@ SRC_URI="mirror://nongnu/linphone/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0/3"
-KEYWORDS="amd64 ppc ppc64 x86"
+KEYWORDS="amd64 ~arm64 ppc ppc64 x86"
 # Many cameras will not work or will crash an application if mediastreamer2 is
 # not built with v4l2 support (taken from configure.ac)
 # TODO: run-time test for ipv6: does it really need ortp[ipv6] ?
 IUSE="+alsa amr bindist coreaudio debug doc examples +filters g726 g729 gsm ilbc
 	ipv6 libav ntp-timestamp opengl opus +ortp oss pcap portaudio pulseaudio sdl
-	silk +speex static-libs test theora upnp v4l video x264 X"
+	+speex static-libs test theora upnp v4l video x264 X"
 
 REQUIRED_USE="|| ( oss alsa portaudio coreaudio pulseaudio )
 	opengl? ( video )
@@ -72,7 +72,6 @@ PDEPEND="
 	amr? ( !bindist? ( media-plugins/mediastreamer-amr ) )
 	g729? ( !bindist? ( media-plugins/mediastreamer-bcg729 ) )
 	ilbc? ( media-plugins/mediastreamer-ilbc )
-	silk? ( !bindist? ( media-plugins/mediastreamer-silk ) )
 	video? ( x264? ( media-plugins/mediastreamer-x264 ) )
 "
 
@@ -83,6 +82,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-tests.patch"
 	"${FILESDIR}/${P}-xxd.patch"
 	"${FILESDIR}/${P}-ffmpeg3.patch"
+	"${FILESDIR}/${P}-ffmpeg4.patch"
 )
 
 src_prepare() {

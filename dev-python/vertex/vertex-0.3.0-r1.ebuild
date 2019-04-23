@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -13,7 +13,7 @@ SRC_URI="mirror://pypi/${TWISTED_PN:0:1}/${TWISTED_PN}/${TWISTED_P}.tar.gz"
 KEYWORDS="amd64 x86"
 IUSE=""
 
-DEPEND="dev-libs/openssl
+DEPEND="dev-libs/openssl:0
 	>=dev-python/epsilon-0.6.0-r1[${PYTHON_USEDEP}]
 	>=dev-python/pyopenssl-0.13-r1[${PYTHON_USEDEP}]
 	dev-python/twisted-core[${PYTHON_USEDEP}]"

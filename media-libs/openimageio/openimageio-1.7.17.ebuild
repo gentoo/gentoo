@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
+PYTHON_COMPAT=( python{2_7,3_5,3_6} )
 
 inherit cmake-utils vcs-snapshot python-single-r1
 
@@ -61,6 +61,7 @@ DEPEND="${RDEPEND}
 PATCHES=(
 	"${FILESDIR}/${P}-use-gnuinstalldirs.patch"
 	"${FILESDIR}/${P}-make-python-and-boost-detection-more-generic.patch"
+	"${FILESDIR}/${P}-openexr-2.3.0.patch" # bug 683126
 )
 
 DOCS=( CHANGES.md CREDITS.md README.md src/doc/${PN}.pdf )

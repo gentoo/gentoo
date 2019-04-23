@@ -1,4 +1,0 @@
-From the author:
-
-Please note that MyPictures is intended for personal use only and should never
-be run on a public server.

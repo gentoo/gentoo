@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -96,7 +96,7 @@ RDEPEND="
 	tbb? ( dev-cpp/tbb )
 	tcl? ( dev-lang/tcl:0= )
 	tk? ( dev-lang/tk:0= )
-	video_cards_nvidia? ( || ( x11-drivers/nvidia-drivers[tools,static-libs] media-video/nvidia-settings ) )
+	video_cards_nvidia? ( x11-drivers/nvidia-drivers[tools,static-libs] )
 	web? (
 		${WEBAPP_DEPEND}
 		dev-python/six[${PYTHON_USEDEP}]

@@ -98,6 +98,7 @@ src_configure() {
 		-DWITH_DEBUG_ALL=$(usex debug)
 		-DWITH_MANPAGES=$(usex doc)
 		-DWITH_FFMPEG=$(usex ffmpeg)
+		-DWITH_DSP_FFMPEG=$(usex ffmpeg)
 		-DWITH_GSTREAMER_1_0=$(usex gstreamer)
 		-DWITH_JPEG=$(usex jpeg)
 		-DWITH_NEON=$(usex neon)

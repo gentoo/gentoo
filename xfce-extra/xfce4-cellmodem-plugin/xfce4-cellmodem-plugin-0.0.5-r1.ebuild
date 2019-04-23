@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,11 +6,11 @@ inherit autotools multilib
 
 DESCRIPTION="A panel plug-in with monitoring support for GPRS/UMTS(3G)/HSDPA(3.5G) modems"
 HOMEPAGE="https://goodies.xfce.org/projects/panel-plugins/xfce4-cellmodem-plugin"
-SRC_URI="mirror://xfce/src/panel-plugins/${PN}/${PV%.*}/${P}.tar.gz"
+SRC_URI="https://archive.xfce.org/src/panel-plugins/${PN}/${PV%.*}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND="sys-apps/pciutils
 	virtual/libusb:0

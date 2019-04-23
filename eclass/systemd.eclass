@@ -4,6 +4,7 @@
 # @ECLASS: systemd.eclass
 # @MAINTAINER:
 # systemd@gentoo.org
+# @SUPPORTED_EAPIS: 0 1 2 3 4 5 6 7
 # @BLURB: helper functions to install systemd units
 # @DESCRIPTION:
 # This eclass provides a set of functions to install unit files for
@@ -26,11 +27,15 @@
 inherit toolchain-funcs
 
 case ${EAPI:-0} in
-	0|1|2|3|4|5|6) ;;
+	0|1|2|3|4|5|6|7) ;;
 	*) die "${ECLASS}.eclass API in EAPI ${EAPI} not yet established."
 esac
 
-DEPEND="virtual/pkgconfig"
+if [[ ${EAPI:-0} == [0123456] ]]; then
+	DEPEND="virtual/pkgconfig"
+else
+	BDEPEND="virtual/pkgconfig"
+fi
 
 # @FUNCTION: _systemd_get_dir
 # @USAGE: <variable-name> <fallback-directory>
@@ -463,8 +468,8 @@ systemd_reenable() {
 	type systemctl &>/dev/null || return 0
 	local x
 	for x; do
-		if systemctl --quiet --root="${ROOT}" is-enabled "${x}"; then
-			systemctl --root="${ROOT}" reenable "${x}"
+		if systemctl --quiet --root="${ROOT:-/}" is-enabled "${x}"; then
+			systemctl --root="${ROOT:-/}" reenable "${x}"
 		fi
 	done
 }

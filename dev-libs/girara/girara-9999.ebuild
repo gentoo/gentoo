@@ -1,67 +1,52 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit multilib toolchain-funcs virtualx
-[[ ${PV} == 9999* ]] && inherit git-2
+inherit meson virtualx
 
 DESCRIPTION="UI library that focuses on simplicity and minimalism"
 HOMEPAGE="https://pwmt.org/projects/girara/"
-if ! [[ ${PV} == 9999* ]]; then
-SRC_URI="https://pwmt.org/projects/${PN}/download/${P}.tar.gz"
+
+if [[ ${PV} == *999 ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://git.pwmt.org/pwmt/${PN}.git"
+	EGIT_BRANCH="develop"
+else
+	SRC_URI="https://pwmt.org/projects/girara/download/${P}.tar.xz"
+	KEYWORDS="~amd64 ~arm ~x86"
 fi
-EGIT_REPO_URI="https://git.pwmt.org/pwmt/${PN}.git"
-EGIT_BRANCH="develop"
 
 LICENSE="ZLIB"
-SLOT="3"
-if ! [[ ${PV} == 9999* ]]; then
-KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux"
-else
-KEYWORDS=""
-fi
-IUSE="libnotify static-libs test"
+SLOT="0"
+IUSE="doc libnotify test"
 
-RDEPEND=">=dev-libs/glib-2.28
-	>=x11-libs/gtk+-3.4:3
-	!<${CATEGORY}/${PN}-0.1.6
-	libnotify? ( >=x11-libs/libnotify-0.7 )"
+RDEPEND="dev-libs/glib:2
+	 dev-libs/json-c
+	 >=x11-libs/gtk+-3.20:3
+	 >=x11-libs/pango-1.14
+	 libnotify? ( x11-libs/libnotify )"
+
 DEPEND="${RDEPEND}
-	sys-devel/gettext
-	virtual/pkgconfig"
+	 doc? ( app-doc/doxygen )
+	 test? ( dev-libs/check )"
 
-pkg_setup() {
-	mygiraraconf=(
-		WITH_LIBNOTIFY=$(usex libnotify 1 0)
-		PREFIX="${EPREFIX}"/usr
-		LIBDIR='${PREFIX}'/$(get_libdir)
-		CC="$(tc-getCC)"
-		SFLAGS=''
-		VERBOSE=1
-		DESTDIR="${D}"
-		)
-}
+BDEPEND="virtual/pkgconfig"
 
 src_prepare() {
-	# Remove 'static' and 'install-static' targets
-	if ! use static-libs; then
-		sed -i \
-			-e '/^${PROJECT}:/s:static::' \
-			-e '/^install:/s:install-static::' \
-			Makefile || die
-	fi
+	default
+	sed -i -e '/'-Werror.*'/d' meson.build || die "sed failed"
 }
 
-src_compile() {
-	emake "${mygiraraconf[@]}"
+src_configure() {
+	local emesonargs=(
+		-Denable-json=true
+		-Denable-docs=$(usex doc true false)
+		-Denable-notify=$(usex libnotify true false)
+		)
+		meson_src_configure
 }
 
 src_test() {
-	virtx default
-}
-
-src_install() {
-	emake "${mygiraraconf[@]}" install
-	dodoc AUTHORS
+	virtx meson_src_test
 }

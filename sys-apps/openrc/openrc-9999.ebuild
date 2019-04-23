@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -18,7 +18,7 @@ fi
 
 LICENSE="BSD-2"
 SLOT="0"
-IUSE="audit debug ncurses pam newnet prefix +netifrc selinux static-libs
+IUSE="audit bash debug ncurses pam newnet prefix +netifrc selinux static-libs
 	unicode kernel_linux kernel_FreeBSD"
 
 COMMON_DEPEND="kernel_FreeBSD? ( || ( >=sys-freebsd/freebsd-ubin-9.0_rc sys-process/fuser-bsd ) )
@@ -40,6 +40,7 @@ COMMON_DEPEND="kernel_FreeBSD? ( || ( >=sys-freebsd/freebsd-ubin-9.0_rc sys-proc
 	!<sys-fs/udev-init-scripts-27"
 DEPEND="${COMMON_DEPEND}
 	virtual/os-headers
+	bash? ( app-shells/bash )
 	ncurses? ( virtual/pkgconfig )"
 RDEPEND="${COMMON_DEPEND}
 	!prefix? (
@@ -79,7 +80,8 @@ src_compile() {
 		MKAUDIT=$(usex audit)
 		MKPAM=$(usev pam)
 		MKSTATICLIBS=$(usex static-libs)
-		MKZSHCOMP=yes"
+		MKZSHCOMP=yes
+		SH=$(usex bash /bin/bash /bin/sh)"
 
 	local brand="Unknown"
 	if use kernel_linux ; then
@@ -127,11 +129,6 @@ src_install() {
 	fi
 	keepdir /lib/rc/tmp
 
-	# Backup our default runlevels
-	dodir /usr/share/"${PN}"
-	cp -PR "${ED}"/etc/runlevels "${ED}"/usr/share/${PN} || die
-	rm -rf "${ED}"/etc/runlevels
-
 	# Setup unicode defaults for silly unicode users
 	set_config_yes_no /etc/rc.conf unicode use unicode
 
@@ -140,7 +137,7 @@ src_install() {
 
 	# On HPPA, do not run consolefont by default (bug #222889)
 	if use hppa; then
-		rm -f "${ED}"/usr/share/openrc/runlevels/boot/consolefont
+		rm -f "${ED}"/etc/runlevels/boot/consolefont
 	fi
 
 	# Support for logfile rotation
@@ -158,37 +155,7 @@ src_install() {
 	fi
 }
 
-add_boot_init() {
-	local initd=$1
-	local runlevel=${2:-boot}
-	# if the initscript is not going to be installed and is not
-	# currently installed, return
-	[[ -e "${ED}"/etc/init.d/${initd} || -e "${EROOT}"etc/init.d/${initd} ]] \
-		|| return
-	[[ -e "${EROOT}"etc/runlevels/${runlevel}/${initd} ]] && return
-
-	# if runlevels dont exist just yet, then create it but still flag
-	# to pkg_postinst that it needs real setup #277323
-	if [[ ! -d "${EROOT}"etc/runlevels/${runlevel} ]] ; then
-		mkdir -p "${EROOT}"etc/runlevels/${runlevel}
-		touch "${EROOT}"etc/runlevels/.add_boot_init.created
-	fi
-
-	elog "Auto-adding '${initd}' service to your ${runlevel} runlevel"
-	ln -snf /etc/init.d/${initd} "${EROOT}"etc/runlevels/${runlevel}/${initd}
-}
-add_boot_init_mit_config() {
-	local config=$1 initd=$2
-	if [[ -e ${EROOT}${config} ]] ; then
-		if [[ -n $(sed -e 's:#.*::' -e '/^[[:space:]]*$/d' "${EROOT}"${config}) ]] ; then
-			add_boot_init ${initd}
-		fi
-	fi
-}
-
 pkg_preinst() {
-	local f LIBDIR=$(get_libdir)
-
 	# avoid default thrashing in conf.d files when possible #295406
 	if [[ -e "${EROOT}"etc/conf.d/hostname ]] ; then
 		(
@@ -201,91 +168,10 @@ pkg_preinst() {
 
 	# set default interactive shell to sulogin if it exists
 	set_config /etc/rc.conf rc_shell /sbin/sulogin "#" test -e /sbin/sulogin
-
-	# termencoding was added in 0.2.1 and needed in boot
-	has_version ">=sys-apps/openrc-0.2.1" || add_boot_init termencoding
-
-	# swapfiles was added in 0.9.9 and needed in boot (february 2012)
-	has_version ">=sys-apps/openrc-0.9.9" || add_boot_init swapfiles
-
-	if ! has_version ">=sys-apps/openrc-0.11"; then
-		add_boot_init sysfs sysinit
-	fi
-
-	if ! has_version ">=sys-apps/openrc-0.11.3" ; then
-		migrate_udev_mount_script
-	fi
-
-	# these were added in 0.12.
-	if ! has_version ">=sys-apps/openrc-0.12"; then
-		add_boot_init loopback
-
-		# ensure existing /etc/conf.d/net is not removed
-		# undoes the hack to get around CONFIG_PROTECT in openrc-0.11.8 and earlier
-		# this needs to stay in openrc ebuilds for a long time. :(
-		# Added in 0.12.
-		if [[ -f "${EROOT}"etc/conf.d/net ]]; then
-			einfo "Modifying conf.d/net to keep it from being removed"
-			cat <<-EOF >>"${EROOT}"etc/conf.d/net
-
-# The network scripts are now part of net-misc/netifrc
-# In order to avoid sys-apps/${P} from removing this file, this comment was
-# added; you can safely remove this comment.  Please see
-# /usr/share/doc/netifrc*/README* for more information.
-EOF
-		fi
-	fi
-	has_version ">=sys-apps/openrc-0.14" || add_boot_init binfmt
-
-	if ! has_version ">=sys-apps/openrc-0.18.3"; then
-		add_boot_init mtab
-		if [[ -f "${EROOT}"etc/mtab ]] && [[ ! -L "${EROOT}"etc/mtab ]]; then
-			ewarn "${EROOT}etc/mtab will be replaced with a"
-			ewarn "symbolic link to /proc/self/mounts on the next"
-			ewarn "reboot."
-			ewarn "Change the setting in ${EROOT}etc/conf.d/mtab"
-			ewarn "if you do not want this to happen."
-		fi
-	fi
-
-	has_version ">=sys-apps/openrc-0.35" || add_boot_init cgroups sysinit
-
-}
-
-# >=OpenRC-0.11.3 requires udev-mount to be in the sysinit runlevel with udev.
-migrate_udev_mount_script() {
-	if [ -e "${EROOT}"etc/runlevels/sysinit/udev -a \
-		! -e "${EROOT}"etc/runlevels/sysinit/udev-mount ]; then
-		add_boot_init udev-mount sysinit
-	fi
 	return 0
 }
 
 pkg_postinst() {
-	local LIBDIR=$(get_libdir)
-
-	# Make our runlevels if they don't exist
-	if [[ ! -e "${EROOT}"etc/runlevels ]] || [[ -e "${EROOT}"etc/runlevels/.add_boot_init.created ]] ; then
-		einfo "Copying across default runlevels"
-		cp -RPp "${EROOT}"usr/share/${PN}/runlevels "${EROOT}"etc
-		rm -f "${EROOT}"etc/runlevels/.add_boot_init.created
-	else
-		if [[ ! -e "${EROOT}"etc/runlevels/sysinit/devfs ]] ; then
-			mkdir -p "${EROOT}"etc/runlevels/sysinit
-			cp -RPp "${EROOT}"usr/share/${PN}/runlevels/sysinit/* \
-				"${EROOT}"etc/runlevels/sysinit
-		fi
-		if [[ ! -e "${EROOT}"etc/runlevels/shutdown/mount-ro ]] ; then
-			mkdir -p "${EROOT}"etc/runlevels/shutdown
-			cp -RPp "${EROOT}"usr/share/${PN}/runlevels/shutdown/* \
-				"${EROOT}"etc/runlevels/shutdown
-		fi
-		if [[ ! -e "${EROOT}"etc/runlevels/nonetwork/local ]]; then
-			cp -RPp "${EROOT}"usr/share/${PN}/runlevels/nonetwork \
-				"${EROOT}"etc/runlevels
-		fi
-	fi
-
 	if use hppa; then
 		elog "Setting the console font does not work on all HPPA consoles."
 		elog "You can still enable it by running:"
@@ -302,9 +188,6 @@ pkg_postinst() {
 			cp -RPp "${EROOT}$(get_libdir)/rc" "${EROOT}"lib
 		fi
 	fi
-
-	# update the dependency tree after touching all files #224171
-	[[ "${EROOT}" = "/" ]] && "${EROOT}"/lib/rc/bin/rc-depend -u
 
 	if ! use newnet && ! use netifrc; then
 		ewarn "You have emerged OpenRc without network support. This"

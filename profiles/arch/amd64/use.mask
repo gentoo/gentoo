@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Unmask the flag which corresponds to ARCH.
@@ -6,15 +6,19 @@
 
 # SECTION: Unmask
 
+# Andreas Sturmlechner <asturm@gentoo.org> (17 Nov 2018)
+# media-sound/audacious is keyworded on amd64
+-audacious
+
+# Matt Turner <mattst88@gentoo.org> (11 Nov 2018)
+# d3d9 works on amd64
+-d3d9
+
 # Michael Orlitzky <mjo@gentoo.org> (07 Jan 2018)
 # Oracle database stuff should work on amd64.
 -oci8
 -oci8-instant-client
 -oracle
-
-# Michael Palimaka <kensington@gentoo.org> (03 Jun 2017)
-# Unmask elogind since it is keyworded here.
--elogind
 
 # Sven Wegener <swegener@gentoo.org> (31 May 2017)
 # libvirt is supported on amd64

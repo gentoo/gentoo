@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=7
 
 DESCRIPTION="replacement of the old unix crypt(1)"
 HOMEPAGE="http://mcrypt.sourceforge.net/"
@@ -12,10 +12,10 @@ SLOT="0"
 KEYWORDS="amd64 ppc sparc x86 ~x86-macos"
 IUSE="nls"
 
-DEPEND=">=dev-libs/libmcrypt-2.5.8
+RDEPEND=">=dev-libs/libmcrypt-2.5.8
 	>=app-crypt/mhash-0.9.9
 	sys-libs/zlib"
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-2.6.7-qa.patch"

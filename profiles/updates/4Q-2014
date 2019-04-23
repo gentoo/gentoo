@@ -8,4 +8,3 @@ move net-zope/zc-buildout dev-python/zc-buildout
 move net-zope/zope-interface dev-python/zope-interface
 move media-gfx/photo media-gfx/photoqt
 move dev-db/postgresql-base dev-db/postgresql
-move dev-db/pgasync dev-python/pgasync

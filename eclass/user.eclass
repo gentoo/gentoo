@@ -88,8 +88,8 @@ egetent() {
 		grep "${key}:\*:" /etc/${db}
 		;;
 	*)
-		# ignore output if nscd doesn't exist, or we're not running as root
-		nscd -i "${db}" 2>/dev/null
+		# ignore nscd output if we're not running as root
+		type -p nscd >/dev/null && nscd -i "${db}" 2>/dev/null
 		getent "${db}" "${key}"
 		;;
 	esac

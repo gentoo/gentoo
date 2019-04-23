@@ -21,14 +21,16 @@
   </longdescription>
   <use>
     <flag name="asimage">Enable support for <pkg>media-libs/libafterimage</pkg></flag>
+    <flag name="c++11">Build using the C++11 standard</flag>
+    <flag name="c++14">Build using the C++14 standard</flag>
+    <flag name="c++17">Build using the C++17 standard</flag>
+    <flag name="cuda">Enable support for nVidia CUDA</flag>
     <flag name="davix">Enable support for DAVIX Data Management Client (https://cern.ch/davix)</flag>
     <flag name="fits">Enable support for images and data from FITS files with <pkg>sci-libs/cfitsio</pkg></flag>
     <flag name="fortran">Compile included Fortran programs</flag>
     <flag name="gdml">Enable GDML writer and reader</flag>
     <flag name="http">Enable http server support including but not limited to fastcgi support</flag>
-    <flag name="jemalloc">Enable support for <pkg>dev-libs/jemalloc</pkg></flag>
     <flag name="libcxx">Build ROOT against <pkg>sys-libs/libcxx</pkg></flag>
-    <flag name="math">Build all math related libraries plugins, needs <pkg>sci-libs/gsl</pkg> </flag>
     <flag name="memstat">Build memory statistics library, helps to detect memory leaks</flag>
     <flag name="minuit">Build ROOT's internal versions of minuit (fortran) and minuit2 (C++)</flag>
     <flag name="pythia6">Build the interface for <pkg>sci-physics/pythia</pkg> version 6.x </flag>

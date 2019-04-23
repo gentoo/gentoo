@@ -7,7 +7,7 @@ inherit gnome2-utils xdg-utils
 
 DESCRIPTION="A filesystem guard plug-in for the Xfce panel"
 HOMEPAGE="https://goodies.xfce.org/projects/panel-plugins/xfce4-fsguard-plugin"
-SRC_URI="mirror://xfce/src/panel-plugins/${PN}/${PV%.*}/${P}.tar.bz2"
+SRC_URI="https://archive.xfce.org/src/panel-plugins/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"

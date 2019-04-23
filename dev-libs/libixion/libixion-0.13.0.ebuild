@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 EGIT_REPO_URI="https://gitlab.com/ixion/ixion.git"
 
-PYTHON_COMPAT=( python{3_4,3_5,3_6} )
+PYTHON_COMPAT=( python{3_5,3_6} )
 
 [[ ${PV} == 9999 ]] && GITECLASS="git-r3 autotools"
 inherit python-single-r1 ${GITECLASS}
@@ -18,7 +18,7 @@ HOMEPAGE="https://gitlab.com/ixion/ixion"
 LICENSE="MIT"
 SLOT="0/0.13" # based on SONAME of libixion.so
 [[ ${PV} == 9999 ]] || \
-KEYWORDS="amd64 ~arm ~arm64 ~ppc x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 x86"
 IUSE="debug python static-libs +threads"
 
 RDEPEND="
@@ -26,7 +26,7 @@ RDEPEND="
 	python? ( ${PYTHON_DEPS} )
 "
 DEPEND="${RDEPEND}
-	>=dev-util/mdds-1.2.0:1=
+	=dev-util/mdds-1.3*:1=
 "
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"

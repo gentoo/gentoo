@@ -4,6 +4,7 @@
 # @ECLASS: multilib-minimal.eclass
 # @MAINTAINER:
 # Multilib team <multilib@gentoo.org>
+# @SUPPORTED_EAPIS: 4 5 6 7
 # @BLURB: wrapper for multilib builds providing convenient multilib_src_* functions
 # @DESCRIPTION:
 #

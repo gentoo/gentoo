@@ -17,18 +17,3 @@
  			${GLIB2_LIBRARIES}
  			${ZLIB_LIBRARIES}
  			${CMAKE_DL_LIBS}
-@@ -89,7 +92,6 @@
- 	)
- 
- 	add_executable(androiddump WIN32 ${androiddump_FILES})
--	# XXX Shouldn't we add wsutil to androiddump_LIBS instead?
- 	set_extcap_executable_properties(androiddump)
- 	target_link_libraries(androiddump ${androiddump_LIBS})
- 	install(TARGETS androiddump RUNTIME DESTINATION ${EXTCAP_DIR})
-@@ -212,4 +214,4 @@
- 	${androiddump_FILES}
- 	${sshdump_FILES}
- 	${ciscodump_FILES}
--)
-\ No newline at end of file
-+)

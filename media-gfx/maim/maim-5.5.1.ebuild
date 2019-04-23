@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -34,6 +34,8 @@ RDEPEND="
 	unicode? ( dev-libs/icu:= )
 "
 DEPEND="${RDEPEND}"
+
+PATCHES=( "${FILESDIR}"/${PN}-5.5.1-libjpeg-9c.patch )
 
 src_configure() {
 	local mycmakeargs=(

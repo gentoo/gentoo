@@ -14,6 +14,7 @@ KEYWORDS=""
 IUSE="gd selinux test"
 
 COMMON_DEPEND="
+	dev-db/sqlite
 	gd? ( media-libs/gd[png] )
 "
 DEPEND="

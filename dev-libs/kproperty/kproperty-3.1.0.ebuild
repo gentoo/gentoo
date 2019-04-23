@@ -3,6 +3,7 @@
 
 EAPI=6
 
+KDE_TEST="true" # build system adds autotests dir based on BUILD_TESTING value
 inherit kde5
 
 DESCRIPTION="Property editing framework with editor widget similar to Qt Designer"

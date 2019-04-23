@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="sqlite"
@@ -26,19 +26,19 @@ RDEPEND="
 	dev-python/nevow[${PYTHON_USEDEP}]
 	>=dev-python/pyasn1-0.1.8[${PYTHON_USEDEP}]
 	dev-python/pyasn1-modules[${PYTHON_USEDEP}]
-	dev-python/pycrypto[${PYTHON_USEDEP}]
 	dev-python/pycryptopp[${PYTHON_USEDEP}]
+	dev-python/pycrypto[${PYTHON_USEDEP}]
 	>=dev-python/pyopenssl-0.14[${PYTHON_USEDEP}]
 	dev-python/pyutil[${PYTHON_USEDEP}]
 	dev-python/service_identity[${PYTHON_USEDEP}]
 	dev-python/simplejson[${PYTHON_USEDEP}]
-	>=dev-python/twisted-core-13.0.0[${PYTHON_USEDEP}]
+	>=dev-python/twisted-16.0.0[${PYTHON_USEDEP}]
 	dev-python/zbase32[${PYTHON_USEDEP}]
 	dev-python/zfec[${PYTHON_USEDEP}]
 	dev-python/zope-interface[${PYTHON_USEDEP}]"
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 
-S=${WORKDIR}/${MY_P}
+S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
 	rm -r setuptools* setup.cfg || die
@@ -48,11 +48,4 @@ src_prepare() {
 src_install() {
 	distutils-r1_src_install
 	use doc && dodoc -r docs/*
-}
-
-pkg_postinst() {
-	elog
-	elog "optional dependencies:"
-	elog "  dev-python/twisted-conch (for sftp access)"
-	elog
 }

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="4"
@@ -11,10 +11,10 @@ MY_P="${MY_PN}-${PV}"
 JUMBO="jumbo-7"
 
 DESCRIPTION="fast password cracker"
-HOMEPAGE="http://www.openwall.com/john/"
+HOMEPAGE="https://www.openwall.com/john/"
 
-SRC_URI="http://www.openwall.com/john/g/${MY_P}.tar.bz2
-	!minimal? ( http://www.openwall.com/john/g/${MY_P}-${JUMBO}.diff.gz )"
+SRC_URI="https://www.openwall.com/john/g/${MY_P}.tar.bz2
+	!minimal? ( https://www.openwall.com/john/g/${MY_P}-${JUMBO}.diff.gz )"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -26,7 +26,8 @@ REQUIRED_USE="openmp? ( !minimal )
 	cuda? ( !minimal )
 	opencl? ( !minimal )"
 
-RDEPEND="sys-libs/zlib
+RDEPEND="!app-crypt/johntheripper-jumbo
+	sys-libs/zlib
 	!minimal? ( >=dev-libs/openssl-0.9.7:0 )
 	mpi? ( virtual/mpi )
 	cuda? ( x11-drivers/nvidia-drivers dev-util/nvidia-cuda-toolkit )

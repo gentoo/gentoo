@@ -5,10 +5,6 @@
     <email>robbat2@gentoo.org</email>
     <name>Robin H. Johnson</name>
   </maintainer>
-  <maintainer type="project">
-    <email>net-mail@gentoo.org</email>
-    <name>Net-Mail</name>
-  </maintainer>
   <longdescription>qmHandle is a tool which can be used to manage the qmail
     message queue. It's written in Perl (so fully customizable) and much more
     powerful than qmail-qread and qmail-qstat. Key features are colored output

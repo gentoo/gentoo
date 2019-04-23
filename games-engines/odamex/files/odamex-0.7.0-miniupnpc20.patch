@@ -1,7 +1,7 @@
 Index: common/i_net.cpp
 ===================================================================
---- common/i_net.cpp	(revision 5459)
-+++ common/i_net.cpp	(working copy)
+--- a/common/i_net.cpp	(revision 5459)
++++ b/common/i_net.cpp	(working copy)
 @@ -151,7 +151,11 @@
  
  	Printf(PRINT_HIGH, "UPnP: Discovering router (max 1 unit supported)\n");

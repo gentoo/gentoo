@@ -1,0 +1,21 @@
+--- a/fsgs/amiga/roms.py	2017-07-06 16:50:33.351036624 +0200
++++ b/fsgs/amiga/roms.py	2017-07-06 16:52:58.335040977 +0200
+@@ -11,6 +11,8 @@
+     # Kickstart v1.3 r34.5 (1987)(Commodore)(A500-A1000-A2000-CDTV)[!]
+     # Kickstart v1.3 r34.5 (1987)(Commodore)(A500-A1000-A2000-CDTV)[o] (patch)
+     "891e9a547772fe0c6c19b610baf8bc4ea7fcb785",
++    # kick13.rom - from Upgrade Commodore Amiga 500 (1989)
++    "90933936cce43ca9bc6bf375662c076b27e3c458",
+ ]
+ 
+ A500P_KICKSTARTS = [
+@@ -55,6 +57,9 @@
+ 
+     # Kickstart v3.1 r40.68 (1993)(Commodore)(A4000)[h Cloanto]
+     # "c3c481160866e60d085e436a24db3617ff60b5f9",
++
++    # Kickstart v3.1 r40.10 (15.7.93) from german A4000
++    "3b7f1493b27e212830f989f26ca76c02049f09ca",
+ ]
+ 
+ CD32_KICKSTARTS = [

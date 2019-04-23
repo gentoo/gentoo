@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -35,7 +35,13 @@ PATCHES=(
 )
 
 src_compile() {
-	emake CC="$(tc-getCC)"
+	emake AR="$(tc-is-gcc && echo "$(tc-getCC)-ar" || tc-getAR)" \
+		AS="$(tc-getAS)" \
+		CC="$(tc-getCC)" \
+		LD="$(tc-getLD)" \
+		OBJCOPY="$(tc-getOBJCOPY)" \
+		PKG_CONFIG="$(tc-getPKG_CONFIG)" \
+		RANLIB="$(tc-getRANLIB)"
 }
 
 src_install() {
@@ -44,5 +50,5 @@ src_install() {
 
 	# remove some files that don't make sense for Gentoo installs
 	rm -rf "${ED%/}/etc/" "${ED%/}/var/" \
-	   "${ED%/}/usr/share/doc/${PF}/COPYING" || die
+		"${ED%/}/usr/share/doc/${PF}/COPYING" || die
 }

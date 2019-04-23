@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,28 +17,31 @@ SLOT="0"
 KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris ~x86-solaris"
 IUSE="test"
 
-RDEPEND="dev-perl/SGMLSpm
-	>=sys-devel/gettext-0.13
-	app-text/openjade
+RDEPEND="app-text/openjade
 	dev-libs/libxslt
 	dev-perl/Locale-gettext
+	dev-perl/SGMLSpm
 	dev-perl/TermReadKey
-	dev-perl/Text-WrapI18N"
+	dev-perl/Text-WrapI18N
+	sys-devel/gettext"
 DEPEND="${RDEPEND}
-	>=dev-perl/Module-Build-0.380.0
-	app-text/docbook-xsl-stylesheets
 	app-text/docbook-xml-dtd:4.1.2
-	test? ( app-text/docbook-sgml-dtd
-		app-text/docbook-sgml-utils
-		virtual/tex-base )"
+	app-text/docbook-xsl-stylesheets
+	dev-perl/Module-Build
+	test? (
+		app-text/docbook-sgml-dtd:4.1
+		virtual/tex-base
+	)"
 
 # Running tests in parallel fails
 DIST_TEST="do"
 
 PATCHES=(
 	# Fix bad escaping of '.' in @INC modification
-	"${FILESDIR}/${PN}-0.45-614122-no-dot-inc.patch"
+	"${FILESDIR}"/${PN}-0.45-614122-no-dot-inc.patch
+	"${FILESDIR}"/${PN}-man.patch
 )
+
 src_prepare() {
 	# Check against locale files in ${S}/pod/bin for mismatches
 	# with languages listed in PLOCALES

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -62,7 +62,10 @@ DEPEND="
 	dev-python/bitarray[${PYTHON_USEDEP}]
 	dev-python/docutils[${PYTHON_USEDEP}]
 	dev-python/fdsend[${PYTHON_USEDEP}]
-	net-analyzer/arping
+	|| (
+		net-misc/iputils[arping]
+		net-analyzer/arping
+	)
 	net-analyzer/fping
 	net-misc/bridge-utils
 	net-misc/curl[ssl]
@@ -127,12 +130,7 @@ DEPEND="
 		app-emulation/qemu
 	)
 	lxc? ( app-emulation/lxc )
-	drbd? (
-		|| (
-			<sys-cluster/drbd-8.5
-			sys-cluster/drbd-utils
-		)
-	)
+	drbd? ( sys-cluster/drbd-utils )
 	rbd? ( sys-cluster/ceph )
 	ipv6? ( net-misc/ndisc6 )
 	${PYTHON_DEPS}"

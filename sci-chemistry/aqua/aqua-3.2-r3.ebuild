@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -29,9 +29,11 @@ PATCHES=(
 
 pkg_nofetch() {
 	elog "Please visit http://www.ebi.ac.uk/thornton-srv/software/PROCHECK/download.html"
-	elog "And follow the instruction for downloading ${PN}${PV}.tar.gz ->  ${DISTDIR}/${PN}${PV}.tar.gz."
+	elog "And follow the instructions for downloading the following into your DISTDIR"
+	elog "directory:"
+	elog "  ${PN}${PV}.tar.gz"
 	if use doc; then
-		elog "nmr_manual.tar.gz  ->  ${DISTDIR}/${P}-nmr_manual.tar.gz"
+		elog "  nmr_manual.tar.gz  ->  ${P}-nmr_manual.tar.gz"
 	fi
 }
 

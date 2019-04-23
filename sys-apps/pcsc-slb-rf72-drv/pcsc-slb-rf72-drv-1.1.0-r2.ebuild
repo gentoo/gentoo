@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=7
 
 inherit toolchain-funcs
 
@@ -11,17 +11,17 @@ DESCRIPTION="Schlumberger Reflex 72 Serial Smartcard Reader"
 HOMEPAGE="http://www.linuxnet.com/sourcedrivers.html"
 LICENSE="all-rights-reserved BSD LGPL-2.1+"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 SLOT="0"
 SRC_URI="mirror://gentoo/${MY_P}-drv-${PV}.tar.gz"
 
 RDEPEND="sys-apps/pcsc-lite
 	dev-libs/openct"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 DOCS=(
-	ERRATA README
+	ERRATA
+	README
 )
 
 PATCHES=(

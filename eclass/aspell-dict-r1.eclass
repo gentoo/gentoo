@@ -7,6 +7,7 @@
 # @AUTHOR:
 # Original author: Seemant Kulleen
 #      -r1 author: David Seifert
+# @SUPPORTED_EAPIS: 6
 # @BLURB: An eclass to streamline the construction of ebuilds for new aspell dicts
 # @DESCRIPTION:
 # The aspell-dict-r1 eclass is designed to streamline the construction of

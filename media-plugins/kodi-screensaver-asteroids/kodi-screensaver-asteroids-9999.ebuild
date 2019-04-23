@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,19 +6,20 @@ EAPI=6
 inherit cmake-utils kodi-addon
 
 DESCRIPTION="Asteroids screensaver for Kodi"
-HOMEPAGE="https://github.com/notspiff/screensaver.asteroids"
+HOMEPAGE="https://github.com/xbmc/screensaver.asteroids"
 SRC_URI=""
 
 case ${PV} in
 9999)
 	SRC_URI=""
-	EGIT_REPO_URI="https://github.com/notspiff/screensaver.asteroids.git"
+	EGIT_REPO_URI="https://github.com/xbmc/screensaver.asteroids.git"
 	inherit git-r3
 	;;
 *)
+	CODENAME="Leia"
 	KEYWORDS="~amd64 ~x86"
-	SRC_URI="https://github.com/notspiff/screensaver.asteroids/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	S="${WORKDIR}/screensaver.asteroids-${PV}"
+	SRC_URI="https://github.com/xbmc/screensaver.asteroids/archive/${PV}-${CODENAME}.tar.gz -> ${P}.tar.gz"
+	S="${WORKDIR}/screensaver.asteroids-${PV}-${CODENAME}"
 	;;
 esac
 
@@ -27,5 +28,5 @@ SLOT="0"
 IUSE=""
 
 DEPEND="
-	media-tv/kodi
+	~media-tv/kodi-9999
 	"

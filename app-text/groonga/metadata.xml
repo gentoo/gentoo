@@ -11,7 +11,6 @@
    <flag name="exact-alloc-count">Atomic counting for memory alloc count</flag>
    <flag name="fmalloc">Make memory allocation failed in specified condition for debug</flag>
    <flag name="futex">Use futex</flag>
-   <flag name="jemalloc">Enable <pkg>dev-libs/jemalloc</pkg> for memory management</flag>
    <flag name="libevent">Enable <pkg>dev-libs/libevent</pkg> used for suggestion</flag>
    <flag name="mecab">Use <pkg>app-text/mecab</pkg> for morphological analysis</flag>
    <flag name="msgpack">Enable <pkg>dev-libs/msgpack</pkg> used for suggestion</flag>

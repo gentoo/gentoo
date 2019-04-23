@@ -1,0 +1,30 @@
+diff --git a/cmake/Modules/FindPyIlmBase.cmake b/cmake/Modules/FindPyIlmBase.cmake
+index c677549..5cb9108 100644
+--- a/cmake/Modules/FindPyIlmBase.cmake
++++ b/cmake/Modules/FindPyIlmBase.cmake
+@@ -60,11 +60,11 @@ ELSE()
+ 
+     SET(LIBRARY_PATHS
+         ${ALEMBIC_PYILMBASE_ROOT}/lib
+-        ${ALEMBIC_PYILMBASE_MODULE_DIRECTORY}
++#        ${ALEMBIC_PYILMBASE_MODULE_DIRECTORY} # this is defined nowhere
+         ~/Library/Frameworks
+         /Library/Frameworks
+-        /usr/local/lib
+-        /usr/lib
++        /usr/local/lib${LIB_SUFFIX}
++        /usr/lib${LIB_SUFFIX}
+         /sw/lib
+         /opt/local/lib
+         /opt/csw/lib
+@@ -118,8 +118,8 @@ ELSE()
+     FIND_PATH(ALEMBIC_PYIMATH_MODULE_DIRECTORY imathmodule.so
+         PATHS
+         ${LIBRARY_PATHS}
+-        /usr/local/lib/python${PYTHON_VERSION_MAJOR}.${PYTHON_VERSION_MINOR}/site-packages
+-        ${ALEMBIC_PYILMBASE_ROOT}/lib64/python${PYTHON_VERSION_MAJOR}.${PYTHON_VERSION_MINOR}/site-packages
++        /usr/local/lib${LIB_SUFFIX}/python${PYTHON_VERSION_MAJOR}.${PYTHON_VERSION_MINOR}/site-packages
++        ${ALEMBIC_PYILMBASE_ROOT}/lib${LIB_SUFFIX}/python${PYTHON_VERSION_MAJOR}.${PYTHON_VERSION_MINOR}/site-packages
+         DOC "The imathmodule.so module directory"
+     )
+ 

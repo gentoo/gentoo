@@ -1,0 +1,74 @@
+--- a/src/gfxoutputdrv/ffmpegdrv.c
++++ b/src/gfxoutputdrv/ffmpegdrv.c
+@@ -46,6 +46,13 @@
+ #include "util.h"
+ #include "soundmovie.h"
+ 
++/** \brief  Helper macro to determine ffmpeg version
++ */
++#if (LIBAVCODEC_VERSION_MAJOR >= 58) && (LIBAVCODEC_VERSION_MINOR >= 18)
++# define HAVE_FFMPEG4
++#endif
++
++
+ static gfxoutputdrv_codec_t avi_audio_codeclist[] = {
+     { AV_CODEC_ID_MP2, "MP2" },
+     { AV_CODEC_ID_MP3, "MP3" },
+@@ -354,7 +361,11 @@
+     }
+ 
+     audio_is_open = 1;
++#ifdef HAVE_FFMPEG4
++    if (c->codec->capabilities & AV_CODEC_CAP_VARIABLE_FRAME_SIZE) {
++#else
+     if (c->codec->capabilities & CODEC_CAP_VARIABLE_FRAME_SIZE) {
++#endif
+         audio_inbuf_samples = 10000;
+     } else {
+         audio_inbuf_samples = c->frame_size;
+@@ -447,8 +458,13 @@
+     audio_st.samples_count = 0;
+ 
+     /* Some formats want stream headers to be separate. */
+-    if (ffmpegdrv_oc->oformat->flags & AVFMT_GLOBALHEADER)
++    if (ffmpegdrv_oc->oformat->flags & AVFMT_GLOBALHEADER) {
++#ifdef HAVE_FFMPEG4
++        c->flags |= AV_CODEC_FLAG_GLOBAL_HEADER;
++#else
+         c->flags |= CODEC_FLAG_GLOBAL_HEADER;
++#endif
++    }
+ 
+     /* create resampler context */
+ #ifndef HAVE_FFMPEG_AVRESAMPLE
+@@ -781,7 +797,11 @@
+ 
+     /* Some formats want stream headers to be separate. */
+     if (ffmpegdrv_oc->oformat->flags & AVFMT_GLOBALHEADER) {
++#ifdef HAVE_FFMPEG4
++        c->flags |= AV_CODEC_FLAG_GLOBAL_HEADER;
++#else
+         c->flags |= CODEC_FLAG_GLOBAL_HEADER;
++#endif
+     }
+ 
+     if (audio_init_done) {
+@@ -961,6 +981,7 @@
+ 
+     video_st.frame->pts = video_st.next_pts++;
+ 
++#ifdef AVFMT_RAWPICTURE
+     if (ffmpegdrv_oc->oformat->flags & AVFMT_RAWPICTURE) {
+         AVPacket pkt;
+         VICE_P_AV_INIT_PACKET(&pkt);
+@@ -971,7 +992,9 @@
+         pkt.pts = pkt.dts = video_st.frame->pts;
+ 
+         ret = VICE_P_AV_INTERLEAVED_WRITE_FRAME(ffmpegdrv_oc, &pkt);
+-    } else {
++    } else
++#endif
++    {
+         AVPacket pkt = { 0 };
+         int got_packet;
+ 

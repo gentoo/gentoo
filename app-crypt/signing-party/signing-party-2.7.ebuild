@@ -1,23 +1,20 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=7
 
 inherit toolchain-funcs autotools
 
 DESCRIPTION="A collection of several tools related to OpenPGP"
-HOMEPAGE="http://pgp-tools.alioth.debian.org/"
+HOMEPAGE="https://salsa.debian.org/signing-party-team/signing-party"
 SRC_URI="mirror://debian/pool/main/s/signing-party/${PN}_${PV}.orig.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ppc x86"
-IUSE=""
 
-DEPEND="
-	dev-lang/perl
-	app-crypt/libmd
-"
+DEPEND="dev-lang/perl
+	app-crypt/libmd"
 RDEPEND="${DEPEND}
 	>=app-crypt/gnupg-1.3.92
 	dev-perl/GnuPG-Interface

@@ -19,7 +19,7 @@ SRC_URI="https://releases.llvm.org/${PV/_//}/${P/_/}.src.tar.xz"
 
 LICENSE="|| ( UoI-NCSA MIT )"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86 ~amd64-fbsd"
+KEYWORDS="amd64 ~arm64 x86 ~amd64-fbsd"
 IUSE="elibc_glibc elibc_musl +libcxxabi libcxxrt +libunwind +static-libs test"
 REQUIRED_USE="libunwind? ( || ( libcxxabi libcxxrt ) )
 	?? ( libcxxabi libcxxrt )"
@@ -78,7 +78,9 @@ test_compiler() {
 		<<<'int main() { return 0; }' &>/dev/null
 }
 
-multilib_src_configure() {
+src_configure() {
+	# note: we need to do this before multilib kicks in since it will
+	# alter the CHOST
 	local cxxabi cxxabi_incs
 	if use libcxxabi; then
 		cxxabi=libcxxabi
@@ -92,6 +94,10 @@ multilib_src_configure() {
 		cxxabi_incs="${gcc_inc};${gcc_inc}/${CHOST}"
 	fi
 
+	multilib-minimal_src_configure
+}
+
+multilib_src_configure() {
 	# we want -lgcc_s for unwinder, and for compiler runtime when using
 	# gcc, clang with gcc runtime (or any unknown compiler)
 	local extra_libs=() want_gcc_s=ON
@@ -101,16 +107,12 @@ multilib_src_configure() {
 		# if we're using libunwind and clang with compiler-rt, we want
 		# to link to compiler-rt instead of -lgcc_s
 		if tc-is-clang; then
-			# get the full library list out of 'pretend mode'
-			# and grep it for libclang_rt references
-			local args=( $($(tc-getCC) -### -x c - 2>&1 | tail -n 1) )
-			local i
-			for i in "${args[@]}"; do
-				if [[ ${i} == *libclang_rt* ]]; then
-					want_gcc_s=OFF
-					extra_libs+=( "${i}" )
-				fi
-			done
+			local compiler_rt=$($(tc-getCC) ${CFLAGS} ${CPPFLAGS} \
+			   ${LDFLAGS} -print-libgcc-file-name)
+			if [[ ${compiler_rt} == *libclang_rt* ]]; then
+				want_gcc_s=OFF
+				extra_libs+=( "${compiler_rt}" )
+			fi
 		fi
 	fi
 

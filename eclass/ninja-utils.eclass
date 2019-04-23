@@ -8,6 +8,7 @@
 # @AUTHOR:
 # Michał Górny <mgorny@gentoo.org>
 # Mike Gilbert <floppym@gentoo.org>
+# @SUPPORTED_EAPIS: 2 4 5 6 7
 # @BLURB: common bits to run dev-util/ninja builder
 # @DESCRIPTION:
 # This eclass provides a single function -- eninja -- that can be used

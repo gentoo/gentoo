@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="cairo debug doc gdal postgres sqlite"
 
 RDEPEND="
-	>=dev-libs/boost-1.48[threads]
+	>=dev-libs/boost-1.48:=[threads]
 	dev-libs/icu:=
 	sys-libs/zlib
 	media-libs/freetype
@@ -40,7 +40,6 @@ DEPEND="${RDEPEND}"
 PATCHES=(
 	"${FILESDIR}/${PN}-2.2.0-configure-only-once.patch"
 	"${FILESDIR}/${PN}-2.2.0-dont-run-ldconfig.patch"
-	"${FILESDIR}/${PN}-2.2.0-scons.patch"
 	"${FILESDIR}/${P}-harbuzz_sharper-upstream.patch" # upstream patches ported from
 	"${FILESDIR}/${P}-unicode-upstream.patch" # https://github.com/mapnik/mapnik/commit/9e58c890430db6f0b6f1f7a1690877c9d913d92a
 )

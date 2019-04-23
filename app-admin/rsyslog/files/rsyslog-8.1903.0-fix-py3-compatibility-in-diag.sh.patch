@@ -1,0 +1,22 @@
+From f0847e46c148233b6ab5d6088ca4e1dc664e82a4 Mon Sep 17 00:00:00 2001
+From: Thomas Deutschmann <whissi@whissi.de>
+Date: Sat, 6 Apr 2019 02:07:51 +0200
+Subject: [PATCH] testbench: fix Python 3 compatibility
+
+---
+ tests/diag.sh | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/diag.sh b/tests/diag.sh
+index 5b4b3df46..2926e6ac2 100755
+--- a/tests/diag.sh
++++ b/tests/diag.sh
+@@ -1334,7 +1334,7 @@ get_inode() {
+ 		printf 'FAIL: file "%s" does not exist in get_inode\n' "$1"
+ 		error_exit 100
+ 	fi
+-	python -c 'import os; import stat; print os.lstat("'$1'")[stat.ST_INO]'
++	python -c 'import os; import stat; print(os.lstat("'$1'")[stat.ST_INO])'
+ }
+ 
+ 

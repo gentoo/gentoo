@@ -1,0 +1,13 @@
+Bug: https://bugs.gentoo.org/677250
+Bug: https://bz.apache.org/SpamAssassin/show_bug.cgi?id=7623
+
+--- a/sa-update.raw	2018/09/29 09:33:52	1842302
++++ b/sa-update.raw	2018/09/29 09:41:24	1842303
+@@ -1659,6 +1659,7 @@
+     my($a_rr, $aaaa_rr);
+       # RFC 3986:  scheme = ALPHA *( ALPHA / DIGIT / "+" / "-" / "." )
+     $mirror =~ s{^[a-z][a-z0-9.+-]*://}{}si;  # strip scheme like http://
++    $mirror =~ s{[:/].*}{}s;  # strip all starting from :port or /path
+     return 1 if $have_inet4 && do_dns_query($mirror, "A");
+     return 1 if $have_inet6 && do_dns_query($mirror, "AAAA");
+     return 0;

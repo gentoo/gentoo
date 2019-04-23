@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ SRC_URI="https://people.freedesktop.org/~hughsient/${PN}/releases/${P}.tar.xz"
 
 LICENSE="LGPL-2.1+"
 SLOT="0/8" # soname version
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="doc +introspection stemmer"
 
 RDEPEND="
@@ -29,7 +29,7 @@ RDEPEND="
 	dev-libs/libyaml
 	stemmer? ( dev-libs/snowball-stemmer )
 	x11-libs/pango
-	introspection? ( >=dev-libs/gobject-introspection-0.9.8:= )
+	introspection? ( >=dev-libs/gobject-introspection-1.54:= )
 "
 # libxml2 required for glib-compile-resources
 DEPEND="${RDEPEND}

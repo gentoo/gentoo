@@ -10,7 +10,7 @@ HOMEPAGE="https://github.com/assimp/assimp"
 SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
-KEYWORDS="amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE="samples static test tools"
 SLOT="0"
 
@@ -38,6 +38,7 @@ DEPEND="${RDEPEND}
 PATCHES=(
 	"${FILESDIR}/findassimp-3.3.1.patch"
 	"${FILESDIR}/${P}-qt-5.11.0.patch"
+	"${FILESDIR}/${P}-disabletest.patch" # bug 659122
 )
 
 src_configure() {

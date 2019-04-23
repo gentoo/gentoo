@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_{4,5,6} )
+PYTHON_COMPAT=( python3_{5,6} )
 
 inherit distutils-r1 eutils
 
@@ -24,7 +24,7 @@ RDEPEND="
 	>=dev-python/ws4py-0.3.4[${PYTHON_USEDEP}]
 	>=dev-python/requests-2.6.0[${PYTHON_USEDEP}]
 	>=dev-python/paramiko-1.15.1[${PYTHON_USEDEP}]
-	~net-misc/gns3-server-$PV[${PYTHON_USEDEP}]
+	~net-misc/gns3-server-${PV}[${PYTHON_USEDEP}]
 	dev-python/PyQt5[gui,network,svg,websockets,widgets,${PYTHON_USEDEP}]
 "
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"

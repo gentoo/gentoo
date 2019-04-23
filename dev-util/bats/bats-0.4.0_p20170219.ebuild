@@ -11,7 +11,7 @@ SRC_URI="https://github.com/sstephenson/bats/archive/${COMMITHASH}.tar.gz -> ${P
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="~amd64 ~arm ~ppc64 ~x86"
 
 S="${WORKDIR}/bats-${COMMITHASH}"
 

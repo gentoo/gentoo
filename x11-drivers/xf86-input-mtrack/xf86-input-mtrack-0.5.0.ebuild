@@ -12,7 +12,7 @@ IUSE="debug"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 
 RDEPEND=">=sys-libs/mtdev-1.0
 	x11-base/xorg-server:="

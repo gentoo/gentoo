@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 VIM_VERSION="8.0"
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
+PYTHON_COMPAT=( python{2_7,3_5,3_6} )
 PYTHON_REQ_USE=threads
 inherit vim-doc flag-o-matic versionator bash-completion-r1 python-single-r1
 
@@ -45,7 +45,7 @@ RDEPEND="
 	perl? ( dev-lang/perl:= )
 	python? ( ${PYTHON_DEPS} )
 	racket? ( dev-scheme/racket )
-	ruby? ( || ( dev-lang/ruby:2.4 dev-lang/ruby:2.3 dev-lang/ruby:2.2 ) )
+	ruby? ( || ( dev-lang/ruby:2.4 dev-lang/ruby:2.3 ) )
 	selinux? ( sys-libs/libselinux )
 	tcl? ( dev-lang/tcl:0= )
 	X? ( x11-libs/libXt )

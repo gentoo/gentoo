@@ -1,7 +1,7 @@
 #!/sbin/openrc-run
 
 depend() {
-	need net
+	use net
 }
 
 start() {

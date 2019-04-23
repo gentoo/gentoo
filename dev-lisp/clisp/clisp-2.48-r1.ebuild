@@ -6,7 +6,7 @@ EAPI="2"
 inherit flag-o-matic eutils toolchain-funcs multilib xdg-utils
 
 DESCRIPTION="A portable, bytecode-compiled implementation of Common Lisp"
-HOMEPAGE="http://clisp.sourceforge.net/"
+HOMEPAGE="https://clisp.sourceforge.io/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
@@ -156,8 +156,8 @@ Upstream considers threads to be of Alpha quality, therefore
 it is likely that you will encounter bugs in using them. If you do,
 please report bugs upstream:
 
-Mailing list: https://lists.sourceforge.net/lists/listinfo/clisp-devel
-Bug tracker:  https://sourceforge.net/tracker/?atid=101355&group_id=1355
+Mailing list: https://sourceforge.net/projects/clisp/lists/clisp-devel
+Bug tracker:  https://sourceforge.net/p/clisp/bugs/
 
 EOF
 	fi

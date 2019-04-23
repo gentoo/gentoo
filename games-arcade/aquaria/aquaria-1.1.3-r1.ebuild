@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -26,7 +26,8 @@ QA_PREBUILT="${dir#/}/aquaria"
 
 pkg_nofetch() {
 	echo
-	elog "Download ${SRC_URI} from ${HOMEPAGE} and place it in ${DISTDIR}"
+	elog "Download ${SRC_URI} from ${HOMEPAGE} and place it into"
+	elog "your DISTDIR directory."
 	echo
 }
 

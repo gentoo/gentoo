@@ -1,12 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
-	<longdescription lang="en">
-		GLCDprocDriver is the glue between the app-misc/graphlcd-base
-		library, which is written in C++, and app-misc/lcdproc's
-		meta-driver glcdlib, which extends supported displays in LCDproc
-		by those supported through graphlcd-base (just in text mode, of
-		course).
+	<maintainer type="person">
+		<email>ck+gentoo@bl4ckb0x.de</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		GLCDprocDriver is the glue between the graphlcd-base library from the GraphLCD project,
+		which is written in C++, and LCDproc's meta-driver "glcdlib", which extends supported
+		displays in LCDproc by those supported through graphlcd-base (but just in text mode, of course).
+		It is implemented in C++, but provides the necessary wrapper C calls for use by glcdlib.
+		It is NOT intended to provide general C wrapping for the whole graphlcd-base, library,
+		as it really only implements the actual meta-driver for LCDproc.
 	</longdescription>
+	<upstream>
+		<bugs-to>https://github.com/lucianm/GLCDprocDriver/issues</bugs-to>
+		<remote-id type="github">lucianm/GLCDprocDriver</remote-id>
+	</upstream>
 </pkgmetadata>

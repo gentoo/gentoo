@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-USE_RUBY="ruby21 ruby22 ruby23 ruby24"
+USE_RUBY="ruby23 ruby24 ruby25"
 
 RUBY_FAKEGEM_TASK_DOC=""
 
@@ -41,7 +41,7 @@ all_ruby_prepare() {
 	sed -i -e '/test_\(gray\|compress_colormap\)/,/^  end/ s:^:#:' test/Image2.rb || die
 	sed -i -e '/test_iterations/,/^    end/ s:^:#:' test/ImageList1.rb || die
 	sed -i -e '/test_\(optimize_layers\|montage\)/,/^  end/ s:^:#:' test/ImageList2.rb || die
-	sed -i -e '/test_\(background_color\|border_color\|image_type\)/,/^  end/ s:^:#:' test/Image_attributes.rb || die
+	sed -i -e '/test_\(background_color\|border_color\|colors\|image_type\)/,/^  end/ s:^:#:' test/Image_attributes.rb || die
 }
 
 each_ruby_configure() {

@@ -10,10 +10,7 @@
 			Support additional image formats using <pkg>media-libs/devil</pkg>
 		</flag>
 		<flag name="freeimage">
-			Support additional iamge formats using <pkg>media-libs/freeimage</pkg>
-		</flag>
-		<flag name="exiv2">
-			Use <pkg>media-gfx/exiv2</pkg> as optional dependency
+			Support additional image formats using <pkg>media-libs/freeimage</pkg>
 		</flag>
 	</use>
 </pkgmetadata>

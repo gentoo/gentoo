@@ -1,0 +1,72 @@
+diff --git a/configure.ac b/configure.ac
+index 556f220..2c0693d 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -303,7 +303,7 @@ if test x$with_openssl != xno ; then
+ 	)
+ fi
+ if test x$with_openssl != xno ; then
+-	AC_CHECK_LIB(ssl, SSL_library_init, [
++	AC_CHECK_LIB(ssl, SSL_new, [
+ 				with_openssl=yes
+ 				LIBS="-lssl -lcrypto $LIBS"
+ 		     ], [
+diff --git a/smtp-tls.c b/smtp-tls.c
+index 9a66806..cfc6589 100644
+--- a/smtp-tls.c
++++ b/smtp-tls.c
+@@ -57,6 +57,7 @@ static void *ctx_password_cb_arg;
+ #ifdef USE_PTHREADS
+ #include <pthread.h>
+ static pthread_mutex_t starttls_mutex = PTHREAD_MUTEX_INITIALIZER;
++#if OPENSSL_VERSION_NUMBER < 0x10100000
+ static pthread_mutex_t *openssl_mutex;
+ 
+ static void
+@@ -70,6 +71,7 @@ openssl_mutexcb (int mode, int n,
+     pthread_mutex_unlock (&openssl_mutex[n]);
+ }
+ #endif
++#endif
+ 
+ static int
+ starttls_init (void)
+@@ -77,6 +79,10 @@ starttls_init (void)
+   if (tls_init)
+     return 1;
+ 
++#if OPENSSL_VERSION_NUMBER < 0x10100000
++  /* starting from OpenSSL 1.1.0, OpenSSL uses a new threading API and does its own locking */
++  /* also initialization has been reworked and is done automatically */
++  /* so there's not much to do here any more */
+ #ifdef USE_PTHREADS
+   /* Set up mutexes for the OpenSSL library */
+   if (openssl_mutex == NULL)
+@@ -94,9 +100,10 @@ starttls_init (void)
+       CRYPTO_set_locking_callback (openssl_mutexcb);
+     }
+ #endif
+-  tls_init = 1;
+   SSL_load_error_strings ();
+   SSL_library_init ();
++#endif
++  tls_init = 1;
+   return 1;
+ }
+ 
+@@ -201,7 +208,15 @@ starttls_create_ctx (smtp_session_t session)
+      3207.  Servers typically support SSL as well as TLS because some
+      versions of Netscape do not support TLS.  I am assuming that all
+      currently deployed servers correctly support TLS.  */
++#if OPENSSL_VERSION_NUMBER < 0x10100000
+   ctx = SSL_CTX_new (TLSv1_client_method ());
++#else
++  ctx = SSL_CTX_new (TLS_client_method ());
++  if (!SSL_CTX_set_min_proto_version(ctx, TLS1_VERSION)) {
++        /* FIXME: set an error code AND free the allocated ctx */
++        return NULL;
++  }
++#endif
+ 
+   /* Load our keys and certificates.  To avoid messing with configuration
+      variables etc, use fixed paths for the certificate store.  These are

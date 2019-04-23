@@ -12,13 +12,12 @@ SRC_URI="https://cgit.freedesktop.org/cairo-ocaml/snapshot/${P}.tar.bz2"
 LICENSE="LGPL-2.1"
 SLOT="0/${PV}"
 KEYWORDS="amd64 ~ppc x86 ~amd64-linux ~x86-linux"
-IUSE="doc examples gtk pango svg"
+IUSE="doc examples gtk pango"
 
 RDEPEND="dev-lang/ocaml:=
 	x11-libs/cairo
 	gtk? ( dev-ml/lablgtk:2= )
-	pango? ( x11-libs/pango )
-	svg? ( x11-libs/libsvg-cairo )"
+	pango? ( x11-libs/pango )"
 DEPEND="${RDEPEND}"
 
 src_prepare() {
@@ -35,7 +34,7 @@ src_configure() {
 	econf \
 		$(use_with gtk) \
 		$(use_with pango pango-cairo) \
-		$(use_with svg svg-cairo)
+		--without-svg-cairo
 }
 
 src_compile() {
@@ -74,15 +73,6 @@ src_install() {
 				requires = "cairo"
 				archive(byte) = "pango_cairo.cma"
 				archive(native) = "pango_cairo.cmxa"
-			)
-		EOF
-	fi
-	if use svg; then
-		cat <<-EOF >> META
-			package "svg" (
-				requires = "cairo"
-				archive(byte) = "svg_cairo.cma"
-				archive(native) = "svg_cairo.cmxa"
 			)
 		EOF
 	fi

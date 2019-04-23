@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -18,7 +18,7 @@ if [[ ${PV} == 9999* ]]; then
 	EGIT_REPO_URI="git://sourceware.org/git/glibc.git"
 	inherit git-r3
 else
-	KEYWORDS="alpha amd64 arm arm64 ~hppa ia64 m68k ~mips ~ppc ~ppc64 s390 sh sparc x86"
+	KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86"
 	SRC_URI="mirror://gnu/glibc/${P}.tar.xz"
 fi
 
@@ -163,9 +163,6 @@ pkg_pretend() {
 		ewarn "This will result in a 50% performance penalty when running with a 32bit"
 		ewarn "hypervisor, which is probably not what you want."
 	fi
-
-	use hardened && ! tc-enables-pie && \
-		ewarn "PIE hardening not applied, as your compiler doesn't default to PIE"
 
 	# Make sure host system is up to date #394453
 	if has_version '<sys-libs/glibc-2.13' && \

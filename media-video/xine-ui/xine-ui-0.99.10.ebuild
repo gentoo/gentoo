@@ -1,19 +1,21 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit gnome2-utils xdg-utils
+EAPI=6
+
+inherit autotools gnome2-utils xdg-utils
 
 DESCRIPTION="Xine movie player"
-HOMEPAGE="http://xine.sourceforge.net/"
+HOMEPAGE="https://xine-project.org/home"
 SRC_URI="mirror://sourceforge/xine/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~x86 ~x86-fbsd"
+KEYWORDS="amd64 ~hppa ppc ppc64 x86 ~x86-fbsd"
 IUSE="aalib curl debug libcaca lirc nls readline vdr X xinerama"
 
-RDEPEND="|| ( app-arch/tar app-arch/libarchive )
+RDEPEND="
+	|| ( app-arch/tar app-arch/libarchive )
 	media-libs/libpng:0=
 	>=media-libs/xine-lib-1.2:=[aalib?,libcaca?]
 	virtual/jpeg:0
@@ -35,17 +37,26 @@ RDEPEND="|| ( app-arch/tar app-arch/libarchive )
 		x11-libs/libXv:=
 		x11-libs/libXxf86vm:=
 		xinerama? ( x11-libs/libXinerama:= )
-		)"
+	)
+"
 DEPEND="${RDEPEND}
+	virtual/pkgconfig
 	nls? ( >=sys-devel/gettext-0.18.3 )
 	X? (
 		x11-base/xorg-proto
 		x11-libs/libXt
-		)
-	virtual/pkgconfig"
+	)
+"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-desktop.patch
+	"${FILESDIR}"/${P}-libcaca.patch
+)
 
 src_prepare() {
-	rm -f misc/xine-bugreport
+	default
+	eautoreconf
+	rm misc/xine-bugreport || die
 }
 
 src_configure() {
@@ -65,16 +76,16 @@ src_configure() {
 }
 
 src_install() {
+	# xine-list apparently may cause sandbox violation, bug 654394
+	addpredict /dev/dri
+
 	emake \
 		DESTDIR="${D}" \
 		docdir="/usr/share/doc/${PF}" \
 		docsdir="/usr/share/doc/${PF}" \
 		install
-	dodoc AUTHORS ChangeLog NEWS README
-}
 
-pkg_preinst() {
-	gnome2_icon_savelist
+	einstalldocs
 }
 
 pkg_postinst() {

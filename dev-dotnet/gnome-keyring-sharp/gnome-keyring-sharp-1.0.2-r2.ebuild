@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -16,7 +16,7 @@ IUSE=""
 RDEPEND="
 	>=dev-lang/mono-2.0
 	>=gnome-base/libgnome-keyring-2.30.0
-	|| ( >=dev-dotnet/gtk-sharp-2.12.21 dev-dotnet/glib-sharp )
+	>=dev-dotnet/gtk-sharp-2.12.21
 "
 DEPEND="${RDEPEND}
 	virtual/pkgconfig

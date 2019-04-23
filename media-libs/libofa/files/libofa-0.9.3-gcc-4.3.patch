@@ -1,6 +1,6 @@
-diff -ur libofa-0.9.3.orig/examples/example.cpp libofa-0.9.3/examples/example.cpp
---- libofa-0.9.3.orig/examples/example.cpp	2006-05-10 21:05:37.000000000 +0300
-+++ libofa-0.9.3/examples/example.cpp	2008-04-16 15:51:49.000000000 +0300
+diff -ur a/examples/example.cpp b/examples/example.cpp
+--- a/examples/example.cpp	2006-05-10 21:05:37.000000000 +0300
++++ b/examples/example.cpp	2008-04-16 15:51:49.000000000 +0300
 @@ -9,6 +9,8 @@
  
  #include "protocol.h"
@@ -10,10 +10,10 @@ diff -ur libofa-0.9.3.orig/examples/example.cpp libofa-0.9.3/examples/example.cp
  AudioData* loadWaveFile(char *file);
  AudioData* loadDataUsingLAME(char *file);
  
-Vain hakemistossa libofa-0.9.3/examples: example.cpp.orig
-diff -ur libofa-0.9.3.orig/examples/protocol.cpp libofa-0.9.3/examples/protocol.cpp
---- libofa-0.9.3.orig/examples/protocol.cpp	2006-05-10 21:05:42.000000000 +0300
-+++ libofa-0.9.3/examples/protocol.cpp	2008-04-16 15:51:49.000000000 +0300
+Vain hakemistossa b/examples: example.cpp.orig
+diff -ur a/examples/protocol.cpp b/examples/protocol.cpp
+--- a/examples/protocol.cpp	2006-05-10 21:05:42.000000000 +0300
++++ b/examples/protocol.cpp	2008-04-16 15:51:49.000000000 +0300
 @@ -8,6 +8,7 @@
  -------------------------------------------------------------------*/
  #include <stdio.h>
@@ -22,9 +22,9 @@ diff -ur libofa-0.9.3.orig/examples/protocol.cpp libofa-0.9.3/examples/protocol.
  #include <string>
  #include <map>
  #include <expat.h>
-diff -ur libofa-0.9.3.orig/lib/signal_op.cpp libofa-0.9.3/lib/signal_op.cpp
---- libofa-0.9.3.orig/lib/signal_op.cpp	2006-05-10 21:01:12.000000000 +0300
-+++ libofa-0.9.3/lib/signal_op.cpp	2008-04-16 15:51:49.000000000 +0300
+diff -ur a/lib/signal_op.cpp b/lib/signal_op.cpp
+--- a/lib/signal_op.cpp	2006-05-10 21:01:12.000000000 +0300
++++ b/lib/signal_op.cpp	2008-04-16 15:51:49.000000000 +0300
 @@ -12,6 +12,7 @@
  // DATE CREATED: 1/12/06
  

@@ -1,0 +1,15 @@
+https://bugs.mysql.com/bug.php?id=90727
+
+--- a/FindMySQL.cmake
++++ b/FindMySQL.cmake
+@@ -700,8 +700,10 @@ endif()
+ 
+ # For dynamic linking use the built-in sys and strings
+ if(NOT MYSQLCLIENT_STATIC_LINKING)
++IF(CMAKE_SYSTEM_NAME MATCHES "SunOS")
+    list(APPEND SYS_LIBRARIES "mysql_sys")
+    list(APPEND SYS_LIBRARIES "mysql_strings")
++endif()
+    list(APPEND SYS_LIBRARIES ${MYSQL_LIBRARIES})
+    SET(MYSQL_LIBRARIES ${SYS_LIBRARIES})
+ 

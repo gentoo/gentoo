@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -13,6 +13,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="gnutls libressl systemd"
+REQUIRED_USE="?? ( gnutls libressl )"
 
 RDEPEND="app-i18n/skk-jisyo
 	gnutls? ( net-libs/gnutls )
@@ -24,10 +25,7 @@ RDEPEND="app-i18n/skk-jisyo
 DEPEND="${RDEPEND}
 	dev-lang/perl"
 
-REQUIRED_USE="?? ( gnutls libressl )"
-
 PATCHES=( "${FILESDIR}"/${PN}-gentoo.patch )
-DOCS=( README.md )
 HTML_DOCS=( documentation/. )
 
 src_configure() {

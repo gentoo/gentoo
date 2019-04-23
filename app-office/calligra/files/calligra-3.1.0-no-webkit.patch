@@ -1,0 +1,70 @@
+From 9817c4c2ee1e11ae1d2eacb31b8a2a65d6ea6e8d Mon Sep 17 00:00:00 2001
+From: Dag Andersen <danders@get2net.dk>
+Date: Mon, 22 Oct 2018 09:41:53 +0200
+Subject: Stage does not use WebKit, so remove
+
+---
+ CMakeLists.txt            | 21 +--------------------
+ stage/part/CMakeLists.txt |  1 -
+ 2 files changed, 1 insertion(+), 21 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 8b148c0..1e29140 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -272,14 +272,7 @@ find_package(Qt5 ${REQUIRED_QT_VERSION} QUIET
+         Quick
+         QuickWidgets
+         Sql
+-        WebKit
+-#         WebKitWidgets
+-)
+-message("**********************************************************************************************************************")
+-message("**********************************************************************************************************************")
+-message("Qt WebKitWidgets is required for Stage's html export preview. This will need porting, as that module no longer exists.")
+-message("**********************************************************************************************************************")
+-message("**********************************************************************************************************************")
++)
+ 
+ # Qt5Declarative was removed in Qt 5.6.0 so search for it in a separate call
+ # Including it in a collected find_package(Qt5 ...) call can lead to a fatal not-found error:
+@@ -313,14 +306,6 @@ set_package_properties(Qt5WebKit PROPERTIES
+     PURPOSE "Required for Braindump's Web shape"
+     TYPE OPTIONAL
+ )
+-set_package_properties(Qt5WebKitWidget PROPERTIES
+-    PURPOSE "Required for Stage"
+-    TYPE RECOMMENDED
+-)
+-
+-if(Qt5WebKit_FOUND)
+-    add_definitions( -DCAN_USE_QTWEBKIT )
+-endif()
+ 
+ set(HAVE_OPENGL ${Qt5OpenGL_FOUND})
+ 
+@@ -983,10 +968,6 @@ calligra_drop_product_on_bad_condition( FEATURE_RDF
+     Soprano_FOUND "Soprano not found"
+     )
+ 
+-# calligra_drop_product_on_bad_condition( PART_STAGE
+-#     Qt5WebKitWidgets_FOUND "Qt5WebKitWidgets devel not found"
+-# )
+-
+ calligra_drop_product_on_bad_condition( PART_SHEETS
+     EIGEN3_FOUND "Eigen devel not found"
+     )
+diff --git a/stage/part/CMakeLists.txt b/stage/part/CMakeLists.txt
+index d6000a1..9bdc840 100644
+--- a/stage/part/CMakeLists.txt
++++ b/stage/part/CMakeLists.txt
+@@ -165,7 +165,6 @@ target_link_libraries(calligrastageprivate
+         KF5::IconThemes
+         KF5::Completion
+         Qt5::Svg
+-#         Qt5::WebKitWidgets
+ )
+ if(HAVE_OPENGL)
+     target_link_libraries(calligrastageprivate PRIVATE Qt5::OpenGL)
+-- 
+cgit v1.1

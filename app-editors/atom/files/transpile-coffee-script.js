@@ -5,7 +5,7 @@ const fs = require('fs')
 const glob = require('glob')
 const path = require('path')
 
-module.exports = function () {
+function do_compile() {
   let paths = new Set()
 
   for (let pattern of process.argv.slice(2)) {
@@ -14,10 +14,12 @@ module.exports = function () {
     }
   }
 
-  for (let path of paths) {
+  for (let coffeePath of paths) {
     let jsPath = coffeePath.replace(/coffee$/g, 'js')
     fs.writeFileSync(
       jsPath, CompileCache.addPathToCache(coffeePath, process.env.ATOM_HOME))
     fs.unlinkSync(coffeePath)
   }
 }
+
+do_compile()

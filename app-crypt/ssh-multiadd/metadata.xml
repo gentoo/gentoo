@@ -2,15 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>ashmew2@gmail.com</email>
-		<name>Ashish Gupta</name>
-	</maintainer>
-	<maintainer type="person">
 		<email>k_f@gentoo.org</email>
 		<name>Kristian Fiskerstrand</name>
-	</maintainer>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Gentoo Proxy Maintainers Project</name>
 	</maintainer>
 </pkgmetadata>

@@ -1,5 +1,34 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Thomas Deutschmann <whissi@gentoo.org> (18 Apr 2019)
+# app-arch/zstd is not keyworded.
+media-libs/tiff zstd
+
+# Lars Wendler <polynomial-c@gentoo.org> (15 Apr 2019)
+# dev-vcs/subversion lacks amd64-fbsd keyword
+app-portage/layman subversion test
+dev-vcs/git subversion
+
+# David Seifert <soap@gentoo.org> (15 Apr 2019)
+# app-arch/zstd is not keyworded.
+dev-libs/boost zstd
+
+# Hans de Graaff <graaff@gentoo.org> (08 Apr 2019)
+# Obsolete ruby version, no newer versions keyworded or stable.
+dev-vcs/subversion ruby
+
+# Michał Górny <mgorny@gentoo.org> (20 Mar 2019)
+# Z3 fails to link on FreeBSD but linker produces no error messages.
+sys-devel/clang z3
+
+# Michał Górny <mgorny@gentoo.org> (22 Jan 2019)
+# Missing keywords on dependencies.
+app-arch/libarchive zstd
+
+# Mikle Kolyada <zlogene@gentoo.org> (05 Oct 2018)
+# Not keyworded
+app-admin/sudo sssd
 
 # Ulrich Müller <ulm@gentoo.org> (01 May 2018)
 # Missing keyword on virtual/gsasl dependency, bug #635216.
@@ -48,7 +77,6 @@ dev-python/pycurl test
 
 # Michał Górny <mgorny@gentoo.org> (21 Feb 2018)
 # More unkeyworded dependencies.
-media-libs/xine-lib fusionsound
 media-video/ffmpeg frei0r sofalizer
 
 # Michał Górny <mgorny@gentoo.org> (19 Feb 2018)
@@ -57,8 +85,8 @@ app-doc/doxygen clang
 dev-perl/GD fcgi
 media-libs/libcanberra gnome
 media-libs/mesa vaapi
-media-sound/pulseaudio equalizer qt4 qt5 realtime
-media-video/ffmpeg celt ebur128 kvazaar libilbc openh264
+media-sound/pulseaudio equalizer qt5 realtime
+media-video/ffmpeg ebur128 kvazaar libilbc openh264
 media-video/ffmpeg rubberband sdl ssh x265 zeromq zimg
 net-libs/gnutls idn
 net-print/cups-filters pdf
@@ -75,24 +103,12 @@ media-libs/gstreamer unwind
 
 # Michał Górny <mgorny@gentoo.org> (17 Feb 2018)
 # Unkeyworded deps.
-media-libs/elementary javascript
 media-libs/phonon vlc
 virtual/notification-daemon kde
 
 # Michał Górny <mgorny@gentoo.org> (15 Feb 2018)
 # Requires USE=seccomp that is masked in this profile.
 net-libs/gnutls test-full
-
-# Michał Górny <mgorny@gentoo.org> (20 Jan 2018)
-# Needs sys-libs/libomp which is not keyworded. Leaving the decision
-# whether sys-libs/libomp should eventually be keyworded to when new
-# LLVM is going to be keyworded.
-<sys-devel/clang-runtime-4 openmp
-
-# Michał Górny <mgorny@gentoo.org> (20 Jan 2018)
-# Needs dev-ml/ocaml-ctypes which is not keyworded. Newer versions
-# no longer have the flag, so no point in keywording it for old.
-sys-devel/llvm ocaml
 
 # Ulrich Müller <ulm@gentoo.org> (23 Oct 2017)
 # Needs net-mail/mailutils which is not keyworded, bug #635216.

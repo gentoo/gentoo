@@ -1,9 +1,10 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: gnustep-base.eclass
 # @MAINTAINER:
 # GNUstep Herd <gnustep@gentoo.org>
+# @SUPPORTED_EAPIS: 0 1 2 3 4 5 6 7
 # @BLURB: Internal handling of GNUstep pacakges
 # @DESCRIPTION:
 # Inner gnustep eclass, should only be inherited directly by gnustep-base
@@ -62,7 +63,7 @@ gnustep-base_src_prepare() {
 		eend $?
 	fi
 
-	has ${EAPI:-0} 6 && default
+	! has ${EAPI:-0} 0 1 2 3 4 5 && default
 }
 
 gnustep-base_src_configure() {

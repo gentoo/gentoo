@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -20,7 +20,7 @@ DEPEND="
 
 RDEPEND="${DEPEND}"
 
-MY_PATCHES=(
+PATCHES=(
 	# Build fixes.
 	"${FILESDIR}"/${P}-gcc4.patch
 	"${FILESDIR}"/${P}-missing-includes.patch
@@ -60,12 +60,10 @@ MY_PATCHES=(
 DOCS=( FAQ README )
 
 src_prepare() {
-	default
-
 	# Bug #273484.
 	sed -i '/ldconfig/d' lib/Makefile.in || die
 
-	epatch "${MY_PATCHES[@]}"
+	default
 }
 
 src_configure() {

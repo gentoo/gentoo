@@ -41,7 +41,6 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		-DLIB_INSTALL_DIR=$(get_libdir)
 		-DVALA_EXECUTABLE=${VALAC}
 	)
 

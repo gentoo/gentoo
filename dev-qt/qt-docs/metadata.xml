@@ -20,7 +20,6 @@
 		<flag name="qch">Install documentation in QCH format</flag>
 		<flag name="script">Install documentation for <pkg>dev-qt/qtscript</pkg></flag>
 		<flag name="sensors">Install documentation for <pkg>dev-qt/qtsensors</pkg></flag>
-		<flag name="speech">Install documentation for <pkg>dev-qt/qtspeech</pkg></flag>
 		<flag name="virtualkeyboard">Install documentation for <pkg>dev-qt/qtvirtualkeyboard</pkg></flag>
 		<flag name="webengine">Install documentation for <pkg>dev-qt/qtwebengine</pkg></flag>
 	</use>

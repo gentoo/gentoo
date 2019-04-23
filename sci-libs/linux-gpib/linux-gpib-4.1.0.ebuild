@@ -10,9 +10,9 @@ inherit linux-info readme.gentoo-r1 versionator eutils linux-mod autotools perl-
 MY_PV=${PV/_/}
 
 DESCRIPTION="Kernel module and driver library for GPIB (IEEE 488.2) hardware"
-HOMEPAGE="http://linux-gpib.sourceforge.net/"
+HOMEPAGE="https://linux-gpib.sourceforge.io/"
 SRC_URI="mirror://sourceforge/linux-gpib/${PN}-${MY_PV}.tar.gz
-	firmware? ( http://linux-gpib.sourceforge.net/firmware/gpib_firmware-2006-11-12.tar.gz )
+	firmware? ( https://linux-gpib.sourceforge.io/firmware/gpib_firmware-2006-11-12.tar.gz )
 "
 
 LICENSE="GPL-2"
@@ -54,7 +54,7 @@ pkg_setup () {
 		die "Kernel versions older than 2.6.8 are not supported."
 	fi
 
-	# https://sourceforge.net/tracker/?func=detail&aid=3285657&group_id=42378&atid=432940
+	# https://sourceforge.net/p/linux-gpib/bugs/43/
 	if use pcmcia && kernel_is -ge 2 6 38; then
 		die "pcmcia support is broken on kernels newer 2.6.38"
 	fi

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -23,7 +23,7 @@ SRC_URI="https://github.com/xbmc/libdvdcss/archive/${LIBDVDCSS_COMMIT}.tar.gz ->
 	https://github.com/xbmc/libdvdnav/archive/${LIBDVDNAV_COMMIT}.tar.gz -> libdvdnav-${LIBDVDNAV_COMMIT}.tar.gz
 	!system-ffmpeg? ( https://github.com/xbmc/FFmpeg/archive/${FFMPEG_VERSION}-${CODENAME}.tar.gz -> ffmpeg-${PN}-${FFMPEG_VERSION}-${CODENAME}.tar.gz )"
 
-DESCRIPTION="Kodi is a free and open source media-player and entertainment hub"
+DESCRIPTION="A free and open source media-player and entertainment hub"
 HOMEPAGE="https://kodi.tv/ https://kodi.wiki/"
 
 LICENSE="GPL-2"
@@ -106,13 +106,8 @@ RDEPEND="${COMMON_DEPEND}
 	)
 	!media-tv/xbmc
 	udisks? ( sys-fs/udisks:0 )
-	upower? (
-		systemd? ( sys-power/upower )
-		!systemd? (
-			|| ( sys-power/upower-pm-utils sys-power/upower )
-		)
-	)
-"
+	upower? ( sys-power/upower )"
+
 DEPEND="${COMMON_DEPEND}
 	app-arch/bzip2
 	app-arch/unzip

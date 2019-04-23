@@ -1,0 +1,123 @@
+From 17348668f16857296ac2caf32c4a503f1946e1a5 Mon Sep 17 00:00:00 2001
+From: Mart Raudsepp <leio@gentoo.org>
+Date: Mon, 22 Apr 2019 15:03:06 +0300
+Subject: [PATCH 1/2] meson: Add missing gdk required dependency for champlain
+
+gdk/gdk.h header is included and gdk_cairo_set_source_pixbuf symbol
+is used from gdk, thus we need its header include path and link to it.
+If clutter is built with gtk support, this is implicitly included via
+clutter-1.0 dep, but it can also be built without gtk support, in
+which case the build of libchamplain fails due to no gdk/gdk.h header
+found.
+---
+ champlain/meson.build | 1 +
+ meson.build           | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/champlain/meson.build b/champlain/meson.build
+index 3285c65..0bf8ba5 100644
+--- a/champlain/meson.build
++++ b/champlain/meson.build
+@@ -95,6 +95,7 @@ libchamplain_requires = [
+ libchamplain_deps = libchamplain_requires + [
+   libm_dep,
+   gio_dep,
++  gdk_dep,
+   sqlite_dep,
+   libsoup_dep,
+ ]
+diff --git a/meson.build b/meson.build
+index 43e72e5..1e571c5 100644
+--- a/meson.build
++++ b/meson.build
+@@ -66,6 +66,7 @@ gtk_doc_req = '>= 1.15'
+ glib_dep = dependency('glib-2.0', version: glib_req)
+ gobject_dep = dependency('gobject-2.0', version: glib_req)
+ gio_dep = dependency('gio-2.0', version: glib_req)
++gdk_dep = dependency('gdk-3.0', version: gtk_req)
+ clutter_dep = dependency('clutter-1.0', version: clutter_req)
+ cairo_dep = dependency('cairo', version: cairo_req)
+ sqlite_dep = dependency('sqlite3', version: sqlite_req)
+-- 
+2.17.0
+
+
+From d938cb13fb13f28d18856e343ad3ee269e3cc0d9 Mon Sep 17 00:00:00 2001
+From: Mart Raudsepp <leio@gentoo.org>
+Date: Mon, 22 Apr 2019 15:09:24 +0300
+Subject: [PATCH 2/2] Clean up gdk.h vs gdk-pixbuf.h includes
+
+Some source files included gdk.h without any use; others included it
+instead of gdk-pixbuf/gdk-pixbuf.h
+---
+ champlain/champlain-error-tile-renderer.c | 1 -
+ champlain/champlain-image-renderer.c      | 1 +
+ champlain/champlain-memphis-renderer.c    | 2 +-
+ champlain/champlain-network-tile-source.c | 1 -
+ champlain/champlain-tile.c                | 1 -
+ 5 files changed, 2 insertions(+), 4 deletions(-)
+
+diff --git a/champlain/champlain-error-tile-renderer.c b/champlain/champlain-error-tile-renderer.c
+index 2b74730..f2dc67f 100644
+--- a/champlain/champlain-error-tile-renderer.c
++++ b/champlain/champlain-error-tile-renderer.c
+@@ -25,7 +25,6 @@
+  */
+ 
+ #include "champlain-error-tile-renderer.h"
+-#include <gdk/gdk.h>
+ 
+ struct _ChamplainErrorTileRendererPrivate
+ {
+diff --git a/champlain/champlain-image-renderer.c b/champlain/champlain-image-renderer.c
+index e0d9f65..ad21971 100644
+--- a/champlain/champlain-image-renderer.c
++++ b/champlain/champlain-image-renderer.c
+@@ -26,6 +26,7 @@
+  */
+ 
+ #include "champlain-image-renderer.h"
++#include <gdk-pixbuf/gdk-pixbuf.h>
+ #include <gdk/gdk.h>
+ 
+ struct _ChamplainImageRendererPrivate
+diff --git a/champlain/champlain-memphis-renderer.c b/champlain/champlain-memphis-renderer.c
+index e62d82d..5244889 100644
+--- a/champlain/champlain-memphis-renderer.c
++++ b/champlain/champlain-memphis-renderer.c
+@@ -44,7 +44,7 @@
+ #include "champlain-memphis-renderer.h"
+ #include "champlain-bounding-box.h"
+ 
+-#include <gdk/gdk.h>
++#include <gdk-pixbuf/gdk-pixbuf.h>
+ 
+ #include <memphis/memphis.h>
+ #include <errno.h>
+diff --git a/champlain/champlain-network-tile-source.c b/champlain/champlain-network-tile-source.c
+index 873a39d..281f000 100644
+--- a/champlain/champlain-network-tile-source.c
++++ b/champlain/champlain-network-tile-source.c
+@@ -45,7 +45,6 @@
+ #include "champlain-private.h"
+ 
+ #include <errno.h>
+-#include <gdk/gdk.h>
+ #include <gio/gio.h>
+ #include <glib.h>
+ #include <glib/gstdio.h>
+diff --git a/champlain/champlain-tile.c b/champlain/champlain-tile.c
+index a218857..ea70c3f 100644
+--- a/champlain/champlain-tile.c
++++ b/champlain/champlain-tile.c
+@@ -30,7 +30,6 @@
+ 
+ #include <math.h>
+ #include <errno.h>
+-#include <gdk/gdk.h>
+ #include <libsoup/soup.h>
+ #include <gio/gio.h>
+ #include <clutter/clutter.h>
+-- 
+2.17.0
+

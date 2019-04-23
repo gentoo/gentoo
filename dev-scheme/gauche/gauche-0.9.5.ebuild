@@ -27,11 +27,11 @@ S="${WORKDIR}/${MY_P}"
 PATCHES=(
 	"${FILESDIR}"/${PN}-rpath.patch
 	"${FILESDIR}"/${PN}-gauche.m4.patch
-	"${FILESDIR}"/${PN}-ext-ldflags.patch
 	"${FILESDIR}"/${PN}-xz-info.patch
-	"${FILESDIR}"/${PN}-rfc.tls.patch
-	"${FILESDIR}"/${P}-libressl.patch
+	"${FILESDIR}"/${PN}-0.9-ext-ldflags.patch
+	"${FILESDIR}"/${PN}-0.9-rfc.tls.patch
 	"${FILESDIR}"/${P}-bsd.patch
+	"${FILESDIR}"/${P}-libressl.patch
 	"${FILESDIR}"/${P}-unicode.patch
 )
 DOCS=( AUTHORS ChangeLog HACKING README )

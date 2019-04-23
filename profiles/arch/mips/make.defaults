@@ -3,7 +3,7 @@
 
 # 2006/08/18 - Donnie Berkholz <dberkholz@gentoo.org>
 # Defaults for video drivers
-VIDEO_CARDS="fbdev impact newport"
+VIDEO_CARDS="fbdev impact"
 
 ARCH="mips"
 ACCEPT_KEYWORDS="${ARCH} ~mips"

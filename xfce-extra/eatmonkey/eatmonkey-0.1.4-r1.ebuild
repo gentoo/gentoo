@@ -7,7 +7,7 @@ inherit gnome2-utils
 
 DESCRIPTION="A download manager that works exclusively with aria2"
 HOMEPAGE="https://goodies.xfce.org/projects/applications/eatmonkey"
-SRC_URI="mirror://xfce/src/apps/${PN}/${PV%.*}/${P}.tar.bz2"
+SRC_URI="https://archive.xfce.org/src/apps/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"

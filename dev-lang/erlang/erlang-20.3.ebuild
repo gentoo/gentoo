@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,14 +10,14 @@ inherit autotools elisp-common java-pkg-opt-2 systemd versionator wxwidgets
 # open up a bug to let it be created.
 
 DESCRIPTION="Erlang programming language, runtime environment and libraries (OTP)"
-HOMEPAGE="http://www.erlang.org/"
-SRC_URI="http://www.erlang.org/download/otp_src_${PV}.tar.gz
+HOMEPAGE="https://www.erlang.org/"
+SRC_URI="http://erlang.org/download/otp_src_${PV}.tar.gz
 	http://erlang.org/download/otp_doc_man_${PV}.tar.gz
 	doc? ( http://erlang.org/download/otp_doc_html_${PV}.tar.gz )"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris"
+KEYWORDS="alpha amd64 ~arm ~arm64 ~hppa ~ia64 ppc ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris"
 
 IUSE="compat-ethread dirty-schedulers doc emacs hipe java kpoll libressl odbc smp sctp ssl systemd tk wxwidgets"
 REQUIRED_USE="dirty-schedulers? ( smp )" #621610
@@ -48,7 +48,8 @@ SITEFILE=50${PN}-gentoo.el
 src_prepare() {
 	default
 
-	eapply "${FILESDIR}"/18.2.1-wx3.0.patch
+	eapply "${FILESDIR}"/18.2.1-wx3.0.patch \
+		"${FILESDIR}"/${PN}-add-epmd-pid-file-creation-for-openrc.patch
 
 	if ! use odbc; then
 		sed -i 's: odbc : :' lib/Makefile || die
@@ -145,9 +146,11 @@ src_install() {
 	echo "MANPATH=\"${EPREFIX}${ERL_LIBDIR}/man\"" > "${ED}/etc/env.d/90erlang"
 
 	if use doc ; then
-		dohtml -A README,erl,hrl,c,h,kwc,info -r \
-			"${WORKDIR}"/doc "${WORKDIR}"/lib "${WORKDIR}"/erts-*
+		local DOCS=( "AUTHORS" "HOWTO"/* "README.md" "CONTRIBUTING.md" "${WORKDIR}"/doc "${WORKDIR}"/lib "${WORKDIR}"/erts-* )
+		docompress -x /usr/share/doc/${PF}
 	fi
+
+	einstalldocs
 
 	if use emacs ; then
 		pushd "${S}"

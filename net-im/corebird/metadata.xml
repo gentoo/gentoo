@@ -10,7 +10,6 @@
 		<name>Proxy Maintainers Project</name>
 	</maintainer>
 	<use>
-		<flag name="glade">Install glade catalogs for corebird</flag>
 		<flag name="spellcheck">Support spell checking</flag>
 	</use>
 	<upstream>

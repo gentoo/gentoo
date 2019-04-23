@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/arma/${P}.tar.xz"
 
 LICENSE="Apache-2.0"
 SLOT="0/8"
-KEYWORDS="~amd64 ~arm ~ppc64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="arpack blas debug doc examples hdf5 lapack mkl superlu tbb test"
 REQUIRED_USE="test? ( lapack )"
 

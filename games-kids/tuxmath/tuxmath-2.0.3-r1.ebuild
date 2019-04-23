@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ inherit eutils gnome2-utils
 
 MY_PN="${PN}_w_fonts"
 DESCRIPTION="Educational arcade game where you have to solve maths problems"
-HOMEPAGE="http://tux4kids.alioth.debian.org/tuxmath/"
+HOMEPAGE="https://github.com/tux4kids/tuxmath"
 SRC_URI="mirror://debian/pool/main/t/${PN}/${PN}_${PV}.orig.tar.gz"
 
 LICENSE="GPL-2 OFL-1.1"

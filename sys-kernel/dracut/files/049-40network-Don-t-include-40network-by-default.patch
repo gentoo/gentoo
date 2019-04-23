@@ -1,0 +1,34 @@
+From 83cbc06ab91288e2d931b4f36935bfdb79a99b0e Mon Sep 17 00:00:00 2001
+From: Kairui Song <kasong@redhat.com>
+Date: Fri, 12 Oct 2018 13:07:13 +0800
+Subject: [PATCH] 40network: Don't include 40network by default
+To: <initramfs@vger.kernel.org>
+
+commit 7347391 ('network-legacy: split off from network module')
+splitted network function to network-legacy and removed check() function
+of 40network. This caused 40network to be included even if network is
+not needed.
+
+Signed-off-by: Kairui Song <kasong@redhat.com>
+---
+ modules.d/40network/module-setup.sh | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/modules.d/40network/module-setup.sh b/modules.d/40network/module-setup.sh
+index 57c0a45e..e8541636 100755
+--- a/modules.d/40network/module-setup.sh
++++ b/modules.d/40network/module-setup.sh
+@@ -1,5 +1,10 @@
+ #!/bin/bash
+ 
++# called by dracut
++check() {
++    return 255
++}
++
+ # called by dracut
+ depends() {
+     echo -n "kernel-network-modules "
+-- 
+2.19.2
+

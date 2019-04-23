@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils toolchain-funcs
+
+inherit desktop toolchain-funcs
 
 DESCRIPTION="A multi-player 2D client/server space game"
 HOMEPAGE="http://www.xpilot.org/"

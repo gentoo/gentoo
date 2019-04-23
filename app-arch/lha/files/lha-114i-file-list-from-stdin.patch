@@ -1,7 +1,7 @@
 Index: src/lharc.c
 ===================================================================
---- src/lharc.c	(revision 773)
-+++ src/lharc.c	(working copy)
+--- a/src/lharc.c	(revision 773)
++++ b/src/lharc.c	(working copy)
 @@ -561,7 +561,7 @@
          if (!isatty(1) && cmd == CMD_ADD)
              quiet = TRUE;
@@ -13,8 +13,8 @@ Index: src/lharc.c
              /* Bug(?) on MinGW, isatty() return 0 on Cygwin console.
 Index: configure.ac
 ===================================================================
---- configure.ac	(revision 773)
-+++ configure.ac	(working copy)
+--- a/configure.ac	(revision 773)
++++ b/configure.ac	(working copy)
 @@ -289,6 +289,11 @@
  	    [Define to 1 if you want to ignore dot files with -X command line switch])
  fi

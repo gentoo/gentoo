@@ -1,6 +1,10 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Hans de Graaff <graaff@gentoo.org> (08 Apr 2019)
+# Obsolete ruby version, no newer versions keyworded or stable.
+dev-vcs/subversion ruby
+
 # Michał Górny <mgorny@gentoo.org> (08 Aug 2017)
 # Required VIDEO_CARDS=i965/radeonsi, both masked in this profile.
 media-libs/mesa vulkan
@@ -17,10 +21,6 @@ media-sound/pulseaudio native-headset ofono-headset
 # Needs libepoxy keywording, bug #510940
 x11-base/xorg-server glamor wayland
 x11-drivers/xf86-video-ati glamor
-
-# Mike Frysinger <vapier@gentoo.org> 21 Feb 2016
-# Needs arch love for elementary. #575322
-media-libs/elementary javascript
 
 # Sergey Popov <pinkbyte@gentoo.org> (24 Oct 2015)
 # Not tested

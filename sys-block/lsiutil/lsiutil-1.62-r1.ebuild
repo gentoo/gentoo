@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -26,7 +26,7 @@ S="${WORKDIR}"
 pkg_nofetch() {
 	einfo "Upstream has implemented a mandatory clickthrough EULA for distfile download"
 	einfo "Please visit $SRC_URI"
-	einfo "And place $A in ${DISTDIR}"
+	einfo "And place $A into your DISTDIR directory"
 }
 
 src_install() {

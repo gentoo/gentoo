@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,9 +7,9 @@ CMAKE_BUILD_TYPE=Release
 # ninja does not work due to fortran
 CMAKE_MAKEFILE_GENERATOR=emake
 FORTRAN_NEEDED="fortran"
-PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
+PYTHON_COMPAT=( python2_7 python3_{5,6,7} )
 
-inherit cmake-utils eapi7-ver elisp-common eutils fortran-2 \
+inherit cmake-utils cuda eapi7-ver elisp-common eutils fortran-2 \
 	prefix python-single-r1 toolchain-funcs
 
 if [[ ${PV} == "9999" ]] ; then
@@ -26,19 +26,23 @@ fi
 DESCRIPTION="C++ data analysis framework and interpreter from CERN"
 HOMEPAGE="https://root.cern"
 
-IUSE="+X avahi aqua +asimage +davix emacs +examples fits fftw fortran
-	+gdml graphviz +gsl http jemalloc kerberos ldap libcxx memstat
-	+minuit mysql odbc +opengl oracle postgres prefix pythia6 pythia8
-	+python qt4 qt5 R +roofit root7 shadow sqlite +ssl table +tbb test
-	+threads +tiff +tmva +unuran vc xinetd +xml xrootd"
+IUSE="+X aqua +asimage +c++11 c++14 c++17 cuda +davix emacs +examples
+	fits fftw fortran +gdml graphviz +gsl http jemalloc kerberos ldap
+	libcxx memstat +minuit mysql odbc +opengl oracle postgres prefix
+	pythia6 pythia8 +python qt5 R +roofit root7 shadow sqlite +ssl
+	table +tbb test +threads +tiff +tmva +unuran vc xinetd +xml xrootd
+	zeroconf"
 
 LICENSE="LGPL-2.1 freedist MSttfEULA LGPL-3 libpng UoI-NCSA"
 
 REQUIRED_USE="
-	!X? ( !asimage !opengl !qt4 !qt5 !tiff )
-	python? ( ${PYTHON_REQUIRED_USE} )
-	tmva? ( gsl )
+	^^ ( c++11 c++14 c++17 )
+	!X? ( !asimage !opengl !qt5 !tiff )
 	davix? ( ssl xml )
+	python? ( ${PYTHON_REQUIRED_USE} )
+	qt5? ( root7 )
+	root7? ( || ( c++14 c++17 ) )
+	tmva? ( gsl )
 "
 
 CDEPEND="
@@ -65,21 +69,18 @@ CDEPEND="
 			virtual/glu
 			x11-libs/gl2ps:0=
 		)
-		qt4? (
-			dev-qt/qtcore:4=
-			dev-qt/qtgui:4=
-		)
 		qt5? (
-			dev-qt/qtcore:5=
-			dev-qt/qtgui:5=
-			dev-qt/qtwebengine:5=
+			dev-qt/qtcore:5
+			dev-qt/qtgui:5
+			dev-qt/qtwebengine:5[widgets]
 		)
 	)
 	asimage? ( || (
 		media-libs/libafterimage[gif,jpeg,png,tiff?]
 		>=x11-wm/afterstep-2.2.11[gif,jpeg,png,tiff?]
 	) )
-	avahi? ( net-dns/avahi[mdnsresponder-compat] )
+	zeroconf? ( net-dns/avahi[mdnsresponder-compat] )
+	cuda? ( >=dev-util/nvidia-cuda-toolkit-9.0 )
 	davix? ( net-libs/davix )
 	emacs? ( virtual/emacs )
 	fftw? ( sci-libs/fftw:3.0= )
@@ -93,7 +94,7 @@ CDEPEND="
 	libcxx? ( sys-libs/libcxx )
 	unuran? ( sci-mathematics/unuran:0= )
 	minuit? ( !sci-libs/minuit )
-	mysql? ( virtual/mysql )
+	mysql? ( dev-db/mysql-connector-c )
 	odbc? ( || ( dev-db/libiodbc dev-db/unixODBC ) )
 	oracle? ( dev-db/oracle-instantclient-basic )
 	postgres? ( dev-db/postgresql:= )
@@ -104,7 +105,7 @@ CDEPEND="
 	shadow? ( virtual/shadow )
 	sqlite? ( dev-db/sqlite:3 )
 	ssl? ( dev-libs/openssl:0= )
-	tbb? ( dev-cpp/tbb )
+	tbb? ( >=dev-cpp/tbb-2018 )
 	tmva? ( dev-python/numpy[${PYTHON_USEDEP}] )
 	vc? ( dev-libs/vc )
 	xml? ( dev-libs/libxml2:2= )
@@ -118,22 +119,19 @@ RDEPEND="${CDEPEND}
 	xinetd? ( sys-apps/xinetd )"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-6.12.04-no-ocaml.patch
-	"${FILESDIR}"/${PN}-6.13.02-hsimple.patch
+	"${FILESDIR}"/${PN}-6.12.06_cling-runtime-sysroot.patch
 )
 
 pkg_setup() {
 	use fortran && fortran-2_pkg_setup
 	use python && python-single-r1_pkg_setup
 
-	echo
 	elog "There are extra options on packages not yet in Gentoo:"
 	elog "Afdsmgrd, AliEn, castor, Chirp, dCache, gfal, Globus, gLite,"
 	elog "HDFS, Monalisa, MaxDB/SapDB, SRP, VecCore."
-	elog "You can use the env variable EXTRA_ECONF variable for this."
+	elog "You can use the environment variable EXTRA_ECONF for this."
 	elog "For example, for Chirp, you would set: "
 	elog "EXTRA_ECONF=\"-Dchirp=ON\""
-	echo
 }
 
 src_prepare() {
@@ -147,25 +145,29 @@ src_prepare() {
 
 # Note: ROOT uses bundled clang because it is patched and API-incompatible
 #       with vanilla clang. The patches enable the C++ interpreter to work.
-#       Since ROOT installs many small files into /etc (~100MB in total),
-#       we install it into another directory to avoid making /etc too big.
+#       Since ROOT installs many files into /etc (~100MB in total) that don't
+#       really belong there, we install it into another directory to avoid
+#       making /etc too big.
 
 src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_C_FLAGS="${CFLAGS}"
 		-DCMAKE_CXX_FLAGS="${CXXFLAGS}"
+		-DPYTHON_EXECUTABLE="${PYTHON}"
 		-DCMAKE_INSTALL_PREFIX="${EPREFIX%/}/usr/$(get_libdir)/${PN}/$(ver_cut 1-2)"
 		-DCMAKE_INSTALL_MANDIR="${EPREFIX%/}/usr/$(get_libdir)/${PN}/$(ver_cut 1-2)/share/man"
-		-DMCAKE_INSTALL_LIBDIR=$(get_libdir)
+		-DCMAKE_INSTALL_LIBDIR=$(get_libdir)
 		-DDEFAULT_SYSROOT="${EPREFIX}"
 		-DLLVM_CONFIG="${EPREFIX%/}/usr/lib/llvm/5/bin/llvm-config"
 		-DCLING_BUILD_PLUGINS=OFF
 		-Dexplicitlink=ON
 		-Dexceptions=ON
 		-Dfail-on-missing=ON
+		-Dgnuinstall=OFF
 		-Dshared=ON
 		-Dsoversion=ON
 		-Dbuiltin_llvm=OFF
+		-Dbuiltin_clang=ON
 		-Dbuiltin_afterimage=OFF
 		-Dbuiltin_cfitsio=OFF
 		-Dbuiltin_davix=OFF
@@ -194,14 +196,18 @@ src_configure() {
 		-Dalien=OFF
 		-Dasimage=$(usex asimage)
 		-Dastiff=$(usex tiff)
-		-Dbonjour=$(usex avahi)
+		-Dbonjour=$(usex zeroconf)
 		-Dlibcxx=$(usex libcxx)
 		-Dccache=OFF # use ccache via portage
 		-Dcastor=OFF
 		-Dchirp=OFF
+		-Dclad=OFF
 		-Dcling=ON # cling=OFF is broken
 		-Dcocoa=$(usex aqua)
-		-Dcxx14=$(usex root7)
+		-Dcuda=$(usex cuda)
+		-Dcxx11=$(usex c++11)
+		-Dcxx14=$(usex c++14)
+		-Dcxx17=$(usex c++17)
 		-Dcxxmodules=OFF # requires clang, unstable
 		-Ddavix=$(usex davix)
 		-Ddcache=OFF
@@ -217,7 +223,6 @@ src_configure() {
 		-Dglite=OFF # not implemented
 		-Dglobus=OFF
 		-Dgminimal=OFF
-		-Dgnuinstall=OFF
 		-Dgsl_shared=$(usex gsl)
 		-Dgviz=$(usex graphviz)
 		-Dhdfs=OFF
@@ -242,14 +247,14 @@ src_configure() {
 		-Dpythia8=$(usex pythia8)
 		-Dpython=$(usex python)
 		-Dqt5web=$(usex qt5)
-		-Dqtgsi=$(usex qt4)
-		-Dqt=$(usex qt4)
+		-Dqtgsi=OFF
+		-Dqt=OFF
 		-Drfio=OFF
 		-Droofit=$(usex roofit)
 		-Droot7=$(usex root7)
 		-Drootbench=OFF
-		-Droottest=$(usex test)
-		-Drpath=ON # needed for multi-slot to work
+		-Droottest=OFF
+		-Drpath=OFF
 		-Druby=OFF # deprecated and broken
 		-Druntime_cxxmodules=OFF # does not work yet
 		-Dr=$(usex R)
@@ -259,13 +264,12 @@ src_configure() {
 		-Dsrp=OFF # not implemented
 		-Dssl=$(usex ssl)
 		-Dtable=$(usex table)
-		-Dtbb=$(usex tbb)
 		-Dtcmalloc=OFF
 		-Dtesting=$(usex test)
 		-Dthread=$(usex threads)
-		-Dtmva-cpu=$(usex tmva)
-		-Dtmva-gpu=OFF
 		-Dtmva=$(usex tmva)
+		-Dtmva-cpu=$(usex tmva)
+		-Dtmva-gpu=$(usex cuda)
 		-Dunuran=$(usex unuran)
 		-Dvc=$(usex vc)
 		-Dvdt=OFF
@@ -278,11 +282,17 @@ src_configure() {
 	cmake-utils_src_configure
 }
 
+src_compile() {
+	# needed for hsimple.root
+	addwrite /dev/random
+	cmake-utils_src_compile
+}
+
 src_install() {
 	cmake-utils_src_install
 
 	ROOTSYS=${EPREFIX%/}/usr/$(get_libdir)/${PN}/$(ver_cut 1-2)
-	ROOTENV=9999${PN}-$(ver_cut 1-2)
+	ROOTENV=9900${PN}-$(ver_cut 1-2)
 
 	# ROOT fails without this symlink because it only looks in lib
 	if [[ ! -d ${D}/${ROOTSYS}/lib ]]; then
@@ -308,18 +318,14 @@ src_install() {
 		elisp-install ${PN}-$(ver_cut 1-2) "${BUILD_DIR}"/root-help.el
 	fi
 
-	if ! use gdml; then
-		rm -r geom || die
-	fi
-
 	if ! use examples; then
-		rm -r test tutorials || die
+		rm -r tutorials || die
 	fi
 
-	if use tmva; then
+	if ! use tmva; then
 		rm -r tmva || die
 	fi
 
 	# clean up unnecessary files from installation
-	rm -r bin/clang* config emacs etc/vmc || die
+	rm -r emacs test || die
 }

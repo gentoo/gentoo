@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: waf-utils.eclass
@@ -8,6 +8,7 @@
 # Original Author: Gilles Dartiguelongue <eva@gentoo.org>
 # Various improvements based on cmake-utils.eclass: Tomáš Chvátal <scarabeus@gentoo.org>
 # Proper prefix support: Jonathan Callen <jcallen@gentoo.org>
+# @SUPPORTED_EAPIS: 4 5 6
 # @BLURB: common ebuild functions for waf-based packages
 # @DESCRIPTION:
 # The waf-utils eclass contains functions that make creating ebuild for
@@ -83,13 +84,20 @@ waf-utils_src_configure() {
 	[[ -z ${NO_WAF_LIBDIR} ]] && libdir=(--libdir="${EPREFIX}/usr/$(get_libdir)")
 
 	tc-export AR CC CPP CXX RANLIB
-	echo "CCFLAGS=\"${CFLAGS}\" LINKFLAGS=\"${CFLAGS} ${LDFLAGS}\" \"${WAF_BINARY}\" --prefix=${EPREFIX}/usr ${libdir[@]} $@ configure"
 
-	CCFLAGS="${CFLAGS}" LINKFLAGS="${CFLAGS} ${LDFLAGS}" "${WAF_BINARY}" \
-		"--prefix=${EPREFIX}/usr" \
-		"${libdir[@]}" \
-		"$@" \
-		configure || die "configure failed"
+	local CMD=(
+		CCFLAGS="${CFLAGS}"
+		LINKFLAGS="${CFLAGS} ${LDFLAGS}"
+		PKGCONFIG="$(tc-getPKG_CONFIG)"
+		"${WAF_BINARY}"
+		"--prefix=${EPREFIX}/usr"
+		"${libdir[@]}"
+		"${@}"
+		configure
+	)
+
+	echo "${CMD[@]@Q}" >&2
+	env "${CMD[@]}" || die "configure failed"
 }
 
 # @FUNCTION: waf-utils_src_compile
@@ -98,11 +106,11 @@ waf-utils_src_configure() {
 waf-utils_src_compile() {
 	debug-print-function ${FUNCNAME} "$@"
 	local _mywafconfig
-	[[ "${WAF_VERBOSE}" ]] && _mywafconfig="--verbose"
+	[[ ${WAF_VERBOSE} == ON ]] && _mywafconfig="--verbose"
 
 	local jobs="--jobs=$(makeopts_jobs)"
-	echo "\"${WAF_BINARY}\" build ${_mywafconfig} ${jobs}"
-	"${WAF_BINARY}" ${_mywafconfig} ${jobs} || die "build failed"
+	echo "\"${WAF_BINARY}\" build ${_mywafconfig} ${jobs} ${*}"
+	"${WAF_BINARY}" ${_mywafconfig} ${jobs} "${@}" || die "build failed"
 }
 
 # @FUNCTION: waf-utils_src_install
@@ -111,8 +119,8 @@ waf-utils_src_compile() {
 waf-utils_src_install() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	echo "\"${WAF_BINARY}\" --destdir=\"${D}\" install"
-	"${WAF_BINARY}" --destdir="${D}" install  || die "Make install failed"
+	echo "\"${WAF_BINARY}\" --destdir=\"${D}\" ${*} install"
+	"${WAF_BINARY}" --destdir="${D}" "${@}" install  || die "Make install failed"
 
 	# Manual document installation
 	einstalldocs

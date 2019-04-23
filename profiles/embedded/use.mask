@@ -1,7 +1,7 @@
 # Zac Medico <zmedico@gentoo.org>
 # must use a prefix profile
 prefix
-prefix-chain
+prefix-stack
 
 # Chris PeBenito <pebenito@gentoo.org>
 # must use a SELinux profile

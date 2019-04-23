@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,7 +9,7 @@ inherit autotools
 DESCRIPTION="Command line client for ISDS"
 HOMEPAGE="http://xpisar.wz.cz/shigofumi/"
 if [[ ${PV} = 9999* ]]; then
-	EGIT_REPO_URI='git://repo.or.cz/shigofumi.git'
+	EGIT_REPO_URI='https://repo.or.cz/shigofumi.git'
 	inherit git-r3
 else
 	SRC_URI="http://xpisar.wz.cz/${PN}/dist/${P}.tar.bz2"

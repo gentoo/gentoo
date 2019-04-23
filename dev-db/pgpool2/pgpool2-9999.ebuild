@@ -1,13 +1,13 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 EGIT_REPO_URI="https://git.postgresql.org/git/pgpool2.git"
 
-POSTGRES_COMPAT=( 9.{3..6} 10 )
+POSTGRES_COMPAT=( 9.{3..6} {10..11} )
 
-inherit git-r3 postgres-multi
+inherit autotools git-r3 postgres-multi
 
 DESCRIPTION="Connection pool server for PostgreSQL"
 HOMEPAGE="http://www.pgpool.net/"
@@ -17,18 +17,27 @@ SLOT="0"
 
 KEYWORDS=""
 
-IUSE="doc memcached pam ssl static-libs"
+IUSE="doc libressl memcached pam ssl static-libs"
 
 RDEPEND="
 	${POSTGRES_DEP}
 	net-libs/libnsl:0=
 	memcached? ( dev-libs/libmemcached )
 	pam? ( sys-auth/pambase )
-	ssl? ( dev-libs/openssl:* )
+	ssl? (
+		!libressl? ( dev-libs/openssl:0= )
+		libressl? ( dev-libs/libressl:= )
+	)
 "
 DEPEND="${RDEPEND}
-	sys-devel/bison
 	!!dev-db/pgpool
+	sys-devel/bison
+	virtual/pkgconfig
+	doc? (
+		 app-text/openjade
+		 dev-libs/libxml2
+		 dev-libs/libxslt
+	 )
 "
 
 pkg_setup() {
@@ -38,25 +47,27 @@ pkg_setup() {
 }
 
 src_prepare() {
-	eapply "${FILESDIR}/pgpool_run_paths-9999.patch"
+	eapply \
+		"${FILESDIR}/pgpool-configure-memcached.patch" \
+		"${FILESDIR}/pgpool-configure-pam.patch" \
+		"${FILESDIR}/pgpool-configure-pthread.patch" \
+		"${FILESDIR}/pgpool_run_paths-9999.patch"
+
+	eautoreconf
 
 	postgres-multi_src_prepare
 }
 
 src_configure() {
-	local myconf
-	use memcached && \
-		myconf="--with-memcached=\"${EROOT%/}/usr/include/libmemcached\""
-	use pam && myconf+=' --with-pam'
-
 	postgres-multi_foreach econf \
 		--disable-rpath \
 		--sysconfdir="${EROOT%/}/etc/${PN}" \
 		--with-pgsql-includedir='/usr/include/postgresql-@PG_SLOT@' \
 		--with-pgsql-libdir="/usr/$(get_libdir)/postgresql-@PG_SLOT@/$(get_libdir)" \
-		$(use_with ssl openssl) \
 		$(use_enable static-libs static) \
-		${myconf}
+		$(use_with memcached) \
+		$(use_with pam) \
+		$(use_with ssl openssl)
 }
 
 src_compile() {
@@ -65,6 +76,7 @@ src_compile() {
 	# of that directory built, too.
 	postgres-multi_foreach emake
 	postgres-multi_foreach emake -C src/sql
+	use doc && postgres-multi_forbest emake DESTDIR="${D}" -C doc
 }
 
 src_install() {
@@ -79,9 +91,7 @@ src_install() {
 
 	# Documentation!
 	dodoc NEWS TODO
-	if use doc ; then
-		postgres-multi_forbest emake DESTDIR="${D}" -C doc install
-	fi
+	use doc && postgres-multi_forbest emake DESTDIR="${D}" -C doc install
 
 	# Examples and extras
 	# mv some files that get installed to /usr/share/pgpool-II so that
