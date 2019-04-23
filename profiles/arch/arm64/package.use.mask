@@ -69,10 +69,6 @@ virtual/ffmpeg -sdl
 # It builds OK but is not yet in ::gentoo. bug #678404
 kde-apps/cantor lua
 
-# Mart Raudsepp <leio@gentoo.org> (23 Feb 2019)
-# app-text/gspell not keyworded yet
-app-text/evince spell
-
 # Davide Pesavento <pesa@gentoo.org> (27 Dec 2018)
 # The corresponding Qt5 modules are not keyworded on arm64, and we don't want to
 # keyword them solely because of PyQt5 while there are no other in-tree users.
