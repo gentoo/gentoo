@@ -1180,6 +1180,9 @@ glibc_do_src_install() {
 		# powerpc
 		ppc     /lib/ld.so.1
 		ppc64   /lib64/ld64.so.1
+		# riscv
+		lp64d   /lib/ld-linux-riscv64-lp64d.so.1
+		lp64    /lib/ld-linux-riscv64-lp64.so.1
 		# s390
 		s390    /lib/ld.so.1
 		s390x   /lib/ld64.so.1
