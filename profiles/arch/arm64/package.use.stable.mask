@@ -5,10 +5,6 @@
 # media-libs/libsdl is not stable yet
 dev-libs/zziplib sdl
 
-# Mart Raudsepp <leio@gentoo.org> (18 Feb 2019)
-# app-text/aspell not stable yet
-app-misc/mc spell
-
 # Andreas Sturmlechner <asturm@gentoo.org> (10 Feb 2019)
 # kde-frameworks/kconfig is not stable for arm64
 net-libs/libproxy kde
