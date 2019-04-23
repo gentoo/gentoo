@@ -3,7 +3,7 @@
 
 EAPI=7
 
-COMMIT="12d54309def29c3bcb69d92e1b70540c4aa0f9cd"
+COMMIT="5b50c4c7b0ce7d5e06287c24b6b5600b6c2d68df"
 KDE_HANDBOOK="forceoptional"
 inherit kde5
 
