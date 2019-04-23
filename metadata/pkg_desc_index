@@ -357,7 +357,7 @@ app-crypt/p11-kit 0.23.12: Provides a standard configuration setup for installin
 app-crypt/paperkey 1.5 1.6: OpenPGP key archiver
 app-crypt/pgpdump 0.33: A PGP packet visualizer
 app-crypt/pinentry 1.0.0-r2 1.1.0-r2: Simple passphrase entry dialogs which utilize the Assuan protocol
-app-crypt/qca 2.1.3-r2: Qt Cryptographic Architecture (QCA)
+app-crypt/qca 2.1.3-r2 2.2.0: Qt Cryptographic Architecture (QCA)
 app-crypt/quickcrypt 0.9.2b-r1: gives you a quick MD5 Password from any string
 app-crypt/rhash 1.3.6-r1: Console utility and library for computing and verifying file hash sums
 app-crypt/rotix 0.83: Rotix allows you to generate rotational obfuscations
@@ -1251,7 +1251,7 @@ app-portage/repoman 2.3.10 2.3.11: Repoman is a Quality Assurance tool for Gento
 app-portage/smart-live-rebuild 1.3.6: Check live packages for updates and emerge them as necessary
 app-portage/splat 0.08-r1: Simple Portage Log Analyzer Tool
 app-portage/tatt 0.4 0.5: arch testing tool
-app-portage/ufed 0.91 0.92: Gentoo Linux USE flags editor
+app-portage/ufed 0.91 0.92 0.94: Gentoo Linux USE flags editor
 app-portage/unsymlink-lib 13: Convert your system to SYMLINK_LIB=no
 app-shells/autojump 22.2.4-r4: change directory command that learns
 app-shells/bash 2.05b_p13 3.0_p22 3.1_p23 3.2_p57 4.0_p44 4.1_p17 4.2_p53 4.3_p48-r2 4.4_p23-r1: The standard GNU Bourne again shell
@@ -5715,7 +5715,7 @@ dev-python/unidecode 0.04.20: Module providing ASCII transliterations of Unicode
 dev-python/unittest2 1.1.0: The new features in unittest backported to Python 2.4+
 dev-python/uritemplate 0.6 3.0.0: Python implementation of RFC6570, URI Template
 dev-python/urlgrabber 3.9.1-r2 3.10.1: Python module for downloading files
-dev-python/urllib3 1.22: HTTP library with thread-safe connection pooling, file post, and more
+dev-python/urllib3 1.22 1.24.2: HTTP library with thread-safe connection pooling, file post, and more
 dev-python/urwid 1.3.1: Curses-based user interface library for Python
 dev-python/utidylib 0.3-r2: TidyLib Python wrapper
 dev-python/vcrpy 1.10.3 1.11.1: Automatically mock your HTTP interactions to simplify and speed up testing
@@ -5850,6 +5850,7 @@ dev-ruby/archive-tar-minitar 0.6.1 0.8: Provides POSIX tarchive management from 
 dev-ruby/asciidoctor 1.5.7.1: Processor for converting AsciiDoc into HTML 5, DocBook 4.5 and other formats
 dev-ruby/asciimath 1.0.4: A pure Ruby AsciiMath parsing and conversion library
 dev-ruby/atomic 1.1.101: An atomic reference implementation for JRuby, Rubinius, and MRI
+dev-ruby/backports 3.11.4: Backports of Ruby features for older Ruby
 dev-ruby/bacon 1.2.0-r2: Small RSpec clone weighing less than 350 LoC
 dev-ruby/bcat 0.6.2-r3: Pipe to browser utility for use at the shell and within editors
 dev-ruby/bcrypt-ruby 3.1.11-r1: An easy way to keep your users' passwords secure
@@ -5881,7 +5882,7 @@ dev-ruby/dbf 3.1.1 4.1.2: a small fast library for reading dBase, xBase, Clipper
 dev-ruby/deep_merge 1.2.1: A simple set of utility functions for Hash
 dev-ruby/deprecated 3.0.1-r2: A Ruby library for handling deprecated code
 dev-ruby/did_you_mean 1.1.2: 'did you mean?'experience in Ruby
-dev-ruby/diff-lcs 1.2.5-r1: Use the McIlroy-Hunt LCS algorithm to compute differences
+dev-ruby/diff-lcs 1.2.5-r1 1.3: Use the McIlroy-Hunt LCS algorithm to compute differences
 dev-ruby/domain_name 0.5.20170404: Domain Name manipulation library for Ruby
 dev-ruby/dust 0.1.7-r2: Descriptive block syntax definition for Test::Unit
 dev-ruby/erubi 1.7.0: a ERB template engine for ruby; a simplified fork of Erubis
@@ -5897,7 +5898,7 @@ dev-ruby/fcgi 0.9.2.1-r1: FastCGI library for Ruby
 dev-ruby/ffi 1.9.18 1.9.25: Ruby extension for programmatically loading dynamic libraries
 dev-ruby/flexmock 2.3.5 2.3.6: Simple mock object library for Ruby unit testing
 dev-ruby/gettext-setup 0.30: A gem to ease i18n
-dev-ruby/gherkin 4.1.3: Fast Gherkin lexer and parser
+dev-ruby/gherkin 4.1.3 5.1.0: Fast Gherkin lexer and parser
 dev-ruby/git 1.4.0: Library for using Git in Ruby
 dev-ruby/gruff 0.7.0: Beautiful graphs for one or multiple datasets
 dev-ruby/haml 4.0.7-r1: A ruby web page templating engine
@@ -6047,7 +6048,7 @@ dev-ruby/rubygems 2.7.9: Centralized Ruby extension management system
 dev-ruby/rubypants 0.7.0: A Ruby port of the SmartyPants PHP library
 dev-ruby/rubyzip 1.2.2: A ruby library for reading and writing zip files
 dev-ruby/safe_yaml 1.0.4-r3 1.0.5: Parse YAML safely, alternative implementation of YAML.load
-dev-ruby/sass 3.4.24: An extension of CSS3, adding nested rules, variables, mixins, and more
+dev-ruby/sass 3.4.24 3.4.25: An extension of CSS3, adding nested rules, variables, mixins, and more
 dev-ruby/selenium-webdriver 3.12.0 3.14.1: This gem provides Ruby bindings for WebDriver
 dev-ruby/semantic_puppet 1.0.2: Library of tools for working with Semantic Versions and module dependencies
 dev-ruby/serialport 1.3.1: a library for serial port (rs232) access in ruby
@@ -6077,7 +6078,7 @@ dev-ruby/thread_order 1.1.0: Test helper for ordering threaded code
 dev-ruby/thread_safe 0.3.6: A collection of thread-safe versions of common core Ruby classes
 dev-ruby/tidy-ext 0.1.14-r3: W3C HTML Tidy library implemented as a Ruby extension
 dev-ruby/tidy_table 0.0.5-r4: Tool to convert an array of struct into an HTML table
-dev-ruby/tilt 2.0.5: Thin interface over template engines to make their usage as generic as possible
+dev-ruby/tilt 2.0.5 2.0.9: Thin interface over template engines to make their usage as generic as possible
 dev-ruby/timecop 0.8.1: A gem providing 'time travel' and 'time freezing' capabilities
 dev-ruby/tins 1.14.0 1.20.2: All the stuff that isn't good enough for a real library
 dev-ruby/transaction-simple 1.4.0.2-r2: Provides transaction support at the object level
@@ -6246,7 +6247,7 @@ dev-util/anjuta 3.28.0-r1: A versatile IDE for GNOME
 dev-util/antlrworks 1.2.3: A novel grammar development environment for ANTLR v3 grammars
 dev-util/appdata-tools 0.1.8-r1: CLI designed to validate AppData descriptions for standards and style compliance
 dev-util/argouml 0.34: Modelling tool that helps you do your design using UML
-dev-util/aruba 0.6.2-r1: Cucumber steps for driving out command line applications
+dev-util/aruba 0.6.2-r1 0.6.2-r2: Cucumber steps for driving out command line applications
 dev-util/astyle 3.0.1-r1 3.1-r2: Artistic Style is a re-indenter and reformatter for C++, C and Java source code
 dev-util/babeltrace 1.2.4: A command-line tool and library to read and convert trace files
 dev-util/bam 0.4.0-r1: Fast and flexible Lua-based build system
@@ -6289,9 +6290,11 @@ dev-util/cpuinfo-collection 20070104: huge collection of /proc/cpuinfo files
 dev-util/cram 0.7: Functional testing framework for command line applications
 dev-util/cscope 15.8a-r1: Interactively examine a C program
 dev-util/ctags 20161028 20190331: Exuberant Ctags creates tags files for code browsing in editors
-dev-util/cucumber 2.4.0-r1: Executable feature scenarios
-dev-util/cucumber-core 1.5.0: Executable feature scenarios
-dev-util/cucumber-wire 0.0.1: Executable feature scenarios
+dev-util/cucumber 2.4.0-r1 3.1.2: Executable feature scenarios
+dev-util/cucumber-core 1.5.0 3.2.1: Executable feature scenarios
+dev-util/cucumber-expressions 6.0.1: a simpler alternative to Regular Expressions
+dev-util/cucumber-tag_expressions 1.1.1: Cucumber tag expressions for ruby
+dev-util/cucumber-wire 0.0.1 0.0.1-r1: Executable feature scenarios
 dev-util/cunit 2.1_p3: C Unit Test Framework
 dev-util/cutils 1.6-r4: C language utilities
 dev-util/d-feet 0.3.13: D-Feet is a powerful D-Bus debugger
@@ -6614,7 +6617,7 @@ gnome-extra/nautilus-actions 3.2.4: Configures programs to be launched when file
 gnome-extra/nautilus-dropbox 1.6.2: Store, Sync and Share Files Online
 gnome-extra/nautilus-sendto 3.8.6: A nautilus extension for sending files to locations
 gnome-extra/nemo 3.6.4-r1: A file manager for Cinnamon, forked from Nautilus
-gnome-extra/nm-applet 1.8.18: GNOME applet for NetworkManager
+gnome-extra/nm-applet 1.8.18 1.8.20: GNOME applet for NetworkManager
 gnome-extra/office-runner 1.0.2: Lighthearted tool to temporarily inhibit GNOME's suspend on lid close behavior
 gnome-extra/polkit-gnome 0.105-r1: A dbus session bus service that is used to bring up authentication dialogs
 gnome-extra/seahorse-nautilus 3.11.92: Nautilus extension for encrypting and decrypting files with GnuPG
@@ -8626,7 +8629,7 @@ net-ftp/ftp 0.17-r7 0.17.23.0.2.1: Standard Linux FTP client
 net-ftp/ftpbase 0.01-r2: FTP layout package
 net-ftp/gftp 2.0.19-r3: Gnome based FTP Client
 net-ftp/gproftpd 8.3.2-r1: GTK frontend to proftpd
-net-ftp/lftp 4.7.5 4.8.4: A sophisticated ftp/sftp/http/https/torrent client and file transfer program
+net-ftp/lftp 4.7.5 4.8.4 4.8.4-r1: A sophisticated ftp/sftp/http/https/torrent client and file transfer program
 net-ftp/linksys-tftp 1.2.1-r3: TFTP client suitable for uploading to the Linksys WRT54G Wireless Router
 net-ftp/ncftp 3.2.6: An extremely configurable ftp client
 net-ftp/oftpd 0.3.7-r10: Secure, small, anonymous only ftpd
@@ -9010,7 +9013,7 @@ net-misc/netpipe 1.0.0_beta2-r2: tool to reliably distribute binary data using U
 net-misc/netpipes 4.2-r2: a package to manipulate BSD TCP/IP stream sockets
 net-misc/netsed 0.01b: Small tool for altering forwarded network data in real time
 net-misc/netstat-nat 1.4.10: Display NAT connections
-net-misc/networkmanager 1.14.4 1.14.6: A set of co-operative tools that make networking simple and straightforward
+net-misc/networkmanager 1.14.4 1.14.6 1.16.0: A set of co-operative tools that make networking simple and straightforward
 net-misc/npapi-sdk 0.27.2: NPAPI headers bundle
 net-misc/ntp 4.2.8_p13: Network Time Protocol suite/programs
 net-misc/ntpclient 2018.244: A NTP (RFC-1305 and RFC-4330) client for unix-alike systems
@@ -9206,9 +9209,9 @@ net-vpn/httptunnel 3.3-r2: httptunnel can create IP tunnels through firewalls/pr
 net-vpn/ipsec-tools 0.8.2-r5: A port of KAME's IPsec utilities to the Linux-2.6 IPsec implementation
 net-vpn/isatapd 0.9.7-r2: Creates and maintains an ISATAP tunnel (rfc5214)
 net-vpn/libreswan 3.27: IPsec implementation for Linux, fork of Openswan
-net-vpn/networkmanager-libreswan 1.2.6: NetworkManager libreswan plugin
+net-vpn/networkmanager-libreswan 1.2.6 1.2.10: NetworkManager libreswan plugin
 net-vpn/networkmanager-openconnect 1.2.4-r1: NetworkManager OpenConnect plugin
-net-vpn/networkmanager-openvpn 1.8.8: NetworkManager OpenVPN plugin
+net-vpn/networkmanager-openvpn 1.8.8 1.8.10: NetworkManager OpenVPN plugin
 net-vpn/networkmanager-pptp 1.2.8: NetworkManager PPTP VPN plugin
 net-vpn/networkmanager-strongswan 1.4.4-r1: NetworkManager StrongSwan plugin
 net-vpn/networkmanager-vpnc 1.2.6: NetworkManager VPNC plugin
@@ -9857,7 +9860,7 @@ sys-apps/firejail-lts 0.9.38.10: Security sandbox for any type of processes; LTS
 sys-apps/fix-gnustack 0.1: Utility to report and remove the executable flag from an ELF object's GNU_STACK
 sys-apps/flashrom 0.9.6.1 0.9.7 0.9.8: Utility for reading, writing, erasing and verifying flash ROM chips
 sys-apps/fxload 20081013-r1: USB firmware uploader
-sys-apps/gawk 4.1.4: GNU awk pattern-matching language
+sys-apps/gawk 4.1.4 4.2.1-r1: GNU awk pattern-matching language
 sys-apps/gentoo-functions 0.12: base functions required by all Gentoo systems
 sys-apps/gentoo-systemd-integration 7: systemd integration files for Gentoo
 sys-apps/gnome-disk-utility 3.24.1: Disk Utility for GNOME using udisks
@@ -10235,7 +10238,7 @@ sys-fs/mtpfs 1.1-r4: A FUSE filesystem providing access to MTP devices
 sys-fs/multipath-tools 0.6.4-r1: Device mapper target autoconfig
 sys-fs/ncdu 1.13: NCurses Disk Usage
 sys-fs/nilfs-utils 2.1.5-r1: A New Implementation of a Log-structured File System for Linux
-sys-fs/ntfs3g 2016.2.22-r2 2017.3.23-r1: Open source read-write NTFS driver that runs under FUSE
+sys-fs/ntfs3g 2016.2.22-r2 2017.3.23-r1 2017.3.23-r2: Open source read-write NTFS driver that runs under FUSE
 sys-fs/owfs 3.2_p2-r2: Access 1-Wire devices like a filesystem
 sys-fs/progsreiserfs 0.3.1_rc8: Library for accessing and manipulating reiserfs partitions
 sys-fs/pysize 0.2-r1: A graphical and console tool for exploring the size of directories
