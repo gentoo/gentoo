@@ -1,10 +1,10 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
-inherit cmake-utils python-single-r1 gnome2-utils
+inherit cmake-utils python-single-r1 xdg
 
 DESCRIPTION="A free turn-based space empire and galactic conquest game"
 HOMEPAGE="http://www.freeorion.org"
@@ -40,7 +40,8 @@ RDEPEND="
 	!dev-games/gigi"
 	# Use bundled gigi as of freeorion-0.4.3
 
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	${PYTHON_DEPS}
 	virtual/pkgconfig"
 
@@ -57,12 +58,11 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		-DCMAKE_BUILD_TYPEE=Release
-		-DRELEASE_COMPILE_FLAGS=""
+		-DCMAKE_BUILD_TYPE=Release
 		-DCMAKE_SKIP_RPATH=ON
 	)
 
-	append-cppflags -DBOOST_OPTIONAL_CONFIG_USE_OLD_IMPLEMENTATION_OF_OPTIONAL
+	#append-cppflags -DBOOST_OPTIONAL_CONFIG_USE_OLD_IMPLEMENTATION_OF_OPTIONAL
 
 	cmake-utils_src_configure
 }
@@ -74,10 +74,14 @@ src_install() {
 	newenvd "${FILESDIR}/${PN}.envd" 99${PN}
 }
 
+pkg_preinst() {
+	xdg_pkg_preinst
+}
+
 pkg_postinst() {
-	gnome2_icon_cache_update
+	xdg_pkg_postinst
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
+	xdg_pkg_postrm
 }
