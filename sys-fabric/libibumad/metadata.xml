@@ -10,4 +10,10 @@ OpenIB User MAD library functions which sit on top of the user MAD modules in
 the kernel.  These are used by the IB diagnostic and management tools, including
 OpenSM.
 </longdescription>
+<use>
+	<flag name="pic">Force shared libraries to be built as PIC (this is slower)
+	</flag>
+	<flag name="static">Provides a static build
+	</flag>
+</use>
 </pkgmetadata>
