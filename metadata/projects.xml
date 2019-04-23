@@ -1699,11 +1699,6 @@
       <name>Jason Zaman</name>
       <role>Trusted Boot, TPM</role>
     </member>
-    <member is-lead="1">
-      <email>swift@gentoo.org</email>
-      <name>Sven Vermeulen</name>
-      <role>Documentation, Userspace</role>
-    </member>
   </project>
   <project>
     <email>java@gentoo.org</email>
@@ -2330,6 +2325,10 @@
       <email>prometheanfire@gentoo.org</email>
       <name>Matthew Thode</name>
       <role>Lead</role>
+    </member>
+    <member>
+      <email>voyageur@gentoo.org</email>
+      <name>Bernard Cafarelli</name>
     </member>
   </project>
   <project>
@@ -3169,11 +3168,6 @@
       <role>Infrastructure Liaison</role>
     </member>
     <member>
-      <email>swift@gentoo.org</email>
-      <name>Sven Vermeulen</name>
-      <role>Documentation Liaison</role>
-    </member>
-    <member>
       <email>vapier@gentoo.org</email>
       <name>Mike Frysinger</name>
       <role>s390 Release Coordinator</role>
@@ -3301,11 +3295,6 @@
     <member is-lead="1">
       <email>perfinion@gentoo.org</email>
       <name>Jason Zaman</name>
-      <role>Documentation, Policy, Userland</role>
-    </member>
-    <member>
-      <email>swift@gentoo.org</email>
-      <name>Sven Vermeulen</name>
       <role>Documentation, Policy, Userland</role>
     </member>
   </project>
