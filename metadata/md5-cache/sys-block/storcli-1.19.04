@@ -6,5 +6,5 @@ KEYWORDS=-* amd64 x86
 LICENSE=Avago LSI BSD
 SLOT=0/6.11
 SRC_URI=http://docs.avagotech.com/docs-and-downloads/docs-and-downloads/raid-controllers/raid-controllers-common-files/1.19.04_StorCLI.zip -> storcli-1.19.04.zip
-_eclasses_=pax-utils	e85f015e815dd463b0c206d781ef45a5
+_eclasses_=pax-utils	db85a3c508cf82c45f24b2723791cc93
 _md5_=731e4ef95d026508d9f574a6f773f8b0
