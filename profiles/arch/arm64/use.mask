@@ -72,10 +72,6 @@ wimax
 # cblas-external as virtual/cblas is also masked
 cblas-external
 
-# Raúl Porcel <armin76@gentoo.org>
-# Fails to build/work
-openexr
-
 # Samuli Suominen <drac@gentoo.org>
 # media-libs/amrnb and media-libs/amrwb not tested.
 amr
