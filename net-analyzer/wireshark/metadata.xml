@@ -30,6 +30,7 @@ be exported to XML, PostScript®, CSV, or plain text.
 <flag name="adns">Use <pkg>net-dns/c-ares</pkg> to resolve DNS names</flag>
 <flag name="androiddump">Install androiddump, an extcap interface to capture from Android devices</flag>
 <flag name="bcg729">Use <pkg>media-libs/bcg729</pkg> for G.729 codec support in RTP Player</flag>
+<flag name="brotli">Use <pkg>app-arch/brotli</pkg> for compression/decompression</flag>
 <flag name="capinfos">Install capinfos, to print information about capture files</flag>
 <flag name="captype">Install captype, to print the file types of capture files</flag>
 <flag name="ciscodump">Install ciscodump, extcap interface to capture from a remote Cisco router</flag>
@@ -44,6 +45,8 @@ be exported to XML, PostScript®, CSV, or plain text.
 <flag name="netlink">Use <pkg>dev-libs/libnl</pkg></flag>
 <flag name="nghttp2">Use <pkg>net-libs/nghttp2</pkg> for HTTP/2 support</flag>
 <flag name="pcap">Use <pkg>net-libs/libpcap</pkg> for network packet capturing (build dumpcap, rawshark)</flag>
+<flag name="plugin_ifdemo">Install plugin interface demo</flag>
+<flag name="plugins">Install plugins</flag>
 <flag name="randpkt">Install randpkt, a utility for creating pcap trace files full of random packets</flag>
 <flag name="randpktdump">Install randpktdump, an extcap interface to provide access to the random packet generator (randpkt)</flag>
 <flag name="reordercap">Install reordercap, to reorder input file by timestamp into output file</flag>
