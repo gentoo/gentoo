@@ -5,7 +5,7 @@ EAPI=7
 inherit golang-build golang-vcs-snapshot
 
 EGO_PN="github.com/go-bindata/go-bindata/..."
-KEYWORDS="~amd64 ~arm"
+KEYWORDS="amd64 ~arm"
 
 DESCRIPTION="A small utility which generates Go code from any file"
 HOMEPAGE="https://github.com/go-bindata/go-bindata"
