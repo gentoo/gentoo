@@ -1511,11 +1511,6 @@
       <role>Documentation, Hardened sources</role>
     </member>
     <member>
-      <email>swift@gentoo.org</email>
-      <name>Sven Vermeulen</name>
-      <role>Integrity, SELinux</role>
-    </member>
-    <member>
       <email>williamh@gentoo.org</email>
       <name>William Hubbs</name>
       <role>PaX markings</role>
