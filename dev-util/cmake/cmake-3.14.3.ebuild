@@ -1,11 +1,11 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 CMAKE_MAKEFILE_GENERATOR="emake"
 CMAKE_REMOVE_MODULES="no"
-inherit bash-completion-r1 elisp-common flag-o-matic gnome2-utils toolchain-funcs eapi7-ver virtualx xdg-utils cmake-utils
+inherit bash-completion-r1 elisp-common flag-o-matic toolchain-funcs virtualx xdg cmake-utils
 
 MY_P="${P/_/-}"
 
@@ -36,7 +36,8 @@ RDEPEND="
 	)
 	system-jsoncpp? ( >=dev-libs/jsoncpp-0.6.0_rc2:0= )
 "
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	doc? (
 		dev-python/requests
 		dev-python/sphinx
@@ -62,9 +63,6 @@ PATCHES=(
 	# respect python eclasses
 	"${FILESDIR}"/${PN}-2.8.10.2-FindPythonLibs.patch
 	"${FILESDIR}"/${PN}-3.9.0_rc2-FindPythonInterp.patch
-
-	# boost (#660980)
-	"${FILESDIR}"/${PN}-3.11.4-fix-boost-detection.patch
 
 	# upstream fixes (can usually be removed with a version bump)
 )
@@ -126,7 +124,7 @@ cmake_src_test() {
 		-j "$(makeopts_jobs)" \
 		--test-load "$(makeopts_loadavg)" \
 		${ctestargs} \
-		-E "(BootstrapTest|BundleUtilities|CMakeOnly.AllFindModules|CTest.UpdateCVS|Fortran|RunCMake.CompilerLauncher|RunCMake.CPack_RPM|TestUpload)" \
+		-E "(BootstrapTest|BundleUtilities|CMakeOnly.AllFindModules|CompileOptions|CTest.UpdateCVS|Fortran|RunCMake.CompilerLauncher|RunCMake.CPack_RPM|TestUpload)" \
 		|| die "Tests failed"
 
 	popd > /dev/null
@@ -207,23 +205,19 @@ src_install() {
 
 	dobashcomp Auxiliary/bash-completion/{${PN},ctest,cpack}
 
-	rm -r "${ED%/}"/usr/share/cmake/{completions,editors} || die
+	rm -r "${ED}"/usr/share/cmake/{completions,editors} || die
+}
+
+pkg_preinst() {
+	use qt5 && xdg_pkg_preinst
 }
 
 pkg_postinst() {
 	use emacs && elisp-site-regen
-	if use qt5; then
-		gnome2_icon_cache_update
-		xdg_desktop_database_update
-		xdg_mimeinfo_database_update
-	fi
+	use qt5 && xdg_pkg_postinst
 }
 
 pkg_postrm() {
 	use emacs && elisp-site-regen
-	if use qt5; then
-		gnome2_icon_cache_update
-		xdg_desktop_database_update
-		xdg_mimeinfo_database_update
-	fi
+	use qt5 && xdg_pkg_postrm
 }
