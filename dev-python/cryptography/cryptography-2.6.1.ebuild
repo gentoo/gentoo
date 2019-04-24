@@ -57,6 +57,7 @@ DEPEND="${RDEPEND}
 DOCS=( AUTHORS.rst CONTRIBUTING.rst README.rst )
 
 PATCHES=(
+	"${FILESDIR}"/${P}-libressl.patch
 )
 
 python_configure_all() {
