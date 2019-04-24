@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 )
 
 MY_P="${P/_}"
-inherit desktop gnome2-utils flag-o-matic font python-single-r1 qmake-utils toolchain-funcs xdg-utils
+inherit desktop flag-o-matic font python-single-r1 qmake-utils toolchain-funcs xdg-utils
 
 DESCRIPTION="WYSIWYM frontend for LaTeX, DocBook, etc."
 HOMEPAGE="https://www.lyx.org/"
@@ -150,7 +150,7 @@ src_install() {
 
 pkg_postinst() {
 	font_pkg_postinst
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 	xdg_desktop_database_update
 
 	# fix for bug 91108
@@ -171,7 +171,7 @@ pkg_postinst() {
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 	xdg_desktop_database_update
 
 	if use latex ; then
