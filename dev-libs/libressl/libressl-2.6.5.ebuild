@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit multilib-minimal libtool
+inherit autotools multilib-minimal
 
 DESCRIPTION="Free version of the SSL/TLS protocol forked from OpenSSL"
 HOMEPAGE="https://www.libressl.org/"
@@ -13,14 +13,16 @@ LICENSE="ISC openssl"
 # Reflects ABI of libcrypto.so and libssl.so.  Since these can differ,
 # we'll try to use the max of either.  However, if either change between
 # versions, we have to change the subslot to trigger rebuild of consumers.
-SLOT="0/47"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+SLOT="0/44"
+KEYWORDS="~alpha amd64 arm ~arm64 hppa ~ia64 ~mips ppc ppc64 s390 sparc x86"
 IUSE="+asm static-libs test"
 REQUIRED_USE="test? ( static-libs )"
 
 RDEPEND="!dev-libs/openssl:0"
 DEPEND="${RDEPEND}"
 PDEPEND="app-misc/ca-certificates"
+
+PATCHES=( "${FILESDIR}/libressl-2.6.4-hppa-asm.patch" )
 
 src_prepare() {
 	touch crypto/Makefile.in
@@ -34,16 +36,8 @@ src_prepare() {
 		-e '/^[ \t]*USER_CFLAGS=/s#-O2"#"#' \
 		configure || die "fixing CFLAGS failed"
 
-	if ! use test ; then
-	sed -i \
-		-e '/^[ \t]*SUBDIRS =/s#tests##' \
-		Makefile.in || die "Removing tests failed"
-	fi
-
-	eapply "${FILESDIR}"/${PN}-2.8.3-solaris10.patch
-	eapply_user
-
-	elibtoolize  # for Solaris
+	default
+	eautoreconf
 }
 
 multilib_src_configure() {
