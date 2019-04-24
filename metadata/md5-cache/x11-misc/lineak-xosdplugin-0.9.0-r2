@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install
+DEPEND==x11-misc/lineakd-0.9.0* x11-libs/xosd
+DESCRIPTION=Xosd plugin for LINEAK
+EAPI=7
+HOMEPAGE=http://lineak.sourceforge.net/
+IUSE=debug
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND==x11-misc/lineakd-0.9.0* x11-libs/xosd
+SLOT=0
+SRC_URI=mirror://sourceforge/lineak/lineak-xosdplugin-0.9.tar.gz
+_eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
+_md5_=4dd36907e5c89048e34dc2f975df3ed1
