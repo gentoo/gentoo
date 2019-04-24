@@ -29,7 +29,7 @@ QA_PREBUILT="opt/nessus/bin/nasl
 S="${WORKDIR}"
 
 pkg_nofetch() {
-	einfo "Please download ${A} from ${HOMEPAGE}/downloads/nessus"
+	einfo "Please download ${A} from ${HOMEPAGE}downloads/nessus"
 	einfo "The archive should then be placed into your DISTDIR directory."
 }
 

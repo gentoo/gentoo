@@ -30,7 +30,7 @@ QA_PREBUILT="opt/nessus_agent/bin/nasl
 S="${WORKDIR}"
 
 pkg_nofetch() {
-	einfo "Please download ${A} from ${HOMEPAGE}/agent-download"
+	einfo "Please download ${A} from ${HOMEPAGE}downloads/nessus-agents"
 	einfo "The archive should then be placed into your DISTDIR directory."
 }
 
