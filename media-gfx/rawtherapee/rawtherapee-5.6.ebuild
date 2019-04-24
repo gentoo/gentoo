@@ -1,11 +1,11 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-
-inherit cmake-utils flag-o-matic gnome2-utils toolchain-funcs xdg-utils
+EAPI=7
 
 MY_P=${P/_rc/-rc}
+inherit cmake-utils flag-o-matic toolchain-funcs xdg-utils
+
 DESCRIPTION="A powerful cross-platform raw image processing program"
 HOMEPAGE="https://www.rawtherapee.com/"
 SRC_URI="https://rawtherapee.com/shared/source/${MY_P}.tar.xz"
@@ -30,10 +30,9 @@ RDEPEND="
 	virtual/jpeg:0
 	x11-libs/gtk+:3"
 DEPEND="${RDEPEND}
-	app-arch/xz-utils
 	dev-cpp/gtkmm:3.0
-	gnome-base/librsvg
-	virtual/pkgconfig"
+	gnome-base/librsvg"
+BDEPEND="virtual/pkgconfig"
 
 S="${WORKDIR}/${MY_P}"
 
@@ -63,11 +62,11 @@ src_configure() {
 }
 
 pkg_postinst() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 	xdg_desktop_database_update
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 	xdg_desktop_database_update
 }
