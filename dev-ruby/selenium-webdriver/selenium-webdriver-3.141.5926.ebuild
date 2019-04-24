@@ -29,5 +29,5 @@ SLOT="3"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE=""
 
-ruby_add_rdepend "=dev-ruby/childprocess-0*
+ruby_add_rdepend ">=dev-ruby/childprocess-0.5 <dev-ruby/childprocess-2
 	>=dev-ruby/rubyzip-1.2.2:1"
