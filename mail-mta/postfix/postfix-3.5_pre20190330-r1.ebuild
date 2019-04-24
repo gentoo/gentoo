@@ -1,12 +1,13 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
+
 inherit flag-o-matic pam systemd toolchain-funcs user
 
-MY_PV="${PV/_rc/-RC}"
+MY_PV="${PV/_pre/-}"
 MY_SRC="${PN}-${MY_PV}"
-MY_URI="ftp://ftp.porcupine.org/mirrors/postfix-release/official"
+MY_URI="ftp://ftp.porcupine.org/mirrors/postfix-release/experimental"
 RC_VER="2.7"
 
 DESCRIPTION="A fast and secure drop-in replacement for sendmail"
@@ -34,7 +35,7 @@ DEPEND=">=dev-libs/libpcre-3.4
 	sqlite? ( dev-db/sqlite:3 )
 	ssl? (
 		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl )
+		libressl? ( >=dev-libs/libressl-2.9.1 )
 	)"
 
 RDEPEND="${DEPEND}
@@ -59,6 +60,10 @@ REQUIRED_USE="ldap-bind? ( ldap sasl )"
 
 S="${WORKDIR}/${MY_SRC}"
 
+PATCHES=( "${FILESDIR}/${PN}-libressl-certkey.patch"
+	"${FILESDIR}/${PN}-libressl-server.patch"
+)
+
 pkg_setup() {
 	# Add postfix, postdrop user/group (bug #77565)
 	enewgroup postfix 207
@@ -72,11 +77,6 @@ src_prepare() {
 		src/util/sys_defs.h || die "sed failed"
 	# change default paths to better comply with portage standard paths
 	sed -i -e "s:/usr/local/:/usr/:g" conf/master.cf || die "sed failed"
-	eapply "${FILESDIR}/${PN}-linux-5.patch"
-	eapply -p0 "${FILESDIR}/${PN}-libressl.patch" \
-		"${FILESDIR}/${PN}-libressl-runtime.patch" \
-		"${FILESDIR}/${PN}-libressl-eccurve.patch" \
-		"${FILESDIR}/${PN}-libressl-session-tickets.patch"
 }
 
 src_configure() {
@@ -281,6 +281,17 @@ src_install () {
 	fi
 
 	systemd_dounit "${FILESDIR}/${PN}.service"
+}
+
+pkg_preinst() {
+	if has_version '<mail-mta/postfix-3.4'; then
+		elog
+		elog "Postfix-3.4 introduces a new master.cf service 'postlog'"
+		elog "with type 'unix-dgram' that is used by the new postlogd(8) daemon."
+		elog "Before backing out to an older Postfix version, edit the master.cf"
+		elog "file and remove the postlog entry."
+		elog
+	fi
 }
 
 pkg_postinst() {
