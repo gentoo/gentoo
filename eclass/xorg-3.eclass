@@ -372,7 +372,7 @@ xorg-3_src_install() {
 		! in_iuse doc && eqawarn "ebuild should set XORG_DOC=doc since package installs library documentation"
 	fi
 
-	if ! use_if_iuse doc; then
+	if in_iuse doc && ! use doc; then
 		rm -rf "${D}"/usr/share/man/man3
 	fi
 
