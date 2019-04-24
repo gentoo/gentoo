@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit cmake-utils kde5-functions
+inherit cmake-utils qmake-utils
 
 DESCRIPTION="Framework for creating Qt State Machine metacode using graphical user interfaces"
 HOMEPAGE="https://github.com/KDAB/KDStateMachineEditor"
@@ -21,23 +21,24 @@ IUSE="doc test"
 SLOT="0"
 
 RDEPEND="
-	$(add_qt_dep qtcore)
-	$(add_qt_dep qtdeclarative 'widgets')
-	$(add_qt_dep qtgui)
-	$(add_qt_dep qtnetwork)
-	$(add_qt_dep qtwidgets)
+	dev-qt/qtcore:5
+	dev-qt/qtdeclarative:5[widgets]
+	dev-qt/qtgui:5
+	dev-qt/qtnetwork:5
+	dev-qt/qtwidgets:5
 "
-
 DEPEND="${RDEPEND}
-	doc? (
-		$(add_qt_dep qthelp)
-		app-doc/doxygen
-	)
 	test? (
-		$(add_qt_dep qttest)
-		$(add_qt_dep qtxmlpatterns)
+		dev-qt/qttest:5
+		dev-qt/qtxmlpatterns:5
 	)
+"
+BDEPEND="
 	media-gfx/graphviz
+	doc? (
+		app-doc/doxygen
+		dev-qt/qthelp:5
+	)
 "
 
 src_configure() {
@@ -45,6 +46,7 @@ src_configure() {
 		-DBUILD_EXAMPLES=OFF
 		-DBUILD_DOCS=$(usex doc)
 		-DBUILD_TESTING=$(usex test)
+		-DECM_MKSPECS_INSTALL_DIR=$(qt5_get_mkspecsdir)/modules
 	)
 	cmake-utils_src_configure
 }
