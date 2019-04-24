@@ -23,13 +23,13 @@ REQUIRED_USE="
 "
 
 RDEPEND="
-	>=dev-libs/libuv-1.27.0:=
+	>=dev-libs/libuv-1.28.0:=
 	>=net-dns/c-ares-1.15.0
-	>=net-libs/http-parser-2.9.0:=
-	>=net-libs/nghttp2-1.34.0
+	>=net-libs/http-parser-2.8.0:=
+	>=net-libs/nghttp2-1.38.0
 	sys-libs/zlib
 	icu? ( >=dev-libs/icu-63.1:= )
-	ssl? ( >=dev-libs/openssl-1.1:0= )
+	ssl? ( >=dev-libs/openssl-1.1.1:0= )
 "
 DEPEND="
 	${RDEPEND}
@@ -74,7 +74,7 @@ src_prepare() {
 	# Avoid writing a depfile, not useful
 	sed -i -e "/DEPFLAGS =/d" tools/gyp/pylib/gyp/generator/make.py || die
 
-	sed -i -e "/'-O3'/d" common.gypi deps/v8/gypfiles/toolchain.gypi || die
+	sed -i -e "/'-O3'/d" common.gypi node.gypi || die
 
 	# Avoid a test that I've only been able to reproduce from emerge. It doesnt
 	# seem sandbox related either (invoking it from a sandbox works fine).
@@ -102,7 +102,7 @@ src_configure() {
 	use inspector || myconf+=( --without-inspector )
 	use npm || myconf+=( --without-npm )
 	use snapshot && myconf+=( --with-snapshot )
-	use ssl && myconf+=( --shared-openssl ) || myconf+=( --without-ssl )
+	use ssl && myconf+=( --shared-openssl --openssl-use-def-ca-store ) || myconf+=( --without-ssl )
 
 	local myarch=""
 	case ${ABI} in
