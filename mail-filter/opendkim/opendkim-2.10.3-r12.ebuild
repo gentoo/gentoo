@@ -80,6 +80,12 @@ src_configure() {
 	if use ldap; then
 		myconf+=( $(use_with sasl) )
 	fi
+
+	# We install the our configuration filed under e.g. /etc/opendkim,
+	# so the next line is necessary to point the daemon and all of its
+	# documentation to the right location by default.
+	myconf+=( --sysconfdir="${EPREFIX}/etc/${PN}" )
+
 	econf \
 		$(use_with berkdb db) \
 		$(use_with opendbx odbx) \
