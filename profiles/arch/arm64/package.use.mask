@@ -543,10 +543,6 @@ dev-libs/libpcre jit
 # unkeyworded deps for bug 379657 and bug 379651
 app-admin/packagekit-base entropy
 
-# Sebastian Pipping <sping@gentoo.org> (22 Feb 2011)
-# No media-sound/lilypond here, yet (bug #356069)
-app-text/asciidoc test
-
 # Jim Ramsay <lack@gentoo.org> (5 Nov 2008)
 # app-admin/gkrellm may pull in net-libs/libntlm, which is not keyworded
 app-admin/gkrellm ntlm
