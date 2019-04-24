@@ -38,6 +38,13 @@ games-rpg/eternal-lands-bloodsucker
 games-rpg/eternal-lands-data
 
 # Michał Górny <mgorny@gentoo.org> (24 Apr 2019)
+# Unmaintained.  Vulnerable init.d script.  Missing dependencies causing
+# build failures (#514136).  Last bumped in 2011, pending bump since
+# at least 2014 (#540502).
+# Removal in 30 days.  Bug #630986.
+mail-filter/spamass-milter
+
+# Michał Górny <mgorny@gentoo.org> (24 Apr 2019)
 # Unmaintained.  Does not build with current version of courier
 # (#684254), also had a different build failure in the past (#513976).
 # Last bumped in 2013, pending bump since 2014 (#519452).
