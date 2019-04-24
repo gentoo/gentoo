@@ -7,7 +7,7 @@ EAPI=6
 GV="1.8.0"
 PYTHON_COMPAT=( python3_{5,6} )
 
-inherit cmake-utils gnome2-utils python-single-r1 xdg-utils
+inherit cmake-utils flag-o-matic gnome2-utils python-single-r1 xdg-utils
 
 DESCRIPTION="A personal finance manager"
 HOMEPAGE="http://www.gnucash.org/"
@@ -109,6 +109,8 @@ src_configure() {
 		-DWITH_GNUCASH=$(usex gui)
 	)
 
+	append-cflags -Wno-error
+	append-cxxflags -Wno-error
 	cmake-utils_src_configure
 }
 
