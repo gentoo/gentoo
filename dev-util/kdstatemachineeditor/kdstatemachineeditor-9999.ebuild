@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake-utils qmake-utils
 
 DESCRIPTION="Framework for creating Qt State Machine metacode using graphical user interfaces"
 HOMEPAGE="https://github.com/KDAB/KDStateMachineEditor"
@@ -27,18 +27,17 @@ RDEPEND="
 	dev-qt/qtnetwork:5
 	dev-qt/qtwidgets:5
 "
-
-DEPEND="${RDEPEND}"
-
+DEPEND="${RDEPEND}
+	test? (
+		dev-qt/qttest:5
+		dev-qt/qtxmlpatterns:5
+	)
+"
 BDEPEND="
 	media-gfx/graphviz
 	doc? (
 		app-doc/doxygen
 		dev-qt/qthelp:5
-	)
-	test? (
-		dev-qt/qttest:5
-		dev-qt/qtxmlpatterns:5
 	)
 "
 
@@ -47,6 +46,7 @@ src_configure() {
 		-DBUILD_EXAMPLES=OFF
 		-DBUILD_DOCS=$(usex doc)
 		-DBUILD_TESTING=$(usex test)
+		-DECM_MKSPECS_INSTALL_DIR=$(qt5_get_mkspecsdir)/modules
 	)
 	cmake-utils_src_configure
 }
