@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst postrm
+DEPEND=>=dev-lang/php-5.2.0:*
+DESCRIPTION=Creating, validating, processing HTML forms methods (PHP5 optimize)
+EAPI=7
+HOMEPAGE=https://pear.php.net/package/HTML_QuickForm2
+IUSE=examples
+KEYWORDS=~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=BSD
+RDEPEND=>=dev-lang/php-5.2.0:* >=dev-php/PEAR-HTML_Common2-2.1.0 >=dev-php/pear-1.8.1
+SLOT=0
+SRC_URI=https://pear.php.net/get/HTML_QuickForm2-2.1.0.tgz
+_eclasses_=php-pear-r2	479e8a084e98f4d730da647bba3e589e
+_md5_=2d9e97eb9d99eeab612197aa17cf95e4
