@@ -77,6 +77,7 @@ DEPEND="${RDEPEND}
 	dev-util/re2c
 	sys-devel/bison
 	pax_kernel? ( sys-apps/elfix )
+	!!=sys-devel/binutils-2.31.1-r5
 	!!=sys-devel/binutils-2.32-r0
 "
 
