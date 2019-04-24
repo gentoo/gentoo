@@ -36,6 +36,6 @@ src_compile() {
 }
 
 src_install() {
-	emake DESTDIR="${D}/usr" install
+	emake $CONF DESTDIR="${D}/usr" install
 	dodoc AUTHORS ChangeLog README
 }
