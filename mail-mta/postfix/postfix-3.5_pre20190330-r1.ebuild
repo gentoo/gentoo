@@ -60,8 +60,8 @@ REQUIRED_USE="ldap-bind? ( ldap sasl )"
 
 S="${WORKDIR}/${MY_SRC}"
 
-PATCHES=( "${FILESDIR}/${PN}-libressl-certkey.patch" 
-	"${FILESDIR}/${PN}-libressl-server.patch" 
+PATCHES=( "${FILESDIR}/${PN}-libressl-certkey.patch"
+	"${FILESDIR}/${PN}-libressl-server.patch"
 )
 
 pkg_setup() {
