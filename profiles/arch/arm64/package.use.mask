@@ -554,10 +554,6 @@ dev-libs/boost mpi
 media-sound/sox ladspa
 media-plugins/gst-plugins-meta aac dts dv lame libvisual taglib vcd wavpack
 
-# Ultrabug <ultrabug@gentoo.org> (05 Sept 2011)
-# missing keyword for net-libs/zeromq
-app-admin/rsyslog zeromq
-
 # Ian Whyman <thev00d00@gentoo.org> (05 Sept 2017)
 # missing keywords dev-lang/duktape media-libs/lastfmlib
 net-misc/gerbera javascript lastfm
