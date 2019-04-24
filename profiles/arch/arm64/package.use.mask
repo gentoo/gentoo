@@ -102,10 +102,6 @@ sci-electronics/kicad occ oce ngspice
 # media-libs/dav1d is not yet keyworded
 media-video/vlc aribsub chromecast dav1d
 
-# Matthew Thode <prometheanfire@gentoo.org> (30 Aug 2018)
-# Needs pillow and it's deps to build docs
->=dev-python/stevedore-1.28.0 doc
-
 # Tomáš Mózes <hydrapolic@gmail.com> (10 Aug 2018)
 # Needs dev-libs/libmaxminddb which isn't keyworded
 app-admin/syslog-ng geoip2
@@ -118,10 +114,6 @@ dev-python/networkx pandas test
 # Unkeyworded dependencies.
 dev-python/matplotlib doc
 net-libs/gnome-online-accounts gnome
-
-# Thomas Deutschmann <whissi@gentoo.org> (04 Jul 2018)
-# dev-libs/xxhash not keyworded for arm64
-app-admin/rsyslog xxhash
 
 # Tomáš Mózes <hydrapolic@gmail.com> (19 Jun 2018)
 # Needs dev-libs/libmaxminddb which isn't keyworded
@@ -420,10 +412,6 @@ dev-libs/appstream-glib stemmer
 # app-admin/hddtemp not keyworded
 app-admin/gkrellm hddtemp
 
-# Mart Raudsepp <leio@gentoo.org> (28 Jan 2017)
-# media-libs/libcddb not keyworded yet
-dev-libs/libcdio cddb
-
 # Steev Klimaszewski <steev@gentoo.org> (04 March 2016)
 # Chromium uses an internal tcmalloc that doesn't support this arch yet.
 www-client/chromium tcmalloc
@@ -532,10 +520,6 @@ app-accessibility/speech-dispatcher flite
 # mask app-office/libreoffice java extensions
 app-office/libreoffice libreoffice_extensions_scripting-beanshell libreoffice_extensions_scripting-javascript libreoffice_extensions_wiki-publisher
 
-# Markus Meier <maekke@gentoo.org> (25 Jul 2012)
-# no stable media-video/vlc yet, bug #401313
-media-libs/phonon vlc
-
 # Alexandre Rostovtsev <tetromino@gentoo.org> (12 Apr 2012)
 # Temporary mask-in-base, unmask-in-arch for dev-python/mako keywording for
 # gobject-introspection[doctool], bug #411761
@@ -559,14 +543,6 @@ dev-libs/libpcre jit
 # unkeyworded deps for bug 379657 and bug 379651
 app-admin/packagekit-base entropy
 
-# Robin H. Johnson <robbat2@gentoo.org> (03 Sep 2011)
-# Remove this for your arch after you keyword dev-utils/google-perftools and virtual/gsasl (bug #381737)
-dev-libs/libmemcached sasl
-
-# Sebastian Pipping <sping@gentoo.org> (22 Feb 2011)
-# No media-sound/lilypond here, yet (bug #356069)
-app-text/asciidoc test
-
 # Jim Ramsay <lack@gentoo.org> (5 Nov 2008)
 # app-admin/gkrellm may pull in net-libs/libntlm, which is not keyworded
 app-admin/gkrellm ntlm
@@ -577,10 +553,6 @@ dev-libs/boost mpi
 # missing keywords
 media-sound/sox ladspa
 media-plugins/gst-plugins-meta aac dts dv lame libvisual taglib vcd wavpack
-
-# Ultrabug <ultrabug@gentoo.org> (05 Sept 2011)
-# missing keyword for net-libs/zeromq
-app-admin/rsyslog zeromq
 
 # Ian Whyman <thev00d00@gentoo.org> (05 Sept 2017)
 # missing keywords dev-lang/duktape media-libs/lastfmlib
