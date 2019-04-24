@@ -102,10 +102,6 @@ sci-electronics/kicad occ oce ngspice
 # media-libs/dav1d is not yet keyworded
 media-video/vlc aribsub chromecast dav1d
 
-# Matthew Thode <prometheanfire@gentoo.org> (30 Aug 2018)
-# Needs pillow and it's deps to build docs
->=dev-python/stevedore-1.28.0 doc
-
 # Tomáš Mózes <hydrapolic@gmail.com> (10 Aug 2018)
 # Needs dev-libs/libmaxminddb which isn't keyworded
 app-admin/syslog-ng geoip2
