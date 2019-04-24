@@ -8839,7 +8839,6 @@ net-mail/amavis-logwatch 1.51.03-r5: A log analyzer for amavisd-new
 net-mail/archivemail 0.9.0-r1: Tool written archiving old email in mailboxes
 net-mail/automx 0.10.2-r1 0.10.2-r2: A mail user agent auto configuration service
 net-mail/autorespond 2.0.4: Autoresponder add on package for qmailadmin
-net-mail/bincimap 1.2.13: IMAP server for Maildir
 net-mail/checkpassword 0.90-r2: A uniform password checking interface for root applications
 net-mail/cmd5checkpw 0.30-r1: A checkpassword compatible authentication program that used CRAM-MD5 authentication mode
 net-mail/courier-imap 4.17.3 4.18.2: An IMAP daemon designed specifically for maildirs
