@@ -29,6 +29,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (24 Apr 2019)
+# Unmaintained.  Vulnerable init.d script.  Missing dependencies causing
+# build failures (#514412, #544942).  Insecure format strings (#520574).
+# Last bumped in 2014, pending bump since at least 2015 (#550156).
+# Removal in 30 days.  Bug #629450.
+mail-filter/mimedefang
+
 # Richard Freeman <rich0@gentoo.org> (24 Apr 2019)
 # Masked for removal in 30 days.  Likely does not work
 # and is essentially unmainted.  Please comment in 
