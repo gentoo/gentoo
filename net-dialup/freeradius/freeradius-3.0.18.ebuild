@@ -60,6 +60,8 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 S="${WORKDIR}/${MY_P}"
 
+PATCHES=( "${FILESDIR}"/${P}-libressl.patch )
+
 pkg_setup() {
 	enewgroup radius
 	enewuser radius -1 -1 /var/log/radius radius
