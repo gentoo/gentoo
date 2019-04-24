@@ -115,10 +115,6 @@ dev-python/networkx pandas test
 dev-python/matplotlib doc
 net-libs/gnome-online-accounts gnome
 
-# Thomas Deutschmann <whissi@gentoo.org> (04 Jul 2018)
-# dev-libs/xxhash not keyworded for arm64
-app-admin/rsyslog xxhash
-
 # Tomáš Mózes <hydrapolic@gmail.com> (19 Jun 2018)
 # Needs dev-libs/libmaxminddb which isn't keyworded
 www-servers/nginx nginx_modules_http_geoip2 nginx_modules_stream_geoip2
