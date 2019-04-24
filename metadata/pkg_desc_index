@@ -11265,7 +11265,7 @@ x11-themes/commonbox-styles-extra 0.2-r2: Extra styles pack for flux|black|open(
 x11-themes/constantine-backgrounds 12.1.1.4-r1: Fedora 12 official background artwork
 x11-themes/experience 3.04-r1: GTK+2 themes which copy and improve the look of XP Luna
 x11-themes/faenza-icon-theme 1.3.1: A scalable icon theme called Faenza
-x11-themes/fedora-backgrounds 27.0.1 28.1.5 29.1.3 30.0.0: A set of default and supplemental wallpapers for Fedora
+x11-themes/fedora-backgrounds 27.0.1 28.1.5 29.1.3 30.1.2: A set of default and supplemental wallpapers for Fedora
 x11-themes/flatsvg 1.0: Flat SVG icon set
 x11-themes/fluxbox-styles-fluxmod 20050128-r1: A collection of FluxBox themes from FluxMod
 x11-themes/fvwm-crystal 3.2.3-r1: Configurable FVWM theme with transparency and freedesktop compatible menu
@@ -11343,7 +11343,7 @@ x11-themes/tactile3 3.1: The third evolution of Tactile theme series
 x11-themes/tangerine-icon-theme 0.27: a derivative of the standard Tango theme, using a more orange approach
 x11-themes/tango-icon-theme 0.8.90-r1: SVG and PNG icon theme from the Tango project
 x11-themes/tango-icon-theme-extras 0.1.0-r2: Tango icons for iPod Digital Audio Player devices and the Dell Pocket DJ DAP
-x11-themes/ubuntu-wallpapers 18.10.2: Ubuntu wallpapers
+x11-themes/ubuntu-wallpapers 19.04.2: Ubuntu wallpapers
 x11-themes/vanilla-dmz-aa-xcursors 0.4.5: Style neutral scalable cursor theme (black version)
 x11-themes/vanilla-dmz-xcursors 0.4.5: Style neutral scalable cursor theme (white version)
 x11-themes/vdr-channel-logos 0.2: Logos for vdr-skin*
