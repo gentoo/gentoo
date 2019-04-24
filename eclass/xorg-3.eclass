@@ -368,8 +368,12 @@ xorg-3_src_install() {
 	fi
 
 	# Many X11 libraries unconditionally install developer documentation
+	if [[ -d "${D}"/usr/share/man/man3 ]]; then
+		! in_iuse doc && eqawarn "ebuild should set XORG_DOC=doc since package installs library documentation"
+	fi
+
 	if ! use_if_iuse doc; then
-		rm -rf "${D}"/usr/share/man/*
+		rm -rf "${D}"/usr/share/man/man3
 	fi
 
 	# Don't install libtool archives (even for modules)
