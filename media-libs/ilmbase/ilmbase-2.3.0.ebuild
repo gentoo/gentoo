@@ -15,6 +15,8 @@ IUSE="static-libs"
 
 DEPEND="virtual/pkgconfig[${MULTILIB_USEDEP}]"
 
+PATCHES=( "${FILESDIR}"/${PN}-2.3.0-testBox.patch )
+
 DOCS=( AUTHORS ChangeLog NEWS README.md )
 MULTILIB_WRAPPED_HEADERS=( /usr/include/OpenEXR/IlmBaseConfig.h )
 
