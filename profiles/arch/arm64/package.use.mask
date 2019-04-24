@@ -520,10 +520,6 @@ app-accessibility/speech-dispatcher flite
 # mask app-office/libreoffice java extensions
 app-office/libreoffice libreoffice_extensions_scripting-beanshell libreoffice_extensions_scripting-javascript libreoffice_extensions_wiki-publisher
 
-# Markus Meier <maekke@gentoo.org> (25 Jul 2012)
-# no stable media-video/vlc yet, bug #401313
-media-libs/phonon vlc
-
 # Alexandre Rostovtsev <tetromino@gentoo.org> (12 Apr 2012)
 # Temporary mask-in-base, unmask-in-arch for dev-python/mako keywording for
 # gobject-introspection[doctool], bug #411761
