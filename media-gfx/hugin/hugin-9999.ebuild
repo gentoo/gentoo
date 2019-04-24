@@ -14,7 +14,7 @@ SRC_URI=""
 EHG_REPO_URI="http://hg.code.sf.net/p/hugin/hugin"
 EHG_PROJECT="${PN}-${PN}"
 
-LICENSE="GPL-2 SIFT"
+LICENSE="GPL-2+ BSD BSD-2 MIT wxWinLL-3 ZLIB FDL-1.2"
 SLOT="0"
 KEYWORDS=""
 
