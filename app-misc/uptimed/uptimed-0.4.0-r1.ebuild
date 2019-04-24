@@ -49,7 +49,7 @@ pkg_postinst() {
 	local spooldir="/var/spool/${PN}"
 	if [[ -d "${spooldir}" ]] ; then
 		einfo "Fixing permissions in ${spooldir}"
-		find ${spooldir} -type f -print0 \
+		find ${spooldir} -type f -links 1 -print0 \
 			| xargs --null chown uptimed:uptimed || die
 	fi
 	echo
