@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Jeroen Roovers <jer@gentoo.org> (24 Apr 2019)
+# Depends on =dev-libs/openssl-1.1.1* due to newly introduced
+# support for EVP_PKEY_ED25519 and EVP_PKEY_ED448 (bug #670574).
+=net-libs/nodejs-12*
+
 # David Seifert <soap@gentoo.org> (21 Apr 2019)
 # Ancient, last release over 8 years ago, GTK2,
 # broken USE=doc, multiple QA violations.
