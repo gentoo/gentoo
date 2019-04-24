@@ -1,0 +1,36 @@
+From abe32ec599397bda0ce73471519410bee2c16059 Mon Sep 17 00:00:00 2001
+From: Laurent Montel <montel@kde.org>
+Date: Sun, 14 Apr 2019 20:15:31 +0200
+Subject: Don't use qAsConst over a temporary variable
+
+Summary: BUG: 406426
+
+Reviewers: dfaure
+
+Reviewed By: dfaure
+
+Subscribers: kde-frameworks-devel
+
+Tags: #frameworks
+
+Differential Revision: https://phabricator.kde.org/D20555
+---
+ src/runtime/component.cpp | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/runtime/component.cpp b/src/runtime/component.cpp
+index ce276b9..669df67 100644
+--- a/src/runtime/component.cpp
++++ b/src/runtime/component.cpp
+@@ -330,7 +330,8 @@ bool Component::isShortcutAvailable(
+     // context
+     if (component==uniqueName())
+         {
+-        for (GlobalShortcut *sc : qAsConst(shortcutContext(context)->_actions))
++        const auto actions = shortcutContext(context)->_actions;
++        for (GlobalShortcut *sc : actions)
+             {
+             if (sc->keys().contains(key)) return false;
+             }
+-- 
+cgit v1.1
