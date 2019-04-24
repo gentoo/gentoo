@@ -2680,7 +2680,6 @@ mail-filter/maildrop:authlib - Add courier-authlib support
 mail-filter/maildrop:dovecot - Add dovecot authentication support
 mail-filter/maildrop:tools - Install maildirmake and deliverquota tools
 mail-filter/maildrop:trashquota - Count deleted messages as part of the maildir quota
-mail-filter/mimedefang:poll - Use poll instead of select
 mail-filter/opendkim:ldap - Enable openldap as a dataset facilitator or keys, determining domains to sign for, and any other dataset that opendkim supports.
 mail-filter/opendkim:lmdb - Add support for using dev-db/lmdb
 mail-filter/opendkim:lua - Enables control over signature verification, filtering and policy to be controlled by user defined lua scripts.
