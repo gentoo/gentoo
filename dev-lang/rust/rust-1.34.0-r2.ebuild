@@ -85,6 +85,7 @@ REQUIRED_USE="|| ( ${ALL_LLVM_TARGETS[*]} )
 PATCHES=(
 	"${FILESDIR}"/0001-llvm-cmake-Add-additional-headers-only-if-they-exist.patch
 	"${FILESDIR}"/1.34.0-doc-build-fix.patch
+	"${FILESDIR}"/1.34.0-libressl.patch # bug 684224
 )
 
 S="${WORKDIR}/${MY_P}-src"

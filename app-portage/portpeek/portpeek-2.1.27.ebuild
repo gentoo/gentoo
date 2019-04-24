@@ -23,7 +23,6 @@ RDEPEND="${DEPEND}
 	>=app-portage/gentoolkit-0.4.0
 	|| (
 		>=sys-apps/portage-2.3.19-r1[${PYTHON_USEDEP}]
-		sys-apps/portage-mgorny[${PYTHON_USEDEP}]
 	)"
 
 src_install() {
