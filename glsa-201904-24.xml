@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201904-24">
+  <title>Ming: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Ming, the worst of
+    which could result in a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">ming</product>
+  <announced>2019-04-24</announced>
+  <revised count="1">2019-04-24</revised>
+  <bug>624712</bug>
+  <bug>626498</bug>
+  <bug>646770</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/ming" auto="yes" arch="*">
+      <unaffected range="ge">0.20181112</unaffected>
+      <vulnerable range="lt">0.20181112</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>A library for generating Macromedia Flash files.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Ming. Please review the
+      CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Please review the referenced CVE identifiers for details.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Ming users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-libs/ming-0.20181112"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-11728">CVE-2017-11728</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-11729">CVE-2017-11729</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-11730">CVE-2017-11730</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-11731">CVE-2017-11731</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-11732">CVE-2017-11732</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-11733">CVE-2017-11733</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-11734">CVE-2017-11734</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-9988">CVE-2017-9988</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-9989">CVE-2017-9989</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-5251">CVE-2018-5251</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-5294">CVE-2018-5294</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-6315">CVE-2018-6315</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-6358">CVE-2018-6358</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-6359">CVE-2018-6359</uri>
+  </references>
+  <metadata tag="requester" timestamp="2019-04-19T01:46:20Z">BlueKnight</metadata>
+  <metadata tag="submitter" timestamp="2019-04-24T23:57:18Z">b-man</metadata>
+</glsa>
