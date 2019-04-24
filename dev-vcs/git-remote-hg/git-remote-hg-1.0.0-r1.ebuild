@@ -14,24 +14,21 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-CDEPEND="
-	${PYTHON_DEPEND}
-"
-RDEPEND="
-	${CDEPEND}
-	dev-vcs/git
-	dev-vcs/mercurial
-"
-DEPEND="${CDEPEND}"
 BDEPEND="
 	app-text/asciidoc
+"
+DEPEND="${PYTHON_DEPEND}"
+RDEPEND="
+	${DEPEND}
+	dev-vcs/git
+	dev-vcs/mercurial
 "
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.0.0-get_version_from_release.patch"
 )
 
-# Some tests fail:
+# Some tests fail.
 RESTRICT="test"
 
 src_compile() {
@@ -42,9 +39,4 @@ src_compile() {
 src_install() {
 	distutils-r1_src_install
 	emake DESTDIR="${D}" prefix="${EPREFIX}/usr" install-doc
-}
-
-src_test() {
-	pushd test &>/dev/null || die
-	default
 }
