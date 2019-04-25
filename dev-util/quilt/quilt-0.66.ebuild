@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI="6"
 
 inherit bash-completion-r1 eutils
 
@@ -32,13 +32,12 @@ pkg_setup() {
 }
 
 src_prepare() {
-
 	# Add support for USE=graphviz
-	use graphviz || epatch "${FILESDIR}/${P}-no-graphviz.patch"
+	use graphviz || eapply -p0 "${FILESDIR}/${P}-no-graphviz.patch"
+	default
 }
 
 src_configure() {
-	local myconf=""
 	[[ ${CHOST} == *-darwin* || ${CHOST} == *-solaris* ]] && \
 		myconf="${myconf} --with-getopt=${EPREFIX}/usr/bin/getopt-long"
 	econf ${myconf}
@@ -47,8 +46,8 @@ src_configure() {
 src_install() {
 	emake BUILD_ROOT="${D}" install || die "make install failed"
 
-	rm -rf "${ED}"/usr/share/doc/${P}
-	dodoc AUTHORS TODO doc/README doc/README.MAIL doc/quilt.pdf
+	rm -rf "${ED}"usr/share/doc/${P}
+	dodoc AUTHORS TODO "doc/README" "doc/README.MAIL" "doc/quilt.pdf"
 
 	rm -rf "${ED}"/etc/bash_completion.d
 	newbashcomp bash_completion ${PN}
