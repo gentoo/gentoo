@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit eutils multilib systemd
 
@@ -12,7 +12,7 @@ SRC_URI="mirror://kernel/linux/network/${PN}/${P}.tar.xz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
-IUSE="+atmodem bluetooth +cdmamodem +datafiles doc dundee examples +isimodem +phonesim +provision +qmimodem threads tools +udev upower"
+IUSE="+atmodem bluetooth +cdmamodem +datafiles doc dundee examples +isimodem +phonesim +provision +qmimodem tools +udev upower"
 
 REQUIRED_USE="dundee? ( bluetooth )"
 
@@ -30,7 +30,6 @@ DOCS=( ChangeLog AUTHORS )
 
 src_configure() {
 	econf \
-		$(use_enable threads) \
 		$(use_enable udev) \
 		$(use_enable isimodem) \
 		$(use_enable atmodem) \
