@@ -63,7 +63,7 @@ MULTILIB_CHOST_TOOLS=(
 src_prepare() {
 	eapply "${FILESDIR}/${PN}-1.12_warn_cflags.patch"
 	eapply -p2 "${FILESDIR}/${PN}-config_LDFLAGS.patch"
-	eapply "${FILESDIR}/${PN}-libressl-version-check.patch"
+	eapply -p2 "${FILESDIR}/${P}-libressl.patch"
 
 	# Make sure we always use the system copies.
 	rm -rf util/{et,ss,verto}
