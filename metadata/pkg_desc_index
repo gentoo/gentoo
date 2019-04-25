@@ -9697,7 +9697,6 @@ sec-policy/selinux-openvpn 2.20180114-r1 2.20180114-r2 2.20180701-r1: SELinux po
 sec-policy/selinux-pan 2.20180114-r1 2.20180114-r2 2.20180701-r1: SELinux policy for pan
 sec-policy/selinux-pcmcia 2.20180114-r1 2.20180114-r2 2.20180701-r1: SELinux policy for pcmcia
 sec-policy/selinux-pcscd 2.20180114-r1 2.20180114-r2 2.20180701-r1: SELinux policy for pcscd
-sec-policy/selinux-perdition 2.20180114-r1 2.20180114-r2 2.20180701-r1: SELinux policy for perdition
 sec-policy/selinux-phpfpm 2.20180114-r1 2.20180114-r2 2.20180701-r1: SELinux policy for phpfpm
 sec-policy/selinux-plymouthd 2.20180114-r1 2.20180114-r2 2.20180701-r1: SELinux policy for plymouthd
 sec-policy/selinux-podsleuth 2.20180114-r1 2.20180114-r2 2.20180701-r1: SELinux policy for podsleuth
