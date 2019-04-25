@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -24,6 +24,7 @@ DOCS=( ChangeLog README )
 PATCHES=(
 	"${FILESDIR}/${PN}-respect-compiler-vars.patch"
 	"${FILESDIR}/${P}-segfault-fix.patch"
+	"${FILESDIR}/${P}-xattr.patch"
 )
 
 src_compile() {
