@@ -23,7 +23,7 @@ RDEPEND="${CDEPEND}
 	>=dev-python/Babel-2.3.4[${PYTHON_USEDEP}]
 	!~dev-python/Babel-2.4.0[${PYTHON_USEDEP}]
 	>=dev-python/networkx-1.10[${PYTHON_USEDEP}]
-	<dev-python/networkx-2.0[${PYTHON_USEDEP}]
+	<dev-python/networkx-2.3[${PYTHON_USEDEP}]
 	>=dev-python/pyyaml-3.12[${PYTHON_USEDEP}]
 	>=dev-python/flake8-2.5.4[${PYTHON_USEDEP}]
 	<dev-python/flake8-2.6.0[${PYTHON_USEDEP}]
