@@ -32,11 +32,6 @@ BDEPEND="
 	nls? ( sys-devel/gettext )
 	virtual/pkgconfig
 "
-
-PATCHES=(
-	"${FILESDIR}/${P}-variable_initialization.patch"
-)
-
 src_prepare() {
 	default
 	if [[ ${PV} == "9999" ]] ; then
