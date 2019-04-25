@@ -1731,7 +1731,7 @@
       <name>Alexey Shvetsov</name>
       <role>Developer</role>
     </member>
-    <member>
+    <member is-lead="1">
       <email>asturm@gentoo.org</email>
       <name>Andreas Sturmlechner</name>
       <role>Developer</role>
