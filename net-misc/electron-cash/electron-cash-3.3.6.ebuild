@@ -3,12 +3,12 @@
 
 EAPI="6"
 
-PYTHON_COMPAT=( python3_{5,6} )
+PYTHON_COMPAT=( python3_6 )
 PYTHON_REQ_USE="ncurses?"
 
 inherit distutils-r1 gnome2-utils xdg-utils
 
-MY_P="electrum-${PV}"
+MY_P="Electron-Cash-${PV}"
 DESCRIPTION="Lightweight Bitcoin Cash client (BCH fork of Electrum)"
 HOMEPAGE="https://github.com/fyookball/electrum/"
 SRC_URI="https://github.com/fyookball/electrum/archive/${PV}.tar.gz -> ${P}.tar.gz"
@@ -55,7 +55,7 @@ S="${WORKDIR}/${MY_P}"
 DOCS="RELEASE-NOTES"
 
 src_prepare() {
-	eapply "${FILESDIR}/2.8.0-no-user-root.patch"
+	eapply "${FILESDIR}/3.3.6-no-user-root.patch"
 
 	# Prevent icon from being installed in the wrong location
 	sed -i '/icons/d' setup.py || die
