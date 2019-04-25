@@ -1,25 +1,26 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=7
 inherit toolchain-funcs
 
 DESCRIPTION="A tool which replaces copies of a file with hardlinks"
 HOMEPAGE="https://jak-linux.org/projects/hardlink/"
-SRC_URI="https://jak-linux.org/projects/${PN}/${PN}_${PV}.tar.xz"
+#SRC_URI="https://jak-linux.org/projects/${PN}/${PN}_${PV}.tar.xz"
+SRC_URI="https://salsa.debian.org/jak/${PN}/-/archive/${PV}/${P}.tar.bz2"
 
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
-IUSE=""
 
 RDEPEND="dev-libs/libpcre"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
-DOCS="README ${T}/README.rsync"
+DOCS=( README ${T}/README.rsync )
 
 src_prepare() {
+	default
 	sed -i -e '/^CF/s:?=:+=:' -e '/^CF/s:-O2 -g::' Makefile || die
 
 	cat <<-EOF > "${T}"/README.rsync
@@ -34,6 +35,5 @@ src_prepare() {
 }
 
 src_compile() {
-	tc-export CC
-	emake
+	emake CC=$(tc-getCC)
 }
