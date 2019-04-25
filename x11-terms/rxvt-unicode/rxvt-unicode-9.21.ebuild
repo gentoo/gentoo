@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -13,8 +13,8 @@ SLOT="0"
 KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris"
 IUSE="
 	256-color alt-font-width blink buffer-on-clear +focused-urgency
-	fading-colors +font-styles iso14755 +mousewheel +perl pixbuf secondary-wheel
-	startup-notification xft unicode3 +vanilla wcwidth
+	fading-colors +font-styles gdk-pixbuf iso14755 +mousewheel +perl
+	secondary-wheel startup-notification xft unicode3 +vanilla wcwidth
 "
 
 RDEPEND="
@@ -22,7 +22,7 @@ RDEPEND="
 	kernel_Darwin? ( dev-perl/Mac-Pasteboard )
 	media-libs/fontconfig
 	perl? ( dev-lang/perl:= )
-	pixbuf? ( x11-libs/gdk-pixbuf x11-libs/gtk+:2 )
+	gdk-pixbuf? ( x11-libs/gdk-pixbuf x11-libs/gtk+:2 )
 	startup-notification? ( x11-libs/startup-notification )
 	x11-libs/libX11
 	x11-libs/libXrender
@@ -86,12 +86,12 @@ src_configure() {
 		$(use_enable blink text-blink) \
 		$(use_enable fading-colors fading) \
 		$(use_enable font-styles) \
+		$(use_enable gdk-pixbuf pixbuf) \
 		$(use_enable mousewheel) \
 		$(use_enable perl) \
-		$(use_enable pixbuf) \
 		$(use_enable startup-notification) \
-		$(use_enable xft) \
 		$(use_enable unicode3) \
+		$(use_enable xft) \
 		${myconf}
 }
 

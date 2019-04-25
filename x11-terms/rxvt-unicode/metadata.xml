@@ -16,7 +16,7 @@
 <flag name="iso14755">Enable ISO-14755 support</flag>
 <flag name="mousewheel">Enable scrolling via mouse wheel or buttons 4 and 5</flag>
 <flag name="perl">Enable perl script support. You can still disable this at runtime with -pe ""</flag>
-<flag name="pixbuf">Enable transparency support using gtk's pixbuf</flag>
+<flag name="gdk-pixbuf">Enable transparency support using <pkg>x11-libs/gdk-pixbuf</pkg></flag>
 <flag name="secondary-wheel">Support for wheel scrolling on secondary screens (like mutt).  Read http://lists.schmorp.de/pipermail/rxvt-unicode/2011q4/001491.html</flag>
 <flag name="unicode3">Use 21 instead of 16 bits to represent unicode characters</flag>
 <flag name="utmp">Enable utmp support</flag>
