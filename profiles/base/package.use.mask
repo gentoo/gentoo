@@ -7,6 +7,13 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Ulrich Müller <ulm@gentoo.org> (25 Apr 2019)
+# Pulls in media-fonts/kochi-substitute as dependency, which allows
+# only non-commercial distribution and can therefore not be included
+# with Gentoo install media. Mask the l10n_ja flag until a better
+# solution is found, e.g., transition to a free font package.
+app-text/ghostscript-gpl l10n_ja
+
 # Georgy Yakovlev <gyakovlev@gentoo.org> (17 Apr 2019)
 # Mask jre useflags for use as system java-vm until it's proven to work
 dev-java/openjdk-jre-bin:8 gentoo-vm
