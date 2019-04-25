@@ -45,11 +45,14 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
-	app-text/asciidoc
 	gnome-base/librsvg
 	x11-base/xorg-proto
-	nls? ( >=sys-devel/gettext-0.19.6 )
 	truetype? ( >=media-libs/freetype-2.0.9 )
+"
+
+BDEPEND="
+	app-text/asciidoc
+	nls? ( >=sys-devel/gettext-0.19.6 )
 "
 
 src_prepare() {
