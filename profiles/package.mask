@@ -29,6 +29,17 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (25 Apr 2019)
+# This programs suffers severe code quality problems and should have
+# never been added to Gentoo.  It looks like a shell script badly
+# converted to a C program with a lot of system() calls with globs,
+# horribly unreadable code and broken memory management including
+# reading past end-of-string (which only recently replaced writing into
+# uninitialized memory).  Auditing the program completely would probably
+# be more costly than rewriting it from scratch.
+# Removal in 30 days.  Bug #684340.
+app-admin/lsat
+
 # Lars Wendler <polynomial-c@gentoo.org> (24 Apr 2019)
 # Breaks current available net-ftp/filezilla releases (#684282)
 =dev-libs/libfilezilla-0.16.0
