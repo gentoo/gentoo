@@ -1,8 +1,8 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit xdg-utils gnome2-utils qmake-utils
+EAPI=7
+inherit xdg-utils qmake-utils
 
 DESCRIPTION="A small, lightweight file manager for desktops based on pure Qt"
 HOMEPAGE="https://qtfm.eu/"
@@ -37,11 +37,11 @@ src_install() {
 }
 
 pkg_postinst() {
-	gnome2_icon_cache_update
 	xdg_desktop_database_update
+	xdg_icon_cache_update
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
 	xdg_desktop_database_update
+	xdg_icon_cache_update
 }
