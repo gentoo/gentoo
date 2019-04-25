@@ -6,7 +6,7 @@ EAPI=0
 inherit eutils autotools
 
 DESCRIPTION="iLBC is a speech codec suitable for robust voice communication over IP"
-HOMEPAGE="http://www.ilbcfreeware.org/"
+HOMEPAGE="https://webrtc.org/license/ilbc-freeware/"
 SRC_URI="http://simon.morlat.free.fr/download/1.1.x/source/ilbc-rfc3951.tar.gz"
 
 # relicensed under 3-clause BSD license, bug 390797
