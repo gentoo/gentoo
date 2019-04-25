@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{5,6} )
 inherit distutils-r1
 
 DESCRIPTION="A Django app providing database and form fields for pytz timezone objects"
-HOMEPAGE="http://github.com/mfogel/django-timezone-field"
+HOMEPAGE="https://github.com/mfogel/django-timezone-field"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
