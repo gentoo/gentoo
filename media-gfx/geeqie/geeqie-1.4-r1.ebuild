@@ -49,6 +49,7 @@ src_prepare() {
 	# Remove -Werror (gcc changes may add new warnings)
 	sed -e '/CFLAGS/s/-Werror //g' -i configure.in || die
 
+	mv configure.{in,ac} || die
 	eautoreconf
 }
 
