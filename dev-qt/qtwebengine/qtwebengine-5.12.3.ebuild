@@ -43,7 +43,6 @@ RDEPEND="
 	media-libs/opus
 	sys-apps/dbus
 	sys-apps/pciutils
-	sys-libs/libcap
 	sys-libs/zlib[minizip]
 	virtual/libudev
 	x11-libs/libdrm
