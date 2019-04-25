@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Jason Zaman <perfinion@gentoo.org> (25 Apr 2019)
+# net-mail/perdition was last-rited in 2016. The
+# SELinux policy packge is no longer needed.
+# Removal in 30 days.
+sec-policy/selinux-perdition
+
 # Michał Górny <mgorny@gentoo.org> (25 Apr 2019)
 # This programs suffers severe code quality problems and should have
 # never been added to Gentoo.  It looks like a shell script badly
