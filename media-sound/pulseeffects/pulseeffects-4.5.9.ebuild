@@ -55,6 +55,7 @@ DEPEND="
 BDEPEND="
 	>=sys-devel/gcc-7.3.0
 	dev-util/itstool
+	media-libs/libsamplerate
 	virtual/pkgconfig
 "
 
