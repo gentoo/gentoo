@@ -555,12 +555,6 @@ media-video/episoder
 # Requires >=dev-lang/lua-5.3 which is masked
 sys-apps/likwid
 
-# Michael Haubenwallner <haubi@gentoo.org> (25 Mar 2019)
-# Obsolete, in favor of app-portage/prefix-toolkit.
-# Removal in 30 days.  Bug #658572
-app-portage/prefix-chain-setup
-sys-apps/prefix-chain-utils
-
 # Andreas Sturmlechner <asturm@gentoo.org> (23 Mar 2019)
 # Everything breaks again. bug #681336
 >=app-text/poppler-0.75.0
