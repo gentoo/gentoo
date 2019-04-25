@@ -21,7 +21,7 @@ RDEPEND="
 	gnome-keyring? ( >=gnome-base/libgnome-keyring-3.2 )
 	libnotify? ( >=x11-libs/libnotify-0.4.1:0= )
 	spell? (
-		>=app-text/enchant-1.6
+		>=app-text/enchant-1.6:=
 		>=app-text/gtkspell-2.0.7:2 )
 	ssl? ( >=net-libs/gnutls-3:0= )
 "
