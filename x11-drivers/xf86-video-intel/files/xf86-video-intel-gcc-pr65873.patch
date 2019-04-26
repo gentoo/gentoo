@@ -1,0 +1,12 @@
+diff -up xf86-video-intel-20150520/src/sna/compiler.h.jx xf86-video-intel-20150520/src/sna/compiler.h
+--- xf86-video-intel-20150520/src/sna/compiler.h.jx	2015-05-19 07:44:26.000000000 -0400
++++ xf86-video-intel-20150520/src/sna/compiler.h	2015-05-20 12:53:54.797918726 -0400
+@@ -64,7 +64,7 @@
+ #endif
+ 
+ #if HAS_GCC(4, 6) && defined(__OPTIMIZE__)
+-#define fast __attribute__((optimize("Ofast")))
++#define fast __attribute__((optimize("O3")))
+ #else
+ #define fast
+ #endif
