@@ -18,7 +18,7 @@ fi
 
 DESCRIPTION="X.Org driver for Intel cards"
 
-IUSE="debug dri3 +sna tools +udev uxa xvmc"
+IUSE="debug +sna tools +udev uxa xvmc"
 
 REQUIRED_USE="
 	|| ( sna uxa )
@@ -29,13 +29,8 @@ RDEPEND="
 	x11-libs/libXScrnSaver
 	>=x11-libs/pixman-0.27.1
 	>=x11-libs/libdrm-2.4.52[video_cards_intel]
-	dri3? (
-		>=x11-base/xorg-server-1.18
-		!<=media-libs/mesa-12.0.4
-	)
-	sna? (
-		>=x11-base/xorg-server-1.10
-	)
+	>=x11-base/xorg-server-1.18
+	!<=media-libs/mesa-12.0.4
 	tools? (
 		x11-libs/libX11
 		x11-libs/libxcb
@@ -66,7 +61,7 @@ src_configure() {
 		$(use_enable debug)
 		$(use_enable dri)
 		$(use_enable dri dri3)
-		$(usex dri3 "--with-default-dri=3")
+		$(usex dri "--with-default-dri=3")
 		$(use_enable sna)
 		$(use_enable tools)
 		$(use_enable udev)
