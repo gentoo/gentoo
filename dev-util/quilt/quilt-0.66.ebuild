@@ -33,7 +33,7 @@ pkg_setup() {
 
 src_prepare() {
 	# Add support for USE=graphviz
-	use graphviz || eapply -p0 "${FILESDIR}/${P}-no-graphviz.patch"
+	use graphviz || PATCHES+=( "${FILESDIR}"/${PN}-0.66-no-graphviz.patch )
 	default
 }
 
