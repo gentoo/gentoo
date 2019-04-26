@@ -8,6 +8,7 @@
   <use>
     <flag name="autotype">Add support to autotype the passwords into other applications</flag>
     <flag name="browser">Enables browser plugin support</flag>
+    <flag name="keeshare">Enable KeeShare sharing integration</flag>
     <flag name="network">Enable network support</flag>
     <flag name="yubikey">Enable database unlocking via YubiKey.</flag>
   </use>
