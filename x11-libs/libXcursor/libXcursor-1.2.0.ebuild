@@ -3,7 +3,6 @@
 
 EAPI=7
 
-XORG_DOC=doc
 XORG_MULTILIB=yes
 inherit xorg-3
 
