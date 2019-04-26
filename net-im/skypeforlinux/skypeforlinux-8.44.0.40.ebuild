@@ -1,11 +1,11 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 MULTILIB_COMPAT=( abi_x86_64 )
 
-inherit desktop gnome2-utils pax-utils rpm multilib-build xdg-utils
+inherit desktop pax-utils rpm multilib-build xdg-utils
 
 DESCRIPTION="Instant messaging client, with support for audio and video"
 HOMEPAGE="https://www.skype.com/"
@@ -75,18 +75,14 @@ src_install() {
 	dodir /opt
 	cp -a usr/share/skypeforlinux "${D}"/opt || die
 
-	into /opt
 	dobin usr/bin/skypeforlinux
 
 	dodoc usr/share/skypeforlinux/*.html
 	dodoc -r usr/share/doc/skypeforlinux/.
 	# symlink required for the "Help->3rd Party Notes" menu entry  (otherwise frozen skype -> xdg-open)
-	dosym ${P} usr/share/doc/skypeforlinux
+	dosym ${PF} usr/share/doc/skypeforlinux
 
 	doicon usr/share/pixmaps/skypeforlinux.png
-
-	# compat symlink for the autostart desktop file
-	dosym ../../opt/bin/skypeforlinux usr/bin/skypeforlinux
 
 	local res
 	for res in 16 32 256 512; do
@@ -109,11 +105,11 @@ src_install() {
 pkg_postinst() {
 	xdg_desktop_database_update
 	xdg_mimeinfo_database_update
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }
 
 pkg_postrm() {
 	xdg_desktop_database_update
 	xdg_mimeinfo_database_update
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }
