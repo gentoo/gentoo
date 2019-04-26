@@ -90,7 +90,7 @@ app-admin/makepasswd 1.10: Random password generator
 app-admin/mcelog 161: A tool to log and decode Machine Check Exceptions
 app-admin/mcollective 2.12.3 2.12.4: Framework to build server orchestration or parallel job execution systems
 app-admin/metalog 3-r2 20181125: A highly configurable replacement for syslogd/klogd
-app-admin/mktwpol 0.2.6 1.0.0: Bash scripts to install tripwire and generate tripwire policy files
+app-admin/mktwpol 1.0.0: Bash scripts to install tripwire and generate tripwire policy files
 app-admin/mms-agent 3.7.0.212_p1: MongoDB MMS agents
 app-admin/mongo-tools 3.6.8: A high-performance, open source, schema-free document-oriented database
 app-admin/monit 5.25.3: Monitoring and managing daemons or similar programs running on a Unix system
@@ -2857,7 +2857,7 @@ dev-java/wsdl4j 1.6.2: Web Services Description Language for Java Toolkit (WSDL4
 dev-java/wstx 3.2.9-r1: Woodstox is a high-performance validating namespace-aware XML-processor
 dev-java/xalan 2.7.2: Transforming XML documents into HTML, text, or other XML document types
 dev-java/xalan-serializer 2.7.2: DOM Level 3 serializer from Apache Xalan, shared by Xalan and Xerces
-dev-java/xerces 2.11.0-r2: The next generation of high performance, fully compliant XML parsers
+dev-java/xerces 2.12.0: Xerces Java XML parser
 dev-java/xerial-core 2.0.1: An open-source DBMS for XML/JSON/Relational data
 dev-java/xjavac 2.4.0: Xerses Java Parser
 dev-java/xml-commons 1.4.01: Apache XML Commons
