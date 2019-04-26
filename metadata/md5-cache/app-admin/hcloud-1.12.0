@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install
+DEPEND=dev-lang/go:=
+DESCRIPTION=A command-line interface for Hetzner Cloud
+EAPI=7
+HOMEPAGE=https://github.com/hetznercloud/cli
+KEYWORDS=~amd64
+LICENSE=MIT
+RESTRICT=strip
+SLOT=0
+SRC_URI=https://dev.gentoo.org/~ago/distfiles/hcloud-1.12.0.tar.xz
+_md5_=f49efe4949d052ed6120d14791b829bf
