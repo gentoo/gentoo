@@ -136,7 +136,6 @@ src_configure() {
 		-DEXPAT_INCLUDE_DIR="${EPREFIX}"/usr/include
 		-DEXPAT_LIBRARY="${EPREFIX}"/usr/$(get_libdir)/libexpat.so
 		-DBUILD_SHARED_LIBS=ON
-		-DCMAKE_COLOR_MAKEFILE=TRUE
 		-DCMAKE_VERBOSE_MAKEFILE=ON
 
 		-DVTK_Group_StandAlone=ON
