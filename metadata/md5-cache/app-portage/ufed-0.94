@@ -4,10 +4,10 @@ DEPEND=sys-libs/ncurses:0= virtual/pkgconfig
 DESCRIPTION=Gentoo Linux USE flags editor
 EAPI=7
 HOMEPAGE=https://wiki.gentoo.org/wiki/Ufed
-KEYWORDS=~alpha amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux
+KEYWORDS=~alpha amd64 ~arm hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux
 LICENSE=GPL-2
 RDEPEND=sys-libs/ncurses:0= dev-lang/perl
 SLOT=0
 SRC_URI=https://gitweb.gentoo.org/proj/ufed.git/snapshot/ufed-0.94.tar.bz2
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	b2f01ad412baf81650c23fcf0975fa33	out-of-source	15edba2977da53bbf4d1e5a60abc0e34	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
-_md5_=bff4cb9791583a9f5b52cf0cfd325fcd
+_md5_=8d2d9fdaa69b1963fb131d92d09af479
