@@ -1,6 +1,12 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Fabian Groffen <grobian@gentoo.org> (26 Apr 2019)
+# LLVM/clang 7.1 crashes at runtime
+# llvm::optional_detail::OptionalStorage<llvm::ArrayRef<llvm::StringRef>,
+=sys-devel/clang-7.1.0*
+=sys-devel/llvm-7.1.0*
+
 # Fabian Groffen <grobian@gentoo.org> (26 Mar 2019)
 # LLVM/clang 8 cannot compile itself, fails with the linker complaining
 # about a missing symbol (clang::clangd::detail::log(..,..))
