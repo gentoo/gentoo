@@ -127,7 +127,7 @@ app-misc/tracker firefox-bookmarks thunderbird
 # Dirkjan Ochtman <djc@gentoo.org> (29 Sep 2018)
 # Clippy is broken for now, can't find libraries (bug 667286)
 <dev-lang/rust-1.29.2 clippy
-dev-lang/rust-bin clippy
+<dev-lang/rust-bin-1.34.1 clippy
 
 # Virgil Dupras <vdupras@gentoo.org> (26 Sep 2018)
 # Server feature in paramiko is patched out for security reasons. It can
