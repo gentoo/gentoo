@@ -79,7 +79,7 @@ src_configure() {
 		$(use_enable jit ion) \
 		$(use_enable test tests) \
 		XARGS="/usr/bin/xargs" \
-		SHELL="${SHELL:-${EPREFIX}/bin/bash}" \
+		CONFIG_SHELL="${SHELL:-${EPREFIX}/bin/bash}" \
 		CC="${CC}" CXX="${CXX}" LD="${LD}" AR="${AR}" RANLIB="${RANLIB}"
 }
 
