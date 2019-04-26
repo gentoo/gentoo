@@ -11,7 +11,7 @@ if [[ ${PV} == 9999* ]]; then
 	SRC_URI=""
 else
 	KEYWORDS="~amd64 ~x86"
-	COMMIT_ID=""
+	COMMIT_ID="6afed33b2d673d88674f0c76efe500ae414e8e1b"
 	SRC_URI="https://gitlab.freedesktop.org/xorg/driver/xf86-video-intel/-/archive/${COMMIT_ID}/${P}.tar.bz2"
 	S="${WORKDIR}/${PN}-${COMMIT_ID}"
 fi
@@ -53,6 +53,10 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	x11-base/xorg-proto"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-gcc-pr65873.patch
+)
 
 src_configure() {
 	replace-flags -Os -O2
