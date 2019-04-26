@@ -1,0 +1,13 @@
+diff --git a/Makefile b/Makefile
+index cffb255..7b5fe5a 100644
+--- a/Makefile
++++ b/Makefile
+@@ -33,7 +33,7 @@ CFLAGS ?= -Wall -Wno-nonnull
+ CPPFLAGS += -D_GNU_SOURCE -Isrc/include
+ LDFLAGS ?=
+ 
+-PYLIB  ?= $(shell python -c 'import distutils.sysconfig;  print distutils.sysconfig.get_python_lib()')
++PYLIB  ?= $(shell python -c 'import distutils.sysconfig;  print(distutils.sysconfig.get_python_lib())')
+ 
+ ifndef DEBUG
+ 	CFLAGS	+= -O2 -g
