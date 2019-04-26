@@ -30,7 +30,9 @@ src_prepare() {
 }
 
 src_compile() {
-	GOCACHE="${T}"/go-cache go build -a -mod vendor -v || die "build failed"
+	set -- env GOCACHE="${T}"/go-cache go build -a -mod vendor -v
+	echo $@
+	"$@" || die "build failed"
 }
 
 src_install() {
