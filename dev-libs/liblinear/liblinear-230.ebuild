@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI="7"
 inherit multilib toolchain-funcs
 
 DESCRIPTION="A Library for Large Linear Classification"
@@ -53,7 +53,7 @@ src_compile() {
 }
 
 src_install() {
-	dolib ${PN}.so.3
+	dolib.so ${PN}.so.3
 	dosym ${PN}.so.3 /usr/$(get_libdir)/${PN}.so
 
 	newbin predict ${PN}-predict
