@@ -1,11 +1,11 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 XORG_DRI=dri
 XORG_EAUTORECONF=yes
-inherit linux-info xorg-2 flag-o-matic
+inherit linux-info xorg-3 flag-o-matic
 
 if [[ ${PV} == 9999* ]]; then
 	SRC_URI=""
@@ -68,7 +68,7 @@ src_configure() {
 		$(use_enable uxa)
 		$(use_enable xvmc)
 	)
-	xorg-2_src_configure
+	xorg-3_src_configure
 }
 
 pkg_postinst() {
