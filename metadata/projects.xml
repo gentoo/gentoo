@@ -2855,7 +2855,7 @@
     <email>pr@gentoo.org</email>
     <name>Public Relations</name>
     <url>https://wiki.gentoo.org/wiki/Project:Public_Relations</url>
-    <description>The Public Relations team improves Gentoo's visibility towards the rest of the world. We maintain presence on various web silos such as Facebook, Google+, and Twitter. Below you will find those responsible on a per-site basis.</description>
+    <description>The Public Relations project improves Gentoo's visibility toward the rest of the world. We maintain a presence for Gentoo on various web silos such as Facebook, Twitter, and various chat services.</description>
     <subproject ref="news@gentoo.org" inherit-members="1"/>
     <subproject ref="planet@gentoo.org"/>
     <subproject ref="www@gentoo.org"/>
@@ -2877,7 +2877,7 @@
     <member>
       <email>dilfridge@gentoo.org</email>
       <name>Andreas K. Hüttel</name>
-      <role>Facebook (admin), G+ (owner), Twitter</role>
+      <role>Facebook (admin), Twitter</role>
     </member>
     <member>
       <email>k_f@gentoo.org</email>
@@ -2886,7 +2886,7 @@
     <member is-lead="1">
       <email>maffblaster@gentoo.org</email>
       <name>Matthew Marchese</name>
-      <role>Cafepress store, Facebook (admin), G+ (primary owner), Twitter, Telegram (admin), Slack (admin)</role>
+      <role>Cafepress store, Facebook (admin), Twitter, Telegram (admin), Slack (admin)</role>
     </member>
     <member>
       <email>sping@gentoo.org</email>
