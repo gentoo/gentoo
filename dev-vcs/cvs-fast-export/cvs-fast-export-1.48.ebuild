@@ -44,5 +44,5 @@ src_compile() {
 
 src_install() {
 	default
-	dodoc README
+	dodoc README.adoc
 }
