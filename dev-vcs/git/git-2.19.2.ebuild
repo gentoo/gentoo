@@ -69,6 +69,7 @@ CDEPEND="
 		webdav? ( dev-libs/expat )
 	)
 	emacs? ( virtual/emacs )
+	iconv? ( virtual/libiconv )
 "
 
 RDEPEND="${CDEPEND}
