@@ -16,7 +16,7 @@ DEPEND="dev-lang/go:="
 RESTRICT="strip"
 
 src_compile() {
-	go build -mod vendor -o ${PN} ./cmd/${PN} || die "build failed"
+	go build -mod vendor -o ${PN} -ldflags "-w -X github.com/hetznercloud/cli/cli.Version=${PV}-gentoo" ./cmd/${PN} || die "build failed"
 }
 
 src_install() {
