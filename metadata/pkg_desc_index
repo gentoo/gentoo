@@ -950,7 +950,6 @@ app-misc/away 0.9.5-r2: Terminal locking program with few additional features
 app-misc/banner 1.3.3: The well known banner program for Linux
 app-misc/beanstalkd 1.10: A simple, fast work queue
 app-misc/beep 1.3-r3: The advanced PC speaker beeper
-app-misc/bfm 1.2-r2: File manager and first person shooter written in Java3D, shoot to remove files
 app-misc/bfr 1.6-r2: General-purpose command-line pipe buffer
 app-misc/bijiben 3.26.2: Note editor designed to remain simple to use
 app-misc/binclock 1.5: Displays a binary clock in your terminal
@@ -2720,7 +2719,6 @@ dev-java/libreadline-java 0.8.0-r4: A JNI-wrapper to GNU Readline
 dev-java/log4j 1.2.17-r3: A low-overhead robust logging package for Java
 dev-java/logback 1.0.13-r1: A generic, reliable, fast & flexible logging framework for Java
 dev-java/lucene 1.4.3-r4 2.4.1-r2 3.5.0-r2 3.6.2-r2: High-performance, full-featured text search engine written entirely in Java
-dev-java/lucene-analyzers 1.9.1-r1 2.3.2: Lucene Analyzers additions
 dev-java/lzma 9.18: Java code for LZMA compression and decompression
 dev-java/lzmajio 0.95-r1: LzmaInputStream/LzmaOutputStream interacting with underlying LZMA en-/decoders
 dev-java/maven-bin 1.1-r3 2.0.11-r2 2.2.1-r2 3.0.4-r1 3.1.1 3.3.3-r1: Project Management and Comprehension Tool for Java
@@ -2812,15 +2810,12 @@ dev-java/snakeyaml 1.16: A YAML 1.1 parser and emitter for Java 5
 dev-java/snip 0.11-r1: an Apache ANT optional task that extracts snippets of code from text files
 dev-java/spin 1.5-r1: Transparent threading solution for non-freezing Swing applications
 dev-java/spymemcached 2.9.1-r1: A simple, asynchronous, single-threaded memcached client written in java
-dev-java/stax 1.2.0: A standard XML processing API that allows you to stream XML data
 dev-java/stax-ex 1.0-r5 1.7.6: Extensions to complement JSR-173 StAX API
 dev-java/stax2-api 4.0.0: Extended Stax (STandard Api for Xml procesing) API
 dev-java/stringtemplate 3.2.1-r1 4.0.8: A Java template engine
-dev-java/sun-dtdparser 1.0: Sun DTDParser
 dev-java/sun-httpserver-bin 2.0.1-r1: Sun sun.net.httpserver classes
 dev-java/sun-jaf 1.1.1-r1: Sun's JavaBeans Activation Framework (JAF)
 dev-java/sun-jai-bin 1.1.3 1.1.3-r1: JAI is a class library for managing images
-dev-java/sun-java3d-bin 1.3.2-r1 1.4.0_pre5-r1: Sun Java3D API Core
 dev-java/sun-jms 1.1-r2: The Java Message Service (JMS) API
 dev-java/super-csv 2.3.1: A fast, programmer-friendly, free CSV library for Java
 dev-java/svgsalamander 0.0-r2: a SVG engine for Java
