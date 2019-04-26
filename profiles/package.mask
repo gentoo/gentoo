@@ -30,6 +30,11 @@
 #--- END OF EXAMPLES ---
 
 # Virgil Dupras <vdupras@gentoo.org> (26 Apr 2019)
+# Should have been removed with django-cms a while back but wasn't.
+# Removal in 30 days. Bug #683862
+dev-python/djangocms-attributes-field
+
+# Virgil Dupras <vdupras@gentoo.org> (26 Apr 2019)
 # Unmaintained, no revdeps. Removal in 30 days. Bug #618734
 dev-python/yapps
 
