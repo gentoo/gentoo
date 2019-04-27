@@ -16,7 +16,6 @@ KEYWORDS="amd64 arm x86"
 IUSE="bridge examples libressl +persistence +srv ssl tcpd test websockets"
 
 REQUIRED_USE="
-	libressl? ( ssl )
 	test? ( bridge )
 "
 

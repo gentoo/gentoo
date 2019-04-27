@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,7 +16,6 @@ IUSE="+http2 +ssl access-log caps cgi client generic-sessions http-proxy ipv6 le
 	libevent libressl libuv peer-limits server-status socks5 smtp sqlite3 static-libs +zip"
 
 REQUIRED_USE="
-	libressl? ( ssl )
 	http-proxy? ( client )
 	generic-sessions? ( sqlite3 )
 	generic-sessions? ( smtp )
@@ -34,7 +33,7 @@ RDEPEND="
 	ssl? (
 		!libressl? ( dev-libs/openssl:0= )
 		libressl?  ( dev-libs/libressl:0= )
-		)
+	)
 "
 DEPEND="${RDEPEND}
 	dev-lang/perl

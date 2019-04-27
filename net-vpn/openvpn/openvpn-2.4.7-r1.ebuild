@@ -18,7 +18,6 @@ IUSE="down-root examples inotify iproute2 libressl lz4 +lzo mbedtls pam"
 IUSE+=" pkcs11 +plugins selinux +ssl static systemd test userland_BSD"
 
 REQUIRED_USE="static? ( !plugins !pkcs11 )
-	mbedtls? ( ssl !libressl )
 	pkcs11? ( ssl )
 	!plugins? ( !pam !down-root )
 	inotify? ( plugins )"
@@ -73,9 +72,9 @@ src_configure() {
 	IFCONFIG=/bin/ifconfig \
 	ROUTE=/bin/route \
 	econf \
-		$(usex mbedtls '--with-crypto-library=mbedtls' '') \
 		$(use_enable inotify async-push) \
 		$(use_enable ssl crypto) \
+		$(use_with ssl crypto-library $(usex mbedtls mbedtls openssl)) \
 		$(use_enable lz4) \
 		$(use_enable lzo) \
 		$(use_enable pkcs11) \
