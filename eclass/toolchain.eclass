@@ -2394,6 +2394,10 @@ is_go() {
 
 is_jit() {
 	gcc-lang-supported jit || return 1
+	# cross-compiler does not really support jit as it has
+	# to generate code for a target. On target like avr
+	# libgcclit.so can't link at all: bug #594572
+	is_crosscompile && return 1
 	use_if_iuse jit
 }
 
