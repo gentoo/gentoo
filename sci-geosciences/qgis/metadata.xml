@@ -18,6 +18,7 @@
 		<flag name="georeferencer">Determines whether georeferencer plugin should be built</flag>
 		<flag name="grass">Add support for <pkg>sci-geosciences/grass</pkg></flag>
 		<flag name="mapserver">Determines whether mapserver should be built</flag>
+		<flag name="opencl">Enable OpenCL support</flag>
 		<flag name="polar">Enable support for the polar coordinate system via <pkg>x11-libs/qwtpolar</pkg></flag>
 		<flag name="qml">Enable support Qml-based plugins using <pkg>dev-qt/qtdeclarative</pkg></flag>
 	</use>

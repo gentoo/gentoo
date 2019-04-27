@@ -22,7 +22,7 @@ HOMEPAGE="https://www.qgis.org/"
 
 LICENSE="GPL-2+ GPL-3+"
 SLOT="0"
-IUSE="3d examples georeferencer grass mapserver oracle polar postgres python qml webkit"
+IUSE="3d examples georeferencer grass mapserver opencl oracle polar postgres python qml webkit"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE} mapserver? ( python )"
 
@@ -60,6 +60,7 @@ COMMON_DEPEND="
 	georeferencer? ( sci-libs/gsl:= )
 	grass? ( =sci-geosciences/grass-7*:= )
 	mapserver? ( dev-libs/fcgi )
+	opencl? ( virtual/opencl )
 	oracle? (
 		dev-db/oracle-instantclient:=
 		sci-libs/gdal:=[oracle]
@@ -131,6 +132,7 @@ src_configure() {
 		-DWITH_GEOREFERENCER=$(usex georeferencer)
 		-DWITH_GRASS7=$(usex grass)
 		-DWITH_SERVER=$(usex mapserver)
+		-DUSE_OPENCL=$(usex opencl)
 		-DWITH_ORACLE=$(usex oracle)
 		-DWITH_QWTPOLAR=$(usex polar)
 		-DWITH_POSTGRESQL=$(usex postgres)
