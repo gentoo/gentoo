@@ -64,10 +64,10 @@ src_configure() {
 	SYSTEMD_UNIT_DIR=$(systemd_get_systemunitdir) \
 	TMPFILES_DIR="/usr/lib/tmpfiles.d" \
 	econf \
-		--with-plugindir="${ROOT}/usr/$(get_libdir)/$PN" \
-		$(usex mbedtls 'with-crypto-library' 'mbedtls' '' '') \
+		--with-plugindir="${EPREFIX}/usr/$(get_libdir)/$PN" \
 		$(use_enable inotify async-push) \
 		$(use_enable ssl crypto) \
+		$(use_with ssl crypto-library $(usex mbedtls mbedtls openssl)) \
 		$(use_enable lz4) \
 		$(use_enable lzo) \
 		$(use_enable pkcs11) \
