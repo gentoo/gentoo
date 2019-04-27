@@ -28,11 +28,6 @@ net-vpn/strongswan -strongswan_plugins_rdrand -strongswan_plugins_padlock
 # Requires dev-db/mongodb which has dropped x86 support
 net-analyzer/zmap mongo
 
-# Thomas Deutschmann <whissi@gentoo.org> (12 Oct 2018)
-# www-client/firefox and mail-client/thunderbird is
-# available on x86
-app-misc/tracker -firefox-bookmarks -thunderbird
-
 # Michael Palimaka <kensington@gentoo.org> (12 Oct 2018)
 # Unmask arch-specific USE flag available on x86
 net-analyzer/testssl -bundled-openssl
