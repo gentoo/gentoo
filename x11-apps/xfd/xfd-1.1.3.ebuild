@@ -15,6 +15,7 @@ DEPEND="media-libs/freetype:2
 	x11-libs/libXt
 	x11-libs/libXmu
 	x11-libs/libXrender
-	x11-libs/libXaw"
+	x11-libs/libXaw
+	x11-libs/libxkbfile"
 RDEPEND="${DEPEND}"
 BDEPEND="sys-devel/gettext"
