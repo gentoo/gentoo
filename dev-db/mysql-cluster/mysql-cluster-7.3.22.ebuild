@@ -32,8 +32,7 @@ IUSE="client-libs debug extraengine jemalloc latin1 libressl numa
 RESTRICT="libressl? ( test )"
 
 REQUIRED_USE="?? ( tcmalloc jemalloc )
-	?? ( yassl libressl )
-	static? ( yassl !libressl )"
+	static? ( yassl )"
 
 KEYWORDS="~amd64 ~x86"
 
