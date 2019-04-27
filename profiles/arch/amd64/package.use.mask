@@ -250,12 +250,6 @@ media-sound/pulseaudio -webrtc-aec
 # Masked in base profile, supported on this arch
 gnustep-base/gnustep-make -libobjc2
 
-# Alexandre Rostovtsev <tetromino@gentoo.org> (09 Jan 2012)
-# jsc JIT compilation is supported only on amd64/arm/x86 and their prefixes, so
-# it's masked in base profile and unmasked here (bug #396313).
-net-libs/webkit-gtk -jit
-www-client/midori -jit
-
 # Davide Pesavento <pesa@gentoo.org> (30 Nov 2011)
 # The QML (V4) and JSC JITs are supported only on amd64/arm/x86,
 # so the flag is masked in the base profile and unmasked here.
