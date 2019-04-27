@@ -42,11 +42,6 @@ dev-qt/qtchooser test
 # Missing keyword on dev-libs/botan
 app-crypt/qca botan
 
-# Alexandre Rostovtsev <tetromono@gentoo.org> (09 Jan 2012)
-# jsc JIT compilation is supported only on amd64/arm/x86 and their prefixes, so
-# it's masked in base profile and unmasked here (bug #396313).
-net-libs/webkit-gtk -jit
-
 # Pacho Ramos <pacho@gentoo> (18 Mar 2011)
 # Missing keywords on deps (GNOME related packages)
 dev-libs/totem-pl-parser quvi

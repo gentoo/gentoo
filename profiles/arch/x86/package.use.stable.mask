@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # When you add an entry to the top of this file, add your name, the date, and
@@ -77,10 +77,6 @@ gnustep-base/gnustep-make libobjc2
 # Michael Palimaka <kensington@gentoo.org> (26 May 2016)
 # Dependencies not yet stable
 dev-cpp/eigen test
-
-# Pacho Ramos <pacho@gentoo.org> (08 Mar 2015)
-# mayavi is broken, bug #500104
-dev-python/apptools test
 
 # Michał Górny <mgorny@gentoo.org> (30 Mar 2014)
 # Don't apply stable masks to python-exec since we're forcing every

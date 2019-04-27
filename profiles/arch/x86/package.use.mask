@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # This file requires >=portage-2.1.1
@@ -27,11 +27,6 @@ net-vpn/strongswan -strongswan_plugins_rdrand -strongswan_plugins_padlock
 # Alexys Jacob <ultrabug@gentoo.org> (05 Nov 2018)
 # Requires dev-db/mongodb which has dropped x86 support
 net-analyzer/zmap mongo
-
-# Thomas Deutschmann <whissi@gentoo.org> (12 Oct 2018)
-# www-client/firefox and mail-client/thunderbird is
-# available on x86
-app-misc/tracker -firefox-bookmarks -thunderbird
 
 # Michael Palimaka <kensington@gentoo.org> (12 Oct 2018)
 # Unmask arch-specific USE flag available on x86
@@ -243,12 +238,6 @@ gnustep-base/gnustep-make -libobjc2
 # The SPICE server is only supported on 64-bit platforms and not on 32-bit
 # https://lists.freedesktop.org/archives/spice-devel/2015-September/021846.html
 app-emulation/qemu	spice
-
-# Alexandre Rostovtsev <tetromino@gentoo.org> (09 Jan 2012)
-# jsc JIT compilation is supported only on amd64/arm/x86 and their prefixes, so
-# it's masked in base profile and unmasked here (bug #396313).
-net-libs/webkit-gtk -jit
-www-client/midori -jit
 
 # Samuli Suominen <ssuominen@gentoo.org> (06 Dec 2011)
 # NuppelVideo support is x86 only

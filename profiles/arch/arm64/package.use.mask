@@ -224,10 +224,6 @@ dev-python/networkx scipy
 sys-libs/libblockdev dmraid
 
 # Mart Raudsepp <leio@gentoo.org> (13 Feb 2018)
-# USE=smartcard requires net-libs/gnutls-3[pkcs11] that is use.masked.
-net-libs/glib-networking smartcard
-
-# Mart Raudsepp <leio@gentoo.org> (13 Feb 2018)
 # USE=sofalizer requires sci-libs/netcdf that is not keyworded yet.
 media-video/ffmpeg sofalizer
 
@@ -522,11 +518,6 @@ app-office/libreoffice libreoffice_extensions_scripting-beanshell libreoffice_ex
 # Temporary mask-in-base, unmask-in-arch for dev-python/mako keywording for
 # gobject-introspection[doctool], bug #411761
 dev-libs/gobject-introspection -doctool
-
-# Alexandre Rostovtsev <tetromino@gentoo.org> (09 Jan 2012)
-# jsc JIT compilation is supported only on amd64/arm/x86 and their prefixes, so
-# it's masked in base profile and unmasked here (bug #396313).
-net-libs/webkit-gtk -jit
 
 # Anthony G. Basile <blueness@gentoo.org> (Dec 21, 2011)
 # Mask the vde flag on tinc because net-misc/vde is not
