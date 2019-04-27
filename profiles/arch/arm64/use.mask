@@ -102,7 +102,6 @@ prelude
 mssql
 
 # havent tested yet
-ruby
 ctypes-python
 libproxy
 pkcs11
