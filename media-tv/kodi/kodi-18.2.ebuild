@@ -14,7 +14,8 @@ FFMPEG_KODI_VERSION="18.2"
 SRC_URI="https://github.com/xbmc/libdvdcss/archive/${LIBDVDCSS_VERSION}.tar.gz -> libdvdcss-${LIBDVDCSS_VERSION}.tar.gz
 	https://github.com/xbmc/libdvdread/archive/${LIBDVDREAD_VERSION}.tar.gz -> libdvdread-${LIBDVDREAD_VERSION}.tar.gz
 	https://github.com/xbmc/libdvdnav/archive/${LIBDVDNAV_VERSION}.tar.gz -> libdvdnav-${LIBDVDNAV_VERSION}.tar.gz
-	!system-ffmpeg? ( https://github.com/xbmc/FFmpeg/archive/${FFMPEG_VERSION}-${CODENAME}-${FFMPEG_KODI_VERSION}.tar.gz -> ffmpeg-${PN}-${FFMPEG_VERSION}-${CODENAME}-${FFMPEG_KODI_VERSION}.tar.gz )"
+	!system-ffmpeg? ( https://github.com/xbmc/FFmpeg/archive/${FFMPEG_VERSION}-${CODENAME}-${FFMPEG_KODI_VERSION}.tar.gz -> ffmpeg-${PN}-${FFMPEG_VERSION}-${CODENAME}-${FFMPEG_KODI_VERSION}.tar.gz )
+	!java? ( https://dev.gentoo.org/~anarchy/patches/${P}-no-java-required.patch )"
 
 if [[ ${PV} == *9999 ]] ; then
 	PYTHON_COMPAT=( python2_7 python3_{5,6,7} )
@@ -42,7 +43,7 @@ SLOT="0"
 # use flag is called libusb so that it doesn't fool people in thinking that
 # it is _required_ for USB support. Otherwise they'll disable udev and
 # that's going to be worse.
-IUSE="airplay alsa bluetooth bluray caps cec +css dbus dvd gbm gles lcms libressl libusb lirc mariadb mysql nfs +opengl pulseaudio samba systemd +system-ffmpeg test +udev udisks upnp upower vaapi vdpau wayland webserver +X +xslt zeroconf"
+IUSE="airplay alsa bluetooth bluray caps cec +css dbus dvd gbm gles java lcms libressl libusb lirc mariadb mysql nfs +opengl pulseaudio samba systemd +system-ffmpeg test +udev udisks upnp upower vaapi vdpau wayland webserver +X +xslt zeroconf"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
 	|| ( gles opengl )
@@ -154,7 +155,7 @@ DEPEND="${COMMON_DEPEND}
 	>=media-libs/libpng-1.6.26:0=
 	test? ( dev-cpp/gtest )
 	virtual/pkgconfig
-	virtual/jre
+	java? ( virtual/jre )
 	x86? ( dev-lang/nasm )
 "
 
@@ -186,6 +187,9 @@ src_unpack() {
 }
 
 src_prepare() {
+	if use !java; then
+		eapply "${DISTDIR}"/${P}-no-java-required.patch
+	fi
 	cmake-utils_src_prepare
 
 	# avoid long delays when powerkit isn't running #348580
