@@ -12,7 +12,7 @@ SRC_URI="https://mupdf.com/downloads/archive/${P}-source.tar.xz"
 LICENSE="AGPL-3"
 SLOT="0/${PV}"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~x86 ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos"
-IUSE="X curl +javascript libressl opengl openssl static-libs +vanilla"
+IUSE="X curl +javascript libressl opengl ssl static-libs +vanilla"
 
 RDEPEND="
 	>=dev-lang/mujs-1.0.4
@@ -23,9 +23,11 @@ RDEPEND="
 	>=media-libs/openjpeg-2.1:2=[static-libs?]
 	virtual/jpeg[static-libs?]
 	curl? ( net-misc/curl[static-libs?] )
-	libressl? ( >=dev-libs/libressl-2.8:0=[static-libs?] )
 	opengl? ( >=media-libs/freeglut-3.0.0:= )
-	openssl? ( >=dev-libs/openssl-1.1:0=[static-libs?] )
+	ssl? (
+		libressl? ( >=dev-libs/libressl-2.8:0=[static-libs?] )
+		!libressl? ( >=dev-libs/openssl-1.1:0=[static-libs?] )
+	)
 	X? (
 		x11-libs/libX11[static-libs?]
 		x11-libs/libXext[static-libs?]
@@ -34,7 +36,6 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 REQUIRED_USE="
-	libressl? ( !openssl )
 	opengl? ( !static-libs )
 	curl? ( X )"
 
@@ -62,7 +63,7 @@ src_prepare() {
 		"${FILESDIR}"/${PN}-1.3-zoom-2.patch
 
 	# See bug #670832
-	use libressl && eapply "${FILESDIR}"/${PN}-1.14-libressl.patch
+	use ssl && use libressl && eapply "${FILESDIR}"/${PN}-1.14-libressl.patch
 
 	sed -e "1iOS = Linux" \
 		-e "1iCC = $(tc-getCC)" \
@@ -78,15 +79,11 @@ src_prepare() {
 
 _emake() {
 	# When HAVE_OBJCOPY is yes, we end up with a lot of QA warnings.
-	local have_libcrypto=no
-	if use openssl || use libressl ; then
-		have_libcrypto=yes
-	fi
 	emake \
 		GENTOO_PV=${PV} \
 		HAVE_GLUT=$(usex opengl) \
 		HAVE_CURL=$(usex curl) \
-		HAVE_LIBCRYPTO=$have_libcrypto \
+		HAVE_LIBCRYPTO=$(usex ssl) \
 		HAVE_X11=$(usex X) \
 		USE_SYSTEM_LIBS=yes \
 		USE_SYSTEM_MUJS=yes \
