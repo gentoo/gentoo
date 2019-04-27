@@ -20,10 +20,6 @@ clamav
 python_targets_python3_7
 python_single_target_python3_7
 
-# Hans de Graaff <graaff@gentoo.org> (13 Aug 2017)
-# Drop stable ruby on sparc
-ruby
-
 # Andrey Grozin <grozin@gentoo.org> (25 Jun 2014)
 # no stable version on sparc
 ecls
