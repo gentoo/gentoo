@@ -29,4 +29,4 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
-PATCHES=( "${FILESDIR}/${P}-runtime-crashfix.patch" )
+PATCHES=( "${FILESDIR}"/${P}-runtime-crashfix{,1}.patch )

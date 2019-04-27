@@ -1,0 +1,47 @@
+From 78a711361db3a5156f511eab89ff7ebbc86b9125 Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Thu, 18 Apr 2019 14:32:11 +0200
+Subject: Copy container in Component::cleanUp before interating
+
+Summary:
+Crash was reported:
+
+Thread 1 (Thread 0x7fdc95c68800 (LWP 6402)):
+[KCrash Handler]
+#6  QHashData::nextNode (node=node@entry=0x562f53ffbd10) at tools/qhash.cpp:598
+#7  0x00007fdc95a1fbab in QHash<QString, GlobalShortcut*>::const_iterator::operator++ (this=<synthetic pointer>) at /usr/include/x86_64-linux-gnu/qt5/QtCore/qhash.h:395
+#8  KdeDGlobalAccel::Component::cleanUp (this=0x562f53ffb040) at ./src/runtime/component.cpp:163
+
+Apparently the container is modified while iterating over it. That does not work with the range-for as it does not detach, as opposed to Q_FOREACH.
+
+Test Plan: @lbeltrame saw valgrind errors before applying this, but those disappeared with this patch.
+
+Reviewers: #frameworks, davidedmundson
+
+Reviewed By: davidedmundson
+
+Subscribers: lbeltrame, kde-frameworks-devel
+
+Tags: #frameworks
+
+Differential Revision: https://phabricator.kde.org/D20659
+---
+ src/runtime/component.cpp | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletion(-)
+
+diff --git a/src/runtime/component.cpp b/src/runtime/component.cpp
+--- b/src/runtime/component.cpp
++++ b/src/runtime/component.cpp
+@@ -158,9 +158,10 @@
+ 
+ bool Component::cleanUp()
+     {
+-    bool changed = false;;
++    bool changed = false;
+ 
+-    for (GlobalShortcut *shortcut : qAsConst(_current->_actions))
++    const auto actions = _current->_actions;
++    for (GlobalShortcut *shortcut : actions)
+         {
+         qCDebug(KGLOBALACCELD) << _current->_actions.size();
+         if (!shortcut->isPresent())
