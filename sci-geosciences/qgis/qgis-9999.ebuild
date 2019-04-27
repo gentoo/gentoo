@@ -1,22 +1,21 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 PYTHON_COMPAT=( python3_{5,6} )
 PYTHON_REQ_USE="sqlite"
 QT_MIN_VER="5.9.4"
 
-if [[ ${PV} != *9999 ]]; then
+if [[ ${PV} = *9999 ]]; then
+	EGIT_REPO_URI="https://github.com/${PN}/${PN^^}.git"
+	inherit git-r3
+else
 	SRC_URI="https://qgis.org/downloads/${P}.tar.bz2
 		examples? ( https://qgis.org/downloads/data/qgis_sample_data.tar.gz -> qgis_sample_data-2.8.14.tar.gz )"
 	KEYWORDS="~amd64 ~x86"
-else
-	GIT_ECLASS="git-r3"
-	EGIT_REPO_URI="https://github.com/${PN}/${PN^^}.git"
 fi
-inherit cmake-utils desktop ${GIT_ECLASS} gnome2-utils python-single-r1 qmake-utils xdg-utils
-unset GIT_ECLASS
+inherit cmake-utils desktop python-single-r1 qmake-utils xdg
 
 DESCRIPTION="User friendly Geographic Information System"
 HOMEPAGE="https://www.qgis.org/"
@@ -27,6 +26,11 @@ IUSE="3d examples georeferencer grass mapserver oracle polar postgres python qml
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE} mapserver? ( python )"
 
+BDEPEND="
+	>=dev-qt/linguist-tools-${QT_MIN_VER}:5
+	sys-devel/bison
+	sys-devel/flex
+"
 COMMON_DEPEND="
 	app-crypt/qca:2[qt5(+),ssl]
 	>=dev-db/spatialite-4.2.0
@@ -84,11 +88,8 @@ COMMON_DEPEND="
 	webkit? ( >=dev-qt/qtwebkit-5.9.1:5 )
 "
 DEPEND="${COMMON_DEPEND}
-	>=dev-qt/linguist-tools-${QT_MIN_VER}:5
 	>=dev-qt/qttest-${QT_MIN_VER}:5
 	>=dev-qt/qtxmlpatterns-${QT_MIN_VER}:5
-	sys-devel/bison
-	sys-devel/flex
 	python? ( ${PYTHON_DEPS} )
 "
 RDEPEND="${COMMON_DEPEND}
@@ -124,7 +125,6 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=(
 		-DQGIS_MANUAL_SUBDIR=/share/man/
-		-DBUILD_SHARED_LIBS=ON
 		-DQGIS_LIB_SUBDIR=$(get_libdir)
 		-DQGIS_PLUGIN_SUBDIR=$(get_libdir)/qgis
 		-DQWT_INCLUDE_DIR=/usr/include/qwt6
@@ -187,11 +187,11 @@ src_install() {
 	fi
 
 	if use python; then
-		python_optimize "${ED%/}"/usr/share/qgis/python
+		python_optimize "${ED}"/usr/share/qgis/python
 	fi
 
 	if use grass; then
-		python_fix_shebang "${ED%/}"/usr/share/qgis/grass/scripts
+		python_fix_shebang "${ED}"/usr/share/qgis/grass/scripts
 	fi
 }
 
@@ -210,13 +210,5 @@ pkg_postinst() {
 		elog "QGIS is now based on PyQt5. Old scripts may not work anymore."
 	fi
 
-	gnome2_icon_cache_update
-	xdg_mimeinfo_database_update
-	xdg_desktop_database_update
-}
-
-pkg_postrm() {
-	gnome2_icon_cache_update
-	xdg_mimeinfo_database_update
-	xdg_desktop_database_update
+	xdg_pkg_postinst
 }
