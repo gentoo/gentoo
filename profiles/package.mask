@@ -738,6 +738,7 @@ dev-db/pgadmin3
 # Multiprocessing versions of gemato.  They are known to hang on some
 # users, so let's keep them masked until somebody figures out what's
 # wrong.  Bug #647964.
+~app-portage/gemato-14.1m
 ~app-portage/gemato-14.0m
 ~app-portage/gemato-9999m
 
