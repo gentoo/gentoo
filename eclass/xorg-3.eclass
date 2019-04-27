@@ -374,6 +374,7 @@ xorg-3_src_install() {
 
 	if in_iuse doc && ! use doc; then
 		rm -rf "${D}"/usr/share/man/man3
+		rmdir "${D}"/usr{/share{/man,},} 2>/dev/null
 	fi
 
 	# Don't install libtool archives (even for modules)
