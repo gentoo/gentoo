@@ -110,16 +110,6 @@ pkg_setup() {
 
 src_prepare() {
 	cmake-utils_src_prepare
-
-	sed -e "s:\${QT_BINARY_DIR}:$(qt5_get_bindir):" \
-		-i CMakeLists.txt || die "Failed to fix lrelease path"
-
-	sed -e "/QT_LRELEASE_EXECUTABLE/d" \
-		-e "/QT_LUPDATE_EXECUTABLE/s/set/find_program/" \
-		-e "s:lupdate-qt5:NAMES lupdate PATHS $(qt5_get_bindir) NO_DEFAULT_PATH:" \
-		-i cmake/modules/ECMQt4To5Porting.cmake || die "Failed to fix ECMQt4To5Porting.cmake"
-
-	cd src/plugins || die
 }
 
 src_configure() {
@@ -165,14 +155,14 @@ src_configure() {
 src_install() {
 	cmake-utils_src_install
 
-	domenu debian/qgis.desktop
+	newmenu linux/org.qgis.qgis.desktop.in org.qgis.qgis.desktop
 
 	local size type
 	for size in 16 22 24 32 48 64 96 128 256; do
-		newicon -s ${size} debian/icons/${PN}-icon${size}x${size}.png ${PN}.png
-		newicon -c mimetypes -s ${size} debian/icons/${PN}-mime-icon${size}x${size}.png ${PN}-mime.png
+		newicon -s ${size} linux/icons/${PN}-icon${size}x${size}.png ${PN}.png
+		newicon -c mimetypes -s ${size} linux/icons/${PN}-mime-icon${size}x${size}.png ${PN}-mime.png
 		for type in qgs qml qlr qpt; do
-			newicon -c mimetypes -s ${size} debian/icons/${PN}-${type}${size}x${size}.png ${PN}-${type}.png
+			newicon -c mimetypes -s ${size} linux/icons/${PN}-${type}${size}x${size}.png ${PN}-${type}.png
 		done
 	done
 	newicon -s scalable images/icons/qgis_icon.svg qgis.svg
