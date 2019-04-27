@@ -17,10 +17,9 @@ HOMEPAGE="https://www.falkon.org/"
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="dbus gnome-keyring kde libressl +X"
+IUSE="dbus kde libressl +X"
 
 # drop qtwebengine subslot operator when QT_MINIMAL >= 5.12.0
-BDEPEND="gnome-keyring? ( virtual/pkgconfig )"
 COMMON_DEPEND="
 	$(add_qt_dep qtdeclarative 'widgets')
 	$(add_qt_dep qtgui)
@@ -32,7 +31,6 @@ COMMON_DEPEND="
 	$(add_qt_dep qtwidgets)
 	virtual/libintl
 	dbus? ( $(add_qt_dep qtdbus) )
-	gnome-keyring? ( gnome-base/libgnome-keyring )
 	kde? (
 		$(add_frameworks_dep kcoreaddons)
 		$(add_frameworks_dep kcrash)
@@ -73,7 +71,6 @@ src_configure() {
 		-DCMAKE_DISABLE_FIND_PACKAGE_Shiboken2=ON
 		-DCMAKE_DISABLE_FIND_PACKAGE_PythonLibs=ON
 		-DDISABLE_DBUS=$(usex !dbus)
-		-DBUILD_KEYRING=$(usex gnome-keyring)
 		$(cmake-utils_use_find_package kde KF5Wallet)
 		$(cmake-utils_use_find_package kde KF5KIO)
 		-DNO_X11=$(usex !X)
