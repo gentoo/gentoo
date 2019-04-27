@@ -22,7 +22,7 @@ HOMEPAGE="https://www.qgis.org/"
 
 LICENSE="GPL-2+ GPL-3+"
 SLOT="0"
-IUSE="3d examples georeferencer grass mapserver opencl oracle polar postgres python qml webkit"
+IUSE="3d examples georeferencer grass hdf5 mapserver netcdf opencl oracle polar postgres python qml webkit"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE} mapserver? ( python )"
 
@@ -59,7 +59,9 @@ COMMON_DEPEND="
 	3d? ( >=dev-qt/qt3d-${QT_MIN_VER}:5 )
 	georeferencer? ( sci-libs/gsl:= )
 	grass? ( =sci-geosciences/grass-7*:= )
+	hdf5? ( sci-libs/hdf5:= )
 	mapserver? ( dev-libs/fcgi )
+	netcdf? ( sci-libs/netcdf:= )
 	opencl? ( virtual/opencl )
 	oracle? (
 		dev-db/oracle-instantclient:=
@@ -126,12 +128,15 @@ src_configure() {
 		-DPEDANTIC=OFF
 		-DUSE_CCACHE=OFF
 		-DWITH_APIDOC=OFF
+		-DWITH_INTERNAL_MDAL=ON # not packaged, bug 684538
 		-DWITH_QSPATIALITE=ON
 		-DENABLE_TESTS=OFF
 		-DWITH_3D=$(usex 3d)
 		-DWITH_GEOREFERENCER=$(usex georeferencer)
 		-DWITH_GRASS7=$(usex grass)
+		$(cmake-utils_use_find_package hdf5 HDF5)
 		-DWITH_SERVER=$(usex mapserver)
+		$(cmake-utils_use_find_package netcdf NetCDF)
 		-DUSE_OPENCL=$(usex opencl)
 		-DWITH_ORACLE=$(usex oracle)
 		-DWITH_QWTPOLAR=$(usex polar)
