@@ -24,9 +24,9 @@ RDEPEND="
 	media-libs/fontconfig
 	x11-libs/libX11
 	x11-libs/libXrender
+	gdk-pixbuf? ( x11-libs/gdk-pixbuf )
 	kernel_Darwin? ( dev-perl/Mac-Pasteboard )
 	perl? ( dev-lang/perl:= )
-	gdk-pixbuf? ( x11-libs/gdk-pixbuf x11-libs/gtk+:2 )
 	startup-notification? ( x11-libs/startup-notification )
 	xft? ( x11-libs/libXft )
 "
