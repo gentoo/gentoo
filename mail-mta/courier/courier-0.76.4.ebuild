@@ -1,25 +1,27 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 inherit eutils flag-o-matic multilib
 
 DESCRIPTION="An MTA designed specifically for maildirs"
-SRC_URI="mirror://sourceforge/courier/${P}.tar.bz2"
 HOMEPAGE="http://www.courier-mta.org/"
-SLOT="0"
+SRC_URI="mirror://sourceforge/courier/${P}.tar.bz2"
+
 LICENSE="GPL-2"
+SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86"
 IUSE="postgres ldap libressl mysql pam nls ipv6 spell fax crypt norewrite \
 	fam web webmail gnutls"
-REQUIRED_USE="?? ( gnutls libressl )"
 
 DEPEND="
 	>=net-libs/courier-authlib-0.66.3
 	>=net-libs/courier-unicode-1.4
-	!gnutls? ( !libressl? ( dev-libs/openssl:0= ) )
-	libressl? ( dev-libs/libressl:= )
-	gnutls? ( net-libs/gnutls )
+	gnutls? ( net-libs/gnutls:= )
+	!gnutls? (
+		!libressl? ( dev-libs/openssl:0= )
+		libressl? ( dev-libs/libressl:0= )
+	)
 	>=sys-libs/gdbm-1.8.0
 	dev-libs/libpcre
 	app-misc/mime-types
