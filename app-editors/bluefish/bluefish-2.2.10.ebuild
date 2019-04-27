@@ -27,7 +27,7 @@ RDEPEND="
 		gucharmap? ( gnome-extra/gucharmap:2.90 )
 	)
 	python? ( ${PYTHON_DEPS} )
-	spell? ( app-text/enchant:= )"
+	spell? ( <app-text/enchant-2 )"
 DEPEND="${RDEPEND}
 	dev-libs/libxml2:2
 	>=dev-libs/glib-2.24:2
