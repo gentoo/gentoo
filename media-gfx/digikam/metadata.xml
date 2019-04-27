@@ -10,6 +10,8 @@
 	</maintainer>
 	<use>
 		<flag name="addressbook">Enable akonadi contact integration</flag>
+		<flag name="dnn">Build neural network faces engine module</flag>
+		<flag name="imagemagick">Enable support for additional image formats such as XCF, FITS, HEIC etc.</flag>
 		<flag name="lensfun">Enable support for <pkg>media-libs/lensfun</pkg></flag>
 		<flag name="marble">Enable support for geolocation using <pkg>kde-apps/marble</pkg></flag>
 		<flag name="mediaplayer">Enable support for media player using <pkg>media-libs/qtav</pkg></flag>
