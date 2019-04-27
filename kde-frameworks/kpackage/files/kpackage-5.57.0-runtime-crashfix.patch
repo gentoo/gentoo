@@ -1,0 +1,42 @@
+From c3e896e02f9a8dc92d6e26cdbc87fe5c6b9cf3bf Mon Sep 17 00:00:00 2001
+From: David Faure <faure@kde.org>
+Date: Sun, 14 Apr 2019 19:44:50 +0200
+Subject: Don't use qAsConst over a temporary variable
+
+Summary:
+(will crash because the temporary will be destroyed before being used)
+
+Detected with
+  ag -sr qAsConst'\([^)]*\(' .
+
+Test Plan: builds
+
+Reviewers: mlaurent, cfeck, apol
+
+Reviewed By: mlaurent
+
+Subscribers: kde-frameworks-devel
+
+Tags: #frameworks
+
+Differential Revision: https://phabricator.kde.org/D20552
+---
+ src/kpackage/package.cpp | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/kpackage/package.cpp b/src/kpackage/package.cpp
+index 130eec6..801f1c2 100644
+--- a/src/kpackage/package.cpp
++++ b/src/kpackage/package.cpp
+@@ -429,7 +429,8 @@ QStringList Package::entryList(const QByteArray &key) const
+     QStringList list;
+     for (const QString &prefix : qAsConst(d->contentsPrefixPaths)) {
+         //qCDebug(KPACKAGE_LOG) << "     looking in" << prefix;
+-        for (const QString &path : qAsConst(it.value().paths)) {
++        const QStringList paths = it.value().paths;
++        for (const QString &path : paths) {
+             //qCDebug(KPACKAGE_LOG) << "         looking in" << path;
+             if (it.value().directory) {
+                 //qCDebug(KPACKAGE_LOG) << "it's a directory, so trying out" << d->path + prefix + path;
+-- 
+cgit v1.1
