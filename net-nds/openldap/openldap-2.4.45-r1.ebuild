@@ -29,7 +29,6 @@ IUSE_CONTRIB="${IUSE_CONTRIB} -cxx"
 IUSE="${IUSE_DAEMON} ${IUSE_BACKEND} ${IUSE_OVERLAY} ${IUSE_OPTIONAL} ${IUSE_CONTRIB}"
 
 REQUIRED_USE="cxx? ( sasl )
-	?? ( gnutls libressl )
 	pbkdf2? ( ssl )"
 
 # always list newer first
@@ -45,10 +44,13 @@ CDEPEND="
 	ssl? (
 		!gnutls? (
 			!libressl? ( >=dev-libs/openssl-1.0.1h-r2:0=[${MULTILIB_USEDEP}] )
+			libressl? ( dev-libs/libressl:0=[${MULTILIB_USEDEP}] )
 		)
-		gnutls? ( >=net-libs/gnutls-2.12.23-r6[${MULTILIB_USEDEP}]
-		libressl? ( dev-libs/libressl:0=[${MULTILIB_USEDEP}] )
-		>=dev-libs/libgcrypt-1.5.3:0[${MULTILIB_USEDEP}] ) )
+		gnutls? (
+			>=net-libs/gnutls-2.12.23-r6:=[${MULTILIB_USEDEP}]
+			>=dev-libs/libgcrypt-1.5.3:0=[${MULTILIB_USEDEP}]
+		)
+	)
 	sasl? ( dev-libs/cyrus-sasl:= )
 	!minimal? (
 		sys-devel/libtool
