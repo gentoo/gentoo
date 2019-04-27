@@ -4,10 +4,10 @@ DEPEND=media-libs/libpng:0=
 DESCRIPTION=Utility which reduces large palettes in PNG images
 EAPI=7
 HOMEPAGE=https://entropymine.com/jason/pngrewrite/
-KEYWORDS=~alpha amd64 ~ppc sparc ~x86 ~x86-linux ~ppc-macos
+KEYWORDS=~alpha amd64 ppc sparc ~x86 ~x86-linux ~ppc-macos
 LICENSE=public-domain
 RDEPEND=media-libs/libpng:0=
 SLOT=0
 SRC_URI=https://entropymine.com/jason/pngrewrite/pngrewrite-1.4.0.zip
 _eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
-_md5_=60dd350943b1849b35855816f2495f7b
+_md5_=cb17cf32e7870c0a8444214f539c60f9
