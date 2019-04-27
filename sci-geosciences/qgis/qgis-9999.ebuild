@@ -102,6 +102,8 @@ RESTRICT="test"
 PATCHES=(
 	# git master
 	"${FILESDIR}/${PN}-2.18.12-cmake-lib-suffix.patch"
+	# TODO upstream
+	"${FILESDIR}/${PN}-3.4.7-featuresummary.patch"
 )
 
 pkg_setup() {
