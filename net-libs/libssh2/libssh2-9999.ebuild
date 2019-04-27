@@ -12,16 +12,18 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
 IUSE="gcrypt libressl mbedtls zlib"
-REQUIRED_USE="
-	?? ( gcrypt libressl mbedtls )
-"
+REQUIRED_USE="?? ( gcrypt mbedtls )"
 RESTRICT="test"
 
 RDEPEND="
-	!libressl? ( >=dev-libs/openssl-1.0.1h-r2:0=[${MULTILIB_USEDEP}] )
 	gcrypt? ( >=dev-libs/libgcrypt-1.5.3:0[${MULTILIB_USEDEP}] )
-	libressl? ( dev-libs/libressl:0=[${MULTILIB_USEDEP}] )
-	mbedtls? ( net-libs/mbedtls[${MULTILIB_USEDEP}] )
+	!gcrypt? (
+		mbedtls? ( net-libs/mbedtls[${MULTILIB_USEDEP}] )
+		!mbedtls? (
+			!libressl? ( >=dev-libs/openssl-1.0.1h-r2:0=[${MULTILIB_USEDEP}] )
+			libressl? ( dev-libs/libressl:0=[${MULTILIB_USEDEP}] )
+		)
+	)
 	zlib? ( >=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}] )
 "
 DEPEND="
