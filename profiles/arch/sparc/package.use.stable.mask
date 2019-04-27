@@ -45,12 +45,6 @@ media-sound/mp3splt-gtk gstreamer
 net-im/pidgin gstreamer
 media-libs/libcanberra gstreamer
 
-# Hans de Graaff <graaff@gentoo.org> (13 Aug 2017)
-# Drop stable ruby on sparc
-app-admin/augeas test
-app-text/texlive context l10n_ja
-sys-block/thin-provisioning-tools test
-
 # Pacho Ramos <pacho@gentoo.org> (02 Aug 2015)
 # Missing keywords
 dev-python/pyquery test
