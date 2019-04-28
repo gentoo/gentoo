@@ -5,18 +5,19 @@ EAPI=7
 
 BASHCOMP_P=bashcomp-2.0.2
 PYTHON_COMPAT=( python3_{5,6,7} )
-inherit autotools git-r3 python-any-r1
+inherit bash-completion-r1 python-any-r1
 
 DESCRIPTION="Programmable Completion for bash"
 HOMEPAGE="https://github.com/scop/bash-completion"
-EGIT_REPO_URI="https://github.com/scop/bash-completion"
-SRC_URI="https://bitbucket.org/mgorny/bashcomp2/downloads/${BASHCOMP_P}.tar.gz"
+SRC_URI="
+	https://github.com/scop/bash-completion/releases/download/${PV}/${P}.tar.xz
+	https://bitbucket.org/mgorny/bashcomp2/downloads/${BASHCOMP_P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris"
 IUSE="test"
-RESTRICT="!test? ( test )"
+RESTRICT="test"
 
 # completion collision with net-fs/mc
 RDEPEND=">=app-shells/bash-4.3_p30-r1:0
@@ -74,16 +75,11 @@ python_check_deps() {
 	has_version "dev-python/pytest[${PYTHON_USEDEP}]"
 }
 
-src_unpack() {
-	git-r3_src_unpack
-	default
-}
-
 src_prepare() {
 	eapply "${WORKDIR}/${BASHCOMP_P}/${PN}"-2.1_p*.patch
+	# Bug 543100, update bug 601194
+	eapply "${FILESDIR}/${PN}-2.1-escape-characters-r1.patch"
 	eapply_user
-
-	eautoreconf
 }
 
 src_test() {
@@ -116,6 +112,8 @@ src_install() {
 	emake DESTDIR="${D}" profiledir="${EPREFIX}"/etc/bash/bashrc.d install
 
 	strip_completions
+	# fix missing aliases
+	bashcomp_alias tar bsdtar gtar star
 
 	dodoc AUTHORS CHANGES CONTRIBUTING.md README.md
 
