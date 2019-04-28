@@ -8676,7 +8676,7 @@ net-irc/rhapsody 0.28b: IRC client intended to be displayed on a text console
 net-irc/scrollz 2.2.1: Advanced IRC client based on ircII
 net-irc/sic 1.2-r1: An extremly simple IRC client
 net-irc/telepathy-idle 0.2.0: Full-featured IRC connection manager for Telepathy
-net-irc/unrealircd 4.0.18-r1 4.2.2: An advanced Internet Relay Chat daemon
+net-irc/unrealircd 4.2.2: An advanced Internet Relay Chat daemon
 net-irc/weechat 2.3: Portable and multi-interface IRC client
 net-irc/znc 1.7.3: An advanced IRC Bouncer
 net-libs/accounts-qt 1.15: Qt5 bindings for libaccounts-glib
