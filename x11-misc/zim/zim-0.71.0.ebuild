@@ -17,7 +17,7 @@ SRC_URI="https://github.com/${PN}-desktop-wiki/${PN}-desktop-wiki/archive/${PV/_
 LICENSE="BSD GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="test"
+RESTRICT="test"
 
 RDEPEND="
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
@@ -27,11 +27,6 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
-	test? (
-		dev-vcs/bzr
-		dev-vcs/git
-		dev-vcs/mercurial
-	)
 "
 DOCS=( CHANGELOG.md CONTRIBUTING.md PLUGIN_WRITING.md README.md )
 PATCHES=( "${FILESDIR}"/${PN}-0.60-remove-ubuntu-theme.patch )
@@ -51,10 +46,6 @@ python_prepare_all() {
 	fi
 
 	distutils-r1_python_prepare_all
-}
-
-python_test() {
-	virtx ${PYTHON} test.py
 }
 
 python_install() {
