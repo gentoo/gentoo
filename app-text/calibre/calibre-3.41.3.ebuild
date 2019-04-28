@@ -189,7 +189,8 @@ src_install() {
 	#  File "/usr/lib/python2.6/locale.py", line 418, in _parse_localename
 	#    raise ValueError, 'unknown locale: %s' % localename
 	#ValueError: unknown locale: 46
-	export -n LANGUAGE
+	export -n LANG LANGUAGE ${!LC_*}
+	export LC_ALL=C #684484
 
 	# Bug #295672 - Avoid sandbox violation in ~/.config by forcing
 	# variables to point to our fake temporary $HOME.
