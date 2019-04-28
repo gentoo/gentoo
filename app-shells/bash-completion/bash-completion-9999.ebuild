@@ -36,27 +36,32 @@ DEPEND="app-arch/xz-utils
 	)"
 PDEPEND=">=app-shells/gentoo-bashcomp-20140911"
 
-# Remove unwanted completions.
-STRIP_COMPLETIONS=(
-	# Slackware package stuff, quite generic names cause collisions
-	# (e.g. with sys-apps/pacman)
-	explodepkg installpkg makepkg pkgtool removepkg upgradepkg
+strip_completions() {
+	# Remove unwanted completions.
+	local strip_completions=(
+		# Slackware package stuff, quite generic names cause collisions
+		# (e.g. with sys-apps/pacman)
+		explodepkg installpkg makepkg pkgtool removepkg upgradepkg
 
-	# Debian/Red Hat network stuff
-	ifdown ifup ifstatus
+		# Debian/Red Hat network stuff
+		ifdown ifup ifstatus
 
-	# Installed in app-editors/vim-core
-	xxd
+		# Installed in app-editors/vim-core
+		xxd
 
-	# Now-dead symlinks to deprecated completions
-	hd ncal
+		# Now-dead symlinks to deprecated completions
+		hd ncal
+	)
 
-	# Installed by sys-apps/util-linux-2.28 (and now deprecated)
-	_mount _umount _mount.linux _umount.linux
+	local file
+	for file in "${strip_completions[@]}"; do
+		rm "${ED}"/usr/share/bash-completion/completions/${file} ||
+			die "stripping ${file} failed"
+	done
 
-	# Deprecated in favor of sys-apps/util-linux-2.31
-	_rfkill
-)
+	# remove deprecated completions (moved to other packages)
+	rm "${ED}"/usr/share/bash-completion/completions/_* || die
+}
 
 python_check_deps() {
 	has_version "dev-python/pexpect[${PYTHON_USEDEP}]" &&
@@ -104,13 +109,7 @@ src_install() {
 
 	emake DESTDIR="${D}" profiledir="${EPREFIX}"/etc/bash/bashrc.d install
 
-	local file
-	for file in "${STRIP_COMPLETIONS[@]}"; do
-		rm "${ED}"/usr/share/bash-completion/completions/${file} ||
-			die "stripping ${file} failed"
-	done
-	# remove deprecated completions (moved to other packages)
-	rm "${ED}"/usr/share/bash-completion/completions/_* || die
+	strip_completions
 
 	dodoc AUTHORS CHANGES CONTRIBUTING.md README.md
 
