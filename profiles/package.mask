@@ -644,12 +644,6 @@ dev-libs/grok
 # Removal in 30 days.  Bug #532502.
 net-ftp/weex
 
-# Aaron Bauamn <bman@gentoo.org> (29 Mar 2019)
-# Longstanding security vulnerabilities
-# No upstream releases in years
-# Removal in 30 days. Bug #650888
-media-gfx/swftools
-
 # Robin H. Johnson <robbat2@gentoo.org> (25 Mar 2019)
 # Requires >=dev-lang/lua-5.3 which is masked
 sys-apps/likwid
