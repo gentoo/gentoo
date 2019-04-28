@@ -12,6 +12,5 @@
   </longdescription>
   <use>
     <flag name="lyrics">Support for lyrics fetching</flag>
-    <flag name="trayicon">Enable support for trayicon</flag>
   </use>
 </pkgmetadata>

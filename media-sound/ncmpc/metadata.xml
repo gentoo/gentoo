@@ -6,7 +6,6 @@
 		<name>Gentoo Sound project</name>
 	</maintainer>
 	<use>
-		<flag name="artist-screen">Enable artist screen</flag>
 		<flag name="async-connect">Enable asynchronous connect</flag>
 		<flag name="chat-screen">Enable the chat screen</flag>
 		<flag name="help-screen">Enable the help screen</flag>
@@ -17,7 +16,6 @@
 		<flag name="outputs-screen">Enable the outputs screen</flag>
 		<flag name="search-screen">Enable search screen</flag>
 		<flag name="song-screen">Enable song viewer screen</flag>
-		<flag name="tcp">Enable TCP support</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">MusicPlayerDaemon/ncmpc</remote-id>
