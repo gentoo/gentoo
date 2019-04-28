@@ -6,22 +6,50 @@ EAPI=7
 PYTHON_COMPAT=( python2_7 python3_{5,6,7} pypy{,3} )
 PYTHON_REQ_USE="ssl(+),threads(+)"
 
-inherit eutils bash-completion-r1 distutils-r1
+inherit bash-completion-r1 distutils-r1 multiprocessing
+
+SETUPTOOLS_PV="41.0.1"
+WHEEL_PV="0.33.1"
 
 DESCRIPTION="Installs python packages -- replacement for easy_install"
 HOMEPAGE="https://pip.pypa.io/ https://pypi.org/project/pip/ https://github.com/pypa/pip/"
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
+SRC_URI="
+	https://github.com/pypa/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
+	test? (
+		https://files.pythonhosted.org/packages/py2.py3/s/setuptools/setuptools-${SETUPTOOLS_PV}-py2.py3-none-any.whl
+		https://files.pythonhosted.org/packages/py2.py3/w/wheel/wheel-${WHEEL_PV}-py2.py3-none-any.whl
+	)
+"
+# PyPI archive does not have tests, so we need to download from GitHub.
+# setuptools & wheel .whl files are required for testing, exact version is not very important.
 
 LICENSE="MIT"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~x86"
 SLOT="0"
-IUSE="-vanilla"
+IUSE="test -vanilla"
 
-# required test data isn't bundled with the tarball
-RESTRICT="test"
+# disable-system-install patch breaks tests
+RESTRICT="!vanilla? ( test )"
 
-DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
-RDEPEND="${DEPEND}"
+RDEPEND="
+	>=dev-python/setuptools-39.2.0[${PYTHON_USEDEP}]
+"
+DEPEND="
+	${DEPEND}
+	test? (
+		dev-python/freezegun[${PYTHON_USEDEP}]
+		dev-python/mock[${PYTHON_USEDEP}]
+		dev-python/pretend[${PYTHON_USEDEP}]
+		<dev-python/pytest-4[${PYTHON_USEDEP}]
+		dev-python/pytest-cov[${PYTHON_USEDEP}]
+		<dev-python/pytest-rerunfailures-7.0[${PYTHON_USEDEP}]
+		dev-python/pytest-timeout[${PYTHON_USEDEP}]
+		<dev-python/pytest-xdist-1.28.0[${PYTHON_USEDEP}]
+		dev-python/pyyaml[${PYTHON_USEDEP}]
+		dev-python/scripttest[${PYTHON_USEDEP}]
+		dev-python/wheel[${PYTHON_USEDEP}]
+	)
+"
 
 python_prepare_all() {
 	local PATCHES=(
@@ -31,6 +59,22 @@ python_prepare_all() {
 		PATCHES+=( "${FILESDIR}/pip-19.1-disable-system-install.patch" )
 	fi
 	distutils-r1_python_prepare_all
+
+	if use test; then
+		mkdir tests/data/common_wheels/
+		cp "${DISTDIR}"/setuptools-${SETUPTOOLS_PV}-py2.py3-none-any.whl tests/data/common_wheels/ || die
+		cp "${DISTDIR}"/wheel-${WHEEL_PV}-py2.py3-none-any.whl tests/data/common_wheels/ || die
+	fi
+}
+
+python_test () {
+	# Exclude tests that fail for some reason. Some of these failures may be Gentoo-specific.
+	python -m pytest \
+		-n $(makeopts_jobs) \
+		--timeout 300 \
+		-k "not (svn or git or bazaar or mercurial or test_pep518_uses_build_env or test_install_package_with_root or test_install_editable_with_prefix or install_from_user or install_user_conflict or upgrade_user_conflict or build_env_isolation or config_file_venv_option or get_legacy_build_wheel or install_user_wheel or uninstall_non_local_distutils or install_from_current_directory_into_usersite or uninstall_editable_from_usersite)" \
+		-m "not network" \
+		|| die
 }
 
 python_install_all() {
