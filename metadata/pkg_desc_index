@@ -1510,7 +1510,7 @@ app-text/xmlstarlet 1.6.1: A set of tools to transform, query, validate, and edi
 app-text/xmlto 0.0.28-r1: script for converting XML and DocBook documents to a variety of output formats
 app-text/xournal 0.4.8: An application for notetaking, sketching, and keeping a journal using a stylus
 app-text/yelp-tools 3.18.0: Collection of tools for building and converting documentation
-app-text/zathura 0.4.1-r2: A highly customizable and functional document viewer
+app-text/zathura 0.4.3: A highly customizable and functional document viewer
 app-text/zathura-cb 0.1.8: Comic book plug-in for zathura with 7zip, rar, tar and zip support
 app-text/zathura-djvu 0.2.8: DjVu plug-in for zathura
 app-text/zathura-meta 0: Meta package for app-text/zathura plugins
@@ -2990,7 +2990,7 @@ dev-libs/gdl 3.28.0: GNOME docking library
 dev-libs/geoip 1.6.9-r1 1.6.10: GeoIP Legacy C API
 dev-libs/gf-complete 0.0.0: A Comprehensive Open Source Library for Galois Field Arithmetic
 dev-libs/gf2x 1.0-r1: C/C++ routines for fast arithmetic in GF(2)[x]
-dev-libs/girara 0.3.1: UI library that focuses on simplicity and minimalism
+dev-libs/girara 0.3.1 0.3.2: UI library that focuses on simplicity and minimalism
 dev-libs/gjs 1.46.0 1.48.7: Javascript bindings for GNOME
 dev-libs/glib 2.58.3: The GLib library of C routines
 dev-libs/gmime 2.6.23 3.2.0: Utilities for creating and parsing messages using MIME
