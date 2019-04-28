@@ -5,6 +5,7 @@ EAPI=7
 
 KDE_HANDBOOK="optional"
 KDE_TEST="true"
+VIRTUALX_REQUIRED="test"
 inherit kde5
 
 DESCRIPTION="Non-linear video editing suite by KDE"
