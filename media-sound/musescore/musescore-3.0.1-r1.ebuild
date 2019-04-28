@@ -1,10 +1,10 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 CMAKE_MIN_VERSION="3.11"
-inherit cmake-utils xdg-utils gnome2-utils
+inherit cmake-utils xdg
 
 DESCRIPTION="WYSIWYG Music Score Typesetter"
 HOMEPAGE="https://musescore.org/"
@@ -19,7 +19,11 @@ KEYWORDS="~amd64 ~x86"
 IUSE="alsa debug jack mp3 portaudio portmidi pulseaudio vorbis webengine"
 REQUIRED_USE="portmidi? ( portaudio )"
 
-RDEPEND="
+BDEPEND="
+	dev-qt/linguist-tools:5
+	virtual/pkgconfig
+"
+DEPEND="
 	dev-qt/designer:5
 	dev-qt/qtconcurrent:5
 	dev-qt/qtcore:5
@@ -44,10 +48,7 @@ RDEPEND="
 	vorbis? ( media-libs/libvorbis )
 	webengine? ( dev-qt/qtwebengine:5[widgets] )
 "
-DEPEND="${RDEPEND}
-	dev-qt/linguist-tools:5
-	virtual/pkgconfig
-"
+RDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${FILESDIR}/${P}-man-pages.patch"
@@ -86,16 +87,4 @@ src_compile() {
 	cd "${BUILD_DIR}" || die
 	cmake-utils_src_make -j1 lrelease manpages
 	cmake-utils_src_compile
-}
-
-pkg_postinst() {
-	xdg_mimeinfo_database_update
-	xdg_desktop_database_update
-	gnome2_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_mimeinfo_database_update
-	xdg_desktop_database_update
-	gnome2_icon_cache_update
 }
