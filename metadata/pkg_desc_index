@@ -7551,7 +7551,7 @@ media-libs/fidlib 0.9.10: Run-time filter design and execution library
 media-libs/flac 1.3.2-r1: free lossless audio encoder and decoder
 media-libs/flickcurl 1.26: C library for the Flickr API
 media-libs/fluidsynth-dssi 1.0.0: DSSI Soft Synth Interface
-media-libs/fmod 4.38.00 4.38.02: music and sound effects library, and a sound processing system
+media-libs/fmod 4.38.02: music and sound effects library, and a sound processing system
 media-libs/fontconfig 2.12.6 2.13.0-r4: A library for configuring and customizing font access
 media-libs/fontconfig-infinality 20130404: Configuration for freetype-infinality subpixel hinting
 media-libs/freealut 1.1.0-r3: The OpenAL Utility Toolkit
@@ -7624,7 +7624,7 @@ media-libs/libcdaudio 0.99.12-r2: Library of cd audio related routines
 media-libs/libcddb 1.3.2 1.3.2-r1: A library for accessing a CDDB server
 media-libs/libcdr 0.1.5: Library parsing the Corel cdr documents
 media-libs/libchamplain 0.12.16: Clutter based world map renderer
-media-libs/libclalsadrv 1.2.2 2.0.0 2.0.0-r1: ALSA driver C++ access library
+media-libs/libclalsadrv 2.0.0-r1: ALSA driver C++ access library
 media-libs/libclastfm 0.5: C API library to the last.fm web service (unofficial)
 media-libs/libclthreads 2.4.0-r1: An audio library by Fons Adriaensen <fons.adriaensen@skynet.be>
 media-libs/libclxclient 3.9.0: An audio library by Fons Adriaensen <fons.adriaensen@skynet.be>
@@ -7734,11 +7734,11 @@ media-libs/libsidplayfp 1.8.8: Library for the sidplay2 fork with resid-fp
 media-libs/libsixel 1.8.1: A lightweight, fast implementation of DEC SIXEL graphics codec
 media-libs/libsmf 1.3: Standard MIDI File format library
 media-libs/libsndfile 1.0.28-r4: C library for reading and writing files containing sampled sound
-media-libs/libsoundtouch 2.0.0-r1 2.1.2: Audio processing library for changing tempo, pitch and playback rates
+media-libs/libsoundtouch 2.1.2: Audio processing library for changing tempo, pitch and playback rates
 media-libs/libtaginfo 0.2.1: a library for reading media metadata
 media-libs/libtheora 1.1.1-r2: The Theora Video Compression Codec
 media-libs/libtiger 0.3.4-r1: A rendering library for Kate streams using Pango and Cairo
-media-libs/libtimidity 0.1.0-r2 0.2.4: MIDI to WAVE converter library
+media-libs/libtimidity 0.2.4: MIDI to WAVE converter library
 media-libs/libtxc_dxtn 1.0.1-r4: Helper library for S3TC texture (de)compression
 media-libs/libuninameslist 20091231-r1: Library of unicode annotation data
 media-libs/libv4l 1.6.2 1.10.1 1.16.3: Separate libraries ebuild from upstream v4l-utils package
@@ -8031,7 +8031,7 @@ media-radio/xdx 2.5.0: a GTK+ TCP/IP DX-cluster and ON4KST chat client
 media-radio/xlog 2.0.15: An amateur radio logging program
 media-sound/SmarTagger 0.1-r2: Perl script for renaming and tagging mp3s
 media-sound/a2jmidid 8-r2: Daemon for exposing legacy ALSA sequencer applications in JACK MIDI system
-media-sound/abcde 2.5.4-r1 2.8.1: A command line CD encoder
+media-sound/abcde 2.8.1: A command line CD encoder
 media-sound/abcm2ps 8.12.9 8.13.12: Program to convert abc files to Postscript files
 media-sound/adplay 1.7 1.8: A console player for AdLib music
 media-sound/aeolus 0.9.0 0.9.5: A synthesised pipe organ emulator
@@ -8039,14 +8039,14 @@ media-sound/alac_decoder 0.2.0-r1: Basic decoder for Apple Lossless Audio Codec 
 media-sound/alsa-tools 1.1.0 1.1.6 1.1.7: Advanced Linux Sound Architecture tools
 media-sound/alsa-utils 1.1.2 1.1.6 1.1.8: Advanced Linux Sound Architecture Utils (alsactl, alsamixer, etc.)
 media-sound/alsamixergui 0.9.0.1.2-r4: FLTK based amixer Frontend
-media-sound/alsaplayer 0.99.81 0.99.81-r1: A heavily multi-threaded pluggable audio player
+media-sound/alsaplayer 0.99.81-r1: A heavily multi-threaded pluggable audio player
 media-sound/amsynth 1.8.0: Virtual analogue synthesizer
 media-sound/apetag 1.12-r2: Command-line ape 2.0 tagger
 media-sound/apulse 0.1.12-r4: PulseAudio emulation for ALSA
 media-sound/aqualung 1.0-r2: Music player for a wide range of formats designed for gapless playback
 media-sound/ario 1.5.1-r1: GTK2 MPD (Music Player Daemon) client inspired by Rythmbox
 media-sound/aseqview 0.2.8: ALSA sequencer event viewer/filter
-media-sound/asunder 2.9.2-r2 2.9.3-r1: Graphical Audio CD ripper and encoder with support for many output formats
+media-sound/asunder 2.9.3-r1: Graphical Audio CD ripper and encoder with support for many output formats
 media-sound/audacity 2.2.2: Free crossplatform audio editor
 media-sound/audiotag 0.19: A command-line tool for mass tagging/renaming of audio files
 media-sound/aumix 2.9.1: Aumix volume/mixer control program
@@ -8063,7 +8063,7 @@ media-sound/cdplay 1.0: a commandline CD Player
 media-sound/cdtool 2.1.8-r1: collection of command-line utilities to control cdrom devices
 media-sound/clementine 1.3.1_p20190127: Modern music player and library organizer based on Amarok 1.4 and Qt
 media-sound/cmus 2.8.0_rc0: A ncurses based music player with plugin support for many formats
-media-sound/cvoicecontrol 0.9_alpha 0.9_alpha-r1: Console based speech recognition system
+media-sound/cvoicecontrol 0.9_alpha-r1: Console based speech recognition system
 media-sound/dagrab 0.513-r1: fixed point cd ripper
 media-sound/darkice 1.2 1.3: A live audio streamer
 media-sound/darksnow 0.7.1: Streaming GTK+ Front-End based on Darkice Ice Streamer
@@ -8077,7 +8077,7 @@ media-sound/ecasound 2.6.0-r1: a package for multitrack audio processing
 media-sound/edna 0.6: Greg Stein's python streaming audio server for desktop or LAN use
 media-sound/erec 2.2.0.1: A shared audio recording server
 media-sound/exaile 4.0.0_rc3: GTK+ based media player aiming to be similar to Amarok
-media-sound/fapg 0.41 0.42: Fast Audio Playlist Generator
+media-sound/fapg 0.42: Fast Audio Playlist Generator
 media-sound/flac123 0.0.12: console app for playing FLAC audio files
 media-sound/flacon 4.1.0: Extracts audio tracks from an audio CD image to separate tracks
 media-sound/flake 0.11: An alternative to the FLAC reference encoder
@@ -8159,13 +8159,13 @@ media-sound/mt-daapd 0.2.4.2: A multi-threaded implementation of Apple's DAAP se
 media-sound/multimux 0.2.5.2: combines up to 8 audio mono wave ch. into one big multi ch. wave file
 media-sound/musepack-tools 465-r1: Musepack SV8 libraries and utilities
 media-sound/musique 1.5-r1: Qt music player
-media-sound/ncmpc 0.31 0.33-r1: Ncurses client for the Music Player Daemon (MPD)
+media-sound/ncmpc 0.33-r1: Ncurses client for the Music Player Daemon (MPD)
 media-sound/ncmpcpp 0.7.7 0.8.2-r1: featureful ncurses based MPD client inspired by ncmpc
 media-sound/normalize 0.7.7-r1: Audio file volume normalizer
 media-sound/ogg2mp3 0.6.1: A perl script to convert Ogg Vorbis files to MP3 files
 media-sound/oggtst 0.0: A tool for calculating ogg-vorbis playing time
 media-sound/ogmtools 1.5-r2: Information, extraction or creation for OGG media streams
-media-sound/opus-tools 0.1.10 0.2: Royalty-free, highly versatile audio codec
+media-sound/opus-tools 0.2: Royalty-free, highly versatile audio codec
 media-sound/orpheus 1.6-r3: Command line MP3 player
 media-sound/pamix 1.5: A PulseAudio NCurses mixer
 media-sound/paprefs 0.9.11_pre20180621 1.1: PulseAudio Preferences, configuration dialog for PulseAudio
@@ -8175,7 +8175,7 @@ media-sound/pavucontrol 3.0 4.0: Pulseaudio Volume Control, GTK based mixer for 
 media-sound/pavucontrol-qt 0.4.0: A Pulseaudio mixer in Qt (port of pavucontrol)
 media-sound/pavumeter 0.9.3-r1: PulseAudio Volume Meter, simple GTK volume meter for PulseAudio
 media-sound/peercast 0.1218-r2: A client and server for Peercast P2P-radio network
-media-sound/pianobar 2018.06.22 2019.01.25: A console-based replacement for Pandora's flash player
+media-sound/pianobar 2019.01.25: A console-based replacement for Pandora's flash player
 media-sound/picard 2.0.4: Cross-platform music tagger
 media-sound/playerctl 0.5.0: A CLI utility to control media players over MPRIS
 media-sound/pnmixer 0.7.2: Volume mixer for the system tray
@@ -8214,7 +8214,7 @@ media-sound/shorten 3.6.1: fast, low complexity waveform coder (i.e. audio compr
 media-sound/sidplay 2.0.9-r1: C64 SID player
 media-sound/smixer 1.0.4: command-line tool for setting and viewing mixer settings
 media-sound/solfege 3.22.2: GNU Solfege is a program written to help you practice ear training
-media-sound/sonata 1.6.2.1-r1 1.6.2.1-r2: Elegant GTK+ music client for the Music Player Daemon (MPD)
+media-sound/sonata 1.6.2.1-r2: Elegant GTK+ music client for the Music Player Daemon (MPD)
 media-sound/sound-juicer 3.24.0: CD ripper for GNOME
 media-sound/soundconverter 3.0.0 3.0.2: A simple audiofile converter application for the GNOME environment
 media-sound/sox 14.4.2-r1: The swiss army knife of sound processing programs
@@ -8261,7 +8261,7 @@ media-sound/xfmpc 0.2.3-r1: Music Player Daemon (MPD) client for the Xfce deskto
 media-sound/xineadump 0.1-r1: Utility for Xine decoding support in transKode
 media-sound/xmms2 0.8_p20161122-r4: X(cross)platform Music Multiplexing System. Next generation of the XMMS player
 media-sound/xnoise 0.2.21: A media player for Gtk+ with a slick GUI, great speed and lots of features
-media-sound/xwax 1.5 1.6: Digital vinyl emulation software
+media-sound/xwax 1.6: Digital vinyl emulation software
 media-sound/zynaddsubfx 3.0.3-r1: Software synthesizer capable of making a countless number of instruments
 media-tv/dtv-scan-tables 0_p20171003: Digital TV scan tables in v3 and v5 format
 media-tv/dvbstream 0.7_pre20080516-r1: RTP multicast stream server and other tools for DVB cards
