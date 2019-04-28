@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 inherit cmake-utils gnome2-utils pax-utils systemd user versionator
 
 if [[ ${PV} != *9999* ]]; then
-	SRC_URI="http://quassel-irc.org/pub/${P}.tar.bz2"
+	SRC_URI="https://quassel-irc.org/pub/${P}.tar.bz2"
 	KEYWORDS="amd64 ~arm ~ppc x86 ~amd64-linux ~sparc-solaris"
 else
 	EGIT_REPO_URI=( "https://github.com/${PN}/${PN}" "git://git.${PN}-irc.org/${PN}" )
@@ -14,7 +14,7 @@ else
 fi
 
 DESCRIPTION="Qt/KDE IRC client supporting a remote daemon for 24/7 connectivity"
-HOMEPAGE="http://quassel-irc.org/"
+HOMEPAGE="https://quassel-irc.org/"
 LICENSE="GPL-3"
 SLOT="0"
 IUSE="crypt dbus debug kde monolithic phonon postgres +server
@@ -145,7 +145,7 @@ src_install() {
 pkg_postinst() {
 	if use monolithic && use ssl ; then
 		elog "Information on how to enable SSL support for client/core connections"
-		elog "is available at http://bugs.quassel-irc.org/projects/quassel-irc/wiki/Client-Core_SSL_support."
+		elog "is available at https://bugs.quassel-irc.org/projects/quassel-irc/wiki/Client-Core_SSL_support."
 	fi
 
 	if use server; then
