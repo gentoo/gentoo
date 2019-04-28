@@ -70,6 +70,10 @@ strip_completions() {
 	rm "${ED}"/usr/share/bash-completion/completions/_* || die
 }
 
+pkg_setup() {
+	use test && python-any-r1_pkg_setup
+}
+
 python_check_deps() {
 	has_version "dev-python/pexpect[${PYTHON_USEDEP}]" &&
 	has_version "dev-python/pytest[${PYTHON_USEDEP}]"
