@@ -657,13 +657,6 @@ media-gfx/swftools
 # Removal in 30 days.  Bug #617184.
 media-sound/playmidi
 
-# Michał Górny <mgorny@gentoo.org> (29 Mar 2019)
-# Unmaintained.  The current version was added in 2008, and a bump
-# was requested in 2010.  Since then, upstream has disappeared,
-# and the tool requires fetching extra files from the upstream website.
-# Removal in 30 days.  Bug #305121.
-media-video/episoder
-
 # Robin H. Johnson <robbat2@gentoo.org> (25 Mar 2019)
 # Requires >=dev-lang/lua-5.3 which is masked
 sys-apps/likwid
