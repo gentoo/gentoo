@@ -3133,7 +3133,7 @@ dev-libs/liboobs 3.0.0: Liboobs is a wrapping library to the System Tools Backen
 dev-libs/liborcus 0.13.4: Standalone file import filter library for spreadsheet documents
 dev-libs/libotf 0.9.13: Library for handling OpenType fonts (OTF)
 dev-libs/libowfat 0.31-r1: reimplement libdjb - excellent libraries from Dan Bernstein
-dev-libs/libp11 0.4.4 0.4.9: Abstraction layer to simplify PKCS#11 API
+dev-libs/libp11 0.4.4 0.4.9 0.4.10: Abstraction layer to simplify PKCS#11 API
 dev-libs/libparserutils 0.2.3: library for building efficient parsers, written in C
 dev-libs/libpcre 8.41-r1 8.42: Perl-compatible regular expression library
 dev-libs/libpcre2 10.30 10.32: Perl-compatible regular expression library
