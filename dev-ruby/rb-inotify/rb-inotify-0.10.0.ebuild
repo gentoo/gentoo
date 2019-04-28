@@ -22,6 +22,8 @@ IUSE=""
 
 ruby_add_rdepend "dev-ruby/ffi"
 
+ruby_add_bdepend "test? ( dev-ruby/concurrent-ruby )"
+
 all_ruby_prepare() {
 	# Avoid unneeded dependency on jeweler.
 	sed -i -e '/:build/ s:^:#:' -e '/module Jeweler/,/^end/ s:^:#:' -e '/class Jeweler/,/^end/ s:^:#:' Rakefile || die
