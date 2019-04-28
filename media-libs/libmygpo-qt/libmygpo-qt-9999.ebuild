@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit cmake-utils
 
@@ -20,12 +20,14 @@ LICENSE="LGPL-2.1"
 SLOT="0"
 IUSE="test"
 
+BDEPEND="
+	virtual/pkgconfig
+"
 RDEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtnetwork:5
 "
 DEPEND="${RDEPEND}
-	virtual/pkgconfig
 	test? ( dev-qt/qttest:5 )
 "
 
