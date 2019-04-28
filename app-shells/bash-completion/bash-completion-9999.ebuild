@@ -101,7 +101,7 @@ src_test() {
 	# than upstream anticipated (they run tests on pristine docker
 	# installs of binary distros)
 	nonfatal dtach -N "${T}/dtach.sock" \
-		bash -c 'emake check RUNTESTFLAGS="OPT_TIMEOUT=300 OPT_BUFFER_SIZE=1000000" \
+		bash -c 'emake check RUNTESTFLAGS="OPT_TIMEOUT=300 OPT_BUFFER_SIZE=1000000" PYTESTFLAGS="-vv" \
 			&> "${T}"/dtach-test.log; echo ${?} > "${T}"/dtach-test.out'
 
 	kill "${tail_pid}"
