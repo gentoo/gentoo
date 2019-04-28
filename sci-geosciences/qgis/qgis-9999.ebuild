@@ -108,6 +108,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-2.18.12-cmake-lib-suffix.patch"
 	# TODO upstream
 	"${FILESDIR}/${PN}-3.4.7-featuresummary.patch"
+	"${FILESDIR}/${PN}-3.4.7-default-qmldir.patch"
 )
 
 pkg_setup() {
@@ -120,7 +121,7 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		-DQGIS_MANUAL_SUBDIR=/share/man/
+		-DQGIS_MANUAL_SUBDIR=share/man/
 		-DQGIS_LIB_SUBDIR=$(get_libdir)
 		-DQGIS_PLUGIN_SUBDIR=$(get_libdir)/qgis
 		-DQWT_INCLUDE_DIR=/usr/include/qwt6
