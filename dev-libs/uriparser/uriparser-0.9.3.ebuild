@@ -24,6 +24,10 @@ REQUIRED_USE="test? ( unicode )"
 
 DOCS=( AUTHORS ChangeLog THANKS )
 
+PATCHES=(
+	"${FILESDIR}"/${P}-tests.patch
+)
+
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_SHARED_LIBS=ON
