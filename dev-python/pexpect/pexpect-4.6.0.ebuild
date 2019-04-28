@@ -27,7 +27,7 @@ python_compile_all() {
 }
 
 python_test() {
-	py.test tests || die "Tests fail with ${EPYTHON}"
+	pytest -vv tests || die "Tests fail with ${EPYTHON}"
 }
 
 python_install_all() {

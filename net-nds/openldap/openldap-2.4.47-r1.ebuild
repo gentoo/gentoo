@@ -272,7 +272,7 @@ openldap_find_versiontags() {
 			eerror "	against	${NEWVER} and your database may be inaccessible."
 			echo
 			fail=1
-		elif [[ -n "${OLDVER}" ]]&& [[ -z "${NEWVER}" ]]; then
+		elif [[ -n "${OLDVER}" ]] && [[ -z "${NEWVER}" ]]; then
 			eerror "	Your existing version of OpenLDAP was built against"
 			eerror "	sys-libs/db:${OLDVER}, but the new one will not be"
 			eerror "	built against any version and your database may be"
