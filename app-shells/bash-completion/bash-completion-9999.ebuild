@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 BASHCOMP_P=bashcomp-2.0.2
-PYTHON_COMPAT=( python3_{5,6} )
-inherit autotools eapi7-ver git-r3 python-any-r1
+PYTHON_COMPAT=( python3_{5,6,7} )
+inherit autotools git-r3 python-any-r1
 
 DESCRIPTION="Programmable Completion for bash"
 HOMEPAGE="https://github.com/scop/bash-completion"
