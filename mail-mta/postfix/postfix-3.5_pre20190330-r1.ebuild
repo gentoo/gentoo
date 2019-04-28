@@ -35,7 +35,7 @@ DEPEND=">=dev-libs/libpcre-3.4
 	sqlite? ( dev-db/sqlite:3 )
 	ssl? (
 		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( >=dev-libs/libressl-2.9.1 )
+		libressl? ( >=dev-libs/libressl-2.9.1:0= )
 	)"
 
 RDEPEND="${DEPEND}
@@ -60,7 +60,8 @@ REQUIRED_USE="ldap-bind? ( ldap sasl )"
 
 S="${WORKDIR}/${MY_SRC}"
 
-PATCHES=( "${FILESDIR}/${PN}-libressl-certkey.patch"
+PATCHES=(
+	"${FILESDIR}/${PN}-libressl-certkey.patch"
 	"${FILESDIR}/${PN}-libressl-server.patch"
 )
 
