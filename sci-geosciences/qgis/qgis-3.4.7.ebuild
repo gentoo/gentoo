@@ -107,8 +107,8 @@ PATCHES=(
 	# git master
 	"${FILESDIR}/${PN}-2.18.12-cmake-lib-suffix.patch"
 	# TODO upstream
-	"${FILESDIR}/${PN}-3.4.7-featuresummary.patch"
-	"${FILESDIR}/${PN}-3.4.7-default-qmldir.patch"
+	"${FILESDIR}/${P}-featuresummary.patch"
+	"${FILESDIR}/${P}-default-qmldir.patch"
 )
 
 pkg_setup() {
@@ -117,6 +117,9 @@ pkg_setup() {
 
 src_prepare() {
 	cmake-utils_src_prepare
+
+	sed -e "/FIND_PACKAGE(QtQmlTools/s/ REQUIRED//" \
+		-i CMakeLists.txt || die # TODO fixed in master
 }
 
 src_configure() {
