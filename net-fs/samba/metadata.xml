@@ -19,6 +19,7 @@
 		<flag name="gpg">Use <pkg>app-crypt/gpgme</pkg> for AD DC</flag>
 		<flag name="json">Enable json audit support through <pkg>dev-libs/jansson</pkg></flag>
 		<flag name="iprint">Enabling iPrint technology by Novell</flag>
+		<flag name="profiling-data">Enables support for collecting profiling data</flag>
 		<flag name="quota">Enables support for user quotas</flag>
 		<flag name="system-heimdal">Use <pkg>app-crypt/heimdal</pkg> instead of
 			bundled heimdal.</flag>
