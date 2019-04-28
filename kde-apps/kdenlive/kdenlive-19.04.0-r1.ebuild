@@ -17,7 +17,7 @@ IUSE="freesound gles2 semantic-desktop share v4l"
 BDEPEND="
 	sys-devel/gettext
 "
-COMMON_DEPEND="
+DEPEND="
 	$(add_frameworks_dep karchive)
 	$(add_frameworks_dep kbookmarks)
 	$(add_frameworks_dep kcompletion)
@@ -26,6 +26,7 @@ COMMON_DEPEND="
 	$(add_frameworks_dep kcoreaddons)
 	$(add_frameworks_dep kcrash)
 	$(add_frameworks_dep kdbusaddons)
+	$(add_frameworks_dep kdeclarative)
 	$(add_frameworks_dep kguiaddons)
 	$(add_frameworks_dep ki18n)
 	$(add_frameworks_dep kiconthemes)
@@ -40,9 +41,11 @@ COMMON_DEPEND="
 	$(add_frameworks_dep kwidgetsaddons)
 	$(add_frameworks_dep kxmlgui)
 	$(add_frameworks_dep solid)
+	$(add_qt_dep qtconcurrent)
 	$(add_qt_dep qtdbus)
 	$(add_qt_dep qtdeclarative)
 	$(add_qt_dep qtgui 'gles2=')
+	$(add_qt_dep qtmultimedia)
 	$(add_qt_dep qtnetwork)
 	$(add_qt_dep qtsvg)
 	$(add_qt_dep qtwidgets)
@@ -54,10 +57,7 @@ COMMON_DEPEND="
 	share? ( $(add_frameworks_dep purpose) )
 	v4l? ( media-libs/libv4l )
 "
-DEPEND="${COMMON_DEPEND}
-	$(add_qt_dep qtconcurrent)
-"
-RDEPEND="${COMMON_DEPEND}
+RDEPEND="${DEPEND}
 	$(add_qt_dep qtquickcontrols)
 	virtual/ffmpeg[encode,sdl,X]
 "
