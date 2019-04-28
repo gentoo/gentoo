@@ -14,7 +14,7 @@ SRC_URI="x86? ( http://www.fmod.org/index.php/release/version/${MY_P}.tar.gz )
 
 LICENSE="BSD BSD-2 fmod"
 SLOT="1"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="examples"
 
 RESTRICT="strip test"

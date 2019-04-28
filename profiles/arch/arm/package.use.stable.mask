@@ -37,11 +37,6 @@ dev-python/wsgiproxy2 test
 dev-python/pyquery test
 
 # Andreas Sturmlechner <asturm@gentoo.org> (07 May 2018)
-# Requires not stabilised Qt5
-app-i18n/ibus kde
-dev-qt/qtchooser test
-
-# Andreas Sturmlechner <asturm@gentoo.org> (07 May 2018)
 # Requires not stabilised dev-python/matplotlib
 dev-python/numpydoc test
 dev-python/ipython matplotlib

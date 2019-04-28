@@ -9,10 +9,6 @@
 python_targets_python3_7
 python_single_target_python3_7
 
-# Andreas Sturmlechner <asturm@gentoo.org> (06 May 2018)
-# Not stable, bug #642822
-qt5
-
 # Andrey Grozin <grozin@gentoo.org> (16 May 2014)
 # No stable gcl
 gcl
