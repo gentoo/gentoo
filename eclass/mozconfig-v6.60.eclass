@@ -361,8 +361,6 @@ mozconfig_config() {
 	if use clang ; then
 		# https://bugzilla.mozilla.org/show_bug.cgi?id=1423822
 		mozconfig_annotate 'elf-hack is broken when using Clang' --disable-elf-hack
-	elif use arm ; then
-		mozconfig_annotate 'elf-hack is broken on arm' --disable-elf-hack
 	fi
 
 	# Modifications to better support ARM, bug 553364
