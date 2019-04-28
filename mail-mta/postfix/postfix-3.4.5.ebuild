@@ -35,7 +35,7 @@ DEPEND=">=dev-libs/libpcre-3.4
 	sqlite? ( dev-db/sqlite:3 )
 	ssl? (
 		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl )
+		libressl? ( >=dev-libs/libressl-2.9.1:0= )
 	)"
 
 RDEPEND="${DEPEND}
@@ -60,10 +60,12 @@ REQUIRED_USE="ldap-bind? ( ldap sasl )"
 
 S="${WORKDIR}/${MY_SRC}"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-libressl-certkey.patch"
+	"${FILESDIR}/${PN}-libressl-server.patch"
+)
+
 pkg_setup() {
-	if use libressl; then
-		die "LibreSSL patches are not yet available for postfix-3.4 releases."
-	fi
 	# Add postfix, postdrop user/group (bug #77565)
 	enewgroup postfix 207
 	enewgroup postdrop 208
@@ -76,11 +78,6 @@ src_prepare() {
 		src/util/sys_defs.h || die "sed failed"
 	# change default paths to better comply with portage standard paths
 	sed -i -e "s:/usr/local/:/usr/:g" conf/master.cf || die "sed failed"
-	# libressl support needs work for postfix-3.4
-	#eapply -p0 "${FILESDIR}/${PN}-libressl.patch" \
-	#	"${FILESDIR}/${PN}-libressl-runtime.patch" \
-	#	"${FILESDIR}/${PN}-libressl-eccurve.patch"
-	#	"${FILESDIR}/${PN}-libressl-session-tickets.patch"
 }
 
 src_configure() {
