@@ -74,6 +74,10 @@ python_check_deps() {
 	has_version "dev-python/pytest[${PYTHON_USEDEP}]"
 }
 
+pkg_setup() {
+	use test && python-any-r1_pkg_setup
+}
+
 src_unpack() {
 	git-r3_src_unpack
 	default
