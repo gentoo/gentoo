@@ -5,7 +5,7 @@ EAPI=6
 inherit cmake-utils desktop gnome2-utils xdg-utils
 
 DESCRIPTION="Project aiming to recreate classic Opera (12.x) UI using Qt5"
-HOMEPAGE="http://otter-browser.org/"
+HOMEPAGE="https://otter-browser.org/"
 SRC_URI="https://github.com/OtterBrowser/${PN}-browser/archive/v${PV/_p/-dev}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
