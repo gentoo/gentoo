@@ -5058,7 +5058,10 @@ sci-geosciences/liblas:gdal - Add support for the sci-libs/gdal geospatial raste
 sci-geosciences/qgis:3d - Build QGIS 3D library using dev-qt/qt3d
 sci-geosciences/qgis:georeferencer - Determines whether georeferencer plugin should be built
 sci-geosciences/qgis:grass - Add support for sci-geosciences/grass
+sci-geosciences/qgis:hdf5 - Enable MDAL support for sci-libs/hdf5
 sci-geosciences/qgis:mapserver - Determines whether mapserver should be built
+sci-geosciences/qgis:netcdf - Enable MDAL support for GRIB and XMDF formats
+sci-geosciences/qgis:opencl - Enable OpenCL support
 sci-geosciences/qgis:polar - Enable support for the polar coordinate system via x11-libs/qwtpolar
 sci-geosciences/qgis:qml - Enable support Qml-based plugins using dev-qt/qtdeclarative
 sci-libs/adolc:boost - Use the boost allocator from dev-libs/boost
