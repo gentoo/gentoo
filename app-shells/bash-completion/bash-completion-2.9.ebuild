@@ -5,7 +5,7 @@ EAPI=7
 
 BASHCOMP_P=bashcomp-2.0.2
 PYTHON_COMPAT=( python3_{5,6,7} )
-inherit python-any-r1
+inherit bash-completion-r1 python-any-r1
 
 DESCRIPTION="Programmable Completion for bash"
 HOMEPAGE="https://github.com/scop/bash-completion"
@@ -112,6 +112,8 @@ src_install() {
 	emake DESTDIR="${D}" profiledir="${EPREFIX}"/etc/bash/bashrc.d install
 
 	strip_completions
+	# fix missing aliases
+	bashcomp_alias tar bsdtar gtar star
 
 	dodoc AUTHORS CHANGES CONTRIBUTING.md README.md
 
