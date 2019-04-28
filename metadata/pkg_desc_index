@@ -6616,7 +6616,7 @@ gnome-extra/nautilus-actions 3.2.4: Configures programs to be launched when file
 gnome-extra/nautilus-dropbox 1.6.2: Store, Sync and Share Files Online
 gnome-extra/nautilus-sendto 3.8.6: A nautilus extension for sending files to locations
 gnome-extra/nemo 3.6.4-r1: A file manager for Cinnamon, forked from Nautilus
-gnome-extra/nm-applet 1.8.18 1.8.20: GNOME applet for NetworkManager
+gnome-extra/nm-applet 1.8.20: GNOME applet for NetworkManager
 gnome-extra/office-runner 1.0.2: Lighthearted tool to temporarily inhibit GNOME's suspend on lid close behavior
 gnome-extra/polkit-gnome 0.105-r1: A dbus session bus service that is used to bring up authentication dialogs
 gnome-extra/seahorse-nautilus 3.11.92: Nautilus extension for encrypting and decrypting files with GnuPG
