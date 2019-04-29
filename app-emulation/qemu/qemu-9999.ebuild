@@ -10,7 +10,7 @@ PLOCALES="bg de_DE fr_FR hu it tr zh_CN"
 
 FIRMWARE_ABI_VERSION="2.11.1-r50"
 
-inherit eutils flag-o-matic linux-info toolchain-funcs multilib python-r1 \
+inherit eutils linux-info toolchain-funcs multilib python-r1 \
 	user udev fcaps readme.gentoo-r1 pax-utils l10n
 
 if [[ ${PV} = *9999* ]]; then
@@ -33,8 +33,6 @@ IUSE="accessibility +aio alsa bzip2 capstone +caps +curl debug
 	pulseaudio python rbd sasl +seccomp sdl selinux smartcard snappy
 	spice ssh static static-user systemtap tci test usb usbredir vde
 	+vhost-net virgl virtfs +vnc vte xattr xen xfs"
-
-RESTRICT=strip
 
 COMMON_TARGETS="aarch64 alpha arm cris hppa i386 m68k microblaze microblazeel
 	mips mips64 mips64el mipsel nios2 or1k ppc ppc64 riscv32 riscv64 s390x
@@ -94,7 +92,7 @@ SOFTMMU_TOOLS_DEPEND="
 	capstone? ( dev-libs/capstone:= )
 	caps? ( sys-libs/libcap-ng[static-libs(+)] )
 	curl? ( >=net-misc/curl-7.15.4[static-libs(+)] )
-	fdt? ( >=sys-apps/dtc-1.4.2[static-libs(+)] )
+	fdt? ( >=sys-apps/dtc-1.5.0[static-libs(+)] )
 	glusterfs? ( >=sys-cluster/glusterfs-3.4.0[static-libs(+)] )
 	gnutls? (
 		dev-libs/nettle:=[static-libs(+)]
@@ -358,11 +356,6 @@ handle_locales() {
 src_prepare() {
 	check_targets IUSE_SOFTMMU_TARGETS softmmu
 	check_targets IUSE_USER_TARGETS linux-user
-
-	# Alter target makefiles to accept CFLAGS set via flag-o
-	sed -i -r \
-		-e 's/^(C|OP_C|HELPER_C)FLAGS=/\1FLAGS+=/' \
-		Makefile Makefile.target || die
 
 	default
 
@@ -764,7 +757,7 @@ pkg_postinst() {
 		udev_reload
 	fi
 
-	[[ -f ${D}/usr/libexec/qemu-bridge-helper ]] && \
+	[[ -f ${EROOT}/usr/libexec/qemu-bridge-helper ]] && \
 		fcaps cap_net_admin /usr/libexec/qemu-bridge-helper
 
 	DISABLE_AUTOFORMATTING=true
