@@ -172,7 +172,7 @@ fi
 # QA: configure: WARNING: unrecognized options: --disable-static
 : ${XORG_STATIC:="yes"}
 
-# Add static-libs useflag where usefull.
+# Add static-libs useflag where useful.
 if [[ ${XORG_STATIC} == yes \
 		&& ${FONT} != yes \
 		&& ${CATEGORY} != app-doc \
@@ -186,7 +186,11 @@ if [[ ${XORG_STATIC} == yes \
 	IUSE+=" static-libs"
 fi
 
-DEPEND+=" virtual/pkgconfig"
+if [[ ${XORG_MULTILIB} == yes ]]; then
+	DEPEND+=" virtual/pkgconfig[${MULTILIB_USEDEP}]"
+else
+	DEPEND+=" virtual/pkgconfig"
+fi
 
 # @ECLASS-VARIABLE: XORG_DRI
 # @DESCRIPTION:
