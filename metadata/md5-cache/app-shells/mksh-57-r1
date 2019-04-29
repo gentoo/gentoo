@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install test
+DEPEND=static? ( dev-libs/klibc ) test? ( dev-lang/perl sys-apps/ed )
+DESCRIPTION=MirBSD Korn Shell
+EAPI=7
+HOMEPAGE=http://mirbsd.de/mksh
+IUSE=static test
+KEYWORDS=~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux
+LICENSE=BSD
+RDEPEND=static? ( dev-libs/klibc )
+SLOT=0
+SRC_URI=http://www.mirbsd.org/MirOS/dist/mir/mksh/mksh-R57.tgz
+_eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
+_md5_=6ce61af51f9e8aa4f6648a252887a3a6
