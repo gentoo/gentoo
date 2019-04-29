@@ -10083,7 +10083,7 @@ sys-cluster/libqb 0.17.1 0.17.2: Library providing high performance logging, tra
 sys-cluster/mpe2 1.0.6_p1-r2: MPI development tools
 sys-cluster/mpich 3.0.4: A high performance and portable MPI implementation
 sys-cluster/mpich2 1.5: A high performance and portable MPI implementation
-sys-cluster/neutron 13.0.2-r1: A virtual network service for Openstack
+sys-cluster/neutron 13.0.3: A virtual network service for Openstack
 sys-cluster/nova 18.2.0: Cloud computing fabric controller (main part of an IaaS system) in Python
 sys-cluster/openais 1.1.4-r1: Open Application Interface Specification cluster framework
 sys-cluster/openmpi 1.4.3 2.0.2: A high-performance message passing library (MPI)
