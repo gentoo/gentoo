@@ -171,6 +171,7 @@ PPC64_FIRMWARE_DEPEND="
 BDEPEND="
 	${PYTHON_DEPS}
 	dev-lang/perl
+	dev-python/sphinx
 	sys-apps/texinfo
 	virtual/pkgconfig
 	gtk? ( nls? ( sys-devel/gettext ) )
