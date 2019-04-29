@@ -2933,7 +2933,7 @@ dev-libs/9libs 1.0-r3: A package of Plan 9 compatibility libraries
 dev-libs/Ice 3.6.4: ICE middleware C++ library and generator tools
 dev-libs/appstream 0.12.6: Cross-distro effort for providing metadata for software in the Linux ecosystem
 dev-libs/appstream-glib 0.7.9: Provides GObjects and helper methods to read and write AppStream metadata
-dev-libs/apr 1.6.3-r3: Apache Portable Runtime Library
+dev-libs/apr 1.6.3-r4: Apache Portable Runtime Library
 dev-libs/apr-util 1.5.4 1.6.1-r3: Apache Portable Runtime Utility Library
 dev-libs/argtable 2.13-r1: An ANSI C library for parsing GNU-style command-line options with minimal fuss
 dev-libs/atf 0.21-r2: Libraries to write tests in C, C++ and shell

@@ -10,4 +10,4 @@ RDEPEND=>=dev-libs/glib-2.32:2 !gtk3? ( >=x11-libs/gtk+-2.24:2 vte? ( x11-libs/v
 SLOT=0
 SRC_URI=https://download.geany.org/geany-1.35.tar.bz2
 _eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	14d00d009167652b1fa363e55effe213
-_md5_=e3842b91f2df1fd887c0b0cc759e2ed9
+_md5_=f271bfeab1344b5b36839304b876c77f
