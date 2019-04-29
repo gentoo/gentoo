@@ -186,7 +186,7 @@ src_configure() {
 	local myconf=(
 		--libdir="${EPREFIX%/}/usr/$(get_libdir)"
 		$(use_with apache2 apache-libexecdir)
-		$(use_with apache2 apxs "${APXS}")
+		$(use_with apache2 apxs "${EPREFIX}"/usr/bin/apxs)
 		$(use_with berkdb berkeley-db "db.h:${EPREFIX%/}/usr/include/db${SVN_BDB_VERSION}::db-${SVN_BDB_VERSION}")
 		$(use_with ctypes-python ctypesgen "${EPREFIX%/}/usr")
 		$(use_enable dso runtime-module-search)
