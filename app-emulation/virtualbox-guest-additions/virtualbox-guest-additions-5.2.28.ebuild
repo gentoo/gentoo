@@ -49,6 +49,7 @@ BUILD_TARGET_ARCH="${ARCH}"
 S="${WORKDIR}/${MY_P}"
 
 pkg_setup() {
+	export DISTCC_DISABLE=1 #674256
 	MODULE_NAMES="vboxguest(misc:${WORKDIR}/vboxguest:${WORKDIR}/vboxguest)
 		vboxsf(misc:${WORKDIR}/vboxsf:${WORKDIR}/vboxsf)"
 	use X && MODULE_NAMES+=" vboxvideo(misc:${WORKDIR}/vboxvideo::${WORKDIR}/vboxvideo)"
