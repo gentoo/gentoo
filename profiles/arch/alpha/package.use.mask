@@ -1,6 +1,10 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Lars Wendler <polynomial-c@gentoo.org> (29 Apr 2019)
+# Requires net-libs/webkit-gtk which has no keywords on alpha
+dev-util/geany-plugins markdown
+
 # Tobias Klausmann <klausman@gentoo.rog> (23/Nov/2018)
 # Requires sys-cluster/ceph, which is unlikely to be used on Alpha
 # and a rather large dependency.
