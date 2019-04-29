@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
 inherit cmake-multilib python-single-r1
@@ -10,18 +10,19 @@ DESCRIPTION="Tool for tracing, analyzing, and debugging graphics APIs"
 HOMEPAGE="https://github.com/apitrace/apitrace"
 SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="MIT"
-LICENSE+=" BSD CC-BY-3.0 CC-BY-4.0 public-domain" #bundled snappy
+LICENSE="MIT !system-snappy? ( BSD CC-BY-3.0 CC-BY-4.0 public-domain )" #bundled snappy
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
 IUSE="+cli egl qt5 system-snappy"
+
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-RDEPEND="${PYTHON_DEPS}
+DEPEND="${PYTHON_DEPS}
+	app-arch/brotli:=
 	media-libs/libpng:0=
 	media-libs/mesa[egl?,${MULTILIB_USEDEP}]
-	sys-libs/zlib:=[${MULTILIB_USEDEP}]
-	sys-process/procps
+	sys-libs/zlib[${MULTILIB_USEDEP}]
+	sys-process/procps:=
 	x11-libs/libX11
 	egl? (
 		>=media-libs/mesa-8.0[gles1,gles2]
@@ -31,18 +32,17 @@ RDEPEND="${PYTHON_DEPS}
 		dev-qt/qtcore:5
 		dev-qt/qtgui:5[-gles2]
 		dev-qt/qtnetwork:5
-		dev-qt/qtwebkit:5
 		dev-qt/qtwidgets:5[-gles2]
 	)
 	system-snappy? ( >=app-arch/snappy-1.1.1[${MULTILIB_USEDEP}] )
 "
-DEPEND="${RDEPEND}"
+RDEPEND="${DEPEND}"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-7.1-glxtrace-only.patch
-	"${FILESDIR}"/${PN}-7.1-disable-multiarch.patch
-	"${FILESDIR}"/${PN}-7.1-docs-install.patch
-	"${FILESDIR}"/${PN}-7.1-snappy-license.patch
+	"${FILESDIR}"/${P}-disable-multiarch.patch
+	"${FILESDIR}"/${P}-glxtrace-only.patch
+	"${FILESDIR}"/${P}-docs-install.patch
+	"${FILESDIR}"/${P}-brotli-unbundle.patch
 )
 
 src_prepare() {
@@ -51,15 +51,16 @@ src_prepare() {
 	# The apitrace code grubs around in the internal zlib structures.
 	# We have to extract this header and clean it up to keep that working.
 	# Do not be surprised if a zlib upgrade breaks things ...
-	rm -rf "${S}"/thirdparty/{getopt,less,libpng,zlib,dxerr,directxtex,devcon} || die
+	rm -rf thirdparty/{brotli,getopt,less,libpng,zlib,dxerr,directxtex,devcon} || die
 	if use system-snappy ; then
-		rm -rf "${S}"/thirdparty/snappy || die
+		rm -rf thirdparty/snappy || die
 	fi
 }
 
 src_configure() {
 	my_configure() {
 		local mycmakeargs=(
+			-DDOC_INSTALL_DIR="${EPREFIX}"/usr/share/doc/${PF}
 			-DENABLE_EGL=$(usex egl)
 			-DENABLE_STATIC_SNAPPY=$(usex !system-snappy)
 		)
