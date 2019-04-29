@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<!-- maintainer-needed -->
+	<maintainer type="person">
+		<email>ramage.lucas@protonmail.com</email>
+		<description>Lucas Ramage</description>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<upstream>
+		<changelog>https://sourceforge.net/p/flawfinder/code/ci/master/tree/ChangeLog</changelog>
+		<bugs-to>https://sourceforge.net/p/flawfinder/bugs/</bugs-to>
+		<remote-id type="sourceforge">flawfinder</remote-id>
+	</upstream>
 </pkgmetadata>
