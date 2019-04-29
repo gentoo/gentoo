@@ -56,6 +56,7 @@ src_configure() {
 	local myeconfargs=(
 		--disable-html-docs
 		--disable-dependency-tracking
+		--disable-pdf-docs
 		--docdir="${EPREFIX}/usr/share/doc/${PF}"
 		$(use_enable gtk3)
 		$(use_enable vte)

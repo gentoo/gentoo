@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,7 +17,7 @@ IUSE="doc elibc_FreeBSD older-kernels-compatibility selinux static-libs +urandom
 CDEPEND="elibc_glibc? ( >=sys-apps/util-linux-2.16 )
 	elibc_mintlib? ( >=sys-apps/util-linux-2.18 )"
 RDEPEND="${CDEPEND}
-	selinux? ( sec-policy/selinux-apache )"
+	selinux? ( sec-policy/selinux-base-policy )"
 DEPEND="${CDEPEND}
 	>=sys-devel/libtool-2.4.2
 	doc? ( app-doc/doxygen )"
