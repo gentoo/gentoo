@@ -1,0 +1,20 @@
+diff --git a/lib/irrlicht/CMakeLists.txt b/lib/irrlicht/CMakeLists.txt
+index 92a881c81..1371fdf11 100644
+--- a/lib/irrlicht/CMakeLists.txt
++++ b/lib/irrlicht/CMakeLists.txt
+@@ -96,15 +96,6 @@ endif()
+ if(WIN32)
+     add_definitions(-D_IRR_STATIC_LIB_)
+     add_definitions(-D_CRT_SECURE_NO_WARNINGS) # Shut up about unsafe stuff
+-else()
+-    set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS} -Wall -pipe -O3  -fno-exceptions  -fstrict-aliasing")
+-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -pipe -O3  -fno-exceptions  -fstrict-aliasing")
+-    if(CMAKE_COMPILER_IS_GNUCC)
+-        set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS} -fexpensive-optimizations")
+-    endif()
+-    if(CMAKE_COMPILER_IS_GNUCXX)
+-        set(CMAKE_CXX_FLAGS   "${CMAKE_CXX_FLAGS} -fexpensive-optimizations")
+-    endif()
+ endif()
+ 
+ if(USE_GLES2)
