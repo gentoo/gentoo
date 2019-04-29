@@ -296,7 +296,7 @@ src_install() {
 	fowners -R ceph:ceph /var/lib/ceph /var/log/ceph
 
 	newinitd "${FILESDIR}/rbdmap.initd" rbdmap
-	newinitd "${FILESDIR}/${PN}.initd-r11" ${PN}
+	newinitd "${FILESDIR}/${PN}.initd-r12" ${PN}
 	newconfd "${FILESDIR}/${PN}.confd-r5" ${PN}
 
 	insinto /etc/sysctl.d
