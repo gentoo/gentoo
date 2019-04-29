@@ -1,9 +1,8 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-: ${CMAKE_MAKEFILE_GENERATOR:=ninja}
 PYTHON_REQ_USE="libressl?,sqlite,ssl"
 LIBDVDCSS_VERSION="1.4.2-Leia-Beta-5"
 LIBDVDREAD_VERSION="6.0.0-Leia-Alpha-3"
