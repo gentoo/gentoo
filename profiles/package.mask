@@ -902,8 +902,9 @@ dev-ruby/poltergeist
 # (isolated) use case, feel free to unmask them on your system.
 <sys-devel/gcc-5.4
 <sys-libs/glibc-2.27
-<sys-devel/binutils-2.30-r2
-<sys-libs/binutils-libs-2.30-r2
+<sys-devel/binutils-2.31.1-r4
+<sys-devel/binutils-hppa64-2.31.1-r4
+<sys-libs/binutils-libs-2.31.1-r4
 
 # Michał Górny <mgorny@gentoo.org> (20 May 2017)
 # Old versions of CUDA and their reverse dependencies. They do not
