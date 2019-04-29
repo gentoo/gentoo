@@ -11,7 +11,7 @@ PLOCALES="bg de_DE fr_FR hu it tr zh_CN"
 FIRMWARE_ABI_VERSION="2.11.1-r50"
 
 inherit eutils linux-info toolchain-funcs multilib python-r1 \
-	user udev fcaps readme.gentoo-r1 pax-utils l10n
+	user udev fcaps readme.gentoo-r1 pax-utils l10n xdg-utils
 
 if [[ ${PV} = *9999* ]]; then
 	EGIT_REPO_URI="git://git.qemu.org/qemu.git"
@@ -171,6 +171,7 @@ PPC64_FIRMWARE_DEPEND="
 BDEPEND="
 	${PYTHON_DEPS}
 	dev-lang/perl
+	dev-python/sphinx
 	sys-apps/texinfo
 	virtual/pkgconfig
 	gtk? ( nls? ( sys-devel/gettext ) )
@@ -758,6 +759,8 @@ pkg_postinst() {
 		udev_reload
 	fi
 
+	xdg_icon_cache_update
+
 	[[ -f ${EROOT}/usr/libexec/qemu-bridge-helper ]] && \
 		fcaps cap_net_admin /usr/libexec/qemu-bridge-helper
 
@@ -796,4 +799,8 @@ pkg_info() {
 		echo "    USE=''"
 	fi
 	echo "  $(best_version sys-firmware/sgabios)"
+}
+
+pkg_postrm() {
+	xdg_icon_cache_update
 }
