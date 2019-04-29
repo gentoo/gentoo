@@ -26,7 +26,7 @@ src_prepare() {
 	default
 }
 
-src_test() {
+python_test() {
 	emake test
 }
 
