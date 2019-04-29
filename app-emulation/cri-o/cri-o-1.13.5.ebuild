@@ -6,7 +6,7 @@ EAPI=6
 EGIT_COMMIT="a9d8dde49418572b6ea843a5d3346c966e82077f"
 EGO_PN="github.com/kubernetes-sigs/${PN}"
 
-inherit golang-vcs-snapshot systemd
+inherit eutils golang-vcs-snapshot systemd
 
 DESCRIPTION="OCI-based implementation of Kubernetes Container Runtime Interface"
 HOMEPAGE="https://cri-o.io/"
@@ -41,6 +41,8 @@ S="${WORKDIR}/${P}/src/${EGO_PN}"
 
 src_prepare() {
 	default
+
+	epatch "${FILESDIR}/0001-Remove-go-build-i-flag.patch"
 
 	sed -e '/^GIT_.*/d' \
 		-e '/	git diff --exit-code/d' \

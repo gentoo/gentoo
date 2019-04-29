@@ -1,0 +1,60 @@
+From a42f5ccad54673066ea6b236916df166025be9e3 Mon Sep 17 00:00:00 2001
+Message-Id: <a42f5ccad54673066ea6b236916df166025be9e3.1556517764.git.dongsu@kinvolk.io>
+From: Sascha Grunert <sgrunert@suse.com>
+Date: Tue, 23 Apr 2019 09:54:33 +0200
+Subject: [PATCH] Remove go build -i flag
+
+The repository should be completely self containing so that the
+-i flag is not needed any more.
+
+Signed-off-by: Sascha Grunert <sgrunert@suse.com>
+---
+ Makefile | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 08ebd70f..034ab94f 100644
+--- a/Makefile
++++ b/Makefile
+@@ -106,16 +106,16 @@ bin/conmon: conmon/config.h
+ 	$(MAKE) -C pause
+ 
+ test/bin2img/bin2img: .gopathok $(wildcard test/bin2img/*.go)
+-	$(GO) build -i $(LDFLAGS) -tags "$(BUILDTAGS)" -o $@ $(PROJECT)/test/bin2img
++	$(GO) build $(LDFLAGS) -tags "$(BUILDTAGS)" -o $@ $(PROJECT)/test/bin2img
+ 
+ test/copyimg/copyimg: .gopathok $(wildcard test/copyimg/*.go)
+-	$(GO) build -i $(LDFLAGS) -tags "$(BUILDTAGS)" -o $@ $(PROJECT)/test/copyimg
++	$(GO) build $(LDFLAGS) -tags "$(BUILDTAGS)" -o $@ $(PROJECT)/test/copyimg
+ 
+ test/checkseccomp/checkseccomp: .gopathok $(wildcard test/checkseccomp/*.go)
+-	$(GO) build -i $(LDFLAGS) -tags "$(BUILDTAGS)" -o $@ $(PROJECT)/test/checkseccomp
++	$(GO) build $(LDFLAGS) -tags "$(BUILDTAGS)" -o $@ $(PROJECT)/test/checkseccomp
+ 
+ bin/crio: .gopathok
+-	$(GO) build -i $(LDFLAGS) -tags "$(BUILDTAGS)" -o $@ $(PROJECT)/cmd/crio
++	$(GO) build $(LDFLAGS) -tags "$(BUILDTAGS)" -o $@ $(PROJECT)/cmd/crio
+ 
+ crio.conf: bin/crio
+ 	./bin/crio --config="" config --default > crio.conf
+@@ -124,7 +124,7 @@ release-note: ${RELEASE_TOOL}
+ 	${RELEASE_TOOL} -n $(release)
+ 
+ conmon/config.h: cmd/crio-config/config.go oci/oci.go
+-	$(GO) build -i $(LDFLAGS) -tags "$(BUILDTAGS)" -o bin/crio-config $(PROJECT)/cmd/crio-config
++	$(GO) build $(LDFLAGS) -tags "$(BUILDTAGS)" -o bin/crio-config $(PROJECT)/cmd/crio-config
+ 	( cd conmon && $(CURDIR)/bin/crio-config )
+ 
+ clean:
+@@ -156,7 +156,7 @@ bin/crio.cross.%: .gopathok .explicit_phony
+ 	TARGET="$*"; \
+ 	GOOS="$${TARGET%%.*}" \
+ 	GOARCH="$${TARGET##*.}" \
+-	$(GO) build -i $(LDFLAGS) -tags "containers_image_openpgp btrfs_noversion" -o "$@" $(PROJECT)/cmd/crio
++	$(GO) build $(LDFLAGS) -tags "containers_image_openpgp btrfs_noversion" -o "$@" $(PROJECT)/cmd/crio
+ 
+ crioimage:
+ 	$(CONTAINER_RUNTIME) build -t ${CRIO_IMAGE} .
+-- 
+2.21.0
+
