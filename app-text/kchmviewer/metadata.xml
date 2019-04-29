@@ -16,6 +16,6 @@
 		(search for MBCS languages - ja/ko/ch is still in progress). 
 	</longdescription>
 	<upstream>
-		<remote-id type="sourceforge">kchmviewer</remote-id>
+		<remote-id type="github">gyunaev/kchmviewer</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit eutils qmake-utils xdg-utils
+inherit desktop qmake-utils xdg-utils
 
 DESCRIPTION="Feature rich chm file viewer, based on Qt"
 HOMEPAGE="https://www.ulduzsoft.com/kchmviewer/"
@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE=""
 
-RDEPEND="
+DEPEND="
 	dev-libs/chmlib
 	dev-libs/libzip:=
 	dev-qt/qtcore:5
@@ -26,7 +26,7 @@ RDEPEND="
 	dev-qt/qtwidgets:5
 	dev-qt/qtxml:5
 "
-DEPEND="${RDEPEND}"
+RDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${FILESDIR}/${P}-force-qtwebkit.patch"
@@ -42,12 +42,4 @@ src_install() {
 	doicon packages/kchmviewer.png
 	dobin bin/kchmviewer
 	domenu packages/kchmviewer.desktop
-}
-
-pkg_postinst() {
-	xdg_desktop_database_update
-}
-
-pkg_postrm() {
-	xdg_desktop_database_update
 }
