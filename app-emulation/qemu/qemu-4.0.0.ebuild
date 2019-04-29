@@ -10,7 +10,7 @@ PLOCALES="bg de_DE fr_FR hu it tr zh_CN"
 
 FIRMWARE_ABI_VERSION="2.11.1-r50"
 
-inherit eutils flag-o-matic linux-info toolchain-funcs multilib python-r1 \
+inherit eutils linux-info toolchain-funcs multilib python-r1 \
 	user udev fcaps readme.gentoo-r1 pax-utils l10n
 
 if [[ ${PV} = *9999* ]]; then
@@ -19,10 +19,7 @@ if [[ ${PV} = *9999* ]]; then
 	SRC_URI=""
 else
 	SRC_URI="http://wiki.qemu-project.org/download/${P}.tar.xz"
-	KEYWORDS="amd64 ~arm64 ~ppc ~ppc64 x86 ~x86-fbsd"
-
-	# Gentoo specific patchsets:
-	#SRC_URI+=" https://dev.gentoo.org/~tamiko/distfiles/${P}-patches-r1.tar.xz"
+	KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86 ~x86-fbsd"
 fi
 
 DESCRIPTION="QEMU + Kernel-based Virtual Machine userland tools"
@@ -36,8 +33,6 @@ IUSE="accessibility +aio alsa bzip2 capstone +caps +curl debug
 	pulseaudio python rbd sasl +seccomp sdl selinux smartcard snappy
 	spice ssh static static-user systemtap tci test usb usbredir vde
 	+vhost-net virgl virtfs +vnc vte xattr xen xfs"
-
-RESTRICT=strip
 
 COMMON_TARGETS="aarch64 alpha arm cris hppa i386 m68k microblaze microblazeel
 	mips mips64 mips64el mipsel nios2 or1k ppc ppc64 riscv32 riscv64 s390x
@@ -97,7 +92,7 @@ SOFTMMU_TOOLS_DEPEND="
 	capstone? ( dev-libs/capstone:= )
 	caps? ( sys-libs/libcap-ng[static-libs(+)] )
 	curl? ( >=net-misc/curl-7.15.4[static-libs(+)] )
-	fdt? ( >=sys-apps/dtc-1.4.2[static-libs(+)] )
+	fdt? ( >=sys-apps/dtc-1.5.0[static-libs(+)] )
 	glusterfs? ( >=sys-cluster/glusterfs-3.4.0[static-libs(+)] )
 	gnutls? (
 		dev-libs/nettle:=[static-libs(+)]
@@ -173,6 +168,17 @@ PPC64_FIRMWARE_DEPEND="
 	)
 "
 
+BDEPEND="
+	${PYTHON_DEPS}
+	dev-lang/perl
+	sys-apps/texinfo
+	virtual/pkgconfig
+	gtk? ( nls? ( sys-devel/gettext ) )
+	test? (
+		dev-libs/glib[utils]
+		sys-devel/bc
+	)
+"
 CDEPEND="
 	!static? (
 		${ALL_DEPEND//\[static-libs(+)]}
@@ -184,20 +190,12 @@ CDEPEND="
 "
 DEPEND="${CDEPEND}
 	${PYTHON_DEPS}
-	dev-lang/perl
-	sys-apps/texinfo
-	virtual/pkgconfig
 	kernel_linux? ( >=sys-kernel/linux-headers-2.6.35 )
-	gtk? ( nls? ( sys-devel/gettext ) )
 	static? (
 		${ALL_DEPEND}
 		${SOFTMMU_TOOLS_DEPEND}
 	)
-	static-user? ( ${ALL_DEPEND} )
-	test? (
-		dev-libs/glib[utils]
-		sys-devel/bc
-	)"
+	static-user? ( ${ALL_DEPEND} )"
 RDEPEND="${CDEPEND}
 	selinux? ( sec-policy/selinux-qemu )"
 
@@ -205,9 +203,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.5.0-cflags.patch
 	"${FILESDIR}"/${PN}-2.5.0-sysmacros.patch
 	"${FILESDIR}"/${PN}-2.11.1-capstone_include_path.patch
-	"${FILESDIR}"/${PN}-3.1.0-CVE-2018-20123.patch
-	"${FILESDIR}"/${PN}-3.1.0-CVE-2019-3812.patch
-	#"${WORKDIR}"/patches
+	"${FILESDIR}"/${P}-sanitize-interp_info.patch
 )
 
 QA_PREBUILT="
@@ -362,11 +358,6 @@ src_prepare() {
 	check_targets IUSE_SOFTMMU_TARGETS softmmu
 	check_targets IUSE_USER_TARGETS linux-user
 
-	# Alter target makefiles to accept CFLAGS set via flag-o
-	sed -i -r \
-		-e 's/^(C|OP_C|HELPER_C)FLAGS=/\1FLAGS+=/' \
-		Makefile Makefile.target || die
-
 	default
 
 	# Fix ld and objcopy being called directly
@@ -487,7 +478,6 @@ qemu_src_configure() {
 		conf_opts+=(
 			--audio-drv-list="${audio_opts}"
 		)
-		use sdl && conf_opts+=( --with-sdlabi=2.0 )
 	fi
 
 	case ${buildtype} in
@@ -599,7 +589,7 @@ src_test() {
 }
 
 qemu_python_install() {
-	python_domodule "${S}/scripts/qmp/qmp.py"
+	python_domodule "${S}/python/qemu/qmp.py"
 
 	python_doscript "${S}/scripts/kvm/vmxcap"
 	python_doscript "${S}/scripts/qmp/qmp-shell"
@@ -645,9 +635,11 @@ generate_initd() {
 		sparc*) qcpu="sparc";;
 		esac
 
+		# we use 'printf' here to be portable across 'sh'
+		# implementations: #679168
 		cat <<EOF >>"${out}"
 	if [ "\${cpu}" != "${qcpu}" -a -x "${interpreter}" ] ; then
-		echo ':${package}:M::${magic}:${mask}:${interpreter}:'"\${QEMU_BINFMT_FLAGS}" >/proc/sys/fs/binfmt_misc/register
+		printf '%s\n' ':${package}:M::${magic}:${mask}:${interpreter}:'"\${QEMU_BINFMT_FLAGS}" >/proc/sys/fs/binfmt_misc/register
 	fi
 EOF
 
@@ -676,10 +668,7 @@ src_install() {
 		emake DESTDIR="${ED}" install
 
 		# This might not exist if the test failed. #512010
-		if [[ -e check-report.html ]]; then
-			docinto html
-			dodoc check-report.html
-		fi
+		[[ -e check-report.html ]] && dohtml check-report.html
 
 		if use kernel_linux; then
 			udev_newrules "${FILESDIR}"/65-kvm.rules-r1 65-kvm.rules
@@ -769,7 +758,7 @@ pkg_postinst() {
 		udev_reload
 	fi
 
-	[[ -f ${D}/usr/libexec/qemu-bridge-helper ]] && \
+	[[ -f ${EROOT}/usr/libexec/qemu-bridge-helper ]] && \
 		fcaps cap_net_admin /usr/libexec/qemu-bridge-helper
 
 	DISABLE_AUTOFORMATTING=true

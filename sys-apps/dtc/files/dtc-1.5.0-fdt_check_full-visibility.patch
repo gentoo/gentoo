@@ -1,0 +1,12 @@
+diff --git a/libfdt/version.lds b/libfdt/version.lds
+index 9f5d708..6b0f6d8 100644
+--- a/libfdt/version.lds
++++ b/libfdt/version.lds
+@@ -1,6 +1,7 @@
+ LIBFDT_1.2 {
+ 	global:
+ 		fdt_next_node;
++		fdt_check_full;
+ 		fdt_check_header;
+ 		fdt_move;
+ 		fdt_string;
