@@ -1416,7 +1416,8 @@ dev-lang/gnat-gpl:regression-test - Run the testsuite and install the results (r
 dev-lang/gnat-gpl:sanitize - Build support for various sanitizer functions (ASAN/TSAN/etc...)
 dev-lang/gnat-gpl:ssp - Build packages with stack smashing protector on by default
 dev-lang/gnat-gpl:vtv - Build support for virtual table verification (a C++ hardening feature)
-dev-lang/go:gccgo - Enable bootstrapping using gccgo
+dev-lang/go:gccgo - Bootstrap using sys-devel/gcc[go]
+dev-lang/go:system-bootstrap - Bootstrap using previously installed dev-lang/go
 dev-lang/icon:iplsrc - install the icon programming library source
 dev-lang/lazarus:minimal - Don't build extra packages from the bigide component
 dev-lang/lua:deprecated - make deprecated data structures/routines available
