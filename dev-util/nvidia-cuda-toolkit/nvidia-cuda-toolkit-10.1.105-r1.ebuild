@@ -90,15 +90,20 @@ src_install() {
 		eend
 	done
 
-	dodir ${cudadir} || die
-	# Install binaries separately to amke sure the X permission is set
-	into ${cudadir} || die
-	dobin $(find bin nvvm/bin -type f) || die
-	find bin nvvm/bin -type f -delete || die
+	dodir ${cudadir}
+	into ${cudadir}
+
+	# Install binaries separately to make sure the X permission is set
+	local bindirs=( bin nvvm/bin extras/demo_suite )
+	for i in $(find "${bindirs[@]}" -maxdepth 1 -type f); do
+		exeinto ${cudadir}/${i%/*}
+		doexe ${i}
+		rm ${i} || die
+	done
 
 	# Install the rest
-	insinto ${cudadir} || die
-	doins -r * || die
+	insinto ${cudadir}
+	doins -r *
 
 	cat > "${T}"/99cuda <<- EOF || die
 		PATH=${ecudadir}/bin$(usex profiler ":${ecudadir}/libnvvp" "")
