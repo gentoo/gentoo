@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit autotools multilib-minimal
+inherit autotools multilib-minimal systemd
 
 DESCRIPTION="Bluetooth Audio ALSA Backend"
 HOMEPAGE="https://github.com/Arkq/bluez-alsa"
@@ -58,6 +58,7 @@ multilib_src_install_all() {
 
 	newinitd "${FILESDIR}"/bluealsa-init.d bluealsa
 	newconfd "${FILESDIR}"/bluealsa-conf.d-2 bluealsa
+	systemd_dounit "${FILESDIR}"/bluealsa.service
 }
 
 pkg_postinst() {
