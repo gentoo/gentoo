@@ -8,8 +8,8 @@ HOMEPAGE="https://dnscap.dns-oarc.net/"
 
 ## github commit tarball
 MY_GIT_COMMIT="727ed7d5e46625abc2c8d988689a300589e948b6"
-MY_P="verisign-${PN}-${MY_GIT_COMMIT:0:7}"
-SRC_URI="https://github.com/verisign/${PN}/tarball/${MY_GIT_COMMIT} -> ${PF}.tar.gz"
+MY_P="DNS-OARC-${PN}-${MY_GIT_COMMIT:0:7}"
+SRC_URI="https://github.com/DNS-OARC/${PN}/tarball/${MY_GIT_COMMIT} -> ${PF}.tar.gz"
 
 S="${WORKDIR}/${MY_P}"
 
