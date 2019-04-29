@@ -16,11 +16,14 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE="doc examples"
 
-RDEPEND="dev-python/future[${PYTHON_USEDEP}]
-	dev-python/python-dateutil[${PYTHON_USEDEP}]
-	dev-python/requests[${PYTHON_USEDEP}]
+COMMON_DEPEND="dev-python/python-dateutil[${PYTHON_USEDEP}]
+	dev-python/requests[${PYTHON_USEDEP}]"
+
+DEPEND="${COMMON_DEPEND}
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )"
-DEPEND="${RDEPEND}"
+
+RDEPEND="${COMMON_DEPEND}
+	dev-python/future[${PYTHON_USEDEP}]"
 
 # it can be delete for the next release bump
 # https://github.com/hetznercloud/hcloud-python/pull/41
