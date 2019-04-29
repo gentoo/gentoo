@@ -22,12 +22,13 @@ LICENSE="BSD-2"
 # subslot = soname version
 SLOT="0/1"
 
-IUSE="lz4 sasl ssl static-libs"
+IUSE="lz4 sasl ssl static-libs zstd"
 
 RDEPEND="
 	lz4? ( app-arch/lz4:=[static-libs(-)?] )
 	sasl? ( dev-libs/cyrus-sasl:= )
 	ssl? ( dev-libs/openssl:0= )
+	zstd? ( app-arch/zstd:= )
 	sys-libs/zlib
 "
 
@@ -35,6 +36,8 @@ DEPEND="
 	${RDEPEND}
 	virtual/pkgconfig
 "
+
+PATCHES=( "${FILESDIR}"/${P}-remove-automagic-on-zstd.patch )
 
 src_configure() {
 	tc-export CC CXX LD NM OBJDUMP PKG_CONFIG STRIP
@@ -47,6 +50,7 @@ src_configure() {
 		$(use_enable sasl)
 		$(usex static-libs '--enable-static' '')
 		$(use_enable ssl)
+		$(use_enable zstd)
 	)
 
 	econf ${myeconf[@]}
