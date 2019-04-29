@@ -7,6 +7,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Virgil Dupras <vdupras@gentoo.org> (29 Apr 2019)
+# Docs are temporarily broken. See bug #680014
+dev-python/pandas doc
+
 # Ulrich Müller <ulm@gentoo.org> (25 Apr 2019)
 # Pulls in media-fonts/kochi-substitute as dependency, which allows
 # only non-commercial distribution and can therefore not be included
