@@ -1694,7 +1694,7 @@
     <name>Integrity, Compliance, and Reporting</name>
     <url>https://wiki.gentoo.org/wiki/Project:Integrity</url>
     <description>The integrity subproject aims to integrate and maintain technologies related to system integrity within Gentoo Hardened. Although initially focused on Linux IMA/EVM, this will extend towards other integrity, compliance and reporting technologies.</description>
-    <member>
+    <member is-lead="1">
       <email>perfinion@gentoo.org</email>
       <name>Jason Zaman</name>
       <role>Trusted Boot, TPM</role>
