@@ -696,6 +696,9 @@ src_install() {
 	dodoc Changelog MAINTAINERS docs/specs/pci-ids.txt
 	newdoc pc-bios/README README.pc-bios
 
+	# Disallow stripping of prebuilt firmware files.
+	dostrip -x ${QA_PREBUILT}
+
 	if [[ -n ${softmmu_targets} ]]; then
 		# Remove SeaBIOS since we're using the SeaBIOS packaged one
 		rm "${ED}/usr/share/qemu/bios.bin"

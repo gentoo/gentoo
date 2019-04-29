@@ -23,51 +23,46 @@ RECOMMENDED_DEPEND="
 	>=dev-python/bottleneck-1.2.1[${PYTHON_USEDEP}]
 	>=dev-python/numexpr-2.1[${PYTHON_USEDEP}]
 "
+
+# TODO: add pandas-gbq to the tree
 OPTIONAL_DEPEND="
 	dev-python/beautifulsoup:4[${PYTHON_USEDEP}]
 	dev-python/blosc[${PYTHON_USEDEP}]
-	dev-python/boto[${PYTHON_USEDEP}]
-	>=dev-python/google-api-python-client-1.2.0[$(python_gen_usedep python2_7 pypy)]
 	|| (
 		dev-python/html5lib[${PYTHON_USEDEP}]
 		dev-python/lxml[${PYTHON_USEDEP}]
 	)
-	dev-python/httplib2[${PYTHON_USEDEP}]
 	dev-python/jinja[${PYTHON_USEDEP}]
 	dev-python/matplotlib[${PYTHON_USEDEP}]
 	|| (
-		>=dev-python/openpyxl-1.6.1[${PYTHON_USEDEP}]
+		dev-python/openpyxl[${PYTHON_USEDEP}]
 		dev-python/xlsxwriter[${PYTHON_USEDEP}]
 	)
 	>=dev-python/pytables-3.2.1[${PYTHON_USEDEP}]
-	dev-python/python-gflags[$(python_gen_usedep python2_7 pypy)]
-	dev-python/rpy[${PYTHON_USEDEP}]
-	dev-python/setuptools[${PYTHON_USEDEP}]
+	dev-python/s3fs[${PYTHON_USEDEP}]
 	dev-python/statsmodels[${PYTHON_USEDEP}]
 	>=dev-python/sqlalchemy-0.8.1[${PYTHON_USEDEP}]
 	>=dev-python/xarray-0.10.8[${PYTHON_USEDEP}]
-	dev-python/xlrd[${PYTHON_USEDEP}]
+	>=dev-python/xlrd-1.0.0[${PYTHON_USEDEP}]
 	dev-python/xlwt[${PYTHON_USEDEP}]
-	sci-libs/scipy[${PYTHON_USEDEP}]
+	>=sci-libs/scipy-1.1[${PYTHON_USEDEP}]
 	X? (
 		|| (
 			dev-python/PyQt5[${PYTHON_USEDEP}]
 			dev-python/pygtk[$(python_gen_usedep python2_7)]
-		)
-		|| (
 			x11-misc/xclip
 			x11-misc/xsel
 		)
 	)
 "
 COMMON_DEPEND="
-	>dev-python/numpy-1.7[${PYTHON_USEDEP}]
-	>=dev-python/python-dateutil-2.0[${PYTHON_USEDEP}]
+	>dev-python/numpy-1.13.1[${PYTHON_USEDEP}]
+	dev-python/python-dateutil[${PYTHON_USEDEP}]
 	dev-python/pytz[${PYTHON_USEDEP}]
 "
 DEPEND="${COMMON_DEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	>=dev-python/cython-0.23[${PYTHON_USEDEP}]
+	dev-python/cython[${PYTHON_USEDEP}]
 	doc? (
 		${VIRTUALX_DEPEND}
 		app-text/pandoc
@@ -77,11 +72,12 @@ DEPEND="${COMMON_DEPEND}
 		dev-python/lxml[${PYTHON_USEDEP}]
 		dev-python/matplotlib[${PYTHON_USEDEP}]
 		dev-python/nbsphinx[${PYTHON_USEDEP}]
+		>=dev-python/numpydoc-0.9.1[${PYTHON_USEDEP}]
 		>=dev-python/openpyxl-1.6.1[${PYTHON_USEDEP}]
 		>=dev-python/pytables-3.0.0[${PYTHON_USEDEP}]
 		dev-python/pytz[${PYTHON_USEDEP}]
 		dev-python/rpy[${PYTHON_USEDEP}]
-		>=dev-python/sphinx-1.2.1[${PYTHON_USEDEP}]
+		dev-python/sphinx[${PYTHON_USEDEP}]
 		dev-python/xlrd[${PYTHON_USEDEP}]
 		dev-python/xlwt[${PYTHON_USEDEP}]
 		sci-libs/scipy[${PYTHON_USEDEP}]
@@ -92,9 +88,11 @@ DEPEND="${COMMON_DEPEND}
 		${RECOMMENDED_DEPEND}
 		${OPTIONAL_DEPEND}
 		dev-python/beautifulsoup:4[${PYTHON_USEDEP}]
+		dev-python/hypothesis[${PYTHON_USEDEP}]
 		dev-python/nose[${PYTHON_USEDEP}]
 		dev-python/pymysql[${PYTHON_USEDEP}]
 		dev-python/pytest[${PYTHON_USEDEP}]
+		dev-python/pytest-mock[${PYTHON_USEDEP}]
 		dev-python/psycopg:2[${PYTHON_USEDEP}]
 		x11-misc/xclip
 		x11-misc/xsel
@@ -103,17 +101,15 @@ DEPEND="${COMMON_DEPEND}
 # dev-python/statsmodels invokes a circular dep
 #  hence rm from doc? ( ), again
 RDEPEND="${COMMON_DEPEND}
-	!<dev-python/numexpr-2.1[${PYTHON_USEDEP}]
-	!~dev-python/openpyxl-1.9.0[${PYTHON_USEDEP}]
 	!minimal? ( ${RECOMMENDED_DEPEND} )
 	full-support? ( ${OPTIONAL_DEPEND} )
 "
 
 S="${WORKDIR}/${P/_/}"
 
-#PATCHES=(
-#	"${FILESDIR}/${PN}-0.23.4-skip-broken-test.patch"
-#)
+PATCHES=(
+	"${FILESDIR}/${PN}-0.24.2-skip-broken-test.patch"
+)
 
 python_prepare_all() {
 	# Prevent un-needed download during build
@@ -157,8 +153,7 @@ pkg_postinst() {
 	optfeature "accelerating certain numerical operations, using multiple cores as well as smart chunking and caching to achieve large speedups" ">=dev-python/numexpr-2.1"
 	optfeature "needed for pandas.io.html.read_html" dev-python/beautifulsoup:4 dev-python/html5lib dev-python/lxml
 	optfeature "for msgpack compression using blosc" dev-python/blosc
-	optfeature "necessary for Amazon S3 access" dev-python/boto
-	optfeature "needed for pandas.io.gbq" dev-python/httplib2 dev-python/setuptools dev-python/python-gflags ">=dev-python/google-api-python-client-1.2.0"
+	optfeature "necessary for Amazon S3 access" dev-python/s3fs
 	optfeature "Template engine for conditional HTML formatting" dev-python/jinja
 	optfeature "Plotting support" dev-python/matplotlib
 	optfeature "Needed for Excel I/O" ">=dev-python/openpyxl-1.6.1" dev-python/xlsxwriter dev-python/xlrd dev-python/xlwt
