@@ -44,7 +44,7 @@ src_prepare() {
 
 	sed -e '/^GIT_.*/d' \
 		-e '/	git diff --exit-code/d' \
-		-e 's/$(GO) build/$(GO) build -v -work -x/' \
+		-e 's/$(GO) build -i/$(GO) build -v -work -x/' \
 		-e 's/\${GIT_COMMIT}/'${EGIT_COMMIT}'/' \
 		-i Makefile || die
 
