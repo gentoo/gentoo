@@ -60,6 +60,7 @@ pkg_postinst() {
 	elog
 	elog "Videos or video formats streamed via RTMP protocol can only be"
 	elog "downloaded when rtmpdump (media-video/rtmpdump) is installed."
+	elog
 	elog "Downloading MMS and RTSP videos requires either mplayer"
 	elog "(media-video/mplayer) or mpv (media-video/mpv) to be installed."
 	elog
