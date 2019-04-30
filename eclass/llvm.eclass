@@ -52,7 +52,7 @@
 # DEPEND=${RDEPEND}
 #
 # llvm_check_deps() {
-#	has_version "sys-devel/clang:${LLVM_SLOT}[llvm_targets_AMDGPU(+)]"
+#	has_version -d "sys-devel/clang:${LLVM_SLOT}[llvm_targets_AMDGPU(+)]"
 # }
 # @CODE
 
@@ -84,10 +84,18 @@ if [[ ! ${_LLVM_ECLASS} ]]; then
 declare -g -r _LLVM_KNOWN_SLOTS=( 9 8 7 6 5 4 )
 
 # @FUNCTION: get_llvm_prefix
-# @USAGE: [<max_slot>]
+# @USAGE: [-b|-d] [<max_slot>]
 # @DESCRIPTION:
 # Find the newest LLVM install that is acceptable for the package,
 # and print an absolute path to it.
+#
+# If -b is specified, the checks are performed relative to BROOT,
+# and BROOT-path is returned.  This is appropriate when your package
+# calls llvm-config executable.  -b is supported since EAPI 7.
+#
+# If -d is specified, the checks are performed relative to ESYSROOT,
+# and ESYSROOT-path is returned.  This is appropriate when your package
+# uses CMake find_package(LLVM).  -d is the default.
 #
 # If <max_slot> is specified, then only LLVM versions that are not newer
 # than <max_slot> will be considered. Otherwise, all LLVM versions would
@@ -104,6 +112,37 @@ declare -g -r _LLVM_KNOWN_SLOTS=( 9 8 7 6 5 4 )
 # is installed.
 get_llvm_prefix() {
 	debug-print-function ${FUNCNAME} "${@}"
+
+	local hv_switch=-d
+	while [[ ${1} == -* ]]; do
+		case ${1} in
+			-b|-d) hv_switch=${1};;
+			*) break;;
+		esac
+		shift
+	done
+
+	local prefix=
+	if [[ ${EAPI} != 6 ]]; then
+		case ${hv_switch} in
+			-b)
+				prefix=${BROOT}
+				;;
+			-d)
+				prefix=${ESYSROOT}
+				;;
+		esac
+	else
+		case ${hv_switch} in
+			-b)
+				die "${FUNCNAME} -b is not supported in EAPI ${EAPI}"
+				;;
+			-d)
+				prefix=${EPREFIX}
+				hv_switch=
+				;;
+		esac
+	fi
 
 	local max_slot=${1}
 	local slot
@@ -122,10 +161,10 @@ get_llvm_prefix() {
 			llvm_check_deps || continue
 		else
 			# check if LLVM package is installed
-			has_version "sys-devel/llvm:${slot}" || continue
+			has_version ${hv_switch} "sys-devel/llvm:${slot}" || continue
 		fi
 
-		echo "${EPREFIX}/usr/lib/llvm/${slot}"
+		echo "${prefix}/usr/lib/llvm/${slot}"
 		return
 	done
 
@@ -136,8 +175,8 @@ get_llvm_prefix() {
 
 	# fallback to :0
 	# assume it's always <= 4 (the lower max_slot allowed)
-	if has_version "sys-devel/llvm:0"; then
-		echo "${EPREFIX}/usr"
+	if has_version ${hv_switch} "sys-devel/llvm:0"; then
+		echo "${prefix}/usr"
 		return
 	fi
 
