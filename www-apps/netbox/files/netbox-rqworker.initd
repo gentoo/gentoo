@@ -8,4 +8,6 @@ command=/usr/bin/python3
 command_args="/opt/netbox/netbox/manage.py rqworker"
 command_user=netbox:netbox
 directory=/opt/netbox/netbox
+error_log=/var/log/netbox/netbox-rcworker.log
+output_log=/var/log/netbox/"${RC_SVCNAME}".log
 supervisor=supervise-daemon
