@@ -13,5 +13,11 @@
 		It is designed to edit books in ePub format.</longdescription>
 	<upstream>
 		<remote-id type="github">Sigil-Ebook/Sigil</remote-id>
+		<maintainer status="active">
+			<email>douglaslmassay@gmail.com</email>
+			<name>Doug Massay</name>
+		</maintainer>
+		<bugs-to>https://github.com/Sigil-Ebook/Sigil/issues</bugs-to>
+		<changelog>https://github.com/Sigil-Ebook/Sigil/blob/master/ChangeLog.txt</changelog>
 	</upstream>
 </pkgmetadata>
