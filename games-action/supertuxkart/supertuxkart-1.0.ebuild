@@ -1,9 +1,9 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit cmake-utils desktop gnome2-utils
+inherit cmake-utils desktop xdg-utils
 
 DESCRIPTION="A kart racing game starring Tux, the linux penguin (TuxKart fork)"
 HOMEPAGE="https://supertuxkart.net/"
@@ -42,7 +42,8 @@ RDEPEND="
 	)
 	recorder? ( media-libs/libopenglrecorder )
 	wiimote? ( net-wireless/bluez )"
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	sys-devel/gettext
 	virtual/pkgconfig"
 
@@ -72,6 +73,7 @@ src_configure() {
 		-DUSE_WIIUSE=$(usex wiimote)
 		-DSTK_INSTALL_BINARY_DIR=bin
 		-DSTK_INSTALL_DATA_DIR=share/${PN}
+		-DBUILD_SHARED_LIBS=OFF # build bundled libsquish as static library
 	)
 	cmake-utils_src_configure
 }
@@ -83,14 +85,10 @@ src_install() {
 	doicon -s 64 "${DISTDIR}"/${PN}.png
 }
 
-pkg_preinst() {
-	gnome2_icon_savelist
-}
-
 pkg_postinst() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }
