@@ -78,7 +78,7 @@ src_install() {
 	dobin src/script/ant
 
 	dodir /usr/share/${PN}/bin
-	for each in antRun antRun.pl runant.pl runant.py complete-ant-cmd.pl ; do
+	for each in antRun antRun.pl runant.pl runant.py ; do
 		dobin "${S}/src/script/${each}"
 		dosym ../../../bin/${each} /usr/share/${PN}/bin/${each}
 	done
