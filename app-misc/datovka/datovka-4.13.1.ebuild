@@ -1,11 +1,11 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit gnome2-utils qmake-utils
+inherit qmake-utils xdg-utils
 
-DESCRIPTION="GUI to access the Czech eGov system of Datove schranky"
+DESCRIPTION="GUI to access the Czech data box e-government system"
 HOMEPAGE="https://www.datovka.cz/"
 SRC_URI="https://secure.nic.cz/files/datove_schranky/${PV}/${P}.tar.xz"
 
@@ -31,6 +31,7 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 	>=dev-qt/linguist-tools-${QT_PV}
+	virtual/pkgconfig
 "
 
 DOCS=( ChangeLog README )
@@ -46,9 +47,9 @@ src_install() {
 }
 
 pkg_postinst() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }

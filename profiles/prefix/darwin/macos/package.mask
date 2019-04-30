@@ -1,6 +1,10 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Fabian Groffen <grobian@gentoo.org> (30 Apr 2019)
+# Fails to install, bug #684030
+=dev-lang/perl-5.28.2*
+
 # Fabian Groffen <grobian@gentoo.org> (26 Apr 2019)
 # LLVM/clang 7.1 crashes at runtime
 # llvm::optional_detail::OptionalStorage<llvm::ArrayRef<llvm::StringRef>,
