@@ -609,7 +609,6 @@ media-plugins/vdr-markad
 # Virgil Dupras <vdupras@gentoo.org> (31 Mar 2019)
 # Unmaintained, no revdeps.
 # Removal in 30 days. Bug #616596
-dev-python/statistics
 dev-python/reverend
 
 # Michał Górny <mgorny@gentoo.org> (31 Mar 2019)
