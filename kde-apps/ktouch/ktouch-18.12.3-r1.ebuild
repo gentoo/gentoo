@@ -41,4 +41,6 @@ DEPEND="${COMMON_DEPEND}
 "
 RDEPEND="${COMMON_DEPEND}
 	$(add_kdeapps_dep kqtquickcharts)
+	$(add_qt_dep qtgraphicaleffects)
+	$(add_qt_dep qtquickcontrols)
 "
