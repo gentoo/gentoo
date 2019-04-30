@@ -2958,7 +2958,7 @@ dev-libs/concurrencykit 0.5.2 0.6.0: A library with concurrency related algorith
 dev-libs/confuse 3.0: a configuration file parser library
 dev-libs/crc32c 1.0.6: CRC32C implementation with support for CPU-specific acceleration instructions
 dev-libs/crossguid 0_pre20150817: Lightweight cross platform C++ GUID/UUID library
-dev-libs/crypto++ 5.6.5-r1 7.0.0-r3: C++ class library of cryptographic schemes
+dev-libs/crypto++ 7.0.0-r3: C++ class library of cryptographic schemes
 dev-libs/cvector 1.0.3-r1: An ANSI C implementation of dynamic arrays (Approximation of C++ vectors)
 dev-libs/cxxtools 2.2.1: Collection of general purpose C++-classes
 dev-libs/cyberjack 3.99.5_p11 3.99.5_p13: REINER SCT cyberJack USB chipcard reader user space driver
@@ -3296,7 +3296,7 @@ dev-libs/xapian-bindings 1.2.25 1.4.5 1.4.7: SWIG and JNI bindings for Xapian
 dev-libs/xerces-c 3.1.4-r1 3.2.2-r1: A validating XML parser written in a portable subset of C++
 dev-libs/xmlrpc-c 1.32.05-r1 1.39.11-r1: A lightweigt RPC library based on XML and HTTP
 dev-libs/xmlrpc-epi 0.54.2: Epinions implementation of XML-RPC protocol in C
-dev-libs/xmlsec 1.2.26 1.2.27-r1: Command line tool for signing, verifying, encrypting and decrypting XML
+dev-libs/xmlsec 1.2.27-r1: Command line tool for signing, verifying, encrypting and decrypting XML
 dev-libs/xplc 0.3.13-r1: cross platform lightweight components library for C++
 dev-libs/xxhash 0.6.5: Extremely fast non-cryptographic hash algorithm
 dev-libs/yajl 2.1.0-r1: Small event-driven (SAX-style) JSON parser
