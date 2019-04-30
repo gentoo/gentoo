@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit autotools fdo-mime flag-o-matic git-r3 xdg-utils multilib-minimal
+inherit autotools flag-o-matic git-r3 xdg-utils multilib-minimal
 
 DESCRIPTION="C++ user interface toolkit for X and OpenGL"
 HOMEPAGE="http://www.fltk.org/"
@@ -127,7 +127,8 @@ multilib_src_configure() {
 		--enable-xdbe \
 		--enable-xfixes \
 		--includedir=${FLTK_INCDIR} \
-		--libdir=${FLTK_LIBDIR}
+		--libdir=${FLTK_LIBDIR} \
+		LDFLAGS="${LDFLAGS}"
 }
 
 multilib_src_compile() {
@@ -194,11 +195,11 @@ multilib_src_install_all() {
 }
 
 pkg_postinst() {
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
 	xdg_icon_cache_update
 }
 
 pkg_postrm() {
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
 	xdg_icon_cache_update
 }
