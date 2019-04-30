@@ -127,7 +127,8 @@ multilib_src_configure() {
 		--enable-xdbe \
 		--enable-xfixes \
 		--includedir=${FLTK_INCDIR} \
-		--libdir=${FLTK_LIBDIR}
+		--libdir=${FLTK_LIBDIR} \
+		LDFLAGS="${LDFLAGS}"
 }
 
 multilib_src_compile() {
