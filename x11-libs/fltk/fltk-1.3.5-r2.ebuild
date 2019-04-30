@@ -119,6 +119,7 @@ multilib_src_configure() {
 		--enable-xfixes \
 		--includedir=${FLTK_INCDIR} \
 		--libdir=${FLTK_LIBDIR} \
+		DSOFLAGS="${LDFLAGS}" \
 		LDFLAGS="${LDFLAGS}"
 }
 
