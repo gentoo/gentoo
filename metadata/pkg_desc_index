@@ -980,7 +980,6 @@ app-misc/cstream 3.1.1: general-purpose stream-handling tool like UNIX dd
 app-misc/cw 1.0.16-r3: A non-intrusive real-time ANSI color wrapper for common unix-based commands
 app-misc/dailystrips 1.0.28-r3: dailystrips automatically downloads your favorite online comics from the web
 app-misc/datefudge 1.17: A program (and preload library) to fake system date
-app-misc/datovka 4.10.3: GUI to access the Czech eGov system of Datove schranky
 app-misc/ddate 0.2.2: Perpetual date converter from gregorian to poee calendar
 app-misc/delay 1.6-r2: Sleeplike program that counts down the number of seconds specified
 app-misc/detachtty 9-r1: Attach/detach from interactive processes across the network
