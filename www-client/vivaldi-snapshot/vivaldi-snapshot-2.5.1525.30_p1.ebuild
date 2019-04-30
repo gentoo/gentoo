@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 CHROMIUM_LANGS="
 	am ar be bg bn ca cs da de el en-GB en-US eo es es-419 es-PE et eu fa fi
 	fil fr fy gl gu he hi hr hu hy id io is it ja jbo ka kn ko ku lt lv mk ml
