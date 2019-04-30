@@ -5,7 +5,7 @@ EAPI=7
 inherit autotools flag-o-matic git-r3 xdg-utils multilib-minimal
 
 DESCRIPTION="C++ user interface toolkit for X and OpenGL"
-HOMEPAGE="http://www.fltk.org/"
+HOMEPAGE="https://www.fltk.org/"
 EGIT_REPO_URI="https://github.com/fltk/fltk"
 
 SLOT="1"
@@ -128,6 +128,7 @@ multilib_src_configure() {
 		--enable-xfixes \
 		--includedir=${FLTK_INCDIR} \
 		--libdir=${FLTK_LIBDIR} \
+		DSOFLAGS="${LDFLAGS}" \
 		LDFLAGS="${LDFLAGS}"
 }
 
