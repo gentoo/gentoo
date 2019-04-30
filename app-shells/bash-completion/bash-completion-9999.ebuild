@@ -44,7 +44,7 @@ strip_completions() {
 		explodepkg installpkg makepkg pkgtool removepkg upgradepkg
 
 		# Debian/Red Hat network stuff
-		ifdown ifup ifstatus
+		ifdown ifup ifquery ifstatus
 
 		# Installed in app-editors/vim-core
 		xxd
