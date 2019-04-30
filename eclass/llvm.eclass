@@ -22,7 +22,7 @@
 # inherit cmake-utils llvm
 #
 # RDEPEND="
-#	<sys-devel/llvm-6_rc:=
+#	<sys-devel/llvm-6:=
 #	|| (
 #		sys-devel/llvm:5
 #		sys-devel/llvm:4
