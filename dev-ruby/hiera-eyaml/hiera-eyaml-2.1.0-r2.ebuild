@@ -22,7 +22,7 @@ IUSE="test"
 
 ruby_add_rdepend ">=dev-ruby/highline-1.6.19"
 ruby_add_rdepend "dev-ruby/trollop:2"
-ruby_add_rdepend "!!dev-ruby/hiera-eyaml:2" # both install the /usr/bin/eyaml binary
+ruby_add_rdepend "!!dev-ruby/hiera-eyaml:3" # both install the /usr/bin/eyaml binary
 
 ruby_add_bdepend "test? ( dev-util/cucumber ~dev-util/aruba-0.6.2 <app-admin/puppet-5 dev-ruby/hiera-eyaml-plaintext )"
 
