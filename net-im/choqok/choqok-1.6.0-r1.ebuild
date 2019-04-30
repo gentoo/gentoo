@@ -7,7 +7,7 @@ KDE_HANDBOOK="forceoptional"
 inherit kde5
 
 DESCRIPTION="Free/Open Source micro-blogging client by KDE"
-HOMEPAGE="http://choqok.gnufolks.org/"
+HOMEPAGE="https://choqok.kde.org/"
 [[ ${KDE_BUILD_TYPE} != live ]] && SRC_URI="mirror://kde/stable/${PN}/${PV%.0}/src/${P}.tar.xz"
 
 LICENSE="GPL-2+"
