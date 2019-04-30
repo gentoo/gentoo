@@ -28,6 +28,7 @@ SLOT="0"
 IUSE="colord +desktop +drm editor examples fbdev fullscreen +gles2 headless ivi jpeg +launch lcms rdp remoting +resize-optimization screen-sharing static-libs +suid systemd test wayland-compositor webp +X xwayland"
 
 REQUIRED_USE="
+	colord? ( lcms )
 	drm? ( gles2 )
 	screen-sharing? ( rdp )
 	test? ( desktop headless xwayland )
