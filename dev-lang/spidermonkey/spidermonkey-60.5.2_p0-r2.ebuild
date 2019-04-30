@@ -13,7 +13,7 @@ DESCRIPTION="Stand-alone JavaScript C++ library"
 HOMEPAGE="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/SpiderMonkey"
 #SRC_URI="https://archive.mozilla.org/pub/spidermonkey/prereleases/60/pre3/${MY_P}.tar.bz2
 SRC_URI="https://dev.gentoo.org/~axs/distfiles/${MY_P}.tar.bz2
-	https://dev.gentoo.org/~axs/distfiles/${PN}-60.0-patches-03.tar.xz"
+	https://dev.gentoo.org/~anarchy/mozilla/patchsets/${PN}-60.0-patches-04.tar.xz"
 
 LICENSE="NPL-1.1"
 SLOT="60"
@@ -79,7 +79,7 @@ src_configure() {
 		$(use_enable jit ion) \
 		$(use_enable test tests) \
 		XARGS="/usr/bin/xargs" \
-		CONFIG_SHELL="${SHELL:-${EPREFIX}/bin/bash}" \
+		CONFIG_SHELL="${EPREFIX}/bin/bash" \
 		CC="${CC}" CXX="${CXX}" LD="${LD}" AR="${AR}" RANLIB="${RANLIB}"
 }
 
