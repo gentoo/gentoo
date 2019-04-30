@@ -35,7 +35,7 @@ DEPEND="
 	x11-libs/pixman
 	elogind? ( >=sys-auth/elogind-239 )
 	swaybar? ( x11-libs/gdk-pixbuf:2 )
-	swaybg? ( x11-libs/gdk-pixbuf:2 )
+	swaybg? ( gui-apps/swaybg )
 	swayidle? ( gui-apps/swayidle )
 	swaylock? ( gui-apps/swaylock )
 	systemd? ( >=sys-apps/systemd-239 )
@@ -65,7 +65,6 @@ src_prepare() {
 
 	use swaybar || sed -e "s/subdir('swaybar')//g" -e "/sway-bar.[0-9].scd/d" \
 		-e "/completions\/[a-z]\+\/_\?swaybar/d" -i meson.build || die
-	use swaybg || sed -e "s/subdir('swaybg')//g" -i meson.build || die
 	use swaymsg || sed -e "s/subdir('swaymsg')//g" -e "/swaymsg.[0-9].scd/d" \
 		-e "/completions\/[a-z]\+\/_\?swaymsg/d" -i meson.build || die
 	use swaynag || sed -e "s/subdir('swaynag')//g" -e "/swaynag.[0-9].scd/d" \
@@ -84,7 +83,7 @@ src_configure() {
 		"-Dwerror=false"
 	)
 
-	if use swaybar || use swaybg; then
+	if use swaybar; then
 		emesonargs+=("-Dgdk-pixbuf=enabled")
 	else
 		emesonargs+=("-Dgdk-pixbuf=disabled")
