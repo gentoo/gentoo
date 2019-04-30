@@ -16,14 +16,13 @@ SRC_URI="http://www.makemkv.com/download/${MY_P}.tar.gz
 LICENSE="LGPL-2.1 MPL-1.1 MakeMKV-EULA openssl"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
-IUSE="+gui libav"
+IUSE="+gui libav libressl"
 
 QA_PREBUILT="usr/bin/makemkvcon usr/bin/mmdtsdec"
 
 DEPEND="
 	sys-libs/glibc
 	dev-libs/expat
-	dev-libs/openssl:0=[-bindist(-)]
 	sys-libs/zlib
 	gui? (
 		dev-qt/qtcore:5
@@ -33,6 +32,8 @@ DEPEND="
 	)
 	!libav? ( >=media-video/ffmpeg-1.0.0:0= )
 	libav? ( >=media-video/libav-0.8.9:0= )
+	!libressl? ( dev-libs/openssl:0=[-bindist(-)] )
+	libressl? ( dev-libs/libressl:0= )
 "
 RDEPEND="${DEPEND}
 	media-video/ccextractor
