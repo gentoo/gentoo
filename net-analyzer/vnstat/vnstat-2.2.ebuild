@@ -2,15 +2,15 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit git-r3 systemd user
+inherit systemd user
 
 DESCRIPTION="Console-based network traffic monitor that keeps statistics of network usage"
 HOMEPAGE="https://humdi.net/vnstat/"
-EGIT_REPO_URI="https://github.com/vergoh/vnstat"
+SRC_URI="https://humdi.net/vnstat/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86"
 IUSE="gd selinux test"
 
 COMMON_DEPEND="
@@ -63,6 +63,6 @@ src_install() {
 	use gd && doman man/vnstati.1
 	doman man/vnstat.1 man/vnstatd.1
 
-	newdoc INSTALL.md README.setup
-	dodoc CHANGES README.md UPGRADE.md FAQ examples/vnstat.cgi
+	newdoc INSTALL README.setup
+	dodoc CHANGES README UPGRADE FAQ examples/vnstat.cgi
 }
