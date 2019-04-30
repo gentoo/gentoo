@@ -1840,7 +1840,7 @@ dev-cpp/cairomm 1.12.0-r1: C++ bindings for the Cairo vector graphics library
 dev-cpp/catch 1.12.2 2.5.0: Modern C++ header-only framework for unit-tests
 dev-cpp/clucene 2.3.3.4-r6: High-performance, full-featured text search engine based off of lucene in C++
 dev-cpp/commoncpp2 1.8.1-r2 1.8.1-r3: C++ library offering portable support for system-related services
-dev-cpp/cpp-hocon 0.1.4: Provides C++ support for the HOCON configuration file format
+dev-cpp/cpp-hocon 0.1.4-r1: Provides C++ support for the HOCON configuration file format
 dev-cpp/ctemplate 2.3-r1: A simple but powerful template language for C++
 dev-cpp/eigen 3.3.7: C++ template library for linear algebra
 dev-cpp/gconfmm 2.28.3-r1: C++ bindings for GConf
@@ -2958,7 +2958,7 @@ dev-libs/concurrencykit 0.5.2 0.6.0: A library with concurrency related algorith
 dev-libs/confuse 3.0: a configuration file parser library
 dev-libs/crc32c 1.0.6: CRC32C implementation with support for CPU-specific acceleration instructions
 dev-libs/crossguid 0_pre20150817: Lightweight cross platform C++ GUID/UUID library
-dev-libs/crypto++ 7.0.0-r3: C++ class library of cryptographic schemes
+dev-libs/crypto++ 5.6.5-r1 7.0.0-r3: C++ class library of cryptographic schemes
 dev-libs/cvector 1.0.3-r1: An ANSI C implementation of dynamic arrays (Approximation of C++ vectors)
 dev-libs/cxxtools 2.2.1: Collection of general purpose C++-classes
 dev-libs/cyberjack 3.99.5_p11 3.99.5_p13: REINER SCT cyberJack USB chipcard reader user space driver
@@ -9088,7 +9088,7 @@ net-misc/x2goclient 4.1.2.1: The X2Go Qt client
 net-misc/x2goserver 4.1.0.2: The X2Go server
 net-misc/yandex-disk 0.1.5.978_p1: CLI to access Yandex Disk file storage service
 net-misc/you-get 0.4.536: utility to download media contents from the web
-net-misc/youtube-dl 2019.04.17: Download videos from YouTube.com (and more sites...)
+net-misc/youtube-dl 2019.04.24: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.3.3: A command line utility for viewing youtube-videos in Mplayer
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
 net-misc/zsync 0.6.2-r1: Partial/differential file download client over HTTP which uses the rsync algorithm
