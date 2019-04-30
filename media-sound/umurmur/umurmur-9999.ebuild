@@ -74,7 +74,7 @@ src_prepare() {
 }
 
 src_configure() {
-	local ssl_provider=( $(get_ssl_impl) )
+	local ssl_provider=( $(sed 's@libressl@openssl@' <<< $(get_ssl_impl)) )
 
 	local myeconfargs=(
 		--with-ssl="${ssl_provider[@]}"
