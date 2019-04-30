@@ -16,8 +16,8 @@ IUSE="debug test"
 
 DEPEND="
 	>=sys-devel/gcc-4.9.3:*
-	>=dev-libs/boost-1.54[nls]
-	>=dev-libs/leatherman-0.9.3
+	>=dev-libs/boost-1.54:=[nls]
+	>=dev-libs/leatherman-0.9.3:=
 	"
 RDEPEND="${DEPEND}"
 
