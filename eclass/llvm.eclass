@@ -17,20 +17,21 @@
 # a proper dependency string yourself to guarantee that appropriate
 # version of LLVM is installed.
 #
-# Example use for a package supporting LLVM 3.8 to 5:
+# Example use for a package supporting LLVM 5 to 7:
 # @CODE
 # inherit cmake-utils llvm
 #
 # RDEPEND="
-#	<sys-devel/llvm-6:=
+#	<sys-devel/llvm-8:=
 #	|| (
+#		sys-devel/llvm:7
+#		sys-devel/llvm:6
 #		sys-devel/llvm:5
-#		sys-devel/llvm:4
-#		>=sys-devel/llvm-3.8:0
 #	)
 # "
+# DEPEND=${RDEPEND}
 #
-# LLVM_MAX_SLOT=5
+# LLVM_MAX_SLOT=7
 #
 # # only if you need to define one explicitly
 # pkg_setup() {
@@ -46,8 +47,9 @@
 # # note: do not use := on both clang and llvm, it can match different
 # # slots then. clang pulls llvm in, so we can skip the latter.
 # RDEPEND="
-#	>=sys-devel/clang-4:=[llvm_targets_AMDGPU(+)]
+#	>=sys-devel/clang-6:=[llvm_targets_AMDGPU(+)]
 # "
+# DEPEND=${RDEPEND}
 #
 # llvm_check_deps() {
 #	has_version "sys-devel/clang:${LLVM_SLOT}[llvm_targets_AMDGPU(+)]"
