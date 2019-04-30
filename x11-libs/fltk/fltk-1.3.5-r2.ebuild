@@ -5,8 +5,8 @@ EAPI=7
 inherit autotools flag-o-matic xdg-utils multilib-minimal
 
 DESCRIPTION="C++ user interface toolkit for X and OpenGL"
-HOMEPAGE="http://www.fltk.org/"
-SRC_URI="http://fltk.org/pub/${PN}/${PV}/${P}-source.tar.gz"
+HOMEPAGE="https://www.fltk.org/"
+SRC_URI="https://www.fltk.org/pub/${PN}/${PV}/${P}-source.tar.gz"
 
 SLOT="1"
 LICENSE="FLTK LGPL-2"
