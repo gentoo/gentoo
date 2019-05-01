@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools db-use eutils systemd user
+inherit autotools db-use eutils systemd tmpfiles user
 
 DESCRIPTION="A milter providing DKIM signing and verification"
 HOMEPAGE="http://opendkim.org/"
@@ -13,10 +13,11 @@ SRC_URI="mirror://sourceforge/opendkim/${P}.tar.gz"
 LICENSE="BSD GPL-2 Sendmail-Open-Source"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
-IUSE="+berkdb ldap libressl lmdb lua memcached opendbx poll sasl selinux +ssl static-libs unbound"
+IUSE="+berkdb ldap libressl lmdb lua memcached opendbx poll sasl selinux +ssl static-libs test unbound"
 
-DEPEND="|| ( mail-filter/libmilter mail-mta/sendmail )
+COMMON_DEPEND="|| ( mail-filter/libmilter mail-mta/sendmail )
 	dev-libs/libbsd
+	sys-apps/grep
 	ssl? (
 		!libressl? ( dev-libs/openssl:0= )
 		libressl? ( dev-libs/libressl:0= )
@@ -31,15 +32,18 @@ DEPEND="|| ( mail-filter/libmilter mail-mta/sendmail )
 	unbound? ( >=net-dns/unbound-1.4.1:= net-dns/dnssec-root )
 	!unbound? ( net-libs/ldns )"
 
-RDEPEND="${DEPEND}
+DEPEND="${COMMON_DEPEND}
+	test? ( dev-lang/lua:* )"
+
+RDEPEND="${COMMON_DEPEND}
 	sys-process/psmisc
-	selinux? ( sec-policy/selinux-dkim )
-"
+	selinux? ( sec-policy/selinux-dkim )"
 
 REQUIRED_USE="sasl? ( ldap )"
 
 PATCHES=(
-	"${FILESDIR}/${P}-openssl-1.1.1.patch"
+	"${FILESDIR}/${P}-openrc.patch"
+	"${FILESDIR}/${P}-openssl-1.1.1.patch.r2"
 )
 
 pkg_setup() {
@@ -51,21 +55,12 @@ pkg_setup() {
 
 src_prepare() {
 	default
-
-	# We delete the "Socket" setting because it's overridden by our
-	# conf.d file.
 	sed -e 's:/var/db/dkim:/var/lib/opendkim:g' \
-		-e '/^[[:space:]]*Socket/d' \
 		-i opendkim/opendkim.conf.sample opendkim/opendkim.conf.simple.in \
-		stats/opendkim-reportstats{,.in} || die
-
-	sed -i -e 's:dist_doc_DATA:dist_html_DATA:' libopendkim/docs/Makefile.am \
 		|| die
-
-	# TODO: what purpose does this serve, do the tests even get run?
-	sed -e "/sock.*mt.getcwd/s:mt.getcwd():${T}:" \
-		-i opendkim/tests/*.lua || die
-
+	sed -e 's:dist_doc_DATA:dist_html_DATA:' \
+		-i libopendkim/docs/Makefile.am \
+		|| die
 	eautoreconf
 }
 
@@ -88,6 +83,12 @@ src_configure() {
 	if use ldap; then
 		myconf+=( $(use_with sasl) )
 	fi
+
+	# We install the our configuration filed under e.g. /etc/opendkim,
+	# so the next line is necessary to point the daemon and all of its
+	# documentation to the right location by default.
+	myconf+=( --sysconfdir="${EPREFIX}/etc/${PN}" )
+
 	econf \
 		$(use_with berkdb db) \
 		$(use_with opendbx odbx) \
@@ -108,19 +109,23 @@ src_configure() {
 		--enable-default_sender \
 		--enable-sender_macro \
 		--enable-vbr \
-		--disable-live-testing
+		--disable-live-testing \
+		--with-test-socket="${T}/opendkim.sock"
+}
+
+src_compile() {
+	emake runstatedir=/run
 }
 
 src_install() {
 	default
-	prune_libtool_files
+	find "${D}" -name '*.la' -type f -delete || die
 
 	dosbin stats/opendkim-reportstats
 
-	newinitd "${FILESDIR}/opendkim.init.r6" opendkim
-	newconfd "${FILESDIR}/opendkim.confd" opendkim
-	systemd_newunit "${FILESDIR}/opendkim.service.r4" opendkim.service
-	systemd_install_serviced "${FILESDIR}/${PN}.service.conf" "${PN}.service"
+	newinitd "${S}/contrib/OpenRC/opendkim.openrc" "${PN}"
+	systemd_newtmpfilesd "${S}/contrib/systemd/opendkim.tmpfiles" "${PN}.conf"
+	systemd_newunit "contrib/systemd/opendkim.service" "${PN}.service"
 
 	dodir /etc/opendkim
 	keepdir /var/lib/opendkim
@@ -130,44 +135,45 @@ src_install() {
 	fowners root:opendkim /var/lib/opendkim
 	fperms 750 /var/lib/opendkim
 
-	# Strip the comments out of the "simple" example configuration...
-	grep ^[^#] "${S}"/opendkim/opendkim.conf.simple \
-		 > "${T}/opendkim.conf" || die
+	# Tweak the "simple" example configuration a bit before installing
+	# it unconditionally.
+	local cf="${T}/opendkim.conf"
+	# Some MTAs are known to break DKIM signatures with "simple"
+	# canonicalization [1], so we choose the "relaxed" policy
+	# over OpenDKIM's current default settings.
+	# [1] https://wordtothewise.com/2016/12/dkim-canonicalization-or-why-microsoft-breaks-your-mail/
+	sed -E -e 's:^(Canonicalization)[[:space:]]+.*:\1\trelaxed/relaxed:' \
+		"${S}/opendkim/opendkim.conf.simple" >"${cf}" || die
+	cat >>"${cf}" <<EOT || die
 
-	# and tweak it a bit before installing it unconditionally.
-	echo "# For use with unbound" >> "${T}/opendkim.conf" || die
-	echo "#TrustAnchorFile /etc/dnssec/root-anchors.txt" \
-		 >> "${T}/opendkim.conf" || die
-	echo "UserID opendkim" >> "${T}/opendkim.conf" || die
+# The UMask is really only used for the PID file (root:root) and the
+# local UNIX socket, if you're using one. It should be 0117 for the
+# socket.
+UMask			0117
+UserID			opendkim
 
-	# The UMask is really only used for the PID file (root:root) and the
-	# local UNIX socket, if you're using one. It should be 0117 for the
-	# socket, so we might as well set that unconditionally here.
-	echo "UMask 0117" >> "${T}/opendkim.conf" || die
-
+# For use with unbound
+#TrustAnchorFile	/etc/dnssec/root-anchors.txt
+EOT
 	insinto /etc/opendkim
-	doins "${T}/opendkim.conf"
+	doins "${cf}"
 }
 
 pkg_postinst() {
+	tmpfiles_process "${PN}.conf"
 	if [[ -z ${REPLACING_VERSION} ]]; then
 		elog "If you want to sign your mail messages and need some help"
 		elog "please run:"
-		elog "  emerge --config ${CATEGORY}/${PN}"
+		elog "	emerge --config ${CATEGORY}/${PN}"
 		elog "It will help you create your key and give you hints on how"
 		elog "to configure your DNS and MTA."
 
-		# TODO: This is tricky, we really need a good wiki page showing
-		# how to share a local socket with an MTA!
 		elog "If you are using a local (UNIX) socket, then you will"
 		elog "need to make sure that your MTA has read/write access"
 		elog "to the socket file. This is best accomplished by creating"
-		elog "a completely-new group with only your MTA user and the "
-		elog "\"opendkim\" user in it. You would then set \"UMask 0112\""
-		elog "in your opendkim.conf, and switch the primary group of your"
-		elog "\"opendkim\" user to the group that you just created. The"
-		elog "last step is necessary for the socket to be created as the"
-		elog "new group (and not as group \"opendkim\")".
+		elog "a completely-new group with only your MTA user and the"
+		elog "\"opendkim\" user in it. Step-by-step instructions can be"
+		elog "found on our Wiki, at https://wiki.gentoo.org/wiki/OpenDKIM ."
 	else
 		ewarn "The user account for the OpenDKIM daemon has changed"
 		ewarn "from \"milter\" to \"opendkim\" to prevent unrelated services"
@@ -200,9 +206,8 @@ pkg_config() {
 		opendkim-genkey -b ${keysize} -D "${ROOT}"var/lib/opendkim/ \
 			-s "${selector}" -d '(your domain)' && \
 			chgrp --no-dereference opendkim \
-				  "${ROOT}var/lib/opendkim/${selector}".{private,txt} || \
-				{ eerror "Failed to create private and public keys." ;
-				  return 1; }
+				"${ROOT}var/lib/opendkim/${selector}".{private,txt} || \
+				{ eerror "Failed to create private and public keys."; return 1; }
 		chmod g+r "${ROOT}var/lib/opendkim/${selector}".{private,txt}
 	fi
 
@@ -215,7 +220,7 @@ pkg_config() {
 	# MTA configuration
 	echo
 	einfo "If you are using Postfix, add following lines to your main.cf:"
-	einfo "  smtpd_milters     = unix:/run/opendkim/opendkim.sock"
+	einfo "  smtpd_milters	   = unix:/run/opendkim/opendkim.sock"
 	einfo "  non_smtpd_milters = unix:/run/opendkim/opendkim.sock"
 	einfo "  and read http://www.postfix.org/MILTER_README.html"
 
