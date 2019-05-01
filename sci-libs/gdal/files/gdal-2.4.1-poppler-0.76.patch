@@ -1,0 +1,24 @@
+From 8958528f9b5737581afa7249b0e16f2ff89d727e Mon Sep 17 00:00:00 2001
+From: Even Rouault <even.rouault@spatialys.com>
+Date: Sun, 21 Apr 2019 12:19:56 +0200
+Subject: [PATCH] PDF: add support for Poppler 0.76.0
+
+---
+ gdal/frmts/pdf/pdfsdk_headers.h | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/frmts/pdf/pdfsdk_headers.h b/frmts/pdf/pdfsdk_headers.h
+index 41e48ae91d6..1f77429bf9b 100644
+--- a/frmts/pdf/pdfsdk_headers.h
++++ b/frmts/pdf/pdfsdk_headers.h
+@@ -55,7 +55,10 @@
+ #else
+ typedef unsigned char Guchar;
+ #endif
++
++#if !(POPPLER_MAJOR_VERSION >= 1 || POPPLER_MINOR_VERSION >= 76)
+ #include <goo/GooList.h>
++#endif
+ 
+ /* begin of poppler xpdf includes */
+ #include <poppler/Object.h>

@@ -82,6 +82,8 @@ PATCHES=(
 	"${FILESDIR}/${PN}-2.2.3-soname.patch"
 	"${FILESDIR}/${PN}-2.2.3-bashcomp-path.patch" # bug 641866
 	"${FILESDIR}/${PN}-2.3.0-curl.patch" # bug 659840
+	"${FILESDIR}/${P}-poppler-0.75.patch"
+	"${FILESDIR}/${P}-poppler-0.76.patch"
 )
 
 src_prepare() {
@@ -174,7 +176,6 @@ src_configure() {
 		--without-rasterlite2
 		--without-pcraster
 		--without-pdfium
-		--without-php
 		--without-podofo
 		--without-qhull
 		--without-sde
