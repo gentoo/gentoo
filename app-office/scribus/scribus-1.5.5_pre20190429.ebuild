@@ -122,6 +122,8 @@ src_prepare() {
 		-e "/^add_subdirectory(ui\/qml)/s/^/#DONT/" \
 		-i scribus/CMakeLists.txt || die # nothing but a bogus Hello World test
 
+	has_version ">=app-text/poppler-0.76.0" PATCHES+=( "${FILESDIR}"/${P}-poppler-0.76.patch )
+
 	cmake-utils_src_prepare
 }
 
