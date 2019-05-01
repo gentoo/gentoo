@@ -3,7 +3,7 @@
 
 EAPI=6
 
-USE_RUBY="ruby23 ruby24 ruby25"
+USE_RUBY="ruby23 ruby24 ruby25 ruby26"
 
 RUBY_FAKEGEM_TASK_DOC=""
 RUBY_FAKEGEM_DOCDIR="doc"
@@ -39,7 +39,7 @@ ruby_add_bdepend "
 	test? (
 		dev-ruby/mocha:0.14
 		dev-ruby/bundler
-		>=dev-ruby/capybara-2.13:2
+		>=dev-ruby/capybara-2.15
 		~dev-ruby/activemodel-${PV}
 		>=dev-ruby/rack-cache-1.2:1.2
 		www-servers/puma
