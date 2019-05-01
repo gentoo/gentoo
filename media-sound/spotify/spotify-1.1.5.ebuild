@@ -1,16 +1,13 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit gnome2-utils pax-utils unpacker xdg-utils
+EAPI=7
+inherit desktop pax-utils unpacker xdg
 
 DESCRIPTION="Spotify is a social music platform"
 HOMEPAGE="https://www.spotify.com/ch-de/download/previews/"
 SRC_BASE="http://repository.spotify.com/pool/non-free/s/${PN}-client/"
-BUILD_ID_AMD64="237.g378f6f25-11"
-#BUILD_ID_X86=""
-#SRC_URI="amd64? ( ${SRC_BASE}${PN}-client_${PV}.${BUILD_ID_AMD64}_amd64.deb )
-#	x86? ( ${SRC_BASE}${PN}-client_${PV}.${BUILD_ID_X86}_i386.deb )"
+BUILD_ID_AMD64="153.gf614956d-16"
 SRC_URI="${SRC_BASE}${PN}-client_${PV}.${BUILD_ID_AMD64}_amd64.deb"
 LICENSE="Spotify"
 SLOT="0"
@@ -18,27 +15,28 @@ KEYWORDS="~amd64"
 IUSE="libnotify systray pax_kernel pulseaudio"
 RESTRICT="mirror strip"
 
-DEPEND=">=dev-util/patchelf-0.9_p20180129"
+BDEPEND=">=dev-util/patchelf-0.10"
 # zenity needed for filepicker
 RDEPEND="
-	dev-libs/openssl:0
 	dev-libs/nss
+	dev-libs/openssl:0
+	dev-python/dbus-python
+	dev-python/pygobject:3
 	gnome-base/gconf
 	gnome-extra/zenity
+	libnotify? ( x11-libs/libnotify )
 	media-libs/alsa-lib
-	media-libs/harfbuzz
 	media-libs/fontconfig
+	media-libs/harfbuzz
 	media-libs/mesa
 	net-misc/curl[ssl]
 	net-print/cups[ssl]
+	pulseaudio? ( media-sound/pulseaudio )
+	systray? ( gnome-extra/gnome-integration-spotify )
 	x11-libs/gtk+:2
 	x11-libs/libXScrnSaver
 	x11-libs/libXtst
-	dev-python/pygobject:3
-	dev-python/dbus-python
-	libnotify? ( x11-libs/libnotify )
-	pulseaudio? ( media-sound/pulseaudio )
-	systray? ( gnome-extra/gnome-integration-spotify )"
+"
 	#sys-libs/glibc
 
 S=${WORKDIR}/
@@ -100,17 +98,9 @@ src_install() {
 }
 
 pkg_postinst() {
-	gnome2_icon_cache_update
-	xdg_mimeinfo_database_update
-	xdg_desktop_database_update
+	xdg_pkg_postinst
 
 	ewarn "If Spotify crashes after an upgrade its cache may be corrupt."
 	ewarn "To remove the cache:"
 	ewarn "rm -rf ~/.cache/spotify"
-}
-
-pkg_postrm() {
-	gnome2_icon_cache_update
-	xdg_mimeinfo_database_update
-	xdg_desktop_database_update
 }

@@ -31,6 +31,8 @@ DEPEND="${RDEPEND}
 	kernel_linux? ( sys-apps/attr )
 "
 
+PATCHES=( "${FILESDIR}/${P}-non-speex-files-crash.patch" )
+
 pkg_setup() {
 	use test && python-any-r1_pkg_setup
 	kde5_pkg_setup
