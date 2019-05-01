@@ -4,6 +4,7 @@
 EAPI=7
 
 CMAKE_MIN_VERSION="3.11"
+CMAKE_MAKEFILE_GENERATOR="emake"
 inherit cmake-utils xdg
 
 DESCRIPTION="WYSIWYG Music Score Typesetter"
