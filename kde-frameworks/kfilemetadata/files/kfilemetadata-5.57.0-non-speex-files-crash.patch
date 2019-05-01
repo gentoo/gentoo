@@ -1,0 +1,46 @@
+From 61b1916c3e87c3b8f4fc3d1f1d19bf427b9247da Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Tue, 30 Apr 2019 03:51:14 +0200
+Subject: [TagLibExtractor] Fix crash on invalid Speex files
+
+Summary:
+TagLib::Ogg::Speex::File::isValid() returns true even for invalid files,
+but tag() only returns a valid XiphComment when the file is valid.
+
+Other TagLib::Ogg::* classes properly clear the valid flag when
+encountering files.
+
+See https://github.com/taglib/taglib/issues/902
+
+BUG: 403902
+
+Reviewers: #baloo, #frameworks, ngraham, astippich
+
+Reviewed By: #baloo, ngraham, astippich
+
+Subscribers: kde-frameworks-devel
+
+Tags: #frameworks, #baloo
+
+Differential Revision: https://phabricator.kde.org/D20913
+---
+ src/extractors/taglibextractor.cpp | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/src/extractors/taglibextractor.cpp b/src/extractors/taglibextractor.cpp
+index 1954cac..e355907 100644
+--- a/src/extractors/taglibextractor.cpp
++++ b/src/extractors/taglibextractor.cpp
+@@ -476,7 +476,9 @@ void TagLibExtractor::extract(ExtractionResult* result)
+         }
+     } else if (mimeType == QLatin1String("audio/speex") || mimeType == QLatin1String("audio/x-speex+ogg")) {
+         TagLib::Ogg::Speex::File file(&stream, true);
+-        if (file.isValid()) {
++        // Workaround for buggy taglib:
++        // isValid() returns true for invalid files, but XiphComment* tag() returns a nullptr
++        if (file.isValid() && file.tag()) {
+             extractAudioProperties(&file, result);
+             readGenericProperties(file.properties(), result);
+         }
+-- 
+cgit v1.1
