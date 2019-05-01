@@ -18,3 +18,8 @@ DEPEND="${RDEPEND}
 if [[ ${CATEGORY} != cross-* ]] ; then
 	PDEPEND="${PDEPEND} elibc_glibc? ( >=sys-libs/glibc-2.13 )"
 fi
+
+src_prepare() {
+	toolchain_src_prepare
+	epatch "${FILESDIR}"/gcc-8.3.0-ia64-bootstrap.patch
+}
