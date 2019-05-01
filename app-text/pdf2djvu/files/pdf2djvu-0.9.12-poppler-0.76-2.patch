@@ -1,0 +1,69 @@
+From 8b0348b3d5f33494d7e637411633fbea511a78d7 Mon Sep 17 00:00:00 2001
+From: Jakub Wilk <jwilk@jwilk.net>
+Date: Mon, 1 Apr 2019 08:49:02 +0200
+Subject: [PATCH] Use Catalog::findPage(Ref) as alternative to
+ Catalog::findPage(int, int).
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Fixes:
+
+    pdf2djvu.cc: In function ‘int get_page_for_goto_link(pdf::link::GoTo*, pdf::Catalog*)’:
+    pdf2djvu.cc:90:56: error: no matching function for call to ‘Catalog::findPage(int&, int&)’
+---
+ pdf-backend.cc | 15 +++++++++++++++
+ pdf-backend.hh |  2 ++
+ pdf2djvu.cc    |  2 +-
+ 3 files changed, 18 insertions(+), 1 deletion(-)
+
+diff --git a/pdf-backend.cc b/pdf-backend.cc
+index f1d7662..a1b9b63 100644
+--- a/pdf-backend.cc
++++ b/pdf-backend.cc
+@@ -631,4 +631,19 @@ const char * pdf::get_c_string(const pdf::String *str)
+ }
+ #endif
+ 
++template <typename C> static auto find_page_impl(C *catalog, pdf::Ref pgref) -> decltype(catalog->findPage(0, 0))
++{
++  return catalog->findPage(pgref.num, pgref.gen);
++}
++
++template <typename C> static auto find_page_impl(C *catalog, pdf::Ref pgref) -> decltype(catalog->findPage(pgref))
++{
++  return catalog->findPage(pgref);
++}
++
++int pdf::find_page(pdf::Catalog *catalog, pdf::Ref pgref)
++{
++  return find_page_impl<pdf::Catalog>(catalog, pgref);
++}
++
+ // vim:ts=2 sts=2 sw=2 et
+diff --git a/pdf-backend.hh b/pdf-backend.hh
+index d7872c3..d88c956 100644
+--- a/pdf-backend.hh
++++ b/pdf-backend.hh
+@@ -436,6 +436,8 @@ namespace pdf
+ 
+   const char * get_c_string(const pdf::String *str);
+ 
++  int find_page(pdf::Catalog *catalog, pdf::Ref pgref);
++
+ }
+ 
+ #endif
+diff --git a/pdf2djvu.cc b/pdf2djvu.cc
+index d9e1532..21f2d50 100644
+--- a/pdf2djvu.cc
++++ b/pdf2djvu.cc
+@@ -87,7 +87,7 @@ static int get_page_for_goto_link(pdf::link::GoTo *goto_link, pdf::Catalog *cata
+     if (dest->isPageRef())
+     {
+       pdf::Ref pageref = dest->getPageRef();
+-      page = catalog->findPage(pageref.num, pageref.gen);
++      page = pdf::find_page(catalog, pageref);
+     }
+     else
+       page = dest->getPageNum();
