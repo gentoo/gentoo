@@ -385,6 +385,20 @@ multilib_env() {
 			: ${MULTILIB_ABIS=ppc64 ppc}
 			: ${DEFAULT_ABI=ppc64}
 		;;
+		riscv64*)
+			export CFLAGS_lp64d=${CFLAGS_lp64d--mabi=lp64d}
+			export CHOST_lp64d=${CTARGET}
+			export CTARGET_lp64d=${CTARGET}
+			export LIBDIR_lp64d="lib64/lp64d"
+
+			export CFLAGS_lp64=${CFLAGS_lp64--mabi=lp64}
+			export CHOST_lp64=${CTARGET}
+			export CTARGET_lp64=${CTARGET}
+			export LIBDIR_lp64="lib64/lp64"
+
+			: ${MULTILIB_ABIS=lp64d lp64}
+			: ${DEFAULT_ABI=lp64d}
+		;;
 		s390x*)
 			export CFLAGS_s390=${CFLAGS_s390--m31} # the 31 is not a typo
 			export CHOST_s390=${CTARGET/s390x/s390}
