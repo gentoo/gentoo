@@ -32,7 +32,7 @@ PATCHDIR="${WORKDIR}/gentoo-wine-patches"
 DESCRIPTION="Free implementation of Windows(tm) on Unix, with Wine-Staging patchset"
 HOMEPAGE="https://www.winehq.org/"
 SRC_URI="${SRC_URI}
-	https://dev.gentoo.org/~np-hardass/distfiles/wine/gentoo-wine-patches-${GWP_V}.tar.xz
+	https://dev.gentoo.org/~sarnex/distfiles/wine/gentoo-wine-patches-${GWP_V}.tar.xz
 "
 
 if [[ ${PV} == "9999" ]] ; then
