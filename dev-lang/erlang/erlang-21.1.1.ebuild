@@ -70,8 +70,7 @@ src_configure() {
 		$(use_with java javac)
 		$(use_with odbc)
 		$(use_enable sctp)
-		$(use_with ssl)
-		$(usex ssl "--with-ssl-rpath" "")
+		$(use_with ssl ssl "${EPREFIX}"/usr)
 		$(use_enable ssl dynamic-ssl-lib)
 		$(use_enable systemd)
 		$(use_enable pgo)
@@ -113,7 +112,7 @@ src_install() {
 	[[ -z "${erl_erts_ver}" ]] && die "Couldn't determine erts version"
 	[[ -z "${erl_interface_ver}" ]] && die "Couldn't determine interface version"
 
-	emake INSTALL_PREFIX="${ED}" install
+	emake INSTALL_PREFIX="${D}" install
 
 	if use doc ; then
 		local DOCS=( "AUTHORS" "HOWTO"/* "README.md" "CONTRIBUTING.md" "${WORKDIR}"/doc/. "${WORKDIR}"/lib/. "${WORKDIR}"/erts-* )
