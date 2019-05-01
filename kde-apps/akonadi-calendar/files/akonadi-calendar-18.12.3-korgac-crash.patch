@@ -1,0 +1,46 @@
+From c9129b07b42097f6b5eb54c2103d22a9c2263d83 Mon Sep 17 00:00:00 2001
+From: David Faure <faure@kde.org>
+Date: Wed, 27 Mar 2019 14:45:25 +0100
+Subject: Fix crash due to using an attribute from a collection that went out
+ of scope
+
+Summary: Probably a consequence of the const/non-const changes (detaching?)
+
+Test Plan:
+Untested, but based on a crash report by Allen, pointing to
+ETMCalendar::alarms() calling BlockAlarmsAttribute::isAlarmTypeBlocked
+on line 579.
+
+Reviewers: dvratil, winterz
+
+Reviewed By: dvratil
+
+Subscribers: kde-pim
+
+Tags: #kde_pim
+
+Differential Revision: https://phabricator.kde.org/D20079
+---
+ src/etmcalendar.cpp | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/etmcalendar.cpp b/src/etmcalendar.cpp
+index 295785d..75e131b 100644
+--- a/src/etmcalendar.cpp
++++ b/src/etmcalendar.cpp
+@@ -549,11 +549,12 @@ KCalCore::Alarm::List ETMCalendar::alarms(const QDateTime &from,
+     while (i.hasNext()) {
+         const Akonadi::Item item = i.next().value();
+ 
++        Akonadi::Collection parentCollection; // must have same lifetime as blockedAttr
+         BlockAlarmsAttribute *blockedAttr = nullptr;
+ 
+         if (excludeBlockedAlarms) {
+             // take the collection from m_collectionMap, because we need the up-to-date collection attrs
+-            Akonadi::Collection parentCollection = d->mCollectionMap.value(item.storageCollectionId());
++            parentCollection = d->mCollectionMap.value(item.storageCollectionId());
+             if (parentCollection.isValid() && parentCollection.hasAttribute<BlockAlarmsAttribute>()) {
+                 blockedAttr = parentCollection.attribute<BlockAlarmsAttribute>();
+                 if (blockedAttr->isEverythingBlocked()) {
+-- 
+cgit v1.1
