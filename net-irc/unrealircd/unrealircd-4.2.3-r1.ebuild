@@ -21,7 +21,6 @@ RDEPEND="
 	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:= )
 	dev-libs/libpcre2
-	dev-libs/tre
 	>=net-dns/c-ares-1.7:=
 	net-libs/libnsl:=
 	sys-libs/zlib
@@ -77,14 +76,14 @@ src_configure() {
 		--without-privatelibdir \
 		--with-pidfile="${EPREFIX}"/run/${PN}/ircd.pid \
 		--with-tmpdir="${EPREFIX}"/var/lib/${PN}/tmp \
+		--with-maxconnections=1024 \
 		--with-nick-history=2000 \
 		--with-sendq=3000000 \
 		--with-permissions=0640 \
-		--with-fd-setsize=1024 \
 		--with-system-argon2 \
 		--with-system-cares \
 		--with-system-pcre2 \
-		--with-system-tre \
+		--without-tre \
 		--enable-dynamic-linking \
 		--enable-ssl="${EPREFIX}"/usr \
 		$(use_enable curl libcurl "${EPREFIX}"/usr) \
