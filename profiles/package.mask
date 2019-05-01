@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Jory A. Pratt <anarchy@gentoo.org> (1 May 2019)
+# No longer supported and or needed by in tree packages.
+# Masked for removal in 30 Days. Bug #684904
+dev-lang/spidermonkey:24
+
 # Mart Raudsepp <leio@gentoo.org> (27 Apr 2019)
 # Old gstreamer 0.10 versions. Use gstreamer:1.0 and co instead.
 # Masked for removal in 30 days. Bug #550648
