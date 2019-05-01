@@ -1,14 +1,14 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="sqlite"
 
-inherit flag-o-matic multiprocessing python-single-r1 toolchain-funcs versionator
+inherit flag-o-matic multiprocessing python-single-r1 toolchain-funcs
 
-MY_V="${PN^^}$(get_version_component_range 1)"
+MY_V="${PN^^}${PV}"
 
 DESCRIPTION="Tianocore UEFI Development kit"
 HOMEPAGE=" https://github.com/tianocore/tianocore.github.io/wiki/EDK-II"
@@ -19,6 +19,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc examples"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+RESTRICT="strip"
 
 RDEPEND="${PYTHON_DEPS}"
 DEPEND="${RDEPEND}
@@ -27,18 +28,20 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}/MyWorkSpace"
 
+# Generated libs for EFI can contain WX sections
+QA_EXECSTACK="usr/lib*/libBaseLib.a:*"
+
 pkg_setup() {
 	python_setup 'python2.7'
 
-	local uname_arch=$(uname -m | sed -e 's:i[3456789]86:IA32:')
-	if [[ ${uname_arch} == "x86_64" ]] || [[ ${uname_arch} == "amd64" ]] ; then
-		export ARCH=X64
-	else
-		export ARCH=${uname_arch}
+	if [[ ${ARCH} == "amd64" ]]; then
+		ARCH=X64
+	elif [[ ${ARCH} == "x86" ]]; then
+		ARCH=IA32
 	fi
 
 	# We will create a custom toolchain with user defined settings
-	export TOOLCHAIN_TAG="CUSTOM"
+	TOOLCHAIN_TAG="CUSTOM"
 }
 
 src_unpack() {
@@ -54,10 +57,11 @@ src_unpack() {
 		mkdir -p "${S}/doc" || die
 		pushd "${S}/doc" >/dev/null || die
 		for f in "${WORKDIR}/Documents/"*" Document.zip"; do
-			doc_name=$(echo ${f} | sed -e 's:^.*/\([^/]*\) Document[.]zip$:\1:')
+			doc_name=${f##*/}
+			doc_name=${doc_name% Document.zip}
 			if [[ -f "${WORKDIR}/Documents/${doc_name} Document.zip" ]]; then
 				unpack "${WORKDIR}/Documents/${doc_name} Document.zip"
-				mv "${S}/doc/html" "${S}/doc/${doc_name}" || die
+				mv "html" "${doc_name}" || die
 			fi
 		done
 		popd >/dev/null || die
@@ -67,14 +71,16 @@ src_unpack() {
 }
 
 src_configure() {
+	# Patch source file for permissive error (issue #639080)
+	sed -e "s/\(mStringFileName == \)'\\\\0'/\1NULL/" \
+		-i "${S}/BaseTools/Source/C/VfrCompile/VfrUtilityLib.cpp" \
+		|| die "Failed to patch source file"
+	sed -e "s/\((StringPtr != \)L'\\\\0'/\1NULL/" \
+		-i "${S}/MdeModulePkg/Library/UefiHiiLib/HiiLib.c" \
+		|| die "Failed to patch source file"
 	# Compile of Base Tools is required for further setting up the environment
 	# Base tools does not like parallel make
-	local cflags_save=${CFLAGS}
-	append-cflags $(test-flags-CC -MD) $(test-flags-CC -fshort-wchar)
-	append-cflags $(test-flags-CC -fno-strict-aliasing)
-	append-cflags $(test-flags-CC -nostdlib) $(test-flags-CC -c)
-	append-cflags $(test-flags-CC -fPIC)
-	sed -e "s:^\(CFLAGS\s*=\).*$:\1 ${CFLAGS}:" \
+	sed -e "s:^\(CFLAGS\s*=\).*$:\1 ${CFLAGS} -MD -fshort-wchar -fno-strict-aliasing -nostdlib -c -fPIC:" \
 		-i "${S}/BaseTools/Source/C/Makefiles/header.makefile" \
 		|| die "Failed to update makefile header"
 	local make_flags=(
@@ -88,9 +94,7 @@ src_configure() {
 	. edksetup.sh BaseTools
 
 	# Update flags in UDK parameter files
-	CFLAGS=${cflags_save}
-	append-cflags $(test-flags-CC -fshort-wchar)
-	append-cflags $(test-flags-CC -fno-strict-aliasing) $(test-flags-CC -c)
+	append-cflags -fshort-wchar -fno-strict-aliasing -c
 	append-cflags $(test-flags-CC -ffunction-sections)
 	append-cflags $(test-flags-CC -fdata-sections)
 	append-cflags $(test-flags-CC -fno-stack-protector)
@@ -117,14 +121,12 @@ src_configure() {
 }
 
 src_compile() {
-	local build_target
 	if use examples; then
-		build_target=all
-	else
-		build_target=libraries
+		ewarn "Examples installation does not work anymore"
+		ewarn "Try with a most recent version of the package"
 	fi
 
-	build ${build_target} || die "Failed to compile environment"
+	build libraries || die "Failed to compile environment"
 }
 
 src_install() {
@@ -132,24 +134,19 @@ src_install() {
 	local build_dir="${S}/Build/MdeModule/RELEASE_${TOOLCHAIN_TAG}/${ARCH}"
 
 	for f in "${build_dir}"/*/Library/*/*/OUTPUT/*.lib; do
-		newlib.a "${f}" lib$(basename "${f}" .lib).a
+		local fn="lib${f##*/}"
+		newlib.a "${f}" "${fn%.lib}.a"
 	done
-	dolib "${S}/BaseTools/Scripts/GccBase.lds"
+	dolib.a "${S}/BaseTools/Scripts/GccBase.lds"
 
-	local include_dest="/usr/include/${PN}"
-	for f in "" /Guid /IndustryStandard /Library /Pi /Ppi /Protocol /Uefi; do
-		insinto "${include_dest}${f}"
-		doins "${S}/MdePkg/Include${f}"/*.h
-	done
-	insinto "${include_dest}"
-	doins "${S}/MdePkg/Include/${ARCH}"/*.h
+	insinto "/usr/include/${PN}"
+	doins "${S}/MdePkg/Include/"*.h
+	doins -r "${S}/MdePkg/Include/"{${ARCH}/.,Guid,IndustryStandard,Library,Pi,Ppi,Protocol,Uefi}
 	local hfile
-	find "${S}" -name 'BaseTools' -prune -o -name 'MdePkg' -prune -o \
-		-name 'CryptoPkg' -prune -o -type d -name Include \
-		-exec find {} -maxdepth 0 \; \
-		| while read hfile; do
-		doins -r "${hfile}"/*
-	done
+	while read -d '' -r hfile; do
+		doins -r "${hfile}/."
+	done < <(find "${S}" -name 'BaseTools' -prune -o -name 'MdePkg' -prune -o \
+		-name 'CryptoPkg' -prune -o -type d -name Include -print0)
 
 	dobin "${S}/BaseTools/Source/C/bin/GenFw"
 
@@ -157,52 +154,11 @@ src_install() {
 		docinto "html"
 		# Document installation may be very long, so split it and display message
 		for f in "${S}"/doc/*; do
-			ebegin "Installing documentation for $(basename ${f}), please wait"
+			ebegin "Install documentation for ${f##*/}"
 			dodoc -r "${f}"
 			eend $?
 		done
 	fi
-
-	local ex_rebuild_dir
-	local ex_name
-	local ex_build_dir
-	if use examples; then
-		ex_rebuild_dir="${S}/${P}-exemples"
-		for f in "${S}/MdeModulePkg/Application"/*; do
-			ex_name=$(basename "${f}")
-			ebegin "Preparing ${ex_name} example"
-			mkdir -p "${ex_rebuild_dir}/${ex_name}" || die
-			ex_build_dir="${build_dir}/MdeModulePkg/Application"
-			ex_build_dir="${ex_build_dir}/${ex_name}/${ex_name}"
-
-			copySourceFiles "${f}" "${ex_rebuild_dir}/${ex_name}"
-			copySourceFiles "${ex_build_dir}/DEBUG" "${ex_rebuild_dir}/${ex_name}"
-			createMakefile "${ex_rebuild_dir}/${ex_name}/Makefile" \
-				"${ex_name}" "${ex_build_dir}/GNUmakefile"
-
-			tar -C "${ex_rebuild_dir}" -cf "${ex_rebuild_dir}/${ex_name}.tar" \
-				"${ex_name}" || die
-
-			eend $? "Failed to create example file"
-		done
-		docinto "examples"
-		dodoc "${ex_rebuild_dir}"/*.tar
-	fi
-
-# TODO * QA Notice: The following files contain writable and executable sections
-# TODO * !WX --- --- usr/lib64/libBaseLib.a:Thunk16.obj
-# TODO * !WX --- --- usr/lib64/libBaseLib.a:SwitchStack.obj
-# TODO * !WX --- --- usr/lib64/libBaseLib.a:SetJump.obj
-# TODO * !WX --- --- usr/lib64/libBaseLib.a:LongJump.obj
-# TODO * !WX --- --- usr/lib64/libBaseLib.a:EnableDisableInterrupts.obj
-# TODO * !WX --- --- usr/lib64/libBaseLib.a:DisablePaging64.obj
-# TODO * !WX --- --- usr/lib64/libBaseLib.a:CpuId.obj
-# TODO * !WX --- --- usr/lib64/libBaseLib.a:CpuIdEx.obj
-# TODO * !WX --- --- usr/lib64/libBaseLib.a:EnableCache.obj
-# TODO * !WX --- --- usr/lib64/libBaseLib.a:DisableCache.obj
-# TODO * QA Notice: Package triggers severe warnings which indicate that it
-# TODO *            may exhibit random runtime failures.
-# TODO * /usr/include/bits/string3.h:90:70: warning: call to void* __builtin___memset_chk(void*, int, long unsigned int, long unsigned int) will always overflow destination buffer
 }
 
 ##
@@ -213,7 +169,7 @@ copySourceFiles() {
 	local dest_file
 	while read -d '' -r filename; do
 		dest_file="${2}${filename#${1}}"
-		mkdir -p $(dirname "${dest_file}") || die
+		mkdir -p "${dest_file%/*}" || die
 		mv "${filename}" "${dest_file}" || die
 	done < <(find "${1}" -name '*.h' -print0 -o -name '*.c' -print0)
 }

@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE="ldap webhooks"
 
-RDEPEND=">=dev-python/django-2.1.5[${PYTHON_USEDEP}]
+RDEPEND=">=dev-python/django-2.2[${PYTHON_USEDEP}]
 	>=dev-python/django-cors-headers-2.4.0[${PYTHON_USEDEP}]
 	>=dev-python/django-debug-toolbar-1.11[${PYTHON_USEDEP}]
 	>=dev-python/django-filter-2.0.0[${PYTHON_USEDEP}]
@@ -45,30 +45,38 @@ PATCHES=(
 DISABLE_AUTOFORMATTING=YES
 DOC_CONTENTS="
 netbox is installed on your system. However, there are some manual steps
-you need to complete.
+you need to complete from the installation guide [1].
 
-If this is a new installation, please follow these instructions:
+On Gentoo, the configuration files you need to edit are located in
+/etc/netbox, not /opt/netbox as shown in the installation guide.
 
-From the installation instructions [1], you need to configure postgres
-ldap and webhooks if you want to use them.  Then, you need to
-configure and install a web server. Gunicorn is already installed, so
-skip that step.
+If this is a new installation, please follow the installation guide
+other than this difference. Also, if you need ldap or webhooks, set the
+appropriate use flags when you emerge netbox to install the
+dependencies.
 
 Once that is done, you should be able to add the netbox service to the
 default runlevel and start it.
 
 If you have webhooks turned on,  you should also add the netbox-rqworker
-	to the default runlevel and start it.
+service to the default runlevel and start it.
 
-The files you need to edit are located in /etc/netbox, not /opt/netbox,
-as shown in the installation instructions.
+If this is an upgrade, follow these instructions:
 
-If this is an upgrade, you just need to stop the netbox service,
-	run the /opt/netbox/upgrade.sh script, check for new configuration
-	options in the installation documentation [1] then restart the
-	service.
+Stop the netbox service. If the  netbox-rqworker service is running,
+stop it as well.
+
+Next, run the upgrade script as described in the upgrading guide[2].
+
+Next, check for new configuration options and set them as appropriate
+for your system.
+
+Next, start the netbox service.
+
+Finally, if you are using webhooks, start the netbox-rqworker service.
 
 [1] https://netbox.readthedocs.io/en/stable/installation/
+[2] https://netbox.readthedocs.io/en/stable/installation/upgrading/
 "
 
 pkg_setup() {
@@ -87,11 +95,14 @@ dosym ../../etc/netbox/gunicorn_config.py /opt/netbox/gunicorn_config.py
 	insinto /etc/netbox
 	newins netbox/netbox/configuration.example.py configuration.py
 	doins "${FILESDIR}"/gunicorn_config.py
-	fowners -R netbox:netbox /etc/netbox
+	fowners -R netbox:netbox /etc/netbox /opt/${P}
+	fowners -h netbox:netbox /opt/netbox
 	fperms o= /etc/netbox/configuration.py /etc/netbox/gunicorn_config.py
 	newinitd "${FILESDIR}"/${PN}.initd ${PN}
 	use webhooks &&
 		newinitd "${FILESDIR}"/${PN}-rqworker.initd ${PN}-rqworker
+	keepdir /var/log/netbox
+	fowners -R netbox:netbox /var/log/netbox
 	readme.gentoo_create_doc
 }
 
