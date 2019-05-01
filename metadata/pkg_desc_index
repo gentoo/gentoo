@@ -2991,7 +2991,7 @@ dev-libs/geoip 1.6.9-r1 1.6.10: GeoIP Legacy C API
 dev-libs/gf-complete 0.0.0: A Comprehensive Open Source Library for Galois Field Arithmetic
 dev-libs/gf2x 1.0-r1: C/C++ routines for fast arithmetic in GF(2)[x]
 dev-libs/girara 0.3.1 0.3.2: UI library that focuses on simplicity and minimalism
-dev-libs/gjs 1.46.0 1.48.7: Javascript bindings for GNOME
+dev-libs/gjs 1.48.7: Javascript bindings for GNOME
 dev-libs/glib 2.58.3: The GLib library of C routines
 dev-libs/gmime 2.6.23 3.2.0: Utilities for creating and parsing messages using MIME
 dev-libs/gmp 4.3.2-r1 6.1.2: Library for arbitrary-precision arithmetic on different type of numbers
