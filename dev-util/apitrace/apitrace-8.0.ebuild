@@ -39,10 +39,13 @@ DEPEND="${PYTHON_DEPS}
 RDEPEND="${DEPEND}"
 
 PATCHES=(
+	# TODO: upstream
 	"${FILESDIR}"/${P}-disable-multiarch.patch
 	"${FILESDIR}"/${P}-glxtrace-only.patch
 	"${FILESDIR}"/${P}-docs-install.patch
 	"${FILESDIR}"/${P}-brotli-unbundle.patch
+	# git master
+	"${FILESDIR}"/${P}-system-snappy{1,2}.patch
 )
 
 src_prepare() {
