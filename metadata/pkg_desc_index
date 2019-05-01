@@ -10677,7 +10677,7 @@ x11-apps/amlc 0.5.1: Another Modeline Calculator, generates quality X11 display 
 x11-apps/appres 1.0.4 1.0.5: list X application resource database
 x11-apps/bdftopcf 1.1: X.Org bdftopcf application
 x11-apps/beforelight 1.0.5: Sample implementation of screen saver
-x11-apps/bitmap 1.0.7 1.0.8 1.0.9: X.Org bitmap application
+x11-apps/bitmap 1.0.9: X.Org bitmap application
 x11-apps/editres 1.0.6 1.0.7: a dynamic resource editor for X Toolkit applications
 x11-apps/fonttosfnt 1.0.5: X.Org fonttosfnt application
 x11-apps/fslsfonts 1.0.5-r1: list fonts served by X font server
@@ -10687,8 +10687,8 @@ x11-apps/ico 1.0.4 1.0.5: animate an icosahedron or other polyhedron
 x11-apps/listres 1.0.4: list resources in widgets
 x11-apps/luit 1.1.1: Locale and ISO 2022 support for Unicode terminals
 x11-apps/mesa-progs 8.4.0: Mesa's OpenGL utility and demo programs (glxgears and glxinfo)
-x11-apps/mkfontdir 1.0.7 1.2.0: create an index of X font files in a directory
-x11-apps/mkfontscale 1.1.3 1.2.1: create an index of scalable font files for X
+x11-apps/mkfontdir 1.2.0: create an index of X font files in a directory
+x11-apps/mkfontscale 1.2.1: create an index of scalable font files for X
 x11-apps/oclock 1.0.4: round X clock
 x11-apps/rgb 1.0.5 1.0.6: uncompile an rgb color-name database
 x11-apps/rstart 1.0.5-r1: X.Org rstart application
@@ -10699,30 +10699,30 @@ x11-apps/showfont 1.0.4 1.0.5: font dumper for X font server
 x11-apps/smproxy 1.0.6: Session Manager Proxy
 x11-apps/transset 1.0.1 1.0.2: An utility for setting opacity property
 x11-apps/viewres 1.0.4 1.0.5: graphical class browser for Xt
-x11-apps/x11perf 1.6.0 1.6.1: X rendering operation stress test utility
+x11-apps/x11perf 1.6.1: X rendering operation stress test utility
 x11-apps/xauth 1.0.10: X authority file utility
 x11-apps/xbacklight 1.2.1-r1 1.2.2: Sets backlight level using the RandR 1.2 BACKLIGHT output property
 x11-apps/xbiff 1.0.3: mailbox flag for X
-x11-apps/xcalc 1.0.5 1.0.6 1.0.7: scientific calculator for X
+x11-apps/xcalc 1.0.7: scientific calculator for X
 x11-apps/xclipboard 1.1.3: interchange between cut buffer and selection
-x11-apps/xclock 1.0.7 1.0.8: analog / digital clock for X
+x11-apps/xclock 1.0.8: analog / digital clock for X
 x11-apps/xcmsdb 1.0.5: Device Color Characterization utility for X Color Management System
 x11-apps/xconsole 1.0.7: monitor system console messages with X
 x11-apps/xcursorgen 1.0.7: create an X cursor file from a collection of PNG images
 x11-apps/xdbedizzy 1.1.0: X.Org xdbedizzy application
-x11-apps/xditview 1.0.3 1.0.4 1.0.5: display ditroff output
+x11-apps/xditview 1.0.5: display ditroff output
 x11-apps/xdm 1.1.11-r3 1.1.12: X.Org xdm application
 x11-apps/xdpyinfo 1.3.1 1.3.2: Display information utility for X
 x11-apps/xdriinfo 1.0.5 1.0.6: query configuration information of DRI drivers
 x11-apps/xedit 1.2.1 1.2.2: simple text editor for X
-x11-apps/xev 1.2.1 1.2.2 1.2.3: Print contents of X events
+x11-apps/xev 1.2.3: Print contents of X events
 x11-apps/xeyes 1.1.1 1.1.2: X.Org xeyes application
 x11-apps/xf86dga 1.0.3: Test program for the XFree86-DGA extension
-x11-apps/xfd 1.1.2 1.1.3: X.Org xfd application
+x11-apps/xfd 1.1.3: X.Org xfd application
 x11-apps/xfontsel 1.0.5 1.0.6: point and click selection of X11 font names
 x11-apps/xgamma 1.0.6: Alter a monitor's gamma correction through the X server
 x11-apps/xgc 1.0.4 1.0.5: X graphics demo
-x11-apps/xhost 1.0.6 1.0.7 1.0.8: Controls host and/or user access to a running X server
+x11-apps/xhost 1.0.8: Controls host and/or user access to a running X server
 x11-apps/xinit 1.4.0-r1: X Window System initializer
 x11-apps/xinput 1.6.1 1.6.2: Utility to set XInput device parameters
 x11-apps/xinput_calibrator 0.7.5-r1: A generic touchscreen calibration program for X.Org
@@ -10732,28 +10732,28 @@ x11-apps/xkbprint 1.0.4: Print an XKB keyboard description
 x11-apps/xkbutils 1.0.4: X.Org xkbutils application
 x11-apps/xkill 1.0.4 1.0.5: kill a client by its X resource
 x11-apps/xload 1.1.2 1.1.3: system load average display for X
-x11-apps/xlogo 1.0.4 1.0.5: X Window System logo
-x11-apps/xlsatoms 1.1.2 1.1.3: list interned atoms defined on server
+x11-apps/xlogo 1.0.5: X Window System logo
+x11-apps/xlsatoms 1.1.3: list interned atoms defined on server
 x11-apps/xlsclients 1.1.4: X.Org xlsclients application
 x11-apps/xlsfonts 1.0.6: X.Org xlsfonts application
 x11-apps/xmag 1.0.6: X.Org xmag application
 x11-apps/xman 1.1.4-r1: Manual page display program for the X Window System
 x11-apps/xmessage 1.0.4 1.0.5: display a message or query in a window (X-based /bin/echo)
-x11-apps/xmodmap 1.0.8 1.0.9 1.0.10: utility for modifying keymaps and pointer button mappings in X
-x11-apps/xmore 1.0.2 1.0.3: plain text display program for the X Window System
+x11-apps/xmodmap 1.0.10: utility for modifying keymaps and pointer button mappings in X
+x11-apps/xmore 1.0.3: plain text display program for the X Window System
 x11-apps/xpr 1.0.5: X.Org xpr application
-x11-apps/xprop 1.2.2 1.2.3 1.2.4: property displayer for X
+x11-apps/xprop 1.2.4: property displayer for X
 x11-apps/xrandr 1.4.3 1.5.0: primitive command line interface to RandR extension
-x11-apps/xrdb 1.1.0 1.1.1 1.2.0: X server resource database utility
+x11-apps/xrdb 1.2.0: X server resource database utility
 x11-apps/xrectsel 0.3.2: Print the geometry of a rectangular screen region
 x11-apps/xrefresh 1.0.5 1.0.6: refresh all or part of an X screen
 x11-apps/xset 1.2.3 1.2.4: X.Org xset application
 x11-apps/xsetroot 1.1.1 1.1.2: X.Org xsetroot application
 x11-apps/xsm 1.0.3 1.0.4: X Session Manager
-x11-apps/xstdcmap 1.0.3 1.0.4: X standard colormap utility
+x11-apps/xstdcmap 1.0.4: X standard colormap utility
 x11-apps/xtrap 1.0.3: X.Org xtrap application
 x11-apps/xvidtune 1.0.3: video mode tuner for Xorg
-x11-apps/xvinfo 1.1.2 1.1.3 1.1.4: Print out X-Video extension adaptor information
+x11-apps/xvinfo 1.1.4: Print out X-Video extension adaptor information
 x11-apps/xwarppointer 1-r2: Program to move the mouse cursor
 x11-apps/xwd 1.0.6 1.0.7: dump an image of an X window
 x11-apps/xwininfo 1.1.3 1.1.4: window information utility for X
@@ -10775,15 +10775,15 @@ x11-drivers/xf86-input-synaptics 1.9.0 1.9.1: Driver for Synaptics touchpads
 x11-drivers/xf86-input-vmmouse 13.1.0-r1: VMWare mouse input driver
 x11-drivers/xf86-input-void 1.4.1: null input driver
 x11-drivers/xf86-input-wacom 0.36.0-r2: Driver for Wacom tablets and drawing devices
-x11-drivers/xf86-video-amdgpu 18.1.0 19.0.1: Accelerated Open Source driver for AMDGPU cards
+x11-drivers/xf86-video-amdgpu 19.0.1: Accelerated Open Source driver for AMDGPU cards
 x11-drivers/xf86-video-ast 1.1.5: X.Org driver for ASpeedTech cards
-x11-drivers/xf86-video-ati 18.1.0 19.0.1: ATI video driver
+x11-drivers/xf86-video-ati 19.0.1: ATI video driver
 x11-drivers/xf86-video-dummy 0.3.8: X.Org driver for dummy cards
 x11-drivers/xf86-video-fbdev 0.5.0: video driver for framebuffer device
 x11-drivers/xf86-video-glint 1.2.9: GLINT/Permedia video driver
 x11-drivers/xf86-video-intel 2.99.917_p20180214-r1 2.99.917_p20180214-r2: X.Org driver for Intel cards
 x11-drivers/xf86-video-mga 1.6.5 2.0.0: Matrox video driver
-x11-drivers/xf86-video-nouveau 1.0.15-r1 1.0.16: Accelerated Open Source driver for nVidia cards
+x11-drivers/xf86-video-nouveau 1.0.16: Accelerated Open Source driver for nVidia cards
 x11-drivers/xf86-video-nv 2.1.21: Nvidia 2D only video driver
 x11-drivers/xf86-video-openchrome 0.6.0: X.Org driver for VIA/S3G cards
 x11-drivers/xf86-video-qxl 0.1.5: QEMU QXL paravirt video driver
@@ -10814,38 +10814,38 @@ x11-libs/gtkglext 1.2.0-r4: GL extensions for Gtk+ 2.0
 x11-libs/gtkhotkey 0.2.1-r1: Cross platform library for using desktop wide hotkeys
 x11-libs/gtkmathview 0.8.0-r3: Rendering engine for MathML documents
 x11-libs/gtksourceview 2.10.5-r3 3.24.8: A text widget implementing syntax highlighting and other features
-x11-libs/libFS 1.0.7-r1 1.0.8: X.Org FS library
+x11-libs/libFS 1.0.8: X.Org FS library
 x11-libs/libGLw 8.0.0: Mesa GLw library
 x11-libs/libICE 1.0.9-r2: X.Org Inter-Client Exchange library
 x11-libs/libSM 1.2.3: X.Org Session Management library
 x11-libs/libX11 1.6.7: X.Org X11 library
 x11-libs/libXScrnSaver 1.2.3: X.Org XScrnSaver library
 x11-libs/libXTrap 1.0.1-r1: X.Org XTrap library
-x11-libs/libXau 1.0.8-r1 1.0.9: X.Org X authorization library
+x11-libs/libXau 1.0.9: X.Org X authorization library
 x11-libs/libXaw 1.0.13-r1: X.Org Xaw library
 x11-libs/libXaw3d 1.6.3: X.Org Xaw3d library
 x11-libs/libXaw3dXft 1.6.2d: Xaw3dXft library
-x11-libs/libXcomposite 0.4.4-r2 0.4.5: X.Org Xcomposite library
-x11-libs/libXcursor 1.1.15 1.2.0: X.Org Xcursor library
-x11-libs/libXdamage 1.1.4-r2 1.1.5: X.Org Xdamage library
-x11-libs/libXdmcp 1.1.2-r2 1.1.3: X.Org X Display Manager Control Protocol library
-x11-libs/libXext 1.3.3-r1 1.3.4: X.Org Xext library
+x11-libs/libXcomposite 0.4.5: X.Org Xcomposite library
+x11-libs/libXcursor 1.2.0: X.Org Xcursor library
+x11-libs/libXdamage 1.1.5: X.Org Xdamage library
+x11-libs/libXdmcp 1.1.3: X.Org X Display Manager Control Protocol library
+x11-libs/libXext 1.3.4: X.Org Xext library
 x11-libs/libXfixes 5.0.3-r1: X.Org Xfixes library
 x11-libs/libXfont2 2.0.3-r1: X.Org Xfont library
-x11-libs/libXft 2.3.2-r1 2.3.3: X.Org Xft library
+x11-libs/libXft 2.3.3: X.Org Xft library
 x11-libs/libXi 1.7.9-r1: X.Org Xi library
 x11-libs/libXinerama 1.1.4: X.Org Xinerama library
-x11-libs/libXmu 1.1.2-r1 1.1.3: X.Org Xmu library
+x11-libs/libXmu 1.1.3: X.Org Xmu library
 x11-libs/libXpm 3.5.12-r1: X.Org Xpm library
 x11-libs/libXpresent 1.0.0-r1: X Present Extension C Library
-x11-libs/libXrandr 1.5.1-r1 1.5.2: X.Org Xrandr library
+x11-libs/libXrandr 1.5.2: X.Org Xrandr library
 x11-libs/libXrender 0.9.10-r1: X.Org Xrender library
 x11-libs/libXres 1.2.0-r1: X.Org XRes library
 x11-libs/libXt 1.1.5-r1: X.Org X Toolkit Intrinsics library
 x11-libs/libXtst 1.2.3-r1: X.Org Xlib-based client API for the XTEST & RECORD extensions library
 x11-libs/libXv 1.0.11-r1: X.Org Xv library
-x11-libs/libXvMC 1.0.10-r1 1.0.11: X.Org XvMC library
-x11-libs/libXxf86dga 1.1.4-r1 1.1.5: X.Org Xxf86dga library
+x11-libs/libXvMC 1.0.11: X.Org XvMC library
+x11-libs/libXxf86dga 1.1.5: X.Org Xxf86dga library
 x11-libs/libXxf86misc 1.0.4: X.Org Xxf86misc library
 x11-libs/libXxf86vm 1.1.4-r1: X.Org Xxf86vm library
 x11-libs/libaosd 0.2.7: An advanced on screen display (OSD) library
@@ -10859,7 +10859,7 @@ x11-libs/libfakekey 0.1-r3: Helper library for the x11-misc/matchbox-keyboard pa
 x11-libs/libfm 1.2.5: A library for file management
 x11-libs/libfm-extra 1.2.5: A library for file management
 x11-libs/libfm-qt 0.13.1-r1: Qt port of libfm, a library providing components to build desktop file managers
-x11-libs/libfontenc 1.1.3-r1 1.1.4: X.Org fontenc library
+x11-libs/libfontenc 1.1.4: X.Org fontenc library
 x11-libs/libnotify 0.7.7-r1: A library for sending desktop notifications
 x11-libs/liboglappth 1.0.0: Libary for OpenGL applications with easy-to-code scene setup and selection
 x11-libs/libpciaccess 0.14: Library providing generic access to the PCI bus and devices
@@ -10871,8 +10871,8 @@ x11-libs/libva-vdpau-driver 0.7.4-r4: VDPAU Backend for Video Acceleration (VA) 
 x11-libs/libvdpau 1.1.1: VDPAU wrapper and trace libraries
 x11-libs/libwnck 2.31.0 3.30.0: A window navigation construction kit
 x11-libs/libxcb 1.13.1: X C-language Bindings library
-x11-libs/libxkbcommon 0.8.2 0.8.4: X.Org xkbcommon library
-x11-libs/libxkbfile 1.0.9-r2 1.1.0: X.Org xkbfile library
+x11-libs/libxkbcommon 0.8.4: X.Org xkbcommon library
+x11-libs/libxkbfile 1.1.0: X.Org xkbfile library
 x11-libs/libxklavier 5.4: A library for the X Keyboard Extension (high-level API)
 x11-libs/libxshmfence 1.3-r1: Shared memory fences using futexes
 x11-libs/motif 2.3.8-r1: The Motif user interface component toolkit
@@ -10880,7 +10880,7 @@ x11-libs/mx 1.4.7-r2: A widget toolkit using Clutter
 x11-libs/neXtaw 0.15.1-r3: Athena Widgets with N*XTSTEP appearance
 x11-libs/pango 1.42.4: Internationalized text layout and rendering library
 x11-libs/pangox-compat 0.0.2 0.0.2-r1: PangoX compatibility library
-x11-libs/pixman 0.36.0 0.38.4: Low-level pixel manipulation routines
+x11-libs/pixman 0.38.4: Low-level pixel manipulation routines
 x11-libs/qscintilla 2.10.8: A Qt port of Neil Hodgson's Scintilla C++ editor class
 x11-libs/qtermwidget 0.9.0: Qt terminal emulator widget
 x11-libs/qwt 6.1.3-r2: 2D plotting library for Qt5
@@ -10903,7 +10903,7 @@ x11-libs/xcb-util-wm 0.4.1-r2: X C-language Bindings sample implementations
 x11-libs/xcb-util-xrm 1.0 1.2 1.3: X C-language Bindings sample implementations
 x11-libs/xforms 1.2.4: A graphical user interface toolkit for X
 x11-libs/xosd 2.2.14-r1: Library for overlaying text in X-Windows X-On-Screen-Display
-x11-libs/xtrans 1.3.5 1.4.0: X.Org xtrans library
+x11-libs/xtrans 1.4.0: X.Org xtrans library
 x11-misc/3ddesktop 0.2.9-r1: OpenGL virtual desktop switching
 x11-misc/3dfb 0.6.1-r1: 3D File Browser
 x11-misc/3dfm 1.0-r1: OpenGL-based 3D File Manager
@@ -10960,7 +10960,7 @@ x11-misc/icewmcp 3.2-r4: A complete control panel for IceWM using gtk & python
 x11-misc/icon-naming-utils 0.8.90-r1: Utils to help with the transition to the new freedesktop.org naming scheme
 x11-misc/idesk 0.7.5-r3: Utility to place icons on the root window
 x11-misc/idesk-extras 1.37-r2: Graphical configuration for iDesk plus icons
-x11-misc/imake 1.0.7-r1 1.0.8: C preprocessor interface to the make utility
+x11-misc/imake 1.0.8: C preprocessor interface to the make utility
 x11-misc/imwheel 1.0.0_pre12: mouse tool for advanced features such as wheels and 3+ buttons
 x11-misc/j4-dmenu-desktop 2.17: A fast desktop replacement for i3-dmenu-desktop
 x11-misc/kdocker 5.0-r1: Helper to dock any application into the system tray
@@ -10974,7 +10974,7 @@ x11-misc/lineakd 0.9.0-r2: Linux support for Easy Access and Internet Keyboards
 x11-misc/lndir 1.0.3-r2: create a shadow directory of symbolic links to another directory tree
 x11-misc/lsw 0.3: list window names
 x11-misc/macopix 1.7.4-r1: MaCoPiX (Mascot Constructive Pilot for X) is a desktop mascot application
-x11-misc/makedepend 1.0.5-r1 1.0.6: create dependencies in makefiles
+x11-misc/makedepend 1.0.6: create dependencies in makefiles
 x11-misc/matchbox-keyboard 0.1-r1: Matchbox-keyboard is an on screen 'virtual' or 'software' keyboard
 x11-misc/mate-notification-daemon 1.22.0: MATE Notification daemon
 x11-misc/menulibre 2.1.3: Advanced freedesktop.org compliant menu editor
@@ -11058,7 +11058,7 @@ x11-misc/xbitmaps 1.1.2-r1: X.Org bitmaps data
 x11-misc/xcalendar 4.0-r2: A simple interactive calendar program with a notebook capability
 x11-misc/xcb 2.4-r1: Marc Lehmann's improved X Cut Buffers
 x11-misc/xclip 0.13: Copy data from standard input to X clipboard
-x11-misc/xcompmgr 1.1.7-r1 1.1.8: X Compositing manager
+x11-misc/xcompmgr 1.1.8: X Compositing manager
 x11-misc/xdaliclock 2.43: Dali Clock is a digital clock. When a digit changes, it melts into its new shape
 x11-misc/xdesktopwaves 1.3-r2: A cellular automata setting the background of your X Windows desktop under water
 x11-misc/xdg-user-dirs 0.17: Tool to help manage 'well known' user directories
@@ -11096,7 +11096,7 @@ x11-misc/xsnow 1.42-r2: let it snow on your desktop and windows
 x11-misc/xsri 2.1.0-r3: The xsri wallpaper setter from RedHat
 x11-misc/xss-lock 0.3.0_p20140302-r1: Use external locker as X screen saver
 x11-misc/xteddy 2.2: A cuddly teddy bear (or other image) for your X desktop
-x11-misc/xtermcontrol 3.4 3.6 3.7: xtermcontrol enables dynamic control of XFree86 xterm properties
+x11-misc/xtermcontrol 3.7: xtermcontrol enables dynamic control of XFree86 xterm properties
 x11-misc/xtitle 1.0.4: Set window title and icon name for an X11 terminal window
 x11-misc/xtoolwait 1.3-r2: Xtoolwait notably decreases the startup time of an X session
 x11-misc/xtrlock 2.8: A simplistic screen locking program for X
@@ -11339,7 +11339,7 @@ x11-themes/vdr-channel-logos 0.2: Logos for vdr-skin*
 x11-themes/vertex-icon-theme 20150506: Vertex icon theme
 x11-themes/vertex-theme 20160329 20170128-r1: Vertex theme for GTK+ based desktops
 x11-themes/windowmaker-themes 0.1: Collection of Window Maker themes
-x11-themes/xcursor-themes 1.0.4 1.0.5 1.0.6: X.Org cursor themes: whiteglass, redglass and handhelds
+x11-themes/xcursor-themes 1.0.6: X.Org cursor themes: whiteglass, redglass and handhelds
 x11-themes/xfce-gant-icon-theme 3.9_p6-r1: Xfce Gant Icon Theme
 x11-themes/xfwm4-themes 4.10.0-r1: Additional themes for the Xfce window manager
 x11-themes/zuki-themes 3.24.3: Zuki themes for GTK, gnome-shell and more
