@@ -3,9 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_6 )
-
-inherit python-single-r1 systemd toolchain-funcs
+inherit systemd toolchain-funcs
 
 DESCRIPTION="SSH tarpit that slowly sends and endless banner"
 HOMEPAGE="https://github.com/skeeto/endlessh"
@@ -20,24 +18,11 @@ fi
 
 LICENSE="Unlicense"
 SLOT="0"
-IUSE="tools"
-REQUIRED_USE="tools? ( ${PYTHON_REQUIRED_USE} )"
+IUSE=""
 
 DEPEND=""
-
-RDEPEND="${DEPEND}
-	tools? (
-		${PYTHON_DEPS}
-		dev-db/sqlite
-		dev-python/pyrfc3339[${PYTHON_USEDEP}]
-	)
-"
-
+RDEPEND=""
 BDEPEND=""
-
-pkg_setup() {
-	use tools && python-single-r1_pkg_setup
-}
 
 src_prepare() {
 	default
@@ -49,6 +34,7 @@ src_prepare() {
 		-e 's/^CFLAGS  =/CFLAGS  +=/' \
 		-e 's/ -Os//' \
 		-e 's/^LDFLAGS/LDFLAGS?/' \
+		-e 's/^PREFIX/PREFIX?/' \
 		Makefile || die
 
 	sed -i -e "/^ExecStart=/ s:=/opt/endlessh:=${EPREFIX}/usr/bin:" \
@@ -56,15 +42,23 @@ src_prepare() {
 }
 
 src_install() {
-	dobin endlessh
+	emake DESTDIR="${D}" PREFIX=/usr install
 
-	newinitd "${FILESDIR}"/endlessh.initd endlessh
-	newconfd "${FILESDIR}"/endlessh.confd endlessh
+	einstalldocs
+
+	newinitd "${FILESDIR}"/endlessh.initd-r1 endlessh
+	newconfd "${FILESDIR}"/endlessh.confd-r1 endlessh
 
 	systemd_dounit util/endlessh.service
 
 	insinto /etc/logrotate.d
-	newins "${FILESDIR}/logrotated" endlessh
+	newins "${FILESDIR}/logrotated-r1" endlessh
 
-	einstalldocs
+	insinto /usr/share/"${PN}"
+	doins util/{pivot.py,schema.sql}
+}
+
+pkg_postinst() {
+	elog "Log parsing script installed to ${EPREFIX}/usr/share/${PN}"
+	elog "Install dev-python/pyrfc3339 if you are going to use it"
 }
