@@ -3476,10 +3476,10 @@
       <name>Aaron Bauman</name>
       <role>GLSA Coordinator</role>
     </member>
-    <member is-lead="1">
+    <member>
       <email>chrisadr@gentoo.org</email>
       <name>Christopher Díaz Riveros</name>
-      <role>Team lead</role>
+      <role>Minion</role>
     </member>
     <member>
       <email>creffett@gentoo.org</email>
@@ -3489,17 +3489,17 @@
     <member is-lead="1">
       <email>k_f@gentoo.org</email>
       <name>Kristian Fiskerstrand</name>
-      <role>Team lead</role>
+      <role>Co-Lead</role>
     </member>
     <member>
       <email>pinkbyte@gentoo.org</email>
       <name>Sergey Popov</name>
       <role>GLSA Coordinator</role>
     </member>
-    <member>
+    <member is-lead="1">
       <email>whissi@gentoo.org</email>
       <name>Thomas Deutschmann</name>
-      <role>GLSA Coordinator</role>
+      <role>Co-Lead</role>
     </member>
     <member>
       <email>zlogene@gentoo.org</email>
