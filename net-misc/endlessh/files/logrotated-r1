@@ -1,0 +1,9 @@
+/var/log/endlessh.log /var/log/endlessh.error.log {
+	copytruncate
+	missingok
+	notifempty
+	sharedscripts
+	prerotate
+		/etc/init.d/endlessh --ifstarted --quiet dumpstats
+	endscript
+}
