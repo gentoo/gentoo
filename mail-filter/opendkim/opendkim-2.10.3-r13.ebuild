@@ -13,9 +13,9 @@ SRC_URI="mirror://sourceforge/opendkim/${P}.tar.gz"
 LICENSE="BSD GPL-2 Sendmail-Open-Source"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
-IUSE="+berkdb ldap libressl lmdb lua memcached opendbx poll sasl selinux +ssl static-libs unbound"
+IUSE="+berkdb ldap libressl lmdb lua memcached opendbx poll sasl selinux +ssl static-libs test unbound"
 
-DEPEND="|| ( mail-filter/libmilter mail-mta/sendmail )
+COMMON_DEPEND="|| ( mail-filter/libmilter mail-mta/sendmail )
 	dev-libs/libbsd
 	sys-apps/grep
 	ssl? (
@@ -32,7 +32,10 @@ DEPEND="|| ( mail-filter/libmilter mail-mta/sendmail )
 	unbound? ( >=net-dns/unbound-1.4.1:= net-dns/dnssec-root )
 	!unbound? ( net-libs/ldns )"
 
-RDEPEND="${DEPEND}
+DEPEND="${COMMON_DEPEND}
+	test? ( dev-lang/lua:* )"
+
+RDEPEND="${COMMON_DEPEND}
 	sys-process/psmisc
 	selinux? ( sec-policy/selinux-dkim )"
 
@@ -52,12 +55,12 @@ pkg_setup() {
 
 src_prepare() {
 	default
-	sed -i -e 's:/var/db/dkim:/var/lib/opendkim:g' \
-		opendkim/opendkim.conf.sample opendkim/opendkim.conf.simple.in || die
-	sed -i -e 's:dist_doc_DATA:dist_html_DATA:' libopendkim/docs/Makefile.am || die
-	# TODO: what purpose does this serve?
-	sed -i -e "/sock.*mt.getcwd/s:mt.getcwd():${T}:" \
-		opendkim/tests/*.lua || die
+	sed -e 's:/var/db/dkim:/var/lib/opendkim:g' \
+		-i opendkim/opendkim.conf.sample opendkim/opendkim.conf.simple.in \
+		|| die
+	sed -e 's:dist_doc_DATA:dist_html_DATA:' \
+		-i libopendkim/docs/Makefile.am \
+		|| die
 	eautoreconf
 }
 
@@ -106,7 +109,8 @@ src_configure() {
 		--enable-default_sender \
 		--enable-sender_macro \
 		--enable-vbr \
-		--disable-live-testing
+		--disable-live-testing \
+		--with-test-socket="${T}/opendkim.sock"
 }
 
 src_compile() {
