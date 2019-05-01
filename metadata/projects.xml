@@ -3152,6 +3152,11 @@
       <role>Hardened/UCLIBC Release Coordinator</role>
     </member>
     <member>
+      <email>dilfridge@gentoo.org</email>
+      <name>Andreas K. Hüttel</name>
+      <role>RISC-V; autobuilds; qemu</role>
+    </member>
+    <member>
       <email>dolsen@gentoo.org</email>
       <name>Brian Dolbec</name>
       <role>Catalyst Lead</role>
