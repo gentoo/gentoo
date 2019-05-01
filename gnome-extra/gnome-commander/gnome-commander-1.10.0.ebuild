@@ -1,11 +1,11 @@
-# Copyright 1999-2019 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 GNOME2_LA_PUNT="yes"
 
-inherit gnome2
+inherit gnome2 toolchain-funcs
 
 DESCRIPTION="A graphical, full featured, twin-panel file manager"
 HOMEPAGE="https://gcmd.github.io/"
@@ -35,7 +35,6 @@ DEPEND="
 	${RDEPEND}
 	dev-util/gtk-doc-am
 	sys-devel/gettext
-	>=sys-devel/gcc-8.2.0
 	virtual/pkgconfig
 	test? ( >=dev-cpp/gtest-1.7.0 )
 "
@@ -50,6 +49,13 @@ src_configure() {
 		$(use_with samba) \
 		$(use_with taglib) \
 		$(use_with unique)
+}
+
+pkg_pretend() {
+	if tc-is-gcc && [[ $(gcc-major-version) -lt 8 ]]; then
+		eerror "Compilation with gcc older than version 8 is not supported"
+		die "GCC to old, please use gcc-8 or above"
+	fi
 }
 
 pkg_postinst() {
