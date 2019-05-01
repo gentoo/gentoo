@@ -74,8 +74,7 @@ PDEPEND="
 	qt5? ( dev-python/qtconsole[${PYTHON_USEDEP}] )
 	smp? (
 		>=dev-python/ipykernel-5.1.0[${PYTHON_USEDEP}]
-		dev-python/ipyparallel[${PYTHON_USEDEP},-python_targets_python2_7]
-		dev-python/notebook[${PYTHON_USEDEP},-python_targets_python2_7]
+		>=dev-python/ipyparallel-6.2.3[${PYTHON_USEDEP},-python_targets_python2_7]
 	)"
 
 PATCHES=( "${FILESDIR}"/2.1.0-substitute-files.patch )
