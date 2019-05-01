@@ -252,6 +252,11 @@ ppc64           default/linux/powerpc/ppc64/17.0/64bit-userland/developer       
 ppc64		default/linux/powerpc/ppc64/17.0/64bit-userland/little-endian		exp
 ppc64		default/linux/powerpc/ppc64/17.0/64bit-userland/little-endian/systemd	exp
 
+# RISC-V Profiles
+# @MAINTAINER: riscv@gentoo.org
+riscv		default/linux/riscv/17.0/rv64gc			exp
+riscv		default/linux/riscv/17.0/rv64gc/lp64d		exp
+
 # S390 Profiles
 # @MAINTAINER: s390@gentoo.org
 s390            default/linux/s390/13.0                         exp
