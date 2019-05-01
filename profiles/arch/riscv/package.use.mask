@@ -1,0 +1,7 @@
+# Copyright 2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# This doesn't work for (any) riscv yet.
+dev-libs/libpcre2 jit
+dev-libs/libpcre jit
+dev-vcs/git pcre-jit
