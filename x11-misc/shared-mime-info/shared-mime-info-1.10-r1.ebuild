@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit xdg-utils
+inherit flag-o-matic xdg-utils
 
 DESCRIPTION="The Shared MIME-info Database specification"
 HOMEPAGE="https://freedesktop.org/wiki/Software/shared-mime-info"
@@ -10,7 +10,7 @@ SRC_URI="https://people.freedesktop.org/~hadess/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~ppc-aix ~x64-cygwin ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="test"
 
 RDEPEND=">=dev-libs/glib-2
@@ -25,9 +25,14 @@ DOCS=( ChangeLog HACKING NEWS README )
 src_configure() {
 	export ac_cv_func_fdatasync=no #487504
 
-	econf \
-		$(use_enable test default-make-check) \
+	# https://bugs.gentoo.org/684884
+	append-lfs-flags
+
+	local myeconfargs=(
+		$(use_enable test default-make-check)
 		--disable-update-mimedb
+	)
+	econf "${myeconfargs[@]}"
 }
 
 src_compile() {
