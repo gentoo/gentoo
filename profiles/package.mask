@@ -29,10 +29,6 @@
 
 #--- END OF EXAMPLES ---
 
-# Fabian Groffen <grobian@gentoo.org> (29 Apr 2019)
-# Fails to upgrade, serves 500's on some requests
-=www-apps/baikal-0.5.2
-
 # Mart Raudsepp <leio@gentoo.org> (27 Apr 2019)
 # Old gstreamer 0.10 versions. Use gstreamer:1.0 and co instead.
 # Masked for removal in 30 days. Bug #550648
