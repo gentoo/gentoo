@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit cmake-utils
 
@@ -14,12 +14,13 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-RDEPEND="dev-qt/qtcore:5
+BDEPEND="dev-qt/linguist-tools:5"
+RDEPEND="
+	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtmultimedia:5
 	dev-qt/qtwidgets:5"
-DEPEND="${RDEPEND}
-	dev-qt/linguist-tools:5"
+DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/kochmorse-${PV}"
 
