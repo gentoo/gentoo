@@ -642,13 +642,6 @@ sci-biology/arb
 # Removal in 30 days.  Bug #660332.
 dev-libs/grok
 
-# Michał Górny <mgorny@gentoo.org> (31 Mar 2019)
-# Unmaintained.  Needs bump.  The current Gentoo version is from 2004,
-# with last upstream release in 2015.  Carries local patches and hacks
-# to even build.  Has format-security warnings.
-# Removal in 30 days.  Bug #532502.
-net-ftp/weex
-
 # Robin H. Johnson <robbat2@gentoo.org> (25 Mar 2019)
 # Requires >=dev-lang/lua-5.3 which is masked
 sys-apps/likwid
