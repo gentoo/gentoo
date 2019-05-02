@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ inherit user golang-build golang-vcs-snapshot
 
 EGO_PN="github.com/prometheus/alertmanager"
 EGIT_COMMIT="v${PV/_rc/-rc.}"
-ALERTMANAGER_COMMIT="8397de1"
+ALERTMANAGER_COMMIT="c7551cd"
 ARCHIVE_URI="https://${EGO_PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 KEYWORDS="~amd64"
 
@@ -17,7 +17,8 @@ LICENSE="Apache-2.0"
 SLOT="0"
 IUSE=""
 
-DEPEND="dev-util/promu"
+DEPEND=">=dev-lang/go-1.11
+	dev-util/promu"
 
 RESTRICT="test"
 
@@ -34,7 +35,7 @@ src_prepare() {
 src_compile() {
 	pushd src/${EGO_PN} || die
 	mkdir -p bin || die
-	GOPATH="${S}" promu build -v --prefix bin || die
+	GO111MODULE=on GOPATH="${S}" GOCACHE="${T}/go-cache" promu build -v --prefix bin || die
 	popd || die
 }
 
