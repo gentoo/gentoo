@@ -25,8 +25,14 @@ DOCS=( ChangeLog HACKING NEWS README )
 src_configure() {
 	export ac_cv_func_fdatasync=no #487504
 
-	# https://bugs.gentoo.org/684884
-	append-lfs-flags
+	if [[ ${PV} == 1.10 ]]; then
+		# https://bugs.gentoo.org/684884
+		append-lfs-flags
+	else
+		eerror "LFS support merged upstream."
+		eerror "https://gitlab.freedesktop.org/xdg/shared-mime-info/merge_requests/20"
+		die "Please remove LFS workaround."
+	fi
 
 	local myeconfargs=(
 		$(use_enable test default-make-check)
