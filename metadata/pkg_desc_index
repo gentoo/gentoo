@@ -326,7 +326,7 @@ app-crypt/cfssl 1.3.2: Cloudflare's PKI and TLS toolkit
 app-crypt/easy-rsa 3.0.4 3.0.5: Small RSA key management package, based on OpenSSL
 app-crypt/gcr 3.20.0 3.28.0: Libraries for cryptographic UIs and accessing PKCS#11 modules
 app-crypt/gentoo-keys 201901130136: A OpenPGP/GPG keyring of official Gentoo release media GPG keys
-app-crypt/glep63-check 6: GLEP 63 compliance checker for OpenPGP keys
+app-crypt/glep63-check 6 7: GLEP 63 compliance checker for OpenPGP keys
 app-crypt/gnupg 1.4.21 2.2.10 2.2.15: The GNU Privacy Guard, a GPL OpenPGP implementation
 app-crypt/gorilla 1.4-r1: Password Safe in secure way with GUI interface
 app-crypt/gpa 0.9.10 0.10.0: The GNU Privacy Assistant (GPA) is a graphical user interface for GnuPG
@@ -8676,7 +8676,7 @@ net-irc/ninja 1.5.9_pre14-r1: Ninja IRC Client
 net-irc/onis 0.8.2-r1: onis not irc stats
 net-irc/pisg 0.73-r1: Perl IRC Statistics Generator
 net-irc/polari 3.24.2: An IRC client for Gnome
-net-irc/quassel 0.12.5-r2: Qt/KDE IRC client supporting a remote daemon for 24/7 connectivity
+net-irc/quassel 0.12.5-r2 0.13.1: Qt/KDE IRC client supporting a remote daemon for 24/7 connectivity
 net-irc/rhapsody 0.28b: IRC client intended to be displayed on a text console
 net-irc/scrollz 2.2.1: Advanced IRC client based on ircII
 net-irc/sic 1.2-r1: An extremly simple IRC client
@@ -9915,7 +9915,7 @@ sys-apps/netplug 1.2.9.2-r2: Brings up/down ethernet ports automatically with ca
 sys-apps/noexec 1.1.0-r1: a package for preventing processes from using exec system calls
 sys-apps/nvme-cli 1.6-r1: NVM-Express user space tooling for Linux
 sys-apps/onerng 3.6-r1: Software for the Open Hardware Random Number Generator called OneRNG
-sys-apps/openrc 0.34.11 0.38.3 0.38.3-r1: OpenRC manages the services, startup and shutdown of a host
+sys-apps/openrc 0.34.11 0.38.3 0.38.3-r1 0.41.2: OpenRC manages the services, startup and shutdown of a host
 sys-apps/opentmpfiles 0.1.1 0.1.2 0.1.3 0.2: A standalone utility to process systemd-style tmpfiles.d files
 sys-apps/osinfo-db 20190218: osinfo database files
 sys-apps/osinfo-db-tools 1.2.0 1.3.0: Tools for managing the osinfo database
@@ -11360,7 +11360,7 @@ x11-wm/fluxbox 1.3.7-r3: X11 window manager featuring tabs and an iconbar
 x11-wm/fvwm 2.6.5-r2: An extremely powerful ICCCM-compliant multiple virtual desktop window manager
 x11-wm/herbstluftwm 0.7.0: A manual tiling window manager for X
 x11-wm/i3 4.15: An improved dynamic tiling window manager
-x11-wm/i3-gaps 4.15.0.1: i3 fork with gaps and some more features
+x11-wm/i3-gaps 4.15.0.1 4.16.1: i3 fork with gaps and some more features
 x11-wm/icewm 1.4.2: Ice Window Manager with Themes
 x11-wm/jwm 2.3.2: Very fast and lightweight still powerful window manager for X
 x11-wm/larswm 7.5.3-r2: Tiling window manager for X11, based on 9wm by David Hogan
