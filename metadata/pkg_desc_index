@@ -8557,7 +8557,7 @@ net-dns/dnswalk 2.0.2: dnswalk is a DNS database debugger
 net-dns/idnkit 1.0-r2: Toolkit for Internationalized Domain Names (IDN)
 net-dns/ldns-utils 1.7.0-r1: Set of utilities to simplify various dns(sec) tasks
 net-dns/libidn 1.33-r2 1.33-r99 1.35: Internationalized Domain Names (IDN) implementation
-net-dns/libidn2 2.0.4 2.1.1a: An implementation of the IDNA2008 specifications (RFCs 5890, 5891, 5892, 5893)
+net-dns/libidn2 2.1.1a: An implementation of the IDNA2008 specifications (RFCs 5890, 5891, 5892, 5893)
 net-dns/maradns 2.0.09-r2: A security-aware DNS server
 net-dns/mydns 1.2.8.31-r1: A DNS-Server which gets its data from a MySQL-/PostgreSQL-database
 net-dns/ndu 0.4-r4: DNS serial number incrementer and reverse zone builder
