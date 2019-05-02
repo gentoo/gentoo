@@ -8866,7 +8866,7 @@ net-mail/pop-before-smtp 1.42: a simple daemon to allow email relay control base
 net-mail/popa3d 1.0.2-r1: A security oriented POP3 server
 net-mail/poppassd_ceti 1.8.5-r2: Password change daemon with PAM support
 net-mail/postfix-logwatch 1.40.03-r3: A log analyzer for postfix
-net-mail/qmail-autoresponder 0.97-r1 0.97-r3: Rate-limited autoresponder for qmail
+net-mail/qmail-autoresponder 0.97-r3: Rate-limited autoresponder for qmail
 net-mail/qmail-notify 0.93-r1: Delayed delivery notification for qmail
 net-mail/qmail-qfilter 2.1: qmail-queue multi-filter front end
 net-mail/qmailadmin 1.2.15-r1: A web interface for managing a qmail system with virtual domains
