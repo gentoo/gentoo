@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (02 May 2019)
+# Discontinued upstream, and no longer required by any packages
+# in Gentoo.  Removal in 30 days.  Bug #684828.
+dev-libs/wlc
+
 # Jory A. Pratt <anarchy@gentoo.org> (1 May 2019)
 # No longer supported and or needed by in tree packages.
 # Masked for removal in 30 Days. Bug #684904
