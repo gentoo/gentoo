@@ -4605,7 +4605,7 @@ dev-php/sebastian-object-enumerator 2.0.1: Traverses array structures and object
 dev-php/sebastian-recursion-context 2.0.0: Recursively process PHP variables
 dev-php/sebastian-resource-operations 1.0.0: Provides a list of PHP built-in functions that operate on resources
 dev-php/sebastian-version 2.0.1: Helps with managing the version number of Git-hosted PHP projects
-dev-php/smarty 3.1.30 3.1.33: A template engine for PHP
+dev-php/smarty 3.1.33: A template engine for PHP
 dev-php/swoole 4.2.13: Event-driven asynchronous & concurrent & coroutine networking engine
 dev-php/symfony-yaml 2.1.0: Symfony YAML Component
 dev-php/webmozart-assert 1.2.0: Assertions to validate method input/output with nice error messages
@@ -7695,7 +7695,7 @@ media-libs/libmkv 0.6.5.1: Lightweight Matroska muxer written for HandBrake
 media-libs/libmms 0.6.4: Common library for accessing Microsoft Media Server (MMS) media streaming protocol
 media-libs/libmng 2.0.3: Multiple Image Networkgraphics lib (animated png's)
 media-libs/libmodplug 0.8.9.0: Library for playing MOD-like music files
-media-libs/libmp3splt 0.9.1a 0.9.2 0.9.2-r1: a library for mp3splt to split mp3 and ogg files without decoding
+media-libs/libmp3splt 0.9.2-r1: a library for mp3splt to split mp3 and ogg files without decoding
 media-libs/libmp4v2 2.0.0-r1: Functions for accessing ISO-IEC:14496-1:2001 MPEG-4 standard
 media-libs/libmpd 11.8.17-r1: A library handling connections to a MPD server
 media-libs/libmpdclient 2.13 2.16: A library for interfacing Music Player Daemon (media-sound/mpd)
@@ -8149,7 +8149,7 @@ media-sound/mp3c 0.31-r1: console based mp3 ripper, with cddb support
 media-sound/mp3check 0.8.4 0.8.7: Checks mp3 files for consistency and prints several errors and warnings
 media-sound/mp3gain 1.6.1: A program to analyze and adjust MP3 files to same volume
 media-sound/mp3info 0.8.5a 0.8.5a-r1: An MP3 technical info viewer and ID3 1.x tag editor
-media-sound/mp3splt 2.6.1a 2.6.2: a command line utility to split mp3 and ogg files without decoding
+media-sound/mp3splt 2.6.2: a command line utility to split mp3 and ogg files without decoding
 media-sound/mp3splt-gtk 0.9.2-r1: a GTK+ based utility to split mp3 and ogg files without decoding
 media-sound/mp3wrap 0.5: Command-line utility that wraps quickly two or more mp3 files in one single large playable mp3
 media-sound/mpc 0.30 0.31-r1: Commandline client for Music Player Daemon (media-sound/mpd)
@@ -8549,7 +8549,7 @@ net-dns/bind 9.12.3_p4: BIND - Berkeley Internet Name Domain - Name Server
 net-dns/bind-tools 9.12.3_p4: bind tools: dig, nslookup, host, nsupdate, dnssec-keygen
 net-dns/c-ares 1.13.0: C library that resolves names asynchronously
 net-dns/ddclient 3.9.0-r2: Perl client used to update dynamic DNS entries
-net-dns/djbdns 1.05-r32 1.05-r33: Collection of DNS client/server software
+net-dns/djbdns 1.05-r33: Collection of DNS client/server software
 net-dns/dnscrypt-proxy 2.0.19: A flexible DNS proxy, with support for encrypted DNS protocols
 net-dns/dnsmasq 2.79 2.80: Small forwarding DNS server
 net-dns/dnssec-root 20181220: The DNSSEC root key(s)
