@@ -24,6 +24,7 @@ RDEPEND="
 	dev-python/pycairo[${PYTHON_USEDEP}]
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
 	x11-libs/libnotify[introspection]
+	x11-libs/libwnck:3[introspection]
 	x11-libs/vte:2.91[introspection]
 	utempter? ( sys-libs/libutempter )
 "
