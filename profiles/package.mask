@@ -607,42 +607,6 @@ dev-libs/blitz
 # Removal in 30 days.  Bug #580358.
 dev-libs/handystats
 
-# Michał Górny <mgorny@gentoo.org> (03 Apr 2019)
-# Does not build against ffmpeg-4.  Last release in 2012.  Last upstream
-# commits in 2017.
-# Removal in 30 days.  Bug #673826.
-media-plugins/vdr-markad
-
-# Michał Górny <mgorny@gentoo.org> (31 Mar 2019)
-# Unmaintained.  Broken with new openssl (#674192) and new glibc
-# (#643460).  Last upstream beta release in 2002.  Carries ever-growing
-# pile of patches.  No reverse dependencies.
-# Removal in 30 days.  Bug #674192.
-net-analyzer/dsniff
-
-# Michał Górny <mgorny@gentoo.org> (31 Mar 2019)
-# Unmaintained.  The current snapshot was added by a non-maintainer to
-# stop blocking Qt4 removal.  Fails to build with new glibc.
-# Last upstream release in 2015, latest commits mid-2018.
-# No reverse dependencies.
-# Removal in 30 days.  Bug #656096.
-sci-chemistry/ball
-
-# Michał Górny <mgorny@gentoo.org> (31 Mar 2019)
-# Undermaintained.  Fails to build with new glibc (#638048), OpenGL
-# headers (#516292).  Missing dependencies (#586186).  No reverse
-# dependencies.
-# Removal in 30 days.  Bug #638048.
-sci-biology/arb
-
-# Michał Górny <mgorny@gentoo.org> (31 Mar 2019)
-# Unmaintained.  Still broken with new glibc.  Carries a lot of local
-# patches.  Last upstream release in 2011, with a few commits in git
-# since.  The only revdep is app-admin/rsyslog[grok].
-# Removal in 30 days.  Bug #660332.
-dev-libs/grok
-
-# Robin H. Johnson <robbat2@gentoo.org> (25 Mar 2019)
 # Requires >=dev-lang/lua-5.3 which is masked
 sys-apps/likwid
 
