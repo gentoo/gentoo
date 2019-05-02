@@ -4,7 +4,7 @@
 EAPI=7
 
 # Tests fail with PyPy: https://github.com/wbolster/plyvel/issues/38
-PYTHON_COMPAT=( pypy3 python{2_7,3_{5,6}} )
+PYTHON_COMPAT=( pypy3 python{2_7,3_{5,6,7}} )
 
 inherit distutils-r1
 
@@ -44,6 +44,6 @@ python_test() {
 	# We need to copy the extension to the package folder
 	local ext="$(ls "${BUILD_DIR}/lib/${PN}/"*.so | head -n1 || die)"
 	ln -s "${ext}" "${PN}" || die
-	py.test || die "tests failed with ${EPYTHON}"
+	pytest -vv || die "tests failed with ${EPYTHON}"
 	rm "${PN}/$(basename "${ext}")" || die
 }
