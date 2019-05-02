@@ -1,25 +1,27 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_{5,6}} )
+PYTHON_COMPAT=( python3_{5,6,7} )
 
-inherit autotools python-r1
+inherit autotools python-any-r1
 
 DESCRIPTION="Tiny library providing a C \"class\" for working with arbitrary big sizes in bytes"
-HOMEPAGE="https://github.com/rhinstaller/libbytesize"
-SRC_URI="https://github.com/rhinstaller/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/storaged-project/libbytesize"
+SRC_URI="https://github.com/storaged-project/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="LGPL-2+"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
-IUSE="doc test"
+IUSE="doc test tools"
+
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
 	${PYTHON_DEPS}
 	dev-libs/gmp:0=
 	dev-libs/mpfr:=
-	>=dev-libs/libpcre-8.32
+	dev-libs/libpcre2
 "
 
 DEPEND="
@@ -32,11 +34,9 @@ DEPEND="
 	)
 "
 
-RESTRICT="test"
+DOCS=( NEWS.rst README.md )
 
-pkg_setup() {
-	python_setup
-}
+RESTRICT="test"
 
 src_prepare() {
 	default
@@ -45,20 +45,15 @@ src_prepare() {
 
 src_configure() {
 	local myeconfargs=(
-		--without-python3 #634840
+		--with-python3
 		$(use_with doc gtk-doc)
+		$(use_with tools)
 	)
 	econf "${myeconfargs[@]}"
 }
 
 src_install() {
-	emake install DESTDIR="${D}"
-
-	python_install() {
-		emake -C src/python install DESTDIR="${D}"
-		python_optimize
-	}
-	python_foreach_impl python_install
-
+	default
+	python_optimize
 	find "${ED}" -name "*.la*" -delete || die
 }
