@@ -30,7 +30,6 @@ src_prepare() {
 	rmdir logs || die
 
 	if use x-pack; then
-		rm bin/x-pack/*.bat || die
 		rm -r modules/x-pack-ml/platform/{darwin,windows}-x86_64 || die
 	fi
 }
