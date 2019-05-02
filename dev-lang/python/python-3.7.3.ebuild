@@ -120,6 +120,9 @@ src_configure() {
 	# Please query BSD team before removing this!
 	append-ldflags "-L."
 
+	# Fix implicit declarations on cross and prefix builds. Bug #674070.
+	use ncurses && append-cppflags -I"${ESYSROOT}"/usr/include/ncursesw
+
 	local dbmliborder
 	if use gdbm; then
 		dbmliborder+="${dbmliborder:+:}gdbm"
