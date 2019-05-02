@@ -11102,7 +11102,7 @@ x11-misc/xtitle 1.0.4: Set window title and icon name for an X11 terminal window
 x11-misc/xtoolwait 1.3-r2: Xtoolwait notably decreases the startup time of an X session
 x11-misc/xtrlock 2.8: A simplistic screen locking program for X
 x11-misc/xvkbd 3.7: virtual keyboard for X window system
-x11-misc/xwallpaper 0.3.0: Wallpaper setting utility for X
+x11-misc/xwallpaper 0.3.0 0.4.1: Wallpaper setting utility for X
 x11-misc/xwrits 2.26-r1: Reminds you to take wrist breaks to help you prevent repetitive stress injury
 x11-misc/xxkb 1.11.1: eXtended XKB - assign different keymaps to different windows
 x11-misc/xystray 1.0: A simple implementation of freedesktop.org notification area for X
