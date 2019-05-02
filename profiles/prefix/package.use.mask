@@ -1,5 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+
+# Michael Haubenwallner <haubi@gentoo.org> (02 May 2019)
+# gold is linux only, and is required by cxx
+sys-devel/binutils cxx gold default-gold
 
 # Fabian Groffen <grobian@gentoo.org> (27 Dec 2018)
 # USE-dep fixing, bugs #665088, #667266, #671730, 
