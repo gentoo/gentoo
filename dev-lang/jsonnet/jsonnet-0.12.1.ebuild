@@ -48,10 +48,7 @@ python_test() {
 }
 
 src_install() {
-	# no install target in the Makefile
-	exeinto /usr/$(get_libdir)
-	doexe libjsonnet*.so
-
+	dolib.so libjsonnet*.so
 	dobin jsonnet
 
 	use python && distutils-r1_src_install
