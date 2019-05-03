@@ -1,0 +1,5 @@
+# Copyright 2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Force the flag which corresponds to ARCH.
+riscv
