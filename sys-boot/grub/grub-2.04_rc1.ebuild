@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 if [[ ${PV} == 9999  ]]; then
 	GRUB_AUTORECONF=1
@@ -108,7 +108,6 @@ COMMON_DEPEND="
 	grub_platforms_xen-32? ( app-emulation/xen-tools:= )
 "
 DEPEND="${COMMON_DEPEND}
-	${BDEPEND}
 	static? (
 		app-arch/xz-utils[static-libs(+)]
 		truetype? (
