@@ -3136,7 +3136,7 @@ dev-libs/libowfat 0.31-r1: reimplement libdjb - excellent libraries from Dan Ber
 dev-libs/libp11 0.4.4 0.4.9 0.4.10: Abstraction layer to simplify PKCS#11 API
 dev-libs/libparserutils 0.2.3: library for building efficient parsers, written in C
 dev-libs/libpcre 8.41-r1 8.42: Perl-compatible regular expression library
-dev-libs/libpcre2 10.30 10.32: Perl-compatible regular expression library
+dev-libs/libpcre2 10.32: Perl-compatible regular expression library
 dev-libs/libpeas 1.22.0: A GObject plugins library
 dev-libs/libpipeline 1.4.2: a pipeline manipulation library
 dev-libs/libplatform 2.0.1: Platform support library used by libCEC and binary add-ons for Kodi
@@ -4619,7 +4619,7 @@ dev-python/Flask-KVSession 0.6.1: Transparent server-side session support for fl
 dev-python/HeapDict 1.0.0: Heap with decrease-key and increase-key operations
 dev-python/Kivy 1.9.1 1.10.1: Library for rapid development of hardware-accelerated multitouch applications
 dev-python/PyContracts 1.7.9 1.8.0: Declare constraints on function parameters and return values
-dev-python/PyECLib 1.5.0: Messaging API for RPC and notifications over different messaging transports
+dev-python/PyECLib 1.5.0 1.6.0: Messaging API for RPC and notifications over different messaging transports
 dev-python/PyGithub 1.39: Python library to access the Github API v3
 dev-python/PyPDF2 1.26.0: Python library to work with pdf files
 dev-python/PyQt5 5.10.1-r1: Python bindings for the Qt framework
@@ -9947,7 +9947,7 @@ sys-apps/semodule-utils 2.7 2.8: SELinux policy module utilities
 sys-apps/setserial 2.17-r5: Configure your serial ports with it
 sys-apps/sg3_utils 1.42: Apps for querying the sg SCSI interface
 sys-apps/shadow 4.6: Utilities to deal with user accounts
-sys-apps/smartmontools 6.6 7.0-r1: Tools to monitor storage systems to provide advanced warning of disk degradation
+sys-apps/smartmontools 7.0-r1: Tools to monitor storage systems to provide advanced warning of disk degradation
 sys-apps/syscriptor 1.5.15: display misc information about your hardware
 sys-apps/syslog-notify 0.2: Notifications for syslog entries via libnotify
 sys-apps/systemd 239-r4 241-r1: System and service manager for Linux
@@ -10278,7 +10278,7 @@ sys-libs/libaal 1.0.6: library required by reiser4progs
 sys-libs/libapparmor 2.13.1: Library to support AppArmor userspace utilities
 sys-libs/libavc1394 0.5.4-r1: library for the 1394 AV/C (Audio/Video Control) Digital Interface Command Set
 sys-libs/libblockdev 2.14-r1 2.20-r2: A library for manipulating block devices
-sys-libs/libcap 2.25 2.26-r2: POSIX 1003.1e capabilities
+sys-libs/libcap 2.26-r2: POSIX 1003.1e capabilities
 sys-libs/libcap-ng 0.7.8: POSIX 1003.1e capabilities
 sys-libs/libchipcard 5.0.4: Library for accessing chip cards via chip card readers (terminals)
 sys-libs/libcxx 6.0.1: New implementation of the C++ standard library, targeting C++11
