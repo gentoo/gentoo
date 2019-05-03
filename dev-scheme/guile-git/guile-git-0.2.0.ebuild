@@ -33,7 +33,6 @@ src_prepare() {
 	find "${S}" -name "*.scm" -exec touch {} + || die
 }
 
-
 src_test() {
 	emake check VERBOSE=1
 }
