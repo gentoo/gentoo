@@ -4,7 +4,7 @@
 EAPI=7
 inherit flag-o-matic toolchain-funcs
 
-MY_TREE="df08164"
+MY_TREE="355a4fa"
 
 DESCRIPTION="Linux SCSI target framework (tgt)"
 HOMEPAGE="http://stgt.sourceforge.net"
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/fujita/tgt/tarball/v${PV} -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="fcoe fcp ibmvio infiniband rbd"
 
 CDEPEND="dev-perl/Config-General
