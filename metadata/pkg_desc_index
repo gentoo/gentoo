@@ -7489,7 +7489,7 @@ media-gfx/sam2p 0.49.1 0.49.3: Utility to convert raster images to EPS, PDF and 
 media-gfx/sane-backends 1.0.27-r1 1.0.27-r3: Scanner Access Now Easy - Backends
 media-gfx/sane-frontends 1.0.14-r3: Scanner Access Now Easy
 media-gfx/scour 0.36: Take an SVG file and produce a cleaner and more concise file
-media-gfx/scrot 0.8_p13 0.8_p13-r1: Screen capture utility using imlib2 library
+media-gfx/scrot 0.8_p13-r1: Screen capture utility using imlib2 library
 media-gfx/sfftobmp 3.1.2-r1: sff to bmp converter
 media-gfx/shotwell 0.28.3: Open source photo manager for GNOME
 media-gfx/simple-scan 3.24.1: Simple document scanning utility
@@ -9088,7 +9088,7 @@ net-misc/x2goclient 4.1.2.1: The X2Go Qt client
 net-misc/x2goserver 4.1.0.2: The X2Go server
 net-misc/yandex-disk 0.1.5.978_p1: CLI to access Yandex Disk file storage service
 net-misc/you-get 0.4.536: utility to download media contents from the web
-net-misc/youtube-dl 2019.04.24: Download videos from YouTube.com (and more sites...)
+net-misc/youtube-dl 2019.04.30: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.3.3: A command line utility for viewing youtube-videos in Mplayer
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
 net-misc/zsync 0.6.2-r1: Partial/differential file download client over HTTP which uses the rsync algorithm
