@@ -2948,7 +2948,7 @@ dev-libs/btparser 0.26: Parser and analyzer for backtraces produced by GDB
 dev-libs/c-blosc 1.11.2: Blocking, shuffling and lossless compression library
 dev-libs/cdk 5.0.20160131: A library of curses widgets
 dev-libs/cgicc 3.2.9 3.2.16: A C++ class library for writing CGI applications
-dev-libs/cgilib 0.7 0.7-r1: A simple and lightweight interface to the CGI for C and C++ programs
+dev-libs/cgilib 0.7-r1: A simple and lightweight interface to the CGI for C and C++ programs
 dev-libs/check 0.10.0-r1 0.12.0: A unit test framework for C
 dev-libs/chmlib 0.40-r1: Library for MS CHM (compressed html) file format
 dev-libs/cl 1.2.3: OpenCL bindings for Erlang
@@ -8983,7 +8983,7 @@ net-misc/mosh 1.2.6 1.3.2: Mobile shell that supports roaming and intelligent lo
 net-misc/mrouted 3.9.5-r1: IP multicast routing daemon
 net-misc/nat-traverse 0.6: Traverse NAT gateways with the Use of UDP
 net-misc/ndisc6 1.0.3: Recursive DNS Servers discovery Daemon (rdnssd) for IPv6
-net-misc/nemesis 1.4 1.4-r1: A commandline-based, portable human IP stack for UNIX/Linux
+net-misc/nemesis 1.4-r1: A commandline-based, portable human IP stack for UNIX/Linux
 net-misc/netdate 1.2: A Utility to synchronize the time with ntp-servers
 net-misc/netifrc 0.2.2 0.5.1: Gentoo Network Interface Management Scripts
 net-misc/netkit-bootparamd 0.17-r4: Netkit - bootparamd
