@@ -28,7 +28,7 @@ ruby_add_bdepend "test? (
 	>=dev-ruby/test-unit-3.0.0
 	dev-ruby/rack
 	>=dev-ruby/httpclient-2.8.0
-	|| ( dev-ruby/http:4 dev-ruby/http:3 dev-ruby/http:2.0 ) )"
+	|| ( dev-ruby/http:4 dev-ruby/http:3 ) )"
 
 all_ruby_prepare() {
 	# Remove bundler support
