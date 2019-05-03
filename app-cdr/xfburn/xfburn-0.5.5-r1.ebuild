@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -18,7 +18,7 @@ RDEPEND=">=dev-libs/glib-2.32:=
 	>=dev-libs/libburn-0.4.2:=
 	>=dev-libs/libisofs-0.6.2:=
 	>=x11-libs/gtk+-2.24:2=
-	>=xfce-base/exo-0.6:=
+	<xfce-base/exo-0.12.5-r100:=
 	>=xfce-base/libxfce4ui-4.10:=
 	gstreamer? (
 		media-libs/gstreamer:1.0=
