@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit autotools readme.gentoo-r1 user
 
@@ -40,7 +40,7 @@ copy_boot_guile_binaries() {
 	done
 }
 
-SRC_URI="mirror://gnu-alpha/${PN}/${P}.tar.gz
+SRC_URI="mirror://gnu/${PN}/${P}.tar.gz
 	$(binary_src_uris)"
 
 LICENSE="GPL-3"
@@ -52,9 +52,10 @@ RESTRICT=test # complains about size of config.log and refuses to start tests
 
 RDEPEND="
 	dev-libs/libgcrypt:0=
-	>=dev-scheme/guile-2:=[regex,networking,threads]
+	>=dev-scheme/guile-2.2:=[regex,networking,threads]
 	dev-scheme/bytestructures
-	dev-scheme/guile-git
+	dev-scheme/guile-gcrypt
+	>=dev-scheme/guile-git-0.2.0
 	dev-scheme/guile-json
 	dev-scheme/guile-sqlite3
 	net-libs/gnutls[guile]
@@ -66,7 +67,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 "
 
-PATCHES=("${FILESDIR}"/${PN}-0.13.0-default-daemon.patch)
+PATCHES=("${FILESDIR}"/${PN}-0.16.0-default-daemon.patch)
 
 QA_PREBUILT="usr/share/guile/site/*/gnu/packages/bootstrap/*"
 
@@ -74,7 +75,7 @@ DISABLE_AUTOFORMATTING=yes
 DOC_CONTENTS="Quick start user guide on Gentoo:
 
 [as root] allow binary substitution to be downloaded (optional)
-	# guix archive --authorize < /usr/share/guix/hydra.gnu.org.pub
+	# guix archive --authorize < /usr/share/guix/ci.guix.info.pub
 [as root] enable guix-daemon service:
 	[systemd] # systemctl enable guix-daemon
 	[openrc]  # rc-update add guix-daemon
