@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -11,9 +11,9 @@ MY_PV=$(replace_all_version_separators '-')
 MY_P="${MY_PN}-${MY_PV}"
 
 DESCRIPTION="Automated theorem prover for first-order and equational logic"
-HOMEPAGE="http://www.cs.unm.edu/~mccune/mace4/"
+HOMEPAGE="https://www.cs.unm.edu/~mccune/mace4/"
 SRC_URI="
-	http://www.cs.unm.edu/~mccune/mace4/download/${MY_P}.tar.gz
+	https://www.cs.unm.edu/~mccune/mace4/download/${MY_P}.tar.gz
 	https://dev.gentoo.org/~jlec/distfiles/${MY_PN}-2009-11A-makefile.patch.xz"
 
 SLOT="0"
