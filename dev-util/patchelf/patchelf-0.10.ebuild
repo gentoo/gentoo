@@ -22,3 +22,9 @@ src_prepare() {
 
 	eautoreconf
 }
+
+src_test() {
+	emake check \
+		  CFLAGS+=" -no-pie" \
+		  CXXFLAGS+=" -no-pie"
+}

@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Sergei Trofimovich <slyfox@gentoo.org> (03 May 2019)
+# Requires net-libs/webkit-gtk. Not stable on ia64.
+dev-util/geany-plugins markdown
+
 # Ulrich Müller <ulm@gentoo.org> (09 Aug 2018)
 # Needs net-mail/mailutils and net-libs/webkit-gtk which are not
 # stable (yet?), bug #663248

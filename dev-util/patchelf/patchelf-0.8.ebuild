@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -32,5 +32,7 @@ src_configure() {
 }
 
 src_test() {
-	autotools-utils_src_test -j1
+	autotools-utils_src_test -j1 \
+							 CFLAGS+=" -no-pie" \
+							 CXXFLAGS+=" -no-pie"
 }
