@@ -822,6 +822,7 @@ sys-devel/automake:1.8
 # ipython-6 is python-3 only and causes circular dependencies
 # Unset python_targets_python2_7 for ipykernel and ipyparallel if needed.
 >=dev-python/ipython-6
+>=dev-python/ipykernel-5
 
 # Kent Fredric <kentnl@gentoo.org> (21 Jul 2017)
 # Masked due to serious regression that introduces widespread data
