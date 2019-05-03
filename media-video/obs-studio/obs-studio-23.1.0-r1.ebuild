@@ -86,6 +86,7 @@ src_configure() {
 		-DDISABLE_V4L2=$(usex !v4l)
 		-DLIBOBS_PREFER_IMAGEMAGICK=$(usex imagemagick)
 		-DOBS_MULTIARCH_SUFFIX=${libdir#lib}
+		-DOBS_VERSION_OVERRIDE=${PV}
 		-DUNIX_STRUCTURE=1
 	)
 
