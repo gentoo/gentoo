@@ -173,6 +173,7 @@ if [[ ${PN} != "kgcc64" && ${PN} != gcc-* ]] ; then
 	# systemtap is a gentoo-specific switch: bug #654748
 	tc_version_is_at_least 8.0 &&
 		IUSE+=" systemtap" TC_FEATURES+=(systemtap)
+	tc_version_is_at_least 9.0 && IUSE+=" d"
 fi
 
 SLOT="${GCC_CONFIG_VER}"
