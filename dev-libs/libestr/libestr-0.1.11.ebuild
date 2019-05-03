@@ -6,8 +6,8 @@ EAPI="7"
 inherit autotools
 
 DESCRIPTION="Library for some string essentials"
-HOMEPAGE="http://libestr.adiscon.com/"
-SRC_URI="http://libestr.adiscon.com/files/download/${P}.tar.gz"
+HOMEPAGE="https://libestr.adiscon.com/"
+SRC_URI="https://libestr.adiscon.com/files/download/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
