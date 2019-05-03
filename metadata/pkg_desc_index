@@ -1064,7 +1064,7 @@ app-misc/mtail 1.1.1-r3: Tail workalike, that performs output colourising
 app-misc/muttprint 0.73-r4: Script for pretty printing of your mails
 app-misc/mvcase 0.1-r2: A modified version of mv, used to convert filenames to lower/upper case
 app-misc/mx5000tools 0.1.2: Tools for controlling the LCD on a Logitech MX5000 keyboard
-app-misc/neofetch 5.0.0: Simple information system script
+app-misc/neofetch 5.0.0 6.0.0: Simple information system script
 app-misc/note 1.3.3-r1: A note taking perl program
 app-misc/nut 20.1: Record what you eat and analyze your nutrient levels
 app-misc/ondir 0.2.2-r2: Automatically execute scripts as you traverse directories
@@ -5981,7 +5981,7 @@ dev-ruby/railties 5.1.6.2: Tools for creating, working with, and running Rails a
 dev-ruby/rainbow 1.1.4-r1 2.2.2 3.0.0: Colorize printed text on ANSI terminals
 dev-ruby/rake 12.3.1: Make-like scripting in Ruby
 dev-ruby/rake-compiler 1.0.2 1.0.7: Provide a standard and simplified way to build and package Ruby extensions
-dev-ruby/rb-inotify 0.9.10: A thorough inotify wrapper for Ruby using FFI
+dev-ruby/rb-inotify 0.9.10 0.10.0: A thorough inotify wrapper for Ruby using FFI
 dev-ruby/rbnacl 4.0.2-r1: Provides a high-level toolkit for building cryptographic systems and protocols
 dev-ruby/rcairo 1.15.11 1.16.2: Ruby bindings for cairo
 dev-ruby/rdiscount 2.2.0.1: Implementation of John Gruber's Markdown
@@ -8920,7 +8920,7 @@ net-misc/curl 7.64.0 7.64.1: A Client that groks URLs
 net-misc/dahdi 2.10.0.1 2.10.1 2.10.2-r2: Kernel modules for Digium compatible hardware (formerly known as Zaptel)
 net-misc/dahdi-tools 2.6.2 2.8.0 2.9.0.1 2.10.0 2.10.1: Userspace tools to configure the kernel modules from net-misc/dahdi
 net-misc/dhcp 4.3.6_p1 4.4.1: ISC Dynamic Host Configuration Protocol (DHCP) client/server
-net-misc/dhcpcd 7.1.1-r1 7.1.1-r2: A fully featured, yet light weight RFC2131 compliant DHCP client
+net-misc/dhcpcd 7.1.1-r2: A fully featured, yet light weight RFC2131 compliant DHCP client
 net-misc/dhcpcd-ui 0.7.5-r1: Desktop notification and configuration for dhcpcd
 net-misc/dhcping 1.2: Utility for sending a dhcp request to a dhcp server to see if it is responding
 net-misc/dibbler 1.0.1: Portable DHCPv6 implementation (server, client and relay)
