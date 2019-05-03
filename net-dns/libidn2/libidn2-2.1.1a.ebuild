@@ -42,7 +42,9 @@ multilib_src_configure() {
 	econf \
 		$(use_enable static-libs static) \
 		--disable-doc \
-		--disable-gtk-doc
+		--disable-gcc-warnings \
+		--disable-gtk-doc \
+		--disable-silent-rules
 }
 
 multilib_src_install() {
