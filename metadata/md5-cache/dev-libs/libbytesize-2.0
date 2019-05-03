@@ -11,5 +11,5 @@ RDEPEND=|| ( dev-lang/python:3.7 dev-lang/python:3.6 dev-lang/python:3.5 ) dev-l
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/storaged-project/libbytesize/archive/2.0.tar.gz -> libbytesize-2.0.tar.gz
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	b2f01ad412baf81650c23fcf0975fa33	python-any-r1	4900ae970f827a22d33d41bd8b8f9ace	python-utils-r1	08e17157a6807add7db1f8d01e7e391f	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-any-r1	4900ae970f827a22d33d41bd8b8f9ace	python-utils-r1	08e17157a6807add7db1f8d01e7e391f	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
 _md5_=84bf37f2cf58bf7c03e86c63f24d18d8

@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=dev-libs/gmp:0= mpfr? ( dev-libs/mpfr:0= ) readline? ( sys-libs/readline:0= )
 SLOT=0
 SRC_URI=mirror://gnu/gawk/gawk-5.0.0.tar.xz
-_eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
+_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
 _md5_=735390cb833c5d9cfd56d9450d08b448

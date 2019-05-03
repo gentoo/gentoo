@@ -1634,6 +1634,11 @@
       <role>General system administration, Blogs, Planet</role>
     </member>
     <member>
+      <email>bman@gentoo.org</email>
+      <name>Aaron Bauman</name>
+      <role>Minion</role>
+    </member>
+    <member>
       <email>grknight@gentoo.org</email>
       <name>Brian Evans</name>
     </member>
@@ -3973,21 +3978,19 @@
     <name>Wine</name>
     <url>https://wiki.gentoo.org/wiki/Project:Wine</url>
     <description>Maintenance of Wine and Wine-related Packages</description>
-    <member is-lead="1">
+    <member>
       <email>chiitoo@gentoo.org</email>
       <name>Jimi Huotari</name>
-      <role>Non-Technical Lead</role>
     </member>
-    <member is-lead="1">
+    <member>
       <email>NP-Hardass@gentoo.org</email>
       <name>NP-Hardass</name>
-      <role>Technical Lead</role>
     </member>
     <member>
       <email>ryao@gentoo.org</email>
       <name>Richard Yao</name>
     </member>
-    <member>
+    <member is-lead="1">
       <email>sarnex@gentoo.org</email>
       <name>Nick Sarnie</name>
     </member>

@@ -7,5 +7,5 @@ LICENSE=GPL-3
 RDEPEND=dev-ada/gnatcoll[gnat_2016,iconv,postgres,projects,readline,sqlite] dev-libs/atk dev-libs/glib dev-libs/gobject-introspection dev-libs/libffi media-libs/fontconfig media-libs/freetype sys-devel/llvm sys-devel/clang x11-libs/cairo x11-libs/gdk-pixbuf x11-libs/gtk+ x11-libs/pango x11-themes/adwaita-icon-theme x11-themes/hicolor-icon-theme
 SLOT=0
 SRC_URI=http://mirrors.cdn.adacore.com/art/5739cefdc7a447658e0b016b -> gnat-gpl-2016-x86_64-linux-bin.tar.gz
-_eclasses_=multilib	b2f01ad412baf81650c23fcf0975fa33	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
+_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
 _md5_=820b64b19e4d706c9953cf62484b84f7
