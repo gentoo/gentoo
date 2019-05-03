@@ -167,11 +167,13 @@ if [[ ${PN} != "kgcc64" && ${PN} != gcc-* ]] ; then
 		IUSE+=" graphite +sanitize" TC_FEATURES+=(graphite)
 	tc_version_is_between 4.9 8 && IUSE+=" cilk"
 	tc_version_is_at_least 4.9 && IUSE+=" +vtv"
-	tc_version_is_at_least 5.0 && IUSE+=" jit mpx"
+	tc_version_is_at_least 5.0 && IUSE+=" jit"
+	tc_version_is_between 5.0 9 && IUSE+=" mpx"
 	tc_version_is_at_least 6.0 && IUSE+=" +pie +ssp +pch"
 	# systemtap is a gentoo-specific switch: bug #654748
 	tc_version_is_at_least 8.0 &&
 		IUSE+=" systemtap" TC_FEATURES+=(systemtap)
+	tc_version_is_at_least 9.0 && IUSE+=" d"
 fi
 
 SLOT="${GCC_CONFIG_VER}"
