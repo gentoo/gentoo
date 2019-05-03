@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -30,7 +30,6 @@ PATCHES=(
 	  "${FILESDIR}/${PN}-5.6-security.patch"
 	  "${FILESDIR}/${P}-doc.patch"
 )
-
 
 src_prepare() {
 	#respecting LDFLAGS, bug #208189
