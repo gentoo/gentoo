@@ -8,11 +8,16 @@ inherit distutils-r1
 
 DESCRIPTION="Golden Disk Image builder."
 HOMEPAGE="http://docs.openstack.org/developer/diskimage-builder/"
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
+if [[ ${PV} == 9999* ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://opendev.org/openstack/diskimage-builder.git"
+else
+	SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
+	KEYWORDS="~amd64 ~arm64 ~x86 ~amd64-linux ~x86-linux"
+fi
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
 CDEPEND=">=dev-python/pbr-2.0.0[${PYTHON_USEDEP}]
@@ -23,7 +28,7 @@ RDEPEND="${CDEPEND}
 	>=dev-python/Babel-2.3.4[${PYTHON_USEDEP}]
 	!~dev-python/Babel-2.4.0[${PYTHON_USEDEP}]
 	>=dev-python/networkx-1.10[${PYTHON_USEDEP}]
-	<dev-python/networkx-2.0[${PYTHON_USEDEP}]
+	<dev-python/networkx-2.3[${PYTHON_USEDEP}]
 	>=dev-python/pyyaml-3.12[${PYTHON_USEDEP}]
 	>=dev-python/flake8-2.5.4[${PYTHON_USEDEP}]
 	<dev-python/flake8-2.6.0[${PYTHON_USEDEP}]

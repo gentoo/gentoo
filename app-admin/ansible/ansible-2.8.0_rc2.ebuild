@@ -10,7 +10,7 @@ inherit distutils-r1 eutils
 DESCRIPTION="Model-driven deployment, config management, and command execution framework"
 HOMEPAGE="https://ansible.com/"
 # don't forget to fix also ${S} in the next bump
-SRC_URI="https://releases.ansible.com/${PN}/${PN}-2.8.0rc1.tar.gz"
+SRC_URI="https://releases.ansible.com/${PN}/${PN}-2.8.0rc2.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -43,7 +43,7 @@ DEPEND="
 		dev-vcs/git
 	)"
 
-S="${WORKDIR}/ansible-2.8.0rc1"
+S="${WORKDIR}/ansible-2.8.0rc2"
 
 python_compile_all() {
 	if use doc; then
