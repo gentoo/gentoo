@@ -10712,7 +10712,7 @@ x11-apps/xconsole 1.0.7: monitor system console messages with X
 x11-apps/xcursorgen 1.0.7: create an X cursor file from a collection of PNG images
 x11-apps/xdbedizzy 1.1.0: X.Org xdbedizzy application
 x11-apps/xditview 1.0.5: display ditroff output
-x11-apps/xdm 1.1.11-r3 1.1.12: X.Org xdm application
+x11-apps/xdm 1.1.12: X.Org xdm application
 x11-apps/xdpyinfo 1.3.1 1.3.2: Display information utility for X
 x11-apps/xdriinfo 1.0.5 1.0.6: query configuration information of DRI drivers
 x11-apps/xedit 1.2.1 1.2.2: simple text editor for X
@@ -10762,7 +10762,7 @@ x11-apps/xwud 1.0.5: image displayer for X
 x11-base/xcb-proto 1.13: X C-language Bindings protocol headers
 x11-base/xorg-drivers 1.20: Meta package containing deps on all xorg drivers
 x11-base/xorg-proto 2018.4: X.Org combined protocol headers
-x11-base/xorg-server 1.20.3 1.20.4: X.Org X servers
+x11-base/xorg-server 1.20.4: X.Org X servers
 x11-base/xorg-x11 7.4-r3: An X11 implementation maintained by the X.Org Foundation (meta package)
 x11-drivers/nvidia-drivers 340.107-r1 390.116-r2 410.104-r2 415.27-r2 418.56: NVIDIA Accelerated Graphics Driver
 x11-drivers/xf86-input-elographics 1.4.1: Elographics input driver
