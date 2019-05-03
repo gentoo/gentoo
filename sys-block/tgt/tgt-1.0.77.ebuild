@@ -4,7 +4,7 @@
 EAPI=7
 inherit flag-o-matic toolchain-funcs
 
-MY_TREE="df08164"
+MY_TREE="355a4fa"
 
 DESCRIPTION="Linux SCSI target framework (tgt)"
 HOMEPAGE="http://stgt.sourceforge.net"
