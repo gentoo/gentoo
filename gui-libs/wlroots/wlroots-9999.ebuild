@@ -13,7 +13,7 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/swaywm/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 ~arm64 ~x86"
 fi
 
 LICENSE="MIT"
@@ -22,8 +22,8 @@ IUSE="elogind icccm rootston systemd x11-backend X"
 REQUIRED_USE="?? ( elogind systemd )"
 
 DEPEND="
-	>=dev-libs/libinput-1.7.0:0=
-	>=dev-libs/wayland-1.16.0
+	>=dev-libs/libinput-1.9.0:0=
+	>=dev-libs/wayland-1.17.0
 	media-libs/mesa[egl,gles2,gbm]
 	virtual/libudev
 	x11-libs/libdrm
