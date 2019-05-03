@@ -10,7 +10,7 @@ inherit toolchain-funcs distutils-r1
 
 DESCRIPTION="A data templating language for app and tool developers "
 HOMEPAGE="http://jsonnet.org/"
-SRC_URI="https://github.com/google/jsonnet/archive/v0.12.1.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/google/jsonnet/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 IUSE="python"
 
 LICENSE="Apache-2.0"
