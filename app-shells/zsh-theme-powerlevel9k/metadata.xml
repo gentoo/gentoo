@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>zohran.londais@gmail.com</email>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+		Powerlevel9k is a theme for ZSH which uses Powerline Fonts. It can be used with vanilla ZSH or ZSH frameworks such as Oh-My-Zsh, Prezto, Antigen, and many others.
+	</longdescription>
+	<use>
+		<flag name="awesome">Add awesome fonts support</flag>
+		<flag name="powerline">Add powerline fonts support</flag>
+	</use>
+</pkgmetadata>
