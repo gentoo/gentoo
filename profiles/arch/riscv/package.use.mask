@@ -5,3 +5,7 @@
 dev-libs/libpcre2 jit
 dev-libs/libpcre jit
 dev-vcs/git pcre-jit
+
+# Not yet tested
+
+app-editors/nano slang
