@@ -311,7 +311,7 @@ app-cdr/tkdvd 4.0.9-r1: A Tcl/Tk GUI for writing DVDs and CDs
 app-cdr/uif2iso 0.1.7c-r1: Convert CD images from uif (MagicISO) to iso
 app-cdr/xbiso 0.6.1-r2: Xbox xdvdfs ISO extraction utility
 app-cdr/xcdroast 0.98_alpha16-r3: Lightweight cdrtools front-end for CD and DVD writing
-app-cdr/xfburn 0.5.5: GTK+ based CD and DVD burning application
+app-cdr/xfburn 0.5.5-r1: GTK+ based CD and DVD burning application
 app-crypt/WiRouterKeyRec 1.1.2: Recovery tool for wpa passphrase
 app-crypt/acme 0.32.0 0.33.1-r1: An implementation of the ACME protocol
 app-crypt/acme-tiny 4.0.4: A tiny, auditable script for Let's Encrypt's ACME Protocol
@@ -11421,7 +11421,7 @@ xfce-extra/xfce4-fsguard-plugin 1.1.0: A filesystem guard plug-in for the Xfce p
 xfce-extra/xfce4-genmon-plugin 4.0.1: Cyclically spawned executable output on the panel
 xfce-extra/xfce4-hdaps 0.0.9-r1: A plugin to indicate the status of the IBM Hard Drive Active Protection System
 xfce-extra/xfce4-kbdleds-plugin 0.0.6-r1: A panel plug-in to show state of Caps, Num and Scroll Lock keys
-xfce-extra/xfce4-mailwatch-plugin 1.2.0-r1: An mail notification panel plug-in for the Xfce desktop environment
+xfce-extra/xfce4-mailwatch-plugin 1.2.0-r2: An mail notification panel plug-in for the Xfce desktop environment
 xfce-extra/xfce4-mount-plugin 1.1.3: An mount plug-in for the Xfce panel
 xfce-extra/xfce4-mpc-plugin 0.5.1: Music Player Daemon (mpd) panel plugin
 xfce-extra/xfce4-netload-plugin 1.3.1: A network load plug-in for the Xfce panel
