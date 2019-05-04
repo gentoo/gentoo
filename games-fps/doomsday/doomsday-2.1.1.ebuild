@@ -42,15 +42,7 @@ PDEPEND="
 
 S="${WORKDIR}/${P}/${PN}"
 
-DISABLE_AUTOFORMATTING="yes"
-
-DOC_CONTENTS="
-You need to copy Doom, Doom 2, Chex Quest, Heretic, Hexen, HexenDD,
-and Doom64 wads to a folder of your choice. Then configure in game
-engine where that folder is. This is different than old versions,
-which had centralized launchers for each game, and required the
-files to be in a specific place
-"
+DOC_CONTENTS="You need to copy Doom, Doom 2, Chex Quest, Heretic, Hexen, HexenDD, or Doom64 wads to a folder of your choice and then tell the game engine where that folder is. This is different to older versions, which had separate launchers for each game and required the files to be in a specific place."
 
 src_prepare() {
 	cmake-utils_src_prepare
