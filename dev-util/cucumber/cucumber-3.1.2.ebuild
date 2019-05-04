@@ -49,7 +49,9 @@ ruby_add_rdepend "
 all_ruby_prepare() {
 	# Remove development dependencies from the gemspec that we don't
 	# need or can't satisfy.
-	sed -i -e '/\(coveralls\|spork\|simplecov\|bcat\|kramdown\|yard\|capybara\|octokit\|rack-test\|ramaze\|rubocop\|sinatra\|webrat\|mime-types\|rubyzip\)/d' ${RUBY_FAKEGEM_GEMSPEC} || die
+	sed -e '/\(coveralls\|spork\|simplecov\|bcat\|kramdown\|yard\|capybara\|octokit\|rack-test\|ramaze\|rubocop\|sinatra\|webrat\|mime-types\|rubyzip\)/d' \
+		-e '/nokogiri/ s/1.8.1/1.8/' \
+		-i ${RUBY_FAKEGEM_GEMSPEC} || die
 
 	# Avoid dependency on unpackaged cucumber-pro
 	sed -i -e '/cucumber-pro/ s:^:#:' Gemfile || die
