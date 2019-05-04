@@ -1,3 +1,6 @@
+# Copyright 2008-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
 USE="kdrive minimal multicall zlib"
 CFLAGS="-Os -pipe"
 CXXFLAGS="${CFLAGS}"
@@ -36,3 +39,6 @@ USE_EXPAND_HIDDEN="USERLAND KERNEL ELIBC ABI_MIPS ABI_PPC ABI_S390 ABI_X86 CPU_F
 # Variables that are set exclusively by the profile
 # and not by user configuration files.
 PROFILE_ONLY_VARIABLES="IUSE_IMPLICIT USERLAND USE_EXPAND_IMPLICIT USE_EXPAND_UNPREFIXED USE_EXPAND_VALUES_ARCH USE_EXPAND_VALUES_ELIBC USE_EXPAND_VALUES_KERNEL USE_EXPAND_VALUES_USERLAND"
+
+# Accept any license except those in the EULA license group.
+ACCEPT_LICENSE="* -@EULA"
