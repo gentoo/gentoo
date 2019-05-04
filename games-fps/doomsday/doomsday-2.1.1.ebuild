@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 PYTHON_COMPAT=( python2_7 python3_{6,7} )
 
@@ -30,8 +30,8 @@ RDEPEND="
 	openal? ( media-libs/openal )
 	tools? ( sys-libs/ncurses:0= )
 "
-DEPEND="
-	${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	${PYTHON_DEPS}
 	virtual/pkgconfig
 "
@@ -53,7 +53,7 @@ files to be in a specific place
 "
 
 src_prepare() {
-	default
+	cmake-utils_src_prepare
 
 	# Fix QA warning for "installing to one or more unexpected paths"
 	sed -e "10s:/texc:/${PF}:" -i tools/texc/CMakeLists.txt || die
@@ -73,7 +73,7 @@ src_install() {
 	cmake-utils_src_install
 
 	if use tools; then
-		mv "${ED%/}"/usr/bin/md2tool "${ED%/}"/usr/bin/md2tool.doomsday || die
+		mv -v "${ED}"/usr/bin/md2tool{,.${PN}} || die
 	fi
 
 	readme.gentoo_create_doc
