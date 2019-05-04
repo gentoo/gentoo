@@ -6,7 +6,7 @@
   <name>Gentoo GNU Emacs project</name>
 </maintainer>
 <stabilize-allarches/>
-<use>
-  <flag name="extensions">Install optional extensions</flag>
-</use>
+<upstream>
+  <remote-id type="github">jwiegley/emacs-async</remote-id>
+</upstream>
 </pkgmetadata>
