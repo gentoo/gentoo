@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{5,6,7} )
 
-inherit autotools python-any-r1
+inherit autotools python-single-r1
 
 DESCRIPTION="Tiny library providing a C \"class\" for working with arbitrary big sizes in bytes"
 HOMEPAGE="https://github.com/storaged-project/libbytesize"
@@ -29,8 +29,8 @@ DEPEND="
 	sys-devel/gettext
 	doc? ( dev-util/gtk-doc )
 	test? (
-		dev-python/pocketlint
-		dev-python/polib
+		dev-python/pocketlint[${PYTHON_USEDEP}]
+		dev-python/polib[${PYTHON_USEDEP}]
 	)
 "
 
@@ -45,8 +45,8 @@ src_prepare() {
 
 src_configure() {
 	local myeconfargs=(
-		$(use_with python python3)
 		$(use_with doc gtk-doc)
+		$(use_with python python3)
 		$(use_with tools)
 	)
 	econf "${myeconfargs[@]}"
