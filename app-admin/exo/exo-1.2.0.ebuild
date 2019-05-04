@@ -7,7 +7,7 @@ DESCRIPTION="Command-line tool for everything at Exoscale: compute, storage, dns
 HOMEPAGE="https://exoscale.github.io/cli"
 SRC_URI="https://github.com/exoscale/cli/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="MIT"
+LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
 
