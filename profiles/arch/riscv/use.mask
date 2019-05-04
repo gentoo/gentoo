@@ -10,6 +10,10 @@ seccomp
 # Not tested
 elogind
 fuse
+gtk
+gtk2
+gtk3
 libressl
+qt5
 slang
 X
