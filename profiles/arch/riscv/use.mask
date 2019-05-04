@@ -14,9 +14,12 @@ fuse
 gtk
 gtk2
 gtk3
+introspection
+java
 libedit
 libressl
 qt5
 slang
 sqlite
+systemtap
 X
