@@ -5962,7 +5962,7 @@ dev-ruby/netrc 0.11.0: This library reads and writes .netrc files
 dev-ruby/nokogiri 1.8.1 1.8.4: Nokogiri is an HTML, XML, SAX, and Reader parser
 dev-ruby/nokogiri-diff 0.2.0-r2: Calculate the differences between two XML/HTML documents
 dev-ruby/ntlm-http 0.1.1-r2: Ruby/NTLM HTTP provides NTLM authentication over http
-dev-ruby/ox 2.8.2 2.9.4: A fast XML parser and Object marshaller
+dev-ruby/ox 2.9.4: A fast XML parser and Object marshaller
 dev-ruby/paramesan 0.1.1: Parameterized tests in Ruby
 dev-ruby/patron 0.13.1-r1: Patron is a Ruby HTTP client library based on libcurl
 dev-ruby/pg 0.21.0: Ruby extension library providing an API to PostgreSQL
