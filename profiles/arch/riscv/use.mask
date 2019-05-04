@@ -8,4 +8,5 @@
 seccomp
 
 # Not tested
+elogind
 slang
