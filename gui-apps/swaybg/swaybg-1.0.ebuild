@@ -25,7 +25,7 @@ DEPEND="
 "
 RDEPEND="
 	${DEPEND}
-	!<=gui-wm/sway-1.1
+	!<gui-wm/sway-1.1
 "
 BDEPEND="
 	>=dev-libs/wayland-protocols-1.14
