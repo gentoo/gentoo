@@ -3,7 +3,7 @@
 
 EAPI=6
 
-USE_RUBY="ruby23 ruby24 ruby25"
+USE_RUBY="ruby23 ruby24 ruby25 ruby26"
 RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 
@@ -30,12 +30,7 @@ ruby_add_rdepend "
 	>dev-ruby/faraday-0.8
 	>dev-ruby/multi_json-1.0
 	dev-ruby/net-http-pipeline
-"
-
-RDEPEND="${RDEPEND}
-	ruby_targets_ruby23? ( >=dev-ruby/net-http-persistent-2.9:0[ruby_targets_ruby23] )
-	ruby_targets_ruby24? ( >=dev-ruby/net-http-persistent-2.9:0[ruby_targets_ruby24] )
-	ruby_targets_ruby25? ( >=dev-ruby/net-http-persistent-3:3[ruby_targets_ruby25] )
+	dev-ruby/net-http-persistent:*
 "
 
 all_ruby_prepare() {
