@@ -4919,6 +4919,7 @@ net-vpn/strongswan:strongswan_plugins_unbound - Enable support for the unbound p
 net-vpn/strongswan:strongswan_plugins_unity - Enable support for the unity plugin
 net-vpn/strongswan:strongswan_plugins_vici - Enable support for the vici plugin
 net-vpn/strongswan:strongswan_plugins_whitelist - Enable support for the whitelist plugin
+net-vpn/tor:man - Build and install man pages
 net-vpn/tor:scrypt - Use app-crypt/libscrypt for the scrypt algorithm
 net-vpn/tor:tor-hardening - Compile tor with hardening on vanilla compilers/linkers
 net-vpn/vpnc:resolvconf - Enable support for DNS managing framework net-dns/openresolv
