@@ -4,10 +4,10 @@ DESCRIPTION=Used to generate Makefile.in from Makefile.am
 EAPI=6
 HOMEPAGE=https://www.gnu.org/software/automake/
 IUSE=test
-KEYWORDS=alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~x86-fbsd
+KEYWORDS=alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 ~riscv s390 sh sparc x86 ~amd64-fbsd ~x86-fbsd
 LICENSE=GPL-2
 RDEPEND=dev-lang/perl >=sys-devel/automake-wrapper-10 >=sys-devel/autoconf-2.69:* sys-devel/gnuconfig
 SLOT=1.10
 SRC_URI=mirror://gnu/automake/automake-1.10.3.tar.bz2
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-any-r1	4900ae970f827a22d33d41bd8b8f9ace	python-utils-r1	08e17157a6807add7db1f8d01e7e391f	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
-_md5_=de5b7668f072857dcfa7a1ec8ac07180
+_md5_=347c87332e5b038acbd9ed81c07a80b3
