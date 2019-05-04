@@ -13,5 +13,7 @@ app-crypt/pinentry fltk gnome-keyring
 net-libs/gnutls guile
 net-misc/openssh kerberos
 sys-devel/make guile
+sys-apps/portage epydoc
 sys-auth/pambase consolekit pam_ssh pam_krb5 passwdqc mktemp
+sys-process/audit python
 sys-process/procps test
