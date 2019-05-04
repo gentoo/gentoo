@@ -19,19 +19,19 @@ IUSE="demo fmod freedoom fluidsynth openal tools"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
-	dev-qt/qtcore:5
-	dev-qt/qtgui:5[-gles2]
-	dev-qt/qtnetwork:5
-	dev-qt/qtopengl:5
-	dev-qt/qtwidgets:5
-	dev-qt/qtx11extras:5
+	dev-qt/qtcore:5=
+	dev-qt/qtgui:5=[-gles2]
+	dev-qt/qtnetwork:5=
+	dev-qt/qtopengl:5=
+	dev-qt/qtwidgets:5=
+	dev-qt/qtx11extras:5=
 	media-libs/assimp
 	net-misc/curl
 	sys-libs/zlib
-	fmod? ( media-libs/fmod )
-	fluidsynth? ( media-sound/fluidsynth )
+	fmod? ( media-libs/fmod:1 )
+	fluidsynth? ( media-sound/fluidsynth:= )
 	openal? ( media-libs/openal )
-	tools? ( sys-libs/ncurses:0 )
+	tools? ( sys-libs/ncurses:0= )
 "
 DEPEND="
 	${RDEPEND}
