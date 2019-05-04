@@ -1264,7 +1264,6 @@ app-shells/fzy 1.0: Fuzzy text selector (interactive grep) for console
 app-shells/gentoo-bashcomp 20180302: Gentoo-specific bash command-line completions (emerge, ebuild, equery, etc)
 app-shells/gentoo-zsh-completions 20150103 20180228: Gentoo specific zsh completion support (includes emerge and ebuild commands)
 app-shells/hstr 2.0: Shell history suggest box
-app-shells/ksh 93.20140625: The Original Korn Shell, 1993 revision (ksh93)
 app-shells/localshell 1.3.4-r1: Localshell allows per-user/group local control of shell execution
 app-shells/mksh 56c: MirBSD KSH Shell
 app-shells/mpv-bash-completion 3.3.16 3.3.17: Bash completion for the mpv video player
