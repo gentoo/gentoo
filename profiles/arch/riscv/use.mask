@@ -9,6 +9,7 @@ seccomp
 
 # Not tested
 elogind
+emacs
 fuse
 gtk
 gtk2
