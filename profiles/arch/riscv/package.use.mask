@@ -7,10 +7,16 @@ dev-libs/libpcre jit
 dev-vcs/git pcre-jit
 
 # Not yet tested / unkeyworded dependencies
+# This includes also packages which do not support python-3 or
+# do not support python-3.7 yet.
 
+app-admin/syslog-ng python
 app-crypt/gnupg ldap smartcard tofu wks-server
 app-crypt/pinentry fltk gnome-keyring
-net-libs/gnutls guile
+app-misc/pax-utils python
+dev-libs/libxslt python
+net-libs/gnutls guile test-full
+net-libs/ldns python
 net-misc/openssh kerberos
 sys-devel/make guile
 sys-apps/portage epydoc
