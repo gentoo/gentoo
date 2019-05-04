@@ -9,5 +9,6 @@ seccomp
 
 # Not tested
 elogind
+fuse
 libressl
 slang
