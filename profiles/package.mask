@@ -812,12 +812,6 @@ sys-devel/automake:1.8
 # Incompatible changes in API in Enchant 2. Bug #629838.
 >=app-text/enchant-2
 
-# Sébastien Fabbro <bicatali@gentoo.org> (19 Aug 2017)
-# ipython-6 is python-3 only and causes circular dependencies
-# Unset python_targets_python2_7 for ipykernel and ipyparallel if needed.
->=dev-python/ipython-6
->=dev-python/ipykernel-5
-
 # Kent Fredric <kentnl@gentoo.org> (21 Jul 2017)
 # Masked due to serious regression that introduces widespread data
 # corruption when storing data in blobs. Masked, because any code

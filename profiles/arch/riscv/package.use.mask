@@ -18,8 +18,9 @@ dev-libs/libxslt python
 net-libs/gnutls guile test-full
 net-libs/ldns python
 net-misc/openssh kerberos
-sys-devel/make guile
 sys-apps/portage epydoc
 sys-auth/pambase consolekit pam_ssh pam_krb5 passwdqc mktemp
+sys-devel/make guile
+sys-fs/squashfs-tools lz4 lzma lzo zstd
 sys-process/audit python
 sys-process/procps test
