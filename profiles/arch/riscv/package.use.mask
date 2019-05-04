@@ -10,3 +10,4 @@ dev-vcs/git pcre-jit
 
 sys-devel/make guile
 sys-auth/pambase consolekit pam_ssh pam_krb5 passwdqc mktemp
+sys-process/procps test
