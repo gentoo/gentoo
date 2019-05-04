@@ -6,3 +6,6 @@
 
 # The required library has not been ported to riscv yet.
 seccomp
+
+# Not tested
+slang

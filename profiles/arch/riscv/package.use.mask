@@ -8,5 +8,4 @@ dev-vcs/git pcre-jit
 
 # Not yet tested
 
-app-editors/nano slang
 sys-devel/make guile
