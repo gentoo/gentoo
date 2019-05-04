@@ -13,15 +13,15 @@ SRC_URI="https://github.com/storaged-project/${PN}/archive/${PV}.tar.gz -> ${P}.
 LICENSE="LGPL-2+"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
-IUSE="doc test tools"
+IUSE="doc python test tools"
 
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="
-	${PYTHON_DEPS}
 	dev-libs/gmp:0=
 	dev-libs/mpfr:=
 	dev-libs/libpcre2
+	python? ( ${PYTHON_DEPS} )
 "
 
 DEPEND="
@@ -45,7 +45,7 @@ src_prepare() {
 
 src_configure() {
 	local myeconfargs=(
-		--with-python3
+		$(use_with python python3)
 		$(use_with doc gtk-doc)
 		$(use_with tools)
 	)
@@ -54,6 +54,6 @@ src_configure() {
 
 src_install() {
 	default
-	python_optimize
+	use python && python_optimize
 	find "${ED}" -name "*.la*" -delete || die
 }
