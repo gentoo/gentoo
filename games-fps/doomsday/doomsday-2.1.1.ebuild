@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,12 +15,8 @@ LICENSE="GPL-3+ LGPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-IUSE="demo +doom fmod freedoom fluidsynth heretic hexen openal tools"
-REQUIRED_USE="
-	${PYTHON_REQUIRED_USE}
-	demo? ( doom )
-	freedoom? ( doom )
-"
+IUSE="demo fmod freedoom fluidsynth openal tools"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
 	dev-qt/qtcore:5
