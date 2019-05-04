@@ -24,8 +24,9 @@ RDEPEND="
 	python? ( ${PYTHON_DEPS} )
 "
 
-DEPEND="
-	${RDEPEND}
+DEPEND="${RDEPEND}"
+
+BDEPEND="
 	sys-devel/gettext
 	doc? ( dev-util/gtk-doc )
 	test? (
