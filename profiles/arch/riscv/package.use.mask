@@ -9,6 +9,7 @@ dev-vcs/git pcre-jit
 # Not yet tested
 
 net-libs/gnutls guile
+net-misc/openssh kerberos
 sys-devel/make guile
 sys-auth/pambase consolekit pam_ssh pam_krb5 passwdqc mktemp
 sys-process/procps test
