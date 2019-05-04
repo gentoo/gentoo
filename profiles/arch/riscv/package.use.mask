@@ -6,8 +6,9 @@ dev-libs/libpcre2 jit
 dev-libs/libpcre jit
 dev-vcs/git pcre-jit
 
-# Not yet tested
+# Not yet tested / unkeyworded dependencies
 
+app-crypt/gnupg ldap smartcard tofu wks-server
 net-libs/gnutls guile
 net-misc/openssh kerberos
 sys-devel/make guile
