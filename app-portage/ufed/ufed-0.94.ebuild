@@ -20,10 +20,10 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE=""
 
-COMMON_DEPEND="sys-libs/ncurses:0="
-RDEPEND="${COMMON_DEPEND}
-	dev-lang/perl"
-DEPEND="${COMMON_DEPEND}
+RDEPEND="
+	dev-lang/perl
+	sys-libs/ncurses:0="
+DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 src_prepare() {
