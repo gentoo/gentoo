@@ -16,13 +16,13 @@ S="${WORKDIR}/${MY_PF}"
 LICENSE="BSD GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~mips ~ppc ~ppc64 ~x86 ~ppc-macos"
-IUSE="caps libressl lzma scrypt seccomp selinux systemd tor-hardening test zstd"
+IUSE="caps doc libressl lzma +man scrypt seccomp selinux systemd tor-hardening test zstd"
 
 DEPEND="
-	app-text/asciidoc
 	dev-libs/libevent[ssl]
 	sys-libs/zlib
 	caps? ( sys-libs/libcap )
+	man? ( app-text/asciidoc )
 	!libressl? ( dev-libs/openssl:0=[-bindist] )
 	libressl? ( dev-libs/libressl:0= )
 	lzma? ( app-arch/xz-utils )
@@ -38,7 +38,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-0.3.3.2-alpha-tor.service.in.patch
 )
 
-DOCS=( README ChangeLog ReleaseNotes doc/HACKING )
+DOCS=()
 
 pkg_setup() {
 	enewgroup tor
@@ -46,11 +46,11 @@ pkg_setup() {
 }
 
 src_configure() {
+	use doc && DOCS+=( README ChangeLog ReleaseNotes doc/HACKING )
 	export ac_cv_lib_cap_cap_init=$(usex caps)
 	econf \
 		--localstatedir="${EPREFIX}/var" \
 		--enable-system-torrc \
-		--enable-asciidoc \
 		--disable-android \
 		--disable-libfuzzer \
 		--disable-module-dirauth \
@@ -58,6 +58,7 @@ src_configure() {
 		--disable-rust \
 		--disable-restart-debugging \
 		--disable-zstd-advanced-apis  \
+		$(use_enable man asciidoc) \
 		$(use_enable lzma) \
 		$(use_enable scrypt libscrypt) \
 		$(use_enable seccomp) \
@@ -84,4 +85,5 @@ src_install() {
 
 	insinto /etc/tor/
 	newins "${FILESDIR}"/torrc-r1 torrc
+
 }

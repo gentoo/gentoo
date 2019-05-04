@@ -6,6 +6,7 @@
 		<name>Anthony G. Basile</name>
 	</maintainer>
 	<use>
+		<flag name="man">Build and install man pages</flag>
 		<flag name="scrypt">Use <pkg>app-crypt/libscrypt</pkg> for the scrypt algorithm</flag>
 		<flag name="tor-hardening">Compile tor with hardening on vanilla compilers/linkers</flag>
 	</use>
