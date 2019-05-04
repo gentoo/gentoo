@@ -300,8 +300,8 @@ src_configure() {
 		$(use_with !elibc_Cygwin hardening) #659210
 	)
 
-	# stackprotect is broken on musl x86
-	use elibc_musl && use x86 && myconf+=( --without-stackprotect )
+	# stackprotect is broken on musl x86 and ppc
+	use elibc_musl && ( use x86 || use ppc ) && myconf+=( --without-stackprotect )
 
 	# The seccomp sandbox is broken on x32, so use the older method for now. #553748
 	use amd64 && [[ ${ABI} == "x32" ]] && myconf+=( --with-sandbox=rlimit )
