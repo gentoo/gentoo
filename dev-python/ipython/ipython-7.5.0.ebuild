@@ -18,21 +18,6 @@ KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc examples matplotlib notebook nbconvert qt5 +smp test"
 RESTRICT="!test? ( test )"
 
-# About "-python_targets_python2_7":
-# The ipython stack is in a tricky transition to py3-only. It has many circular
-# dependencies which causes a chicken-and-egg problem because for Portage to
-# properly handle dependency resolution on a system with
-# python_targets_python2_7 all members of the circular dependency must go
-# py3-only at the same time. If they don't, the dependency that requires py2
-# will seek older ipython releases for resolution. This is why, for members
-# of the circular dependency, we force -python_targets_python2_7. This way, the
-# circle stays firmly in py3-only land. This only affects members of the
-# circular dependency. Other dependencies can be on py2 without problem.
-#
-# This situation also require us to explicitly depend on transitive dependencies
-# that are part of the circular dependecy so that we preserve "circle
-# integrity". It's a bit ugly, but temporary.
-
 CDEPEND="
 	dev-python/backcall[${PYTHON_USEDEP}]
 	dev-python/decorator[${PYTHON_USEDEP}]
@@ -43,17 +28,17 @@ CDEPEND="
 	<dev-python/prompt_toolkit-2.1[${PYTHON_USEDEP}]
 	dev-python/pygments[${PYTHON_USEDEP}]
 	dev-python/traitlets[${PYTHON_USEDEP}]
-	matplotlib? ( dev-python/matplotlib[${PYTHON_USEDEP},-python_targets_python2_7] )
+	matplotlib? ( dev-python/matplotlib[${PYTHON_USEDEP}] )
 "
 
 RDEPEND="${CDEPEND}
-	nbconvert? ( dev-python/nbconvert[${PYTHON_USEDEP},-python_targets_python2_7] )"
+	nbconvert? ( dev-python/nbconvert[${PYTHON_USEDEP}] )"
 
 DEPEND="${CDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
 		>=dev-python/ipykernel-5.1.0[${PYTHON_USEDEP}]
-		dev-python/nbformat[${PYTHON_USEDEP},-python_targets_python2_7]
+		dev-python/nbformat[${PYTHON_USEDEP}]
 		dev-python/nose[${PYTHON_USEDEP}]
 		dev-python/numpy[${PYTHON_USEDEP}]
 		dev-python/requests[${PYTHON_USEDEP}]
@@ -66,15 +51,14 @@ DEPEND="${CDEPEND}
 
 PDEPEND="
 	notebook? (
-		dev-python/notebook[${PYTHON_USEDEP},-python_targets_python2_7]
-		>=dev-python/ipykernel-5.1.0[${PYTHON_USEDEP}]
-		dev-python/ipywidgets[${PYTHON_USEDEP},-python_targets_python2_7]
-		dev-python/widgetsnbextension[${PYTHON_USEDEP},-python_targets_python2_7]
+		dev-python/notebook[${PYTHON_USEDEP}]
+		dev-python/ipywidgets[${PYTHON_USEDEP}]
+		dev-python/widgetsnbextension[${PYTHON_USEDEP}]
 	)
 	qt5? ( dev-python/qtconsole[${PYTHON_USEDEP}] )
 	smp? (
 		>=dev-python/ipykernel-5.1.0[${PYTHON_USEDEP}]
-		>=dev-python/ipyparallel-6.2.3[${PYTHON_USEDEP},-python_targets_python2_7]
+		>=dev-python/ipyparallel-6.2.3[${PYTHON_USEDEP}]
 	)"
 
 PATCHES=( "${FILESDIR}"/2.1.0-substitute-files.patch )
