@@ -9,4 +9,5 @@ seccomp
 
 # Not tested
 elogind
+libressl
 slang
