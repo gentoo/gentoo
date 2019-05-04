@@ -111,11 +111,13 @@ src_install() {
 	cmake-utils_src_install
 	use doc && dodoc "${DISTDIR}"/${PN}-usermanual-${DOC_PV}.pdf
 
-	for lang in ${LANGS} ; do
-		if ! use l10n_${lang}; then
-			rm -r "${ED}"/usr/share/locale/${lang/-/_} || die
-		fi
-	done
+	if use nls ; then
+		for lang in ${LANGS} ; do
+			if ! use l10n_${lang}; then
+				rm -r "${ED}"/usr/share/locale/${lang/-/_} || die
+			fi
+		done
+	fi
 
 	if use pax_kernel && use opencl ; then
 		pax-mark Cm "${ED}"/usr/bin/${PN} || die
