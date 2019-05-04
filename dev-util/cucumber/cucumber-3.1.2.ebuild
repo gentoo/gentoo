@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-USE_RUBY="ruby23 ruby24 ruby25"
+USE_RUBY="ruby23 ruby24 ruby25 ruby26"
 
 # Documentation task depends on sdoc which we currently don't have.
 RUBY_FAKEGEM_TASK_DOC=""
@@ -30,7 +30,7 @@ ruby_add_bdepend "
 		>=dev-ruby/nokogiri-1.5.2
 		>=dev-ruby/syntax-1.0.0
 		>=dev-util/aruba-0.6.1 =dev-util/aruba-0.6*
-		>=dev-ruby/json-1.8.6:0
+		dev-ruby/json
 		>=dev-util/cucumber-3
 		>=dev-ruby/mime-types-2.99:2
 	)"
