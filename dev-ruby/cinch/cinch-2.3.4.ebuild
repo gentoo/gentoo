@@ -7,7 +7,7 @@ USE_RUBY="ruby23 ruby24 ruby25 ruby26"
 # The testsuite is not in the Gem, only in the upstream repo.
 RUBY_FAKEGEM_RECIPE_TEST="none"
 RUBY_FAKEGEM_RECIPE_DOC="rdoc"
-RUBY_FAKEGEM_EXTRADOC="ChangeLog README.md"
+RUBY_FAKEGEM_EXTRADOC="docs/*.md README.md"
 
 inherit ruby-fakegem
 
