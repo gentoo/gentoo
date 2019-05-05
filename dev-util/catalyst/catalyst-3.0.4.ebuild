@@ -21,7 +21,7 @@ HOMEPAGE="https://wiki.gentoo.org/wiki/Catalyst"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="ccache doc kernel_linux system-bootloader"
+IUSE="ccache doc +iso kernel_linux system-bootloader"
 
 DEPEND="
 	app-text/asciidoc
@@ -35,10 +35,10 @@ RDEPEND="
 	sys-fs/dosfstools
 	!kernel_FreeBSD? ( || ( app-arch/tar[xattr] app-arch/libarchive[xattr] ) )
 	kernel_FreeBSD? ( app-arch/libarchive[xattr] )
-	virtual/cdrtools
 	amd64? ( >=sys-boot/syslinux-3.72 )
 	x86? ( >=sys-boot/syslinux-3.72 )
 	ccache? ( dev-util/ccache )
+	iso? ( virtual/cdrtools )
 	kernel_linux? ( app-misc/zisofs-tools >=sys-fs/squashfs-tools-2.1 )
 "
 PDEPEND="system-bootloader? ( >=sys-apps/memtest86+-5.01-r4
