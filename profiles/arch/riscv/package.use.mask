@@ -12,7 +12,7 @@ dev-vcs/git pcre-jit
 
 app-admin/syslog-ng python
 app-crypt/gnupg ldap smartcard tofu wks-server
-app-crypt/mit-krb5 doc test xinted
+app-crypt/mit-krb5 doc test xinetd
 app-crypt/pinentry fltk gnome-keyring
 app-misc/pax-utils python
 app-text/asciidoc test
@@ -25,6 +25,7 @@ net-libs/ldns python
 sys-apps/kmod doc
 sys-apps/portage epydoc
 sys-auth/pambase pam_ssh passwdqc mktemp
+sys-devel/gettext cvs
 sys-fs/squashfs-tools lz4 lzma lzo zstd
 sys-libs/pam vim-syntax
 sys-process/audit python
