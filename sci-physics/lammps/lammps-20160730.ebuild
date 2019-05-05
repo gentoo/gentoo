@@ -15,8 +15,8 @@ convert_month() {
 MY_P=${PN}-$((10#${PV:6:2}))$(convert_month ${PV:4:2})${PV:2:2}
 
 DESCRIPTION="Large-scale Atomic/Molecular Massively Parallel Simulator"
-HOMEPAGE="http://lammps.sandia.gov/"
-SRC_URI="http://lammps.sandia.gov/tars/${MY_P}.tar.gz"
+HOMEPAGE="https://lammps.sandia.gov/"
+SRC_URI="https://lammps.sandia.gov/tars/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -16,7 +16,7 @@ MY_PV="patch_$((10#${PV:6:2}))$(convert_month ${PV:4:2})${PV:0:4}"
 MY_P="${PN}-${MY_PV}"
 
 DESCRIPTION="Large-scale Atomic/Molecular Massively Parallel Simulator"
-HOMEPAGE="http://lammps.sandia.gov/"
+HOMEPAGE="https://lammps.sandia.gov/"
 TCOMMIT=7869c75cac38cb8a3d2ef7747ea12ec5812f5151
 SRC_URI="https://github.com/lammps/lammps/archive/${MY_PV}.tar.gz -> ${MY_P}.tar.gz
 	test? ( https://github.com/lammps/lammps-testing/archive/${TCOMMIT}.tar.gz -> ${PN}-testing-${TCOMMIT}.tar.gz )"

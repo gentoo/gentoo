@@ -16,7 +16,7 @@ MY_PV="patch_$((10#${PV:6:2}))$(convert_month ${PV:4:2})${PV:0:4}"
 MY_P="${PN}-${MY_PV}"
 
 DESCRIPTION="Large-scale Atomic/Molecular Massively Parallel Simulator"
-HOMEPAGE="http://lammps.sandia.gov/"
+HOMEPAGE="https://lammps.sandia.gov/"
 SRC_URI="https://github.com/lammps/lammps/archive/${MY_PV}.tar.gz -> ${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
