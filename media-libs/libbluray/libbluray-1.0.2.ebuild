@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 if [[ "${PV#9999}" != "${PV}" ]] ; then
 	inherit git-r3
-	EGIT_REPO_URI="https://git.videolan.org/git/libbluray.git"
+	EGIT_REPO_URI="https://code.videolan.org/videolan/libbluray.git"
 else
 	KEYWORDS="amd64 arm ~arm64 ppc ppc64 sparc x86 ~amd64-fbsd ~x86-fbsd"
 	SRC_URI="https://downloads.videolan.org/pub/videolan/libbluray/${PV}/${P}.tar.bz2"
