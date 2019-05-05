@@ -34,6 +34,7 @@ dev-util/pkgconf test
 dev-vcs/git cvs highlight gnome-keyring subversion tk xinetd
 net-libs/gnutls test-full
 net-libs/ldns doc python
+net-misc/curl brotli curl_ssl_libressl curl_ssl_mbedtls curl_ssl_nss http2 rtmp ssh
 net-nds/openldap cxx kerberos sasl
 sys-apps/kmod doc
 sys-apps/portage epydoc
