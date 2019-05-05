@@ -18,6 +18,7 @@ app-misc/pax-utils python
 app-text/asciidoc test
 app-text/po4a test
 app-text/xmlto text
+dev-lang/python tk
 dev-libs/check subunit
 dev-libs/icu doc
 dev-libs/iniparser doc
