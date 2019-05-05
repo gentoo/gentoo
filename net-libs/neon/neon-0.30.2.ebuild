@@ -45,10 +45,10 @@ src_prepare() {
 	# Fix compatibility with OpenSSL >=1.1.
 	sed -e "s/RSA_F_RSA_PRIVATE_ENCRYPT/RSA_F_RSA_OSSL_PRIVATE_ENCRYPT/" -i src/ne_pkcs11.c || die "sed failed"
 
-	# Use OpenSSL <1.1 compatibility code with LibreSSL.
-	# Functions EVP_PKEY_up_ref(), EVP_PKEY_get0_RSA(), RSA_meth_get0_app_data(), RSA_meth_new(), RSA_meth_free(),
-	# RSA_meth_set_priv_enc(), RSA_meth_set0_app_data() are not implemented in LibreSSL 2.5.1.
-	sed -e "s/#if OPENSSL_VERSION_NUMBER < 0x10100000L/& || defined(LIBRESSL_VERSION_NUMBER)/" -i src/ne_openssl.c src/ne_pkcs11.c || die "sed failed"
+	# Support LibreSSL.
+	# Functions RSA_meth_get0_app_data() and RSA_meth_set0_app_data() are not implemented in LibreSSL 2.9.1.
+	sed -e "1202s/#if OPENSSL_VERSION_NUMBER < 0x10100000L/& || defined(LIBRESSL_VERSION_NUMBER)/" -i src/ne_openssl.c || die "sed failed"
+	sed -e "97a #if defined(LIBRESSL_VERSION_NUMBER)\nstatic void *RSA_meth_get0_app_data(const RSA_METHOD *meth)\n{\n    return meth->app_data;\n}\nstatic int RSA_meth_set0_app_data(RSA_METHOD *meth, void *app_data)\n{\n    meth->app_data = app_data;\n    return 1;\n}\n#endif" -i src/ne_pkcs11.c || die "sed failed"
 
 	eapply_user
 

@@ -28,7 +28,7 @@ Fix building with dlopen() not available.
  
  # Generated source code files
  #
-@@ -434,7 +440,6 @@
+@@ -435,7 +441,6 @@
  # Statically linked extensions
  #
  TESTSRC += \
@@ -36,7 +36,7 @@ Fix building with dlopen() not available.
    $(TOP)/ext/expert/test_expert.c \
    $(TOP)/ext/misc/amatch.c \
    $(TOP)/ext/misc/carray.c \
-@@ -459,7 +464,6 @@
+@@ -461,7 +466,6 @@
    $(TOP)/ext/misc/totype.c \
    $(TOP)/ext/misc/unionvtab.c \
    $(TOP)/ext/misc/wholenumber.c \
@@ -44,7 +44,7 @@ Fix building with dlopen() not available.
    $(TOP)/ext/userauth/userauth.c
  
  # Source code to the library files needed by the test fixture
-@@ -631,25 +635,25 @@
+@@ -640,25 +644,25 @@
  
  libtclsqlite3.la:	tclsqlite.lo libsqlite3.la
  	$(LTLINK) -no-undefined -o $@ tclsqlite.lo \
@@ -81,7 +81,7 @@ Fix building with dlopen() not available.
  
  srcck1$(BEXE):	$(TOP)/tool/srcck1.c
  	$(BCC) -o srcck1$(BEXE) $(TOP)/tool/srcck1.c
-@@ -744,7 +748,7 @@
+@@ -768,7 +772,7 @@
  # Rule to build the amalgamation
  #
  sqlite3.lo:	sqlite3.c
@@ -90,7 +90,7 @@ Fix building with dlopen() not available.
  
  # Rules to build the LEMON compiler generator
  #
-@@ -1044,14 +1048,9 @@
+@@ -1065,14 +1069,9 @@
  # Source files that go into making shell.c
  SHELL_SRC = \
  	$(TOP)/src/shell.c.in \
@@ -102,10 +102,10 @@ Fix building with dlopen() not available.
 -	$(TOP)/ext/expert/sqlite3expert.c \
 -	$(TOP)/ext/expert/sqlite3expert.h \
 -	$(TOP)/ext/misc/zipfile.c \
+ 	$(TOP)/ext/misc/memtrace.c \
          $(TOP)/src/test_windirent.c
  
- shell.c:	$(SHELL_SRC) $(TOP)/tool/mkshellc.tcl
-@@ -1217,15 +1216,15 @@
+@@ -1240,15 +1239,15 @@
  
  # Fuzz testing
  fuzztest:	fuzzcheck$(TEXE) $(FUZZDATA) sessionfuzz$(TEXE) $(TOP)/test/sessionfuzz-data1.db
@@ -124,7 +124,7 @@ Fix building with dlopen() not available.
  	valgrind ./sessionfuzz$(TEXE) run $(TOP)/test/sessionfuzz-data1.db
  
  # The veryquick.test TCL tests.
-@@ -1256,24 +1255,23 @@
+@@ -1279,24 +1278,23 @@
  smoketest:	$(TESTPROGS) fuzzcheck$(TEXE)
  	./testfixture$(TEXE) $(TOP)/test/main.test $(TESTOPTS)
  
@@ -138,17 +138,17 @@ Fix building with dlopen() not available.
 +	$(LTLINK) sqlite3_analyzer.c -o $@ libsqlite3.la $(LIBTCL)
  
 -sqltclsh.c: sqlite3.c $(TOP)/src/tclsqlite.c $(TOP)/tool/sqltclsh.tcl $(TOP)/ext/misc/appendvfs.c $(TOP)/tool/mkccode.tcl $(TOP)/tool/sqltclsh.c.in
-+sqltclsh.c: $(TOP)/src/tclsqlite.c $(TOP)/tool/sqltclsh.tcl $(TOP)/tool/mkccode.tcl $(TOP)/tool/sqltclsh.c.in
++sqltclsh.c:	$(TOP)/src/tclsqlite.c $(TOP)/tool/sqltclsh.tcl $(TOP)/tool/mkccode.tcl $(TOP)/tool/sqltclsh.c.in
  	$(TCLSH_CMD) $(TOP)/tool/mkccode.tcl $(TOP)/tool/sqltclsh.c.in >sqltclsh.c
  
 -sqltclsh$(TEXE): sqltclsh.c
 -	$(LTLINK) sqltclsh.c -o $@ $(LIBTCL) $(TLIBS)
-+sqltclsh$(TEXE): sqltclsh.c libsqlite3.la
++sqltclsh$(TEXE):	sqltclsh.c libsqlite3.la
 +	$(LTLINK) sqltclsh.c -o $@ libsqlite3.la $(LIBTCL)
  
 -sqlite3_expert$(TEXE): $(TOP)/ext/expert/sqlite3expert.h $(TOP)/ext/expert/sqlite3expert.c $(TOP)/ext/expert/expert.c sqlite3.c
 -	$(LTLINK)	$(TOP)/ext/expert/sqlite3expert.h $(TOP)/ext/expert/sqlite3expert.c $(TOP)/ext/expert/expert.c sqlite3.c -o sqlite3_expert $(TLIBS)
-+sqlite3_expert$(TEXE): $(TOP)/ext/expert/sqlite3expert.h $(TOP)/ext/expert/expert.c libsqlite3.la
++sqlite3_expert$(TEXE):	$(TOP)/ext/expert/sqlite3expert.h $(TOP)/ext/expert/expert.c libsqlite3.la
 +	$(LTLINK) $(TOP)/ext/expert/expert.c -o sqlite3_expert libsqlite3.la
  
  CHECKER_DEPS =\
@@ -157,7 +157,7 @@ Fix building with dlopen() not available.
    $(TOP)/src/tclsqlite.c \
    $(TOP)/ext/repair/sqlite3_checker.tcl \
    $(TOP)/ext/repair/checkindex.c \
-@@ -1284,30 +1282,30 @@
+@@ -1307,36 +1305,36 @@
  sqlite3_checker.c:	$(CHECKER_DEPS)
  	$(TCLSH_CMD) $(TOP)/tool/mkccode.tcl $(TOP)/ext/repair/sqlite3_checker.c.in >$@
  
@@ -171,6 +171,11 @@ Fix building with dlopen() not available.
  	$(LTLINK) -DDBDUMP_STANDALONE -o $@ \
 -           $(TOP)/ext/misc/dbdump.c sqlite3.lo $(TLIBS)
 +           $(TOP)/ext/misc/dbdump.c libsqlite3.la
+ 
+-dbtotxt$(TEXE): $(TOP)/tool/dbtotxt.c
+-	$(LTLINK)-o $@ $(TOP)/tool/dbtotxt.c
++dbtotxt$(TEXE):	$(TOP)/tool/dbtotxt.c
++	$(LTLINK) -o $@ $(TOP)/tool/dbtotxt.c
  
 -showdb$(TEXE):	$(TOP)/tool/showdb.c sqlite3.lo
 -	$(LTLINK) -o $@ $(TOP)/tool/showdb.c sqlite3.lo $(TLIBS)
@@ -195,6 +200,11 @@ Fix building with dlopen() not available.
  showshm$(TEXE):	$(TOP)/tool/showshm.c
  	$(LTLINK) -o $@ $(TOP)/tool/showshm.c
  
+-index_usage$(TEXE): $(TOP)/tool/index_usage.c sqlite3.lo
+-	$(LTLINK) $(SHELL_OPT) -o $@ $(TOP)/tool/index_usage.c sqlite3.lo $(TLIBS)
++index_usage$(TEXE):	$(TOP)/tool/index_usage.c libsqlite3.la
++	$(LTLINK) -o $@ $(TOP)/tool/index_usage.c libsqlite3.la
+ 
 -changeset$(TEXE):	$(TOP)/ext/session/changeset.c sqlite3.lo
 -	$(LTLINK) -o $@ $(TOP)/ext/session/changeset.c sqlite3.lo $(TLIBS)
 +changeset$(TEXE):	$(TOP)/ext/session/changeset.c libsqlite3.la
@@ -202,7 +212,7 @@ Fix building with dlopen() not available.
  
  changesetfuzz$(TEXE):	$(TOP)/ext/session/changesetfuzz.c sqlite3.lo
  	$(LTLINK) -o $@ $(TOP)/ext/session/changesetfuzz.c sqlite3.lo $(TLIBS)
-@@ -1332,11 +1330,11 @@
+@@ -1361,11 +1359,11 @@
  kvtest$(TEXE):	$(TOP)/test/kvtest.c sqlite3.c
  	$(LTLINK) $(KV_OPT) -o $@ $(TOP)/test/kvtest.c sqlite3.c $(TLIBS)
  
@@ -304,11 +314,12 @@ Fix building with dlopen() not available.
  
  #if defined(_WIN32) || defined(WIN32)
  # include <io.h>
-@@ -936,13 +941,6 @@
+@@ -939,14 +944,7 @@
  INCLUDE ../ext/misc/shathree.c
  INCLUDE ../ext/misc/fileio.c
  INCLUDE ../ext/misc/completion.c
 -INCLUDE ../ext/misc/appendvfs.c
+ INCLUDE ../ext/misc/memtrace.c
 -#ifdef SQLITE_HAVE_ZLIB
 -INCLUDE ../ext/misc/zipfile.c
 -INCLUDE ../ext/misc/sqlar.c
@@ -318,7 +329,7 @@ Fix building with dlopen() not available.
  
  #if defined(SQLITE_ENABLE_SESSION)
  /*
-@@ -3765,7 +3763,9 @@
+@@ -4000,7 +3998,9 @@
      sqlite3_shathree_init(p->db, 0, 0);
      sqlite3_completion_init(p->db, 0, 0);
  #ifdef SQLITE_HAVE_ZLIB
@@ -328,7 +339,7 @@ Fix building with dlopen() not available.
      sqlite3_sqlar_init(p->db, 0, 0);
  #endif
      sqlite3_create_function(p->db, "shell_add_schema", 3, SQLITE_UTF8, 0,
-@@ -5649,6 +5649,7 @@
+@@ -5971,6 +5971,7 @@
          goto end_ar_command;
        }
        sqlite3_fileio_init(cmd.db, 0, 0);
@@ -336,7 +347,7 @@ Fix building with dlopen() not available.
        sqlite3_sqlar_init(cmd.db, 0, 0);
        sqlite3_create_function(cmd.db, "shell_putsnl", 1, SQLITE_UTF8, cmd.p,
                                shellPutsFunc, 0, 0);
-@@ -8705,6 +8706,7 @@
+@@ -9260,6 +9261,7 @@
  #endif
    }
    data.out = stdout;
@@ -344,6 +355,51 @@ Fix building with dlopen() not available.
    sqlite3_appendvfs_init(0,0,0);
  
    /* Go ahead and open the database file if it already exists.  If the
+--- /test/sessionfuzz.c
++++ /test/sessionfuzz.c
+@@ -700,42 +700,6 @@
+ #include <assert.h>
+ #include "zlib.h"
+ 
+-/*
+-** Implementation of the "sqlar_uncompress(X,SZ)" SQL function
+-**
+-** Parameter SZ is interpreted as an integer. If it is less than or
+-** equal to zero, then this function returns a copy of X. Or, if
+-** SZ is equal to the size of X when interpreted as a blob, also
+-** return a copy of X. Otherwise, decompress blob X using zlib
+-** utility function uncompress() and return the results (another
+-** blob).
+-*/
+-static void sqlarUncompressFunc(
+-  sqlite3_context *context,
+-  int argc,
+-  sqlite3_value **argv
+-){
+-  uLong nData;
+-  uLongf sz;
+-
+-  assert( argc==2 );
+-  sz = sqlite3_value_int(argv[1]);
+-
+-  if( sz<=0 || sz==(nData = sqlite3_value_bytes(argv[0])) ){
+-    sqlite3_result_value(context, argv[0]);
+-  }else{
+-    const Bytef *pData= sqlite3_value_blob(argv[0]);
+-    Bytef *pOut = sqlite3_malloc(sz);
+-    if( Z_OK!=uncompress(pOut, &sz, pData, nData) ){
+-      sqlite3_result_error(context, "error in uncompress()", -1);
+-    }else{
+-      sqlite3_result_blob(context, pOut, sz, SQLITE_TRANSIENT);
+-    }
+-    sqlite3_free(pOut);
+-  }
+-}
+-
+-
+ /* Run a chunk of SQL.  If any errors happen, print an error message
+ ** and exit.
+ */
 --- /tool/mksqlite3c.tcl
 +++ /tool/mksqlite3c.tcl
 @@ -117,6 +117,7 @@

@@ -21,7 +21,7 @@ IUSE=""
 
 RESTRICT="test"
 RDEPEND="dev-cpp/gtest
-	dev-libs/protobuf
+	dev-libs/protobuf:=
 	dev-libs/crc32c
 	net-misc/curl
 	net-libs/grpc"

@@ -131,7 +131,7 @@ multilib_src_configure() {
 			;;
 	esac
 
-	ECONF_SOURCE="${S}" econf "${myconf[@]}" MPICC="$(tc-getCC -lmpi)"
+	ECONF_SOURCE="${S}" econf "${myconf[@]}" MPICC="$(tc-getCC) -lmpi"
 }
 
 src_configure() {
