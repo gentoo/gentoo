@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit cmake-utils gnome2-utils xdg-utils
+inherit cmake-utils xdg
 
 DESCRIPTION="MIDI and audio sequencer and notation editor"
 HOMEPAGE="https://www.rosegardenmusic.com/"
@@ -14,6 +14,10 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="lirc"
 
+BDEPEND="
+	dev-qt/linguist-tools:5
+	virtual/pkgconfig
+"
 RDEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
@@ -35,30 +39,16 @@ RDEPEND="
 	lirc? ( app-misc/lirc:= )
 "
 DEPEND="${RDEPEND}
-	dev-qt/linguist-tools:5
 	dev-qt/qttest:5
-	virtual/pkgconfig
 "
+
+src_prepare() {
+	cmake-utils_src_prepare
+}
 
 src_configure() {
 	local mycmakeargs=(
 		"-DDISABLE_LIRC=$(usex lirc OFF ON)"
 	)
 	cmake-utils_src_configure
-}
-
-pkg_preinst() {
-	gnome2_icon_savelist
-}
-
-pkg_postinst() {
-	gnome2_icon_cache_update
-	xdg_desktop_database_update
-	xdg_mimeinfo_database_update
-}
-
-pkg_postrm() {
-	gnome2_icon_cache_update
-	xdg_desktop_database_update
-	xdg_mimeinfo_database_update
 }
