@@ -26,6 +26,7 @@ dev-libs/iniparser doc
 dev-libs/libnl python
 dev-libs/libxslt python
 dev-python/cython doc test
+dev-python/pygments test
 dev-python/snakeoil test
 dev-util/catalyst iso
 dev-util/pkgconf test
