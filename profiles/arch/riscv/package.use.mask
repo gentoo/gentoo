@@ -20,6 +20,7 @@ dev-util/pkgconf test
 net-libs/gnutls guile test-full
 net-libs/ldns python
 net-misc/openssh kerberos
+sys-apps/kmod doc
 sys-apps/portage epydoc
 sys-auth/pambase consolekit pam_ssh pam_krb5 passwdqc mktemp
 sys-devel/make guile
