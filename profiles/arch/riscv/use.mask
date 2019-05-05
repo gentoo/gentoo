@@ -8,6 +8,8 @@
 seccomp
 
 # Not tested yet
+bluetooth
+dbus
 elogind
 emacs
 fuse

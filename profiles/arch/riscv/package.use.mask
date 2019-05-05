@@ -18,13 +18,13 @@ app-text/asciidoc test
 app-text/xmlto text
 dev-libs/libxslt python
 dev-util/pkgconf test
-net-libs/gnutls guile test-full
+net-libs/gnutls test-full
 net-libs/ldns python
 net-misc/openssh kerberos
 sys-apps/kmod doc
 sys-apps/portage epydoc
 sys-auth/pambase consolekit pam_ssh pam_krb5 passwdqc mktemp
-sys-devel/make guile
 sys-fs/squashfs-tools lz4 lzma lzo zstd
+sys-libs/pam vim-syntax
 sys-process/audit python
 sys-process/procps test
