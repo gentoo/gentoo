@@ -33,6 +33,7 @@ LICENSE="GPL-2"
 # Use Gentoo versioning for slotting.
 SLOT="${PV:0:4}"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="dev-lang/perl
 	>=sys-devel/automake-wrapper-11
