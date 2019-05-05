@@ -32,7 +32,7 @@ dev-util/pkgconf test
 dev-vcs/git cvs subversion tk xinetd
 net-libs/gnutls test-full
 net-libs/ldns doc python
-net-nds/openldap kerberos sasl
+net-nds/openldap cxx kerberos sasl
 sys-apps/kmod doc
 sys-apps/portage epydoc
 sys-auth/pambase pam_ssh passwdqc mktemp
