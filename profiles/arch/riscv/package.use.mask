@@ -25,6 +25,7 @@ net-libs/ldns python
 sys-apps/kmod doc
 sys-apps/portage epydoc
 sys-auth/pambase pam_ssh passwdqc mktemp
+sys-devel/gettext cvs
 sys-fs/squashfs-tools lz4 lzma lzo zstd
 sys-libs/pam vim-syntax
 sys-process/audit python
