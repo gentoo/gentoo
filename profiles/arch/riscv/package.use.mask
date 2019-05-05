@@ -15,7 +15,7 @@ app-crypt/gnupg smartcard tofu wks-server
 app-crypt/mit-krb5 doc test xinetd
 app-crypt/pinentry fltk gnome-keyring
 app-misc/pax-utils python
-app-text/asciidoc test
+app-text/asciidoc graphviz test
 app-text/po4a test
 app-text/xmlto text
 dev-lang/python tk
