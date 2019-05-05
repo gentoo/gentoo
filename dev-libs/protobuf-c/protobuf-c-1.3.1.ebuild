@@ -24,6 +24,10 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}/${MY_P}"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-1.3.1-protobuf-3.7.patch"
+)
+
 src_prepare() {
 	default
 	if ! use test; then
