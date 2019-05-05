@@ -22,7 +22,7 @@ HOMEPAGE="https://www.qgis.org/"
 
 LICENSE="GPL-2+ GPL-3+"
 SLOT="0"
-IUSE="3d examples georeferencer grass hdf5 mapserver netcdf opencl oracle polar postgres python qml webkit"
+IUSE="3d debug doc examples georeferencer grass hdf5 mapserver netcdf opencl oracle polar postgres python qml webkit"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE} mapserver? ( python )"
 
@@ -30,6 +30,7 @@ BDEPEND="
 	>=dev-qt/linguist-tools-${QT_MIN_VER}:5
 	sys-devel/bison
 	sys-devel/flex
+	doc? ( app-doc/doxygen )
 "
 COMMON_DEPEND="
 	app-crypt/qca:2[qt5(+),ssl]
@@ -93,7 +94,6 @@ COMMON_DEPEND="
 "
 DEPEND="${COMMON_DEPEND}
 	>=dev-qt/qttest-${QT_MIN_VER}:5
-	>=dev-qt/qtxmlpatterns-${QT_MIN_VER}:5
 	python? ( ${PYTHON_DEPS} )
 "
 RDEPEND="${COMMON_DEPEND}
@@ -112,7 +112,7 @@ PATCHES=(
 )
 
 pkg_setup() {
-	python-single-r1_pkg_setup
+	use python && python-single-r1_pkg_setup
 }
 
 src_prepare() {
@@ -131,7 +131,7 @@ src_configure() {
 		-DQWT_LIBRARY=/usr/$(get_libdir)/libqwt6-qt5.so
 		-DPEDANTIC=OFF
 		-DUSE_CCACHE=OFF
-		-DWITH_APIDOC=OFF
+		-DWITH_APIDOC=$(usex doc)
 		-DWITH_INTERNAL_MDAL=ON # not packaged, bug 684538
 		-DWITH_QSPATIALITE=ON
 		-DENABLE_TESTS=OFF
@@ -139,6 +139,7 @@ src_configure() {
 		-DWITH_GEOREFERENCER=$(usex georeferencer)
 		-DWITH_GRASS7=$(usex grass)
 		$(cmake-utils_use_find_package hdf5 HDF5)
+		-DWITH_GUI=ON
 		-DWITH_SERVER=$(usex mapserver)
 		$(cmake-utils_use_find_package netcdf NetCDF)
 		-DUSE_OPENCL=$(usex opencl)
@@ -159,6 +160,8 @@ src_configure() {
 
 	use python && mycmakeargs+=( -DBINDINGS_GLOBAL_INSTALL=ON )
 
+	use debug && CMAKE_BUILD_TYPE=RelWithDebInfo
+
 	# bugs 612956, 648726
 	addpredict /dev/dri/renderD128
 	addpredict /dev/dri/renderD129
@@ -168,18 +171,6 @@ src_configure() {
 
 src_install() {
 	cmake-utils_src_install
-
-	newmenu linux/org.qgis.qgis.desktop.in org.qgis.qgis.desktop
-
-	local size type
-	for size in 16 22 24 32 48 64 96 128 256; do
-		newicon -s ${size} linux/icons/${PN}-icon${size}x${size}.png ${PN}.png
-		newicon -c mimetypes -s ${size} linux/icons/${PN}-mime-icon${size}x${size}.png ${PN}-mime.png
-		for type in qgs qml qlr qpt; do
-			newicon -c mimetypes -s ${size} linux/icons/${PN}-${type}${size}x${size}.png ${PN}-${type}.png
-		done
-	done
-	newicon -s scalable images/icons/qgis_icon.svg qgis.svg
 
 	insinto /usr/share/mime/packages
 	doins debian/qgis.xml
@@ -191,11 +182,9 @@ src_install() {
 	fi
 
 	if use python; then
+		python_optimize
 		python_optimize "${ED}"/usr/share/qgis/python
-	fi
-
-	if use grass; then
-		python_fix_shebang "${ED}"/usr/share/qgis/grass/scripts
+		use grass && python_fix_shebang "${ED}"/usr/share/qgis/grass/scripts
 	fi
 }
 
