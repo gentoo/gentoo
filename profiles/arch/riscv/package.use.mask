@@ -10,7 +10,7 @@ dev-vcs/git pcre-jit
 # This includes also packages which do not support python-3 or
 # do not support python-3.7 yet.
 
-app-admin/syslog-ng python
+app-arch/unzip natspec
 app-crypt/gnupg smartcard tofu wks-server
 app-crypt/mit-krb5 doc test xinetd
 app-crypt/pinentry fltk gnome-keyring
