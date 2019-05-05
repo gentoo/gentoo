@@ -27,7 +27,7 @@ SLOT="0"
 IUSE="+airdrop-ng +airgraph-ng kernel_linux kernel_FreeBSD libressl +netlink +pcre +sqlite +experimental"
 
 DEPEND="net-libs/libpcap
-	sys-apps/hwloc
+	sys-apps/hwloc:0=
 	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:0= )
 	netlink? ( dev-libs/libnl:3 )
