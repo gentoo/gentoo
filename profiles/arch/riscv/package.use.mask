@@ -43,5 +43,5 @@ sys-devel/gdb source-highlight
 sys-devel/gettext cvs
 sys-fs/squashfs-tools lz4 lzma lzo zstd
 sys-libs/libcap-ng python
-sys-process/audit python
+sys-process/audit gssapi python
 sys-process/procps test
