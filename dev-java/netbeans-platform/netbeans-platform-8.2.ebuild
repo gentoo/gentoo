@@ -1,30 +1,30 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 inherit eutils java-pkg-2 java-ant-2
 
 DESCRIPTION="Netbeans Platform"
-HOMEPAGE="http://netbeans.org/features/platform/"
+HOMEPAGE="https://netbeans.org/features/platform/"
 SLOT="8.2"
-SOURCE_URL="http://download.netbeans.org/netbeans/8.2/final/zip/netbeans-8.2-201609300101-src.zip"
+SOURCE_URL="https://download.netbeans.org/netbeans/8.2/final/zip/netbeans-8.2-201609300101-src.zip"
 SRC_URI="${SOURCE_URL}
 	https://dev.gentoo.org/~fordfrog/distfiles/netbeans-8.2-build.xml.patch.bz2
-	http://hg.netbeans.org/binaries/2F7553F50B0D14ED811B849C282DA8C1FFC32AAE-asm-all-5.0.1.jar
-	http://hg.netbeans.org/binaries/1BA97A9FFD4A1DFF3E75B76CD3AE3D0EFF8493B7-felix-4.2.1.jar
-	http://hg.netbeans.org/binaries/941A8BE4506C65F0A9001C08812FB7DA1E505E21-junit-4.12-javadoc.jar
-	http://hg.netbeans.org/binaries/771CDCA0A3F2F3CE818E20CC2D707A3592422485-ko4j-1.3.jar
-	http://hg.netbeans.org/binaries/A3085BAA78C8EE7F55081E70C79ABE04CA38CE93-net.java.html-1.3.jar
-	http://hg.netbeans.org/binaries/7FC91530F4395FA0D58F9539F3B40858E766BFA3-net.java.html.boot-1.3.jar
-	http://hg.netbeans.org/binaries/5C992BAEC0111EE293BD44173140A9D8EC860765-net.java.html.boot.fx-1.3.jar
-	http://hg.netbeans.org/binaries/BF6C9BB0FFB78A6B846ECAEB880C460D883B4F72-net.java.html.boot.script-1.3.jar
-	http://hg.netbeans.org/binaries/10E4214A89082C70FCF9F721953001C0932037BA-net.java.html.geo-1.3.jar
-	http://hg.netbeans.org/binaries/D97314CE1869DD3B8B8942256A70673E2991C9DD-net.java.html.json-1.3.jar
-	http://hg.netbeans.org/binaries/6BDCE8349F83CD02F2942D4FBFA86A81A129F42A-net.java.html.sound-1.3.jar
-	http://hg.netbeans.org/binaries/E5DDC5E827D3D62E7BE9F7E32927CA01F2839971-org.eclipse.osgi_3.9.1.v20140110-1610.jar
-	http://hg.netbeans.org/binaries/1C7FE319052EF49126CF07D0DB6953CB7007229E-swing-layout-1.0.4-doc.zip
-	http://hg.netbeans.org/binaries/AF022CBCACD8CBFCF946816441D1E7568D817745-testng-6.8.1-javadoc.zip
-	http://hg.netbeans.org/binaries/CEC2829EC391CB404AD32EB2D08F879C418B745B-xhr4j-1.3.jar"
+	https://hg.netbeans.org/binaries/2F7553F50B0D14ED811B849C282DA8C1FFC32AAE-asm-all-5.0.1.jar
+	https://hg.netbeans.org/binaries/1BA97A9FFD4A1DFF3E75B76CD3AE3D0EFF8493B7-felix-4.2.1.jar
+	https://hg.netbeans.org/binaries/941A8BE4506C65F0A9001C08812FB7DA1E505E21-junit-4.12-javadoc.jar
+	https://hg.netbeans.org/binaries/771CDCA0A3F2F3CE818E20CC2D707A3592422485-ko4j-1.3.jar
+	https://hg.netbeans.org/binaries/A3085BAA78C8EE7F55081E70C79ABE04CA38CE93-net.java.html-1.3.jar
+	https://hg.netbeans.org/binaries/7FC91530F4395FA0D58F9539F3B40858E766BFA3-net.java.html.boot-1.3.jar
+	https://hg.netbeans.org/binaries/5C992BAEC0111EE293BD44173140A9D8EC860765-net.java.html.boot.fx-1.3.jar
+	https://hg.netbeans.org/binaries/BF6C9BB0FFB78A6B846ECAEB880C460D883B4F72-net.java.html.boot.script-1.3.jar
+	https://hg.netbeans.org/binaries/10E4214A89082C70FCF9F721953001C0932037BA-net.java.html.geo-1.3.jar
+	https://hg.netbeans.org/binaries/D97314CE1869DD3B8B8942256A70673E2991C9DD-net.java.html.json-1.3.jar
+	https://hg.netbeans.org/binaries/6BDCE8349F83CD02F2942D4FBFA86A81A129F42A-net.java.html.sound-1.3.jar
+	https://hg.netbeans.org/binaries/E5DDC5E827D3D62E7BE9F7E32927CA01F2839971-org.eclipse.osgi_3.9.1.v20140110-1610.jar
+	https://hg.netbeans.org/binaries/1C7FE319052EF49126CF07D0DB6953CB7007229E-swing-layout-1.0.4-doc.zip
+	https://hg.netbeans.org/binaries/AF022CBCACD8CBFCF946816441D1E7568D817745-testng-6.8.1-javadoc.zip
+	https://hg.netbeans.org/binaries/CEC2829EC391CB404AD32EB2D08F879C418B745B-xhr4j-1.3.jar"
 LICENSE="|| ( CDDL GPL-2-with-linking-exception )"
 KEYWORDS="amd64 ~x86"
 IUSE=""
