@@ -587,11 +587,6 @@ xfce-extra/xfce4-netspeed-plugin
 dev-lang/ruby:2.3
 dev-ruby/did_you_mean:1
 
-# Zac Medico <zmedico@gentoo.org> (04 Apr 2019)
-# Ebuild is not needed since consumers use EGO_VENDOR.
-# Removal in 30 days.  Bug #656972.
-dev-go/go-resiliency
-
 # Requires >=dev-lang/lua-5.3 which is masked
 sys-apps/likwid
 
