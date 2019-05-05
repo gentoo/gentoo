@@ -7,7 +7,8 @@ PYTHON_COMPAT=( python2_7 python3_6 )
 inherit eutils systemd distutils-r1
 
 DESCRIPTION="Salt is a remote execution and configuration manager"
-HOMEPAGE="http://saltstack.org/"
+HOMEPAGE="https://www.saltstack.com/resources/community/
+	https://github.com/saltstack"
 
 if [[ ${PV} == 9999* ]]; then
 	inherit git-r3
