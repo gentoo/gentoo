@@ -19,6 +19,7 @@ java
 libedit
 libressl
 qt5
+ruby
 slang
 sqlite
 systemtap
