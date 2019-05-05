@@ -19,6 +19,7 @@ gtk2
 gtk3
 introspection
 java
+kerneros
 latex
 libedit
 libressl
