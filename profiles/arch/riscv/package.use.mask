@@ -37,7 +37,7 @@ net-libs/ldns doc python
 net-nds/openldap cxx kerberos sasl
 sys-apps/kmod doc
 sys-apps/portage epydoc
-sys-auth/pambase pam_ssh passwdqc mktemp
+sys-auth/pambase pam_krb5 pam_ssh passwdqc mktemp
 sys-devel/gdb source-highlight
 sys-devel/gettext cvs
 sys-fs/squashfs-tools lz4 lzma lzo zstd
