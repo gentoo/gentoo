@@ -26,7 +26,7 @@ dev-libs/iniparser doc
 dev-libs/libnl python
 dev-libs/libxslt python
 dev-python/cython doc test
-dev-python/pygments test
+dev-python/pygments doc test
 dev-python/setuptools test
 dev-python/snakeoil test
 dev-util/catalyst iso
@@ -39,9 +39,10 @@ net-nds/openldap cxx kerberos sasl
 sys-apps/kmod doc
 sys-apps/portage epydoc
 sys-auth/pambase pam_krb5 pam_ssh passwdqc mktemp
+sys-devel/automake test
 sys-devel/gdb source-highlight
 sys-devel/gettext cvs
 sys-fs/squashfs-tools lz4 lzma lzo zstd
 sys-libs/libcap-ng python
-sys-process/audit python
+sys-process/audit gssapi python
 sys-process/procps test
