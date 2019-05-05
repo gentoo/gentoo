@@ -16,6 +16,7 @@ gtk2
 gtk3
 introspection
 java
+latex
 libedit
 libressl
 qt5
