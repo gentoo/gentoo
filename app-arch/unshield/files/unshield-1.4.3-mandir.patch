@@ -1,0 +1,21 @@
+From cf53f87fae324e1a4c5d9ebd49b88947a9b02267 Mon Sep 17 00:00:00 2001
+From: Dan Church <amphetamachine@gmail.com>
+Date: Fri, 2 Nov 2018 11:00:20 -0500
+Subject: [PATCH] Fix man page install path
+
+Use the standard CMake variable to determine location.
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index e0c20d3..0aeecb5 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -87,5 +87,5 @@ endif ()
+ add_subdirectory(lib)
+ add_subdirectory(src)
+ 
+-install(FILES man/unshield.1 DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/man/man1)
++install(FILES man/unshield.1 DESTINATION ${CMAKE_INSTALL_MANDIR}/man1)
+ install(FILES ${CMAKE_CURRENT_BINARY_DIR}/libunshield.pc DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig)
