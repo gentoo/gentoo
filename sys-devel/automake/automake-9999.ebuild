@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -33,6 +33,7 @@ LICENSE="GPL-2"
 # Use Gentoo versioning for slotting.
 SLOT="${PV:0:4}"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="dev-lang/perl
 	>=sys-devel/automake-wrapper-11

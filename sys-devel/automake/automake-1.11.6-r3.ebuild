@@ -15,6 +15,7 @@ LICENSE="GPL-2"
 SLOT="${PV:0:4}"
 KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 ~riscv s390 sh sparc x86 ~amd64-fbsd ~x86-fbsd"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="dev-lang/perl
 	>=sys-devel/automake-wrapper-10
