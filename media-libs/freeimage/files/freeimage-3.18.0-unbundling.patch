@@ -31,7 +31,7 @@ index b59c419..c6b82bb 100644
 +LIBRARIES-$(USE_PNG)    += $(shell $(PKG_CONFIG) --libs libpng)
 +LIBRARIES-$(USE_TIFF)   += $(shell $(PKG_CONFIG) --libs libtiff-4 IlmBase)
 +LIBRARIES-$(USE_RAW)    += $(shell $(PKG_CONFIG) --libs libraw)
-+LIBRARIES-$(USE_WEBP)    += $(shell $(PKG_CONFIG) --libs libwebp)
++LIBRARIES-$(USE_WEBP)    += $(shell $(PKG_CONFIG) --libs libwebp libwebpmux)
  
  MODULES = $(SRCS:.c=.o)
  MODULES := $(MODULES:.cpp=.o)
@@ -88,7 +88,7 @@ index 92f6358..345f0db 100644
 +LIBRARIES-$(USE_PNG)    += $(shell $(PKG_CONFIG) --libs libpng)
 +LIBRARIES-$(USE_TIFF)   += $(shell $(PKG_CONFIG) --libs libtiff-4 IlmBase)
 +LIBRARIES-$(USE_RAW)    += $(shell $(PKG_CONFIG) --libs libraw)
-+LIBRARIES-$(USE_WEBP)    += $(shell $(PKG_CONFIG) --libs libwebp)
++LIBRARIES-$(USE_WEBP)    += $(shell $(PKG_CONFIG) --libs libwebp libwebpmux)
  
  MODULES = $(SRCS:.c=.o)
  MODULES := $(MODULES:.cpp=.o)
@@ -265,7 +265,7 @@ index de25754..cb41903 100644
 +INCLUDE-$(USE_PNG)    += -DUSE_PNG    $(shell $(PKG_CONFIG) --cflags-only-I libpng)
 +INCLUDE-$(USE_TIFF)   += -DUSE_TIFF   $(shell $(PKG_CONFIG) --cflags-only-I libtiff-4 IlmBase)
 +INCLUDE-$(USE_RAW)    += -DUSE_RAW    $(shell $(PKG_CONFIG) --cflags-only-I libraw)
-+INCLUDE-$(USE_WEBP)   += -DUSE_WEBP   $(shell $(PKG_CONFIG) --cflags-only-I libwebp)
++INCLUDE-$(USE_WEBP)   += -DUSE_WEBP   $(shell $(PKG_CONFIG) --cflags-only-I libwebp libwebpmux)
 +INCLUDE = $(INCLUDE-yes)
 diff --git a/Source/FreeImage/J2KHelper.cpp b/Source/FreeImage/J2KHelper.cpp
 index 1776c3b..538f1c5 100644
