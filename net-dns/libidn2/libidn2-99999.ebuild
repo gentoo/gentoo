@@ -10,7 +10,7 @@ EGIT_REPO_URI="https://gitlab.com/libidn/libidn2.git/"
 SRC_URI="mirror://gnu/libunistring/libunistring-0.9.10.tar.gz"
 
 LICENSE="GPL-2+ LGPL-3+"
-SLOT="0"
+SLOT="0/2"
 KEYWORDS=""
 IUSE="static-libs"
 
