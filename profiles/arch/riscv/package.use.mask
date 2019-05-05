@@ -29,7 +29,7 @@ dev-python/cython doc test
 dev-python/snakeoil test
 dev-util/catalyst iso
 dev-util/pkgconf test
-dev-vcs/git cvs gnome-keyring subversion tk xinetd
+dev-vcs/git cvs highlight gnome-keyring subversion tk xinetd
 net-libs/gnutls test-full
 net-libs/ldns doc python
 net-nds/openldap cxx kerberos sasl
