@@ -599,12 +599,6 @@ dev-go/go-resiliency
 # Removal in 30 days.  Bug #682402.
 dev-libs/blitz
 
-# Michał Górny <mgorny@gentoo.org> (03 Apr 2019)
-# Bundles dev-libs/rapidjson.  Fails to build with gcc-6+.  The packaged
-# version is from 2015, and needs bump for almost 2 years.
-# Removal in 30 days.  Bug #580358.
-dev-libs/handystats
-
 # Requires >=dev-lang/lua-5.3 which is masked
 sys-apps/likwid
 
