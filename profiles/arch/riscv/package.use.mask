@@ -27,6 +27,5 @@ sys-apps/portage epydoc
 sys-auth/pambase pam_ssh passwdqc mktemp
 sys-devel/gettext cvs
 sys-fs/squashfs-tools lz4 lzma lzo zstd
-sys-libs/pam vim-syntax
 sys-process/audit python
 sys-process/procps test
