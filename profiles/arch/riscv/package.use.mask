@@ -18,6 +18,7 @@ app-misc/pax-utils python
 app-text/asciidoc test
 app-text/po4a test
 app-text/xmlto text
+dev-libs/libnl python
 dev-libs/libxslt python
 dev-util/pkgconf test
 net-libs/gnutls test-full
