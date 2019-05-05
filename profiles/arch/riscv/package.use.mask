@@ -26,5 +26,6 @@ sys-apps/portage epydoc
 sys-auth/pambase consolekit pam_ssh pam_krb5 passwdqc mktemp
 sys-devel/make guile
 sys-fs/squashfs-tools lz4 lzma lzo zstd
+sys-libs/pam vim-syntax
 sys-process/audit python
 sys-process/procps test
