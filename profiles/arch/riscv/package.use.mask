@@ -14,6 +14,7 @@ app-admin/syslog-ng python
 app-crypt/gnupg ldap smartcard tofu wks-server
 app-crypt/pinentry fltk gnome-keyring
 app-misc/pax-utils python
+app-text/xmlto text
 dev-libs/libxslt python
 net-libs/gnutls guile test-full
 net-libs/ldns python
