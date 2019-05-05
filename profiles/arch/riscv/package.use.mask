@@ -16,6 +16,7 @@ app-crypt/pinentry fltk gnome-keyring
 app-misc/pax-utils python
 app-text/xmlto text
 dev-libs/libxslt python
+dev-util/pkgconf test
 net-libs/gnutls guile test-full
 net-libs/ldns python
 net-misc/openssh kerberos
