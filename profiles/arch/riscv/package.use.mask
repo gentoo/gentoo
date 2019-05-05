@@ -12,6 +12,7 @@ dev-vcs/git pcre-jit
 
 app-admin/syslog-ng python
 app-crypt/gnupg ldap smartcard tofu wks-server
+app-crypt/mit-krb5 doc test
 app-crypt/pinentry fltk gnome-keyring
 app-misc/pax-utils python
 app-text/asciidoc test
