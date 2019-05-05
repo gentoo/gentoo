@@ -1,7 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 inherit eutils toolchain-funcs flag-o-matic
 
@@ -17,7 +17,7 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="apidoc debug doc mfc"
 
 RDEPEND=""
@@ -25,15 +25,16 @@ DEPEND="${RDEPEND}
 	apidoc? ( app-doc/doxygen[dot] )
 	"
 
-MAKEOPTS="-j1"
-
 src_prepare() {
-	use mfc && epatch "${FILESDIR}"/${PN}-c_dialect.patch
+	is-flagq -flto* && filter-flags -flto* -fuse-linker-plugin
+	use mfc && eapply "${FILESDIR}"/${PN}-c_dialect.patch
+	default
+
 }
 
 src_compile() {
+	tc-export CC CXX LD AS AR NM RANLIB STRIP OBJCOPY
 	if use debug ; then
-		export STRIP_MASK="*/bin/*"
 		DEBUG="true" emake CCC=$(tc-getCXX) CC=$(tc-getCC) cccc
 	else
 		emake CCC=$(tc-getCXX) CC=$(tc-getCC) cccc
@@ -52,19 +53,18 @@ src_install() {
 	dodoc README.md
 
 	if use mfc ; then
-		dodoc "${FILESDIR}"/cccc-MFC-dialect.opt
-		docompress -x "/usr/share/doc/${PF}/cccc-MFC-dialect.opt"
+		insinto /usr/share/doc/${PF}
+		doins "${FILESDIR}"/cccc-MFC-dialect.opt
 	fi
 
 	if use doc ; then
-		dodoc CHANGELOG.md HISTORY.md
-		dohtml cccc/*.html || die "html docs failed"
+		insinto /usr/share/doc/${PF}/html
+		doins cccc/*.html || die "html docs failed"
 		if use apidoc ; then
-			docinto api
-			dohtml -A svg -r doxygen/html || die "dox failed"
-			docompress -x "/usr/share/doc/${PF}/api"
-			docinto metrics
-			dohtml ccccout/* || die "metrics failed"
+			insinto /usr/share/doc/${PF}/html/api
+			doins -r doxygen/html/* || die "dox failed"
+			insinto /usr/share/doc/${PF}/html/metrics
+			doins ccccout/* || die "metrics failed"
 		fi
 	fi
 }

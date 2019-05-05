@@ -20,6 +20,7 @@ app-text/po4a test
 app-text/xmlto text
 dev-lang/python tk
 dev-libs/check subunit
+dev-libs/glib gtk-doc test
 dev-libs/icu doc
 dev-libs/iniparser doc
 dev-libs/libnl python
@@ -33,6 +34,7 @@ net-libs/ldns doc python
 sys-apps/kmod doc
 sys-apps/portage epydoc
 sys-auth/pambase pam_ssh passwdqc mktemp
+sys-devel/gdb source-highlight
 sys-devel/gettext cvs
 sys-fs/squashfs-tools lz4 lzma lzo zstd
 sys-libs/libcap-ng python
