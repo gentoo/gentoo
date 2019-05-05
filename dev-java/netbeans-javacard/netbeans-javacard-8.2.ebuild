@@ -1,18 +1,18 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 inherit eutils java-pkg-2 java-ant-2
 
 DESCRIPTION="Netbeans JavaCard Cluster"
-HOMEPAGE="http://netbeans.org/projects/javacard"
+HOMEPAGE="https://netbeans.org/projects/javacard"
 SLOT="8.2"
-SOURCE_URL="http://download.netbeans.org/netbeans/8.2/final/zip/netbeans-8.2-201609300101-src.zip"
+SOURCE_URL="https://download.netbeans.org/netbeans/8.2/final/zip/netbeans-8.2-201609300101-src.zip"
 SRC_URI="${SOURCE_URL}
 	https://dev.gentoo.org/~fordfrog/distfiles/netbeans-8.2-build.xml.patch.bz2
-	http://hg.netbeans.org/binaries/33DCFAE258453BDD3D8A042F6ECF80656A82B8DD-anttasks.jar
-	http://hg.netbeans.org/binaries/9C1A8BC9D3270D184F1D1BCC5F60AA81D46E1ADF-apduio.jar
-	http://hg.netbeans.org/binaries/6243337E93F5841D4FFB404011AA076BFEB1590A-javacard_ri.zip"
+	https://hg.netbeans.org/binaries/33DCFAE258453BDD3D8A042F6ECF80656A82B8DD-anttasks.jar
+	https://hg.netbeans.org/binaries/9C1A8BC9D3270D184F1D1BCC5F60AA81D46E1ADF-apduio.jar
+	https://hg.netbeans.org/binaries/6243337E93F5841D4FFB404011AA076BFEB1590A-javacard_ri.zip"
 LICENSE="|| ( CDDL GPL-2-with-linking-exception )"
 KEYWORDS="amd64 ~x86"
 IUSE=""
