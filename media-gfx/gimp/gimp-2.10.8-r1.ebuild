@@ -104,7 +104,23 @@ src_prepare() {
 	fgrep -q GIMP_DISABLE_DEPRECATED configure || die #615144, self-test
 }
 
+_adjust_sandbox() {
+	# Bugs #569738 and #591214
+	local nv
+	for nv in /dev/nvidia-uvm /dev/nvidiactl /dev/nvidia{0..9} ; do
+		# We do not check for existence as they may show up later
+		# https://bugs.gentoo.org/show_bug.cgi?id=569738#c21
+		addwrite "${nv}"
+	done
+
+	addwrite /dev/dri/  # bugs #574038 and #684886
+	addwrite /dev/ati/  # bug #589198
+	addwrite /proc/mtrr  # bug #589198
+}
+
 src_configure() {
+	_adjust_sandbox
+
 	local myconf=(
 		GEGL="${EPREFIX}"/usr/bin/gegl-0.4
 		GDBUS_CODEGEN="${EPREFIX}"/bin/false
@@ -143,17 +159,6 @@ src_configure() {
 }
 
 src_compile() {
-	# Bugs #569738 and #591214
-	local nv
-	for nv in /dev/nvidia-uvm /dev/nvidiactl /dev/nvidia{0..9} ; do
-		# We do not check for existence as they may show up later
-		# https://bugs.gentoo.org/show_bug.cgi?id=569738#c21
-		addwrite "${nv}"
-	done
-	addwrite /dev/dri/  # bug #574038
-	addwrite /dev/ati/  # bug 589198
-	addwrite /proc/mtrr  # bug 589198
-
 	export XDG_DATA_DIRS="${EPREFIX}"/usr/share  # bug 587004
 	gnome2_src_compile
 }
