@@ -88,10 +88,6 @@ sci-electronics/kicad occ oce ngspice
 <app-editors/emacs-25.3-r6:25 imagemagick
 <app-editors/emacs-26.1-r3:26 imagemagick
 
-# Andreas Sturmlechner <asturm@gentoo.org> (01 Sep 2018)
-# media-libs/dav1d is not yet keyworded
-media-video/vlc dav1d
-
 # Tomáš Mózes <hydrapolic@gmail.com> (10 Aug 2018)
 # Needs dev-libs/libmaxminddb which isn't keyworded
 app-admin/syslog-ng geoip2
