@@ -68,6 +68,7 @@ if [[ ${PV} == "99999999" ]] ; then
 		app-text/docbook-xml-dtd:4.5
 		app-text/docbook-xsl-ns-stylesheets
 		app-text/docbook-xsl-stylesheets
+		app-text/docbook-xsl-ns-stylesheets
 		dev-libs/libxslt:0
 	"
 fi
