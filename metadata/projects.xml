@@ -2689,17 +2689,17 @@
       <name>Guilherme Amadio</name>
       <role>Developer</role>
     </member>
-    <member is-lead="1">
+    <member>
       <email>grobian@gentoo.org</email>
       <name>Fabian Groffen</name>
-      <role>Lead, maintainer prefix portage</role>
+      <role>Maintainer prefix portage</role>
     </member>
     <member>
       <email>haubi@gentoo.org</email>
       <name>Michael Haubenwallner</name>
       <role>Developer</role>
     </member>
-    <member>
+    <member is-lead="1">
       <email>heroxbd@gentoo.org</email>
       <name>Benda Xu</name>
       <role>Developer</role>

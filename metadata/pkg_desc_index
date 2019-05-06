@@ -4803,7 +4803,7 @@ dev-python/disqus-python 0.4.2: Python client library for accessing the disqus.c
 dev-python/distlib 0.2.1: Distribution utilities
 dev-python/distributed 1.18.0: Python library for distributed computation
 dev-python/dj-database-url 0.4.2: Use Database URLs in your Django Application
-dev-python/django 1.11.20 2.1.8: High-level Python web framework
+dev-python/django 1.11.20 2.1.8 2.2.1: High-level Python web framework
 dev-python/django-annoying 0.7.7: This is django application that try to eliminate annoying things in Django framework
 dev-python/django-appconf 1.0.1: A helper class for handling configuration defaults of packaged apps gracefully
 dev-python/django-auth-ldap 1.2.2: Django LDAP authentication backend
@@ -7731,7 +7731,7 @@ media-libs/libsbsms 2.0.2-r1: A library for high quality time and pitch scale mo
 media-libs/libsdl 1.2.15-r9: Simple Direct Media Layer
 media-libs/libsdl2 2.0.8-r2 2.0.9: Simple Direct Media Layer
 media-libs/libsfml 2.5.1: Simple and Fast Multimedia Library (SFML)
-media-libs/libshout 2.4.1-r1 2.4.1-r2: library for connecting and sending data to icecast servers
+media-libs/libshout 2.4.1-r2: library for connecting and sending data to icecast servers
 media-libs/libsidplay 1.36.59-r2 2.1.1-r4 2.1.1-r5: C64 SID player library
 media-libs/libsidplayfp 1.8.8: Library for the sidplay2 fork with resid-fp
 media-libs/libsixel 1.8.1: A lightweight, fast implementation of DEC SIXEL graphics codec
