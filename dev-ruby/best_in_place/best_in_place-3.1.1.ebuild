@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-USE_RUBY="ruby23 ruby24 ruby25"
+USE_RUBY="ruby23 ruby24 ruby25 ruby26"
 
 RUBY_FAKEGEM_TASK_DOC=""
 RUBY_FAKEGEM_EXTRADOC="README.md"
@@ -38,6 +38,9 @@ ruby_add_bdepend "
 		>=dev-ruby/rails-3.2
 		>=dev-ruby/sqlite3-1.3.4-r1
 		dev-ruby/bundler
+		dev-ruby/combustion
+		dev-ruby/jquery-rails
+		dev-ruby/jquery-ui-rails
 	)"
 
 all_ruby_prepare() {
