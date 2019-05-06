@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -27,6 +27,7 @@ REQUIRED_USE="infiniband? ( rdma ) || ( rdma tcp )"
 PATCHES=(
 	"${FILESDIR}/${PN}-2.0.876_p20180814-musl-fixes.patch"
 	"${FILESDIR}/${PN}-2.0.876-Makefiles.patch"
+	"${FILESDIR}/${PN}-2.0.876-space_in_node-mode.patch" #685190
 )
 
 S="${WORKDIR}/${PN}-${MY_COMMIT}"
