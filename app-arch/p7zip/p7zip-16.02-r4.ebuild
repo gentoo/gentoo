@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -44,11 +44,11 @@ src_prepare() {
 	fi
 
 	sed \
-		-e 's:-m32 ::g' \
-		-e 's:-m64 ::g' \
-		-e 's:-pipe::g' \
-		-e '/ALLFLAGS/s:-s ::' \
-		-e "/OPTFLAGS=/s:=.*:=${CXXFLAGS}:" \
+		-e 's|-m32 ||g' \
+		-e 's|-m64 ||g' \
+		-e 's|-pipe||g' \
+		-e '/ALLFLAGS/s|-s ||' \
+		-e "/OPTFLAGS=/s|=.*|=${CXXFLAGS}|" \
 		-i makefile* || die
 
 	# remove non-free RAR codec

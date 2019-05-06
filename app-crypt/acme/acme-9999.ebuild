@@ -44,7 +44,6 @@ DEPEND="
 		${RDEPEND}
 		dev-python/pytest[${PYTHON_USEDEP}]
 		dev-python/pytest-xdist[${PYTHON_USEDEP}]
-		dev-python/tox[${PYTHON_USEDEP}]
 	)
 	>=dev-python/setuptools-1.0[${PYTHON_USEDEP}]
 "
