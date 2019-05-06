@@ -25,6 +25,12 @@ S="${WORKDIR}/data/noarch/game"
 DIR="/opt/${PN}"
 QA_PREBUILT="${DIR}/*"
 
+pkg_nofetch() {
+	einfo "Please buy and download ${SRC_URI} from:"
+	einfo "  https://www.gog.com/game/${PN//-/_}"
+	einfo "and move it to your distfiles directory."
+}
+
 src_unpack() {
 	unpack_zip ${A}
 }
