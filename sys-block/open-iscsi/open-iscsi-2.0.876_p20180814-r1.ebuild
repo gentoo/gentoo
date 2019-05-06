@@ -1,32 +1,36 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI="6"
 
-inherit autotools versionator linux-info flag-o-matic toolchain-funcs udev systemd
+inherit autotools linux-info flag-o-matic toolchain-funcs udev systemd
+
+MY_COMMIT="96c1a8e344d93594a3bb4faa848f878cc7315bde"
 
 DESCRIPTION="A performant, transport independent, multi-platform implementation of RFC3720"
 HOMEPAGE="http://www.open-iscsi.com/"
-SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/${PN}/${PN}/archive/${MY_COMMIT}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
-SLOT="0"
+SLOT="0/0.2"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 IUSE="debug infiniband +tcp rdma"
 
 DEPEND="sys-block/open-isns:=
-	infiniband? ( sys-fabric/ofed )"
+	infiniband? ( sys-fabric/ofed )
+	sys-kernel/linux-headers"
 RDEPEND="${DEPEND}
 	sys-fs/lsscsi
 	sys-apps/util-linux"
 REQUIRED_USE="infiniband? ( rdma ) || ( rdma tcp )"
 
 PATCHES=(
-	"${FILESDIR}/${P}-Makefiles.patch"
-	"${FILESDIR}/${P}-musl-fixes.patch"
-	"${FILESDIR}/${P}-musl-ethtool-compat.patch"
-	"${FILESDIR}/${P}-include-sysmacros.patch"
+	"${FILESDIR}/${PN}-2.0.876_p20180814-musl-fixes.patch"
+	"${FILESDIR}/${PN}-2.0.876-Makefiles.patch"
+	"${FILESDIR}/${PN}-2.0.876-space_in_node-mode.patch" #685190
 )
+
+S="${WORKDIR}/${PN}-${MY_COMMIT}"
 
 pkg_setup() {
 	linux-info_pkg_setup

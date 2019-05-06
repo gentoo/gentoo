@@ -1,0 +1,28 @@
+From baa0cb45cfcf10a81283c191b0b236cd1a2f66ee Mon Sep 17 00:00:00 2001
+From: Lee Duncan <lduncan@suse.com>
+Date: Fri, 12 Oct 2018 09:57:20 -0700
+Subject: [PATCH] Restore space in node-mode level 0 output
+
+As part of the libopeniscsiusr update, the output
+of "iscsiadm -m node" dropped a space that needs to
+be between the portal and the target, for proper
+parsing.
+
+Fixes: 87ea50a1c3a97
+---
+ usr/iscsiadm.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/usr/iscsiadm.c b/usr/iscsiadm.c
+index e3ba03c8..25c6cdc0 100644
+--- a/usr/iscsiadm.c
++++ b/usr/iscsiadm.c
+@@ -683,7 +683,7 @@ static int login_portals(struct node_rec *pattern_rec)
+ 
+ static void print_node_flat(struct iscsi_node *node)
+ {
+-		printf("%s,%" PRIu16 "%s\n",
++		printf("%s,%" PRIu16 " %s\n",
+ 		       iscsi_node_portal_get(node),
+ 		       iscsi_node_tpgt_get(node),
+ 		       iscsi_node_target_name_get(node));
