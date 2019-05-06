@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit ltprune python-single-r1 user flag-o-matic
+inherit python-single-r1 user flag-o-matic
 
 MY_P="${PN}2-${PV}"
 
@@ -59,7 +59,7 @@ src_compile() {
 
 src_install() {
 	default
-	prune_libtool_files
+	find "${D}" -name '*.la' -type f -delete || die
 
 	newinitd "${FILESDIR}"/vde.init-r1 vde
 	newconfd "${FILESDIR}"/vde.conf-r1 vde
