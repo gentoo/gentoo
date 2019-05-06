@@ -279,7 +279,7 @@ index 735b924b..b70bfb46 100644
  Socket                  inet:8891@localhost
  
 +# To use a local socket instead, specify a path here. The "standard"
-+# location is under @runstatedir@/opendkim, and it's best to agree
++# location is under @RUNSTATEDIR@/opendkim, and it's best to agree
 +# on that directory so that various init systems can configure its
 +# permissions and ownership automatically.
 +#Socket                 local:@RUNSTATEDIR@/opendkim/opendkim.sock
