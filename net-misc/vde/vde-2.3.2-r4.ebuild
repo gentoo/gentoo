@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -36,8 +36,7 @@ PATCHES=( "${FILESDIR}/${P}-format-security.patch" )
 pkg_setup() {
 	# default group already used in kqemu
 	enewgroup qemu
-
-	python-single-r1_pkg_setup
+	use python && python-single-r1_pkg_setup
 }
 
 src_configure() {
