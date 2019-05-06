@@ -3,7 +3,7 @@
 
 # RISC-V profile for rv64gc multilib
 
-CFLAGS="-O2 -pipe -march=rv64gc"
+CFLAGS="-O2 -pipe"
 CXXFLAGS="${CFLAGS}"
 FFLAGS="${CFLAGS}"
 FCFLAGS="${CFLAGS}"
