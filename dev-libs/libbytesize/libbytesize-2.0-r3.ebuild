@@ -5,11 +5,11 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{5,6,7} )
 
-inherit autotools python-single-r1
+inherit python-r1
 
 DESCRIPTION="Tiny library providing a C \"class\" for working with arbitrary big sizes in bytes"
 HOMEPAGE="https://github.com/storaged-project/libbytesize"
-SRC_URI="https://github.com/storaged-project/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/storaged-project/libbytesize/releases/download/${PV}/${P}.tar.gz"
 LICENSE="LGPL-2+"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
@@ -35,13 +35,16 @@ BDEPEND="
 	)
 "
 
-DOCS=( NEWS.rst README.md )
+DOCS=( README.md )
 
 RESTRICT="test"
 
-src_prepare() {
-	default
-	eautoreconf
+python_do() {
+	if use python; then
+		python_foreach_impl run_in_build_dir "$@"
+	else
+		"$@"
+	fi
 }
 
 src_configure() {
@@ -50,11 +53,25 @@ src_configure() {
 		$(use_with python python3)
 		$(use_with tools)
 	)
-	econf "${myeconfargs[@]}"
+	local ECONF_SOURCE="${S}"
+	python_do econf "${myeconfargs[@]}"
+}
+
+src_compile() {
+	python_do emake
+}
+
+src_test() {
+	python_do emake check
+}
+
+install_helper() {
+	emake DESTDIR="${D}" install
+	use python && python_optimize
 }
 
 src_install() {
-	default
-	use python && python_optimize
-	find "${ED}" -name "*.la*" -delete || die
+	python_do install_helper
+	einstalldocs
+	find "${ED}" -name "*.la" -type f -delete || die
 }
