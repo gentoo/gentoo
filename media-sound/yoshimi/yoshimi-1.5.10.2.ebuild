@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="+lv2"
 
 BDEPEND="virtual/pkgconfig"
-RDEPEND="
+DEPEND="
 	>=dev-libs/mxml-2.5
 	>=media-libs/alsa-lib-1.0.17
 	media-libs/fontconfig
@@ -29,9 +29,7 @@ RDEPEND="
 	x11-libs/fltk:1[opengl]
 	lv2? ( media-libs/lv2 )
 "
-DEPEND="${RDEPEND}
-	dev-libs/boost
-"
+RDEPEND="${DEPEND}"
 
 CMAKE_USE_DIR="${WORKDIR}/${P}/src"
 
