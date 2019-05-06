@@ -3,9 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_{5,6,7}} )
-
-inherit autotools python-single-r1 linux-info libtool eapi7-ver
+inherit autotools linux-info libtool eapi7-ver
 
 DESCRIPTION="Tool to setup encrypted devices with dm-crypt"
 HOMEPAGE="https://gitlab.com/cryptsetup/cryptsetup/blob/master/README.md"
@@ -14,13 +12,12 @@ SRC_URI="mirror://kernel/linux/utils/${PN}/v$(ver_cut 1-2)/${P/_/-}.tar.xz"
 LICENSE="GPL-2+"
 SLOT="0/12" # libcryptsetup.so version
 [[ ${PV} != *_rc* ]] && \
-KEYWORDS="~amd64 ~arm64 ~hppa ~mips ~ppc64 ~s390 ~sh ~sparc ~x86"
-CRYPTO_BACKENDS="+gcrypt kernel nettle openssl"
+KEYWORDS="~alpha ~amd64 ~arm arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+CRYPTO_BACKENDS="gcrypt kernel nettle +openssl"
 # we don't support nss since it doesn't allow cryptsetup to be built statically
 # and it's missing ripemd160 support so it can't provide full backward compatibility
-IUSE="${CRYPTO_BACKENDS} +argon2 libressl nls pwquality python reencrypt static static-libs +udev urandom"
+IUSE="${CRYPTO_BACKENDS} +argon2 libressl +luks1_default nls pwquality reencrypt static static-libs +udev urandom"
 REQUIRED_USE="^^ ( ${CRYPTO_BACKENDS//+/} )
-	python? ( ${PYTHON_REQUIRED_USE} )
 	static? ( !gcrypt )" #496612
 
 LIB_DEPEND="
@@ -42,8 +39,7 @@ LIB_DEPEND="
 # !static? () because we provide a shared library which links against
 # these other packages. #414665
 RDEPEND="static-libs? ( ${LIB_DEPEND} )
-	${LIB_DEPEND//\[static-libs\(+\)\]}
-	python? ( ${PYTHON_DEPS} )"
+	${LIB_DEPEND//\[static-libs\(+\)\]}"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	static? ( ${LIB_DEPEND} )"
@@ -51,6 +47,15 @@ DEPEND="${RDEPEND}
 S="${WORKDIR}/${P/_/-}"
 
 PATCHES=( "${FILESDIR}"/${PN}-2.0.4-fix-static-pwquality-build.patch )
+
+pkg_pretend() {
+	if ! use luks1_default ; then
+		ewarn "WARNING! WARNING! WARNING!"
+		ewarn "You have chosen LUKS2 as your default format."
+		ewarn "This can break LUKS1 backwards compatibility."
+		ewarn "Enable \"luks1_default\" USE flag if you need backwards compatibility."
+	fi
+}
 
 pkg_setup() {
 	local CONFIG_CHECK="~DM_CRYPT ~CRYPTO ~CRYPTO_CBC ~CRYPTO_SHA256"
@@ -74,22 +79,17 @@ src_configure() {
 		ewarn "userspace crypto libraries."
 	fi
 
-	use python && python_setup
-
-	# We disable autotool python integration so we can use eclasses
-	# for proper integration with multiple python versions.
 	local myeconfargs=(
 		--disable-internal-argon2
 		--enable-shared
 		--sbindir=/sbin
 		# for later use
-		# --with-default-luks-format=LUKS2
+		--with-default-luks-format=LUKS$(usex luks1_default 1 2)
 		--with-tmpfilesdir="${EPREFIX%/}/usr/lib/tmpfiles.d"
 		--with-crypto_backend=$(for x in ${CRYPTO_BACKENDS//+/} ; do usev ${x} ; done)
 		$(use_enable argon2 libargon2)
 		$(use_enable nls)
 		$(use_enable pwquality)
-		$(use_enable python)
 		$(use_enable reencrypt cryptsetup-reencrypt)
 		$(use_enable static static-cryptsetup)
 		$(use_enable static-libs static)
