@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ EAPI=7
 inherit autotools multilib-minimal
 
 DESCRIPTION="Computes context triggered piecewise hashes (fuzzy hashes)"
-HOMEPAGE="http://ssdeep.sourceforge.net/"
+HOMEPAGE="https://ssdeep-project.github.io/ssdeep/"
 SRC_URI="https://github.com/${PN}-project/${PN}/releases/download/release-${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2"
