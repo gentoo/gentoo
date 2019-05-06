@@ -1,0 +1,9 @@
+diff -U2 qmapshack-1.13.0.orig/CMakeLists.txt qmapshack-1.13.0/CMakeLists.txt
+--- qmapshack-1.13.0.orig/CMakeLists.txt	2019-04-08 18:08:10.000000000 +0200
++++ qmapshack-1.13.0/CMakeLists.txt	2019-05-06 23:19:15.330580322 +0200
+@@ -131,4 +131,5 @@
+ find_package(Qt5LinguistTools       REQUIRED)
+ find_package(Qt5PrintSupport        REQUIRED)
++find_package(Qt5Positioning         REQUIRED)
+ find_package(Qt5UiTools             REQUIRED)
+ find_package(Qt5Network             REQUIRED)
