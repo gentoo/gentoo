@@ -39,6 +39,11 @@ pkg_setup() {
 	use python && python-single-r1_pkg_setup
 }
 
+src_prepare() {
+	default
+	has_version ">=dev-libs/openssl-1.1.0" && eapply "${FILESDIR}/${P}-openssl-1.1.patch"
+}
+
 src_configure() {
 	filter-flags -O0 -Os
 	econf \
