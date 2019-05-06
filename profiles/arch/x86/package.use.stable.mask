@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (06 May 2019)
+# media-libs/dav1d is not yet stable
+media-video/vlc dav1d
+
 # Amy Liffey <amynka@gentoo.org> (15 Jan 2019)
 # Mask experimental contrib repo
 media-libs/opencv contrib contrib_cvv contrib_dnn contrib_hdf contrib_sfm contrib_xfeatures2d gflags glog tesseract
