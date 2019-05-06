@@ -1282,6 +1282,11 @@
       <name>David Seifert</name>
       <role>Member ( general )</role>
     </member>
+    <member>
+      <email>steils@gentoo.org</email>
+      <name>Stefan Strogin</name>
+      <role>Member ( general )</role>
+    </member>
     <member is-lead="1">
       <email>vapier@gentoo.org</email>
       <name>Mike Frysinger</name>
@@ -1941,6 +1946,11 @@
     <member>
       <email>soap@gentoo.org</email>
       <name>David Seifert</name>
+      <role>Developer</role>
+    </member>
+    <member>
+      <email>steils@gentoo.org</email>
+      <name>Stefan Strogin</name>
       <role>Developer</role>
     </member>
     <member>
