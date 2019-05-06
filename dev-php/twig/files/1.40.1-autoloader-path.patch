@@ -1,0 +1,16 @@
+--- a/lib/Twig/Autoloader.php	2019-04-29 16:12:28.000000000 +0200
++++ b/lib/Twig/Autoloader.php.new	2019-05-06 21:37:39.955238245 +0200
+@@ -43,9 +43,11 @@
+             return;
+         }
+ 
+-        if (is_file($file = __DIR__.'/../'.str_replace(['_', "\0"], ['/', ''], $class).'.php')) {
++        if (is_file($file = __DIR__.'/../'.str_replace(['Twig_', "\0"], ['lib/', ''], $class).'.php')) {
+             require $file;
+-        } elseif (is_file($file = __DIR__.'/../../src/'.str_replace(['Twig\\', '\\', "\0"], ['', '/', ''], $class).'.php')) {
++        } elseif (is_file($file = __DIR__.'/../'.str_replace(['_', "\0"], ['/', ''], $class).'.php')) {
++            require $file;
++        } elseif (is_file($file = __DIR__.'/../src/'.str_replace(['Twig\\', '\\', "\0"], ['', '/', ''], $class).'.php')) {
+             require $file;
+         }
+     }
