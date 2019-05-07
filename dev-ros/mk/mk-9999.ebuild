@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -16,3 +16,6 @@ IUSE=""
 
 RDEPEND=""
 DEPEND="${RDEPEND}"
+RDEPEND="${DEPEND}
+	dev-ros/rospack
+	dev-ros/rosbuild"
