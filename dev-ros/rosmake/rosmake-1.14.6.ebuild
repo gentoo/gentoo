@@ -5,12 +5,12 @@ EAPI=5
 
 ROS_REPO_URI="https://github.com/ros/ros"
 KEYWORDS="~amd64 ~arm"
-PYTHON_COMPAT=( python{2_7,3_5,3_6} pypy{,3} )
+PYTHON_COMPAT=( python{2_7,3_5} )
 ROS_SUBDIR=tools/${PN}
 
 inherit ros-catkin
 
-DESCRIPTION="Cleanup filesystem resources (e.g. log files)"
+DESCRIPTION="ROS dependency aware build tool"
 LICENSE="BSD"
 SLOT="0"
 IUSE=""
@@ -19,4 +19,3 @@ RDEPEND="dev-python/rospkg[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
 	test? ( dev-python/nose[${PYTHON_USEDEP}] )
 "
-PATCHES=( "${FILESDIR}/bb.patch" )

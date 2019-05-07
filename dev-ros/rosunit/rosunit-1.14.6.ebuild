@@ -10,13 +10,15 @@ ROS_SUBDIR=tools/${PN}
 
 inherit ros-catkin
 
-DESCRIPTION="Cleanup filesystem resources (e.g. log files)"
+DESCRIPTION="Unit-testing package for ROS"
 LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
-RDEPEND="dev-python/rospkg[${PYTHON_USEDEP}]"
+RDEPEND="
+	dev-python/rospkg[${PYTHON_USEDEP}]
+	dev-ros/roslib[${PYTHON_USEDEP}]
+"
 DEPEND="${RDEPEND}
 	test? ( dev-python/nose[${PYTHON_USEDEP}] )
 "
-PATCHES=( "${FILESDIR}/bb.patch" )

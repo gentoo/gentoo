@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -9,7 +9,7 @@ ROS_SUBDIR=core/${PN}
 
 inherit ros-catkin
 
-DESCRIPTION="A collection of .mk include files for building ROS architectural elements"
+DESCRIPTION="Common package for all ROS client libraries"
 LICENSE="BSD"
 SLOT="0"
 IUSE=""
