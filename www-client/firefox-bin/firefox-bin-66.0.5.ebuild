@@ -12,9 +12,6 @@ ga-IE gd gl gu-IN he hi-IN hr hsb hu hy-AM id is it ja kk km kn ko lt
 lv mai mk ml mr ms nb-NO nl nn-NO or pa-IN pl pt-BR pt-PT rm ro ru si sk sl
 son sq sr sv-SE ta te th tr uk uz vi xh zh-CN zh-TW )
 
-# Must remove next bump
-MOZ_LANGPACK_PREFIX="66.0.3/linux-i686/xpi/"
-
 # Convert the ebuild version to the upstream mozilla version, used by mozlinguas
 MOZ_PV="${PV/_beta/b}" # Handle beta for SRC_URI
 MOZ_PV="${MOZ_PV/_rc/rc}" # Handle rc for SRC_URI
