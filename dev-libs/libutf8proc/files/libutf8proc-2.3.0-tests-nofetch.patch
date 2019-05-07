@@ -6,7 +6,7 @@ index f5d1dd9..60c09e3 100644
  MAKE=make
  JULIA=julia
  CURLFLAGS = --retry 5 --location
-+UDATA=/usr/share/unicode-data
++UDATA=${EPREFIX}/usr/share/unicode-data
  
  .PHONY: clean
  
