@@ -19,4 +19,3 @@ RDEPEND="dev-python/rospkg[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
 	test? ( dev-python/nose[${PYTHON_USEDEP}] )
 "
-PATCHES=( "${FILESDIR}/bb.patch" )
