@@ -26,8 +26,15 @@ PATCHES=(
 	"${FILESDIR}/${PN}-2.3.0-tests-nofetch.patch"
 )
 
+src_compile() {
+	emake CC=$(tc-getCC) AR=$(tc-getAR)
+}
+
 src_install() {
-	emake DESTDIR="${D}" prefix=/usr libdir=/usr/$(get_libdir) install
+	emake DESTDIR="${D}" \
+		prefix="${EPREFIX}/usr" \
+		libdir="${EPREFIX}/usr/$(get_libdir)" \
+		install
 	# This package used to use netsurf's version as an upstream, which lives in
 	# its own little world. Unlike julia's version, it puts its header file
 	# in libutf8proc/utf8proc.h instead of utf8proc.h. The problem is that
