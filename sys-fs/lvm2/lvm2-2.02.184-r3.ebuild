@@ -224,7 +224,6 @@ src_install() {
 				"${ED}/etc/conf.d/lvm" || die "Could not drop udev from rc_need"
 		fi
 
-
 		newinitd "${FILESDIR}"/lvm-monitoring.initd-2.02.105-r2 lvm-monitoring
 		newinitd "${FILESDIR}"/lvmetad.initd-2.02.116-r3 lvmetad
 		newinitd "${FILESDIR}"/lvmpolld.initd-2.02.183 lvmpolld
