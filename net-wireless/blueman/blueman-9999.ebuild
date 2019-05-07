@@ -105,7 +105,6 @@ src_install() {
 		doins "${FILESDIR}/01-org.blueman.rules"
 	fi
 
-	python_fix_shebang "${D}"
 	rm "${D}"/$(python_get_sitedir)/*.la || die
 }
 
