@@ -8,12 +8,12 @@ PYTHON_REQ_USE="ssl(+)"
 inherit distutils-r1
 
 DESCRIPTION="Back up Untangle configurations via the web admin UI"
-HOMEPAGE="http://michael.orlitzky.com/code/untangle-https-backup.php"
+HOMEPAGE="http://michael.orlitzky.com/code/untangle-https-backup.xhtml"
 SRC_URI="http://michael.orlitzky.com/code/releases/${P}.tar.gz"
 
 LICENSE="AGPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE=""
 
 DEPEND=""
