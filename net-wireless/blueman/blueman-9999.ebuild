@@ -31,7 +31,6 @@ BDEPEND="
 	virtual/pkgconfig
 	nls? ( dev-util/intltool sys-devel/gettext )"
 RDEPEND="${DEPEND}
-	dev-python/dbus-python[${PYTHON_USEDEP}]
 	dev-python/pycairo[${PYTHON_USEDEP}]
 	sys-apps/dbus
 	x11-libs/gtk+:3[introspection]
