@@ -80,10 +80,7 @@ CDEPEND="
 			dev-qt/qtwebengine:5[widgets]
 		)
 	)
-	asimage? ( || (
-		media-libs/libafterimage[gif,jpeg,png,tiff?]
-		>=x11-wm/afterstep-2.2.11[gif,jpeg,png,tiff?]
-	) )
+	asimage? ( media-libs/libafterimage[gif,jpeg,png,tiff?] )
 	zeroconf? ( net-dns/avahi[mdnsresponder-compat] )
 	cuda? ( >=dev-util/nvidia-cuda-toolkit-9.0 )
 	davix? ( net-libs/davix )
@@ -301,9 +298,9 @@ src_install() {
 	ROOTSYS=${EPREFIX%/}/usr/lib/${PN}/$(ver_cut 1-2)
 
 	if [[ ${PV} == "9999" ]]; then
-		ROOTENV=$((9900 - $(ver_cut 2)))${PN}-git
+		ROOTENV="9900${PN}-git"
 	else
-		ROOTENV=$((9999 - $(ver_cut 2)))${PN}-$(ver_cut 1-2)-git
+		ROOTENV="$((9999 - $(ver_cut 2)))${PN}-$(ver_cut 1-2)-git"
 	fi
 
 	cat > ${ROOTENV} <<- EOF || die
@@ -325,7 +322,7 @@ src_install() {
 
 	pushd "${D}/${ROOTSYS}" > /dev/null
 
-	rm -r test emacs bin/*.{csh,sh,fish} || die
+	rm -r emacs bin/*.{csh,sh,fish} || die
 
 	if ! use examples; then
 		rm -r tutorials || die

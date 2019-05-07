@@ -67,10 +67,7 @@ CDEPEND="
 			dev-qt/qtwebengine:5[widgets]
 		)
 	)
-	asimage? ( || (
-		media-libs/libafterimage[gif,jpeg,png,tiff?]
-		>=x11-wm/afterstep-2.2.11[gif,jpeg,png,tiff?]
-	) )
+	asimage? ( media-libs/libafterimage[gif,jpeg,png,tiff?] )
 	zeroconf? ( net-dns/avahi[mdnsresponder-compat] )
 	cuda? ( >=dev-util/nvidia-cuda-toolkit-9.0 )
 	davix? ( net-libs/davix )

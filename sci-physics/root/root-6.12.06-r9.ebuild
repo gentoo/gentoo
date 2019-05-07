@@ -63,10 +63,7 @@ CDEPEND="
 			dev-qt/qtwebengine:5[widgets]
 		)
 	)
-	asimage? ( || (
-		media-libs/libafterimage[gif,jpeg,png,tiff?]
-		>=x11-wm/afterstep-2.2.11[gif,jpeg,png,tiff?]
-	) )
+	asimage? ( media-libs/libafterimage[gif,jpeg,png,tiff?] )
 	zeroconf? ( net-dns/avahi[mdnsresponder-compat] )
 	davix? ( net-libs/davix )
 	emacs? ( virtual/emacs )
