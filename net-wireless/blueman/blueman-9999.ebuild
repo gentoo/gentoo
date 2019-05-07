@@ -18,7 +18,9 @@ else
 	KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 fi
 
-LICENSE="GPL-3"
+# icons are GPL-2
+# source files are mixed GPL-3+ and GPL-2+
+LICENSE="GPL-3+ GPL-2"
 SLOT="0"
 IUSE="appindicator network nls policykit pulseaudio"
 
