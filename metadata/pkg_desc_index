@@ -2917,7 +2917,7 @@ dev-lang/sassc 3.4.7: A libsass command line driver
 dev-lang/scala 2.12.4: The Scala Programming Language
 dev-lang/scala-bin 2.11.8 2.12.4: The Scala Programming Language
 dev-lang/spark 2017 2018: Software development for high-reliability applications.
-dev-lang/spidermonkey 1.7.0-r3 1.8.5-r6 17.0.0-r5 38.3.0 52.9.1_pre1: Stand-alone JavaScript C++ library
+dev-lang/spidermonkey 1.7.0-r3 1.8.5-r6 17.0.0-r5 38.3.0 52.9.1_pre1 60.5.2_p0-r2: Stand-alone JavaScript C++ library
 dev-lang/squirrel 3.1: A interpreted language mainly used for games
 dev-lang/swi-prolog 7.4.2: free, small, and standard compliant Prolog compiler
 dev-lang/swig 2.0.9 3.0.12: Simplified Wrapper and Interface Generator
@@ -9368,7 +9368,7 @@ sci-electronics/xnec2c 3.5.1: A GTK+ graphical interactive version of nec2c
 sci-electronics/xoscope 2.0: Soundcard Oscilloscope for X
 sci-geosciences/congen 1.6.2-r1: Calculate speeds, equilibrium arguments, node factors of tidal constituents
 sci-geosciences/foxtrotgps 1.2.0: Easy to use, fast and lightweight mapping application (fork of tangogps)
-sci-geosciences/geocode-glib 3.24.0: GLib helper library for geocoding services
+sci-geosciences/geocode-glib 3.24.0 3.26.1: GLib helper library for geocoding services
 sci-geosciences/gmt 4.5.6: Powerful map generator
 sci-geosciences/gnome-maps 3.24.3: A map application for GNOME
 sci-geosciences/gpsbabel 1.5.4-r1: GPS waypoints, tracks and routes converter
