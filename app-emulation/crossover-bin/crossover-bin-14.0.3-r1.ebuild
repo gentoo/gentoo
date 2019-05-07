@@ -8,7 +8,7 @@ PYTHON_REQ_USE="threads"
 inherit python-single-r1 unpacker
 
 DESCRIPTION="Commercial version of app-emulation/wine with paid support."
-HOMEPAGE="http://www.codeweavers.com/products/crossover/"
+HOMEPAGE="https://www.codeweavers.com/products/"
 SRC_URI="install-crossover-${PV}.bin"
 
 LICENSE="CROSSOVER-2"
