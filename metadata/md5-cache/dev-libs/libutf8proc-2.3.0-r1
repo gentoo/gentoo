@@ -1,5 +1,5 @@
 BDEPEND=test? ( =app-i18n/unicode-data-12.0* )
-DEFINED_PHASES=install
+DEFINED_PHASES=compile install
 DESCRIPTION=mapping tool for UTF-8 strings
 EAPI=7
 HOMEPAGE=https://github.com/JuliaStrings/utf8proc
@@ -9,4 +9,4 @@ LICENSE=MIT
 SLOT=0/2.3.0
 SRC_URI=https://github.com/JuliaStrings/utf8proc/archive/v2.3.0.tar.gz -> libutf8proc-2.3.0.tar.gz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
-_md5_=b825268d64c16e094670062b7546609c
+_md5_=7264bed2bcace3df21806ab01f51351f
