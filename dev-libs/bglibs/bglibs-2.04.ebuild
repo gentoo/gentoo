@@ -9,14 +9,15 @@ DESCRIPTION="Bruce Guenter's Libraries Collection"
 HOMEPAGE="https://untroubled.org/bglibs/"
 SRC_URI="https://untroubled.org/bglibs/archive/${P}.tar.gz"
 
-LICENSE="LGPL-2.1"
+LICENSE="LGPL-2.1+"
 SLOT="0/2"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~sparc ~x86"
 IUSE="doc"
 
 RDEPEND=""
 DEPEND=""
-BDEPEND="doc? (
+BDEPEND="sys-devel/libtool
+	doc? (
 		app-doc/doxygen
 		dev-tex/xcolor
 		dev-texlive/texlive-latex
@@ -28,8 +29,8 @@ BDEPEND="doc? (
 src_prepare() {
 	default
 	# disable tests as we want them manually
-	sed -i '/^all:/s|selftests||' "${S}"/Makefile || die
-	sed -i '/selftests/d' "${S}"/TARGETS || die
+	sed -i '/^all:/s|selftests||' Makefile || die
+	sed -i '/selftests/d' TARGETS || die
 }
 
 src_configure() {
