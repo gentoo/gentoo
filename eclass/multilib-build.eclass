@@ -488,6 +488,14 @@ multilib_prepare_wrappers() {
 #   elif(_MIPS_SIM == _ABIO32) /* o32 */
 #       error "abi_mips_o32 not supported by the package."
 #   endif
+#elif defined(__riscv)
+#	if defined(__riscv_float_abi_double)
+#       error "abi_riscv_lp64d not supported by the package."
+#	elif defined(__riscv_float_abi_single)
+#       error "abi_riscv_lp64f not supported by the package."
+#	else
+#       error "abi_riscv_lp64 not supported by the package."
+#	endif
 #elif defined(__sparc__)
 #	if defined(__arch64__)
 #       error "abi_sparc_64 not supported by the package."
