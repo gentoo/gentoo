@@ -1,13 +1,13 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 CHROMIUM_LANGS="
 	be bg bn ca cs da de el en-GB es es-419 fi fil fr fr-CA hi hr hu id it
 	ja ko lt lv ms nb nl pl pt-BR pt-PT ro ru sk sr sv sw ta te th tr uk vi
 	zh-CN zh-TW
 "
-inherit chromium-2 gnome2-utils multilib unpacker xdg-utils
+inherit chromium-2 multilib unpacker xdg-utils
 
 DESCRIPTION="A fast and secure web browser"
 HOMEPAGE="https://www.opera.com/"
@@ -60,14 +60,17 @@ RDEPEND="
 
 QA_PREBUILT="*"
 S=${WORKDIR}
-OPERA_HOME="usr/$(get_libdir)/${PN}"
 
 src_unpack() {
 	unpack_deb ${A}
 }
 
+pkg_setup() {
+	OPERA_HOME="usr/$(get_libdir)/${PN}"
+}
+
 src_prepare() {
-	epatch_user
+	default
 
 	case ${ARCH} in
 		amd64)
@@ -99,18 +102,14 @@ src_install() {
 	fperms 4711 /usr/$(get_libdir)/${PN}/opera_sandbox
 }
 
-pkg_preinst() {
-	gnome2_icon_savelist
-}
-
 pkg_postrm() {
-	gnome2_icon_cache_update
 	xdg_desktop_database_update
+	xdg_icon_cache_update
 	xdg_mimeinfo_database_update
 }
 
 pkg_postinst() {
-	gnome2_icon_cache_update
 	xdg_desktop_database_update
+	xdg_icon_cache_update
 	xdg_mimeinfo_database_update
 }
