@@ -45,8 +45,8 @@ _MULTILIB_FLAGS=(
 	abi_mips_n32:n32
 	abi_mips_n64:n64
 	abi_mips_o32:o32
-	abi_ppc_32:ppc,ppc_aix,ppc_macos
-	abi_ppc_64:ppc64
+#	abi_ppc_32:ppc,ppc_aix,ppc_macos
+#	abi_ppc_64:ppc64
 	abi_riscv_lp64d:lp64d
 	abi_riscv_lp64:lp64
 	abi_s390_32:s390
@@ -488,6 +488,14 @@ multilib_prepare_wrappers() {
 #   elif(_MIPS_SIM == _ABIO32) /* o32 */
 #       error "abi_mips_o32 not supported by the package."
 #   endif
+#elif defined(__riscv)
+#	if defined(__riscv_float_abi_double)
+#       error "abi_riscv_lp64d not supported by the package."
+#	elif defined(__riscv_float_abi_single)
+#       error "abi_riscv_lp64f not supported by the package."
+#	else
+#       error "abi_riscv_lp64 not supported by the package."
+#	endif
 #elif defined(__sparc__)
 #	if defined(__arch64__)
 #       error "abi_sparc_64 not supported by the package."

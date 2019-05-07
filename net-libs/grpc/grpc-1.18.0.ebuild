@@ -73,7 +73,7 @@ src_compile() {
 
 src_install() {
 	emake \
-		prefix="${D}"/usr \
+		prefix="${ED}"/usr \
 		INSTALL_LIBDIR="$(get_libdir)" \
 		STRIP=/bin/true \
 		install

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -73,7 +73,7 @@ src_compile() {
 
 src_install() {
 	emake \
-		prefix="${D}"/usr \
+		prefix="${ED}"/usr \
 		INSTALL_LIBDIR="$(get_libdir)" \
 		STRIP=/bin/true \
 		install
