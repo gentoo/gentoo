@@ -28,6 +28,10 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+#
+# Stefan Strogin <steils@gentoo.org> (07 May 2019)
+# Depends on >=dev-libs/bglibs-2.04. Bug #685238.
+>=net-libs/cvm-0.97
 
 # Patrice Clement <monsieurp@gentoo.org> (06 May 2019)
 # Broken build. Outdated version. No interest from the Java team to maintain
