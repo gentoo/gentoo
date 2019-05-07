@@ -1,0 +1,120 @@
+From c1ebeaafeb324bac997984abdcee2d4e8b61a8a8 Mon Sep 17 00:00:00 2001
+From: Roy Marples <roy@marples.name>
+Date: Fri, 3 May 2019 14:44:06 +0100
+Subject: DHCPv6: Fix a potential read overflow with D6_OPTION_PD_EXCLUDE
+
+dhcpcd only checks that the prefix length of the exclusion
+matches the prefix length of the ia and equals the length of the
+data in the option.
+This could potentially overrun the in6_addr structure.
+
+This is fixed by enforcing RFC 6603 section 4.2 option limits
+more clearly.
+
+Thanks to Maxime Villard <max@m00nbsd.net> for finding this.
+---
+ src/dhcp6.c | 44 +++++++++++++++++++++-----------------------
+ 1 file changed, 21 insertions(+), 23 deletions(-)
+
+diff --git a/src/dhcp6.c b/src/dhcp6.c
+index dee8d4b6..583f3b3f 100644
+--- a/src/dhcp6.c
++++ b/src/dhcp6.c
+@@ -2166,40 +2166,38 @@ dhcp6_findpd(struct interface *ifp, const uint8_t *iaid,
+ 			state->expire = a->prefix_vltime;
+ 		i++;
+ 
+-		o = dhcp6_findoption(o, ol, D6_OPTION_PD_EXCLUDE, &ol);
+ 		a->prefix_exclude_len = 0;
+ 		memset(&a->prefix_exclude, 0, sizeof(a->prefix_exclude));
+-#if 0
+-		if (ex == NULL) {
+-			struct dhcp6_option *w;
+-			uint8_t *wp;
+-
+-			w = calloc(1, 128);
+-			w->len = htons(2);
+-			wp = D6_OPTION_DATA(w);
+-			*wp++ = 64;
+-			*wp++ = 0x78;
+-			ex = w;
+-		}
+-#endif
++		o = dhcp6_findoption(o, ol, D6_OPTION_PD_EXCLUDE, &ol);
+ 		if (o == NULL)
+ 			continue;
+-		if (ol < 2) {
+-			logerrx("%s: truncated PD Exclude", ifp->name);
++
++		/* RFC 6603 4.2 says option length MUST be between 2 and 17.
++		 * This allows 1 octet for prefix length and 16 for the
++		 * subnet ID. */
++		if (ol < 2 || ol > 17) {
++			logerrx("%s: invalid PD Exclude option", ifp->name);
+ 			continue;
+ 		}
+-		a->prefix_exclude_len = *o++;
+-		ol--;
+-		if (((a->prefix_exclude_len - a->prefix_len - 1) / NBBY) + 1
+-		    != ol)
+-		{
++
++		/* RFC 6603 4.2 says prefix length MUST be between the
++		 * length of the IAPREFIX prefix length + 1 and 128. */
++		if (*o < a->prefix_len + 1 || *o > 128) {
++			logerrx("%s: invalid PD Exclude length", ifp->name);
++			continue;
++		}
++
++		/* Check option length matches prefix length. */
++		if (((*o - a->prefix_len - 1) / NBBY) + 1 != ol) {
+ 			logerrx("%s: PD Exclude length mismatch", ifp->name);
+-			a->prefix_exclude_len = 0;
+ 			continue;
+ 		}
+-		nb = a->prefix_len % NBBY;
++
++		a->prefix_exclude_len = *o++;
++		ol--;
+ 		memcpy(&a->prefix_exclude, &a->prefix,
+ 		    sizeof(a->prefix_exclude));
++		nb = a->prefix_len % NBBY;
+ 		if (nb)
+ 			ol--;
+ 		pw = a->prefix_exclude.s6_addr +
+-- 
+cgit v1.2.1
+
+From 896ef4a54b0578985e5e1360b141593f1d62837b Mon Sep 17 00:00:00 2001
+From: Roy Marples <roy@marples.name>
+Date: Sat, 4 May 2019 10:19:02 +0100
+Subject: DHCPv6: Fix exclude prefix length check.
+
+---
+ src/dhcp6.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/dhcp6.c b/src/dhcp6.c
+index 583f3b3f..7f26129f 100644
+--- a/src/dhcp6.c
++++ b/src/dhcp6.c
+@@ -2187,14 +2187,14 @@ dhcp6_findpd(struct interface *ifp, const uint8_t *iaid,
+ 			continue;
+ 		}
+ 
++		ol--;
+ 		/* Check option length matches prefix length. */
+ 		if (((*o - a->prefix_len - 1) / NBBY) + 1 != ol) {
+ 			logerrx("%s: PD Exclude length mismatch", ifp->name);
+ 			continue;
+ 		}
+-
+ 		a->prefix_exclude_len = *o++;
+-		ol--;
++
+ 		memcpy(&a->prefix_exclude, &a->prefix,
+ 		    sizeof(a->prefix_exclude));
+ 		nb = a->prefix_len % NBBY;
+-- 
+cgit v1.2.1
+
