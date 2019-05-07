@@ -5196,7 +5196,7 @@ dev-python/os-win 3.0.1: Windows / Hyper-V library for OpenStack projects.
 dev-python/os-xenapi 0.3.3: XenAPI library for OpenStack projects
 dev-python/osc-lib 1.7.0 1.9.0 1.11.1: A package of common support modules for writing OSC plugins.
 dev-python/osc-placement 1.3.0: OpenStackClient plugin for the Placement service
-dev-python/oslo-cache 1.30.3: Oslo Caching around dogpile.cache
+dev-python/oslo-cache 1.30.3-r1: Oslo Caching around dogpile.cache
 dev-python/oslo-concurrency 3.27.0: library for running multi-thread, multi-process applications
 dev-python/oslo-config 6.4.1: Oslo Configuration API
 dev-python/oslo-context 2.21.0: Helpers to maintain useful information about a request context
