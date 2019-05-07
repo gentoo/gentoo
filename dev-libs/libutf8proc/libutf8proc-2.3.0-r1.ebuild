@@ -26,12 +26,16 @@ PATCHES=(
 	"${FILESDIR}/${PN}-2.3.0-tests-nofetch.patch"
 )
 
+_emake() {
+	emake CC=$(tc-getCC) AR=$(tc-getAR) $@
+}
+
 src_compile() {
-	emake CC=$(tc-getCC) AR=$(tc-getAR)
+	_emake
 }
 
 src_install() {
-	emake DESTDIR="${D}" \
+	_emake DESTDIR="${D}" \
 		prefix="${EPREFIX}/usr" \
 		libdir="${EPREFIX}/usr/$(get_libdir)" \
 		install
@@ -42,4 +46,8 @@ src_install() {
 	# measure until we unpatch revdeps, we add a symlink to utf8proc.h.
 	dodir /usr/include/libutf8proc
 	dosym ../utf8proc.h /usr/include/libutf8proc/utf8proc.h
+}
+
+src_test() {
+	_emake check
 }
