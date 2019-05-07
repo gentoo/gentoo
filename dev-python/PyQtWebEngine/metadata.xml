@@ -6,12 +6,8 @@
 		<name>Gentoo Qt Project</name>
 	</maintainer>
 	<maintainer type="person">
-		<email>stefan.strogin@gmail.com</email>
+		<email>steils@gentoo.org</email>
 		<name>Stefan Strogin</name>
-	</maintainer>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
 		PyQtWebEngine is a set of Python bindings for The Qt Company's
