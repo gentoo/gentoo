@@ -10,7 +10,9 @@ MY_PN=${PN/-/.}
 
 DESCRIPTION="Oslo Caching around dogpile.cache"
 HOMEPAGE="https://launchpad.net/oslo"
-SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_PN}-${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_PN}-${PV}.tar.gz -> ${P}.tar.gz
+	https://dev.gentoo.org/~prometheanfire/dist/openstack/keystone/patches/bug-681012.patch"
+
 S="${WORKDIR}/${MY_PN}-${PV}"
 
 LICENSE="Apache-2.0"
@@ -32,6 +34,10 @@ RDEPEND="
 	>=dev-python/oslo-log-3.30.0[${PYTHON_USEDEP}]
 	>=dev-python/oslo-utils-3.31.0[${PYTHON_USEDEP}]
 "
+
+PATCHES=(
+	"${DISTDIR}/bug-681012.patch"
+)
 
 python_prepare_all() {
 	sed -i '/^hacking/d' test-requirements.txt || die
