@@ -17,10 +17,6 @@
 
 #--- END OF EXAMPLES ---
 
-# Andreas Sturmlechner <asturm@gentoo.org> (06 May 2019)
-# media-libs/dav1d is not yet stable
-media-video/vlc dav1d
-
 # Andreas Sturmlechner <asturm@gentoo.org> (02 Dec 2018)
 # gnome-base/nautilus is not stable
 media-sound/easytag nautilus
