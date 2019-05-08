@@ -30,6 +30,7 @@ DEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${P}-German-ROMs.patch
+	"${FILESDIR}"/${P}-QApplication.patch
 )
 
 src_prepare() {
