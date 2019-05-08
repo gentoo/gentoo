@@ -48,49 +48,37 @@ BUILD_TARGETS="all"
 BUILD_TARGET_ARCH="${ARCH}"
 
 S="${WORKDIR}/${MY_P}"
+VBOX_MOD_SRC_DIR="${S}/out/linux.${ARCH}/release/bin/additions/src"
 
 pkg_setup() {
 	export DISTCC_DISABLE=1 #674256
-	MODULE_NAMES="vboxguest(misc:${WORKDIR}/vboxguest:${WORKDIR}/vboxguest)
-		vboxsf(misc:${WORKDIR}/vboxsf:${WORKDIR}/vboxsf)"
-	use X && MODULE_NAMES+=" vboxvideo(misc:${WORKDIR}/vboxvideo::${WORKDIR}/vboxvideo)"
+	MODULE_NAMES="vboxguest(misc:${VBOX_MOD_SRC_DIR}/vboxguest:${VBOX_MOD_SRC_DIR}/vboxguest)
+		vboxsf(misc:${VBOX_MOD_SRC_DIR}/vboxsf:${VBOX_MOD_SRC_DIR}/vboxsf)"
+	use X && MODULE_NAMES+=" vboxvideo(misc:${VBOX_MOD_SRC_DIR}/vboxvideo::${VBOX_MOD_SRC_DIR}/vboxvideo)"
 
 	linux-mod_pkg_setup
 	BUILD_PARAMS="KERN_DIR=/lib/modules/${KV_FULL}/build KERNOUT=${KV_OUT_DIR}"
 }
 
-src_unpack() {
-	unpack ${A}
-
-	# Create and unpack a tarball with the sources of the Linux guest
-	# kernel modules, to include all the needed files
-	"${S}"/src/VBox/Additions/linux/export_modules.sh \
-		"${WORKDIR}/vbox-kmod.tar.gz" &>/dev/null || die
-	unpack ./vbox-kmod.tar.gz
-
-	# Remove shipped binaries (kBuild,yasm), see bug #232775
-	cd "${S}" || die
-	rm -r kBuild/bin tools || die
-}
-
 src_prepare() {
+	# Remove shipped binaries (kBuild,yasm), see bug #232775
+	rm -r kBuild/bin tools || die
+
+	# Provide kernel sources
+	pushd src/VBox/Additions &>/dev/null || die
+	ebegin "Extracting guest kernel module sources"
+	kmk GuestDrivers-src vboxguest-src vboxsf-src vboxvideo-src &>/dev/null || die
+	eend
+	popd &>/dev/null || die
+
 	# PaX fixes (see bug #298988)
-	pushd "${WORKDIR}" &>/dev/null || die
+	pushd "${VBOX_MOD_SRC_DIR}" &>/dev/null || die
 	eapply "${FILESDIR}"/vboxguest-6.0.6-log-use-c99.patch
 	popd &>/dev/null || die
 
 	# Disable things unused or splitted into separate ebuilds
 	cp "${FILESDIR}/${PN}-5-localconfig" LocalConfig.kmk || die
 	use X || echo "VBOX_WITH_X11_ADDITIONS :=" >> LocalConfig.kmk
-
-	# stupid new header references...
-	local vboxheader mdir
-	for vboxheader in {product,revision,version}-generated.h ; do
-		for mdir in vbox{guest,sf} ; do
-			ln -sf "${S}"/out/linux.${ARCH}/release/${vboxheader} \
-				"${WORKDIR}/${mdir}/${vboxheader}"
-		done
-	done
 
 	# Remove pointless GCC version check
 	sed -e '/^check_gcc$/d' -i configure || die

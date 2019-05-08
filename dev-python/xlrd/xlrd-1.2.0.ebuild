@@ -16,6 +16,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86 ~ppc-aix ~amd64-linux ~x86-linux ~sparc-solaris ~x86-solaris"
 IUSE=""
 
+BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
+
 python_prepare_all() {
 	# Remove this if examples get reintroduced
 	sed -i -e "s/test_names_demo/_&/" tests/test_open_workbook.py || die
