@@ -174,6 +174,7 @@ if [[ ${PN} != "kgcc64" && ${PN} != gcc-* ]] ; then
 	tc_version_is_at_least 8.0 &&
 		IUSE+=" systemtap" TC_FEATURES+=(systemtap)
 	tc_version_is_at_least 9.0 && IUSE+=" d"
+	tc_version_is_at_least 9.1 && IUSE+=" lto"
 fi
 
 SLOT="${GCC_CONFIG_VER}"
@@ -991,6 +992,11 @@ toolchain_src_configure() {
 	# going to link in -lrt to all C++ apps.  #411681
 	if tc_version_is_at_least 4.4 && is_cxx ; then
 		confgcc+=( --enable-libstdcxx-time )
+	fi
+
+	# Build compiler using LTO
+	if tc_version_is_at_least 9.1 && use_if_iuse lto ; then
+		confgcc+=( --with-build-config=bootstrap-lto )
 	fi
 
 	# Support to disable pch when building libstdcxx
