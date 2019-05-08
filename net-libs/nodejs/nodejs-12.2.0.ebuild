@@ -1,12 +1,10 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-
+EAPI=7
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="threads"
-
-inherit bash-completion-r1 eutils flag-o-matic pax-utils python-single-r1 toolchain-funcs
+inherit bash-completion-r1 flag-o-matic pax-utils python-single-r1 toolchain-funcs
 
 DESCRIPTION="A JavaScript runtime built on Chrome's V8 JavaScript engine"
 HOMEPAGE="https://nodejs.org/"
@@ -28,7 +26,7 @@ RDEPEND="
 	>=net-libs/http-parser-2.8.0:=
 	>=net-libs/nghttp2-1.38.0
 	sys-libs/zlib
-	icu? ( >=dev-libs/icu-63.1:= )
+	icu? ( >=dev-libs/icu-64.2:= )
 	ssl? ( >=dev-libs/openssl-1.1.1:0= )
 "
 DEPEND="
@@ -134,7 +132,8 @@ src_compile() {
 
 src_install() {
 	local LIBDIR="${ED}/usr/$(get_libdir)"
-	emake install DESTDIR="${D}"
+	default
+
 	pax-mark -m "${ED}"usr/bin/node
 
 	# set up a symlink structure that node-gyp expects..
