@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python2_7 python3_{5,6} )
 
 inherit distutils-r1
 
@@ -18,18 +18,25 @@ LICENSE="MIT"
 SLOT="0"
 
 RDEPEND="
-	dev-python/xlwt[${PYTHON_USEDEP}]
-	dev-python/xlrd[${PYTHON_USEDEP}]"
+	>=dev-python/xlwt-1.3[${PYTHON_USEDEP}]
+	>=dev-python/xlrd-1.2[${PYTHON_USEDEP}]"
 
 DEPEND="${RDEPEND}
 	test? (
-		dev-python/errorhandler[${PYTHON_USEDEP}]
-		dev-python/manuel[${PYTHON_USEDEP}]
+		>=dev-python/errorhandler-2[${PYTHON_USEDEP}]
+		>=dev-python/manuel-1.9[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
+		dev-python/nose[${PYTHON_USEDEP}]
 		dev-python/pytest[${PYTHON_USEDEP}]
 		dev-python/testfixtures[${PYTHON_USEDEP}]
 	)"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-2.0.0-fix-tests.patch"
+)
+
 python_test() {
-	py.test -v xlutils/tests || die "Tests fail with ${EPYTHON}"
+	# upstream runs its tests with nose, but the suite actually runs better
+	# when ran through pytest...
+	pytest -vv || die "Tests fail with ${EPYTHON}"
 }
