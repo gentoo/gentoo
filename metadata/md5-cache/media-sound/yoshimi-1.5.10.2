@@ -1,0 +1,14 @@
+BDEPEND=virtual/pkgconfig dev-util/ninja >=dev-util/cmake-3.9.6
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare test
+DEPEND=>=dev-libs/mxml-2.5 >=media-libs/alsa-lib-1.0.17 media-libs/fontconfig media-libs/libsndfile sci-libs/fftw:3.0= sys-libs/ncurses:0= sys-libs/readline:0= sys-libs/zlib virtual/jack x11-libs/cairo[X] x11-libs/fltk:1[opengl] lv2? ( media-libs/lv2 ) dev-util/desktop-file-utils x11-misc/shared-mime-info
+DESCRIPTION=Software synthesizer based on ZynAddSubFX
+EAPI=7
+HOMEPAGE=https://yoshimi.github.io/
+IUSE=+lv2
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=>=dev-libs/mxml-2.5 >=media-libs/alsa-lib-1.0.17 media-libs/fontconfig media-libs/libsndfile sci-libs/fftw:3.0= sys-libs/ncurses:0= sys-libs/readline:0= sys-libs/zlib virtual/jack x11-libs/cairo[X] x11-libs/fltk:1[opengl] lv2? ( media-libs/lv2 )
+SLOT=0
+SRC_URI=https://github.com/Yoshimi/yoshimi/archive/1.5.10.2.tar.gz -> yoshimi-1.5.10.2.tar.gz
+_eclasses_=cmake-utils	ab10bd85e5d38e2a32077bcd91faa1b6	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	a09389deba2c0a7108b581e02c7cecbf	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	b45201c4e6c096b98e250336954e64b9	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	14d00d009167652b1fa363e55effe213
+_md5_=01f1807d007d261721ae5e4455b6f4bd

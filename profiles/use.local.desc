@@ -675,8 +675,10 @@ app-misc/note:general - Add support for ascii flatfile backend
 app-misc/note:text - Add support for text backend
 app-misc/pax-utils:python - Install a more powerful/faster version of lddtree
 app-misc/recoll:camelcase - Enable indexing for camelCase sentences and words
+app-misc/recoll:chm - Enable CHM file support via dev-python/pychm
 app-misc/recoll:inotify - Use the Linux Kernel notification subsystem for monitoring file alterations in realtime
 app-misc/recoll:session - Stop monitoring file alterations when X11 session terminates
+app-misc/recoll:webengine - Use dev-qt/qtwebengine for fancy result list display
 app-misc/rlwrap:debug - Enable debug
 app-misc/screen:multiuser - Enable multiuser support (by setting correct permissions)
 app-misc/screen:nethack - Express error messages in nethack style
@@ -6237,6 +6239,7 @@ x11-themes/zuki-themes:mate - Install Metacity theme for mate-base/mate
 x11-themes/zuki-themes:xfce - Install theme for xfce-base/xfwm4
 x11-themes/zukitwo:gnome-shell - Install theme for gnome-base/gnome-shell
 x11-wm/enlightenment:packagekit - Enable module for package manager integration
+x11-wm/enlightenment:xwayland - Enable XWayland application support
 x11-wm/fluxbox:bidi - Enable bidirectional language support with dev-libs/fribidi
 x11-wm/fluxbox:slit - Enables the Fluxbox slit (or dock)
 x11-wm/fluxbox:systray - Enables the system tray in the Fluxbox toolbar
