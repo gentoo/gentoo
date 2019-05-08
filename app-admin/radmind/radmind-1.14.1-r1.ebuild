@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,7 +6,7 @@ EAPI=5
 inherit eutils
 
 DESCRIPTION="command-line tools and server to remotely administer multiple Unix filesystems"
-HOMEPAGE="http://rsug.itd.umich.edu/software/radmind/"
+HOMEPAGE="https://github.com/Radmind https://sourceforge.net/projects/radmind/"
 SRC_URI="mirror://sourceforge/radmind/${P}.tar.gz"
 
 LICENSE="HPND"
