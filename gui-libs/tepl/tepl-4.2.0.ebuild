@@ -10,7 +10,7 @@ HOMEPAGE="https://wiki.gnome.org/Projects/Gtef"
 
 LICENSE="LGPL-2.1+"
 SLOT="4"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="+introspection"
 
 RDEPEND="

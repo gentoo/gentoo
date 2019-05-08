@@ -14,7 +14,7 @@ LICENSE="LGPL-2+ CC-BY-2.0"
 SLOT="0"
 
 IUSE="rdp"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 # FIXME: ovirt is not available in tree; though it seems the gnome-boxes ovirt broker is too buggy atm anyways (would need rest[vala] as well)
 # FIXME: qemu probably needs to depend on spice[smartcard] directly with USE=spice
