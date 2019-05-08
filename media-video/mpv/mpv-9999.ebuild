@@ -99,6 +99,7 @@ COMMON_DEPEND="
 	vulkan? (
 		media-libs/shaderc
 		media-libs/vulkan-loader[X?,wayland?]
+		>=media-libs/libplacebo-1.18.0[vulkan]
 	)
 	wayland? (
 		>=dev-libs/wayland-1.6.0
