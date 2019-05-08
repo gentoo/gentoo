@@ -169,6 +169,7 @@ src_prepare() {
 		"${FILESDIR}"/CVE-2019-6454/0001-Refuse-dbus-message-paths-longer-than-BUS_PATH_SIZE_.patch
 		"${FILESDIR}"/CVE-2019-6454/0002-Allocate-temporary-strings-to-hold-dbus-paths-on-the.patch
 		"${FILESDIR}"/241-version-dep.patch
+		"${FILESDIR}"/242-gcc-9.patch
 	)
 
 	if ! use vanilla; then
