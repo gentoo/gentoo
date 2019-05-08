@@ -161,13 +161,19 @@ multilib_src_configure() {
 		--disable-sql \
 		--disable-sql_codegen \
 		--disable-sql_compat \
-		$([[ ${ABI} == arm ]] && echo --with-mutex=ARM/gcc-assembly) \
 		$([[ ${ABI} == amd64 ]] && echo --with-mutex=x86/gcc-assembly) \
 		$(use_enable cxx) \
 		$(use_enable cxx stl) \
 		$(multilib_native_use_enable java) \
 		"${myconf[@]}" \
 		$(use_enable test)
+	# The embedded assembly on ARM does not work on newer hardware
+	# so you CANNOT use --with-mutex=ARM/gcc-assembly anymore.
+	# Specifically, it uses the SWPB op, which was deprecated:
+	# http://www.keil.com/support/man/docs/armasm/armasm_dom1361289909499.htm
+	# The op ALSO cannot be used in ARM-Thumb mode.
+	# Trust the compiler instead.
+	# >=db-6.1 uses LDREX instead.
 }
 
 multilib_src_install() {
