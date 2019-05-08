@@ -5764,7 +5764,7 @@ dev-python/xapp 1.0.1-r2: Python bindings for x11-libs/xapps
 dev-python/xcffib 0.4.0 0.5.1: A drop in replacement for xpyb, an XCB python binding
 dev-python/xlrd 0.9.4: Library for developers to extract data from Microsoft Excel (tm) spreadsheet files
 dev-python/xlsxwriter 0.7.8: Python module for creating Excel XLSX files
-dev-python/xlwt 1.0.0 1.2.0: Python library to create spreadsheet files compatible with Excel
+dev-python/xlwt 1.2.0: Python library to create spreadsheet files compatible with Excel
 dev-python/xmltodict 0.11.0: Makes working with XML feel like you are working with JSON
 dev-python/xmpppy 0.5.0_rc1-r2: Python library providing easy scripting with Jabber
 dev-python/xvfbwrapper 0.2.8: Python wrapper for running a display inside X virtual framebuffer
