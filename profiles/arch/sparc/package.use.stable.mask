@@ -21,10 +21,6 @@
 # Requires net-libs/webkit-gtk. Not stable on sparc.
 dev-util/geany-plugins markdown
 
-# Sergei Trofimovich <slyfox@gentoo.org> (27 Apr 2019)
-# No stable dev-lang/spidermonkey on sparc, bug #668558.
-dev-python/nevow test
-
 # Sergei Trofimovich <slyfox@gentoo.org> (31 Mar 2019)
 # No stable dovecot on net-mail/dovecot, bug #634822.
 mail-filter/maildrop dovecot
