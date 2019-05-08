@@ -27,6 +27,7 @@ S="${WORKDIR}/${PN/-layoutex}/source"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-58.1-remove-bashisms.patch"
+	"${FILESDIR}/${PN}-64.1-data_archive_generation.patch"
 )
 
 src_prepare() {
