@@ -16,12 +16,15 @@ SLOT=${MY_PV%%[.+]*}
 
 SRC_URI="
 	$(abi_uri x64 amd64)
+	$(abi_uri aarch64 arm64)
+	$(abi_uri ppc64le ppc64)
 "
+
 
 DESCRIPTION="Prebuilt Java JDK binaries provided by AdoptOpenJDK"
 HOMEPAGE="https://adoptopenjdk.net"
 LICENSE="GPL-2-with-classpath-exception"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64 ~ppc64"
 IUSE="alsa cups doc examples +gentoo-vm headless-awt nsplugin selinux source +webstart"
 
 RDEPEND="
