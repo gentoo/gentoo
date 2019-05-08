@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python2_7 python3_{5,6} )
-inherit distutils-r1
+inherit distutils-r1 multiprocessing
 
 DESCRIPTION="High-performance RPC framework (python libraries)"
 HOMEPAGE="https://grpc.io"
@@ -33,5 +33,6 @@ python_compile() {
 	export GRPC_PYTHON_BUILD_SYSTEM_OPENSSL=1
 	export GRPC_PYTHON_BUILD_SYSTEM_ZLIB=1
 	export GRPC_PYTHON_BUILD_WITH_CYTHON=1
+	export GRPC_PYTHON_BUILD_EXT_COMPILER_JOBS="$(makeopts_jobs)"
 	distutils-r1_python_compile
 }
