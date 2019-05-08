@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -38,10 +38,17 @@ src_prepare() {
 }
 
 src_configure() {
+	local boostpython_ver="${EPYTHON:6}"
+	if has_version ">=dev-libs/boost-1.70.0"; then
+		boostpython_ver="${boostpython_ver/./}"
+	else
+		boostpython_ver="-${boostpython_ver}"
+	fi
+
 	local myeconfargs=(
 		--with-boost-include-dir="${EPREFIX}/usr/include/boost"
 		--with-boost-lib-dir="${EPREFIX}/usr/$(get_libdir)"
-		--with-boost-python-libname="boost_python-${EPYTHON:6}"
+		--with-boost-python-libname="boost_python${boostpython_ver}"
 		$(use_with numpy)
 	)
 

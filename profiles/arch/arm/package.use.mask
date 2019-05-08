@@ -25,10 +25,6 @@ dev-python/async_timeout test
 dev-lang/erlang hipe
 net-im/ejabberd hipe
 
-# Andreas Sturmlechner <asturm@gentoo.org> (28 Feb 2019)
-# media-libs/dav1d is not yet keyworded
-media-video/vlc dav1d
-
 # Andreas Sturmlechner <asturm@gentoo.org> (25 Feb 2019)
 # (SM)BIOS/Thunderbolt outside of amd64/x86? - citation needed
 sys-apps/fwupd dell thunderbolt

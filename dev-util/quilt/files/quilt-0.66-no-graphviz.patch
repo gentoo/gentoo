@@ -1,5 +1,5 @@
---- Makefile.in.orig	2017-04-12 09:27:40.853018901 -0400
-+++ Makefile.in	2017-04-12 09:36:16.584315529 -0400
+--- a/Makefile.in	2017-04-12 09:27:40.853018901 -0400
++++ b/Makefile.in	2017-04-12 09:36:16.584315529 -0400
 @@ -78,8 +78,7 @@ QUILT :=	$(QUILT_IN)
  SRC +=		$(QUILT_SRC:%=quilt/%)
  DIRT +=		$(QUILT_IN:%=quilt/%)
@@ -10,8 +10,8 @@
 
  SCRIPTS_SRC :=	$(SCRIPTS_IN:%=%.in)
  SCRIPTS :=	$(SCRIPTS_IN)
---- bash_completion.orig	2017-04-12 09:27:57.643126246 -0400
-+++ bash_completion	2017-04-12 09:30:27.673938451 -0400
+--- a/bash_completion	2017-04-12 09:27:57.643126246 -0400
++++ b/bash_completion	2017-04-12 09:30:27.673938451 -0400
 @@ -28,7 +28,7 @@ _quilt_completion()
      prev=${COMP_WORDS[COMP_CWORD-1]}
 

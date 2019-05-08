@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,15 +14,13 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="clang"
 
-RDEPEND="
-	>=dev-libs/efl-1.21.1[eet,X]
-	clang? ( sys-devel/clang:= )
-"
-DEPEND="
-	${RDEPEND}
-	dev-libs/check
-"
-BDEPEND="virtual/pkgconfig"
+RDEPEND="|| ( dev-libs/efl[X] dev-libs/efl[wayland] )
+	>=dev-libs/efl-1.22.0[eet]
+	clang? ( sys-devel/clang:= )"
+DEPEND="${RDEPEND}
+	dev-libs/check"
+BDEPEND=">=dev-util/meson-0.50.0
+	virtual/pkgconfig"
 
 llvm_check_deps() {
 	has_version "sys-devel/clang:${LLVM_SLOT}"

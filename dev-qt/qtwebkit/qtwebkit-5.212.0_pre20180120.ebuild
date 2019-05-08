@@ -80,6 +80,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-functional.patch"
 	"${FILESDIR}/${P}-fix-pkgconfig.patch"
 	"${FILESDIR}/${P}-cmake-fix-pkgconfig_deps-spelling.patch"
+	"${FILESDIR}/${P}-js-build-error.patch"
 )
 
 CHECKREQS_DISK_BUILD="16G" # bug 417307

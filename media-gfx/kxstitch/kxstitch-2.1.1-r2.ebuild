@@ -40,4 +40,7 @@ RDEPEND="${DEPEND}
 	!media-gfx/kxstitch:4
 "
 
-PATCHES=( "${FILESDIR}/${P}-qt-5.11.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-qt-5.11.patch"
+	"${FILESDIR}/${P}-imagemagick-fix.patch"
+)

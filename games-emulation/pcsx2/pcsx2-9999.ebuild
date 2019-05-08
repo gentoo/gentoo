@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -42,8 +42,10 @@ DEPEND="${RDEPEND}
 
 pkg_setup() {
 	if [[ ${MERGE_TYPE} != binary && $(tc-getCC) == *gcc* ]]; then
-		if [[ $(gcc-major-version) -lt 4 || $(gcc-major-version) == 4 && $(gcc-minor-version) -lt 8 ]] ; then
-			die "${PN} does not compile with gcc less than 4.8"
+		# -mxsave flag is needed when GCC >= 8.2 is used
+		# https://bugs.gentoo.org/685156
+		if [[ $(gcc-major-version) -gt 8 || $(gcc-major-version) == 8 && $(gcc-minor-version) -ge 2 ]]; then
+			append-flags -mxsave
 		fi
 	fi
 }

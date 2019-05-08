@@ -10,6 +10,7 @@
   </maintainer>
   <use>
     <flag name="packagekit">Enable module for package manager integration</flag>
+    <flag name="xwayland">Enable XWayland application support</flag>
   </use>
   <longdescription>
     Enlightenment is classed as a "desktop shell" as it provides everything you need to 

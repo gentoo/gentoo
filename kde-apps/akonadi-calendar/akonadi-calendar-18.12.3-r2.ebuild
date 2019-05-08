@@ -43,4 +43,6 @@ RDEPEND="${DEPEND}
 	!<kde-apps/kdepim-runtime-18.03.80
 "
 
+PATCHES=( "${FILESDIR}/${P}-korgac-crash.patch" )
+
 RESTRICT+=" test"

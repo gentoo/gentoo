@@ -1,0 +1,99 @@
+From 75a129d3c2f21914a47b970df822e485aca625ac Mon Sep 17 00:00:00 2001
+From: Steve Allewell <steve.allewell@gmail.com>
+Date: Sun, 11 Nov 2018 15:48:50 +0000
+Subject: Fix for importing images for V6 of ImageMagick
+
+The getPixelColor in V6 of ImageMagick does not appear to return the
+same information as in V7, consequently importing images has resulted in
+a black image when using V6 of ImageMagick.  This fix reverts the change
+made in commit 295773f44bfda1227d85edf065a8de14dc889159 when using V6.
+
+Big thanks to Sean Enck for reporting and helping diagnose the problem.
+---
+ src/ImportImageDlg.cpp | 16 ++++++++++++++++
+ src/MainWindow.cpp     | 17 +++++++++++++++++
+ 2 files changed, 33 insertions(+)
+
+diff --git a/src/ImportImageDlg.cpp b/src/ImportImageDlg.cpp
+index e6396c6..340ff1d 100644
+--- a/src/ImportImageDlg.cpp
++++ b/src/ImportImageDlg.cpp
+@@ -391,9 +391,21 @@ void ImportImageDlg::renderPixmap()
+     QProgressDialog progress(i18n("Rendering preview"), i18n("Cancel"), 0, pixelCount, this);
+     progress.setWindowModality(Qt::WindowModal);
+ 
++/*
++ * ImageMagick prior to V7 used matte (opacity) to determine if an image has transparency.
++ * 0.0 for transparent to 1.0 for opaque
++ * 
++ * ImageMagick V7 now uses alpha (transparency).
++ * 1.0 for transparent to 0.0 for opaque
++ * 
++ * Access to pixels has changed too, V7 can use pixelColor to access the color of a particular
++ * pixel, but although this was available in V6, it doesn't appear to produce the same result
++ * and has resulted in black images when importing.
++ */
+ #if MagickLibVersion < 0x700
+     bool hasTransparency = m_convertedImage.matte();
+     double transparent = 1.0;
++    const Magick::PixelPacket *pixels = m_convertedImage.getConstPixels(0, 0, width, height);
+ #else
+     bool hasTransparency = m_convertedImage.alpha();
+     double transparent = 0.0;
+@@ -408,7 +420,11 @@ void ImportImageDlg::renderPixmap()
+         }
+ 
+         for (int dx = 0 ; dx < width ; dx++) {
++#if MagickLibVersion < 0x700
++            Magick::ColorRGB rgb = Magick::Color(*pixels++);
++#else
+             Magick::ColorRGB rgb = m_convertedImage.pixelColor(dx, dy);
++#endif
+ 
+             if (hasTransparency && (rgb.alpha() == transparent)) {
+                 //ignore this pixel as it is transparent
+diff --git a/src/MainWindow.cpp b/src/MainWindow.cpp
+index 1f12f5b..ecf552a 100644
+--- a/src/MainWindow.cpp
++++ b/src/MainWindow.cpp
+@@ -541,13 +541,26 @@ void MainWindow::convertImage(const QString &source)
+ 
+         bool useFractionals = importImageDlg->useFractionals();
+ 
++/*
++ * ImageMagick prior to V7 used matte (opacity) to determine if an image has transparency.
++ * 0.0 for transparent to 1.0 for opaque
++ * 
++ * ImageMagick V7 now uses alpha (transparency).
++ * 1.0 for transparent to 0.0 for opaque
++ * 
++ * Access to pixels has changed too, V7 can use pixelColor to access the color of a particular
++ * pixel, but although this was available in V6, it doesn't appear to produce the same result
++ * and has resulted in black images when importing.
++ */
+ #if MagickLibVersion < 0x700
+         bool hasTransparency = convertedImage.matte();
+         double transparent = 1.0;
++        const Magick::PixelPacket *pixels = convertedImage.getConstPixels(0, 0, imageWidth, imageHeight);
+ #else
+         bool hasTransparency = convertedImage.alpha();
+         double transparent = 0.0;
+ #endif
++        
+         bool ignoreColor = importImageDlg->ignoreColor();
+         Magick::Color ignoreColorValue = importImageDlg->ignoreColorValue();
+ 
+@@ -579,7 +592,11 @@ void MainWindow::convertImage(const QString &source)
+             }
+ 
+             for (int dx = 0 ; dx < imageWidth ; dx++) {
++#if MagickLibVersion < 0x700
++                Magick::ColorRGB rgb = Magick::Color(*pixels++); // is this a memory leak
++#else
+                 Magick::ColorRGB rgb = convertedImage.pixelColor(dx, dy);
++#endif
+                 
+                 if (hasTransparency && (rgb.alpha() == transparent)) {
+                     // ignore this pixel as it is transparent
+-- 
+cgit v1.1

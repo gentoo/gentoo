@@ -39,6 +39,10 @@ DOCS=(
 	doc/{changelog,credits,djvudigital,README}
 )
 
+PATCHES=(
+	"${FILESDIR}"/${P}-poppler-0.76-{1,2}.patch
+)
+
 pkg_setup() {
 	use test && python-any-r1_pkg_setup
 }

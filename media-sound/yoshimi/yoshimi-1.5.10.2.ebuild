@@ -1,48 +1,46 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit cmake-utils
+inherit cmake-utils xdg
 
-DESCRIPTION="A software synthesizer based on ZynAddSubFX"
-HOMEPAGE="http://yoshimi.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
+DESCRIPTION="Software synthesizer based on ZynAddSubFX"
+HOMEPAGE="https://yoshimi.github.io/"
+SRC_URI="https://github.com/${PN^}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="+lv2"
 
-RDEPEND="
+BDEPEND="virtual/pkgconfig"
+DEPEND="
 	>=dev-libs/mxml-2.5
 	>=media-libs/alsa-lib-1.0.17
 	media-libs/fontconfig
 	media-libs/libsndfile
-	>=media-sound/jack-audio-connection-kit-0.115.6
-	sci-libs/fftw:3.0
+	sci-libs/fftw:3.0=
 	sys-libs/ncurses:0=
 	sys-libs/readline:0=
 	sys-libs/zlib
+	virtual/jack
 	x11-libs/cairo[X]
 	x11-libs/fltk:1[opengl]
 	lv2? ( media-libs/lv2 )
 "
-DEPEND="${RDEPEND}
-	dev-libs/boost
-	virtual/pkgconfig
-"
+RDEPEND="${DEPEND}"
 
 CMAKE_USE_DIR="${WORKDIR}/${P}/src"
 
-src_prepare() {
-	mv Change{l,L}og || die
-	sed -i \
-		-e '/set (CMAKE_CXX_FLAGS_RELEASE/d' \
-		-e "s:lib/lv2:$(get_libdir)/lv2:" \
-		src/CMakeLists.txt || die
+PATCHES=( "${FILESDIR}"/${P}-cxxflags.patch )
 
+DOCS=( Changelog README.txt )
+
+src_prepare() {
 	cmake-utils_src_prepare
+	# respect doc dir
+	sed -e "s#/doc/yoshimi#/doc/${PF}#" -i src/CMakeLists.txt || die
 }
 
 src_configure() {

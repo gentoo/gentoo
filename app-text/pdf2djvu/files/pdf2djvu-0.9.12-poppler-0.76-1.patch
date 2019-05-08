@@ -1,0 +1,35 @@
+From aa3fdae51c19ad2865f92882ec9007feeb7e477a Mon Sep 17 00:00:00 2001
+From: Jakub Wilk <jwilk@jwilk.net>
+Date: Mon, 1 Apr 2019 08:23:51 +0200
+Subject: [PATCH] Put Ref in pdf namespace.
+
+---
+ pdf-backend.hh | 1 +
+ pdf2djvu.cc    | 2 +-
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/pdf-backend.hh b/pdf-backend.hh
+index 43899c0..d7872c3 100644
+--- a/pdf-backend.hh
++++ b/pdf-backend.hh
+@@ -82,6 +82,7 @@ namespace pdf
+   typedef ::Catalog Catalog;
+   typedef ::GooString String;
+   typedef ::Goffset Offset;
++  typedef ::Ref Ref;
+ 
+ /* type definitions — annotations
+  * ==============================
+diff --git a/pdf2djvu.cc b/pdf2djvu.cc
+index 669eba5..d9e1532 100644
+--- a/pdf2djvu.cc
++++ b/pdf2djvu.cc
+@@ -86,7 +86,7 @@ static int get_page_for_goto_link(pdf::link::GoTo *goto_link, pdf::Catalog *cata
+     int page;
+     if (dest->isPageRef())
+     {
+-      Ref pageref = dest->getPageRef();
++      pdf::Ref pageref = dest->getPageRef();
+       page = catalog->findPage(pageref.num, pageref.gen);
+     }
+     else
