@@ -19,7 +19,7 @@ IUSE="lha"
 RDEPEND="
 	app-emulation/fs-uae
 	dev-python/pyopengl[${PYTHON_USEDEP}]
-	dev-python/PyQt5[${PYTHON_USEDEP},gui]
+	dev-python/PyQt5[${PYTHON_USEDEP},declarative,gui,network,opengl,widgets]
 	dev-python/six[${PYTHON_USEDEP}]
 	lha? ( dev-python/python-lhafile[${PYTHON_USEDEP}] )
 "
@@ -30,6 +30,7 @@ DEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${P}-German-ROMs.patch
+	"${FILESDIR}"/${P}-QApplication.patch
 )
 
 src_prepare() {
