@@ -20,7 +20,6 @@ SRC_URI="
 	$(abi_uri ppc64le ppc64)
 "
 
-
 DESCRIPTION="Prebuilt Java JDK binaries provided by AdoptOpenJDK"
 HOMEPAGE="https://adoptopenjdk.net"
 LICENSE="GPL-2-with-classpath-exception"
