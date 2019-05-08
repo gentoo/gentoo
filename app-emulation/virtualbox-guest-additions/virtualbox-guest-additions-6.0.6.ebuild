@@ -61,6 +61,7 @@ pkg_setup() {
 }
 
 src_prepare() {
+	# Remove shipped binaries (kBuild,yasm), see bug #232775
 	rm -r kBuild/bin tools || die
 
 	# Provide kernel sources
