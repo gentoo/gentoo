@@ -36,6 +36,7 @@ COMMON_DEPEND="
 		$(add_frameworks_dep kcrash)
 		$(add_frameworks_dep kio)
 		$(add_frameworks_dep kwallet)
+		$(add_frameworks_dep purpose)
 	)
 	libressl? ( dev-libs/libressl:= )
 	!libressl? ( dev-libs/openssl:0= )

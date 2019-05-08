@@ -19,8 +19,10 @@ LICENSE="GPL-2 LPPL-1.3c TeX"
 SRC_URI="mirror://gentoo/${MY_PV}.tar.xz"
 
 # Fetch patches
+POPPLERPATCHES="${P}-poppler076"
 SRC_URI="${SRC_URI} mirror://gentoo/${PN}-patches-${PATCHLEVEL}.tar.xz
 	https://dev.gentoo.org/~dilfridge/distfiles/${PN%-core}-${TL_SOURCE_VERSION}-source-freetype.patch.xz
+	https://dev.gentoo.org/~asturm/distfiles/${POPPLERPATCHES}.tar.xz
 "
 #	mirror://gentoo/texlive-core-upstream-patches-${TL_UPSTREAM_PATCHLEVEL}.tar.xz"
 
@@ -164,10 +166,15 @@ src_prepare() {
 	EPATCH_SUFFIX="patch" epatch "${WORKDIR}/patches"
 
 	# bug ?
-	epatch "${FILESDIR}/${P}-poppler064.patch"
+	epatch "${WORKDIR}/${POPPLERPATCHES}/${P}-poppler064.patch"
 
 	if has_version ">=app-text/poppler-0.69.0"; then
-		epatch "${FILESDIR}"/${P}-poppler0{69,71,72,73}.patch # bugs #672854, 675448
+		epatch "${WORKDIR}"/${POPPLERPATCHES}/${P}-poppler0{69,71,72,73}.patch # bugs #672854, 675448
+	fi
+
+	if has_version ">=app-text/poppler-0.75.0"; then
+		epatch "${WORKDIR}"/${POPPLERPATCHES}/${P}-pdftexdir-poppler0{75,76}.patch # bugs #681338, 685284
+		epatch "${WORKDIR}"/${POPPLERPATCHES}/${P}-luatexdir-poppler0{75,76}.patch # bugs #681338, 685284
 	fi
 
 	sed -i \

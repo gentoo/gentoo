@@ -3,8 +3,8 @@
 
 EAPI=7
 
-DESCRIPTION="command-line tools and server to remotely administer multiple Unix filesystems"
-HOMEPAGE="http://rsug.itd.umich.edu/software/radmind/ https://github.com/voretaq7/radmind"
+DESCRIPTION="Command-line tools and server to remotely administer multiple Unix filesystems"
+HOMEPAGE="https://github.com/Radmind https://sourceforge.net/projects/radmind/"
 SRC_URI="https://github.com/voretaq7/radmind/releases/download/${P}/${P}.tar.gz"
 
 LICENSE="HPND"

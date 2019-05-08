@@ -5,7 +5,7 @@ EAPI=6
 inherit eutils flag-o-matic libtool
 
 DESCRIPTION="A library for manipulating FlashPIX images"
-HOMEPAGE="http://www.i3a.org/"
+HOMEPAGE="https://github.com/ImageMagick/libfpx"
 SRC_URI="mirror://imagemagick/delegates/${P/_p/-}.tar.bz2"
 
 LICENSE="Flashpix"

@@ -1,20 +1,19 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=7
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 MY_P=${P/_}
 
 DESCRIPTION="A fractal generator"
 HOMEPAGE="https://www.fractint.org"
-SRC_URI="https://www.fractint.org/ftp/old/linux/${MY_P}.tar.gz"
+SRC_URI="https://www.fractint.org/ftp/current/linux/${MY_P}.tar.gz"
 
 LICENSE="freedist"
 SLOT="0"
-KEYWORDS="amd64 ppc x86"
-IUSE=""
+KEYWORDS="~amd64 ~ppc ~x86"
 
 RDEPEND="x11-libs/libX11"
 DEPEND="${RDEPEND}
@@ -23,9 +22,7 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}/${MY_P}"
 
-src_prepare() {
-	epatch "${FILESDIR}/xfractint-20.04p09-ldflags.patch"
-}
+PATCHES=( "${FILESDIR}/xfractint-20.04p09-ldflags.patch" )
 
 src_compile() {
 	# Untested, any x86 archteam dev. is allowed to uncomment this.
@@ -35,7 +32,7 @@ src_compile() {
 }
 
 src_install() {
-	emake DESTDIR="${D}/usr" STRIP="true" install
+	emake DESTDIR="${ED}/usr" STRIP="true" install
 	newenvd "${FILESDIR}"/xfractint.envd 60xfractint
 }
 
