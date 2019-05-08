@@ -7,7 +7,7 @@ inherit multilib-build
 
 DESCRIPTION="Virtual for OpenCL implementations"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 CARDS=( amdgpu i965 nvidia )
 IUSE="${CARDS[@]/#/video_cards_}"
 
