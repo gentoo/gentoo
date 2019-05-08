@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure
+DEPEND=>=dev-libs/libxml2-2.5.10
+DESCRIPTION=Implementation of the IDMEF XML draft
+EAPI=7
+HOMEPAGE=https://sourceforge.net/projects/libidmef/
+IUSE=debug static-libs
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=>=dev-libs/libxml2-2.5.10
+SLOT=0
+SRC_URI=mirror://sourceforge/libidmef/libidmef-1.0.3.tar.gz
+_md5_=0699aaf7ceb629dc227c170af5b96010
