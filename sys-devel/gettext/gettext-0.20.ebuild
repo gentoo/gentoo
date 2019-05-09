@@ -110,7 +110,7 @@ multilib_src_configure() {
 }
 
 multilib_src_install() {
-	default
+	emake -j1 DESTDIR="${D}" install
 
 	if multilib_is_native_abi ; then
 		dosym msgfmt /usr/bin/gmsgfmt #43435
@@ -119,14 +119,7 @@ multilib_src_install() {
 }
 
 multilib_src_install_all() {
-	if ! use nls ; then
-		rm -r "${ED}"/usr/share/locale || die
-	fi
-	if ! use static-libs ; then
-		find "${ED}" -type f -name "*.la" -delete || die
-	fi
-
-	rm -f "${ED}"/usr/share/locale/locale.alias "${ED}"/usr/lib/charset.alias
+	find "${ED}" -type f -name "*.la" -delete || die
 
 	if use java ; then
 		java-pkg_dojar "${ED}"/usr/share/${PN}/*.jar
