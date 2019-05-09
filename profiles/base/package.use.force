@@ -24,12 +24,6 @@ net-misc/netkit-bootparamd libtirpc
 sci-astronomy/esomidas libtirpc
 sys-cluster/glusterfs libtirpc
 
-# Matt Turner <mattst88@gentoo.org> (13 Jun 2018)
-# Upstream is transitioning to Meson, but does not yet have any configuration
-# options. Until those configuration options are provided, force USE flags on
-# to avoid automagic deps.
->=x11-apps/igt-gpu-tools-1.23 alsa chamelium doc glib gsl sound valgrind video_cards_amdgpu video_cards_intel video_cards_nouveau X xrandr xv
-
 # NP-Hardass <NP-Hardass@gentoo.org> (10 Apr 2017)
 # Always force patch on appropriate variant to ensure
 # similar experience when using app-emulation/wine-any
