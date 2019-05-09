@@ -71,6 +71,7 @@ DOCS=( AUTHORS ChangeLog README )
 PATCHES=(
 	"${FILESDIR}/${P}-xmloutputclosecallback-signature.patch"
 	"${FILESDIR}/${P}-empty-permissions-set.patch"
+	"${FILESDIR}/${P}-icu-64.patch" # bug #685460
 )
 
 src_configure() {
