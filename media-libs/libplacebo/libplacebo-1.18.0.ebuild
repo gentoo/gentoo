@@ -34,8 +34,8 @@ multilib_src_configure() {
 		$(meson_feature glslang)
 		$(meson_feature lcms)
 		$(meson_feature shaderc)
-		$(meson_use test tests)
 		$(meson_feature vulkan)
+		$(meson_use test tests)
 	)
 	meson_src_configure
 }
