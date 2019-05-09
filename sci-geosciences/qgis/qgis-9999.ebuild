@@ -27,6 +27,7 @@ IUSE="3d examples georeferencer grass hdf5 mapserver netcdf opencl oracle polar 
 REQUIRED_USE="${PYTHON_REQUIRED_USE} mapserver? ( python )"
 
 BDEPEND="
+	${PYTHON_DEPS}
 	>=dev-qt/linguist-tools-${QT_MIN_VER}:5
 	sys-devel/bison
 	sys-devel/flex
@@ -50,6 +51,7 @@ COMMON_DEPEND="
 	>=dev-qt/qtsql-${QT_MIN_VER}:5
 	>=dev-qt/qtwidgets-${QT_MIN_VER}:5
 	>=dev-qt/qtxml-${QT_MIN_VER}:5
+	media-gfx/exiv2:=
 	>=sci-libs/gdal-2.2.3:=[geos]
 	sci-libs/geos
 	sci-libs/libspatialindex:=
@@ -93,7 +95,6 @@ COMMON_DEPEND="
 "
 DEPEND="${COMMON_DEPEND}
 	>=dev-qt/qttest-${QT_MIN_VER}:5
-	>=dev-qt/qtxmlpatterns-${QT_MIN_VER}:5
 	python? ( ${PYTHON_DEPS} )
 "
 RDEPEND="${COMMON_DEPEND}
@@ -128,7 +129,9 @@ src_configure() {
 		-DQWT_LIBRARY=/usr/$(get_libdir)/libqwt6-qt5.so
 		-DPEDANTIC=OFF
 		-DUSE_CCACHE=OFF
+		-DWITH_ANALYSIS=ON
 		-DWITH_APIDOC=OFF
+		-DWITH_GUI=ON
 		-DWITH_INTERNAL_MDAL=ON # not packaged, bug 684538
 		-DWITH_QSPATIALITE=ON
 		-DENABLE_TESTS=OFF
@@ -166,18 +169,6 @@ src_configure() {
 src_install() {
 	cmake-utils_src_install
 
-	newmenu linux/org.qgis.qgis.desktop.in org.qgis.qgis.desktop
-
-	local size type
-	for size in 16 22 24 32 48 64 96 128 256; do
-		newicon -s ${size} linux/icons/${PN}-icon${size}x${size}.png ${PN}.png
-		newicon -c mimetypes -s ${size} linux/icons/${PN}-mime-icon${size}x${size}.png ${PN}-mime.png
-		for type in qgs qml qlr qpt; do
-			newicon -c mimetypes -s ${size} linux/icons/${PN}-${type}${size}x${size}.png ${PN}-${type}.png
-		done
-	done
-	newicon -s scalable images/icons/qgis_icon.svg qgis.svg
-
 	insinto /usr/share/mime/packages
 	doins debian/qgis.xml
 
@@ -188,6 +179,7 @@ src_install() {
 	fi
 
 	if use python; then
+		python_optimize
 		python_optimize "${ED}"/usr/share/qgis/python
 	fi
 
