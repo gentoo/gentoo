@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit check-reqs eapi7-ver flag-o-matic java-pkg-2 java-vm-2 multiprocessing pax-utils toolchain-funcs
+inherit check-reqs eapi7-ver flag-o-matic java-pkg-2 java-vm-2 multiprocessing pax-utils toolchain-funcs autotools
 
 MY_PV=$(ver_rs 1 'u' 2 '-' ${PV//p/b})
 
@@ -73,6 +73,10 @@ PDEPEND="webstart? ( >=dev-java/icedtea-web-1.6.1:0 )
 
 S="${WORKDIR}/jdk${SLOT}u-jdk${MY_PV}"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-${SLOT}-pass-COMPILER_WARNINGS_FATAL-down.patch"
+)
+
 # The space required to build varies wildly depending on USE flags,
 # ranging from 2GB to 16GB. This function is certainly not exact but
 # should be close enough to be useful.
@@ -136,6 +140,11 @@ src_prepare() {
 
 	# linux 5 is ok https://bugs.gentoo.org/679506
 	sed -i '/^SUPPORTED_OS_VERSION/ s/ 4%/ 4% 5%/' hotspot/make/linux/Makefile || die
+
+	( cd hotspot && eapply -p1 "${FILESDIR}/${PN}-${SLOT}-hotspot-support-COMPILER_WARNINGS_FATAL-on-linux.patch" )
+
+	# Regenerate configure script.
+	bash common/autoconf/autogen.sh
 }
 
 src_configure() {
@@ -144,8 +153,6 @@ src_configure() {
 
 	# Work around stack alignment issue, bug #647954.
 	use x86 && append-flags -mincoming-stack-boundary=2
-
-	append-flags -Wno-error
 
 	local myconf=(
 			--disable-ccache
@@ -167,6 +174,7 @@ src_configure() {
 			--with-vendor-vm-bug-url="https://bugs.openjdk.java.net"
 			--with-zlib=system
 			--with-native-debug-symbols=$(usex debug internal none)
+			--disable-warnings-as-errors
 			$(usex headless-awt --disable-headful '')
 		)
 

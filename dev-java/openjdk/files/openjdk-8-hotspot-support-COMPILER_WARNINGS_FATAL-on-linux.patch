@@ -1,0 +1,28 @@
+diff -pNur a/make/linux/makefiles/adlc.make b/make/linux/makefiles/adlc.make
+--- a/make/linux/makefiles/adlc.make	2019-04-01 14:24:58.000000000 +0200
++++ b/make/linux/makefiles/adlc.make	2019-05-09 13:51:11.777089942 +0200
+@@ -66,7 +66,9 @@ CXXFLAGS += -DASSERT
+ 
+ # CFLAGS_WARN holds compiler options to suppress/enable warnings.
+ # Compiler warnings are treated as errors
+-CFLAGS_WARN = $(WARNINGS_ARE_ERRORS)
++ifneq ($(COMPILER_WARNINGS_FATAL),false)
++  CFLAGS_WARN = $(WARNINGS_ARE_ERRORS)
++endif
+ CFLAGS += $(CFLAGS_WARN)
+ 
+ OBJECTNAMES = \
+diff -pNur a/make/linux/makefiles/gcc.make b/make/linux/makefiles/gcc.make
+--- a/make/linux/makefiles/gcc.make	2019-04-01 14:24:58.000000000 +0200
++++ b/make/linux/makefiles/gcc.make	2019-05-09 13:53:03.268563373 +0200
+@@ -201,7 +201,9 @@ else
+ endif
+ 
+ # Compiler warnings are treated as errors
+-WARNINGS_ARE_ERRORS = -Werror
++ifneq ($(COMPILER_WARNINGS_FATAL),false)
++  WARNINGS_ARE_ERRORS = -Werror
++endif
+ 
+ ifeq ($(USE_CLANG), true)
+   # However we need to clean the code up before we can unrestrictedly enable this option with Clang

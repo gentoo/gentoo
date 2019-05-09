@@ -1,0 +1,61 @@
+diff -pNur jdk8u-jdk8u212-b03-orig/common/autoconf/configure.ac jdk8u-jdk8u212-b03/common/autoconf/configure.ac
+--- jdk8u-jdk8u212-b03-orig/common/autoconf/configure.ac	2019-05-09 13:06:18.546906385 +0200
++++ jdk8u-jdk8u212-b03/common/autoconf/configure.ac	2019-05-09 13:08:09.423356712 +0200
+@@ -188,6 +188,7 @@ PLATFORM_SETUP_OPENJDK_TARGET_BITS
+ PLATFORM_SETUP_OPENJDK_TARGET_ENDIANNESS
+ 
+ # Configure flags for the tools
++FLAGS_SETUP_WARNINGS
+ FLAGS_SETUP_COMPILER_FLAGS_FOR_LIBS
+ FLAGS_SETUP_COMPILER_FLAGS_FOR_OPTIMIZATION
+ FLAGS_SETUP_COMPILER_FLAGS_FOR_JDK
+diff -pNur jdk8u-jdk8u212-b03-orig/common/autoconf/flags.m4 jdk8u-jdk8u212-b03/common/autoconf/flags.m4
+--- jdk8u-jdk8u212-b03-orig/common/autoconf/flags.m4	2019-05-09 13:06:18.546906385 +0200
++++ jdk8u-jdk8u212-b03/common/autoconf/flags.m4	2019-05-09 13:08:09.423356712 +0200
+@@ -220,6 +220,34 @@ AC_DEFUN_ONCE([FLAGS_SETUP_COMPILER_FLAG
+   # of the target platform.
+ ])
+ 
++AC_DEFUN([FLAGS_SETUP_WARNINGS],
++[
++  AC_ARG_ENABLE([warnings-as-errors], [AS_HELP_STRING([--disable-warnings-as-errors],
++      [do not consider native warnings to be an error @<:@enabled@:>@])])
++
++  # Set default value.
++  if test "x$TOOLCHAIN_TYPE" = xxlc; then
++    COMPILER_WARNINGS_FATAL=false
++  else
++    COMPILER_WARNINGS_FATAL=true
++  fi
++
++  AC_MSG_CHECKING([if native warnings are errors])
++  if test "x$enable_warnings_as_errors" = "xyes"; then
++    AC_MSG_RESULT([yes (explicitly set)])
++    COMPILER_WARNINGS_FATAL=true
++  elif test "x$enable_warnings_as_errors" = "xno"; then
++    AC_MSG_RESULT([no (explicitly set)])
++    COMPILER_WARNINGS_FATAL=false
++  elif test "x$enable_warnings_as_errors" = "x"; then
++    AC_MSG_RESULT([${COMPILER_WARNINGS_FATAL} (default)])
++  else
++    AC_MSG_ERROR([--enable-warnings-as-errors accepts no argument])
++  fi
++
++  AC_SUBST(COMPILER_WARNINGS_FATAL)
++])
++
+ # Documentation on common flags used for solstudio in HIGHEST.
+ #
+ # WARNING: Use of OPTIMIZATION_LEVEL=HIGHEST in your Makefile needs to be
+diff -pNur jdk8u-jdk8u212-b03-orig/common/autoconf/spec.gmk.in jdk8u-jdk8u212-b03/common/autoconf/spec.gmk.in
+--- jdk8u-jdk8u212-b03-orig/common/autoconf/spec.gmk.in	2019-05-09 13:06:18.546906385 +0200
++++ jdk8u-jdk8u212-b03/common/autoconf/spec.gmk.in	2019-05-09 13:08:09.424356716 +0200
+@@ -351,6 +351,8 @@ CXX_O_FLAG_NONE:=@CXX_O_FLAG_NONE@
+ C_FLAG_DEPS:=@C_FLAG_DEPS@
+ CXX_FLAG_DEPS:=@CXX_FLAG_DEPS@
+ 
++COMPILER_WARNINGS_FATAL:=@COMPILER_WARNINGS_FATAL@
++
+ # Tools that potentially need to be cross compilation aware.
+ CC:=@FIXPATH@ @CCACHE@ @CC@
+ 
