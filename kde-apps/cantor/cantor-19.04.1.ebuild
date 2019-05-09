@@ -5,9 +5,8 @@ EAPI=7
 
 KDE_HANDBOOK="forceoptional"
 KDE_TEST="forceoptional"
-PYTHON_COMPAT=( python2_7 )
-# FIXME: PYTHON_COMPAT=( python3_{5,6,7} )
-inherit kde5 python-r1
+PYTHON_COMPAT=( python3_{5,6,7} )
+inherit kde5 python-single-r1
 
 DESCRIPTION="Interface for doing mathematics and scientific computing"
 HOMEPAGE="https://kde.org/applications/education/cantor https://edu.kde.org/cantor/"
@@ -17,7 +16,6 @@ IUSE="+analitza julia lua markdown postscript python qalculate R"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 # TODO Add Sage Mathematics Software backend (http://www.sagemath.org)
-# FIXME: $(python_gen_cond_dep 'dev-qt/qtdbus:5' 'python3*')
 DEPEND="
 	$(add_frameworks_dep karchive)
 	$(add_frameworks_dep kcompletion)
@@ -51,7 +49,10 @@ DEPEND="
 		sci-libs/libqalculate:=
 	)
 	postscript? ( app-text/libspectre )
-	python? ( ${PYTHON_DEPS} )
+	python? (
+		${PYTHON_DEPS}
+		$(add_qt_dep qtdbus)
+	)
 	R? ( dev-lang/R )
 "
 RDEPEND="${DEPEND}"
@@ -81,28 +82,21 @@ pkg_pretend() {
 }
 
 pkg_setup() {
-	use python && python_setup
+	use python && python-single-r1_pkg_setup
 	kde5_pkg_setup
-}
-
-src_prepare() {
-	kde5_src_prepare
-
-	# FIXME: shipped FindPythonLibs3.cmake does not work for Gentoo
-	sed -e "/^find_package(PythonLibs3)/ s/^/#/" \
-		-i src/backends/CMakeLists.txt || die
 }
 
 src_configure() {
 	use julia && addpredict /proc/self/mem # bug 602894
 
 	local mycmakeargs=(
+		-DCMAKE_DISABLE_FIND_PACKAGE_PythonLibs=ON
 		$(cmake-utils_use_find_package analitza Analitza5)
 		$(cmake-utils_use_find_package julia Julia)
 		$(cmake-utils_use_find_package lua LuaJIT)
 		$(cmake-utils_use_find_package markdown Discount)
 		$(cmake-utils_use_find_package postscript LibSpectre)
-		$(cmake-utils_use_find_package python PythonLibs)
+		$(cmake-utils_use_find_package python PythonLibs3)
 		$(cmake-utils_use_find_package qalculate Qalculate)
 		$(cmake-utils_use_find_package R R)
 	)
