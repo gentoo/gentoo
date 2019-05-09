@@ -133,6 +133,9 @@ src_prepare() {
 	for repo in corba hotspot jdk jaxp jaxws langtools nashorn; do
 		ln -s ../"${repo}-jdk${MY_PV}" "${repo}" || die
 	done
+	# new warnings in new gcc https://bugs.gentoo.org/685426
+	sed -i '/^WARNINGS_ARE_ERRORS/ s/-Werror/-Wno-error/' \
+		hotspot/make/linux/makefiles/gcc.make || die
 }
 
 src_configure() {
