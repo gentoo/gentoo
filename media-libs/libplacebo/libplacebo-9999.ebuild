@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 if [[ "${PV}" == "9999" ]]; then
 	EGIT_REPO_URI="https://code.videolan.org/videolan/libplacebo.git"
@@ -12,14 +12,14 @@ else
 	S="${WORKDIR}/${PN}-v${PV}"
 fi
 
-inherit meson ninja-utils multilib-minimal
+inherit meson multilib-minimal
 
 DESCRIPTION="Reusable library for GPU-accelerated image processing primitives"
 HOMEPAGE="https://github.com/haasn/libplacebo"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
-IUSE="glslang lcms +shaderc +vulkan"
+IUSE="glslang lcms +shaderc test +vulkan"
 REQUIRED_USE="vulkan? ( || ( glslang shaderc ) )"
 
 RDEPEND="glslang? ( <dev-util/glslang-7.10[${MULTILIB_USEDEP}] )
@@ -27,21 +27,27 @@ RDEPEND="glslang? ( <dev-util/glslang-7.10[${MULTILIB_USEDEP}] )
 	shaderc? ( >=media-libs/shaderc-2017.2[${MULTILIB_USEDEP}] )
 	vulkan? ( media-libs/vulkan-loader[${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 multilib_src_configure() {
 	local emesonargs=(
-		-Dglslang=$(usex glslang enabled disabled)
-		-Dlcms=$(usex lcms enabled disabled)
-		-Dshaderc=$(usex shaderc enabled disabled)
-		-Dvulkan=$(usex vulkan enabled disabled)
+		$(meson_feature glslang)
+		$(meson_feature lcms)
+		$(meson_feature shaderc)
+		$(meson_feature vulkan)
+		$(meson_use test tests)
 	)
 	meson_src_configure
 }
 
 multilib_src_compile() {
-	eninja
+	meson_src_compile
+}
+
+multilib_src_test() {
+	meson_src_test
 }
 
 multilib_src_install() {
-	DESTDIR="${D}" eninja install
+	meson_src_install
 }
