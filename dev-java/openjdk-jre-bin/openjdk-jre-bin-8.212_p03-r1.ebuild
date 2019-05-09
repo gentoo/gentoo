@@ -3,37 +3,37 @@
 
 EAPI=6
 
-inherit java-vm-2
+inherit eapi7-ver java-vm-2
 
 abi_uri() {
 	echo "${2-$1}? (
-			https://github.com/AdoptOpenJDK/openjdk${SLOT}-binaries/releases/download/jdk-${MY_PV}/OpenJDK${SLOT}U-jdk_${1}_linux_hotspot_${MY_PV//+/_}.tar.gz
+			https://github.com/AdoptOpenJDK/openjdk${SLOT}-binaries/releases/download/jdk${MY_PV}/OpenJDK8U-jre_${1}_linux_hotspot_${MY_PV/-/}.tar.gz
 		)"
 }
 
-MY_PV=${PV/_p/+}
-SLOT=${MY_PV%%[.+]*}
+MY_PV=$(ver_rs 1 'u' 2 '-' ${PV//p/b})
+SLOT="$(ver_cut 1)"
 
+DESCRIPTION="Prebuilt Java JRE binaries provided by AdoptOpenJDK"
+HOMEPAGE="https://adoptopenjdk.net"
 SRC_URI="
 	$(abi_uri x64 amd64)
-	$(abi_uri aarch64 arm64)
-	$(abi_uri ppc64le ppc64)
 "
 
-DESCRIPTION="Prebuilt Java JDK binaries provided by AdoptOpenJDK"
-HOMEPAGE="https://adoptopenjdk.net"
 LICENSE="GPL-2-with-classpath-exception"
-KEYWORDS="~amd64 ~arm64 ~ppc64"
-IUSE="alsa cups doc examples +gentoo-vm headless-awt nsplugin selinux source +webstart"
+KEYWORDS="~amd64"
+
+IUSE="alsa cups +gentoo-vm headless-awt nsplugin selinux +webstart"
 
 RDEPEND="
 	media-libs/fontconfig:1.0
 	media-libs/freetype:2
+	>net-libs/libnet-1.1
+	>=sys-apps/baselayout-java-0.1.0-r1
 	>=sys-libs/glibc-2.2.5:*
 	sys-libs/zlib
 	alsa? ( media-libs/alsa-lib )
 	cups? ( net-print/cups )
-	doc? ( dev-java/java-sdk-docs:${SLOT} )
 	selinux? ( sec-policy/selinux-java )
 	!headless-awt? (
 		x11-libs/libX11
@@ -43,39 +43,31 @@ RDEPEND="
 		x11-libs/libXtst
 	)"
 
-PDEPEND="webstart? ( >=dev-java/icedtea-web-1.6.1:0 )
+PDEPEND="
+	webstart? ( >=dev-java/icedtea-web-1.6.1:0 )
 	nsplugin? ( >=dev-java/icedtea-web-1.6.1:0[nsplugin] )"
 
 RESTRICT="preserve-libs splitdebug"
 QA_PREBUILT="*"
 
-S="${WORKDIR}/jdk-${MY_PV}"
+S="${WORKDIR}/jdk${MY_PV}-jre"
 
 src_install() {
 	local dest="/opt/${P}"
 	local ddest="${ED%/}/${dest#/}"
 
-	# Not sure why they bundle this as it's commonly available and they
-	# only do so on x86_64. It's needed by libfontmanager.so. IcedTea
-	# also has an explicit dependency while Oracle seemingly dlopens it.
-	rm -vf lib/libfreetype.so || die
+	rm ASSEMBLY_EXCEPTION LICENSE THIRD_PARTY_README || die
 
-	# Oracle and IcedTea have libjsoundalsa.so depending on
-	# libasound.so.2 but AdoptOpenJDK only has libjsound.so. Weird.
+	# this does not exist on arm64 hence -f
+	rm -fv lib/*/libfreetype.so* || die
+
 	if ! use alsa ; then
-		rm -v lib/libjsound.* || die
-	fi
-
-	if ! use examples ; then
-		rm -vr demo/ || die
+		rm -v lib/*/libjsoundalsa.so* || die
 	fi
 
 	if use headless-awt ; then
-		rm -v lib/lib*{[jx]awt,splashscreen}* || die
-	fi
-
-	if ! use source ; then
-		rm -v lib/src.zip || die
+		rm -fvr lib/*/lib*{[jx]awt,splashscreen}* \
+			bin/policytool || die
 	fi
 
 	mv lib/security/cacerts lib/security/cacerts.orig || die
@@ -95,13 +87,13 @@ pkg_postinst() {
 	java-vm-2_pkg_postinst
 
 	if use gentoo-vm ; then
-		ewarn "WARNING! You have enabled the gentoo-vm USE flag, making this JDK"
+		ewarn "WARNING! You have enabled the gentoo-vm USE flag, making this JRE"
 		ewarn "recognised by the system. This will almost certainly break things."
 	else
-		ewarn "The experimental gentoo-vm USE flag has not been enabled so this JDK"
+		ewarn "The experimental gentoo-vm USE flag has not been enabled so this JRE"
 		ewarn "will not be recognised by the system. For example, simply calling"
 		ewarn "\"java\" will launch a different JVM. This is necessary until Gentoo"
-		ewarn "fully supports Java 11. This JDK must therefore be invoked using its"
+		ewarn "fully supports OpenJDK 8. This JRE must therefore be invoked using its"
 		ewarn "absolute location under ${EPREFIX}/opt/${P}."
 	fi
 }
