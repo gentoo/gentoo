@@ -7,7 +7,7 @@ inherit xdg-utils
 
 DESCRIPTION="Baselayout for Java"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Java"
-SRC_URI="https://dev.gentoo.org/~sera/distfiles/${P}.tar.gz"
+SRC_URI="https://dev.gentoo.org/~gyakovlev/distfiles/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
