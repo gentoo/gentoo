@@ -484,8 +484,6 @@ dev-ruby/celluloid-supervision
 # No revbumps in several years.
 # Removal in 30 days. Bug #675682
 dev-java/jackson-databind
-app-text/languagetool
-app-vim/languagetool
 dev-java/jackson-dataformat-xml
 dev-java/jackson-dataformat-yaml
 dev-java/jackson-module-jaxb-annotations
