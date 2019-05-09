@@ -35,7 +35,7 @@ RDEPEND="
 	>=dev-python/setuptools-39.2.0[${PYTHON_USEDEP}]
 "
 DEPEND="
-	${DEPEND}
+	${RDEPEND}
 	test? (
 		dev-python/freezegun[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
