@@ -9,7 +9,7 @@ MULTILIB_COMPAT=( abi_x86_64 )
 inherit desktop multilib-build pax-utils unpacker xdg-utils
 
 DESCRIPTION="Team collaboration tool"
-HOMEPAGE="http://www.slack.com/"
+HOMEPAGE="https://www.slack.com/"
 SRC_URI="https://downloads.slack-edge.com/linux_releases/${MY_PN}-desktop-${PV}-amd64.deb"
 
 LICENSE="all-rights-reserved"
