@@ -82,7 +82,7 @@ src_prepare() {
 	mv usr/share/doc/${PN}-stable usr/share/doc/${PF} || die
 	gunzip usr/share/doc/${PF}/changelog.gz || die
 
-	pushd "${OPERA_HOME}/localization" > /dev/null || die
+	pushd "${OPERA_HOME}"/localization > /dev/null || die
 	chromium_remove_language_paks
 	popd > /dev/null || die
 
@@ -92,9 +92,10 @@ src_prepare() {
 }
 
 src_install() {
+	rm "${OPERA_HOME}"/${PN}_autoupdate || die
 	mv * "${D}" || die
 	dosym ../$(get_libdir)/${PN}/${PN} /usr/bin/${PN}
-	fperms 4711 /usr/$(get_libdir)/${PN}/opera_sandbox
+	fperms 4711 /"${OPERA_HOME}"/opera_sandbox
 }
 
 pkg_postrm() {
