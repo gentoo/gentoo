@@ -593,10 +593,6 @@ dev-ruby/did_you_mean:1
 # Requires >=dev-lang/lua-5.3 which is masked
 sys-apps/likwid
 
-# Andreas Sturmlechner <asturm@gentoo.org> (23 Mar 2019)
-# Everything breaks again. bug #681336
->=app-text/poppler-0.75.0
-
 # Miroslav Šulc <fordfrog@gentoo.org> (19 Mar 2019)
 # Depends on >=virtual/{jdk,jre}-11 which is masked
 =www-servers/tomcat-9.0.17
