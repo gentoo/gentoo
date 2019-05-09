@@ -171,6 +171,7 @@ src_prepare() {
 	# Add local patches here
 	PATCHES+=(
 		"${FILESDIR}"/242-gcc-9.patch
+		"${FILESDIR}"/242-socket-util-flush-accept.patch
 	)
 
 	if ! use vanilla; then
