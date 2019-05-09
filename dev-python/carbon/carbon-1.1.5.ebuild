@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_{5,6}} )  # 3.7 dropped due to dep-hell
 inherit distutils-r1
 
 DESCRIPTION="Backend data caching and persistence daemon for Graphite"
-HOMEPAGE="http://graphite.wikidot.com/"
+HOMEPAGE="https://graphiteapp.org/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 SLOT="0"
