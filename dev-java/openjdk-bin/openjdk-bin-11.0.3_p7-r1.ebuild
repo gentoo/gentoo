@@ -29,6 +29,7 @@ IUSE="alsa cups doc examples +gentoo-vm headless-awt nsplugin selinux source +we
 RDEPEND="
 	media-libs/fontconfig:1.0
 	media-libs/freetype:2
+	>=sys-apps/baselayout-java-0.1.0-r1
 	>=sys-libs/glibc-2.2.5:*
 	sys-libs/zlib
 	alsa? ( media-libs/alsa-lib )
