@@ -1,24 +1,25 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 MY_PN="${PN/-bin/}"
 MULTILIB_COMPAT=( abi_x86_64 )
 
-inherit desktop gnome2-utils multilib-build pax-utils unpacker xdg-utils
+inherit desktop multilib-build pax-utils unpacker xdg-utils
 
 DESCRIPTION="Team collaboration tool"
-HOMEPAGE="http://www.slack.com/"
+HOMEPAGE="https://www.slack.com/"
 SRC_URI="https://downloads.slack-edge.com/linux_releases/${MY_PN}-desktop-${PV}-amd64.deb"
 
 LICENSE="all-rights-reserved"
 SLOT="0"
-KEYWORDS="~amd64 -*"
+KEYWORDS="-* ~amd64"
 IUSE="ayatana gnome-keyring pax_kernel"
 RESTRICT="bindist mirror"
 
-RDEPEND="dev-libs/atk:0[${MULTILIB_USEDEP}]
+RDEPEND="app-accessibility/at-spi2-atk:2[${MULTILIB_USEDEP}]
+	dev-libs/atk:0[${MULTILIB_USEDEP}]
 	dev-libs/expat:0[${MULTILIB_USEDEP}]
 	dev-libs/glib:2[${MULTILIB_USEDEP}]
 	dev-libs/nspr:0[${MULTILIB_USEDEP}]
@@ -83,12 +84,12 @@ src_install() {
 
 pkg_postinst() {
 	xdg_desktop_database_update
+	xdg_icon_cache_update
 	xdg_mimeinfo_database_update
-	gnome2_icon_cache_update
 }
 
 pkg_postrm() {
 	xdg_desktop_database_update
+	xdg_icon_cache_update
 	xdg_mimeinfo_database_update
-	gnome2_icon_cache_update
 }
