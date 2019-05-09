@@ -14,7 +14,7 @@ SRC_URI="https://github.com/mozilla/${PN}/archive/${PV}.tar.gz -> mozilla-${P}.t
 
 LICENSE="MIT BSD-2"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE="multilib test"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
