@@ -262,9 +262,7 @@ src_compile() {
 }
 
 src_install() {
-	local binpath="release"
-	use debug && binpath="debug"
-	cd "${S}"/out/linux.${ARCH}/${binpath}/bin || die
+	cd "${S}"/out/linux.${ARCH}/$(usex debug debug release)/bin || die
 
 	local vbox_inst_path="/usr/$(get_libdir)/${PN}" each size ico icofile
 
@@ -489,7 +487,7 @@ pkg_postinst() {
 		elog ""
 		elog "WARNING!"
 		elog "Without USE=udev, USB devices will likely not work in ${PN}."
-	elif [ -e "${ROOT%/}/etc/udev/rules.d/10-virtualbox.rules" ] ; then
+	elif [[ -e "${ROOT%/}/etc/udev/rules.d/10-virtualbox.rules" ]] ; then
 		elog ""
 		elog "Please remove \"${ROOT%/}/etc/udev/rules.d/10-virtualbox.rules\""
 		elog "or else USB in ${PN} won't work."
