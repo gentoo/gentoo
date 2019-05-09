@@ -6603,6 +6603,7 @@ gnome-extra/gnome-power-manager 3.24.0 3.30.0: GNOME power statistics
 gnome-extra/gnome-search-tool 3.6.0: Search tool for GNOME 3
 gnome-extra/gnome-shell-extension-applications-overview-tooltip 4: Show tooltip with full name and description
 gnome-extra/gnome-shell-extension-dash-to-panel 19: An icon taskbar for the Gnome Shell
+gnome-extra/gnome-shell-extension-desktop-icons 19.01.1: A GNOME Shell extension for providing desktop icons
 gnome-extra/gnome-shell-extension-gsconnect 12-r1 23: KDE Connect implementation for Gnome Shell
 gnome-extra/gnome-shell-extensions 3.24.3 3.30.1: JavaScript extensions for GNOME Shell
 gnome-extra/gnome-shell-extensions-topicons-plus 21 22-r1: Moves legacy tray icons to top panel
@@ -6624,6 +6625,7 @@ gnome-extra/nautilus-sendto 3.8.6: A nautilus extension for sending files to loc
 gnome-extra/nemo 3.6.4-r1: A file manager for Cinnamon, forked from Nautilus
 gnome-extra/nm-applet 1.8.20: GNOME applet for NetworkManager
 gnome-extra/office-runner 1.0.2: Lighthearted tool to temporarily inhibit GNOME's suspend on lid close behavior
+gnome-extra/pch-session 3.30.0.2: Unofficial gnome based session with different default settings and extensions
 gnome-extra/polkit-gnome 0.105-r1: A dbus session bus service that is used to bring up authentication dialogs
 gnome-extra/seahorse-nautilus 3.11.92: Nautilus extension for encrypting and decrypting files with GnuPG
 gnome-extra/sushi 3.24.0 3.30.0: A quick previewer for Nautilus, the GNOME file manager
@@ -9981,6 +9983,7 @@ sys-apps/vbetool 1.1: Run real-mode video BIOS code to alter hw state (i.e. rein
 sys-apps/watchdog 5.15: A software watchdog and /dev/watchdog daemon
 sys-apps/which 2.21: Prints out location of specified executables that are in your path
 sys-apps/x86info 1.30: Dave Jones' handy, informative x86 CPU diagnostic utility
+sys-apps/xdg-desktop-portal 1.2.0: Desktop integration portal
 sys-apps/xinetd 2.3.15-r3 2.3.15.3: powerful replacement for inetd
 sys-apps/xmbmon 2.0.5-r1: Mother Board Monitor Program for X Window System
 sys-auth/consolekit 0.4.6 1.1.0-r1 1.1.2 1.2.0 1.2.1: Framework for defining and tracking users, login sessions and seats
