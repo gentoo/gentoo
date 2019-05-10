@@ -37,7 +37,7 @@ COMMON_DEPEND="
 	>=gnome-base/gsettings-desktop-schemas-3.27.2
 	dev-libs/libxml2:2
 	>=sys-auth/polkit-0.114
-	>=sys-power/upower-0.99:=
+	>=sys-power/upower-0.99.6:=
 	x11-libs/libX11
 	>=x11-libs/libXi-1.2
 	flickr? ( >=media-libs/grilo-0.3.0:0.3= )
