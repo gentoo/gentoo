@@ -21,6 +21,7 @@ IUSE="debug fribidi libressl nettle recorder wiimote"
 
 RDEPEND="
 	dev-libs/angelscript:=
+	media-libs/freetype:2
 	media-libs/glew:0=
 	media-libs/libpng:0=
 	media-libs/libvorbis
