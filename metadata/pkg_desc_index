@@ -5471,7 +5471,7 @@ dev-python/python-gflags 3.1.1: Google's Python argument parsing library
 dev-python/python-glanceclient 2.13.1: A client for the OpenStack Glance API
 dev-python/python-gnupg 0.4.3: A Python wrapper for GnuPG
 dev-python/python-gudev 147.2-r1: Python binding to the GUDev udev helper library
-dev-python/python-heatclient 1.11.1 1.16.2: OpenStack Orchestration API Client Library
+dev-python/python-heatclient 1.16.2: OpenStack Orchestration API Client Library
 dev-python/python-ironicclient 1.17.0 2.2.1: Python bindings for the Ironic API
 dev-python/python-iwscan 20080402-r1: A Python extension for iwscan access
 dev-python/python-keystoneclient 3.15.0 3.17.0: Client Library for OpenStack Identity
