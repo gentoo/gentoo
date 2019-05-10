@@ -28,9 +28,8 @@ DEPEND="${RDEPEND}
 
 src_prepare() {
 	default
-	[[ ${PV} == *9999 ]] && eautoreconf
 }
 
 src_configure() {
-	econf --with-eprefix="${EPREFIX}"
+	econf --disable-maintainer-mode --with-eprefix="${EPREFIX}"
 }
