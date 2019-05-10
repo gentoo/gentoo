@@ -6,9 +6,9 @@ inherit user golang-build golang-vcs-snapshot systemd
 
 EGO_PN="github.com/prometheus/node_exporter"
 EGIT_COMMIT="v${PV/_rc/-rc.}"
-NODE_EXPORTER_COMMIT="f6f6194"
+NODE_EXPORTER_COMMIT="f97f01c"
 ARCHIVE_URI="https://${EGO_PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
-KEYWORDS="amd64"
+KEYWORDS="~amd64"
 
 DESCRIPTION="Prometheus exporter for machine metrics"
 HOMEPAGE="https://github.com/prometheus/node_exporter"
@@ -18,7 +18,7 @@ SLOT="0"
 IUSE=""
 
 DEPEND=">=dev-lang/go-1.11
-	dev-util/promu"
+	>=dev-util/promu-0.3.0"
 
 pkg_setup() {
 	enewgroup ${PN}

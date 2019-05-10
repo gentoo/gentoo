@@ -17,3 +17,7 @@ start_stop_daemon_args="--user ${user} --group ${group} \
 depend() {
 	after net
 }
+
+start_pre() {
+	checkpath -q -d -m 0755 -o ${user}:${group} /var/log/node_exporter
+}

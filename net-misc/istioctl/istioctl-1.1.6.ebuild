@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 inherit golang-vcs-snapshot
 
-GIT_COMMIT="d639408fded355fb906ef2a1f9e8ffddc24c3d64"
+GIT_COMMIT="04850e14d38a69a38c16c800e237b1108056513e"
 
 KEYWORDS="~amd64"
 DESCRIPTION="Istio configuration command line utility"
