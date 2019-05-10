@@ -1,0 +1,18 @@
+--- 1/CMakeLists.txt	2018-02-24 12:48:34.000000000 -0800
++++ 2/CMakeLists.txt	2019-05-09 19:15:57.621053534 -0700
+@@ -9,8 +9,13 @@
+ find_package(GLIB2 REQUIRED QUIET COMPONENTS GLIB GOBJECT GIO GIO_UNIX COMPILE_SCHEMAS)
+ include(GLibProgramHandlers)
+ find_package(GTK 3.22 QUIET COMPONENTS GDK GTK X11 WAYLAND)
+-find_package(GTK 2.24 COMPONENTS GDK GTK X11)
+-set(GTK2_FOUND ${GTK_FOUND})
++
++option(ENABLE_GTK2 "Build GTK2 module" ON)
++
++if (ENABLE_GTK2)
++	find_package(GTK 2.24 COMPONENTS GDK GTK X11)
++	set(GTK2_FOUND ${GTK_FOUND})
++endif()
+ 
+ find_path(WAYLAND_INCLUDE
+     NAMES wayland-client.h
