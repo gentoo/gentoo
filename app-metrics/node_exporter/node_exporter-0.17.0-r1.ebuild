@@ -8,7 +8,7 @@ EGO_PN="github.com/prometheus/node_exporter"
 EGIT_COMMIT="v${PV/_rc/-rc.}"
 NODE_EXPORTER_COMMIT="f6f6194"
 ARCHIVE_URI="https://${EGO_PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 DESCRIPTION="Prometheus exporter for machine metrics"
 HOMEPAGE="https://github.com/prometheus/node_exporter"
