@@ -1,5 +1,5 @@
 BDEPEND=virtual/pkgconfig >=dev-vcs/git-1.8.2.1[curl]
-DEFINED_PHASES=configure install prepare unpack
+DEFINED_PHASES=configure install postinst prepare unpack
 DEPEND=dev-qt/qtcore:5 dev-qt/qtnetwork:5
 DESCRIPTION=Daemon for radeon-profile GUI
 EAPI=7
@@ -8,4 +8,4 @@ LICENSE=GPL-2
 RDEPEND=dev-qt/qtcore:5 dev-qt/qtnetwork:5
 SLOT=0
 _eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	git-r3	0d4635eeb5a96cd5315597a47eba25c9	multilib	1d91b03d42ab6308b5f4f6b598ed110e	qmake-utils	bdf97e69a34b864d6d545f4ec3143ff7	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
-_md5_=329ee77c0fdf83b24b0c7885dc975c38
+_md5_=1ecd34be190d025376a8031626c4d095

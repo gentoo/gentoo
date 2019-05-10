@@ -12,4 +12,4 @@ RDEPEND=>=virtual/libiconv-0-r1[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,ab
 SLOT=0
 SRC_URI=mirror://gnu/gettext/gettext-0.20.tar.gz
 _eclasses_=epunt-cxx	e99babeaa7d98c1caaa6a61a79902210	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	java-pkg-opt-2	77d2e22d0de7640f817d20e861c0ff3f	java-utils-2	dd352559d0e143500ec878acc74da909	libtool	f143db5a74ccd9ca28c1234deffede96	mono-env	1f24c032c78290b0d9a07d5b343051a7	multibuild	40fe59465edacd730c644ec2bc197809	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multilib-build	ac8683420858ffddaac1694eb787fdae	multilib-minimal	8bddda43703ba94d8341f4e247f97566	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
-_md5_=1e17f7c0529b45e2eb35b5b42c1870e7
+_md5_=7bf8ac8fc28f937279cdf4fb9efe6e8e
