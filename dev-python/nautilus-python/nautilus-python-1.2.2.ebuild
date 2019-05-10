@@ -13,7 +13,7 @@ HOMEPAGE="https://projects.gnome.org/nautilus-python/"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm64 ~x86"
+KEYWORDS="~alpha amd64 ~arm64 x86"
 IUSE=""
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
