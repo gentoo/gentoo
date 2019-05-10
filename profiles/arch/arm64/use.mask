@@ -107,7 +107,6 @@ libproxy
 pkcs11
 bazaar
 darcs
-mercurial
 gpg
 emacs
 gphoto2
