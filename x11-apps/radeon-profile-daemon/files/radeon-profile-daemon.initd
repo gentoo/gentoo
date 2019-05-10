@@ -7,3 +7,7 @@ description="Daemon for radeon-profile GUI"
 command="/usr/sbin/radeon-profile-daemon"
 command_background="true"
 pidfile="/run/${SVCNAME}.pid"
+
+start_post() {
+	chgrp video /tmp/radeon-profile-daemon-server
+}

@@ -27,8 +27,14 @@ DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/${P}/${PN}"
 
+PATCHES=(
+	"${FILESDIR}/${P}-secure_socket.patch"
+)
+
 src_prepare() {
-	default
+	eapply -p2 "${PATCHES[@]}"
+	eapply_user
+
 	sed \
 		-e '/^bin\.path/s@/bin@/sbin@' \
 		-e "/^service\.path/s@=.*\$@= $(systemd_get_systemunitdir)@" \
@@ -46,4 +52,9 @@ src_install() {
 	emake INSTALL_ROOT="${D}" install
 
 	newinitd "${FILESDIR}"/${PN}.initd ${PN}
+}
+
+pkg_postinst() {
+	elog "Users need to be in the \"video\" group if they want to change"
+	elog "video card settings via ${PN}"
 }
