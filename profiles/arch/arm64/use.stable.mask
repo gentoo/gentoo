@@ -20,14 +20,6 @@ musepack
 # media-libs/portaudio not stable yet
 portaudio
 
-# Mart Raudsepp <leio@gentoo.org> (07 Feb 2019)
-# net-fs/samba not stable yet
-samba
-
-# Mart Raudsepp <leio@gentoo.org> (07 Feb 2019)
-# x11-misc/colord not stable yet
-colord
-
 # Mart Raudsepp <leio@gentoo.org> (18 Jan 2019)
 # x11-libs/libva not stable yet
 vaapi

@@ -10,7 +10,7 @@ HOMEPAGE="https://supertuxkart.net/"
 SRC_URI="mirror://sourceforge/${PN}/SuperTuxKart/${PV}/${P}-src.tar.xz
 	mirror://gentoo/${PN}.png"
 
-LICENSE="GPL-2 GPL-3 CC-BY-SA-3.0 CC-BY-2.0 public-domain ZLIB"
+LICENSE="GPL-2 GPL-3 CC-BY-SA-3.0 CC-BY-SA-4.0 CC0-1.0 public-domain ZLIB"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="debug fribidi libressl nettle recorder wiimote"
@@ -21,6 +21,7 @@ IUSE="debug fribidi libressl nettle recorder wiimote"
 
 RDEPEND="
 	dev-libs/angelscript:=
+	media-libs/freetype:2
 	media-libs/glew:0=
 	media-libs/libpng:0=
 	media-libs/libvorbis
