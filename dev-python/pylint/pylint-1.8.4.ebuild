@@ -31,7 +31,7 @@ RDEPEND="
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
 	test? ( ${RDEPEND}
-		<dev-python/pytest-3.3[${PYTHON_USEDEP}] )"
+		<dev-python/pytest-4[${PYTHON_USEDEP}] )"
 
 python_prepare_all() {
 	# remove unused dep
