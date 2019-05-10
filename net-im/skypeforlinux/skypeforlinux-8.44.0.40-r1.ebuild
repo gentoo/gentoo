@@ -25,6 +25,7 @@ RDEPEND="
 		sys-auth/elogind
 		sys-apps/systemd
 	)
+	app-crypt/libsecret[${MULTILIB_USEDEP}]
 	dev-libs/atk[${MULTILIB_USEDEP}]
 	dev-libs/expat[${MULTILIB_USEDEP}]
 	dev-libs/glib:2[${MULTILIB_USEDEP}]
