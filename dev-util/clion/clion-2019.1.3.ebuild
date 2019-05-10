@@ -33,11 +33,12 @@ src_prepare() {
 		bin/lldb/linux
 		bin/cmake
 		license/CMake*
+		lib/pty4j-native/linux/ppc64le
 	)
 
-	use amd64 || remove_me+=( bin/fsnotifier64 )
+	use amd64 || remove_me+=( bin/fsnotifier64 lib/pty4j-native/linux/x86_64)
 	use arm || remove_me+=( bin/fsnotifier-arm )
-	use x86 || remove_me+=( bin/fsnotifier )
+	use x86 || remove_me+=( bin/fsnotifier lib/pty4j-native/linux/x86)
 
 	use custom-jdk || remove_me+=( jre64 )
 
