@@ -6,7 +6,7 @@ PYTHON_COMPAT=( python{2_7,3_{5,6}} )
 inherit distutils-r1 readme.gentoo-r1
 
 DESCRIPTION="A Python interactive packet manipulation program for mastering the network"
-HOMEPAGE="http://www.secdev.org/projects/scapy/ https://github.com/secdev/scapy"
+HOMEPAGE="https://scapy.net/ https://github.com/secdev/scapy"
 SRC_URI="https://github.com/secdev/${PN}/archive/v${PV/_/}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
