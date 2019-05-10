@@ -28,6 +28,8 @@ LICENSE="GPL-2 LGPL-2.1 CC-BY-SA-3.0"
 SLOT="0"
 IUSE="dedicated"
 
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+
 BDEPEND="
 	virtual/pkgconfig
 "
