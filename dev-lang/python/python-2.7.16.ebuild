@@ -182,6 +182,11 @@ src_configure() {
 	fi
 
 	local myeconfargs=(
+		# The check is broken on clang, and gives false positive:
+		# https://bugs.gentoo.org/596798
+		# (upstream dropped this flag in 3.2a4 anyway)
+		ac_cv_opt_olimit_ok=no
+
 		--with-fpectl
 		--enable-shared
 		$(use_enable ipv6)

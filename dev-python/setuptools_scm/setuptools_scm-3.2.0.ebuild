@@ -18,6 +18,7 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 DEPEND="
+	!!<dev-python/setuptools_scm-3
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
 		dev-python/pytest[${PYTHON_USEDEP}]
