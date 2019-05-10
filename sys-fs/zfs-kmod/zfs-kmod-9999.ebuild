@@ -14,7 +14,7 @@ if [[ ${PV} == "9999" ]]; then
 else
 	SRC_URI="https://github.com/zfsonlinux/zfs/releases/download/zfs-${PV}/zfs-${PV}.tar.gz"
 	KEYWORDS="~amd64"
-	ZFS_KERNEL_COMPAT="${ZFS_KERNEL_COMPAT_OVERRIDE:-5.0}"
+	ZFS_KERNEL_COMPAT="${ZFS_KERNEL_COMPAT_OVERRIDE:-5.1}"
 	S="${WORKDIR}/zfs-${PV}"
 fi
 
