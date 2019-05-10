@@ -4,6 +4,11 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
+# Virgil Dupras <vdupras@gentoo.org> (10 May 2019)
+# Needs openssl 1.1 which isn't going stable for a while and blocks
+# bug #684972. See bug #685584
+>=app-text/mupdf-1.14.0-r3 ssl
+
 # Mart Raudsepp <leio@gentoo.org> (14 Apr 2019)
 # Needs media-plugins/gst-plugins-chromaprint, which is not stable
 # anywhere yet.
