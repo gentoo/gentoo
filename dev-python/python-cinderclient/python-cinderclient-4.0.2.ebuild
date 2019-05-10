@@ -12,7 +12,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~arm64 ~x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
 CDEPEND=">=dev-python/pbr-2.0.0[${PYTHON_USEDEP}]
@@ -23,7 +23,7 @@ RDEPEND="
 	${CDEPEND}
 	>=dev-python/prettytable-0.7.1[${PYTHON_USEDEP}]
 	<dev-python/prettytable-0.8[${PYTHON_USEDEP}]
-	>=dev-python/keystoneauth-3.3.0[${PYTHON_USEDEP}]
+	>=dev-python/keystoneauth-3.4.0[${PYTHON_USEDEP}]
 	>=dev-python/simplejson-3.5.1[${PYTHON_USEDEP}]
 	>=dev-python/Babel-2.3.4[${PYTHON_USEDEP}]
 	!~dev-python/Babel-2.4.0[${PYTHON_USEDEP}]
