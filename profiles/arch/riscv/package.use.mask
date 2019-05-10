@@ -25,6 +25,7 @@ dev-libs/icu doc
 dev-libs/iniparser doc
 dev-libs/libnl python
 dev-libs/libxslt python
+dev-libs/libyaml doc
 dev-python/cython doc test
 dev-python/pygments doc test
 dev-python/setuptools test
