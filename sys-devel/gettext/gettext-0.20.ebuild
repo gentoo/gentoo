@@ -127,7 +127,6 @@ multilib_src_install_all() {
 		rm "${ED}"/usr/share/${PN}/*.class || die
 		if use doc ; then
 			java-pkg_dojavadoc "${ED}"/usr/share/doc/${PF}/javadoc2
-			rm -r"${ED}"/usr/share/doc/${PF}/javadoc2 || die
 		fi
 	fi
 
