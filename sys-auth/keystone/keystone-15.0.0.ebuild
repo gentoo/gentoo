@@ -18,7 +18,7 @@ else
 	SRC_URI="https://dev.gentoo.org/~prometheanfire/dist/openstack/keystone/stein/keystone.conf.sample -> keystone.conf.sample-${PV}
 	https://dev.gentoo.org/~prometheanfire/dist/openstack/keystone/stein/keystone.policy.yaml.sample -> keystone.policy.yaml.sample-${PV}
 	https://tarballs.openstack.org/${PN}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm64 ~x86"
+	KEYWORDS="amd64 ~arm64 x86"
 fi
 
 LICENSE="Apache-2.0"
