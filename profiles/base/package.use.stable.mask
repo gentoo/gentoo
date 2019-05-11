@@ -4,6 +4,12 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
+# Georgy Yakovlev <gyakovlev@gentoo.org> (10 May 2019)
+# needs llvm slots which are not stable #678908
+# also prone to weird compilation failures
+# masking this for now, will readjust as situation changes
+>=dev-lang/rust-1.34 system-llvm
+
 # Virgil Dupras <vdupras@gentoo.org> (10 May 2019)
 # Needs openssl 1.1 which isn't going stable for a while and blocks
 # bug #684972. See bug #685584
