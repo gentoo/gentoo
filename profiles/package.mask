@@ -30,6 +30,11 @@
 #--- END OF EXAMPLES ---
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (11 May 2019)
+# Severely outdated, no commits since 2009, EAPI=2.
+# Bug 679686. Removal in 30 days.
+dev-lang/confluence
+
+# Andreas K. Hüttel <dilfridge@gentoo.org> (11 May 2019)
 # Build failures, other QA issues, EAPI=2. See bug 681046
 # Removal in 30 days.
 dev-embedded/tavrasm
@@ -40,6 +45,7 @@ dev-embedded/tavrasm
 app-accessibility/festival
 app-accessibility/festival-freebsoft-utils
 app-accessibility/festival-hts
+app-accessibility/festival-fi
 app-accessibility/festival-it
 app-accessibility/festival-ru
 app-accessibility/perlbox-voice
