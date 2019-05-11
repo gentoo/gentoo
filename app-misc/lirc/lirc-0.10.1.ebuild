@@ -38,7 +38,7 @@ COMMON_DEPEND="
 		>media-libs/portaudio-18
 		media-libs/alsa-lib
 	)
-	dev-python/pyyaml[${PYTHON_USEDEP}]
+	<dev-python/pyyaml-5[${PYTHON_USEDEP}]
 	ftdi? ( dev-embedded/libftdi:0 )
 	systemd? ( sys-apps/systemd )
 	usb? ( virtual/libusb:0 )
