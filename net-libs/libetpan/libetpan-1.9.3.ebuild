@@ -30,6 +30,7 @@ RDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.0-nonnull.patch
+	"${FILESDIR}"/${PN}-1.9.3-missing-stddev_h.patch
 )
 
 pkg_pretend() {
