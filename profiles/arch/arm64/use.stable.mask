@@ -50,10 +50,6 @@ gnome-keyring
 java
 
 # Michał Górny <mgorny@gentoo.org> (19 Feb 2018)
-# dev-db/postgresql is not stable here.
-postgres
-
-# Michał Górny <mgorny@gentoo.org> (19 Feb 2018)
 # dev-lang/tk is not stable here.
 tk
 
