@@ -10,14 +10,12 @@ app-accessibility/emacspeak-ss 1.9.1: adds support for several speech synthesize
 app-accessibility/epos 2.5.37-r2: language independent text-to-speech system
 app-accessibility/espeak 1.47.11-r1 1.48.04-r1: Speech synthesizer for English and other languages
 app-accessibility/espeakup 0.71-r1: espeakup is a small lightweight connector for espeak and speakup
-app-accessibility/festival 2.1-r1: Festival Text to Speech engine
 app-accessibility/flite 1.4-r4: Flite text to speech engine
 app-accessibility/freetts 1.2.1-r2: A speech synthesis system written entirely in Java
 app-accessibility/julius 4.2.2: Large Vocabulary Continuous Speech Recognition Engine
 app-accessibility/mbrola 3.0.1h-r6: Speech synthesizer based on the concatenation of diphones. Includes samples
 app-accessibility/nfbtrans 7.74-r2: braille translator from the National Federation of the Blind
 app-accessibility/orca 3.24.0 3.30.2: Extensible screen reader that provides access to the desktop
-app-accessibility/perlbox-voice 0.09-r2: A voice enabled application to bring your desktop under your command
 app-accessibility/powiedz 1.0-r2: Polish speech synthesizer based on rsynth
 app-accessibility/speech-dispatcher 0.8.7: Speech synthesis interface
 app-accessibility/speech-tools 2.1-r4: Speech tools for Festival Text to Speech engine
