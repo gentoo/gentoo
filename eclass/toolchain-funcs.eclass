@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 2002-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: toolchain-funcs.eclass
@@ -695,6 +695,7 @@ tc-endian() {
 		mips*)		echo big;;
 		powerpc*le)	echo little;;
 		powerpc*)	echo big;;
+		riscv*)		echo little;;
 		s390*)		echo big;;
 		sh*b*)		echo big;;
 		sh*)		echo little;;
