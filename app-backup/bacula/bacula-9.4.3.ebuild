@@ -15,7 +15,7 @@ SRC_URI="mirror://sourceforge/bacula/${MY_P}.tar.gz"
 LICENSE="AGPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~sparc ~x86"
-IUSE="acl bacula-clientonly bacula-nodir bacula-nosd examples ipv6 libressl logwatch mysql postgres qt5 readline +sqlite ssl static tcpd vim-syntax X"
+IUSE="acl bacula-clientonly bacula-nodir bacula-nosd +batch-insert examples ipv6 libressl logwatch mysql postgres qt5 readline +sqlite ssl static tcpd vim-syntax X"
 
 DEPEND="
 	!bacula-clientonly? (
@@ -170,16 +170,16 @@ src_prepare() {
 	touch src/qt-console/.libs/bat || die
 	chmod 755 src/qt-console/.libs/bat || die
 
-	# fix wrong handling of libressl version
+	# fix handling of libressl version
 	# needs separate handling for <libressl-2.7 and >=libressl2.7
 	# (see bug #655520)
 	if has_version "<dev-libs/libressl-2.7"; then
-		eapply -p0 "${FILESDIR}"/9.0.6/${PN}-9.0.6-libressl26.patch
+		eapply -p0 "${FILESDIR}"/9.4.0/${PN}-9.4.0-libressl26.patch
 	else
-		eapply -p0 "${FILESDIR}"/9.0.6/${PN}-9.0.6-libressl27.patch
+		eapply -p0 "${FILESDIR}"/9.4.0/${PN}-9.4.0-libressl27.patch
 	fi
 
-	# Don't let program instal man pages directly
+	# Don't let program install man pages directly
 	rm "${S}"/manpages/Makefile.in || die "Unable to remove man pages Makefile.in"
 	eapply -p1 "${FILESDIR}/bacula-fix-manpages.patch"
 
@@ -208,13 +208,6 @@ src_configure() {
 		# build as well (for building bscan, btape, etc.)
 		myconf="${myconf}
 			--with-${mydbtype}"
-		if use mysql; then
-		    myconf="${myconf} \
-			--disable-batch-insert"
-		else
-		    myconf="${myconf} \
-			--enable-batch-insert"
-		fi
 	fi
 
 	# do not build bat if 'static' clientonly
@@ -225,6 +218,7 @@ src_configure() {
 
 	myconf="${myconf} \
 		$(use_with X x) \
+		$(use_enable batch-insert) \
 		$(use_enable !readline conio) \
 		$(use_enable readline) \
 		$(use_with readline readline /usr) \
@@ -253,6 +247,7 @@ src_configure() {
 		--with-fd-group=bacula \
 		--enable-smartalloc \
 		--disable-afs \
+		--without-s3 \
 		--host=${CHOST} \
 		${myconf}
 }
@@ -436,5 +431,5 @@ pkg_postinst() {
 	einfo "you have to enable 'USE=qt5'."
 	einfo
 	einfo "/var/lib/bacula/tmp was configured for archivedir. This dir will be used during"
-	einfo "restores, so be sure to set it to an appropriate dir in the bacula config."
+	einfo "restores, so be sure to set it to an appropriate in dir in the bacula config."
 }
