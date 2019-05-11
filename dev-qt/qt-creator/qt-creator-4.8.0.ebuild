@@ -56,7 +56,7 @@ CDEPEND="
 		>=dev-qt/qthelp-${QT_PV}
 		webengine? ( >=dev-qt/qtwebengine-${QT_PV}[widgets] )
 	)
-	qbs? ( >=dev-util/qbs-1.12.2 )
+	qbs? ( ~dev-util/qbs-1.12.2 )
 	serialterminal? ( >=dev-qt/qtserialport-${QT_PV} )
 	systemd? ( sys-apps/systemd:= )
 "
