@@ -26,6 +26,9 @@ DEPEND="
 		!bacula-nodir? ( virtual/mta )
 	)
 	qt5? (
+		dev-qt/qtcore:5
+		dev-qt/qtgui:5
+		dev-qt/qtwidgets:5
 		dev-qt/qtsvg:5
 		x11-libs/qwt:6
 	)
