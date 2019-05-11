@@ -40,6 +40,7 @@ dev-embedded/tavrasm
 app-accessibility/festival
 app-accessibility/festival-freebsoft-utils
 app-accessibility/festival-hts
+app-accessibility/festival-fi
 app-accessibility/festival-it
 app-accessibility/festival-ru
 app-accessibility/perlbox-voice
