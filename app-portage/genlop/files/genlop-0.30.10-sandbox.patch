@@ -1,0 +1,12 @@
+diff -urN genlop-0.30.10.ORIG/genlop genlop-0.30.10/genlop
+--- genlop-0.30.10.ORIG/genlop	2019-05-09 15:11:22.111534471 +0200
++++ genlop-0.30.10/genlop	2019-05-09 15:11:46.377416100 +0200
+@@ -699,7 +699,7 @@
+ 	# not check for sanity and have users check their FEATURES instead.
+ 	my @targets      = ();
+ 	my @sandbox_pids = ();
+-	my @sandbox_procs = qx{ps ax -o pid,args | tail -n +2 | sed -e's/^ *//' | grep ' sandbox ' | grep -v ' grep '};
++	my @sandbox_procs = qx{ps ax -o pid,args | tail -n +2 | sed -e's/^ *//' | grep ' sandbox ' | grep -v 'pid-ns-init ' | grep -v ' grep '};
+ 	my ($e_curmerge, $e_lastmerge);
+ 	foreach (@sandbox_procs)
+ 	{
