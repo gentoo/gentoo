@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -74,6 +74,7 @@ src_prepare() {
 	fi
 
 	epatch "${FILESDIR}/${PN}-2.6.5-ar.patch" #474528
+	epatch "${FILESDIR}/${PN}-2.6.8-perl528.patch" #674742
 	eautoreconf
 }
 

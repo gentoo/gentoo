@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 inherit autotools flag-o-matic desktop
 
 DESCRIPTION="An extremely powerful ICCCM-compliant multiple virtual desktop window manager"
@@ -27,7 +27,9 @@ COMMON_DEPEND="
 	x11-libs/libXpm
 	x11-libs/libXrandr
 	x11-libs/libXrender
+	virtual/libiconv
 	bidi? ( dev-libs/fribidi )
+	nls? ( virtual/libintl )
 	png? ( media-libs/libpng:0= )
 	readline? (
 		sys-libs/ncurses:0=
@@ -70,7 +72,11 @@ src_prepare() {
 	fi
 
 	eapply -p0 "${FILESDIR}/${PN}-2.6.5-ar.patch" #474528
-	eapply_user
+
+	# Fix for Perl 5.28
+	eapply -p0 "${FILESDIR}/${PN}-2.6.8-perl528.patch"
+
+	default
 	eautoreconf
 }
 
@@ -78,6 +84,7 @@ src_configure() {
 	local myeconfargs=(
 		--libexecdir="${EPREFIX}"/usr/$(get_libdir)
 		--with-imagepath=/usr/include/X11/bitmaps:/usr/include/X11/pixmaps:/usr/share/icons/fvwm
+		--enable-iconv
 		--enable-package-subdirs
 		--docdir="/usr/share/doc/${P}"
 		$(use_enable bidi)
@@ -85,7 +92,6 @@ src_configure() {
 		$(use_enable debug command-log)
 		$(use_enable doc htmldoc)
 		$(use_enable nls)
-		$(use_enable nls iconv)
 		$(use_enable perl perllib)
 		$(use_enable png)
 		$(use_with readline readline-library)
@@ -97,9 +103,9 @@ src_configure() {
 	)
 
 	# Non-upstream email where bugs should be sent; used in fvwm-bug.
-	export FVWM_BUGADDR="desktop-wm@gentoo.org"
+	export FVWM_BUGADDR="maintainer-needed@gentoo.org"
 
-	# Recommended by upstream.
+	# Recommended by upstream, reference ????
 	append-flags -fno-strict-aliasing
 
 	# Signed chars are required.

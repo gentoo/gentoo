@@ -48,13 +48,13 @@ case ${PV} in
 	;;
 esac
 
-PATCH_VER="1"
-PATCH_DEV="slyfox"
+PATCH_VER=""
+PATCH_DEV=""
 DESCRIPTION="GNU debugger"
 HOMEPAGE="https://sourceware.org/gdb/"
 SRC_URI="${SRC_URI}
-	${PATCH_DEV:+https://dev.gentoo.org/~${PATCH_DEV}/distfiles/${PN}-8.1-patches-${PATCH_VER}.tar.xz}
-	${PATCH_VER:+mirror://gentoo/${PN}-8.1-patches-${PATCH_VER}.tar.xz}
+	${PATCH_DEV:+https://dev.gentoo.org/~${PATCH_DEV}/distfiles/${P}-patches-${PATCH_VER}.tar.xz}
+	${PATCH_VER:+mirror://gentoo/${P}-patches-${PATCH_VER}.tar.xz}
 "
 
 LICENSE="GPL-2 LGPL-2"
@@ -92,11 +92,6 @@ BDEPEND="
 		test? ( dev-util/dejagnu )
 		nls? ( sys-devel/gettext )
 	)"
-
-PATCHES=(
-	"${FILESDIR}"/${P}-source-highlight.patch
-	"${FILESDIR}"/${P}-c++17.patch
-)
 
 S=${WORKDIR}/${PN}-${MY_PV}
 
@@ -186,10 +181,6 @@ src_configure() {
 	fi
 
 	econf "${myconf[@]}"
-}
-
-src_test() {
-	nonfatal emake check || ewarn "tests failed"
 }
 
 src_install() {

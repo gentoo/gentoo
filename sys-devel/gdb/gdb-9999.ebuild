@@ -183,10 +183,6 @@ src_configure() {
 	econf "${myconf[@]}"
 }
 
-src_test() {
-	nonfatal emake check || ewarn "tests failed"
-}
-
 src_install() {
 	if use server && ! use client; then
 		cd gdb/gdbserver || die
