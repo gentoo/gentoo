@@ -16,7 +16,7 @@ SRC_URI="https://github.com/RPi-Distro/${MY_PN}/archive/V${PV}.tar.gz -> ${MY_P}
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~x86"
+KEYWORDS="amd64 arm arm64 ~x86"
 
 BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 
