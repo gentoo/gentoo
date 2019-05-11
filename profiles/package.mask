@@ -29,6 +29,18 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas K. Hüttel <dilfridge@gentoo.org> (11 May 2019)
+# Outdated, EAPI=2, unmaintained, segfaults immediately.
+# See bug 634928 and bug 612980. Removal in 30 days.
+app-accessibility/festival
+app-accessibility/festival-freebsoft-utils
+app-accessibility/festival-hts
+app-accessibility/festival-it
+app-accessibility/festival-ru
+app-accessibility/perlbox-voice
+app-accessibility/pidgin-festival
+dev-ros/sound_play
+
 # Virgil Dupras <vdupras@gentoo.org> (10 May 2019)
 # Has very limited use and is disruptive of other tests when activated.
 # Bug #685538. Removal in 30 days.
