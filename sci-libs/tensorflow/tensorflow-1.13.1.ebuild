@@ -103,6 +103,7 @@ BDEPEND="
 	dev-python/mock
 	dev-lang/swig
 	dev-python/cython
+	<=dev-util/bazel-0.22.0
 	cuda? (
 		>=dev-util/nvidia-cuda-toolkit-8.0[profiler]
 	)
