@@ -2099,6 +2099,7 @@ dev-tex/biblatex:biber - Install the unicode compatible backend processor
 dev-tex/dot2texi:pgf - Enable support for dev-tex/pgf (The TeX Portable Graphic Format)
 dev-tex/dot2texi:pstricks - Enable pstricks support
 dev-texlive/texlive-basic:luajittex - Add support for LuaJitTeX: LuaTeX based on LuaJIT which is usually faster.
+dev-util/android-studio:custom-jdk - Install and use Android Studio's custom JRE.
 dev-util/anjuta:devhelp - Enable devhelp integration
 dev-util/anjuta:glade - Build glade plugin for anjuta
 dev-util/anjuta:packagekit - Use packagekit to search for missing tools
