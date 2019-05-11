@@ -17,7 +17,7 @@ SRC_URI="mirror://sourceforge/${PN}/${MY_PN}-src-${PV}.tgz https://dev.gentoo.or
 LICENSE="GPL-2+"
 IUSE="X static-libs"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~sparc ~x86"
+KEYWORDS="amd64 ppc ~sparc x86"
 
 RDEPEND="media-libs/libpng
 	media-libs/tiff
