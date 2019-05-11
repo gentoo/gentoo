@@ -30,6 +30,11 @@
 #--- END OF EXAMPLES ---
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (11 May 2019)
+# Build failures, other QA issues, EAPI=2. See bug 681046
+# Removal in 30 days.
+dev-embedded/tavrasm
+
+# Andreas K. Hüttel <dilfridge@gentoo.org> (11 May 2019)
 # Outdated, EAPI=2, unmaintained, segfaults immediately.
 # See bug 634928 and bug 612980. Removal in 30 days.
 app-accessibility/festival
