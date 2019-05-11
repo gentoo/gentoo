@@ -1,4 +1,4 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
@@ -6,7 +6,7 @@ EAPI=4
 inherit toolchain-funcs
 
 MY_PN="${PN/asfr/ASFR}"
-DESCRIPTION="ASFRecorder - Download Windows Media Streaming files"
+DESCRIPTION="Linux WindowsMedia streaming client"
 HOMEPAGE="https://sourceforge.net/projects/asfrecorder/"
 SRC_URI="mirror://sourceforge/${PN}/${MY_PN}.zip"
 
