@@ -26,10 +26,10 @@ RDEPEND="
 	>=dev-python/attrs-17.4.0[${PYTHON_USEDEP}]
 	>=dev-python/more-itertools-4.0.0[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep 'dev-python/pathlib2[${PYTHON_USEDEP}]' python2_7 python3_5 )
-	>=dev-python/pluggy-0.9[${PYTHON_USEDEP}]
+	>=dev-python/pluggy-0.11[${PYTHON_USEDEP}]
 	>=dev-python/py-${PY_VER}[${PYTHON_USEDEP}]
 	>=dev-python/setuptools-40[${PYTHON_USEDEP}]
-	>=dev-python/six-1.10.0[${PYTHON_USEDEP}]
+	dev-python/six[${PYTHON_USEDEP}]
 	virtual/python-funcsigs[${PYTHON_USEDEP}]"
 
 # flake & pytest-capturelog cause a number of tests to fail

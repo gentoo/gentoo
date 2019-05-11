@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 PYTHON_COMPAT=( python3_{5,6,7} )
 
@@ -22,7 +22,7 @@ fi
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 ppc ppc64 x86"
+KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86"
 IUSE="audio +devinput doc ftdi gtk inputlirc static-libs systemd +uinput usb X"
 
 REQUIRED_USE="
@@ -38,7 +38,7 @@ COMMON_DEPEND="
 		>media-libs/portaudio-18
 		media-libs/alsa-lib
 	)
-	<dev-python/pyyaml-5[${PYTHON_USEDEP}]
+	dev-python/pyyaml[${PYTHON_USEDEP}]
 	ftdi? ( dev-embedded/libftdi:0 )
 	systemd? ( sys-apps/systemd )
 	usb? ( virtual/libusb:0 )
@@ -66,6 +66,10 @@ RDEPEND="
 	)
 	inputlirc? ( app-misc/inputlircd )
 "
+
+PATCHES=(
+	"${FILESDIR}/${P}-unsafe-load.patch"
+)
 
 MAKEOPTS+=" -j1"
 
