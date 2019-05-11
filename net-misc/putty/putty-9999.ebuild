@@ -42,7 +42,6 @@ src_prepare() {
 	default
 
 	sed -i \
-		-e '/AM_PATH_GTK(/d' \
 		-e 's|-Werror||g' \
 		configure.ac || die
 
