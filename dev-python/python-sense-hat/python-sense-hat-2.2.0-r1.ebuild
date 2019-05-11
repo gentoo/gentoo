@@ -13,7 +13,7 @@ SRC_URI="https://github.com/RPi-Distro/python-sense-hat/archive/v${PV}.tar.gz ->
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64"
+KEYWORDS="amd64 arm arm64"
 
 RDEPEND="
 	dev-python/numpy[${PYTHON_USEDEP}]
