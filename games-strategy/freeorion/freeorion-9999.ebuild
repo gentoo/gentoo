@@ -7,43 +7,51 @@ PYTHON_COMPAT=( python2_7 )
 inherit cmake-utils python-single-r1 xdg
 
 DESCRIPTION="A free turn-based space empire and galactic conquest game"
-HOMEPAGE="http://www.freeorion.org"
+HOMEPAGE="https://www.freeorion.org"
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/freeorion/freeorion.git"
 else
-	MY_PV="${PV/_/-}"
-	SRC_URI="https://github.com/${PN}/${PN}/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64"
-	S="${WORKDIR}/${PN}-${MY_PV}"
+	if [[ ${PV} = *_p* ]]; then
+		COMMIT="2a49c05796f1c92b96ce9b2aeaf0124fc8be7a77"
+		SRC_URI="https://github.com/${PN}/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
+		S="${WORKDIR}/${PN}-${COMMIT}"
+	else
+		SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV/_/-}.tar.gz -> ${P}.tar.gz"
+		S="${WORKDIR}/${PN}-${PV/_/-}"
+	fi
 fi
 
 LICENSE="GPL-2 LGPL-2.1 CC-BY-SA-3.0"
 SLOT="0"
-IUSE=""
+IUSE="dedicated"
 
-RDEPEND="
-	>=dev-libs/boost-1.56:=[python,threads,${PYTHON_USEDEP}]
-	media-libs/freealut
-	media-libs/freetype
-	media-libs/glew:=
-	media-libs/libsdl2
-	>=media-libs/libogg-1.1.3
-	media-libs/libpng:0
-	media-libs/libsdl2[X,opengl,video]
-	>=media-libs/libvorbis-1.1.2
-	media-libs/openal
-	sci-physics/bullet
-	sys-libs/zlib
-	virtual/opengl
-	!dev-games/gigi"
-	# Use bundled gigi as of freeorion-0.4.3
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-DEPEND="${RDEPEND}"
 BDEPEND="
+	virtual/pkgconfig
+"
+RDEPEND="
+	>=dev-libs/boost-1.58:=[python,threads,${PYTHON_USEDEP}]
+	!dedicated? (
+		media-libs/freealut
+		>=media-libs/freetype-2.5.5
+		media-libs/glew:=
+		>=media-libs/libogg-1.1.3
+		media-libs/libpng:0=
+		media-libs/libsdl2[X,opengl,video]
+		>=media-libs/libvorbis-1.1.2
+		media-libs/openal
+		sci-physics/bullet
+		virtual/opengl
+	)
+	sys-libs/zlib
+"
+DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
-	virtual/pkgconfig"
+"
 
 pkg_setup() {
 	# build system is using FindPythonLibs.cmake which needs python:2
@@ -60,28 +68,14 @@ src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_BUILD_TYPE=Release
 		-DCMAKE_SKIP_RPATH=ON
+		-DBUILD_HEADLESS="$(usex dedicated)"
 	)
-
-	#append-cppflags -DBOOST_OPTIONAL_CONFIG_USE_OLD_IMPLEMENTATION_OF_OPTIONAL
 
 	cmake-utils_src_configure
 }
 
 src_install() {
 	cmake-utils_src_install
-	dodoc ChangeLog.md
 
 	newenvd "${FILESDIR}/${PN}.envd" 99${PN}
-}
-
-pkg_preinst() {
-	xdg_pkg_preinst
-}
-
-pkg_postinst() {
-	xdg_pkg_postinst
-}
-
-pkg_postrm() {
-	xdg_pkg_postrm
 }
