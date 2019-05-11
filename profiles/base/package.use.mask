@@ -7,6 +7,12 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Andreas K. Hüttel <dilfridge@gentoo.org> (11 May 2019)
+# app-accessibility/festival:
+# Outdated, EAPI=2, unmaintained, segfaults immediately.
+# See bug 634928 and bug 612980. Removal in 30 days.
+media-radio/xastir festival
+
 # Virgil Dupras <vdupras@gentoo.org> (29 Apr 2019)
 # Docs are temporarily broken. See bug #680014
 dev-python/pandas doc
