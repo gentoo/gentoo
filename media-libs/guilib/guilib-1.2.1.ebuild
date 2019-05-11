@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
@@ -6,9 +6,9 @@ inherit autotools
 
 MY_P=GUIlib-${PV}
 
-DESCRIPTION="a simple widget set for SDL"
-SRC_URI="http://www.libsdl.org/projects/GUIlib/src/${MY_P}.tar.gz"
-HOMEPAGE="http://www.libsdl.org/projects/GUIlib/"
+DESCRIPTION="Simple widget set for SDL"
+SRC_URI="https://www.libsdl.org/projects/GUIlib/src/${MY_P}.tar.gz"
+HOMEPAGE="https://www.libsdl.org/projects/GUIlib/"
 
 LICENSE="public-domain"
 SLOT="0"
