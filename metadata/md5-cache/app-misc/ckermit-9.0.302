@@ -9,5 +9,5 @@ LICENSE=Kermit
 RDEPEND=ncurses? ( >=sys-libs/ncurses-5.2:= ) net-dialup/lrzsz
 SLOT=0
 SRC_URI=ftp://kermit.columbia.edu/kermit/archives/cku302.tar.gz
-_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	a09389deba2c0a7108b581e02c7cecbf	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
+_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	a09389deba2c0a7108b581e02c7cecbf	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
 _md5_=9eba783821267029370c9018d9676b47

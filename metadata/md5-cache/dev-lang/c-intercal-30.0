@@ -9,5 +9,5 @@ LICENSE=GPL-2+ FDL-1.2+
 RDEPEND=emacs? ( virtual/emacs )
 SLOT=0
 SRC_URI=http://www.catb.org/~esr/intercal/intercal-0.30.tar.gz
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	elisp-common	23f47b2e1de7abf387105eddd1318738	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	elisp-common	23f47b2e1de7abf387105eddd1318738	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
 _md5_=07bf1a0dadb5ba8f9b8221631a46e939

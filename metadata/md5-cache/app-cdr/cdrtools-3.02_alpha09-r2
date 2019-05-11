@@ -10,5 +10,5 @@ LICENSE=GPL-2 LGPL-2.1 CDDL-Schily
 RDEPEND=acl? ( virtual/acl ) caps? ( sys-libs/libcap ) nls? ( virtual/libintl ) !app-cdr/cdrkit selinux? ( sec-policy/selinux-cdrecord )
 SLOT=0
 SRC_URI=mirror://sourceforge/cdrtools/alpha/cdrtools-3.02a09.tar.bz2
-_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	fcaps	9445d60c1eb084a91c38ef4c070b2f16	flag-o-matic	a09389deba2c0a7108b581e02c7cecbf	gnuconfig	b8ec1c34be4ff9dac7ad4034d277936b	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
+_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	fcaps	9445d60c1eb084a91c38ef4c070b2f16	flag-o-matic	a09389deba2c0a7108b581e02c7cecbf	gnuconfig	b8ec1c34be4ff9dac7ad4034d277936b	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
 _md5_=0abf259d3367854a0d44263d96f3b6e9

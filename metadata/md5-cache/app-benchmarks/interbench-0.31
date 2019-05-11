@@ -6,5 +6,5 @@ KEYWORDS=amd64 ~x86
 LICENSE=GPL-2+
 SLOT=0
 SRC_URI=https://github.com/ckolivas/interbench/archive/v0.31.tar.gz -> interbench-0.31.tar.gz
-_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
+_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
 _md5_=b567c10883d6d5780f1491c3a1598d65

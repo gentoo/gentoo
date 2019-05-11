@@ -8,5 +8,5 @@ LICENSE=MIT
 RDEPEND=net-libs/nodejs
 SLOT=0
 SRC_URI=https://github.com/jashkenas/coffeescript/archive/1.9.3.tar.gz -> coffee-script-1.9.3.tar.gz
-_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
+_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
 _md5_=45c527a45b1070acb0d79bc6a440c925

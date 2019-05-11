@@ -9,5 +9,5 @@ LICENSE=MIT
 RDEPEND=luajit? ( dev-lang/luajit:2 ) !luajit? ( >=dev-lang/lua-5.1:0 ) dev-libs/openssl:0[-bindist] !dev-lua/lua-openssl
 SLOT=0
 SRC_URI=https://github.com/wahern/luaossl/archive/rel-20180708.tar.gz -> luaossl-rel-20180708.tar.gz
-_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
+_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
 _md5_=1d43a1618e5e7e4fe0f1e7e38a6dbcd1

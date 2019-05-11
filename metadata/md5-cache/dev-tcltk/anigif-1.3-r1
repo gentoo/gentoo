@@ -8,5 +8,5 @@ LICENSE=tcltk
 RDEPEND=dev-lang/tcl:0
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~jlec/distfiles/anigif-1.3.zip
-_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
+_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
 _md5_=085ef2b3c509381f31d36a296957e283

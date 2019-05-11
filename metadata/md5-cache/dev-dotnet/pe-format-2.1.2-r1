@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=!<sys-apps/openrc-0.9.4
 SLOT=0
 SRC_URI=https://www.bitbucket.org/mgorny/pe-format2/downloads/pe-format-2.1.2.tar.bz2
-_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	b45201c4e6c096b98e250336954e64b9	xdg-utils	14d00d009167652b1fa363e55effe213
+_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529	xdg-utils	14d00d009167652b1fa363e55effe213
 _md5_=5dfb65489415b2c03d68e5f56a2e4baa

@@ -7,5 +7,5 @@ LICENSE=GPL-2
 RDEPEND=sys-apps/util-linux
 SLOT=0
 SRC_URI=https://github.com/OpenAoE/vblade/archive/vblade-24.tar.gz
-_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
+_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
 _md5_=fe211b5fd3b3266d0b8c75ddddee83c7

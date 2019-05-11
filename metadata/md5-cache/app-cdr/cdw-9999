@@ -7,5 +7,5 @@ HOMEPAGE=http://cdw.sourceforge.net
 LICENSE=GPL-2+
 RDEPEND=app-cdr/dvd+rw-tools dev-libs/libburn dev-libs/libcdio:=[-minimal] sys-libs/ncurses:0=[unicode] virtual/cdrtools
 SLOT=0
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	cvs	c57fc648b829862b38ad2a8b8c1c02e8	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	cvs	c57fc648b829862b38ad2a8b8c1c02e8	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
 _md5_=8933f1ae479eab8f99878a3bc9a7ece4

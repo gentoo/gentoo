@@ -8,5 +8,5 @@ IUSE=libressl
 LICENSE=MIT
 RDEPEND=>=dev-lang/lua-5.1:0[deprecated] dev-lua/luasocket !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:= )
 SLOT=0
-_eclasses_=git-r3	0d4635eeb5a96cd5315597a47eba25c9	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
+_eclasses_=git-r3	0d4635eeb5a96cd5315597a47eba25c9	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
 _md5_=8fbad171cce7f1631a40fb3896b36523

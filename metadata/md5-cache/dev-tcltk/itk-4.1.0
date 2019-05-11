@@ -10,5 +10,5 @@ LICENSE=BSD
 RDEPEND=>=dev-lang/tk-8.6:= =dev-tcltk/itcl-4.1*
 SLOT=0
 SRC_URI=mirror://sourceforge/project/incrtcl/%5Bincr%20Tcl_Tk%5D-4-source/itk%204.1.0/itk4.1.0.tar.gz
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	b45201c4e6c096b98e250336954e64b9	virtualx	401b718cc14d43a5a7fbe062c4851ba5
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529	virtualx	401b718cc14d43a5a7fbe062c4851ba5
 _md5_=a7b17e3fb2777315e93344e86a059c22

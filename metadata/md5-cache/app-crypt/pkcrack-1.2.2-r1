@@ -9,5 +9,5 @@ LICENSE=pkcrack
 RDEPEND=!<app-text/html-xml-utils-5.3
 SLOT=0
 SRC_URI=https://www.unix-ag.uni-kl.de/~conrad/krypto/pkcrack/pkcrack-1.2.2.tar.gz
-_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
+_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
 _md5_=0253bc98a0118aedad25e3c63d3aa6a0

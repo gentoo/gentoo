@@ -9,5 +9,5 @@ LICENSE=BSD
 RDEPEND=virtual/pam sys-auth/libyubikey >=sys-auth/ykclient-2.15 >=sys-auth/ykpers-1.6 ldap? ( net-nds/openldap )
 SLOT=0
 SRC_URI=http://opensource.yubico.com/yubico-pam/releases/pam_yubico-2.26.tar.gz
-_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	b45201c4e6c096b98e250336954e64b9
+_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
 _md5_=7b3d82e31e15c24db09459f140b418b2
