@@ -12,7 +12,7 @@ SRC_URI="https://github.com/JuliaStrings/utf8proc/archive/v${PV}.tar.gz -> ${P}.
 
 LICENSE="MIT"
 SLOT="0/${PV}"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="test"
 
 S="${WORKDIR}/${MY_P}"
@@ -27,7 +27,7 @@ PATCHES=(
 )
 
 _emake() {
-	emake CC=$(tc-getCC) AR=$(tc-getAR) $@
+	emake CC=$(tc-getCC) AR=$(tc-getAR) "$@"
 }
 
 src_compile() {
