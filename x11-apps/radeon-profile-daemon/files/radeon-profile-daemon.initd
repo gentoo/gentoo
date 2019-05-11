@@ -15,7 +15,7 @@ wait_for_socket() {
 	while [ ${i} -lt 10 ]; do
 		[ -S "${radeon_socket}" ] && return 0
 		i=$((${i}+1))
-		sleep 1s
+		sleep 1
 	done
 
 	return 1
