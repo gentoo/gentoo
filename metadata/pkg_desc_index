@@ -7467,7 +7467,7 @@ media-gfx/peps 2.0-r1: Preprocess and convert EPS files to bitmap with Ghostscri
 media-gfx/photopc 3.07: Utility to control digital cameras based on Sierra Imaging firmware
 media-gfx/photoqt 1.7.1-r1: Simple but powerful Qt-based image viewer
 media-gfx/pinta 1.6-r2: Simple Painting for Gtk
-media-gfx/pixie 2.2.6-r1: RenderMan like photorealistic renderer
+media-gfx/pixie 2.2.6-r2: RenderMan like photorealistic renderer
 media-gfx/plantuml 8046: Draw UML diagrams using a simple and human readable text description
 media-gfx/pngcheck 2.3.0: Verifies the integrity of PNG, JNG and MNG files with internal checksums
 media-gfx/pngcrush 1.8.13: Portable Network Graphics (PNG) optimizing utility
