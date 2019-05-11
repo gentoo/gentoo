@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/project/mozart-oz/v1/1.4.0-2008-07-02-tar/${MY_P}.
 LICENSE="Mozart"
 
 SLOT="0"
-KEYWORDS="-amd64 ~ppc -ppc64 ~x86"
+KEYWORDS="-amd64 ppc -ppc64 x86"
 
 DEPEND="dev-lang/mozart"
 RDEPEND="${DEPEND}"
