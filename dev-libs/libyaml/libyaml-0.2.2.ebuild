@@ -32,13 +32,13 @@ src_configure() {
 	econf $(use_enable static-libs static)
 }
 
+src_compile() {
+	emake
+	use doc && emake html
+}
+
 src_install() {
 	use doc && HTML_DOCS=( doc/html/. )
 	default
-
 	find "${D}" -name '*.la' -delete || die
-
-	docinto examples
-	dodoc tests/example-*.c
-	docompress -x /usr/share/doc/${PF}/examples
 }
