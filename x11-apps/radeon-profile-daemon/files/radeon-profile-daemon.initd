@@ -8,6 +8,20 @@ command="/usr/sbin/radeon-profile-daemon"
 command_background="true"
 pidfile="/run/${SVCNAME}.pid"
 
+radeon_socket="/tmp/radeon-profile-daemon-server"
+
+wait_for_socket() {
+	local i=0
+	while [ ${i} -lt 10 ]; do
+		[ -S "${radeon_socket}" ] && return 0
+		i=$((${i}+1))
+		sleep 1
+	done
+
+	return 1
+}
+
 start_post() {
-	chgrp video /tmp/radeon-profile-daemon-server
+	wait_for_socket || return 1
+	chgrp video ${radeon_socket}
 }
