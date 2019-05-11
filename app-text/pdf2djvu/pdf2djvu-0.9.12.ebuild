@@ -40,7 +40,7 @@ DOCS=(
 )
 
 PATCHES=(
-	"${FILESDIR}"/${P}-poppler-0.76-{1,2}.patch
+	"${FILESDIR}"/${P}-poppler-0.76-{1,2,3}.patch
 )
 
 pkg_setup() {
