@@ -20,7 +20,7 @@ This variant of the Wine packaging does not include external patchsets
 		<flag name="capi">Enable ISDN support via CAPI</flag>
 		<flag name="custom-cflags">Bypass strip-flags; use at your own peril</flag>
 		<flag name="dos">Pull in <pkg>games-emulation/dosbox</pkg> to run DOS applications</flag>
-                <flag name="faudio">Pull in <pkg>app-emulation/faudio</pkg> to provide XAudio2 functionality</flag>
+		<flag name="faudio">Pull in <pkg>app-emulation/faudio</pkg> to provide XAudio2 functionality</flag>
 		<flag name="gecko">Add support for the Gecko engine when using iexplore</flag>
 		<flag name="gssapi">Use GSSAPI (Kerberos SSP support)</flag>
 		<flag name="gstreamer">Use <pkg>media-libs/gstreamer</pkg> to provide DirectShow functionality;</flag>
