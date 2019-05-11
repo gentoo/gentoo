@@ -5089,7 +5089,7 @@ dev-python/logutils 0.3.3: The logutils package provides a set of handlers for t
 dev-python/louie 1.1-r1: Signal dispatching mechanism for Python
 dev-python/lupy 0.2.1-r2: Lupy is a is a full-text indexer and search engine written in Python
 dev-python/lxc-python2 0.1: Python bindings for LXC
-dev-python/lxml 4.2.5: A Pythonic binding for the libxml2 and libxslt libraries
+dev-python/lxml 4.2.5 4.3.3: A Pythonic binding for the libxml2 and libxslt libraries
 dev-python/lz4 0.8.2: LZ4 Bindings for Python
 dev-python/m2crypto 0.24.0 0.31.0-r2: A Python crypto and SSL toolkit
 dev-python/m2secret 0.1.1-r1: Encryption and decryption module and CLI utility
@@ -5135,7 +5135,7 @@ dev-python/mpmath 1.0.0: Python library for arbitrary-precision floating-point a
 dev-python/msgpack 0.4.8 0.5.1 0.6.1: MessagePack (de)serializer for Python
 dev-python/multidict 4.1.0: multidict implementation
 dev-python/multipledispatch 0.4.9: RESTful HTTP Content Negotiation for Flask, Bottle, web.py and webapp2
-dev-python/munch 2.2.0: A dot-accessible dictionary (a la JavaScript objects)
+dev-python/munch 2.2.0 2.3.2: A dot-accessible dictionary (a la JavaScript objects)
 dev-python/mygpoclient 1.7-r1 1.8: A gpodder.net client library
 dev-python/mysql-python 1.2.3-r1 1.2.5-r1: Python interface to MySQL
 dev-python/mysqlclient 1.3.14 1.4.2-r2: Fork of MySQL-python
@@ -5176,7 +5176,7 @@ dev-python/numpy 1.9.2 1.10.4 1.14.5: Fast array and numerical python library
 dev-python/numpydoc 0.6.0: Sphinx extension to support docstrings in Numpy format
 dev-python/oauth 1.0.1-r1: Python OAuth module
 dev-python/oauth2 1.9.0_p1-r1: Library for OAuth version 1.0
-dev-python/oauth2client 2.0.1 4.1.2: Library for accessing resources protected by OAuth 2.0
+dev-python/oauth2client 2.0.1 4.1.2 4.1.3: Library for accessing resources protected by OAuth 2.0
 dev-python/oauthlib 2.0.2 2.0.6 3.0.1: Spec-compliant and thorough implementation of the OAuth request-signing logic
 dev-python/oct2py 3.6.0: Python to GNU Octave bridge
 dev-python/odfpy 1.3.6: Python API and tools to manipulate OpenDocument files
@@ -5185,18 +5185,18 @@ dev-python/olefile 0.44 0.46: Python package to parse, read and write Microsoft 
 dev-python/openpyxl 2.4.11 2.6.1: Pure python reader and writer of Excel OpenXML files
 dev-python/openstack-nose-plugin 0.11-r2: openstack run_tests.py style output for nosetests
 dev-python/openstackdocstheme 1.16.1 1.18.1: Theme and extension support for Sphinx documentation
-dev-python/openstacksdk 0.9.17 0.11.3 0.17.2: A collection of libraries for building applications to work with OpenStack.
+dev-python/openstacksdk 0.9.17 0.11.3 0.17.2 0.27.0: A collection of libraries for building applications to work with OpenStack.
 dev-python/optcomplete 1.2-r1: Shell completion self-generator for Python
 dev-python/ordereddict 1.1: A drop-in substitute for Py2.7's new collections.OrderedDict that works in Python 2.4-2.6.
 dev-python/os-brick 2.5.5 2.8.1: OpenStack Cinder brick library for managing local volume attaches
-dev-python/os-client-config 1.29.0: OpenStack Client Configuation Library
+dev-python/os-client-config 1.29.0 1.32.0: OpenStack Client Configuation Library
 dev-python/os-service-types 1.3.0: A library to handle official service types for OpenStack and it's aliases.
 dev-python/os-testr 1.0.0: A testr wrapper to provide functionality for OpenStack projects
 dev-python/os-traits 0.5.0: os-traits is a library containing standardized trait strings.
 dev-python/os-vif 1.9.1: OpenStack Cinder brick library for managing local volume attaches
 dev-python/os-win 3.0.1 4.2.0: Windows / Hyper-V library for OpenStack projects.
 dev-python/os-xenapi 0.3.3: XenAPI library for OpenStack projects
-dev-python/osc-lib 1.7.0 1.9.0 1.11.1: A package of common support modules for writing OSC plugins.
+dev-python/osc-lib 1.7.0 1.9.0 1.11.1 1.12.1: A package of common support modules for writing OSC plugins.
 dev-python/osc-placement 1.3.0: OpenStackClient plugin for the Placement service
 dev-python/oslo-cache 1.30.3-r1 1.33.2-r1: Oslo Caching around dogpile.cache
 dev-python/oslo-concurrency 3.27.0 3.29.1: library for running multi-thread, multi-process applications
@@ -5209,14 +5209,14 @@ dev-python/oslo-messaging 8.1.2 9.5.0: Messaging API for RPC and notifications o
 dev-python/oslo-middleware 3.34.0 3.37.1: Components injected into wsgi pipelines to intercept request/response flows.
 dev-python/oslo-policy 1.38.1 2.1.1: Support for RBAC policy enforcement across all OpenStack services
 dev-python/oslo-privsep 1.29.2 1.32.1: OpenStack library for privilege separation.
-dev-python/oslo-reports 1.26.0: generified reports for openstack
+dev-python/oslo-reports 1.26.0 1.29.2: generified reports for openstack
 dev-python/oslo-rootwrap 5.13.0 5.15.2: Allows fine filtering of shell commands to run as root from OpenStack services
 dev-python/oslo-serialization 2.24.0-r1 2.28.2: Oslo Serialization library
 dev-python/oslo-service 1.31.8 1.38.0: Library for running OpenStack services
 dev-python/oslo-sphinx 4.18.0: OpenStack Sphinx Extensions and Theme
 dev-python/oslo-upgradecheck 0.2.1: Oslo i18n library
 dev-python/oslo-utils 3.36.4 3.40.3: Oslo Utility library
-dev-python/oslo-versionedobjects 1.33.3: A library that provides a generic versioned and RPC-friendly object model.
+dev-python/oslo-versionedobjects 1.33.3 1.35.1: A library that provides a generic versioned and RPC-friendly object model.
 dev-python/oslo-vmware 2.26.0 2.32.2: Oslo VMware library for OpenStack projects
 dev-python/oslotest 3.2.0 3.7.1: Oslo test framework
 dev-python/osprofiler 1.11.0 1.15.2 2.6.0: OpenStack Profiler Library
@@ -5283,7 +5283,7 @@ dev-python/progressbar 2.3-r3: Text progressbar library for python
 dev-python/prometheus_client 0.5.0 0.6.0: Python client for the Prometheus monitoring system
 dev-python/prompt_toolkit 1.0.15: Building powerful interactive command lines in Python
 dev-python/protobuf-python 3.6.1.3: Google's Protocol Buffers - Python bindings
-dev-python/psutil 5.4.1 5.4.3 5.5.0: Retrieve information on running processes and system utilization
+dev-python/psutil 5.4.1 5.4.3 5.5.0 5.6.0: Retrieve information on running processes and system utilization
 dev-python/psycopg 2.7.4 2.7.7: PostgreSQL database adapter for Python
 dev-python/ptpython 0.33 0.33-r1: Python REPL build on top of prompt_toolkit
 dev-python/ptyprocess 0.5.1: Run a subprocess in a pseudo terminal
@@ -5391,7 +5391,7 @@ dev-python/pyopenssl 17.5.0 19.0.0: Python interface to the OpenSSL library
 dev-python/pyorbit 2.24.0-r1: ORBit2 bindings for Python
 dev-python/pyosd 0.2.14-r1: Python module for displaying text on your X display, like the 'On Screen Displays' used on TVs
 dev-python/pypam 0.5.0-r3: Python Bindings for PAM (Pluggable Authentication Modules)
-dev-python/pyparsing 2.2.0: Easy-to-use Python module for text parsing
+dev-python/pyparsing 2.2.0 2.3.1: Easy-to-use Python module for text parsing
 dev-python/pyparted 3.10.7: Python bindings for sys-block/parted
 dev-python/pypax 0.9.2 0.9.3 0.9.4 0.9.5: Python module to get or set either PT_PAX and/or XATTR_PAX flags
 dev-python/pyperclip 1.5.27: A cross-platform clipboard module for Python.
@@ -5446,7 +5446,7 @@ dev-python/pytest-xprocess 0.12.1: Manage external processes across test runs
 dev-python/python-augeas 0.5.0: Python bindings for Augeas
 dev-python/python-axolotl 0.1.42-r1: A python module for the axolotl protocol
 dev-python/python-axolotl-curve25519 0.4.1_p2-r1: A python wrapper for the curve25519 library with ed25519 signatures
-dev-python/python-barbicanclient 4.5.2 4.6.0: Client library for Barbican API.
+dev-python/python-barbicanclient 4.5.2 4.6.0 4.8.1: Client library for Barbican API.
 dev-python/python-bibtex 1.2.7-r1: A Python extension to parse BibTeX files
 dev-python/python-biggles 1.6.6-r1: A Python module for creating publication-quality 2D scientific plots
 dev-python/python-blazarclient 2.0.0: This is a client for the OpenStack Blazar API
@@ -5490,11 +5490,11 @@ dev-python/python-mpd 0.5.5: Python MPD client library
 dev-python/python-musicbrainz 0.7.4-r1: Python Bindings for the MusicBrainz XML Web Service
 dev-python/python-musicbrainz-ngs 0.6: Python bindings for the MusicBrainz NGS and the Cover Art Archive webservices
 dev-python/python-nbxmpp 0.5.6 0.6.6: Python library to use Jabber/XMPP networks in a non-blocking way
-dev-python/python-neutronclient 6.9.0: A client for the OpenStack Quantum API
-dev-python/python-novaclient 7.1.2 9.1.2 11.0.0: A client for the OpenStack Nova API
+dev-python/python-neutronclient 6.9.0 6.12.0: A client for the OpenStack Quantum API
+dev-python/python-novaclient 7.1.2 9.1.2 11.0.0 13.0.0: A client for the OpenStack Nova API
 dev-python/python-octaviaclient 1.4.0: A client for the OpenStack Zun API
 dev-python/python-openid 2.2.5-r1: OpenID support for servers and consumers
-dev-python/python-openstackclient 3.14.3 3.16.2: A client for the OpenStack APIs
+dev-python/python-openstackclient 3.14.3 3.16.2 3.18.0: A client for the OpenStack APIs
 dev-python/python-poppler 0.12.1-r4: Python bindings to the Poppler PDF library
 dev-python/python-poppler-qt5 0.24.2_p20170214: A python binding for libpoppler-qt5
 dev-python/python-ptrace 0.8.1-r1: A debugger using ptrace (Linux, BSD and Darwin system call to trace processes)
@@ -5573,7 +5573,7 @@ dev-python/rsa 3.2.3-r1: Pure-Python RSA implementation
 dev-python/rst-linker 1.7 1.9-r1: Sphinx plugin to add links and timestamps to the changelog
 dev-python/rst2pdf 0.93-r3: Tool for transforming reStructuredText to PDF using ReportLab
 dev-python/rtimulib 7.2.1-r1: Python Binding for RTIMULib, a versatile IMU library
-dev-python/rtslib-fb 2.1.62 2.1.66 2.1.66-r1: A Python object API for managing the Linux LIO kernel target
+dev-python/rtslib-fb 2.1.62 2.1.66 2.1.66-r1 2.1.69: A Python object API for managing the Linux LIO kernel target
 dev-python/ruamel-std-pathlib 0.6.3: Ruamel enhancements to pathlib and pathlib2
 dev-python/ruamel-yaml 0.15.35: YAML parser/emitter that supports roundtrip comment preservation
 dev-python/ryu 4.14 4.21 4.26: Component-based Software-defined Networking Framework
@@ -10075,7 +10075,7 @@ sys-boot/syslinux 3.86 4.07 5.10 6.04_pre1: SYSLINUX, PXELINUX, ISOLINUX, EXTLIN
 sys-boot/unetbootin 661: UNetbootin installs Linux/BSD distributions to a partition or USB drive
 sys-boot/woeusb 3.1.5 3.2.12: Creates windows installer on usb media from an iso image
 sys-cluster/ceph 12.2.8-r1 12.2.11: Ceph distributed filesystem
-sys-cluster/cinder 13.0.4: Cinder is the OpenStack Block storage service, a spin out of nova-volumes
+sys-cluster/cinder 13.0.4 14.0.0: Cinder is the OpenStack Block storage service, a spin out of nova-volumes
 sys-cluster/cluster-glue 1.0.11 1.0.12: Library pack for Heartbeat / Pacemaker
 sys-cluster/cman-lib 2.03.09-r1: A library for cluster management common to the various pieces of Cluster Suite
 sys-cluster/corosync 1.4.7 2.3.5: OSI Certified implementation of a complete cluster engine
