@@ -37,7 +37,7 @@ IUSE="a52 alsa altivec aom archive aribsub bidi bluray cddb chromaprint chromeca
 	neon nfs ogg omxil opencv optimisememory opus png postproc projectm pulseaudio +qt5
 	rdp run-as-root samba sdl-image sftp shout sid skins soxr speex srt ssl
 	svg taglib theora tremor truetype twolame udev upnp vaapi v4l vdpau vnc vorbis vpx
-	wayland wma-fixed +X x264 x265 xml zeroconf zvbi cpu_flags_x86_mmx cpu_flags_x86_sse
+	wayland +X x264 x265 xml zeroconf zvbi cpu_flags_x86_mmx cpu_flags_x86_sse
 "
 REQUIRED_USE="
 	chromecast? ( encode )
@@ -385,7 +385,6 @@ src_configure() {
 		$(use_enable vorbis)
 		$(use_enable vpx)
 		$(use_enable wayland)
-		$(use_enable wma-fixed)
 		$(use_with X x)
 		$(use_enable X xcb)
 		$(use_enable X xvideo)
@@ -420,6 +419,7 @@ src_configure() {
 		--disable-spatialaudio
 		--disable-vsxu
 		--disable-wasapi
+		--disable-wma-fixed
 	)
 	# ^ We don't have these disabled libraries in the Portage tree yet.
 
