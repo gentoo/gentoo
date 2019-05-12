@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -97,7 +97,7 @@ RDEPEND="${DEPEND_COM}
 		ipmi? ( >=sys-libs/freeipmi-1.1.6-r1 )
 		java? (
 			>=virtual/jre-1.5
-			|| ( net-analyzer/netcat6 net-analyzer/netcat )
+			|| ( net-analyzer/netcat net-analyzer/openbsd-netcat )
 		)
 		!minimal? (
 			virtual/cron
