@@ -5253,6 +5253,7 @@ sys-apps/flashrom:gfxnvidia - Enable NVIDIA programmer
 sys-apps/flashrom:internal - Enable internal/onboard support
 sys-apps/flashrom:internal_dmi - Enable internal DMI decoding rather than use sys-apps/dmidecode
 sys-apps/flashrom:it8212 - Support for ITE IT8212F ATA/RAID controllers
+sys-apps/flashrom:jlink_spi - Support for SEGGER J-Link and compatible devices
 sys-apps/flashrom:linux_mtd - Enable support for Linux mtd SPI flash devices
 sys-apps/flashrom:linux_spi - Enable support for Linux userspace spidev interface
 sys-apps/flashrom:mstarddc_spi - Support for SPI flash ROMs accessible through DDC in MSTAR-equipped displays
