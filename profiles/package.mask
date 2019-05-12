@@ -30,6 +30,10 @@
 #--- END OF EXAMPLES ---
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (11 May 2019)
+# Perl 5.30 preparation block. DO NOT USE YET!
+=dev-lang/perl-5.30*
+
+# Andreas K. Hüttel <dilfridge@gentoo.org> (11 May 2019)
 # Perl 5.24 will be removed soon. Please upgrade.
 <dev-lang/perl-5.26.2
 =virtual/perl-Archive-Tar-2.40.100_rc-r6
