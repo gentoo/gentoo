@@ -9,7 +9,7 @@ inherit distutils-r1 eutils
 
 DESCRIPTION="Define and optimize multi-dimensional arrays mathematical expressions"
 HOMEPAGE="https://github.com/Theano/Theano"
-SRC_URI="mirror://pypi/theano/${PN^}/${PN^}-${PV}.tar.gz"
+SRC_URI="mirror://pypi/T/${PN^}/${PN^}-${PV}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
