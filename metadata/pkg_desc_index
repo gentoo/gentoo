@@ -10481,8 +10481,8 @@ virtual/perl-Compress-Raw-Zlib 2.74.0: Virtual for Compress-Raw-Zlib
 virtual/perl-DB_File 1.840.0-r1: Virtual for DB_File
 virtual/perl-Data-Dumper 2.167.0: Virtual for Data-Dumper
 virtual/perl-Devel-PPPort 3.350.0: Virtual for Devel-PPPort
-virtual/perl-Digest 1.170.100_rc-r7: Virtual for Digest
-virtual/perl-Digest-MD5 2.550.0: Virtual for Digest-MD5
+virtual/perl-Digest 1.170.100_rc-r8: Virtual for Digest
+virtual/perl-Digest-MD5 2.550.0-r1: Virtual for Digest-MD5
 virtual/perl-Digest-SHA 5.960.0: Virtual for Digest-SHA
 virtual/perl-Dumpvalue 1.180.0-r3: Virtual for Dumpvalue
 virtual/perl-Encode 2.880.0: Virtual for Encode
