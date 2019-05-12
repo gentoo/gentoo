@@ -8,4 +8,7 @@
 	<upstream>
 		<remote-id type="github">mate-desktop/mate-settings-daemon</remote-id>
 	</upstream>
+	<use>
+		<flag name="rfkill">build support for rfkill</flag>
+	</use>
 </pkgmetadata>
