@@ -181,7 +181,7 @@ app-arch/hardlink 0.2.0: A tool which replaces copies of a file with hardlinks
 app-arch/innoextract 1.7: A tool to unpack installers created by Inno Setup
 app-arch/lbzip2 2.3-r1 2.5 2.5-r1: Parallel bzip2 utility
 app-arch/lha 114i-r7: Utility for creating and opening lzh archives
-app-arch/libarchive 3.3.1: Multi-format archive and compression library
+app-arch/libarchive 3.3.1 3.3.3: Multi-format archive and compression library
 app-arch/libpar2 0.4: A library for par2, extracted from par2cmdline
 app-arch/lrzip 0.621: Long Range ZIP or Lzma RZIP optimized for compressing large files
 app-arch/lz4 1.8.3: Extremely Fast Compression algorithm
