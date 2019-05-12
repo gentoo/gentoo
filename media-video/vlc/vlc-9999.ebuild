@@ -33,7 +33,7 @@ IUSE="a52 alsa altivec aom archive aribsub bidi bluray cddb chromaprint chromeca
 	dav1d dbus dc1394 debug directx dts +dvbpsi dvd +encode faad fdk +ffmpeg flac
 	fluidsynth fontconfig +gcrypt gme gnome-keyring gstreamer ieee1394 jack jpeg kate kms
 	libass libav libcaca libnotify +libsamplerate libtar libtiger linsys lirc live lua
-	macosx-notifications macosx-qtkit mad matroska modplug mp3 mpeg mtp musepack ncurses
+	macosx-notifications mad matroska modplug mp3 mpeg mtp musepack ncurses
 	neon nfs ogg omxil opencv optimisememory opus png postproc projectm pulseaudio +qt5
 	rdp run-as-root samba sdl-image sftp shout sid skins soxr speex srt ssl
 	svg taglib theora tremor truetype twolame udev upnp vaapi v4l vdpau vnc vorbis vpx
@@ -186,7 +186,7 @@ RDEPEND="
 		>=media-libs/speex-1.2.0
 		media-libs/speexdsp
 	)
-	srt? ( net-libs/srt )
+	srt? ( >=net-libs/srt-1.3.0 )
 	ssl? ( net-libs/gnutls:= )
 	svg? (
 		gnome-base/librsvg:2
@@ -339,7 +339,6 @@ src_configure() {
 		$(use_enable live live555)
 		$(use_enable lua)
 		$(use_enable macosx-notifications osx-notifications)
-		$(use_enable macosx-qtkit)
 		$(use_enable mad)
 		$(use_enable matroska)
 		$(use_enable modplug mod)
