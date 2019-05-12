@@ -35,6 +35,11 @@
 ~virtual/perl-Archive-Tar-2.320.0
 ~virtual/perl-CPAN-2.220.0
 ~virtual/perl-Compress-Raw-Bzip2-2.84.0
+~virtual/perl-Compress-Raw-Zlib-2.84.0
+~virtual/perl-DB_File-1.843.0
+~virtual/perl-Data-Dumper-2.174.0
+~virtual/perl-Devel-PPPort-3.510.0
+~virtual/perl-Digest-SHA-6.20.0
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (11 May 2019)
 # Perl 5.24 will be removed soon. Please upgrade.
