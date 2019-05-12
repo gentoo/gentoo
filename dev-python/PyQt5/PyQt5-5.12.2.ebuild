@@ -22,10 +22,9 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 
 # TODO: QtNfc, QtRemoteObjects (Qt >= 5.12)
-IUSE="bluetooth dbus debug declarative designer examples gles2 gui help location
-	multimedia network networkauth opengl positioning printsupport sensors
-	serialport sql svg testlib webchannel webkit websockets widgets x11extras
-	xmlpatterns"
+IUSE="bluetooth dbus debug declarative designer examples gles2 gui help location multimedia
+	network networkauth opengl positioning printsupport sensors serialport sql +ssl svg
+	testlib webchannel webkit websockets widgets x11extras xmlpatterns"
 
 # The requirements below were extracted from configure.py
 # and from the output of 'grep -r "%Import " "${S}"/sip'
@@ -73,7 +72,7 @@ RDEPEND="
 	help? ( >=dev-qt/qthelp-${QT_PV} )
 	location? ( >=dev-qt/qtlocation-${QT_PV} )
 	multimedia? ( >=dev-qt/qtmultimedia-${QT_PV}[widgets?] )
-	network? ( >=dev-qt/qtnetwork-${QT_PV} )
+	network? ( >=dev-qt/qtnetwork-${QT_PV}[ssl=] )
 	networkauth? ( >=dev-qt/qtnetworkauth-${QT_PV} )
 	opengl? ( >=dev-qt/qtopengl-${QT_PV} )
 	positioning? ( >=dev-qt/qtpositioning-${QT_PV} )
@@ -128,7 +127,7 @@ src_configure() {
 			$(usex declarative '' --no-qml-plugin)
 			$(pyqt_use_enable designer)
 			$(usex designer '' --no-designer-plugin)
-			$(usex gles2 '--disable-feature PyQt_Desktop_OpenGL' '')
+			$(usex gles2 '--disable-feature=PyQt_Desktop_OpenGL' '')
 			$(pyqt_use_enable gui)
 			$(pyqt_use_enable gui $(use gles2 && echo _QOpenGLFunctions_ES2 || echo _QOpenGLFunctions_{2_0,2_1,4_1_Core}))
 			$(pyqt_use_enable help)
@@ -142,6 +141,7 @@ src_configure() {
 			$(pyqt_use_enable sensors)
 			$(pyqt_use_enable serialport QtSerialPort)
 			$(pyqt_use_enable sql)
+			$(usex ssl '' '--disable-feature=PyQt_SSL')
 			$(pyqt_use_enable svg)
 			$(pyqt_use_enable testlib QtTest)
 			$(pyqt_use_enable webchannel QtWebChannel)
