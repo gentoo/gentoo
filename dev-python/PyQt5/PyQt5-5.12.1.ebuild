@@ -128,7 +128,7 @@ src_configure() {
 			$(usex declarative '' --no-qml-plugin)
 			$(pyqt_use_enable designer)
 			$(usex designer '' --no-designer-plugin)
-			$(usex gles2 '--disable-feature PyQt_Desktop_OpenGL')
+			$(usex gles2 '--disable-feature PyQt_Desktop_OpenGL' '')
 			$(pyqt_use_enable gui)
 			$(pyqt_use_enable gui $(use gles2 && echo _QOpenGLFunctions_ES2 || echo _QOpenGLFunctions_{2_0,2_1,4_1_Core}))
 			$(pyqt_use_enable help)
