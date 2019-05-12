@@ -32,6 +32,9 @@
 # Andreas K. Hüttel <dilfridge@gentoo.org> (11 May 2019)
 # Perl 5.30 preparation block. DO NOT USE YET!
 =dev-lang/perl-5.30*
+~virtual/perl-Archive-Tar-2.320.0
+~virtual/perl-CPAN-2.220.0
+~virtual/perl-Compress-Raw-Bzip2-2.84.0
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (11 May 2019)
 # Perl 5.24 will be removed soon. Please upgrade.

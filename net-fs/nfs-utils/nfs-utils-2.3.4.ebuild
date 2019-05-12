@@ -28,13 +28,13 @@ RESTRICT="test" #315573
 # so don't depend on virtual/krb.
 # (04 Feb 2005 agriffis)
 DEPEND="
+	>=dev-db/sqlite-3.3
 	net-libs/libtirpc:=
 	>=net-nds/rpcbind-0.2.4
 	sys-libs/e2fsprogs-libs
 	caps? ( sys-libs/libcap )
 	ldap? ( net-nds/openldap )
 	libmount? ( sys-apps/util-linux )
-	nfsdcld? ( >=dev-db/sqlite-3.3 )
 	nfsv4? (
 		dev-libs/libevent:=
 		>=sys-apps/keyutils-1.5.9
