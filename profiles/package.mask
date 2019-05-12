@@ -447,24 +447,6 @@ dev-util/cucumber-expressions:5.0
 >=dev-util/boost-build-1.70.0
 >=net-mail/libpst-0.6.66-r2
 
-# Patrice Clement <monsieurp@gentoo.org> (14 Apr 2019)
-# Old, unmaintained and sometimes abandoned Java libraries/programs.
-# Removal in 30 days.
-dev-java/idm-console-framework
-dev-java/matrix-toolkits-java
-dev-java/sat4j-pseudo
-dev-java/sat4j-core
-dev-java/swarmcache
-dev-java/dbus-java
-dev-java/jinklevel
-dev-java/proguard
-dev-java/nailgun
-dev-java/jgroups
-dev-java/libmso
-dev-java/jicmp
-media-sound/jtagger
-app-admin/389-console
-
 # Michał Górny <mgorny@gentoo.org> (14 Apr 2019)
 # The ebuild violates EAPI and relies on STRIP_MASK.  The default
 # behavior makes it capable of executing arbitrary commands when running
@@ -555,15 +537,6 @@ dev-ruby/mysql2:0.3
 dev-ruby/sprockets-rails:2.3
 dev-ruby/uglifier:0
 dev-ruby/uglifier:3
-
-# Aaron Bauman <bman@gentoo.org> (12 Apr 2019)
-# Multiple security vulnerabilities
-# No revbumps in several years.
-# Removal in 30 days. Bug #675682
-dev-java/jackson-databind
-dev-java/jackson-dataformat-xml
-dev-java/jackson-dataformat-yaml
-dev-java/jackson-module-jaxb-annotations
 
 # Virgil Dupras <vdupras@gentoo.org> (12 Apr 2019)
 # Dead upstream, no revdeps.
