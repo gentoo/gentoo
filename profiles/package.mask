@@ -545,11 +545,6 @@ dev-ruby/sprockets-rails:2.3
 dev-ruby/uglifier:0
 dev-ruby/uglifier:3
 
-# Virgil Dupras <vdupras@gentoo.org> (12 Apr 2019)
-# Dead upstream, no revdeps.
-# Removal in 30 days. Bug #683146
-dev-python/readme
-
 # Robin H. Johnson <robbat2@gentoo.org> (25 Mar 2019)
 # Requires >=dev-lang/lua-5.3 which is masked
 sys-apps/likwid
