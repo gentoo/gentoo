@@ -1,13 +1,13 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=0
 
-DESCRIPTION="A command-line tool for mass tagging/renaming of audio files"
+DESCRIPTION="Command-line tool for mass tagging/renaming of audio files"
 HOMEPAGE="https://github.com/Daenyth/audiotag"
 SRC_URI="https://github.com/downloads/Daenyth/${PN}/${P}.tar.bz2"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 ~ppc ppc64 sparc x86"
 IUSE="aac flac mp3 vorbis"
