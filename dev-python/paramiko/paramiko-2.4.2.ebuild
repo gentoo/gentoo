@@ -28,22 +28,16 @@ RDEPEND="
 BDEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
-	test? (
-		dev-python/mock[${PYTHON_USEDEP}]
-		dev-python/pytest[${PYTHON_USEDEP}]
-		dev-python/pytest-relaxed[${PYTHON_USEDEP}]
-	)
 "
+
+# Depends on pytest-relaxed which is broken.
+RESTRICT="test"
 
 src_prepare() {
 	if ! use server; then
 		eapply "${FILESDIR}/${PN}-2.4.2-disable-server.patch"
 	fi
 	eapply_user
-}
-
-python_test() {
-	py.test -v || die "Tests fail with ${EPYTHON}"
 }
 
 python_compile_all() {
