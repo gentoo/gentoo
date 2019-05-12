@@ -12,7 +12,7 @@ HOMEPAGE="http://www.jivesoftware.org/smack"
 SRC_URI="https://repo1.maven.org/maven2/org/igniterealtime/${PN}/${PN}/${PV}/${P}-sources.jar -> ${P}.jar"
 
 LICENSE="Apache-2.0"
-SLOT="0"
+SLOT="3"
 KEYWORDS="~amd64 ~x86"
 
 CDEPEND="dev-java/xpp3:0"
