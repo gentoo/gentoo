@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -23,7 +23,7 @@ else # Official release
 	SRC_URI="https://libav.org/releases/${P}.tar.xz"
 fi
 
-SRC_URI+=" test? ( https://dev.gentoo.org/~lu_zero/libav/fate-12.tar.xz )"
+SRC_URI+=" test? ( https://dev.gentoo.org/~lu_zero/libav/fate-12-r1.tar.xz )"
 
 LICENSE="LGPL-2.1  gpl? ( GPL-3 )"
 SLOT="0/13"
