@@ -29,11 +29,11 @@ IUSE="alsa debug cups doc examples gentoo-vm headless-awt +jbootstrap nsplugin +
 
 CDEPEND="
 	media-libs/freetype:2=
+	media-libs/giflib:0/7
 	>=sys-apps/baselayout-java-0.1.0-r1
 	sys-libs/zlib
 	alsa? ( media-libs/alsa-lib )
 	!headless-awt? (
-		media-libs/giflib:0/7
 		x11-libs/libX11
 		x11-libs/libXext
 		x11-libs/libXi
