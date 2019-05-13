@@ -2,7 +2,7 @@ BDEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[threads] ) >=
 DEFINED_PHASES=install nofetch postinst prepare setup unpack
 DESCRIPTION=Commercial version of app-emulation/wine with paid support.
 EAPI=7
-HOMEPAGE=http://www.codeweavers.com/products/crossover/
+HOMEPAGE=https://www.codeweavers.com/products/
 IUSE=+capi +cups doc +gphoto2 +gsm +jpeg +lcms +ldap +mp3 +nls +openal +opencl +opengl +png +scanner +ssl +v4l python_targets_python2_7
 KEYWORDS=-* ~amd64 ~x86
 LICENSE=CROSSOVER-3
@@ -11,4 +11,4 @@ RESTRICT=bindist test
 SLOT=0
 SRC_URI=https://media.codeweavers.com/pub/crossover/cxlinux/demo/install-crossover-18.0.0.bin
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-single-r1	3a0fc81f484bfdbd9c2b7448015a36e4	python-utils-r1	08e17157a6807add7db1f8d01e7e391f	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529	unpacker	3cd8bad0d31e525cd26be1bfa4e61631
-_md5_=bf3d8b1840a51089822c622c704fd2e6
+_md5_=b4cceee16866443204f0ab83832d172f
