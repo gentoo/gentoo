@@ -2829,15 +2829,10 @@
       <name>Jonas Stein</name>
       <role>Member</role>
     </member>
-    <member>
-      <email>maksbotan@gentoo.org</email>
-      <name>Maxim Koltsov</name>
-      <role>Member</role>
-    </member>
     <member is-lead="1">
       <email>mgorny@gentoo.org</email>
       <name>Michał Górny</name>
-      <role>Minor helper</role>
+      <role>The bad boss</role>
     </member>
     <member>
       <email>soap@gentoo.org</email>
