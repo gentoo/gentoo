@@ -1,0 +1,162 @@
+From bc50bd123e2b43ff404599b2a017a98261a66e47 Mon Sep 17 00:00:00 2001
+From: Mike Swanson <mikeonthecomputer@gmail.com>
+Date: Sat, 7 Sep 2019 10:57:50 -0700
+Subject: [PATCH] use reverse-DNS naming for installing *.desktop files
+
+This is similar to and consistent with the previous commit, and the
+desktop entry specification recommends doing this as well.
+---
+ configure.ac                                  | 12 +++----
+ src/{doom.desktop.in => Doom.desktop.in}      |  0
+ ...desktop.in => Doom_Screensaver.desktop.in} |  0
+ ...{heretic.desktop.in => Heretic.desktop.in} |  0
+ src/{hexen.desktop.in => Hexen.desktop.in}    |  0
+ src/Makefile.am                               | 32 +++++++++----------
+ src/{strife.desktop.in => Strife.desktop.in}  |  0
+ src/setup/Makefile.am                         |  6 ++--
+ .../{setup.desktop.in => Setup.desktop.in}    |  0
+ 9 files changed, 25 insertions(+), 25 deletions(-)
+ rename src/{doom.desktop.in => Doom.desktop.in} (100%)
+ rename src/{doom-screensaver.desktop.in => Doom_Screensaver.desktop.in} (100%)
+ rename src/{heretic.desktop.in => Heretic.desktop.in} (100%)
+ rename src/{hexen.desktop.in => Hexen.desktop.in} (100%)
+ rename src/{strife.desktop.in => Strife.desktop.in} (100%)
+ rename src/setup/{setup.desktop.in => Setup.desktop.in} (100%)
+
+diff --git a/configure.ac b/configure.ac
+index 8a3e1bbc..032a8be2 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -168,22 +168,22 @@ rpm.spec
+ data/Makefile
+ src/Makefile
+ src/Doom.metainfo.xml
+-src/doom.desktop
+-src/doom-screensaver.desktop
++src/Doom.desktop
++src/Doom_Screensaver.desktop
+ src/doom/Makefile
+ src/Heretic.metainfo.xml
+-src/heretic.desktop
++src/Heretic.desktop
+ src/heretic/Makefile
+ src/Hexen.metainfo.xml
+-src/hexen.desktop
++src/Hexen.desktop
+ src/hexen/Makefile
+ src/resource.rc
+ src/setup-res.rc
+ src/setup/Makefile
+-src/setup/setup.desktop
++src/setup/Setup.desktop
+ src/setup/setup-manifest.xml
+ src/Strife.metainfo.xml
+-src/strife.desktop
++src/Strife.desktop
+ src/strife/Makefile
+ textscreen/Makefile
+ textscreen/examples/Makefile
+diff --git a/src/doom.desktop.in b/src/Doom.desktop.in
+similarity index 100%
+rename from src/doom.desktop.in
+rename to src/Doom.desktop.in
+diff --git a/src/doom-screensaver.desktop.in b/src/Doom_Screensaver.desktop.in
+similarity index 100%
+rename from src/doom-screensaver.desktop.in
+rename to src/Doom_Screensaver.desktop.in
+diff --git a/src/heretic.desktop.in b/src/Heretic.desktop.in
+similarity index 100%
+rename from src/heretic.desktop.in
+rename to src/Heretic.desktop.in
+diff --git a/src/hexen.desktop.in b/src/Hexen.desktop.in
+similarity index 100%
+rename from src/hexen.desktop.in
+rename to src/Hexen.desktop.in
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 6880bd3c..19a42598 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -217,7 +217,7 @@ endif
+ EXTRA_DIST =                        \
+         CMakeLists.txt              \
+         icon.c                      \
+-        doom-screensaver.desktop.in \
++        Doom_Screensaver.desktop.in \
+         manifest.xml
+ 
+ metainfodir = $(prefix)/share/metainfo
+@@ -241,28 +241,28 @@ metainfo_DATA =                             \
+ 
+ appdir = $(prefix)/share/applications
+ app_DATA =                                 \
+-           @PROGRAM_PREFIX@doom.desktop    \
+-           @PROGRAM_PREFIX@heretic.desktop \
+-           @PROGRAM_PREFIX@hexen.desktop   \
+-           @PROGRAM_PREFIX@strife.desktop
++           @PACKAGE_RDNS@.Doom.desktop    \
++           @PACKAGE_RDNS@.Heretic.desktop \
++           @PACKAGE_RDNS@.Hexen.desktop   \
++           @PACKAGE_RDNS@.Strife.desktop
+ 
+-@PROGRAM_PREFIX@doom.desktop : doom.desktop
+-	cp doom.desktop $@
++@PACKAGE_RDNS@.Doom.desktop : Doom.desktop
++	cp Doom.desktop $@
+ 
+-@PROGRAM_PREFIX@heretic.desktop : heretic.desktop
+-	cp heretic.desktop $@
++@PACKAGE_RDNS@.Heretic.desktop : Heretic.desktop
++	cp Heretic.desktop $@
+ 
+-@PROGRAM_PREFIX@hexen.desktop : hexen.desktop
+-	cp hexen.desktop $@
++@PACKAGE_RDNS@.Hexen.desktop : Hexen.desktop
++	cp Hexen.desktop $@
+ 
+-@PROGRAM_PREFIX@strife.desktop : strife.desktop
+-	cp strife.desktop $@
++@PACKAGE_RDNS@.Strife.desktop : Strife.desktop
++	cp Strife.desktop $@
+ 
+ screensaverdir = $(prefix)/share/applications/screensavers
+-screensaver_DATA = @PROGRAM_PREFIX@doom-screensaver.desktop
++screensaver_DATA = @PACKAGE_RDNS@.Doom_Screensaver.desktop
+ 
+-@PROGRAM_PREFIX@doom-screensaver.desktop: doom-screensaver.desktop
+-	cp doom-screensaver.desktop $@
++@PACKAGE_RDNS@.Doom_Screensaver.desktop: Doom_Screensaver.desktop
++	cp Doom_Screensaver.desktop $@
+ 
+ CLEANFILES = $(execgames_SCRIPTS) $(app_DATA) $(screensaver_DATA)
+ 
+diff --git a/src/strife.desktop.in b/src/Strife.desktop.in
+similarity index 100%
+rename from src/strife.desktop.in
+rename to src/Strife.desktop.in
+diff --git a/src/setup/Makefile.am b/src/setup/Makefile.am
+index 76db29cf..a9dd240c 100644
+--- a/src/setup/Makefile.am
++++ b/src/setup/Makefile.am
+@@ -26,12 +26,12 @@ EXTRA_DIST=                                     \
+     setup_icon.c
+ 
+ appdir = $(prefix)/share/applications
+-app_DATA = @PROGRAM_PREFIX@setup.desktop
++app_DATA = @PACKAGE_RDNS@.Setup.desktop
+ 
+ CLEANFILES = $(app_DATA)
+ 
+-@PROGRAM_PREFIX@setup.desktop : setup.desktop
+-	cp setup.desktop $@
++@PACKAGE_RDNS@.Setup.desktop : Setup.desktop
++	cp Setup.desktop $@
+ 
+ if HAVE_PYTHON
+ 
+diff --git a/src/setup/setup.desktop.in b/src/setup/Setup.desktop.in
+similarity index 100%
+rename from src/setup/setup.desktop.in
+rename to src/setup/Setup.desktop.in
+-- 
+2.26.2
+
