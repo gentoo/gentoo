@@ -245,15 +245,6 @@ dev-python/gst-python:0.10
 media-libs/gnonlin:0.10
 net-libs/farstream:0.1
 
-# Patrice Clement <monsieurp@gentoo.org> (19 Apr 2019)
-# Another round of abandoned Java libraries that must go.
-# Removal in 30 days.
-dev-java/lucene-analyzers
-dev-java/sun-java3d-bin
-dev-java/sun-dtdparser
-dev-java/stax
-app-misc/bfm
-
 # Virgil Dupras <vdupras@gentoo.org> (26 Apr 2019)
 # Should have been removed with django-cms a while back but wasn't.
 # Removal in 30 days. Bug #683862
