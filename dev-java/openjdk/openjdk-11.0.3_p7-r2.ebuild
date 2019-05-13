@@ -19,6 +19,7 @@ IUSE="alsa cups debug doc examples gentoo-vm headless-awt +jbootstrap nsplugin +
 
 CDEPEND="
 	media-libs/freetype:2=
+	media-libs/giflib:0/7
 	>=sys-apps/baselayout-java-0.1.0-r1
 	sys-libs/zlib
 	systemtap? ( dev-util/systemtap )
@@ -133,6 +134,7 @@ src_configure() {
 		--with-extra-cflags="${CFLAGS}"
 		--with-extra-cxxflags="${CXXFLAGS}"
 		--with-extra-ldflags="${LDFLAGS}"
+		--with-giflib=system
 		--with-native-debug-symbols=$(usex debug internal none)
 		--with-vendor-name="Gentoo"
 		--with-vendor-url="https://gentoo.org"
