@@ -19,6 +19,8 @@ IUSE="alsa cups debug doc examples gentoo-vm headless-awt +jbootstrap nsplugin +
 
 CDEPEND="
 	media-libs/freetype:2=
+	media-libs/giflib:0/7
+	>=sys-apps/baselayout-java-0.1.0-r1
 	sys-libs/zlib
 	systemtap? ( dev-util/systemtap )
 	!headless-awt? (
@@ -132,6 +134,7 @@ src_configure() {
 		--with-extra-cflags="${CFLAGS}"
 		--with-extra-cxxflags="${CXXFLAGS}"
 		--with-extra-ldflags="${LDFLAGS}"
+		--with-giflib=system
 		--with-native-debug-symbols=$(usex debug internal none)
 		--with-vendor-name="Gentoo"
 		--with-vendor-url="https://gentoo.org"
@@ -187,8 +190,12 @@ src_install() {
 		rm -v lib/src.zip || die
 	fi
 
+	mv lib/security/cacerts lib/security/cacerts.orig || die
+
 	dodir "${dest}"
 	cp -pPR * "${ddest}" || die
+
+	dosym "${EPREFIX}"/etc/ssl/certs/java/cacerts "${dest}"/lib/security/cacerts
 
 	use gentoo-vm && java-vm_install-env "${FILESDIR}"/${PN}-${SLOT}.env.sh
 	java-vm_set-pax-markings "${ddest}"

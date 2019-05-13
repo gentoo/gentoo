@@ -3,25 +3,36 @@
 
 EAPI=6
 
-inherit autotools check-reqs flag-o-matic java-pkg-2 java-vm-2 multiprocessing pax-utils toolchain-funcs
+inherit check-reqs eapi7-ver flag-o-matic java-pkg-2 java-vm-2 multiprocessing pax-utils toolchain-funcs
 
-MY_PV=${PV/_p/+}
-SLOT=${MY_PV%%[.+]*}
+MY_PV=$(ver_rs 1 'u' 2 '-' ${PV//p/b})
+
+BASE_URI="https://hg.${PN}.java.net/jdk8u/jdk8u"
 
 DESCRIPTION="Open source implementation of the Java programming language"
 HOMEPAGE="https://openjdk.java.net"
-SRC_URI="https://hg.${PN}.java.net/jdk-updates/jdk${SLOT}u/archive/jdk-${MY_PV}.tar.bz2"
+SRC_URI="
+	${BASE_URI}/archive/jdk${MY_PV}.tar.bz2 -> ${P}.tar.bz2
+	${BASE_URI}/corba/archive/jdk${MY_PV}.tar.bz2 -> ${PN}-corba-${PV}.tar.bz2
+	${BASE_URI}/hotspot/archive/jdk${MY_PV}.tar.bz2 -> ${PN}-hotspot-${PV}.tar.bz2
+	${BASE_URI}/jaxp/archive/jdk${MY_PV}.tar.bz2 -> ${PN}-jaxp-${PV}.tar.bz2
+	${BASE_URI}/jaxws/archive/jdk${MY_PV}.tar.bz2 -> ${PN}-jaxws-${PV}.tar.bz2
+	${BASE_URI}/jdk/archive/jdk${MY_PV}.tar.bz2 -> ${PN}-jdk-${PV}.tar.bz2
+	${BASE_URI}/langtools/archive/jdk${MY_PV}.tar.bz2 -> ${PN}-langtools-${PV}.tar.bz2
+	${BASE_URI}/nashorn/archive/jdk${MY_PV}.tar.bz2 -> ${PN}-nashorn-${PV}.tar.bz2
+"
 
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~arm64 ~ppc64"
-
-IUSE="alsa cups debug doc examples gentoo-vm headless-awt +jbootstrap nsplugin +pch selinux source systemtap +webstart"
+SLOT="$(ver_cut 1)"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+IUSE="alsa debug cups doc examples gentoo-vm headless-awt +jbootstrap nsplugin +pch selinux source +webstart"
 
 CDEPEND="
 	media-libs/freetype:2=
+	media-libs/giflib:0/7
 	>=sys-apps/baselayout-java-0.1.0-r1
 	sys-libs/zlib
-	systemtap? ( dev-util/systemtap )
+	alsa? ( media-libs/alsa-lib )
 	!headless-awt? (
 		x11-libs/libX11
 		x11-libs/libXext
@@ -32,32 +43,36 @@ CDEPEND="
 	)
 "
 
-# cups and alsa required to build, but not to run, make is possible to remove
 RDEPEND="
 	${CDEPEND}
-	alsa? ( media-libs/alsa-lib )
 	cups? ( net-print/cups )
 	selinux? ( sec-policy/selinux-java )
 "
 
+# cups headers requied to build, runtime dep is optional
 DEPEND="
 	${CDEPEND}
-	app-arch/zip
-	media-libs/alsa-lib
 	net-print/cups
+	app-arch/zip
+	app-misc/ca-certificates
+	dev-lang/perl
+	dev-libs/openssl:0
+	media-libs/alsa-lib
 	!headless-awt? (
 		x11-base/xorg-proto
 	)
 	|| (
 		dev-java/openjdk-bin:${SLOT}
+		dev-java/icedtea-bin:${SLOT}
 		dev-java/openjdk:${SLOT}
+		dev-java/icedtea:${SLOT}
 	)
 "
 
 PDEPEND="webstart? ( >=dev-java/icedtea-web-1.6.1:0 )
 	nsplugin? ( >=dev-java/icedtea-web-1.6.1:0[nsplugin] )"
 
-S="${WORKDIR}/jdk${SLOT}u-jdk-${MY_PV}"
+S="${WORKDIR}/jdk${SLOT}u-jdk${MY_PV}"
 
 # The space required to build varies wildly depending on USE flags,
 # ranging from 2GB to 16GB. This function is certainly not exact but
@@ -65,8 +80,8 @@ S="${WORKDIR}/jdk${SLOT}u-jdk-${MY_PV}"
 openjdk_check_requirements() {
 	local M
 	M=2048
-	M=$(( $(usex jbootstrap 2 1) * $M ))
 	M=$(( $(usex debug 3 1) * $M ))
+	M=$(( $(usex jbootstrap 2 1) * $M ))
 	M=$(( $(usex doc 320 0) + $(usex source 128 0) + 192 + $M ))
 
 	CHECKREQS_DISK_BUILD=${M}M check-reqs_pkg_${EBUILD_PHASE}
@@ -81,7 +96,7 @@ pkg_setup() {
 	openjdk_check_requirements
 	java-vm-2_pkg_setup
 
-	JAVA_PKG_WANT_BUILD_VM="openjdk-${SLOT} openjdk-bin-${SLOT}"
+	JAVA_PKG_WANT_BUILD_VM="openjdk-${SLOT} openjdk-bin-${SLOT} icedtea-${SLOT} icedtea-bin-${SLOT}"
 	JAVA_PKG_WANT_SOURCE="${SLOT}"
 	JAVA_PKG_WANT_TARGET="${SLOT}"
 
@@ -115,37 +130,46 @@ pkg_setup() {
 src_prepare() {
 	default
 	chmod +x configure || die
+	local repo
+	for repo in corba hotspot jdk jaxp jaxws langtools nashorn; do
+		ln -s ../"${repo}-jdk${MY_PV}" "${repo}" || die
+	done
+	# new warnings in new gcc https://bugs.gentoo.org/685426
+	sed -i '/^WARNINGS_ARE_ERRORS/ s/-Werror/-Wno-error/' \
+		hotspot/make/linux/makefiles/gcc.make || die
 }
 
 src_configure() {
-	# Work around stack alignment issue, bug #647954. in case we ever have x86
+	# general build info found here:
+	#https://hg.openjdk.java.net/jdk8/jdk8/raw-file/tip/README-builds.html
+
+	# Work around stack alignment issue, bug #647954.
 	use x86 && append-flags -mincoming-stack-boundary=2
 
-	# Enabling full docs appears to break doc building. If not
-	# explicitly disabled, the flag will get auto-enabled if pandoc and
-	# graphviz are detected. pandoc has loads of dependencies anyway.
-	# currently it still bundles lcms libpng giflib and libjpeg.
+	append-flags -Wno-error
 
 	local myconf=(
-		--disable-ccache
-		--enable-full-docs=no
-		--with-boot-jdk="${JDK_HOME}"
-		--with-extra-cflags="${CFLAGS}"
-		--with-extra-cxxflags="${CXXFLAGS}"
-		--with-extra-ldflags="${LDFLAGS}"
-		--with-native-debug-symbols=$(usex debug internal none)
-		--with-vendor-name="Gentoo"
-		--with-vendor-url="https://gentoo.org"
-		--with-vendor-bug-url="https://bugs.gentoo.org"
-		--with-vendor-vm-bug-url="https://bugs.openjdk.java.net"
-		--with-vendor-version-string="${PV}"
-		--with-version-pre=gentoo
-		--with-version-string=${MY_PV%+*}
-		--with-version-build=${MY_PV#*+}
-		--with-zlib=system
-		--enable-dtrace=$(usex systemtap yes no)
-		--enable-headless-only=$(usex headless-awt yes no)
-	)
+			--disable-ccache
+			--enable-unlimited-crypto
+			--with-boot-jdk="${JDK_HOME}"
+			--with-extra-cflags="${CFLAGS}"
+			--with-extra-cxxflags="${CXXFLAGS}"
+			--with-extra-ldflags="${LDFLAGS}"
+			--with-giflib=system
+			--with-jtreg=no
+			--with-jobs=1
+			--with-num-cores=1
+			--with-update-version="$(ver_cut 2)"
+			--with-build-number="$(ver_cut 4)"
+			--with-milestone="gentoo"
+			--with-vendor-name="Gentoo"
+			--with-vendor-url="https://gentoo.org"
+			--with-vendor-bug-url="https://bugs.gentoo.org"
+			--with-vendor-vm-bug-url="https://bugs.openjdk.java.net"
+			--with-zlib=system
+			--with-native-debug-symbols=$(usex debug internal none)
+			$(usex headless-awt --disable-headful '')
+		)
 
 	# PaX breaks pch, bug #601016
 	if use pch && ! host-is-pax; then
@@ -163,21 +187,18 @@ src_configure() {
 }
 
 src_compile() {
-	emake -j1 \
-		$(usex jbootstrap bootcycle-images product-images) $(usex doc docs '') \
-		JOBS=$(makeopts_jobs) LOG=debug CFLAGS_WARNINGS_ARE_ERRORS= # No -Werror
+	emake -j1 LOG=debug JOBS=$(makeopts_jobs)\
+		$(usex jbootstrap bootcycle-images images) $(usex doc docs '')
 }
 
 src_install() {
 	local dest="/usr/$(get_libdir)/${PN}-${SLOT}"
-	local ddest="${ED}${dest#/}"
+	local ddest="${ED%/}/${dest#/}"
 
-	cd "${S}"/build/*-release/images/jdk || die
+	cd "${S}"/build/*-release/images/j2sdk-image || die
 
-	# Oracle and IcedTea have libjsoundalsa.so depending on
-	# libasound.so.2 but OpenJDK only has libjsound.so. Weird.
-	if ! use alsa ; then
-		rm -v lib/libjsound.* || die
+	if ! use alsa; then
+		rm -v jre/lib/$(get_system_arch)/libjsoundalsa.* || die
 	fi
 
 	if ! use examples ; then
@@ -185,15 +206,13 @@ src_install() {
 	fi
 
 	if ! use source ; then
-		rm -v lib/src.zip || die
+		rm -v src.zip || die
 	fi
-
-	mv lib/security/cacerts lib/security/cacerts.orig || die
 
 	dodir "${dest}"
 	cp -pPR * "${ddest}" || die
 
-	dosym "${EPREFIX}"/etc/ssl/certs/java/cacerts "${dest}"/lib/security/cacerts
+	dosym "${EPREFIX}"/etc/ssl/certs/java/cacerts "${dest}"/jre/lib/security/cacerts
 
 	use gentoo-vm && java-vm_install-env "${FILESDIR}"/${PN}-${SLOT}.env.sh
 	java-vm_set-pax-markings "${ddest}"
@@ -202,7 +221,7 @@ src_install() {
 
 	if use doc ; then
 		insinto /usr/share/doc/${PF}/html
-		doins -r "${S}"/build/*-release/images/docs/*
+		doins -r "${S}"/build/*-release/docs/*
 	fi
 }
 
