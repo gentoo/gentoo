@@ -28,7 +28,6 @@ RDEPEND="
 	dev-python/toml[${PYTHON_USEDEP}]
 	dev-python/virtualenv[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
-	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
 		>=dev-python/freezegun-0.3.11[${PYTHON_USEDEP}]
 		dev-python/pathlib2[${PYTHON_USEDEP}]
