@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ PYTHON_REQ_USE="threads,sqlite,ssl?"
 inherit distutils-r1
 
 DESCRIPTION="Powerful IMAP/Maildir synchronization and reader support"
-HOMEPAGE="http://offlineimap.org"
+HOMEPAGE="https://www.offlineimap.org/"
 SRC_URI="https://github.com/OfflineIMAP/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"

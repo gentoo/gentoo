@@ -11,7 +11,7 @@ PLOCALE_BACKUP="en_US"
 inherit l10n qmake-utils toolchain-funcs xdg
 
 DESCRIPTION="Great Qt GUI front-end for mplayer/mpv"
-HOMEPAGE="http://www.smplayer.eu/"
+HOMEPAGE="https://www.smplayer.eu/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2+ BSD-2"

@@ -1,21 +1,21 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 inherit eutils java-pkg-2 java-ant-2
 
 DESCRIPTION="Netbeans CND Cluster"
-HOMEPAGE="http://netbeans.org/projects/cnd"
+HOMEPAGE="https://netbeans.org/projects/cnd"
 SLOT="8.2"
-SOURCE_URL="http://download.netbeans.org/netbeans/8.2/final/zip/netbeans-8.2-201609300101-src.zip"
+SOURCE_URL="https://download.netbeans.org/netbeans/8.2/final/zip/netbeans-8.2-201609300101-src.zip"
 SRC_URI="${SOURCE_URL}
 	https://dev.gentoo.org/~fordfrog/distfiles/netbeans-8.2-build.xml.patch.bz2
-	http://hg.netbeans.org/binaries/5CAB59D859CAA6598E28131D30DD2E89806DB57F-antlr-3.4.jar
-	http://hg.netbeans.org/binaries/4E74C6BE42FE89871A878C7C4D6158F21A6D8010-antlr-runtime-3.4.jar
-	http://hg.netbeans.org/binaries/F20EEEDF4FE6B93B180387576FB780EED9F79C66-clank_0.3.9.zip
-	http://hg.netbeans.org/binaries/43A82EB3CE61B9B0B1C60586C7D84729BD5BE3E0-cnd-build-trace-1.0.zip
-	http://hg.netbeans.org/binaries/E59851B0E49C05D728D5C653E52750FA5B6A8F0E-cnd-rfs-1.0.zip
-	http://hg.netbeans.org/binaries/C51780D99464CBF45B0495C7646B442AB3C7B463-open-fortran-parser-0.7.1.2.zip"
+	https://hg.netbeans.org/binaries/5CAB59D859CAA6598E28131D30DD2E89806DB57F-antlr-3.4.jar
+	https://hg.netbeans.org/binaries/4E74C6BE42FE89871A878C7C4D6158F21A6D8010-antlr-runtime-3.4.jar
+	https://hg.netbeans.org/binaries/F20EEEDF4FE6B93B180387576FB780EED9F79C66-clank_0.3.9.zip
+	https://hg.netbeans.org/binaries/43A82EB3CE61B9B0B1C60586C7D84729BD5BE3E0-cnd-build-trace-1.0.zip
+	https://hg.netbeans.org/binaries/E59851B0E49C05D728D5C653E52750FA5B6A8F0E-cnd-rfs-1.0.zip
+	https://hg.netbeans.org/binaries/C51780D99464CBF45B0495C7646B442AB3C7B463-open-fortran-parser-0.7.1.2.zip"
 LICENSE="|| ( CDDL GPL-2-with-linking-exception )"
 KEYWORDS="amd64 ~x86"
 IUSE=""
