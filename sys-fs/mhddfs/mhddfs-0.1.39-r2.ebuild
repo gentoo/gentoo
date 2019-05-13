@@ -13,7 +13,7 @@ SRC_URI="http://mhddfs.uvw.ru/downloads/${MY_P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 IUSE="l10n_ru suid"
 
