@@ -30,7 +30,7 @@ app-admin/ansible 2.6.14 2.6.16 2.7.9 2.7.10: Model-driven deployment, config ma
 app-admin/apache-tools 2.2.34 2.4.39: Useful Apache tools - htdigest, htpasswd, ab, htdbm
 app-admin/apachetop 0.12.6-r2: A realtime Apache log analyzer
 app-admin/apg 2.3.0b-r7: Another Password Generator
-app-admin/augeas 1.10.1 1.11.0 1.11.0-r1: A library for changing configuration files
+app-admin/augeas 1.11.0 1.11.0-r1 1.12.0: A library for changing configuration files
 app-admin/ccze 0.2.1-r4: A flexible and fast logfile colorizer
 app-admin/cgmanager 0.41: Control Group manager daemon
 app-admin/checksec 1.7.5: Tool to check properties of executables (e.g. ASLR/PIE, RELRO, PaX, Canaries)
@@ -1923,7 +1923,7 @@ dev-db/slony1 2.2.6: A replication system for the PostgreSQL Database Management
 dev-db/spatialite 4.3.0-r1: A complete Spatial DBMS in a nutshell built upon sqlite
 dev-db/sqlcipher 3.4.2: Full Database Encryption for SQLite
 dev-db/sqldeveloper 4.2.0.17.089.1709: Oracle SQL Developer is a graphical tool for database development
-dev-db/sqlite 3.27.2: SQL database engine
+dev-db/sqlite 3.27.2 3.28.0: SQL database engine
 dev-db/sqliteman 1.2.2-r4: Powerful GUI manager for the Sqlite3 database
 dev-db/sqliteodbc 0.99: ODBC driver to access local SQLite database files
 dev-db/tinycdb 0.77-r2: A very fast and simple package for creating and reading constant data bases
