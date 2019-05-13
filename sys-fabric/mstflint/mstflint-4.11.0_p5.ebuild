@@ -15,7 +15,7 @@ MY_P=""
 SRC_URI="${HOMEPAGE}/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
 IUSE="inband ssl"
 SLOT="0"
-RDEPEND="dev-db/sqlite:3
+RDEPEND="dev-db/sqlite:3=
 	sys-libs/zlib:=
 	inband? ( sys-fabric/libibmad )
 	ssl? ( dev-libs/openssl:= )"
