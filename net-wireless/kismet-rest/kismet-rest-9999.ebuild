@@ -14,6 +14,7 @@ SLOT="0"
 KEYWORDS=""
 IUSE=""
 
-DEPEND="dev-python/requests"
+DEPEND="dev-python/requests
+		!<net-wireless/kismet-2019.05.1"
 RDEPEND="${DEPEND}"
 BDEPEND=""
