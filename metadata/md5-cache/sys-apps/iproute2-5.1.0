@@ -1,6 +1,6 @@
-BDEPEND=app-arch/xz-utils >=sys-devel/bison-2.4 sys-devel/flex >=sys-kernel/linux-headers-3.16 virtual/pkgconfig elibc_glibc? ( >=sys-libs/glibc-2.7 )
+BDEPEND=app-arch/xz-utils >=sys-devel/bison-2.4 sys-devel/flex virtual/pkgconfig
 DEFINED_PHASES=compile configure install prepare
-DEPEND=!net-misc/arpd dev-libs/libbsd !minimal? ( net-libs/libmnl ) caps? ( sys-libs/libcap ) elf? ( virtual/libelf ) iptables? ( >=net-firewall/iptables-1.4.20:= ) berkdb? ( sys-libs/db:= ) atm? ( net-dialup/linux-atm ) selinux? ( sys-libs/libselinux )
+DEPEND=!net-misc/arpd dev-libs/libbsd !minimal? ( net-libs/libmnl ) caps? ( sys-libs/libcap ) elf? ( virtual/libelf ) iptables? ( >=net-firewall/iptables-1.4.20:= ) berkdb? ( sys-libs/db:= ) atm? ( net-dialup/linux-atm ) selinux? ( sys-libs/libselinux ) >=sys-kernel/linux-headers-3.16
 DESCRIPTION=kernel routing and traffic control utilities
 EAPI=7
 HOMEPAGE=https://wiki.linuxfoundation.org/networking/iproute2
@@ -11,4 +11,4 @@ RDEPEND=!net-misc/arpd dev-libs/libbsd !minimal? ( net-libs/libmnl ) caps? ( sys
 SLOT=0
 SRC_URI=mirror://kernel/linux/utils/net/iproute2/iproute2-5.1.0.tar.xz
 _eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	a09389deba2c0a7108b581e02c7cecbf	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
-_md5_=fd5837a2916f7c5ba02e374765114c6c
+_md5_=de65cbdfea65c5be5990ae126240979c
