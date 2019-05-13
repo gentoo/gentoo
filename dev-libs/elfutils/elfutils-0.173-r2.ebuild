@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -23,7 +23,12 @@ DEPEND="${RDEPEND}
 	>=sys-devel/flex-2.5.4a
 	sys-devel/m4"
 
-PATCHES=("${FILESDIR}"/${PN}-0.118-PaX-support.patch)
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.118-PaX-support.patch
+	"${FILESDIR}"/${PN}-0.173-partial-core.patch
+	"${FILESDIR}"/${PN}-0.175-disable-biarch-test-PR24158.patch
+	"${FILESDIR}"/${PN}-0.173-reorder.patch
+)
 
 src_prepare() {
 	default
