@@ -17,7 +17,10 @@ KEYWORDS="amd64"
 
 IUSE="l10n_ru suid"
 
-RDEPEND="sys-fs/fuse:0"
+RDEPEND="
+	dev-libs/glib:2
+	sys-fs/fuse:0
+"
 DEPEND="${RDEPEND}"
 
 DOCS=( ChangeLog README )
