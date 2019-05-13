@@ -20,7 +20,7 @@ else
 fi
 LICENSE="MIT"
 SLOT="0"
-IUSE="chamelium doc man overlay sound valgrind video_cards_amdgpu video_cards_intel video_cards_nouveau X xv"
+IUSE="chamelium doc libressl man overlay sound valgrind video_cards_amdgpu video_cards_intel video_cards_nouveau X xv"
 REQUIRED_USE="
 	|| ( video_cards_amdgpu video_cards_intel video_cards_nouveau )
 	overlay? (
@@ -32,7 +32,6 @@ RESTRICT="test"
 
 RDEPEND="
 	dev-libs/glib:2
-	dev-libs/openssl:=
 	sys-apps/kmod:=
 	sys-libs/libunwind:=
 	sys-libs/zlib:=
@@ -46,6 +45,8 @@ RDEPEND="
 		sci-libs/gsl
 		x11-libs/pixman
 	)
+	!libressl? ( dev-libs/openssl:0= )
+	libressl? ( dev-libs/libressl:0= )
 	overlay? (
 		>=x11-libs/libXrandr-1.3
 		xv? (
