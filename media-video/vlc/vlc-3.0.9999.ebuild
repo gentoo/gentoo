@@ -130,6 +130,7 @@ RDEPEND="
 		x11-libs/gtk+:3
 		x11-libs/libnotify
 	)
+	libplacebo? ( media-libs/libplacebo )
 	libsamplerate? ( media-libs/libsamplerate )
 	libtar? ( dev-libs/libtar )
 	libtiger? ( media-libs/libtiger )
