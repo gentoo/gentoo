@@ -8,7 +8,7 @@ inherit python-r1 python-utils-r1
 
 DESCRIPTION="TensorFlow's Visualization Toolkit"
 HOMEPAGE="https://www.tensorflow.org/"
-SRC_URI="https://files.pythonhosted.org/packages/0f/39/bdd75b08a6fba41f098b6cb091b9e8c7a80e1b4d679a581a0ccd17b10373/${P}-py3-none-any.whl -> ${P}.zip"
+SRC_URI="https://files.pythonhosted.org/packages/py3/${PN::1}/${PN}/${P}-py3-none-any.whl -> ${P}.zip"
 
 LICENSE="Apache-2.0"
 SLOT="0"
