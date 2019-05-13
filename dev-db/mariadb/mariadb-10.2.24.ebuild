@@ -739,7 +739,7 @@ mysql_init_vars() {
 
 pkg_config() {
 	_getoptval() {
-		local mypd="${EROOT}"/usr/bin/my_print_defaults
+		local mypd="${EROOT}"usr/libexec/mariadb/my_print_defaults
 		local section="$1"
 		local flag="--${2}="
 		local extra_options="${3}"
