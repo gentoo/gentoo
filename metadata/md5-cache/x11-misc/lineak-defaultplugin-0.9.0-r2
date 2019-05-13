@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure prepare
+DEPEND==x11-misc/lineakd-0.9.0* x11-base/xorg-proto
+DESCRIPTION=Mute/unmute and other macros for LINEAK
+EAPI=7
+HOMEPAGE=http://lineak.sourceforge.net
+IUSE=debug
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND==x11-misc/lineakd-0.9.0*
+SLOT=0
+SRC_URI=mirror://sourceforge/lineak/lineak-defaultplugin-0.9.tar.gz
+_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
+_md5_=ca6f8f4c52749c98eebadc77aa9bd695
