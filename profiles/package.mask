@@ -29,6 +29,14 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (13 May 2019)
+# EAPI 2, last touched by maintainer over 6 years ago
+# doesn't build with scons 3, multiple QA violations,
+# no upstream activity since 2013.
+# Removal in 30 days.
+# Bug #399201, #508222, #590944, #648656, #679706.
+dev-lua/toluapp
+
 # Andreas K. Hüttel <dilfridge@gentoo.org> (11 May 2019)
 # Perl 5.30 preparation block. DO NOT USE YET!
 =dev-lang/perl-5.30*
