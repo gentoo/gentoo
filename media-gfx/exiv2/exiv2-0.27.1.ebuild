@@ -15,7 +15,7 @@ PYTHON_COMPAT=( python2_7 python3_{5,6,7} )
 inherit cmake-multilib python-any-r1
 
 DESCRIPTION="EXIF, IPTC and XMP metadata C++ library and command line utility"
-HOMEPAGE="http://www.exiv2.org/"
+HOMEPAGE="https://www.exiv2.org/"
 
 LICENSE="GPL-2"
 SLOT="0/27"
@@ -72,7 +72,7 @@ multilib_src_configure() {
 		-DEXIV2_ENABLE_XMP=$(usex xmp)
 		$(multilib_is_native_abi || echo -DEXIV2_BUILD_EXIV2_COMMAND=NO)
 		$(multilib_is_native_abi && echo -DEXIV2_BUILD_DOC=$(usex doc))
-		-DCMAKE_INSTALL_DOCDIR=${EPREFIX}/usr/share/doc/${PF}/html
+		-DCMAKE_INSTALL_DOCDIR="${EPREFIX}"/usr/share/doc/${PF}/html
 	)
 
 	cmake-utils_src_configure
