@@ -5,9 +5,9 @@ DESCRIPTION=The GNU Privacy Assistant (GPA) is a graphical user interface for Gn
 EAPI=7
 HOMEPAGE=http://gpa.wald.intevation.org
 IUSE=nls
-KEYWORDS=alpha amd64 ppc ppc64 sparc ~x86
+KEYWORDS=alpha amd64 ppc ppc64 sparc x86
 LICENSE=GPL-3
 RDEPEND=>=app-crypt/gnupg-2:= >=app-crypt/gpgme-1.11.1:= >=dev-libs/libassuan-1.1.0:= >=dev-libs/libgpg-error-1.4:= >=x11-libs/gtk+-2.10.0:2=
 SLOT=0
 SRC_URI=mirror://gnupg/gpa/gpa-0.10.0.tar.bz2
-_md5_=d583283b4c02dad1a7677bde2bab09da
+_md5_=b267862715f21687e7196697c05241c1
