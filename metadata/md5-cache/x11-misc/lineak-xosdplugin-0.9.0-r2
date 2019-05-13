@@ -10,4 +10,4 @@ RDEPEND==x11-misc/lineakd-0.9.0* x11-libs/xosd
 SLOT=0
 SRC_URI=mirror://sourceforge/lineak/lineak-xosdplugin-0.9.tar.gz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
-_md5_=4dd36907e5c89048e34dc2f975df3ed1
+_md5_=62c045c5e18715176c9da1bbb5e85f06
