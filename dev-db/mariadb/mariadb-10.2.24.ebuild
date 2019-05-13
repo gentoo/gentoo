@@ -31,7 +31,7 @@ SLOT="0/${SUBSLOT:-0}"
 IUSE="+backup bindist client-libs cracklib debug extraengine galera innodb-lz4
 	innodb-lzo innodb-snappy jdbc jemalloc kerberos latin1 libressl mroonga
 	numa odbc oqgraph pam +perl profiling rocksdb selinux +server sphinx
-	sst-rsync sst-mariabackup static systemd systemtap tcmalloc
+	sst-rsync sst-mariabackup sst-xtrabackup static systemd systemtap tcmalloc
 	test tokudb xml yassl"
 
 # Tests always fail when libressl is enabled due to hard-coded ciphers in the tests
@@ -60,10 +60,10 @@ fi
 
 PATCHES=(
 	"${MY_PATCH_DIR}"/20015_all_mariadb-pkgconfig-location.patch
-	"${MY_PATCH_DIR}"/20018_all_mariadb-10.3.12-without-clientlibs-tools.patch
+	"${MY_PATCH_DIR}"/20018_all_mariadb-10.2.16-without-clientlibs-tools.patch
 	"${MY_PATCH_DIR}"/20024_all_mariadb-10.2.6-mysql_st-regression.patch
 	"${MY_PATCH_DIR}"/20025_all_mariadb-10.2.6-gssapi-detect.patch
-	"${MY_PATCH_DIR}"/20035_all_mariadb-10.3-atomic-detection.patch
+	"${MY_PATCH_DIR}"/20035_all_mariadb-10.2-atomic-detection.patch
 )
 
 # Be warned, *DEPEND are version-dependant
@@ -124,6 +124,7 @@ RDEPEND="selinux? ( sec-policy/selinux-mysql )
 		=sys-cluster/galera-25*
 		sst-rsync? ( sys-process/lsof )
 		sst-mariabackup? ( net-misc/socat[ssl] )
+		sst-xtrabackup? ( net-misc/socat[ssl] )
 	) )
 	perl? ( !dev-db/mytop
 		virtual/perl-Getopt-Long
@@ -134,8 +135,10 @@ RDEPEND="selinux? ( sec-policy/selinux-mysql )
 "
 # For other stuff to bring us in
 # dev-perl/DBD-mysql is needed by some scripts installed by MySQL
+# percona-xtrabackup-bin causes a circular dependency if DBD-mysql is not already installed
 PDEPEND="perl? ( >=dev-perl/DBD-mysql-2.9004 )
-	 server? ( ~virtual/mysql-5.6[static=] )"
+	 server? ( ~virtual/mysql-5.6[static=]
+		 galera? ( sst-xtrabackup? ( || ( >=dev-db/percona-xtrabackup-bin-2.2.4 dev-db/percona-xtrabackup ) ) ) )"
 
 pkg_setup() {
 	if [[ ${MERGE_TYPE} != binary ]] ; then
@@ -222,6 +225,12 @@ pkg_postinst() {
 			elog "--wsrep-new-cluster to the options in /etc/conf.d/mysql for one node."
 			elog "This option should then be removed for subsequent starts."
 			einfo
+			if use sst-xtrabackup ; then
+				ewarn "As per https://mariadb.com/kb/en/meta/xtrabackup_warning/, XtraBackup"
+				ewarn "as an SST is broken by default beginning with 10.2.19 with the setting"
+				ewarn "innodb_safe_truncate=ON.  Please migrate to sst-mariabackup instead."
+				ewarn "sst-xtrabackup is being removed in 10.3 and higher."
+			fi
 		fi
 	fi
 
@@ -239,9 +248,9 @@ pkg_postinst() {
 src_unpack() {
 	unpack ${A}
 	# Grab the patches
-	[[ "${MY_EXTRAS_VER}" == "live" ]] && S="${WORKDIR}/mysql-extras" git-r3_src_unpack
+	[[ "${MY_EXTRAS_VER}" == "live" ]] && S="${WORKDIR%/}/mysql-extras" git-r3_src_unpack
 
-	mv -f "${WORKDIR}/${P/_rc/}" "${S}" || die
+	mv -f "${WORKDIR%/}/${P}" "${S}" || die
 }
 
 src_prepare() {
@@ -252,11 +261,12 @@ src_prepare() {
 		echo > "${S%/}/storage/${1}/CMakeLists.txt" || die
 	}
 
-	if use jemalloc; then
-		echo "TARGET_LINK_LIBRARIES(mysqld jemalloc)" >> "${S}/sql/CMakeLists.txt"
-	elif use tcmalloc; then
-		echo "TARGET_LINK_LIBRARIES(mysqld tcmalloc)" >> "${S}/sql/CMakeLists.txt"
-	fi
+	local malloc
+	for malloc in jemalloc tcmalloc ; do
+		if use ${malloc}; then
+			echo "TARGET_LINK_LIBRARIES(mysqld ${malloc})" >> "${S}/sql/CMakeLists.txt"
+		fi
+	done
 
 	# Don't build bundled xz-utils for tokudb
 	echo > "${S}/storage/tokudb/PerconaFT/cmake_modules/TokuThirdParty.cmake" || die
@@ -267,7 +277,7 @@ src_prepare() {
 	local server_plugins=( handler_socket auth_socket feedback metadata_lock_info
 				locale_info qc_info server_audit sql_errlog )
 	local test_plugins=( audit_null auth_examples daemon_example fulltext
-				debug_key_management example_key_management versioning )
+				debug_key_management example_key_management )
 	if ! use server; then # These plugins are for the server
 		for plugin in "${server_plugins[@]}" ; do
 			_disable_plugin "${plugin}"
@@ -388,6 +398,7 @@ src_configure(){
 		fi
 
 		mycmakeargs+=(
+			-DWITH_JEMALLOC=$(usex jemalloc system)
 			-DWITH_PCRE=system
 			-DPLUGIN_OQGRAPH=$(usex oqgraph DYNAMIC NO)
 			-DPLUGIN_SPHINX=$(usex sphinx YES NO)
@@ -412,7 +423,7 @@ src_configure(){
 			-DPLUGIN_AUTH_GSSAPI=$(usex kerberos DYNAMIC NO)
 			-DWITH_MARIABACKUP=$(usex backup ON OFF)
 			-DWITH_LIBARCHIVE=$(usex backup ON OFF)
-			-DINSTALL_SQLBENCHDIR=""
+			-DINSTALL_SQLBENCHDIR=share/mariadb
 			-DPLUGIN_ROCKSDB=$(usex rocksdb DYNAMIC NO)
 			# systemd is only linked to for server notification
 			-DWITH_SYSTEMD=$(usex systemd yes no)
@@ -571,23 +582,8 @@ src_install() {
 		doexe "${BUILD_DIR}/extra/my_print_defaults" "${BUILD_DIR}/extra/perror"
 	fi
 
-	# Remove mytop if perl is not selected
-	if [[ -e "${ED}/usr/bin/mytop" ]] && ! use perl ; then
-		rm -f "${ED}/usr/bin/mytop" || die
-	fi
-
-	# Fix a dangling symlink when galera is not built
-	if [[ -L "${ED}/usr/bin/wsrep_sst_rsync_wan" ]] && ! use galera ; then
-		rm "${ED}/usr/bin/wsrep_sst_rsync_wan" || die
-	fi
-
-	# Remove broken SST scripts that are incompatible
-	local scriptremove
-	for scriptremove in wsrep_sst_xtrabackup wsrep_sst_xtrabackup-v2 ; do
-		if [[ -e "${ED}/usr/bin/${scriptremove}" ]] ; then
-			rm "${ED}/usr/bin/${scriptremove}" || die
-		fi
-	done
+	#Remove mytop if perl is not selected
+	[[ -e "${ED}/usr/bin/mytop" ]] && ! use perl && rm -f "${ED}/usr/bin/mytop"
 }
 
 # Official test instructions:
@@ -661,8 +657,11 @@ src_test() {
 	done
 
 	_disable_test main.plugin_auth "Needs client libraries built"
+	_disable_test main.mysqldump "Test fails past 2018-12-31 due to event expiration"
 
-	_disable_test main.func_time "Dependent on time test was written"
+	# Likely environment issues as only number of clients connected fails
+	_disable_test rpl.rpl_semi_sync_uninstall_plugin \
+		"Fails intermittently on parallel testing"
 
 	# run mysql-test tests
 	perl mysql-test-run.pl --force --vardir="${T}/var-tests" --reorder --skip-test=tokudb --skip-test-list="${T}/disabled.def"
