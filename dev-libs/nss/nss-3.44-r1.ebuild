@@ -20,7 +20,7 @@ SRC_URI="https://archive.mozilla.org/pub/security/nss/releases/${RTM_NAME}/src/$
 LICENSE="|| ( MPL-2.0 GPL-2 LGPL-2.1 )"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
-IUSE="cacert +nss-pem utils"
+IUSE="cacert +nss-pem"
 CDEPEND=">=dev-db/sqlite-3.8.2[${MULTILIB_USEDEP}]
 	>=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}]"
 DEPEND=">=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]
@@ -180,6 +180,7 @@ multilib_src_compile() {
 	export NSDISTMODE=copy
 	export NSS_ENABLE_ECC=1
 	export FREEBL_NO_DEPEND=1
+	export FREEBL_LOWHASH=1
 	export ASFLAGS=""
 
 	local d
@@ -285,54 +286,6 @@ multilib_src_install() {
 	nssutils=( shlibsign )
 
 	if multilib_is_native_abi ; then
-		if use utils; then
-			# The tests we do not need to install.
-			#nssutils_test="bltest crmftest dbtest dertimetest
-			#fipstest remtest sdrtest"
-			# checkcert utils has been removed in nss-3.22:
-			# https://bugzilla.mozilla.org/show_bug.cgi?id=1187545
-			# https://hg.mozilla.org/projects/nss/rev/df1729d37870
-			# certcgi has been removed in nss-3.36:
-			# https://bugzilla.mozilla.org/show_bug.cgi?id=1426602
-			nssutils+=(
-				addbuiltin
-				atob
-				baddbdir
-				btoa
-				certutil
-				cmsutil
-				conflict
-				crlutil
-				derdump
-				digest
-				makepqg
-				mangle
-				modutil
-				multinit
-				nonspr10
-				ocspclnt
-				oidcalc
-				p7content
-				p7env
-				p7sign
-				p7verify
-				pk11mode
-				pk12util
-				pp
-				rsaperf
-				selfserv
-				signtool
-				signver
-				ssltap
-				strsclnt
-				symkeyutil
-				tstclnt
-				vfychain
-				vfyserv
-			)
-			# install man-pages for utils (bug #516810)
-			doman doc/nroff/*.1
-		fi
 		pushd dist/*/bin >/dev/null || die
 		for f in ${nssutils[@]}; do
 			dobin ${f}
