@@ -11448,6 +11448,7 @@ xfce-extra/xfce4-notifyd 0.4.3-r1: Notification daemon for the Xfce desktop envi
 xfce-extra/xfce4-places-plugin 1.7.0-r1: A panel plug-in to provide quick access to files, folders and removable media
 xfce-extra/xfce4-power-manager 1.6.1: Power manager for the Xfce desktop environment
 xfce-extra/xfce4-pulseaudio-plugin 0.4.1: A panel plug-in for PulseAudio volume control
+xfce-extra/xfce4-screensaver 0.1.4-r1: Screen saver and locker (port of MATE screensaver)
 xfce-extra/xfce4-screenshooter 1.9.3 1.9.5: Xfce4 screenshooter application and panel plugin
 xfce-extra/xfce4-sensors-plugin 1.3.0-r1: A panel plug-in for acpi, lm_sensors and hddtemp sensors
 xfce-extra/xfce4-smartbookmark-plugin 0.5.0: Smart bookmark plug-in for the Xfce desktop environment
