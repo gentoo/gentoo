@@ -96,11 +96,9 @@ toml_usex() {
 
 pre_build_checks() {
 	CHECKREQS_DISK_BUILD="7G"
-	CHECKREQS_MEMORY="4G"
 	eshopts_push -s extglob
 	if is-flagq '-g?(gdb)?([1-9])'; then
 		CHECKREQS_DISK_BUILD="10G"
-		CHECKREQS_MEMORY="16G"
 	fi
 	eshopts_pop
 	check-reqs_pkg_setup
