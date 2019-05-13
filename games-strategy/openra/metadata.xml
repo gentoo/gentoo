@@ -6,7 +6,7 @@
 		<name>Gentoo Games Project</name>
 	</maintainer>
 	<upstream>
-		<changelog>http://openra.res0l.net/news/</changelog>
+		<changelog>https://www.openra.net/news/</changelog>
 		<doc lang="en">https://github.com/OpenRA/OpenRA/wiki</doc>
 		<bugs-to>https://github.com/OpenRA/OpenRA/issues</bugs-to>
 		<remote-id type="github">OpenRA/OpenRA</remote-id>
