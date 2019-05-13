@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Virgil Dupras <vdupras@gentoo.org> (13 May 2019)
+# detox has been deprecated by the release of tox 3.7.0 which duplicates the
+# feature. Removal in 30 days. Bug #685870
+dev-python/detox
+
 # Andreas K. Hüttel <dilfridge@gentoo.org> (11 May 2019)
 # Perl 5.30 preparation block. DO NOT USE YET!
 =dev-lang/perl-5.30*
