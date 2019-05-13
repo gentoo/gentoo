@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 2004-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: check-reqs.eclass
@@ -245,6 +245,7 @@ check-reqs_memory() {
 
 	local size=${1}
 	local actual_memory
+	local actual_swap
 
 	check-reqs_start_phase \
 		${size} \
@@ -252,19 +253,29 @@ check-reqs_memory() {
 
 	if [[ -r /proc/meminfo ]] ; then
 		actual_memory=$(awk '/MemTotal/ { print $2 }' /proc/meminfo)
+		actual_swap=$(awk '/SwapTotal/ { print $2 }' /proc/meminfo)
 	else
-		actual_memory=$(sysctl hw.physmem 2>/dev/null )
-		[[ "$?" == "0" ]] &&
-			actual_memory=$(echo $actual_memory | sed -e 's/^[^:=]*[:=]//' )
+		actual_memory=$(sysctl hw.physmem 2>/dev/null)
+		[[ $? -eq 0 ]] && actual_memory=$(echo "${actual_memory}" \
+			| sed -e 's/^[^:=]*[:=][[:space:]]*//')
+		actual_swap=$(sysctl vm.swap_total 2>/dev/null)
+		[[ $? -eq 0 ]] && actual_swap=$(echo "${actual_swap}" \
+			| sed -e 's/^[^:=]*[:=][[:space:]]*//')
 	fi
 	if [[ -n ${actual_memory} ]] ; then
-		if [[ ${actual_memory} -lt $(check-reqs_get_kibibytes ${size}) ]] ; then
+		if [[ ${actual_memory} -ge $(check-reqs_get_kibibytes ${size}) ]] ; then
+			eend 0
+		elif [[ -n ${actual_swap} && $((${actual_memory} + ${actual_swap})) \
+				-ge $(check-reqs_get_kibibytes ${size}) ]] ; then
+			ewarn "Amount of main memory is insufficient, but amount"
+			ewarn "of main memory combined with swap is sufficient."
+			ewarn "Build process may make computer very slow!"
+			eend 0
+		else
 			eend 1
 			check-reqs_unsatisfied \
 				${size} \
 				"RAM"
-		else
-			eend 0
 		fi
 	else
 		eend 1
