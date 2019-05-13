@@ -45,10 +45,9 @@ multilib_src_configure() {
 
 multilib_src_compile() {
 	cmake-utils_src_compile
-	multilib_is_native_abi && use doc && cmake-utils_src_compile docs
-}
 
-multilib_src_install() {
-	multilib_is_native_abi && use doc && local HTML_DOCS=( "${BUILD_DIR}"/docs/html/. )
-	cmake-utils_src_install
+	if multilib_is_native_abi && use doc; then
+		cmake-utils_src_compile docs
+		HTML_DOCS=( "${BUILD_DIR}"/docs/html/. )
+	fi
 }
