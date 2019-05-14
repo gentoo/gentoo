@@ -11,4 +11,4 @@ RDEPEND=!libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:= ) x11
 SLOT=0
 SRC_URI=https://github.com/rdesktop/rdesktop/releases/download/v1.8.5/rdesktop-1.8.5.tar.gz
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
-_md5_=bae3af03182bed26ac47594019988999
+_md5_=18d177f78c875a5b9dd1730a6051a5d3
