@@ -59,7 +59,7 @@ KEYWORDS="~amd64"
 IUSE=""
 
 BDEPEND="
-	>=dev-lang/rust-1.31.0
+	>=virtual/rust-1.31.0
 "
 DEPEND="
 	dev-libs/hidapi
