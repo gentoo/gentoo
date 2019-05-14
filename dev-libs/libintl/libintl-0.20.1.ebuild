@@ -1,13 +1,13 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Note: Keep version bumps in sync with sys-devel/gettext.
 
-EAPI="5"
+EAPI=7
 
 MY_P="gettext-${PV}"
 
-inherit eutils multilib-minimal toolchain-funcs libtool
+inherit multilib-minimal toolchain-funcs libtool
 
 DESCRIPTION="the GNU international library (split out of gettext)"
 HOMEPAGE="https://www.gnu.org/software/gettext/"
@@ -28,7 +28,7 @@ RDEPEND="${DEPEND}
 S="${WORKDIR}/${MY_P}/gettext-runtime"
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-0.19.5-langinfo.patch
+	default
 
 	# The libtool files are stored higher up, so make sure we run in the
 	# whole tree and not just the subdir we build.
@@ -54,7 +54,12 @@ multilib_src_configure() {
 		$(use_enable static-libs static)
 		$(use_enable threads)
 	)
-	ECONF_SOURCE=${S} econf "${myconf[@]}"
+	ECONF_SOURCE="${S}" econf "${myconf[@]}"
+}
+
+multilib_src_compile() {
+	# We only need things in the intl/ subdir.
+	emake -C intl
 }
 
 multilib_src_install() {
@@ -65,9 +70,11 @@ multilib_src_install() {
 }
 
 multilib_src_install_all() {
-	use static-libs || prune_libtool_files --all
+	if ! use static-libs ; then
+		find "${ED}" -type f -name "*.la" -delete || die
+	fi
 
-	rm -f "${ED}"/usr/share/locale/locale.alias "${ED}"/usr/lib/charset.alias
+	rm -r "${ED}"/usr/share/locale || die
 
 	dodoc AUTHORS ChangeLog NEWS README
 }
