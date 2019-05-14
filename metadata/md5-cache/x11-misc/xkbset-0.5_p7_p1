@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install setup
+DEPEND=x11-libs/libX11
+DESCRIPTION=User preference utility for XKB extensions for X
+EAPI=7
+HOMEPAGE=https://faculty.missouri.edu/~stephen/software/#xkbset
+IUSE=tk
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+RDEPEND=x11-libs/libX11 tk? ( dev-perl/Tk )
+SLOT=0
+SRC_URI=https://faculty.missouri.edu/~stephen/software/xkbset/xkbset-0.5.tar.gz mirror://debian/pool/main/x/xkbset/xkbset_0.5-7.1.debian.tar.xz
+_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
+_md5_=15df5f572fd4aa97152a47f44f4dff1a
