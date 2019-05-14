@@ -37,11 +37,6 @@ PATCHES=(
 	"${WORKDIR}"/debian/patches/02-clarify-errors.patch
 )
 
-pkg_setup() {
-	ewarn "MAJOR ${DEBIAN_P_MAJOR}"
-	ewarn "MINOR ${DEBIAN_P_MINOR}"
-}
-
 src_compile() {
 	emake CC=$(tc-getCC) INC_PATH= LIB_PATH=
 }
