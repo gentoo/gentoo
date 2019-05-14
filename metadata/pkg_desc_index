@@ -2719,7 +2719,7 @@ dev-java/logback 1.0.13-r1: A generic, reliable, fast & flexible logging framewo
 dev-java/lucene 1.4.3-r4 2.4.1-r2 3.5.0-r2 3.6.2-r2: High-performance, full-featured text search engine written entirely in Java
 dev-java/lzma 9.18: Java code for LZMA compression and decompression
 dev-java/lzmajio 0.95-r1: LzmaInputStream/LzmaOutputStream interacting with underlying LZMA en-/decoders
-dev-java/maven-bin 1.1-r3 2.0.11-r2 2.2.1-r2 3.0.4-r1 3.1.1 3.3.3-r1: Project Management and Comprehension Tool for Java
+dev-java/maven-bin 3.0.5 3.1.1 3.2.5 3.3.9: Project Management and Comprehension Tool for Java
 dev-java/mchange-commons 0.2.10: a library of arguably useful Java utilities
 dev-java/mersennetwister 0_pre23765-r1: Modified MersenneTwister java port for Freenet
 dev-java/metainf-services 1.6: Generates META-INF/services files automatically
@@ -10180,7 +10180,7 @@ sys-firmware/b43-firmware 5.100.138: broadcom firmware for b43 LP PHY and >=linu
 sys-firmware/b43legacy-firmware 3.130.20.0: broadcom firmware for b43legacy/bcm43xx
 sys-firmware/bluez-firmware 1.2: Firmware for Broadcom BCM203x and STLC2300 Bluetooth chips
 sys-firmware/edk2-ovmf 2017_pre20170505-r1 2017_p20180211: UEFI firmware for 64-bit x86 virtual machines
-sys-firmware/intel-microcode 20180807a_p20190512: Intel IA32/IA64 microcode update data
+sys-firmware/intel-microcode 20180807a_p20190512 20190514_p20190512: Intel IA32/IA64 microcode update data
 sys-firmware/ipw2100-firmware 1.3: Firmware for the Intel PRO/Wireless 2100 3B miniPCI adapter
 sys-firmware/ipw2200-firmware 3.1: Firmware for the Intel PRO/Wireless 2200BG/2915ABG miniPCI and 2225BG PCI
 sys-firmware/ipxe 1.0.0_p20130925 1.0.0_p20160620 1.0.0_p20180211: Open source network boot (PXE) firmware

@@ -1272,10 +1272,10 @@
     <name>Gentoo Games Project</name>
     <url>https://wiki.gentoo.org/wiki/Project:Games</url>
     <description>The Gentoo Games Project manages the game categories (dev-games, games-*) in Portage</description>
-    <member>
+    <member is-lead="1">
       <email>chewi@gentoo.org</email>
       <name>James Le Cuirot</name>
-      <role>Member ( Steam, HB, GOG, Minecraft )</role>
+      <role>Lead ( Team Lead )</role>
     </member>
     <member>
       <email>soap@gentoo.org</email>
@@ -1287,10 +1287,10 @@
       <name>Stefan Strogin</name>
       <role>Member ( general )</role>
     </member>
-    <member is-lead="1">
+    <member>
       <email>vapier@gentoo.org</email>
       <name>Mike Frysinger</name>
-      <role>Lead ( Team Lead )</role>
+      <role>Member ( general )</role>
     </member>
   </project>
   <project>
