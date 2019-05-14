@@ -1,6 +1,10 @@
 # Copyright 2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Dependency resolution is broken because
+# sys-fs/lvm2 has no riscv keyword
+sys-fs/e2fsprogs cron
+
 # This doesn't work for (any) riscv yet.
 dev-libs/libpcre2 jit
 dev-libs/libpcre jit
