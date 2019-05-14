@@ -3150,7 +3150,7 @@ dev-libs/librdkafka 0.11.5 0.11.6: Apache Kafka C/C++ client library
 dev-libs/librelp 1.2.18 1.3.0: An easy to use library for the RELP protocol
 dev-libs/librep 0.92.6: Shared library implementing a Lisp dialect
 dev-libs/libreport 2.0.13-r1 2.9.5: Generic library for reporting software bugs
-dev-libs/libressl 2.8.3: Free version of the SSL/TLS protocol forked from OpenSSL
+dev-libs/libressl 2.6.5 2.8.3: Free version of the SSL/TLS protocol forked from OpenSSL
 dev-libs/librevenge 0.0.4-r1: A helper library for REVerse ENGineered formats filters
 dev-libs/libsass 3.4.7 3.5.2: A C/C++ implementation of a Sass CSS compiler
 dev-libs/libsecp256k1 0.0.0_pre20151118: Optimized C library for EC operations on curve secp256k1
