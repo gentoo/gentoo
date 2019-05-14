@@ -17,12 +17,21 @@ KEYWORDS="~amd64 ~arm64 ~ppc64"
 
 IUSE="alsa cups debug doc examples gentoo-vm headless-awt +jbootstrap nsplugin +pch selinux source systemtap +webstart"
 
-CDEPEND="
+COMMON_DEPEND="
 	media-libs/freetype:2=
 	media-libs/giflib:0/7
-	>=sys-apps/baselayout-java-0.1.0-r1
+	media-libs/libpng:0=
+	media-libs/lcms:2=
 	sys-libs/zlib
+	virtual/jpeg:0=
 	systemtap? ( dev-util/systemtap )
+"
+
+# Many libs are required to build, but not to run, make is possible to remove
+# by listing conditionally in RDEPEND unconditionally in DEPEND
+RDEPEND="
+	${COMMON_DEPEND}
+	>=sys-apps/baselayout-java-0.1.0-r1
 	!headless-awt? (
 		x11-libs/libX11
 		x11-libs/libXext
@@ -31,32 +40,33 @@ CDEPEND="
 		x11-libs/libXt
 		x11-libs/libXtst
 	)
-"
-
-# cups and alsa required to build, but not to run, make is possible to remove
-RDEPEND="
-	${CDEPEND}
 	alsa? ( media-libs/alsa-lib )
 	cups? ( net-print/cups )
 	selinux? ( sec-policy/selinux-java )
 "
 
 DEPEND="
-	${CDEPEND}
+	${COMMON_DEPEND}
 	app-arch/zip
 	media-libs/alsa-lib
 	net-print/cups
-	!headless-awt? (
-		x11-base/xorg-proto
-	)
+	x11-base/xorg-proto
+	x11-libs/libX11
+	x11-libs/libXext
+	x11-libs/libXi
+	x11-libs/libXrender
+	x11-libs/libXt
+	x11-libs/libXtst
 	|| (
 		dev-java/openjdk-bin:${SLOT}
 		dev-java/openjdk:${SLOT}
 	)
 "
 
-PDEPEND="webstart? ( >=dev-java/icedtea-web-1.6.1:0 )
-	nsplugin? ( >=dev-java/icedtea-web-1.6.1:0[nsplugin] )"
+PDEPEND="
+	webstart? ( >=dev-java/icedtea-web-1.6.1:0 )
+	nsplugin? ( >=dev-java/icedtea-web-1.6.1:0[nsplugin] )
+"
 
 S="${WORKDIR}/jdk${SLOT}u-jdk-${MY_PV}"
 
@@ -125,7 +135,6 @@ src_configure() {
 	# Enabling full docs appears to break doc building. If not
 	# explicitly disabled, the flag will get auto-enabled if pandoc and
 	# graphviz are detected. pandoc has loads of dependencies anyway.
-	# currently it still bundles lcms libpng giflib and libjpeg.
 
 	local myconf=(
 		--disable-ccache
@@ -135,6 +144,9 @@ src_configure() {
 		--with-extra-cxxflags="${CXXFLAGS}"
 		--with-extra-ldflags="${LDFLAGS}"
 		--with-giflib=system
+		--with-lcms=system
+		--with-libjpeg=system
+		--with-libpng=system
 		--with-native-debug-symbols=$(usex debug internal none)
 		--with-vendor-name="Gentoo"
 		--with-vendor-url="https://gentoo.org"
@@ -166,7 +178,8 @@ src_configure() {
 
 src_compile() {
 	emake -j1 \
-		$(usex jbootstrap bootcycle-images product-images) $(usex doc docs '') \
+		$(usex doc docs '') \
+		$(usex jbootstrap bootcycle-images product-images) \
 		JOBS=$(makeopts_jobs) LOG=debug CFLAGS_WARNINGS_ARE_ERRORS= # No -Werror
 }
 
