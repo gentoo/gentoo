@@ -27,12 +27,16 @@ SLOT="$(ver_cut 1)"
 KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 IUSE="alsa debug cups doc examples gentoo-vm headless-awt +jbootstrap nsplugin +pch selinux source +webstart"
 
-CDEPEND="
+COMMON_DEPEND="
 	media-libs/freetype:2=
 	media-libs/giflib:0/7
-	>=sys-apps/baselayout-java-0.1.0-r1
 	sys-libs/zlib
-	alsa? ( media-libs/alsa-lib )
+"
+# Many libs are required to build, but not to run, make is possible to remove
+# by listing conditionally in RDEPEND unconditionally in DEPEND
+RDEPEND="
+	${COMMON_DEPEND}
+	>=sys-apps/baselayout-java-0.1.0-r1
 	!headless-awt? (
 		x11-libs/libX11
 		x11-libs/libXext
@@ -41,26 +45,23 @@ CDEPEND="
 		x11-libs/libXt
 		x11-libs/libXtst
 	)
-"
-
-RDEPEND="
-	${CDEPEND}
+	alsa? ( media-libs/alsa-lib )
 	cups? ( net-print/cups )
 	selinux? ( sec-policy/selinux-java )
 "
 
-# cups headers requied to build, runtime dep is optional
 DEPEND="
-	${CDEPEND}
-	net-print/cups
+	${COMMON_DEPEND}
 	app-arch/zip
-	app-misc/ca-certificates
-	dev-lang/perl
-	dev-libs/openssl:0
 	media-libs/alsa-lib
-	!headless-awt? (
-		x11-base/xorg-proto
-	)
+	net-print/cups
+	x11-base/xorg-proto
+	x11-libs/libX11
+	x11-libs/libXext
+	x11-libs/libXi
+	x11-libs/libXrender
+	x11-libs/libXt
+	x11-libs/libXtst
 	|| (
 		dev-java/openjdk-bin:${SLOT}
 		dev-java/icedtea-bin:${SLOT}
@@ -69,8 +70,10 @@ DEPEND="
 	)
 "
 
-PDEPEND="webstart? ( >=dev-java/icedtea-web-1.6.1:0 )
-	nsplugin? ( >=dev-java/icedtea-web-1.6.1:0[nsplugin] )"
+PDEPEND="
+	webstart? ( >=dev-java/icedtea-web-1.6.1:0 )
+	nsplugin? ( >=dev-java/icedtea-web-1.6.1:0[nsplugin] )
+"
 
 S="${WORKDIR}/jdk${SLOT}u-jdk${MY_PV}"
 
@@ -146,8 +149,6 @@ src_configure() {
 	# Work around stack alignment issue, bug #647954.
 	use x86 && append-flags -mincoming-stack-boundary=2
 
-	append-flags -Wno-error
-
 	local myconf=(
 			--disable-ccache
 			--enable-unlimited-crypto
@@ -187,8 +188,10 @@ src_configure() {
 }
 
 src_compile() {
-	emake -j1 LOG=debug JOBS=$(makeopts_jobs)\
-		$(usex jbootstrap bootcycle-images images) $(usex doc docs '')
+	emake -j1 \
+		$(usex doc docs '') \
+		$(usex jbootstrap bootcycle-images images) \
+		JOBS=$(makeopts_jobs) LOG=debug
 }
 
 src_install() {
@@ -199,6 +202,12 @@ src_install() {
 
 	if ! use alsa; then
 		rm -v jre/lib/$(get_system_arch)/libjsoundalsa.* || die
+	fi
+
+	# stupid build system does not remove that
+	if use headless-awt ; then
+		rm -fvr jre/lib/$(get_system_arch)/lib*{[jx]awt,splashscreen}* \
+		{,jre/}bin/policytool bin/appletviewer || die
 	fi
 
 	if ! use examples ; then
