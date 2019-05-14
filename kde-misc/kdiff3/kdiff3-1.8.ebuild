@@ -3,13 +3,12 @@
 
 EAPI=7
 
-COMMIT="5b50c4c7b0ce7d5e06287c24b6b5600b6c2d68df"
 KDE_HANDBOOK="forceoptional"
 inherit kde5
 
 DESCRIPTION="Frontend to diff3 based on KDE Frameworks"
 HOMEPAGE="https://userbase.kde.org/KDiff3"
-SRC_URI="https://github.com/KDE/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
+SRC_URI="mirror://kde/stable/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~x86"
@@ -35,5 +34,3 @@ RDEPEND="${DEPEND}
 	sys-apps/diffutils
 	!kde-misc/kdiff3:4
 "
-
-S="${WORKDIR}/${PN}-${COMMIT}"
