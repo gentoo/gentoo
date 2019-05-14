@@ -12,7 +12,7 @@ MY_MV="${PV%%.*}"
 
 DESCRIPTION="Project Management and Comprehension Tool for Java"
 SRC_URI="mirror://apache/maven/maven-${MY_MV}/${PV}/binaries/${MY_P}-bin.tar.gz"
-HOMEPAGE="http://maven.apache.org/"
+HOMEPAGE="https://maven.apache.org/"
 
 LICENSE="Apache-2.0"
 SLOT="3.2"
