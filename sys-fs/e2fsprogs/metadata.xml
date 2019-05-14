@@ -6,6 +6,7 @@
 	<name>Gentoo Base System</name>
 </maintainer>
 <use>
+	<flag name="cron">Install e2scrub_all cron script</flag>
 	<flag name='fuse'>Build fuse2fs, a FUSE file system client for ext2/ext3/ext4 file systems</flag>
 </use>
 <upstream>
