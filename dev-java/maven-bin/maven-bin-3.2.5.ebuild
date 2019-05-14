@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -12,11 +12,11 @@ MY_MV="${PV%%.*}"
 
 DESCRIPTION="Project Management and Comprehension Tool for Java"
 SRC_URI="mirror://apache/maven/maven-${MY_MV}/${PV}/binaries/${MY_P}-bin.tar.gz"
-HOMEPAGE="http://maven.apache.org/"
+HOMEPAGE="https://maven.apache.org/"
 
 LICENSE="Apache-2.0"
 SLOT="3.2"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 # TODO: Needs further resolution:
 #

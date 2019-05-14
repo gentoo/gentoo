@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -77,7 +77,8 @@ src_compile() {
 }
 
 src_test() {
-	TCLLIBPATH=${S} virtx default | grep FAILED && die
+	TCLLIBPATH=${S} virtx default | tee snack.testResult
+	grep -q FAILED snack.testResult && die
 }
 
 src_install() {
