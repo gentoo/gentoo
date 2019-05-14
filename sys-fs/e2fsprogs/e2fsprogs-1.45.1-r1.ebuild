@@ -14,10 +14,11 @@ SRC_URI="mirror://sourceforge/e2fsprogs/${P}.tar.xz
 LICENSE="GPL-2 BSD"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sh ~sparc ~x86 -x86-fbsd ~amd64-linux ~x86-linux ~m68k-mint"
-IUSE="fuse nls static-libs elibc_FreeBSD"
+IUSE="cron fuse nls static-libs elibc_FreeBSD"
 
 RDEPEND="~sys-libs/${PN}-libs-${PV}
 	>=sys-apps/util-linux-2.16
+	cron? ( sys-fs/lvm2[-device-mapper-only(-)] )
 	fuse? ( sys-fs/fuse:0 )
 	nls? ( virtual/libintl )"
 DEPEND="${RDEPEND}"
@@ -71,8 +72,8 @@ src_configure() {
 	append-cppflags -D_GNU_SOURCE
 
 	local myeconfargs=(
-		--with-root-prefix="${EPREFIX}/"
-		--with-crond-dir="${EPREFIX}/etc/cron.d"
+		--with-root-prefix="${EPREFIX}"
+		$(use_with cron crond-dir "${EPREFIX}/etc/cron.d")
 		--with-systemd-unit-dir="$(systemd_get_systemunitdir)"
 		--with-udev-rules-dir="${EPREFIX}$(get_udevdir)/rules.d"
 		--enable-symlink-install
