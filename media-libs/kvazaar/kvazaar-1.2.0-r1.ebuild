@@ -11,7 +11,7 @@ if [[ ${PV} = *9999 ]] ; then
 else
 	SRC_URI="https://github.com/ultravideo/kvazaar/archive/v${PV}.tar.gz -> ${P}.tar.gz
 		test? ( https://github.com/silentbicycle/greatest/archive/v${GREATEST_PV}.tar.gz -> greatest-${GREATEST_PV}.tar.gz )"
-	KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ppc ppc64 sparc x86"
+	KEYWORDS="alpha amd64 arm arm64 hppa ia64 ppc ppc64 sparc x86"
 fi
 inherit autotools flag-o-matic multilib-minimal toolchain-funcs
 
