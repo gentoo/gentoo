@@ -10782,7 +10782,7 @@ x11-base/xorg-drivers 1.20: Meta package containing deps on all xorg drivers
 x11-base/xorg-proto 2018.4: X.Org combined protocol headers
 x11-base/xorg-server 1.20.4: X.Org X servers
 x11-base/xorg-x11 7.4-r3: An X11 implementation maintained by the X.Org Foundation (meta package)
-x11-drivers/nvidia-drivers 340.107-r1 390.116-r2 410.104-r2 415.27-r2 418.56: NVIDIA Accelerated Graphics Driver
+x11-drivers/nvidia-drivers 340.107-r1 390.116-r2 410.104-r2 415.27-r2 418.74: NVIDIA Accelerated Graphics Driver
 x11-drivers/xf86-input-elographics 1.4.1: Elographics input driver
 x11-drivers/xf86-input-evdev 2.10.6: Generic Linux input driver
 x11-drivers/xf86-input-joystick 1.6.3: X.Org driver for joystick input devices
@@ -10887,7 +10887,7 @@ x11-libs/librfm 5.3.16.3-r1: The basic library used by some rfm applications, su
 x11-libs/libva 1.7.3: Video Acceleration (VA) API for Linux
 x11-libs/libva-intel-driver 1.7.3: HW video decode support for Intel integrated graphics
 x11-libs/libva-vdpau-driver 0.7.4-r4: VDPAU Backend for Video Acceleration (VA) API
-x11-libs/libvdpau 1.1.1: VDPAU wrapper and trace libraries
+x11-libs/libvdpau 1.1.1 1.2: VDPAU wrapper and trace libraries
 x11-libs/libwnck 2.31.0 3.30.0: A window navigation construction kit
 x11-libs/libxcb 1.13.1: X C-language Bindings library
 x11-libs/libxkbcommon 0.8.4: X.Org xkbcommon library
