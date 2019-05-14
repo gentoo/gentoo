@@ -13,6 +13,7 @@
 		It is designed to edit books in ePub format.</longdescription>
 	<use>
 		<flag name="system-mathjax">Use the system-wide <pkg>dev-libs/mathjax</pkg> instead of bundled.</flag>
+		<flag name="plugins">Installed needed Python packages for using Sigil plugins</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">Sigil-Ebook/Sigil</remote-id>

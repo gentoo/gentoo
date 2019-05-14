@@ -4,6 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{5,6,7} )
+PYTHON_REQ_USE="tk"
 
 inherit cmake-utils python-single-r1 readme.gentoo-r1 xdg-utils
 
@@ -16,7 +17,7 @@ SRC_URI="https://github.com/Sigil-Ebook/Sigil/archive/${PV}.tar.gz -> ${MY_P}.ta
 LICENSE="GPL-3+ Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="system-mathjax"
+IUSE="+plugins system-mathjax"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
@@ -25,13 +26,8 @@ RDEPEND="
 	dev-libs/boost:=[threads]
 	dev-libs/libpcre:3=[pcre16]
 	dev-libs/xerces-c[icu]
-	dev-python/chardet[${PYTHON_USEDEP}]
-	dev-python/cssselect[${PYTHON_USEDEP}]
-	dev-python/cssutils[${PYTHON_USEDEP}]
-	dev-python/html5lib[${PYTHON_USEDEP}]
+	dev-python/css-parser[${PYTHON_USEDEP}]
 	dev-python/lxml[${PYTHON_USEDEP}]
-	dev-python/pillow[${PYTHON_USEDEP}]
-	dev-python/regex[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
 	>=dev-qt/qtconcurrent-5.4:5
 	>=dev-qt/qtcore-5.4:5
@@ -41,6 +37,14 @@ RDEPEND="
 	>=dev-qt/qtwidgets-5.4:5
 	>=dev-qt/qtxmlpatterns-5.4:5
 	sys-libs/zlib[minizip]
+	plugins? (
+		dev-python/chardet[${PYTHON_USEDEP}]
+		dev-python/cssselect[${PYTHON_USEDEP}]
+		dev-python/cssutils[${PYTHON_USEDEP}]
+		dev-python/html5lib[${PYTHON_USEDEP}]
+		dev-python/pillow[${PYTHON_USEDEP}]
+		dev-python/regex[${PYTHON_USEDEP}]
+	)
 	system-mathjax? ( dev-libs/mathjax )
 "
 DEPEND="${RDEPEND}"
@@ -66,6 +70,12 @@ For example use & # 1 6 0 ; for non-breaking spaces and etc.
 
 We strongly recommend enabling Mend On Open in your settings
 for best performance with Sigil."
+
+src_prepare() {
+	# bundled is a exact copy of the package, and upstream plan to switch soon
+	rm -r src/Resource_Files/plugin_launchers/python/css_parser/ || die
+	cmake-utils_src_prepare
+}
 
 src_configure() {
 	python_export PYTHON_LIBPATH PYTHON_INCLUDEDIR
