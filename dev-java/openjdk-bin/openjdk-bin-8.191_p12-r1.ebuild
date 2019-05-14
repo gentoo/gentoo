@@ -17,12 +17,11 @@ SLOT="$(ver_cut 1)"
 DESCRIPTION="Prebuilt Java JDK binaries provided by AdoptOpenJDK"
 HOMEPAGE="https://adoptopenjdk.net"
 SRC_URI="
-	$(abi_uri x64 amd64)
-	$(abi_uri ppc64le ppc64)
+	$(abi_uri aarch64 arm64)
 "
 
 LICENSE="GPL-2-with-classpath-exception"
-KEYWORDS="~amd64 ~ppc64"
+KEYWORDS="~arm64"
 
 IUSE="alsa cups doc examples +gentoo-vm headless-awt nsplugin selinux source +webstart"
 
@@ -46,7 +45,7 @@ RDEPEND="
 PDEPEND="webstart? ( >=dev-java/icedtea-web-1.6.1:0 )
 	nsplugin? ( >=dev-java/icedtea-web-1.6.1:0[nsplugin] )"
 
-RESTRICT="preserve-libs strip"
+RESTRICT="preserve-libs splitdebug"
 QA_PREBUILT="*"
 
 S="${WORKDIR}/jdk${MY_PV}"
@@ -69,7 +68,7 @@ src_install() {
 	fi
 
 	if use headless-awt ; then
-		rm -fvr */jre/lib/*/lib*{[jx]awt,splashscreen}* \
+		rm -fvr jre/lib/*/lib*{[jx]awt,splashscreen}* \
 			{,jre/}bin/policytool bin/appletviewer || die
 	fi
 
