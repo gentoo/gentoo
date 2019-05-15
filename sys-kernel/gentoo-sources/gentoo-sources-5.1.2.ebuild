@@ -3,7 +3,7 @@
 
 EAPI="6"
 ETYPE="sources"
-K_WANT_GENPATCHES="base extras"
+K_WANT_GENPATCHES="base extras experimental"
 K_GENPATCHES_VER="3"
 
 inherit kernel-2
