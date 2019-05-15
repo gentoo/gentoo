@@ -6,7 +6,7 @@ PYTHON_COMPAT=( python{2_7,3_{5,6}} )
 DISTUTILS_OPTIONAL=1
 
 inherit check-reqs cmake-utils distutils-r1 flag-o-matic multiprocessing \
-	python-r1 udev user readme.gentoo-r1 systemd
+	python-r1 udev user readme.gentoo-r1 systemd bash-completion-r1
 
 if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
