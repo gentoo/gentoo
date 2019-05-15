@@ -478,44 +478,6 @@ dev-util/cucumber-expressions:5.0
 >=dev-util/boost-build-1.70.0
 >=net-mail/libpst-0.6.66-r2
 
-# Michał Górny <mgorny@gentoo.org> (14 Apr 2019)
-# The ebuild violates EAPI and relies on STRIP_MASK.  The default
-# behavior makes it capable of executing arbitrary commands when running
-# files from untrusted sources.  Last maintainer activity in 2015.  Last
-# upstream release in 2011.
-# Removal in 30 days.  Bug #651430.
-app-text/active-dvi
-
-# Michał Górny <mgorny@gentoo.org> (14 Apr 2019)
-# The ebuild violates EAPI and relies on STRIP_MASK.  Also has
-# suspicious USE=debug logic.  Not touched since 2016.
-# Removal in 30 days.  Bug #651450.
-dev-util/cyclo
-
-# Michał Górny <mgorny@gentoo.org> (14 Apr 2019)
-# The ebuild violates EAPI and relies on STRIP_MASK.  Also has
-# suspicious USE=debug logic.  Not touched since 2016.
-# Removal in 30 days.  Bug #651446.
-dev-util/cccc
-
-# Michał Górny <mgorny@gentoo.org> (14 Apr 2019)
-# Integrated into dev-python/python-ldap-3.0+, and declared a deprecated
-# fork by upstream.  No reverse dependencies left.
-# Removal in 30 days.  Bug #668066.
-dev-python/pyldap
-
-# Aaron Bauman <bman@gentoo.org> (13 Apr 2019)
-# Unmaintained in Gentoo and outstanding vulnerability
-# Masked for removal in 30 days. Bug #522578
-dev-libs/ace
-net-proxy/bfilter
-
-# Ulrich Müller <ulm@gentoo.org> (13 Apr 2019)
-# Last release in 2001, HOMEPAGE and SRC_URI are gone.
-# Byte-compilation with recent Emacs versions fails.
-# Masked for removal in 30 days, bug #683248.
-app-emacs/prom-wl
-
 # Hans de Graaff <graaff@gentoo.org> (13 Apr 2019)
 # Old ruby24-only slots of Rails-related packages
 # These no longer have reverse dependencies or newer

@@ -18,7 +18,6 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 DEPEND="
-	!!<dev-python/setuptools_scm-3
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
 		dev-python/pytest[${PYTHON_USEDEP}]
@@ -30,11 +29,18 @@ python_prepare_all() {
 	sed -i -e 's:test_pip_download:_&:' testing/test_regressions.py || die
 	# all fetch specific setuptools versions
 	rm testing/test_setuptools_support.py || die
+	# remove self-dependency
+	sed -i -e "/arguments\.update/s@scm_config()@{'version': '${PV}'}@" \
+		-e "/__main__/i del sys.path[0]" setup.py || die
 
 	distutils-r1_python_prepare_all
 }
 
 python_test() {
-	distutils_install_for_testing
+	PYTHONPATH= distutils_install_for_testing
 	py.test -v -v -x || die "Tests fail with ${EPYTHON}"
+}
+
+python_install() {
+	PYTHONPATH= distutils-r1_python_install
 }
