@@ -1,4 +1,4 @@
-DEFINED_PHASES=install test
+DEFINED_PHASES=install prepare test
 DEPEND=dev-lang/tcl:0= dev-tcltk/tdom test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost )
 DESCRIPTION=Tcl Standard Library
 EAPI=6
@@ -10,4 +10,4 @@ RDEPEND=dev-lang/tcl:0= dev-tcltk/tdom
 SLOT=0
 SRC_URI=mirror://sourceforge/tcllib/tcllib/1.19/tcllib-1.19.tar.xz
 _eclasses_=virtualx	401b718cc14d43a5a7fbe062c4851ba5
-_md5_=eb9f1f2e0081d4fca5e9896c3dd28ed3
+_md5_=8cc4f98b137175b026836be6a1cf93ec

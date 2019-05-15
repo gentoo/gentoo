@@ -6672,7 +6672,7 @@ gnustep-libs/highlighterkit 0.1.3: Syntax highlighter framework
 gnustep-libs/netclasses 1.1.0: An asynchronous networking library for GNUstep
 gnustep-libs/pantomime 1.2.2: A set of Objective-C classes that model a mail system
 gnustep-libs/renaissance 0.9.0-r1: GNUstep Renaissance allows to describe user interfaces XML files
-gui-apps/mako 1.2: A lightweight notification daemon for Wayland. Works on Sway.
+gui-apps/mako 1.3: A lightweight notification daemon for Wayland. Works on Sway.
 gui-apps/swayidle 1.2: Idle management daemon for Wayland
 gui-apps/swaylock 1.3: Screen locker for Wayland
 gui-apps/wl-clipboard 1.0.0: Wayland clipboard utilities
