@@ -10,10 +10,12 @@
 =app-crypt/gnupg-2.2.14
 
 # Fabian Groffen <grobian@gentoo.org> (12 Nov 2018)
-# this version of binutils produces shared libraries with symbol lookup
+# these versions of binutils produces shared libraries with symbol lookup
 # errors, probably a versioning problem, confirmed on Solaris 10 and
 # OpenIndiana (11)
+# For instance XML-Parser generates lookup errors when importing from Perl
 =sys-devel/binutils-2.31.1*
+=sys-devel/binutils-2.32*
 
 # Fabian Groffen <grobian@gentoo.org> (14 Jan 2014)
 # util-linux has no business on Solaris systems
