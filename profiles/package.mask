@@ -478,14 +478,6 @@ dev-util/cucumber-expressions:5.0
 >=dev-util/boost-build-1.70.0
 >=net-mail/libpst-0.6.66-r2
 
-# Michał Górny <mgorny@gentoo.org> (14 Apr 2019)
-# The ebuild violates EAPI and relies on STRIP_MASK.  The default
-# behavior makes it capable of executing arbitrary commands when running
-# files from untrusted sources.  Last maintainer activity in 2015.  Last
-# upstream release in 2011.
-# Removal in 30 days.  Bug #651430.
-app-text/active-dvi
-
 # Aaron Bauman <bman@gentoo.org> (13 Apr 2019)
 # Unmaintained in Gentoo and outstanding vulnerability
 # Masked for removal in 30 days. Bug #522578
