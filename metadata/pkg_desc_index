@@ -10503,7 +10503,7 @@ virtual/perl-I18N-LangTags 0.420.0: Virtual for I18N-LangTags
 virtual/perl-IO 1.380.0: Virtual for IO
 virtual/perl-IO-Compress 2.74.0-r1: Virtual for IO-Compress
 virtual/perl-IO-Socket-IP 0.380.0: Virtual for IO-Socket-IP
-virtual/perl-IO-Zlib 1.100.0-r11: Virtual for IO-Zlib
+virtual/perl-IO-Zlib 1.100.0-r12: Virtual for IO-Zlib
 virtual/perl-IPC-Cmd 0.960.0: Virtual for IPC-Cmd
 virtual/perl-JSON-PP 2.274.0.200_rc: Virtual for JSON-PP
 virtual/perl-Locale-Maketext 1.280.0: Virtual for Locale-Maketext
