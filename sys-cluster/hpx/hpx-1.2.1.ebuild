@@ -46,22 +46,22 @@ pkg_setup() {
 }
 
 src_configure() {
-	CMAKE_BUILD_TYPE=Release
 	local mycmakeargs=(
-		-DHPX_BUILD_EXAMPLES=OFF
-		-DHPX_MALLOC=system
-		-DLIB=$(get_libdir)
-		-Dcmake_dir=cmake
-		-DHPX_BUILD_DOCUMENTATION=$(usex doc)
-		-DHPX_JEMALLOC=$(usex jemalloc)
+		-DHPX_WITH_EXAMPLES=OFF
+		-DHPX_WITH_DOCUMENTATION=$(usex doc)
+		-DHPX_WITH_PAPI=$(usex papi)
+		-DHPX_WITH_GOOGLE_PERFTOOLS=$(usex perftools)
 		-DBUILD_TESTING=$(usex test)
-		-DHPX_GOOGLE_PERFTOOLS=$(usex perftools)
-		-DHPX_PAPI=$(usex papi)
 	)
-
-	use jemalloc && mycmakeargs+=( -DHPX_MALLOC=jemalloc )
-	use perftools && mycmakeargs+=( -DHPX_MALLOC=tcmalloc )
-	use tbb && mycmakeargs+=( -DHPX_MALLOC=tbbmalloc )
+	if use jemalloc; then
+		mycmakeargs+=( -DHPX_WITH_MALLOC=jemalloc )
+	elif use perftools; then
+		mycmakeargs+=( -DHPX_WITH_MALLOC=tcmalloc )
+	elif use tbb; then
+		mycmakeargs+=( -DHPX_WITH_MALLOC=tbbmalloc )
+	else
+		mycmakeargs+=( -DHPX_WITH_MALLOC=system )
+	fi
 
 	cmake-utils_src_configure
 }
@@ -73,8 +73,8 @@ src_test() {
 
 src_install() {
 	cmake-utils_src_install
-	mv "${D}/usr/bin/spin" "${D}/usr/bin/hpx_spin" || die
 	if use examples; then
+		mv "${D}/usr/bin/spin" "${D}/usr/bin/hpx_spin" || die
 		insinto /usr/share/doc/${PF}
 		doins -r examples
 	fi
