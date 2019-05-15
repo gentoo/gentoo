@@ -18,10 +18,6 @@ if ! type get_options >/dev/null 2>/dev/null ; then
 	[ -r "${svclib}"/sh/rc-services.sh ] && . "${svclib}"/sh/rc-services.sh
 fi
 
-# Great new Gnome2 feature, AA
-# We enable this by default
-export GDK_USE_XFT=1
-
 export RC_SVCNAME=xdm
 EXEC="$(get_options service)"
 NAME="$(get_options name)"
