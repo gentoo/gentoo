@@ -10,4 +10,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=http://ess.r-project.org/downloads/ess/ess-18.10.2.tgz
 _eclasses_=elisp	efe1c459331d853614b12c63ab169a32	elisp-common	23f47b2e1de7abf387105eddd1318738	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190
-_md5_=f20e2abe292e164e94ea197f4327ad66
+_md5_=28f340b82982ee6c164ad762c4da7136
