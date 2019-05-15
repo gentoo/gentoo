@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=virtual/perl-Data-Dumper virtual/perl-File-Temp >=virtual/perl-Getopt-Long-2.360.0 virtual/perl-IO dev-perl/TermReadKey virtual/perl-Term-ReadLine dev-perl/Text-Autoformat >=dev-perl/Module-Build-0.280.0 test? ( virtual/perl-File-Spec virtual/perl-Test-Simple ) dev-lang/perl:=
+DESCRIPTION=A simple command-line shell framework
+EAPI=6
+HOMEPAGE=https://metacpan.org/release/Term-Shell
+IUSE=test examples
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=virtual/perl-Data-Dumper virtual/perl-File-Temp >=virtual/perl-Getopt-Long-2.360.0 virtual/perl-IO dev-perl/TermReadKey virtual/perl-Term-ReadLine dev-perl/Text-Autoformat dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/S/SH/SHLOMIF/Term-Shell-0.11.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	71c828c354a4cddced2641dda2695de5
+_md5_=a4e2a4689c5ee6047f21cacf500c89b2

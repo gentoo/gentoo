@@ -6205,20 +6205,15 @@ x11-terms/mlterm:wayland - Enable support for Wayland
 x11-terms/mrxvt:menubar - Enable mrxvt menubar
 x11-terms/mrxvt:utempter - REcords user logins. Useful on multi-user systems
 x11-terms/rxvt-unicode:256-color - Enable 256 color support
-x11-terms/rxvt-unicode:alt-font-width - Calculate the font width using a different method
 x11-terms/rxvt-unicode:blink - Enable blinking text
-x11-terms/rxvt-unicode:buffer-on-clear - Store visible output to history buffer when clearing the screen with ctrl-l. Read https://bbs.archlinux.org/viewtopic.php?id=129302
 x11-terms/rxvt-unicode:fading-colors - Enable colors fading when off focus
-x11-terms/rxvt-unicode:focused-urgency - Enable the urgent flag when a terminal window is focused
 x11-terms/rxvt-unicode:font-styles - Enable support for bold and italic fonts
 x11-terms/rxvt-unicode:gdk-pixbuf - Enable transparency support using x11-libs/gdk-pixbuf
 x11-terms/rxvt-unicode:iso14755 - Enable ISO-14755 support
 x11-terms/rxvt-unicode:mousewheel - Enable scrolling via mouse wheel or buttons 4 and 5
 x11-terms/rxvt-unicode:perl - Enable perl script support. You can still disable this at runtime with -pe ""
-x11-terms/rxvt-unicode:secondary-wheel - Support for wheel scrolling on secondary screens (like mutt). Read http://lists.schmorp.de/pipermail/rxvt-unicode/2011q4/001491.html
 x11-terms/rxvt-unicode:unicode3 - Use 21 instead of 16 bits to represent unicode characters
 x11-terms/rxvt-unicode:utmp - Enable utmp support
-x11-terms/rxvt-unicode:wcwidth - Enable wide char width support
 x11-terms/rxvt-unicode:wtmp - Enable wtmp support
 x11-terms/terminator:libnotify - Enables desktop notifications viadev-python/notify-python
 x11-terms/terminology:extras - Install additional testing tools
