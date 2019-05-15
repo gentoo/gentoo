@@ -13,7 +13,7 @@ LICENSE="LGPL-2.1"
 SLOT="0"
 #keywords are blocked by boost-1.66
 #KEYWORDS="~amd64 ~x86"
-IUSE="+etc_profile +gc doc s3 sodium"
+IUSE="+etc_profile +gc doc s3 +sodium"
 
 # sys-apps/busybox is needed for sandbox mount of /bin/sh
 RDEPEND="
