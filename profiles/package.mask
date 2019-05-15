@@ -486,12 +486,6 @@ dev-util/cucumber-expressions:5.0
 # Removal in 30 days.  Bug #651430.
 app-text/active-dvi
 
-# Michał Górny <mgorny@gentoo.org> (14 Apr 2019)
-# The ebuild violates EAPI and relies on STRIP_MASK.  Also has
-# suspicious USE=debug logic.  Not touched since 2016.
-# Removal in 30 days.  Bug #651450.
-dev-util/cyclo
-
 # Aaron Bauman <bman@gentoo.org> (13 Apr 2019)
 # Unmaintained in Gentoo and outstanding vulnerability
 # Masked for removal in 30 days. Bug #522578
