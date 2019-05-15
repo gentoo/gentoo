@@ -1,0 +1,12 @@
+--- a/examples/chronyd.service
++++ b/examples/chronyd.service
+@@ -8,8 +8,7 @@
+ [Service]
+ Type=forking
+ PIDFile=/run/chrony/chronyd.pid
+-EnvironmentFile=-/etc/sysconfig/chronyd
+-ExecStart=/usr/sbin/chronyd $OPTIONS
++ExecStart=/usr/sbin/chronyd
+ PrivateTmp=yes
+ ProtectHome=yes
+ ProtectSystem=full

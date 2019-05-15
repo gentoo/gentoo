@@ -35,7 +35,7 @@ RESTRICT=test
 S="${WORKDIR}/${P/_/-}"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-3.4-systemd-gentoo.patch
+	"${FILESDIR}"/${PN}-3.5-systemd-gentoo.patch
 )
 
 src_prepare() {
