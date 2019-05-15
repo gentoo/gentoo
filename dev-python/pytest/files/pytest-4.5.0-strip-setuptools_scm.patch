@@ -1,0 +1,25 @@
+diff --git a/setup.py b/setup.py
+index 0fb5a58a..302b5dda 100644
+--- a/setup.py
++++ b/setup.py
+@@ -1,4 +1,5 @@
+ from setuptools import setup
++import os
+ 
+ # TODO: if py gets upgrade to >=1.6,
+ #       remove _width_of_current_line in terminal.py
+@@ -18,10 +19,12 @@ INSTALL_REQUIRES = [
+ ]
+ 
+ 
++with open("src/_pytest/_version.py", 'wt') as fp:
++    fp.write('version = "{}"'.format(os.environ['PV']))
++
+ def main():
+     setup(
+-        use_scm_version={"write_to": "src/_pytest/_version.py"},
+-        setup_requires=["setuptools-scm", "setuptools>=40.0"],
++        version=os.environ['PV'],
+         package_dir={"": "src"},
+         # fmt: off
+         extras_require={
