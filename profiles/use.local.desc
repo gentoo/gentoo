@@ -661,7 +661,6 @@ app-misc/lirc:gtk - Include GTK support which enables the use of lirc-setup
 app-misc/lirc:inputlirc - Add a dependency on app-misc/inputlircd
 app-misc/lirc:uinput - Enable support for uinput
 app-misc/mc:edit - Compile and install the mcedit application
-app-misc/mc:mclib - Compile and install the libmc.so shared library
 app-misc/mc:sftp - Add support for sftp (uses net-libs/libssh2 for it).
 app-misc/mc:slang - Use sys-libs/slang instead of sys-libs/ncurses.
 app-misc/mc:xdg - Toggles mc's config dir location. Enable for $XDG_CONFIG_HOME/mc, disable for $HOME/.mc
