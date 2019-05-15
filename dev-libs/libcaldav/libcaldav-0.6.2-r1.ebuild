@@ -1,9 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
-
-inherit base
+EAPI=7
 
 DESCRIPTION="C library implementing client support for CalDAV"
 HOMEPAGE="http://libcaldav.sourceforge.net/"
@@ -21,8 +19,8 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	doc? (
 		app-doc/doxygen
-		virtual/latex-base
 		dev-texlive/texlive-latexextra
+		virtual/latex-base
 	)
 "
 
