@@ -8674,7 +8674,7 @@ net-irc/dircproxy 1.2.0_rc1: an IRC proxy server
 net-irc/eggdrop 1.8.3: An IRC bot extensible with C or TCL
 net-irc/eiwic 1.1.4: A modular IRC bot written in C
 net-irc/emech 3.0.3-r1: UNIX compatible IRC bot programmed in the C language
-net-irc/epic5 1.1.10-r2: Epic5 IRC Client
+net-irc/epic5 1.1.10-r2 2.0.1: Epic5 IRC Client
 net-irc/hexchat 2.12.4-r2: Graphical IRC client based on XChat
 net-irc/inspircd 2.0.25: Inspire IRCd - The Stable, High-Performance Modular IRCd
 net-irc/ircii 20110228 20111115: An IRC and ICB client that runs under most UNIX platforms
@@ -8787,7 +8787,7 @@ net-libs/librsync 0.9.7-r3 2.0.1-r1: Remote delta-compression library
 net-libs/libsignon-glib 1.14: GLib binding for the D-Bus API provided by signond
 net-libs/libsmi 0.4.8-r1: A Library to Access SMI MIB Information
 net-libs/libsoup 2.58.2 2.64.2: An HTTP library implementation in C
-net-libs/libsrtp 1.6.0 2.2.0: Open-source implementation of the Secure Real-time Transport Protocol (SRTP)
+net-libs/libsrtp 1.6.0 1.6.0-r1 2.2.0: Open-source implementation of the Secure Real-time Transport Protocol (SRTP)
 net-libs/libssh 0.8.6: Access a working SSH implementation by means of a library
 net-libs/libssh2 1.8.0-r1 1.8.2: Library implementing the SSH2 protocol
 net-libs/libtirpc 1.0.2-r1: Transport Independent RPC library (SunRPC replacement)
