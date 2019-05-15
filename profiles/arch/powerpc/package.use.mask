@@ -98,7 +98,7 @@ sys-power/nut ups_drivers_nut-ipmipsu
 
 # Michał Górny <mgorny@gentoo.org> (08 Aug 2017)
 # Required VIDEO_CARDS=i965/radeonsi, both masked in this profile.
-media-libs/mesa vulkan
+media-libs/mesa vulkan vulkan-overlay
 
 # Michał Górny <mgorny@gentoo.org> (08 Aug 2017)
 # Requires USE=opencl that is masked in this profile.

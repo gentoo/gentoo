@@ -33,7 +33,7 @@ net-analyzer/rrdtool rados
 
 # Michał Górny <mgorny@gentoo.org> (08 Aug 2017)
 # Required VIDEO_CARDS=i965/radeonsi, both masked in this profile.
-media-libs/mesa vulkan
+media-libs/mesa vulkan vulkan-overlay
 
 # Robin H. Johnson <robbat2@gentoo.org> (05 Aug 2017)
 # Upstream Git is switching to PCRE2 w/ JIT.

@@ -263,7 +263,7 @@ app-office/libreoffice coinmp
 
 # Michał Górny <mgorny@gentoo.org> (08 Aug 2017)
 # Required VIDEO_CARDS=i965/radeonsi, both masked in this profile.
-media-libs/mesa vulkan
+media-libs/mesa vulkan vulkan-overlay
 
 # Alexis Ballier <aballier@gentoo.org> (31 Jul 2017)
 # Passes -mfpu=neon with neon enabled
