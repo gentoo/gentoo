@@ -1,23 +1,24 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-EGIT_REPO_URI="https://github.com/RetroShare/RetroShare.git"
-inherit desktop git-r3 gnome2-utils qmake-utils versionator
+inherit desktop qmake-utils xdg-utils
 
 DESCRIPTION="P2P private sharing application"
-HOMEPAGE="http://retroshare.net"
+HOMEPAGE="https://retroshare.cc"
+SRC_URI="https://github.com/RetroShare/RetroShare/releases/download/v${PV}/RetroShare-v${PV}-source-with-submodules.tar.gz -> ${P}.tar.gz"
 
 # pegmarkdown can also be used with MIT
-LICENSE="AGPL-3 GPL-2 GPL-3 Apache-2.0 LGPL-2.1"
+LICENSE="AGPL-3 GPL-2 GPL-3 Apache-2.0 LGPL-3"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 
-IUSE="cli control-socket gnome-keyring +gui settings-api +sqlcipher +webui"
+IUSE="cli control-socket gnome-keyring +gui +jsonapi service +sqlcipher webui +xapian"
+
 REQUIRED_USE="
-	|| ( cli gui )
-	settings-api? ( || ( control-socket webui ) )"
+	|| ( cli gui service )
+	service? ( jsonapi )"
 
 RDEPEND="
 	app-arch/bzip2
@@ -40,16 +41,26 @@ RDEPEND="
 		x11-libs/libX11
 		x11-libs/libXScrnSaver
 	)
-	settings-api? ( dev-qt/qtcore:5 )
+	service? ( dev-qt/qtcore:5 )
 	sqlcipher? ( dev-db/sqlcipher )
 	!sqlcipher? ( dev-db/sqlite:3 )
-	webui? ( net-libs/libmicrohttpd )"
+	webui? ( net-libs/libmicrohttpd )
+	xapian? ( dev-libs/xapian )"
 
 DEPEND="${RDEPEND}
 	gui? ( dev-qt/designer:5 )
+	jsonapi? (
+		app-doc/doxygen
+		dev-util/cmake
+	)
 	dev-qt/qtcore:5
 	virtual/pkgconfig
 "
+src_unpack() {
+	default
+
+	mv RetroShare ${P}
+}
 
 src_configure() {
 	local qConfigs=()
@@ -58,16 +69,30 @@ src_configure() {
 	qConfigs+=( $(usex control-socket '' 'no_')libresapilocalserver )
 	qConfigs+=( $(usex gnome-keyring '' 'no_')rs_autologin )
 	qConfigs+=( $(usex gui '' 'no_')retroshare_gui )
-	qConfigs+=( $(usex settings-api '' 'no_')libresapi_settings )
+	qConfigs+=( $(usex jsonapi '' 'no_')rs_jsonapi )
+	qConfigs+=( $(usex service '' 'no_')retroshare_service )
 	qConfigs+=( $(usex sqlcipher '' 'no_')sqlcipher )
 	qConfigs+=( $(usex webui '' 'no_')libresapihttpserver )
+	qConfigs+=( $(usex xapian '' 'no_')rs_deep_search )
 
-	eqmake5 CONFIG+="${qConfigs[*]}"
+	eqmake5 CONFIG+="${qConfigs[*]}" \
+		RS_MAJOR_VERSION=$(ver_cut 1) RS_MINOR_VERSION=$(ver_cut 2) \
+		RS_MINI_VERSION=$(ver_cut 3) RS_EXTRA_VERSION="-gentoo-${PR}"
+}
+
+src_compile() {
+	use jsonapi && {
+		nonfatal emake ||
+			elog "Due to a bug in RetroShare-v0.6.5 build system when JSON API is enabled, failure at first emake is normal"
+	}
+
+	emake
 }
 
 src_install() {
 	use cli && dobin retroshare-nogui/src/retroshare-nogui
 	use gui && dobin retroshare-gui/src/retroshare
+	use service && dobin retroshare-service/src/retroshare-service
 
 	insinto /usr/share/retroshare
 	doins libbitdht/src/bitdht/bdboot.txt
@@ -112,9 +137,9 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }
