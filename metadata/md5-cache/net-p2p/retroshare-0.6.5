@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm preinst pretend unpack
+DEPEND=app-arch/bzip2 dev-libs/openssl:0= >=dev-libs/rapidjson-1.1.0 net-libs/libupnp:0= sys-libs/zlib control-socket? ( dev-qt/qtnetwork:5 ) gnome-keyring? ( gnome-base/libgnome-keyring ) gui? ( dev-qt/qtcore:5 dev-qt/qtmultimedia:5 dev-qt/qtnetwork:5 dev-qt/qtprintsupport:5 dev-qt/qtscript:5 dev-qt/qtxml:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 dev-qt/qtx11extras:5 x11-libs/libX11 x11-libs/libXScrnSaver ) service? ( dev-qt/qtcore:5 ) sqlcipher? ( dev-db/sqlcipher ) !sqlcipher? ( dev-db/sqlite:3 ) webui? ( net-libs/libmicrohttpd ) xapian? ( dev-libs/xapian ) gui? ( dev-qt/designer:5 ) jsonapi? ( app-doc/doxygen dev-util/cmake ) dev-qt/qtcore:5 virtual/pkgconfig
+DESCRIPTION=P2P private sharing application
+EAPI=7
+HOMEPAGE=https://retroshare.cc
+IUSE=cli control-socket gnome-keyring +gui +jsonapi service +sqlcipher webui +xapian
+KEYWORDS=~amd64 ~x86
+LICENSE=AGPL-3 GPL-2 GPL-3 Apache-2.0 LGPL-3
+RDEPEND=app-arch/bzip2 dev-libs/openssl:0= >=dev-libs/rapidjson-1.1.0 net-libs/libupnp:0= sys-libs/zlib control-socket? ( dev-qt/qtnetwork:5 ) gnome-keyring? ( gnome-base/libgnome-keyring ) gui? ( dev-qt/qtcore:5 dev-qt/qtmultimedia:5 dev-qt/qtnetwork:5 dev-qt/qtprintsupport:5 dev-qt/qtscript:5 dev-qt/qtxml:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 dev-qt/qtx11extras:5 x11-libs/libX11 x11-libs/libXScrnSaver ) service? ( dev-qt/qtcore:5 ) sqlcipher? ( dev-db/sqlcipher ) !sqlcipher? ( dev-db/sqlite:3 ) webui? ( net-libs/libmicrohttpd ) xapian? ( dev-libs/xapian )
+REQUIRED_USE=|| ( cli gui service ) service? ( jsonapi )
+SLOT=0
+SRC_URI=https://github.com/RetroShare/RetroShare/releases/download/v0.6.5/RetroShare-v0.6.5-source-with-submodules.tar.gz -> retroshare-0.6.5.tar.gz
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	1d91b03d42ab6308b5f4f6b598ed110e	qmake-utils	bdf97e69a34b864d6d545f4ec3143ff7	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529	xdg-utils	14d00d009167652b1fa363e55effe213
+_md5_=4202a239c1d475cb6381e7ba52b9a86c
