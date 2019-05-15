@@ -498,12 +498,6 @@ dev-util/cyclo
 # Removal in 30 days.  Bug #651446.
 dev-util/cccc
 
-# Michał Górny <mgorny@gentoo.org> (14 Apr 2019)
-# Integrated into dev-python/python-ldap-3.0+, and declared a deprecated
-# fork by upstream.  No reverse dependencies left.
-# Removal in 30 days.  Bug #668066.
-dev-python/pyldap
-
 # Aaron Bauman <bman@gentoo.org> (13 Apr 2019)
 # Unmaintained in Gentoo and outstanding vulnerability
 # Masked for removal in 30 days. Bug #522578
