@@ -40,7 +40,7 @@ app-admin/chrpath 0.13-r2: chrpath can modify the rpath and runpath of ELF execu
 app-admin/clsync 0.4.2: Live sync tool based on inotify, written in GNU C
 app-admin/clustershell 1.7.3: Python framework for efficient cluster administration
 app-admin/conky 1.10.8-r4: An advanced, highly configurable system monitor for X
-app-admin/conserver 8.1.18-r1: Serial Console Manager
+app-admin/conserver 8.1.18-r1 8.2.3: Serial Console Manager
 app-admin/cpulimit 1.8: Limits the CPU usage of a process
 app-admin/cronolog 1.6.2-r5: Log rotation software
 app-admin/denyhosts 2.9 3.0 3.0-r1: DenyHosts is a utility to help sys admins thwart ssh hackers
@@ -10053,7 +10053,7 @@ sys-block/noflushd 2.7.3: A daemon to spin down your disks and force accesses to
 sys-block/open-iscsi 2.0.873-r1 2.0.875: A performant, transport independent, multi-platform implementation of RFC3720
 sys-block/open-isns 0.98: iSNS server and client for Linux
 sys-block/parted 3.2-r1: Create, destroy, resize, check, copy partitions and file systems
-sys-block/partimage 0.6.9: Console-based application to efficiently save raw partition data to image file
+sys-block/partimage 0.6.9 0.6.9-r1: Console-based application to efficiently save raw partition data to image file
 sys-block/partitionmanager 3.3.1: KDE utility for management of partitions and file systems
 sys-block/qla-fc-firmware 20101015: QLogic Linux Fibre Channel HBA Firmware for ql2xxx cards
 sys-block/raid-check 20140719-r1: Script to do "scrubbing" on software RAID systems
