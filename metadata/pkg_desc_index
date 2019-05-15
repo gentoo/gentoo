@@ -261,7 +261,7 @@ app-benchmarks/bonnie++ 1.97.2 1.97.3: Hard drive bottleneck testing benchmark s
 app-benchmarks/contest 0.61-r1: Test system responsiveness to compare different kernels
 app-benchmarks/cpuburn 1.4a-r1 1.4a-r3: CPU testing utilities in optimized assembler for maximum loading
 app-benchmarks/dbench 4.0: Popular filesystem benchmark
-app-benchmarks/httperf 0.9.1_p20161228: A tool from HP for measuring web server performance
+app-benchmarks/httperf 0.9.1_p20161228 0.9.1_p20181111: A tool from HP for measuring web server performance
 app-benchmarks/i7z 93_p20131012-r2: A better i7 (and now i3, i5) reporting tool for Linux
 app-benchmarks/interbench 0.31: A Linux interactivity benchmark
 app-benchmarks/iozone 3.471: Filesystem benchmarking program
@@ -5031,7 +5031,7 @@ dev-python/jaraco-text 1.8 1.10.1: Text utilities used by other projects by deve
 dev-python/jaxml 3.02-r1: XML generator written in Python
 dev-python/jdcal 1.0: Julian dates from proleptic Gregorian and Julian calendars
 dev-python/jedi 0.10.2: Autocompletion library for Python
-dev-python/jinja 2.9.5 2.10: A full-featured template engine for Python
+dev-python/jinja 2.9.5 2.10 2.10.1: A full-featured template engine for Python
 dev-python/jinja2-time 0.2.0: Jinja2 Extension for Dates and Times
 dev-python/jmespath 0.9.3 0.9.3-r1: JSON Matching Expressions
 dev-python/joblib 0.10.0 0.11 0.12.2: Tools to provide lightweight pipelining in Python
@@ -8420,7 +8420,7 @@ net-analyzer/etherape 0.9.14: A graphical network monitor for Unix modeled after
 net-analyzer/ettercap 0.8.2-r2: A suite for man in the middle attacks
 net-analyzer/fail2ban 0.10.4: scans log files and bans IPs that show malicious signs
 net-analyzer/firewalk 5.0-r1: A tool for determining a firewall's rule set
-net-analyzer/flow-tools 0.68.5.1-r9: library and programs to process reports from NetFlow data
+net-analyzer/flow-tools 0.68.5.1-r9 0.68.5.1-r10: library and programs to process reports from NetFlow data
 net-analyzer/fping 2.4_beta2_p161-r2 3.13: A utility to ping multiple hosts at once
 net-analyzer/ftester 1.0: Firewall and Intrusion Detection System testing tool
 net-analyzer/fwlogwatch 1.4: A packet filter and firewall log analyzer

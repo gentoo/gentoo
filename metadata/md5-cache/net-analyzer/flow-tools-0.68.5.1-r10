@@ -4,10 +4,10 @@ DESCRIPTION=library and programs to process reports from NetFlow data
 EAPI=7
 HOMEPAGE=https://code.google.com/p/flow-tools/
 IUSE=debug libressl mysql postgres ssl static-libs
-KEYWORDS=~amd64 ppc ~x86
+KEYWORDS=amd64 ppc x86
 LICENSE=BSD GPL-2
 RDEPEND=sys-apps/tcp-wrappers sys-libs/zlib mysql? ( dev-db/mysql-connector-c:0= ) postgres? ( dev-db/postgresql:* ) ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) )
 SLOT=0
 SRC_URI=https://flow-tools.googlecode.com/files/flow-tools-0.68.5.1.tar.bz2
 _eclasses_=user	8bd74731cafdcdad8f7a63637302e073
-_md5_=9601b02fe2e1e402502776a4cf8b9fdf
+_md5_=afc46b0d4ee0abe8035fb258bd8b22c6
