@@ -20,3 +20,18 @@
  
  test power-1.2 {power command} {
    set s [snack::sound snd -load ex1.wav]
+--- a/tests/mixer.test	2019-05-15 08:41:24.761148030 +0200
++++ b/tests/mixer.test	2019-05-15 08:41:37.902919720 +0200
+@@ -13,12 +13,6 @@
+   set msg
+ } {bad option "junk": must be devices, select, input, inputs, output, outputs, channels, volume, lines, or update}
+ 
+-test mixer-1.2 {snack::mixer devices command} {
+-  set devs [snack::mixer devices]
+-  set res [expr [string length $devs] > 0]
+-  set res
+-} 1
+-
+ test mixer-1.3 {snack::mixer select command} {
+   catch {snack::mixer select junk} msg
+   set msg
