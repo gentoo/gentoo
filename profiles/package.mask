@@ -516,16 +516,6 @@ net-proxy/bfilter
 # Masked for removal in 30 days, bug #683248.
 app-emacs/prom-wl
 
-# Michał Górny <mgorny@gentoo.org> (13 Apr 2019)
-# Unmaintained.  Contains vulnerable code and a large number of unsolved
-# (upstream) issues.  The current version is from 2004, and carries
-# some local patches.  Last upstream commits are from 2013, and involve
-# three successive branches, the 0.7.x not having a release since 2004,
-# and the two remaining branches never seeing a single release.
-# The suggested alternatives are net-analyzer/{netcat,openbsd-netcat}.
-# Removal in 30 days.  Bug #601742.
-net-analyzer/gnu-netcat
-
 # Hans de Graaff <graaff@gentoo.org> (13 Apr 2019)
 # Old ruby24-only slots of Rails-related packages
 # These no longer have reverse dependencies or newer
