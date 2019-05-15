@@ -531,13 +531,7 @@ net-analyzer/gnu-netcat
 # to broken multilib conversion.  Last bumped in 2014, and needs local
 # patches to even work.  Obscure library with only two revdeps.
 #
-# media-video/hasciicam: Unmaintained.  The only unconditional revdep
-# of ftplib.  Upstream's FTP is down, and the current release is
-# no newer than 2011.  Upstream removed ftplib usage afterwards,
-# so a snapshot could help.
-#
 # Removal in 30 days.  Bug #520026.
-media-video/hasciicam
 net-libs/ftplib
 
 # Hans de Graaff <graaff@gentoo.org> (13 Apr 2019)
