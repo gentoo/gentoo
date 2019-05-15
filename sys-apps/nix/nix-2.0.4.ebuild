@@ -12,7 +12,7 @@ SRC_URI="http://nixos.org/releases/${PN}/${P}/${P}.tar.xz"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="+etc_profile +gc doc s3 sodium"
+IUSE="+etc_profile +gc doc s3 +sodium"
 
 RDEPEND="
 	app-arch/brotli
