@@ -1,25 +1,23 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="4"
-
-inherit eutils
+EAPI=7
 
 DESCRIPTION="Utilizes the objdump command to disassemble and comment foreign binaries"
 HOMEPAGE="http://www.academicunderground.org/examiner/"
 SRC_URI="http://www.academicunderground.org/examiner/${P}.tar.gz"
-SLOT="0"
-LICENSE="GPL-2+"
-KEYWORDS="amd64 ppc x86"
-IUSE=""
 
-DEPEND=""
+LICENSE="GPL-2+"
+SLOT="0"
+KEYWORDS="~amd64 ~ppc ~x86"
+
 RDEPEND="dev-lang/perl"
 
 src_prepare() {
+	default
 	# Do not install docs through Makefile wrt bug #241256
 	sed -i -e '/$(DOC)/d' Makefile || die 'sed failed'
-	epatch "${FILESDIR}"/${P}-perl.patch
+	eapply "${FILESDIR}"/${P}-perl.patch
 }
 
 src_compile() {	:; }
