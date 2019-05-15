@@ -18,7 +18,7 @@ KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~
 IUSE="doc examples"
 
 RDEPEND="
-	>=dev-python/pillow-2.4.0[tiff,truetype,jpeg(+),${PYTHON_USEDEP}]
+	<dev-python/pillow-6[tiff,truetype,jpeg(+),${PYTHON_USEDEP}]
 	media-libs/libart_lgpl
 	sys-libs/zlib
 "
