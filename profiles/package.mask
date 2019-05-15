@@ -478,12 +478,6 @@ dev-util/cucumber-expressions:5.0
 >=dev-util/boost-build-1.70.0
 >=net-mail/libpst-0.6.66-r2
 
-# Ulrich Müller <ulm@gentoo.org> (13 Apr 2019)
-# Last release in 2001, HOMEPAGE and SRC_URI are gone.
-# Byte-compilation with recent Emacs versions fails.
-# Masked for removal in 30 days, bug #683248.
-app-emacs/prom-wl
-
 # Hans de Graaff <graaff@gentoo.org> (13 Apr 2019)
 # Old ruby24-only slots of Rails-related packages
 # These no longer have reverse dependencies or newer
