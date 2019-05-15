@@ -9,7 +9,7 @@ DESCRIPTION="X Window System initializer"
 
 LICENSE="${LICENSE} GPL-2"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~arm-linux ~x86-linux"
-IUSE="+minimal"
+IUSE="twm"
 
 RDEPEND="
 	!<x11-base/xorg-server-1.8.0
@@ -18,7 +18,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 PDEPEND="x11-apps/xrdb
-	!minimal? (
+	twm? (
 		x11-apps/xclock
 		x11-apps/xsm
 		x11-terms/xterm
