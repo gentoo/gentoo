@@ -1914,7 +1914,7 @@ dev-db/pgpool2 3.7.8 4.0.3: Connection pool server for PostgreSQL
 dev-db/pgtap 0.99.0: Unit testing for PostgreSQL
 dev-db/phpmyadmin 4.8.3-r1 4.8.5: Web-based administration for MySQL database in PHP
 dev-db/postgis 2.4.6 2.5.1-r1: Geographic Objects for PostgreSQL
-dev-db/postgresql 9.3.25 9.4.20 9.4.21 9.5.15 9.5.16 9.6.11 9.6.12 10.6 10.7 11.1 11.2: PostgreSQL RDBMS
+dev-db/postgresql 9.3.25 9.4.20 9.4.21 9.4.22 9.5.15 9.5.16 9.5.17 9.6.11 9.6.12 9.6.13 10.6 10.7 10.8 11.1 11.2 11.3: PostgreSQL RDBMS
 dev-db/pspg 1.3.0: A better pager for psql and mysql
 dev-db/psqlodbc 10.01.0000: Official ODBC driver for PostgreSQL
 dev-db/qdbm 1.8.78-r2: Quick Database Manager
@@ -2879,7 +2879,7 @@ dev-lang/bff 1.0.5: A brainfuck interpreter
 dev-lang/cfortran 4.4-r2: Header file allowing to call Fortran routines from C and C++
 dev-lang/clojure 1.8.0: A dynamic programming language that targets the Java Virtual Machine
 dev-lang/coffee-script 1.9.3-r1: A little language that compiles into javascript
-dev-lang/elixir 1.8.1: Elixir programming language
+dev-lang/elixir 1.4.5 1.8.1: Elixir programming language
 dev-lang/erlang 19.1 20.3 21.1.1: Erlang programming language, runtime environment and libraries (OTP)
 dev-lang/execline 2.1.1.0: a non-interactive scripting language similar to SH
 dev-lang/f2c 20060507: Fortran to C converter
@@ -2910,8 +2910,8 @@ dev-lang/python 2.7.15 3.5.5 3.6.5: An interpreted, interactive, object-oriented
 dev-lang/python-exec 2.4.6: Python script wrapper
 dev-lang/qu-prolog 10.1: Extended Prolog supporting quantifiers, object-variables and substitutions
 dev-lang/ruby 2.4.5: An object-oriented scripting language
-dev-lang/rust 1.29.1-r1 1.34.1: Systems programming language from Mozilla
-dev-lang/rust-bin 1.29.1-r1 1.34.1: Systems programming language from Mozilla
+dev-lang/rust 1.29.1-r1 1.34.1 1.34.2: Systems programming language from Mozilla
+dev-lang/rust-bin 1.29.1-r1 1.34.1 1.34.2: Systems programming language from Mozilla
 dev-lang/sassc 3.4.7: A libsass command line driver
 dev-lang/scala 2.12.4: The Scala Programming Language
 dev-lang/scala-bin 2.11.8 2.12.4: The Scala Programming Language
@@ -3099,7 +3099,7 @@ dev-libs/libiconv 1.14-r1: GNU charset conversion library for libc which doesn't
 dev-libs/libindicate 12.10.1-r3: Library to raise flags on DBus for other components of the desktop
 dev-libs/libindicator 12.10.1-r201 12.10.1-r301: A set of symbols and convience functions that all indicators would like to use
 dev-libs/libinput 1.12.6: Library to handle input devices in Wayland
-dev-libs/libintl 0.19.7: the GNU international library (split out of gettext)
+dev-libs/libintl 0.19.7 0.19.8.1: the GNU international library (split out of gettext)
 dev-libs/libisoburn 1.5.0: Creation/expansion of ISO-9660 filesystems on CD/DVD media supported by libburn
 dev-libs/libisofs 1.5.0: Open-source library for reading, mastering and writing optical discs
 dev-libs/libixion 0.13.0: General purpose formula parser & interpreter
@@ -10140,7 +10140,7 @@ sys-devel/gettext 0.19.8.1: GNU locale utilities
 sys-devel/gnuconfig 20161104 20170101: Updated config.sub and config.guess file from GNU
 sys-devel/libtool 2.4.6-r3: A shared library tool for developers
 sys-devel/lld 6.0.1 7.1.0: The LLVM linker (link editor)
-sys-devel/llvm 4.0.1-r1 5.0.2 6.0.1 7.1.0: Low Level Virtual Machine
+sys-devel/llvm 4.0.1-r1 5.0.2 6.0.1 6.0.1-r2 7.1.0: Low Level Virtual Machine
 sys-devel/llvm-common 4.0.1 5.0.2 6.0.1 7.1.0: Common files shared between multiple slots of LLVM
 sys-devel/llvmgold 4 5 6 7: LLVMgold plugin symlink for autoloading
 sys-devel/m4 1.4.17 1.4.18-r1: GNU macro processor
@@ -10370,7 +10370,7 @@ sys-process/audit 2.6.4 2.7.1 2.8.3 2.8.4: Userspace utilities for storing and p
 sys-process/bcron 0.10: A new cron system designed with secure operations in mind by Bruce Guenter
 sys-process/criu 2.5-r1 3.6: utility to checkpoint/restore a process tree
 sys-process/cronbase 0.3.7-r6: base for all cron ebuilds
-sys-process/cronie 1.5.2: Cronie is a standard UNIX daemon cron based on the original vixie-cron
+sys-process/cronie 1.5.2 1.5.4: Cronie is a standard UNIX daemon cron based on the original vixie-cron
 sys-process/cronutils 1.9: Utilities to assist running batch processing jobs
 sys-process/daemontools 0.76-r7: Collection of tools for managing UNIX services
 sys-process/dcron 4.5-r1: A cute little cron from Matt Dillon
@@ -10406,7 +10406,7 @@ virtual/acl 0 0-r1 0-r2: Virtual for acl support (sys/acl.h)
 virtual/awk 0 1: Virtual for awk implementation
 virtual/bitcoin-leveldb 0-r2: Virtual for LevelDB versions known to be compatible with Bitcoin Core 0.9+
 virtual/blas 1.0: Virtual for FORTRAN 77 BLAS implementation
-virtual/cargo 1.29.1 1.34.1: Package manager for Rust
+virtual/cargo 1.29.1 1.34.1 1.34.2: Package manager for Rust
 virtual/cblas 1.0: Virtual for BLAS C implementation
 virtual/cdrtools 0: Virtual for command-line recorders cdrtools and cdrkit
 virtual/checkpassword 0: Virtual for checkpassword compatible applications
@@ -10577,7 +10577,7 @@ virtual/resolvconf 1: Virtual to select between different resolvconf providers
 virtual/ruby-ffi 4: Virtual ebuild for the Ruby ffi library
 virtual/ruby-ssl 10: Virtual ebuild for the Ruby OpenSSL bindings
 virtual/rubygems 14: Virtual ebuild for rubygems
-virtual/rust 1.29.1 1.34.1: Virtual for Rust language compiler
+virtual/rust 1.29.1 1.34.1 1.34.2: Virtual for Rust language compiler
 virtual/service-manager 0: Virtual for various service managers
 virtual/shadow 0: Virtual for user account management utilities
 virtual/skkserv 0: Virtual for SKK server
