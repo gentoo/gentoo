@@ -526,14 +526,6 @@ app-emacs/prom-wl
 # Removal in 30 days.  Bug #601742.
 net-analyzer/gnu-netcat
 
-# Michał Górny <mgorny@gentoo.org> (13 Apr 2019)
-# net-libs/ftplib: Unmaintained.  The ebuild suffers build failures due
-# to broken multilib conversion.  Last bumped in 2014, and needs local
-# patches to even work.  Obscure library with only two revdeps.
-#
-# Removal in 30 days.  Bug #520026.
-net-libs/ftplib
-
 # Hans de Graaff <graaff@gentoo.org> (13 Apr 2019)
 # Old ruby24-only slots of Rails-related packages
 # These no longer have reverse dependencies or newer
