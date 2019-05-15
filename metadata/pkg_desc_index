@@ -582,7 +582,7 @@ app-editors/okteta 0.25.5 0.26.1: Hex editor by KDE
 app-editors/pluma 1.22.0: Pluma text editor for the MATE desktop
 app-editors/qemacs 0.4.1_pre20150916 0.4.1_pre20170225: QEmacs is a very small but powerful UNIX editor
 app-editors/qxmledit 0.9.10: Simple Qt-based XML editor
-app-editors/retext 7.0.0 7.0.3: Simple editor for Markdown and reStructuredText
+app-editors/retext 7.0.3: Simple editor for Markdown and reStructuredText
 app-editors/scite 3.5.5 4.0.2: A very powerful, highly configurable, small editor with syntax coloring.
 app-editors/shed 1.12 1.13: Simple Hex EDitor
 app-editors/tea 47.0.0: Small, lightweight Qt text editor
