@@ -7602,7 +7602,7 @@ media-libs/gst-plugins-ugly 1.14.3: Basepack of plugins for gstreamer
 media-libs/gst-rtsp-server 1.14.2: A GStreamer based RTSP server
 media-libs/gstreamer 1.14.4: Open source multimedia framework
 media-libs/gstreamer-editing-services 1.14.3: SDK for making video editors and more
-media-libs/guilib 1.2.1: a simple widget set for SDL
+media-libs/guilib 1.2.1: Simple widget set for SDL
 media-libs/gupnp-dlna 0.10.5: Library providing DLNA-related functionality for MediaServers
 media-libs/hamlib 3.1 3.2 3.3: Ham radio backend rig control libraries
 media-libs/harfbuzz 2.0.2-r1 2.3.1: An OpenType text shaping engine
