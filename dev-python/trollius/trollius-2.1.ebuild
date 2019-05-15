@@ -19,6 +19,8 @@ RDEPEND="virtual/python-futures[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]"
 
+PATCHES=( "${FILESDIR}"/${P}-ensure-loop-availability.patch )
+
 python_test() {
 	"${PYTHON}" runtests.py || die "Testing failed under ${EPYTHON}"
 }

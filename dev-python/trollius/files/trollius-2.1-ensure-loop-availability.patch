@@ -1,0 +1,29 @@
+From e917d6a72b9482df711213d7cbe340ec91f75f86 Mon Sep 17 00:00:00 2001
+From: "Alex.Khouderchah" <akhouderchah@chromium.org>
+Date: Wed, 15 May 2019 09:47:16 -0700
+Subject: [PATCH] Ensure self._loop is still available before resuming read
+
+In some cases (see https://github.com/KimiNewt/pyshark/issues/94),
+resume_reading is invoked after self._loop is set back to None by
+_call_connection_lost. This change simply performs a sanity check to
+ensure that self._loop is not None before calling add_reader on it.
+---
+ trollius/unix_events.py | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/trollius/unix_events.py b/trollius/unix_events.py
+index cdefaca..8999206 100644
+--- a/trollius/unix_events.py
++++ b/trollius/unix_events.py
+@@ -390,6 +390,8 @@ def pause_reading(self):
+         self._loop.remove_reader(self._fileno)
+ 
+     def resume_reading(self):
++        if self._loop is None:
++            return
+         self._loop.add_reader(self._fileno, self._read_ready)
+ 
+     def close(self):
+-- 
+2.21.0.1020.gf2820cf01a-goog
+
