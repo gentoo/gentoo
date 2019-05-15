@@ -124,12 +124,8 @@ src_install() {
 	newinitd "${FILESDIR}"/murmur.initd-r1 murmur
 	newconfd "${FILESDIR}"/murmur.confd murmur
 
-	if use dbus; then
-		systemd_newunit "${FILESDIR}"/murmurd-dbus.service "${PN}".service
-		systemd_newtmpfilesd "${FILESDIR}"/murmurd-dbus.tmpfiles "${PN}".conf
-	else
-		systemd_newunit "${FILESDIR}"/murmurd-no-dbus.service "${PN}".service
-	fi
+	systemd_dounit scripts/${PN}.service
+	systemd_newtmpfilesd "${FILESDIR}"/murmurd-dbus.tmpfiles "${PN}".conf
 
 	keepdir /var/lib/murmur /var/log/murmur
 	fowners -R murmur /var/lib/murmur /var/log/murmur
