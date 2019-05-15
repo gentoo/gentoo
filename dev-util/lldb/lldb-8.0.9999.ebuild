@@ -21,7 +21,7 @@ EGIT_BRANCH="release_80"
 LICENSE="UoI-NCSA"
 SLOT="0"
 KEYWORDS=""
-IUSE="libedit ncurses python test"
+IUSE="libedit ncurses +python test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
