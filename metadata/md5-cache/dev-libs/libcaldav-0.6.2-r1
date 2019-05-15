@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure
+DEPEND=dev-libs/glib net-misc/curl[ssl,gnutls(+),curl_ssl_gnutls(+)] doc? ( app-doc/doxygen dev-texlive/texlive-latexextra virtual/latex-base )
+DESCRIPTION=C library implementing client support for CalDAV
+EAPI=7
+HOMEPAGE=http://libcaldav.sourceforge.net/
+IUSE=doc
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3+
+RDEPEND=dev-libs/glib net-misc/curl[ssl,gnutls(+),curl_ssl_gnutls(+)]
+SLOT=0
+SRC_URI=mirror://sourceforge/libcaldav/libcaldav-0.6.2.tar.gz
+_md5_=1bd2bf631675002ae72835fc810cf9a2
