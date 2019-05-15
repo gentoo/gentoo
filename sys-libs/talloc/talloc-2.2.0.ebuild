@@ -19,7 +19,13 @@ IUSE="compat +python"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-RDEPEND="!elibc_FreeBSD? ( dev-libs/libbsd[${MULTILIB_USEDEP}] )
+RDEPEND="!elibc_FreeBSD? (
+			!elibc_SunOS? (
+				!elibc_Darwin? (
+					dev-libs/libbsd[${MULTILIB_USEDEP}]
+				)
+			)
+		)
 	python? ( ${PYTHON_DEPS} )
 	!!<sys-libs/talloc-2.0.5"
 DEPEND="${RDEPEND}

@@ -30,6 +30,8 @@ src_install() {
 		DOCDIR="${ED}/usr/share/doc/${PF}" \
 		install
 
+	# Version 18* doesn't install *.el files any more #685978
+	elisp-install ${PN} lisp/*.{el,elc} lisp/obsolete/*.{el,elc}
 	elisp-site-file-install "${FILESDIR}/${SITEFILE}"
 
 	# Most documentation is installed by the package's build system.
