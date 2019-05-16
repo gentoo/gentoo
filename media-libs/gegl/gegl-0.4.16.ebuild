@@ -119,9 +119,6 @@ src_configure() {
 		--program-suffix=-${SLOT}
 		--with-gdk-pixbuf
 		--with-pango
-		#  - Parameter --with-exiv2 compiles a noinst-app only, no use
-		#    but needed during testing
-		--without-exiv2
 		#  - There are two checks for dot, one controllable by --with(out)-graphviz
 		#    which toggles HAVE_GRAPHVIZ that is not used anywhere.  Yes.
 		--without-graphviz
