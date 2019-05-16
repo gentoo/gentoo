@@ -7,11 +7,7 @@ sci-libs/gdal hdf5
 
 # Aaron Bauman <bman@gentoo.org> (15 May 2019)
 # packages for these USE flags fail tests
-media-libs/opencv contrib_hdf glog gstreamer
-
-# Andreas Sturmlechner <asturm@gentoo.org> (24 Feb 2019)
-# media-libs/libsdl is not stable yet
-dev-libs/zziplib sdl
+media-libs/opencv contrib_hdf contrib_sfm glog gstreamer
 
 # Andreas Sturmlechner <asturm@gentoo.org> (10 Feb 2019)
 # kde-frameworks/kconfig is not stable for arm64
