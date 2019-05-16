@@ -26,7 +26,7 @@ RDEPEND="${DEPEND}
 	elogind? ( sys-auth/elogind[acl] )
 "
 
-REQUIRED_USE="^^ ( consolekit elogind )"
+REQUIRED_USE="?? ( consolekit elogind )"
 
 S="${WORKDIR}/yubikey-personalization-${PV}"
 
