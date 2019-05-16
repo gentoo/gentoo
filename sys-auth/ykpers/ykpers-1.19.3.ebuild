@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit autotools udev
 
@@ -12,17 +12,21 @@ HOMEPAGE="https://github.com/Yubico/yubikey-personalization"
 KEYWORDS="~amd64 ~x86"
 SLOT="0"
 LICENSE="BSD-2"
-IUSE="static-libs consolekit"
+IUSE="consolekit elogind static-libs"
 
-RDEPEND="
+DEPEND="
 	dev-libs/json-c:=
 	>=sys-auth/libyubikey-1.6
 	virtual/libusb:1"
-DEPEND="${RDEPEND}
+BDEPEND="
 	app-text/asciidoc
 	virtual/pkgconfig"
-RDEPEND="${RDEPEND}
-	consolekit? ( sys-auth/consolekit[acl] )"
+RDEPEND="${DEPEND}
+	consolekit? ( sys-auth/consolekit[acl] )
+	elogind? ( sys-auth/elogind[acl] )
+"
+
+REQUIRED_USE="^^ ( consolekit elogind )"
 
 S="${WORKDIR}/yubikey-personalization-${PV}"
 
@@ -31,18 +35,26 @@ DOCS=( doc/. AUTHORS NEWS README )
 src_prepare() {
 	default
 	eautoreconf
+
+	if use elogind ; then
+		sed '/TEST==/d' -i 70-yubikey.rules || die
+	fi
 }
 
 src_configure() {
-	econf \
-		--libdir=/usr/$(get_libdir) \
-		--localstatedir=/var \
+	local myeconfargs=(
+		--libdir=/usr/$(get_libdir)
+		--localstatedir=/var
 		$(use_enable static-libs static)
+	)
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {
 	default
-	use consolekit && udev_dorules *.rules
+	if use consolekit || use elogind ; then
+		udev_dorules *.rules
+	fi
 
 	find "${D}" -name '*.la' -delete || die
 }
