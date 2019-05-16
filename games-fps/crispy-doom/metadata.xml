@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<longdescription lang="en">
+		Crispy Doom is a friendly fork of Chocolate Doom that provides a higher display resolution, removes the static limits of the Doom engine and offers further optional visual, tactical and physical enhancements while remaining entirely config file, savegame, netplay and demo compatible with the original.
+	</longdescription>
+	<maintainer type="person" proxied="yes">
+		<email>vilhelm.gray@gmail.com</email>
+		<name>William Breathitt Gray</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
+	<use>
+		<flag name="midi">Basic support for MIDI files</flag>
+		<flag name="truecolor">Enable true-color rendering (experimental)</flag>
+	</use>
+	<upstream>
+		<bugs-to>https://github.com/fabiangreffrath/crispy-doom/issues</bugs-to>
+		<doc lang="en">https://github.com/fabiangreffrath/crispy-doom</doc>
+		<remote-id type="github">fabiangreffrath/crispy-doom</remote-id>
+	</upstream>
+</pkgmetadata>
