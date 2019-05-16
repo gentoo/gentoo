@@ -31,12 +31,3 @@ src_configure() {
 	)
 	kde5_src_configure
 }
-
-src_test() {
-	# bug: 655586
-	local myctestargs=(
-		-E "(scalable)"
-	)
-
-	kde5_src_test
-}
