@@ -70,7 +70,7 @@ app-admin/hardening-check 2.5 2.6 2.7: Report the hardening characterists of a s
 app-admin/hardinfo 0.5.2_pre20130823: System information and benchmark tool for Linux systems
 app-admin/haskell-updater 1.2.9 1.2.10: Rebuild Haskell dependencies in Gentoo
 app-admin/hddtemp 0.3_beta15-r27: A simple utility to read the temperature of SMART capable hard drives
-app-admin/helm 2.13.0: Kubernetes Package Manager
+app-admin/helm 2.13.1: Kubernetes Package Manager
 app-admin/ide-smart 1.4-r2: A tool to read SMART information from harddiscs
 app-admin/installer 0.1.1_beta: A software for Gentoo installation
 app-admin/keepass 2.41: A free, open source, light-weight and easy-to-use password manager
