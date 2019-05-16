@@ -10507,13 +10507,13 @@ virtual/perl-IO-Zlib 1.100.0-r12: Virtual for IO-Zlib
 virtual/perl-IPC-Cmd 0.960.0: Virtual for IPC-Cmd
 virtual/perl-JSON-PP 2.274.0.200_rc: Virtual for JSON-PP
 virtual/perl-Locale-Maketext 1.280.0: Virtual for Locale-Maketext
-virtual/perl-Locale-Maketext-Simple 0.210.100_rc-r7: Virtual for Locale-Maketext-Simple
-virtual/perl-MIME-Base64 3.150.0-r4: Virtual for MIME-Base64
+virtual/perl-Locale-Maketext-Simple 0.210.100_rc-r8: Virtual for Locale-Maketext-Simple
+virtual/perl-MIME-Base64 3.150.0-r5: Virtual for MIME-Base64
 virtual/perl-Math-BigInt 1.999.806-r1: Virtual for Math-BigInt
 virtual/perl-Math-BigInt-FastCalc 0.500.500: Virtual for Math-BigInt-FastCalc
 virtual/perl-Math-BigRat 0.261.100: Virtual for Math-BigRat
-virtual/perl-Math-Complex 1.590.100-r1: Virtual for Math-Complex
-virtual/perl-Memoize 1.30.100_rc-r7: Virtual for Memoize
+virtual/perl-Math-Complex 1.590.100-r2: Virtual for Math-Complex
+virtual/perl-Memoize 1.30.100_rc-r8: Virtual for Memoize
 virtual/perl-Module-CoreList 5.201.804.140: Virtual for Module-CoreList
 virtual/perl-Module-Load 0.320.0-r6: Virtual for Module-Load
 virtual/perl-Module-Load-Conditional 0.680.0-r1: Virtual for Module-Load-Conditional
