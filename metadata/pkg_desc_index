@@ -122,7 +122,7 @@ app-admin/rsyslog 8.38.0-r2 8.40.0-r1 8.1901.0: An enhanced multi-threaded syslo
 app-admin/sagan 0.2.3 1.0.0_rc3: Sagan is a multi-threaded, real time system and event log monitoring system
 app-admin/sagan-rules 20130430 20140617: Rules for Sagan log analyzer
 app-admin/setools 4.1.1: Policy Analysis Tools for SELinux
-app-admin/spectre-meltdown-checker 0.40: Spectre & Meltdown vulnerability/mitigation checker for Linux
+app-admin/spectre-meltdown-checker 0.40 0.41: Spectre & Meltdown vulnerability/mitigation checker for Linux
 app-admin/sshguard 2.1.0-r1: protects hosts from brute force attacks against ssh
 app-admin/sudo 1.8.25_p1-r1: Allows users or groups to run commands as other users
 app-admin/superadduser 1.0.9: Interactive adduser script from Slackware
