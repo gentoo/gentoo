@@ -10,7 +10,7 @@ if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/zfsonlinux/zfs/releases/download/zfs-${PV}/${P}.tar.gz"
-	KEYWORDS="~amd64"
+	KEYWORDS="amd64"
 fi
 
 inherit flag-o-matic linux-info linux-mod python-single-r1 autotools-utils
