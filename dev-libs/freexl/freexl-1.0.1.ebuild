@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ SRC_URI="http://www.gaia-gis.it/gaia-sins/${PN}-sources/${P}.tar.gz"
 
 LICENSE="MPL-1.1"
 SLOT="0"
-KEYWORDS="amd64 ~arm ppc ppc64 x86"
+KEYWORDS="amd64 ~arm arm64 ppc ppc64 x86"
 IUSE="static-libs"
 
 DEPEND="virtual/libiconv"
