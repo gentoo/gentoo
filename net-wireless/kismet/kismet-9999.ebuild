@@ -42,6 +42,7 @@ CDEPEND="
 	mousejack? ( dev-libs/libusb:= )
 	dev-libs/protobuf-c:=
 	dev-libs/protobuf:=
+	dev-python/protobuf-python[${PYTHON_USEDEP}]
 	sys-libs/ncurses:=
 	lm_sensors? ( sys-apps/lm_sensors )
 	pcre? ( dev-libs/libpcre )
