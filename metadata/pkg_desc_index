@@ -10770,7 +10770,6 @@ x11-apps/xset 1.2.3 1.2.4: X.Org xset application
 x11-apps/xsetroot 1.1.1 1.1.2: X.Org xsetroot application
 x11-apps/xsm 1.0.3 1.0.4: X Session Manager
 x11-apps/xstdcmap 1.0.4: X standard colormap utility
-x11-apps/xtrap 1.0.3: X.Org xtrap application
 x11-apps/xvidtune 1.0.3: video mode tuner for Xorg
 x11-apps/xvinfo 1.1.4: Print out X-Video extension adaptor information
 x11-apps/xwarppointer 1-r2: Program to move the mouse cursor
@@ -10839,7 +10838,6 @@ x11-libs/libICE 1.0.9-r2: X.Org Inter-Client Exchange library
 x11-libs/libSM 1.2.3: X.Org Session Management library
 x11-libs/libX11 1.6.7: X.Org X11 library
 x11-libs/libXScrnSaver 1.2.3: X.Org XScrnSaver library
-x11-libs/libXTrap 1.0.1-r1: X.Org XTrap library
 x11-libs/libXau 1.0.9: X.Org X authorization library
 x11-libs/libXaw 1.0.13-r1: X.Org Xaw library
 x11-libs/libXaw3d 1.6.3: X.Org Xaw3d library
