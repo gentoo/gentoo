@@ -53,8 +53,6 @@ src_install() {
 }
 
 pkg_postinst() {
-	xorg-3_pkg_postinst
-
 	if ! has_version 'x11-apps/xinit'; then
 		ewarn "If you use startx to start X instead of a login manager like gdm/kdm,"
 		ewarn "you can set the XSESSION variable to anything in /etc/X11/Sessions/ or"
