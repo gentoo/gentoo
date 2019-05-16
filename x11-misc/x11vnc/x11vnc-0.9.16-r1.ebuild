@@ -11,7 +11,7 @@ SRC_URI="https://github.com/LibVNC/x11vnc/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~sparc-solaris ~x64-solaris ~x86-solaris"
-IUSE="crypt fbcon libressl ssl +xcomposite +xdamage +xfixes xinerama +xrandr xtrap zeroconf"
+IUSE="crypt fbcon libressl ssl +xcomposite +xdamage +xfixes xinerama +xrandr zeroconf"
 
 COMMON_DEPEND="
 	>=net-libs/libvncserver-0.9.8[ssl?]
@@ -28,7 +28,6 @@ COMMON_DEPEND="
 	xfixes? ( x11-libs/libXfixes )
 	xinerama? ( x11-libs/libXinerama )
 	xrandr? ( x11-libs/libXrandr )
-	xtrap? ( x11-libs/libXTrap )
 	zeroconf? ( >=net-dns/avahi-0.6.4 )
 "
 DEPEND="${COMMON_DEPEND}
@@ -64,7 +63,6 @@ src_configure() {
 		$(use_with xfixes) \
 		$(use_with xinerama) \
 		$(use_with xrandr) \
-		$(use_with xtrap) \
 		$(use_with zeroconf avahi)
 }
 
