@@ -33,6 +33,8 @@ DEPEND="${RDEPEND}
 
 PATCHES=( "${FILESDIR}/${P}-non-speex-files-crash.patch" )
 
+RESTRICT+=" test"
+
 pkg_setup() {
 	use test && python-any-r1_pkg_setup
 	kde5_pkg_setup
