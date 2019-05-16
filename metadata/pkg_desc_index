@@ -201,6 +201,7 @@ app-arch/pigz 2.3.4 2.4: A parallel implementation of gzip
 app-arch/pixz 1.0.6: Parallel Indexed XZ compressor
 app-arch/pure-sfv 0.3-r1: utility to test and create .sfv files and create .par files
 app-arch/pxz 5.0_pre20151029: Parallel implementation of the XZ compression utility
+app-arch/rar 5.7.0_p20190224: RAR compressor/uncompressor
 app-arch/rpm 4.14.1: Red Hat Package Management Utils
 app-arch/rpm2targz 9.0.0.5g: Convert a .rpm file to a .tar.gz archive
 app-arch/rzip 2.1-r3: Compression program for large files
@@ -261,6 +262,7 @@ app-benchmarks/bonnie++ 1.97.2 1.97.3: Hard drive bottleneck testing benchmark s
 app-benchmarks/contest 0.61-r1: Test system responsiveness to compare different kernels
 app-benchmarks/cpuburn 1.4a-r1 1.4a-r3: CPU testing utilities in optimized assembler for maximum loading
 app-benchmarks/dbench 4.0: Popular filesystem benchmark
+app-benchmarks/geekbench 2.4.3 3.4.2 4.3.3: A Cross-Platform Benchmark for Android, iOS, Linux, MacOS and Windows
 app-benchmarks/httperf 0.9.1_p20181111: A tool from HP for measuring web server performance
 app-benchmarks/i7z 93_p20131012-r2: A better i7 (and now i3, i5) reporting tool for Linux
 app-benchmarks/interbench 0.31: A Linux interactivity benchmark
@@ -316,6 +318,7 @@ app-crypt/acme 0.32.0 0.33.1-r1: An implementation of the ACME protocol
 app-crypt/acme-tiny 4.0.4: A tiny, auditable script for Let's Encrypt's ACME Protocol
 app-crypt/aespipe 2.4e: Encrypts data from stdin to stdout
 app-crypt/argon2 20171227 20171227-r1: Password hashing software that won the Password Hashing Competition (PHC)
+app-crypt/bcwipe 1.9.13: Secure file removal utility
 app-crypt/ccid 1.4.30: CCID free software driver
 app-crypt/ccrypt 1.11: Encryption and decryption
 app-crypt/certbot 0.32.0 0.33.1: Let's encrypt client to automate deployment of X.509 certificates
@@ -770,6 +773,8 @@ app-emulation/virt-viewer 6.0-r1 7.0: Graphical console client for connecting to
 app-emulation/virt-what 1.18: Detects if the current machine is running in a virtual machine
 app-emulation/virtualbox 5.2.22 5.2.26: Family of powerful x86 virtualization products for enterprise and home use
 app-emulation/virtualbox-additions 5.2.22 5.2.26: CD image containing guest additions for VirtualBox
+app-emulation/virtualbox-bin 5.2.22.126460 5.2.26.128414: Family of powerful x86 virtualization products for enterprise and home use
+app-emulation/virtualbox-extpack-oracle 5.2.22.126460 5.2.26.128414: PUEL extensions for VirtualBox
 app-emulation/virtualbox-guest-additions 5.2.22 5.2.26: VirtualBox kernel modules and user-space tools for Gentoo guests
 app-emulation/virtualbox-modules 5.2.22 5.2.26: Kernel Modules for Virtualbox
 app-emulation/vkd3d 1.1: D3D12 to Vulkan translation library
@@ -1039,6 +1044,7 @@ app-misc/jq 1.5-r3: A lightweight and flexible command-line JSON processor
 app-misc/kanatest 0.4.8: Visual flashcard tool for memorizing the Japanese Hiragana and Katakana alphabet
 app-misc/khard 0.12.2 0.13.0: Console CardDAV client
 app-misc/klavaro 3.0.1: Another free touch typing tutor program
+app-misc/kryoflux-dtc 2.6: KryoFlux Host Software
 app-misc/ktoblzcheck 1.49: Library to check account numbers and bank codes of German banks
 app-misc/lcd4linux 0.11.0_pre20170527: A small program that grabs information and displays it on an external LCD
 app-misc/lcdproc 0.5.2-r1: Client/Server suite to drive all kinds of LCD (-like) devices
@@ -2031,6 +2037,7 @@ dev-games/paklib 0.3: library for accessing Quake pak files
 dev-games/physfs 2.0.3-r2: Abstraction layer for filesystem and archive access
 dev-games/poker-eval 138.0: A fast C library for evaluating poker hands
 dev-games/ps2-packer 0.4.4: another ELF packer for the PS2
+dev-games/quake4-sdk 1.4.2 1.4.2-r1: Quake4 SDK
 dev-games/t4k-common 0.1.1: A library of code shared between tuxmath and tuxtype
 dev-games/tiled 1.2.3: A general purpose tile map editor
 dev-games/vamos 0.7.1 0.8.2: An automotive simulation framework
@@ -2761,6 +2768,8 @@ dev-java/offo-hyphenation 2.0: Hyphenation patterns for Apache Fop
 dev-java/ognl 3.0.8: Object-Graph Navigation Language: get/set properties of objects
 dev-java/opencsv 2.3: A very simple csv (comma-separated values) parser library for Java
 dev-java/oracle-javamail 1.5.2: A Java-based framework to build multiplatform mail and messaging applications
+dev-java/oracle-jdk-bin 1.8.0.202: Oracle's Java SE Development Kit
+dev-java/oracle-jre-bin 1.8.0.202: Oracle's Java SE Runtime Environment
 dev-java/osgi-compendium 4.3.1: OSGi Service Platform Compendium API (Companion Code)
 dev-java/osgi-core-api 5.0.0 5.0.0-r1: OSGi Service Platform Core API (Companion Code)
 dev-java/osgi-enterprise-api 5.0.0: OSGi Enterprise Release 5 Companion Code
@@ -2814,7 +2823,9 @@ dev-java/stringtemplate 3.2.1-r1 4.0.8: A Java template engine
 dev-java/sun-httpserver-bin 2.0.1-r1: Sun sun.net.httpserver classes
 dev-java/sun-jaf 1.1.1-r1: Sun's JavaBeans Activation Framework (JAF)
 dev-java/sun-jai-bin 1.1.3 1.1.3-r1: JAI is a class library for managing images
+dev-java/sun-jimi 1.0-r3: Jimi is a class library for managing images
 dev-java/sun-jms 1.1-r2: The Java Message Service (JMS) API
+dev-java/sun-jmx 1.2.1-r3: Java Management Extensions for managing and monitoring
 dev-java/super-csv 2.3.1: A fast, programmer-friendly, free CSV library for Java
 dev-java/svgsalamander 0.0-r2: a SVG engine for Java
 dev-java/swing-layout 1.0.4-r1: Professional cross platform layouts with Swing
@@ -6358,6 +6369,7 @@ dev-util/howdoi 1.1.14: A code search tool
 dev-util/huc 0.1-r1: HTML umlaut conversion tool
 dev-util/imediff2 1.1.2-r5: An interactive, user friendly 2-way merge tool in text mode
 dev-util/indent 2.2.11-r1: Indent program source files
+dev-util/intel-ocl-sdk 2.0.31360: Intel's implementation of the OpenCL standard optimized for Intel processors
 dev-util/intltool 0.51.0-r2: Internationalization Tool Collection
 dev-util/itstool 2.0.2: Translation tool for XML documents that uses gettext files and ITS rules
 dev-util/jconfig 2.8.5: Utility that provides a simple API for the management of properties
@@ -6539,6 +6551,8 @@ games-puzzle/hitori 3.22.4: Logic puzzle game for GNOME
 games-puzzle/lightsoff 3.28.0 3.30.0: Turn off all the lights
 games-puzzle/quadrapassel 3.22.0: Fit falling blocks together
 games-puzzle/swell-foop 3.26.0 3.30.0: Clear the screen by removing groups of colored and shaped tiles
+games-server/minecraft-server 1.13.2: The official server for the sandbox video game
+games-server/steamcmd 1.0-r1: This is the command-line version of the Steam client for dedicated servers
 games-strategy/seven-kingdoms 2.14.7: Seven Kingdoms: Ancient Adversaries
 games-util/pogo-manager-bin 0.1.6: Pokemon Go manager
 games-util/pyfa 1.34.0: Python Fitting Assistant - a ship fitting application for EVE Online
@@ -6925,87 +6939,87 @@ kde-apps/sweeper 18.12.3: Privacy settings widget to clean unwanted traces on th
 kde-apps/thumbnailers 18.12.3: Thumbnail generators for PDF/PS and RAW files
 kde-apps/umbrello 18.12.3: KDE UML Modeller
 kde-apps/zeroconf-ioslave 18.12.3: DNSSD (DNS Service Discovery - part of Rendezvous) ioslave and kded module
-kde-frameworks/attica 5.54.0: Framework providing access to Open Collaboration Services
-kde-frameworks/baloo 5.54.0: Framework for searching and managing metadata
-kde-frameworks/bluez-qt 5.54.0: Qt wrapper for Bluez 5 DBus API
-kde-frameworks/breeze-icons 5.54.0: Breeze SVG icon theme
-kde-frameworks/breeze-icons-rcc 5.54.0: Breeze SVG icon theme binary resource
-kde-frameworks/extra-cmake-modules 5.54.0: Extra modules and scripts for CMake
-kde-frameworks/frameworkintegration 5.54.0: Framework for integrating Qt applications with KDE Plasma workspaces
-kde-frameworks/kactivities 5.54.0: Framework for working with KDE activities
-kde-frameworks/kactivities-stats 5.54.0: Framework for getting the usage statistics collected by the activities service
-kde-frameworks/kapidox 5.54.0: Framework for building KDE API documentation in a standard format and style
-kde-frameworks/karchive 5.54.0: Framework for reading, creation, and manipulation of various archive formats
-kde-frameworks/kauth 5.54.0-r1: Framework to let applications perform actions as a privileged user
-kde-frameworks/kbookmarks 5.54.0: Framework for managing bookmarks stored in XBEL format
-kde-frameworks/kcmutils 5.54.0: Framework to work with KDE System Settings modules
-kde-frameworks/kcodecs 5.54.0-r1: Framework for manipulating strings using various encodings
-kde-frameworks/kcompletion 5.54.0: Framework for common completion tasks such as filename or URL completion
-kde-frameworks/kconfig 5.54.0-r1: Framework for reading and writing configuration
-kde-frameworks/kconfigwidgets 5.54.0: Framework providing an assortment of configuration-related widgets
-kde-frameworks/kcoreaddons 5.54.0: Framework for solving common problems such as caching, randomisation, and more
-kde-frameworks/kcrash 5.54.0: Framework for intercepting and handling application crashes
-kde-frameworks/kdbusaddons 5.54.0: Framework for registering services and applications per freedesktop standards
-kde-frameworks/kdeclarative 5.54.0: Framework providing integration of QML and KDE work spaces
-kde-frameworks/kded 5.54.0: Central daemon of KDE workspaces
-kde-frameworks/kdelibs4support 5.54.0: Framework easing the development transition from KDELibs 4 to KF 5
-kde-frameworks/kdesignerplugin 5.54.0: Framework providing plugins to use KDE frameworks widgets in QtDesigner
-kde-frameworks/kdesu 5.54.0: Framework to handle super user actions
-kde-frameworks/kdewebkit 5.54.0: Framework providing KDE integration of QtWebKit
-kde-frameworks/kdnssd 5.54.0: Framework for network service discovery using Zeroconf
-kde-frameworks/kdoctools 5.54.0-r1: Tools to generate documentation in various formats from DocBook files
-kde-frameworks/kemoticons 5.54.0: Framework for converting text emoticons to graphical representations
+kde-frameworks/attica 5.54.0 5.57.0: Framework providing access to Open Collaboration Services
+kde-frameworks/baloo 5.54.0 5.57.0: Framework for searching and managing metadata
+kde-frameworks/bluez-qt 5.54.0 5.57.0: Qt wrapper for Bluez 5 DBus API
+kde-frameworks/breeze-icons 5.54.0 5.57.0: Breeze SVG icon theme
+kde-frameworks/breeze-icons-rcc 5.54.0 5.57.0: Breeze SVG icon theme binary resource
+kde-frameworks/extra-cmake-modules 5.54.0 5.57.0: Extra modules and scripts for CMake
+kde-frameworks/frameworkintegration 5.54.0 5.57.0: Framework for integrating Qt applications with KDE Plasma workspaces
+kde-frameworks/kactivities 5.54.0 5.57.0: Framework for working with KDE activities
+kde-frameworks/kactivities-stats 5.54.0 5.57.0: Framework for getting the usage statistics collected by the activities service
+kde-frameworks/kapidox 5.54.0 5.57.0: Framework for building KDE API documentation in a standard format and style
+kde-frameworks/karchive 5.54.0 5.57.0: Framework for reading, creation, and manipulation of various archive formats
+kde-frameworks/kauth 5.54.0-r1 5.57.0: Framework to let applications perform actions as a privileged user
+kde-frameworks/kbookmarks 5.54.0 5.57.0: Framework for managing bookmarks stored in XBEL format
+kde-frameworks/kcmutils 5.54.0 5.57.0: Framework to work with KDE System Settings modules
+kde-frameworks/kcodecs 5.54.0-r1 5.57.0: Framework for manipulating strings using various encodings
+kde-frameworks/kcompletion 5.54.0 5.57.0: Framework for common completion tasks such as filename or URL completion
+kde-frameworks/kconfig 5.54.0-r1 5.57.0: Framework for reading and writing configuration
+kde-frameworks/kconfigwidgets 5.54.0 5.57.0: Framework providing an assortment of configuration-related widgets
+kde-frameworks/kcoreaddons 5.54.0 5.57.0: Framework for solving common problems such as caching, randomisation, and more
+kde-frameworks/kcrash 5.54.0 5.57.0: Framework for intercepting and handling application crashes
+kde-frameworks/kdbusaddons 5.54.0 5.57.0: Framework for registering services and applications per freedesktop standards
+kde-frameworks/kdeclarative 5.54.0 5.57.0-r1: Framework providing integration of QML and KDE work spaces
+kde-frameworks/kded 5.54.0 5.57.0: Central daemon of KDE workspaces
+kde-frameworks/kdelibs4support 5.54.0 5.57.0: Framework easing the development transition from KDELibs 4 to KF 5
+kde-frameworks/kdesignerplugin 5.54.0 5.57.0: Framework providing plugins to use KDE frameworks widgets in QtDesigner
+kde-frameworks/kdesu 5.54.0 5.57.0: Framework to handle super user actions
+kde-frameworks/kdewebkit 5.54.0 5.57.0: Framework providing KDE integration of QtWebKit
+kde-frameworks/kdnssd 5.54.0 5.57.0: Framework for network service discovery using Zeroconf
+kde-frameworks/kdoctools 5.54.0-r1 5.57.0: Tools to generate documentation in various formats from DocBook files
+kde-frameworks/kemoticons 5.54.0 5.57.0: Framework for converting text emoticons to graphical representations
 kde-frameworks/kf-env 5: Environment setting required for all KDE Frameworks apps to run
-kde-frameworks/kfilemetadata 5.54.0: Library for extracting file metadata
-kde-frameworks/kglobalaccel 5.54.0: Framework to handle global shortcuts
-kde-frameworks/kguiaddons 5.54.0: Framework providing assorted high-level user interface components
-kde-frameworks/kholidays 5.54.0: Library to determine holidays and other special events for a geographical region
-kde-frameworks/khtml 5.54.0: KHTML web rendering engine
-kde-frameworks/ki18n 5.54.0: Framework based on Gettext for internationalizing user interface text
-kde-frameworks/kiconthemes 5.54.0: Framework for icon theming and configuration
-kde-frameworks/kidletime 5.54.0: Framework for detection and notification of device idle time
-kde-frameworks/kimageformats 5.54.0: Framework providing additional format plugins for Qt's image I/O system
-kde-frameworks/kinit 5.54.0: Helper library to speed up start of applications on KDE work spaces
-kde-frameworks/kio 5.54.1: Framework providing transparent file and data management
-kde-frameworks/kirigami 5.54.0: Lightweight user interface framework for mobile and convergent applications
-kde-frameworks/kitemmodels 5.54.0: Framework providing data models to help with tasks such as sorting and filtering
-kde-frameworks/kitemviews 5.54.0: Framework providing additional widgets for item models
-kde-frameworks/kjobwidgets 5.54.0: Framework providing assorted widgets for showing the progress of jobs
-kde-frameworks/kjs 5.54.0: ECMAScipt compatible parser and engine
-kde-frameworks/kjsembed 5.54.0: Framework binding JavaScript objects to QObjects
-kde-frameworks/kmediaplayer 5.54.0: Framework providing a common interface for KParts that can play media files
-kde-frameworks/knewstuff 5.54.0: Framework for downloading and sharing additional application data
-kde-frameworks/knotifications 5.54.0: Framework for notifying the user of an event
-kde-frameworks/knotifyconfig 5.54.0: Framework for configuring desktop notifications
-kde-frameworks/kpackage 5.54.0: Framework to install and load packages of non binary content
-kde-frameworks/kparts 5.54.0: Framework providing elaborate user-interface components
-kde-frameworks/kpeople 5.54.0: KDE contact person abstraction library
-kde-frameworks/kplotting 5.54.0: Framework providing easy data-plotting functions
-kde-frameworks/kpty 5.54.0: Framework for pseudo terminal devices and running child processes
-kde-frameworks/kross 5.54.0: Framework for embedding scripting into applications
-kde-frameworks/krunner 5.54.0: Framework for providing different actions given a string query
-kde-frameworks/kservice 5.54.0: Advanced plugin and service introspection
-kde-frameworks/ktexteditor 5.54.0-r1: Framework providing a full text editor component
-kde-frameworks/ktextwidgets 5.54.0: Framework providing an assortment of widgets for displaying and editing text
-kde-frameworks/kunitconversion 5.54.0: Framework for converting units
-kde-frameworks/kwallet 5.54.0: Framework providing desktop-wide storage for passwords
-kde-frameworks/kwayland 5.54.0: Qt-style client and server library wrapper for Wayland libraries
-kde-frameworks/kwidgetsaddons 5.54.0-r1: An assortment of high-level widgets for common tasks
-kde-frameworks/kwindowsystem 5.54.0: Framework providing access to properties and features of the window manager
-kde-frameworks/kxmlgui 5.54.0-r1: Framework for managing menu and toolbar actions in an abstract way
-kde-frameworks/kxmlrpcclient 5.54.0: Framework providing client-side support for the XML-RPC protocol
-kde-frameworks/modemmanager-qt 5.54.0: ModemManager bindings for Qt
-kde-frameworks/networkmanager-qt 5.54.0: NetworkManager bindings for Qt
-kde-frameworks/oxygen-icons 5.54.0: Oxygen SVG icon theme
-kde-frameworks/plasma 5.54.0: Plasma framework
-kde-frameworks/prison 5.54.0: QRCode and data matrix barcode library
-kde-frameworks/purpose 5.54.0: Library for providing abstractions to get the developer's purposes fulfilled
-kde-frameworks/qqc2-desktop-style 5.54.0: Style for QtQuickControls 2 that uses QWidget's QStyle for painting
-kde-frameworks/solid 5.54.0: Provider for platform independent hardware discovery, abstraction and management
-kde-frameworks/sonnet 5.54.0: Framework for providing spell-checking through abstraction of popular backends
-kde-frameworks/syndication 5.54.0: Library for parsing RSS and Atom feeds
-kde-frameworks/syntax-highlighting 5.54.0: Framework for syntax highlighting
-kde-frameworks/threadweaver 5.54.0: Framework for managing threads using job and queue-based interfaces
+kde-frameworks/kfilemetadata 5.54.0 5.57.0-r1: Library for extracting file metadata
+kde-frameworks/kglobalaccel 5.54.0 5.57.0-r2: Framework to handle global shortcuts
+kde-frameworks/kguiaddons 5.54.0 5.57.0: Framework providing assorted high-level user interface components
+kde-frameworks/kholidays 5.54.0 5.57.0: Library to determine holidays and other special events for a geographical region
+kde-frameworks/khtml 5.54.0 5.57.0: KHTML web rendering engine
+kde-frameworks/ki18n 5.54.0 5.57.0: Framework based on Gettext for internationalizing user interface text
+kde-frameworks/kiconthemes 5.54.0 5.57.0: Framework for icon theming and configuration
+kde-frameworks/kidletime 5.54.0 5.57.0: Framework for detection and notification of device idle time
+kde-frameworks/kimageformats 5.54.0 5.57.0: Framework providing additional format plugins for Qt's image I/O system
+kde-frameworks/kinit 5.54.0 5.57.0: Helper library to speed up start of applications on KDE work spaces
+kde-frameworks/kio 5.54.1 5.57.0: Framework providing transparent file and data management
+kde-frameworks/kirigami 5.54.0 5.57.0: Lightweight user interface framework for mobile and convergent applications
+kde-frameworks/kitemmodels 5.54.0 5.57.0: Framework providing data models to help with tasks such as sorting and filtering
+kde-frameworks/kitemviews 5.54.0 5.57.0: Framework providing additional widgets for item models
+kde-frameworks/kjobwidgets 5.54.0 5.57.0: Framework providing assorted widgets for showing the progress of jobs
+kde-frameworks/kjs 5.54.0 5.57.0: ECMAScipt compatible parser and engine
+kde-frameworks/kjsembed 5.54.0 5.57.0: Framework binding JavaScript objects to QObjects
+kde-frameworks/kmediaplayer 5.54.0 5.57.0: Framework providing a common interface for KParts that can play media files
+kde-frameworks/knewstuff 5.54.0 5.57.0: Framework for downloading and sharing additional application data
+kde-frameworks/knotifications 5.54.0 5.57.0: Framework for notifying the user of an event
+kde-frameworks/knotifyconfig 5.54.0 5.57.0: Framework for configuring desktop notifications
+kde-frameworks/kpackage 5.54.0 5.57.0-r1: Framework to install and load packages of non binary content
+kde-frameworks/kparts 5.54.0 5.57.0: Framework providing elaborate user-interface components
+kde-frameworks/kpeople 5.54.0 5.57.0: KDE contact person abstraction library
+kde-frameworks/kplotting 5.54.0 5.57.0: Framework providing easy data-plotting functions
+kde-frameworks/kpty 5.54.0 5.57.0: Framework for pseudo terminal devices and running child processes
+kde-frameworks/kross 5.54.0 5.57.0: Framework for embedding scripting into applications
+kde-frameworks/krunner 5.54.0 5.57.0: Framework for providing different actions given a string query
+kde-frameworks/kservice 5.54.0 5.57.0: Advanced plugin and service introspection
+kde-frameworks/ktexteditor 5.54.0-r1 5.57.0-r1: Framework providing a full text editor component
+kde-frameworks/ktextwidgets 5.54.0 5.57.0: Framework providing an assortment of widgets for displaying and editing text
+kde-frameworks/kunitconversion 5.54.0 5.57.0: Framework for converting units
+kde-frameworks/kwallet 5.54.0 5.57.0: Framework providing desktop-wide storage for passwords
+kde-frameworks/kwayland 5.54.0 5.57.0: Qt-style client and server library wrapper for Wayland libraries
+kde-frameworks/kwidgetsaddons 5.54.0-r1 5.57.0: An assortment of high-level widgets for common tasks
+kde-frameworks/kwindowsystem 5.54.0 5.57.0: Framework providing access to properties and features of the window manager
+kde-frameworks/kxmlgui 5.54.0-r1 5.57.0: Framework for managing menu and toolbar actions in an abstract way
+kde-frameworks/kxmlrpcclient 5.54.0 5.57.0: Framework providing client-side support for the XML-RPC protocol
+kde-frameworks/modemmanager-qt 5.54.0 5.57.0: ModemManager bindings for Qt
+kde-frameworks/networkmanager-qt 5.54.0 5.57.0: NetworkManager bindings for Qt
+kde-frameworks/oxygen-icons 5.54.0 5.57.0: Oxygen SVG icon theme
+kde-frameworks/plasma 5.54.0 5.57.0: Plasma framework
+kde-frameworks/prison 5.54.0 5.57.0: QRCode and data matrix barcode library
+kde-frameworks/purpose 5.54.0 5.57.0: Library for providing abstractions to get the developer's purposes fulfilled
+kde-frameworks/qqc2-desktop-style 5.54.0 5.57.0: Style for QtQuickControls 2 that uses QWidget's QStyle for painting
+kde-frameworks/solid 5.54.0 5.57.0-r1: Provider for platform independent hardware discovery, abstraction and management
+kde-frameworks/sonnet 5.54.0 5.57.0: Framework for providing spell-checking through abstraction of popular backends
+kde-frameworks/syndication 5.54.0 5.57.0: Library for parsing RSS and Atom feeds
+kde-frameworks/syntax-highlighting 5.54.0 5.57.0: Framework for syntax highlighting
+kde-frameworks/threadweaver 5.54.0 5.57.0: Framework for managing threads using job and queue-based interfaces
 kde-misc/basket 2.49b: Multiple information organizer - a DropDrawers clone
 kde-misc/kanyremote 6.4: KDE frontend to Anyremote
 kde-misc/kdeconnect 1.3.4: Adds communication between KDE Plasma and your smartphone
@@ -7563,6 +7577,7 @@ media-libs/exempi 2.4.5-r1: Port of the Adobe XMP SDK to work on UNIX
 media-libs/exiftool 11.29: Read and write meta information in image, audio and video files
 media-libs/faac 1.29.9.2: Free MPEG-4 audio codecs by AudioCoding.com
 media-libs/faad2 2.8.8: AAC audio decoding library
+media-libs/fdk-aac 0.1.5: Fraunhofer AAC codec library
 media-libs/ffmpegsource 2.23: A libav/ffmpeg based source library for easy frame accurate access
 media-libs/fidlib 0.9.10: Run-time filter design and execution library
 media-libs/flac 1.3.2-r1: free lossless audio encoder and decoder
@@ -8070,6 +8085,7 @@ media-sound/audiotag 0.19: A command-line tool for mass tagging/renaming of audi
 media-sound/aumix 2.9.1: Aumix volume/mixer control program
 media-sound/awesfx 0.5.1d 0.5.1e: AWE32 Sound Driver Utility Programs
 media-sound/aylet 0.5: Aylet plays music files in the .ay format
+media-sound/baudline 1.08-r1: A time-frequency browser designed for visualization of spectral domains
 media-sound/bladeenc 0.94.2-r1: An mp3 encoder
 media-sound/bplay 0.991: No-frills command-line buffered player and recorder
 media-sound/brutefir 1.0k-r2: Software convolution engine for applying long FIR filters
@@ -8924,6 +8940,7 @@ net-misc/capi4hylafax 01.03.00.99.300.20-r2: capi4hylafax adds a faxcapi modem t
 net-misc/cbqinit 0.7.3-r3: Sets up class-based queue traffic control (QoS) with iproute2
 net-misc/cfengine 2.2.10-r4 3.3.9: An automated suite of programs for configuring and maintaining Unix-like computers
 net-misc/charm 1.9.2-r1: A text based livejournal client
+net-misc/chrome-remote-desktop 49.0.2623.40 57.0.2987.37 63.0.3239.17-r1: access remote computers via Chrome!
 net-misc/chrony 3.1 3.3: NTP client and server programs
 net-misc/clockspeed 0.62-r6: A simple Network Time Protocol (NTP) client
 net-misc/clusterssh 4.03.03: Concurrent Multi-Server Terminal Access
@@ -9241,6 +9258,7 @@ net-wireless/ndiswrapper 1.61: Wrapper for using Windows drivers for some wirele
 net-wireless/python-wifi 0.5.0-r3: Provides r/w access to a wireless network card's capabilities
 net-wireless/rfkill 0.5-r2: Tool to read and control rfkill status through /dev/rfkill
 net-wireless/spectools 2011.08.1-r2 2016.01.1: Spectrum Analyzer for Meta-Geek Wi-Spy and GSG Ubertooth hardware
+net-wireless/unifi 5.6.40 5.6.42 5.10.21 5.10.23: A Management Controller for Ubiquiti Networks UniFi APs
 net-wireless/wavemon 0.7.6: Ncurses based monitor for IEEE 802.11 wireless LAN cards
 net-wireless/wepattack 0.1.3-r4: WLAN tool for breaking 802.11 WEP keys
 net-wireless/wifi-radar 2.0.8-r2: WiFi Radar is a Python/PyGTK2 utility for managing WiFi profiles
@@ -9465,6 +9483,7 @@ sci-libs/linux-gpib 4.1.0: Kernel module and driver library for GPIB (IEEE 488.2
 sci-libs/lrslib 042c-r2: self-contained ANSI C implementation of the reverse search algorithm
 sci-libs/mc 1.5: 2D/3D AFEM code for nonlinear geometric PDE
 sci-libs/metis 4.0.3: A package for unstructured serial graph partitioning
+sci-libs/mkl 10.0.5.025: Intel(R) Math Kernel Library: linear algebra, fft, math functions
 sci-libs/mpfi 1.5.1: Multiple precision interval arithmetic library based on MPFR
 sci-libs/mpir 2.6.0-r2 3.0.0: Library for arbitrary precision integer arithmetic (fork of gmp)
 sci-libs/neartree 5.1.1: Function library efficiently solving the Nearest Neighbor Problem
@@ -9509,6 +9528,7 @@ sci-mathematics/euler 1.61.0: Mathematical programming environment
 sci-mathematics/flint 2.4.4-r1: Fast Library for Number Theory
 sci-mathematics/frobby 0.9.0-r2: Software system and project for computations with monomial ideals
 sci-mathematics/gfan 0.5-r1: computes Groebner fans and tropical varities
+sci-mathematics/gimps 28.10-r1 29.4.8: The Great Internet Mersenne Prime Search
 sci-mathematics/ginac 1.6.6: C++ library and tools for symbolic calculations
 sci-mathematics/glpk 4.63: GNU Linear Programming Kit
 sci-mathematics/gmm 5.1: Generic C++ template library for sparse, dense and skyline matrices
@@ -10266,8 +10286,8 @@ sys-fs/vhba 20190302: Virtual (SCSI) Host Bus Adapter kernel module for the CDEm
 sys-fs/vzquota 3.1: OpenVZ VPS disk quota utility
 sys-fs/xfsdump 3.1.6 3.1.8: xfs dump/restore utilities
 sys-fs/xfsprogs 4.17.0-r1: xfs filesystem utilities
-sys-fs/zfs 0.6.5.11-r2 0.7.12: Userland utilities for ZFS Linux kernel module
-sys-fs/zfs-kmod 0.6.5.11 0.7.12: Linux ZFS kernel module for sys-fs/zfs
+sys-fs/zfs 0.6.5.11-r2 0.7.12 0.7.13: Userland utilities for ZFS Linux kernel module
+sys-fs/zfs-kmod 0.6.5.11 0.7.12 0.7.13: Linux ZFS kernel module for sys-fs/zfs
 sys-kernel/bliss-initramfs 7.1.3: Boot your system's rootfs from ZFS, LVM, RAID, or a variety of other configs.
 sys-kernel/dracut 044-r1 045-r2 046-r1: Generic initramfs generation tool
 sys-kernel/genkernel 3.4.52.3 3.4.52.4-r2 3.4.52.4-r3 3.5.3.3: Gentoo automatic kernel building scripts
@@ -10275,7 +10295,7 @@ sys-kernel/genkernel-next 68 69: Gentoo automatic kernel building scripts, reloa
 sys-kernel/gentoo-sources 4.4.176 4.4.179 4.9.162-r1 4.9.171 4.14.105-r1 4.14.114 4.19.27-r1 4.19.37: Full sources including the Gentoo patchset for the 4.19 kernel tree
 sys-kernel/linux-firmware 20190502: Linux firmware files
 sys-kernel/linux-headers 3.18 4.4 4.13 4.14-r1: Linux system headers
-sys-kernel/spl 0.6.5.11 0.7.12: The Solaris Porting Layer provides many of the Solaris kernel APIs
+sys-kernel/spl 0.6.5.11 0.7.12 0.7.13: The Solaris Porting Layer provides many of the Solaris kernel APIs
 sys-libs/argp-standalone 1.3-r2: Standalone argp library for use with uclibc
 sys-libs/binutils-libs 2.31.1-r4 2.31.1-r6: Core binutils libraries (libbfd, libopcodes, libiberty) for external packages
 sys-libs/compiler-rt 4.0.1 5.0.2 6.0.1 7.1.0: Compiler runtime library for clang (built-in part)
@@ -10652,11 +10672,13 @@ www-client/falkon 3.1.0-r1: Cross-platform web browser using QtWebEngine
 www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
 www-client/firefox 60.6.2: Firefox Web Browser
 www-client/firefox-bin 60.6.2 66.0.5: Firefox Web Browser
+www-client/google-chrome 74.0.3729.131: The web browser from Google
 www-client/httrack 3.48.21-r1: HTTrack Website Copier, Open Source Offline Browser
 www-client/links 2.14-r1: A fast and lightweight web browser running in both graphics and text mode
 www-client/lynx 2.8.9_pre16: An excellent console-based web browser with ssl support
 www-client/midori 7.0: A lightweight web browser based on WebKitGTK+
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
+www-client/opera 12.16_p1860-r1 60.0.3255.83-r1: A fast and secure web browser
 www-client/pybugz 0.13: Command line interface to (Gentoo) Bugzilla
 www-client/ripe-atlas-cousteau 1.0.7 1.2: A Python wrapper around the RIPE Atlas API
 www-client/seamonkey 2.49.9.1_p0: Seamonkey Web Browser
@@ -10664,6 +10686,7 @@ www-client/seamonkey-bin 2.48: Mozilla Application Suite - web browser, email, H
 www-client/surf 2.0: a simple web browser based on WebKit/GTK+
 www-client/surfraw 2.2.9-r1 2.3.0: A fast unix command line interface to WWW
 www-client/uget 2.2.0: Download manager using gtk+ and libcurl
+www-client/vivaldi 2.5.1525.41_p1 2.5.1525.43_p1: A browser for our friends
 www-client/w3m 0.5.3_p20180125: Text based WWW browser, supports tables and frames
 www-client/w3mmee 0.3.2_p24-r10: A variant of w3m with support for multiple character encodings
 www-misc/awstats 7.1_p20121017 7.4: AWStats is short for Advanced Web Statistics
@@ -10677,6 +10700,8 @@ www-misc/surl 0.7.1.1-r1: URL shortening command line application that supports 
 www-misc/urlwatch 2.13: A tool for monitoring webpages for updates
 www-misc/vdradmin-am 3.6.9: WWW Admin for the Video Disk Recorder
 www-misc/visitors 0.7-r2: Fast web log analyzer
+www-plugins/adobe-flash 32.0.0.192: Adobe Flash Player
+www-plugins/chrome-binary-plugins 74.0.3729.131: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.5-r2 0.3.9: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-servers/apache 2.2.34 2.4.39: The Apache Web Server
 www-servers/caddy 0.10.11: Fast, cross-platform HTTP/2 web server with automatic HTTPS
@@ -11089,6 +11114,7 @@ x11-misc/xdotool 3.20150503.1-r1 3.20160805.1: Simulate keyboard input and mouse
 x11-misc/xearth 1.1-r1: Xearth sets the X root window to an image of the Earth
 x11-misc/xfe 1.42: MS-Explorer-like minimalist file manager for X
 x11-misc/xfishtank 2.1-r2: Turns your root window into an aquarium
+x11-misc/xflux 20130927 20130927-r1: Makes the color of your computer's display adapt to the time of the day
 x11-misc/xflux-gui 1.1.10 1.1.10_p20180910: A GUI for f.lux
 x11-misc/xfractint 20.04_p12: A fractal generator
 x11-misc/xkbd 0.8.16-r1: onscreen soft keyboard for X11
