@@ -190,7 +190,6 @@ app-arch/libarchive:zlib - Allow accessing gzip-compressed archives through sys-
 app-arch/p7zip:rar - Enable support for non-free rar decoder
 app-arch/pbzip2:symlink - Install symlinks which override app-arch/bzip2 implementation
 app-arch/pigz:symlink - Install symlinks which override app-arch/gzip implementation
-app-arch/rar:all_sfx - Install all SFX (Self-Extracting) files rather than just the native format (allows creation of Windows EXEs on Linux ELF systems)
 app-arch/tar:minimal - just install `tar`
 app-arch/unzip:natspec - Use dev-libs/libnatspec to correctly decode non-ascii file names archived in Windows.
 app-arch/xz-utils:extra-filters - Build additional filters that are not used in any of the default xz presets. This includes delta and BCJ coders, additional match finders and SHA256 checks.
@@ -469,12 +468,6 @@ app-emulation/virtualbox:pax_kernel - Apply patch needed for pax enabled kernels
 app-emulation/virtualbox:sdk - Enable building of SDK
 app-emulation/virtualbox:udev - Controls installation of special USB udev rules.
 app-emulation/virtualbox:vboxwebsrv - Build and install the VirtualBox webservice
-app-emulation/virtualbox-bin:additions - Install Guest System Tools ISO
-app-emulation/virtualbox-bin:chm - Install kchmviewer binary to enable online help (in MS CHM format)
-app-emulation/virtualbox-bin:headless - Install without any graphic frontend
-app-emulation/virtualbox-bin:rdesktop-vrdp - Install the rdesktop client integration
-app-emulation/virtualbox-bin:sdk - Enable building of SDK
-app-emulation/virtualbox-bin:vboxwebsrv - Install the VirtualBox webservice
 app-emulation/virtualbox-modules:pax_kernel - Apply patch needed for pax enabled kernels
 app-emulation/vkd3d:spirv-tools - Enable SPIRV shader debugging support using dev-util/spirv-tools
 app-emulation/wine-vanilla:capi - Enable ISDN support via CAPI
@@ -611,9 +604,6 @@ app-misc/graphlcd-base:g15 - Add support for app-misc/g15daemon, used by the Log
 app-misc/graphlcd-base:graphicsmagick - Add support for media-gfx/graphicsmagick.
 app-misc/graphlcd-base:imagemagick - Add support for media-gfx/imagemagick.
 app-misc/jq:oniguruma - Use dev-libs/oniguruma for regular expression support
-app-misc/kryoflux-dtc:demos - Install example floppy game files.
-app-misc/kryoflux-dtc:fast-firmware - Install fast firmware instead of slow firmware.
-app-misc/kryoflux-dtc:gui - Install the Kryoflux GUI
 app-misc/lcd4linux:apm - Enable the APM plugin.
 app-misc/lcd4linux:asterisk - Enable the Asterisk plugin.
 app-misc/lcd4linux:button_exec - Enable the Button plugin, to execute something on keypress.
@@ -1398,19 +1388,6 @@ dev-java/log4j:jms - Build the JMSAppender
 dev-java/logback:tomcat - Builds Apache Tomcat support
 dev-java/lucene:contrib - Include extra functionality from contrib/
 dev-java/miglayout:swt - Add support for the SWT toolkit.
-dev-java/oracle-jdk-bin:commercial - Install features requiring a commercial license for production use
-dev-java/oracle-jdk-bin:gentoo-vm - Allow this JDK to be recognised by Gentoo (package manager, eselect, java-config, EXPERIMENTAL!)
-dev-java/oracle-jdk-bin:gtk2 - Enable GTK+ 2 support in JavaFX
-dev-java/oracle-jdk-bin:gtk3 - Enable GTK+ 3 support in JavaFX
-dev-java/oracle-jdk-bin:headless-awt - Don't install the X backend for AWT, needed by some GUIs (used to be X flag)
-dev-java/oracle-jdk-bin:javafx - Install JavaFX libraries
-dev-java/oracle-jdk-bin:jce - Install Java Cryptographic Extension Unlimited Strength Jurisdiction Policy Files
-dev-java/oracle-jdk-bin:source - Install JVM (and optionally JavaFX) sources
-dev-java/oracle-jdk-bin:visualvm - Install VisualVM debugging tool
-dev-java/oracle-jre-bin:commercial - Install features requiring a commercial license for production use
-dev-java/oracle-jre-bin:headless-awt - Don't install the X backend for AWT, needed by some GUIs (used to be X flag)
-dev-java/oracle-jre-bin:javafx - Install JavaFX libraries
-dev-java/oracle-jre-bin:jce - Install Java Cryptographic Extension Unlimited Strength Jurisdiction Policy Files
 dev-java/rxtx:lfd - Installs and uses LockFileServer daemon (lfd)
 dev-java/sbt:binary - Install from (Gentoo-compiled) binary instead of building from sources. Set this when you run out of memory during build.
 dev-lang/erlang:compat-ethread - Enable compatibility with pre-pentium 4 CPUs in the ethread library.
@@ -2176,11 +2153,6 @@ dev-util/google-perftools:minimal - Only build the tcmalloc_minimal library, ign
 dev-util/google-perftools:optimisememory - To build libtcmalloc with smaller internal caches.
 dev-util/gtk-doc:highlight - Enable source code highlighting
 dev-util/gtk-doc:vim - Enable source code highlighting through app-editors/vim
-dev-util/intel-ocl-sdk:android - Install android related files
-dev-util/intel-ocl-sdk:system-boost - Use system boost (dev-libs/boost) instead of bundled one
-dev-util/intel-ocl-sdk:system-clang - Use system clang (sys-devel/clang) instead of bundled one
-dev-util/intel-ocl-sdk:system-tbb - Use system Thread Building Blocks (dev-cpp/tbb) instead of bundled one
-dev-util/intel-ocl-sdk:tools - Install Intel Offline Compiler
 dev-util/kdevelop:gdbui - Enable GUI for attaching GDB to a running process
 dev-util/kdevelop:hex - Enable hex editor plugin via app-editors/okteta
 dev-util/kdevelop:qmake - Enable support for QMake build system
@@ -5145,8 +5117,6 @@ sci-libs/libsigrok:serial - Enable drivers that are serial (RS232) based
 sci-libs/libsvm:tools - Install python based tool scripts for data selection and visualization with sci-visualization/gnuplot
 sci-libs/linux-gpib:firmware - Install firmware
 sci-libs/linux-gpib:isa - Build ISA kernel modules; from 3.12 on the setting is ignored and the decision based on the kernel configuration
-sci-libs/mkl:fortran95 - Installs the BLAS/LAPACK FORTRAN95 static libraries
-sci-libs/mkl:int64 - Installs the 64 bits integer libraries
 sci-libs/mpir:cpudetection - Enables runtime cpudetection (useful for bindist, compatability on other CPUs)
 sci-libs/netcdf:dap - Support for remote data access with the built-in OPeNDAP client
 sci-libs/netcdf:hdf - Add support for the Hierarchical Data Format v.4 sci-libs/hdf
@@ -5992,7 +5962,6 @@ www-client/firefox:system-webp - Use the system-wide media-libs/libwebp instead 
 www-client/links:libevent - Enable dev-libs/libevent support
 www-client/lynx:gnutls - Use gnutls library for HTTPS support (openssl is the default library for HTTPS support).
 www-client/lynx:ssl - Enable HTTPS support.
-www-client/opera:gtk - Install support libraries and runtime dependencies to support GTK+/GNOME desktop integration
 www-client/seamonkey:calendar - Build Mozilla's calendar
 www-client/seamonkey:chatzilla - Build Mozilla's IRC client (default on)
 www-client/seamonkey:custom-optimization - Build with user-specified compiler optimizations (-Os, -O0, -O1, -O2, -O3) from CFLAGS (unsupported)
@@ -6012,10 +5981,6 @@ www-client/uget:aria2 - Enable support for net-misc/aria2 through xmlrpc. You'll
 www-client/uget:control-socket - Enable JSON-RPC over unix domain socket
 www-client/uget:openssl - Use dev-libs/openssl instead of net-libs/gnutls
 www-client/uget:rss - Enable uGet feed messages
-www-client/vivaldi:l10n_es-PE - Spanish, Peru locale
-www-client/vivaldi:l10n_io - Ido locale
-www-client/vivaldi:l10n_jbo - Lojban locale
-www-client/vivaldi:l10n_sc - Sardinian locale
 www-client/w3m:gdk-pixbuf - Enable support for x11-libs/gdk-pixbuf
 www-client/w3m:lynxkeymap - If you prefer Lynx-like key binding
 www-misc/monitorix:apcupsd - Make use of a daemon that controls APC UPSes with sys-power/apcupsd.
@@ -6023,9 +5988,6 @@ www-misc/monitorix:httpd - Enables the CGI webserver with any package that satis
 www-misc/monitorix:postfix - Analyze postfix logs with net-mail/pflogsumm.
 www-misc/shellinabox:pam - Enable PAM support.
 www-misc/vdradmin-am:vdr - Support for media-video/vdr. Disable this if the VDR you want to control runs at a remote machine.
-www-plugins/adobe-flash:nsplugin - Install the Netscape Flash API plugin (for Firefox and similar browsers)
-www-plugins/adobe-flash:ppapi - Install the Pepper Flash API plugin (for Chrome and similar browsers)
-www-plugins/chrome-binary-plugins:widevine - Install the Widevine DRM library
 www-plugins/freshplayerplugin:gles2 - Use system GLESv2 libraries instead of ANGLE for shader translation
 www-plugins/freshplayerplugin:gtk3 - Build with GTK+ 3 instead of GTK+ 2
 www-plugins/freshplayerplugin:v4l - Use libv4l2 for colorspace conversion
