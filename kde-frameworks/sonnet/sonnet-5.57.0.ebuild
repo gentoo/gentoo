@@ -30,3 +30,12 @@ src_configure() {
 
 	kde5_src_configure
 }
+
+src_test() {
+	# bugs: 680032
+	local myctestargs=(
+		-E "(sonnet-test_settings|sonnet-test_highlighter)"
+	)
+
+	kde5_src_test
+}
