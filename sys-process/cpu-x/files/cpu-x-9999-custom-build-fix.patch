@@ -1,0 +1,132 @@
+diff --git a/src/core.c b/src/core.c
+index 18eef79..9974da9 100644
+--- a/src/core.c
++++ b/src/core.c
+@@ -73,10 +73,16 @@ int fill_labels(Labels *data)
+ 	int i, err = 0;
+ 	const uint8_t selected_page = opts->selected_page;
+ 
++#if HAS_LIBCPUID
+ 	if(HAS_LIBCPUID)               err += call_libcpuid_static    (data);
+ 	if(HAS_LIBCPUID  && DAEMON_UP) err += call_libcpuid_msr_static(data);
++#endif
++#if HAS_DMIDECODE
+ 	if(HAS_DMIDECODE && DAEMON_UP) err += call_dmidecode          (data);
++#endif
++#if HAS_LIBPCI
+ 	if(HAS_LIBPCI)                 err += find_devices            (data);
++#endif
+ 	casprintf(&data->tab_cpu[VALUE][BUSSPEED], true, "%.2f MHz", data->bus_freq);
+ 
+ 	err += system_static       (data);
+@@ -101,15 +107,19 @@ int do_refresh(Labels *data)
+ 	switch(opts->selected_page)
+ 	{
+ 		case NO_CPU:
++#if HAS_LIBCPUID
+ 			if(HAS_LIBCPUID)              err += err_func(call_libcpuid_dynamic,     data);
+ 			if(HAS_LIBCPUID && DAEMON_UP) err += err_func(call_libcpuid_msr_dynamic, data);
++#endif
+ 			err += err_func(cpu_usage, data);
+ 			err += fallback_mode_dynamic(data);
+ 			err += err_func(cputab_fill_multipliers, data);
+ 			break;
++#if HAS_BANDWIDTH
+ 		case NO_CACHES:
+ 			if(HAS_BANDWIDTH) err += err_func(call_bandwidth, data);
+ 			break;
++#endif
+ 		case NO_SYSTEM:
+ 			if(HAS_LIBSYSTEM) err += err_func(system_dynamic, data);
+ 			break;
+@@ -1339,11 +1349,13 @@ static int fallback_mode_static(Labels *data)
+ {
+ 	int err = 0;
+ 
++#if HAS_LIBCPUID
+ 	if(HAS_LIBCPUID &&
+ 	   (string_is_empty(data->tab_cpu[VALUE][PACKAGE])                  ||
+ 	    strstr(data->tab_cpu[VALUE][PACKAGE], "CPU")            != NULL ||
+ 	    strstr(data->tab_cpu[VALUE][PACKAGE], "Microprocessor") != NULL))
+ 		err += cputab_package_fallback(data);
++#endif
+ 
+ 	if(data->cpu_min_mult <= 0.0 || data->cpu_max_mult <= 0.0)
+ 		err += cputab_multipliers_fallback(data);
+diff --git a/src/core.h b/src/core.h
+index c461cf3..ab1a018 100644
+--- a/src/core.h
++++ b/src/core.h
+@@ -54,21 +54,27 @@ static int cputab_fill_multipliers(Labels *data);
+ /* Required: none
+ Both normal and fallback mode provide CPU multipliers, need to be call after */
+ 
++#if HAS_DMIDECODE
+ /* Elements provided by dmidecode */
+ static int call_dmidecode(Labels *data);
+ /* Required: HAS_DMIDECODE && DAEMON_UP */
++#endif
+ 
++#if HAS_BANDWIDTH
+ /* Compute CPU cache speed */
+ static int call_bandwidth(Labels *data);
+ /* Required: HAS_BANDWIDTH */
++#endif
+ 
+ /* Calculate total CPU usage */
+ static int cpu_usage(Labels *data);
+ /* Required: none */
+ 
++#if HAS_LIBPCI
+ /* Find some PCI devices, like chipset and GPU */
+ static int find_devices(Labels *data);
+ /* Required: HAS_LIBPCI */
++#endif
+ 
+ /* Retrieve GPU temperature */
+ static int gpu_temperature(Labels *data);
+diff --git a/src/daemon.c b/src/daemon.c
+index f4b77b8..ea9ef9b 100644
+--- a/src/daemon.c
++++ b/src/daemon.c
+@@ -225,10 +225,16 @@ static void *request_handler(void *p_data)
+ 
+ 		switch(cmd)
+ 		{
++#if HAS_LIBCPUID
+ 			case LIBCPUID_MSR_STATIC:  if(HAS_LIBCPUID)  __call_libcpuid_msr_static(&td->fd);  break;
+ 			case LIBCPUID_MSR_DYNAMIC: if(HAS_LIBCPUID)  __call_libcpuid_msr_dynamic(&td->fd); break;
++#endif
++#if HAS_DMIDECODE
+ 			case DMIDECODE:            if(HAS_DMIDECODE) __call_dmidecode(&td->fd);            break;
++#endif
++#if HAS_LIBPCI
+ 			case ACCESS_DEV_PCI:       if(HAS_LIBPCI)    __find_devices(&td->fd);              break;
++#endif
+ 			case ACCESS_SYS_DEBUG:                       __sys_debug_ok(&td->fd);              break;
+ 			case LOAD_MODULE:                            __load_module(&td->fd);               break;
+ 		}
+@@ -299,8 +305,10 @@ int main(void)
+ 
+ 	/* Logs */
+ 	unlink(LOG_FILE);
++#if HAS_LIBCPUID
+ 	if(HAS_LIBCPUID && getenv("CPUX_DAEMON_DEBUG"))
+ 		libcpuid_msr_serialize();
++#endif
+ 	freopen(LOG_FILE, "a", stdout);
+ 	setvbuf(stdout, NULL, _IONBF, 0);
+ 	dup2(STDOUT_FILENO, STDERR_FILENO);
+diff --git a/src/main.c b/src/main.c
+index 1aba775..0ac605d 100644
+--- a/src/main.c
++++ b/src/main.c
+@@ -557,7 +557,7 @@ static void help(char *binary_name)
+ 	MSG_STDOUT(_("\nInfluenceable environment variables:"));
+ 	for(i = 0; cpux_env_vars[i].var_name != NULL; i++)
+ 	{
+-		if(!cpux_options[i].has_mod)
++		if(!cpux_env_vars[i].has_mod)
+ 			continue;
+ 		MSG_STDOUT("  %-20s %s", cpux_env_vars[i].var_name, _(cpux_env_vars[i].description));
+ 	}

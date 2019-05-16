@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM 'http://www.gentoo.org/dtd/metadata.dtd'>
+<pkgmetadata>
+	<maintainer type='person'>
+		<email>beatussum@protonmail.com</email>
+		<name>Mattéo Rossillol</name>
+	</maintainer>
+	<maintainer type='project'>
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		CPU-X is similar to CPU-Z (Windows), but, unlike the latter, it is a Free
+		and Open Source software, written in C and designed for GNU/Linux. It can
+		also be used in graphical mode by using <pkg>x11-libs/gtk+</pkg>, than in
+		text-based mode with the use of <pkg>sys-libs/ncurses</pkg>.
+	</longdescription>
+	<longdescription lang='fr'>
+		CPU-X est similaire à CPU-Z (Windows), mais, contrairement à ce dernier,  c'est
+		un logiciel Libre et Open Source,  écrit en C et concu pour GNU/Linux.  Il peut
+		être aussi bien utilisé en mode graphique en utlisant <pkg>x11-libs/gtk+</pkg>,
+		qu'en mode textuel avec l'utilisation de <pkg>sys-libs/ncurses</pkg>.
+	</longdescription>
+	<use>
+		<flag name='bandwidth'>Integrate bandwidth (recommended)</flag>
+		<flag name='check-update'>Automatically check whether the program is up to date</flag>
+		<flag name='dmidecode'>Integrate dmidecode (recommended)</flag>
+		<flag name='force-libstatgrab'>Use <pkg>sys-libs/libstatgrab</pkg> to instead of <pkg>sys-process/procps</pkg></flag>
+		<flag name='ignore-staticlibs'>Build portable binary without static libraries</flag>
+		<flag name='libcpuid'>Use the <pkg>sys-libs/libcpuid</pkg> library</flag>
+		<flag name='libpci'>Use the <pkg>sys-apps/pciutils</pkg> library</flag>
+		<flag name='portable'>Build a all-in-one binary (portable version)</flag>
+	</use>
+	<use lang='fr'>
+		<flag name='bandwidth'>Intégrer bandwidth (recommandé)</flag>
+		<flag name='check-update'>Vérifier automatiquement si le programme est à jour</flag>
+		<flag name='dmidecode'>Intégrer dmidecode (recommandé)</flag>
+		<flag name='force-libstatgrab'>Utiliser <pkg>sys-libs/libstatgrab</pkg> à la place de <pkg>sys-process/procps</pkg></flag>
+		<flag name='ignore-staticlibs'>Construire le binaire portable sans bibliothèque statique</flag>
+		<flag name='libcpuid'>Utiliser la bibliothèque <pkg>sys-libs/libcpuid</pkg></flag>
+		<flag name='libpci'>Utiliser la bibliothèque <pkg>sys-apps/pciutils</pkg></flag>
+		<flag name='portable'>Construire un binaire tout-en-un (version portable)</flag>
+	</use>
+	<upstream>
+		<maintainer status='active'>
+			<name>X0rg</name>
+		</maintainer>
+		<changelog>https://raw.githubusercontent.com/X0rg/CPU-X/master/ChangeLog</changelog>
+		<doc>https://github.com/X0rg/CPU-X/wiki</doc>
+		<bugs-to>https://github.com/X0rg/CPU-X/issues</bugs-to>
+		<remote-id type='github'>X0rg/CPU-X</remote-id>
+	</upstream>
+</pkgmetadata>

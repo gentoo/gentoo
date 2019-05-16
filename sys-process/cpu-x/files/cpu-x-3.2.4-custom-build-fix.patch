@@ -1,0 +1,81 @@
+diff --git a/src/core.c b/src/core.c
+index 04da983..c275231 100644
+--- a/src/core.c
++++ b/src/core.c
+@@ -75,10 +75,16 @@ int fill_labels(Labels *data)
+ 	int i, err = 0;
+ 	const uint8_t selected_page = opts->selected_page;
+ 
++#if HAS_LIBCPUID
+ 	if(HAS_LIBCPUID)  err += call_libcpuid_static    (data);
+ 	if(HAS_LIBCPUID)  err += call_libcpuid_msr_static(data);
++#endif
++#if HAS_DMIDECODE
+ 	if(HAS_DMIDECODE) err += call_dmidecode          (data);
++#endif
++#if HAS_LIBPCI
+ 	if(HAS_LIBPCI)    err += find_devices            (data);
++#endif
+ 	casprintf(&data->tab_cpu[VALUE][BUSSPEED], true, "%.2f MHz", data->bus_freq);
+ 
+ 	err += system_static       (data);
+@@ -103,15 +109,19 @@ int do_refresh(Labels *data)
+ 	switch(opts->selected_page)
+ 	{
+ 		case NO_CPU:
++#if HAS_LIBCPUID
+ 			if(HAS_LIBCPUID) err += err_func(call_libcpuid_dynamic,     data);
+ 			if(HAS_LIBCPUID) err += err_func(call_libcpuid_msr_dynamic, data);
++#endif
+ 			err += err_func(cpu_usage, data);
+ 			err += fallback_mode_dynamic(data);
+ 			err += err_func(cputab_fill_multipliers, data);
+ 			break;
++#if HAS_BANDWIDTH
+ 		case NO_CACHES:
+ 			if(HAS_BANDWIDTH) err += err_func(call_bandwidth, data);
+ 			break;
++#endif
+ 		case NO_SYSTEM:
+ 			if(HAS_LIBSYSTEM) err += err_func(system_dynamic, data);
+ 			break;
+@@ -1299,11 +1309,13 @@ static int fallback_mode_static(Labels *data)
+ {
+ 	int err = 0;
+ 
++#if HAS_LIBCPUID
+ 	if(HAS_LIBCPUID &&
+ 	   (string_is_empty(data->tab_cpu[VALUE][PACKAGE])                  ||
+ 	    strstr(data->tab_cpu[VALUE][PACKAGE], "CPU")            != NULL ||
+ 	    strstr(data->tab_cpu[VALUE][PACKAGE], "Microprocessor") != NULL))
+ 		err += cputab_package_fallback(data);
++#endif
+ 
+ 	if(data->cpu_min_mult <= 0.0 || data->cpu_max_mult <= 0.0)
+ 		err += cputab_multipliers_fallback(data);
+diff --git a/src/main.c b/src/main.c
+index 6ed50f9..3674611 100644
+--- a/src/main.c
++++ b/src/main.c
+@@ -647,8 +647,10 @@ static void version(void)
+ 		{ false,           NULL,          NULL                }
+ 	};
+ 
++#if HAS_WEB_SUPPORT
+ 	if(HAS_WEB_SUPPORT)
+ 		check_new_version();
++#endif
+ 
+ 	MSG_STDOUT("%s %s %s", PRGNAME, PRGVER, new_version[1]);
+ 	MSG_STDOUT("%s\n", PRGCPRGHT);
+@@ -972,8 +974,10 @@ int main(int argc, char *argv[])
+ 	labels_setname(data);
+ 	fill_labels   (data);
+ 
++#if HAS_WEB_SUPPORT
+ 	if(HAS_WEB_SUPPORT)
+ 		check_new_version();
++#endif
+ 
+ 	/* Show data */
+ 	if(HAS_GTK && (opts->output_type == OUT_GTK))
