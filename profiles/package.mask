@@ -390,14 +390,6 @@ net-mail/bincimap
 # Removal in 30 days.  Bug #629450.
 mail-filter/mimedefang
 
-# Richard Freeman <rich0@gentoo.org> (24 Apr 2019)
-# Masked for removal in 30 days.  Likely does not work
-# and is essentially unmainted.  Please comment in 
-# bug 548926 if you want to give this some care.
-games-rpg/eternal-lands
-games-rpg/eternal-lands-bloodsucker
-games-rpg/eternal-lands-data
-
 # Michał Górny <mgorny@gentoo.org> (24 Apr 2019)
 # Unmaintained.  Vulnerable init.d script.  Missing dependencies causing
 # build failures (#514136).  Last bumped in 2011, pending bump since
