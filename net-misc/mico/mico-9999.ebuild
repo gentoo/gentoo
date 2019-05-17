@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -8,7 +8,7 @@ inherit flag-o-matic toolchain-funcs autotools
 PATCH_VER=20170529
 
 if [[ ${PV} == 9999 ]]; then
-	EDARCS_REPOSITORY="http://mico.org/mico-darcs-repository"
+	EDARCS_REPOSITORY="http://www.mico.org/mico-darcs-repository"
 	inherit darcs
 	SRC_URI=
 else
