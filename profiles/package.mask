@@ -28,6 +28,10 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+#
+# Stefan Strogin <steils@gentoo.org> (17 May 2019)
+# Depends on >=dev-libs/bglibs-2.04. Bug #685238.
+>=net-libs/cvm-0.97
 
 # Matt Turner <mattst88@gentoo.org> (16 May 2019)
 # Not supported by the Xserver since v1.6.0 (2008)
