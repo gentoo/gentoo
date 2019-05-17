@@ -18,7 +18,7 @@ IUSE="crypt ssl selinux"
 COMMON_DEPEND=">=sys-libs/pam-0.99
 	>=sys-libs/libhx-3.12.1
 	>=dev-libs/libxml2-2.6
-	crypt? ( >=sys-fs/cryptsetup-1.1.0 )
+	crypt? ( >=sys-fs/cryptsetup-1.1.0:= )
 	ssl? ( dev-libs/openssl:0= )
 	selinux? ( sys-libs/libselinux )"
 DEPEND="${COMMON_DEPEND}

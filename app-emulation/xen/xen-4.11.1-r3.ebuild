@@ -16,7 +16,7 @@ if [[ $PV == *9999 ]]; then
 	SRC_URI=""
 else
 	KEYWORDS="~amd64 ~arm -x86"
-	UPSTREAM_VER=
+	UPSTREAM_VER=2
 	SECURITY_VER=
 	GENTOO_VER=
 
@@ -99,6 +99,9 @@ src_prepare() {
 	[[ -n ${GENTOO_VER} ]] && eapply "${WORKDIR}"/patches-gentoo
 
 	eapply "${FILESDIR}"/${PN}-4.6-efi.patch
+
+	# https://src.fedoraproject.org/rpms/xen/blob/master/f/xen.gcc9.fixes.patch
+	eapply "${FILESDIR}"/${PN}.gcc9.fixes.patch
 
 	# Drop .config
 	sed -e '/-include $(XEN_ROOT)\/.config/d' -i Config.mk || die "Couldn't	drop"
