@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-db/cdb:= >=dev-libs/bglibs-2.04:0= mysql? ( dev-db/mysql-connector-c:0= ) postgres? ( dev-db/postgresql[server] ) vpopmail? ( net-mail/vpopmail ) test? ( app-editors/vim dev-db/sqlite )
+DESCRIPTION=Credential Validation Modules by Bruce Guenter
+EAPI=7
+HOMEPAGE=http://untroubled.org/cvm/
+IUSE=mysql postgres test vpopmail
+KEYWORDS=~amd64 ~ppc ~sparc ~x86
+LICENSE=GPL-2+
+RDEPEND=dev-db/cdb:= >=dev-libs/bglibs-2.04:0=
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=http://untroubled.org/cvm/archive/cvm-0.97.tar.gz
+_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
+_md5_=f7b13f814173060f7b32b0efefc30baa
