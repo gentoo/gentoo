@@ -205,6 +205,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.5.0-sysmacros.patch
 	"${FILESDIR}"/${PN}-2.11.1-capstone_include_path.patch
 	"${FILESDIR}"/${P}-sanitize-interp_info.patch
+	"${FILESDIR}"/${PN}-3.1.0-md-clear-md-no.patch
 )
 
 QA_PREBUILT="

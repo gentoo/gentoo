@@ -1,0 +1,45 @@
+From 329918bd671c89de6e1c2874baba48d658a89a10 Mon Sep 17 00:00:00 2001
+From: Damir Franusic <df@release14.org>
+Date: Sun, 9 Dec 2018 19:53:58 +0100
+Subject: [PATCH] hcrypto: fix include path
+
+---
+ lib/hcrypto/Makefile.am | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/lib/hcrypto/Makefile.am b/lib/hcrypto/Makefile.am
+index 469176b6c6..195117d174 100644
+--- a/lib/hcrypto/Makefile.am
++++ b/lib/hcrypto/Makefile.am
+@@ -9,7 +9,8 @@ AM_CPPFLAGS += $(INCLUDE_openssl_crypto)
+ endif
+ 
+ AM_CPPFLAGS += -I$(top_srcdir)/lib/hx509 \
+-	       -I$(srcdir)/libtommath -DUSE_HCRYPTO_LTM=1
++	       -I$(srcdir)/libtommath -DUSE_HCRYPTO_LTM=1 \
++	       -I$(srcdir)/..
+ 
+ lib_LTLIBRARIES = libhcrypto.la
+ check_LTLIBRARIES = libhctest.la
+From 572a6fd7ac41e9210ef3eb765fe7da4ec8a94bb2 Mon Sep 17 00:00:00 2001
+From: Luke Howard <lukeh@padl.com>
+Date: Mon, 24 Dec 2018 02:21:32 +0000
+Subject: [PATCH] hx509: fix dependency, hxtool requires ASN.1 headers
+
+---
+ lib/hx509/Makefile.am | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lib/hx509/Makefile.am b/lib/hx509/Makefile.am
+index b58deb3e37..09643c43a0 100644
+--- a/lib/hx509/Makefile.am
++++ b/lib/hx509/Makefile.am
+@@ -164,7 +164,7 @@ hxtool-commands.c hxtool-commands.h: hxtool-commands.in $(SLC)
+ dist_hxtool_SOURCES = hxtool.c
+ nodist_hxtool_SOURCES = hxtool-commands.c hxtool-commands.h
+ 
+-$(hxtool_OBJECTS): hxtool-commands.h hx509_err.h
++$(hxtool_OBJECTS): hxtool-commands.h $(nodist_include_HEADERS)
+ 
+ hxtool_LDADD = \
+ 	libhx509.la \
