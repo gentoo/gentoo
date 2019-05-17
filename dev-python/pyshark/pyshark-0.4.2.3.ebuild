@@ -1,9 +1,9 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 
-PYTHON_COMPAT=( python{2_7,3_5,3_6} )
+PYTHON_COMPAT=( python3_{5,6} )
 
 inherit distutils-r1 eutils
 
@@ -25,7 +25,7 @@ RDEPEND="
 	dev-python/lxml[${PYTHON_USEDEP}]
 	dev-python/trollius[${PYTHON_USEDEP}]
 	virtual/python-futures[${PYTHON_USEDEP}]
-	net-analyzer/wireshark"
+	net-analyzer/wireshark[tshark]"
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
