@@ -42,7 +42,8 @@ src_install() {
 	xorg-2_src_install
 
 	exeinto /etc/X11
-	doexe "${FILESDIR}"/chooser.sh "${FILESDIR}"/startDM.sh.1
+	doexe "${FILESDIR}"/chooser.sh
+	newexe "${FILESDIR}"/startDM.sh.1 startDM.sh
 	exeinto /etc/X11/Sessions
 	doexe "${FILESDIR}"/Xsession
 	exeinto /etc/X11/xinit
