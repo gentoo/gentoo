@@ -84,6 +84,10 @@ dev-python/detox
 ~virtual/perl-Math-BigRat-0.261.400
 ~virtual/perl-Module-CoreList-5.201.905.200
 ~virtual/perl-Module-Load-0.340.0
+~virtual/perl-Module-Metadata-1.0.36
+~virtual/perl-Net-Ping-2.710.0
+~virtual/perl-Storable-3.150.0
+~virtual/perl-Test-Simple-1.302.162
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (11 May 2019)
 # Perl 5.24 will be removed soon. Please upgrade.
