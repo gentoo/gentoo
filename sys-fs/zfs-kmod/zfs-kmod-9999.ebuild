@@ -14,8 +14,8 @@ if [[ ${PV} == "9999" ]]; then
 else
 	SRC_URI="https://github.com/zfsonlinux/zfs/releases/download/zfs-${PV}/zfs-${PV}.tar.gz"
 	KEYWORDS="~amd64"
-	ZFS_KERNEL_COMPAT="${ZFS_KERNEL_COMPAT_OVERRIDE:-5.1}"
 	S="${WORKDIR}/zfs-${PV}"
+	ZFS_KERNEL_COMPAT="5.1"
 fi
 
 LICENSE="CDDL debug? ( GPL-2+ )"
@@ -68,10 +68,13 @@ pkg_setup() {
 	kernel_is -ge 2 6 32 || die "Linux 2.6.32 or newer required"
 
 	if [[ ${PV} != "9999" ]]; then
-		local KV_MAJOR_MAX="${ZFS_KERNEL_COMPAT%%.*}"
-		local KV_MINOR_MAX="${ZFS_KERNEL_COMPAT##*.}"
-		kernel_is -le "${KV_MAJOR_MAX}" "${KV_MINOR_MAX}" || die \
-			"Linux ${KV_MAJOR_MAX}.${KV_MINOR_MAX} is the latest supported version"
+		local kv_major_max kv_minor_max zcompat
+		zcompat="${ZFS_KERNEL_COMPAT_OVERRIDE:-${ZFS_KERNEL_COMPAT}}"
+		kv_major_max="${zcompat%%.*}"
+		zcompat="${zcompat#*.}"
+		kv_minor_max="${zcompat%%.*}"
+		kernel_is -le "${kv_major_max}" "${kv_minor_max}" || die \
+			"Linux ${kv_major_max}.${kv_minor_max} is the latest supported version"
 	fi
 
 	check_extra_config
