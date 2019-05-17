@@ -10536,19 +10536,19 @@ virtual/perl-Term-ReadLine 1.170.0-r2: Virtual for Term-ReadLine
 virtual/perl-Test 1.300.0: Virtual for Test
 virtual/perl-Test-Harness 3.380.0: Virtual for Test-Harness
 virtual/perl-Test-Simple 1.302.73: Virtual for Test-Simple
-virtual/perl-Text-Balanced 2.30.0-r4: Virtual for Text-Balanced
-virtual/perl-Text-ParseWords 3.300.0-r4: Virtual for Text-ParseWords
-virtual/perl-Text-Tabs+Wrap 2013.52.300-r7: Virtual for Text::Tabs and Text::Wrap, also distributed as Text::Tabs+Wrap
+virtual/perl-Text-Balanced 2.30.0-r5: Virtual for Text-Balanced
+virtual/perl-Text-ParseWords 3.300.0-r5: Virtual for Text-ParseWords
+virtual/perl-Text-Tabs+Wrap 2013.52.300-r8: Virtual for Text::Tabs and Text::Wrap, also distributed as Text::Tabs+Wrap
 virtual/perl-Thread-Queue 3.120.0-r1: Virtual for Thread-Queue
-virtual/perl-Thread-Semaphore 2.130.0-r1: Virtual for Thread-Semaphore
-virtual/perl-Tie-RefHash 1.390.0-r9: Virtual for Tie-RefHash
+virtual/perl-Thread-Semaphore 2.130.0-r2: Virtual for Thread-Semaphore
+virtual/perl-Tie-RefHash 1.390.0-r10: Virtual for Tie-RefHash
 virtual/perl-Time-HiRes 1.974.100-r2: Virtual for Time-HiRes
 virtual/perl-Time-Local 1.230.0-r6 1.250.0-r1: Virtual for Time-Local
 virtual/perl-Time-Piece 1.310.0-r2: Virtual for Time-Piece
 virtual/perl-Unicode-Collate 1.190.0-r1 1.250.0: Virtual for Unicode-Collate
 virtual/perl-Unicode-Normalize 1.250.0-r3: Virtual for Unicode-Normalize
 virtual/perl-XSLoader 0.270.0: Virtual for XSLoader
-virtual/perl-autodie 2.290.0-r3: Virtual for autodie
+virtual/perl-autodie 2.290.0-r4: Virtual for autodie
 virtual/perl-bignum 0.470.0: Virtual for bignum
 virtual/perl-if 0.60.600-r2: Virtual for if
 virtual/perl-libnet 3.100.0: Virtual for libnet
