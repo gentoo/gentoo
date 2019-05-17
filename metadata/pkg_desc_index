@@ -6611,7 +6611,7 @@ gnome-extra/gnome-search-tool 3.6.0: Search tool for GNOME 3
 gnome-extra/gnome-shell-extension-applications-overview-tooltip 4: Show tooltip with full name and description
 gnome-extra/gnome-shell-extension-dash-to-panel 19: An icon taskbar for the Gnome Shell
 gnome-extra/gnome-shell-extension-desktop-icons 19.01.1: A GNOME Shell extension for providing desktop icons
-gnome-extra/gnome-shell-extension-gsconnect 12-r1 23: KDE Connect implementation for Gnome Shell
+gnome-extra/gnome-shell-extension-gsconnect 23: KDE Connect implementation for Gnome Shell
 gnome-extra/gnome-shell-extensions 3.24.3 3.30.1: JavaScript extensions for GNOME Shell
 gnome-extra/gnome-shell-extensions-topicons-plus 21 22-r1: Moves legacy tray icons to top panel
 gnome-extra/gnome-shell-frippery 3.24.0 3.30.2: Unofficial extension pack providing GNOME 2-like features for GNOME 3
