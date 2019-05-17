@@ -1,0 +1,11 @@
+--- /Makefile
++++ /Makefile
+@@ -115,7 +115,7 @@
+ 
+ $(LIBREG): regdb.h reglib.h reglib.c
+ 	$(NQ) '  CC  ' $@
+-	$(Q)$(CC) $(CFLAGS) $(CPPFLAGS) -o $@ -shared -Wl,-soname,$(LIBREG) $^ $(filter-out -lreg,$(LDLIBS))
++	$(Q)$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) -o $@ -shared -Wl,-soname,$(LIBREG) $^ $(filter-out -lreg,$(LDLIBS))
+ 
+ install-libreg-headers:
+ 	$(NQ) '  INSTALL  libreg-headers'

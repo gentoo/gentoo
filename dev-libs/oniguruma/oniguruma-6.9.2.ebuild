@@ -13,12 +13,12 @@ SRC_URI="https://github.com/kkos/${PN}/releases/download/v${PV}/${MY_P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0/5"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x86-solaris"
 IUSE="crnl-as-line-terminator static-libs"
 
 S="${WORKDIR}/${MY_P}"
 
-DOCS=(AUTHORS HISTORY README{,_japanese} doc/{API,CALLOUTS.API,CALLOUTS.BUILTIN,FAQ,RE}{,.ja} doc/UNICODE_PROPERTIES)
+DOCS=(AUTHORS HISTORY README{,_japanese} doc/{API,CALLOUTS.API,CALLOUTS.BUILTIN,FAQ,RE}{,.ja} doc/{SYNTAX.md,UNICODE_PROPERTIES})
 
 multilib_src_configure() {
 	ECONF_SOURCE="${S}" econf \
@@ -28,5 +28,5 @@ multilib_src_configure() {
 
 multilib_src_install_all() {
 	einstalldocs
-	find "${D}" -name "*.la" -delete || die
+	find "${D}" -name "*.la" -type f -delete || die
 }

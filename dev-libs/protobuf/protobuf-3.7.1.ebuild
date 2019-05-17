@@ -47,6 +47,12 @@ src_prepare() {
 
 src_configure() {
 	append-cppflags -DGOOGLE_PROTOBUF_NO_RTTI
+
+	if tc-ld-is-gold; then
+		# https://sourceware.org/bugzilla/show_bug.cgi?id=24527
+		tc-ld-disable-gold
+	fi
+
 	multilib-minimal_src_configure
 }
 

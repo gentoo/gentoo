@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 2008-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -39,6 +39,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.18-libreg-link.patch #542436
 	"${FILESDIR}"/${PN}-3.18-openssl-1.1.0-compatibility.patch #652428
 	"${FILESDIR}"/${PN}-3.18-libressl.patch
+	"${FILESDIR}"/${PN}-3.18-ldflags.patch
 )
 
 src_prepare() {
