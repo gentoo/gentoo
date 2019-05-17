@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 2013-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: multilib-build.eclass
@@ -481,38 +481,38 @@ multilib_prepare_wrappers() {
 #elif defined(__i386__) /* plain x86 */
 #	error "abi_x86_32 not supported by the package."
 #elif defined(__mips__)
-#   if(_MIPS_SIM == _ABIN32) /* n32 */
-#       error "abi_mips_n32 not supported by the package."
-#   elif(_MIPS_SIM == _ABI64) /* n64 */
-#       error "abi_mips_n64 not supported by the package."
-#   elif(_MIPS_SIM == _ABIO32) /* o32 */
-#       error "abi_mips_o32 not supported by the package."
-#   endif
+#	if(_MIPS_SIM == _ABIN32) /* n32 */
+#		error "abi_mips_n32 not supported by the package."
+#	elif(_MIPS_SIM == _ABI64) /* n64 */
+#		error "abi_mips_n64 not supported by the package."
+#	elif(_MIPS_SIM == _ABIO32) /* o32 */
+#		error "abi_mips_o32 not supported by the package."
+#	endif
 #elif defined(__riscv)
 #	if defined(__riscv_float_abi_double)
-#       error "abi_riscv_lp64d not supported by the package."
+#		error "abi_riscv_lp64d not supported by the package."
 #	elif defined(__riscv_float_abi_single)
-#       error "abi_riscv_lp64f not supported by the package."
+#		error "abi_riscv_lp64f not supported by the package."
 #	else
-#       error "abi_riscv_lp64 not supported by the package."
+#		error "abi_riscv_lp64 not supported by the package."
 #	endif
 #elif defined(__sparc__)
 #	if defined(__arch64__)
-#       error "abi_sparc_64 not supported by the package."
+#		error "abi_sparc_64 not supported by the package."
 #	else
-#       error "abi_sparc_32 not supported by the package."
+#		error "abi_sparc_32 not supported by the package."
 #	endif
 #elif defined(__s390__)
 #	if defined(__s390x__)
-#       error "abi_s390_64 not supported by the package."
+#		error "abi_s390_64 not supported by the package."
 #	else
-#       error "abi_s390_32 not supported by the package."
+#		error "abi_s390_32 not supported by the package."
 #	endif
 #elif defined(__powerpc__) || defined(__ppc__)
 #	if defined(__powerpc64__) || defined(__ppc64__)
-#       error "abi_ppc_64 not supported by the package."
+#		error "abi_ppc_64 not supported by the package."
 #	else
-#       error "abi_ppc_32 not supported by the package."
+#		error "abi_ppc_32 not supported by the package."
 #	endif
 #elif defined(SWIG) /* https://sourceforge.net/p/swig/bugs/799/ */
 #	error "Native ABI not supported by the package."
