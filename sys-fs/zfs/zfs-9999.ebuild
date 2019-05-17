@@ -120,6 +120,7 @@ src_configure() {
 		--bindir="${EPREFIX}/bin"
 		--enable-systemd
 		--enable-sysvinit
+		--localstatedir="${EPREFIX}/var"
 		--sbindir="${EPREFIX}/sbin"
 		--with-config=user
 		--with-dracutdir="${EPREFIX}/usr/lib/dracut"
