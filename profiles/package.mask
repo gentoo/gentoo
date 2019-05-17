@@ -65,7 +65,7 @@ dev-python/detox
 ~virtual/perl-Compress-Raw-Zlib-2.84.0
 ~virtual/perl-DB_File-1.843.0
 ~virtual/perl-Data-Dumper-2.174.0
-~virtual/perl-Devel-PPPort-3.510.0
+~virtual/perl-Devel-PPPort-3.520.0
 ~virtual/perl-Digest-SHA-6.20.0
 ~virtual/perl-Encode-3.10.0
 ~virtual/perl-ExtUtils-CBuilder-0.280.231
