@@ -3741,6 +3741,9 @@ net-analyzer/echoping:smtp - enable support for SMTP protocol.
 net-analyzer/echoping:tos - enable support for TOS (TYpe Of Service).
 net-analyzer/ettercap:plugins - Install ettercap plugins (et_*.so)
 net-analyzer/httping:tfo - Enable support for TCP Fast Open
+net-analyzer/hydra:gcrypt - Enable radmin2 support through dev-libs/libgcrypt
+net-analyzer/hydra:libssh - Enable SSH support through net-libs/libssh
+net-analyzer/hydra:mongodb - MongoDB support through dev-libs/libmongo-client
 net-analyzer/hydra:ncp - NCP protocol (NetWare) support through net-fs/ncpfs
 net-analyzer/icinga:contrib - additional scripts
 net-analyzer/icinga:eventhandler - Adds support for running custom scripts whenever a host or service state change occurs
