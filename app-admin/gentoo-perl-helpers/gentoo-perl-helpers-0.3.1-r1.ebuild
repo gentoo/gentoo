@@ -27,10 +27,7 @@ IUSE=""
 RDEPEND="
 	$(: --format support)
 	>=app-portage/portage-utils-0.60
-	|| (
-		sys-apps/portage
-		sys-apps/portage-mgorny
-	)
+	sys-apps/portage
 "
 DEPEND=""
 
