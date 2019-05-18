@@ -433,13 +433,6 @@ sci-biology/snpfile
 dev-libs/xqilla
 
 # Michał Górny <mgorny@gentoo.org> (18 Apr 2019)
-# Another NIH all-in-one library with no reverse dependencies.  Last
-# bumped in 2015, with a broken patch.  Nobody reported this until
-# tinderbox catched it, indicating that nobody is using this package.
-# Removal in 30 days.  Bug #652632.
-dev-cpp/rudiments
-
-# Michał Górny <mgorny@gentoo.org> (18 Apr 2019)
 # All current versions of SystemRescueCD contain vulnerable packages.
 # Bug #683724.
 app-admin/systemrescuecd-x86
