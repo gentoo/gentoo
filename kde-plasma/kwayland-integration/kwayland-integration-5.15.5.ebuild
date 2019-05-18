@@ -10,7 +10,7 @@ DESCRIPTION="Provides integration plugins for various KDE frameworks for Wayland
 HOMEPAGE="https://cgit.kde.org/kwayland-integration.git"
 
 LICENSE="LGPL-2.1"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 x86"
 IUSE=""
 
 DEPEND="

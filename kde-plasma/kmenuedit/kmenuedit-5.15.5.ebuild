@@ -8,7 +8,7 @@ inherit kde5
 
 DESCRIPTION="KDE Plasma menu editor"
 HOMEPAGE="https://cgit.kde.org/kmenuedit.git"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 x86"
 IUSE="+hotkeys"
 
 RDEPEND="
