@@ -288,4 +288,15 @@ pkg_preinst() {
 pkg_postinst() {
 	elog "If you are only interested in particular firmware files, edit the saved"
 	elog "configfile and remove those that you do not want."
+
+	local ver
+	for ver in ${REPLACING_VERSIONS}; do
+		if ver_test ${ver} -lt 20190514; then
+			elog
+			elog 'Starting with version 20190514, installation of many firmware'
+			elog 'files is controlled by USE flags. Please review your USE flag'
+			elog 'and package.license settings if you are missing some files.'
+			break
+		fi
+	done
 }
