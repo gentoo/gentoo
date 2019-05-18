@@ -19,11 +19,7 @@ IUSE=""
 
 KEYWORDS=""
 
-DEPEND="
-	|| (
-		sys-apps/portage[${PYTHON_USEDEP}]
-		sys-apps/portage-mgorny[${PYTHON_USEDEP}]
-	)"
+DEPEND="sys-apps/portage[${PYTHON_USEDEP}]"
 RDEPEND="${DEPEND}
 	sys-apps/gawk
 	sys-apps/gentoo-functions"
