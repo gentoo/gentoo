@@ -457,7 +457,6 @@ dev-libs/quantlib
 # Removal in 30 days.  Bug #683748.
 dev-cpp/gccxml
 dev-python/pygccxml
-dev-python/pyplusplus
 
 # Michał Górny <mgorny@gentoo.org> (18 Apr 2019)
 # All current versions of SystemRescueCD contain vulnerable packages.
