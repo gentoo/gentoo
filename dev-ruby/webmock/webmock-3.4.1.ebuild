@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -29,7 +29,7 @@ ruby_add_bdepend "test? (
 	dev-ruby/rack
 	>=dev-ruby/httpclient-2.8.0
 	>=dev-ruby/patron-0.4.18
-	|| ( dev-ruby/http:3 dev-ruby/http:2.0 ) )"
+	dev-ruby/http:3 )"
 
 all_ruby_prepare() {
 	# Remove bundler support
