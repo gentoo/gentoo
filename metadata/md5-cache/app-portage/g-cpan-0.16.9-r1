@@ -6,8 +6,8 @@ HOMEPAGE=https://wiki.gentoo.org/wiki/Project:Perl/g-cpan
 IUSE=test
 KEYWORDS=alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86
 LICENSE=|| ( Artistic GPL-2 )
-RDEPEND=virtual/perl-File-Path virtual/perl-File-Spec dev-perl/Log-Agent virtual/perl-Memoize virtual/perl-IO dev-perl/Shell-EnvImporter virtual/perl-Term-ANSIColor >=dev-perl/YAML-0.60 || ( >=sys-apps/portage-2.0.0 sys-apps/portage-mgorny ) dev-lang/perl:=
+RDEPEND=virtual/perl-File-Path virtual/perl-File-Spec dev-perl/Log-Agent virtual/perl-Memoize virtual/perl-IO dev-perl/Shell-EnvImporter virtual/perl-Term-ANSIColor >=dev-perl/YAML-0.60 >=sys-apps/portage-2.0.0 dev-lang/perl:=
 SLOT=0
 SRC_URI=https://github.com/gentoo-perl/g-cpan/archive/v0.16.9.tar.gz -> g-cpan-0.16.9.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	71c828c354a4cddced2641dda2695de5
-_md5_=0899eeda39d0cde7a21d08bcd21f0091
+_md5_=0d191261d1c39a1ea901f9cb3b9234d5
