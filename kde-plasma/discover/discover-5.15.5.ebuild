@@ -42,6 +42,8 @@ RDEPEND="${DEPEND}
 	$(add_frameworks_dep kirigami)
 "
 
+PATCHES=( "${FILESDIR}/${PN}-5.15.5-tests.patch" )
+
 src_prepare() {
 	kde5_src_prepare
 	# we don't need it with PackageKitBackend off
