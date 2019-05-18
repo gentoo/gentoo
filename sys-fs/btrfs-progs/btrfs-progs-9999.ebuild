@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 PYTHON_COMPAT=( python3_{5,6,7} )
 
@@ -14,7 +14,7 @@ if [[ ${PV} != 9999 ]]; then
 	[[ "${PV}" = *_rc* ]] || \
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 	SRC_URI="https://www.kernel.org/pub/linux/kernel/people/kdave/${PN}/${PN}-${MY_PV}.tar.xz"
-	S="${WORKDIR}"/${PN}-${MY_PV}
+	S="${WORKDIR}/${PN}-${MY_PV}"
 else
 	WANT_LIBTOOL=none
 	inherit autotools git-r3
@@ -47,9 +47,6 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	convert? ( sys-apps/acl )
-	>=app-text/asciidoc-8.6.0
-	app-text/docbook-xml-dtd:4.5
-	app-text/xmlto
 	python? ( dev-python/setuptools[${PYTHON_USEDEP}] )
 	static? (
 		dev-libs/lzo:2[static-libs(+)]
@@ -64,6 +61,11 @@ DEPEND="${RDEPEND}
 		)
 		zstd? ( app-arch/zstd:0[static-libs(+)] )
 	)
+"
+BDEPEND="
+	>=app-text/asciidoc-8.6.0
+	app-text/docbook-xml-dtd:4.5
+	app-text/xmlto
 "
 
 if [[ ${PV} == 9999 ]]; then
