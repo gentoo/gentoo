@@ -20,7 +20,7 @@ else
 	UPSTREAM_VER=0
 	SECURITY_VER=
 	# xen-tools's gentoo patches tarball
-	GENTOO_VER=17
+	GENTOO_VER=18
 	# xen-tools's gentoo patches version which apply to this specific ebuild
 	GENTOO_GPV=0
 	# xen-tools ovmf's patches
@@ -250,6 +250,9 @@ src_prepare() {
 	# ipxe
 	if use ipxe; then
 		cp "${DISTDIR}/ipxe-git-${IPXE_COMMIT}.tar.gz" tools/firmware/etherboot/_ipxe.tar.gz || die
+		cp "${WORKDIR}/patches-gentoo/${PN}-4.12.0-ipxe-gcc9.patch" \
+			tools/firmware/etherboot/patches/ipxe-gcc9.patch || die
+		echo "ipxe-gcc9.patch" >> tools/firmware/etherboot/patches/series || die
 	fi
 
 	mv tools/qemu-xen/qemu-bridge-helper.c tools/qemu-xen/xen-bridge-helper.c || die
