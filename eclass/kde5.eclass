@@ -262,7 +262,7 @@ case ${EAPI} in
 	6) DEPEND+=" ${BDEPEND}" ;;
 esac
 
-DEPEND+=" ${COMMONDEPEND} dev-util/desktop-file-utils"
+DEPEND+=" ${COMMONDEPEND}"
 RDEPEND+=" ${COMMONDEPEND}"
 unset COMMONDEPEND
 
