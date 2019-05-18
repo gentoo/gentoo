@@ -3298,7 +3298,7 @@ dev-libs/xapian-bindings 1.2.25 1.4.5 1.4.7: SWIG and JNI bindings for Xapian
 dev-libs/xerces-c 3.1.4-r1 3.2.2-r1: A validating XML parser written in a portable subset of C++
 dev-libs/xmlrpc-c 1.32.05-r1 1.39.11-r1: A lightweigt RPC library based on XML and HTTP
 dev-libs/xmlrpc-epi 0.54.2: Epinions implementation of XML-RPC protocol in C
-dev-libs/xmlsec 1.2.27-r1: Command line tool for signing, verifying, encrypting and decrypting XML
+dev-libs/xmlsec 1.2.27-r1 1.2.28: Command line tool for signing, verifying, encrypting and decrypting XML
 dev-libs/xplc 0.3.13-r1: cross platform lightweight components library for C++
 dev-libs/xxhash 0.6.5: Extremely fast non-cryptographic hash algorithm
 dev-libs/yajl 2.1.0-r1: Small event-driven (SAX-style) JSON parser
@@ -6284,7 +6284,7 @@ dev-util/checkbashisms 2.18.11: Perl script to check for commonly used bash feat
 dev-util/checkstyle 7.2: Development tool to help write Java code that adheres to a coding standard
 dev-util/clazy 1.5: Compiler plugin which allows clang to understand Qt semantics
 dev-util/cloc 1.72 1.76-r1: Count Lines of Code
-dev-util/cmake 3.9.6: Cross platform Make
+dev-util/cmake 3.9.6 3.14.3: Cross platform Make
 dev-util/cmake-fedora 2.7.1: Provides cmake helper macros and targets for linux, especially fedora developers
 dev-util/cmdtest 0.30: black box tests Unix command line tools
 dev-util/cmocka 1.1.3 1.1.5: Unit testing framework for C
@@ -10277,7 +10277,7 @@ sys-kernel/bliss-initramfs 7.1.3: Boot your system's rootfs from ZFS, LVM, RAID,
 sys-kernel/dracut 044-r1 045-r2 046-r1: Generic initramfs generation tool
 sys-kernel/genkernel 3.4.52.3 3.4.52.4-r2 3.4.52.4-r3 3.5.3.3: Gentoo automatic kernel building scripts
 sys-kernel/genkernel-next 68 69: Gentoo automatic kernel building scripts, reloaded
-sys-kernel/gentoo-sources 4.4.176 4.4.179 4.9.162-r1 4.9.171 4.14.105-r1 4.14.114 4.19.27-r1 4.19.37: Full sources including the Gentoo patchset for the 4.19 kernel tree
+sys-kernel/gentoo-sources 4.4.176 4.4.179 4.4.180 4.9.162-r1 4.9.171 4.9.177 4.14.105-r1 4.14.114 4.14.120 4.19.27-r1 4.19.37 4.19.44: Full sources including the Gentoo patchset for the 4.19 kernel tree
 sys-kernel/linux-firmware 20190502: Linux firmware files
 sys-kernel/linux-headers 3.18 4.4 4.13 4.14-r1: Linux system headers
 sys-kernel/spl 0.6.5.11 0.7.12 0.7.13: The Solaris Porting Layer provides many of the Solaris kernel APIs
