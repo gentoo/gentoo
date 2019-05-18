@@ -33,10 +33,7 @@ COMMONDEPEND="
 	>=dev-perl/YAML-0.60
 "
 RDEPEND="${COMMONDEPEND}
-	|| (
-		>=sys-apps/portage-2.0.0
-		sys-apps/portage-mgorny
-	)
+	>=sys-apps/portage-2.0.0
 "
 DEPEND="${COMMONDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
