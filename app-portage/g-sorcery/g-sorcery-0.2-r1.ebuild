@@ -17,10 +17,7 @@ IUSE="bson"
 KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86"
 
 DEPEND="bson? ( dev-python/pymongo[${PYTHON_USEDEP}] )
-	|| (
-		sys-apps/portage[${PYTHON_USEDEP}]
-		sys-apps/portage-mgorny[${PYTHON_USEDEP}]
-	)"
+	sys-apps/portage[${PYTHON_USEDEP}]"
 RDEPEND="${DEPEND}"
 PDEPEND=">=app-portage/layman-2.2.0[g-sorcery(-),${PYTHON_USEDEP}]"
 
