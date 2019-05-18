@@ -1,0 +1,28 @@
+From 836455917879333e94d4a535aa22f1235b5d4885 Mon Sep 17 00:00:00 2001
+From: Sami Kerola <kerolasa@iki.fi>
+Date: Sat, 18 May 2019 10:19:35 +0100
+Subject: [PATCH] lscpu: fix floating point exception
+
+FIXME: this commit should include vmware_fpe regression test inclusion.
+
+Caused-by: e5f721132ec8b8c933a396d8dcb3efcb67854f13
+Addresses: https://github.com/karelzak/util-linux/issues/788
+Reported-by: Lars Wendler <polynomial-c@gentoo.org>
+Signed-off-by: Sami Kerola <kerolasa@iki.fi>
+---
+ sys-utils/lscpu.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/sys-utils/lscpu.c b/sys-utils/lscpu.c
+index ca7f6a037..7f6277f00 100644
+--- a/sys-utils/lscpu.c
++++ b/sys-utils/lscpu.c
+@@ -1925,6 +1925,8 @@ static int get_cache_full_size(struct lscpu_desc *desc,
+ 	/* Correction for CPU threads */
+ 	if (desc->nthreads > desc->ncores)
+ 		nshares /= (desc->nthreads / desc->ncores);
++	if (nshares < 1)
++		nshares = 1;
+ 
+ 	*res = (desc->ncores / nshares) * ca->size;
+ 	return 0;
