@@ -30,6 +30,6 @@ IUSE=""
 
 ruby_add_bdepend "
 	test? (
-		|| ( dev-ruby/i18n:0.9 dev-ruby/i18n:0.8 dev-ruby/i18n:0.7 dev-ruby/i18n:0.6 )
+		|| ( dev-ruby/i18n:0.9 dev-ruby/i18n:0.7 )
 		dev-ruby/tzinfo
 	)"
