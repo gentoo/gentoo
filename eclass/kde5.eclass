@@ -304,8 +304,6 @@ _calculate_src_uri() {
 			;;
 	esac
 
-	DEPEND+=" app-arch/xz-utils"
-
 	case ${CATEGORY} in
 		kde-apps)
 			case ${PV} in

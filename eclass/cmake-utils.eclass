@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: cmake-utils.eclass
@@ -419,13 +419,17 @@ _cmake_modify-cmakelists() {
 	grep -qs "<<< Gentoo configuration >>>" "${CMAKE_USE_DIR}"/CMakeLists.txt && return 0
 
 	# Comment out all set (<some_should_be_user_defined_variable> value)
-	# TODO Add QA checker - inform when variable being checked for below is set in CMakeLists.txt
-	find "${CMAKE_USE_DIR}" -name CMakeLists.txt \
-		-exec sed -i -e '/^[[:space:]]*[sS][eE][tT][[:space:]]*([[:space:]]*CMAKE_BUILD_TYPE.*)/{s/^/#IGNORE /g}' {} + \
-		-exec sed -i -e '/^[[:space:]]*[sS][eE][tT][[:space:]]*([[:space:]]*CMAKE_COLOR_MAKEFILE.*)/{s/^/#IGNORE /g}' {} + \
-		-exec sed -i -e '/^[[:space:]]*[sS][eE][tT][[:space:]]*([[:space:]]*CMAKE_INSTALL_PREFIX.*)/{s/^/#IGNORE /g}' {} + \
-		-exec sed -i -e '/^[[:space:]]*[sS][eE][tT][[:space:]]*([[:space:]]*CMAKE_VERBOSE_MAKEFILE.*)/{s/^/#IGNORE /g}' {} + \
-		|| die "${LINENO}: failed to disable hardcoded settings"
+	find "${CMAKE_USE_DIR}" -name CMakeLists.txt -exec sed \
+		-e '/^[[:space:]]*set[[:space:]]*([[:space:]]*CMAKE_BUILD_TYPE[[:space:]].*)/I{s/^/#_cmake_modify_IGNORE /g}' \
+		-e '/^[[:space:]]*set[[:space:]]*([[:space:]]*CMAKE_COLOR_MAKEFILE[[:space:]].*)/I{s/^/#_cmake_modify_IGNORE /g}' \
+		-e '/^[[:space:]]*set[[:space:]]*([[:space:]]*CMAKE_INSTALL_PREFIX[[:space:]].*)/I{s/^/#_cmake_modify_IGNORE /g}' \
+		-e '/^[[:space:]]*set[[:space:]]*([[:space:]]*CMAKE_VERBOSE_MAKEFILE[[:space:]].*)/I{s/^/#G_cmake_modify_IGNORE /g}' \
+		-i {} + || die "${LINENO}: failed to disable hardcoded settings"
+	local x
+	for x in $(find "${CMAKE_USE_DIR}" -name CMakeLists.txt -exec grep -l "^#_cmake_modify_IGNORE" {} +;); do
+		einfo "Hardcoded definition(s) removed in $(echo "${x}" | cut -c $((${#CMAKE_USE_DIR}+2))-):"
+		einfo "$(grep -se '^#_cmake_modify_IGNORE' ${x} | cut -c 22-99)"
+	done
 
 	# NOTE Append some useful summary here
 	cat >> "${CMAKE_USE_DIR}"/CMakeLists.txt <<- _EOF_ || die
