@@ -6549,7 +6549,7 @@ gnome-base/dconf 0.26.1 0.30.1: Simple low-level configuration system
 gnome-base/dconf-editor 3.30.2: Graphical tool for editing the dconf configuration database
 gnome-base/gconf 3.2.6-r4: GNOME configuration system and daemon
 gnome-base/gdm 3.30.3-r3: GNOME Display Manager for managing graphical display servers and user logins
-gnome-base/gnome 3.20.0 3.30.2: Meta package for GNOME 3, merge this package to install
+gnome-base/gnome 3.30.2: Meta package for GNOME 3, merge this package to install
 gnome-base/gnome-common 3.18.0-r1: Common files for development of Gnome packages
 gnome-base/gnome-control-center 3.30.3-r1: GNOME's main interface to configure various aspects of the desktop
 gnome-base/gnome-core-apps 3.30.2: Sub-meta package for the core applications integrated with GNOME 3
@@ -6590,8 +6590,8 @@ gnome-extra/cinnamon-settings-daemon 3.6.1-r1: Cinnamon's settings daemon
 gnome-extra/cinnamon-translations 3.6.3: Translation data for Cinnamon
 gnome-extra/cjs 3.6.1: Linux Mint's fork of gjs for Cinnamon
 gnome-extra/eiciel 0.9.11-r1: ACL editor for GNOME, with Nautilus extension
-gnome-extra/evolution-data-server 3.24.7 3.30.5-r1: Evolution groupware backend
-gnome-extra/evolution-ews 3.24.6 3.30.5-r1: Evolution module for connecting to Microsoft Exchange Web Services
+gnome-extra/evolution-data-server 3.30.5-r1: Evolution groupware backend
+gnome-extra/evolution-ews 3.30.5-r1: Evolution module for connecting to Microsoft Exchange Web Services
 gnome-extra/gconf-editor 3.0.1-r1: An editor to the GNOME config system
 gnome-extra/gnome-boxes 3.30.3: Simple GNOME 3 application to access remote or virtual systems
 gnome-extra/gnome-calculator 3.30.1: A calculator application for GNOME
@@ -6636,11 +6636,11 @@ gnome-extra/office-runner 1.0.2: Lighthearted tool to temporarily inhibit GNOME'
 gnome-extra/pch-session 3.30.0.2: Unofficial gnome based session with different default settings and extensions
 gnome-extra/polkit-gnome 0.105-r1: A dbus session bus service that is used to bring up authentication dialogs
 gnome-extra/seahorse-nautilus 3.11.92: Nautilus extension for encrypting and decrypting files with GnuPG
-gnome-extra/sushi 3.24.0 3.30.0: A quick previewer for Nautilus, the GNOME file manager
+gnome-extra/sushi 3.30.0: A quick previewer for Nautilus, the GNOME file manager
 gnome-extra/synapse 0.2.99.4: A program launcher in the style of GNOME Do
-gnome-extra/yelp 3.22.0 3.30.0: Help browser for GNOME
+gnome-extra/yelp 3.30.0: Help browser for GNOME
 gnome-extra/yelp-xsl 3.20.1 3.30.1: XSL stylesheets for yelp
-gnome-extra/zenity 3.28.1 3.30.0: Tool to display dialogs from the commandline and shell scripts
+gnome-extra/zenity 3.30.0: Tool to display dialogs from the commandline and shell scripts
 gnustep-apps/aclock 0.4.0: Analog dockapp clock for GNUstep
 gnustep-apps/addresses 0.4.8: Addresses is a Apple Addressbook work alike (standalone and for GNUMail)
 gnustep-apps/affiche 0.6.0-r4: Affiche allows people to 'stick' notes
@@ -7114,7 +7114,7 @@ mail-client/balsa 2.5.6-r1: Email client for GNOME
 mail-client/claws-mail 3.17.3-r1: An email client (and news reader) based on GTK+
 mail-client/clawsker 0.7.8: Applet to edit Claws Mail's hidden preferences
 mail-client/cone 0.92 1.0: CONE: COnsole News reader and Emailer
-mail-client/evolution 3.24.6 3.30.5: Integrated mail, addressbook and calendaring functionality
+mail-client/evolution 3.30.5: Integrated mail, addressbook and calendaring functionality
 mail-client/mail-notification 5.4-r10: Status icon informing about new mail
 mail-client/mailx 8.1.2.20160123: The $ mail program, which is used to send mail via shell scripts
 mail-client/mailx-support 20060102-r1 20060102-r2: Provides lockspool utility
@@ -7390,8 +7390,8 @@ media-gfx/dpic 20130310: Converts PIC plots into pstricks, PGF/TikZ, PostScript,
 media-gfx/duhdraw 2.8.13-r1: ASCII art editor
 media-gfx/ebdftopcf 2: ebdftopcf optimially generators PCF files from BDF files
 media-gfx/enblend 4.2.0_p20161007-r1: Image Blending with Multiresolution Splines
-media-gfx/eog 3.24.1 3.28.4: The Eye of GNOME image viewer
-media-gfx/eog-plugins 3.16.6-r1 3.26.3: Eye of GNOME plugins
+media-gfx/eog 3.28.4: The Eye of GNOME image viewer
+media-gfx/eog-plugins 3.26.3: Eye of GNOME plugins
 media-gfx/eom 1.22.0: The MATE image viewer
 media-gfx/evoluspencil 2.0.5: A simple GUI prototyping tool to create mockups
 media-gfx/exif 0.6.21: Small CLI util to show EXIF infos hidden in JPEG files
@@ -7417,9 +7417,9 @@ media-gfx/gimp 2.8.22-r1 2.10.8-r1: GNU Image Manipulation Program
 media-gfx/gimp-arrow-brushes 20190407: Brushes for GIMP with the styles arrow, handpointer, button arrow and cursor
 media-gfx/gnofract4d 3.14-r1 3.14.1: A program for drawing beautiful mathematically-based images known as fractals
 media-gfx/gnome-font-viewer 3.30.0: Font viewer utility for GNOME
-media-gfx/gnome-photos 3.26.4 3.30.1: Access, organize and share your photos on GNOME
+media-gfx/gnome-photos 3.30.1: Access, organize and share your photos on GNOME
 media-gfx/gnome-raw-thumbnailer 3.0.0-r1: A lightweight and fast raw image thumbnailer for GNOME
-media-gfx/gnome-screenshot 3.22.0 3.30.0: Screenshot utility for GNOME
+media-gfx/gnome-screenshot 3.30.0: Screenshot utility for GNOME
 media-gfx/gozer 0.7-r3: tool for rendering arbitrary text as graphics, using ttfs and styles
 media-gfx/gphoto2 2.5.15 2.5.20: Free, redistributable digital camera software application
 media-gfx/gphotofs 0.5: FUSE file system for interfacing with digital cameras using gphoto2
@@ -7507,7 +7507,7 @@ media-gfx/sane-frontends 1.0.14-r3: Scanner Access Now Easy
 media-gfx/scour 0.36: Take an SVG file and produce a cleaner and more concise file
 media-gfx/scrot 0.8_p13-r1: Screen capture utility using imlib2 library
 media-gfx/sfftobmp 3.1.2-r1: sff to bmp converter
-media-gfx/shotwell 0.28.3 0.30.2: Open source photo manager for GNOME
+media-gfx/shotwell 0.30.2: Open source photo manager for GNOME
 media-gfx/simple-scan 3.24.1 3.30.2: Simple document scanning utility
 media-gfx/springgraph 88: Generate spring graphs from graphviz input files
 media-gfx/svg2rlg 0.3: python tool to convert SVG files to reportlab graphics
