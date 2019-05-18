@@ -29,6 +29,40 @@
 
 #--- END OF EXAMPLES ---
 
+# Patrice Clement <monsieurp@gentoo.org> (19 May 2019)
+# Outdated Java ebuilds. Masked for removal in 30 days.
+app-misc/freemind
+dev-java/android-util
+dev-java/airline
+dev-java/annogen
+dev-java/appframework
+dev-java/apt-miror
+dev-java/args4j
+dev-java/aspectj
+dev-java/backport-util-concurrent
+dev-java/balloontip
+dev-java/batik
+dev-java/bcel
+dev-java/bctsp
+dev-java/beansbinding
+dev-java/blowfishj
+dev-java/bnd-junit
+dev-java/bndlib
+dev-java/boilerpipe
+dev-java/boot-bin
+dev-java/browserlauncher2
+dev-java/bsf
+dev-java/bsh
+dev-java/btf
+dev-java/byaccj
+dev-java/bytelist
+dev-java/istack-commons-soimp
+dev-java/jamon
+dev-java/moshi
+dev-java/velocity
+dev-java/velocity-dvsl
+dev-java/xml-xmlbeans
+
 # Michał Górny <mgorny@gentoo.org> (19 May 2019)
 # Unmaintained.  The program breaks init.d script (#626580).  Homepage
 # and public sources disappeared.  Last release in 2006.
