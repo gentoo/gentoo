@@ -426,13 +426,6 @@ sci-biology/snpfile
 =sys-fs/zfs-0.8.0_rc*
 
 # Michał Górny <mgorny@gentoo.org> (18 Apr 2019)
-# Unmaintained.  Fails to build.  Last bumped in 2016, and no new
-# releases since.  Still depends on dead app-text/htmltidy (#671442).
-# No reverse dependencies.
-# Removal in 30 days.  Bug #672886.
-dev-libs/xqilla
-
-# Michał Górny <mgorny@gentoo.org> (18 Apr 2019)
 # All current versions of SystemRescueCD contain vulnerable packages.
 # Bug #683724.
 app-admin/systemrescuecd-x86
