@@ -855,8 +855,6 @@ app-text/evince:spell - Enable inline spell check for annotations via app-text/g
 app-text/evince:t1lib - Enable the Type-1 fonts for the built-in DVI viewer (media-libs/t1lib)
 app-text/evince:xps - Enable XPS viewer using app-text/libgxps
 app-text/ghostscript-gpl:unicode - Add support for unicode passwords via net-dns/libidn
-app-text/gtranslator:gnome-dictionary - Enable plugin for dictionary lookups using app-dicts/gnome-dictionary.
-app-text/gtranslator:gucharmap - Enable plugin for unicode symbols selection using gnome-extra/gucharmap.
 app-text/hyperestraier:mecab - Enable app-text/mecab support for Estraier
 app-text/kbibtex:webengine - Use dev-qt/qtwebengine for HTML previews
 app-text/kbibtex:webkit - Use dev-qt/qtwebkit for HTML previews
