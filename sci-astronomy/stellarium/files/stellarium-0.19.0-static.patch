@@ -1,3 +1,20 @@
+From d280caa72fbbcd362b820a71a01d4f0e2c1a3bcb Mon Sep 17 00:00:00 2001
+From: Alexey Sokolov <sokolov@google.com>
+Date: Sat, 18 May 2019 08:28:31 +0100
+Subject: [PATCH] Fix build with cmake -DBUILD_SHARED_LIBS=ON (#683)
+
+Ref https://github.com/gentoo/gentoo/pull/11770
+---
+ plugins/TelescopeControl/src/INDI/CMakeLists.txt    | 2 +-
+ plugins/TelescopeControl/src/Lx200/CMakeLists.txt   | 2 +-
+ plugins/TelescopeControl/src/NexStar/CMakeLists.txt | 2 +-
+ plugins/TelescopeControl/src/Rts2/CMakeLists.txt    | 2 +-
+ plugins/TelescopeControl/src/common/CMakeLists.txt  | 2 +-
+ plugins/TelescopeControl/src/gui/CMakeLists.txt     | 2 +-
+ src/CMakeLists.txt                                  | 2 +-
+ src/external/CMakeLists.txt                         | 2 +-
+ 8 files changed, 8 insertions(+), 8 deletions(-)
+
 diff --git a/plugins/TelescopeControl/src/INDI/CMakeLists.txt b/plugins/TelescopeControl/src/INDI/CMakeLists.txt
 index 40c27601a0..a250e1bb0f 100644
 --- a/plugins/TelescopeControl/src/INDI/CMakeLists.txt
