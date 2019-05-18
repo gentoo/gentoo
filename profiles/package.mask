@@ -28,7 +28,17 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
-#
+
+# Hans de Graaff <graaff@gentoo.org> (18 May 2019)
+# Old, ruby24-only, slots of ruby packages without any reverse
+# dependencies. Use the newer slot version instead.
+# (originally last-rited on 15 Apr 2019)
+# Masked for removal in 30 days.
+dev-ruby/elasticsearch:0
+dev-ruby/elasticsearch-api:0
+dev-ruby/elasticsearch-transport:0
+dev-ruby/filesize:0.1.1
+
 # Stefan Strogin <steils@gentoo.org> (17 May 2019)
 # Depends on >=dev-libs/bglibs-2.04. Bug #685238.
 >=net-libs/cvm-0.97
@@ -475,33 +485,6 @@ sys-boot/systemrescuecd-x86-grub
 # Bug: https://bugs.gentoo.org/681828
 >dev-java/oracle-jdk-bin-1.8.0.202:1.8
 >dev-java/oracle-jre-bin-1.8.0.202:1.8
-
-# Hans de Graaff <graaff@gentoo.org> (15 Apr 2019)
-# Old, ruby24-only, slots of ruby packages without any reverse
-# dependencies. Use the newer slot version instead.
-# Masked for removal in 30 days.
-dev-ruby/elasticsearch:5
-dev-ruby/elasticsearch-api:5
-dev-ruby/elasticsearch-transport:5
-dev-ruby/filesize:0.0.1
-dev-ruby/hiera-eyaml:0
-dev-ruby/jsobfu:0.3.0
-dev-ruby/mocha:0.10
-dev-ruby/rack-attack:0
-dev-ruby/rack-ssl:1.3
-dev-ruby/rack-test:0.7
-dev-ruby/rack-test:0.8
-dev-ruby/ruby_smb:0.0.23
-dev-ruby/ruby_smb:0
-dev-ruby/slop:3
-dev-ruby/temple:0
-dev-ruby/ttfunk:1.2
-dev-ruby/ttfunk:1.4
-dev-util/cucumber-core:3.0
-dev-util/cucumber-core:3.1
-dev-util/cucumber-expressions:4.0
-dev-util/cucumber-expressions:5.0
-
 
 # David Seifert <soap@gentoo.org> (15 Apr 2019)
 # Masked for testing, Bug #653878.
