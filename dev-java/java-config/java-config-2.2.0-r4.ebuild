@@ -14,7 +14,7 @@ SRC_URI="https://dev.gentoo.org/~gyakovlev/distfiles/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="2"
-KEYWORDS="amd64 ~arm ~arm64 ppc64 x86"
+KEYWORDS="amd64 ~arm arm64 ppc64 x86"
 IUSE="test"
 
 DEPEND="test? (
