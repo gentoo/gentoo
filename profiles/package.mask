@@ -484,24 +484,6 @@ dev-ruby/elasticsearch:5
 dev-ruby/elasticsearch-api:5
 dev-ruby/elasticsearch-transport:5
 dev-ruby/filesize:0.0.1
-dev-ruby/hiera-eyaml:0
-dev-ruby/jsobfu:0.3.0
-dev-ruby/mocha:0.10
-dev-ruby/rack-attack:0
-dev-ruby/rack-ssl:1.3
-dev-ruby/rack-test:0.7
-dev-ruby/rack-test:0.8
-dev-ruby/ruby_smb:0.0.23
-dev-ruby/ruby_smb:0
-dev-ruby/slop:3
-dev-ruby/temple:0
-dev-ruby/ttfunk:1.2
-dev-ruby/ttfunk:1.4
-dev-util/cucumber-core:3.0
-dev-util/cucumber-core:3.1
-dev-util/cucumber-expressions:4.0
-dev-util/cucumber-expressions:5.0
-
 
 # David Seifert <soap@gentoo.org> (15 Apr 2019)
 # Masked for testing, Bug #653878.
