@@ -58,10 +58,7 @@ DEPEND="${COMMON_DEPEND}
 "
 RDEPEND="${COMMON_DEPEND}
 	>=app-portage/layman-2[${PYTHON_USEDEP}]
-	|| (
-		>=sys-apps/portage-2.2[${PYTHON_USEDEP}]
-		sys-apps/portage-mgorny[${PYTHON_USEDEP}]
-	)
+	>=sys-apps/portage-2.2[${PYTHON_USEDEP}]
 	consolekit? ( sys-auth/consolekit )
 	entropy? ( >=sys-apps/entropy-234[${PYTHON_USEDEP}] )
 "
