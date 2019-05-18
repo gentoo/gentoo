@@ -1664,6 +1664,7 @@ dev-libs/libverto:glib - Support event loops using dev-libs/glib
 dev-libs/libverto:libev - Support event loops using dev-libs/libev
 dev-libs/libverto:libevent - Support event loops using dev-libs/libevent
 dev-libs/libverto:tevent - Support event loops using sys-libs/tevent
+dev-libs/libxmlb:stemmer - Enable language stemming support
 dev-libs/libzia:ftdi - Enable support for FTDI USB chips
 dev-libs/libzip:mbedtls - Use net-libs/mbedtls as TLS provider
 dev-libs/link-grammar:aspell - Adds support for app-text/aspell spell checker
@@ -2502,6 +2503,7 @@ kde-misc/kmarkdownwebview:webkit - Use dev-qt/qtwebkit instead of dev-qt/qtweben
 kde-misc/tellico:discid - Add support for reading disc IDs from audio CDs
 kde-misc/tellico:yaz - Add support for searching Z39.50 databases
 kde-misc/yakuake:absolute-position - Use kde-frameworks/kwayland for absolute window positioning in KWin
+kde-plasma/discover:firmware - Enable support for firmware upgrades using sys-apps/fwupd
 kde-plasma/kde-cli-tools:kdesu - Build graphical frontend for kde-frameworks/kdesu
 kde-plasma/kdeplasma-addons:share - Enable applet for quickly sharing data to a variety of sources
 kde-plasma/kdeplasma-addons:webengine - Enable dictionary and web browser applets using dev-qt/qtwebengine
@@ -5281,6 +5283,17 @@ sys-apps/flashrom:tools - Install additional tools
 sys-apps/flashrom:usbblaster - Enable support for Altera USB-Blaster dongles
 sys-apps/flashrom:usbblaster_spi - Enable support for Altera USB-Blaster dongles
 sys-apps/flashrom:wiki - Enable wiki informations, like supported devices etc.
+sys-apps/fwupd:agent - Enable update notification agent
+sys-apps/fwupd:colorhug - Enable ColorHug support throughx11-misc/colord package
+sys-apps/fwupd:consolekit - Use sys-auth/consolekit for session tracking
+sys-apps/fwupd:dell - Enable Dell-specific support.
+sys-apps/fwupd:gpg - Enable GPG support.
+sys-apps/fwupd:man - Build and install man pages
+sys-apps/fwupd:nvme - Build and install nvme plugin
+sys-apps/fwupd:pkcs7 - Enable PKCS7 verification support via net-libs/gnutls
+sys-apps/fwupd:redfish - Install redfish plugin
+sys-apps/fwupd:thunderbolt - Install thunderbolt plugin
+sys-apps/fwupd:uefi - Enable UEFI support
 sys-apps/gawk:forced-sandbox - Always enable --sandbox mode for simpler/secure runtime (disables e/r/w commands)
 sys-apps/gawk:mpfr - use mpfr for high precision arithmetic (-M / --bignum)
 sys-apps/gnome-disk-utility:fat - Include FAT16/FAT32 support (sys-fs/dosfstools)
