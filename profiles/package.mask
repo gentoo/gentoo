@@ -426,48 +426,6 @@ sci-biology/snpfile
 =sys-fs/zfs-0.8.0_rc*
 
 # Michał Górny <mgorny@gentoo.org> (18 Apr 2019)
-# Unmaintained.  Fails to build.  Last bumped in 2016, and no new
-# releases since.  Still depends on dead app-text/htmltidy (#671442).
-# No reverse dependencies.
-# Removal in 30 days.  Bug #672886.
-dev-libs/xqilla
-
-# Michał Górny <mgorny@gentoo.org> (18 Apr 2019)
-# Another NIH all-in-one library with no reverse dependencies.  Last
-# bumped in 2015, with a broken patch.  Nobody reported this until
-# tinderbox catched it, indicating that nobody is using this package.
-# Removal in 30 days.  Bug #652632.
-dev-cpp/rudiments
-
-# Michał Górny <mgorny@gentoo.org> (18 Apr 2019)
-# Unmaintained.  The current version does not build with modern versions
-# of dev-libs/boost.  It is multiple releases behind upstream (1900
-# commits according to GitHub).  With the pace of upstream development,
-# it really needs a dedicated maintainer.
-# Removal in 30 days.  Bug #629984.
-dev-libs/quantlib
-
-# Michał Górny <mgorny@gentoo.org> (18 Apr 2019)
-# The packages are unmaintained.  GCCXML and pyplusplus were last bumped
-# to snapshots from 2013 (pygccxml was bumped in 2016).  GCCXML bundles
-# old GCC sources (4.8, most likely). In the meantime, upstream has
-# discontinued it in favor of CastXML (which uses clang).  GCCXML fails
-# tests (#629986), so does pyplusplus (#656348).  No reverse
-# dependencies outside the three packages.
-# Removal in 30 days.  Bug #683748.
-dev-cpp/gccxml
-dev-python/pygccxml
-dev-python/pyplusplus
-
-# Michał Górny <mgorny@gentoo.org> (18 Apr 2019)
-# Diverged too far from upstream Portage, and I don't have time anymore
-# to update or rebase it.  The most significant features were merged
-# back upstream, some more are waiting, the rest is customization
-# and some aggressive QA bits.  Use sys-apps/portage instead.
-# Removal in 30 days.  Bug #683744.
-sys-apps/portage-mgorny
-
-# Michał Górny <mgorny@gentoo.org> (18 Apr 2019)
 # All current versions of SystemRescueCD contain vulnerable packages.
 # Bug #683724.
 app-admin/systemrescuecd-x86
