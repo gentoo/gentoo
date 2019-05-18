@@ -6512,9 +6512,9 @@ games-arcade/blobwars 2.00: Platform game about a blob and his quest to rescue M
 games-arcade/gnome-nibbles 3.24.1: Nibbles clone for Gnome
 games-arcade/gnome-robots 3.22.3: Avoid the robots and make them crash into each other
 games-board/four-in-a-row 3.28.0: Make lines of the same color to win
-games-board/gnome-chess 3.28.1 3.30.1: Play the classic two-player boardgame of chess
+games-board/gnome-chess 3.30.1: Play the classic two-player boardgame of chess
 games-board/gnome-mahjongg 3.22.0: Disassemble a pile of tiles by removing matching pairs
-games-board/gnome-mines 3.20.1 3.30.0 3.30.1.1: Clear hidden mines from a minefield
+games-board/gnome-mines 3.30.1.1: Clear hidden mines from a minefield
 games-board/gnuchess 6.2.4: Console based chess interface
 games-board/gnugo 3.9.1-r1 3.9.1-r2: A Go-playing program
 games-board/iagno 3.30.0: Dominate the board in a classic version of Reversi
@@ -6533,36 +6533,36 @@ games-misc/xcowsay 1.3: configurable talking graphical cow (inspired by cowsay)
 games-mud/gnome-mud 0.11.2-r2: GNOME MUD client
 games-puzzle/five-or-more 3.28.0 3.30.0: Remove colored balls from the board by forming lines
 games-puzzle/gnome-klotski 3.22.3: Slide blocks to solve the puzzle
-games-puzzle/gnome-sudoku 3.26.0 3.30.0: Test your logic skills in this number grid puzzle
-games-puzzle/gnome-taquin 3.28.0 3.30.0: Move tiles so that they reach their places
+games-puzzle/gnome-sudoku 3.30.0: Test your logic skills in this number grid puzzle
+games-puzzle/gnome-taquin 3.30.0: Move tiles so that they reach their places
 games-puzzle/gnome-tetravex 3.22.0: Complete the puzzle by matching numbered tiles
 games-puzzle/hitori 3.22.4: Logic puzzle game for GNOME
-games-puzzle/lightsoff 3.28.0 3.30.0: Turn off all the lights
+games-puzzle/lightsoff 3.30.0: Turn off all the lights
 games-puzzle/quadrapassel 3.22.0: Fit falling blocks together
-games-puzzle/swell-foop 3.26.0 3.30.0: Clear the screen by removing groups of colored and shaped tiles
+games-puzzle/swell-foop 3.30.0: Clear the screen by removing groups of colored and shaped tiles
 games-strategy/seven-kingdoms 2.14.7: Seven Kingdoms: Ancient Adversaries
 games-util/pogo-manager-bin 0.1.6: Pokemon Go manager
 games-util/pyfa 1.34.0: Python Fitting Assistant - a ship fitting application for EVE Online
 games-util/qstat 2.11: Server statics collector supporting many FPS games
 games-util/wit 2.40a: command line tools to manipulate Wii/GameCube ISO images and WBFS containers
 gnome-base/dconf 0.26.1 0.30.1: Simple low-level configuration system
-gnome-base/dconf-editor 3.26.2 3.30.2: Graphical tool for editing the dconf configuration database
+gnome-base/dconf-editor 3.30.2: Graphical tool for editing the dconf configuration database
 gnome-base/gconf 3.2.6-r4: GNOME configuration system and daemon
-gnome-base/gdm 3.24.3-r1 3.30.3-r3: GNOME Display Manager for managing graphical display servers and user logins
-gnome-base/gnome 3.20.0 3.24.2 3.30.2: Meta package for GNOME 3, merge this package to install
+gnome-base/gdm 3.30.3-r3: GNOME Display Manager for managing graphical display servers and user logins
+gnome-base/gnome 3.20.0 3.30.2: Meta package for GNOME 3, merge this package to install
 gnome-base/gnome-common 3.18.0-r1: Common files for development of Gnome packages
-gnome-base/gnome-control-center 3.24.4 3.30.3-r1: GNOME's main interface to configure various aspects of the desktop
-gnome-base/gnome-core-apps 3.24.2 3.30.2: Sub-meta package for the core applications integrated with GNOME 3
-gnome-base/gnome-core-libs 3.24.2 3.30.2: Sub-meta package for the core libraries of GNOME 3
+gnome-base/gnome-control-center 3.30.3-r1: GNOME's main interface to configure various aspects of the desktop
+gnome-base/gnome-core-apps 3.30.2: Sub-meta package for the core applications integrated with GNOME 3
+gnome-base/gnome-core-libs 3.30.2: Sub-meta package for the core libraries of GNOME 3
 gnome-base/gnome-desktop 2.32.1-r2 3.24.2 3.30.2.1: Library with common API for various GNOME modules
-gnome-base/gnome-extra-apps 3.24.2 3.30.2: Sub-meta package for the applications of GNOME 3
+gnome-base/gnome-extra-apps 3.30.2: Sub-meta package for the applications of GNOME 3
 gnome-base/gnome-keyring 3.20.0 3.20.1 3.28.2: Password and keyring managing daemon
-gnome-base/gnome-light 3.24.2 3.30.2: Meta package for GNOME-Light, merge this package to install
+gnome-base/gnome-light 3.30.2: Meta package for GNOME-Light, merge this package to install
 gnome-base/gnome-menus 3.13.3-r1: Library for the Desktop Menu fd.o specification
 gnome-base/gnome-mime-data 2.18.0: MIME data for Gnome
-gnome-base/gnome-session 3.24.2-r1 3.30.1-r1: Gnome session manager
-gnome-base/gnome-settings-daemon 3.24.4 3.30.2-r1: Gnome Settings Daemon
-gnome-base/gnome-shell 3.24.3 3.30.2-r2: Provides core UI functions for the GNOME 3 desktop
+gnome-base/gnome-session 3.30.1-r1: Gnome session manager
+gnome-base/gnome-settings-daemon 3.30.2-r1: Gnome Settings Daemon
+gnome-base/gnome-shell 3.30.2-r2: Provides core UI functions for the GNOME 3 desktop
 gnome-base/gnome-vfs 2.24.4-r5: Gnome Virtual Filesystem
 gnome-base/gsettings-desktop-schemas 3.24.1 3.28.1: Collection of GSettings schemas for GNOME desktop
 gnome-base/gvfs 1.32.2 1.38.2: Virtual filesystem implementation for GIO
@@ -6572,11 +6572,11 @@ gnome-base/libglade 2.6.4-r2: Library to construct graphical interfaces at runti
 gnome-base/libgnome 2.32.1-r1: Essential Gnome Libraries
 gnome-base/libgnome-keyring 3.12.0-r1: Compatibility library for accessing secrets
 gnome-base/libgnomecanvas 2.30.3-r1: The Gnome 2 Canvas library
-gnome-base/libgnomekbd 3.26.0 3.26.1: Gnome keyboard configuration library
+gnome-base/libgnomekbd 3.26.1: Gnome keyboard configuration library
 gnome-base/libgnomeui 2.24.5-r1: User Interface routines for Gnome
 gnome-base/libgtop 2.36.0 2.38.0: A library that provides top functionality to applications
 gnome-base/librsvg 2.40.18 2.40.20: Scalable Vector Graphics (SVG) rendering library
-gnome-base/nautilus 3.26.4-r2 3.30.5: Default file manager for the GNOME desktop
+gnome-base/nautilus 3.30.5: Default file manager for the GNOME desktop
 gnome-base/orbit 2.14.19-r5: ORBit2 is a high-performance CORBA ORB
 gnome-extra/assogiate 0.2.1-r1: assoGiate is an editor of the file types database for GNOME
 gnome-extra/chrome-gnome-shell 10: GNOME Shell integration for Chrome/Chromium, Firefox, Vivaldi, Opera browsers
@@ -6593,7 +6593,7 @@ gnome-extra/eiciel 0.9.11-r1: ACL editor for GNOME, with Nautilus extension
 gnome-extra/evolution-data-server 3.24.7 3.30.5-r1: Evolution groupware backend
 gnome-extra/evolution-ews 3.24.6 3.30.5-r1: Evolution module for connecting to Microsoft Exchange Web Services
 gnome-extra/gconf-editor 3.0.1-r1: An editor to the GNOME config system
-gnome-extra/gnome-boxes 3.26.4 3.30.3: Simple GNOME 3 application to access remote or virtual systems
+gnome-extra/gnome-boxes 3.30.3: Simple GNOME 3 application to access remote or virtual systems
 gnome-extra/gnome-calculator 3.24.0 3.30.1: A calculator application for GNOME
 gnome-extra/gnome-calendar 3.24.3 3.30.1: Manage your online calendars with simple and modern interface
 gnome-extra/gnome-characters 3.26.2 3.30.0: Unicode character map viewer and library
@@ -6614,7 +6614,7 @@ gnome-extra/gnome-shell-extension-dash-to-panel 19: An icon taskbar for the Gnom
 gnome-extra/gnome-shell-extension-desktop-icons 19.01.1: A GNOME Shell extension for providing desktop icons
 gnome-extra/gnome-shell-extension-gsconnect 23: KDE Connect implementation for Gnome Shell
 gnome-extra/gnome-shell-extensions 3.24.3 3.30.1: JavaScript extensions for GNOME Shell
-gnome-extra/gnome-shell-extensions-topicons-plus 21 22-r1: Moves legacy tray icons to top panel
+gnome-extra/gnome-shell-extensions-topicons-plus 22-r1: Moves legacy tray icons to top panel
 gnome-extra/gnome-shell-frippery 3.24.0 3.30.2: Unofficial extension pack providing GNOME 2-like features for GNOME 3
 gnome-extra/gnome-system-monitor 3.24.0 3.30.0: The Gnome System Monitor
 gnome-extra/gnome-tweaks 3.24.1 3.30.2: Customize advanced GNOME 3 options

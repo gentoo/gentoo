@@ -2247,7 +2247,6 @@ gnome-base/gdm:fprint - Enables experimental fingerprint authentication using sy
 gnome-base/gdm:plymouth - Enable support for smooth transition from sys-boot/plymouth
 gnome-base/gnome:classic - Install gnome-extra/gnome-shell-extensions for the Gnome Shell Classic mode
 gnome-base/gnome:extras - Install additional GNOME applications
-gnome-base/gnome-control-center:colord - Support color management using x11-misc/colord
 gnome-base/gnome-control-center:flickr - Add support for using photos from flickr as desktop background
 gnome-base/gnome-control-center:gnome-online-accounts - Enable configuration panel for net-libs/gnome-online-accounts accounts
 gnome-base/gnome-control-center:ibus - Enable support for enhanced input methods through app-i18n/ibus
@@ -2262,12 +2261,10 @@ gnome-base/gnome-session:consolekit - Support sys-auth/consolekit for session tr
 gnome-base/gnome-session:elogind - Support sys-auth/elogind for session tracking
 gnome-base/gnome-settings-daemon:colord - Support color management using x11-misc/colord
 gnome-base/gnome-settings-daemon:elogind - Rely on sys-auth/elogind as runtime logind provider
-gnome-base/gnome-settings-daemon:openrc-force - Skip systemd dependency (#480336), enabling this flag will become your setup to be fully unsupported by upstream and downstream Gnome team. Do not try to enable it unless completely needed
 gnome-base/gnome-settings-daemon:systemd - Rely on sys-apps/systemd as runtime logind provider
 gnome-base/gnome-shell:browser-extension - Ensure the presence of extensions.gnome.org native connector gnome-extra/chrome-gnome-shell
 gnome-base/gnome-shell:elogind - Use sys-auth/elogind for session tracking and suspend support.
 gnome-base/gnome-shell:ibus - Enable support for enhanced input methods through app-i18n/ibus
-gnome-base/gnome-shell:openrc-force - Skip systemd dependency (#480336), enabling this flag will become your setup to be fully unsupported by upstream and downstream Gnome team. Do not try to enable it unless completely needed
 gnome-base/gnome-shell:telepathy - Ensure presence of telepathy chat integration
 gnome-base/gvfs:afp - Enables support for accessing AFP (Apple Filing Protocol) network shares
 gnome-base/gvfs:archive - Enables support for accessing files in archives transparently via app-arch/libarchive
@@ -2285,7 +2282,6 @@ gnome-base/librsvg:tools - Build svg viewer tool
 gnome-base/nautilus:packagekit - Use packagekit to search for programs to open unknown file types
 gnome-base/nautilus:previewer - Use gnome-extra/sushi to preview files from the file mananger
 gnome-base/nautilus:sendto - Enable the nautilus-sendto extension to send files to various locations/devices
-gnome-base/nautilus:tracker - Add support for app-misc/tracker search and batch rename
 gnome-base/orbit:pic - Force libname-server-2 to be built as PIC; needed on hardened systems
 gnome-extra/cinnamon-control-center:colord - Support color management using x11-misc/colord
 gnome-extra/cinnamon-session:elogind - Rely on sys-auth/elogind as runtime logind provider
