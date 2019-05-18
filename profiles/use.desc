@@ -48,6 +48,7 @@ cdr - Add support for CD writer hardware
 cgi - Add CGI script support
 cjk - Add support for Multi-byte character languages (Chinese, Japanese, Korean)
 clamav - Add support for Clam AntiVirus software (usually with a plugin)
+colord - Support color management using x11-misc/colord
 connman - Add support for net-misc/connman
 coreaudio - Build the CoreAudio driver on Mac OS X systems
 cracklib - Support for cracklib strong password checking
