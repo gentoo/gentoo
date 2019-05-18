@@ -16,8 +16,4 @@ SLOT="0"
 KEYWORDS=""
 IUSE=""
 
-RDEPEND="
-	|| (
-		sys-apps/portage[${PYTHON_USEDEP}]
-		sys-apps/portage-mgorny[${PYTHON_USEDEP}]
-	)"
+RDEPEND="sys-apps/portage[${PYTHON_USEDEP}]"
