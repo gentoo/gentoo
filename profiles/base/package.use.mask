@@ -7,6 +7,14 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Ulrich Müller <ulm@gentoo.org> (18 May 2019)
+# Firmware images without a known license. Most likely, upstream
+# redistribution may conflict with the licenses or lack thereof
+# on the images. Check the WHENCE file in the package for specific
+# terms. Masked to prevent accidental installation of these files,
+# bug #318841#c20.
+sys-kernel/linux-firmware unknown-license
+
 # Andreas K. Hüttel <dilfridge@gentoo.org> (11 May 2019)
 # app-accessibility/festival:
 # Outdated, EAPI=2, unmaintained, segfaults immediately.
