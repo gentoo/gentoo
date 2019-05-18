@@ -60,7 +60,6 @@ nagios-game
 # Samuli Suominen <ssuominen@gentoo.org> (07 May 2012)
 # Missing keywording in www-client/firefox wrt #360427
 mozilla
-thunderbird
 
 # Alexandre Rostovtsev <tetromino@gmail.com> (28 Oct 2011)
 # x11-misc/colord and app-admin/packagekit-base not tested. Bug #387959.

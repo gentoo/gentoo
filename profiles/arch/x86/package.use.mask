@@ -7,10 +7,6 @@
 # Overlay can only be built on amd64 and x86
 x11-apps/igt-gpu-tools -overlay
 
-# Sergei Trofimovich <slyfox@gentoo.org> (16 Mar 2019)
-# sys-block/megactl works on x86 and amd64
-www-apps/phpsysinfo -megactl
-
 # Georgy Yakovlev <gyakovlev@gentoo.org> (05 March 2019)
 # freeipmi is supported on x86
 app-admin/conserver -freeipmi

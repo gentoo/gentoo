@@ -5,10 +5,6 @@
 # Overlay can only be built on amd64 and x86
 x11-apps/igt-gpu-tools overlay
 
-# Sergei Trofimovich <slyfox@gentoo.org> (16 Mar 2019)
-# sys-block/megactl works only on amd64 and x86 so far, bug #670564
-www-apps/phpsysinfo megactl
-
 # Thomas Deutschmann <whissi@gentoo.org> (15 Nov 2018)
 # - rdrand plugin is only supported on amd64 and x86
 # - padlock plugin is only supported on amd64 and x86

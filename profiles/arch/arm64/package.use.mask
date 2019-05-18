@@ -37,10 +37,6 @@ kde-plasma/discover firmware
 # dev-qt/qttranslations is not yet keyworded, bug #680082
 lxqt-base/lxqt-meta nls
 
-# Mart Raudsepp <leio@gentoo.org> (23 Feb 2019)
-# x11-libs/libXTrap not keyworded yet
-x11-misc/x11vnc xtrap
-
 # Roy Bamford <neddyseagoon@gentoo.org> (24 Feb 19)
 # sdl is in use.mask and lots of things remain untested with USE=sdl
 # list packages here that have been tested.
@@ -365,7 +361,7 @@ app-portage/g-sorcery bson
 
 # Thomas Deutschmann <whissi@gentoo.org> (01 Mar 2017)
 # Unkeyworded depedencies
-app-admin/rsyslog grok kafka kubernetes mongodb normalize rabbitmq
+app-admin/rsyslog kafka kubernetes mongodb normalize rabbitmq
 
 # Michael Weber <xmw@gentoo.org> (01 Mar 2017)
 # untested dependencies
