@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit virtualx xdg-utils
+inherit xdg-utils
 
 MY_P=${P^}
 
@@ -58,10 +58,6 @@ src_configure() {
 	)
 
 	econf "${myconf[@]}"
-}
-
-src_test() {
-	virtx emake check
 }
 
 src_install() {
