@@ -13,10 +13,7 @@ IUSE=""
 DEPEND=""
 RDEPEND="
 	app-shells/bash
-	|| (
-		>=sys-apps/portage-2.1.10
-		sys-apps/portage-mgorny
-	)
+	>=sys-apps/portage-2.1.10
 	>=dev-util/diffball-0.6.5"
 
 S=${WORKDIR}

@@ -19,7 +19,6 @@ DEPEND=">=dev-lang/ghc-6.12.1"
 
 # Need a lower version for portage to get --keep-going
 RDEPEND="|| ( >=sys-apps/portage-2.1.6
-		sys-apps/portage-mgorny
 		sys-apps/pkgcore )"
 
 src_prepare() {

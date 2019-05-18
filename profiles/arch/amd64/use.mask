@@ -169,10 +169,6 @@
 # masked
 3dfx
 
-# 2007/02/04 - Simon Stelling <blubb@gentoo.org>
-# games-emulation/caps is 32bit only, while app-emulation/e-uae is 64bit; bug 158416
-capslib
-
 # fdk-aac is already keyworded here
 -fdk
 

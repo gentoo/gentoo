@@ -5,12 +5,6 @@
 # Requires dev-libs/mongo-c-driver which isn't keyworded
 >=app-admin/rsyslog-8.31 mongodb
 
-# Thomas Deutschmann <whissi@whissi.de> (25 Apr 2016), on behalf of
-# Ian Delaney <idella4@gentoo.org> (25 Apr 2016)
-# for the proxy-maintainers project
-# Unkeyworded deps, bug #581180
-app-admin/rsyslog grok
-
 # Thomas Deutschmann <whissi@whissi.de> (19 Mar 2016), on behalf of
 # Ian Delaney <idella4@gentoo.org> (19 Mar 2016)
 # for the proxy-maintainers project

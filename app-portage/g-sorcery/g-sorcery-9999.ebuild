@@ -19,10 +19,7 @@ IUSE="bson git"
 
 DEPEND="bson? ( dev-python/pymongo[${PYTHON_USEDEP}] )
 	git? ( dev-vcs/git )
-	|| (
-		sys-apps/portage[${PYTHON_USEDEP}]
-		sys-apps/portage-mgorny[${PYTHON_USEDEP}]
-	)"
+	sys-apps/portage[${PYTHON_USEDEP}]"
 RDEPEND="${DEPEND}"
 PDEPEND=">=app-portage/layman-2.2.0[g-sorcery(-),${PYTHON_USEDEP}]"
 

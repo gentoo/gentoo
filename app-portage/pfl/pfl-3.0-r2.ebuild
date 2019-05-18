@@ -21,10 +21,7 @@ DEPEND=""
 RDEPEND="
 	${DEPEND}
 	net-misc/curl
-	|| (
-		sys-apps/portage[${PYTHON_USEDEP}]
-		sys-apps/portage-mgorny[${PYTHON_USEDEP}]
-	)
+	sys-apps/portage[${PYTHON_USEDEP}]
 	>=dev-python/ssl-fetch-0.4[${PYTHON_USEDEP}]
 "
 
