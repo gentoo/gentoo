@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ SRC_URI="${HOMEPAGE}/repository/archive.tar.gz?ref=v${PV} -> ${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0/2"
-KEYWORDS="~amd64 ~arm64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 arm64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="+szip"
 
 DEPEND=""
