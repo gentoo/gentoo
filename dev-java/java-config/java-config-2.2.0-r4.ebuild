@@ -17,21 +17,13 @@ SLOT="2"
 KEYWORDS="amd64 ~arm arm64 ppc64 x86"
 IUSE="test"
 
-DEPEND="test? (
-		|| (
-			sys-apps/portage[${PYTHON_USEDEP}]
-			sys-apps/portage-mgorny[${PYTHON_USEDEP}]
-		)
-	)"
+DEPEND="test? ( sys-apps/portage[${PYTHON_USEDEP}] )"
 
 # baselayout-java is added as a dep till it can be added to eclass.
 RDEPEND="
 	!dev-java/java-config-wrapper
 	sys-apps/baselayout-java
-	|| (
-		sys-apps/portage[${PYTHON_USEDEP}]
-		sys-apps/portage-mgorny[${PYTHON_USEDEP}]
-	)"
+	sys-apps/portage[${PYTHON_USEDEP}]"
 
 PATCHES=( "${FILESDIR}"/${PN}-2.2.0-prefix.patch )
 
