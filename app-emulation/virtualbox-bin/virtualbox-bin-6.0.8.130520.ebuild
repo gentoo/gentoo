@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,11 +9,12 @@ inherit xdg-utils gnome2 pax-utils python-r1 udev unpacker eapi7-ver
 
 MAIN_PV="$(ver_cut 1-3)"
 if [[ ${PV} = *_beta* ]] || [[ ${PV} = *_rc* ]] ; then
-	MY_PV="${MAIN_PV}_$(ver_cut 5)"
+	MY_PV="${MAIN_PV}_$(ver_cut 5-6)"
 	MY_PV="${MY_PV/beta/BETA}"
 	MY_PV="${MY_PV/rc/RC}"
 else
 	MY_PV="${MAIN_PV}"
+	KEYWORDS="~amd64" #~x86
 fi
 VBOX_BUILD_ID="$(ver_cut 4)"
 VBOX_PV="${MY_PV}-${VBOX_BUILD_ID}"
@@ -29,12 +30,11 @@ SDK_P="VirtualBoxSDK-${SDK_PV}"
 DESCRIPTION="Family of powerful x86 virtualization products for enterprise and home use"
 HOMEPAGE="https://www.virtualbox.org/"
 SRC_URI="amd64? ( https://download.virtualbox.org/virtualbox/${MY_PV}/${MY_P}_amd64.run )
-	x86? ( https://download.virtualbox.org/virtualbox/${MY_PV}/${MY_P}_x86.run )
 	https://download.virtualbox.org/virtualbox/${MY_PV}/${EXTP_P}.vbox-extpack -> ${EXTP_P}.tar.gz"
+	#x86? ( https://download.virtualbox.org/virtualbox/${MY_PV}/${MY_P}_x86.run )
 
 LICENSE="GPL-2 PUEL"
 SLOT="0"
-KEYWORDS="amd64 x86"
 IUSE="+additions +chm headless python vboxwebsrv rdesktop-vrdp"
 RESTRICT="mirror"
 
@@ -181,7 +181,7 @@ src_install() {
 	# This ebuild / package supports only py2.7.  When py3 comes is unknown.
 	# The compile phase makes VBoxPython2_7.so.
 	# py3 support would presumably require a binary pre-compiled by py3.
-	use python && doins VBoxPython.so VBoxPython2_7.so
+	use python && doins VBoxPython.so
 
 	rm -rf src rdesktop* deffiles install* routines.sh runlevel.sh \
 		vboxdrv.sh VBox.sh VBox.png vboxnet.sh additions VirtualBox.desktop \
@@ -191,7 +191,7 @@ src_install() {
 		VBoxPython?_*.so
 
 	if use headless ; then
-		rm -rf VBoxSDL VirtualBox VBoxKeyboard.so
+		rm -rf VBoxSDL VirtualBox{,VM} VBoxKeyboard.so
 	fi
 
 	doins -r * || die
@@ -204,19 +204,21 @@ src_install() {
 	dosym ../VBoxXPCOM.so /opt/VirtualBox/components/VBoxXPCOM.so
 
 	local each
-	for each in VBox{Manage,SVC,XPCOMIPCD,Tunctl,NetAdpCtl,NetDHCP,NetNAT,TestOGL,ExtPackHelperApp}; do
+	for each in VBox{Manage,SVC,XPCOMIPCD,Tunctl,TestOGL,ExtPackHelperApp} $(usex headless '' VirtualBox) ; do
 		fowners root:vboxusers /opt/VirtualBox/${each}
 		fperms 0750 /opt/VirtualBox/${each}
 		pax-mark -m "${ED%/}"/opt/VirtualBox/${each}
 	done
 	# VBoxNetAdpCtl and VBoxNetDHCP binaries need to be suid root in any case..
-	fperms 4750 /opt/VirtualBox/VBoxNetAdpCtl
-	fperms 4750 /opt/VirtualBox/VBoxNetDHCP
-	fperms 4750 /opt/VirtualBox/VBoxNetNAT
+	for each in VBoxNet{AdpCtl,DHCP,NAT} $(usex headless '' VirtualBoxVM) ; do
+		fowners root:vboxusers /opt/VirtualBox/${each}
+		fperms 4750 /opt/VirtualBox/${each}
+		pax-mark -m "${ED%/}"/opt/VirtualBox/${each}
+	done
 
 	if ! use headless ; then
 		# Hardened build: Mark selected binaries set-user-ID-on-execution
-		for each in VBox{SDL,Headless} VirtualBox; do
+		for each in VBox{SDL,Headless} ; do
 			fowners root:vboxusers /opt/VirtualBox/${each}
 			fperms 4510 /opt/VirtualBox/${each}
 			pax-mark -m "${ED%/}"/opt/VirtualBox/${each}
@@ -256,9 +258,9 @@ src_install() {
 }
 
 pkg_postinst() {
+	xdg_icon_cache_update
 	xdg_desktop_database_update
-
-	gnome2_icon_cache_update
+	xdg_mimeinfo_database_update
 
 	udevadm control --reload-rules && udevadm trigger --subsystem-match=usb
 
@@ -283,5 +285,7 @@ pkg_postinst() {
 }
 
 pkg_postrm() {
+	xdg_icon_cache_update
 	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 }
