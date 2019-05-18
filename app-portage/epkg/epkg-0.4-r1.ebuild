@@ -16,10 +16,7 @@ S="${WORKDIR}/${PN}-${P}"
 DEPEND=""
 RDEPEND="app-portage/eix
 		app-portage/gentoolkit
-		|| (
-			sys-apps/portage
-			sys-apps/portage-mgorny
-		)"
+		sys-apps/portage"
 
 src_install() {
 	dobin epkg
