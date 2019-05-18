@@ -18,7 +18,8 @@ IUSE="examples tools"
 RESTRICT="strip"
 RDEPEND="virtual/jdk:1.8"
 DEPEND="${RDEPEND}
-	app-arch/unzip"
+	app-arch/unzip
+	app-arch/zip"
 
 S="${WORKDIR}"
 QA_FLAGS_IGNORED="usr/bin/bazel"
