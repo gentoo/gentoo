@@ -6554,7 +6554,7 @@ gnome-base/gnome-common 3.18.0-r1: Common files for development of Gnome package
 gnome-base/gnome-control-center 3.30.3-r1: GNOME's main interface to configure various aspects of the desktop
 gnome-base/gnome-core-apps 3.30.2: Sub-meta package for the core applications integrated with GNOME 3
 gnome-base/gnome-core-libs 3.30.2: Sub-meta package for the core libraries of GNOME 3
-gnome-base/gnome-desktop 2.32.1-r2 3.24.2 3.30.2.1: Library with common API for various GNOME modules
+gnome-base/gnome-desktop 2.32.1-r2 3.30.2.1: Library with common API for various GNOME modules
 gnome-base/gnome-extra-apps 3.30.2: Sub-meta package for the applications of GNOME 3
 gnome-base/gnome-keyring 3.20.0 3.20.1 3.28.2: Password and keyring managing daemon
 gnome-base/gnome-light 3.30.2: Meta package for GNOME-Light, merge this package to install
@@ -7508,7 +7508,7 @@ media-gfx/scour 0.36: Take an SVG file and produce a cleaner and more concise fi
 media-gfx/scrot 0.8_p13-r1: Screen capture utility using imlib2 library
 media-gfx/sfftobmp 3.1.2-r1: sff to bmp converter
 media-gfx/shotwell 0.30.2: Open source photo manager for GNOME
-media-gfx/simple-scan 3.24.1 3.30.2: Simple document scanning utility
+media-gfx/simple-scan 3.30.2: Simple document scanning utility
 media-gfx/springgraph 88: Generate spring graphs from graphviz input files
 media-gfx/svg2rlg 0.3: python tool to convert SVG files to reportlab graphics
 media-gfx/sxiv 24: Simple (or small or suckless) X Image Viewer
@@ -7551,7 +7551,7 @@ media-libs/blib 1.1.7-r2: blib is a library full of useful things to hack the Bl
 media-libs/cal3d 0.11.0-r1: Cal3D is a skeletal based character animation library
 media-libs/chromaprint 1.4.2 1.4.3: A client-side library that implements a custom algorithm for extracting fingerprints
 media-libs/clutter 1.26.2-r1: Clutter is a library for creating graphical user interfaces
-media-libs/clutter-gst 3.0.26 3.0.27: GStreamer integration library for Clutter
+media-libs/clutter-gst 3.0.27: GStreamer integration library for Clutter
 media-libs/clutter-gtk 1.8.4: Library for embedding a Clutter canvas (stage) in GTK+
 media-libs/cogl 1.22.2: A library for using 3D graphics hardware to draw pretty pictures
 media-libs/coin 3.1.3-r2: A high-level 3D graphics toolkit, fully compatible with SGI Open Inventor 2.1
@@ -7596,7 +7596,7 @@ media-libs/glyr 1.0.10: Music related metadata searchengine, both with commandli
 media-libs/gmtk 1.0.8 1.0.9: GTK+ widget and function libraries for gnome-mplayer
 media-libs/gnonlin 1.4.0-r1: Set of GStreamer elements to ease the creation of non-linear multimedia editors
 media-libs/graphene 1.8.2 1.8.6: A thin layer of types for graphic libraries
-media-libs/grilo 0.3.6 0.3.7: A framework for easy media discovery and browsing
+media-libs/grilo 0.3.7: A framework for easy media discovery and browsing
 media-libs/gsound 1.0.2-r1: Thin GObject wrapper around the libcanberra sound event library
 media-libs/gst-plugins-bad 1.14.3: Less plugins for GStreamer
 media-libs/gst-plugins-base 1.14.4-r1: Basepack of plugins for gstreamer
@@ -7643,7 +7643,7 @@ media-libs/libcanberra 0.30-r5: Portable sound event library
 media-libs/libcdaudio 0.99.12-r2: Library of cd audio related routines
 media-libs/libcddb 1.3.2 1.3.2-r1: A library for accessing a CDDB server
 media-libs/libcdr 0.1.5: Library parsing the Corel cdr documents
-media-libs/libchamplain 0.12.16 0.12.19-r1: Clutter based world map renderer
+media-libs/libchamplain 0.12.19-r1: Clutter based world map renderer
 media-libs/libclalsadrv 2.0.0-r1: ALSA driver C++ access library
 media-libs/libclastfm 0.5: C API library to the last.fm web service (unofficial)
 media-libs/libclthreads 2.4.0-r1: An audio library by Fons Adriaensen <fons.adriaensen@skynet.be>
@@ -7902,7 +7902,7 @@ media-plugins/gmpc-mmkeys 11.8.16: Bind multimedia keys via gnome settings daemo
 media-plugins/gmpc-playlistsort 0.20.0: This plugin adds a dialog to sort the current playlist
 media-plugins/gmpc-shout 0.20.0: This plugin calls ogg123 and points it at mpd's shoutstream
 media-plugins/gmpc-tagedit 11.8.16: This plugin allows you to edit tags in your library
-media-plugins/grilo-plugins 0.3.7 0.3.8: A collection of plugins for the Grilo framework
+media-plugins/grilo-plugins 0.3.8: A collection of plugins for the Grilo framework
 media-plugins/gst-plugins-a52dec 1.14.3: ATSC A/52 audio decoder plugin for GStreamer
 media-plugins/gst-plugins-amr 1.14.3: AMRNB encoder/decoder and AMRWB decoder plugin for GStreamer
 media-plugins/gst-plugins-assrender 1.14.3: ASS/SSA rendering with effects support plugin for GStreamer
@@ -8115,8 +8115,8 @@ media-sound/gmorgan 0.79-r1: Opensource software rhythm station
 media-sound/gmpc 11.8.16-r1: A GTK+2 client for the Music Player Daemon
 media-sound/gmusicbrowser 1.1.15-r3 1.1.15_p20160530: An open-source jukebox for large collections of mp3/ogg/flac files
 media-sound/gnomad 2.9.6: A GTK+ music manager and swiss army knife for the Portable Digital Entertainment (PDE) protocol
-media-sound/gnome-music 3.26.2 3.30.2: Music management for Gnome
-media-sound/gnome-sound-recorder 3.24.0.1 3.28.2: Simple sound recorder
+media-sound/gnome-music 3.30.2: Music management for Gnome
+media-sound/gnome-sound-recorder 3.28.2: Simple sound recorder
 media-sound/gnump3d 3.0-r1 3.0-r2: A streaming server for MP3, OGG vorbis and other streamable files
 media-sound/gom 0.29.103-r1: Console Mixer Program for OSS
 media-sound/gramofile 1.6_p9: Transfer sound from gramophone records to CD
@@ -8217,7 +8217,7 @@ media-sound/quodlibet 3.8.1-r1 3.9.1 4.1.0: audio library tagger, manager, and p
 media-sound/rawrec 0.9.991: CLI program to play and record audiofiles
 media-sound/rcenter 0.6.2: Rcenter - A program to control the EMU10K Remote Control
 media-sound/rexima 1.4-r1: A curses-based interactive mixer which can also be used from the command-line
-media-sound/rhythmbox 3.4.2 3.4.3: Music management and playback software for GNOME
+media-sound/rhythmbox 3.4.3: Music management and playback software for GNOME
 media-sound/rip 1.07: A command-line based audio CD ripper and mp3 encoder
 media-sound/ripperx 2.7.3: a GTK program to rip CD audio tracks and encode them to the Ogg, MP3, or FLAC formats
 media-sound/rosegarden 17.04: MIDI and audio sequencer and notation editor
@@ -8309,7 +8309,7 @@ media-video/blinkenthemes 0.10-r1: Themes for blinkensim
 media-video/ccextractor 0.59 0.85-r2: Extract closed captioning subtitles from video to SRT
 media-video/cclive 0.9.3-r2: Command line tool for extracting videos from various websites
 media-video/chaplin 1.10-r2: This is a program to raw copy chapters from a dvd using libdvdread
-media-video/cheese 3.28.0 3.30.0: A cheesy program to take pictures and videos from your webcam
+media-video/cheese 3.30.0: A cheesy program to take pictures and videos from your webcam
 media-video/cinelerra 2.3: The most advanced non-linear video editor and compositor
 media-video/clive 2.3.0.1: Command line tool for extracting videos from various websites
 media-video/cpvts 1.2: raw copy title sets from a DVD to your harddisc
@@ -8375,7 +8375,7 @@ media-video/subliminal 2.0.5-r2: Python library to search and download subtitles
 media-video/subtitlecomposer 0.6.6-r1: Text-based subtitles editor
 media-video/subtitleeditor 0.54.0: GTK+3 subtitle editing tool
 media-video/subtitleripper 0.3.4-r4: DVD Subtitle Ripper for Linux
-media-video/totem 3.24.0 3.30.0: Media player for GNOME
+media-video/totem 3.30.0: Media player for GNOME
 media-video/tovid 0.35.2-r1: A collection of DVD authoring tools
 media-video/transcode 1.1.7-r3: A suite of utilities for transcoding video and audio codecs in different containers
 media-video/ttcut 0.19.6_p1: Tool for cutting MPEG files especially for removing commercials
@@ -8548,7 +8548,7 @@ net-dialup/lrzsz 0.12.20-r4: Communication package providing the X, Y, and ZMODE
 net-dialup/mgetty 1.2.1: fax and voice modem programs
 net-dialup/mingetty 1.08-r1: A compact getty program for virtual consoles only
 net-dialup/minicom 2.7.1: Serial Communication Program
-net-dialup/moserial 3.0.11 3.0.12: A clean and friendly gtk-based serial terminal
+net-dialup/moserial 3.0.12: A clean and friendly gtk-based serial terminal
 net-dialup/mwavem 2.0-r2: User level application for IBM Mwave modem
 net-dialup/picocom 2.2: minimal dumb-terminal emulation program
 net-dialup/ppp 2.4.7-r7: Point-to-Point Protocol (PPP)
@@ -8692,7 +8692,7 @@ net-irc/ngircd 23-r1 24: An IRC server written from scratch
 net-irc/ninja 1.5.9_pre14-r1: Ninja IRC Client
 net-irc/onis 0.8.2-r1: onis not irc stats
 net-irc/pisg 0.73-r1: Perl IRC Statistics Generator
-net-irc/polari 3.24.2 3.30.2: An IRC client for Gnome
+net-irc/polari 3.30.2: An IRC client for Gnome
 net-irc/quassel 0.12.5-r2 0.13.1: Qt/KDE IRC client supporting a remote daemon for 24/7 connectivity
 net-irc/rhapsody 0.28b: IRC client intended to be displayed on a text console
 net-irc/scrollz 2.2.1: Advanced IRC client based on ircII
@@ -8722,12 +8722,12 @@ net-libs/enet 1.2.2-r1 1.3.13: relatively thin, simple and robust network commun
 net-libs/farstream 0.2.8-r1 0.2.8-r2: Audio/video conferencing framework specifically designed for instant messengers
 net-libs/glib-networking 2.58.0: Network-related giomodules for glib
 net-libs/gnet 2.0.8-r2: A simple network library
-net-libs/gnome-online-accounts 3.24.5 3.30.2: GNOME framework for accessing online accounts
+net-libs/gnome-online-accounts 3.30.2: GNOME framework for accessing online accounts
 net-libs/gnutls 3.6.7: A TLS 1.2 and SSL 3.0 implementation for the GNU project
 net-libs/gsnmp 0.3.0: An SNMP library based on glib and gnet
 net-libs/gsoap 2.8.70: A cross-platform open source C and C++ SDK for SOAP/XML Web services
 net-libs/gssdp 1.0.3: A GObject-based API for handling resource discovery and announcement over SSDP
-net-libs/gtk-vnc 0.8.0 0.9.0: VNC viewer widget for GTK
+net-libs/gtk-vnc 0.9.0: VNC viewer widget for GTK
 net-libs/gupnp 1.0.3: An object-oriented framework for creating UPnP devs and control points
 net-libs/gupnp-av 0.12.11: Utility library aiming to ease the handling UPnP A/V profiles
 net-libs/gupnp-igd 0.2.5: Library to handle UPnP IGD port mapping for GUPnP
@@ -8954,7 +8954,7 @@ net-misc/freerdp 2.0.0_rc2-r1 2.0.0_rc4: Free implementation of the Remote Deskt
 net-misc/gcap 0.1.1-r1: Command line tool for downloading Youtube closed captions
 net-misc/geoipupdate 2.3.1: performs automatic updates of GeoIP2 and GeoIP Legacy binary databases
 net-misc/getdate 1.2-r1: Network Date/Time Query and Set Local Date/Time Utility
-net-misc/gnome-online-miners 3.26.0 3.30.0: Crawls through your online content
+net-misc/gnome-online-miners 3.30.0: Crawls through your online content
 net-misc/gofish 1.2: Gofish gopher server
 net-misc/grdesktop 0.23-r1: Gtk2 frontend for rdesktop
 net-misc/gsasl 1.8.0-r1: The GNU SASL client, server, and library
@@ -9387,7 +9387,7 @@ sci-geosciences/congen 1.6.2-r1: Calculate speeds, equilibrium arguments, node f
 sci-geosciences/foxtrotgps 1.2.0: Easy to use, fast and lightweight mapping application (fork of tangogps)
 sci-geosciences/geocode-glib 3.26.1: GLib helper library for geocoding services
 sci-geosciences/gmt 4.5.6: Powerful map generator
-sci-geosciences/gnome-maps 3.24.3 3.30.3: A map application for GNOME
+sci-geosciences/gnome-maps 3.30.3: A map application for GNOME
 sci-geosciences/gpsbabel 1.5.4-r1: GPS waypoints, tracks and routes converter
 sci-geosciences/gpsd 3.17-r3: GPS daemon and library for USB/serial GPS devices and GPS/mapping clients
 sci-geosciences/gtk-g-rays2 2.05: GUI for accessing the Wintec WBT 201 / G-Rays 2 GPS device
@@ -9816,7 +9816,7 @@ sys-apps/apply-default-acl 0.4.2: Apply default POSIX ACLs to files and director
 sys-apps/arrayprobe 2.0-r2: Utility to report status of an HP (Compaq) array controller (both IDA & CCISS)
 sys-apps/attr 2.4.47-r2: Extended attributes tools
 sys-apps/audio-entropyd 2.0.3-r1: Audio-entropyd generates entropy-data for the /dev/random device
-sys-apps/baobab 3.26.1 3.30.0: Disk usage browser for GNOME
+sys-apps/baobab 3.30.0: Disk usage browser for GNOME
 sys-apps/bar 1.11.1: Console Progress Bar
 sys-apps/baselayout 2.4.1-r2 2.6-r1: Filesystem baselayout and init scripts
 sys-apps/baselayout-java 0.1.0: Baselayout for Java
@@ -9868,7 +9868,7 @@ sys-apps/fxload 20081013-r1: USB firmware uploader
 sys-apps/gawk 4.1.4 4.2.1-r1: GNU awk pattern-matching language
 sys-apps/gentoo-functions 0.12: base functions required by all Gentoo systems
 sys-apps/gentoo-systemd-integration 7: systemd integration files for Gentoo
-sys-apps/gnome-disk-utility 3.24.1 3.30.2-r1: Disk Utility for GNOME using udisks
+sys-apps/gnome-disk-utility 3.30.2-r1: Disk Utility for GNOME using udisks
 sys-apps/gptfdisk 1.0.3: GPT partition table manipulator for Linux
 sys-apps/gradm 3.1.201603152148 3.1.201607172312: Administrative interface for the grsecurity Role Based Access Control system
 sys-apps/grep 3.1-r1: GNU regular expression matcher
@@ -10041,7 +10041,7 @@ sys-block/disktype 9: Detect the content format of a disk or disk image
 sys-block/f3 7.0: Utilities to detect broken or counterfeit flash storage
 sys-block/fio 2.15: Jens Axboe's Flexible IO tester
 sys-block/gpart 0.1h-r2: Partition table rescue/guessing tool
-sys-block/gparted 0.29.0 0.33.0: Gnome Partition Editor
+sys-block/gparted 0.33.0: Gnome Partition Editor
 sys-block/hpacucli 9.40.12.0: HP Array Config Utility Command Line Interface (HPACUCLI, formerly CPQACUXE)
 sys-block/hpssacli 2.40.13.0-r1: HPE Smart Storage Administrator (HPE SSA) CLI (HPSSACLI, formerly HPACUCLI)
 sys-block/io-scheduler-udev-rules 1: Udev rules to allow easier customization of kernel I/O schedulers
@@ -10277,7 +10277,7 @@ sys-kernel/bliss-initramfs 7.1.3: Boot your system's rootfs from ZFS, LVM, RAID,
 sys-kernel/dracut 044-r1 045-r2 046-r1: Generic initramfs generation tool
 sys-kernel/genkernel 3.4.52.3 3.4.52.4-r2 3.4.52.4-r3 3.5.3.3: Gentoo automatic kernel building scripts
 sys-kernel/genkernel-next 68 69: Gentoo automatic kernel building scripts, reloaded
-sys-kernel/gentoo-sources 4.4.176 4.4.179 4.4.180 4.9.162-r1 4.9.171 4.9.177 4.14.105-r1 4.14.114 4.14.120 4.19.27-r1 4.19.37 4.19.44: Full sources including the Gentoo patchset for the 4.19 kernel tree
+sys-kernel/gentoo-sources 4.4.176 4.4.179 4.9.162-r1 4.9.171 4.14.105-r1 4.14.114 4.19.27-r1 4.19.37: Full sources including the Gentoo patchset for the 4.19 kernel tree
 sys-kernel/linux-firmware 20190502: Linux firmware files
 sys-kernel/linux-headers 3.18 4.4 4.13 4.14-r1: Linux system headers
 sys-kernel/spl 0.6.5.11 0.7.12 0.7.13: The Solaris Porting Layer provides many of the Solaris kernel APIs
@@ -10652,7 +10652,7 @@ www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositor
 www-client/chromium 73.0.3683.75 73.0.3683.86: Open-source version of Google Chrome web browser
 www-client/dillo 3.0.5: Lean FLTK based web browser
 www-client/elinks 0.12_pre6-r1: Advanced and well-established text-mode web browser
-www-client/epiphany 3.30.2 3.30.4: GNOME webbrowser based on Webkit
+www-client/epiphany 3.30.4: GNOME webbrowser based on Webkit
 www-client/falkon 3.1.0-r1: Cross-platform web browser using QtWebEngine
 www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
 www-client/firefox 60.6.2: Firefox Web Browser
@@ -11244,7 +11244,7 @@ x11-plugins/wmwifi 0.6-r1: wireless network interface monitor dockapp
 x11-terms/alacritty 0.3.2: GPU-accelerated terminal emulator
 x11-terms/aterm 1.0.1-r3: rxvt compatible terminal emulator with transparency support
 x11-terms/eterm 0.9.6-r2: A vt102 terminal emulator for X
-x11-terms/gnome-terminal 3.24.2 3.30.3: The Gnome Terminal
+x11-terms/gnome-terminal 3.30.3: The Gnome Terminal
 x11-terms/guake 3.3.2: Drop-down terminal for GNOME
 x11-terms/kterm 6.2.0-r6: Japanese Kanji X Terminal
 x11-terms/mate-terminal 1.22.0: The MATE Terminal
@@ -11293,7 +11293,7 @@ x11-themes/gentoo-xcursors 0.3.1: A high quality set of animated mouse cursors
 x11-themes/gentoo10-backgrounds 20110309: Gentoo - 10 Years Compiling Background Artwork
 x11-themes/geramik 0.27-r1: GTK+1 and GTK+2 Geramik Themes
 x11-themes/gkrellm-themes 0.1: A pack of ~200 themes for GKrellM
-x11-themes/gnome-backgrounds 3.24.0 3.30.0: A set of backgrounds packaged with the GNOME desktop
+x11-themes/gnome-backgrounds 3.30.0: A set of backgrounds packaged with the GNOME desktop
 x11-themes/gnome-colors-common 5.5.1-r1: Colorized icons shared between all gnome-colors iconsets
 x11-themes/gnome-colors-themes 5.5.1: Some gnome-colors iconsets including a Gentoo one
 x11-themes/gnome-icon-theme-extras 3.12.0: Extra GNOME icons for specific devices and file types
@@ -11365,7 +11365,7 @@ x11-themes/windowmaker-themes 0.1: Collection of Window Maker themes
 x11-themes/xcursor-themes 1.0.6: X.Org cursor themes: whiteglass, redglass and handhelds
 x11-themes/xfce-gant-icon-theme 3.9_p6-r1: Xfce Gant Icon Theme
 x11-themes/xfwm4-themes 4.10.0-r1: Additional themes for the Xfce window manager
-x11-themes/zuki-themes 3.24.3 3.30.1: Zuki themes for GTK, gnome-shell and more
+x11-themes/zuki-themes 3.30.1: Zuki themes for GTK, gnome-shell and more
 x11-themes/zukini 20120817: Unified look for GTK+ 2.x, GTK+ 3.x, gnome-shell, metacity and more
 x11-themes/zukitwo 2016.08.08: Transition package to zuki-themes
 x11-themes/zukitwo-shell 2016.08.08: Transition package to zuki-themes
@@ -11391,7 +11391,7 @@ x11-wm/lwm 1.2.4: The ultimate lightweight window manager
 x11-wm/marco 1.22.0: MATE default window manager
 x11-wm/muffin 3.6.0: Compositing window manager forked from Mutter for use with Cinnamon
 x11-wm/musca 0.9.24_p20100226-r3: A simple dynamic window manager, with features nicked from ratpoison and dwm
-x11-wm/mutter 3.24.4 3.30.2-r1: GNOME 3 compositing window manager based on Clutter
+x11-wm/mutter 3.30.2-r1: GNOME 3 compositing window manager based on Clutter
 x11-wm/openbox 3.6.1: A standards compliant, fast, light-weight, extensible window manager
 x11-wm/oroborus 2.0.20-r1: Small and fast window manager
 x11-wm/pekwm 0.1.17-r1: A lightweight window manager initially based on aewm++
