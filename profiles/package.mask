@@ -456,7 +456,6 @@ dev-libs/quantlib
 # dependencies outside the three packages.
 # Removal in 30 days.  Bug #683748.
 dev-cpp/gccxml
-dev-python/pygccxml
 
 # Michał Górny <mgorny@gentoo.org> (18 Apr 2019)
 # All current versions of SystemRescueCD contain vulnerable packages.
