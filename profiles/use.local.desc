@@ -6307,4 +6307,3 @@ xfce-extra/xfce4-pulseaudio-plugin:keybinder - Enable support for global hotkeys
 xfce-extra/xfce4-pulseaudio-plugin:wnck - Enable experimental support for raising media player windows using x11-libs/libwnck.
 xfce-extra/xfce4-screensaver:consolekit - Enable ConsoleKit support
 xfce-extra/xfce4-screensaver:locking - Enable screen locking support
-xfce-extra/xfce4-taskmanager:gtk3 - Use GTK+3 instead of GTK+2
