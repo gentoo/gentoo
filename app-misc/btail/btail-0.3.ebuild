@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="4"
@@ -6,7 +6,7 @@ EAPI="4"
 inherit toolchain-funcs
 
 DESCRIPTION="Bayesian logfile filter"
-HOMEPAGE="http://www.vanheusden.com/btail/"
+HOMEPAGE="https://www.vanheusden.com/btail/"
 SRC_URI="${HOMEPAGE}/${P}.tgz"
 
 LICENSE="GPL-2"
