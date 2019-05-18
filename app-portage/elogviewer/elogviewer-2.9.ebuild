@@ -21,10 +21,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
 	dev-python/PyQt5[gui,widgets,${PYTHON_USEDEP}]
-	|| (
-		>=sys-apps/portage-2.1[${PYTHON_USEDEP}]
-		sys-apps/portage-mgorny[${PYTHON_USEDEP}]
-	)
+	>=sys-apps/portage-2.1[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep 'dev-python/enum34[${PYTHON_USEDEP}]' python2_7)
 "
 DEPEND="${RDEPEND}
