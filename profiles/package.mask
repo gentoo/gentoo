@@ -509,22 +509,6 @@ dev-util/cucumber-expressions:5.0
 >=dev-util/boost-build-1.70.0
 >=net-mail/libpst-0.6.66-r2
 
-# Hans de Graaff <graaff@gentoo.org> (13 Apr 2019)
-# Old ruby24-only slots of Rails-related packages
-# These no longer have reverse dependencies or newer
-# versions are available.
-# Masked for removal in 30 days.
-dev-ruby/arel:7.0
-dev-ruby/coffee-rails:4.1
-dev-ruby/d3_rails:0
-dev-ruby/i18n:0.6
-dev-ruby/i18n:0.8
-dev-ruby/mail:2.6
-dev-ruby/mysql2:0.3
-dev-ruby/sprockets-rails:2.3
-dev-ruby/uglifier:0
-dev-ruby/uglifier:3
-
 # Robin H. Johnson <robbat2@gentoo.org> (25 Mar 2019)
 # Requires >=dev-lang/lua-5.3 which is masked
 sys-apps/likwid
