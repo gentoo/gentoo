@@ -448,16 +448,6 @@ dev-cpp/rudiments
 dev-libs/quantlib
 
 # Michał Górny <mgorny@gentoo.org> (18 Apr 2019)
-# The packages are unmaintained.  GCCXML and pyplusplus were last bumped
-# to snapshots from 2013 (pygccxml was bumped in 2016).  GCCXML bundles
-# old GCC sources (4.8, most likely). In the meantime, upstream has
-# discontinued it in favor of CastXML (which uses clang).  GCCXML fails
-# tests (#629986), so does pyplusplus (#656348).  No reverse
-# dependencies outside the three packages.
-# Removal in 30 days.  Bug #683748.
-dev-cpp/gccxml
-
-# Michał Górny <mgorny@gentoo.org> (18 Apr 2019)
 # All current versions of SystemRescueCD contain vulnerable packages.
 # Bug #683724.
 app-admin/systemrescuecd-x86
