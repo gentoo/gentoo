@@ -56,12 +56,7 @@ RDEPEND="sys-apps/pciutils
 	)
 	cherrypy? ( >=dev-python/cherrypy-3.2.2[${PYTHON_USEDEP}] )
 	mongodb? ( dev-python/pymongo[${PYTHON_USEDEP}] )
-	portage? (
-		|| (
-			sys-apps/portage[${PYTHON_USEDEP}]
-			sys-apps/portage-mgorny[${PYTHON_USEDEP}]
-		)
-	)
+	portage? ( sys-apps/portage[${PYTHON_USEDEP}] )
 	keyring? ( dev-python/keyring[${PYTHON_USEDEP}] )
 	mysql? ( dev-python/mysql-python[$(python_gen_usedep 'python2*')] )
 	redis? ( dev-python/redis-py[${PYTHON_USEDEP}] )
