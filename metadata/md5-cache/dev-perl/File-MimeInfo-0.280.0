@@ -4,10 +4,10 @@ DESCRIPTION=Determine file type
 EAPI=6
 HOMEPAGE=https://metacpan.org/release/File-MimeInfo
 IUSE=test
-KEYWORDS=alpha amd64 arm ~arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~x86-macos ~sparc-solaris
+KEYWORDS=alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~x86-macos ~sparc-solaris
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=>=dev-perl/File-BaseDir-0.30.0 >=dev-perl/File-DesktopEntry-0.40.0 x11-misc/shared-mime-info dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/M/MI/MICHIELB/File-MimeInfo-0.28.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	71c828c354a4cddced2641dda2695de5
-_md5_=e42ef967b09ebce9f8bd44c42363e363
+_md5_=f90a83bf7cccbce000568ff93328b0b8
