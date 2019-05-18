@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Michał Górny <mgorny@gentoo.org> (06 Apr 2018)
@@ -112,4 +112,3 @@ sys-apps/hwloc numa
 # Naohiro Aota <naota@gentoo.org> (07 Jul 2014)
 # xattr support is not available on BSD #501534
 sys-apps/portage xattr
-sys-apps/portage-mgorny xattr

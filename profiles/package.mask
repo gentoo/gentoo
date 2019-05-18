@@ -460,14 +460,6 @@ dev-python/pygccxml
 dev-python/pyplusplus
 
 # Michał Górny <mgorny@gentoo.org> (18 Apr 2019)
-# Diverged too far from upstream Portage, and I don't have time anymore
-# to update or rebase it.  The most significant features were merged
-# back upstream, some more are waiting, the rest is customization
-# and some aggressive QA bits.  Use sys-apps/portage instead.
-# Removal in 30 days.  Bug #683744.
-sys-apps/portage-mgorny
-
-# Michał Górny <mgorny@gentoo.org> (18 Apr 2019)
 # All current versions of SystemRescueCD contain vulnerable packages.
 # Bug #683724.
 app-admin/systemrescuecd-x86
