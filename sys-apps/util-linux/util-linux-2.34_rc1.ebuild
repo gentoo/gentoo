@@ -63,6 +63,10 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 S="${WORKDIR}/${MY_P}"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-lscpu_floating_point_exception_fix.patch
+)
+
 src_prepare() {
 	default
 
