@@ -116,17 +116,21 @@ src_configure() {
 src_compile() {
 	set_arch_to_kernel
 
-	default
+	myemakeargs=( V=1 )
+
+	emake "${myemakeargs[@]}"
 }
 
 src_install() {
 	set_arch_to_kernel
 
-	emake \
-		DEPMOD="/bin/true" \
-		DESTDIR="${D}" \
-		INSTALL_MOD_PATH="${INSTALL_MOD_PATH:-$EROOT}" \
-		install
+	myemakeargs+=(
+		DEPMOD="/bin/true"
+		DESTDIR="${D}"
+		INSTALL_MOD_PATH="${INSTALL_MOD_PATH:-$EROOT}"
+	)
+
+	emake "${myemakeargs[@]}" install
 
 	einstalldocs
 }
