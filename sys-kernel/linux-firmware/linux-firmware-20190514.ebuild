@@ -148,7 +148,7 @@ src_prepare() {
 		brcm/brcmfmac43362-sdio.cubietech,cubietruck.txt
 		brcm/brcmfmac43362-sdio.lemaker,bananapro.txt
 		brcm/brcmfmac43430a0-sdio.jumper-ezpad-mini3.txt
-		brcm/brcmfmac43430a0-sdio.ONDA-V80 PLUS.txt
+		"brcm/brcmfmac43430a0-sdio.ONDA-V80 PLUS.txt"
 		brcm/brcmfmac43430-sdio.AP6212.txt
 		brcm/brcmfmac43430-sdio.Hampoo-D2D3_Vi8A1.txt
 		brcm/brcmfmac43430-sdio.MUR1DX.txt
