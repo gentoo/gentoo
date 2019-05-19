@@ -372,9 +372,8 @@ setup_flags() {
 	fi
 
 	# Lock glibc at -O2; we want to be conservative here.
-	# -fno-strict-aliasing is to work around #155906.
 	filter-flags '-O?'
-	append-flags -O2 -fno-strict-aliasing
+	append-flags -O2
 
 	filter-flags '-fstack-protector*'
 }
