@@ -278,6 +278,13 @@ src_install() {
 		save_config ${PN}.conf
 	fi
 	rm ${PN}.conf || die
+
+	if ! ( shopt -s failglob; : * ) 2>/dev/null; then
+		eerror "No files to install. Check your USE flag settings"
+		eerror "and the list of files in your saved configuration."
+		die "Refusing to install an empty package"
+	fi
+
 	insinto /lib/firmware/
 	doins -r *
 }
