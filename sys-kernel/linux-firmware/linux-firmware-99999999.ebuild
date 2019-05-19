@@ -233,8 +233,9 @@ src_prepare() {
 	fi
 
 	if use !redistributable; then
-		# remove files _not_ in the free_software whitelist or unknown_license
-		# everything else is confirmed (or assumed) to be redistributable based on upstream acceptance policy
+		# remove files _not_ in the free_software or unknown_license lists
+		# everything else is confirmed (or assumed) to be redistributable
+		# based on upstream acceptance policy
 		local file remove=()
 		while IFS= read -d "" -r file; do
 			has "${file#./}" "${free_software[@]}" "${unknown_license[@]}" \
