@@ -25,6 +25,7 @@ SLOT="0"
 IUSE="+redistributable savedconfig unknown-license"
 RESTRICT="binchecks strip
 	unknown-license? ( bindist )"
+REQUIRED_USE="unknown-license? ( redistributable )"
 
 RDEPEND="!savedconfig? (
 		redistributable? (
