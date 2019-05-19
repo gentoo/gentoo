@@ -1,17 +1,17 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="2"
 
 inherit autotools eutils
 
-DESCRIPTION="A text mode (ncurses) SMB network commander. Features: resume and UTF-8"
+DESCRIPTION="Text mode (ncurses) SMB network commander. Features: resume and UTF-8"
 HOMEPAGE="https://sourceforge.net/projects/smbc/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tgz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS=" ~ppc ~x86"
+KEYWORDS="~ppc ~x86"
 IUSE="nls debug"
 
 DEPEND="net-fs/samba
