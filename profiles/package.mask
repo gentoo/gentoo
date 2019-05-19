@@ -394,12 +394,6 @@ mail-filter/zdkimfilter
 =net-libs/nodejs-11.15.0
 =net-libs/nodejs-12*
 
-# David Seifert <soap@gentoo.org> (21 Apr 2019)
-# Ancient, last release over 8 years ago, GTK2,
-# broken USE=doc, multiple QA violations.
-# Removal in 30 days.  Bug #636580, #683486.
-dev-python/python-gtkmvc
-
 # Lars Wendler <polynomial-c@gentoo.org> (21 Apr 2019)
 # Masked for removal (bug #683926)
 sys-libs/ntdb
@@ -417,12 +411,6 @@ dev-python/python-rethinkdb
 # Removal in 30 days.  Bug #650256, #673672.
 sys-cluster/moosefs
 
-# David Seifert <soap@gentoo.org> (20 Apr 2019)
-# Completely broken build system, massive maintenance
-# burden, no new release since 2014.
-# Removal in 30 days.  Bug #671432.
-sci-biology/cufflinks
-
 # James Le Cuirot <chewi@gentoo.org> (20 Apr 2019)
 # Ancient and long dead upstream. Use app-emulation/fs-uae
 # instead. Removal in 30 days. Bugs #432092, #602966.
@@ -432,13 +420,6 @@ app-emulation/e-uae
 # Miroslav Šulc <fordfrog@gentoo.org> (19 Apr 2019)
 # Depends on >=virtual/{jdk,jre}-11 which is masked
 =www-servers/tomcat-9.0.19
-
-# David Seifert <soap@gentoo.org> (19 Apr 2019)
-# Fails to build with >=dev-libs/boost-1.70 due to Boost.Signals1
-# removal. No development, no maintenance, no homepage.
-# Removal in 30 days.  Bug #683762.
-sci-biology/blossoc
-sci-biology/snpfile
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (18 Apr 2019)
 # This version is provided for testing of the upcoming 0.8.0 release.
