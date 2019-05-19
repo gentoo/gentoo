@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,7 +17,7 @@ HOMEPAGE="http://beets.io/ https://pypi.org/project/beets/"
 KEYWORDS="~amd64 ~x86"
 SLOT="0"
 LICENSE="MIT"
-IUSE="badfiles chromaprint doc discogs ffmpeg gstreamer lastfm mpd replaygain test thumbnail webserver"
+IUSE="badfiles chromaprint doc discogs ffmpeg gstreamer icu lastfm mpd replaygain test thumbnail webserver"
 
 RDEPEND="
 	dev-python/jellyfish[${PYTHON_USEDEP}]
@@ -41,6 +41,7 @@ RDEPEND="
 	discogs? ( dev-python/discogs-client[${PYTHON_USEDEP}] )
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
 	ffmpeg? ( media-video/ffmpeg:0[encode] )
+	icu? ( dev-db/sqlite[icu] )
 	lastfm? ( dev-python/pylast[${PYTHON_USEDEP}] )
 	mpd? (
 		dev-python/bluelet[${PYTHON_USEDEP}]
@@ -74,6 +75,8 @@ DEPEND="
 
 RESTRICT="test" # tests broken in 1.4.3 already
 
+PATCHES=( "${FILESDIR}/${P}-imagemagick-detection.patch" )
+
 S=${WORKDIR}/${MY_P}
 
 src_prepare() {
@@ -101,6 +104,7 @@ src_prepare() {
 
 	rm_use_plugins chromaprint chroma
 	rm_use_plugins ffmpeg convert
+	rm_use_plugins icu loadext
 	rm_use_plugins lastfm lastgenre lastimport
 	rm_use_plugins mpd bpd mpdstats
 	rm_use_plugins webserver web

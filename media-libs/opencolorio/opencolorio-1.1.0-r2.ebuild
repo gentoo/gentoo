@@ -1,12 +1,11 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-# Compatibility with Python 3 is declared by upstream, but it is broken in fact, check on bump
-PYTHON_COMPAT=( python{2_7,3_5,3_6} )
+PYTHON_COMPAT=( python{2_7,3_{5,6,7}} )
 
-inherit cmake-utils python-single-r1 vcs-snapshot
+inherit cmake-utils flag-o-matic python-single-r1
 
 DESCRIPTION="A color management framework for visual effects and animation"
 HOMEPAGE="http://opencolorio.org/"
@@ -15,7 +14,7 @@ SRC_URI="https://github.com/imageworks/OpenColorIO/archive/v${PV}.tar.gz -> ${P}
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="cpu_flags_x86_sse2 doc opengl python static-libs test"
 REQUIRED_USE="
 	doc? ( python )
@@ -31,11 +30,14 @@ RDEPEND="
 	)
 	python? ( ${PYTHON_DEPS} )
 	>=dev-cpp/yaml-cpp-0.5
-	dev-libs/tinyxml"
+	dev-libs/tinyxml
+"
 
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	virtual/pkgconfig
-	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )"
+	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
+"
 
 # Restricting tests, bugs #439790 and #447908
 RESTRICT="test"
@@ -47,6 +49,8 @@ PATCHES=(
 	"${FILESDIR}/${P}-yaml-cpp-0.6.patch"
 	"${FILESDIR}/${P}-remove-Werror.patch"
 )
+
+S="${WORKDIR}/OpenColorIO-${PV}"
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
