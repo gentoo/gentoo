@@ -24,7 +24,6 @@ LICENSE="GPL-2 GPL-2+ GPL-3 BSD MIT || ( MPL-1.1 GPL-2 )
 SLOT="0"
 IUSE="+redistributable savedconfig unknown-license"
 RESTRICT="binchecks strip
-	redistributable? ( bindist )
 	unknown-license? ( bindist )"
 
 RDEPEND="!savedconfig? (
