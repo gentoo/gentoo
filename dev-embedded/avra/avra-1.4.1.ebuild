@@ -9,7 +9,7 @@ SRC_URI="https://github.com/hsoft/avra/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 
 src_compile() {
 	emake PREFIX=/usr CFLAGS="${CFLAGS} \$(CDEFS)" LDFLAGS="${LDFLAGS}"
