@@ -10,7 +10,7 @@ DESCRIPTION="Abstract Data Types. Includes queue, dynamic array, hash and key va
 HOMEPAGE="http://horms.net/projects/vanessa/"
 SRC_URI="http://horms.net/projects/vanessa/download/${MY_PN}/${PV}/${MY_P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~ppc x86"
 IUSE=""
