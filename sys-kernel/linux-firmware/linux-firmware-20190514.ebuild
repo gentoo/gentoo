@@ -24,7 +24,6 @@ LICENSE="GPL-2 GPL-2+ GPL-3 BSD MIT || ( MPL-1.1 GPL-2 )
 SLOT="0"
 IUSE="+redistributable savedconfig unknown-license"
 RESTRICT="binchecks strip
-	redistributable? ( bindist )
 	unknown-license? ( bindist )"
 
 RDEPEND="!savedconfig? (
@@ -228,6 +227,11 @@ src_prepare() {
 	# remove sources and documentation (wildcards are expanded)
 	rm -r ${source_files[@]} || die
 
+	if use !unknown-license; then
+		# remove files in the unknown_license blacklist
+		rm "${unknown_license[@]}" || die
+	fi
+
 	if use !redistributable; then
 		# remove files _not_ in the free_software whitelist
 		local file remove=()
@@ -235,15 +239,6 @@ src_prepare() {
 			has "${file#./}" "${free_software[@]}" || remove+=("${file}")
 		done < <(find * ! -type d -print0 || die)
 		printf "%s\0" "${remove[@]}" | xargs -0 rm || die
-
-		if use unknown-license; then
-			ewarn 'The "unknown-license" flag is set, while "-redistributable"'
-			ewarn 'asks for free software only. Ignoring "unknown-license".'
-		fi
-	fi
-	if use !unknown-license; then
-		# remove files in the unknown_license blacklist
-		rm "${unknown_license[@]}" || die
 	fi
 
 	echo "# Remove files that shall not be installed from this list." > ${PN}.conf
