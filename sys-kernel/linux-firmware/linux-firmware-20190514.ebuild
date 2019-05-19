@@ -249,6 +249,7 @@ src_prepare() {
 
 		local file preserved_files=() remove=()
 
+		ebegin "Removing all files not listed in config"
 		while IFS= read -r file; do
 			# Ignore comments.
 			if [[ ${file} != "#"* ]]; then
@@ -259,7 +260,10 @@ src_prepare() {
 		while IFS= read -d "" -r file; do
 			has "${file}" "${preserved_files[@]}" || remove+=("${file}")
 		done < <(find * ! -type d ! -name ${PN}.conf -print0 || die)
-		printf "%s\0" "${remove[@]}" | xargs -0 --no-run-if-empty rm || die
+		if [[ ${#remove[@]} -gt 0 ]]; then
+			printf "%s\0" "${remove[@]}" | xargs -0 rm || die
+		fi
+		eend 0
 	fi
 
 	# remove empty directories, bug #396073
