@@ -8236,7 +8236,7 @@ media-sound/smixer 1.0.4: command-line tool for setting and viewing mixer settin
 media-sound/solfege 3.22.2: GNU Solfege is a program written to help you practice ear training
 media-sound/sonata 1.6.2.1-r2: Elegant GTK+ music client for the Music Player Daemon (MPD)
 media-sound/sound-juicer 3.24.0: CD ripper for GNOME
-media-sound/soundconverter 3.0.0 3.0.2: A simple audiofile converter application for the GNOME environment
+media-sound/soundconverter 3.0.2: A simple audiofile converter application for the GNOME environment
 media-sound/sox 14.4.2-r1: The swiss army knife of sound processing programs
 media-sound/split2flac 122: sh script to split an APE/FLAC/WV/WAV audio image with CUE sheet into tracks
 media-sound/streamripper 1.64.6: Extracts and records individual MP3 file tracks from shoutcast streams
@@ -10276,7 +10276,7 @@ sys-kernel/dracut 044-r1 045-r2 046-r1: Generic initramfs generation tool
 sys-kernel/genkernel 3.4.52.3 3.4.52.4-r2 3.4.52.4-r3 3.5.3.3: Gentoo automatic kernel building scripts
 sys-kernel/genkernel-next 68 69: Gentoo automatic kernel building scripts, reloaded
 sys-kernel/gentoo-sources 4.4.176 4.4.179 4.9.162-r1 4.9.171 4.14.105-r1 4.14.114 4.19.27-r1 4.19.37: Full sources including the Gentoo patchset for the 4.19 kernel tree
-sys-kernel/linux-firmware 20190502: Linux firmware files
+sys-kernel/linux-firmware 20190502 20190514: Linux firmware files
 sys-kernel/linux-headers 3.18 4.4 4.13 4.14-r1: Linux system headers
 sys-kernel/spl 0.6.5.11 0.7.12 0.7.13: The Solaris Porting Layer provides many of the Solaris kernel APIs
 sys-libs/argp-standalone 1.3-r2: Standalone argp library for use with uclibc
