@@ -74,6 +74,10 @@ fi
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-5.1-LDFLAGS.patch
+)
+
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
 }
