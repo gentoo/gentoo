@@ -206,6 +206,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.11.1-capstone_include_path.patch
 	"${FILESDIR}"/${P}-sanitize-interp_info.patch
 	"${FILESDIR}"/${PN}-3.1.0-md-clear-md-no.patch
+	"${FILESDIR}"/${PN}-4.0.0-mkdir_systemtap.patch #684902
 )
 
 QA_PREBUILT="
