@@ -516,7 +516,7 @@ app-doc/halibut 1.2: yet another free document preparation system
 app-doc/jargon 4.4.7-r1: A compendium of hacker slang illuminating many aspects of hackish tradition
 app-doc/kicad-doc 4.0.7: Electronic Schematic and PCB design tools manuals
 app-doc/lapack-docs 3.1.1: Documentation reference and man pages for lapack implementations
-app-doc/linkers-and-loaders 1: the Linkers and Loaders book
+app-doc/linkers-and-loaders 1: The Linkers and Loaders book
 app-doc/linux-device-drivers 2 3: howto write linux device drivers (updated for Linux 2.6)
 app-doc/linux-kernel-in-a-nutshell 1-r1: Linux Kernel in a Nutshell: A Desktop Quick Reference
 app-doc/linuxfromscratch 7.10: LFS documents building a Linux system entirely from source
