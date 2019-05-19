@@ -521,7 +521,6 @@ x11-drivers/xf86-video-voodoo
 # Depends on >=virtual/{jdk,jre}-11 which is masked
 =dev-java/ant-eclipse-ecj-4.10
 =dev-java/eclipse-ecj-4.10
-=www-servers/tomcat-9.0.14
 
 # Craig Andrews <candrews@gentoo.org> (1 Jan 2019)
 # Requires dev-libs/openssl-1.1.1, Bug 674148
@@ -581,10 +580,6 @@ dev-db/pgadmin3
 # Outdated and vulnerable snapshot; libav-12.3 is the better
 # version for now
 =media-video/libav-13_pre20171219
-
-# Michał Górny <mgorny@gentoo.org> (24 Sep 2018)
-# Apparently breaks sys-devel/gcc.  Bug #666954.
-=dev-util/debugedit-4.14.2
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (11 Sep 2018)
 # Mask transition ebuilds that were needed only for <glibc-2.26
