@@ -11,7 +11,7 @@ if [[ ${PV} = *9999 ]]; then
 	KEYWORDS=
 else
 	SRC_URI="https://github.com/sass/sassc/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux"
+	KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 x86 ~amd64-linux"
 fi
 
 DESCRIPTION="A libsass command line driver"
