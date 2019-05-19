@@ -114,7 +114,7 @@ app-admin/pwgen 2.07 2.08: Password Generator
 app-admin/pydf 12-r1: Enhanced df with colors
 app-admin/qpage 3.3: Sends messages to an alphanumeric pager via TAP protocol
 app-admin/quickswitch 1.05: Utility to switch network profiles on the fly
-app-admin/radmind 1.14.1-r1: command-line tools and server to remotely administer multiple Unix filesystems
+app-admin/radmind 1.14.1-r1 1.15.1: Command-line tools and server to remotely administer multiple Unix filesystems
 app-admin/ranpwd 1.2: Generate random passwords using the in-kernel cryptographically
 app-admin/reportmagic 2.21: Makes usable statistics from your web site log file analysis
 app-admin/restart-services 0.14.1: Tool to manage OpenRC services that need to be restarted
@@ -1168,7 +1168,7 @@ app-office/grisbi 1.0.4: Grisbi is a personal accounting application for Linux
 app-office/homebank 5.1.3 5.2.2: Free, easy, personal accounting for everyone
 app-office/hourglass 0.7.2-r1: A PSP (personal software process) time tracking utility written in Java
 app-office/ical 3.0-r2: Tk-based Calendar program
-app-office/kexi 3.1.0: Visual database applications creator
+app-office/kexi 3.2.0: Visual database applications creator
 app-office/kmymoney 5.0.3: Personal finance manager based on KDE Frameworks
 app-office/ledger 3.1.1-r2: A double-entry accounting system with a command-line reporting interface
 app-office/libalkimia 7.0.2-r1: Library with common classes and functionality used by KDE finance applications
@@ -1837,7 +1837,7 @@ dev-cpp/atkmm 2.24.2 2.28.0: C++ interface for the ATK library
 dev-cpp/cairomm 1.12.0-r1: C++ bindings for the Cairo vector graphics library
 dev-cpp/catch 1.12.2 2.5.0: Modern C++ header-only framework for unit-tests
 dev-cpp/clucene 2.3.3.4-r6: High-performance, full-featured text search engine based off of lucene in C++
-dev-cpp/commoncpp2 1.8.1-r2 1.8.1-r3: C++ library offering portable support for system-related services
+dev-cpp/commoncpp2 1.8.1-r4: C++ library offering portable support for system-related services
 dev-cpp/cpp-hocon 0.1.4-r1: Provides C++ support for the HOCON configuration file format
 dev-cpp/ctemplate 2.3-r1: A simple but powerful template language for C++
 dev-cpp/eigen 3.3.7: C++ template library for linear algebra
@@ -1876,12 +1876,12 @@ dev-db/etcd 3.3.12: Highly-available key value store for shared configuration an
 dev-db/freetds 1.00.341-r1: Tabular Datastream Library
 dev-db/henplus 0.9.8-r1: Java-based multisession SQL shell for databases with JDBC support
 dev-db/hsqldb 1.8.1.3-r2: The leading SQL relational database engine written in Java
-dev-db/kdb 3.1.0-r2: Database connectivity and creation framework for various vendors
+dev-db/kdb 3.2.0: Database connectivity and creation framework for various vendors
 dev-db/kyotocabinet 1.2.76-r1: A straightforward implementation of DBM
 dev-db/libdbi 0.9.0: A database-independent abstraction layer in C
 dev-db/libdbi-drivers 0.9.0: The libdbi-drivers project maintains drivers for libdbi
 dev-db/libiodbc 3.52.12: ODBC Interface for Linux
-dev-db/libzdb 2.11.1 2.12 3.1: A thread safe high level multi-database connection pool library
+dev-db/libzdb 2.11.1 2.12 3.1 3.1-r1: A thread safe high level multi-database connection pool library
 dev-db/lmdb 0.9.18 0.9.22 0.9.23: An ultra-fast, ultra-compact key-value embedded data store
 dev-db/m17n-db 1.7.0: Database for the m17n library
 dev-db/mariadb 10.1.34 10.1.37 10.1.38-r1 10.2.22-r1: An enhanced, drop-in replacement for MySQL
@@ -3026,8 +3026,8 @@ dev-libs/kdiagram 2.6.1: Powerful libraries (KChart, KGantt) for creating busine
 dev-libs/keybinder 0.3.1-r201 0.3.2-r300: A library for registering global keyboard shortcuts
 dev-libs/klibc 2.0.4-r3: A minimal libc subset for use with initramfs
 dev-libs/kpathsea 6.2.2_p20160523 6.2.3_p20170524: Path searching library for TeX-related files
-dev-libs/kproperty 3.1.0: Property editing framework with editor widget similar to Qt Designer
-dev-libs/kreport 3.1.0: Framework for creation and generation of reports in multiple formats
+dev-libs/kproperty 3.2.0: Property editing framework with editor widget similar to Qt Designer
+dev-libs/kreport 3.2.0: Framework for creation and generation of reports in multiple formats
 dev-libs/leatherman 1.3.0 1.6.0: A C++ toolkit
 dev-libs/legousbtower 0.5.4-r1: The lego mindstorms usb tower headers and/or modules
 dev-libs/leveldb 1.9.0-r5 1.9.0-r6 1.15.0-r1 1.18-r2 1.20: a fast key-value storage library written at Google
@@ -3300,7 +3300,7 @@ dev-libs/xmlrpc-epi 0.54.2: Epinions implementation of XML-RPC protocol in C
 dev-libs/xmlsec 1.2.27-r1 1.2.28: Command line tool for signing, verifying, encrypting and decrypting XML
 dev-libs/xplc 0.3.13-r1: cross platform lightweight components library for C++
 dev-libs/xxhash 0.6.5: Extremely fast non-cryptographic hash algorithm
-dev-libs/yajl 2.1.0-r1: Small event-driven (SAX-style) JSON parser
+dev-libs/yajl 2.1.0-r1 2.1.0-r2: Small event-driven (SAX-style) JSON parser
 dev-libs/yaz 3.0.53: C/C++ toolkit for Z39.50v3 clients and servers
 dev-libs/zthread 2.3.2-r4: platform-independent multi-threading and synchronization library for C++
 dev-libs/zziplib 0.13.69: Lightweight library for extracting data from files archived in a single zip file
@@ -3336,7 +3336,7 @@ dev-lua/luaexpat 1.2.0-r1 1.3.0-r1: LuaExpat is a SAX XML parser based on the Ex
 dev-lua/luafilesystem 1.5.0 1.6.3: File System Library for the Lua Programming Language
 dev-lua/luajson 1.3.3: JSON Parser/Constructor for Lua
 dev-lua/luarocks 2.2.0: A deployment and management system for Lua modules
-dev-lua/luasec 0.5.1: Lua binding for OpenSSL library to provide TLS/SSL communication
+dev-lua/luasec 0.5.1 0.7: Lua binding for OpenSSL library to provide TLS/SSL communication
 dev-lua/luasocket 3.0_rc1-r3 3.0_rc1-r4: Networking support library for the Lua language
 dev-lua/luassert 1.7.9: Lua Assertions Extension
 dev-lua/luasystem 0.2.0_p0: platform independent system calls for lua
@@ -7432,7 +7432,7 @@ media-gfx/gscan2pdf 1.8.11: Scan documents, perform OCR, produce PDFs and DjVus
 media-gfx/gthumb 3.6.2: Image viewer and browser for Gnome
 media-gfx/gtkam 1.0: A frontend for gPhoto 2
 media-gfx/gtkimageview 1.6.4: A simple image viewer widget for GTK
-media-gfx/hugin 2018.0.0: GUI for the creation & processing of panoramic images
+media-gfx/hugin 2018.0.0 2019.0.0: GUI for the creation & processing of panoramic images
 media-gfx/icon-slicer 0.3: utility for generating icon themes and libXcursor cursor themes
 media-gfx/icoutils 0.32.0 0.32.2: Tools to extract and convert images in icon and cursor files (.ico, .cur)
 media-gfx/igal 2.0-r1: Static HTML image gallery generator
@@ -8657,7 +8657,7 @@ net-im/mcabber 1.1.0-r1: A small Jabber console client with various features, li
 net-im/minbif 1.0.5-r2: IRC gateway to IM networks
 net-im/openfire 4.2.3-r1: Openfire (formerly wildfire) real time collaboration (RTC) server
 net-im/pidgin 2.13.0: GTK Instant Messenger client
-net-im/prosody 0.9.14 0.11.1 0.11.2: Prosody is a flexible communications server for Jabber/XMPP written in Lua
+net-im/prosody 0.9.14 0.11.1 0.11.2 0.11.2-r1: Prosody is a flexible communications server for Jabber/XMPP written in Lua
 net-im/purple-events 0.99.1: Allows a fine-grained control over libpurple events
 net-im/pyicq-t 0.8.1.5-r6: Python based jabber transport for ICQ
 net-im/sendxmpp 1.24: A perl-script to send xmpp (jabber), similar to what mail(1) does for mail
@@ -8694,7 +8694,7 @@ net-irc/pisg 0.73-r1: Perl IRC Statistics Generator
 net-irc/polari 3.30.2: An IRC client for Gnome
 net-irc/quassel 0.12.5-r2 0.13.1: Qt/KDE IRC client supporting a remote daemon for 24/7 connectivity
 net-irc/rhapsody 0.28b: IRC client intended to be displayed on a text console
-net-irc/scrollz 2.2.1: Advanced IRC client based on ircII
+net-irc/scrollz 2.2.1 2.3: Advanced IRC client based on ircII
 net-irc/sic 1.2-r1: An extremly simple IRC client
 net-irc/telepathy-idle 0.2.0: Full-featured IRC connection manager for Telepathy
 net-irc/unrealircd 4.2.2: An advanced Internet Relay Chat daemon
@@ -9030,7 +9030,7 @@ net-misc/openssh-blacklist 0.4.1: Source files of vuln Debian keys
 net-misc/openvswitch 2.8.1 2.10.0-r1: Production quality, multilayer virtual switch
 net-misc/packETH 1.7.3: Packet generator tool for ethernet
 net-misc/pedro 1.6: Pedro is a subscription/notification communications system
-net-misc/pen 0.25.1: TCP Load Balancing Port Forwarder
+net-misc/pen 0.25.1 0.34.1: TCP Load Balancing Port Forwarder
 net-misc/pipes 1.16.1: Very versatile TCP pipes
 net-misc/portfwd 0.29-r1: Port Forwarding Daemon
 net-misc/pps-tools 0.0.20120407: User-space tools for LinuxPPS
@@ -9440,7 +9440,7 @@ sci-libs/fftw 2.1.5-r9 3.3.6_p2: Fast C library for the Discrete Fourier Transfo
 sci-libs/flann 1.9.1: Fast approximate nearest neighbor searches in high dimensional spaces
 sci-libs/galib 2.4.7-r1: Library for genetic algorithms in C++ programs
 sci-libs/gamer 1.5-r2: Geometry-preserving Adaptive MeshER
-sci-libs/gdal 2.3.1 2.4.0 2.4.1: Translator library for raster geospatial data formats (includes OGR support)
+sci-libs/gdal 2.4.0 2.4.1: Translator library for raster geospatial data formats (includes OGR support)
 sci-libs/geos 3.7.0: Geometry engine library for Geographic Information Systems
 sci-libs/gsl 1.16: The GNU Scientific Library
 sci-libs/gts 20121130: GNU Triangulated Surface Library
@@ -10231,7 +10231,7 @@ sys-fs/gt5 1.4.0-r2: a diff-capable 'du-browser'
 sys-fs/hfsutils 3.2.6-r5: HFS FS Access utils
 sys-fs/inotify-tools 3.14 3.20.1: a set of command-line programs providing a simple interface to inotify
 sys-fs/jfsutils 1.1.15: IBM's Journaling Filesystem (JFS) Utilities
-sys-fs/lessfs 1.5.13 1.7.0: A high performance inline data deduplicating filesystem
+sys-fs/lessfs 1.7.0-r1: A high performance inline data deduplicating filesystem
 sys-fs/lsscsi 0.29: SCSI sysfs query tool
 sys-fs/lvm2 2.02.116 2.02.145-r2 2.02.183: User-land utilities for LVM2 (device-mapper) software
 sys-fs/lxcfs 3.0.3: FUSE filesystem for LXC
