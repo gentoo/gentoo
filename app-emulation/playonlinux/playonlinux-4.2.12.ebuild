@@ -30,7 +30,7 @@ RDEPEND="${PYTHON_DEPS}
 	x11-apps/mesa-progs
 	x11-terms/xterm
 	media-gfx/icoutils
-	|| ( net-analyzer/netcat net-analyzer/netcat6 )
+	net-analyzer/netcat
 	virtual/imagemagick-tools
 	winbind? ( net-fs/samba[winbind] )
 "
