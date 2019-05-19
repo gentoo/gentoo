@@ -332,7 +332,7 @@ app-crypt/gpa 0.10.0: The GNU Privacy Assistant (GPA) is a graphical user interf
 app-crypt/gpg-ringmgr 1.12: GPG Keyring Manager to handle large GPG keyrings more easily
 app-crypt/gpgme 1.13.0: GnuPG Made Easy is a library for making GnuPG easier to use
 app-crypt/hashalot 0.3-r2: CryptoAPI utils
-app-crypt/heimdal 7.5.0: Kerberos 5 implementation from KTH
+app-crypt/heimdal 7.5.0 7.6.0: Kerberos 5 implementation from KTH
 app-crypt/jacksum 1.7.0: Java utility for computing and verifying checksums: CRC*, MD*, etc.
 app-crypt/johntheripper 1.7.9-r6 1.8.0: fast password cracker
 app-crypt/keylookup 2.2: A tool to fetch PGP keys from keyservers
@@ -635,7 +635,7 @@ app-emacs/emacs-jabber 0.8.92: A Jabber client for Emacs
 app-emacs/emacs-wget 0.5.0-r1: Wget interface for Emacs
 app-emacs/erobot 2.1.0-r1: Battle-bots for Emacs!
 app-emacs/eselect-mode 1.4.12 1.4.13: Emacs major mode for editing eselect files
-app-emacs/ess 15.09.2: Emacs Speaks Statistics
+app-emacs/ess 15.09.2 17.11: Emacs Speaks Statistics
 app-emacs/evil 1.0.8 1.2.13: Extensible vi layer for Emacs
 app-emacs/f 0.20.0: Modern API for working with files and directories in Emacs
 app-emacs/fff 20050517: Fast file finder for Emacs
@@ -9217,7 +9217,7 @@ net-vpn/networkmanager-strongswan 1.4.4-r1: NetworkManager StrongSwan plugin
 net-vpn/networkmanager-vpnc 1.2.6: NetworkManager VPNC plugin
 net-vpn/nstx 1.1_beta6-r3: IP over DNS tunnel
 net-vpn/openconnect 7.08-r1: Free client for Cisco AnyConnect SSL VPN software
-net-vpn/openfortivpn 1.7.1: A Fortinet compatible VPN client
+net-vpn/openfortivpn 1.7.1 1.8.1: A Fortinet compatible VPN client
 net-vpn/openvpn 2.4.6: Robust and highly flexible tunneling application compatible with many OSes
 net-vpn/pptpd 1.4.0-r2: Linux Point-to-Point Tunnelling Protocol Server
 net-vpn/strongswan 5.7.2: IPsec-based VPN solution, supporting IKEv1/IKEv2 and MOBIKE
@@ -9445,7 +9445,7 @@ sci-libs/geos 3.7.0: Geometry engine library for Geographic Information Systems
 sci-libs/gsl 1.16: The GNU Scientific Library
 sci-libs/gts 20121130: GNU Triangulated Surface Library
 sci-libs/hdf 4.2.8 4.2.13-r1: General purpose library and format for storing scientific data
-sci-libs/hdf5 1.8.18: General purpose library and file format for storing scientific data
+sci-libs/hdf5 1.8.18 1.10.5: General purpose library and file format for storing scientific data
 sci-libs/inchi 1.04: Program and library for generating standard and non-standard InChI and InChIKeys
 sci-libs/indilib 1.7.5: INDI Astronomical Control Protocol library
 sci-libs/itpp 4.3.1-r1: C++ library of mathematical, signal processing and communication
