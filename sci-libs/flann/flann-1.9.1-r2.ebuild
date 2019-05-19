@@ -33,7 +33,7 @@ RDEPEND="${DEPEND}"
 # requires multiple ruby dependencies
 
 PATCHES=(
-	"${FILESDIR}"/${P}-cmake-3.11.patch
+	"${FILESDIR}"/${P}-cmake-3.11{,-1}.patch # bug 678030
 	"${FILESDIR}"/${P}-cuda-9.patch
 )
 
