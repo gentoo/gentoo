@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit ltprune multilib-minimal
+
+inherit multilib-minimal
 
 DESCRIPTION="Library for SSA/ASS subtitles rendering"
 HOMEPAGE="https://github.com/libass/libass"
@@ -40,5 +41,5 @@ multilib_src_configure() {
 
 multilib_src_install_all() {
 	einstalldocs
-	prune_libtool_files
+	find "${D}" -name '*.la' -type f -delete || die
 }
