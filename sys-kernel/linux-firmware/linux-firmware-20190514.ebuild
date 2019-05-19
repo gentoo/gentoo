@@ -11,7 +11,7 @@ if [[ ${PV} == 99999999* ]]; then
 else
 	GIT_COMMIT="711d3297bac870af42088a467459a0634c1970ca"
 	SRC_URI="https://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git/snapshot/linux-firmware-${GIT_COMMIT}.tar.gz -> ${P}.tar.gz"
-	#KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 fi
 
 DESCRIPTION="Linux firmware files"
@@ -25,7 +25,8 @@ LICENSE="GPL-2 GPL-2+ GPL-3 BSD MIT || ( MPL-1.1 GPL-2 )
 SLOT="0"
 IUSE="+redistributable savedconfig unknown-license"
 RESTRICT="binchecks strip
-	redistributable? ( unknown-license? ( bindist ) )"
+	redistributable? ( bindist )
+	unknown-license? ( bindist )"
 
 RDEPEND="!savedconfig? (
 		redistributable? (
@@ -240,7 +241,8 @@ src_prepare() {
 			ewarn 'The "unknown-license" flag is set, while "-redistributable"'
 			ewarn 'asks for free software only. Ignoring "unknown-license".'
 		fi
-	elif use !unknown-license; then
+	fi
+	if use !unknown-license; then
 		# remove files in the unknown_license blacklist
 		rm "${unknown_license[@]}" || die
 	fi
