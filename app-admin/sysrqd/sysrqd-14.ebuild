@@ -1,13 +1,12 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 inherit toolchain-funcs
 
-DESCRIPTION="daemon providing access to the kernel sysrq functions via network"
-HOMEPAGE="http://julien.danjou.info/projects/sysrqd"
-#SRC_URI="http://julien.danjou.info/${PN}/${P}.tar.gz"
+DESCRIPTION="Daemon providing access to the kernel sysrq functions via network"
+HOMEPAGE="https://github.com/jd/sysrqd"
 SRC_URI="https://dev.gentoo.org/~wschlich/src/${CATEGORY}/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
