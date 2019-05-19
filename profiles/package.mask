@@ -421,13 +421,6 @@ app-emulation/e-uae
 # Depends on >=virtual/{jdk,jre}-11 which is masked
 =www-servers/tomcat-9.0.19
 
-# David Seifert <soap@gentoo.org> (19 Apr 2019)
-# Fails to build with >=dev-libs/boost-1.70 due to Boost.Signals1
-# removal. No development, no maintenance, no homepage.
-# Removal in 30 days.  Bug #683762.
-sci-biology/blossoc
-sci-biology/snpfile
-
 # Georgy Yakovlev <gyakovlev@gentoo.org> (18 Apr 2019)
 # This version is provided for testing of the upcoming 0.8.0 release.
 # It is not recommended for use, it contains known bugs.
