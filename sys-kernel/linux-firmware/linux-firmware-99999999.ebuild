@@ -6,7 +6,6 @@ inherit savedconfig
 
 if [[ ${PV} == 99999999* ]]; then
 	inherit git-r3
-	SRC_URI=""
 	EGIT_REPO_URI="https://git.kernel.org/pub/scm/linux/kernel/git/firmware/${PN}.git"
 else
 	GIT_COMMIT=""
@@ -25,17 +24,10 @@ SLOT="0"
 IUSE="+redistributable savedconfig unknown-license"
 RESTRICT="binchecks strip
 	unknown-license? ( bindist )"
-REQUIRED_USE="unknown-license? ( redistributable )"
 
 RDEPEND="!savedconfig? (
 		redistributable? (
 			!sys-firmware/alsa-firmware[alsa_cards_ca0132]
-			unknown-license? (
-				!sys-firmware/alsa-firmware[alsa_cards_korg1212]
-				!sys-firmware/alsa-firmware[alsa_cards_maestro3]
-				!sys-firmware/alsa-firmware[alsa_cards_sb16]
-				!sys-firmware/alsa-firmware[alsa_cards_ymfpci]
-			)
 			!media-tv/cx18-firmware
 			!<sys-firmware/ivtv-firmware-20080701-r1
 			!media-tv/linuxtv-dvb-firmware[dvb_cards_cx231xx]
@@ -69,7 +61,14 @@ RDEPEND="!savedconfig? (
 			!sys-firmware/iwl3160-7260-bt-ucode
 			!sys-firmware/radeon-ucode
 		)
+		unknown-license? (
+			!sys-firmware/alsa-firmware[alsa_cards_korg1212]
+			!sys-firmware/alsa-firmware[alsa_cards_maestro3]
+			!sys-firmware/alsa-firmware[alsa_cards_sb16]
+			!sys-firmware/alsa-firmware[alsa_cards_ymfpci]
+		)
 	)"
+
 #add anything else that collides to this
 
 src_unpack() {
@@ -229,15 +228,18 @@ src_prepare() {
 	rm -r ${source_files[@]} || die
 
 	if use !unknown-license; then
-		# remove files in the unknown_license blacklist
+		# remove files in unknown_license
 		rm "${unknown_license[@]}" || die
 	fi
 
 	if use !redistributable; then
-		# remove files _not_ in the free_software whitelist
+		# remove files _not_ in the free_software or unknown_license lists
+		# everything else is confirmed (or assumed) to be redistributable
+		# based on upstream acceptance policy
 		local file remove=()
 		while IFS= read -d "" -r file; do
-			has "${file#./}" "${free_software[@]}" || remove+=("${file}")
+			has "${file#./}" "${free_software[@]}" "${unknown_license[@]}" \
+				|| remove+=("${file}")
 		done < <(find * ! -type d -print0 || die)
 		printf "%s\0" "${remove[@]}" | xargs -0 rm || die
 	fi

@@ -19,6 +19,12 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	test? ( dev-libs/check )"
 
+PATCHES=(
+	"${FILESDIR}"/0000-INI-Fix-detection-of-error-messages.patch
+	"${FILESDIR}"/0001-path_utils_ut-allow-single-as-well.patch
+	"${FILESDIR}"/0002-validators_ut_check-Fix-fail-with-new-glibc.patch
+)
+
 multilib_src_configure() {
 	ECONF_SOURCE="${S}" econf
 }
