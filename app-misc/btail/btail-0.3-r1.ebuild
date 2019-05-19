@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="4"
+EAPI=7
 
 inherit toolchain-funcs
 
@@ -12,12 +12,12 @@ SRC_URI="${HOMEPAGE}/${P}.tgz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
-IUSE=""
 
 DEPEND="sys-libs/gdbm"
 RDEPEND="${DEPEND}"
 
 src_prepare() {
+	default
 	sed -i Makefile \
 		-e '/^LDFLAGS/s:=:+=:g' \
 		-e '/$(CC)/s:-Wall:$(CFLAGS) &:g' \
