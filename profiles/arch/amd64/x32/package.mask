@@ -24,7 +24,6 @@ app-editors/atom
 dev-lang/coffee-script
 dev-python/bokeh
 dev-python/blaze
-<dev-python/dask-0.15.1
 dev-ruby/autoprefixer-rails
 =dev-ruby/capybara-3.20*
 dev-ruby/coffee-rails
