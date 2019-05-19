@@ -52,8 +52,9 @@ KERNEL="linux"
 USERLAND="GNU"
 INPUT_DEVICES="keyboard mouse"
 
-# Accept any license except those in the EULA license group.
-ACCEPT_LICENSE="* -@EULA"
+# Accept only licenses in the FREE license group, i.e., with
+# the freedom to use, share, modify and share modifications
+ACCEPT_LICENSE="-* @FREE"
 
 # Tomáš Chvátal <scarabeus@gentoo.org> (23 Mar 2013)
 # By default enable libreoffice implementation only.
