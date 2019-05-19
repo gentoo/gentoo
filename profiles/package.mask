@@ -29,6 +29,21 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (19 May 2019)
+# Unmaintained.  The program breaks init.d script (#626580).  Homepage
+# and public sources disappeared.  Last release in 2006.
+# Removal in 30 days.  Bug #684094.
+net-proxy/nylon
+
+# Michał Górny <mgorny@gentoo.org> (19 May 2019)
+# Unmaintained crypto library with last release in 2009.  Carries
+# a number of local patches just to build with GCC.  Fails tests
+# (#351373), fails to build with clang (#624192).  Its last reverse
+# dependency is obsolete version of dev-util/debugedit.
+# Removal in 30 days.  Bug #680322.
+dev-libs/beecrypt
+<dev-util/debugedit-4
+
 # Mart Raudsepp <leio@gentoo.org> (18 May 2019)
 # Old name and SLOT for gui-libs/tepl, which is now used instead.
 # Masked for removal in 15 days. Bug #686222
@@ -521,7 +536,6 @@ x11-drivers/xf86-video-voodoo
 # Depends on >=virtual/{jdk,jre}-11 which is masked
 =dev-java/ant-eclipse-ecj-4.10
 =dev-java/eclipse-ecj-4.10
-=www-servers/tomcat-9.0.14
 
 # Craig Andrews <candrews@gentoo.org> (1 Jan 2019)
 # Requires dev-libs/openssl-1.1.1, Bug 674148
@@ -581,10 +595,6 @@ dev-db/pgadmin3
 # Outdated and vulnerable snapshot; libav-12.3 is the better
 # version for now
 =media-video/libav-13_pre20171219
-
-# Michał Górny <mgorny@gentoo.org> (24 Sep 2018)
-# Apparently breaks sys-devel/gcc.  Bug #666954.
-=dev-util/debugedit-4.14.2
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (11 Sep 2018)
 # Mask transition ebuilds that were needed only for <glibc-2.26

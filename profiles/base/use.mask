@@ -96,11 +96,3 @@ prelude
 # Diego Elio Pettenò <flameeyes@gentoo.org> (27 Aug 2012)
 # netlink is a Linux-specific interface
 netlink
-
-# Pacho Ramos <pacho@gentoo.org> (28 Sep 2013)
-# This USE flag is available after long dicussion in
-# http://www.gossamer-threads.com/lists/gentoo/dev/276077
-# to let some prople not able to run systemd to skip the dep (#480336).
-# Enabling this you will get a fully unsupported Gnome setup that
-# could suffer unexpected problem, don't expect support for it then.
-openrc-force
