@@ -2912,7 +2912,7 @@ dev-lang/qu-prolog 10.1: Extended Prolog supporting quantifiers, object-variable
 dev-lang/ruby 2.4.5: An object-oriented scripting language
 dev-lang/rust 1.29.1-r1 1.34.2: Systems programming language from Mozilla
 dev-lang/rust-bin 1.29.1-r1 1.34.2: Systems programming language from Mozilla
-dev-lang/sassc 3.4.7: A libsass command line driver
+dev-lang/sassc 3.5.0: A libsass command line driver
 dev-lang/scala 2.12.4: The Scala Programming Language
 dev-lang/scala-bin 2.11.8 2.12.4: The Scala Programming Language
 dev-lang/spark 2017 2018: Software development for high-reliability applications.
@@ -3151,7 +3151,7 @@ dev-libs/librep 0.92.6: Shared library implementing a Lisp dialect
 dev-libs/libreport 2.0.13-r1 2.9.5: Generic library for reporting software bugs
 dev-libs/libressl 2.6.5 2.8.3: Free version of the SSL/TLS protocol forked from OpenSSL
 dev-libs/librevenge 0.0.4-r1: A helper library for REVerse ENGineered formats filters
-dev-libs/libsass 3.4.7 3.5.2: A C/C++ implementation of a Sass CSS compiler
+dev-libs/libsass 3.5.5: A C/C++ implementation of a Sass CSS compiler
 dev-libs/libsecp256k1 0.0.0_pre20151118: Optimized C library for EC operations on curve secp256k1
 dev-libs/libserialport 0.1.1: Cross platform serial port access library
 dev-libs/libsigc++ 1.2.7 2.10.1: Typesafe callback system for standard C++
@@ -9437,6 +9437,7 @@ sci-libs/djbfft 0.76-r2: Extremely fast library for floating-point convolution
 sci-libs/exodusii 6.09: Model developed to store and retrieve transient data for finite element analyses
 sci-libs/fetk 1.5: The Finite Element ToolKit - Meta package
 sci-libs/fftw 2.1.5-r9 3.3.6_p2: Fast C library for the Discrete Fourier Transform
+sci-libs/flann 1.9.1-r2: Fast approximate nearest neighbor searches in high dimensional spaces
 sci-libs/galib 2.4.7-r1: Library for genetic algorithms in C++ programs
 sci-libs/gamer 1.5-r2: Geometry-preserving Adaptive MeshER
 sci-libs/gdal 2.4.0 2.4.1: Translator library for raster geospatial data formats (includes OGR support)
