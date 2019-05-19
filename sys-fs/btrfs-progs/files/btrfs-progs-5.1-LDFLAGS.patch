@@ -1,0 +1,37 @@
+https://github.com/kdave/btrfs-progs/pull/172
+https://bugs.gentoo.org/686284
+
+From 7cdb5de31e954416e740886d46809e4883c31ddc Mon Sep 17 00:00:00 2001
+From: Sergei Trofimovich <slyfox@gentoo.org>
+Date: Sun, 19 May 2019 08:51:28 +0100
+Subject: [PATCH] Makefile: apply LDFLAGS to libbtrfsutil.so
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+libbtrfs.so already has user's LDFLAGS applied.
+The change also applies those to libbtrfsutil.so.
+
+Reported-by: Michał Górny
+Bug: https://bugs.gentoo.org/686284
+Signed-off-by: Sergei Trofimovich <slyfox@gentoo.org>
+---
+ Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index e25e256f..4c67d187 100644
+--- a/Makefile
++++ b/Makefile
+@@ -424,7 +424,7 @@ libbtrfsutil/%.o: libbtrfsutil/%.c
+ 
+ libbtrfsutil.so.$(libbtrfsutil_version): $(libbtrfsutil_objects)
+ 	@echo "    [LD]     $@"
+-	$(Q)$(CC) $(LIBBTRFSUTIL_CFLAGS) $(libbtrfsutil_objects) \
++	$(Q)$(CC) $(LIBBTRFSUTIL_CFLAGS) $(libbtrfsutil_objects) $(LDFLAGS) \
+ 		-shared -Wl,-soname,libbtrfsutil.so.$(libbtrfsutil_major) -o $@
+ 
+ libbtrfsutil.a: $(libbtrfsutil_objects)
+-- 
+2.21.0
+
