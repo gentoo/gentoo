@@ -114,7 +114,7 @@ app-admin/pwgen 2.07 2.08: Password Generator
 app-admin/pydf 12-r1: Enhanced df with colors
 app-admin/qpage 3.3: Sends messages to an alphanumeric pager via TAP protocol
 app-admin/quickswitch 1.05: Utility to switch network profiles on the fly
-app-admin/radmind 1.14.1-r1 1.15.1: Command-line tools and server to remotely administer multiple Unix filesystems
+app-admin/radmind 1.15.1: Command-line tools and server to remotely administer multiple Unix filesystems
 app-admin/ranpwd 1.2: Generate random passwords using the in-kernel cryptographically
 app-admin/reportmagic 2.21: Makes usable statistics from your web site log file analysis
 app-admin/restart-services 0.14.1: Tool to manage OpenRC services that need to be restarted
@@ -8694,7 +8694,7 @@ net-irc/pisg 0.73-r1: Perl IRC Statistics Generator
 net-irc/polari 3.30.2: An IRC client for Gnome
 net-irc/quassel 0.12.5-r2 0.13.1: Qt/KDE IRC client supporting a remote daemon for 24/7 connectivity
 net-irc/rhapsody 0.28b: IRC client intended to be displayed on a text console
-net-irc/scrollz 2.2.1 2.3: Advanced IRC client based on ircII
+net-irc/scrollz 2.3: Advanced IRC client based on ircII
 net-irc/sic 1.2-r1: An extremly simple IRC client
 net-irc/telepathy-idle 0.2.0: Full-featured IRC connection manager for Telepathy
 net-irc/unrealircd 4.2.2: An advanced Internet Relay Chat daemon
@@ -9030,7 +9030,7 @@ net-misc/openssh-blacklist 0.4.1: Source files of vuln Debian keys
 net-misc/openvswitch 2.8.1 2.10.0-r1: Production quality, multilayer virtual switch
 net-misc/packETH 1.7.3: Packet generator tool for ethernet
 net-misc/pedro 1.6: Pedro is a subscription/notification communications system
-net-misc/pen 0.25.1 0.34.1: TCP Load Balancing Port Forwarder
+net-misc/pen 0.34.1: TCP Load Balancing Port Forwarder
 net-misc/pipes 1.16.1: Very versatile TCP pipes
 net-misc/portfwd 0.29-r1: Port Forwarding Daemon
 net-misc/pps-tools 0.0.20120407: User-space tools for LinuxPPS
@@ -9437,7 +9437,6 @@ sci-libs/djbfft 0.76-r2: Extremely fast library for floating-point convolution
 sci-libs/exodusii 6.09: Model developed to store and retrieve transient data for finite element analyses
 sci-libs/fetk 1.5: The Finite Element ToolKit - Meta package
 sci-libs/fftw 2.1.5-r9 3.3.6_p2: Fast C library for the Discrete Fourier Transform
-sci-libs/flann 1.9.1: Fast approximate nearest neighbor searches in high dimensional spaces
 sci-libs/galib 2.4.7-r1: Library for genetic algorithms in C++ programs
 sci-libs/gamer 1.5-r2: Geometry-preserving Adaptive MeshER
 sci-libs/gdal 2.4.0 2.4.1: Translator library for raster geospatial data formats (includes OGR support)
