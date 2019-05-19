@@ -7632,7 +7632,7 @@ media-libs/libaacs 0.9.0: Open implementation of the Advanced Access Content Sys
 media-libs/libafterimage 1.20-r2: Afterstep's standalone generic image manipulation library
 media-libs/libao 1.2.2: The Audio Output library
 media-libs/libart_lgpl 2.3.21-r3: A LGPL version of libart
-media-libs/libass 0.13.6 0.14.0: Library for SSA/ASS subtitles rendering
+media-libs/libass 0.14.0: Library for SSA/ASS subtitles rendering
 media-libs/libbdplus 0.1.2: Blu-ray library for BD+ decryption
 media-libs/libbluray 1.0.2: Blu-ray playback libraries
 media-libs/libbs2b 3.1.0-r2: Bauer stereophonic-to-binaural DSP library
@@ -7968,7 +7968,7 @@ media-plugins/gst-plugins-x265 1.14.3: H.265 encoder plugin for GStreamer
 media-plugins/gst-plugins-ximagesrc 1.14.4: X11 video capture stream plugin for GStreamer
 media-plugins/gst-transcoder 1.8.2-r1: GStreamer Transcoding API
 media-plugins/hexter 1.0.2: Yamaha DX7 modeling DSSI plugin
-media-plugins/kipi-plugins 5.9.0 5.9.1: Plugins for the KDE Image Plugin Interface
+media-plugins/kipi-plugins 5.9.1: Plugins for the KDE Image Plugin Interface
 media-plugins/ladspa-bs2b 0.9.1: LADSPA plugin for bs2b headphone filter
 media-plugins/libvisual-plugins 0.4.0-r3: collection of visualization plugins for use with the libvisual framework
 media-plugins/libvisual-projectm 2.1.0-r1: A libvisual graphical music visualization plugin similar to milkdrop
@@ -8139,7 +8139,7 @@ media-sound/jack-keyboard 2.5: A virtual MIDI keyboard for JACK MIDI
 media-sound/jack-rack 1.4.7-r1 1.4.8_rc1: JACK Rack is an effects rack for the JACK low latency audio API
 media-sound/jamin 0.95.0-r3: JAMin is the JACK Audio Connection Kit (JACK) Audio Mastering interface
 media-sound/kaudiocreator 1.3_p20190225: CD ripper and audio encoder frontend based on KDE Frameworks
-media-sound/kid3 3.7.0: Simple tag editor based on Qt
+media-sound/kid3 3.7.1: Simple tag editor based on Qt
 media-sound/kmetronome 1.0.0: MIDI based metronome using ALSA sequencer
 media-sound/lame 3.100-r1: LAME Ain't an MP3 Encoder
 media-sound/lash 0.5.4-r3: LASH Audio Session Handler
