@@ -38,7 +38,7 @@ RDEPEND="
 	selinux? ( sec-policy/selinux-screen )
 	vim-syntax? ( app-vim/vim-tmux )"
 
-DOCS=( CHANGES README TODO )
+DOCS=( CHANGES README )
 
 PATCHES=(
 	"${FILESDIR}/${PN}-2.4-flags.patch"
