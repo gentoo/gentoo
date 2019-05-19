@@ -17,7 +17,7 @@ inherit eutils qmail
 DESCRIPTION="qmail -- a secure, reliable, efficient, simple message transfer agent"
 HOMEPAGE="
 	http://netqmail.org
-	http://cr.yp.to/qmail.html
+	https://cr.yp.to/qmail.html
 	http://qmail.org
 "
 SRC_URI="mirror://qmail/${P}.tar.gz

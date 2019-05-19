@@ -19,12 +19,12 @@ inherit eutils qmail
 DESCRIPTION="qmail -- a secure, reliable, efficient, simple message transfer agent"
 HOMEPAGE="
 	http://netqmail.org
-	http://cr.yp.to/qmail.html
+	https://cr.yp.to/qmail.html
 	http://qmail.org
 "
 SRC_URI="mirror://qmail/${P}.tar.gz
 	https://dev.gentoo.org/~hollow/distfiles/${GENQMAIL_F}
-	http://www.ckdhr.com/ckd/${QMAIL_LARGE_DNS}
+	https://www.ckdhr.com/ckd/${QMAIL_LARGE_DNS}
 	!vanilla? (
 		highvolume? ( mirror://qmail/${QMAIL_BIGTODO_F} )
 		qmail-spp? ( mirror://sourceforge/qmail-spp/${QMAIL_SPP_F} )
