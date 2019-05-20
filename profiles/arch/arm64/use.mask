@@ -26,6 +26,10 @@
 -neon
 -armvfp
 
+# Aaron Bauman <bman@gentoo.org> (20 May 2019)
+# Does not build on arm64
+ocamlopt
+
 # Mart Raudsepp <leio@gentoo.org> (07 Jan 2019)
 # Does not work on arm64 until dev-lang/luajit-2.1
 # https://github.com/LuaJIT/LuaJIT/issues/26
