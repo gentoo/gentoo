@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -65,7 +65,7 @@ multilib_src_install_all() {
 	rm -r "${ED%/}"/{etc,$(get_udevdir)} || die
 
 	# handled by the device manager
-	rm -r "${ED%/}"/dev || die
+	rm -r "${D%/}"/dev || die
 
 	# manually install man pages to respect compression
 	rm -r "${ED%/}"/usr/share/man || die
