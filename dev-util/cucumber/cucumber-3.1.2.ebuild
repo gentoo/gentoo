@@ -51,6 +51,7 @@ all_ruby_prepare() {
 	# need or can't satisfy.
 	sed -e '/\(coveralls\|spork\|simplecov\|bcat\|kramdown\|yard\|capybara\|octokit\|rack-test\|ramaze\|rubocop\|sinatra\|webrat\|mime-types\|rubyzip\)/d' \
 		-e '/nokogiri/ s/1.8.1/1.8/' \
+		-e "/json/ s/, '~> 1.8.6'//" \
 		-i ${RUBY_FAKEGEM_GEMSPEC} || die
 
 	# Avoid dependency on unpackaged cucumber-pro

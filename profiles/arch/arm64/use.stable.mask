@@ -4,6 +4,10 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in use.mask
 
+# Aaron Bauman <bman@gentoo.org> (20 May 2019)
+# Does not build on arm64
+ocamlopt
+
 # Andreas Sturmlechner <asturm@gentoo.org> (20 Apr 2019)
 # sys-auth/consolekit will not be stabilised anymore.
 consolekit
