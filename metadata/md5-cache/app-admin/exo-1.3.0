@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install
+DEPEND=dev-lang/go:=
+DESCRIPTION=Command-line tool for everything at Exoscale: compute, storage, dns.
+EAPI=7
+HOMEPAGE=https://exoscale.github.io/cli
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+RESTRICT=strip
+SLOT=0
+SRC_URI=https://github.com/exoscale/cli/archive/v1.3.0.tar.gz -> exo-1.3.0.tar.gz
+_md5_=6e13fa26f9aee1428d7782c0c1ad2182
