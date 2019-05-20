@@ -226,6 +226,7 @@ src_prepare() {
 
 	# remove sources and documentation (wildcards are expanded)
 	rm -r ${source_files[@]} || die
+	rm -rf .git
 
 	if use !unknown-license; then
 		# remove files in unknown_license
@@ -236,12 +237,11 @@ src_prepare() {
 		# remove files _not_ in the free_software or unknown_license lists
 		# everything else is confirmed (or assumed) to be redistributable
 		# based on upstream acceptance policy
-		local file remove=()
-		while IFS= read -d "" -r file; do
-			has "${file#./}" "${free_software[@]}" "${unknown_license[@]}" \
-				|| remove+=("${file}")
-		done < <(find * ! -type d -print0 || die)
-		printf "%s\0" "${remove[@]}" | xargs -0 rm || die
+		local IFS=$'\n'
+		find ! -type d -printf "%P\n" \
+			| grep -Fvx -e "${free_software[*]}" -e "${unknown_license[*]}" \
+			| xargs -d '\n' rm || die
+		IFS=$' \t\n'
 	fi
 
 	echo "# Remove files that shall not be installed from this list." > ${PN}.conf
@@ -250,23 +250,12 @@ src_prepare() {
 	if use savedconfig; then
 		restore_config ${PN}.conf
 
-		local file preserved_files=() remove=()
-
 		ebegin "Removing all files not listed in config"
-		while IFS= read -r file; do
-			# Ignore comments.
-			if [[ ${file} != "#"* ]]; then
-				preserved_files+=("${file}")
-			fi
-		done < ${PN}.conf || die
-
-		while IFS= read -d "" -r file; do
-			has "${file}" "${preserved_files[@]}" || remove+=("${file}")
-		done < <(find * ! -type d ! -name ${PN}.conf -print0 || die)
-		if [[ ${#remove[@]} -gt 0 ]]; then
-			printf "%s\0" "${remove[@]}" | xargs -0 rm || die
-		fi
-		eend 0
+		find ! -type d ! -name ${PN}.conf -printf "%P\n" \
+			| grep -Fvx -f <(grep -v '^#' ${PN}.conf \
+				|| die "grep failed, empty config file?") \
+			| xargs -d '\n' --no-run-if-empty rm
+		eend $? || die
 	fi
 
 	# remove empty directories, bug #396073
