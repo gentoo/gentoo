@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -17,7 +17,7 @@ IUSE=""
 DEPEND=""
 RDEPEND="${DEPEND}"
 
-CONFIG_CHECK="PPS NETWORK_PHY_TIMESTAMPING PTP_1588_CLOCK"
+CONFIG_CHECK="~PPS ~NETWORK_PHY_TIMESTAMPING ~PTP_1588_CLOCK"
 
 src_compile() {
 	export EXTRA_CFLAGS=${CFLAGS}
