@@ -13,12 +13,12 @@ if [ "${PV}" != "9999" ]; then
 	SRC_URI="https://github.com/${PN/-//}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 		doc? ( https://github.com/${PN/-//}-manual/releases/download/v${PV}/${PN}-manual-${PV}.pdf )
 		examples? (	https://github.com/${PN/-//}-tutorials/archive/v${PV}.tar.gz -> ${PN}-tutorials-${PV}.tar.gz )"
-	KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-macos"
+	KEYWORDS="amd64 ~x86 ~amd64-linux ~x86-macos"
 	S="${WORKDIR}/${P#votca-}"
 else
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/${PN/-//}.git"
-	KEYWORDS=""
+	KEYWORDS="amd64"
 	PDEPEND="${PDEPEND} doc? ( ~app-doc/${PN}-manual-${PV} )"
 fi
 
