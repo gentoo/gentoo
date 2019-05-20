@@ -71,7 +71,10 @@ BDEPEND="
 	>=dev-util/meson-0.47.0
 	virtual/pkgconfig
 	doc? ( dev-util/gtk-doc )
-	man? ( app-text/docbook-sgml-utils )
+	man? (
+		app-text/docbook-sgml-utils
+		sys-apps/help2man
+	)
 "
 
 # required for fwupd daemon to run.
