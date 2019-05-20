@@ -13,7 +13,7 @@ else
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-fbsd"
 fi
 
-DESCRIPTION="A common interface to Gentoo package managers"
+DESCRIPTION="Tool to find installed packages in Gentoo with non-accepted license(s)"
 HOMEPAGE="https://github.com/Whissi/elicense"
 
 LICENSE="GPL-2"
