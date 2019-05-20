@@ -822,7 +822,7 @@ app-eselect/eselect-unison 0.3: unison module for eselect
 app-eselect/eselect-vdr 0.0.3: Manages the VDR plugins
 app-eselect/eselect-vi 1.1.9: Manages the /usr/bin/vi symlink
 app-eselect/eselect-wine 1.2.2: Manage active wine version
-app-eselect/eselect-wxwidgets 20140423: Eselect module and wrappers for wxWidgets
+app-eselect/eselect-wxwidgets 20140423 20180529: Eselect module and wrappers for wxWidgets
 app-eselect/eselect-xvmc 0.4: Manages XvMC implementations
 app-forensics/afflib 3.7.18: Library that implements the AFF image standard
 app-forensics/aide 0.16-r1: AIDE (Advanced Intrusion Detection Environment) is a file integrity checker
@@ -1045,7 +1045,7 @@ app-misc/lcdproc 0.5.2-r1: Client/Server suite to drive all kinds of LCD (-like)
 app-misc/leave 20100918-r1: FreeBSD command-line tool that reminds you when its time to leave
 app-misc/ledit 2.03: A line editor to be used with interactive commands
 app-misc/linux-logo 5.11-r3 5.11-r4: A utility that displays an ANSI/ASCII logo and some system information
-app-misc/lirc 0.10.1: decode and send infra-red signals of many commonly used remote controls
+app-misc/lirc 0.10.1 0.10.1-r1: decode and send infra-red signals of many commonly used remote controls
 app-misc/livecd-tools 2.2 2.3 2.4 2.5: Gentoo LiveCD tools for autoconfiguration of hardware
 app-misc/lockfile-progs 0.1.17: Programs to safely lock/unlock files and mailboxes
 app-misc/logitech-applet 0.4_pre1-r3: Control utility for some special features of some special Logitech USB mice!
@@ -1435,7 +1435,7 @@ app-text/pelican 3.7.1: A tool to generate a static blog, with restructured text
 app-text/pep 2.8-r2: General purpose filter and file cleaning program
 app-text/pinfo 0.6.10-r5: Hypertext info and man viewer based on (n)curses
 app-text/po4a 0.47-r1: Tools for helping translation of documentation
-app-text/podofo 0.9.6_pre20170508-r1: PoDoFo is a C++ library to work with the PDF file format
+app-text/podofo 0.9.6_pre20170508-r1 0.9.6_p20180715: PoDoFo is a C++ library to work with the PDF file format
 app-text/poppler 0.74.0: PDF rendering library based on the xpdf-3.0 code base
 app-text/poppler-data 0.4.9: Data files for poppler to support uncommon encodings without xpdfrc
 app-text/ps2eps 1.68: Generate Encapsulated Postscript Format files from one-page Postscript documents
@@ -10561,7 +10561,7 @@ virtual/perl-threads 2.150.0: Virtual for threads
 virtual/perl-threads-shared 1.560.0: Virtual for threads-shared
 virtual/perl-version 0.991.700: Virtual for version
 virtual/pkgconfig 0-r1 1: Virtual for the pkg-config implementation
-virtual/podofo-build 0.9.6_pre20170508-r1: Virtual package for building against PoDoFo
+virtual/podofo-build 0.9.6_pre20170508-r1 0.9.6: Virtual package for building against PoDoFo
 virtual/python-backports_abc 0: A virtual for the Python 3.3+ collections.abc module
 virtual/python-cffi 0: A virtual for the Python cffi package
 virtual/python-dnspython 2: A virtual for dnspython, for Python 2 & 3
