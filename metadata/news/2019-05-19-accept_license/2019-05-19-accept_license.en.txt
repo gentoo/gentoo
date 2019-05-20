@@ -1,0 +1,47 @@
+Title: Change of ACCEPT_LICENSE default
+Author: Ulrich Müller <ulm@gentoo.org>
+Posted: 2019-05-19
+Revision: 1
+News-Item-Format: 2.0
+
+The default set of accepted licenses has been changed [1,2] to:
+
+   ACCEPT_LICENSE="-* @FREE"
+
+This means that by default only free software and documentation
+will be installable. The "FREE" license group is defined in the
+profiles/license_groups file in the Gentoo repository. It contains
+licenses that are explicitly approved by the Free Software Foundation,
+the Open Source Initiative, or that follow the Free Software
+Definition.
+
+The system wide default for the accepted licenses is controlled by
+the ACCEPT_LICENSE variable in /etc/portage/make.conf, or it can be
+specified on a per-package basis in /etc/portage/package.license.
+
+For example, to allow the app-arch/unrar and sys-kernel/linux-firmware
+packages to be installed, the following lines would have to be added
+to /etc/portage/package.license:
+
+   app-arch/unrar unRAR
+   sys-kernel/linux-firmware @BINARY-REDISTRIBUTABLE
+
+If you want to revert to the previous default, add the following line
+to /etc/portage/make.conf:
+
+   ACCEPT_LICENSE="* -@EULA"
+
+This will permit all licenses, except End User License Agreements that
+require reading and signing an acceptance agreement. Note that this
+will also accept non-free software and documentation.
+
+See GLEP 23 [3] as well as the make.conf(5) and portage(5) man pages
+for the detailed syntax of the ACCEPT_LICENSE variable. Further
+information about licenses can be found in the Gentoo Handbook [4]
+and on the license groups wiki page [5].
+
+[1] https://projects.gentoo.org/council/meeting-logs/20190210-summary.txt
+[2] https://bugs.gentoo.org/676248
+[3] https://www.gentoo.org/glep/glep-0023.html
+[4] https://wiki.gentoo.org/wiki/Handbook:AMD64/Working/Portage#Licenses
+[5] https://wiki.gentoo.org/wiki/License_groups
