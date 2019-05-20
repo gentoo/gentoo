@@ -16,6 +16,7 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS=""
 IUSE="doc test"
+RESTRICT="test"
 
 RDEPEND="
 	dev-python/paramiko[${PYTHON_USEDEP}]

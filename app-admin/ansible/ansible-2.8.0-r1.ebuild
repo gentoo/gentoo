@@ -9,13 +9,13 @@ inherit distutils-r1 eutils
 
 DESCRIPTION="Model-driven deployment, config management, and command execution framework"
 HOMEPAGE="https://ansible.com/"
-# don't forget to fix also ${S} in the next bump
-SRC_URI="https://releases.ansible.com/${PN}/${PN}-2.8.0rc3.tar.gz"
+SRC_URI="https://releases.ansible.com/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86 ~x64-macos"
 IUSE="doc test"
+RESTRICT="test"
 
 RDEPEND="
 	dev-python/paramiko[${PYTHON_USEDEP}]
@@ -42,8 +42,6 @@ DEPEND="
 		dev-python/unittest2[${PYTHON_USEDEP}]
 		dev-vcs/git
 	)"
-
-S="${WORKDIR}/ansible-2.8.0rc3"
 
 python_compile_all() {
 	if use doc; then

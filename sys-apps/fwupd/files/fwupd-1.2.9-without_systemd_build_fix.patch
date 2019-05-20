@@ -1,0 +1,77 @@
+From d92cccaf1396d93f97480f32694372b8256f9b11 Mon Sep 17 00:00:00 2001
+From: Richard Hughes <richard@hughsie.com>
+Date: Mon, 20 May 2019 11:28:31 +0100
+Subject: [PATCH] trivial: Fix non-systemd build
+
+---
+ src/fu-tool.c        | 2 ++
+ src/fu-util-common.c | 5 ++++-
+ src/fu-util.c        | 6 +++++-
+ 3 files changed, 11 insertions(+), 2 deletions(-)
+
+diff --git a/src/fu-tool.c b/src/fu-tool.c
+index 353a52e88..eac7a8cc4 100644
+--- a/src/fu-tool.c
++++ b/src/fu-tool.c
+@@ -113,8 +113,10 @@ fu_util_start_engine (FuUtilPrivate *priv, FuEngineLoadFlags flags, GError **err
+ {
+ 	g_autoptr(GError) error_local = NULL;
+ 
++#ifdef HAVE_SYSTEMD
+ 	if (!fu_systemd_unit_stop (fu_util_get_systemd_unit (), &error_local))
+ 		g_debug ("Failed top stop daemon: %s", error_local->message);
++#endif
+ 	if (!fu_engine_load (priv->engine, flags, error))
+ 		return FALSE;
+ 	if (fu_engine_get_tainted (priv->engine)) {
+diff --git a/src/fu-util-common.c b/src/fu-util-common.c
+index 219752b1e..51e16f671 100644
+--- a/src/fu-util-common.c
++++ b/src/fu-util-common.c
+@@ -28,6 +28,7 @@ fu_util_get_systemd_unit (void)
+ 	return SYSTEMD_FWUPD_UNIT;
+ }
+ 
++#ifdef HAVE_SYSTEMD
+ static const gchar *
+ fu_util_get_expected_command (const gchar *target)
+ {
+@@ -35,10 +36,12 @@ fu_util_get_expected_command (const gchar *target)
+ 		return "fwupd.fwupdmgr";
+ 	return "fwupdmgr";
+ }
++#endif
+ 
+ gboolean
+ fu_util_using_correct_daemon (GError **error)
+ {
++#ifdef HAVE_SYSTEMD
+ 	g_autofree gchar *default_target = NULL;
+ 	g_autoptr(GError) error_local = NULL;
+ 	const gchar *target = fu_util_get_systemd_unit ();
+@@ -58,7 +61,7 @@ fu_util_using_correct_daemon (GError **error)
+ 			     fu_util_get_expected_command (target));
+ 		return FALSE;
+ 	}
+-
++#endif
+ 	return TRUE;
+ }
+ 
+diff --git a/src/fu-util.c b/src/fu-util.c
+index c8528e71e..dec96e741 100644
+--- a/src/fu-util.c
++++ b/src/fu-util.c
+@@ -2122,7 +2122,11 @@ fu_util_modify_config (FuUtilPrivate *priv, gchar **values, GError **error)
+ 		if (!fu_util_prompt_for_boolean (FALSE))
+ 			return TRUE;
+ 	}
+-	return fu_systemd_unit_stop (fu_util_get_systemd_unit (), error);
++#ifdef HAVE_SYSTEMD
++	if (!fu_systemd_unit_stop (fu_util_get_systemd_unit (), error))
++		return FALSE;
++#endif
++	return TRUE;
+ }
+ 
+ static void
