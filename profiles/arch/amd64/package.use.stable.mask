@@ -18,8 +18,8 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (28 Feb 2019)
-# Depends on unstable media-libs/dav1d, net-libs/srt
-media-video/vlc dav1d srt
+# Depends on unstable media-libs/dav1d
+media-video/vlc dav1d
 
 # Amy Liffey <amynka@gentoo.org> (15 Jan 2019)
 # Mask experimental contrib repo
