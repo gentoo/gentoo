@@ -14,12 +14,7 @@ if [[ ${PV} = *9999* ]]; then
 	KEYWORDS=""
 	SLOT="0"
 else
-	# Versions with 4 numbers are stable updates:
-	if [[ ${PV} =~ ^[0-9]+(\.[0-9]+){3} ]]; then
-		SRC_URI="https://libvirt.org/sources/stable_updates/${P}.tar.xz"
-	else
-		SRC_URI="https://libvirt.org/sources/${P}.tar.xz"
-	fi
+	SRC_URI="https://libvirt.org/sources/${P}.tar.xz"
 	KEYWORDS="~amd64 ~arm64 ~x86"
 	SLOT="0/${PV}"
 fi
