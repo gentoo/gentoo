@@ -746,14 +746,14 @@ app-emulation/grub-xen-host 1.0: Grub2 built as a PV grub per the Xen PV Boot Pr
 app-emulation/hercules 3.10: Hercules System/370, ESA/390 and zArchitecture Mainframe Emulator
 app-emulation/libcacard 0.1.2 2.5.1 2.6.0: virtual Common Access Card (CAC) library emulator
 app-emulation/libdsk 1.5.8: LIBDSK is a library for accessing discs and disc image files
-app-emulation/libvirt 4.9.0: C toolkit to manipulate virtual machines
+app-emulation/libvirt 4.9.0 5.2.0-r2: C toolkit to manipulate virtual machines
 app-emulation/libvirt-glib 1.0.0-r1 2.0.0: GLib and GObject mappings for libvirt
 app-emulation/lxc 2.1.1-r1 3.0.3: LinuX Containers userspace utilities
 app-emulation/lxc-templates 3.0.3: Old style template scripts for LXC
 app-emulation/lxd 3.10: Fast, dense and secure container management
 app-emulation/nemu 2.1.0: ncurses interface for QEMU
 app-emulation/q4wine 1.3.11: Qt GUI configuration tool for Wine
-app-emulation/qemu 3.1.0-r4: QEMU + Kernel-based Virtual Machine userland tools
+app-emulation/qemu 3.1.0-r4 4.0.0-r3: QEMU + Kernel-based Virtual Machine userland tools
 app-emulation/qemu-guest-agent 3.1.0: QEMU Guest Agent (qemu-ga) for use when running inside a VM
 app-emulation/runc 1.0.0_rc5_p20180509-r1 1.0.0_rc6_p20181203-r1 1.0.0_rc6_p20190216 1.0.0_rc7: runc container cli tools
 app-emulation/simh 3.9.0-r1: a simulator for historical computers such as Vax, PDP-11 etc.)
@@ -777,7 +777,7 @@ app-emulation/wine-desktop-common 20150204: Various desktop menu items and icons
 app-emulation/wine-gecko 2.47-r1: A Mozilla Gecko based version of Internet Explorer for Wine
 app-emulation/wine-mono 4.6.4 4.7.1 4.7.5: Wine Mono is a replacement for the .NET runtime and class libraries in Wine
 app-emulation/wine-vanilla 3.0.3 4.0: Free implementation of Windows(tm) on Unix, without external patchsets
-app-emulation/winetricks 20170823: Easy way to install DLLs needed to work around problems in Wine
+app-emulation/winetricks 20170823 20190310: Easy way to install DLLs needed to work around problems in Wine
 app-emulation/x48 0.6.4-r1: HP48 Calculator Emulator
 app-emulation/xen 4.10.3-r1: The Xen virtual machine monitor
 app-emulation/xen-pvgrub 4.10.3: allows to boot Xen domU kernels from a menu.lst laying inside guest filesystem
@@ -1156,6 +1156,7 @@ app-mobilephone/sobexsrv 1.0.1-r2: Scripting/Secure OBEX Server (for BlueZ Linux
 app-mobilephone/vmoconv 1.0-r1: A tool that converts Siemens phones VMO and VMI audio files to gsm and wav
 app-office/abiword 3.0.2-r2: Fully featured yet light and fast cross platform word processor
 app-office/abiword-docs 3.0.2: Fully featured yet light and fast cross platform word processor documentation
+app-office/calcurse 4.4.0: a text-based calendar and scheduling application
 app-office/calligra 3.1.0-r3: KDE Office Suite
 app-office/calligraplan 3.1.0: Project management application
 app-office/dia 0.97.3: Diagram/flowchart creation program
@@ -1194,7 +1195,7 @@ app-office/texmaker 5.0-r1: A nice LaTeX-IDE
 app-office/texstudio 2.11.2-r2 2.12.6-r1 2.12.14: Free cross-platform LaTeX editor (fork from texmakerX)
 app-office/unoconv 0.7 0.8.2: Convert between document formats supported by Libreoffice
 app-officeext/barcode 1.3.5.0-r1: Extension for reading barcodes
-app-officeext/ct2n 1.4.0-r1: Extension for converting text to numbers
+app-officeext/ct2n 1.4.0-r1 1.5.0: Extension for converting text to numbers
 app-officeext/dmaths 3.4.9.0-r1: Mathematics Formula Editor Extension
 app-officeext/languagetool 3.4: Style and Grammar Checker for libreoffice
 app-officeext/ooo2gd 3.0.0-r1: Extension for export to Google docs, zoho and WebDAV
@@ -3193,7 +3194,7 @@ dev-libs/libxml2 2.9.9 2.9.9-r1: XML C parser and toolkit
 dev-libs/libxmlb 0.1.8: Library to help create and query binary XML blobs
 dev-libs/libxslt 1.1.32: XSLT libraries and tools
 dev-libs/libyaml 0.1.7: YAML 1.1 parser and emitter written in C
-dev-libs/libzia 4.14: platform abstraction code for tucnak package
+dev-libs/libzia 4.14 4.15: platform abstraction code for tucnak package
 dev-libs/libzip 1.5.1: Library for manipulating zip archives
 dev-libs/link-grammar 5.3.11: A Syntactic English parser
 dev-libs/lockdev 1.0.3.1.2-r3: Library for locking devices
@@ -5074,7 +5075,7 @@ dev-python/libgnomecanvas-python 2.28.1-r1: Python bindings for the Gnome Canvas
 dev-python/libnacl 1.4.4 1.6.1: Python ctypes wrapper for libsodium
 dev-python/librharris 0.1.14-r1: Python Internet Programming Library
 dev-python/librsvg-python 2.32.0-r1: Python bindings for the librsvg library
-dev-python/libvirt-python 4.9.0: libvirt Python bindings
+dev-python/libvirt-python 4.9.0 5.2.0: libvirt Python bindings
 dev-python/libwnck-python 2.32.0-r1: Python bindings for the libwnck library
 dev-python/libzilla 1.4 1.5: Library for managing Bugzilla bug reports from the CLI
 dev-python/linecache2 1.0.0: Backports of the linecache module
@@ -6369,6 +6370,7 @@ dev-util/kdevelop-python 5.3.2: Python plugin for KDevelop
 dev-util/kyua 0.13-r2: Testing framework for infrastructure software
 dev-util/lcov 1.9-r1 1.11: A graphical front-end for GCC's coverage testing tool gcov
 dev-util/linklint 2.3.5: A Perl program that checks links on web sites
+dev-util/lldb 7.1.0: The LLVM debugger
 dev-util/lockrun 20120508-r1: Lockrun - runs cronjobs with overrun protection
 dev-util/ltrace 0.7.2 0.7.3_p4: trace library calls made at runtime
 dev-util/lttng-modules 2.7.1: LTTng Kernel Tracer Modules
@@ -8043,10 +8045,10 @@ media-radio/qrq 0.3.1-r1: Yet another CW trainer for Linux/Unix
 media-radio/qsstv 9.2.6: Amateur radio SSTV software
 media-radio/svxlink 17.12.1 17.12.2: Multi Purpose Voice Services System, including Qtel for EchoLink
 media-radio/tlf 1.3.0: Console-mode amateur radio contest logger
-media-radio/tucnak 4.14: Amateur Radio VHF Contest Logbook
+media-radio/tucnak 4.14 4.15: Amateur Radio VHF Contest Logbook
 media-radio/unixcw 3.5.1: A package of programs that fit together to form a morse code tutor program
 media-radio/wsjtx 1.8.0: Weak signal ham radio communication
-media-radio/xastir 2.0.8-r1: X Amateur Station Tracking and Information Reporting
+media-radio/xastir 2.0.8-r1 2.1.0: X Amateur Station Tracking and Information Reporting
 media-radio/xdx 2.5.0: a GTK+ TCP/IP DX-cluster and ON4KST chat client
 media-radio/xlog 2.0.15: An amateur radio logging program
 media-sound/SmarTagger 0.1-r2: Perl script for renaming and tagging mp3s
@@ -8082,7 +8084,7 @@ media-sound/cdparanoia 3.10.2-r6: an advanced CDDA reader with error correction
 media-sound/cdplay 1.0: a commandline CD Player
 media-sound/cdtool 2.1.8-r1: collection of command-line utilities to control cdrom devices
 media-sound/clementine 1.3.1_p20190127: Modern music player and library organizer based on Amarok 1.4 and Qt
-media-sound/cmus 2.8.0_rc0: A ncurses based music player with plugin support for many formats
+media-sound/cmus 2.8.0_rc0 2.8.0: Ncurses based music player with plugin support for many formats
 media-sound/cvoicecontrol 0.9_alpha-r1: Console based speech recognition system
 media-sound/dagrab 0.513-r1: fixed point cd ripper
 media-sound/darkice 1.2 1.3: A live audio streamer
@@ -8152,7 +8154,7 @@ media-sound/mcdp 0.4a 0.4b: A very small console cd player
 media-sound/meterbridge 0.9.3: Software meterbridge for the UNIX based JACK audio system
 media-sound/mhwaveedit 1.4.22: GTK+ Sound file editor (wav, and a few others.)
 media-sound/mikmod 3.2.8: A console MOD-Player based on libmikmod
-media-sound/mixxx 2.1.1-r1: Advanced Digital DJ tool based on Qt
+media-sound/mixxx 2.1.1-r1 2.1.8: Advanced Digital DJ tool based on Qt
 media-sound/moc 2.5.2 2.6_alpha3: Music On Console - ncurses interface for playing audio files
 media-sound/modplugtools 0.5.1 0.5.3: libmodplug based module players modplug123 and modplugplay
 media-sound/moosic 1.5.6-r1: Music player that focuses on easy playlist management
@@ -8209,7 +8211,7 @@ media-sound/qastools 0.21.0: Qt5 GUI ALSA tools: mixer, configuration browser
 media-sound/qjackctl 0.4.5: Qt GUI to control the JACK Audio Connection Kit and ALSA sequencer connections
 media-sound/qmidiroute 0.4.0: QMidiRoute is a filter/router for MIDI events
 media-sound/qmmp 1.2.6: Qt5-based audio player with winamp/xmms skins support
-media-sound/qsynth 0.5.3: A Qt application to control FluidSynth
+media-sound/qsynth 0.5.3 0.5.5: A Qt application to control FluidSynth
 media-sound/qtscrobbler 0.11_pre20130123: Updates last.fm profiles using information from supported portable music players
 media-sound/quimup 1.4.3: A Qt5 client for the music player daemon (MPD) written in C++
 media-sound/quodlibet 3.8.1-r1 3.9.1 4.1.0: audio library tagger, manager, and player for GTK+
@@ -8594,7 +8596,7 @@ net-firewall/dshieldpy 3.2-r2: Python script to submit firewall logs to dshield.
 net-firewall/ebtables 2.0.10.4: Controls Ethernet frame filtering on a Linux bridge, MAC NAT and brouting
 net-firewall/ferm 2.4 2.4.1: Command line util for managing firewall rules
 net-firewall/firehol 3.1.6: iptables firewall generator
-net-firewall/firewalld 0.5.1-r2: A firewall daemon with D-BUS interface providing a dynamic firewall
+net-firewall/firewalld 0.5.1-r2 0.6.3: A firewall daemon with D-BUS interface providing a dynamic firewall
 net-firewall/fwbuilder 5.3.7: A firewall GUI
 net-firewall/fwipsec 0.4.2-r1: Firewall scripts that control iptables, FreeS/WAN, and squid
 net-firewall/ipkungfu 0.6.1-r1: A nice iptables firewall script
@@ -9073,7 +9075,7 @@ net-misc/spread 4.4.1: Distributed network messaging system
 net-misc/ssh-askpass-fullscreen 1.0-r1: A small SSH Askpass replacement written with GTK2
 net-misc/sshpass 1.05 1.06: Tool for noninteractively performing password authentication with ssh
 net-misc/sshrc 0.6.2: Bring your .bashrc, .vimrc, etc. from your local machine when you ssh
-net-misc/sslh 1.19c: Port multiplexer - accept both HTTPS and SSH connections on the same port
+net-misc/sslh 1.19c 1.20: Port multiplexer - accept both HTTPS and SSH connections on the same port
 net-misc/sstp-client 1.0.10-r1: A client implementation of Secure Socket Tunneling Protocol (SSTP)
 net-misc/ssvnc 1.0.29-r2: VNC viewer that adds encryption security to VNC connections
 net-misc/streamtuner 0.99.99-r5: Stream directory browser for browsing internet radio streams
@@ -9353,9 +9355,9 @@ sci-chemistry/raster3d 3.0.2: Generation high quality raster images of proteins 
 sci-chemistry/reduce 3.16.111118: Adds hydrogens to a Protein Data Bank (PDB) molecule structure file
 sci-chemistry/shelx 20141228: Crystal structure determination from single-crystal diffraction data
 sci-chemistry/tm-align 20150914: Quick & Accurate Structural Alignment
-sci-chemistry/votca-csg 1.4: Votca coarse-graining engine
-sci-chemistry/votca-csgapps 1.4: Extra applications for votca-csg
-sci-chemistry/votca-xtp 1.4: Votca excitation and charge properties module
+sci-chemistry/votca-csg 1.4 1.5: Votca coarse-graining engine
+sci-chemistry/votca-csgapps 1.4 1.5: Extra applications for votca-csg
+sci-chemistry/votca-xtp 1.4 1.5: Votca excitation and charge properties module
 sci-electronics/drawtiming 0.7.1-r1 0.7.1-r2: Command line tool for drawing timing diagrams
 sci-electronics/eagle 7.3.0: CadSoft EAGLE schematic and printed circuit board (PCB) layout editor
 sci-electronics/electronics-menu 1.0-r1: Creates an "Electronics" desktop menu
@@ -9422,6 +9424,7 @@ sci-libs/ccolamd 2.8.0: Constrained Column approximate minimum degree ordering a
 sci-libs/cdd+ 077a: Another implementation of the double description method
 sci-libs/cddlib 094g: C implementation of the Double Description Method of Motzkin et al
 sci-libs/cdf 3.4.1: Common Data Format I/O library for multi-dimensional data sets
+sci-libs/ceres-solver 1.12.0: Nonlinear least-squares minimizer
 sci-libs/cfitsio 3.360 3.410: C and Fortran library for manipulating FITS files
 sci-libs/cgcode 1.0-r2: Conjugate gradient Codes for large sparse linear systems
 sci-libs/cholmod 2.1.2: Sparse Cholesky factorization and update/downdate library
@@ -9462,6 +9465,7 @@ sci-libs/libqalculate 0.9.9: A modern multi-purpose calculator library
 sci-libs/libsigrok 0.3.0: basic hardware drivers for logic analyzers and input/output file format support
 sci-libs/libspatialindex 1.8.5-r1: General framework for developing spatial indices
 sci-libs/libsvm 3.21 3.22: Library for Support Vector Machines
+sci-libs/libxc 2.2.3: A library of exchange-correlation functionals for use in DFT
 sci-libs/linux-gpib 4.1.0: Kernel module and driver library for GPIB (IEEE 488.2) hardware
 sci-libs/lrslib 042c-r2: self-contained ANSI C implementation of the reverse search algorithm
 sci-libs/mc 1.5: 2D/3D AFEM code for nonlinear geometric PDE
@@ -9496,7 +9500,7 @@ sci-libs/udunits 2.1.24-r1: Library for manipulating units of physical quantitie
 sci-libs/ufconfig 3.5.0: Common configuration scripts for the SuiteSparse libraries
 sci-libs/umfpack 5.6.2: Unsymmetric multifrontal sparse LU factorization library
 sci-libs/voro++ 0.4.6-r1: A 3D Voronoi cell software library
-sci-libs/votca-tools 1.4: Votca tools library
+sci-libs/votca-tools 1.4 1.5: Votca tools library
 sci-libs/vtk 7.1.0: The Visualization Toolkit
 sci-libs/vtkdata 6.1.0: Example data file for VTK
 sci-libs/xdmf2 1.0_p141226-r3: eXtensible Data Model and Format
@@ -9843,7 +9847,7 @@ sys-apps/dmidecode 3.1 3.2: DMI (Desktop Management Interface) table related uti
 sys-apps/dnotify 0.18.0: Execute a command when the contents of a directory change
 sys-apps/dog 1.7-r6: Dog is better than cat
 sys-apps/dstat 0.7.3: Versatile replacement for vmstat, iostat and ifstat
-sys-apps/dtc 1.4.1 1.4.4: Open Firmware device tree compiler
+sys-apps/dtc 1.4.1 1.4.4 1.5.0: Open Firmware device tree compiler
 sys-apps/ed 1.14.2: Your basic line editor
 sys-apps/edac-utils 0.18: Userspace helper for Linux kernel EDAC drivers
 sys-apps/elfix 0.9.2 0.9.3 0.9.4 0.9.5: A suite of tools to work with ELF objects on Hardened Gentoo

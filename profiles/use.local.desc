@@ -5081,6 +5081,11 @@ sci-libs/armadillo:superlu - Use SuperLU for sparse linear equation solving sci-
 sci-libs/armadillo:tbb - Use matrix allocation from the Threads Building Blocks dev-cpp/tbb
 sci-libs/atlas:generic - Build atlas assuming a fairly generic architecture (sse2 for x86, core2 for amd64)
 sci-libs/cddlib:tools - Add a few executables and tests for cddlib
+sci-libs/ceres-solver:c++11 - Build ceres-solver using the C++11 standard
+sci-libs/ceres-solver:cxsparse - Enable simple support for sparse matrix algebra from sci-libs/cxsparse with no LAPACK dependencies
+sci-libs/ceres-solver:gflags - Use dev-cpp/gflags for flag parsing
+sci-libs/ceres-solver:schur - Enable fixed-size schur specializations (disable if binary size is an issue)
+sci-libs/ceres-solver:sparse - Enable support for sparse matrix algebra with various packages from SuiteSparse
 sci-libs/cfitsio:tools - Build execs fpack, funpack, imcopy, fitscopy, listhead
 sci-libs/cholmod:cuda - Use nvidia cuda toolkit for speeding up computations
 sci-libs/cholmod:metis - Enable the Partition module to cholmod using sci-libs/metis
