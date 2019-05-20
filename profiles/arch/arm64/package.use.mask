@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Aaron Bauman <bman@gentoo.org> (20 May 2019)
+# media-libs/gstreamer fails tests
+x11-libs/wxGTK gstreamer
+
+# Aaron Bauman <bman@gentoo.org> (20 May 2019)
 # doc USE ultimately pulls in dev-lang/ocaml[ocamlopt]
 media-gfx/enblend doc
 
