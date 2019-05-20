@@ -12,7 +12,7 @@ HOMEPAGE="https://pypi.org/project/iocapture/"
 SRC_URI="https://github.com/oinume/iocapture/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 SLOT="0"
-KEYWORDS="amd64 ~arm ~ppc x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc x86"
 LICENSE="MIT"
 IUSE="test"
 
