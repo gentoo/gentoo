@@ -27,7 +27,7 @@ HOMEPAGE="http://www.qemu.org http://www.linux-kvm.org"
 
 LICENSE="GPL-2 LGPL-2 BSD-2"
 SLOT="0"
-IUSE="accessibility +aio alsa bzip2 capstone +caps +curl debug
+IUSE="accessibility +aio alsa bzip2 capstone +caps +curl debug +doc
 	+fdt glusterfs gnutls gtk infiniband iscsi +jpeg kernel_linux
 	kernel_FreeBSD lzo ncurses nfs nls numa opengl +pin-upstream-blobs +png
 	pulseaudio python rbd sasl +seccomp sdl selinux smartcard snappy
@@ -171,9 +171,9 @@ PPC64_FIRMWARE_DEPEND="
 BDEPEND="
 	${PYTHON_DEPS}
 	dev-lang/perl
-	dev-python/sphinx
 	sys-apps/texinfo
 	virtual/pkgconfig
+	doc? ( dev-python/sphinx )
 	gtk? ( nls? ( sys-devel/gettext ) )
 	test? (
 		dev-libs/glib[utils]
@@ -206,6 +206,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.11.1-capstone_include_path.patch
 	"${FILESDIR}"/${P}-sanitize-interp_info.patch
 	"${FILESDIR}"/${PN}-3.1.0-md-clear-md-no.patch
+	"${FILESDIR}"/${PN}-4.0.0-mkdir_systemtap.patch #684902
 )
 
 QA_PREBUILT="
@@ -407,7 +408,7 @@ qemu_src_configure() {
 		--host-cc="$(tc-getBUILD_CC)"
 		$(use_enable debug debug-info)
 		$(use_enable debug debug-tcg)
-		--enable-docs
+		$(use_enable doc docs)
 		$(use_enable tci tcg-interpreter)
 		$(use_enable xattr attr)
 	)

@@ -1,0 +1,12 @@
+diff --git a/Makefile b/Makefile
+index 04a0d450..e0013a59 100644
+--- a/Makefile
++++ b/Makefile
+@@ -760,6 +760,7 @@ ifneq ($(TOOLS),)
+ 	$(INSTALL_DATA) qemu-nbd.8 "$(DESTDIR)$(mandir)/man8"
+ endif
+ ifdef CONFIG_TRACE_SYSTEMTAP
++	mkdir -p $(DESTDIR)$(bindir)
+ 	$(INSTALL_DATA) scripts/qemu-trace-stap.1 "$(DESTDIR)$(mandir)/man1"
+ endif
+ ifneq (,$(findstring qemu-ga,$(TOOLS)))
