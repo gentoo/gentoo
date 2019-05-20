@@ -1,6 +1,10 @@
 # Copyright 1999-2019 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Aaron Bauman <bman@gentoo.org> (20 May 2019)
+# deps are not stable yet
+virtual/notification-daemon gnome kde
+
 # Aaron Bauman <bman@gentoo.org> (15 May 2019)
 # packages for these USE flags fail tests
 media-libs/opencv contrib_cvv contrib_hdf contrib_sfm glog gstreamer
