@@ -31,8 +31,8 @@ _emake() {
 	emake CFLAGS="\$(DEFAULT_CFLAGS) ${CFLAGS}" \
 		SHEBANG="${PYTHON}" \
 		DESTDIR="${ED}" \
-		PREFIX=/usr \
-		$@
+		PREFIX="${EPREFIX}/usr" \
+		"$@"
 }
 
 src_compile() {
