@@ -9365,7 +9365,7 @@ sci-electronics/drawtiming 0.7.1-r1 0.7.1-r2: Command line tool for drawing timi
 sci-electronics/eagle 7.3.0: CadSoft EAGLE schematic and printed circuit board (PCB) layout editor
 sci-electronics/electronics-menu 1.0-r1: Creates an "Electronics" desktop menu
 sci-electronics/espresso-ab 1.0-r1: POSIX compliant version of the espresso logic minimization tool
-sci-electronics/geda 1.8.2 1.9.2-r1: GPL Electronic Design Automation (gEDA):gaf core package
+sci-electronics/geda 1.9.2-r1: GPL Electronic Design Automation (gEDA):gaf core package
 sci-electronics/geda-xgsch2pcb 0.1.3-r3: A graphical front-end for the gschem -> pcb workflow
 sci-electronics/gerbv 2.6.0: A RS-274X (Gerber) and NC drill (Excellon) file viewer
 sci-electronics/gnucap 0.35.20091207-r1: GNUCap is the GNU Circuit Analysis Package
