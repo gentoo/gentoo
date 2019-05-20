@@ -12,7 +12,9 @@ SRC_URI="https://getdnsapi.net/releases/${P//./-}/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="doc +getdns_query +getdns_server_mon +idn libev libevent libressl libuv static-libs stubby +threads +unbound"
+IUSE="doc +getdns_query +getdns_server_mon gnutls +idn libev libevent libuv nettle static-libs stubby +threads +unbound"
+
+REQUIRED_USE="gnutls? ( nettle )"
 
 # https://bugs.gentoo.org/661760
 # https://github.com/getdnsapi/getdns/issues/407
@@ -22,11 +24,12 @@ DEPEND="
 	dev-libs/libbsd:=
 	dev-libs/libyaml:=
 	idn? ( net-dns/libidn2:= )
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:0= )
+	!gnutls? ( dev-libs/openssl:0= )
+	gnutls? ( net-libs/gnutls:0=[dane] )
 	libev? ( dev-libs/libev:= )
 	libevent? ( dev-libs/libevent:= )
 	libuv? ( dev-libs/libuv:= )
+	nettle? ( dev-libs/nettle:0= )
 	unbound? ( >=net-dns/unbound-1.4.16:= )
 "
 RDEPEND="
@@ -45,10 +48,12 @@ src_configure() {
 		$(use_enable static-libs static) \
 		$(use_with getdns_query) \
 		$(use_with getdns_server_mon) \
+		$(use_with gnutls) \
 		$(use_with idn libidn2) \
 		$(use_with libev) \
 		$(use_with libevent) \
 		$(use_with libuv) \
+		$(use_with nettle) \
 		$(use_with stubby) \
 		$(use_with threads libpthread) \
 		$(use_with unbound libunbound) \
