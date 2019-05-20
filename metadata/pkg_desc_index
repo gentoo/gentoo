@@ -322,6 +322,7 @@ app-crypt/certbot 0.32.0 0.33.1: Let's encrypt client to automate deployment of 
 app-crypt/certbot-apache 0.32.0 0.33.1: Apache plugin for certbot (Let's Encrypt Client)
 app-crypt/certbot-nginx 0.32.0 0.33.1: Nginx plugin for certbot (Let's Encrypt Client)
 app-crypt/cfssl 1.3.2: Cloudflare's PKI and TLS toolkit
+app-crypt/dehydrated 0.6.2-r1: a client for signing certificates with an ACME-server
 app-crypt/easy-rsa 3.0.4 3.0.5: Small RSA key management package, based on OpenSSL
 app-crypt/gcr 3.20.0 3.28.0 3.28.1: Libraries for cryptographic UIs and accessing PKCS#11 modules
 app-crypt/gentoo-keys 201901130136: A OpenPGP/GPG keyring of official Gentoo release media GPG keys
@@ -566,7 +567,7 @@ app-editors/jext 5.0-r2: A text editor written in Java
 app-editors/joe 4.2 4.3-r1 4.4 4.6: A free ASCII-Text Screen Editor for UNIX
 app-editors/jove 4.16.0.73: Jonathan's Own Version of Emacs, a light emacs-like editor without LISP bindings
 app-editors/kile 2.9.92-r1: Latex Editor and TeX shell based on KDE Frameworks
-app-editors/le 1.14.3 1.16.3: Terminal text editor
+app-editors/le 1.14.3 1.16.3 1.16.5: Terminal text editor
 app-editors/leafpad 0.8.18.1: A simple GTK2 text editor
 app-editors/leo 5.6: Leo: Literate Editor with Outlines
 app-editors/levee 3.5a: Really tiny vi clone, for things like rescue disks
@@ -1017,7 +1018,7 @@ app-misc/glimpse 4.18.6-r1: A index/query system to search a large set of files 
 app-misc/gnote 3.30.0: Desktop note-taking application
 app-misc/gnuit 4.9.5-r2: GNU Interactive Tools - increase speed and efficiency of most daily tasks
 app-misc/go-jira 1.0.17 1.0.20: A simple JIRA commandline client in Go
-app-misc/golly 2.7-r1: simulator for Conway's Game of Life and other cellular automata
+app-misc/golly 2.7-r1 3.2: simulator for Conway's Game of Life and other cellular automata
 app-misc/gourmet 0.17.4-r2: Recipe Organizer and Shopping List Generator for Gnome
 app-misc/gramps 4.2.5 4.2.8: Genealogical Research and Analysis Management Programming System
 app-misc/graphlcd-base 0.1.9: Graphical LCD Driver
@@ -1187,7 +1188,7 @@ app-office/pinpoint 0.1.8-r1: A tool for making hackers do excellent presentatio
 app-office/planner 0.14.6_p20130520: Project manager for Gnome
 app-office/pybliographer 1.2.18 1.4.0-r1: Pybliographer is a tool for working with bibliographic databases
 app-office/sc 7.16-r2: Spreadsheet Calculator
-app-office/scribus 1.5.5_pre20190124: Desktop publishing (DTP) and layout program
+app-office/scribus 1.5.5_pre20190124 1.5.5_pre20190429: Desktop publishing (DTP) and layout program
 app-office/skrooge 2.18.0: Personal finances manager, aiming at being simple and intuitive
 app-office/taskcoach 1.4.3-r1: Simple personal tasks and todo lists manager
 app-office/texmacs 1.99.6-r2: Wysiwyg text processor with high-quality maths
@@ -1199,7 +1200,7 @@ app-officeext/ct2n 1.4.0-r1 1.5.0: Extension for converting text to numbers
 app-officeext/dmaths 3.4.9.0-r1: Mathematics Formula Editor Extension
 app-officeext/languagetool 3.4: Style and Grammar Checker for libreoffice
 app-officeext/ooo2gd 3.0.0-r1: Extension for export to Google docs, zoho and WebDAV
-app-officeext/ooofbtools 2.53: OpenOffice extension for the FictionBook2 format with validation
+app-officeext/ooofbtools 2.53 2.55: Open/LibreOffice extension for the FictionBook2 format with validation
 app-officeext/sun-templates 1.0.0-r1: Collection of sun templates for various countries
 app-officeext/texmaths 0.46.1: LaTeX Equation Editor for LibreOffice
 app-pda/gnupod 0.99.8-r1: A collection of Perl-scripts for iPod
@@ -1243,7 +1244,7 @@ app-portage/pfl 3.0-r2: Searchable online file/package database for Gentoo
 app-portage/portage-utils 0.74: Small and fast Portage helper tools written in C
 app-portage/porthole 0.6.1-r5: A GTK+-based frontend to Portage
 app-portage/porticron 0.7.1: cron script to sync portage and send update mails to root
-app-portage/portpeek 2.1.21 2.1.25: A helper program for maintaining the package.keyword and package.unmask files
+app-portage/portpeek 2.1.21 2.1.25 2.1.27: A helper program for maintaining the package.keyword and package.unmask files
 app-portage/pram 3: Tool to ease merging Pull Requests and git patches
 app-portage/repoman 2.3.10 2.3.11: Repoman is a Quality Assurance tool for Gentoo ebuilds
 app-portage/smart-live-rebuild 1.3.6: Check live packages for updates and emerge them as necessary
@@ -3045,7 +3046,7 @@ dev-libs/libbsd 0.8.6 0.9.1: An library to provide useful functions commonly fou
 dev-libs/libbson 1.8.2 1.13.0: Library routines related to building,parsing and iterating BSON documents
 dev-libs/libbulletml 0.0.6: A Library of Bullet Markup Language
 dev-libs/libburn 1.5.0: Open-source library for reading, mastering and writing optical discs
-dev-libs/libbytesize 1.2-r1: Tiny library providing a C "class" for working with arbitrary big sizes in bytes
+dev-libs/libbytesize 1.2-r1 1.4: Tiny library providing a C "class" for working with arbitrary big sizes in bytes
 dev-libs/libcdio 0.93 2.0.0-r1: A library to encapsulate CD-ROM reading and control
 dev-libs/libcdio-paranoia 0.90_p1-r1 0.93_p1 0.94_p2: an advanced CDDA reader with error correction
 dev-libs/libcec 4.0.2-r2: Library for communicating with the Pulse-Eight USB HDMI-CEC Adaptor
@@ -5550,7 +5551,7 @@ dev-python/regendoc 0.5: Check/update simple file/shell examples in documentatio
 dev-python/regex 2017.04.05: Alternative regular expression module to replace re
 dev-python/rencode 1.0.5: similar to bencode from the BitTorrent project
 dev-python/reno 2.7.0: Release notes manager, storing release notes in a git repo and building docs
-dev-python/reportlab 3.3.0-r2: Tools for generating printable PDF documents from any data source
+dev-python/reportlab 3.3.0-r2 3.5.13-r1: Tools for generating printable PDF documents from any data source
 dev-python/repoze-lru 0.6-r2 0.7: A tiny LRU cache implementation and decorator
 dev-python/repoze-who 2.2: repoze.who is an identification and authentication framework for WSGI
 dev-python/requests 2.21.0-r1: HTTP library for human beings
@@ -7112,6 +7113,7 @@ lxqt-base/lxqt-session 0.13.0: LXQT session manager
 lxqt-base/lxqt-sudo 0.13.0: LXQt GUI frontend for sudo
 mail-client/alpine 2.00-r7 2.21.1 2.21.1-r1: An easy to use text-based based mail and news client
 mail-client/balsa 2.5.6-r1: Email client for GNOME
+mail-client/bower 0.10: A curses terminal client for the Notmuch email system
 mail-client/claws-mail 3.17.3-r1: An email client (and news reader) based on GTK+
 mail-client/clawsker 0.7.8: Applet to edit Claws Mail's hidden preferences
 mail-client/cone 0.92 1.0: CONE: COnsole News reader and Emailer
@@ -8154,7 +8156,7 @@ media-sound/mcdp 0.4a 0.4b: A very small console cd player
 media-sound/meterbridge 0.9.3: Software meterbridge for the UNIX based JACK audio system
 media-sound/mhwaveedit 1.4.22: GTK+ Sound file editor (wav, and a few others.)
 media-sound/mikmod 3.2.8: A console MOD-Player based on libmikmod
-media-sound/mixxx 2.1.1-r1 2.1.8: Advanced Digital DJ tool based on Qt
+media-sound/mixxx 2.1.8: Advanced Digital DJ tool based on Qt
 media-sound/moc 2.5.2 2.6_alpha3: Music On Console - ncurses interface for playing audio files
 media-sound/modplugtools 0.5.1 0.5.3: libmodplug based module players modplug123 and modplugplay
 media-sound/moosic 1.5.6-r1: Music player that focuses on easy playlist management
@@ -8829,6 +8831,7 @@ net-libs/signon-ui 0.15_p20171022: Online accounts signon UI
 net-libs/signond 8.59-r1: Signon daemon for libaccounts-glib
 net-libs/socket_wrapper 1.1.6 1.1.7: A library passing all socket communications through unix sockets
 net-libs/sofia-sip 1.12.11: RFC3261 compliant SIP User-Agent library
+net-libs/srt 1.3.2: Open-source implementation of the Secure Real-time Transport Protocol (SRTP)
 net-libs/telepathy-accounts-signon 1.0: Mission control plugin for Telepathy to provide IM accounts and authentication
 net-libs/telepathy-farstream 0.6.2: Telepathy client library that uses Farstream to handle Call channels
 net-libs/telepathy-glib 0.24.1: GLib bindings for the Telepathy D-Bus protocol
@@ -10204,7 +10207,7 @@ sys-fs/arm-fdisk 3.0.6-r1: edit disk partitions on Acorn machines
 sys-fs/avfs 1.0.4: AVFS is a virtual filesystem that allows browsing of compressed files
 sys-fs/bashmount 3.2.0: Bash script that uses udisks to mount removable devices without GUI
 sys-fs/btrfs-progs 4.4.1 4.10.2 4.19: Btrfs filesystem utilities
-sys-fs/btrfsmaintenance 0.4 0.4.1-r1: Scripts for btrfs maintenance tasks like periodic scrub, balance, trim or defrag
+sys-fs/btrfsmaintenance 0.4 0.4.1-r1 0.4.2: Scripts for btrfs maintenance tasks like periodic scrub, balance, trim or defrag
 sys-fs/cachefilesd 0.10.9 0.10.10-r1: Provides a caching directory on an already mounted filesystem
 sys-fs/cramfs 1.1: Linux filesystem designed to be simple, small, and to compress things well
 sys-fs/cryfs 0.9.7 0.9.9: Encrypted FUSE filesystem that conceals metadata
@@ -10356,7 +10359,7 @@ sys-power/apcupsd 3.14.13 3.14.14-r2: APC UPS daemon with integrated tcp/ip remo
 sys-power/bbswitch 0.8-r2: Toggle discrete NVIDIA Optimus graphics card
 sys-power/cpupower 3.18 4.9.0-r1: Shows and sets processor power related values
 sys-power/hibernate-script 2.0-r6: Hibernate script supporting multiple suspend methods
-sys-power/iasl 20160729: Intel ACPI Source Language (ASL) compiler
+sys-power/iasl 20160729 20180810: Intel ACPI Source Language (ASL) compiler
 sys-power/ncpufreqd 2.4: Daemon controlling CPU speed and temperature
 sys-power/nut 2.7.4-r1: Network-UPS Tools
 sys-power/nvclock 0.8_p20110102-r2: NVIDIA Overclocking Utility

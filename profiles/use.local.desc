@@ -230,6 +230,7 @@ app-crypt/aespipe:asm - Enable assembly modules
 app-crypt/aespipe:cpu_flags_x86_padlock - Use VIA padlock instructions, detected at run time, code still works on non-padlock processors
 app-crypt/ccid:kobil-midentity - Build and install Kobil_mIDentity_switch tool
 app-crypt/ccid:twinserial - Enable twinserial reader
+app-crypt/dehydrated:cron - Install cron job to sign/renew non-existent/changed/expiring certificates
 app-crypt/gnupg:mta - Build mta support using virtual/mta.
 app-crypt/gnupg:smartcard - Build scdaemon software. Enables usage of OpenPGP cards. For other type of smartcards, try app-crypt/gnupg-pkcs11-scd. Bring in dev-libs/libusb as a dependency; enable scdaemon.
 app-crypt/gnupg:tofu - Enable support for Trust on First use trust model; requires dev-db/sqlite.
