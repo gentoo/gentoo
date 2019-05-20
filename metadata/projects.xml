@@ -108,11 +108,6 @@
       <name>Mike Frysinger</name>
       <role>Member (Gentoo/ARM)</role>
     </member>
-    <member>
-      <email>xmw@gentoo.org</email>
-      <name>Michael Weber</name>
-      <role>Member (Gentoo/ARM)</role>
-    </member>
     <member is-lead="1">
       <email>zerochaos@gentoo.org</email>
       <name>Rick Farina</name>
@@ -680,11 +675,6 @@
     <name>Gentoo Common Lisp Project</name>
     <url>https://wiki.gentoo.org/wiki/Project:Common_Lisp</url>
     <description>The Gentoo Common Lisp Project handles Common Lisp related packages in the Gentoo package tree.</description>
-    <member>
-      <email>nimiux@gentoo.org</email>
-      <name>Chema Alonso Josa</name>
-      <role>Developer</role>
-    </member>
   </project>
   <project>
     <email>containers@gentoo.org</email>
@@ -944,11 +934,6 @@
     <member>
       <email>tomjbe@gentoo.org</email>
       <name>Thomas Beierlein</name>
-      <role>member</role>
-    </member>
-    <member>
-      <email>xmw@gentoo.org</email>
-      <name>Michael Weber</name>
       <role>member</role>
     </member>
   </project>
@@ -1998,11 +1983,6 @@
     <subproject ref="emacs@gentoo.org" inherit-members="1"/>
     <subproject ref="scheme@gentoo.org" inherit-members="1"/>
     <member>
-      <email>nimiux@gentoo.org</email>
-      <name>Chema Alonso Josa</name>
-      <role>Developer</role>
-    </member>
-    <member>
       <email>ulm@gentoo.org</email>
       <name>Ulrich Müller</name>
       <role>Developer</role>
@@ -2682,11 +2662,6 @@
       <name>Mike Frysinger</name>
       <role>ppc/ppc64 keywording/stabilization</role>
     </member>
-    <member is-lead="1">
-      <email>xmw@gentoo.org</email>
-      <name>Michael Weber</name>
-      <role>Team Lead</role>
-    </member>
     <member>
       <email>zlogene@gentoo.org</email>
       <name>Mikle Kolyada</name>
@@ -3111,11 +3086,6 @@
       <role>Member</role>
     </member>
     <member>
-      <email>xmw@gentoo.org</email>
-      <name>Michael Weber</name>
-      <role>Member</role>
-    </member>
-    <member>
       <email>zerochaos@gentoo.org</email>
       <name>Rick Farina</name>
       <role>Member</role>
@@ -3193,11 +3163,6 @@
       <email>williamh@gentoo.org</email>
       <name>William Hubbs</name>
       <role>LiveCD Tools Maintainer</role>
-    </member>
-    <member>
-      <email>xmw@gentoo.org</email>
-      <name>Michael Weber</name>
-      <role>ARM Stage Building Apprentice</role>
     </member>
     <member>
       <email>zerochaos@gentoo.org</email>
@@ -3344,11 +3309,6 @@
       <email>vapier@gentoo.org</email>
       <name>Mike Frysinger</name>
       <role>Member ( Core-only )</role>
-    </member>
-    <member>
-      <email>xmw@gentoo.org</email>
-      <name>Michael Weber</name>
-      <role>Member ( Gentoo/SPARC )</role>
     </member>
     <member>
       <email>zlogene@gentoo.org</email>
