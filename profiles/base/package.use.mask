@@ -7,6 +7,12 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# James Le Cuirot <chewi@gentoo.org> (21 May 2019)
+# Doesn't support ffmpeg-4. Portage takes a long time to report the
+# conflict and the feature is half broken anyway. See
+# https://github.com/visualboyadvance-m/visualboyadvance-m/issues/179.
+games-emulation/vbam ffmpeg
+
 # Ulrich Müller <ulm@gentoo.org> (18 May 2019)
 # Firmware images without a known license. Most likely, upstream
 # redistribution may conflict with the licenses or lack thereof
