@@ -29,6 +29,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Stefan Strogin <steils@gentoo.org> (21 May 2019)
+# Depends on >=dev-libs/bglibs-2.04. Bug #347479.
+>=net-mail/mailfront-2.22
+
 # Michał Górny <mgorny@gentoo.org> (19 May 2019)
 # Unmaintained.  The program breaks init.d script (#626580).  Homepage
 # and public sources disappeared.  Last release in 2006.
