@@ -44,6 +44,8 @@ RDEPEND="${DEPEND}
 
 PATCHES=( "${FILESDIR}/${PN}-5.15.5-tests.patch" )
 
+RESTRICT+=" test"
+
 src_prepare() {
 	kde5_src_prepare
 	# we don't need it with PackageKitBackend off
