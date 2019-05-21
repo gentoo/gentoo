@@ -1,0 +1,24 @@
+From f02ca493123b7c8e8eaaa758d787e9e2753fd9b8 Mon Sep 17 00:00:00 2001
+From: Kent Sutherland <git@ksuther.com>
+Date: Fri, 17 May 2019 13:26:52 -0500
+Subject: [PATCH] Include invalid parameters in the maximum number of allowed
+ parameters Fixes hangs when iterating lots of invalid parameters (valid
+ parameters already have a cap from f6c64896988644a7c6d4d5060f6ab574c2a62fbf)
+ oss-fuzz issue 14809
+
+---
+ src/libical/icalparser.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/libical/icalparser.c b/src/libical/icalparser.c
+index 99803418..fa71e8bd 100644
+--- a/src/libical/icalparser.c
++++ b/src/libical/icalparser.c
+@@ -1098,6 +1098,7 @@ icalcomponent *icalparser_add_line(icalparser *parser, char *line)
+ 
+                     icalmemory_free_buffer(str);
+                     str = NULL;
++                    pcount++;
+                     continue;
+                 }
+             }

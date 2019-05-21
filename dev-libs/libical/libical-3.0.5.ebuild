@@ -12,9 +12,15 @@ SRC_URI="https://github.com/${PN}/${PN}/releases/download/v${PV}/${P}.tar.gz"
 
 LICENSE="|| ( MPL-2.0 LGPL-2.1 )"
 SLOT="0/3"
-KEYWORDS="alpha amd64 arm arm64 ~hppa ia64 ~mips ppc ppc64 sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris"
 IUSE="berkdb doc examples static-libs test"
 
+BDEPEND="
+	dev-lang/perl
+	virtual/pkgconfig
+	doc? ( app-doc/doxygen )
+	test? ( ${PYTHON_DEPS} )
+"
 # TODO: disabled until useful
 # 	glib? (
 # 		dev-libs/glib:2
@@ -24,12 +30,6 @@ IUSE="berkdb doc examples static-libs test"
 DEPEND="
 	dev-libs/icu:=
 	berkdb? ( sys-libs/db:= )
-"
-BDEPEND="
-	dev-lang/perl
-	virtual/pkgconfig
-	doc? ( app-doc/doxygen )
-	test? ( ${PYTHON_DEPS} )
 "
 RDEPEND="${DEPEND}
 	sys-libs/timezone-data
@@ -41,8 +41,9 @@ DOCS=(
 )
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-3.0.{4,5}-pkgconfig-libdir.patch
-	"${FILESDIR}"/${P}-tests.patch
+	"${FILESDIR}/${PN}-3.0.4-tests.patch"
+	"${FILESDIR}/${P}-pkgconfig-libdir.patch"
+	"${FILESDIR}/${P}-fix-lots-of-params.patch"
 )
 
 pkg_setup() {

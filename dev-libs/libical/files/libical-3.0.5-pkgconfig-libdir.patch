@@ -38,7 +38,7 @@ Fix pkgconfig libdir paths.
 @@ -8,4 +8,4 @@
  Version: @LIBICAL_LIB_VERSION_STRING@
  Requires: glib-2.0, gobject-2.0, libical
- Cflags: -I{includedir}
+ Cflags: -I${includedir}
 -Libs: -L${libdir} -lical-glib
 +Libs: -lical-glib
  
