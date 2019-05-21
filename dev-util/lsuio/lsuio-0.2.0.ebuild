@@ -1,12 +1,12 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=0
 
 inherit eutils
 
-DESCRIPTION="list available userspace I/O (UIO) devices"
-HOMEPAGE="http://www.osadl.org/UIO.uio.0.html"
+DESCRIPTION="List available userspace I/O (UIO) devices"
+HOMEPAGE="https://www.osadl.org/UIO.uio.0.html"
 SRC_URI="http://www.osadl.org/projects/downloads/UIO/user/${P}.tar.gz"
 
 LICENSE="GPL-2"
