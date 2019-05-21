@@ -4,6 +4,12 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
+# Bernd Waibel <waebbl@gmail.com> (22 May 2019)
+# Marked experimental, needs build and runtime testing. Due to non-
+# available licenses for arnold and maya I can not test these addons.
+# Build and functional tests and reports on issues are appreciated!
+media-gfx/alembic arnold maya
+
 # Georgy Yakovlev <gyakovlev@gentoo.org> (10 May 2019)
 # needs llvm slots which are not stable #678908
 # also prone to weird compilation failures
