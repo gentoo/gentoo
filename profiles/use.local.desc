@@ -2659,6 +2659,7 @@ mail-client/thunderbird:system-libevent - Use the system-wide dev-libs/libevent 
 mail-client/thunderbird:system-libvpx - Use the system-wide media-libs/libvpx instead of bundled.
 mail-client/thunderbird:system-sqlite - Use the system-wide dev-db/sqlite installation with secure-delete enabled
 mail-client/thunderbird-bin:crashreporter - Enable crash reporter for bugs
+mail-client/trojita:addressbook - Build kde-apps/akonadi addressbook plugin
 mail-client/trojita:password - Store passwords securely via dev-libs/qtkeychain
 mail-filter/amavisd-new:courier - Add courier support
 mail-filter/amavisd-new:dkim - Add DomainKeys Identified Mail support
