@@ -16,13 +16,13 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="debug osc rubberband"
 
-RDEPEND="dev-libs/boost
-	media-libs/libsamplerate
+RDEPEND="media-libs/libsamplerate
 	media-libs/libsndfile
 	virtual/jack
 	osc? ( media-libs/liblo )
 	rubberband? ( media-libs/rubberband )"
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	dev-libs/boost"
 BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
