@@ -1,0 +1,10 @@
+DEFINED_PHASES=configure install
+DESCRIPTION=Hard drive bottleneck testing benchmark suite
+EAPI=7
+HOMEPAGE=https://www.coker.com.au/bonnie++/
+IUSE=debug
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=https://www.coker.com.au/bonnie++/bonnie++-1.98.tgz
+_md5_=548e18866c7db750303d888c914a6e66
