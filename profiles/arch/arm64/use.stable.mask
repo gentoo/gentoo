@@ -41,10 +41,6 @@ python_single_target_python3_7
 # Not stable yet.
 vala
 
-# Mart Raudsepp <leio@gentoo.org> (02 Mar 2018)
-# app-crypt/libsecret and co not marked stable yet
-gnome-keyring
-
 # Michał Górny <mgorny@gentoo.org> (19 Feb 2018)
 # virtual/{jdk,jre} are not stable here.
 java

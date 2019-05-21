@@ -2,10 +2,6 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Aaron Bauman <bman@gentoo.org> (20 May 2019)
-# media-libs/gstreamer fails tests
-x11-libs/wxGTK gstreamer
-
-# Aaron Bauman <bman@gentoo.org> (20 May 2019)
 # doc USE ultimately pulls in dev-lang/ocaml[ocamlopt]
 media-gfx/enblend doc
 
@@ -493,10 +489,6 @@ dev-util/dbus-test-runner test
 # Alexandre Rostovtsev <tetromino@gentoo.org> (27 Dec 2012)
 # remove mask when >=app-editors/gedit-3.6 is keyworded here
 dev-util/devhelp gedit
-
-# Alexandre Rostovtsev <tetromino@gentoo.org> (27 Dec 2012)
-# remove mask when app-crypt/libsecret is keyworded here
->=gnome-base/gvfs-1.14 gnome-keyring
 
 # Markus Meier <maekke@gentoo.org> (25 Dez 2012)
 # unkeyworded deps for app-accessibility/speech-dispatcher
