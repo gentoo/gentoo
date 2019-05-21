@@ -1,0 +1,29 @@
+Fix build against exiv2-0.27.1 by using upstream recommended catchall header.
+
+--- a/src/hugin_base/panodata/SrcPanoImage.cpp	2019-02-16 09:18:55.000000000 +0100
++++ b/src/hugin_base/panodata/SrcPanoImage.cpp	2019-05-21 14:26:23.470193305 +0200
+@@ -40,9 +40,7 @@
+ #include <vigra/diff2d.hxx>
+ #include <vigra/imageinfo.hxx>
+ #include <hugin_utils/utils.h>
+-#include <exiv2/exif.hpp>
+-#include <exiv2/image.hpp>
+-#include <exiv2/easyaccess.hpp>
++#include <exiv2/exiv2.hpp>
+ #include <lensdb/LensDB.h>
+ #include "Exiv2Helper.h"
+ 
+--- a/src/hugin1/hugin/RawImport.cpp	2019-02-02 11:11:01.000000000 +0100
++++ b/src/hugin1/hugin/RawImport.cpp	2019-05-21 14:33:00.522541182 +0200
+@@ -35,10 +35,7 @@
+ // workaround for a conflict between exiv2 and wxWidgets/CMake built
+ #define HAVE_PID_T 1
+ #endif
+-#include <exiv2/exif.hpp>
+-#include <exiv2/image.hpp>
+-#include <exiv2/easyaccess.hpp>
+-#include <exiv2/xmpsidecar.hpp>
++#include <exiv2/exiv2.hpp>
+ #ifdef __WXMSW__
+ #include <wx/msw/registry.h>
+ #endif

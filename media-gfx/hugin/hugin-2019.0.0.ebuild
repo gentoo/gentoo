@@ -56,6 +56,8 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 DOCS=( authors.txt README TODO )
 
+PATCHES=( "${FILESDIR}/${P}-exiv2-0.27.1.patch" ) # bug 686366
+
 S=${WORKDIR}/${PN}-$(ver_cut 1-2).0
 
 pkg_setup() {
