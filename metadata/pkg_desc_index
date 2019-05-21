@@ -8422,7 +8422,7 @@ net-analyzer/cutter 1.03-r1: TCP/IP Connection cutting on Linux Firewalls and Ro
 net-analyzer/darkstat 3.0.719: Network traffic analyzer with cute web interface
 net-analyzer/dhcpdump 1.8: DHCP Packet Analyzer/tcpdump postprocessor
 net-analyzer/dnstracer 1.9-r2: Determines where a given nameserver gets its information from
-net-analyzer/driftnet 0.1.6_p20090401-r1: A program which listens to network traffic and picks out images from TCP streams it observes
+net-analyzer/driftnet 0.1.6_p20090401-r1: Listen to network traffic and pick out images from TCP streams observed
 net-analyzer/echoping 6.0.2_p434-r2: Small program to test performances of remote servers
 net-analyzer/egressor 1.0-r2: tool for checking router configuration
 net-analyzer/etherape 0.9.14: A graphical network monitor for Unix modeled after etherman
