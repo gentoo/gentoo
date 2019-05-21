@@ -9961,7 +9961,7 @@ sys-apps/rename 1.3-r2: Easily rename files
 sys-apps/renameutils 0.12.0: Use your favorite text editor to rename files
 sys-apps/rescan-scsi-bus 1.57-r1: Script to rescan the SCSI bus without rebooting
 sys-apps/restorecond 2.7 2.8: Daemon to watch for creation and set default SELinux fcontexts
-sys-apps/ripgrep 0.10.0-r1: a search tool that combines the usability of ag with the raw speed of grep
+sys-apps/ripgrep 0.10.0-r1 11.0.1: a search tool that combines the usability of ag with the raw speed of grep
 sys-apps/rng-tools 5-r2: Daemon to use hardware random number generators
 sys-apps/s6 2.1.3.0: skarnet.org's small and secure supervision software suite
 sys-apps/sandbox 2.12 2.13: sandbox'd LD_PRELOAD hack
