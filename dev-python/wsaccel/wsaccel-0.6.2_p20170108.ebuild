@@ -14,7 +14,7 @@ SRC_URI="https://github.com/methane/wsaccel/archive/${COMMIT}.zip -> ${P}.zip"
 
 SLOT="0"
 LICENSE="Apache-2.0"
-KEYWORDS="amd64 arm x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 arm ~arm64 x86 ~amd64-linux ~x86-linux"
 IUSE="test"
 
 RDEPEND=""
