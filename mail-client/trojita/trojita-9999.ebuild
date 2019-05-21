@@ -17,7 +17,7 @@ HOMEPAGE="http://trojita.flaska.net/"
 
 LICENSE="|| ( GPL-2 GPL-3 )"
 SLOT="0"
-IUSE="+crypt +dbus debug +password test +zlib"
+IUSE="+crypt +dbus debug +password +spell test +zlib"
 
 REQUIRED_USE="password? ( dbus )"
 
@@ -40,6 +40,7 @@ DEPEND="
 	)
 	dbus? ( dev-qt/qtdbus:5 )
 	password? ( dev-libs/qtkeychain[qt5(+)] )
+	spell? ( kde-frameworks/sonnet:5 )
 	zlib? ( sys-libs/zlib )
 "
 RDEPEND="${DEPEND}"
@@ -61,6 +62,7 @@ src_configure() {
 		-DWITH_MIMETIC=$(usex crypt)
 		-DWITH_DBUS=$(usex dbus)
 		-DWITH_QTKEYCHAIN_PLUGIN=$(usex password)
+		-DWITH_SONNET_PLUGIN=$(usex spell)
 		-DWITH_TESTS=$(usex test)
 		-DWITH_ZLIB=$(usex zlib)
 	)
