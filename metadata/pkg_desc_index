@@ -8890,7 +8890,6 @@ net-mail/poppassd_ceti 1.8.5-r2: Password change daemon with PAM support
 net-mail/postfix-logwatch 1.40.03-r3: A log analyzer for postfix
 net-mail/qmail-autoresponder 0.97-r3: Rate-limited autoresponder for qmail
 net-mail/qmail-notify 0.93-r1: Delayed delivery notification for qmail
-net-mail/qmail-qfilter 2.1: qmail-queue multi-filter front end
 net-mail/qmailadmin 1.2.15-r1: A web interface for managing a qmail system with virtual domains
 net-mail/qmhandle 1.3.2: Qmail message queue tool
 net-mail/qprint 1.1: MIME quoted-printable data encoding and decoding utility
