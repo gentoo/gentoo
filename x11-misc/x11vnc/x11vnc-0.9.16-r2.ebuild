@@ -41,8 +41,8 @@ RDEPEND="${COMMON_DEPEND}
 "
 
 PATCHES=(
-	# https://github.com/LibVNC/x11vnc/issues/86
-	"${FILESDIR}"/${P}-crypto.patch
+	"${FILESDIR}"/${P}-crypto.patch # https://github.com/LibVNC/x11vnc/issues/86
+	"${FILESDIR}"/${P}-anonymous-ssl.patch # https://github.com/LibVNC/x11vnc/pull/85
 )
 
 src_prepare() {
