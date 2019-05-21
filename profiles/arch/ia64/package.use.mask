@@ -2,8 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Sergei Trofimovich <slyfox@gentoo.org> (21 May 2019)
-# No ia64 arch support for jit.
+# No ia64 arch support for jit. Version 17 USE=debug
+# required USE=jit.
 dev-lang/spidermonkey jit
+=dev-lang/spidermonkey-17* debug
 
 # Mart Raudsepp <leio@gentoo.org> (17 Mar 2019)
 # Unkeyworded media-libs/opencv dependency, bug #680656
