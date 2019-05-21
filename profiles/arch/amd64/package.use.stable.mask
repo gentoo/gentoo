@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (21 May 2019)
+# dev-db/oracle-instantclient ain't stable
+dev-qt/qtsql oci8
+
 # Andreas Sturmlechner <asturm@gentoo.org> (28 Feb 2019)
 # Depends on unstable media-libs/dav1d
 media-video/vlc dav1d
