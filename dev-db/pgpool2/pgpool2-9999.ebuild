@@ -10,7 +10,7 @@ POSTGRES_COMPAT=( 9.{3..6} {10..11} )
 inherit autotools git-r3 postgres-multi
 
 DESCRIPTION="Connection pool server for PostgreSQL"
-HOMEPAGE="http://www.pgpool.net/"
+HOMEPAGE="https://www.pgpool.net/"
 SRC_URI=""
 LICENSE="BSD"
 SLOT="0"
