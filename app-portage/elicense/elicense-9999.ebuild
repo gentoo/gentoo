@@ -21,3 +21,16 @@ SLOT="0"
 IUSE=""
 
 RDEPEND=">=sys-apps/portage-2.3.62[${PYTHON_USEDEP}]"
+
+src_prepare() {
+	default
+
+	local MY_PV=${PV}
+	if [[ ${PV} == "9999" ]]; then
+		local last_commit=$(git rev-parse HEAD)
+		MY_PV="${last_commit:0:7}-git"
+	fi
+
+	sed -i -e "s/^MY_PV =.*$/MY_PV = \"${MY_PV}\"/" \
+		elicense || die "Failed to sed in version."
+}
