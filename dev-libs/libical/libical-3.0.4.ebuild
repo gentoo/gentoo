@@ -41,8 +41,8 @@ DOCS=(
 )
 
 PATCHES=(
-	"${FILESDIR}/${PN}-3.0.1-pkgconfig-libdir.patch"
-	"${FILESDIR}/${P}-tests.patch"
+	"${FILESDIR}"/${PN}-3.0.{4,5}-pkgconfig-libdir.patch
+	"${FILESDIR}"/${P}-tests.patch
 )
 
 pkg_setup() {
