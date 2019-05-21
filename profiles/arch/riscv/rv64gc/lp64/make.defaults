@@ -3,7 +3,7 @@
 
 # RISC-V rv64gc/lp64 no-multilib profile
 
-CFLAGS="-O2 -pipe -march=rv64gc -mabi=lp64"
+CFLAGS="-O2 -pipe -march=rv64imac -mabi=lp64"
 CXXFLAGS="${CFLAGS}"
 FFLAGS="${CFLAGS}"
 FCFLAGS="${CFLAGS}"
