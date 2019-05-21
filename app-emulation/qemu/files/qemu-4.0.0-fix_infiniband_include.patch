@@ -1,0 +1,12 @@
+diff --git a/hw/rdma/rdma_backend.c b/hw/rdma/rdma_backend.c
+index d1660b64..86715bfd 100644
+--- a/hw/rdma/rdma_backend.c
++++ b/hw/rdma/rdma_backend.c
+@@ -21,7 +21,6 @@
+ #include "qapi/qapi-events-rdma.h"
+ 
+ #include <infiniband/verbs.h>
+-#include <infiniband/umad_types.h>
+ #include <infiniband/umad.h>
+ #include <rdma/rdma_user_cm.h>
+ 

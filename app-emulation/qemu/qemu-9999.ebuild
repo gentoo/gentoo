@@ -206,6 +206,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.5.0-sysmacros.patch
 	"${FILESDIR}"/${PN}-2.11.1-capstone_include_path.patch
 	"${FILESDIR}"/${PN}-4.0.0-mkdir_systemtap.patch #684902
+	"${FILESDIR}"/${PN}-4.0.0-fix_infiniband_include.patch #686412
 )
 
 QA_PREBUILT="
