@@ -14,7 +14,7 @@ if [[ ${PV} =~ 9{4,} ]]; then
 	BDEPEND=""
 else
 	SRC_URI="https://github.com/iovisor/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 ~arm64 ~x86"
 	BDEPEND="app-arch/xz-utils "
 fi
 
