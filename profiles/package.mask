@@ -30,6 +30,11 @@
 #--- END OF EXAMPLES ---
 
 # Stefan Strogin <steils@gentoo.org> (21 May 2019)
+# Unmaintained. Last release in 2005. Does not build with
+# >=dev-libs/bglibs-2.04. Bug #686438.
+net-mail/qmail-qfilter
+
+# Stefan Strogin <steils@gentoo.org> (21 May 2019)
 # Depends on >=dev-libs/bglibs-2.04. Bug #347479.
 >=net-mail/mailfront-2.22
 
