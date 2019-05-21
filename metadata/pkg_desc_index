@@ -9915,6 +9915,7 @@ sys-apps/lnxhc 1.2-r1: Linux Health Checker
 sys-apps/logwatch 7.4.3: Analyzes and Reports on system logs
 sys-apps/lomoco 1.0-r9: Lomoco can configure vendor-specific options on Logitech USB mice
 sys-apps/lsb-release 1.4 1.4-r3: LSB version query program
+sys-apps/lsd 0.14.0: A modern ls with a lot of pretty colors and awesome icons
 sys-apps/lshw 02.18b: Hardware Lister
 sys-apps/makedev 3.23.1-r1: program used for creating device files in /dev
 sys-apps/man 1.6g-r1: Standard commands to read man pages
@@ -10660,8 +10661,8 @@ www-client/elinks 0.12_pre6-r1: Advanced and well-established text-mode web brow
 www-client/epiphany 3.30.4: GNOME webbrowser based on Webkit
 www-client/falkon 3.1.0-r1: Cross-platform web browser using QtWebEngine
 www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
-www-client/firefox 60.6.2: Firefox Web Browser
-www-client/firefox-bin 60.6.2 66.0.5: Firefox Web Browser
+www-client/firefox 60.7.0: Firefox Web Browser
+www-client/firefox-bin 60.7.0 67.0: Firefox Web Browser
 www-client/httrack 3.48.21-r1: HTTrack Website Copier, Open Source Offline Browser
 www-client/links 2.14-r1: A fast and lightweight web browser running in both graphics and text mode
 www-client/lynx 2.8.9_pre16: An excellent console-based web browser with ssl support
