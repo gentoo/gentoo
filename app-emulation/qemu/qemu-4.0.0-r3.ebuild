@@ -207,6 +207,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-sanitize-interp_info.patch
 	"${FILESDIR}"/${PN}-3.1.0-md-clear-md-no.patch
 	"${FILESDIR}"/${PN}-4.0.0-mkdir_systemtap.patch #684902
+	"${FILESDIR}"/${PN}-4.0.0-fix_infiniband_include.patch #686412
 )
 
 QA_PREBUILT="
