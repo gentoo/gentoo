@@ -66,7 +66,7 @@ src_configure() {
 		-DWITH_DBUS=$(usex dbus)
 		-DWITH_QTKEYCHAIN_PLUGIN=$(usex password)
 		-DWITH_SONNET_PLUGIN=$(usex spell)
-		-DWITH_TESTS=$(usex test)
+		-DBUILD_TESTING=$(usex test)
 		-DWITH_ZLIB=$(usex zlib)
 	)
 
