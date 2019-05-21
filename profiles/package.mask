@@ -29,6 +29,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Lars Wendler <polynomial-c@gentoo.org> (21 May 2019)
+# Masked for testing
+=sys-libs/ncurses-6.1_p20181020
+
 # Stefan Strogin <steils@gentoo.org> (21 May 2019)
 # Unmaintained. Last release in 2005. Does not build with
 # >=dev-libs/bglibs-2.04. Bug #686438.
