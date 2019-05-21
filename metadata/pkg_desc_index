@@ -7932,7 +7932,7 @@ media-plugins/gst-plugins-jack 1.14.4: plugin for gstreamer
 media-plugins/gst-plugins-jpeg 1.14.4: JPEG image encoder/decoder plugin for GStreamer
 media-plugins/gst-plugins-ladspa 1.14.3: Ladspa elements for Gstreamer
 media-plugins/gst-plugins-lame 1.14.4: MP3 encoder plugin for GStreamer
-media-plugins/gst-plugins-libav 1.14.4.3.4.5: FFmpeg based gstreamer plugin
+media-plugins/gst-plugins-libav 1.14.4.3.4.5 1.14.4.4.1.3_p20190329: FFmpeg based gstreamer plugin
 media-plugins/gst-plugins-libde265 1.14.3: H.265 decoder plugin for GStreamer
 media-plugins/gst-plugins-libmms 1.14.3: Microsoft Multi Media Server source plugin for GStreamer
 media-plugins/gst-plugins-libnice 0.1.13-r100 0.1.15-r100: GStreamer plugin for ICE (RFC 5245) support
