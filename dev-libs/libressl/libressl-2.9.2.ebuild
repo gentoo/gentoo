@@ -41,6 +41,7 @@ src_prepare() {
 	fi
 
 	eapply "${FILESDIR}"/${PN}-2.8.3-solaris10.patch
+	eapply "${FILESDIR}"/${P}-musl.patch
 	eapply_user
 
 	elibtoolize  # for Solaris
