@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Sebastian Pipping <sping@gentoo.org> (22 May 2019)
+# Masked for removal in 30 days (bug #686562)
+# Unfixed bug, dead upstream, not relevant enough
+sys-fs/pytagsfs
+
 # Lars Wendler <polynomial-c@gentoo.org> (21 May 2019)
 # Masked for testing
 =sys-libs/ncurses-6.1_p20181020
