@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=0
@@ -6,8 +6,8 @@ EAPI=0
 inherit eutils toolchain-funcs
 
 DESCRIPTION="A filter program that removes the LaTeX (or TeX) control sequences"
-HOMEPAGE="http://www.cs.purdue.edu/homes/trinkle/detex/"
-SRC_URI="http://www.cs.purdue.edu/homes/trinkle/detex/${P}.tar"
+HOMEPAGE="https://www.cs.purdue.edu/homes/trinkle/detex/"
+SRC_URI="https://www.cs.purdue.edu/homes/trinkle/detex/${P}.tar"
 
 LICENSE="BSD"
 SLOT="0"
