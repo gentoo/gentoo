@@ -29,6 +29,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Stefan Strogin <steils@gentoo.org> (22 May 2019)
+# Depends on >=dev-libs/bglibs-2.04. Bug #678928.
+>=sys-apps/ucspi-proxy-1.1
+
 # Jonas Stein <jstein@gentoo.org> (22 May 2019)
 # Masked for removal after 2019-06-23. (bug #686260)
 # Wrong license, ships non-GPL image, maintainer needed.
