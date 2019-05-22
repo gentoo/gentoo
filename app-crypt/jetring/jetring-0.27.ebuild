@@ -1,9 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
-
-inherit eutils
+EAPI=7
 
 DESCRIPTION="GPG keyring maintenance using changesets"
 HOMEPAGE="http://joeyh.name/code/jetring/"
@@ -20,8 +18,11 @@ RDEPEND="
 	dev-lang/perl
 	"
 
+S="${WORKDIR}"/${PN}
+
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-0.21-parallel.patch
+	eapply "${FILESDIR}"/${PN}-0.21-parallel.patch
+	eapply_user
 }
 
 src_compile() {
