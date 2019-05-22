@@ -2721,7 +2721,7 @@ dev-java/logback 1.0.13-r1: A generic, reliable, fast & flexible logging framewo
 dev-java/lucene 1.4.3-r4 2.4.1-r2 3.5.0-r2 3.6.2-r2: High-performance, full-featured text search engine written entirely in Java
 dev-java/lzma 9.18: Java code for LZMA compression and decompression
 dev-java/lzmajio 0.95-r1: LzmaInputStream/LzmaOutputStream interacting with underlying LZMA en-/decoders
-dev-java/maven-bin 3.0.5-r1 3.1.1-r1 3.2.5-r1 3.3.9-r1: Project Management and Comprehension Tool for Java
+dev-java/maven-bin 3.0.5-r1 3.1.1-r1 3.2.5-r1 3.3.9-r1 3.6.1-r1: Project Management and Comprehension Tool for Java
 dev-java/mchange-commons 0.2.10: a library of arguably useful Java utilities
 dev-java/mersennetwister 0_pre23765-r1: Modified MersenneTwister java port for Freenet
 dev-java/metainf-services 1.6: Generates META-INF/services files automatically
