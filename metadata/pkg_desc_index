@@ -11150,7 +11150,6 @@ x11-plugins/enigmail 2.0.8-r1: Mozilla extension to provide GPG support in mail 
 x11-plugins/fsviewer 0.2.6-r2: A file system viewer for Window Maker
 x11-plugins/gkrellaclock 0.3.4-r1: Nice analog clock for GKrellM2
 x11-plugins/gkrellfire 0.4.2-r1: CPU load flames for GKrellM 2
-x11-plugins/gkrellflynn 0.8: A funny GKrellM2 load monitor (for Doom(tm) fans)
 x11-plugins/gkrellkam 2.0.0: an Image-Watcher-Plugin for GKrellM2
 x11-plugins/gkrellm-bluez 0.2-r2: GKrellm plugin for monitoring bluetooth (Linux BlueZ) adapters
 x11-plugins/gkrellm-leds 0.8.2-r1: GKrellM2 plugin for monitoring keyboard LEDs
