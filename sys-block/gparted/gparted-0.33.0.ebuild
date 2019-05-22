@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 LICENSE="GPL-2+ FDL-1.2+"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86"
-IUSE="btrfs cryptsetup dmraid f2fs fat hfs jfs kde mdadm ntfs policykit reiserfs reiser4 udf wayland xfs"
+IUSE="btrfs cryptsetup doc dmraid f2fs fat hfs jfs kde mdadm ntfs policykit reiserfs reiser4 udf wayland xfs"
 
 COMMON_DEPEND="
 	!policykit? (
@@ -48,10 +48,10 @@ RDEPEND="${COMMON_DEPEND}
 	udf? ( sys-fs/udftools )
 	wayland? ( x11-apps/xhost )
 	xfs? ( sys-fs/xfsprogs sys-fs/xfsdump )
+	doc? ( app-text/gnome-doc-utils )
 "
 DEPEND="${COMMON_DEPEND}
 	app-text/docbook-xml-dtd:4.1.2
-	app-text/gnome-doc-utils
 	>=dev-util/intltool-0.36.0
 	sys-devel/gettext
 	virtual/pkgconfig
@@ -59,8 +59,8 @@ DEPEND="${COMMON_DEPEND}
 
 src_configure() {
 	gnome2_src_configure \
-		--enable-doc \
 		--enable-online-resize \
+		$(use_enable doc) \
 		$(use_enable wayland xhost-root) \
 		GKSUPROG=kdesu \
 		ac_cv_prog_have_scrollkeeper_update=no
