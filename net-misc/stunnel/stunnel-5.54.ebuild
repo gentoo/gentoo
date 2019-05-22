@@ -18,11 +18,11 @@ SRC_URI="ftp://ftp.stunnel.org/stunnel/archive/${PV%%.*}.x/${P}.tar.gz
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
-IUSE="ipv6 selinux stunnel3 tcpd"
+IUSE="ipv6 libressl selinux stunnel3 tcpd"
 
-DEPEND="
-	tcpd? ( sys-apps/tcp-wrappers )
-	dev-libs/openssl:0="
+DEPEND="!libressl? ( dev-libs/openssl:0= )
+	libressl? ( dev-libs/libressl:0= )
+	tcpd? ( sys-apps/tcp-wrappers )"
 RDEPEND="${DEPEND}
 	stunnel3? ( dev-lang/perl )
 	selinux? ( sec-policy/selinux-stunnel )"
@@ -38,6 +38,9 @@ src_prepare() {
 	# Hack away generation of certificate
 	sed -i -e "s/^install-data-local:/do-not-run-this:/" \
 		tools/Makefile.in || die "sed failed"
+
+	# bugs 656420, 682894
+	eapply "${FILESDIR}"/${P}-libressl.patch
 
 	echo "CONFIG_PROTECT=\"/etc/stunnel/stunnel.conf\"" > "${T}"/20stunnel
 
