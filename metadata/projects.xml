@@ -3016,7 +3016,7 @@
   </project>
   <project>
     <email>riscv@gentoo.org</email>
-    <name>RISC-V project</name>
+    <name>Gentoo Linux RISC-V development</name>
     <url>https://wiki.gentoo.org/wiki/Project:RISC-V</url>
     <description>RISC-V architecture support project</description>
     <member>
