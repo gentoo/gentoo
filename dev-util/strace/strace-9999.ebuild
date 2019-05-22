@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit flag-o-matic toolchain-funcs
 
@@ -10,7 +10,7 @@ if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3 autotools
 else
 	SRC_URI="https://github.com/${PN}/${PN}/releases/download/v${PV}/${P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux"
 fi
 
 DESCRIPTION="A useful diagnostic, instructional, and debugging tool"
@@ -78,7 +78,7 @@ src_configure() {
 }
 
 src_test() {
-	if has usersandbox $FEATURES ; then
+	if has usersandbox ${FEATURES} ; then
 		ewarn "Test suite is known to fail with FEATURES=usersandbox -- skipping ..." #643044
 		return 0
 	fi
@@ -88,6 +88,8 @@ src_test() {
 
 src_install() {
 	default
-	use perl || rm "${ED%/}"/usr/bin/strace-graph
+	if ! use perl ; then
+		rm "${ED}"/usr/bin/strace-graph || die
+	fi
 	dodoc CREDITS
 }
