@@ -5,10 +5,10 @@ DESCRIPTION=Cronie is a standard UNIX daemon cron based on the original vixie-cr
 EAPI=7
 HOMEPAGE=https://github.com/cronie-crond/cronie
 IUSE=+anacron +inotify pam selinux
-KEYWORDS=~alpha amd64 ~arm arm64 hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh sparc x86
+KEYWORDS=~alpha amd64 ~arm arm64 hppa ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh sparc x86
 LICENSE=ISC BSD BSD-2 GPL-2
 RDEPEND=pam? ( virtual/pam ) anacron? ( !sys-process/anacron elibc_musl? ( sys-libs/obstack-standalone ) ) >=sys-process/cronbase-0.3.2 !sys-process/vixie-cron !sys-process/bcron !sys-process/dcron !sys-process/fcron
 SLOT=0
 SRC_URI=https://github.com/cronie-crond/cronie/archive/cronie-1.5.4.tar.gz
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	cron	5ba8300c950866f90ad70a7b2bfddac2	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	a09389deba2c0a7108b581e02c7cecbf	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	pam	69b1cf8e80a877ad42a03042aaa66a5e	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529	user	8bd74731cafdcdad8f7a63637302e073
-_md5_=0a044ff1203db7a930c7e5934568c766
+_md5_=a3c41e5f97996f95d3cbf08b7e0fcd8f
