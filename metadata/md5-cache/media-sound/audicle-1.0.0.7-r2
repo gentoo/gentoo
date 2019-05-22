@@ -1,0 +1,14 @@
+BDEPEND=sys-devel/bison sys-devel/flex virtual/pkgconfig
+DEFINED_PHASES=compile install postinst prepare
+DEPEND=app-eselect/eselect-audicle media-libs/freeglut media-libs/libsndfile virtual/opengl virtual/glu x11-libs/gtk+:2 alsa? ( >=media-libs/alsa-lib-0.9 ) jack? ( virtual/jack ) truetype? ( media-fonts/corefonts media-libs/ftgl )
+DESCRIPTION=A Context-sensitive, On-the-fly Audio Programming Environ/mentality
+EAPI=7
+HOMEPAGE=http://audicle.cs.princeton.edu/
+IUSE=+alsa jack oss truetype
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+REQUIRED_USE=|| ( alsa jack oss )
+SLOT=0
+SRC_URI=http://audicle.cs.princeton.edu/release/files/audicle-1.0.0.7.tgz
+_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	a09389deba2c0a7108b581e02c7cecbf	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
+_md5_=cfba311df0a0a4fb0ae18e1ada221827

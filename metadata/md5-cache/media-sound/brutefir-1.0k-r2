@@ -1,12 +1,12 @@
 DEFINED_PHASES=compile install postinst
-DEPEND=media-libs/alsa-lib media-sound/jack-audio-connection-kit sci-libs/fftw:3.0
+DEPEND=media-libs/alsa-lib sci-libs/fftw:3.0 virtual/jack
 DESCRIPTION=Software convolution engine for applying long FIR filters
 EAPI=7
 HOMEPAGE=https://www.ludd.ltu.se/~torger/brutefir.html
 KEYWORDS=amd64 ~ppc x86
 LICENSE=GPL-2
-RDEPEND=media-libs/alsa-lib media-sound/jack-audio-connection-kit sci-libs/fftw:3.0
+RDEPEND=media-libs/alsa-lib sci-libs/fftw:3.0 virtual/jack
 SLOT=0
 SRC_URI=https://www.ludd.ltu.se/~torger/files/brutefir-1.0k.tar.gz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
-_md5_=63b3fd6a33b3fc5510a65244d531adbe
+_md5_=cb315dfc2f5d847afe092c90b3cae245

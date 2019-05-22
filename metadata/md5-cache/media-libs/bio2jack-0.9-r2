@@ -1,7 +1,8 @@
+BDEPEND=virtual/pkgconfig >=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DEFINED_PHASES=configure install prepare
-DEPEND=media-libs/libsamplerate virtual/jack virtual/pkgconfig >=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=media-libs/libsamplerate virtual/jack
 DESCRIPTION=A library for porting blocked I/O OSS/ALSA audio applications to JACK
-EAPI=6
+EAPI=7
 HOMEPAGE=http://bio2jack.sourceforge.net/
 IUSE=static-libs
 KEYWORDS=alpha amd64 ~arm hppa ~ia64 ppc ppc64 ~sh sparc x86 ~amd64-linux ~x86-linux ~ppc-macos
@@ -10,4 +11,4 @@ RDEPEND=media-libs/libsamplerate virtual/jack
 SLOT=0
 SRC_URI=mirror://sourceforge/bio2jack/bio2jack-0.9.tar.gz
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
-_md5_=74784198a7f99433d50a797346c9ff14
+_md5_=3c9c14f18bb94f68e8e0b8e6f1121cec

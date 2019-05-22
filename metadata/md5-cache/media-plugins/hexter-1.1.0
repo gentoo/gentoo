@@ -1,0 +1,13 @@
+BDEPEND=virtual/pkgconfig
+DEFINED_PHASES=configure
+DEPEND=media-libs/alsa-lib >=media-libs/dssi-0.4 >=media-libs/liblo-0.12 gtk2? ( x11-libs/gtk+:2 ) readline? ( sys-libs/ncurses:0= sys-libs/readline:0= ) media-libs/ladspa-sdk
+DESCRIPTION=Yamaha DX7 modeling DSSI plugin
+EAPI=7
+HOMEPAGE=http://smbolton.com/hexter.html
+IUSE=gtk2 readline
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=media-libs/alsa-lib >=media-libs/dssi-0.4 >=media-libs/liblo-0.12 gtk2? ( x11-libs/gtk+:2 ) readline? ( sys-libs/ncurses:0= sys-libs/readline:0= )
+SLOT=0
+SRC_URI=https://github.com/smbolton/hexter/releases/download/version_1.1.0/hexter-1.1.0.tar.bz2
+_md5_=6de339b3735d477e1e15cfb1ff16672f
