@@ -127,6 +127,7 @@ dev-python/detox
 ~virtual/perl-Math-BigInt-FastCalc-0.500.800
 ~virtual/perl-Math-BigRat-0.261.400
 ~virtual/perl-Module-CoreList-5.201.905.200
+~virtual/perl-Module-CoreList-5.201.905.220
 ~virtual/perl-Module-Load-0.340.0
 ~virtual/perl-Module-Metadata-1.0.36
 ~virtual/perl-Net-Ping-2.710.0
