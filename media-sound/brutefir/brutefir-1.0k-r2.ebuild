@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,9 +13,10 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~ppc x86"
 
-RDEPEND="media-libs/alsa-lib
-	media-sound/jack-audio-connection-kit
-	sci-libs/fftw:3.0"
+RDEPEND="
+	media-libs/alsa-lib
+	sci-libs/fftw:3.0
+	virtual/jack"
 DEPEND="${RDEPEND}"
 
 PATCHES=( "${FILESDIR}"/${P}-ld.patch )
