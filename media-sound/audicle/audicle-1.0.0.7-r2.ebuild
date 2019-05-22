@@ -1,8 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils toolchain-funcs flag-o-matic
+EAPI=7
+
+inherit toolchain-funcs flag-o-matic
 
 DESCRIPTION="A Context-sensitive, On-the-fly Audio Programming Environ/mentality"
 HOMEPAGE="http://audicle.cs.princeton.edu/"
@@ -13,24 +14,31 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="+alsa jack oss truetype"
 
-RDEPEND="jack? ( media-sound/jack-audio-connection-kit )
-	alsa? ( >=media-libs/alsa-lib-0.9 )
-	media-libs/libsndfile
+BDEPEND="
+	sys-devel/bison
+	sys-devel/flex
+	virtual/pkgconfig
+"
+DEPEND="
+	app-eselect/eselect-audicle
 	media-libs/freeglut
+	media-libs/libsndfile
 	virtual/opengl
 	virtual/glu
 	x11-libs/gtk+:2
-	truetype? ( media-libs/ftgl
-		media-fonts/corefonts )
-	app-eselect/eselect-audicle"
-DEPEND="${RDEPEND}
-	sys-devel/bison
-	sys-devel/flex
-	virtual/pkgconfig"
+	alsa? ( >=media-libs/alsa-lib-0.9 )
+	jack? ( virtual/jack )
+	truetype? (
+		media-fonts/corefonts
+		media-libs/ftgl
+	)
+"
+rDEPEND="${DEPEND}"
 
 REQUIRED_USE="|| ( alsa jack oss )"
 
 DOCS=( AUTHORS PROGRAMMER README THANKS TODO VERSIONS )
+
 PATCHES=(
 	"${FILESDIR}/${PN}-1.0.0.6-font.patch"
 	"${FILESDIR}/${P}-hid-smc.patch"
@@ -39,7 +47,7 @@ PATCHES=(
 )
 
 src_prepare() {
-	epatch "${PATCHES[@]}"
+	default
 
 	sed -i \
 		-e 's@../ftgl_lib/FTGL/include@/usr/include/FTGL@' \
@@ -48,8 +56,6 @@ src_prepare() {
 		-e 's/-O3 -c/-c $(CFLAGS)/' \
 		-e 's/$(LIBS)/$(LDFLAGS) $(LIBS)/' \
 		src/makefile.{alsa,jack,oss} || die "sed failed"
-
-	epatch_user
 }
 
 compile_backend() {

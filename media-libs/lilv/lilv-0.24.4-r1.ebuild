@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_5,3_6} )
+PYTHON_COMPAT=( python{2_7,3_5,3_6,3_7} )
 PYTHON_REQ_USE='threads(+)'
 
 inherit python-any-r1 waf-utils bash-completion-r1 multilib-build multilib-minimal
@@ -17,21 +17,24 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~x86"
 IUSE="doc +dyn-manifest static-libs test"
 
-RDEPEND=">=media-libs/lv2-1.14.0-r1[${MULTILIB_USEDEP}]
-	>=media-libs/sratom-0.6.0-r1[${MULTILIB_USEDEP}]
+RDEPEND="
 	>=dev-libs/serd-0.28.0-r1[${MULTILIB_USEDEP}]
-	>=dev-libs/sord-0.16.0-r1[${MULTILIB_USEDEP}]"
+	>=dev-libs/sord-0.16.0-r1[${MULTILIB_USEDEP}]
+	media-libs/libsndfile
+	>=media-libs/lv2-1.14.0-r1[${MULTILIB_USEDEP}]
+	>=media-libs/sratom-0.6.0-r1[${MULTILIB_USEDEP}]
+"
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
 	doc? ( app-doc/doxygen )
-	virtual/pkgconfig[${MULTILIB_USEDEP}]"
+	virtual/pkgconfig[${MULTILIB_USEDEP}]
+"
 
-DOCS=( "AUTHORS" "NEWS" "README" )
+PATCHES=( "${FILESDIR}/includedir.patch" )
 
 src_prepare() {
-	eapply "${FILESDIR}/includedir.patch"
-	sed -i -e 's/^.*run_ldconfig/#\0/' wscript || die
 	default
+	sed -i -e 's/^.*run_ldconfig/#\0/' wscript || die
 	multilib_copy_sources
 }
 
