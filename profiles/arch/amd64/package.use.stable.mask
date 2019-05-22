@@ -45,6 +45,8 @@ app-admin/sudo -sssd
 # Mart Raudsepp <leio@gentoo.org> (01 Nov 2018)
 # net-wireless/iwd not stable yet
 net-misc/networkmanager iwd
+# Ben Kohler <bkohler@gentoo.org> (22 May 2019)
+net-misc/connman iwd
 
 # Mikle Kolyada <zlogene@gentoo.org> (15 Sep 2018)
 # the dependency is unstable
