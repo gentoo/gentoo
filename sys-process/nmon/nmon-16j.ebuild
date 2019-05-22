@@ -1,7 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit flag-o-matic toolchain-funcs
 
@@ -13,17 +13,16 @@ LICENSE="GPL-3"
 SRC_URI="mirror://sourceforge/${PN}/${MY_P}.c"
 
 SLOT="0"
-KEYWORDS="amd64 ~arm ~ppc64 x86"
+KEYWORDS="~amd64 ~arm ~ppc64 ~x86"
 
 RDEPEND="sys-libs/ncurses:0="
-DEPEND="${RDEPEND}
-	virtual/pkgconfig
-"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 S="${WORKDIR}"
 
 src_unpack() {
-	cp -v -f "${DISTDIR}"/${MY_P}.c "${S}"/${PN}.c || die
+	cp "${DISTDIR}"/${MY_P}.c "${S}"/${PN}.c || die
 }
 
 src_configure() {
@@ -41,11 +40,11 @@ src_configure() {
 		$(usex ppc64 -DPOWER '')
 	)
 	append-cflags "${cflags[@]}"
-	export LDLIBS="$( $(tc-getPKG_CONFIG) --libs ncurses ) -lm"
+	append-libs "$($(tc-getPKG_CONFIG) --libs ncurses) -lm"
 }
 
 src_compile() {
-	emake ${PN}
+	emake ${PN} LDLIBS="${LIBS}"
 }
 
 src_install() {
