@@ -17,6 +17,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Brian Evans <grknight@gentoo.org> (22 May 2019)
+# Allow python-exec to install all targets
+# Ack by mgorny
+dev-lang/python-exec -python_targets_python3_7
+
 # Andreas Sturmlechner <asturm@gentoo.org> (21 May 2019)
 # dev-db/oracle-instantclient ain't stable
 dev-qt/qtsql oci8
