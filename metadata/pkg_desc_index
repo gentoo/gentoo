@@ -10398,7 +10398,7 @@ sys-process/latencytop 0.5: tool for identifying where in the system latency is 
 sys-process/lsof 4.91: Lists open files for running Unix processes
 sys-process/memwatch 0.1.0: Interactive memory viewer
 sys-process/minit 0.10-r1: a small yet feature-complete init
-sys-process/nmon 16f: Nigel's performance MONitor for CPU, memory, network, disks, etc...
+sys-process/nmon 16g: Nigel's performance MONitor for CPU, memory, network, disks, etc...
 sys-process/numactl 2.0.11: Utilities and libraries for NUMA systems
 sys-process/numad 0.5 0.5-r1: The NUMA daemon that manages application locality
 sys-process/parallel 20181122: A shell tool for executing jobs in parallel locally or on remote machines
