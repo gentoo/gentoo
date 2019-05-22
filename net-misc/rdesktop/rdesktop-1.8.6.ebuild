@@ -39,7 +39,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.8.3-no_strip.patch
 	"${FILESDIR}"/${PN}-1.8.3-xrandr_configure.patch
 	"${FILESDIR}"/${PN}-1.8.4-libressl.patch
-	"${FILESDIR}"/${P}-use_standard_gssapi.patch
+	"${FILESDIR}"/${PN}-1.8.5-use_standard_gssapi.patch
 )
 
 DOCS=( doc/HACKING doc/TODO doc/keymapping.txt )
