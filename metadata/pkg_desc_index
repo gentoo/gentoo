@@ -1045,7 +1045,7 @@ app-misc/lcd4linux 0.11.0_pre20170527: A small program that grabs information an
 app-misc/lcdproc 0.5.2-r1: Client/Server suite to drive all kinds of LCD (-like) devices
 app-misc/leave 20100918-r1: FreeBSD command-line tool that reminds you when its time to leave
 app-misc/ledit 2.03: A line editor to be used with interactive commands
-app-misc/linux-logo 5.11-r3 5.11-r4: A utility that displays an ANSI/ASCII logo and some system information
+app-misc/linux-logo 5.11-r4: A utility that displays an ANSI/ASCII logo and some system information
 app-misc/lirc 0.10.1 0.10.1-r1: decode and send infra-red signals of many commonly used remote controls
 app-misc/livecd-tools 2.2 2.3 2.4 2.5: Gentoo LiveCD tools for autoconfiguration of hardware
 app-misc/lockfile-progs 0.1.17: Programs to safely lock/unlock files and mailboxes
