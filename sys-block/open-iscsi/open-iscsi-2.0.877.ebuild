@@ -72,7 +72,10 @@ pkg_setup() {
 }
 
 src_prepare() {
-	sed -i -e 's:^\(iscsid.startup\)\s*=.*:\1 = /usr/sbin/iscsid:' etc/iscsid.conf || die
+	sed -e 's:^\(iscsid.startup\)\s*=.*:\1 = /usr/sbin/iscsid:' \
+		-i etc/iscsid.conf || die
+	sed -e 's@\(/sbin/\)@/usr\1@' \
+		-i etc/systemd/iscsi* || die
 	default
 
 	pushd iscsiuio >/dev/null || die
@@ -112,7 +115,9 @@ src_install() {
 	newconfd "${FILESDIR}"/iscsid-conf.d iscsid
 	newinitd "${FILESDIR}"/iscsid-init.d iscsid
 
-	systemd_dounit "${S}"/etc/systemd/iscsid.service
+	systemd_dounit etc/systemd/iscsi.service
+	systemd_dounit etc/systemd/iscsid.service
+	systemd_dounit etc/systemd/iscsid.socket
 
 	keepdir /var/db/iscsi
 	fperms 700 /var/db/iscsi
