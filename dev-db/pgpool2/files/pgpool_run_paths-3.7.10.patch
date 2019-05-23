@@ -1,0 +1,322 @@
+diff -Naruw a/src/include/parser/pg_config_manual.h b/src/include/parser/pg_config_manual.h
+--- a/src/include/parser/pg_config_manual.h	2019-05-15 03:04:59.000000000 -0400
++++ b/src/include/parser/pg_config_manual.h	2019-05-22 17:33:26.657307088 -0400
+@@ -208,7 +208,7 @@
+  * here's where to twiddle it.  You can also override this at runtime
+  * with the postmaster's -k switch.
+  */
+-#define DEFAULT_PGSOCKET_DIR  "/tmp"
++#define DEFAULT_PGSOCKET_DIR  "/run/postgresql"
+ 
+ /*
+  * This is the default event source for Windows event log.
+diff -Naruw a/src/include/pcp/pcp_stream.h b/src/include/pcp/pcp_stream.h
+--- a/src/include/pcp/pcp_stream.h	2019-05-22 17:34:22.377167537 -0400
++++ b/src/include/pcp/pcp_stream.h	2019-05-22 17:34:45.263776883 -0400
+@@ -48,6 +48,6 @@
+ extern int pcp_write(PCP_CONNECTION *pc, void *buf, int len);
+ extern int pcp_flush(PCP_CONNECTION *pc);
+ 
+-#define UNIX_DOMAIN_PATH "/tmp"
++#define UNIX_DOMAIN_PATH "/run/pgpool"
+ 
+ #endif /* PCP_STREAM_H */
+diff -Naruw a/src/include/pool.h b/src/include/pool.h
+--- a/src/include/pool.h	2019-05-15 03:04:59.000000000 -0400
++++ b/src/include/pool.h	2019-05-22 17:37:07.220088017 -0400
+@@ -72,16 +72,16 @@
+ #define HBA_CONF_FILE_NAME "pool_hba.conf"
+ 
+ /* pid file directory */
+-#define DEFAULT_LOGDIR "/tmp"
++#define DEFAULT_LOGDIR "/run/pgpool"
+ 
+ /* Unix domain socket directory */
+-#define DEFAULT_SOCKET_DIR "/tmp"
++#define DEFAULT_SOCKET_DIR "/run/postgresql"
+ 
+ /* Unix domain socket directory for watchdog IPC */
+-#define DEFAULT_WD_IPC_SOCKET_DIR "/tmp"
++#define DEFAULT_WD_IPC_SOCKET_DIR "/run/pgpool"
+ 
+ /* pid file name */
+-#define DEFAULT_PID_FILE_NAME "/var/run/pgpool/pgpool.pid"
++#define DEFAULT_PID_FILE_NAME "/run/pgpool/pgpool.pid"
+ 
+ /* status file name */
+ #define STATUS_FILE_NAME "pgpool_status"
+diff -Naruw a/src/sample/pgpool.conf.sample b/src/sample/pgpool.conf.sample
+--- a/src/sample/pgpool.conf.sample	2019-05-15 03:04:59.000000000 -0400
++++ b/src/sample/pgpool.conf.sample	2019-05-23 06:17:33.641244614 -0400
+@@ -31,10 +31,8 @@
+ port = 9999
+                                    # Port number
+                                    # (change requires restart)
+-socket_dir = '/tmp'
++socket_dir = '/run/postgresql'
+                                    # Unix domain socket path
+-                                   # The Debian package defaults to
+-                                   # /var/run/postgresql
+                                    # (change requires restart)
+ listen_backlog_multiplier = 2
+                                    # Set the backlog parameter of listen(2) to
+@@ -53,10 +51,8 @@
+ pcp_port = 9898
+                                    # Port number for pcp
+                                    # (change requires restart)
+-pcp_socket_dir = '/tmp'
++pcp_socket_dir = '/run/pgpool'
+                                    # Unix domain socket path for pcp
+-                                   # The Debian package defaults to
+-                                   # /var/run/postgresql
+                                    # (change requires restart)
+ 
+ # - Backend Connection Settings -
+@@ -217,13 +213,13 @@
+ # FILE LOCATIONS
+ #------------------------------------------------------------------------------
+ 
+-pid_file_name = '/var/run/pgpool/pgpool.pid'
++pid_file_name = '/run/pgpool/pgpool.pid'
+                                    # PID file name
+                                    # Can be specified as relative to the"
+                                    # location of pgpool.conf file or
+                                    # as an absolute path
+                                    # (change requires restart)
+-logdir = '/var/log/pgpool'
++logdir = '/run/pgpool'
+                                    # Directory of pgPool status file
+                                    # (change requires restart)
+ 
+@@ -512,10 +508,8 @@
+                                     # Authentication key for watchdog communication
+                                     # (change requires restart)
+ 
+-wd_ipc_socket_dir = '/tmp'
++wd_ipc_socket_dir = '/run/pgpool'
+                                     # Unix domain socket path for watchdog IPC socket
+-                                    # The Debian package defaults to
+-                                    # /var/run/postgresql
+                                     # (change requires restart)
+ 
+ 
+diff -Naruw a/src/sample/pgpool.conf.sample-logical b/src/sample/pgpool.conf.sample-logical
+--- a/src/sample/pgpool.conf.sample-logical	2019-05-15 03:04:59.000000000 -0400
++++ b/src/sample/pgpool.conf.sample-logical	2019-05-23 06:24:39.766884345 -0400
+@@ -31,10 +31,8 @@
+ port = 9999
+                                    # Port number
+                                    # (change requires restart)
+-socket_dir = '/tmp'
++socket_dir = '/run/postgresql'
+                                    # Unix domain socket path
+-                                   # The Debian package defaults to
+-                                   # /var/run/postgresql
+                                    # (change requires restart)
+ 
+ 
+@@ -47,10 +45,8 @@
+ pcp_port = 9898
+                                    # Port number for pcp
+                                    # (change requires restart)
+-pcp_socket_dir = '/tmp'
++pcp_socket_dir = '/run/pgpool'
+                                    # Unix domain socket path for pcp
+-                                   # The Debian package defaults to
+-                                   # /var/run/postgresql
+                                    # (change requires restart)
+ listen_backlog_multiplier = 2
+                                    # Set the backlog parameter of listen(2) to
+@@ -218,13 +214,13 @@
+ # FILE LOCATIONS
+ #------------------------------------------------------------------------------
+ 
+-pid_file_name = '/var/run/pgpool/pgpool.pid'
++pid_file_name = '/run/pgpool/pgpool.pid'
+                                    # PID file name
+                                    # Can be specified as relative to the"
+                                    # location of pgpool.conf file or
+                                    # as an absolute path
+                                    # (change requires restart)
+-logdir = '/tmp'
++logdir = '/run/pgpool'
+                                    # Directory of pgPool status file
+                                    # (change requires restart)
+ 
+@@ -511,10 +507,8 @@
+                                     # Authentication key for watchdog communication
+                                     # (change requires restart)
+ 
+-wd_ipc_socket_dir = '/tmp'
++wd_ipc_socket_dir = '/run/pgpool'
+                                     # Unix domain socket path for watchdog IPC socket
+-                                    # The Debian package defaults to
+-                                    # /var/run/postgresql
+                                     # (change requires restart)
+ 
+ 
+diff -Naruw a/src/sample/pgpool.conf.sample-master-slave b/src/sample/pgpool.conf.sample-master-slave
+--- a/src/sample/pgpool.conf.sample-master-slave	2019-05-15 03:04:59.000000000 -0400
++++ b/src/sample/pgpool.conf.sample-master-slave	2019-05-23 06:27:27.259814032 -0400
+@@ -31,10 +31,8 @@
+ port = 9999
+                                    # Port number
+                                    # (change requires restart)
+-socket_dir = '/tmp'
++socket_dir = '/run/postgresql'
+                                    # Unix domain socket path
+-                                   # The Debian package defaults to
+-                                   # /var/run/postgresql
+                                    # (change requires restart)
+ listen_backlog_multiplier = 2
+                                    # Set the backlog parameter of listen(2) to
+@@ -53,10 +51,8 @@
+ pcp_port = 9898
+                                    # Port number for pcp
+                                    # (change requires restart)
+-pcp_socket_dir = '/tmp'
++pcp_socket_dir = '/run/pgpool'
+                                    # Unix domain socket path for pcp
+-                                   # The Debian package defaults to
+-                                   # /var/run/postgresql
+                                    # (change requires restart)
+ 
+ # - Backend Connection Settings -
+@@ -217,13 +213,13 @@
+ # FILE LOCATIONS
+ #------------------------------------------------------------------------------
+ 
+-pid_file_name = '/var/run/pgpool/pgpool.pid'
++pid_file_name = '/run/pgpool/pgpool.pid'
+                                    # PID file name
+                                    # Can be specified as relative to the"
+                                    # location of pgpool.conf file or
+                                    # as an absolute path
+                                    # (change requires restart)
+-logdir = '/tmp'
++logdir = '/run/pgpool'
+                                    # Directory of pgPool status file
+                                    # (change requires restart)
+ 
+@@ -511,10 +507,8 @@
+                                     # Authentication key for watchdog communication
+                                     # (change requires restart)
+ 
+-wd_ipc_socket_dir = '/tmp'
++wd_ipc_socket_dir = '/run/pgpool'
+                                     # Unix domain socket path for watchdog IPC socket
+-                                    # The Debian package defaults to
+-                                    # /var/run/postgresql
+                                     # (change requires restart)
+ 
+ # - Virtual IP control Setting -
+diff -Naruw a/src/sample/pgpool.conf.sample-replication b/src/sample/pgpool.conf.sample-replication
+--- a/src/sample/pgpool.conf.sample-replication	2019-05-15 03:04:59.000000000 -0400
++++ b/src/sample/pgpool.conf.sample-replication	2019-05-23 06:28:29.479664086 -0400
+@@ -31,10 +31,8 @@
+ port = 9999
+                                    # Port number
+                                    # (change requires restart)
+-socket_dir = '/tmp'
++socket_dir = '/run/postgresql'
+                                    # Unix domain socket path
+-                                   # The Debian package defaults to
+-                                   # /var/run/postgresql
+                                    # (change requires restart)
+ listen_backlog_multiplier = 2
+                                    # Set the backlog parameter of listen(2) to
+@@ -53,10 +51,8 @@
+ pcp_port = 9898
+                                    # Port number for pcp
+                                    # (change requires restart)
+-pcp_socket_dir = '/tmp'
++pcp_socket_dir = '/run/pgpool'
+                                    # Unix domain socket path for pcp
+-                                   # The Debian package defaults to
+-                                   # /var/run/postgresql
+                                    # (change requires restart)
+ 
+ # - Backend Connection Settings -
+@@ -216,13 +212,13 @@
+ # FILE LOCATIONS
+ #------------------------------------------------------------------------------
+ 
+-pid_file_name = '/var/run/pgpool/pgpool.pid'
++pid_file_name = '/run/pgpool/pgpool.pid'
+                                    # PID file name
+                                    # Can be specified as relative to the"
+                                    # location of pgpool.conf file or
+                                    # as an absolute path
+                                    # (change requires restart)
+-logdir = '/tmp'
++logdir = '/run/pgpool'
+                                    # Directory of pgPool status file
+                                    # (change requires restart)
+ 
+@@ -510,10 +506,8 @@
+                                     # Authentication key for watchdog communication
+                                     # (change requires restart)
+ 
+-wd_ipc_socket_dir = '/tmp'
++wd_ipc_socket_dir = '/run/pgpool'
+                                     # Unix domain socket path for watchdog IPC socket
+-                                    # The Debian package defaults to
+-                                    # /var/run/postgresql
+                                     # (change requires restart)
+ 
+ 
+diff -Naruw a/src/sample/pgpool.conf.sample-stream b/src/sample/pgpool.conf.sample-stream
+--- a/src/sample/pgpool.conf.sample-stream	2019-05-15 03:04:59.000000000 -0400
++++ b/src/sample/pgpool.conf.sample-stream	2019-05-23 06:29:16.582883904 -0400
+@@ -31,10 +31,8 @@
+ port = 9999
+                                    # Port number
+                                    # (change requires restart)
+-socket_dir = '/tmp'
++socket_dir = '/run/postgresql'
+                                    # Unix domain socket path
+-                                   # The Debian package defaults to
+-                                   # /var/run/postgresql
+                                    # (change requires restart)
+ 
+ 
+@@ -47,10 +45,8 @@
+ pcp_port = 9898
+                                    # Port number for pcp
+                                    # (change requires restart)
+-pcp_socket_dir = '/tmp'
++pcp_socket_dir = '/run/pgpool'
+                                    # Unix domain socket path for pcp
+-                                   # The Debian package defaults to
+-                                   # /var/run/postgresql
+                                    # (change requires restart)
+ listen_backlog_multiplier = 2
+                                    # Set the backlog parameter of listen(2) to
+@@ -218,13 +214,13 @@
+ # FILE LOCATIONS
+ #------------------------------------------------------------------------------
+ 
+-pid_file_name = '/var/run/pgpool/pgpool.pid'
++pid_file_name = '/run/pgpool/pgpool.pid'
+                                    # PID file name
+                                    # Can be specified as relative to the"
+                                    # location of pgpool.conf file or
+                                    # as an absolute path
+                                    # (change requires restart)
+-logdir = '/tmp'
++logdir = '/run/pgpool'
+                                    # Directory of pgPool status file
+                                    # (change requires restart)
+ 
+@@ -511,10 +507,8 @@
+                                     # Authentication key for watchdog communication
+                                     # (change requires restart)
+ 
+-wd_ipc_socket_dir = '/tmp'
++wd_ipc_socket_dir = '/run/pgpool'
+                                     # Unix domain socket path for watchdog IPC socket
+-                                    # The Debian package defaults to
+-                                    # /var/run/postgresql
+                                     # (change requires restart)
+ 
+ 
