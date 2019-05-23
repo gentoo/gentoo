@@ -29,6 +29,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Stefan Strogin <steils@gentoo.org> (23 May 2019)
+# Depends on >=dev-libs/bglibs-2.04. Bug #685294.
+>=net-mail/qmail-autoresponder-2.0
+
 # Stefan Strogin <steils@gentoo.org> (22 May 2019)
 # Depends on >=dev-libs/bglibs-2.04. Bug #678928.
 >=sys-apps/ucspi-proxy-1.1
