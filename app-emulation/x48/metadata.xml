@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+  <maintainer type="person">
+    <email>voyageur@gentoo.org</email>
+    <name>Bernard Cafarelli</name>
+  </maintainer>
   <!-- maintainer-needed -->
   <longdescription lang="en">
     The x48 package is an emulator of the Saturn Processor and the I/O of an
