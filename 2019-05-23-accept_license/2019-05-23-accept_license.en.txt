@@ -1,7 +1,8 @@
 Title: Change of ACCEPT_LICENSE default
 Author: Ulrich Müller <ulm@gentoo.org>
-Posted: 2019-05-19
-Revision: 1
+Author: Thomas Deutschmann <whissi@gentoo.org>
+Posted: 2019-05-23
+Revision: 2
 News-Item-Format: 2.0
 
 The default set of accepted licenses has been changed [1,2] to:
@@ -25,6 +26,11 @@ to /etc/portage/package.license:
 
    app-arch/unrar unRAR
    sys-kernel/linux-firmware @BINARY-REDISTRIBUTABLE
+
+A migration tool app-portage/elicense is available. It scans installed
+packages for licenses that are no longer accepted, and generates a list
+in the same format as the package.license file. See elicense's README
+for further details.
 
 If you want to revert to the previous default, add the following line
 to /etc/portage/make.conf:
