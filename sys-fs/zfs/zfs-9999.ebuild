@@ -98,7 +98,12 @@ pkg_setup() {
 src_prepare() {
 	default
 
-	[[ ${PV} == "9999" ]] && eautoreconf
+	if [[ ${PV} == "9999" ]]; then
+		eautoreconf
+	else
+		# Set revision number
+		sed -i "s/\(Release:\)\(.*\)1/\1\2${PR}-gentoo/" META || die "Could not set Gentoo release"
+	fi
 
 	# Update paths
 	sed -e "s|/sbin/lsmod|/bin/lsmod|" \
@@ -170,6 +175,12 @@ src_install() {
 }
 
 pkg_postinst() {
+	if has_version "<=sys-kernel/genkernel-3.5.3.3"; then
+		einfo "genkernel version 3.5.3.3 and earlier does NOT support"
+		einfo " unlocking pools with native zfs encryption enabled at boot"
+		einfo " use dracut or genkernel-9999 if you requre this functionality"
+	fi
+
 	if ! use kernel-builtin && [[ ${PV} = "9999" ]]; then
 		einfo "Adding ${P} to the module database to ensure that the"
 		einfo "kernel modules and userland utilities stay in sync."
