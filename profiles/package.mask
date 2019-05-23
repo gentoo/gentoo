@@ -450,13 +450,6 @@ app-emulation/e-uae
 # Depends on >=virtual/{jdk,jre}-11 which is masked
 =www-servers/tomcat-9.0.19
 
-# Georgy Yakovlev <gyakovlev@gentoo.org> (18 Apr 2019)
-# This version is provided for testing of the upcoming 0.8.0 release.
-# It is not recommended for use, it contains known bugs.
-# This version supports TRIM.
-=sys-fs/zfs-kmod-0.8.0_rc*
-=sys-fs/zfs-0.8.0_rc*
-
 # Michał Górny <mgorny@gentoo.org> (18 Apr 2019)
 # All current versions of SystemRescueCD contain vulnerable packages.
 # Bug #683724.
