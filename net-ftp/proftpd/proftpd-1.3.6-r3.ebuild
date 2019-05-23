@@ -34,7 +34,12 @@ IUSE="acl authfile ban +caps case clamav copy ctrls deflate diskuse doc dso dynm
 REQUIRED_USE="ban? ( ctrls )
 	msg? ( ctrls )
 	sftp? ( ssl )
-	shaper? ( ctrls )"
+	shaper? ( ctrls )
+
+	mysql? ( ssl )
+	postgres? ( ssl )
+	sqlite? ( ssl )
+"
 
 CDEPEND="acl? ( virtual/acl )
 	caps? ( sys-libs/libcap )
