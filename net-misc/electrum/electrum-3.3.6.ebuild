@@ -1,9 +1,9 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 
-PYTHON_COMPAT=( python3_{5,6} )
+PYTHON_COMPAT=( python3_6 )
 PYTHON_REQ_USE="ncurses?"
 
 inherit desktop distutils-r1 gnome2-utils xdg-utils
@@ -26,7 +26,7 @@ my_langs_to_l10n() {
 	esac
 }
 
-IUSE="audio_modem cli cosign digitalbitbox email greenaddress_it ncurses qrcode +qt5 sync revealer trustedcoin_com vkb"
+IUSE="audio_modem cli coldcard cosign digitalbitbox email greenaddress_it ncurses qrcode +qt5 safe_t sync revealer trustedcoin_com vkb"
 
 for lang in ${MY_LANGS}; do
 	IUSE+=" l10n_$(my_langs_to_l10n ${lang})"
@@ -47,6 +47,8 @@ REQUIRED_USE="
 "
 
 RDEPEND="${PYTHON_DEPS}
+	dev-python/aiohttp-socks[${PYTHON_USEDEP}]
+	dev-python/aiorpcX[${PYTHON_USEDEP}]
 	dev-python/ecdsa[${PYTHON_USEDEP}]
 	dev-python/jsonrpclib[${PYTHON_USEDEP}]
 	dev-python/pbkdf2[${PYTHON_USEDEP}]
@@ -73,7 +75,7 @@ DOCS="RELEASE-NOTES"
 src_prepare() {
 	eapply "${FILESDIR}/3.1.2-no-user-root.patch"
 	eapply "${FILESDIR}/3.2.3-pip-optional-pkgs.patch"
-	eapply "${FILESDIR}/3.1.3-desktop.patch"
+	eapply "${FILESDIR}/3.3.2-desktop.patch"
 
 	# Prevent icon from being installed in the wrong location
 	sed -i '/icons_dirname/d' setup.py || die
@@ -131,6 +133,7 @@ src_prepare() {
 	# keepkey requires trezor
 	for plugin in  \
 		$(usex audio_modem     '' audio_modem          ) \
+		$(usex coldcard        '' coldcard             ) \
 		$(usex cosign          '' cosigner_pool        ) \
 		$(usex digitalbitbox   '' digitalbitbox        ) \
 		$(usex email           '' email_requests       ) \
@@ -138,6 +141,7 @@ src_prepare() {
 		hw_wallet \
 		ledger \
 		keepkey \
+		$(usex safe_t          '' safe_t               ) \
 		$(usex sync            '' labels               ) \
 		$(usex revealer        '' revealer             ) \
 		trezor  \
@@ -155,7 +159,7 @@ src_prepare() {
 }
 
 src_install() {
-	doicon -s 128 icons/${PN}.png
+	doicon -s 128 electrum/gui/icons/${PN}.png
 	distutils-r1_src_install
 }
 
