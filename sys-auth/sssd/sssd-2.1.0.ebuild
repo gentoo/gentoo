@@ -50,7 +50,7 @@ COMMON_DEP="
 	nls? ( >=sys-devel/gettext-0.18 )
 	virtual/libintl
 	netlink? ( dev-libs/libnl:3 )
-	samba? ( >=net-fs/samba-4.10.2 )
+	samba? ( >=net-fs/samba-4.10.2[winbind] )
 	"
 
 RDEPEND="${COMMON_DEP}
