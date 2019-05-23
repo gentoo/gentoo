@@ -1,7 +1,7 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI="7"
 PYTHON_COMPAT=( python2_7 )
 
 inherit distutils-r1
@@ -9,7 +9,7 @@ inherit distutils-r1
 DESCRIPTION="Realtime PostgreSQL database server monitoring tool"
 HOMEPAGE="https://github.com/julmon/pg_activity/"
 SRC_URI="https://github.com/julmon/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 SLOT="0"
 LICENSE="POSTGRESQL"
 
