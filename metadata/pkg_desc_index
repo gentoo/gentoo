@@ -9954,7 +9954,7 @@ sys-apps/pcmciautils 018_p8-r1: PCMCIA userspace utilities for Linux
 sys-apps/pcsc-lite 1.8.24: PC/SC Architecture smartcard middleware library
 sys-apps/pmount 0.9.99_alpha-r3 0.9.99_alpha-r5: Policy based mounter that gives the ability to mount removable devices as a user
 sys-apps/policycoreutils 2.7 2.8: SELinux core utilities
-sys-apps/portage 2.3.62 2.3.62-r2: Portage is the package management and distribution system for Gentoo
+sys-apps/portage 2.3.62-r2: Portage is the package management and distribution system for Gentoo
 sys-apps/preload 0.6.4-r3: Adaptive readahead daemon
 sys-apps/progress 0.13: Coreutils Viewer: show progress for cp, rm, dd, and so forth
 sys-apps/pv 1.6.0-r1 1.6.6: Pipe Viewer: a tool for monitoring the progress of data through a pipe
