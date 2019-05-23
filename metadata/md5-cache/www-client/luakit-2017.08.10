@@ -10,4 +10,4 @@ RDEPEND=dev-db/sqlite:3 dev-libs/glib:2 dev-lua/luafilesystem[luajit=] net-libs/
 SLOT=0
 SRC_URI=https://github.com/luakit/luakit/archive/2017.08.10.tar.gz -> luakit-2017.08.10.tar.gz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
-_md5_=d712a54b4b42e97cdbfe22ddcc84e383
+_md5_=c2db8186f7a32b2799a8d2caf4b2a178
