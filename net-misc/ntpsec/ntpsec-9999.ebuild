@@ -143,6 +143,9 @@ src_install() {
 	# Install the configuration file and sample configuration
 	cp -v "${FILESDIR}"/ntp.conf "${ED}"/etc/ntp.conf
 	cp -Rv "${S}"/etc/ntp.d/ "${ED}"/etc/
+
+	# move doc files to /usr/share/doc/"${P}"
+	use doc && mv -v "${ED}"/usr/share/doc/"${PN}" "${ED}"/usr/share/doc/"${P}"/html
 }
 
 pkg_postinst() {

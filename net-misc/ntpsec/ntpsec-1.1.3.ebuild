@@ -145,7 +145,7 @@ src_install() {
 	cp -Rv "${S}"/etc/ntp.d/ "${ED}"/etc/
 
 	# move doc files to /usr/share/doc/"${P}"
-	mv "${ED}"/usr/share/doc/"${PN}" "${ED}"/usr/share/doc/"${P}"/html
+	use doc && mv -v "${ED}"/usr/share/doc/"${PN}" "${ED}"/usr/share/doc/"${P}"/html
 }
 
 pkg_postinst() {
