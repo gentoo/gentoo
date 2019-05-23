@@ -170,6 +170,13 @@ src_install() {
 }
 
 pkg_postinst() {
+	if has_version "<=sys-kernel/genkernel-3.5.3.3"; then
+		einfo "genkernel version 3.5.3.3 and earlier does NOT support"
+		einfo " unlocking pools with native zfs encryption enabled at boot"
+		einfo " use dracut or genkernel-9999 if you requre this functionality"
+		einfo
+	fi
+
 	if ! use kernel-builtin && [[ ${PV} = "9999" ]]; then
 		einfo "Adding ${P} to the module database to ensure that the"
 		einfo "kernel modules and userland utilities stay in sync."
