@@ -14,7 +14,7 @@ LICENSE="GPL-2"
 # no sub slot wanted (yet), see #578958
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
-IUSE="+24bpp gcrypt gnutls ipv6 +jpeg libressl lzo +png sasl sdl ssl static-libs systemd test +threads +zlib"
+IUSE="+24bpp gcrypt gnutls ipv6 +jpeg libressl lzo +png sasl ssl systemd +threads +zlib"
 # https://bugs.gentoo.org/435326
 # https://bugs.gentoo.org/550916
 REQUIRED_USE="!gnutls? ( ssl? ( threads ) ) png? ( zlib )"
@@ -35,7 +35,6 @@ DEPEND="
 	lzo? ( dev-libs/lzo )
 	png? ( >=media-libs/libpng-1.6.10:0= )
 	sasl? ( dev-libs/cyrus-sasl )
-	sdl? ( media-libs/libsdl2 )
 	systemd? ( sys-apps/systemd:= )
 	zlib? ( >=sys-libs/zlib-1.2.8-r1:0= )"
 RDEPEND="${DEPEND}"
@@ -54,7 +53,6 @@ src_configure() {
 		-DWITH_LZO=$(usex lzo ON OFF)
 		-DWITH_JPEG=$(usex jpeg ON OFF)
 		-DWITH_PNG=$(usex png ON OFF)
-		-DWITH_SDL=$(usex sdl ON OFF)
 		-DWITH_THREADS=$(usex threads ON OFF)
 		-DWITH_GNUTLS=$(usex gnutls ON OFF)
 		-DWITH_OPENSSL=$(usex gnutls OFF $(usex ssl ON OFF))
