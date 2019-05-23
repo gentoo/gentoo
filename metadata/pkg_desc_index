@@ -1876,7 +1876,7 @@ dev-db/bucardo 5.4.1: An asynchronous PostgreSQL replication system
 dev-db/cdb 0.75-r4: Fast, reliable, simple package for creating and reading constant databases
 dev-db/db-je 3.3.75: A high performance, transactional storage engine written entirely in Java
 dev-db/etcd 3.3.12: Highly-available key value store for shared configuration and service discovery
-dev-db/freetds 1.00.341-r1: Tabular Datastream Library
+dev-db/freetds 1.00.341-r1 1.00.558: Tabular Datastream Library
 dev-db/henplus 0.9.8-r1: Java-based multisession SQL shell for databases with JDBC support
 dev-db/hsqldb 1.8.1.3-r2: The leading SQL relational database engine written in Java
 dev-db/kdb 3.2.0: Database connectivity and creation framework for various vendors
@@ -1984,7 +1984,7 @@ dev-erlang/epam 1.0.0 1.0.2: epam for ejabberd to help with PAM authentication s
 dev-erlang/eredis 1.0.8: Erlang Redis client
 dev-erlang/esip 1.0.4 1.0.7 1.0.8 1.0.11: ProcessOne SIP server component
 dev-erlang/ezlib 1.0.1 1.0.2: Native zlib driver for Erlang and Elixir
-dev-erlang/fast_tls 1.0.3 1.0.6 1.0.7 1.0.11: TLS/SSL native driver for Erlang and Elixir
+dev-erlang/fast_tls 1.0.3 1.0.6 1.0.7 1.0.11 1.0.26: TLS/SSL native driver for Erlang and Elixir
 dev-erlang/fast_xml 1.1.22: Fast Expat based Erlang XML parsing library
 dev-erlang/fast_yaml 1.0.3 1.0.5 1.0.6 1.0.9: Fast Yaml native library for Erlang and Elixir
 dev-erlang/goldrush 0.1.8.1 0.1.9: Small Erlang app that provides fast event stream processing
@@ -1997,7 +1997,7 @@ dev-erlang/meck 0.8.3 0.8.4: Mocking library for Erlang
 dev-erlang/p1_mysql 1.0.1 1.0.2: Pure Erlang MySQL driver
 dev-erlang/p1_oauth2 0.6.1: Erlang OAuth 2.0 implementation
 dev-erlang/p1_pgsql 1.1.0 1.1.2: Pure Erlang PostgreSQL driver
-dev-erlang/p1_utils 1.0.4 1.0.5 1.0.7 1.0.8: Erlang utility modules from ProcessOne
+dev-erlang/p1_utils 1.0.4 1.0.5 1.0.7 1.0.8 1.0.13: Erlang utility modules from ProcessOne
 dev-erlang/p1_xmlrpc 1.15.1: Erlang XMLRPC implementation with SSL, cookies, authentication
 dev-erlang/proper 1.2: QuickCheck-inspired property-based testing tool for Erlang
 dev-erlang/protobuffs 0.8.2 0.9.0: Google's Protocol Buffers for Erlang
@@ -2967,7 +2967,7 @@ dev-libs/d0_blind_id 0.5: Blind-ID library for user identification using RSA bli
 dev-libs/darts 0.32: A C++ template library that implements Double-Array
 dev-libs/dbus-glib 0.110: D-Bus bindings for glib
 dev-libs/dietlibc 0.34_pre20140729-r1: A libc optimized for small size
-dev-libs/ding-libs 0.4.0 0.6.0: set of utility libraries (mostly used by sssd)
+dev-libs/ding-libs 0.4.0 0.6.0 0.6.1: set of utility libraries (mostly used by sssd)
 dev-libs/dmalloc 5.5.2-r4 5.5.2-r6: A Debug Malloc Library
 dev-libs/dotconf 1.3-r1: dot.conf configuration file parser
 dev-libs/double-conversion 3.0.3: Binary-decimal and decimal-binary conversion routines for IEEE doubles
@@ -5352,7 +5352,7 @@ dev-python/pygame 1.9.2_pre20120101-r2 1.9.3: Python bindings for SDL multimedia
 dev-python/pygame_sdl2 6.99.12.4 6.99.12.4-r1: Reimplementation of portions of the pygame API using SDL2
 dev-python/pygit2 0.26.4: Python bindings for libgit2
 dev-python/pyglet 1.2.4: Cross-platform windowing and multimedia library for Python
-dev-python/pygments 2.2.0: Pygments is a syntax highlighting package written in Python
+dev-python/pygments 2.2.0 2.3.1: Pygments is a syntax highlighting package written in Python
 dev-python/pygobject 2.28.6-r55 3.28.3 3.32.1: Python bindings for GObject Introspection
 dev-python/pygpgme 0.3-r1: A Python wrapper for the GPGME library
 dev-python/pygraphviz 1.2 1.3.1 1.5: Python wrapper for the Graphviz Agraph data structure
@@ -9117,7 +9117,7 @@ net-misc/youtube-dl 2019.05.11: Download videos from YouTube.com (and more sites
 net-misc/youtube-viewer 3.3.3: A command line utility for viewing youtube-videos in Mplayer
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
 net-misc/zsync 0.6.2-r1: Partial/differential file download client over HTTP which uses the rsync algorithm
-net-nds/gssproxy 0.7.0-r1: daemon to proxy GSSAPI context establishment and channel handling
+net-nds/gssproxy 0.7.0-r1 0.8.2: daemon to proxy GSSAPI context establishment and channel handling
 net-nds/jxplorer 3.3.1: A fully functional ldap browser written in java
 net-nds/ldapvi 1.7_p20101214: Manage LDAP entries with a text editor
 net-nds/openldap 2.4.45: LDAP suite of application and development tools
