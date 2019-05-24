@@ -5900,7 +5900,7 @@ dev-ruby/erubis 2.7.0-r2: Erubis is an implementation of eRuby
 dev-ruby/eventmachine 1.2.7: EventMachine is a fast, simple event-processing library for Ruby programs
 dev-ruby/execjs 2.7.0: ExecJS lets you run JavaScript code from Ruby
 dev-ruby/facter 3.9.2 3.12.3 3.12.4 3.13.0 3.13.2: A cross-platform ruby library for retrieving facts from operating systems
-dev-ruby/fakefs 0.11.3 0.19.2: A fake filesystem. Use it in your tests
+dev-ruby/fakefs 0.19.2: A fake filesystem. Use it in your tests
 dev-ruby/fakeweb 1.3.0.20170806: Helper for faking web requests in Ruby
 dev-ruby/fast_gettext 1.6.0: GetText but 3.5x faster, 560x less memory, clean namespace and threadsave!
 dev-ruby/fast_xs 0.8.0-r2: fast_xs text escaping library ruby bindings
@@ -6001,7 +6001,7 @@ dev-ruby/rdoc 5.1.0: An extended version of the RDoc library from Ruby 1.8
 dev-ruby/rdtool 0.6.38-r2: A multipurpose documentation format for Ruby
 dev-ruby/redcarpet 3.4.0: A Ruby wrapper for Upskirt
 dev-ruby/redcloth 4.3.2 4.3.2-r1: A module for using Textile in Ruby
-dev-ruby/regexp_parser 1.3.0: A library for tokenizing, lexing, and parsing Ruby regular expressions
+dev-ruby/regexp_parser 1.3.0 1.4.0: A library for tokenizing, lexing, and parsing Ruby regular expressions
 dev-ruby/regexp_property_values 0.3.4: See which property values are supported by the regular expression engine
 dev-ruby/rest-client 2.0.2: Simple Simple HTTP and REST client for Ruby
 dev-ruby/rexical 1.0.5-r3: Rexical is a lexical scanner generator
