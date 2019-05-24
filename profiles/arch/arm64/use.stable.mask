@@ -13,10 +13,6 @@ ocamlopt
 consolekit
 
 # Mart Raudsepp <leio@gentoo.org> (07 Feb 2019)
-# app-misc/tracker not stable yet
-tracker
-
-# Mart Raudsepp <leio@gentoo.org> (07 Feb 2019)
 # media-sound/musepack-tools not stable yet
 musepack
 
