@@ -42,10 +42,6 @@ python_single_target_python3_7
 vala
 
 # Michał Górny <mgorny@gentoo.org> (19 Feb 2018)
-# virtual/{jdk,jre} are not stable here.
-java
-
-# Michał Górny <mgorny@gentoo.org> (19 Feb 2018)
 # dev-lang/tk is not stable here.
 tk
 
