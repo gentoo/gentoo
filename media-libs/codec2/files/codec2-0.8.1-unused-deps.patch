@@ -1,0 +1,79 @@
+From 3f786481d49e25a089586df4656cab563c90ae41 Mon Sep 17 00:00:00 2001
+From: David <david@rowetel.com>
+Date: Thu, 25 Apr 2019 06:47:06 +0930
+Subject: [PATCH] removed unneeded dependancy on libspeex and libsamplerate,
+ these were just used for random misc programs
+
+---
+ CMakeLists.txt      | 30 ------------------------------
+ unittest/CMakeLists.txt |  9 ---------
+ 2 files changed, 8 insertions(+), 48 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 669b8be1..6c8eae19 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -195,36 +195,6 @@ if(UNITTEST)
+     find_package(Threads REQUIRED)
+     message(STATUS "Threads library flags: ${CMAKE_THREAD_LIBS_INIT}")
+ 
+-    #
+-    # Find speex library
+-    #
+-    message(STATUS "Looking for Speex DSP library.")
+-    find_path(SPEEXDSP_INCLUDE_DIR speex/speex_preprocess.h)
+-    find_library(SPEEXDSP_LIBRARY speexdsp)
+-    message(STATUS "  Speex DSP headers: ${SPEEXDSP_INCLUDE_DIR}")
+-    message(STATUS "  Speex DSP library: ${SPEEXDSP_LIBRARY}")
+-    if(NOT SPEEXDSP_INCLUDE_DIR AND NOT SPEEXDSP_LIBRARY)
+-        message(FATAL_ERROR "Speex DSP library not found!")
+-    endif()
+-
+-    #
+-    # Samplerate Library
+-    #
+-    message(STATUS "Looking for samplerate...")
+-    find_library(LIBSAMPLERATE samplerate)
+-    find_path(LIBSAMPLERATE_INCLUDE_DIR samplerate.h)
+-    message(STATUS "  samplerate headers: ${LIBSAMPLERATE_INCLUDE_DIR}")
+-    message(STATUS "  samplerate library: ${LIBSAMPLERATE}")
+-    if(LIBSAMPLERATE AND LIBSAMPLERATE_INCLUDE_DIR)
+-        list(APPEND FREEDV_LINK_LIBS ${CMAKE_REQUIRED_LIBRARIES})
+-        include_directories(${LIBSAMPLERATE_INCLUDE_DIR})
+-    else(LIBSTAMPLERATE AND LIBSAMPLERATE_INCLUDE_DIR)
+-        message(FATAL_ERROR "samplerate library not found.
+-On Linux systems try installing:
+-    samplerate-devel  (RPM based systems)
+-    libsamplerate-dev (DEB based systems)")
+-    endif(LIBSAMPLERATE AND LIBSAMPLERATE_INCLUDE_DIR)
+-
+     add_subdirectory(unittest)
+     add_subdirectory(misc)
+ endif(UNITTEST)
+diff --git a/unittest/CMakeLists.txt b/unittest/CMakeLists.txt
+index 35a944fe..9b2e0e95 100644
+--- a/unittest/CMakeLists.txt
++++ b/unittest/CMakeLists.txt
+@@ -73,12 +73,6 @@
+ add_executable(tfifo tfifo.c ../src/fifo.c)
+ target_link_libraries(tfifo codec2 ${CMAKE_THREAD_LIBS_INIT})
+ 
+-add_executable(speexnoisesup speexnoisesup.c)
+-target_link_libraries(speexnoisesup ${SPEEXDSP_LIBRARY})
+-set_target_properties(speexnoisesup
+-    PROPERTIES INCLUDE_DIRECTORIES ${SPEEXDSP_INCLUDE_DIR}
+-)
+-
+ add_executable(fdmdv_mem fdmdv_mem.c)
+ 
+ add_executable(raw2h raw2h.c)
+@@ -91,9 +85,6 @@
+ add_executable(tnewamp1 tnewamp1.c ../src/quantise.c ../src/newamp1.c ../src/mbest.c ../src/kiss_fft.c ../src/sine.c ../src/nlp.c ../src/dump.c ../src/octave.c ${CODEBOOKS})
+ target_link_libraries(tnewamp1 codec2)
+ 
+-add_executable(tsrc tsrc.c)
+-target_link_libraries(tsrc samplerate)
+-
+ add_executable(tlininterp tlininterp.c)
+ add_executable(tdec tdec.c)
+ 
