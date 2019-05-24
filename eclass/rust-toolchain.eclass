@@ -4,7 +4,7 @@
 # @ECLASS: rust-toolchain.eclass
 # @MAINTAINER:
 # Rust Project <rust@gentoo.org>
-# @SUPPORTED_EAPIS: 6
+# @SUPPORTED_EAPIS: 6 7
 # @BLURB: helps map gentoo arches to rust ABIs
 # @DESCRIPTION:
 # This eclass contains a src_unpack default phase function, and
