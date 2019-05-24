@@ -8999,7 +8999,6 @@ net-misc/lksctp-tools 1.0.13 1.0.16 1.0.17: Tools for Linux Kernel Stream Contro
 net-misc/lldpd 0.9.3-r1: Implementation of IEEE 802.1ab (LLDP)
 net-misc/mcproxy 1.1.1-r1: A multicast proxy for IGMP/MLD
 net-misc/memcached 1.4.39 1.5.2 1.5.10 1.5.12 1.5.14: High-performance, distributed memory object caching system
-net-misc/mindterm 3.4: A Java SSH Client
 net-misc/minidlna 1.2.1-r1: DLNA/UPnP-AV compliant media server
 net-misc/mobile-broadband-provider-info 20170310 20190116: Database of mobile broadband service providers
 net-misc/modemmanager 1.8.2 1.8.2-r1: Modem and mobile broadband management libraries
