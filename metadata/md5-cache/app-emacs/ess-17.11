@@ -3,11 +3,11 @@ DEPEND=app-text/texi2html virtual/latex-base >=virtual/emacs-23
 DESCRIPTION=Emacs Speaks Statistics
 EAPI=6
 HOMEPAGE=http://ess.r-project.org/
-KEYWORDS=amd64 ~arm ~ppc x86 ~amd64-linux ~x86-linux ~x86-macos
+KEYWORDS=amd64 ~arm ppc x86 ~amd64-linux ~x86-linux ~x86-macos
 LICENSE=GPL-2+ GPL-3+ Texinfo-manual
 RDEPEND=>=virtual/emacs-23
 RESTRICT=test
 SLOT=0
 SRC_URI=http://ess.r-project.org/downloads/ess/ess-17.11.tgz
 _eclasses_=elisp	efe1c459331d853614b12c63ab169a32	elisp-common	23f47b2e1de7abf387105eddd1318738	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190
-_md5_=5012b1121d3b30c3ccd5e916cd7e541e
+_md5_=90a00ed9d667eb27c9683562aec0fbbf
