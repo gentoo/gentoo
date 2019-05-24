@@ -132,54 +132,6 @@ dev-db/mariadb-galera
 dev-python/detox
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (11 May 2019)
-# Perl 5.30 preparation block. Will be unmasked some time after the
-# actual release of Perl 5.30.0.
-=dev-lang/perl-5.30*
-~virtual/perl-Archive-Tar-2.320.0
-~virtual/perl-CPAN-2.220.0
-~virtual/perl-Compress-Raw-Bzip2-2.84.0
-~virtual/perl-Compress-Raw-Zlib-2.84.0
-~virtual/perl-DB_File-1.843.0
-~virtual/perl-Data-Dumper-2.174.0
-~virtual/perl-Devel-PPPort-3.520.0
-~virtual/perl-Digest-SHA-6.20.0
-~virtual/perl-Encode-3.10.0
-~virtual/perl-ExtUtils-CBuilder-0.280.231
-~virtual/perl-ExtUtils-Manifest-1.720.0
-~virtual/perl-ExtUtils-ParseXS-3.400.0
-~virtual/perl-File-Path-2.160.0
-~virtual/perl-File-Spec-3.780.0
-~perl-core/File-Temp-0.230.900
-~virtual/perl-File-Temp-0.230.900
-~virtual/perl-HTTP-Tiny-0.76.0
-~virtual/perl-IO-1.400.0
-~virtual/perl-IO-Compress-2.84.0
-~virtual/perl-IPC-Cmd-1.20.0
-~virtual/perl-JSON-PP-4.20.0
-~virtual/perl-Math-BigInt-1.999.816
-~virtual/perl-Math-BigInt-FastCalc-0.500.800
-~virtual/perl-Math-BigRat-0.261.400
-~virtual/perl-Module-CoreList-5.201.905.200
-~virtual/perl-Module-CoreList-5.201.905.220
-~virtual/perl-Module-Load-0.340.0
-~virtual/perl-Module-Metadata-1.0.36
-~virtual/perl-Net-Ping-2.710.0
-~virtual/perl-Storable-3.150.0
-~virtual/perl-Test-Simple-1.302.162
-~virtual/perl-Thread-Queue-3.130.0
-~virtual/perl-Time-HiRes-1.976.0
-~virtual/perl-Time-Local-1.280.0
-~virtual/perl-Time-Piece-1.330.0
-~virtual/perl-Unicode-Collate-1.270.0
-~virtual/perl-bignum-0.510.0
-~virtual/perl-parent-0.237.0
-~virtual/perl-podlators-4.110.0
-~virtual/perl-threads-shared-1.600.0
-~virtual/perl-version-0.992.400
-~dev-perl/Math-BigInt-GMP-1.600.600
-~dev-perl/Math-BigInt-Lite-0.180.0
-
-# Andreas K. Hüttel <dilfridge@gentoo.org> (11 May 2019)
 # Perl 5.24 will be removed soon. Please upgrade.
 <dev-lang/perl-5.26.2
 =virtual/perl-Archive-Tar-2.40.100_rc-r6
