@@ -16,7 +16,7 @@ glob-0.2.11
 kernel32-sys-0.2.2
 libc-0.2.55
 lscolors-0.5.0
-lsd-0.15.0
+lsd-0.15.1
 num-integer-0.1.39
 num-traits-0.2.6
 rand-0.4.3
