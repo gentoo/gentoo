@@ -30,6 +30,11 @@
 #--- END OF EXAMPLES ---
 
 # Aaron Bauman <bman@gentoo.org> (23 May 2019)
+# Upstreami now requires registration to download
+# EAPI2. Removal in 30 days.
+net-misc/mindterm
+
+# Aaron Bauman <bman@gentoo.org> (23 May 2019)
 # Unmaintained, EAPI2, updates available upstream
 # Oh yea, removal in 30 days
 dev-util/pmd
