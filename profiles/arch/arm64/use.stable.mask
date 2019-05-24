@@ -29,10 +29,6 @@ fltk
 python_targets_python3_7
 python_single_target_python3_7
 
-# Michał Górny <mgorny@gentoo.org> (16 Apr 2018)
-# Not stable yet.
-vala
-
 # Michał Górny <mgorny@gentoo.org> (19 Feb 2018)
 # dev-lang/tk is not stable here.
 tk
