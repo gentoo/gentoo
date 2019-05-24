@@ -7,18 +7,18 @@ EAPI=7
 PYTHON_COMPAT=( python2_7 pypy )
 EHG_PROJECT="pypy"
 EHG_REPO_URI="https://bitbucket.org/pypy/pypy"
-EHG_REVISION="py3.5"
+EHG_REVISION="py3.6"
 inherit check-reqs mercurial pax-utils python-any-r1 toolchain-funcs
 
-MY_P=pypy3.5-v${PV}
+MY_P=pypy3.6-v${PV}
 
-DESCRIPTION="A fast, compliant alternative implementation of the Python (3.5) language"
+DESCRIPTION="A fast, compliant alternative implementation of the Python (3.6) language"
 HOMEPAGE="http://pypy.org/"
 SRC_URI=""
 
 LICENSE="MIT"
 # pypy3 -c 'import sysconfig; print(sysconfig.get_config_var("SOABI"))'
-SLOT="0/71"
+SLOT="0/71-py36"
 KEYWORDS=""
 IUSE="bzip2 gdbm +jit libressl low-memory ncurses sandbox sqlite tk"
 
@@ -178,11 +178,17 @@ src_compile() {
 #    "lzma": "_lzma_build.py",
 #    "_decimal": "_decimal_build.py",
 #    "_ssl": "_ssl_build.py",
-	cffi_targets=( audioop syslog pwdgrp resource lzma decimal ssl )
+#    "_blake2": "_blake2/_blake2_build.py",
+#    "_sha3": "_sha3/_sha3_build.py",
+	cffi_targets=( blake2/_blake2 sha3/_sha3 ssl
+		audioop syslog pwdgrp resource lzma decimal )
 	use gdbm && cffi_targets+=( gdbm )
 	use ncurses && cffi_targets+=( curses )
 	use sqlite && cffi_targets+=( sqlite3 )
 	use tk && cffi_targets+=( tkinter/tklib )
+
+	einfo "Please disregard the import errors during CFFI cache generation."
+	einfo "They come from modules not built yet."
 
 	local t
 	# all modules except tkinter output to .
@@ -208,7 +214,7 @@ src_test() {
 }
 
 src_install() {
-	local dest=/usr/lib/pypy3.5
+	local dest=/usr/lib/pypy3.6
 	einfo "Installing PyPy ..."
 	exeinto "${dest}"
 	doexe pypy3-c libpypy3-c.so
@@ -217,7 +223,7 @@ src_install() {
 	# preserve mtimes to avoid obsoleting caches
 	insopts -p
 	doins -r include lib_pypy lib-python
-	dosym ../lib/pypy3.5/pypy3-c /usr/bin/pypy3
+	dosym ../lib/pypy3.6/pypy3-c /usr/bin/pypy3
 	dodoc README.rst
 
 	if ! use gdbm; then
@@ -239,7 +245,7 @@ src_install() {
 	local -x PYTHON=${ED%/}${dest}/pypy3-c
 	# we can't use eclass function since PyPy is dumb and always gives
 	# paths relative to the interpreter
-	local PYTHON_SITEDIR=${EPREFIX}/usr/lib/pypy3.5/site-packages
+	local PYTHON_SITEDIR=${EPREFIX}/usr/lib/pypy3.6/site-packages
 	python_export pypy3 EPYTHON
 
 	echo "EPYTHON='${EPYTHON}'" > epython.py || die
