@@ -10637,7 +10637,7 @@ www-apps/curator 3.0_p20110120-r2: Gallery generator
 www-apps/dspam-web 3.10.1: Web based administration and user controls for dspam
 www-apps/grafana-bin 5.4.3-r1: Gorgeous metric viz, dashboards & editors for Graphite, InfluxDB & OpenTSDB
 www-apps/groupoffice 3.7.52 4.0.97 4.1.7: Group-Office is a powerful modular Intranet application framework
-www-apps/icingaweb2 2.6.1 2.6.2: Icinga Web 2 - Frontend for icinga2
+www-apps/icingaweb2 2.6.2 2.6.3: Icinga Web 2 - Frontend for icinga2
 www-apps/icingaweb2-module-director 1.6.2: Icinga Web 2 plugin for configuration
 www-apps/icingaweb2-module-graphite 1.0.1-r1: Icinga Web 2 plugin for Graphite
 www-apps/icingaweb2-module-pnp4nagios 1.0.1: Icinga Web 2 plugin for pnp4nagios
