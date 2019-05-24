@@ -92,7 +92,7 @@ multilib_src_install() {
 
 pkg_postinst() {
 	elog ""
-	elog "Please note that for Skylake and newer architectures, Beignet has been deprecated upstream in favour of dev-libs/intel-neo."
+	elog "Please note that for Broadwell and newer architectures, Beignet has been deprecated upstream in favour of dev-libs/intel-neo."
 	elog "It remains the recommended solution for Sandy Bridge, Ivy Bridge and Haswell."
 	elog ""
 
