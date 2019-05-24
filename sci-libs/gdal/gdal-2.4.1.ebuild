@@ -24,7 +24,7 @@ COMMON_DEPEND="
 	dev-libs/libpcre
 	dev-libs/libxml2:=
 	media-libs/tiff:0=
-	sci-libs/libgeotiff
+	sci-libs/libgeotiff:=
 	sys-libs/zlib:=[minizip(+)]
 	armadillo? ( sci-libs/armadillo:=[lapack] )
 	curl? ( net-misc/curl )
