@@ -1,16 +1,16 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=0
 
 inherit eutils toolchain-funcs
 
-DESCRIPTION="A shared audio recording server"
-HOMEPAGE="http://bisqwit.iki.fi/source/erec.html"
-SRC_URI="http://bisqwit.iki.fi/src/arch/${P}.tar.bz2"
+DESCRIPTION="Shared audio recording server"
+HOMEPAGE="https://bisqwit.iki.fi/source/erec.html"
+SRC_URI="https://bisqwit.iki.fi/src/arch/${P}.tar.bz2"
 
 KEYWORDS="amd64 ~ppc sparc x86"
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 IUSE=""
 
