@@ -1112,6 +1112,9 @@ toolchain_src_configure() {
 	*-elf|*-eabi)
 		confgcc+=( --with-newlib )
 		;;
+	*-musl*)
+		confgcc+=( --enable-__cxa_atexit )
+		;;
 	*-gnu*)
 		confgcc+=(
 			--enable-__cxa_atexit
