@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -7,7 +7,7 @@ AUTOTOOLS_AUTORECONF=1
 inherit autotools-utils flag-o-matic
 
 DESCRIPTION="Library for free and lossless compression of the LAS LiDAR format"
-HOMEPAGE="http://www.laszip.org/"
+HOMEPAGE="https://laszip.org/"
 SRC_URI="https://github.com/LASzip/LASzip/releases/download/v${PV}/${PN}-src-${PV}.tar.gz"
 
 SLOT="0"
