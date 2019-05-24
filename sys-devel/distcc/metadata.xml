@@ -14,7 +14,6 @@
 		machines on a network.
 	</longdescription>
 	<use>
-		<flag name="crossdev">Enable support for <pkg>sys-devel/crossdev</pkg></flag>
 		<flag name="gssapi">Enable support for <pkg>net-libs/libgssglue</pkg></flag>
 	</use>
 </pkgmetadata>
