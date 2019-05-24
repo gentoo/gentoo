@@ -181,7 +181,7 @@ RDEPEND="
 		x11-libs/libXinerama
 		x11-libs/libXpm
 	)
-	soxr? ( media-libs/soxr )
+	soxr? ( >=media-libs/soxr-0.1.2 )
 	speex? (
 		>=media-libs/speex-1.2.0
 		media-libs/speexdsp
