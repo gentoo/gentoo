@@ -37,7 +37,8 @@ DEPEND="${COMMON_DEPEND}
 	app-arch/xz-utils
 	>=dev-util/intltool-0.40
 	virtual/pkgconfig
-	sys-devel/gettext"
+	sys-devel/gettext
+	dev-util/glib-utils"
 
 S="${WORKDIR}"/${MY_P}
 

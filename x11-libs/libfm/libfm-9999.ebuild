@@ -33,7 +33,8 @@ DEPEND="${COMMON_DEPEND}
 	)
 	>=dev-util/intltool-0.40
 	virtual/pkgconfig
-	sys-devel/gettext"
+	sys-devel/gettext
+	dev-util/glib-utils"
 
 DOCS=( AUTHORS TODO )
 
