@@ -4,10 +4,10 @@ DESCRIPTION=Lua String Hashing/Indexing Library
 EAPI=6
 HOMEPAGE=http://olivinelabs.com/busted/
 IUSE=luajit test
-KEYWORDS=~amd64 arm ppc ~ppc64 ~x86
+KEYWORDS=~amd64 arm ppc ppc64 ~x86
 LICENSE=MIT
 RDEPEND=!luajit? ( >=dev-lang/lua-5.1:= ) luajit? ( dev-lang/luajit:2 )
 SLOT=0
 SRC_URI=https://github.com/Olivine-Labs/say/archive/v1.3-1.tar.gz -> say-1.3_p1.tar.gz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
-_md5_=454df9a5a716608ef94e51651a65ca1e
+_md5_=bccbd6a9c7367d9c8af90c48c3ca498b
