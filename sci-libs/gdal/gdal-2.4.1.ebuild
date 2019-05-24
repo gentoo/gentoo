@@ -10,7 +10,7 @@ DISTUTILS_OPTIONAL=1
 inherit autotools perl-module distutils-r1 toolchain-funcs flag-o-matic java-pkg-opt-2
 
 DESCRIPTION="Translator library for raster geospatial data formats (includes OGR support)"
-HOMEPAGE="https://www.gdal.org/"
+HOMEPAGE="https://gdal.org/"
 SRC_URI="https://download.osgeo.org/${PN}/${PV}/${P}.tar.gz"
 
 SLOT="0/2.3"
