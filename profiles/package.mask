@@ -545,11 +545,6 @@ dev-libs/gost-engine
 # Masked for removal on 2018-11-24, bug #669650.
 dev-db/pgadmin3
 
-# Lars Wendler <polynomial-c@gentoo.org> (22 Oct 2018)
-# Breaks dev-libs/gobject-introspection and its consumers
-# See #669278
-=xfce-base/xfconf-4.13.6
-
 # Thomas Deutschmann <whissi@gentoo.org> (12 Oct 2018)
 # EOL and has known vulnerabilities. Please move to
 # Firefox 60 or newer if you can.
