@@ -58,6 +58,7 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=(
 		-DICAL_GLIB=OFF
+		-DICAL_GLIB_VAPI=OFF
 		-DGOBJECT_INTROSPECTION=OFF
 		$(cmake-utils_use_find_package berkdb BDB)
 		-DICAL_BUILD_DOCS=$(usex doc)
