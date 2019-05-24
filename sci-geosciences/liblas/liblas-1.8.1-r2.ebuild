@@ -30,6 +30,7 @@ S="${WORKDIR}/libLAS-${PV}"
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.8.0_remove-std-c++98.patch
 	"${FILESDIR}"/${P}-fix-overload-call.patch # bug 661654
+	"${FILESDIR}"/${P}-CVE-2018-20540.patch # bug 678482
 )
 
 src_prepare() {
