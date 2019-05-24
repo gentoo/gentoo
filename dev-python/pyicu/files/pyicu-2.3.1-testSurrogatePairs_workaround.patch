@@ -1,0 +1,33 @@
+--- a/test/test_Script.py
++++ b/test/test_Script.py
+@@ -40,12 +40,16 @@ class TestScript(TestCase):
+         if unicode_32bit:
+             self.assertEqual(['Latn', 'Deva', 'Hani', 'Hani'], names)
+         else:
+-            self.assertEqual(['Latn', 'Deva', 'Hani', 'Zzzz', 'Zzzz'], names)
++            self.assertTrue(
++                (['Latn', 'Deva', 'Hani', 'Zzzz', 'Zzzz'] == names) or
++                (['Latn', 'Deva', 'Hani', 'Zyyy', 'Zyyy'] == names))
+ 
+         pairs = UnicodeString(pairs)
+         # iterating UChar, not codepoints
+         names = [Script.getScript(c).getShortName() for c in pairs]
+-        self.assertEqual(['Latn', 'Deva', 'Hani', 'Zzzz', 'Zzzz'], names)
++        self.assertTrue(
++            (['Latn', 'Deva', 'Hani', 'Zzzz', 'Zzzz'] == names) or
++            (['Latn', 'Deva', 'Hani', 'Zyyy', 'Zyyy'] == names))
+ 
+         # iterating codepoints not UChar
+         names = [Script.getScript(cp).getShortName()
+@@ -53,7 +57,9 @@ class TestScript(TestCase):
+         if unicode_32bit:
+             self.assertEqual(['Latn', 'Deva', 'Hani', 'Hani'], names)
+         else:
+-            self.assertEqual(['Latn', 'Deva', 'Hani', 'Zzzz', 'Zzzz'], names)
++            self.assertTrue(
++                (['Latn', 'Deva', 'Hani', 'Zzzz', 'Zzzz'] == names) or
++                (['Latn', 'Deva', 'Hani', 'Zyyy', 'Zyyy'] == names))
+ 
+         # iterating codepoints, not UChar
+         names = [Script.getScript(pairs.char32At(i)).getShortName()
+
