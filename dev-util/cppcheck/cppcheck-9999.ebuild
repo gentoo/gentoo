@@ -108,4 +108,5 @@ src_install() {
 		rm "${ED}/usr/bin/cppcheck-htmlreport" || die
 	fi
 	doman ${PN}.1
+	dodoc -r tools/triage
 }
