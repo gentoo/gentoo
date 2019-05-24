@@ -31,6 +31,7 @@
 
 # Aaron Bauman <bman@gentoo.org> (23 May 2019)
 # Unmaintained, EAPI2, updates available upstream
+# Oh yea, removal in 30 days
 dev-util/pmd
 
 # Patrick Lauer <patrick@gentoo.org> (23 May 2019)
