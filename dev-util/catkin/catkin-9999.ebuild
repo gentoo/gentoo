@@ -42,7 +42,7 @@ PATCHES=(
 	"${FILESDIR}/distutils.patch"
 	"${FILESDIR}/catkin_prefix_path.patch"
 	"${FILESDIR}/gnuinstalldirs.patch"
-	"${FILESDIR}/catkin_prefix_path_util_py.patch"
+	"${FILESDIR}/catkin_prefix_path_util_py_v2.patch"
 	"${FILESDIR}/package_xml.patch"
 	"${FILESDIR}/etc.patch"
 	"${FILESDIR}/sitedir.patch"
