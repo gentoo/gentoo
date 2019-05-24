@@ -88,10 +88,6 @@ sci-electronics/kicad occ oce ngspice
 <app-editors/emacs-25.3-r6:25 imagemagick
 <app-editors/emacs-26.1-r3:26 imagemagick
 
-# Tomáš Mózes <hydrapolic@gmail.com> (10 Aug 2018)
-# Needs dev-libs/libmaxminddb which isn't keyworded
-app-admin/syslog-ng geoip2
-
 # Matthew Thode <prometheanfire@gentoo.org> (18 Jul 2018)
 # dev-python/pandas not keyworded and test uses pandas
 dev-python/networkx pandas test

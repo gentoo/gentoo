@@ -13,20 +13,12 @@ ocamlopt
 consolekit
 
 # Mart Raudsepp <leio@gentoo.org> (07 Feb 2019)
-# app-misc/tracker not stable yet
-tracker
-
-# Mart Raudsepp <leio@gentoo.org> (07 Feb 2019)
 # media-sound/musepack-tools not stable yet
 musepack
 
 # Mart Raudsepp <leio@gentoo.org> (07 Feb 2019)
 # media-libs/portaudio not stable yet
 portaudio
-
-# Mart Raudsepp <leio@gentoo.org> (18 Jan 2019)
-# x11-libs/libva not stable yet
-vaapi
 
 # Mart Raudsepp <leio@gentoo.org> (27 Nov 2018)
 # x11-libs/fltk not stable yet
@@ -36,14 +28,6 @@ fltk
 # dev-lang/python:3.7 is not stable.
 python_targets_python3_7
 python_single_target_python3_7
-
-# Michał Górny <mgorny@gentoo.org> (16 Apr 2018)
-# Not stable yet.
-vala
-
-# Michał Górny <mgorny@gentoo.org> (19 Feb 2018)
-# virtual/{jdk,jre} are not stable here.
-java
 
 # Michał Górny <mgorny@gentoo.org> (19 Feb 2018)
 # dev-lang/tk is not stable here.
