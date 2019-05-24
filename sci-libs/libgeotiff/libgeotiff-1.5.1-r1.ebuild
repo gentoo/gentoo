@@ -1,50 +1,45 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit autotools
 
-MY_P=${P/_rc/RC}
-
 DESCRIPTION="Library for reading TIFF files with embedded tags for geographic information"
-HOMEPAGE="http://geotiff.osgeo.org/"
-SRC_URI="http://download.osgeo.org/geotiff/${PN}/${MY_P}.tar.gz"
+HOMEPAGE="https://trac.osgeo.org/geotiff/ https://github.com/OSGeo/libgeotiff"
+SRC_URI="https://download.osgeo.org/geotiff/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
-SLOT="0"
+SLOT="0/5"
 KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="debug doc static-libs"
 
-RDEPEND="
-	virtual/jpeg:=
+BDEPEND="
+	doc? ( app-doc/doxygen )
+"
+DEPEND="
 	>=media-libs/tiff-3.9.1:0
-	sci-libs/proj
-	sys-libs/zlib"
-
-DEPEND="${RDEPEND}
-	doc? ( app-doc/doxygen )"
-
-S=${WORKDIR}/${MY_P/RC*/}
-
-DOCS=( README ChangeLog )
+	>=sci-libs/proj-6.0.0
+	sys-libs/zlib
+	virtual/jpeg:=
+"
+RDEPEND="${DEPEND}"
 
 src_prepare() {
 	default
-	sed -i \
-		-e "s:-O3::g" \
-		configure.ac || die
+	sed -e "s:-O3::g" -i configure.ac || die
 	eautoreconf
 }
 
 src_configure() {
 	econf \
-		$(use_enable static-libs static) \
 		--enable-debug=$(usex debug) \
+		$(use_enable static-libs static) \
 		--with-jpeg="${EPREFIX}"/usr/ \
 		--with-zip="${EPREFIX}"/usr/
 
 }
+
 src_compile() {
 	default
 
@@ -57,8 +52,7 @@ src_compile() {
 }
 
 src_install() {
+	use doc && local HTML_DOCS=( docs/api/. )
 	default
-
-	use doc && dohtml docs/api/*
-	find "${D}" -name '*.la' -delete || die
+	find "${D}" -name '*.la' -type f -delete || die
 }
