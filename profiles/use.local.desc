@@ -5595,7 +5595,6 @@ sys-devel/clang-runtime:crt - Require a package providing crt*.o files to make i
 sys-devel/clang-runtime:libcxx - Install sys-libs/libcxx for -stdlib=libc++
 sys-devel/clang-runtime:openmp - Install sys-libs/libomp for -fopenmp support
 sys-devel/clang-runtime:sanitize - Enable compiler-rt sanitizer (-fsanitize*) support
-sys-devel/distcc:crossdev - Enable support for sys-devel/crossdev
 sys-devel/distcc:gssapi - Enable support for net-libs/libgssglue
 sys-devel/gcc:awt - Useful only when building GCJ, this enables Abstract Window Toolkit (AWT) peer support on top of GTK+
 sys-devel/gcc:boundschecking - Add the bounds checking patch by Haj Ten Brugge, this will DISABLE the hardened PIE+SSP patches
