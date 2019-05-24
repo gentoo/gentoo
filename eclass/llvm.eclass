@@ -6,7 +6,7 @@
 # Michał Górny <mgorny@gentoo.org>
 # @AUTHOR:
 # Michał Górny <mgorny@gentoo.org>
-# @SUPPORTED_EAPIS: 6
+# @SUPPORTED_EAPIS: 6 7
 # @BLURB: Utility functions to build against slotted LLVM
 # @DESCRIPTION:
 # The llvm.eclass provides utility functions that can be used to build
