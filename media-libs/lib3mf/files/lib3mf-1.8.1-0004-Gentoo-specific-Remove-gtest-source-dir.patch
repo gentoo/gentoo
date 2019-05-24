@@ -1,0 +1,35 @@
+From f392342f819b59449228100b7de8c14eda3cc391 Mon Sep 17 00:00:00 2001
+From: Bernd Waibel <waebbl@gmail.com>
+Date: Wed, 8 Apr 2020 19:55:40 +0200
+Subject: [PATCH] [Gentoo-specific] Remove gtest source dir
+
+We use system gtest on Gentoo
+
+Signed-off-by: Bernd Waibel <waebbl@gmail.com>
+---
+ UnitTests/CMakeLists.txt | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
+
+diff --git a/UnitTests/CMakeLists.txt b/UnitTests/CMakeLists.txt
+index 59ae773..1212228 100644
+--- a/UnitTests/CMakeLists.txt
++++ b/UnitTests/CMakeLists.txt
+@@ -1,7 +1,5 @@
+-ADD_SUBDIRECTORY (googletest EXCLUDE_FROM_ALL)
+ enable_testing()
+-	
+-SET(gtest_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/googletest/googletest")
++
+ add_definitions( -DTESTFILESPATH="${CMAKE_CURRENT_SOURCE_DIR}/../TestFiles")
+ add_definitions( -DLTESTFILESPATH=L"${CMAKE_CURRENT_SOURCE_DIR}/../TestFiles")
+ add_definitions( -DLOUTFILESPATH=L"${CMAKE_BINARY_DIR}/")
+@@ -12,4 +10,4 @@ add_subdirectory(C_Interface)
+ # Tests on internal classes of the library
+ add_subdirectory(CPP)
+ 
+-set(STARTUPPROJECT ${STARTUPPROJECT} PARENT_SCOPE)
+\ No newline at end of file
++set(STARTUPPROJECT ${STARTUPPROJECT} PARENT_SCOPE)
+-- 
+2.26.0
+

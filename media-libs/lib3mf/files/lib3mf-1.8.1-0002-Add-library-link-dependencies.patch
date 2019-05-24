@@ -1,0 +1,59 @@
+From 976f14e1ac26389dbfc04bcffd9f4e7e21197001 Mon Sep 17 00:00:00 2001
+From: Bernd Waibel <waebbl@gmail.com>
+Date: Wed, 8 Apr 2020 20:05:16 +0200
+Subject: [PATCH] Add library link dependencies
+
+If USE_INCLUDED_LIBZIP and/or USE_INCLUDED_ZLIB are not set
+add them to target_link_libaries command.
+
+Signed-off-by: Bernd Waibel <waebbl@gmail.com>
+---
+ CMakeLists.txt               | 10 +++++++++-
+ UnitTests/CPP/CMakeLists.txt | 10 +++++++++-
+ 2 files changed, 18 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index c867224..df87806 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -130,7 +130,15 @@ add_library(${PROJECT_NAME} SHARED ${SRCS_MAIN_PLATFORM}
+ )
+ set(STARTUPPROJECT ${PROJECT_NAME})
+ SET_TARGET_PROPERTIES(${PROJECT_NAME} PROPERTIES PREFIX "" IMPORT_PREFIX "")
+-target_link_libraries(${PROJECT_NAME} ${PROJECT_NAME}_s)
++if(USE_INCLUDED_LIBZIP AND USE_INCLUDED_ZLIB)
++	target_link_libraries(${PROJECT_NAME} ${PROJECT_NAME}_s)
++elseif(USE_INCLUDED_LIBZIP AND NOT USE_INCLUDED_ZLIB)
++	target_link_libraries(${PROJECT_NAME} ${PROJECT_NAME}_s z)
++elseif(USE_INCLUDED_ZLIB AND NOT USE_INCLUDED_LIBZIP)
++	target_link_libraries(${PROJECT_NAME} ${PROJECT_NAME}_s zip)
++else()
++	target_link_libraries(${PROJECT_NAME} ${PROJECT_NAME}_s zip z)
++endif()
+ if (UNIX OR MINGW)
+ 	# Uncomment the following to but the version info into the .so-file.
+ 	SET_TARGET_PROPERTIES(${PROJECT_NAME} PROPERTIES VERSION "${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}.${PROJECT_VERSION_PATCH}.${BUILD_NUMBER}")
+diff --git a/UnitTests/CPP/CMakeLists.txt b/UnitTests/CPP/CMakeLists.txt
+index 2fdf85d..24d32bf 100644
+--- a/UnitTests/CPP/CMakeLists.txt
++++ b/UnitTests/CPP/CMakeLists.txt
+@@ -22,7 +22,15 @@ if (WIN32)
+ endif()
+ 
+ target_include_directories(${TESTNAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/Include ${gtest_SOURCE_DIR}/include)
+-target_link_libraries(${TESTNAME} ${PROJECT_NAME}_s gtest gtest_main)
++if(USE_INCLUDED_LIBZIP AND USE_INCLUDED_ZLIB)
++	target_link_libraries(${TESTNAME} ${PROJECT_NAME}_s gtest gtest_main)
++elseif(USE_INCLUDED_LIBZIP AND NOT USE_INCLUDED_ZLIB)
++	target_link_libraries(${TESTNAME} ${PROJECT_NAME}_s gtest gtest_main z)
++elseif(USE_INCLUDED_ZLIB AND NOT USE_INCLUDED_LIBZIP)
++	target_link_libraries(${TESTNAME} ${PROJECT_NAME}_s gtest gtest_main zip)
++else()
++	target_link_libraries(${TESTNAME} ${PROJECT_NAME}_s gtest gtest_main zip z)
++endif()
+ add_dependencies(${TESTNAME} ${PROJECT_NAME}_s)
+ set_target_properties(${TESTNAME} PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/")
+ 
+-- 
+2.26.0
+
