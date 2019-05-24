@@ -21,7 +21,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	$(vala_depend)
-	dev-util/intltool
+	sys-devel/gettext
 "
 
 src_prepare() {
