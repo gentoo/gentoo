@@ -823,6 +823,7 @@ app-portage/layman:squashfs - Support mounting squashfs image overlays locally r
 app-portage/layman:subversion - Support dev-vcs/subversion based overlays
 app-portage/layman:sync-plugin-portage - Install the sys-apps/portage sync module
 app-portage/pfl:network-cron - Adds a cron job which does a weekly submit of the package database
+app-portage/portage-utils:qmanifest - Build qmanifest applet, this adds additional dependencies for GPG, OpenSSL and BLAKE2B hashing
 app-portage/tatt:templates - Install template scripts to be used with tatt
 app-shells/autojump:ipython - Add support for dev-python/ipython
 app-shells/bash:bashlogger - Log ALL commands typed into bash; should ONLY be used in restricted environments such as honeypots
