@@ -18,7 +18,7 @@ if [[ ${KDE_BUILD_TYPE} = release ]]; then
 fi
 
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="activities addressbook calendar hbci holidays ofx quotes webkit weboob"
 
 REQUIRED_USE="weboob? ( ${PYTHON_REQUIRED_USE} )"
