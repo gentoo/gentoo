@@ -35,6 +35,9 @@ src_configure() {
 	# file system paths and picking up the wrong thing.
 	export ac_cv_openssldir=''
 
+	# not needed now
+	export ac_cv_exeext=no
+
 	# Avoid cross-compiling funkiness and requiring openssh at build time.
 	export PATH_SSH_AGENT="${EPREFIX}/usr/bin/ssh-agent"
 
