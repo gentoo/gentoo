@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst prerm setup
+DEPEND=|| ( virtual/httpd-cgi virtual/httpd-fastcgi ) >=app-admin/webapp-config-1.50.15
+DESCRIPTION=Wordpress PHP and MySQL based content management system (CMS)
+EAPI=7
+HOMEPAGE=https://wordpress.org/
+IUSE=+akismet examples +themes vhosts vhosts
+KEYWORDS=~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86
+LICENSE=GPL-2+
+RDEPEND=virtual/httpd-php || ( dev-lang/php[mysql] dev-lang/php[mysqli] ) >=app-admin/webapp-config-1.50.15
+SLOT=5.2.1
+SRC_URI=https://wordpress.org/wordpress-5.2.1.tar.gz
+_eclasses_=webapp	16783e418aca3ffa461d68310bf7ab12
+_md5_=3205300a583e6bd403d2dbc7505a2a0a
