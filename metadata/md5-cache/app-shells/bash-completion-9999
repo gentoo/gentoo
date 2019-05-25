@@ -1,6 +1,6 @@
 BDEPEND=>=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1[curl]
 DEFINED_PHASES=install postinst prepare setup test unpack
-DEPEND=app-arch/xz-utils test? ( >=app-shells/bash-4.3_p30-r1:0 sys-apps/miscfiles !app-eselect/eselect-bashcomp !!net-fs/mc app-misc/dtach dev-util/dejagnu dev-tcltk/tcllib || ( ( dev-lang/python:3.7 dev-python/pexpect[python_targets_python3_7(-),python_single_target_python3_7(+)] dev-python/pytest[python_targets_python3_7(-),python_single_target_python3_7(+)] ) ( dev-lang/python:3.6 dev-python/pexpect[python_targets_python3_6(-),python_single_target_python3_6(+)] dev-python/pytest[python_targets_python3_6(-),python_single_target_python3_6(+)] ) ( dev-lang/python:3.5 dev-python/pexpect[python_targets_python3_5(-),python_single_target_python3_5(+)] dev-python/pytest[python_targets_python3_5(-),python_single_target_python3_5(+)] ) ) )
+DEPEND=test? ( >=app-shells/bash-4.3_p30-r1:0 sys-apps/miscfiles !app-eselect/eselect-bashcomp !!net-fs/mc app-misc/dtach dev-util/dejagnu dev-tcltk/tcllib || ( ( dev-lang/python:3.7 dev-python/pexpect[python_targets_python3_7(-),python_single_target_python3_7(+)] dev-python/pytest[python_targets_python3_7(-),python_single_target_python3_7(+)] ) ( dev-lang/python:3.6 dev-python/pexpect[python_targets_python3_6(-),python_single_target_python3_6(+)] dev-python/pytest[python_targets_python3_6(-),python_single_target_python3_6(+)] ) ( dev-lang/python:3.5 dev-python/pexpect[python_targets_python3_5(-),python_single_target_python3_5(+)] dev-python/pytest[python_targets_python3_5(-),python_single_target_python3_5(+)] ) ) )
 DESCRIPTION=Programmable Completion for bash
 EAPI=7
 HOMEPAGE=https://github.com/scop/bash-completion
@@ -10,6 +10,5 @@ PDEPEND=>=app-shells/gentoo-bashcomp-20140911
 RDEPEND=>=app-shells/bash-4.3_p30-r1:0 sys-apps/miscfiles !app-eselect/eselect-bashcomp !!net-fs/mc
 RESTRICT=!test? ( test )
 SLOT=0
-SRC_URI=https://bitbucket.org/mgorny/bashcomp2/downloads/bashcomp-2.0.2.tar.gz
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	git-r3	0d4635eeb5a96cd5315597a47eba25c9	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-any-r1	4900ae970f827a22d33d41bd8b8f9ace	python-utils-r1	08e17157a6807add7db1f8d01e7e391f	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
-_md5_=7566c79e84a8f9fcf97964cdcc84fdc6
+_md5_=8a9e1cbbaf25a9367184aa0bda828f6a
