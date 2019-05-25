@@ -13,7 +13,7 @@ EGIT_REPO_URI="https://github.com/scop/bash-completion"
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS=""
-IUSE="test"
+IUSE="+eselect test"
 RESTRICT="!test? ( test )"
 
 # completion collision with net-fs/mc
@@ -77,19 +77,21 @@ pkg_setup() {
 }
 
 src_unpack() {
-	git-r3_fetch https://github.com/mgorny/bashcomp2
+	use eselect && git-r3_fetch https://github.com/mgorny/bashcomp2
 	git-r3_fetch
 
-	git-r3_checkout https://github.com/mgorny/bashcomp2 \
+	use eselect && git-r3_checkout https://github.com/mgorny/bashcomp2 \
 		"${WORKDIR}"/bashcomp2
 	git-r3_checkout
 }
 
 src_prepare() {
 	eapply_user
-	# generate and apply patch
-	emake -C "${WORKDIR}"/bashcomp2 bash-completion-blacklist-support.patch
-	eapply "${WORKDIR}"/bashcomp2/bash-completion-blacklist-support.patch
+	if use eselect; then
+		# generate and apply patch
+		emake -C "${WORKDIR}"/bashcomp2 bash-completion-blacklist-support.patch
+		eapply "${WORKDIR}"/bashcomp2/bash-completion-blacklist-support.patch
+	fi
 
 	eautoreconf
 }
@@ -128,7 +130,9 @@ src_install() {
 	dodoc AUTHORS CHANGES CONTRIBUTING.md README.md
 
 	# install the eselect module
-	emake -C "${WORKDIR}"/bashcomp2 DESTDIR="${D}" PREFIX="${EPREFIX}/usr" install
+	use eselect &&
+		emake -C "${WORKDIR}"/bashcomp2 DESTDIR="${D}" \
+			PREFIX="${EPREFIX}/usr" install
 }
 
 pkg_postinst() {
