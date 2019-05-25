@@ -1,4 +1,4 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: savedconfig.eclass
@@ -33,6 +33,11 @@ inherit portability
 
 IUSE="savedconfig"
 
+case ${EAPI} in
+	[4-7]) ;;
+	*) die "EAPI=${EAPI:-0} is not supported" ;;
+esac
+
 # @FUNCTION: save_config
 # @USAGE: <config files to save>
 # @DESCRIPTION:
@@ -46,19 +51,16 @@ save_config() {
 	fi
 	[[ $# -eq 0 ]] && die "Usage: save_config <files>"
 
-	# Be lazy in our EAPI compat
-	: ${ED:=${D}}
-
 	local dest="/etc/portage/savedconfig/${CATEGORY}"
 	if [[ $# -eq 1 && -f $1 ]] ; then
 		# Just one file, so have the ${PF} be that config file
 		dodir "${dest}"
-		cp "$@" "${ED}/${dest}/${PF}" || die "failed to save $*"
+		cp "$@" "${ED%/}/${dest}/${PF}" || die "failed to save $*"
 	else
 		# A dir, or multiple files, so have the ${PF} be a dir
 		# with all the saved stuff below it
 		dodir "${dest}/${PF}"
-		treecopy "$@" "${ED}/${dest}/${PF}" || die "failed to save $*"
+		treecopy "$@" "${ED%/}/${dest}/${PF}" || die "failed to save $*"
 	fi
 
 	elog "Your configuration for ${CATEGORY}/${PF} has been saved in "
@@ -99,7 +101,7 @@ restore_config() {
 	use savedconfig || return
 
 	local found check configfile
-	local base=${PORTAGE_CONFIGROOT}/etc/portage/savedconfig
+	local base=${PORTAGE_CONFIGROOT%/}/etc/portage/savedconfig
 	for check in {${CATEGORY}/${PF},${CATEGORY}/${P},${CATEGORY}/${PN}}; do
 		configfile=${base}/${CTARGET}/${check}
 		[[ -r ${configfile} ]] || configfile=${base}/${CHOST}/${check}
@@ -143,10 +145,7 @@ savedconfig_pkg_postinst() {
 	# are worse :/.
 
 	if use savedconfig ; then
-		# Be lazy in our EAPI compat
-		: ${EROOT:=${ROOT}}
-
-		find "${EROOT}/etc/portage/savedconfig/${CATEGORY}/${PF}" \
+		find "${EROOT%/}/etc/portage/savedconfig/${CATEGORY}/${PF}" \
 			-exec touch {} + 2>/dev/null
 	fi
 }
