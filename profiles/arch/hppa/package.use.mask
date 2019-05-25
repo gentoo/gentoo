@@ -4,6 +4,10 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# Sergei Trofimovich <slyfox@gentoo.org> (25 May 2019)
+# libgo needs an explicit port to hppa: bug #686624
+sys-devel/gcc go
+
 # Jeroen Roovers (jer@gentoo.org) (22 Mar 2018)
 # HiPE does not work on HPPA
 dev-lang/erlang hipe
