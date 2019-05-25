@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -61,7 +61,7 @@ src_configure() {
 }
 
 src_compile() {
-	default
+	emake -j1 # fails with parallel jobs, bug #666738
 	use doc && emake docs
 }
 

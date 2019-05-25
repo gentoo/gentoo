@@ -1,0 +1,23 @@
+From 6f5e2159dc7ee898ef08a9e3e3a8e0248d2d0caf Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sat, 25 May 2019 18:13:58 +0200
+Subject: [PATCH] Revert "Install the FindQuaZip.cmake in the right prefix"
+
+This reverts commit d5eaa8be998da2430ffd43e0eefa617cf1550ca3.
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index a43fefe..539caa4 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -60,4 +60,4 @@ set(QUAZIP_LIB_TARGET_NAME quazip${QUAZIP_LIB_VERSION_SUFFIX} CACHE
+ 
+ add_subdirectory(quazip)
+ 
+-install(FILES FindQuaZip.cmake RENAME FindQuaZip${QUAZIP_LIB_VERSION_SUFFIX}.cmake DESTINATION share/cmake)
++install(FILES FindQuaZip.cmake RENAME FindQuaZip${QUAZIP_LIB_VERSION_SUFFIX}.cmake DESTINATION ${CMAKE_ROOT}/Modules)
+-- 
+2.21.0
+

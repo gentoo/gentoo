@@ -13,8 +13,12 @@ LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 ppc ppc64 x86"
 
-RDEPEND="media-libs/netpbm:="
+RDEPEND="
+	dev-libs/glib:2
+	media-libs/netpbm:=
+"
 DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 PATCHES=( "${FILESDIR}/${P}-find-netpbm-header.patch" )
 
