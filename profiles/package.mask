@@ -44,7 +44,15 @@ net-misc/mindterm
 dev-util/pmd
 
 # Patrick Lauer <patrick@gentoo.org> (23 May 2019)
-# Mask postgresql:12, beta/rc shouldn't be visible by default
+# PostgreSQL beta and release candidate releases are pre-release testing
+# versions, not meant for production use. They are feature-frozen, and are
+# released to the public for testing before final release
+#
+# NOTE: Successive beta or candidate releases may not be backwards compatible,
+# so it is important that you review the release notes before upgrading.
+#
+# For more information about beta and release candidate versions, see:
+#     https://www.postgresql.org/developer/beta/
 dev-db/postgresql:12
 
 # Stefan Strogin <steils@gentoo.org> (23 May 2019)
