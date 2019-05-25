@@ -1171,7 +1171,7 @@ app-office/homebank 5.1.3 5.2.2: Free, easy, personal accounting for everyone
 app-office/hourglass 0.7.2-r1: A PSP (personal software process) time tracking utility written in Java
 app-office/ical 3.0-r2: Tk-based Calendar program
 app-office/kexi 3.2.0: Visual database applications creator
-app-office/kmymoney 5.0.3: Personal finance manager based on KDE Frameworks
+app-office/kmymoney 5.0.3 5.0.4: Personal finance manager based on KDE Frameworks
 app-office/ledger 3.1.1-r2: A double-entry accounting system with a command-line reporting interface
 app-office/libalkimia 7.0.2-r1: Library with common classes and functionality used by KDE finance applications
 app-office/libreoffice 6.1.5.2: A full office productivity suite
@@ -3025,7 +3025,7 @@ dev-libs/jsoncpp 1.8.4: C++ JSON reader and writer
 dev-libs/jsonrpc-glib 3.30.1: JSON-RPC library for GLib
 dev-libs/jthread 1.3.3: JThread provides some classes to make use of threads easy on different platforms
 dev-libs/judy 1.0.5-r2: A C library that implements a dynamic array
-dev-libs/kdiagram 2.6.1: Powerful libraries (KChart, KGantt) for creating business diagrams
+dev-libs/kdiagram 2.6.1 2.6.1-r1: Powerful libraries (KChart, KGantt) for creating business diagrams
 dev-libs/keybinder 0.3.1-r201 0.3.2-r300: A library for registering global keyboard shortcuts
 dev-libs/klibc 2.0.4-r3: A minimal libc subset for use with initramfs
 dev-libs/kpathsea 6.2.2_p20160523 6.2.3_p20170524: Path searching library for TeX-related files
@@ -3341,13 +3341,13 @@ dev-lua/luajson 1.3.3: JSON Parser/Constructor for Lua
 dev-lua/luarocks 2.2.0: A deployment and management system for Lua modules
 dev-lua/luasec 0.5.1 0.7: Lua binding for OpenSSL library to provide TLS/SSL communication
 dev-lua/luasocket 3.0_rc1-r3 3.0_rc1-r4: Networking support library for the Lua language
-dev-lua/luassert 1.7.9: Lua Assertions Extension
+dev-lua/luassert 1.7.9 1.7.10: Lua Assertions Extension
 dev-lua/luasystem 0.2.0_p0: platform independent system calls for lua
 dev-lua/lutok 0.4-r1: Lightweight C++ API library for Lua
 dev-lua/mediator_lua 1.1.2_p0: Event handling through channels
 dev-lua/mpack 1.0.4: Lua bindings for libmpack
 dev-lua/penlight 1.3.2: Lua utility libraries loosely based on the Python standard libraries
-dev-lua/say 1.3_p1: Lua String Hashing/Indexing Library
+dev-lua/say 1.3_p1 1.3_p1-r1: Lua String Hashing/Indexing Library
 dev-lua/toluapp 1.0.93: A tool to integrate C/C++ code with Lua
 dev-ml/cairo-ocaml 1.2.0: Ocaml bindings for the cairo vector graphics library
 dev-ml/camldbm 1.0: OCaml binding to the NDBM/GDBM Unix databases
@@ -8033,7 +8033,7 @@ media-plugins/vdr-vompserver 0.4.1: VDR Plugin: server part for MediaMVP device
 media-plugins/vdr-zaphistory 0.9.6: VDR Plugin: Shows the least recently used channels
 media-plugins/vdr-zappilot 0.0.5: VDR Plugin: browse fast the EPG information without being forced to switch to a channel
 media-plugins/xsynth-dssi 0.9.2: A software synthesizer plugin for the DSSI Soft Synth Interface
-media-radio/KochMorse 0.99.6-r1: Morse-tutor for Linux using the Koch-method
+media-radio/KochMorse 0.99.6-r1 3.4.0-r1: Morse-code tutor using the Koch method
 media-radio/adifmerg 31-r1: A small conversion and check utility for ADIF files
 media-radio/ax25-apps 0.0.8_rc4: Basic AX.25 (Amateur Radio) user tools, additional daemons
 media-radio/ax25-tools 0.0.10_rc4: Basic AX.25 (Amateur Radio) administrative tools and daemons
@@ -8943,7 +8943,7 @@ net-misc/curl 7.64.0 7.64.1 7.65.0: A Client that groks URLs
 net-misc/dahdi 2.10.0.1 2.10.1 2.10.2-r2: Kernel modules for Digium compatible hardware (formerly known as Zaptel)
 net-misc/dahdi-tools 2.6.2 2.8.0 2.9.0.1 2.10.0 2.10.1: Userspace tools to configure the kernel modules from net-misc/dahdi
 net-misc/dhcp 4.3.6_p1 4.4.1: ISC Dynamic Host Configuration Protocol (DHCP) client/server
-net-misc/dhcpcd 7.1.1-r2 7.1.1-r3: A fully featured, yet light weight RFC2131 compliant DHCP client
+net-misc/dhcpcd 7.1.1-r3: A fully featured, yet light weight RFC2131 compliant DHCP client
 net-misc/dhcpcd-ui 0.7.5-r1: Desktop notification and configuration for dhcpcd
 net-misc/dhcping 1.2: Utility for sending a dhcp request to a dhcp server to see if it is responding
 net-misc/dibbler 1.0.1: Portable DHCPv6 implementation (server, client and relay)
@@ -9264,7 +9264,7 @@ perl-core/Time-Local 1.230.0-r1: Implements timelocal() and timegm()
 perl-core/Unicode-Collate 1.250.0: Unicode Collate Algorithm
 sci-astronomy/celestia 1.6.1-r1: OpenGL 3D space simulator
 sci-astronomy/erfa 1.2.0 1.4.0: Essential Routines for Fundamental Astronomy
-sci-astronomy/kstars 3.1.1: Desktop Planetarium
+sci-astronomy/kstars 3.1.1 3.2.2: Desktop Planetarium
 sci-astronomy/predict 2.2.3-r2: Satellite tracking and orbital prediction
 sci-astronomy/pyephem 3.7.5.3 3.7.6.0: Astronomical routines for the python programming language
 sci-astronomy/stellarium 0.18.2: 3D photo-realistic skies in real time
@@ -10616,7 +10616,7 @@ www-apache/mod_ldap_userdir 1.1.19: Look up Apache ~user directories in an LDAP 
 www-apache/mod_limitipconn 0.24 0.24-r3: Limit the number of simultaneous apache connections
 www-apache/mod_log_rotate 1.01: Log rotation support for mod_log_config based on strftime(3)
 www-apache/mod_log_sql 1.101-r2: An Apache module for logging to an SQL (MySQL) database
-www-apache/mod_macro 1.1.10: An Apache2 module providing macros for the Apache config file
+www-apache/mod_macro 1.1.10 1.2.1: An Apache2 module providing macros for the Apache config file
 www-apache/mod_perl 2.0.10: An embedded Perl interpreter for Apache2
 www-apache/mod_rpaf 0.6-r1: Reverse proxy add forward module
 www-apache/mod_scgi 1.14-r1: Apache module for a replacement of the CGI protocol, similar to FastCGI
