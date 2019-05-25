@@ -7174,7 +7174,7 @@ mail-mta/mini-qmail 1.06: a small null client that forwards mail via QMQP to a f
 mail-mta/msmtp 1.8.3: An SMTP client and SMTP plugin for mail user agents such as Mutt
 mail-mta/netqmail 1.06 1.06-r2 1.06-r4: qmail -- a secure, reliable, efficient, simple message transfer agent
 mail-mta/nullmailer 1.13-r5 2.0-r1: Simple relay-only local mail transport agent
-mail-mta/postfix 3.2.4 3.3.1-r1: A fast and secure drop-in replacement for sendmail
+mail-mta/postfix 3.2.4 3.3.1-r1 3.3.4: A fast and secure drop-in replacement for sendmail
 mail-mta/sendmail 8.14.9: Widely-used Mail Transport Agent (MTA)
 mail-mta/ssmtp 2.64-r2 2.64-r3: Extremely simple MTA to get mail off the system to a Mailhub
 mate-base/caja 1.22.0: Caja file manager for the MATE desktop
