@@ -7,7 +7,7 @@ EAPI="6"
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="sqlite"
 
-inherit python-single-r1 user systemd versionator
+inherit python-single-r1 user systemd
 
 MY_P="${P/sab/SAB}"
 
