@@ -21,6 +21,8 @@ IUSE="elibc_glibc elibc_FreeBSD"
 RDEPEND="!dev-lang/julia"
 DEPEND="${RDEPEND}"
 
+RESTRICT="strip"
+
 S="${WORKDIR}/${MY_P}"
 
 src_install() {
