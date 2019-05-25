@@ -11,7 +11,7 @@ SRC_URI="https://web.archive.org/web/20170225160711/http://download.gna.org/${PN
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ppc ppc64 x86"
 
 RDEPEND="
 	dev-libs/glib:2
