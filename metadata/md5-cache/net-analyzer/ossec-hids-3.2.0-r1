@@ -4,11 +4,11 @@ DESCRIPTION=Open Source Host-based Intrusion Detection System
 EAPI=7
 HOMEPAGE=https://www.ossec.net/
 IUSE=agent hybrid local mysql postgres server sqlite
-KEYWORDS=~amd64
+KEYWORDS=amd64
 LICENSE=GPL-2
 RDEPEND=mysql? ( virtual/mysql ) sqlite? ( dev-db/sqlite:3 ) postgres? ( dev-db/postgresql:= )
 REQUIRED_USE=^^ ( agent hybrid local server ) ?? ( mysql postgres )
 SLOT=0
 SRC_URI=https://github.com/ossec/ossec-hids/archive/3.2.0.tar.gz -> ossec-hids-3.2.0.tar.gz
 _eclasses_=user	8bd74731cafdcdad8f7a63637302e073
-_md5_=09c88da2a49680be66585bcbe3c96102
+_md5_=e7139498b4902f3d8f4e8e0ae33d51f8

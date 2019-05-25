@@ -2970,7 +2970,7 @@ dev-libs/dietlibc 0.34_pre20140729-r1: A libc optimized for small size
 dev-libs/ding-libs 0.4.0 0.6.0 0.6.1: set of utility libraries (mostly used by sssd)
 dev-libs/dmalloc 5.5.2-r4 5.5.2-r6: A Debug Malloc Library
 dev-libs/dotconf 1.3-r1: dot.conf configuration file parser
-dev-libs/double-conversion 3.0.3: Binary-decimal and decimal-binary conversion routines for IEEE doubles
+dev-libs/double-conversion 3.0.3 3.1.4-r1: Binary-decimal and decimal-binary conversion routines for IEEE doubles
 dev-libs/eb 4.4.1-r1: EB is a C library and utilities for accessing CD-ROM books
 dev-libs/efl 1.21.1-r3: Enlightenment Foundation Libraries all-in-one package
 dev-libs/elfutils 0.170-r1 0.173-r1: Libraries/utilities to handle ELF objects (drop in replacement for libelf)
@@ -7474,7 +7474,7 @@ media-gfx/nvidia-texture-tools 2.0.8-r4: A set of cuda-enabled texture tools and
 media-gfx/opcion 1.1.1-r2: Free font viewer written in Java
 media-gfx/openclipart 0.20: Open Clip Art Library (openclipart.org)
 media-gfx/openexr_viewers 2.1.0: OpenEXR Viewers
-media-gfx/openvdb 4.0.2: Libs for the efficient manipulation of volumetric data
+media-gfx/openvdb 4.0.2 4.0.2-r2: Libs for the efficient manipulation of volumetric data
 media-gfx/optipng 0.7.6-r2: Compress PNG files without affecting image quality
 media-gfx/pdf2svg 0.2.3: pdf2svg is based on poppler and cairo and can convert pdf to svg files
 media-gfx/peps 2.0-r1: Preprocess and convert EPS files to bitmap with Ghostscript
@@ -7800,7 +7800,7 @@ media-libs/openexr_ctl 1.0.1-r2: OpenEXR CTL libraries
 media-libs/openh264 1.7.0-r1: Cisco OpenH264 library and Gecko Media Plugin for Mozilla packages
 media-libs/openimageio 1.6.13 1.7.17: A library for reading and writing images
 media-libs/openjpeg 1.5.2-r1 2.3.0-r1: Open-source JPEG 2000 library
-media-libs/opensubdiv 3.3.0: An Open-Source subdivision surface library
+media-libs/opensubdiv 3.3.0 3.3.3: An Open-Source subdivision surface library
 media-libs/opus 1.3: Open codec designed for internet transmission of interactive speech and audio
 media-libs/opusfile 0.11: A high-level decoding and seeking API for .opus files
 media-libs/osl 1.8.12: Advanced shading language for production GI renderers
@@ -7814,7 +7814,7 @@ media-libs/plotutils 2.6-r2: Powerful C/C++ function library for exporting 2-D v
 media-libs/pnglite 0.1.17: Small and simple library for loading and writing PNG images
 media-libs/portaudio 19.06.00-r1: A free, cross-platform, open-source, audio I/O library
 media-libs/portmidi 217-r1: Library for real time MIDI input and output
-media-libs/ptex 2.1.28-r1: Per-Face Texture Mapping for Production Rendering
+media-libs/ptex 2.1.28-r1 2.3.0: Per-Face Texture Mapping for Production Rendering
 media-libs/qhull 2015.2: Geometry library
 media-libs/qimageblitz 0.0.6_p20131029: Graphical effect and filter library by KDE
 media-libs/qt-gstreamer 1.2.0-r4: C++ bindings for GStreamer with a Qt-style API
@@ -8033,7 +8033,7 @@ media-plugins/vdr-vompserver 0.4.1: VDR Plugin: server part for MediaMVP device
 media-plugins/vdr-zaphistory 0.9.6: VDR Plugin: Shows the least recently used channels
 media-plugins/vdr-zappilot 0.0.5: VDR Plugin: browse fast the EPG information without being forced to switch to a channel
 media-plugins/xsynth-dssi 0.9.2: A software synthesizer plugin for the DSSI Soft Synth Interface
-media-radio/KochMorse 0.99.6-r1 3.4.0-r1: Morse-code tutor using the Koch method
+media-radio/KochMorse 3.4.0-r1: Morse-code tutor using the Koch method
 media-radio/adifmerg 31-r1: A small conversion and check utility for ADIF files
 media-radio/ax25-apps 0.0.8_rc4: Basic AX.25 (Amateur Radio) user tools, additional daemons
 media-radio/ax25-tools 0.0.10_rc4: Basic AX.25 (Amateur Radio) administrative tools and daemons
@@ -8490,6 +8490,7 @@ net-analyzer/nstats 0.4-r2: Displays statistics about ethernet traffic including
 net-analyzer/nttcp 1.47-r1 1.47-r3: tool to test TCP and UDP throughput
 net-analyzer/oinkmaster 2.0: Rule management for SNORT
 net-analyzer/openbsd-netcat 1.190: The OpenBSD network swiss army knife
+net-analyzer/ossec-hids 3.2.0-r1: Open Source Host-based Intrusion Detection System
 net-analyzer/p0f 3.09_beta: A tool to perform passive OS detection based on SYN packets
 net-analyzer/pbnj 2.04: A tool for running Nmap scans and diff'ing the results
 net-analyzer/pinger 0.32e 0.33: Cyclic multi ping utility for selected adresses using GTK/ncurses
@@ -8803,7 +8804,7 @@ net-libs/libtorrent 0.13.7-r1: BitTorrent library written in C++ for *nix
 net-libs/libtorrent-rasterbar 1.1.10 1.1.12: C++ BitTorrent implementation focusing on efficiency and scalability
 net-libs/libupnp 1.6.21: An Portable Open Source UPnP Development Kit
 net-libs/libupnpp 0.17.0: The libupnpp C++ library wraps libupnp for easier use by upmpdcli and upplay
-net-libs/libvncserver 0.9.11-r1: library for creating vnc servers
+net-libs/libvncserver 0.9.11-r1 0.9.12: library for creating vnc servers
 net-libs/libwebsockets 2.1.1: canonical libwebsockets.org websocket library
 net-libs/libzapojit 0.0.3: GLib/GObject wrapper for the SkyDrive and Hotmail REST APIs
 net-libs/loudmouth 1.5.3-r1 1.5.3-r3: Lightweight C Jabber library
@@ -9234,7 +9235,7 @@ net-wireless/airtraf 1.1-r3: AirTraf 802.11b Wireless traffic sniffer
 net-wireless/b43-fwcutter 019: Firmware Tool for Broadcom 43xx based wireless network devices using the mac80211 wireless stack
 net-wireless/bluez 5.50-r2: Bluetooth Tools and System Daemons for Linux
 net-wireless/bluez-hcidump 2.5: Bluetooth HCI packet analyzer
-net-wireless/crda 1.1.3-r1 3.18-r1: Central Regulatory Domain Agent for wireless networks
+net-wireless/crda 1.1.3-r1 3.18-r1 3.18-r3: Central Regulatory Domain Agent for wireless networks
 net-wireless/gnome-bluetooth 3.28.2: Bluetooth graphical utilities integrated with GNOME
 net-wireless/hostap-utils 0.4.7-r1: Utilities for Intersil Prism2/2.5/3 based IEEE 802.11b wireless LAN products
 net-wireless/hostapd 2.7-r2: IEEE 802.11 wireless LAN Host AP daemon

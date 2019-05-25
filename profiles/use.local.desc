@@ -3804,6 +3804,10 @@ net-analyzer/nrpe:command-args - Build support for specifying the command-line a
 net-analyzer/nrpe:minimal - Only build the check plugins for Nagios/Icinga, and not the daemon.
 net-analyzer/nsca:crypt - Build support for crypted communication with nsca, through dev-libs/libmcrypt. It's recommended not to disable this flag unless all the communication will be handled in an absolutely safe environment.
 net-analyzer/nsca:minimal - Only build and install the send_nsca command and not the daemon. This allows a very minimal install with no overhead when setting up a node.
+net-analyzer/ossec-hids:agent - Build "agent" installation target (see package description)
+net-analyzer/ossec-hids:hybrid - Build "hybrid" installation target
+net-analyzer/ossec-hids:local - Build "local" installation target
+net-analyzer/ossec-hids:server - Build "server" installation target
 net-analyzer/pinger:gtk2 - Install the gtkpinger GUI utility based on x11-libs/gtk+:2
 net-analyzer/pinger:gtk3 - Install the gtkpinger GUI utility based on x11-libs/gtk+:3
 net-analyzer/pmacct:64bit - Use 64bit counters instead of 32bit ones
