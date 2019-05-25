@@ -11,7 +11,7 @@ SRC_URI="https://github.com/ossec/ossec-hids/archive/${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="agent hybrid local mysql postgres server sqlite"
 REQUIRED_USE="^^ ( agent hybrid local server )
 	?? ( mysql postgres )"
