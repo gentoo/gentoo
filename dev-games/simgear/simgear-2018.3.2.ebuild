@@ -31,6 +31,8 @@ RDEPEND="${COMMON_DEPEND}
 	subversion? ( dev-vcs/subversion )
 "
 
+PATCHES=( "${FILESDIR}/${P}-boost-1.69.patch" )
+
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }
