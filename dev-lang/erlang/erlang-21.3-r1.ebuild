@@ -49,6 +49,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-add-epmd-pid-file-creation-for-openrc.patch"
 	"${FILESDIR}/${PN}-custom-autoconf.patch"
 	"${FILESDIR}/${PN}-21.3-lto.patch"
+	"${FILESDIR}/${PN}-21.3-pgo-loop.patch"
 )
 
 SITEFILE=50"${PN}"-gentoo.el
