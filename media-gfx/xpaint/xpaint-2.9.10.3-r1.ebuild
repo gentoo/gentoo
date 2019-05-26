@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/sf-xpaint/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="jpeg2k pgf tiff"
 
 RDEPEND="
@@ -27,7 +27,7 @@ RDEPEND="
 	x11-libs/libXpm
 	x11-libs/libXt
 	sys-libs/zlib
-	virtual/jpeg
+	virtual/jpeg:0
 	jpeg2k? ( media-libs/openjpeg:0 )
 	pgf? ( media-libs/libpgf )
 	tiff? (
@@ -41,7 +41,8 @@ DEPEND="${RDEPEND}
 
 src_prepare() {
 	epatch "${FILESDIR}"/${PN}-2.9.9.4-{QA1,submake,parallel-make}.patch \
-		"${FILESDIR}"/${PN}-2.9.10.2-{QA2,tiff}.patch
+		"${FILESDIR}"/${PN}-2.9.10.2-{QA2,tiff}.patch \
+		"${FILESDIR}"/${PN}-2.9.10.3-Fix-build-with-clang.patch
 	eautoreconf
 }
 
