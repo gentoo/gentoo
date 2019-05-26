@@ -636,7 +636,7 @@ app-emacs/emacs-jabber 0.8.92: A Jabber client for Emacs
 app-emacs/emacs-wget 0.5.0-r1: Wget interface for Emacs
 app-emacs/erobot 2.1.0-r1: Battle-bots for Emacs!
 app-emacs/eselect-mode 1.4.12 1.4.13: Emacs major mode for editing eselect files
-app-emacs/ess 15.09.2 17.11: Emacs Speaks Statistics
+app-emacs/ess 17.11: Emacs Speaks Statistics
 app-emacs/evil 1.0.8 1.2.13: Extensible vi layer for Emacs
 app-emacs/f 0.20.0: Modern API for working with files and directories in Emacs
 app-emacs/fff 20050517: Fast file finder for Emacs
