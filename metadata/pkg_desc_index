@@ -7527,7 +7527,7 @@ media-gfx/wings 2.1.5: Wings 3D is an advanced subdivision modeler
 media-gfx/xfig 3.2.6a-r1: A menu-driven tool to draw and manipulate objects interactively in an X window
 media-gfx/xli 1.17.0-r5: X Load Image: view images or load them to root window
 media-gfx/xloadimage 4.1-r12: utility to view many different types of images under X11
-media-gfx/xpaint 2.9.10.2 2.10.2: Image editor with tiff, jpeg and png support
+media-gfx/xpaint 2.9.10.2-r1 2.10.2: Image editor with tiff, jpeg and png support
 media-gfx/xsane 0.999-r2: graphical scanning frontend
 media-gfx/xv 3.10a-r19: Interactive image manipulation program supporting a wide variety of formats
 media-gfx/xzgv 0.9.1: Fast and simple GTK+ image viewer
