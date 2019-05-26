@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="4"
@@ -6,8 +6,8 @@ EAPI="4"
 inherit toolchain-funcs multilib
 
 DESCRIPTION="library for floating point number manipulation"
-HOMEPAGE="http://libtom.org/"
-SRC_URI="http://libtom.org/files/ltf-${PV}.tar.bz2"
+HOMEPAGE="http://www.libtom.net/"
+SRC_URI="https://github.com/libtom/libtomfloat/releases/download/${PV}/ltf-${PV}.tar.bz2"
 
 LICENSE="WTFPL-2"
 SLOT="0"
