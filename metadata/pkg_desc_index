@@ -179,7 +179,7 @@ app-arch/gtk-splitter 2.2.1-r1: Split files into smaller pieces and combine them
 app-arch/gzip 1.9: Standard GNU compressor
 app-arch/hardlink 0.2.0: A tool which replaces copies of a file with hardlinks
 app-arch/innoextract 1.7: A tool to unpack installers created by Inno Setup
-app-arch/lbzip2 2.3-r1 2.5 2.5-r1: Parallel bzip2 utility
+app-arch/lbzip2 2.3-r1 2.5 2.5-r1 2.5_p20181227: Parallel bzip2 utility
 app-arch/lha 114i-r7: Utility for creating and opening lzh archives
 app-arch/libarchive 3.3.1 3.3.3: Multi-format archive and compression library
 app-arch/libpar2 0.4: A library for par2, extracted from par2cmdline
@@ -1230,7 +1230,7 @@ app-portage/euscan 0.1.1-r2: Ebuild upstream scan utility
 app-portage/euses 2.5.9: look up USE flag descriptions fast
 app-portage/flaggie 0.2.1-r1: A smart CLI mangler for package.* files
 app-portage/g-cpan 0.16.5 0.16.9-r1: Autogenerate and install ebuilds for CPAN modules
-app-portage/gemato 14.0: Stand-alone Manifest generation & verification tool
+app-portage/gemato 14.0 14.1: Stand-alone Manifest generation & verification tool
 app-portage/genlop 0.30.9-r1 0.30.10-r2: A nice emerge.log parser
 app-portage/gentoolkit 0.4.2-r1: Collection of administration scripts for Gentoo
 app-portage/gentoopm 0.3.0: A common interface to Gentoo package managers
@@ -1246,7 +1246,7 @@ app-portage/portage-utils 0.74: Small and fast Portage helper tools written in C
 app-portage/porthole 0.6.1-r5: A GTK+-based frontend to Portage
 app-portage/porticron 0.7.1: cron script to sync portage and send update mails to root
 app-portage/portpeek 2.1.21 2.1.25 2.1.27: A helper program for maintaining the package.keyword and package.unmask files
-app-portage/pram 3: Tool to ease merging Pull Requests and git patches
+app-portage/pram 3 7: Tool to ease merging Pull Requests and git patches
 app-portage/repoman 2.3.10 2.3.11: Repoman is a Quality Assurance tool for Gentoo ebuilds
 app-portage/smart-live-rebuild 1.3.6: Check live packages for updates and emerge them as necessary
 app-portage/splat 0.08-r1: Simple Portage Log Analyzer Tool
@@ -3090,7 +3090,7 @@ dev-libs/libgcrypt 1.8.3: General purpose crypto library based on the code used 
 dev-libs/libgdata 0.17.8 0.17.9-r1: GLib-based library for accessing online service APIs using the GData protocol
 dev-libs/libgee 0.6.8 0.20.1: GObject-based interfaces and classes for commonly used data structures
 dev-libs/libgit2 0.26.8: A linkable library for Git
-dev-libs/libgit2-glib 0.26.2: Git library for GLib
+dev-libs/libgit2-glib 0.26.2 0.26.4: Git library for GLib
 dev-libs/libgnome-games-support 1.4.3: Library for code common to Gnome games
 dev-libs/libgpg-error 1.27-r1 1.29 1.36: Contains error handling functions used by GnuPG software
 dev-libs/libgudev 232: GObject bindings for libudev
@@ -5532,7 +5532,7 @@ dev-python/pyx 0.12.1-r1 0.14.1: Python package for the generation of encapsulat
 dev-python/pyxattr 0.6.0-r1: Python interface to xattr
 dev-python/pyxdg 0.25-r1: A Python module to deal with freedesktop.org specifications
 dev-python/pyxenstore 0.0.2: Provides Python interfaces for Xen's XenStore
-dev-python/pyyaml 3.12 3.13: YAML parser and emitter for Python
+dev-python/pyyaml 3.12 3.13 5.1: YAML parser and emitter for Python
 dev-python/pyzmq 16.0.2: Lightweight and super-fast messaging library built on top of the ZeroMQ library
 dev-python/pyzor 1.0.0-r1: A distributed, collaborative spam detection and filtering network
 dev-python/qpid-python 0.20: A high-speed platform independent enterprise messaging system for Apache
@@ -6427,7 +6427,7 @@ dev-util/reswrap 4.0.0: Utility to wrap icon resources into C++ code, from the F
 dev-util/rpmdevtools 8.10: Collection of rpm packaging related utilities
 dev-util/scala-ide 4.7.0: The Scala IDE
 dev-util/schroot 1.6.10-r4: Utility to execute commands in a chroot environment
-dev-util/scons 2.5.1 3.0.4: Extensible Python-based build utility
+dev-util/scons 2.5.1 3.0.4 3.0.5: Extensible Python-based build utility
 dev-util/sel 0.08.4-r2: A filemanager for shell scripts
 dev-util/serialtalk 1.2: simple command-line tool to talk to serial devices
 dev-util/shadowman 2: Unified compiler shadow link directory updater
@@ -7081,7 +7081,7 @@ lxde-base/lxappearance 0.6.3 0.6.3-r1: LXDE GTK+ theme switcher
 lxde-base/lxde-common 0.99.1: LXDE Session default configuration files and nuoveXT2 iconset
 lxde-base/lxde-icon-theme 0.5.0-r1: nuoveXT2 iconset
 lxde-base/lxde-meta 0.5.5-r5 0.5.5-r6: Meta ebuild for LXDE, the Lightweight X11 Desktop Environment
-lxde-base/lxdm 0.5.3-r1: LXDE Display Manager
+lxde-base/lxdm 0.5.3-r1 0.5.3-r2: LXDE Display Manager
 lxde-base/lxinput 0.3.5 0.3.5-r1: LXDE keyboard and mouse configuration tool
 lxde-base/lxlauncher 0.2.2: An open source clone of the Asus launcher for EeePC
 lxde-base/lxmenu-data 0.1.5: Provides files needed for LXDE application menus
@@ -9227,7 +9227,7 @@ net-vpn/openfortivpn 1.8.1: A Fortinet compatible VPN client
 net-vpn/openvpn 2.4.6: Robust and highly flexible tunneling application compatible with many OSes
 net-vpn/pptpd 1.4.0-r2: Linux Point-to-Point Tunnelling Protocol Server
 net-vpn/strongswan 5.7.2: IPsec-based VPN solution, supporting IKEv1/IKEv2 and MOBIKE
-net-vpn/tor 0.3.5.8: Anonymizing overlay network for TCP
+net-vpn/tor 0.3.5.8 0.4.0.5: Anonymizing overlay network for TCP
 net-vpn/vpnc 0.5.3_p550: Free client for Cisco VPN routing software
 net-vpn/vtun 3.0.3: Create tunnels over TCP/IP networks with shaping, encryption, and compression
 net-wireless/aircrack-ng 1.5.2: WLAN tools for breaking 802.11 WEP/WPA keys
@@ -9459,7 +9459,7 @@ sci-libs/itpp 4.3.1-r1: C++ library of mathematical, signal processing and commu
 sci-libs/keras-applications 1.0.7: Keras deep learning library reference implementations of deep learning models
 sci-libs/keras-preprocessing 1.0.9: Easy data preprocessing and data augmentation for deep learning models
 sci-libs/lapack-reference 3.2.1-r4: FORTRAN reference implementation of LAPACK Linear Algebra PACKage
-sci-libs/libcerf 1.4: Efficient and accurate implementation of complex error functions
+sci-libs/libcerf 1.4 1.5: Efficient and accurate implementation of complex error functions
 sci-libs/libctl 3.1: Guile-based library for scientific simulations
 sci-libs/libdap 3.18.1: Implementation of a C++ SDK for DAP 2.0 and 3.2
 sci-libs/libgeotiff 1.4.0: Library for reading TIFF files with embedded tags for geographic information
@@ -9900,7 +9900,7 @@ sys-apps/init-system-helpers 1.49-r1: Helper scripts useful for both OpenRC and 
 sys-apps/input-utils 1.2: Small collection of linux input layer utils
 sys-apps/install-xattr 0.5: Wrapper to coreutil's install to preserve Filesystem Extended Attributes
 sys-apps/iotools 1.5: Simple commands to access hardware device registers
-sys-apps/ipmitool 1.8.17-r1: Utility for controlling IPMI enabled devices.
+sys-apps/ipmitool 1.8.17-r1 1.8.18-r1: Utility for controlling IPMI enabled devices.
 sys-apps/ipmiutil 3.0.6: IPMI Management Utilities
 sys-apps/iproute2 4.14.1-r2 4.17.0-r1: kernel routing and traffic control utilities
 sys-apps/irqbalance 1.4.0-r1 1.5.0: Distribute hardware interrupts across processors on a multiprocessor system
@@ -10340,7 +10340,7 @@ sys-libs/musl 1.1.20-r1 1.1.21 1.1.22: Light, fast and simple C library focused 
 sys-libs/ncurses 5.9-r101 6.1-r2: console display library
 sys-libs/nss_wrapper 1.1.3: A wrapper for the user, group and hosts NSS API
 sys-libs/obstack-standalone 1.1: A standalone library to implement GNU libc's obstack.
-sys-libs/openipmi 2.0.22: Library interface to IPMI
+sys-libs/openipmi 2.0.22 2.0.27-r1: Library interface to IPMI
 sys-libs/pam 1.2.1-r2 1.3.0-r2: Linux-PAM (Pluggable Authentication Modules)
 sys-libs/pwdb 0.62-r1: Password database
 sys-libs/queue-standalone 0.1-r1: Install <sys/queue.h> from glibc.
@@ -11074,7 +11074,7 @@ x11-misc/wininfo 0.7-r1: An X app that follows your pointer providing informatio
 x11-misc/wmakerconf 2.12-r3: X based config tool for the windowmaker X windowmanager
 x11-misc/wmctrl 1.07-r2: command line tool to interact with an EWMH/NetWM compatible X Window Manager
 x11-misc/wmname 0.1-r1: utility to set the name of your window manager
-x11-misc/x11vnc 0.9.14_p20161013: A VNC server for real X displays
+x11-misc/x11vnc 0.9.16-r2: VNC server for real X displays
 x11-misc/x2vnc 1.7.2-r1: Control a remote computer running VNC from X
 x11-misc/x2x 1.27-r3: A utility to connect the Mouse and KeyBoard to another X
 x11-misc/xaos 3.6: Very fast real-time fractal zoomer
@@ -11264,7 +11264,7 @@ x11-terms/rxvt-unicode 9.22-r1: rxvt clone with xft and unicode support
 x11-terms/sakura 3.5.0: sakura is a terminal emulator based on GTK and VTE
 x11-terms/st 0.8.1: simple terminal implementation for X
 x11-terms/terminator 1.91: Multiple GNOME terminals in one window
-x11-terms/terminology 1.3.2-r1 1.4.0: Feature rich terminal emulator using the Enlightenment Foundation Libraries
+x11-terms/terminology 1.4.0: Feature rich terminal emulator using the Enlightenment Foundation Libraries
 x11-terms/tilda 1.4.1: A drop down terminal, similar to the consoles found in first person shooters
 x11-terms/xfce4-terminal 0.8.7.4: A terminal emulator for the Xfce desktop environment
 x11-terms/xterm 327 337: Terminal Emulator for X Windows
