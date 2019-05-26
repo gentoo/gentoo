@@ -15,11 +15,6 @@ www-servers/uwsgi uwsgi_plugins_rados
 # app-text/dblatex not keyword yet
 net-firewall/nftables doc
 
-# Roy Bamford <neddyseagoon@gentoo.org> (19 Mar 2019)
-# Let kde-apps/akonadi use mysql.
-dev-qt/qtsql -mysql
-kde-apps/akonadi -mysql
-
 # Mart Raudsepp <leio@gentoo.org> (11 Mar 2019)
 # media-libs/bcg729 not keyworded yet
 net-analyzer/wireshark bcg729
@@ -64,11 +59,6 @@ virtual/ffmpeg -sdl
 # kde-apps/cantor lua means luajit which needs luajit-2.1.0_beta3 for arm64
 # It builds OK but is not yet in ::gentoo. bug #678404
 kde-apps/cantor lua
-
-# Davide Pesavento <pesa@gentoo.org> (27 Dec 2018)
-# The corresponding Qt5 modules are not keyworded on arm64, and we don't want to
-# keyword them solely because of PyQt5 while there are no other in-tree users.
-dev-python/PyQt5 networkauth
 
 # Dirkjan Ochtman <djc@gentoo.org> (29 Sep 2018)
 # Upstream doesn't build docs for tier 2 and lower architectures.
@@ -303,13 +293,6 @@ media-libs/devil nvtt
 # Alexis Ballier <aballier@gentoo.org> (10 Jul 2017)
 # Virtualbox is x86 only
 app-emulation/libvirt virtualbox
-
-# Alexis Ballier <aballier@gentoo.org> (7 Jul 2017)
-# nautilus pulls in gnome-extra/sushi -> dev-libs/gjs -> dev-lang/spidermonkey:24
-# Older spidermonkey does not work on arm64.
-# This should be revised when gjs is updated.
-gnome-base/nautilus previewer
-app-crypt/libsecret test
 
 # Michał Górny <mgorny@gentoo.org> (28 Jun 2017)
 # app-misc/dtach & dev-tcltk/tcllib are not keyworded, and tests are

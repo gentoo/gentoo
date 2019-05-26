@@ -3,7 +3,7 @@
 
 EAPI=6
 
-USE_RUBY="ruby23 ruby24 ruby25"
+USE_RUBY="ruby24 ruby25 ruby26"
 
 RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
@@ -24,13 +24,15 @@ IUSE=""
 ruby_add_rdepend "dev-ruby/execjs:*"
 
 ruby_add_bdepend "test? (
-	dev-ruby/rails
+	>=dev-ruby/rails-5.0.0
 	dev-ruby/rake
 	dev-ruby/rspec-rails
 )"
 
 all_ruby_prepare() {
 	sed -i -e "/bundler/d" -e "/BUNDLE/d" spec/app/config/boot.rb || die
-	sed -i -e "/Bundler/,+3d" spec/app/config/application.rb || die
-	rm spec/rails_spec.rb spec/compass_spec.rb || die
+	sed -i -e "/Bundler/,+3d" \
+		-e '/config.sass/ s:^:#:' spec/app/config/application.rb || die
+	sed -i -e '/standard/ s:^:#:' autoprefixer-rails.gemspec || die
+	rm -f spec/rails_spec.rb || die
 }

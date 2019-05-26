@@ -40,7 +40,3 @@ subversion
 # Mart Raudsepp <leio@gentoo.org> (28 Jan 2017)
 # sys-auth/skey not marked stable yet
 skey
-
-# Ben de Groot <yngwin@gentoo.org> (24 Aug 2015)
-# Not yet stable, bug #543326
-qt5

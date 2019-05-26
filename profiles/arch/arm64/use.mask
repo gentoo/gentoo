@@ -119,7 +119,6 @@ xemacs
 rpm
 scanner
 zvbi
-mysql
 fluidsynth
 sid
 mms
