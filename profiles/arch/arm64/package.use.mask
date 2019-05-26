@@ -15,11 +15,6 @@ www-servers/uwsgi uwsgi_plugins_rados
 # app-text/dblatex not keyword yet
 net-firewall/nftables doc
 
-# Roy Bamford <neddyseagoon@gentoo.org> (19 Mar 2019)
-# Let kde-apps/akonadi use mysql.
-dev-qt/qtsql -mysql
-kde-apps/akonadi -mysql
-
 # Mart Raudsepp <leio@gentoo.org> (11 Mar 2019)
 # media-libs/bcg729 not keyworded yet
 net-analyzer/wireshark bcg729
