@@ -24,7 +24,6 @@ RDEPEND="
 	media-libs/libsoundtouch[abi_x86_32(-)]
 	media-libs/portaudio[abi_x86_32(-)]
 	>=sys-libs/zlib-1.2.4[abi_x86_32(-)]
-	virtual/jpeg:62[abi_x86_32(-)]
 	virtual/libudev[abi_x86_32(-)]
 	virtual/opengl[abi_x86_32(-)]
 	x11-libs/gtk+:2[abi_x86_32(-)]

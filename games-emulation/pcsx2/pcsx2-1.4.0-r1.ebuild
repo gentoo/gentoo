@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -26,7 +26,6 @@ RDEPEND="
 	media-libs/libsoundtouch[abi_x86_32(-)]
 	media-libs/portaudio[abi_x86_32(-)]
 	>=sys-libs/zlib-1.2.4[abi_x86_32(-)]
-	virtual/jpeg:62[abi_x86_32(-)]
 	virtual/opengl[abi_x86_32(-)]
 	x11-libs/gtk+:2[abi_x86_32(-)]
 	x11-libs/libICE[abi_x86_32(-)]
