@@ -338,10 +338,6 @@ net-libs/farstream:0.1
 # Removal in 30 days. Bug #683862
 dev-python/djangocms-attributes-field
 
-# Virgil Dupras <vdupras@gentoo.org> (26 Apr 2019)
-# Unmaintained, no revdeps. Removal in 30 days. Bug #618734
-dev-python/yapps
-
 # Jason Zaman <perfinion@gentoo.org> (25 Apr 2019)
 # net-mail/perdition was last-rited in 2016. The
 # SELinux policy packge is no longer needed.
