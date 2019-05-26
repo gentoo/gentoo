@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="4"
@@ -6,7 +6,7 @@ EAPI="4"
 inherit toolchain-funcs multilib
 
 DESCRIPTION="portable ISO C library for polynomial basis arithmetic"
-HOMEPAGE="http://www.libtom.org/"
+HOMEPAGE="http://www.libtom.net/"
 SRC_URI="https://github.com/libtom/libtompoly/releases/download/${PV}/ltp-${PV}.tar.bz2"
 
 LICENSE="WTFPL-2"
