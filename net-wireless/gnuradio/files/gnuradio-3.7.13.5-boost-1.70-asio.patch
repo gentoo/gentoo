@@ -1,0 +1,18 @@
+Bug: https://bugs.gentoo.org/683380
+Patch adapted from FreeBSD:
+https://svnweb.freebsd.org/ports/head/comms/gnuradio/files/patch-gr-blocks_lib_socket__pdu__impl.cc?view=markup&pathrev=499093
+
+--- a/gr-blocks/lib/socket_pdu_impl.cc
++++ b/gr-blocks/lib/socket_pdu_impl.cc
+@@ -165,7 +165,11 @@
+     void
+     socket_pdu_impl::start_tcp_accept()
+     {
++#if (BOOST_VERSION >= 107000)
++      tcp_connection::sptr new_connection = tcp_connection::make(d_io_service, d_rxbuf.size(), d_tcp_no_delay);
++#else
+       tcp_connection::sptr new_connection = tcp_connection::make(d_acceptor_tcp->get_io_service(), d_rxbuf.size(), d_tcp_no_delay);
++#endif
+ 
+       d_acceptor_tcp->async_accept(new_connection->socket(),
+         boost::bind(&socket_pdu_impl::handle_tcp_accept, this,
