@@ -196,7 +196,7 @@ mozconfig_init() {
 	fi
 
 	# Strip optimization so it does not end up in compile string
-	filter-flags '-O*'
+	filter-flags '-O* -ggdb3'
 
 	# Strip over-aggressive CFLAGS
 	use custom-cflags || strip-flags
