@@ -1,0 +1,19 @@
+diff --git a/mapserver.h b/mapserver.h
+index df7eeb9..9516a6c 100644
+--- a/mapserver.h
++++ b/mapserver.h
+@@ -55,6 +55,14 @@
+ #include <unistd.h>
+ #endif
+ 
++#ifndef TRUE
++#define TRUE 1
++#endif
++
++#ifndef FALSE
++#define FALSE 0
++#endif
++
+ #if defined(_WIN32) && !defined(__CYGWIN__)
+ #  define MS_DLL_EXPORT     __declspec(dllexport)
+ #define USE_MSFREE
