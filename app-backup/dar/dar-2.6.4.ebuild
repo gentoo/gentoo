@@ -43,11 +43,14 @@ DEPEND="${RDEPEND}
 		lzo? ( dev-libs/lzo[static-libs] )
 		xattr? ( sys-apps/attr[static-libs] )
 	)
+"
+BDEPEND="
 	nls? (
 		sys-devel/gettext
 		virtual/libintl
 	)
-	doc? ( app-doc/doxygen )"
+	doc? ( app-doc/doxygen )
+"
 
 REQUIRED_USE="?? ( dar32 dar64 )
 		gpg? ( gcrypt )"
