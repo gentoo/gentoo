@@ -1255,7 +1255,7 @@ app-portage/ufed 0.94: Gentoo Linux USE flags editor
 app-portage/unsymlink-lib 13: Convert your system to SYMLINK_LIB=no
 app-shells/autojump 22.2.4-r4: change directory command that learns
 app-shells/bash 2.05b_p13 3.0_p22 3.1_p23 3.2_p57 4.0_p44 4.1_p17 4.2_p53 4.3_p48-r2 4.4_p23-r1: The standard GNU Bourne again shell
-app-shells/bash-completion 2.7-r3 2.8: Programmable Completion for bash
+app-shells/bash-completion 2.7-r3 2.8 2.9: Programmable Completion for bash
 app-shells/bashdb 4.3.0.91-r2: bash source code debugging
 app-shells/bashish 2.2.4: Text console theme engine
 app-shells/ccsh 0.0.4-r4: UNIX Shell for people already familiar with the C language
@@ -2912,7 +2912,7 @@ dev-lang/php 5.6.40-r1 7.1.27 7.2.16: The PHP language runtime engine
 dev-lang/python 2.7.15 3.5.5 3.6.5: An interpreted, interactive, object-oriented programming language
 dev-lang/python-exec 2.4.6: Python script wrapper
 dev-lang/qu-prolog 10.1: Extended Prolog supporting quantifiers, object-variables and substitutions
-dev-lang/ruby 2.4.5: An object-oriented scripting language
+dev-lang/ruby 2.4.5 2.4.6: An object-oriented scripting language
 dev-lang/rust 1.29.1-r1 1.34.2: Systems programming language from Mozilla
 dev-lang/rust-bin 1.29.1-r1 1.34.2: Systems programming language from Mozilla
 dev-lang/sassc 3.5.0: A libsass command line driver
@@ -3181,7 +3181,7 @@ dev-libs/libunistring 0.9.10: Library for manipulating Unicode and C strings acc
 dev-libs/libusb 1.0.19-r1 1.0.21: Userspace access to USB devices
 dev-libs/libusb-compat 0.1.5-r2: Userspace access to USB devices (libusb-0.1 compat wrapper)
 dev-libs/libutf8proc 2.2.0_p1-r1: mapping tool for UTF-8 strings
-dev-libs/libuv 1.20.0: Cross-platform asychronous I/O
+dev-libs/libuv 1.20.0 1.28.0: Cross-platform asychronous I/O
 dev-libs/libverto 0.2.5-r1: Main event loop abstraction library
 dev-libs/libvformat 1.13-r2: Library to read and write vcard files
 dev-libs/libvterm 0.0_pre20160305: An abstract library implementation of a VT220/xterm/ECMA-48 terminal emulator
@@ -7777,7 +7777,7 @@ media-libs/libxspf 1.2.0: Playlist handling library
 media-libs/libxtract 0.6.6: A simple, portable, lightweight library of audio feature extraction functions
 media-libs/libzen 0.4.37: Shared library for libmediainfo and mediainfo
 media-libs/libzmf 0.0.2: Library for parsing Zoner Callisto/Draw documents
-media-libs/lilv 0.24.2-r2: Library to make the use of LV2 plugins as simple as possible for applications
+media-libs/lilv 0.24.2-r2 0.24.4-r1: Library to make the use of LV2 plugins as simple as possible for applications
 media-libs/lsp-plugins 1.1.7-r1: Linux Studio Plugins
 media-libs/lv2 1.14.0-r1: A simple but extensible successor of LADSPA
 media-libs/mediastreamer 2.9.0-r2: Mediastreaming library for telephony application
@@ -10029,7 +10029,7 @@ sys-auth/pam_mysql 0.8.1-r1: pam_mysql is a module for pam to authenticate users
 sys-auth/pam_p11 0.2.0: PAM module for authenticating against PKCS#11 tokens
 sys-auth/pam_passwdqc 1.0.5: Password strength checking for PAM aware password changing programs
 sys-auth/pam_skey 1.1.5-r5: PAM interface for the S/Key authentication system
-sys-auth/pam_ssh 1.98: Uses ssh-agent to provide single sign-on
+sys-auth/pam_ssh 1.98 2.3: Uses ssh-agent to provide single sign-on
 sys-auth/pam_u2f 1.0.4-r1 1.0.7: Library for authenticating against PAM with a Yubikey
 sys-auth/pambase 20150213-r1 20150213-r2: PAM base configuration files
 sys-auth/polkit 0.113-r4 0.115-r3: Policy framework for controlling privileges for system-wide services
