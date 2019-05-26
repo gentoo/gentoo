@@ -15,10 +15,10 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Gedit"
 LICENSE="GPL-2+ CC-BY-SA-3.0"
 SLOT="0"
 
-IUSE="+introspection +python gtk-doc vala"
-REQUIRED_USE="python? ( introspection ${PYTHON_REQUIRED_USE} )"
+IUSE="+introspection +python gtk-doc spell vala"
+REQUIRED_USE="python? ( introspection ${PYTHON_REQUIRED_USE} ) spell? ( python )"
 
-KEYWORDS="~amd64"
+KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
 
 # X libs are not needed for OSX (aqua)
 COMMON_DEPEND="
@@ -40,7 +40,7 @@ COMMON_DEPEND="
 		dev-python/pycairo[${PYTHON_USEDEP}]
 		>=dev-python/pygobject-3:3[cairo,${PYTHON_USEDEP}]
 		dev-libs/libpeas[python,${PYTHON_USEDEP}] )
-	>=app-text/gspell-0.2.5:0=
+	spell? ( >=app-text/gspell-0.2.5:0= )
 "
 RDEPEND="${COMMON_DEPEND}
 	x11-themes/adwaita-icon-theme
@@ -54,6 +54,7 @@ DEPEND="${COMMON_DEPEND}
 	>=sys-devel/gettext-0.18
 	virtual/pkgconfig
 "
+PATCHES=( "${FILESDIR}/${PV}-make-spell-optional.patch" )
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
@@ -69,7 +70,9 @@ src_configure() {
 		$(meson_use gtk-doc documentation)
 		$(meson_use introspection)
 		$(meson_use python plugins)
+		$(meson_use spell)
 		$(meson_use vala vapi)
+		-Denable-gvfs-metadata=yes
 	)
 	meson_src_configure
 }
