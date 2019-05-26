@@ -9227,7 +9227,7 @@ net-vpn/openfortivpn 1.8.1: A Fortinet compatible VPN client
 net-vpn/openvpn 2.4.6: Robust and highly flexible tunneling application compatible with many OSes
 net-vpn/pptpd 1.4.0-r2: Linux Point-to-Point Tunnelling Protocol Server
 net-vpn/strongswan 5.7.2: IPsec-based VPN solution, supporting IKEv1/IKEv2 and MOBIKE
-net-vpn/tor 0.3.5.8 0.4.0.5: Anonymizing overlay network for TCP
+net-vpn/tor 0.4.0.5: Anonymizing overlay network for TCP
 net-vpn/vpnc 0.5.3_p550: Free client for Cisco VPN routing software
 net-vpn/vtun 3.0.3: Create tunnels over TCP/IP networks with shaping, encryption, and compression
 net-wireless/aircrack-ng 1.5.2: WLAN tools for breaking 802.11 WEP/WPA keys
