@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-USE_RUBY="ruby24 ruby25"
+USE_RUBY="ruby24 ruby25 ruby26"
 
 RUBY_FAKEGEM_TASK_DOC=""
 RUBY_FAKEGEM_EXTRADOC="README.md"
@@ -20,8 +20,6 @@ KEYWORDS="~amd64"
 
 IUSE=""
 
-RESTRICT=test
-
 ruby_add_rdepend "
 	>=dev-ruby/sassc-2.0
 	dev-ruby/tilt:*
@@ -29,6 +27,13 @@ ruby_add_rdepend "
 	>=dev-ruby/sprockets-3.0:*
 	dev-ruby/sprockets-rails:*
 "
+
+ruby_add_bdepend "
+	test? ( dev-ruby/bundler dev-ruby/mocha )"
+
+all_ruby_prepare() {
+	sed -i -e '/rake/ s/,.*$//' ${RUBY_FAKEGEM_GEMSPEC} || die
+}
 
 each_ruby_test() {
 	${RUBY} -S bundle exec rake test || die
