@@ -1,0 +1,140 @@
+https://github.com/erlang/otp/pull/2194
+https://bugs.gentoo.org/681778
+
+From ed751968d8dc4c0b58210247e94409a8a52cc501 Mon Sep 17 00:00:00 2001
+From: Sergei Trofimovich <slyfox@gentoo.org>
+Date: Thu, 28 Mar 2019 08:38:56 +0000
+Subject: [PATCH] stdlib: fix re:replace on LTO builds
+
+Fabio Coatti reported elixir build failure in https://bugs.gentoo.org/681778.
+The minimal reproducer looks like that (from otp git tree):
+
+    $ ./configure CFLAGS='-O2 -flto' LDFLAGS='-O2 -flto=8'
+    $ make
+    $ ERL_TOP=$PWD \
+      PATH=$ERL_TOP/bin:$PATH \
+        \
+        bin/erl \
+        \
+        -noshell -eval 're:replace("a","b","c",[{return,list}]).' \
+        -s erlang halt
+
+    {"init terminating in do_boot",{badarg,[{re,replace,["a","b","c",[{return,list}]],
+        [{file,"re.erl"},{line,362}]},
+         {erl_eval,do_apply,6,[{file,"erl_eval.erl"},{line,680}]},
+         {init,start_it,1,[]},
+         {init,start_em,1,[]},
+         {init,do_boot,3,[]}]}}
+    init terminating in do_boot ({badarg,[{re,replace,[[_],[_],[_],[_]],[{_},{_}]},
+        {erl_eval,do_apply,6,[{_},{_}]},{init,start_it,1,[]},{init,start_em,1,[]},{init,do_boot,3,[]}]})
+    Crash dump is being written to: erl_crash.dump...done
+
+The failure happens in libpcre2 where stack overflow is mis-identified
+at function entry of
+
+    erts_pcre_compile2()
+        compile_regex()
+          if (PUBL(stack_guard) != NULL && PUBL(stack_guard)())
+          {
+              *errorcodeptr= ERR85;
+              return FALSE;
+          }
+
+The stack "overflow" detection happens in
+
+    thr_wrapper()
+        ethr_set_stacklimit__()
+
+because the stack usage code relies on the fact that ethr_set_stacklimit__()
+and similar functions don't get inlined into callers for stack growth
+measurement.
+
+Before the change inlining avoidance was achieved by putting functions
+into standalone translation units. LTO makes this technique inefficient.
+
+The change marks functions explicitly as __attribute__((__noinline__)) on gcc.
+
+Reported-by: Fabio Coatti
+Bug: https://bugs.gentoo.org/681778
+Signed-off-by: Sergei Trofimovich <slyfox@gentoo.org>
+---
+ erts/emulator/beam/global.h            |  9 +++++----
+ erts/emulator/beam/sys.h               | 10 ++++++++++
+ erts/include/internal/ethr_internal.h  |  2 +-
+ erts/include/internal/ethread_inline.h |  3 +++
+ 4 files changed, 19 insertions(+), 5 deletions(-)
+
+diff --git a/erts/emulator/beam/global.h b/erts/emulator/beam/global.h
+index f9bbe4167f9..4c8d3d3dbe6 100644
+--- a/erts/emulator/beam/global.h
++++ b/erts/emulator/beam/global.h
+@@ -1216,10 +1216,11 @@ Uint64 erts_timestamp_millis(void);
+ 
+ Export* erts_find_function(Eterm, Eterm, unsigned int, ErtsCodeIndex);
+ 
+-void *erts_calc_stacklimit(char *prev_c, UWord stacksize);
+-int erts_check_below_limit(char *ptr, char *limit);
+-int erts_check_above_limit(char *ptr, char *limit);
+-void *erts_ptr_id(void *ptr);
++/* ERTS_NOINLINE prevents link-time optimization across modules */
++void *erts_calc_stacklimit(char *prev_c, UWord stacksize) ERTS_NOINLINE;
++int erts_check_below_limit(char *ptr, char *limit) ERTS_NOINLINE;
++int erts_check_above_limit(char *ptr, char *limit) ERTS_NOINLINE;
++void *erts_ptr_id(void *ptr) ERTS_NOINLINE;
+ 
+ Eterm store_external_or_ref_in_proc_(Process *, Eterm);
+ Eterm store_external_or_ref_(Uint **, ErlOffHeap*, Eterm);
+diff --git a/erts/emulator/beam/sys.h b/erts/emulator/beam/sys.h
+index a6312293cc8..24b6738e082 100644
+--- a/erts/emulator/beam/sys.h
++++ b/erts/emulator/beam/sys.h
+@@ -63,6 +63,16 @@
+ #  endif
+ #endif
+ 
++#ifndef ERTS_NOINLINE
++#  if ERTS_AT_LEAST_GCC_VSN__(3,1,1)
++#    define ERTS_NOINLINE __attribute__((__noinline__))
++#  elif defined(__WIN32__)
++#    define ERTS_NOINLINE __declspec(noinline)
++#  else
++#    define ERTS_NOINLINE
++#  endif
++#endif
++
+ #if defined(DEBUG) || defined(ERTS_ENABLE_LOCK_CHECK)
+ #  undef ERTS_CAN_INLINE
+ #  define ERTS_CAN_INLINE 0
+diff --git a/erts/include/internal/ethr_internal.h b/erts/include/internal/ethr_internal.h
+index ac27ff2ed09..17ec84c52b6 100644
+--- a/erts/include/internal/ethr_internal.h
++++ b/erts/include/internal/ethr_internal.h
+@@ -90,7 +90,7 @@ int ethr_init_common__(ethr_init_data *id);
+ int ethr_late_init_common__(ethr_late_init_data *lid);
+ void ethr_run_exit_handlers__(void);
+ void ethr_ts_event_destructor__(void *vtsep);
+-void ethr_set_stacklimit__(char *prev_c, size_t stacksize);
++void ethr_set_stacklimit__(char *prev_c, size_t stacksize) ETHR_NOINLINE;
+ 
+ #if defined(ETHR_X86_RUNTIME_CONF__)
+ void ethr_x86_cpuid__(int *eax, int *ebx, int *ecx, int *edx);
+diff --git a/erts/include/internal/ethread_inline.h b/erts/include/internal/ethread_inline.h
+index 8e6bcfc4a8c..f25ba4ae721 100644
+--- a/erts/include/internal/ethread_inline.h
++++ b/erts/include/internal/ethread_inline.h
+@@ -62,12 +62,15 @@
+ #  define ETHR_INLINE __inline__
+ #  if ETHR_AT_LEAST_GCC_VSN__(3, 1, 1)
+ #    define ETHR_FORCE_INLINE __inline__ __attribute__((__always_inline__))
++#    define ETHR_NOINLINE __attribute__((__noinline__))
+ #  else
+ #    define ETHR_FORCE_INLINE __inline__
++#    define ETHR_NOINLINE
+ #  endif
+ #elif defined(__WIN32__)
+ #  define ETHR_INLINE __forceinline
+ #  define ETHR_FORCE_INLINE __forceinline
++#  define ETHR_NOINLINE __declspec(noinline)
+ #endif
+ 
+ #endif /* #ifndef ETHREAD_INLINE_H__ */
