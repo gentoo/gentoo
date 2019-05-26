@@ -89,6 +89,7 @@ REQUIRED_USE="|| ( ${ALL_LLVM_TARGETS[*]} )
 
 PATCHES=(
 	"${FILESDIR}"/0001-llvm-cmake-Add-additional-headers-only-if-they-exist.patch
+	"${FILESDIR}"/1.35.0-revert-commits-triggering-multiple-llvm-rebuilds.patch
 )
 
 S="${WORKDIR}/${MY_P}-src"
