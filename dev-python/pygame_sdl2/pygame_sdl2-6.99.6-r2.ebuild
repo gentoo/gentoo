@@ -15,14 +15,14 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-RDEPEND="dev-python/numpy[${PYTHON_USEDEP}]
-	media-libs/libpng:0
-	media-libs/libsdl2[video]
-	media-libs/sdl2-image[png,jpeg]
-	media-libs/sdl2-mixer
-	media-libs/sdl2-ttf
-	virtual/jpeg:62
-"
+RDEPEND="
+	dev-python/numpy[${PYTHON_USEDEP}]
+	media-libs/libpng:0=
+	media-libs/libsdl2:=[video]
+	media-libs/sdl2-image:=[png,jpeg]
+	media-libs/sdl2-mixer:=
+	media-libs/sdl2-ttf:=
+	virtual/jpeg:0"
 DEPEND="${RDEPEND}
 	dev-python/cython[${PYTHON_USEDEP}]"
 
