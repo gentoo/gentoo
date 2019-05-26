@@ -5348,7 +5348,7 @@ dev-python/pyfltk 1.3.3: Python interface to Fltk library
 dev-python/pyftpdlib 1.5.1 1.5.3 1.5.4: Python FTP server library
 dev-python/pygal 2.1.1 2.4.0: A python SVG charts generator
 dev-python/pygame 1.9.2_pre20120101-r2 1.9.3: Python bindings for SDL multimedia library
-dev-python/pygame_sdl2 6.99.12.4 6.99.12.4-r1: Reimplementation of portions of the pygame API using SDL2
+dev-python/pygame_sdl2 6.99.12.4-r1 6.99.12.4-r2: Reimplementation of portions of the pygame API using SDL2
 dev-python/pygit2 0.26.4: Python bindings for libgit2
 dev-python/pyglet 1.2.4: Cross-platform windowing and multimedia library for Python
 dev-python/pygments 2.2.0 2.3.1: Pygments is a syntax highlighting package written in Python
