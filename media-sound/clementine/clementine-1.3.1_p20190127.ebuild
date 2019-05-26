@@ -42,7 +42,7 @@ BDEPEND="
 COMMON_DEPEND="
 	app-crypt/qca:2[qt5(+)]
 	dev-db/sqlite:=
-	dev-libs/crypto++[asm]
+	dev-libs/crypto++:=[asm]
 	dev-libs/glib:2
 	dev-libs/libxml2
 	dev-libs/protobuf:=
