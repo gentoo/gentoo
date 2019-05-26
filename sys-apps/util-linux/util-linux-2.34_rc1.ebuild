@@ -64,6 +64,7 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
+	"${FILESDIR}"/${P}-lsblk_fix_heap_use_after_free.patch
 	"${FILESDIR}"/${P}-lscpu_floating_point_exception_fix.patch
 )
 
