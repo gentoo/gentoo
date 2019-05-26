@@ -6526,7 +6526,7 @@ games-emulation/caps 20071115: Support library for accessing and using C.A.P.S. 
 games-emulation/dolphin 5.0: Gamecube and Wii game emulator
 games-emulation/dosbox 0.74_p20160629: DOS emulator
 games-emulation/mgba 0.6.3: Game Boy Advance emulator written in C
-games-emulation/pcsx2 1.4.0: A PlayStation 2 emulator
+games-emulation/pcsx2 1.4.0-r1: A PlayStation 2 emulator
 games-engines/renpy 6.99.12.4-r3: Visual novel engine written in python
 games-misc/fortune-mod 1.99.1-r2: The notorious fortune program
 games-misc/games-envd 0: Environment file for gentoo games
