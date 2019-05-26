@@ -294,6 +294,13 @@ media-libs/devil nvtt
 # Virtualbox is x86 only
 app-emulation/libvirt virtualbox
 
+# Alexis Ballier <aballier@gentoo.org> (7 Jul 2017)
+# nautilus pulls in gnome-extra/sushi -> dev-libs/gjs -> dev-lang/spidermonkey:24
+# Older spidermonkey does not work on arm64.
+# This should be revised when gjs is updated.
+gnome-base/nautilus previewer
+app-crypt/libsecret test
+
 # Michał Górny <mgorny@gentoo.org> (28 Jun 2017)
 # app-misc/dtach & dev-tcltk/tcllib are not keyworded, and tests are
 # restricted anyway, so no point in pursuing it right now.
