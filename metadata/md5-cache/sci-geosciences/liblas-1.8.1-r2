@@ -5,11 +5,11 @@ DESCRIPTION=C/C++ library for manipulating the LAS LiDAR format common in GIS
 EAPI=7
 HOMEPAGE=https://github.com/libLAS/libLAS/
 IUSE=gdal
-KEYWORDS=~amd64 ~ia64 ~ppc ~ppc64 ~x86
+KEYWORDS=amd64 ~ia64 ~ppc ~ppc64 ~x86
 LICENSE=BSD
 RDEPEND=dev-libs/boost:= sci-geosciences/laszip sci-libs/libgeotiff:= gdal? ( sci-libs/gdal:= )
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/libLAS/libLAS/archive/1.8.1.tar.gz -> liblas-1.8.1.tar.gz
 _eclasses_=cmake-utils	959a7fda0dce63de9a4e73a22294d6ec	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	a09389deba2c0a7108b581e02c7cecbf	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529	xdg-utils	14d00d009167652b1fa363e55effe213
-_md5_=6a6c4e85ff7f872a1cbe056c5dfbd5b9
+_md5_=d6eefe0148d0104ccda90d9f86f611f8

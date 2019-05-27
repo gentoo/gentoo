@@ -9397,7 +9397,7 @@ sci-geosciences/harmonics-dwf-free 20131228: Tidal harmonics database for libtcd
 sci-geosciences/harmonics-dwf-free-noncomm 20111230-r1: Tidal harmonics database for libtcd
 sci-geosciences/josm 10966: Java-based editor for the OpenStreetMap project
 sci-geosciences/laszip 2.2.0: Library for free and lossless compression of the LAS LiDAR format
-sci-geosciences/liblas 1.8.1: C/C++ library for manipulating the LAS LiDAR format common in GIS
+sci-geosciences/liblas 1.8.1 1.8.1-r2: C/C++ library for manipulating the LAS LiDAR format common in GIS
 sci-geosciences/libtcd 2.2.5_p2: Library for reading and writing Tide Constituent Database (TCD) files
 sci-geosciences/mapnik-world-boundaries 20090514: Mapnik World Boundaries
 sci-geosciences/mtkbabel 0.8.3.1-r1: MTKBabel is a Perl program to operate the i-Blue 747 GPS data logger
