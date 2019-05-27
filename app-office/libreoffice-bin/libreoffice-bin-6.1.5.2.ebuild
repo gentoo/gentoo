@@ -64,7 +64,7 @@ BIN_COMMON_DEPEND="
 	media-libs/libpng:0/16
 	>=sys-devel/gcc-7.3.0
 	>=sys-libs/glibc-2.27
-	virtual/jpeg:62
+	virtual/jpeg-compat:62
 "
 
 # PLEASE place any restrictions that are specific to the binary builds
