@@ -27,11 +27,15 @@ RDEPEND="
 	"
 
 python_prepare_all()  {
-	python_export_best
+	python_setup
 	eprefixify setup.py mirrorselect/main.py
 	echo Now setting version... VERSION="9999-${EGIT_VERSION}" "${PYTHON}" setup.py set_version
 	VERSION="9999-${EGIT_VERSION}" "${PYTHON}" setup.py set_version || die "setup.py set_version failed"
 	distutils-r1_python_prepare_all
+}
+
+python_test() {
+	esetup.py test || die "tests failed under ${EPYTHON}"
 }
 
 pkg_postinst() {
