@@ -1238,7 +1238,7 @@ app-portage/gpyutils 0.2.2: Utitilies for maintaining Python packages
 app-portage/grs 0.6-r1 0.7: Suite to build Gentoo Reference Systems
 app-portage/layman 2.0.0-r1 2.0.0-r3 2.4.2-r1: Tool to manage Gentoo overlays
 app-portage/metagen 0.6.2-r1 0.6.3 0.6.5: metadata.xml generator for ebuilds
-app-portage/mirrorselect 2.2.0.1 2.2.2 2.2.2-r2 2.2.3 2.2.4-r1: Tool to help select distfiles mirrors for Gentoo
+app-portage/mirrorselect 2.2.3 2.2.4-r1: Tool to help select distfiles mirrors for Gentoo
 app-portage/overlint 0.5.3-r1: Simple tool for static analysis of overlays
 app-portage/perl-info 0.16: Tool to gather relevant perl data useful for bugreport; 'emerge --info' for perl
 app-portage/pfl 3.0-r2: Searchable online file/package database for Gentoo
@@ -7080,7 +7080,7 @@ kde-plasma/xembed-sni-proxy 5.15.5: Legacy xembed tray icons support for SNI-onl
 lxde-base/lxappearance 0.6.3 0.6.3-r1: LXDE GTK+ theme switcher
 lxde-base/lxde-common 0.99.1: LXDE Session default configuration files and nuoveXT2 iconset
 lxde-base/lxde-icon-theme 0.5.0-r1: nuoveXT2 iconset
-lxde-base/lxde-meta 0.5.5-r5 0.5.5-r6: Meta ebuild for LXDE, the Lightweight X11 Desktop Environment
+lxde-base/lxde-meta 0.5.5-r6: Meta ebuild for LXDE, the Lightweight X11 Desktop Environment
 lxde-base/lxdm 0.5.3-r1 0.5.3-r2: LXDE Display Manager
 lxde-base/lxinput 0.3.5 0.3.5-r1: LXDE keyboard and mouse configuration tool
 lxde-base/lxlauncher 0.2.2: An open source clone of the Asus launcher for EeePC
@@ -7088,8 +7088,6 @@ lxde-base/lxmenu-data 0.1.5: Provides files needed for LXDE application menus
 lxde-base/lxpanel 0.9.3 0.9.3-r1: Lightweight X11 desktop panel for LXDE
 lxde-base/lxrandr 0.3.1 0.3.1-r1: LXDE GUI interface to RandR extention
 lxde-base/lxsession 0.5.2: LXDE session manager
-lxde-base/lxsession-edit 0.2.0: LXDE session autostart editor
-lxde-base/lxshortcut 0.1.2: LXDE tool to edit desktop entry files
 lxde-base/lxtask 0.1.8 0.1.8-r1: LXDE Task manager
 lxde-base/lxterminal 0.3.1: Lightweight vte-based tabbed terminal emulator for LXDE
 lxde-base/menu-cache 1.1.0: Library to create and utilize caches to speed up freedesktop application menus
