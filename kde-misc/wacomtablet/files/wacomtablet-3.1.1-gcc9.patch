@@ -1,0 +1,29 @@
+From 810487c4fa240f6de598b04929bb08de8937feb5 Mon Sep 17 00:00:00 2001
+From: Valerii Malov <jazzvoid@gmail.com>
+Date: Sun, 28 Apr 2019 19:10:43 +0300
+Subject: (Supposedly) fix building with gcc9
+
+I don't really have access to gcc9 right now to test, but this should
+fix "static assertion failed: unique_ptr's deleter must be invocable
+with a pointer"
+
+CCBUG: 407015
+---
+ src/common/libwacomwrapper.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/common/libwacomwrapper.cpp b/src/common/libwacomwrapper.cpp
+index 1d11fc3..92a559a 100644
+--- a/src/common/libwacomwrapper.cpp
++++ b/src/common/libwacomwrapper.cpp
+@@ -60,7 +60,7 @@ libWacomWrapper::~libWacomWrapper()
+ bool libWacomWrapper::lookupTabletInfo(int tabletId, int vendorId, TabletInformation &tabletInfo)
+ {
+     qCDebug(COMMON) << "LibWacom lookup for" << tabletId << vendorId;
+-    auto errorDeleter = [](WacomError *&e){libwacom_error_free(&e);};
++    auto errorDeleter = [](WacomError *e){libwacom_error_free(&e);};
+     std::unique_ptr<WacomError, decltype(errorDeleter)>
+             error(libwacom_error_new(), errorDeleter);
+     std::unique_ptr<WacomDevice, decltype(&libwacom_destroy)>
+-- 
+cgit v1.1
