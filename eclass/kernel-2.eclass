@@ -656,8 +656,8 @@ if [[ ${ETYPE} == sources ]]; then
 					${DEBLOB_CHECK_URI}
 				)"
 		elif kernel_is lt 4 14; then
-			# We have no way to deblob older kernels, so just mark them as
-			# tainted with non-libre materials.
+			# Deblobbing is not available, so just mark kernels older
+			# than 4.14 as tainted with non-libre materials.
 			LICENSE+=" linux-firmware"
 		fi
 	fi
