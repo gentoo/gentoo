@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 inherit autotools git-r3
 
 DESCRIPTION="Tabular Datastream Library"
-HOMEPAGE="http://www.freetds.org/"
+HOMEPAGE="https://www.freetds.org/"
 EGIT_REPO_URI="https://github.com/FreeTDS/${PN}.git"
 
 LICENSE="GPL-2"
