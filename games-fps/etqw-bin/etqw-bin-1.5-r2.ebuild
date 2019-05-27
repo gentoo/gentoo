@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -18,7 +18,7 @@ DEPEND="app-arch/unzip"
 RDEPEND="sys-libs/glibc
 	amd64? ( sys-libs/glibc[multilib] )
 	>=sys-libs/zlib-1.2.8-r1[abi_x86_32(-)]
-	>=virtual/jpeg-62:62[abi_x86_32(-)]
+	virtual/jpeg-compat:62[abi_x86_32(-)]
 	>=media-libs/libsdl-1.2.15-r4[video,sound,opengl,abi_x86_32(-)]
 	>=media-libs/alsa-lib-1.0.27.2[abi_x86_32(-)]
 	>=x11-libs/libX11-1.6.2[abi_x86_32(-)]
