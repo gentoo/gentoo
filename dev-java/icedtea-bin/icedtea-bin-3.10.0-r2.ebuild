@@ -43,7 +43,7 @@ RDEPEND=">=dev-libs/glib-2.42:2%
 	>=media-libs/freetype-2.5.5:2%
 	>=media-libs/lcms-2.9:2%
 	>=sys-libs/zlib-1.2.8-r1%
-	virtual/jpeg:62%
+	virtual/jpeg-compat:62%
 	alsa? ( >=media-libs/alsa-lib-1.0% )
 	cups? ( >=net-print/cups-2.0% )
 	gtk? (
