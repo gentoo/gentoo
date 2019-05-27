@@ -21,8 +21,6 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
-PATCHES=( "${FILESDIR}/${P}-revert-FindQuaZip-location.patch" )
-
 src_prepare() {
 	cmake-utils_src_prepare
 	if ! use static-libs ; then
