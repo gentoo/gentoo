@@ -1,0 +1,32 @@
+--- a/UnitTests/CMakeLists.txt	2019-01-08 04:36:18.000000000 -0800
++++ a/UnitTests/CMakeLists.txt	2019-05-21 13:00:47.785964900 -0700
+@@ -1,7 +1,5 @@
+-ADD_SUBDIRECTORY (googletest EXCLUDE_FROM_ALL)
+ enable_testing()
+ 	
+-SET(gtest_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/googletest/googletest")
+ add_definitions( -DTESTFILESPATH="${CMAKE_CURRENT_SOURCE_DIR}/../TestFiles")
+ add_definitions( -DLTESTFILESPATH=L"${CMAKE_CURRENT_SOURCE_DIR}/../TestFiles")
+ add_definitions( -DLOUTFILESPATH=L"${CMAKE_BINARY_DIR}/")
+--- a/UnitTests/C_Interface/CMakeLists.txt	2019-01-08 04:36:18.000000000 -0800
++++ a/UnitTests/C_Interface/CMakeLists.txt	2019-05-27 09:46:14.828817540 -0700
+@@ -27,7 +27,7 @@
+ endif()
+ 
+ target_include_directories(${TESTNAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/Include ${gtest_SOURCE_DIR}/include)
+-target_link_libraries(${TESTNAME} ${PROJECT_NAME} gtest gtest_main)
++target_link_libraries(${TESTNAME} ${PROJECT_NAME} gtest gtest_main z zip)
+ add_dependencies(${TESTNAME} ${PROJECT_NAME})
+ set_target_properties(${TESTNAME} PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/")
+ 
+--- a/UnitTests/CPP/CMakeLists.txt	2019-01-08 04:36:18.000000000 -0800
++++ a/UnitTests/CPP/CMakeLists.txt	2019-05-27 09:48:30.382732117 -0700
+@@ -22,7 +22,7 @@
+ endif()
+ 
+ target_include_directories(${TESTNAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/Include ${gtest_SOURCE_DIR}/include)
+-target_link_libraries(${TESTNAME} ${PROJECT_NAME}_s gtest gtest_main)
++target_link_libraries(${TESTNAME} ${PROJECT_NAME}_s gtest gtest_main z zip)
+ add_dependencies(${TESTNAME} ${PROJECT_NAME}_s)
+ set_target_properties(${TESTNAME} PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/")
+ 
