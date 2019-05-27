@@ -778,7 +778,7 @@ app-emulation/wine-desktop-common 20150204: Various desktop menu items and icons
 app-emulation/wine-gecko 2.47-r1: A Mozilla Gecko based version of Internet Explorer for Wine
 app-emulation/wine-mono 4.6.4 4.7.1 4.7.5: Wine Mono is a replacement for the .NET runtime and class libraries in Wine
 app-emulation/wine-vanilla 3.0.3 4.0: Free implementation of Windows(tm) on Unix, without external patchsets
-app-emulation/winetricks 20170823 20190310: Easy way to install DLLs needed to work around problems in Wine
+app-emulation/winetricks 20190310: Easy way to install DLLs needed to work around problems in Wine
 app-emulation/x48 0.6.4-r1: HP48 Calculator Emulator
 app-emulation/xen 4.10.3-r1: The Xen virtual machine monitor
 app-emulation/xen-pvgrub 4.10.3: allows to boot Xen domU kernels from a menu.lst laying inside guest filesystem
