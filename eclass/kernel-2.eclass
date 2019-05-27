@@ -1227,7 +1227,7 @@ unipatch() {
 			UNIPATCH_LIST_GENPATCHES+=" ${DISTDIR}/${tarball}"
 			debug-print "genpatches tarball: $tarball"
 
-	        local GCC_MAJOR_VER=$(gcc-major-version)
+			local GCC_MAJOR_VER=$(gcc-major-version)
 			local GCC_MINOR_VER=$(gcc-minor-version)
 
 			# optimization patch for gcc < 8.X and kernel > 4.13
