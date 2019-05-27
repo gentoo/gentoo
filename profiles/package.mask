@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Hanno Boeck <hanno@gentoo.org> (27 May 2019)
+# Obsolete LXDE modules, see #652658, #651964
+lxde-base/lxshortcut
+lxde-base/lxsession-edit
+
 # Virgil Dupras <vdupras@gentoo.org> (24 May 2019)
 # py2 only, dead upstream, removal in 30 days. Bug #686668
 dev-python/drpython
