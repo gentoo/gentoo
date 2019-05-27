@@ -10,7 +10,7 @@ inherit kde5
 
 DESCRIPTION="Framework for embedding scripting into applications"
 LICENSE="LGPL-2+"
-KEYWORDS="amd64 ~arm ~arm64 x86"
+KEYWORDS="amd64 ~arm arm64 x86"
 IUSE=""
 
 RDEPEND="

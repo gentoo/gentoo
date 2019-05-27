@@ -3,13 +3,14 @@
 
 EAPI=7
 
-inherit git-r3 prefix user webapp
+inherit prefix user webapp
 
+COMMIT="4a2836ea90c4c471029d189a8c9fe5ec10a9521b"
 DESCRIPTION="Tiny Tiny RSS - A web-based news feed (RSS/Atom) aggregator using AJAX"
 HOMEPAGE="https://tt-rss.org/"
-EGIT_REPO_URI="https://git.tt-rss.org/git/${PN}.git"
+SRC_URI="https://git.tt-rss.org/git/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-3"
-SLOT="${PV}" # Single live slot.
+KEYWORDS="~amd64 ~arm ~mips ~x86"
 IUSE="+acl daemon +mysqli postgres"
 REQUIRED_USE="|| ( mysqli postgres )"
 
@@ -23,6 +24,8 @@ RDEPEND="${DEPEND}
 DEPEND="!vhosts? ( ${DEPEND} )"
 
 need_httpd_cgi # From webapp.eclass
+
+S="${WORKDIR}/${PN}"
 
 pkg_setup() {
 	webapp_pkg_setup
@@ -38,6 +41,7 @@ src_configure() {
 
 	sed -i -r \
 		-e "/'DB_TYPE'/s:,.*:, '$(usex mysqli mysql pgsql)'); // mysql or pgsql:" \
+		-e "/'CHECK_FOR_UPDATES'/s/true/false/" \
 		config.php-dist || die
 }
 
@@ -76,12 +80,5 @@ src_install() {
 
 pkg_postinst() {
 	elog "You need to merge config.php-dist into config.php manually when upgrading."
-
-	if use vhosts && [[ -n ${REPLACING_VERSIONS} ]]; then
-		elog
-		elog "The live ebuild does not automatically upgrade your installations so"
-		elog "don't forget to do so manually."
-	fi
-
 	webapp_pkg_postinst
 }
