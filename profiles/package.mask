@@ -397,12 +397,6 @@ mail-filter/zdkimfilter
 # Masked for removal (bug #683926)
 sys-libs/ntdb
 
-# Alexys Jacob <ultrabug@gentoo.org> (20 Apr 2019)
-# Unmaintained. Not active any more with latest release Jul 23, 2017.
-# Does not build with recent openssl. Dropping useless python driver as well.
-# Removal in 30 days.  Bug #597340, #674236.
-dev-python/python-rethinkdb
-
 # Miroslav Šulc <fordfrog@gentoo.org> (19 Apr 2019)
 # Depends on >=virtual/{jdk,jre}-11 which is masked
 =www-servers/tomcat-9.0.19
