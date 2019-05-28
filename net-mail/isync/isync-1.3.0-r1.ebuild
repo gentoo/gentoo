@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,8 +16,8 @@ DEPEND=">=sys-libs/db-4.2:*
 	zlib? ( sys-libs/zlib )
 	sasl? ( dev-libs/cyrus-sasl )
 	ssl? (
-	    !libressl? ( >=dev-libs/openssl-0.9.6:* )
-	    libressl? ( dev-libs/libressl )
+		!libressl? ( >=dev-libs/openssl-0.9.6:0= )
+		libressl? ( dev-libs/libressl:0= )
 	)"
 RDEPEND="${DEPEND}"
 
