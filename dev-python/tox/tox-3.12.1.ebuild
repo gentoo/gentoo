@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_{5,6,7}} pypy{,3} )
+PYTHON_COMPAT=( python3_{5,6,7} pypy3 )
 
 inherit distutils-r1
 
@@ -39,7 +39,7 @@ DEPEND="${RDEPEND}
 
 # for some reason, --deselect doesn't work in tox's tests
 PATCHES=(
-	"${FILESDIR}/${PN}-3.10.0-skip-broken-tests.patch"
+	"${FILESDIR}/${PN}-3.12.1-skip-broken-tests.patch"
 	"${FILESDIR}/${PN}-3.9.0-strip-setuptools_scm.patch"
 )
 

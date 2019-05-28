@@ -12,10 +12,10 @@ index 6a8ac18..56dbe95 100644
      monkeypatch.setenv(str("TOX_REPORTER_TIMESTAMP"), str("1"))
      initproj(
 diff --git a/tests/unit/config/test_config.py b/tests/unit/config/test_config.py
-index c64ec1b..b16a4f2 100644
+index b814b7a..fe7ebe3 100644
 --- a/tests/unit/config/test_config.py
 +++ b/tests/unit/config/test_config.py
-@@ -1886,7 +1886,7 @@ class TestConfigTestEnv:
+@@ -1897,7 +1897,7 @@ class TestConfigTestEnv:
          for name, config in configs.items():
              assert config.basepython == "python{}.{}".format(name[2], name[3])
  
@@ -24,12 +24,12 @@ index c64ec1b..b16a4f2 100644
          with pytest.warns(UserWarning, match=r"conflicting basepython .*"):
              config = newconfig(
                  """
-diff --git a/tests/unit/test_interpreters.py b/tests/unit/test_interpreters.py
-index 1eba27e..af7930b 100644
---- a/tests/unit/test_interpreters.py
-+++ b/tests/unit/test_interpreters.py
-@@ -40,7 +40,7 @@ def test_locate_via_py(monkeypatch):
-     assert tox.interpreters.locate_via_py(spec)
+diff --git a/tests/unit/interpreters/test_interpreters.py b/tests/unit/interpreters/test_interpreters.py
+index ea6f65d..e4f0e92 100644
+--- a/tests/unit/interpreters/test_interpreters.py
++++ b/tests/unit/interpreters/test_interpreters.py
+@@ -28,7 +28,7 @@ def create_interpreters_instance():
+     return Interpreters(hook=pm.hook)
  
  
 -def test_tox_get_python_executable():
@@ -37,7 +37,7 @@ index 1eba27e..af7930b 100644
      class envconfig:
          basepython = sys.executable
          envname = "pyxx"
-@@ -84,7 +84,7 @@ def test_tox_get_python_executable():
+@@ -72,7 +72,7 @@ def test_tox_get_python_executable():
  
  
  @pytest.mark.skipif("sys.platform == 'win32'", reason="symlink execution unreliable on Windows")
