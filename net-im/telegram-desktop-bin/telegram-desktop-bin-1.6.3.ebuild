@@ -13,7 +13,7 @@ SRC_URI="
 	x86? ( https://github.com/telegramdesktop/tdesktop/releases/download/v${PV}/tsetup32.${PV}.tar.xz )
 "
 
-LICENSE="telegram"
+LICENSE="GPL-3-with-openssl-exception"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
 
