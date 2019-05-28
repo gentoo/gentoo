@@ -338,12 +338,6 @@ dev-python/gst-python:0.10
 media-libs/gnonlin:0.10
 net-libs/farstream:0.1
 
-# Jason Zaman <perfinion@gentoo.org> (25 Apr 2019)
-# net-mail/perdition was last-rited in 2016. The
-# SELinux policy packge is no longer needed.
-# Removal in 30 days.
-sec-policy/selinux-perdition
-
 # Michał Górny <mgorny@gentoo.org> (24 Apr 2019)
 # Unmaintained.  Vulnerable init.d script.  Missing dependencies causing
 # build failures (#514412, #544942).  Insecure format strings (#520574).
