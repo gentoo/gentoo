@@ -18,7 +18,10 @@ RESTRICT="mirror bindist"
 DEPEND="dev-util/patchelf"
 
 RDEPEND="
-	=dev-libs/openssl-1.0*:*
+	|| (
+		dev-libs/openssl-compat:1.0.0
+		=dev-libs/openssl-1.0*:*
+	)
 	media-libs/fontconfig
 	media-libs/freetype
 	media-libs/libpng:1.2
