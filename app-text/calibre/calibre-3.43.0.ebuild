@@ -1,12 +1,12 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="sqlite,ssl"
 
-inherit eutils bash-completion-r1 gnome2-utils multilib toolchain-funcs python-single-r1 xdg-utils
+inherit bash-completion-r1 desktop toolchain-funcs python-single-r1 xdg-utils
 
 DESCRIPTION="Ebook management application"
 HOMEPAGE="https://calibre-ebook.com/"
@@ -151,18 +151,6 @@ src_prepare() {
 	find "${S}" -type f -name \*.py -exec \
 		sed -e 's/calibre.ebooks.BeautifulSoup/BeautifulSoup/' -i {} + \
 		|| die "could not sed bundled beautifulsoup out of the source tree"
-
-	# avoid failure of xdg tools to recognize vendor prefix
-	sed -e "s|xdg-icon-resource install|xdg-icon-resource install --novendor|" \
-		-e "s|'xdg-mime', 'install'|'xdg-mime', 'install', '--novendor'|" \
-		-e "s|'xdg-desktop-menu', 'install'|'xdg-desktop-menu', 'install', '--novendor'|" \
-		-i "${S}"/src/calibre/linux.py || die 'sed failed'
-
-	# don't create/install uninstaller
-	sed '/self\.create_uninstaller()/d' -i src/calibre/linux.py || die
-
-	sed -e 's:^#!/usr/bin/env python3$:#!/usr/bin/env python2:' \
-		-i src/calibre/devices/mtp/unix/upstream/update.py || die
 }
 
 src_install() {
@@ -215,23 +203,11 @@ src_install() {
 		--root="${D}" \
 		--prefix="${EPREFIX}/usr" \
 		--libdir="${EPREFIX}/usr/${libdir}" \
-		--staging-root="${ED}usr" \
-		--staging-libdir="${ED}usr/${libdir}" || die
+		--staging-root="${ED}/usr" \
+		--staging-libdir="${ED}/usr/${libdir}" || die
 
-	# The menu entries end up here due to '--mode user' being added to
-	# xdg-* options in src_prepare.
-	dodir /usr/share/mime/packages
-	chmod -fR a+rX,u+w,g-w,o-w "${HOME}"/.local
-	mv "${HOME}"/.local/share/mime/packages/* "${ED}"usr/share/mime/packages/ ||
-		die "failed to register mime types"
-	dodir /usr/share/icons
-	mv "${HOME}"/.local/share/icons/* "${ED}"usr/share/icons/ ||
-		die "failed to install icon files"
-
-	domenu "${HOME}"/.local/share/applications/*.desktop ||
-		die "failed to install .desktop menu files"
-
-	find "${ED}"usr/share -type d -empty -delete
+	rm "${ED}/usr/share/applications/defaults.list" || die
+	find "${ED}"/usr/share -type d -empty -delete
 
 	cd "${ED}"/usr/share/calibre/fonts/liberation || die
 	local x
@@ -241,10 +217,10 @@ src_install() {
 	done
 
 	einfo "Converting python shebangs"
-	python_fix_shebang "${ED}"
+	python_fix_shebang --force "${ED}"
 
 	einfo "Compiling python modules"
-	python_optimize "${ED}"usr/lib/calibre
+	python_optimize "${ED}"/usr/lib/calibre
 
 	newinitd "${FILESDIR}"/calibre-server-3.init calibre-server
 	newconfd "${FILESDIR}"/calibre-server-3.conf calibre-server
@@ -266,12 +242,11 @@ src_install() {
 }
 
 pkg_preinst() {
-	gnome2_icon_savelist
 	# Indentify stray directories from upstream's "Binary install"
 	# method (see bug 622728).
 	CALIBRE_LIB_DIR=/usr/$(get_libdir)/calibre
-	CALIBRE_LIB_CONTENT=$(for x in "${ED%/}${CALIBRE_LIB_DIR}"/*; do
-		printf -- "${x##*/} "; done) || die "Failed to list ${ED%/}${CALIBRE_LIB_DIR}"
+	CALIBRE_LIB_CONTENT=$(for x in "${ED}${CALIBRE_LIB_DIR}"/*; do
+		printf -- "${x##*/} "; done) || die "Failed to list ${ED}${CALIBRE_LIB_DIR}"
 }
 
 pkg_postinst() {
@@ -285,11 +260,11 @@ pkg_postinst() {
 	done
 	xdg_desktop_database_update
 	xdg_mimeinfo_database_update
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }
 
 pkg_postrm() {
 	xdg_desktop_database_update
 	xdg_mimeinfo_database_update
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }
