@@ -22,7 +22,7 @@ IUSE="doc fuse systemd tcpd"
 COMMON_DEPEND="
 	app-arch/bzip2
 	app-arch/xz-utils
-	dev-libs/openssl:*
+	dev-libs/openssl:0=
 	sys-libs/zlib
 	systemd? (
 		sys-apps/systemd
