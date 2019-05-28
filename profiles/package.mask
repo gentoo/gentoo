@@ -344,17 +344,6 @@ net-libs/farstream:0.1
 # Removal in 30 days.
 sec-policy/selinux-perdition
 
-# Michał Górny <mgorny@gentoo.org> (25 Apr 2019)
-# This programs suffers severe code quality problems and should have
-# never been added to Gentoo.  It looks like a shell script badly
-# converted to a C program with a lot of system() calls with globs,
-# horribly unreadable code and broken memory management including
-# reading past end-of-string (which only recently replaced writing into
-# uninitialized memory).  Auditing the program completely would probably
-# be more costly than rewriting it from scratch.
-# Removal in 30 days.  Bug #684340.
-app-admin/lsat
-
 # Michał Górny <mgorny@gentoo.org> (24 Apr 2019)
 # Unmaintained.  Vulnerable init.d script.  Missing dependencies causing
 # build failures (#514412, #544942).  Insecure format strings (#520574).
