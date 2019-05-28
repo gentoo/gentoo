@@ -38,6 +38,7 @@ sys-devel/clang default-libcxx
 # Mart Raudsepp <leio@gentoo.org> (28 Jun 2018)
 # net-misc/lksctp-tools not stable yet
 dev-libs/openssl sctp
+dev-libs/openssl-compat sctp
 net-misc/openssh sctp
 
 # Mart Raudsepp <leio@gentoo.org> (30 May 2018)
