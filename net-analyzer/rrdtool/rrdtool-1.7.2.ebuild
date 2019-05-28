@@ -2,7 +2,6 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-
 DISTUTILS_OPTIONAL=true
 DISTUTILS_SINGLE_IMPL=true
 GENTOO_DEPEND_ON_PERL=no
@@ -54,8 +53,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.4.9-disable-rrd_graph-perl.patch
 	"${FILESDIR}"/${PN}-1.7.0-disable-rrd_graph-cgi.patch
 	"${FILESDIR}"/${PN}-1.7.1-configure.ac.patch
-	"${FILESDIR}"/${PN}-1.7.1-rrdcached.socket.patch
-
 )
 S=${WORKDIR}/${MY_P}
 
