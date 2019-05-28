@@ -128,6 +128,7 @@ media-video/vlc opencv
 # Lars Wendler <polynomial-c@gentoo.org> (23 Jan 2015)
 # Missing keywords
 dev-libs/openssl sctp
+dev-libs/openssl-compat sctp
 net-misc/openssh sctp
 
 # Pacho Ramos <pacho@gentoo.org> (01 Jun 2014)
