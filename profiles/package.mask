@@ -60,15 +60,6 @@ dev-util/pmd
 #     https://www.postgresql.org/developer/beta/
 dev-db/postgresql:12
 
-# Stefan Strogin <steils@gentoo.org> (23 May 2019)
-# Depends on >=dev-libs/bglibs-2.04. Bug #685294.
->=net-mail/qmail-autoresponder-2.0
-
-# Stefan Strogin <steils@gentoo.org> (22 May 2019)
-# Depends on >=dev-libs/bglibs-2.04. Bug #678928.
->=sys-apps/ucspi-proxy-1.1
->=sys-apps/ucspi-unix-1.0
-
 # Jonas Stein <jstein@gentoo.org> (22 May 2019)
 # Masked for removal after 2019-06-23. (bug #686260)
 # Wrong license, ships non-GPL image, maintainer needed.
@@ -87,10 +78,6 @@ sys-fs/pytagsfs
 # Unmaintained. Last release in 2005. Does not build with
 # >=dev-libs/bglibs-2.04. Bug #686438.
 net-mail/qmail-qfilter
-
-# Stefan Strogin <steils@gentoo.org> (21 May 2019)
-# Depends on >=dev-libs/bglibs-2.04. Bug #347479.
->=net-mail/mailfront-2.22
 
 # Michał Górny <mgorny@gentoo.org> (19 May 2019)
 # Unmaintained.  The program breaks init.d script (#626580).  Homepage
@@ -121,10 +108,6 @@ dev-ruby/elasticsearch:0
 dev-ruby/elasticsearch-api:0
 dev-ruby/elasticsearch-transport:0
 dev-ruby/filesize:0.1.1
-
-# Stefan Strogin <steils@gentoo.org> (17 May 2019)
-# Depends on >=dev-libs/bglibs-2.04. Bug #685238.
->=net-libs/cvm-0.97
 
 # Matt Turner <mattst88@gentoo.org> (16 May 2019)
 # Not supported by the Xserver since v1.6.0 (2008)
@@ -241,14 +224,6 @@ dev-python/pytest-relaxed
 # Broken build. Outdated version. No interest from the Java team to maintain
 # it. Removal in 30 days. Bug #581720.
 media-tv/tvbrowser
-
-# Stefan Strogin <stefan.strogin@gmail.com> (05 May 2019)
-# Depends on >=dev-libs/bglibs-2.04. Bug #670694.
->=sys-process/bcron-0.11
-
-# Stefan Strogin <stefan.strogin@gmail.com> (04 May 2019)
-# Masked for testing reverse dependencies. Bug #591300.
->=dev-libs/bglibs-2.04
 
 # Michał Górny <mgorny@gentoo.org> (02 May 2019)
 # Discontinued upstream, and no longer required by any packages
