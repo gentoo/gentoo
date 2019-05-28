@@ -1213,6 +1213,10 @@ toolchain_src_configure() {
 		is-flagq -mfloat-gprs=double && confgcc+=( --enable-e500-double )
 		[[ ${CTARGET//_/-} == *-e500v2-* ]] && confgcc+=( --enable-e500-double )
 		;;
+	riscv)
+		# Add --with-abi flags to set default ABI
+		confgcc+=( --with-abi=$(gcc-abi-map ${TARGET_DEFAULT_ABI}) )
+		;;
 	esac
 
 	# if the target can do biarch (-m32/-m64), enable it.  overhead should
@@ -1640,6 +1644,7 @@ gcc-abi-map() {
 	local map=()
 	case ${CTARGET} in
 	mips*)   map=("o32 32" "n32 n32" "n64 64") ;;
+	riscv*)  map=("lp64d lp64d" "lp64 lp64") ;;
 	x86_64*) map=("amd64 m64" "x86 m32" "x32 mx32") ;;
 	esac
 
