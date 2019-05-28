@@ -97,7 +97,7 @@ BDEPEND="
 		dev-lang/yasm
 	)
 	dev-lang/perl
-	dev-util/gn
+	<dev-util/gn-0.1583
 	dev-vcs/git
 	>=dev-util/gperf-3.0.3
 	>=dev-util/ninja-1.7.2
