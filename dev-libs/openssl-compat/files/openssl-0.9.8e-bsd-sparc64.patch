@@ -1,0 +1,25 @@
+--- a/Configure
++++ b/Configure
+@@ -365,7 +365,7 @@
+ # -DMD32_REG_T=int doesn't actually belong in sparc64 target, it
+ # simply *happens* to work around a compiler bug in gcc 3.3.3,
+ # triggered by RIPEMD160 code.
+-"BSD-sparc64",	"gcc:-DB_ENDIAN -DTERMIOS -O3 -DMD32_REG_T=int -Wall::${BSDthreads}:::SIXTY_FOUR_BIT_LONG RC2_CHAR RC4_CHUNK DES_INT DES_PTR DES_RISC2 BF_PTR:::des_enc-sparc.o fcrypt_b.o:::::::::dlfcn:bsd-gcc-shared:-fPIC::.so.\$(SHLIB_MAJOR).\$(SHLIB_MINOR)",
++"BSD-sparc64",	"gcc:-DB_ENDIAN -DTERMIOS -O3 -DMD32_REG_T=int -Wall::${BSDthreads}:ULTRASPARC::SIXTY_FOUR_BIT_LONG RC2_CHAR RC4_CHUNK DES_INT DES_PTR DES_RISC2 BF_PTR:::des_enc-sparc.o fcrypt_b.o:::::::::dlfcn:bsd-gcc-shared:-fPIC::.so.\$(SHLIB_MAJOR).\$(SHLIB_MINOR)",
+ "BSD-ia64",	"gcc:-DL_ENDIAN -DTERMIOS -O3 -Wall::${BSDthreads}:::SIXTY_FOUR_BIT_LONG RC4_CHUNK:${ia64_asm}:dlfcn:bsd-gcc-shared:-fPIC::.so.\$(SHLIB_MAJOR).\$(SHLIB_MINOR)",
+ "BSD-x86_64",	"gcc:-DL_ENDIAN -DTERMIOS -O3 -DMD32_REG_T=int -Wall::${BSDthreads}:::SIXTY_FOUR_BIT_LONG RC4_CHUNK DES_INT DES_UNROLL:${x86_64_asm}:dlfcn:bsd-gcc-shared:-fPIC::.so.\$(SHLIB_MAJOR).\$(SHLIB_MINOR)",
+ 
+
+the -B flag is a no-op nowadays
+
+--- a/crypto/des/Makefile
++++ b/crypto/des/Makefile
+@@ -62,7 +62,7 @@
+ 	$(CC) $(CFLAGS) -o des des.o cbc3_enc.o $(LIB)
+ 
+ des_enc-sparc.S:	asm/des_enc.m4
+-	m4 -B 8192 asm/des_enc.m4 > des_enc-sparc.S
++	m4 asm/des_enc.m4 > des_enc-sparc.S
+ 
+ # ELF
+ dx86-elf.s:	asm/des-586.pl ../perlasm/x86asm.pl ../perlasm/cbc.pl
