@@ -1,0 +1,864 @@
+From 913486fddb5c2600f6ff83e549ee25e67579666f Mon Sep 17 00:00:00 2001
+From: Georgy Yakovlev <gyakovlev@gentoo.org>
+Date: Wed, 22 May 2019 23:04:28 -0700
+Subject: [PATCH] Makefile: fix host ar handling
+
+picked lines from
+https://github.com/grpc/grpc/pull/11476
+---
+ Makefile | 236 ++++++++++++++++++++++++++++---------------------------
+ 1 file changed, 119 insertions(+), 117 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 67495f2..e1c741c 100644
+--- a/Makefile
++++ b/Makefile
+@@ -346,6 +346,7 @@ HOST_CC ?= $(CC)
+ HOST_CXX ?= $(CXX)
+ HOST_LD ?= $(LD)
+ HOST_LDXX ?= $(LDXX)
++HOST_AR ?= $(AR)
+ 
+ CFLAGS += -std=c99 -Wsign-conversion -Wconversion $(W_SHADOW) $(W_EXTRA_SEMI)
+ CXXFLAGS += -std=c++11
+@@ -483,6 +484,7 @@ HOST_CFLAGS += $(CFLAGS)
+ HOST_CXXFLAGS += $(CXXFLAGS)
+ HOST_LDFLAGS += $(LDFLAGS)
+ HOST_LDLIBS += $(LDLIBS)
++HOST_AROPTS = $(AROPTS)
+ 
+ # These are automatically computed variables.
+ # There shouldn't be any need to change anything from now on.
+@@ -2581,12 +2583,12 @@ $(GENDIR)/src/proto/grpc/channelz/channelz.pb.cc: protoc_dep_error
+ $(GENDIR)/src/proto/grpc/channelz/channelz.grpc.pb.cc: protoc_dep_error
+ else
+ 
+-$(GENDIR)/src/proto/grpc/channelz/channelz.pb.cc: src/proto/grpc/channelz/channelz.proto $(PROTOBUF_DEP) $(PROTOC_PLUGINS) 
++$(GENDIR)/src/proto/grpc/channelz/channelz.pb.cc: src/proto/grpc/channelz/channelz.proto $(PROTOBUF_DEP) $(PROTOC_PLUGINS)
+ 	$(E) "[PROTOC]  Generating protobuf CC file from $<"
+ 	$(Q) mkdir -p `dirname $@`
+ 	$(Q) $(PROTOC) -Ithird_party/protobuf/src -I. --cpp_out=$(GENDIR) $<
+ 
+-$(GENDIR)/src/proto/grpc/channelz/channelz.grpc.pb.cc: src/proto/grpc/channelz/channelz.proto $(GENDIR)/src/proto/grpc/channelz/channelz.pb.cc $(PROTOBUF_DEP) $(PROTOC_PLUGINS) 
++$(GENDIR)/src/proto/grpc/channelz/channelz.grpc.pb.cc: src/proto/grpc/channelz/channelz.proto $(GENDIR)/src/proto/grpc/channelz/channelz.pb.cc $(PROTOBUF_DEP) $(PROTOC_PLUGINS)
+ 	$(E) "[GRPC]    Generating gRPC's protobuf service CC file from $<"
+ 	$(Q) mkdir -p `dirname $@`
+ 	$(Q) $(PROTOC) -Ithird_party/protobuf/src -I. --grpc_out=$(GENDIR) --plugin=protoc-gen-grpc=$(PROTOC_PLUGINS_DIR)/grpc_cpp_plugin$(EXECUTABLE_SUFFIX) $<
+@@ -2597,12 +2599,12 @@ $(GENDIR)/src/proto/grpc/core/stats.pb.cc: protoc_dep_error
+ $(GENDIR)/src/proto/grpc/core/stats.grpc.pb.cc: protoc_dep_error
+ else
+ 
+-$(GENDIR)/src/proto/grpc/core/stats.pb.cc: src/proto/grpc/core/stats.proto $(PROTOBUF_DEP) $(PROTOC_PLUGINS) 
++$(GENDIR)/src/proto/grpc/core/stats.pb.cc: src/proto/grpc/core/stats.proto $(PROTOBUF_DEP) $(PROTOC_PLUGINS)
+ 	$(E) "[PROTOC]  Generating protobuf CC file from $<"
+ 	$(Q) mkdir -p `dirname $@`
+ 	$(Q) $(PROTOC) -Ithird_party/protobuf/src -I. --cpp_out=$(GENDIR) $<
+ 
+-$(GENDIR)/src/proto/grpc/core/stats.grpc.pb.cc: src/proto/grpc/core/stats.proto $(GENDIR)/src/proto/grpc/core/stats.pb.cc $(PROTOBUF_DEP) $(PROTOC_PLUGINS) 
++$(GENDIR)/src/proto/grpc/core/stats.grpc.pb.cc: src/proto/grpc/core/stats.proto $(GENDIR)/src/proto/grpc/core/stats.pb.cc $(PROTOBUF_DEP) $(PROTOC_PLUGINS)
+ 	$(E) "[GRPC]    Generating gRPC's protobuf service CC file from $<"
+ 	$(Q) mkdir -p `dirname $@`
+ 	$(Q) $(PROTOC) -Ithird_party/protobuf/src -I. --grpc_out=$(GENDIR) --plugin=protoc-gen-grpc=$(PROTOC_PLUGINS_DIR)/grpc_cpp_plugin$(EXECUTABLE_SUFFIX) $<
+@@ -2613,12 +2615,12 @@ $(GENDIR)/src/proto/grpc/health/v1/health.pb.cc: protoc_dep_error
+ $(GENDIR)/src/proto/grpc/health/v1/health.grpc.pb.cc: protoc_dep_error
+ else
+ 
+-$(GENDIR)/src/proto/grpc/health/v1/health.pb.cc: src/proto/grpc/health/v1/health.proto $(PROTOBUF_DEP) $(PROTOC_PLUGINS) 
++$(GENDIR)/src/proto/grpc/health/v1/health.pb.cc: src/proto/grpc/health/v1/health.proto $(PROTOBUF_DEP) $(PROTOC_PLUGINS)
+ 	$(E) "[PROTOC]  Generating protobuf CC file from $<"
+ 	$(Q) mkdir -p `dirname $@`
+ 	$(Q) $(PROTOC) -Ithird_party/protobuf/src -I. --cpp_out=$(GENDIR) $<
+ 
+-$(GENDIR)/src/proto/grpc/health/v1/health.grpc.pb.cc: src/proto/grpc/health/v1/health.proto $(GENDIR)/src/proto/grpc/health/v1/health.pb.cc $(PROTOBUF_DEP) $(PROTOC_PLUGINS) 
++$(GENDIR)/src/proto/grpc/health/v1/health.grpc.pb.cc: src/proto/grpc/health/v1/health.proto $(GENDIR)/src/proto/grpc/health/v1/health.pb.cc $(PROTOBUF_DEP) $(PROTOC_PLUGINS)
+ 	$(E) "[GRPC]    Generating gRPC's protobuf service CC file from $<"
+ 	$(Q) mkdir -p `dirname $@`
+ 	$(Q) $(PROTOC) -Ithird_party/protobuf/src -I. --grpc_out=$(GENDIR) --plugin=protoc-gen-grpc=$(PROTOC_PLUGINS_DIR)/grpc_cpp_plugin$(EXECUTABLE_SUFFIX) $<
+@@ -2629,12 +2631,12 @@ $(GENDIR)/src/proto/grpc/lb/v1/load_balancer.pb.cc: protoc_dep_error
+ $(GENDIR)/src/proto/grpc/lb/v1/load_balancer.grpc.pb.cc: protoc_dep_error
+ else
+ 
+-$(GENDIR)/src/proto/grpc/lb/v1/load_balancer.pb.cc: src/proto/grpc/lb/v1/load_balancer.proto $(PROTOBUF_DEP) $(PROTOC_PLUGINS) 
++$(GENDIR)/src/proto/grpc/lb/v1/load_balancer.pb.cc: src/proto/grpc/lb/v1/load_balancer.proto $(PROTOBUF_DEP) $(PROTOC_PLUGINS)
+ 	$(E) "[PROTOC]  Generating protobuf CC file from $<"
+ 	$(Q) mkdir -p `dirname $@`
+ 	$(Q) $(PROTOC) -Ithird_party/protobuf/src -I. --cpp_out=$(GENDIR) $<
+ 
+-$(GENDIR)/src/proto/grpc/lb/v1/load_balancer.grpc.pb.cc: src/proto/grpc/lb/v1/load_balancer.proto $(GENDIR)/src/proto/grpc/lb/v1/load_balancer.pb.cc $(PROTOBUF_DEP) $(PROTOC_PLUGINS) 
++$(GENDIR)/src/proto/grpc/lb/v1/load_balancer.grpc.pb.cc: src/proto/grpc/lb/v1/load_balancer.proto $(GENDIR)/src/proto/grpc/lb/v1/load_balancer.pb.cc $(PROTOBUF_DEP) $(PROTOC_PLUGINS)
+ 	$(E) "[GRPC]    Generating gRPC's protobuf service CC file from $<"
+ 	$(Q) mkdir -p `dirname $@`
+ 	$(Q) $(PROTOC) -Ithird_party/protobuf/src -I. --grpc_out=$(GENDIR) --plugin=protoc-gen-grpc=$(PROTOC_PLUGINS_DIR)/grpc_cpp_plugin$(EXECUTABLE_SUFFIX) $<
+@@ -2645,12 +2647,12 @@ $(GENDIR)/src/proto/grpc/reflection/v1alpha/reflection.pb.cc: protoc_dep_error
+ $(GENDIR)/src/proto/grpc/reflection/v1alpha/reflection.grpc.pb.cc: protoc_dep_error
+ else
+ 
+-$(GENDIR)/src/proto/grpc/reflection/v1alpha/reflection.pb.cc: src/proto/grpc/reflection/v1alpha/reflection.proto $(PROTOBUF_DEP) $(PROTOC_PLUGINS) 
++$(GENDIR)/src/proto/grpc/reflection/v1alpha/reflection.pb.cc: src/proto/grpc/reflection/v1alpha/reflection.proto $(PROTOBUF_DEP) $(PROTOC_PLUGINS)
+ 	$(E) "[PROTOC]  Generating protobuf CC file from $<"
+ 	$(Q) mkdir -p `dirname $@`
+ 	$(Q) $(PROTOC) -Ithird_party/protobuf/src -I. --cpp_out=$(GENDIR) $<
+ 
+-$(GENDIR)/src/proto/grpc/reflection/v1alpha/reflection.grpc.pb.cc: src/proto/grpc/reflection/v1alpha/reflection.proto $(GENDIR)/src/proto/grpc/reflection/v1alpha/reflection.pb.cc $(PROTOBUF_DEP) $(PROTOC_PLUGINS) 
++$(GENDIR)/src/proto/grpc/reflection/v1alpha/reflection.grpc.pb.cc: src/proto/grpc/reflection/v1alpha/reflection.proto $(GENDIR)/src/proto/grpc/reflection/v1alpha/reflection.pb.cc $(PROTOBUF_DEP) $(PROTOC_PLUGINS)
+ 	$(E) "[GRPC]    Generating gRPC's protobuf service CC file from $<"
+ 	$(Q) mkdir -p `dirname $@`
+ 	$(Q) $(PROTOC) -Ithird_party/protobuf/src -I. --grpc_out=$(GENDIR) --plugin=protoc-gen-grpc=$(PROTOC_PLUGINS_DIR)/grpc_cpp_plugin$(EXECUTABLE_SUFFIX) $<
+@@ -2661,12 +2663,12 @@ $(GENDIR)/src/proto/grpc/status/status.pb.cc: protoc_dep_error
+ $(GENDIR)/src/proto/grpc/status/status.grpc.pb.cc: protoc_dep_error
+ else
+ 
+-$(GENDIR)/src/proto/grpc/status/status.pb.cc: src/proto/grpc/status/status.proto $(PROTOBUF_DEP) $(PROTOC_PLUGINS) 
++$(GENDIR)/src/proto/grpc/status/status.pb.cc: src/proto/grpc/status/status.proto $(PROTOBUF_DEP) $(PROTOC_PLUGINS)
+ 	$(E) "[PROTOC]  Generating protobuf CC file from $<"
+ 	$(Q) mkdir -p `dirname $@`
+ 	$(Q) $(PROTOC) -Ithird_party/protobuf/src -I. --cpp_out=$(GENDIR) $<
+ 
+-$(GENDIR)/src/proto/grpc/status/status.grpc.pb.cc: src/proto/grpc/status/status.proto $(GENDIR)/src/proto/grpc/status/status.pb.cc $(PROTOBUF_DEP) $(PROTOC_PLUGINS) 
++$(GENDIR)/src/proto/grpc/status/status.grpc.pb.cc: src/proto/grpc/status/status.proto $(GENDIR)/src/proto/grpc/status/status.pb.cc $(PROTOBUF_DEP) $(PROTOC_PLUGINS)
+ 	$(E) "[GRPC]    Generating gRPC's protobuf service CC file from $<"
+ 	$(Q) mkdir -p `dirname $@`
+ 	$(Q) $(PROTOC) -Ithird_party/protobuf/src -I. --grpc_out=$(GENDIR) --plugin=protoc-gen-grpc=$(PROTOC_PLUGINS_DIR)/grpc_cpp_plugin$(EXECUTABLE_SUFFIX) $<
+@@ -2694,12 +2696,12 @@ $(GENDIR)/src/proto/grpc/testing/compiler_test.grpc.pb.cc: protoc_dep_error
+ else
+ 
+ 
+-$(GENDIR)/src/proto/grpc/testing/compiler_test.pb.cc: src/proto/grpc/testing/compiler_test.proto $(PROTOBUF_DEP) $(PROTOC_PLUGINS) 
++$(GENDIR)/src/proto/grpc/testing/compiler_test.pb.cc: src/proto/grpc/testing/compiler_test.proto $(PROTOBUF_DEP) $(PROTOC_PLUGINS)
+ 	$(E) "[PROTOC]  Generating protobuf CC file from $<"
+ 	$(Q) mkdir -p `dirname $@`
+ 	$(Q) $(PROTOC) -Ithird_party/protobuf/src -I. --cpp_out=$(GENDIR) $<
+ 
+-$(GENDIR)/src/proto/grpc/testing/compiler_test.grpc.pb.cc: src/proto/grpc/testing/compiler_test.proto $(GENDIR)/src/proto/grpc/testing/compiler_test.pb.cc $(PROTOBUF_DEP) $(PROTOC_PLUGINS) 
++$(GENDIR)/src/proto/grpc/testing/compiler_test.grpc.pb.cc: src/proto/grpc/testing/compiler_test.proto $(GENDIR)/src/proto/grpc/testing/compiler_test.pb.cc $(PROTOBUF_DEP) $(PROTOC_PLUGINS)
+ 	$(E) "[GRPC]    Generating gRPC's protobuf service CC file from $<"
+ 	$(Q) mkdir -p `dirname $@`
+ 	$(Q) $(PROTOC) -Ithird_party/protobuf/src -I. --grpc_out=generate_mock_code=true:$(GENDIR) --plugin=protoc-gen-grpc=$(PROTOC_PLUGINS_DIR)/grpc_cpp_plugin$(EXECUTABLE_SUFFIX) $<
+@@ -2759,12 +2761,12 @@ $(GENDIR)/src/proto/grpc/testing/echo_messages.pb.cc: protoc_dep_error
+ $(GENDIR)/src/proto/grpc/testing/echo_messages.grpc.pb.cc: protoc_dep_error
+ else
+ 
+-$(GENDIR)/src/proto/grpc/testing/echo_messages.pb.cc: src/proto/grpc/testing/echo_messages.proto $(PROTOBUF_DEP) $(PROTOC_PLUGINS) 
++$(GENDIR)/src/proto/grpc/testing/echo_messages.pb.cc: src/proto/grpc/testing/echo_messages.proto $(PROTOBUF_DEP) $(PROTOC_PLUGINS)
+ 	$(E) "[PROTOC]  Generating protobuf CC file from $<"
+ 	$(Q) mkdir -p `dirname $@`
+ 	$(Q) $(PROTOC) -Ithird_party/protobuf/src -I. --cpp_out=$(GENDIR) $<
+ 
+-$(GENDIR)/src/proto/grpc/testing/echo_messages.grpc.pb.cc: src/proto/grpc/testing/echo_messages.proto $(GENDIR)/src/proto/grpc/testing/echo_messages.pb.cc $(PROTOBUF_DEP) $(PROTOC_PLUGINS) 
++$(GENDIR)/src/proto/grpc/testing/echo_messages.grpc.pb.cc: src/proto/grpc/testing/echo_messages.proto $(GENDIR)/src/proto/grpc/testing/echo_messages.pb.cc $(PROTOBUF_DEP) $(PROTOC_PLUGINS)
+ 	$(E) "[GRPC]    Generating gRPC's protobuf service CC file from $<"
+ 	$(Q) mkdir -p `dirname $@`
+ 	$(Q) $(PROTOC) -Ithird_party/protobuf/src -I. --grpc_out=$(GENDIR) --plugin=protoc-gen-grpc=$(PROTOC_PLUGINS_DIR)/grpc_cpp_plugin$(EXECUTABLE_SUFFIX) $<
+@@ -2775,12 +2777,12 @@ $(GENDIR)/src/proto/grpc/testing/empty.pb.cc: protoc_dep_error
+ $(GENDIR)/src/proto/grpc/testing/empty.grpc.pb.cc: protoc_dep_error
+ else
+ 
+-$(GENDIR)/src/proto/grpc/testing/empty.pb.cc: src/proto/grpc/testing/empty.proto $(PROTOBUF_DEP) $(PROTOC_PLUGINS) 
++$(GENDIR)/src/proto/grpc/testing/empty.pb.cc: src/proto/grpc/testing/empty.proto $(PROTOBUF_DEP) $(PROTOC_PLUGINS)
+ 	$(E) "[PROTOC]  Generating protobuf CC file from $<"
+ 	$(Q) mkdir -p `dirname $@`
+ 	$(Q) $(PROTOC) -Ithird_party/protobuf/src -I. --cpp_out=$(GENDIR) $<
+ 
+-$(GENDIR)/src/proto/grpc/testing/empty.grpc.pb.cc: src/proto/grpc/testing/empty.proto $(GENDIR)/src/proto/grpc/testing/empty.pb.cc $(PROTOBUF_DEP) $(PROTOC_PLUGINS) 
++$(GENDIR)/src/proto/grpc/testing/empty.grpc.pb.cc: src/proto/grpc/testing/empty.proto $(GENDIR)/src/proto/grpc/testing/empty.pb.cc $(PROTOBUF_DEP) $(PROTOC_PLUGINS)
+ 	$(E) "[GRPC]    Generating gRPC's protobuf service CC file from $<"
+ 	$(Q) mkdir -p `dirname $@`
+ 	$(Q) $(PROTOC) -Ithird_party/protobuf/src -I. --grpc_out=$(GENDIR) --plugin=protoc-gen-grpc=$(PROTOC_PLUGINS_DIR)/grpc_cpp_plugin$(EXECUTABLE_SUFFIX) $<
+@@ -2791,12 +2793,12 @@ $(GENDIR)/src/proto/grpc/testing/messages.pb.cc: protoc_dep_error
+ $(GENDIR)/src/proto/grpc/testing/messages.grpc.pb.cc: protoc_dep_error
+ else
+ 
+-$(GENDIR)/src/proto/grpc/testing/messages.pb.cc: src/proto/grpc/testing/messages.proto $(PROTOBUF_DEP) $(PROTOC_PLUGINS) 
++$(GENDIR)/src/proto/grpc/testing/messages.pb.cc: src/proto/grpc/testing/messages.proto $(PROTOBUF_DEP) $(PROTOC_PLUGINS)
+ 	$(E) "[PROTOC]  Generating protobuf CC file from $<"
+ 	$(Q) mkdir -p `dirname $@`
+ 	$(Q) $(PROTOC) -Ithird_party/protobuf/src -I. --cpp_out=$(GENDIR) $<
+ 
+-$(GENDIR)/src/proto/grpc/testing/messages.grpc.pb.cc: src/proto/grpc/testing/messages.proto $(GENDIR)/src/proto/grpc/testing/messages.pb.cc $(PROTOBUF_DEP) $(PROTOC_PLUGINS) 
++$(GENDIR)/src/proto/grpc/testing/messages.grpc.pb.cc: src/proto/grpc/testing/messages.proto $(GENDIR)/src/proto/grpc/testing/messages.pb.cc $(PROTOBUF_DEP) $(PROTOC_PLUGINS)
+ 	$(E) "[GRPC]    Generating gRPC's protobuf service CC file from $<"
+ 	$(Q) mkdir -p `dirname $@`
+ 	$(Q) $(PROTOC) -Ithird_party/protobuf/src -I. --grpc_out=$(GENDIR) --plugin=protoc-gen-grpc=$(PROTOC_PLUGINS_DIR)/grpc_cpp_plugin$(EXECUTABLE_SUFFIX) $<
+@@ -2807,12 +2809,12 @@ $(GENDIR)/src/proto/grpc/testing/metrics.pb.cc: protoc_dep_error
+ $(GENDIR)/src/proto/grpc/testing/metrics.grpc.pb.cc: protoc_dep_error
+ else
+ 
+-$(GENDIR)/src/proto/grpc/testing/metrics.pb.cc: src/proto/grpc/testing/metrics.proto $(PROTOBUF_DEP) $(PROTOC_PLUGINS) 
++$(GENDIR)/src/proto/grpc/testing/metrics.pb.cc: src/proto/grpc/testing/metrics.proto $(PROTOBUF_DEP) $(PROTOC_PLUGINS)
+ 	$(E) "[PROTOC]  Generating protobuf CC file from $<"
+ 	$(Q) mkdir -p `dirname $@`
+ 	$(Q) $(PROTOC) -Ithird_party/protobuf/src -I. --cpp_out=$(GENDIR) $<
+ 
+-$(GENDIR)/src/proto/grpc/testing/metrics.grpc.pb.cc: src/proto/grpc/testing/metrics.proto $(GENDIR)/src/proto/grpc/testing/metrics.pb.cc $(PROTOBUF_DEP) $(PROTOC_PLUGINS) 
++$(GENDIR)/src/proto/grpc/testing/metrics.grpc.pb.cc: src/proto/grpc/testing/metrics.proto $(GENDIR)/src/proto/grpc/testing/metrics.pb.cc $(PROTOBUF_DEP) $(PROTOC_PLUGINS)
+ 	$(E) "[GRPC]    Generating gRPC's protobuf service CC file from $<"
+ 	$(Q) mkdir -p `dirname $@`
+ 	$(Q) $(PROTOC) -Ithird_party/protobuf/src -I. --grpc_out=$(GENDIR) --plugin=protoc-gen-grpc=$(PROTOC_PLUGINS_DIR)/grpc_cpp_plugin$(EXECUTABLE_SUFFIX) $<
+@@ -2823,12 +2825,12 @@ $(GENDIR)/src/proto/grpc/testing/payloads.pb.cc: protoc_dep_error
+ $(GENDIR)/src/proto/grpc/testing/payloads.grpc.pb.cc: protoc_dep_error
+ else
+ 
+-$(GENDIR)/src/proto/grpc/testing/payloads.pb.cc: src/proto/grpc/testing/payloads.proto $(PROTOBUF_DEP) $(PROTOC_PLUGINS) 
++$(GENDIR)/src/proto/grpc/testing/payloads.pb.cc: src/proto/grpc/testing/payloads.proto $(PROTOBUF_DEP) $(PROTOC_PLUGINS)
+ 	$(E) "[PROTOC]  Generating protobuf CC file from $<"
+ 	$(Q) mkdir -p `dirname $@`
+ 	$(Q) $(PROTOC) -Ithird_party/protobuf/src -I. --cpp_out=$(GENDIR) $<
+ 
+-$(GENDIR)/src/proto/grpc/testing/payloads.grpc.pb.cc: src/proto/grpc/testing/payloads.proto $(GENDIR)/src/proto/grpc/testing/payloads.pb.cc $(PROTOBUF_DEP) $(PROTOC_PLUGINS) 
++$(GENDIR)/src/proto/grpc/testing/payloads.grpc.pb.cc: src/proto/grpc/testing/payloads.proto $(GENDIR)/src/proto/grpc/testing/payloads.pb.cc $(PROTOBUF_DEP) $(PROTOC_PLUGINS)
+ 	$(E) "[GRPC]    Generating gRPC's protobuf service CC file from $<"
+ 	$(Q) mkdir -p `dirname $@`
+ 	$(Q) $(PROTOC) -Ithird_party/protobuf/src -I. --grpc_out=$(GENDIR) --plugin=protoc-gen-grpc=$(PROTOC_PLUGINS_DIR)/grpc_cpp_plugin$(EXECUTABLE_SUFFIX) $<
+@@ -2855,12 +2857,12 @@ $(GENDIR)/src/proto/grpc/testing/simple_messages.pb.cc: protoc_dep_error
+ $(GENDIR)/src/proto/grpc/testing/simple_messages.grpc.pb.cc: protoc_dep_error
+ else
+ 
+-$(GENDIR)/src/proto/grpc/testing/simple_messages.pb.cc: src/proto/grpc/testing/simple_messages.proto $(PROTOBUF_DEP) $(PROTOC_PLUGINS) 
++$(GENDIR)/src/proto/grpc/testing/simple_messages.pb.cc: src/proto/grpc/testing/simple_messages.proto $(PROTOBUF_DEP) $(PROTOC_PLUGINS)
+ 	$(E) "[PROTOC]  Generating protobuf CC file from $<"
+ 	$(Q) mkdir -p `dirname $@`
+ 	$(Q) $(PROTOC) -Ithird_party/protobuf/src -I. --cpp_out=$(GENDIR) $<
+ 
+-$(GENDIR)/src/proto/grpc/testing/simple_messages.grpc.pb.cc: src/proto/grpc/testing/simple_messages.proto $(GENDIR)/src/proto/grpc/testing/simple_messages.pb.cc $(PROTOBUF_DEP) $(PROTOC_PLUGINS) 
++$(GENDIR)/src/proto/grpc/testing/simple_messages.grpc.pb.cc: src/proto/grpc/testing/simple_messages.proto $(GENDIR)/src/proto/grpc/testing/simple_messages.pb.cc $(PROTOBUF_DEP) $(PROTOC_PLUGINS)
+ 	$(E) "[GRPC]    Generating gRPC's protobuf service CC file from $<"
+ 	$(Q) mkdir -p `dirname $@`
+ 	$(Q) $(PROTOC) -Ithird_party/protobuf/src -I. --grpc_out=$(GENDIR) --plugin=protoc-gen-grpc=$(PROTOC_PLUGINS_DIR)/grpc_cpp_plugin$(EXECUTABLE_SUFFIX) $<
+@@ -3215,11 +3217,11 @@ PUBLIC_HEADERS_C += \
+ LIBADDRESS_SORTING_OBJS = $(addprefix $(OBJDIR)/$(CONFIG)/, $(addsuffix .o, $(basename $(LIBADDRESS_SORTING_SRC))))
+ 
+ 
+-$(LIBDIR)/$(CONFIG)/libaddress_sorting.a:  $(LIBADDRESS_SORTING_OBJS) 
++$(LIBDIR)/$(CONFIG)/libaddress_sorting.a:  $(LIBADDRESS_SORTING_OBJS)
+ 	$(E) "[AR]      Creating $@"
+ 	$(Q) mkdir -p `dirname $@`
+ 	$(Q) rm -f $(LIBDIR)/$(CONFIG)/libaddress_sorting.a
+-	$(Q) $(AR) $(AROPTS) $(LIBDIR)/$(CONFIG)/libaddress_sorting.a $(LIBADDRESS_SORTING_OBJS) 
++	$(Q) $(AR) $(AROPTS) $(LIBDIR)/$(CONFIG)/libaddress_sorting.a $(LIBADDRESS_SORTING_OBJS)
+ ifeq ($(SYSTEM),Darwin)
+ 	$(Q) ranlib -no_warning_for_no_symbols $(LIBDIR)/$(CONFIG)/libaddress_sorting.a
+ endif
+@@ -3268,11 +3270,11 @@ $(LIBDIR)/$(CONFIG)/libalts_test_util.a: openssl_dep_error
+ else
+ 
+ 
+-$(LIBDIR)/$(CONFIG)/libalts_test_util.a: $(ZLIB_DEP) $(OPENSSL_DEP) $(CARES_DEP) $(ADDRESS_SORTING_DEP) $(LIBALTS_TEST_UTIL_OBJS) 
++$(LIBDIR)/$(CONFIG)/libalts_test_util.a: $(ZLIB_DEP) $(OPENSSL_DEP) $(CARES_DEP) $(ADDRESS_SORTING_DEP) $(LIBALTS_TEST_UTIL_OBJS)
+ 	$(E) "[AR]      Creating $@"
+ 	$(Q) mkdir -p `dirname $@`
+ 	$(Q) rm -f $(LIBDIR)/$(CONFIG)/libalts_test_util.a
+-	$(Q) $(AR) $(AROPTS) $(LIBDIR)/$(CONFIG)/libalts_test_util.a $(LIBALTS_TEST_UTIL_OBJS) 
++	$(Q) $(AR) $(AROPTS) $(LIBDIR)/$(CONFIG)/libalts_test_util.a $(LIBALTS_TEST_UTIL_OBJS)
+ ifeq ($(SYSTEM),Darwin)
+ 	$(Q) ranlib -no_warning_for_no_symbols $(LIBDIR)/$(CONFIG)/libalts_test_util.a
+ endif
+@@ -3316,11 +3318,11 @@ LIBCXXABI_OBJS = $(addprefix $(OBJDIR)/$(CONFIG)/, $(addsuffix .o, $(basename $(
+ $(LIBCXXABI_OBJS): CPPFLAGS += -D_LIBCPP_DISABLE_EXTERN_TEMPLATE -D_LIBCXXABI_BUILDING_LIBRARY -D_LIBCXXABI_NO_EXCEPTIONS -Ithird_party/libcxxabi/include -nostdinc++ -Ithird_party/libcxx/include $(W_NO_UNUSED_BUT_SET_VARIABLE) $(W_NO_MAYBE_UNINITIALIZED) -fvisibility=hidden
+ $(LIBCXXABI_OBJS): CXXFLAGS += $(W_NO_CXX14_COMPAT)
+ 
+-$(LIBDIR)/$(CONFIG)/libcxxabi.a: $(ZLIB_DEP) $(CARES_DEP) $(ADDRESS_SORTING_DEP)  $(LIBCXXABI_OBJS) 
++$(LIBDIR)/$(CONFIG)/libcxxabi.a: $(ZLIB_DEP) $(CARES_DEP) $(ADDRESS_SORTING_DEP)  $(LIBCXXABI_OBJS)
+ 	$(E) "[AR]      Creating $@"
+ 	$(Q) mkdir -p `dirname $@`
+ 	$(Q) rm -f $(LIBDIR)/$(CONFIG)/libcxxabi.a
+-	$(Q) $(AR) $(AROPTS) $(LIBDIR)/$(CONFIG)/libcxxabi.a $(LIBCXXABI_OBJS) 
++	$(Q) $(AR) $(AROPTS) $(LIBDIR)/$(CONFIG)/libcxxabi.a $(LIBCXXABI_OBJS)
+ ifeq ($(SYSTEM),Darwin)
+ 	$(Q) ranlib -no_warning_for_no_symbols $(LIBDIR)/$(CONFIG)/libcxxabi.a
+ endif
+@@ -3411,11 +3413,11 @@ PUBLIC_HEADERS_C += \
+ LIBGPR_OBJS = $(addprefix $(OBJDIR)/$(CONFIG)/, $(addsuffix .o, $(basename $(LIBGPR_SRC))))
+ 
+ 
+-$(LIBDIR)/$(CONFIG)/libgpr.a: $(ZLIB_DEP) $(CARES_DEP) $(ADDRESS_SORTING_DEP)  $(LIBGPR_OBJS) 
++$(LIBDIR)/$(CONFIG)/libgpr.a: $(ZLIB_DEP) $(CARES_DEP) $(ADDRESS_SORTING_DEP)  $(LIBGPR_OBJS)
+ 	$(E) "[AR]      Creating $@"
+ 	$(Q) mkdir -p `dirname $@`
+ 	$(Q) rm -f $(LIBDIR)/$(CONFIG)/libgpr.a
+-	$(Q) $(AR) $(AROPTS) $(LIBDIR)/$(CONFIG)/libgpr.a $(LIBGPR_OBJS) 
++	$(Q) $(AR) $(AROPTS) $(LIBDIR)/$(CONFIG)/libgpr.a $(LIBGPR_OBJS)
+ ifeq ($(SYSTEM),Darwin)
+ 	$(Q) ranlib -no_warning_for_no_symbols $(LIBDIR)/$(CONFIG)/libgpr.a
+ endif
+@@ -3836,11 +3838,11 @@ $(LIBDIR)/$(CONFIG)/$(SHARED_PREFIX)grpc$(SHARED_VERSION_CORE).$(SHARED_EXT_CORE
+ else
+ 
+ 
+-$(LIBDIR)/$(CONFIG)/libgrpc.a: $(ZLIB_DEP) $(OPENSSL_DEP) $(CARES_DEP) $(ADDRESS_SORTING_DEP) $(LIBGRPC_OBJS)  $(LIBGPR_OBJS)  $(ZLIB_MERGE_OBJS)  $(CARES_MERGE_OBJS)  $(ADDRESS_SORTING_MERGE_OBJS)  $(OPENSSL_MERGE_OBJS) 
++$(LIBDIR)/$(CONFIG)/libgrpc.a: $(ZLIB_DEP) $(OPENSSL_DEP) $(CARES_DEP) $(ADDRESS_SORTING_DEP) $(LIBGRPC_OBJS)  $(LIBGPR_OBJS)  $(ZLIB_MERGE_OBJS)  $(CARES_MERGE_OBJS)  $(ADDRESS_SORTING_MERGE_OBJS)  $(OPENSSL_MERGE_OBJS)
+ 	$(E) "[AR]      Creating $@"
+ 	$(Q) mkdir -p `dirname $@`
+ 	$(Q) rm -f $(LIBDIR)/$(CONFIG)/libgrpc.a
+-	$(Q) $(AR) $(AROPTS) $(LIBDIR)/$(CONFIG)/libgrpc.a $(LIBGRPC_OBJS)  $(LIBGPR_OBJS)  $(ZLIB_MERGE_OBJS)  $(CARES_MERGE_OBJS)  $(ADDRESS_SORTING_MERGE_OBJS)  $(OPENSSL_MERGE_OBJS) 
++	$(Q) $(AR) $(AROPTS) $(LIBDIR)/$(CONFIG)/libgrpc.a $(LIBGRPC_OBJS)  $(LIBGPR_OBJS)  $(ZLIB_MERGE_OBJS)  $(CARES_MERGE_OBJS)  $(ADDRESS_SORTING_MERGE_OBJS)  $(OPENSSL_MERGE_OBJS)
+ ifeq ($(SYSTEM),Darwin)
+ 	$(Q) ranlib -no_warning_for_no_symbols $(LIBDIR)/$(CONFIG)/libgrpc.a
+ endif
+@@ -4217,11 +4219,11 @@ $(LIBDIR)/$(CONFIG)/$(SHARED_PREFIX)grpc_cronet$(SHARED_VERSION_CORE).$(SHARED_E
+ else
+ 
+ 
+-$(LIBDIR)/$(CONFIG)/libgrpc_cronet.a: $(ZLIB_DEP) $(OPENSSL_DEP) $(CARES_DEP) $(ADDRESS_SORTING_DEP) $(LIBGRPC_CRONET_OBJS)  $(LIBGPR_OBJS)  $(ZLIB_MERGE_OBJS)  $(CARES_MERGE_OBJS)  $(ADDRESS_SORTING_MERGE_OBJS)  $(OPENSSL_MERGE_OBJS) 
++$(LIBDIR)/$(CONFIG)/libgrpc_cronet.a: $(ZLIB_DEP) $(OPENSSL_DEP) $(CARES_DEP) $(ADDRESS_SORTING_DEP) $(LIBGRPC_CRONET_OBJS)  $(LIBGPR_OBJS)  $(ZLIB_MERGE_OBJS)  $(CARES_MERGE_OBJS)  $(ADDRESS_SORTING_MERGE_OBJS)  $(OPENSSL_MERGE_OBJS)
+ 	$(E) "[AR]      Creating $@"
+ 	$(Q) mkdir -p `dirname $@`
+ 	$(Q) rm -f $(LIBDIR)/$(CONFIG)/libgrpc_cronet.a
+-	$(Q) $(AR) $(AROPTS) $(LIBDIR)/$(CONFIG)/libgrpc_cronet.a $(LIBGRPC_CRONET_OBJS)  $(LIBGPR_OBJS)  $(ZLIB_MERGE_OBJS)  $(CARES_MERGE_OBJS)  $(ADDRESS_SORTING_MERGE_OBJS)  $(OPENSSL_MERGE_OBJS) 
++	$(Q) $(AR) $(AROPTS) $(LIBDIR)/$(CONFIG)/libgrpc_cronet.a $(LIBGRPC_CRONET_OBJS)  $(LIBGPR_OBJS)  $(ZLIB_MERGE_OBJS)  $(CARES_MERGE_OBJS)  $(ADDRESS_SORTING_MERGE_OBJS)  $(OPENSSL_MERGE_OBJS)
+ ifeq ($(SYSTEM),Darwin)
+ 	$(Q) ranlib -no_warning_for_no_symbols $(LIBDIR)/$(CONFIG)/libgrpc_cronet.a
+ endif
+@@ -4556,11 +4558,11 @@ $(LIBDIR)/$(CONFIG)/libgrpc_test_util.a: openssl_dep_error
+ else
+ 
+ 
+-$(LIBDIR)/$(CONFIG)/libgrpc_test_util.a: $(ZLIB_DEP) $(OPENSSL_DEP) $(CARES_DEP) $(ADDRESS_SORTING_DEP) $(LIBGRPC_TEST_UTIL_OBJS) 
++$(LIBDIR)/$(CONFIG)/libgrpc_test_util.a: $(ZLIB_DEP) $(OPENSSL_DEP) $(CARES_DEP) $(ADDRESS_SORTING_DEP) $(LIBGRPC_TEST_UTIL_OBJS)
+ 	$(E) "[AR]      Creating $@"
+ 	$(Q) mkdir -p `dirname $@`
+ 	$(Q) rm -f $(LIBDIR)/$(CONFIG)/libgrpc_test_util.a
+-	$(Q) $(AR) $(AROPTS) $(LIBDIR)/$(CONFIG)/libgrpc_test_util.a $(LIBGRPC_TEST_UTIL_OBJS) 
++	$(Q) $(AR) $(AROPTS) $(LIBDIR)/$(CONFIG)/libgrpc_test_util.a $(LIBGRPC_TEST_UTIL_OBJS)
+ ifeq ($(SYSTEM),Darwin)
+ 	$(Q) ranlib -no_warning_for_no_symbols $(LIBDIR)/$(CONFIG)/libgrpc_test_util.a
+ endif
+@@ -4863,11 +4865,11 @@ PUBLIC_HEADERS_C += \
+ LIBGRPC_TEST_UTIL_UNSECURE_OBJS = $(addprefix $(OBJDIR)/$(CONFIG)/, $(addsuffix .o, $(basename $(LIBGRPC_TEST_UTIL_UNSECURE_SRC))))
+ 
+ 
+-$(LIBDIR)/$(CONFIG)/libgrpc_test_util_unsecure.a: $(ZLIB_DEP) $(CARES_DEP) $(ADDRESS_SORTING_DEP)  $(LIBGRPC_TEST_UTIL_UNSECURE_OBJS) 
++$(LIBDIR)/$(CONFIG)/libgrpc_test_util_unsecure.a: $(ZLIB_DEP) $(CARES_DEP) $(ADDRESS_SORTING_DEP)  $(LIBGRPC_TEST_UTIL_UNSECURE_OBJS)
+ 	$(E) "[AR]      Creating $@"
+ 	$(Q) mkdir -p `dirname $@`
+ 	$(Q) rm -f $(LIBDIR)/$(CONFIG)/libgrpc_test_util_unsecure.a
+-	$(Q) $(AR) $(AROPTS) $(LIBDIR)/$(CONFIG)/libgrpc_test_util_unsecure.a $(LIBGRPC_TEST_UTIL_UNSECURE_OBJS) 
++	$(Q) $(AR) $(AROPTS) $(LIBDIR)/$(CONFIG)/libgrpc_test_util_unsecure.a $(LIBGRPC_TEST_UTIL_UNSECURE_OBJS)
+ ifeq ($(SYSTEM),Darwin)
+ 	$(Q) ranlib -no_warning_for_no_symbols $(LIBDIR)/$(CONFIG)/libgrpc_test_util_unsecure.a
+ endif
+@@ -5183,11 +5185,11 @@ PUBLIC_HEADERS_C += \
+ LIBGRPC_UNSECURE_OBJS = $(addprefix $(OBJDIR)/$(CONFIG)/, $(addsuffix .o, $(basename $(LIBGRPC_UNSECURE_SRC))))
+ 
+ 
+-$(LIBDIR)/$(CONFIG)/libgrpc_unsecure.a: $(ZLIB_DEP) $(CARES_DEP) $(ADDRESS_SORTING_DEP)  $(LIBGRPC_UNSECURE_OBJS)  $(LIBGPR_OBJS)  $(ZLIB_MERGE_OBJS)  $(CARES_MERGE_OBJS)  $(ADDRESS_SORTING_MERGE_OBJS) 
++$(LIBDIR)/$(CONFIG)/libgrpc_unsecure.a: $(ZLIB_DEP) $(CARES_DEP) $(ADDRESS_SORTING_DEP)  $(LIBGRPC_UNSECURE_OBJS)  $(LIBGPR_OBJS)  $(ZLIB_MERGE_OBJS)  $(CARES_MERGE_OBJS)  $(ADDRESS_SORTING_MERGE_OBJS)
+ 	$(E) "[AR]      Creating $@"
+ 	$(Q) mkdir -p `dirname $@`
+ 	$(Q) rm -f $(LIBDIR)/$(CONFIG)/libgrpc_unsecure.a
+-	$(Q) $(AR) $(AROPTS) $(LIBDIR)/$(CONFIG)/libgrpc_unsecure.a $(LIBGRPC_UNSECURE_OBJS)  $(LIBGPR_OBJS)  $(ZLIB_MERGE_OBJS)  $(CARES_MERGE_OBJS)  $(ADDRESS_SORTING_MERGE_OBJS) 
++	$(Q) $(AR) $(AROPTS) $(LIBDIR)/$(CONFIG)/libgrpc_unsecure.a $(LIBGRPC_UNSECURE_OBJS)  $(LIBGPR_OBJS)  $(ZLIB_MERGE_OBJS)  $(CARES_MERGE_OBJS)  $(ADDRESS_SORTING_MERGE_OBJS)
+ ifeq ($(SYSTEM),Darwin)
+ 	$(Q) ranlib -no_warning_for_no_symbols $(LIBDIR)/$(CONFIG)/libgrpc_unsecure.a
+ endif
+@@ -5235,11 +5237,11 @@ $(LIBDIR)/$(CONFIG)/libreconnect_server.a: openssl_dep_error
+ else
+ 
+ 
+-$(LIBDIR)/$(CONFIG)/libreconnect_server.a: $(ZLIB_DEP) $(OPENSSL_DEP) $(CARES_DEP) $(ADDRESS_SORTING_DEP) $(LIBRECONNECT_SERVER_OBJS) 
++$(LIBDIR)/$(CONFIG)/libreconnect_server.a: $(ZLIB_DEP) $(OPENSSL_DEP) $(CARES_DEP) $(ADDRESS_SORTING_DEP) $(LIBRECONNECT_SERVER_OBJS)
+ 	$(E) "[AR]      Creating $@"
+ 	$(Q) mkdir -p `dirname $@`
+ 	$(Q) rm -f $(LIBDIR)/$(CONFIG)/libreconnect_server.a
+-	$(Q) $(AR) $(AROPTS) $(LIBDIR)/$(CONFIG)/libreconnect_server.a $(LIBRECONNECT_SERVER_OBJS) 
++	$(Q) $(AR) $(AROPTS) $(LIBDIR)/$(CONFIG)/libreconnect_server.a $(LIBRECONNECT_SERVER_OBJS)
+ ifeq ($(SYSTEM),Darwin)
+ 	$(Q) ranlib -no_warning_for_no_symbols $(LIBDIR)/$(CONFIG)/libreconnect_server.a
+ endif
+@@ -5274,11 +5276,11 @@ $(LIBDIR)/$(CONFIG)/libtest_tcp_server.a: openssl_dep_error
+ else
+ 
+ 
+-$(LIBDIR)/$(CONFIG)/libtest_tcp_server.a: $(ZLIB_DEP) $(OPENSSL_DEP) $(CARES_DEP) $(ADDRESS_SORTING_DEP) $(LIBTEST_TCP_SERVER_OBJS) 
++$(LIBDIR)/$(CONFIG)/libtest_tcp_server.a: $(ZLIB_DEP) $(OPENSSL_DEP) $(CARES_DEP) $(ADDRESS_SORTING_DEP) $(LIBTEST_TCP_SERVER_OBJS)
+ 	$(E) "[AR]      Creating $@"
+ 	$(Q) mkdir -p `dirname $@`
+ 	$(Q) rm -f $(LIBDIR)/$(CONFIG)/libtest_tcp_server.a
+-	$(Q) $(AR) $(AROPTS) $(LIBDIR)/$(CONFIG)/libtest_tcp_server.a $(LIBTEST_TCP_SERVER_OBJS) 
++	$(Q) $(AR) $(AROPTS) $(LIBDIR)/$(CONFIG)/libtest_tcp_server.a $(LIBTEST_TCP_SERVER_OBJS)
+ ifeq ($(SYSTEM),Darwin)
+ 	$(Q) ranlib -no_warning_for_no_symbols $(LIBDIR)/$(CONFIG)/libtest_tcp_server.a
+ endif
+@@ -5321,11 +5323,11 @@ $(LIBDIR)/$(CONFIG)/libdns_test_util.a: protobuf_dep_error
+ 
+ else
+ 
+-$(LIBDIR)/$(CONFIG)/libdns_test_util.a: $(ZLIB_DEP) $(OPENSSL_DEP) $(CARES_DEP) $(ADDRESS_SORTING_DEP) $(PROTOBUF_DEP) $(LIBDNS_TEST_UTIL_OBJS) 
++$(LIBDIR)/$(CONFIG)/libdns_test_util.a: $(ZLIB_DEP) $(OPENSSL_DEP) $(CARES_DEP) $(ADDRESS_SORTING_DEP) $(PROTOBUF_DEP) $(LIBDNS_TEST_UTIL_OBJS)
+ 	$(E) "[AR]      Creating $@"
+ 	$(Q) mkdir -p `dirname $@`
+ 	$(Q) rm -f $(LIBDIR)/$(CONFIG)/libdns_test_util.a
+-	$(Q) $(AR) $(AROPTS) $(LIBDIR)/$(CONFIG)/libdns_test_util.a $(LIBDNS_TEST_UTIL_OBJS) 
++	$(Q) $(AR) $(AROPTS) $(LIBDIR)/$(CONFIG)/libdns_test_util.a $(LIBDNS_TEST_UTIL_OBJS)
+ ifeq ($(SYSTEM),Darwin)
+ 	$(Q) ranlib -no_warning_for_no_symbols $(LIBDIR)/$(CONFIG)/libdns_test_util.a
+ endif
+@@ -5662,11 +5664,11 @@ $(LIBDIR)/$(CONFIG)/$(SHARED_PREFIX)grpc++$(SHARED_VERSION_CPP).$(SHARED_EXT_CPP
+ 
+ else
+ 
+-$(LIBDIR)/$(CONFIG)/libgrpc++.a: $(ZLIB_DEP) $(OPENSSL_DEP) $(CARES_DEP) $(ADDRESS_SORTING_DEP) $(PROTOBUF_DEP) $(LIBGRPC++_OBJS)  $(LIBGPR_OBJS)  $(ZLIB_MERGE_OBJS)  $(CARES_MERGE_OBJS)  $(ADDRESS_SORTING_MERGE_OBJS) 
++$(LIBDIR)/$(CONFIG)/libgrpc++.a: $(ZLIB_DEP) $(OPENSSL_DEP) $(CARES_DEP) $(ADDRESS_SORTING_DEP) $(PROTOBUF_DEP) $(LIBGRPC++_OBJS)  $(LIBGPR_OBJS)  $(ZLIB_MERGE_OBJS)  $(CARES_MERGE_OBJS)  $(ADDRESS_SORTING_MERGE_OBJS)
+ 	$(E) "[AR]      Creating $@"
+ 	$(Q) mkdir -p `dirname $@`
+ 	$(Q) rm -f $(LIBDIR)/$(CONFIG)/libgrpc++.a
+-	$(Q) $(AR) $(AROPTS) $(LIBDIR)/$(CONFIG)/libgrpc++.a $(LIBGRPC++_OBJS)  $(LIBGPR_OBJS)  $(ZLIB_MERGE_OBJS)  $(CARES_MERGE_OBJS)  $(ADDRESS_SORTING_MERGE_OBJS) 
++	$(Q) $(AR) $(AROPTS) $(LIBDIR)/$(CONFIG)/libgrpc++.a $(LIBGRPC++_OBJS)  $(LIBGPR_OBJS)  $(ZLIB_MERGE_OBJS)  $(CARES_MERGE_OBJS)  $(ADDRESS_SORTING_MERGE_OBJS)
+ ifeq ($(SYSTEM),Darwin)
+ 	$(Q) ranlib -no_warning_for_no_symbols $(LIBDIR)/$(CONFIG)/libgrpc++.a
+ endif
+@@ -5729,11 +5731,11 @@ $(LIBDIR)/$(CONFIG)/libgrpc++_core_stats.a: protobuf_dep_error
+ 
+ else
+ 
+-$(LIBDIR)/$(CONFIG)/libgrpc++_core_stats.a: $(ZLIB_DEP) $(OPENSSL_DEP) $(CARES_DEP) $(ADDRESS_SORTING_DEP) $(PROTOBUF_DEP) $(LIBGRPC++_CORE_STATS_OBJS) 
++$(LIBDIR)/$(CONFIG)/libgrpc++_core_stats.a: $(ZLIB_DEP) $(OPENSSL_DEP) $(CARES_DEP) $(ADDRESS_SORTING_DEP) $(PROTOBUF_DEP) $(LIBGRPC++_CORE_STATS_OBJS)
+ 	$(E) "[AR]      Creating $@"
+ 	$(Q) mkdir -p `dirname $@`
+ 	$(Q) rm -f $(LIBDIR)/$(CONFIG)/libgrpc++_core_stats.a
+-	$(Q) $(AR) $(AROPTS) $(LIBDIR)/$(CONFIG)/libgrpc++_core_stats.a $(LIBGRPC++_CORE_STATS_OBJS) 
++	$(Q) $(AR) $(AROPTS) $(LIBDIR)/$(CONFIG)/libgrpc++_core_stats.a $(LIBGRPC++_CORE_STATS_OBJS)
+ ifeq ($(SYSTEM),Darwin)
+ 	$(Q) ranlib -no_warning_for_no_symbols $(LIBDIR)/$(CONFIG)/libgrpc++_core_stats.a
+ endif
+@@ -6281,11 +6283,11 @@ $(LIBDIR)/$(CONFIG)/$(SHARED_PREFIX)grpc++_cronet$(SHARED_VERSION_CPP).$(SHARED_
+ 
+ else
+ 
+-$(LIBDIR)/$(CONFIG)/libgrpc++_cronet.a: $(ZLIB_DEP) $(OPENSSL_DEP) $(CARES_DEP) $(ADDRESS_SORTING_DEP) $(PROTOBUF_DEP) $(LIBGRPC++_CRONET_OBJS)  $(LIBGPR_OBJS)  $(ZLIB_MERGE_OBJS)  $(CARES_MERGE_OBJS)  $(ADDRESS_SORTING_MERGE_OBJS)  $(OPENSSL_MERGE_OBJS) 
++$(LIBDIR)/$(CONFIG)/libgrpc++_cronet.a: $(ZLIB_DEP) $(OPENSSL_DEP) $(CARES_DEP) $(ADDRESS_SORTING_DEP) $(PROTOBUF_DEP) $(LIBGRPC++_CRONET_OBJS)  $(LIBGPR_OBJS)  $(ZLIB_MERGE_OBJS)  $(CARES_MERGE_OBJS)  $(ADDRESS_SORTING_MERGE_OBJS)  $(OPENSSL_MERGE_OBJS)
+ 	$(E) "[AR]      Creating $@"
+ 	$(Q) mkdir -p `dirname $@`
+ 	$(Q) rm -f $(LIBDIR)/$(CONFIG)/libgrpc++_cronet.a
+-	$(Q) $(AR) $(AROPTS) $(LIBDIR)/$(CONFIG)/libgrpc++_cronet.a $(LIBGRPC++_CRONET_OBJS)  $(LIBGPR_OBJS)  $(ZLIB_MERGE_OBJS)  $(CARES_MERGE_OBJS)  $(ADDRESS_SORTING_MERGE_OBJS)  $(OPENSSL_MERGE_OBJS) 
++	$(Q) $(AR) $(AROPTS) $(LIBDIR)/$(CONFIG)/libgrpc++_cronet.a $(LIBGRPC++_CRONET_OBJS)  $(LIBGPR_OBJS)  $(ZLIB_MERGE_OBJS)  $(CARES_MERGE_OBJS)  $(ADDRESS_SORTING_MERGE_OBJS)  $(OPENSSL_MERGE_OBJS)
+ ifeq ($(SYSTEM),Darwin)
+ 	$(Q) ranlib -no_warning_for_no_symbols $(LIBDIR)/$(CONFIG)/libgrpc++_cronet.a
+ endif
+@@ -6353,11 +6355,11 @@ $(LIBDIR)/$(CONFIG)/$(SHARED_PREFIX)grpc++_error_details$(SHARED_VERSION_CPP).$(
+ 
+ else
+ 
+-$(LIBDIR)/$(CONFIG)/libgrpc++_error_details.a: $(ZLIB_DEP) $(OPENSSL_DEP) $(CARES_DEP) $(ADDRESS_SORTING_DEP) $(PROTOBUF_DEP) $(LIBGRPC++_ERROR_DETAILS_OBJS)  $(LIBGPR_OBJS)  $(ZLIB_MERGE_OBJS)  $(CARES_MERGE_OBJS)  $(ADDRESS_SORTING_MERGE_OBJS) 
++$(LIBDIR)/$(CONFIG)/libgrpc++_error_details.a: $(ZLIB_DEP) $(OPENSSL_DEP) $(CARES_DEP) $(ADDRESS_SORTING_DEP) $(PROTOBUF_DEP) $(LIBGRPC++_ERROR_DETAILS_OBJS)  $(LIBGPR_OBJS)  $(ZLIB_MERGE_OBJS)  $(CARES_MERGE_OBJS)  $(ADDRESS_SORTING_MERGE_OBJS)
+ 	$(E) "[AR]      Creating $@"
+ 	$(Q) mkdir -p `dirname $@`
+ 	$(Q) rm -f $(LIBDIR)/$(CONFIG)/libgrpc++_error_details.a
+-	$(Q) $(AR) $(AROPTS) $(LIBDIR)/$(CONFIG)/libgrpc++_error_details.a $(LIBGRPC++_ERROR_DETAILS_OBJS)  $(LIBGPR_OBJS)  $(ZLIB_MERGE_OBJS)  $(CARES_MERGE_OBJS)  $(ADDRESS_SORTING_MERGE_OBJS) 
++	$(Q) $(AR) $(AROPTS) $(LIBDIR)/$(CONFIG)/libgrpc++_error_details.a $(LIBGRPC++_ERROR_DETAILS_OBJS)  $(LIBGPR_OBJS)  $(ZLIB_MERGE_OBJS)  $(CARES_MERGE_OBJS)  $(ADDRESS_SORTING_MERGE_OBJS)
+ ifeq ($(SYSTEM),Darwin)
+ 	$(Q) ranlib -no_warning_for_no_symbols $(LIBDIR)/$(CONFIG)/libgrpc++_error_details.a
+ endif
+@@ -6423,11 +6425,11 @@ $(LIBDIR)/$(CONFIG)/libgrpc++_proto_reflection_desc_db.a: protobuf_dep_error
+ 
+ else
+ 
+-$(LIBDIR)/$(CONFIG)/libgrpc++_proto_reflection_desc_db.a: $(ZLIB_DEP) $(OPENSSL_DEP) $(CARES_DEP) $(ADDRESS_SORTING_DEP) $(PROTOBUF_DEP) $(LIBGRPC++_PROTO_REFLECTION_DESC_DB_OBJS) 
++$(LIBDIR)/$(CONFIG)/libgrpc++_proto_reflection_desc_db.a: $(ZLIB_DEP) $(OPENSSL_DEP) $(CARES_DEP) $(ADDRESS_SORTING_DEP) $(PROTOBUF_DEP) $(LIBGRPC++_PROTO_REFLECTION_DESC_DB_OBJS)
+ 	$(E) "[AR]      Creating $@"
+ 	$(Q) mkdir -p `dirname $@`
+ 	$(Q) rm -f $(LIBDIR)/$(CONFIG)/libgrpc++_proto_reflection_desc_db.a
+-	$(Q) $(AR) $(AROPTS) $(LIBDIR)/$(CONFIG)/libgrpc++_proto_reflection_desc_db.a $(LIBGRPC++_PROTO_REFLECTION_DESC_DB_OBJS) 
++	$(Q) $(AR) $(AROPTS) $(LIBDIR)/$(CONFIG)/libgrpc++_proto_reflection_desc_db.a $(LIBGRPC++_PROTO_REFLECTION_DESC_DB_OBJS)
+ ifeq ($(SYSTEM),Darwin)
+ 	$(Q) ranlib -no_warning_for_no_symbols $(LIBDIR)/$(CONFIG)/libgrpc++_proto_reflection_desc_db.a
+ endif
+@@ -6480,11 +6482,11 @@ $(LIBDIR)/$(CONFIG)/$(SHARED_PREFIX)grpc++_reflection$(SHARED_VERSION_CPP).$(SHA
+ 
+ else
+ 
+-$(LIBDIR)/$(CONFIG)/libgrpc++_reflection.a: $(ZLIB_DEP) $(OPENSSL_DEP) $(CARES_DEP) $(ADDRESS_SORTING_DEP) $(PROTOBUF_DEP) $(LIBGRPC++_REFLECTION_OBJS) 
++$(LIBDIR)/$(CONFIG)/libgrpc++_reflection.a: $(ZLIB_DEP) $(OPENSSL_DEP) $(CARES_DEP) $(ADDRESS_SORTING_DEP) $(PROTOBUF_DEP) $(LIBGRPC++_REFLECTION_OBJS)
+ 	$(E) "[AR]      Creating $@"
+ 	$(Q) mkdir -p `dirname $@`
+ 	$(Q) rm -f $(LIBDIR)/$(CONFIG)/libgrpc++_reflection.a
+-	$(Q) $(AR) $(AROPTS) $(LIBDIR)/$(CONFIG)/libgrpc++_reflection.a $(LIBGRPC++_REFLECTION_OBJS) 
++	$(Q) $(AR) $(AROPTS) $(LIBDIR)/$(CONFIG)/libgrpc++_reflection.a $(LIBGRPC++_REFLECTION_OBJS)
+ ifeq ($(SYSTEM),Darwin)
+ 	$(Q) ranlib -no_warning_for_no_symbols $(LIBDIR)/$(CONFIG)/libgrpc++_reflection.a
+ endif
+@@ -6548,11 +6550,11 @@ $(LIBDIR)/$(CONFIG)/libgrpc++_test_config.a: protobuf_dep_error
+ 
+ else
+ 
+-$(LIBDIR)/$(CONFIG)/libgrpc++_test_config.a: $(ZLIB_DEP) $(OPENSSL_DEP) $(CARES_DEP) $(ADDRESS_SORTING_DEP) $(PROTOBUF_DEP) $(LIBGRPC++_TEST_CONFIG_OBJS) 
++$(LIBDIR)/$(CONFIG)/libgrpc++_test_config.a: $(ZLIB_DEP) $(OPENSSL_DEP) $(CARES_DEP) $(ADDRESS_SORTING_DEP) $(PROTOBUF_DEP) $(LIBGRPC++_TEST_CONFIG_OBJS)
+ 	$(E) "[AR]      Creating $@"
+ 	$(Q) mkdir -p `dirname $@`
+ 	$(Q) rm -f $(LIBDIR)/$(CONFIG)/libgrpc++_test_config.a
+-	$(Q) $(AR) $(AROPTS) $(LIBDIR)/$(CONFIG)/libgrpc++_test_config.a $(LIBGRPC++_TEST_CONFIG_OBJS) 
++	$(Q) $(AR) $(AROPTS) $(LIBDIR)/$(CONFIG)/libgrpc++_test_config.a $(LIBGRPC++_TEST_CONFIG_OBJS)
+ ifeq ($(SYSTEM),Darwin)
+ 	$(Q) ranlib -no_warning_for_no_symbols $(LIBDIR)/$(CONFIG)/libgrpc++_test_config.a
+ endif
+@@ -6713,11 +6715,11 @@ $(LIBDIR)/$(CONFIG)/libgrpc++_test_util.a: protobuf_dep_error
+ 
+ else
+ 
+-$(LIBDIR)/$(CONFIG)/libgrpc++_test_util.a: $(ZLIB_DEP) $(OPENSSL_DEP) $(CARES_DEP) $(ADDRESS_SORTING_DEP) $(PROTOBUF_DEP) $(LIBGRPC++_TEST_UTIL_OBJS) 
++$(LIBDIR)/$(CONFIG)/libgrpc++_test_util.a: $(ZLIB_DEP) $(OPENSSL_DEP) $(CARES_DEP) $(ADDRESS_SORTING_DEP) $(PROTOBUF_DEP) $(LIBGRPC++_TEST_UTIL_OBJS)
+ 	$(E) "[AR]      Creating $@"
+ 	$(Q) mkdir -p `dirname $@`
+ 	$(Q) rm -f $(LIBDIR)/$(CONFIG)/libgrpc++_test_util.a
+-	$(Q) $(AR) $(AROPTS) $(LIBDIR)/$(CONFIG)/libgrpc++_test_util.a $(LIBGRPC++_TEST_UTIL_OBJS) 
++	$(Q) $(AR) $(AROPTS) $(LIBDIR)/$(CONFIG)/libgrpc++_test_util.a $(LIBGRPC++_TEST_UTIL_OBJS)
+ ifeq ($(SYSTEM),Darwin)
+ 	$(Q) ranlib -no_warning_for_no_symbols $(LIBDIR)/$(CONFIG)/libgrpc++_test_util.a
+ endif
+@@ -6883,11 +6885,11 @@ $(LIBDIR)/$(CONFIG)/libgrpc++_test_util_unsecure.a: protobuf_dep_error
+ 
+ else
+ 
+-$(LIBDIR)/$(CONFIG)/libgrpc++_test_util_unsecure.a: $(ZLIB_DEP) $(OPENSSL_DEP) $(CARES_DEP) $(ADDRESS_SORTING_DEP) $(PROTOBUF_DEP) $(LIBGRPC++_TEST_UTIL_UNSECURE_OBJS) 
++$(LIBDIR)/$(CONFIG)/libgrpc++_test_util_unsecure.a: $(ZLIB_DEP) $(OPENSSL_DEP) $(CARES_DEP) $(ADDRESS_SORTING_DEP) $(PROTOBUF_DEP) $(LIBGRPC++_TEST_UTIL_UNSECURE_OBJS)
+ 	$(E) "[AR]      Creating $@"
+ 	$(Q) mkdir -p `dirname $@`
+ 	$(Q) rm -f $(LIBDIR)/$(CONFIG)/libgrpc++_test_util_unsecure.a
+-	$(Q) $(AR) $(AROPTS) $(LIBDIR)/$(CONFIG)/libgrpc++_test_util_unsecure.a $(LIBGRPC++_TEST_UTIL_UNSECURE_OBJS) 
++	$(Q) $(AR) $(AROPTS) $(LIBDIR)/$(CONFIG)/libgrpc++_test_util_unsecure.a $(LIBGRPC++_TEST_UTIL_UNSECURE_OBJS)
+ ifeq ($(SYSTEM),Darwin)
+ 	$(Q) ranlib -no_warning_for_no_symbols $(LIBDIR)/$(CONFIG)/libgrpc++_test_util_unsecure.a
+ endif
+@@ -7209,11 +7211,11 @@ $(LIBDIR)/$(CONFIG)/$(SHARED_PREFIX)grpc++_unsecure$(SHARED_VERSION_CPP).$(SHARE
+ 
+ else
+ 
+-$(LIBDIR)/$(CONFIG)/libgrpc++_unsecure.a: $(ZLIB_DEP) $(CARES_DEP) $(ADDRESS_SORTING_DEP)  $(PROTOBUF_DEP) $(LIBGRPC++_UNSECURE_OBJS)  $(LIBGPR_OBJS)  $(ZLIB_MERGE_OBJS)  $(CARES_MERGE_OBJS)  $(ADDRESS_SORTING_MERGE_OBJS) 
++$(LIBDIR)/$(CONFIG)/libgrpc++_unsecure.a: $(ZLIB_DEP) $(CARES_DEP) $(ADDRESS_SORTING_DEP)  $(PROTOBUF_DEP) $(LIBGRPC++_UNSECURE_OBJS)  $(LIBGPR_OBJS)  $(ZLIB_MERGE_OBJS)  $(CARES_MERGE_OBJS)  $(ADDRESS_SORTING_MERGE_OBJS)
+ 	$(E) "[AR]      Creating $@"
+ 	$(Q) mkdir -p `dirname $@`
+ 	$(Q) rm -f $(LIBDIR)/$(CONFIG)/libgrpc++_unsecure.a
+-	$(Q) $(AR) $(AROPTS) $(LIBDIR)/$(CONFIG)/libgrpc++_unsecure.a $(LIBGRPC++_UNSECURE_OBJS)  $(LIBGPR_OBJS)  $(ZLIB_MERGE_OBJS)  $(CARES_MERGE_OBJS)  $(ADDRESS_SORTING_MERGE_OBJS) 
++	$(Q) $(AR) $(AROPTS) $(LIBDIR)/$(CONFIG)/libgrpc++_unsecure.a $(LIBGRPC++_UNSECURE_OBJS)  $(LIBGPR_OBJS)  $(ZLIB_MERGE_OBJS)  $(CARES_MERGE_OBJS)  $(ADDRESS_SORTING_MERGE_OBJS)
+ ifeq ($(SYSTEM),Darwin)
+ 	$(Q) ranlib -no_warning_for_no_symbols $(LIBDIR)/$(CONFIG)/libgrpc++_unsecure.a
+ endif
+@@ -7272,11 +7274,11 @@ $(LIBDIR)/$(CONFIG)/libgrpc_benchmark.a: protobuf_dep_error
+ 
+ else
+ 
+-$(LIBDIR)/$(CONFIG)/libgrpc_benchmark.a: $(ZLIB_DEP) $(OPENSSL_DEP) $(CARES_DEP) $(ADDRESS_SORTING_DEP) $(PROTOBUF_DEP) $(LIBGRPC_BENCHMARK_OBJS) 
++$(LIBDIR)/$(CONFIG)/libgrpc_benchmark.a: $(ZLIB_DEP) $(OPENSSL_DEP) $(CARES_DEP) $(ADDRESS_SORTING_DEP) $(PROTOBUF_DEP) $(LIBGRPC_BENCHMARK_OBJS)
+ 	$(E) "[AR]      Creating $@"
+ 	$(Q) mkdir -p `dirname $@`
+ 	$(Q) rm -f $(LIBDIR)/$(CONFIG)/libgrpc_benchmark.a
+-	$(Q) $(AR) $(AROPTS) $(LIBDIR)/$(CONFIG)/libgrpc_benchmark.a $(LIBGRPC_BENCHMARK_OBJS) 
++	$(Q) $(AR) $(AROPTS) $(LIBDIR)/$(CONFIG)/libgrpc_benchmark.a $(LIBGRPC_BENCHMARK_OBJS)
+ ifeq ($(SYSTEM),Darwin)
+ 	$(Q) ranlib -no_warning_for_no_symbols $(LIBDIR)/$(CONFIG)/libgrpc_benchmark.a
+ endif
+@@ -7328,11 +7330,11 @@ $(LIBDIR)/$(CONFIG)/libgrpc_cli_libs.a: protobuf_dep_error
+ 
+ else
+ 
+-$(LIBDIR)/$(CONFIG)/libgrpc_cli_libs.a: $(ZLIB_DEP) $(OPENSSL_DEP) $(CARES_DEP) $(ADDRESS_SORTING_DEP) $(PROTOBUF_DEP) $(LIBGRPC_CLI_LIBS_OBJS) 
++$(LIBDIR)/$(CONFIG)/libgrpc_cli_libs.a: $(ZLIB_DEP) $(OPENSSL_DEP) $(CARES_DEP) $(ADDRESS_SORTING_DEP) $(PROTOBUF_DEP) $(LIBGRPC_CLI_LIBS_OBJS)
+ 	$(E) "[AR]      Creating $@"
+ 	$(Q) mkdir -p `dirname $@`
+ 	$(Q) rm -f $(LIBDIR)/$(CONFIG)/libgrpc_cli_libs.a
+-	$(Q) $(AR) $(AROPTS) $(LIBDIR)/$(CONFIG)/libgrpc_cli_libs.a $(LIBGRPC_CLI_LIBS_OBJS) 
++	$(Q) $(AR) $(AROPTS) $(LIBDIR)/$(CONFIG)/libgrpc_cli_libs.a $(LIBGRPC_CLI_LIBS_OBJS)
+ ifeq ($(SYSTEM),Darwin)
+ 	$(Q) ranlib -no_warning_for_no_symbols $(LIBDIR)/$(CONFIG)/libgrpc_cli_libs.a
+ endif
+@@ -7381,11 +7383,11 @@ $(LIBDIR)/$(CONFIG)/libgrpc_plugin_support.a: protobuf_dep_error
+ 
+ else
+ 
+-$(LIBDIR)/$(CONFIG)/libgrpc_plugin_support.a: $(ZLIB_DEP) $(CARES_DEP) $(ADDRESS_SORTING_DEP)  $(PROTOBUF_DEP) $(LIBGRPC_PLUGIN_SUPPORT_OBJS) 
+-	$(E) "[AR]      Creating $@"
++$(LIBDIR)/$(CONFIG)/libgrpc_plugin_support.a: $(ZLIB_DEP) $(CARES_DEP) $(ADDRESS_SORTING_DEP)  $(PROTOBUF_DEP) $(LIBGRPC_PLUGIN_SUPPORT_OBJS)
++	$(E) "[HOSTAR]  Creating $@"
+ 	$(Q) mkdir -p `dirname $@`
+ 	$(Q) rm -f $(LIBDIR)/$(CONFIG)/libgrpc_plugin_support.a
+-	$(Q) $(AR) $(AROPTS) $(LIBDIR)/$(CONFIG)/libgrpc_plugin_support.a $(LIBGRPC_PLUGIN_SUPPORT_OBJS) 
++	$(Q) $(HOST_AR) $(HOST_AROPTS) $(LIBDIR)/$(CONFIG)/libgrpc_plugin_support.a $(LIBGRPC_PLUGIN_SUPPORT_OBJS)
+ ifeq ($(SYSTEM),Darwin)
+ 	$(Q) ranlib -no_warning_for_no_symbols $(LIBDIR)/$(CONFIG)/libgrpc_plugin_support.a
+ endif
+@@ -7432,11 +7434,11 @@ $(LIBDIR)/$(CONFIG)/$(SHARED_PREFIX)grpcpp_channelz$(SHARED_VERSION_CPP).$(SHARE
+ 
+ else
+ 
+-$(LIBDIR)/$(CONFIG)/libgrpcpp_channelz.a: $(ZLIB_DEP) $(OPENSSL_DEP) $(CARES_DEP) $(ADDRESS_SORTING_DEP) $(PROTOBUF_DEP) $(LIBGRPCPP_CHANNELZ_OBJS) 
++$(LIBDIR)/$(CONFIG)/libgrpcpp_channelz.a: $(ZLIB_DEP) $(OPENSSL_DEP) $(CARES_DEP) $(ADDRESS_SORTING_DEP) $(PROTOBUF_DEP) $(LIBGRPCPP_CHANNELZ_OBJS)
+ 	$(E) "[AR]      Creating $@"
+ 	$(Q) mkdir -p `dirname $@`
+ 	$(Q) rm -f $(LIBDIR)/$(CONFIG)/libgrpcpp_channelz.a
+-	$(Q) $(AR) $(AROPTS) $(LIBDIR)/$(CONFIG)/libgrpcpp_channelz.a $(LIBGRPCPP_CHANNELZ_OBJS) 
++	$(Q) $(AR) $(AROPTS) $(LIBDIR)/$(CONFIG)/libgrpcpp_channelz.a $(LIBGRPCPP_CHANNELZ_OBJS)
+ ifeq ($(SYSTEM),Darwin)
+ 	$(Q) ranlib -no_warning_for_no_symbols $(LIBDIR)/$(CONFIG)/libgrpcpp_channelz.a
+ endif
+@@ -7503,11 +7505,11 @@ $(LIBDIR)/$(CONFIG)/libhttp2_client_main.a: protobuf_dep_error
+ 
+ else
+ 
+-$(LIBDIR)/$(CONFIG)/libhttp2_client_main.a: $(ZLIB_DEP) $(OPENSSL_DEP) $(CARES_DEP) $(ADDRESS_SORTING_DEP) $(PROTOBUF_DEP) $(LIBHTTP2_CLIENT_MAIN_OBJS) 
++$(LIBDIR)/$(CONFIG)/libhttp2_client_main.a: $(ZLIB_DEP) $(OPENSSL_DEP) $(CARES_DEP) $(ADDRESS_SORTING_DEP) $(PROTOBUF_DEP) $(LIBHTTP2_CLIENT_MAIN_OBJS)
+ 	$(E) "[AR]      Creating $@"
+ 	$(Q) mkdir -p `dirname $@`
+ 	$(Q) rm -f $(LIBDIR)/$(CONFIG)/libhttp2_client_main.a
+-	$(Q) $(AR) $(AROPTS) $(LIBDIR)/$(CONFIG)/libhttp2_client_main.a $(LIBHTTP2_CLIENT_MAIN_OBJS) 
++	$(Q) $(AR) $(AROPTS) $(LIBDIR)/$(CONFIG)/libhttp2_client_main.a $(LIBHTTP2_CLIENT_MAIN_OBJS)
+ ifeq ($(SYSTEM),Darwin)
+ 	$(Q) ranlib -no_warning_for_no_symbols $(LIBDIR)/$(CONFIG)/libhttp2_client_main.a
+ endif
+@@ -7554,11 +7556,11 @@ $(LIBDIR)/$(CONFIG)/libinterop_client_helper.a: protobuf_dep_error
+ 
+ else
+ 
+-$(LIBDIR)/$(CONFIG)/libinterop_client_helper.a: $(ZLIB_DEP) $(OPENSSL_DEP) $(CARES_DEP) $(ADDRESS_SORTING_DEP) $(PROTOBUF_DEP) $(LIBINTEROP_CLIENT_HELPER_OBJS) 
++$(LIBDIR)/$(CONFIG)/libinterop_client_helper.a: $(ZLIB_DEP) $(OPENSSL_DEP) $(CARES_DEP) $(ADDRESS_SORTING_DEP) $(PROTOBUF_DEP) $(LIBINTEROP_CLIENT_HELPER_OBJS)
+ 	$(E) "[AR]      Creating $@"
+ 	$(Q) mkdir -p `dirname $@`
+ 	$(Q) rm -f $(LIBDIR)/$(CONFIG)/libinterop_client_helper.a
+-	$(Q) $(AR) $(AROPTS) $(LIBDIR)/$(CONFIG)/libinterop_client_helper.a $(LIBINTEROP_CLIENT_HELPER_OBJS) 
++	$(Q) $(AR) $(AROPTS) $(LIBDIR)/$(CONFIG)/libinterop_client_helper.a $(LIBINTEROP_CLIENT_HELPER_OBJS)
+ ifeq ($(SYSTEM),Darwin)
+ 	$(Q) ranlib -no_warning_for_no_symbols $(LIBDIR)/$(CONFIG)/libinterop_client_helper.a
+ endif
+@@ -7608,11 +7610,11 @@ $(LIBDIR)/$(CONFIG)/libinterop_client_main.a: protobuf_dep_error
+ 
+ else
+ 
+-$(LIBDIR)/$(CONFIG)/libinterop_client_main.a: $(ZLIB_DEP) $(OPENSSL_DEP) $(CARES_DEP) $(ADDRESS_SORTING_DEP) $(PROTOBUF_DEP) $(LIBINTEROP_CLIENT_MAIN_OBJS) 
++$(LIBDIR)/$(CONFIG)/libinterop_client_main.a: $(ZLIB_DEP) $(OPENSSL_DEP) $(CARES_DEP) $(ADDRESS_SORTING_DEP) $(PROTOBUF_DEP) $(LIBINTEROP_CLIENT_MAIN_OBJS)
+ 	$(E) "[AR]      Creating $@"
+ 	$(Q) mkdir -p `dirname $@`
+ 	$(Q) rm -f $(LIBDIR)/$(CONFIG)/libinterop_client_main.a
+-	$(Q) $(AR) $(AROPTS) $(LIBDIR)/$(CONFIG)/libinterop_client_main.a $(LIBINTEROP_CLIENT_MAIN_OBJS) 
++	$(Q) $(AR) $(AROPTS) $(LIBDIR)/$(CONFIG)/libinterop_client_main.a $(LIBINTEROP_CLIENT_MAIN_OBJS)
+ ifeq ($(SYSTEM),Darwin)
+ 	$(Q) ranlib -no_warning_for_no_symbols $(LIBDIR)/$(CONFIG)/libinterop_client_main.a
+ endif
+@@ -7659,11 +7661,11 @@ $(LIBDIR)/$(CONFIG)/libinterop_server_helper.a: protobuf_dep_error
+ 
+ else
+ 
+-$(LIBDIR)/$(CONFIG)/libinterop_server_helper.a: $(ZLIB_DEP) $(OPENSSL_DEP) $(CARES_DEP) $(ADDRESS_SORTING_DEP) $(PROTOBUF_DEP) $(LIBINTEROP_SERVER_HELPER_OBJS) 
++$(LIBDIR)/$(CONFIG)/libinterop_server_helper.a: $(ZLIB_DEP) $(OPENSSL_DEP) $(CARES_DEP) $(ADDRESS_SORTING_DEP) $(PROTOBUF_DEP) $(LIBINTEROP_SERVER_HELPER_OBJS)
+ 	$(E) "[AR]      Creating $@"
+ 	$(Q) mkdir -p `dirname $@`
+ 	$(Q) rm -f $(LIBDIR)/$(CONFIG)/libinterop_server_helper.a
+-	$(Q) $(AR) $(AROPTS) $(LIBDIR)/$(CONFIG)/libinterop_server_helper.a $(LIBINTEROP_SERVER_HELPER_OBJS) 
++	$(Q) $(AR) $(AROPTS) $(LIBDIR)/$(CONFIG)/libinterop_server_helper.a $(LIBINTEROP_SERVER_HELPER_OBJS)
+ ifeq ($(SYSTEM),Darwin)
+ 	$(Q) ranlib -no_warning_for_no_symbols $(LIBDIR)/$(CONFIG)/libinterop_server_helper.a
+ endif
+@@ -7711,11 +7713,11 @@ $(LIBDIR)/$(CONFIG)/libinterop_server_lib.a: protobuf_dep_error
+ 
+ else
+ 
+-$(LIBDIR)/$(CONFIG)/libinterop_server_lib.a: $(ZLIB_DEP) $(OPENSSL_DEP) $(CARES_DEP) $(ADDRESS_SORTING_DEP) $(PROTOBUF_DEP) $(LIBINTEROP_SERVER_LIB_OBJS) 
++$(LIBDIR)/$(CONFIG)/libinterop_server_lib.a: $(ZLIB_DEP) $(OPENSSL_DEP) $(CARES_DEP) $(ADDRESS_SORTING_DEP) $(PROTOBUF_DEP) $(LIBINTEROP_SERVER_LIB_OBJS)
+ 	$(E) "[AR]      Creating $@"
+ 	$(Q) mkdir -p `dirname $@`
+ 	$(Q) rm -f $(LIBDIR)/$(CONFIG)/libinterop_server_lib.a
+-	$(Q) $(AR) $(AROPTS) $(LIBDIR)/$(CONFIG)/libinterop_server_lib.a $(LIBINTEROP_SERVER_LIB_OBJS) 
++	$(Q) $(AR) $(AROPTS) $(LIBDIR)/$(CONFIG)/libinterop_server_lib.a $(LIBINTEROP_SERVER_LIB_OBJS)
+ ifeq ($(SYSTEM),Darwin)
+ 	$(Q) ranlib -no_warning_for_no_symbols $(LIBDIR)/$(CONFIG)/libinterop_server_lib.a
+ endif
+@@ -7761,11 +7763,11 @@ $(LIBDIR)/$(CONFIG)/libinterop_server_main.a: protobuf_dep_error
+ 
+ else
+ 
+-$(LIBDIR)/$(CONFIG)/libinterop_server_main.a: $(ZLIB_DEP) $(OPENSSL_DEP) $(CARES_DEP) $(ADDRESS_SORTING_DEP) $(PROTOBUF_DEP) $(LIBINTEROP_SERVER_MAIN_OBJS) 
++$(LIBDIR)/$(CONFIG)/libinterop_server_main.a: $(ZLIB_DEP) $(OPENSSL_DEP) $(CARES_DEP) $(ADDRESS_SORTING_DEP) $(PROTOBUF_DEP) $(LIBINTEROP_SERVER_MAIN_OBJS)
+ 	$(E) "[AR]      Creating $@"
+ 	$(Q) mkdir -p `dirname $@`
+ 	$(Q) rm -f $(LIBDIR)/$(CONFIG)/libinterop_server_main.a
+-	$(Q) $(AR) $(AROPTS) $(LIBDIR)/$(CONFIG)/libinterop_server_main.a $(LIBINTEROP_SERVER_MAIN_OBJS) 
++	$(Q) $(AR) $(AROPTS) $(LIBDIR)/$(CONFIG)/libinterop_server_main.a $(LIBINTEROP_SERVER_MAIN_OBJS)
+ ifeq ($(SYSTEM),Darwin)
+ 	$(Q) ranlib -no_warning_for_no_symbols $(LIBDIR)/$(CONFIG)/libinterop_server_main.a
+ endif
+@@ -7829,11 +7831,11 @@ $(LIBDIR)/$(CONFIG)/libqps.a: protobuf_dep_error
+ 
+ else
+ 
+-$(LIBDIR)/$(CONFIG)/libqps.a: $(ZLIB_DEP) $(OPENSSL_DEP) $(CARES_DEP) $(ADDRESS_SORTING_DEP) $(PROTOBUF_DEP) $(LIBQPS_OBJS) 
++$(LIBDIR)/$(CONFIG)/libqps.a: $(ZLIB_DEP) $(OPENSSL_DEP) $(CARES_DEP) $(ADDRESS_SORTING_DEP) $(PROTOBUF_DEP) $(LIBQPS_OBJS)
+ 	$(E) "[AR]      Creating $@"
+ 	$(Q) mkdir -p `dirname $@`
+ 	$(Q) rm -f $(LIBDIR)/$(CONFIG)/libqps.a
+-	$(Q) $(AR) $(AROPTS) $(LIBDIR)/$(CONFIG)/libqps.a $(LIBQPS_OBJS) 
++	$(Q) $(AR) $(AROPTS) $(LIBDIR)/$(CONFIG)/libqps.a $(LIBQPS_OBJS)
+ ifeq ($(SYSTEM),Darwin)
+ 	$(Q) ranlib -no_warning_for_no_symbols $(LIBDIR)/$(CONFIG)/libqps.a
+ endif
+@@ -7884,11 +7886,11 @@ $(LIBDIR)/$(CONFIG)/$(SHARED_PREFIX)grpc_csharp_ext$(SHARED_VERSION_CSHARP).$(SH
+ else
+ 
+ 
+-$(LIBDIR)/$(CONFIG)/libgrpc_csharp_ext.a: $(ZLIB_DEP) $(OPENSSL_DEP) $(CARES_DEP) $(ADDRESS_SORTING_DEP) $(LIBGRPC_CSHARP_EXT_OBJS) 
++$(LIBDIR)/$(CONFIG)/libgrpc_csharp_ext.a: $(ZLIB_DEP) $(OPENSSL_DEP) $(CARES_DEP) $(ADDRESS_SORTING_DEP) $(LIBGRPC_CSHARP_EXT_OBJS)
+ 	$(E) "[AR]      Creating $@"
+ 	$(Q) mkdir -p `dirname $@`
+ 	$(Q) rm -f $(LIBDIR)/$(CONFIG)/libgrpc_csharp_ext.a
+-	$(Q) $(AR) $(AROPTS) $(LIBDIR)/$(CONFIG)/libgrpc_csharp_ext.a $(LIBGRPC_CSHARP_EXT_OBJS) 
++	$(Q) $(AR) $(AROPTS) $(LIBDIR)/$(CONFIG)/libgrpc_csharp_ext.a $(LIBGRPC_CSHARP_EXT_OBJS)
+ ifeq ($(SYSTEM),Darwin)
+ 	$(Q) ranlib -no_warning_for_no_symbols $(LIBDIR)/$(CONFIG)/libgrpc_csharp_ext.a
+ endif
+@@ -8189,11 +8191,11 @@ $(LIBBORINGSSL_OBJS): CPPFLAGS += -Ithird_party/boringssl/include -fvisibility=h
+ $(LIBBORINGSSL_OBJS): CXXFLAGS += -fno-rtti -fno-exceptions
+ $(LIBBORINGSSL_OBJS): CFLAGS += -Wno-sign-conversion -Wno-conversion -Wno-unused-value -Wno-unknown-pragmas -Wno-implicit-function-declaration -Wno-unused-variable -Wno-sign-compare -Wno-implicit-fallthrough $(NO_W_EXTRA_SEMI)
+ 
+-$(LIBDIR)/$(CONFIG)/libboringssl.a: $(ZLIB_DEP) $(CARES_DEP) $(ADDRESS_SORTING_DEP)  $(LIBBORINGSSL_OBJS) 
++$(LIBDIR)/$(CONFIG)/libboringssl.a: $(ZLIB_DEP) $(CARES_DEP) $(ADDRESS_SORTING_DEP)  $(LIBBORINGSSL_OBJS)
+ 	$(E) "[AR]      Creating $@"
+ 	$(Q) mkdir -p `dirname $@`
+ 	$(Q) rm -f $(LIBDIR)/$(CONFIG)/libboringssl.a
+-	$(Q) $(AR) $(AROPTS) $(LIBDIR)/$(CONFIG)/libboringssl.a $(LIBBORINGSSL_OBJS) 
++	$(Q) $(AR) $(AROPTS) $(LIBDIR)/$(CONFIG)/libboringssl.a $(LIBBORINGSSL_OBJS)
+ ifeq ($(SYSTEM),Darwin)
+ 	$(Q) ranlib -no_warning_for_no_symbols $(LIBDIR)/$(CONFIG)/libboringssl.a
+ endif
+@@ -8228,11 +8230,11 @@ $(LIBDIR)/$(CONFIG)/libboringssl_test_util.a: protobuf_dep_error
+ 
+ else
+ 
+-$(LIBDIR)/$(CONFIG)/libboringssl_test_util.a: $(ZLIB_DEP) $(CARES_DEP) $(ADDRESS_SORTING_DEP)  $(PROTOBUF_DEP) $(LIBBORINGSSL_TEST_UTIL_OBJS) 
++$(LIBDIR)/$(CONFIG)/libboringssl_test_util.a: $(ZLIB_DEP) $(CARES_DEP) $(ADDRESS_SORTING_DEP)  $(PROTOBUF_DEP) $(LIBBORINGSSL_TEST_UTIL_OBJS)
+ 	$(E) "[AR]      Creating $@"
+ 	$(Q) mkdir -p `dirname $@`
+ 	$(Q) rm -f $(LIBDIR)/$(CONFIG)/libboringssl_test_util.a
+-	$(Q) $(AR) $(AROPTS) $(LIBDIR)/$(CONFIG)/libboringssl_test_util.a $(LIBBORINGSSL_TEST_UTIL_OBJS) 
++	$(Q) $(AR) $(AROPTS) $(LIBDIR)/$(CONFIG)/libboringssl_test_util.a $(LIBBORINGSSL_TEST_UTIL_OBJS)
+ ifeq ($(SYSTEM),Darwin)
+ 	$(Q) ranlib -no_warning_for_no_symbols $(LIBDIR)/$(CONFIG)/libboringssl_test_util.a
+ endif
+@@ -8280,11 +8282,11 @@ $(LIBDIR)/$(CONFIG)/libbenchmark.a: protobuf_dep_error
+ 
+ else
+ 
+-$(LIBDIR)/$(CONFIG)/libbenchmark.a: $(ZLIB_DEP) $(CARES_DEP) $(ADDRESS_SORTING_DEP)  $(PROTOBUF_DEP) $(LIBBENCHMARK_OBJS) 
++$(LIBDIR)/$(CONFIG)/libbenchmark.a: $(ZLIB_DEP) $(CARES_DEP) $(ADDRESS_SORTING_DEP)  $(PROTOBUF_DEP) $(LIBBENCHMARK_OBJS)
+ 	$(E) "[AR]      Creating $@"
+ 	$(Q) mkdir -p `dirname $@`
+ 	$(Q) rm -f $(LIBDIR)/$(CONFIG)/libbenchmark.a
+-	$(Q) $(AR) $(AROPTS) $(LIBDIR)/$(CONFIG)/libbenchmark.a $(LIBBENCHMARK_OBJS) 
++	$(Q) $(AR) $(AROPTS) $(LIBDIR)/$(CONFIG)/libbenchmark.a $(LIBBENCHMARK_OBJS)
+ ifeq ($(SYSTEM),Darwin)
+ 	$(Q) ranlib -no_warning_for_no_symbols $(LIBDIR)/$(CONFIG)/libbenchmark.a
+ endif
+@@ -8317,11 +8319,11 @@ LIBUPB_OBJS = $(addprefix $(OBJDIR)/$(CONFIG)/, $(addsuffix .o, $(basename $(LIB
+ 
+ $(LIBUPB_OBJS): CFLAGS += -Ithird_party/upb -Wno-sign-conversion -Wno-shadow -Wno-conversion -Wno-implicit-fallthrough -Wno-sign-compare -Wno-missing-field-initializers
+ 
+-$(LIBDIR)/$(CONFIG)/libupb.a: $(ZLIB_DEP) $(CARES_DEP) $(ADDRESS_SORTING_DEP)  $(LIBUPB_OBJS) 
++$(LIBDIR)/$(CONFIG)/libupb.a: $(ZLIB_DEP) $(CARES_DEP) $(ADDRESS_SORTING_DEP)  $(LIBUPB_OBJS)
+ 	$(E) "[AR]      Creating $@"
+ 	$(Q) mkdir -p `dirname $@`
+ 	$(Q) rm -f $(LIBDIR)/$(CONFIG)/libupb.a
+-	$(Q) $(AR) $(AROPTS) $(LIBDIR)/$(CONFIG)/libupb.a $(LIBUPB_OBJS) 
++	$(Q) $(AR) $(AROPTS) $(LIBDIR)/$(CONFIG)/libupb.a $(LIBUPB_OBJS)
+ ifeq ($(SYSTEM),Darwin)
+ 	$(Q) ranlib -no_warning_for_no_symbols $(LIBDIR)/$(CONFIG)/libupb.a
+ endif
+@@ -8357,11 +8359,11 @@ LIBZ_OBJS = $(addprefix $(OBJDIR)/$(CONFIG)/, $(addsuffix .o, $(basename $(LIBZ_
+ 
+ $(LIBZ_OBJS): CFLAGS += -Wno-sign-conversion -Wno-conversion -Wno-unused-value -Wno-implicit-function-declaration -Wno-implicit-fallthrough $(W_NO_SHIFT_NEGATIVE_VALUE) -fvisibility=hidden
+ 
+-$(LIBDIR)/$(CONFIG)/libz.a:  $(LIBZ_OBJS) 
++$(LIBDIR)/$(CONFIG)/libz.a:  $(LIBZ_OBJS)
+ 	$(E) "[AR]      Creating $@"
+ 	$(Q) mkdir -p `dirname $@`
+ 	$(Q) rm -f $(LIBDIR)/$(CONFIG)/libz.a
+-	$(Q) $(AR) $(AROPTS) $(LIBDIR)/$(CONFIG)/libz.a $(LIBZ_OBJS) 
++	$(Q) $(AR) $(AROPTS) $(LIBDIR)/$(CONFIG)/libz.a $(LIBZ_OBJS)
+ ifeq ($(SYSTEM),Darwin)
+ 	$(Q) ranlib -no_warning_for_no_symbols $(LIBDIR)/$(CONFIG)/libz.a
+ endif
+@@ -8433,11 +8435,11 @@ LIBARES_OBJS = $(addprefix $(OBJDIR)/$(CONFIG)/, $(addsuffix .o, $(basename $(LI
+ $(LIBARES_OBJS): CPPFLAGS += -Ithird_party/cares -Ithird_party/cares/cares -fvisibility=hidden -D_GNU_SOURCE $(if $(subst Darwin,,$(SYSTEM)),,-Ithird_party/cares/config_darwin) $(if $(subst FreeBSD,,$(SYSTEM)),,-Ithird_party/cares/config_freebsd) $(if $(subst Linux,,$(SYSTEM)),,-Ithird_party/cares/config_linux) $(if $(subst OpenBSD,,$(SYSTEM)),,-Ithird_party/cares/config_openbsd) -DWIN32_LEAN_AND_MEAN -D_HAS_EXCEPTIONS=0 -DNOMINMAX $(if $(subst MINGW32,,$(SYSTEM)),-DHAVE_CONFIG_H,)
+ $(LIBARES_OBJS): CFLAGS += -Wno-sign-conversion $(if $(subst Darwin,,$(SYSTEM)),,-Wno-shorten-64-to-32) $(if $(subst MINGW32,,$(SYSTEM)),-Wno-invalid-source-encoding,)
+ 
+-$(LIBDIR)/$(CONFIG)/libares.a:  $(LIBARES_OBJS) 
++$(LIBDIR)/$(CONFIG)/libares.a:  $(LIBARES_OBJS)
+ 	$(E) "[AR]      Creating $@"
+ 	$(Q) mkdir -p `dirname $@`
+ 	$(Q) rm -f $(LIBDIR)/$(CONFIG)/libares.a
+-	$(Q) $(AR) $(AROPTS) $(LIBDIR)/$(CONFIG)/libares.a $(LIBARES_OBJS) 
++	$(Q) $(AR) $(AROPTS) $(LIBDIR)/$(CONFIG)/libares.a $(LIBARES_OBJS)
+ ifeq ($(SYSTEM),Darwin)
+ 	$(Q) ranlib -no_warning_for_no_symbols $(LIBDIR)/$(CONFIG)/libares.a
+ endif
+@@ -8468,11 +8470,11 @@ $(LIBDIR)/$(CONFIG)/libbad_client_test.a: openssl_dep_error
+ else
+ 
+ 
+-$(LIBDIR)/$(CONFIG)/libbad_client_test.a: $(ZLIB_DEP) $(OPENSSL_DEP) $(CARES_DEP) $(ADDRESS_SORTING_DEP) $(LIBBAD_CLIENT_TEST_OBJS) 
++$(LIBDIR)/$(CONFIG)/libbad_client_test.a: $(ZLIB_DEP) $(OPENSSL_DEP) $(CARES_DEP) $(ADDRESS_SORTING_DEP) $(LIBBAD_CLIENT_TEST_OBJS)
+ 	$(E) "[AR]      Creating $@"
+ 	$(Q) mkdir -p `dirname $@`
+ 	$(Q) rm -f $(LIBDIR)/$(CONFIG)/libbad_client_test.a
+-	$(Q) $(AR) $(AROPTS) $(LIBDIR)/$(CONFIG)/libbad_client_test.a $(LIBBAD_CLIENT_TEST_OBJS) 
++	$(Q) $(AR) $(AROPTS) $(LIBDIR)/$(CONFIG)/libbad_client_test.a $(LIBBAD_CLIENT_TEST_OBJS)
+ ifeq ($(SYSTEM),Darwin)
+ 	$(Q) ranlib -no_warning_for_no_symbols $(LIBDIR)/$(CONFIG)/libbad_client_test.a
+ endif
+@@ -8507,11 +8509,11 @@ $(LIBDIR)/$(CONFIG)/libbad_ssl_test_server.a: openssl_dep_error
+ else
+ 
+ 
+-$(LIBDIR)/$(CONFIG)/libbad_ssl_test_server.a: $(ZLIB_DEP) $(OPENSSL_DEP) $(CARES_DEP) $(ADDRESS_SORTING_DEP) $(LIBBAD_SSL_TEST_SERVER_OBJS) 
++$(LIBDIR)/$(CONFIG)/libbad_ssl_test_server.a: $(ZLIB_DEP) $(OPENSSL_DEP) $(CARES_DEP) $(ADDRESS_SORTING_DEP) $(LIBBAD_SSL_TEST_SERVER_OBJS)
+ 	$(E) "[AR]      Creating $@"
+ 	$(Q) mkdir -p `dirname $@`
+ 	$(Q) rm -f $(LIBDIR)/$(CONFIG)/libbad_ssl_test_server.a
+-	$(Q) $(AR) $(AROPTS) $(LIBDIR)/$(CONFIG)/libbad_ssl_test_server.a $(LIBBAD_SSL_TEST_SERVER_OBJS) 
++	$(Q) $(AR) $(AROPTS) $(LIBDIR)/$(CONFIG)/libbad_ssl_test_server.a $(LIBBAD_SSL_TEST_SERVER_OBJS)
+ ifeq ($(SYSTEM),Darwin)
+ 	$(Q) ranlib -no_warning_for_no_symbols $(LIBDIR)/$(CONFIG)/libbad_ssl_test_server.a
+ endif
+@@ -8625,11 +8627,11 @@ $(LIBDIR)/$(CONFIG)/libend2end_tests.a: openssl_dep_error
+ else
+ 
+ 
+-$(LIBDIR)/$(CONFIG)/libend2end_tests.a: $(ZLIB_DEP) $(OPENSSL_DEP) $(CARES_DEP) $(ADDRESS_SORTING_DEP) $(LIBEND2END_TESTS_OBJS) 
++$(LIBDIR)/$(CONFIG)/libend2end_tests.a: $(ZLIB_DEP) $(OPENSSL_DEP) $(CARES_DEP) $(ADDRESS_SORTING_DEP) $(LIBEND2END_TESTS_OBJS)
+ 	$(E) "[AR]      Creating $@"
+ 	$(Q) mkdir -p `dirname $@`
+ 	$(Q) rm -f $(LIBDIR)/$(CONFIG)/libend2end_tests.a
+-	$(Q) $(AR) $(AROPTS) $(LIBDIR)/$(CONFIG)/libend2end_tests.a $(LIBEND2END_TESTS_OBJS) 
++	$(Q) $(AR) $(AROPTS) $(LIBDIR)/$(CONFIG)/libend2end_tests.a $(LIBEND2END_TESTS_OBJS)
+ ifeq ($(SYSTEM),Darwin)
+ 	$(Q) ranlib -no_warning_for_no_symbols $(LIBDIR)/$(CONFIG)/libend2end_tests.a
+ endif
+@@ -8732,11 +8734,11 @@ PUBLIC_HEADERS_C += \
+ LIBEND2END_NOSEC_TESTS_OBJS = $(addprefix $(OBJDIR)/$(CONFIG)/, $(addsuffix .o, $(basename $(LIBEND2END_NOSEC_TESTS_SRC))))
+ 
+ 
+-$(LIBDIR)/$(CONFIG)/libend2end_nosec_tests.a: $(ZLIB_DEP) $(CARES_DEP) $(ADDRESS_SORTING_DEP)  $(LIBEND2END_NOSEC_TESTS_OBJS) 
++$(LIBDIR)/$(CONFIG)/libend2end_nosec_tests.a: $(ZLIB_DEP) $(CARES_DEP) $(ADDRESS_SORTING_DEP)  $(LIBEND2END_NOSEC_TESTS_OBJS)
+ 	$(E) "[AR]      Creating $@"
+ 	$(Q) mkdir -p `dirname $@`
+ 	$(Q) rm -f $(LIBDIR)/$(CONFIG)/libend2end_nosec_tests.a
+-	$(Q) $(AR) $(AROPTS) $(LIBDIR)/$(CONFIG)/libend2end_nosec_tests.a $(LIBEND2END_NOSEC_TESTS_OBJS) 
++	$(Q) $(AR) $(AROPTS) $(LIBDIR)/$(CONFIG)/libend2end_nosec_tests.a $(LIBEND2END_NOSEC_TESTS_OBJS)
+ ifeq ($(SYSTEM),Darwin)
+ 	$(Q) ranlib -no_warning_for_no_symbols $(LIBDIR)/$(CONFIG)/libend2end_nosec_tests.a
+ endif
+@@ -19812,7 +19814,7 @@ $(BINDIR)/$(CONFIG)/gen_legal_metadata_characters: $(GEN_LEGAL_METADATA_CHARACTE
+ 
+ endif
+ 
+-$(OBJDIR)/$(CONFIG)/tools/codegen/core/gen_legal_metadata_characters.o: 
++$(OBJDIR)/$(CONFIG)/tools/codegen/core/gen_legal_metadata_characters.o:
+ 
+ deps_gen_legal_metadata_characters: $(GEN_LEGAL_METADATA_CHARACTERS_OBJS:.o=.dep)
+ 
+@@ -19844,7 +19846,7 @@ $(BINDIR)/$(CONFIG)/gen_percent_encoding_tables: $(GEN_PERCENT_ENCODING_TABLES_O
+ 
+ endif
+ 
+-$(OBJDIR)/$(CONFIG)/tools/codegen/core/gen_percent_encoding_tables.o: 
++$(OBJDIR)/$(CONFIG)/tools/codegen/core/gen_percent_encoding_tables.o:
+ 
+ deps_gen_percent_encoding_tables: $(GEN_PERCENT_ENCODING_TABLES_OBJS:.o=.dep)
+ 
+-- 
+2.21.0
+
