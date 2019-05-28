@@ -67,6 +67,11 @@ RDEPEND="
 RESTRICT="test"
 QA_FLAGS_IGNORED="/usr/bin/nitrocli"
 
+src_prepare() {
+	eapply -p2 "${FILESDIR}/${PN}_-_fix-rust-1.35-build.patch"
+	default
+}
+
 src_install() {
 	cargo_src_install --path=.
 

@@ -1,0 +1,52 @@
+From 5383aa73b339e6a53ff027ee6012a3428f67466a Mon Sep 17 00:00:00 2001
+From: Daniel Mueller <deso@posteo.net>
+Date: Fri, 24 May 2019 17:39:14 -0700
+Subject: [PATCH] Allow for unused doc comments on macros
+
+With Rust 1.35 we get compile errors due to doc comments that are added
+to macro invocations but not actually included in the expanded output.
+The rustc wrongly assumes that we want to document the resulting code
+and not just provide details about the invocation itself.
+This change explicitly allows for those cases. Alternatively we could
+have "downgraded" the doc comments to normal comments or removed them
+altogether. There is little difference between those alternatives.
+---
+ nitrocli/src/args.rs     | 2 ++
+ nitrocli/src/pinentry.rs | 1 +
+ 2 files changed, 3 insertions(+)
+
+diff --git a/nitrocli/src/args.rs b/nitrocli/src/args.rs
+index 7f0bfc..7e4f83 100644
+--- a/nitrocli/src/args.rs
++++ b/nitrocli/src/args.rs
+@@ -101,6 +101,7 @@ impl<'io> Stdio for ExecCtx<'io> {
+ }
+ 
+ /// The available Nitrokey models.
++#[allow(unused_doc_comments)]
+ Enum! {DeviceModel, [
+   Pro => "pro",
+   Storage => "storage"
+@@ -116,6 +117,7 @@ impl From<DeviceModel> for nitrokey::Model {
+ }
+ 
+ /// A top-level command for nitrocli.
++#[allow(unused_doc_comments)]
+ Enum! {Command, [
+   Config => ("config", config),
+   Lock => ("lock", lock),
+diff --git a/nitrocli/src/pinentry.rs b/nitrocli/src/pinentry.rs
+index 837032..8bab65 100644
+--- a/nitrocli/src/pinentry.rs
++++ b/nitrocli/src/pinentry.rs
+@@ -30,6 +30,7 @@ type CowStr = borrow::Cow<'static, str>;
+ ///
+ /// The available PIN types correspond to the PIN types used by the Nitrokey devices:  user and
+ /// admin.
++#[allow(unused_doc_comments)]
+ Enum! {PinType, [
+   Admin => "admin",
+   User => "user"
+-- 
+2.21.0
+
