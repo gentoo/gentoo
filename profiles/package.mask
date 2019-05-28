@@ -412,9 +412,8 @@ sys-cluster/moosefs
 
 # James Le Cuirot <chewi@gentoo.org> (20 Apr 2019)
 # Ancient and long dead upstream. Use app-emulation/fs-uae
-# instead. Removal in 30 days. Bugs #432092, #602966.
+# instead. Removal in 30 days. Bug #432092.
 app-emulation/uae
-app-emulation/e-uae
 
 # Miroslav Šulc <fordfrog@gentoo.org> (19 Apr 2019)
 # Depends on >=virtual/{jdk,jre}-11 which is masked
