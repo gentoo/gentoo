@@ -19,7 +19,10 @@ IUSE=""
 # i.e. uclibc or clang can provide what is necessary at runtime
 DEPEND="dev-util/patchelf"
 RDEPEND="app-arch/bzip2
-	=dev-libs/openssl-1.0*:*
+	|| (
+		dev-libs/openssl-compat:1.0.0
+		=dev-libs/openssl-1.0*:*
+	)
 	sys-devel/gcc
 	sys-libs/glibc
 	sys-libs/zlib"
