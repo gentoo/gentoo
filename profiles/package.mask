@@ -355,12 +355,6 @@ sec-policy/selinux-perdition
 # Removal in 30 days.  Bug #684340.
 app-admin/lsat
 
-# Alon Bar-Lev <alonbl@gentoo.org> (24 Apr 2019)
-# Commercial. Upstream does not provide sources any more.
-# Tend to break per kernel upgrades.
-# Removal in 30 days. Bug#684268.
-app-crypt/bestcrypt
-
 # Michał Górny <mgorny@gentoo.org> (24 Apr 2019)
 # Unmaintained.  Vulnerable init.d script.  Missing dependencies causing
 # build failures (#514412, #544942).  Insecure format strings (#520574).
