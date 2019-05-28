@@ -3,6 +3,8 @@
 
 EAPI=7
 
+inherit toolchain-funcs
+
 DESCRIPTION="A really tiny cross-platform proxy servers set"
 HOMEPAGE="https://www.3proxy.ru/"
 SRC_URI="https://github.com/z3APA3A/3proxy/archive/${PV}.tar.gz -> ${P}.tar.gz"
@@ -21,6 +23,10 @@ HTML_DOCS=( doc/html/. )
 src_prepare() {
 	default
 	cp Makefile.Linux Makefile || die
+}
+
+src_compile() {
+	emake CC="$(tc-getCC)" LN="$(tc-getCC)"
 }
 
 src_install() {
