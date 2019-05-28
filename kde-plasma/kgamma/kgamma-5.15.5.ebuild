@@ -8,7 +8,7 @@ KMNAME="${PN}5"
 inherit kde5
 
 DESCRIPTION="Screen gamma values kcontrol module"
-KEYWORDS="amd64 ~arm ~arm64 x86"
+KEYWORDS="amd64 ~arm arm64 x86"
 IUSE=""
 
 RDEPEND="

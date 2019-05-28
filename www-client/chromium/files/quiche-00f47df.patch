@@ -1,0 +1,38 @@
+From 00f47df999c9b19e80fdc01db0ae9ca1b6a12b3a Mon Sep 17 00:00:00 2001
+From: vasilvv <vasilvv@google.com>
+Date: Wed, 3 Apr 2019 13:58:53 -0700
+Subject: [PATCH] GCC: do not delete move constructor of QuicStreamSendBuffer
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+QuicStreamSendBuffer constructor is implicitely required in the
+initialization of the vector of substreams in QuicCryptoStream.
+Though clang apparently ignores that, GCC fails to build.
+
+BUG=chromium:819294
+
+Originally submitted by José Dapena Paz <jose.dapena@lge.com> at https://quiche-review.googlesource.com/c/quiche/+/2420
+
+PiperOrigin-RevId: 241800134
+Change-Id: I4e3c97d6e5895d85340e8c1b740e6196d9104066
+---
+ quic/core/quic_stream_send_buffer.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/quic/core/quic_stream_send_buffer.h b/quic/core/quic_stream_send_buffer.h
+index e34514b..74e9d0d 100644
+--- a/net/third_party/quic/core/quic_stream_send_buffer.h
++++ b/net/third_party/quic/core/quic_stream_send_buffer.h
+@@ -62,7 +62,7 @@ class QUIC_EXPORT_PRIVATE QuicStreamSendBuffer {
+  public:
+   explicit QuicStreamSendBuffer(QuicBufferAllocator* allocator);
+   QuicStreamSendBuffer(const QuicStreamSendBuffer& other) = delete;
+-  QuicStreamSendBuffer(QuicStreamSendBuffer&& other) = delete;
++  QuicStreamSendBuffer(QuicStreamSendBuffer&& other) = default;
+   ~QuicStreamSendBuffer();
+ 
+   // Save |data_length| of data starts at |iov_offset| in |iov| to send buffer.
+-- 
+2.21.0
+

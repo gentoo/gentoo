@@ -1,0 +1,587 @@
+From e1b1f3a5f273c8da533fad495b9de316e2c83c9b Mon Sep 17 00:00:00 2001
+From: jdoerrie <jdoerrie@chromium.org>
+Date: Sat, 16 Mar 2019 04:08:01 +0000
+Subject: [PATCH] [base] Add Dead Type to base::Value
+
+This change adds a temporary DEAD type to base::Value which should help
+to track down use-after-free bugs. Furthermore, this change also removes
+the now unneeded is_alive_ flag.
+
+Bug: 859477, 941404
+Change-Id: I9b7a2f3cbb0b22d7e3ed35b2453537419f3f7e55
+Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/1478897
+Reviewed-by: Pavol Marko <pmarko@chromium.org>
+Reviewed-by: Tao Bai <michaelbai@chromium.org>
+Reviewed-by: Thomas Anderson <thomasanderson@chromium.org>
+Reviewed-by: Mike Pinkerton <pinkerton@chromium.org>
+Reviewed-by: Bill Budge <bbudge@chromium.org>
+Reviewed-by: Ken Rockot <rockot@google.com>
+Reviewed-by: Steven Bennetts <stevenjb@chromium.org>
+Reviewed-by: Daniel Cheng <dcheng@chromium.org>
+Reviewed-by: David Turner <digit@chromium.org>
+Commit-Queue: Thomas Anderson <thomasanderson@chromium.org>
+Cr-Commit-Position: refs/heads/master@{#641404}
+---
+ base/json/json_writer.cc                      |  5 ++
+ base/values.cc                                | 68 ++++++++++++-------
+ base/values.h                                 | 23 ++-----
+ base/values_unittest.cc                       | 10 ++-
+ .../ui/cocoa/applescript/apple_event_util.mm  | 10 +++
+ chromeos/network/onc/variable_expander.cc     |  6 ++
+ .../core/browser/android/policy_converter.cc  | 11 ++-
+ .../core/common/policy_loader_win_unittest.cc |  8 ++-
+ .../policy/core/common/policy_test_utils.cc   |  5 ++
+ .../policy/core/common/registry_dict.cc       |  4 ++
+ .../gin_java_script_to_java_types_coercion.cc |  8 ++-
+ ipc/ipc_message_utils.cc                      | 11 ++-
+ mojo/public/cpp/base/values_mojom_traits.h    |  7 +-
+ .../ppb_x509_certificate_private_shared.cc    |  2 +
+ 14 files changed, 127 insertions(+), 51 deletions(-)
+
+diff --git a/base/json/json_writer.cc b/base/json/json_writer.cc
+index 376a459f9a46..cd020e7fa0c0 100644
+--- a/base/json/json_writer.cc
++++ b/base/json/json_writer.cc
+@@ -179,6 +179,11 @@ bool JSONWriter::BuildJSONString(const Value& node, size_t depth) {
+       // Successful only if we're allowed to omit it.
+       DLOG_IF(ERROR, !omit_binary_values_) << "Cannot serialize binary value.";
+       return omit_binary_values_;
++
++    // TODO(crbug.com/859477): Remove after root cause is found.
++    case Value::Type::DEAD:
++      CHECK(false);
++      return false;
+   }
+ 
+   // TODO(crbug.com/859477): Revert to NOTREACHED() after root cause is found.
+diff --git a/base/values.cc b/base/values.cc
+index 0c002551b317..035aa2350cde 100644
+--- a/base/values.cc
++++ b/base/values.cc
+@@ -90,8 +90,6 @@ std::unique_ptr<Value> CopyWithoutEmptyChildren(const Value& node) {
+ 
+ }  // namespace
+ 
+-constexpr uint16_t Value::kMagicIsAlive;
+-
+ // static
+ std::unique_ptr<Value> Value::CreateWithCopiedBuffer(const char* buffer,
+                                                      size_t size) {
+@@ -112,9 +110,9 @@ Value::Value(Value&& that) noexcept {
+   InternalMoveConstructFrom(std::move(that));
+ }
+ 
+-Value::Value() noexcept : type_(Type::NONE), is_alive_(kMagicIsAlive) {}
++Value::Value() noexcept : type_(Type::NONE) {}
+ 
+-Value::Value(Type type) : type_(type), is_alive_(kMagicIsAlive) {
++Value::Value(Type type) : type_(type) {
+   // Initialize with the default value.
+   switch (type_) {
+     case Type::NONE:
+@@ -141,22 +139,26 @@ Value::Value(Type type) : type_(type), is_alive_(kMagicIsAlive) {
+     case Type::LIST:
+       new (&list_) ListStorage();
+       return;
++    // TODO(crbug.com/859477): Remove after root cause is found.
++    case Type::DEAD:
++      CHECK(false);
++      return;
+   }
++
++  // TODO(crbug.com/859477): Revert to NOTREACHED() after root cause is found.
++  CHECK(false);
+ }
+ 
+ Value::Value(bool in_bool)
+     : bool_type_(Type::BOOLEAN),
+-      bool_is_alive_(kMagicIsAlive),
+       bool_value_(in_bool) {}
+ 
+ Value::Value(int in_int)
+     : int_type_(Type::INTEGER),
+-      int_is_alive_(kMagicIsAlive),
+       int_value_(in_int) {}
+ 
+ Value::Value(double in_double)
+     : double_type_(Type::DOUBLE),
+-      double_is_alive_(kMagicIsAlive),
+       double_value_(in_double) {
+   if (!std::isfinite(double_value_)) {
+     NOTREACHED() << "Non-finite (i.e. NaN or positive/negative infinity) "
+@@ -171,7 +173,6 @@ Value::Value(StringPiece in_string) : Value(std::string(in_string)) {}
+ 
+ Value::Value(std::string&& in_string) noexcept
+     : string_type_(Type::STRING),
+-      string_is_alive_(kMagicIsAlive),
+       string_value_(std::move(in_string)) {
+   DCHECK(IsStringUTF8(string_value_));
+ }
+@@ -182,21 +183,18 @@ Value::Value(StringPiece16 in_string16) : Value(UTF16ToUTF8(in_string16)) {}
+ 
+ Value::Value(const std::vector<char>& in_blob)
+     : binary_type_(Type::BINARY),
+-      binary_is_alive_(kMagicIsAlive),
+       binary_value_(in_blob.begin(), in_blob.end()) {}
+ 
+ Value::Value(base::span<const uint8_t> in_blob)
+     : binary_type_(Type::BINARY),
+-      binary_is_alive_(kMagicIsAlive),
+       binary_value_(in_blob.begin(), in_blob.end()) {}
+ 
+ Value::Value(BlobStorage&& in_blob) noexcept
+     : binary_type_(Type::BINARY),
+-      binary_is_alive_(kMagicIsAlive),
+       binary_value_(std::move(in_blob)) {}
+ 
+ Value::Value(const DictStorage& in_dict)
+-    : dict_type_(Type::DICTIONARY), dict_is_alive_(kMagicIsAlive), dict_() {
++    : dict_type_(Type::DICTIONARY), dict_() {
+   dict_.reserve(in_dict.size());
+   for (const auto& it : in_dict) {
+     dict_.try_emplace(dict_.end(), it.first,
+@@ -206,11 +204,9 @@ Value::Value(const DictStorage& in_dict)
+ 
+ Value::Value(DictStorage&& in_dict) noexcept
+     : dict_type_(Type::DICTIONARY),
+-      dict_is_alive_(kMagicIsAlive),
+       dict_(std::move(in_dict)) {}
+ 
+-Value::Value(const ListStorage& in_list)
+-    : list_type_(Type::LIST), list_is_alive_(kMagicIsAlive), list_() {
++Value::Value(const ListStorage& in_list) : list_type_(Type::LIST), list_() {
+   list_.reserve(in_list.size());
+   for (const auto& val : in_list)
+     list_.emplace_back(val.Clone());
+@@ -218,7 +214,6 @@ Value::Value(const ListStorage& in_list)
+ 
+ Value::Value(ListStorage&& in_list) noexcept
+     : list_type_(Type::LIST),
+-      list_is_alive_(kMagicIsAlive),
+       list_(std::move(in_list)) {}
+ 
+ Value& Value::operator=(Value&& that) noexcept {
+@@ -246,15 +241,21 @@ Value Value::Clone() const {
+       return Value(dict_);
+     case Type::LIST:
+       return Value(list_);
++      // TODO(crbug.com/859477): Remove after root cause is found.
++    case Type::DEAD:
++      CHECK(false);
++      return Value();
+   }
+ 
+-  NOTREACHED();
++  // TODO(crbug.com/859477): Revert to NOTREACHED() after root cause is found.
++  CHECK(false);
+   return Value();
+ }
+ 
+ Value::~Value() {
+   InternalCleanup();
+-  is_alive_ = 0;
++  // TODO(crbug.com/859477): Remove after root cause is found.
++  type_ = Type::DEAD;
+ }
+ 
+ // static
+@@ -654,9 +655,14 @@ bool operator==(const Value& lhs, const Value& rhs) {
+                         });
+     case Value::Type::LIST:
+       return lhs.list_ == rhs.list_;
++      // TODO(crbug.com/859477): Remove after root cause is found.
++    case Value::Type::DEAD:
++      CHECK(false);
++      return false;
+   }
+ 
+-  NOTREACHED();
++  // TODO(crbug.com/859477): Revert to NOTREACHED() after root cause is found.
++  CHECK(false);
+   return false;
+ }
+ 
+@@ -693,9 +699,14 @@ bool operator<(const Value& lhs, const Value& rhs) {
+           });
+     case Value::Type::LIST:
+       return lhs.list_ < rhs.list_;
++      // TODO(crbug.com/859477): Remove after root cause is found.
++    case Value::Type::DEAD:
++      CHECK(false);
++      return false;
+   }
+ 
+-  NOTREACHED();
++  // TODO(crbug.com/859477): Revert to NOTREACHED() after root cause is found.
++  CHECK(false);
+   return false;
+ }
+ 
+@@ -733,7 +744,6 @@ size_t Value::EstimateMemoryUsage() const {
+ 
+ void Value::InternalMoveConstructFrom(Value&& that) {
+   type_ = that.type_;
+-  is_alive_ = that.is_alive_;
+ 
+   switch (type_) {
+     case Type::NONE:
+@@ -759,12 +769,17 @@ void Value::InternalMoveConstructFrom(Value&& that) {
+     case Type::LIST:
+       new (&list_) ListStorage(std::move(that.list_));
+       return;
++      // TODO(crbug.com/859477): Remove after root cause is found.
++    case Type::DEAD:
++      CHECK(false);
++      return;
+   }
++
++  // TODO(crbug.com/859477): Revert to NOTREACHED() after root cause is found.
++  CHECK(false);
+ }
+ 
+ void Value::InternalCleanup() {
+-  CHECK_EQ(is_alive_, kMagicIsAlive);
+-
+   switch (type_) {
+     case Type::NONE:
+     case Type::BOOLEAN:
+@@ -785,7 +800,14 @@ void Value::InternalCleanup() {
+     case Type::LIST:
+       list_.~ListStorage();
+       return;
++      // TODO(crbug.com/859477): Remove after root cause is found.
++    case Type::DEAD:
++      CHECK(false);
++      return;
+   }
++
++  // TODO(crbug.com/859477): Revert to NOTREACHED() after root cause is found.
++  CHECK(false);
+ }
+ 
+ ///////////////////// DictionaryValue ////////////////////
+diff --git a/base/values.h b/base/values.h
+index 429ef1dfdebd..e31cadd83102 100644
+--- a/base/values.h
++++ b/base/values.h
+@@ -92,7 +92,9 @@ class BASE_EXPORT Value {
+     STRING,
+     BINARY,
+     DICTIONARY,
+-    LIST
++    LIST,
++    // TODO(crbug.com/859477): Remove once root cause is found.
++    DEAD
+     // Note: Do not add more types. See the file-level comment above for why.
+   };
+ 
+@@ -375,10 +377,6 @@ class BASE_EXPORT Value {
+   size_t EstimateMemoryUsage() const;
+ 
+  protected:
+-  // Magic IsAlive signature to debug double frees.
+-  // TODO(crbug.com/859477): Remove once root cause is found.
+-  static constexpr uint16_t kMagicIsAlive = 0x2f19;
+-
+   // Technical note:
+   // The naive way to implement a tagged union leads to wasted bytes
+   // in the object on CPUs like ARM ones, which impose an 8-byte alignment
+@@ -408,8 +406,8 @@ class BASE_EXPORT Value {
+   // that |double_value_| below is always located at an offset that is a
+   // multiple of 8, relative to the start of the overall data structure.
+   //
+-  // Each struct must declare its own |type_| and |is_alive_| field, which
+-  // must have a different name, to appease the C++ compiler.
++  // Each struct must declare its own |type_| field, which must have a different
++  // name, to appease the C++ compiler.
+   //
+   // Using this technique sizeof(base::Value) == 16 on 32-bit ARM instead
+   // of 24, without losing any information. Results are unchanged for x86,
+@@ -419,24 +417,17 @@ class BASE_EXPORT Value {
+       // TODO(crbug.com/646113): Make these private once DictionaryValue and
+       // ListValue are properly inlined.
+       Type type_ : 8;
+-
+-      // IsAlive member to debug double frees.
+-      // TODO(crbug.com/859477): Remove once root cause is found.
+-      uint16_t is_alive_ = kMagicIsAlive;
+     };
+     struct {
+       Type bool_type_ : 8;
+-      uint16_t bool_is_alive_;
+       bool bool_value_;
+     };
+     struct {
+       Type int_type_ : 8;
+-      uint16_t int_is_alive_;
+       int int_value_;
+     };
+     struct {
+       Type double_type_ : 8;
+-      uint16_t double_is_alive_;
+       // Subtle: On architectures that require it, the compiler will ensure
+       // that |double_value_|'s offset is a multiple of 8 (e.g. 32-bit ARM).
+       // See technical note above to understand why it is important.
+@@ -444,22 +435,18 @@ class BASE_EXPORT Value {
+     };
+     struct {
+       Type string_type_ : 8;
+-      uint16_t string_is_alive_;
+       std::string string_value_;
+     };
+     struct {
+       Type binary_type_ : 8;
+-      uint16_t binary_is_alive_;
+       BlobStorage binary_value_;
+     };
+     struct {
+       Type dict_type_ : 8;
+-      uint16_t dict_is_alive_;
+       DictStorage dict_;
+     };
+     struct {
+       Type list_type_ : 8;
+-      uint16_t list_is_alive_;
+       ListStorage list_;
+     };
+   };
+diff --git a/base/values_unittest.cc b/base/values_unittest.cc
+index 0a641bcc7ef4..b23fd8332491 100644
+--- a/base/values_unittest.cc
++++ b/base/values_unittest.cc
+@@ -20,17 +20,20 @@
+ #include "base/strings/string16.h"
+ #include "base/strings/string_piece.h"
+ #include "base/strings/utf_string_conversions.h"
++#include "build/build_config.h"
+ #include "testing/gmock/include/gmock/gmock.h"
+ #include "testing/gtest/include/gtest/gtest.h"
+ 
+ namespace base {
+ 
++// Test is currently incorrect on Windows x86.
++#if !defined(OS_WIN) || !defined(ARCH_CPU_X86)
+ TEST(ValuesTest, SizeOfValue) {
+   // Ensure that base::Value is as small as possible, i.e. that there is
+   // no wasted space after the inner value due to alignment constraints.
+-  // Distinguish between the 'header' that includes |type_| and |is_alive_|
+-  // and the inner value that follows it, which can be a bool, int, double,
+-  // string, blob, list or dict.
++  // Distinguish between the 'header' that includes |type_| and and the inner
++  // value that follows it, which can be a bool, int, double, string, blob, list
++  // or dict.
+ #define INNER_TYPES_LIST(X)            \
+   X(bool, bool_value_)                 \
+   X(int, int_value_)                   \
+@@ -61,6 +64,7 @@ TEST(ValuesTest, SizeOfValue) {
+     LOG(INFO) << "max_inner_struct_limit=" << max_inner_struct_limit;
+   }
+ }
++#endif
+ 
+ TEST(ValuesTest, TestNothrow) {
+   static_assert(std::is_nothrow_move_constructible<Value>::value,
+diff --git a/chrome/browser/ui/cocoa/applescript/apple_event_util.mm b/chrome/browser/ui/cocoa/applescript/apple_event_util.mm
+index 16d685607ced..25a59338ee73 100644
+--- a/chrome/browser/ui/cocoa/applescript/apple_event_util.mm
++++ b/chrome/browser/ui/cocoa/applescript/apple_event_util.mm
+@@ -96,6 +96,16 @@ NSAppleEventDescriptor* ValueToAppleEventDescriptor(const base::Value* value) {
+       }
+       break;
+     }
++
++    // TODO(crbug.com/859477): Remove after root cause is found.
++    case base::Value::Type::DEAD:
++      CHECK(false);
++      break;
++
++    // TODO(crbug.com/859477): Remove after root cause is found.
++    default:
++      CHECK(false);
++      break;
+   }
+ 
+   return descriptor;
+diff --git a/chromeos/network/onc/variable_expander.cc b/chromeos/network/onc/variable_expander.cc
+index fd72752c2aa6..cd5bbb238eb3 100644
+--- a/chromeos/network/onc/variable_expander.cc
++++ b/chromeos/network/onc/variable_expander.cc
+@@ -145,6 +145,12 @@ bool VariableExpander::ExpandValue(base::Value* value) const {
+       // Nothing to do here.
+       break;
+     }
++
++    // TODO(crbug.com/859477): Remove after root cause is found.
++    case base::Value::Type::DEAD: {
++      CHECK(false);
++      break;
++    }
+   }
+   return no_error;
+ }
+diff --git a/components/policy/core/browser/android/policy_converter.cc b/components/policy/core/browser/android/policy_converter.cc
+index b711a64febc9..9d41ad0d1507 100644
+--- a/components/policy/core/browser/android/policy_converter.cc
++++ b/components/policy/core/browser/android/policy_converter.cc
+@@ -175,10 +175,17 @@ std::unique_ptr<base::Value> PolicyConverter::ConvertValueToSchema(
+       }
+       return value;
+     }
++
++    // TODO(crbug.com/859477): Remove after root cause is found.
++    case base::Value::Type::DEAD: {
++      CHECK(false);
++      return nullptr;
++    }
+   }
+ 
+-  NOTREACHED();
+-  return std::unique_ptr<base::Value>();
++  // TODO(crbug.com/859477): Revert to NOTREACHED() after root cause is found.
++  CHECK(false);
++  return nullptr;
+ }
+ 
+ void PolicyConverter::SetPolicyValue(const std::string& key,
+diff --git a/components/policy/core/common/policy_loader_win_unittest.cc b/components/policy/core/common/policy_loader_win_unittest.cc
+index 311e7fb122fc..0377307c5e28 100644
+--- a/components/policy/core/common/policy_loader_win_unittest.cc
++++ b/components/policy/core/common/policy_loader_win_unittest.cc
+@@ -133,8 +133,14 @@ bool InstallValue(const base::Value& value,
+ 
+     case base::Value::Type::BINARY:
+       return false;
++
++    // TODO(crbug.com/859477): Remove after root cause is found.
++    case base::Value::Type::DEAD:
++      CHECK(false);
++      return false;
+   }
+-  NOTREACHED();
++  // TODO(crbug.com/859477): Revert to NOTREACHED() after root cause is found.
++  CHECK(false);
+   return false;
+ }
+ 
+diff --git a/components/policy/core/common/policy_test_utils.cc b/components/policy/core/common/policy_test_utils.cc
+index 5af98b47275c..919f004153ec 100644
+--- a/components/policy/core/common/policy_test_utils.cc
++++ b/components/policy/core/common/policy_test_utils.cc
+@@ -137,6 +137,11 @@ CFPropertyListRef ValueToProperty(const base::Value& value) {
+       // because there's no equivalent JSON type, and policy values can only
+       // take valid JSON values.
+       break;
++
++    // TODO(crbug.com/859477): Remove after root cause is found.
++    case base::Value::Type::DEAD:
++      CHECK(false);
++      break;
+   }
+ 
+   return NULL;
+diff --git a/components/policy/core/common/registry_dict.cc b/components/policy/core/common/registry_dict.cc
+index f3ed372bdcb3..696ba7e04abe 100644
+--- a/components/policy/core/common/registry_dict.cc
++++ b/components/policy/core/common/registry_dict.cc
+@@ -135,6 +135,10 @@ std::unique_ptr<base::Value> ConvertRegistryValue(const base::Value& value,
+     case base::Value::Type::BINARY:
+       // No conversion possible.
+       break;
++    // TODO(crbug.com/859477): Remove after root cause is found.
++    case base::Value::Type::DEAD:
++      CHECK(false);
++      return nullptr;
+   }
+ 
+   LOG(WARNING) << "Failed to convert " << value.type() << " to "
+diff --git a/content/browser/android/java/gin_java_script_to_java_types_coercion.cc b/content/browser/android/java/gin_java_script_to_java_types_coercion.cc
+index dabd66ba8c72..84fd5489a414 100644
+--- a/content/browser/android/java/gin_java_script_to_java_types_coercion.cc
++++ b/content/browser/android/java/gin_java_script_to_java_types_coercion.cc
+@@ -722,8 +722,14 @@ jvalue CoerceJavaScriptValueToJavaValue(JNIEnv* env,
+     case base::Value::Type::BINARY:
+       return CoerceGinJavaBridgeValueToJavaValue(
+           env, value, target_type, coerce_to_string, object_refs, error);
++    // TODO(crbug.com/859477): Remove after root cause is found.
++    case base::Value::Type::DEAD:
++      CHECK(false);
++      return jvalue();
+   }
+-  NOTREACHED();
++
++  // TODO(crbug.com/859477): Revert to NOTREACHED() after root cause is found.
++  CHECK(false);
+   return jvalue();
+ }
+ 
+diff --git a/ipc/ipc_message_utils.cc b/ipc/ipc_message_utils.cc
+index ec04c77c6c18..df6ec39bd663 100644
+--- a/ipc/ipc_message_utils.cc
++++ b/ipc/ipc_message_utils.cc
+@@ -92,7 +92,7 @@ void WriteValue(base::Pickle* m, const base::Value* value, int recursion) {
+ 
+   switch (value->type()) {
+     case base::Value::Type::NONE:
+-    break;
++      break;
+     case base::Value::Type::BOOLEAN: {
+       bool val;
+       result = value->GetAsBoolean(&val);
+@@ -147,6 +147,11 @@ void WriteValue(base::Pickle* m, const base::Value* value, int recursion) {
+       }
+       break;
+     }
++
++    // TODO(crbug.com/859477): Remove after root cause is found.
++    default:
++      CHECK(false);
++      break;
+   }
+ }
+ 
+@@ -260,7 +265,9 @@ bool ReadValue(const base::Pickle* m,
+       break;
+     }
+     default:
+-    return false;
++      // TODO(crbug.com/859477): Remove after root cause is found.
++      CHECK(false);
++      return false;
+   }
+ 
+   return true;
+diff --git a/mojo/public/cpp/base/values_mojom_traits.h b/mojo/public/cpp/base/values_mojom_traits.h
+index cdb9bbbd94df..66752b7c90d8 100644
+--- a/mojo/public/cpp/base/values_mojom_traits.h
++++ b/mojo/public/cpp/base/values_mojom_traits.h
+@@ -86,8 +86,13 @@ struct COMPONENT_EXPORT(MOJO_BASE_SHARED_TRAITS)
+         return mojo_base::mojom::ValueDataView::Tag::DICTIONARY_VALUE;
+       case base::Value::Type::LIST:
+         return mojo_base::mojom::ValueDataView::Tag::LIST_VALUE;
++      // TODO(crbug.com/859477): Remove after root cause is found.
++      case base::Value::Type::DEAD:
++        CHECK(false);
++        return mojo_base::mojom::ValueDataView::Tag::NULL_VALUE;
+     }
+-    NOTREACHED();
++    // TODO(crbug.com/859477): Revert to NOTREACHED() after root cause is found.
++    CHECK(false);
+     return mojo_base::mojom::ValueDataView::Tag::NULL_VALUE;
+   }
+ 
+diff --git a/ppapi/shared_impl/private/ppb_x509_certificate_private_shared.cc b/ppapi/shared_impl/private/ppb_x509_certificate_private_shared.cc
+index 6ffff36337e0..7f392d50f718 100644
+--- a/ppapi/shared_impl/private/ppb_x509_certificate_private_shared.cc
++++ b/ppapi/shared_impl/private/ppb_x509_certificate_private_shared.cc
+@@ -73,6 +73,8 @@ PP_Var PPB_X509Certificate_Fields::GetFieldAsPPVar(
+     }
+     case base::Value::Type::DICTIONARY:
+     case base::Value::Type::LIST:
++    // TODO(crbug.com/859477): Remove after root cause is found.
++    case base::Value::Type::DEAD:
+       // Not handled.
+       break;
+   }
+-- 
+2.21.0
+
