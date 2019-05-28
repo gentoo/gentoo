@@ -380,13 +380,6 @@ mail-filter/mimedefang
 # Removal in 30 days.  Bug #630986.
 mail-filter/spamass-milter
 
-# Michał Górny <mgorny@gentoo.org> (24 Apr 2019)
-# Unmaintained.  Does not build with current version of courier
-# (#684254), also had a different build failure in the past (#513976).
-# Last bumped in 2013, pending bump since 2014 (#519452).
-# Removal in 30 days.  Bug #684256.
-mail-filter/zdkimfilter
-
 # Jeroen Roovers <jer@gentoo.org> (24 Apr 2019)
 # Depends on =dev-libs/openssl-1.1.1* due to newly introduced
 # support for EVP_PKEY_ED25519 and EVP_PKEY_ED448 (bug #670574).
