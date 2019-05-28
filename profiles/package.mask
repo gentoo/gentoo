@@ -338,34 +338,6 @@ dev-python/gst-python:0.10
 media-libs/gnonlin:0.10
 net-libs/farstream:0.1
 
-# Jason Zaman <perfinion@gentoo.org> (25 Apr 2019)
-# net-mail/perdition was last-rited in 2016. The
-# SELinux policy packge is no longer needed.
-# Removal in 30 days.
-sec-policy/selinux-perdition
-
-# Michał Górny <mgorny@gentoo.org> (25 Apr 2019)
-# This programs suffers severe code quality problems and should have
-# never been added to Gentoo.  It looks like a shell script badly
-# converted to a C program with a lot of system() calls with globs,
-# horribly unreadable code and broken memory management including
-# reading past end-of-string (which only recently replaced writing into
-# uninitialized memory).  Auditing the program completely would probably
-# be more costly than rewriting it from scratch.
-# Removal in 30 days.  Bug #684340.
-app-admin/lsat
-
-# Alon Bar-Lev <alonbl@gentoo.org> (24 Apr 2019)
-# Commercial. Upstream does not provide sources any more.
-# Tend to break per kernel upgrades.
-# Removal in 30 days. Bug#684268.
-app-crypt/bestcrypt
-
-# Michał Górny <mgorny@gentoo.org> (24 Apr 2019)
-# Unmainained since 2011.  Ebuild broken since 2016.  Last release
-# in 2005.  Removal in 30 days.  Bug #588032.
-net-mail/bincimap
-
 # Michał Górny <mgorny@gentoo.org> (24 Apr 2019)
 # Unmaintained.  Vulnerable init.d script.  Missing dependencies causing
 # build failures (#514412, #544942).  Insecure format strings (#520574).
@@ -373,48 +345,11 @@ net-mail/bincimap
 # Removal in 30 days.  Bug #629450.
 mail-filter/mimedefang
 
-# Michał Górny <mgorny@gentoo.org> (24 Apr 2019)
-# Unmaintained.  Vulnerable init.d script.  Missing dependencies causing
-# build failures (#514136).  Last bumped in 2011, pending bump since
-# at least 2014 (#540502).
-# Removal in 30 days.  Bug #630986.
-mail-filter/spamass-milter
-
-# Michał Górny <mgorny@gentoo.org> (24 Apr 2019)
-# Unmaintained.  Does not build with current version of courier
-# (#684254), also had a different build failure in the past (#513976).
-# Last bumped in 2013, pending bump since 2014 (#519452).
-# Removal in 30 days.  Bug #684256.
-mail-filter/zdkimfilter
-
 # Jeroen Roovers <jer@gentoo.org> (24 Apr 2019)
 # Depends on =dev-libs/openssl-1.1.1* due to newly introduced
 # support for EVP_PKEY_ED25519 and EVP_PKEY_ED448 (bug #670574).
 =net-libs/nodejs-11.15.0
 =net-libs/nodejs-12*
-
-# Lars Wendler <polynomial-c@gentoo.org> (21 Apr 2019)
-# Masked for removal (bug #683926)
-sys-libs/ntdb
-
-# Alexys Jacob <ultrabug@gentoo.org> (20 Apr 2019)
-# Unmaintained. Not active any more with latest release Jul 23, 2017.
-# Does not build with recent openssl. Dropping useless python driver as well.
-# Removal in 30 days.  Bug #597340, #674236.
-dev-db/rethinkdb
-dev-python/python-rethinkdb
-
-# Alexys Jacob <ultrabug@gentoo.org> (20 Apr 2019)
-# Unmaintained. Only version in portage has been EOL for a while.
-# No strong user base or herd support. Breaks fuse-3.
-# Removal in 30 days.  Bug #650256, #673672.
-sys-cluster/moosefs
-
-# James Le Cuirot <chewi@gentoo.org> (20 Apr 2019)
-# Ancient and long dead upstream. Use app-emulation/fs-uae
-# instead. Removal in 30 days. Bugs #432092, #602966.
-app-emulation/uae
-app-emulation/e-uae
 
 # Miroslav Šulc <fordfrog@gentoo.org> (19 Apr 2019)
 # Depends on >=virtual/{jdk,jre}-11 which is masked
