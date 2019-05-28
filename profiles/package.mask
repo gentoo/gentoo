@@ -373,13 +373,6 @@ net-mail/bincimap
 # Removal in 30 days.  Bug #629450.
 mail-filter/mimedefang
 
-# Michał Górny <mgorny@gentoo.org> (24 Apr 2019)
-# Unmaintained.  Vulnerable init.d script.  Missing dependencies causing
-# build failures (#514136).  Last bumped in 2011, pending bump since
-# at least 2014 (#540502).
-# Removal in 30 days.  Bug #630986.
-mail-filter/spamass-milter
-
 # Jeroen Roovers <jer@gentoo.org> (24 Apr 2019)
 # Depends on =dev-libs/openssl-1.1.1* due to newly introduced
 # support for EVP_PKEY_ED25519 and EVP_PKEY_ED448 (bug #670574).
