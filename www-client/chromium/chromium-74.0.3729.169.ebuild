@@ -12,7 +12,10 @@ inherit check-reqs chromium-2 desktop flag-o-matic multilib ninja-utils pax-util
 
 DESCRIPTION="Open-source version of Google Chrome web browser"
 HOMEPAGE="http://chromium.org/"
-SRC_URI="https://commondatastorage.googleapis.com/chromium-browser-official/${P}.tar.xz"
+SRC_URI="https://commondatastorage.googleapis.com/chromium-browser-official/${P}.tar.xz
+	https://dev.gentoo.org/~floppym/dist/chromium-74-e1b1f3a.patch
+	https://dev.gentoo.org/~floppym/dist/chromium-74-2f28731.patch
+"
 
 LICENSE="BSD"
 SLOT="0"
@@ -142,9 +145,9 @@ PATCHES=(
 	"${FILESDIR}"/chromium-compiler-r8.patch
 	"${FILESDIR}"/chromium-widevine-r4.patch
 	"${FILESDIR}"/chromium-fix-char_traits.patch
-	"${FILESDIR}"/chromium-74-e1b1f3a.patch
+	"${DISTDIR}"/chromium-74-e1b1f3a.patch
 	"${FILESDIR}"/chromium-74-c2c467f.patch
-	"${FILESDIR}"/chromium-74-2f28731.patch
+	"${DISTDIR}"/chromium-74-2f28731.patch
 	"${FILESDIR}"/chromium-74-7685422.patch
 	"${FILESDIR}"/quiche-00f47df.patch
 )
