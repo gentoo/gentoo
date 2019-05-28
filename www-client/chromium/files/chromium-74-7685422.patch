@@ -1,0 +1,42 @@
+From 7685422a90e1da829cb32d685a4b970d30738098 Mon Sep 17 00:00:00 2001
+From: Jose Dapena Paz <jose.dapena@lge.com>
+Date: Wed, 3 Apr 2019 18:35:04 +0000
+Subject: [PATCH] base: Value::Type enum class size should be 8-bit.
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+GCC is complaining because, when base::Type is used to declare the different
+variants of Type in its union, they are forced to take 8-bit, that is smaller
+than the enum class default size (same as int).
+
+So this change sets explicitely the enum class underlying type to be unsigned
+char.
+
+BUG=chromium:819294
+
+Change-Id: I1765e2503e2c3d3675c73ecb0f7f5bc33456e6f0
+Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/1550366
+Commit-Queue: José Dapena Paz <jose.dapena@lge.com>
+Reviewed-by: Jan Wilken Dörrie <jdoerrie@chromium.org>
+Cr-Commit-Position: refs/heads/master@{#647382}
+---
+ base/values.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/base/values.h b/base/values.h
+index c455936d4961..14b76acec02f 100644
+--- a/base/values.h
++++ b/base/values.h
+@@ -86,7 +86,7 @@ class BASE_EXPORT Value {
+   // See technical note below explaining why this is used.
+   using DoubleStorage = struct { alignas(4) char v[sizeof(double)]; };
+ 
+-  enum class Type {
++  enum class Type : unsigned char {
+     NONE = 0,
+     BOOLEAN,
+     INTEGER,
+-- 
+2.21.0
+

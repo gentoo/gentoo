@@ -1,0 +1,75 @@
+From c2c467f69fc00d353879d7add5f2c04a6acabbb1 Mon Sep 17 00:00:00 2001
+From: David 'Digit' Turner <digit@google.com>
+Date: Wed, 20 Mar 2019 21:41:09 +0000
+Subject: [PATCH] base: Value::FindDoubleKey() converts integers to doubles
+
+Ensure that FindDoubleKey() can return the value of an
+INTEGER key as a double. This is consistent with the behaviour
+of Value::GetDouble() which will auto-convert INTEGER values
+to doubles.
+
+BUG=646113
+R=dcheng@chromium.org,jdoerrie@chromium.org,sdefresne@chromium.org,hidehiko@chromium.org
+
+Change-Id: I2c08cb91b6cfd5db268a182ffffe16682d848008
+Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/1529017
+Reviewed-by: Sylvain Defresne <sdefresne@chromium.org>
+Reviewed-by: Daniel Cheng <dcheng@chromium.org>
+Commit-Queue: David Turner <digit@chromium.org>
+Cr-Commit-Position: refs/heads/master@{#642680}
+---
+ base/values.cc          | 10 ++++++++--
+ base/values.h           |  2 ++
+ base/values_unittest.cc |  2 +-
+ 3 files changed, 11 insertions(+), 3 deletions(-)
+
+diff --git a/base/values.cc b/base/values.cc
+index 035aa2350cde..69d66ff8ab00 100644
+--- a/base/values.cc
++++ b/base/values.cc
+@@ -339,8 +339,14 @@ base::Optional<int> Value::FindIntKey(StringPiece key) const {
+ }
+ 
+ base::Optional<double> Value::FindDoubleKey(StringPiece key) const {
+-  const Value* result = FindKeyOfType(key, Type::DOUBLE);
+-  return result ? base::make_optional(result->double_value_) : base::nullopt;
++  const Value* result = FindKey(key);
++  if (result) {
++    if (result->is_int())
++      return base::make_optional(static_cast<double>(result->int_value_));
++    if (result->is_double())
++      return base::make_optional(result->double_value_);
++  }
++  return base::nullopt;
+ }
+ 
+ const std::string* Value::FindStringKey(StringPiece key) const {
+diff --git a/base/values.h b/base/values.h
+index e31cadd83102..6f2cd3cc3d79 100644
+--- a/base/values.h
++++ b/base/values.h
+@@ -200,6 +200,8 @@ class BASE_EXPORT Value {
+   // function's name.
+   base::Optional<bool> FindBoolKey(StringPiece key) const;
+   base::Optional<int> FindIntKey(StringPiece key) const;
++  // Note FindDoubleKey() will auto-convert INTEGER keys to their double
++  // value, for consistency with GetDouble().
+   base::Optional<double> FindDoubleKey(StringPiece key) const;
+ 
+   // |FindStringKey| returns |nullptr| if value is not found or not a string.
+diff --git a/base/values_unittest.cc b/base/values_unittest.cc
+index b23fd8332491..7c545c09d947 100644
+--- a/base/values_unittest.cc
++++ b/base/values_unittest.cc
+@@ -674,7 +674,7 @@ TEST(ValuesTest, FindDoubleKey) {
+   const Value dict(std::move(storage));
+   EXPECT_EQ(base::nullopt, dict.FindDoubleKey("null"));
+   EXPECT_EQ(base::nullopt, dict.FindDoubleKey("bool"));
+-  EXPECT_EQ(base::nullopt, dict.FindDoubleKey("int"));
++  EXPECT_NE(base::nullopt, dict.FindDoubleKey("int"));
+   EXPECT_NE(base::nullopt, dict.FindDoubleKey("double"));
+   EXPECT_EQ(base::nullopt, dict.FindDoubleKey("string"));
+   EXPECT_EQ(base::nullopt, dict.FindDoubleKey("blob"));
+-- 
+2.21.0
+
