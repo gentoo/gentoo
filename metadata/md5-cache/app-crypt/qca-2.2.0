@@ -5,10 +5,10 @@ DESCRIPTION=Qt Cryptographic Architecture (QCA)
 EAPI=7
 HOMEPAGE=https://userbase.kde.org/QCA
 IUSE=botan debug doc examples gcrypt gpg libressl logger nss pkcs11 sasl softstore +ssl test
-KEYWORDS=amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris
+KEYWORDS=amd64 ~arm arm64 ~hppa ~ppc ~ppc64 ~sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris
 LICENSE=LGPL-2.1
 RDEPEND=dev-qt/qtcore:5 botan? ( dev-libs/botan:= ) gcrypt? ( dev-libs/libgcrypt:= ) gpg? ( app-crypt/gnupg ) nss? ( dev-libs/nss ) pkcs11? ( !libressl? ( dev-libs/openssl:0 ) libressl? ( dev-libs/libressl ) dev-libs/pkcs11-helper ) sasl? ( dev-libs/cyrus-sasl:2 ) ssl? ( !libressl? ( >=dev-libs/openssl-1.0.1:0= ) libressl? ( dev-libs/libressl:= ) )
 SLOT=2
 SRC_URI=mirror://kde/stable/qca/2.2.0/qca-2.2.0.tar.xz
 _eclasses_=cmake-utils	959a7fda0dce63de9a4e73a22294d6ec	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	a09389deba2c0a7108b581e02c7cecbf	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	qmake-utils	bdf97e69a34b864d6d545f4ec3143ff7	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529	xdg-utils	14d00d009167652b1fa363e55effe213
-_md5_=5fb987a86eb87ed8f2310d451a98c862
+_md5_=1bdbbbc4d17c4642111bd61c72e6d3b6
