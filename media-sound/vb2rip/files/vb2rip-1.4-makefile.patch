@@ -1,0 +1,21 @@
+--- a/Makefile
++++ b/Makefile
+@@ -1,17 +1,4 @@
+-CC=gcc
+-CFLAGS=-O9 -fomit-frame-pointer -Wall
+-LD=gcc
+-LFLAGS=-s
+-
+ OBJECTS=main.o decode.o wav.o lsb.o rip.o fmt.o fmt_raw.o fmt_vb2.o fmt_8.o fmt_msa.o fmt_xa2.o
+ 
+-all: vb2rip
+-
+ vb2rip: $(OBJECTS)
+-	$(LD) $(LFLAGS) $(OBJECTS) -o $@
+-
+-%.o: %.c
+-	$(CC) $(CFLAGS) -c $<
+-
+-clean:
+-	del *.o
++	$(CC) $(LDFLAGS) $(OBJECTS) $(LOADLIBES) $(LDLIBS) -o vb2rip
