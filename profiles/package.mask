@@ -401,14 +401,7 @@ sys-libs/ntdb
 # Unmaintained. Not active any more with latest release Jul 23, 2017.
 # Does not build with recent openssl. Dropping useless python driver as well.
 # Removal in 30 days.  Bug #597340, #674236.
-dev-db/rethinkdb
 dev-python/python-rethinkdb
-
-# Alexys Jacob <ultrabug@gentoo.org> (20 Apr 2019)
-# Unmaintained. Only version in portage has been EOL for a while.
-# No strong user base or herd support. Breaks fuse-3.
-# Removal in 30 days.  Bug #650256, #673672.
-sys-cluster/moosefs
 
 # Miroslav Šulc <fordfrog@gentoo.org> (19 Apr 2019)
 # Depends on >=virtual/{jdk,jre}-11 which is masked
