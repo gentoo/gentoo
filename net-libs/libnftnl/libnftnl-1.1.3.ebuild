@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit autotools linux-info toolchain-funcs
 
@@ -10,16 +10,13 @@ HOMEPAGE="https://netfilter.org/projects/nftables/"
 SRC_URI="https://netfilter.org/projects/${PN}/files/${P}.tar.bz2"
 
 LICENSE="GPL-2"
-SLOT="0/7" # libnftnl.so version
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~x86"
-IUSE="examples json static-libs test threads"
+SLOT="0/11" # libnftnl.so version
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+IUSE="examples static-libs test"
 
-RDEPEND=">=net-libs/libmnl-1.0.3
-	json? ( >=dev-libs/jansson-2.3 )"
-DEPEND="virtual/pkgconfig
-	${RDEPEND}"
-
-REQUIRED_USE="test? ( json )"
+RDEPEND=">=net-libs/libmnl-1.0.3"
+BDEPEND="virtual/pkgconfig"
+DEPEND="${RDEPEND}"
 
 pkg_setup() {
 	if kernel_is ge 3 13; then
@@ -29,29 +26,18 @@ pkg_setup() {
 		eerror "This package requires kernel version 3.13 or newer to work properly."
 	fi
 }
-src_prepare() {
-	default
-	eautoreconf
-}
 
 src_configure() {
 	local myeconfargs=(
 		$(use_enable static-libs static)
-		$(use_with json json-parsing)
 	)
 	econf "${myeconfargs[@]}"
-}
-
-src_test() {
-	default
-	cd tests || die
-	./test-script.sh || die
 }
 
 src_install() {
 	default
 	gen_usr_ldscript -a nftnl
-	find "${D}" -name '*.la' -delete || die "Could not rm libtool files"
+	find "${ED}" -type f -name '*.la' -delete || die
 
 	if use examples; then
 		find examples/ -name 'Makefile*' -delete || die "Could not rm examples"
