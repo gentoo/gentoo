@@ -1,25 +1,22 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 
 inherit flag-o-matic toolchain-funcs autotools
-
-PATCH_VER=20170529
 
 if [[ ${PV} == 9999 ]]; then
 	EDARCS_REPOSITORY="http://www.mico.org/mico-darcs-repository"
 	inherit darcs
-	SRC_URI=
+	SRC_URI="https://github.com/haubi/mico/compare/gentoo.patch -> ${P}-gentoo.patch"
+	PATCHES="${DISTDIR}/${P}-gentoo.patch"
 else
-	SRC_URI="http://www.mico.org/${P}.tar.gz"
-fi
-
-if [[ -n ${PATCH_VER} ]]; then
-	SRC_URI+=" https://dev.gentoo.org/~haubi/distfiles/${P}-gentoo-patches-${PATCH_VER}.tar.xz"
-	PATCHES=${WORKDIR}/patches
-else
-	PATCHES=
+	PATCH_VER=20170529
+	SRC_URI="
+		http://www.mico.org/${P}.tar.gz
+		https://dev.gentoo.org/~haubi/distfiles/${P}-gentoo-patches-${PATCH_VER}.tar.xz
+	"
+	PATCHES="${WORKDIR}/patches"
 fi
 
 DESCRIPTION="A freely available and fully compliant implementation of the CORBA standard"
@@ -40,7 +37,8 @@ RDEPEND="
 	tcl?       ( dev-lang/tcl:0 )
 	X?         ( x11-libs/libXt )
 "
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+DEPEND="
 	>=sys-devel/flex-2.5.2
 	>=sys-devel/bison-1.22
 "
@@ -115,22 +113,22 @@ src_configure() {
 }
 
 src_install() {
-	emake INSTDIR="${ED}"usr SHARED_INSTDIR="${ED}"usr install LDCONFIG=:
+	emake INSTDIR="${ED}"/usr SHARED_INSTDIR="${ED}"/usr install LDCONFIG=:
 	if [[ $(get_libdir) != lib ]]; then #500744
-		mv "${ED}"usr/lib "${ED}"usr/$(get_libdir) || die
+		mv "${ED}"/usr/lib "${ED}"/usr/$(get_libdir) || die
 	fi
 
 	# avoid conflict with net-dns/nsd, bug#544488
-	mv "${ED}"usr/bin/{,mico-}nsd || die
-	mv "${ED}"usr/man/man8/{,mico-}nsd.8 || die
+	mv "${ED}"/usr/bin/{,mico-}nsd || die
+	mv "${ED}"/usr/man/man8/{,mico-}nsd.8 || die
 
 	# avoid conflict with net-misc/eventd, bug#632170
-	mv "${ED}"usr/bin/{,mico-}eventd || die
+	mv "${ED}"/usr/bin/{,mico-}eventd || die
 
 	dodir /usr/share
-	mv "${ED}"usr/man "${ED}"usr/share || die
+	mv "${ED}"/usr/man "${ED}"/usr/share || die
 	dodir /usr/share/doc/${PF}
-	mv "${ED}"usr/doc "${ED}"usr/share/doc/${PF} || die
+	mv "${ED}"/usr/doc "${ED}"/usr/share/doc/${PF} || die
 
 	dodoc BUGS CHANGES* CONVERT README* ROADMAP TODO VERSION WTODO
 }
