@@ -393,10 +393,6 @@ mail-filter/zdkimfilter
 =net-libs/nodejs-11.15.0
 =net-libs/nodejs-12*
 
-# Lars Wendler <polynomial-c@gentoo.org> (21 Apr 2019)
-# Masked for removal (bug #683926)
-sys-libs/ntdb
-
 # Miroslav Šulc <fordfrog@gentoo.org> (19 Apr 2019)
 # Depends on >=virtual/{jdk,jre}-11 which is masked
 =www-servers/tomcat-9.0.19
