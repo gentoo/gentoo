@@ -38,7 +38,7 @@ RDEPEND="
 	X?         ( x11-libs/libXt )
 "
 DEPEND="${RDEPEND}"
-DEPEND="
+BDEPEND="
 	>=sys-devel/flex-2.5.2
 	>=sys-devel/bison-1.22
 "
