@@ -28,7 +28,7 @@ COMMON_DEPEND="
 		sys-apps/systemd
 	)
 "
-DEPEND="
+BDEPEND="
 	${COMMON_DEPEND}
 	dev-util/cmake
 	>sys-devel/gcc-4.8
@@ -42,6 +42,7 @@ RDEPEND="
 "
 PATCHES=(
 	"${WORKDIR}"/debian/patches/debian-changes
+	"${FILESDIR}"/${PN}-3.2-flags.patch
 )
 S=${WORKDIR}/${P/_*}
 
@@ -60,7 +61,9 @@ pkg_setup() {
 }
 
 src_configure(){
-	mycmakeargs=( "-DCMAKE_INSTALL_PREFIX=/usr" )
+	mycmakeargs=(
+		"-DCMAKE_INSTALL_PREFIX=/usr"
+	)
 	if use fuse; then
 		mycmakeargs+=( "-DHAVE_FUSE_25=yes" )
 	else
@@ -76,7 +79,7 @@ src_configure(){
 }
 
 src_install() {
-	pushd ${BUILD_DIR} || die
+	pushd "${BUILD_DIR}" || die
 	dosbin ${PN}
 	if use fuse; then
 		dobin acngfs
