@@ -2,7 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
-    <email>aidecoe@gentoo.org</email>
+    <email>hanno@gentoo.org</email>
   </maintainer>
   <longdescription>
     A fully featured and easy to use GTK+ Jabber client written in PyGTK.
