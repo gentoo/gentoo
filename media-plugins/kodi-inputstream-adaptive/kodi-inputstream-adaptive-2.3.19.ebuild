@@ -29,8 +29,8 @@ IUSE=""
 
 DEPEND="
 	dev-libs/expat
-	~media-tv/kodi-9999
-	~media-libs/kodi-platform-9999
+	=media-tv/kodi-18*
+	=media-libs/kodi-platform-18*
 	=dev-libs/libplatform-2*
 	"
 RDEPEND="
