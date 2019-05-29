@@ -5,7 +5,7 @@ EAPI=6
 
 MATE_LA_PUNT="yes"
 
-inherit mate
+inherit mate readme.gentoo-r1
 
 if [[ ${PV} != 9999 ]]; then
 	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
@@ -36,6 +36,26 @@ DEPEND="${RDEPEND}
 	sys-devel/gettext
 	virtual/pkgconfig"
 
+DISABLE_AUTOFORMATTING="yes"
+DOC_CONTENTS="
+${PN} is a frontend for several archiving utilities. If you want
+support for a particular archive format,install the relevant package:
+
+7-zip   : emerge app-arch/p7zip
+ace     : emerge app-arch/unace
+arj     : emerge app-arch/arj
+cpio    : emerge app-arch/cpio
+deb     : emerge app-arch/dpkg
+iso     : emerge app-cdr/cdrtools
+jar,zip : emerge app-arch/zip  or  emerge app-arch/unzip
+lha     : emerge app-arch/lha
+lzma    : emerge app-arch/xz-utils
+lzop    : emerge app-arch/lzop
+rar     : emerge app-arch/unrar
+rpm     : emerge app-arch/rpm
+unstuff : emerge app-arch/stuffit
+zoo     : emerge app-arch/zoo"
+
 src_configure() {
 	mate_src_configure \
 		--disable-run-in-place \
@@ -44,26 +64,12 @@ src_configure() {
 		$(use_enable packagekit)
 }
 
+src_install() {
+	mate_src_install
+	readme.gentoo_create_doc
+}
+
 pkg_postinst() {
 	mate_pkg_postinst
-
-	elog ""
-	elog "${PN} is a frontend for several archiving utilities. If you want a"
-	elog "particular achive format supported install the relevant package."
-	elog
-	elog "For example:"
-	elog "  7-zip   : emerge app-arch/p7zip"
-	elog "  ace     : emerge app-arch/unace"
-	elog "  arj     : emerge app-arch/arj"
-	elog "  cpio    : emerge app-arch/cpio"
-	elog "  deb     : emerge app-arch/dpkg"
-	elog "  iso     : emerge app-cdr/cdrtools"
-	elog "  jar,zip : emerge app-arch/zip  or  emerge app-arch/unzip"
-	elog "  lha     : emerge app-arch/lha"
-	elog "  lzma    : emerge app-arch/xz-utils"
-	elog "  lzop    : emerge app-arch/lzop"
-	elog "  rar     : emerge app-arch/unrar"
-	elog "  rpm     : emerge app-arch/rpm"
-	elog "  unstuff : emerge app-arch/stuffit"
-	elog "  zoo     : emerge app-arch/zoo"
+	readme.gentoo_print_elog
 }
