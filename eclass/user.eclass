@@ -71,13 +71,15 @@ egetent() {
 }
 
 # @FUNCTION: enewuser
-# @USAGE: <user> [-M] [uid] [shell] [homedir] [groups]
+# @USAGE: <user> [-F] [-M] [uid] [shell] [homedir] [groups]
 # @DESCRIPTION:
 # Same as enewgroup, you are not required to understand how to properly add
 # a user to the system.  The only required parameter is the username.
 # Default uid is (pass -1 for this) next available, default shell is
 # /bin/false, default homedir is /dev/null, and there are no default groups.
 #
+# If -F is passed, enewuser will always enforce specified UID and fail if it
+# can not be assigned.
 # If -M is passed, enewuser does not create the home directory if it does not
 # exist.
 enewuser() {
@@ -87,9 +89,10 @@ enewuser() {
 	fi
 	_assert_pkg_ebuild_phase ${FUNCNAME}
 
-	local create_home=1
+	local create_home=1 force_uid=
 	while [[ $1 == -* ]]; do
 		case $1 in
+			-F) force_uid=1;;
 			-M) create_home=;;
 			*) die "${FUNCNAME}: invalid option ${1}";;
 		esac
@@ -117,6 +120,7 @@ enewuser() {
 	if [[ -n ${euid} && ${euid} != -1 ]] ; then
 		if [[ ${euid} -gt 0 ]] ; then
 			if [[ -n $(egetent passwd ${euid}) ]] ; then
+				[[ -n ${force_uid} ]] && die "${FUNCNAME}: UID ${euid} already taken"
 				euid="next"
 			fi
 		else
@@ -124,6 +128,7 @@ enewuser() {
 			die "${euid} is not a valid UID"
 		fi
 	else
+		[[ -n ${force_uid} ]] && die "${FUNCNAME}: -F with uid==-1 makes no sense"
 		euid="next"
 	fi
 	if [[ ${euid} == "next" ]] ; then
@@ -240,12 +245,24 @@ enewuser() {
 # group to the system.  Just give it a group name to add and enewgroup will
 # do the rest.  You may specify the gid for the group or allow the group to
 # allocate the next available one.
+#
+# If -F is passed, enewgroup will always enforce specified GID and fail if it
+# can not be assigned.
 enewgroup() {
 	if [[ ${EUID} != 0 ]] ; then
 		einfo "Insufficient privileges to execute ${FUNCNAME[0]}"
 		return 0
 	fi
 	_assert_pkg_ebuild_phase ${FUNCNAME}
+
+	local force_gid=
+	while [[ $1 == -* ]]; do
+		case $1 in
+			-F) force_gid=1;;
+			*) die "${FUNCNAME}: invalid option ${1}";;
+		esac
+		shift
+	done
 
 	# get the group
 	local egroup=$1; shift
@@ -265,6 +282,7 @@ enewgroup() {
 	if [[ ! -z ${egid} ]] ; then
 		if [[ ${egid} -gt 0 ]] ; then
 			if [[ -n $(egetent group ${egid}) ]] ; then
+				[[ -n ${force_gid} ]] && die "${FUNCNAME}: GID ${egid} already taken"
 				egid="next available; requested gid taken"
 			fi
 		else
@@ -272,6 +290,7 @@ enewgroup() {
 			die "${egid} is not a valid GID"
 		fi
 	else
+		[[ -n ${force_gid} ]] && die "${FUNCNAME}: -F with gid==-1 makes no sense"
 		egid="next available"
 	fi
 	einfo " - Groupid: ${egid}"
