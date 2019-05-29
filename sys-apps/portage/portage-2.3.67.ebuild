@@ -148,7 +148,7 @@ python_prepare_all() {
 				sed -i -e "1s:.*:#!${EPREFIX}${shebang:2}:" "$REPLY" || \
 					die "sed failed"
 			fi
-		done < <(find . -type f -print0)
+		done < <(find . -type f ! -name etc-update -print0)
 
 		einfo "Adjusting make.globals, repos.conf and etc-update ..."
 		hprefixify cnf/{make.globals,repos.conf} bin/etc-update
