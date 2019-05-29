@@ -5898,7 +5898,7 @@ dev-ruby/erubi 1.7.0: a ERB template engine for ruby; a simplified fork of Erubi
 dev-ruby/erubis 2.7.0-r2: Erubis is an implementation of eRuby
 dev-ruby/eventmachine 1.2.7: EventMachine is a fast, simple event-processing library for Ruby programs
 dev-ruby/execjs 2.7.0: ExecJS lets you run JavaScript code from Ruby
-dev-ruby/facter 3.9.2 3.12.3 3.12.4 3.13.0 3.13.2: A cross-platform ruby library for retrieving facts from operating systems
+dev-ruby/facter 3.9.2-r1 3.12.3 3.12.4 3.13.0 3.13.2-r1: A cross-platform ruby library for retrieving facts from operating systems
 dev-ruby/fakefs 0.19.2: A fake filesystem. Use it in your tests
 dev-ruby/fakeweb 1.3.0.20170806: Helper for faking web requests in Ruby
 dev-ruby/fast_gettext 1.6.0: GetText but 3.5x faster, 560x less memory, clean namespace and threadsave!
@@ -8410,7 +8410,7 @@ net-analyzer/bwm-ng 0.6.1-r1: Bandwidth Monitor NG is a small and simple console
 net-analyzer/bwmon 1.3-r2: Simple ncurses bandwidth monitor
 net-analyzer/bwping 1.7-r1: A tool to measure bandwidth and RTT between two hosts using ICMP
 net-analyzer/cacti 1.1.38-r1: Cacti is a complete frontend to rrdtool
-net-analyzer/cacti-spine 1.1.38-r1: Spine is a fast poller for Cacti (formerly known as Cactid)
+net-analyzer/cacti-spine 1.1.38-r2: Spine is a fast poller for Cacti (formerly known as Cactid)
 net-analyzer/calamaris 2.59: Calamaris parses the logfiles of a wide variety of Web proxy servers and generates reports
 net-analyzer/carl 0.9-r2: An rsync logfile analyzer
 net-analyzer/chaosreader 0.94-r1: Trace TCP/UDP/... sessions and fetch application data.
@@ -8861,10 +8861,10 @@ net-mail/ezmlm-idx 6.0.0: Simple yet powerful mailing list manager for qmail
 net-mail/fdm 1.9: fetch, filter and deliver mail
 net-mail/fetchmail 6.3.26-r4: the legendary remote-mail retrieval and forwarding utility
 net-mail/getmail 5.6: A mail retriever with reliable Maildir and mbox delivery
-net-mail/gnubiff 2.2.15-r3 2.2.17-r1: A mail notification program
+net-mail/gnubiff 2.2.15-r3 2.2.17-r2: A mail notification program
 net-mail/grepmail 5.30.33-r2: Search normal or compressed mailbox using a regular expression or dates
 net-mail/imapsync 1.592-r1: A tool allowing incremental and recursive imap transfer from one mailbox to another
-net-mail/isync 1.3.0: MailDir mailbox synchronizer
+net-mail/isync 1.3.0-r1: MailDir mailbox synchronizer
 net-mail/kuvert 2.0.4: An MTA wrapper that automatically signs and/or encrypts outgoing mail
 net-mail/lbdb 0.41: Little Brother database
 net-mail/libpst 0.6.66-r1: Tools and library for reading Outlook files (.pst format)
@@ -9247,7 +9247,7 @@ net-wireless/python-wifi 0.5.0-r3: Provides r/w access to a wireless network car
 net-wireless/rfkill 0.5-r2: Tool to read and control rfkill status through /dev/rfkill
 net-wireless/spectools 2011.08.1-r2 2016.01.1: Spectrum Analyzer for Meta-Geek Wi-Spy and GSG Ubertooth hardware
 net-wireless/wavemon 0.7.6: Ncurses based monitor for IEEE 802.11 wireless LAN cards
-net-wireless/wepattack 0.1.3-r4: WLAN tool for breaking 802.11 WEP keys
+net-wireless/wepattack 0.1.3-r5: WLAN tool for breaking 802.11 WEP keys
 net-wireless/wifi-radar 2.0.8-r2: WiFi Radar is a Python/PyGTK2 utility for managing WiFi profiles
 net-wireless/wireless-regdb 20181024 20190301: Binary regulatory database for CRDA
 net-wireless/wireless-tools 30_pre9: A collection of tools to configure IEEE 802.11 wireless LAN cards
