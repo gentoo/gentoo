@@ -209,7 +209,7 @@ enewuser() {
 		;;
 
 	*)
-		useradd -N -r "${opts[@]}" "${euser}" || die
+		useradd -M -N -r "${opts[@]}" "${euser}" || die
 		;;
 	esac
 
