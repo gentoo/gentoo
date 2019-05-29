@@ -1,11 +1,11 @@
-DEFINED_PHASES=configure install
-DEPEND=doc? ( app-doc/doxygen )
+BDEPEND=doc? ( app-doc/doxygen )
+DEFINED_PHASES=configure
 DESCRIPTION=Internet2 version for OpenSAML of log4cpp logging framework
-EAPI=4
+EAPI=7
 HOMEPAGE=https://wiki.shibboleth.net/confluence/display/OpenSAML/log4shib
 IUSE=debug doc static-libs
 KEYWORDS=~amd64 ~x86
 LICENSE=LGPL-2.1
 SLOT=0
 SRC_URI=https://shibboleth.net/downloads/log4shib/1.0.4/log4shib-1.0.4.tar.gz
-_md5_=209f5f6fec1693167d37c6fa0275ea54
+_md5_=d4ff873afac69242ba8bd1929dc00ccc
