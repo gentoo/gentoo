@@ -1,10 +1,10 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 DESCRIPTION="NXP i.MX firmware"
-HOMEPAGE="http://www.timesys.com/"
+HOMEPAGE="https://www.timesys.com/"
 SRC_URI="http://repository.timesys.com/buildsources/${PN:0:1}/${PN}/${P}/${P}.bin"
 LICENSE="LA_OPT_BASE_LICENSE"
 SLOT="0"
