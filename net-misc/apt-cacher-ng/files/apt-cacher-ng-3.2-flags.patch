@@ -1,0 +1,97 @@
+- Rip out additional CFLAGS/LDFLAGS
+- Drop osslcompat (bug #686608)
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -106,16 +106,6 @@
+         _append(ACNG_CXXFLAGS -fvisibility-inlines-hidden)
+ endif()
+ 
+-foreach(linkarg -Wl,--as-needed -Wl,-O1 -Wl,--discard-all -Wl,--no-undefined -Wl,--build-id=sha1 -Wl,-fuse-ld=gold -Wl,--threads)
+-	STRING(REGEX REPLACE "=|-|," "" optname "${linkarg}")
+-	set(CMAKE_REQUIRED_FLAGS "${linkarg}")
+-	CHECK_CXX_COMPILER_FLAG("" "LD_${optname}")
+-	if(LD_${optname})
+-          _append(CMAKE_EXE_LINKER_FLAGS ${linkarg})
+-	endif()
+-	set(CMAKE_REQUIRED_FLAGS "")
+-endforeach(linkarg)
+-
+ option(USE_SSL "Use OpenSSL library for TLS and other crypto functionality" on)
+ 
+ IF(CMAKE_SYSTEM MATCHES "Darwin")
+@@ -134,14 +124,6 @@
+ if(CMAKE_BUILD_TYPE MATCHES Debug)
+    set(USE_LTO_DEFAULT off)
+    _append(ACNG_COMPFLAGS -DDEBUG)
+-else()
+-   set(CMAKE_REQUIRED_FLAGS "-Wl,--gc-sections")
+-   CHECK_CXX_COMPILER_FLAG("-Os -fdata-sections -ffunction-sections -Wl,--gc-sections" GC_SECTIONS)
+-   if(GC_SECTIONS)
+-           _append(ACNG_COMPFLAGS -fdata-sections -ffunction-sections)
+-           _append(CMAKE_EXE_LINKER_FLAGS -Wl,--gc-sections)
+-   endif()
+-   set(CMAKE_REQUIRED_FLAGS "")
+ endif()
+ 
+ # XXX: could use the modern macros instead but they were not available in CMake 2.x
+@@ -167,23 +149,6 @@
+    endif()
+ endif()
+ 
+-option(USE_LTO "Enable Link Time Optimization (requires modern compilers)" ${USE_LTO_DEFAULT})
+-
+-if(USE_LTO)
+-        SET(LDFLAGS_BACKUP "${CMAKE_EXE_LINKER_FLAGS}")
+-        SET(CMAKE_REQUIRED_FLAGS "${ACNG_COMPFLAGS} -flto")
+-        _append(CMAKE_EXE_LINKER_FLAGS -flto)
+-        CHECK_CXX_SOURCE_COMPILES("${CXX11_TESTSRC}" HAS_LTO)
+-        if(HAS_LTO)
+-                SET(ACNG_COMPFLAGS ${CMAKE_REQUIRED_FLAGS})
+-        else()
+-                SET(CMAKE_REQUIRED_FLAGS "${ACNG_COMPFLAGS}")
+-                SET(CMAKE_EXE_LINKER_FLAGS "${LDFLAGS_BACKUP}")
+-                message(WARNING "Link Time Optimization support broken, disabling it.")
+-        endif()
+-endif()
+-message("-- LTO use: ${USE_LTO}")
+-
+ FIND_LIBRARY(HAVE_SOCKETLIB socket) # separate socket lib looks like Solaris-like environment
+ if(HAVE_SOCKETLIB)
+    LIST(APPEND BaseNetworkLibs socket nsl)
+@@ -378,7 +343,6 @@
+ 
+ CONFIGURE_FILE("${CMAKE_SOURCE_DIR}/include/acsyscap.h.in" "${CMAKE_BINARY_DIR}/acsyscap.h")
+ 
+-add_subdirectory(oldssl-workaround)
+ add_subdirectory(client)
+ add_subdirectory(fs)
+ add_subdirectory(source)
+--- a/fs/CMakeLists.txt
++++ b/fs/CMakeLists.txt
+@@ -20,7 +20,7 @@
+                 list(APPEND fsSRCS ../source/aclogger.cc)
+         endif()
+ 
+-        ADD_EXECUTABLE(acngfs ${fsSRCS} $<TARGET_OBJECTS:osslcompat>)
++        ADD_EXECUTABLE(acngfs ${fsSRCS})
+         SET_TARGET_PROPERTIES(acngfs PROPERTIES COMPILE_FLAGS "${ACNG_COMPFLAGS} ${ACNG_CXXFLAGS} ${acngfs_cflags}")
+         INSTALL(TARGETS acngfs DESTINATION ${LIBDIR})
+         if(HAVE_DLOPEN)
+--- a/source/CMakeLists.txt
++++ b/source/CMakeLists.txt
+@@ -4,12 +4,12 @@
+ ADD_LIBRARY(acngstuff OBJECT ${SHAREDSRCS})
+ SET_TARGET_PROPERTIES(acngstuff PROPERTIES COMPILE_FLAGS "${ACNG_COMPFLAGS} ${ACNG_CXXFLAGS} ${CFLAGS_DAEMON} ${CFLAGS_PTHREAD}")
+ 
+-ADD_EXECUTABLE(apt-cacher-ng $<TARGET_OBJECTS:acngstuff> ${ACNG_SRCS} apt-cacher.cc $<TARGET_OBJECTS:osslcompat>)
++ADD_EXECUTABLE(apt-cacher-ng $<TARGET_OBJECTS:acngstuff> ${ACNG_SRCS} apt-cacher.cc)
+ TARGET_LINK_LIBRARIES(apt-cacher-ng ${BaseNetworkLibs} ${ServerLibs} ${CompLibs} ${SSL_LIB_LIST} ${LDFLAGS_DAEMON} ${CMAKE_THREAD_LIBS_INIT} ${EXTRA_LIBS_ACNG})
+ SET_TARGET_PROPERTIES(apt-cacher-ng PROPERTIES COMPILE_FLAGS "${ACNG_COMPFLAGS} ${ACNG_CXXFLAGS} ${CFLAGS_DAEMON} ${CFLAGS_PTHREAD}")
+ INSTALL(TARGETS apt-cacher-ng DESTINATION ${SBINDIR})
+ 
+-ADD_EXECUTABLE(acngtool acngtool.cc $<TARGET_OBJECTS:acngstuff> $<TARGET_OBJECTS:osslcompat>)
++ADD_EXECUTABLE(acngtool acngtool.cc $<TARGET_OBJECTS:acngstuff>)
+ SET_TARGET_PROPERTIES(acngtool PROPERTIES COMPILE_FLAGS "${ACNG_COMPFLAGS} ${ACNG_CXXFLAGS} ${CFLAGS_PTHREAD}")
+ TARGET_LINK_LIBRARIES(acngtool ${BaseNetworkLibs} ${CompLibs} ${SSL_LIB_LIST} ${CMAKE_THREAD_LIBS_INIT} ${EXTRA_LIBS_ACNGTOOL})
+ INSTALL(TARGETS acngtool DESTINATION ${LIBDIR})
