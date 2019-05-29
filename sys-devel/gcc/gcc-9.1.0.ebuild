@@ -17,3 +17,8 @@ DEPEND="${RDEPEND}
 if [[ ${CATEGORY} != cross-* ]] ; then
 	PDEPEND="${PDEPEND} elibc_glibc? ( >=sys-libs/glibc-2.13 )"
 fi
+
+src_prepare() {
+	toolchain_src_prepare
+	eapply "${FILESDIR}"/gcc-9.1.0-norisc32.patch
+}
