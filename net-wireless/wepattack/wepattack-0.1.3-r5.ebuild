@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -15,7 +15,7 @@ KEYWORDS="amd64 x86"
 IUSE="john"
 
 DEPEND="
-	dev-libs/openssl:*
+	dev-libs/openssl:0=
 	net-libs/libpcap
 	sys-libs/zlib
 "

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -21,7 +21,7 @@ fi
 
 DEPEND="net-libs/libpcap
 	net-libs/libnetfilter_queue
-	ssl? ( dev-libs/openssl:* )"
+	ssl? ( dev-libs/openssl:0= )"
 RDEPEND="${DEPEND}"
 
 PATCHES=( "${FILESDIR}/${PN}-3.2-stdint.patch" )

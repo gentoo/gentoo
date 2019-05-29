@@ -33,7 +33,7 @@ RESTRICT="test" #298101
 RDEPEND="
 	gtk?       ( x11-libs/gtk+:2 )
 	postgres?  ( dev-db/postgresql:* )
-	ssl?       ( dev-libs/openssl:* )
+	ssl?       ( dev-libs/openssl:0= )
 	tcl?       ( dev-lang/tcl:0 )
 	X?         ( x11-libs/libXt )
 "

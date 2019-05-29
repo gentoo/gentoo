@@ -18,8 +18,8 @@ REQUIRED_USE="
 
 DEPEND="
 	net-libs/libpcap
-	sys-libs/ncurses:*[unicode?]
-	openssl? ( dev-libs/openssl:* )
+	sys-libs/ncurses:0=[unicode?]
+	openssl? ( dev-libs/openssl:0= )
 	gnutls? ( net-libs/gnutls )
 "
 RDEPEND="${DEPEND}"
