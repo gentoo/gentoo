@@ -7447,7 +7447,7 @@ media-gfx/jhead 2.97 3.00-r2: Exif Jpeg camera setting parser and thumbnail remo
 media-gfx/jigl 2.0.1-r1: Jason's Image Gallery
 media-gfx/jp2a 1.0.6-r1: JPEG image to ASCII art converter
 media-gfx/jpeg2ps 1.9-r1: Converts JPEG images to Postscript using a wrapper
-media-gfx/jpeginfo 1.6.1 1.6.1-r1: Prints information and tests integrity of JPEG/JFIF files
+media-gfx/jpeginfo 1.6.1-r1: Prints information and tests integrity of JPEG/JFIF files
 media-gfx/jpegoptim 1.4.6: Utility to optimize JPEG files
 media-gfx/jpegpixi 1.1.1: almost lossless JPEG pixel interpolator, for correcting digital camera defects
 media-gfx/kgraphviewer 2.4.3-r1: Graphviz dot graph file viewer
