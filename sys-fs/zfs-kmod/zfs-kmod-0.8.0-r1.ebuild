@@ -38,6 +38,11 @@ RESTRICT="debug? ( strip ) test"
 
 DOCS=( AUTHORS COPYRIGHT META README.md )
 
+PATCHES=( 
+	"${FILESDIR}"/0.8.0_revert_Report_holes.patch
+	"${FILESDIR}"/0.8.0_Fix_integer_overflow_in_get_next_chunk.patch
+)
+
 pkg_setup() {
 	linux-info_pkg_setup
 
