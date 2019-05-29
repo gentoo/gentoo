@@ -71,18 +71,30 @@ egetent() {
 }
 
 # @FUNCTION: enewuser
-# @USAGE: <user> [uid] [shell] [homedir] [groups]
+# @USAGE: <user> [-M] [uid] [shell] [homedir] [groups]
 # @DESCRIPTION:
 # Same as enewgroup, you are not required to understand how to properly add
 # a user to the system.  The only required parameter is the username.
 # Default uid is (pass -1 for this) next available, default shell is
 # /bin/false, default homedir is /dev/null, and there are no default groups.
+#
+# If -M is passed, enewuser does not create the home directory if it does not
+# exist.
 enewuser() {
 	if [[ ${EUID} != 0 ]] ; then
 		einfo "Insufficient privileges to execute ${FUNCNAME[0]}"
 		return 0
 	fi
 	_assert_pkg_ebuild_phase ${FUNCNAME}
+
+	local create_home=1
+	while [[ $1 == -* ]]; do
+		case $1 in
+			-M) create_home=;;
+			*) die "${FUNCNAME}: invalid option ${1}";;
+		esac
+		shift
+	done
 
 	# get the username
 	local euser=$1; shift
@@ -213,7 +225,7 @@ enewuser() {
 		;;
 	esac
 
-	if [[ ! -e ${ROOT}/${ehome} ]] ; then
+	if [[ -n ${create_home} && ! -e ${ROOT}/${ehome} ]] ; then
 		einfo " - Creating ${ehome} in ${ROOT}"
 		mkdir -p "${ROOT}/${ehome}"
 		chown "${euser}" "${ROOT}/${ehome}"
