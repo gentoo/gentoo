@@ -16,7 +16,7 @@ SRC_URI="${SUPER_PN}-${MY_PV}-ubuntu-16.04.tar.xz"
 
 LICENSE="AMD-GPU-PRO-EULA"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 
 RESTRICT="mirror fetch strip"
 
