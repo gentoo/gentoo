@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-USE_RUBY="ruby23 ruby24 ruby25"
+USE_RUBY="ruby24 ruby25 ruby26"
 
 RUBY_FAKEGEM_EXTRADOC="History.md README.md"
 
@@ -16,7 +16,7 @@ DESCRIPTION="Capybara aims to simplify the process of integration testing Rack a
 HOMEPAGE="https://github.com/jnicklas/capybara"
 LICENSE="MIT"
 
-KEYWORDS="amd64 ~x86"
+KEYWORDS="~amd64 ~arm ~x86"
 SLOT="3"
 IUSE="test"
 
@@ -50,6 +50,10 @@ all_ruby_prepare() {
 
 	# Avoid test dependency on puma server for now
 	sed -i -e '/should have :puma registered/,/^    end/ s:^:#:' spec/capybara_spec.rb || die
+
+	# Update spec to catch the right error code. This seems to have
+	# changed recently accross ruby versions.
+	sed -i -e '/raise_error/ s/EOFError/Net::ReadTimeout/' spec/server_spec.rb || die
 }
 
 each_ruby_test() {
