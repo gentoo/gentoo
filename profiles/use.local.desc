@@ -1009,6 +1009,7 @@ dev-ada/gnatmem:gnat_2018 - Compile with dev-lang/gnat-gpl-2018
 dev-ada/gprbuild:gnat_2016 - Compile with dev-lang/gnat-gpl-2016
 dev-ada/gprbuild:gnat_2017 - Compile with dev-lang/gnat-gpl-2017
 dev-ada/gprbuild:gnat_2018 - Compile with dev-lang/gnat-gpl-2018
+dev-ada/gprbuild:gnat_2019 - Compile with dev-lang/gnat-gpl-2019
 dev-ada/gps:gnat_2016 - Compile with dev-lang/gnat-gpl-2016
 dev-ada/gps:gnat_2017 - Compile with dev-lang/gnat-gpl-2017
 dev-ada/gps:gnat_2018 - Compile with dev-lang/gnat-gpl-2018
