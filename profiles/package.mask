@@ -41,6 +41,7 @@
 =app-text/texlive-core-2019
 =dev-libs/ptexenc-1.3.7_p20190410
 =app-text/dvipsk-5.999_p20190410
+=app-text/ttf2pk2-2.0_p20190410
 =app-text/ps2pkm-1.8_p20190410
 =dev-tex/bibtexu-3.71_p20190410
 
@@ -371,6 +372,8 @@ sys-boot/systemrescuecd-x86-grub
 >=dev-util/boost-build-1.70.0
 >=net-mail/libpst-0.6.66-r2
 >=net-proxy/trojan-1.12.2
+>=dev-python/graph-tool-2.27
+=dev-python/graph-tool-9999
 
 # Robin H. Johnson <robbat2@gentoo.org> (25 Mar 2019)
 # Requires >=dev-lang/lua-5.3 which is masked

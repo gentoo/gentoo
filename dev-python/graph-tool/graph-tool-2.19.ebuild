@@ -25,7 +25,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
 	${PYTHON_DEPS}
-	dev-libs/boost:=[python,${PYTHON_USEDEP}]
+	<dev-libs/boost-1.70:=[python,${PYTHON_USEDEP}]
 	dev-libs/expat
 	dev-python/numpy[${PYTHON_USEDEP}]
 	sci-libs/scipy[${PYTHON_USEDEP}]

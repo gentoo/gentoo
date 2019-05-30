@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python3_{5,6} )
+PYTHON_COMPAT=( python3_{5,6,7} )
 inherit distutils-r1 vcs-snapshot
 
 DESCRIPTION="Fast and simple packet creation and parsing library for Python"
@@ -19,7 +19,7 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 DOCS=( AUTHORS CHANGES HACKING README.md )
 
 python_test() {
-	"${PYTHON}" tests/test_pypacker.py || die
+	"${EPYTHON}" tests/test_pypacker.py || die
 }
 
 python_install_all() {
