@@ -16,7 +16,15 @@ else
 	MY_P=${MY_P/_beta/-BETA}
 	MY_P=${MY_P/./-R}
 	S=${WORKDIR}/${MY_P/BETA/beta}
+
+	#normally we want an official release
 	SRC_URI="https://www.kismetwireless.net/code/${MY_P}.tar.xz"
+
+	#but sometimes we want a git commit
+	#COMMIT="6d6d486831c0f7ac712ffb8a3ff122c5063c3b2a"
+	#SRC_URI="https://github.com/kismetwireless/kismet/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
+	#S="${WORKDIR}/${PN}-${COMMIT}"
+
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86"
 fi
 
