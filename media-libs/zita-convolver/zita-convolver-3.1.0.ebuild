@@ -10,7 +10,7 @@ SRC_URI="http://kokkinizita.linuxaudio.org/linuxaudio/downloads/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64"
+KEYWORDS="amd64 ~x86"
 IUSE="cpu_flags_x86_sse"
 
 RDEPEND="sci-libs/fftw:3.0="
