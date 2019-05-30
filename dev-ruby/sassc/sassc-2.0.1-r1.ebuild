@@ -45,6 +45,10 @@ all_ruby_prepare() {
 	sed -i -e '/test_it_reports_the_libsass_version/,/end/ s:^:#:' test/native_test.rb || die
 
 	sed -i -e '/pry/ s:^:#:' test/test_helper.rb || die
+
+	sed -e 's/git ls-files -z/find . -print0/' \
+		-e '/gem_dir/,/^  end/ s:^:#:' \
+		-i ${RUBY_FAKEGEM_GEMSPEC} || die
 }
 
 each_ruby_test() {
