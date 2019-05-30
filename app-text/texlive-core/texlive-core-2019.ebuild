@@ -99,15 +99,14 @@ COMMON_DEPEND="${MODULAR_X_DEPEND}
 	)
 	media-libs/freetype:2
 	>=dev-libs/kpathsea-6.2.3
-	>=dev-libs/ptexenc-1.3.7
+	cjk? ( >=dev-libs/ptexenc-1.3.7 )
 	>=app-text/poppler-0.76.1:="
 
-BDEPEND="sys-devel/flex
+BDEPEND="sys-apps/ed
+	sys-devel/flex
 	virtual/pkgconfig"
 
-DEPEND="${COMMON_DEPEND}
-	sys-apps/ed
-	app-arch/xz-utils"
+DEPEND="${COMMON_DEPEND}"
 
 RDEPEND="${COMMON_DEPEND}
 	>=app-text/ps2pkm-1.8_p20170524
