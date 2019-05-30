@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 inherit eutils user
 
@@ -35,6 +35,7 @@ pkg_setup() {
 src_prepare() {
 	sed -i -e 's:/tmp/zookeeper:/var/lib/kafka/zookeeper:' "config/zookeeper.properties" || die
 	sed -i -e 's:/tmp/kafka-logs:/var/lib/kafka/logs:' "config/server.properties" || die
+	eapply_user
 }
 
 src_install() {
