@@ -987,11 +987,13 @@ dev-ada/gnatcoll:tools - Build associated tools
 dev-ada/gnatcoll-bindings:gnat_2016 - Compile with dev-lang/gnat-gpl-2016
 dev-ada/gnatcoll-bindings:gnat_2017 - Compile with dev-lang/gnat-gpl-2017
 dev-ada/gnatcoll-bindings:gnat_2018 - Compile with dev-lang/gnat-gpl-2018
+dev-ada/gnatcoll-bindings:gnat_2019 - Compile with dev-lang/gnat-gpl-2019
 dev-ada/gnatcoll-bindings:shared - Build shared library
 dev-ada/gnatcoll-bindings:static-pic - Build shared library
 dev-ada/gnatcoll-core:gnat_2016 - Compile with dev-lang/gnat-gpl-2016
 dev-ada/gnatcoll-core:gnat_2017 - Compile with dev-lang/gnat-gpl-2017
 dev-ada/gnatcoll-core:gnat_2018 - Compile with dev-lang/gnat-gpl-2018
+dev-ada/gnatcoll-core:gnat_2019 - Compile with dev-lang/gnat-gpl-2018
 dev-ada/gnatcoll-core:shared - Build shared library
 dev-ada/gnatcoll-core:static-pic - Build static library with pic code
 dev-ada/gnatcoll-db:gnat_2016 - Compile with dev-lang/gnat-gpl-2016
