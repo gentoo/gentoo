@@ -80,14 +80,7 @@ MODULAR_X_DEPEND="X? (
 	)"
 
 COMMON_DEPEND="${MODULAR_X_DEPEND}
-	!app-text/ptex
-	!app-text/tetex
-	!app-text/xetex
-	!app-text/dvibook
 	!dev-tex/luatex
-	!app-text/dvipdfm
-	!app-text/dvipdfmx
-	!app-text/xdvipdfmx
 	sys-libs/zlib
 	>=media-libs/libpng-1.2.43-r2:0=
 	>=app-text/poppler-0.58.0:=
