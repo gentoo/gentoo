@@ -6,10 +6,10 @@
     <name>Embedded Gentoo</name>
   </maintainer>
   <longdescription>
-I was looking for a small and secure SSH server to fit on a laptop with 4 megs ram and no hard 
-disk, and couldn't find one which was satisfactory. I decided to write my own, and Dropbear is 
-the result. It implements most required features of the SSH 2 protocol, and other features such 
-as X11, TCP and Authentication Agent forwarding. Dropbear is Open Source software, distributed 
+I was looking for a small and secure SSH server to fit on a laptop with 4 megs ram and no hard
+disk, and couldn't find one which was satisfactory. I decided to write my own, and Dropbear is
+the result. It implements most required features of the SSH 2 protocol, and other features such
+as X11, TCP and Authentication Agent forwarding. Dropbear is Open Source software, distributed
 under a MIT-style license.
 </longdescription>
   <longdescription lang="ja">
@@ -24,6 +24,7 @@ under a MIT-style license.
     <flag name="bsdpty">Add support for legacy BSD pty's rather than dynamic UNIX pty's -- do not use this flag unless you are absolutely sure you actually want it</flag>
     <flag name="multicall">Build all the programs as one little binary (to save space)</flag>
     <flag name="shadow">Enable shadow password support</flag>
+    <flag name="utmp">Enable support for lastlog/{u,w}tmp{,x}</flag>
   </use>
 <upstream>
   <remote-id type="cpe">cpe:/a:matt_johnston:dropbear_ssh_server</remote-id>
