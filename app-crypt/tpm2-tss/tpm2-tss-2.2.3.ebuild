@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools linux-info udev
+inherit linux-info udev user
 
 DESCRIPTION="TCG Trusted Platform Module 2.0 Software Stack"
 HOMEPAGE="https://github.com/tpm2-software/tpm2-tss"
@@ -21,16 +21,10 @@ REQUIRED_USE="
 
 RDEPEND="gcrypt? ( dev-libs/libgcrypt:0= )
 	openssl? ( dev-libs/openssl:0= )"
-DEPEND="${DEPEND}
+DEPEND="${RDEPEND}
 	test? ( dev-util/cmocka )"
 BDEPEND="virtual/pkgconfig
-	~sys-devel/autoconf-archive-2018.03.13
 	doc? ( app-doc/doxygen )"
-
-PATCHES=(
-	"${FILESDIR}/${P}-build.patch"
-	"${FILESDIR}/${P}-tests.patch"
-)
 
 pkg_setup() {
 	local CONFIG_CHECK=" \
@@ -38,19 +32,17 @@ pkg_setup() {
 	"
 	linux-info_pkg_setup
 	kernel_is ge 4 12 0 || ewarn "At least kernel 4.12.0 is required"
-}
 
-src_prepare() {
-	default
-	eautoreconf
+	enewgroup tss
+	enewuser tss -1 -1 /var/lib/tpm tss
 }
 
 src_configure() {
-	# next version add --disable-defaultflags
 	econf \
 		$(use_enable doc doxygen-doc) \
 		$(use_enable static-libs static) \
 		$(use_enable test unit) \
+		--disable-defaultflags \
 		--with-crypto="$(usex gcrypt gcrypt ossl)" \
 		--with-udevrulesdir="$(get_udevdir)/rules.d" \
 		--with-udevrulesprefix=60-
