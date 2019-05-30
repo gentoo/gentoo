@@ -14,7 +14,8 @@ SLOT="0"
 
 KEYWORDS="~amd64"
 
-RDEPEND="dev-libs/glib:2="
+RDEPEND="dev-libs/glib:2=
+	dev-libs/libpcre:="
 DEPEND="${RDEPEND}"
 RESTRICT="test"
 
