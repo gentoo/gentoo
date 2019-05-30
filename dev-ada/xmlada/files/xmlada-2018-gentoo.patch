@@ -1,5 +1,5 @@
---- xmlada-gpl-2017-src/Makefile.in.old	2017-12-04 20:09:23.730805855 +0100
-+++ xmlada-gpl-2017-src/Makefile.in	2017-12-04 20:09:51.586331155 +0100
+--- a/Makefile.in	2017-12-04 20:09:23.730805855 +0100
++++ b/Makefile.in	2017-12-04 20:09:51.586331155 +0100
 @@ -62,7 +62,8 @@
  
  # Rebuild the tests (and not the XML/Ada code itself)
@@ -9,8 +9,8 @@
  		-XTESTS_ACTIVATED=Only xmlada.gpr
  
  # Run the tests. This requires an install of XML/Ada first
---- xmlada-gpl-2017-src/tests/Makefile.old	2017-12-04 21:38:29.722818904 +0100
-+++ xmlada-gpl-2017-src/tests/Makefile	2017-12-04 21:38:54.229382658 +0100
+--- a/tests/Makefile	2017-12-04 21:38:29.722818904 +0100
++++ b/tests/Makefile	2017-12-04 21:38:54.229382658 +0100
 @@ -1,8 +1,6 @@
  TESTS= test_unicode \
  		 test_state \
@@ -28,3 +28,14 @@
  		gprbuild -q -Pdefault.gpr; \
  		./validate > $(RESULTS)/multiple_xsd.out; \
  		cp $(RESULTS)/multiple_xsd.out $(RESULTS)/multiple_xsd.diff; \
+--- a/input_sources/input_sources-http.adb	2019-05-29 10:18:23.428517625 +0200
++++ b/input_sources/input_sources-http.adb	2019-05-29 10:17:53.451007226 +0200
+@@ -191,7 +191,7 @@
+ 
+       Create_Socket (Socket);
+       Set_Socket_Option (Socket, Socket_Level, (Reuse_Address, True));
+-      Set_Socket_Option (Socket, Option => (Receive_Buffer, 3000));
++      Set_Socket_Option (Socket, Socket_Level, (Receive_Buffer, 3000));
+       Connect_Socket (Socket, Addr);
+ 
+       Channel := Stream (Socket);
