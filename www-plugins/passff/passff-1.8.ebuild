@@ -7,7 +7,7 @@ MY_XPINAME="${P}-fx"
 
 DESCRIPTION="zx2c4 pass manager extension for Firefox"
 HOMEPAGE="https://github.com/passff/passff"
-SRC_URI="https://addons.mozilla.org/firefox/downloads/file/1681210/${MY_XPINAME}.xpi"
+SRC_URI="https://addons.mozilla.org/firefox/downloads/file/2983533/${MY_XPINAME}.xpi"
 
 LICENSE="GPL-2"
 SLOT="0"

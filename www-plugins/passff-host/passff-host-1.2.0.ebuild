@@ -38,7 +38,7 @@ src_install() {
 
 	use chrome   && target_dirs+=( "/etc/opt/chrome/native-messaging-hosts" )
 	use chromium && target_dirs+=( "/etc/chromium/native-messaging-hosts" )
-	use firefox  && target_dirs+=( "/usr/lib/mozilla/native-messaging-hosts" )
+	use firefox  && target_dirs+=( "/usr/$(get_libdir)/mozilla/native-messaging-hosts" )
 	use vivaldi  && target_dirs+=( "/etc/vivaldi/native-messaging-hosts" )
 
 	for target_dir in "${target_dirs[@]}"; do
