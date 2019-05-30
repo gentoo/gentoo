@@ -1,14 +1,14 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{5,6} )
+PYTHON_COMPAT=( python2_7 python3_{5,6,7} )
 
 inherit check-reqs python-r1 toolchain-funcs
 
 if [[ ${PV} == *9999 ]]; then
-	EGIT_REPO_URI="https://github.com/count0/graph-tool.git"
+	EGIT_REPO_URI="https://git.skewed.de/count0/graph-tool.git"
 	inherit autotools git-r3
 else
 	SRC_URI="https://downloads.skewed.de/${PN}/${P}.tar.bz2"
@@ -25,19 +25,19 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
 	${PYTHON_DEPS}
-	dev-libs/boost:=[context,python,${PYTHON_USEDEP}]
-	dev-libs/expat
+	>=dev-libs/boost-1.70:=[context,python,${PYTHON_USEDEP}]
+	dev-libs/expat:=
 	dev-python/numpy[${PYTHON_USEDEP}]
 	sci-libs/scipy[${PYTHON_USEDEP}]
-	>=sci-mathematics/cgal-4.9
+	sci-mathematics/cgal:=
 	cairo? (
 		dev-cpp/cairomm
 		dev-python/pycairo[${PYTHON_USEDEP}]
 	)
 	dev-python/matplotlib[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
-	dev-cpp/sparsehash
-	virtual/pkgconfig"
+	dev-cpp/sparsehash"
+BDEPEND="virtual/pkgconfig"
 
 # bug 453544
 CHECKREQS_DISK_BUILD="6G"
@@ -58,15 +58,12 @@ src_prepare() {
 }
 
 src_configure() {
-	local threads
-	has_version 'dev-libs/boost[threads]' && threads="-mt"
-
 	configure() {
 		econf \
 			--disable-static \
 			$(use_enable openmp) \
 			$(use_enable cairo) \
-			--with-boost-python="${EPYTHON: -3}${threads}"
+			--with-boost-python="boost_${EPYTHON/./}"
 	}
 	python_foreach_impl run_in_build_dir configure
 }
