@@ -1,10 +1,10 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-USE_RUBY="ruby23 ruby24 ruby25"
+EAPI=6
+USE_RUBY="ruby24 ruby25 ruby26"
 
-RUBY_FAKEGEM_EXTRADOC="NEWS.md README.adoc"
+RUBY_FAKEGEM_EXTRADOC="NEWS.md README.md"
 
 RUBY_FAKEGEM_TASK_DOC="doc"
 
@@ -17,8 +17,6 @@ LICENSE="MIT"
 KEYWORDS="~amd64 ~x86 ~x86-fbsd"
 SLOT="0"
 IUSE=""
-
-ruby_add_rdepend ">=dev-ruby/colored-1.2"
 
 ruby_add_bdepend "doc? ( dev-ruby/yard )
 	test? ( dev-ruby/yard dev-ruby/minitest )"
