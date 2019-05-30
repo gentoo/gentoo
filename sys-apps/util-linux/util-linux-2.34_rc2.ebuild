@@ -2,7 +2,7 @@
 # Copyright 2018 Sony Interactive Entertainment Inc.
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 PYTHON_COMPAT=( python2_7 python3_{5,6,7} )
 
@@ -30,7 +30,9 @@ IUSE="build caps +cramfs fdformat kill ncurses nls pam python +readline selinux 
 
 # Most lib deps here are related to programs rather than our libs,
 # so we rarely need to specify ${MULTILIB_USEDEP}.
-RDEPEND="caps? ( sys-libs/libcap-ng )
+DEPEND="
+	virtual/os-headers
+	caps? ( sys-libs/libcap-ng )
 	cramfs? ( sys-libs/zlib:= )
 	ncurses? ( >=sys-libs/ncurses-5.2-r2:0=[unicode?] )
 	nls? ( virtual/libintl[${MULTILIB_USEDEP}] )
@@ -41,12 +43,12 @@ RDEPEND="caps? ( sys-libs/libcap-ng )
 	slang? ( sys-libs/slang )
 	!build? ( systemd? ( sys-apps/systemd ) )
 	udev? ( virtual/libudev:= )"
-DEPEND="${RDEPEND}
+BDEPEND="
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )
 	test? ( sys-devel/bc )
-	virtual/os-headers"
-RDEPEND+="
+"
+RDEPEND="${DEPEND}
 	kill? (
 		!sys-apps/coreutils[kill]
 		!sys-process/procps[kill]
@@ -62,11 +64,6 @@ RDEPEND+="
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 S="${WORKDIR}/${MY_P}"
-
-PATCHES=(
-	"${FILESDIR}"/${P}-lsblk_fix_heap_use_after_free.patch
-	"${FILESDIR}"/${P}-lscpu_floating_point_exception_fix.patch
-)
 
 src_prepare() {
 	default
@@ -264,7 +261,7 @@ multilib_src_install_all() {
 	if ! use userland_GNU; then
 		# manpage collisions
 		# TODO: figure out a good way to keep them
-		rm "${ED%/}"/usr/share/man/man3/uuid* || die
+		rm "${ED}"/usr/share/man/man3/uuid* || die
 	fi
 
 	if use pam; then
