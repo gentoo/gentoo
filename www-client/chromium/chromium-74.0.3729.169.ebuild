@@ -139,6 +139,10 @@ are not displayed properly:
 To fix broken icons on the Downloads page, you should install an icon
 theme that covers the appropriate MIME types, and configure this as your
 GTK+ icon theme.
+
+In order to have a native file dialog in an KDE desktop environment, please
+install:
+- kde-apps/kdialog
 "
 
 PATCHES=(
