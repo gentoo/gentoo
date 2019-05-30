@@ -29,6 +29,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Fabian Groffen <grobian@gentoo.org> (30 May 2019)
+# Pre-release for upcoming 0.80
+# You're invited to try this version out (and report bugs), but beware,
+# it is still subject to changes, as well as some applets having changed
+# considerably
+=app-portage/portage-utils-0.80_pre20190530
+
 # Mikle Kolyada <zlogene@gentoo.org> (30 May 2019)
 # Start adding texlive-2019 (still may be terribly broken)
 =app-text/texlive-core-2019
