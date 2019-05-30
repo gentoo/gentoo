@@ -11,7 +11,7 @@ ARCHIVE_URI="https://github.com/ksonnet/ksonnet/archive/v${PV}.tar.gz -> ${P}.ta
 KEYWORDS="~amd64"
 
 DESCRIPTION="CLI-supported framework for extensible Kubernetes configurations"
-HOMEPAGE="https://github.com/ksonnet/ksonnet http://ksonnet.heptio.com/"
+HOMEPAGE="https://github.com/ksonnet/ksonnet https://ksonnet.io/"
 SRC_URI="${ARCHIVE_URI}"
 
 LICENSE="Apache-2.0"
