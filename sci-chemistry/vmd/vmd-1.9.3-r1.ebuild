@@ -81,7 +81,7 @@ src_prepare() {
 
 	cd "${WORKDIR}"/plugins || die
 
-	eapply -p2 "${WORKDIR}"/${P}-gentoo-plugins.patch	
+	eapply -p2 "${WORKDIR}"/${P}-gentoo-plugins.patch
 
 	[[ ${SILENT} == yes ]] || sed '/^.SILENT/d' -i $(find -name Makefile)
 
