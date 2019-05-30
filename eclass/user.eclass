@@ -135,6 +135,7 @@ enewuser() {
 		for ((euid = 101; euid <= 999; euid++)); do
 			[[ -z $(egetent passwd ${euid}) ]] && break
 		done
+		[[ ${euid} -le 999 ]] || die "${FUNCNAME}: no free UID found"
 	fi
 	opts+=( -u ${euid} )
 	einfo " - Userid: ${euid}"
@@ -307,6 +308,7 @@ enewgroup() {
 			for ((egid = 101; egid <= 999; egid++)) ; do
 				[[ -z $(egetent group ${egid}) ]] && break
 			done
+			[[ ${egid} -le 999 ]] || die "${FUNCNAME}: no free GID found"
 		fi
 	}
 
