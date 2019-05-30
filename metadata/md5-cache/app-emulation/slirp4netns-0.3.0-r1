@@ -1,12 +1,14 @@
 BDEPEND=>=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DEFINED_PHASES=postinst prepare
+DEPEND=dev-libs/glib:2= dev-libs/libpcre:=
 DESCRIPTION=User-mode networking for unprivileged network namespaces
 EAPI=7
 HOMEPAGE=https://github.com/rootless-containers/slirp4netns
 KEYWORDS=~amd64
 LICENSE=GPL-2
+RDEPEND=dev-libs/glib:2= dev-libs/libpcre:=
 RESTRICT=test
 SLOT=0
-SRC_URI=https://github.com/rootless-containers/slirp4netns/archive/v0.3.0-beta.1.tar.gz -> slirp4netns-0.3.0_beta1.tar.gz
+SRC_URI=https://github.com/rootless-containers/slirp4netns/archive/v0.3.0.tar.gz -> slirp4netns-0.3.0.tar.gz
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
-_md5_=1071332d71697c0fccf698b7476a81e3
+_md5_=6ea858baed4e0eec72038bcc0fea3bb1
