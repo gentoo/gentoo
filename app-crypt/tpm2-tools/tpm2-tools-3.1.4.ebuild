@@ -12,8 +12,8 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE="libressl test"
 
-RDEPEND=">=app-crypt/tpm2-tss-2.0
-	net-misc/curl
+RDEPEND=">=app-crypt/tpm2-tss-2.0:=
+	net-misc/curl:=
 	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:0= )"
 DEPEND="${RDEPEND}
@@ -21,7 +21,7 @@ DEPEND="${RDEPEND}
 BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
-	"${FILESDIR}/${P}-libressl.patch"
+	"${FILESDIR}/${PN}-3.1.3-libressl.patch"
 )
 
 src_configure() {
