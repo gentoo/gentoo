@@ -223,6 +223,7 @@ src_configure() {
 		$(use_enable luajittex) \
 		$(use_enable luajittex mfluajit) \
 		$(use_enable xetex) \
+		$(use_enable cjk dviout-util) \
 		$(use_enable cjk ptex) \
 		$(use_enable cjk eptex) \
 		$(use_enable cjk uptex) \

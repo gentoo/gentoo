@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-USE_RUBY="ruby23 ruby24 ruby25"
+USE_RUBY="ruby24 ruby25 ruby26"
 
 inherit ruby-ng-gnome2
 
@@ -25,7 +25,7 @@ all_ruby_prepare() {
 		test/cairo-gobject-test-utils.rb || die
 
 	# Avoid native installer
-	sed -i -e '/native-package-installer/ s:^:#: ; /^\s*setup_homebrew_libffi/ s:^:#:' ../glib2/lib/mkmf-gnome2.rb || die
+	sed -i -e '/native-package-installer/ s:^:#: ; /^\s*setup_homebrew/ s:^:#:' ../glib2/lib/mkmf-gnome2.rb || die
 
 	# Avoid compilation of dependencies during test.
 	sed -i -e '/system/,/^  end/ s:^:#:' test/run-test.rb || die
