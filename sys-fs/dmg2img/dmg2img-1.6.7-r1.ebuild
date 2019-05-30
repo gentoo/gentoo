@@ -10,7 +10,7 @@ SRC_URI="http://vu1tur.eu.org/tools/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 IUSE="libressl"
 
 RDEPEND="app-arch/bzip2
