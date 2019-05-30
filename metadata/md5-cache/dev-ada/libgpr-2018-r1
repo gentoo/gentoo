@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install
+DEPEND=dev-ada/xmlada[shared?,static-libs?,static-pic?] dev-ada/xmlada[gnat_2016=,gnat_2017=,gnat_2018=,gnat_2019=] !net-libs/grpc dev-ada/gprbuild[gnat_2016(-)?,gnat_2017(-)?,gnat_2018(-)?,gnat_2019(-)?]
+DESCRIPTION=Ada library to handle GPRbuild project files
+EAPI=6
+HOMEPAGE=http://libre.adacore.com/
+IUSE=gnat_2016 gnat_2017 +gnat_2018 gnat_2019 +shared static-libs static-pic
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=dev-ada/xmlada[shared?,static-libs?,static-pic?] dev-ada/xmlada[gnat_2016=,gnat_2017=,gnat_2018=,gnat_2019=] !net-libs/grpc
+SLOT=0
+SRC_URI=http://mirrors.cdn.adacore.com/art/5b0819dfc7a447df26c27a68 -> gprbuild-gpl-2018-src.tar.gz
+_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
+_md5_=aeef14d42f141cf6e20d4f9e4b31df0d
