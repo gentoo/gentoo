@@ -9340,7 +9340,7 @@ sci-chemistry/gperiodic 2.0.10-r2: Periodic table application for Linux
 sci-chemistry/gromacs 2016.5 2018.3: The ultimate molecular dynamics simulation package
 sci-chemistry/molden 4.8-r2: Display molecular density from GAMESS-UK, GAMESS-US, GAUSSIAN and Mopac/Ampac
 sci-chemistry/moldy 2.16e-r2: Molecular dynamics simulations platform
-sci-chemistry/molmol 2k_p2-r2 2k_p2-r5: Publication-quality molecular visualization package
+sci-chemistry/molmol 2k_p2-r5: Publication-quality molecular visualization package
 sci-chemistry/molscript 2.1.2-r2: Display 3D molecules (e.g., proteins) in schematic and detailed representations
 sci-chemistry/mopac7 1.15: Autotooled, updated version of a powerful, fast semi-empirical package
 sci-chemistry/mustang 3.2.1: MUltiple STructural AligNment AlGorithm
