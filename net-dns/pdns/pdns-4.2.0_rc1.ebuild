@@ -11,14 +11,14 @@ SRC_URI="https://downloads.powerdns.com/releases/${P/_/-}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="" # ~amd64 ~x86
 
 # other possible flags:
 # db2: we lack the dep
 # oracle: dito (need Oracle Client Libraries)
 # xdb: (almost) dead, surely not supported
 
-IUSE="botan debug doc geoip ldap libressl lua luajit mydns mysql opendbx postgres protobuf remote sodium sqlite systemd tools tinydns test"
+IUSE="debug doc geoip ldap libressl lua luajit mydns mysql opendbx postgres protobuf remote sodium sqlite systemd tools tinydns test"
 
 REQUIRED_USE="mydns? ( mysql )"
 
@@ -26,7 +26,6 @@ RDEPEND="
 	libressl? ( dev-libs/libressl:= )
 	!libressl? ( dev-libs/openssl:= )
 	>=dev-libs/boost-1.35:=
-	botan? ( dev-libs/botan:2= )
 	lua? (
 		!luajit? ( dev-lang/lua:= )
 		luajit? ( dev-lang/luajit:= )
@@ -70,14 +69,12 @@ src_configure() {
 		--with-modules= \
 		--with-dynmodules="${dynmodules}" \
 		--with-mysql-lib=/usr/$(get_libdir) \
-		$(use_enable botan) \
 		$(use_enable debug verbose-logging) \
 		$(use_enable test unit-tests) \
 		$(use_enable tools) \
 		$(use_enable systemd) \
-		$(use_enable sodium libsodium) \
-		$(usex lua "$(use_with !luajit lua) $(use_with luajit)" \
-			'--without-lua --without-luajit') \
+		$(use_with sodium libsodium) \
+		$(use_with lua lua $(usex luajit luajit lua)) \
 		$(use_with protobuf) \
 		${myconf}
 }
