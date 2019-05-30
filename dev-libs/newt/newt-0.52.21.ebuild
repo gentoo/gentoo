@@ -53,8 +53,7 @@ src_prepare() {
 	fi
 
 	eapply "${FILESDIR}"/${PN}-0.52.13-gold.patch \
-		"${FILESDIR}"/${PN}-0.52.14-tcl.patch \
-		"${FILESDIR}"/${PN}-0.52.15-makefile.patch
+		"${FILESDIR}"/${PN}-0.52.14-tcl.patch
 	eapply_user
 	eautoreconf
 }
