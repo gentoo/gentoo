@@ -23,5 +23,7 @@ src_configure() {
 		-DFLATBUFFERS_BUILD_TESTS=$(usex test)
 	)
 
+	use elibc_musl && mycmakeargs+=( -DFLATBUFFERS_LOCALE_INDEPENDENT=0 )
+
 	cmake-utils_src_configure
 }
