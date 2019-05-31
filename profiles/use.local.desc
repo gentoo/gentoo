@@ -976,6 +976,7 @@ dev-ada/aws:gnat_2018 - Compile with dev-lang/gnat-gpl-2018
 dev-ada/gnat_util:gnat_2016 - Compile with dev-lang/gnat-gpl-2016
 dev-ada/gnat_util:gnat_2017 - Compile with dev-lang/gnat-gpl-2017
 dev-ada/gnat_util:gnat_2018 - Compile with dev-lang/gnat-gpl-2018
+dev-ada/gnat_util:gnat_2019 - Compile with dev-lang/gnat-gpl-2019
 dev-ada/gnat_util:shared - Build gnat_util shared library
 dev-ada/gnat_util:static-pic - Build gnat_util static library with pic code
 dev-ada/gnatcoll:gnat_2016 - Compile with dev-lang/gnat-gpl-2016

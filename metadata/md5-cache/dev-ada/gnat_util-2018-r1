@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install
+DEPEND=gnat_2018? ( dev-lang/gnat-gpl:7.3.1 ) gnat_2019? ( dev-lang/gnat-gpl:8.3.1 ) dev-ada/gprbuild[gnat_2018(-)?,gnat_2019(-)?]
+DESCRIPTION=Provides access to GNAT compiler internals for AdaCore utilities
+EAPI=6
+HOMEPAGE=http://libre.adacore.com
+IUSE=+gnat_2018 gnat_2019 +shared static-libs static-pic
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=gnat_2018? ( dev-lang/gnat-gpl:7.3.1 ) gnat_2019? ( dev-lang/gnat-gpl:8.3.1 )
+REQUIRED_USE=^^ ( gnat_2018 gnat_2019 )
+SLOT=0
+SRC_URI=http://mirrors.cdn.adacore.com/art/5b0819dfc7a447df26c27a6b -> gnat_util-gpl-2018-src.tar.gz
+_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
+_md5_=f490c317af66af467b5b5640969552fd
