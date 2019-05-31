@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,7 +7,7 @@ CABAL_FEATURES="bin nocabaldep"
 inherit eutils haskell-cabal
 
 DESCRIPTION="Rebuild Haskell dependencies in Gentoo"
-HOMEPAGE="http://haskell.org/haskellwiki/Gentoo#haskell-updater"
+HOMEPAGE="https://wiki.haskell.org/Gentoo#haskell-updater"
 SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2"
