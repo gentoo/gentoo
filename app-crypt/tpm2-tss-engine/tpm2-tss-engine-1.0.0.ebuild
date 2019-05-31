@@ -23,6 +23,7 @@ BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}/${P}-build.patch"
+	"${FILESDIR}/${P}-libressl.patch"
 )
 
 src_prepare() {
