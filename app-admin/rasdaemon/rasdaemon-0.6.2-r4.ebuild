@@ -33,6 +33,7 @@ pkg_setup() {
 
 src_configure() {
 	local myconf=(
+		$(use_enable sqlite sqlite3)
 		--enable-abrt-report
 		--enable-aer
 		--enable-arm
@@ -40,13 +41,9 @@ src_configure() {
 		--enable-hisi-ns-decode
 		--enable-mce
 		--enable-non-standard
-		--enable-sqlite3
 		--includedir="/usr/include/${PN}"
 		--localstatedir=/var
 	)
-	if use sqlite ; then
-		myconf="${myconf} --enable-sqlite3)"
-	fi
 
 	econf "${myconf[@]}"
 }
