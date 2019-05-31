@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -40,6 +40,7 @@ src_configure() {
 	econf \
 		$(use_enable static-libs static) \
 		$(use_enable test unit) \
+		--disable-defaultflags \
 		--with-dbuspolicydir="${EPREFIX}/etc/dbus-1/system.d" \
 		--with-systemdpresetdir="$(systemd_get_systemunitdir)/../system-preset" \
 		--with-systemdpresetdisable \
