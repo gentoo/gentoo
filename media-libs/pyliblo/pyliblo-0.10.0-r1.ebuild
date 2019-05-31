@@ -10,7 +10,7 @@ DESCRIPTION="A Python wrapper for the liblo OSC library"
 HOMEPAGE="http://das.nasophon.de/pyliblo"
 SRC_URI="http://das.nasophon.de/download/${P}.tar.gz"
 
-LICENSE="LGPL-2.1"
+LICENSE="LGPL-2.1+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
