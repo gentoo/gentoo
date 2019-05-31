@@ -10,7 +10,7 @@ DESCRIPTION="A simple metronome with an easy-to-use GTK interface"
 HOMEPAGE="http://das.nasophon.de/gtklick/"
 SRC_URI="http://das.nasophon.de/download/${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
