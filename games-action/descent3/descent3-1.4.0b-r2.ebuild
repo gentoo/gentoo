@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -13,7 +13,7 @@ SRC_URI="mirror://lokigames/${PN}/${PN}-1.4.0a-x86.run
 LICENSE="LOKI-EULA"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-RESTRICT="strip"
+RESTRICT="strip mirror bindist"
 
 RDEPEND="sys-libs/glibc
 	media-libs/libsdl[abi_x86_32(-)]

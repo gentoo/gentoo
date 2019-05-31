@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="2"
@@ -15,6 +15,9 @@ LICENSE="mindterm"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE=""
+# Don't even compile
+RESTRICT="test mirror bindist"
+
 COMMON_DEP="dev-java/jzlib:0"
 RDEPEND=">=virtual/jre-1.4
 	${COMMON_DEP}"
@@ -36,8 +39,6 @@ src_prepare() {
 	rm -vr com/jcraft || die "Failed to remove bundled jcraft"
 }
 
-# Don't even compile
-RESTRICT="test"
 src_test() {
 	ANT_TASKS="ant-junit" eant test \
 		-Dgentoo.classpath="$(java-pkg_getjars jzlib,junit):mindterm.jar"
