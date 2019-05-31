@@ -53,21 +53,23 @@ src_prepare() {
 
 src_configure() {
 	# --without-v4l because of missing video4linux 2.x support wrt #389079
-	econf \
-		--without-v4l \
-		--without-xkeyboard \
-		--without-fbpm \
-		--without-dpms \
-		$(use_with crypt) \
-		$(use_with fbcon fbdev) \
-		$(use_with ssl) \
-		$(use_with ssl crypto) \
-		$(use_with xcomposite) \
-		$(use_with xdamage) \
-		$(use_with xfixes) \
-		$(use_with xinerama) \
-		$(use_with xrandr) \
+	local myconf=(
+		--without-v4l
+		--without-xkeyboard
+		--without-fbpm
+		--without-dpms
+		$(use_with crypt)
+		$(use_with fbcon fbdev)
+		$(use_with ssl)
+		$(use_with ssl crypto)
+		$(use_with xcomposite)
+		$(use_with xdamage)
+		$(use_with xfixes)
+		$(use_with xinerama)
+		$(use_with xrandr)
 		$(use_with zeroconf avahi)
+	)
+	econf "${myconf[@]}"
 }
 
 src_install() {
