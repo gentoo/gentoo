@@ -12,7 +12,7 @@ SRC_URI="https://downloads.powerdns.com/releases/${P/_/-}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="" # ~amd64 ~arm ~x86
-IUSE="libressl luajit protobuf snmp sodium systemd"
+IUSE="debug libressl luajit protobuf snmp sodium systemd"
 
 DEPEND="!luajit? ( >=dev-lang/lua-5.1:= )
 	luajit? ( dev-lang/luajit:= )
@@ -40,6 +40,7 @@ src_configure() {
 	econf \
 		--sysconfdir=/etc/powerdns \
 		--with-lua=$(usex luajit luajit lua) \
+		$(use_enable debug verbose-logging) \
 		$(use_enable systemd) \
 		$(use_with sodium libsodium) \
 		$(use_with protobuf) \
