@@ -1,0 +1,12 @@
+BDEPEND=>=dev-lang/go-1.10
+DEFINED_PHASES=compile install unpack
+DESCRIPTION=synchronize a cron job across multiple hosts using the consul lock feature
+EAPI=7
+HOMEPAGE=https://github.com/Barzahlen/cronlocker
+KEYWORDS=~amd64
+LICENSE=MIT
+RESTRICT=strip
+SLOT=0
+SRC_URI=https://github.com/Barzahlen/cronlocker/archive/c0ac605.tar.gz -> cronlocker-0.4.0_p20180710.tar.gz
+_eclasses_=golang-base	c57d2c3f9e1a02d0feb8b87c7b689892	golang-vcs-snapshot	12177e83bede6f7fb87eae383864b40b
+_md5_=0c3a6f154cc4d0e073b3aa7200d62588
