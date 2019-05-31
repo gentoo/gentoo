@@ -44,6 +44,7 @@
 =app-text/ttf2pk2-2.0_p20190410
 =app-text/ps2pkm-1.8_p20190410
 =dev-tex/bibtexu-3.71_p20190410
+=dev-libs/kpathsea-6.3.1_p20190410
 
 # Hanno Boeck <hanno@gentoo.org> (27 May 2019)
 # Obsolete LXDE modules, see #652658, #651964
