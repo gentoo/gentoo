@@ -999,6 +999,7 @@ dev-ada/gnatcoll-core:static-pic - Build static library with pic code
 dev-ada/gnatcoll-db:gnat_2016 - Compile with dev-lang/gnat-gpl-2016
 dev-ada/gnatcoll-db:gnat_2017 - Compile with dev-lang/gnat-gpl-2017
 dev-ada/gnatcoll-db:gnat_2018 - Compile with dev-lang/gnat-gpl-2018
+dev-ada/gnatcoll-db:gnat_2019 - Compile with dev-lang/gnat-gpl-2019
 dev-ada/gnatcoll-db:gnatcoll_db2ada - Build gnatcoll_db2ada
 dev-ada/gnatcoll-db:gnatinspect - Build gnatinspect
 dev-ada/gnatcoll-db:shared - Build shared library
@@ -4646,6 +4647,29 @@ net-misc/ntpclient:debug - Enable analysis code path and debugging of NTP protoc
 net-misc/ntpclient:embedded - Build a very small ntpclient, from OpenWRT project.
 net-misc/ntpclient:obsolete - Enable obsolete features, to use with kernel versions older than 3.0
 net-misc/ntpclient:syslog - Enable logging to syslog instead of logging to stderr.
+net-misc/ntpsec:early - Drop root privileges early
+net-misc/ntpsec:gdb - Enable debugging with gdb
+net-misc/ntpsec:heat - Install contrib heat generating scripts
+net-misc/ntpsec:nist - Enable lockclock
+net-misc/ntpsec:ntpviz - Make visualizations of offsets, jiffies, etc.
+net-misc/ntpsec:rclock_arbiter - Arbiter 1088A/B GPS driver
+net-misc/ntpsec:rclock_generic - Enable support for generic time radios and GPSDOs
+net-misc/ntpsec:rclock_gpsd - Enable gpsd daemon support
+net-misc/ntpsec:rclock_hpgps - Hewlett Packard GPS driver
+net-misc/ntpsec:rclock_jjy - JJY driver
+net-misc/ntpsec:rclock_local - Support for undisciplined local clock (not recommended)
+net-misc/ntpsec:rclock_modem - NIST/USNO/PTB Modem Time Services
+net-misc/ntpsec:rclock_neoclock - NeoClock4X DCF77/TDF driver
+net-misc/ntpsec:rclock_nmea - NMEA GPS driver
+net-misc/ntpsec:rclock_oncore - Oncore driver
+net-misc/ntpsec:rclock_pps - PPS cesium clock driver
+net-misc/ntpsec:rclock_shm - Obtain refclock info from shared memory-segment
+net-misc/ntpsec:rclock_spectracom - Spectracom driver
+net-misc/ntpsec:rclock_trimble - Trimble driver
+net-misc/ntpsec:rclock_truetime - Trutime driver (deprecated)
+net-misc/ntpsec:rclock_zyfer - Zyfer driver
+net-misc/ntpsec:smear - Specify the interval over which a leap second is applied (experimental)
+net-misc/ntpsec:tests - Enable tests
 net-misc/ofono:atmodem - ETSI AT modem support.
 net-misc/ofono:bluetooth - Enable Bluetooth modem support using net-wireless/bluez.
 net-misc/ofono:cdmamodem - Enable CDMA modem support.
