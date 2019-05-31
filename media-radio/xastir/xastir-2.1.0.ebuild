@@ -28,7 +28,7 @@ DEPEND=">=x11-libs/motif-2.3:0
 	!graphicsmagick? ( <media-gfx/imagemagick-7:0=[-hdri,-q32] )
 	graphicsmagick? ( media-gfx/graphicsmagick:=[-q32] )
 	geotiff? ( sci-libs/proj
-		sci-libs/libgeotiff
+		sci-libs/libgeotiff:=
 		media-libs/tiff:0 )
 	gdal? ( sci-libs/gdal )
 	festival? ( app-accessibility/festival )"
