@@ -6213,7 +6213,7 @@ dev-tex/texpower 0.2: A bundle of style and class files for creating dynamic onl
 dev-tex/tipa 1.3: International Phonetic Alphabet package for LaTeX
 dev-tex/translator 1.00: A package for translating words in TeX
 dev-tex/tth 3.77: Translate TEX into HTML
-dev-tex/xcolor 2.11 2.12: xcolor -- easy driver-independent access to colors
+dev-tex/xcolor 2.12: xcolor -- easy driver-independent access to colors
 dev-tex/xmltex 1.9-r2: A non validating namespace aware XML parser implemented in TeX
 dev-texlive/texlive-basic 2017-r1: TeXLive Essential programs and files
 dev-texlive/texlive-bibtexextra 2017: TeXLive BibTeX additional styles
