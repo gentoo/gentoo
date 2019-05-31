@@ -46,6 +46,11 @@
 =dev-tex/bibtexu-3.71_p20190410
 =dev-libs/kpathsea-6.3.1_p20190410
 
+# Zac Medico <zmedico@gentoo.org> (31 May 2019)
+# Upstream is dead and there are multiple security vulnerabilities.
+# Removal in 30 days. Bug #687100.
+app-emulation/rkt
+
 # Hanno Boeck <hanno@gentoo.org> (27 May 2019)
 # Obsolete LXDE modules, see #652658, #651964
 lxde-base/lxshortcut
