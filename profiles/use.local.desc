@@ -967,6 +967,7 @@ app-xemacs/xemacs-packages-all:mule - Add multi-language support to XEmacs
 dev-ada/asis:gnat_2016 - Compile with dev-lang/gnat-gpl-2016
 dev-ada/asis:gnat_2017 - Compile with dev-lang/gnat-gpl-2017
 dev-ada/asis:gnat_2018 - Compile with dev-lang/gnat-gpl-2018
+dev-ada/asis:gnat_2019 - Compile with dev-lang/gnat-gpl-2019
 dev-ada/aunit:gnat_2016 - Compile with dev-lang/gnat-gpl-2016
 dev-ada/aunit:gnat_2017 - Compile with dev-lang/gnat-gpl-2017
 dev-ada/aunit:gnat_2018 - Compile with dev-lang/gnat-gpl-2018
