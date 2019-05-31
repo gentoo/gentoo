@@ -5,7 +5,7 @@ EAPI=6
 inherit autotools eutils gnome2
 
 DESCRIPTION="Cinnamon session manager"
-HOMEPAGE="http://cinnamon.linuxmint.com/"
+HOMEPAGE="http://developer.linuxmint.com/projects/cinnamon-projects.html"
 SRC_URI="https://github.com/linuxmint/cinnamon-session/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+ FDL-1.1+ LGPL-2+"

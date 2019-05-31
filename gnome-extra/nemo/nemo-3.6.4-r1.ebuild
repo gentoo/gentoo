@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python3_{5,6} )
 inherit autotools eutils gnome2 python-any-r1 virtualx
 
 DESCRIPTION="A file manager for Cinnamon, forked from Nautilus"
-HOMEPAGE="http://cinnamon.linuxmint.com/"
+HOMEPAGE="http://developer.linuxmint.com/projects/cinnamon-projects.html"
 SRC_URI="https://github.com/linuxmint/nemo/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+ LGPL-2+ FDL-1.1"

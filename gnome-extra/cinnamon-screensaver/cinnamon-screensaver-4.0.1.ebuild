@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{5,6} )
 inherit autotools gnome2 multilib python-single-r1
 
 DESCRIPTION="Screensaver for Cinnamon"
-HOMEPAGE="http://cinnamon.linuxmint.com/"
+HOMEPAGE="http://developer.linuxmint.com/projects/cinnamon-projects.html"
 SRC_URI="https://github.com/linuxmint/cinnamon-screensaver/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
