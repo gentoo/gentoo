@@ -1,0 +1,32 @@
+diff --git a/build.sh b/build.sh
+index f5a6891..2470797 100755
+--- a/build.sh
++++ b/build.sh
+@@ -68,10 +68,22 @@ function create {
+ 
+ # generate pixmaps from svg source
+ SRC=$PWD/src
+-THEME="Capitaine Cursors"
+ 
+-create svg
++while getopts "c:" OPT; do
++	case "${OPT}" in
++		c)
++			if [[ "${OPTARG}" = "white"  ]]; then
++				THEME="Capitaine Cursors - White"
+ 
+-THEME="Capitaine Cursors - White"
++				create svg-white
++			else
++				THEME="Capitaine Cursors"
+ 
+-create svg-white
+\ No newline at end of file
++				create svg
++			fi
++			;;
++		*)
++			exit 1
++			;;
++	esac
++done

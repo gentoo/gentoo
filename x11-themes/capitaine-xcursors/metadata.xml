@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM 'http://www.gentoo.org/dtd/metadata.dtd'>
+<pkgmetadata>
+	<maintainer type='person'>
+		<email>beatussum@protonmail.com</email>
+		<name>Mattéo Rossillol</name>
+	</maintainer>
+	<maintainer type='project'>
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		This is an x-cursor theme inspired by macOS and based on KDE Breeze. The source files
+		were made in Inkscape,  and the theme was designed to pair well with Keefer  Rourke's
+		icon pack: La Capitaine.
+	</longdescription>
+	<longdescription lang='fr'>
+		Ce thème x-cursor est inspiré par macOS et est basé sur KDE Breeze.  Les fichiers sources
+		ont été créés avec Inkscape, et le thème a été dessiné de façon à ce qu'il soit en accord
+		avec le pack d'icônes de Keefer Rourke&#xA0;: La Capitaine.
+	</longdescription>
+	<use>
+		<flag name='standard'>Install the standard theme cursors</flag>
+		<flag name='white'>Install the white theme cursors</flag>
+	</use>
+	<use lang='fr'>
+		<flag name='standard'>Installer le thème standard des curseurs</flag>
+		<flag name='white'>Installer le thème blanc des curseurs</flag>
+	</use>
+	<upstream>
+		<maintainer status='active'>
+			<name>Keefer Rourke</name>
+			<email>mail@krourke.org</email>
+		</maintainer>
+		<bugs-to>https://github.com/keeferrourke/capitaine-cursors/issues</bugs-to>
+		<remote-id type='github'>keeferrourke/capitaine-cursors</remote-id>
+	</upstream>
+</pkgmetadata>
