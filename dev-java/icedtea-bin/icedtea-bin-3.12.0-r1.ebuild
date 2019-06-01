@@ -5,7 +5,7 @@ EAPI=6
 
 # Don't block arm. See bug #600134.
 #MULTILIB_COMPAT=( abi_ppc_64 abi_x86_{32,64} )
-KEYWORDS="-* ~amd64 ~ppc64 ~x86"
+KEYWORDS="-* ~amd64 ~arm64 ~ppc64 ~x86"
 
 inherit java-vm-2 multilib-build toolchain-funcs
 
@@ -23,6 +23,7 @@ SRC_URI="doc? ( ${BASE_URI}/${PN}-doc-${PV}.tar.xz )
 	big-endian? ( $(abi_uri ppc64) )
 	!big-endian? ( $(abi_uri ppc64le ppc64) )
 	$(abi_uri amd64)
+	$(abi_uri arm64)
 	$(abi_uri x86)"
 
 DESCRIPTION="A Gentoo-made binary build of the IcedTea JDK"
