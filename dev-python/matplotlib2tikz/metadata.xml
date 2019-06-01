@@ -1,17 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>marbre@linux.sungazer.de</email>
-		<name>Marius Brehler</name>
-	</maintainer>
 	<maintainer type="project">
 		<email>sci@gentoo.org</email>
 		<name>Gentoo Science Project</name>
-	</maintainer>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Gentoo Proxy Maintainers Project</name>
 	</maintainer>
 	<longdescription>matplotlib2tikz is a Python tool for converting matplotlib figures into PGFPlots (TikZ) figures like for native inclusion into LaTeX documents. The output of matplotlib2tikz is in PGFPlots, a LaTeX library that sits on top of TikZ and describes graphs in terms of axes, data etc. Consequently, the output of matplotlib2tikz retains more information, can be more easily understood, and is more easily editable than raw TikZ output.</longdescription>
 	<upstream>
