@@ -5862,7 +5862,7 @@ dev-ruby/atomic 1.1.101: An atomic reference implementation for JRuby, Rubinius,
 dev-ruby/backports 3.11.4: Backports of Ruby features for older Ruby
 dev-ruby/bacon 1.2.0-r2: Small RSpec clone weighing less than 350 LoC
 dev-ruby/bcat 0.6.2-r3: Pipe to browser utility for use at the shell and within editors
-dev-ruby/bcrypt-ruby 3.1.11-r1: An easy way to keep your users' passwords secure
+dev-ruby/bcrypt-ruby 3.1.11-r1 3.1.12: An easy way to keep your users' passwords secure
 dev-ruby/bcrypt_pbkdf 1.0.0: Implements bcrypt_pdkfd (a variant of PBKDF2 with bcrypt-based PRF)
 dev-ruby/blankslate 3.1.3: Base class with almost all of the methods from Object and Kernel being removed
 dev-ruby/bluecloth 2.2.0-r3: A Ruby implementation of Markdown
