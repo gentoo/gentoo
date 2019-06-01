@@ -6907,7 +6907,7 @@ kde-apps/mailcommon 18.12.3-r1: Common mail library
 kde-apps/mailimporter 18.12.3-r1: Library to import mail from various sources
 kde-apps/marble 18.12.3: Virtual Globe and World Atlas to learn more about Earth
 kde-apps/mbox-importer 18.12.3-r1: Import mbox email archives from various sources into Akonadi
-kde-apps/messagelib 18.12.3-r1: Libraries for messaging functions
+kde-apps/messagelib 18.12.3-r2: Libraries for messaging functions
 kde-apps/minuet 18.12.3: Music Education software by KDE
 kde-apps/okular 18.12.3: Universal document viewer based on KDE Frameworks
 kde-apps/palapeli 18.12.3: Jigsaw puzzle game by KDE
