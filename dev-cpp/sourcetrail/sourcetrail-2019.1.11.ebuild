@@ -9,10 +9,11 @@ DESCRIPTION="A cross-platform source explorer for C/C++ and Java"
 HOMEPAGE="https://www.sourcetrail.com/"
 SRC_URI="https://www.sourcetrail.com/downloads/${PV}/linux/64bit -> ${P}.tar.gz"
 
-LICENSE="Sourcetrail || ( GPL-2 GPL-3 LGPL-3 ) FDL-1.3 BSD"
+LICENSE="Sourcetrail || ( GPL-2 GPL-3 LGPL-3 ) BSD"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="examples selinux"
+RESTRICT="mirror bindist"
 
 DEPEND="dev-util/patchelf"
 
