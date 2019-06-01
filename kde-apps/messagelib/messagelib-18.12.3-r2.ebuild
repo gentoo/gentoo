@@ -67,3 +67,5 @@ RDEPEND="${DEPEND}
 
 # bug 579630
 RESTRICT+=" test"
+
+PATCHES=( "${FILESDIR}/${P}-qtwebengine-5.12.3.patch" ) # bug 686842
