@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
@@ -10,7 +10,7 @@ DESCRIPTION="A simple metronome with an easy-to-use GTK interface"
 HOMEPAGE="http://das.nasophon.de/gtklick/"
 SRC_URI="http://das.nasophon.de/download/${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"

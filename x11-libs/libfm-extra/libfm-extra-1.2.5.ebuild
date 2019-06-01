@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -22,6 +22,7 @@ DEPEND="${RDEPEND}
 	>=dev-util/intltool-0.40
 	virtual/pkgconfig
 	sys-devel/gettext
+	dev-util/gtk-doc-am
 	!!<=x11-libs/libfm-1.2.3"
 
 S="${WORKDIR}"/${MY_P}

@@ -1,27 +1,29 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit scons-utils toolchain-funcs
+PYTHON_COMPAT=( python{2_7,3_5,3_6} )
+
+inherit python-any-r1 scons-utils toolchain-funcs
 
 DESCRIPTION="An advanced command-line based metronome for JACK"
 HOMEPAGE="http://das.nasophon.de/klick"
 SRC_URI="http://das.nasophon.de/download/${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="debug osc rubberband"
 
-RDEPEND="dev-libs/boost
-	media-libs/libsamplerate
+RDEPEND="media-libs/libsamplerate
 	media-libs/libsndfile
 	virtual/jack
 	osc? ( media-libs/liblo )
 	rubberband? ( media-libs/rubberband )"
 DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+	dev-libs/boost"
+BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-sconstruct.patch
