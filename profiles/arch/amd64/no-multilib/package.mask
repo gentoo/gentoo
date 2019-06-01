@@ -41,6 +41,7 @@ games-action/brutal-legend
 games-action/cs2d
 games-action/descent3
 games-action/descent3-demo
+games-action/guacamelee
 games-action/heretic2
 games-action/heretic2-demo
 games-action/hotline-miami
