@@ -105,7 +105,7 @@ S="${WORKDIR}/${MY_P}"
 RESTRICT="test"
 
 pkg_pretend() {
-	if use openmp; then
+	if [[ ${MERGE_TYPE} != binary ]] && use openmp; then
 		tc-has-openmp || die "Please switch to an openmp compatible compiler"
 	fi
 }
