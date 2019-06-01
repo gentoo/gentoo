@@ -21,7 +21,7 @@ RESTRICT="test"
 
 COMMON_DEPEND="
 	app-crypt/gpgme:=
-	>=app-emulation/cri-o-1.13.0
+	app-emulation/conmon
 	>=app-emulation/runc-1.0.0_rc6
 	dev-libs/libassuan:=
 	dev-libs/libgpg-error:=
