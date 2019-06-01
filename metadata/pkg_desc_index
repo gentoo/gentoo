@@ -7166,7 +7166,7 @@ mail-filter/spamassassin 3.4.2-r2: An extensible mail filter which can identify 
 mail-filter/spamdyke 4.3.0: A drop-in connection-time spam filter for qmail
 mail-filter/spamprobe 1.4d-r1: Fast, intelligent, automatic spam detector using Bayesian analysis
 mail-filter/sqlgrey 1.7.6-r2: SQLgrey is a postfix policy service implementing a grey-listing policy
-mail-mta/courier 0.75.0 1.0.5: An MTA designed specifically for maildirs
+mail-mta/courier 1.0.5: An MTA designed specifically for maildirs
 mail-mta/esmtp 1.2: User configurable relay-only Mail Transfer Agent with a sendmail-like syntax
 mail-mta/exim 4.91-r2: A highly configurable, drop-in replacement for sendmail
 mail-mta/mini-qmail 1.06: a small null client that forwards mail via QMQP to a full qmail server
