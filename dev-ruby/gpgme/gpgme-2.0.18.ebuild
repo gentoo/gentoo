@@ -21,7 +21,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND+=">=app-crypt/gpgme-1.1.3"
+DEPEND+=">=app-crypt/gpgme-1.1.3 test? ( >=app-crypt/gpgme-1.13.0 )"
 RDEPEND+=">=app-crypt/gpgme-1.1.3"
 
 ruby_add_bdepend "test? ( dev-ruby/mocha:0.14 )"
