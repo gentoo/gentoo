@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM 'http://www.gentoo.org/dtd/metadata.dtd'>
+<pkgmetadata>
+	<maintainer type='person'>
+		<email>beatussum@protonmail.com</email>
+		<name>Mattéo Rossillol</name>
+	</maintainer>
+	<maintainer type='project'>
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		Chili is hot, just like a real chili! Spice up the login experience for
+		your users, your family and yourself. Chili reduces all the clutter and
+		leaves you with a clean, easy to use, login interface with a modern yet
+		classy touch.
+	</longdescription>
+	<longdescription lang='fr'>
+		Chili est chaud, comme un vrai chili&#xA0;!  Ajoutez du piquant à l'expérience de
+		connexion pour vos utilisateurs,  votre famille et vous-même.  Chili  réduit
+		l'encombrement et vous laisse avec une interface de connexion propre, facile
+		à utiliser, avec une touche moderne et élégante.
+	</longdescription>
+	<upstream>
+		<maintainer status='inactive'>
+			<name>Marian Arlt</name>
+			<email>marianarlt@icloud.com</email>
+		</maintainer>
+		<changelog>https://raw.githubusercontent.com/MarianArlt/kde-plasma-chili/master/CHANGELOG.md</changelog>
+		<bugs-to>https://github.com/MarianArlt/kde-plasma-chili/issues</bugs-to>
+		<remote-id type='github'>MarianArlt/kde-plasma-chili</remote-id>
+	</upstream>
+</pkgmetadata>
