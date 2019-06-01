@@ -1,6 +1,10 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Georgy Yakovlev <gyakovlev@gentoo.org> (01 June 2019)
+# not yet keyworded
+dev-java/openjdk javafx
+
 # Aaron Bauman <bman@gentoo.org> (27 May 2019)
 # plasma is not stable yet
 kde-frameworks/purpose kaccounts
