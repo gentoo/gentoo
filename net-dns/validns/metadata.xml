@@ -1,14 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>tom@whyscream.net</email>
-		<name>Tom Hendrikx</name>
-	</maintainer>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<longdescription>Validns is a standalone command line RFC 1034/1035 zone file validation tool that, in addition to basic syntactic and semantic zone checks, includes DNSSEC signature verification and NSEC/NSEC3 chain validation, as well a number of optional policy checks on the zone.</longdescription>
 </pkgmetadata>
-
