@@ -27,7 +27,7 @@ HOMEPAGE="https://btrfs.wiki.kernel.org"
 
 LICENSE="GPL-2"
 SLOT="0/${libbtrfs_soname}"
-IUSE="+convert python reiserfs static static-libs +zstd"
+IUSE="+convert doc python reiserfs static static-libs +zstd"
 
 RESTRICT=test # tries to mount repared filesystems
 
@@ -63,9 +63,11 @@ DEPEND="${RDEPEND}
 	)
 "
 BDEPEND="
-	|| ( >=app-text/asciidoc-8.6.0 dev-ruby/asciidoctor )
-	app-text/docbook-xml-dtd:4.5
-	app-text/xmlto
+	doc? (
+		|| ( >=app-text/asciidoc-8.6.0 dev-ruby/asciidoctor )
+		app-text/docbook-xml-dtd:4.5
+		app-text/xmlto
+	)
 "
 
 if [[ ${PV} == 9999 ]]; then
@@ -95,6 +97,7 @@ src_configure() {
 	local myeconfargs=(
 		--bindir="${EPREFIX}"/sbin
 		$(use_enable convert)
+		$(use_enable doc documentation)
 		$(use_enable elibc_glibc backtrace)
 		$(use_enable python)
 		$(use_enable static-libs static)
@@ -116,4 +119,7 @@ src_install() {
 	emake V=1 DESTDIR="${D}" install "${makeargs[@]}"
 	newbashcomp btrfs-completion btrfs
 	use python && python_optimize
+
+	# install prebuilt subset of manuals
+	use doc || doman Documentation/*.[58]
 }
