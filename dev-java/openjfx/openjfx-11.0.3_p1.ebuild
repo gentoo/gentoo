@@ -9,7 +9,7 @@ EGRADLE_VER="4.8"
 
 inherit java-pkg-2 multiprocessing
 
-DESCRIPTION="Java OpenJFX 8 client application platform"
+DESCRIPTION="Java OpenJFX client application platform"
 HOMEPAGE="https://openjfx.io"
 
 SRC_URI="https://hg.openjdk.java.net/${PN}/${SLOT}/rt/archive/${MY_PV}.tar.bz2 -> ${P}.tar.bz2
