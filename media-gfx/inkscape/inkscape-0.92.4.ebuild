@@ -105,7 +105,7 @@ S="${WORKDIR}/${MY_P}"
 RESTRICT="test"
 
 pkg_pretend() {
-	if use openmp; then
+	if [[ ${MERGE_TYPE} != binary ]] && use openmp; then
 		tc-has-openmp || die "Please switch to an openmp compatible compiler"
 	fi
 }
@@ -156,16 +156,4 @@ src_install() {
 
 	find "${ED}" -name "*.la" -delete || die
 	python_optimize "${ED%/}"/usr/share/${PN}/extensions
-}
-
-pkg_postinst() {
-	gnome2_icon_cache_update
-	xdg_mimeinfo_database_update
-	xdg_desktop_database_update
-}
-
-pkg_postrm() {
-	gnome2_icon_cache_update
-	xdg_mimeinfo_database_update
-	xdg_desktop_database_update
 }

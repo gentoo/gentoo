@@ -1,10 +1,10 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-PYTHON_COMPAT=( python{2_7,3_5,3_6} )
-DISTUTILS_IN_SOURCE_BUILD=1
+EAPI=7
 
+PYTHON_COMPAT=( python3_{5,6,7} )
+DISTUTILS_IN_SOURCE_BUILD=1
 inherit distutils-r1
 
 DESCRIPTION="Python module for doing approximate and phonetic matching of strings"
