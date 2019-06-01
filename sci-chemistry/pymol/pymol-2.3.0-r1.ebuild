@@ -4,9 +4,8 @@
 EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
-PYTHON_REQ_USE="tk"
 
-inherit distutils-r1 eutils xdg-utils flag-o-matic
+inherit distutils-r1 desktop eutils flag-o-matic xdg-utils
 
 DESCRIPTION="A Python-extensible molecular graphics system"
 HOMEPAGE="http://www.pymol.org/"
@@ -14,7 +13,6 @@ SRC_URI="
 	https://dev.gentoo.org/~jlec/distfiles/${PN}-1.8.4.0.png.xz
 	https://github.com/schrodinger/pymol-open-source/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	"
-# git archive -v --prefix=${P}/ master -o ${P}.tar.xz
 RESTRICT="mirror"
 LICENSE="PSF-2.2"
 SLOT="0"
@@ -26,7 +24,8 @@ DEPEND="
 	dev-libs/mmtf-cpp
 	dev-python/numpy[${PYTHON_USEDEP}]
 	dev-python/pyopengl[${PYTHON_USEDEP}]
-	media-libs/freeglut
+	dev-python/PyQt5[opengl,${PYTHON_USEDEP}]
+	dev-python/numpy[${PYTHON_USEDEP}]
 	media-libs/freetype:2
 	media-libs/glew:0=
 	media-libs/glm
