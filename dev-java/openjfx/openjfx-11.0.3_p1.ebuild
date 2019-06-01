@@ -173,13 +173,15 @@ src_configure() {
 	#FIXME: should we enable webkit? doubt so
 
 	# build is very sensetive to doc presense, take extra steps
-	local jdk_doc
-	if has_version --host-root dev-java/openjdk:${SLOT}[doc]; then
-		jdk_doc="${EROOT%/}/usr/share/doc/openjdk-${SLOT}/html/api"
-	elif has_version --host-root dev-java/java-sdk-docs:${SLOT}; then
-		jdk_doc="${EROOT%/}/usr/share/doc/java-sdk-docs-${SLOT}/html/api"
+	if use doc; then
+		local jdk_doc
+		if has_version --host-root dev-java/openjdk:${SLOT}[doc]; then
+			jdk_doc="${EROOT%/}/usr/share/doc/openjdk-${SLOT}/html/api"
+		elif has_version --host-root dev-java/java-sdk-docs:${SLOT}; then
+			jdk_doc="${EROOT%/}/usr/share/doc/java-sdk-docs-${SLOT}/html/api"
+		fi
+		[[ -r ${jdk_doc}/element-list ]] || die "JDK Docs not found, terminating build early"
 	fi
-	[[ -r ${jdk_doc}/element-list ]] || die "JDK Docs not found, terminating build early"
 
 	cat <<- _EOF_ > "${S}"/gradle.properties
 		COMPILE_TARGETS = linux
