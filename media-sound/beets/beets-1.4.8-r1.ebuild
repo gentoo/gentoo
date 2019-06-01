@@ -3,24 +3,24 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_{5,6}} )
-PYTHON_REQ_USE="sqlite"
-inherit distutils-r1
-
 MY_PV=${PV/_beta/-beta.}
 MY_P=${PN}-${MY_PV}
 
-DESCRIPTION="A media library management system for obsessive-compulsive music geeks"
+PYTHON_COMPAT=( python3_{5,6} )
+PYTHON_REQ_USE="sqlite"
+inherit distutils-r1
+
+DESCRIPTION="Media library management system for obsessive-compulsive music geeks"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 HOMEPAGE="http://beets.io/ https://pypi.org/project/beets/"
 
 KEYWORDS="~amd64 ~x86"
 SLOT="0"
 LICENSE="MIT"
-IUSE="badfiles chromaprint doc discogs ffmpeg gstreamer icu lastfm mpd replaygain test thumbnail webserver"
+IUSE="badfiles chromaprint discogs doc ffmpeg gstreamer icu lastfm mpd replaygain test thumbnail webserver"
 
 RDEPEND="
-	dev-python/jellyfish[${PYTHON_USEDEP}]
+	>=dev-python/jellyfish-0.7.1[${PYTHON_USEDEP}]
 	dev-python/munkres[${PYTHON_USEDEP}]
 	>=dev-python/python-musicbrainz-ngs-0.4[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
