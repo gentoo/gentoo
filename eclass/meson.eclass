@@ -1,4 +1,4 @@
-# Copyright 2017-2018 Gentoo Authors
+# Copyright 2017-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: meson.eclass
@@ -154,6 +154,7 @@ _meson_create_cross_file() {
 	objcpp = $(_meson_env_array "$(tc-getPROG OBJCXX c++)")
 	pkgconfig = '$(tc-getPKG_CONFIG)'
 	strip = $(_meson_env_array "$(tc-getSTRIP)")
+	windres = $(_meson_env_array "$(tc-getRC)")
 
 	[properties]
 	c_args = $(_meson_env_array "${CFLAGS} ${CPPFLAGS}")
