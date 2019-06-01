@@ -1,0 +1,12 @@
+DEFINED_PHASES=install nofetch postinst postrm unpack
+DESCRIPTION=A Metroidvania-style action-platformer set in a magical Mexican-inspired world
+EAPI=7
+HOMEPAGE=http://guacamelee.com
+KEYWORDS=-* ~amd64 ~x86
+LICENSE=all-rights-reserved
+RDEPEND=media-libs/libsdl2[abi_x86_32,joystick,opengl,sound,threads,video] virtual/opengl[abi_x86_32]
+RESTRICT=bindist fetch splitdebug
+SLOT=0
+SRC_URI=Guacamelee_linux_1393037377.sh
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	unpacker	3cd8bad0d31e525cd26be1bfa4e61631	xdg-utils	14d00d009167652b1fa363e55effe213
+_md5_=a9aa7c1257c7c14a1073935eeb35dfcc
