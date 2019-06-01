@@ -26,6 +26,6 @@
 		</flag>
 	</use>
 	<upstream>
-		<remote-id type="github">kubernetes-sigs/cri-o</remote-id>
+		<remote-id type="github">cri-o/cri-o</remote-id>
 	</upstream>
 </pkgmetadata>
