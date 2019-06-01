@@ -1,0 +1,23 @@
+From 2f74649395f0242d08b95572b7b30246457b1d6b Mon Sep 17 00:00:00 2001
+From: Ty Young <BlueGoliath@users.noreply.github.com>
+Date: Mon, 3 Dec 2018 20:34:07 -0600
+Subject: [PATCH] Remove final from HashSet instance
+
+Removes final from HashSet instance at about line 107 which causes build failure
+---
+ .../main/groovy/com/sun/javafx/gradle/NativeCompileTask.groovy  | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/buildSrc/src/main/groovy/com/sun/javafx/gradle/NativeCompileTask.groovy b/buildSrc/src/main/groovy/com/sun/javafx/gradle/NativeCompileTask.groovy
+index 10a85d62d1..13d573fe6e 100644
+--- a/buildSrc/src/main/groovy/com/sun/javafx/gradle/NativeCompileTask.groovy
++++ b/buildSrc/src/main/groovy/com/sun/javafx/gradle/NativeCompileTask.groovy
+@@ -102,7 +102,7 @@ class NativeCompileTask extends DefaultTask {
+         updateFiles();
+         def source = project.files(allFiles);
+         boolean forceCompile = false;
+-        final Set<File> files = new HashSet<File>();
++        Set<File> files = new HashSet<File>();
+         source.each { File file ->
+             final Map fileData = dependencies.get(file.toString());
+             final boolean isModified = fileData == null ||
