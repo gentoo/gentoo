@@ -63,7 +63,7 @@ DEPEND="${RDEPEND}
 	)
 "
 BDEPEND="
-	>=app-text/asciidoc-8.6.0
+	|| ( >=app-text/asciidoc-8.6.0 dev-ruby/asciidoctor )
 	app-text/docbook-xml-dtd:4.5
 	app-text/xmlto
 "
