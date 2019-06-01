@@ -3,7 +3,7 @@
 
 EAPI=7
 
-EGIT_COMMIT="0ad9b6bf2aea4ba37e8c9738feabec61343ba175"
+EGIT_COMMIT="14fdcd0dedaec2fa89ccb58840e297ecb98cc617"
 EGO_PN="github.com/containers/${PN}"
 
 inherit golang-vcs-snapshot systemd
@@ -21,7 +21,7 @@ RESTRICT="test"
 
 COMMON_DEPEND="
 	app-crypt/gpgme:=
-	>=app-emulation/cri-o-1.13.0
+	app-emulation/conmon
 	>=app-emulation/runc-1.0.0_rc6
 	dev-libs/libassuan:=
 	dev-libs/libgpg-error:=
