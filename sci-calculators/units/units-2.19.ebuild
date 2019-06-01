@@ -1,9 +1,9 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 PYTHON_COMPAT=( python{2_7,3_5,3_6} )
-inherit eutils python-single-r1
+inherit python-single-r1
 
 DESCRIPTION="Unit conversion program"
 HOMEPAGE="https://www.gnu.org/software/units/units.html"
@@ -11,7 +11,7 @@ SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 
 LICENSE="FDL-1.3 GPL-3"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm hppa ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE="+units_cur"
 REQUIRED_USE="units_cur? ( ${PYTHON_REQUIRED_USE} )"
 
