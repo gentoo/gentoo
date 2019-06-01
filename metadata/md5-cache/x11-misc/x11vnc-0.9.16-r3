@@ -1,0 +1,14 @@
+BDEPEND=>=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=configure install prepare
+DEPEND=>=net-libs/libvncserver-0.9.8[ssl=] x11-libs/libX11 x11-libs/libXcursor x11-libs/libXext >=x11-libs/libXtst-1.1.0 ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:= ) ) xcomposite? ( x11-libs/libXcomposite ) xdamage? ( x11-libs/libXdamage ) xfixes? ( x11-libs/libXfixes ) xinerama? ( x11-libs/libXinerama ) xrandr? ( x11-libs/libXrandr ) zeroconf? ( >=net-dns/avahi-0.6.4 ) x11-base/xorg-proto x11-libs/libXt
+DESCRIPTION=VNC server for real X displays
+EAPI=7
+HOMEPAGE=https://libvnc.github.io/
+IUSE=crypt fbcon libressl ssl +xcomposite +xdamage +xfixes xinerama +xrandr zeroconf
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~sparc-solaris ~x64-solaris ~x86-solaris
+LICENSE=GPL-2+-with-openssl-exception
+RDEPEND=>=net-libs/libvncserver-0.9.8[ssl=] x11-libs/libX11 x11-libs/libXcursor x11-libs/libXext >=x11-libs/libXtst-1.1.0 ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:= ) ) xcomposite? ( x11-libs/libXcomposite ) xdamage? ( x11-libs/libXdamage ) xfixes? ( x11-libs/libXfixes ) xinerama? ( x11-libs/libXinerama ) xrandr? ( x11-libs/libXrandr ) zeroconf? ( >=net-dns/avahi-0.6.4 ) dev-lang/tk:0
+SLOT=0
+SRC_URI=https://github.com/LibVNC/x11vnc/archive/0.9.16.tar.gz -> x11vnc-0.9.16.tar.gz
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
+_md5_=fd4fc0c75adc58844c51f2feb20097fb
