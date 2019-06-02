@@ -338,6 +338,11 @@ src_prepare() {
 		sed -i -e 's/netbsd\*/netbsd*|solaris*/' Makefile.SH || die
 	fi
 
+	if [[ ${CHOST} == *-darwin* ]] ; then
+		# fix install_name (soname) not to reference $D
+		sed -i -e '/install_name `pwd/s/`pwd`/\\$(shrpdir)/' Makefile.SH || die
+	fi
+
 	default
 }
 
