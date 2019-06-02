@@ -1,9 +1,9 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit cmake-utils gnome2-utils xdg-utils
+inherit cmake-utils desktop xdg
 
 DESCRIPTION="Game Boy Advance emulator written in C"
 HOMEPAGE="https://mgba.io"
@@ -39,6 +39,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 src_prepare() {
+	xdg_environment_reset
 	cmake-utils_src_prepare
 
 	# Get rid of any bundled stuff we don't want
@@ -86,7 +87,7 @@ src_install() {
 		dobin ../${P}_build/qt/${PN}-qt
 		doman doc/${PN}-qt.6
 		domenu res/${PN}-qt.desktop
-		for size in 16 24 32 48 64 96 128 256; do
+		for size in 16 24 32 48 64 96 128 256 ; do
 			newicon -s ${size} res/${PN}-${size}.png ${PN}.png
 		done
 	fi
@@ -100,20 +101,18 @@ src_install() {
 
 pkg_preinst() {
 	if use qt5 ; then
-		gnome2_icon_savelist
+		xdg_pkg_preinst
 	fi
 }
 
 pkg_postinst() {
 	if use qt5 ; then
-		xdg_desktop_database_update
-		gnome2_icon_cache_update
+		xdg_pkg_postinst
 	fi
 }
 
 pkg_postrm() {
 	if use qt5 ; then
-		xdg_desktop_database_update
-		gnome2_icon_cache_update
+		xdg_pkg_postrm
 	fi
 }
