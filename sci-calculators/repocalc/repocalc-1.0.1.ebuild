@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="ncurses-based RPN calculator for the terminal"
 HOMEPAGE="https://github.com/drdonahue/repocalc"
-SRC_URI="https://github.com/drdonahue/repocalc/archive/${P}.tar.gz"
+SRC_URI="https://github.com/drdonahue/repocalc/releases/download/${P}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
