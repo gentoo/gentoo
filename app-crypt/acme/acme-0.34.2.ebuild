@@ -42,6 +42,7 @@ DEPEND="
 	)
 	test? (
 		${RDEPEND}
+		dev-python/nose[${PYTHON_USEDEP}]
 		dev-python/pytest[${PYTHON_USEDEP}]
 		dev-python/pytest-xdist[${PYTHON_USEDEP}]
 	)
