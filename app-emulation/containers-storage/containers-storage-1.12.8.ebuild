@@ -1,10 +1,10 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 EGO_VENDOR=(
-	"github.com/pquerna/ffjson af8b230fcd2007c7095168ca8ab94c68b60840c6"
+	"github.com/pquerna/ffjson e517b90714f7c0eabe6d2e570a5886ae077d6db6"
 )
 
 inherit golang-vcs-snapshot
@@ -16,7 +16,7 @@ LICENSE="Apache-2.0"
 SLOT="0"
 IUSE="btrfs +device-mapper ostree test"
 EGO_PN="${HOMEPAGE#*//}"
-EGIT_COMMIT="17c7d1fee5603ccf6dd97edc14162fc1510e7e23"
+EGIT_COMMIT="v${PV}"
 SRC_URI="https://${EGO_PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz
 	${EGO_VENDOR_URI}"
 RDEPEND="
@@ -106,5 +106,5 @@ src_install() {
 }
 
 src_test() {
-	GOPATH="${S}" GOCACHE=off unshare -m emake -C "${S}/src/${EGO_PN}" local-test-unit
+	GOPATH="${S}" unshare -m emake -C "${S}/src/${EGO_PN}" FLAGS="-v -work -x" local-test-unit || die
 }
