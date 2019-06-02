@@ -10646,7 +10646,7 @@ www-apps/icingaweb2 2.6.2 2.6.3: Icinga Web 2 - Frontend for icinga2
 www-apps/icingaweb2-module-director 1.6.2: Icinga Web 2 plugin for configuration
 www-apps/icingaweb2-module-graphite 1.0.1-r1: Icinga Web 2 plugin for Graphite
 www-apps/icingaweb2-module-pnp4nagios 1.0.1: Icinga Web 2 plugin for pnp4nagios
-www-apps/ikiwiki 3.20170111: A wiki compiler
+www-apps/ikiwiki 3.20170111 3.20190228: A wiki compiler
 www-apps/mediawiki 1.32.0: The MediaWiki wiki web application (as used on wikipedia.org)
 www-apps/nanoblogger 3.2.3: Small and simple weblog engine written in Bash for the command-line
 www-apps/nikola 7.8.8 7.8.15: A static website and blog generator
