@@ -13,9 +13,9 @@ HOMEPAGE="https://www.netfilter.org/projects/iptables/"
 SRC_URI="https://www.netfilter.org/projects/iptables/files/${P}.tar.bz2"
 
 LICENSE="GPL-2"
-# Subslot tracks libxtables as that's the one other packages generally link
-# against and iptables changes.  Will have to revisit if other sonames change.
-SLOT="0/12"
+# Subslot reflects PV when libxtables and/or libip*tc was changed
+# the last time.
+SLOT="0/1.8.3"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sh ~sparc ~x86"
 IUSE="conntrack ipv6 netlink nftables pcap static-libs"
 
