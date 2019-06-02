@@ -3,11 +3,11 @@
 
 EAPI=7
 
-inherit flag-o-matic multilib toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="An embeddable Javascript interpreter in C."
 HOMEPAGE="
-	http://mujs.com/
+	https://mujs.com/
 	https://github.com/ccxvii/mujs/
 "
 SRC_URI="https://github.com/ccxvii/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
