@@ -5,11 +5,11 @@ DESCRIPTION=Idle management daemon for Wayland
 EAPI=7
 HOMEPAGE=https://github.com/swaywm/swayidle
 IUSE=elogind fish-completion +man systemd zsh-completion
-KEYWORDS=~amd64 ~arm64 ~x86
+KEYWORDS=amd64 arm64 x86
 LICENSE=MIT
 RDEPEND=dev-libs/wayland elogind? ( >=sys-auth/elogind-237[policykit] ) systemd? ( >=sys-apps/systemd-237[policykit] ) !<=gui-wm/sway-1.0_beta1 !~gui-wm/sway-1.0_beta2[swayidle]
 REQUIRED_USE=?? ( elogind systemd )
 SLOT=0
 SRC_URI=https://github.com/swaywm/swayidle/archive/1.3.tar.gz -> swayidle-1.3.tar.gz
 _eclasses_=meson	340492f765f55914375a07f726621c52	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	08e17157a6807add7db1f8d01e7e391f	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
-_md5_=2fee6767df9e656ae5954e44262579b3
+_md5_=2e3132f6cb46ba1079cb93f0aac49364
