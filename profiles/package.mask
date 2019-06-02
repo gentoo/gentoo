@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (2 Jun 2019)
+# Test version with all new Gentoo defaults. 
+# Fixes bug 676946 bug may break other things.
+# Masked for testing.
+=dev-ruby/rubygems-3.0.3-r1
+
 # Fabian Groffen <grobian@gentoo.org> (30 May 2019)
 # Pre-release for upcoming 0.80
 # You're invited to try this version out (and report bugs), but beware,
