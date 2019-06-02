@@ -25,29 +25,29 @@ done
 # distfiles that bazel uses for the workspace, will be copied to basel-distdir
 bazel_external_uris="
 	http://www.kurims.kyoto-u.ac.jp/~ooura/fft.tgz -> oourafft-20061228.tgz
-	https://bitbucket.org/eigen/eigen/get/9f48e814419e.tar.gz -> eigen-9f48e814419e.tar.gz
-	https://github.com/abseil/abseil-cpp/archive/389ec3f906f018661a5308458d623d01f96d7b23.tar.gz -> abseil-cpp-389ec3f906f018661a5308458d623d01f96d7b23.tar.gz
-	https://github.com/bazelbuild/rules_closure/archive/dbb96841cc0a5fb2664c37822803b06dab20c7d1.tar.gz -> bazelbuild-rules_closure-dbb96841cc0a5fb2664c37822803b06dab20c7d1.tar.gz
-	https://github.com/bazelbuild/rules_docker/archive/a9bb1dab84cdf46e34d1b34b53a17bda129b5eba.tar.gz -> rules_docker-a9bb1dab84cdf46e34d1b34b53a17bda129b5eba.tar.gz
-	https://github.com/google/double-conversion/archive/3992066a95b823efc8ccc1baf82a1cfc73f6e9b8.zip -> double-conversion-3992066a95b823efc8ccc1baf82a1cfc73f6e9b8.zip
+	https://bitbucket.org/eigen/eigen/get/a0d250e79c79.tar.gz -> eigen-a0d250e79c79.tar.gz
+	https://github.com/abseil/abseil-cpp/archive/daf381e8535a1f1f1b8a75966a74e7cca63dee89.tar.gz -> abseil-cpp-daf381e8535a1f1f1b8a75966a74e7cca63dee89.tar.gz
+	https://github.com/bazelbuild/bazel-skylib/archive/0.6.0.tar.gz -> bazel-skylib-0.6.0.tar.gz
+	https://github.com/bazelbuild/rules_closure/archive/cf1e44edb908e9616030cc83d085989b8e6cd6df.tar.gz -> bazelbuild-rules_closure-cf1e44edb908e9616030cc83d085989b8e6cd6df.tar.gz
+	https://github.com/bazelbuild/rules_swift/releases/download/0.9.0/rules_swift.0.9.0.tar.gz -> bazelbuild-rules_swift.0.9.0.tar.gz
+	https://github.com/bazelbuild/rules_docker/archive/b8ff6a85ec359db3fd5657accd3e524daf12016d.tar.gz -> rules_docker-b8ff6a85ec359db3fd5657accd3e524daf12016d.tar.gz
 	https://github.com/google/farmhash/archive/816a4ae622e964763ca0862d9dbd19324a1eaf45.tar.gz -> farmhash-816a4ae622e964763ca0862d9dbd19324a1eaf45.tar.gz
-	https://github.com/google/gemmlowp/archive/38ebac7b059e84692f53e5938f97a9943c120d98.zip -> gemmlowp-38ebac7b059e84692f53e5938f97a9943c120d98.zip
+	https://github.com/google/gemmlowp/archive/12fed0cd7cfcd9e169bf1925bc3a7a58725fdcc3.zip -> gemmlowp-12fed0cd7cfcd9e169bf1925bc3a7a58725fdcc3.zip
 	https://github.com/google/highwayhash/archive/fd3d9af80465e4383162e4a7c5e2f406e82dd968.tar.gz -> highwayhash-fd3d9af80465e4383162e4a7c5e2f406e82dd968.tar.gz
-	https://github.com/nlopezgi/bazel-toolchains/archive/3f8c58fe530fedc446de04673bc1e32985887dea.tar.gz -> bazel-toolchains-3f8c58fe530fedc446de04673bc1e32985887dea.tar.gz
+	https://github.com/nlopezgi/bazel-toolchains/archive/94d31935a2c94fe7e7c7379a0f3393e181928ff7.tar.gz -> bazel-toolchains-94d31935a2c94fe7e7c7379a0f3393e181928ff7.tar.gz
 	cuda? (
 		https://github.com/nvidia/nccl/archive/f93fe9bfd94884cec2ba711897222e0df5569a53.tar.gz -> nvidia-nccl-f93fe9bfd94884cec2ba711897222e0df5569a53.tar.gz
 		https://github.com/NVlabs/cub/archive/1.8.0.zip -> cub-1.8.0.zip
 	)
 	python? (
 		https://github.com/intel/ARM_NEON_2_x86_SSE/archive/1200fe90bb174a6224a525ee60148671a786a71f.tar.gz -> ARM_NEON_2_x86_SSE-1200fe90bb174a6224a525ee60148671a786a71f.tar.gz
-		https://mirror.bazel.build/docs.python.org/2.7/_sources/license.rst.txt -> tensorflow-python-license.rst.txt
+		http://mirror.tensorflow.org/docs.python.org/2.7/_sources/license.rst.txt -> tensorflow-1.14.0-python-license.rst.txt
 		https://pypi.python.org/packages/bc/cc/3cdb0a02e7e96f6c70bd971bc8a90b8463fda83e264fa9c5c1c98ceabd81/backports.weakref-1.0rc1.tar.gz
 	)"
 
 SRC_URI="https://github.com/${PN}/${PN}/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz
 		${bazel_external_uris}"
 
-# cuda-10.1 / cudnn 7.5 is not supported yet
 RDEPEND="
 	app-arch/snappy
 	dev-db/lmdb
@@ -65,12 +65,11 @@ RDEPEND="
 	>=net-libs/grpc-1.16.0
 	net-misc/curl
 	sys-libs/zlib
+	dev-python/wrapt
+	>=sys-apps/hwloc-2
 	cuda? (
-		|| (
-			( =dev-util/nvidia-cuda-toolkit-10.0*[profiler] =dev-libs/cudnn-7.4* )
-			( =dev-util/nvidia-cuda-toolkit-9.2*[profiler] =dev-libs/cudnn-7.1* )
-			( =dev-util/nvidia-cuda-toolkit-9.1*[profiler] =dev-libs/cudnn-7.0* )
-		)
+		>=dev-util/nvidia-cuda-toolkit-9.1[profiler]
+		dev-libs/cudnn
 	)
 	mpi? ( virtual/mpi )
 	python? (
@@ -85,7 +84,7 @@ RDEPEND="
 		dev-python/six[${PYTHON_USEDEP}]
 		dev-python/termcolor[${PYTHON_USEDEP}]
 		dev-python/grpcio[${PYTHON_USEDEP}]
-		net-libs/google-cloud-cpp
+		>=net-libs/google-cloud-cpp-0.9.0
 		>=sci-libs/keras-applications-1.0.6[${PYTHON_USEDEP}]
 		>=sci-libs/keras-preprocessing-1.0.5[${PYTHON_USEDEP}]
 		>=sci-visualization/tensorboard-1.13.0[${PYTHON_USEDEP}]
@@ -103,9 +102,8 @@ BDEPEND="
 	dev-python/mock
 	dev-lang/swig
 	dev-python/cython
-	<=dev-util/bazel-0.22.0
 	cuda? (
-		>=dev-util/nvidia-cuda-toolkit-8.0[profiler]
+		>=dev-util/nvidia-cuda-toolkit-9.1[profiler]
 	)
 	!python? ( dev-lang/python )
 	python? (
@@ -115,6 +113,9 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 S="${WORKDIR}/${MY_P}"
 
+PATCHES=(
+	"${FILESDIR}/tensorflow-1.14_rc0-0001-systemlibs-unbundle-enum34.patch"
+)
 DOCS=( AUTHORS CONTRIBUTING.md ISSUE_TEMPLATE.md README.md RELEASE.md )
 CHECKREQS_MEMORY="5G"
 CHECKREQS_DISK_BUILD="5G"
@@ -187,10 +188,8 @@ src_configure() {
 		export TF_CUDA_CLANG=0
 		export TF_NEED_TENSORRT=0
 		if use cuda; then
-			export CUDA_TOOLKIT_PATH="${EPREFIX%/}/opt/cuda"
-			export CUDNN_INSTALL_PATH="${EPREFIX%/}/opt/cuda"
+			export TF_CUDA_PATHS="${EPREFIX%/}/opt/cuda"
 			export GCC_HOST_COMPILER_PATH="$(cuda_gccdir)/$(tc-getCC)"
-			export TF_NCCL_VERSION="1"
 			export TF_CUDA_VERSION="$(cuda_toolkit_version)"
 			export TF_CUDNN_VERSION="$(cuda_cudnn_version)"
 			einfo "Setting CUDA version: $TF_CUDA_VERSION"
@@ -208,10 +207,13 @@ src_configure() {
 			com_googlesource_code_re2
 			curl
 			cython
+			double_conversion
+			enum34_archive
 			flatbuffers
 			gast_archive
 			gif_archive
 			grpc
+			hwloc
 			icu
 			jpeg
 			jsoncpp_git
@@ -220,6 +222,7 @@ src_configure() {
 			nasm
 			nsync
 			org_sqlite
+			pasta
 			pcre
 			png_archive
 			protobuf_archive
@@ -227,6 +230,7 @@ src_configure() {
 			snappy
 			swig
 			termcolor_archive
+			wrapt
 			zlib_archive
 		)
 
@@ -237,6 +241,7 @@ src_configure() {
 		./configure || die
 
 		echo 'build --config=noaws --config=nohdfs --config=noignite --config=nokafka' >> .bazelrc || die
+		echo 'build --define tensorflow_mkldnn_contraction_kernel=0' >> .bazelrc || die
 	}
 	if use python; then
 		python_foreach_impl run_in_build_dir do_configure
@@ -319,9 +324,11 @@ src_install() {
 	insinto /usr/$(get_libdir)/pkgconfig
 	doins ${PN}.pc
 
-	dolib.so bazel-bin/tensorflow/lib${PN}_framework.so
-	dolib.so bazel-bin/tensorflow/lib${PN}.so
-	dolib.so bazel-bin/tensorflow/lib${PN}_cc.so
+	for l in libtensorflow{,_framework,_cc}.so; do
+		dolib.so bazel-bin/tensorflow/${l}
+		dolib.so bazel-bin/tensorflow/${l}.$(ver_cut 1)
+		dolib.so bazel-bin/tensorflow/${l}.$(ver_cut 1-3)
+	done
 
 	einstalldocs
 }
