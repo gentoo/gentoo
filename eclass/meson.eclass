@@ -41,7 +41,7 @@ esac
 
 if [[ -z ${_MESON_ECLASS} ]]; then
 
-inherit ninja-utils python-utils-r1 toolchain-funcs
+inherit multiprocessing ninja-utils python-utils-r1 toolchain-funcs
 
 fi
 
@@ -77,6 +77,12 @@ fi
 # @DESCRIPTION:
 # Optional meson arguments as Bash array; this should be defined before
 # calling meson_src_configure.
+
+# @VARIABLE: emesontestargs
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Optional meson test arguments as Bash array; this should be defined before
+# calling meson_src_test.
 
 
 read -d '' __MESON_ARRAY_PARSER <<"EOF"
@@ -246,12 +252,27 @@ meson_src_compile() {
 }
 
 # @FUNCTION: meson_src_test
+# @USAGE: [extra meson test arguments]
 # @DESCRIPTION:
 # This is the meson_src_test function.
 meson_src_test() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	eninja -C "${BUILD_DIR}" test
+	local mesontestargs=(
+		--verbose
+		-C "${BUILD_DIR}"
+		)
+	[[ -n ${NINJAOPTS} || -n ${MAKEOPTS} ]] &&
+		mesontestargs+=(
+			--num-processes "$(makeopts_jobs ${NINJAOPTS:-${MAKEOPTS}})"
+			)
+
+	# Append additional arguments from ebuild
+	mesontestargs+=("${emesontestargs[@]}")
+
+	set -- meson test "${mesontestargs[@]}" "$@"
+	echo "$@" >&2
+	"$@" || die "tests failed"
 }
 
 # @FUNCTION: meson_src_install
