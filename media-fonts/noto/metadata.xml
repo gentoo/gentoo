@@ -13,4 +13,7 @@
 		<email>pacho@gentoo.org</email>
 		<name>Pacho Ramos</name>
 	</maintainer>
+	<use>
+        	<flag name="extra">Install full upstream font set</flag>
+	</use>
 </pkgmetadata>
