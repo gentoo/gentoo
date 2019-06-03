@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -44,9 +44,7 @@ DEPEND="${RDEPEND}
 	dev-lang/perl
 	"
 
-PATCHES=(
-	"${FILESDIR}/${PN}-no_pEp_auto_download.patch"
-)
+PATCHES=( "${FILESDIR}"/enigmail-no_pEp_auto_download.patch )
 
 src_compile() {
 	emake ipc public ui package lang stdlib
