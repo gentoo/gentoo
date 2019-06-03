@@ -42,55 +42,6 @@
 # considerably
 =app-portage/portage-utils-0.80_pre20190530
 
-# Mikle Kolyada <zlogene@gentoo.org> (30 May 2019)
-# Start adding texlive-2019 (still may be terribly broken)
-=app-text/texlive-core-2019
-=dev-libs/ptexenc-1.3.7_p20190410
-=app-text/dvipsk-5.999_p20190410
-=app-text/ttf2pk2-2.0_p20190410
-=app-text/ps2pkm-1.8_p20190410
-=dev-tex/bibtexu-3.71_p20190410
-=dev-libs/kpathsea-6.3.1_p20190410
-=dev-texlive/texlive-basic-2019
-=dev-texlive/texlive-bibtexextra-2019
-=dev-texlive/texlive-context-2019
-=dev-texlive/texlive-fontsextra-2019
-=dev-texlive/texlive-fontsrecommended-2019
-=dev-texlive/texlive-fontutils-2019
-=dev-texlive/texlive-formatsextra-2019
-=dev-texlive/texlive-games-2019
-=dev-texlive/texlive-humanities-2019
-=dev-texlive/texlive-langarabic-2019
-=dev-texlive/texlive-langchinese-2019
-=dev-texlive/texlive-langcjk-2019
-=dev-texlive/texlive-langcyrillic-2019
-=dev-texlive/texlive-langczechslovak-2019
-=dev-texlive/texlive-langenglish-2019
-=dev-texlive/texlive-langeuropean-2019
-=dev-texlive/texlive-langfrench-2019
-=dev-texlive/texlive-langgerman-2019
-=dev-texlive/texlive-langgreek-2019
-=dev-texlive/texlive-langitalian-2019
-=dev-texlive/texlive-langjapanese-2019
-=dev-texlive/texlive-langkorean-2019
-=dev-texlive/texlive-langother-2019
-=dev-texlive/texlive-langpolish-2019
-=dev-texlive/texlive-langportuguese-2019
-=dev-texlive/texlive-langspanish-2019
-=dev-texlive/texlive-latex-2019
-=dev-texlive/texlive-latexextra-2019
-=dev-texlive/texlive-latexrecommended-2019
-=dev-texlive/texlive-luatex-2019
-=dev-texlive/texlive-mathscience-2019
-=dev-texlive/texlive-metapost-2019
-=dev-texlive/texlive-music-2019
-=dev-texlive/texlive-pictures-2019
-=dev-texlive/texlive-plaingeneric-2019
-=dev-texlive/texlive-pstricks-2019
-=dev-texlive/texlive-publishers-2019
-=dev-texlive/texlive-xetex-2019
-=app-text/texlive-2019
-
 # Zac Medico <zmedico@gentoo.org> (31 May 2019)
 # Upstream is dead and there are multiple security vulnerabilities.
 # Removal in 30 days. Bug #687100.
