@@ -4,6 +4,7 @@
 EAPI=7
 
 XORG_DOC=doc
+XORG_EAUTORECONF="yes"
 inherit xorg-3 multilib flag-o-matic
 EGIT_REPO_URI="https://gitlab.freedesktop.org/xorg/xserver.git"
 
