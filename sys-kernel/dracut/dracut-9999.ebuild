@@ -19,7 +19,7 @@ HOMEPAGE="https://dracut.wiki.kernel.org"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="selinux"
+IUSE="+doc selinux"
 
 # Tests need root privileges, bug #298014
 RESTRICT="test"
@@ -46,10 +46,12 @@ RDEPEND="
 DEPEND=">=sys-apps/kmod-23"
 
 BDEPEND="
-	app-text/asciidoc
-	app-text/docbook-xml-dtd:4.5
-	>=app-text/docbook-xsl-stylesheets-1.75.2
-	>=dev-libs/libxslt-1.1.26
+	doc? (
+		app-text/asciidoc
+		app-text/docbook-xml-dtd:4.5
+		>=app-text/docbook-xsl-stylesheets-1.75.2
+		>=dev-libs/libxslt-1.1.26
+	)
 	virtual/pkgconfig
 	"
 
@@ -67,6 +69,7 @@ src_configure() {
 		--sysconfdir="${EPREFIX}/etc"
 		--bashcompletiondir="$(get_bashcompdir)"
 		--systemdsystemunitdir="$(systemd_get_systemunitdir)"
+		$(usex doc "" "--disable-documentation")
 	)
 
 	tc-export CC PKG_CONFIG
@@ -86,8 +89,10 @@ src_install() {
 	insinto /etc/logrotate.d
 	newins dracut.logrotate dracut
 
-	docinto html
-	dodoc dracut.html
+	if use doc; then
+		docinto html
+		dodoc dracut.html
+	fi
 }
 
 pkg_postinst() {
