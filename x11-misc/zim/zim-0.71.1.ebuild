@@ -9,8 +9,8 @@ inherit xdg-utils distutils-r1 gnome2-utils virtualx
 
 DESCRIPTION="A desktop wiki"
 HOMEPAGE="
-	http://zim-wiki.org/
-	https://github.com/zim-desktop-wiki/
+	https://zim-wiki.org/
+	https://github.com/zim-desktop-wiki/zim-desktop-wiki
 "
 SRC_URI="https://github.com/${PN}-desktop-wiki/${PN}-desktop-wiki/archive/${PV/_/-}.tar.gz -> ${P}.tar.gz"
 
