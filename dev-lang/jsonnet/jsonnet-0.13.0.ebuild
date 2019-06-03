@@ -30,6 +30,11 @@ PATCHES=(
 	"${FILESDIR}/jsonnet-0.13.0-glibc-2.29.patch"
 )
 
+src_prepare() {
+	default
+	use python && distutils-r1_src_prepare
+}
+
 src_compile() {
 	emake CC="$(tc-getCC)" CXX="$(tc-getCXX)" \
 		jsonnet \
