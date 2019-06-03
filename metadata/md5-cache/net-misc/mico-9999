@@ -9,6 +9,5 @@ LICENSE=GPL-2 LGPL-2
 RDEPEND=gtk? ( x11-libs/gtk+:2 ) postgres? ( dev-db/postgresql:* ) ssl? ( dev-libs/openssl:0= ) tcl? ( dev-lang/tcl:0 ) X? ( x11-libs/libXt )
 RESTRICT=test
 SLOT=0
-SRC_URI=https://github.com/haubi/mico/compare/gentoo.patch -> mico-9999-gentoo.patch
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	darcs	ab4c6e55cad1010076a2a4db27b70b0c	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	a09389deba2c0a7108b581e02c7cecbf	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
-_md5_=be26029b64c7132534b49191e5104991
+_md5_=c1e07ee0cdce3c4af7a52f3d3d968140
