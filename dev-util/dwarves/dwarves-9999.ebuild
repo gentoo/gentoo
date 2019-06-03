@@ -5,7 +5,7 @@ EAPI=6
 
 EGIT_REPO_URI="https://git.kernel.org/pub/scm/devel/pahole/pahole.git"
 
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python3_6 )
 inherit multilib cmake-utils git-r3 python-single-r1
 
 DESCRIPTION="pahole (Poke-a-Hole) and other DWARF2 utilities"
@@ -34,6 +34,4 @@ src_test() { :; }
 
 src_install() {
 	cmake-utils_src_install
-	python_fix_shebang "${D}"/usr/bin/ostra-cg \
-		"${D}"/usr/share/dwarves/runtime/python/ostra.py
 }
