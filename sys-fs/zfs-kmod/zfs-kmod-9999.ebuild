@@ -63,6 +63,8 @@ pkg_setup() {
 			DEVTMPFS
 	"
 
+	use arm64 && CONFIG_CHECK="${CONFIG_CHECK} !PREEMPT"
+
 	kernel_is -lt 5 && CONFIG_CHECK="${CONFIG_CHECK} IOSCHED_NOOP"
 
 	kernel_is -ge 2 6 32 || die "Linux 2.6.32 or newer required"
