@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit toolchain-funcs multiprocessing
 
@@ -18,17 +18,16 @@ SRC_URI="
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="gnat_2016 gnat_2017 gnat_2018 +gnat_2019"
+IUSE="gnat_2017 gnat_2018 +gnat_2019"
 
-DEPEND="gnat_2016? ( dev-lang/gnat-gpl:4.9.4 )
-	gnat_2017? ( dev-lang/gnat-gpl:6.3.0 )
+DEPEND="gnat_2017? ( dev-lang/gnat-gpl:6.3.0 )
 	gnat_2018? ( dev-lang/gnat-gpl:7.3.1 )
 	gnat_2019? ( dev-lang/gnat-gpl:8.3.1 )"
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}"/${MYP}
 
-REQUIRED_USE="!gnat_2016 ^^ ( gnat_2017 gnat_2018 gnat_2019 )"
+REQUIRED_USE="^^ ( gnat_2017 gnat_2018 gnat_2019 )"
 PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
 
 src_prepare() {

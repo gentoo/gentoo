@@ -299,10 +299,6 @@ sci-libs/linux-gpib php
 # Globally mask pie use flag. Selectively unmask on specific profiles.
 sys-devel/gcc pie
 
-# Mike Gilbert <floppym@gentoo.org> (28 Apr 2017)
-# Needs sandbox-2.11 (masked)
->=www-client/chromium-59 tcmalloc
-
 # Pawel Hajdan jr <phajdan.jr@gentoo.org> (02 Mar 2017)
 # Known build issue with system libvpx:
 # https://bugs.gentoo.org/show_bug.cgi?id=611394
