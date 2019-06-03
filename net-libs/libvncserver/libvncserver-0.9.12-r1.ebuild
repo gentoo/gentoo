@@ -10,7 +10,9 @@ DESCRIPTION="library for creating vnc servers"
 HOMEPAGE="https://libvnc.github.io/"
 SRC_URI="https://github.com/LibVNC/${PN}/archive/${MY_PN}-${PV}.tar.gz"
 
-LICENSE="GPL-2"
+# libvncserver/tightvnc-filetransfer/*: GPL-2, but we don't build it
+# common/d3des.*: https://github.com/LibVNC/libvncserver/issues/88
+LICENSE="GPL-2+ LGPL-2.1+ BSD MIT"
 # no sub slot wanted (yet), see #578958
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
