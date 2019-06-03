@@ -21,3 +21,8 @@ DEPEND="!<app-text/dvipsk-5.996_p20160523
 >=app-text/texlive-core-2019[luajittex?]"
 RDEPEND="${DEPEND}"
 TEXLIVE_MODULE_BINSCRIPTS="texmf-dist/scripts/simpdftex/simpdftex texmf-dist/scripts/texlive/rungs.tlu"
+
+src_prepare() {
+	default
+	rm -fr "${WORKDIR}"/texmf-dist/tex/generic/dehyph-exptl/ || die # part of texlive-langgerman
+}
