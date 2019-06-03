@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -20,9 +20,11 @@ DEPEND=">=app-text/openjade-1.3.1
 	dev-texlive/texlive-plaingeneric"
 
 src_compile() {
+	fmt_call="$(has_version '>=app-text/texlive-core-2019' \
+         && echo "fmtutil-user" || echo "fmtutil")"
 	VARTEXFONTS="${T}/fonts" emake
 	VARTEXFONTS="${T}/fonts" TEXMFHOME="${S}" env -u TEXINPUTS \
-		fmtutil --cnffile "${FILESDIR}/format.jadetex.cnf" --fmtdir "${S}/texmf-var/web2c" --all\
+		$fmt_call --cnffile "${FILESDIR}/format.jadetex.cnf" --fmtdir "${S}/texmf-var/web2c" --all\
 				|| die "failed to build format"
 }
 
