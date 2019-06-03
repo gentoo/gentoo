@@ -8,16 +8,15 @@ inherit flag-o-matic toolchain-funcs autotools
 if [[ ${PV} == 9999 ]]; then
 	EDARCS_REPOSITORY="http://www.mico.org/mico-darcs-repository"
 	inherit darcs
-	SRC_URI="https://github.com/haubi/mico/compare/gentoo.patch -> ${P}-gentoo.patch"
-	PATCHES="${DISTDIR}/${P}-gentoo.patch"
+	SRC_URI=""
 else
 	PATCH_VER=20170529
 	SRC_URI="
 		http://www.mico.org/${P}.tar.gz
 		https://dev.gentoo.org/~haubi/distfiles/${P}-gentoo-patches-${PATCH_VER}.tar.xz
 	"
-	PATCHES="${WORKDIR}/patches"
 fi
+PATCHES="${WORKDIR}/patches"
 
 DESCRIPTION="A freely available and fully compliant implementation of the CORBA standard"
 HOMEPAGE="http://www.mico.org/"
@@ -45,6 +44,8 @@ BDEPEND="
 
 if [[ ${PV} == 9999 ]]; then
 	src_unpack() {
+		mkdir patches || die
+		wget -O patches/gentoo.patch "https://github.com/haubi/mico/compare/gentoo.patch" || die
 		darcs_src_unpack
 		default
 	}

@@ -9,13 +9,15 @@ inherit flag-o-matic toolchain-funcs libtool texlive-common
 
 MY_P=${PN%-core}-${TL_SOURCE_VERSION}-source
 
+PATCHLEVEL=1
+
 DESCRIPTION="A complete TeX distribution"
 HOMEPAGE="https://tug.org/texlive/"
 SLOT="0"
 LICENSE="GPL-2 LPPL-1.3c TeX"
 
 SRC_URI="mirror://gentoo/${MY_P}.tar.xz
-	https://dev.gentoo.org/~zlogene/${P}-poppler076.patch.xz"
+	mirror://gentoo/${PN}-patches-${PV}-${PATCHLEVEL}.tar.xz"
 
 TL_CORE_BINEXTRA_MODULES="
 	a2ping adhocfilelist arara asymptote bundledoc checklistings ctan_chk
@@ -83,6 +85,7 @@ COMMON_DEPEND="${MODULAR_X_DEPEND}
 	!dev-tex/luatex
 	sys-libs/zlib
 	>=media-libs/libpng-1.2.43-r2:0=
+	media-libs/gd[png]
 	>=app-text/poppler-0.58.0:=
 	>=x11-libs/cairo-1.12
 	>=x11-libs/pixman-0.18
@@ -143,7 +146,7 @@ src_prepare() {
 
 	default
 
-	eapply "${WORKDIR}"/${P}-poppler076.patch
+	eapply "${WORKDIR}"/patches
 
 	sed -i \
 		-e "s,/usr/include /usr/local/include.*echo \$KPATHSEA_INCLUDES.*,${EPREFIX}/usr/include\"," \
@@ -184,6 +187,7 @@ src_configure() {
 		--with-system-zziplib \
 		--with-system-libpaper \
 		--with-system-gmp \
+		--with-system-gd \
 		--with-system-mpfr \
 		--without-texinfo \
 		--disable-dialog \
