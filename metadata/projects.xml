@@ -675,6 +675,10 @@
     <name>Gentoo Common Lisp Project</name>
     <url>https://wiki.gentoo.org/wiki/Project:Common_Lisp</url>
     <description>The Gentoo Common Lisp Project handles Common Lisp related packages in the Gentoo package tree.</description>
+    <member>
+      <email>ulm@gentoo.org</email>
+      <name>Ulrich Müller</name>
+    </member>
   </project>
   <project>
     <email>containers@gentoo.org</email>
