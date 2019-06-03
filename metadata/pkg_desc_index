@@ -52,7 +52,7 @@ app-admin/drush 6.7.0-r1: Command line shell and scripting interface for Drupal
 app-admin/durep 0.9-r4: A perl script designed for monitoring disk usage in a more visual way than du
 app-admin/eclean-kernel 0.4.3: Remove outdated built kernels
 app-admin/emacs-updater 1.15: Rebuild Emacs packages
-app-admin/eselect 1.4.12 1.4.13: Gentoo's multi-purpose configuration and management tool
+app-admin/eselect 1.4.12 1.4.13 1.4.14: Gentoo's multi-purpose configuration and management tool
 app-admin/evtxtools 1.1.1-r1: Read, decode and dump Windows Vista/2008/7 event log file
 app-admin/fam 2.7.0-r7 2.7.0_p17_p2: FAM, the File Alteration Monitor
 app-admin/fetchlog 1.4-r1: Displays the last new messages of a logfile
@@ -635,7 +635,7 @@ app-emacs/emacs-daemon 0.22: Gentoo support for Emacs running as a server in the
 app-emacs/emacs-jabber 0.8.92: A Jabber client for Emacs
 app-emacs/emacs-wget 0.5.0-r1: Wget interface for Emacs
 app-emacs/erobot 2.1.0-r1: Battle-bots for Emacs!
-app-emacs/eselect-mode 1.4.12 1.4.13: Emacs major mode for editing eselect files
+app-emacs/eselect-mode 1.4.12 1.4.13 1.4.14: Emacs major mode for editing eselect files
 app-emacs/ess 17.11: Emacs Speaks Statistics
 app-emacs/evil 1.0.8 1.2.13: Extensible vi layer for Emacs
 app-emacs/f 0.20.0: Modern API for working with files and directories in Emacs
