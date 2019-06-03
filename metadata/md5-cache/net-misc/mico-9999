@@ -1,6 +1,6 @@
-BDEPEND=>=sys-devel/flex-2.5.2 >=sys-devel/bison-1.22 >=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+BDEPEND=>=sys-devel/flex-2.5.2 >=sys-devel/bison-1.22 >=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 dev-vcs/darcs net-misc/rsync
 DEFINED_PHASES=configure install postinst prepare unpack
-DEPEND=gtk? ( x11-libs/gtk+:2 ) postgres? ( dev-db/postgresql:* ) ssl? ( dev-libs/openssl:0= ) tcl? ( dev-lang/tcl:0 ) X? ( x11-libs/libXt ) dev-vcs/darcs net-misc/rsync
+DEPEND=gtk? ( x11-libs/gtk+:2 ) postgres? ( dev-db/postgresql:* ) ssl? ( dev-libs/openssl:0= ) tcl? ( dev-lang/tcl:0 ) X? ( x11-libs/libXt )
 DESCRIPTION=A freely available and fully compliant implementation of the CORBA standard
 EAPI=7
 HOMEPAGE=http://www.mico.org/
@@ -10,5 +10,5 @@ RDEPEND=gtk? ( x11-libs/gtk+:2 ) postgres? ( dev-db/postgresql:* ) ssl? ( dev-li
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/haubi/mico/compare/gentoo.patch -> mico-9999-gentoo.patch
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	darcs	87c29dece3467022cfeee8654d38b9f4	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	a09389deba2c0a7108b581e02c7cecbf	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	darcs	ab4c6e55cad1010076a2a4db27b70b0c	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	a09389deba2c0a7108b581e02c7cecbf	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
 _md5_=be26029b64c7132534b49191e5104991
