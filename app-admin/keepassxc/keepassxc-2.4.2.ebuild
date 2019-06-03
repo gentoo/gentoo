@@ -29,6 +29,7 @@ IUSE="autotype browser debug keeshare +network test yubikey"
 RDEPEND="
 	app-crypt/argon2:=
 	dev-libs/libgcrypt:=
+	>=dev-libs/libsodium-1.0.12:=
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
 	dev-qt/qtgui:5
