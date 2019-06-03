@@ -31,7 +31,10 @@ DEPEND="${RDEPEND}
 	sys-apps/util-linux[caps]
 	virtual/pkgconfig"
 
-PATCHES="${FILESDIR}/xcp-interface-reconfigure-2.3.2.patch"
+PATCHES="
+	${FILESDIR}/xcp-interface-reconfigure-2.3.2.patch
+	${FILESDIR}/0005-datapath-conntrack-fix-include-for-IP6_DEFRAG_CONNTR.patch
+"
 
 CONFIG_CHECK="~NET_CLS_ACT ~NET_CLS_U32 ~NET_SCH_INGRESS ~NET_ACT_POLICE ~IPV6 ~TUN"
 MODULE_NAMES="openvswitch(net:${S}/datapath/linux)"

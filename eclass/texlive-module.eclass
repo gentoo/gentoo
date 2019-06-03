@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: texlive-module.eclass
@@ -320,6 +320,10 @@ texlive-module_src_compile() {
 		esac
 	done
 
+	# Determine texlive-core version for fmtutil call
+        fmt_call="$(has_version '>=app-text/texlive-core-2019' \
+         && echo "fmtutil-user" || echo "fmtutil")"
+
 	# Build format files
 	for i in texmf-dist/fmtutil/format*.cnf; do
 		if [ -f "${i}" ]; then
@@ -327,14 +331,14 @@ texlive-module_src_compile() {
 			[ -d texmf-var ] || mkdir texmf-var
 			[ -d texmf-var/web2c ] || mkdir texmf-var/web2c
 			VARTEXFONTS="${T}/fonts" TEXMFHOME="${S}/texmf:${S}/texmf-dist:${S}/texmf-var"\
-				env -u TEXINPUTS fmtutil --cnffile "${i}" --fmtdir "${S}/texmf-var/web2c" --all\
+				env -u TEXINPUTS $fmt_call --cnffile "${i}" --fmtdir "${S}/texmf-var/web2c" --all\
 				|| die "failed to build format ${i}"
 		fi
 	done
 
 	# Delete ls-R files, these should not be created but better be certain they
 	# do not end up being installed.
-	find . -name 'ls-R' -delete
+	find . -name 'ls-R' -delete || die
 }
 
 # @FUNCTION: texlive-module_src_install
