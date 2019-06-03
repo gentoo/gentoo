@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -26,7 +26,10 @@ RDEPEND="${DEPEND}
 	!=dev-texlive/texlive-htmlxml-2007*"
 
 src_compile() {
-	TEXMFHOME="${S}" fmtutil --cnffile "${FILESDIR}/format.${PN}.cnf" --fmtdir "${S}/texmf-var/web2c" --all\
+	fmt_call="$(has_version '>=app-text/texlive-core-2019' \
+	  && echo "fmtutil-user" || echo "fmtutil")"
+
+	TEXMFHOME="${S}" $fmt_call --cnffile "${FILESDIR}/format.${PN}.cnf" --fmtdir "${S}/texmf-var/web2c" --all\
 			|| die "failed to build format ${PN}"
 }
 
