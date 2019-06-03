@@ -21,6 +21,6 @@ src_install() {
 	default
 
 	if ! use static-libs; then
-		rm "${D}"/usr/$(get_libdir)/libmd.la || die
+		rm "${ED}"/usr/$(get_libdir)/libmd.la || die
 	fi
 }
