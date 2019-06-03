@@ -1,0 +1,138 @@
+diff -ur a/install.py b/install.py
+--- a/install.py	2009-02-14 14:09:21.000000000 +0300
++++ b/install.py	2019-06-03 11:10:33.175947261 +0300
+@@ -240,14 +240,14 @@
+         print '    !!! PyGTK .................... Not found'
+         required_found = False
+     try:
+-        import Image
+-        assert Image.VERSION >= '1.1.5'
++        from PIL import Image
++        assert Image.__version__ >= '1.1.5'
+         print '    Python Imaging Library ....... OK'
+     except ImportError:
+         print '    !!! Python Imaging Library ... Not found'
+         required_found = False
+     except AssertionError:
+-        print '    !!! Python Imaging Library ... version', Image.VERSION,
++        print '    !!! Python Imaging Library ... version', Image.__version__,
+         print 'found'
+         print '    !!! Python Imaging Library 1.1.5 or higher is required'
+         required_found = False
+diff -ur a/mime/comicthumb b/mime/comicthumb
+--- a/mime/comicthumb	2008-11-10 01:17:46.000000000 +0300
++++ b/mime/comicthumb	2019-06-03 11:05:09.745126163 +0300
+@@ -22,7 +22,7 @@
+ import subprocess
+ 
+ try:
+-    import Image
++    from PIL import Image
+ except ImportError:
+     print '! Could not import the Image module (PIL).'
+     print __doc__
+diff -ur a/src/comix.py b/src/comix.py
+--- a/src/comix.py	2009-03-06 19:54:01.000000000 +0300
++++ b/src/comix.py	2019-06-03 11:11:24.057298938 +0300
+@@ -49,12 +49,12 @@
+     sys.exit(1)
+ 
+ try:
+-    import Image
+-    assert Image.VERSION >= '1.1.5'
++    from PIL import Image
++    assert Image.__version__ >= '1.1.5'
+ except AssertionError:
+     print "You don't have the required version of the Python Imaging",
+     print 'Library (PIL) installed.'
+-    print 'Installed PIL version is: %s' % Image.VERSION
++    print 'Installed PIL version is: %s' % Image.__version__
+     print 'Required PIL version is: 1.1.5 or higher'
+     sys.exit(1)
+ except ImportError:
+diff -ur a/src/histogram.py b/src/histogram.py
+--- a/src/histogram.py	2008-08-29 17:36:05.000000000 +0400
++++ b/src/histogram.py	2019-06-03 11:06:03.369284723 +0300
+@@ -1,9 +1,9 @@
+ """histogram.py - Draw histograms (RGB) from pixbufs."""
+ 
+ import gtk
+-import Image
+-import ImageDraw
+-import ImageOps
++from PIL import Image
++from PIL import ImageDraw
++from PIL import ImageOps
+ 
+ import image
+ 
+diff -ur a/src/image.py b/src/image.py
+--- a/src/image.py	2009-01-12 23:34:58.000000000 +0300
++++ b/src/image.py	2019-06-03 11:06:44.393345456 +0300
+@@ -1,10 +1,10 @@
+ """image.py - Various image manipulations."""
+ 
+ import gtk
+-import Image
+-import ImageEnhance
+-import ImageOps
+-import ImageStat
++from PIL import Image
++from PIL import ImageEnhance
++from PIL import ImageOps
++from PIL import ImageStat
+ 
+ from preferences import prefs
+ 
+diff -ur a/src/library.py b/src/library.py
+--- a/src/library.py	2009-01-11 23:54:42.000000000 +0300
++++ b/src/library.py	2019-06-03 11:07:08.938586674 +0300
+@@ -8,8 +8,8 @@
+ import gtk
+ import gobject
+ import pango
+-import Image
+-import ImageDraw
++from PIL import Image
++from PIL import ImageDraw
+ 
+ import archive
+ import encoding
+diff -ur a/src/thumbbar.py b/src/thumbbar.py
+--- a/src/thumbbar.py	2008-11-21 01:27:00.000000000 +0300
++++ b/src/thumbbar.py	2019-06-03 11:07:42.689168067 +0300
+@@ -4,8 +4,8 @@
+ 
+ import gtk
+ import gobject
+-import Image
+-import ImageDraw
++from PIL import Image
++from PIL import ImageDraw
+ 
+ import image
+ from preferences import prefs
+diff -ur a/src/thumbnail.py b/src/thumbnail.py
+--- a/src/thumbnail.py	2008-12-12 19:04:28.000000000 +0300
++++ b/src/thumbnail.py	2019-06-03 11:07:59.712948031 +0300
+@@ -15,7 +15,7 @@
+ import tempfile
+ 
+ import gtk
+-import Image
++from PIL import Image
+ 
+ import archive
+ import constants
+diff -ur a/src/thumbremover.py b/src/thumbremover.py
+--- a/src/thumbremover.py	2009-01-11 23:32:30.000000000 +0300
++++ b/src/thumbremover.py	2019-06-03 11:08:14.792867255 +0300
+@@ -7,7 +7,7 @@
+ 
+ import gtk
+ import pango
+-import Image
++from PIL import Image
+ 
+ import encoding
+ import labels
