@@ -8539,7 +8539,7 @@ net-analyzer/traceroute-nanog 6.4.2-r1: Traceroute with AS lookup, TOS support, 
 net-analyzer/trafshow 5.2.3: Full screen visualization of the network traffic
 net-analyzer/upnpscan 0.4-r3: Scans the network for UPNP capable devices
 net-analyzer/vnstat 1.17: Console-based network traffic monitor that keeps statistics of network usage
-net-analyzer/wireshark 2.6.7 3.0.1: A network protocol analyzer formerly known as ethereal
+net-analyzer/wireshark 2.6.7 3.0.1 3.0.2: A network protocol analyzer formerly known as ethereal
 net-analyzer/xnetload 1.11.3-r1: displays a count and a graph of the traffic over a specified network connection
 net-analyzer/yersinia 0.7.3: A layer 2 attack framework
 net-analyzer/zabbix 2.2.16: ZABBIX is software for monitoring of your applications, network and servers
