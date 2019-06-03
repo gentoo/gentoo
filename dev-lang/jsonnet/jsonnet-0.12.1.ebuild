@@ -27,6 +27,7 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 PATCHES=(
 	"${FILESDIR}/jsonnet-0.12.1-makefile.patch"
 	"${FILESDIR}/jsonnet-0.12.1-dont-call-make-from-setuppy.patch"
+	"${FILESDIR}/jsonnet-0.13.0-glibc-2.29.patch"
 )
 
 src_compile() {
