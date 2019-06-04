@@ -17,7 +17,7 @@ IUSE="examples igbinary json sasl +session test"
 
 COMMON_DEPEND=">=dev-libs/libmemcached-1.0.14[sasl?]
 	sys-libs/zlib
-	igbinary? ( dev-php/igbinary[php_targets_php7-0?,php_targets_php7-1?,php_targets_php7-2?,php_targets_php7-3?] )
+	igbinary? ( dev-php/igbinary[php_targets_php7-0(-)?,php_targets_php7-1(-)?,php_targets_php7-2(-)?,php_targets_php7-3(-)?] )
 "
 
 DEPEND="
