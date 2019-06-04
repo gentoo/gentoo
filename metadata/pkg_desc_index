@@ -2878,7 +2878,7 @@ dev-java/xstream 1.4.8-r2: A text-processing Java API that serialize objects to 
 dev-java/xz-java 1.8: Implementation of xz data compression in pure java
 dev-java/yanfs 1.0: Yet Another NFS - a Java NFS library
 dev-java/zeus-jscl 1.64-r1: Zeus Java Swing Components Library
-dev-lang/R 3.2.2 3.4.1: Language and environment for statistical computing and graphics
+dev-lang/R 3.4.1: Language and environment for statistical computing and graphics
 dev-lang/bff 1.0.5: A brainfuck interpreter
 dev-lang/cfortran 4.4-r2: Header file allowing to call Fortran routines from C and C++
 dev-lang/clojure 1.8.0: A dynamic programming language that targets the Java Virtual Machine
