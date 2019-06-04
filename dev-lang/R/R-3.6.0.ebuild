@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit bash-completion-r1 autotools eutils flag-o-matic fortran-2 multilib versionator toolchain-funcs
+inherit bash-completion-r1 autotools eutils flag-o-matic fortran-2 multilib toolchain-funcs
 
 # latest git commit for R bash completion: https://github.com/deepayan/rcompletion
 BCPV=78d6830e28ea90a046da79a9b4f70c39594bb6d6
@@ -25,10 +25,11 @@ CDEPEND="
 	app-arch/xz-utils:0=
 	app-text/ghostscript-gpl
 	>=dev-libs/libpcre-8.35:3=
+	net-libs/libtirpc
 	net-misc/curl
 	virtual/blas:0
 	|| ( >=sys-apps/coreutils-8.15 sys-freebsd/freebsd-bin app-misc/realpath )
-	cairo? ( x11-libs/cairo:0=[X] x11-libs/pango:0= )
+	cairo? ( x11-libs/cairo:0=[X=] x11-libs/pango:0= )
 	icu? ( dev-libs/icu:= )
 	jpeg? ( virtual/jpeg:0 )
 	lapack? ( virtual/lapack:0 )
