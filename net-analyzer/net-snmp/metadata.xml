@@ -7,6 +7,7 @@
 </maintainer>
 <use>
 <flag name="elf">Enable the use of elf utils to check uptime on some systems</flag>
+<flag name="kmem">Enable usage of /dev/kmem</flag>
 <flag name="mfd-rewrites">Use MFD rewrites of mib modules where available</flag>
 <flag name="netlink">Use <pkg>dev-libs/libnl</pkg> to fetch TCP statistics instead of using /proc/net/tcp (Linux only).</flag>
 <flag name="pci">Use libpci (from <pkg>sys-apps/pciutils</pkg>) to look up network interface description. This feature is only available on Linux.</flag>

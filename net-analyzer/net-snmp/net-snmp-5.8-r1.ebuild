@@ -24,7 +24,7 @@ S=${WORKDIR}/${P/_/.}
 LICENSE="HPND BSD GPL-2"
 SLOT="0/35"
 KEYWORDS="alpha amd64 ~arm arm64 ~hppa ia64 ~mips ppc ppc64 s390 ~sh ~sparc x86"
-IUSE="X bzip2 doc elf ipv6 libressl lm_sensors mfd-rewrites minimal mysql netlink pci perl python rpm selinux smux ssl tcpd ucd-compat zlib"
+IUSE="X bzip2 doc elf kmem ipv6 libressl lm_sensors mfd-rewrites minimal mysql netlink pci perl python rpm selinux smux ssl tcpd ucd-compat zlib"
 
 COMMON_DEPEND="
 	ssl? (
@@ -107,6 +107,7 @@ src_configure() {
 		$(use_enable ucd-compat ucd-snmp-compatibility) \
 		$(use_with bzip2) \
 		$(use_with elf) \
+		$(use_with kmem kmem-usage) \
 		$(use_with mysql) \
 		$(use_with netlink nl) \
 		$(use_with pci) \
