@@ -45,6 +45,14 @@ PATCHES=(
 
 src_prepare() {
 	echo 'bin_PROGRAMS = randstat' >> contrib/Makefile.am || die
+
+	# rngd_pkcs11.c needs to be linked against -lcrypto #684228
+	# See: https://github.com/nhorman/rng-tools/pull/61
+	if use pkcs11; then
+		sed -e '/rngd_pkcs11.c$/ a rngd_LDADD\t+= -lcrypto' \
+			-i Makefile.am || die
+	fi
+
 	default
 
 	mv README.md README || die
