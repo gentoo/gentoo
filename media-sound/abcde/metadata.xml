@@ -6,6 +6,7 @@
 		<name>Gentoo Sound project</name>
 	</maintainer>
 	<use>
+		<flag name="aiff">Enable support for Audio Interchange File Format (AIFF) output encoding</flag>
 		<flag name="id3tag">Support ID3, ID3v2 tagging of audio files</flag>
 		<flag name="mac">Enable support for Monkey's Audio files</flag>
 		<flag name="normalize">Add support for normalizing audio file volume levels</flag>

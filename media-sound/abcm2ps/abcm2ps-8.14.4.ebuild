@@ -14,10 +14,12 @@ SLOT="0"
 KEYWORDS="amd64 ~ppc x86"
 IUSE="examples pango"
 
-BDEPEND="
-	virtual/pkgconfig
-"
-DEPEND="pango? ( x11-libs/pango media-libs/freetype:2 )"
+BDEPEND="virtual/pkgconfig"
+DEPEND="
+	pango? (
+		media-libs/freetype:2
+		x11-libs/pango
+	)"
 RDEPEND="${DEPEND}"
 
 src_configure() {
