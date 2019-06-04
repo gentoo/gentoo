@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 inherit bash-completion-r1 golang-vcs-snapshot
 
 KEYWORDS="~amd64"
@@ -12,7 +12,7 @@ SLOT="0"
 IUSE="ostree selinux"
 EGO_PN="${HOMEPAGE#*//}"
 EGIT_COMMIT="v${PV}"
-GIT_COMMIT="873f001"
+GIT_COMMIT="547bd9a"
 SRC_URI="https://${EGO_PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 RDEPEND="app-crypt/gpgme:=
 	app-emulation/skopeo
@@ -40,6 +40,7 @@ src_prepare() {
 }
 
 src_compile() {
+	export -n GOCACHE XDG_CACHE_HOME
 	GOPATH="${WORKDIR}/${P}" emake all
 }
 
