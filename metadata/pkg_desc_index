@@ -10091,7 +10091,7 @@ sys-boot/os-prober 1.76-r1: Utility to detect other OSs on a set of drives
 sys-boot/plymouth 0.9.3-r1 0.9.4-r1: Graphical boot animation (splash) and logger
 sys-boot/refind 0.10.4-r2: The UEFI Boot Manager by Rod Smith
 sys-boot/shim 15.5-r1: Fedora's signed UEFI shim
-sys-boot/syslinux 5.10 6.04_pre1: SYSLINUX, PXELINUX, ISOLINUX, EXTLINUX and MEMDISK bootloaders
+sys-boot/syslinux 4.07 5.10 6.04_pre1: SYSLINUX, PXELINUX, ISOLINUX, EXTLINUX and MEMDISK bootloaders
 sys-boot/unetbootin 661: UNetbootin installs Linux/BSD distributions to a partition or USB drive
 sys-boot/woeusb 3.1.5 3.2.12: Creates windows installer on usb media from an iso image
 sys-cluster/ceph 12.2.8-r1 12.2.11: Ceph distributed filesystem
