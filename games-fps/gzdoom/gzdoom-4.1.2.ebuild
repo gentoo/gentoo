@@ -9,7 +9,7 @@ DESCRIPTION="A modder-friendly OpenGL source port based on the DOOM engine"
 HOMEPAGE="https://zdoom.org"
 SRC_URI="https://github.com/coelckers/${PN}/archive/g${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="BSD BZIP2 cephes DUMB-0.9.3 GPL-3 LGPL-3 MIT"
+LICENSE="BSD BZIP2 DUMB-0.9.3 GPL-3 LGPL-3 MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="fluidsynth gtk gtk2 openal openmp"
