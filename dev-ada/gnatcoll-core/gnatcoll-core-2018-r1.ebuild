@@ -17,13 +17,11 @@ KEYWORDS="~amd64 ~x86"
 IUSE="gnat_2016 gnat_2017 +gnat_2018 gnat_2019 +shared static-libs static-pic"
 
 RDEPEND="
-	dev-ada/libgpr[gnat_2016?,gnat_2017?,gnat_2018?,gnat_2019?]
+	dev-ada/libgpr[gnat_2016(-)?,gnat_2017(-)?,gnat_2018(-)?,gnat_2019(-)?]
 	dev-ada/libgpr[shared?,static-libs?,static-pic?]
 	!dev-ada/gnatcoll"
 DEPEND="${RDEPEND}
-	dev-ada/gprbuild
-	gnat_2016? ( dev-ada/gprbuild[gnat_2016] )
-	dev-ada/gprbuild[gnat_2017?,gnat_2018?,gnat_2019?]"
+	dev-ada/gprbuild[gnat_2016(-)?,gnat_2017(-)?,gnat_2018(-)?,gnat_2019(-)?]"
 
 REQUIRED_USE="^^ ( gnat_2016 gnat_2017 gnat_2018 gnat_2019 )"
 
