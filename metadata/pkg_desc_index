@@ -7021,7 +7021,7 @@ kde-misc/kio-gdrive 1.2.6: KIO Slave for Google Drive service
 kde-misc/kmarkdownwebview 0.5.5: KPart for rendering Markdown content
 kde-misc/krename 5.0.0-r1: Powerful batch file renamer
 kde-misc/krusader 2.7.1: Advanced twin-panel (commander-style) file-manager with many extras
-kde-misc/kshutdown 4.2: Shutdown manager for desktop environments like KDE Plasma
+kde-misc/kshutdown 5.0: Shutdown manager for desktop environments like KDE Plasma
 kde-misc/kwebkitpart 1.4.0_pre20190110: WebKit KPart for Konqueror
 kde-misc/latte-dock 0.8.7: Elegant dock, based on KDE Frameworks
 kde-misc/openofficeorg-thumbnail 1.0.0-r500: Thumbnail-plugin that generates thumbnails for ODF files
@@ -7986,7 +7986,7 @@ media-plugins/mediastreamer-amr 0.0.1: mediastreamer plugin: add AMR Narrow Band
 media-plugins/mediastreamer-bcg729 1.0.0: Backported G729 implementation for Linphone
 media-plugins/mediastreamer-ilbc 2.0.3: mediastreamer plugin: add iLBC support
 media-plugins/mediastreamer-x264 1.4.1: mediastreamer plugin: add H264 support
-media-plugins/qmmp-plugin-pack 1.2.4 1.3.0: A set of extra plugins for Qmmp
+media-plugins/qmmp-plugin-pack 1.3.0: A set of extra plugins for Qmmp
 media-plugins/rev-plugins 0.7.1: REV LADSPA plugins package. A stereo reverb plugin based on the well-known greverb
 media-plugins/swh-lv2 1.0.16: Large collection of LV2 audio plugins/effects
 media-plugins/swh-plugins 0.4.15-r3: Large collection of LADSPA audio plugins/effects
@@ -8215,7 +8215,7 @@ media-sound/pympd 0.08.1-r1: a Rhythmbox-like PyGTK+ client for Music Player Dae
 media-sound/qastools 0.21.0: Qt5 GUI ALSA tools: mixer, configuration browser
 media-sound/qjackctl 0.4.5: Qt GUI to control the JACK Audio Connection Kit and ALSA sequencer connections
 media-sound/qmidiroute 0.4.0: QMidiRoute is a filter/router for MIDI events
-media-sound/qmmp 1.2.6 1.3.2: Qt5-based audio player with winamp/xmms skins support
+media-sound/qmmp 1.3.2: Qt5-based audio player with winamp/xmms skins support
 media-sound/qsynth 0.5.5: A Qt application to control FluidSynth
 media-sound/qtscrobbler 0.11_pre20130123: Updates last.fm profiles using information from supported portable music players
 media-sound/quimup 1.4.3: A Qt5 client for the music player daemon (MPD) written in C++
@@ -9267,7 +9267,7 @@ perl-core/Time-Local 1.230.0-r1: Implements timelocal() and timegm()
 perl-core/Unicode-Collate 1.250.0: Unicode Collate Algorithm
 sci-astronomy/celestia 1.6.1-r1: OpenGL 3D space simulator
 sci-astronomy/erfa 1.2.0 1.4.0: Essential Routines for Fundamental Astronomy
-sci-astronomy/kstars 3.1.1 3.2.2: Desktop Planetarium
+sci-astronomy/kstars 3.2.2: Desktop Planetarium
 sci-astronomy/predict 2.2.3-r2: Satellite tracking and orbital prediction
 sci-astronomy/pyephem 3.7.5.3 3.7.6.0: Astronomical routines for the python programming language
 sci-astronomy/stellarium 0.18.2: 3D photo-realistic skies in real time
