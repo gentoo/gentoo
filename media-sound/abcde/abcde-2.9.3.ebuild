@@ -11,13 +11,18 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 # Enable MP3 related flags by default
-IUSE="aac cdparanoia cdr flac +id3tag +lame mac musepack musicbrainz normalize opus replaygain speex vorbis wavpack"
+IUSE="aac cdr flac +id3tag +lame mac musepack musicbrainz normalize opus replaygain speex vorbis wavpack"
 
 # See `grep :: abcde-musicbrainz-tool` output for USE musicbrainz dependencies
 RDEPEND="
 	media-sound/cd-discid
 	net-misc/wget
 	virtual/eject
+	|| (
+		dev-libs/libcdio-paranoia
+		media-sound/cdparanoia
+		media-sound/dagrab
+	)
 	aac? (
 		media-libs/faac
 		|| (
@@ -25,10 +30,6 @@ RDEPEND="
 			media-video/atomicparsley-wez
 		)
 	)
-	cdparanoia? ( || (
-		dev-libs/libcdio-paranoia
-		media-sound/cdparanoia
-	) )
 	cdr? ( virtual/cdrtools )
 	flac? ( media-libs/flac )
 	id3tag? (
