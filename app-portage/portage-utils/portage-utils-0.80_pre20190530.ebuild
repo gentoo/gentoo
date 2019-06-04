@@ -18,7 +18,7 @@ if [[ ${PV} == *9999 ]]; then
 else
 	SRC_URI="mirror://gentoo/${P}.tar.xz
 		https://dev.gentoo.org/~grobian/distfiles/${P}.tar.xz"
-	KEYWORDS="~amd64 ~arm64 ~hppa ~m68k ~mips ~ppc64 ~s390 ~sh ~sparc ~ppc-aix ~x64-cygwin ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+	KEYWORDS="~amd64 ~hppa ~m68k ~mips ~ppc64 ~s390 ~sh ~sparc ~ppc-aix ~x64-cygwin ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 fi
 
 RDEPEND="dev-libs/iniparser:0"
