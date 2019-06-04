@@ -8635,7 +8635,7 @@ net-ftp/atftp 0.7-r5 0.7-r6: Advanced TFTP implementation client/server
 net-ftp/cmdftp 0.9.8: Light weight, yet robust command line FTP client with shell-like functions.
 net-ftp/filezilla 3.39.0: FTP client with lots of useful features and an intuitive interface
 net-ftp/frox 0.7.18-r5: A transparent ftp proxy
-net-ftp/ftp 0.17-r7 0.17.23.0.2.1: Standard Linux FTP client
+net-ftp/ftp 0.17.23.0.2.1: Standard Linux FTP client
 net-ftp/ftpbase 0.01-r2: FTP layout package
 net-ftp/gftp 2.0.19-r3: Gnome based FTP Client
 net-ftp/gproftpd 8.3.2-r1: GTK frontend to proftpd
@@ -10086,13 +10086,13 @@ sys-block/zram-init 8.1: Scripts to support compressed swap devices or ramdisks 
 sys-boot/efibootmgr 14 15 16: User-space application to modify the EFI boot manager
 sys-boot/gnu-efi 3.0.3: Library for build EFI Applications
 sys-boot/grub 2.02-r3: GNU GRUB boot loader
-sys-boot/lilo 22.8-r2 24.0-r1: Standard Linux boot loader
+sys-boot/lilo 24.0-r1: Standard Linux boot loader
 sys-boot/mbr 1.1.11-r1: A replacement master boot record for IBM-PC compatible computers
 sys-boot/os-prober 1.76-r1: Utility to detect other OSs on a set of drives
 sys-boot/plymouth 0.9.3-r1 0.9.4-r1: Graphical boot animation (splash) and logger
 sys-boot/refind 0.10.4-r2: The UEFI Boot Manager by Rod Smith
 sys-boot/shim 15.5-r1: Fedora's signed UEFI shim
-sys-boot/syslinux 3.86 4.07 5.10 6.04_pre1: SYSLINUX, PXELINUX, ISOLINUX, EXTLINUX and MEMDISK bootloaders
+sys-boot/syslinux 5.10 6.04_pre1: SYSLINUX, PXELINUX, ISOLINUX, EXTLINUX and MEMDISK bootloaders
 sys-boot/unetbootin 661: UNetbootin installs Linux/BSD distributions to a partition or USB drive
 sys-boot/woeusb 3.1.5 3.2.12: Creates windows installer on usb media from an iso image
 sys-cluster/ceph 12.2.8-r1 12.2.11: Ceph distributed filesystem
