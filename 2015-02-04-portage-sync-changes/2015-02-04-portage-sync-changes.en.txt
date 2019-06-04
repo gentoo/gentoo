@@ -4,7 +4,7 @@ Content-Type: text/plain
 Posted: 2015-02-02
 Revision: 1
 News-Item-Format: 1.0
-Display-If-Installed: sys-apps/portage
+Display-If-Installed: <sys-apps/portage-2.3.62
 
 There is a new plug-in sync system in >=sys-apps/portage-2.2.16.
 This system will allow third party modules to be easily installed.  Look
