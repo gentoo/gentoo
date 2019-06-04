@@ -10391,7 +10391,7 @@ sys-process/daemontools 0.76-r7: Collection of tools for managing UNIX services
 sys-process/dcron 4.5-r1: A cute little cron from Matt Dillon
 sys-process/fcron 3.2.1-r1: A command scheduler with extended capabilities over cron and anacron
 sys-process/ftop 1.0: Monitor open files and filesystems
-sys-process/glances 2.11.1 3.0.2: CLI curses based monitoring tool
+sys-process/glances 2.11.1 3.0.2 3.1.0: CLI curses based monitoring tool
 sys-process/htop 2.2.0: interactive process viewer
 sys-process/incron 0.5.10-r1: inotify based cron daemon
 sys-process/iotop 0.6: Top-like UI used to show which process is using the I/O
