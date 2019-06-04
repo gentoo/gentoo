@@ -3217,6 +3217,7 @@ media-radio/unixcw:ncurses - Enables building the curses based morse code tutor 
 media-radio/xastir:festival - Enable text to speech synthesizer
 media-radio/xastir:gdal - Support for some further map formats
 media-radio/xastir:geotiff - Install geotiff support. Allows using USGS DRG topo maps or other types of geotiff mapes/images
+media-sound/abcde:aiff - Enable support for Audio Interchange File Format (AIFF) output encoding
 media-sound/abcde:id3tag - Support ID3, ID3v2 tagging of audio files
 media-sound/abcde:mac - Enable support for Monkey's Audio files
 media-sound/abcde:normalize - Add support for normalizing audio file volume levels
