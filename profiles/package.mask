@@ -35,13 +35,6 @@
 # Masked for testing.
 =dev-ruby/rubygems-3.0.3-r1
 
-# Fabian Groffen <grobian@gentoo.org> (30 May 2019)
-# Pre-release for upcoming 0.80
-# You're invited to try this version out (and report bugs), but beware,
-# it is still subject to changes, as well as some applets having changed
-# considerably
-=app-portage/portage-utils-0.80_pre20190530
-
 # Zac Medico <zmedico@gentoo.org> (31 May 2019)
 # Upstream is dead and there are multiple security vulnerabilities.
 # Removal in 30 days. Bug #687100.
