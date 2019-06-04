@@ -498,10 +498,6 @@ dev-db/pgadmin3
 ~net-libs/libnsl-0
 ~net-libs/rpcsvc-proto-0
 
-# Bernard Cafarelli <voyageur@gentoo.org> (13 Aug 2018)
-# Beta release with new features, masked for testing
-=app-text/tesseract-4.0.0_beta*
-
 # Michał Górny <mgorny@gentoo.org> (01 Aug 2018)
 # Multiprocessing versions of gemato.  They are known to hang on some
 # users, so let's keep them masked until somebody figures out what's

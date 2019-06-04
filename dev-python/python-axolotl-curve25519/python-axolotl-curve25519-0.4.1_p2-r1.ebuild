@@ -15,7 +15,7 @@ SRC_URI="https://github.com/tgalal/${PN}/archive/${MY_PV}.tar.gz -> ${PN}-${MY_P
 
 LICENSE="BSD GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 

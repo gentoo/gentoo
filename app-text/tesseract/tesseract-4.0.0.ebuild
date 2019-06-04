@@ -1,19 +1,17 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 MY_PN="tesseract-ocr"
-MY_PV=${PV/_beta/-beta.}
 LANGPACKV="4.00"
 URI_PREFIX="https://github.com/${MY_PN}/tessdata/raw/${LANGPACKV}/"
-JAVA_PKG_OPT_USE="scrollview"
 
-inherit autotools java-pkg-opt-2 toolchain-funcs
+inherit autotools toolchain-funcs
 
 DESCRIPTION="An OCR Engine, orginally developed at HP, now open source."
 HOMEPAGE="https://github.com/tesseract-ocr"
-SRC_URI="https://github.com/${MY_PN}/${PN}/archive/${MY_PV}.tar.gz -> ${P}.tar.gz
+SRC_URI="https://github.com/${MY_PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
 	${URI_PREFIX}eng.traineddata -> eng.traineddata-${LANGPACKV}
 	math? ( ${URI_PREFIX}equ.traineddata -> equ.traineddata-${LANGPACKV} )
 	osd? ( ${URI_PREFIX}osd.traineddata -> osd.traineddata-${LANGPACKV} )"
@@ -21,7 +19,7 @@ SRC_URI="https://github.com/${MY_PN}/${PN}/archive/${MY_PV}.tar.gz -> ${P}.tar.g
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~sparc ~x86"
-IUSE="doc jpeg math opencl openmp osd png scrollview static-libs tiff training webp"
+IUSE="doc jpeg math opencl openmp osd png static-libs tiff training webp"
 
 # List of supported Gentoo linguas and their upstream mapping
 # https://github.com/tesseract-ocr/tesseract/wiki/Data-Files
@@ -51,14 +49,11 @@ for lang in ${LANGUAGES}; do
 done
 
 # With opencl USE=tiff is necessary in leptonica
-CDEPEND=">=media-libs/leptonica-1.74:=[zlib,tiff?,jpeg?,png?,webp?]
+RDEPEND=">=media-libs/leptonica-1.74:=[zlib,tiff?,jpeg?,png?,webp?]
 	opencl? (
 		virtual/opencl
 		media-libs/tiff:0=
 		media-libs/leptonica:=[tiff]
-	)
-	scrollview? (
-		>=dev-java/piccolo2d-3.0:0
 	)
 	training? (
 		dev-libs/icu:=
@@ -66,20 +61,17 @@ CDEPEND=">=media-libs/leptonica-1.74:=[zlib,tiff?,jpeg?,png?,webp?]
 		x11-libs/cairo:=
 	)"
 
-DEPEND="${CDEPEND}
-	doc? ( app-doc/doxygen )
-	scrollview? ( >=virtual/jdk-1.7 )"
-
-RDEPEND="${CDEPEND}
-	scrollview? ( >=virtual/jre-1.7 )"
+DEPEND="${RDEPEND}
+	app-text/asciidoc
+	app-text/docbook-xsl-stylesheets
+	dev-libs/libxslt
+	doc? ( app-doc/doxygen )"
 
 DOCS=( AUTHORS ChangeLog README.md )
 
 PATCHES=(
-	"${FILESDIR}/${PN}-4.00.00-use-system-piccolo2d.patch"
+	"${FILESDIR}"/${P}-manpages.patch
 )
-
-S=${WORKDIR}/${PN}-${MY_PV}
 
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
@@ -101,16 +93,15 @@ src_unpack() {
 src_prepare() {
 	default
 	eautoreconf
-
-	java-pkg-opt-2_src_prepare
 }
 
 src_configure() {
+	# scrollview disabled for now, see bug #686944
 	local myeconfargs=(
 		--enable-shared
+		--disable-graphics
 		$(use_enable opencl)
 		$(use_enable openmp)
-		$(use_enable scrollview graphics)
 		$(use_enable static-libs static)
 	)
 
@@ -120,14 +111,14 @@ src_configure() {
 src_compile() {
 	default
 	use doc && emake doc
-	use scrollview && emake ScrollView.jar JAVAC="javac $(java-pkg_javac-args)"
 	use training && emake training
 }
 
 src_install() {
 	use doc && HTML_DOCS=( doc/html/. )
 	default
-	prune_libtool_files
+
+	find "${D}" -name '*.la' -type f -delete || die
 
 	if use training; then
 		emake DESTDIR="${D}" training-install
@@ -135,5 +126,4 @@ src_install() {
 
 	insinto /usr/share/tessdata
 	doins tessdata/*traineddata* # language files
-	use scrollview && doins java/ScrollView.jar # scrollview
 }
