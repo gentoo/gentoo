@@ -4,10 +4,10 @@ DESCRIPTION=TLS/SSL native driver for Erlang and Elixir
 EAPI=6
 HOMEPAGE=https://github.com/processone/fast_tls
 IUSE=libressl
-KEYWORDS=amd64 ~arm ~ia64 ppc ~sparc ~x86
+KEYWORDS=amd64 ~arm ~ia64 ppc ~sparc x86
 LICENSE=Apache-2.0
 RDEPEND=>=dev-erlang/p1_utils-1.0.13 >=dev-lang/erlang-17.1 !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) dev-lang/erlang
 SLOT=0
 SRC_URI=https://github.com/processone/fast_tls/archive/1.0.26.tar.gz -> fast_tls-1.0.26.tar.gz
 _eclasses_=rebar	2500a38e0c20a46f90fe5e172a2c4267
-_md5_=00197ef07ac5b3cf2b2d58a9233a13da
+_md5_=df24bc18072b2aa0db5e1d16e9e7504d
