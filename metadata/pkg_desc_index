@@ -584,7 +584,7 @@ app-editors/pluma 1.22.0: Pluma text editor for the MATE desktop
 app-editors/qemacs 0.4.1_pre20150916 0.4.1_pre20170225: QEmacs is a very small but powerful UNIX editor
 app-editors/qxmledit 0.9.10: Simple Qt-based XML editor
 app-editors/retext 7.0.3: Simple editor for Markdown and reStructuredText
-app-editors/scite 3.5.5 4.0.2: A very powerful, highly configurable, small editor with syntax coloring.
+app-editors/scite 3.5.5 4.0.2 4.1.3: A very powerful, highly configurable, small editor with syntax coloring
 app-editors/shed 1.12 1.13: Simple Hex EDitor
 app-editors/tea 47.0.0: Small, lightweight Qt text editor
 app-editors/teco 1.00-r4: Classic TECO editor, Predecessor to EMACS
@@ -834,7 +834,7 @@ app-forensics/examiner 0.5-r2: Utilizes the objdump command to disassemble and c
 app-forensics/foremost 1.5.7-r3: A console program to recover files based on their headers and footers
 app-forensics/libewf 20171104: Implementation of the EWF (SMART and EnCase) image format
 app-forensics/magicrescue 1.1.9: Find deleted files in block devices
-app-forensics/memdump 1.01: Simple memory dumper for UNIX-Like systems
+app-forensics/memdump 1.01 1.01-r1: Simple memory dumper for UNIX-Like systems
 app-forensics/rkhunter 1.4.6-r1: Rootkit Hunter scans for known and unknown rootkits, backdoors, and sniffers
 app-forensics/sleuthkit 4.5.0: A collection of file system and media management forensic analysis tools
 app-i18n/anthy 9100h-r2: Anthy -- free and secure Japanese input system
@@ -1113,7 +1113,7 @@ app-misc/symlinks 1.4-r3: Scans for and fixes broken or messy symlinks
 app-misc/tails-installer 4.4.11: A graphical tool to install or upgrade Tails on a USB stick from an ISO image
 app-misc/task 2.5.1-r1: Taskwarrior is a command-line todo list manager
 app-misc/tdfsb 0.0.10 0.0.10-r1: SDL based graphical file browser
-app-misc/tdl 1.5.2-r2: Command line To Do List manager
+app-misc/tdl 1.5.2-r2 1.5.2-r3: Command line To Do List manager
 app-misc/terminal-colors 2.2: A tool to display color charts for 8, 16, 88, and 256 color terminals
 app-misc/timestamp 1.1-r1: A text filtering pipe that marks each line with a timestamp
 app-misc/tkpasman 2.2b: A useful and reliable personal password manager, written in Tcl/Tk
@@ -6472,6 +6472,7 @@ dev-util/xmlindent 0.2.17-r2: XML stream reformatter for ASCII text, but not UTF
 dev-util/xxdi 1.0.0: Simple alternative to vim's 'xxd -i' mode
 dev-util/xxdiff 4.0.1_p20170622: A graphical file and directories comparator and merge tool
 dev-util/yacc 1.9.1-r6: Yacc: Yet Another Compiler-Compiler
+dev-vcs/bfg 1.13.0: a faster alternative to git-filter-branch for removing bad data from git repos
 dev-vcs/bzr 2.7.0: Bazaar is a next generation distributed version control system
 dev-vcs/bzr-rewrite 0.6.3: Bazaar plugin that adds support for rebasing, similar to git rebase
 dev-vcs/bzr-xmloutput 0.8.8-r2: Bazaar plugin providing an option to generate XML output for builtin commands
@@ -7212,7 +7213,7 @@ media-fonts/andika 5.000: Sans-serif font designed for literacy use
 media-fonts/anonymous-pro 1.002-r1: Monospaced truetype font designed with coding in mind
 media-fonts/aquafont 2.7-r4: Handwritten Japanese fixed-width TrueType font
 media-fonts/aquapfont 2.6-r2: Very pretty Japanese proportional truetype font
-media-fonts/arabeyes-fonts 2.0: Arabeyes Arabic TrueType fonts
+media-fonts/arabeyes-fonts 2.0 2.0-r1: Arabeyes Arabic TrueType fonts
 media-fonts/arkpandora 2.04: Arkpandora MS-TTF replacement font pack
 media-fonts/arphicfonts 0.2.20080216.1-r2: Chinese TrueType Arphic Fonts
 media-fonts/artwiz-aleczapka-en 1.3: Artwiz Aleczapko fonts
@@ -8059,7 +8060,7 @@ media-radio/xlog 2.0.15 2.0.17: An amateur radio logging program
 media-sound/SmarTagger 0.1-r2: Perl script for renaming and tagging mp3s
 media-sound/a2jmidid 8-r2: Daemon for exposing legacy ALSA sequencer applications in JACK MIDI system
 media-sound/abcde 2.8.1: A command line CD encoder
-media-sound/abcm2ps 8.12.9 8.13.12: Program to convert abc files to Postscript files
+media-sound/abcm2ps 8.12.9 8.13.12 8.14.4: Program to convert abc files to Postscript files
 media-sound/adplay 1.7 1.8: A console player for AdLib music
 media-sound/aeolus 0.9.0 0.9.5: A synthesised pipe organ emulator
 media-sound/alac_decoder 0.2.0-r1: Basic decoder for Apple Lossless Audio Codec files (ALAC)
@@ -8227,7 +8228,7 @@ media-sound/rhythmbox 3.4.3: Music management and playback software for GNOME
 media-sound/rip 1.07: A command-line based audio CD ripper and mp3 encoder
 media-sound/ripperx 2.7.3: a GTK program to rip CD audio tracks and encode them to the Ogg, MP3, or FLAC formats
 media-sound/rosegarden 17.04: MIDI and audio sequencer and notation editor
-media-sound/rplay 3.3.2-r1: Play sounds on remote Unix systems, without sending audio data over the network
+media-sound/rplay 3.3.2-r1 3.3.2-r3: Play sounds on remote Unix systems without data transfer
 media-sound/saydate 0.3.0: A Linux shell program that talks the date and system uptime
 media-sound/sc2mpd 1.1.5: Implements the SongCast protocol for use by upmpdcli and mpd
 media-sound/schismtracker 20180810: Free implementation of Impulse Tracker, a tool used to create high quality music
@@ -8312,6 +8313,7 @@ media-video/binkplayer 1.99w: Bink Video! Player
 media-video/bino 1.6.7: Stereoscopic and multi-display media player
 media-video/blinkensim 2.7-r1: Graphical Blinkenlights simulator with networking support
 media-video/blinkenthemes 0.10-r1: Themes for blinkensim
+media-video/blinkentools 2.9-r1: Provides a set of commandline utilities related to Blinkenlights
 media-video/ccextractor 0.59 0.85-r2: Extract closed captioning subtitles from video to SRT
 media-video/cclive 0.9.3-r2: Command line tool for extracting videos from various websites
 media-video/chaplin 1.10-r2: This is a program to raw copy chapters from a dvd using libdvdread
@@ -8606,7 +8608,7 @@ net-firewall/firewalld 0.5.1-r2 0.6.3: A firewall daemon with D-BUS interface pr
 net-firewall/fwbuilder 5.3.7: A firewall GUI
 net-firewall/fwipsec 0.4.2-r1: Firewall scripts that control iptables, FreeS/WAN, and squid
 net-firewall/ipkungfu 0.6.1-r1: A nice iptables firewall script
-net-firewall/ipset 6.29: IPset tool for iptables, successor to ippool
+net-firewall/ipset 6.29 6.38: IPset tool for iptables, successor to ippool
 net-firewall/ipt_netflow 2.3: Netflow iptables module
 net-firewall/iptables 1.6.1-r3: Linux kernel (2.4+) firewall, NAT and packet mangling tools
 net-firewall/itval 1.2_p20121104: Iptables policy testing and validation tool
@@ -9168,7 +9170,7 @@ net-p2p/vuze-coreplugins 4.8.1.2 5.7.2.0: Core plugins for Vuze that are include
 net-print/cndrvcups-common-lb 3.60-r1: Common files for Canon drivers
 net-print/cndrvcups-lb 3.60-r2: Canon UFR II / LIPSLX Printer Driver for Linux
 net-print/cnijfilter2 5.50: IJ Printer Driver
-net-print/cups 2.2.7: The Common Unix Printing System
+net-print/cups 2.2.7 2.2.11: The Common Unix Printing System
 net-print/cups-bjnp 2.0: CUPS backend for the canon printers using the proprietary USB over IP BJNP protocol
 net-print/cups-filters 1.21.6: Cups filters
 net-print/cups-pdf 2.6.1: Provides a virtual printer for CUPS to produce PDF files
@@ -10284,7 +10286,7 @@ sys-fs/xfsprogs 4.17.0-r1: xfs filesystem utilities
 sys-fs/zfs 0.6.5.11-r2 0.7.12 0.7.13: Userland utilities for ZFS Linux kernel module
 sys-fs/zfs-kmod 0.6.5.11 0.7.12 0.7.13: Linux ZFS kernel module for sys-fs/zfs
 sys-kernel/bliss-initramfs 7.1.3: Boot your system's rootfs from ZFS, LVM, RAID, or a variety of other configs.
-sys-kernel/dracut 044-r1 045-r2 046-r1: Generic initramfs generation tool
+sys-kernel/dracut 044-r1 045-r2 046-r1 048-r1: Generic initramfs generation tool
 sys-kernel/genkernel 3.4.52.3 3.4.52.4-r2 3.4.52.4-r3 3.5.3.3: Gentoo automatic kernel building scripts
 sys-kernel/genkernel-next 68 69: Gentoo automatic kernel building scripts, reloaded
 sys-kernel/gentoo-sources 4.4.176 4.4.179 4.4.180 4.9.162-r1 4.9.171 4.9.177 4.14.105-r1 4.14.114 4.14.120 4.19.27-r1 4.19.37 4.19.44: Full sources including the Gentoo patchset for the 4.19 kernel tree
@@ -10402,7 +10404,7 @@ sys-process/minit 0.10-r1: a small yet feature-complete init
 sys-process/nmon 16g: Nigel's performance MONitor for CPU, memory, network, disks, etc...
 sys-process/numactl 2.0.11: Utilities and libraries for NUMA systems
 sys-process/numad 0.5 0.5-r1: The NUMA daemon that manages application locality
-sys-process/parallel 20181122: A shell tool for executing jobs in parallel locally or on remote machines
+sys-process/parallel 20181122 20190322: A shell tool for executing jobs in parallel locally or on remote machines
 sys-process/prll 0.6.2: A utility for parallelizing execution of shell functions
 sys-process/procps 3.3.15-r1: standard informational utilities and process-handling tools
 sys-process/psmisc 23.1-r1: A set of tools that use the proc filesystem
