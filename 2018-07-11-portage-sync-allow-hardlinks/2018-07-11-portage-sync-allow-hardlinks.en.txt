@@ -3,7 +3,7 @@ Author: Zac Medico <zmedico@gentoo.org>
 Posted: 2018-07-11
 Revision: 1
 News-Item-Format: 2.0
-Display-If-Installed: sys-apps/portage
+Display-If-Installed: <sys-apps/portage-2.3.62
 
 For users of the rsync tree, beginning with sys-apps/portage-2.3.42,
 the default behavior for sync operations will use hardlinks in order
