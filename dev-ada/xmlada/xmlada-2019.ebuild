@@ -59,7 +59,7 @@ src_test() {
 src_install () {
 	build () {
 		gprinstall -XLIBRARY_TYPE=$1 -f -p -XBUILD=Production \
-			-XPROCESSORS=$(makeopts_jobs) --prefix="${D}"usr \
+			-XPROCESSORS=$(makeopts_jobs) --prefix="${D}"/usr \
 			--install-name=xmlada --build-var=LIBRARY_TYPE \
 			--build-var=XMLADA_BUILD \
 			--build-name=$1 xmlada.gpr || die "gprinstall failed"
