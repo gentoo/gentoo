@@ -18,21 +18,22 @@ KEYWORDS="~amd64 ~x86"
 IUSE="gnat_2016 gnat_2017 +gnat_2018 gnat_2019 gnatcoll_db2ada gnatinspect postgres
 	+shared sql sqlite static-libs static-pic xref"
 
-RDEPEND="dev-ada/gnatcoll-core[gnat_2016=,gnat_2017=,gnat_2018=,gnat_2019=]
+RDEPEND="dev-ada/gnatcoll-core[gnat_2016(-)?,gnat_2017(-)?,gnat_2018(-)?,gnat_2019(-)?]
 	dev-ada/gnatcoll-core[shared?,static-libs?,static-pic?]
 	sqlite? ( dev-db/sqlite:3 )
 	postgres? ( dev-db/postgresql:* )
 	xref? (
 		dev-ada/gnatcoll-bindings[iconv,shared?,static-libs?,static-pic?]
-		dev-ada/gnatcoll-bindings[gnat_2016=,gnat_2017=,gnat_2018=,gnat_2019=]
+		dev-ada/gnatcoll-bindings[gnat_2016(-)?,gnat_2017(-)?,gnat_2018(-)?,gnat_2019(-)?]
 	)"
 DEPEND="${RDEPEND}
-	dev-ada/gprbuild[gnat_2016=,gnat_2017=,gnat_2018=,gnat_2019=]"
+	dev-ada/gprbuild[gnat_2016(-)?,gnat_2017(-)?,gnat_2018(-)?,gnat_2019(-)?]"
 
 REQUIRED_USE="gnatinspect? ( xref )
 	xref? ( sqlite )
 	sqlite? ( sql )
-	gnatcoll_db2ada? ( sql )"
+	gnatcoll_db2ada? ( sql )
+	^^ ( gnat_2016 gnat_2017 gnat_2018 gnat_2019 )"
 
 S="${WORKDIR}"/${MYP}-src
 
