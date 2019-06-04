@@ -20,13 +20,14 @@ IUSE="gnat_2016 gnat_2017 +gnat_2018 gnat_2019 gmp iconv python readline +shared
 	static-libs static-pic syslog"
 
 RDEPEND="python? ( ${PYTHON_DEPS} )
-	dev-ada/gnatcoll-core[gnat_2016=,gnat_2017=,gnat_2018=,gnat_2019=]
+	dev-ada/gnatcoll-core[gnat_2016(-)?,gnat_2017(-)?,gnat_2018(-)?,gnat_2019(-)?]
 	dev-ada/gnatcoll-core[shared?,static-libs?,static-pic?]
 	gmp? ( dev-libs/gmp:* )"
 DEPEND="${RDEPEND}
-	dev-ada/gprbuild[gnat_2016=,gnat_2017=,gnat_2018=,gnat_2019=]"
+	dev-ada/gprbuild[gnat_2016(-)?,gnat_2017(-)?,gnat_2018(-)?,gnat_2019(-)?]"
 
-REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )
+	^^ ( gnat_2016 gnat_2017 gnat_2018 gnat_2019 )"
 
 S="${WORKDIR}"/${MYP}-src
 
