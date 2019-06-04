@@ -1170,11 +1170,6 @@
       <name>Gilles Dartiguelongue</name>
       <role>Member</role>
     </member>
-    <member>
-      <email>expeditioneer@gentoo.org</email>
-      <name>Dennis Lamm</name>
-      <role>Member</role>
-    </member>
     <member is-lead="1">
       <email>leio@gentoo.org</email>
       <name>Mart Raudsepp</name>
@@ -1188,11 +1183,6 @@
     <member>
       <email>sobhan@gentoo.org</email>
       <name>Sobhan Mohammadpour</name>
-      <role>Member</role>
-    </member>
-    <member>
-      <email>tranquility@gentoo.org</email>
-      <name>Ole Reifschneider</name>
       <role>Member</role>
     </member>
   </project>
