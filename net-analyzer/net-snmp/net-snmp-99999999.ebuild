@@ -22,7 +22,7 @@ SRC_URI="
 LICENSE="HPND BSD GPL-2"
 SLOT="0/35"
 KEYWORDS=""
-IUSE="X bzip2 doc elf ipv6 libressl lm_sensors mfd-rewrites minimal mysql netlink pci perl python rpm selinux smux ssl tcpd ucd-compat zlib"
+IUSE="X bzip2 doc elf kmem ipv6 libressl lm_sensors mfd-rewrites minimal mysql netlink pci perl python rpm selinux smux ssl tcpd ucd-compat zlib"
 REQUIRED_USE="
 	python? ( ${PYTHON_REQUIRED_USE} )
 	rpm? ( bzip2 zlib )
@@ -110,6 +110,7 @@ src_configure() {
 		$(use_enable ucd-compat ucd-snmp-compatibility) \
 		$(use_with bzip2) \
 		$(use_with elf) \
+		$(use_with kmem kmem-usage) \
 		$(use_with mysql) \
 		$(use_with netlink nl) \
 		$(use_with pci) \
