@@ -140,7 +140,7 @@ dobin_texmf_scripts() {
 
 etexmf-update() {
 	if has_version 'app-text/texlive-core' ; then
-		if [ -n ${ROOT%/} ] && [ -x "${EPREFIX}"/usr/sbin/texmf-update ] ; then
+		if [ -z "${ROOT%/}" ] && [ -x "${EPREFIX}"/usr/sbin/texmf-update ] ; then
 			"${EPREFIX}"/usr/sbin/texmf-update
 		else
 			ewarn "Cannot run texmf-update for some reason."
@@ -158,7 +158,7 @@ etexmf-update() {
 
 efmtutil-sys() {
 	if has_version 'app-text/texlive-core' ; then
-		if [ -n ${ROOT%/} ] && [ -x "${EPREFIX}"/usr/bin/fmtutil-sys ] ; then
+		if [ -z "${ROOT%/}" ] && [ -x "${EPREFIX}"/usr/bin/fmtutil-sys ] ; then
 			einfo "Rebuilding formats"
 			"${EPREFIX}"/usr/bin/fmtutil-sys --all &> /dev/null
 		else
