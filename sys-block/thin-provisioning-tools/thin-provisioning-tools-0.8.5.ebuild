@@ -39,6 +39,7 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.7.0-build-fixes.patch
+	"${FILESDIR}"/${PN}-0.8.5-libaio-0.3.112.patch
 )
 
 src_prepare() {
