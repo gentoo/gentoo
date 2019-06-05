@@ -5,6 +5,10 @@
     <email>crypto@gentoo.org</email>
     <name>Crypto</name>
   </maintainer>
+  <maintainer type="person">
+    <email>gokturk@gentoo.org</email>
+    <name>Göktürk Yüksek</name>
+  </maintainer>
   <use>
     <flag name="systemd">
       Use user ACLs rather than plugdev group to give user access to the HIDRAW
