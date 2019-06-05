@@ -17,6 +17,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~s
 IUSE="jpeg"
 
 RDEPEND="jpeg? ( >=virtual/jpeg-0-r2:0=[${MULTILIB_USEDEP}] )
+	!elibc_glibc? ( sys-libs/argp-standalone )
 	virtual/libudev[${MULTILIB_USEDEP}]
 	!media-tv/v4l2-ctl
 	!<media-tv/ivtv-utils-1.4.0-r2"
