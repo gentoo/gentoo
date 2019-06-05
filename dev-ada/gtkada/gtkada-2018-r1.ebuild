@@ -30,7 +30,7 @@ RDEPEND="gnat_2016? ( dev-lang/gnat-gpl:4.9.4 )
 	x11-libs/gtk+:3
 	x11-libs/pango"
 DEPEND="${RDEPEND}
-dev-ada/gprbuild[gnat_2016=,gnat_2017=,gnat_2018(-)=,gnat_2019(-)=]"
+	dev-ada/gprbuild[gnat_2016(-)?,gnat_2017(-)?,gnat_2018(-)?,gnat_2019(-)?]"
 
 REQUIRED_USE="^^ ( gnat_2016 gnat_2017 gnat_2018 gnat_2019 )"
 
