@@ -10,7 +10,7 @@ depend() {
 
 command="/usr/sbin/rngd"
 description="Check and feed random data from hardware device to kernel entropy pool."
-pidfile="/var/run/${RC_SVCNAME}.pid"
+pidfile="/run/${RC_SVCNAME}.pid"
 command_args=""
 command_args_background="--pid-file ${pidfile} --background"
 start_stop_daemon_args="--wait 1000"
