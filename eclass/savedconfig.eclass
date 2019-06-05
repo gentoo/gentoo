@@ -34,7 +34,7 @@ inherit portability
 IUSE="savedconfig"
 
 case ${EAPI} in
-	[4-7]) ;;
+	[5-7]) ;;
 	*) die "EAPI=${EAPI:-0} is not supported" ;;
 esac
 
