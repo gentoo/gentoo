@@ -22,6 +22,8 @@ DEPEND=">=dev-texlive/texlive-latex-2019
 !<dev-texlive/texlive-xetex-2016
 !<dev-texlive/texlive-humanities-2014
 !dev-texlive/texlive-mathextra
+!=dev-texlive/texlive-luatex-2017*
+!=dev-texlive/texlive-latexextra-2017*
 "
 RDEPEND="${DEPEND} "
 TEXLIVE_MODULE_BINSCRIPTS="texmf-dist/scripts/thumbpdf/thumbpdf.pl texmf-dist/scripts/lwarp/lwarpmk.lua"
