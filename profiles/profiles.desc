@@ -51,20 +51,20 @@ amd64           default/linux/amd64/17.0/x32                            dev
 # SYMLINK_LIB=no profiles
 # Run app-portage/unsymlink-lib *before* switching the profile.
 # @MAINTAINER: mgorny@gentoo.org
-amd64           default/linux/amd64/17.1                           dev
-amd64           default/linux/amd64/17.1/selinux                   dev
-amd64           default/linux/amd64/17.1/hardened                  dev
-amd64           default/linux/amd64/17.1/hardened/selinux          dev
-amd64           default/linux/amd64/17.1/desktop                   dev
-amd64           default/linux/amd64/17.1/desktop/gnome             dev
-amd64           default/linux/amd64/17.1/desktop/gnome/systemd     dev
-amd64           default/linux/amd64/17.1/desktop/plasma            dev
-amd64           default/linux/amd64/17.1/desktop/plasma/systemd    dev
-amd64           default/linux/amd64/17.1/developer                 dev
-amd64           default/linux/amd64/17.1/no-multilib                    dev
-amd64           default/linux/amd64/17.1/no-multilib/hardened           dev
-amd64           default/linux/amd64/17.1/no-multilib/hardened/selinux   dev
-amd64           default/linux/amd64/17.1/systemd                   dev
+amd64           default/linux/amd64/17.1                           stable
+amd64           default/linux/amd64/17.1/selinux                   stable
+amd64           default/linux/amd64/17.1/hardened                  stable
+amd64           default/linux/amd64/17.1/hardened/selinux          stable
+amd64           default/linux/amd64/17.1/desktop                   stable
+amd64           default/linux/amd64/17.1/desktop/gnome             stable
+amd64           default/linux/amd64/17.1/desktop/gnome/systemd     stable
+amd64           default/linux/amd64/17.1/desktop/plasma            stable
+amd64           default/linux/amd64/17.1/desktop/plasma/systemd    stable
+amd64           default/linux/amd64/17.1/developer                 stable
+amd64           default/linux/amd64/17.1/no-multilib                    stable
+amd64           default/linux/amd64/17.1/no-multilib/hardened           stable
+amd64           default/linux/amd64/17.1/no-multilib/hardened/selinux   stable
+amd64           default/linux/amd64/17.1/systemd                   stable
 
 # ARM Profiles
 # @MAINTAINER: arm@gentoo.org
