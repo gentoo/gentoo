@@ -13,7 +13,7 @@ SRC_URI="https://github.com/gpodder/mygpoclient/archive/${PV}.tar.gz -> ${P}.tar
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="test"
 
 RDEPEND="dev-python/simplejson[${PYTHON_USEDEP}]"
