@@ -3,10 +3,10 @@ DEPEND=sys-libs/ncurses:0= virtual/pkgconfig >=app-portage/elt-patches-20170815 
 DESCRIPTION=Sleeplike program that counts down the number of seconds specified
 EAPI=6
 HOMEPAGE=https://onegeek.org/~tom/software/delay/
-KEYWORDS=amd64 ~mips ppc ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos
+KEYWORDS=~alpha amd64 ~mips ppc ppc64 ~s390 x86 ~amd64-linux ~x86-linux ~ppc-macos
 LICENSE=GPL-2
 RDEPEND=sys-libs/ncurses:0=
 SLOT=0
 SRC_URI=https://onegeek.org/~tom/software/delay/dl/delay-1.6.tar.gz
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
-_md5_=5fa09ac90480c4ea87a42d9f1eab70d8
+_md5_=eecb46b9f4e8301b2ec00867b700168d
