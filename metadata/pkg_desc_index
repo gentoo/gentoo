@@ -10111,7 +10111,7 @@ sys-cluster/dlm-lib 2.03.09: General-purpose Distributed Lock Manager
 sys-cluster/drbd-utils 8.9.6-r1: mirror/replicate block-devices across a network-connection
 sys-cluster/galera 25.3.25: Synchronous multi-master replication engine that provides the wsrep API
 sys-cluster/ganglia 3.7.1-r1: A scalable distributed monitoring system for clusters and grids
-sys-cluster/glusterfs 4.1.5 4.1.8: GlusterFS is a powerful network/cluster filesystem
+sys-cluster/glusterfs 4.1.8: GlusterFS is a powerful network/cluster filesystem
 sys-cluster/heartbeat 3.0.5-r3: Heartbeat high availability cluster manager
 sys-cluster/heat 11.0.2 12.0.0: A CloudFormation-compatible openstack-native cloud orchestration engine.
 sys-cluster/ipvsadm 1.26-r2 1.27-r1: utility to administer the IP virtual server services
