@@ -8,4 +8,7 @@
 		</maintainer>
 		<remote-id type="github">trizen/obmenu-generator</remote-id>
 	</upstream>
+	<use>
+		<flag name="gtk2">Allows Icons through <pkg>dev-perl/Gtk2</pkg></flag>
+	</use>
 </pkgmetadata>
