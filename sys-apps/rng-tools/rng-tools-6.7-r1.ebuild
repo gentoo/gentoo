@@ -75,7 +75,7 @@ src_configure() {
 
 src_install() {
 	default
-	newinitd "${FILESDIR}"/rngd-initd-6.7 rngd
+	newinitd "${FILESDIR}"/rngd-initd-6.7-r1 rngd
 	newconfd "${FILESDIR}"/rngd-confd-6.7 rngd
 	systemd_dounit "${FILESDIR}"/rngd.service
 
