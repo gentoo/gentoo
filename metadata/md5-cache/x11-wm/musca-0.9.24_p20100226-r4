@@ -10,4 +10,4 @@ RDEPEND=x11-libs/libX11 >=x11-misc/dmenu-4.4 apis? ( x11-misc/xbindkeys )
 SLOT=0
 SRC_URI=mirror://gentoo/musca-0.9.24_p20100226.tgz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	portability	2b88d3ecc35035a3b8ab628b49cafb0e	savedconfig	a3812ff9dbe63484d556efcad4cc9a69	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
-_md5_=a02a68e3f10bfeb30e062c5de73bc5b2
+_md5_=1b26a2530bdb64cf6f52841d436df562
