@@ -11,5 +11,6 @@
 </maintainer>
 <use>
 	<flag name="xs">Build Perl modules with embedded C code for speed; requires rebuilds on Perl update</flag>
+	<flag name="standalone">Build standalone version that survives all Portage bugs</flag>
 </use>
 </pkgmetadata>
