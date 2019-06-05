@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-TEXLIVE_MODULE_CONTENTS="amsfonts bibtex cm colorprofiles dehyph-exptl enctex etex etex-pkg graphics-def hyph-utf8 ifluatex ifxetex knuth-lib knuth-local lua-alt-getopt luatex makeindex metafont mflogo mfware pdftex plain tex
+TEXLIVE_MODULE_CONTENTS="amsfonts bibtex cm colorprofiles enctex etex etex-pkg graphics-def hyph-utf8 ifluatex ifxetex knuth-lib knuth-local lua-alt-getopt luatex makeindex metafont mflogo mfware pdftex plain tex
 tex-ini-files texlive-common texlive-docindex texlive-en texlive-msg-translations texlive-scripts tlshell unicode-data updmap-map collection-basic"
 
 TEXLIVE_MODULE_DOC_CONTENTS="amsfonts.doc bibtex.doc cm.doc colorprofiles.doc enctex.doc etex.doc etex-pkg.doc graphics-def.doc hyph-utf8.doc ifluatex.doc ifxetex.doc lua-alt-getopt.doc luatex.doc makeindex.doc
@@ -21,8 +21,3 @@ DEPEND="!<app-text/dvipsk-5.996_p20160523
 >=app-text/texlive-core-2019[luajittex?]"
 RDEPEND="${DEPEND}"
 TEXLIVE_MODULE_BINSCRIPTS="texmf-dist/scripts/simpdftex/simpdftex texmf-dist/scripts/texlive/rungs.tlu"
-
-src_prepare() {
-	default
-	rm -fr "${WORKDIR}"/texmf-dist/tex/generic/dehyph-exptl/ || die # part of texlive-langgerman
-}
