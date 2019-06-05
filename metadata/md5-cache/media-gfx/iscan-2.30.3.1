@@ -5,7 +5,7 @@ DESCRIPTION=EPSON Image Scan! for Linux (including sane-epkowa backend)
 EAPI=7
 HOMEPAGE=http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX
 IUSE=doc gimp l10n_ja X
-KEYWORDS=amd64 ~x86
+KEYWORDS=amd64 x86
 LICENSE=GPL-2 AVASYS
 RDEPEND=dev-libs/libxml2 media-gfx/sane-backends virtual/libusb:1 virtual/udev gimp? ( media-gfx/gimp ) X? ( dev-libs/glib:2 media-libs/libpng:= media-libs/tiff:= virtual/jpeg:= x11-libs/gtk+:2 ) media-gfx/iscan-data
 REQUIRED_USE=gimp? ( X )
@@ -13,4 +13,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=http://support.epson.net/linux/src/scanner/iscan/iscan_2.30.3-1.tar.gz doc? ( https://dev.gentoo.org/~flameeyes/avasys/userg_revQ_e.pdf l10n_ja? ( https://dev.gentoo.org/~flameeyes/avasys/userg_revQ_j.pdf ) )
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	desktop	b1d22ac8bdd4679ab79c71aca235009d	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	a09389deba2c0a7108b581e02c7cecbf	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
-_md5_=0a86b08066361234fde47c16c21388af
+_md5_=560f09a0ff17fdf2996ce3a490cf76f0
