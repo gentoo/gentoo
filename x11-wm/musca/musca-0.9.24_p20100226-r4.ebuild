@@ -11,7 +11,7 @@ SRC_URI="mirror://gentoo/${P}.tgz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 IUSE="apis xlisten"
 
 DEPEND="x11-libs/libX11"
