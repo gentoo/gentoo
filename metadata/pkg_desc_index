@@ -5144,7 +5144,7 @@ dev-python/msgpack 0.4.8 0.5.1 0.5.6 0.6.1: MessagePack (de)serializer for Pytho
 dev-python/multidict 4.1.0: multidict implementation
 dev-python/multipledispatch 0.4.9: RESTful HTTP Content Negotiation for Flask, Bottle, web.py and webapp2
 dev-python/munch 2.2.0 2.3.2: A dot-accessible dictionary (a la JavaScript objects)
-dev-python/mygpoclient 1.7-r1 1.8: A gpodder.net client library
+dev-python/mygpoclient 1.8: A gpodder.net client library
 dev-python/mysql-python 1.2.3-r1 1.2.5-r1: Python interface to MySQL
 dev-python/mysqlclient 1.3.14 1.4.2-r2: Fork of MySQL-python
 dev-python/namespace-google 1: Namespace package declaration for google
@@ -8081,7 +8081,7 @@ media-sound/asunder 2.9.3-r1: Graphical Audio CD ripper and encoder with support
 media-sound/audacity 2.2.2: Free crossplatform audio editor
 media-sound/audiotag 0.19: A command-line tool for mass tagging/renaming of audio files
 media-sound/aumix 2.9.1: Aumix volume/mixer control program
-media-sound/awesfx 0.5.1d 0.5.1e: AWE32 Sound Driver Utility Programs
+media-sound/awesfx 0.5.1e: AWE32 Sound Driver Utility Programs
 media-sound/aylet 0.5: Aylet plays music files in the .ay format
 media-sound/bladeenc 0.94.2-r1: An mp3 encoder
 media-sound/bplay 0.991: No-frills command-line buffered player and recorder
@@ -8123,7 +8123,7 @@ media-sound/glmix 0.3: 3D widget for mixing up to eight JACK audio streams down 
 media-sound/glurp 0.12.3: Glurp is a GTK2 based graphical client for the Music Player Daemon
 media-sound/gmorgan 0.79-r1: Opensource software rhythm station
 media-sound/gmpc 11.8.16-r1: A GTK+2 client for the Music Player Daemon
-media-sound/gmusicbrowser 1.1.15-r3 1.1.15_p20160530: An open-source jukebox for large collections of mp3/ogg/flac files
+media-sound/gmusicbrowser 1.1.15_p20160530: An open-source jukebox for large collections of mp3/ogg/flac files
 media-sound/gnomad 2.9.6: A GTK+ music manager and swiss army knife for the Portable Digital Entertainment (PDE) protocol
 media-sound/gnome-music 3.30.2: Music management for Gnome
 media-sound/gnome-sound-recorder 3.28.2: Simple sound recorder
@@ -8133,7 +8133,7 @@ media-sound/gramofile 1.6_p9: Transfer sound from gramophone records to CD
 media-sound/grip 3.9.0: GTK+ based Audio CD Player/Ripper
 media-sound/gsm 1.0.13-r1: Lossy speech compression library and tool
 media-sound/gstreamripper 0.2: A GTK+ toolkit based frontend for streamripper
-media-sound/gtick 0.5.0 0.5.4: Metronome application supporting different meters and speeds ranging
+media-sound/gtick 0.5.4: Metronome application supporting different meters and speeds ranging
 media-sound/guayadeque 0.4.5_p20170110: Music management program designed for all music enthusiasts
 media-sound/herrie 2.2-r1: Herrie is a command line music player
 media-sound/horgand 1.14-r1: Opensource software organ
@@ -8165,7 +8165,7 @@ media-sound/mhwaveedit 1.4.22: GTK+ Sound file editor (wav, and a few others.)
 media-sound/mikmod 3.2.8: A console MOD-Player based on libmikmod
 media-sound/mixxx 2.1.8: Advanced Digital DJ tool based on Qt
 media-sound/moc 2.5.2 2.6_alpha3: Music On Console - ncurses interface for playing audio files
-media-sound/modplugtools 0.5.1 0.5.3: libmodplug based module players modplug123 and modplugplay
+media-sound/modplugtools 0.5.3: libmodplug based module players modplug123 and modplugplay
 media-sound/moosic 1.5.6-r1: Music player that focuses on easy playlist management
 media-sound/mp32ogg 0.11-r6: A perl script to convert MP3 files to Ogg Vorbis files
 media-sound/mp3_check 1.98-r1: MP3 consistency checker
@@ -8180,7 +8180,7 @@ media-sound/mp3splt-gtk 0.9.2-r1: a GTK+ based utility to split mp3 and ogg file
 media-sound/mp3wrap 0.5: Command-line utility that wraps quickly two or more mp3 files in one single large playable mp3
 media-sound/mpc 0.30 0.31-r1: Commandline client for Music Player Daemon (media-sound/mpd)
 media-sound/mpd 0.21.4-r1: The Music Player Daemon (mpd)
-media-sound/mpdas 0.4.0-r1 0.4.2: AudioScrobbler client for MPD written in C++
+media-sound/mpdas 0.4.2: AudioScrobbler client for MPD written in C++
 media-sound/mpdscribble 0.22: An MPD client that submits information to Audioscrobbler
 media-sound/mpfc 1.3.8.1-r2: Music Player For Console
 media-sound/mpg123 1.25.10-r1: a realtime MPEG 1.0/2.0/2.5 audio player for layers 1, 2 and 3
@@ -8199,7 +8199,7 @@ media-sound/ogmtools 1.5-r2: Information, extraction or creation for OGG media s
 media-sound/opus-tools 0.2: Royalty-free, highly versatile audio codec
 media-sound/orpheus 1.6-r3: Command line MP3 player
 media-sound/pamix 1.5: A PulseAudio NCurses mixer
-media-sound/paprefs 0.9.11_pre20180621 1.1: PulseAudio Preferences, configuration dialog for PulseAudio
+media-sound/paprefs 1.1: PulseAudio Preferences, configuration dialog for PulseAudio
 media-sound/pasystray 0.7.1: PulseAudio system tray
 media-sound/patchage 0.5.0-r1: Modular patch bay for audio and MIDI systems
 media-sound/pavucontrol 3.0 4.0: Pulseaudio Volume Control, GTK based mixer for Pulseaudio
