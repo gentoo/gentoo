@@ -5429,6 +5429,7 @@ sys-apps/systemd:sysv-utils - Install sysvinit compatibility symlinks and manpag
 sys-apps/systemd:vanilla - Disable Gentoo-specific behavior and compatibility quirks
 sys-apps/systemd:xkb - Depend on x11-libs/libxkbcommon to allow logind to control the X11 keymap
 sys-apps/tcp-wrappers:netgroups - Support matching NIS (host) netgroup names via the @netgroup syntax (if you don't know what this means, you most likely do not need it)
+sys-apps/texinfo:xs - Build Perl modules with embedded C code for speed; requires rebuilds on Perl update
 sys-apps/timer_entropyd:debug - Enable printf debugging and logging to the syslog at DEBUG level
 sys-apps/ucspi-ssl:bindist - Disable EC/RC5 algorithms in OpenSSL for patent reasons.
 sys-apps/usb_modeswitch:jimtcl - Use dev-lang/jimtcl instead of dev-lang/tcl for smaller memory footprint
