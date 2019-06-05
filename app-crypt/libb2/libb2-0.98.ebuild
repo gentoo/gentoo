@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit autotools ltprune
+inherit autotools
 
 DESCRIPTION="C library providing BLAKE2b, BLAKE2s, BLAKE2bp, BLAKE2sp"
 HOMEPAGE="https://github.com/BLAKE2/libb2"
@@ -40,5 +40,5 @@ src_compile() {
 
 src_install() {
 	default
-	prune_libtool_files
+	use static || find "${ED}" -name '*.la' -type f -delete || die
 }

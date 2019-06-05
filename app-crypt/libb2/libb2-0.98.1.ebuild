@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools ltprune toolchain-funcs
+inherit autotools toolchain-funcs
 
 DESCRIPTION="C library providing BLAKE2b, BLAKE2s, BLAKE2bp, BLAKE2sp"
 HOMEPAGE="https://github.com/BLAKE2/libb2"
@@ -53,5 +53,5 @@ src_compile() {
 
 src_install() {
 	default
-	prune_libtool_files
+	use static || find "${ED}" -name '*.la' -type f -delete || die
 }
