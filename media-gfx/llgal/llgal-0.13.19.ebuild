@@ -11,7 +11,7 @@ SRC_URI="https://github.com/bgoglin/llgal/archive/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 # Package warrants IUSE doc and possibly examples
 IUSE="exif"
 
