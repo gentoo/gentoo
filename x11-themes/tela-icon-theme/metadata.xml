@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM 'http://www.gentoo.org/dtd/metadata.dtd'>
+<pkgmetadata>
+	<maintainer type='person'>
+		<email>beatussum@protonmail.com</email>
+		<name>Mattéo Rossillol</name>
+	</maintainer>
+	<maintainer type='project'>
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<use>
+		<flag name='standard'>Install the standard theme color variant</flag>
+		<flag name='black'>Install the black theme color variant</flag>
+		<flag name='blue'>Install the blue theme color variant</flag>
+		<flag name='brown'>Install the brown theme color variant</flag>
+		<flag name='green'>Install the green theme color variant</flag>
+		<flag name='grey'>Install the grey theme color variant</flag>
+		<flag name='orange'>Install the orange theme color variant</flag>
+		<flag name='pink'>Install the pink theme color variant</flag>
+		<flag name='purple'>Install the purple theme color variant</flag>
+		<flag name='red'>Install the red theme color variant</flag>
+		<flag name='yellow'>Install the yellow theme color variant</flag>
+	</use>
+	<use lang='fr'>
+		<flag name='standard'>Installer la variante de couleur standard</flag>
+		<flag name='black'>Installer la variante de couleur noire</flag>
+		<flag name='blue'>Installer la variante de couleur bleue</flag>
+		<flag name='brown'>Installer la variante de couleur marron</flag>
+		<flag name='green'>Installer la variante de couleur verte</flag>
+		<flag name='grey'>Installer la variante de couleur grise</flag>
+		<flag name='orange'>Installer la variante de couleur orange</flag>
+		<flag name='pink'>Installer la variante de couleur rose</flag>
+		<flag name='purple'>Installer la variante de couleur violette</flag>
+		<flag name='red'>Installer la variante de couleur rouge</flag>
+		<flag name='yellow'>Installer la variante de couleur jaune</flag>
+	</use>
+	<upstream>
+		<maintainer status='active'>
+			<name>Vince</name>
+			<email>vinceliuice@hotmail.com</email>
+		</maintainer>
+		<bugs-to>https://github.com/vinceliuice/Tela-icon-theme/issues</bugs-to>
+		<remote-id type='github'>vinceliuice/Tela-icon-theme</remote-id>
+	</upstream>
+</pkgmetadata>
