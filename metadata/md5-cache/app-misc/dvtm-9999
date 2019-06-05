@@ -7,5 +7,5 @@ IUSE=savedconfig
 LICENSE=MIT
 RDEPEND=>=sys-libs/ncurses-6.1:0=[unicode]
 SLOT=0
-_eclasses_=git-r3	0d4635eeb5a96cd5315597a47eba25c9	multilib	1d91b03d42ab6308b5f4f6b598ed110e	portability	2b88d3ecc35035a3b8ab628b49cafb0e	savedconfig	a3812ff9dbe63484d556efcad4cc9a69	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
+_eclasses_=git-r3	0d4635eeb5a96cd5315597a47eba25c9	multilib	1d91b03d42ab6308b5f4f6b598ed110e	portability	2b88d3ecc35035a3b8ab628b49cafb0e	savedconfig	1de3f25f1039cd1772fbf707ef87dbe3	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
 _md5_=ccfcdf31766985ace2c95344014102de

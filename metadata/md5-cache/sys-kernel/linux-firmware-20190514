@@ -9,5 +9,5 @@ RDEPEND=!savedconfig? ( redistributable? ( !sys-firmware/alsa-firmware[alsa_card
 RESTRICT=binchecks strip unknown-license? ( bindist )
 SLOT=0
 SRC_URI=https://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git/snapshot/linux-firmware-711d3297bac870af42088a467459a0634c1970ca.tar.gz -> linux-firmware-20190514.tar.gz
-_eclasses_=portability	2b88d3ecc35035a3b8ab628b49cafb0e	savedconfig	a3812ff9dbe63484d556efcad4cc9a69
+_eclasses_=portability	2b88d3ecc35035a3b8ab628b49cafb0e	savedconfig	1de3f25f1039cd1772fbf707ef87dbe3
 _md5_=5131a6d367f08b68b463f1416ad327e9
