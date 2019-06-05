@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
@@ -24,7 +24,8 @@ DEPEND="${RDEPEND}
 	sys-apps/groff
 	doc? ( dev-tex/latex2html )"
 
-PATCHES=( "${FILESDIR}/${P}-asneeded.patch" )
+PATCHES=( "${FILESDIR}/${P}-asneeded.patch"
+	  "${FILESDIR}/tex-inputenc.patch" )
 DOCS=( NEWS )
 
 src_configure() {

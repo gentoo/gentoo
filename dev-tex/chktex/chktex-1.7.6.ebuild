@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
@@ -25,7 +25,8 @@ DEPEND="${RDEPEND}
 	dev-texlive/texlive-fontsrecommended
 	doc? ( dev-tex/latex2html )"
 
-PATCHES=( "${FILESDIR}/${PN}-1.7.1-asneeded.patch" )
+PATCHES=( "${FILESDIR}/${PN}-1.7.1-asneeded.patch"
+	  "${FILESDIR}/tex-inputenc.patch" )
 DOCS=( NEWS )
 AT_M4DIR="${S}/m4"
 
