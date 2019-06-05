@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas K. Hüttel <dilfridge@gentoo.org> (5 Jun 2019)
+# Fails to build, bug 680252. EAPI=2. Removal in 30 days
+# unless fixed.
+dev-java/glassfish-connector-api
+
 # Hans de Graaff <graaff@gentoo.org> (2 Jun 2019)
 # Test version with all new Gentoo defaults. 
 # Fixes bug 676946 bug may break other things.
