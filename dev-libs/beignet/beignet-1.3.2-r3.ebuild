@@ -21,7 +21,7 @@ BDEPEND="${PYTHON_DEPS}
 	virtual/pkgconfig"
 COMMON="app-eselect/eselect-opencl
 	media-libs/mesa[${MULTILIB_USEDEP}]
-	<sys-devel/clang-7.0.9999:=[${MULTILIB_USEDEP}]
+	<sys-devel/clang-8.0.0:=[${MULTILIB_USEDEP}]
 	>=x11-libs/libdrm-2.4.70[video_cards_intel,${MULTILIB_USEDEP}]
 	x11-libs/libXext[${MULTILIB_USEDEP}]
 	x11-libs/libXfixes[${MULTILIB_USEDEP}]
