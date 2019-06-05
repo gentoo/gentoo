@@ -45,9 +45,18 @@ src_configure() {
 		$(use_enable openmp)
 }
 
-src_compile() {
+do_make() {
 	# respect our CFLAGS when native-cflags is not in effect
-	emake $(use native-cflags && echo no)CFLAGS="${CFLAGS}"
+	local openmp=$(use openmp && echo -fopenmp)
+	emake $(use native-cflags && echo no)CFLAGS="${CFLAGS} ${openmp}" "$@"
+}
+
+src_compile() {
+	do_make
+}
+
+src_test() {
+	do_make check
 }
 
 src_install() {
