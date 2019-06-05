@@ -243,9 +243,6 @@ app-crypt/heimdal:hdb-ldap - Adds support for LDAP as a database backend
 app-crypt/heimdal:lmdb - Add support for using dev-db/lmdb for lookup tables
 app-crypt/heimdal:otp - Adds support for one-time passwords
 app-crypt/heimdal:pkinit - Adds support for PKINIT for the initial ticket
-app-crypt/johntheripper:cuda - Use nvidia cuda toolkit for speeding up cracking on capable devices
-app-crypt/johntheripper:mozilla - Support mozilla password cracking
-app-crypt/johntheripper:opencl - Enable opencl support for speeding up cracking on capable devices
 app-crypt/kstart:afs - Enables afs support which means you can acquire an afs token and set PAGs. It's recommended to set this USE if you need authenticated access to an AFS cell for your daemon/app.
 app-crypt/libu2f-host:systemd - Use user ACLs rather than plugdev group to give user access to the HIDRAW device.
 app-crypt/mit-krb5:doc - Creates and installs the API and implementation documentation. This is only useful if you want to develop software which depends on kerberos.
