@@ -35,6 +35,8 @@ src_prepare() {
 	default
 	# fix bashism
 	sed -i -e 's/ == / = /' configure.ac || die
+	# https://github.com/BLAKE2/libb2/pull/28
+	echo 'libb2_la_LDFLAGS = -no-undefined' >> src/Makefile.am || die
 	eautoreconf  # upstream doesn't make releases
 }
 
