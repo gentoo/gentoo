@@ -139,6 +139,20 @@ tsk_compile_libewf() {
 		--without-openssl
 		--without-libuuid
 		--without-libfuse
+
+		--with-libcstring=no
+		--with-libcerror=no
+		--with-libcdata=no
+		--with-libclocale=no
+		--with-libcnotify=no
+		--with-libcsplit=no
+		--with-libuna=no
+		--with-libcfile=no
+		--with-libcpath=no
+		--with-libbfio=no
+		--with-libfcache=no
+		--with-libfvalue=no
+
 	)
 	# We want to contain our build flags
 	local CFLAGS="${CFLAGS}"
