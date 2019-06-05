@@ -9,7 +9,6 @@
 		<flag name="gles2">Use GLES 2.0 or later instead of full OpenGL</flag>
 		<flag name="localstorage">Build the LocalStorage import for QtQuick (requires QtSql)</flag>
 		<flag name="widgets">Enable QtWidgets support</flag>
-		<flag name="xml">Build the XmlListModel import for QtQuick (requires QtXmlPatterns)</flag>
 	</use>
 	<upstream>
 		<bugs-to>https://bugreports.qt.io/</bugs-to>
