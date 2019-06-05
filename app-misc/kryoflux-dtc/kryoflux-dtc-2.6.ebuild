@@ -12,7 +12,7 @@ HOMEPAGE="https://www.kryoflux.com"
 SRC_URI="https://www.kryoflux.com/download/${MY_P}.tar.bz2
 	gui? ( https://www.kryoflux.com/kryoflux-ui.jar )"
 
-KEYWORDS="-* amd64 ~x86"
+KEYWORDS="-* amd64 x86"
 LICENSE="SPS"
 SLOT="0"
 IUSE="demos doc fast-firmware gui static"
