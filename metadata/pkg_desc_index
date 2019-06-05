@@ -1988,7 +1988,7 @@ dev-erlang/epam 1.0.0 1.0.2: epam for ejabberd to help with PAM authentication s
 dev-erlang/eredis 1.0.8: Erlang Redis client
 dev-erlang/esip 1.0.4 1.0.7 1.0.8 1.0.11: ProcessOne SIP server component
 dev-erlang/ezlib 1.0.1 1.0.2: Native zlib driver for Erlang and Elixir
-dev-erlang/fast_tls 1.0.3 1.0.6 1.0.7 1.0.11 1.0.26: TLS/SSL native driver for Erlang and Elixir
+dev-erlang/fast_tls 1.0.26: TLS/SSL native driver for Erlang and Elixir
 dev-erlang/fast_xml 1.1.22: Fast Expat based Erlang XML parsing library
 dev-erlang/fast_yaml 1.0.3 1.0.5 1.0.6 1.0.9: Fast Yaml native library for Erlang and Elixir
 dev-erlang/goldrush 0.1.8.1 0.1.9: Small Erlang app that provides fast event stream processing
@@ -2001,7 +2001,7 @@ dev-erlang/meck 0.8.3 0.8.4: Mocking library for Erlang
 dev-erlang/p1_mysql 1.0.1 1.0.2: Pure Erlang MySQL driver
 dev-erlang/p1_oauth2 0.6.1: Erlang OAuth 2.0 implementation
 dev-erlang/p1_pgsql 1.1.0 1.1.2: Pure Erlang PostgreSQL driver
-dev-erlang/p1_utils 1.0.4 1.0.5 1.0.7 1.0.8 1.0.13: Erlang utility modules from ProcessOne
+dev-erlang/p1_utils 1.0.13: Erlang utility modules from ProcessOne
 dev-erlang/p1_xmlrpc 1.15.1: Erlang XMLRPC implementation with SSL, cookies, authentication
 dev-erlang/proper 1.2: QuickCheck-inspired property-based testing tool for Erlang
 dev-erlang/protobuffs 0.8.2 0.9.0: Google's Protocol Buffers for Erlang
