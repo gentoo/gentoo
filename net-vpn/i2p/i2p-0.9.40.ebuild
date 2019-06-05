@@ -50,10 +50,6 @@ EANT_BUILD_TARGET="pkg"
 EANT_TEST_TARGET='junit.test'
 JAVA_ANT_ENCODING="UTF-8"
 
-PATCHES=(
-	"${FILESDIR}/${PV}-add-cp-to-tests"
-)
-
 pkg_setup() {
 	java-pkg-2_pkg_setup
 
