@@ -2,7 +2,6 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-
 inherit savedconfig toolchain-funcs
 
 DESCRIPTION="A simple dynamic window manager, with features nicked from ratpoison and dwm"
@@ -14,11 +13,21 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="apis xlisten"
 
-DEPEND="x11-libs/libX11"
+DEPEND="
+	x11-libs/libX11
+"
 RDEPEND="
 	${DEPEND}
 	>=x11-misc/dmenu-4.4
-	apis? ( x11-misc/xbindkeys )"
+	apis? ( x11-misc/xbindkeys )
+"
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.9.24-make.patch
+	"${FILESDIR}"/${PN}-0.9.24_p20100226-dmenu-4.4.patch
+	"${FILESDIR}"/${PN}-0.9.24_p20100226-null.patch
+	"${FILESDIR}"/${PN}-0.9.24_p20100226-fix-cycle.patch
+	"${FILESDIR}"/${PN}-0.9.24_p20100226-fix-pad.patch
+)
 
 src_prepare() {
 	restore_config config.h
@@ -28,13 +37,7 @@ src_prepare() {
 		-e 's:sed.*exec.*-i::g' \
 		|| die
 
-	eapply \
-		"${FILESDIR}"/${PN}-0.9.24-make.patch \
-		"${FILESDIR}"/${PN}-0.9.24_p20100226-dmenu-4.4.patch \
-		"${FILESDIR}"/${PN}-0.9.24_p20100226-null.patch \
-		"${FILESDIR}"/${PN}-0.9.24_p20100226-fix-cycle.patch \
-		"${FILESDIR}"/${PN}-0.9.24_p20100226-fix-pad.patch
-	eapply_user
+	default
 
 	local i
 	for i in apis xlisten; do
