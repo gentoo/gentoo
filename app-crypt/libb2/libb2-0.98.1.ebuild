@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools ltprune toolchain-funcs
+inherit autotools toolchain-funcs
 
 DESCRIPTION="C library providing BLAKE2b, BLAKE2s, BLAKE2bp, BLAKE2sp"
 HOMEPAGE="https://github.com/BLAKE2/libb2"
@@ -12,8 +12,8 @@ SRC_URI="https://github.com/BLAKE2/libb2/archive/${GITHASH}.tar.gz -> ${P}.tar.g
 
 LICENSE="CC0-1.0"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~ppc64 ~x64-macos ~sparc-solaris ~x64-solaris"
-IUSE="static +native-cflags openmp"
+KEYWORDS="~amd64 ~hppa ~ppc64 ~amd64-linux ~x86-linux ~x64-macos ~sparc-solaris ~x64-solaris"
+IUSE="static native-cflags openmp"
 
 DEPEND="
 	openmp? (
@@ -52,5 +52,5 @@ src_compile() {
 
 src_install() {
 	default
-	prune_libtool_files
+	use static || find "${ED}" -name '*.la' -type f -delete || die
 }
