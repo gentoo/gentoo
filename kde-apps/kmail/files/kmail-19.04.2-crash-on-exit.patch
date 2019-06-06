@@ -1,0 +1,74 @@
+From 97e165dcf5a851ee10526631d24f9af7736da2e6 Mon Sep 17 00:00:00 2001
+From: David Faure <faure@kde.org>
+Date: Thu, 6 Jun 2019 18:10:42 +0200
+Subject: Fix kontact crash on logout.
+
+Summary:
+KMail was creating new Akonadi jobs during mainwindow destruction,
+due to not testing the bool in GuiActivateEvent.
+
+Same bt in bug 404881, apparently quitting from the akregator tray icon
+[which quits all of kontact... separate issue...] gave the same crash.
+
+BUG: 404881
+FIXED-IN: 19.04.2
+
+Test Plan: Run kontact, logout. Hello Drkonqi.
+
+Reviewers: mlaurent, winterz
+
+Reviewed By: mlaurent, winterz
+
+Subscribers: kde-pim
+
+Tags: #kde_pim
+
+Differential Revision: https://phabricator.kde.org/D21626
+---
+ src/kmail_part.cpp | 23 ++++++++++++-----------
+ 1 file changed, 12 insertions(+), 11 deletions(-)
+
+diff --git a/src/kmail_part.cpp b/src/kmail_part.cpp
+index 703a1ee..96c4c07 100644
+--- a/src/kmail_part.cpp
++++ b/src/kmail_part.cpp
+@@ -33,6 +33,7 @@
+ 
+ #include <QVBoxLayout>
+ 
++#include <KParts/GUIActivateEvent>
+ #include <kparts/statusbarextension.h>
+ #include <kparts/mainwindow.h>
+ #include <kpluginfactory.h>
+@@ -129,18 +130,18 @@ bool KMailPart::openFile()
+ void KMailPart::guiActivateEvent(KParts::GUIActivateEvent *e)
+ {
+     KParts::ReadOnlyPart::guiActivateEvent(e);
+-    mainWidget->initializeFilterActions();
+-    mainWidget->tagActionManager()->createActions();
+-    mainWidget->folderShortcutActionManager()->createActions();
+-    mainWidget->populateMessageListStatusFilterCombo();
+-    mainWidget->initializePluginActions();
+-    /*
+-    FIXME it doesn't work when we switch component.
+-    const QString title = mainWidget->fullCollectionPath();
+-    if (!title.isEmpty()) {
+-        Q_EMIT setWindowCaption(title);
++    if (e->activated()) {
++        mainWidget->initializeFilterActions();
++        mainWidget->tagActionManager()->createActions();
++        mainWidget->folderShortcutActionManager()->createActions();
++        mainWidget->populateMessageListStatusFilterCombo();
++        mainWidget->initializePluginActions();
++
++        const QString title = mainWidget->fullCollectionPath();
++        if (!title.isEmpty()) {
++            Q_EMIT setWindowCaption(title);
++        }
+     }
+-    */
+ }
+ 
+ void KMailPart::exit()
+-- 
+cgit v1.1
