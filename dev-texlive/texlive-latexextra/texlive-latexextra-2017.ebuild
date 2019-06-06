@@ -30,6 +30,7 @@ DEPEND=">=dev-texlive/texlive-latexrecommended-2017
 !<dev-texlive/texlive-plainextra-2010
 !<dev-texlive/texlive-pictures-2013
 !=dev-texlive/texlive-latexrecommended-2019*
+!=dev-texlive/texlive-mathscience-2019*
 dev-perl/Spreadsheet-ParseExcel
 "
 RDEPEND="${DEPEND} "

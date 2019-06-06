@@ -16,6 +16,7 @@ KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 s390 ~sh sparc x86 ~a
 IUSE=""
 DEPEND=">=dev-texlive/texlive-basic-2017
 !=dev-texlive/texlive-latexrecommended-2019*
+!=dev-texlive/texlive-langarabic-2019*
 "
 RDEPEND="${DEPEND} dev-texlive/texlive-latexrecommended
 "

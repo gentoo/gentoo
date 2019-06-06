@@ -20,6 +20,7 @@ DEPEND=">=dev-texlive/texlive-fontsrecommended-2019
 !dev-tex/SIunits
 !dev-texlive/texlive-mathextra
 !dev-texlive/texlive-science
+!=dev-texlive/texlive-latexextra-2017*
 "
 RDEPEND="${DEPEND} dev-texlive/texlive-pstricks
 "
