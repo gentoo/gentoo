@@ -3,8 +3,6 @@
 
 EAPI="6"
 
-inherit toolchain-funcs
-
 DESCRIPTION="Small and fast Portage helper tools written in C"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Portage-utils"
 
@@ -21,10 +19,9 @@ else
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 fi
 
-RDEPEND="dev-libs/iniparser:0"
-DEPEND="${RDEPEND}
-	app-arch/xz-utils
+RDEPEND="
 	static? ( dev-libs/iniparser:0[static-libs] )
+	!static? ( dev-libs/iniparser:0 )
 	qmanifest? (
 		openmp? (
 			|| (
@@ -32,22 +29,29 @@ DEPEND="${RDEPEND}
 				sys-devel/clang-runtime:*[openmp]
 			)
 		)
-		app-crypt/libb2
-		!libressl? ( dev-libs/openssl:0= )
-		libressl? ( dev-libs/libressl:0= )
-		sys-libs/zlib
-		app-crypt/gpgme
+		static? (
+			app-crypt/libb2:=[static-libs]
+			!libressl? ( dev-libs/openssl:0=[static-libs] )
+			libressl? ( dev-libs/libressl:0=[static-libs] )
+			sys-libs/zlib[static-libs]
+			app-crypt/gpgme[static-libs]
+		)
+		!static? (
+			app-crypt/libb2
+			!libressl? ( dev-libs/openssl:0= )
+			libressl? ( dev-libs/libressl:0= )
+			sys-libs/zlib
+			app-crypt/gpgme
+		)
 	)
-	"
-
-src_prepare() {
-	default
-}
+"
+DEPEND="${RDEPEND}"
 
 src_configure() {
 	econf \
 		--disable-maintainer-mode \
 		--with-eprefix="${EPREFIX}" \
 		$(use_enable qmanifest) \
-		$(use_enable openmp)
+		$(use_enable openmp) \
+		$(use_enable static)
 }
