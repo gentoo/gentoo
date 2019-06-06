@@ -8,6 +8,8 @@
   <use>
     <flag name="cargo">Install cargo component</flag>
     <flag name="clippy">Install clippy component</flag>
+    <flag name="neon">Build support for the thumbv7neon
+    target</flag>
     <flag name="system-llvm">Use the system LLVM install</flag>
     <flag name="rls">Install rls component</flag>
     <flag name="rustfmt">Install rustfmt component</flag>

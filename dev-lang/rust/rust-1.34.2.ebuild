@@ -36,7 +36,7 @@ LLVM_TARGET_USEDEPS=${ALL_LLVM_TARGETS[@]/%/?}
 
 LICENSE="|| ( MIT Apache-2.0 ) BSD-1 BSD-2 BSD-4 UoI-NCSA"
 
-IUSE="clippy cpu_flags_x86_sse2 debug doc libressl rls rustfmt system-llvm thumbv7neon wasm ${ALL_LLVM_TARGETS[*]}"
+IUSE="clippy cpu_flags_x86_sse2 debug doc libressl rls rustfmt system-llvm neon wasm ${ALL_LLVM_TARGETS[*]}"
 
 # Please keep the LLVM dependency block separate. Since LLVM is slotted,
 # we need to *really* make sure we're not pulling one than more slot
@@ -141,7 +141,7 @@ src_configure() {
 		rust_targets="${rust_targets},\"wasm32-unknown-unknown\""
 	fi
 
-	if use thumbv7neon; then
+	if use neon; then
 		rust_targets="${rust_targets},\"thumbv7neon-unknown-linux-gnueabihf\""
 	fi
 
@@ -227,7 +227,7 @@ src_configure() {
 		EOF
 	fi
 
-	if use thumbv7neon; then
+	if use neon; then
 		cat <<- EOF >> "${S}"/config.toml
 			[target.thumbv7neon-unknown-linux-gnueabihf]
 			cc = "$(tc-getBUILD_CC)"
