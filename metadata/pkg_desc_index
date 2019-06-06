@@ -2943,7 +2943,7 @@ dev-libs/argtable 2.13-r1: An ANSI C library for parsing GNU-style command-line 
 dev-libs/atf 0.21-r2: Libraries to write tests in C, C++ and shell
 dev-libs/atk 2.28.1 2.30.0: GTK+ & GNOME Accessibility Toolkit
 dev-libs/beignet 1.3.2: OpenCL implementation for Intel GPUs
-dev-libs/bglibs 1.041 1.106-r1: Bruce Guenters Libraries Collection
+dev-libs/bglibs 1.106-r1: Bruce Guenters Libraries Collection
 dev-libs/bitset 2.8.4-r1: A compressed bitset with supporting data structures and algorithms
 dev-libs/boehm-gc 7.2e 7.4.2 7.6.4: The Boehm-Demers-Weiser conservative garbage collector
 dev-libs/boost 1.65.0: Boost Libraries for C++
@@ -6261,7 +6261,6 @@ dev-texlive/texlive-xetex 2017: TeXLive XeTeX and packages
 dev-util/android-studio 3.3.0.20.182.5199772 3.4.0.18.183.5452501: Android development environment based on IntelliJ IDEA
 dev-util/android-tools 5.1.1_p13 6.0.1_p79 8.1.0_p1 9.0.0_p3: Android platform tools (adb, fastboot, and mkbootimg)
 dev-util/anjuta 3.28.0-r1: A versatile IDE for GNOME
-dev-util/antlrworks 1.2.3: A novel grammar development environment for ANTLR v3 grammars
 dev-util/appdata-tools 0.1.8-r1: CLI designed to validate AppData descriptions for standards and style compliance
 dev-util/argouml 0.34: Modelling tool that helps you do your design using UML
 dev-util/aruba 0.6.2-r2: Cucumber steps for driving out command line applications
