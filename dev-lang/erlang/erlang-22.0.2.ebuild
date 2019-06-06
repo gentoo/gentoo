@@ -49,7 +49,6 @@ PATCHES=(
 	"${FILESDIR}/${PN}-add-epmd-pid-file-creation-for-openrc.patch"
 )
 
-
 SITEFILE=50"${PN}"-gentoo.el
 
 src_prepare() {
