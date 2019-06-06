@@ -18,5 +18,6 @@ DEPEND=">=dev-texlive/texlive-basic-2019
 !dev-texlive/texlive-langarab
 !<dev-texlive/texlive-xetex-2016
 !<dev-texlive/texlive-basic-2016
+!=dev-texlive/texlive-luatex-2017*
 "
 RDEPEND="${DEPEND} "
