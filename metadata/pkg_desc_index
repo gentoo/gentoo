@@ -5036,7 +5036,7 @@ dev-python/jaraco-text 1.8 1.10.1: Text utilities used by other projects by deve
 dev-python/jaxml 3.02-r1: XML generator written in Python
 dev-python/jdcal 1.0: Julian dates from proleptic Gregorian and Julian calendars
 dev-python/jedi 0.10.2: Autocompletion library for Python
-dev-python/jinja 2.9.5 2.10 2.10.1: A full-featured template engine for Python
+dev-python/jinja 2.10.1: A full-featured template engine for Python
 dev-python/jinja2-time 0.2.0: Jinja2 Extension for Dates and Times
 dev-python/jmespath 0.9.3-r1: JSON Matching Expressions
 dev-python/joblib 0.10.0 0.11 0.12.2: Tools to provide lightweight pipelining in Python
