@@ -54,20 +54,22 @@ DEPEND="${COMMON_DEPEND}
 DOCS=( changelog README )
 
 src_configure() {
-	waf-utils_src_configure \
-		--cxxflags-debug="" \
-		--cxxflags-release="-DNDEBUG" \
-		--ldflags="${LDFLAGS}" \
-		--enable-lfs \
-		--lib-dev \
-		--no-desktop-update \
-		--no-faust \
-		--no-ldconfig \
-		--shared-lib \
-		$(use_enable nls) \
-		$(usex bluetooth "" "--no-bluez") \
-		$(usex debug "--debug" "") \
-		$(usex lv2 "--lv2dir=${EPREFIX}/usr/$(get_libdir)/lv2" "--no-lv2 --no-lv2-gui") \
-		$(usex standalone "" "--no-standalone") \
+	local myconf=(
+		--cxxflags-debug=""
+		--cxxflags-release="-DNDEBUG"
+		--ldflags="${LDFLAGS}"
+		--enable-lfs
+		--lib-dev
+		--no-desktop-update
+		--no-faust
+		--no-ldconfig
+		--shared-lib
+		$(use_enable nls)
+		$(usex bluetooth "" "--no-bluez")
+		$(usex debug "--debug" "")
+		$(usex lv2 "--lv2dir=${EPREFIX}/usr/$(get_libdir)/lv2" "--no-lv2 --no-lv2-gui")
+		$(usex standalone "" "--no-standalone")
 		$(usex zeroconf "" "--no-avahi")
+	)
+	waf-utils_src_configure "${myconf[@]}"
 }
