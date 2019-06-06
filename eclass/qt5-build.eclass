@@ -178,12 +178,6 @@ qt5-build_src_prepare() {
 		sed -i -e "/^QMAKE_CONF_COMPILER=/ s:=.*:=\"$(tc-getCXX)\":" \
 			configure || die "sed failed (QMAKE_CONF_COMPILER)"
 
-		if [[ ${QT5_MINOR_VERSION} -lt 12 ]]; then
-			# Don't add -O3 to CXXFLAGS (bug 549140)
-			sed -i -e '/CONFIG\s*+=/ s/optimize_full//' \
-				src/{corelib/corelib,gui/gui}.pro || die "sed failed (optimize_full)"
-		fi
-
 		# Respect build variables in configure tests (bug #639494)
 		sed -i -e "s|\"\$outpath/bin/qmake\" \"\$relpathMangled\" -- \"\$@\"|& $(qt5_qmake_args) |" configure || die
 	fi
@@ -255,10 +249,6 @@ qt5-build_src_install() {
 		"$@"
 
 		popd >/dev/null || die
-
-		if [[ ${QT5_MINOR_VERSION} -lt 12 ]]; then
-			docompress -x "${QT5_DOCDIR#${EPREFIX}}"/global
-		fi
 
 		# install an empty Gentoo/gentoo-qconfig.h in ${D}
 		# so that it's placed under package manager control
@@ -416,11 +406,7 @@ qt5_prepare_env() {
 	QT5_IMPORTDIR=${QT5_ARCHDATADIR}/imports
 	QT5_QMLDIR=${QT5_ARCHDATADIR}/qml
 	QT5_DATADIR=${QT5_PREFIX}/share/qt5
-	if [[ ${QT5_MINOR_VERSION} -lt 12 ]]; then
-		QT5_DOCDIR=${QT5_PREFIX}/share/doc/qt-${PV}
-	else
-		QT5_DOCDIR=${QT5_PREFIX}/share/qt5-doc
-	fi
+	QT5_DOCDIR=${QT5_PREFIX}/share/qt5-doc
 	QT5_TRANSLATIONDIR=${QT5_DATADIR}/translations
 	QT5_EXAMPLESDIR=${QT5_DATADIR}/examples
 	QT5_TESTSDIR=${QT5_DATADIR}/tests
@@ -579,8 +565,7 @@ qt5_base_configure() {
 		-no-freetype -no-harfbuzz
 		-no-openssl -no-libproxy
 		-no-xcb-xlib
-		$([[ ${QT5_MINOR_VERSION} -lt 12 ]] && echo -no-xinput2 -no-xkbcommon-x11 -no-xkbcommon-evdev)
-		$([[ ${QT5_MINOR_VERSION} -ge 12 ]] && echo -no-xcb-xinput -no-xkbcommon) # bug 672340
+		-no-xcb-xinput -no-xkbcommon # bug 672340
 
 		# cannot use -no-gif because there is no way to override it later
 		#-no-gif
