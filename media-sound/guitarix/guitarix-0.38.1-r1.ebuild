@@ -24,7 +24,7 @@ COMMON_DEPEND="dev-cpp/eigen:3
 	dev-cpp/gtkmm:2.4
 	dev-libs/glib:2
 	>=media-libs/libsndfile-1.0.17
-	>=media-libs/zita-convolver-3
+	>=media-libs/zita-convolver-3:=
 	media-libs/zita-resampler
 	>=net-misc/curl-7.26.0
 	>=sci-libs/fftw-3.1.2:3.0=
