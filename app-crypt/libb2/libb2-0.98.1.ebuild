@@ -12,7 +12,7 @@ SRC_URI="https://github.com/BLAKE2/libb2/archive/${GITHASH}.tar.gz -> ${P}.tar.g
 
 LICENSE="CC0-1.0"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~ppc64 ~amd64-linux ~x86-linux ~x64-macos ~sparc-solaris ~x64-solaris"
+KEYWORDS="~amd64 ~hppa ~ppc64 ~x64-cygwin ~amd64-linux ~x86-linux ~x64-macos ~sparc-solaris ~x64-solaris"
 IUSE="static native-cflags openmp"
 
 DEPEND="
