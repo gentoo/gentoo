@@ -70,6 +70,31 @@ egetent() {
 	esac
 }
 
+# @FUNCTION: user_get_nologin
+# @INTERNAL
+# @DESCRIPTION:
+# Find an appropriate 'nologin' shell for the platform, and output
+# its path.
+user_get_nologin() {
+	local eshell
+
+	for eshell in /sbin/nologin /usr/sbin/nologin /bin/false /usr/bin/false /dev/null ; do
+		[[ -x ${ROOT}${eshell} ]] && break
+	done
+
+	if [[ ${eshell} == "/dev/null" ]] ; then
+		ewarn "Unable to identify the shell to use, proceeding with userland default."
+		case ${USERLAND} in
+			GNU)    eshell="/bin/false" ;;
+			BSD)    eshell="/sbin/nologin" ;;
+			Darwin) eshell="/usr/sbin/nologin" ;;
+			*) die "Unable to identify the default shell for userland ${USERLAND}"
+		esac
+	fi
+
+	echo "${eshell}"
+}
+
 # @FUNCTION: enewuser
 # @USAGE: <user> [-F] [-M] [uid] [shell] [homedir] [groups]
 # @DESCRIPTION:
@@ -152,19 +177,7 @@ enewuser() {
 			die "Pass '-1' as the shell parameter"
 		fi
 	else
-		for eshell in /sbin/nologin /usr/sbin/nologin /bin/false /usr/bin/false /dev/null ; do
-			[[ -x ${ROOT}${eshell} ]] && break
-		done
-
-		if [[ ${eshell} == "/dev/null" ]] ; then
-			eerror "Unable to identify the shell to use, proceeding with userland default."
-			case ${USERLAND} in
-				GNU)    eshell="/bin/false" ;;
-				BSD)    eshell="/sbin/nologin" ;;
-				Darwin) eshell="/usr/sbin/nologin" ;;
-				*) die "Unable to identify the default shell for userland ${USERLAND}"
-			esac
-		fi
+		eshell=$(user_get_nologin)
 	fi
 	einfo " - Shell: ${eshell}"
 	opts+=( -s "${eshell}" )
