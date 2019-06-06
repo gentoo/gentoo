@@ -5799,59 +5799,59 @@ dev-python/zope-event 4.2.0: Event publishing / dispatch, used by Zope Component
 dev-python/zope-interface 4.1.1 4.3.2 4.4.3: Interfaces for Python
 dev-python/zsi 2.1_alpha1-r1: Web Services for Python
 dev-python/zstandard 0.8.1: Zstandard Bindings for Python
-dev-qt/assistant 5.11.3 5.12.3: Tool for viewing on-line documentation in Qt help file format
-dev-qt/designer 5.11.3 5.12.3: WYSIWYG tool for designing and building graphical user interfaces with QtWidgets
-dev-qt/linguist 5.11.3 5.12.3: Graphical tool for translating Qt applications
-dev-qt/linguist-tools 5.11.3 5.12.3: Tools for working with Qt translation data files
-dev-qt/pixeltool 5.11.3 5.12.3: Qt screen magnifier
-dev-qt/qdbus 5.11.3 5.12.3: Interface to Qt applications communicating over D-Bus
-dev-qt/qdbusviewer 5.11.3 5.12.3: Graphical tool that lets you introspect D-Bus objects and messages
-dev-qt/qdoc 5.11.3 5.12.3: Qt documentation generator
+dev-qt/assistant 5.12.3: Tool for viewing on-line documentation in Qt help file format
+dev-qt/designer 5.12.3: WYSIWYG tool for designing and building graphical user interfaces with QtWidgets
+dev-qt/linguist 5.12.3: Graphical tool for translating Qt applications
+dev-qt/linguist-tools 5.12.3: Tools for working with Qt translation data files
+dev-qt/pixeltool 5.12.3: Qt screen magnifier
+dev-qt/qdbus 5.12.3: Interface to Qt applications communicating over D-Bus
+dev-qt/qdbusviewer 5.12.3: Graphical tool that lets you introspect D-Bus objects and messages
+dev-qt/qdoc 5.12.3: Qt documentation generator
 dev-qt/qt-creator 4.6.2: Lightweight IDE for C++/QML development centering around Qt
-dev-qt/qt-docs 5.11.3_p201811291914 5.12.3_p201904161302: Qt5 documentation, for use with Qt Creator and other tools
-dev-qt/qt3d 5.11.3 5.12.3: 3D rendering module for the Qt5 framework
-dev-qt/qtbluetooth 5.11.3 5.12.3: Bluetooth support library for the Qt5 framework
-dev-qt/qtchooser 0_p20170803 66: Tool to quickly switch between multiple Qt installations
-dev-qt/qtconcurrent 5.11.3 5.12.3: Multi-threading concurrence support library for the Qt5 framework
-dev-qt/qtcore 5.11.3-r2 5.12.3: Cross-platform application development framework
-dev-qt/qtdatavis3d 5.11.3 5.12.3: 3D data visualization library for the Qt5 framework
-dev-qt/qtdbus 5.11.3 5.12.3: Qt5 module for inter-process communication over the D-Bus protocol
-dev-qt/qtdeclarative 5.11.3 5.12.3: The QML and Quick modules for the Qt5 framework
-dev-qt/qtgraphicaleffects 5.11.3 5.12.3: Set of QML types for adding visual effects to user interfaces
-dev-qt/qtgui 5.11.3 5.12.3-r1: The GUI module and platform plugins for the Qt5 framework
-dev-qt/qthelp 5.11.3 5.12.3: Qt5 module for integrating online documentation into applications
-dev-qt/qtimageformats 5.11.3 5.12.3: Additional format plugins for the Qt image I/O system
-dev-qt/qtlocation 5.11.3-r1 5.12.3: Location (places, maps, navigation) library for the Qt5 framework
+dev-qt/qt-docs 5.12.3_p201904161302: Qt5 documentation, for use with Qt Creator and other tools
+dev-qt/qt3d 5.12.3: 3D rendering module for the Qt5 framework
+dev-qt/qtbluetooth 5.12.3: Bluetooth support library for the Qt5 framework
+dev-qt/qtchooser 66: Tool to quickly switch between multiple Qt installations
+dev-qt/qtconcurrent 5.12.3: Multi-threading concurrence support library for the Qt5 framework
+dev-qt/qtcore 5.12.3: Cross-platform application development framework
+dev-qt/qtdatavis3d 5.12.3: 3D data visualization library for the Qt5 framework
+dev-qt/qtdbus 5.12.3: Qt5 module for inter-process communication over the D-Bus protocol
+dev-qt/qtdeclarative 5.12.3: The QML and Quick modules for the Qt5 framework
+dev-qt/qtgraphicaleffects 5.12.3: Set of QML types for adding visual effects to user interfaces
+dev-qt/qtgui 5.12.3-r1: The GUI module and platform plugins for the Qt5 framework
+dev-qt/qthelp 5.12.3: Qt5 module for integrating online documentation into applications
+dev-qt/qtimageformats 5.12.3: Additional format plugins for the Qt image I/O system
+dev-qt/qtlocation 5.12.3: Location (places, maps, navigation) library for the Qt5 framework
 dev-qt/qtlockedfile 2.4.1_p20171024: QFile extension with advisory locking functions
-dev-qt/qtmultimedia 5.11.3 5.12.3: Multimedia (audio, video, radio, camera) library for the Qt5 framework
-dev-qt/qtnetwork 5.11.3 5.12.3: Network abstraction library for the Qt5 framework
-dev-qt/qtnetworkauth 5.11.3 5.12.3: Network authorization library for the Qt5 framework
-dev-qt/qtopengl 5.11.3 5.12.3: OpenGL support library for the Qt5 framework (deprecated)
-dev-qt/qtpaths 5.11.3 5.12.3: Command line client to QStandardPaths
-dev-qt/qtpositioning 5.11.3 5.12.3: Physical position determination library for the Qt5 framework
-dev-qt/qtprintsupport 5.11.3 5.12.3: Printing support library for the Qt5 framework
-dev-qt/qtquickcontrols 5.11.3 5.12.3: Set of Qt Quick controls to create complete user interfaces (deprecated)
-dev-qt/qtquickcontrols2 5.11.3 5.12.3: Set of next generation Qt Quick controls for the Qt5 framework
-dev-qt/qtscript 5.11.3 5.12.3: Application scripting library for the Qt5 framework (deprecated)
-dev-qt/qtscxml 5.11.3 5.12.3: State Chart XML (SCXML) support library for the Qt5 framework
-dev-qt/qtsensors 5.11.3 5.12.3: Hardware sensor access library for the Qt5 framework
-dev-qt/qtserialport 5.11.3 5.12.3: Serial port abstraction library for the Qt5 framework
+dev-qt/qtmultimedia 5.12.3: Multimedia (audio, video, radio, camera) library for the Qt5 framework
+dev-qt/qtnetwork 5.12.3: Network abstraction library for the Qt5 framework
+dev-qt/qtnetworkauth 5.12.3: Network authorization library for the Qt5 framework
+dev-qt/qtopengl 5.12.3: OpenGL support library for the Qt5 framework (deprecated)
+dev-qt/qtpaths 5.12.3: Command line client to QStandardPaths
+dev-qt/qtpositioning 5.12.3: Physical position determination library for the Qt5 framework
+dev-qt/qtprintsupport 5.12.3: Printing support library for the Qt5 framework
+dev-qt/qtquickcontrols 5.12.3: Set of Qt Quick controls to create complete user interfaces (deprecated)
+dev-qt/qtquickcontrols2 5.12.3: Set of next generation Qt Quick controls for the Qt5 framework
+dev-qt/qtscript 5.12.3: Application scripting library for the Qt5 framework (deprecated)
+dev-qt/qtscxml 5.12.3: State Chart XML (SCXML) support library for the Qt5 framework
+dev-qt/qtsensors 5.12.3: Hardware sensor access library for the Qt5 framework
+dev-qt/qtserialport 5.12.3: Serial port abstraction library for the Qt5 framework
 dev-qt/qtsingleapplication 2.6.1_p20171024: Qt library to start applications only once per user
-dev-qt/qtspeech 5.11.3 5.12.3: Text-to-speech library for the Qt5 framework
-dev-qt/qtsql 5.11.3 5.12.3: SQL abstraction library for the Qt5 framework
-dev-qt/qtsvg 5.11.3 5.12.3: SVG rendering library for the Qt5 framework
-dev-qt/qttest 5.11.3 5.12.3: Unit testing library for the Qt5 framework
-dev-qt/qttranslations 5.11.3 5.12.3: Translation files for the Qt5 framework
-dev-qt/qtvirtualkeyboard 5.11.3 5.12.3: Customizable input framework and virtual keyboard for Qt
-dev-qt/qtwayland 5.11.3 5.12.3: Wayland platform plugin for Qt
-dev-qt/qtwebchannel 5.11.3 5.12.3: Qt5 module for integrating C++ and QML applications with HTML/JavaScript clients
-dev-qt/qtwebengine 5.11.3 5.12.3: Library for rendering dynamic web content in Qt5 C++ and QML applications
+dev-qt/qtspeech 5.12.3: Text-to-speech library for the Qt5 framework
+dev-qt/qtsql 5.12.3: SQL abstraction library for the Qt5 framework
+dev-qt/qtsvg 5.12.3: SVG rendering library for the Qt5 framework
+dev-qt/qttest 5.12.3: Unit testing library for the Qt5 framework
+dev-qt/qttranslations 5.12.3: Translation files for the Qt5 framework
+dev-qt/qtvirtualkeyboard 5.12.3: Customizable input framework and virtual keyboard for Qt
+dev-qt/qtwayland 5.12.3: Wayland platform plugin for Qt
+dev-qt/qtwebchannel 5.12.3: Qt5 module for integrating C++ and QML applications with HTML/JavaScript clients
+dev-qt/qtwebengine 5.12.3: Library for rendering dynamic web content in Qt5 C++ and QML applications
 dev-qt/qtwebkit 5.212.0_pre20180120: WebKit rendering library for the Qt5 framework (deprecated)
-dev-qt/qtwebsockets 5.11.3 5.12.3: Implementation of the WebSocket protocol for the Qt5 framework
-dev-qt/qtwidgets 5.11.3 5.12.3: Set of components for creating classic desktop-style UIs for the Qt5 framework
-dev-qt/qtx11extras 5.11.3 5.12.3: Linux/X11-specific support library for the Qt5 framework
-dev-qt/qtxml 5.11.3 5.12.3: Implementation of SAX and DOM for the Qt5 framework
-dev-qt/qtxmlpatterns 5.11.3 5.12.3: XPath, XQuery, XSLT, and XML Schema validation library for the Qt5 framework
+dev-qt/qtwebsockets 5.12.3: Implementation of the WebSocket protocol for the Qt5 framework
+dev-qt/qtwidgets 5.12.3: Set of components for creating classic desktop-style UIs for the Qt5 framework
+dev-qt/qtx11extras 5.12.3: Linux/X11-specific support library for the Qt5 framework
+dev-qt/qtxml 5.12.3: Implementation of SAX and DOM for the Qt5 framework
+dev-qt/qtxmlpatterns 5.12.3: XPath, XQuery, XSLT, and XML Schema validation library for the Qt5 framework
 dev-ruby/GeoRuby 2.5.2: Ruby data holder for OGC Simple Features
 dev-ruby/abstract 1.0.0-r3: Library which enable you to define abstract method in Ruby
 dev-ruby/actionpack 5.1.7: Eases web-request routing, handling, and response
@@ -7478,7 +7478,7 @@ media-gfx/nvidia-cg-toolkit 3.1.0013-r3 3.1.0013-r5: NVIDIA's C graphics compile
 media-gfx/nvidia-texture-tools 2.0.8-r4: A set of cuda-enabled texture tools and compressors
 media-gfx/opcion 1.1.1-r2: Free font viewer written in Java
 media-gfx/openclipart 0.20: Open Clip Art Library (openclipart.org)
-media-gfx/openvdb 4.0.2 4.0.2-r2: Libs for the efficient manipulation of volumetric data
+media-gfx/openvdb 4.0.2-r2: Libs for the efficient manipulation of volumetric data
 media-gfx/optipng 0.7.6-r2: Compress PNG files without affecting image quality
 media-gfx/pdf2svg 0.2.3: pdf2svg is based on poppler and cairo and can convert pdf to svg files
 media-gfx/peps 2.0-r1: Preprocess and convert EPS files to bitmap with Ghostscript
@@ -7781,7 +7781,7 @@ media-libs/libxspf 1.2.0: Playlist handling library
 media-libs/libxtract 0.6.6: A simple, portable, lightweight library of audio feature extraction functions
 media-libs/libzen 0.4.37: Shared library for libmediainfo and mediainfo
 media-libs/libzmf 0.0.2: Library for parsing Zoner Callisto/Draw documents
-media-libs/lilv 0.24.2-r2 0.24.4-r1: Library to make the use of LV2 plugins as simple as possible for applications
+media-libs/lilv 0.24.4-r1: Library to make the use of LV2 plugins as simple as possible for applications
 media-libs/lsp-plugins 1.1.7-r1: Linux Studio Plugins
 media-libs/lv2 1.14.0-r1: A simple but extensible successor of LADSPA
 media-libs/mediastreamer 2.9.0-r2: Mediastreaming library for telephony application
@@ -7804,7 +7804,7 @@ media-libs/openexr_ctl 1.0.1-r2: OpenEXR CTL libraries
 media-libs/openh264 1.7.0-r1: Cisco OpenH264 library and Gecko Media Plugin for Mozilla packages
 media-libs/openimageio 1.6.13 1.7.17 1.8.17: A library for reading and writing images
 media-libs/openjpeg 1.5.2-r1 2.3.0-r1: Open-source JPEG 2000 library
-media-libs/opensubdiv 3.3.0 3.3.3: An Open-Source subdivision surface library
+media-libs/opensubdiv 3.3.3: An Open-Source subdivision surface library
 media-libs/opus 1.3: Open codec designed for internet transmission of interactive speech and audio
 media-libs/opusfile 0.11: A high-level decoding and seeking API for .opus files
 media-libs/osl 1.8.12: Advanced shading language for production GI renderers
@@ -8358,7 +8358,7 @@ media-video/mediainfo 18.12: MediaInfo supplies technical and tag information ab
 media-video/minitube 2.5.2-r1: Qt5 YouTube Client
 media-video/mjpegtools 2.1.0-r4: Tools for MJPEG video
 media-video/mkvtoolnix 29.0.0: Tools to create, alter, and inspect Matroska files
-media-video/motion 4.0.1-r1 4.1.1-r1: A software motion detector
+media-video/motion 4.1.1-r1: A software motion detector
 media-video/movit 1.2.0: Modern Video Toolkit
 media-video/mpeg-tools 1.5b-r4 1.5b-r5: Tools for MPEG video
 media-video/mpeg2vidcodec 12-r1: MPEG Library
@@ -9230,7 +9230,7 @@ net-vpn/networkmanager-strongswan 1.4.4-r1: NetworkManager StrongSwan plugin
 net-vpn/networkmanager-vpnc 1.2.6: NetworkManager VPNC plugin
 net-vpn/nstx 1.1_beta6-r3: IP over DNS tunnel
 net-vpn/openconnect 7.08-r1: Free client for Cisco AnyConnect SSL VPN software
-net-vpn/openfortivpn 1.8.1 1.9.0: A Fortinet compatible VPN client
+net-vpn/openfortivpn 1.9.0: A Fortinet compatible VPN client
 net-vpn/openvpn 2.4.6: Robust and highly flexible tunneling application compatible with many OSes
 net-vpn/pptpd 1.4.0-r2: Linux Point-to-Point Tunnelling Protocol Server
 net-vpn/strongswan 5.7.2: IPsec-based VPN solution, supporting IKEv1/IKEv2 and MOBIKE
