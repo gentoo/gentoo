@@ -11,7 +11,7 @@ SRC_URI="https://github.com/adrienverge/openfortivpn/archive/v${PV}.tar.gz -> ${
 
 LICENSE="GPL-3-with-openssl-exception openssl"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="libressl"
 
 DEPEND="
