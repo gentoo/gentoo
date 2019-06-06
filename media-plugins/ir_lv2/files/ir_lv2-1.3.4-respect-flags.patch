@@ -1,0 +1,21 @@
+diff -urpN ir.lv2-1.3.4.orig/Makefile ir.lv2-1.3.4/Makefile
+--- ir.lv2-1.3.4.orig/Makefile	2018-06-21 11:14:03.000000000 +0300
++++ ir.lv2-1.3.4/Makefile	2019-12-24 16:26:06.102495896 +0300
+@@ -20,7 +20,7 @@ CC ?= gcc
+ CXX ?= g++
+ 
+ # change "-O2 -ffast-math" to "-g -O0" below if you want to debug the plugin
+-CPPFLAGS += -Wall -I. -I/usr/include `pkg-config --cflags gtk+-2.0` `pkg-config --cflags gthread-2.0` -D__STDC_FORMAT_MACROS -O2 -ffast-math
++CPPFLAGS += -Wall -I. -I/usr/include `pkg-config --cflags gtk+-2.0` `pkg-config --cflags gthread-2.0` -D__STDC_FORMAT_MACROS -ffast-math
+ LIBS += -lc -lm -lzita-convolver -lsamplerate -lsndfile `pkg-config --libs gthread-2.0` `pkg-config --libs gtk+-2.0`
+ 
+ ifeq ($(shell pkg-config --atleast-version='2.16' gtk+-2.0; echo $$?), 1)
+@@ -31,7 +31,7 @@ ifeq ($(shell pkg-config --atleast-versi
+    CPPFLAGS += -D_HAVE_GTK_ATLEAST_2_20
+ endif
+ 
+-C4CFLAGS = -Wall -I. -I/usr/include `pkg-config --cflags gthread-2.0` -O2 -ffast-math
++C4CFLAGS = -Wall -I. -I/usr/include `pkg-config --cflags gthread-2.0` -ffast-math
+ C4LIBS = -lsndfile `pkg-config --libs gthread-2.0`
+ 
+ all: ir.so ir_gui.so
