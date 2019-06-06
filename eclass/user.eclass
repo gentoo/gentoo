@@ -351,6 +351,26 @@ enewgroup() {
 	esac
 }
 
+# @FUNCTION: egetusername
+# @USAGE: <uid>
+# @DESCRIPTION:
+# Gets the username for given UID.
+egetusername() {
+	[[ $# -eq 1 ]] || die "usage: egetusername <uid>"
+
+	id -u -n "$1"
+}
+
+# @FUNCTION: egetgroupname
+# @USAGE: <gid>
+# @DESCRIPTION:
+# Gets the group name for given GID.
+egetgroupname() {
+	[[ $# -eq 1 ]] || die "usage: egetgroupname <gid>"
+
+	id -g -n "$1"
+}
+
 # @FUNCTION: egethome
 # @USAGE: <user>
 # @DESCRIPTION:
