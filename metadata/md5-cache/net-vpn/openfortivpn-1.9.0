@@ -5,10 +5,10 @@ DESCRIPTION=A Fortinet compatible VPN client
 EAPI=7
 HOMEPAGE=https://github.com/adrienverge/openfortivpn
 IUSE=libressl kernel_linux
-KEYWORDS=~amd64
+KEYWORDS=amd64
 LICENSE=GPL-3-with-openssl-exception openssl
 RDEPEND=net-dialup/ppp !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= )
 SLOT=0
 SRC_URI=https://github.com/adrienverge/openfortivpn/archive/v1.9.0.tar.gz -> openfortivpn-1.9.0.tar.gz
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	linux-info	953c3b1c472dcadbf62098a9301327f2	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
-_md5_=2305505cb05d1900f4d52c37f6086701
+_md5_=c11ea97ff9290b9fa18e2fae36fcb708

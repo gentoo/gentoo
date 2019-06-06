@@ -3231,7 +3231,7 @@ dev-libs/ntl 9.3.0: High-performance and portable Number Theory C++ library
 dev-libs/ocl-icd 2.2.11 2.2.12: Alternative to vendor specific OpenCL ICD loaders
 dev-libs/oniguruma 6.9.1: Regular expression library for different character encodings
 dev-libs/openct 0.6.20-r4: library for accessing smart card terminals
-dev-libs/openobex 1.7.2-r1: Implementation of the OBEX protocol used for transferring data to mobile devices
+dev-libs/openobex 1.7.2-r1 1.7.2-r2: Implementation of the OBEX protocol used for transferring data to mobile devices
 dev-libs/opensc 0.19.0-r2: Libraries and applications to access smartcards
 dev-libs/openssl 0.9.8z_p8-r1 1.0.2r: full-strength general purpose cryptography library (including SSL and TLS)
 dev-libs/ossp-uuid 1.6.2-r6: An ISO-C:1999 API with CLI for generating DCE, ISO/IEC and RFC compliant UUID
@@ -4587,7 +4587,7 @@ dev-php/pecl-imagick 3.4.4: PHP wrapper for the ImageMagick library
 dev-php/pecl-mailparse 2.1.6-r4 3.0.2 3.0.2-r1: PHP extension for parsing and working with RFC822 and MIME compliant messages
 dev-php/pecl-mcrypt 1.0.1: Bindings for the libmcrypt library
 dev-php/pecl-memcache 3.0.8-r2: PHP extension for using memcached
-dev-php/pecl-memcached 2.2.0-r2 3.0.4: Interface PHP with memcached via libmemcached library
+dev-php/pecl-memcached 2.2.0-r2 3.0.4 3.1.3-r1: Interface PHP with memcached via libmemcached library
 dev-php/pecl-mongo 1.6.14-r1: Legacy MongoDB database driver for PHP
 dev-php/pecl-mongodb 1.3.3 1.5.3: MongoDB database driver for PHP
 dev-php/pecl-propro 1.0.2-r1 2.0.1-r1: A reusable property proxy API for PHP
@@ -9230,7 +9230,7 @@ net-vpn/networkmanager-strongswan 1.4.4-r1: NetworkManager StrongSwan plugin
 net-vpn/networkmanager-vpnc 1.2.6: NetworkManager VPNC plugin
 net-vpn/nstx 1.1_beta6-r3: IP over DNS tunnel
 net-vpn/openconnect 7.08-r1: Free client for Cisco AnyConnect SSL VPN software
-net-vpn/openfortivpn 1.8.1: A Fortinet compatible VPN client
+net-vpn/openfortivpn 1.8.1 1.9.0: A Fortinet compatible VPN client
 net-vpn/openvpn 2.4.6: Robust and highly flexible tunneling application compatible with many OSes
 net-vpn/pptpd 1.4.0-r2: Linux Point-to-Point Tunnelling Protocol Server
 net-vpn/strongswan 5.7.2: IPsec-based VPN solution, supporting IKEv1/IKEv2 and MOBIKE
@@ -10250,7 +10250,7 @@ sys-fs/inotify-tools 3.14 3.20.1: a set of command-line programs providing a sim
 sys-fs/jfsutils 1.1.15: IBM's Journaling Filesystem (JFS) Utilities
 sys-fs/lessfs 1.7.0-r1: A high performance inline data deduplicating filesystem
 sys-fs/lsscsi 0.29: SCSI sysfs query tool
-sys-fs/lvm2 2.02.116 2.02.145-r2 2.02.183: User-land utilities for LVM2 (device-mapper) software
+sys-fs/lvm2 2.02.116 2.02.145-r2 2.02.183 2.02.184-r4: User-land utilities for LVM2 (device-mapper) software
 sys-fs/lxcfs 3.0.3: FUSE filesystem for LXC
 sys-fs/mac-fdisk 0.1-r7: Mac/PowerMac disk partitioning utility
 sys-fs/mdadm 4.1: Tool for running RAID systems - replacement for the raidtools
