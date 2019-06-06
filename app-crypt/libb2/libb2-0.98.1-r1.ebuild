@@ -13,7 +13,7 @@ SRC_URI="https://github.com/BLAKE2/libb2/archive/${GITHASH}.tar.gz -> ${P}.tar.g
 LICENSE="CC0-1.0"
 SLOT="0"
 KEYWORDS="~amd64 ~hppa ~ppc64 ~x64-cygwin ~amd64-linux ~x86-linux ~x64-macos ~sparc-solaris ~x64-solaris"
-IUSE="static native-cflags openmp"
+IUSE="static-libs native-cflags openmp"
 
 DEPEND="
 	openmp? (
@@ -42,7 +42,7 @@ src_prepare() {
 
 src_configure() {
 	econf \
-		$(use_enable static) \
+		$(use_enable static-libs static) \
 		$(use_enable native-cflags native) \
 		$(use_enable openmp)
 }
@@ -63,5 +63,5 @@ src_test() {
 
 src_install() {
 	default
-	use static || find "${ED}" -name '*.la' -type f -delete || die
+	use static-libs || find "${ED}" -name '*.la' -type f -delete || die
 }
