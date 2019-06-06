@@ -136,6 +136,131 @@ acct-user_add_deps() {
 }
 
 
+# << Helper functions >>
+
+# @FUNCTION: eislocked
+# @INTERNAL
+# @USAGE: <user>
+# @DESCRIPTION:
+# Check whether the specified user account is currently locked.
+# Returns 0 if it is locked, 1 if it is not, 2 if the platform
+# does not support determining it.
+eislocked() {
+	[[ $# -eq 1 ]] || die "usage: ${FUNCNAME} <user>"
+
+	if [[ ${EUID} != 0 ]] ; then
+		einfo "Insufficient privileges to execute ${FUNCNAME[0]}"
+		return 0
+	fi
+
+	case ${CHOST} in
+	*-freebsd*|*-dragonfly*|*-netbsd*)
+		[[ $(egetent "$1" | cut -d: -f2) == '*LOCKED*'* ]]
+		;;
+
+	*-openbsd*)
+		return 2
+		;;
+
+	*)
+		# NB: 'no password' and 'locked' are indistinguishable
+		# but we also expire the account which is more clear
+		[[ $(getent shadow ftp | cut -d: -f2) == '!'* ]] &&
+			[[ $(getent shadow ftp | cut -d: -f8) == 1 ]]
+		;;
+	esac
+}
+
+# @FUNCTION: elockuser
+# @INTERNAL
+# @USAGE: <user>
+# @DESCRIPTION:
+# Lock the specified user account, using the available platform-specific
+# functions.  This should prevent any login to the account.
+#
+# Established lock can be reverted using eunlockuser.
+#
+# This function returns 0 if locking succeeded, 2 if it is not supported
+# by the platform code or dies if it fails.
+elockuser() {
+	[[ $# -eq 1 ]] || die "usage: ${FUNCNAME} <user>"
+
+	if [[ ${EUID} != 0 ]] ; then
+		einfo "Insufficient privileges to execute ${FUNCNAME[0]}"
+		return 0
+	fi
+
+	eislocked "$1"
+	[[ $? -eq 0 ]] && return 0
+
+	case ${CHOST} in
+	*-freebsd*|*-dragonfly*)
+		pw lock "$1" || die "Locking account $1 failed"
+		pw user mod "$1" -e 1 || die "Expiring account $1 failed"
+		;;
+
+	*-netbsd*)
+		usermod -e 1 -C yes "$1" || die "Locking account $1 failed"
+		;;
+
+	*-openbsd*)
+		return 2
+		;;
+
+	*)
+		usermod -e 1 -L "$1" || die "Locking account $1 failed"
+		;;
+	esac
+
+	elog "User account $1 locked"
+	return 0
+}
+
+# @FUNCTION: eunlockuser
+# @INTERNAL
+# @USAGE: <user>
+# @DESCRIPTION:
+# Unlock the specified user account, using the available platform-
+# specific functions.
+#
+# This function returns 0 if unlocking succeeded, 1 if it is not
+# supported by the platform code or dies if it fails.
+eunlockuser() {
+	[[ $# -eq 1 ]] || die "usage: ${FUNCNAME} <user>"
+
+	if [[ ${EUID} != 0 ]] ; then
+		einfo "Insufficient privileges to execute ${FUNCNAME[0]}"
+		return 0
+	fi
+
+	eislocked "$1"
+	[[ $? -eq 1 ]] && return 0
+
+	case ${CHOST} in
+	*-freebsd*|*-dragonfly*)
+		pw user mod "$1" -e 0 || die "Unexpiring account $1 failed"
+		pw unlock "$1" || die "Unlocking account $1 failed"
+		;;
+
+	*-netbsd*)
+		usermod -e 0 -C no "$1" || die "Unlocking account $1 failed"
+		;;
+
+	*-openbsd*)
+		return 1
+		;;
+
+	*)
+		# silence warning if account does not have a password
+		usermod -e "" -U "$1" 2>/dev/null || die "Unlocking account $1 failed"
+		;;
+	esac
+
+	ewarn "User account $1 unlocked after reinstating."
+	return 0
+}
+
+
 # << Phase functions >>
 EXPORT_FUNCTIONS pkg_pretend src_install pkg_preinst pkg_postinst \
 	pkg_prerm
@@ -228,6 +353,7 @@ acct-user_pkg_postinst() {
 	esetgroups "${ACCT_USER_NAME}" "${groups// /,}"
 	# comment field can not contain colons
 	esetcomment "${ACCT_USER_NAME}" "${DESCRIPTION//[:,=]/;}"
+	eunlockuser "${ACCT_USER_NAME}"
 }
 
 # @FUNCTION: acct-user_pkg_prerm
@@ -240,6 +366,7 @@ acct-user_pkg_prerm() {
 		esetshell "${ACCT_USER_NAME}" -1
 		esetcomment "${ACCT_USER_NAME}" \
 			"$(egetcomment "${ACCT_USER_NAME}"); user account removed @ $(date +%Y-%m-%d)"
+		elockuser "${ACCT_USER_NAME}"
 	fi
 }
 
