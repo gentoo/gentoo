@@ -10142,7 +10142,7 @@ sys-devel/automake 1.9.6-r5 1.10.3-r3 1.11.6-r3 1.12.6-r2 1.13.4-r2 1.14.1-r2 1.
 sys-devel/automake-wrapper 10 11: wrapper for automake to manage multiple automake versions
 sys-devel/bc 1.06.95-r2: Handy console-based calculator utility
 sys-devel/bin86 0.16.20-r2 0.16.21: Assembler and loader used to create kernel bootsector
-sys-devel/binutils 2.31.1-r4 2.31.1-r6: Tools necessary to build programs
+sys-devel/binutils 2.31.1-r6: Tools necessary to build programs
 sys-devel/binutils-config 5-r4: Utility to change the binutils version being used
 sys-devel/bison 3.1: A general-purpose (yacc-compatible) parser generator
 sys-devel/boost-m4 0.4_p20160328: Another set of autoconf macros for compiling against boost
@@ -10297,7 +10297,7 @@ sys-kernel/linux-firmware 20190502 20190514: Linux firmware files
 sys-kernel/linux-headers 3.18 4.4 4.13 4.14-r1: Linux system headers
 sys-kernel/spl 0.6.5.11 0.7.12 0.7.13: The Solaris Porting Layer provides many of the Solaris kernel APIs
 sys-libs/argp-standalone 1.3-r2: Standalone argp library for use with uclibc
-sys-libs/binutils-libs 2.31.1-r4 2.31.1-r6: Core binutils libraries (libbfd, libopcodes, libiberty) for external packages
+sys-libs/binutils-libs 2.31.1-r6: Core binutils libraries (libbfd, libopcodes, libiberty) for external packages
 sys-libs/compiler-rt 5.0.2 6.0.1 7.1.0: Compiler runtime library for clang (built-in part)
 sys-libs/compiler-rt-sanitizers 5.0.2 6.0.1 7.1.0: Compiler runtime libraries for clang (sanitizers & xray)
 sys-libs/cracklib 2.9.6-r2: Password Checking Library
