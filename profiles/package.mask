@@ -30,6 +30,11 @@
 #--- END OF EXAMPLES ---
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (5 Jun 2019)
+# Unhandled version bumps since 2015, bug 293306. EAPI=2.
+# Removal in 30 days unless updated.
+dev-util/antlrworks
+
+# Andreas K. Hüttel <dilfridge@gentoo.org> (5 Jun 2019)
 # Fails to build, bug 680252. EAPI=2. Removal in 30 days
 # unless fixed.
 dev-java/glassfish-connector-api
