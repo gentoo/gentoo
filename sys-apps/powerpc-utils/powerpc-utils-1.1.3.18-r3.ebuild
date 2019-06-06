@@ -14,7 +14,7 @@ SRC_URI="http://http.us.debian.org/debian/pool/main/p/powerpc-utils/${PN}_${BASE
 	mirror://gentoo/${PN}-cleanup.patch.bz2"
 
 HOMEPAGE="http://http.us.debian.org/debian/pool/main/p/powerpc-utils/"
-KEYWORDS="-* ~ppc ~ppc64"
+KEYWORDS="-* ppc ppc64"
 IUSE=""
 DEPEND=""
 RDEPEND="${DEPEND}"

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -42,8 +42,12 @@ src_configure() {
 }
 
 src_install () {
-	emake DESTDIR="${D}" \
-		bashcompdir=$(get_bashcompdir) install
+	emake \
+		DESTDIR="${D}" \
+		bashcompdir=$(get_bashcompdir) \
+		install
+
+	mv "${D}"/$(get_bashcompdir)/iprconfig{-bash-completion.sh,} || die
 
 	newinitd "${FILESDIR}"/iprinit-r1 iprinit
 	newinitd "${FILESDIR}"/iprupdate-r1 iprupdate
