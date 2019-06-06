@@ -10390,7 +10390,7 @@ sys-process/audit 2.6.4 2.7.1 2.8.3 2.8.4: Userspace utilities for storing and p
 sys-process/bcron 0.10: A new cron system designed with secure operations in mind by Bruce Guenter
 sys-process/criu 2.5-r1 3.6: utility to checkpoint/restore a process tree
 sys-process/cronbase 0.3.7-r6: base for all cron ebuilds
-sys-process/cronie 1.5.2 1.5.4: Cronie is a standard UNIX daemon cron based on the original vixie-cron
+sys-process/cronie 1.5.4: Cronie is a standard UNIX daemon cron based on the original vixie-cron
 sys-process/cronutils 1.9: Utilities to assist running batch processing jobs
 sys-process/daemontools 0.76-r7: Collection of tools for managing UNIX services
 sys-process/dcron 4.5-r1: A cute little cron from Matt Dillon
