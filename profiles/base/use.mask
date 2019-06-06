@@ -4,6 +4,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Thomas Deutschmann <whissi@gentoo.org> (6 Jun 2019)
+# EOL since Jan 2019. Removal in 30 days.
+php_targets_php5-6
+
 # Hans de Graaff <graaff@gentoo.org> (7 Apr 2019)
 # Mask Ruby 2.3 as EOL
 ruby_targets_ruby23

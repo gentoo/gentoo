@@ -29,6 +29,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Thomas Deutschmann <whissi@gentoo.org> (6 Jun 2019)
+# EOL since Jan 2019. Removal in 30 days.
+dev-lang/php:5.6
+
 # Andreas K. Hüttel <dilfridge@gentoo.org> (5 Jun 2019)
 # Unhandled version bumps since 2015, bug 293306. EAPI=2.
 # Removal in 30 days unless updated.
