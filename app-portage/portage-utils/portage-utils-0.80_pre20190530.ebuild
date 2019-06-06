@@ -10,7 +10,7 @@ HOMEPAGE="https://wiki.gentoo.org/wiki/Portage-utils"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="nls static openmp +qmanifest"
+IUSE="nls static openmp +qmanifest libressl"
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3 autotools
@@ -33,7 +33,8 @@ DEPEND="${RDEPEND}
 			)
 		)
 		app-crypt/libb2
-		dev-libs/openssl:0=
+		!libressl? ( dev-libs/openssl:0= )
+		libressl? ( dev-libs/libressl:0= )
 		sys-libs/zlib
 		app-crypt/gpgme
 	)
