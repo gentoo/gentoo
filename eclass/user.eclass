@@ -18,10 +18,10 @@ _USER_ECLASS=1
 # @USAGE: <calling func name>
 _assert_pkg_ebuild_phase() {
 	case ${EBUILD_PHASE} in
-	setup|preinst|postinst) ;;
+	setup|preinst|postinst|prerm|postrm) ;;
 	*)
 		eerror "'$1()' called from '${EBUILD_PHASE}' phase which is not OK:"
-		eerror "You may only call from pkg_{setup,preinst,postinst} functions."
+		eerror "You may only call from pkg_{setup,{pre,post}{inst,rm}} functions."
 		eerror "Package fails at QA and at life.  Please file a bug."
 		die "Bad package!  $1 is only for use in some pkg_* functions!"
 	esac
