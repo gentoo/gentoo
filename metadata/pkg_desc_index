@@ -9004,7 +9004,7 @@ net-misc/libteam 1.22: Library and tools set for controlling team network device
 net-misc/lksctp-tools 1.0.17 1.0.18-r1: Tools for Linux Kernel Stream Control Transmission Protocol implementation
 net-misc/lldpd 0.9.3-r1: Implementation of IEEE 802.1ab (LLDP)
 net-misc/mcproxy 1.1.1-r1: A multicast proxy for IGMP/MLD
-net-misc/memcached 1.4.39 1.5.2 1.5.10 1.5.12 1.5.14: High-performance, distributed memory object caching system
+net-misc/memcached 1.5.14: High-performance, distributed memory object caching system
 net-misc/minidlna 1.2.1-r1: DLNA/UPnP-AV compliant media server
 net-misc/mobile-broadband-provider-info 20170310 20190116: Database of mobile broadband service providers
 net-misc/modemmanager 1.8.2 1.8.2-r1: Modem and mobile broadband management libraries
