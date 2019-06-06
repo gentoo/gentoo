@@ -15,24 +15,19 @@ SRC_URI="http://mirrors.cdn.adacore.com/art/5cdf8e5031e87a8f1d425090
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="+gnat_2018 gnat_2019 +shared static-libs static-pic"
+IUSE="+gnat_2019 +shared static-libs static-pic"
 
-RDEPEND="gnat_2018? ( dev-lang/gnat-gpl:7.3.1 )
-	gnat_2019? ( dev-lang/gnat-gpl:8.3.1 )"
+RDEPEND="dev-lang/gnat-gpl:8.3.1"
 DEPEND="${RDEPEND}
-	dev-ada/gprbuild[gnat_2018(-)?,gnat_2019(-)?]"
-REQUIRED_USE="^^ ( gnat_2018 gnat_2019 )"
+	dev-ada/gprbuild[gnat_2019]"
+REQUIRED_USE="gnat_2019"
 
 S="${WORKDIR}"/${MYP}-194CA-src
 
 PATCHES=( "${FILESDIR}"/${PN}-2017-gentoo.patch )
 
 src_compile() {
-	if use gnat_2018; then
-		GCC_PV=7.3.1
-	else
-		GCC_PV=8.3.1
-	fi
+	GCC_PV=8.3.1
 	GNATMAKE=${CHOST}-gnatmake-${GCC_PV}
 	emake GNATMAKE="${GNATMAKE} ${ADAFLAGS}" \
 		BUILDER="gprbuild -j$(makeopts_jobs)" generate_sources
