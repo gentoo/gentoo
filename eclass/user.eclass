@@ -465,4 +465,65 @@ esethome() {
 	esac
 }
 
+# @FUNCTION: esetshell
+# @USAGE: <user> <shell>
+# @DESCRIPTION:
+# Update the shell in a platform-agnostic way.
+# Required parameters is the username and the new shell.
+# Specify -1 if you want to set shell to platform-specific nologin.
+esetshell() {
+	_assert_pkg_ebuild_phase ${FUNCNAME}
+
+	# get the username
+	local euser=$1; shift
+	if [[ -z ${euser} ]] ; then
+		eerror "No username specified !"
+		die "Cannot call esetshell without a username"
+	fi
+
+	# lets see if the username already exists
+	if [[ -z $(egetent passwd "${euser}") ]] ; then
+		ewarn "User does not exist, cannot set shell -- skipping."
+		return 1
+	fi
+
+	# handle shell
+	local eshell=$1; shift
+	if [[ -z ${eshell} ]] ; then
+		eerror "No shell specified !"
+		die "Cannot call esetshell without a shell or '-1'"
+	fi
+
+	if [[ ${eshell} == "-1" ]] ; then
+		eshell=$(user_get_nologin)
+	fi
+
+	# exit with no message if shell is up to date
+	if [[ $(egetshell "${euser}") == ${eshell} ]]; then
+		return 0
+	fi
+
+	einfo "Updating shell for user '${euser}' ..."
+	einfo " - Shell: ${eshell}"
+
+	# update the shell
+	case ${CHOST} in
+	*-freebsd*|*-dragonfly*)
+		pw usermod "${euser}" -s "${eshell}" && return 0
+		[[ $? == 8 ]] && eerror "${euser} is in use, cannot update shell"
+		eerror "There was an error when attempting to update the shell for ${euser}"
+		eerror "Please update it manually on your system:"
+		eerror "\t pw usermod \"${euser}\" -s \"${eshell}\""
+		;;
+
+	*)
+		usermod -s "${eshell}" "${euser}" && return 0
+		[[ $? == 8 ]] && eerror "${euser} is in use, cannot update shell"
+		eerror "There was an error when attempting to update the shell for ${euser}"
+		eerror "Please update it manually on your system (as root):"
+		eerror "\t usermod -s \"${eshell}\" \"${euser}\""
+		;;
+	esac
+}
+
 fi
