@@ -1,6 +1,10 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Steffen Kuhn <nielson2@yandex.com> (17 May 2019)
+# thumbv7neon can only be built for armv7
+dev-lang/rust thumbv7neon
+
 # Denis Lisov <dennis.lissov@gmail.com> (09 May 2019)
 # Overlay can only be built on amd64 and x86
 x11-apps/igt-gpu-tools overlay
