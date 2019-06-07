@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 inherit multiprocessing
 
 MYP=${P}-20190515-24AD8
@@ -47,7 +47,7 @@ src_prepare() {
 }
 
 src_configure() {
-	emake prefix="${D}usr" PROCESSORS=$(makeopts_jobs) setup
+	emake prefix="${D}"/usr PROCESSORS=$(makeopts_jobs) setup
 }
 
 src_compile() {
