@@ -3,22 +3,17 @@
 
 EAPI="7"
 
-PHP_EXT_NAME="dio"
+PHP_EXT_NAME="timezonedb"
 PHP_EXT_INI="yes"
 PHP_EXT_ZENDEXT="no"
 
 USE_PHP="php5-6 php7-1 php7-2 php7-3"
 
-MY_PV=${PV/_rc/RC}
-PHP_EXT_S="${WORKDIR}/${PN/pecl-/}-${MY_PV}"
-
 inherit php-ext-pecl-r3
 
-KEYWORDS="~amd64 ~x86"
-
-DESCRIPTION="Direct I/O functions for PHP"
-LICENSE="PHP-3.01"
+DESCRIPTION="Timezone Database to be used with PHP's date and time functions"
+LICENSE="PHP-3"
 SLOT="0"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 IUSE=""
-
-S="${PHP_EXT_S}"
+PHP_EXT_ECONF_ARGS=""

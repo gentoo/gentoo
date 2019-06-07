@@ -5,9 +5,9 @@ EAPI="7"
 
 USE_PHP="php5-6 php7-0 php7-1 php7-2 php7-3"
 
-inherit php-ext-pecl-r3 git-r3
+inherit php-ext-pecl-r3
 
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 
 DESCRIPTION="PHP Bindings for ZeroMQ messaging"
 LICENSE="BSD"
@@ -16,9 +16,8 @@ IUSE="czmq"
 
 RDEPEND="net-libs/zeromq czmq? ( <net-libs/czmq-3 )"
 DEPEND="${RDEPEND} virtual/pkgconfig"
-SRC_URI=""
-EGIT_REPO_URI="https://github.com/mkoppanen/php-zmq.git"
-EGIT_CHECKOUT_DIR="${PHP_EXT_S}"
+
+PATCHES=( "${FILESDIR}"/${P}-php7-3-compatibility.patch )
 
 src_configure() {
 	local PHP_EXT_ECONF_ARGS=( $(use_with czmq) )
