@@ -1,9 +1,14 @@
 # Copyright 1999-2019 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-# Michael Haubenwallner <haubi@gentoo.org> (27 Feb 2019)
+# Michael Haubenwallner <haubi@gentoo.org> (07 Jun 2019)
+# Breaks due to weak functions and object file order on linkline,
+# see https://cygwin.com/ml/cygwin/2019-06/msg00092.html
+>=app-portage/portage-utils-0.80_pre
+
+# Michael Haubenwallner <haubi@gentoo.org> (07 Jun 2019)
 # Cygwin does not provide this new version yet in it's repo.
->=sys-devel/gcc-7.4
+>=sys-devel/gcc-8.4
 
 # Michael Haubenwallner <haubi@gentoo.org> (13 Feb 2019)
 # see upstream report https://savannah.gnu.org/bugs/index.php?55708
