@@ -15,7 +15,7 @@ SRC_URI="http://mirrors.cdn.adacore.com/art/5cdf916831e87a8f1d4250b5
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="gnat_2016 gnat_2017 +gnat_2018 gnat_2019 +shared static-libs static-pic"
+IUSE="gnat_2016 gnat_2017 gnat_2018 +gnat_2019 +shared static-libs static-pic"
 REQUIRED_USE="|| ( shared static-libs static-pic )
 	^^ ( gnat_2016 gnat_2017 gnat_2018 gnat_2019 )"
 
