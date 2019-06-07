@@ -43,14 +43,11 @@ src_unpack() {
 	# inside src/ subdirectory to make our life easier
 	if use test; then
 		unpack "${P}.gh.tar.gz"
-		rm -r "${P}/src" || die
 	else
-		mkdir "${P}" || die
+		mkdir -p "${P}"/src || die
 	fi
 
-	cd "${P}" || die
-	unpack "${P}.tar.gz"
-	mv "${P}" src || die
+	tar -C "${P}"/src --strip-components=1 -xzf "${DISTDIR}/${P}.tar.gz" || die
 }
 
 src_prepare() {
