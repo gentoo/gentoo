@@ -103,7 +103,7 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		-DLIBDIR=$(get_libdir)
+		-DLIBDIR=/usr/$(get_libdir)
 		-DENABLE_JAVASCRIPT=OFF
 		-DENABLE_LARGEFILE=ON
 		-DENABLE_NCURSES=ON
