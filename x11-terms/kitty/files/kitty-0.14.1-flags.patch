@@ -1,0 +1,56 @@
+--- kitty-0.14.1/setup.py
++++ kitty-0.14.1/setup.py
+@@ -197,7 +197,7 @@ def init_env(
+     df = '-g3'
+     if ccver >= (5, 0):
+         df += ' -Og'
+-    optimize = df if debug or sanitize else '-O3'
++    optimize = ''
+     sanitize_args = get_sanitize_args(cc, ccver) if sanitize else set()
+     cppflags = os.environ.get(
+         'OVERRIDE_CPPFLAGS', (
+@@ -212,7 +212,7 @@ def init_env(
+     cflags = os.environ.get(
+         'OVERRIDE_CFLAGS', (
+             '-Wextra -Wno-missing-field-initializers -Wall -Wstrict-prototypes -std=c11'
+-            ' -pedantic-errors -Werror {} {} -fwrapv {} {} -pipe {} -fvisibility=hidden'
++            ' -pedantic-errors {} {} -fwrapv {} {} -pipe {} -fvisibility=hidden'
+         ).format(
+             optimize,
+             ' '.join(sanitize_args),
+@@ -226,7 +226,7 @@ def init_env(
+     )
+     ldflags = os.environ.get(
+         'OVERRIDE_LDFLAGS',
+-        '-Wall ' + ' '.join(sanitize_args) + ('' if debug else ' -O3')
++        '-Wall ' + ' '.join(sanitize_args)
+     )
+     ldflags = shlex.split(ldflags)
+     ldflags.append('-shared')
+@@ -544,7 +544,7 @@ def build_asan_launcher(args):
+     if args.incremental and not newer(dest, src):
+         return
+     cc, ccver = cc_version()
+-    cflags = '-g3 -Wall -Werror -fpie -std=c99'.split()
++    cflags = '-g3 -Wall -fpie -std=c99'.split()
+     pylib = get_python_flags(cflags)
+     sanitize_lib = ['-lasan'] if cc == 'gcc' and not is_macos else []
+     cflags.extend(get_sanitize_args(cc, ccver))
+@@ -553,14 +553,12 @@ def build_asan_launcher(args):
+
+
+ def build_launcher(args, launcher_dir='.', for_bundle=False, sh_launcher=False, for_freeze=False):
+-    cflags = '-Wall -Werror -fpie'.split()
++    cflags = '-Wall -fpie'.split()
+     cppflags = []
+     libs = []
+     if args.profile:
+         cppflags.append('-DWITH_PROFILER'), cflags.append('-g')
+         libs.append('-lprofiler')
+-    else:
+-        cflags.append('-O3')
+     if for_bundle or for_freeze:
+         cppflags.append('-DFOR_BUNDLE')
+         cppflags.append('-DPYVER="{}"'.format(sysconfig.get_python_version()))
+--
+2.21.0
