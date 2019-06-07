@@ -17,16 +17,10 @@ KEYWORDS="~amd64 ~x86"
 BDEPEND="
 	app-text/asciidoc
 "
-DEPEND="${PYTHON_DEPEND}"
 RDEPEND="
-	${DEPEND}
 	dev-vcs/git
 	dev-vcs/mercurial
 "
-
-PATCHES=(
-	"${FILESDIR}/${PN}-1.0.0-get_version_from_release.patch"
-)
 
 # Some tests fail.
 RESTRICT="test"
@@ -39,4 +33,8 @@ src_compile() {
 src_install() {
 	distutils-r1_src_install
 	emake DESTDIR="${D}" prefix="${EPREFIX}/usr" install-doc
+}
+
+src_test() {
+	default
 }
