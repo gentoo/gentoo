@@ -3,7 +3,7 @@
 
 EAPI=6
 
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux"
+KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux"
 
 SLOT="0"
 
@@ -18,7 +18,7 @@ LICENSE="MIT LGPL-2.1 GPL-2 BSD-4 NPL-1.1 Ms-PL GPL-2-with-linking-exception IDP
 SRC_URI="http://download.mono-project.com/sources/mono/${P}.tar.bz2"
 
 COMMONDEPEND="
-	!minimal? ( >=dev-dotnet/libgdiplus-2.10 )
+	!minimal? ( >=dev-dotnet/libgdiplus-5.6.1 )
 	ia64? ( sys-libs/libunwind )
 	nls? ( sys-devel/gettext )
 "
