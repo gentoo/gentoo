@@ -36,6 +36,8 @@ PATCHES=(
 	"${FILESDIR}"/scons-3.0.1-env-passthrough.patch
 	# respect CC, CXX, C*FLAGS, LDFLAGS by default
 	"${FILESDIR}"/scons-3.0.3-respect-cc-etc-r1.patch
+	# add Gentoo JDK include installation paths
+	"${FILESDIR}"/scons-3.0.5-jdk-include-path.patch
 )
 
 src_unpack() {
@@ -59,6 +61,10 @@ src_prepare() {
 	# and fix manpage install location
 	sed -i -e '/cmdclass/,/},$/d' \
 		-e '/data_files/s:man/:share/man/:' "${S}"/setup.py || die
+	if use test; then
+		# addtional fix for Gentoo JDK installation paths to find include directory with jni.h
+		eapply "${FILESDIR}"/scons-3.0.5-jni.h-include-path.patch
+	fi
 }
 
 python_test() {
