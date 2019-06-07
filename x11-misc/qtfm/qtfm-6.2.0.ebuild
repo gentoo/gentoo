@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit xdg-utils qmake-utils
+inherit multilib xdg-utils qmake-utils
 
 DESCRIPTION="A small, lightweight file manager for desktops based on pure Qt"
 HOMEPAGE="https://qtfm.eu/"
@@ -11,6 +11,7 @@ SRC_URI="https://github.com/rodlie/qtfm/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+IUSE="shared"
 
 RDEPEND="
 	dev-qt/qtconcurrent:5
@@ -28,7 +29,12 @@ DEPEND="
 "
 
 src_configure() {
-	eqmake5 PREFIX=/usr XDGDIR=/etc/xdg
+	eqmake5 \
+		$(usex shared 'CONFIG+=sharedlib' '') \
+		$(usex shared 'CONFIG+=with_includes' '') \
+		LIBDIR="/usr/$(get_libdir)" \
+		PREFIX="/usr" \
+		XDGDIR="/etc/xdg"
 }
 
 src_install() {
