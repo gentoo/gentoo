@@ -15,8 +15,6 @@
 		<flag name="baremetal">Build plugin for bare metal devices</flag>
 		<flag name="bazaar">Add support for <pkg>dev-vcs/bzr</pkg> version control system</flag>
 		<flag name="clang">Build clang-based plugins (code model, format, static analysis)</flag>
-		<flag name="clangcodemodel">Build clang-based code model and refactoring plugins</flag>
-		<flag name="clangstaticanalyzer">Build clang-based static analyzer plugin</flag>
 		<flag name="clearcase">Add support for IBM ClearCase version control system (requires manual installation of ClearCase client)</flag>
 		<flag name="cmake">Enable cmake project manager plugin</flag>
 		<flag name="cppcheck">Enable integration with <pkg>dev-util/cppcheck</pkg></flag>
