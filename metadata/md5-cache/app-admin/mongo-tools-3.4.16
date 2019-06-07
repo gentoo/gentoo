@@ -9,4 +9,4 @@ LICENSE=Apache-2.0
 RDEPEND=!<dev-db/mongodb-3.0.0
 SLOT=0
 SRC_URI=https://github.com/mongodb/mongo-tools/archive/r3.4.16.tar.gz -> mongo-tools-3.4.16.tar.gz
-_md5_=cb0b7d3bee76c466267328d974566ea0
+_md5_=e4521085c0d0e82636b9876564adf6a7
