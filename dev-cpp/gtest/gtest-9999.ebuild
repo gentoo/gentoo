@@ -28,7 +28,7 @@ DEPEND="test? ( ${PYTHON_DEPS} )"
 RDEPEND="!dev-cpp/gmock"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.8.0-increase-clone-stack-size.patch
+	"${FILESDIR}"/${PN}-9999-increase-clone-stack-size.patch
 )
 
 pkg_setup() {
