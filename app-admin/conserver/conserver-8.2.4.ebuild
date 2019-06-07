@@ -32,6 +32,8 @@ RDEPEND="${DEPEND}
 
 DOCS=( CHANGES FAQ PROTOCOL README.md conserver/Sun-serial contrib/maketestcerts)
 
+PATCHES=( "${FILESDIR}/${PV}-libressl.patch" )
+
 src_prepare() {
 	default
 	sed -e '/^INSTALL_PROGRAM/s:-s::' \
