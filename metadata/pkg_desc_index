@@ -341,7 +341,7 @@ app-crypt/kstart 4.1: Modified versions of kinit for refreshing kerberos tickets
 app-crypt/libmd 1.0.0: Message Digest functions from BSD systems
 app-crypt/libscrypt 1.21: Shared library to impliment the scrypt algorithm
 app-crypt/libsecret 0.18.6-r1 0.18.8: GObject library for accessing the freedesktop.org Secret Service API
-app-crypt/libu2f-host 1.1.3: Yubico Universal 2nd Factor (U2F) Host C Library
+app-crypt/libu2f-host 1.1.3 1.1.10: Yubico Universal 2nd Factor (U2F) Host C Library
 app-crypt/libu2f-server 1.1.0: Yubico Universal 2nd Factor (U2F) server C Library
 app-crypt/mcrypt 2.6.8-r3: replacement of the old unix crypt(1)
 app-crypt/md5deep 4.4: Expanded md5sum program with recursive and comparison options
@@ -1443,7 +1443,7 @@ app-text/pep 2.8-r2: General purpose filter and file cleaning program
 app-text/pinfo 0.6.10-r5: Hypertext info and man viewer based on (n)curses
 app-text/po4a 0.47-r1: Tools for helping translation of documentation
 app-text/podofo 0.9.6_pre20170508-r1 0.9.6_p20180715: PoDoFo is a C++ library to work with the PDF file format
-app-text/poppler 0.74.0: PDF rendering library based on the xpdf-3.0 code base
+app-text/poppler 0.74.0 0.77.0: PDF rendering library based on the xpdf-3.0 code base
 app-text/poppler-data 0.4.9: Data files for poppler to support uncommon encodings without xpdfrc
 app-text/ps2eps 1.68: Generate Encapsulated Postscript Format files from one-page Postscript documents
 app-text/ps2pkm 1.7_p20150521 1.8_p20160523 1.8_p20170524: Tool that converts a PostScript type1 font into a corresponding TeX PK font
@@ -6587,15 +6587,15 @@ gnome-base/nautilus 3.30.5: Default file manager for the GNOME desktop
 gnome-base/orbit 2.14.19-r5: ORBit2 is a high-performance CORBA ORB
 gnome-extra/assogiate 0.2.1-r1: assoGiate is an editor of the file types database for GNOME
 gnome-extra/chrome-gnome-shell 10: GNOME Shell integration for Chrome/Chromium, Firefox, Vivaldi, Opera browsers
-gnome-extra/cinnamon 3.6.6-r2: A fork of GNOME Shell with layout similar to GNOME 2
-gnome-extra/cinnamon-control-center 3.6.5: Cinnamons's main interface to configure various aspects of the desktop
-gnome-extra/cinnamon-desktop 3.6.2: A collection of libraries and utilites used by Cinnamon
-gnome-extra/cinnamon-menus 3.6.0: Cinnamon's library for the Desktop Menu fd.o specification
-gnome-extra/cinnamon-screensaver 3.6.1-r1: Screensaver for Cinnamon
-gnome-extra/cinnamon-session 3.6.1-r5: Cinnamon session manager
-gnome-extra/cinnamon-settings-daemon 3.6.1-r1: Cinnamon's settings daemon
-gnome-extra/cinnamon-translations 3.6.3: Translation data for Cinnamon
-gnome-extra/cjs 3.6.1: Linux Mint's fork of gjs for Cinnamon
+gnome-extra/cinnamon 3.6.6-r2 4.0.3-r2: A fork of GNOME Shell with layout similar to GNOME 2
+gnome-extra/cinnamon-control-center 3.6.5 4.0.0: Cinnamons's main interface to configure various aspects of the desktop
+gnome-extra/cinnamon-desktop 3.6.2 4.0.1: A collection of libraries and utilites used by Cinnamon
+gnome-extra/cinnamon-menus 3.6.0 4.0.0: Cinnamon's library for the Desktop Menu fd.o specification
+gnome-extra/cinnamon-screensaver 3.6.1-r1 4.0.1: Screensaver for Cinnamon
+gnome-extra/cinnamon-session 3.6.1-r5 4.0.0-r1: Cinnamon session manager
+gnome-extra/cinnamon-settings-daemon 3.6.1-r1 4.0.2: Cinnamon's settings daemon
+gnome-extra/cinnamon-translations 3.6.3 4.0.0: Translation data for Cinnamon
+gnome-extra/cjs 3.6.1 4.0.0-r1: Linux Mint's fork of gjs for Cinnamon
 gnome-extra/eiciel 0.9.11-r1: ACL editor for GNOME, with Nautilus extension
 gnome-extra/evolution-data-server 3.30.5-r1: Evolution groupware backend
 gnome-extra/evolution-ews 3.30.5-r1: Evolution module for connecting to Microsoft Exchange Web Services
@@ -6637,7 +6637,7 @@ gnome-extra/mousetweaks 3.12.0: Mouse accessibility enhancements for the GNOME d
 gnome-extra/nautilus-actions 3.2.4: Configures programs to be launched when files are selected in Nautilus
 gnome-extra/nautilus-dropbox 1.6.2: Store, Sync and Share Files Online
 gnome-extra/nautilus-sendto 3.8.6: A nautilus extension for sending files to locations
-gnome-extra/nemo 3.6.4-r1: A file manager for Cinnamon, forked from Nautilus
+gnome-extra/nemo 3.6.4-r1 4.0.6: A file manager for Cinnamon, forked from Nautilus
 gnome-extra/nm-applet 1.8.20: GNOME applet for NetworkManager
 gnome-extra/office-runner 1.0.2: Lighthearted tool to temporarily inhibit GNOME's suspend on lid close behavior
 gnome-extra/pch-session 3.30.0.2: Unofficial gnome based session with different default settings and extensions
@@ -10932,7 +10932,7 @@ x11-libs/startup-notification 0.12-r1: Application startup notification and feed
 x11-libs/tslib 1.0-r3: Touchscreen Access Library
 x11-libs/vte 0.28.2-r208 0.48.4 0.54.4: Library providing a virtual terminal emulator widget
 x11-libs/wxGTK 3.0.3 3.0.3-r300 3.0.4 3.0.4-r300: GTK+ version of wxWidgets, a cross-platform C++ GUI toolkit
-x11-libs/xapps 1.0.4: Cross-desktop libraries and common resources
+x11-libs/xapps 1.0.4 1.4.2: Cross-desktop libraries and common resources
 x11-libs/xbae 4.60.4: Motif-based widget to display a grid of cells as a spreadsheet
 x11-libs/xcb-util 0.4.0-r1: X C-language Bindings sample implementations
 x11-libs/xcb-util-cursor 0.1.3-r2: X C-language Bindings sample implementations
@@ -11406,7 +11406,7 @@ x11-wm/larswm 7.5.3-r2: Tiling window manager for X11, based on 9wm by David Hog
 x11-wm/lumina 1.3.0_p1: Lumina desktop environment
 x11-wm/lwm 1.2.4: The ultimate lightweight window manager
 x11-wm/marco 1.22.0: MATE default window manager
-x11-wm/muffin 3.6.0: Compositing window manager forked from Mutter for use with Cinnamon
+x11-wm/muffin 3.6.0 4.0.3: Compositing window manager forked from Mutter for use with Cinnamon
 x11-wm/musca 0.9.24_p20100226-r4: A simple dynamic window manager, with features nicked from ratpoison and dwm
 x11-wm/mutter 3.30.2-r1: GNOME 3 compositing window manager based on Clutter
 x11-wm/openbox 3.6.1: A standards compliant, fast, light-weight, extensible window manager
