@@ -62,6 +62,8 @@ src_prepare() {
 }
 
 python_test() {
+	# set variable from escons() of scons-util.eclass to make env-passthrough patch work within test env
+	local -x GENTOO_SCONS_ENV_PASSTHROUGH=1
 	cd "${WORKDIR}/${P}" || die
 	"${EPYTHON}" runtest.py -a --passed \
 		-j "$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")" \
