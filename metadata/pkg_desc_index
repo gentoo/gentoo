@@ -326,7 +326,7 @@ app-crypt/dehydrated 0.6.2-r1: a client for signing certificates with an ACME-se
 app-crypt/easy-rsa 3.0.4 3.0.5: Small RSA key management package, based on OpenSSL
 app-crypt/gcr 3.20.0 3.28.0 3.28.1: Libraries for cryptographic UIs and accessing PKCS#11 modules
 app-crypt/gentoo-keys 201901130136: A OpenPGP/GPG keyring of official Gentoo release media GPG keys
-app-crypt/glep63-check 7 9: GLEP 63 compliance checker for OpenPGP keys
+app-crypt/glep63-check 9: GLEP 63 compliance checker for OpenPGP keys
 app-crypt/gnupg 1.4.21 2.2.10 2.2.15: The GNU Privacy Guard, a GPL OpenPGP implementation
 app-crypt/gorilla 1.4-r1: Password Safe in secure way with GUI interface
 app-crypt/gpa 0.10.0: The GNU Privacy Assistant (GPA) is a graphical user interface for GnuPG
