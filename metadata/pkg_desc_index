@@ -9921,7 +9921,7 @@ sys-apps/kmod 25: library and tools for managing linux kernel modules
 sys-apps/less 531: Excellent text file viewer
 sys-apps/lm_sensors 3.5.0: Hardware Monitoring user-space utilities
 sys-apps/lnxhc 1.2-r1: Linux Health Checker
-sys-apps/logwatch 7.4.3: Analyzes and Reports on system logs
+sys-apps/logwatch 7.5.1: Analyzes and Reports on system logs
 sys-apps/lomoco 1.0-r9: Lomoco can configure vendor-specific options on Logitech USB mice
 sys-apps/lsb-release 1.4 1.4-r3: LSB version query program
 sys-apps/lsd 0.14.0: A modern ls with a lot of pretty colors and awesome icons
