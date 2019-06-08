@@ -9835,7 +9835,7 @@ sys-apps/bar 1.11.1: Console Progress Bar
 sys-apps/baselayout 2.4.1-r2 2.6-r1: Filesystem baselayout and init scripts
 sys-apps/baselayout-java 0.1.0: Baselayout for Java
 sys-apps/biosdevname 0.7.2: Sets BIOS-given device names instead of kernel eth* names
-sys-apps/bleachbit 2.0 2.2: Clean junk to free disk space and to maintain privacy
+sys-apps/bleachbit 2.2: Clean junk to free disk space and to maintain privacy
 sys-apps/bubblewrap 0.3.1-r1: Unprivileged sandboxing tool, namespaces-powered chroot-like solution
 sys-apps/busybox 1.29.0 1.29.3: Utilities for rescue and embedded systems
 sys-apps/cciss_vol_status 1.12: Shows status of logical drives attached to HP SmartArray controllers
