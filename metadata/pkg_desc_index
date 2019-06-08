@@ -3184,7 +3184,7 @@ dev-libs/libunistring 0.9.10: Library for manipulating Unicode and C strings acc
 dev-libs/libusb 1.0.19-r1 1.0.21: Userspace access to USB devices
 dev-libs/libusb-compat 0.1.5-r2: Userspace access to USB devices (libusb-0.1 compat wrapper)
 dev-libs/libutf8proc 2.2.0_p1-r1: mapping tool for UTF-8 strings
-dev-libs/libuv 1.20.0 1.28.0: Cross-platform asychronous I/O
+dev-libs/libuv 1.28.0: Cross-platform asychronous I/O
 dev-libs/libverto 0.2.5-r1: Main event loop abstraction library
 dev-libs/libvformat 1.13-r2: Library to read and write vcard files
 dev-libs/libvterm 0.0_pre20160305: An abstract library implementation of a VT220/xterm/ECMA-48 terminal emulator
