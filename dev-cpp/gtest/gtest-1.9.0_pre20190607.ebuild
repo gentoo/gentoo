@@ -6,6 +6,8 @@ EAPI=7
 # Python is required for tests and some build tasks.
 PYTHON_COMPAT=( python2_7 pypy )
 
+GOOGLETEST_COMMIT=da10da05c262af0a9e8fa91789a272a3dec67655
+
 inherit cmake-multilib python-any-r1
 
 if [[ ${PV} == "9999" ]]; then
