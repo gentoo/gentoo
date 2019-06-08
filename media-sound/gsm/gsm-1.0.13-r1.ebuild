@@ -36,12 +36,12 @@ multilib_src_compile() {
 multilib_src_install() {
 	dodir /usr/bin /usr/$(get_libdir) /usr/include/gsm /usr/share/man/man{1,3}
 
-	emake -j1 INSTALL_ROOT="${D}"/usr \
+	emake -j1 INSTALL_ROOT="${ED}"/usr \
 		LD="$(tc-getCC)" AR="$(tc-getAR)" CC="$(tc-getCC)" \
-		GSM_INSTALL_LIB="${D}"/usr/$(get_libdir) \
-		GSM_INSTALL_INC="${D}"/usr/include/gsm \
-		GSM_INSTALL_MAN="${D}"/usr/share/man/man3 \
-		TOAST_INSTALL_MAN="${D}"/usr/share/man/man1 \
+		GSM_INSTALL_LIB="${ED}"/usr/$(get_libdir) \
+		GSM_INSTALL_INC="${ED}"/usr/include/gsm \
+		GSM_INSTALL_MAN="${ED}"/usr/share/man/man3 \
+		TOAST_INSTALL_MAN="${ED}"/usr/share/man/man1 \
 		install
 
 	dolib lib/libgsm.so*
