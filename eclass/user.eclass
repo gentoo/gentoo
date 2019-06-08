@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: user.eclass
@@ -44,32 +44,6 @@ egetent() {
 	esac
 
 	case ${CHOST} in
-	*-darwin[678])
-		case ${key} in
-		*[!0-9]*) # Non numeric
-			nidump ${db} . | awk -F: "(\$1 ~ /^${key}\$/) {print;exit;}"
-			;;
-		*)	# Numeric
-			nidump ${db} . | awk -F: "(\$3 == ${key}) {print;exit;}"
-			;;
-		esac
-		;;
-	*-darwin*)
-		local mykey
-		case ${db} in
-		passwd) db="Users"  mykey="UniqueID" ;;
-		group)  db="Groups" mykey="PrimaryGroupID" ;;
-		esac
-
-		case ${key} in
-		*[!0-9]*) # Non numeric
-			dscl . -read /${db}/${key} 2>/dev/null |grep RecordName
-			;;
-		*)	# Numeric
-			dscl . -search /${db} ${mykey} ${key} 2>/dev/null
-			;;
-		esac
-		;;
 	*-freebsd*|*-dragonfly*)
 		case ${db} in
 		passwd) db="user" ;;
@@ -219,18 +193,6 @@ enewuser() {
 
 	# add the user
 	case ${CHOST} in
-	*-darwin*)
-		### Make the user
-		dscl . create "/users/${euser}" uid ${euid}
-		dscl . create "/users/${euser}" shell "${eshell}"
-		dscl . create "/users/${euser}" home "${ehome}"
-		dscl . create "/users/${euser}" realname "added by portage for ${PN}"
-		### Add the user to the groups specified
-		for g in "${egroups_arr[@]}" ; do
-			dscl . merge "/groups/${g}" users "${euser}"
-		done
-		;;
-
 	*-freebsd*|*-dragonfly*)
 		pw useradd "${euser}" "${opts[@]}" || die
 		;;
@@ -318,12 +280,6 @@ enewgroup() {
 
 	# add the group
 	case ${CHOST} in
-	*-darwin*)
-		_enewgroup_next_gid
-		dscl . create "/groups/${egroup}" gid ${egid}
-		dscl . create "/groups/${egroup}" passwd '*'
-		;;
-
 	*-freebsd*|*-dragonfly*)
 		_enewgroup_next_gid
 		pw groupadd "${egroup}" -g ${egid} || die
@@ -358,7 +314,7 @@ egethome() {
 	[[ $# -eq 1 ]] || die "usage: egethome <user>"
 
 	case ${CHOST} in
-	*-darwin*|*-freebsd*|*-dragonfly*)
+	*-freebsd*|*-dragonfly*)
 		pos=9
 		;;
 	*)	# Linux, NetBSD, OpenBSD, etc...
@@ -379,7 +335,7 @@ egetshell() {
 	[[ $# -eq 1 ]] || die "usage: egetshell <user>"
 
 	case ${CHOST} in
-	*-darwin*|*-freebsd*|*-dragonfly*)
+	*-freebsd*|*-dragonfly*)
 		pos=10
 		;;
 	*)	# Linux, NetBSD, OpenBSD, etc...
@@ -444,10 +400,6 @@ esethome() {
 
 	# update the home directory
 	case ${CHOST} in
-	*-darwin*)
-		dscl . change "/users/${euser}" home "${ehome}"
-		;;
-
 	*-freebsd*|*-dragonfly*)
 		pw usermod "${euser}" -d "${ehome}" && return 0
 		[[ $? == 8 ]] && eerror "${euser} is in use, cannot update home"
