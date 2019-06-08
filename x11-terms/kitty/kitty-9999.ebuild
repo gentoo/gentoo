@@ -52,8 +52,8 @@ DEPEND="${RDEPEND}
 [[ ${PV} == *9999 ]] && DEPEND+=" >=dev-python/sphinx-1.7[${PYTHON_USEDEP}]"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-0.13.2-flags.patch
 	"${FILESDIR}"/${PN}-0.11.0-svg-icon.patch
+	"${FILESDIR}"/${P}-flags.patch
 )
 
 src_prepare() {
