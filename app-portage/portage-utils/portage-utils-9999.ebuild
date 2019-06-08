@@ -14,8 +14,7 @@ if [[ ${PV} == *9999 ]]; then
 	inherit git-r3 autotools
 	EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/portage-utils.git"
 else
-	SRC_URI="mirror://gentoo/${P}.tar.xz
-		https://dev.gentoo.org/~grobian/distfiles/${P}.tar.xz"
+	SRC_URI="https://dev.gentoo.org/~grobian/distfiles/${P}.tar.xz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 fi
 
@@ -33,15 +32,15 @@ RDEPEND="
 			app-crypt/libb2:=[static-libs]
 			!libressl? ( dev-libs/openssl:0=[static-libs] )
 			libressl? ( dev-libs/libressl:0=[static-libs] )
-			sys-libs/zlib[static-libs]
-			app-crypt/gpgme[static-libs]
+			sys-libs/zlib:=[static-libs]
+			app-crypt/gpgme:=[static-libs]
 		)
 		!static? (
-			app-crypt/libb2
+			app-crypt/libb2:=
 			!libressl? ( dev-libs/openssl:0= )
 			libressl? ( dev-libs/libressl:0= )
-			sys-libs/zlib
-			app-crypt/gpgme
+			sys-libs/zlib:=
+			app-crypt/gpgme:=
 		)
 	)
 "
