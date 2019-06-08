@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install
+DEPEND=dev-ada/gnat_util[gnat_2017(-)?] dev-ada/gnat_util[gnat_2018(-)?,gnat_2019(-)?] || ( dev-ada/gnatcoll-core[gnat_2017(-)?,gnat_2018(-)?,gnat_2019(-)?,shared] dev-ada/gnatcoll[gnat_2017(-)?,gnat_2018(-)?,gnat_2019(-)?,projects,shared] ) dev-ada/gprbuild[gnat_2017(-)?,gnat_2018(-)?,gnat_2019(-)?]
+DESCRIPTION=To develop tools for Ada software
+EAPI=7
+HOMEPAGE=http://libre.adacore.com/
+IUSE=gnat_2017 gnat_2018 +gnat_2019
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=dev-ada/gnat_util[gnat_2017(-)?] dev-ada/gnat_util[gnat_2018(-)?,gnat_2019(-)?] || ( dev-ada/gnatcoll-core[gnat_2017(-)?,gnat_2018(-)?,gnat_2019(-)?,shared] dev-ada/gnatcoll[gnat_2017(-)?,gnat_2018(-)?,gnat_2019(-)?,projects,shared] )
+REQUIRED_USE=|| ( gnat_2017 gnat_2018 gnat_2019 )
+SLOT=0
+SRC_URI=http://mirrors.cdn.adacore.com/art/5cdf849031e87aa2cdf16b10 -> asis-2019-20190517-18AB5-src.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045
+_md5_=6419c200334f7b923ba2c48142fd14d1
