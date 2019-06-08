@@ -70,7 +70,7 @@ src_configure() {
 	# This comes up when cross-compiling, doing multilib builds, upgrading,
 	# or installing for the first time.  Build a local copy of tic whenever
 	# the host version isn't available. #249363 #557598
-	if ! ROOT=/ has_version "~sys-libs/${P}:0" ; then
+	if ! has_version -b "~sys-libs/${P}:0" ; then
 		local lbuildflags="-static"
 
 		# some toolchains don't quite support static linking
@@ -192,7 +192,7 @@ do_configure() {
 
 src_compile() {
 	# See comments in src_configure.
-	if ! ROOT=/ has_version "~sys-libs/${P}:0" ; then
+	if ! has_version -b "~sys-libs/${P}:0" ; then
 		BUILD_DIR="${WORKDIR}" \
 		do_compile cross -C progs tic
 	fi
