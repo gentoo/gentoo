@@ -4,6 +4,7 @@
 # @ECLASS: user.eclass
 # @MAINTAINER:
 # base-system@gentoo.org (Linux)
+# Michał Górny <mgorny@gentoo.org> (NetBSD)
 # @BLURB: user management in ebuilds
 # @DESCRIPTION:
 # The user eclass contains a suite of functions that allow ebuilds
@@ -58,7 +59,7 @@ egetent() {
 
 		pw show ${db} ${opts} "${key}" -q
 		;;
-	*-netbsd*|*-openbsd*)
+	*-openbsd*)
 		grep "${key}:\*:" /etc/${db}
 		;;
 	*)
