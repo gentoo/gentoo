@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (09 May 2019)
+# media-libs/libplacebo is keyworded on amd64
+media-video/vlc -libplacebo
+
 # Denis Lisov <dennis.lissov@gmail.com> (09 May 2019)
 # Overlay can only be built on amd64 and x86
 x11-apps/igt-gpu-tools -overlay
