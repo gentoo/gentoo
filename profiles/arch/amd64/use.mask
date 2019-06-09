@@ -165,10 +165,6 @@
 
 # SECTION: Unavailable/Broken
 
-# Thomas Deutschmann <whissi@gentoo.org> (08 Jun 2019)
-# Needs dev-php/igbinary stable (bug 687326)
-php_targets_php7-3
-
 # 2004/06/22 - Taken from 2004.0 profile
 # masked
 3dfx
