@@ -6213,6 +6213,7 @@ x11-misc/polybar:ipc - Add support for Inter-Process Messaging
 x11-misc/polybar:mpd - Add support for Music Player Daemon
 x11-misc/polybar:network - Enable network support
 x11-misc/qt5ct:dbus - Enable system tray and global menu support
+x11-misc/qtfm:dbus - Install the qtfm-tray removable device manager
 x11-misc/qtfm:shared - Install the libQtFM shared library and headers
 x11-misc/redshift:geoclue - Control dependency on app-misc/geoclue
 x11-misc/rofi:windowmode - Enable normal window mode
