@@ -9,6 +9,10 @@
 		<email>sound@gentoo.org</email>
 		<name>Gentoo Sound project</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>bircoph@gentoo.org</email>
+		<name>Andrew Savchenko</name>
+	</maintainer>
 	<upstream>
 		<remote-id type="sourceforge">festlang.berlios</remote-id>
 	</upstream>
