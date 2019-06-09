@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit multilib xdg-utils qmake-utils
+inherit xdg-utils qmake-utils
 
 DESCRIPTION="A small, lightweight file manager for desktops based on pure Qt"
 HOMEPAGE="https://qtfm.eu/"
