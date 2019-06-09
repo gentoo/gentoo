@@ -15,6 +15,9 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
 
+DEPEND="mail-filter/libmilter"
+RDEPEND="${DEPEND}"
+
 S="${WORKDIR}/${PN}-${P}"
 
 python_test() {
