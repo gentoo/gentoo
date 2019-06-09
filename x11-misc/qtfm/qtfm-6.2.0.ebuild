@@ -11,16 +11,16 @@ SRC_URI="https://github.com/rodlie/qtfm/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="shared"
+IUSE="+dbus shared"
 
 RDEPEND="
 	dev-qt/qtconcurrent:5
 	dev-qt/qtcore:5
-	dev-qt/qtdbus:5
 	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5
 	dev-qt/qtwidgets:5
 	sys-apps/file
+	dbus? ( dev-qt/qtdbus:5 )
 "
 DEPEND="
 	${RDEPEND}
@@ -30,6 +30,7 @@ DEPEND="
 
 src_configure() {
 	eqmake5 \
+		$(usex dbus '' 'CONFIG+=no_dbus CONFIG+=no_tray') \
 		$(usex shared 'CONFIG+=sharedlib' '') \
 		$(usex shared 'CONFIG+=with_includes' '') \
 		LIBDIR="/usr/$(get_libdir)" \

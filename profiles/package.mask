@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# James Le Cuirot <chewi@gentoo.org> (9 Jun 2019)
+# Dead upstream, no release since 2008, not used by anything, possibly
+# doesn't work any more. Removal in 30 days.
+dev-libs/liblazy
+
 # Andreas K. Hüttel <dilfridge@gentoo.org> (5 Jun 2019)
 # Unhandled version bumps since 2015, bug 293306. EAPI=2.
 # Removal in 30 days unless updated.
