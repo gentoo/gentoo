@@ -19,10 +19,6 @@ www-servers/uwsgi uwsgi_plugins_rados
 # Tests fail with jpeg2k flag. Bug #662686
 dev-python/pillow jpeg2k
 
-# Andreas Sturmlechner <asturm@gentoo.org> (28 Feb 2019)
-# media-libs/dav1d is not yet keyworded
-media-video/vlc dav1d
-
 # Thomas Deutschmann <whissi@gentoo.org> (26 Feb 2019)
 # nginx_modules_http_lua requires USE=luajit which requires
 # dev-lang/luajit which is not keyworded on PowerPC
