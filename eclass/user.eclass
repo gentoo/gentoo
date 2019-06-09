@@ -413,6 +413,27 @@ egetshell() {
 	egetent passwd "$1" | cut -d: -f${pos}
 }
 
+# @FUNCTION: egetcomment
+# @USAGE: <user>
+# @DESCRIPTION:
+# Gets the comment field for the specified user.
+egetcomment() {
+	local pos
+
+	[[ $# -eq 1 ]] || die "usage: egetshell <user>"
+
+	case ${CHOST} in
+	*-freebsd*|*-dragonfly*)
+		pos=8
+		;;
+	*)	# Linux, NetBSD, OpenBSD, etc...
+		pos=5
+		;;
+	esac
+
+	egetent passwd "$1" | cut -d: -f${pos}
+}
+
 # @FUNCTION: esethome
 # @USAGE: <user> <homedir>
 # @DESCRIPTION:
@@ -542,6 +563,62 @@ esetshell() {
 		eerror "There was an error when attempting to update the shell for ${euser}"
 		eerror "Please update it manually on your system (as root):"
 		eerror "\t usermod -s \"${eshell}\" \"${euser}\""
+		;;
+	esac
+}
+
+# @FUNCTION: esetcomment
+# @USAGE: <user> <comment>
+# @DESCRIPTION:
+# Update the comment field in a platform-agnostic way.
+# Required parameters is the username and the new comment.
+esetcomment() {
+	_assert_pkg_ebuild_phase ${FUNCNAME}
+
+	# get the username
+	local euser=$1; shift
+	if [[ -z ${euser} ]] ; then
+		eerror "No username specified !"
+		die "Cannot call esetcomment without a username"
+	fi
+
+	# lets see if the username already exists
+	if [[ -z $(egetent passwd "${euser}") ]] ; then
+		ewarn "User does not exist, cannot set comment -- skipping."
+		return 1
+	fi
+
+	# handle comment
+	local ecomment=$1; shift
+	if [[ -z ${ecomment} ]] ; then
+		eerror "No comment specified !"
+		die "Cannot call esetcomment without a comment"
+	fi
+
+	# exit with no message if comment is up to date
+	if [[ $(egetcomment "${euser}") == ${ecomment} ]]; then
+		return 0
+	fi
+
+	einfo "Updating comment for user '${euser}' ..."
+	einfo " - Comment: ${ecomment}"
+
+	# update the comment
+	case ${CHOST} in
+	*-freebsd*|*-dragonfly*)
+		pw usermod "${euser}" -c "${ecomment}" && return 0
+		[[ $? == 8 ]] && eerror "${euser} is in use, cannot update comment"
+		eerror "There was an error when attempting to update the comment for ${euser}"
+		eerror "Please update it manually on your system:"
+		eerror "\t pw usermod \"${euser}\" -c \"${ecomment}\""
+		;;
+
+	*)
+		usermod -c "${ecomment}" "${euser}" && return 0
+		[[ $? == 8 ]] && eerror "${euser} is in use, cannot update comment"
+		eerror "There was an error when attempting to update the comment for ${euser}"
+		eerror "Please update it manually on your system (as root):"
+		eerror "\t usermod -c \"${ecomment}\" \"${euser}\""
 		;;
 	esac
 }
