@@ -66,7 +66,8 @@ gnome-extra/libgda reports
 
 # Anthony G. Basile <blueness@gentoo.org> (26 Oct 2015)
 # Mask x265 on vlc for bug #564138
-media-video/vlc x265
+# media-libs/dav1d is not yet keyworded
+media-video/vlc dav1d x265
 
 # Ben de Groot <yngwin@gentoo.org> (20 Jul 2015)
 # missing keyword

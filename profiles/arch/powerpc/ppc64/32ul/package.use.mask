@@ -1,6 +1,10 @@
 # Copyright 1999-2019 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Andreas Sturmlechner <asturm@gentoo.org> (09 Jun 2019)
+# media-libs/dav1d is not yet keyworded
+media-video/vlc dav1d
+
 # Andreas Sturmlechner <asturm@gentoo.org> (16 Feb 2019)
 # app-text/libwpd and app-text/libwpg are not keyworded
 media-gfx/inkscape cdr visio wpg
