@@ -19,7 +19,7 @@
 
 # Andreas Sturmlechner <asturm@gentoo.org> (09 Jun 2019)
 # media-libs/dav1d is not stable yet
-media-video/vlc dav1d
+~media-video/vlc-3.0.6 dav1d
 
 # Andreas Sturmlechner <asturm@gentoo.org> (16 Feb 2019)
 # app-text/libwpd and app-text/libwpg are not stable

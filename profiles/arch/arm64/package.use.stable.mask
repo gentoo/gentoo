@@ -3,7 +3,7 @@
 
 # Aaron Bauman <bman@gentoo.org> (27 May 2019)
 # media-libs/dav1d is not stable
-media-video/vlc dav1d
+~media-video/vlc-3.0.6 dav1d
 
 # Aaron Bauman <bman@gentoo.org> (20 May 2019)
 # deps are not stable yet
