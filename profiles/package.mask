@@ -131,12 +131,6 @@ dev-ruby/elasticsearch-api:0
 dev-ruby/elasticsearch-transport:0
 dev-ruby/filesize:0.1.1
 
-# Matt Turner <mattst88@gentoo.org> (16 May 2019)
-# Not supported by the Xserver since v1.6.0 (2008)
-# Masked for removal.
-x11-apps/xtrap
-x11-libs/libXTrap
-
 # Miroslav Šulc <fordfrog@gentoo.org> (15 May 2019)
 # Depends on >=virtual/{jdk,jre}-11 which is masked
 =www-servers/tomcat-9.0.20

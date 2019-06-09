@@ -9,7 +9,7 @@ inherit flag-o-matic toolchain-funcs libtool texlive-common
 
 MY_P=${PN%-core}-${TL_SOURCE_VERSION}-source
 
-PATCHLEVEL=3
+PATCHLEVEL=4
 
 DESCRIPTION="A complete TeX distribution"
 HOMEPAGE="https://tug.org/texlive/"
@@ -276,12 +276,12 @@ src_install() {
 	cd "${B}/texk" || die
 	dodoc ChangeLog README
 
-	docinto dviljk || die
-	cd "${B}/texk/dviljk"
+	docinto dviljk
+	cd "${B}/texk/dviljk" || die
 	dodoc ChangeLog README NEWS
 
-	docinto makeindexk || die
-	cd "${B}/texk/makeindexk"
+	docinto makeindexk
+	cd "${B}/texk/makeindexk" || die
 	dodoc ChangeLog NOTES README
 
 	docinto web2c || die
@@ -318,11 +318,11 @@ src_install() {
 	dosym pdftex /usr/bin/pdfvirtex
 
 	# Rename mpost to leave room for mplib
-	mv "${ED}/usr/bin/mpost" "${ED}/usr/bin/mpost-${P}"
+	mv "${ED}/usr/bin/mpost" "${ED}/usr/bin/mpost-${P}" || die
 	dosym "mpost-${P}" /usr/bin/mpost
 
 	# Ditto for pdftex
-	mv "${ED}/usr/bin/pdftex" "${ED}/usr/bin/pdftex-${P}"
+	mv "${ED}/usr/bin/pdftex" "${ED}/usr/bin/pdftex-${P}" || die
 	dosym "pdftex-${P}" /usr/bin/pdftex
 }
 
@@ -330,7 +330,7 @@ pkg_postinst() {
 	etexmf-update
 
 	einfo "Regenerating TeX formats"
-	fmtutil-sys --all &> /dev/null
+	fmtutil-sys --all &> /dev/null || die
 
 	elog
 	elog "If you have configuration files in ${EPREFIX}/etc/texmf to merge,"
