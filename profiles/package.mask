@@ -226,7 +226,9 @@ dev-embedded/tavrasm
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (11 May 2019)
 # Outdated, EAPI=2, unmaintained, segfaults immediately.
-# See bug 634928 and bug 612980. Removal in 30 days.
+# See bug 634928 and bug 612980.
+# Andrew Savchenko <bircoph@gentoo.org> (09 Jun 2019)
+# festival and speech-tools update is WIP now, so postponing removal.
 app-accessibility/festival
 app-accessibility/festival-freebsoft-utils
 app-accessibility/festival-hts
