@@ -42,12 +42,16 @@ RDEPEND="${DEPEND}"
 
 src_configure() {
 	local mycmakeargs=(
+		$(cmake-utils_use_find_package designer KF5Completion)
+		$(cmake-utils_use_find_package designer KF5ConfigWidgets)
 		$(cmake-utils_use_find_package designer KF5IconThemes)
 		$(cmake-utils_use_find_package designer KF5ItemViews)
 		$(cmake-utils_use_find_package designer KF5KIO)
 		$(cmake-utils_use_find_package designer KF5Plotting)
+		$(cmake-utils_use_find_package designer KF5Sonnet)
 		$(cmake-utils_use_find_package designer KF5TextWidgets)
 		$(cmake-utils_use_find_package designer KF5WidgetsAddons)
+		$(cmake-utils_use_find_package designer KF5XmlGui)
 		$(cmake-utils_use_find_package webkit KF5WebKit)
 	)
 

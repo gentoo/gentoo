@@ -17,6 +17,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (05 Jun 2019)
+# sys-auth/polkit stable timeout, bug #661470
+sys-apps/pcsc-lite policykit
+x11-misc/colord policykit
+
 # Sergei Trofimovich <slyfox@gentoo.org> (03 May 2019)
 # net-wireless/bluez has no stable keywords, bug #676430
 app-pda/pilot-link bluetooth
