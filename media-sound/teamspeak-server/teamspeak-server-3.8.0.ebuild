@@ -8,8 +8,8 @@ inherit systemd user
 DESCRIPTION="A server software for hosting quality voice communication via the internet"
 HOMEPAGE="https://www.teamspeak.com/"
 SRC_URI="
-	amd64? ( http://ftp.4players.de/pub/hosted/ts3/releases/${PV}/teamspeak3-server_linux_amd64-${PV}.tar.bz2 )
-	x86? ( http://ftp.4players.de/pub/hosted/ts3/releases/${PV}/teamspeak3-server_linux_x86-${PV}.tar.bz2 )
+	amd64? ( https://files.teamspeak-services.com/releases/server/${PV}/teamspeak3-server_linux_amd64-${PV}.tar.bz2 )
+	x86? ( https://files.teamspeak-services.com/releases/server/${PV}/teamspeak3-server_linux_x86-${PV}.tar.bz2 )
 "
 
 LICENSE="Apache-2.0 Boost-1.0 BSD LGPL-2.1 LGPL-3 MIT teamspeak3"
