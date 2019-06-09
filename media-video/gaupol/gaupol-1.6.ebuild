@@ -13,7 +13,7 @@ SRC_URI="https://github.com/otsaloma/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="spell test"
 
 RDEPEND="
@@ -38,7 +38,7 @@ DEPEND="
 DOCS=( AUTHORS.md NEWS.md TODO.md README.md README.aeidon.md )
 
 python_test() {
-	virtx py.test
+	virtx pytest -vv
 }
 
 pkg_postinst() {
