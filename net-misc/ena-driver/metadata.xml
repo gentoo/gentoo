@@ -5,4 +5,7 @@
     <email>dilfridge@gentoo.org</email>
     <name>Andreas K. Huettel</name>
   </maintainer>
+  <upstream>
+    <remote-id type="github">amzn/amzn-drivers</remote-id>
+  </upstream>
 </pkgmetadata>
