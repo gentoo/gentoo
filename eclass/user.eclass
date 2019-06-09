@@ -434,6 +434,24 @@ egetcomment() {
 	egetent passwd "$1" | cut -d: -f${pos}
 }
 
+# @FUNCTION: egetgroups
+# @USAGE: <user>
+# @DESCRIPTION:
+# Gets all the groups user belongs to.  The primary group is returned
+# first, then all supplementary groups.  Groups are ','-separated.
+egetgroups() {
+	[[ $# -eq 1 ]] || die "usage: egetgroups <user>"
+
+	local egroups_arr
+	read -r -a egroups_arr < <(id -G -n "$1")
+
+	local defgroup=${egroups_arr[0]}
+	# sort supplementary groups to make comparison possible
+	readarray -t exgroups_arr < <(printf '%s\n' "${egroups_arr[@]:1}" | sort)
+	local exgroups=${exgroups_arr[*]}
+	echo "${defgroup}${exgroups:+,${exgroups// /,}}"
+}
+
 # @FUNCTION: esethome
 # @USAGE: <user> <homedir>
 # @DESCRIPTION:
@@ -619,6 +637,76 @@ esetcomment() {
 		eerror "There was an error when attempting to update the comment for ${euser}"
 		eerror "Please update it manually on your system (as root):"
 		eerror "\t usermod -c \"${ecomment}\" \"${euser}\""
+		;;
+	esac
+}
+
+# @FUNCTION: esetgroups
+# @USAGE: <user> <groups>
+# @DESCRIPTION:
+# Update the group field in a platform-agnostic way.
+# Required parameters is the username and the new list of groups,
+# primary group first.
+esetgroups() {
+	_assert_pkg_ebuild_phase ${FUNCNAME}
+
+	[[ ${#} -eq 2 ]] || die "Usage: ${FUNCNAME} <user> <groups>"
+
+	# get the username
+	local euser=$1; shift
+
+	# lets see if the username already exists
+	if [[ -z $(egetent passwd "${euser}") ]] ; then
+		ewarn "User does not exist, cannot set group -- skipping."
+		return 1
+	fi
+
+	# handle group
+	local egroups=$1; shift
+
+	local g egroups_arr=()
+	IFS="," read -r -a egroups_arr <<<"${egroups}"
+	[[ ${#egroups_arr[@]} -gt 0 ]] || die "${FUNCNAME}: no groups specified"
+
+	for g in "${egroups_arr[@]}" ; do
+		if [[ -z $(egetent group "${g}") ]] ; then
+			eerror "You must add group ${g} to the system first"
+			die "${g} is not a valid GID"
+		fi
+	done
+
+	local defgroup=${egroups_arr[0]} exgroups_arr=()
+	# sort supplementary groups to make comparison possible
+	readarray -t exgroups_arr < <(printf '%s\n' "${egroups_arr[@]:1}" | sort)
+	local exgroups=${exgroups_arr[*]}
+	exgroups=${exgroups// /,}
+	egroups=${defgroup}${exgroups:+,${exgroups}}
+
+	# exit with no message if group membership is up to date
+	if [[ $(egetgroups "${euser}") == ${egroups} ]]; then
+		return 0
+	fi
+
+	local opts=( -g "${defgroup}" -G "${exgroups}" )
+	einfo "Updating groups for user '${euser}' ..."
+	einfo " - Groups: ${egroups}"
+
+	# update the group
+	case ${CHOST} in
+	*-freebsd*|*-dragonfly*)
+		pw usermod "${euser}" "${opts[@]}" && return 0
+		[[ $? == 8 ]] && eerror "${euser} is in use, cannot update groups"
+		eerror "There was an error when attempting to update the groups for ${euser}"
+		eerror "Please update it manually on your system:"
+		eerror "\t pw usermod \"${euser}\" ${opts[*]}"
+		;;
+
+	*)
+		usermod "${opts[@]}" "${euser}" && return 0
+		[[ $? == 8 ]] && eerror "${euser} is in use, cannot update groups"
+		eerror "There was an error when attempting to update the groups for ${euser}"
+		eerror "Please update it manually on your system (as root):"
+		eerror "\t usermod ${opts[*]} \"${euser}\""
 		;;
 	esac
 }
