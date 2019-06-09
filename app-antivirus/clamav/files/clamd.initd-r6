@@ -1,5 +1,5 @@
 #!/sbin/openrc-run
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 daemon_clamd="/usr/sbin/clamd"
@@ -9,6 +9,7 @@ daemon_milter="/usr/sbin/clamav-milter"
 extra_commands="logfix"
 
 depend() {
+	after sshd
 	use net
 	provide antivirus
 }
