@@ -237,11 +237,6 @@ app-accessibility/perlbox-voice
 app-accessibility/pidgin-festival
 dev-ros/sound_play
 
-# Virgil Dupras <vdupras@gentoo.org> (10 May 2019)
-# Has very limited use and is disruptive of other tests when activated.
-# Bug #685538. Removal in 30 days.
-dev-python/pytest-relaxed
-
 # Patrice Clement <monsieurp@gentoo.org> (06 May 2019)
 # Broken build. Outdated version. No interest from the Java team to maintain
 # it. Removal in 30 days. Bug #581720.
