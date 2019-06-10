@@ -6,4 +6,4 @@ HOMEPAGE=https://git.sr.ht/~sircmpwn/scdoc
 LICENSE=MIT
 SLOT=0
 _eclasses_=git-r3	0d4635eeb5a96cd5315597a47eba25c9	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
-_md5_=c2eb02a7998ddb5bc69c3a240377d917
+_md5_=66a56763929370691e58f38b5e960db8
