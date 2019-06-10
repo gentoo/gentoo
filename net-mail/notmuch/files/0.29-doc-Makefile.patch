@@ -1,0 +1,14 @@
+index 719172fe..5b99dd02 100644
+--- a/doc/Makefile.local
++++ b/doc/Makefile.local
+@@ -28,7 +28,9 @@ MAN_GZIP_FILES := $(addsuffix .gz,${MAN_ROFF_FILES})
+ MAN1_TEXI := $(patsubst $(srcdir)/doc/man1/%.rst,$(DOCBUILDDIR)/texinfo/%.texi,$(MAN1_RST))
+ MAN5_TEXI := $(patsubst $(srcdir)/doc/man5/%.rst,$(DOCBUILDDIR)/texinfo/%.texi,$(MAN5_RST))
+ MAN7_TEXI := $(patsubst $(srcdir)/doc/man7/%.rst,$(DOCBUILDDIR)/texinfo/%.texi,$(MAN7_RST))
+-INFO_TEXI_FILES := $(MAN1_TEXI) $(MAN5_TEXI) $(MAN7_TEXI) $(DOCBUILDDIR)/texinfo/notmuch-emacs.texi
++INFO_TEXI_FILES = $(MAN1_TEXI) $(MAN5_TEXI) $(MAN7_TEXI) \
++       $(if $(filter 1,$(WITH_EMACS)), $(DOCBUILDDIR)/texinfo/notmuch-emacs.texi,)
++
+ INFO_INFO_FILES := $(INFO_TEXI_FILES:.texi=.info)
+ 
+ .PHONY: sphinx-html sphinx-texinfo sphinx-info

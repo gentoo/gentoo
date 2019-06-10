@@ -1,0 +1,45 @@
+diff -u -r a/test/smtp-dummy.c b/test/smtp-dummy.c
+--- a/test/smtp-dummy.c	2019-06-07 11:46:30.000000000 +0200
++++ b/test/smtp-dummy.c	2019-06-10 01:43:01.041674756 +0200
+@@ -76,7 +76,7 @@
+ 	fprintf (peer, "502 not implemented\r\n");
+ 	fflush (peer);
+     } else if (STRNCMP_LITERAL (command, "HELO ") == 0) {
+-	fprintf (peer, "250 localhost\r\n");
++	fprintf (peer, "250 127.0.0.1\r\n");
+ 	fflush (peer);
+     } else if (STRNCMP_LITERAL (command, "MAIL FROM:") == 0 ||
+ 	       STRNCMP_LITERAL (command, "RCPT TO:") == 0) {
+@@ -105,7 +105,7 @@
+     size_t line_size;
+     ssize_t line_len;
+ 
+-    fprintf (peer, "220 localhost smtp-dummy\r\n");
++    fprintf (peer, "220 127.0.0.1 smtp-dummy\r\n");
+     fflush (peer);
+ 
+     while ((line_len = getline (&line, &line_size, peer)) != -1) {
+@@ -183,9 +183,9 @@
+ 	goto DONE;
+     }
+ 
+-    hostinfo = gethostbyname ("localhost");
++    hostinfo = gethostbyname ("127.0.0.1");
+     if (hostinfo == NULL) {
+-	fprintf (stderr, "Unknown host: localhost\n");
++	fprintf (stderr, "Unknown host: 127.0.0.1\n");
+ 	ret = 1;
+ 	goto DONE;
+     }
+diff -u -r a/test/test-lib.sh b/test/test-lib.sh
+--- a/test/test-lib.sh	2019-06-07 11:46:30.000000000 +0200
++++ b/test/test-lib.sh	2019-06-10 01:44:00.752677603 +0200
+@@ -336,7 +336,7 @@
+     test_emacs \
+ 	"(let ((message-send-mail-function 'message-smtpmail-send-it)
+ 	       (mail-host-address \"example.com\")
+-	       (smtpmail-smtp-server \"localhost\")
++	       (smtpmail-smtp-server \"127.0.0.1\")
+ 	       (smtpmail-smtp-service \"${smtp_dummy_port}\"))
+ 	   (notmuch-mua-mail)
+ 	   (message-goto-to)
