@@ -20,7 +20,7 @@ MY_PV="$(ver_cut 1-2)"
 SLOT="0"
 LICENSE="|| ( GPL-2 BL )"
 KEYWORDS="amd64 ~x86"
-IUSE="+bullet +dds +elbeem +game-engine +openexr collada colorio \
+IUSE="+bullet +dds +elbeem +game-engine +openexr collada color-management \
 	cuda cycles debug doc ffmpeg fftw headless jack jemalloc jpeg2k libav \
 	llvm man ndof nls openal opencl openimageio openmp opensubdiv openvdb \
 	osl player sdl sndfile test tiff valgrind"
@@ -47,7 +47,7 @@ RDEPEND="${PYTHON_DEPS}
 	virtual/libintl
 	virtual/opengl
 	collada? ( >=media-libs/opencollada-1.6.18:= )
-	colorio? ( media-libs/opencolorio )
+	color-management? ( media-libs/opencolorio )
 	cuda? ( dev-util/nvidia-cuda-toolkit:= )
 	ffmpeg? ( media-video/ffmpeg:=[x264,mp3,encode,theora,jpeg2k?] )
 	libav? ( >=media-video/libav-11.3:=[x264,mp3,encode,theora,jpeg2k?] )
@@ -180,7 +180,7 @@ src_configure() {
 		-DWITH_MOD_OCEANSIM=$(usex fftw)
 		-DWITH_OPENAL=$(usex openal)
 		-DWITH_OPENCL=$(usex opencl)
-		-DWITH_OPENCOLORIO=$(usex colorio)
+		-DWITH_OPENCOLORIO=$(usex color-management)
 		-DWITH_OPENCOLLADA=$(usex collada)
 		-DWITH_OPENIMAGEIO=$(usex openimageio)
 		-DWITH_OPENMP=$(usex openmp)
