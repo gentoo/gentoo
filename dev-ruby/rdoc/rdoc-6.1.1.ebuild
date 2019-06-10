@@ -76,7 +76,7 @@ all_ruby_install() {
 	for bin in rdoc ri; do
 		ruby_fakegem_binwrapper $bin /usr/bin/$bin-2
 
-		for version in ${USE_RUBY}; do
+		for version in $(ruby_get_use_implementations); do
 			version=`echo ${version} | cut -c 5-`
 			if use ruby_targets_ruby${version}; then
 				ruby_fakegem_binwrapper $bin /usr/bin/${bin}${version}
