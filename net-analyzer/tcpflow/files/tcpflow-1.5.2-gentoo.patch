@@ -1,6 +1,7 @@
---- a/configure.ac
-+++ b/configure.ac
-@@ -29,7 +29,6 @@
+diff -ur a/configure.ac b/configure.ac
+--- a/configure.ac	2018-11-22 02:57:12.000000000 +0300
++++ b/configure.ac	2019-06-10 17:26:02.802408977 +0300
+@@ -30,7 +30,6 @@
  AC_PROG_INSTALL
  
  m4_include([m4/slg_searchdirs.m4])
@@ -8,7 +9,7 @@
  
  
  # use C++11 mode if available; HAVE_CXX11 is defined in config.h if so.  Don't
-@@ -96,96 +95,6 @@
+@@ -101,50 +100,6 @@
  fi
  
  ################################################################
@@ -56,69 +57,24 @@
 -unset option
 -
 -
--# C++
--# We don't use these warnings:
--# -Waggregate-return -- aggregate returns are GOOD; they simplify code design
--# We can use these warnings after ZLIB gets upgraded:
--# -Wundef  --- causes problems with zlib
--# -Wcast-qual 
--# -Wmissing-format-attribute  --- Just too annoying
--AC_LANG_PUSH(C++)
--WARNINGS_TO_TEST="-Wall -MD -D_FORTIFY_SOURCE=2 -Wpointer-arith \
--    -Wshadow -Wwrite-strings -Wcast-align  \
--    -Wredundant-decls -Wdisabled-optimization \
--    -Wfloat-equal -Wmultichar -Wmissing-noreturn \
--    -Woverloaded-virtual -Wsign-promo \
--    -funit-at-a-time"
--
--if $CXX -dM -E - < /dev/null | grep -q __clang__ ; then
--   AC_MSG_RESULT([Using clang])
--   clang='yes'
-- else
--   AC_MSG_RESULT([not using clang])   
--   clang='no'
--   # -Wstrict-null-sentinel is not supported under clang or under Darwin's gcc
--   WARNINGS_TO_TEST="$WARNINGS_TO_TEST -Wstrict-null-sentinel"
--fi
--
--if test $mingw = "no" ; then
--  # add the warnings we don't want to do on mingw
--  WARNINGS_TO_TEST="$WARNINGS_TO_TEST  -Weffc++"
--fi
--
--for option in $WARNINGS_TO_TEST
--do
--  SAVE_CXXFLAGS="$CXXFLAGS"
--  CXXFLAGS="$CXXFLAGS $option"
--  AC_MSG_CHECKING([whether g++ understands $option])
--  AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]], [[]])],
--      [has_option=yes],
--      [has_option=no; CXXFLAGS="$SAVE_CXXFLAGS"])
--  AC_MSG_RESULT($has_option)
--  unset has_option
--  unset SAVE_CXXFLAGS
--done
--unset option
--AC_LANG_POP()    
--
--################################################################
- ##
- 
- 
-@@ -396,7 +305,12 @@
+ # C++
+ # We don't use these warnings:
+ # -Waggregate-return -- aggregate returns are GOOD; they simplify code design
+@@ -402,6 +357,13 @@
  	AC_CHECK_HEADERS(cap-ng.h)
  fi
  
 +################################################################
 +# http-parser
- 
++ 
 +AC_CHECK_LIB(http_parser,http_parser_init,,
 +  AC_MSG_ERROR([http-parser library not installed]))
 +AC_CHECK_HEADERS(http_parser.h)
++
+ 
  
  ################################################################
- # Specify our other headers
-@@ -603,35 +517,6 @@
+@@ -593,35 +555,6 @@
    Mmissing_library="$Mmissing_library python27"           # Not sure: https://github.com/macports/macports-ports/blob/master/lang/python27/Portfile
  ])
  
@@ -154,9 +110,10 @@
  AC_OUTPUT
  
  ## Finally, record the values of CFLAGS, CPPFLAGS, and CXXFLAGS for DFXML
---- a/src/Makefile.am
-+++ b/src/Makefile.am
-@@ -90,18 +90,10 @@
+diff -ur a/src/Makefile.am b/src/Makefile.am
+--- a/src/Makefile.am	2018-11-22 02:57:12.000000000 +0300
++++ b/src/Makefile.am	2019-06-10 17:09:09.604993872 +0300
+@@ -90,20 +90,12 @@
  	scan_netviz.cpp \
  	pcap_writer.h \
  	iptree.h \
@@ -166,6 +123,8 @@
  	mime_map.h 
  
  EXTRA_DIST =\
+ 	inet_ntop.c \
+ 	inet_ntop.h \
 -	http-parser/AUTHORS \
 -	http-parser/CONTRIBUTIONS \
 -	http-parser/LICENSE-MIT \
@@ -175,14 +134,15 @@
  	wifipcap/README.txt \
  	wifipcap/TimeVal.cpp \
  	wifipcap/TimeVal.h \
---- a/src/scan_http.cpp
-+++ b/src/scan_http.cpp
+diff -ur a/src/scan_http.cpp b/src/scan_http.cpp
+--- a/src/scan_http.cpp	2018-11-22 02:57:12.000000000 +0300
++++ b/src/scan_http.cpp	2019-06-10 17:10:33.782451668 +0300
 @@ -11,7 +11,11 @@
  #include "tcpip.h"
  #include "tcpdemux.h"
  
 +#ifdef HAVE_HTTP_PARSER_H
-+#include "http_parser.h"
++#include <http_parser.h>
 +#else
  #include "http-parser/http_parser.h"
 +#endif
