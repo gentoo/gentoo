@@ -8,7 +8,7 @@ DISTUTILS_SINGLE_IMPL=1
 inherit distutils-r1 git-r3 systemd
 
 DESCRIPTION="scans log files and bans IPs that show malicious signs"
-HOMEPAGE="http://www.fail2ban.org/"
+HOMEPAGE="https://www.fail2ban.org/"
 EGIT_REPO_URI="https://github.com/${PN}/${PN}"
 
 LICENSE="GPL-2"
