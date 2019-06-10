@@ -5465,7 +5465,7 @@ dev-python/python-bugzilla 1.2.2: A python module for interacting with Bugzilla 
 dev-python/python-caja 1.22.0: Python bindings for the Caja file manager
 dev-python/python-cdb 0.34-r1: A Python extension module for cdb
 dev-python/python-ceilometerclient 2.6.2: This is a client library for Ceilometer built on the Ceilometer API
-dev-python/python-cinderclient 4.0.1 4.1.0: A client for the OpenStack Cinder API
+dev-python/python-cinderclient 4.0.2 4.1.0: A client for the OpenStack Cinder API
 dev-python/python-cluster 1.2.2: Allows grouping a list of arbitrary objects into related groups (clusters)
 dev-python/python-daemon 1.6-r1: Library to implement a well-behaved Unix daemon process
 dev-python/python-dateutil 2.6.1 2.7.2-r1: Extensions to the standard Python datetime module
@@ -10101,7 +10101,7 @@ sys-boot/syslinux 4.07 5.10 6.04_pre1: SYSLINUX, PXELINUX, ISOLINUX, EXTLINUX an
 sys-boot/unetbootin 661: UNetbootin installs Linux/BSD distributions to a partition or USB drive
 sys-boot/woeusb 3.1.5 3.2.12: Creates windows installer on usb media from an iso image
 sys-cluster/ceph 12.2.8-r1 12.2.11: Ceph distributed filesystem
-sys-cluster/cinder 13.0.4 14.0.0: Cinder is the OpenStack Block storage service, a spin out of nova-volumes
+sys-cluster/cinder 13.0.5 14.0.0: Cinder is the OpenStack Block storage service, a spin out of nova-volumes
 sys-cluster/cluster-glue 1.0.11 1.0.12: Library pack for Heartbeat / Pacemaker
 sys-cluster/cman-lib 2.03.09-r1: A library for cluster management common to the various pieces of Cluster Suite
 sys-cluster/corosync 1.4.7 2.3.5: OSI Certified implementation of a complete cluster engine
