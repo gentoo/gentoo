@@ -10,7 +10,7 @@ HOMEPAGE="http://www.mono-project.com"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~x86-solaris"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~x86-solaris"
 SRC_URI="http://download.mono-project.com/sources/${PN}/${P}.tar.gz"
 
 IUSE="cairo"
@@ -30,6 +30,10 @@ RDEPEND=">=dev-libs/glib-2.2.3:2
 	media-libs/tiff:0
 	!cairo? ( >=x11-libs/pango-1.20 )"
 DEPEND="${RDEPEND}"
+
+PATCHES=(
+	"${FILESDIR}/${P}-cofigure.patch"
+)
 
 src_configure() {
 	econf \
