@@ -16,7 +16,7 @@ else
 	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x64-macos"
 fi
 
-LICENSE="CC-BY-SA-2.0"
+LICENSE="CC-BY-SA-3.0"
 SLOT="0"
 IUSE=""
 
