@@ -8,7 +8,7 @@ DISTUTILS_SINGLE_IMPL=1
 inherit distutils-r1 systemd
 
 DESCRIPTION="scans log files and bans IPs that show malicious signs"
-HOMEPAGE="http://www.fail2ban.org/"
+HOMEPAGE="https://www.fail2ban.org/"
 SRC_URI="https://github.com/${PN}/${PN}/tarball/${PV} -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
