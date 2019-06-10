@@ -4,7 +4,7 @@
 
 ZT_ADDRESS=""
 pidfile="/var/run/epmd.pid"
-command_args="${command_args:--daemon -relaxed_command_check -address 127.0.0.1}"
+command_args="${command_args}"
 
 depend() {
 	need loopback
