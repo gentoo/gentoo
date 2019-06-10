@@ -17,8 +17,10 @@ LICENSE="MIT LGPL-2.1 GPL-2 BSD-4 NPL-1.1 Ms-PL GPL-2-with-linking-exception IDP
 
 SRC_URI="http://download.mono-project.com/sources/mono/${P}.tar.bz2"
 
+#Note: mono works incorrect with older versions of libgdiplus
+#details on dotnet overlay issue: https://github.com/gentoo/dotnet/issues/429
 COMMONDEPEND="
-	!minimal? ( >=dev-dotnet/libgdiplus-2.10 )
+	!minimal? ( >=dev-dotnet/libgdiplus-5.6.1 )
 	ia64? ( sys-libs/libunwind )
 	nls? ( sys-devel/gettext )
 "
