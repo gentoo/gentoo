@@ -4,7 +4,6 @@
 EAPI=6
 
 PYTHON_COMPAT=( python{2_7,3_5} )
-
 inherit cmake-utils python-single-r1 vcs-snapshot
 
 DESCRIPTION="A library for reading and writing images"
@@ -14,7 +13,7 @@ SRC_URI="https://github.com/OpenImageIO/oiio/archive/Release-${PV}.tar.gz -> ${P
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 ~ppc64 x86"
-IUSE="colorio ffmpeg gif jpeg2k opencv opengl python raw ssl +truetype"
+IUSE="color-management ffmpeg gif jpeg2k opencv opengl python raw ssl +truetype"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RESTRICT="test" #431412
@@ -29,7 +28,7 @@ RDEPEND="
 	media-libs/tiff:0=
 	sys-libs/zlib:=
 	virtual/jpeg:0
-	colorio? ( >=media-libs/opencolorio-1.0.7:= )
+	color-management? ( >=media-libs/opencolorio-1.0.7:= )
 	ffmpeg? ( media-video/ffmpeg:= )
 	gif? ( media-libs/giflib:0= )
 	jpeg2k? ( >=media-libs/openjpeg-1.5:0= )
@@ -78,7 +77,7 @@ src_configure() {
 		-DUSE_FREETYPE=$(usex truetype)
 		-DUSE_FFMPEG=$(usex ffmpeg)
 		-DUSE_GIF=$(usex gif)
-		-DUSE_OCIO=$(usex colorio)
+		-DUSE_OCIO=$(usex color-management)
 		-DUSE_OPENCV=$(usex opencv)
 		-DUSE_OPENGL=$(usex opengl)
 		-DUSE_OPENJPEG=$(usex jpeg2k)

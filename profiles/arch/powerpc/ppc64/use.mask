@@ -6,7 +6,7 @@
 
 # Samuli Suominen <ssuominen@gentoo.org> (24 Nov 2012)
 # TODO: Keyword and stabilize media-gfx/opencolorio and media-libs/opencv
-colorio
+color-management
 opencv
 
 # Brent Baude <ranger@gentoo.org> (3 Oct 2008)

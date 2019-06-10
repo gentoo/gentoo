@@ -12,7 +12,7 @@ SRC_URI="https://github.com/coelckers/${PN}/archive/g${PV}.tar.gz -> ${P}.tar.gz
 LICENSE="BSD BZIP2 DUMB-0.9.3 GPL-3 LGPL-3 MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="fluidsynth gtk gtk2 openal openmp"
+IUSE="fluidsynth gtk gtk2 +openal openmp"
 
 DEPEND="
 	media-libs/libsdl2[opengl]
@@ -24,7 +24,7 @@ DEPEND="
 	)"
 RDEPEND="
 	${DEPEND}
-	fluidsynth? ( media-sound/fluidsynth )
+	fluidsynth? ( media-sound/fluidsynth:= )
 	openal? (
 		media-libs/libsndfile
 		media-libs/openal
@@ -32,8 +32,7 @@ RDEPEND="
 	)"
 
 S="${WORKDIR}/${PN}-g${PV}"
-
-PATCHES="${FILESDIR}/${P}-static-libraries.patch"
+PATCHES="${FILESDIR}/${P}-fluidsynth2.patch"
 
 src_prepare() {
 	rm -rf docs/licenses || die
@@ -44,6 +43,10 @@ src_configure() {
 	local mycmakeargs=(
 		-DINSTALL_DOCS_PATH="${EPREFIX}/usr/share/doc/${PF}"
 		-DINSTALL_PK3_PATH="${EPREFIX}/usr/share/doom"
+		-DDYN_FLUIDSYNTH=OFF
+		-DDYN_OPENAL=OFF
+		-DDYN_SNDFILE=OFF
+		-DDYN_MPG123=OFF
 		-DNO_GTK="$(usex !gtk)"
 		-DNO_OPENAL="$(usex !openal)"
 		-DNO_OPENMP="$(usex !openmp)"
@@ -55,16 +58,4 @@ src_install() {
 	newicon src/posix/zdoom.xpm "${PN}.xpm"
 	make_desktop_entry "${PN}" "GZDoom" "${PN}" "Game;ActionGame"
 	cmake-utils_src_install
-}
-
-pkg_preinst() {
-	xdg_pkg_preinst
-}
-
-pkg_postinst() {
-	xdg_pkg_postinst
-}
-
-pkg_postrm() {
-	xdg_pkg_postrm
 }
