@@ -1,6 +1,0 @@
-# Copyright 1999-2014 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-
-# Force the flag which corresponds to arch/abi, bug #515130
-x86
-abi_x86_32
