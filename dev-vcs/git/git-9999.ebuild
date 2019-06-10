@@ -31,7 +31,7 @@ inherit toolchain-funcs elisp-common l10n perl-module bash-completion-r1 python-
 MY_PV="${PV/_rc/.rc}"
 MY_P="${PN}-${MY_PV}"
 
-DOC_VER=${MY_PV}
+DOC_VER="${MY_PV}"
 
 DESCRIPTION="stupid content tracker: distributed VCS designed for speed and efficiency"
 HOMEPAGE="https://www.git-scm.com/"
@@ -137,9 +137,12 @@ REQUIRED_USE="
 
 PATCHES=(
 	# bug #350330 - automagic CVS when we don't want it is bad.
-	"${FILESDIR}"/git-2.18.0_rc1-optional-cvs.patch
+	##"${FILESDIR}"/git-2.22.0_rc0-optional-cvs.patch
 
 	"${FILESDIR}"/git-2.2.0-svn-fe-linking.patch
+
+	# Make submodule output quiet
+	"${FILESDIR}"/git-2.21.0-quiet-submodules-testcase.patch
 )
 
 pkg_setup() {
