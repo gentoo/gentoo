@@ -4,7 +4,7 @@
 EAPI=6
 
 DIST_AUTHOR=AVULLO
-DIST_VERSION=2.11
+DIST_VERSION=3.01
 
 inherit perl-module
 
