@@ -1,0 +1,200 @@
+From 716f4b712724c6698469563e531dea3667507ceb Mon Sep 17 00:00:00 2001
+From: Paul Wouters <pwouters@redhat.com>
+Date: Tue, 28 May 2019 00:24:30 -0400
+Subject: [PATCH] programs: Change to use /proc/sys/net/core/xfrm_acq_expires
+ to detect XFRM
+
+Apparently, not all kernels with XFRM support also enable support for
+CONFIG_XFRM_STATISTICS, causing XFRM auto-detection to fail.
+
+This affected openwrt and also some other distribution/custom kernels.
+---
+ programs/_realsetup.bsd/_realsetup.in   | 2 +-
+ programs/_stackmanager/_stackmanager.in | 2 +-
+ programs/barf/barf.in                   | 6 +++---
+ programs/eroute/eroute.c                | 2 +-
+ programs/ipsec/ipsec.in                 | 2 +-
+ programs/look/look.in                   | 2 +-
+ programs/pluto/kernel.c                 | 2 +-
+ programs/setup/setup.in                 | 2 +-
+ programs/spi/spi.c                      | 2 +-
+ programs/spigrp/spigrp.c                | 2 +-
+ programs/tncfg/tncfg.c                  | 2 +-
+ programs/verify/verify.in               | 2 +-
+ 12 files changed, 14 insertions(+), 14 deletions(-)
+
+diff --git a/programs/_realsetup.bsd/_realsetup.in b/programs/_realsetup.bsd/_realsetup.in
+index 91cca98ac8..4a783772f6 100755
+--- a/programs/_realsetup.bsd/_realsetup.in
++++ b/programs/_realsetup.bsd/_realsetup.in
+@@ -28,7 +28,7 @@ plutoctl=/var/run/pluto/pluto.ctl
+ subsyslock=/var/lock/subsys/ipsec
+ lock=/var/run/pluto/ipsec_setup.pid
+ 
+-xfrm_stat=/proc/net/xfrm_stat
++xfrm_stat=/proc/sys/net/core/xfrm_acq_expires
+ 
+ # defaults for "config setup" items
+ IPSECuniqueids=${IPSECuniqueids:-yes}
+diff --git a/programs/_stackmanager/_stackmanager.in b/programs/_stackmanager/_stackmanager.in
+index 4d41c5ad51..21616a31c9 100644
+--- a/programs/_stackmanager/_stackmanager.in
++++ b/programs/_stackmanager/_stackmanager.in
+@@ -29,7 +29,7 @@ eval $(ASAN_OPTIONS=detect_leaks=0 ipsec addconn  --configsetup | grep -v "#" |
+ test ${IPSEC_INIT_SCRIPT_DEBUG} && set -v -x
+ MODPROBE="@MODPROBEBIN@ @MODPROBEARGS@"
+ 
+-xfrm_stat=/proc/net/xfrm_stat
++xfrm_stat=/proc/sys/net/core/xfrm_acq_expires
+ klipsstack=/proc/net/ipsec/version
+ action="${1}"
+ 
+diff --git a/programs/barf/barf.in b/programs/barf/barf.in
+index 17f830d4a3..15eb252f11 100755
+--- a/programs/barf/barf.in
++++ b/programs/barf/barf.in
+@@ -174,14 +174,13 @@ _________________________ /proc/net/ipsec_tncfg
+ if test -r /proc/net/ipsec_tncfg
+ then
+     cat /proc/net/ipsec_tncfg
+ fi
+-if test -r /proc/net/xfrm_stat
+-then
++if [ -r /proc/sys/net/core/xfrm_acq_expires ]; then
+ _________________________ ip-xfrm-state
+     ip xfrm state
+ _________________________ ip-xfrm-policy
+     ip xfrm policy
+-_________________________ ip-xfrm-stats
++_________________________ cat-proc-net-xfrm_stat
+     cat /proc/net/xfrm_stat
+ fi
+ _________________________ ip-l2tp-tunnel
+@@ -283,9 +283,8 @@ _________________________ /proc/net/ipsec_version
+ if test -r /proc/net/ipsec_version
+ then
+     cat /proc/net/ipsec_version
+ else
+-    if test -r /proc/net/xfrm_stat
+-    then
++    if [ -r /proc/sys/net/core/xfrm_acq_expires ]; then
+ 	echo "NETKEY (`uname -r`) support detected "
+     else
+ 	echo "no KLIPS or NETKEY support detected"
+diff --git a/programs/eroute/eroute.c b/programs/eroute/eroute.c
+index c33234c194..6f058d9232 100644
+--- a/programs/eroute/eroute.c
++++ b/programs/eroute/eroute.c
+@@ -495,7 +495,7 @@ int main(int argc, char **argv)
+ 	if (argcount == 1) {
+ 		struct stat sts;
+ 
+-		if (stat("/proc/net/xfrm_stat", &sts) == 0) {
++		if (stat("/proc/sys/net/core/xfrm_acq_expires", &sts) == 0) {
+ 			fprintf(stderr,
+ 				"%s: NETKEY does not support eroute table.\n",
+ 				progname);
+diff --git a/programs/ipsec/ipsec.in b/programs/ipsec/ipsec.in
+index 401a596628..06bec21632 100755
+--- a/programs/ipsec/ipsec.in
++++ b/programs/ipsec/ipsec.in
+@@ -61,7 +61,7 @@ fixversion() {
+ 	stack=" (klips)"
+ 	kv="$(awk '{print $NF}' /proc/net/ipsec_version)"
+     else
+-	if [ -f /proc/net/xfrm_stat ]; then
++	if [ -f /proc/sys/net/core/xfrm_acq_expires ]; then
+ 	    stack=" (netkey)"
+ 	    kv="${version}"
+ 	else
+diff --git a/programs/look/look.in b/programs/look/look.in
+index bb55e8eda2..192856c630 100755
+--- a/programs/look/look.in
++++ b/programs/look/look.in
+@@ -72,7 +72,7 @@ if [ -f /proc/net/ipsec_spi ]; then
+ fi
+ 
+ # xfrm
+-if [ -f /proc/net/xfrm_stat ]; then
++if [ -f /proc/sys/net/core/xfrm_acq_expires ]; then
+     echo "XFRM state:"
+     ip xfrm state
+     echo "XFRM policy:"
+diff --git a/programs/pluto/kernel.c b/programs/pluto/kernel.c
+index 39b1e32389..5c71c04af3 100644
+--- a/programs/pluto/kernel.c
++++ b/programs/pluto/kernel.c
+@@ -2666,7 +2666,7 @@ void init_kernel(void)
+ 	switch (kern_interface) {
+ #if defined(NETKEY_SUPPORT)
+ 	case USE_NETKEY:
+-		if (stat("/proc/net/xfrm_stat", &buf) != 0) {
++		if (stat("/proc/sys/net/core/xfrm_acq_expires", &buf) != 0) {
+ 			libreswan_log("No XFRM kernel interface detected");
+ 			exit_pluto(PLUTO_EXIT_KERNEL_FAIL);
+ 		}
+diff --git a/programs/setup/setup.in b/programs/setup/setup.in
+index 8c28b0e157..1933089459 100755
+--- a/programs/setup/setup.in
++++ b/programs/setup/setup.in
+@@ -110,7 +110,7 @@ case "$1" in
+ 
+ 	# If stack is non-modular, we want to force clean too
+ 	[ -f /proc/net/pf_key ] && ipsec eroute --clear
+-	[ -f /proc/net/xfrm_stat ] && ip xfrm state flush && ip xfrm policy flush
++	[ -f /proc/sys/net/core/xfrm_acq_expires ] && ip xfrm state flush && ip xfrm policy flush
+ 
+ 	# Cleaning up backup resolv.conf
+ 	if [ -e ${LIBRESWAN_RESOLV_CONF} ]; then
+diff --git a/programs/spi/spi.c b/programs/spi/spi.c
+index c45fe6a517..742898a86f 100644
+--- a/programs/spi/spi.c
++++ b/programs/spi/spi.c
+@@ -1135,7 +1135,7 @@ int main(int argc, char *argv[])
+ 			progname);
+ 	}
+ 
+-	if (stat("/proc/net/xfrm_stat", &sts) == 0) {
++	if (stat("/proc/sys/net/core/xfrm_acq_expires", &sts) == 0) {
+ 		fprintf(stderr,
+ 			"%s: XFRM does not use the ipsec spi command. Use 'ip xfrm' instead.\n",
+ 			progname);
+diff --git a/programs/spigrp/spigrp.c b/programs/spigrp/spigrp.c
+index 79d6c50e5e..fe0942325d 100644
+--- a/programs/spigrp/spigrp.c
++++ b/programs/spigrp/spigrp.c
+@@ -151,7 +151,7 @@ int main(int argc, char **argv)
+ 	if (debug)
+ 		fprintf(stdout, "...After check for --label option.\n");
+ 
+-	if (stat("/proc/net/xfrm_stat", &sts) == 0) {
++	if (stat("/proc/sys/net/core/xfrm_acq_expires", &sts) == 0) {
+ 		fprintf(stderr,
+ 			"%s: XFRM does not use the ipsec spigrp command. Use 'ip xfrm' instead.\n",
+ 			progname);
+diff --git a/programs/tncfg/tncfg.c b/programs/tncfg/tncfg.c
+index 55de83b1ef..5a9f2e9aee 100644
+--- a/programs/tncfg/tncfg.c
++++ b/programs/tncfg/tncfg.c
+@@ -259,7 +259,7 @@ int main(int argc, char *argv[])
+ 		}
+ 	}
+ 
+-	if (stat("/proc/net/xfrm_stat", &sts) == 0) {
++	if (stat("/proc/sys/net/core/xfrm_acq_expires", &sts) == 0) {
+ 		fprintf(stderr,
+ 			"%s: XFRM does not support virtual interfaces.\n",
+ 			progname);
+diff --git a/programs/verify/verify.in b/programs/verify/verify.in
+index 9321631931..81ae1d32fe 100755
+--- a/programs/verify/verify.in
++++ b/programs/verify/verify.in
+@@ -223,7 +223,7 @@ def installstartcheck():
+ 		print_result("FAIL","FAILED")
+ 
+ 	printfun("Checking for IPsec support in kernel")
+-	if not os.path.isfile("/proc/net/ipsec_eroute") and not os.path.isfile("/proc/net/xfrm_stat"):
++	if not os.path.isfile("/proc/net/ipsec_eroute") and not os.path.isfile("/proc/sys/net/core/xfrm_acq_expires"):
+ 		print_result("FAIL","FAILED")
+ 		if "no kernel code presently loaded" in output:
+ 			print("\n The ipsec service should be started before running 'ipsec verify'\n")
