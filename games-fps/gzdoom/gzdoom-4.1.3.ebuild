@@ -24,7 +24,7 @@ DEPEND="
 	)"
 RDEPEND="
 	${DEPEND}
-	fluidsynth? ( media-sound/fluidsynth )
+	fluidsynth? ( media-sound/fluidsynth:= )
 	openal? (
 		media-libs/libsndfile
 		media-libs/openal
