@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python{3_5,3_6} )
 
-inherit check-reqs cmake-utils xdg-utils flag-o-matic gnome2-utils \
+inherit check-reqs cmake-utils xdg-utils flag-o-matic xdg-utils \
 	pax-utils python-single-r1 toolchain-funcs eapi7-ver
 
 DESCRIPTION="3D Creation/Animation/Publishing System"
@@ -256,10 +256,6 @@ src_install() {
 	python_optimize "${ED%/}/usr/share/blender/${MY_PV}/scripts"
 }
 
-pkg_preinst() {
-	gnome2_icon_savelist
-}
-
 pkg_postinst() {
 	elog
 	elog "Blender uses python integration. As such, may have some"
@@ -277,12 +273,12 @@ pkg_postinst() {
 	ewarn "If you are concerned about security, file a bug upstream:"
 	ewarn "  https://developer.blender.org/"
 	ewarn
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 	xdg_mimeinfo_database_update
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 	xdg_mimeinfo_database_update
 
 	ewarn ""
