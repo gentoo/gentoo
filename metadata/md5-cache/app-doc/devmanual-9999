@@ -3,7 +3,7 @@ DEPEND=dev-libs/libxslt media-gfx/imagemagick[truetype,svg,png] >=dev-vcs/git-1.
 DESCRIPTION=The Gentoo Development Guide
 EAPI=6
 HOMEPAGE=https://devmanual.gentoo.org/
-LICENSE=CC-BY-SA-2.0
+LICENSE=CC-BY-SA-3.0
 SLOT=0
 _eclasses_=git-r3	0d4635eeb5a96cd5315597a47eba25c9	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190
-_md5_=1b730a09f75ef4924e50ae25dc88d910
+_md5_=89f0bfd10db39b23980e8963804964ab
