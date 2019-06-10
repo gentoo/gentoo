@@ -2807,7 +2807,7 @@ media-gfx/asymptote:offscreen - Enables off-screen rendering
 media-gfx/asymptote:sigsegv - Enables using dev-libs/libsigsegv
 media-gfx/blender:bullet - Enable Bullet (Physics Engine).
 media-gfx/blender:collada - Add support for Collada interchange format through media-libs/opencollada.
-media-gfx/blender:colorio - Enable OpenColorIO color management through media-libs/opencolorio.
+media-gfx/blender:color-management - Enable color management via media-libs/opencolorio.
 media-gfx/blender:cuda - Build cycles renderer with nVidia CUDA support.
 media-gfx/blender:cycles - Build cycles renderer (requires media-libs/openimageio and dev-libs/boost).
 media-gfx/blender:dds - Adds DDS textures support to Blender.
@@ -3097,12 +3097,12 @@ media-libs/opencv:testprograms - Build and install programs for testing OpenCV (
 media-libs/opencv:vtk - Build new 3D visualization module viz based on sci-libs/vtk
 media-libs/openh264:plugin - Install the Gecko Media Plugin (GMP) for use with Mozilla packages
 media-libs/openh264:utils - Install the CLI encoder and decoder utilities
-media-libs/openimageio:colorio - Use media-libs/opencolorio
+media-libs/openimageio:color-management - Enable color management via media-libs/opencolorio
 media-libs/openimageio:cpu_flags_x86_avx512f - SIMD Optimization
 media-libs/openimageio:cpu_flags_x86_f16c - SIMD Optimization
-media-libs/openimageio:field3d - Use media-libs/Field3D
-media-libs/openimageio:opencv - Use media-libs/opencv
-media-libs/openimageio:ptex - Use media-libs/ptex
+media-libs/openimageio:field3d - Enable f3d file (write) support via media-libs/Field3D
+media-libs/openimageio:opencv - Enable OpenCV support via media-libs/opencv
+media-libs/openimageio:ptex - Enable Ptex texture mapping system file support via media-libs/ptex
 media-libs/opensubdiv:cuda - Enable NVIDIA CUDA Toolkit support through dev-util/nvidia-cuda-toolkit.
 media-libs/opensubdiv:opencl - Enable OpenCL support through virtual/opencl.
 media-libs/opensubdiv:ptex - Adds support for faster per-face texture mapping through media-libs/ptex.
