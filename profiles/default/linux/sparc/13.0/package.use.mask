@@ -1,8 +1,0 @@
-# Copyright 1999-2018 Gentoo Authors
-# Distributed under the terms of the GNU General Public License v2
-
-# Anthony G. Basile <blueness@gentoo.org> (Dec 21, 2011)
-#
-# Mask the vde flag on tinc because net-misc/vde is not
-# keyworded for sparc
-net-vpn/tinc vde
