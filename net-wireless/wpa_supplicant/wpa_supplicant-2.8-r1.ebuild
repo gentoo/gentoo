@@ -149,8 +149,6 @@ src_configure() {
 	Kconfig_style_config EAP_OTP
 	Kconfig_style_config EAP_PAX
 	Kconfig_style_config EAP_PSK
-	Kconfig_style_config EAP_TLV
-	Kconfig_style_config EAP_EXE
 	Kconfig_style_config IEEE8021X_EAPOL
 	Kconfig_style_config PKCS12
 	Kconfig_style_config PEERKEY
