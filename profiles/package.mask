@@ -29,6 +29,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Brian Evans <grknight@gentoo.org> (11 Jun 2019)
+# Mask these packages for further testing
+# There is known API breakage and some packages fail,
+# particuarly with "my_bool" dropped for "bool"
+>=dev-db/myodbc-8.0
+>=dev-db/mysql-connector-c-8.0
+~virtual/libmysqlclient-21
+
 # James Le Cuirot <chewi@gentoo.org> (9 Jun 2019)
 # Dead upstream, no release since 2008, not used by anything, possibly
 # doesn't work any more. Removal in 30 days.
