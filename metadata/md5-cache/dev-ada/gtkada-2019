@@ -1,0 +1,15 @@
+BDEPEND=>=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=compile configure install prepare
+DEPEND=gnat_2016? ( dev-lang/gnat-gpl:4.9.4 ) gnat_2017? ( dev-lang/gnat-gpl:6.3.0 ) gnat_2018? ( dev-lang/gnat-gpl:7.3.1 ) gnat_2019? ( dev-lang/gnat-gpl:8.3.1 ) dev-libs/atk dev-libs/glib:2 media-libs/fontconfig media-libs/freetype x11-libs/cairo x11-libs/gdk-pixbuf:2 x11-libs/gtk+:3 x11-libs/pango dev-ada/gprbuild[gnat_2016(-)?,gnat_2017(-)?,gnat_2018(-)?,gnat_2019(-)?]
+DESCRIPTION=A complete Ada graphical toolkit
+EAPI=7
+HOMEPAGE=http://libre.adacore.com//tools/gtkada/
+IUSE=gnat_2016 gnat_2017 gnat_2018 +gnat_2019 +shared static-libs
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=gnat_2016? ( dev-lang/gnat-gpl:4.9.4 ) gnat_2017? ( dev-lang/gnat-gpl:6.3.0 ) gnat_2018? ( dev-lang/gnat-gpl:7.3.1 ) gnat_2019? ( dev-lang/gnat-gpl:8.3.1 ) dev-libs/atk dev-libs/glib:2 media-libs/fontconfig media-libs/freetype x11-libs/cairo x11-libs/gdk-pixbuf:2 x11-libs/gtk+:3 x11-libs/pango
+REQUIRED_USE=^^ ( gnat_2016 gnat_2017 gnat_2018 gnat_2019 )
+SLOT=0
+SRC_URI=http://mirrors.cdn.adacore.com/art/5ce7f58931e87adb2d312c53 -> gtkada-2019-20190424-19D98-src.tgz
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
+_md5_=8ad505987b7d1b0627a7bfea3db371e1
