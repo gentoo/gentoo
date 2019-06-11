@@ -1,0 +1,54 @@
+From 482a28e74f9b3c83bef6499842f1191c04ae80d9 Mon Sep 17 00:00:00 2001
+From: Jory Pratt <anarchy@gentoo.org>
+Date: Tue, 23 Apr 2019 10:04:19 -0500
+Subject: [PATCH] Don't override user cflags, disable html_doc from being
+ installed
+
+Signed-off-by: Jory Pratt <anarchy@gentoo.org>
+---
+ Makefile.in  |  2 +-
+ configure.ac | 15 ---------------
+ 2 files changed, 1 insertion(+), 16 deletions(-)
+
+diff --git a/Makefile.in b/Makefile.in
+index 0777f6a..31767b6 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -511,7 +511,7 @@ install_doc_man:
+ 	$(INSTALL) -m 644 $$d $(MANDIR)/man3; \
+ done
+ 
+-install_doc: build_doc install_doc_html install_doc_man
++install_doc: build_doc install_doc_man
+ 
+ install: install_bin install_include install_lib install_doc
+ 
+diff --git a/configure.ac b/configure.ac
+index 96f76d3..f716ebd 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -1108,21 +1108,6 @@ if test "x$enable_debug" = "x1" ; then
+ fi
+ AC_SUBST([enable_debug])
+ 
+-dnl Only optimize if not debugging.
+-if test "x$enable_debug" = "x0" ; then
+-  if test "x$GCC" = "xyes" ; then
+-    JE_CFLAGS_ADD([-O3])
+-    JE_CXXFLAGS_ADD([-O3])
+-    JE_CFLAGS_ADD([-funroll-loops])
+-  elif test "x$je_cv_msvc" = "xyes" ; then
+-    JE_CFLAGS_ADD([-O2])
+-    JE_CXXFLAGS_ADD([-O2])
+-  else
+-    JE_CFLAGS_ADD([-O])
+-    JE_CXXFLAGS_ADD([-O])
+-  fi
+-fi
+-
+ dnl Enable statistics calculation by default.
+ AC_ARG_ENABLE([stats],
+   [AS_HELP_STRING([--disable-stats],
+-- 
+2.21.0
+
