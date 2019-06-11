@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake-multilib
 
 if [[ ${PV} == *9999 ]] ; then
 	: ${EGIT_REPO_URI:="https://github.com/intel/gmmlib"}
@@ -31,7 +31,7 @@ IUSE=""
 DEPEND=""
 RDEPEND="${DEPEND}"
 
-src_configure() {
+multilib_src_configure() {
 # once upstream makes this optional
 #	local mycmakeargs=(
 #		-DMEDIA_RUN_TEST_SUITE=OFF
