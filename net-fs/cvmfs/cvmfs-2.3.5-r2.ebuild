@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -22,7 +22,7 @@ CDEPEND="
 	>=dev-cpp/sparsehash-1.12
 	dev-db/sqlite:3=
 	dev-libs/leveldb:0=
-	dev-libs/openssl:0
+	dev-libs/openssl:1.0.0
 	net-libs/pacparser:0=
 	net-misc/curl:0[adns]
 	sys-apps/attr
