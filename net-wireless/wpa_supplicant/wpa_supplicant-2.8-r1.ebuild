@@ -237,6 +237,8 @@ src_configure() {
 
 	if use smartcard ; then
 		Kconfig_style_config SMARTCARD
+	else
+		Kconfig_style_config SMARTCARD n
 	fi
 
 	if use tdls ; then
@@ -281,6 +283,8 @@ src_configure() {
 		Kconfig_style_config WPS_UPNP
 		# Near Field Communication
 		Kconfig_style_config WPS_NFC
+	else
+		Kconfig_style_config WPS n
 	fi
 
 	# Wi-Fi Direct (WiDi)
@@ -292,6 +296,8 @@ src_configure() {
 	# Access Point Mode
 	if use ap ; then
 		Kconfig_style_config AP
+	else
+		Kconfig_style_config AP n
 	fi
 
 	# Enable essentials for AP/P2P
