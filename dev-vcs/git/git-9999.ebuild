@@ -384,8 +384,9 @@ src_compile() {
 	fi
 
 	pushd contrib/subtree &>/dev/null || die
-	git_emake git-subtree{,.1}
-	use doc && git_emake git-subtree.html
+	git_emake git-subtree
+	# git-subtree.1 requires the full USE=doc dependency stack
+	use doc && git_emake git-subtree.html git-subtree.1
 	popd &>/dev/null || die
 
 	pushd contrib/diff-highlight &>/dev/null || die
@@ -451,9 +452,10 @@ src_install() {
 
 	# git-subtree
 	pushd contrib/subtree &>/dev/null || die
-	git_emake install install-man || die "Failed to emake install install-man git-subtree"
+	git_emake install || die "Failed to emake install for git-subtree"
 	if use doc ; then
-		git_emake install-html || die "Failed to emake install-html git-subtree"
+		# Do not move git subtree install-man outside USE=doc!
+		git_emake install-man install-html || die "Failed to emake install-html install-man for git-subtree"
 	fi
 	newdoc README README.git-subtree
 	dodoc git-subtree.txt
