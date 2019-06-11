@@ -30,6 +30,7 @@ RDEPEND="
 	app-crypt/argon2:=
 	dev-libs/libgcrypt:=
 	>=dev-libs/libsodium-1.0.12:=
+	dev-qt/qtconcurrent:5
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
 	dev-qt/qtgui:5
@@ -53,7 +54,6 @@ DEPEND="
 	${RDEPEND}
 	dev-qt/linguist-tools:5
 	dev-qt/qttest:5
-	dev-qt/qtconcurrent:5
 "
 
 # Not a runtime dependency but still needed (see bug #667092)
