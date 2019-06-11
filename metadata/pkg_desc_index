@@ -8768,7 +8768,7 @@ net-libs/libktorrent 2.1-r1: BitTorrent library based on KDE Frameworks
 net-libs/liblockfile 1.09: Implements functions designed to lock the standard mailboxes
 net-libs/libmbim 1.6.0 1.10.0 1.14.0 1.16.2: Mobile Broadband Interface Model (MBIM) modem protocol helper library
 net-libs/libmicrodns 0.0.9: Minimal mDNS resolver (and announcer) library
-net-libs/libmicrohttpd 0.9.59 0.9.62: Small C library to run an HTTP server as part of another application
+net-libs/libmicrohttpd 0.9.62: Small C library to run an HTTP server as part of another application
 net-libs/libmnl 1.0.3-r1 1.0.4: Minimalistic netlink library
 net-libs/libmrss 0.19.2: A C-library for parsing and writing RSS 0.91/0.92/1.0/2.0 files or streams
 net-libs/libnatpmp 20130911: An alternative protocol to UPnP IGD specification
