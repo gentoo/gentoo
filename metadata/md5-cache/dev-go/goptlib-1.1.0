@@ -1,0 +1,12 @@
+BDEPEND=>=dev-lang/go-1.10
+DEFINED_PHASES=compile install test unpack
+DESCRIPTION=Go Tor pluggable transports library
+EAPI=7
+HOMEPAGE=https://gitweb.torproject.org/pluggable-transports/goptlib.git
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=CC0-1.0
+RESTRICT=strip
+SLOT=0
+SRC_URI=https://dev.gentoo.org/~marecki/dists/goptlib/goptlib-1.1.0.tar.xz
+_eclasses_=golang-base	c57d2c3f9e1a02d0feb8b87c7b689892	golang-build	dc25bafa8fc1305a4de66a0a448472e7	golang-vcs-snapshot	12177e83bede6f7fb87eae383864b40b
+_md5_=540bc73a7753f94fa39a907b81dabde4
