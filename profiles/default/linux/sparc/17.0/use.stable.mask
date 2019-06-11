@@ -1,3 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Ben Kohler <bkohler@gentoo.org> (11 Jun 2019)
+# Pulls in net-libs/axtls which is not stable for sparc
+curl_ssl_axtls
