@@ -5,7 +5,7 @@ DESCRIPTION=An easy to use library for the RELP protocol
 EAPI=7
 HOMEPAGE=http://www.librelp.com/
 IUSE=debug doc +ssl +gnutls libressl openssl static-libs test
-KEYWORDS=~amd64 ~arm ~arm64 ~hppa ~sparc x86
+KEYWORDS=~amd64 ~arm ~arm64 hppa ~sparc x86
 LICENSE=GPL-3+ doc? ( FDL-1.3 )
 RDEPEND=ssl? ( gnutls? ( >=net-libs/gnutls-3.3.17.1:0= ) openssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) ) )
 REQUIRED_USE=ssl? ( ^^ ( gnutls openssl ) )
@@ -13,4 +13,4 @@ RESTRICT=!test? ( test )
 SLOT=0/0.5.0
 SRC_URI=http://download.rsyslog.com/librelp/librelp-1.4.0.tar.gz
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-any-r1	4900ae970f827a22d33d41bd8b8f9ace	python-utils-r1	08e17157a6807add7db1f8d01e7e391f	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
-_md5_=6920163cdc85a039cfe00e3f0d8bc70e
+_md5_=50e7e4ca3ff5720588a98eb8c429059f
