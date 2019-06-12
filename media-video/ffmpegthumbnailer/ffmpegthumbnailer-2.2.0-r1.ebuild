@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit cmake-utils eutils
+inherit cmake-utils
 
 DESCRIPTION="Lightweight video thumbnailer that can be used by file managers"
 HOMEPAGE="https://github.com/dirkvdb/ffmpegthumbnailer"
@@ -14,6 +14,12 @@ SLOT="0"
 KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd"
 IUSE="gnome gtk jpeg libav png test"
 
+REQUIRED_USE="gnome? ( gtk )
+	test? ( png jpeg )"
+
+BDEPEND="
+	virtual/pkgconfig
+"
 RDEPEND="
 	gtk? ( dev-libs/glib:2= )
 	jpeg? ( virtual/jpeg:0= )
@@ -21,13 +27,11 @@ RDEPEND="
 	libav? ( >=media-video/libav-11:0= )
 	png? ( media-libs/libpng:0= )
 "
-DEPEND="${RDEPEND}
-	virtual/pkgconfig
-"
-REQUIRED_USE="gnome? ( gtk )
-	test? ( png jpeg )"
+DEPEND="${RDEPEND}"
 
 DOCS=( AUTHORS ChangeLog README.md )
+
+PATCHES=( "${FILESDIR}/${P}-pkgconfig-libdir.patch" )
 
 src_prepare() {
 	rm -rf out* || die
