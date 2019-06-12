@@ -1,2 +1,0 @@
-# gcc-4.8 still doesn't work on ppc musl
->sys-devel/gcc-4.8
