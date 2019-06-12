@@ -53,7 +53,7 @@ RDEPEND="
 	app-text/pandoc
 	dev-haskell/pandoc-citeproc
 	>=dev-lang/R-2.11.1
-	>=dev-libs/boost-1.63:=
+	<dev-libs/boost-1.70:=
 	>=dev-libs/mathjax-2.7.0
 	dev-libs/openssl:0=
 	sys-apps/util-linux
