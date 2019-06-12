@@ -5,14 +5,14 @@
 
 EAPI=7
 
-inherit autotools multilib-minimal
+inherit multilib-minimal
 
 if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/nghttp2/nghttp2.git"
-	inherit git-r3
+	inherit autotools git-r3
 else
 	SRC_URI="https://github.com/nghttp2/nghttp2/releases/download/v${PV}/${P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd"
 fi
 
 DESCRIPTION="HTTP/2 C Library"
@@ -31,10 +31,7 @@ RDEPEND="
 		${SSL_DEPEND}
 		dev-libs/boost:=[${MULTILIB_USEDEP},threads]
 	)
-	hpack-tools? (
-		>=dev-libs/jansson-2.5
-		>=net-libs/http-parser-2.9.1:=
-	)
+	hpack-tools? ( >=dev-libs/jansson-2.5 )
 	jemalloc? ( dev-libs/jemalloc[${MULTILIB_USEDEP}] )
 	utils? (
 		${SSL_DEPEND}
@@ -49,7 +46,7 @@ DEPEND="${RDEPEND}
 
 src_prepare() {
 	default
-	eautoreconf
+	[[ ${PV} == 9999 ]] && eautoreconf
 }
 
 multilib_src_configure() {
