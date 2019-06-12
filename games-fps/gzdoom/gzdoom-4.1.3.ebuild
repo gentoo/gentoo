@@ -12,24 +12,21 @@ SRC_URI="https://github.com/coelckers/${PN}/archive/g${PV}.tar.gz -> ${P}.tar.gz
 LICENSE="BSD BZIP2 DUMB-0.9.3 GPL-3 LGPL-3 MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="fluidsynth gtk gtk2 +openal openmp"
+IUSE="gtk gtk2 openmp"
 
 DEPEND="
 	media-libs/libsdl2[opengl]
+	media-libs/libsndfile
+	media-libs/openal
+	media-sound/fluidsynth:=
+	media-sound/mpg123
 	sys-libs/zlib
 	virtual/jpeg:0
 	gtk? (
 		gtk2? ( x11-libs/gtk+:2 )
 		!gtk2? ( x11-libs/gtk+:3 )
 	)"
-RDEPEND="
-	${DEPEND}
-	fluidsynth? ( media-sound/fluidsynth:= )
-	openal? (
-		media-libs/libsndfile
-		media-libs/openal
-		media-sound/mpg123
-	)"
+RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${PN}-g${PV}"
 PATCHES="${FILESDIR}/${P}-fluidsynth2.patch"
@@ -48,7 +45,7 @@ src_configure() {
 		-DDYN_SNDFILE=OFF
 		-DDYN_MPG123=OFF
 		-DNO_GTK="$(usex !gtk)"
-		-DNO_OPENAL="$(usex !openal)"
+		-DNO_OPENAL=OFF
 		-DNO_OPENMP="$(usex !openmp)"
 	)
 	cmake-utils_src_configure
