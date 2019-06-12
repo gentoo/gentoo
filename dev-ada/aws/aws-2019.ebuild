@@ -15,16 +15,13 @@ SRC_URI="http://mirrors.cdn.adacore.com/art/5cdf85a031e87aa2cdf16b19
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="gnat_2016 gnat_2017 gnat_2018 +gnat_2019"
+IUSE="+gnat_2019"
 
-RDEPEND="dev-ada/xmlada[gnat_2016(-)?,gnat_2017(-)?,gnat_2018(-)?,gnat_2019(-)?]
+RDEPEND="dev-ada/xmlada[gnat_2019]
 	dev-ada/xmlada[shared,static-libs]"
 DEPEND="${RDEPEND}
-	dev-ada/asis[gnat_2016(-)?]
-	dev-ada/asis[gnat_2017(-)?,gnat_2018(-)?,gnat_2019(-)?]
-	dev-ada/gprbuild[gnat_2016(-)?,gnat_2017(-)?,gnat_2018(-)?,gnat_2019(-)?]"
-
-REQUIRED_USE="^^ ( gnat_2016 gnat_2017 gnat_2018 gnat_2019 )"
+	dev-ada/asis[gnat_2019]
+	dev-ada/gprbuild[gnat_2019]"
 
 S="${WORKDIR}"/${MY_P}
 
