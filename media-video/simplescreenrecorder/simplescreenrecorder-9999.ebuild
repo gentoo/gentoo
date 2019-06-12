@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit cmake-multilib flag-o-matic gnome2-utils xdg-utils
+inherit cmake-multilib flag-o-matic xdg
 
 if [[ ${PV} = 9999 ]]; then
 	inherit git-r3
@@ -47,8 +47,8 @@ DEPEND="${RDEPEND}
 	dev-qt/linguist-tools:5
 "
 
-pkg_setup() {
-	if [[ ${ABI} == amd64 ]]; then
+pkg_pretend() {
+	if [[ "${ABI}" == amd64 ]]; then
 		elog "You may want to add USE flag 'abi_x86_32' when running a 64bit system"
 		elog "When added 32bit GLInject libraries are also included. This is"
 		elog "required if you want to use OpenGL recording on 32bit applications."
@@ -63,16 +63,22 @@ pkg_setup() {
 		ewarn "record videos with x264."
 		ewarn
 	fi
+}
 
+pkg_setup() {
 	# QT requires -fPIC. Compile fails otherwise.
 	# Recently removed from the default compile options upstream
 	# https://github.com/MaartenBaert/ssr/commit/25fe1743058f0d1f95f6fbb39014b6ac146b5180
 	append-flags -fPIC
 }
 
+src_prepare() {
+	# required because xdg.eclass overrides default cmake-utils_src_prepare
+	cmake-utils_src_prepare
+}
+
 multilib_src_configure() {
 	local mycmakeargs=(
-		-DENABLE_32BIT_GLINJECT="$(usex abi_x86_32)"
 		-DENABLE_X86_ASM="$(usex asm)"
 		-DWITH_PULSEAUDIO="$(multilib_native_usex pulseaudio)"
 		-DWITH_JACK="$(multilib_native_usex jack)"
@@ -86,20 +92,30 @@ multilib_src_configure() {
 	fi
 
 	if multilib_is_native_abi ; then
-		mycmakeargs+=( -DWITH_QT5="true" )
+		mycmakeargs+=(
+			-DENABLE_32BIT_GLINJECT="false"
+			-DWITH_QT5="true"
+		)
 	else
-		mycmakeargs+=( -DWITH_SIMPLESCREENRECORDER="false" )
+		mycmakeargs+=(
+			# https://bugs.gentoo.org/660438
+			-DCMAKE_INSTALL_LIB32DIR="$(get_libdir)"
+			-DENABLE_32BIT_GLINJECT="true"
+			-DWITH_SIMPLESCREENRECORDER="false"
+		)
 	fi
 
 	cmake-utils_src_configure
 }
 
+pkg_preinst() {
+	xdg_pkg_preinst
+}
+
 pkg_postinst() {
-	gnome2_icon_cache_update
-	xdg_desktop_database_update
+	xdg_pkg_postinst
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
-	xdg_desktop_database_update
+	xdg_pkg_postrm
 }
