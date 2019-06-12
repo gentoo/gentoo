@@ -1,22 +1,21 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit toolchain-funcs
 
 DESCRIPTION="Daemon providing access to the kernel sysrq functions via network"
 HOMEPAGE="https://github.com/jd/sysrqd"
-SRC_URI="https://dev.gentoo.org/~wschlich/src/${CATEGORY}/${PN}/${P}.tar.gz"
+SRC_URI="https://github.com/jd/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-config.patch
-	"${FILESDIR}"/${PN}-14-fix-build-system.patch
+	"${FILESDIR}"/${P}-fix-build-system.patch
 )
 
 src_configure() {
@@ -29,9 +28,9 @@ src_install() {
 
 	local bindip='127.0.0.1' secret
 	declare -i secret
-	let secret=${RANDOM}*${RANDOM}*${RANDOM}*${RANDOM}
-	echo ${bindip} > sysrqd.bind || die
-	echo ${secret} > sysrqd.secret || die
+	let secret="${RANDOM}*${RANDOM}*${RANDOM}*${RANDOM}"
+	echo "${bindip}" > sysrqd.bind || die
+	echo "${secret}" > sysrqd.secret || die
 
 	diropts -m 0700 -o root -g root
 	dodir /etc/sysrqd

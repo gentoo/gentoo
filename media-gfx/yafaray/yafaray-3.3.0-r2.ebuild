@@ -1,10 +1,10 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 PYTHON_COMPAT=( python3_{5,6,7} )
 
-inherit cmake-utils python-single-r1
+inherit cmake-utils flag-o-matic python-single-r1
 
 DESCRIPTION="A free open-source montecarlo raytracing engine"
 HOMEPAGE="http://www.yafaray.org"
@@ -30,9 +30,8 @@ RDEPEND="
 	tiff? ( media-libs/tiff:0 )
 	truetype? ( media-libs/freetype:2 )
 "
-DEPEND="${RDEPEND}
-	dev-lang/swig
-"
+DEPEND="${RDEPEND}"
+BDEPEND="dev-lang/swig"
 
 S="${WORKDIR}/Core-${PV}"
 
@@ -41,6 +40,7 @@ pkg_setup() {
 }
 
 src_prepare() {
+	append-flags "-pthread"
 	cmake-utils_src_prepare
 
 	sed -i -e "s/@YAFARAY_BLENDER_EXPORTER_VERSION@/v${PV}/" "${WORKDIR}/Blender-Exporter-${PV}/__init__.py" || die
@@ -80,7 +80,8 @@ src_install() {
 
 	python_domodule "${BUILD_DIR}/src/bindings/yafaray_v3_interface.py"
 	python_domodule "${BUILD_DIR}/src/bindings/_yafaray_v3_interface.so"
-	rm -v "${D}"usr/$(get_libdir)/{yafaray_v3_interface.py,_yafaray_v3_interface.so} || die
+	rm -v "${ED}"/usr/$(get_libdir)/{yafaray_v3_interface.py,_yafaray_v3_interface.so} || die
+	rm -rv "${ED}"/usr/share/doc/${PN} || die
 
 	if use blender; then
 		pushd "${WORKDIR}/Blender-Exporter-${PV}" || die
