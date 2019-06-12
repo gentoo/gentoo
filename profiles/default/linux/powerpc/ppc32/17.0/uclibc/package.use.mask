@@ -1,0 +1,3 @@
+# Anthony G. Basile <blueness@gentoo.org> (12 Jun 2019)
+# Unfortunately pie has broken on ppc uclibc for years
+sys-devel/gcc pie
