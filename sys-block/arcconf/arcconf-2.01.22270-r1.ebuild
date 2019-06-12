@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -38,5 +38,5 @@ pkg_setup() {
 }
 
 src_install() {
-	dobin linux$(usex amd64 '_x64')/cmdline/arcconf
+	dobin linux$(usex amd64 '_x64' '')/cmdline/arcconf
 }
