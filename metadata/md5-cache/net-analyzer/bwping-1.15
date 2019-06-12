@@ -1,0 +1,9 @@
+DEFINED_PHASES=test
+DESCRIPTION=A tool to measure bandwidth and RTT between two hosts using ICMP
+EAPI=7
+HOMEPAGE=https://bwping.sourceforge.io/
+KEYWORDS=~amd64 ~sparc ~x86 ~x86-fbsd
+LICENSE=BSD
+SLOT=0
+SRC_URI=mirror://sourceforge/bwping/1.15/bwping-1.15.tar.gz
+_md5_=122ecee2c7b0f6ba049b0f1d738e4588
