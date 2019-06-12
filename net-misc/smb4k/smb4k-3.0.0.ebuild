@@ -56,3 +56,13 @@ src_configure(){
 	)
 	kde5_src_configure
 }
+
+pkg_postinst() {
+	kde5_pkg_postinst
+	elog "Users of Samba 4.7 and above please note that for the time being,"
+	elog "the following setting has to be added to or changed in the [global]"
+	elog "section of the smb.conf file:"
+	elog
+	elog "[global]"
+	elog "client max protocol = NT1"
+}
