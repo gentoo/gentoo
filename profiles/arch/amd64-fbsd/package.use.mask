@@ -85,6 +85,7 @@ app-doc/doxygen clang
 dev-perl/GD fcgi
 media-libs/libcanberra gnome
 media-libs/mesa vaapi
+media-libs/openal sdl
 media-sound/pulseaudio equalizer qt5 realtime
 media-video/ffmpeg ebur128 kvazaar libilbc openh264
 media-video/ffmpeg rubberband sdl ssh x265 zeromq zimg
