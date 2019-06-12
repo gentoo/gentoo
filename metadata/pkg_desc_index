@@ -2836,7 +2836,7 @@ dev-java/tomcat-jstl-el 1.2.5-r1: JSP Standard Tag Library (JSTL) - EL jar
 dev-java/tomcat-jstl-impl 1.2.5-r1: JSP Standard Tag Library (JSTL) - Implementation jar
 dev-java/tomcat-jstl-spec 1.2.5-r1: JSP Standard Tag Library (JSTL) - Specification jar
 dev-java/tomcat-native 1.2.19: Allows Tomcat to use certain native resources for better performance
-dev-java/tomcat-servlet-api 3 4.1.36 5.5.27-r1 5.5.34 6.0.44-r1 6.0.53 7.0.82 7.0.93 8.0.53 8.5.23 8.5.39 9.0.7 9.0.17: Tomcat's Servlet API 4.0/JSP API 2.4?/EL API 3.1? implementation
+dev-java/tomcat-servlet-api 3 4.1.36 5.5.27-r1 5.5.34 6.0.44-r1 6.0.53 7.0.82 7.0.94 8.0.53 8.5.23 8.5.41 9.0.7 9.0.20: Tomcat's Servlet API 4.0/JSP API 2.4?/EL API 3.1? implementation
 dev-java/toolbar 1.1.0-r2: An improved version of JToolBar
 dev-java/touchgraph-graphlayout 1.22-r1: TouchGraph provides a set of interfaces for graph visualization
 dev-java/treelayout 1.0.2: Efficiently create compact tree layouts in Java
@@ -10006,7 +10006,7 @@ sys-apps/usbredir 0.7.1_p20170503: TCP daemon and set of libraries for usbredir 
 sys-apps/usbutils 009 010-r1: USB enumeration utilities
 sys-apps/usermode-utilities 20070815-r3: Tools for use with Usermode Linux virtual machines
 sys-apps/utempter 0.5.5.6: App that allows non-privileged apps to write utmp (login) info
-sys-apps/util-linux 2.33-r1: Various useful Linux utilities
+sys-apps/util-linux 2.33-r1 2.33.2: Various useful Linux utilities
 sys-apps/vbetool 1.1: Run real-mode video BIOS code to alter hw state (i.e. reinitialize video card)
 sys-apps/watchdog 5.15: A software watchdog and /dev/watchdog daemon
 sys-apps/which 2.21: Prints out location of specified executables that are in your path
@@ -10711,7 +10711,7 @@ www-servers/pound 2.7f-r1: A http/https reverse-proxy and load-balancer
 www-servers/puma 3.12.1: a simple, fast, threaded, and highly concurrent HTTP 1.1 server for Ruby/Rack
 www-servers/spawn-fcgi 1.6.3-r1 1.6.4-r1: A FCGI spawner for lighttpd and cherokee and other webservers
 www-servers/thttpd 2.27.1: Fork of thttpd, a small, fast, multiplexing webserver
-www-servers/tomcat 7.0.93 8.0.53 8.5.39 9.0.7: Tomcat Servlet-4.0/JSP-2.4?/EL-3.1?/WebSocket-1.2?/JASPIC-1.1 Container
+www-servers/tomcat 7.0.94 8.0.53 8.5.41 9.0.7: Tomcat Servlet-4.0/JSP-2.4?/EL-3.1?/WebSocket-1.2?/JASPIC-1.1 Container
 www-servers/tornado 4.4.2-r1 4.5.3: Python web framework and asynchronous networking library
 www-servers/uwsgi 2.0.17: uWSGI server for Python web applications
 www-servers/varnish 4.0.5 4.1.8 5.1.3 6.0.1 6.1.1: Varnish is a state-of-the-art, high-performance HTTP accelerator
