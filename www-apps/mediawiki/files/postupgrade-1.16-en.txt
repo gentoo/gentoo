@@ -30,8 +30,8 @@ http://www.mediawiki.org/wiki/Manual:Upgrading
 Upgrade extensions
 ==================
 
-Certain extensions have been updated in order to work with MediaWiki 1.13. Be
-sure to upgrade to the latest versions of such extensions. You might need to
+Certain extensions have been updated in order to work with installed MediaWiki.
+Be sure to upgrade to the latest versions of such extensions. You might need to
 perform manual updates to custom extensions.
 
 
