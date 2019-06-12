@@ -1,10 +1,10 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=0
 
 DESCRIPTION="A tool to parse smaps statistics"
-HOMEPAGE="http://bmaurer.blogspot.de/2006/03/memory-usage-with-smaps.html"
+HOMEPAGE="https://www.selenic.com/smem/"
 SRC_URI="mirror://gentoo/smem.pl.${PV}.bz2
 	https://dev.gentoo.org/~tove/distfiles/${CATEGORY}/${PN}/smem.pl.${PV}.bz2"
 
