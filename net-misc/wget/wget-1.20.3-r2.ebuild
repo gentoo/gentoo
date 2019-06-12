@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 PYTHON_COMPAT=( python3_{5,6,7} )
 
@@ -13,12 +13,13 @@ SRC_URI="mirror://gnu/wget/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~riscv s390 ~sh sparc x86 ~ppc-aix ~x64-cygwin ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="debug gnutls idn ipv6 libressl nls ntlm pcre +ssl static test uuid zlib"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sh ~sparc ~x86 ~ppc-aix ~x64-cygwin ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+IUSE="cookie_check debug gnutls idn ipv6 libressl nls ntlm pcre +ssl static test uuid zlib"
 REQUIRED_USE=" ntlm? ( !gnutls ssl ) gnutls? ( ssl )"
 
 # Force a newer libidn2 to avoid libunistring deps. #612498
 LIB_DEPEND="
+	cookie_check? ( net-libs/libpsl )
 	idn? ( >=net-dns/libidn2-0.14:=[static-libs(+)] )
 	pcre? ( dev-libs/libpcre2[static-libs(+)] )
 	ssl? (
@@ -34,8 +35,6 @@ LIB_DEPEND="
 RDEPEND="!static? ( ${LIB_DEPEND//\[static-libs(+)]} )"
 DEPEND="
 	${RDEPEND}
-	app-arch/xz-utils
-	virtual/pkgconfig
 	static? ( ${LIB_DEPEND} )
 	test? (
 		${PYTHON_DEPS}
@@ -44,6 +43,10 @@ DEPEND="
 		dev-perl/HTTP-Message
 		dev-perl/IO-Socket-SSL
 	)
+"
+BDEPEND="
+	app-arch/xz-utils
+	virtual/pkgconfig
 	nls? ( sys-devel/gettext )
 "
 
@@ -97,6 +100,7 @@ src_configure() {
 		$(use_enable pcre pcre2)
 		$(use_enable ssl digest)
 		$(use_enable ssl opie)
+		$(use_with cookie_check libpsl)
 		$(use_with idn libidn)
 		$(use_with ssl ssl $(usex gnutls gnutls openssl))
 		$(use_with uuid libuuid)
@@ -111,8 +115,8 @@ src_install() {
 
 	sed -i \
 		-e "s:/usr/local/etc:${EPREFIX}/etc:g" \
-		"${ED%/}"/etc/wgetrc \
-		"${ED%/}"/usr/share/man/man1/wget.1 \
-		"${ED%/}"/usr/share/info/wget.info \
+		"${ED}"/etc/wgetrc \
+		"${ED}"/usr/share/man/man1/wget.1 \
+		"${ED}"/usr/share/info/wget.info \
 		|| die
 }
