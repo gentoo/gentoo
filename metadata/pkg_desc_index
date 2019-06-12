@@ -9346,7 +9346,7 @@ sci-chemistry/elem 1.0.3-r2: periodic table of the elements
 sci-chemistry/gabedit 2.4.6: GUI for computational chemistry packages
 sci-chemistry/gelemental 1.2.0-r1: Periodic table viewer with detailed information on the chemical elements
 sci-chemistry/gperiodic 2.0.10-r2: Periodic table application for Linux
-sci-chemistry/gromacs 2016.5 2018.3 2018.7 2019.2: The ultimate molecular dynamics simulation package
+sci-chemistry/gromacs 2018.3 2018.7 2019.2: The ultimate molecular dynamics simulation package
 sci-chemistry/molden 4.8-r2: Display molecular density from GAMESS-UK, GAMESS-US, GAUSSIAN and Mopac/Ampac
 sci-chemistry/moldy 2.16e-r2: Molecular dynamics simulations platform
 sci-chemistry/molmol 2k_p2-r5: Publication-quality molecular visualization package
