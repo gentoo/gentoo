@@ -18,6 +18,8 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
 
+RESTRICT="strip"
+
 pkg_setup() {
 	enewgroup telegraf
 	enewuser telegraf -1 -1 -1 telegraf
