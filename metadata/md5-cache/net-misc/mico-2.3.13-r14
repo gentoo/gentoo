@@ -1,0 +1,15 @@
+BDEPEND=>=sys-devel/flex-2.5.2 >=sys-devel/bison-1.22 >=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=configure install postinst prepare
+DEPEND=gtk? ( x11-libs/gtk+:2 ) postgres? ( dev-db/postgresql:* ) ssl? ( dev-libs/openssl:0= ) tcl? ( dev-lang/tcl:0 ) X? ( x11-libs/libXt )
+DESCRIPTION=A freely available and fully compliant implementation of the CORBA standard
+EAPI=7
+HOMEPAGE=http://www.mico.org/
+IUSE=gtk postgres ssl tcl threads X
+KEYWORDS=~alpha ~amd64 ~ppc ~sparc ~x86 ~ppc-aix ~amd64-linux ~x86-linux ~sparc-solaris ~x86-winnt
+LICENSE=GPL-2 LGPL-2
+RDEPEND=gtk? ( x11-libs/gtk+:2 ) postgres? ( dev-db/postgresql:* ) ssl? ( dev-libs/openssl:0= ) tcl? ( dev-lang/tcl:0 ) X? ( x11-libs/libXt )
+RESTRICT=test
+SLOT=0
+SRC_URI=http://www.mico.org/mico-2.3.13.tar.gz https://github.com/haubi/mico/compare/2.3.13-raw...2.3.13-gentoo-r14.patch -> mico-2.3.13-gentoo-r14.patch
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	a09389deba2c0a7108b581e02c7cecbf	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
+_md5_=2cb807a3589180903a1b2cb912c9e0e0
