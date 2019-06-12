@@ -35,6 +35,9 @@ src_prepare() {
 	# fix Solaris detection, upstream:
 	# https://github.com/rhash/RHash/pull/81
 	sed -i -e 's/sunos)/solaris2.*)/' configure || die
+	# fix Cygwin detection, upstream:
+	# https://github.com/rhash/RHash/pull/89
+	sed -i -e '/TARGET_OS=Darwin/acygwin*) TARGET_OS=CYGWIN ;;' configure || die
 	multilib_copy_sources
 }
 
