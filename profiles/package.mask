@@ -29,6 +29,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Miroslav Šulc <fordfrog@gentoo.org> (12 Jun 2019)
+# Depends on >=virtual/{jdk,jre}-11 which is masked
+=www-servers/tomcat-9.0.21
+
 # Brian Evans <grknight@gentoo.org> (11 Jun 2019)
 # Mask these packages for further testing
 # There is known API breakage and some packages fail,
@@ -343,10 +347,6 @@ mail-filter/mimedefang
 =net-libs/nodejs-11.15.0
 =net-libs/nodejs-12*
 
-# Miroslav Šulc <fordfrog@gentoo.org> (19 Apr 2019)
-# Depends on >=virtual/{jdk,jre}-11 which is masked
-=www-servers/tomcat-9.0.19
-
 # Michał Górny <mgorny@gentoo.org> (18 Apr 2019)
 # All current versions of SystemRescueCD contain vulnerable packages.
 # Bug #683724.
@@ -378,10 +378,6 @@ sys-boot/systemrescuecd-x86-grub
 # Robin H. Johnson <robbat2@gentoo.org> (25 Mar 2019)
 # Requires >=dev-lang/lua-5.3 which is masked
 sys-apps/likwid
-
-# Miroslav Šulc <fordfrog@gentoo.org> (19 Mar 2019)
-# Depends on >=virtual/{jdk,jre}-11 which is masked
-=www-servers/tomcat-9.0.17
 
 # Matt Turner <mattst88@gentoo.org> (16 Mar 2019)
 # Previously packaged drivers, now removed from Gentoo.
