@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit cmake-utils gnome2-utils
+inherit cmake-utils xdg
 
 DESCRIPTION="MIDI based metronome using ALSA sequencer"
 HOMEPAGE="http://kmetronome.sourceforge.net/"
@@ -14,7 +14,11 @@ SLOT="5"
 KEYWORDS="amd64 x86"
 IUSE="debug"
 
-RDEPEND="
+BDEPEND="
+	dev-qt/linguist-tools:5
+	virtual/pkgconfig
+"
+DEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
 	dev-qt/qtgui:5
@@ -22,23 +26,9 @@ RDEPEND="
 	dev-qt/qtwidgets:5
 	media-libs/alsa-lib
 	>=media-sound/drumstick-1.0.0
-	!media-sound/kmetronome:4
 "
-DEPEND="${RDEPEND}
-	dev-qt/linguist-tools:5
-	virtual/pkgconfig
-"
+RDEPEND="${DEPEND}"
 
-DOCS=( AUTHORS ChangeLog NEWS README TODO )
-
-pkg_preinst() {
-	gnome2_icon_savelist
-}
-
-pkg_postinst() {
-	gnome2_icon_cache_update
-}
-
-pkg_postrm() {
-	gnome2_icon_cache_update
+src_prepare() {
+	cmake-utils_src_prepare
 }
