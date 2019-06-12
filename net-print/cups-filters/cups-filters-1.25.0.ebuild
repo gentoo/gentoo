@@ -73,7 +73,6 @@ src_configure() {
 		$(use_enable pclm)
 		$(use_enable pdf mutool)
 		$(use_enable postscript ghostscript)
-		$(use_enable postscript ijs)
 		$(use_enable static-libs static)
 		$(use_enable zeroconf avahi)
 		$(use_with jpeg)
