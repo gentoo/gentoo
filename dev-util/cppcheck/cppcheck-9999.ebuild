@@ -30,7 +30,7 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 "
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.75-tinyxml2.patch
+	"${FILESDIR}"/${PN}-9999-tinyxml2.patch
 )
 
 src_prepare() {
