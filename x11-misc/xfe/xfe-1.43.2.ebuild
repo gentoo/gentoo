@@ -1,13 +1,12 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-
+EAPI=7
 PLOCALES="
 	bs ca cs da de el es_AR es_CO es fr hu it ja nl no pl pt_BR pt_PT ru sv tr
 	zh_CN zh_TW
 "
-inherit l10n
+inherit l10n xdg-utils
 
 DESCRIPTION="MS-Explorer-like minimalist file manager for X"
 HOMEPAGE="http://roland65.free.fr/xfe"
@@ -65,4 +64,12 @@ src_configure() {
 		$(use_enable nls) \
 		$(use_enable startup-notification sn) \
 		--enable-minimalflags
+}
+
+pkg_postinst() {
+	xdg_desktop_database_update
+}
+
+pkg_postrm() {
+	xdg_desktop_database_update
 }
