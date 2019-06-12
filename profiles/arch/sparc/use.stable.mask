@@ -4,6 +4,10 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in use.mask
 
+# Sergei Trofimovich <slyfox@gentoo.org> (02 Feb 2019)
+# No stable app-arch/rpm on sparc.
+rpm
+
 # Andreas Sturmlechner <asturm@gentoo.org> (23 Apr 2019)
 openal
 
