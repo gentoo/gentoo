@@ -91,8 +91,8 @@ src_install() {
 	domenu usr/share/applications/skypeforlinux.desktop
 
 	if use pax_kernel; then
-		pax-mark -m "${ED%/}"/opt/skypeforlinux/skypeforlinux
-		pax-mark -m "${ED%/}"/opt/skypeforlinux/resources/app.asar.unpacked/node_modules/slimcore/bin/slimcore.node
+		pax-mark -m "${ED}"/opt/skypeforlinux/skypeforlinux
+		pax-mark -m "${ED}"/opt/skypeforlinux/resources/app.asar.unpacked/node_modules/slimcore/bin/slimcore.node
 		ewarn "You have set USE=pax_kernel meaning that you intend to run"
 		ewarn "${PN} under a PaX enabled kernel. To do so, we must modify"
 		ewarn "the ${PN} binary itself and this *may* lead to breakage! If"
