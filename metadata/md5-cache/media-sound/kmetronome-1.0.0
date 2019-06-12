@@ -1,13 +1,14 @@
+BDEPEND=dev-qt/linguist-tools:5 virtual/pkgconfig dev-util/ninja >=dev-util/cmake-3.9.6
 DEFINED_PHASES=compile configure install postinst postrm preinst prepare test
-DEPEND=dev-qt/qtcore:5 dev-qt/qtdbus:5 dev-qt/qtgui:5 dev-qt/qtsvg:5 dev-qt/qtwidgets:5 media-libs/alsa-lib >=media-sound/drumstick-1.0.0 !media-sound/kmetronome:4 dev-qt/linguist-tools:5 virtual/pkgconfig sys-devel/make >=dev-util/cmake-3.9.6
+DEPEND=dev-qt/qtcore:5 dev-qt/qtdbus:5 dev-qt/qtgui:5 dev-qt/qtsvg:5 dev-qt/qtwidgets:5 media-libs/alsa-lib >=media-sound/drumstick-1.0.0 dev-util/desktop-file-utils x11-misc/shared-mime-info
 DESCRIPTION=MIDI based metronome using ALSA sequencer
-EAPI=6
+EAPI=7
 HOMEPAGE=http://kmetronome.sourceforge.net/
 IUSE=debug
 KEYWORDS=amd64 x86
 LICENSE=GPL-2
-RDEPEND=dev-qt/qtcore:5 dev-qt/qtdbus:5 dev-qt/qtgui:5 dev-qt/qtsvg:5 dev-qt/qtwidgets:5 media-libs/alsa-lib >=media-sound/drumstick-1.0.0 !media-sound/kmetronome:4
+RDEPEND=dev-qt/qtcore:5 dev-qt/qtdbus:5 dev-qt/qtgui:5 dev-qt/qtsvg:5 dev-qt/qtwidgets:5 media-libs/alsa-lib >=media-sound/drumstick-1.0.0
 SLOT=5
 SRC_URI=mirror://sourceforge/kmetronome/kmetronome-1.0.0.tar.bz2
-_eclasses_=cmake-utils	959a7fda0dce63de9a4e73a22294d6ec	desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	a09389deba2c0a7108b581e02c7cecbf	gnome2-utils	532371cfcba45b2ab0d2950547c97d95	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	14d00d009167652b1fa363e55effe213
-_md5_=b251b010f85f71771c6385bc8abd08c0
+_eclasses_=cmake-utils	959a7fda0dce63de9a4e73a22294d6ec	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	a09389deba2c0a7108b581e02c7cecbf	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	14d00d009167652b1fa363e55effe213
+_md5_=642f6a0092453c5e137e55624d1034db
