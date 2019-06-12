@@ -24,11 +24,13 @@ fi
 
 LICENSE="LGPL-2.1 GPL-2 GPL-3"
 SLOT="0"
-IUSE="autotype browser debug +network test yubikey"
+IUSE="autotype browser debug keeshare +network test yubikey"
 
 RDEPEND="
 	app-crypt/argon2:=
 	dev-libs/libgcrypt:=
+	>=dev-libs/libsodium-1.0.12:=
+	dev-qt/qtconcurrent:5
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
 	dev-qt/qtgui:5
@@ -36,7 +38,7 @@ RDEPEND="
 	dev-qt/qtsvg:5
 	dev-qt/qtwidgets:5
 	media-gfx/qrencode:=
-	sys-libs/zlib
+	sys-libs/zlib:=
 	autotype? (
 		dev-qt/qtx11extras:5
 		x11-libs/libX11
@@ -44,6 +46,7 @@ RDEPEND="
 		x11-libs/libXtst
 	)
 	browser? ( >=dev-libs/libsodium-1.0.12 )
+	keeshare? ( dev-libs/quazip )
 	yubikey? ( sys-auth/ykpers )
 "
 
@@ -51,7 +54,6 @@ DEPEND="
 	${RDEPEND}
 	dev-qt/linguist-tools:5
 	dev-qt/qttest:5
-	dev-qt/qtconcurrent:5
 "
 
 # Not a runtime dependency but still needed (see bug #667092)
@@ -72,6 +74,7 @@ src_configure() {
 		-DWITH_TESTS="$(usex test)"
 		-DWITH_XC_AUTOTYPE="$(usex autotype)"
 		-DWITH_XC_BROWSER="$(usex browser)"
+		-DWITH_XC_KEESHARE_SECURE="$(usex keeshare)"
 		-DWITH_XC_NETWORKING="$(usex network)"
 		-DWITH_XC_SSHAGENT=ON
 		-DWITH_XC_UPDATECHECK=OFF

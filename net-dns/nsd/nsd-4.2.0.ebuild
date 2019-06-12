@@ -15,7 +15,7 @@ HOMEPAGE="http://www.nlnetlabs.nl/projects/nsd"
 SRC_URI="http://www.nlnetlabs.nl/downloads/${PN}/${MY_P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="bind8-stats dnstap ipv6 libevent minimal-responses mmap munin +nsec3 ratelimit root-server runtime-checks ssl systemd libressl"
 
 S="${WORKDIR}/${MY_P}"
@@ -33,8 +33,8 @@ RDEPEND="
 	)
 	systemd? ( sys-apps/systemd )
 "
-DEPEND="
-	${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	sys-devel/flex
 	virtual/yacc
 	systemd? ( virtual/pkgconfig )
@@ -43,9 +43,6 @@ DEPEND="
 PATCHES=(
 	# Fix the paths in the munin plugin to match our install
 	"${FILESDIR}"/nsd_munin_.patch
-
-	# https://www.nlnetlabs.nl/bugs-script/show_bug.cgi?id=4213
-	"${FILESDIR}"/${P}-dnstap_noipv6_fix.patch
 )
 
 src_prepare() {
@@ -58,6 +55,7 @@ src_configure() {
 		--enable-largefile
 		--enable-pie
 		--enable-relro-now
+		--enable-tcp-fastopen
 		--with-dbfile="${EPREFIX}"/var/db/nsd/nsd.db
 		--with-logfile="${EPREFIX}"/var/log/nsd.log
 		--with-pidfile="${EPREFIX}"/run/nsd/nsd.pid
