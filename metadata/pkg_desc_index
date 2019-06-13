@@ -556,7 +556,7 @@ app-editors/gedit-plugins 3.30.1: Official plugins for gedit
 app-editors/ghex 3.18.3: GNOME hexadecimal editor
 app-editors/gnome-latex 3.28.1: Integrated LaTeX environment for GNOME
 app-editors/gummi 0.6.6-r2: Simple LaTeX editor for GTK+ users
-app-editors/gvim 8.0.1298 8.1.0648-r1: GUI version of the Vim text editor
+app-editors/gvim 8.0.1298 8.1.0648-r1 8.1.1486: GUI version of the Vim text editor
 app-editors/hexcurse 1.55: ncurses based hex editor
 app-editors/hexedit 1.2.13: View and edit files in hex or ASCII
 app-editors/hteditor 2.1.0: A file viewer, editor and analyzer for text, binary, and executable files
@@ -591,8 +591,8 @@ app-editors/teco 1.00-r4: Classic TECO editor, Predecessor to EMACS
 app-editors/ted 2.23: X-based rich text editor
 app-editors/uemacs-pk 4.0.15_p20180117: uEmacs/PK is an enhanced version of MicroEMACS
 app-editors/vile 9.8r: VI Like Emacs -- yet another full-featured vi clone
-app-editors/vim 8.0.1298 8.1.0648-r1: Vim, an improved vi-style text editor
-app-editors/vim-core 8.0.1298 8.1.0648: vim and gvim shared files
+app-editors/vim 8.0.1298 8.1.0648-r1 8.1.1486: Vim, an improved vi-style text editor
+app-editors/vim-core 8.0.1298 8.1.0648 8.1.1486: vim and gvim shared files
 app-editors/wily 1.0-r2: An emulation of ACME, Plan9's hybrid window system, shell and editor
 app-editors/xemacs 21.4.24 21.4.24-r1: highly customizable open source text editor and application development system
 app-editors/xvile 9.8r-r1: VI Like Emacs -- yet another full-featured vi clone
@@ -1477,7 +1477,7 @@ app-text/t1utils 1.39 1.41-r2: Type 1 Font utilities
 app-text/tabler 2-r1: A utility to create text art tables from delimited input
 app-text/talkfilters 2.3.8-r1: Convert ordinary English text into text that mimics a stereotyped dialect
 app-text/teckit 2.5.6: Text Encoding Conversion toolkit
-app-text/tesseract 3.05.01: An OCR Engine, orginally developed at HP, now open source.
+app-text/tesseract 3.05.01 3.05.02: An OCR Engine, orginally developed at HP, now open source.
 app-text/texi2html 5.0-r1: Perl script that converts Texinfo to HTML
 app-text/texlive 2017: A complete TeX distribution
 app-text/texlive-core 2017-r4: A complete TeX distribution
@@ -7803,7 +7803,7 @@ media-libs/openexr 2.3.0: ILM's OpenEXR high dynamic-range image file format lib
 media-libs/openexr_ctl 1.0.1-r2: OpenEXR CTL libraries
 media-libs/openh264 1.7.0-r1: Cisco OpenH264 library and Gecko Media Plugin for Mozilla packages
 media-libs/openimageio 1.6.13 1.8.17: A library for reading and writing images
-media-libs/openjpeg 1.5.2-r1 2.3.0-r1: Open-source JPEG 2000 library
+media-libs/openjpeg 1.5.2-r1 2.3.0-r1 2.3.1: Open-source JPEG 2000 library
 media-libs/opensubdiv 3.3.3: An Open-Source subdivision surface library
 media-libs/opus 1.3: Open codec designed for internet transmission of interactive speech and audio
 media-libs/opusfile 0.11: A high-level decoding and seeking API for .opus files
@@ -8207,7 +8207,7 @@ media-sound/pavumeter 0.9.3-r1: PulseAudio Volume Meter, simple GTK volume meter
 media-sound/peercast 0.1218-r2: A client and server for Peercast P2P-radio network
 media-sound/pianobar 2019.01.25: A console-based replacement for Pandora's flash player
 media-sound/picard 2.0.4: Cross-platform music tagger
-media-sound/playerctl 0.5.0: A CLI utility to control media players over MPRIS
+media-sound/playerctl 0.5.0 2.0.2: A CLI utility to control media players over MPRIS
 media-sound/pnmixer 0.7.2: Volume mixer for the system tray
 media-sound/podracer 1.4-r2: A simple podcast aggregator, designed for cron
 media-sound/positron 1.1-r1: Synchronization manager for the Neuros Audio Computer
@@ -8860,7 +8860,7 @@ net-mail/autorespond 2.0.4: Autoresponder add on package for qmailadmin
 net-mail/checkpassword 0.90-r2: A uniform password checking interface for root applications
 net-mail/cmd5checkpw 0.30-r1: A checkpassword compatible authentication program that used CRAM-MD5 authentication mode
 net-mail/courier-imap 4.17.3 4.18.2: An IMAP daemon designed specifically for maildirs
-net-mail/cyrus-imapd 3.0.5: The Cyrus IMAP Server
+net-mail/cyrus-imapd 3.0.5 3.0.10-r1: The Cyrus IMAP Server
 net-mail/dbmail 3.2.3-r1: Enables storage of mail messages in a relational database
 net-mail/dot-forward 0.71-r3: reads sendmail's .forward files under qmail
 net-mail/dovecot 2.3.5.1 2.3.5.2 2.3.6: An IMAP and POP3 server written with security primarily in mind
@@ -10208,6 +10208,7 @@ sys-firmware/ipxe 1.0.0_p20130925 1.0.0_p20160620 1.0.0_p20180211: Open source n
 sys-firmware/ivtv-firmware 20080701-r1: firmware for Hauppauge PVR-x50 and Conexant 2341x based cards
 sys-firmware/iwl1000-ucode 39.31.5.1: Intel (R) Wireless WiFi Link 1000BGN ucode
 sys-firmware/iwl6050-ucode 41.28.5.1: Intel (R) Wireless WiFi Link 6250-AGN ucode
+sys-firmware/nvidia-firmware 340.32: Kernel and mesa firmware for nouveau (video accel and pgraph)
 sys-firmware/seabios 1.10.2 1.11.0: Open Source implementation of a 16-bit x86 BIOS
 sys-firmware/sgabios 0.1_pre8-r1: serial graphics adapter bios option rom for x86
 sys-firmware/tt-s2-6400-firmware 0.5.0: Firmware for the Technotrend S2-6400 DVB Card
