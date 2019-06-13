@@ -88,16 +88,16 @@ src_configure() {
 	use overlay && use X && overlay_backends+="x,"
 
 	local emesonargs=(
-		-Dbuild_chamelium=$(usex chamelium true false)
-		-Dbuild_docs=$(usex doc true false)
-		-Dbuild_man=$(usex man true false)
-		-Dbuild_overlay=$(usex overlay true false)
-		-Dbuild_runner=$(usex runner true false)
-		-Dbuild_tests=$(usex doc true false) # Test build is required for docs
+		$(meson_feature chamelium build_chamelium)
+		$(meson_feature doc build_docs)
+		$(meson_feature man build_man)
+		$(meson_feature overlay build_overlay)
+		$(meson_feature runner build_runner)
+		$(meson_feature doc build_tests) # Test build is required for docs
+		$(meson_feature valgrind with_valgrind)
+		$(meson_feature unwind with_libunwind)
 		-Doverlay_backends=${overlay_backends%?}
 		-Dwith_libdrm=${gpus%?}
-		-Dwith_libunwind=$(usex unwind true false)
-		-Dwith_valgrind=$(usex valgrind true false)
 	)
 	meson_src_configure
 }
