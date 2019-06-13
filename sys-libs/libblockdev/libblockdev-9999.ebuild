@@ -111,5 +111,5 @@ src_configure() {
 
 src_install() {
 	default
-	find "${ED}" -name "*.la" -delete || die
+	find "${ED}" -type f -name "*.la" -delete || die
 }
