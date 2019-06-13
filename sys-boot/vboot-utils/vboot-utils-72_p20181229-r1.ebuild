@@ -42,6 +42,8 @@ DEPEND="${RDEPEND}
 S=${WORKDIR}
 
 src_prepare() {
+	eapply "${FILESDIR}"/${P}-libressl.patch
+
 	default
 	sed -i \
 		-e 's:${DESTDIR}/\(bin\|${LIBDIR}\):${DESTDIR}/usr/\1:g' \
