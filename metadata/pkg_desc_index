@@ -5368,6 +5368,7 @@ dev-python/pygtksourceview 2.10.1-r1: GTK+2 bindings for Python
 dev-python/pyhamcrest 1.9.0: Hamcrest framework for matcher objects
 dev-python/pyicu 2.0.2 2.3: Python bindings for dev-libs/icu
 dev-python/pyid3lib 0.5.1-r2: Module for manipulating ID3 tags in Python
+dev-python/pyilmbase 2.3.0: ilmbase Python bindings
 dev-python/pyinotify 0.9.6: Python module used for monitoring filesystems events
 dev-python/pyjwt 1.5.3 1.7.1: JSON Web Token implementation in Python
 dev-python/pykerberos 1.1.9 1.2.1: A high-level Python wrapper for Kerberos/GSSAPI operations
@@ -7329,6 +7330,7 @@ media-fonts/oto 0.5: Open Type Organizer
 media-fonts/oxygen-fonts 5.4.3: Desktop/GUI font family for integrated use with the KDE Plasma desktop
 media-fonts/pcf2bdf 1.04-r1: Converts PCF fonts to BDF fonts
 media-fonts/pigiarniq 1: Nunavut's official Inuktitut font
+media-fonts/polarsys-b612-fonts 1.003: Font designed for aircraft cockpit displays
 media-fonts/pothana2k 2006-r1: Pothana 2000 and Vemana fonts for the Telugu script
 media-fonts/powerline-symbols 20150224: OpenType Unicode font with symbols for Powerline/Airline
 media-fonts/proggy-fonts 1: A set of monospaced bitmap programming fonts
@@ -7808,7 +7810,7 @@ media-libs/opensubdiv 3.3.3: An Open-Source subdivision surface library
 media-libs/opus 1.3: Open codec designed for internet transmission of interactive speech and audio
 media-libs/opusfile 0.11: A high-level decoding and seeking API for .opus files
 media-libs/osl 1.8.12: Advanced shading language for production GI renderers
-media-libs/partio 1.1.0_p20170829: A library for particle IO and manipulation
+media-libs/partio 1.1.0_p20170829 1.5.4: Library for particle IO and manipulation
 media-libs/phat 0.4.1-r1: PHAT is a collection of GTK+ widgets geared toward pro-audio apps
 media-libs/phonon 4.10.2: KDE multimedia API
 media-libs/phonon-gstreamer 4.9.0-r3: Phonon GStreamer backend
@@ -8189,7 +8191,7 @@ media-sound/mt-daapd 0.2.4.2: A multi-threaded implementation of Apple's DAAP se
 media-sound/multimux 0.2.5.2: combines up to 8 audio mono wave ch. into one big multi ch. wave file
 media-sound/musepack-tools 465-r1: Musepack SV8 libraries and utilities
 media-sound/musique 1.5-r1: Qt music player
-media-sound/ncmpc 0.33-r1: Ncurses client for the Music Player Daemon (MPD)
+media-sound/ncmpc 0.33-r1 0.34: Ncurses client for the Music Player Daemon (MPD)
 media-sound/ncmpcpp 0.7.7 0.8.2-r1: featureful ncurses based MPD client inspired by ncmpc
 media-sound/normalize 0.7.7-r1: Audio file volume normalizer
 media-sound/ogg2mp3 0.6.1: A perl script to convert Ogg Vorbis files to MP3 files
@@ -8197,7 +8199,7 @@ media-sound/oggtst 0.0: A tool for calculating ogg-vorbis playing time
 media-sound/ogmtools 1.5-r2: Information, extraction or creation for OGG media streams
 media-sound/opus-tools 0.2: Royalty-free, highly versatile audio codec
 media-sound/orpheus 1.6-r3: Command line MP3 player
-media-sound/pamix 1.5: A PulseAudio NCurses mixer
+media-sound/pamix 1.5 1.6: A PulseAudio NCurses mixer
 media-sound/paprefs 1.1: PulseAudio Preferences, configuration dialog for PulseAudio
 media-sound/pasystray 0.7.1: PulseAudio system tray
 media-sound/patchage 0.5.0-r1: Modular patch bay for audio and MIDI systems
@@ -8768,7 +8770,7 @@ net-libs/libktorrent 2.1-r1: BitTorrent library based on KDE Frameworks
 net-libs/liblockfile 1.09: Implements functions designed to lock the standard mailboxes
 net-libs/libmbim 1.6.0 1.10.0 1.14.0 1.16.2: Mobile Broadband Interface Model (MBIM) modem protocol helper library
 net-libs/libmicrodns 0.0.9: Minimal mDNS resolver (and announcer) library
-net-libs/libmicrohttpd 0.9.62: Small C library to run an HTTP server as part of another application
+net-libs/libmicrohttpd 0.9.62 0.9.63: Small C library to run an HTTP server as part of another application
 net-libs/libmnl 1.0.3-r1 1.0.4: Minimalistic netlink library
 net-libs/libmrss 0.19.2: A C-library for parsing and writing RSS 0.91/0.92/1.0/2.0 files or streams
 net-libs/libnatpmp 20130911: An alternative protocol to UPnP IGD specification
@@ -10381,7 +10383,7 @@ sys-power/pm-utils 1.4.1-r6 1.4.1-r7: Suspend and hibernation utilities
 sys-power/pmtools 20110323-r1: Collection of tools for ACPI and power management
 sys-power/powermgmt-base 1.31: Script to test whether computer is running on AC power
 sys-power/powernowd 1.00-r4: Daemon to control the speed and voltage of CPUs
-sys-power/powertop 2.8 2.9: tool that helps you find what software is using the most power
+sys-power/powertop 2.8 2.9 2.10: tool to diagnose issues with power consumption and power management
 sys-power/suspend 1.0_p20150810-r1: Userspace Software Suspend and S2Ram
 sys-power/upower 0.99.9-r1: D-Bus abstraction for enumerating power devices, querying history and statistics
 sys-process/acct 6.6.4-r1: GNU system accounting utilities

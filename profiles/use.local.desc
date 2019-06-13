@@ -1928,6 +1928,7 @@ dev-python/paste:openid - enable OpenID support
 dev-python/pillow:imagequant - Build with Image Quantization Library support
 dev-python/py-amqp:extras - Install extra tools to generate initial Python mod from an AMQP XML file
 dev-python/pygame:midi - Enable midi support using media-libs/portmidi
+dev-python/pyilmbase:numpy - Add bindings for dev-python/numpy use.
 dev-python/pypax:ptpax - Enable PT_PAX_FLAGS support.
 dev-python/pypax:xtpax - Enable XATTR_PAX_FLAGS support.
 dev-python/pyudev:pygobject - Install PyGobject bindings
