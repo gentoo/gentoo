@@ -48,10 +48,8 @@ DEPEND="${CDEPEND}
 	>=sys-devel/autoconf-2.62
 	test? ( X? ( ${VIRTUALX_DEPEND} ) )"
 
-# file collision with app-i18n/kcc
 RDEPEND="${CDEPEND}
-	selinux? ( sec-policy/selinux-kerberos )
-	!app-i18n/kcc"
+	selinux? ( sec-policy/selinux-kerberos )"
 
 MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/krb5-types.h
