@@ -1,0 +1,74 @@
+diff --git a/src/ceph-detect-init/CMakeLists.txt b/src/ceph-detect-init/CMakeLists.txt
+index 6e5946b784..233cccfc9b 100644
+--- a/src/ceph-detect-init/CMakeLists.txt
++++ b/src/ceph-detect-init/CMakeLists.txt
+@@ -2,8 +2,8 @@ set(CEPH_DETECT_INIT_VIRTUALENV ${CEPH_BUILD_VIRTUALENV}/ceph-detect-init-virtua
+ 
+ add_custom_target(ceph-detect-init
+   COMMAND
+-  ${CMAKE_SOURCE_DIR}/src/tools/setup-virtualenv.sh --python=python2.7 ${CEPH_DETECT_INIT_VIRTUALENV} &&
+-  ${CEPH_DETECT_INIT_VIRTUALENV}/bin/pip install --no-index --find-links=file:${CMAKE_SOURCE_DIR}/src/ceph-detect-init/wheelhouse -e .
++  #${CMAKE_SOURCE_DIR}/src/tools/setup-virtualenv.sh --python=python2.7 ${CEPH_DETECT_INIT_VIRTUALENV} &&
++  #${CEPH_DETECT_INIT_VIRTUALENV}/bin/pip install --no-index --find-links=file:${CMAKE_SOURCE_DIR}/src/ceph-detect-init/wheelhouse -e .
+   WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/src/ceph-detect-init
+   COMMENT "ceph-detect-init is being created")
+ add_dependencies(tests ceph-detect-init)
+diff --git a/src/ceph-disk/CMakeLists.txt b/src/ceph-disk/CMakeLists.txt
+index 00aaec4a80..b0700c488f 100644
+--- a/src/ceph-disk/CMakeLists.txt
++++ b/src/ceph-disk/CMakeLists.txt
+@@ -2,8 +2,8 @@ set(CEPH_DISK_VIRTUALENV ${CEPH_BUILD_VIRTUALENV}/ceph-disk-virtualenv)
+ 
+ add_custom_target(ceph-disk
+   COMMAND
+-  ${CMAKE_SOURCE_DIR}/src/tools/setup-virtualenv.sh --python=python2.7 ${CEPH_DISK_VIRTUALENV} &&
+-  ${CEPH_DISK_VIRTUALENV}/bin/pip install --no-index --find-links=file:${CMAKE_SOURCE_DIR}/src/ceph-disk/wheelhouse -e .
++  #${CMAKE_SOURCE_DIR}/src/tools/setup-virtualenv.sh --python=python2.7 ${CEPH_DISK_VIRTUALENV} &&
++  #${CEPH_DISK_VIRTUALENV}/bin/pip install --no-index --find-links=file:${CMAKE_SOURCE_DIR}/src/ceph-disk/wheelhouse -e .
+   WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/src/ceph-disk
+   COMMENT "ceph-disk is being created")
+ add_dependencies(tests ceph-disk)
+diff --git a/src/pybind/mgr/dashboard/CMakeLists.txt b/src/pybind/mgr/dashboard/CMakeLists.txt
+index 88ca8a60bb..77c716cdb1 100644
+--- a/src/pybind/mgr/dashboard/CMakeLists.txt
++++ b/src/pybind/mgr/dashboard/CMakeLists.txt
+@@ -2,7 +2,7 @@ set(MGR_DASHBOARD_VIRTUALENV ${CEPH_BUILD_VIRTUALENV}/mgr-dashboard-virtualenv)
+ 
+ add_custom_target(mgr-dashboard-test-venv
+   COMMAND
+-  ${CMAKE_SOURCE_DIR}/src/tools/setup-virtualenv.sh --python=${MGR_PYTHON_EXECUTABLE} ${MGR_DASHBOARD_VIRTUALENV}
++  #${CMAKE_SOURCE_DIR}/src/tools/setup-virtualenv.sh --python=${MGR_PYTHON_EXECUTABLE} ${MGR_DASHBOARD_VIRTUALENV}
+   WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/src/pybind/mgr/dashboard
+   COMMENT "dashboard tests virtualenv is being created")
+ add_dependencies(tests mgr-dashboard-test-venv)
+@@ -13,9 +13,6 @@ set(mgr-dashboard-nodeenv ${CMAKE_CURRENT_BINARY_DIR}/node-env)
+ 
+ add_custom_command(
+   OUTPUT "${mgr-dashboard-nodeenv}/bin/npm"
+-  COMMAND ${CMAKE_SOURCE_DIR}/src/tools/setup-virtualenv.sh --python=${MGR_PYTHON_EXECUTABLE} ${mgr-dashboard-nodeenv}
+-  COMMAND ${mgr-dashboard-nodeenv}/bin/pip install nodeenv
+-  COMMAND ${mgr-dashboard-nodeenv}/bin/nodeenv -p -n 10.13.0
+   WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+   COMMENT "dashboard nodeenv is being installed"
+ )
+@@ -27,7 +24,6 @@ add_custom_target(mgr-dashboard-nodeenv
+ 
+ add_custom_command(
+   OUTPUT "${CMAKE_SOURCE_DIR}/src/pybind/mgr/dashboard/frontend/node_modules"
+-  COMMAND . ${mgr-dashboard-nodeenv}/bin/activate && npm ci && deactivate
+   DEPENDS frontend/package.json
+   WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/src/pybind/mgr/dashboard/frontend
+   COMMENT "dashboard frontend dependencies are being installed"
+@@ -62,9 +58,11 @@ else()
+   set(npm_command npm run build)
+ endif()
+ 
++LIST(APPEND CMAKE_PROGRAM_PATH ${CMAKE_SOURCE_DIR}/src/pybind/mgr/dashboard/frontend/node_modules/.bin)
++
+ add_custom_command(
+   OUTPUT "${CMAKE_SOURCE_DIR}/src/pybind/mgr/dashboard/frontend/dist"
+-  COMMAND . ${mgr-dashboard-nodeenv}/bin/activate && ${npm_command} && deactivate
++  COMMAND PREFIX="${CMAKE_SOURCE_DIR}" ${npm_command}
+   DEPENDS ${frontend_src} frontend/node_modules
+   WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/src/pybind/mgr/dashboard/frontend
+   COMMENT "dashboard frontend is being created"
