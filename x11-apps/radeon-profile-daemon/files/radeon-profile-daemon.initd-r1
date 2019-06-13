@@ -1,0 +1,19 @@
+#!/sbin/openrc-run
+# Copyright 1999-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+description="Daemon for radeon-profile GUI"
+
+command="/usr/sbin/radeon-profile-daemon"
+command_background="true"
+pidfile="/run/${SVCNAME}.pid"
+
+radeon_socket="/run/radeon-profile-daemon-server"
+
+start_post() {
+	if ewaitfile 10 ${radeon_socket} ; then
+		chgrp video ${radeon_socket}
+	else
+		eerror "Failed to find socket file ${radeon_socket}"
+	fi
+}

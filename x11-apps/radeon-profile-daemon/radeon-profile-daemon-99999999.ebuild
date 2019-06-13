@@ -28,7 +28,7 @@ DEPEND="${RDEPEND}"
 S="${WORKDIR}/${P}/${PN}"
 
 PATCHES=(
-	"${FILESDIR}/${P}-secure_socket.patch"
+	"${FILESDIR}/${PN}-20190603-secure_socket.patch"
 )
 
 src_prepare() {
@@ -51,7 +51,7 @@ src_configure() {
 src_install() {
 	emake INSTALL_ROOT="${D}" install
 
-	newinitd "${FILESDIR}"/${PN}.initd ${PN}
+	newinitd "${FILESDIR}"/${PN}.initd-r1 ${PN}
 }
 
 pkg_postinst() {
