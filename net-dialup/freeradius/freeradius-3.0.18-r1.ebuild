@@ -60,7 +60,10 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 S="${WORKDIR}/${MY_P}"
 
-PATCHES=( "${FILESDIR}"/${P}-libressl.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-libressl.patch
+	"${FILESDIR}"/${P}-systemd-service.patch
+)
 
 pkg_setup() {
 	enewgroup radius
@@ -220,7 +223,7 @@ src_install() {
 	newconfd "${FILESDIR}/radius.conf-r4" radiusd
 
 	systemd_newtmpfilesd "${FILESDIR}"/freeradius.tmpfiles freeradius.conf
-	systemd_dounit "${FILESDIR}"/freeradius.service
+	systemd_dounit "${S}"/debian/freeradius.service
 
 	find "${ED}" \( -name "*.a" -o -name "*.la" \) -delete || die
 }
