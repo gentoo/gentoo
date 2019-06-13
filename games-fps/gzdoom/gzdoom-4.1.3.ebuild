@@ -29,7 +29,10 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${PN}-g${PV}"
-PATCHES="${FILESDIR}/${P}-fluidsynth2.patch"
+PATCHES=(
+	"${FILESDIR}/${P}-fluidsynth2.patch"
+	"${FILESDIR}/${P}-install_soundfonts.patch"
+)
 
 src_prepare() {
 	rm -rf docs/licenses || die
@@ -40,6 +43,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DINSTALL_DOCS_PATH="${EPREFIX}/usr/share/doc/${PF}"
 		-DINSTALL_PK3_PATH="${EPREFIX}/usr/share/doom"
+		-DINSTALL_SOUNDFONT_PATH="${EPREFIX}/usr/share/doom"
 		-DDYN_FLUIDSYNTH=OFF
 		-DDYN_OPENAL=OFF
 		-DDYN_SNDFILE=OFF
