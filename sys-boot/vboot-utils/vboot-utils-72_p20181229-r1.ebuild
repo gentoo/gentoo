@@ -42,6 +42,8 @@ DEPEND="${RDEPEND}
 S=${WORKDIR}
 
 src_prepare() {
+	eapply "${FILESDIR}"/${P}-libressl.patch
+
 	default
 	sed -i \
 		-e 's:${DESTDIR}/\(bin\|${LIBDIR}\):${DESTDIR}/usr/\1:g' \
@@ -53,10 +55,6 @@ src_prepare() {
 		-i tests/common.sh || die
 	sed -e "s:/mnt/host/source/src/platform/vboot_reference:${S}:" \
 		-i tests/futility/expect_output/* || die
-	if use libressl; then
-		sed -e '/OPENSSL_VERSION_NUMBER/d' \
-			-i host/include/openssl_compat.h || die #674522
-	fi
 }
 
 _emake() {
