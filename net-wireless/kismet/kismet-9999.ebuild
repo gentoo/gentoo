@@ -102,8 +102,8 @@ src_install() {
 
 	#dodoc CHANGELOG RELEASENOTES.txt README* docs/DEVEL.client docs/README.newcore
 	dodoc CHANGELOG README*
-	newinitd "${FILESDIR}"/${PN}.initd kismet
-	newconfd "${FILESDIR}"/${PN}.confd kismet
+	newinitd "${FILESDIR}"/${PN}.initd-r1 kismet
+	newconfd "${FILESDIR}"/${PN}.confd-r1 kismet
 }
 
 pkg_preinst() {
