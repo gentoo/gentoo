@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit cmake-utils gnome2-utils xdg-utils
+inherit cmake-utils xdg
 
 DESCRIPTION="Android File Transfer for Linux"
 HOMEPAGE="https://github.com/whoozle/android-file-transfer-linux"
@@ -34,6 +34,11 @@ RDEPEND="
 
 DEPEND="${RDEPEND}"
 
+# required to override src_prepare from xdg eclass
+src_prepare() {
+	cmake-utils_src_prepare
+}
+
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_FUSE="$(usex fuse)"
@@ -46,14 +51,14 @@ src_configure() {
 	cmake-utils_src_configure
 }
 
-pkg_preinst() { gnome2_icon_savelist ; }
+pkg_preinst() {
+	xdg_pkg_preinst
+}
 
 pkg_postinst() {
-	gnome2_icon_cache_update
-	xdg_desktop_database_update
+	xdg_pkg_postinst
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
-	xdg_desktop_database_update
+	xdg_pkg_postrm
 }
