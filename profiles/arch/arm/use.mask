@@ -5,10 +5,6 @@
 -cpu_flags_arm_iwmmxt
 -cpu_flags_arm_iwmmxt2
 
-# Thomas Deutschmann <whissi@gentoo.org> (08 Jun 2019)
-# Needs dev-lang/php:7.3 stable
-php_targets_php7-3
-
 # Michał Górny <mgorny@gentoo.org> (16 Jul 2018)
 # Python 3.7 support requires fresh versions of packages which are stuck
 # at keywordreqs.
