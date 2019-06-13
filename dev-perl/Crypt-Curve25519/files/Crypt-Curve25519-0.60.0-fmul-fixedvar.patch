@@ -1,0 +1,174 @@
+diff -uNr Crypt-Curve25519-0.06.ORIG/curve25519-donna.c Crypt-Curve25519-0.06/curve25519-donna.c
+--- Crypt-Curve25519-0.06.ORIG/curve25519-donna.c	2019-06-13 11:19:36.492819752 +0100
++++ Crypt-Curve25519-0.06/curve25519-donna.c	2019-06-13 11:19:55.595991363 +0100
+@@ -325,7 +325,7 @@
+  * reduced coefficient.
+  */
+ static void
+-fmul(limb *output, const limb *in, const limb *in2) {
++fixedvar(limb *output, const limb *in, const limb *in2) {
+   limb t[19];
+   fproduct(t, in, in2);
+   freduce_degree(t);
+@@ -661,54 +661,54 @@
+   /* 2 */ fsquare(z2,z);
+   /* 4 */ fsquare(t1,z2);
+   /* 8 */ fsquare(t0,t1);
+-  /* 9 */ fmul(z9,t0,z);
+-  /* 11 */ fmul(z11,z9,z2);
++  /* 9 */ fixedvar(z9,t0,z);
++  /* 11 */ fixedvar(z11,z9,z2);
+   /* 22 */ fsquare(t0,z11);
+-  /* 2^5 - 2^0 = 31 */ fmul(z2_5_0,t0,z9);
++  /* 2^5 - 2^0 = 31 */ fixedvar(z2_5_0,t0,z9);
+ 
+   /* 2^6 - 2^1 */ fsquare(t0,z2_5_0);
+   /* 2^7 - 2^2 */ fsquare(t1,t0);
+   /* 2^8 - 2^3 */ fsquare(t0,t1);
+   /* 2^9 - 2^4 */ fsquare(t1,t0);
+   /* 2^10 - 2^5 */ fsquare(t0,t1);
+-  /* 2^10 - 2^0 */ fmul(z2_10_0,t0,z2_5_0);
++  /* 2^10 - 2^0 */ fixedvar(z2_10_0,t0,z2_5_0);
+ 
+   /* 2^11 - 2^1 */ fsquare(t0,z2_10_0);
+   /* 2^12 - 2^2 */ fsquare(t1,t0);
+   /* 2^20 - 2^10 */ for (i = 2;i < 10;i += 2) { fsquare(t0,t1); fsquare(t1,t0); }
+-  /* 2^20 - 2^0 */ fmul(z2_20_0,t1,z2_10_0);
++  /* 2^20 - 2^0 */ fixedvar(z2_20_0,t1,z2_10_0);
+ 
+   /* 2^21 - 2^1 */ fsquare(t0,z2_20_0);
+   /* 2^22 - 2^2 */ fsquare(t1,t0);
+   /* 2^40 - 2^20 */ for (i = 2;i < 20;i += 2) { fsquare(t0,t1); fsquare(t1,t0); }
+-  /* 2^40 - 2^0 */ fmul(t0,t1,z2_20_0);
++  /* 2^40 - 2^0 */ fixedvar(t0,t1,z2_20_0);
+ 
+   /* 2^41 - 2^1 */ fsquare(t1,t0);
+   /* 2^42 - 2^2 */ fsquare(t0,t1);
+   /* 2^50 - 2^10 */ for (i = 2;i < 10;i += 2) { fsquare(t1,t0); fsquare(t0,t1); }
+-  /* 2^50 - 2^0 */ fmul(z2_50_0,t0,z2_10_0);
++  /* 2^50 - 2^0 */ fixedvar(z2_50_0,t0,z2_10_0);
+ 
+   /* 2^51 - 2^1 */ fsquare(t0,z2_50_0);
+   /* 2^52 - 2^2 */ fsquare(t1,t0);
+   /* 2^100 - 2^50 */ for (i = 2;i < 50;i += 2) { fsquare(t0,t1); fsquare(t1,t0); }
+-  /* 2^100 - 2^0 */ fmul(z2_100_0,t1,z2_50_0);
++  /* 2^100 - 2^0 */ fixedvar(z2_100_0,t1,z2_50_0);
+ 
+   /* 2^101 - 2^1 */ fsquare(t1,z2_100_0);
+   /* 2^102 - 2^2 */ fsquare(t0,t1);
+   /* 2^200 - 2^100 */ for (i = 2;i < 100;i += 2) { fsquare(t1,t0); fsquare(t0,t1); }
+-  /* 2^200 - 2^0 */ fmul(t1,t0,z2_100_0);
++  /* 2^200 - 2^0 */ fixedvar(t1,t0,z2_100_0);
+ 
+   /* 2^201 - 2^1 */ fsquare(t0,t1);
+   /* 2^202 - 2^2 */ fsquare(t1,t0);
+   /* 2^250 - 2^50 */ for (i = 2;i < 50;i += 2) { fsquare(t0,t1); fsquare(t1,t0); }
+-  /* 2^250 - 2^0 */ fmul(t0,t1,z2_50_0);
++  /* 2^250 - 2^0 */ fixedvar(t0,t1,z2_50_0);
+ 
+   /* 2^251 - 2^1 */ fsquare(t1,t0);
+   /* 2^252 - 2^2 */ fsquare(t0,t1);
+   /* 2^253 - 2^3 */ fsquare(t1,t0);
+   /* 2^254 - 2^4 */ fsquare(t0,t1);
+   /* 2^255 - 2^5 */ fsquare(t1,t0);
+-  /* 2^255 - 21 */ fmul(out,t1,z11);
++  /* 2^255 - 21 */ fixedvar(out,t1,z11);
+ }
+ 
+ int curve25519_donna(u8 *, const u8 *, const u8 *);
+@@ -727,7 +727,7 @@
+   fexpand(bp, basepoint);
+   cmult(x, z, e, bp);
+   crecip(zmone, z);
+-  fmul(z, x, zmone);
++  fixedvar(z, x, zmone);
+   freduce_coefficients(z);
+   fcontract(mypublic, z);
+   return 0;
+diff -uNr Crypt-Curve25519-0.06.ORIG/curve25519-donna-c64.c Crypt-Curve25519-0.06/curve25519-donna-c64.c
+--- Crypt-Curve25519-0.06.ORIG/curve25519-donna-c64.c	2019-06-13 11:19:36.492819752 +0100
++++ Crypt-Curve25519-0.06/curve25519-donna-c64.c	2019-06-13 11:19:55.598991390 +0100
+@@ -96,7 +96,7 @@
+  * On return, output[i] < 2**52
+  */
+ static inline void force_inline
+-fmul(felem output, const felem in2, const felem in) {
++fixedvar(felem output, const felem in2, const felem in) {
+   uint128_t t[5];
+   limb r0,r1,r2,r3,r4,s0,s1,s2,s3,s4,c;
+ 
+@@ -305,22 +305,22 @@
+   memcpy(origxprime, xprime, sizeof(limb) * 5);
+   fsum(xprime, zprime);
+   fdifference_backwards(zprime, origxprime);
+-  fmul(xxprime, xprime, z);
+-  fmul(zzprime, x, zprime);
++  fixedvar(xxprime, xprime, z);
++  fixedvar(zzprime, x, zprime);
+   memcpy(origxprime, xxprime, sizeof(limb) * 5);
+   fsum(xxprime, zzprime);
+   fdifference_backwards(zzprime, origxprime);
+   fsquare_times(x3, xxprime, 1);
+   fsquare_times(zzzprime, zzprime, 1);
+-  fmul(z3, zzzprime, qmqp);
++  fixedvar(z3, zzzprime, qmqp);
+ 
+   fsquare_times(xx, x, 1);
+   fsquare_times(zz, z, 1);
+-  fmul(x2, xx, zz);
++  fixedvar(x2, xx, zz);
+   fdifference_backwards(zz, xx);  // does zz = xx - zz
+   fscalar_product(zzz, zz, 121665);
+   fsum(zzz, xx);
+-  fmul(z2, zz, zzz);
++  fixedvar(z2, zz, zzz);
+ }
+ 
+ // -----------------------------------------------------------------------------
+@@ -405,26 +405,26 @@
+ 
+   /* 2 */ fsquare_times(a, z, 1); // a = 2
+   /* 8 */ fsquare_times(t0, a, 2);
+-  /* 9 */ fmul(b, t0, z); // b = 9
+-  /* 11 */ fmul(a, b, a); // a = 11
++  /* 9 */ fixedvar(b, t0, z); // b = 9
++  /* 11 */ fixedvar(a, b, a); // a = 11
+   /* 22 */ fsquare_times(t0, a, 1);
+-  /* 2^5 - 2^0 = 31 */ fmul(b, t0, b);
++  /* 2^5 - 2^0 = 31 */ fixedvar(b, t0, b);
+   /* 2^10 - 2^5 */ fsquare_times(t0, b, 5);
+-  /* 2^10 - 2^0 */ fmul(b, t0, b);
++  /* 2^10 - 2^0 */ fixedvar(b, t0, b);
+   /* 2^20 - 2^10 */ fsquare_times(t0, b, 10);
+-  /* 2^20 - 2^0 */ fmul(c, t0, b);
++  /* 2^20 - 2^0 */ fixedvar(c, t0, b);
+   /* 2^40 - 2^20 */ fsquare_times(t0, c, 20);
+-  /* 2^40 - 2^0 */ fmul(t0, t0, c);
++  /* 2^40 - 2^0 */ fixedvar(t0, t0, c);
+   /* 2^50 - 2^10 */ fsquare_times(t0, t0, 10);
+-  /* 2^50 - 2^0 */ fmul(b, t0, b);
++  /* 2^50 - 2^0 */ fixedvar(b, t0, b);
+   /* 2^100 - 2^50 */ fsquare_times(t0, b, 50);
+-  /* 2^100 - 2^0 */ fmul(c, t0, b);
++  /* 2^100 - 2^0 */ fixedvar(c, t0, b);
+   /* 2^200 - 2^100 */ fsquare_times(t0, c, 100);
+-  /* 2^200 - 2^0 */ fmul(t0, t0, c);
++  /* 2^200 - 2^0 */ fixedvar(t0, t0, c);
+   /* 2^250 - 2^50 */ fsquare_times(t0, t0, 50);
+-  /* 2^250 - 2^0 */ fmul(t0, t0, b);
++  /* 2^250 - 2^0 */ fixedvar(t0, t0, b);
+   /* 2^255 - 2^5 */ fsquare_times(t0, t0, 5);
+-  /* 2^255 - 21 */ fmul(out, t0, a);
++  /* 2^255 - 21 */ fixedvar(out, t0, a);
+ }
+ 
+ int curve25519_donna(u8 *, const u8 *, const u8 *);
+@@ -443,7 +443,7 @@
+   fexpand(bp, basepoint);
+   cmult(x, z, e, bp);
+   crecip(zmone, z);
+-  fmul(z, x, zmone);
++  fixedvar(z, x, zmone);
+   fcontract(mypublic, z);
+   return 0;
+ }
