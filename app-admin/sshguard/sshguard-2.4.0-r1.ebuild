@@ -2,15 +2,16 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit autotools git-r3 systemd
+inherit systemd
 
 DESCRIPTION="protects hosts from brute force attacks against ssh"
 HOMEPAGE="https://www.sshguard.net/"
-EGIT_REPO_URI="https://bitbucket.org/${PN}/${PN}"
+SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~arm ~x86 ~x86-fbsd"
+IUSE="systemd"
 
 DEPEND="
 	sys-devel/flex
@@ -30,11 +31,6 @@ DOCS=(
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.1.0-conf.patch
 )
-
-src_prepare() {
-	default
-	eautoreconf
-}
 
 src_install() {
 	default
