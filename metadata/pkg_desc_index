@@ -6207,7 +6207,7 @@ dev-tex/leaflet 20041222: LaTeX package used to create leaflet-type brochures
 dev-tex/lgrind 3.67-r3: A pretty printer for various programming languages with tex output.
 dev-tex/luatex 0.70.1-r2: An extended version of pdfTeX using Lua as an embedded scripting language
 dev-tex/pdfannotextractor 0.1l-r1: Extract annotations from pdf files
-dev-tex/pgf 3.0.1 3.0.1-r1: pgf -- The TeX Portable Graphic Format
+dev-tex/pgf 3.0.1-r1: pgf -- The TeX Portable Graphic Format
 dev-tex/polytable 0.8.2: tabular-like environments with named columns
 dev-tex/prosper 1.5-r1: Prosper is a LaTeX class for writing transparencies
 dev-tex/pscyr 0.4d_beta9: Type1 cyrillic fonts collection
