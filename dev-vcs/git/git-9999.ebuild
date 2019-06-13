@@ -7,9 +7,12 @@ GENTOO_DEPEND_ON_PERL=no
 
 # bug #329479: git-remote-testgit is not multiple-version aware
 PYTHON_COMPAT=( python{2_7,3_{5,6,7}} )
+
+inherit toolchain-funcs elisp-common l10n perl-module bash-completion-r1 python-single-r1 systemd
+
 PLOCALES="bg ca de es fr is it ko pt_PT ru sv vi zh_CN"
 if [[ ${PV} == *9999 ]]; then
-	SCM="git-r3"
+	inherit git-r3
 	EGIT_REPO_URI="git://git.kernel.org/pub/scm/git/git.git"
 	# Please ensure that all _four_ 9999 ebuilds get updated; they track the 4 upstream branches.
 	# See https://git-scm.com/docs/gitworkflows#_graduation
@@ -25,8 +28,6 @@ if [[ ${PV} == *9999 ]]; then
 		9999-r3) EGIT_BRANCH=pu ;;
 	esac
 fi
-
-inherit toolchain-funcs elisp-common l10n perl-module bash-completion-r1 python-single-r1 systemd ${SCM}
 
 MY_PV="${PV/_rc/.rc}"
 MY_P="${PN}-${MY_PV}"
@@ -44,7 +45,7 @@ if [[ ${PV} != *9999 ]]; then
 			doc? (
 			${SRC_URI_KORG}/${PN}-htmldocs-${DOC_VER}.tar.${SRC_URI_SUFFIX}
 			)"
-	[[ "${PV}" = *_rc* ]] || \
+	[[ "${PV}" == *_rc* ]] || \
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sh ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 fi
 
@@ -109,8 +110,8 @@ DEPEND="${CDEPEND}
 	doc? (
 		app-text/asciidoc
 		app-text/docbook2X
-		sys-apps/texinfo
 		app-text/xmlto
+		sys-apps/texinfo
 	)
 	nls? ( sys-devel/gettext )
 	test? (	app-crypt/gnupg	)"
@@ -137,7 +138,7 @@ REQUIRED_USE="
 
 PATCHES=(
 	# bug #350330 - automagic CVS when we don't want it is bad.
-	##"${FILESDIR}"/git-2.22.0_rc0-optional-cvs.patch
+	"${FILESDIR}"/git-2.18.0_rc1-optional-cvs.patch
 
 	"${FILESDIR}"/git-2.2.0-svn-fe-linking.patch
 
@@ -369,8 +370,10 @@ src_compile() {
 		use iconv && use !elibc_glibc && nlsiconv+=( -liconv )
 		git_emake EXTLIBS="${EXTLIBS} ${nlsiconv[@]}" \
 			|| die "emake svn-fe failed"
-		git_emake svn-fe.1 || die "emake svn-fe.1 failed"
 		if use doc ; then
+			# svn-fe.1 requires the full USE=doc dependency stack
+			git_emake svn-fe.1 \
+				|| die "emake svn-fe.1 failed"
 			git_emake svn-fe.html \
 				|| die "svn-fe.html failed"
 		fi
@@ -490,9 +493,10 @@ src_install() {
 	if use subversion ; then
 		pushd contrib/svn-fe &>/dev/null || die
 		dobin svn-fe
-		doman svn-fe.1
 		dodoc svn-fe.txt
 		if use doc ; then
+			# Do not move svn-fe.1 outside USE=doc!
+			doman svn-fe.1
 			docinto html
 			dodoc svn-fe.html
 		fi
