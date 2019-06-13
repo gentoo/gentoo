@@ -16,7 +16,7 @@ SRC_URI="https://github.com/${PN}/${PN}/releases/download/${P}/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ~ppc ~ppc64 s390 ~sh ~sparc x86 ~amd64-fbsd"
-IUSE="afs +berkdb caps gdbm hdb-ldap ipv6 libressl +lmdb otp +pkinit selinux ssl static-libs test X"
+IUSE="afs +berkdb caps gdbm hdb-ldap ipv6 libressl +lmdb otp selinux ssl static-libs test X"
 
 CDEPEND="
 	ssl? (
@@ -96,12 +96,12 @@ multilib_src_configure() {
 		--with-sqlite3="${EPREFIX}"/usr
 		--libexecdir="${EPREFIX}"/usr/sbin
 		--enable-pthread-support
+		--enable-kx509
+		--enable-pk-init
 		$(use_enable afs afs-support)
 		$(use_enable gdbm ndbm-db)
 		$(use_enable lmdb mdb-db)
 		$(use_enable otp)
-		$(use_enable pkinit kx509)
-		$(use_enable pkinit pk-init)
 		$(use_enable static-libs static)
 		$(multilib_native_use_with caps capng)
 		$(multilib_native_use_with hdb-ldap openldap "${EPREFIX}"/usr)
