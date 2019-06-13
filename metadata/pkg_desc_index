@@ -8209,7 +8209,7 @@ media-sound/pavumeter 0.9.3-r1: PulseAudio Volume Meter, simple GTK volume meter
 media-sound/peercast 0.1218-r2: A client and server for Peercast P2P-radio network
 media-sound/pianobar 2019.01.25: A console-based replacement for Pandora's flash player
 media-sound/picard 2.0.4: Cross-platform music tagger
-media-sound/playerctl 0.5.0 2.0.2: A CLI utility to control media players over MPRIS
+media-sound/playerctl 2.0.2: A CLI utility to control media players over MPRIS
 media-sound/pnmixer 0.7.2: Volume mixer for the system tray
 media-sound/podracer 1.4-r2: A simple podcast aggregator, designed for cron
 media-sound/positron 1.1-r1: Synchronization manager for the Neuros Audio Computer
