@@ -90,8 +90,6 @@ src_install() {
 	cd "${ED}" || die
 	unpacker
 
-	eapply "${FILESDIR}"/chrome-gnome.patch
-
 	rm -r etc usr/share/menu || die
 	mv usr/share/doc/${MY_PN} usr/share/doc/${PF} || die
 
