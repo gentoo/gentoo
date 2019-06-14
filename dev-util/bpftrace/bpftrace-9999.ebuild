@@ -22,10 +22,11 @@ LICENSE="Apache-2.0"
 SLOT="0"
 IUSE="test"
 
-COMMON_DEPEND="sys-devel/clang:=
+COMMON_DEPEND="dev-util/systemtap
+	sys-devel/clang:=
 	dev-libs/libbpf:=
 	>=sys-devel/llvm-3.7.1:=[llvm_targets_BPF(+)]
-	>=dev-util/bcc-0.9.0:=
+	>=dev-util/bcc-0.10.0:=
 	virtual/libelf"
 DEPEND="${COMMON_DEPEND}
 	test? ( dev-cpp/gtest )"
@@ -37,9 +38,8 @@ BDEPEND+="dev-util/cmake
 QA_DT_NEEDED="/usr/lib.*/libbpftraceresources.so"
 
 PATCHES=(
-	"${FILESDIR}/bpftrace-0.9_pre20190311-install-libs.patch"
+	"${FILESDIR}/bpftrace-0.10_pre20190614-install-libs.patch"
 	"${FILESDIR}/bpftrace-mandir.patch"
-	"${FILESDIR}/bpftrace-0.9-llvm-8.patch"
 )
 
 # lots of fixing needed
