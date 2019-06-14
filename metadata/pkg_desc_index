@@ -3315,7 +3315,7 @@ dev-lisp/asdf 3.1.5: ASDF is Another System Definition Facility for Common Lisp
 dev-lisp/cl-ppcre 2.0.11: CL-PPCRE is a portable regular expression library for Common Lisp.
 dev-lisp/cl-ppcre-unicode 2.0.11: CL-PPCRE is a portable regular expression library for Common Lisp.
 dev-lisp/cl-unicode 0.1.5: Provides Common Lisp implementations with knowledge about Unicode characters.
-dev-lisp/clisp 2.48-r1 2.49-r9: A portable, bytecode-compiled implementation of Common Lisp
+dev-lisp/clisp 2.48-r1 2.49-r9 2.49.92: A portable, bytecode-compiled implementation of Common Lisp
 dev-lisp/clozurecl 1.11.5: Common Lisp implementation, derived from Digitool's MCL product
 dev-lisp/ecls 16.1.3: ECL is an embeddable Common Lisp implementation
 dev-lisp/flexi-streams 1.0.16: Flexible bivalent streams for Common Lisp
@@ -10235,7 +10235,7 @@ sys-fs/dmraid 1.0.0_rc16-r3: Device-mapper RAID tool and library
 sys-fs/dosfstools 4.1: DOS filesystem tools - provides mkdosfs, mkfs.msdos, mkfs.vfat
 sys-fs/e2fsprogs 1.44.5: Standard EXT2/EXT3/EXT4 filesystem utilities
 sys-fs/e4rat 0.2.4_pre20141201-r1: Toolset to accelerate the boot process and application startup
-sys-fs/encfs 1.9.2 1.9.4: An implementation of encrypted filesystem in user-space using FUSE
+sys-fs/encfs 1.9.2 1.9.4 1.9.5: An implementation of encrypted filesystem in user-space using FUSE
 sys-fs/eudev 3.2.5: Linux dynamic and persistent device naming support (aka userspace devfs)
 sys-fs/exfat-utils 1.2.8 1.3.0: exFAT filesystem utilities
 sys-fs/ext4magic 0.3.2-r1: Tool for recovery of deleted or overwritten files on ext3/ext4 filesystems
