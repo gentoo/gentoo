@@ -1,6 +1,10 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Patrick McLean <chutzpah@gentoo.org> (14 June 2019)
+# test deps not keyworded
+dev-util/bcc test
+
 # Georgy Yakovlev <gyakovlev@gentoo.org> (01 June 2019)
 # not yet keyworded
 dev-java/openjdk javafx
