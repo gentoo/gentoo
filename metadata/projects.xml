@@ -2977,10 +2977,10 @@
     <subproject ref="devmanual@gentoo.org"/>
     <subproject ref="pms@gentoo.org"/>
     <subproject ref="treecleaner@gentoo.org"/>
-    <member is-lead="1">
+    <member>
       <email>amynka@gentoo.org</email>
       <name>Amy Liffey</name>
-      <role>Lead</role>
+      <role>Developer</role>
     </member>
     <member>
       <email>mgorny@gentoo.org</email>
@@ -2992,15 +2992,15 @@
       <name>Sergey Popov</name>
       <role>Developer</role>
     </member>
-    <member>
+    <member is-lead="1">
       <email>soap@gentoo.org</email>
       <name>David Seifert</name>
-      <role>Developer</role>
+      <role>Our Glorious Lead</role>
     </member>
     <member>
       <email>ulm@gentoo.org</email>
       <name>Ulrich Müller</name>
-      <role>Deputy lead</role>
+      <role>Developer</role>
     </member>
     <member>
       <email>williamh@gentoo.org</email>
