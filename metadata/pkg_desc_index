@@ -777,7 +777,7 @@ app-emulation/vkd3d 1.1: D3D12 to Vulkan translation library
 app-emulation/wine-desktop-common 20150204: Various desktop menu items and icons for wine
 app-emulation/wine-gecko 2.47-r1: A Mozilla Gecko based version of Internet Explorer for Wine
 app-emulation/wine-mono 4.6.4 4.7.1 4.7.5: Wine Mono is a replacement for the .NET runtime and class libraries in Wine
-app-emulation/wine-vanilla 3.0.3 4.0: Free implementation of Windows(tm) on Unix, without external patchsets
+app-emulation/wine-vanilla 4.0: Free implementation of Windows(tm) on Unix, without external patchsets
 app-emulation/winetricks 20190310: Easy way to install DLLs needed to work around problems in Wine
 app-emulation/x48 0.6.4-r1: HP48 Calculator Emulator
 app-emulation/xen 4.10.3-r1: The Xen virtual machine monitor
