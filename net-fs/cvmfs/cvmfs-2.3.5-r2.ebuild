@@ -22,7 +22,7 @@ CDEPEND="
 	>=dev-cpp/sparsehash-1.12
 	dev-db/sqlite:3=
 	dev-libs/leveldb:0=
-	dev-libs/openssl:1.0.0
+	dev-libs/openssl:0
 	net-libs/pacparser:0=
 	net-misc/curl:0[adns]
 	sys-apps/attr
