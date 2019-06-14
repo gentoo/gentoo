@@ -69,7 +69,6 @@ src_configure() {
 	if use berkdb ; then
 		myconf+=(
 			--with-db-incdir=$(db_includedir)
-			--enable-popauth
 			--enable-query_cache
 			--enable-stats
 		)
