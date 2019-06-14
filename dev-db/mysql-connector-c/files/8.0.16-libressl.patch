@@ -1,4 +1,4 @@
-From ddaeb4c8ae76473263ebe1f711814eb977b0abbe Mon Sep 17 00:00:00 2001
+From 521750b438d96bef234b338901ff74f239b68061 Mon Sep 17 00:00:00 2001
 From: Stefan Strogin <steils@gentoo.org>
 Date: Sat, 8 Jun 2019 15:52:26 +0300
 Subject: [PATCH] Fix build with LibreSSL
@@ -20,8 +20,9 @@ Subject: [PATCH] Fix build with LibreSSL
  sql-common/client.cc                                      | 3 ++-
  sql/mysqld.cc                                             | 4 ++--
  sql/sys_vars.cc                                           | 8 ++++----
+ vio/viossl.cc                                             | 4 ++--
  vio/viosslfactories.cc                                    | 2 +-
- 12 files changed, 29 insertions(+), 19 deletions(-)
+ 13 files changed, 31 insertions(+), 21 deletions(-)
 
 diff --git a/cmake/ssl.cmake b/cmake/ssl.cmake
 index be3411a8916..95ed535f08a 100644
@@ -261,6 +262,28 @@ index b511c453f1e..8952922c1ff 100644
      ON_UPDATE(update_fips_mode),
  #else
      ON_UPDATE(NULL),
+diff --git a/vio/viossl.cc b/vio/viossl.cc
+index 97335eef321..e34b973f59e 100644
+--- a/vio/viossl.cc
++++ b/vio/viossl.cc
+@@ -507,7 +507,7 @@ static int ssl_do(struct st_VioSSLFd *ptr, Vio *vio, long timeout,
+ #if !defined(HAVE_WOLFSSL) && !defined(DBUG_OFF)
+     {
+       STACK_OF(SSL_COMP) *ssl_comp_methods = NULL;
+-      ssl_comp_methods = SSL_COMP_get_compression_methods();
++      ssl_comp_methods = (STACK_OF(SSL_COMP) *)SSL_COMP_get_compression_methods();
+       n = sk_SSL_COMP_num(ssl_comp_methods);
+       DBUG_PRINT("info", ("Available compression methods:\n"));
+       if (n == 0)
+@@ -515,7 +515,7 @@ static int ssl_do(struct st_VioSSLFd *ptr, Vio *vio, long timeout,
+       else
+         for (j = 0; j < n; j++) {
+           SSL_COMP *c = sk_SSL_COMP_value(ssl_comp_methods, j);
+-#if OPENSSL_VERSION_NUMBER < 0x10100000L
++#if OPENSSL_VERSION_NUMBER < 0x10100000L || defined(LIBRESSL_VERSION_NUMBER)
+           DBUG_PRINT("info", ("  %d: %s\n", c->id, c->name));
+ #else  /* OPENSSL_VERSION_NUMBER < 0x10100000L */
+           DBUG_PRINT("info",
 diff --git a/vio/viosslfactories.cc b/vio/viosslfactories.cc
 index 1a88dc3ed1d..a273c9991e7 100644
 --- a/vio/viosslfactories.cc
@@ -275,5 +298,5 @@ index 1a88dc3ed1d..a273c9991e7 100644
    Set fips mode in openssl library,
    When we set fips mode ON/STRICT, it will perform following operations:
 -- 
-2.21.0
+2.22.0
 
