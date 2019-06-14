@@ -1458,7 +1458,7 @@
     <name>Gentoo Hardened</name>
     <url>https://wiki.gentoo.org/wiki/Project:Hardened</url>
     <description>Hardened Gentoo is a project which oversees the research, implementation, and maintenance of security oriented projects for Gentoo Linux.</description>
-    <subproject ref="gentoo-musl@lists.gentoo.org"/>
+    <subproject ref="musl@gentoo.org"/>
     <subproject ref="uclibc@gentoo.org"/>
     <subproject ref="integrity@gentoo.org"/>
     <subproject ref="rsbac@gentoo.org"/>
@@ -1510,7 +1510,7 @@
     </member>
   </project>
   <project>
-    <email>gentoo-musl@lists.gentoo.org</email>
+    <email>musl@gentoo.org</email>
     <name>Hardened musl</name>
     <url>https://wiki.gentoo.org/wiki/Project:Hardened_musl</url>
     <description>This subproject aims to port the hardened tool chain to musl based systems for a variety of architectures. The project treats musl as an alternative to glibc and uClibc, and not necessarily as "embedded".</description>
@@ -2985,7 +2985,7 @@
     <member>
       <email>mgorny@gentoo.org</email>
       <name>Michał Górny</name>
-      <role>Developer</role>
+      <role>Deputy Lead</role>
     </member>
     <member>
       <email>pinkbyte@gentoo.org</email>
