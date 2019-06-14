@@ -1,0 +1,61 @@
+From 886af393dab0f6efe0f8bafc03522f25c15e0ba6 Mon Sep 17 00:00:00 2001
+From: Alexander Reinholdt <alexander.reinholdt@kdemail.net>
+Date: Thu, 13 Jun 2019 20:57:38 +0200
+Subject: It was reported that Smb4K mounts shares read-only that were
+ previously accessible read-write. It turns out that the default for the "CIFS
+ Unix extensions" setting were not chosen very carefully. This commit changes
+ the default values back, so that mounting should work again as expected.
+
+(cherry picked from commit d3b89af5410ea8d4cb5f34921d48fdda486990f2)
+---
+ core/smb4kmountsettings_linux.kcfg | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/core/smb4kmountsettings_linux.kcfg b/core/smb4kmountsettings_linux.kcfg
+index 4ad329c..7e046dd 100644
+--- a/core/smb4kmountsettings_linux.kcfg
++++ b/core/smb4kmountsettings_linux.kcfg
+@@ -11,12 +11,12 @@
+     <entry name="CifsUnixExtensionsSupport" type="Bool">
+       <label>All or most of the servers support the CIFS Unix extensions</label>
+       <whatsthis>Most versions of Samba support the CIFS Unix or POSIX extensions. For these servers, some options are not needed, because the right values are negotiated during the mount process. For other servers, you might want to uncheck this option, so that predefined values can be passed to the server. Please note that if your computer is located in a Windows dominated network neighborhood with only a few Samba servers, you can safely uncheck this option and define custom options for the Samba servers.</whatsthis>
+-      <default>true</default>
++      <default>false</default>
+     </entry>
+     <entry name="UseUserId" type="Bool">
+       <label>User ID:</label>
+       <whatsthis>This is the user ID (a number) that the files and directories of the mounted share will have. If you are using the CIFS filesystem under Linux and the remote server supports the CIFS Unix Extensions, this setting will be ignored unless the assignment of the user ID is forced.</whatsthis>
+-      <default>false</default>
++      <default>true</default>
+     </entry>
+     <entry name="UserId" type="String">
+       <whatsthis>This is the user ID (a number) that the files and directories of the mounted share will have. If you are using the CIFS filesystem under Linux and the remote server supports the CIFS Unix Extensions, this setting will be ignored unless the assignment of the user ID is forced.</whatsthis>
+@@ -25,7 +25,7 @@
+     <entry name="UseGroupId" type="Bool">
+       <label>Group ID:</label>
+       <whatsthis>This is the group ID (a number) that the files and directories of the mounted share will have. If you are using the CIFS filesystem under Linux and the remote server supports the CIFS Unix Extensions, this setting will be ignored unless the assignment of the group ID is forced.</whatsthis>
+-      <default>false</default>
++      <default>true</default>
+     </entry>
+     <entry name="GroupId" type="String">
+       <whatsthis>This is the group ID (a number) that the files and directories of the mounted share will have. If you are using the CIFS filesystem under Linux and the remote server supports the CIFS Unix Extensions, this setting will be ignored unless the assignment of the group ID is forced.</whatsthis>
+@@ -34,7 +34,7 @@
+     <entry name="UseFileMode" type="Bool">
+       <label>File mode:</label>
+       <whatsthis>This is the file mode that will be used for creating files. It must be defined in octal. In case the CIFS file system is used, this setting only takes effect if the server does not support the CIFS Unix Extensions.</whatsthis>
+-      <default>false</default>
++      <default>true</default>
+     </entry>
+     <entry name="FileMode" type="String">
+       <whatsthis>This is the filemode that will be used for creating files. It must be defined in octal. In case the CIFS file system is used, this setting only takes effect if the server does not support the CIFS Unix Extensions.</whatsthis>
+@@ -43,7 +43,7 @@
+     <entry name="UseDirectoryMode" type="Bool">
+       <label>Directory mode:</label>
+       <whatsthis>This is the directory mode that will be used for creating directories. It must be defined in octal. In case the CIFS file system is used, this setting only takes effect if the server does not support the CIFS Unix Extensions.</whatsthis>
+-      <default>false</default>
++      <default>true</default>
+     </entry>
+     <entry name="DirectoryMode" type="String">
+       <whatsthis>This is the directory mode that will be used for creating directories. It must be defined in octal. In case the CIFS file system is used, this setting only takes effect if the server does not support the CIFS Unix Extensions.</whatsthis>
+-- 
+cgit v1.1

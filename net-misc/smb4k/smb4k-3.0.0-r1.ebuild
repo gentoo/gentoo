@@ -50,6 +50,8 @@ RDEPEND="${DEPEND}
 	)
 "
 
+PATCHES=( "${FILESDIR}/${P}-fix-mount-readwrite-shares.patch" )
+
 src_configure(){
 	local mycmakeargs=(
 		-DINSTALL_PLASMOID=$(usex plasma)
