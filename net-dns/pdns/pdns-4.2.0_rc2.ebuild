@@ -18,9 +18,9 @@ KEYWORDS="" # ~amd64 ~x86
 # oracle: dito (need Oracle Client Libraries)
 # xdb: (almost) dead, surely not supported
 
-IUSE="debug doc geoip ldap libressl lua luajit mydns mysql opendbx postgres protobuf remote sodium sqlite systemd tools tinydns test"
+IUSE="debug doc geoip ldap libressl lua luajit lua-records mydns mysql opendbx postgres protobuf remote sodium sqlite systemd tools tinydns test"
 
-REQUIRED_USE="mydns? ( mysql )"
+REQUIRED_USE="lua-records? ( lua ) mydns? ( mysql )"
 
 RDEPEND="
 	libressl? ( dev-libs/libressl:= )
@@ -30,6 +30,7 @@ RDEPEND="
 		!luajit? ( dev-lang/lua:= )
 		luajit? ( dev-lang/luajit:= )
 	)
+	lua-records? ( >=net-misc/curl-7.21.3 )
 	mysql? ( dev-db/mysql-connector-c )
 	postgres? ( dev-db/postgresql:= )
 	ldap? ( >=net-nds/openldap-2.0.27-r4 app-crypt/mit-krb5 )
@@ -70,6 +71,7 @@ src_configure() {
 		--with-dynmodules="${dynmodules}" \
 		--with-mysql-lib=/usr/$(get_libdir) \
 		$(use_enable debug verbose-logging) \
+		$(use_enable lua-records) \
 		$(use_enable test unit-tests) \
 		$(use_enable tools) \
 		$(use_enable systemd) \
