@@ -1,0 +1,50 @@
+diff --git a/Makefile b/src/Makefile
+index 82a650c..549779d 100644
+--- a/Makefile
++++ b/src/Makefile
+@@ -36,7 +36,10 @@ OBJDIR ?= .
+ OBJS := $(addprefix $(OBJDIR)/,bpf.o btf.o libbpf.o libbpf_errno.o netlink.o \
+ 	nlattr.o str_error.o libbpf_probes.o bpf_prog_linfo.o xsk.o)
+ 
+-LIBS := $(OBJDIR)/libbpf.a
++ifdef BUILD_STATIC
++	LIBS := $(OBJDIR)/libbpf.a
++endif
++
+ ifndef BUILD_STATIC_ONLY
+ 	LIBS += $(OBJDIR)/libbpf.so \
+ 		$(OBJDIR)/libbpf.so.$(VERSION) \
+@@ -63,7 +66,7 @@ endif
+ PREFIX ?= /usr
+ LIBDIR ?= $(PREFIX)/$(LIBSUBDIR)
+ INCLUDEDIR ?= $(PREFIX)/include
+-UAPIDIR ?= $(PREFIX)/include
++UAPIDIR ?= $(PREFIX)/include/bpf/uapi
+ 
+ all: $(LIBS) $(PC_FILE)
+ 
+@@ -84,6 +87,7 @@ $(OBJDIR)/libbpf.so.$(LIBBPF_VERSION): $(OBJS)
+ $(OBJDIR)/libbpf.pc:
+ 	sed -e "s|@PREFIX@|$(PREFIX)|" \
+ 		-e "s|@LIBDIR@|$(LIBDIR)|" \
++		-e "s|@UAPIDIR@|$(UAPIDIR)|" \
+ 		-e "s|@VERSION@|$(LIBBPF_VERSION)|" \
+ 		< libbpf.pc.template > $@
+ 
+diff --git a/libbpf.pc.template b/src/libbpf.pc.template
+index ac17fce..6d385d9 100644
+--- a/libbpf.pc.template
++++ b/src/libbpf.pc.template
+@@ -3,10 +3,11 @@
+ prefix=@PREFIX@
+ libdir=@LIBDIR@
+ includedir=${prefix}/include
++uapidir=@UAPIDIR@
+ 
+ Name: libbpf
+ Description: BPF library
+ Version: @VERSION@
+ Libs: -L${libdir} -lbpf
+ Requires.private: libelf
+-Cflags: -I${includedir}
++Cflags: -I${includedir} -I${uapidir}
