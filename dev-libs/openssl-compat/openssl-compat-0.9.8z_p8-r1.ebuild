@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # this ebuild is only for the libcrypto.so.0.9.8 and libssl.so.0.9.8 SONAME for ABI compat
@@ -10,7 +10,7 @@ inherit eutils flag-o-matic toolchain-funcs multilib multilib-minimal
 #PLEVEL=$(printf "\\$(printf '%03o' $((${PV##*_p} + 96)))")
 PLEVEL='h' # _p8 -> tr '[1-9]' '[a-i]' -> 'h'
 MY_PV=${PV/_p*/${PLEVEL}}
-MY_P=${PN}-${MY_PV}
+MY_P=openssl-${MY_PV}
 S="${WORKDIR}/${MY_P}"
 DESCRIPTION="Toolkit for SSL v2/v3 and TLS v1"
 HOMEPAGE="https://www.openssl.org/"
@@ -25,7 +25,8 @@ RESTRICT="!bindist? ( bindist )"
 RDEPEND="gmp? ( >=dev-libs/gmp-5.1.3-r1[${MULTILIB_USEDEP}] )
 	zlib? ( >=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}] )
 	kerberos? ( >=app-crypt/mit-krb5-1.11.4[${MULTILIB_USEDEP}] )
-	!=dev-libs/openssl-0.9.8*:0"
+	!=dev-libs/openssl-0.9.8*:0
+	!dev-libs/openssl:0.9.8"
 DEPEND="${RDEPEND}
 	>=dev-lang/perl-5
 	test? (
@@ -37,10 +38,10 @@ DEPEND="${RDEPEND}
 DOCS=()
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-0.9.8e-bsd-sparc64.patch
-	"${FILESDIR}"/${PN}-0.9.8h-ldflags.patch #181438
-	"${FILESDIR}"/${PN}-0.9.8m-binutils.patch #289130
-	"${FILESDIR}"/${PN}-0.9.8z_p8-perl-5.26.patch
+	"${FILESDIR}"/openssl-0.9.8e-bsd-sparc64.patch
+	"${FILESDIR}"/openssl-0.9.8h-ldflags.patch #181438
+	"${FILESDIR}"/openssl-0.9.8m-binutils.patch #289130
+	"${FILESDIR}"/openssl-0.9.8z_p8-perl-5.26.patch
 )
 
 src_prepare() {

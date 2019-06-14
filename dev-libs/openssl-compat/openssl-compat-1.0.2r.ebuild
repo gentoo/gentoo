@@ -9,14 +9,14 @@ inherit eutils flag-o-matic toolchain-funcs multilib multilib-minimal
 # which got fixed with this release.
 # Please use 1.7 version number when rolling a new tarball!
 PATCH_SET="openssl-1.0.2-patches-1.5"
-MY_P=${P/_/-}
+MY_P=openssl-${PV/_/-}
 DESCRIPTION="full-strength general purpose cryptography library (including SSL and TLS)"
 HOMEPAGE="https://www.openssl.org/"
 SRC_URI="mirror://openssl/source/${MY_P}.tar.gz
 	!vanilla? (
 		mirror://gentoo/${PATCH_SET}.tar.xz
-		https://dev.gentoo.org/~chutzpah/dist/${PN}/${PATCH_SET}.tar.xz
-		https://dev.gentoo.org/~whissi/dist/${PN}/${PATCH_SET}.tar.xz
+		https://dev.gentoo.org/~chutzpah/dist/openssl/${PATCH_SET}.tar.xz
+		https://dev.gentoo.org/~whissi/dist/openssl/${PATCH_SET}.tar.xz
 		https://dev.gentoo.org/~polynomial-c/dist/${PATCH_SET}.tar.xz
 	)"
 
@@ -30,7 +30,8 @@ RDEPEND=">=app-misc/c_rehash-1.7-r1
 	gmp? ( >=dev-libs/gmp-5.1.3-r1[static-libs(+)?,${MULTILIB_USEDEP}] )
 	zlib? ( >=sys-libs/zlib-1.2.8-r1[static-libs(+)?,${MULTILIB_USEDEP}] )
 	kerberos? ( >=app-crypt/mit-krb5-1.11.4[${MULTILIB_USEDEP}] )
-	!=dev-libs/openssl-1.0.2*:0"
+	!=dev-libs/openssl-1.0.2*:0
+	!dev-libs/openssl:1.0.0"
 DEPEND="${RDEPEND}
 	>=dev-lang/perl-5
 	sctp? ( >=net-misc/lksctp-tools-1.0.12 )
@@ -59,7 +60,7 @@ FEDORA_SRC_URI=()
 FEDORA_SOURCE=( $SOURCE1 $SOURCE12 $SOURCE13 )
 FEDORA_PATCH=( $PATCH1 $PATCH37 )
 for i in "${FEDORA_SOURCE[@]}" ; do
-	FEDORA_SRC_URI+=( "${FEDORA_GIT_BASE}/${i}?h=${FEDORA_GIT_BRANCH} -> ${P}_${i}" )
+	FEDORA_SRC_URI+=( "${FEDORA_GIT_BASE}/${i}?h=${FEDORA_GIT_BRANCH} -> openssl-${PV}_${i}" )
 done
 for i in "${FEDORA_PATCH[@]}" ; do # Already have a version prefix
 	FEDORA_SRC_URI+=( "${FEDORA_GIT_BASE}/${i}?h=${FEDORA_GIT_BRANCH} -> ${i}" )
@@ -76,7 +77,7 @@ src_prepare() {
 	if use bindist; then
 		# This just removes the prefix, and puts it into WORKDIR like the RPM.
 		for i in "${FEDORA_SOURCE[@]}" ; do
-			cp -f "${DISTDIR}"/"${P}_${i}" "${WORKDIR}"/"${i}" || die
+			cp -f "${DISTDIR}"/"openssl-${PV}_${i}" "${WORKDIR}"/"${i}" || die
 		done
 		# .spec %prep
 		bash "${WORKDIR}"/"${SOURCE1}" || die

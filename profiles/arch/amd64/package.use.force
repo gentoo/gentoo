@@ -36,3 +36,4 @@ media-gfx/iscan-plugin-gt-f500 minimal
 # <blubb@gentoo.org> (23 Oct 2006)
 # upstream forces sse2 on regardless of what the use flag is
 dev-libs/openssl cpu_flags_x86_sse2
+dev-libs/openssl-compat cpu_flags_x86_sse2
