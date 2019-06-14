@@ -12,6 +12,7 @@ standards documents. Furthermore, PowerDNS interfaces with almost any database.
 </longdescription>
 <use>
 	<flag name="botan">Make it possible to use the <pkg>dev-libs/botan</pkg> library for crypto-related stuff (like DNSSec) which can be significantly faster than PolarSSL.</flag>
+	<flag name="lua-records">Enable LUA records.</flag>
 	<flag name="mydns">Making it possible to use a MyDNS MySQL database with PowerDNS (not recommended for new deployments).</flag>
 	<flag name="opendbx">Use a database supported by <pkg>dev-db/opendbx</pkg> as backend.</flag>
 	<flag name="protobuf">Enable support for <pkg>dev-libs/protobuf</pkg>.</flag>
