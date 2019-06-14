@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<longdescription lang="en">
+		The Freedoom project aims to create a complete free content first person
+		shooter game. But Freedoom by itself is just the raw material for a
+		game: it must be paired with a compatible game engine to be played.
+
+		id Software released the source code to their classic game, Doom, under
+		the GNU General Public License. This means that the program code that
+		powers Doom is free; Freedoom complements this with free levels,
+		artwork, sound effects and music to make a completely free game.
+
+		Phase 1 is the first part of the single-player game, containing four
+		chapters which are nine levels each, smoothly paced for beginner
+		players. It is compatible with mods for the original Doom and The
+		Ultimate Doom.
+
+		Phase 2 is the second major part of the single-player game, a massive
+		32-level chapter expanding upon the same concepts present in Phase 1, as
+		well as containing additional monsters and the double-barreled shotgun!
+		The levels in this game tend to demand more skillful play than the
+		previous chapters. It is compatible with mods for Doom II.
+	</longdescription>
+	<maintainer type="person">
+		<email>vilhelm.gray@gmail.com</email>
+		<name>William Breathitt Gray</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
+	<upstream>
+		<bugs-to>https://github.com/freedoom/freedoom/issues</bugs-to>
+		<doc lang="en">https://freedoom.github.io</doc>
+		<remote-id type="github">freedoom/freedoom</remote-id>
+	</upstream>
+</pkgmetadata>
