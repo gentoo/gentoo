@@ -31,7 +31,8 @@ LIB_DEPEND_MINIMAL="
 RDEPEND="!static? (
 		${LIB_DEPEND_MINIMAL//\[static-libs(+)]}
 		!minimal? ( ${LIB_DEPEND//\[static-libs(+)]} )
-	)"
+	)
+	elibc_musl? ( sys-libs/fts-standalone )"
 DEPEND="${RDEPEND}
 	static? (
 		${LIB_DEPEND_MINIMAL}
