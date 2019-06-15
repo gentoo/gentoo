@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Mikle Kolyada <zlogene@gentoo.org> (15 Jun 2019)
+# Part of dev-texlive/texlive-latexextra
+# does not work with utf-8 (bug #688096)
+# removal in 30 days
+dev-tex/quotchap
+
 # Miroslav Šulc <fordfrog@gentoo.org> (12 Jun 2019)
 # Depends on >=virtual/{jdk,jre}-11 which is masked
 =www-servers/tomcat-9.0.21
