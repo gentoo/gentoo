@@ -30,9 +30,9 @@ COMMON_DEPEND="media-libs/vulkan-loader:=[${MULTILIB_USEDEP},wayland?,X?]
 		x11-libs/libXrandr:=[${MULTILIB_USEDEP}]
 	)"
 
-BDEPEND="cube? ( dev-util/glslang:=[${MULTILIB_USEDEP}] )"
-DEPEND="${PYTHON_DEPS}
-	${COMMON_DEPEND}"
+BDEPEND="${PYTHON_DEPS}
+	cube? ( dev-util/glslang:=[${MULTILIB_USEDEP}] )"
+DEPEND="${COMMON_DEPEND}"
 RDEPEND="${COMMON_DEPEND}"
 
 # Vulkaninfo does not support wayland
