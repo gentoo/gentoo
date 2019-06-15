@@ -1,9 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-
-inherit autotools
+EAPI=7
 
 DESCRIPTION="Pidgin Plug-in SIPE (Sip Exchange Protocol)"
 HOMEPAGE="http://sipe.sourceforge.net/"
@@ -43,11 +41,6 @@ DEPEND="dev-util/intltool
 	virtual/pkgconfig
 	${RDEPEND}
 "
-
-src_prepare() {
-	default
-	eautoreconf
-}
 
 src_configure() {
 	econf \
