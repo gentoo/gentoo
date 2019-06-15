@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 PYTHON_COMPAT=( python3_{5,6} )
 
 if [[ "${PV}" == "9999" ]]; then
@@ -23,16 +23,17 @@ HOMEPAGE="https://github.com/KhronosGroup/Vulkan-Tools"
 LICENSE="Apache-2.0"
 SLOT="0"
 IUSE="+cube +vulkaninfo X wayland"
-
-DEPEND="${PYTHON_DEPS}
-	cube? ( dev-util/glslang:=[${MULTILIB_USEDEP}] )
-	>=dev-util/vulkan-headers-1.1.106
-	media-libs/vulkan-loader:=[${MULTILIB_USEDEP},wayland?,X?]
+COMMON_DEPEND="media-libs/vulkan-loader:=[${MULTILIB_USEDEP},wayland?,X?]
 	wayland? ( dev-libs/wayland:=[${MULTILIB_USEDEP}] )
 	X? (
 		x11-libs/libX11:=[${MULTILIB_USEDEP}]
 		x11-libs/libXrandr:=[${MULTILIB_USEDEP}]
-	   )"
+	)"
+
+BDEPEND="cube? ( dev-util/glslang:=[${MULTILIB_USEDEP}] )"
+DEPEND="${PYTHON_DEPS}
+	${COMMON_DEPEND}"
+RDEPEND="${COMMON_DEPEND}"
 
 # Vulkaninfo does not support wayland
 REQUIRED_USE="|| ( X wayland )
