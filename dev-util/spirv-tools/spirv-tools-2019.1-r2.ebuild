@@ -4,15 +4,15 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{5,6,7} )
 
-inherit cmake-multilib cmake-utils git-r3
+inherit cmake-multilib cmake-utils python-any-r1
 
 DESCRIPTION="Provides an API and commands for processing SPIR-V modules"
 HOMEPAGE="https://github.com/KhronosGroup/SPIRV-Tools"
-EGIT_REPO_URI="https://github.com/KhronosGroup/SPIRV-Tools.git"
-SRC_URI=""
+SRC_URI="https://github.com/KhronosGroup/SPIRV-Tools/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 # Tests fail upon finding symbols that do not match a regular expression
 # in the generated library. Easily hit with non-standard compiler flags
 RESTRICT="test"
@@ -21,6 +21,10 @@ DEPEND=""
 RDEPEND=""
 BDEPEND="${PYTHON_DEPS}
 	>=dev-util/spirv-headers-1.3.4_pre20190302"
+
+EGIT_COMMIT="2297d4a3dfcbfd2a8b4312fab055ae26e3289fd3"
+S="${WORKDIR}/SPIRV-Tools-${PV}"
+PATCHES=( "${FILESDIR}"/${PN}-2019.1-Fix-vertex-instrumentation.patch )
 
 multilib_src_configure() {
 	local mycmakeargs=(
@@ -33,8 +37,7 @@ multilib_src_configure() {
 
 multilib_src_install() {
 	cmake-utils_src_install
-
-	# create a header file with the commit hash of the current revision
-	# vulkan-tools needs this to build
-	echo "${EGIT_VERSION}" > "${D}/usr/include/${PN}/${PN}-commit.h" || die
+	echo "${EGIT_COMMIT}" > "${PN}-commit.h" || die
+	insinto /usr/include/"${PN}"
+	doins  "${PN}-commit.h"
 }
