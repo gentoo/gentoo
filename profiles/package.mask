@@ -29,6 +29,13 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (15 Jun 2019)
+# Abandoned upstream, last release 8 years ago,
+# multiple bugs, fails with boost 1.70 and
+# openssl 1.1, removal in 30 days
+# Bug #561314, #594894, #672090, #674606.
+net-analyzer/sslsniff
+
 # Mikle Kolyada <zlogene@gentoo.org> (15 Jun 2019)
 # Part of dev-texlive/texlive-latexextra
 # does not work with utf-8 (bug #688096)
