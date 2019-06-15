@@ -28,7 +28,7 @@ IUSE="doc fortran mpi python test"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 RDEPEND="
-	>=sci-libs/hdf5-1.10.0[fortran=,mpi=]
+	>=sci-libs/hdf5-1.10.2:=[fortran=,mpi=]
 	mpi? ( virtual/mpi[fortran=] )
 	python? ( ${PYTHON_DEPS} )
 "
