@@ -1,0 +1,14 @@
+DEFINED_PHASES=install postinst prerm unpack
+DEPEND=office_implementation_libreoffice? ( || ( app-office/libreoffice app-office/libreoffice-bin ) ) office_implementation_openoffice? ( app-office/openoffice-bin ) app-arch/unzip
+DESCRIPTION=LaTeX Equation Editor for LibreOffice
+EAPI=7
+HOMEPAGE=http://roland65.free.fr/texmaths/
+IUSE=office_implementation_libreoffice office_implementation_openoffice
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=app-text/dvisvgm virtual/tex-base office_implementation_libreoffice? ( || ( app-office/libreoffice app-office/libreoffice-bin ) ) office_implementation_openoffice? ( app-office/openoffice-bin )
+REQUIRED_USE=|| ( office_implementation_libreoffice office_implementation_openoffice )
+SLOT=0
+SRC_URI=mirror://sourceforge/texmaths/TexMaths-0.48.oxt
+_eclasses_=office-ext-r1	d7582f0ee7df020fba46c135384aff44
+_md5_=bfd8f4d236f408d6d8feebc2946c48e4

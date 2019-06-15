@@ -5433,7 +5433,7 @@ dev-python/pyspf 2.0.12: Python implementation of the Sender Policy Framework (S
 dev-python/pysrt 1.1.1: Python library used to edit or create SubRip files
 dev-python/pystache 0.5.4: Mustache for Python
 dev-python/pysvn 1.8.0: Object-oriented python bindings for subversion
-dev-python/pytables 3.3.0 3.4.4: Hierarchical datasets for Python
+dev-python/pytables 3.4.4: Hierarchical datasets for Python
 dev-python/pyte 0.5.2-r2: Simple VTXXX-compatible terminal emulator
 dev-python/pytest 3.4.2 3.10.1: Simple powerful testing with Python
 dev-python/pytest-cache 1.0-r1: mechanisms for caching across test runs
@@ -9462,7 +9462,7 @@ sci-libs/geos 3.7.0: Geometry engine library for Geographic Information Systems
 sci-libs/gsl 1.16: The GNU Scientific Library
 sci-libs/gts 20121130: GNU Triangulated Surface Library
 sci-libs/hdf 4.2.8 4.2.13-r1: General purpose library and format for storing scientific data
-sci-libs/hdf5 1.8.18 1.10.5: General purpose library and file format for storing scientific data
+sci-libs/hdf5 1.10.5: General purpose library and file format for storing scientific data
 sci-libs/inchi 1.04: Program and library for generating standard and non-standard InChI and InChIKeys
 sci-libs/indilib 1.7.5: INDI Astronomical Control Protocol library
 sci-libs/itpp 4.3.1-r1: C++ library of mathematical, signal processing and communication
