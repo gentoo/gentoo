@@ -3778,17 +3778,17 @@
     <name>Undertakers</name>
     <url>https://wiki.gentoo.org/wiki/Project:Undertakers</url>
     <description>The Community Relations Undertakers project handles developer retirement, both when developers announce their retirement as well as due to developer inactivity.</description>
-    <member is-lead="1">
+    <member>
       <email>amynka@gentoo.org</email>
       <name>Amy Liffey</name>
       <role>Member</role>
     </member>
-    <member>
+    <member is-lead="1">
       <email>mgorny@gentoo.org</email>
       <name>Michał Górny</name>
-      <role>Member (who is not lead)</role>
+      <role>Lead</role>
     </member>
-    <member is-lead="1">
+    <member>
       <email>pacho@gentoo.org</email>
       <name>Pacho Ramos</name>
       <role>Member</role>
