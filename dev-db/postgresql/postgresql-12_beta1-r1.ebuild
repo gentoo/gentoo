@@ -184,7 +184,7 @@ src_install() {
 	emake DESTDIR="${D}" install
 	emake DESTDIR="${D}" install -C contrib
 
-	dodoc README HISTORY doc/{TODO,bug.template}
+	dodoc README HISTORY
 
 	# man pages are already built, but if we have the target make them,
 	# they'll be generated from source before being installed so we
