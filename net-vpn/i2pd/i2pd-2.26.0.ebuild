@@ -79,20 +79,10 @@ src_install() {
 	doins contrib/i2pd.conf
 	doins contrib/tunnels.conf
 
-	# grant i2pd group read and write access to config files
-	fowners "root:${I2PD_GROUP}" \
-		/etc/i2pd/i2pd.conf \
-		/etc/i2pd/tunnels.conf
-	fperms 660 \
-		/etc/i2pd/i2pd.conf \
-		/etc/i2pd/tunnels.conf
-
 	# working directory
 	keepdir /var/lib/i2pd
 	insinto /var/lib/i2pd
 	doins -r contrib/certificates
-	fowners "${I2PD_USER}:${I2PD_GROUP}" /var/lib/i2pd/
-	fperms 700 /var/lib/i2pd/
 
 	# add /var/lib/i2pd/certificates to CONFIG_PROTECT
 	doenvd "${FILESDIR}/99i2pd"
@@ -107,9 +97,19 @@ src_install() {
 	newins "${FILESDIR}/i2pd-2.6.0-r3.logrotate" i2pd
 }
 
-pkg_setup() {
+pkg_preinst() {
 	enewgroup "${I2PD_GROUP}"
 	enewuser "${I2PD_USER}" -1 -1 /var/lib/run/i2pd "${I2PD_GROUP}"
+
+	fowners "root:${I2PD_GROUP}" \
+		/etc/i2pd/i2pd.conf \
+		/etc/i2pd/tunnels.conf
+	fperms 660 \
+		/etc/i2pd/i2pd.conf \
+		/etc/i2pd/tunnels.conf
+
+	fowners "${I2PD_USER}:${I2PD_GROUP}" /var/lib/i2pd/
+	fperms 700 /var/lib/i2pd/
 }
 
 pkg_postinst() {
