@@ -119,7 +119,7 @@ BDEPEND="virtual/pkgconfig
 #	pax_kernel? ( sys-apps/attr )
 
 if [[ ${PV##*.} = 9999 ]]; then
-	DEPEND="${DEPEND}
+	BDEPEND="${BDEPEND}
 	sys-apps/texinfo"
 
 	RDEPEND="${RDEPEND}

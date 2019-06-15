@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -121,7 +121,7 @@ BDEPEND="virtual/pkgconfig
 #	pax_kernel? ( sys-apps/attr )
 
 if [[ ${PV##*.} = 9999 ]]; then
-	DEPEND="${DEPEND}
+	BDEPEND="${BDEPEND}
 	sys-apps/texinfo"
 fi
 
