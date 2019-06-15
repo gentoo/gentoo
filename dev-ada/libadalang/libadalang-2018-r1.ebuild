@@ -19,11 +19,12 @@ KEYWORDS="~amd64 ~x86"
 IUSE="gnat_2016 gnat_2017 +gnat_2018 gnat_2019 +shared static-libs"
 
 RDEPEND="dev-python/pyyaml
-	dev-ada/gnatcoll-bindings[gnat_2016=,gnat_2017=,gnat_2018=,gnat_2019=]
+	dev-ada/gnatcoll-bindings[gnat_2016(-)?,gnat_2017(-)?,gnat_2018(-)?,gnat_2019(-)?]
 	dev-ada/gnatcoll-bindings[iconv,shared=,static-libs=]
 	${PYTHON_DEPS}"
 DEPEND="${RDEPEND}
-	~dev-ada/langkit-2018"
+	~dev-ada/langkit-2018
+	dev-ada/gprbuild[gnat_2016(-)?,gnat_2017(-)?,gnat_2018(-)?,gnat_2019(-)?]"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 S="${WORKDIR}"/${MYP}
