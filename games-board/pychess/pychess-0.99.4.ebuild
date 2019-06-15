@@ -5,7 +5,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_{5,6} )
 PYTHON_REQ_USE="sqlite"
 
-inherit gnome2-utils xdg-utils distutils-r1
+inherit xdg-utils distutils-r1
 
 DESCRIPTION="A chess client for Gnome"
 HOMEPAGE="http://pychess.org/"
