@@ -12,9 +12,6 @@
   than 2 GB, and supports parallel I/O.
 </longdescription>
   <use>
-    <flag name="fortran2003">Enable new features that require Fortran 2003 
-  (http://www.hdfgroup.org/HDF5/doc/fortran/NewFeatures_F2003.pdf)</flag>
-    <flag name="hl">Enable high level API
-  (https://support.hdfgroup.org/HDF5/doc/HL/index.html)</flag>
+    <flag name="hl">Enable high level API (https://support.hdfgroup.org/HDF5/doc/HL/index.html)</flag>
   </use>
 </pkgmetadata>
