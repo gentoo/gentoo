@@ -23,7 +23,8 @@ RDEPEND="dev-python/pyyaml
 	dev-ada/gnatcoll-bindings[iconv,shared=,static-libs=]
 	${PYTHON_DEPS}"
 DEPEND="${RDEPEND}
-	>=dev-ada/langkit-2018"
+	dev-ada/gprbuild[gnat_2018(-)?,gnat_2019(-)?]
+	>=dev-ada/langkit-2019"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
