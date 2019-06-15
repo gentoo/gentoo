@@ -1,13 +1,13 @@
 DEFINED_PHASES=configure install setup test
-DEPEND=postgres_targets_postgres10? ( dev-db/postgresql:10= ) postgres_targets_postgres9_6? ( dev-db/postgresql:9.6= ) postgres_targets_postgres9_5? ( dev-db/postgresql:9.5= ) postgres_targets_postgres9_4? ( dev-db/postgresql:9.4= ) postgres_targets_postgres9_3? ( dev-db/postgresql:9.3= ) dev-libs/icu:= dev-libs/libxml2:= dev-qt/qtcore:5 dev-qt/qtnetwork:5 dev-qt/qtprintsupport:5 dev-qt/qtsvg:5 dev-qt/qtwidgets:5
+DEPEND=postgres_targets_postgres10? ( dev-db/postgresql:10= ) postgres_targets_postgres9_6? ( dev-db/postgresql:9.6= ) postgres_targets_postgres9_5? ( dev-db/postgresql:9.5= ) postgres_targets_postgres9_4? ( dev-db/postgresql:9.4= ) dev-libs/icu:= dev-libs/libxml2:= dev-qt/qtcore:5 dev-qt/qtnetwork:5 dev-qt/qtprintsupport:5 dev-qt/qtsvg:5 dev-qt/qtwidgets:5
 DESCRIPTION=PostgreSQL Database Modeler
 EAPI=6
 HOMEPAGE=https://pgmodeler.io
-IUSE=postgres_targets_postgres10 postgres_targets_postgres9_6 postgres_targets_postgres9_5 postgres_targets_postgres9_4 postgres_targets_postgres9_3
+IUSE=postgres_targets_postgres10 postgres_targets_postgres9_6 postgres_targets_postgres9_5 postgres_targets_postgres9_4
 KEYWORDS=~amd64
 LICENSE=GPL-3
-RDEPEND=postgres_targets_postgres10? ( dev-db/postgresql:10= ) postgres_targets_postgres9_6? ( dev-db/postgresql:9.6= ) postgres_targets_postgres9_5? ( dev-db/postgresql:9.5= ) postgres_targets_postgres9_4? ( dev-db/postgresql:9.4= ) postgres_targets_postgres9_3? ( dev-db/postgresql:9.3= ) dev-libs/icu:= dev-libs/libxml2:= dev-qt/qtcore:5 dev-qt/qtnetwork:5 dev-qt/qtprintsupport:5 dev-qt/qtsvg:5 dev-qt/qtwidgets:5
+RDEPEND=postgres_targets_postgres10? ( dev-db/postgresql:10= ) postgres_targets_postgres9_6? ( dev-db/postgresql:9.6= ) postgres_targets_postgres9_5? ( dev-db/postgresql:9.5= ) postgres_targets_postgres9_4? ( dev-db/postgresql:9.4= ) dev-libs/icu:= dev-libs/libxml2:= dev-qt/qtcore:5 dev-qt/qtnetwork:5 dev-qt/qtprintsupport:5 dev-qt/qtsvg:5 dev-qt/qtwidgets:5
 SLOT=0
 SRC_URI=https://github.com/pgmodeler/pgmodeler/archive/v0.9.1.tar.gz -> pgmodeler-0.9.1.tar.gz
 _eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	1d91b03d42ab6308b5f4f6b598ed110e	postgres	86eeb59f48e87b423d9f22122dab9d04	qmake-utils	bdf97e69a34b864d6d545f4ec3143ff7	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529	user	8bd74731cafdcdad8f7a63637302e073
-_md5_=b4859e718a6bf19f1c385d7af2bbd6c6
+_md5_=c1939077d449eb741106b5eb6a9f6bca
