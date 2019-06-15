@@ -28,7 +28,7 @@ RDEPEND="
 	app-arch/lz4
 	virtual/acl
 	dev-python/llfuse[${PYTHON_USEDEP}]
-	dev-python/msgpack[${PYTHON_USEDEP}]
+	~dev-python/msgpack-0.5.6[${PYTHON_USEDEP}]
 	dev-python/pyzmq[${PYTHON_USEDEP}]
 	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:0= )

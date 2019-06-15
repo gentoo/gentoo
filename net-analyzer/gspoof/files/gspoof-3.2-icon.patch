@@ -1,7 +1,7 @@
 Fix icon path and name.
 
---- gtk.c
-+++ gtk.c
+--- a/gtk.c
++++ b/gtk.c
 @@ -24,9 +24,7 @@
     gtk_set_locale ();
     gtk_init (&_argc, &_argv);
@@ -13,8 +13,8 @@ Fix icon path and name.
  
     MainWin = create_MainWin();
  
---- interface.c
-+++ interface.c
+--- a/interface.c
++++ b/interface.c
 @@ -102,7 +102,7 @@
     gtk_widget_set_size_request (MainWin, 640, 480);
     gtk_window_set_title (GTK_WINDOW (MainWin), BANNER);
