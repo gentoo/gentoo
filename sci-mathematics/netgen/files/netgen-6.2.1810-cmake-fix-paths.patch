@@ -1,0 +1,97 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index ef0ee42..36f8464 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -28,7 +28,7 @@ else(APPLE)
+   if(WIN32)
+     set(INSTALL_DIR_DEFAULT "C:/netgen")
+   else(WIN32)
+-    set(INSTALL_DIR_DEFAULT /opt/netgen)
++    set(INSTALL_DIR_DEFAULT /usr)
+   endif(WIN32)
+ endif(APPLE)
+ 
+@@ -37,14 +37,14 @@ if(INSTALL_DIR)
+   set(INSTALL_DIR_DEFAULT ${INSTALL_DIR})
+ endif(INSTALL_DIR)
+ 
+-if(UNIX)
++if(UNIX AND NOT CMAKE_GENTOO_BUILD)
+   message("Checking for write permissions in install directory...")
+   execute_process(COMMAND mkdir -p ${CMAKE_INSTALL_PREFIX})
+   execute_process(COMMAND test -w ${CMAKE_INSTALL_PREFIX} RESULT_VARIABLE res)
+   if(res)
+     message(WARNING "No write access at install directory, please set correct permissions")
+   endif()
+-endif(UNIX)
++endif(UNIX AND NOT CMAKE_GENTOO_BUILD)
+ 
+ if (USE_SUPERBUILD)
+   project (SUPERBUILD)
+@@ -129,15 +129,15 @@ if(APPLE)
+   set(NG_RPATH_TOKEN "@loader_path")
+ else(APPLE)
+   set(NG_INSTALL_DIR_BIN_DEFAULT bin)
+-  set(NG_INSTALL_DIR_LIB_DEFAULT lib)
++  set(NG_INSTALL_DIR_LIB_DEFAULT lib${LIB_SUFFIX})
+   if(WIN32)
+     set(NG_INSTALL_DIR_CMAKE_DEFAULT cmake)
+   else(WIN32)
+-    set(NG_INSTALL_DIR_CMAKE_DEFAULT lib/cmake/${NG_INSTALL_SUFFIX})
++    set(NG_INSTALL_DIR_CMAKE_DEFAULT lib${LIB_SUFFIX}/cmake/${NG_INSTALL_SUFFIX})
+   endif(WIN32)
+   set(NG_INSTALL_DIR_PYTHON_DEFAULT ${PYTHON_PACKAGES_INSTALL_DIR})
+   set(NG_INSTALL_DIR_RES_DEFAULT share)
+-  set(NG_INSTALL_DIR_INCLUDE_DEFAULT include)
++  set(NG_INSTALL_DIR_INCLUDE_DEFAULT include/${NG_INSTALL_SUFFIX})
+ 
+   set(NG_RPATH_TOKEN "\$ORIGIN")
+ endif(APPLE)
+@@ -306,10 +306,10 @@ endif (USE_MPEG)
+ #######################################################################
+ if(INSTALL_PROFILES)
+     file(WRITE  ${CMAKE_CURRENT_BINARY_DIR}/netgen.sh "#!/bin/sh\n")
+-    file(APPEND ${CMAKE_CURRENT_BINARY_DIR}/netgen.sh "export PATH=${CMAKE_INSTALL_PREFIX}/bin:$PATH\n")
++#    file(APPEND ${CMAKE_CURRENT_BINARY_DIR}/netgen.sh "export PATH=${CMAKE_INSTALL_PREFIX}/bin:$PATH\n")
+     file(APPEND ${CMAKE_CURRENT_BINARY_DIR}/netgen.sh "export NETGENDIR=${CMAKE_INSTALL_PREFIX}/bin\n")
+-    file(APPEND ${CMAKE_CURRENT_BINARY_DIR}/netgen.sh "export PYTHONPATH=${CMAKE_INSTALL_PREFIX}/${PYTHON_PACKAGES_INSTALL_DIR}:.\n")
+-    file(APPEND ${CMAKE_CURRENT_BINARY_DIR}/netgen.sh "export LD_LIBRARY_PATH=${CMAKE_INSTALL_PREFIX}/lib:.\n")
++#    file(APPEND ${CMAKE_CURRENT_BINARY_DIR}/netgen.sh "export PYTHONPATH=${CMAKE_INSTALL_PREFIX}/${PYTHON_PACKAGES_INSTALL_DIR}:.\n")
++#    file(APPEND ${CMAKE_CURRENT_BINARY_DIR}/netgen.sh "export LD_LIBRARY_PATH=${CMAKE_INSTALL_PREFIX}/lib:.\n")
+     install(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/netgen.sh DESTINATION /etc/profile.d COMPONENT netgen)
+ 
+     string(ASCII 27 Esc)
+@@ -319,6 +319,7 @@ if(INSTALL_PROFILES)
+ endif(INSTALL_PROFILES)
+ 
+ #######################################################################
++if(APPLE)
+ file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/fixup.cmake "\
+ include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/netgen_fixup.cmake)
+ set(APP ${CMAKE_INSTALL_PREFIX})
+@@ -336,6 +337,7 @@ endif(NOT bundle_filename)
+ execute_process(COMMAND hdiutil create -volname Netgen -srcfolder ${CMAKE_INSTALL_PREFIX} -ov -format UDZO \${bundle_filename}-${PACKAGE_VERSION}.dmg)
+ ")
+   add_custom_target(bundle COMMAND ${CMAKE_COMMAND} "-P" "${CMAKE_CURRENT_BINARY_DIR}/fixup.cmake")
++endif(APPLE)
+ #######################################################################
+ # CTest
+ enable_testing()
+@@ -359,7 +361,7 @@ add_subdirectory(tests)
+ #######################################################################
+ # Debian packager
+ 
+-if(UNIX)
++if(UNIX AND NOT CMAKE_GENTOO_BUILD)
+     set(CPACK_SOURCE_GENERATOR "TGZ")
+     set(CPACK_SOURCE_IGNORE_FILES "/cmake/;/build/;/.gz/;~$;${CPACK_SOURCE_IGNORE_FILES}")
+     set(CPACK_PACKAGE_VERSION ${PACKAGE_VERSION} )
+@@ -390,7 +392,7 @@ if(UNIX)
+         set(CPACK_DEBIAN_PACKAGE_NAME ${CPACK_PACKAGE_NAME})
+         set(CPACK_PACKAGE_FILE_NAME "netgen-${PACKAGE_VERSION}_${CPACK_DEBIAN_PACKAGE_ARCHITECTURE}")   
+     endif(temp)
+-endif(UNIX)
++endif(UNIX AND NOT CMAKE_GENTOO_BUILD)
+ 
+ if(APPLE)
+     # create some auxiliary files

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>waebbl@gmail.com</email>
+		<name>Bernd Waibel</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Gentoo Proxy Maintainers Team</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>sci-mathematics@gentoo.org</email>
+		<name>Gentoo Mathematics Project</name>
+	</maintainer>
+	<longdescription>
+	Netgen is an automatic 3d tetrahedal mesh generator. It accepts input
+	from CSG or BRep from STL file format. Connecting to a geometry kernel
+	allos handling of IGES and STEP files.
+	Netgen contains modules for mesh optimization and hierarchical mesh 
+	refinement and since version 6.x it supports python scripting.
+	</longdescription>
+	<use>
+		<flag name="ffmpeg">
+			Enable video recording with <pkg>virtual/ffmpeg</pkg>
+		</flag>
+		<flag name="gui">
+			Build the graphical user interface
+		</flag>
+		<flag name="jpeg">
+			Enable snapshots using a <pkg>virtual/jpeg</pkg>
+		</flag>
+		<flag name="mpi">
+			Enable mpi parallelization using <pkg>virtual/mpi</pkg>
+		</flag>
+		<flag name="opencascade">
+			Compile with OpenCascade geometry kernel (not supported upstream)
+		</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">NGSolve/netgen</remote-id>
+	</upstream>
+</pkgmetadata>
