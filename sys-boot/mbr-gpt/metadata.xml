@@ -8,4 +8,8 @@
 	<email>base-system@gentoo.org</email>
 	<name>Gentoo Base System</name>
 </maintainer>
+<longdescription lang="en">
+	Bootable MBR including fake partition records, for legacy BIOS without any GPT support, and usable without hybrid disk layouts.
+	Install directly at the start of a disk, create GPT, ensure at least one partition has GUID set to BIOS Boot Partition (21686148-6449-6e6f-744e-656564454649).
+</longdescription>
 </pkgmetadata>
