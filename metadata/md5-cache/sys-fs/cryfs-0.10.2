@@ -1,0 +1,14 @@
+BDEPEND=dev-util/ninja >=dev-util/cmake-3.9.6
+DEFINED_PHASES=compile configure install prepare setup test
+DEPEND=>=dev-libs/boost-1.65.1:= >=dev-libs/crypto++-8.2.0:= net-misc/curl:= >=sys-fs/fuse-2.8.6:0 !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:= ) || ( dev-lang/python:3.7 dev-lang/python:3.6 dev-lang/python:3.5 >=dev-lang/python-2.7.5-r2:2.7 ) test? ( dev-cpp/gtest )
+DESCRIPTION=Encrypted FUSE filesystem that conceals metadata
+EAPI=7
+HOMEPAGE=https://www.cryfs.org/
+IUSE=custom-optimization debug libressl test kernel_linux
+KEYWORDS=~amd64 ~arm ~arm64 ~x86
+LICENSE=LGPL-3 MIT
+RDEPEND=>=dev-libs/boost-1.65.1:= >=dev-libs/crypto++-8.2.0:= net-misc/curl:= >=sys-fs/fuse-2.8.6:0 !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:= )
+SLOT=0
+SRC_URI=https://github.com/cryfs/cryfs/releases/download/0.10.2/cryfs-0.10.2.tar.xz
+_eclasses_=cmake-utils	959a7fda0dce63de9a4e73a22294d6ec	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	a09389deba2c0a7108b581e02c7cecbf	linux-info	953c3b1c472dcadbf62098a9301327f2	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-any-r1	4900ae970f827a22d33d41bd8b8f9ace	python-utils-r1	08e17157a6807add7db1f8d01e7e391f	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529	xdg-utils	14d00d009167652b1fa363e55effe213
+_md5_=2ddb007eab539d261505e40ca51f15f5

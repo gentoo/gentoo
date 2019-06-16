@@ -1179,8 +1179,8 @@ app-office/kmymoney 5.0.4: Personal finance manager based on KDE Frameworks
 app-office/ledger 3.1.1-r2: A double-entry accounting system with a command-line reporting interface
 app-office/libalkimia 7.0.2-r1: Library with common classes and functionality used by KDE finance applications
 app-office/libreoffice 6.1.5.2 6.2.4.2: A full office productivity suite
-app-office/libreoffice-bin 6.1.5.2: A full office productivity suite. Binary package
-app-office/libreoffice-bin-debug 6.1.5.2: LibreOffice, a full office productivity suite. Binary package, debug info
+app-office/libreoffice-bin 6.1.5.2 6.2.4.2: A full office productivity suite. Binary package
+app-office/libreoffice-bin-debug 6.1.5.2 6.2.4.2: LibreOffice, a full office productivity suite. Binary package, debug info
 app-office/libreoffice-l10n 6.1.5.2 6.2.4.2: Translations for the Libreoffice suite
 app-office/lyx 2.3.0: WYSIWYM frontend for LaTeX, DocBook, etc.
 app-office/mdbtools 0.7.1-r2: Set of libraries and utilities for reading Microsoft Access database (MDB) files
@@ -10225,7 +10225,7 @@ sys-fs/btrfs-progs 4.4.1 4.10.2 4.19: Btrfs filesystem utilities
 sys-fs/btrfsmaintenance 0.4 0.4.1-r1 0.4.2: Scripts for btrfs maintenance tasks like periodic scrub, balance, trim or defrag
 sys-fs/cachefilesd 0.10.9 0.10.10-r1: Provides a caching directory on an already mounted filesystem
 sys-fs/cramfs 1.1: Linux filesystem designed to be simple, small, and to compress things well
-sys-fs/cryfs 0.9.7 0.9.9: Encrypted FUSE filesystem that conceals metadata
+sys-fs/cryfs 0.9.9: Encrypted FUSE filesystem that conceals metadata
 sys-fs/cryptsetup 1.7.5-r1 2.1.0: Tool to setup encrypted devices with dm-crypt
 sys-fs/ctmg 1.2: Simple wrapper around cryptsetup for encrypted containers
 sys-fs/dd-rescue 1.46 1.99.8: Similar to dd but can copy from source with errors
