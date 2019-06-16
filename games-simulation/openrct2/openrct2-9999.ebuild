@@ -19,8 +19,8 @@ else
 	S="${WORKDIR}/OpenRCT2-${PV}"
 fi
 
-TSV="0.1.2"
-OBJV="1.0.8"
+TSV="0.1.2a"
+OBJV="1.0.10"
 SRC_URI+="
 	https://github.com/OpenRCT2/title-sequences/releases/download/v${TSV}/title-sequence-v${TSV}.zip
 		-> ${PN}-title-sequence-v${TSV}.zip
