@@ -19,6 +19,12 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
 
+ruby_add_rdepend "
+	=dev-ruby/necromancer-0.5*
+	=dev-ruby/pastel-0.7*
+	=dev-ruby/tty-reader-0.6*
+"
+
 all_ruby_prepare() {
 	echo '-rspec_helper' > .rspec || die
 }
