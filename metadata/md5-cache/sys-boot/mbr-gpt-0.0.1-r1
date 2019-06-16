@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install postinst prepare
+DESCRIPTION=An MBR that can handle BIOS-based boot on GPT
+EAPI=7
+HOMEPAGE=https://web.archive.org/web/20080704173538/http://aybabtu.com/mbr-gpt/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RESTRICT=binchecks strip
+SLOT=0
+SRC_URI=https://dev.gentoo.org/~robbat2/distfiles/mbr-gpt_0.0.1.tar.gz
+_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	a09389deba2c0a7108b581e02c7cecbf	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
+_md5_=49bde8a6fe0ce5b312e630818e5690fb
