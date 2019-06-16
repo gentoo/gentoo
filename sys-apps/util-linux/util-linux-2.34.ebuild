@@ -25,7 +25,7 @@ HOMEPAGE="https://www.kernel.org/pub/linux/utils/util-linux/ https://github.com/
 
 LICENSE="GPL-2 LGPL-2.1 BSD-4 MIT public-domain"
 SLOT="0"
-IUSE="build caps +cramfs fdformat kill ncurses nls pam python +readline selinux slang static-libs +suid systemd test tty-helpers udev unicode userland_GNU"
+IUSE="build caps +cramfs fdformat hardlink kill ncurses nls pam python +readline selinux slang static-libs +suid systemd test tty-helpers udev unicode userland_GNU"
 
 # Most lib deps here are related to programs rather than our libs,
 # so we rarely need to specify ${MULTILIB_USEDEP}.
@@ -48,6 +48,7 @@ BDEPEND="
 	test? ( sys-devel/bc )
 "
 RDEPEND="${DEPEND}
+	hardlink? ( !app-arch/hardlink )
 	kill? (
 		!sys-apps/coreutils[kill]
 		!sys-process/procps[kill]
@@ -174,6 +175,7 @@ multilib_src_configure() {
 			$(use_enable caps setpriv)
 			$(use_enable cramfs)
 			$(use_enable fdformat)
+			$(use_enable hardlink)
 			$(use_enable tty-helpers mesg)
 			$(use_enable tty-helpers wall)
 			$(use_enable tty-helpers write)

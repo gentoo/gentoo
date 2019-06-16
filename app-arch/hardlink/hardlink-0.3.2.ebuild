@@ -13,7 +13,10 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
 
-RDEPEND="dev-libs/libpcre"
+RDEPEND="
+	dev-libs/libpcre
+	!>=sys-apps/util-linux-2.34[hardlink]
+"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
