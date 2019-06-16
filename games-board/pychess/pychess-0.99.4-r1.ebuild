@@ -17,8 +17,11 @@ KEYWORDS="~amd64 ~x86"
 IUSE="gstreamer"
 
 DEPEND="
+	dev-python/pexpect[${PYTHON_USEDEP}]
+	dev-python/psutil[${PYTHON_USEDEP}]
 	dev-python/pycairo[${PYTHON_USEDEP}]
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
+	dev-python/sqlalchemy[${PYTHON_USEDEP},sqlite]
 	gnome-base/librsvg:2
 	x11-libs/gtksourceview:3.0
 	x11-libs/pango
