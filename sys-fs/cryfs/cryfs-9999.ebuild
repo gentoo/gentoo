@@ -5,7 +5,7 @@ EAPI=7
 
 CMAKE_MAKEFILE_GENERATOR="emake"
 PYTHON_COMPAT=( python{2_7,3_{5,6,7}} )
-inherit cmake-utils flag-o-matic python-any-r1
+inherit cmake-utils flag-o-matic linux-info python-any-r1
 
 if [[ ${PV} == 9999 ]] ; then
 	inherit git-r3
@@ -36,6 +36,13 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
 "
+
+pkg_setup() {
+	local CONFIG_CHECK="~FUSE_FS"
+	local WARNING_FUSE_FS="CONFIG_FUSE_FS is required for cryfs support."
+
+	check_extra_config
+}
 
 src_prepare() {
 	cmake-utils_src_prepare
