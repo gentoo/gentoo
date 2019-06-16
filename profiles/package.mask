@@ -141,11 +141,6 @@ net-proxy/nylon
 dev-libs/beecrypt
 <dev-util/debugedit-4
 
-# Mart Raudsepp <leio@gentoo.org> (18 May 2019)
-# Old name and SLOT for gui-libs/tepl, which is now used instead.
-# Masked for removal in 15 days. Bug #686222
-x11-libs/gtef
-
 # Hans de Graaff <graaff@gentoo.org> (18 May 2019)
 # Old, ruby24-only, slots of ruby packages without any reverse
 # dependencies. Use the newer slot version instead.
