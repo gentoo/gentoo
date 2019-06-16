@@ -1,12 +1,12 @@
 DEFINED_PHASES=compile prepare
-DEPEND=dev-libs/libpcre virtual/pkgconfig
+DEPEND=dev-libs/libpcre !>=sys-apps/util-linux-2.34[hardlink] virtual/pkgconfig
 DESCRIPTION=A tool which replaces copies of a file with hardlinks
 EAPI=4
 HOMEPAGE=https://jak-linux.org/projects/hardlink/
 KEYWORDS=amd64 ~arm ppc ppc64 x86
 LICENSE=MIT
-RDEPEND=dev-libs/libpcre
+RDEPEND=dev-libs/libpcre !>=sys-apps/util-linux-2.34[hardlink]
 SLOT=0
 SRC_URI=https://jak-linux.org/projects/hardlink/hardlink_0.2.0.tar.gz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
-_md5_=3154a39c25759a2d923f86cee217596f
+_md5_=c19ac0f4ea6acde4a42812552ee965fa
