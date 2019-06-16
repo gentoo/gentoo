@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{5,6,7} )
 
-inherit cmake-multilib cmake-utils git-r3
+inherit cmake-multilib cmake-utils git-r3 python-any-r1
 
 DESCRIPTION="Provides an API and commands for processing SPIR-V modules"
 HOMEPAGE="https://github.com/KhronosGroup/SPIRV-Tools"
