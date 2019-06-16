@@ -39,6 +39,9 @@ DEPEND="${RDEPEND}
 src_prepare() {
 	cmake-utils_src_prepare
 
+	# don't install compressed manpage
+	cmake_comment_add_subdirectory doc
+
 	# remove tests that require internet access to comply with Gentoo policy
 	sed -e "/CurlHttpClientTest.cpp/d" -e "/FakeHttpClientTest.cpp/d" \
 		-i test/cpp-utils/CMakeLists.txt || die
@@ -85,7 +88,6 @@ src_install() {
 	# work around upstream issue with cmake not creating install target
 	# in Makefile if we enable BUILD_TESTING
 	dobin "${BUILD_DIR}/src/cryfs-cli/cryfs"
-	gzip -cd "${BUILD_DIR}/doc/cryfs.1.gz" > "${T}/cryfs.1" || die
-	doman "${T}/cryfs.1"
+	doman doc/man/cryfs.1
 	einstalldocs
 }
