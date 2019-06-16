@@ -1,9 +1,9 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=( python3_{5,6} )
+PYTHON_COMPAT=( python3_{5,6,7} )
 
 inherit distutils-r1 xdg-utils
 
@@ -37,9 +37,9 @@ RDEPEND="
 
 python_prepare_all() {
 	# set the correct search path
-	cat >> src/m64py/platform.py <<-_EOF_
+	cat >> src/m64py/platform.py <<-_EOF_ || die
 		SEARCH_DIRS = ["/usr/$(get_libdir)/mupen64plus"]
-_EOF_
+	_EOF_
 
 	distutils-r1_python_prepare_all
 }
