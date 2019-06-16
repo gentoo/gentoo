@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit autotools
 
@@ -12,15 +12,15 @@ if [ ${PV} == "9999" ] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/stoeckmann/${PN}.git"
 else
-	SRC_URI="https://github.com/stoeckmann/${PN}/releases/download/v${PV}/${P}.tar.gz"
-	KEYWORDS="amd64 x86"
+	SRC_URI="https://github.com/stoeckmann/${PN}/releases/download/v${PV}/${P}.tar.xz"
+	KEYWORDS="~amd64 ~x86"
 fi
 
 LICENSE="ISC"
 SLOT="0"
 IUSE="jpeg png seccomp xpm"
 
-DEPEND="
+RDEPEND="
 	x11-libs/pixman
 	x11-libs/xcb-util
 	x11-libs/xcb-util-image
@@ -29,7 +29,9 @@ DEPEND="
 	seccomp? ( >=sys-libs/libseccomp-2.3.1:0= )
 	xpm? ( x11-libs/libXpm )"
 
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}
+	virtual/pkgconfig
+"
 
 src_prepare() {
 	default
