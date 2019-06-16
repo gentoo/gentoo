@@ -77,6 +77,8 @@ src_prepare() {
 		Bochs_disasm
 		FreeSurround
 		cpp-optparse
+		# no support for for using system library
+		fmt
 		glslang
 		imgui
 		# FIXME: xxhash can't be found by cmake
