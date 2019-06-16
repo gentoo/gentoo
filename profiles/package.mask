@@ -160,13 +160,6 @@ dev-ruby/filesize:0.1.1
 # Depends on >=virtual/{jdk,jre}-11 which is masked
 =www-servers/tomcat-9.0.20
 
-# Brian Evans <grknight@gentoo.org> (14 May 2019)
-# MariaDB 10.0 has reached end of life and has security issues
-# dev-db/mariadb-galera users should upgrade to mariadb-10.1 or greater
-# Removal in 30 days
-dev-db/mariadb-galera
-=dev-db/mariadb-10.0*
-
 # Virgil Dupras <vdupras@gentoo.org> (13 May 2019)
 # detox has been deprecated by the release of tox 3.7.0 which duplicates the
 # feature. Removal in 30 days. Bug #685870
@@ -232,16 +225,6 @@ dev-python/detox
 =virtual/perl-threads-2.70.0-r1
 =virtual/perl-threads-shared-1.510.0-r1
 =virtual/perl-version-0.991.600-r1
-
-# Andreas K. Hüttel <dilfridge@gentoo.org> (11 May 2019)
-# Severely outdated, no commits since 2009, EAPI=2.
-# Bug 679686. Removal in 30 days.
-dev-lang/confluence
-
-# Andreas K. Hüttel <dilfridge@gentoo.org> (11 May 2019)
-# Build failures, other QA issues, EAPI=2. See bug 681046
-# Removal in 30 days.
-dev-embedded/tavrasm
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (11 May 2019)
 # Outdated, EAPI=2, unmaintained, segfaults immediately.
