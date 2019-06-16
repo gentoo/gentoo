@@ -1,7 +1,8 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
+PYTHON_COMPAT=( python3_{5,6,7} )
 
 inherit cmake-multilib cmake-utils git-r3
 
@@ -16,8 +17,10 @@ SLOT="0"
 # in the generated library. Easily hit with non-standard compiler flags
 RESTRICT="test"
 
+DEPEND=""
 RDEPEND=""
-DEPEND=">=dev-util/spirv-headers-1.3.4_pre20190302"
+BDEPEND="${PYTHON_DEPS}
+	>=dev-util/spirv-headers-1.3.4_pre20190302"
 
 multilib_src_configure() {
 	local mycmakeargs=(

@@ -1,9 +1,10 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
+PYTHON_COMPAT=( python3_{5,6,7} )
 
-inherit cmake-multilib cmake-utils
+inherit cmake-multilib cmake-utils python-any-r1
 
 DESCRIPTION="Provides an API and commands for processing SPIR-V modules"
 HOMEPAGE="https://github.com/KhronosGroup/SPIRV-Tools"
@@ -16,10 +17,14 @@ KEYWORDS="~amd64 ~x86"
 # in the generated library. Easily hit with non-standard compiler flags
 RESTRICT="test"
 
+DEPEND=""
 RDEPEND=""
-DEPEND=">=dev-util/spirv-headers-1.3.1_pre20180710"
-EGIT_COMMIT="f508896d6487d09f5c9a2a3835595446fec0791a"
+BDEPEND="${PYTHON_DEPS}
+	>=dev-util/spirv-headers-1.3.4_pre20190302"
+
+EGIT_COMMIT="2297d4a3dfcbfd2a8b4312fab055ae26e3289fd3"
 S="${WORKDIR}/SPIRV-Tools-${PV}"
+PATCHES=( "${FILESDIR}"/${PN}-2019.1-Fix-vertex-instrumentation.patch )
 
 multilib_src_configure() {
 	local mycmakeargs=(
