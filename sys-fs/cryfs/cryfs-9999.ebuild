@@ -1,40 +1,41 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-CMAKE_MAKEFILE_GENERATOR=emake
-PYTHON_COMPAT=( python{2_7,3_{5,6}} )
+EAPI=7
 
-inherit cmake-utils python-any-r1 flag-o-matic
+CMAKE_MAKEFILE_GENERATOR="emake"
+PYTHON_COMPAT=( python{2_7,3_{5,6,7}} )
+inherit cmake-utils flag-o-matic python-any-r1
 
-DESCRIPTION="Encrypted FUSE filesystem that conceals metadata"
-HOMEPAGE="https://www.cryfs.org/"
-
-SLOT=0
-IUSE="custom-optimization debug libressl test update-check"
-
-LICENSE="LGPL-3 BSD-2 MIT"
-# cryfs - LGPL-3
-# scrypt - BSD-2
-# spdlog - MIT
-
-if [[ "${PV}" == 9999 ]] ; then
+if [[ ${PV} == 9999 ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/cryfs/cryfs"
 else
 	SRC_URI="https://github.com/cryfs/cryfs/releases/download/${PV}/${P}.tar.xz"
-	KEYWORDS="~amd64 ~arm ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 	S="${WORKDIR}"
 fi
 
-RDEPEND=">=dev-libs/boost-1.56:=
-	>=dev-libs/crypto++-5.6.3:=
+DESCRIPTION="Encrypted FUSE filesystem that conceals metadata"
+HOMEPAGE="https://www.cryfs.org/"
+
+# cryfs - LGPL-3
+# spdlog - MIT
+# crypto++ - Boost-1.0
+LICENSE="LGPL-3 MIT Boost-1.0"
+SLOT="0"
+IUSE="custom-optimization debug libressl test"
+
+RDEPEND="
+	>=dev-libs/boost-1.65.1:=
 	net-misc/curl:=
-	>=sys-fs/fuse-2.8.6:=
+	>=sys-fs/fuse-2.8.6:0
 	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:= )"
+	libressl? ( dev-libs/libressl:= )
+"
 DEPEND="${RDEPEND}
-	${PYTHON_DEPS}"
+	${PYTHON_DEPS}
+"
 
 src_prepare() {
 	cmake-utils_src_prepare
@@ -48,15 +49,11 @@ src_prepare() {
 }
 
 src_configure() {
-	# upstream restricts installing files to Release configuration
-	# (CMAKE_BUILD_TYPE does not affect anything else)
-	local CMAKE_BUILD_TYPE
-	local -a mycmakeargs
-	CMAKE_BUILD_TYPE=Release
-	mycmakeargs=(
-		"-DBoost_USE_STATIC_LIBS=off"
-		"-DCRYFS_UPDATE_CHECKS=$(usex update-check)"
-		"-DBUILD_TESTING=$(usex test)"
+	local mycmakeargs=(
+		-DBoost_USE_STATIC_LIBS=OFF
+		-DCRYFS_UPDATE_CHECKS=OFF
+		-DBUILD_SHARED_LIBS=OFF
+		-DBUILD_TESTING=$(usex test)
 	)
 	use custom-optimization || append-flags -O3
 
@@ -64,12 +61,10 @@ src_configure() {
 }
 
 src_test() {
-	local TMPDIR
-	TMPDIR="${T}"
+	local TMPDIR="${T}"
 	addread /dev/fuse
 	addwrite /dev/fuse
-	local -a tests_failed
-	tests_failed=()
+	local tests_failed=()
 
 	for i in gitversion cpp-utils parallelaccessstore blockstore blobstore fspp cryfs cryfs-cli ; do
 		"${BUILD_DIR}"/test/${i}/${i}-test || tests_failed+=( "${i}" )
