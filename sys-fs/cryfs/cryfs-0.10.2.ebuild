@@ -3,7 +3,6 @@
 
 EAPI=7
 
-CMAKE_MAKEFILE_GENERATOR="emake"
 PYTHON_COMPAT=( python{2_7,3_{5,6,7}} )
 inherit cmake-utils flag-o-matic linux-info python-any-r1
 
@@ -19,15 +18,13 @@ fi
 DESCRIPTION="Encrypted FUSE filesystem that conceals metadata"
 HOMEPAGE="https://www.cryfs.org/"
 
-# cryfs - LGPL-3
-# spdlog - MIT
-# crypto++ - Boost-1.0
-LICENSE="LGPL-3 MIT Boost-1.0"
+LICENSE="LGPL-3 MIT"
 SLOT="0"
 IUSE="custom-optimization debug libressl test"
 
 RDEPEND="
 	>=dev-libs/boost-1.65.1:=
+	>=dev-libs/crypto++-8.2.0:=
 	net-misc/curl:=
 	>=sys-fs/fuse-2.8.6:0
 	!libressl? ( dev-libs/openssl:0= )
@@ -35,7 +32,14 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
+	test? ( dev-cpp/gtest )
 "
+
+PATCHES=(
+	# TODO upstream:
+	"${FILESDIR}/${P}-unbundle-libs.patch"
+	"${FILESDIR}/${P}-install-targets.patch"
+)
 
 pkg_setup() {
 	local CONFIG_CHECK="~FUSE_FS"
@@ -60,6 +64,7 @@ src_configure() {
 		-DBoost_USE_STATIC_LIBS=OFF
 		-DCRYFS_UPDATE_CHECKS=OFF
 		-DBUILD_SHARED_LIBS=OFF
+		-DUSE_SYSTEM_LIBS=ON
 		-DBUILD_TESTING=$(usex test)
 	)
 	use custom-optimization || append-flags -O3
@@ -87,9 +92,6 @@ src_test() {
 }
 
 src_install() {
-	# work around upstream issue with cmake not creating install target
-	# in Makefile if we enable BUILD_TESTING
-	dobin "${BUILD_DIR}/src/cryfs-cli/cryfs"
+	cmake-utils_src_install
 	doman doc/man/cryfs.1
-	einstalldocs
 }

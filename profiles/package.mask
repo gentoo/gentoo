@@ -365,6 +365,7 @@ sys-boot/systemrescuecd-x86-grub
 >=net-proxy/trojan-1.12.2
 >=dev-python/graph-tool-2.27
 =dev-python/graph-tool-9999
+=sys-fs/cryfs-0.10*
 
 # Robin H. Johnson <robbat2@gentoo.org> (25 Mar 2019)
 # Requires >=dev-lang/lua-5.3 which is masked
