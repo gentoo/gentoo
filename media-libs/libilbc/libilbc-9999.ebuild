@@ -1,18 +1,17 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-if [[ ${PV} == 9999 ]] ; then
-	SCM="autotools git-2"
+inherit multilib-minimal
+
+if [[ ${PV} == *9999 ]]; then
+	inherit autotools git-r3
 	EGIT_REPO_URI="https://github.com/TimothyGu/${PN}"
-	SRC_URI=""
 else
 	SRC_URI="https://github.com/TimothyGu/${PN}/releases/download/v${PV}/${P}.tar.bz2"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc ~x86"
 fi
-
-inherit eutils multilib ${SCM} autotools-multilib
 
 DESCRIPTION="Packaged version of iLBC codec from the WebRTC project"
 HOMEPAGE="https://github.com/TimothyGu/libilbc"
@@ -22,6 +21,18 @@ SLOT="0"
 IUSE="static-libs"
 
 src_prepare() {
+	default
 	[[ ${PV} == *9999 ]] && eautoreconf
-	autotools-multilib_src_prepare
+}
+
+multilib_src_configure() {
+	ECONF_SOURCE="${S}" econf \
+		$(use_enable static-libs static)
+}
+
+multilib_src_install_all() {
+	einstalldocs
+
+	# package provides .pc files
+	find "${D}" -name '*.la' -delete || die
 }
