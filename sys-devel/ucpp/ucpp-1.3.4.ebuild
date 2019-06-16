@@ -1,9 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-
-inherit eutils
+EAPI=7
 
 DESCRIPTION="A quick and light preprocessor, but anyway fully compliant to C99"
 HOMEPAGE="https://code.google.com/p/ucpp/"
@@ -23,5 +21,6 @@ src_configure() {
 src_install() {
 	default
 
-	prune_libtool_files --all
+	# package provides .pc files
+	find "${D}" -name '*.la' -delete || die
 }
