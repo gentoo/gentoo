@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 PYTHON_COMPAT=( python2_7 python3_{5,6,7} )
 
@@ -16,7 +16,7 @@ if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://git.kernel.org/pub/scm/utils/util-linux/util-linux.git"
 else
 	[[ "${PV}" = *_rc* ]] || \
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~amd64-linux ~x86-linux"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~amd64-linux ~x86-linux"
 	SRC_URI="mirror://kernel/linux/utils/util-linux/v${PV:0:4}/${MY_P}.tar.xz"
 fi
 
@@ -25,11 +25,13 @@ HOMEPAGE="https://www.kernel.org/pub/linux/utils/util-linux/ https://github.com/
 
 LICENSE="GPL-2 LGPL-2.1 BSD-4 MIT public-domain"
 SLOT="0"
-IUSE="build caps +cramfs fdformat kill ncurses nls pam python +readline selinux slang static-libs +suid systemd test tty-helpers udev unicode userland_GNU"
+IUSE="build caps +cramfs fdformat hardlink kill ncurses nls pam python +readline selinux slang static-libs +suid systemd test tty-helpers udev unicode userland_GNU"
 
 # Most lib deps here are related to programs rather than our libs,
 # so we rarely need to specify ${MULTILIB_USEDEP}.
-RDEPEND="caps? ( sys-libs/libcap-ng )
+DEPEND="
+	virtual/os-headers
+	caps? ( sys-libs/libcap-ng )
 	cramfs? ( sys-libs/zlib:= )
 	ncurses? ( >=sys-libs/ncurses-5.2-r2:0=[unicode?] )
 	nls? ( virtual/libintl[${MULTILIB_USEDEP}] )
@@ -40,12 +42,13 @@ RDEPEND="caps? ( sys-libs/libcap-ng )
 	slang? ( sys-libs/slang )
 	!build? ( systemd? ( sys-apps/systemd ) )
 	udev? ( virtual/libudev:= )"
-DEPEND="${RDEPEND}
+BDEPEND="
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )
 	test? ( sys-devel/bc )
-	virtual/os-headers"
-RDEPEND+="
+"
+RDEPEND="${DEPEND}
+	hardlink? ( !app-arch/hardlink )
 	kill? (
 		!sys-apps/coreutils[kill]
 		!sys-process/procps[kill]
@@ -172,6 +175,7 @@ multilib_src_configure() {
 			$(use_enable caps setpriv)
 			$(use_enable cramfs)
 			$(use_enable fdformat)
+			$(use_enable hardlink)
 			$(use_enable tty-helpers mesg)
 			$(use_enable tty-helpers wall)
 			$(use_enable tty-helpers write)
@@ -258,7 +262,7 @@ multilib_src_install_all() {
 	if ! use userland_GNU; then
 		# manpage collisions
 		# TODO: figure out a good way to keep them
-		rm "${ED%/}"/usr/share/man/man3/uuid* || die
+		rm "${ED}"/usr/share/man/man3/uuid* || die
 	fi
 
 	if use pam; then
