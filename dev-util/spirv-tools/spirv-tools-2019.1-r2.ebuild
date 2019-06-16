@@ -17,10 +17,11 @@ KEYWORDS="~amd64 ~x86"
 # in the generated library. Easily hit with non-standard compiler flags
 RESTRICT="test"
 
-DEPEND=""
+COMMON_DEPEND=">=dev-util/spirv-headers-1.3.4_pre20190302"
+DEPEND="${COMMON_DEPEND}"
 RDEPEND=""
 BDEPEND="${PYTHON_DEPS}
-	>=dev-util/spirv-headers-1.3.4_pre20190302"
+	${COMMON_DEPEND}"
 
 EGIT_COMMIT="2297d4a3dfcbfd2a8b4312fab055ae26e3289fd3"
 S="${WORKDIR}/SPIRV-Tools-${PV}"
