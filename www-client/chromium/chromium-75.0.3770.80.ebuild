@@ -136,6 +136,8 @@ are not displayed properly:
 To fix broken icons on the Downloads page, you should install an icon
 theme that covers the appropriate MIME types, and configure this as your
 GTK+ icon theme.
+
+For native file dialogs in KDE, install kde-apps/kdialog.
 "
 
 PATCHES=(
@@ -554,9 +556,6 @@ src_configure() {
 	# Disable fatal linker warnings, bug 506268.
 	myconf_gn+=" fatal_linker_warnings=false"
 
-	# https://bugs.gentoo.org/588596
-	# append-cxxflags $(test-flags-CXX -fno-delete-null-pointer-checks)
-
 	# Bug 491582.
 	export TMPDIR="${WORKDIR}/temp"
 	mkdir -p -m 755 "${TMPDIR}" || die
@@ -595,9 +594,6 @@ src_compile() {
 	python_setup
 
 	#"${EPYTHON}" tools/clang/scripts/update.py --force-local-build --gcc-toolchain /usr --skip-checkout --use-system-cmake --without-android || die
-
-	# Work around broken deps
-	eninja -C out/Release gen/ui/accessibility/ax_enums.mojom{,-shared}.h
 
 	# Build mksnapshot and pax-mark it.
 	local x
@@ -699,20 +695,12 @@ src_install() {
 }
 
 pkg_postrm() {
-	if type gtk-update-icon-cache &>/dev/null; then
-		ebegin "Updating GTK icon cache"
-		gtk-update-icon-cache "${EROOT}/usr/share/icons/hicolor"
-		eend $?
-	fi
+	xdg_icon_cache_update
 	xdg_desktop_database_update
 }
 
 pkg_postinst() {
-	if type gtk-update-icon-cache &>/dev/null; then
-		ebegin "Updating GTK icon cache"
-		gtk-update-icon-cache "${EROOT}/usr/share/icons/hicolor"
-		eend $?
-	fi
+	xdg_icon_cache_update
 	xdg_desktop_database_update
 	readme.gentoo_print_elog
 }
