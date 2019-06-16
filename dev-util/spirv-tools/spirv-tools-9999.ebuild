@@ -16,11 +16,11 @@ SLOT="0"
 # Tests fail upon finding symbols that do not match a regular expression
 # in the generated library. Easily hit with non-standard compiler flags
 RESTRICT="test"
-
-DEPEND=""
+COMMON_DEPEND=">=dev-util/spirv-headers-1.3.4_pre20190302"
+DEPEND="${COMMON_DEPEND}"
 RDEPEND=""
 BDEPEND="${PYTHON_DEPS}
-	>=dev-util/spirv-headers-1.3.4_pre20190302"
+	${COMMON_DEPEND}"
 
 multilib_src_configure() {
 	local mycmakeargs=(
