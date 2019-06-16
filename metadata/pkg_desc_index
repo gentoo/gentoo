@@ -937,7 +937,7 @@ app-laptop/laptop-mode-tools 1.72.2-r1: Linux kernel laptop_mode user-space util
 app-laptop/nvidiabl 0.83: Linux driver for setting the backlight brightness on laptops using NVIDIA GPU
 app-laptop/pommed 1.39-r1: Manage screen and keyboard backlight on Apple MacBook Pro/PowerBook
 app-laptop/radeontool 1.6.3: Manage the backlight, external video output and registers of ATI Radeon cards
-app-laptop/thinkfan 0.9.3: simple fan control program for thinkpads
+app-laptop/thinkfan 0.9.3 1.0.2: simple fan control program for thinkpads
 app-laptop/tp_smapi 0.43: IBM ThinkPad SMAPI BIOS driver
 app-laptop/tpb 0.6.4-r1: IBM ThinkPad buttons utility
 app-leechcraft/liblaretz 0.1.0: Shared library to be used by the Laretz sync server and its clients
