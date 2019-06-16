@@ -3,10 +3,9 @@
 
 EAPI=6
 GNOME2_LA_PUNT="yes"
-PYTHON_COMPAT=( python{3_5,3_6} )
 VALA_USE_DEPEND="vapigen"
 
-inherit gnome2 multilib-minimal python-any-r1 vala
+inherit gnome2 multilib-minimal vala
 
 DESCRIPTION="An HTTP library implementation in C"
 HOMEPAGE="https://wiki.gnome.org/Projects/libsoup"
@@ -30,7 +29,6 @@ RDEPEND="
 	samba? ( net-fs/samba )
 "
 DEPEND="${RDEPEND}
-	${PYTHON_DEPS}
 	dev-util/glib-utils
 	>=dev-util/gtk-doc-am-1.20
 	>=dev-util/intltool-0.35
