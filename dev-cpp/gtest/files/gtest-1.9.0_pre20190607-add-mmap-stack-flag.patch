@@ -1,0 +1,15 @@
+Bug: https://bugs.gentoo.org/688162
+Upstream PR: https://github.com/google/googletest/pull/2276
+
+--- a/googletest/src/gtest-death-test.cc
++++ b/googletest/src/gtest-death-test.cc
+@@ -1357,6 +1357,9 @@ static pid_t ExecDeathTestSpawnChild(char* const* argv, int close_fd) {
+     const auto stack_size = static_cast<size_t>(getpagesize());
+     // MMAP_ANONYMOUS is not defined on Mac, so we use MAP_ANON instead.
+     void* const stack = mmap(nullptr, stack_size, PROT_READ | PROT_WRITE,
++#    if GTEST_OS_LINUX
++                             (stack_grows_down ? MAP_GROWSDOWN : 0) | // Needed for stack auto-resizing
++#    endif
+                              MAP_ANON | MAP_PRIVATE, -1, 0);
+     GTEST_DEATH_TEST_CHECK_(stack != MAP_FAILED);
+ 
