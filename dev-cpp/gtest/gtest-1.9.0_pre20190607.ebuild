@@ -35,7 +35,7 @@ DEPEND="test? ( ${PYTHON_DEPS} )"
 RDEPEND="!dev-cpp/gmock"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-9999-increase-clone-stack-size.patch
+	"${FILESDIR}"/${PN}-1.9.0_pre20190607-add-mmap-stack-flag.patch
 )
 
 pkg_setup() {
