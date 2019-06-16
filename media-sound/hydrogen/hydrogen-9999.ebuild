@@ -43,8 +43,6 @@ RDEPEND="${DEPEND}"
 
 DOCS=( AUTHORS ChangeLog DEVELOPERS README.txt )
 
-PATCHES=( "${FILESDIR}/${P}-gnuinstalldirs.patch" )
-
 src_configure() {
 	local mycmakeargs=(
 		-DWANT_ALSA=$(usex alsa)
