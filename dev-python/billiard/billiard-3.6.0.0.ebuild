@@ -9,7 +9,7 @@ inherit distutils-r1 flag-o-matic
 
 DESCRIPTION="Python multiprocessing fork"
 HOMEPAGE="https://pypi.org/project/billiard/ https://github.com/celery/billiard"
-SRC_URI="https://github.com/celery/${PN}/archive/v${PV}.tar.gz"
+SRC_URI="https://files.pythonhosted.org/packages/3c/a0/5a01bed569cf1af8fcdd4294590acb980a2788d1594f4ccd678b6fea8644/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

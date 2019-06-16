@@ -9,7 +9,7 @@ inherit distutils-r1 bash-completion-r1
 
 DESCRIPTION="Asynchronous task queue/job queue based on distributed message passing"
 HOMEPAGE="http://celeryproject.org/ https://pypi.org/project/celery/"
-SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz"
+SRC_URI="https://files.pythonhosted.org/packages/a2/4b/d020836f751617e907e84753a41c92231cd4b673ff991b8ee9da52361323/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
