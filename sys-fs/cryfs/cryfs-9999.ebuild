@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ DESCRIPTION="Encrypted FUSE filesystem that conceals metadata"
 HOMEPAGE="https://www.cryfs.org/"
 
 SLOT=0
-IUSE="custom-optimization libressl test update-check"
+IUSE="custom-optimization debug libressl test update-check"
 
 LICENSE="LGPL-3 BSD-2 MIT"
 # cryfs - LGPL-3
@@ -40,10 +40,8 @@ src_prepare() {
 	cmake-utils_src_prepare
 
 	# remove tests that require internet access to comply with Gentoo policy
-	sed -i -e '/CurlHttpClientTest.cpp/d' -e '/FakeHttpClientTest.cpp/d' test/cpp-utils/CMakeLists.txt || die
-
-	# remove non-applicable warning
-	sed -i -e '/WARNING! This is a debug build. Performance might be slow./d' src/cryfs-cli/Cli.cpp || die
+	sed -e "/CurlHttpClientTest.cpp/d" -e "/FakeHttpClientTest.cpp/d" \
+		-i test/cpp-utils/CMakeLists.txt || die
 }
 
 src_configure() {
