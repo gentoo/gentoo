@@ -10243,7 +10243,7 @@ sys-fs/ext4magic 0.3.2-r1: Tool for recovery of deleted or overwritten files on 
 sys-fs/extundelete 0.2.4: A utility to undelete files from an ext3 or ext4 partition
 sys-fs/f2fs-tools 1.10.0 1.11.0-r1 1.12.0-r1: Tools for Flash-Friendly File System (F2FS)
 sys-fs/fatsort 1.5.0: Sorts files on FAT16/32 partitions, ideal for basic audio players
-sys-fs/fuse 2.9.7 2.9.8: An interface for filesystems implemented in userspace
+sys-fs/fuse 2.9.8: An interface for filesystems implemented in userspace
 sys-fs/fuse-common 3.2.6: Common files for multiple slots of sys-fs/fuse
 sys-fs/fuse-exfat 1.2.8 1.3.0: exFAT filesystem FUSE module
 sys-fs/fuseiso 20070708-r2: Fuse module to mount ISO9660
