@@ -17,11 +17,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="test"
 
-RDEPEND="
-	${PYTHON_DEPS}
-"
 DEPEND="
-	${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
 		dev-python/flake8[${PYTHON_USEDEP}]
