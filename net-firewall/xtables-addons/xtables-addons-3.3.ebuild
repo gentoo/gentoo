@@ -26,6 +26,7 @@ DEPEND=">=net-firewall/iptables-1.6.0"
 RDEPEND="${DEPEND}
 	xtables_addons_geoip? (
 		app-arch/unzip
+		dev-perl/Net-CIDR-Lite
 		dev-perl/Text-CSV_XS
 		virtual/perl-Getopt-Long
 	)
