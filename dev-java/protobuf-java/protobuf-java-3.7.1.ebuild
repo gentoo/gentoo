@@ -1,5 +1,7 @@
-# Copyright 2008-2019 Arfrever Frehtes Taifersar Arahesis and others
+# Copyright 2008-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# True Authors: Arfrever Frehtes Taifersar Arahesis and others
 
 EAPI="6"
 JAVA_PKG_IUSE="doc source"
@@ -23,7 +25,7 @@ fi
 
 LICENSE="BSD"
 SLOT="0/18"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~sh ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~sh x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
 IUSE=""
 
 DEPEND="~dev-libs/protobuf-${PV}
