@@ -30,15 +30,15 @@ DEPEND="
 	)
 "
 
-python_install() {
-	distutils-r1_python_install --single-version-externally-managed
-	find "${ED}" -name '*.pth' -delete || die
-}
-
 python_test() {
 	# This file produced by setup.py breaks finding system-wide installed
 	# ruamel.std.pathlib due to shared namespace
 	rm "${BUILD_DIR}/lib/ruamel/__init__.py" || die
 
 	py.test -v _test/test_*.py || die
+}
+
+python_install() {
+	distutils-r1_python_install --single-version-externally-managed
+	find "${ED}" -name '*.pth' -delete || die
 }
