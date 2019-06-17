@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit virtualx xdg-utils
+inherit xdg-utils
 
 DESCRIPTION="A configuration management system for Xfce"
 HOMEPAGE="https://www.xfce.org/projects/"
@@ -57,20 +57,26 @@ src_compile() {
 	emake OTHERLDFLAGS="${LDFLAGS}"
 }
 
-my_test() {
-	local out=$(./xfconfd/xfconfd --daemon) || return 1
-	eval "${out}"
-
-	local ret=0
-	# https://bugzilla.xfce.org/show_bug.cgi?id=13840
-	nonfatal emake -j1 check || ret=1
-
-	kill "${XFCONFD_PID}" || ewarn "Unable to kill xfconfd"
-	return "${ret}"
-}
-
 src_test() {
-	virtx my_test
+	local service_dir=${HOME}/.local/share/dbus-1/services
+	mkdir -p "${service_dir}" || die
+	cat > "${service_dir}/org.xfce.Xfconf.service" <<-EOF || die
+		[D-BUS Service]
+		Name=org.xfce.Xfconf
+		Exec=${S}/xfconfd/xfconfd
+	EOF
+
+	(
+		# start isolated dbus session bus
+		dbus_data=$(dbus-launch --sh-syntax) || exit
+		eval "${dbus_data}"
+
+		nonfatal emake check
+		ret=${?}
+
+		kill "${DBUS_SESSION_BUS_PID}"
+		exit "${ret}"
+	) || die
 }
 
 src_install() {
