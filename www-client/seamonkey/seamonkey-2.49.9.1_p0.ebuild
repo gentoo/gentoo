@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -155,6 +155,9 @@ src_prepare() {
 	rm -f "${WORKDIR}"/firefox/1000_gentoo_install_dir.patch
 	eapply "${WORKDIR}"/firefox
 	popd &>/dev/null || die
+
+	# gcc9 patch #685092
+	eapply "${FILESDIR}"/${PN}-gcc9.patch
 
 	if grep -q '^sdkdir.*$(MOZ_APP_NAME)-devel' mozilla/config/baseconfig.mk ; then
 		sed '/^sdkdir/s@-devel@@' \

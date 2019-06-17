@@ -25,7 +25,7 @@ else
 fi
 LICENSE="LGPL-2+"
 SLOT="0"
-IUSE="bcache +cryptsetup device-mapper dmraid escrow gtk-doc lvm kbd test +tools vdo"
+IUSE="bcache +cryptsetup device-mapper dmraid escrow gtk-doc introspection lvm kbd test +tools vdo"
 
 RDEPEND="
 	>=dev-libs/glib-2.42.2
@@ -58,8 +58,8 @@ DEPEND="
 "
 
 BDEPEND+="
-	>=dev-libs/gobject-introspection-1.3.0
 	dev-util/gtk-doc-am
+	introspection? ( >=dev-libs/gobject-introspection-1.3.0 )
 "
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
@@ -82,6 +82,7 @@ src_configure() {
 		--with-part
 		--without-mpath
 		--without-nvdimm
+		$(use_enable introspection)
 		$(use_enable test tests)
 		$(use_with bcache)
 		$(use_with cryptsetup crypto)
