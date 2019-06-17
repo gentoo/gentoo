@@ -11,7 +11,7 @@ else
 	MY_P=${PN}-${MY_PV}
 	S=${WORKDIR}/${MY_P}
 	SRC_URI="https://github.com/systemd/systemd/archive/v${MY_PV}/${MY_P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
+	KEYWORDS="alpha amd64 arm arm64 ~hppa ia64 ~mips ppc ppc64 sparc x86"
 fi
 
 PYTHON_COMPAT=( python{3_5,3_6,3_7} )
@@ -23,7 +23,7 @@ HOMEPAGE="https://www.freedesktop.org/wiki/Software/systemd"
 
 LICENSE="GPL-2 LGPL-2.1 MIT public-domain"
 SLOT="0/2"
-IUSE="acl apparmor audit build cryptsetup curl dns-over-tls elfutils +gcrypt gnuefi gnutls http idn importd +kmod libidn2 +lz4 lzma nat pam pcre policykit qrcode +resolvconf +seccomp selinux +split-usr +sysv-utils test vanilla xkb"
+IUSE="acl apparmor audit build cryptsetup curl elfutils +gcrypt gnuefi http idn importd +kmod libidn2 +lz4 lzma nat pam pcre policykit qrcode +resolvconf +seccomp selinux +split-usr ssl +sysv-utils test vanilla xkb"
 
 REQUIRED_USE="importd? ( curl gcrypt lzma )"
 RESTRICT="!test? ( test )"
@@ -38,15 +38,11 @@ COMMON_DEPEND=">=sys-apps/util-linux-2.30:0=[${MULTILIB_USEDEP}]
 	audit? ( >=sys-process/audit-2:0= )
 	cryptsetup? ( >=sys-fs/cryptsetup-1.6:0= )
 	curl? ( net-misc/curl:0= )
-	dns-over-tls? (
-		gnutls? ( >=net-libs/gnutls-3.5.3:0= )
-		!gnutls? ( >=dev-libs/openssl-1.1.0:0= )
-	)
 	elfutils? ( >=dev-libs/elfutils-0.158:0= )
 	gcrypt? ( >=dev-libs/libgcrypt-1.4.5:0=[${MULTILIB_USEDEP}] )
 	http? (
 		>=net-libs/libmicrohttpd-0.9.33:0=
-		gnutls? ( >=net-libs/gnutls-3.1.4:0= )
+		ssl? ( >=net-libs/gnutls-3.1.4:0= )
 	)
 	idn? (
 		libidn2? ( net-dns/libidn2:= )
@@ -170,9 +166,11 @@ src_prepare() {
 
 	# Add local patches here
 	PATCHES+=(
+		"${FILESDIR}"/CVE-2019-6454/0001-Refuse-dbus-message-paths-longer-than-BUS_PATH_SIZE_.patch
+		"${FILESDIR}"/CVE-2019-6454/0002-Allocate-temporary-strings-to-hold-dbus-paths-on-the.patch
+		"${FILESDIR}"/241-version-dep.patch
 		"${FILESDIR}"/242-gcc-9.patch
-		"${FILESDIR}"/242-socket-util-flush-accept.patch
-		"${FILESDIR}"/242-wireguard-listenport.patch
+		"${FILESDIR}"/242-file-max.patch
 	)
 
 	if ! use vanilla; then
@@ -241,9 +239,9 @@ multilib_src_configure() {
 		-Delfutils=$(meson_multilib_native_use elfutils)
 		-Dgcrypt=$(meson_use gcrypt)
 		-Dgnu-efi=$(meson_multilib_native_use gnuefi)
-		-Dgnutls=$(meson_multilib_native_use gnutls)
 		-Defi-libdir="${EPREFIX}/usr/$(get_libdir)"
 		-Dmicrohttpd=$(meson_multilib_native_use http)
+		$(usex http -Dgnutls=$(meson_multilib_native_use ssl) -Dgnutls=false)
 		-Dimportd=$(meson_multilib_native_use importd)
 		-Dbzip2=$(meson_multilib_native_use importd)
 		-Dzlib=$(meson_multilib_native_use importd)
@@ -257,6 +255,7 @@ multilib_src_configure() {
 		-Dqrencode=$(meson_multilib_native_use qrcode)
 		-Dseccomp=$(meson_multilib_native_use seccomp)
 		-Dselinux=$(meson_multilib_native_use selinux)
+		#-Dtests=$(meson_multilib_native_use test)
 		-Ddbus=$(meson_multilib_native_use test)
 		-Dxkbcommon=$(meson_multilib_native_use xkb)
 		# hardcode a few paths to spare some deps
@@ -298,15 +297,6 @@ multilib_src_configure() {
 			-Dlibidn2=false
 			-Dlibidn=false
 		)
-	fi
-
-	if multilib_is_native_abi && use dns-over-tls; then
-		myconf+=(
-			-Ddns-over-tls=true
-			-Dopenssl=$(usex !gnutls true false)
-		)
-	else
-		myconf+=( -Ddns-over-tls=false -Dopenssl=false )
 	fi
 
 	meson_src_configure "${myconf[@]}"
@@ -356,6 +346,16 @@ multilib_src_install_all() {
 
 	# Symlink /etc/sysctl.conf for easy migration.
 	dosym ../sysctl.conf /etc/sysctl.d/99-sysctl.conf
+
+	# If we install these symlinks, there is no way for the sysadmin to remove them
+	# permanently.
+	rm -f "${ED}"/etc/systemd/system/multi-user.target.wants/systemd-networkd.service || die
+	rm -f "${ED}"/etc/systemd/system/dbus-org.freedesktop.network1.service || die
+	rm -f "${ED}"/etc/systemd/system/multi-user.target.wants/systemd-resolved.service || die
+	rm -f "${ED}"/etc/systemd/system/dbus-org.freedesktop.resolve1.service || die
+	rm -fr "${ED}"/etc/systemd/system/network-online.target.wants || die
+	rm -fr "${ED}"/etc/systemd/system/sockets.target.wants || die
+	rm -fr "${ED}"/etc/systemd/system/sysinit.target.wants || die
 
 	local udevdir=/lib/udev
 	use split-usr || udevdir=/usr/lib/udev
@@ -413,20 +413,6 @@ migrate_locale() {
 	fi
 }
 
-save_enabled_units() {
-	ENABLED_UNITS=()
-	type systemctl &>/dev/null || return
-	for x; do
-		if systemctl --quiet --root="${ROOT:-/}" is-enabled "${x}"; then
-			ENABLED_UNITS+=( "${x}" )
-		fi
-	done
-}
-
-pkg_preinst() {
-	save_enabled_units {machines,remote-{cryptsetup,fs}}.target getty@tty1.service
-}
-
 pkg_postinst() {
 	newusergroup() {
 		enewgroup "$1"
@@ -461,14 +447,6 @@ pkg_postinst() {
 	migrate_locale
 
 	systemd_reenable systemd-networkd.service systemd-resolved.service
-
-	if [[ ${ENABLED_UNITS[@]} ]]; then
-		systemctl --root="${ROOT:-/}" enable "${ENABLED_UNITS[@]}"
-	fi
-
-	if [[ -L ${EROOT}/var/lib/systemd/timesync ]]; then
-		rm "${EROOT}/var/lib/systemd/timesync"
-	fi
 
 	if [[ -z ${ROOT} && -d /run/systemd/system ]]; then
 		ebegin "Reexecuting system manager"
