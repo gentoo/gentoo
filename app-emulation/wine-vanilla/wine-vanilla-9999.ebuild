@@ -406,7 +406,7 @@ multilib_src_configure() {
 		$(use_enable test tests)
 		$(use_with truetype freetype)
 		$(use_with udev)
-		$(use_with v4l)
+		$(use_with v4l v4l2)
 		$(use_with vkd3d)
 		$(use_with vulkan)
 		$(use_with X x)
