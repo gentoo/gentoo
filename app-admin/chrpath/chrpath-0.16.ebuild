@@ -17,6 +17,7 @@ IUSE="static-libs"
 PATCHES=(
 	"${FILESDIR}"/${P}-multilib.patch
 	"${FILESDIR}"/${P}-testsuite-1.patch
+	"${FILESDIR}"/${P}-solaris.patch
 )
 
 src_prepare() {
