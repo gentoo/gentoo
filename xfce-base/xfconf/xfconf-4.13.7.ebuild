@@ -53,8 +53,7 @@ my_test() {
 	eval "${out}"
 
 	local ret=0
-	# https://bugzilla.xfce.org/show_bug.cgi?id=13840
-	nonfatal emake -j1 check || ret=1
+	nonfatal emake check || ret=1
 
 	kill "${XFCONFD_PID}" || ewarn "Unable to kill xfconfd"
 	return "${ret}"
