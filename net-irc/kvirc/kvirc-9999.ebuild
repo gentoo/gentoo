@@ -1,10 +1,12 @@
-# Copyright 2009-2018 Arfrever Frehtes Taifersar Arahesis
+# Copyright 2009-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+# True Authors: Arfrever Frehtes Taifersar Arahesis
+
+EAPI="7"
 PYTHON_COMPAT=(python2_7)
 
-inherit cmake-utils flag-o-matic gnome2-utils python-single-r1 xdg-utils
+inherit cmake-utils flag-o-matic python-single-r1 xdg-utils
 
 if [[ "${PV}" == "9999" ]]; then
 	inherit git-r3
@@ -13,8 +15,6 @@ if [[ "${PV}" == "9999" ]]; then
 	KVIRC_GIT_REVISION=""
 	KVIRC_GIT_SOURCES_DATE=""
 else
-	inherit vcs-snapshot
-
 	KVIRC_GIT_REVISION=""
 	KVIRC_GIT_SOURCES_DATE="${PV#*_pre}"
 	KVIRC_GIT_SOURCES_DATE="${KVIRC_GIT_SOURCES_DATE:0:4}-${KVIRC_GIT_SOURCES_DATE:4:2}-${KVIRC_GIT_SOURCES_DATE:6:2}"
@@ -34,7 +34,11 @@ KEYWORDS=""
 IUSE="audiofile +dbus dcc_video debug doc gsm kde +nls oss +perl +phonon profile +python spell +ssl theora webkit"
 REQUIRED_USE="audiofile? ( oss ) python? ( ${PYTHON_REQUIRED_USE} )"
 
-RDEPEND="dev-qt/qtcore:5
+BDEPEND="virtual/pkgconfig
+	doc? ( app-doc/doxygen )
+	kde? ( kde-frameworks/extra-cmake-modules:5 )
+	nls? ( sys-devel/gettext )"
+DEPEND="dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtmultimedia:5
 	dev-qt/qtnetwork:5
@@ -68,13 +72,12 @@ RDEPEND="dev-qt/qtcore:5
 		media-libs/libvorbis
 	)
 	webkit? ( dev-qt/qtwebkit:5 )"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig
-	doc? ( app-doc/doxygen )
-	kde? ( kde-frameworks/extra-cmake-modules:5 )
-	nls? ( sys-devel/gettext )"
-RDEPEND="${RDEPEND}
+RDEPEND="${DEPEND}
 	gsm? ( media-sound/gsm )"
+
+if [[ "${PV}" != "9999" ]]; then
+	S="${WORKDIR}/KVIrc-${KVIRC_GIT_REVISION}"
+fi
 
 DOCS=()
 
@@ -138,11 +141,11 @@ src_configure() {
 }
 
 pkg_postinst() {
-	gnome2_icon_cache_update
 	xdg_desktop_database_update
+	xdg_icon_cache_update
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
 	xdg_desktop_database_update
+	xdg_icon_cache_update
 }
