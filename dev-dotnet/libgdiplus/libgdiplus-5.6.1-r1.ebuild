@@ -15,6 +15,9 @@ SRC_URI="http://download.mono-project.com/sources/${PN}/${P}.tar.gz"
 
 IUSE="cairo"
 
+#skip tests due https://bugs.gentoo.org/687784
+RESTRICT="test"
+
 RDEPEND=">=dev-libs/glib-2.2.3:2
 	>=media-libs/freetype-2.3.7
 	>=media-libs/fontconfig-2.6
