@@ -18,7 +18,7 @@ HPN_PATCHES=(
 )
 
 SCTP_VER="1.2" SCTP_PATCH="${PARCH}-sctp-${SCTP_VER}.patch.xz"
-X509_VER="12.0.1" X509_PATCH="${PARCH}+x509-${X509_VER}.diff.gz"
+X509_VER="12.1" X509_PATCH="${PARCH}+x509-${X509_VER}.diff.gz"
 
 PATCH_SET="openssh-7.9p1-patches-1.0"
 
@@ -119,7 +119,7 @@ src_prepare() {
 	eapply "${FILESDIR}"/${PN}-8.0_p1-GSSAPI-dns.patch #165444 integrated into gsskex
 	eapply "${FILESDIR}"/${PN}-6.7_p1-openssl-ignore-status.patch
 	eapply "${FILESDIR}"/${PN}-7.5_p1-disable-conch-interop-tests.patch
-	eapply "${FILESDIR}"/${PN}-8.0_p1-tests.patch
+	use X509 || eapply "${FILESDIR}"/${PN}-8.0_p1-tests.patch
 
 	[[ -d ${WORKDIR}/patches ]] && eapply "${WORKDIR}"/patches
 

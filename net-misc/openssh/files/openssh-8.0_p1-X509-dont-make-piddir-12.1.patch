@@ -1,7 +1,7 @@
---- a/openssh-8.0p1+x509-12.0.1.diff	2019-04-29 14:11:55.210175168 -0700
-+++ b/openssh-8.0p1+x509-12.0.1.diff	2019-04-29 14:12:55.603761971 -0700
+--- a/openssh-8.0p1+x509-12.1.diff	2019-04-29 14:11:55.210175168 -0700
++++ b/openssh-8.0p1+x509-12.1.diff	2019-04-29 14:12:55.603761971 -0700
 @@ -34176,12 +34176,11 @@
-  
+
   install: $(CONFIGFILES) $(MANPAGES) $(TARGETS) install-files install-sysconf host-key check-config
   install-nokeys: $(CONFIGFILES) $(MANPAGES) $(TARGETS) install-files install-sysconf
 -@@ -334,6 +352,8 @@
