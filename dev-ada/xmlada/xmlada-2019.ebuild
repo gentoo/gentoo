@@ -53,7 +53,8 @@ src_compile () {
 
 src_test() {
 	emake test
-	emake run_test | grep DIFF && die
+	emake run_test | tee xmlada.testLog
+	grep -q DIFF xmlada.testLog && die
 }
 
 src_install () {
