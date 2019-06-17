@@ -6296,6 +6296,7 @@ x11-terms/terminator:libnotify - Enables desktop notifications viadev-python/not
 x11-terms/terminology:extras - Install additional testing tools
 x11-terms/xfce4-terminal:utempter - Include utmp management support via sys-libs/libutempter
 x11-terms/xterm:openpty - Use openpty() in preference to posix_openpt()
+x11-terms/xterm:sixel - Enable sixel graphics support
 x11-terms/xterm:toolbar - Enable the xterm toolbar to be built
 x11-themes/comix-xcursors:lefthanded - Install lefthanded version of theme in addition to default one
 x11-themes/comix-xcursors:opaque - Install non-transparent version of theme in addition to default one
