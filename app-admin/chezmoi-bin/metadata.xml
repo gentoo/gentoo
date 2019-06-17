@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>phil@demona.co</email>
+		<name>Phil DeMonaco</name>
+		</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+			Dotfile management application which provides a configuration
+			and encryption interface ontop of traditional version control
+			functionality. This simplifies synchronization of dotfiles
+			between multiple machines, operating systems, and environments
+			with differing requirements.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">twpane/chezmoi</remote-id>
+	</upstream>
+</pkgmetadata>
