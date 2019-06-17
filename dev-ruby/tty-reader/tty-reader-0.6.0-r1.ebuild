@@ -13,13 +13,19 @@ RUBY_FAKEGEM_BINWRAP=""
 
 inherit ruby-fakegem
 
-DESCRIPTION="A set of methods for processing keyboard input in character, line and multiline modes"
+DESCRIPTION="Methods for processing keyboard input in character, line and multiline modes"
 HOMEPAGE="https://github.com/piotrmurach/tty-reader"
 
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
+
+ruby_add_rdepend "
+	>=dev-ruby/tty-cursor-0.7:0
+	>=dev-ruby/tty-screen-0.7:0
+	=dev-ruby/wisper-2.0*
+"
 
 all_ruby_prepare() {
 	echo '-rspec_helper' > .rspec || die
