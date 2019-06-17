@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install postinst postrm preinst setup
-DEPEND=X? ( || ( >=x11-apps/mkfontscale-1.2.0 x11-apps/mkfontdir ) media-fonts/encodings )
+DEPEND=X? ( >=x11-apps/mkfontscale-1.2.0 media-fonts/encodings )
 DESCRIPTION=A brainstorming and mind mapping software tool
 EAPI=6
 HOMEPAGE=https://www.xmind.net
@@ -9,5 +9,5 @@ LICENSE=EPL-1.0 LGPL-3
 RDEPEND=>=virtual/jre-1.8 x11-libs/gtk+:2
 SLOT=0
 SRC_URI=http://dl2.xmind.net/xmind-downloads/xmind-8-update7-linux.zip https://dev.gentoo.org/~creffett/distfiles/xmind-icons.tar.xz
-_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	font	d4df4f26ea28a5f7037dbbd6d17cc49f	gnome2-utils	532371cfcba45b2ab0d2950547c97d95	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	1d91b03d42ab6308b5f4f6b598ed110e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	14d00d009167652b1fa363e55effe213
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	font	641b5065e2f20fe6e35ec386d8826107	gnome2-utils	532371cfcba45b2ab0d2950547c97d95	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	1d91b03d42ab6308b5f4f6b598ed110e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	14d00d009167652b1fa363e55effe213
 _md5_=e64b2bf1d92151d2ecba9a0a3844d7f8
