@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Georgy Yakovlev <gyakovlev@gentoo.org> (17 Jun 2019)
+# this is now provided by dev-lang/rust{-bin}[rustfmt]
+# it's tightly integrated with rust toolchain, eselect-rust
+# and it no longer makes sense ship this as standalone pkg
+dev-util/rustfmt
+
 # David Seifert <soap@gentoo.org> (15 Jun 2019)
 # Abandoned upstream, last release 8 years ago,
 # multiple bugs, fails with boost 1.70 and
