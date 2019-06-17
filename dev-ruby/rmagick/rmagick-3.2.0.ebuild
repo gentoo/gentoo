@@ -58,6 +58,7 @@ all_ruby_install() {
 	dodoc examples/*
 
 	if use doc ; then
-		dodoc -r doc/.
+		docinto .
+		dodoc -r doc
 	fi
 }
