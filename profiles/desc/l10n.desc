@@ -42,8 +42,10 @@ bs - Bosnian
 ca - Catalan
 ca-valencia - Catalan (Valencian)
 cak - Kaqchikel
+ceb - Cebuano
 chr - Cherokee
 cnr - Montenegrin
+co - Corsican
 cs - Czech
 cy - Welsh
 da - Danish
@@ -54,12 +56,14 @@ de-DE - German (Germany)
 dgo - Dogri (individual language)
 doi - Dogri (macrolanguage)
 dsb - Lower Sorbian
+dv - Dhivehi
 dz - Dzongkha
 el - Modern Greek
 en - English
 en-AU - English (Australia)
 en-CA - English (Canada)
 en-GB - English (United Kingdom)
+en-NZ - English (New Zealand)
 en-US - English (United States)
 en-ZA - English (South Africa)
 eo - Esperanto
@@ -89,13 +93,16 @@ he - Hebrew
 hi - Hindi
 hr - Croatian
 hsb - Upper Sorbian
+ht - Haitian
 hu - Hungarian
 hy - Armenian
 ia - Interlingua
 id - Indonesian
 is - Icelandic
 it - Italian
+iu - Inuktitut
 ja - Japanese
+jv - Javanese
 ka - Georgian
 kab - Kabyle
 kk - Kazakh
@@ -121,6 +128,7 @@ mn - Mongolian
 mni - Manipuri
 mr - Marathi
 ms - Malay (macrolanguage)
+mt - Maltese
 my - Burmese
 nan - Min Nan Chinese
 nb - Norwegian Bokmål
@@ -135,9 +143,11 @@ om - Oromo
 or - Oriya (macrolanguage)
 pa - Punjabi
 pl - Polish
+ps - Pushto
 pt - Portuguese
 pt-BR - Portuguese (Brazil)
 pt-PT - Portuguese (Portugal)
+qu - Quechua
 rm - Romansh
 ro - Romanian
 ru - Russian
@@ -157,6 +167,7 @@ sr - Serbian
 sr-Latn - Serbian (Latin script)
 ss - Swati
 st - Southern Sotho
+su - Sundanese
 sv - Swedish
 sw - Swahili (macrolanguage)
 sw-TZ - Swahili (Tanzania)
@@ -166,9 +177,11 @@ ta-LK - Tamil (Sri Lanka)
 te - Telugu
 tg - Tajik
 th - Thai
+ti - Tigrinya
 tk - Turkmen
 tl - Tagalog
 tn - Tswana
+to - Tonga (Tonga Islands)
 tr - Turkish
 ts - Tsonga
 tt - Tatar
@@ -179,6 +192,8 @@ uz - Uzbek
 ve - Venda
 vi - Vietnamese
 xh - Xhosa
+yi - Yiddish
+yo - Yoruba
 zh - Chinese
 zh-CN - Chinese (China)
 zh-TW - Chinese (Taiwan)
