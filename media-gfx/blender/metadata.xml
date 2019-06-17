@@ -18,6 +18,10 @@
 		rendering, post-production, interactive creation and playback.
 	</longdescription>
 	<use>
+		<flag name="alembic">
+			Enable im- and export of alembic (.abc) files through
+			<pkg>media-gfx/alembic</pkg>
+		</flag>
 		<flag name="bullet">
 			Enable Bullet (Physics Engine).
 		</flag>
