@@ -1,6 +1,6 @@
 #!/sbin/openrc-run
-# Copyright 1999-2018 Gentoo Foundation
-# Distributed under the terms of the Erlang Public License 1.1
+# Copyright 2010-2018 Gentoo Authors
+# Distributed under the terms of the Apache License, Version 2.0
 
 ZT_ADDRESS=""
 pidfile="/var/run/epmd.pid"
