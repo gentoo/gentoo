@@ -58,3 +58,14 @@
                    '-XXMLADA_BUILD={}'.format(library_type)]
  
          enable_build_warnings = getattr(args, 'enable_build_warnings', False)
+--- a/testsuite/tests/misc/link_two_libs/test.yaml	2019-06-17 09:38:34.796029233 +0200
++++ b/testsuite/tests/misc/link_two_libs/test.yaml	2019-06-17 09:39:06.805549633 +0200
+@@ -1,7 +1,3 @@
+ driver: python
+ input_sources: []
+-expect_failure:
+-  - if: [gnat_community_2018]
+-    then: >
+-      A known issue in the gprbuild furnished with GNAT Community 2018
+-      prevents this test from passing.
++expect_failure: Gentoo failure
