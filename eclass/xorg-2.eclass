@@ -137,10 +137,10 @@ unset EAUTORECONF_DEPEND
 
 if [[ ${FONT} == yes ]]; then
 	RDEPEND+=" media-fonts/encodings
-		|| ( >=x11-apps/mkfontscale-1.2.0 ( x11-apps/mkfontscale x11-apps/mkfontdir ) )"
+		>=x11-apps/mkfontscale-1.2.0"
 	PDEPEND+=" media-fonts/font-alias"
 	DEPEND+=" >=media-fonts/font-util-1.2.0
-		|| ( >=x11-apps/mkfontscale-1.2.0 ( x11-apps/mkfontscale x11-apps/mkfontdir ) )"
+		>=x11-apps/mkfontscale-1.2.0"
 
 	# @ECLASS-VARIABLE: FONT_DIR
 	# @DESCRIPTION:
