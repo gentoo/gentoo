@@ -55,7 +55,7 @@ DOCS=${DOCS:-}
 if [[ ${CATEGORY}/${PN} != media-fonts/encodings ]]; then
 	IUSE="X"
 	DEPEND="X? (
-			|| ( >=x11-apps/mkfontscale-1.2.0 x11-apps/mkfontdir )
+			>=x11-apps/mkfontscale-1.2.0
 			media-fonts/encodings
 	)"
 	RDEPEND=""
