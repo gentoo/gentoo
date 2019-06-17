@@ -1,7 +1,7 @@
 Title: amd64 17.1 profiles are now stable
 Author: Michał Górny <mgorny@gentoo.org>
 Posted: 2019-06-05
-Revision: 1
+Revision: 2
 News-Item-Format: 2.0
 Display-If-Profile: default/linux/amd64/13.0
 Display-If-Profile: default/linux/amd64/13.0/selinux
@@ -104,7 +104,7 @@ The following steps can be used to upgrade your system:
 11. If you are using a multilib profile, rebuild all 32-bit packages.
     This can be done using:
 
-      # emerge -1v /lib32 /usr/lib32
+      # emerge -1v --deep /lib32 /usr/lib32
 
     Alternatively, if you are switching from one of the 13.0 profiles
     you can rebuild all packages as detailed in the 17.0 news item:
