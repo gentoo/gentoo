@@ -56,6 +56,8 @@ RDEPEND="${DEPEND}
 	dev-tex/bibtex2html
 "
 
+RESTRICT+=" test"
+
 S="${WORKDIR}/${P/_/-}"
 
 src_configure() {
