@@ -30,6 +30,11 @@
 #--- END OF EXAMPLES ---
 
 # James Le Cuirot <chewi@gentoo.org> (18 Jun 2019)
+# Web site and SRC_URI dead. Has required heavy patching. Superseded
+# by games-util/deutex. Removal in 30 days.
+games-misc/yadex
+
+# James Le Cuirot <chewi@gentoo.org> (18 Jun 2019)
 # Web site and SRC_URI dead. Last release in 2007. Removal in 30
 # days. See bug #688134.
 games-kids/pytraffic
