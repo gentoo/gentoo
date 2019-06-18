@@ -49,7 +49,6 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-
 S="${WORKDIR}/${PN/lvm/LVM}.${PV}"
 
 PATCHES=(
@@ -70,6 +69,7 @@ PATCHES=(
 	#"${FILESDIR}"/${PN}-2.02.145-mkdev.patch #580062 # Merged upstream
 	"${FILESDIR}"/${PN}-2.02.184-dmeventd-no-idle-exit.patch
 	#"${FILESDIR}"/${PN}-2.02.184-allow-reading-metadata-with-invalid-creation_time.patch #682380 # merged upstream
+	"${FILESDIR}"/${PN}-2.02.184-mksh_build.patch #686652
 )
 
 pkg_setup() {
