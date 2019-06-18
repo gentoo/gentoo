@@ -7874,7 +7874,7 @@ media-libs/vamp-plugin-sdk 2.7.1: Audio processing system for plugins to extract
 media-libs/vigra 1.11.1-r2: C++ computer vision library emphasizing customizable algorithms and structures
 media-libs/virglrenderer 0.6.0: library used implement a virtual 3D GPU used by qemu
 media-libs/vo-aacenc 0.1.3: VisualOn AAC encoder library
-media-libs/vo-amrwbenc 0.1.2-r1 0.1.3: VisualOn AMR-WB encoder library
+media-libs/vo-amrwbenc 0.1.3: VisualOn AMR-WB encoder library
 media-libs/vulkan-layers 1.1.92.0-r1: Vulkan Validation Layers
 media-libs/vulkan-loader 1.1.92.1: Vulkan Installable Client Driver (ICD) Loader
 media-libs/waffle 1.5.2: Library that allows selection of GL API and of window system at runtime
