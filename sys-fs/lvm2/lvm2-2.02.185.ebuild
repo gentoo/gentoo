@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 inherit autotools linux-info multilib systemd toolchain-funcs udev flag-o-matic
 
 DESCRIPTION="User-land utilities for LVM2 (device-mapper) software"
@@ -38,16 +38,19 @@ RDEPEND="${DEPEND_COMMON}
 # note: thin- 0.3.0 is required to avoid --disable-thin_check_needs_check
 # USE 'static' currently only works with eudev, bug 520450
 DEPEND="${DEPEND_COMMON}
-	virtual/pkgconfig
 	>=sys-devel/binutils-2.20.1-r1
-	sys-devel/autoconf-archive
 	static? (
 		selinux? ( sys-libs/libselinux[static-libs] )
 		udev? ( >=sys-fs/eudev-3.1.2[static-libs] )
 		>=sys-apps/util-linux-2.16[static-libs]
 	)"
+BDEPEND="
+	sys-devel/autoconf-archive
+	virtual/pkgconfig
+"
 
-S=${WORKDIR}/${PN/lvm/LVM}.${PV}
+
+S="${WORKDIR}/${PN/lvm/LVM}.${PV}"
 
 PATCHES=(
 	# Gentoo specific modification(s):
@@ -76,7 +79,7 @@ pkg_setup() {
 		local WARNING_SYSVIPC="CONFIG_SYSVIPC:\tis not set (required for udev sync)\n"
 		if linux_config_exists; then
 			local uevent_helper_path=$(linux_chkconfig_string UEVENT_HELPER_PATH)
-			if [ -n "${uevent_helper_path}" ] && [ "${uevent_helper_path}" != '""' ]; then
+			if [[ -n "${uevent_helper_path}" ]] && [[ "${uevent_helper_path}" != '""' ]]; then
 				ewarn "It's recommended to set an empty value to the following kernel config option:"
 				ewarn "CONFIG_UEVENT_HELPER_PATH=${uevent_helper_path}"
 			fi
@@ -190,14 +193,14 @@ src_configure() {
 
 src_compile() {
 	pushd include >/dev/null
-	emake
+	emake V=1
 	popd >/dev/null
 
 	if use device-mapper-only ; then
-		emake device-mapper
+		emake V=1 device-mapper
 	else
-		emake
-		emake CC="$(tc-getCC)" -C scripts lvm2_activation_generator_systemd_red_hat
+		emake V=1
+		emake V=1 CC="$(tc-getCC)" -C scripts lvm2_activation_generator_systemd_red_hat
 	fi
 }
 
@@ -208,7 +211,7 @@ src_install() {
 	use systemd && INSTALL_TARGETS+=( install_systemd_units install_systemd_generators )
 	use device-mapper-only && INSTALL_TARGETS=( install_device-mapper )
 	for inst in ${INSTALL_TARGETS[@]}; do
-		emake DESTDIR="${D}" ${inst}
+		emake V=1 DESTDIR="${D}" ${inst}
 	done
 
 	newinitd "${FILESDIR}"/device-mapper.rc-2.02.105-r2 device-mapper
@@ -241,7 +244,7 @@ src_install() {
 		dolib.a daemons/dmeventd/libdevmapper-event.a
 		#gen_usr_ldscript libdevmapper-event.so
 	else
-		rm -f "${ED%/}"/usr/$(get_libdir)/{libdevmapper-event,liblvm2cmd,liblvm2app,libdevmapper}.a
+		rm -f "${ED}"/usr/$(get_libdir)/{libdevmapper-event,liblvm2cmd,liblvm2app,libdevmapper}.a
 	fi
 
 	if use lvm2create_initrd; then
