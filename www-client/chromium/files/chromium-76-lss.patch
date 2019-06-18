@@ -1,0 +1,39 @@
+diff --git a/third_party/crashpad/crashpad/client/crashpad_client_linux.cc b/third_party/crashpad/crashpad/client/crashpad_client_linux.cc
+index 008f858..69d0623 100644
+--- a/third_party/crashpad/crashpad/client/crashpad_client_linux.cc
++++ b/third_party/crashpad/crashpad/client/crashpad_client_linux.cc
+@@ -25,7 +25,7 @@
+ #include "base/logging.h"
+ #include "base/strings/stringprintf.h"
+ #include "client/client_argv_handling.h"
+-#include "third_party/lss/lss.h"
++#include "third_party/lss/linux_syscall_support.h"
+ #include "util/file/file_io.h"
+ #include "util/linux/exception_handler_client.h"
+ #include "util/linux/exception_information.h"
+diff --git a/third_party/crashpad/crashpad/util/linux/proc_task_reader_test.cc b/third_party/crashpad/crashpad/util/linux/proc_task_reader_test.cc
+index 911f6d3..11c1ffa 100644
+--- a/third_party/crashpad/crashpad/util/linux/proc_task_reader_test.cc
++++ b/third_party/crashpad/crashpad/util/linux/proc_task_reader_test.cc
+@@ -19,7 +19,7 @@
+ #include "base/strings/stringprintf.h"
+ #include "gtest/gtest.h"
+ #include "test/multiprocess_exec.h"
+-#include "third_party/lss/lss.h"
++#include "third_party/lss/linux_syscall_support.h"
+ #include "util/synchronization/semaphore.h"
+ #include "util/thread/thread.h"
+ 
+diff --git a/third_party/crashpad/crashpad/util/linux/socket.cc b/third_party/crashpad/crashpad/util/linux/socket.cc
+index 68efd57..d6e39f0 100644
+--- a/third_party/crashpad/crashpad/util/linux/socket.cc
++++ b/third_party/crashpad/crashpad/util/linux/socket.cc
+@@ -18,7 +18,7 @@
+ 
+ #include "base/logging.h"
+ #include "base/posix/eintr_wrapper.h"
+-#include "third_party/lss/lss.h"
++#include "third_party/lss/linux_syscall_support.h"
+ 
+ namespace crashpad {
+ 
