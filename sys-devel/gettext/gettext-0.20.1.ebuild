@@ -55,6 +55,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-0.20-avoid_eautomake.patch
 )
 
+QA_SONAME_NO_SYMLINK=".*/preloadable_libintl.so"
+
 pkg_setup() {
 	mono-env_pkg_setup
 	java-pkg-opt-2_pkg_setup

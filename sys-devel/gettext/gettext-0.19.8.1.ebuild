@@ -43,6 +43,8 @@ MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/gettext-po.h
 )
 
+QA_SONAME_NO_SYMLINK=".*/preloadable_libintl.so"
+
 pkg_setup() {
 	mono-env_pkg_setup
 	java-pkg-opt-2_pkg_setup
