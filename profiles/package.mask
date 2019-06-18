@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# James Le Cuirot <chewi@gentoo.org> (18 Jun 2019)
+# Web site and SRC_URI dead. Last release in 2007. Removal in 30
+# days. See bug #688134.
+games-kids/pytraffic
+
 # David Seifert <soap@gentoo.org> (15 Jun 2019)
 # Abandoned upstream, last release 8 years ago,
 # multiple bugs, fails with boost 1.70 and
