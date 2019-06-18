@@ -24,8 +24,8 @@ else
 fi
 
 LICENSE="BSD"
-SLOT="0/18"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~sh x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
+SLOT="0/19"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~sh ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
 IUSE=""
 
 DEPEND="~dev-libs/protobuf-${PV}

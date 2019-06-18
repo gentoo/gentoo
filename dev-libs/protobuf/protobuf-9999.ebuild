@@ -1,5 +1,7 @@
-# Copyright 2008-2019 Arfrever Frehtes Taifersar Arahesis and others
+# Copyright 2008-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# True Authors: Arfrever Frehtes Taifersar Arahesis and others
 
 EAPI="7"
 
@@ -21,20 +23,20 @@ else
 fi
 
 LICENSE="BSD"
-SLOT="0/18"
+SLOT="0/19"
 KEYWORDS=""
 IUSE="emacs examples static-libs test zlib"
 RESTRICT="!test? ( test )"
 
 BDEPEND="emacs? ( virtual/emacs )"
-DEPEND="test? ( >=dev-cpp/gtest-1.8.0[${MULTILIB_USEDEP}] )
+DEPEND="test? ( >=dev-cpp/gtest-1.9[${MULTILIB_USEDEP}] )
 	zlib? ( sys-libs/zlib[${MULTILIB_USEDEP}] )"
 RDEPEND="emacs? ( virtual/emacs )
 	zlib? ( sys-libs/zlib[${MULTILIB_USEDEP}] )"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-3.7.0-disable_no-warning-test.patch"
-	"${FILESDIR}/${PN}-3.7.1-system_libraries.patch"
+	"${FILESDIR}/${PN}-3.8.0-disable_no-warning-test.patch"
+	"${FILESDIR}/${PN}-3.8.0-system_libraries.patch"
 	"${FILESDIR}/${PN}-3.8.0-protoc_input_output_files.patch"
 )
 

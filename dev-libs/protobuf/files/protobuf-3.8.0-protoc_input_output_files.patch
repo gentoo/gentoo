@@ -222,7 +222,7 @@ https://github.com/protocolbuffers/protobuf/pull/235
    // command is automatically split on spaces, and the string "$tmpdir"
    // is replaced with TestTempDir().
    void Run(const std::string& command);
-@@ -2337,6 +2337,17 @@
+@@ -2335,6 +2335,17 @@
      EXPECT_EQ(StripCR(expected_text), StripCR(captured_stderr_));
    }
  
@@ -240,7 +240,7 @@ https://github.com/protocolbuffers/protobuf/pull/235
   private:
    void WriteUnittestProtoDescriptorSet() {
      unittest_proto_descriptor_set_filename_ =
-@@ -2431,6 +2442,19 @@
+@@ -2429,6 +2440,19 @@
        "net/proto2/internal/no_such_file.proto: No such file or directory\n");
  }
  
