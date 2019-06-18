@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit linux-info
+inherit linux-info systemd
 
 DESCRIPTION="Best-Effort Extent-Same, a btrfs dedup agent"
 HOMEPAGE="https://github.com/Zygo/bees"
@@ -57,13 +57,16 @@ src_configure() {
 	cat >localconf <<-EOF || die
 		LIBEXEC_PREFIX=/usr/libexec
 		PREFIX=/usr
-		LIBDIR=$(get_libdir)
+		LIBDIR="$(get_libdir)"
+		SYSTEMD_SYSTEM_UNIT_DIR="$(systemd_get_systemunitdir)"
 		DEFAULT_MAKE_TARGET=all
 	EOF
+	if [[ ${PV} != "9999" ]] ; then
+		cat >>localconf <<-EOF || die
+			BEES_VERSION=v${PV}
+		EOF
+	fi
 	if use tools; then
 		echo OPTIONAL_INSTALL_TARGETS=install_tools >>localconf || die
 	fi
-
-	# quickfix, will be removed when fixed upstream
-	sed -i "s/UNKNOWN/v${PV}/" src/Makefile || die
 }
