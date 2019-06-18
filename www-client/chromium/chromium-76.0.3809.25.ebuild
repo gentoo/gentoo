@@ -42,7 +42,6 @@ COMMON_DEPEND="
 	media-libs/libjpeg-turbo:=
 	media-libs/libpng:=
 	system-libvpx? ( media-libs/libvpx:=[postproc,svc] )
-	>=media-libs/openh264-1.6.0:=
 	pulseaudio? ( media-sound/pulseaudio:= )
 	system-ffmpeg? (
 		>=media-video/ffmpeg-4:=
@@ -157,6 +156,7 @@ PATCHES=(
 	"${FILESDIR}/chromium-76-gcc-ambiguous-nodestructor.patch"
 	"${FILESDIR}/chromium-76-gcc-include.patch"
 	"${FILESDIR}/chromium-76-gcc-pure-virtual.patch"
+	"${FILESDIR}/openh264.patch"
 )
 
 pre_build_checks() {
@@ -465,7 +465,6 @@ src_configure() {
 		libwebp
 		libxml
 		libxslt
-		openh264
 		re2
 		snappy
 		yasm
