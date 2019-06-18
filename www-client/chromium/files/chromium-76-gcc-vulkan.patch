@@ -1,0 +1,115 @@
+From fdb3bb1f8c41d044a5b0cb80257a26dd3c8f83a3 Mon Sep 17 00:00:00 2001
+From: Jose Dapena Paz <jose.dapena@lge.com>
+Date: Tue, 11 Jun 2019 17:39:38 +0000
+Subject: [PATCH] GCC: do not use old C notation to assign struct with property names.
+
+The notation for initialization of structs referring to its properties
+is invalid in C++. This is not accepted in GCC. It was making build
+fail in VulkanCommandBuffer.
+
+./../../../chromium-76.0.3806.1/gpu/vulkan/vulkan_command_buffer.cc: In member function 'void gpu::VulkanCommandBuffer::TransitionImageLayout(VkImage, VkImageLayout, VkImageLayout)':
+./../../../chromium-76.0.3806.1/gpu/vulkan/vulkan_command_buffer.cc:214:7: error: expected primary-expression before '.' token
+       .subresourceRange.aspectMask = VK_IMAGE_ASPECT_COLOR_BIT,
+       ^
+./../../../chromium-76.0.3806.1/gpu/vulkan/vulkan_command_buffer.cc:215:7: error: expected primary-expression before '.' token
+       .subresourceRange.baseMipLevel = 0,
+       ^
+./../../../chromium-76.0.3806.1/gpu/vulkan/vulkan_command_buffer.cc:216:7: error: expected primary-expression before '.' token
+       .subresourceRange.levelCount = 1,
+       ^
+./../../../chromium-76.0.3806.1/gpu/vulkan/vulkan_command_buffer.cc:217:7: error: expected primary-expression before '.' token
+       .subresourceRange.baseArrayLayer = 0,
+       ^
+./../../../chromium-76.0.3806.1/gpu/vulkan/vulkan_command_buffer.cc:218:7: error: expected primary-expression before '.' token
+       .subresourceRange.layerCount = 1,
+       ^
+./../../../chromium-76.0.3806.1/gpu/vulkan/vulkan_command_buffer.cc: In member function 'void gpu::VulkanCommandBuffer::CopyBufferToImage(VkBuffer, VkImage, uint32_t, uint32_t, uint32_t, uint32_t)':
+./../../../chromium-76.0.3806.1/gpu/vulkan/vulkan_command_buffer.cc:235:7: error: expected primary-expression before '.' token
+       .imageSubresource.aspectMask = VK_IMAGE_ASPECT_COLOR_BIT,
+       ^
+./../../../chromium-76.0.3806.1/gpu/vulkan/vulkan_command_buffer.cc:236:7: error: expected primary-expression before '.' token
+       .imageSubresource.mipLevel = 0,
+       ^
+./../../../chromium-76.0.3806.1/gpu/vulkan/vulkan_command_buffer.cc:237:7: error: expected primary-expression before '.' token
+       .imageSubresource.baseArrayLayer = 0,
+       ^
+./../../../chromium-76.0.3806.1/gpu/vulkan/vulkan_command_buffer.cc:238:7: error: expected primary-expression before '.' token
+       .imageSubresource.layerCount = 1,
+       ^
+Bug: 819294
+
+Change-Id: I999abece0c727e77964789183642ba62009c2c22
+Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/1651802
+Commit-Queue: José Dapena Paz <jose.dapena@lge.com>
+Reviewed-by: Antoine Labour <piman@chromium.org>
+Cr-Commit-Position: refs/heads/master@{#668033}
+---
+
+diff --git a/gpu/vulkan/vulkan_command_buffer.cc b/gpu/vulkan/vulkan_command_buffer.cc
+index ba776e4..4f14c85 100644
+--- a/gpu/vulkan/vulkan_command_buffer.cc
++++ b/gpu/vulkan/vulkan_command_buffer.cc
+@@ -207,21 +207,20 @@
+ void VulkanCommandBuffer::TransitionImageLayout(VkImage image,
+                                                 VkImageLayout old_layout,
+                                                 VkImageLayout new_layout) {
+-  VkImageMemoryBarrier barrier = {
+-      .sType = VK_STRUCTURE_TYPE_IMAGE_MEMORY_BARRIER,
+-      .srcAccessMask = GetAccessMask(old_layout),
+-      .dstAccessMask = GetAccessMask(new_layout),
+-      .oldLayout = old_layout,
+-      .newLayout = new_layout,
+-      .srcQueueFamilyIndex = VK_QUEUE_FAMILY_IGNORED,
+-      .dstQueueFamilyIndex = VK_QUEUE_FAMILY_IGNORED,
+-      .image = image,
+-      .subresourceRange.aspectMask = VK_IMAGE_ASPECT_COLOR_BIT,
+-      .subresourceRange.baseMipLevel = 0,
+-      .subresourceRange.levelCount = 1,
+-      .subresourceRange.baseArrayLayer = 0,
+-      .subresourceRange.layerCount = 1,
+-  };
++  VkImageMemoryBarrier barrier = {};
++  barrier.sType = VK_STRUCTURE_TYPE_IMAGE_MEMORY_BARRIER;
++  barrier.srcAccessMask = GetAccessMask(old_layout);
++  barrier.dstAccessMask = GetAccessMask(new_layout);
++  barrier.oldLayout = old_layout;
++  barrier.newLayout = new_layout;
++  barrier.srcQueueFamilyIndex = VK_QUEUE_FAMILY_IGNORED;
++  barrier.dstQueueFamilyIndex = VK_QUEUE_FAMILY_IGNORED;
++  barrier.image = image;
++  barrier.subresourceRange.aspectMask = VK_IMAGE_ASPECT_COLOR_BIT;
++  barrier.subresourceRange.baseMipLevel = 0;
++  barrier.subresourceRange.levelCount = 1;
++  barrier.subresourceRange.baseArrayLayer = 0;
++  barrier.subresourceRange.layerCount = 1;
+   vkCmdPipelineBarrier(command_buffer_, GetPipelineStageFlags(old_layout),
+                        GetPipelineStageFlags(new_layout), 0, 0, nullptr, 0,
+                        nullptr, 1, &barrier);
+@@ -233,17 +232,16 @@
+                                             uint32_t buffer_height,
+                                             uint32_t width,
+                                             uint32_t height) {
+-  VkBufferImageCopy region = {
+-      .bufferOffset = 0,
+-      .bufferRowLength = buffer_width,
+-      .bufferImageHeight = buffer_height,
+-      .imageSubresource.aspectMask = VK_IMAGE_ASPECT_COLOR_BIT,
+-      .imageSubresource.mipLevel = 0,
+-      .imageSubresource.baseArrayLayer = 0,
+-      .imageSubresource.layerCount = 1,
+-      .imageOffset = {0, 0, 0},
+-      .imageExtent = {width, height, 1},
+-  };
++  VkBufferImageCopy region = {};
++  region.bufferOffset = 0;
++  region.bufferRowLength = buffer_width;
++  region.bufferImageHeight = buffer_height;
++  region.imageSubresource.aspectMask = VK_IMAGE_ASPECT_COLOR_BIT;
++  region.imageSubresource.mipLevel = 0;
++  region.imageSubresource.baseArrayLayer = 0;
++  region.imageSubresource.layerCount = 1;
++  region.imageOffset = {0, 0, 0};
++  region.imageExtent = {width, height, 1};
+   vkCmdCopyBufferToImage(command_buffer_, buffer, image,
+                          VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, 1, &region);
+ }
