@@ -1,0 +1,14 @@
+BDEPEND=>=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=compile install prepare
+DEPEND=dev-ada/gprbuild[gnat_2016(-)?,gnat_2017(-)?,gnat_2018(-)?,gnat_2019(-)?] sys-libs/binutils-libs
+DESCRIPTION=Monitors dynamic allocation and deallocation activity in a program
+EAPI=7
+HOMEPAGE=http://libre.adacore.com/
+IUSE=gnat_2016 gnat_2017 gnat_2018 +gnat_2019
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+REQUIRED_USE=^^ ( gnat_2016 gnat_2017 gnat_2018 gnat_2019 )
+SLOT=0
+SRC_URI=http://mirrors.cdn.adacore.com/art/5cdf8e1431e87a8f1d425089 -> gnatmem-2019-20190429-19745-src.tar.gz
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
+_md5_=acaf725f0dee1229e932a7ac6eecf6da
