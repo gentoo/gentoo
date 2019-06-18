@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 DESCRIPTION="the best variant of the Yacc parser generator"
 HOMEPAGE="https://invisible-island.net/byacc/byacc.html"
-SRC_URI="ftp://invisible-island.net/byacc/${P}.tgz"
+SRC_URI="https://invisible-mirror.net/archives/byacc/${P}.tgz"
 
 LICENSE="public-domain"
 SLOT="0"
