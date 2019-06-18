@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit golang-vcs-snapshot bash-completion-r1
+inherit bash-completion-r1 golang-vcs-snapshot
 
 DESCRIPTION="A backup program that is fast, efficient and secure"
 HOMEPAGE="https://restic.github.io/"
@@ -13,13 +13,10 @@ EGO_PN="github.com/restic/restic"
 LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
-IUSE="test"
-
-DEPEND="
-	dev-lang/go
-	test? ( sys-fs/fuse:0 )"
+IUSE=""
 
 RDEPEND="sys-fs/fuse:0"
+DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/${P}/src/${EGO_PN}"
 
@@ -29,7 +26,7 @@ src_compile() {
 		-work
 		-x
 		-tags release
-		-ldflags "-s -w -X main.version=${PV}"
+		-ldflags "-X main.version=${PV}"
 		-asmflags "-trimpath=${S}"
 		-gcflags "-trimpath=${S}"
 		-o restic ${EGO_PN}/cmd/restic
