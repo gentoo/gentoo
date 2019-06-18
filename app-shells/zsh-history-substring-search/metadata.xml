@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM 'http://www.gentoo.org/dtd/metadata.dtd'>
+<pkgmetadata>
+	<maintainer type='person'>
+		<email>beatussum@protonmail.com</email>
+		<name>Mattéo Rossillol</name>
+	</maintainer>
+	<maintainer type='project'>
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		This is a clean-room implementation of the Fish shell's history search feature, where
+		you can type in any part of any command from history and then press chosen keys, such
+		as the UP and DOWN arrows, to cycle through matches.
+	</longdescription>
+	<longdescription lang='fr'>
+		Il s'agit d'une implémentation de la fonctionnalité, propre au shell Fish,
+		de recherche dans l'historique, où l'on peut taper n'importe quelle partie
+		de n'importe quelle commande et puis appuyer sur des touches choisies, par
+		exemple les flèches HAUT et BAS, pour circuler parmis les correspondances.
+	</longdescription>
+	<upstream>
+		<maintainer>
+			<name>zsh-users</name>
+		</maintainer>
+		<bugs-to>https://github.com/zsh-users/zsh-history-substring-search/issues</bugs-to>
+		<remote-id type='github'>zsh-users/zsh-history-substring-search</remote-id>
+	</upstream>
+</pkgmetadata>
