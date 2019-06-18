@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 RESTRICT="test"
 
 PYTHON_COMPAT=( python2_7 )
-inherit eutils flag-o-matic python-single-r1 toolchain-funcs versionator
+inherit eutils flag-o-matic prefix python-single-r1 toolchain-funcs versionator
 
 MY_PV="$(replace_all_version_separators _)"
 
@@ -81,6 +81,7 @@ src_prepare() {
 }
 
 src_configure() {
+	hprefixify engine/Jambase
 	if use python; then
 		# replace versions by user-selected one (TODO: fix this when slot-op
 		# deps are available to always match the best version available)
