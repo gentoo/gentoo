@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM 'http://www.gentoo.org/dtd/metadata.dtd'>
+<pkgmetadata>
+	<maintainer type='person'>
+		<email>beatussum@protonmail.com</email>
+		<name>Mattéo Rossillol</name>
+	</maintainer>
+	<maintainer type='project'>
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		It enables highlighting of commands whilst they are typed at a zsh prompt into
+		an interactive terminal. This helps in reviewing commands before running them,
+		particularly in catching syntax errors.
+	</longdescription>
+	<longdescription lang='fr'>
+		Il permet de mettre en surbrillance les commandes lorsqu'elles sont tapées dans une
+		invite zsh. Cela aide à réviser les commandes avant de les exécuter, en particulier
+		pour détecter les erreurs de syntaxe.
+	</longdescription>
+	<upstream>
+		<maintainer status='active'>
+			<name>zsh-users</name>
+		</maintainer>
+		<changelog>https://raw.githubusercontent.com/zsh-users/zsh-syntax-highlighting/master/changelog.md</changelog>
+		<bugs-to>https://github.com/zsh-users/zsh-syntax-highlighting/issues</bugs-to>
+		<remote-id type='github'>zsh-users/zsh-syntax-highlighting</remote-id>
+	</upstream>
+</pkgmetadata>
