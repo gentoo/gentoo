@@ -1,0 +1,9 @@
+DEFINED_PHASES=postinst
+DESCRIPTION=A complete free-content single-player focused game based on the Doom engine
+EAPI=7
+HOMEPAGE=https://freedoom.github.io
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+RDEPEND=~games-fps/freedoom-data-0.11.3 || ( games-fps/gzdoom games-engines/odamex games-fps/doomsday )
+SLOT=0
+_md5_=de0b4a429d6016d029d29a5b9893b567
