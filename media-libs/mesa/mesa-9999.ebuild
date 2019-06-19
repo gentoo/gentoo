@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 PYTHON_COMPAT=( python3_5 python3_6 python3_7 )
 
@@ -209,6 +209,11 @@ RDEPEND="${RDEPEND}
 unset {LLVM,CLANG}_DEPSTR{,_AMDGPU}
 
 DEPEND="${RDEPEND}
+	valgrind? ( dev-util/valgrind )
+	x11-libs/libXrandr[${MULTILIB_USEDEP}]
+	x11-base/xorg-proto
+"
+BDEPEND="
 	${PYTHON_DEPS}
 	opencl? (
 		>=sys-devel/gcc-4.6
@@ -217,9 +222,6 @@ DEPEND="${RDEPEND}
 	sys-devel/flex
 	sys-devel/gettext
 	virtual/pkgconfig
-	valgrind? ( dev-util/valgrind )
-	x11-base/xorg-proto
-	x11-libs/libXrandr[${MULTILIB_USEDEP}]
 	$(python_gen_any_dep ">=dev-python/mako-0.8.0[\${PYTHON_USEDEP}]")
 "
 
@@ -307,7 +309,7 @@ pkg_pretend() {
 }
 
 python_check_deps() {
-	has_version --host-root ">=dev-python/mako-0.8.0[${PYTHON_USEDEP}]"
+	has_version -b ">=dev-python/mako-0.8.0[${PYTHON_USEDEP}]"
 }
 
 pkg_setup() {
