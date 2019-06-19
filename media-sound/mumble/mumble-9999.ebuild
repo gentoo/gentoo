@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit desktop qmake-utils xdg
+inherit desktop multilib-build qmake-utils xdg
 
 DESCRIPTION="Mumble is an open source, low-latency, high quality voice chat software"
 HOMEPAGE="https://wiki.mumble.info"
@@ -63,6 +63,8 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+# NB: qmake does not support multilib but it's fine to configure
+# for the native ABI here
 src_configure() {
 	myuse() {
 		[[ -n "${1}" ]] || die "myuse: No use option given"
@@ -97,16 +99,36 @@ src_configure() {
 		DEFINES+="PLUGIN_PATH=/usr/$(get_libdir)/mumble"
 }
 
+multilib_src_compile() {
+	local emake_args=(
+		# place libmumble* in a subdirectory
+		DESTDIR_ADD="/${MULTILIB_ABI_FLAG}"
+		{C,L}FLAGS_ADD="$(get_abi_CFLAGS)"
+	)
+	# build only overlay library for other ABIs
+	multilib_is_native_abi || emake_args+=( -C overlay_gl )
+	emake "${emake_args[@]}"
+	emake clean
+}
+
+src_compile() {
+	multilib_foreach_abi multilib_src_compile
+}
+
+multilib_src_install() {
+	local dir=$(usex debug debug release)
+	dolib.so "${dir}/${MULTILIB_ABI_FLAG}"/libmumble.so*
+	if multilib_is_native_abi; then
+		dobin "${dir}"/mumble
+		dolib.so "${dir}"/libcelt0.so* "${dir}"/plugins/lib*.so*
+	fi
+}
+
 src_install() {
+	multilib_foreach_abi multilib_src_install
+
 	newdoc README.Linux README
 	dodoc CHANGES
-
-	local dir=release
-	if use debug; then
-		dir=debug
-	fi
-
-	dobin "${dir}"/mumble
 	dobin scripts/mumble-overlay
 
 	insinto /usr/share/services
@@ -118,8 +140,6 @@ src_install() {
 
 	doman man/mumble-overlay.1
 	doman man/mumble.1
-
-	dolib.so "${dir}"/libmumble.so* "${dir}"/libcelt0.so* "${dir}"/plugins/lib*.so*
 }
 
 pkg_preinst() {
