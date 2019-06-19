@@ -36,15 +36,15 @@ DEPEND="${RDEPEND}
 	dev-util/glib-utils
 	>=dev-util/gtk-doc-am-1.25
 	>=dev-util/intltool-0.40
-	sys-devel/autoconf-archive
 	virtual/pkgconfig
 	test? ( >=net-libs/uhttpmock-0.5 )
 	vala? ( $(vala_depend) )
 "
-# eautoreconf needs autoconf-archive
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.17.8-disable-demos.patch
+	# don't overwrite m4/ax_* with newer breaking versions
+	"${FILESDIR}"/${P}-ax2019-compat.patch
 )
 
 src_prepare() {
