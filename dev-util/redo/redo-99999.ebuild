@@ -23,6 +23,7 @@ src_compile() {
 }
 
 src_test() {
+	local ARCH= CFLAGS= CXXFLAGS= LDFLAGS=
 	./do -j$(makeopts_jobs) test || die
 }
 
