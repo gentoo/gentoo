@@ -121,7 +121,6 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		>=dev-cpp/waylandpp-0.2.3:=
 		media-libs/mesa[wayland]
 		>=dev-libs/wayland-protocols-1.7
-		>=x11-libs/libxkbcommon-0.4.1
 	)
 	webserver? ( >=net-libs/libmicrohttpd-0.9.55[messages] )
 	X? (
@@ -131,6 +130,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		system-ffmpeg? ( media-video/ffmpeg[X] )
 	)
 	x11-libs/libdrm
+	>=x11-libs/libxkbcommon-0.4.1
 	xslt? ( dev-libs/libxslt )
 	zeroconf? ( net-dns/avahi[dbus] )
 "
