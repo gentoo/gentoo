@@ -17,7 +17,8 @@ SLOT="0"
 LICENSE="GPL-2 LPPL-1.3c TeX"
 
 SRC_URI="mirror://gentoo/${MY_P}.tar.xz
-	mirror://gentoo/${PN}-patches-${PV}-${PATCHLEVEL}.tar.xz"
+	mirror://gentoo/${PN}-patches-${PV}-${PATCHLEVEL}.tar.xz
+	mirror://gentoo/texlive-tlpdb-${PV}.tar.xz"
 
 TL_CORE_BINEXTRA_MODULES="
 	a2ping adhocfilelist arara asymptote bundledoc checklistings ctan_chk
@@ -130,6 +131,9 @@ RELOC_TARGET=texmf-dist
 
 src_prepare() {
 	cd "${WORKDIR}" || die
+
+	mv texlive.tlpdb tlpkg/ || die "failed to move texlive.tlpdb"
+
 	# From texlive-module.eclass.
 	grep -H RELOC tlpkg/tlpobj/* | awk '{print $2}' | sed 's#^RELOC/##' > "${T}/reloclist"
 	{ for i in $(<"${T}/reloclist"); do  dirname $i; done; } | uniq > "${T}/dirlist"
