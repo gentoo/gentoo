@@ -27,6 +27,8 @@ DEPEND="${DEPEND}
 RDEPEND="${DEPEND}
 	php_targets_php5-6? ( dev-php/pecl-stomp:0 )"
 
+DEPEND="virtual/pkgconfig ${DEPEND}"
+
 src_prepare() {
 	if use php_targets_php7-1 || use php_targets_php7-2 || use php_targets_php7-3 ; then
 		php-ext-source-r3_src_prepare
@@ -39,7 +41,7 @@ src_configure() {
 	if use php_targets_php7-1 || use php_targets_php7-2 || use php_targets_php7-3 ; then
 		local PHP_EXT_ECONF_ARGS=(
 			--enable-stomp
-			--with-openssl-dir=$(usex ssl "${EPREFIX}/usr")
+			--with-openssl-dir=$(usex ssl yes no)
 		)
 		php-ext-source-r3_src_configure
 	fi
