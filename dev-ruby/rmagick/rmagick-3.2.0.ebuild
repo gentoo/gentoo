@@ -31,7 +31,7 @@ all_ruby_prepare() {
 		-e '/compile/ s:^:#:' Rakefile || die
 
 	# Avoid simplecov dependency
-	#sed -i -e '/simplecov/ s:^:#:' Rakefile test/test_all_basic.rb || die
+	sed -i -e '/simplecov/ s:^:#:' Rakefile test/test_all_basic.rb || die
 
 	# Squelch harmless warning about imagemagick installation.
 	sed -i -e '/prefix/ s:ImageMagick:ImageMagick-6:' ext/RMagick/extconf.rb || die

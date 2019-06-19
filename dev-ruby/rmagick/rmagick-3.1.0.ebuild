@@ -15,7 +15,7 @@ HOMEPAGE="https://github.com/gemhome/rmagick"
 
 LICENSE="Artistic"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 x86 ~x86-macos"
+KEYWORDS="amd64 ~hppa ~ppc ~ppc64 x86 ~x86-macos"
 IUSE="doc"
 
 RDEPEND+=" >=media-gfx/imagemagick-6.9.0:= =media-gfx/imagemagick-6*"
@@ -31,7 +31,7 @@ all_ruby_prepare() {
 		-e '/compile/ s:^:#:' Rakefile || die
 
 	# Avoid simplecov dependency
-	#sed -i -e '/simplecov/ s:^:#:' Rakefile test/test_all_basic.rb || die
+	sed -i -e '/simplecov/ s:^:#:' Rakefile test/test_all_basic.rb || die
 
 	# Squelch harmless warning about imagemagick installation.
 	sed -i -e '/prefix/ s:ImageMagick:ImageMagick-6:' ext/RMagick/extconf.rb || die
