@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Georgy Yakovlev <gyakovlev@gentoo.org> (17 Jun 2019)
+# this is now provided by dev-lang/rust{-bin}[rustfmt]
+# it's tightly integrated with rust toolchain, eselect-rust
+# and it no longer makes sense ship this as standalone pkg
+dev-util/rustfmt
+
 # James Le Cuirot <chewi@gentoo.org> (18 Jun 2019)
 # Web site and SRC_URI dead. Has required heavy patching. Superseded
 # by games-util/deutex. Removal in 30 days.
