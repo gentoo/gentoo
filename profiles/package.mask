@@ -31,7 +31,7 @@
 
 # Sobhan Mohammadpour <sobhan@gentoo.org> (19 Jun 2019)
 # this is new and it needs testing
-=app-misc/geoclue-2.5.3
+>=app-misc/geoclue-2.5.3
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (17 Jun 2019)
 # this is now provided by dev-lang/rust{-bin}[rustfmt]
