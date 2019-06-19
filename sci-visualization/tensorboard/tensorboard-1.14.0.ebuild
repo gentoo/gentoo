@@ -23,6 +23,7 @@ RDEPEND="
 	dev-python/numpy[${PYTHON_USEDEP}]
 	dev-python/protobuf-python[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
+	>=dev-python/setuptools-41[${PYTHON_USEDEP}]
 	dev-python/werkzeug[${PYTHON_USEDEP}]
 	dev-python/wheel[${PYTHON_USEDEP}]
 	virtual/python-futures[${PYTHON_USEDEP}]"
