@@ -6013,7 +6013,7 @@ dev-ruby/rest-client 2.0.2: Simple Simple HTTP and REST client for Ruby
 dev-ruby/rexical 1.0.5-r3: Rexical is a lexical scanner generator
 dev-ruby/rgen 0.8.3: Ruby Modelling and Generator Framework
 dev-ruby/riel 1.2.0-r2: This library extends the core Ruby libraries
-dev-ruby/rmagick 2.16.0: An interface between Ruby and the ImageMagick(TM) image processing library
+dev-ruby/rmagick 2.16.0 3.1.0: An interface between Ruby and the ImageMagick(TM) image processing library
 dev-ruby/rr 1.2.1: A double framework featuring a selection of double techniques and a terse syntax
 dev-ruby/rrdtool-bindings 1.6.0: Ruby bindings for rrdtool
 dev-ruby/rspec 2.99.0 3.7.0: A Behaviour Driven Development (BDD) framework for Ruby
