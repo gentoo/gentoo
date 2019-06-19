@@ -65,7 +65,6 @@ RDEPEND="
 	>=net-libs/grpc-1.16.0
 	net-misc/curl
 	sys-libs/zlib
-	dev-python/wrapt
 	>=sys-apps/hwloc-2
 	cuda? (
 		>=dev-util/nvidia-cuda-toolkit-9.1[profiler]
@@ -84,6 +83,7 @@ RDEPEND="
 		dev-python/six[${PYTHON_USEDEP}]
 		dev-python/termcolor[${PYTHON_USEDEP}]
 		dev-python/grpcio[${PYTHON_USEDEP}]
+		>=dev-python/wrapt-1.11.1[${PYTHON_USEDEP}]
 		>=net-libs/google-cloud-cpp-0.9.0
 		>=sci-libs/keras-applications-1.0.6[${PYTHON_USEDEP}]
 		>=sci-libs/keras-preprocessing-1.0.5[${PYTHON_USEDEP}]
@@ -102,6 +102,11 @@ BDEPEND="
 	dev-python/mock
 	dev-lang/swig
 	dev-python/cython
+	|| (
+		=dev-util/bazel-0.24*
+		=dev-util/bazel-0.26*
+		=dev-util/bazel-0.27*
+	)
 	cuda? (
 		>=dev-util/nvidia-cuda-toolkit-9.1[profiler]
 	)
@@ -114,7 +119,7 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
-	"${FILESDIR}/tensorflow-1.14_rc0-0001-systemlibs-unbundle-enum34.patch"
+	"${FILESDIR}/tensorflow-1.14.0-0001-systemlibs-unbundle-enum34.patch"
 )
 DOCS=( AUTHORS CONTRIBUTING.md ISSUE_TEMPLATE.md README.md RELEASE.md )
 CHECKREQS_MEMORY="5G"
@@ -242,6 +247,7 @@ src_configure() {
 
 		echo 'build --config=noaws --config=nohdfs --config=noignite --config=nokafka' >> .bazelrc || die
 		echo 'build --define tensorflow_mkldnn_contraction_kernel=0' >> .bazelrc || die
+		echo 'build --incompatible_no_support_tools_in_action_inputs=false' >> .bazelrc || die
 	}
 	if use python; then
 		python_foreach_impl run_in_build_dir do_configure
