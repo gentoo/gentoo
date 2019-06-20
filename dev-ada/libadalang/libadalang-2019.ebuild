@@ -37,7 +37,19 @@ src_configure() {
 }
 
 src_compile() {
-	ada/manage.py -v debug build --build-mode='prod' || die
+	libtype=relocatable
+	if use shared; then
+		if use static-libs; then
+			libtype=static,relocatable
+		fi
+	elif use static-libs; then
+		libtype=static
+	fi
+	ada/manage.py \
+		-v \
+		--library-types $libtype \
+		build \
+		--build-mode='prod' || die
 }
 
 src_test () {
@@ -46,7 +58,10 @@ src_test () {
 }
 
 src_install () {
-	ada/manage.py install "${D}"/usr || die
+	ada/manage.py \
+		-v \
+		--library-types $libtype \
+		install "${D}"/usr || die
 	python_domodule build/python/libadalang
 	rm -r "${D}"/usr/python || die
 }
