@@ -3,13 +3,13 @@
 
 EAPI=7
 
-inherit eutils user
+inherit user
 
 DESCRIPTION="Antispam, antivirus and other customizable filters for MTAs with Milter support"
 HOMEPAGE="http://www.mimedefang.org/"
 SRC_URI="http://www.mimedefang.org/static/${P}.tar.gz"
-LICENSE="GPL-2+"
 
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="clamav +poll"
@@ -23,7 +23,6 @@ DEPEND=">=dev-perl/MIME-tools-5.412
 	clamav? ( app-antivirus/clamav )
 	|| ( mail-filter/libmilter mail-mta/sendmail )"
 RDEPEND="${DEPEND}"
-RESTRICT="test"
 
 pkg_setup() {
 	enewgroup defang
@@ -49,7 +48,6 @@ src_install() {
 	fowners defang:defang /etc/mail/mimedefang-filter
 	fperms 644 /etc/mail/mimedefang-filter
 	insinto /etc/mail/
-	insopts -m 644
 	newins "${S}"/SpamAssassin/spamassassin.cf sa-mimedefang.cf
 
 	keepdir /var/spool/{MD-Quarantine,MIMEDefang}
