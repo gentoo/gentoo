@@ -16,6 +16,7 @@ RDEPEND="
 		games-fps/gzdoom
 		games-engines/odamex
 		games-fps/doomsday
+		games-fps/prboom-plus
 	)
 "
 
