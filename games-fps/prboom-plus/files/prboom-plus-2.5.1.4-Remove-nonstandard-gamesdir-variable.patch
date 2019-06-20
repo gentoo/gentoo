@@ -1,0 +1,33 @@
+From d0aaa51e05da23c2b0ad46901c2f4b3cd0500681 Mon Sep 17 00:00:00 2001
+From: William Breathitt Gray <vilhelm.gray@gmail.com>
+Date: Fri, 21 Jun 2019 17:31:01 +0900
+Subject: [PATCH] Remove nonstandard gamesdir variable
+
+The Autotools canonical method of configuring the program installation
+directory is via the bindir variable (e.g. "--bindir=/usr/games/doom").
+---
+ src/Makefile.am | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
+
+diff --git a/src/Makefile.am b/src/Makefile.am
+index c20da98..9b3ab13 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -8,12 +8,10 @@
+ 
+ SUBDIRS = SDL POSIX MAC PCSOUND TEXTSCREEN MUSIC   
+ 
+-gamesdir=$(prefix)/games
+-
+ if BUILD_SERVER
+-games_PROGRAMS = prboom-plus prboom-plus-game-server
++bin_PROGRAMS = prboom-plus prboom-plus-game-server
+ else
+-games_PROGRAMS = prboom-plus
++bin_PROGRAMS = prboom-plus
+ endif
+ 
+ CFLAGS = @CFLAGS@ @SDL_CFLAGS@
+-- 
+2.22.0
+
