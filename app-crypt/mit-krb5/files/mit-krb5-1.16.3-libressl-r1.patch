@@ -1,0 +1,101 @@
+From 58263cbf3106f4c9c9a2252794093014a2f9c01f Mon Sep 17 00:00:00 2001
+From: Stefan Strogin <stefan.strogin@gmail.com>
+Date: Thu, 25 Apr 2019 03:48:10 +0300
+Subject: [PATCH] Fix build for LibreSSL 2.9.x
+
+asn1_mac.h is removed from LibreSSL 2.9.0, but static_ASN1_*() methods
+are not defined. Define them.
+
+Upstream-Status: Pending
+[Needs to be amended if
+https://github.com/libressl-portable/openbsd/pull/109 is accepted]
+Signed-off-by: Stefan Strogin <stefan.strogin@gmail.com>
+---
+ .../preauth/pkinit/pkinit_crypto_openssl.c    | 13 ++++++++----
+ .../preauth/pkinit/pkinit_crypto_openssl.h    | 20 ++++++++++++++++++-
+ 2 files changed, 28 insertions(+), 5 deletions(-)
+
+diff --git a/src/plugins/preauth/pkinit/pkinit_crypto_openssl.c b/src/plugins/preauth/pkinit/pkinit_crypto_openssl.c
+index 2064eb7bd..81d5d3cf2 100644
+--- a/plugins/preauth/pkinit/pkinit_crypto_openssl.c
++++ b/plugins/preauth/pkinit/pkinit_crypto_openssl.c
+@@ -188,14 +188,16 @@ pkinit_pkcs11_code_to_text(int err);
+     (*_x509_pp) = PKCS7_cert_from_signer_info(_p7,_si)
+ #endif
+ 
+-#if OPENSSL_VERSION_NUMBER < 0x10100000L
++#if OPENSSL_VERSION_NUMBER < 0x10100000L || defined(LIBRESSL_VERSION_NUMBER)
+ 
+-/* 1.1 standardizes constructor and destructor names, renaming
+- * EVP_MD_CTX_{create,destroy} and deprecating ASN1_STRING_data. */
++/* 1.1 (and LibreSSL 2.7) standardizes constructor and destructor names,
++ * renaming EVP_MD_CTX_{create,destroy} and deprecating ASN1_STRING_data. */
+ 
++#if !defined(LIBRESSL_VERSION_NUMBER) || LIBRESSL_VERSION_NUMBER < 0x2070000fL
+ #define EVP_MD_CTX_new EVP_MD_CTX_create
+ #define EVP_MD_CTX_free EVP_MD_CTX_destroy
+ #define ASN1_STRING_get0_data ASN1_STRING_data
++#endif
+ 
+ /* 1.1 makes many handle types opaque and adds accessors.  Add compatibility
+  * versions of the new accessors we use for pre-1.1. */
+@@ -203,6 +205,7 @@ pkinit_pkcs11_code_to_text(int err);
+ #define OBJ_get0_data(o) ((o)->data)
+ #define OBJ_length(o) ((o)->length)
+ 
++#if !defined(LIBRESSL_VERSION_NUMBER) || LIBRESSL_VERSION_NUMBER < 0x2070000fL
+ #define DH_set0_pqg compat_dh_set0_pqg
+ static int compat_dh_set0_pqg(DH *dh, BIGNUM *p, BIGNUM *q, BIGNUM *g)
+ {
+@@ -235,6 +238,7 @@ static void compat_dh_get0_key(const DH *dh, const BIGNUM **pub,
+     if (priv != NULL)
+         *priv = dh->priv_key;
+ }
++#endif /* LIBRESSL_VERSION_NUMBER */
+ 
+ /* Return true if the cert c includes a key usage which doesn't include u.
+  * Define using direct member access for pre-1.1. */
+@@ -3040,7 +3044,8 @@ cleanup:
+     return retval;
+ }
+ 
+-#if OPENSSL_VERSION_NUMBER >= 0x10100000L
++#if (OPENSSL_VERSION_NUMBER >= 0x10100000L && !defined(LIBRESSL_VERSION_NUMBER)) || \
++  LIBRESSL_VERSION_NUMBER >= 0x2090000fL
+ 
+ /*
+  * We need to decode DomainParameters from RFC 3279 section 2.3.3.  We would
+diff --git a/src/plugins/preauth/pkinit/pkinit_crypto_openssl.h b/src/plugins/preauth/pkinit/pkinit_crypto_openssl.h
+index 7411348fa..ac91408c4 100644
+--- a/plugins/preauth/pkinit/pkinit_crypto_openssl.h
++++ b/plugins/preauth/pkinit/pkinit_crypto_openssl.h
+@@ -46,7 +46,25 @@
+ #include <openssl/asn1.h>
+ #include <openssl/pem.h>
+ 
+-#if OPENSSL_VERSION_NUMBER >= 0x10100000L
++#if (OPENSSL_VERSION_NUMBER >= 0x10100000L && !defined(LIBRESSL_VERSION_NUMBER)) || \
++  LIBRESSL_VERSION_NUMBER >= 0x2090000fL
++
++#ifndef static_ASN1_SEQUENCE_END_name
++#define static_ASN1_ITEM_start(itname) \
++	static const ASN1_ITEM itname##_it = {
++#define static_ASN1_SEQUENCE_END_name(stname, tname) \
++	;\
++	static_ASN1_ITEM_start(tname) \
++		ASN1_ITYPE_SEQUENCE,\
++		V_ASN1_SEQUENCE,\
++		tname##_seq_tt,\
++		sizeof(tname##_seq_tt) / sizeof(ASN1_TEMPLATE),\
++		NULL,\
++		sizeof(stname),\
++		#stname \
++	ASN1_ITEM_end(tname)
++#endif /* !defined(static_ASN1_SEQUENCE_END_name) */
++
+ #include <openssl/asn1t.h>
+ #else
+ #include <openssl/asn1_mac.h>
+-- 
+2.21.0
+
