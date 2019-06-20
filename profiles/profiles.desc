@@ -200,7 +200,7 @@ x86		default/linux/x86/17.0/systemd			stable
 
 # Gentoo/FreeBSD Profiles
 # @MAINTAINER: bsd@gentoo.org
-amd64-fbsd	default/bsd/fbsd/amd64/11.1			stable
+amd64-fbsd	default/bsd/fbsd/amd64/11.1			exp
 amd64-fbsd	default/bsd/fbsd/amd64/11.1/clang		exp
 x86-fbsd	default/bsd/fbsd/x86/11.1			exp
 
