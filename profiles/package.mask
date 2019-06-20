@@ -29,6 +29,28 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (20 Jun 2019)
+# The core FreeBSD packages are outdated, and have not been subject
+# to FreeBSD erratas for quite some time.  As a result, at least some
+# of them are vulnerable (especially the kernel).  The Gentoo/FreeBSD
+# project is on life support, and we can't provide quality packages
+# at the moment.  Use at your own risk.
+sys-freebsd/boot0
+sys-freebsd/freebsd-bin
+sys-freebsd/freebsd-cddl
+sys-freebsd/freebsd-lib
+sys-freebsd/freebsd-libexec
+sys-freebsd/freebsd-mk-defs
+sys-freebsd/freebsd-pam-modules
+sys-freebsd/freebsd-pf
+sys-freebsd/freebsd-rescue
+sys-freebsd/freebsd-sbin
+sys-freebsd/freebsd-share
+sys-freebsd/freebsd-sources
+sys-freebsd/freebsd-ubin
+sys-freebsd/freebsd-usbin
+sys-freebsd/ubin-wrappers
+
 # Sobhan Mohammadpour <sobhan@gentoo.org> (19 Jun 2019)
 # this is new and it needs testing
 >=app-misc/geoclue-2.5.3
