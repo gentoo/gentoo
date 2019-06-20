@@ -2942,7 +2942,7 @@ dev-libs/apr-util 1.5.4 1.6.1-r3: Apache Portable Runtime Utility Library
 dev-libs/argtable 2.13-r1: An ANSI C library for parsing GNU-style command-line options with minimal fuss
 dev-libs/atf 0.21-r2: Libraries to write tests in C, C++ and shell
 dev-libs/atk 2.28.1 2.30.0: GTK+ & GNOME Accessibility Toolkit
-dev-libs/beignet 1.3.2 1.3.2-r3: OpenCL implementation for Intel Sandy Bridge, Ivy Bridge and Haswell GPUs
+dev-libs/beignet 1.3.2-r3: OpenCL implementation for Intel Sandy Bridge, Ivy Bridge and Haswell GPUs
 dev-libs/bglibs 1.106-r1 2.04: Bruce Guenter's Libraries Collection
 dev-libs/bitset 2.8.4-r1: A compressed bitset with supporting data structures and algorithms
 dev-libs/boehm-gc 7.2e 7.4.2 7.6.4: The Boehm-Demers-Weiser conservative garbage collector
