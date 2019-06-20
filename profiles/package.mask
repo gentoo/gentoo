@@ -146,21 +146,6 @@ sys-fs/pytagsfs
 # >=dev-libs/bglibs-2.04. Bug #686438.
 net-mail/qmail-qfilter
 
-# Michał Górny <mgorny@gentoo.org> (19 May 2019)
-# Unmaintained.  The program breaks init.d script (#626580).  Homepage
-# and public sources disappeared.  Last release in 2006.
-# Removal in 30 days.  Bug #684094.
-net-proxy/nylon
-
-# Michał Górny <mgorny@gentoo.org> (19 May 2019)
-# Unmaintained crypto library with last release in 2009.  Carries
-# a number of local patches just to build with GCC.  Fails tests
-# (#351373), fails to build with clang (#624192).  Its last reverse
-# dependency is obsolete version of dev-util/debugedit.
-# Removal in 30 days.  Bug #680322.
-dev-libs/beecrypt
-<dev-util/debugedit-4
-
 # Hans de Graaff <graaff@gentoo.org> (18 May 2019)
 # Old, ruby24-only, slots of ruby packages without any reverse
 # dependencies. Use the newer slot version instead.
@@ -343,13 +328,6 @@ dev-cpp/gstreamermm:0.10
 dev-python/gst-python:0.10
 media-libs/gnonlin:0.10
 net-libs/farstream:0.1
-
-# Michał Górny <mgorny@gentoo.org> (24 Apr 2019)
-# Unmaintained.  Vulnerable init.d script.  Missing dependencies causing
-# build failures (#514412, #544942).  Insecure format strings (#520574).
-# Last bumped in 2014, pending bump since at least 2015 (#550156).
-# Removal in 30 days.  Bug #629450.
-mail-filter/mimedefang
 
 # Jeroen Roovers <jer@gentoo.org> (24 Apr 2019)
 # Depends on =dev-libs/openssl-1.1.1* due to newly introduced
