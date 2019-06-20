@@ -17,19 +17,16 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~spa
 IUSE="+24bpp gcrypt gnutls ipv6 +jpeg libressl lzo +png sasl ssl systemd +threads +zlib"
 # https://bugs.gentoo.org/435326
 # https://bugs.gentoo.org/550916
-REQUIRED_USE="!gnutls? ( ssl? ( threads ) ) png? ( zlib )"
+REQUIRED_USE="ssl? ( !gnutls? ( threads ) ) png? ( zlib )"
 
 DEPEND="
 	gcrypt? ( >=dev-libs/libgcrypt-1.5.3:0= )
-	gnutls? (
-		>=net-libs/gnutls-2.12.23-r6:0=
-		>=dev-libs/libgcrypt-1.5.3:0=
-	)
-	!gnutls? (
-		ssl? (
+	ssl? (
+		!gnutls? (
 			!libressl? ( >=dev-libs/openssl-1.0.2:0= )
 			libressl? ( >=dev-libs/libressl-2.7.0:0= )
 		)
+		gnutls? ( >=net-libs/gnutls-2.12.23-r6:0= )
 	)
 	jpeg? ( >=virtual/jpeg-0-r2:0 )
 	lzo? ( dev-libs/lzo )
@@ -45,6 +42,7 @@ DOCS=( AUTHORS ChangeLog NEWS README.md TODO )
 
 PATCHES=(
 	"${FILESDIR}"/${P}-cmake-libdir.patch
+	"${FILESDIR}"/${P}-libgcrypt.patch
 )
 
 src_configure() {
@@ -54,9 +52,9 @@ src_configure() {
 		-DWITH_JPEG=$(usex jpeg ON OFF)
 		-DWITH_PNG=$(usex png ON OFF)
 		-DWITH_THREADS=$(usex threads ON OFF)
-		-DWITH_GNUTLS=$(usex gnutls ON OFF)
+		-DWITH_GNUTLS=$(usex gnutls $(usex ssl ON OFF) OFF)
 		-DWITH_OPENSSL=$(usex gnutls OFF $(usex ssl ON OFF))
-		-DWITH_GCRYPT=$(usex gnutls ON $(usex gcrypt ON OFF))
+		-DWITH_GCRYPT=$(usex gcrypt ON OFF)
 		-DWITH_SYSTEMD=$(usex systemd ON OFF)
 		-DWITH_FFMPEG=OFF
 		-DWITH_24BPP=$(usex 24bpp ON OFF)
