@@ -1382,7 +1382,7 @@ app-text/iso-codes 3.76: ISO language, territory, currency, script codes and the
 app-text/jabref 2.10-r2: Java GUI for managing BibTeX and other bibliographies
 app-text/jabref-bin 3.7 3.8.2: Java GUI for managing BibTeX and other bibliographies
 app-text/jadetex 3.13-r7: TeX macros used by Jade TeX output
-app-text/kbibtex 0.8.2 0.9: BibTeX editor to edit bibliographies used with LaTeX
+app-text/kbibtex 0.9: BibTeX editor to edit bibliographies used with LaTeX
 app-text/kchmviewer 7.7-r1: Feature rich chm file viewer, based on Qt
 app-text/keepnote 0.7.9-r2: A note taking application
 app-text/landslide 1.1.3: Generates a slideshow using the slides that power the html5-slides presentation
@@ -1498,7 +1498,7 @@ app-text/vlna 1.5: Add nonbreakable spaces after some prepositions in Czech text
 app-text/wdiff 1.2.2: Create a diff disregarding formatting
 app-text/wgetpaste 2.28-r2: Command-line interface to various pastebins
 app-text/wklej 0.2.1-r1: A wklej.org submitter
-app-text/writerperfect 0.9.5 0.9.6: Various formats to Open document format converter
+app-text/writerperfect 0.9.6: Various formats to Open document format converter
 app-text/wscr 1.2-r1: A Lightweight and Fast Anagram Solver
 app-text/wv 1.2.9-r2: Tool for conversion of MSWord doc and rtf files to something readable
 app-text/wv2 0.4.2-r2: Excellent MS Word filter lib, used in most Office suites
@@ -7460,7 +7460,7 @@ media-gfx/jpeginfo 1.6.1-r1: Prints information and tests integrity of JPEG/JFIF
 media-gfx/jpegoptim 1.4.6: Utility to optimize JPEG files
 media-gfx/jpegpixi 1.1.1: almost lossless JPEG pixel interpolator, for correcting digital camera defects
 media-gfx/kgraphviewer 2.4.3-r1: Graphviz dot graph file viewer
-media-gfx/kphotoalbum 5.4.2 5.5: Tool for indexing, searching, and viewing images
+media-gfx/kphotoalbum 5.5: Tool for indexing, searching, and viewing images
 media-gfx/krita 4.1.8-r1: Free digital painting application. Digital Painting, Creative Freedom!
 media-gfx/libimagequant 2.11.7 2.12.2: Palette quantization library that powers pngquant and other PNG optimizers
 media-gfx/librecad 2.1.3-r4: Generic 2D CAD program
@@ -8294,7 +8294,7 @@ media-sound/xineadump 0.1-r1: Utility for Xine decoding support in transKode
 media-sound/xmms2 0.8_p20161122-r4: X(cross)platform Music Multiplexing System. Next generation of the XMMS player
 media-sound/xnoise 0.2.21: A media player for Gtk+ with a slick GUI, great speed and lots of features
 media-sound/xwax 1.6: Digital vinyl emulation software
-media-sound/zynaddsubfx 3.0.3-r1 3.0.5: Software synthesizer capable of making a countless number of instruments
+media-sound/zynaddsubfx 3.0.5: Software synthesizer capable of making a countless number of instruments
 media-tv/dtv-scan-tables 0_p20171003: Digital TV scan tables in v3 and v5 format
 media-tv/dvbstream 0.7_pre20080516-r1: RTP multicast stream server and other tools for DVB cards
 media-tv/dvbtune 0.5-r1: simple tuning app for DVB cards
@@ -8349,7 +8349,7 @@ media-video/guvcview 2.0.6: Simple Qt5 or GTK+3 interface for capturing and view
 media-video/gxine 0.5.907-r1 0.5.909: GTK+ Front-End for libxine
 media-video/isight-firmware-tools 1.6-r1: Extract, load or export firmware for the iSight webcams
 media-video/jubler 5.1: Java subtitle editor
-media-video/kaffeine 2.0.16.2 2.0.18: Media player with digital TV support by KDE
+media-video/kaffeine 2.0.18: Media player with digital TV support by KDE
 media-video/kamerka 0.12_p20161002-r1: Simple photo taking application with fancy animated interface
 media-video/kino 1.3.4-r1: Kino is a non-linear DV editor for GNU/Linux
 media-video/kmplayer 0.12.0b-r1: Video player plugin for Konqueror and basic MPlayer frontend
@@ -10017,7 +10017,7 @@ sys-apps/xdg-desktop-portal 1.2.0: Desktop integration portal
 sys-apps/xinetd 2.3.15-r3 2.3.15.3: powerful replacement for inetd
 sys-apps/xmbmon 2.0.5-r1: Mother Board Monitor Program for X Window System
 sys-auth/consolekit 0.4.6 1.1.0-r1 1.1.2 1.2.0 1.2.1: Framework for defining and tracking users, login sessions and seats
-sys-auth/elogind 239.4 241.3: The systemd project's logind, extracted to a standalone package
+sys-auth/elogind 241.3: The systemd project's logind, extracted to a standalone package
 sys-auth/fprintd 0.5.0 0.8.1: D-Bus service to access fingerprint readers
 sys-auth/keystone 14.1.0-r1 15.0.0: The Openstack authentication, authorization, and service catalog
 sys-auth/libfprint 0.99.0: library to add support for consumer fingerprint readers
