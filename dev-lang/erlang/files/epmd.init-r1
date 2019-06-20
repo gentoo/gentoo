@@ -1,10 +1,8 @@
 #!/sbin/openrc-run
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Foundation
 # Distributed under the terms of the Erlang Public License 1.1
 
-ZT_ADDRESS=""
 pidfile="/var/run/epmd.pid"
-command_args="${command_args}"
 
 depend() {
 	need loopback
@@ -14,7 +12,7 @@ depend() {
 start() {
 	ebegin "Starting Erlang Port Mapper Daemon"
 	start-stop-daemon --start --quiet \
-		--pidfile $pidfile \
+		--pidfile ${pidfile} \
 		--exec /usr/bin/epmd -- $command_args
 	eend $?
 }
