@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 2017-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (27 May 2017)
@@ -15,4 +15,4 @@ sys-devel/gcc -pie
 # Mike Gilbert <floppym@gentoo.org> (05 Aug 2018)
 # Fails to build.
 # https://bugs.gentoo.org/661880
->=www-client/chromium-69 system-icu
+<www-client/chromium-76 system-icu
