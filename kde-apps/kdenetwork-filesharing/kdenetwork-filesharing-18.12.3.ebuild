@@ -20,6 +20,11 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
+src_prepare() {
+	kde5_src_prepare
+	punt_bogus_dep KF5 DocTools
+}
+
 src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_DISABLE_FIND_PACKAGE_PackageKitQt5=ON
