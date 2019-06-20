@@ -5099,7 +5099,7 @@ dev-python/lupy 0.2.1-r2: Lupy is a is a full-text indexer and search engine wri
 dev-python/lxc-python2 0.1: Python bindings for LXC
 dev-python/lxml 4.2.5 4.3.3: A Pythonic binding for the libxml2 and libxslt libraries
 dev-python/lz4 0.8.2: LZ4 Bindings for Python
-dev-python/m2crypto 0.24.0 0.31.0-r2: A Python crypto and SSL toolkit
+dev-python/m2crypto 0.31.0-r2: A Python crypto and SSL toolkit
 dev-python/m2secret 0.1.1-r1: Encryption and decryption module and CLI utility
 dev-python/mako 1.0.3 1.0.6: A Python templating language
 dev-python/mamba 0.8.6: ... testing tool ... Born under the banner of Behavior Driven Development
