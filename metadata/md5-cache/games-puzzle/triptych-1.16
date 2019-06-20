@@ -8,5 +8,5 @@ RDEPEND=>=media-libs/libsdl-1.2[abi_x86_32,opengl,sound,video] virtual/opengl[ab
 RESTRICT=bindist mirror strip
 SLOT=0
 SRC_URI=http://www.chroniclogic.com/demos/triptych.tar.gz
-_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	user	8bd74731cafdcdad8f7a63637302e073
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	user	e68863263b1e8611dacf381bec5c8b2b
 _md5_=f8e37850043c49b74558caac64337947

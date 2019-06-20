@@ -1,5 +1,5 @@
 BDEPEND=>=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
-DEFINED_PHASES=prepare
+DEFINED_PHASES=configure prepare
 DEPEND=dev-libs/glib net-analyzer/net-snmp:= x11-libs/gdk-pixbuf x11-libs/gtk+:2
 DESCRIPTION=MBrowse is a graphical MIB browser
 EAPI=7
@@ -10,4 +10,4 @@ RDEPEND=dev-libs/glib net-analyzer/net-snmp:= x11-libs/gdk-pixbuf x11-libs/gtk+:
 SLOT=0
 SRC_URI=mirror://sourceforge/mbrowse/files/mbrowse-0.4.3.tar.gz
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
-_md5_=4851bd2c15c2477c4f5b08acb2be8c9c
+_md5_=f5365cb35fa191b0652e6ea985f23c30
