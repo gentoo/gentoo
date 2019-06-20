@@ -14,7 +14,7 @@ SRC_URI="https://01.org/sites/default/files/${P}-source.tar.gz"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="ocl-icd ocl20"
 
 BDEPEND="${PYTHON_DEPS}
