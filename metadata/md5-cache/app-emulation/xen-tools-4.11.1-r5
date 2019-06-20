@@ -4,7 +4,7 @@ DESCRIPTION=Xen tools including QEMU and xl
 EAPI=7
 HOMEPAGE=https://www.xenproject.org
 IUSE=api custom-cflags debug doc flask +hvm ocaml ovmf +pam pygrub python +qemu +qemu-traditional screen sdl static-libs system-qemu system-seabios python_targets_python2_7
-KEYWORDS=~amd64 ~arm ~arm64 ~x86
+KEYWORDS=amd64 ~arm ~arm64 ~x86
 LICENSE=GPL-2
 RDEPEND=sys-apps/pciutils dev-libs/lzo:2 dev-libs/glib:2 dev-libs/yajl dev-libs/libaio dev-libs/libgcrypt:0 sys-libs/zlib python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[ncurses,xml,threads] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),-python_single_target_python3_7(-),python_single_target_python2_7(+)] sys-apps/iproute2[-minimal] net-misc/bridge-utils screen? ( app-misc/screen app-admin/logrotate )
 REQUIRED_USE=python_targets_python2_7 ovmf? ( hvm ) pygrub? ( python ) ?? ( qemu system-qemu )
@@ -12,4 +12,4 @@ RESTRICT=test
 SLOT=0/4.11
 SRC_URI=https://downloads.xenproject.org/release/xen/4.11.1/xen-4.11.1.tar.gz https://git.seabios.org/cgit/seabios.git/snapshot/seabios-rel-1.11.1.tar.gz ovmf? ( https://github.com/tianocore/edk2/archive/ef529e6ab7c31290a33045bb1f1837447cc0eb56.tar.gz -> edk2-ef529e6ab7c31290a33045bb1f1837447cc0eb56.tar.gz ) https://dev.gentoo.org/~dlan/distfiles/xen-4.11.1-upstream-patches-2.tar.xz https://github.com/hydrapolic/gentoo-dist/raw/master/xen/xen-4.11.1-upstream-patches-2.tar.xz https://dev.gentoo.org/~dlan/distfiles/xen-gentoo-patches-17.tar.xz https://github.com/hydrapolic/gentoo-dist/raw/master/xen/xen-gentoo-patches-17.tar.xz
 _eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	a09389deba2c0a7108b581e02c7cecbf	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-single-r1	3a0fc81f484bfdbd9c2b7448015a36e4	python-utils-r1	08e17157a6807add7db1f8d01e7e391f	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
-_md5_=ca952399bc63383dd95abe2a31f9b8b4
+_md5_=876e3524b1d55433c83236fbaa7c26cc
