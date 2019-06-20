@@ -1,0 +1,40 @@
+From 57be637006a95091119f7a49b4232e461116520f Mon Sep 17 00:00:00 2001
+From: Alexander Tsoy <alexander@tsoy.me>
+Date: Sat, 25 May 2019 02:02:47 +0300
+Subject: [PATCH] crypto: rfbcrypto_gnutls is actually libgcrypt-based
+
+Long time ago gnutls used libgcrypt as a cryptographic backend. Perhaps
+that was what caused the confusion.
+---
+ CMakeLists.txt                                       | 9 ++++-----
+ common/{rfbcrypto_gnutls.c => rfbcrypto_libgcrypt.c} | 0
+ 2 files changed, 4 insertions(+), 5 deletions(-)
+ rename common/{rfbcrypto_gnutls.c => rfbcrypto_libgcrypt.c} (100%)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index b9ca4ba..0d3b4dc 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -226,11 +226,10 @@ if(SYSTEMD_FOUND)
+ endif(SYSTEMD_FOUND)
+ 
+ if(LIBVNCSERVER_HAVE_SYS_UIO_H)
+-  if(GNUTLS_FOUND)
+-    message(STATUS "Building crypto with GnuTLS")
+-    set(CRYPTO_LIBRARIES ${GNUTLS_LIBRARIES})
+-    set(CRYPTO_SOURCES ${COMMON_DIR}/rfbcrypto_gnutls)
+-    include_directories(${GNUTLS_INCLUDE_DIR})
++  if(WITH_GCRYPT AND LIBGCRYPT_LIBRARIES)
++    message(STATUS "Building crypto with Libgcrypt")
++    set(CRYPTO_LIBRARIES ${LIBGCRYPT_LIBRARIES})
++    set(CRYPTO_SOURCES ${COMMON_DIR}/rfbcrypto_libgcrypt)
+   elseif(OPENSSL_FOUND)
+     message(STATUS "Building crypto with OpenSSL")
+     set(CRYPTO_LIBRARIES ${OPENSSL_LIBRARIES})
+diff --git a/common/rfbcrypto_gnutls.c b/common/rfbcrypto_libgcrypt.c
+similarity index 100%
+rename from common/rfbcrypto_gnutls.c
+rename to common/rfbcrypto_libgcrypt.c
+-- 
+2.21.0
+
