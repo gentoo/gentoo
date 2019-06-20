@@ -438,7 +438,6 @@ media-gfx/pstoedit emf
 # masking all stable packages with java use flag
 net-vpn/openconnect java
 dev-util/oprofile java
-dev-libs/beecrypt java
 dev-libs/cyrus-sasl java
 dev-tex/tex4ht java
 dev-vcs/subversion java

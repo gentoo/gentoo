@@ -152,15 +152,6 @@ net-mail/qmail-qfilter
 # Removal in 30 days.  Bug #684094.
 net-proxy/nylon
 
-# Michał Górny <mgorny@gentoo.org> (19 May 2019)
-# Unmaintained crypto library with last release in 2009.  Carries
-# a number of local patches just to build with GCC.  Fails tests
-# (#351373), fails to build with clang (#624192).  Its last reverse
-# dependency is obsolete version of dev-util/debugedit.
-# Removal in 30 days.  Bug #680322.
-dev-libs/beecrypt
-<dev-util/debugedit-4
-
 # Hans de Graaff <graaff@gentoo.org> (18 May 2019)
 # Old, ruby24-only, slots of ruby packages without any reverse
 # dependencies. Use the newer slot version instead.
