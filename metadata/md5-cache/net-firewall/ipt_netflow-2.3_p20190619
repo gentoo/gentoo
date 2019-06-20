@@ -10,4 +10,4 @@ RDEPEND=net-firewall/iptables:0= snmp? ( net-analyzer/net-snmp ) kernel_linux? (
 SLOT=0
 SRC_URI=https://github.com/aabc/ipt-netflow/archive/0e5af37bf63681ff4ee95b98466ee26fa3e4df13.tar.gz -> ipt_netflow-2.3_p20190619.tar.gz
 _eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	linux-info	953c3b1c472dcadbf62098a9301327f2	linux-mod	6c7b3e7b9d39bd049bf23a991c16315e	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
-_md5_=5d812a265152f89297fec040f32651b8
+_md5_=ba8162af476a482ad2f8e65eb1fe6938
