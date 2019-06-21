@@ -20,8 +20,8 @@ KEYWORDS="~amd64 ~x86"
 IUSE="+cti fortran pch +python test"
 
 REQUIRED_USE="
-	cti? ( ${PYTHON_REQUIRED_USE} )
 	python? ( cti )
+	cti? ( ${PYTHON_REQUIRED_USE} )
 	${PYTHON_REQUIRED_USE}
 	"
 
