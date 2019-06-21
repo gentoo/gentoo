@@ -11,7 +11,7 @@ DESCRIPTION="Pure python SSH tunnels"
 HOMEPAGE="https://pypi.python.org/pypi/sshtunnel"
 SRC_URI="mirror://pypi/s/sshtunnel/${P}.tar.gz"
 
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm ~x86"
 LICENSE="MIT"
 SLOT="0"
 
