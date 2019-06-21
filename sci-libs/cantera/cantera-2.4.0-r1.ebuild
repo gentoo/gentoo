@@ -29,7 +29,7 @@ RDEPEND="
 	python? (
 		dev-python/numpy[${PYTHON_USEDEP}]
 	)
-	<sci-libs/sundials-3.2.0:0=
+	<sci-libs/sundials-4.0.0:0=
 "
 
 DEPEND="
@@ -45,19 +45,14 @@ DEPEND="
 	)
 "
 
-PATCHES=( "${FILESDIR}/${PN}_${PV}_libdirname_variable.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}_${PV}_libdirname_variable.patch"
+	"${FILESDIR}/${PN}_${PV}_env.patch"
+	)
 
 pkg_setup() {
 	fortran-2_pkg_setup
 	python-single-r1_pkg_setup
-}
-
-src_prepare() {
-	default
-	# patch to work 'scons test' properly in case of set up 'renamed_shared_libraries="no"' option
-	sed -i "s/, libs=\['cantera_shared'\]//" "${S}"/test_problems/SConscript || die "failed to modify 'test_problems/SConscript'"
-	# patch env to pass CCACHE_DIR variable
-	sed -i "s/ENV={'PATH': os.environ\['PATH'\]}/ENV={'PATH': os.environ\['PATH'\], 'CCACHE_DIR': os.environ.get('CCACHE_DIR','')}/" "${S}"/SConstruct || die "failed to modify 'SConstruct'"
 }
 
 ## Full list of configuration options of Cantera is presented here:
