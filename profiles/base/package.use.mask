@@ -7,6 +7,11 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Mike Gilbert <floppym@gentoo.org> (21 Jun 2019)
+# Fails to build.
+# https://bugs.gentoo.org/661880
+<www-client/chromium-76 system-icu
+
 # James Le Cuirot <chewi@gentoo.org> (21 May 2019)
 # Doesn't support ffmpeg-4. Portage takes a long time to report the
 # conflict and the feature is half broken anyway. See
@@ -242,10 +247,8 @@ dev-java/openjdk:11 gentoo-vm
 # Requires audacious, which is masked. Bug 632513
 media-libs/freeverb3 jack
 
-# Pawel Hajdan jr <phajdan.jr@gentoo.org> (18 Sep 2017)
 # Ian Stakenvicius <axs@gentoo.org> (27 Sep 2017)
 # Depends on >=icu-59, still masked.
->=www-client/chromium-62.0.3202.9 system-icu
 >=www-client/firefox-56.0 system-icu
 >=mail-client/thunderbird-60.0 system-icu
 
