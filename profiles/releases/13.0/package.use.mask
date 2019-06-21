@@ -1,7 +1,0 @@
-# Copyright 1999-2018 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-
-# Andreas Sturmlechner <asturm@gentoo.org> (15 Jul 2018)
-# Requires >=icu-60, which is not available in 13.0 based profiles.
-# Please migrate to one of the 17.0 release profiles.
->=dev-qt/qtwebengine-5.11.1 system-icu
