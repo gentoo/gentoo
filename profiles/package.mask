@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Jimi Huotari <chiitoo@gentoo.org> (22 Jun 2019)
+# Deprecated package with no consumers left.
+# Removal in 30 days.
+lxqt-base/lxqt-l10n
+
 # David Seifert <soap@gentoo.org> (22 Jun 2019)
 # Abandoned upstream, last release 5 years ago,
 # extremely brittle codebase, requires constant
