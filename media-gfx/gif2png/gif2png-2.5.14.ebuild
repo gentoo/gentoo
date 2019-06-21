@@ -1,9 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit toolchain-funcs eutils
+inherit toolchain-funcs
 
 DESCRIPTION="Converts images from gif format to png format"
 HOMEPAGE="http://catb.org/~esr/gif2png/"
@@ -13,12 +13,13 @@ LICENSE="ZLIB"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
 
-RDEPEND=">=media-libs/libpng-1.2:0
-	sys-libs/zlib"
+RDEPEND=">=media-libs/libpng-1.2:0=
+	sys-libs/zlib:="
 DEPEND="${RDEPEND}"
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-makefile.patch
+	default
+
 	tc-export CC
 }
 
