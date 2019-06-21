@@ -48,7 +48,7 @@ src_configure() {
 		$(use_enable static-libs static) \
 		$(use_with getdns_query) \
 		$(use_with getdns_server_mon) \
-		$(use_with gnutls) \
+		$(usex gnutls '--with-gnutls' '' '' '') \
 		$(use_with idn libidn2) \
 		$(use_with libev) \
 		$(use_with libevent) \
