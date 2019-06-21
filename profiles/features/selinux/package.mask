@@ -20,8 +20,11 @@ app-admin/calamares
 dev-python/python-systemd
 gnome-base/gdm
 gnome-base/gnome
+gnome-base/gnome-applets
 gnome-base/gnome-extra-apps
+gnome-base/gnome-flashback
 gnome-base/gnome-light
+gnome-base/gnome-panel
 gnome-base/gnome-shell
 gnome-extra/chrome-gnome-shell
 gnome-extra/gnome-logs
