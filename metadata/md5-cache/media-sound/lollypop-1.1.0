@@ -10,6 +10,6 @@ LICENSE=GPL-3
 RDEPEND=python_targets_python3_6? ( dev-lang/python:3.6[sqlite] ) >=dev-lang/python-exec-2:=[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] dev-libs/appstream-glib[introspection] dev-libs/glib:2 dev-libs/gobject-introspection[cairo] dev-python/pycairo[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] dev-python/pygobject:3[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] gnome-base/gnome-common x11-libs/gtk+:3 app-crypt/libsecret[introspection] dev-libs/totem-pl-parser dev-python/beautifulsoup:4[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] dev-python/dbus-python dev-python/pillow[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] >=dev-python/pylast-1.0.0[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] media-libs/gst-plugins-base:1.0[introspection]
 RESTRICT=test
 SLOT=0
-SRC_URI=https://gitlab.gnome.org/World/lollypop/uploads/04b4d9bdafd176f98dbd233c564bafb8/lollypop-1.0.7.tar.xz
+SRC_URI=https://gitlab.gnome.org/World/lollypop/uploads/dd514380c92e2f2e6ef20d366ccb96a5/lollypop-1.1.0.tar.xz
 _eclasses_=gnome2-utils	532371cfcba45b2ab0d2950547c97d95	meson	2fbe03e3b496f82fd941bcdb9d351c91	multibuild	40fe59465edacd730c644ec2bc197809	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-r1	ce1cd23cfdc1848e8e32743efe34f299	python-utils-r1	08e17157a6807add7db1f8d01e7e391f	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529	xdg-utils	14d00d009167652b1fa363e55effe213
-_md5_=7f19789b8a1134b438c0edb3542453e9
+_md5_=0cfb242baeffa098309aeda6e564252a
