@@ -3,6 +3,11 @@
 
 # This file requires >=portage-2.1.1
 
+# Matt Turner <mattst88@gentoo.org> (20 Jun 2019)
+# dev-lang/spidermonkey:60[jit] fails to build on most platforms, but does
+# build on x86.
+>=dev-lang/spidermonkey-60 -jit
+
 # Denis Lisov <dennis.lissov@gmail.com> (09 May 2019)
 # Overlay can only be built on amd64 and x86
 x11-apps/igt-gpu-tools -overlay
