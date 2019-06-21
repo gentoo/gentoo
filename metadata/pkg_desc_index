@@ -8441,7 +8441,7 @@ net-analyzer/fping 2.4_beta2_p161-r2 3.13: A utility to ping multiple hosts at o
 net-analyzer/ftester 1.0: Firewall and Intrusion Detection System testing tool
 net-analyzer/fwlogwatch 1.4: A packet filter and firewall log analyzer
 net-analyzer/gnome-nettool 3.8.1: Graphical front-ends to various networking command-line
-net-analyzer/gspoof 3.2-r2 3.2-r3: A simple GTK/command line TCP/IP packet generator
+net-analyzer/gspoof 3.2-r3: A simple GTK/command line TCP/IP packet generator
 net-analyzer/hping 3_pre20051105-r6: A ping-like TCP/IP packet assembler/analyzer
 net-analyzer/httping 2.5: http protocol ping-like program
 net-analyzer/hydra 8.1: Advanced parallized login hacker
