@@ -381,12 +381,6 @@ dev-libs/gost-engine
 # Causes a dependency loop in the OpenRC script. Bug #651998
 =sys-fs/cryptsetup-2.0.5-r1
 
-# Aaron W. Swenson <titanofold@gentoo.org> (25 Oct 2018)
-# Fails to build against up to date OpenSSL library (Bug 663966). No longer
-# supported upstream. Use dev-db/pgadmin4.
-# Masked for removal on 2018-11-24, bug #669650.
-dev-db/pgadmin3
-
 # Thomas Deutschmann <whissi@gentoo.org> (12 Oct 2018)
 # EOL and has known vulnerabilities. Please move to
 # Firefox 60 or newer if you can.
