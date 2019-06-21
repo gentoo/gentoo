@@ -29,7 +29,7 @@ RDEPEND="
 	python? (
 		dev-python/numpy[${PYTHON_USEDEP}]
 	)
-	sci-libs/sundials:0=
+	<sci-libs/sundials-3.2.0:0=
 "
 
 DEPEND="
