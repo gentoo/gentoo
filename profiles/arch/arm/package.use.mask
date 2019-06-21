@@ -1,6 +1,11 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Matt Turner <mattst88@gentoo.org> (20 Jun 2019)
+# dev-lang/spidermonkey:60[jit] fails to build on most platforms, but does
+# build on arm.
+>=dev-lang/spidermonkey-60 -jit
+
 # Lars Wendler <polynomial-c@gentoo.org> (29 Apr 2019)
 # Requires app-text/discount and net-libs/webkit-gtk which both have
 # no keywords on arm

@@ -17,6 +17,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Matt Turner <mattst88@gentoo.org> (20 Jun 2019)
+# dev-lang/spidermonkey:60[jit] fails to build on most platforms, but does
+# build on amd64.
+>=dev-lang/spidermonkey-60 -jit
+
 # Andreas Sturmlechner <asturm@gentoo.org> (09 May 2019)
 # media-libs/libplacebo is keyworded on amd64
 media-video/vlc -libplacebo
