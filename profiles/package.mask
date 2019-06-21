@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Jimi Huotari <chiitoo@gentoo.org> (21 Jun 2019)
+# Deprecated package with no consumers left.
+# Removal in 30 days.
+lxqt-base/lxqt-l10n
+
 # Sobhan Mohammadpour <sobhan@gentoo.org> (19 Jun 2019)
 # this is new and it needs testing
 >=app-misc/geoclue-2.5.3
