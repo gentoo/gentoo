@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit cmake-utils xdg-utils
 [[ ${PV} = 9999 ]] && inherit subversion
@@ -13,7 +13,7 @@ if [[ ${PV} != 9999 ]]; then
 		mirror://sourceforge/${PN}-dev/files/${P}.tar.bz2"
 	KEYWORDS="~amd64 ~x86"
 else
-	QMMP_DEV_BRANCH="1.2"
+	QMMP_DEV_BRANCH="1.3"
 	ESVN_REPO_URI="svn://svn.code.sf.net/p/${PN}-dev/code/branches/${PN}-${QMMP_DEV_BRANCH}"
 fi
 
@@ -34,6 +34,7 @@ RDEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5
+	dev-qt/qtsql:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtx11extras:5
 	media-libs/taglib
@@ -61,7 +62,10 @@ RDEPEND="
 		media-sound/jack-audio-connection-kit
 	)
 	ladspa? ( media-libs/ladspa-cmt )
-	mad? ( media-libs/libmad )
+	mad? ( || (
+		media-libs/libmad
+		media-sound/mpg123
+	) )
 	midi? ( media-sound/wildmidi )
 	mms? ( media-libs/libmms )
 	modplug? ( >=media-libs/libmodplug-0.8.4 )
