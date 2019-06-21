@@ -1913,7 +1913,7 @@ dev-db/oracle-instantclient-sqlplus 11.2.0.3 11.2.0.3-r1 11.2.0.4: Oracle 11g In
 dev-db/percona-toolkit 2.2.11 2.2.20 3.0.13: Advanced command-line tools to perform a variety of MySQL and system tasks
 dev-db/percona-xtrabackup 2.4.13: Hot backup utility for MySQL based servers
 dev-db/pg_top 3.7.0: 'top' for PostgreSQL
-dev-db/pgadmin4 3.0 4.3: GUI administration and development platform for PostgreSQL
+dev-db/pgadmin4 3.0 4.3 4.5: GUI administration and development platform for PostgreSQL
 dev-db/pgagent 3.4.0-r3: pgAgent is a job scheduler for PostgreSQL
 dev-db/pgbadger 10.0: pgBadger is a PostgreSQL log analyzer.
 dev-db/pgbouncer 1.9.0: Lightweight connection pooler for PostgreSQL
@@ -2577,7 +2577,7 @@ dev-java/htmlparser 1.4-r1: Implementation of the HTML5 parsing algorithm in Jav
 dev-java/httpcomponents-client 4.5: A low level toolset of Java components focused on HTTP and associated protocols
 dev-java/httpcomponents-core 4.4.1-r1: A low level toolset of Java components focused on HTTP and associated protocols
 dev-java/ical4j 1.0.5: a Java library for handling iCalendar data streams
-dev-java/icedtea-bin 3.10.0-r2: A Gentoo-made binary build of the IcedTea JDK
+dev-java/icedtea-bin 3.10.0-r2 3.12.0-r1: A Gentoo-made binary build of the IcedTea JDK
 dev-java/icedtea-sound 1.0.1: Plugins for javax.sound
 dev-java/icedtea-web 1.6.1-r1 1.6.2: FOSS Java browser plugin and Web Start implementation
 dev-java/icu4j 54.1.1 55.1 56.1: A set of Java libraries providing Unicode and Globalization support
@@ -5648,7 +5648,7 @@ dev-python/sphinxtogithub 1.1.0: A python script for preparing the html output o
 dev-python/sqlalchemy 0.7.10 1.2.18 1.3.3: Python SQL toolkit and Object Relational Mapper
 dev-python/sqlalchemy-migrate 0.7.2-r1 0.9.2 0.11.0 0.11.0-r1 0.12.0: SQLAlchemy Schema Migration Tools
 dev-python/sqlitecachec 1.1.4-r1: sqlite cacher for python applications
-dev-python/sshtunnel 0.1.4-r1: Pure python SSH tunnels
+dev-python/sshtunnel 0.1.4-r1 0.1.4-r2: Pure python SSH tunnels
 dev-python/ssl-fetch 0.2 0.3 0.4: A small convenience library for fetching files securely
 dev-python/statsd 3.2.1 3.3.0: A simple statsd client
 dev-python/statsmodels 0.6.1 0.9.0: Statistical computations and models for use with SciPy
@@ -6490,7 +6490,7 @@ dev-vcs/cvsd 1.0.17: CVS pserver daemon
 dev-vcs/cvsgraph 1.7.0: CVS/RCS repository grapher
 dev-vcs/cvsps 2.1-r1: Generates patchset information from a CVS repository
 dev-vcs/darcs 2.8.4-r6 2.12.0 2.12.5: a distributed, interactive, smart revision control system
-dev-vcs/fossil 2.6: Simple, high-reliability, source control management, and more
+dev-vcs/fossil 2.6 2.8: Simple, high-reliability, source control management, and more
 dev-vcs/git 2.19.2 2.20.1 2.21.0: stupid content tracker: distributed VCS designed for speed and efficiency
 dev-vcs/git-cola 2.11: The highly caffeinated git GUI
 dev-vcs/git-flow 1.11.0: Git extensions to provide high-level repository operations
@@ -7284,6 +7284,7 @@ media-fonts/font-sun-misc 1.0.3-r1: X.Org Sun fonts
 media-fonts/font-util 1.3.1: X.Org font utilities
 media-fonts/font-winitzki-cyrillic 1.0.3-r1: X.Org Winitzki cyrillic font
 media-fonts/font-xfree86-type1 1.0.4-r1: X.Org XFree86 Type 1 font
+media-fonts/fontawesome 5.1.0: The iconic font
 media-fonts/free-bangla-font 0.2: Unicode compliant Open Type Bangla fonts
 media-fonts/freefont 20120503: OpenType and TrueType Unicode fonts from the Free UCS Outline Fonts Project
 media-fonts/freefonts 0.10-r3: A Collection of Free Type1 Fonts
@@ -8463,7 +8464,7 @@ net-analyzer/macchanger 1.7.0: Utility for viewing/manipulating the MAC address 
 net-analyzer/mbrowse 0.4.3: MBrowse is a graphical MIB browser
 net-analyzer/monitoring-plugins 2.2-r2 2.2-r3: 50+ standard plugins for Icinga, Naemon, Nagios, Shinken, Sensu
 net-analyzer/mping 2.01: IPv4/6 round-robin multiping client
-net-analyzer/mrtg 2.17.4-r1: A tool to monitor the traffic load on network-links
+net-analyzer/mrtg 2.17.4-r1 2.17.7: A tool to monitor the traffic load on network-links
 net-analyzer/mtr 0.87: My TraceRoute, an Excellent network diagnostic tool
 net-analyzer/munin 2.0.38: Munin Server Monitoring Tool
 net-analyzer/nagios 4.3.4: The Nagios metapackage
@@ -9836,7 +9837,7 @@ sys-apps/audio-entropyd 2.0.3-r1: Audio-entropyd generates entropy-data for the 
 sys-apps/baobab 3.30.0: Disk usage browser for GNOME
 sys-apps/bar 1.11.1: Console Progress Bar
 sys-apps/baselayout 2.4.1-r2 2.6-r1: Filesystem baselayout and init scripts
-sys-apps/baselayout-java 0.1.0: Baselayout for Java
+sys-apps/baselayout-java 0.1.0 0.1.0-r1: Baselayout for Java
 sys-apps/biosdevname 0.7.2: Sets BIOS-given device names instead of kernel eth* names
 sys-apps/bleachbit 2.2: Clean junk to free disk space and to maintain privacy
 sys-apps/bubblewrap 0.3.1-r1: Unprivileged sandboxing tool, namespaces-powered chroot-like solution
@@ -10028,6 +10029,7 @@ sys-auth/nss-mdns 0.13: Name Service Switch module for Multicast DNS
 sys-auth/nss-myhostname 0.3: Name Service Switch module for resolving the local hostname
 sys-auth/nss-pam-ldapd 0.8.14-r2 0.9.9 0.9.10: NSS module for name lookups using LDAP
 sys-auth/nss_ldap 265-r5: NSS LDAP Module
+sys-auth/oath-toolkit 2.6.2: Toolkit for using one-time password authentication with HOTP/TOTP algorithms
 sys-auth/otpcalc 0.97-r8: A One Time Password and S/Key calculator for X
 sys-auth/pam_abl 0.6.0: PAM module for blacklisting hosts and users repeatedly failed authentication
 sys-auth/pam_dotfile 0.7-r2: pam module to allow password-storing in $HOME/dotfiles
@@ -10256,7 +10258,7 @@ sys-fs/lessfs 1.7.0-r1: A high performance inline data deduplicating filesystem
 sys-fs/lsscsi 0.29: SCSI sysfs query tool
 sys-fs/lvm2 2.02.116 2.02.145-r2 2.02.183 2.02.184-r4: User-land utilities for LVM2 (device-mapper) software
 sys-fs/lxcfs 3.0.3: FUSE filesystem for LXC
-sys-fs/mac-fdisk 0.1-r7: Mac/PowerMac disk partitioning utility
+sys-fs/mac-fdisk 0.1-r7 0.1_p18: Mac/PowerMac disk partitioning utility
 sys-fs/mdadm 4.1: Tool for running RAID systems - replacement for the raidtools
 sys-fs/mhddfs 0.1.39-r2: Fuse multi harddrive filesystem
 sys-fs/mp3fs 0.91: a read-only FUSE filesystem which transcodes FLAC audio files to MP3 when read
@@ -10410,7 +10412,7 @@ sys-process/memwatch 0.1.0: Interactive memory viewer
 sys-process/minit 0.10-r1: a small yet feature-complete init
 sys-process/nmon 16g: Nigel's performance MONitor for CPU, memory, network, disks, etc...
 sys-process/numactl 2.0.11: Utilities and libraries for NUMA systems
-sys-process/numad 0.5 0.5-r1: The NUMA daemon that manages application locality
+sys-process/numad 0.5 0.5-r1 0.5-r3: The NUMA daemon that manages application locality
 sys-process/parallel 20181122 20190322: A shell tool for executing jobs in parallel locally or on remote machines
 sys-process/prll 0.6.2: A utility for parallelizing execution of shell functions
 sys-process/procps 3.3.15-r1: standard informational utilities and process-handling tools
@@ -10730,7 +10732,7 @@ x11-apps/fstobdf 1.0.6: generate BDF font from X font server
 x11-apps/iceauth 1.0.8: ICE authority file utility
 x11-apps/ico 1.0.4 1.0.5: animate an icosahedron or other polyhedron
 x11-apps/listres 1.0.4: list resources in widgets
-x11-apps/luit 1.1.1: Locale and ISO 2022 support for Unicode terminals
+x11-apps/luit 1.1.1 20190106: Locale and ISO 2022 support for Unicode terminals
 x11-apps/mesa-progs 8.4.0: Mesa's OpenGL utility and demo programs (glxgears and glxinfo)
 x11-apps/mkfontdir 1.2.0: create an index of X font files in a directory
 x11-apps/mkfontscale 1.2.1: create an index of scalable font files for X
