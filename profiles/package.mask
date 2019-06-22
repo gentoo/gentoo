@@ -139,11 +139,6 @@ lxde-base/lxsession-edit
 # py2 only, dead upstream, removal in 30 days. Bug #686668
 dev-python/drpython
 
-# Aaron Bauman <bman@gentoo.org> (23 May 2019)
-# Unmaintained, EAPI2, updates available upstream
-# Oh yea, removal in 30 days
-dev-util/pmd
-
 # Patrick Lauer <patrick@gentoo.org> (23 May 2019)
 # PostgreSQL beta and release candidate releases are pre-release testing
 # versions, not meant for production use. They are feature-frozen, and are
