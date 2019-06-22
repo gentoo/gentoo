@@ -48,6 +48,9 @@ src_prepare() {
 		-e '/qbslibdir =/ s:/lib:/$$QBS_LIBRARY_DIRNAME:' \
 		static-res.pro || die
 
+	# respect LDFLAGS
+	sed -i -e '/QMAKE_LFLAGS =/ s/ = / += /' src/lib/library.pri || die
+
 	echo "SUBDIRS = $(usex test auto '')" >> tests/tests.pro
 
 	# skip several tests that fail and/or have additional deps
