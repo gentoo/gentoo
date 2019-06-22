@@ -12,7 +12,7 @@ SRC_URI="https://github.com/Airblader/i3/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="doc"
 
 DEPEND="
 	dev-libs/glib:2
@@ -61,9 +61,9 @@ src_prepare() {
 my_src_configure() {
 	# disable sanitizer: otherwise injects -O0 -g
 	local myeconfargs=(
+		$(use_enable doc docs)
 		--enable-debug=no
 		--enable-mans
-		--disable-docs
 		--disable-sanitizers
 	)
 	econf "${myeconfargs[@]}"
