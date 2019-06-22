@@ -5776,7 +5776,7 @@ dev-python/wtforms 2.1: Flexible forms validation and rendering library for pyth
 dev-python/wxpython 3.0.2.0: A blending of the wxWindows C++ class library with Python
 dev-python/xapp 1.0.1-r2: Python bindings for x11-libs/xapps
 dev-python/xarray 0.10.8: N-D labeled arrays and datasets in Python
-dev-python/xcffib 0.4.0 0.5.1: A drop in replacement for xpyb, an XCB python binding
+dev-python/xcffib 0.5.1: A drop in replacement for xpyb, an XCB python binding
 dev-python/xlrd 0.9.4 1.2.0: Library to extract data from Microsoft Excel spreadsheets
 dev-python/xlsxwriter 0.7.8: Python module for creating Excel XLSX files
 dev-python/xlwt 1.2.0: Python library to create spreadsheet files compatible with Excel
@@ -7714,7 +7714,7 @@ media-libs/libmad 0.15.1b-r9: "M"peg "A"udio "D"ecoder library
 media-libs/libmatemixer 1.22.0: Mixer library for MATE Desktop
 media-libs/libmatroska 1.4.9: Extensible multimedia container format based on EBML
 media-libs/libmediaart 1.9.4: Manages, extracts and handles media art caches
-media-libs/libmediainfo 18.12: MediaInfo libraries
+media-libs/libmediainfo 19.04: MediaInfo libraries
 media-libs/libmetalink 0.1.1-r1 0.1.3: Library for handling Metalink files
 media-libs/libmikmod 3.3.11.1: A library to play a wide range of module formats
 media-libs/libmkv 0.6.5.1: Lightweight Matroska muxer written for HandBrake
@@ -8356,7 +8356,7 @@ media-video/kmplayer 0.12.0b-r1: Video player plugin for Konqueror and basic MPl
 media-video/libav 12.3: Complete solution to record, convert and stream audio and video
 media-video/lsdvd 0.17: Utility for getting info out of DVDs
 media-video/matroxset 0.4: Matrox utility to switch output modes (activate tvout)
-media-video/mediainfo 18.12: MediaInfo supplies technical and tag information about media files
+media-video/mediainfo 19.04: MediaInfo supplies technical and tag information about media files
 media-video/minitube 2.5.2-r1: Qt5 YouTube Client
 media-video/mjpegtools 2.1.0-r4: Tools for MJPEG video
 media-video/mkvtoolnix 29.0.0: Tools to create, alter, and inspect Matroska files
@@ -9527,7 +9527,7 @@ sci-mathematics/coq 8.6: Proof assistant written in O'Caml
 sci-mathematics/euler 1.61.0: Mathematical programming environment
 sci-mathematics/flint 2.4.4-r1: Fast Library for Number Theory
 sci-mathematics/frobby 0.9.0-r2: Software system and project for computations with monomial ideals
-sci-mathematics/gfan 0.5-r1: computes Groebner fans and tropical varities
+sci-mathematics/gfan 0.5-r1: Compute Groebner fans and tropical varities
 sci-mathematics/ginac 1.6.6: C++ library and tools for symbolic calculations
 sci-mathematics/glpk 4.63: GNU Linear Programming Kit
 sci-mathematics/gmm 5.1: Generic C++ template library for sparse, dense and skyline matrices
@@ -10411,7 +10411,7 @@ sys-process/minit 0.10-r1: a small yet feature-complete init
 sys-process/nmon 16g: Nigel's performance MONitor for CPU, memory, network, disks, etc...
 sys-process/numactl 2.0.11: Utilities and libraries for NUMA systems
 sys-process/numad 0.5 0.5-r1 0.5-r3: The NUMA daemon that manages application locality
-sys-process/parallel 20181122 20190322: A shell tool for executing jobs in parallel locally or on remote machines
+sys-process/parallel 20190422: A shell tool for executing jobs in parallel locally or on remote machines
 sys-process/prll 0.6.2: A utility for parallelizing execution of shell functions
 sys-process/procps 3.3.15-r1: standard informational utilities and process-handling tools
 sys-process/psmisc 23.1-r1: A set of tools that use the proc filesystem
