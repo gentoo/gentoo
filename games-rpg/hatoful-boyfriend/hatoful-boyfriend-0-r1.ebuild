@@ -12,15 +12,26 @@ SRC_URI="${MY_PN// /_}_Linux.zip"
 LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
+IUSE="+gui"
 RESTRICT="bindist fetch splitdebug"
 
 RDEPEND="
-	x11-libs/libX11
-	x11-libs/libXext
-	x11-libs/libXcursor
-	x11-libs/libXrandr
 	virtual/glu
 	virtual/opengl
+	x11-libs/libX11
+	x11-libs/libXcursor
+	x11-libs/libXext
+	x11-libs/libXrandr
+	gui? (
+		dev-libs/atk
+		dev-libs/glib:2
+		media-libs/fontconfig:1.0
+		media-libs/freetype:2
+		x11-libs/cairo
+		x11-libs/gdk-pixbuf:2
+		x11-libs/gtk+:2
+		x11-libs/pango
+	)
 "
 
 S="${WORKDIR}/${MY_PN}_Linux"
@@ -42,6 +53,10 @@ src_install() {
 	insinto "${DIR}"
 	doins -r hatoful_Data/
 	rm -r "${ED}/${DIR}"/hatoful_Data/*/$(usex amd64 x86 x86_64) || die
+
+	if ! use gui; then
+		rm "${ED}/${DIR}"/hatoful_Data/Plugins/*/ScreenSelector.so || die
+	fi
 
 	newicon -s 128 hatoful_Data/Resources/UnityPlayer.png ${PN}.png
 	make_desktop_entry ${PN} "${MY_PN}"
