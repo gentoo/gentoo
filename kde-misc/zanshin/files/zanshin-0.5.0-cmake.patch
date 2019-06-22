@@ -1,0 +1,25 @@
+From 87e98e6b0aa704558009574eed8d8bdf2bfa0fbb Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sat, 22 Jun 2019 12:47:28 +0200
+Subject: [PATCH] Add missing KF5 dependency (fix broken cmake against >=19.04)
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index a6191f54..960fc6c7 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -67,6 +67,7 @@ include_directories (
+ 
+ find_package(KF5 REQUIRED COMPONENTS
+     AkonadiCalendar
++    AkonadiContact
+     AkonadiNotes
+     AkonadiSearch
+     IdentityManagement
+-- 
+2.22.0
+
