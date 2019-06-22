@@ -166,11 +166,6 @@ x11-plugins/gkrellflynn
 # Unfixed bug, dead upstream, not relevant enough
 sys-fs/pytagsfs
 
-# Stefan Strogin <steils@gentoo.org> (21 May 2019)
-# Unmaintained. Last release in 2005. Does not build with
-# >=dev-libs/bglibs-2.04. Bug #686438.
-net-mail/qmail-qfilter
-
 # Hans de Graaff <graaff@gentoo.org> (18 May 2019)
 # Old, ruby24-only, slots of ruby packages without any reverse
 # dependencies. Use the newer slot version instead.
