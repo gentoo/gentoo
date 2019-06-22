@@ -34,6 +34,7 @@ COMMON_DEPEND="
 	x11-libs/libXdamage
 	x11-libs/libXext
 	x11-libs/libXfixes
+	x11-libs/libXpresent
 	x11-libs/libXrandr
 	x11-libs/libXrender
 	>=x11-libs/startup-notification-0.7
@@ -51,7 +52,6 @@ DEPEND="${COMMON_DEPEND}
 	sys-devel/gettext:*
 	virtual/pkgconfig:*
 	x11-base/xorg-proto
-	x11-libs/libXpresent
 	test? ( app-text/docbook-xml-dtd:4.5 )
 	xinerama? ( x11-base/xorg-proto )"
 
