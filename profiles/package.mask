@@ -140,11 +140,6 @@ lxde-base/lxsession-edit
 dev-python/drpython
 
 # Aaron Bauman <bman@gentoo.org> (23 May 2019)
-# Upstreami now requires registration to download
-# EAPI2. Removal in 30 days.
-net-misc/mindterm
-
-# Aaron Bauman <bman@gentoo.org> (23 May 2019)
 # Unmaintained, EAPI2, updates available upstream
 # Oh yea, removal in 30 days
 dev-util/pmd
@@ -170,11 +165,6 @@ x11-plugins/gkrellflynn
 # Masked for removal in 30 days (bug #686562)
 # Unfixed bug, dead upstream, not relevant enough
 sys-fs/pytagsfs
-
-# Stefan Strogin <steils@gentoo.org> (21 May 2019)
-# Unmaintained. Last release in 2005. Does not build with
-# >=dev-libs/bglibs-2.04. Bug #686438.
-net-mail/qmail-qfilter
 
 # Hans de Graaff <graaff@gentoo.org> (18 May 2019)
 # Old, ruby24-only, slots of ruby packages without any reverse
