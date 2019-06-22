@@ -1,0 +1,10 @@
+DEFINED_PHASES=configure prepare
+DESCRIPTION=General-purpose libraries from skarnet.org
+EAPI=7
+HOMEPAGE=https://www.skarnet.org/software/skalibs/
+IUSE=doc ipv6 static-libs
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=ISC
+SLOT=0/2.8
+SRC_URI=https://www.skarnet.org/software/skalibs/skalibs-2.8.1.0.tar.gz
+_md5_=91122ec7081b1dd44694291213dce22e
