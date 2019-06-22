@@ -60,6 +60,13 @@ src_install(){
 		exeinto /etc/cron.daily
 		newexe debian/cron.daily etckeeper
 	fi
+
+	# remove subdirectories of /var which cause QA warnings
+	# bug #513374
+	rmdir "${ED%/}"/var/cache/etckeeper >/dev/null ||
+						die "Cannot remove /var subfolders (1)"
+	rmdir "${ED%/}"/var/cache >/dev/null || die "Cannot remove /var subfolders (2)"
+	rmdir "${ED%/}"/var >/dev/null	     || die "Cannot remove /var subfolders (3)"
 }
 
 pkg_postinst(){
