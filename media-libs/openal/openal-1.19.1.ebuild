@@ -50,6 +50,7 @@ src_configure() {
 			-DALSOFT_REQUIRE_OSS=$(usex oss)
 			-DALSOFT_REQUIRE_PORTAUDIO=$(usex portaudio)
 			-DALSOFT_REQUIRE_PULSEAUDIO=$(usex pulseaudio)
+			-DALSOFT_CPUEXT_NEON=$(usex cpu_flags_arm_neon)
 			-DALSOFT_CPUEXT_SSE=$(usex cpu_flags_x86_sse)
 			-DALSOFT_CPUEXT_SSE2=$(usex cpu_flags_x86_sse2)
 			-DALSOFT_CPUEXT_SSE4_1=$(usex cpu_flags_x86_sse4_1)
@@ -57,8 +58,6 @@ src_configure() {
 			-DALSOFT_NO_CONFIG_UTIL=$(usex qt5 "$(multilib_is_native_abi && echo "OFF" || echo "ON")" ON)
 			-DALSOFT_EXAMPLES=OFF
 		)
-
-		use cpu_flags_arm_neon && mycmakeargs+=( -DALSOFT_CPUEXT_NEON=$(usex cpu_flags_arm_neon) )
 
 		cmake-utils_src_configure
 	}
