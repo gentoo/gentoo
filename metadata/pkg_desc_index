@@ -9322,7 +9322,6 @@ sci-biology/treeviewx 0.5.1-r3: A phylogenetic tree viewer
 sci-biology/trf 4.04-r1: Tandem Repeats Finder
 sci-biology/trnascan-se 1.31: tRNA detection in large-scale genome sequences
 sci-biology/uchime 4.2.40: Fast, accurate chimera detection
-sci-biology/vaal 46233-r2: Algorithm for detecting SNPs, indels, and other polymorphisms
 sci-biology/velvet 1.0.18-r1: A sequence assembler for very short reads
 sci-biology/vienna-rna 2.1.1: RNA secondary structure prediction and comparison
 sci-biology/wgs-assembler 7.0-r2: The Celera de novo whole-genome shotgun DNA sequence assembler, aka CABOG
