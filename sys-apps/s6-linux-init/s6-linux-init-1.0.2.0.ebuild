@@ -17,6 +17,10 @@ REQUIRED_USE="static? ( static-libs )"
 RDEPEND=">=dev-lang/execline-2.5.1.0:=[static-libs?]
 	>=dev-libs/skalibs-2.8.1.0:=[static-libs?]
 	>=sys-apps/s6-2.8.0.1:=[static-libs?]
+	sysv-utils? (
+		!sys-apps/systemd[sysv-utils]
+		!sys-apps/sysvinit
+	)
 "
 DEPEND="${RDEPEND}"
 
@@ -51,6 +55,7 @@ src_install() {
 
 	if use sysv-utils ; then
 		"${D}/bin/s6-linux-init-maker" -f "${D}/etc/s6-linux-init/skel" "${T}/dir" || die
+		into /
 		dosbin "${T}/dir/bin"/{halt,poweroff,reboot,shutdown,telinit}
 	fi
 }
