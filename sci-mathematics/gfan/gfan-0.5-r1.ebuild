@@ -24,6 +24,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-double-declare-fix.patch
 	"${FILESDIR}"/${P}-gcc6.1-compat.patch
 	"${FILESDIR}"/${P}-fix-build-system.patch
+	"${FILESDIR}"/${P}-fix-gcc9.patch
 )
 
 src_configure() {
