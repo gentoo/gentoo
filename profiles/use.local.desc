@@ -2580,7 +2580,6 @@ lxqt-base/lxqt-meta:ssh-askpass - Install lxqt-base/lxqt-openssh-askpass user pa
 lxqt-base/lxqt-meta:sudo - Install lxqt-base/lxqt-sudo
 lxqt-base/lxqt-meta:terminal - Install x11-terms/qterminal package
 lxqt-base/lxqt-meta:trash - Install gnome-base/gvfs to enable 'trash' functionality in x11-misc/pcmanfm-qt
-lxqt-base/lxqt-panel:clock - Build clock plugin
 lxqt-base/lxqt-panel:colorpicker - Build colorpicker plugin
 lxqt-base/lxqt-panel:cpuload - Build cpuload plugin
 lxqt-base/lxqt-panel:desktopswitch - Build desktopswitch plugin
