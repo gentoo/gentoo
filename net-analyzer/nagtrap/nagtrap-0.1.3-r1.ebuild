@@ -1,9 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=2
-
-inherit eutils multilib
+EAPI=7
 
 DESCRIPTION="Integrated snmptt visualization addon for the Nagios monitoring system"
 HOMEPAGE="http://www.nagtrap.org/"
@@ -34,6 +32,7 @@ src_install() {
 	insopts -m 750 -g nagios
 	doins plugin/check_snmptraps.pl
 }
+
 pkg_postinst() {
 	elog "Before running NagTrap for the first time, you will need setup its configuration"
 	elog "/usr/share/nagtrap/nagtrap/etc/config.ini.php"
