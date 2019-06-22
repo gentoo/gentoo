@@ -29,6 +29,13 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (22 Jun 2019)
+# Abandoned upstream, last release 5 years ago,
+# extremely brittle codebase, requires constant
+# patching, removal in 30 days
+# Bug #664708, #685924
+sci-biology/allpathslg
+
 # Sobhan Mohammadpour <sobhan@gentoo.org> (19 Jun 2019)
 # this is new and it needs testing
 >=app-misc/geoclue-2.5.3
