@@ -41,3 +41,5 @@ DEPEND="
 RDEPEND="${DEPEND}
 	$(add_frameworks_dep frameworkintegration)
 "
+
+PATCHES=( "${FILESDIR}/${P}-desktopentry.patch" )
