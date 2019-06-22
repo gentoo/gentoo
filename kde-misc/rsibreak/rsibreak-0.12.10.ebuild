@@ -40,5 +40,4 @@ DEPEND="
 # bug 587170 for frameworkintegration
 RDEPEND="${DEPEND}
 	$(add_frameworks_dep frameworkintegration)
-	!kde-misc/rsibreak:4
 "
