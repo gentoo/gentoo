@@ -2903,7 +2903,7 @@ dev-lang/lua 5.1.5-r4: A powerful light-weight programming language designed for
 dev-lang/luajit 2.0.2 2.0.3-r1 2.0.4 2.0.5-r1: Just-In-Time Compiler for the Lua programming language
 dev-lang/mercury 14.01.1-r1: Mercury is a modern general-purpose logic/functional programming language
 dev-lang/mercury-extras 14.01.1: Additional libraries and tools that are not part of the Mercury standard library
-dev-lang/mmix 20131017 20160804: Donald Knuth's MMIX Assembler and Simulator
+dev-lang/mmix 20160804: Donald Knuth's MMIX Assembler and Simulator
 dev-lang/mono 4.4.1.0 4.8.0.524: Mono runtime and class libraries, a C# compiler/interpreter
 dev-lang/mono-basic 4.7-r1: Visual Basic Compiler and Runtime
 dev-lang/mujs 1.0.5: An embeddable Javascript interpreter in C.
