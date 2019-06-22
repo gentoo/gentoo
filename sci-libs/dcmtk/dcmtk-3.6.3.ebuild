@@ -17,12 +17,12 @@ IUSE="doc png ssl tcpd tiff +threads xml zlib"
 RDEPEND="
 	dev-libs/icu:=
 	virtual/jpeg:0
-	png? ( media-libs/libpng:* )
+	png? ( media-libs/libpng:0= )
 	ssl? ( dev-libs/openssl:0= )
 	tcpd? ( sys-apps/tcp-wrappers )
-	tiff? ( media-libs/tiff:0 )
-	xml? ( dev-libs/libxml2:2 )
-	zlib? ( sys-libs/zlib )"
+	tiff? ( media-libs/tiff:0= )
+	xml? ( dev-libs/libxml2:2= )
+	zlib? ( sys-libs/zlib:0= )"
 DEPEND="${RDEPEND}
 	media-gfx/graphviz
 	doc? ( app-doc/doxygen )"
