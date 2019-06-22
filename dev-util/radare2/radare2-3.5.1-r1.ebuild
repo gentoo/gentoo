@@ -30,6 +30,10 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.5.1-mount-free.patch
+)
+
 src_configure() {
 	econf \
 		--without-libuv \
