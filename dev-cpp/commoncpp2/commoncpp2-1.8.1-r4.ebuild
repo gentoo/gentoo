@@ -39,6 +39,7 @@ PATCHES=(
 	"${FILESDIR}/1.8.1-fix-c++14.patch"
 	"${FILESDIR}/1.8.1-gnutls-3.4.patch"
 	"${FILESDIR}/1.8.1-libressl.patch" # bug 674416
+	"${FILESDIR}/1.8.1-fix-gcc9.patch" # bug 686012
 )
 
 src_prepare() {
