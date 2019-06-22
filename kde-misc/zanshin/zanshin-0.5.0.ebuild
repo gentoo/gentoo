@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -60,3 +60,5 @@ RDEPEND="${COMMON_DEPEND}
 	!kde-misc/zanshin:4
 	$(add_kdeapps_dep kdepim-runtime)
 "
+
+PATCHES=( "${FILESDIR}/${P}-cmake.patch" )
