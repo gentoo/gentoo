@@ -28,7 +28,10 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
-PATCHES=( "${FILESDIR}"/2.99.2-docs.patch )
+PATCHES=(
+	"${FILESDIR}"/2.99.2-docs.patch
+	"${FILESDIR}"/3.0.0-fix-gcc9.patch
+)
 
 src_prepare() {
 	default
