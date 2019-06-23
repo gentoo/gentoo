@@ -41,8 +41,7 @@ src_compile() {
 src_install() {
 	#Protect ssl key on upgrade
 	dodir /etc/env.d/
-	echo 'CONFIG_PROTECT="/opt/openfire/resources/security/"' > "${D}"/etc/env.d/98openfire
-	echo 'CONFIG_PROTECT="/opt/openfire/conf/"' > "${D}"/etc/env.d/98openfire
+	echo 'CONFIG_PROTECT="/opt/openfire/conf/ /opt/openfire/resources/security/"' > "${D}"/etc/env.d/98openfire
 
 	newinitd "${FILESDIR}"/openfire-initd openfire
 	newconfd "${FILESDIR}"/openfire-confd openfire
