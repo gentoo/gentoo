@@ -1,0 +1,50 @@
+From: Roland Dreier <rbd@debian.org>
+Date: Thu, 4 Jan 2018 19:21:25 +0100
+Subject: Fix gcc "-Werror=format-security" errors
+
+Fix log calls to use format "%s" to output string buffers.
+---
+ ibis/src/ibis.i          | 2 +-
+ ibis/src/ibis_wrap.c     | 2 +-
+ ibis/src/ibissh_wrap.cpp | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/ibis/src/ibis.i b/ibis/src/ibis.i
+index 28a0912..63335e5 100644
+--- a/ibis/src/ibis.i
++++ b/ibis/src/ibis.i
+@@ -362,7 +362,7 @@ ibisp_is_debug(void)
+   }
+ 
+   int ibis_puts( osm_log_level_t verbosity, char *msg) {
+-	 osm_log(&(IbisObj.log), verbosity, msg );
++	 osm_log(&(IbisObj.log), verbosity, "%s", msg );
+ 	 return TCL_OK;
+   }
+ 
+diff --git a/ibis/src/ibis_wrap.c b/ibis/src/ibis_wrap.c
+index ee97601..df814eb 100644
+--- a/ibis/src/ibis_wrap.c
++++ b/ibis/src/ibis_wrap.c
+@@ -3186,7 +3186,7 @@ typedef struct {
+   }
+ 
+   int ibis_puts( osm_log_level_t verbosity, char *msg) {
+-	 osm_log(&(IbisObj.log), verbosity, msg );
++	 osm_log(&(IbisObj.log), verbosity, "%s", msg );
+ 	 return TCL_OK;
+   }
+ 
+diff --git a/ibis/src/ibissh_wrap.cpp b/ibis/src/ibissh_wrap.cpp
+index 917904f..187e0f8 100644
+--- a/ibis/src/ibissh_wrap.cpp
++++ b/ibis/src/ibissh_wrap.cpp
+@@ -3186,7 +3186,7 @@ typedef struct {
+   }
+ 
+   int ibis_puts( osm_log_level_t verbosity, char *msg) {
+-	 osm_log(&(IbisObj.log), verbosity, msg );
++	 osm_log(&(IbisObj.log), verbosity, "%s", msg );
+ 	 return TCL_OK;
+   }
+ 

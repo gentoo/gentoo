@@ -1,0 +1,84 @@
+From: Roland Dreier <rbd@debian.org>
+Date: Thu, 4 Jan 2018 19:21:25 +0100
+Subject: Patch autotools files to avoid unecessary rpaths in executables
+
+---
+ config/osm.m4            | 2 +-
+ ibdm/ibdm/Makefile.am    | 4 ++--
+ ibis/config/osm.m4       | 2 +-
+ ibmgtsim/config/osm.m4   | 2 +-
+ ibmgtsim/src/Makefile.am | 3 +--
+ 5 files changed, 6 insertions(+), 7 deletions(-)
+
+diff --git a/config/osm.m4 b/config/osm.m4
+index cd2cabb..47d41c6 100644
+--- a/config/osm.m4
++++ b/config/osm.m4
+@@ -114,7 +114,7 @@ if test "x$libcheck" = "xtrue"; then
+    fi
+    AC_MSG_NOTICE(OSM: build type $OSM_BUILD)
+ 
+-   OSM_LDFLAGS="-Wl,-rpath -Wl,$with_osm_libs -L$with_osm_libs"
++   OSM_LDFLAGS="-L$with_osm_libs"
+    dnl based on the with_osm dir and the libs available
+    dnl we can try and decide what vendor was used:
+    if test $OSM_BUILD = openib; then
+diff --git a/ibdm/ibdm/Makefile.am b/ibdm/ibdm/Makefile.am
+index aa39b69..13cea9a 100644
+--- a/ibdm/ibdm/Makefile.am
++++ b/ibdm/ibdm/Makefile.am
+@@ -80,12 +80,12 @@ libibdmcom_la_LDFLAGS = -version-info $(LIB_VER_TRIPLET)
+ 
+ libibdm_la_SOURCES = ibdm_wrap.cpp ibdm.i $(common_SOURCES)
+ libibdm_la_LIBADD = $(TCL_LIBS) 
+-libibdm_la_LDFLAGS = -Wl,-rpath -Wl,$(TCL_PREFIX)/lib -version-info $(LIB_VER_TRIPLET) -no-undefined
++libibdm_la_LDFLAGS = -version-info $(LIB_VER_TRIPLET) -no-undefined
+ 
+ bin_PROGRAMS  = ibdmsh
+ ibdmsh_SOURCES = ibdmsh_wrap.cpp
+ ibdmsh_LDADD =  -libdmcom $(TCL_LIBS)
+-ibdmsh_LDFLAGS = -static -Wl,-rpath -Wl,$(TCL_PREFIX)/lib
++ibdmsh_LDFLAGS = -static
+ ibdmsh_DEPENDENCIES=$(lib_LTLIBRARIES)
+ 
+ $(srcdir)/Fabric.cpp: $(srcdir)/git_version.h
+diff --git a/ibis/config/osm.m4 b/ibis/config/osm.m4
+index cd2cabb..47d41c6 100644
+--- a/ibis/config/osm.m4
++++ b/ibis/config/osm.m4
+@@ -114,7 +114,7 @@ if test "x$libcheck" = "xtrue"; then
+    fi
+    AC_MSG_NOTICE(OSM: build type $OSM_BUILD)
+ 
+-   OSM_LDFLAGS="-Wl,-rpath -Wl,$with_osm_libs -L$with_osm_libs"
++   OSM_LDFLAGS="-L$with_osm_libs"
+    dnl based on the with_osm dir and the libs available
+    dnl we can try and decide what vendor was used:
+    if test $OSM_BUILD = openib; then
+diff --git a/ibmgtsim/config/osm.m4 b/ibmgtsim/config/osm.m4
+index cd2cabb..47d41c6 100644
+--- a/ibmgtsim/config/osm.m4
++++ b/ibmgtsim/config/osm.m4
+@@ -114,7 +114,7 @@ if test "x$libcheck" = "xtrue"; then
+    fi
+    AC_MSG_NOTICE(OSM: build type $OSM_BUILD)
+ 
+-   OSM_LDFLAGS="-Wl,-rpath -Wl,$with_osm_libs -L$with_osm_libs"
++   OSM_LDFLAGS="-L$with_osm_libs"
+    dnl based on the with_osm dir and the libs available
+    dnl we can try and decide what vendor was used:
+    if test $OSM_BUILD = openib; then
+diff --git a/ibmgtsim/src/Makefile.am b/ibmgtsim/src/Makefile.am
+index 525df73..072bde2 100644
+--- a/ibmgtsim/src/Makefile.am
++++ b/ibmgtsim/src/Makefile.am
+@@ -76,8 +76,7 @@ LDADD = $(IBDM_LIB) -lpthread
+ ibmssh_SOURCES = sim.cpp server.cpp node.cpp dispatcher.cpp \
+ 	 ibmssh_wrap.cpp sma.cpp pma.cpp vsa.cpp randmgr.cpp
+ 
+-ibmssh_LDFLAGS = -static -Wl,-rpath -Wl,$(TCL_PREFIX)/lib \
+-	-Wl,-rpath -Wl,$(IBDM_PREFIX)/lib
++ibmssh_LDFLAGS = -static
+ 
+ ibmssh_LDADD = -libmscli $(IBDM_LIB) $(TCL_LIBS) -lpthread
+ 

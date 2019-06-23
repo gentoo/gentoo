@@ -1,0 +1,37 @@
+From: Roland Dreier <rbd@debian.org>
+Date: Thu, 4 Jan 2018 19:21:25 +0100
+Subject: Copy fix from main osm.m4 to avoid overwriting $with_osm_libs
+
+---
+ ibis/config/osm.m4     | 2 +-
+ ibmgtsim/config/osm.m4 | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/ibis/config/osm.m4 b/ibis/config/osm.m4
+index cc50fdf..cd2cabb 100644
+--- a/ibis/config/osm.m4
++++ b/ibis/config/osm.m4
+@@ -103,8 +103,8 @@ if test "x$libcheck" = "xtrue"; then
+       else
+          osm_lib_dir=lib
+       fi
++      with_osm_libs=$with_osm/$osm_lib_dir
+    fi
+-   with_osm_libs=$with_osm/$osm_lib_dir
+ 
+    dnl check what build we have gen1 or gen2
+    if test -d $with_osm/include/infiniband; then
+diff --git a/ibmgtsim/config/osm.m4 b/ibmgtsim/config/osm.m4
+index cc50fdf..cd2cabb 100644
+--- a/ibmgtsim/config/osm.m4
++++ b/ibmgtsim/config/osm.m4
+@@ -103,8 +103,8 @@ if test "x$libcheck" = "xtrue"; then
+       else
+          osm_lib_dir=lib
+       fi
++      with_osm_libs=$with_osm/$osm_lib_dir
+    fi
+-   with_osm_libs=$with_osm/$osm_lib_dir
+ 
+    dnl check what build we have gen1 or gen2
+    if test -d $with_osm/include/infiniband; then

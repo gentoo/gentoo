@@ -1,0 +1,48 @@
+From: Adrian Bunk <bunk@debian.org>
+Date: Sun, 19 Aug 2018 01:45:39 +0300
+Subject: Fix the Makefile dependencies
+
+Bug-Debian: https://bugs.debian.org/906553
+---
+ ibis/src/Makefile.am | 8 +++-----
+ 1 file changed, 3 insertions(+), 5 deletions(-)
+
+diff -Naur a/ibis/src/Makefile.am b/ibis/src/Makefile.am
+--- a/ibis/src/Makefile.am	2019-06-23 00:42:35.756366900 +0200
++++ b/ibis/src/Makefile.am	2019-06-23 02:39:32.594151400 +0200
+@@ -53,12 +53,10 @@
+ LIB_FILE_TRIPLET=1.0.0
+ 
+ lib_LTLIBRARIES = libibis.la
+-noinst_LIBRARIES = libibiscom.a
++noinst_LTLIBRARIES = libibiscom.la
+ 
+-libibiscom_a_SOURCES = ibbbm.c ibcr.c	ibis.c ibis_gsi_mad_ctrl.c \
++libibiscom_la_SOURCES = ibbbm.c ibcr.c	ibis.c ibis_gsi_mad_ctrl.c \
+ 	ibpm.c ibsac.c ibsm.c ibvs.c ibcc.c
+-# Below op causes renaming of the obj files - used when same source creates 2 targets (TODO: is this duplication needed ?)
+-libibiscom_a_CFLAGS = $(AM_CFLAGS)
+ 
+ # client library to be used by IBIS TCL package:
+ libibis_la_SOURCES = ibis_wrap.c ibbbm.c ibcr.c	ibis.c ibis_gsi_mad_ctrl.c \
+@@ -75,7 +73,7 @@
+ ibis_SOURCES = ibissh_wrap.cpp
+ 
+ # note the order of the libraries does matter as we static link
+-ibis_LDADD = -L. -libiscom $(OSM_LDFLAGS) $(TCL_LIBS)
++ibis_LDADD = -L. libibiscom.la $(OSM_LDFLAGS) $(TCL_LIBS)
+ 
+ 
+ # SWIG FILES:
+--- a/ibdm/ibdm/Makefile.am	2019-06-23 02:46:03.468569008 +0200
++++ b/ibdm/ibdm/Makefile.am	2019-06-23 02:46:29.740368933 +0200
+@@ -84,7 +84,7 @@
+ 
+ bin_PROGRAMS  = ibdmsh
+ ibdmsh_SOURCES = ibdmsh_wrap.cpp
+-ibdmsh_LDADD =  -libdmcom $(TCL_LIBS)
+-ibdmsh_LDFLAGS = -static
++ibdmsh_LDADD =  -L. libibdmcom.la $(TCL_LIBS)
++ibdmsh_LDFLAGS =
+ ibdmsh_DEPENDENCIES=$(lib_LTLIBRARIES)
+ 

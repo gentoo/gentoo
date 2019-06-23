@@ -1,0 +1,587 @@
+From: Debian HPC Team <debian-hpc@lists.debian.org>
+Date: Thu, 4 Jan 2018 19:21:25 +0100
+Subject: do_not_use_tmp
+
+---
+ ibdiag/demo/sm-single-master.tcl      |  2 +-
+ ibdiag/doc/ibdiag_release_notes.txt   |  6 +++---
+ ibdiag/doc/ibdiagnet.pod              |  4 ++--
+ ibdiag/doc/ibdiagnet.txt              |  2 +-
+ ibdiag/doc/ibdiagpath.pod             |  3 ++-
+ ibdiag/src/ibdebug_if.tcl             |  2 +-
+ ibdiag/src/ibdiagui.tcl               |  2 +-
+ ibdm/doc/ibdmchk.1                    |  8 ++++----
+ ibdm/doc/ibdmchk.pod                  |  8 ++++----
+ ibdm/ibdm/LinkCover.cpp               |  6 +++---
+ ibdm/ibdm/SubnMgt.cpp                 |  8 ++++----
+ ibdm/src/lst2ibnl                     |  8 ++++----
+ ibdm/src/osm_check.cpp                | 28 ++++++++++++++--------------
+ ibis/src/ibis.i                       |  2 +-
+ ibis/src/ibis_wrap.c                  |  2 +-
+ ibis/src/ibissh_wrap.cpp              |  2 +-
+ ibis/tests/ibcr_test.tcl              |  2 +-
+ ibmgtsim/doc/IBMgtSim.1               |  2 +-
+ ibmgtsim/doc/IBMgtSim.pod             |  2 +-
+ ibmgtsim/src/client.cpp               |  2 +-
+ ibmgtsim/src/sim.cpp                  |  4 ++--
+ ibmgtsim/tests/FatTree.check.tcl      |  2 +-
+ ibmgtsim/tests/FatTreeFails.check.tcl |  2 +-
+ ibmgtsim/tests/init.test.tcl          |  8 ++++----
+ ibmgtsim/utils/IBMgtSim               |  4 ++--
+ ibmgtsim/utils/RunSimTest             |  2 +-
+ 26 files changed, 62 insertions(+), 61 deletions(-)
+
+diff --git a/ibdiag/demo/sm-single-master.tcl b/ibdiag/demo/sm-single-master.tcl
+index 5b414c8..3dd5c65 100644
+--- a/ibdiag/demo/sm-single-master.tcl
++++ b/ibdiag/demo/sm-single-master.tcl
+@@ -132,7 +132,7 @@ proc checker {simDir osmPath osmPortGuid} {
+ 	gets stdin
+ 	puts "   h. Make one of teh SMs sweep: kill -HUP %2."
+    puts "      Now one of the SMs gets to standby mode"
+-	puts "   i. Run ibdiagnet again to see the info about the SMs in /tmp/ibdiagnet.sm"
++	puts "   i. Run ibdiagnet again to see the info about the SMs in /var/cache/ibutils/ibdiagnet.sm"
+ 	puts " "
+ 	puts " press Enter when done"
+ 	gets stdin
+diff --git a/ibdiag/doc/ibdiag_release_notes.txt b/ibdiag/doc/ibdiag_release_notes.txt
+index 7011631..6a11359 100644
+--- a/ibdiag/doc/ibdiag_release_notes.txt
++++ b/ibdiag/doc/ibdiag_release_notes.txt
+@@ -61,7 +61,7 @@ Other changes:
+ 
+ + Load subnet database from file:
+   Ibdiagnet dumps its internal database, which contains the subnet structure,
+-  to a file (/tmp/ibdiagnet.db by default). This file can be loaded in later
++  to a file (/var/cache/ibutils/ibdiagnet.db by default). This file can be loaded in later
+   ibdiagnet runs (using the -load_db <db file> option). When this option is set,
+   ibdiagnet loads the subnet data from the file and skips the discovery stage.
+   Using this option can save the subnet discovery time for large cluster.
+@@ -221,11 +221,11 @@ Software dependency:
+ ===============================================================================
+ 3. Reports
+ ===============================================================================
+-The default directory for all generated report files is /tmp .
++The default directory for all generated report files is /var/cache/ibutils .
+ 
+ Both utilities collect summary information regarding all the fabric SM's
+ during the run, and then output that information at end of the run in file
+-/tmp/ibdiagnet.sm.
++/var/cache/ibutils/ibdiagnet.sm.
+ 
+ Each report message includes:
+    - Device Type
+diff --git a/ibdiag/doc/ibdiagnet.pod b/ibdiag/doc/ibdiagnet.pod
+index 0138f70..550c091 100644
+--- a/ibdiag/doc/ibdiagnet.pod
++++ b/ibdiag/doc/ibdiagnet.pod
+@@ -195,7 +195,7 @@ Specifies the local device's port num used to connect to the IB fabric
+ =over
+ 
+ =item
+-Specifies the directory where the output files will be placed (default = /tmp)
++Specifies the directory where the output files will be placed (default = /var/cache/ibutils)
+ 
+ =back
+ 
+@@ -260,7 +260,7 @@ Skip options (one or more can be specified) : dup_guids  zero_guids pm logical_s
+ 
+ =item
+ Write out the discovered topology into the given file. This flag is useful if you later want to check for changes from the current state of the fabric.
+-A directory named ibdiag_ibnl is also created by this option, and holds the IBNL files required to load this topology. To use these files you will need to set the environment variable named IBDM_IBNL_PATH to that directory. The directory is located in /tmp or in the output directory provided by the -o flag.
++A directory named ibdiag_ibnl is also created by this option, and holds the IBNL files required to load this topology. To use these files you will need to set the environment variable named IBDM_IBNL_PATH to that directory. The directory is located in /var/cache/ibutils or in the output directory provided by the -o flag.
+ 
+ =back
+ 
+diff --git a/ibdiag/doc/ibdiagnet.txt b/ibdiag/doc/ibdiagnet.txt
+index b8a054b..68c5449 100644
+--- a/ibdiag/doc/ibdiagnet.txt
++++ b/ibdiag/doc/ibdiagnet.txt
+@@ -48,7 +48,7 @@ OPTIONS
+   -p <port-num> : Specifies the local device's port number used to connect to
+                   the IB fabric
+   -o <out-dir>  : Specifies the directory where the output files will be placed
+-                  (default = /tmp/ez)
++                  (default = /var/cache/ibutils)
+ 
+   -h|--help     : Prints this help information
+   -V|--version  : Prints the version of the tool
+diff --git a/ibdiag/doc/ibdiagpath.pod b/ibdiag/doc/ibdiagpath.pod
+index b7cfece..7f4a3f7 100644
+--- a/ibdiag/doc/ibdiagpath.pod
++++ b/ibdiag/doc/ibdiagpath.pod
+@@ -135,7 +135,8 @@ Specifies the local device's port number used to connect to the IB fabric
+ =over
+ 
+ =item
+-Specifies the directory where the output files will be placed (default = /tmp)
++Specifies the directory where the output files will be placed (default =
++/var/cache/ibutils)
+ 
+ =back
+ 
+diff --git a/ibdiag/src/ibdebug_if.tcl b/ibdiag/src/ibdebug_if.tcl
+index f0586a1..cdc389d 100644
+--- a/ibdiag/src/ibdebug_if.tcl
++++ b/ibdiag/src/ibdebug_if.tcl
+@@ -170,7 +170,7 @@ proc SetInfoArgv {} {
+ 	-n,error "-E-argv:bad.node.name"
+ 
+ 	-o,name  "out.dir"
+-	-o,default  "/tmp"
++	-o,default  "/var/cache/ibutils"
+ 	-o,param "out-dir"
+ 	-o,desc  "Specifies the directory where the output files will be placed"
+ 
+diff --git a/ibdiag/src/ibdiagui.tcl b/ibdiag/src/ibdiagui.tcl
+index 5470576..ef9c23e 100644
+--- a/ibdiag/src/ibdiagui.tcl
++++ b/ibdiag/src/ibdiagui.tcl
+@@ -2141,7 +2141,7 @@ proc DiagNet {} {
+       close $f
+       set lstFile [file join $testModeDir ibdiagnet.lst]
+    } else {
+-      set lstFile /tmp/ibdiagnet.lst
++      set lstFile /var/cache/ibutils/ibdiagnet.lst
+       set r ""
+       LogAppend "-I-Invoking ibdiagnet ...."
+       # puts "-I- Invoking ibdiagnet ...."
+diff --git a/ibdm/doc/ibdmchk.1 b/ibdm/doc/ibdmchk.1
+index 7537473..b725702 100644
+--- a/ibdm/doc/ibdmchk.1
++++ b/ibdm/doc/ibdmchk.1
+@@ -186,7 +186,7 @@ Use enhanced routing algorithm when \s-1LMC\s0 > 0 and report the resulting path
+ .IX Item "-r|--roots <roots file> A file with all the roots node names (one on each line)."
+ .SH "VERIFICATION MODE DESCRIPTION"
+ .IX Header "VERIFICATION MODE DESCRIPTION"
+-After the cluster is built and OpenSM is run (using flag \-D 0x43) it reports the subnet and \s-1FDB\s0 tables into the files osm\-subnet.lst, osm.fdbs and osm.fdbs in /var/log/ (or subnet.lst, osm.fdbs and osm.mcfdbs into /tmp in older OpenSM versions). ibdiagnet is also producing the same files in its output directory.
++After the cluster is built and OpenSM is run (using flag \-D 0x43) it reports the subnet and \s-1FDB\s0 tables into the files osm\-subnet.lst, osm.fdbs and osm.fdbs in /var/log/ (or subnet.lst, osm.fdbs and osm.mcfdbs into /var/cache/ibutils in older OpenSM versions). ibdiagnet is also producing the same files in its output directory.
+ Based on these files the utility checks all \s-1CA\s0 to \s-1CA\s0 connectivity. Further analysis for credit deadlock potential is performed and reported.
+ In case of an \s-1LMC\s0 > 0 it reports histograms for how many systems and nodes are common between the different paths for the same port pairs.
+ .SH "ARGUMENTS"
+@@ -208,15 +208,15 @@ Provides this help message
+ .RE
+ .IP "\-s|\-\-subnet <file>"
+ .IX Item "-s|--subnet <file>"
+-OpenSM subnet.lst file (default is /var/log/osm\-subnet.lst or /tmp/subnet.lst)
++OpenSM subnet.lst file (default is /var/log/osm\-subnet.lst or /var/cache/ibutils/subnet.lst)
+ .RE
+ .IP "\-f|\-\-fdb <file>"
+ .IX Item "-f|--fdb <file>"
+-OpenSM dump of Ucast \s-1LFDB\s0. Use \-D 0x41 to generate it (default is /var/log/osm.fdbs or /tmp/osm.fdbs).
++OpenSM dump of Ucast \s-1LFDB\s0. Use \-D 0x41 to generate it (default is /var/log/osm.fdbs or /var/cache/ibutils/osm.fdbs).
+ .RE
+ .IP "\-m|\-\-mcfdb <file>"
+ .IX Item "-m|--mcfdb <file>"
+-OpenSM dump of Multicast \s-1LFDB\s0. Use \-D 0x41 to generate it (default is /var/log/osm.mcfdbs or /tmp/osm.mcfdbs).
++OpenSM dump of Multicast \s-1LFDB\s0. Use \-D 0x41 to generate it (default is /var/log/osm.mcfdbs or /var/cache/ibutils/osm.mcfdbs).
+ .RE
+ .IP "\-c|\-\-psl <file>"
+ .IX Item "-c|--psl <file>"
+diff --git a/ibdm/doc/ibdmchk.pod b/ibdm/doc/ibdmchk.pod
+index dabfafa..ed85818 100644
+--- a/ibdm/doc/ibdmchk.pod
++++ b/ibdm/doc/ibdmchk.pod
+@@ -59,7 +59,7 @@ A file with all the roots node names (one on each line).
+ 
+ =head1 VERIFICATION MODE DESCRIPTION
+ 
+-After the cluster is built and OpenSM is run (using flag -D 0x43) it reports the subnet and FDB tables into the files osm-subnet.lst, osm.fdbs and osm.fdbs in /var/log/ (or subnet.lst, osm.fdbs and osm.mcfdbs into /tmp in older OpenSM versions). ibdiagnet is also producing the same files in its output directory.
++After the cluster is built and OpenSM is run (using flag -D 0x43) it reports the subnet and FDB tables into the files osm-subnet.lst, osm.fdbs and osm.fdbs in /var/log/ (or subnet.lst, osm.fdbs and osm.mcfdbs into /var/cache/ibutils in older OpenSM versions). ibdiagnet is also producing the same files in its output directory.
+ Based on these files the utility checks all CA to CA connectivity. Further analysis for credit deadlock potential is performed and reported.
+ In case of an LMC > 0 it reports histograms for how many systems and nodes are common between the different paths for the same port pairs.
+ 
+@@ -81,15 +81,15 @@ Provides this help message
+ 
+ =item -s|--subnet <file>
+ 
+-OpenSM subnet.lst file (default is /var/log/osm-subnet.lst or /tmp/subnet.lst)
++OpenSM subnet.lst file (default is /var/log/osm-subnet.lst or /var/cache/ibutils/subnet.lst)
+ 
+ =item -f|--fdb <file>
+ 
+-OpenSM dump of Ucast LFDB. Use -D 0x41 to generate it (default is /var/log/osm.fdbs or /tmp/osm.fdbs).
++OpenSM dump of Ucast LFDB. Use -D 0x41 to generate it (default is /var/log/osm.fdbs or /var/cache/ibutils/osm.fdbs).
+ 
+ =item -m|--mcfdb <file>
+ 
+-OpenSM dump of Multicast LFDB. Use -D 0x41 to generate it (default is /var/log/osm.mcfdbs or /tmp/osm.mcfdbs).
++OpenSM dump of Multicast LFDB. Use -D 0x41 to generate it (default is /var/log/osm.mcfdbs or /var/cache/ibutils/osm.mcfdbs).
+ 
+ =item -c|--psl <file>
+ 
+diff --git a/ibdm/ibdm/LinkCover.cpp b/ibdm/ibdm/LinkCover.cpp
+index 667e034..ed8cd40 100644
+--- a/ibdm/ibdm/LinkCover.cpp
++++ b/ibdm/ibdm/LinkCover.cpp
+@@ -302,7 +302,7 @@ dumpLinearProgram(IBFabric *p_fabric,
+   set< string > vars;
+   int numLinks = 0;
+   IBNode *p_node;
+-  ofstream linProgram("/tmp/ibdmchk.lp");
++  ofstream linProgram("/var/cache/ibutils/ibdmchk.lp");
+ 
+   // we need a doubel path - first collect all in ports and
+   // dump out the target - maximize number of links covered
+@@ -890,8 +890,8 @@ LinkCoverageAnalysis(IBFabric *p_fabric, list_pnode rootNodes)
+   // iteration only.
+   map_pnode_p_sint outPortUsedMap;
+   cout << "-I- Generating non blocking full link coverage plan into:"
+-       << "/tmp/ibdmchk.non_block_all_links" << endl;
+-  ofstream linkProgram("/tmp/ibdmchk.non_block_all_links");
++       << "/var/cache/ibutils/ibdmchk.non_block_all_links" << endl;
++  ofstream linkProgram("/var/cache/ibutils/ibdmchk.non_block_all_links");
+ 
+   // initialize the data structures
+   if (initFdbForwardPortLidTables(
+diff --git a/ibdm/ibdm/SubnMgt.cpp b/ibdm/ibdm/SubnMgt.cpp
+index 4fea002..9de792c 100644
+--- a/ibdm/ibdm/SubnMgt.cpp
++++ b/ibdm/ibdm/SubnMgt.cpp
+@@ -1104,7 +1104,7 @@ SubnMgtVerifyAllCaToCaRoutes(IBFabric *p_fabric)
+ #if DO_CA_TO_CA_NUM_PATHS_HIST
+     // report the link over subscription histogram and dump out the
+     // num paths per switch out port
+-    ofstream linkUsage("/tmp/ibdmchk.sw_out_port_num_paths");
++    ofstream linkUsage("/var/cache/ibutils/ibdmchk.sw_out_port_num_paths");
+     linkUsage << "# NUM-PATHS PORT-NAME " << endl;
+     vec_int linkSubscriptionHist(maxLinkSubscriptions + 1,0);
+     for (map_pnode_vec_int::iterator nI = switchPathsPerOutPort.begin();
+@@ -1127,7 +1127,7 @@ SubnMgtVerifyAllCaToCaRoutes(IBFabric *p_fabric)
+     cout << "all the CA to CA paths. Ports driving CAs are ignored (as they must" << endl;
+     cout << "have = Nca - 1). If the fabric is routed correctly the histogram" << endl;
+     cout << "should be narrow for all ports on same level of the tree." << endl;
+-    cout << "A detailed report is provided in /tmp/ibdmchk.sw_out_port_num_paths.\n" << endl;
++    cout << "A detailed report is provided in /var/cache/ibutils/ibdmchk.sw_out_port_num_paths.\n" << endl;
+     cout << "NUM-PATHS NUM-SWITCH-PORTS" << endl;
+     for (int b = 0; b <= maxLinkSubscriptions; b++)
+         if (linkSubscriptionHist[b])
+@@ -1136,7 +1136,7 @@ SubnMgtVerifyAllCaToCaRoutes(IBFabric *p_fabric)
+ #endif
+ 
+     // now do the DLID per out port:
+-    ofstream portDlidsUsage("/tmp/ibdmchk.sw_out_port_num_dlids");
++    ofstream portDlidsUsage("/var/cache/ibutils/ibdmchk.sw_out_port_num_dlids");
+     portDlidsUsage << "# NUM-DLIDS PORT-NAME " << endl;
+     vec_int dlidsSubscriptionHist(maxDlidPerOutPort + 1,0);
+     for (map_pnode_vec_int::iterator nI = switchDLidsPerOutPort.begin();
+@@ -1159,7 +1159,7 @@ SubnMgtVerifyAllCaToCaRoutes(IBFabric *p_fabric)
+     cout << "all the CA to CA paths. Ports driving CAs are ignored (as they must" << endl;
+     cout << "have = Nca - 1). If the fabric is routed correctly the histogram" << endl;
+     cout << "should be narrow for all ports on same level of the tree." << endl;
+-    cout << "A detailed report is provided in /tmp/ibdmchk.sw_out_port_num_dlids.\n" << endl;
++    cout << "A detailed report is provided in /var/cache/ibutils/ibdmchk.sw_out_port_num_dlids.\n" << endl;
+     cout << "NUM-DLIDS NUM-SWITCH-PORTS" << endl;
+     for (int b = 0; b <= maxDlidPerOutPort; b++)
+         if (dlidsSubscriptionHist[b])
+diff --git a/ibdm/src/lst2ibnl b/ibdm/src/lst2ibnl
+index 4d5edc0..9acef6a 100755
+--- a/ibdm/src/lst2ibnl
++++ b/ibdm/src/lst2ibnl
+@@ -70,8 +70,8 @@ DESCRIPTION
+ ARGUMENTS (required)
+       -l <lst file>
+           Input fabric link listing file as generated by OpenSM
+-          (/tmp/subnet.lst or /var/log/osm.lst depending on the version) or
+-          ibdiagnet (/tmp/ibdiagnet.lst)
++          (/var/cache/ibutils/subnet.lst or /var/log/osm.lst depending on the version) or
++          ibdiagnet (/var/cache/ibutils/ibdiagnet.lst)
+ 
+       -p <port-name>
+           The name of the switch system front panel port connected to the
+@@ -96,8 +96,8 @@ EXAMPLE
+ 
+       0. Make sure the file Gnu.lst does not exist
+       1. Connect an HCA in machine we call "host" to FPP L1/P1
+-      2. Run ibdiagnet on the "host" machine (will create /tmp/ibdiagnet.lst)
+-      3. Run lst2ibnl -l /tmp/ibdiagnet.lst -s Gnu -p L1/P1
++      2. Run ibdiagnet on the "host" machine (will create /var/cache/ibutils/ibdiagnet.lst)
++      3. Run lst2ibnl -l /var/cache/ibutils/ibdiagnet.lst -s Gnu -p L1/P1
+       4. Perform steps 1..3 by connecting the "host" to each one of the
+          front panel ports and providing its name on the subsequent call to
+          lst2ibnl
+diff --git a/ibdm/src/osm_check.cpp b/ibdm/src/osm_check.cpp
+index 22f52c2..c4475b6 100644
+--- a/ibdm/src/osm_check.cpp
++++ b/ibdm/src/osm_check.cpp
+@@ -86,7 +86,7 @@ show_help() {
+     << "  Description:\n"
+     << "   After the cluster is built and OpenSM is run (using flag -D 0x43) it reports the\n"
+     << "   subnet and FDB tables into the files osm-subnet.lst, osm.fdbs and osm.fdbs in\n"
+-    << "   /var/log/ (or subnet.lst, osm.fdbs and osm.mcfdbs into /tmp in older versions).\n"
++    << "   /var/log/ (or subnet.lst, osm.fdbs and osm.mcfdbs into /var/cache/ibutils in older versions).\n"
+     << "   If more than one SL is known to be used additional file holding CAxCA->SL mapping \n"
+     << "   is generated (format: 0xsrc_guid dlid sl) . In this case the SL2VL mapping is \n"
+     << "   optionally supplied in an additional file (format: 0xsw_guid inport outport 0x(sl0)(sl1),\n"
+@@ -102,11 +102,11 @@ show_help() {
+     << "  Options:\n"
+     << "  -v|--verbose = verbose mode\n"
+     << "  -h|--help = provide this help message\n"
+-    << "  -s|--subnet <file> = OpenSM subnet.lst file (/var/log/osm-subnet.lst or /tmp/subnet.lst)\n"
++    << "  -s|--subnet <file> = OpenSM subnet.lst file (/var/log/osm-subnet.lst or /var/cache/ibutils/subnet.lst)\n"
+     << "  -f|--fdb <file> = OpenSM dump of Ucast LFDB. Use -D 0x41 to generate it.\n"
+-    << "     (default is /var/log/osm.fdbs or /tmp/osm.fdbs).\n"
++    << "     (default is /var/log/osm.fdbs or /var/cache/ibutils/osm.fdbs).\n"
+     << "  -m|--mcfdb <file> = OpenSM dump of Multicast LFDB. Use -D 0x41 to generate it.\n"
+-    << "     (default is /var/log/osm.mcfdbs or /tmp/osm.mcfdbs).\n"
++    << "     (default is /var/log/osm.mcfdbs or /var/cache/ibutils/osm.mcfdbs).\n"
+     << "  -c|--psl <file> = CAxCA->SL mapping. Each line holds: srcguid dlid sl \n"
+     << "  -d|--slvl <file> = SL2VL mapping. Each line holds: swguid iport oport 0x(sl0)(sl1) 0x(sl2)(sl3)...\n"
+     << "  -r|--roots <roots file> = a file holding all root nodes guids (one per line).\n"
+@@ -465,20 +465,20 @@ int main (int argc, char **argv) {
+ 	  if (fdbFile.size() == 0) {
+ 		  if (access("/var/log/osm.fdbs",R_OK) == 0)
+ 			  fdbFile = string("/var/log/osm.fdbs");
+-		  else if (access("/tmp/osm.fdbs",R_OK) == 0)
+-			  fdbFile = string("/tmp/osm.fdbs");
++		  else if (access("/var/cache/ibutils/osm.fdbs",R_OK) == 0)
++			  fdbFile = string("/var/cache/ibutils/osm.fdbs");
+ 		  else {
+-			  cout << "-E- Could not find a readble osm.fdbs in /var/log or  /tmp" << endl;
++			  cout << "-E- Could not find a readble osm.fdbs in /var/log or  /var/cache/ibutils" << endl;
+ 			  anyMissingFile = 1;
+ 		  }
+ 	  }
+ 	  if (mcFdbFile.size() == 0) {
+ 		  if (access("/var/log/osm.mcfdbs",R_OK) == 0)
+ 			  mcFdbFile = string("/var/log/osm.mcfdbs");
+-		  else if (access("/tmp/osm.mcfdbs",R_OK) == 0)
+-			  mcFdbFile = string("/tmp/osm.mcfdbs");
++		  else if (access("/var/cache/ibutils/osm.mcfdbs",R_OK) == 0)
++			  mcFdbFile = string("/var/cache/ibutils/osm.mcfdbs");
+ 		  else {
+-			  cout << "-E- Could not find a readble osm.mcfdbs in /var/log or  /tmp" << endl;
++			  cout << "-E- Could not find a readble osm.mcfdbs in /var/log or  /var/cache/ibutils" << endl;
+ 			  anyMissingFile = 1;
+ 		  }
+ 	  }
+@@ -486,10 +486,10 @@ int main (int argc, char **argv) {
+ 	  if (subnetFile.size() == 0) {
+ 		  if (access("/var/log/osm-subnet.lst",R_OK) == 0)
+ 			  subnetFile = string("/var/log/osm-subnet.lst");
+-		  else if (access("/tmp/subnet.lst",R_OK) == 0)
+-			  subnetFile = string("/tmp/subnet.lst");
++		  else if (access("/var/cache/ibutils/subnet.lst",R_OK) == 0)
++			  subnetFile = string("/var/cache/ibutils/subnet.lst");
+ 		  else {
+-			  cout << "-E- Could not find a readble /var/log/osm-subnet.lst or /tmp/subnet.lst" << endl;
++			  cout << "-E- Could not find a readble /var/log/osm-subnet.lst or /var/cache/ibutils/subnet.lst" << endl;
+ 			  anyMissingFile = 1;
+ 		  }
+ 	  }
+@@ -587,7 +587,7 @@ int main (int argc, char **argv) {
+     // rank the fabric by these roots
+     map_pnode_int nodesRank;
+     SubnRankFabricNodesByRootNodes(&fabric, rootNodes, nodesRank);
+-    ofstream rankFile("/tmp/ibdmchk.node_ranking");
++    ofstream rankFile("/var/cache/ibutils/ibdmchk.node_ranking");
+     rankFile << "-I- Node Ranking:" << endl;
+     for(map_pnode_int::iterator nI = nodesRank.begin();
+         nI != nodesRank.end(); nI++)
+diff --git a/ibis/src/ibis.i b/ibis/src/ibis.i
+index 63335e5..c970e1b 100644
+--- a/ibis/src/ibis.i
++++ b/ibis/src/ibis.i
+@@ -564,7 +564,7 @@ extern char * ibisSourceVersion;
+       IbisOpts.m_key = 0;
+       IbisOpts.v_key = 0;
+       IbisOpts.log_flags = OSM_LOG_ERROR;
+-      strcpy(IbisOpts.log_file,"/tmp/ibis.log");
++      strcpy(IbisOpts.log_file,"/var/cache/ibutils/ibis.log");
+ 
+ 
+       /* we want all exists to cleanup */
+diff --git a/ibis/src/ibis_wrap.c b/ibis/src/ibis_wrap.c
+index df814eb..4f086f6 100644
+--- a/ibis/src/ibis_wrap.c
++++ b/ibis/src/ibis_wrap.c
+@@ -75067,7 +75067,7 @@ SWIGEXPORT(int,Ibis_Init)(Tcl_Interp *interp) {
+       IbisOpts.m_key = 0;
+       IbisOpts.v_key = 0;
+       IbisOpts.log_flags = OSM_LOG_ERROR;
+-      strcpy(IbisOpts.log_file,"/tmp/ibis.log");
++      strcpy(IbisOpts.log_file,"/var/cache/ibutils/ibis.log");
+ 
+ 
+       /* we want all exists to cleanup */
+diff --git a/ibis/src/ibissh_wrap.cpp b/ibis/src/ibissh_wrap.cpp
+index 187e0f8..e569ff5 100644
+--- a/ibis/src/ibissh_wrap.cpp
++++ b/ibis/src/ibissh_wrap.cpp
+@@ -75129,7 +75129,7 @@ SWIGEXPORT(int,Ibis_Init)(Tcl_Interp *interp) {
+       IbisOpts.m_key = 0;
+       IbisOpts.v_key = 0;
+       IbisOpts.log_flags = OSM_LOG_ERROR;
+-      strcpy(IbisOpts.log_file,"/tmp/ibis.log");
++      strcpy(IbisOpts.log_file,"/var/cache/ibutils/ibis.log");
+ 
+ 
+       /* we want all exists to cleanup */
+diff --git a/ibis/tests/ibcr_test.tcl b/ibis/tests/ibcr_test.tcl
+index 98fd6b2..593ef5b 100755
+--- a/ibis/tests/ibcr_test.tcl
++++ b/ibis/tests/ibcr_test.tcl
+@@ -132,7 +132,7 @@ set badLid      [lindex $argv 3]
+ #
+ package require ibis
+ ibis_set_verbosity 0xff
+-ibis_opts configure -log_file /tmp/ibcr_test.log
++ibis_opts configure -log_file /var/cache/ibutils/ibcr_test.log
+ ibis_init
+ 
+ set availPorts [ibis_get_local_ports_info]
+diff --git a/ibmgtsim/doc/IBMgtSim.1 b/ibmgtsim/doc/IBMgtSim.1
+index e8ac646..626b956 100644
+--- a/ibmgtsim/doc/IBMgtSim.1
++++ b/ibmgtsim/doc/IBMgtSim.1
+@@ -158,7 +158,7 @@ A tcl file to be sourced after the fabric is setup.
+ .RE
+ .IP "\-l log-file"
+ .IX Item "-l log-file"
+-Set the log file of the simulator (default is /tmp/ibsim.log)
++Set the log file of the simulator (default is /var/cache/ibutils/ibsim.log)
+ .RE
+ .IP "\-p server-port"
+ .IX Item "-p server-port"
+diff --git a/ibmgtsim/doc/IBMgtSim.pod b/ibmgtsim/doc/IBMgtSim.pod
+index f9b422f..ee3e2a8 100644
+--- a/ibmgtsim/doc/IBMgtSim.pod
++++ b/ibmgtsim/doc/IBMgtSim.pod
+@@ -30,7 +30,7 @@ A tcl file to be sourced after the fabric is setup.
+ 
+ =item -l log-file
+ 
+-Set the log file of the simulator (default is /tmp/ibsim.log)
++Set the log file of the simulator (default is /var/cache/ibutils/ibsim.log)
+ 
+ =item -p server-port
+ 
+diff --git a/ibmgtsim/src/client.cpp b/ibmgtsim/src/client.cpp
+index 6c4ff6a..2a3d260 100644
+--- a/ibmgtsim/src/client.cpp
++++ b/ibmgtsim/src/client.cpp
+@@ -158,7 +158,7 @@ __ibms_get_sim_host_n_port(char *hostName,
+     if (getenv("IBMGTSIM_DIR"))
+         simDir = getenv("IBMGTSIM_DIR");
+     else
+-        simDir = "/tmp/ibmgtsim";
++        simDir = "/var/cache/ibutils/ibmgtsim";
+ 
+     std::string serverFileName = simDir + "/ibmgtsim.server";
+ 
+diff --git a/ibmgtsim/src/sim.cpp b/ibmgtsim/src/sim.cpp
+index 5444130..97dbd75 100644
+--- a/ibmgtsim/src/sim.cpp
++++ b/ibmgtsim/src/sim.cpp
+@@ -50,8 +50,8 @@ const char *IBMgtSim::getSimulatorDir()
+     if (!getenv("IBMGTSIM_DIR")) {
+         printf("-W- Environment variable: IBMGTSIM_DIR does not exist.\n");
+         printf("    Please create one used by the simulator.\n");
+-        printf("    Using /tmp/ibmgtsim as default.\n");
+-        return "/tmp/ibmgtsim";
++        printf("    Using /var/cache/ibutils/ibmgtsim as default.\n");
++        return "/var/cache/ibutils/ibmgtsim";
+     }
+     return getenv("IBMGTSIM_DIR");
+ }
+diff --git a/ibmgtsim/tests/FatTree.check.tcl b/ibmgtsim/tests/FatTree.check.tcl
+index acb414b..7b41d56 100644
+--- a/ibmgtsim/tests/FatTree.check.tcl
++++ b/ibmgtsim/tests/FatTree.check.tcl
+@@ -44,7 +44,7 @@ proc runner {simDir osmPath osmPortGuid} {
+    puts "-I- Starting: $osmPath -R ftree -d2 -V -g $osmPortGuid ..."
+    #set osmPid [exec $osmPath -f $osmLog -V -g $osmPortGuid  > $osmStdOutLog &]
+    set osmPid [exec $osmPath -R ftree -f $osmLog -V -g $osmPortGuid  > $osmStdOutLog &]
+-   #set osmPid [exec valgrind --tool=memcheck -v --log-file-exactly=/tmp/kliteyn/osm.valgrind.log $osmPath -R ftree -f $osmLog -V -g $osmPortGuid  > $osmStdOutLog &]
++   #set osmPid [exec valgrind --tool=memcheck -v --log-file-exactly=/var/cache/ibutils/osm.valgrind.log $osmPath -R ftree -f $osmLog -V -g $osmPortGuid  > $osmStdOutLog &]
+ 
+    # start a tracker on the log file and process:
+    startOsmLogAnalyzer $osmLog
+diff --git a/ibmgtsim/tests/FatTreeFails.check.tcl b/ibmgtsim/tests/FatTreeFails.check.tcl
+index 3a0a997..0708060 100644
+--- a/ibmgtsim/tests/FatTreeFails.check.tcl
++++ b/ibmgtsim/tests/FatTreeFails.check.tcl
+@@ -44,7 +44,7 @@ proc runner {simDir osmPath osmPortGuid} {
+    puts "-I- Starting: $osmPath -R ftree -d2 -V -g $osmPortGuid ..."
+    #set osmPid [exec $osmPath -f $osmLog -V -g $osmPortGuid  > $osmStdOutLog &]
+    set osmPid [exec $osmPath -R ftree -f $osmLog -V -g $osmPortGuid  > $osmStdOutLog &]
+-   #set osmPid [exec valgrind --tool=memcheck -v --log-file-exactly=/tmp/kliteyn/osm.valgrind.log $osmPath -R ftree -f $osmLog -V -g $osmPortGuid  > $osmStdOutLog &]
++   #set osmPid [exec valgrind --tool=memcheck -v --log-file-exactly=/var/cache/ibutils/osm.valgrind.log $osmPath -R ftree -f $osmLog -V -g $osmPortGuid  > $osmStdOutLog &]
+ 
+    # start a tracker on the log file and process:
+    startOsmLogAnalyzer $osmLog
+diff --git a/ibmgtsim/tests/init.test.tcl b/ibmgtsim/tests/init.test.tcl
+index 16892ae..1809502 100644
+--- a/ibmgtsim/tests/init.test.tcl
++++ b/ibmgtsim/tests/init.test.tcl
+@@ -30,7 +30,7 @@
+ # SOFTWARE.
+ #--
+ 
+-MsgMgr setLogFile "/tmp/sim.log"
++MsgMgr setLogFile "/var/cache/ibutils/sim.log"
+ MsgMgr setVerbLevel $MsgShowAll
+ IBMgtSimulator init /home/eitan/SW/cvsroot/IBADM/ibdm/Clusters/RhinoBased512.topo 46517 5
+ puts [IBMgtSimulator getFabric]
+@@ -42,7 +42,7 @@ puts [IBMSNode_getPhyPortPMCounter simnode:1:SL2-4/spine2/U2 1 1]
+ set mcm [madMcMemberRec]
+ madMcMemberRec_send_set $mcm simnode:1:SL2-2/spine1/U2 1 1 0
+ 
+-MsgMgr setLogFile "/tmp/sim.log"
++MsgMgr setLogFile "/var/cache/ibutils/sim.log"
+ MsgMgr setVerbLevel $MsgShowAll
+ IBMgtSimulator init /home/eitan/SW/cvsroot/IBADM/ibdm/Clusters/FullGnu.topo 46517 5
+ source /home/eitan/SW/SVN/osm/branches/main2_0/osm/test/osmMulticastRoutingTest.sim.tcl
+@@ -60,7 +60,7 @@ proc activateNodePorts {node} {
+    }
+ }
+ 
+-MsgMgr setLogFile "/tmp/sim.log"
++MsgMgr setLogFile "/var/cache/ibutils/sim.log"
+ MsgMgr setVerbLevel $MsgShowAll
+ IBMgtSimulator init /usr/share/ibmgtsim/Gnu16NodeOsmTest.topo 46517 1
+ set f [IBMgtSimulator getFabric]
+@@ -72,7 +72,7 @@ foreach nodeNameNPtr [IBFabric_NodeByName_get $f] {
+    activateNodePorts [lindex $nodeNameNPtr 1]
+ }
+ 
+-MsgMgr setLogFile "/tmp/sim.log"
++MsgMgr setLogFile "/var/cache/ibutils/sim.log"
+ MsgMgr setVerbLevel $MsgShowAll
+ IBMgtSimulator init test.topo 46517 1
+ set f [IBMgtSimulator getFabric]
+diff --git a/ibmgtsim/utils/IBMgtSim b/ibmgtsim/utils/IBMgtSim
+index 9d5846c..a32a3c3 100644
+--- a/ibmgtsim/utils/IBMgtSim
++++ b/ibmgtsim/utils/IBMgtSim
+@@ -73,7 +73,7 @@ proc Help {} {
+  Command Line Options:
+    -s seed = the seed to be used for random number generation.
+    -f flow-tcl-file = a tcl file to be sourced after the fabric is setup.
+-   -l log-file = set the log file of the simulator (default is /tmp/ibsim.log)
++   -l log-file = set the log file of the simulator (default is /var/cache/ibutils/ibsim.log)
+    -p server-port = set the port number the server attaches to (default 46517)
+    -w num-threads = the number of threads processing the mads
+    -V <module-verbosity-pair-list> = Provides a fine grain control over
+@@ -375,7 +375,7 @@ proc getopt { argslist optstring optret argret } {
+ #
+ 
+ set moduleVerbosityList {top 0xA7}
+-set logFileName /tmp/ibsim.log
++set logFileName /var/cache/ibutils/ibsim.log
+ set numWorkerThreads 1
+ set serverPortNum 46517
+ set simulationFlowFile ""
+diff --git a/ibmgtsim/utils/RunSimTest b/ibmgtsim/utils/RunSimTest
+index d0cd829..a79a82b 100755
+--- a/ibmgtsim/utils/RunSimTest
++++ b/ibmgtsim/utils/RunSimTest
+@@ -775,7 +775,7 @@ rmSeed $randomSeed
+ set osmTrackerPipes {}
+ 
+ # define tmp directory to use:
+-set tmpDir /tmp
++set tmpDir /var/cache/ibutils
+ 
+ # Define the temporary directory:
+ set simDir [file join $tmpDir ibmgtsim.$pid]
