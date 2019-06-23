@@ -21,12 +21,4 @@ RDEPEND="
 	dev-python/progressbar[${PYTHON_USEDEP}]
 	dev-python/pygobject:3[${PYTHON_USEDEP}]"
 
-python_prepare_all() {
-	sed \
-		-e "s|'LICENSE', ||g" \
-		-e "s|man/man1|share/man/man1|g" \
-		-e "/share\/doc\/%s/d" \
-		-i setup.py || die
-
-	distutils-r1_python_prepare_all
-}
+PATCHES=( "${FILESDIR}"/${PN}-0.2.1-gentoo-fhs.patch )
