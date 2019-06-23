@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 PLOCALES="ar bn ca cs da de es et fi fr hi_IN hu is it ja kk ko lt lv nb nl nn pl pt_BR pt_PT ro ru sk sr sr@ijekavian sr@ijekavianlatin sr@latin sv tr uk zh_CN zh_TW"
 inherit cmake-utils l10n systemd user
@@ -9,14 +9,20 @@ inherit cmake-utils l10n systemd user
 DESCRIPTION="Simple Desktop Display Manager"
 HOMEPAGE="https://github.com/sddm/sddm"
 SRC_URI="https://github.com/${PN}/${PN}/releases/download/v${PV}/${P}.tar.xz"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 
 LICENSE="GPL-2+ MIT CC-BY-3.0 CC-BY-SA-3.0 public-domain"
 SLOT="0"
+KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE="consolekit elogind +pam systemd test"
 
 REQUIRED_USE="?? ( elogind systemd )"
 
+BDEPEND="
+	dev-python/docutils
+	>=dev-qt/linguist-tools-5.9.4:5
+	kde-frameworks/extra-cmake-modules:5
+	virtual/pkgconfig
+"
 RDEPEND="
 	>=dev-qt/qtcore-5.9.4:5
 	>=dev-qt/qtdbus-5.9.4:5
@@ -29,19 +35,21 @@ RDEPEND="
 	elogind? ( sys-auth/elogind )
 	pam? ( sys-libs/pam )
 	systemd? ( sys-apps/systemd:= )
-	!systemd? ( sys-power/upower )"
-
+	!systemd? ( sys-power/upower )
+"
 DEPEND="${RDEPEND}
-	dev-python/docutils
-	>=dev-qt/linguist-tools-5.9.4:5
-	kde-frameworks/extra-cmake-modules
-	virtual/pkgconfig
-	test? ( >=dev-qt/qttest-5.9.4:5 )"
+	test? ( >=dev-qt/qttest-5.9.4:5 )
+"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-0.12.0-respect-user-flags.patch" # fix for flags handling and bug 563108
+	"${FILESDIR}/${PN}-0.12.0-respect-user-flags.patch"
 	"${FILESDIR}/${PN}-0.18.0-Xsession.patch" # bug 611210
 	"${FILESDIR}/${PN}-0.18.0-sddmconfdir.patch"
+	# fix for groups: https://github.com/sddm/sddm/issues/1159
+	"${FILESDIR}/${P}-revert-honor-PAM-supplemental-groups.patch"
+	"${FILESDIR}/${P}-honor-PAM-supplemental-groups-v2.patch"
+	# fix for ReuseSession=true
+	"${FILESDIR}/${P}-only-reuse-online-sessions.patch"
 	# TODO: fix properly
 	"${FILESDIR}/${PN}-0.16.0-ck2-revert.patch" # bug 633920
 )
@@ -80,7 +88,10 @@ src_install() {
 	dodir ${confd}
 	"${D}"/usr/bin/sddm --example-config > "${D}/${confd}"/00default.conf \
 		|| die "Failed to create 00default.conf"
+
 	sed -e "/^InputMethod/s/qtvirtualkeyboard//" \
+		-e "/^ReuseSession/s/false/true/" \
+		-e "/^EnableHiDPI/s/false/true/" \
 		-i "${D}/${confd}"/00default.conf || die
 }
 
