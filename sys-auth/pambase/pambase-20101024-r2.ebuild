@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
@@ -6,7 +6,7 @@ EAPI=4
 inherit eutils
 
 DESCRIPTION="PAM base configuration files"
-HOMEPAGE="https://wiki.gentoo.org/wiki/Project:PAM"
+HOMEPAGE="https://github.com/gentoo/pambase"
 SRC_URI="https://dev.gentoo.org/~flameeyes/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
