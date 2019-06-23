@@ -1,6 +1,10 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Georgy Yakovlev <gyakovlev@gentoo.org> (22 Jun 2019)
+# mask javafx until it's keyworded on other arches
+dev-java/openjdk:11 javafx
+
 # Matt Turner <mattst88@gentoo.org> (20 Jun 2019)
 # dev-lang/spidermonkey:60[jit] fails to build on most platforms
 >=dev-lang/spidermonkey-60 jit
