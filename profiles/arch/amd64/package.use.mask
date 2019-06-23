@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Georgy Yakovlev <gyakovlev@gentoo.org> (22 Jun 2019)
+# openjfx is keyworded on amd64
+dev-java/openjdk:11 -javafx
+
 # Matt Turner <mattst88@gentoo.org> (20 Jun 2019)
 # dev-lang/spidermonkey:60[jit] fails to build on most platforms, but does
 # build on amd64.
