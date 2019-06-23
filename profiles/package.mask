@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (23 Jun 2019)
+# QA issues, fails tests, RWX sections, ignores CC/CFLAGS,
+# builds only static libs, fails with GCC 9.
+# Bug #452220, #461288, #623360, #685728
+sci-mathematics/gwnum
+
 # Andreas K. Hüttel <dilfridge@gentoo.org> (23 Jun 2019)
 # EAPI2, broken HOMEPAGE, maintainer-needed, lots of QA warnings,
 # for hardware that was EOL'ed <=2007. Removal in 30 days. Bug 681060
