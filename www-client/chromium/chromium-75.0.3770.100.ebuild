@@ -144,6 +144,7 @@ PATCHES=(
 	"${FILESDIR}/chromium-compiler-r9.patch"
 	"${FILESDIR}/chromium-widevine-r4.patch"
 	"${FILESDIR}/chromium-fix-char_traits.patch"
+	"${FILESDIR}/chromium-angle-inline.patch"
 	"${FILESDIR}/chromium-75-fix-gn-gen.patch"
 	"${FILESDIR}/chromium-75-gcc-angle-fix.patch"
 	"${FILESDIR}/chromium-75-unique_ptr.patch"

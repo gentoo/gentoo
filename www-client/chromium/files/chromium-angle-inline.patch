@@ -1,0 +1,26 @@
+From 2ee4e7f857514f4c0cbff135a1c5f968d8814d31 Mon Sep 17 00:00:00 2001
+From: Stephan Hartmann <stha09@googlemail.com>
+Date: Sun, 23 Jun 2019 12:14:57 +0000
+Subject: [PATCH] explicit declaration of const GLfloat/const GLint for ValidateSamplerParameterBase
+
+---
+ third_party/angle/src/libANGLE/validationES.cpp | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/third_party/angle/src/libANGLE/validationES.cpp b/third_party/angle/src/libANGLE/validationES.cpp
+index ae353f7..fdc7ac2 100644
+--- a/third_party/angle/src/libANGLE/validationES.cpp
++++ b/third_party/angle/src/libANGLE/validationES.cpp
+@@ -6089,7 +6089,9 @@ bool ValidateSamplerParameterBase(Context *context,
+ }
+ 
+ template bool ValidateSamplerParameterBase(Context *, GLuint, GLenum, GLsizei, bool, GLfloat *);
++template bool ValidateSamplerParameterBase(Context *, GLuint, GLenum, GLsizei, bool, const GLfloat *);
+ template bool ValidateSamplerParameterBase(Context *, GLuint, GLenum, GLsizei, bool, GLint *);
++template bool ValidateSamplerParameterBase(Context *, GLuint, GLenum, GLsizei, bool, const GLint *);
+ template bool ValidateSamplerParameterBase(Context *,
+                                            GLuint,
+                                            GLenum,
+-- 
+2.21.0
+
