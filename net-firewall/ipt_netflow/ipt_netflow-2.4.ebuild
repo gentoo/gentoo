@@ -9,7 +9,7 @@ HOMEPAGE="
 	https://sourceforge.net/projects/ipt-netflow
 	https://github.com/aabc/ipt-netflow
 "
-SRC_URI="https://github.com/aabc/ipt-netflow/archive/0e5af37bf63681ff4ee95b98466ee26fa3e4df13.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/aabc/ipt-netflow/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -48,9 +48,6 @@ src_unpack() {
 
 src_prepare() {
 	default
-
-	# Fix incorrect module version in sources
-	sed -i -e "/IPT_NETFLOW_VERSION/s/2.3/${PV}/" ipt_NETFLOW.c || die
 
 	# Checking for directory is enough
 	sed -i -e 's:-s /etc/snmp/snmpd.conf:-d /etc/snmp:' configure || die
