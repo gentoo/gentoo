@@ -1,0 +1,93 @@
+From e85ce17fc91e11eff26c6f5a89125505b7db5fd3 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sun, 23 Jun 2019 19:50:01 +0200
+Subject: [PATCH 1/2] Switch to libssh's own libssh-config.cmake
+
+This is provided by libssh since 2013.
+---
+ cmake/findDependencies.cmake | 2 +-
+ src/CMakeLists.txt           | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/cmake/findDependencies.cmake b/cmake/findDependencies.cmake
+index 12d47525..52760185 100644
+--- a/cmake/findDependencies.cmake
++++ b/cmake/findDependencies.cmake
+@@ -20,7 +20,7 @@ if( EXIV2_ENABLE_WEBREADY )
+     endif()
+ 
+     if( EXIV2_ENABLE_SSH )
+-        find_package( SSH REQUIRED)
++        find_package(libssh CONFIG REQUIRED)
+     endif( )
+ endif( )
+ 
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 1d0ccee4..b532fc7b 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -174,8 +174,8 @@ target_include_directories(exiv2lib_int PUBLIC
+ if (EXIV2_ENABLE_WEBREADY)
+ 
+     if( EXIV2_ENABLE_SSH )
+-        target_include_directories(exiv2lib SYSTEM PUBLIC ${SSH_INCLUDE_DIR} )
+-        target_link_libraries( exiv2lib PUBLIC ${SSH_LIBRARIES})
++        target_include_directories(exiv2lib SYSTEM PUBLIC ${LIBSSH_INCLUDE_DIR})
++        target_link_libraries(exiv2lib PUBLIC ${LIBSSH_LIBRARIES})
+     endif()
+ 
+     if( EXIV2_ENABLE_CURL )
+-- 
+2.22.0
+
+
+From 89d8160a410c2c526ad021fd456accc709cae520 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sun, 23 Jun 2019 19:50:44 +0200
+Subject: [PATCH 2/2] Drop now obsolete FindSSH.cmake
+
+---
+ cmake/FindSSH.cmake | 31 -------------------------------
+ 1 file changed, 31 deletions(-)
+ delete mode 100644 cmake/FindSSH.cmake
+
+diff --git a/cmake/FindSSH.cmake b/cmake/FindSSH.cmake
+deleted file mode 100644
+index 2a6fa378..00000000
+--- a/cmake/FindSSH.cmake
++++ /dev/null
+@@ -1,31 +0,0 @@
+-# - Find libssh
+-# Find the native SSH headers and libraries.
+-#
+-#  SSH_INCLUDE_DIRS - where to find libssh.h, etc.
+-#  SSH_LIBRARIES    - List of libraries when using libssh.
+-#  SSH_FOUND        - True if libssh found.
+-#
+-# Redistribution and use is allowed according to the terms of the BSD license.
+-# For details see the accompanying COPYING-CMAKE-SCRIPTS file.
+-
+-# Look for the header file.
+-FIND_PATH(SSH_INCLUDE_DIR NAMES libssh/libssh.h)
+-
+-# Look for the library.
+-FIND_LIBRARY(SSH_LIBRARY NAMES ssh libssh)
+-
+-# handle the QUIETLY and REQUIRED arguments and set SSH_FOUND to TRUE if 
+-# all listed variables are TRUE
+-INCLUDE(FindPackageHandleStandardArgs)
+-FIND_PACKAGE_HANDLE_STANDARD_ARGS(SSH DEFAULT_MSG SSH_LIBRARY SSH_INCLUDE_DIR)
+-
+-# Copy the results to the output variables.
+-IF(SSH_FOUND)
+-  SET(SSH_LIBRARIES ${SSH_LIBRARY})
+-  SET(SSH_INCLUDE_DIRS ${SSH_INCLUDE_DIR})
+-ELSE(SSH_FOUND)
+-  SET(SSH_LIBRARIES)
+-  SET(SSH_INCLUDE_DIRS)
+-ENDIF(SSH_FOUND)
+-
+-MARK_AS_ADVANCED(SSH_INCLUDE_DIR SSH_LIBRARY)
+-- 
+2.22.0
+

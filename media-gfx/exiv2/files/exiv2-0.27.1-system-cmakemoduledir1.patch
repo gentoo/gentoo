@@ -1,0 +1,41 @@
+From 78676b2a025023ab3de2d094e0798ed64ef7df97 Mon Sep 17 00:00:00 2001
+From: Robin Mills <robin@clanmills.com>
+Date: Sat, 27 Apr 2019 11:18:22 +0100
+Subject: [PATCH] Fix #798
+
+---
+ README.md                      |  2 +-
+ releasenotes/CYGWIN/ReadMe.txt | 17 +----------------
+ releasenotes/Darwin/ReadMe.txt |  6 ++----
+ releasenotes/Linux/ReadMe.txt  |  2 +-
+ releasenotes/MinGW/ReadMe.txt  |  2 +-
+ releasenotes/msvc/ReadMe.txt   |  2 +-
+ src/CMakeLists.txt             |  2 +-
+ 7 files changed, 8 insertions(+), 25 deletions(-)
+
+diff --git a/README.md b/README.md
+index 6e9f50a94..92cca39e6 100644
+--- a/README.md
++++ b/README.md
+@@ -189,7 +189,7 @@ project(exifprint VERSION 0.0.1 LANGUAGES CXX)
+ set(CMAKE_CXX_STANDARD 11)
+ set(CMAKE_CXX_EXTENSIONS OFF)
+ 
+-find_package(exiv2 REQUIRED CONFIG NAMES exiv2)    # search ${CMAKE_INSTALL_PREFIX}/lib/exiv2/cmake/
++find_package(exiv2 REQUIRED CONFIG NAMES exiv2)    # search ${CMAKE_INSTALL_PREFIX}/lib/cmake/exiv2
+ add_executable(exifprint ../samples/exifprint.cpp) # compile this
+ target_link_libraries(exifprint exiv2lib)          # link exiv2lib
+ 
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 340870048..976327775 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -239,7 +239,7 @@ install(FILES
+     ${CMAKE_BINARY_DIR}/exiv2lib_export.h
+     DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/exiv2)
+ 
+-install(EXPORT exiv2Config DESTINATION "${CMAKE_INSTALL_LIBDIR}/exiv2/cmake")
++install(EXPORT exiv2Config DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/exiv2")
+ 
+ install(FILES ${CMAKE_CURRENT_BINARY_DIR}/exiv2ConfigVersion.cmake DESTINATION "${CMAKE_INSTALL_LIBDIR}/exiv2/cmake")
+ 
