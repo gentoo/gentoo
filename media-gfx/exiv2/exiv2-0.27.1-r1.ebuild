@@ -47,6 +47,13 @@ DOCS=( README.md doc/ChangeLog doc/cmd.txt )
 
 S="${S}-Source"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-system-cmakemoduledir{1,2}.patch
+	"${FILESDIR}"/${P}-private-libs.patch
+	"${FILESDIR}"/${P}-restore-0.25-behaviour.patch
+	"${FILESDIR}"/${P}-system-libssh-config.patch
+)
+
 pkg_setup() {
 	use doc && python-any-r1_pkg_setup
 }
@@ -58,6 +65,8 @@ src_prepare() {
 	mv -f doc/cmd.txt.tmp doc/cmd.txt || die
 
 	cmake-utils_src_prepare
+
+	sed -e "/^include.*compilerFlags/s/^/#DONT /" -i CMakeLists.txt || die
 }
 
 multilib_src_configure() {

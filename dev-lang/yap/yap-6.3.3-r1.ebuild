@@ -29,7 +29,10 @@ RDEPEND="sys-libs/zlib
 DEPEND="${RDEPEND}
 	doc? ( app-text/texi2html )"
 
-PATCHES=( "${WORKDIR}"/${PV} )
+PATCHES=(
+	"${WORKDIR}"/${PV}
+	"${FILESDIR}"/${PN}-6.3.3-fix-gcc9.patch
+)
 
 src_prepare() {
 	default

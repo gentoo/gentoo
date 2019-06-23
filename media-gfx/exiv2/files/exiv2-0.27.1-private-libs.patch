@@ -1,0 +1,59 @@
+From f05d100579effd7459fd0715b26239d4cd2c9bcc Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Luis=20D=C3=ADaz=20M=C3=A1s?= <piponazo@gmail.com>
+Date: Sat, 4 May 2019 16:14:15 +0200
+Subject: [PATCH] CURL lib and include directories private for exiv2lib
+
+(cherry picked from commit 5d64a0b11c5a45dd9d58c56e946301f3f98942a7)
+---
+ samples/CMakeLists.txt | 14 ++++++++++++++
+ src/CMakeLists.txt     | 10 +++++-----
+ 2 files changed, 19 insertions(+), 5 deletions(-)
+
+diff --git a/samples/CMakeLists.txt b/samples/CMakeLists.txt
+index a82403e3b..c3f4722df 100644
+--- a/samples/CMakeLists.txt
++++ b/samples/CMakeLists.txt
+@@ -96,6 +96,20 @@ endif()
+ add_executable(conntest conntest.cpp)
+ list(APPEND APPLICATIONS conntest)
+ 
++if (EXIV2_ENABLE_WEBREADY)
++    if( EXIV2_ENABLE_CURL )
++        target_include_directories(conntest SYSTEM PRIVATE ${CURL_INCLUDE_DIR} )
++        target_link_libraries(conntest PRIVATE ${CURL_LIBRARIES})
++        if (USING_CONAN)
++            target_compile_definitions(conntest PRIVATE ${CONAN_COMPILE_DEFINITIONS_LIBCURL})
++            target_link_libraries(conntest PRIVATE ${CONAN_EXE_LINKER_FLAGS_LIBCURL})
++            if (NOT APPLE)
++                target_link_libraries(conntest PRIVATE CONAN_PKG::OpenSSL)
++            endif()
++        endif()
++    endif()
++endif()
++
+ # ******************************************************************************
+ # remotetest application
+ add_executable(remotetest remotetest.cpp)
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 976327775..d0e989d26 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -179,13 +179,13 @@ if (EXIV2_ENABLE_WEBREADY)
+     endif()
+ 
+     if( EXIV2_ENABLE_CURL )
+-        target_include_directories(exiv2lib SYSTEM PUBLIC ${CURL_INCLUDE_DIR} )
+-        target_link_libraries(exiv2lib PUBLIC ${CURL_LIBRARIES})
++        target_include_directories(exiv2lib SYSTEM PRIVATE ${CURL_INCLUDE_DIR} )
++        target_link_libraries(exiv2lib PRIVATE ${CURL_LIBRARIES})
+         if (USING_CONAN)
+-            target_compile_definitions(exiv2lib PUBLIC ${CONAN_COMPILE_DEFINITIONS_LIBCURL})
+-            target_link_libraries(exiv2lib PUBLIC ${CONAN_EXE_LINKER_FLAGS_LIBCURL})
++            target_compile_definitions(exiv2lib PRIVATE ${CONAN_COMPILE_DEFINITIONS_LIBCURL})
++            target_link_libraries(exiv2lib PRIVATE ${CONAN_EXE_LINKER_FLAGS_LIBCURL})
+             if (NOT APPLE)
+-                target_link_libraries(exiv2lib PUBLIC CONAN_PKG::OpenSSL)
++                target_link_libraries(exiv2lib PRIVATE CONAN_PKG::OpenSSL)
+             endif()
+         endif()
+     endif()
