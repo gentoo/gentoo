@@ -1,10 +1,10 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 DESCRIPTION="PAM base configuration files"
-HOMEPAGE="https://wiki.gentoo.org/wiki/Project:PAM"
+HOMEPAGE="https://github.com/gentoo/pambase"
 SRC_URI="https://dev.gentoo.org/~vapier/dist/${P}.tar.xz"
 
 LICENSE="GPL-2"
