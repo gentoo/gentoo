@@ -9,3 +9,7 @@
 # James Le Cuirot <chewi@gentoo.org> (24 May 2015)
 # This is built for armv7a so unmask against the wider arm mask.
 -dev-java/icedtea-bin
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (22 June 2019)
+# This is built for armv7a so unmask here.
+-dev-java/openjdk-bin:11

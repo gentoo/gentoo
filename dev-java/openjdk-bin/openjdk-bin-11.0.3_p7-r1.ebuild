@@ -15,15 +15,16 @@ MY_PV=${PV/_p/+}
 SLOT=${MY_PV%%[.+]*}
 
 SRC_URI="
-	$(abi_uri x64 amd64)
+	$(abi_uri arm)
 	$(abi_uri aarch64 arm64)
 	$(abi_uri ppc64le ppc64)
+	$(abi_uri x64 amd64)
 "
 
 DESCRIPTION="Prebuilt Java JDK binaries provided by AdoptOpenJDK"
 HOMEPAGE="https://adoptopenjdk.net"
 LICENSE="GPL-2-with-classpath-exception"
-KEYWORDS="~amd64 ~arm64 ~ppc64"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64"
 IUSE="alsa cups doc examples +gentoo-vm headless-awt nsplugin selinux source +webstart"
 
 RDEPEND="
@@ -51,6 +52,12 @@ RESTRICT="preserve-libs splitdebug"
 QA_PREBUILT="*"
 
 S="${WORKDIR}/jdk-${MY_PV}"
+
+pkg_pretend() {
+	if [[ "$(tc-is-softfloat)" != "no" ]]; then
+		die "These binaries require a hardfloat system."
+	fi
+}
 
 src_install() {
 	local dest="/opt/${P}"
