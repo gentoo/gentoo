@@ -46,7 +46,12 @@ DEPEND="
 
 RDEPEND="${DEPEND}"
 
-PATCHES=( "${FILESDIR}/${P}-eventstruct.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-eventstruct.patch"
+	"${FILESDIR}/${P}-gcc9.patch"
+	"${FILESDIR}/${P}-xpp-gcc9.patch"
+	"${FILESDIR}/${P}-i3ipcpp-gcc9.patch"
+)
 
 src_prepare() {
 	if [[ ${PV} != *9999* ]]; then
