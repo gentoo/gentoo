@@ -31,7 +31,11 @@ DEPEND="${RDEPEND}
 		dev-qt/qdoc:5
 		dev-qt/qthelp:5
 	)
-	test? ( dev-qt/qtdeclarative:5 )
+	test? (
+		dev-qt/linguist-tools:5
+		dev-qt/qtdbus:5
+		dev-qt/qtdeclarative:5
+	)
 "
 
 S=${WORKDIR}/${MY_P}
