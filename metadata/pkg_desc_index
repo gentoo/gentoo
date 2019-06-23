@@ -8239,7 +8239,7 @@ media-sound/schismtracker 20180810: Free implementation of Impulse Tracker, a to
 media-sound/scmpc 0.4.1: a client for MPD which submits your tracks to last.fm
 media-sound/seq24 0.9.3 0.9.3-r1: Loop based MIDI sequencer with focus on live performances
 media-sound/setmixer 19941227_p1: A commandline mixer
-media-sound/sexypsf 0.4.7 0.4.8: Open-source PSF1 (Playstation music) file player
+media-sound/sexypsf 0.4.8: Open-source PSF1 (Playstation music) file player
 media-sound/sfc 0.018-r1: SoundFontCombi is an opensource software pseudo synthesizer
 media-sound/shntool 3.0.10-r1: A multi-purpose WAVE data processing and reporting utility
 media-sound/shorten 3.6.1: fast, low complexity waveform coder (i.e. audio compressor)
