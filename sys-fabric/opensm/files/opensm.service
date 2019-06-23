@@ -1,0 +1,11 @@
+[Unit]
+Description=OpenSM Infiniband Subnet Manager
+After=network.target
+Requires=openib.service
+
+[Service]
+Environment=OSM_OPTIONS=
+ExecStart=/usr/sbin/opensm $OSM_OPTIONS
+
+[Install]
+WantedBy=multi-user.target

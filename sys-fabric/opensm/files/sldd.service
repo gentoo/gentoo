@@ -1,0 +1,11 @@
+[Unit]
+Description=Semi-static LID OpenSM Distribution Manager
+After=network.target
+Requires=opensm.service
+
+[Service]
+EnvironmentFile=/etc/sldd.conf
+ExecStart=/usr/sbin/sldd.sh
+
+[Install]
+WantedBy=multi-user.target
