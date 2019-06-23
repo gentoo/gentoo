@@ -47,17 +47,15 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 src_prepare() {
-	cmake-utils_src_prepare
-
 	if [[ ${PV} != *9999* ]]; then
 		rmdir "${S}"/lib/xpp || die
 		mv "${WORKDIR}"/xpp-$XPP_VERSION "${S}"/lib/xpp || die
 
 		rmdir "${S}"/lib/i3ipcpp || die
 		mv "${WORKDIR}"/i3ipcpp-$I3IPCPP_VERSION "${S}"/lib/i3ipcpp || die
-
-		sed -i "s/.*cpp_error,.*/&\n\t  'eventstruct'   : lambda x, y: None,/" lib/xpp/generators/cpp_client.py || die "sed failed"
 	fi
+
+	cmake-utils_src_prepare
 }
 
 src_configure() {
