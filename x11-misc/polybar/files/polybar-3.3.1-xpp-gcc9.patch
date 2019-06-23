@@ -1,0 +1,23 @@
+From d2ff2aaba6489f606bbcc090c0a78a8a3f9fcd1f Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?J=C3=A9r=C3=B4me=20BOULMIER?= <jerome.boulmier@outlook.fr>
+Date: Sun, 7 Apr 2019 10:34:32 -0400
+Subject: [PATCH] fix(window): add default copy cstr (#16)
+
+The copy constructor must be declared explicitly since the implicit declaration is deprecated.
+Ref jaagr/polybar#1729.
+---
+ include/xpp/window.hpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/include/xpp/window.hpp b/include/xpp/window.hpp
+index e5c6503..3e53074 100644
+--- a/lib/xpp/include/xpp/window.hpp
++++ b/lib/xpp/include/xpp/window.hpp
+@@ -23,6 +23,7 @@ class window
+     {}
+ 
+   public:
++    window(const window&) = default;
+     using base::base;
+     using base::operator=;
+ 
