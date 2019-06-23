@@ -81,7 +81,7 @@ src_configure() {
 	if use doc; then
 		python_setup
 	else
-		sed -i -e 's/^build_www=yes/build_www=no/' "${S}"/configure || die
+		export ac_cv_path_PYTHON=
 	fi
 
 	# Used by tests if userpriv is disabled
