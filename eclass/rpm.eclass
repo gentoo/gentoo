@@ -1,12 +1,18 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: rpm.eclass
 # @MAINTAINER:
 # base-system@gentoo.org
+# @SUPPORTED_EAPIS: 0 1 2 3 4 5 6 7
 # @BLURB: convenience class for extracting RPMs
 
-inherit eutils
+
+case ${EAPI:-0} in
+	0|1|2|3|4|5) inherit epatch estack ;;
+	6|7) inherit estack ;;
+	*) die "${ECLASS}: EAPI ${EAPI} not supported" ;;
+esac
 
 DEPEND=">=app-arch/rpm2targz-9.0.0.3g"
 
@@ -117,7 +123,10 @@ rpm_spec_epatch() {
 		# extract the patch name from the Patch# line
 		set -- $(grep "^P${p#%p}: " "${spec}")
 		shift
-		epatch "${dir:+${dir}/}$*"
+		case ${EAPI:-0} in
+			0|1|2|3|4|5) epatch "${dir:+${dir}/}$*" ;;
+			6|7) eapply "${EPATCH_OPTS}" "${dir:+${dir}/}$*" ;;
+		esac
 	done
 
 	eend
