@@ -16,16 +16,17 @@ SRC_URI="http://mirrors.cdn.adacore.com/art/5b0cf9adc7a4475263382c18
 LICENSE="GPL-3 gcc-runtime-library-exception-3.1"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="gnat_2016 gnat_2017 +gnat_2018 gnat_2019 +shared static-libs"
+IUSE="gnat_2017 +gnat_2018 gnat_2019 +shared static-libs"
 
 RDEPEND="dev-python/pyyaml
-	dev-ada/gnatcoll-bindings[gnat_2016(-)?,gnat_2017(-)?,gnat_2018(-)?,gnat_2019(-)?]
+	dev-ada/gnatcoll-bindings[gnat_2017(-)?,gnat_2018(-)?,gnat_2019(-)?]
 	dev-ada/gnatcoll-bindings[iconv,shared=,static-libs=]
 	${PYTHON_DEPS}"
 DEPEND="${RDEPEND}
 	~dev-ada/langkit-2018
-	dev-ada/gprbuild[gnat_2016(-)?,gnat_2017(-)?,gnat_2018(-)?,gnat_2019(-)?]"
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+	dev-ada/gprbuild[gnat_2017(-)?,gnat_2018(-)?,gnat_2019(-)?]"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}
+	^^ ( gnat_2017 gnat_2018 gnat_2019 )"
 
 S="${WORKDIR}"/${MYP}
 
