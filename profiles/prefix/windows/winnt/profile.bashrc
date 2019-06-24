@@ -22,7 +22,9 @@ windows_setup_dllhelper() {
 		# But as there is another file to install (the real dll),
 		# and installation is done using cp, we override cp to
 		# additionally copy the dll when the library is copied.
+		ebegin "Setting up wrapper to copy the DLL along the LIB"
 		windows_setup_dllhelper_cp
+		eend $?
 		;;
 	esac
 }
