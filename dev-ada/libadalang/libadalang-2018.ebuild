@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -23,7 +23,7 @@ RDEPEND="dev-python/pyyaml
 	dev-ada/gnatcoll-bindings[iconv,shared=,static-libs=]
 	${PYTHON_DEPS}"
 DEPEND="${RDEPEND}
-	>=dev-ada/langkit-2018"
+	~dev-ada/langkit-2018"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 S="${WORKDIR}"/${MYP}
