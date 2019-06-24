@@ -53,7 +53,7 @@ SITEFILE=50"${PN}"-gentoo.el
 src_prepare() {
 	default
 
-	./otp_build autoconf
+	./otp_build autoconf || die
 }
 
 src_configure() {
