@@ -35,13 +35,9 @@ src_configure() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install
+	default
 
 	dodoc AUTHORS README ChangeLog
-
-	cp "${D}"/usr/share/pixmaps/xchm-32.xpm "${D}"/usr/share/pixmaps/xchm.xpm
-	rm -f "${D}"/usr/share/pixmaps/xchm-*.xpm
-	rm -f "${D}"/usr/share/pixmaps/xchmdoc*.xpm
 
 	domenu "${FILESDIR}"/xchm.desktop
 	insinto /usr/share/mime/packages
@@ -50,10 +46,12 @@ src_install() {
 
 pkg_postinst() {
 	xdg_desktop_database_update
+	xdg_icon_cache_update
 	xdg_mimeinfo_database_update
 }
 
 pkg_postrm() {
 	xdg_desktop_database_update
+	xdg_icon_cache_update
 	xdg_mimeinfo_database_update
 }
