@@ -1,0 +1,20 @@
+--- a/texmf-dist/tex/latex/exsheets/exsheets.sty	2017-02-11 00:30:33.000000000 +0100
++++ b/texmf-dist/tex/latex/exsheets/exsheets.sty	2019-06-09 10:13:30.917543183 +0200
+@@ -2760,7 +2760,7 @@
+       }
+   }
+   
+-\cs_new_protected:Npn \__exsheets_blank_skip:N #1
++\cs_new_protected:Npn \__exsheets_blank_skip:n #1
+   {
+     \bool_if:NTF \l__exsheets_blank_width_bool
+       { \dim_set:Nn \l__exsheets_tmpa_dim {#1} }
+@@ -2791,7 +2791,7 @@
+       }
+       { \exsheets_write_blank:n { \skip_horizontal:N \l__exsheets_tmpa_dim } }
+   }
+-\cs_generate_variant:Nn \__exsheets_blank_skip:N { n }
++\cs_generate_variant:Nn \__exsheets_blank_skip:n { n, V }
+ 
+ % the following code from Heiko Oberdieck in d.c.t.t served as inspiration
+ % and basis for the \blank command:
