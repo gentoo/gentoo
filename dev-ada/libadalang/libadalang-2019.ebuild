@@ -26,7 +26,8 @@ DEPEND="${RDEPEND}
 	dev-ada/gprbuild[gnat_2018(-)?,gnat_2019(-)?]
 	>=dev-ada/langkit-2019"
 
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}
+	^^ ( gnat_2018 gnat_2019 )"
 
 S="${WORKDIR}"/${MYP}
 
