@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Jonas Stein <jstein@gentoo.org> (24 Jun 2019)
+# Source is broken. Upstream is dead since 2011.
+# Removal after 2019-08-01. (bug #688552)
+media-sound/sfc
+
 # David Seifert <soap@gentoo.org> (23 Jun 2019)
 # QA issues, fails tests, RWX sections, ignores CC/CFLAGS,
 # builds only static libs, fails with GCC 9.
