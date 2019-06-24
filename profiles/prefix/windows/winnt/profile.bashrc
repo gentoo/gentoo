@@ -62,6 +62,17 @@ post_src_install() {
 			;;
 		esac
 	done
+	find usr/$(get_libdir) -maxdepth 1 -type f -name '*.dll' |
+	while read f
+	do
+		if test ! -f usr/bin/${f##*/}; then
+			ebegin "moving ${f} to usr/bin for native loader"
+			dodir usr/bin || die
+			mv -f "${f}" usr/bin || die
+			ln -sf "../bin/${f##*/}" "${f}"
+			eend $?
+		fi
+	done
 }
 
 windows_setup_dllhelper_cp() {
