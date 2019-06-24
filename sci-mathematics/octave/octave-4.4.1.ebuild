@@ -39,7 +39,7 @@ RDEPEND="
 	)
 	hdf5? ( sci-libs/hdf5:0= )
 	imagemagick? (
-		!graphicsmagick? ( media-gfx/imagemagick:=[cxx] )
+		!graphicsmagick? ( >=media-gfx/imagemagick-7:=[cxx] )
 		graphicsmagick? ( media-gfx/graphicsmagick:=[cxx] )
 	)
 	java? ( >=virtual/jre-1.6.0:* )
