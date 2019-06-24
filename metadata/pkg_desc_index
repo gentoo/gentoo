@@ -667,7 +667,6 @@ app-emacs/jam-mode 0.3: An Emacs major mode for editing Jam files
 app-emacs/jasmin 1.2-r2: An Emacs major mode for editing Jasmin Java bytecode assembler files
 app-emacs/jde 2.4.1: Java Development Environment for Emacs
 app-emacs/keywiz 1.4: Emacs key sequence quiz
-app-emacs/limit 1.14.10_pre200811252332: Library about Internet Message, for IT generation
 app-emacs/lookup 1.4.1: An interface to search CD-ROM books and network dictionaries
 app-emacs/lua-mode 20130419: An Emacs major mode for editing Lua scripts
 app-emacs/lyskom-elisp-client 0.48_p20180410: Elisp client for the LysKOM conference system
@@ -10445,7 +10444,6 @@ virtual/dev-manager 0-r2: Virtual for the device filesystem manager
 virtual/editor 0-r2: Virtual for editor
 virtual/eject 0-r1: Virtual for the eject command
 virtual/emacs 23 24 25 26: Virtual for GNU Emacs
-virtual/emacs-flim 0: Virtual for FLIM (library for message representation in Emacs)
 virtual/fam 0-r1: A virtual package to choose between gamin and fam
 virtual/ffmpeg 9-r2: Virtual package for FFmpeg executable implementation
 virtual/fortran 0: Virtual for Fortran Compiler
