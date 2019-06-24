@@ -28,6 +28,12 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+# Ulrich Müller <ulm@gentoo.org> (24 Jun 2019)
+# Byte-compilation with recent Emacs versions fails.
+# SRC_URI is gone. Last visible upstream activity in 2008.
+# Masked for removal in 30 days, bug #688596.
+app-emacs/limit
+virtual/emacs-flim
 
 # Jonas Stein <jstein@gentoo.org> (24 Jun 2019)
 # Source is broken. Upstream is dead since 2011.
