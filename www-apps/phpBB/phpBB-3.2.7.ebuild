@@ -33,7 +33,7 @@ src_install() {
 	webapp_src_install
 
 	# phpBB needs docs together with the other files.
-	dosym "${MY_HTDOCSDIR}"/docs /usr/share/doc/${PF}
+	dosym ../webapps/${PN}/${SLOT}/htdocs/docs /usr/share/doc/${PF}
 }
 
 pkg_postinst() {
