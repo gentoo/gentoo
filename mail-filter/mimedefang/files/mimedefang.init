@@ -2,21 +2,21 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-PROGNAME=${SVCNAME#*.}
+PROGNAME=${RC_SVCNAME#*.}
 PROGDIR=/usr/bin
-SPOOLDIR=${SPOOLDIR:-/var/spool/MIMEDefang}
+SPOOLDIR="${SPOOLDIR:-/var/spool/MIMEDefang}"
 PID="${SPOOLDIR}/${PROGNAME}.pid"
 MXPID="${SPOOLDIR}/${PROGNAME}-multiplexor.pid"
 LOCK="${SPOOLDIR}/${PROGNAME}.lock"
 MXLOCK="${SPOOLDIR}/${PROGNAME}-multiplexor.lock"
 
 # Make sure required vars are set
-SOCKET=${SOCKET:-${SPOOLDIR}/${PROGNAME}.sock}
-MX_SOCKET=${MX_SOCKET:-${SPOOLDIR}/${PROGNAME}-multiplexor.sock}
+SOCKET="${SOCKET:-${SPOOLDIR}/${PROGNAME}.sock}"
+MX_SOCKET="${MX_SOCKET:-${SPOOLDIR}/${PROGNAME}-multiplexor.sock}"
 
 description="MIMEDefang mail filter"
 extra_commands="checkconfig"
-description_checkconfig="Check config for ${SVCNAME}"
+description_checkconfig="Check config for ${RC_SVCNAME}"
 
 depend() {
 	use antivirus
@@ -32,31 +32,31 @@ start() {
 	checkconfig || return 1
 
 	# First start mimedefang multiplexor
-	rm -f ${MX_SOCKET} > /dev/null 2>&1
+	rm -f "${MX_SOCKET}" > /dev/null 2>&1
 	ebegin "Starting ${PROGNAME}-multiplexor"
 	start-stop-daemon --start --quiet \
-		--exec ${PROGDIR}/${PROGNAME}-multiplexor -- -p ${MXPID} -o ${MXLOCK} -z ${SPOOLDIR} \
+		--exec ${PROGDIR}/${PROGNAME}-multiplexor -- -p "${MXPID}" -o "${MXLOCK}" -z "${SPOOLDIR}" \
 		${MD_MX_OPTS} ${MX_OPTS} \
-		-s ${MX_SOCKET}
+		-s "${MX_SOCKET}"
 	eend $? "Failed to start ${PROGNAME}-multiplexor"
 
 	# And now start mimedefang
-	rm -f ${SOCKET} > /dev/null 2>&1
+	rm -f "${SOCKET}" > /dev/null 2>&1
 	ebegin "Starting ${PROGNAME}"
 	start-stop-daemon --start --quiet \
-		--exec ${PROGDIR}/${PROGNAME} -- -P ${PID} -o ${LOCK} -z ${SPOOLDIR} \
+		--exec ${PROGDIR}/${PROGNAME} -- -P "${PID}" -o "${LOCK}" -z "${SPOOLDIR}" \
 		${MD_MX_OPTS} ${MD_OPTS} \
-		-m ${MX_SOCKET} \
-		-p ${SOCKET}
+		-m "${MX_SOCKET}" \
+		-p "${SOCKET}"
 	eend $? "Failed to start ${PROGNAME}"
 }
 
 stop() {
 	ebegin "Stopping ${PROGNAME}"
-	start-stop-daemon --stop --quiet --pidfile ${PID}
+	start-stop-daemon --stop --quiet --pidfile "${PID}"
 	eend $? "Failed to stop ${PROGNAME}"
 
 	ebegin "Stopping ${PROGNAME}-multiplexor"
-	start-stop-daemon --stop --quiet --pidfile ${MXPID}
+	start-stop-daemon --stop --quiet --pidfile "${MXPID}"
 	eend $? "Failed to stop ${PROGNAME}-multiplexor"
 }
