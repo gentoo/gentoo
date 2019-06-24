@@ -46,6 +46,7 @@ PDEPEND="gtk? ( x11-misc/lightdm-gtk-greeter )"
 
 DOCS=( NEWS )
 RESTRICT="test"
+REQUIRED_USE="vala? ( introspection )"
 
 pkg_setup() {
 	export LIGHTDM_USER=${LIGHTDM_USER:-lightdm}

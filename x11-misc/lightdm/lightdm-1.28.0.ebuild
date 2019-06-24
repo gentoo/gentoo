@@ -44,6 +44,7 @@ PDEPEND="gtk? ( x11-misc/lightdm-gtk-greeter )"
 
 DOCS=( NEWS )
 RESTRICT="test"
+REQUIRED_USE="vala? ( introspection )"
 
 src_prepare() {
 	xdg_environment_reset
