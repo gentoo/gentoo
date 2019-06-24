@@ -1,3 +1,8 @@
+acct-group/ftp 0: File Transfer Protocol server user
+acct-group/mail 0: Mail program group
+acct-user/ftp 0: File Transfer Protocol server user
+acct-user/mail 0: Mail program user
+acct-user/postmaster 0: Postmaster user
 app-accessibility/SphinxTrain 1.0.8: Speech Recognition (Training Module)
 app-accessibility/accerciser 3.22.0: Interactive Python accessibility explorer
 app-accessibility/at-spi2-atk 2.26.2 2.30.1: Gtk module for bridging AT-SPI to Atk
@@ -720,7 +725,7 @@ app-emacs/vhdl-mode 3.35.1: VHDL-mode for Emacs
 app-emacs/visual-basic-mode 1.4.12: A mode for editing Visual Basic programs
 app-emacs/vm 8.1.2: The VM mail reader for Emacs
 app-emacs/volume 1.0-r1: Tweak your sound card volume from Emacs
-app-emacs/wanderlust 2.14.0-r6 2.15.9_p20130619: Yet Another Message Interface on Emacsen
+app-emacs/wanderlust 2.15.9_p20130619: Yet Another Message Interface on Emacsen
 app-emacs/whine 20091222: Complaint generator for GNU Emacs
 app-emacs/wikipedia-mode 0.5-r1: Mode for editing Wikipedia articles off-line
 app-emacs/with-editor 2.7.2 2.7.4: Use the Emacsclient as the $EDITOR of child processes
