@@ -62,6 +62,7 @@ post_src_install() {
 			;;
 		esac
 	done
+	[[ -d usr/$(get_libdir) ]] &&
 	find usr/$(get_libdir) -maxdepth 1 -type f -name '*.dll' |
 	while read f
 	do
@@ -69,7 +70,7 @@ post_src_install() {
 			ebegin "moving ${f} to usr/bin for native loader"
 			dodir usr/bin || die
 			mv -f "${f}" usr/bin || die
-			ln -sf "../bin/${f##*/}" "${f}"
+			ln -sf "../bin/${f##*/}" "${f}" || die
 			eend $?
 		fi
 	done
