@@ -10,6 +10,6 @@
 <remote-id type="sourceforge">iperf</remote-id>
 </upstream>
 <use>
-<flag name='profiling'>Create a profiled iperf3 binary</flag>
+<flag name='profiling'>Install profiled iperf3 binary iperf3_profile</flag>
 </use>
 </pkgmetadata>
