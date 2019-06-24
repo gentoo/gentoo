@@ -1,32 +1,27 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 inherit elisp
 
-MY_P="wl-${PV/_/}"
 DESCRIPTION="Yet Another Message Interface on Emacsen"
-HOMEPAGE="http://www.gohome.org/wl/"
-SRC_URI="ftp://ftp.gohome.org/wl/stable/${MY_P}.tar.gz
-	ftp://ftp.gohome.org/wl/beta/${MY_P}.tar.gz
-	mirror://gentoo/${P}-20050405.patch.gz"
+HOMEPAGE="https://github.com/wanderlust/wanderlust"
+GITHUB_SHA1="b9a529a54b9e7eafa4ed230ad28efffe0d25a20e"
+SRC_URI="${HOMEPAGE}/archive/${GITHUB_SHA1}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
+KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
 IUSE="bbdb ssl l10n_ja"
 
-DEPEND=">=app-emacs/apel-10.6
-	virtual/emacs-flim
-	app-emacs/semi
+DEPEND=">=app-emacs/apel-10.8
+	>=app-emacs/flim-1.14.9
+	>=app-emacs/semi-1.14.7
 	bbdb? ( app-emacs/bbdb )"
 RDEPEND="${DEPEND}"
 
-S="${WORKDIR}/${MY_P}"
-ELISP_PATCHES="${P}-20050405.patch
-	${P}-smtp-end-of-line.patch
-	${P}-texinfo-garbage.patch"
+S="${WORKDIR}/${PN}-${GITHUB_SHA1}"
 SITEFILE="50${PN}-gentoo.el"
 
 src_configure() {
@@ -52,7 +47,7 @@ src_install() {
 	insinto "${SITEETC}/wl/samples/en"
 	doins samples/en/*
 	doinfo doc/wl*.info
-	dodoc BUGS ChangeLog INSTALL NEWS README
+	dodoc BUGS ChangeLog INSTALL NEWS README.md
 
 	if use l10n_ja; then
 		insinto "${SITEETC}/wl/samples/ja"

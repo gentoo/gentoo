@@ -1,7 +1,7 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 inherit elisp
 
@@ -15,13 +15,10 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND="app-emacs/apel
-	virtual/emacs-flim"
+	app-emacs/flim"
+DEPEND="${RDEPEND}"
 
 SITEFILE="50${PN}-gentoo.el"
 DOCS="ChangeLog NEWS README.en"
 
 S="${WORKDIR}/${MY_P}"
-
-src_compile() {
-	emake EMACS=emacs
-}
