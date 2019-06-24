@@ -20,8 +20,8 @@ fi
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-IUSE="+crypt doc examples libressl slz +net_ns +pcre pcre-jit pcre2 pcre2-jit ssl
-systemd +threads tools vim-syntax +zlib lua device-atlas 51degrees wurfl"
+IUSE="+crypt doc examples libressl slz +net_ns +pcre pcre-jit pcre2 pcre2-jit prometheus-exporter
+ssl systemd +threads tools vim-syntax +zlib lua device-atlas 51degrees wurfl"
 REQUIRED_USE="pcre-jit? ( pcre )
 	pcre2-jit? ( pcre2 )
 	pcre? ( !pcre2 )
@@ -98,8 +98,12 @@ src_compile() {
 	# For now, until the strict-aliasing breakage will be fixed
 	append-cflags -fno-strict-aliasing
 
+	if use prometheus-exporter; then
+		EXTRA_OBJS="contrib/prometheus-exporter/service-prometheus.o"
+	fi
+
 	# HAProxy really needs some of those "SPEC_CFLAGS", like -fno-strict-aliasing
-	emake CFLAGS="${CFLAGS} \$(SPEC_CFLAGS)" LDFLAGS="${LDFLAGS}" CC=$(tc-getCC) ${args[@]}
+	emake CFLAGS="${CFLAGS} \$(SPEC_CFLAGS)" LDFLAGS="${LDFLAGS}" CC=$(tc-getCC) EXTRA_OBJS="${EXTRA_OBJS}" ${args[@]}
 	emake -C contrib/systemd SBINDIR=/usr/sbin
 
 	if use tools ; then
