@@ -1,5 +1,5 @@
 --- /dev/null
-+++ tests/test_public_key_auth_succeeds_with_correct_ed25519_key.c
++++ b/tests/test_public_key_auth_succeeds_with_correct_ed25519_key.c
 @@ -0,0 +1,37 @@
 +#include "session_fixture.h"
 +
@@ -39,7 +39,7 @@
 +    return 0;
 +}
 --- /dev/null
-+++ tests/test_public_key_auth_succeeds_with_correct_encrypted_ed25519_key.c
++++ b/tests/test_public_key_auth_succeeds_with_correct_encrypted_ed25519_key.c
 @@ -0,0 +1,38 @@
 +#include "session_fixture.h"
 +
@@ -80,7 +80,7 @@
 +    return 0;
 +}
 --- /dev/null
-+++ tests/test_public_key_auth_succeeds_with_correct_ed25519_key_from_mem.c
++++ b/tests/test_public_key_auth_succeeds_with_correct_ed25519_key_from_mem.c
 @@ -0,0 +1,97 @@
 +#include "session_fixture.h"
 +
