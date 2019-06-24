@@ -44,6 +44,7 @@ PATCHES=(
 	"${FILESDIR}"/2.02-xfs-sparse-inodes.patch
 	"${FILESDIR}"/2.02-X86_64_PLT32.patch
 	"${FILESDIR}"/2.02-gcc8.patch
+	"${FILESDIR}"/2.02-efi-tsc-pmtimer.patch
 )
 
 DEJAVU=dejavu-sans-ttf-2.37
