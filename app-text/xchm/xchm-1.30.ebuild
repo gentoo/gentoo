@@ -3,15 +3,15 @@
 
 EAPI=6
 WX_GTK_VER="3.0-gtk3"
-inherit autotools git-r3 wxwidgets xdg-utils
+inherit wxwidgets xdg-utils
 
 DESCRIPTION="Utility for viewing Compiled HTML Help (CHM) files"
 HOMEPAGE="https://github.com/rzvncj/xCHM/"
-EGIT_REPO_URI="${HOMEPAGE}"
+SRC_URI="${HOMEPAGE}releases/download/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="nls"
 
 RDEPEND="
@@ -27,7 +27,6 @@ DEPEND="
 src_prepare() {
 	setup-wxwidgets
 	default
-	eautoreconf
 }
 
 src_configure() {
