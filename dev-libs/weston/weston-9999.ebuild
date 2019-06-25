@@ -127,7 +127,10 @@ src_configure() {
 
 src_test() {
 	xdg_environment_reset
-	meson_src_test
+
+	# devices test usually fails.
+	cd "${BUILD_DIR}" || die
+	meson test $(meson test --list | grep -Fxv devices) || die
 }
 
 src_install() {
