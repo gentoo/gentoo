@@ -30,6 +30,11 @@ DEPEND="${RDEPEND}
 		dev-python/pytest-cov[${PYTHON_USEDEP}]
 	)"
 
+python_prepare_all() {
+	sed -e 's|'\''pytest-runner'\'',\?||' -i setup.py || die
+	distutils-r1_python_prepare_all
+}
+
 python_test() {
-	esetup.py test || die "tests failed with ${EPYTHON}"
+	py.test -v || die "tests failed with ${EPYTHON}"
 }
