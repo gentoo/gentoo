@@ -38,6 +38,7 @@ RDEPEND="sys-libs/ncurses:0=
 	acl? ( virtual/acl )
 	alsa? ( media-libs/alsa-lib )
 	dbus? ( sys-apps/dbus )
+	games? ( acct-group/gamestat )
 	gmp? ( dev-libs/gmp:0= )
 	gpm? ( sys-libs/gpm )
 	!inotify? ( gfile? ( >=dev-libs/glib-2.28.6 ) )
