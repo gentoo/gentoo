@@ -107,7 +107,7 @@ src_install() {
 	fperms -R 700 /var/log/puppetlabs/puppetserver
 	insinto /opt/puppetlabs/server/data
 	doins ext/build-scripts/jruby-gem-list.txt
-	doins ext/build-scripts/mri-gem-list.txt
+	doins ext/build-scripts/mri-gem-list-no-dependencies.txt
 	insopts -m 0644
 	insinto /usr/lib/tmpfiles.d
 	newins ext/puppetserver.tmpfiles.conf puppetserver.conf
