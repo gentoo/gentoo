@@ -23,6 +23,7 @@ RDEPEND="sys-libs/ncurses:0=
 	net-libs/liblockfile
 	kerberos? ( virtual/krb5 )
 	alsa? ( media-libs/alsa-lib )
+	games? ( acct-group/gamestat )
 	gpm? ( sys-libs/gpm )
 	dbus? ( sys-apps/dbus )
 	X? (
