@@ -551,7 +551,7 @@ app-editors/e3 2.8: Very tiny editor in ASM with emacs, pico, wordstar, and vi k
 app-editors/editra 0.7.20-r2: Multi-platform text editor supporting over 50 programming languages
 app-editors/ee 1.5.2: An easy to use text editor. A subset of aee
 app-editors/elvis 2.2.0-r6: A vi/ex clone
-app-editors/emacs 18.59-r12 23.4-r18 24.5-r5 24.5-r7 25.3-r6 26.1-r3: The extensible, customizable, self-documenting real-time display editor
+app-editors/emacs 18.59-r12 23.4-r18 24.5-r5 24.5-r7 25.3-r6 26.1-r3 26.2: The extensible, customizable, self-documenting real-time display editor
 app-editors/emact 2.58.0: EmACT, a fork of Conroy's MicroEmacs
 app-editors/ersatz-emacs 20060515: A very minimal imitation of the famous GNU Emacs editor
 app-editors/fe 2.0: A small and easy to use folding editor
@@ -633,7 +633,7 @@ app-emacs/dired-sort-menu 1.26: Sort entries in Dired mode
 app-emacs/doctest-mode 0.4: An Emacs major mode for editing Python source
 app-emacs/doxymacs 1.8.0-r3: Doxygen editing minor mode
 app-emacs/ebuild-mode 1.46: Emacs modes for editing ebuilds and other Gentoo specific files
-app-emacs/ecb 2.41_pre20140215-r1: Source code browser for Emacs
+app-emacs/ecb 2.41_pre20140215-r1 2.50_pre20170728: Source code browser for Emacs
 app-emacs/elib 1.0-r1: The Emacs Lisp Library
 app-emacs/elscreen 1.4.6-r1: Frame configuration management for GNU Emacs modelled after GNU Screen
 app-emacs/emacs-common-gentoo 1.6-r1: Common files needed by all GNU Emacs versions
@@ -642,7 +642,7 @@ app-emacs/emacs-jabber 0.8.92: A Jabber client for Emacs
 app-emacs/emacs-wget 0.5.0-r1: Wget interface for Emacs
 app-emacs/erobot 2.1.0-r1: Battle-bots for Emacs!
 app-emacs/eselect-mode 1.4.14: Emacs major mode for editing eselect files
-app-emacs/ess 17.11: Emacs Speaks Statistics
+app-emacs/ess 17.11 18.10.2-r1: Emacs Speaks Statistics
 app-emacs/evil 1.0.8 1.2.13: Extensible vi layer for Emacs
 app-emacs/f 0.20.0: Modern API for working with files and directories in Emacs
 app-emacs/fff 20050517: Fast file finder for Emacs
@@ -719,7 +719,7 @@ app-emacs/thumbs 2.0-r1: Emacs thumbnail previewer for image files
 app-emacs/tuareg-mode 2.0.7: An Objective Caml/Camllight mode for Emacs
 app-emacs/typing 1.1.4: The Typing of Emacs -- an Elisp parody of The Typing of the Dead for Dreamcast
 app-emacs/uboat 1.2: Generate u-boat-death messages, patterned after Iron Coffins
-app-emacs/undo-tree 0.6.4: Undo trees and visualization
+app-emacs/undo-tree 0.6.4 0.6.6: Undo trees and visualization
 app-emacs/uptimes 2.3-r2: Track and display emacs session uptimes
 app-emacs/vhdl-mode 3.35.1: VHDL-mode for Emacs
 app-emacs/visual-basic-mode 1.4.12: A mode for editing Visual Basic programs

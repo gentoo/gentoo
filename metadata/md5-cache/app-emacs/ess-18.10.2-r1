@@ -3,11 +3,11 @@ DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
 DESCRIPTION=Emacs Speaks Statistics
 EAPI=7
 HOMEPAGE=http://ess.r-project.org/
-KEYWORDS=~amd64 ~arm ~ppc ~x86 ~amd64-linux ~x86-linux ~x86-macos
+KEYWORDS=amd64 ~arm ~ppc ~x86 ~amd64-linux ~x86-linux ~x86-macos
 LICENSE=GPL-2+ GPL-3+ Texinfo-manual
 RDEPEND=>=virtual/emacs-23
 RESTRICT=test
 SLOT=0
 SRC_URI=http://ess.r-project.org/downloads/ess/ess-18.10.2.tgz
 _eclasses_=elisp	efe1c459331d853614b12c63ab169a32	elisp-common	23f47b2e1de7abf387105eddd1318738	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190
-_md5_=28f340b82982ee6c164ad762c4da7136
+_md5_=be841a48c941811f367b21ad221e4791
