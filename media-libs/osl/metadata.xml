@@ -26,6 +26,7 @@
 			SIMD Optimization
 		</flag>
 		<flag name="partio">Use <pkg>media-libs/partio</pkg></flag>
+		<flag name="qt5">Build the osltoy binary</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">imageworks/OpenShadingLanguage</remote-id>
