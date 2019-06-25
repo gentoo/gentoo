@@ -78,7 +78,7 @@ src_prepare() {
 
 	sed -i -e '/FLAG/s:-O2::' configure{.in,} || die #480212
 
-	if use udev && ! use device-mapper-only; then
+	if use udev && use !device-mapper-only; then
 		sed -i -e '/use_lvmetad =/s:0:1:' conf/example.conf.in || die #514196
 		elog "Notice that \"use_lvmetad\" setting is enabled with USE=\"udev\" in"
 		elog "/etc/lvm/lvm.conf, which will require restart of udev, lvm, and lvmetad"
@@ -211,10 +211,12 @@ src_install() {
 
 	if use static-libs; then
 		dolib.a libdm/ioctl/libdevmapper.a
-		dolib.a libdaemon/client/libdaemonclient.a #462908
 		#gen_usr_ldscript libdevmapper.so
-		dolib.a daemons/dmeventd/libdevmapper-event.a
-		#gen_usr_ldscript libdevmapper-event.so
+		if use !device-mapper-only ; then
+			dolib.a libdaemon/client/libdaemonclient.a #462908
+			dolib.a daemons/dmeventd/libdevmapper-event.a
+			#gen_usr_ldscript libdevmapper-event.so
+		fi
 	else
 		rm -f "${ED}"usr/$(get_libdir)/{libdevmapper-event,liblvm2cmd,liblvm2app,libdevmapper}.a
 	fi
@@ -232,11 +234,13 @@ src_install() {
 }
 
 pkg_postinst() {
-	ewarn "Make sure the \"lvm\" init script is in the runlevels:"
-	ewarn "# rc-update add lvm boot"
-	ewarn
-	ewarn "Make sure to enable lvmetad in /etc/lvm/lvm.conf if you want"
-	ewarn "to enable lvm autoactivation and metadata caching."
+	if use !device-mapper-only ; then
+		ewarn "Make sure the \"lvm\" init script is in the runlevels:"
+		ewarn "# rc-update add lvm boot"
+		ewarn
+		ewarn "Make sure to enable lvmetad in /etc/lvm/lvm.conf if you want"
+		ewarn "to enable lvm autoactivation and metadata caching."
+	fi
 }
 
 src_test() {
