@@ -1,4 +1,5 @@
 acct-group/ftp 0: File Transfer Protocol server user
+acct-group/gamestat 0: Group for shared high-score and game state files
 acct-group/mail 0: Mail program group
 acct-user/ftp 0: File Transfer Protocol server user
 acct-user/mail 0: Mail program user
