@@ -1,22 +1,22 @@
-.TH "ESELECT" "5" "June 2006" "Gentoo Linux" "eselect"
+.TH "ESELECT" "5" "June 2019" "Gentoo Linux" "eselect"
 .SH "NAME"
 blas.eselect \- The BLAS management module for Gentoo's eselect
 .SH "SYNOPSIS"
 \fBeselect blas\fR [\fBhelp\fR|\fBusage\fR]
 .br 
-\fBeselect blas\fR \fBlist\fR [\fIoptions\fR]
+\fBeselect blas\fR \fBlist\fR [\fIlibdir\fR]
 .br 
 \fBeselect blas\fR \fBadd\fR
 .br 
-\fBeselect blas\fR \fBset\fR \fIimplementation\fR [\fIoptions\fR]
+\fBeselect blas\fR \fBset\fR  [\fIlibdir\fR] \fIimplementation\fR
 .br 
-\fBeselect blas\fR \fBshow\fR [\fIoptions\fR]
+\fBeselect blas\fR \fBshow\fR [\fIlibdir\fR]
 
 .SH "DESCRIPTION"
 \fBeselect\fR is Gentoo's configuration and management tool. It features
 modules that care for the individual administrative tasks.
 .SH "ACTION: LIST"
-\fBeselect blas list\fR [\fIoptions\fR]
+\fBeselect blas list\fR [\fIlibdir\fR]
 .br 
 Displays an ordered list of installed BLAS implementations. It distinguishes between versions with different
 Application Binary Interfaces (e.g. x86/AMD64). Furthermore, it also distinguishes
@@ -31,7 +31,7 @@ Installed BLAS for libdir \fBlib\fR
   [1]   atlas *
   [2]   reference
 
-Possible \fIoptions\fR to the \fBlist\fR action are restrictions to
+Possible \fIlibdir\fR to the \fBlist\fR action are restrictions to
 handle only certain ABI\-specific library directories. For example,
  
 \fBeselect blas list lib64\fR
@@ -39,7 +39,7 @@ handle only certain ABI\-specific library directories. For example,
 lists only BLAS implementations found in \fB/usr/lib64\fR.
 
 .SH "ACTION: SHOW"
-\fBeselect blas show\fR [\fIoptions\fR]
+\fBeselect blas show\fR [\fIlibdir\fR]
 .br 
 Shows your system's currently active BLAS implementations.
 
@@ -49,17 +49,31 @@ lib: atlas
 .br
 lib64: reference
 
-The same \fIoptions\fR that apply to the \fBlist\fR action can be used
+The same \fIlibdir\fR that apply to the \fBlist\fR action can be used
 with the \fBshow\fR action to restrict it to given ABIs.
 .SH "ACTION: SET"
-\fBeselect blas set\fR \fIimplementation\fR [\fIoptions\fR]
+\fBeselect blas set\fR [\fIlibdir\fR] \fIimplementation\fR
 .br 
 Sets your system's currently active BLAS implementations to \fIimplementation\fR. 
-The same \fIoptions\fR that apply to the \fBlist\fR action can be used
+The same \fIlibdir\fR that apply to the \fBlist\fR action can be used
 with the \fBset\fR action to restrict it to given ABIs.
 
 phi / # eselect blas set atlas
+
+.SH "ACTION: VALIDATE"
+\fBeselect blas validate\fR
+.br
+Validates BLAS/CBLAS candidates under the /etc/env.d directory and automatically
+remove the invalid ones.
+
+.SH "ACTION: ADD"
+\fBeselect blas add\fR \fIlibdir\fR \fIdir\fR \fIimpl\fR
+.br
+Add a new BLAS/CBLAS implementation.
+
 .SH "AUTHOR"
 Danny van Dyk <kugelfang@gentoo.org>
 .br
 Donnie Berkholz <spyderous@gentoo.org>
+.br
+Mo Zhou <lumin@debian.org>
