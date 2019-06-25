@@ -146,7 +146,6 @@ PATCHES=(
 	"${FILESDIR}/chromium-fix-char_traits.patch"
 	"${FILESDIR}/chromium-angle-inline.patch"
 	"${FILESDIR}/chromium-76-quiche.patch"
-	"${FILESDIR}/chromium-76-lss.patch"
 	"${FILESDIR}/chromium-76-gcc-vulkan.patch"
 	"${FILESDIR}/chromium-76-gcc-private.patch"
 	"${FILESDIR}/chromium-76-gcc-noexcept.patch"
@@ -262,6 +261,7 @@ src_prepare() {
 		third_party/cld_3
 		third_party/closure_compiler
 		third_party/crashpad
+		third_party/crashpad/crashpad/third_party/lss
 		third_party/crashpad/crashpad/third_party/zlib
 		third_party/crc32c
 		third_party/cros_system_api
