@@ -144,10 +144,10 @@ PATCHES=(
 	"${FILESDIR}/chromium-compiler-r9.patch"
 	"${FILESDIR}/chromium-widevine-r4.patch"
 	"${FILESDIR}/chromium-fix-char_traits.patch"
+	"${FILESDIR}/chromium-angle-inline.patch"
 	"${FILESDIR}/chromium-75-fix-gn-gen.patch"
 	"${FILESDIR}/chromium-75-gcc-angle-fix.patch"
 	"${FILESDIR}/chromium-75-unique_ptr.patch"
-	"${FILESDIR}/chromium-75-lss.patch"
 	"${FILESDIR}/chromium-75-noexcept.patch"
 	"${FILESDIR}/chromium-75-llvm8.patch"
 	"${FILESDIR}/chromium-75-pure-virtual.patch"
@@ -251,6 +251,7 @@ src_prepare() {
 		third_party/cld_3
 		third_party/closure_compiler
 		third_party/crashpad
+		third_party/crashpad/crashpad/third_party/lss
 		third_party/crashpad/crashpad/third_party/zlib
 		third_party/crc32c
 		third_party/cros_system_api
