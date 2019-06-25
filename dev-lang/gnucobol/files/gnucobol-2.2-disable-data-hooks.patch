@@ -1,0 +1,23 @@
+diff --git a/libcob/Makefile.in b/libcob/Makefile.in
+index afc1d22..925a70d 100644
+--- a/libcob/Makefile.in
++++ b/libcob/Makefile.in
+@@ -851,18 +851,6 @@ uninstall-am: uninstall-libLTLIBRARIES uninstall-pkgincludeHEADERS
+ #libcob.3: $(top_srcdir)/bin/cobcrun.c $(top_srcdir)/configure.ac | $(COBCRUN)
+ #	$(HELP2MAN) --output=$@ --info-page=$(PACKAGE) $(COBCRUN) -specialflag
+ 
+-install-data-hook:
+-	rm -f $(includedir)/libcob/byteswap.h
+-	rm -f $(includedir)/libcob/call.h
+-	rm -f $(includedir)/libcob/fileio.h
+-	rm -f $(includedir)/libcob/termio.h
+-	rm -f $(includedir)/libcob/screenio.h
+-	rm -f $(includedir)/libcob/move.h
+-	rm -f $(includedir)/libcob/numeric.h
+-	rm -f $(includedir)/libcob/strings.h
+-	rm -f $(includedir)/libcob/intrinsic.h
+-	rm -f $(includedir)/libcob/codegen.h
+-	rm -f $(includedir)/libcob/system.def
+ 
+ # Tell versions [3.59,3.63) of GNU make to not export all variables.
+ # Otherwise a system limit (for SysV at least) may be exceeded.
