@@ -11,22 +11,22 @@ SRC_URI="http://www.netlib.org/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
-IUSE="lapacke doc"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+IUSE="lapacke doc eselect-ldso"
 # TODO: static-libs 64bit-index
 
 RDEPEND="
-	>=app-eselect/eselect-blas-0.2
-	>=app-eselect/eselect-lapack-0.2
+	eselect-ldso? ( >=app-eselect/eselect-blas-0.2
+	>=app-eselect/eselect-lapack-0.2 )
 	!app-eselect/eselect-cblas
 	!sci-libs/blas-reference
 	!sci-libs/cblas-reference
 	!sci-libs/lapack-reference
 	!sci-libs/lapacke-reference
-	doc? ( app-doc/blas-docs )
-	virtual/pkgconfig"
+	virtual/fortran
+	doc? ( app-doc/blas-docs )"
 DEPEND="${RDEPEND}
-	virtual/fortran"
+	virtual/pkgconfig"
 
 src_configure() {
 	local mycmakeargs=(
@@ -41,6 +41,7 @@ src_configure() {
 src_install () {
 	cmake-utils_src_install
 
+	use eselect-ldso || return
 	# Create private lib directory for eselect::blas (ld.so.conf)
 	dodir /usr/$(get_libdir)/blas/reference
 	dosym ../../libblas.so usr/$(get_libdir)/blas/reference/libblas.so
@@ -55,8 +56,9 @@ src_install () {
 }
 
 pkg_postinst () {
-	local me=reference libdir=$(get_libdir)
+	use eselect-ldso || return
 
+	local me=reference libdir=$(get_libdir)
 	# check eselect-blas
 	eselect blas add ${libdir} "${EROOT}"/usr/${libdir}/blas/${me} ${me}
 	local current_blas=$(eselect blas show ${libdir} | cut -d' ' -f2)
@@ -83,6 +85,8 @@ pkg_postinst () {
 }
 
 pkg_postrm () {
+	use eselect-ldso || return
+
 	eselect blas validate
 	eselect lapack validate
 }
