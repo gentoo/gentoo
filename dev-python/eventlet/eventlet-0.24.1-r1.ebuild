@@ -32,7 +32,7 @@ python_prepare_all() {
 	sed -i '/enum-compat/d' setup.py || die
 
 	if use doc; then
-		local PYTHON_DOC_ATOM=$(best_version --host-root dev-python/python-docs:2.7)
+		local PYTHON_DOC_ATOM=$(best_version -b dev-python/python-docs:2.7)
 		local PYTHON_DOC_VERSION="${PYTHON_DOC_ATOM#dev-python/python-docs-}"
 		local PYTHON_DOC="/usr/share/doc/python-docs-${PYTHON_DOC_VERSION}/html"
 		local PYTHON_DOC_INVENTORY="${PYTHON_DOC}/objects.inv"
