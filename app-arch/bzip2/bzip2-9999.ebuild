@@ -17,10 +17,11 @@ fi
 LICENSE="BZIP2"
 SLOT="0/1" # subslot = SONAME
 
-IUSE=""
+IUSE="static-libs"
 
 multilib_src_configure() {
 	local emesonargs=(
+		-Ddefault_library=$(usex static-libs both shared)
 		# Requires whole tex stack
 		-Ddocs="disabled"
 	)
