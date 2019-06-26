@@ -40,7 +40,7 @@ COMMON_DEPEND="
 	ieee1394? ( sys-libs/libraw1394 )
 	opengl? (
 		$(add_qt_dep qtgui 'gles2=')
-		media-libs/mesa[gles2?]
+		media-libs/mesa[gles2?,X(+)]
 		!gles2? ( media-libs/glu )
 	)
 	pci? ( sys-apps/pciutils )

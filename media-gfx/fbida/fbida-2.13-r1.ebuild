@@ -25,7 +25,7 @@ CDEPEND="
 	>=media-libs/freetype-2.0
 	media-libs/libepoxy
 	media-libs/libexif
-	media-libs/mesa
+	media-libs/mesa[X(+)]
 	virtual/jpeg:*
 	virtual/ttf-fonts
 	x11-libs/cairo[opengl]
