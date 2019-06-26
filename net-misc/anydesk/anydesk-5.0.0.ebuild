@@ -21,7 +21,7 @@ RDEPEND="
 	media-libs/fontconfig
 	media-libs/freetype
 	media-libs/glu
-	media-libs/mesa
+	media-libs/mesa[X(+)]
 	sys-auth/polkit
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf

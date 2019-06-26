@@ -20,7 +20,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 DEPEND="${PYTHON_DEPS}
 	app-arch/brotli:=
 	media-libs/libpng:0=
-	media-libs/mesa[egl?,${MULTILIB_USEDEP}]
+	media-libs/mesa[egl?,X(+),${MULTILIB_USEDEP}]
 	sys-libs/zlib[${MULTILIB_USEDEP}]
 	sys-process/procps:=
 	x11-libs/libX11

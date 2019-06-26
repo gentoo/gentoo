@@ -31,7 +31,7 @@ RDEPEND="
 	dev-qt/qtwidgets:5
 	dev-qt/qtx11extras:5
 	media-libs/alsa-lib:0=
-	media-libs/mesa[${MULTILIB_USEDEP}]
+	media-libs/mesa[${MULTILIB_USEDEP},X(+)]
 	|| (
 		media-video/ffmpeg[vorbis?,vpx?,x264?,mp3?,theora?]
 		media-video/libav[vorbis?,vpx?,x264?,mp3?,theora?]

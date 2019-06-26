@@ -29,9 +29,9 @@ IUSE=""
 
 RDEPEND="
 	|| (
-		(	media-libs/mesa
+		(	media-libs/mesa[X(+)]
 			x11-libs/libGLw )
-		media-libs/mesa[motif] )
+		media-libs/mesa[motif,X(+)] )
 	media-libs/libpng:0=
 	media-libs/tiff:0
 	sys-libs/zlib

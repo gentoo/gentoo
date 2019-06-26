@@ -25,7 +25,7 @@ SLOT="0"
 # Steam's Proton.
 
 RDEPEND="
-	media-libs/mesa[d3d9,dri3,${MULTILIB_USEDEP}]
+	media-libs/mesa[d3d9,dri3,X(+),${MULTILIB_USEDEP}]
 	x11-libs/libX11[${MULTILIB_USEDEP}]
 	x11-libs/libXext[${MULTILIB_USEDEP}]
 	x11-libs/libxcb[${MULTILIB_USEDEP}]

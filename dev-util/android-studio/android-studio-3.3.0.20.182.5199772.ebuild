@@ -47,7 +47,7 @@ RDEPEND=">=virtual/jdk-1.7
 	>=media-libs/fontconfig-2.10.92
 	>=media-libs/freetype-2.5.5
 	>=media-libs/libpng-1.2.51
-	>=media-libs/mesa-10.2.8
+	>=media-libs/mesa-10.2.8[X(+)]
 	|| ( gnome-extra/zenity kde-apps/kdialog x11-apps/xmessage x11-libs/libnotify )
 	>=sys-libs/ncurses-5.9-r3:5/5[tinfo]
 	>=sys-libs/zlib-1.2.8-r1

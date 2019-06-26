@@ -54,7 +54,7 @@ RDEPEND="
 	x11-misc/xkeyboard-config
 
 	gnome-extra/zenity
-	media-libs/mesa[X(+),egl,gles2?]
+	media-libs/mesa[X(+),egl,gles2?,X(+)]
 
 	input_devices_wacom? ( >=dev-libs/libwacom-0.13 )
 	introspection? ( >=dev-libs/gobject-introspection-1.42:= )

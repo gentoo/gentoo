@@ -46,7 +46,7 @@ RDEPEND="
 	imagemagick? ( virtual/imagemagick-tools )
 "
 DEPEND="${RDEPEND}
-	media-libs/mesa
+	media-libs/mesa[X(+)]
 	sys-libs/ncurses
 	virtual/pkgconfig
 "

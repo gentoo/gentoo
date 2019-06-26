@@ -18,7 +18,7 @@ IUSE="flash"
 
 RDEPEND="
 	media-libs/glew:0=
-	media-libs/mesa
+	media-libs/mesa[X(+)]
 	x11-libs/wxGTK:${WX_GTK_VER}[X,opengl]
 	flash? ( media-libs/ming )"
 DEPEND="${RDEPEND}
