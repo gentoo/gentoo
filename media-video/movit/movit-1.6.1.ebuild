@@ -19,7 +19,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc64 ~x86"
 IUSE=""
 
-RDEPEND="media-libs/mesa
+RDEPEND="media-libs/mesa[X(+)]
 	>=dev-cpp/eigen-3.2.0:3
 	media-libs/libepoxy
 	>=sci-libs/fftw-3

@@ -19,6 +19,7 @@ COMMON_DEPEND="
 	>=virtual/udev-172
 	x11-libs/libxkbcommon
 	dev-libs/libtsm
+	media-libs/mesa[X(+)]
 	drm? ( x11-libs/libdrm
 		>=media-libs/mesa-8.0.3[egl,gbm] )
 	gles2? ( >=media-libs/mesa-8.0.3[gles2] )

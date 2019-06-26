@@ -22,7 +22,7 @@ RDEPEND="
 	x11-libs/libXaw
 	x11-libs/motif
 	|| (
-		( media-libs/mesa x11-libs/libGLw )
+		( media-libs/mesa[X(+)] x11-libs/libGLw )
 		media-libs/opengl-apple
 		)"
 DEPEND="

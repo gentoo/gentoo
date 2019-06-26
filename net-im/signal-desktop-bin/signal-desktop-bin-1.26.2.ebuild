@@ -19,7 +19,7 @@ IUSE=""
 
 RDEPEND="
 	dev-libs/nss
-	media-libs/mesa
+	media-libs/mesa[X(+)]
 	net-print/cups
 	x11-libs/gtk+:3[X]
 	x11-libs/libXScrnSaver

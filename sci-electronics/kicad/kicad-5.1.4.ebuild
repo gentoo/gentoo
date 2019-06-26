@@ -33,7 +33,7 @@ COMMON_DEPEND="x11-libs/wxGTK:${WX_GTK_VER}[X,opengl]
 	media-libs/glew:0=
 	media-libs/glm
 	media-libs/freeglut
-	media-libs/mesa
+	media-libs/mesa[X(+)]
 	ngspice? (
 		sci-electronics/ngspice[shared]
 	)
