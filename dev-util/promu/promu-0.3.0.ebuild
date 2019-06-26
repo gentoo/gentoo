@@ -24,7 +24,7 @@ src_prepare() {
 
 src_compile() {
 	pushd src/${EGO_PN} || die
-	GO111MODULE=on GOCACHE="${T}/go-cache" GOPATH="${S}" go install -v github.com/prometheus/promu || die
+	GOCACHE="${T}/go-cache" GOPATH="${S}" go install -v github.com/prometheus/promu || die
 	popd || die
 }
 

@@ -56,5 +56,6 @@ multilib_src_configure() {
 		$(use_enable neon arm-neon) \
 		$(use_enable static-libs static) \
 		--disable-fat \
-		--disable-openssl
+		--disable-openssl \
+		--libdir="${EPREFIX}"/usr/$(get_libdir)
 }
