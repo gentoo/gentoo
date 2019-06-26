@@ -20,7 +20,7 @@ IUSE="debug openmp video_cards_nvidia"
 RDEPEND="media-fonts/dejavu
 	>=media-libs/ftgl-2.1.3_rc5
 	media-libs/freetype:2
-	media-libs/mesa
+	media-libs/mesa[X(+)]
 	media-libs/glew:=
 	sys-libs/zlib
 	video_cards_nvidia? ( media-gfx/nvidia-cg-toolkit )"

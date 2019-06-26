@@ -19,7 +19,7 @@ IUSE="static-libs"
 RDEPEND="
 	sci-libs/gerris
 	media-libs/ftgl
-	media-libs/mesa[osmesa]
+	media-libs/mesa[osmesa,X(+)]
 	x11-libs/gtk+:2
 	>=x11-libs/gtkglext-1.0.6
 	x11-libs/startup-notification

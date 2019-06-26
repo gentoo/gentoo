@@ -44,7 +44,7 @@ COMMON_DEPEND=">=x11-libs/wxGTK-3.0.2:${WX_GTK_VER}[X,opengl]
 	)
 	media-libs/glew:0=
 	media-libs/freeglut
-	media-libs/mesa
+	media-libs/mesa[X(+)]
 	sys-libs/zlib
 	x11-libs/cairo"
 DEPEND="${COMMON_DEPEND}

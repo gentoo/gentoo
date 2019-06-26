@@ -54,7 +54,7 @@ RDEPEND="
 	mysql? ( virtual/mysql )
 	opengl? (
 		media-libs/ftgl
-		media-libs/mesa
+		media-libs/mesa[X(+)]
 	)
 	oracle? (
 		dev-db/oracle-instantclient:=

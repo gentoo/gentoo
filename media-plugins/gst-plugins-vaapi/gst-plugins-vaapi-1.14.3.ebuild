@@ -44,7 +44,7 @@ REQUIRED_USE="
 GST_REQ="${PV}"
 GL_DEPS="
 	>=media-libs/gst-plugins-base-${GST_REQ}:${SLOT}[egl?,gles2?,opengl?,wayland?,X?]
-	media-libs/mesa[gles2?,egl?,${MULTILIB_USEDEP}]
+	media-libs/mesa[gles2?,egl?,X(+),${MULTILIB_USEDEP}]
 "
 RDEPEND="
 	>=dev-libs/glib-2.40:2[${MULTILIB_USEDEP}]

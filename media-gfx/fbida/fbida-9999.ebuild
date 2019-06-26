@@ -24,7 +24,7 @@ CDEPEND="
 	media-libs/libexif
 	media-libs/libpng:*
 	media-libs/libwebp
-	media-libs/mesa
+	media-libs/mesa[X(+)]
 	media-libs/tiff:*
 	net-misc/curl
 	virtual/jpeg:*

@@ -28,7 +28,7 @@ RDEPEND="
 	media-libs/alsa-lib
 	media-libs/harfbuzz
 	media-libs/fontconfig
-	media-libs/mesa
+	media-libs/mesa[X(+)]
 	net-misc/curl[ssl,curl_ssl_openssl]
 	net-print/cups[ssl]
 	x11-libs/gtk+:2
