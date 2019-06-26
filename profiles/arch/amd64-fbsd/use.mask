@@ -110,3 +110,7 @@ opencl
 # Hans de Graaff <graaff@gentoo.org> (27 Dec 2014)
 # dev-libs/jemalloc is not keyworded
 jemalloc
+
+# Benda Xu <heroxbd@gentoo.org> (26 Jun 2019)
+# Not tested
+eselect-ldso
