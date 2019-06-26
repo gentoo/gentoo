@@ -720,7 +720,7 @@ app-emacs/thumbs 2.0-r1: Emacs thumbnail previewer for image files
 app-emacs/tuareg-mode 2.0.7: An Objective Caml/Camllight mode for Emacs
 app-emacs/typing 1.1.4: The Typing of Emacs -- an Elisp parody of The Typing of the Dead for Dreamcast
 app-emacs/uboat 1.2: Generate u-boat-death messages, patterned after Iron Coffins
-app-emacs/undo-tree 0.6.4 0.6.6: Undo trees and visualization
+app-emacs/undo-tree 0.6.6: Undo trees and visualization
 app-emacs/uptimes 2.3-r2: Track and display emacs session uptimes
 app-emacs/vhdl-mode 3.35.1: VHDL-mode for Emacs
 app-emacs/visual-basic-mode 1.4.12: A mode for editing Visual Basic programs
@@ -9126,7 +9126,7 @@ net-misc/x2goclient 4.1.2.1: The X2Go Qt client
 net-misc/x2goserver 4.1.0.2: The X2Go server
 net-misc/yandex-disk 0.1.5.978_p1: CLI to access Yandex Disk file storage service
 net-misc/you-get 0.4.536: utility to download media contents from the web
-net-misc/youtube-dl 2019.06.08: Download videos from YouTube.com (and more sites...)
+net-misc/youtube-dl 2019.06.21: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.3.3: A command line utility for viewing youtube-videos in Mplayer
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
 net-misc/zsync 0.6.2-r1: Partial/differential file download client over HTTP which uses the rsync algorithm
