@@ -38,7 +38,7 @@ done
 IUSE="${IUSE_VIDEO_CARDS}
 	+classic d3d9 debug +dri3 +egl +gallium +gbm gles1 +gles2 +libglvnd +llvm
 	lm_sensors opencl osmesa pax_kernel pic selinux test unwind vaapi valgrind
-	vdpau vulkan wayland xa xvmc"
+	vdpau vulkan wayland X xa xvmc"
 
 REQUIRED_USE="
 	d3d9?   ( dri3 || ( video_cards_r300 video_cards_r600 video_cards_radeonsi video_cards_nouveau video_cards_vmware ) )
@@ -65,6 +65,8 @@ REQUIRED_USE="
 	video_cards_virgl? ( gallium )
 	video_cards_vivante? ( gallium gbm )
 	video_cards_vmware? ( gallium )
+	xa? ( X )
+	xvmc? ( X )
 "
 
 LIBDRM_DEPSTRING=">=x11-libs/libdrm-2.4.97"
@@ -72,13 +74,6 @@ RDEPEND="
 	!app-eselect/eselect-mesa
 	>=dev-libs/expat-2.1.0-r3:=[${MULTILIB_USEDEP}]
 	>=sys-libs/zlib-1.2.8[${MULTILIB_USEDEP}]
-	>=x11-libs/libX11-1.6.2:=[${MULTILIB_USEDEP}]
-	>=x11-libs/libxshmfence-1.1:=[${MULTILIB_USEDEP}]
-	>=x11-libs/libXdamage-1.1.4-r1:=[${MULTILIB_USEDEP}]
-	>=x11-libs/libXext-1.3.2:=[${MULTILIB_USEDEP}]
-	>=x11-libs/libXxf86vm-1.1.3:=[${MULTILIB_USEDEP}]
-	>=x11-libs/libxcb-1.13:=[${MULTILIB_USEDEP}]
-	x11-libs/libXfixes:=[${MULTILIB_USEDEP}]
 	libglvnd? (
 		media-libs/libglvnd[${MULTILIB_USEDEP}]
 		!app-eselect/eselect-opengl
@@ -122,6 +117,15 @@ RDEPEND="
 		!video_cards_i965? ( ${LIBDRM_DEPSTRING}[video_cards_intel] )
 	)
 	video_cards_i915? ( ${LIBDRM_DEPSTRING}[video_cards_intel] )
+	X? (
+		>=x11-libs/libX11-1.6.2:=[${MULTILIB_USEDEP}]
+		>=x11-libs/libxshmfence-1.1:=[${MULTILIB_USEDEP}]
+		>=x11-libs/libXdamage-1.1.4-r1:=[${MULTILIB_USEDEP}]
+		>=x11-libs/libXext-1.3.2:=[${MULTILIB_USEDEP}]
+		>=x11-libs/libXxf86vm-1.1.3:=[${MULTILIB_USEDEP}]
+		>=x11-libs/libxcb-1.13:=[${MULTILIB_USEDEP}]
+		x11-libs/libXfixes:=[${MULTILIB_USEDEP}]
+	)
 "
 for card in ${RADEON_CARDS}; do
 	RDEPEND="${RDEPEND}
@@ -215,8 +219,10 @@ DEPEND="${RDEPEND}
 	sys-devel/gettext
 	virtual/pkgconfig
 	valgrind? ( dev-util/valgrind )
-	x11-base/xorg-proto
-	x11-libs/libXrandr[${MULTILIB_USEDEP}]
+	X? (
+		x11-base/xorg-proto
+		x11-libs/libXrandr[${MULTILIB_USEDEP}]
+	)
 	$(python_gen_any_dep ">=dev-python/mako-0.8.0[\${PYTHON_USEDEP}]")
 "
 
@@ -344,7 +350,7 @@ multilib_src_configure() {
 		fi
 	fi
 
-	emesonargs+=( -Dplatforms=x11,surfaceless$(use wayland && echo ",wayland")$(use gbm && echo ",drm") )
+	emesonargs+=( -Dplatforms=surfaceless$(use X && echo ",x11")$(use wayland && echo ",wayland")$(use gbm && echo ",drm") )
 
 	if use gallium; then
 		emesonargs+=(
@@ -458,7 +464,7 @@ multilib_src_configure() {
 
 	emesonargs+=(
 		$(meson_use test build-tests)
-		-Dglx=dri
+		-Dglx=$(usex X dri disabled)
 		-Dshared-glapi=true
 		$(meson_use dri3)
 		$(meson_use egl)
