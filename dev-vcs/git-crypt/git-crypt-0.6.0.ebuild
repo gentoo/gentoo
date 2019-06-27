@@ -15,6 +15,6 @@ RDEPEND="dev-vcs/git"
 DEPEND="${RDEPEND}"
 
 src_install() {
-	mkdir -p "${D}"/usr/bin
-	emake PREFIX="${D}"/usr install
+	mkdir -p "${D}/${EPREFIX}"/usr/bin
+	emake PREFIX="${D}/${EPREFIX}"/usr install
 }
