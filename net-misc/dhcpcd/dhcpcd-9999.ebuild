@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit systemd toolchain-funcs
 
@@ -28,22 +28,18 @@ DEPEND="${COMMON_DEPEND}"
 RDEPEND="${COMMON_DEPEND}"
 
 src_configure() {
-	local dev hooks=() rundir
-	use udev || dev="--without-dev --without-udev"
-	hooks=( --with-hook=ntp.conf )
-	use elibc_glibc && hooks+=( --with-hook=yp.conf )
-	use kernel_linux && rundir="--rundir=${EPREFIX}/run"
 	local myeconfargs=(
-		--prefix="${EPREFIX}"
-		--libexecdir="${EPREFIX}/lib/dhcpcd"
 		--dbdir="${EPREFIX}/var/lib/dhcpcd"
+		--libexecdir="${EPREFIX}/lib/dhcpcd"
 		--localstatedir="${EPREFIX}/var"
-		${rundir}
+		--prefix="${EPREFIX}"
+		--with-hook=ntp.conf
 		$(use_enable embedded)
 		$(use_enable ipv6)
-		${dev}
+		$(usex elibc_glibc '--with-hook=yp.conf' '')
+		$(usex kernel_linux '--rundir=${EPREFIX}/run' '')
+		$(usex udev '' '--without-dev --without-udev')
 		CC="$(tc-getCC)"
-		${hooks[@]}
 	)
 	econf "${myeconfargs[@]}"
 }
@@ -56,10 +52,10 @@ src_install() {
 }
 
 pkg_postinst() {
-	local dbdir="${EROOT%/}"/var/lib/dhcpcd old_files=()
+	local dbdir="${EROOT}"/var/lib/dhcpcd old_files=()
 
-	local old_old_duid="${EROOT%/}"/var/lib/dhcpcd/dhcpcd.duid
-	local old_duid="${EROOT%/}"/etc/dhcpcd.duid
+	local old_old_duid="${EROOT}"/var/lib/dhcpcd/dhcpcd.duid
+	local old_duid="${EROOT}"/etc/dhcpcd.duid
 	local new_duid="${dbdir}"/duid
 	if [[ -e "${old_old_duid}" ]] ; then
 		# Upgrade the duid file to the new format if needed
@@ -81,7 +77,7 @@ pkg_postinst() {
 		fi
 		old_files+=( "${old_duid}" )
 	fi
-	local old_secret="${EROOT%/}"/etc/dhcpcd.secret
+	local old_secret="${EROOT}"/etc/dhcpcd.secret
 	local new_secret="${dbdir}"/secret
 	if [[ -e "${old_secret}" ]] ; then
 		if [[ ! -e "${new_secret}" ]] ; then
@@ -112,7 +108,7 @@ pkg_postinst() {
 	if [[ -n "${old_files[@]}" ]] ; then
 		elog
 		elog "dhcpcd-7 has copied dhcpcd.duid and dhcpcd.secret from"
-		elog "${EROOT%/}/etc to ${dbdir}"
+		elog "${EROOT}/etc to ${dbdir}"
 		elog "and copied leases in ${dbdir} to new files with the dhcpcd-"
 		elog "prefix dropped."
 		elog
