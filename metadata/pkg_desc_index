@@ -1948,7 +1948,6 @@ dev-db/xbase 3.1.2: xbase (i.e. dBase, FoxPro, etc.) compatible C++ class librar
 dev-db/xbsql 0.11-r2: An SQL Wrapper for the XBase library
 dev-dotnet/dbus-sharp 0.7.0-r2 0.8.1: D-Bus for .NET
 dev-dotnet/dbus-sharp-glib 0.5.0-r1 0.6.0: D-Bus for .NET: GLib integration module
-dev-dotnet/flickrnet-bin 2.2-r1: A .Net Library for accessing the Flickr API - Binary version
 dev-dotnet/gio-sharp 0.3-r1: GIO API C# binding
 dev-dotnet/gkeyfile-sharp 0.1-r1: C# binding for gkeyfile
 dev-dotnet/gnome-keyring-sharp 1.0.2-r2: C# implementation of gnome-keyring
