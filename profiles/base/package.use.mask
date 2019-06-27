@@ -466,10 +466,6 @@ sys-devel/gcc sanitize
 # net-libs/tox is in mva overlay only ATM
 app-leechcraft/lc-azoth sarin
 
-# Thomas Sachau <tommy@gentoo.org> (30 Jun 2014)
-# Mask pixman USE flag of dev-libs/efl for future removal, bug 501074
-dev-libs/efl pixman
-
 # Pacho Ramos <pacho@gentoo.org> (01 Jun 2014)
 # Needs hardmasked lua-5.2
 >=media-plugins/grilo-plugins-0.2.12 lua
