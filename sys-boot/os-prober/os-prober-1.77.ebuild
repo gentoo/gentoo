@@ -58,7 +58,6 @@ src_install() {
 		ppc|ppc64)	debarch=powerpc ;;
 	esac
 
-	local dir
 	for dir in os-probes{,/mounted,/init} linux-boot-probes{,/mounted}; do
 		exeinto /usr/lib/${dir}
 		doexe ${dir}/common/*
