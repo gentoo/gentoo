@@ -4444,10 +4444,11 @@ net-mail/vpopmail:ipalias - Enables enable-ip-alias-domains
 net-mail/vpopmail:maildrop - Enables mail-filter/maildrop support in vdelivermail
 net-mail/vpopmail:spamassassin - Enables mail-filter/spamassassin support
 net-misc/aria2:bittorrent - Enable support for the bittorrent protocol.
+net-misc/aria2:gnutls - Use net-libs/gnutls as TLS provider (preferred). Otherwise, dev-libs/openssl will be used as TLS provider. Both apply only with USE=ssl.
 net-misc/aria2:libuv - Use dev-libs/libuv backend.
 net-misc/aria2:libxml2 - Use dev-libs/libxml2 for XML parsing (preferred) instead of dev-libs/expat.
 net-misc/aria2:metalink - Enable support for metalink.
-net-misc/aria2:nettle - Use dev-libs/nettle and dev-libs/gmp for bittorrent/metalink crypto instead of dev-libs/libgcrypt (when dev-libs/openssl is not being used).
+net-misc/aria2:nettle - Use dev-libs/nettle for message digests, plus dev-libs/gmp for bittorrent (if enabled). If this flag is disabled, dev-libs/libgcrypt is used instead. This flag is ignored if dev-libs/openssl is used.
 net-misc/aria2:scripts - Install additional scripts which use aria2's xmlrpc functionality.
 net-misc/aria2:ssh - Enable SFTP support.
 net-misc/asterisk:cluster - Enable high-availability support through the Corosync Cluster Engine
