@@ -20,7 +20,7 @@ IUSE="cpu_flags_x86_aes doc +keyutils libressl lmdb nls openldap +pkinit selinux
 # Test suite requires network access
 RESTRICT="test"
 
-CDEPEND="
+DEPEND="
 	!!app-crypt/heimdal
 	>=sys-libs/e2fsprogs-libs-1.42.9[${MULTILIB_USEDEP}]
 	|| (
@@ -38,7 +38,7 @@ CDEPEND="
 	)
 	xinetd? ( sys-apps/xinetd )
 	"
-DEPEND="${CDEPEND}
+BDEPEND="
 	${PYTHON_DEPS}
 	virtual/yacc
 	cpu_flags_x86_aes? (
@@ -52,7 +52,7 @@ DEPEND="${CDEPEND}
 		dev-util/dejagnu
 		dev-util/cmocka
 	)"
-RDEPEND="${CDEPEND}
+RDEPEND="${DEPEND}
 	selinux? ( sec-policy/selinux-kerberos )"
 
 S=${WORKDIR}/${MY_P}/src
