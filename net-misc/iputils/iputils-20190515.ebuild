@@ -71,7 +71,9 @@ fi
 
 [ "${PV}" == "99999999" ] || S="${WORKDIR}/${PN}-s${PV}"
 
-PATCHES=()
+PATCHES=(
+	"${FILESDIR}"/${PN}-20190515-fix-setcap.patch
+)
 
 src_prepare() {
 	use SECURITY_HAZARD && PATCHES+=( "${FILESDIR}"/${PN}-20150815-nonroot-floodping.patch )
