@@ -12,17 +12,17 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="LGPL-2.1+ CC-BY-SA-3.0 OFL-1.1 Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="+curl dedicated doc +leveldb luajit ncurses nls postgres redis +server +sound spatial +truetype"
+IUSE="+client +curl doc +leveldb luajit ncurses nls postgres redis +server +sound spatial +truetype"
+REQUIRED_USE="|| ( client server )"
 
 RDEPEND="
 	dev-db/sqlite:3
+	dev-games/irrlicht
 	dev-libs/gmp:0=
 	dev-libs/jsoncpp:=
 	sys-libs/zlib
-	curl? ( net-misc/curl )
-	!dedicated? (
+	client? (
 		app-arch/bzip2
-		dev-games/irrlicht
 		media-libs/libpng:0=
 		virtual/jpeg:0
 		virtual/opengl
@@ -35,6 +35,7 @@ RDEPEND="
 		)
 		truetype? ( media-libs/freetype:2 )
 	)
+	curl? ( net-misc/curl )
 	leveldb? ( dev-libs/leveldb:= )
 	luajit? ( dev-lang/luajit:2 )
 	ncurses? ( sys-libs/ncurses:0= )
@@ -51,7 +52,7 @@ BDEPEND="
 	nls? ( sys-devel/gettext )"
 
 pkg_setup() {
-	if use server || use dedicated ; then
+	if use server ; then
 		enewgroup ${PN}
 		enewuser ${PN} -1 -1 /var/lib/${PN} ${PN}
 	fi
@@ -71,7 +72,8 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		-DBUILD_CLIENT=$(usex !dedicated)
+		-DBUILD_CLIENT=$(usex client)
+		-DBUILD_SERVER=$(usex server)
 		-DCUSTOM_BINDIR="${EPREFIX}/usr/bin"
 		-DCUSTOM_DOCDIR="${EPREFIX}/usr/share/doc/${PF}"
 		-DCUSTOM_EXAMPLE_CONF_DIR="${EPREFIX}/usr/share/doc/${PF}"
@@ -92,7 +94,7 @@ src_configure() {
 		-DRUN_IN_PLACE=0
 	)
 
-	use dedicated && mycmakeargs+=(
+	use server && mycmakeargs+=(
 		-DIRRLICHT_INCLUDE_DIR="${EPREFIX}/usr/include/irrlicht"
 	)
 
@@ -111,7 +113,7 @@ src_compile() {
 src_install() {
 	cmake-utils_src_install
 
-	if use server || use dedicated ; then
+	if use server ; then
 		newinitd "${FILESDIR}"/minetestserver.initd minetest-server
 		newconfd "${T}"/minetestserver.confd minetest-server
 	fi
@@ -120,14 +122,14 @@ src_install() {
 pkg_postinst() {
 	xdg_pkg_postinst
 
-	if ! use dedicated ; then
+	if use client ; then
 		elog
 		elog "optional dependencies:"
 		elog "	games-action/minetest_game (official mod)"
 		elog
 	fi
 
-	if use server || use dedicated ; then
+	if use server ; then
 		elog
 		elog "Configure your server via /etc/conf.d/minetest-server"
 		elog "The user \"minetest\" is created with /var/lib/${PN} homedir."
@@ -141,8 +143,4 @@ pkg_postinst() {
 	elog "texture packs and worlds is unaffected and backwards-compatible"
 	elog "as usual."
 	elog
-}
-
-pkg_postrm() {
-	xdg_pkg_postrm
 }
