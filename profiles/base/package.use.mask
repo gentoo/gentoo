@@ -247,11 +247,6 @@ dev-java/openjdk:11 gentoo-vm
 # Requires audacious, which is masked. Bug 632513
 media-libs/freeverb3 jack
 
-# Ian Stakenvicius <axs@gentoo.org> (27 Sep 2017)
-# Depends on >=icu-59, still masked.
->=www-client/firefox-56.0 system-icu
->=mail-client/thunderbird-60.0 system-icu
-
 # Andreas K. Huettel <dilfridge@gentoo.org> (9 Sep 2017)
 # Potentially destructive. Use it only if you know what you're doing.
 sys-libs/glibc vanilla

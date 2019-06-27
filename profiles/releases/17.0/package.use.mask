@@ -4,9 +4,3 @@
 # Andreas K. Hüttel <dilfridge@gentoo.org> (27 May 2017)
 # Unmask default-PIE on 17.0 profiles.
 sys-devel/gcc -pie
-
-# Ian Stakenvicius <axs@gentoo.org> (27 Sep 2017)
-# Remove system-icu masks (see base/package.use.mask)
-# that prevent the >=icu-59 dependency
->=www-client/firefox-56.0 -system-icu
->=mail-client/thunderbird-60.0 -system-icu
