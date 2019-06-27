@@ -2985,7 +2985,7 @@ dev-libs/efl 1.21.1-r3: Enlightenment Foundation Libraries all-in-one package
 dev-libs/elfutils 0.170-r1 0.173-r1: Libraries/utilities to handle ELF objects (drop in replacement for libelf)
 dev-libs/ell 0.9: Embedded Linux Library provides core, low-level functionality for system daemons
 dev-libs/eventlog 0.2.12: Support library for syslog-ng
-dev-libs/expat 2.2.6: Stream-oriented XML parser library
+dev-libs/expat 2.2.6 2.2.7: Stream-oriented XML parser library
 dev-libs/fcgi 2.4.1_pre0910052249-r2: FastCGI Developer's Kit
 dev-libs/fddl 20111124-r1: Free Decision Diagram Library
 dev-libs/ferrisloki 3.0.13-r2: Loki C++ library from Modern C++ Design
