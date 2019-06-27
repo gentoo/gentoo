@@ -9,7 +9,7 @@ DESCRIPTION="Shared audio recording server"
 HOMEPAGE="https://bisqwit.iki.fi/source/erec.html"
 SRC_URI="https://bisqwit.iki.fi/src/arch/${P}.tar.bz2"
 
-KEYWORDS="~amd64 ~ppc ~sparc ~x86"
+KEYWORDS="~amd64 ~ppc sparc ~x86"
 LICENSE="GPL-2+"
 SLOT="0"
 
