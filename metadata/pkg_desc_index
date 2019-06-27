@@ -8469,7 +8469,7 @@ net-analyzer/macchanger 1.7.0: Utility for viewing/manipulating the MAC address 
 net-analyzer/mbrowse 0.4.3: MBrowse is a graphical MIB browser
 net-analyzer/monitoring-plugins 2.2-r2 2.2-r3: 50+ standard plugins for Icinga, Naemon, Nagios, Shinken, Sensu
 net-analyzer/mping 2.01: IPv4/6 round-robin multiping client
-net-analyzer/mrtg 2.17.4-r1 2.17.7: A tool to monitor the traffic load on network-links
+net-analyzer/mrtg 2.17.7: A tool to monitor the traffic load on network-links
 net-analyzer/mtr 0.87: My TraceRoute, an Excellent network diagnostic tool
 net-analyzer/munin 2.0.38: Munin Server Monitoring Tool
 net-analyzer/nagios 4.3.4: The Nagios metapackage
