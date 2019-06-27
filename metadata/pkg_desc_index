@@ -10043,7 +10043,7 @@ sys-auth/pam_ldap 186-r1: PAM LDAP Module
 sys-auth/pam_mktemp 1.1.1: Create per-user private temporary directories during login
 sys-auth/pam_mount 2.16: A PAM module that can mount volumes for a user session
 sys-auth/pam_mysql 0.8.1-r1: pam_mysql is a module for pam to authenticate users with mysql
-sys-auth/pam_p11 0.2.0 0.3.0: PAM module for authenticating against PKCS#11 tokens
+sys-auth/pam_p11 0.3.0: PAM module for authenticating against PKCS#11 tokens
 sys-auth/pam_passwdqc 1.0.5: Password strength checking for PAM aware password changing programs
 sys-auth/pam_skey 1.1.5-r5: PAM interface for the S/Key authentication system
 sys-auth/pam_ssh 2.3: Uses ssh-agent to provide single sign-on
