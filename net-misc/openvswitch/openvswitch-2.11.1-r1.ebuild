@@ -13,7 +13,7 @@ SRC_URI="https://www.openvswitch.org/releases/${P}.tar.gz"
 
 LICENSE="Apache-2.0 GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE="debug modules monitor +ssl"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -32,8 +32,8 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 PATCHES="
-	${FILESDIR}/xcp-interface-reconfigure-2.3.2.patch
-	${FILESDIR}/0005-datapath-conntrack-fix-include-for-IP6_DEFRAG_CONNTR.patch
+	"${FILESDIR}/xcp-interface-reconfigure-2.3.2.patch"
+	"${FILESDIR}/0005-datapath-conntrack-fix-include-for-IP6_DEFRAG_CONNTR.patch"
 "
 
 CONFIG_CHECK="~NET_CLS_ACT ~NET_CLS_U32 ~NET_SCH_INGRESS ~NET_ACT_POLICE ~IPV6 ~TUN"
