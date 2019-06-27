@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-	<email>crypto@gentoo.org</email>
-	<name>Crypto</name>
-</maintainer>
+	<maintainer type="project">
+		<email>crypto@gentoo.org</email>
+		<name>Crypto</name>
+	</maintainer>
+	<use>
+		<flag name="cpu_flags_x86_sha">Enable support for Intel's SHA instruction set (SHA-NI)</flag>
+	</use>
 </pkgmetadata>
