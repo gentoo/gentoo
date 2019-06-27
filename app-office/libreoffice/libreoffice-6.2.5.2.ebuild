@@ -77,7 +77,8 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 LICENSE="|| ( LGPL-3 MPL-1.1 )"
 SLOT="0"
 [[ ${MY_PV} == *9999* ]] || \
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS=""
+#KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 
 BDEPEND="
 	dev-util/intltool
@@ -245,6 +246,8 @@ else
 fi
 
 PATCHES=(
+	# master branch
+	"${FILESDIR}/${PN}-6.2-ldap-optional.patch"
 	# "${WORKDIR}"/${PATCHSET/.tar.xz/}
 
 	# not upstreamable stuff
