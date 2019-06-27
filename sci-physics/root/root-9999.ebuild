@@ -16,11 +16,10 @@ DESCRIPTION="C++ data analysis framework and interpreter from CERN"
 HOMEPAGE="https://root.cern"
 
 IUSE="+X aqua +asimage +c++11 c++14 c++17 cuda +davix emacs +examples
-	fits fftw fortran +gdml graphviz +gsl http jemalloc kerberos ldap
-	libcxx memstat +minuit mysql odbc +opengl oracle postgres prefix
-	pythia6 pythia8 +python qt5 R +roofit root7 shadow sqlite +ssl
-	table +tbb test +threads +tiff +tmva +unuran vc xinetd +xml xrootd
-	zeroconf"
+	fits fftw fortran +gdml graphviz +gsl http libcxx +minuit mysql
+	odbc +opengl oracle postgres prefix pythia6 pythia8 +python qt5 R
+	+roofit root7 shadow sqlite +ssl +tbb test +tmva +unuran vc vmc
+	+xml xrootd"
 
 if [[ ${PV} =~ "9999" ]] ; then
 	inherit git-r3
@@ -42,7 +41,7 @@ LICENSE="LGPL-2.1 freedist MSttfEULA LGPL-3 libpng UoI-NCSA"
 REQUIRED_USE="
 	^^ ( c++11 c++14 c++17 )
 	cuda? ( tmva !c++17 )
-	!X? ( !asimage !opengl !qt5 !tiff )
+	!X? ( !asimage !opengl !qt5 )
 	davix? ( ssl xml )
 	python? ( ${PYTHON_REQUIRED_USE} )
 	qt5? ( root7 )
@@ -80,8 +79,7 @@ CDEPEND="
 			dev-qt/qtwebengine:5[widgets]
 		)
 	)
-	asimage? ( media-libs/libafterimage[gif,jpeg,png,tiff?] )
-	zeroconf? ( net-dns/avahi[mdnsresponder-compat] )
+	asimage? ( media-libs/libafterimage[gif,jpeg,png,tiff] )
 	cuda? ( >=dev-util/nvidia-cuda-toolkit-9.0 )
 	davix? ( net-libs/davix )
 	emacs? ( virtual/emacs )
@@ -90,9 +88,6 @@ CDEPEND="
 	graphviz? ( media-gfx/graphviz )
 	gsl? ( sci-libs/gsl:= )
 	http? ( dev-libs/fcgi:0= )
-	jemalloc? ( dev-libs/jemalloc )
-	kerberos? ( virtual/krb5 )
-	ldap? ( net-nds/openldap:0= )
 	libcxx? ( sys-libs/libcxx )
 	unuran? ( sci-mathematics/unuran:0= )
 	minuit? ( !sci-libs/minuit )
@@ -117,8 +112,7 @@ CDEPEND="
 DEPEND="${CDEPEND}
 	virtual/pkgconfig"
 
-RDEPEND="${CDEPEND}
-	xinetd? ( sys-apps/xinetd )"
+RDEPEND="${CDEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-6.12.06_cling-runtime-sysroot.patch
@@ -157,6 +151,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_C_FLAGS="${CFLAGS}"
 		-DCMAKE_CXX_FLAGS="${CXXFLAGS}"
+		-DCMAKE_CXX_STANDARD=$(usev c++11 || usev c++14 || usev c++17 | cut -c4-)
 		-DPYTHON_EXECUTABLE="${PYTHON}"
 		-DLLVM_CONFIG="$(type -P "${CHOST}-llvm-config")"
 		-DCMAKE_INSTALL_PREFIX="${EPREFIX%/}/usr/lib/${PN}/$(ver_cut 1-2)"
@@ -194,24 +189,15 @@ src_configure() {
 		-Dbuiltin_xxhash=OFF
 		-Dbuiltin_zlib=OFF
 		-Dx11=$(usex X)
-		-Dxft=$(usex X)
-		-Dafdsmgrd=OFF
-		-Dafs=OFF # not implemented
 		-Dalien=OFF
+		-Darrow=OFF
 		-Dasimage=$(usex asimage)
-		-Dastiff=$(usex tiff)
-		-Dbonjour=$(usex zeroconf)
 		-Dlibcxx=$(usex libcxx)
 		-Dccache=OFF # use ccache via portage
-		-Dcastor=OFF
-		-Dchirp=OFF
+		-Dcefweb=OFF
 		-Dclad=OFF
-		-Dcling=ON # cling=OFF is broken
 		-Dcocoa=$(usex aqua)
 		-Dcuda=$(usex cuda)
-		-Dcxx11=$(usex c++11)
-		-Dcxx14=$(usex c++14)
-		-Dcxx17=$(usex c++17)
 		-Dcxxmodules=OFF # requires clang, unstable
 		-Ddavix=$(usex davix)
 		-Ddcache=OFF
@@ -220,62 +206,47 @@ src_configure() {
 		-Dfortran=$(usex fortran)
 		-Dftgl=$(usex opengl)
 		-Dgdml=$(usex gdml)
-		-Dgenvector=ON # genvector=OFF ignored
-		-Dgeocad=OFF
 		-Dgfal=OFF
 		-Dgl2ps=$(usex opengl)
-		-Dglite=OFF # not implemented
-		-Dglobus=OFF
 		-Dgminimal=OFF
 		-Dgsl_shared=$(usex gsl)
 		-Dgviz=$(usex graphviz)
-		-Dhdfs=OFF
 		-Dhttp=$(usex http)
 		-Dimt=$(usex tbb)
-		-Djemalloc=$(usex jemalloc)
-		-Dkrb5=$(usex kerberos)
-		-Dldap=$(usex ldap)
 		-Dmathmore=$(usex gsl)
-		-Dmemstat=$(usex memstat)
+		-Dmemstat=OFF # deprecated
 		-Dminimal=OFF
 		-Dminuit2=$(usex minuit)
 		-Dminuit=$(usex minuit)
+		-Dmlp=$(usex tmva)
 		-Dmonalisa=OFF
 		-Dmysql=$(usex mysql)
 		-Dodbc=$(usex odbc)
 		-Dopengl=$(usex opengl)
 		-Doracle=$(usex oracle)
-		-Dpch=ON # pch=OFF is broken
 		-Dpgsql=$(usex postgres)
 		-Dpythia6=$(usex pythia6)
 		-Dpythia8=$(usex pythia8)
 		-Dpython=$(usex python)
 		-Dqt5web=$(usex qt5)
-		-Dqtgsi=OFF
-		-Dqt=OFF
-		-Drfio=OFF
 		-Droofit=$(usex roofit)
 		-Droot7=$(usex root7)
 		-Drootbench=OFF
 		-Droottest=OFF
 		-Drpath=OFF
-		-Druby=OFF # deprecated and broken
 		-Druntime_cxxmodules=OFF # does not work yet
 		-Dr=$(usex R)
-		-Dsapdb=OFF # not implemented
 		-Dshadowpw=$(usex shadow)
 		-Dsqlite=$(usex sqlite)
-		-Dsrp=OFF # not implemented
 		-Dssl=$(usex ssl)
-		-Dtable=$(usex table)
 		-Dtcmalloc=OFF
 		-Dtesting=$(usex test)
-		-Dthread=$(usex threads)
 		-Dtmva=$(usex tmva)
 		-Dtmva-cpu=$(usex tmva)
 		-Dtmva-gpu=$(usex cuda)
 		-Dunuran=$(usex unuran)
 		-Dvc=$(usex vc)
+		-Dvmc=$(usex vmc)
 		-Dvdt=OFF
 		-Dveccore=OFF
 		-Dxml=$(usex xml)
