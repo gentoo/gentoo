@@ -131,25 +131,27 @@ src_prepare() {
 src_configure() {
 	# general config and paths
 
-	sed -i.orig \
-		-e "/SYSTEM_ALIASES_FILE/s'SYSTEM_ALIASES_FILE'${EPREFIX}/etc/mail/aliases'" \
-		"${S}"/src/configure.default || die
+	local aliases="${EPREFIX}/etc/mail/aliases"
+	sed -i \
+		-e "/SYSTEM_ALIASES_FILE/s'SYSTEM_ALIASES_FILE'${aliases}'" \
+		src/configure.default || die
 
-	sed -i -e 's/^buildname=.*/buildname=exim-gentoo/g' Makefile || die
+	sed -i -e 's/^buildname=.*/buildname=exim-gentoo/' Makefile || die
 
+	if use elibc_musl; then
+		sed -i -e 's/^LIBS = -lnsl/LIBS =/g' OS/Makefile-Linux || die
+	fi
+
+	local conffile="${EPREFIX}/etc/exim/exim.conf"
 	sed -e "48i\CFLAGS=${CFLAGS}" \
 		-e "s:BIN_DIRECTORY=/usr/exim/bin:BIN_DIRECTORY=${EPREFIX}/usr/sbin:" \
 		-e "s:EXIM_USER=:EXIM_USER=${MAILUSER}:" \
-		-e "s:CONFIGURE_FILE=/usr/exim/configure:CONFIGURE_FILE=${EPREFIX}/etc/exim/exim.conf:" \
+		-e "s:CONFIGURE_FILE=.*$:CONFIGURE_FILE=${conffile}:" \
 		-e "s:ZCAT_COMMAND=.*$:ZCAT_COMMAND=${EPREFIX}/bin/zcat:" \
 		-e "s:COMPRESS_COMMAND=.*$:COMPRESS_COMMAND=${EPREFIX}/bin/gzip:" \
-		src/EDITME > Local/Makefile
+		src/EDITME > Local/Makefile || die
 
-	if use elibc_musl; then
-		sed -e 's/^LIBS = -lnsl/LIBS =/g' \
-		-i OS/Makefile-Linux
-	fi
-
+	# work on Local/Makefile from now on
 	cd Local
 
 	cat >> Makefile <<- EOC
@@ -181,6 +183,7 @@ src_configure() {
 
 	#
 	# mail storage formats
+	#
 
 	# mailstore is Exim's traditional storage format
 	cat >> Makefile <<- EOC
@@ -218,14 +221,14 @@ src_configure() {
 
 	if ! use dnsdb; then
 		# DNSDB lookup is enabled by default
-		sed -i "s:^LOOKUP_DNSDB=yes:# LOOKUP_DNSDB=yes:" Makefile
+		sed -i -e 's:^LOOKUP_DNSDB=yes:# LOOKUP_DNSDB=yes:' Makefile || die
 	fi
 
 	if use ldap; then
 		cat >> Makefile <<- EOC
 			LOOKUP_LDAP=yes
 			LDAP_LIB_TYPE=OPENLDAP2
-			LOOKUP_INCLUDE += -I"${EROOT}"usr/include/ldap
+			LOOKUP_INCLUDE += -I"${EPREFIX}"/usr/include/ldap
 			LOOKUP_LIBS += -lldap -llber
 		EOC
 	fi
@@ -245,7 +248,7 @@ src_configure() {
 		EOC
 		if use elibc_glibc ; then
 			cat >> Makefile <<- EOC
-				CFLAGS += -I/usr/include/tirpc
+				CFLAGS += -I"${EPREFIX}"/usr/include/tirpc
 			EOC
 		fi
 	fi
@@ -272,17 +275,17 @@ src_configure() {
 		EOC
 	fi
 
-	#
 	# Exim monitor, enabled by default, controlled via X USE-flag,
 	# disable if not requested, bug #46778
 	if use X; then
 		cp ../exim_monitor/EDITME eximon.conf || die
 	else
-		sed -i -e '/^EXIM_MONITOR=/s/^/# /' Makefile
+		sed -i -e '/^EXIM_MONITOR=/s/^/# /' Makefile || die
 	fi
 
 	#
 	# features
+	#
 
 	# content scanning support
 	if use exiscan-acl; then
@@ -317,7 +320,10 @@ src_configure() {
 
 	# log to syslog
 	if use syslog; then
-		sed -i "s:LOG_FILE_PATH=/var/log/exim/exim_%s.log:LOG_FILE_PATH=syslog:" Makefile
+		local eximlog="${EPREFIX}/var/log/exim/exim_%s.log"
+		sed -i \
+			-e "s:LOG_FILE_PATH=${eximlog}:LOG_FILE_PATH=syslog:" \
+			Makefile || die
 		cat >> Makefile <<- EOC
 			LOG_FILE_PATH=syslog
 		EOC
@@ -365,6 +371,8 @@ src_configure() {
 	if use dlfunc; then
 		cat >> Makefile <<- EOC
 			EXPAND_DLFUNC=yes
+			HAVE_LOCAL_SCAN=yes
+			DLOPEN_LOCAL_SCAN=yes
 		EOC
 	fi
 
@@ -392,6 +400,7 @@ src_configure() {
 
 	#
 	# experimental features
+	#
 
 	# Authenticated Receive Chain
 	if use arc; then
@@ -428,6 +437,7 @@ src_configure() {
 
 	#
 	# authentication (SMTP AUTH)
+	#
 
 	# standard bits
 	cat >> Makefile <<- EOC
@@ -531,9 +541,12 @@ src_install () {
 	newinitd "${FILESDIR}"/exim.rc10 exim
 	newconfd "${FILESDIR}"/exim.confd exim
 
-	systemd_dounit "${FILESDIR}"/{exim.service,exim.socket,exim-submission.socket}
-	systemd_newunit "${FILESDIR}"/exim_at.service 'exim@.service'
-	systemd_newunit "${FILESDIR}"/exim-submission_at.service 'exim-submission@.service'
+	systemd_dounit \
+		"${FILESDIR}"/{exim.service,exim.socket,exim-submission.socket}
+	systemd_newunit \
+		"${FILESDIR}"/exim_at.service 'exim@.service'
+	systemd_newunit \
+		"${FILESDIR}"/exim-submission_at.service 'exim-submission@.service'
 
 	diropts -m 0750 -o ${MAILUSER} -g ${MAILGROUP}
 	keepdir /var/log/${PN}
@@ -542,8 +555,10 @@ src_install () {
 pkg_postinst() {
 	if [[ ! -f ${EROOT}etc/exim/exim.conf ]] ; then
 		einfo "${EROOT}etc/exim/system_filter.exim is a sample system_filter."
-		einfo "${EROOT}etc/exim/auth_conf.sub contains the configuration sub for using smtp auth."
-		einfo "Please create ${EROOT}etc/exim/exim.conf from ${EROOT}etc/exim/exim.conf.dist."
+		einfo "${EROOT}etc/exim/auth_conf.sub contains the configuration sub"
+		einfo "for using smtp auth."
+		einfo "Please create ${EROOT}etc/exim/exim.conf from"
+		einfo "  ${EROOT}etc/exim/exim.conf.dist."
 	fi
 	if use dcc ; then
 		einfo "DCC support is experimental, you can find some limited"
