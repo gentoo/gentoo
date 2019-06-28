@@ -34,7 +34,7 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 #S="${WORKDIR}/v${PV}"
 
