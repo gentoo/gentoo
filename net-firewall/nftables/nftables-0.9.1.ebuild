@@ -17,10 +17,11 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~x86"
 IUSE="debug +gmp json +modern_kernel python +readline static-libs"
 
-RDEPEND="${PYTHON_DEPS}
+RDEPEND="
 	>=net-libs/libmnl-1.0.3:0=
 	gmp? ( dev-libs/gmp:0= )
 	json? ( dev-libs/jansson )
+	python? ( ${PYTHON_DEPS} )
 	readline? ( sys-libs/readline:0= )
 	>=net-libs/libnftnl-1.1.3:0="
 
