@@ -1,0 +1,359 @@
+diff --git c/CMakeLists.txt w/CMakeLists.txt
+index 063028774..a6b76f49b 100644
+--- c/CMakeLists.txt
++++ w/CMakeLists.txt
+@@ -253,20 +253,43 @@ if (NOT WIN32)
+ endif()
+ 
+ if(SYSTEM_BOOST)
+-  set(Boost_USE_MULTITHREADED      ON)
+-  find_package( Boost 1.50.0 COMPONENTS  thread system filesystem program_options regex test_exec_monitor )
+-endif()
+-
+-if (Boost_FOUND)
+-	link_directories(${Boost_LIBRARY_DIRS})
++    set(Boost_USE_MULTITHREADED ON)
++    find_package( Boost 1.50.0 COMPONENTS  thread system filesystem program_options regex test_exec_monitor )
++    if (Boost_FOUND)
++        # we're specifically setting up the boost libraries here, so we can
++        # name them
++        add_library(boost_thread_lib SHARED IMPORTED)
++        set_property(TARGET boost_thread_lib PROPERTY IMPORTED_LOCATION
++          ${Boost_THREAD_LIBRARY})
++        add_library(boost_system_lib SHARED IMPORTED)
++        set_property(TARGET boost_system_lib PROPERTY IMPORTED_LOCATION
++          ${Boost_SYSTEM_LIBRARY})
++        add_library(boost_filesystem_lib SHARED IMPORTED)
++        set_property(TARGET boost_filesystem_lib PROPERTY IMPORTED_LOCATION
++          ${Boost_FILESYSTEM_LIBRARY})
++        add_library(boost_program_options_lib SHARED IMPORTED)
++        set_property(TARGET boost_program_options_lib PROPERTY
++          IMPORTED_LOCATION ${Boost_PROGRAM_OPTIONS_LIBRARY})
++        add_library(boost_regex_lib SHARED IMPORTED)
++        set_property(TARGET boost_regex_lib PROPERTY IMPORTED_LOCATION
++          ${Boost_REGEX_LIBRARY})
++        add_library(boost_test_exec_monitor_lib SHARED IMPORTED)
++        set_property(TARGET boost_test_exec_monitor_lib PROPERTY
++          IMPORTED_LOCATION ${Boost_TEST_EXEC_MONITOR_LIBRARY})
++        set(boost_include_dirs ${Boost_INCLUDE_DIRS})
++    else()
++        set(SYSTEM_BOOST OFF)
++        set(boost_include_dirs ${CMAKE_SOURCE_DIR}/external_libraries/boost)
++        message(WARNING "Not using system boost because none was found.")
++    endif()
+ else()
+-	message(STATUS "building boost libraries manually")
++    set(boost_include_dirs ${CMAKE_SOURCE_DIR}/external_libraries/boost)
+ endif()
+ 
+ if(SYSTEM_YAMLCPP)
+   find_package(YamlCpp)
+ else()
+-  set(YAMLCPP_FOUND OFF)
++  set(SYSTEM_YAMLCPP OFF)
+ endif()
+ 
+ #############################################
+diff --git c/editors/sc-ide/CMakeLists.txt w/editors/sc-ide/CMakeLists.txt
+index 50059bc2f..8e48194fc 100644
+--- c/editors/sc-ide/CMakeLists.txt
++++ w/editors/sc-ide/CMakeLists.txt
+@@ -219,7 +219,6 @@ endif()
+ include_directories(${CMAKE_SOURCE_DIR}/include/common)
+ include_directories(${CMAKE_SOURCE_DIR}/common)
+ include_directories(${CMAKE_SOURCE_DIR}/include/plugin_interface)
+-include_directories(${CMAKE_SOURCE_DIR}/external_libraries/boost)
+ include_directories(${YAMLCPP_INCLUDE_DIR})
+ # For QtCollider headers:
+ include_directories(${CMAKE_SOURCE_DIR})
+@@ -299,12 +298,8 @@ target_link_libraries( SuperCollider
+     oscpack
+ )
+ 
+-if(Boost_FOUND)
+-    target_link_libraries( SuperCollider ${Boost_SYSTEM_LIBRARY} ${Boost_FILESYSTEM_LIBRARY} )
+-else()
+-    # in-house-built boost system
+-    target_link_libraries( SuperCollider boost_system boost_filesystem )
+-endif()
++target_link_libraries( SuperCollider boost_system_lib boost_filesystem_lib)
++include_directories(${boost_include_dirs})
+ 
+ if(APPLE)
+     target_link_libraries( ${ide_name} "-framework CoreServices -framework Foundation")
+diff --git c/external_libraries/CMakeLists.txt w/external_libraries/CMakeLists.txt
+index df33dc6f1..896ce6206 100644
+--- c/external_libraries/CMakeLists.txt
++++ w/external_libraries/CMakeLists.txt
+@@ -2,7 +2,8 @@ if (NOT EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/nova-simd/vec.hpp)
+ 	message(FATAL_ERROR "nova-simd submodule is missing: please run `git submodule init && git submodule update' from the toplevel of your git working tree")
+ endif()
+ 
+-if(NOT Boost_FOUND) # we compile boost ourselves
++if(NOT SYSTEM_BOOST) # we compile boost ourselves
++	message(STATUS "Using bundled boost")
+ 	# boost thread
+ 	aux_source_directory(boost/libs/thread/src/ boost_thread_src )
+ 
+@@ -14,66 +15,65 @@ if(NOT Boost_FOUND) # we compile boost ourselves
+ 		message(SEND_ERROR "we need to implement boost_thread")
+ 	endif()
+ 
+-	aux_source_directory(boost/libs/system/src/ boost_system )
+-	add_library(boost_system STATIC EXCLUDE_FROM_ALL ${boost_system})
+-	target_include_directories(boost_system PUBLIC boost)
++	aux_source_directory(boost/libs/system/src/ boost_system_src )
++	add_library(boost_system_lib STATIC EXCLUDE_FROM_ALL ${boost_system_src})
++	target_include_directories(boost_system_lib PUBLIC boost)
+ 
+-	aux_source_directory(boost/libs/program_options/src/ boost_program_options )
+-	add_library(boost_program_options STATIC EXCLUDE_FROM_ALL ${boost_program_options})
+-	target_include_directories(boost_program_options PUBLIC boost)
++	aux_source_directory(boost/libs/program_options/src/ boost_program_options_src )
++	add_library(boost_program_options_lib STATIC EXCLUDE_FROM_ALL ${boost_program_options_src})
++	target_include_directories(boost_program_options_lib PUBLIC boost)
+ 
+ 	aux_source_directory(boost/libs/filesystem/src boost_filesystem_src)
+-	add_library(boost_filesystem STATIC EXCLUDE_FROM_ALL ${boost_filesystem_src})
+-	target_include_directories(boost_filesystem PUBLIC boost)
++	add_library(boost_filesystem_lib STATIC EXCLUDE_FROM_ALL ${boost_filesystem_src})
++	target_include_directories(boost_filesystem_lib PUBLIC boost)
+ 
+ 	aux_source_directory(boost/libs/regex/src boost_regex_src)
+-	add_library(boost_regex STATIC EXCLUDE_FROM_ALL ${boost_regex_src})
+-	target_include_directories(boost_regex PUBLIC boost)
++	add_library(boost_regex_lib STATIC EXCLUDE_FROM_ALL ${boost_regex_src})
++	target_include_directories(boost_regex_lib PUBLIC boost)
+ 
+ 	if(LTO)
+-		set_property(TARGET boost_program_options boost_system boost_filesystem
++		set_property(TARGET boost_program_options_lib boost_system_lib boost_filesystem_lib
+ 					 APPEND PROPERTY COMPILE_FLAGS "-flto -flto-report")
+ 
+-		set_property(TARGET boost_program_options boost_system boost_filesystem
++		set_property(TARGET boost_program_options_lib boost_system_lib boost_filesystem_lib
+ 					 APPEND PROPERTY LINK_FLAGS "-flto -flto-report")
+ 	endif()
+ 
+-	add_library(boost_thread STATIC EXCLUDE_FROM_ALL ${boost_thread_src} ${boost_thread_platform})
+-	target_link_libraries(boost_thread boost_system)
++	add_library(boost_thread_lib STATIC EXCLUDE_FROM_ALL ${boost_thread_src} ${boost_thread_platform})
++	target_link_libraries(boost_thread_lib boost_system_lib)
+ #	target_compile_definitions(boost_thread PUBLIC BOOST_THREAD_DONT_PROVIDE_INTERRUPTIONS)
+-	target_include_directories(boost_thread PUBLIC boost)
+-	target_compile_definitions(boost_thread PUBLIC BOOST_THREAD_USE_LIB) # for win32
++	target_include_directories(boost_thread_lib PUBLIC boost)
++	target_compile_definitions(boost_thread_lib PUBLIC BOOST_THREAD_USE_LIB) # for win32
+ 
+ 	if(PTHREADS_FOUND)
+-		target_include_directories(boost_thread PUBLIC ${PTHREADS_INCLUDE_DIR})
++		target_include_directories(boost_thread_lib PUBLIC ${PTHREADS_INCLUDE_DIR})
+ 	endif()
+ 	if(WIN32)
+-		target_compile_definitions( boost_thread PRIVATE BOOST_THREAD_BUILD_LIB)
++		target_compile_definitions( boost_thread_lib PRIVATE BOOST_THREAD_BUILD_LIB)
+ 	endif()
+ 
+ 
+ 	if(CMAKE_SYSTEM_NAME MATCHES "Linux")
+-		target_compile_options(boost_thread PRIVATE -fPIC)
+-		target_link_libraries(boost_thread rt)
++		target_compile_options(boost_thread_lib PRIVATE -fPIC)
++		target_link_libraries(boost_thread_lib rt)
+ 	endif()
+ 
+ 	if(LTO)
+-		set_property(TARGET boost_thread
++    set_property(TARGET boost_thread_lib
+ 			APPEND PROPERTY COMPILE_FLAGS "-flto -flto-report")
+ 
+-		set_property(TARGET boost_thread
++		set_property(TARGET boost_thread_lib
+ 			APPEND PROPERTY LINK_FLAGS "-flto -flto-report")
+ 	endif()
+ 
+ 	set_property( TARGET
+-        boost_regex
+-        boost_thread
+-        boost_program_options
+-        boost_system
+-        boost_filesystem
++        boost_regex_lib
++        boost_thread_lib
++        boost_program_options_lib
++        boost_system_lib
++        boost_filesystem_lib
+         PROPERTY FOLDER 3rdparty
+     )
+-
+ endif()
+ 
+ # tlsf
+@@ -84,10 +84,9 @@ set_property(TARGET tlsf PROPERTY POSITION_INDEPENDENT_CODE TRUE)
+ 
+ #oscpack
+ add_library(oscpack STATIC EXCLUDE_FROM_ALL "oscpack_build.cpp")
+-target_include_directories(oscpack PRIVATE boost)
++target_include_directories(oscpack PRIVATE ${boost_include_dirs})
+ target_include_directories(oscpack INTERFACE oscpack_1_1_0 )
+ 
+-
+ if(LTO)
+ 	set_property(TARGET oscpack tlsf
+ 				 APPEND PROPERTY COMPILE_FLAGS "-flto -flto-report")
+@@ -96,15 +95,15 @@ if(LTO)
+ 				 APPEND PROPERTY LINK_FLAGS "-flto -flto-report")
+ endif()
+ 
+-if(NOT YAMLCPP_FOUND)
+-  message(STATUS "using bundled libyaml-cpp")
++if(NOT SYSTEM_YAMLCPP)
++  message(STATUS "Using bundled yaml-cpp")
+ 
+   # yaml-cpp
+   aux_source_directory(${CMAKE_SOURCE_DIR}/external_libraries/yaml-cpp/src yaml_src)
+   CREATE_FINAL_FILE(${CMAKE_CURRENT_BINARY_DIR}/libyamlcpp.cpp ${yaml_src})
+ 
+   add_library(yaml STATIC EXCLUDE_FROM_ALL ${CMAKE_CURRENT_BINARY_DIR}/libyamlcpp.cpp)
+-  target_include_directories(yaml PUBLIC ${CMAKE_SOURCE_DIR}/external_libraries/yaml-cpp/include boost)
++  target_include_directories(yaml PUBLIC ${CMAKE_SOURCE_DIR}/external_libraries/yaml-cpp/include ${boost_include_dirs})
+   set_property( TARGET yaml PROPERTY FOLDER 3rdparty )
+   set(YAMLCPP_LIBRARY yaml)
+   set(YAMLCPP_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/external_libraries/yaml-cpp/include)
+diff --git c/lang/CMakeLists.txt w/lang/CMakeLists.txt
+index c68b32fdc..593d91845 100644
+--- c/lang/CMakeLists.txt
++++ w/lang/CMakeLists.txt
+@@ -202,14 +202,8 @@ if(SC_HIDAPI)
+   endif()
+ endif()
+ 
+-if (Boost_FOUND)
+-	target_include_directories(libsclang PUBLIC ${Boost_INCLUDE_DIRS})
+-	target_link_libraries(libsclang ${Boost_THREAD_LIBRARY} ${Boost_SYSTEM_LIBRARY} ${Boost_REGEX_LIBRARY} ${Boost_FILESYSTEM_LIBRARY})
+-else()
+-	target_include_directories(libsclang PUBLIC ${CMAKE_SOURCE_DIR}/external_libraries/boost)
+-	target_link_libraries(libsclang boost_regex boost_thread boost_system boost_filesystem)
+-endif()
+-
++target_link_libraries(libsclang boost_thread_lib boost_system_lib boost_regex_lib boost_filesystem_lib)
++target_include_directories(libsclang PUBLIC ${boost_include_dirs})
+ 
+ if (SCLANG_SERVER)
+ 	target_link_libraries(libsclang libscsynth)
+diff --git c/server/CMakeLists.txt w/server/CMakeLists.txt
+index 2622b4e36..bf8dc863d 100644
+--- c/server/CMakeLists.txt
++++ w/server/CMakeLists.txt
+@@ -12,11 +12,7 @@ include_directories(${CMAKE_SOURCE_DIR}/external_libraries
+ 					${CMAKE_SOURCE_DIR}/external_libraries/nova-tt
+ 					)
+ 
+-if (Boost_FOUND)
+-	include_directories(${Boost_INCLUDE_DIRS})
+-else()
+-	include_directories(${CMAKE_SOURCE_DIR}/external_libraries/boost)
+-endif()
++include_directories(${boost_include_dirs})
+ 
+ # here we choose who provides us with the FFT lib
+ if (APPLE)
+diff --git c/server/plugins/CMakeLists.txt w/server/plugins/CMakeLists.txt
+index 8287f7be9..9a4db7be5 100644
+--- c/server/plugins/CMakeLists.txt
++++ w/server/plugins/CMakeLists.txt
+@@ -199,7 +199,7 @@ if (SUPERNOVA)
+ 
+ 		if(SNDFILE_FOUND)
+ 			target_include_directories(DiskIO_UGens_supernova PUBLIC ${SNDFILE_INCLUDE_DIR})
+-			target_link_libraries(DiskIO_UGens_supernova ${SNDFILE_LIBRARIES} ${PTHREADS_LIBRARY} ${MATH_LIBRARY} ${Boost_THREAD_LIBRARY})
++      target_link_libraries(DiskIO_UGens_supernova ${SNDFILE_LIBRARIES} ${PTHREADS_LIBRARY} ${MATH_LIBRARY} boost_thread_lib)
+ 			list(APPEND supernova_plugins DiskIO_UGens_supernova)
+ 		else()
+ 			message(SEND_ERROR "Cannot find libsndfile")
+@@ -217,7 +217,7 @@ endforeach()
+ 
+ if(NOT NO_X11)
+ 	foreach(ugen ${uiugens})
+-		target_link_libraries(${ugen} ${Boost_THREAD_LIBRARY})
++    target_link_libraries(${ugen} boost_thread_lib)
+ 	endforeach()
+ endif()
+ 
+diff --git c/server/scsynth/CMakeLists.txt w/server/scsynth/CMakeLists.txt
+index 17c09f262..3a7145841 100644
+--- c/server/scsynth/CMakeLists.txt
++++ w/server/scsynth/CMakeLists.txt
+@@ -176,11 +176,8 @@ elseif(AUDIOAPI STREQUAL coreaudio)
+ 	target_link_libraries(libscsynth "-framework CoreAudio")
+ endif()
+ 
+-if (Boost_FOUND)
+-	target_link_libraries(libscsynth ${Boost_SYSTEM_LIBRARY} ${Boost_FILESYSTEM_LIBRARY} )
+-else()
+-	target_link_libraries(libscsynth boost_system boost_filesystem)
+-endif()
++target_link_libraries(libscsynth boost_system_lib boost_filesystem_lib)
++target_include_directories(libscsynth PUBLIC ${boost_include_dirs})
+ 
+ if (WIN32)
+ 	target_link_libraries(libscsynth wsock32 ws2_32 winmm)
+diff --git c/server/supernova/CMakeLists.txt w/server/supernova/CMakeLists.txt
+index cfe128880..2b80cb545 100644
+--- c/server/supernova/CMakeLists.txt
++++ w/server/supernova/CMakeLists.txt
+@@ -70,7 +70,7 @@ if(NOT WIN32)
+                PROPERTY OUTPUT_NAME supernova)
+ endif()
+ 
+-target_link_libraries(libsupernova oscpack tlsf ${PTHREADS_LIBRARIES} boost_thread)
++target_link_libraries(libsupernova oscpack tlsf ${PTHREADS_LIBRARIES} boost_thread_lib)
+ 
+ target_compile_definitions(libsupernova PUBLIC SUPERNOVA)
+ target_include_directories(libsupernova PUBLIC
+@@ -146,14 +146,8 @@ if(CMAKE_SYSTEM_NAME MATCHES "Linux")
+     target_link_libraries(libsupernova rt)
+ endif()
+ 
+-
+-if(Boost_FOUND)
+-    target_link_libraries(libsupernova ${Boost_SYSTEM_LIBRARY} ${Boost_FILESYSTEM_LIBRARY} ${Boost_PROGRAM_OPTIONS_LIBRARY})
+-    target_include_directories(libsupernova PUBLIC ${Boost_INCLUDE_DIRS})
+-else()
+-    target_include_directories(libsupernova PUBLIC ${CMAKE_SOURCE_DIR}/external_libraries/boost)
+-    target_link_libraries(libsupernova boost_system boost_filesystem boost_program_options)
+-endif()
++target_link_libraries(libsupernova boost_system_lib boost_filesystem_lib boost_program_options_lib)
++target_include_directories(libsupernova PUBLIC ${boost_include_dirs})
+ 
+ if(CMAKE_COMPILER_IS_GNUCXX)
+     if( ${_gcc_version} VERSION_GREATER 5 )
+diff --git c/testsuite/server/CMakeLists.txt w/testsuite/server/CMakeLists.txt
+index 38ce4b486..da19c2e5d 100644
+--- c/testsuite/server/CMakeLists.txt
++++ w/testsuite/server/CMakeLists.txt
+@@ -1,8 +1,8 @@
++add_library(boost_test STATIC boost_test.cpp)
++target_include_directories(boost_test PUBLIC ${boost_include_dirs})
++
+ add_subdirectory(scsynth)
+-
+ if (SUPERNOVA)
+   add_subdirectory(supernova)
+ endif()
+ 
+-add_library(boost_test STATIC boost_test.cpp)
+-target_include_directories(boost_test PUBLIC ${CMAKE_SOURCE_DIR}/external_libraries/boost)
+diff --git c/testsuite/server/supernova/CMakeLists.txt w/testsuite/server/supernova/CMakeLists.txt
+index e8a9ccf5f..4022da847 100644
+--- c/testsuite/server/supernova/CMakeLists.txt
++++ w/testsuite/server/supernova/CMakeLists.txt
+@@ -34,7 +34,7 @@ foreach(test ${simple_tests})
+   string(REPLACE .cpp "" test_name ${test} )
+   add_executable(${test_name} ${test})
+ 
+-  target_link_libraries(${test_name} libsupernova boost_test boost_thread)
++  target_link_libraries(${test_name} libsupernova boost_test boost_thread_lib)
+ 
+   add_test(${test_name}_run ${EXECUTABLE_OUTPUT_PATH}/${test_name})
+ endforeach(test)
