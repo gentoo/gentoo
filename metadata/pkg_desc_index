@@ -10905,7 +10905,7 @@ x11-libs/libdrm 2.4.96 2.4.97: X.Org libdrm library
 x11-libs/libfakekey 0.1-r3: Helper library for the x11-misc/matchbox-keyboard package
 x11-libs/libfm 1.2.5: A library for file management
 x11-libs/libfm-extra 1.2.5: A library for file management
-x11-libs/libfm-qt 0.14.1-r1 0.14.1-r2: Qt port of libfm, a library providing components to build desktop file managers
+x11-libs/libfm-qt 0.14.1-r2: Qt port of libfm, a library providing components to build desktop file managers
 x11-libs/libfontenc 1.1.4: X.Org fontenc library
 x11-libs/libgxim 0.5.0: GObject-based XIM protocol library
 x11-libs/libnotify 0.7.7-r1: A library for sending desktop notifications
@@ -11059,7 +11059,7 @@ x11-misc/revelation 0.4.14-r1: A password manager for GNOME
 x11-misc/rodent 5.3.16.3-r1: A fast, small and powerful file manager and graphical shell
 x11-misc/rofi 1.5.2: A window switcher, run dialog and dmenu replacement
 x11-misc/rss-glx 0.9.1-r1: Really Slick OpenGL Screensavers for XScreenSaver
-x11-misc/screengrab 1.99 1.101: Qt application for getting screenshots
+x11-misc/screengrab 1.101: Qt application for getting screenshots
 x11-misc/sct 0.4: Set color temperature of the screen
 x11-misc/sddm 0.18.0 0.18.1-r1: Simple Desktop Display Manager
 x11-misc/shared-mime-info 1.10: The Shared MIME-info Database specification
