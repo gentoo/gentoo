@@ -12,7 +12,7 @@ depend() {
 start() {
 	ebegin "Starting Erlang Port Mapper Daemon"
 	start-stop-daemon --start --quiet \
-		--pidfile ${pidfile} \
+		--pidfile "${pidfile}" \
 		--exec /usr/bin/epmd -- $command_args
 	eend $?
 }
