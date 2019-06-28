@@ -364,6 +364,8 @@ src_configure() {
 	if use dlfunc; then
 		cat >> Makefile <<- EOC
 			EXPAND_DLFUNC=yes
+			HAVE_LOCAL_SCAN=yes
+			DLOPEN_LOCAL_SCAN=yes
 		EOC
 	fi
 
