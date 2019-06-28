@@ -1,0 +1,45 @@
+From 1f7e4deb527db32c55646e6e5baedb2ff2aa205e Mon Sep 17 00:00:00 2001
+From: Jan Engelhardt <jengelh@inai.de>
+Date: Tue, 25 Jun 2019 08:58:33 +0200
+Subject: build: unbreak non-functionality of --disable-python
+
+Signed-off-by: Jan Engelhardt <jengelh@inai.de>
+Signed-off-by: Pablo Neira Ayuso <pablo@netfilter.org>
+---
+ configure.ac | 11 +++++++----
+ 1 file changed, 7 insertions(+), 4 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 75cf9199..b71268e8 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -103,11 +103,14 @@ AC_ARG_WITH([python_bin],
+ 	   )
+ 
+ AS_IF([test "x$PYTHON_BIN" = "x"], [
+-	AS_IF([test "x$enable_python" = "xyes"], [AC_MSG_ERROR([Python asked but not found])])
+-	AS_IF([test "x$enable_python" = "xcheck"], [AC_MSG_WARN([Python not found, continuing anyway])])
++	AS_IF([test "x$enable_python" = "xyes"], [AC_MSG_ERROR([Python asked but not found])],
++	[test "x$enable_python" = "xcheck"], [
++		AC_MSG_WARN([Python not found, continuing anyway])
++		enable_python=no
+ 	])
++])
+ 
+-AM_CONDITIONAL([HAVE_PYTHON], [test "x$PYTHON_BIN" != "x"])
++AM_CONDITIONAL([HAVE_PYTHON], [test "$enable_python" != "no"])
+ 
+ AC_CONFIG_FILES([					\
+ 		Makefile				\
+@@ -138,7 +141,7 @@ nft configuration:
+   libxtables support:		${with_xtables}
+   json output support:          ${with_json}"
+ 
+-AS_IF([test "x$PYTHON_BIN" != "x"], [
++AS_IF([test "$enable_python" != "no"], [
+ 	echo "  enable Python:		yes (with $PYTHON_BIN)"
+ 	], [
+ 	echo "  enable Python:		no"
+-- 
+cgit v1.2.1
+
