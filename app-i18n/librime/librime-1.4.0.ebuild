@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 2012-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/rime/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0/1"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
-IUSE="static-libs test"
+IUSE="test"
 
 RDEPEND="app-i18n/opencc:=
 	dev-cpp/glog:=
@@ -28,7 +28,6 @@ DOCS=( {CHANGELOG,README}.md )
 
 src_configure() {
 	local mycmakeargs=(
-		-DBUILD_STATIC=$(usex static-libs)
 		-DBUILD_TEST=$(usex test)
 		-DBOOST_USE_CXX11=ON
 		-DLIB_INSTALL_DIR="${EPREFIX}"/usr/$(get_libdir)
