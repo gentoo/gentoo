@@ -16,7 +16,7 @@ DESCRIPTION="Capybara aims to simplify the process of integration testing Rack a
 HOMEPAGE="https://github.com/jnicklas/capybara"
 LICENSE="MIT"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm ~x86"
 SLOT="3"
 IUSE="test"
 
@@ -36,7 +36,7 @@ ruby_add_rdepend "
 	>=dev-ruby/nokogiri-1.8:0
 	>=dev-ruby/rack-1.6.0:*
 	>=dev-ruby/rack-test-0.6.3:*
-	>=dev-ruby/regexp_parser-1.2:1
+	>=dev-ruby/regexp_parser-1.5:1
 	>=dev-ruby/xpath-3.2:3"
 
 all_ruby_prepare() {
