@@ -8113,7 +8113,7 @@ media-sound/drumstick 1.1.2: Qt/C++ wrapper for ALSA sequencer
 media-sound/easytag 2.4.3-r1: GTK+ utility for editing MP2, MP3, MP4, FLAC, Ogg and other media tags
 media-sound/ecasound 2.6.0-r1: a package for multitrack audio processing
 media-sound/edna 0.6: Greg Stein's python streaming audio server for desktop or LAN use
-media-sound/erec 2.2.0.1 2.2.0.1-r1: Shared audio recording server
+media-sound/erec 2.2.0.1-r1: Shared audio recording server
 media-sound/exaile 4.0.0_rc3: GTK+ based media player aiming to be similar to Amarok
 media-sound/fapg 0.42: Fast Audio Playlist Generator
 media-sound/flac123 0.0.12: console app for playing FLAC audio files
