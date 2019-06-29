@@ -1,0 +1,31 @@
+From f6225b7f4cd5e9b6011ca79c3849dc9e286a7acb Mon Sep 17 00:00:00 2001
+From: Dan Dennedy <dan@dennedy.org>
+Date: Mon, 13 May 2019 11:44:13 -0700
+Subject: [PATCH] Fix crop filter not working with color producer.
+
+Fixes https://github.com/mltframework/shotcut/issues/737
+---
+ src/modules/core/producer_colour.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/src/modules/core/producer_colour.c b/src/modules/core/producer_colour.c
+index e1cfe5284..67d36dfb2 100644
+--- a/src/modules/core/producer_colour.c
++++ b/src/modules/core/producer_colour.c
+@@ -1,6 +1,6 @@
+ /*
+  * producer_colour.c
+- * Copyright (C) 2003-2018 Meltytech, LLC
++ * Copyright (C) 2003-2019 Meltytech, LLC
+  *
+  * This library is free software; you can redistribute it and/or
+  * modify it under the terms of the GNU Lesser General Public
+@@ -248,6 +248,8 @@ static int producer_get_frame( mlt_producer producer, mlt_frame_ptr frame, int i
+ 		mlt_properties_set_int( properties, "progressive", 1 );
+ 		mlt_profile profile = mlt_service_profile( MLT_PRODUCER_SERVICE( producer ) );
+ 		mlt_properties_set_double( properties, "aspect_ratio", mlt_profile_sar( profile ) );
++		mlt_properties_set_int( properties, "meta.media.width", profile->width );
++		mlt_properties_set_int( properties, "meta.media.height", profile->height );
+ 
+ 		// colour is an alias for resource
+ 		if ( mlt_properties_get( producer_props, "colour" ) != NULL )
