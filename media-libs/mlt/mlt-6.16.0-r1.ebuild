@@ -36,7 +36,7 @@ DEPEND="
 	>=media-libs/libebur128-1.2.2:=
 	ffmpeg? (
 		libav? ( >=media-video/libav-12:0=[vdpau?] )
-		!libav? ( media-video/ffmpeg:0=[vdpau?] )
+		!libav? ( media-video/ffmpeg:0=[vdpau?,-flite] )
 	)
 	fftw? ( sci-libs/fftw:3.0= )
 	frei0r? ( media-plugins/frei0r-plugins )
