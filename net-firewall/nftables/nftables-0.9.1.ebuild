@@ -15,7 +15,7 @@ SRC_URI="https://netfilter.org/projects/nftables/files/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~x86"
-IUSE="debug +gmp json +modern_kernel python +readline static-libs"
+IUSE="debug +doc +gmp json +modern_kernel python +readline static-libs xtables"
 
 RDEPEND="
 	>=net-libs/libmnl-1.0.3:0=
@@ -23,11 +23,14 @@ RDEPEND="
 	json? ( dev-libs/jansson )
 	python? ( ${PYTHON_DEPS} )
 	readline? ( sys-libs/readline:0= )
-	>=net-libs/libnftnl-1.1.3:0="
+	>=net-libs/libnftnl-1.1.3:0=
+	xtables? ( >=net-firewall/iptables-1.6.1 )
+"
 
 DEPEND="${RDEPEND}"
 
 BDEPEND="
+	doc? ( app-text/asciidoc )
 	>=app-text/docbook2X-0.8.8-r4
 	sys-devel/bison
 	sys-devel/flex
@@ -82,10 +85,12 @@ src_configure() {
 		--disable-python
 		--sbindir="${EPREFIX}"/sbin
 		$(use_enable debug)
+		$(use_enable doc man-doc)
 		$(use_with !gmp mini_gmp)
 		$(use_with json)
 		$(use_with readline cli)
 		$(use_enable static-libs static)
+		$(use_with xtables)
 	)
 	econf "${myeconfargs[@]}"
 }
