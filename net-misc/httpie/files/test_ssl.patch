@@ -1,0 +1,11 @@
+--- a/tests/test_ssl.py	2018-11-14 16:36:19.000000000 +0100
++++ b/tests/test_ssl.py	2019-06-29 16:28:09.466528486 +0200
+@@ -45,7 +45,7 @@
+     except ssl_errors as e:
+         if ssl_version == 'ssl3':
+             # pytest-httpbin doesn't support ssl3
+-            assert 'SSLV3_ALERT_HANDSHAKE_FAILURE' in str(e)
++            assert 'SSLV3_ALERT_HANDSHAKE_FAILURE' in str(e) or 'handshake failure' in str(e)
+         else:
+             raise
+ 
