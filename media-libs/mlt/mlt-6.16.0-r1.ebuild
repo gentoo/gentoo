@@ -4,11 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
-# this ebuild currently only supports installing ruby bindings for a single ruby version
-# so USE_RUBY must contain only a single value (the latest stable) as the ebuild calls
-# /usr/bin/${USE_RUBY} directly
-USE_RUBY="ruby24"
-inherit python-single-r1 qmake-utils ruby-single toolchain-funcs
+inherit python-single-r1 qmake-utils toolchain-funcs
 
 DESCRIPTION="Open source multimedia framework for television broadcasting"
 HOMEPAGE="https://www.mltframework.org/"
@@ -19,7 +15,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="compressed-lumas cpu_flags_x86_mmx cpu_flags_x86_sse cpu_flags_x86_sse2 debug ffmpeg
 fftw frei0r gtk jack kdenlive kernel_linux libav libsamplerate lua melt opencv opengl python
-qt5 rtaudio ruby sdl vdpau vidstab xine xml"
+qt5 rtaudio sdl vdpau vidstab xine xml"
 # java perl php tcl
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
@@ -28,13 +24,13 @@ SWIG_DEPEND=">=dev-lang/swig-2.0"
 #	java? ( ${SWIG_DEPEND} >=virtual/jdk-1.5 )
 #	perl? ( ${SWIG_DEPEND} )
 #	php? ( ${SWIG_DEPEND} )
+#	ruby? ( ${SWIG_DEPEND} )
 #	tcl? ( ${SWIG_DEPEND} )
 BDEPEND="
 	virtual/pkgconfig
 	compressed-lumas? ( virtual/imagemagick-tools[png] )
 	lua? ( ${SWIG_DEPEND} virtual/pkgconfig )
-	python? ( ${SWIG_DEPEND} )
-	ruby? ( ${SWIG_DEPEND} )"
+	python? ( ${SWIG_DEPEND} )"
 #rtaudio will use OSS on non linux OSes
 DEPEND="
 	>=media-libs/libebur128-1.2.2:=
@@ -72,7 +68,6 @@ DEPEND="
 		>=media-libs/rtaudio-4.1.2
 		kernel_linux? ( media-libs/alsa-lib )
 	)
-	ruby? ( ${RUBY_DEPS} )
 	sdl? (
 		media-libs/libsdl2[X,opengl,video]
 		media-libs/sdl2-image
@@ -83,6 +78,7 @@ DEPEND="
 #	java? ( >=virtual/jre-1.5 )
 #	perl? ( dev-lang/perl )
 #	php? ( dev-lang/php )
+#	ruby? ( ${RUBY_DEPS} )
 #	sox? ( media-sound/sox )
 #	tcl? ( dev-lang/tcl:0= )
 RDEPEND="${DEPEND}"
@@ -109,8 +105,6 @@ src_prepare() {
 	for x in python lua; do
 		sed -i "/mlt.so/s: -lmlt++ :& ${CFLAGS} ${LDFLAGS} :" src/swig/$x/build || die
 	done
-
-	sed -i -e "s/env ruby/${USE_RUBY}/" src/swig/ruby/* || die
 
 	# fix python3 include dir
 	sed -i -e 's/python{}.{}/python{}.{}m/' src/swig/python/build || die
@@ -175,8 +169,8 @@ src_configure() {
 	# see also https://www.mltframework.org/twiki/bin/view/MLT/ExtremeMakeover
 
 	local swig_lang=()
-	# TODO: java perl php tcl
-	for i in lua python ruby ; do
+	# TODO: java perl php ruby tcl
+	for i in lua python ; do
 		use $i && swig_lang+=( $i )
 	done
 	[[ -z "${swig_lang}" ]] && swig_lang=( none )
@@ -213,11 +207,5 @@ src_install() {
 		python_optimize
 	fi
 
-	if use ruby; then
-		cd "${S}"/src/swig/ruby || die
-		exeinto $("${EPREFIX}"/usr/bin/${USE_RUBY} -r rbconfig -e 'print RbConfig::CONFIG["sitearchdir"]')
-		doexe mlt.so
-		dodoc play.rb thumbs.rb
-	fi
-	# TODO: java perl php tcl
+	# TODO: java perl php ruby tcl
 }
