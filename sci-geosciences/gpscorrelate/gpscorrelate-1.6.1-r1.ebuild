@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit eutils toolchain-funcs
+inherit desktop toolchain-funcs
 
 DESCRIPTION="Tool for adjusting EXIF tags of your photos with a recorded GPS trace"
 HOMEPAGE="https://github.com/freefoote/gpscorrelate"
@@ -14,18 +14,22 @@ SLOT="0"
 KEYWORDS="~amd64 ~hppa ~x86"
 IUSE="doc gtk"
 
-RDEPEND="
-	dev-libs/libxml2:2
-	media-gfx/exiv2:=
-	gtk? ( x11-libs/gtk+:2 )
-"
-DEPEND="${RDEPEND}
+BDEPEND="
 	app-text/docbook-xml-dtd:4.2
 	dev-libs/libxslt
 	virtual/pkgconfig
 "
+DEPEND="
+	dev-libs/libxml2:2
+	media-gfx/exiv2:=
+	gtk? ( x11-libs/gtk+:2 )
+"
+DEPEND="${DEPEND}"
 
-PATCHES=( "${FILESDIR}/${PN}-1.6.1-makefile.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-makefile.patch"
+	"${FILESDIR}/${P}-exiv2-0.27.1.patch"
+)
 
 src_compile() {
 	tc-export CC CXX
@@ -42,7 +46,10 @@ src_install() {
 		domenu ${PN}.desktop
 	fi
 	if use doc; then
-		dohtml doc/*
+		rm doc/gpscorrelate-manpage.xml* || die
+		local DOCS=()
+		local HTML_DOCS=( doc/. )
+		einstalldocs
 	fi
 	doman ${PN}.1
 }

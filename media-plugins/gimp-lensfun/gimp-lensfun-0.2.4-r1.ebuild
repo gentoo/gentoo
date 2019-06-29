@@ -1,13 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=7
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
-MY_PN="GIMP-Lensfun"
-
-DESCRIPTION="A Gimp plugin to correct lens distortions"
+DESCRIPTION="Gimp plugin to correct lens distortions"
 HOMEPAGE="https://seebk.github.io/GIMP-Lensfun/"
 SRC_URI="https://github.com/seebk/GIMP-Lensfun/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
@@ -16,23 +14,31 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="openmp"
 
-RDEPEND="media-gfx/gimp
+BDEPEND="
+	virtual/pkgconfig
+"
+DEPEND="
 	media-gfx/exiv2
-	>=media-libs/lensfun-0.3.2"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+	<media-gfx/gimp-2.10.0
+	>=media-libs/lensfun-0.3.2
+"
+RDEPEND="${DEPEND}"
 
-S=${WORKDIR}/${MY_PN}-${PV}
+PATCHES=( "${FILESDIR}/${P}-exiv2-0.27.1.patch" )
+
+S=${WORKDIR}/GIMP-Lensfun-${PV}
 
 pkg_setup() {
-	if use openmp ; then
+	if use openmp && [[ ${MERGE_TYPE} != binary ]]; then
 		tc-has-openmp || die "Please switch to an openmp compatible compiler"
 	fi
 }
 
 src_prepare() {
+	default
+
 	if ! use openmp; then
-		sed -i "s/-fopenmp//g" Makefile
+		sed -i "s/-fopenmp//g" Makefile || die
 	fi
 
 	tc-export CXX
