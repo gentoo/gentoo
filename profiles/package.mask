@@ -154,10 +154,6 @@ app-emulation/rkt
 lxde-base/lxshortcut
 lxde-base/lxsession-edit
 
-# Virgil Dupras <vdupras@gentoo.org> (24 May 2019)
-# py2 only, dead upstream, removal in 30 days. Bug #686668
-dev-python/drpython
-
 # Patrick Lauer <patrick@gentoo.org> (23 May 2019)
 # PostgreSQL beta and release candidate releases are pre-release testing
 # versions, not meant for production use. They are feature-frozen, and are
@@ -193,11 +189,6 @@ dev-ruby/filesize:0.1.1
 # Miroslav Šulc <fordfrog@gentoo.org> (15 May 2019)
 # Depends on >=virtual/{jdk,jre}-11 which is masked
 =www-servers/tomcat-9.0.20
-
-# Virgil Dupras <vdupras@gentoo.org> (13 May 2019)
-# detox has been deprecated by the release of tox 3.7.0 which duplicates the
-# feature. Removal in 30 days. Bug #685870
-dev-python/detox
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (11 May 2019)
 # Perl 5.24 will be removed soon. Please upgrade.
