@@ -154,10 +154,6 @@ app-emulation/rkt
 lxde-base/lxshortcut
 lxde-base/lxsession-edit
 
-# Virgil Dupras <vdupras@gentoo.org> (24 May 2019)
-# py2 only, dead upstream, removal in 30 days. Bug #686668
-dev-python/drpython
-
 # Patrick Lauer <patrick@gentoo.org> (23 May 2019)
 # PostgreSQL beta and release candidate releases are pre-release testing
 # versions, not meant for production use. They are feature-frozen, and are
