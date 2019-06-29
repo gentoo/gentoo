@@ -18,6 +18,10 @@ RDEPEND="${DEPEND}
 	!!sci-biology/phylip
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.9.0-disable-network-tests.patch
+)
+
 src_compile() {
 	emake Q=""
 }
