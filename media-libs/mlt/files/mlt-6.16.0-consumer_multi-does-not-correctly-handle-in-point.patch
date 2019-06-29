@@ -1,0 +1,22 @@
+From 434dbcf62048cc1220c425c2adc77697b4d40ffb Mon Sep 17 00:00:00 2001
+From: Jean-Baptiste Mardelle <jb@kdenlive.org>
+Date: Mon, 10 Jun 2019 18:18:44 +0200
+Subject: [PATCH] Fix multi consumer doesn't correctly handle in point
+
+---
+ src/modules/core/consumer_multi.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/modules/core/consumer_multi.c b/src/modules/core/consumer_multi.c
+index 4bb16ddf5..d9b5fbc0f 100644
+--- a/src/modules/core/consumer_multi.c
++++ b/src/modules/core/consumer_multi.c
+@@ -304,7 +304,7 @@ static void foreach_consumer_start( mlt_consumer consumer )
+ 		if ( nested )
+ 		{
+ 			mlt_properties nested_props = MLT_CONSUMER_PROPERTIES(nested);
+-			mlt_properties_set_position( nested_props, "_multi_position", 0 );
++			mlt_properties_set_position( nested_props, "_multi_position", mlt_properties_get_position( properties, "in" ) );
+ 			mlt_properties_set_data( nested_props, "_multi_audio", NULL, 0, NULL, NULL );
+ 			mlt_properties_set_int( nested_props, "_multi_samples", 0 );
+ 			mlt_consumer_start( nested );

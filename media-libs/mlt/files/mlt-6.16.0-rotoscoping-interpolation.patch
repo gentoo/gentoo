@@ -1,0 +1,22 @@
+From ddf6983b4aaaf662944b84103dd4412aff45a428 Mon Sep 17 00:00:00 2001
+From: alcinos <nicolas.carion@ens-lyon.fr>
+Date: Fri, 10 May 2019 23:20:22 +0200
+Subject: [PATCH] Fix interpolation in rotoscoping filter
+
+---
+ src/modules/plusgpl/filter_rotoscoping.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/modules/plusgpl/filter_rotoscoping.c b/src/modules/plusgpl/filter_rotoscoping.c
+index 0667929cd..70e3a093b 100644
+--- a/src/modules/plusgpl/filter_rotoscoping.c
++++ b/src/modules/plusgpl/filter_rotoscoping.c
+@@ -572,7 +572,7 @@ static mlt_frame filter_process( mlt_filter filter, mlt_frame frame )
+             int c2 = json2BCurves( keyframe, &p2 );
+ 
+             // range 0-1
+-            double position = ( time - pos1 ) / (double)( pos2 - pos1 + 1 );
++            double position = ( time - pos1 ) / (double)( pos2 - pos1 );
+ 
+             count = MIN( c1, c2 );  // additional points are ignored
+             points = mlt_pool_alloc( count * sizeof( BPointF ) );
