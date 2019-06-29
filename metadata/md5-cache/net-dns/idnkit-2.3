@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install
-DEPEND=virtual/libiconv
+DEPEND=virtual/libiconv dev-lang/perl
 DESCRIPTION=Toolkit for Internationalized Domain Names (IDN)
 EAPI=6
 HOMEPAGE=https://jprs.co.jp/idn/
@@ -7,7 +7,8 @@ IUSE=liteonly static-libs
 KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd
 LICENSE=JPRS
 RDEPEND=virtual/libiconv
+RESTRICT=test
 SLOT=0
 SRC_URI=https://jprs.co.jp/idn/idnkit-2.3.tar.bz2
 _eclasses_=ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
-_md5_=fca751d41467fb254c5a84248ade35f7
+_md5_=8340f2ab27c42baac437792dd46cd31a
