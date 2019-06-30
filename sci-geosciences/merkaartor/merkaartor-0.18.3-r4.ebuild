@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 PLOCALES="ar cs de en es et fr hr hu id_ID it ja nl pl pt_BR pt ru sk sv uk vi zh_CN zh_TW"
 
-inherit gnome2-utils l10n qmake-utils xdg-utils
+inherit gnome2-utils l10n qmake-utils xdg-utils flag-o-matic
 
 DESCRIPTION="Qt based map editor for the openstreetmap.org project"
 HOMEPAGE="http://www.merkaartor.be https://github.com/openstreetmap/merkaartor"
@@ -65,6 +65,8 @@ src_prepare() {
 }
 
 src_configure() {
+	append-flags -DACCEPT_USE_OF_DEPRECATED_PROJ_API_H
+
 	# TRANSDIR_SYSTEM is for bug #385671
 	eqmake5 \
 		PREFIX="${ED%/}/usr" \
