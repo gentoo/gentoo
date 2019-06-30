@@ -26,6 +26,10 @@ DEPEND="${RDEPEND}
 	sys-devel/gettext
 	virtual/pkgconfig"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-3.2.0-entry.patch"
+)
+
 src_prepare() {
 	# Required by src_test() and `make check`
 	echo data/calendarconversion.ui > po/POTFILES.skip || die
