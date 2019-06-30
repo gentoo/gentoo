@@ -35,7 +35,7 @@ RDEPEND="
 	media-libs/ladspa-sdk
 	media-libs/libsdl:0
 	media-libs/libvpx
-	>=media-libs/mlt-6.10.0-r1[ffmpeg,frei0r,qt5,sdl,xml]
+	>=media-libs/mlt-6.16.0-r1[ffmpeg,frei0r,qt5,sdl,xml]
 	media-libs/x264
 	media-plugins/frei0r-plugins
 	media-sound/lame
