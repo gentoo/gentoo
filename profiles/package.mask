@@ -170,16 +170,6 @@ x11-plugins/gkrellflynn
 # Unfixed bug, dead upstream, not relevant enough
 sys-fs/pytagsfs
 
-# Hans de Graaff <graaff@gentoo.org> (18 May 2019)
-# Old, ruby24-only, slots of ruby packages without any reverse
-# dependencies. Use the newer slot version instead.
-# (originally last-rited on 15 Apr 2019)
-# Masked for removal in 30 days.
-dev-ruby/elasticsearch:0
-dev-ruby/elasticsearch-api:0
-dev-ruby/elasticsearch-transport:0
-dev-ruby/filesize:0.1.1
-
 # Miroslav Šulc <fordfrog@gentoo.org> (15 May 2019)
 # Depends on >=virtual/{jdk,jre}-11 which is masked
 =www-servers/tomcat-9.0.20
