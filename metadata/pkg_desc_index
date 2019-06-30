@@ -5865,7 +5865,7 @@ dev-ruby/abstract 1.0.0-r3: Library which enable you to define abstract method i
 dev-ruby/actionpack 5.1.7: Eases web-request routing, handling, and response
 dev-ruby/actionview 5.1.7: Simple, battle-tested conventions and helpers for building web pages
 dev-ruby/activemodel 5.1.7: Toolkit for building modeling frameworks like Active Record and Active Resource
-dev-ruby/activesupport 5.1.7: Utility Classes and Extension to the Standard Library
+dev-ruby/activesupport 5.1.7 5.2.3: Utility Classes and Extension to the Standard Library
 dev-ruby/addressable 2.5.2: A replacement for the URI implementation that is part of Ruby's standard library
 dev-ruby/allison 2.0.3-r3: A modern, pretty RDoc template
 dev-ruby/archive-tar-minitar 0.8: Provides POSIX tarchive management from Ruby programs
@@ -5923,7 +5923,7 @@ dev-ruby/gettext-setup 0.30: A gem to ease i18n
 dev-ruby/gherkin 4.1.3 5.1.0: Fast Gherkin lexer and parser
 dev-ruby/git 1.4.0: Library for using Git in Ruby
 dev-ruby/gruff 0.7.0: Beautiful graphs for one or multiple datasets
-dev-ruby/haml 4.0.7-r1: A ruby web page templating engine
+dev-ruby/haml 4.0.7-r1 4.0.7-r3: A ruby web page templating engine
 dev-ruby/hashdiff 0.3.8: Simple Hash extension to make working with nested hashes easier
 dev-ruby/hashie 2.1.2-r1: Hashie is a small collection of tools that make hashes more powerful
 dev-ruby/heredoc_unindent 1.2.0: Removes leading whitespace from Ruby heredocs
@@ -5940,7 +5940,7 @@ dev-ruby/http-form_data 1.0.3 2.1.1: Utility-belt to build form data request bod
 dev-ruby/http_parser_rb 0.6.0-r1: Simple callback-based HTTP request/response parser
 dev-ruby/httparty 0.16.4: Makes http fun! Also, makes consuming restful web services dead easy
 dev-ruby/httpclient 2.8.3: 'httpclient' gives something like the functionality of libwww-perl (LWP) in Ruby
-dev-ruby/i18n 0.7.0-r3 0.9.5-r1: Add Internationalization support to your Ruby application
+dev-ruby/i18n 0.7.0-r3 0.9.5-r1 1.6.0: Add Internationalization support to your Ruby application
 dev-ruby/imagesize 0.1.1_p20100902-r1: Measure image size (GIF, PNG, JPEG, etc)
 dev-ruby/instantiator 0.0.7: Instantiate an arbitrary Ruby class
 dev-ruby/introspection 0.0.4: Dynamic inspection of the hierarchy of method definitions on a Ruby object
