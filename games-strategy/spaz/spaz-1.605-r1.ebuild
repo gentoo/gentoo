@@ -1,12 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
-
-inherit unpacker games
+EAPI=7
+inherit desktop eutils unpacker
 
 DESCRIPTION="Space Pirates and Zombies"
-HOMEPAGE="http://spacepiratesandzombies.com"
+HOMEPAGE="http://minmax-games.com/SpacePiratesAndZombies/"
 SRC_URI="${PN}-linux-humblebundle-09182012-bin"
 LICENSE="LOKI-EULA"
 SLOT="0"
@@ -14,9 +13,12 @@ KEYWORDS="-* ~amd64 ~x86"
 IUSE="alsa pulseaudio"
 RESTRICT="bindist fetch strip"
 
-DEPEND="app-arch/unzip"
-RDEPEND=">=media-libs/openal-1.15.1[alsa?,pulseaudio?,abi_x86_32(-)]
-	>=media-libs/libsdl-1.2.15-r4[abi_x86_32(-)]"
+DEPEND=""
+BDEPEND="app-arch/unzip"
+RDEPEND="
+	>=media-libs/openal-1.15.1[alsa?,pulseaudio?,abi_x86_32(-)]
+	>=media-libs/libsdl-1.2.15-r4[abi_x86_32(-)]
+"
 
 S="${WORKDIR}"/data
 
@@ -27,7 +29,7 @@ src_unpack() {
 }
 
 src_install() {
-	local dir="${GAMES_PREFIX_OPT}/${PN}"
+	local dir="/opt/${PN}"
 
 	insinto "${dir}"
 	exeinto "${dir}"
@@ -37,8 +39,6 @@ src_install() {
 	newicon SPAZ.png spaz.png
 	dodoc README-linux.txt
 
-	games_make_wrapper ${PN} ./SPAZ "${dir}" "${dir}"
+	make_wrapper ${PN} ./SPAZ "${dir}" "${dir}"
 	make_desktop_entry ${PN} "Space Pirates and Zombies" ${PN}
-
-	prepgamesdirs
 }
