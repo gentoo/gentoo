@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit git-r3 cmake-utils
+inherit git-r3 cmake-utils readme.gentoo-r1
 
 DESCRIPTION="PulseAudio modules for LDAC, aptX, aptX HD, and AAC for Bluetooth (alongside SBC and native+ofono headset)"
 HOMEPAGE="https://github.com/EHfive/pulseaudio-modules-bt"
@@ -31,4 +31,31 @@ RDEPEND="${DEPEND}"
 BDEPEND=""
 
 CMAKE_MAKEFILE_GENERATOR="emake"
-mycmakeargs=( -DFORCE_NOT_BUILD_LDAC=ON )
+
+DISABLE_AUTOFORMATTING="no"
+DOC_CONTENTS="
+After getting media-sound/pulseaudio merged without its bluetooth
+support (to not collide with this) you may have removed the loading
+of bluetooth modules in default.pa config file, leading to failure
+to use your bluetooth device (see
+https://github.com/EHfive/pulseaudio-modules-bt/issues/33).
+Please ensure you have this lines present in your /etc/pulse/default.pa
+file:
+
+.ifexists module-bluetooth-policy.so
+load-module module-bluetooth-policy
+.endif
+
+.ifexists module-bluetooth-discover.so
+load-module module-bluetooth-discover
+.endif
+"
+
+src_install() {
+	cmake-utils_src_install
+	readme.gentoo_create_doc
+}
+
+pkg_postinst() {
+	readme.gentoo_print_elog
+}
