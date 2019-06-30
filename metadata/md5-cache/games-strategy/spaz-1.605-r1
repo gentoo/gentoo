@@ -1,0 +1,14 @@
+BDEPEND=app-arch/unzip
+DEFINED_PHASES=install unpack
+DESCRIPTION=Space Pirates and Zombies
+EAPI=7
+HOMEPAGE=http://minmax-games.com/SpacePiratesAndZombies/
+IUSE=alsa pulseaudio
+KEYWORDS=-* ~amd64 ~x86
+LICENSE=LOKI-EULA
+RDEPEND=>=media-libs/openal-1.15.1[alsa?,pulseaudio?,abi_x86_32(-)] >=media-libs/libsdl-1.2.15-r4[abi_x86_32(-)]
+RESTRICT=bindist fetch strip
+SLOT=0
+SRC_URI=spaz-linux-humblebundle-09182012-bin
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	unpacker	3cd8bad0d31e525cd26be1bfa4e61631
+_md5_=5cc1765ec04feb713d931e41b45b2313

@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DESCRIPTION=Enemy Territory: Quake Wars data files
+EAPI=7
+HOMEPAGE=http://zerowing.idsoftware.com/linux/etqw/ETQWFrontPage/
+IUSE=videos
+KEYWORDS=-* ~amd64 ~x86
+LICENSE=ETQW
+PROPERTIES=interactive
+SLOT=0
+_eclasses_=cdrom	c64e4c5e9cbf2a58be31431e015a6210	portability	2b88d3ecc35035a3b8ab628b49cafb0e
+_md5_=364a67dd43e2fa90554188afd67769a9
