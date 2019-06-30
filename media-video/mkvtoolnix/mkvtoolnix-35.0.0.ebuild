@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit toolchain-funcs versionator multiprocessing xdg-utils qmake-utils gnome2-utils
+inherit toolchain-funcs versionator multiprocessing qmake-utils xdg
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://gitlab.com/mbunkus/mkvtoolnix.git"
@@ -22,7 +22,7 @@ IUSE="debug nls pch test qt5"
 # check NEWS.md for build system changes entries for boost/libebml/libmatroska
 # version requirement updates and other packaging info
 RDEPEND="
-	dev-libs/libfmt:=
+	>=dev-libs/libfmt-5.3.0:=
 	>=dev-libs/boost-1.49.0:=
 	>=dev-libs/libebml-1.3.7:=
 	dev-libs/pugixml
@@ -70,7 +70,7 @@ pkg_pretend() {
 }
 
 src_prepare() {
-	default
+	xdg_src_prepare
 	[[ ${PV} == "9999" ]] && { ./autogen.sh || die; }
 }
 
@@ -115,16 +115,4 @@ src_install() {
 
 	einstalldocs
 	doman doc/man/*.1
-}
-
-pkg_postrm() {
-	xdg_mimeinfo_database_update
-	xdg_desktop_database_update
-	gnome2_icon_cache_update
-}
-
-pkg_postinst() {
-	xdg_mimeinfo_database_update
-	xdg_desktop_database_update
-	gnome2_icon_cache_update
 }

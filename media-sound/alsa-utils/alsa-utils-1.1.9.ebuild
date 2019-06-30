@@ -48,7 +48,7 @@ src_install() {
 	default
 	dodoc seq/*/README.*
 
-	newinitd "${FILESDIR}"/alsasound.initd-r7 alsasound
+	newinitd "${FILESDIR}"/alsasound.initd-r8 alsasound
 	newconfd "${FILESDIR}"/alsasound.confd-r4 alsasound
 
 	insinto /etc/modprobe.d
