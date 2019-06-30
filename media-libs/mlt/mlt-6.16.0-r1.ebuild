@@ -175,7 +175,7 @@ src_configure() {
 	done
 	[[ -z "${swig_lang}" ]] && swig_lang=( none )
 
-	econf "${myconf[@]}" --swig-languages="${swig_lang[@]}"
+	econf "${myconf[@]}" --swig-languages="${swig_lang[*]}"
 
 	sed -i -e s/^OPT/#OPT/ config.mak || die
 }
