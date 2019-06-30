@@ -56,7 +56,7 @@ src_install() {
 	emake PREFIX="${ED}" STRIP=true install
 
 	newinitd "${FILESDIR}"/${PN}-init.d-r2 ${PN}
-	newconfd "${FILESDIR}"/${PN}-conf.d-r1 ${PN}
+	newconfd "${FILESDIR}"/${PN}-conf.d-r2 ${PN}
 }
 
 pkg_postinst() {
