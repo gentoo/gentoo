@@ -48,7 +48,9 @@ DEPEND="${RDEPEND}
 "
 
 src_configure() {
-	eqmake5 PREFIX="${EPREFIX}/usr"
+	eqmake5 \
+		PREFIX="${EPREFIX}/usr" \
+		SHOTCUT_VERSION="${PV}"
 }
 
 src_install() {
