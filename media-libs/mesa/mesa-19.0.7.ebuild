@@ -242,9 +242,9 @@ llvm_check_deps() {
 	fi
 
 	if use opencl; then
-		has_version "sys-devel/clang[${flags}]" || return 1
+		has_version "sys-devel/clang:${LLVM_SLOT}[${flags}]" || return 1
 	fi
-	has_version "sys-devel/llvm[${flags}]"
+	has_version "sys-devel/llvm:${LLVM_SLOT}[${flags}]"
 }
 
 pkg_pretend() {
