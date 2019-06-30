@@ -8,3 +8,6 @@
 
 # enable manipulating iptables on start/stop
 iptables_scripts=1
+
+# enable manipulating ip6tables on start/stop
+ip6tables_scripts=1

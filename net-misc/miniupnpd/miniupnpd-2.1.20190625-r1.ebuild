@@ -55,8 +55,12 @@ src_compile() {
 src_install() {
 	emake PREFIX="${ED}" STRIP=true install
 
+	local confd_seds=( -e ': noop' )
+	use ipv6 || confd_seds+=( -e 's/^ip6tables_scripts=/#&/' )
+
 	newinitd "${FILESDIR}"/${PN}-init.d-r2 ${PN}
-	newconfd "${FILESDIR}"/${PN}-conf.d-r2 ${PN}
+	newconfd - ${PN} < <(sed "${confd_seds[@]}" \
+		"${FILESDIR}"/${PN}-conf.d-r2 || die)
 }
 
 pkg_postinst() {

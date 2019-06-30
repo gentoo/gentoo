@@ -9,7 +9,7 @@ command_args="-f ${config_file:-/etc/miniupnpd/miniupnpd.conf} ${extra_args}"
 
 depend() {
 	need net
-	use iptables minissdpd
+	use iptables ip6tables minissdpd
 }
 
 start_pre() {
@@ -17,6 +17,9 @@ start_pre() {
 
 	if [ -n "${iptables_scripts}" ]; then
 		/etc/miniupnpd/iptables_init.sh || retval=${?}
+	fi
+	if [ -n "${ip6tables_scripts}" ]; then
+		/etc/miniupnpd/ip6tables_init.sh || retval=${?}
 	fi
 	
 	return ${retval}
@@ -27,6 +30,9 @@ stop_post() {
 
 	if [ -n "${iptables_scripts}" ]; then
 		/etc/miniupnpd/iptables_removeall.sh
+	fi
+	if [ -n "${ip6tables_scripts}" ]; then
+		/etc/miniupnpd/ip6tables_removeall.sh
 	fi
 
 	return ${retval}
