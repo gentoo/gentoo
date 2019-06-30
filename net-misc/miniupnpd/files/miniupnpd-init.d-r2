@@ -8,8 +8,8 @@ command_args="-f ${config_file:-/etc/miniupnpd/miniupnpd.conf} ${extra_args}"
 : "${pidfile:=/var/run/miniupnpd.pid}"
 
 depend() {
-	need net iptables
-	use minissdpd
+	need net
+	use iptables minissdpd
 }
 
 start_pre() {
