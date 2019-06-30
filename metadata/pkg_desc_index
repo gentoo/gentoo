@@ -4971,7 +4971,6 @@ dev-python/google-apputils 0.4.2-r2: Collection of utilities for building Python
 dev-python/google-auth 1.0.1: Google Authentication Library
 dev-python/google-auth-httplib2 0.0.2: httplib2 Transport for Google Auth
 dev-python/google-pasta 0.1.1: AST-based Python refactoring library
-dev-python/graph-tool 2.19 2.23: An efficient python module for manipulation and statistical analysis of graphs
 dev-python/graphy 1.0-r1: Simple Chart Library for Python
 dev-python/greenlet 0.4.12 0.4.15: Lightweight in-process concurrent programming
 dev-python/gst-python 1.14.1-r1: A Python Interface to GStreamer
