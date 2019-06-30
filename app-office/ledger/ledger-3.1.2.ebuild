@@ -85,7 +85,6 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		-DBUILD_EMACSLISP="$(usex emacs)"
 		-DBUILD_DOCS="$(usex doc)"
 		-DBUILD_WEB_DOCS="$(usex doc)"
 		-DUSE_PYTHON="$(usex python)"
