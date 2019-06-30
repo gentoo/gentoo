@@ -22,7 +22,7 @@ BDEPEND="
 "
 RDEPEND="
 	dev-cpp/yaml-cpp:=
-	dev-libs/boost:=
+	>=dev-libs/boost-1.70.0:=
 	media-libs/alsa-lib
 	sys-libs/readline:0=
 	virtual/libudev:=
