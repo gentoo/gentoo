@@ -16,8 +16,8 @@ IUSE="systemd"
 
 RDEPEND="
 	sys-fs/btrfs-progs
-	virtual/cron
 	systemd? ( sys-apps/systemd )
+	!systemd? ( virtual/cron )
 "
 
 src_prepare() {
