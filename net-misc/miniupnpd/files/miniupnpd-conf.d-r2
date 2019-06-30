@@ -11,3 +11,6 @@ iptables_scripts=1
 
 # enable manipulating ip6tables on start/stop
 ip6tables_scripts=1
+
+# enable manipulating nftables on start/stop (for USE=nftables)
+nftables_scripts=1

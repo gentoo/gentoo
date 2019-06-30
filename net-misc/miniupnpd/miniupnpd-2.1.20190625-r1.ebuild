@@ -12,20 +12,32 @@ SRC_URI="http://miniupnp.free.fr/files/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
-IUSE="+leasefile igd2 ipv6 pcp-peer portinuse strict"
+IUSE="+leasefile igd2 ipv6 nftables pcp-peer portinuse strict"
 
-RDEPEND=">=net-firewall/iptables-1.4.6:0=[ipv6?]
-	net-libs/libnfnetlink:=
-	net-libs/libmnl:=
+RDEPEND="
 	dev-libs/gmp:0=
 	sys-apps/util-linux:=
-	dev-libs/openssl:0="
+	dev-libs/openssl:0=
+	!nftables? (
+		>=net-firewall/iptables-1.4.6:0=[ipv6?]
+		net-libs/libnfnetlink:=
+		net-libs/libmnl:=
+	)
+	nftables? (
+		net-firewall/nftables
+		net-libs/libnftnl:=
+		net-libs/libmnl:=
+	)"
 DEPEND="${RDEPEND}
 	sys-apps/lsb-release"
 
 src_prepare() {
 	default
-	mv Makefile.linux Makefile || die
+
+	# Prevent overriding CFLAGS.
+	sed -i -e '/^CFLAGS =/d' Makefile.linux_nft || die
+
+	mv "Makefile.linux$(usex nftables _nft '')" Makefile || die
 
 	# Prevent gzipping manpage.
 	sed -i -e '/gzip/d' Makefile || die
@@ -55,8 +67,15 @@ src_compile() {
 src_install() {
 	emake PREFIX="${ED}" STRIP=true install
 
-	local confd_seds=( -e ': noop' )
-	use ipv6 || confd_seds+=( -e 's/^ip6tables_scripts=/#&/' )
+	local confd_seds=()
+	if use nftables; then
+		confd_seds+=( -e 's/^iptables_scripts=/#&/' )
+	else
+		confd_seds+=( -e 's/^nftables_scripts=/#&/' )
+	fi
+	if ! use ipv6 || use nftables; then
+		confd_seds+=( -e 's/^ip6tables_scripts=/#&/' )
+	fi
 
 	newinitd "${FILESDIR}"/${PN}-init.d-r2 ${PN}
 	newconfd - ${PN} < <(sed "${confd_seds[@]}" \

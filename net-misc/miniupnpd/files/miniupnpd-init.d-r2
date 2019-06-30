@@ -21,6 +21,9 @@ start_pre() {
 	if [ -n "${ip6tables_scripts}" ]; then
 		/etc/miniupnpd/ip6tables_init.sh || retval=${?}
 	fi
+	if [ -n "${nftables_scripts}" ]; then
+		/etc/miniupnpd/nft_init.sh || retval=${?}
+	fi
 	
 	return ${retval}
 }
@@ -33,6 +36,9 @@ stop_post() {
 	fi
 	if [ -n "${ip6tables_scripts}" ]; then
 		/etc/miniupnpd/ip6tables_removeall.sh
+	fi
+	if [ -n "${nftables_scripts}" ]; then
+		/etc/miniupnpd/nft_removeall.sh
 	fi
 
 	return ${retval}
