@@ -439,11 +439,6 @@
     <url>https://wiki.gentoo.org/wiki/Project:Bug-cleaners</url>
     <description>The Gentoo Bug Cleaners project aims to clean up the oldest bugs in Bugzilla.</description>
     <member>
-      <email>amynka@gentoo.org</email>
-      <name>Amy Liffey</name>
-      <role>Member</role>
-    </member>
-    <member>
       <email>jstein@gentoo.org</email>
       <name>Jonas Stein</name>
       <role>Member</role>
