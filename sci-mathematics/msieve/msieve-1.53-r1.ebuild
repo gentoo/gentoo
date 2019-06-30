@@ -1,32 +1,33 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI="7"
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="A C library implementing a suite of algorithms to factor large integers"
 HOMEPAGE="https://sourceforge.net/projects/msieve/"
-SRC_URI="mirror://sourceforge/${PN}/${PN}/Msieve%20v${PV}/${PN}${PV/./}.tar.gz"
+SRC_URI="mirror://sourceforge/${PN}/${PN}/Msieve%20v${PV}/${PN}${PV/./}_src.tar.gz -> ${P}.tar.gz"
 
 LICENSE="public-domain"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="zlib +ecm mpi"
 
-# some linking troubles with gwnum
 DEPEND="
-	ecm? ( sci-mathematics/gmp-ecm[-gwnum] )
+	ecm? ( sci-mathematics/gmp-ecm )
 	mpi? ( virtual/mpi )
-	zlib? ( sys-libs/zlib )"
+	zlib? ( sys-libs/zlib:= )"
 RDEPEND="${DEPEND}"
 
 src_prepare() {
+	default
+
 	# TODO: Integrate ggnfs properly
-	epatch \
-		"${FILESDIR}"/${P}-reduce-printf.patch \
-		"${FILESDIR}"/fix-version.patch \
-		"${FILESDIR}"/fix-version2.patch
+	eapply \
+		"${FILESDIR}"/${PN}-1.51-reduce-printf.patch \
+		"${FILESDIR}"/${PN}-1.53-fix-version.patch
+
 	sed -i -e 's/-march=k8//' Makefile 		|| die
 	sed -i -e 's/CC =/#CC =/' Makefile 		|| die
 	sed -i -e 's/CFLAGS =/CFLAGS +=/' Makefile 	|| die
@@ -45,11 +46,11 @@ src_compile() {
 }
 
 src_install() {
-	mkdir -p "${D}/usr/include/msieve"
-	mkdir -p "${D}/usr/lib/"
-	mkdir -p "${D}/usr/share/doc/${P}/"
-	cp include/* "${D}/usr/include/msieve" || die "Failed to install"
-	cp libmsieve.a "${D}/usr/lib/" || die "Failed to install"
+	mkdir -p "${ED%/}/usr/include/msieve"
+	mkdir -p "${ED%/}/usr/lib/"
+	mkdir -p "${ED%/}/usr/share/doc/${P}/"
+	cp include/* "${ED%/}/usr/include/msieve" || die "Failed to install"
+	cp libmsieve.a "${ED%/}/usr/lib/" || die "Failed to install"
 	dobin msieve || die "Failed to install"
-	cp Readme* "${D}/usr/share/doc/${P}/" || die "Failed to install"
+	cp Readme* "${ED%/}/usr/share/doc/${P}/" || die "Failed to install"
 }
