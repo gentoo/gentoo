@@ -17,7 +17,7 @@ IUSE="debug doc emacs python"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 RESTRICT="test"
 
-SITEFILE=50${PN}-gentoo-${PV}.el
+SITEFILE=50${PN}-gentoo.el
 
 CHECKREQS_MEMORY=8G
 
