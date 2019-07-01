@@ -38,9 +38,6 @@
 	<flag name="openvz">
 		Support management of OpenVZ virtualisation (openvz-sources)
 	</flag>
-	<flag name="uml">
-		Support management of User Mode Linux virtualisation
-	</flag>
 	<flag name="qemu">
 		Support management of QEMU virtualisation (<pkg>app-emulation/qemu</pkg>)
 	</flag>
