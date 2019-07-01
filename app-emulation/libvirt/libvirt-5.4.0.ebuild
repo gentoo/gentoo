@@ -303,7 +303,6 @@ src_configure() {
 		--disable-static
 		--disable-werror
 
-		--with-html-subdir=${PF}/html
 		--localstatedir=/var
 	)
 
