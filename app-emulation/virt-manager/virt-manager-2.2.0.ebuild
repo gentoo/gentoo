@@ -1,12 +1,12 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=6
 
 PYTHON_COMPAT=( python3_{5,6,7} )
 DISTUTILS_SINGLE_IMPL=1
 
-inherit distutils-r1 xdg-utils
+inherit gnome2 distutils-r1
 
 DESCRIPTION="A graphical tool for administering virtual machines"
 HOMEPAGE="http://virt-manager.org"
@@ -73,7 +73,7 @@ src_install() {
 
 pkg_preinst() {
 	if use gtk; then
-		xdg_pkg_preinst
+		gnome2_pkg_preinst
 
 		cd "${ED}"
 		export GNOME2_ECLASS_ICONS=$(find 'usr/share/virt-manager/icons' -maxdepth 1 -mindepth 1 -type d 2> /dev/null)
@@ -90,5 +90,5 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	use gtk && xdg_pkg_postinst
+	use gtk && gnome2_pkg_postinst
 }

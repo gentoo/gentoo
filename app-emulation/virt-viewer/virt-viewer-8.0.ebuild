@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,14 +10,14 @@ SRC_URI="http://virt-manager.org/download/sources/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="sasl +spice +vnc"
 
 RDEPEND=">=app-emulation/libvirt-0.10.0[sasl?]
 	app-emulation/libvirt-glib
 	>=dev-libs/libxml2-2.6
 	x11-libs/gtk+:3
-	spice? ( >=net-misc/spice-gtk-0.33[sasl?,gtk3] )
+	spice? ( >=net-misc/spice-gtk-0.35[sasl?,gtk3] )
 	vnc? ( >=net-libs/gtk-vnc-0.5.0[sasl?,gtk3(+)] )"
 DEPEND="${RDEPEND}
 	dev-lang/perl
