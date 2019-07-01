@@ -56,6 +56,7 @@
 	</flag>
 	<!-- Miscellaneous flags -->
 	<flag name="apparmor">Enable AppArmor support</flag>
+	<flag name="dtrace">Enable dtrace support via <pkg>dev-util/systemtap</pkg></flag>
 	<flag name="fuse">Allow LXC to use <pkg>sys-fs/fuse</pkg> for mount
 		points</flag>
 	<flag name="numa">
