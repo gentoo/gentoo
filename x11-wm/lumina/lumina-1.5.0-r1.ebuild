@@ -18,12 +18,13 @@ COMMON_DEPEND="dev-qt/qtcore:5
 	dev-qt/qtconcurrent:5
 	dev-qt/qtmultimedia:5[widgets]
 	dev-qt/qtsvg:5
-	dev-qt/qtnetwork:5
+	dev-qt/qtnetwork:5[ssl]
 	dev-qt/qtwidgets:5
 	dev-qt/qtx11extras:5
 	dev-qt/qtgui:5
 	dev-qt/qtdeclarative:5
 	dev-qt/qtprintsupport:5
+	dev-qt/qtdbus:5
 	x11-libs/libxcb:0
 	x11-libs/xcb-util
 	x11-libs/xcb-util-image
@@ -70,6 +71,10 @@ src_configure(){
 src_install(){
 	emake install INSTALL_ROOT="${D}"
 	einstalldocs
+	mkdir -p "${D}"/usr/share/icons/hicolor/64x64/apps || die "cannot create the icons dir"
+	mv "${D}"/usr/share/icons/hicolor/scalable/apps/*.png "${D}"/usr/share/icons/hicolor/64x64/apps || die "cannot mv png icons"
+	exeinto /etc/X11/Sessions
+	newexe "${FILESDIR}/lumina-session" lumina ||die
 
 	remove_locale() {
 		rm -f "${ED%/}"/usr/share/${PN}-desktop/i18n/l*_${1}.qm
