@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+    <maintainer type="person">
+        <email>git@rxv.cc</email>
+        <name>kpcyrd</name>
+    </maintainer>
+    <upstream>
+        <remote-id type="github">kpcyrd/sn0int</remote-id>
+    </upstream>
+    <use>
+        <flag name="man">Build and install man pages.</flag>
+    </use>
+</pkgmetadata>
