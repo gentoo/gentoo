@@ -1,9 +1,15 @@
+acct-group/burp 0: Group for the app-backup/burp server
 acct-group/ftp 0: File Transfer Protocol server user
 acct-group/gamestat 0: Group for shared high-score and game state files
 acct-group/mail 0: Mail program group
+acct-group/rtkit 0: Group for the Realtime Policy and Watchdog Daemon
+acct-group/syncthing 0: Group for the system-wide net-p2p/syncthing server
+acct-user/burp 0: User for the app-backup/burp server
 acct-user/ftp 0: File Transfer Protocol server user
 acct-user/mail 0: Mail program user
 acct-user/postmaster 0: Postmaster user
+acct-user/rtkit 0: User for the Realtime Policy and Watchdog Daemon
+acct-user/syncthing 0: User for the system-wide net-p2p/syncthing server
 app-accessibility/SphinxTrain 1.0.8: Speech Recognition (Training Module)
 app-accessibility/accerciser 3.22.0: Interactive Python accessibility explorer
 app-accessibility/at-spi2-atk 2.26.2 2.30.1: Gtk module for bridging AT-SPI to Atk
