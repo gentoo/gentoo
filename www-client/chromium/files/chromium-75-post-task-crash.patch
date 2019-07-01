@@ -1,0 +1,52 @@
+From 00281713519dbd84b90d2996a009bf3a7e294435 Mon Sep 17 00:00:00 2001
+From: Alex Clarke <alexclarke@chromium.org>
+Date: Wed, 24 Apr 2019 13:15:09 +0000
+Subject: [PATCH] BindProcessNode to take a render process host id
+
+It's dangerous to post a task with a RenderProcessHost pointer because
+the RenderProcessHost can go away before the task is run.
+
+Bug: 863341
+Change-Id: I9a5e3ae068dd42ea5a68d6e4afcf77d7486eeac4
+Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/1581580
+Auto-Submit: Alex Clarke <alexclarke@chromium.org>
+Commit-Queue: Sigurður Ásgeirsson <siggi@chromium.org>
+Reviewed-by: Sigurður Ásgeirsson <siggi@chromium.org>
+Cr-Commit-Position: refs/heads/master@{#653553}
+---
+
+diff --git a/chrome/browser/performance_manager/chrome_content_browser_client_performance_manager_part.cc b/chrome/browser/performance_manager/chrome_content_browser_client_performance_manager_part.cc
+index 519d355..e0a2801 100644
+--- a/chrome/browser/performance_manager/chrome_content_browser_client_performance_manager_part.cc
++++ b/chrome/browser/performance_manager/chrome_content_browser_client_performance_manager_part.cc
+@@ -12,13 +12,19 @@
+ #include "chrome/browser/performance_manager/graph/process_node_impl.h"
+ #include "chrome/browser/performance_manager/performance_manager.h"
+ #include "chrome/browser/performance_manager/render_process_user_data.h"
++#include "content/public/browser/render_process_host.h"
+ #include "services/resource_coordinator/public/mojom/coordination_unit.mojom.h"
+ 
+ namespace {
+ 
+ void BindProcessNode(
+-    content::RenderProcessHost* render_process_host,
++    int render_process_host_id,
+     resource_coordinator::mojom::ProcessCoordinationUnitRequest request) {
++  content::RenderProcessHost* render_process_host =
++      content::RenderProcessHost::FromID(render_process_host_id);
++  if (!render_process_host)
++    return;
++
+   performance_manager::RenderProcessUserData* user_data =
+       performance_manager::RenderProcessUserData::GetForRenderProcessHost(
+           render_process_host);
+@@ -47,8 +53,7 @@
+         blink::AssociatedInterfaceRegistry* associated_registry,
+         content::RenderProcessHost* render_process_host) {
+   registry->AddInterface(
+-      base::BindRepeating(&BindProcessNode,
+-                          base::Unretained(render_process_host)),
++      base::BindRepeating(&BindProcessNode, render_process_host->GetID()),
+       base::SequencedTaskRunnerHandle::Get());
+ 
+   // Ideally this would strictly be a "CreateForRenderProcess", but when a
