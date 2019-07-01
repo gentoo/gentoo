@@ -66,8 +66,9 @@ distutils-r1_python_compile() {
 
 src_install() {
 	local mydistutilsargs=( --no-update-icon-cache --no-compile-schemas )
-
 	distutils-r1_src_install
+
+	python_fix_shebang "${ED}"/usr/share/virt-manager
 }
 
 pkg_preinst() {
