@@ -23,6 +23,8 @@ IUSE="png"
 RDEPEND="
 	dev-lang/perl
 	png? ( dev-perl/GD[png] )
+	dev-perl/JSON
+	dev-perl/PerlIO-gzip
 "
 
 src_prepare() {
