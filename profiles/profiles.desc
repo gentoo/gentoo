@@ -304,10 +304,7 @@ ppc-aix			prefix/aix/7.1.0.0/ppc				exp
 ppc-aix			prefix/aix/7.2.0.0/ppc				exp
 
 # Windows Profiles
-x86-winnt		prefix/windows/winnt/3.5/x86			exp
-x86-winnt		prefix/windows/winnt/5.2/x86			exp
-x86-winnt		prefix/windows/winnt/6.0/x86			exp
-x86-winnt		prefix/windows/winnt/6.1/x86			exp
+x86-winnt		prefix/windows/winnt/x86			exp
 
 # Cygwin Profiles
 x86-cygwin		prefix/windows/cygwin/x86			exp
