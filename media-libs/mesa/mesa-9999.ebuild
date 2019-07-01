@@ -37,7 +37,7 @@ done
 
 IUSE="${IUSE_VIDEO_CARDS}
 	+classic d3d9 debug +dri3 +egl +gallium +gbm gles1 +gles2 +libglvnd +llvm
-	lm_sensors opencl osmesa pax_kernel pic selinux test unwind vaapi valgrind
+	lm_sensors opencl osmesa pax_kernel selinux test unwind vaapi valgrind
 	vdpau vulkan vulkan-overlay wayland xa xvmc"
 
 REQUIRED_USE="
@@ -230,13 +230,11 @@ EGIT_CHECKOUT_DIR=${S}
 
 QA_WX_LOAD="
 x86? (
-	!pic? (
-		usr/lib*/libglapi.so.0.0.0
-		usr/lib*/libGLESv1_CM.so.1.0.0
-		usr/lib*/libGLESv2.so.2.0.0
-		usr/lib*/libGL.so.1.2.0
-		usr/lib*/libOSMesa.so.8.0.0
-	)
+	usr/lib*/libglapi.so.0.0.0
+	usr/lib*/libGLESv1_CM.so.1.0.0
+	usr/lib*/libGLESv2.so.2.0.0
+	usr/lib*/libGL.so.1.2.0
+	usr/lib*/libOSMesa.so.8.0.0
 )"
 
 llvm_check_deps() {
@@ -450,11 +448,6 @@ multilib_src_configure() {
 	# x86 hardened pax_kernel needs glx-rts, bug 240956
 	if [[ ${ABI} == x86 ]]; then
 		emesonargs+=( $(meson_use pax_kernel glx-read-only-text) )
-	fi
-
-	# on abi_x86_32 hardened we need to have asm disable
-	if [[ ${ABI} == x86* ]] && use pic; then
-		emesonargs+=( -Dasm=false )
 	fi
 
 	if use gallium; then

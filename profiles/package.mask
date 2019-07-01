@@ -255,11 +255,6 @@ dev-ros/sound_play
 # it. Removal in 30 days. Bug #581720.
 media-tv/tvbrowser
 
-# Jory A. Pratt <anarchy@gentoo.org> (2019-05-01)
-# No longer supported and or needed by in tree packages.
-# Masked for removal in 30 Days. Bug #684904
-dev-lang/spidermonkey:24
-
 # Jeroen Roovers <jer@gentoo.org> (2019-04-24)
 # Depends on =dev-libs/openssl-1.1.1* due to newly introduced
 # support for EVP_PKEY_ED25519 and EVP_PKEY_ED448 (bug #670574).
