@@ -42,7 +42,10 @@ DEPEND="${RDEPEND}
 
 DOCS=( AUTHORS README ChangeLog )
 
-PATCHES=( "${FILESDIR}/${PN}-0.8.0-tests.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-0.8.0-tests.patch"
+	"${FILESDIR}/${PN}-0.9.0-libressl.patch"
+)
 
 src_prepare() {
 	cmake-utils_src_prepare
