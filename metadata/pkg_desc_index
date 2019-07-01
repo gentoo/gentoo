@@ -6711,7 +6711,7 @@ java-virtuals/servlet-api 2.2 2.3 2.4 2.5-r2 3.0-r2 3.1-r1: Virtual for servlet 
 java-virtuals/stax-api 1-r4: Virtual for Streaming API for XML (StAX)
 java-virtuals/transaction-api 1.1: Virtual for Transaction API (javax.transaction)
 java-virtuals/xmlrpc-api 0: Virtual for XML RPC API (javax.xml.rpc)
-kde-apps/akonadi 18.12.3-r1: Storage service for PIM data and libraries for PIM apps
+kde-apps/akonadi 18.12.3-r2: Storage service for PIM data and libraries for PIM apps
 kde-apps/akonadi-calendar 18.12.3-r2: Library for akonadi calendar integration
 kde-apps/akonadi-contacts 18.12.3-r1: Library for akonadi contact integration
 kde-apps/akonadi-import-wizard 18.12.3-r1: Assistant to import PIM data from other applications into Akonadi

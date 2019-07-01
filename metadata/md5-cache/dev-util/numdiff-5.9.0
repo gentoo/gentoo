@@ -4,10 +4,10 @@ DESCRIPTION=File comparision, ignoring small numeric differences and formats
 EAPI=6
 HOMEPAGE=http://www.nongnu.org/numdiff/
 IUSE=+nls +gmp
-KEYWORDS=~amd64 ~x86
+KEYWORDS=~amd64 x86
 LICENSE=GPL-3+
 RDEPEND=gmp? ( dev-libs/gmp:0= ) nls? ( sys-devel/gettext ) !dev-util/ndiff
 SLOT=0
 SRC_URI=http://savannah.nongnu.org/download/numdiff/numdiff-5.9.0.tar.gz
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
-_md5_=48c5e8d6cb0791a02bbb545f2d5bb4dd
+_md5_=b0eb65bac9c487eae5d90eaf9134d3c3
