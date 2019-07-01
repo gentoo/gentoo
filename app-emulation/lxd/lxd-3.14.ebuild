@@ -8,7 +8,7 @@ HOMEPAGE="https://linuxcontainers.org/lxd/introduction/"
 
 LICENSE="Apache-2.0 BSD BSD-2 LGPL-3 MIT MPL-2.0"
 SLOT="0"
-KEYWORDS="amd64"
+KEYWORDS="~amd64"
 
 IUSE="+daemon +ipv6 +dnsmasq nls test tools"
 
@@ -91,7 +91,6 @@ EGO_PN="github.com/lxc/lxd"
 src_prepare() {
 	eapply_user
 	eapply "${FILESDIR}/de-translation-newline-1.patch"
-	eapply "${FILESDIR}/ptbr-translation-newline.patch"
 
 	cd "${S}/dist/dqlite" || die "Can't cd to dqlite dir"
 	eautoreconf
