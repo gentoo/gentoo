@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools desktop gnome2-utils xdg-utils
+inherit autotools desktop xdg-utils
 
 DESCRIPTION="Analog waveform viewer for SPICE-like simulations"
 HOMEPAGE="http://gwave.sourceforge.net"
@@ -45,11 +45,11 @@ src_install() {
 pkg_postinst() {
 	xdg_desktop_database_update
 	xdg_mimeinfo_database_update
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }
 
 pkg_postrm() {
 	xdg_desktop_database_update
 	xdg_mimeinfo_database_update
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }
