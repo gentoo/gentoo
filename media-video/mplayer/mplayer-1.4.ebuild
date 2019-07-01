@@ -244,11 +244,9 @@ src_prepare() {
 		# Set SVN version manually
 		subversion_wc_info
 		printf "${ESVN_WC_REVISION}" > $svf
-	else
-		has_version '>media-video/ffmpeg-3.5'
 	fi
-	if [ ! -f VERSION ] ; then
-		[ -f "$svf" ] || die "Missing ${svf}. Did you generate your snapshot with prepare_mplayer.sh?"
+	if [[ ! -f VERSION ]] ; then
+		[[ -f "$svf" ]] || die "Missing ${svf}. Did you generate your snapshot with prepare_mplayer.sh?"
 		local sv=$(<$svf)
 		printf "SVN-r${sv} (Gentoo)" > VERSION
 	fi
@@ -296,21 +294,21 @@ src_configure() {
 	uses="bl bluray enca ftp rtc vcd" # nemesi <- not working with in-tree ebuild
 	myconf+=" --disable-nemesi" # nemesi automagic disable
 	for i in ${uses}; do
-		use ${i} || myconf+=" --disable-${i}"
+		myconf+=" $(usex ${i} '' --disable-${i})"
 	done
-	use bidi  || myconf+=" --disable-fribidi"
-	use ipv6  || myconf+=" --disable-inet6"
-	use libass || myconf+=" --disable-ass"
-	use nut   || myconf+=" --disable-libnut"
-	use rar   || myconf+=" --disable-unrarexec"
-	use samba || myconf+=" --disable-smb"
-	use lirc  || myconf+=" --disable-lirc --disable-lircc --disable-apple-ir"
+	myconf+=" $(usex bidi '' --disable-fribidi)"
+	myconf+=" $(usex ipv6 '' --disable-inet6)"
+	myconf+=" $(usex libass '' --disable-ass)"
+	myconf+=" $(usex nut '' --disable-libnut)"
+	myconf+=" $(usex rar '' --disable-unrarexec)"
+	myconf+=" $(usex samba '' --disable-smb)"
+	myconf+=" $(usex lirc '' '--disable-lirc --disable-lircc --disable-apple-ir')"
 
 	# enable openssl support for https
 	# the binary cannot be redistributed if set
 	# by default gnutls will be enabled
 	if use ssl ; then
-		myconf+=" $(usex !gnutls '--disable-gnutls --enable-openssl-nondistributable')"
+		myconf+=" $(usex !gnutls '--disable-gnutls --enable-openssl-nondistributable' '')"
 	else
 		myconf+=" --disable-gnutls"
 	fi
@@ -321,8 +319,8 @@ src_configure() {
 		myconf+=" --disable-cdparanoia"
 	else
 		myconf+=" --disable-libcdio"
-		use cdparanoia || myconf+=" --disable-cdparanoia"
-		use cddb || myconf+=" --disable-cddb"
+		myconf+=" $(usex cdparanoia '' --disable-cdparanoia)"
+		myconf+=" $(usex cddb '' --disable-cddb)"
 	fi
 
 	################################
@@ -331,8 +329,8 @@ src_configure() {
 	#
 	# dvdread - accessing a DVD
 	# dvdnav - navigation of menus
-	use dvd || myconf+=" --disable-dvdread"
-	use dvdnav || myconf+=" --disable-dvdnav"
+	myconf+= " $(usex dvd '' --disable-dvdread)"
+	myconf+= " $(usex dvdnav '' --disabledvdnav)"
 
 	#############
 	# Subtitles #
@@ -341,9 +339,11 @@ src_configure() {
 	# SRT/ASS/SSA (subtitles) requires freetype support
 	# freetype support requires iconv
 	# iconv optionally can use unicode
-	use truetype || myconf+=" --disable-freetype"
-	use iconv || myconf+=" --disable-iconv --charset=noconv"
-	use iconv && use unicode && myconf+=" --charset=UTF-8"
+	myconf+=" $(usex truetype '' --disable-freetype)"
+	myconf+=" $(usex iconv '' '--disable-iconv --charset=noconv')"
+	if use iconv && use unicode; then
+		myconf+=" --charset=UTF-8"
+	fi
 
 	#####################################
 	# DVB / Video4Linux / Radio support #
@@ -354,9 +354,9 @@ src_configure() {
 	# gone since linux-headers-2.6.38
 	myconf+=" --disable-tv-v4l1"
 	if { use dvb || use v4l || use pvr || use radio; }; then
-		use dvb || myconf+=" --disable-dvb"
-		use pvr || myconf+=" --disable-pvr"
-		use v4l || myconf+=" --disable-tv-v4l2"
+		myconf+=" $(usex dvb '' --disable-dvb)"
+		myconf+=" $(usex pvr '' --disable-pvr)"
+		myconf+=" $(usex v4l '' --disable-tv-v4l2)"
 		if use radio && { use dvb || use v4l; }; then
 			myconf+="
 				--enable-radio
@@ -385,7 +385,7 @@ src_configure() {
 	##########
 	myconf+=" --disable-musepack" # Use internal musepack codecs for SV7 and SV8 support
 	myconf+=" --disable-libmpeg2-internal" # always use system media-libs/libmpeg2
-	use dts || myconf+=" --disable-libdca"
+	myconf+=" $(usex dts '' --disable-libdca)"
 	if ! use mp3; then
 		myconf+="
 			--disable-mp3lame
@@ -394,12 +394,12 @@ src_configure() {
 	fi
 	uses="a52 bs2b dv gsm lzo rtmp vorbis"
 	for i in ${uses}; do
-		use ${i} || myconf+=" --disable-lib${i}"
+		myconf+=" $(usex ${i} '' --disable-lib${i})"
 	done
 
 	uses="faad gif jpeg libmpeg2 live mad mng png pnm speex tga theora tremor"
 	for i in ${uses}; do
-		use ${i} || myconf+=" --disable-${i}"
+		myconf+=" $(usex ${i} '' --disable-${i})"
 	done
 	# Pulls an outdated libopenjpeg, ffmpeg provides better support for it
 	myconf+=" --disable-libopenjpeg"
@@ -408,13 +408,15 @@ src_configure() {
 	uses="faac x264 xvid toolame twolame"
 	if use encode; then
 		for i in ${uses}; do
-			use ${i} || myconf+=" --disable-${i}"
+			myconf+=" $(usex ${i} '' --disable-${i})"
 		done
 	else
 		myconf+=" --disable-mencoder"
 		for i in ${uses}; do
 			myconf+=" --disable-${i}"
-			use ${i} && elog "Useflag \"${i}\" will only be useful for encoding, i.e., with \"encode\" useflag enabled."
+			if use ${i}; then
+				elog "Useflag \"${i}\" will only be useful for encoding, i.e., with \"encode\" useflag enabled."
+			fi
 		done
 	fi
 
@@ -428,14 +430,14 @@ src_configure() {
 	################
 	uses="md5sum sdl yuv4mpeg"
 	for i in ${uses}; do
-		use ${i} || myconf+=" --disable-${i}"
+		myconf+=" $(usex ${i} '' --disable-${i})"
 	done
-	use aalib || myconf+=" --disable-aa"
-	use fbcon || myconf+=" --disable-fbdev"
-	use libcaca || myconf+=" --disable-caca"
-	use zoran || myconf+=" --disable-zr"
+	myconf+=" $(usex aalib '' --disable-aa)"
+	myconf+=" $(usex fbcon '' --disable-fbdev)"
+	myconf+=" $(usex libcaca '' --disable-caca)"
+	myconf+=" $(usex zoran '' --disable-zr)"
 
-	if ! use kernel_linux || ! use video_cards_mga; then
+	if [ ! use kernel_linux || ! use video_cards_mga ]; then
 		 myconf+=" --disable-mga --disable-xmga"
 	fi
 
@@ -454,18 +456,20 @@ src_configure() {
 	myconf+=" --disable-esd"
 	uses="alsa jack ladspa nas openal"
 	for i in ${uses}; do
-		use ${i} || myconf+=" --disable-${i}"
+		myconf+=" $(usex ${i} '' --disable-${i})"
 	done
-	use pulseaudio || myconf+=" --disable-pulse"
+	myconf+=" $(usex pulseaudio '' --disable-pulse)"
 	if ! use radio; then
-		use oss || myconf+=" --disable-ossaudio"
+		myconf+=" $(usex oss '' --disable-ossaudio)"
 	fi
 
 	####################
 	# Advanced Options #
 	####################
 	# Platform specific flags, hardcoded on amd64 (see below)
-	use cpudetection && myconf+=" --enable-runtime-cpudetection"
+	if use cpudetection; then
+		myconf+=" --enable-runtime-cpudetection"
+	fi
 
 	uses="3dnow 3dnowext mmx mmxext sse sse2 ssse3"
 	for i in ${uses}; do
@@ -477,7 +481,9 @@ src_configure() {
 		myconf+=" $(use_enable ${i})"
 	done
 
-	use debug && myconf+=" --enable-debug=3"
+	if use debug; then
+		myconf+=" --enable-debug=3"
+	fi
 
 	if use x86 && gcc-specs-pie; then
 		filter-flags -fPIC -fPIE
@@ -491,14 +497,16 @@ src_configure() {
 	myconf+=" --disable-vesa"
 	uses="ggi vdpau xinerama xv"
 	for i in ${uses}; do
-		use ${i} || myconf+=" --disable-${i}"
+		myconf+=" $(usex ${i} '' --disable-${i})"
 	done
-	use dga          || myconf+=" --disable-dga1 --disable-dga2"
-	use opengl       || myconf+=" --disable-gl"
-	use osdmenu      && myconf+=" --enable-menu"
-	use vidix        || myconf+=" --disable-vidix --disable-vidix-pcidb"
-	use xscreensaver || myconf+=" --disable-xss"
-	use X            || myconf+=" --disable-x11"
+	myconf+=" $(usex dga '' '--disable-dga1 --disable-dga2')"
+	myconf+=" $(usex opengl '' --disable-gl)"
+	if use osdmenu; then
+		myconf+=" --enable-menu"
+	fi
+	myconf+=" $(usex vidix '' '--disable-vidix --disable-vidix-pcidb')"
+	myconf+=" $(usex xscreensaver '' --disable-xss)"
+	myconf+=" $(usex X '' --disable-x11)"
 
 	############################
 	# OSX (aqua) configuration #
