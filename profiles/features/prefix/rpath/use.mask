@@ -7,6 +7,6 @@
 # multilib is never going to work as expected in Prefix rpath
 multilib
 
-# Benda Xu <heroxbd@gentoo.org> (26 Jun 2019)
+# Benda Xu <heroxbd@gentoo.org> (2019-06-26)
 # Not supported
 eselect-ldso

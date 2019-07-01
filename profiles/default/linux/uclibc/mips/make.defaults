@@ -10,7 +10,7 @@ CXXFLAGS="${CFLAGS}"
 FFLAGS="${CFLAGS}"
 FCFLAGS="${CFLAGS}"
 
-# Anthony G. Basile <blueness@gentoo.org> (01 Jul 2014)
+# Anthony G. Basile <blueness@gentoo.org> (2014-07-01)
 # Multilib-related setup, bug #515130
 ABI="o32"
 DEFAULT_ABI="o32"

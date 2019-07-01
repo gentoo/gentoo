@@ -1,10 +1,10 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Fabian Groffen <grobian@gentoo.org> (24 Mar 2012)
+# Fabian Groffen <grobian@gentoo.org> (2012-03-24)
 # Non-threaded target doesn't exist for Mac OS X Intel
 media-gfx/tachyon threads opengl
 
-# Elias Pipping <pipping@gentoo.org> (29 Nov 2007)
+# Elias Pipping <pipping@gentoo.org> (2007-11-29)
 # won't compile without
 media-libs/libsdl opengl

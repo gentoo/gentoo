@@ -4,11 +4,11 @@
 # Unmask the flag which corresponds to ARCH.
 -m68k
 
-# Andreas Sturmlechner <asturm@gentoo.org> (31 Mar 2019)
+# Andreas Sturmlechner <asturm@gentoo.org> (2019-03-31)
 # sys-auth/elogind is not keyworded here.
 elogind
 
-# James Le Cuirot <chewi@gentoo.org> (29 Jun 2017)
+# James Le Cuirot <chewi@gentoo.org> (2017-06-29)
 # Unmask as this profile is big endian.
 -big-endian
 
@@ -69,7 +69,7 @@ tk
 clang
 
 # USE=audit masked prior to testing on alpha, arm, hppa, ppc64, s390, sh.
-# Bug #184563, 18 Sep 2007 
+# Bug #184563, (2007-09-18)
 # Robin H. Johnson <robbat2@gentoo.org>
 audit
 
@@ -85,7 +85,7 @@ pango
 avahi
 zeroconf
 
-# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (22 Aug 2013)
+# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (2013-08-22)
 # virtual/opencl is not keyworded
 opencl
 

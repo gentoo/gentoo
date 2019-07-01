@@ -1,15 +1,15 @@
-# Matthew Thode <prometheanfire@gentoo.org> (30 Jul 2018)
+# Matthew Thode <prometheanfire@gentoo.org> (2018-07-30)
 # sys-apps/bolt links against systemd, which gentoo SELinux does not support
 sys-apps/bolt
 
-# Göktürk Yüksek <gokturk@gentoo.org> (09 Nov 2016)
+# Göktürk Yüksek <gokturk@gentoo.org> (2016-11-09)
 # On behalf of proxy-maint
 # Mask due to the package requiring systemd
 # and causing unresolvable dep issues
 # See: https://github.com/gentoo/gentoo/pull/2262
 www-misc/profile-sync-daemon
 
-# Jason Zaman <perfinion@gentoo.org> (27 Jun 2015)
+# Jason Zaman <perfinion@gentoo.org> (2015-06-27)
 # SystemD has no support in the SELinux policy at the moment.
 # Please see: https://wiki.gentoo.org/wiki/SELinux/FAQ#Can_I_use_SELinux_with_SystemD.3F
 app-admin/systemdgenie
@@ -46,7 +46,7 @@ sys-apps/systemd-readahead
 sys-process/systemd-cron
 sys-apps/dbus-broker
 
-# Gilles Dartiguelongue <eva@gentoo.org> (24 May 2018)
+# Gilles Dartiguelongue <eva@gentoo.org> (2018-05-24)
 # Packages use systemd unconditionally for now
 >=app-admin/abrt-2.10
 app-admin/gnome-abrt

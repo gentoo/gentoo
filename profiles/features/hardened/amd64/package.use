@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Magnus Granberg <zorry@gentoo.org> (14 Jan, 2015)
+# Magnus Granberg <zorry@gentoo.org> (2015-01-14)
 # We need to have the pic flag on.
 # Bugs 358929, 490276, 513464, 523736 and 512208.
 media-libs/x264 pic

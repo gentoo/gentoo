@@ -3,7 +3,7 @@
 
 CHOST="x86_64-gentoo-linux-musl"
 
-# Anthony G. Basile <blueness@gentoo.org> (01 Jul 2014)
+# Anthony G. Basile <blueness@gentoo.org> (2014-07-01)
 # Multilib-related setup, bug #515130
 MULTILIB_ABIS="amd64"
 CHOST_amd64="${CHOST}"

@@ -1,11 +1,11 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Jeroen Roovers <jer@gentoo.org> (23 Feb 2019)
+# Jeroen Roovers <jer@gentoo.org> (2019-02-23)
 # sdjournal links against sys-apps/systemd's libraries
 net-analyzer/wireshark sdjournal
 
-# Brian Dolbec <dolsen@gentoo.org> (17 Sep 2014)
+# Brian Dolbec <dolsen@gentoo.org> (2014-09-17)
 # mask pypy for several utilities due to incompatibility with libselinux
 sys-apps/portage python_targets_pypy python_targets_pypy3
 app-portage/gentoolkit python_targets_pypy python_targets_pypy3
@@ -16,7 +16,7 @@ app-portage/flaggie python_targets_pypy python_targets_pypy3
 app-portage/gentoopm python_targets_pypy python_targets_pypy3
 app-portage/gpyutils python_targets_pypy python_targets_pypy3
 
-# Jason Zaman <perfinion@gentoo.org> (27 Jun 2015)
+# Jason Zaman <perfinion@gentoo.org> (2015-06-27)
 # SystemD has no support in the SELinux policy at the moment.
 # Please see: https://wiki.gentoo.org/wiki/SELinux/FAQ#Can_I_use_SELinux_with_SystemD.3F
 app-emulation/libvirt firewalld
@@ -32,6 +32,6 @@ x11-terms/gnome-terminal gnome-shell
 x11-themes/zukitwo gnome-shell
 net-wireless/bluez user-session
 
-# Alex Brandt <alunduil@gentoo.org> (6 Sep 2015)
+# Alex Brandt <alunduil@gentoo.org> (2015-09-06)
 # app-emulation/rkt[rkt_stage1_src] requires systemd which isn't available with selinux.
 app-emulation/rkt rkt_stage1_src

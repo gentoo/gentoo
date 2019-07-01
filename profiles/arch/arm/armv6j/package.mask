@@ -1,7 +1,7 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-# James Le Cuirot <chewi@gentoo.org> (09 Jan 2016)
+# James Le Cuirot <chewi@gentoo.org> (2016-01-09)
 # This is built for armv6 so unmask against the wider arm mask.
 -dev-java/oracle-jdk-bin
 -dev-java/oracle-jre-bin

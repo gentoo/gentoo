@@ -1,11 +1,11 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Fabian Groffen <grobian@gentoo.org> (29 Nov 2018)
+# Fabian Groffen <grobian@gentoo.org> (2018-11-29)
 # libgcrypt relies on GCC pragma to disable optimisation, but we use Clang
 dev-libs/libgcrypt o-flag-munging
 
-# Fabian Groffen <grobian@gentoo.org> (20 Dec 2016)
+# Fabian Groffen <grobian@gentoo.org> (2016-12-20)
 # Force the host target to avoid dependency hell
 dev-ml/llvm-ocaml llvm_targets_X86
 sys-devel/clang llvm_targets_X86

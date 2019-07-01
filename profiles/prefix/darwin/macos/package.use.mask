@@ -1,27 +1,27 @@
 # Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Andrey Utkin <andrey_utkin@gentoo.org> (11 Mar 2018)
+# Andrey Utkin <andrey_utkin@gentoo.org> (2018-03-11)
 # This flag can be sensibly enabled only on macos
 # hence it is masked in base profile. Bug #637482
 media-video/ffmpeg -appkit
 
-# James Le Cuirot <chewi@gentoo.org> (29 Jul 2015)
+# James Le Cuirot <chewi@gentoo.org> (2015-07-29)
 # JavaFX is included on Mac OS. I think a browser plugin is too but as
 # libjvm rather than libnpjp2 like on Linux so keep nsplugin masked.
 dev-java/oracle-jdk-bin -javafx
 dev-java/oracle-jre-bin -javafx
 
-# Fabian Groffen <grobian@gentoo.org> (30 Oct 2009)
+# Fabian Groffen <grobian@gentoo.org> (2009-10-30)
 # X and linux only
 media-video/mplayer xv dga X xinerama xscreensaver
 media-video/mplayer dvb lirc jack joystick
 
-# Fabian Groffen <grobian@gentoo.org> (06 Aug 2008)
+# Fabian Groffen <grobian@gentoo.org> (2008-08-06)
 # runtime loading is horribly broken (it uses fixed .so.0, but when
 # that's fixed it still doesn't work)
 dev-vcs/subversion dso
 
-# Elias Pipping <pipping@gentoo.org> (27 Aug 2007)
+# Elias Pipping <pipping@gentoo.org> (2007-08-27)
 # elinks does not compile with USE=perl (tested with 0.11.{2,3})
 www-client/elinks perl

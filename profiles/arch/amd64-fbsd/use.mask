@@ -33,69 +33,69 @@
 #-video_cards_vmware
 -input_devices_vmmouse
 
-# Andreas Sturmlechner <asturm@gentoo.org> (31 Mar 2019)
+# Andreas Sturmlechner <asturm@gentoo.org> (2019-03-31)
 # sys-auth/elogind is not keyworded here.
 elogind
 
-# Ulrich Müller <ulm@gentoo.org> (01 May 2018)
+# Ulrich Müller <ulm@gentoo.org> (2018-05-01)
 # virtual/mysql is not keyworded.
 mysql
 
-# Michał Górny <mgorny@gentoo.org> (21 Apr 2018)
+# Michał Górny <mgorny@gentoo.org> (2018-04-21)
 # net-wireless/bluez.
 bluetooth
 
-# Michał Górny <mgorny@gentoo.org> (02 Mar 2018)
+# Michał Górny <mgorny@gentoo.org> (2018-03-02)
 # Requires dev-libs/libressl (not yet tested).
 curl_ssl_libressl
 
-# Michał Górny <mgorny@gentoo.org> (02 Mar 2018)
+# Michał Górny <mgorny@gentoo.org> (2018-03-02)
 # Someone needs to test them.
 input_devices_libinput
 
-# Michał Górny <mgorny@gentoo.org> (01 Mar 2018)
+# Michał Górny <mgorny@gentoo.org> (2018-03-01)
 # virtual/mpi not keyworded at the moment.
 mpi
 
-# Michał Górny <mgorny@gentoo.org> (01 Mar 2018)
+# Michał Górny <mgorny@gentoo.org> (2018-03-01)
 # sys-process/audit seems pretty Linux-specific.
 audit
 
-# Michał Górny <mgorny@gentoo.org> (25 Feb 2018)
+# Michał Górny <mgorny@gentoo.org> (2018-02-25)
 # google-perftools does not work on FreeBSD.
 tcmalloc
 
-# Michał Górny <mgorny@gentoo.org> (17 Feb 2018)
+# Michał Górny <mgorny@gentoo.org> (2018-02-17)
 # libraw is not keyworded here.
 raw
 
-# Michał Górny <mgorny@gentoo.org> (17 Feb 2018)
+# Michał Górny <mgorny@gentoo.org> (2018-02-17)
 # libav is not keyworded here.
 libav
 
-# Mart Raudsepp <leio@gentoo.org> (11 Feb 2018)
+# Mart Raudsepp <leio@gentoo.org> (2018-02-11)
 # dev-util/valgrind is not keyworded here.
 valgrind
 
-# Michał Górny <mgorny@gentoo.org> (23 Jan 2018)
+# Michał Górny <mgorny@gentoo.org> (2018-01-23)
 # sys-libs/libseccomp is not keyworded here.
 seccomp
 
-# Michał Górny <mgorny@gentoo.org> (23 Jan 2018)
+# Michał Górny <mgorny@gentoo.org> (2018-01-23)
 # net-fs/samba is not keyworded here.
 samba
 
-# James Le Cuirot <chewi@gentoo.org> (19 May 2015)
+# James Le Cuirot <chewi@gentoo.org> (2015-05-19)
 # icedtea needs testing and gcj isn't supported
 java
 
 # Other
 
-# Alexandre Rostovtsev <tetromino@gentoo.org> (09 Dec 2012)
+# Alexandre Rostovtsev <tetromino@gentoo.org> (2012-12-09)
 # Orc optimisations work fine on amd64 and x86
 -orc
 
-# Diego Elio Pettenò <flameeyes@gentoo.org> (21 Aug 2012)
+# Diego Elio Pettenò <flameeyes@gentoo.org> (2012-08-21)
 # IPMI is only implemented for x86, amd64 and ia64
 -ipmi
 
@@ -103,14 +103,14 @@ java
 -abi_x86_32
 -abi_x86_64
 
-# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (22 Aug 2013)
+# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (2013-08-22)
 # virtual/opencl is not keyworded
 opencl
 
-# Hans de Graaff <graaff@gentoo.org> (27 Dec 2014)
+# Hans de Graaff <graaff@gentoo.org> (2014-12-27)
 # dev-libs/jemalloc is not keyworded
 jemalloc
 
-# Benda Xu <heroxbd@gentoo.org> (26 Jun 2019)
+# Benda Xu <heroxbd@gentoo.org> (2019-06-26)
 # Not tested
 eselect-ldso

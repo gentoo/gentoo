@@ -8,7 +8,7 @@
 #
 ## Example:
 ##
-## # Dev E. Loper <developer@gentoo.org> (28 Jun 2012)
+## # Dev E. Loper <developer@gentoo.org> (2012-06-28)
 ## # Masking foo USE flag until we can get the
 ## # foo stuff to work properly again (bug 12345)
 ## =media-video/mplayer-0.90_pre5 foo
@@ -17,30 +17,30 @@
 
 #--- END OF EXAMPLES ---
 
-# Sergei Trofimovich <slyfox@gentoo.org> (03 May 2019)
+# Sergei Trofimovich <slyfox@gentoo.org> (2019-05-03)
 # Requires net-libs/webkit-gtk. Not stable on sparc.
 dev-util/geany-plugins markdown
 
-# Sergei Trofimovich <slyfox@gentoo.org> (31 Mar 2019)
+# Sergei Trofimovich <slyfox@gentoo.org> (2019-03-31)
 # No stable dovecot on net-mail/dovecot, bug #634822.
 mail-filter/maildrop dovecot
 
-# Sergei Trofimovich <slyfox@gentoo.org> (25 Dec 2018)
+# Sergei Trofimovich <slyfox@gentoo.org> (2018-12-25)
 # Needs net-mail/mailutils and net-libs/webkit-gtk which are not
 # stable (yet?), bug #663248
 app-editors/emacs mailutils xwidgets
 
-# Andreas Sturmlechner <asturm@gentoo.org> (14 Sep 2018)
+# Andreas Sturmlechner <asturm@gentoo.org> (2018-09-14)
 # media-libs/libraw is not stable
 media-gfx/imagemagick raw
 
-# Andreas Sturmlechner <asturm@gentoo.org> (7 May 2018)
+# Andreas Sturmlechner <asturm@gentoo.org> (2018-05-07)
 # sci-visualization/gnuplot is not stable.
 app-admin/sysstat isag
 sci-libs/libqalculate gnuplot
 sci-mathematics/octave gnuplot
 
-# Mart Raudsepp <leio@gentoo.org> (02 Sep 2017)
+# Mart Raudsepp <leio@gentoo.org> (2017-09-02)
 # Drop stable gstreamer on sparc, can move to use.stable.mask
 # after gstreamer:0.10 is gone; #601354
 dev-libs/efl gstreamer
@@ -48,12 +48,12 @@ media-sound/mp3splt-gtk gstreamer
 net-im/pidgin gstreamer
 media-libs/libcanberra gstreamer
 
-# Pacho Ramos <pacho@gentoo.org> (02 Aug 2015)
+# Pacho Ramos <pacho@gentoo.org> (2015-08-02)
 # Missing keywords
 dev-python/pyquery test
 sys-fs/dmraid klibc
 
-# Pacho Ramos <pacho@gentoo.org> (02 Jul 2014)
+# Pacho Ramos <pacho@gentoo.org> (2014-07-02)
 # Mask due Gnome3 not going to be stabilized on this arch
 dev-util/geany-plugins gtkspell
 >=gnome-base/gnome-desktop-2.32.1-r2 license-docs

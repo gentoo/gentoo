@@ -1,72 +1,72 @@
 # Copyright 1999-2019 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-# Aaron Bauman <bman@gentoo.org> (27 May 2019)
+# Aaron Bauman <bman@gentoo.org> (2019-05-27)
 # media-libs/dav1d is not stable
 ~media-video/vlc-3.0.6 dav1d
 
-# Aaron Bauman <bman@gentoo.org> (20 May 2019)
+# Aaron Bauman <bman@gentoo.org> (2019-05-20)
 # deps are not stable yet
 virtual/notification-daemon gnome kde
 
-# Aaron Bauman <bman@gentoo.org> (15 May 2019)
+# Aaron Bauman <bman@gentoo.org> (2019-05-15)
 # packages for these USE flags fail tests
 media-libs/opencv contrib_cvv contrib_hdf contrib_sfm glog gstreamer
 
-# Andreas Sturmlechner <asturm@gentoo.org> (10 Feb 2019)
+# Andreas Sturmlechner <asturm@gentoo.org> (2019-02-10)
 # kde-frameworks/kconfig is not stable for arm64
 net-libs/libproxy kde
 
-# Andreas Sturmlechner <asturm@gentoo.org> (10 Feb 2019)
+# Andreas Sturmlechner <asturm@gentoo.org> (2019-02-10)
 # kde-plasma/polkit-kde-agent is not stable for arm64
 sys-auth/polkit kde
 
-# Mart Raudsepp <leio@gentoo.org> (18 Jan 2019)
+# Mart Raudsepp <leio@gentoo.org> (2019-01-18)
 # Respective x11-drivers/ not tested and stable yet
 x11-base/xorg-drivers input_devices_elographics input_devices_joystick input_devices_void video_cards_dummy video_cards_fbdev video_cards_nouveau
 
-# Mart Raudsepp <leio@gentoo.org> (11 Sep 2018)
+# Mart Raudsepp <leio@gentoo.org> (2018-09-11)
 # net-wireless/bluez not stable yet
 dev-lang/python bluetooth
 
-# Mart Raudsepp <leio@gentoo.org> (24 Jul 2018)
+# Mart Raudsepp <leio@gentoo.org> (2018-07-24)
 # Temporary mask due to test failures in sys-libs/libcxxabi
 # and sys-libs/compiler-rt-sanitizers
 sys-devel/clang-runtime libcxx sanitize
 sys-devel/clang default-libcxx
 
-# Mart Raudsepp <leio@gentoo.org> (28 Jun 2018)
+# Mart Raudsepp <leio@gentoo.org> (2018-06-28)
 # net-misc/lksctp-tools not stable yet
 dev-libs/openssl sctp
 dev-libs/openssl-compat sctp
 net-misc/openssh sctp
 
-# Mart Raudsepp <leio@gentoo.org> (30 May 2018)
+# Mart Raudsepp <leio@gentoo.org> (2018-05-30)
 # app-text/docbook2X not stable yet, fails tests (bug #511902)
 dev-vcs/git doc
 
-# Mart Raudsepp <leio@gentoo.org> (29 May 2018)
+# Mart Raudsepp <leio@gentoo.org> (2018-05-29)
 # sys-devel/clang, dev-libs/xapian, app-text/texlive not stable yet
 # USE=doc requires USE=latex
 app-doc/doxygen clang doxysearch doc
 
-# Mart Raudsepp <leio@gentoo.org> (29 May 2018)
+# Mart Raudsepp <leio@gentoo.org> (2018-05-29)
 # virtual/opengl and media-libs/freeglut not stable yet
 media-libs/libwebp opengl
 
-# Mart Raudsepp <leio@gentoo.org> (06 May 2018)
+# Mart Raudsepp <leio@gentoo.org> (2018-05-06)
 # No media-libs/freeglut and co stable yet
 media-libs/jasper opengl
 
-# Mart Raudsepp <leio@gentoo.org> (04 May 2018)
+# Mart Raudsepp <leio@gentoo.org> (2018-05-04)
 # sci-libs/mpir fails tests, bug 640424
 dev-python/gmpy mpir
 
-# Michał Górny <mgorny@gentoo.org> (01 May 2018)
+# Michał Górny <mgorny@gentoo.org> (2018-05-01)
 # More non-stable dependencies.
 dev-python/urllib3 test
 
-# Michał Górny <mgorny@gentoo.org> (15 Apr 2018)
+# Michał Górny <mgorny@gentoo.org> (2018-04-15)
 # Non-stable dependencies.
 app-admin/syslog-ng spoof-source
 app-portage/layman cvs subversion test
@@ -79,15 +79,15 @@ sys-block/thin-provisioning-tools test
 sys-devel/distcc gssapi
 sys-devel/gettext cvs
 
-# Michał Górny <mgorny@gentoo.org> (03 Mar 2018)
+# Michał Górny <mgorny@gentoo.org> (2018-03-03)
 # Requires masked dependent flags.
 net-dns/avahi python
 
-# Michał Górny <mgorny@gentoo.org> (28 Feb 2018)
+# Michał Górny <mgorny@gentoo.org> (2018-02-28)
 # Requires masked dependent flags.
 net-fs/samba ads
 
-# Michał Górny <mgorny@gentoo.org> (19 Feb 2018)
+# Michał Górny <mgorny@gentoo.org> (2018-02-19)
 # Masked due to unstable deps.
 dev-db/redis tcmalloc
 dev-python/hgdistver test
@@ -98,6 +98,6 @@ dev-python/sphinx latex test
 dev-python/twisted-core gtk serial
 net-analyzer/netcat crypt
 
-# Michał Górny <mgorny@gentoo.org> (07 Feb 2018)
+# Michał Górny <mgorny@gentoo.org> (2018-02-07)
 # sys-libs/tevent is not stable here.
 dev-libs/libverto tevent

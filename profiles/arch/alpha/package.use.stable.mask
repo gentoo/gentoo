@@ -8,7 +8,7 @@
 #
 ## Example:
 ##
-## # Dev E. Loper <developer@gentoo.org> (28 Jun 2012)
+## # Dev E. Loper <developer@gentoo.org> (2012-06-28)
 ## # Masking foo USE flag until we can get the
 ## # foo stuff to work properly again (bug 12345)
 ## =media-video/mplayer-0.90_pre5 foo
@@ -17,22 +17,22 @@
 
 #--- END OF EXAMPLES ---
 
-# Andreas Sturmlechner <asturm@gentoo.org> (02 Dec 2018)
+# Andreas Sturmlechner <asturm@gentoo.org> (2018-12-02)
 # gnome-base/nautilus is not stable
 media-sound/easytag nautilus
 
-# Ulrich Müller <ulm@gentoo.org> (09 Aug 2018)
+# Ulrich Müller <ulm@gentoo.org> (2018-08-09)
 # Needs net-mail/mailutils and net-libs/webkit-gtk which are not
 # stable (yet?), bug #663248
 app-editors/emacs mailutils xwidgets
 
-# Tobias Klausmann <klausman@gentoo.org> (17 Sep 2015)
+# Tobias Klausmann <klausman@gentoo.org> (2015-09-17)
 # Move this mask here (from package.use.mask) until net-fs/libnfs goes stable.
-# Gilles Dartiguelongue <eva@gentoo.org> (09 Jun 2015)
+# Gilles Dartiguelongue <eva@gentoo.org> (2015-06-09)
 # net-fs/libnfs lacks alpha keyword, bug #551576
 gnome-base/gvfs nfs
 
-# Pacho Ramos <pacho@gentoo.org> (02 Jul 2014)
+# Pacho Ramos <pacho@gentoo.org> (2014-07-02)
 # Mask due Gnome3 not going to be stabilized on this arch
 dev-util/geany-plugins gtkspell
 >=gnome-base/gnome-desktop-2.32.1-r2 license-docs
