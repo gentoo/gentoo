@@ -11,6 +11,6 @@ MULTILIB_ABIS="ppc"
 DEFAULT_ABI="ppc"
 ACCEPT_KEYWORDS="${ARCH} -ppc64"
 
-# Michał Górny <mgorny@gentoo.org> (27 Jun 2014)
+# Michał Górny <mgorny@gentoo.org> (2014-06-27)
 # Make the ABI flag implicit for compatibility with native ebuilds.
 IUSE_IMPLICIT="abi_ppc_32 -abi_ppc_64"

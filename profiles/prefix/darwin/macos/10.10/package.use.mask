@@ -1,7 +1,7 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-# Fabian Groffen <grobian@gentoo.org> (10 Apr 2011)
+# Fabian Groffen <grobian@gentoo.org> (2011-04-10)
 # as long as util-linux installs uuid.h which breaks the system headers
 # (hence we don't) we can't do uuid support here
 x11-libs/libSM -uuid

@@ -1,31 +1,31 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-# Michał Górny <mgorny@gentoo.org> (20 Sep 2018)
+# Michał Górny <mgorny@gentoo.org> (2018-09-20)
 # dev-libs/libpfm has broken install rules for FreeBSD. Bug #666649.
 sys-devel/llvm exegesis
 
-# Fabian Groffen <grobian@gentoo.org> (07 Dec 2016)
+# Fabian Groffen <grobian@gentoo.org> (2016-12-07)
 # unkeyworded notmuch dependency, bug #587560
 mail-client/mutt notmuch
 
-# Matthias Maier <tamiko@gentoo.org> (24 Dec 2014)
+# Matthias Maier <tamiko@gentoo.org> (2014-12-24)
 # dev-libs/xapian is currently not keyworded for any *-bsd profile
 app-doc/doxygen doxysearch
 
-# Mikle Kolyada <zlogene@gentoo.org> (07 Dec 2014)
+# Mikle Kolyada <zlogene@gentoo.org> (2014-12-07)
 # There are a lot of unkeyworded dev-perl/* packages
 dev-vcs/git mediawiki mediawiki-experimental
 
-# Robin H. Johnson <robbat2@gentoo.org> (05 Jan 2014)
+# Robin H. Johnson <robbat2@gentoo.org> (2014-01-05)
 # Pending keywording of net-libs/miniupnpc per bug #497186
 net-proxy/dante upnp
 
-# Naohiro Aota <naota@gentoo.org> (14 Oct 2013)
+# Naohiro Aota <naota@gentoo.org> (2013-10-14)
 # libcap-ng is for Linux only
 net-analyzer/tcpdump drop-root
 
-# Sebastian Pipping <sping@gentoo.org> (22 Feb 2011)
+# Sebastian Pipping <sping@gentoo.org> (2011-02-22)
 # No dev-util/source-highlight or media-sound/lilypond here, yet (bug #356069, bug #344289)
 app-text/asciidoc test highlight
 
@@ -41,35 +41,35 @@ sys-apps/help2man nls
 # NetworkManager is Linux-only, Zephyr requires kerberos
 net-im/pidgin networkmanager zephyr
 
-# Alexis Ballier <aballier@gentoo.org> (18 Jul 2008)
+# Alexis Ballier <aballier@gentoo.org> (2008-07-18)
 # Requires a linux only library,  bug #226085
 dev-lang/erlang sctp
 
-# Alexis Ballier <aballier@gentoo.org> (8 Aug 2008)
+# Alexis Ballier <aballier@gentoo.org> (2008-08-08)
 # Linux only useflags for vlc
 media-video/vlc dc1394 ieee1394
 
-# Alexis Ballier <aballier@gentoo.org> (8 Aug 2008)
+# Alexis Ballier <aballier@gentoo.org> (2008-08-08)
 # Depends on torque which is a linux only thing
 # lksctp-tools is linux only too
 sys-cluster/openmpi openmpi_rm_pbs openmpi_fabrics_sctp
 
-# Alexis Ballier <aballier@gentoo.org> (25 Sep 2008)
+# Alexis Ballier <aballier@gentoo.org> (2008-09-25)
 # elf -> dev-libs/elfutils is too tight to the gnu libc
 # rpm could be masked but we have rpm 5 keyworded even if it's still masked.
 net-analyzer/net-snmp elf
 
-# Alexis Ballier <aballier@gentoo.org> (4 Oct 2008)
+# Alexis Ballier <aballier@gentoo.org> (2008-10-04)
 # clisp doesn't build out of the box but can be fixed, xindy's way of building
 # its clisp module is confused by gmake vs bsdmake, mask it until we can
 # properly keyword xindy.
 app-text/texlive xindy
 
-# Alexis Ballier <aballier@gentoo.org> (28 Nov 2008)
+# Alexis Ballier <aballier@gentoo.org> (2008-11-28)
 # Requires bluez-libs which is linux only
 net-libs/libpcap bluetooth
 
-# Alexis Ballier <aballier@gentoo.org> (22 Jan 2009)
+# Alexis Ballier <aballier@gentoo.org> (2009-01-22)
 # Requires gpm
 www-client/links livecd
 

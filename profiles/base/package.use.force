@@ -1,18 +1,18 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Andreas K. Hüttel <dilfridge@gentoo.org> (14 Apr 2019)
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2019-04-14)
 # Make sure glibc static libs are installed for now. Not installing
 # them is an experimental feature and needs testing.
 sys-libs/glibc static-libs
 
-# Mart Raudsepp <leio@gentoo.org> (14 Dec 2018)
+# Mart Raudsepp <leio@gentoo.org> (2018-12-14)
 # Security is not optional if available for the architecture/kernel.
 gnome-base/gnome-desktop seccomp
 app-misc/tracker-miners seccomp
 >gnome-base/nautilus-3.29 seccomp
 
-# Andreas K. Hüttel <dilfridge@gentoo.org> (11 Sep 2018)
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2018-09-11)
 # All glibc versions that include RPC code are masked now.
 dev-libs/libspt libtirpc
 dev-perl/Lab-VXI11 libtirpc
@@ -24,46 +24,46 @@ net-misc/netkit-bootparamd libtirpc
 sci-astronomy/esomidas libtirpc
 sys-cluster/glusterfs libtirpc
 
-# NP-Hardass <NP-Hardass@gentoo.org> (10 Apr 2017)
+# NP-Hardass <NP-Hardass@gentoo.org> (2017-04-10)
 # Always force patch on appropriate variant to ensure
 # similar experience when using app-emulation/wine-any
 app-emulation/wine-staging staging
 app-emulation/wine-d3d9 d3d9
 
-# David Seifert <soap@gentoo.org> (07 Mar 2017)
+# David Seifert <soap@gentoo.org> (2017-03-07)
 # Only ever use system ffmpeg, allow kodi bundled ffmpeg
 # only for debug pruposes.
 media-tv/kodi system-ffmpeg
 
-# Sam Jorna <wraeth@gentoo.org> (15 Dec 2016)
+# Sam Jorna <wraeth@gentoo.org> (2016-12-15)
 # Known to build unbootable EFI binaries on some systems when built with
 # UDK. Forcing use of gnu-efi until it's more stable.
 sys-boot/refind gnuefi
 
-# Mike Gilbert <floppym@gentoo.org> (13 Oct 2016)
+# Mike Gilbert <floppym@gentoo.org> (2016-10-13)
 # Python without threads breaks in many ways.
 dev-lang/python threads
 
-# Maciej Mrozowski <reavertm@gentoo.org> (1 Sept 2016)
+# Maciej Mrozowski <reavertm@gentoo.org> (2016-09-01)
 # Workaround until resolved upstream (bug #586840)
 >=dev-games/simgear-2016.2.1 dns
 
-# Justin Lecher <jlec@gentoo.org> (10 Aug 2014)
+# Justin Lecher <jlec@gentoo.org> (2014-08-10)
 # Doesn't work without acl support
 # No patch yet, #516626
 >=net-fs/netatalk-3.1.3 acl
 
-# Pawel Hajdan jr <phajdan.jr@gentoo.org> (12 Jun 2014)
+# Pawel Hajdan jr <phajdan.jr@gentoo.org> (2014-06-12)
 # Chromium builds in PIC mode on most arches anyway,
 # i.e. this use flag has no effect on them.
 www-client/chromium pic
 
-# Zac Medico <zmedico@gentoo.org> (4 Dec 2012)
+# Zac Medico <zmedico@gentoo.org> (2012-12-04)
 # Force app-shells/bash[readline] in stage1 builds, so that compgen is
 # available for sys-apps/portage (see bug #445576).
 app-shells/bash:0 readline
 
-# Michał Górny <mgorny@gentoo.org> (14 Oct 2012)
+# Michał Górny <mgorny@gentoo.org> (2012-10-14)
 # Force-enable all PYTHON_TARGETS for python-exec to avoid using private
 # API. Please remember to keep it in sync with python_targets.desc.
 dev-lang/python-exec python_targets_python2_7
@@ -74,7 +74,7 @@ dev-lang/python-exec python_targets_jython2_7
 dev-lang/python-exec python_targets_pypy
 dev-lang/python-exec python_targets_pypy3
 
-# Zac Medico <zmedico@gentoo.org> (20 Oct 2010)
+# Zac Medico <zmedico@gentoo.org> (2010-10-20)
 # Force ipc USE flag since it should remain enabled unless
 # it is found to be incompatible with a specific profile
 # or environment. When enabled, it fixes bug #278895,
@@ -88,7 +88,7 @@ sys-apps/portage ipc
 # and requires reinstallation of many Python modules.
 dev-lang/python wide-unicode
 
-# Peter Alfredsen <loki_val@gentoo.org> (11 Apr 2009)
+# Peter Alfredsen <loki_val@gentoo.org> (2009-04-11)
 # Forcing w.r.t. bug 265336. When unicode use-flag is
 # turned off, ABI is broken without a .so bump.
 dev-libs/libpcre unicode

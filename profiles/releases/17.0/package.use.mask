@@ -1,6 +1,6 @@
 # Copyright 2017-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Andreas K. Hüttel <dilfridge@gentoo.org> (27 May 2017)
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2017-05-27)
 # Unmask default-PIE on 17.0 profiles.
 sys-devel/gcc -pie

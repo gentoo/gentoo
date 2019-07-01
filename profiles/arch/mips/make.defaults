@@ -1,7 +1,7 @@
 # Copyright 2008-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-# 2006/08/18 - Donnie Berkholz <dberkholz@gentoo.org>
+# Donnie Berkholz <dberkholz@gentoo.org> (2006-08-18)
 # Defaults for video drivers
 VIDEO_CARDS="fbdev impact"
 
@@ -16,6 +16,6 @@ LIBDIR_o32="lib"
 LIBDIR_n32="lib32"
 LIBDIR_n64="lib64"
 
-# 2010/12/06 - Matt Turner <mattst88@gentoo.org>
+# Matt Turner <mattst88@gentoo.org> (2010-12-06)
 # Probably missing a bunch for various SGI systems.
 ALSA_CARDS="au1x00"

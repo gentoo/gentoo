@@ -12,7 +12,7 @@ CXXFLAGS="${CFLAGS}"
 FFLAGS="${CFLAGS}"
 FCFLAGS="${CFLAGS}"
 
-# Michał Górny <mgorny@gentoo.org> (01 Jul 2014)
+# Michał Górny <mgorny@gentoo.org> (2014-07-01)
 # Set ABI & DEFAULT_ABI consistently with ${ARCH}, to make ebuild
 # checks simpler.
 ABI="sh"
@@ -21,7 +21,7 @@ MULTILIB_ABIS="sh"
 CHOST_sh="${CHOST}"
 LIBDIR_sh="lib"
 
-# Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org> (16 Nov 2011)
+# Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org> (2011-11-16)
 # Rename STAGE1_USE to BOOTSTRAP_USE and stack it to the parent value
 # We need to disable ssp.
 BOOTSTRAP_USE="${BOOTSTRAP_USE} nossp"

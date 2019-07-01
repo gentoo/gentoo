@@ -1,24 +1,24 @@
 # Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Thomas Deutschmann <whissi@gentoo.org> (23 Oct 2018)
+# Thomas Deutschmann <whissi@gentoo.org> (2018-10-23)
 # requires net-libs/nodejs
 >=www-client/firefox-63.0
 
-# Patrick McLean <chutzpah@gentoo.org> (12 Jul 2018)
+# Patrick McLean <chutzpah@gentoo.org> (2018-07-12)
 # requires nodejs
 >=sys-cluster/ceph-13
 
-# Michał Górny <mgorny@gentoo.org> (15 Apr 2018)
+# Michał Górny <mgorny@gentoo.org> (2018-04-15)
 # Broken multilib dependencies.
 net-im/mattermost-desktop-bin
 net-im/skypeforlinux
 net-im/slack-bin
 
-# Pawel Hajdan jr <phajdan.jr@gentoo.org> (07 Oct 2012)
+# Pawel Hajdan jr <phajdan.jr@gentoo.org> (2012-10-07)
 # V8 upstream said they won't support x32, bug #423815
 # Masked packages containing V8.
-# Michał Górny <mgorny@gentoo.org> (12 Jan 2018)
+# Michał Górny <mgorny@gentoo.org> (2018-01-12)
 # ...and their reverse dependencies.
 app-editors/atom
 dev-lang/coffee-script
