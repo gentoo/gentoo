@@ -1,12 +1,12 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python3_{5,6,7} )
 DISTUTILS_SINGLE_IMPL=1
 
-inherit gnome2 distutils-r1
+inherit distutils-r1 xdg-utils
 
 DESCRIPTION="A graphical tool for administering virtual machines"
 HOMEPAGE="http://virt-manager.org"
@@ -14,11 +14,11 @@ HOMEPAGE="http://virt-manager.org"
 if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
 	SRC_URI=""
-	KEYWORDS="amd64 x86"
+	KEYWORDS=""
 	EGIT_REPO_URI="https://github.com/virt-manager/virt-manager.git"
 else
 	SRC_URI="http://virt-manager.org/download/sources/${PN}/${P}.tar.gz"
-	KEYWORDS="amd64 x86"
+	KEYWORDS="~amd64 ~x86"
 fi
 
 LICENSE="GPL-2"
@@ -61,22 +61,19 @@ distutils-r1_python_compile() {
 	local defgraphics=
 
 	esetup.py configure \
-		--qemu-user=qemu \
 		--default-graphics=spice
 }
 
 src_install() {
 	local mydistutilsargs=( --no-update-icon-cache --no-compile-schemas )
-
 	distutils-r1_src_install
 
-	python_fix_shebang \
-		"${ED}"/usr/share/virt-manager/virt-{clone,convert,install,manager}
+	python_fix_shebang "${ED}"/usr/share/virt-manager
 }
 
 pkg_preinst() {
 	if use gtk; then
-		gnome2_pkg_preinst
+		xdg_pkg_preinst
 
 		cd "${ED}"
 		export GNOME2_ECLASS_ICONS=$(find 'usr/share/virt-manager/icons' -maxdepth 1 -mindepth 1 -type d 2> /dev/null)
@@ -93,5 +90,5 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	use gtk && gnome2_pkg_postinst
+	use gtk && xdg_pkg_postinst
 }
