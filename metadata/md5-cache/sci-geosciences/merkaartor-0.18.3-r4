@@ -1,7 +1,8 @@
+BDEPEND=dev-qt/linguist-tools:5 virtual/pkgconfig
 DEFINED_PHASES=configure postinst postrm prepare
-DEPEND=dev-qt/qtconcurrent:5 dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtprintsupport:5 dev-qt/qtsingleapplication[X,qt5(+)] dev-qt/qtsvg:5 dev-qt/qtwidgets:5 dev-qt/qtxml:5 sci-libs/gdal sci-libs/proj sys-libs/zlib exif? ( media-gfx/exiv2:= ) gps? ( >=sci-geosciences/gpsd-3.17-r2 ) libproxy? ( net-libs/libproxy ) webengine? ( dev-qt/qtwebengine:5[widgets] ) dev-qt/linguist-tools:5 virtual/pkgconfig
+DEPEND=dev-qt/qtconcurrent:5 dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtprintsupport:5 dev-qt/qtsingleapplication[X,qt5(+)] dev-qt/qtsvg:5 dev-qt/qtwidgets:5 dev-qt/qtxml:5 sci-libs/gdal sci-libs/proj sys-libs/zlib exif? ( media-gfx/exiv2:= ) gps? ( >=sci-geosciences/gpsd-3.17-r2 ) libproxy? ( net-libs/libproxy ) webengine? ( dev-qt/qtwebengine:5[widgets] )
 DESCRIPTION=Qt based map editor for the openstreetmap.org project
-EAPI=6
+EAPI=7
 HOMEPAGE=http://www.merkaartor.be https://github.com/openstreetmap/merkaartor
 IUSE=debug exif gps libproxy webengine
 KEYWORDS=~amd64 ~x86
@@ -9,5 +10,5 @@ LICENSE=GPL-2
 RDEPEND=dev-qt/qtconcurrent:5 dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtprintsupport:5 dev-qt/qtsingleapplication[X,qt5(+)] dev-qt/qtsvg:5 dev-qt/qtwidgets:5 dev-qt/qtxml:5 sci-libs/gdal sci-libs/proj sys-libs/zlib exif? ( media-gfx/exiv2:= ) gps? ( >=sci-geosciences/gpsd-3.17-r2 ) libproxy? ( net-libs/libproxy ) webengine? ( dev-qt/qtwebengine:5[widgets] )
 SLOT=0
 SRC_URI=https://github.com/openstreetmap/merkaartor/archive/0.18.3.tar.gz -> merkaartor-0.18.3.tar.gz
-_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	7ba73aee7fe4462b3a745e3645ab92ca	gnome2-utils	532371cfcba45b2ab0d2950547c97d95	l10n	97f2753e3f1f3753d53d856c7c0bbb0b	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	1d91b03d42ab6308b5f4f6b598ed110e	preserve-libs	ef207dc62baddfddfd39a164d9797648	qmake-utils	bdf97e69a34b864d6d545f4ec3143ff7	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	14d00d009167652b1fa363e55effe213
-_md5_=4db87eb3e02c832c20109f2a368f36fe
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	7ba73aee7fe4462b3a745e3645ab92ca	l10n	97f2753e3f1f3753d53d856c7c0bbb0b	multilib	1d91b03d42ab6308b5f4f6b598ed110e	qmake-utils	bdf97e69a34b864d6d545f4ec3143ff7	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529	xdg-utils	14d00d009167652b1fa363e55effe213
+_md5_=03a1e6e3c1a1fec7330c4c74e6aabd67
