@@ -42,6 +42,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-sharedir-pluginsdir.patch # bug 621826
 	"${FILESDIR}"/${P}-desktopfile.patch
 	"${FILESDIR}"/${P}-webengine{1,2,3}.patch
+	"${FILESDIR}"/${P}-exiv2-0.27.1.patch # bug 689098
 )
 
 DOCS=( AUTHORS CHANGELOG )
