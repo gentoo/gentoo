@@ -3,13 +3,14 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_{5,6,7}} )
+# Tests fail with PyPy and PyPy 3
+PYTHON_COMPAT=( python{2_7,3_{5,6}} )
 
 inherit distutils-r1
 
 MY_PN="${PN/-/.}"
-DESCRIPTION="Models and classes to supplement the stdlib collections module"
-HOMEPAGE="https://github.com/jaraco/jaraco.collections"
+DESCRIPTION="Tools for working with iterables. Complements itertools and more_itertools"
+HOMEPAGE="https://github.com/jaraco/jaraco.itertools"
 SRC_URI="mirror://pypi/${PN:0:1}/${MY_PN}/${MY_PN}-${PV}.tar.gz"
 
 LICENSE="MIT"
@@ -17,22 +18,20 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="doc test"
 
-PDEPEND="dev-python/jaraco-text[${PYTHON_USEDEP}]"
 RDEPEND="
-	dev-python/namespace-jaraco[${PYTHON_USEDEP}]
-	dev-python/jaraco-classes[${PYTHON_USEDEP}]
-	>=dev-python/six-1.7.0[${PYTHON_USEDEP}]
+	<dev-python/namespace-jaraco-2[${PYTHON_USEDEP}]
+	dev-python/six[${PYTHON_USEDEP}]
+	dev-python/inflect[${PYTHON_USEDEP}]
+	>=dev-python/more-itertools-4.0.0[${PYTHON_USEDEP}]
 "
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	>=dev-python/setuptools_scm-1.15.0[${PYTHON_USEDEP}]
 	doc? (
-		>=dev-python/jaraco-packaging-3.2[${PYTHON_USEDEP}]
-		>=dev-python/rst-linker-1.9[${PYTHON_USEDEP}]
 		dev-python/sphinx[${PYTHON_USEDEP}]
+		dev-python/rst-linker[${PYTHON_USEDEP}]
 	)
 	test? (
-		${PDEPEND}
 		${RDEPEND}
 		>=dev-python/pytest-2.8[${PYTHON_USEDEP}]
 	)
@@ -49,7 +48,7 @@ python_compile_all() {
 
 python_test() {
 	# Override pytest options to skip flake8
-	PYTHONPATH=. pytest -vv --override-ini="addopts=--doctest-modules" \
+	PYTHONPATH=. py.test --override-ini="addopts=--doctest-modules" \
 		|| die "tests failed with ${EPYTHON}"
 }
 

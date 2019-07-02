@@ -19,7 +19,7 @@ IUSE="doc test"
 
 RDEPEND="
 	>=dev-python/six-1.4[${PYTHON_USEDEP}]
-	dev-python/namespace-jaraco[${PYTHON_USEDEP}]
+	<dev-python/namespace-jaraco-2[${PYTHON_USEDEP}]
 "
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	>=dev-python/setuptools_scm-1.9[${PYTHON_USEDEP}]

@@ -3,14 +3,13 @@
 
 EAPI=7
 
-# Tests fail with PyPy and PyPy 3
-PYTHON_COMPAT=( python{2_7,3_{5,6}} )
+PYTHON_COMPAT=( pypy{,3} python{2_7,3_{5,6,7}} )
 
 inherit distutils-r1
 
 MY_PN="${PN/-/.}"
-DESCRIPTION="Tools for working with iterables. Complements itertools and more_itertools"
-HOMEPAGE="https://github.com/jaraco/jaraco.itertools"
+DESCRIPTION="Routines for handling streaming data"
+HOMEPAGE="https://github.com/jaraco/jaraco.stream"
 SRC_URI="mirror://pypi/${PN:0:1}/${MY_PN}/${MY_PN}-${PV}.tar.gz"
 
 LICENSE="MIT"
@@ -19,21 +18,20 @@ KEYWORDS="amd64 x86"
 IUSE="doc test"
 
 RDEPEND="
-	dev-python/namespace-jaraco[${PYTHON_USEDEP}]
+	<dev-python/namespace-jaraco-2[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
-	dev-python/inflect[${PYTHON_USEDEP}]
-	>=dev-python/more-itertools-4.0.0[${PYTHON_USEDEP}]
 "
-DEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]
-	>=dev-python/setuptools_scm-1.15.0[${PYTHON_USEDEP}]
-	doc? (
-		dev-python/sphinx[${PYTHON_USEDEP}]
-		dev-python/rst-linker[${PYTHON_USEDEP}]
-	)
+DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
+	>=dev-python/setuptools_scm-1.9[${PYTHON_USEDEP}]
 	test? (
 		${RDEPEND}
 		>=dev-python/pytest-2.8[${PYTHON_USEDEP}]
+		dev-python/more-itertools[${PYTHON_USEDEP}]
+	)
+	doc? (
+		>=dev-python/jaraco-packaging-3.2[${PYTHON_USEDEP}]
+		>=dev-python/rst-linker-1.9[${PYTHON_USEDEP}]
+		dev-python/sphinx[${PYTHON_USEDEP}]
 	)
 "
 
@@ -47,8 +45,10 @@ python_compile_all() {
 }
 
 python_test() {
+	# Skip one test which requires network access
 	# Override pytest options to skip flake8
-	PYTHONPATH=. py.test --override-ini="addopts=--doctest-modules" \
+	PYTHONPATH=. pytest -vv --ignore=jaraco/stream/test_gzip.py \
+		--override-ini="addopts=--doctest-modules" \
 		|| die "tests failed with ${EPYTHON}"
 }
 
