@@ -1,0 +1,11 @@
+--- a/config.h	2019-07-02 19:25:10.448720035 +0300
++++ a/config.h	2019-07-02 19:25:25.785455586 +0300
+@@ -514,7 +514,7 @@ NAMESPACE_END
+ #endif
+ 
+ // 32-bit SunCC does not enable SSE2 by default.
+-#if !defined(CRYPTOPP_DISABLE_ASM) && (defined(_MSC_VER) || CRYPTOPP_GCC_VERSION >= 30300 || defined(__SSE2__) || (__SUNPRO_CC >= 0x5100))
++#if !defined(CRYPTOPP_DISABLE_ASM) && !defined(CRYPTOPP_DISABLE_SSE2) && (defined(_MSC_VER) || CRYPTOPP_GCC_VERSION >= 30300 || defined(__SSE2__) || (__SUNPRO_CC >= 0x5100))
+ 	#define CRYPTOPP_SSE2_INTRIN_AVAILABLE 1
+ #endif
+ 
