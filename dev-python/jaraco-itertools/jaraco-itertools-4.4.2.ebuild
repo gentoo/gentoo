@@ -19,7 +19,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="doc test"
 
 RDEPEND="
-	<dev-python/namespace-jaraco-2[${PYTHON_USEDEP}]
+	>=dev-python/namespace-jaraco-2[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
 	dev-python/inflect[${PYTHON_USEDEP}]
 	>=dev-python/more-itertools-4.0.0[${PYTHON_USEDEP}]
@@ -53,7 +53,9 @@ python_test() {
 		|| die "tests failed with ${EPYTHON}"
 }
 
-python_install_all() {
-	distutils-r1_python_install_all
-	find "${ED}" -name '*.pth' -delete || die
+# https://wiki.gentoo.org/wiki/Project:Python/Namespace_packages#File_collisions_between_pkgutil-style_packages
+python_install() {
+	rm "${BUILD_DIR}"/lib/jaraco/__init__.py || die
+	# note: eclass may default to --skip-build in the future
+	distutils-r1_python_install --skip-build
 }
