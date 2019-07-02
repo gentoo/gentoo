@@ -1,0 +1,11 @@
+BDEPEND=nls? ( sys-devel/gettext )
+DEFINED_PHASES=configure
+DESCRIPTION=Restricted User Shell
+EAPI=7
+HOMEPAGE=https://puszcza.gnu.org.ua/projects/rush/
+IUSE=nls
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+SLOT=0
+SRC_URI=ftp://download.gnu.org.ua/pub/release/rush/rush-2.0.tar.xz
+_md5_=7baa20c2f64fac3b70485b3c822f3ea7
