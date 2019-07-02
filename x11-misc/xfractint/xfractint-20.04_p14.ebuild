@@ -13,7 +13,7 @@ SRC_URI="https://www.fractint.org/ftp/current/linux/${MY_P}.tar.gz"
 
 LICENSE="freedist"
 SLOT="0"
-KEYWORDS="amd64 ~ppc x86"
+KEYWORDS="amd64 ppc x86"
 
 RDEPEND="x11-libs/libX11"
 DEPEND="${RDEPEND}
