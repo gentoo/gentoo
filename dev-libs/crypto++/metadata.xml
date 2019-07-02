@@ -11,6 +11,7 @@
 	</maintainer>
 	<use>
 		<flag name="asm">Support assembly hand optimized crypto functions (i.e. faster run time)</flag>
+		<flag name="cpu_flags_x86_sha">Enable support for Intel's SHA instruction set (SHA-NI)</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">weidai11/cryptopp</remote-id>
