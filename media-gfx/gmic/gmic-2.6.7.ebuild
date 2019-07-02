@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -80,14 +80,14 @@ pkg_pretend() {
 }
 
 src_prepare() {
-	local PATCHES=( "${FILESDIR}"/${P}-curl.patch )
+	local PATCHES=( "${FILESDIR}"/${PN}-2.4.3-curl.patch )
 	cmake-utils_src_prepare
 	sed -i '/CMAKE_CXX_FLAGS/s/-g //' CMakeLists.txt || die
 
 	if use gimp || use krita || use qt5; then
 		sed -i '/CMAKE_CXX_FLAGS_RELEASE/d' gmic-qt/CMakeLists.txt || die
 		local S="${S}/gmic-qt"
-		PATCHES=()
+		PATCHES=( "${FILESDIR}"/${P}-qt-cmake.patch )
 		cmake-utils_src_prepare
 	fi
 }
@@ -98,6 +98,7 @@ src_configure() {
 		-DBUILD_LIB_STATIC=$(usex static-libs)
 		-DBUILD_CLI=$(usex cli)
 		-DBUILD_MAN=$(usex cli)
+		-DBUILD_BASH_COMPLETION=$(usex cli)
 		-DCUSTOM_CFLAGS=ON
 		-DENABLE_CURL=$(usex curl)
 		-DENABLE_X=$(usex X)
@@ -158,7 +159,7 @@ src_install() {
 
 	local PLUGINDIR="/usr/$(get_libdir)/gimp/2.0/plug-ins"
 	insinto "${PLUGINDIR}"
-	doins resources/gmic_film_cluts.gmz
+	doins resources/gmic_cluts.gmz
 
 	# install gmic-qt frontends
 	if use gimp; then
