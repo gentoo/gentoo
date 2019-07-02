@@ -80,7 +80,7 @@ app-admin/grubconfig 1.28-r2: Simple Tool to configure Grub-Bootloader
 app-admin/gtkdiskfree 2.0.1-r1: Graphical tool to show free disk space
 app-admin/hardening-check 2.5 2.6 2.7: Report the hardening characterists of a set of binaries
 app-admin/hardinfo 0.5.2_pre20130823: System information and benchmark tool for Linux systems
-app-admin/haskell-updater 1.2.9 1.2.10: Rebuild Haskell dependencies in Gentoo
+app-admin/haskell-updater 1.2.9 1.2.10 1.3.1: Rebuild Haskell dependencies in Gentoo
 app-admin/hcloud 1.12.0: A command-line interface for Hetzner Cloud
 app-admin/hddtemp 0.3_beta15-r27: A simple utility to read the temperature of SMART capable hard drives
 app-admin/helm 2.13.1: Kubernetes Package Manager
@@ -177,7 +177,7 @@ app-arch/bsdsfv 1.18-r2: all-in-one SFV checksum utility
 app-arch/bzip2 1.0.6-r11: A high-quality data compressor used extensively by Gentoo Linux
 app-arch/cabextract 1.9-r2: Extracts files from Microsoft cabinet archive files
 app-arch/cfv 1.18.3-r1: Utility to test and create .sfv, .csv, .crc and md5sum files
-app-arch/cksfv 1.3.14: SFV checksum utility (simple file verification)
+app-arch/cksfv 1.3.14 1.3.14-r1: SFV checksum utility (simple file verification)
 app-arch/cpio 2.12-r1: A file archival tool which can also read and write tar files
 app-arch/deb2targz 1-r2: Convert a .deb file to a .tar.gz archive
 app-arch/dpkg 1.19.0.5: Package maintenance system for Debian
@@ -373,7 +373,7 @@ app-crypt/qca 2.2.0: Qt Cryptographic Architecture (QCA)
 app-crypt/quickcrypt 0.9.2b-r1: gives you a quick MD5 Password from any string
 app-crypt/rhash 1.3.6-r1: Console utility and library for computing and verifying file hash sums
 app-crypt/rotix 0.83: Rotix allows you to generate rotational obfuscations
-app-crypt/sbsigntools 0.6-r2 0.9.1-r1: Utilities for signing and verifying files for UEFI Secure Boot
+app-crypt/sbsigntools 0.6-r2 0.9.1-r1 0.9.2: Utilities for signing and verifying files for UEFI Secure Boot
 app-crypt/seahorse 3.30.1.1: Manage your passwords and encryption keys
 app-crypt/seahorse-sharing 3.8.0_p20151117: Daemon for PGP public key sharing using DNS-SD and HKP
 app-crypt/shash 0.2.6-r2 0.2.6-r3: Generate or check digests or MACs of files
@@ -1879,7 +1879,7 @@ dev-cpp/libxmlpp 2.40.1 3.0.1: C++ wrapper for the libxml2 XML parser library
 dev-cpp/lucene++ 3.0.7-r1: C++ port of Lucene library, a high-performance, full-featured text search engine
 dev-cpp/mm-common 0.9.12: Build infrastructure and utilities for GNOME C++ bindings
 dev-cpp/ms-gsl 2.0.0: Guideline Support Library implementation by Microsoft
-dev-cpp/muParser 2.2.5: Library for parsing mathematical expressions
+dev-cpp/muParser 2.2.5 2.2.6.1: Library for parsing mathematical expressions
 dev-cpp/pangomm 2.42.0: C++ interface for pango
 dev-cpp/pngpp 0.2.9: A simple but powerful C++ interface to libpng
 dev-cpp/sparsehash 1.10 2.0.3-r1: An extremely memory-efficient hash_map implementation
@@ -2972,7 +2972,7 @@ dev-libs/concurrencykit 0.5.2 0.6.0: A library with concurrency related algorith
 dev-libs/confuse 3.0: a configuration file parser library
 dev-libs/crc32c 1.0.6: CRC32C implementation with support for CPU-specific acceleration instructions
 dev-libs/crossguid 0_pre20150817: Lightweight cross platform C++ GUID/UUID library
-dev-libs/crypto++ 5.6.5-r1 7.0.0-r3: C++ class library of cryptographic schemes
+dev-libs/crypto++ 5.6.5-r1 7.0.0-r3 8.2.0: C++ class library of cryptographic schemes
 dev-libs/cvector 1.0.3-r1: An ANSI C implementation of dynamic arrays (Approximation of C++ vectors)
 dev-libs/cxxtools 2.2.1: Collection of general purpose C++-classes
 dev-libs/cyberjack 3.99.5_p11 3.99.5_p13: REINER SCT cyberJack USB chipcard reader user space driver
@@ -6404,6 +6404,7 @@ dev-util/nemiver 0.9.6: A gtkmm front end to the GNU Debugger (gdb)
 dev-util/netbeans 8.2: Netbeans IDE
 dev-util/netsurf-buildsystem 1.7: Build system used for netsurf and its libs
 dev-util/ninja 1.8.2: A small build system similar to make
+dev-util/numdiff 5.9.0: File comparision, ignoring small numeric differences and formats
 dev-util/obs-service-cpanspec 20130318: Open Build Service client module - cpanspec service
 dev-util/obs-service-download_files 20130716: Open Build Service client module - download_files service
 dev-util/obs-service-download_src_package 20130318: Open Build Service client module - download_src_package service
@@ -6537,7 +6538,7 @@ games-board/gnome-mines 3.30.1.1: Clear hidden mines from a minefield
 games-board/gnuchess 6.2.4: Console based chess interface
 games-board/gnugo 3.9.1-r1 3.9.1-r2: A Go-playing program
 games-board/iagno 3.30.0: Dominate the board in a classic version of Reversi
-games-board/stockfish 8: Free UCI chess engine, claimed to be the strongest in the world
+games-board/stockfish 8 10: Free UCI chess engine, claimed to be the strongest in the world
 games-board/tablebase-syzygy 0_pre20131213 0_pre20131213-r100: Syzygy chess endgame tablebases for up to 6 pieces
 games-board/tali 3.22.0: Beat the odds in a poker-style dice game
 games-emulation/caps 20071115: Support library for accessing and using C.A.P.S. images
@@ -7190,7 +7191,7 @@ mail-mta/mini-qmail 1.06: a small null client that forwards mail via QMQP to a f
 mail-mta/msmtp 1.8.3: An SMTP client and SMTP plugin for mail user agents such as Mutt
 mail-mta/netqmail 1.06 1.06-r2 1.06-r4: qmail -- a secure, reliable, efficient, simple message transfer agent
 mail-mta/nullmailer 1.13-r5 2.0-r1: Simple relay-only local mail transport agent
-mail-mta/postfix 3.2.4 3.3.1-r1 3.3.4: A fast and secure drop-in replacement for sendmail
+mail-mta/postfix 3.2.4 3.3.1-r1 3.3.4 3.4.5-r1: A fast and secure drop-in replacement for sendmail
 mail-mta/sendmail 8.14.9: Widely-used Mail Transport Agent (MTA)
 mail-mta/ssmtp 2.64-r2 2.64-r3: Extremely simple MTA to get mail off the system to a Mailhub
 mate-base/caja 1.22.0: Caja file manager for the MATE desktop
@@ -7891,7 +7892,7 @@ media-libs/waffle 1.5.2: Library that allows selection of GL API and of window s
 media-libs/webrtc-audio-processing 0.3.1: AudioProcessing library from the webrtc.org code base
 media-libs/woff2 1.0.2-r1: Encode/decode WOFF2 font format
 media-libs/wxsvg 1.5.9 1.5.11: C++ library to create, manipulate and render SVG files
-media-libs/x264 0.0.20170701: A free library for encoding X264/AVC streams
+media-libs/x264 0.0.20170701 0.0.20190214: A free library for encoding X264/AVC streams
 media-libs/x265 2.8: Library for encoding video streams into the H.265/HEVC format
 media-libs/xine-lib 1.2.9-r2: Core libraries for Xine movie player
 media-libs/xvid 1.3.5: High performance/quality MPEG-4 video de-/encoding solution
@@ -8283,7 +8284,7 @@ media-sound/umurmur 0.2.16a-r1: Minimalistic Murmur (Mumble server)
 media-sound/upmpdcli 1.4.0: UPnP Media Renderer front-end for MPD, the Music Player Daemon
 media-sound/vbrfixc 0.24: Vbrfix fixes MP3s and re-constructs VBR headers
 media-sound/ventrilo-server-bin 3.0.3: The Ventrilo Voice Communication Server
-media-sound/vimpc 0.09.1: An ncurses based mpd client with vi like key bindings
+media-sound/vimpc 0.09.1 0.09.2: An ncurses based mpd client with vi-like key bindings
 media-sound/vkeybd 0.1.18d: A virtual MIDI keyboard for X
 media-sound/vlevel 0.5-r1: Dynamic compressor to amplify quiet parts of music
 media-sound/vlorb 1.2: a high quality Audio CD to audio file encoder
@@ -8409,7 +8410,7 @@ media-video/vdr2jpeg 0.1.9-r1 0.2.0: Addon needed for XXV - WWW Admin for the Vi
 media-video/vdrtools-genindex 0.1.3-r1: VDR: genindex Script
 media-video/vlc 3.0.6-r1: Media player and framework with support for most multimedia files and streaming
 media-video/vobcopy 1.2.0: copies DVD .vob files to harddisk, decrypting them on the way
-media-video/x264-encoder 0.0.20170701: A free commandline encoder for X264/AVC streams
+media-video/x264-encoder 0.0.20170701 0.0.20190214: A free commandline encoder for X264/AVC streams
 media-video/xine-ui 0.99.10: Xine movie player
 media-video/xvid4conf 1.12: GTK2-configuration dialog for xvid4
 net-analyzer/amap 5.4: A network scanning tool for pentesters
@@ -8628,7 +8629,7 @@ net-firewall/ipt_netflow 2.3: Netflow iptables module
 net-firewall/iptables 1.6.1-r3: Linux kernel (2.4+) firewall, NAT and packet mangling tools
 net-firewall/itval 1.2_p20121104: Iptables policy testing and validation tool
 net-firewall/nfacct 1.0.1: Command line tool to create/retrieve/delete accounting objects in NetFilter
-net-firewall/nftables 0.8-r3: Linux kernel (3.13+) firewall, NAT and packet mangling tools
+net-firewall/nftables 0.8-r3 0.9.0-r4: Linux kernel (3.13+) firewall, NAT and packet mangling tools
 net-firewall/psad 2.2.5: Port Scanning Attack Detection daemon
 net-firewall/rtsp-conntrack 3.7-r1: RTSP conntrack module for Netfilter
 net-firewall/shorewall 5.2.3.3: A high-level tool for configuring Netfilter
@@ -8794,7 +8795,7 @@ net-libs/libnetfilter_log 1.0.1: interface to packets that have been logged by t
 net-libs/libnetfilter_queue 1.0.2: API to packets that have been queued by the kernel packet filter
 net-libs/libnfnetlink 1.0.1: the low-level library for netfilter related kernel/userspace communication
 net-libs/libnfsidmap 0.25-r1: NFSv4 ID <-> name mapping library
-net-libs/libnftnl 1.0.8-r1: Netlink API to the in-kernel nf_tables subsystem
+net-libs/libnftnl 1.0.8-r1 1.1.3: Netlink API to the in-kernel nf_tables subsystem
 net-libs/libnice 0.1.13 0.1.15: An implementation of the Interactice Connectivity Establishment standard (ICE)
 net-libs/libnids 1.24-r6: an implementation of an E-component of Network Intrusion Detection System
 net-libs/libnsl 1.2.0: Public client interface for NIS(YP) and NIS+ in a IPv6 ready version
@@ -8832,7 +8833,7 @@ net-libs/miniupnpc 2.1.20190210 2.1.20190408: UPnP client library and a simple U
 net-libs/nativebiginteger 0.8.7: jbigi JNI library for net.i2p.util.NativeBigInteger java-class from I2P
 net-libs/neon 0.30.2: HTTP and WebDAV client library
 net-libs/net6 1.3.14-r2: Network access framework for IPv4/IPv6 written in C++
-net-libs/nghttp2 1.33.0: HTTP/2 C Library
+net-libs/nghttp2 1.33.0 1.39.1: HTTP/2 C Library
 net-libs/nodejs 0.12.18 4.9.1 6.14.4 8.12.0: A JavaScript runtime built on Chrome's V8 JavaScript engine
 net-libs/obby 0.4.8-r1: Library for collaborative text editing
 net-libs/openpgm 5.1.118-r1 5.2.122: Open source implementation of the Pragmatic General Multicast specification
@@ -8989,6 +8990,7 @@ net-misc/hath 0.5.0: Hath manipulates network blocks in CIDR notation
 net-misc/hsc 1.0b: An HTML preprocessor using ML syntax
 net-misc/htbinit 0.8.5-r7: Sets up Hierachical Token Bucket based traffic control (QoS) with iproute2
 net-misc/htpdate 1.0.7 1.2.0: Synchronize local workstation with time offered by remote webservers
+net-misc/httpie 1.0.2-r1: Modern command line HTTP client
 net-misc/httptype 1.3.9-r1: Returns the http host software of a website
 net-misc/hylafaxplus 5.5.5: Enterprise client-server fax package for class 1 and 2 fax modems
 net-misc/icaclient 19.1.0.9: ICA Client for Citrix Presentation servers
@@ -9339,7 +9341,7 @@ sci-calculators/galculator 2.1.4: GTK+ based algebraic and RPN calculator
 sci-calculators/hcalc 1.2-r1: DJ's Hex Calculator
 sci-calculators/hexcalc 1.11-r3: A simple hex calculator for X
 sci-calculators/pcalc 3-r1: the programmers calculator
-sci-calculators/qalculate-gtk 0.9.9: Modern multi-purpose calculator
+sci-calculators/qalculate-gtk 0.9.9 2.8.1: Modern multi-purpose calculator
 sci-calculators/speedcrunch 0.12.0: Fast and usable calculator for power users
 sci-calculators/units 2.16 2.18: Unit conversion program
 sci-calculators/wcalc 2.5: A flexible command-line scientific calculator
@@ -9483,7 +9485,7 @@ sci-libs/libdap 3.18.1: Implementation of a C++ SDK for DAP 2.0 and 3.2
 sci-libs/libgeotiff 1.4.0 1.4.1-r1: Library for reading TIFF files with embedded tags for geographic information
 sci-libs/libint 1.1.6: Matrix elements (integrals) evaluation over Cartesian Gaussian functions
 sci-libs/libnova 0.15.0: Celestial Mechanics and Astronomical Calculation Library
-sci-libs/libqalculate 0.9.9: A modern multi-purpose calculator library
+sci-libs/libqalculate 0.9.9 2.8.1: A modern multi-purpose calculator library
 sci-libs/libsigrok 0.3.0: basic hardware drivers for logic analyzers and input/output file format support
 sci-libs/libspatialindex 1.8.5-r1: General framework for developing spatial indices
 sci-libs/libsvm 3.21 3.22: Library for Support Vector Machines
