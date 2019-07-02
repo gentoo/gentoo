@@ -19,7 +19,7 @@ KEYWORDS="amd64 ~arm64 x86"
 IUSE="doc test"
 
 RDEPEND="
-	dev-python/namespace-jaraco[${PYTHON_USEDEP}]
+	<dev-python/namespace-jaraco-2[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
 "
 DEPEND="

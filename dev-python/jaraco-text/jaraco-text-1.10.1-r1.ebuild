@@ -8,20 +8,19 @@ PYTHON_COMPAT=( python{2_7,3_{5,6,7}} )
 inherit distutils-r1
 
 MY_PN="${PN/-/.}"
-DESCRIPTION="Models and classes to supplement the stdlib collections module"
-HOMEPAGE="https://github.com/jaraco/jaraco.collections"
+DESCRIPTION="Text utilities used by other projects by developer jaraco"
+HOMEPAGE="https://github.com/jaraco/jaraco.text"
 SRC_URI="mirror://pypi/${PN:0:1}/${MY_PN}/${MY_PN}-${PV}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="doc test"
 
-PDEPEND="dev-python/jaraco-text[${PYTHON_USEDEP}]"
+PDEPEND="dev-python/jaraco-collections[${PYTHON_USEDEP}]"
 RDEPEND="
-	dev-python/namespace-jaraco[${PYTHON_USEDEP}]
-	dev-python/jaraco-classes[${PYTHON_USEDEP}]
-	>=dev-python/six-1.7.0[${PYTHON_USEDEP}]
+	dev-python/jaraco-functools[${PYTHON_USEDEP}]
+	<dev-python/namespace-jaraco-2[${PYTHON_USEDEP}]
 "
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
