@@ -11,7 +11,7 @@ SRC_URI="http://savannah.nongnu.org/download/numdiff/${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 IUSE="+nls +gmp"
 
 RDEPEND="

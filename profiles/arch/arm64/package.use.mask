@@ -84,12 +84,6 @@ dev-lang/rust-bin doc
 # sci-libs/oce not yet keyworded
 sci-electronics/kicad occ oce ngspice
 
-# Ulrich Müller <ulm@gentoo.org> (2018-09-02)
-# =media-gfx/imagemagick-6* not keyworded
-<app-editors/emacs-24.5-r7:24 imagemagick
-<app-editors/emacs-25.3-r6:25 imagemagick
-<app-editors/emacs-26.1-r3:26 imagemagick
-
 # Matthew Thode <prometheanfire@gentoo.org> (2018-07-18)
 # dev-python/pandas not keyworded and test uses pandas
 dev-python/networkx pandas test
