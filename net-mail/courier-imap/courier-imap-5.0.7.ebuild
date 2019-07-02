@@ -200,11 +200,18 @@ src_install() {
 		doinitd "${T}/${initd}"
 	done
 
-	systemd_newunit "${FILESDIR}"/courier-authdaemond-r1.service \
+	cp "${FILESDIR}"/courier-*-r1.service .
+
+	sed -i \
+		-e "s:/usr/lib/:/usr/$(get_libdir)/:" \
+		courier-*-r1.service \
+		|| die
+
+	systemd_newunit courier-authdaemond-r1.service \
 					courier-authdaemond.service
-	systemd_newunit "${FILESDIR}"/courier-imapd-ssl-r1.service \
+	systemd_newunit courier-imapd-ssl-r1.service \
 					courier-imapd-ssl.service
-	systemd_newunit "${FILESDIR}"/courier-imapd-r1.service \
+	systemd_newunit courier-imapd-r1.service \
 					courier-imapd.service
 
 	exeinto "/usr/$(get_libdir)/${PN}"
