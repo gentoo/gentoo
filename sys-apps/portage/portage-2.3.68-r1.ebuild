@@ -102,6 +102,10 @@ pkg_setup() {
 python_prepare_all() {
 	distutils-r1_python_prepare_all
 
+	# apply f4aa49bc1ba2
+	sed -e 's|^export -n -f ___in_portage_iuse$|declare -F ___in_portage_iuse >/dev/null \&\& \0|' \
+		-i bin/ebuild.sh || die
+
 	if use gentoo-dev; then
 		einfo "Disabling --dynamic-deps by default for gentoo-dev..."
 		sed -e 's:\("--dynamic-deps", \)\("y"\):\1"n":' \
