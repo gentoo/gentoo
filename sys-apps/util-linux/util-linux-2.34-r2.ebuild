@@ -109,6 +109,7 @@ lfs_fallocate_test() {
 
 python_configure() {
 	local myeconfargs=(
+		"${commonargs[@]}"
 		--disable-all-programs
 		--disable-bash-completion
 		--without-systemdsystemunitdir
@@ -136,8 +137,13 @@ multilib_src_configure() {
 	export ac_cv_header_security_pam_misc_h=$(multilib_native_usex pam) #485486
 	export ac_cv_header_security_pam_appl_h=$(multilib_native_usex pam) #545042
 
-	local myeconfargs=(
+	# configure args shared by python and non-python builds
+	local commonargs=(
 		--enable-fs-paths-extra="${EPREFIX}/usr/sbin:${EPREFIX}/bin:${EPREFIX}/usr/bin"
+	)
+
+	local myeconfargs=(
+		"${commonargs[@]}"
 		--with-bashcompletiondir="$(get_bashcompdir)"
 		--without-python
 		$(multilib_native_use_enable suid makeinstall-chown)

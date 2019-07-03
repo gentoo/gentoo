@@ -109,6 +109,7 @@ lfs_fallocate_test() {
 
 python_configure() {
 	local myeconfargs=(
+		"${commonargs[@]}"
 		--disable-all-programs
 		--disable-bash-completion
 		--without-systemdsystemunitdir
@@ -136,8 +137,13 @@ multilib_src_configure() {
 	export ac_cv_header_security_pam_misc_h=$(multilib_native_usex pam) #485486
 	export ac_cv_header_security_pam_appl_h=$(multilib_native_usex pam) #545042
 
-	local myeconfargs=(
+	# configure args shared by python and non-python builds
+	local commonargs=(
 		--enable-fs-paths-extra="${EPREFIX}/usr/sbin:${EPREFIX}/bin:${EPREFIX}/usr/bin"
+	)
+
+	local myeconfargs=(
+		"${commonargs[@]}"
 		--with-bashcompletiondir="$(get_bashcompdir)"
 		--without-python
 		$(multilib_native_use_enable suid makeinstall-chown)
@@ -241,11 +247,12 @@ python_install() {
 }
 
 multilib_src_install() {
-	emake DESTDIR="${D}" install
-
 	if multilib_is_native_abi && use python; then
 		python_foreach_impl python_install
 	fi
+
+	# This needs to be called AFTER python_install call (#689190)
+	emake DESTDIR="${D}" install
 
 	if multilib_is_native_abi && use userland_GNU; then
 		# need the libs in /
