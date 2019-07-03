@@ -2,17 +2,15 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-PROGNAME=${RC_SVCNAME#*.}
-PROGDIR=/usr/bin
 SPOOLDIR="${SPOOLDIR:-/var/spool/MIMEDefang}"
-PID="${SPOOLDIR}/${PROGNAME}.pid"
-MXPID="${SPOOLDIR}/${PROGNAME}-multiplexor.pid"
-LOCK="${SPOOLDIR}/${PROGNAME}.lock"
-MXLOCK="${SPOOLDIR}/${PROGNAME}-multiplexor.lock"
+PID="${SPOOLDIR}/mimedefang.pid"
+MXPID="${SPOOLDIR}/mimedefang-multiplexor.pid"
+LOCK="${SPOOLDIR}/mimedefang.lock"
+MXLOCK="${SPOOLDIR}/mimedefang-multiplexor.lock"
 
 # Make sure required vars are set
-SOCKET="${SOCKET:-${SPOOLDIR}/${PROGNAME}.sock}"
-MX_SOCKET="${MX_SOCKET:-${SPOOLDIR}/${PROGNAME}-multiplexor.sock}"
+SOCKET="${SOCKET:-${SPOOLDIR}/mimedefang.sock}"
+MX_SOCKET="${MX_SOCKET:-${SPOOLDIR}/mimedefang-multiplexor.sock}"
 
 description="MIMEDefang mail filter"
 extra_commands="checkconfig"
@@ -33,30 +31,30 @@ start() {
 
 	# First start mimedefang multiplexor
 	rm -f "${MX_SOCKET}" > /dev/null 2>&1
-	ebegin "Starting ${PROGNAME}-multiplexor"
+	ebegin "Starting mimedefang-multiplexor"
 	start-stop-daemon --start --quiet \
-		--exec ${PROGDIR}/${PROGNAME}-multiplexor -- -p "${MXPID}" -o "${MXLOCK}" -z "${SPOOLDIR}" \
+		--exec /usr/bin/mimedefang-multiplexor -- -p "${MXPID}" -o "${MXLOCK}" -z "${SPOOLDIR}" \
 		${MD_MX_OPTS} ${MX_OPTS} \
 		-s "${MX_SOCKET}"
-	eend $? "Failed to start ${PROGNAME}-multiplexor"
+	eend $? "Failed to start mimedefang-multiplexor"
 
 	# And now start mimedefang
 	rm -f "${SOCKET}" > /dev/null 2>&1
-	ebegin "Starting ${PROGNAME}"
+	ebegin "Starting mimedefang"
 	start-stop-daemon --start --quiet \
-		--exec ${PROGDIR}/${PROGNAME} -- -P "${PID}" -o "${LOCK}" -z "${SPOOLDIR}" \
+		--exec /usr/bin/mimedefang -- -P "${PID}" -o "${LOCK}" -z "${SPOOLDIR}" \
 		${MD_MX_OPTS} ${MD_OPTS} \
 		-m "${MX_SOCKET}" \
 		-p "${SOCKET}"
-	eend $? "Failed to start ${PROGNAME}"
+	eend $? "Failed to start mimedefang"
 }
 
 stop() {
-	ebegin "Stopping ${PROGNAME}"
+	ebegin "Stopping mimedefang"
 	start-stop-daemon --stop --quiet --pidfile "${PID}"
-	eend $? "Failed to stop ${PROGNAME}"
+	eend $? "Failed to stop mimedefang"
 
-	ebegin "Stopping ${PROGNAME}-multiplexor"
+	ebegin "Stopping mimedefang-multiplexor"
 	start-stop-daemon --stop --quiet --pidfile "${MXPID}"
-	eend $? "Failed to stop ${PROGNAME}-multiplexor"
+	eend $? "Failed to stop mimedefang-multiplexor"
 }
