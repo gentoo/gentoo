@@ -101,7 +101,7 @@ cmake_src_bootstrap() {
 cmake_src_test() {
 	# fix OutDir and SelectLibraryConfigurations tests
 	# these are altered thanks to our eclass
-	sed -i -e 's:#IGNORE ::g' \
+	sed -i -e 's:^#_cmake_modify_IGNORE ::g' \
 		"${S}"/Tests/{OutDir,CMakeOnly/SelectLibraryConfigurations}/CMakeLists.txt \
 		|| die
 
