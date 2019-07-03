@@ -14,12 +14,12 @@ SRC_URI="mirror://pypi/${PN:0:1}/${MY_PN}/${MY_PN}-${PV}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-fbsd"
 IUSE="doc test"
 
 RDEPEND="
 	>=dev-python/six-1.4[${PYTHON_USEDEP}]
-	<dev-python/namespace-jaraco-2[${PYTHON_USEDEP}]
+	>=dev-python/namespace-jaraco-2[${PYTHON_USEDEP}]
 "
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
@@ -47,12 +47,14 @@ python_compile_all() {
 python_test() {
 	# Skip one test which requires network access
 	# Override pytest options to skip flake8
-	PYTHONPATH=. py.test -v -k "not test_revived_distribution" \
+	PYTHONPATH=. pytest -vv -k "not test_revived_distribution" \
 		--override-ini="addopts=--doctest-modules" \
 		|| die "tests failed with ${EPYTHON}"
 }
 
-python_install_all() {
-	distutils-r1_python_install_all
-	find "${ED}" -name '*.pth' -delete || die
+# https://wiki.gentoo.org/wiki/Project:Python/Namespace_packages#File_collisions_between_pkgutil-style_packages
+python_install() {
+	rm "${BUILD_DIR}"/lib/jaraco/__init__.py || die
+	# note: eclass may default to --skip-build in the future
+	distutils-r1_python_install --skip-build
 }

@@ -3,13 +3,13 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( pypy3 python{2_7,3_{5,6,7}} )
+PYTHON_COMPAT=( python{2_7,3_{5,6,7}} )
 
 inherit distutils-r1
 
 MY_PN="${PN/-/.}"
-DESCRIPTION="Additional facilities to supplement Python's stdlib logging module"
-HOMEPAGE="https://github.com/jaraco/jaraco.logging"
+DESCRIPTION="Models and classes to supplement the stdlib collections module"
+HOMEPAGE="https://github.com/jaraco/jaraco.collections"
 SRC_URI="mirror://pypi/${PN:0:1}/${MY_PN}/${MY_PN}-${PV}.tar.gz"
 
 LICENSE="MIT"
@@ -19,8 +19,9 @@ IUSE="doc test"
 
 RDEPEND="
 	>=dev-python/namespace-jaraco-2[${PYTHON_USEDEP}]
-	dev-python/six[${PYTHON_USEDEP}]
-	dev-python/tempora[${PYTHON_USEDEP}]
+	dev-python/jaraco-classes[${PYTHON_USEDEP}]
+	dev-python/jaraco-text[${PYTHON_USEDEP}]
+	>=dev-python/six-1.7.0[${PYTHON_USEDEP}]
 "
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
@@ -40,8 +41,7 @@ S="${WORKDIR}/${MY_PN}-${PV}"
 
 python_compile_all() {
 	if use doc; then
-		cd docs || die
-		sphinx-build . _build/html || die
+		sphinx-build docs docs/_build/html || die
 		HTML_DOCS=( docs/_build/html/. )
 	fi
 }
