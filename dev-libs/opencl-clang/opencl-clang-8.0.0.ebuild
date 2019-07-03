@@ -13,7 +13,7 @@ LICENSE="UoI-NCSA"
 SLOT="8"
 KEYWORDS="~amd64"
 
-COMMON="sys-devel/clang:8=[${MULTILIB_USEDEP}]"
+COMMON="sys-devel/clang:8=[static-analyzer,${MULTILIB_USEDEP}]"
 DEPEND="${COMMON}
 	dev-util/spirv-llvm-translator:8=[${MULTILIB_USEDEP}]
 	dev-vcs/git"
