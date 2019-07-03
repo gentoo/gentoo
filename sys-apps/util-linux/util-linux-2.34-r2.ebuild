@@ -241,11 +241,12 @@ python_install() {
 }
 
 multilib_src_install() {
-	emake DESTDIR="${D}" install
-
 	if multilib_is_native_abi && use python; then
 		python_foreach_impl python_install
 	fi
+
+	# This needs to be called AFTER python_install call (#689190)
+	emake DESTDIR="${D}" install
 
 	if multilib_is_native_abi && use userland_GNU; then
 		# need the libs in /
