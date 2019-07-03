@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 COMMON="sys-devel/llvm:8=[${MULTILIB_USEDEP}]
-	dev-libs/opencl-clang:8=[${MULTILIB_USEDEP}]"
+	<dev-libs/opencl-clang-8.0.1:8=[${MULTILIB_USEDEP}]"
 DEPEND="${COMMON}"
 RDEPEND="${COMMON}"
 
