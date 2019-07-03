@@ -18,6 +18,10 @@ BDEPEND="app-arch/unzip"
 
 S="${WORKDIR}"
 
+PATCHES=(
+	"${FILESDIR}/${P}-build.patch"
+)
+
 config_uncomment() {
 	sed -i -e "s://\s*\(#define\s*$1\):\1:" config.h || die
 }
