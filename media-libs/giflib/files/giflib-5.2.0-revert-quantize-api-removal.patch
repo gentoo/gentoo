@@ -1,0 +1,77 @@
+diff -ur giflib-5.2.1.orig/getarg.h giflib-5.2.1/getarg.h
+--- giflib-5.2.1.orig/getarg.h	2019-06-24 09:32:56.000000000 +0200
++++ giflib-5.2.1/getarg.h	2019-07-05 22:30:10.000000000 +0200
+@@ -34,15 +34,6 @@
+ extern void GifQprintf(char *Format, ...);
+ extern void PrintGifError(int ErrorCode);
+ 
+-/******************************************************************************
+- Color table quantization
+-******************************************************************************/
+-int GifQuantizeBuffer(unsigned int Width, unsigned int Height,
+-                   int *ColorMapSize, GifByteType * RedInput,
+-                   GifByteType * GreenInput, GifByteType * BlueInput,
+-                   GifByteType * OutputBuffer,
+-                   GifColorType * OutputColorMap);
+-
+ /* These used to live in the library header */
+ #define GIF_MESSAGE(Msg) fprintf(stderr, "\n%s: %s\n", PROGRAM_NAME, Msg)
+ #define GIF_EXIT(Msg)    { GIF_MESSAGE(Msg); exit(-3); }
+diff -ur giflib-5.2.1.orig/giffilter.c giflib-5.2.1/giffilter.c
+--- giflib-5.2.1.orig/giffilter.c	2019-06-24 09:26:43.000000000 +0200
++++ giflib-5.2.1/giffilter.c	2019-07-05 22:30:32.000000000 +0200
+@@ -25,8 +25,8 @@
+ #include <string.h>
+ #include <fcntl.h>
+ 
+-#include "gif_lib.h"
+ #include "getarg.h"
++#include "gif_lib.h"
+ 
+ #define PROGRAM_NAME	"giffilter"
+ 
+diff -ur giflib-5.2.1.orig/gif_lib.h giflib-5.2.1/gif_lib.h
+--- giflib-5.2.1.orig/gif_lib.h	2019-06-24 18:16:13.000000000 +0200
++++ giflib-5.2.1/gif_lib.h	2019-07-05 22:27:25.000000000 +0200
+@@ -217,6 +217,15 @@
+ 
+ 
+ /******************************************************************************
++ Color table quantization (deprecated)
++******************************************************************************/
++int GifQuantizeBuffer(unsigned int Width, unsigned int Height,
++                   int *ColorMapSize, GifByteType * RedInput,
++                   GifByteType * GreenInput, GifByteType * BlueInput,
++                   GifByteType * OutputBuffer,
++                   GifColorType * OutputColorMap);
++
++/******************************************************************************
+  Error handling and reporting.
+ ******************************************************************************/
+ extern const char *GifErrorString(int ErrorCode);     /* new in 2012 - ESR */
+diff -ur giflib-5.2.1.orig/gifsponge.c giflib-5.2.1/gifsponge.c
+--- giflib-5.2.1.orig/gifsponge.c	2019-06-24 09:28:45.000000000 +0200
++++ giflib-5.2.1/gifsponge.c	2019-07-05 22:30:37.000000000 +0200
+@@ -25,8 +25,8 @@
+ #include <string.h>
+ #include <fcntl.h>
+ 
+-#include "gif_lib.h"
+ #include "getarg.h"
++#include "gif_lib.h"
+ 
+ #define PROGRAM_NAME	"gifsponge"
+ 
+diff -ur giflib-5.2.1.orig/giftool.c giflib-5.2.1/giftool.c
+--- giflib-5.2.1.orig/giftool.c	2019-06-24 09:29:02.000000000 +0200
++++ giflib-5.2.1/giftool.c	2019-07-05 22:30:48.000000000 +0200
+@@ -13,8 +13,8 @@
+ #include <stdbool.h>
+ 
+ #include "getopt.h"
+-#include "gif_lib.h"
+ #include "getarg.h"
++#include "gif_lib.h"
+ 
+ #define PROGRAM_NAME	"giftool"
+ 
