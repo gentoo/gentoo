@@ -10071,7 +10071,7 @@ sys-auth/ykpers 1.18.0 1.19.0: Library and tool for personalization of Yubico's 
 sys-block/aoetools 36: tools for ATA over Ethernet (AoE) network storage protocol
 sys-block/blktrace 1.2.0: show detailed info about what is happening on a block device io queue
 sys-block/buffer 1.19-r2: a tapedrive tool for speeding up reading from and writing to tape
-sys-block/di 4.46 4.47: Disk Information Utility
+sys-block/di 4.47: Disk Information Utility
 sys-block/disktype 9: Detect the content format of a disk or disk image
 sys-block/f3 7.0: Utilities to detect broken or counterfeit flash storage
 sys-block/fio 2.15: Jens Axboe's Flexible IO tester
