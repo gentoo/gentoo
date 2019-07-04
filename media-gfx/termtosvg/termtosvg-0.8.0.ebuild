@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=( python3_{5,6} )
+PYTHON_COMPAT=( python3_{5,6,7} )
 inherit distutils-r1
 
 DESCRIPTION="Record terminal sessions as SVG animations"
@@ -15,7 +15,12 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-RDEPEND="${PYTHON_DEPS}
+RDEPEND="
 	>=dev-python/pyte-0.8.0[${PYTHON_USEDEP}]
-	dev-python/svgwrite[${PYTHON_USEDEP}]"
-DEPEND="${RDEPEND}"
+	dev-python/lxml[${PYTHON_USEDEP}]"
+DEPEND="${RDEPEND}
+	dev-python/setuptools[${PYTHON_USEDEP}]"
+
+python_test() {
+	"${PYTHON}" -m unittest discover -v || die "tests failed with ${EPYTHON}"
+}
