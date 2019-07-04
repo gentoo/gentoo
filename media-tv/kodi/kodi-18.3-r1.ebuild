@@ -41,11 +41,11 @@ SLOT="0"
 # use flag is called libusb so that it doesn't fool people in thinking that
 # it is _required_ for USB support. Otherwise they'll disable udev and
 # that's going to be worse.
-IUSE="airplay alsa bluetooth bluray caps cec +css dbus dvd gbm gles lcms libressl libusb lirc mariadb mysql nfs +opengl pulseaudio samba systemd +system-ffmpeg test +udev udisks upnp upower vaapi vdpau wayland webserver +X +xslt zeroconf"
+IUSE="airplay alsa bluetooth bluray caps cec +css dbus dvd gbm gles lcms libressl libusb lirc mariadb mysql nfs +opengl pulseaudio raspberry-pi samba systemd +system-ffmpeg test +udev udisks upnp upower vaapi vdpau wayland webserver +X +xslt zeroconf"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
 	|| ( gles opengl )
-	^^ ( gbm wayland X )
+	^^ ( gbm raspberry-pi wayland X )
 	?? ( mariadb mysql )
 	udev? ( !libusb )
 	udisks? ( dbus )
@@ -66,7 +66,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	dev-libs/expat
 	dev-libs/flatbuffers
 	>=dev-libs/fribidi-0.19.7
-	cec? ( >=dev-libs/libcec-4.0 )
+	cec? ( >=dev-libs/libcec-4.0[raspberry-pi?] )
 	dev-libs/libpcre[cxx]
 	>=dev-libs/libinput-1.10.5
 	>=dev-libs/libxml2-2.9.4
@@ -78,7 +78,9 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	>=dev-libs/libfmt-3.0.1
 	dev-libs/libfstrcmp
 	gbm? (	media-libs/mesa[gbm] )
-	gles? ( media-libs/mesa[gles2] )
+	gles? (
+		!raspberry-pi? ( media-libs/mesa[gles2] )
+	)
 	lcms? ( media-libs/lcms:2 )
 	libusb? ( virtual/libusb:1 )
 	virtual/ttf-fonts
@@ -86,7 +88,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	>=media-libs/fontconfig-2.12.4
 	>=media-libs/freetype-2.8
 	>=media-libs/libass-0.13.4
-	media-libs/mesa[egl]
+	!raspberry-pi? ( media-libs/mesa[egl] )
 	>=media-libs/taglib-1.11.1
 	system-ffmpeg? (
 		>=media-video/ffmpeg-${FFMPEG_VERSION}:=[encode,postproc]
@@ -100,6 +102,9 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	opengl? ( media-libs/glu )
 	!libressl? ( >=dev-libs/openssl-1.0.2l:0= )
 	libressl? ( dev-libs/libressl:0= )
+	raspberry-pi? (
+		|| ( media-libs/raspberrypi-userland media-libs/raspberrypi-userland-bin media-libs/mesa[egl,gles2,vc4] )
+	)
 	pulseaudio? ( media-sound/pulseaudio )
 	samba? ( >=net-fs/samba-3.4.6[smbclient(+)] )
 	>=sys-libs/zlib-1.2.11
@@ -275,6 +280,10 @@ src_configure() {
 			-DCORE_PLATFORM_NAME="wayland"
 			-DWAYLAND_RENDER_SYSTEM="$(usex opengl gl gles)"
 		)
+	fi
+
+	if use raspberry-pi; then
+		mycmakeargs+=( -DCORE_PLATFORM_NAME="rbpi" )
 	fi
 
 	if use X; then
