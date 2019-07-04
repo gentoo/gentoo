@@ -262,7 +262,7 @@ case ${EAPI} in
 	6) DEPEND+=" ${BDEPEND}" ;;
 esac
 
-DEPEND+=" ${COMMONDEPEND} dev-util/desktop-file-utils"
+DEPEND+=" ${COMMONDEPEND}"
 RDEPEND+=" ${COMMONDEPEND}"
 unset COMMONDEPEND
 
@@ -495,7 +495,10 @@ kde5_src_prepare() {
 	fi
 
 	# enable only the requested translations when required
-	if [[ -v LINGUAS ]] ; then
+	# always install unconditionally for kconfigwidgets - if you use language
+	# X as system language, and there is a combobox with language names, the
+	# translated language name for language Y is taken from /usr/share/locale/Y/kf5_entry.desktop
+	if [[ -v LINGUAS && ${PN} != kconfigwidgets ]] ; then
 		local po
 		for po in ${KDE_PO_DIRS}; do
 		if [[ -d ${po} ]] ; then

@@ -16,8 +16,8 @@ SRC_URI="https://cmake.org/files/v$(ver_cut 1-2)/${MY_P}.tar.gz"
 LICENSE="CMake"
 SLOT="0"
 [[ "${PV}" = *_rc* ]] || \
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~m68k ~mips ppc ppc64 s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
-IUSE="doc emacs system-jsoncpp ncurses qt5 test"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+IUSE="doc emacs system-jsoncpp ncurses qt5"
 
 RDEPEND="
 	app-crypt/rhash
@@ -51,18 +51,20 @@ SITEFILE="50${PN}-gentoo.el"
 PATCHES=(
 	# prefix
 	"${FILESDIR}"/${PN}-3.4.0_rc1-darwin-bundle.patch
-	"${FILESDIR}"/${PN}-3.14.0_rc3-prefix-dirs.patch
-	# Next patch requires new work from prefix people
-	#"${FILESDIR}"/${PN}-3.1.0-darwin-isysroot.patch
+	"${FILESDIR}"/${PN}-3.13.4-prefix-dirs.patch
+	"${FILESDIR}"/${PN}-3.1.0-darwin-isysroot.patch
 
 	# handle gentoo packaging in find modules
-	"${FILESDIR}"/${PN}-3.14.0_rc1-FindBLAS.patch
-	"${FILESDIR}"/${PN}-3.14.0_rc1-FindLAPACK.patch
+	"${FILESDIR}"/${PN}-3.11.0_rc2-FindBLAS.patch
+	"${FILESDIR}"/${PN}-3.0.2-FindLAPACK.patch
 	"${FILESDIR}"/${PN}-3.5.2-FindQt4.patch
 
 	# respect python eclasses
 	"${FILESDIR}"/${PN}-2.8.10.2-FindPythonLibs.patch
 	"${FILESDIR}"/${PN}-3.9.0_rc2-FindPythonInterp.patch
+
+	# boost (#660980)
+	"${FILESDIR}"/${PN}-3.11.4-fix-boost-detection.patch
 
 	# upstream fixes (can usually be removed with a version bump)
 )
@@ -126,7 +128,7 @@ cmake_src_test() {
 		-j "$(makeopts_jobs)" \
 		--test-load "$(makeopts_loadavg)" \
 		${ctestargs} \
-		-E "(BootstrapTest|BundleUtilities|CMakeOnly.AllFindModules|CompileOptions|CTest.UpdateCVS|Fortran|RunCMake.CompilerLauncher|RunCMake.CPack_(DEB|RPM)|TestUpload)" \
+		-E "(BootstrapTest|BundleUtilities|CMakeOnly.AllFindModules|CTest.UpdateCVS|Fortran|RunCMake.CompilerLauncher|RunCMake.CPack_(DEB|RPM)|TestUpload)" \
 		|| die "Tests failed"
 
 	popd > /dev/null
@@ -167,7 +169,6 @@ src_configure() {
 		-DSPHINX_MAN=$(usex doc)
 		-DSPHINX_HTML=$(usex doc)
 		-DBUILD_CursesDialog="$(usex ncurses)"
-		-DBUILD_TESTING=$(usex test)
 	)
 
 	if use qt5 ; then
