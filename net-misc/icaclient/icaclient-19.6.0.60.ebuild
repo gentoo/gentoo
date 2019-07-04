@@ -13,7 +13,7 @@ SRC_URI="amd64? ( linuxx64-${PV}.tar.gz )
 
 LICENSE="icaclient"
 SLOT="0"
-KEYWORDS="-* amd64 x86"
+KEYWORDS="-* ~amd64 ~x86"
 IUSE="nsplugin l10n_de l10n_es l10n_fr l10n_ja l10n_zh_CN"
 RESTRICT="mirror strip userpriv fetch"
 
@@ -35,12 +35,11 @@ RDEPEND="
 	media-libs/freetype
 	media-libs/gst-plugins-base:1.0
 	media-libs/gstreamer:1.0
-	media-libs/libcanberra[gtk]
 	media-libs/libogg
 	media-libs/libvorbis
 	media-libs/speex
-	net-dns/libidn:1.33
 	net-libs/libsoup:2.4
+	net-libs/webkit-gtk:4
 	net-misc/curl
 	sys-libs/e2fsprogs-libs
 	sys-libs/zlib
@@ -49,6 +48,7 @@ RDEPEND="
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf:2
 	x11-libs/gtk+:2
+	x11-libs/gtk+:3
 	x11-libs/libX11
 	x11-libs/libXaw
 	x11-libs/libXext
