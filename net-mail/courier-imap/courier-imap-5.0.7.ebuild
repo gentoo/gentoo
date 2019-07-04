@@ -61,6 +61,7 @@ For a quick-start howto please refer to
 ${PN}-gentoo.readme in /usr/share/doc/${PF}
 
 Please convert maildir to utf8
+and rerun mkdhparams if needed. Locatio has changed
 "
 
 PATCHES=(
@@ -111,19 +112,11 @@ src_configure() {
 		--enable-workarounds-for-imap-client-bugs \
 		--with-mailuser=mail \
 		--with-mailgroup=mail \
+		--with-certsdir="/etc/courier-imap" \
 		$(use_with fam) \
 		$(use_with ipv6) \
 		$(use_with gnutls) \
 		${myconf}
-
-	# Change the pem file location.
-	sed -i -e "s:^\(TLS_CERTFILE=\).*:\1/etc/courier-imap/imapd.pem:" \
-		libs/imap/imapd-ssl.dist || \
-		die "sed failed"
-
-	sed -i -e "s:^\(TLS_CERTFILE=\).*:\1/etc/courier-imap/pop3d.pem:" \
-		libs/imap/pop3d-ssl.dist || \
-		die "sed failed"
 }
 
 #src_compile() {
@@ -190,7 +183,7 @@ src_install() {
 
 	dosbin "${FILESDIR}/mkimapdcert" "${FILESDIR}/mkpop3dcert"
 
-	dosym /usr/sbin/courierlogger "/usr/$(get_libdir)/${PN}/courierlogger"
+	dosym ../../sbin/courierlogger "/usr/$(get_libdir)/${PN}/courierlogger"
 
 	for initd in courier-{imapd,pop3d}{,-ssl} ; do
 		sed -e "s:GENTOO_LIBDIR:$(get_libdir):g" \
