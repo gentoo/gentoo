@@ -345,7 +345,9 @@ lxqt-base/lxqt-meta lximage
 
 # Markus Meier <maekke@gentoo.org> (2014-05-04)
 # Unkeyworded deps, bug #509082
-mail-filter/opendkim opendbx
+# Ralph Seichter <gentoo@seichter.de> (2019-06-29)
+# Added 'stats' because it requires 'opendbx'
+mail-filter/opendkim opendbx stats
 
 # S. Suominen <ssuominen@g.o> (2014-04-17)
 # First GTK+-3.x version of EasyTAG!
