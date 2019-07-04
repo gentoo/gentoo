@@ -29,6 +29,28 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2019-07-04)
+# The core FreeBSD packages are outdated, and have not been subject
+# to FreeBSD erratas for quite some time.  As a result, at least some
+# of them are vulnerable (especially the kernel).  The Gentoo/FreeBSD
+# project is on life support, and we can't provide quality packages
+# at the moment.  Use at your own risk.
+sys-freebsd/boot0
+sys-freebsd/freebsd-bin
+sys-freebsd/freebsd-cddl
+sys-freebsd/freebsd-lib
+sys-freebsd/freebsd-libexec
+sys-freebsd/freebsd-mk-defs
+sys-freebsd/freebsd-pam-modules
+sys-freebsd/freebsd-pf
+sys-freebsd/freebsd-rescue
+sys-freebsd/freebsd-sbin
+sys-freebsd/freebsd-share
+sys-freebsd/freebsd-sources
+sys-freebsd/freebsd-ubin
+sys-freebsd/freebsd-usbin
+sys-freebsd/ubin-wrappers
+
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2019-06-27)
 # Badly outdated, EAPI=2. Removal in 30days, ack'ed by
 # cynede for dotnet. Bug 685626.
