@@ -18,6 +18,7 @@ app-arch/unzip natspec
 app-crypt/gnupg smartcard tofu wks-server
 app-crypt/mit-krb5 doc test xinetd
 app-crypt/pinentry fltk gnome-keyring
+app-editors/emacs alsa lcms mailutils
 app-misc/pax-utils python
 app-text/asciidoc graphviz test
 app-text/po4a test
