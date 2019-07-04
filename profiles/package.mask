@@ -155,11 +155,6 @@ dev-tex/quotchap
 # doesn't work any more. Removal in 30 days.
 dev-libs/liblazy
 
-# Andreas K. Hüttel <dilfridge@gentoo.org> (2019-06-05)
-# Unhandled version bumps since 2015, bug 293306. EAPI=2.
-# Removal in 30 days unless updated.
-dev-util/antlrworks
-
 # Zac Medico <zmedico@gentoo.org> (2019-05-31)
 # Upstream is dead and there are multiple security vulnerabilities.
 # Removal in 30 days. Bug #687100.
