@@ -20,6 +20,7 @@ app-arch/unzip natspec
 app-crypt/gnupg smartcard tofu wks-server
 app-crypt/mit-krb5 doc test xinetd
 app-crypt/pinentry fltk gnome-keyring
+app-doc/doxygen latex dot
 app-editors/emacs alsa lcms mailutils
 app-misc/pax-utils python
 app-text/asciidoc graphviz test
@@ -38,6 +39,7 @@ dev-python/pygments doc test
 dev-python/setuptools test
 dev-python/snakeoil test
 dev-util/catalyst iso
+dev-util/meson test
 dev-util/pkgconf test
 dev-vcs/git cvs highlight gnome-keyring subversion tk xinetd
 media-libs/freetype harfbuzz png
