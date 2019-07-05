@@ -363,6 +363,12 @@ acct-user_pkg_prerm() {
 	debug-print-function ${FUNCNAME} "${@}"
 
 	if [[ -z ${REPLACED_BY_VERSION} ]]; then
+		if [[ -z $(egetent passwd "${ACCT_USER_NAME}") ]]; then
+			ewarn "User account not found: ${ACCT_USER_NAME}"
+			ewarn "Locking process will be skipped."
+			return
+		fi
+
 		esetshell "${ACCT_USER_NAME}" -1
 		esetcomment "${ACCT_USER_NAME}" \
 			"$(egetcomment "${ACCT_USER_NAME}"); user account removed @ $(date +%Y-%m-%d)"
