@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit golang-vcs-snapshot
 
@@ -17,7 +17,7 @@ KEYWORDS="~amd64"
 IUSE=""
 DEPEND=">=dev-lang/go-1.11.0"
 
-DOCS=( README.md CHANGELOG.md )
+DOCS=( src/${EGO_PN}/{README,CHANGELOG}.md )
 
 src_compile() {
 	cd "src/${EGO_PN}" || die
@@ -28,9 +28,7 @@ src_compile() {
 src_install() {
 	dobin terraform
 
-	pushd "src/${EGO_PN}" >/dev/null || die
 	einstalldocs
-	popd >/dev/null || die
 }
 
 pkg_postinst() {
