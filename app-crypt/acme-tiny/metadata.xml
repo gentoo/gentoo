@@ -5,10 +5,6 @@
 		<email>NP-Hardass@gentoo.org</email>
 		<name>NP-Hardass</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>vdupras@gentoo.org</email>
-		<name>Virgil Dupras</name>
-	</maintainer>
 	<longdescription>
 		A tiny, auditable script for Let's Encrypt's ACME Protocol
 	</longdescription>
