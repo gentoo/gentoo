@@ -39,7 +39,7 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PV}-meson-tweaks.patch # Provide introspection optionality and don't build tests that aren't ran automatically
+	"${FILESDIR}"/3.32.1-meson-tweaks.patch # Provide introspection optionality and don't build tests that aren't ran automatically
 )
 
 src_prepare() {
