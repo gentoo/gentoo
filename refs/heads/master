@@ -1,19 +1,17 @@
 certificate version 0.1
-pusher DF84256885283521 1562341467 +0200
-pushee git.gentoo.org:repo/gentoo.git
-nonce 1562341467-fb3716ba09afcbe246f5129b9a0b7d69b56b1d57
+pusher Ulrich Müller <ulm@gentoo.org> 1562346051 +0200
+pushee git+ssh://git.gentoo.org/repo/gentoo.git
+nonce 1562346051-6270ad6cbe846a2bfeacd3d455aa2a0933b0cae0
 
-23cb9955f6ad17c319f09122bf80bceab0e2828c d61d24f4818eef45f8e7ba2e4a7c508ad5bdfb43 refs/heads/master
+d61d24f4818eef45f8e7ba2e4a7c508ad5bdfb43 10db06b8830c7790917f483484fac9687ae9019d refs/heads/master
 -----BEGIN PGP SIGNATURE-----
 
-iQGTBAABCgB9FiEEx2qEUJQJjSjMiybFY5ra4jKeJA4FAl0fcFtfFIAAAAAALgAo
-aXNzdWVyLWZwckBub3RhdGlvbnMub3BlbnBncC5maWZ0aGhvcnNlbWFuLm5ldEM3
-NkE4NDUwOTQwOThEMjhDQzhCMjZDNTYzOUFEQUUyMzI5RTI0MEUACgkQY5ra4jKe
-JA4UxQgArl0l7FJBCEMqEgpkQmGhT5zOywi0pTKPnt4M0gmb8t42v8NNcjzOLe7p
-Sltzuwn/zAqeahoT4vDyhsUBHwgvozW9Xfi+B8K/3NOQf8+HahhlLEM/j26wmhx4
-yWngzw77Zow51RtHXlgWqkE7k2Z0mqPjOf8r1x2cxveSCbVB2IZ1rDue8pzBlmPF
-YT7x/Vz67qhCgwZGnrk3hQgcouh3ROUE7jJSznVCl/WoTRMVQUDgAIi79tNhm+Gt
-iT5NzuqfWZW/JPIotTUE1zhqeTVtSC7GzeLd3sr/LS0OjeZVI+PPk7xbe929a/4S
-IoAh1Sl9d65v/+fo/Unf+YB1oK0oLA==
-=xmes
+iQFDBAABCAAtFiEEtDnZ1O9xIP68rzDbUYgzUIhBXi4FAl0fgkMPHHVsbUBnZW50
+b28ub3JnAAoJEFGIM1CIQV4u1OEH/iUJ2of8xvq7wreU21AgEwtUfogVLx0M40RK
+HH8zUDU/KApuWI2TYC+3a6iLwyrO298yL/VMQr2049LQAATdOQlJ82DTrTwzk6X4
+ldlBqqutHxP6CndqTVxtqD69OuOiwwHEF3PuBdHZSmuMSHHOJWwA3iDIHgf3B3SQ
+kz0IuAuOx/94oX1ggIhvltXp6mbuiOYevYkyY1Y/s08tSfVxhXpgX8DJT39uY3AO
+8O75XRwEp1SY2wmG3YDlBiCz8JAoJs8QIdCksBVuFMUcXWlsZ4hvJp6OXSiecO5q
+qbPTkNIniOa6A24uxGDFfvXW+J7u+JCm/69guZxRQBXxZkbAN1g=
+=ulzr
 -----END PGP SIGNATURE-----
