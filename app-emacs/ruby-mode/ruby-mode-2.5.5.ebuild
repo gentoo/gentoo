@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 inherit elisp
 
@@ -15,4 +15,4 @@ KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-
 
 S="${WORKDIR}/ruby-${PV}/misc"
 DOCS="README"
-SITEFILE="50${PN}-gentoo-${PV}.el"
+SITEFILE="50${PN}-gentoo-2.5.0.el"
