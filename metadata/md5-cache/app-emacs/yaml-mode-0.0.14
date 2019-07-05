@@ -1,0 +1,12 @@
+BDEPEND=>=virtual/emacs-23
+DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
+DESCRIPTION=A major mode for GNU Emacs for editing YAML files
+EAPI=7
+HOMEPAGE=https://github.com/yoshiki/yaml-mode
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=GPL-2+
+RDEPEND=>=virtual/emacs-23
+SLOT=0
+SRC_URI=https://github.com/yoshiki/yaml-mode/archive/0.0.14.tar.gz -> yaml-mode-0.0.14.tar.gz
+_eclasses_=elisp	efe1c459331d853614b12c63ab169a32	elisp-common	23f47b2e1de7abf387105eddd1318738
+_md5_=b537b8a5f7a6b955104ba49d1def4dc4
