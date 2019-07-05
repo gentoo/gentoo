@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -28,6 +28,8 @@ RDEPEND="dev-lang/perl
 
 DEPEND="${RDEPEND}
 	>=dev-lang/ocaml-3.10.2[ocamlopt?]"
+
+RESTRICT="!ocamlopt? ( strip )"
 
 MLUSER="p2p"
 
@@ -113,7 +115,6 @@ src_compile() {
 src_install() {
 	local myext=""
 	use ocamlopt || myext=".byte"
-	use ocamlopt || export STRIP_MASK="*/bin/*"
 	if ! use guionly; then
 		for i in mlnet mld_hash get_range copysources subconv; do
 			newbin $i$myext $i
