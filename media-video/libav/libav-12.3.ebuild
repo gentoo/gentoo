@@ -144,6 +144,7 @@ src_unpack() {
 
 src_prepare() {
 	eapply_user
+	eapply "${FILESDIR}/${P}-x264.patch" # bug 681888
 
 	# if we have snapshot then we need to hardcode the version
 	if [[ ${PV%_p*} != ${PV} ]]; then
