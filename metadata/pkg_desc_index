@@ -714,7 +714,7 @@ app-emacs/redo+ 1.19: Redo/undo system for Emacs
 app-emacs/regress 1.5.1: Regression test harness for Emacs Lisp code
 app-emacs/rfcview 0.13: An Emacs mode that reformats IETF RFCs for display
 app-emacs/riece 8.0.0 9.0.0: A redesign of Liece IRC client
-app-emacs/ruby-mode 2.3.0: Emacs major mode for editing Ruby code
+app-emacs/ruby-mode 2.3.0 2.4.1: Emacs major mode for editing Ruby code
 app-emacs/s 1.12.0: The long lost Emacs string manipulation library
 app-emacs/scala-mode 2.10.3: Scala mode for Emacs
 app-emacs/scheme-complete 0.8.10 0.8.11: Scheme tab-completion and word-completion for Emacs
