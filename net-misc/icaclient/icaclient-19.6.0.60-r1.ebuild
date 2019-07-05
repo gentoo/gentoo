@@ -94,7 +94,7 @@ src_install() {
 	dodir "${ICAROOT}"
 
 	exeinto "${ICAROOT}"
-	doexe *.DLL libproxy.so wfica AuthManagerDaemon PrimaryAuthManager selfservice ServiceRecord
+	doexe *.DLL libAnalyticsInterfacePd.so libproxy.so wfica AuthManagerDaemon PrimaryAuthManager selfservice ServiceRecord
 
 	exeinto "${ICAROOT}"/lib
 	doexe lib/*.so
