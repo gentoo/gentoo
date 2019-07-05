@@ -233,6 +233,8 @@ src_install() {
 	dodoc libs/rfc2045/*.html
 	docinto tcpd
 	dodoc libs/tcpd/README* libs/tcpd/*.html
+	exeinto /etc/cron.monthly
+	newexe "${FILESDIR}"/${PN}.cron ${PN}
 }
 
 pkg_postinst() {
