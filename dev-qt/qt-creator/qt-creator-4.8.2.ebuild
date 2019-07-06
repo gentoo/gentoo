@@ -36,7 +36,7 @@ IUSE="doc systemd test +webengine ${QTC_PLUGINS[@]%:*}"
 QT_PV="5.9.0:5"
 
 CDEPEND="
-	>=dev-libs/botan-2.8:2=[-bindist]
+	=dev-libs/botan-2.9*:2=[-bindist]
 	>=dev-qt/qtconcurrent-${QT_PV}
 	>=dev-qt/qtcore-${QT_PV}
 	>=dev-qt/qtdeclarative-${QT_PV}[widgets]
