@@ -1,0 +1,32 @@
+From 6d61b10f65cd276e009a02cec563cc469245e1f2 Mon Sep 17 00:00:00 2001
+From: Friedemann Kleint <Friedemann.Kleint@qt.io>
+Date: Wed, 19 Jun 2019 08:28:14 +0200
+Subject: [PATCH] High DPI: Fix crash in QWindow::mapFromGlobal()
+
+With Web Engine, QQuickWidget or similar, the code can hit on the offscreen
+window, when its handle is null. Add a check.
+
+Amends 3af7b279177f7fb092f0e0fb9ffc8e8d846ed774.
+
+Fixes: QTBUG-76440
+Change-Id: I123633d18386efd3dbfb22aad6072e4f0877a62e
+Reviewed-by: Allan Sandfeld Jensen <allan.jensen@qt.io>
+---
+ src/gui/kernel/qhighdpiscaling.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/gui/kernel/qhighdpiscaling.cpp b/src/gui/kernel/qhighdpiscaling.cpp
+index 4f8e9a38176..93fcb1a2160 100644
+--- a/src/gui/kernel/qhighdpiscaling.cpp
++++ b/src/gui/kernel/qhighdpiscaling.cpp
+@@ -400,7 +400,7 @@ QPoint QHighDpiScaling::mapPositionToGlobal(const QPoint &pos, const QPoint &win
+ QPoint QHighDpiScaling::mapPositionFromGlobal(const QPoint &pos, const QPoint &windowGlobalPosition, const QWindow *window)
+ {
+     QPoint windowPosCandidate = pos - windowGlobalPosition;
+-    if (QGuiApplicationPrivate::screen_list.size() <= 1)
++    if (QGuiApplicationPrivate::screen_list.size() <= 1 || window->handle() == nullptr)
+         return windowPosCandidate;
+ 
+     // Device independent global (screen) space may discontiguous when high-dpi scaling
+-- 
+2.16.3
