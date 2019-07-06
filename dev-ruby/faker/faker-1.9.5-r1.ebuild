@@ -27,4 +27,6 @@ ruby_add_bdepend "test? ( dev-ruby/timecop )"
 
 all_ruby_prepare() {
 	sed -i -e '/simplecov/,/^end/ s:^:#:' test/test_helper.rb || die
+
+	sed -i -e s/1.9.4/${PV}/ lib/faker/version.rb || die
 }
