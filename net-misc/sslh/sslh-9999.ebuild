@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -26,6 +26,7 @@ RDEPEND="caps? ( sys-libs/libcap )
 	tcpd? ( sys-apps/tcp-wrappers )
 	>=dev-libs/libconfig-1.5"
 DEPEND="${RDEPEND}
+	dev-util/conf2struct
 	dev-lang/perl
 	pcre? ( dev-libs/libpcre:= )"
 
