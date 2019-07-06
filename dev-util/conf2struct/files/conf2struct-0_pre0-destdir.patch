@@ -1,0 +1,47 @@
+From f3724170ae5b5e750ec5482241add97217047eb4 Mon Sep 17 00:00:00 2001
+From: Craig Andrews <candrews@integralblue.com>
+Date: Fri, 5 Jul 2019 15:33:49 -0400
+Subject: [PATCH 1/2] Use DESTDIR in install target
+
+---
+ Makefile | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index bf9bae3..fd2f21b 100644
+--- a/Makefile
++++ b/Makefile
+@@ -10,8 +10,8 @@ checker: confcheck.o
+ 
+ 
+ install: all
+-	install -c conf2struct $(bindir)/conf2struct
+-	install -c confcheck $(bindir)/confcheck
++	install -c conf2struct $(DESTDIR)$(bindir)/conf2struct
++	install -c confcheck $(DESTDIR)$(bindir)/confcheck
+ 
+ uninstall:
+ 	rm -rf $(bindir)/conf2struct $(bindir)/confcheck
+
+From fa13135f93435de520480be9c1a578b20d538f55 Mon Sep 17 00:00:00 2001
+From: Craig Andrews <candrews@integralblue.com>
+Date: Fri, 5 Jul 2019 15:36:24 -0400
+Subject: [PATCH 2/2] Use DESTDIR in uninstall target
+
+---
+ Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index fd2f21b..ca1e673 100644
+--- a/Makefile
++++ b/Makefile
+@@ -14,7 +14,7 @@ install: all
+ 	install -c confcheck $(DESTDIR)$(bindir)/confcheck
+ 
+ uninstall:
+-	rm -rf $(bindir)/conf2struct $(bindir)/confcheck
++	rm -rf $(DESTDIR)$(bindir)/conf2struct $(DESTDIR)$(bindir)/confcheck
+ 	
+ EG_OBJ=example.o parser.o argtable3.o
+ example: $(EG_OBJ)

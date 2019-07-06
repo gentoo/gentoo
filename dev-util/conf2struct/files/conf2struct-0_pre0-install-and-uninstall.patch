@@ -1,0 +1,33 @@
+From 9c0e889e29944428106c12ee28ce0074a29eae50 Mon Sep 17 00:00:00 2001
+From: Yves Rutschle <git1@rutschle.net>
+Date: Sat, 29 Jun 2019 18:41:20 +0200
+Subject: [PATCH] added install and uninstall targets to Makefile
+
+---
+ Makefile | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/Makefile b/Makefile
+index b03aab3..bf9bae3 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,3 +1,5 @@
++prefix=/usr/local
++bindir=$(prefix)/bin
+ 
+ all: example checker
+ 
+@@ -6,6 +8,13 @@ CFLAGS=-g
+ checker: confcheck.o
+ 	gcc -o confcheck confcheck.o -lconfig
+ 
++
++install: all
++	install -c conf2struct $(bindir)/conf2struct
++	install -c confcheck $(bindir)/confcheck
++
++uninstall:
++	rm -rf $(bindir)/conf2struct $(bindir)/confcheck
+ 	
+ EG_OBJ=example.o parser.o argtable3.o
+ example: $(EG_OBJ)
