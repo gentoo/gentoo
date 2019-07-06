@@ -36,7 +36,6 @@ IUSE="doc systemd test +webengine ${QTC_PLUGINS[@]%:*}"
 QT_PV="5.9.0:5"
 
 CDEPEND="
-	>=dev-libs/botan-2.8:2=[-bindist]
 	>=dev-qt/qtconcurrent-${QT_PV}
 	>=dev-qt/qtcore-${QT_PV}
 	>=dev-qt/qtdeclarative-${QT_PV}[widgets]
@@ -153,9 +152,6 @@ src_prepare() {
 	done
 	sed -i -e "/^LANGUAGES\s*=/s:=.*:=${languages}:" share/qtcreator/translations/translations.pro || die
 
-	# remove bundled botan
-	rm -rf src/libs/3rdparty/botan || die
-
 	# remove bundled qbs
 	rm -rf src/shared/qbs || die
 }
@@ -167,7 +163,6 @@ src_configure() {
 		$(use qbs && echo QBS_INSTALL_DIR="${EPREFIX}/usr") \
 		CONFIG+=qbs_disable_rpath \
 		CONFIG+=qbs_enable_project_file_updates \
-		CONFIG+=use_system_botan \
 		$(use systemd && echo CONFIG+=journald) \
 		$(use test && echo BUILD_TESTS=1)
 }
