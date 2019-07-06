@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<upstream>
+		<remote-id type="github">christgau/wsdd</remote-id>
+	</upstream>
+	<maintainer type="person">
+		<email>mail@s14u.de</email>
+		<name>Steffen Christgau</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+		A Web Service Discovery host daemon. It enables (Samba) hosts,
+		e.g. NAS devices, to be found by Web Service Discovery Clients
+		like Windows.
+	</longdescription>
+</pkgmetadata>
