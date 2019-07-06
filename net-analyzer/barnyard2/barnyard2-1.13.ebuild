@@ -12,13 +12,14 @@ SRC_URI="https://github.com/firnsy/barnyard2/archive/v2-${PV}.tar.gz -> ${P}-git
 SLOT="0"
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~x86"
-IUSE="debug gre mpls mysql odbc postgres static"
+IUSE="debug gre mpls mysql odbc postgres sguil"
 
 DEPEND="
 	net-libs/libpcap
 	mysql? ( dev-db/mysql-connector-c:0= )
 	odbc? ( dev-db/unixODBC )
 	postgres? ( dev-db/postgresql:* )
+	sguil? ( dev-lang/tcl:* )
 "
 RDEPEND="
 	${DEPEND}
@@ -43,19 +44,18 @@ src_prepare() {
 
 src_configure() {
 	econf \
-		$(use_enable !static shared) \
-		$(use_enable static) \
 		$(use_enable debug) \
 		$(use_enable gre) \
 		$(use_enable mpls) \
 		$(use_with mysql) \
 		$(use_with odbc) \
 		$(use_with postgres postgresql) \
-		--disable-ipv6 \
-		--disable-prelude \
-		--disable-mysql-ssl-support \
+		$(use_with sguil tcl) \
 		--disable-aruba \
-		--without-tcl \
+		--disable-ipv6 \
+		--disable-mysql-ssl-support \
+		--disable-prelude \
+		--disable-static \
 		--without-oracle
 }
 
