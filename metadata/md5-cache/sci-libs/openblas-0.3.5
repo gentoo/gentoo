@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install postinst postrm unpack
+DEPEND=>=app-eselect/eselect-blas-0.2 >=app-eselect/eselect-lapack-0.2 virtual/pkgconfig
+DESCRIPTION=Optimized BLAS library based on GotoBLAS2
+EAPI=7
+HOMEPAGE=http://xianyi.github.com/OpenBLAS/
+IUSE=dynamic openmp pthread serial static-libs eselect-ldso
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos
+LICENSE=BSD
+RDEPEND=>=app-eselect/eselect-blas-0.2 >=app-eselect/eselect-lapack-0.2
+REQUIRED_USE=?? ( openmp pthread serial )
+SLOT=0
+SRC_URI=https://github.com/xianyi/OpenBLAS/tarball/v0.3.5 -> openblas-0.3.5.tar.gz
+_md5_=26189a93d8b499330701ef99b52f094c
