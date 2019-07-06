@@ -30,6 +30,7 @@ src_install() {
 	dobin "${PN}"
 	insinto "/etc/${PN}"
 	doins docs/examples/{config,domains.txt,hook.sh}
+	fperms u+x "/etc/${PN}/hook.sh"
 	dodoc docs/*.md
 
 	insinto /etc/"${PN}"/config.d
