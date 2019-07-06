@@ -174,11 +174,6 @@ dev-libs/liblazy
 # Removal in 30 days. Bug #687100.
 app-emulation/rkt
 
-# Hanno Boeck <hanno@gentoo.org> (2019-05-27)
-# Obsolete LXDE modules, see #652658, #651964
-lxde-base/lxshortcut
-lxde-base/lxsession-edit
-
 # Patrick Lauer <patrick@gentoo.org> (2019-05-23)
 # PostgreSQL beta and release candidate releases are pre-release testing
 # versions, not meant for production use. They are feature-frozen, and are
