@@ -1,0 +1,22 @@
+From b43351d0fdd687ed39b38531f673ba634aca5fee Mon Sep 17 00:00:00 2001
+From: Craig Andrews <candrews@integralblue.com>
+Date: Fri, 5 Jul 2019 16:22:49 -0400
+Subject: [PATCH] Install target should not run all
+
+---
+ Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index bf9bae3..8943248 100644
+--- a/Makefile
++++ b/Makefile
+@@ -9,7 +9,7 @@ checker: confcheck.o
+ 	$(CC) $(CFLAGS) -o confcheck confcheck.o -lconfig
+ 
+ 
+-install: all
++install:
+ 	install -c conf2struct $(DESTDIR)$(bindir)/conf2struct
+ 	install -c confcheck $(DESTDIR)$(bindir)/confcheck
+ 

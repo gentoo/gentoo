@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>candrews@gentoo.org</email>
+    <name>Craig Andrwes</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Conf-Libconfig</remote-id>
+    <remote-id type="cpan-module">Config::Libconfig</remote-id>
+  </upstream>
+</pkgmetadata>
