@@ -5,9 +5,8 @@ EAPI=5
 inherit eutils user bash-completion-r1
 
 DESCRIPTION="Policy based mounter that gives the ability to mount removable devices as a user"
-HOMEPAGE="http://pmount.alioth.debian.org/"
+HOMEPAGE="https://launchpad.net/pmount"
 SRC_URI="mirror://debian/pool/main/p/${PN}/${PN}_${PV/_/-}.orig.tar.bz2"
-#SRC_URI="http://alioth.debian.org/frs/download.php/3530/${P/_/-}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
