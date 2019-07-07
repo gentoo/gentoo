@@ -5,18 +5,20 @@ EAPI=7
 
 PYTHON_COMPAT=( python{2_7,3_5,3_6} )
 PYTHON_REQ_USE='xml(+)'
+COMMIT_ID='dd74383d1cba82829ce720f2e439a65d13ffe7ef'
 
-inherit distutils-r1 git-r3
+inherit distutils-r1
 
 DESCRIPTION="Python library to search and download subtitles"
 HOMEPAGE="https://github.com/Diaoul/subliminal https://pypi.org/project/subliminal/"
-EGIT_REPO_URI="https://github.com/Diaoul/${PN}.git"
-EGIT_BRANCH="develop"
-SRC_URI="test? ( mirror://sourceforge/matroska/test_files/matroska_test_w1_1.zip )"
+SRC_URI="
+	https://github.com/Diaoul/${PN}/archive/${COMMIT_ID}.tar.gz -> ${P}-r2.tar.gz
+	test? ( mirror://sourceforge/matroska/test_files/matroska_test_w1_1.zip )
+"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
 RDEPEND="
@@ -38,8 +40,10 @@ RDEPEND="
 	>=dev-python/stevedore-1.0.0[${PYTHON_USEDEP}]
 	virtual/python-futures[${PYTHON_USEDEP}]
 "
-DEPEND="${RDEPEND}
+DEPEND="
+	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
+		${RDEPEND}
 		app-arch/unzip
 		$(python_gen_cond_dep 'dev-python/mock[${PYTHON_USEDEP}]' python2_7)
 		dev-python/pytest-cov[${PYTHON_USEDEP}]
@@ -50,10 +54,12 @@ DEPEND="${RDEPEND}
 	)
 "
 
-src_unpack() {
-	default_src_unpack
-	git-r3_src_unpack
-}
+# Tests don't work in 2.0.5. Recheck in later versions. See Gentoo bug 630114.
+RESTRICT=test
+
+PATCHES=( "${FILESDIR}/${P}-add-missing-comma.patch" )
+
+S="${WORKDIR}/${PN}-${COMMIT_ID}"
 
 python_prepare_all() {
 	# Disable code checkers as they require unavailable dependencies.
