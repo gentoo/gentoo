@@ -56,6 +56,7 @@ DEPEND="${CDEPEND}
 		app-doc/doxygen
 		dev-python/sphinx[${PYTHON_USEDEP}]
 		media-gfx/mscgen
+		media-gfx/graphviz
 		dev-texlive/texlive-latex
 		dev-texlive/texlive-latexextra
 		media-gfx/imagemagick
