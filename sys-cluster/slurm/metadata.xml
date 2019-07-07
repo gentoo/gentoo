@@ -17,6 +17,7 @@
 		<flag name="netloc">Add support for netloc (amd64 only)</flag>
 		<flag name="numa">Add NUMA awareness</flag>
 		<flag name="ofed">Add Infiniband support via ofed</flag>
+		<flag name="slurmdbd">Install SQL server for slurmdbd</flag>
 		<flag name="torque">Enable perl scripts that emulates pbs (qstat, qsub etc.)</flag>
 	</use>
 </pkgmetadata>
