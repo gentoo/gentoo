@@ -9,6 +9,6 @@
 		<email>python@gentoo.org</email>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">dbcli/mycli</remote-id>
+		<remote-id type="github">Robpol86/terminaltables</remote-id>
 	</upstream>
 </pkgmetadata>
