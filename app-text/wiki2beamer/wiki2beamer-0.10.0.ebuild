@@ -38,7 +38,7 @@ src_compile() {
 src_install() {
 	use examples && dodoc -r doc/examples
 
-	doman doc/man/${PN}.1
+	use doc && doman doc/man/${PN}.1
 	dodoc ChangeLog README.md
 
 	python_doscript code/${PN}
