@@ -52,5 +52,8 @@ src_install() {
 	doins jim.h jimautoconf.h jim-subcmd.h jim-signal.h \
 		jim-win32compat.h jim-eventloop.h jim-config.h
 	dodoc AUTHORS README TODO
-	use doc && dohtml Tcl.html
+	if use doc; then
+		docinto html
+		dodoc Tcl.html
+	fi
 }
