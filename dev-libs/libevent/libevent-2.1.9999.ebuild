@@ -8,7 +8,7 @@ DESCRIPTION="Library to execute a function when a specific event occurs on a fil
 EGIT_BRANCH="patches-$(ver_cut 1-2)"
 EGIT_REPO_URI="https://github.com/libevent/libevent"
 HOMEPAGE="
-	http://libevent.org/
+	https://libevent.org/
 	${EGIT_REPO_URI}
 "
 
