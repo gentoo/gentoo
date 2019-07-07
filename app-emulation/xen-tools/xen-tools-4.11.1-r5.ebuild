@@ -83,6 +83,7 @@ DEPEND="${COMMON_DEPEND}
 	>=sys-kernel/linux-headers-4.11
 	dev-python/lxml[${PYTHON_USEDEP}]
 	x86? ( sys-devel/dev86
+		sys-firmware/ipxe[qemu]
 		sys-power/iasl )
 	pam? ( dev-python/pypam[${PYTHON_USEDEP}] )
 	api? ( dev-libs/libxml2
