@@ -10,7 +10,7 @@ DESCRIPTION="Location and timezone database and weather-lookup library"
 HOMEPAGE="https://wiki.gnome.org/Projects/LibGWeather"
 
 LICENSE="GPL-2+"
-SLOT="2/3-15" # subslot = 3-(libgweather-3 soname suffix)
+SLOT="2/3-15-2" # subslot = 3-(libgweather-3 soname suffix) w/ temporary -2 suffix for silent ABI break after 3.28 without soname bump as per distro-list
 
 IUSE="glade gtk-doc +introspection +vala"
 REQUIRED_USE="vala? ( introspection )"
