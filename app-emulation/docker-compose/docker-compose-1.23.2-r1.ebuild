@@ -34,6 +34,7 @@ RDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 
 DEPEND="${RDEPEND}
 	test? ( <dev-python/pytest-4[${PYTHON_USEDEP}]
+	<dev-python/pyyaml-5.1[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep '>=dev-python/mock-1.0.1[${PYTHON_USEDEP}]' 'python2_7' ) )"
 
 S="${WORKDIR}/compose-${PV}"
