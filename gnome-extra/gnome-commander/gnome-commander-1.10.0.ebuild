@@ -31,6 +31,9 @@ RDEPEND="
 	pdf? ( >=app-text/poppler-0.18 )
 	taglib? ( >=media-libs/taglib-1.4 )
 "
+
+PATCHES=( "${FILESDIR}/${P}-exiv2-0.27.1-missing-header.patch" )
+
 DEPEND="
 	${RDEPEND}
 	dev-util/gtk-doc-am
