@@ -39,16 +39,25 @@ DEPEND="doc? (
 		net-misc/rsync
 	)"
 
+PATCHES=(
+	"${FILESDIR}"/"${PN}-${PV}"-fix-flags.patch
+	"${FILESDIR}"/"${PN}-${PV}"-fix-hardcoded-gcc.patch
+)
+
 src_compile() {
 	emake
 	use doc && emake -C doc-src
 }
 
 src_install() {
-	emake install PREFIX="${EPREFIX}/usr" DESTDIR="${D}" DOCDIR="${ED}/usr/share/doc/${PF}" LIBEXEC_DIR="libexec/${PF}"
+	emake install PREFIX="${EPREFIX}/usr" DESTDIR="${D}" LIBEXEC_DIR="libexec/${PF}"
+	if use doc; then
+		local HTML_DOCS=(doc/.)
+	fi
 	if use examples; then
 		docompress -x "/usr/share/doc/${PF}/examples"
 		dodoc -r examples
 	fi
+	rm -rf "${ED}/usr/share/doc/charliecloud" || die
 	einstalldocs
 }
