@@ -10,7 +10,7 @@ DESCRIPTION="Plugins for the KDE Image Plugin Interface"
 HOMEPAGE="https://userbase.kde.org/KIPI https://cgit.kde.org/kipi-plugins.git/"
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
-	KEYWORDS="~amd64 ~arm64 ~x86"
+	KEYWORDS="amd64 ~arm64 x86"
 	SRC_URI="mirror://kde/stable/kipi-plugins/${P}.tar.xz"
 fi
 

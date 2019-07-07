@@ -22,7 +22,7 @@ SLOT="0"
 if [[ ${PV} == *9999 ]]; then
 	KEYWORDS=""
 else
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~amd64-linux ~x86-linux"
 fi
 
 IUSE="crypt doc docker examples irc test"

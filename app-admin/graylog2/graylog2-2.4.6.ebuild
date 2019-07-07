@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 inherit user
 
 DESCRIPTION="Free and open source log management"
-HOMEPAGE="https://graylog.org"
+HOMEPAGE="https://www.graylog.org"
 SRC_URI="https://packages.graylog2.org/releases/graylog/graylog-${PV}.tgz"
 
 LICENSE="GPL-3"

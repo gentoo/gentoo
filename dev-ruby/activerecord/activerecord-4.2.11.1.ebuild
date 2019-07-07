@@ -29,7 +29,7 @@ ruby_add_rdepend "~dev-ruby/activesupport-${PV}
 	~dev-ruby/activemodel-${PV}
 	>=dev-ruby/arel-6.0:6.0
 	sqlite? ( >=dev-ruby/sqlite3-1.3.6 )
-	mysql? ( || ( dev-ruby/mysql2:0.4 >=dev-ruby/mysql2-0.3.13:0.3 ) )
+	mysql? ( || ( dev-ruby/mysql2:0.4 ) )
 	postgres? ( >=dev-ruby/pg-0.15.0 )"
 
 ruby_add_bdepend "

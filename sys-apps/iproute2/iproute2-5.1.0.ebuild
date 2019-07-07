@@ -32,22 +32,22 @@ RDEPEND="
 	atm? ( net-dialup/linux-atm )
 	selinux? ( sys-libs/libselinux )
 "
+# We require newer linux-headers for ipset support #549948 and some defines #553876
 DEPEND="
 	${RDEPEND}
+	>=sys-kernel/linux-headers-3.16
 "
-# We require newer linux-headers for ipset support #549948 and some defines #553876
 BDEPEND="
 	app-arch/xz-utils
 	>=sys-devel/bison-2.4
 	sys-devel/flex
-	>=sys-kernel/linux-headers-3.16
 	virtual/pkgconfig
-	elibc_glibc? ( >=sys-libs/glibc-2.7 )
 "
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.1.0-mtu.patch #291907
 	"${FILESDIR}"/${PN}-4.20.0-configure-nomagic.patch # bug 643722
+	"${FILESDIR}"/${PN}-5.1.0-portability.patch
 )
 
 src_prepare() {

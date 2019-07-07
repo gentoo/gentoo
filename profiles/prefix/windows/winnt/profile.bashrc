@@ -22,7 +22,9 @@ windows_setup_dllhelper() {
 		# But as there is another file to install (the real dll),
 		# and installation is done using cp, we override cp to
 		# additionally copy the dll when the library is copied.
+		ebegin "Setting up wrapper to copy the DLL along the LIB"
 		windows_setup_dllhelper_cp
+		eend $?
 		;;
 	esac
 }
@@ -59,6 +61,18 @@ post_src_install() {
 			fi
 			;;
 		esac
+	done
+	[[ -d usr/$(get_libdir) ]] &&
+	find usr/$(get_libdir) -maxdepth 1 -type f -name '*.dll' |
+	while read f
+	do
+		if test ! -f usr/bin/${f##*/}; then
+			ebegin "moving ${f} to usr/bin for native loader"
+			dodir usr/bin || die
+			mv -f "${f}" usr/bin || die
+			ln -sf "../bin/${f##*/}" "${f}" || die
+			eend $?
+		fi
 	done
 }
 

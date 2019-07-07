@@ -44,7 +44,6 @@ src_configure() {
 		--disable-dbip2 \
 		--disable-external \
 		--disable-ip2location \
-		--disable-mod_ipv6calc \
 		${myconf}
 }
 

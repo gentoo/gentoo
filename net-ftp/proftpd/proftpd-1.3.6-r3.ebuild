@@ -26,7 +26,7 @@ SRC_URI="ftp://ftp.proftpd.org/distrib/source/${P/_/}.tar.gz
 LICENSE="GPL-2"
 
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~hppa ~ia64 ~mips ppc ppc64 ~sparc x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 sparc x86 ~x86-fbsd"
 IUSE="acl authfile ban +caps case clamav copy ctrls deflate diskuse doc dso dynmasq exec ifsession ifversion ident ipv6
 	kerberos ldap libressl log_forensic memcache msg mysql ncurses nls pam +pcre postgres qos radius
 	ratio readme rewrite selinux sftp shaper sitemisc snmp sodium softquota sqlite ssl tcpd test unique_id vroot xinetd"
@@ -34,7 +34,12 @@ IUSE="acl authfile ban +caps case clamav copy ctrls deflate diskuse doc dso dynm
 REQUIRED_USE="ban? ( ctrls )
 	msg? ( ctrls )
 	sftp? ( ssl )
-	shaper? ( ctrls )"
+	shaper? ( ctrls )
+
+	mysql? ( ssl )
+	postgres? ( ssl )
+	sqlite? ( ssl )
+"
 
 CDEPEND="acl? ( virtual/acl )
 	caps? ( sys-libs/libcap )

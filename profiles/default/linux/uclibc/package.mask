@@ -19,6 +19,7 @@ dev-games/gtkradiant
 dev-games/ps2-packer
 games-action/descent3
 games-action/descent3-demo
+games-action/guacamelee
 games-action/shadowgrounds-bin
 games-action/shadowgrounds-survivor-bin
 games-action/trine

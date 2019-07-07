@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{5,6} )
 inherit autotools eutils gnome2 python-single-r1
 
 DESCRIPTION="A collection of libraries and utilites used by Cinnamon"
-HOMEPAGE="http://cinnamon.linuxmint.com/"
+HOMEPAGE="http://developer.linuxmint.com/projects/cinnamon-projects.html"
 SRC_URI="https://github.com/linuxmint/cinnamon-desktop/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+ FDL-1.1+ LGPL-2+"

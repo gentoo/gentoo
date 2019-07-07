@@ -1,0 +1,61 @@
+From 0fb766134bd97ead71646e13349f93769e536ed9 Mon Sep 17 00:00:00 2001
+From: Matthias Maier <tamiko@43-1.org>
+Date: Fri, 17 May 2019 02:21:10 -0500
+Subject: [PATCH] Define md-clear bit, expose md-no CPUID
+
+Fixes for CVE-2018-121{26|27|30}, CVE-2019-11091
+
+See related fixes for Ubuntu:
+  https://launchpad.net/ubuntu/+source/qemu/1:3.1+dfsg-2ubuntu3.1
+---
+ target/i386/cpu.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/target/i386/cpu.c b/target/i386/cpu.c
+index d6bb57d2..331a364a 100644
+--- a/target/i386/cpu.c
++++ b/target/i386/cpu.c
+@@ -1076,7 +1076,7 @@ static FeatureWordInfo feature_word_info[FEATURE_WORDS] = {
+         .feat_names = {
+             NULL, NULL, "avx512-4vnniw", "avx512-4fmaps",
+             NULL, NULL, NULL, NULL,
+-            NULL, NULL, NULL, NULL,
++            NULL, NULL, "md-clear", NULL,
+             NULL, NULL, NULL, NULL,
+             NULL, NULL, NULL, NULL,
+             NULL, NULL, NULL, NULL,
+@@ -1183,7 +1183,7 @@ static FeatureWordInfo feature_word_info[FEATURE_WORDS] = {
+         .type = MSR_FEATURE_WORD,
+         .feat_names = {
+             "rdctl-no", "ibrs-all", "rsba", "skip-l1dfl-vmentry",
+-            "ssb-no", NULL, NULL, NULL,
++            "ssb-no", "mds-no", NULL, NULL,
+             NULL, NULL, NULL, NULL,
+             NULL, NULL, NULL, NULL,
+             NULL, NULL, NULL, NULL,
+diff --git a/target/i386/cpu.h b/target/i386/cpu.h
+index 83fb5225..d0bab4d7 100644
+--- a/target/i386/cpu.h
++++ b/target/i386/cpu.h
+@@ -694,6 +694,7 @@ typedef uint32_t FeatureWordArray[FEATURE_WORDS];
+ 
+ #define CPUID_7_0_EDX_AVX512_4VNNIW (1U << 2) /* AVX512 Neural Network Instructions */
+ #define CPUID_7_0_EDX_AVX512_4FMAPS (1U << 3) /* AVX512 Multiply Accumulation Single Precision */
++#define CPUID_7_0_EDX_MD_CLEAR      (1U << 10) /* Microarchitectural Data Clear */
+ #define CPUID_7_0_EDX_SPEC_CTRL     (1U << 26) /* Speculation Control */
+ #define CPUID_7_0_EDX_ARCH_CAPABILITIES (1U << 29)  /*Arch Capabilities*/
+ #define CPUID_7_0_EDX_SPEC_CTRL_SSBD  (1U << 31) /* Speculative Store Bypass Disable */
+diff --git a/target/i386/hvf/x86_cpuid.c b/target/i386/hvf/x86_cpuid.c
+index 4d957fe8..b453552f 100644
+--- a/target/i386/hvf/x86_cpuid.c
++++ b/target/i386/hvf/x86_cpuid.c
+@@ -90,7 +90,8 @@ uint32_t hvf_get_supported_cpuid(uint32_t func, uint32_t idx,
+             }
+ 
+             ecx &= CPUID_7_0_ECX_AVX512BMI | CPUID_7_0_ECX_AVX512_VPOPCNTDQ;
+-            edx &= CPUID_7_0_EDX_AVX512_4VNNIW | CPUID_7_0_EDX_AVX512_4FMAPS;
++            edx &= CPUID_7_0_EDX_AVX512_4VNNIW | CPUID_7_0_EDX_AVX512_4FMAPS | \
++                   CPUID_7_0_EDX_MD_CLEAR;
+         } else {
+             ebx = 0;
+             ecx = 0;

@@ -3,7 +3,7 @@
 
 EAPI=5
 
-USE_RUBY="ruby21 ruby22 ruby23 ruby24"
+USE_RUBY="ruby23 ruby24 ruby25"
 
 RUBY_FAKEGEM_TASK_TEST="test"
 
@@ -18,7 +18,7 @@ HOMEPAGE="https://github.com/travisjeffery/timecop"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm hppa ppc ppc64 sparc x86 ~x86-fbsd"
+KEYWORDS="~alpha amd64 arm hppa ppc ppc64 sparc x86 ~x86-fbsd"
 IUSE=""
 
 # Missing testdep activesupport

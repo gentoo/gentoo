@@ -6,10 +6,10 @@
 # profile (such as the selinux profiles) have a USE flag associated with
 # them.
 
-# Diego Elio Pettenò <flameeyes@gentoo.org> (27 Aug 2012)
+# Diego Elio Pettenò <flameeyes@gentoo.org> (2012-08-27)
 # netlink is a Linux-specific interface
 -netlink
 
-# Samuli Suominen <ssuominen@gentoo.org> (19 Apr 2013)
+# Samuli Suominen <ssuominen@gentoo.org> (2013-04-19)
 # Linux specific module loading/unloading support
 -kmod

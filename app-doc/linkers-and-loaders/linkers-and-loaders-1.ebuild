@@ -1,11 +1,11 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="4"
 
-DESCRIPTION="the Linkers and Loaders book"
-HOMEPAGE="http://linker.iecc.com/"
-SRC_URI="http://wh0rd.org/books/${P}.tar.lzma"
+DESCRIPTION="The Linkers and Loaders book"
+HOMEPAGE="https://linker.iecc.com/"
+SRC_URI="https://wh0rd.org/books/${P}.tar.lzma"
 
 LICENSE="all-rights-reserved"
 SLOT="0"

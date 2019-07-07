@@ -7,7 +7,7 @@ inherit linux-info xorg-2
 
 DESCRIPTION="Driver for Synaptics touchpads"
 
-KEYWORDS="amd64 arm ~arm64 ~mips ppc ppc64 x86"
+KEYWORDS="amd64 arm arm64 ~mips ppc ppc64 x86"
 IUSE="kernel_linux"
 
 RDEPEND="kernel_linux? ( >=dev-libs/libevdev-0.4 )

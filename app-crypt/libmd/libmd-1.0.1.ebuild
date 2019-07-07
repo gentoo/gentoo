@@ -10,7 +10,7 @@ SRC_URI="https://archive.hadrons.org/software/libmd/${P}.tar.xz"
 
 LICENSE="|| ( BSD BSD-2 ISC BEER-WARE public-domain )"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE="static-libs"
 
 src_configure() {
@@ -21,6 +21,6 @@ src_install() {
 	default
 
 	if ! use static-libs; then
-		rm "${D}"/usr/$(get_libdir)/libmd.la || die
+		rm "${ED}"/usr/$(get_libdir)/libmd.la || die
 	fi
 }

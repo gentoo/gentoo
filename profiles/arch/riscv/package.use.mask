@@ -1,6 +1,10 @@
 # Copyright 2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Dependency resolution is broken because
+# sys-fs/lvm2 has no riscv keyword
+sys-fs/e2fsprogs cron
+
 # This doesn't work for (any) riscv yet.
 dev-libs/libpcre2 jit
 dev-libs/libpcre jit
@@ -10,10 +14,15 @@ dev-vcs/git pcre-jit
 # This includes also packages which do not support python-3 or
 # do not support python-3.7 yet.
 
+app-admin/syslog-ng amqp dbi geoip geoip2 json mongodb python redis spoof-source smtp
+app-admin/sysstat lm_sensors
 app-arch/unzip natspec
 app-crypt/gnupg smartcard tofu wks-server
 app-crypt/mit-krb5 doc test xinetd
 app-crypt/pinentry fltk gnome-keyring
+app-doc/doxygen latex dot
+app-editors/emacs alsa lcms mailutils
+app-editors/emacs-vcs alsa json lcms mailutils
 app-misc/pax-utils python
 app-text/asciidoc graphviz test
 app-text/po4a test
@@ -31,14 +40,20 @@ dev-python/pygments doc test
 dev-python/setuptools test
 dev-python/snakeoil test
 dev-util/catalyst iso
+dev-util/meson test
 dev-util/pkgconf test
 dev-vcs/git cvs highlight gnome-keyring subversion tk xinetd
+media-libs/freetype harfbuzz png
+media-libs/tiff jbig jpeg test webp zstd
+net-fs/nfs-utils nfsv41
 net-libs/gnutls test-full
 net-libs/ldns doc python
 net-misc/curl brotli curl_ssl_libressl curl_ssl_mbedtls curl_ssl_nss http2 rtmp ssh
+net-misc/ntp openntpd snmp vim-syntax zeroconf
 net-nds/openldap cxx kerberos sasl
 sys-apps/kmod doc
 sys-apps/portage epydoc
+sys-apps/rng-tools jitterentropy nistbeacon pkcs11
 sys-auth/pambase pam_krb5 pam_ssh passwdqc mktemp
 sys-devel/automake test
 sys-devel/gdb source-highlight

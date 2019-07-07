@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-USE_RUBY="ruby23 ruby24 ruby25"
+USE_RUBY="ruby23 ruby24 ruby25 ruby26"
 
 RUBY_FAKEGEM_EXTRADOC="README.md"
 RUBY_FAKEGEM_RECIPE_DOC="rdoc"
@@ -17,6 +17,11 @@ LICENSE="BSD"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 SLOT="0"
 IUSE=""
+
+all_ruby_prepare() {
+	# Avoid test that depends on did_you_mean implementation details
+	sed -i -e '/test_nameerror/aomit' test/tests.rb || die
+}
 
 each_ruby_configure() {
 	${RUBY} -Cext/ox extconf.rb || die

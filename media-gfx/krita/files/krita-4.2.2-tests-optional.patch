@@ -1,0 +1,405 @@
+--- a/plugins/filters/CMakeLists.txt	2019-06-27 18:48:55.049823682 +0200
++++ b/plugins/filters/CMakeLists.txt	2019-06-27 18:48:55.056823729 +0200
+@@ -1,4 +1,6 @@
++if(BUILD_TESTING)
+ add_subdirectory( tests )
++endif()
+ add_subdirectory( blur )
+ add_subdirectory( colors )
+ add_subdirectory( colorsfilters )
+--- a/plugins/filters/unsharp/CMakeLists.txt	2019-06-27 18:48:55.063823776 +0200
++++ b/plugins/filters/unsharp/CMakeLists.txt	2019-06-27 18:48:55.069823817 +0200
+@@ -1,4 +1,6 @@
++if(BUILD_TESTING)
+ add_subdirectory( tests )
++endif()
+ 
+ set(kritaunsharpfilter_SOURCES
+     unsharp.cpp
+--- a/plugins/paintops/defaultpaintops/CMakeLists.txt	2019-06-27 18:48:55.077823871 +0200
++++ b/plugins/paintops/defaultpaintops/CMakeLists.txt	2019-06-27 18:48:55.084823918 +0200
+@@ -1,4 +1,6 @@
++if(BUILD_TESTING)
+ add_subdirectory(brush/tests)
++endif()
+ 
+ include_directories(brush
+                     duplicate
+--- a/plugins/paintops/libpaintop/CMakeLists.txt	2019-06-27 18:48:55.092823972 +0200
++++ b/plugins/paintops/libpaintop/CMakeLists.txt	2019-06-27 18:48:55.098824013 +0200
+@@ -104,4 +104,6 @@
+ install(TARGETS kritalibpaintop  ${INSTALL_TARGETS_DEFAULT_ARGS})
+ 
+ 
++if(BUILD_TESTING)
+ add_subdirectory(tests)
++endif()
+--- a/plugins/dockers/lut/CMakeLists.txt	2019-06-27 18:48:55.105824060 +0200
++++ b/plugins/dockers/lut/CMakeLists.txt	2019-06-27 18:48:55.112824107 +0200
+@@ -1,4 +1,6 @@
++if(BUILD_TESTING)
+ add_subdirectory(tests)
++endif()
+ 
+ include_directories(SYSTEM
+     ${OCIO_INCLUDE_DIR}
+--- a/plugins/dockers/animation/CMakeLists.txt	2019-06-27 18:48:55.120824161 +0200
++++ b/plugins/dockers/animation/CMakeLists.txt	2019-06-27 18:48:55.124824188 +0200
+@@ -1,5 +1,7 @@
+ if (NOT WIN32 AND NOT APPLE)
+-    add_subdirectory(tests)
++    if(BUILD_TESTING)
++add_subdirectory(tests)
++endif()
+ endif()
+ 
+ set(KRITA_ANIMATIONDOCKER_SOURCES
+--- a/plugins/extensions/qmic/CMakeLists.txt	2019-06-27 18:48:55.132824242 +0200
++++ b/plugins/extensions/qmic/CMakeLists.txt	2019-06-27 18:48:55.136824270 +0200
+@@ -20,4 +20,6 @@
+ target_link_libraries(kritaqmic kritaui)
+ install(TARGETS kritaqmic  DESTINATION ${KRITA_PLUGIN_INSTALL_DIR})
+ 
++if(BUILD_TESTING)
+ add_subdirectory(tests)
++endif()
+--- a/plugins/tools/basictools/CMakeLists.txt	2019-06-27 18:48:55.141824303 +0200
++++ b/plugins/tools/basictools/CMakeLists.txt	2019-06-27 18:48:55.146824337 +0200
+@@ -1,5 +1,7 @@
+ if (NOT APPLE)
+-    add_subdirectory(tests)
++    if(BUILD_TESTING)
++add_subdirectory(tests)
++endif()
+ endif ()
+ 
+ set(kritadefaulttools_SOURCES
+--- a/plugins/tools/tool_transform2/CMakeLists.txt	2019-06-27 18:48:55.151824371 +0200
++++ b/plugins/tools/tool_transform2/CMakeLists.txt	2019-06-27 18:48:55.155824398 +0200
+@@ -1,5 +1,7 @@
+ if (NOT WIN32 AND NOT APPLE)
+-    add_subdirectory(tests)
++    if(BUILD_TESTING)
++add_subdirectory(tests)
++endif()
+ endif()
+ 
+ set(kritatooltransform_SOURCES
+--- a/plugins/impex/ppm/CMakeLists.txt	2019-06-27 18:48:55.163824452 +0200
++++ b/plugins/impex/ppm/CMakeLists.txt	2019-06-27 18:48:55.169824492 +0200
+@@ -1,4 +1,6 @@
++if(BUILD_TESTING)
+ add_subdirectory(tests)
++endif()
+ 
+ include_directories( ${CMAKE_CURRENT_SOURCE_DIR} )
+ 
+--- a/plugins/impex/svg/CMakeLists.txt	2019-06-27 18:48:55.175824533 +0200
++++ b/plugins/impex/svg/CMakeLists.txt	2019-06-27 18:48:55.180824567 +0200
+@@ -1,4 +1,6 @@
++if(BUILD_TESTING)
+ add_subdirectory(tests)
++endif()
+ 
+ set(kritasvgimport_SOURCES
+     kis_svg_import.cc
+--- a/plugins/impex/brush/CMakeLists.txt	2019-06-27 18:48:55.186824607 +0200
++++ b/plugins/impex/brush/CMakeLists.txt	2019-06-27 18:48:55.190824634 +0200
+@@ -1,4 +1,6 @@
++if(BUILD_TESTING)
+ add_subdirectory(tests)
++endif()
+ 
+ set(kritabrushexport_PART_SRCS
+     kis_brush_export.cpp
+--- a/plugins/impex/psd/CMakeLists.txt	2019-06-27 18:48:55.195824668 +0200
++++ b/plugins/impex/psd/CMakeLists.txt	2019-06-27 18:48:55.199824695 +0200
+@@ -1,5 +1,7 @@
+ if (NOT MSVC AND NOT APPLE)
+-    add_subdirectory(tests)
++    if(BUILD_TESTING)
++add_subdirectory(tests)
++endif()
+ endif()
+ 
+ configure_file(config_psd.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config_psd.h)
+--- a/plugins/impex/tga/CMakeLists.txt	2019-06-27 18:48:55.206824742 +0200
++++ b/plugins/impex/tga/CMakeLists.txt	2019-06-27 18:48:55.210824769 +0200
+@@ -1,4 +1,6 @@
++if(BUILD_TESTING)
+ add_subdirectory(tests)
++endif()
+ 
+ set(kritatgaexport_SOURCES
+     kis_tga_export.cpp
+--- a/plugins/impex/libkra/CMakeLists.txt	2019-06-27 18:48:55.216824810 +0200
++++ b/plugins/impex/libkra/CMakeLists.txt	2019-06-27 18:48:55.221824844 +0200
+@@ -1,4 +1,6 @@
++if(BUILD_TESTING)
+ add_subdirectory(tests)
++endif()
+ 
+ set(kritalibkra_LIB_SRCS
+     kis_colorize_dom_utils.cpp
+--- a/plugins/impex/jpeg/CMakeLists.txt	2019-06-27 18:48:55.228824891 +0200
++++ b/plugins/impex/jpeg/CMakeLists.txt	2019-06-27 18:48:55.233824924 +0200
+@@ -1,4 +1,6 @@
++if(BUILD_TESTING)
+ add_subdirectory(tests)
++endif()
+ 
+ set(ICCJPEG_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/3rdparty/lcms")
+ 
+--- a/plugins/impex/gif/CMakeLists.txt	2019-06-27 18:48:55.239824965 +0200
++++ b/plugins/impex/gif/CMakeLists.txt	2019-06-27 18:48:55.243824992 +0200
+@@ -1,4 +1,6 @@
++if(BUILD_TESTING)
+ add_subdirectory(tests)
++endif()
+ 
+ set(kritagifexport_SOURCES
+     kis_gif_export.cpp
+--- a/plugins/impex/exr/CMakeLists.txt	2019-06-27 18:48:55.248825026 +0200
++++ b/plugins/impex/exr/CMakeLists.txt	2019-06-27 18:48:55.253825060 +0200
+@@ -1,4 +1,6 @@
++if(BUILD_TESTING)
+ add_subdirectory(tests)
++endif()
+ 
+ include_directories(SYSTEM ${OPENEXR_INCLUDE_DIR} )
+ 
+--- a/plugins/impex/xcf/CMakeLists.txt	2019-06-27 18:48:55.260825107 +0200
++++ b/plugins/impex/xcf/CMakeLists.txt	2019-06-27 18:48:55.268825160 +0200
+@@ -1,4 +1,6 @@
++if(BUILD_TESTING)
+ add_subdirectory(tests)
++endif()
+ 
+ set(XCFTOOLS_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/3rdparty/xcftools")
+ 
+--- a/plugins/impex/tiff/CMakeLists.txt	2019-06-27 18:48:55.277825221 +0200
++++ b/plugins/impex/tiff/CMakeLists.txt	2019-06-27 18:48:55.283825262 +0200
+@@ -1,4 +1,6 @@
++if(BUILD_TESTING)
+ add_subdirectory(tests)
++endif()
+ 
+ set(libkritatiffconverter_LIB_SRCS
+     kis_tiff_converter.cc
+--- a/plugins/impex/ora/CMakeLists.txt	2019-06-27 18:48:55.290825310 +0200
++++ b/plugins/impex/ora/CMakeLists.txt	2019-06-27 18:48:55.295825343 +0200
+@@ -1,4 +1,6 @@
++if(BUILD_TESTING)
+ add_subdirectory(tests)
++endif()
+ 
+ set(libkritaconverter_LIB_SRCS
+     ora_converter.cpp
+--- a/plugins/impex/heif/CMakeLists.txt	2019-06-27 18:48:55.302825391 +0200
++++ b/plugins/impex/heif/CMakeLists.txt	2019-06-27 18:48:55.309825438 +0200
+@@ -1,4 +1,6 @@
++if(BUILD_TESTING)
+ add_subdirectory(tests)
++endif()
+ 
+ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${HEIF_CFLAGS}")
+ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${HEIF_CFLAGS}")
+--- a/plugins/impex/pdf/CMakeLists.txt	2019-06-27 18:48:55.317825492 +0200
++++ b/plugins/impex/pdf/CMakeLists.txt	2019-06-27 18:48:55.322825526 +0200
+@@ -1,4 +1,6 @@
++if(BUILD_TESTING)
+ add_subdirectory(tests)
++endif()
+ 
+ set(kritapdfimport_SOURCES kis_pdf_import.cpp kis_pdf_import_widget.cpp )
+ 
+--- a/plugins/impex/csv/CMakeLists.txt	2019-06-27 18:48:55.332825593 +0200
++++ b/plugins/impex/csv/CMakeLists.txt	2019-06-27 18:48:55.339825640 +0200
+@@ -1,4 +1,6 @@
++if(BUILD_TESTING)
+ add_subdirectory(tests)
++endif()
+ 
+ # import
+ 
+--- a/plugins/impex/heightmap/CMakeLists.txt	2019-06-27 18:48:55.347825694 +0200
++++ b/plugins/impex/heightmap/CMakeLists.txt	2019-06-27 18:48:55.352825728 +0200
+@@ -1,4 +1,6 @@
++if(BUILD_TESTING)
+ add_subdirectory(tests)
++endif()
+ 
+ include_directories( ${CMAKE_CURRENT_SOURCE_DIR} )
+ 
+--- a/plugins/impex/raw/CMakeLists.txt	2019-06-27 18:48:55.359825775 +0200
++++ b/plugins/impex/raw/CMakeLists.txt	2019-06-27 18:48:55.365825816 +0200
+@@ -1,4 +1,6 @@
++if(BUILD_TESTING)
+ add_subdirectory(tests)
++endif()
+ 
+ if(OPENEXR_FOUND)
+ 	include_directories(${OPENEXR_INCLUDE_DIR})
+--- a/plugins/impex/qimageio/CMakeLists.txt	2019-06-27 18:48:55.371825857 +0200
++++ b/plugins/impex/qimageio/CMakeLists.txt	2019-06-27 18:48:55.376825890 +0200
+@@ -1,4 +1,6 @@
++if(BUILD_TESTING)
+ add_subdirectory(tests)
++endif()
+ 
+ set(kritaqimageioexport_SOURCES
+     kis_qimageio_export.cpp
+--- a/plugins/impex/qml/CMakeLists.txt	2019-06-27 18:48:55.383825938 +0200
++++ b/plugins/impex/qml/CMakeLists.txt	2019-06-27 18:48:55.389825978 +0200
+@@ -1,4 +1,6 @@
++if(BUILD_TESTING)
+ add_subdirectory(tests)
++endif()
+ 
+ set(kritaqmlexport_SOURCES
+     qml_converter.cc
+--- a/plugins/impex/png/CMakeLists.txt	2019-06-27 18:48:55.396826025 +0200
++++ b/plugins/impex/png/CMakeLists.txt	2019-06-27 18:48:55.401826059 +0200
+@@ -1,4 +1,6 @@
++if(BUILD_TESTING)
+ add_subdirectory(tests)
++endif()
+ 
+ set(kritapngimport_SOURCES
+     kis_png_import.cc
+--- a/plugins/color/lcms2engine/CMakeLists.txt	2019-06-27 18:48:55.408826106 +0200
++++ b/plugins/color/lcms2engine/CMakeLists.txt	2019-06-27 18:48:55.412826133 +0200
+@@ -1,6 +1,8 @@
+ project( lcmsengine )
+ 
++if(BUILD_TESTING)
+ add_subdirectory(tests)
++endif()
+ 
+ include_directories(SYSTEM
+     ${LCMS2_INCLUDE_DIR}
+--- a/libs/brush/CMakeLists.txt	2019-06-27 18:48:55.417826167 +0200
++++ b/libs/brush/CMakeLists.txt	2019-06-27 18:48:55.421826194 +0200
+@@ -1,4 +1,6 @@
++if(BUILD_TESTING)
+ add_subdirectory( tests )
++endif()
+ 
+ include_directories(SYSTEM
+     ${EIGEN3_INCLUDE_DIR}
+--- a/libs/global/CMakeLists.txt	2019-06-27 18:48:55.426826228 +0200
++++ b/libs/global/CMakeLists.txt	2019-06-27 18:48:55.430826255 +0200
+@@ -1,4 +1,6 @@
++if(BUILD_TESTING)
+ add_subdirectory( tests )
++endif()
+ 
+ include(CheckFunctionExists)
+ check_function_exists(backtrace HAVE_BACKTRACE)
+--- a/libs/image/CMakeLists.txt	2019-06-27 18:48:55.435826289 +0200
++++ b/libs/image/CMakeLists.txt	2019-06-27 18:48:55.438826309 +0200
+@@ -1,4 +1,6 @@
++if(BUILD_TESTING)
+ add_subdirectory( tests )
++endif()
+ 
+ add_subdirectory( tiles3 )
+ 
+--- a/libs/image/tiles3/CMakeLists.txt	2019-06-27 18:48:55.444826350 +0200
++++ b/libs/image/tiles3/CMakeLists.txt	2019-06-27 18:48:55.447826370 +0200
+@@ -1 +1,3 @@
++if(BUILD_TESTING)
+ add_subdirectory(tests)
++endif()
+--- a/libs/odf/CMakeLists.txt	2019-06-27 18:48:55.452826404 +0200
++++ b/libs/odf/CMakeLists.txt	2019-06-27 18:48:55.456826430 +0200
+@@ -1,4 +1,6 @@
++if(BUILD_TESTING)
+ add_subdirectory( tests )
++endif()
+ 
+ set(kritaodf_LIB_SRCS
+     KoOdf.cpp
+--- a/libs/metadata/CMakeLists.txt	2019-06-27 18:48:55.461826464 +0200
++++ b/libs/metadata/CMakeLists.txt	2019-06-27 18:48:55.465826491 +0200
+@@ -29,4 +29,6 @@
+ 
+ install(TARGETS kritametadata  ${INSTALL_TARGETS_DEFAULT_ARGS})
+ 
++if(BUILD_TESTING)
+ add_subdirectory(tests)
++endif()
+--- a/libs/store/CMakeLists.txt	2019-06-27 18:48:55.470826525 +0200
++++ b/libs/store/CMakeLists.txt	2019-06-27 18:48:55.473826545 +0200
+@@ -1,6 +1,8 @@
+ include_directories(${QUAZIP_INCLUDE_DIRS})
+ 
++if(BUILD_TESTING)
+ add_subdirectory(tests)
++endif()
+ 
+ set(kritastore_LIB_SRCS
+     KoDirectoryStore.cpp
+--- a/libs/libkis/CMakeLists.txt	2019-06-27 18:48:55.478826579 +0200
++++ b/libs/libkis/CMakeLists.txt	2019-06-27 18:48:55.482826605 +0200
+@@ -47,4 +47,6 @@
+ install(TARGETS kritalibkis  ${INSTALL_TARGETS_DEFAULT_ARGS})
+ 
+ 
++if(BUILD_TESTING)
+ add_subdirectory(tests)
++endif()
+--- a/libs/widgetutils/CMakeLists.txt	2019-06-27 18:48:55.487826640 +0200
++++ b/libs/widgetutils/CMakeLists.txt	2019-06-27 18:48:55.491826667 +0200
+@@ -1,4 +1,6 @@
++if(BUILD_TESTING)
+ add_subdirectory(tests)
++endif()
+ 
+ configure_file(xmlgui/config-xmlgui.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config-xmlgui.h )
+ 
+--- a/libs/widgets/CMakeLists.txt	2019-06-27 18:48:55.496826701 +0200
++++ b/libs/widgets/CMakeLists.txt	2019-06-27 18:48:55.500826727 +0200
+@@ -1,4 +1,6 @@
++if(BUILD_TESTING)
+ add_subdirectory( tests )
++endif()
+ 
+ include_directories(${CMAKE_CURRENT_BINARY_DIR})
+ 
+--- a/libs/flake/CMakeLists.txt	2019-06-27 18:48:55.505826761 +0200
++++ b/libs/flake/CMakeLists.txt	2019-06-27 18:48:55.510826795 +0200
+@@ -9,7 +9,9 @@
+ )
+ 
+ add_subdirectory(styles)
++if(BUILD_TESTING)
+ add_subdirectory(tests)
++endif()
+ 
+ set(kritaflake_SRCS
+     KoGradientHelper.cpp
+--- a/libs/ui/CMakeLists.txt	2019-06-27 18:48:55.516826836 +0200
++++ b/libs/ui/CMakeLists.txt	2019-06-27 18:48:55.520826863 +0200
+@@ -7,7 +7,9 @@
+     ${OCIO_INCLUDE_DIR}
+ )
+ 
++if(BUILD_TESTING)
+ add_subdirectory( tests )
++endif()
+ 
+ if (APPLE)
+     find_library(FOUNDATION_LIBRARY Foundation)
+--- a/libs/pigment/CMakeLists.txt	2019-06-27 18:48:55.526826903 +0200
++++ b/libs/pigment/CMakeLists.txt	2019-06-27 18:48:55.530826930 +0200
+@@ -31,7 +31,9 @@
+     message("${__per_arch_factory_objs}")
+ endif()
+ 
++if(BUILD_TESTING)
+ add_subdirectory(tests)
++endif()
+ add_subdirectory(benchmarks)
+ 
+ set(kritapigment_SRCS

@@ -1,0 +1,30 @@
+From 53bb5a463ee956c70230eaa5450022185d0ddc3c Mon Sep 17 00:00:00 2001
+From: Jose Dapena Paz <jose.dapena@lge.com>
+Date: Thu, 06 Jun 2019 07:54:05 +0000
+Subject: [PATCH] ThrottlingController::Liveness needs to be uint32_t
+
+We are setting kAlive and kDead values assigning values that
+are bigger than the maximum signed int32. It is better to use
+uint32_t in this case.
+
+Bug: 819294
+Change-Id: If72b48291a66a3a9db24b4c8e2d11d31936a66ee
+Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/1645772
+Reviewed-by: Kinuko Yasuda <kinuko@chromium.org>
+Commit-Queue: José Dapena Paz <jose.dapena@lge.com>
+Cr-Commit-Position: refs/heads/master@{#666619}
+---
+
+diff --git a/services/network/throttling/throttling_controller.h b/services/network/throttling/throttling_controller.h
+index 43751c4..3c6f87b 100644
+--- a/services/network/throttling/throttling_controller.h
++++ b/services/network/throttling/throttling_controller.h
+@@ -38,7 +38,7 @@
+ 
+   // TODO(https://crbug.com/960874): Debugging code to try and shed some light
+   // on why the owned maps are invalid.
+-  enum class Liveness : int32_t {
++  enum class Liveness : uint32_t {
+     kAlive = 0xCA11AB13,
+     kDead = 0xDEADBEEF,
+   };

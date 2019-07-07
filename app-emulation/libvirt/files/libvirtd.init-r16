@@ -1,5 +1,5 @@
 #!/sbin/openrc-run
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 description="Virtual Machine Management daemon (libvirt)"
@@ -10,7 +10,7 @@ LIBVIRTD_TIMEOUT=${LIBVIRTD_TERMTIMEOUT:-"TERM/25/KILL/5"}
 command="/usr/sbin/libvirtd"
 command_args="-d ${LIBVIRTD_OPTS}"
 start_stop_daemon_args="--env KRB5_KTNAME=/etc/libvirt/krb5.tab"
-pidfile="/var/run/libvirtd.pid"
+pidfile="/run/libvirtd.pid"
 retry="${LIBVIRTD_TERMTIMEOUT}"
 
 depend() {

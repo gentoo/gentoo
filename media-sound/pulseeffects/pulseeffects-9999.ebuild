@@ -14,7 +14,7 @@ if [[ ${PV} == *9999 ]];then
 	EGIT_REPO_URI="${HOMEPAGE}"
 else
 	SRC_URI="${HOMEPAGE}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~x86"
 fi
 
 LICENSE="GPL-3"
@@ -30,7 +30,7 @@ RDEPEND="
 	>=dev-libs/libsigc++-2.10:2
 	>=x11-libs/gtk+-3.18:3
 	>=media-libs/lilv-0.24.2-r1
-	media-libs/lsp-plugins[lv2]
+	>=media-libs/lsp-plugins-1.1.7[lv2]
 	>=media-libs/gstreamer-1.12.0:1.0
 	>=media-libs/gst-plugins-good-1.12.0:1.0
 	>=media-libs/gst-plugins-bad-1.12.0:1.0

@@ -1,7 +1,7 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-# Mike Frysinger <vapier@gentoo.org> (09 Dec 2016)
+# Mike Frysinger <vapier@gentoo.org> (2016-12-09)
 # The ABI changes when the flag is disabled.  Force it for now.
 # https://gmplib.org/list-archives/gmp-bugs/2016-December/004039.html
 dev-libs/gmp asm

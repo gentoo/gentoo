@@ -1,0 +1,7 @@
+# Anthony G. Basile <blueness@gentoo.org> (2019-06-12)
+# Unfortunately pie has broken on ppc uclibc for years
+sys-devel/gcc pie
+
+# Anthony G. Basile <blueness@gentoo.org> (2019-06-14)
+# pie is also broken on openssh uclibc
+net-misc/openssh pie

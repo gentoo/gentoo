@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 inherit cmake-multilib
 
 DESCRIPTION="Abstraction layer for filesystem and archive access"
@@ -44,13 +45,9 @@ multilib_src_configure() {
 
 multilib_src_compile() {
 	cmake-utils_src_compile
-	multilib_is_native_abi && use doc && cmake-utils_src_compile docs
-}
 
-multilib_src_install_all() {
-	einstalldocs
-	if use doc ; then
-		docinto html
-		dodoc -r "${CMAKE_BUILD_DIR}"/docs/html/*
+	if multilib_is_native_abi && use doc; then
+		cmake-utils_src_compile docs
+		HTML_DOCS=( "${BUILD_DIR}"/docs/html/. )
 	fi
 }

@@ -1,0 +1,29 @@
+From d4e4786be35b48d72dc7e59cf85ec34a90d129b5 Mon Sep 17 00:00:00 2001
+From: patrick96 <p.ziegler96@gmail.com>
+Date: Sun, 6 May 2018 18:25:32 +0200
+Subject: [PATCH] fix(gcc): Fix -Wstringop-truncation warning
+
+As mentioned in [1], gcc >=8 will complain, if strncpy truncates the
+source string or gcc can prove there is no NUL terminating byte.
+
+The header_t.magic field is a non-NUL terminated 6 byte string, so we
+use memcpy here
+
+[1] https://github.com/jaagr/polybar/issues/1215
+---
+ src/ipc-util.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/ipc-util.cpp b/src/ipc-util.cpp
+index 2e8ac8e..d9851ee 100644
+--- a/lib/i3ipcpp/src/ipc-util.cpp
++++ b/lib/i3ipcpp/src/ipc-util.cpp
+@@ -34,7 +34,7 @@ buf_t::buf_t(uint32_t  payload_size) : size(sizeof(header_t) + payload_size) {
+ 	data = new uint8_t[size];
+ 	header = (header_t*)data;
+ 	payload = (char*)(data + sizeof(header_t));
+-	strncpy(header->magic, g_i3_ipc_magic.c_str(), sizeof(header->magic));
++	memcpy(header->magic, g_i3_ipc_magic.c_str(), sizeof(header->magic));
+ 	header->size = payload_size;
+ 	header->type = 0x0;
+ }

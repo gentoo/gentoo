@@ -1,8 +1,0 @@
-# Copyright 1999-2018 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-
-# Needed for XATTR_PAX flags
-app-arch/tar xattr
-sys-apps/coreutils xattr
-sys-apps/portage xattr
-sys-apps/portage-mgorny xattr

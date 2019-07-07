@@ -21,7 +21,7 @@ EGIT_BRANCH="release_80"
 LICENSE="UoI-NCSA"
 SLOT="0"
 KEYWORDS=""
-IUSE="libedit ncurses python test"
+IUSE="libedit ncurses +python test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -34,7 +34,9 @@ RDEPEND="
 	!<sys-devel/llvm-4.0"
 DEPEND="${RDEPEND}
 	python? ( >=dev-lang/swig-3.0.11 )
-	test? ( ~dev-python/lit-${PV}[${PYTHON_USEDEP}] )
+	test? (
+		~dev-python/lit-${PV}[${PYTHON_USEDEP}]
+		sys-devel/lld )
 	${PYTHON_DEPS}"
 
 REQUIRED_USE=${PYTHON_REQUIRED_USE}

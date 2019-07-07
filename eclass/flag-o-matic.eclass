@@ -496,7 +496,8 @@ test-flags-PROG() {
 
 	while (( $# )); do
 		case "$1" in
-			--param)
+			# '-B /foo': bug # 687198
+			--param|-B)
 				if test-flag-${comp} "$1" "$2"; then
 					flags+=( "$1" "$2" )
 				fi

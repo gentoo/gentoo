@@ -21,9 +21,11 @@ SRC_URI="https://releases.llvm.org/${PV/_//}/${MY_P}.tar.xz
 
 LICENSE="UoI-NCSA"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
-IUSE="libedit ncurses python test"
-RESTRICT="!test? ( test )"
+KEYWORDS="amd64 arm64 x86"
+IUSE="libedit ncurses +python test"
+# Tests are known to fail, and we are not going to address the failures
+# in this version.
+RESTRICT="test"
 
 RDEPEND="
 	libedit? ( dev-libs/libedit:0= )

@@ -14,7 +14,7 @@ RUBY_FAKEGEM_EXTRAINSTALL="locales"
 inherit eutils user ruby-fakegem eapi7-ver
 
 DESCRIPTION="A system automation and configuration management software."
-HOMEPAGE="http://puppetlabs.com/"
+HOMEPAGE="https://puppet.com/"
 SRC_URI="http://downloads.puppetlabs.com/puppet/${P}.tar.gz"
 
 LICENSE="Apache-2.0 GPL-2"

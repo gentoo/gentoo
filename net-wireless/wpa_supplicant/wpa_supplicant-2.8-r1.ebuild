@@ -149,8 +149,6 @@ src_configure() {
 	Kconfig_style_config EAP_OTP
 	Kconfig_style_config EAP_PAX
 	Kconfig_style_config EAP_PSK
-	Kconfig_style_config EAP_TLV
-	Kconfig_style_config EAP_EXE
 	Kconfig_style_config IEEE8021X_EAPOL
 	Kconfig_style_config PKCS12
 	Kconfig_style_config PEERKEY
@@ -168,6 +166,10 @@ src_configure() {
 		Kconfig_style_config CTRL_IFACE_DBUS
 		Kconfig_style_config CTRL_IFACE_DBUS_NEW
 		Kconfig_style_config CTRL_IFACE_DBUS_INTRO
+	else
+		Kconfig_style_config CTRL_IFACE_DBUS n
+		Kconfig_style_config CTRL_IFACE_DBUS_NEW n
+		Kconfig_style_config CTRL_IFACE_DBUS_INTRO n
 	fi
 
 	if use eapol_test ; then
@@ -225,12 +227,16 @@ src_configure() {
 		Kconfig_style_config OWE
 		Kconfig_style_config SAE
 		Kconfig_style_config DPP
-		Kconfig_style_config SUITEB
 		Kconfig_style_config SUITEB192
+	fi
+	if ! use bindist && ! use libressl; then
+		Kconfig_style_config SUITEB
 	fi
 
 	if use smartcard ; then
 		Kconfig_style_config SMARTCARD
+	else
+		Kconfig_style_config SMARTCARD n
 	fi
 
 	if use tdls ; then
@@ -275,6 +281,8 @@ src_configure() {
 		Kconfig_style_config WPS_UPNP
 		# Near Field Communication
 		Kconfig_style_config WPS_NFC
+	else
+		Kconfig_style_config WPS n
 	fi
 
 	# Wi-Fi Direct (WiDi)
@@ -286,6 +294,8 @@ src_configure() {
 	# Access Point Mode
 	if use ap ; then
 		Kconfig_style_config AP
+	else
+		Kconfig_style_config AP n
 	fi
 
 	# Enable essentials for AP/P2P
@@ -415,6 +425,11 @@ pkg_postinst() {
 			ewarn "Using bindist use flag presently breaks WPA3 (specifically SAE, OWE, DPP, and FILS)."
 			ewarn "This is incredibly undesirable"
 		fi
+	fi
+	if use libressl; then
+		ewarn "Libressl doesn't support SUITEB (part of WPA3)"
+		ewarn "but it does support SUITEB192 (the upgraded strength version of the same)"
+		ewarn "You probably don't care.  Patches welcome"
 	fi
 
 	# Mea culpa, feel free to remove that after some time --mgorny.

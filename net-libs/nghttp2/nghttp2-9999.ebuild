@@ -53,9 +53,9 @@ multilib_src_configure() {
 	local myeconfargs=(
 		--disable-examples
 		--disable-failmalloc
+		--disable-python-bindings
 		--disable-werror
 		--without-cython
-		--disable-python-bindings
 		$(use_enable cxx asio-lib)
 		$(use_enable debug)
 		$(multilib_native_use_enable hpack-tools)

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -14,7 +14,7 @@ LICENSE="LOKI-EULA"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="+videos"
-RESTRICT="strip"
+RESTRICT="strip mirror bindist"
 
 DEPEND="games-util/loki_patch"
 RDEPEND="sys-libs/glibc

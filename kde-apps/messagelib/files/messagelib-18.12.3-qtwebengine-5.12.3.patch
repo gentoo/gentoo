@@ -1,0 +1,172 @@
+From 9f0ce086c6a4e487cee1f01acb15290ebff19ac3 Mon Sep 17 00:00:00 2001
+From: Jonathan Marten <jjm@keelhaul.me.uk>
+Date: Tue, 12 Mar 2019 08:47:43 +0000
+Subject: Move management of QWebEngineProfile to WebEnginePage
+
+To avoid a crash on KMail quit or viewer window close, caused by the
+MailWebEnginePage being deleted while its QWebEngineProfile is still
+active.  Simplified management of the profile by handling its creation
+and deletion within WebEnginePage.
+
+Deprecate the 2-argument WebEnginePage constructor which allows an
+already allocated profile to be used.  This constructor is used by
+Akregator which specifies the global profile; it will be changed to
+use a private profile instead.
+
+Differential Revision: https://phabricator.kde.org/D19559
+---
+ .../src/viewer/webengine/mailwebenginepage.cpp     | 10 -------
+ .../src/viewer/webengine/mailwebenginepage.h       |  3 +-
+ .../src/viewer/webengine/mailwebengineview.cpp     |  3 +-
+ webengineviewer/src/webenginepage.cpp              | 22 ++++++++++----
+ webengineviewer/src/webenginepage.h                | 35 ++++++++++++++++++++--
+ 5 files changed, 52 insertions(+), 21 deletions(-)
+
+diff --git a/messageviewer/src/viewer/webengine/mailwebenginepage.cpp b/messageviewer/src/viewer/webengine/mailwebenginepage.cpp
+index cd91494..f3790b9 100644
+--- a/messageviewer/src/viewer/webengine/mailwebenginepage.cpp
++++ b/messageviewer/src/viewer/webengine/mailwebenginepage.cpp
+@@ -29,16 +29,6 @@ MailWebEnginePage::MailWebEnginePage(QObject *parent)
+     initialize();
+ }
+ 
+-MailWebEnginePage::MailWebEnginePage(QWebEngineProfile *profile, QObject *parent)
+-    : WebEngineViewer::WebEnginePage(profile, parent)
+-{
+-    initialize();
+-}
+-
+-MailWebEnginePage::~MailWebEnginePage()
+-{
+-}
+-
+ void MailWebEnginePage::initialize()
+ {
+     settings()->setAttribute(QWebEngineSettings::JavascriptEnabled, false);
+diff --git a/messageviewer/src/viewer/webengine/mailwebenginepage.h b/messageviewer/src/viewer/webengine/mailwebenginepage.h
+index 7f8e6eb..d581efd 100644
+--- a/messageviewer/src/viewer/webengine/mailwebenginepage.h
++++ b/messageviewer/src/viewer/webengine/mailwebenginepage.h
+@@ -28,8 +28,7 @@ class MESSAGEVIEWER_EXPORT MailWebEnginePage : public WebEngineViewer::WebEngine
+     Q_OBJECT
+ public:
+     explicit MailWebEnginePage(QObject *parent = nullptr);
+-    explicit MailWebEnginePage(QWebEngineProfile *profile, QObject *parent = nullptr);
+-    ~MailWebEnginePage();
++    virtual ~MailWebEnginePage() = default;
+ 
+     void setPrintElementBackground(bool printElementBackground);
+ 
+diff --git a/messageviewer/src/viewer/webengine/mailwebengineview.cpp b/messageviewer/src/viewer/webengine/mailwebengineview.cpp
+index 0685a8d..09224cf 100644
+--- a/messageviewer/src/viewer/webengine/mailwebengineview.cpp
++++ b/messageviewer/src/viewer/webengine/mailwebengineview.cpp
+@@ -34,7 +34,6 @@
+ #include <QContextMenuEvent>
+ #include <WebEngineViewer/WebHitTest>
+ 
+-#include <QWebEngineProfile>
+ #include <QPrinter>
+ 
+ #include <WebEngineViewer/WebHitTestResult>
+@@ -81,7 +80,7 @@ MailWebEngineView::MailWebEngineView(KActionCollection *ac, QWidget *parent)
+     : WebEngineViewer::WebEngineView(parent)
+     , d(new MessageViewer::MailWebEngineViewPrivate)
+ {
+-    d->mPageEngine = new MailWebEnginePage(new QWebEngineProfile(this), this);
++    d->mPageEngine = new MailWebEnginePage(this);
+     setPage(d->mPageEngine);
+     d->mWebViewAccessKey = new WebEngineViewer::WebEngineAccessKey(this, this);
+     d->mWebViewAccessKey->setActionCollection(ac);
+diff --git a/webengineviewer/src/webenginepage.cpp b/webengineviewer/src/webenginepage.cpp
+index 447ac26..2fcb6c2 100644
+--- a/webengineviewer/src/webenginepage.cpp
++++ b/webengineviewer/src/webenginepage.cpp
+@@ -33,8 +33,24 @@
+ using namespace WebEngineViewer;
+ 
+ WebEnginePage::WebEnginePage(QObject *parent)
+-    : QWebEnginePage(parent)
++    : QWebEnginePage(new QWebEngineProfile, parent)
+ {
++    // Create a private (off the record) QWebEngineProfile here to isolate the
++    // browsing settings, and adopt it as a child so that it will be deleted
++    // when we are destroyed.  The profile must remain active for as long as
++    // any QWebEnginePage's belonging to it exist, see the API documentation
++    // of QWebEnginePage::QWebEnginePage(QWebEngineProfile *, QObject *).
++    // Deleting it as our child on destruction is safe.
++    //
++    // Do not try to save a line of code by setting the parent on construction:
++    //
++    //    WebEnginePage::WebEnginePage(QObject *parent)
++    //      : QWebEnginePage(new QWebEngineProfile(this), parent)
++    //
++    // because the QWebEngineProfile constructor will call out to the QWebEnginePage
++    // and crash because the QWebEnginePage is not fully constructed yet.
++    profile()->setParent(this);
++
+     init();
+ }
+ 
+@@ -44,10 +60,6 @@ WebEnginePage::WebEnginePage(QWebEngineProfile *profile, QObject *parent)
+     init();
+ }
+ 
+-WebEnginePage::~WebEnginePage()
+-{
+-}
+-
+ void WebEnginePage::init()
+ {
+     connect(profile(), &QWebEngineProfile::downloadRequested, this, &WebEnginePage::saveHtml);
+diff --git a/webengineviewer/src/webenginepage.h b/webengineviewer/src/webenginepage.h
+index be38368..95c7c76 100644
+--- a/webengineviewer/src/webenginepage.h
++++ b/webengineviewer/src/webenginepage.h
+@@ -31,10 +31,41 @@ class WEBENGINEVIEWER_EXPORT WebEnginePage : public QWebEnginePage
+ {
+     Q_OBJECT
+ public:
++    /**
++     * Constructor.
++     *
++     * A private QWebEngineProfile, only applying to this QWebEnginePage,
++     * will be created to implement browser settings.  It can be accessed via
++     * @c profile(), but it should not be shared or reused unless care is
++     * taken that the profile is not deleted until all of the QWebEnginePage's
++     * belonging to it are deleted first.
++     *
++     * @param parent The parent object
++     **/
+     explicit WebEnginePage(QObject *parent = nullptr);
+-    explicit WebEnginePage(QWebEngineProfile *profile, QObject *parent = nullptr);
+ 
+-    ~WebEnginePage() override;
++    /**
++     * Constructor.
++     *
++     * The specified QWebEngineProfile will be used.  See the description of
++     * @c WebEnginePage(QObject *) and the API documentation of QWebEnginePage
++     * for caution regarding the lifetime of the profile.
++     *
++     * @param profile The profile to be used
++     * @param parent The parent object
++     * @deprecated Use the single argument constructor, which creates and uses
++     * a private profile.
++     **/
++#ifndef WEBENGINEVIEWER_NO_DEPRECATED
++    explicit WEBENGINEVIEWER_DEPRECATED WebEnginePage(QWebEngineProfile *profile, QObject *parent = nullptr);
++#endif
++
++    /**
++     * Destructor.  If there is a private QWebEngineProfile then it will also
++     * be destroyed.
++     **/
++    virtual ~WebEnginePage() override = default;
++
+     WebEngineViewer::WebHitTest *hitTestContent(const QPoint &pos);
+ 
+     void saveHtml(QWebEngineDownloadItem *download);
+-- 
+cgit v1.1
+

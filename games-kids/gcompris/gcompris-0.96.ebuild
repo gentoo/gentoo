@@ -14,8 +14,9 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-S="${WORKDIR}/${PN}-qt-${PV}"
-
+BDEPEND="
+	dev-qt/linguist-tools:5
+"
 RDEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtgraphicaleffects:5
@@ -27,8 +28,9 @@ RDEPEND="
 	dev-qt/qtsvg:5
 	dev-qt/qtxml:5
 	dev-qt/qtxmlpatterns:5"
-DEPEND="${RDEPEND}
-	dev-qt/linguist-tools:5"
+DEPEND="${RDEPEND}"
+
+S="${WORKDIR}/${PN}-qt-${PV}"
 
 src_configure() {
 	local mycmakeargs=(

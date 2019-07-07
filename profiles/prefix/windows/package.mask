@@ -1,6 +1,6 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-# Michael Haubenwallner <haubi@gentoo.org> (19 May 2016)
+# Michael Haubenwallner <haubi@gentoo.org> (2016-05-19)
 # No point for util-linux on Windows
 sys-apps/util-linux

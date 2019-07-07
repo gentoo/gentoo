@@ -52,6 +52,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-0.9.3-irrlicht-arch-support.patch
 	"${FILESDIR}"/${PN}-0.9.3-irrlicht-system-libs.patch
 	"${FILESDIR}"/${PN}-1.0-fix-buildsystem.patch
+	"${FILESDIR}"/${PN}-1.0-system-squish.patch
 )
 
 src_prepare() {
@@ -66,6 +67,7 @@ src_configure() {
 		-DUSE_SYSTEM_ANGELSCRIPT=ON
 		-DUSE_SYSTEM_ENET=ON
 		-DUSE_SYSTEM_GLEW=ON
+		-DUSE_SYSTEM_SQUISH=OFF
 		-DUSE_SYSTEM_WIIUSE=OFF
 		-DUSE_CRYPTO_OPENSSL=$(usex nettle no yes)
 		-DENABLE_WAYLAND_DEVICE=OFF

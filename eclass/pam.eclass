@@ -3,7 +3,7 @@
 
 # @ECLASS: pam.eclass
 # @MAINTAINER:
-# zlogene@gentoo.org
+# Mikle Kolyada <zlogene@gentoo.org>
 # @AUTHOR:
 # Diego Pettenò <flameeyes@gentoo.org>
 # @BLURB: Handles pam related tasks

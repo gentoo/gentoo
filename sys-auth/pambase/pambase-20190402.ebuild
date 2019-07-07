@@ -4,7 +4,7 @@
 EAPI=7
 
 DESCRIPTION="PAM base configuration files"
-HOMEPAGE="https://gentoo.org/"
+HOMEPAGE="https://github.com/gentoo/pambase"
 SRC_URI="https://github.com/gentoo/pambase/archive/${P}.tar.gz"
 
 LICENSE="GPL-2"

@@ -1,7 +1,7 @@
 http://bugs.gentoo.org/show_bug.cgi?id=211499
 
---- gnu/getopt.c.dist
-+++ gnu/getopt.c
+--- a/gnu/getopt.c
++++ b/gnu/getopt.c
 @@ -69,12 +69,7 @@
  #include <unistd.h>
  #endif	/* GNU C library.  */

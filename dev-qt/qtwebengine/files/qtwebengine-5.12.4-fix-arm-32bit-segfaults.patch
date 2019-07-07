@@ -1,0 +1,30 @@
+From 2323dc924a3b107647f9e5f0bdbcfc44b9713195 Mon Sep 17 00:00:00 2001
+From: Michal Klocek <michal.klocek@qt.io>
+Date: Thu, 20 Jun 2019 09:09:53 +0200
+Subject: [PATCH 3/3] Fix segfaults with arm 32bit on metrics
+
+Gcc 6 seems to misscompile pair's template constructor
+in std::map emplace, use converting move constructor instead.
+
+Fixes: QTBUG-75097
+Change-Id: Ia50dc9eadb58f713432c0228a4a5aed73b275f32
+Reviewed-by: Allan Sandfeld Jensen <allan.jensen@qt.io>
+---
+ src/3rdparty/chromium/services/metrics/public/cpp/ukm_entry_builder_base.cc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/3rdparty/chromium/services/metrics/public/cpp/ukm_entry_builder_base.cc b/src/3rdparty/chromium/services/metrics/public/cpp/ukm_entry_builder_base.cc
+index 6685a5816db..5c5380e007e 100644
+--- a/src/3rdparty/chromium/services/metrics/public/cpp/ukm_entry_builder_base.cc
++++ b/src/3rdparty/chromium/services/metrics/public/cpp/ukm_entry_builder_base.cc
+@@ -23,7 +23,7 @@ UkmEntryBuilderBase::~UkmEntryBuilderBase() = default;
+ 
+ void UkmEntryBuilderBase::SetMetricInternal(uint64_t metric_hash,
+                                             int64_t value) {
+-  entry_->metrics.emplace(metric_hash, value);
++  entry_->metrics.emplace(std::make_pair(metric_hash, value));
+ }
+ 
+ void UkmEntryBuilderBase::Record(UkmRecorder* recorder) {
+-- 
+2.21.0

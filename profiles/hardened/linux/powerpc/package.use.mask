@@ -1,8 +1,0 @@
-# Michał Górny <mgorny@gentoo.org> (29 Sep 2018)
-# All nodejs versions with ppc keywords are masked in 13.0 profile.
-dev-ruby/rails asset-pipeline
-dev-ruby/tilt test
-
-# Diego Pettenò <flameeyes@gentoo.org> (10 Nov 2007)
-# Tests for Linux-PAM 0.99 require >=sys-libs/glibc-2.4
->=sys-libs/pam-0.99.8 test

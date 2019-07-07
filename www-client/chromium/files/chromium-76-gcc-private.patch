@@ -1,0 +1,63 @@
+From 502e6e42633d2571c8236c8649b031fe9915eb5b Mon Sep 17 00:00:00 2001
+From: Jose Dapena Paz <jose.dapena@lge.com>
+Date: Tue, 11 Jun 2019 16:56:27 +0000
+Subject: [PATCH] GCC: CertNetFetcherImpl declares Job as a friend but it is in the anonymous namespace
+
+GCC does not allow friendship declaration to anonymous namespace as done with Job
+object in the CertNetFetcherImpl. This fix removes the friend declaration, and just
+makes RemoveJob method public, that was the only reason to make Job a friend.
+
+Error was:
+./../net/cert_net/cert_net_fetcher_impl.cc: In member function ‘void net::{anonymous}::Job::DetachRequest(net::CertNetFetcherImpl::RequestCore*)’:
+../../net/cert_net/cert_net_fetcher_impl.cc:458:42: error: ‘std::unique_ptr<net::{anonymous}::Job> net::CertNetFetcherImpl::AsyncCertNetFetcherImpl::RemoveJob(net::{anonymous}::Job*)’ is private within this context
+     delete_this = parent_->RemoveJob(this);
+                                          ^
+../../net/cert_net/cert_net_fetcher_impl.cc:151:24: note: declared private here
+   std::unique_ptr<Job> RemoveJob(Job* job);
+                        ^~~~~~~~~
+../../net/cert_net/cert_net_fetcher_impl.cc: In member function ‘void net::{anonymous}::Job::OnJobCompleted(net::Error)’:
+../../net/cert_net/cert_net_fetcher_impl.cc:610:61: error: ‘std::unique_ptr<net::{anonymous}::Job> net::CertNetFetcherImpl::AsyncCertNetFetcherImpl::RemoveJob(net::{anonymous}::Job*)’ is private within this context
+   std::unique_ptr<Job> delete_this = parent_->RemoveJob(this);
+                                                             ^
+../../net/cert_net/cert_net_fetcher_impl.cc:151:24: note: declared private here
+   std::unique_ptr<Job> RemoveJob(Job* job);
+                        ^~~~~~~~~
+
+Bug: 819294
+Change-Id: I3609f4558e570741395366de6a4cd40577d91450
+Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/1651783
+Commit-Queue: Eric Roman <eroman@chromium.org>
+Reviewed-by: Eric Roman <eroman@chromium.org>
+Cr-Commit-Position: refs/heads/master@{#668015}
+---
+
+diff --git a/net/cert_net/cert_net_fetcher_impl.cc b/net/cert_net/cert_net_fetcher_impl.cc
+index 11a1166..349c656 100644
+--- a/net/cert_net/cert_net_fetcher_impl.cc
++++ b/net/cert_net/cert_net_fetcher_impl.cc
+@@ -135,21 +135,19 @@
+   void Fetch(std::unique_ptr<RequestParams> request_params,
+              scoped_refptr<RequestCore> request);
+ 
++  // Removes |job| from the in progress jobs and transfers ownership to the
++  // caller.
++  std::unique_ptr<Job> RemoveJob(Job* job);
++
+   // Cancels outstanding jobs, which stops network requests and signals the
+   // corresponding RequestCores that the requests have completed.
+   void Shutdown();
+ 
+  private:
+-  friend class Job;
+-
+   // Finds a job with a matching RequestPararms or returns nullptr if there was
+   // no match.
+   Job* FindJob(const RequestParams& params);
+ 
+-  // Removes |job| from the in progress jobs and transfers ownership to the
+-  // caller.
+-  std::unique_ptr<Job> RemoveJob(Job* job);
+-
+   // The in-progress jobs. This set does not contain the job which is actively
+   // invoking callbacks (OnJobCompleted).
+   JobSet jobs_;

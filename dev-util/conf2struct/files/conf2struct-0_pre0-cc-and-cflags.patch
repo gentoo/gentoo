@@ -1,0 +1,32 @@
+From 8c68116a9c2e086e83075f46a1b21de218c2dd2e Mon Sep 17 00:00:00 2001
+From: Craig Andrews <candrews@integralblue.com>
+Date: Fri, 5 Jul 2019 15:31:59 -0400
+Subject: [PATCH] Add CC and use CFLAGS in Makefile
+
+CC is necessary to specify the compiler to use (default to gcc) and use CFLAGS to specify compiler arguments
+---
+ Makefile | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index bf9bae3..5b7212f 100644
+--- a/Makefile
++++ b/Makefile
+@@ -6,7 +6,7 @@ all: example checker
+ CFLAGS=-g
+ 
+ checker: confcheck.o
+-	gcc -o confcheck confcheck.o -lconfig
++	$(CC) $(CFLAGS) -o confcheck confcheck.o -lconfig
+ 
+ 
+ install: all
+@@ -18,7 +18,7 @@ uninstall:
+ 	
+ EG_OBJ=example.o parser.o argtable3.o
+ example: $(EG_OBJ)
+-	gcc -o example $(EG_OBJ) -lconfig
++	$(CC) $(CFLAGS) -o example $(EG_OBJ) -lconfig
+ 
+ example.c: eg_conf.cfg
+ 	./conf2struct eg_conf.cfg

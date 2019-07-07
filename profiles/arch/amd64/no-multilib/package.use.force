@@ -1,6 +1,6 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-# Michał Górny <mgorny@gentoo.org> (08 Apr 2017)
+# Michał Górny <mgorny@gentoo.org> (2017-04-08)
 # Undo multilib forcing.
 sys-apps/sandbox -abi_x86_32

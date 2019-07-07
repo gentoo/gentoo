@@ -23,11 +23,11 @@ if [[ "${PV}" == 9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/cryfs/cryfs"
 else
 	SRC_URI="https://github.com/cryfs/cryfs/releases/download/${PV}/${P}.tar.xz"
-	KEYWORDS="amd64 ~arm ~arm64 x86"
+	KEYWORDS="amd64 ~arm arm64 x86"
 	S="${WORKDIR}"
 fi
 
-RDEPEND=">=dev-libs/boost-1.56:=
+RDEPEND="<dev-libs/boost-1.70:=
 	>=dev-libs/crypto++-5.6.3:=
 	net-misc/curl:=
 	>=sys-fs/fuse-2.8.6:=

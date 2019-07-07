@@ -27,6 +27,18 @@ DOCS=(
 )
 HTML_DOCS=( devdoc/devguide.html devdoc/releaseguide.html )
 
+src_prepare() {
+	default
+	if has_version ">=dev-lang/tcl-8.6.9"; then
+		sed -i \
+			-e "s|::hook::call|call|" \
+			-e "s|::string::token::shell|shell|" \
+			"${S}"/modules/hook/hook.test \
+			"${S}"/modules/string/token_shell.test \
+			|| die
+	fi
+}
+
 src_test() {
 	USER= virtx emake test_batch
 }

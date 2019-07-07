@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 2014-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,14 +18,8 @@ IUSE="doc input_devices_wacom"
 # Other tests are just about logs, exported symbols and autotest of the test library.
 RESTRICT="test"
 
-RDEPEND="
-	input_devices_wacom? ( >=dev-libs/libwacom-0.20 )
-	>=dev-libs/libevdev-1.3
-	>=sys-libs/mtdev-1.1
-	virtual/libudev:=
-	virtual/udev
-"
-DEPEND="${RDEPEND}
+BDEPEND="
+	virtual/pkgconfig
 	doc? (
 		$(python_gen_any_dep '
 			dev-python/commonmark[${PYTHON_USEDEP}]
@@ -37,13 +31,16 @@ DEPEND="${RDEPEND}
 		>=media-gfx/graphviz-2.38.0
 	)
 "
-#	test? (
-#		>=dev-libs/check-0.9.10
-#		dev-util/valgrind
-#		sys-libs/libunwind )
-BDEPEND="
-	virtual/pkgconfig
+#	test? ( dev-util/valgrind )
+RDEPEND="
+	input_devices_wacom? ( >=dev-libs/libwacom-0.20 )
+	>=dev-libs/libevdev-1.3
+	>=sys-libs/mtdev-1.1
+	virtual/libudev:=
+	virtual/udev
 "
+DEPEND="${RDEPEND}"
+#	test? ( >=dev-libs/check-0.9.10 )
 
 python_check_deps() {
 	has_version "dev-python/commonmark[${PYTHON_USEDEP}]" && \

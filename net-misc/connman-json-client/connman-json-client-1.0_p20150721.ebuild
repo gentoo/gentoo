@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -21,6 +21,7 @@ DEPEND="dev-libs/json-c:0=
 RDEPEND="${DEPEND}"
 
 src_prepare() {
+	sed -i -e '/^AM_CFLAGS/ s/ -Werror$//' Makefile.am || die
 	default
 	eautoreconf
 }

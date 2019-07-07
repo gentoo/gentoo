@@ -38,9 +38,6 @@
 	<flag name="openvz">
 		Support management of OpenVZ virtualisation (openvz-sources)
 	</flag>
-	<flag name="uml">
-		Support management of User Mode Linux virtualisation
-	</flag>
 	<flag name="qemu">
 		Support management of QEMU virtualisation (<pkg>app-emulation/qemu</pkg>)
 	</flag>
@@ -56,6 +53,7 @@
 	</flag>
 	<!-- Miscellaneous flags -->
 	<flag name="apparmor">Enable AppArmor support</flag>
+	<flag name="dtrace">Enable dtrace support via <pkg>dev-util/systemtap</pkg></flag>
 	<flag name="fuse">Allow LXC to use <pkg>sys-fs/fuse</pkg> for mount
 		points</flag>
 	<flag name="numa">

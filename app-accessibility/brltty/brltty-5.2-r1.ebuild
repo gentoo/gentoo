@@ -10,8 +10,8 @@ inherit findlib eutils multilib toolchain-funcs java-pkg-opt-2 flag-o-matic \
 	autotools udev systemd python-r1
 
 DESCRIPTION="Daemon that provides access to the Linux/Unix console for a blind person"
-HOMEPAGE="http://brltty.com/"
-SRC_URI="http://brltty.com/archive/${P}.tar.xz"
+HOMEPAGE="https://brltty.app/"
+SRC_URI="https://brltty.app/archive/${P}.tar.xz"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"

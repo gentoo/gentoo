@@ -33,7 +33,7 @@ HOMEPAGE="http://www.exim.org/"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~x86-solaris"
+KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd ~x86-solaris"
 
 COMMON_DEPEND=">=sys-apps/sed-4.0.5
 	( >=sys-libs/db-3.2:= <sys-libs/db-6:= )
@@ -364,6 +364,8 @@ src_configure() {
 	if use dlfunc; then
 		cat >> Makefile <<- EOC
 			EXPAND_DLFUNC=yes
+			HAVE_LOCAL_SCAN=yes
+			DLOPEN_LOCAL_SCAN=yes
 		EOC
 	fi
 

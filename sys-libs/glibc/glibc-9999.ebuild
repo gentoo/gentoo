@@ -30,12 +30,12 @@ RELEASE_VER=${PV}
 GCC_BOOTSTRAP_VER=20180511
 
 # Gentoo patchset
-PATCH_VER=11
+PATCH_VER=12
 
 SRC_URI+=" https://dev.gentoo.org/~slyfox/distfiles/${P}-patches-${PATCH_VER}.tar.xz"
 SRC_URI+=" multilib? ( https://dev.gentoo.org/~dilfridge/distfiles/gcc-multilib-bootstrap-${GCC_BOOTSTRAP_VER}.tar.xz )"
 
-IUSE="audit caps cet compile-locales doc gd headers-only +multiarch multilib nscd profile selinux +ssp +static-libs suid systemtap test vanilla"
+IUSE="audit caps cet compile-locales custom-cflags doc gd headers-only +multiarch multilib nscd profile selinux +ssp +static-libs suid systemtap test vanilla"
 
 # Minimum kernel version that glibc requires
 MIN_KERN_VER="3.2.0"
@@ -345,11 +345,18 @@ setup_flags() {
 	ASFLAGS_BASE=${ASFLAGS_BASE-${ASFLAGS}}
 	ASFLAGS=${ASFLAGS_BASE}
 
-	# Over-zealous CFLAGS can often cause problems.  What may work for one
-	# person may not work for another.  To avoid a large influx of bugs
-	# relating to failed builds, we strip most CFLAGS out to ensure as few
-	# problems as possible.
-	strip-flags
+	# Allow users to explicitly avoid flag sanitization via
+	# USE=custom-cflags.
+	if ! use custom-cflags; then
+		# Over-zealous CFLAGS can often cause problems.  What may work for one
+		# person may not work for another.  To avoid a large influx of bugs
+		# relating to failed builds, we strip most CFLAGS out to ensure as few
+		# problems as possible.
+		strip-flags
+		# Lock glibc at -O2; we want to be conservative here.
+		filter-flags '-O?'
+		append-flags -O2
+	fi
 	strip-unsupported-flags
 	filter-flags -m32 -m64 '-mabi=*'
 
@@ -371,10 +378,9 @@ setup_flags() {
 		CBUILD_OPT=${CTARGET_OPT}
 	fi
 
-	# Lock glibc at -O2; we want to be conservative here.
-	# -fno-strict-aliasing is to work around #155906.
-	filter-flags '-O?'
-	append-flags -O2 -fno-strict-aliasing
+	# glibc's headers disallow -O0 and fail at build time:
+	#  include/libc-symbols.h:75:3: #error "glibc cannot be compiled without optimization"
+	replace-flags -O0 -O1
 
 	filter-flags '-fstack-protector*'
 }

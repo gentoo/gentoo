@@ -9,8 +9,8 @@ inherit kde5
 
 DESCRIPTION="KDE Plasma resources management GUI"
 HOMEPAGE="https://userbase.kde.org/Discover"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
-IUSE="firmware"
+KEYWORDS="amd64 ~arm arm64 x86"
+IUSE="+firmware"
 
 # libmarkdown (app-text/discount) only used in PackageKitBackend
 DEPEND="
@@ -41,6 +41,10 @@ DEPEND="
 RDEPEND="${DEPEND}
 	$(add_frameworks_dep kirigami)
 "
+
+PATCHES=( "${FILESDIR}/${PN}-5.15.5-tests.patch" )
+
+RESTRICT+=" test"
 
 src_prepare() {
 	kde5_src_prepare

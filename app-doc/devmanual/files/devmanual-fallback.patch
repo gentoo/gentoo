@@ -1,0 +1,60 @@
+Fix assets for offline browsing.
+https://bugs.gentoo.org/617724
+
+--- a/devbook.xsl
++++ b/devbook.xsl
+@@ -439,11 +439,9 @@
+           <xsl:with-param name="append">../</xsl:with-param>
+         </xsl:call-template>
+       </xsl:variable>
+-      <link rel="stylesheet" href="{$relative_path_depth_recursion}devmanual.css" type="text/css" />
++      <link rel="stylesheet" href="{$relative_path_depth_recursion}fallback.css" type="text/css" />
+       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+       <meta name="description" content="The Gentoo Devmanual is a technical manual which covers topics such as writing ebuilds and eclasses, and policies that developers should be abiding by." />
+-      <link href="https://assets.gentoo.org/tyrian/bootstrap.min.css" rel="stylesheet" media="screen" />
+-      <link href="https://assets.gentoo.org/tyrian/tyrian.min.css" rel="stylesheet" media="screen" />
+       <link rel="icon" href="https://www.gentoo.org/favicon.ico" type="image/x-icon" />
+     </head>
+     <body>
+@@ -476,9 +474,6 @@
+               </div>
+               <div class="logo">
+                 <a href="/" title="Back to the homepage" class="site-logo">
+-                  <object data="https://assets.gentoo.org/tyrian/site-logo.svg" type="image/svg+xml">
+-                    <img src="https://assets.gentoo.org/tyrian/site-logo.png" alt="Gentoo Linux Logo" />
+-                  </object>
+                 </a>
+                 <span class="site-label">Development Guide</span>
+               </div>
+@@ -566,8 +561,6 @@
+           </div>
+         </div>
+       </footer>
+-      <script src="https://assets.gentoo.org/tyrian/jquery.min.js"></script>
+-      <script src="https://assets.gentoo.org/tyrian/bootstrap.min.js"></script>
+     </body>
+     </html>
+   </xsl:template>
+--- /dev/null
++++ b/fallback.css
+@@ -0,0 +1,20 @@
++body {
++    margin: 40px auto;
++    max-width: 650px;
++    line-height: 1.6;
++    font-size: 18px;
++    color: #454545;
++    padding: 0 10px;
++}
++
++h1,h2,h3,h4,h5,h6 {
++    line-height: 1.2;
++}
++
++.divider,
++.footerlinks,
++.navbar-toggle,
++.site-title,
++.tyrian-navbar {
++    display: none;
++}

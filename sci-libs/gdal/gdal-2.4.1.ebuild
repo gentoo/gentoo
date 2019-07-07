@@ -10,12 +10,12 @@ DISTUTILS_OPTIONAL=1
 inherit autotools perl-module distutils-r1 toolchain-funcs flag-o-matic java-pkg-opt-2
 
 DESCRIPTION="Translator library for raster geospatial data formats (includes OGR support)"
-HOMEPAGE="https://www.gdal.org/"
+HOMEPAGE="https://gdal.org/"
 SRC_URI="https://download.osgeo.org/${PN}/${PV}/${P}.tar.gz"
 
 SLOT="0/2.3"
 LICENSE="BSD Info-ZIP MIT"
-KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
+KEYWORDS="amd64 ~arm arm64 ~ia64 ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
 IUSE="armadillo +aux_xml curl debug doc fits geos gif gml hdf5 java jpeg jpeg2k lzma mdb mysql netcdf odbc ogdi opencl oracle pdf perl png postgres python spatialite sqlite threads webp xls zstd"
 
 COMMON_DEPEND="
@@ -24,7 +24,7 @@ COMMON_DEPEND="
 	dev-libs/libpcre
 	dev-libs/libxml2:=
 	media-libs/tiff:0=
-	sci-libs/libgeotiff
+	sci-libs/libgeotiff:=
 	sys-libs/zlib:=[minizip(+)]
 	armadillo? ( sci-libs/armadillo:=[lapack] )
 	curl? ( net-misc/curl )

@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python3_6 python3_7 )
 inherit toolchain-funcs distutils-r1
 
 DESCRIPTION="A data templating language for app and tool developers "
-HOMEPAGE="http://jsonnet.org/"
+HOMEPAGE="https://jsonnet.org/"
 SRC_URI="https://github.com/google/jsonnet/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 IUSE="python"
 
@@ -27,6 +27,7 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 PATCHES=(
 	"${FILESDIR}/jsonnet-0.12.1-makefile.patch"
 	"${FILESDIR}/jsonnet-0.12.1-dont-call-make-from-setuppy.patch"
+	"${FILESDIR}/jsonnet-0.13.0-glibc-2.29.patch"
 )
 
 src_compile() {

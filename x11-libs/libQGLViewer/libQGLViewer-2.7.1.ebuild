@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=7
 
-inherit qmake-utils multilib flag-o-matic
+inherit flag-o-matic qmake-utils
 
 DESCRIPTION="C++ library based on Qt that eases the creation of OpenGL 3D viewers"
 HOMEPAGE="http://www.libqglviewer.com"
@@ -14,18 +14,21 @@ SLOT="0/qt5"
 KEYWORDS="~amd64 ~arm"
 IUSE="designer examples"
 
-DEPEND="virtual/opengl
-	virtual/glu
-	dev-qt/qtopengl:5
+DEPEND="
 	dev-qt/qtcore:5
+	dev-qt/qtgui:5
+	dev-qt/qtopengl:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtxml:5
-	dev-qt/qtgui:5"
+	virtual/glu
+	virtual/opengl
+"
 RDEPEND="${DEPEND}
-	designer? ( dev-qt/designer:5 )"
+	designer? ( dev-qt/designer:5 )
+"
 
 src_configure() {
-	append-ldflags "-L${S}/QGLViewer"
+	append-ldflags "-LQGLViewer"
 	sed -e 's#designerPlugin##' -i ${P}.pro || die
 	use examples || sed -e 's#examples examples/contribs##' -i ${P}.pro || die
 	eqmake5 ${P}.pro \
@@ -33,7 +36,7 @@ src_configure() {
 		LIB_DIR="${EPREFIX}/usr/$(get_libdir)" \
 		DOC_DIR="${EPREFIX}/usr/share/doc/${PF}/html"
 	if use designer ; then
-		cd "${S}/designerPlugin"
+		cd "designerPlugin" || die
 		eqmake5 designerPlugin.pro
 	fi
 }
@@ -43,7 +46,7 @@ src_install() {
 	dodoc README
 
 	if use designer ; then
-		cd "${S}/designerPlugin"
+		cd "${S}/designerPlugin" || die
 		emake INSTALL_ROOT="${D}" install
 	fi
 

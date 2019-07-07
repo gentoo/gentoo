@@ -1,5 +1,5 @@
 #!/sbin/openrc-run
-# Copyright 2015-2017 Gentoo Foundation
+# Copyright 2015-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 description="consul agent"
@@ -14,7 +14,6 @@ command_background="true"
 start_stop_daemon_args="--user ${user} --group ${group} \
 	--stdout /var/log/${RC_SVCNAME}/${RC_SVCNAME}.log \
 	--stderr /var/log/${RC_SVCNAME}/${RC_SVCNAME}.log"
-stopsig="SIGINT"
 
 depend() {
 	need net

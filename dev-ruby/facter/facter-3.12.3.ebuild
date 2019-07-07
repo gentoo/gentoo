@@ -28,7 +28,7 @@ BDEPEND="
 	dev-cpp/cpp-hocon"
 COMMON_DEPEND="
 	>=dev-libs/leatherman-1.0.0:=
-	dev-libs/openssl:*
+	dev-libs/openssl:0=
 	sys-apps/util-linux
 	app-emulation/virt-what
 	net-misc/curl

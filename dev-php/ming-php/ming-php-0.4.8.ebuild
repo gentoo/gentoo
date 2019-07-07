@@ -5,7 +5,7 @@ EAPI=6
 
 PHP_EXT_NAME=ming
 MY_P="${PHP_EXT_NAME}-${PV//./_}"
-USE_PHP="php5-6 php7-0 php7-1 php7-2"
+USE_PHP="php5-6 php7-0 php7-1 php7-2 php7-3"
 PHP_EXT_S="${WORKDIR}/libming-${MY_P}/php_ext"
 inherit flag-o-matic php-ext-source-r3
 

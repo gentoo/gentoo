@@ -8,7 +8,7 @@ EAPI=7
 MY_PN="${PN}-dev"
 
 DESCRIPTION="Tabular Datastream Library"
-HOMEPAGE="http://www.freetds.org/"
+HOMEPAGE="https://www.freetds.org/"
 SRC_URI="ftp://ftp.freetds.org/pub/${PN}/current/${MY_PN}.${PV}.tar.gz"
 
 LICENSE="GPL-2"

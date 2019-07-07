@@ -196,7 +196,7 @@ mozconfig_init() {
 	fi
 
 	# Strip optimization so it does not end up in compile string
-	filter-flags '-O*'
+	filter-flags '-O* -ggdb3'
 
 	# Strip over-aggressive CFLAGS
 	use custom-cflags || strip-flags
@@ -240,7 +240,7 @@ mozconfig_init() {
 
 	# We need to append flags for gcc-6 support
 	if [[ $(gcc-major-version) -ge 6 ]]; then
-		append-cxxflags -fno-delete-null-pointer-checks -fno-lifetime-dse -fno-schedule-insns -fno-schedule-insns2
+		append-cxxflags -flifetime-dse=1
 	fi
 
 	# Use the MOZILLA_FIVE_HOME for the rpath

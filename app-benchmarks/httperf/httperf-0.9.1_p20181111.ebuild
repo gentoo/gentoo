@@ -12,7 +12,7 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+-with-openssl-exception"
 SLOT="0"
-KEYWORDS="~amd64 ~mips ~x86 ~amd64-linux ~x64-macos"
+KEYWORDS="amd64 ~mips x86 ~amd64-linux ~x64-macos"
 IUSE="debug idleconn libressl"
 
 DEPEND="

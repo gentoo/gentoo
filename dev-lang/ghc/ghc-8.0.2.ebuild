@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -293,6 +293,7 @@ relocate_ghc() {
 		# but then USE=binary would result in installing
 		# in '${bin_libdir}'
 		mv "${bin_ghc_prefix}/${bin_libdir}" "${bin_ghc_prefix}/$(get_libdir)" || die
+		bin_libpath=${bin_ghc_prefix}/$(get_libdir)
 
 		relocate_path "/usr/${bin_libdir}" "/usr/$(get_libdir)" \
 			"${WORKDIR}/usr/bin/$(cross)ghc-${GHC_PV}" \

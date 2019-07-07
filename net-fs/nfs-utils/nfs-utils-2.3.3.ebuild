@@ -29,6 +29,7 @@ RESTRICT="test" #315573
 # so don't depend on virtual/krb.
 # (04 Feb 2005 agriffis)
 DEPEND_COMMON="
+	dev-libs/libxml2
 	net-libs/libtirpc:=
 	>=net-nds/rpcbind-0.2.4
 	sys-libs/e2fsprogs-libs
@@ -59,7 +60,6 @@ RDEPEND="${DEPEND_COMMON}
 	)
 "
 DEPEND="${DEPEND_COMMON}
-	dev-libs/libxml2
 	net-libs/rpcsvc-proto
 	virtual/pkgconfig"
 

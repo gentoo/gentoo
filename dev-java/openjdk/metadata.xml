@@ -13,12 +13,17 @@
 		Java™ is the world's leading programming language and platform.
 		The code for Java is open source and available at OpenJDK™.
 	</longdescription>
+	<slots>
+		<slot name="8">Java™ 8 is Java™ 1.8, where 8 is the version number, and 1.8 is the version string</slot>
+		<slot name="11">Java™ version 11</slot>
+	</slots>
 	<use>
 		<flag name="headless-awt">Don't install the X backend for AWT, needed by some GUIs</flag>
 		<flag name="gentoo-vm">Allow this JDK to be recognised by Gentoo (package manager, eselect, java-config, EXPERIMENTAL!)</flag>
+		<flag name="javafx" restrict="&gt;=dev-java/openjdk-11">Import OpenJFX modules at build time, via <pkg>dev-java/openjfx</pkg></flag>
 		<flag name="jbootstrap">Build OpenJDK twice, the second time using the result of the first</flag>
 		<flag name="source">Install JVM sources</flag>
-		<flag name="systemtap">Enable SystemTAP/DTrace tracing</flag>
+		<flag name="systemtap" restrict="&gt;=dev-java/openjdk-11">Enable SystemTAP/DTrace tracing</flag>
 		<flag name="webstart">Provide javaws command through symlink to icedtea-web</flag>
 	</use>
 </pkgmetadata>

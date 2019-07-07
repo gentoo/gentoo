@@ -9,7 +9,9 @@
 
 EAPI="6"
 
-inherit fcaps flag-o-matic meson systemd toolchain-funcs
+PLOCALES="ja"
+
+inherit fcaps flag-o-matic l10n meson systemd toolchain-funcs
 
 if [[ ${PV} == "99999999" ]] ; then
 	EGIT_REPO_URI="https://github.com/iputils/iputils.git"
@@ -25,7 +27,7 @@ HOMEPAGE="https://wiki.linuxfoundation.org/networking/iputils"
 
 LICENSE="BSD GPL-2+ rdisc"
 SLOT="0"
-IUSE="+arping caps clockdiff doc gcrypt idn ipv6 libressl nettle rarpd rdisc SECURITY_HAZARD ssl static tftpd tracepath traceroute6"
+IUSE="+arping caps clockdiff doc gcrypt idn ipv6 libressl nettle nls rarpd rdisc SECURITY_HAZARD ssl static tftpd tracepath traceroute6"
 
 LIB_DEPEND="
 	caps? ( sys-libs/libcap[static-libs(+)] )
@@ -42,7 +44,9 @@ LIB_DEPEND="
 			)
 		)
 	)
+	nls? ( sys-devel/gettext[static-libs(+)] )
 "
+
 RDEPEND="
 	arping? ( !net-misc/arping )
 	rarpd? ( !net-misc/rarpd )
@@ -59,6 +63,7 @@ if [[ ${PV} == "99999999" ]] ; then
 	DEPEND+="
 		app-text/docbook-xml-dtd:4.2
 		app-text/docbook-xml-dtd:4.5
+		app-text/docbook-xsl-ns-stylesheets
 		app-text/docbook-xsl-stylesheets
 		dev-libs/libxslt:0
 	"
@@ -72,6 +77,8 @@ src_prepare() {
 	use SECURITY_HAZARD && PATCHES+=( "${FILESDIR}"/${PN}-20150815-nonroot-floodping.patch )
 
 	default
+
+	l10n_get_locales > po/LINGUAS || die
 }
 
 src_configure() {
@@ -91,9 +98,9 @@ src_configure() {
 		-DBUILD_TRACEROUTE6="$(usex ipv6 $(usex traceroute6 true false) false)"
 		-DBUILD_NINFOD="false"
 		-DNINFOD_MESSAGES="false"
-		-DBUILD_HTML_MANS="$(usex doc true false)"
-		-DUSE_SYSFS="$(usex arping true false)"
+		-DNO_SETCAP_OR_SUID="true"
 		-Dsystemdunitdir="$(systemd_get_systemunitdir)"
+		-DUSE_GETTEXT="$(usex nls true false)"
 	)
 
 	if use ipv6 && use ssl ; then
@@ -106,8 +113,14 @@ src_configure() {
 		)
 	fi
 
-	if [[ "${PV}" != 99999999 ]] ; then
+	if [[ "${PV}" == 99999999 ]] ; then
 		emesonargs+=(
+			-DBUILD_HTML_MANS="$(usex doc true false)"
+			-DBUILD_MANS="true"
+		)
+	else
+		emesonargs+=(
+			-DBUILD_HTML_MANS="false"
 			-DBUILD_MANS="false"
 		)
 	fi
@@ -143,8 +156,37 @@ src_install() {
 		fi
 	fi
 
-	if use doc ; then
-		mv "${ED%/}"/usr/share/${PN} "${ED%/}"/usr/share/doc/${PF}/html || die
+	if [[ "${PV}" != 99999999 ]] ; then
+		local -a man_pages
+		local -a html_man_pages
+
+		local oifs=${IFS}
+		while IFS= read -r -u 3 -d $'\0' my_bin
+		do
+			my_bin=$(basename "${my_bin}")
+			[[ -z "${my_bin}" ]] && continue
+
+			if [[ -f "${S}/doc/${my_bin}.8" ]] ; then
+				man_pages+=( ${my_bin}.8 )
+			fi
+
+			if [[ -f "${S}/doc/${my_bin}.html" ]] ; then
+				html_man_pages+=( ${my_bin}.html )
+			fi
+		done 3< <(find "${ED%/}"/{bin,usr/bin,usr/sbin} -type f -perm -a+x -print0 2>/dev/null)
+		IFS=${oifs}
+
+		pushd doc &>/dev/null || die
+		doman "${man_pages[@]}"
+		if use doc ; then
+			docinto html
+			dodoc "${html_man_pages[@]}"
+		fi
+		popd &>/dev/null || die
+	else
+		if use doc ; then
+			mv "${ED%/}"/usr/share/${PN} "${ED%/}"/usr/share/doc/${PF}/html || die
+		fi
 	fi
 }
 

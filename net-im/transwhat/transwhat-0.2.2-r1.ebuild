@@ -13,7 +13,7 @@ SRC_URI="https://github.com/stv0g/transwhat/archive/v${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND="
 	dev-python/e4u[${PYTHON_USEDEP}]

@@ -13,7 +13,7 @@ HOMEPAGE="https://skrooge.org/"
 [[ ${PV} == 9999 ]] || SRC_URI="mirror://kde/stable/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="activities designer kde ofx webkit"
 
 REQUIRED_USE="test? ( designer )"
@@ -49,7 +49,7 @@ COMMON_DEPEND="
 	$(add_qt_dep qtnetwork)
 	$(add_qt_dep qtprintsupport)
 	$(add_qt_dep qtscript)
-	$(add_qt_dep qtsql)
+	$(add_qt_dep qtsql '' '' '5=')
 	$(add_qt_dep qtsvg)
 	$(add_qt_dep qtwidgets)
 	$(add_qt_dep qtxml)

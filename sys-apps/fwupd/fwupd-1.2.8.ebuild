@@ -13,7 +13,7 @@ SRC_URI="https://github.com/hughsie/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE="agent colorhug consolekit dell doc elogind +gpg +man nvme pkcs7 redfish systemd test thunderbolt uefi"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
@@ -71,7 +71,10 @@ BDEPEND="
 	>=dev-util/meson-0.47.0
 	virtual/pkgconfig
 	doc? ( dev-util/gtk-doc )
-	man? ( app-text/docbook-sgml-utils )
+	man? (
+		app-text/docbook-sgml-utils
+		sys-apps/help2man
+	)
 "
 
 # required for fwupd daemon to run.

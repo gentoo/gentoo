@@ -10,11 +10,12 @@
   <flag name="doc">
     Creates and installs the API and implementation
     documentation. This is only useful if you want to develop software
-    which depends on kerberos.
+    which depends on kerberos
   </flag>
-  <flag name="keyutils">Enable for the keyring ccache using keyutils.</flag>
-  <flag name="pkinit">Enable pkinit support for the initial ticket.</flag>
-  <flag name="openldap">Enable support for ldap as a database backend.</flag>
+  <flag name="keyutils">Enable for the keyring ccache using keyutils</flag>
+  <flag name="lmdb">Add support for using dev-db/lmdb for lookup tables</flag>
+  <flag name="pkinit">Enable pkinit support for the initial ticket</flag>
+  <flag name="openldap">Enable support for ldap as a database backend</flag>
 </use>
 <upstream>
   <remote-id type="cpe">cpe:/a:mit:kerberos</remote-id>

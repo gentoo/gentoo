@@ -12,19 +12,20 @@ SRC_URI="${SRC_BASE}${PN}-client_${PV}.${BUILD_ID_AMD64}_amd64.deb"
 LICENSE="Spotify"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="libnotify systray pax_kernel"
+IUSE="libnotify libressl systray pax_kernel"
 RESTRICT="mirror strip"
 
 BDEPEND=">=dev-util/patchelf-0.10"
 # zenity needed for filepicker
 RDEPEND="
 	dev-libs/nss
-	dev-libs/openssl:0
 	dev-python/dbus-python
 	dev-python/pygobject:3
 	gnome-base/gconf
 	gnome-extra/zenity
 	libnotify? ( x11-libs/libnotify )
+	!libressl? ( dev-libs/openssl:0= )
+	libressl? ( dev-libs/libressl:0= )
 	media-libs/alsa-lib
 	media-libs/fontconfig
 	media-libs/harfbuzz

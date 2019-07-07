@@ -23,7 +23,7 @@ HOMEPAGE="https://www.midnight-commander.org"
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="+edit gpm mclib nls samba sftp +slang spell test unicode X +xdg"
+IUSE="+edit gpm nls samba sftp +slang spell test unicode X +xdg"
 
 REQUIRED_USE="spell? ( edit )"
 
@@ -70,7 +70,11 @@ src_configure() {
 		--with-homedir=$(usex xdg 'XDG' '.mc')
 		--with-screen=$(usex slang 'slang' "ncurses$(usex unicode 'w' '')")
 		$(use_enable kernel_linux vfs-undelfs)
-		$(use_enable mclib)
+		# Today mclib does not expose any headers and is linked to
+		# single 'mc' binary. Thus there is no advantage of having
+		# a library. Let's avoid shared library altogether
+		# as it also conflicts with sci-libs/mc: bug #685938
+		--disable-mclib
 		$(use_enable nls)
 		$(use_enable samba vfs-smb)
 		$(use_enable sftp vfs-sftp)

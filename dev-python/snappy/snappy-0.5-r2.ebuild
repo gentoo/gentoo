@@ -15,7 +15,7 @@ HOMEPAGE="https://pypi.org/project/python-snappy/"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="BSD"
-KEYWORDS="amd64 arm x86"
+KEYWORDS="amd64 arm ~arm64 x86"
 SLOT="0"
 
 DEPEND=">=app-arch/snappy-1.0.2"

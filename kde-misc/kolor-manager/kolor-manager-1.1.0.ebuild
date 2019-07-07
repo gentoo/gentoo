@@ -6,7 +6,7 @@ EAPI=7
 inherit kde5
 
 DESCRIPTION="KControl module for Oyranos CMS cross desktop settings"
-HOMEPAGE="http://www.oyranos.org/kolormanager"
+HOMEPAGE="https://www.oyranos.org/kolormanager"
 SRC_URI="https://github.com/KDE/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD-2"

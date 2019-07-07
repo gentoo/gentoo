@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -28,7 +28,7 @@ BDEPEND="
 	dev-cpp/cpp-hocon"
 COMMON_DEPEND="
 	>=dev-libs/leatherman-1.0.0:=
-	dev-libs/openssl:*
+	dev-libs/openssl:0=
 	sys-apps/util-linux
 	app-emulation/virt-what
 	net-misc/curl

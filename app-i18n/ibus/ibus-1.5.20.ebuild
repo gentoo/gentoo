@@ -62,7 +62,6 @@ RDEPEND="${CDEPEND}
 DEPEND="${CDEPEND}
 	$(vala_depend)
 	dev-util/glib-utils
-	dev-util/intltool
 	virtual/pkgconfig
 	emoji? (
 		app-i18n/unicode-cldr

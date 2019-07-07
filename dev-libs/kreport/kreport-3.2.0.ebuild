@@ -14,7 +14,7 @@ DESCRIPTION="Framework for creation and generation of reports in multiple format
 
 LICENSE="LGPL-2+"
 SLOT="5/4"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="marble +scripting webkit"
 
 RDEPEND="

@@ -1,0 +1,27 @@
+https://bugs.gentoo.org/686048
+
+./SolverTypes.h:122:20: error: friend declaration of ‘Clause* Clause_new(const V&, bool)’ specifies default arguments and isn’t a definition [-fpermissive]
+  122 |     friend Clause* Clause_new(const V& ps, bool learnt = false);
+      |                    ^~~~~~~~~~
+
+--- a/packages/swi-minisat2/C/SolverTypes.h
++++ b/packages/swi-minisat2/C/SolverTypes.h
+@@ -97,6 +97,9 @@
+ //=================================================================================================
+ // Clause -- a simple class for representing a clause:
+ 
++class Clause;
++template<class V>
++Clause* Clause_new(const V& ps, bool learnt = false);
+ 
+ class Clause {
+     uint32_t size_etc;
+@@ -119,7 +122,7 @@
+ 
+     // -- use this function instead:
+     template<class V>
+-    friend Clause* Clause_new(const V& ps, bool learnt = false);
++    friend Clause* Clause_new(const V& ps, bool learnt);
+ 
+     int          size        ()      const   { return size_etc >> 3; }
+     void         shrink      (int i)         { assert(i <= size()); size_etc = (((size_etc >> 3) - i) << 3) | (size_etc & 7); }

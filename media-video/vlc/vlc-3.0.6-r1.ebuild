@@ -19,7 +19,7 @@ else
 	else
 		SRC_URI="https://download.videolan.org/pub/videolan/testing/${MY_P}/${MY_P}.tar.xz"
 	fi
-	KEYWORDS="amd64 ~arm ~arm64 ppc ppc64 -sparc x86 ~x86-fbsd"
+	KEYWORDS="amd64 ~arm arm64 ppc ppc64 -sparc x86 ~x86-fbsd"
 fi
 inherit autotools flag-o-matic toolchain-funcs virtualx xdg
 
@@ -180,7 +180,7 @@ RDEPEND="
 		x11-libs/libXinerama
 		x11-libs/libXpm
 	)
-	soxr? ( media-libs/soxr )
+	soxr? ( >=media-libs/soxr-0.1.2 )
 	speex? (
 		>=media-libs/speex-1.2.0
 		media-libs/speexdsp

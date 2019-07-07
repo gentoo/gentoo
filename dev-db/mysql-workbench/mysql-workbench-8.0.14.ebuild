@@ -17,7 +17,7 @@ SRC_URI="mirror://mysql/Downloads/MySQLGUITools/${MY_P}.tar.gz http://www.antlr.
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 IUSE="debug doc gnome-keyring"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -67,6 +67,7 @@ S="${WORKDIR}"/"${MY_P}"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-6.2.5-wbcopytables.patch"
+	"${FILESDIR}/${PN}-6.3.10-i386-json.patch"
 )
 
 src_unpack() {

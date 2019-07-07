@@ -9,4 +9,15 @@
 		<email>chewi@gentoo.org</email>
 		<name>James Le Cuirot</name>
 	</maintainer>
+	<longdescription>
+		phpBB is a free flat-forum bulletin board software solution that can be used
+		to stay in touch with a group of people or can power your entire website.
+		With an extensive database of user-created extensions and styles database
+		containing hundreds of style and image packages to customise your board,
+		you can create a very unique forum in minutes.
+	</longdescription>
+	<upstream>
+		<bugs-to>https://tracker.phpbb.com</bugs-to>
+		<remote-id type="github">phpbb/phpbb</remote-id>
+	</upstream>
 </pkgmetadata>

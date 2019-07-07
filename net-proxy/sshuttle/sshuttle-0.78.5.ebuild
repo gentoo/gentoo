@@ -35,6 +35,9 @@ python_prepare_all() {
 	# don't run tests via setup.py pytest
 	sed -i "/setup_requires=/s/'pytest-runner'//" setup.py || die
 
+	# don't require pytest-cov when running tests
+	sed -i "s/^addopts =/#\0/" setup.cfg || die
+
 	distutils-r1_python_prepare_all
 }
 

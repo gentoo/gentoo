@@ -5,7 +5,7 @@ EAPI=6
 inherit autotools eutils gnome2
 
 DESCRIPTION="Compositing window manager forked from Mutter for use with Cinnamon"
-HOMEPAGE="http://cinnamon.linuxmint.com/"
+HOMEPAGE="http://developer.linuxmint.com/projects/cinnamon-projects.html"
 SRC_URI="https://github.com/linuxmint/muffin/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"

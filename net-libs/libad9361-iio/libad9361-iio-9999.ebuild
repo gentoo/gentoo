@@ -1,8 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-
+EAPI=7
 inherit cmake-utils
 
 DESCRIPTION="IIO AD9361 library for filter design and handling, multi-chip sync, etc."
@@ -23,7 +22,7 @@ RDEPEND="net-libs/libiio:="
 DEPEND="${RDEPEND}"
 
 src_prepare() {
-	epatch "${FILESDIR}/7206bb2a9b655be3bdb66c6cf03aa504817ed240.patch"
+	sed -i -e "s:"${CMAKE_INSTALL_PREFIX}/lib":"${CMAKE_INSTALL_PREFIX}/$(get_libdir)":g" CMakeLists.txt || die
 	cmake-utils_src_prepare
 	eapply_user
 }

@@ -9,7 +9,7 @@ PYTHON_REQ_USE="xml"
 inherit autotools eutils flag-o-matic gnome2 multilib pax-utils python-r1
 
 DESCRIPTION="A fork of GNOME Shell with layout similar to GNOME 2"
-HOMEPAGE="http://developer.linuxmint.com/"
+HOMEPAGE="http://developer.linuxmint.com/projects/cinnamon-projects.html"
 
 MY_PV="${PV/_p/-UP}"
 MY_P="${PN}-${MY_PV}"

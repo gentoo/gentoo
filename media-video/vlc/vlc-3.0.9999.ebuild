@@ -32,12 +32,12 @@ SLOT="0/5-9" # vlc - vlccore
 IUSE="a52 alsa altivec aom archive aribsub bidi bluray cddb chromaprint chromecast
 	dav1d dbus dc1394 debug directx dts +dvbpsi dvd +encode faad fdk +ffmpeg flac
 	fluidsynth fontconfig +gcrypt gme gnome-keyring gstreamer ieee1394 jack jpeg kate
-	libass libav libcaca libnotify +libsamplerate libtar libtiger linsys lirc live lua
-	macosx-notifications macosx-qtkit mad matroska modplug mp3 mpeg mtp musepack ncurses
-	neon nfs ogg omxil opencv optimisememory opus png postproc projectm pulseaudio +qt5
-	rdp run-as-root samba sdl-image sftp shout sid skins soxr speex srt ssl
+	libass libav libcaca libnotify +libsamplerate libtar libtiger linsys lirc
+	live lua macosx-notifications mad matroska modplug mp3 mpeg mtp musepack ncurses
+	neon nfs ogg omxil opencv optimisememory opus png postproc projectm pulseaudio
+	+qt5 rdp run-as-root samba sdl-image sftp shout sid skins soxr speex srt ssl
 	svg taglib theora tremor truetype twolame udev upnp vaapi v4l vdpau vnc vorbis vpx
-	wayland wma-fixed +X x264 x265 xml zeroconf zvbi cpu_flags_x86_mmx cpu_flags_x86_sse
+	wayland +X x264 x265 xml zeroconf zvbi cpu_flags_x86_mmx cpu_flags_x86_sse
 "
 REQUIRED_USE="
 	chromecast? ( encode )
@@ -180,7 +180,7 @@ RDEPEND="
 		x11-libs/libXinerama
 		x11-libs/libXpm
 	)
-	soxr? ( media-libs/soxr )
+	soxr? ( >=media-libs/soxr-0.1.2 )
 	speex? (
 		>=media-libs/speex-1.2.0
 		media-libs/speexdsp
@@ -231,6 +231,7 @@ DEPEND="${RDEPEND}
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.1.0-fix-libtremor-libs.patch # build system
 	"${FILESDIR}"/${PN}-2.2.8-freerdp-2.patch # bug 590164
+	"${FILESDIR}"/${PN}-3.0.6-fdk-aac-2.0.0.patch # bug 672290
 )
 
 DOCS=( AUTHORS THANKS NEWS README doc/fortunes.txt )
@@ -336,7 +337,6 @@ src_configure() {
 		$(use_enable live live555)
 		$(use_enable lua)
 		$(use_enable macosx-notifications osx-notifications)
-		$(use_enable macosx-qtkit)
 		$(use_enable mad)
 		$(use_enable matroska)
 		$(use_enable modplug mod)
@@ -384,7 +384,6 @@ src_configure() {
 		$(use_enable vorbis)
 		$(use_enable vpx)
 		$(use_enable wayland)
-		$(use_enable wma-fixed)
 		$(use_with X x)
 		$(use_enable X xcb)
 		$(use_enable X xvideo)
@@ -406,6 +405,7 @@ src_configure() {
 		--disable-kai
 		--disable-kva
 		--disable-libplacebo
+		--disable-macosx-qtkit
 		--disable-maintainer-mode
 		--disable-merge-ffmpeg
 		--disable-mfx
@@ -419,6 +419,7 @@ src_configure() {
 		--disable-spatialaudio
 		--disable-vsxu
 		--disable-wasapi
+		--disable-wma-fixed
 	)
 	# ^ We don't have these disabled libraries in the Portage tree yet.
 

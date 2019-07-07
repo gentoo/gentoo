@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,13 +7,13 @@ GNOME2_LA_PUNT="yes" # gmodule is used, which uses dlopen
 inherit autotools eutils gnome2
 
 DESCRIPTION="Cinnamons's main interface to configure various aspects of the desktop"
-HOMEPAGE="http://cinnamon.linuxmint.com/"
+HOMEPAGE="http://developer.linuxmint.com/projects/cinnamon-projects.html"
 SRC_URI="https://github.com/linuxmint/cinnamon-control-center/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
 IUSE="+colord +cups debug input_devices_wacom systemd"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 # False positives caused by nested configure scripts
 QA_CONFIGURE_OPTIONS=".*"

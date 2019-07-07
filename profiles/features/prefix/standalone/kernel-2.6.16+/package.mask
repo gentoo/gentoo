@@ -7,6 +7,6 @@
 # python-3.3 seems to be unconditionally using utimensat.
 >=dev-lang/python-3
 
-# Tupone Alfredo <tupone@gentoo.org> (4 Nov 2018)
+# Tupone Alfredo <tupone@gentoo.org> (2018-11-04)
 # require newer glibc
 dev-lang/gnat-gpl

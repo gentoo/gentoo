@@ -1,0 +1,119 @@
+From db870755b928cca7411a092ce12292afe9c4fa36 Mon Sep 17 00:00:00 2001
+From: clanmills <robin@clanmills.com>
+Date: Thu, 9 May 2019 11:26:29 +0100
+Subject: [PATCH] fix #818.  Restore 0.25 behaviour of `$ exiv2 -g image ...`
+ to apply grep to keys.
+
+---
+ src/actions.cpp                         |  2 +-
+ src/exiv2.1                             | 50 +++++++++++++++++--------
+ tests/bugfixes/github/test_issue_818.py | 32 ++++++++++++++++
+ 3 files changed, 67 insertions(+), 17 deletions(-)
+ create mode 100644 tests/bugfixes/github/test_issue_818.py
+
+diff --git a/src/actions.cpp b/src/actions.cpp
+index 34a7a80d5..68260186d 100644
+--- a/src/actions.cpp
++++ b/src/actions.cpp
+@@ -243,7 +243,7 @@ namespace Action {
+             int rc = 0;
+             Exiv2::PrintStructureOption option = Exiv2::kpsNone ;
+             switch (Params::instance().printMode_) {
+-                case Params::pmSummary:   rc = printSummary();     break;
++                case Params::pmSummary:   rc = Params::instance().greps_.empty() ? printSummary() : printList(); break;
+                 case Params::pmList:      rc = printList();        break;
+                 case Params::pmComment:   rc = printComment();     break;
+                 case Params::pmPreview:   rc = printPreviewList(); break;
+diff --git a/src/exiv2.1 b/src/exiv2.1
+index 4f6f3b51b..048f09af7 100644
+--- a/src/exiv2.1
++++ b/src/exiv2.1
+@@ -2,7 +2,7 @@
+ .\" First parameter, NAME, should be all caps
+ .\" Second parameter, SECTION, should be 1-8, maybe w/ subsection
+ .\" other parameters are allowed: see man(7), man(1)
+-.TH EXIV2 1 "Apr 25, 2019"
++.TH EXIV2 1 "May 8, 2019"
+ .\" Please adjust this date whenever revising the manpage.
+ .\"
+ .\" Some roff macros, for reference:
+@@ -222,19 +222,30 @@ Show unknown tags (default is to suppress tags which don't have a name).
+ Only keys which match the given key (grep).
+ .br
+ Multiple \fB\-g\fP options
+-can be used to grep info for several keys. Example:
++can be used to filter info to less keys. Example:
+ exiv2 -v -V -g webready -g time.
++The default exiv2 command prints a "summary report" which is quite short.  When you use -g without a -pmod option, you do not get a summary report and in effect you get -g pattern -pa image ...
+ 
+ .nf
+-exiv2 \-g Date \-pt R.jpg
+-Exif.Image.DateTime           Ascii      20  2012:08:07 16:01:05
+-Exif.Photo.DateTimeOriginal   Ascii      20  2011:09:18 16:25:48
+-Exif.Photo.DateTimeDigitized  Ascii      20  2011:09:18 16:25:48
++$ bin/exiv2 -g Date http://clanmills.com/Stonehenge.jpg
++Exif.Image.DateTime                 Ascii    20  2015:07:16 20:25:28
++Exif.Photo.DateTimeOriginal         Ascii    20  2015:07:16 15:38:54
++Exif.Photo.DateTimeDigitized        Ascii    20  2015:07:16 15:38:54
++Exif.NikonWt.DateDisplayFormat      Byte      1  Y/M/D
++Exif.GPSInfo.GPSDateStamp           Ascii    11  2015:07:16
++Xmp.xmp.ModifyDate                  XmpText  25  2015-07-16T20:25:28+01:00
+ 
+ .fi
+--g (--grep) is only applied to keys.  It is not generally applied to all output such as the default -ps report.
++You may use -pmod filters to further filter output.  For example:
++.nf
++
++$ bin/exiv2 -px -g Date http://clanmills.com/Stonehenge.jpg
++Xmp.xmp.ModifyDate                           XmpText    25  2015-07-16T20:25:28+01:00
+ 
+-The key may finish with the optional modifier /i to indicated case insensitive.
++.fi
++The option -g (--grep) applies to keys and not values.
++
++The key may finish with the optional modifier /i to indicate case insensitive.
+ .TP
+ .B \-K \fIkey\fP
+ Only report data for given key.
+@@ -243,8 +254,8 @@ Multiple \fB\-K\fP options can be used to report more than a single key.
+ 
+ .nf
+ exiv2 \-K Exif.Photo.DateTimeDigitized -K Exif.Photo.DateTimeOriginal \-pt R.jpg
+-Exif.Photo.DateTimeOriginal   Ascii      20  2011:09:18 16:25:48
+-Exif.Photo.DateTimeDigitized  Ascii      20  2011:09:18 16:25:48
++Exif.Photo.DateTimeOriginal   Ascii    20  2011:09:18 16:25:48
++Exif.Photo.DateTimeDigitized  Ascii    20  2011:09:18 16:25:48
+ .fi
+ .TP
+ .B \-n \fIenc\fP
+@@ -594,17 +605,24 @@ You obtain the lensID for your camera with the command:
+ .nf
+ .sp 1
+ $ exiv2 -pv --grep lens/i http://clanmills.com/Stonehenge.jpg
+-0x0083 Nikon3       LensType                    Byte        1  14
+-0x0084 Nikon3       Lens                        Rational    4  180/10 2500/10 35/10 63/10
+-0x008b Nikon3       LensFStops                  Undefined   4  55 1 12 0
+-0x000c NikonLd3     LensIDNumber                Byte        1  146 <--- This number
+-0x000d NikonLd3     LensFStops                  Byte        1  55
++0x0083 Nikon3       LensType           Byte       1  14
++0x0084 Nikon3       Lens               Rational   4  180/10 2500/10 35/10 63/10
++0x008b Nikon3       LensFStops         Undefined  4  55 1 12 0
++0x000c NikonLd3     LensIDNumber       Byte       1  146 <--- This number
++0x000d NikonLd3     LensFStops         Byte       1  55
+ .br
+ .ne 40
+ .SH EXAMPLES
+ .TP
+ exiv2 *.jpg
+-Prints a summary of the Exif information for all JPEG files in the directory.
++Prints a summary of the Exif information for all JPEG files in the directory.  The summary report is rather brief and presentation does not use the Family.Group.Tag convention.
++
++If you use --grep pattern, the default becomes -pa.  See -g/grep above.
++
++.nf
++$ exiv2 -g Date http://clanmills.com/Stonehenge.jpg
++
++.fi
+ .TP
+ exiv2 \-pi image.jpg
+ Prints the IPTC metadata of the image.

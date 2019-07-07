@@ -11,7 +11,7 @@ DESCRIPTION="A BibTeX parser written in python"
 HOMEPAGE="https://github.com/sciunto-org/python-bibtexparser"
 SRC_URI="https://github.com/sciunto-org/python-bibtexparser/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="BSD"
+LICENSE="|| ( BSD LGPL-3 )"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"

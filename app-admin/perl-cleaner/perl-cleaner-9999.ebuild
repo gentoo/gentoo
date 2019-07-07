@@ -26,7 +26,6 @@ RDEPEND="app-shells/bash
 	dev-lang/perl
 	|| (
 		( sys-apps/portage app-portage/portage-utils )
-		( sys-apps/portage-mgorny app-portage/portage-utils )
 		sys-apps/pkgcore
 	)
 "

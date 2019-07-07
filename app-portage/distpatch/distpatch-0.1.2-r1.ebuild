@@ -17,10 +17,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 CDEPEND="
-	|| (
-		>=sys-apps/portage-2.1.8.3[${PYTHON_USEDEP}]
-		sys-apps/portage-mgorny[${PYTHON_USEDEP}]
-	)
+	>=sys-apps/portage-2.1.8.3[${PYTHON_USEDEP}]
 	dev-python/snakeoil[${PYTHON_USEDEP}]"
 DEPEND="${CDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]"

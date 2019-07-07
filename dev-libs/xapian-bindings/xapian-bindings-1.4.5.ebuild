@@ -18,8 +18,8 @@ RUBY_OPTIONAL="yes"
 inherit java-pkg-opt-2 mono-env multibuild php-ext-source-r3 python-r1 ruby-ng toolchain-funcs
 
 DESCRIPTION="SWIG and JNI bindings for Xapian"
-HOMEPAGE="http://www.xapian.org/"
-SRC_URI="http://oligarchy.co.uk/xapian/${PV}/${P}.tar.xz"
+HOMEPAGE="https://www.xapian.org/"
+SRC_URI="https://oligarchy.co.uk/xapian/${PV}/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -93,7 +93,7 @@ src_unpack() {
 src_prepare() {
 	use java && java-pkg-opt-2_src_prepare
 
-	# http://trac.xapian.org/ticket/702
+	# https://trac.xapian.org/ticket/702
 	export XAPIAN_CONFIG="/usr/bin/xapian-config"
 
 	if use php; then

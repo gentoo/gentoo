@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -24,9 +24,9 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="test +X"
+IUSE="+egl test +X"
 
-RDEPEND="media-libs/mesa[egl,${MULTILIB_USEDEP}]"
+RDEPEND="egl? ( media-libs/mesa[egl,${MULTILIB_USEDEP}] )"
 DEPEND="${PYTHON_DEPS}
 	${RDEPEND}
 	>=dev-util/meson-0.47.0
@@ -40,7 +40,7 @@ src_unpack() {
 
 multilib_src_configure() {
 	local emesonargs=(
-		-Degl=yes
+		-Degl=$(usex egl)
 		-Dglx=$(usex X)
 		-Dx11=$(usex X true false)
 	)

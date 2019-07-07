@@ -12,7 +12,7 @@ SRC_URI="http://noad.net23.net/${P}.tar.bz2
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="+ffmpeg imagemagick libmpeg2"
 
 RDEPEND="

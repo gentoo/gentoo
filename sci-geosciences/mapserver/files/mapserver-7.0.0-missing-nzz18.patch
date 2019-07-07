@@ -1,0 +1,13 @@
+diff --git a/cmake/FindOracle.cmake b/cmake/FindOracle.cmake
+index 18055f7..2568b5e 100644
+--- a/cmake/FindOracle.cmake
++++ b/cmake/FindOracle.cmake
+@@ -37,7 +37,7 @@ if(DEFINED ENV{ORACLE_HOME})
+     ${ORACLE_HOME}/OCI/include) # Oracle XE on Windows
+ 
+   set(ORACLE_OCI_NAMES clntsh libclntsh oci)
+-  set(ORACLE_NNZ_NAMES nnz10 libnnz10 nnz11 libnnz11 nnz12 libnnz12 ociw32)
++  set(ORACLE_NNZ_NAMES nnz10 libnnz10 nnz11 libnnz11 nnz12 libnnz12 nnz18 libnnz18 ociw32)
+   set(ORACLE_OCCI_NAMES libocci occi oraocci10 oraocci11 oraocci12)
+ 
+   set(ORACLE_LIB_DIR 

@@ -22,7 +22,6 @@ RDEPEND="
 	dev-qt/qtprintsupport:5
 	dev-qt/qtsql:5
 	dev-qt/qtwidgets:5
-	dev-qt/qtwebkit:5
 	dev-qt/qtxml:5
 	sys-libs/zlib"
 

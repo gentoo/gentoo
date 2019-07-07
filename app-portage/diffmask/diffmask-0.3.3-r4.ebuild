@@ -15,8 +15,4 @@ SLOT="0"
 KEYWORDS="~amd64 ~mips ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 IUSE=""
 
-RDEPEND="
-	|| (
-		sys-apps/portage[${PYTHON_USEDEP}]
-		sys-apps/portage-mgorny[${PYTHON_USEDEP}]
-	)"
+RDEPEND="sys-apps/portage[${PYTHON_USEDEP}]"

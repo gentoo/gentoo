@@ -41,7 +41,10 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
-PATCHES=( "${FILESDIR}/${PN}-2015.03_p2_uic_tr_fix.patch" )
+PATCHES=(
+	"${FILESDIR}/${PN}-2015.03_p2_uic_tr_fix.patch"
+	"${FILESDIR}/${PN}-2015.03_p3_fix-boost-1.70.0-build.patch"
+)
 
 S="${WORKDIR}/${PN}-${MY_PV}"
 

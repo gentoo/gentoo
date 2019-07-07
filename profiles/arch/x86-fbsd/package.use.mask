@@ -1,61 +1,61 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Andreas Sturmlechner <asturm@gentoo.org> (01 Sep 2018)
+# Andreas Sturmlechner <asturm@gentoo.org> (2018-09-01)
 # media-libs/libaom not yet keyworded
 # media-libs/aribb24 not yet keyworded, bug #665048
 # media-libs/dav1d is not yet keyworded
 # skins requires USE=qt5 that is masked in this profile.
 media-video/vlc aom aribsub dav1d skins
 
-# Thomas Deutschmann <whissi@gentoo.org> (26 Oct 2017)
+# Thomas Deutschmann <whissi@gentoo.org> (2017-10-26)
 # idn: Needs net-dns/libidn2 which is not keyworded
 # uuid: Needs sys-apps/util-linux which is not keyworded
 net-misc/wget idn uuid
 
-# Ulrich Müller <ulm@gentoo.org> (23 Oct 2017)
+# Ulrich Müller <ulm@gentoo.org> (2017-10-23)
 # Needs net-mail/mailutils which is not keyworded, bug #635216.
 app-editors/emacs mailutils
 app-editors/emacs-vcs mailutils
 
-# Thomas Deutschmann <whissi@gentoo.org> (09 Jun 2017)
+# Thomas Deutschmann <whissi@gentoo.org> (2017-06-09)
 # sys-process/audit not keyworded
 sys-process/fcron audit
 
-# Thomas Deutschmann <whissi@gentoo.org> (14 Feb 2017)
+# Thomas Deutschmann <whissi@gentoo.org> (2017-02-14)
 # net-misc/curl dropped keywords in ffe8d873b8110d4434fc89423ea668450cab1d96
 www-servers/nginx nginx_modules_http_security
 
-# Alexis Ballier <aballier@gentoo.org> (31 Jan 2017)
+# Alexis Ballier <aballier@gentoo.org> (2017-01-31)
 # nvidia drivers are unmasked here
 media-video/ffmpeg -nvenc
 
-# Michael Palimaka <kensington@gentoo.org> (21 Jun 2016)
+# Michael Palimaka <kensington@gentoo.org> (2016-06-21)
 # Requires unkeyworded media-sound/jack-audio-connection-kit & media-video/movit
 media-libs/mlt jack opengl
 
-# Davide Pesavento <pesa@gentoo.org> (26 Oct 2015)
+# Davide Pesavento <pesa@gentoo.org> (2015-10-26)
 # Tests require non-keyworded qt5
 dev-qt/qtchooser test
 
-# Johannes Huber <johu@gentoo.org> (28 Jan 2015)
+# Johannes Huber <johu@gentoo.org> (2015-01-28)
 # Missing keyword on dev-libs/botan
 app-crypt/qca botan
 
-# Pacho Ramos <pacho@gentoo> (18 Mar 2011)
+# Pacho Ramos <pacho@gentoo> (2011-03-18)
 # Missing keywords on deps (GNOME related packages)
 dev-libs/totem-pl-parser quvi
 media-plugins/gst-plugins-meta dv dvd musepack vcd vpx wavpack
 
-# Justin Lecher <jlec@gentoo.org> (19 Sep 2010)
+# Justin Lecher <jlec@gentoo.org> (2010-09-19)
 # kde-apps/konqueror not keyworded
 app-arch/p7zip kde
 
-# Justin Lecher <jlec@gentoo.org> (12 Sep 2010)
+# Justin Lecher <jlec@gentoo.org> (2010-09-12)
 # net-libs/farsight2 not keyworded
 net-im/gajim jingle
 
-# Justin Lecher <jlec@gentoo.org> (13 Aug 2010)
+# Justin Lecher <jlec@gentoo.org> (2010-08-13)
 # MKL not available on this arch
 media-gfx/povray mkl
 

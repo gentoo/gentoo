@@ -20,12 +20,7 @@ IUSE="+portage"
 DEPEND="app-text/xmlto
 	sys-apps/gentoo-functions"
 RDEPEND="
-	portage? (
-		|| (
-			sys-apps/portage[${PYTHON_USEDEP}]
-			sys-apps/portage-mgorny[${PYTHON_USEDEP}]
-		)
-	)"
+	portage? ( sys-apps/portage[${PYTHON_USEDEP}] )"
 
 python_prepare_all() {
 	distutils-r1_python_prepare_all

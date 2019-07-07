@@ -103,8 +103,6 @@ src_prepare() {
 			tests/Makefile.am || die
 	fi
 
-	echo ${PV/_rc*/} >> VERSION || die
-
 	export rd_cv_gcc_flag__Werror=no
 
 	eautoreconf

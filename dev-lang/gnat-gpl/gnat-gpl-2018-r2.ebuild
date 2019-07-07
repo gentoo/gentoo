@@ -36,7 +36,7 @@ SRC_URI+="
 	)"
 
 LICENSE+=" GPL-2 GPL-3"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="+bootstrap"
 
 RDEPEND="!sys-devel/gcc:${GCC_CONFIG_VER}"

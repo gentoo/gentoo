@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -53,7 +53,7 @@ RDEPEND="
 	>=app-text/pandoc-${PANDOC_VER}
 	dev-haskell/pandoc-citeproc
 	>=dev-lang/R-2.11.1
-	>=dev-libs/boost-1.63:=
+	<dev-libs/boost-1.70:=
 	>=dev-libs/mathjax-2.7.4
 	sys-apps/util-linux
 	>=sys-devel/clang-3.5.0:*
@@ -81,8 +81,8 @@ RDEPEND="
 		server? ( virtual/pam )
 	)
 	dedicated? ( virtual/pam )
-	!libressl? ( dev-libs/openssl:0 )
-	libressl? ( dev-libs/libressl:0 )"
+	!libressl? ( dev-libs/openssl:0= )
+	libressl? ( dev-libs/libressl:0= )"
 DEPEND="${RDEPEND}
 	app-arch/unzip
 	dev-java/ant-core

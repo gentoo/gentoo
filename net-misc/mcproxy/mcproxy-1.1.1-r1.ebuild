@@ -9,7 +9,7 @@ DESCRIPTION="A multicast proxy for IGMP/MLD"
 HOMEPAGE="https://mcproxy.realmv6.org/ https://github.com/mcproxy/mcproxy"
 SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 LICENSE="GPL-2+"
 SLOT="0"
 IUSE="doc"

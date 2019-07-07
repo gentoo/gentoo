@@ -174,6 +174,7 @@ if [[ ${PN} != "kgcc64" && ${PN} != gcc-* ]] ; then
 	tc_version_is_at_least 8.0 &&
 		IUSE+=" systemtap" TC_FEATURES+=(systemtap)
 	tc_version_is_at_least 9.0 && IUSE+=" d"
+	tc_version_is_at_least 9.1 && IUSE+=" lto"
 fi
 
 SLOT="${GCC_CONFIG_VER}"
@@ -993,6 +994,11 @@ toolchain_src_configure() {
 		confgcc+=( --enable-libstdcxx-time )
 	fi
 
+	# Build compiler using LTO
+	if tc_version_is_at_least 9.1 && use_if_iuse lto ; then
+		confgcc+=( --with-build-config=bootstrap-lto )
+	fi
+
 	# Support to disable pch when building libstdcxx
 	if tc_version_is_at_least 6.0 && ! use_if_iuse pch ; then
 		confgcc+=( --disable-libstdcxx-pch )
@@ -1106,6 +1112,9 @@ toolchain_src_configure() {
 	*-elf|*-eabi)
 		confgcc+=( --with-newlib )
 		;;
+	*-musl*)
+		confgcc+=( --enable-__cxa_atexit )
+		;;
 	*-gnu*)
 		confgcc+=(
 			--enable-__cxa_atexit
@@ -1203,6 +1212,10 @@ toolchain_src_configure() {
 		# Set up defaults based on current CFLAGS
 		is-flagq -mfloat-gprs=double && confgcc+=( --enable-e500-double )
 		[[ ${CTARGET//_/-} == *-e500v2-* ]] && confgcc+=( --enable-e500-double )
+		;;
+	riscv)
+		# Add --with-abi flags to set default ABI
+		confgcc+=( --with-abi=$(gcc-abi-map ${TARGET_DEFAULT_ABI}) )
 		;;
 	esac
 
@@ -1631,6 +1644,7 @@ gcc-abi-map() {
 	local map=()
 	case ${CTARGET} in
 	mips*)   map=("o32 32" "n32 n32" "n64 64") ;;
+	riscv*)  map=("lp64d lp64d" "lp64 lp64") ;;
 	x86_64*) map=("amd64 m64" "x86 m32" "x32 mx32") ;;
 	esac
 

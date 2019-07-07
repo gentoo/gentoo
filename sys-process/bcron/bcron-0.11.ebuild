@@ -15,13 +15,13 @@ LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-RDEPEND="sys-apps/ucspi-unix
+RDEPEND=">=dev-libs/bglibs-2.04
+	sys-apps/ucspi-unix
 	sys-process/cronbase
 	virtual/daemontools
 	virtual/mta"
 DEPEND="${RDEPEND}
-	${PYTHON_DEPS}
-	>=dev-libs/bglibs-2.04"
+	${PYTHON_DEPS}"
 
 CRON_SYSTEM_CRONTAB="yes"
 

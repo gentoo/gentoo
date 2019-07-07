@@ -29,6 +29,7 @@ RESTRICT="test" #315573
 # (04 Feb 2005 agriffis)
 DEPEND="
 	>=dev-db/sqlite-3.3
+	dev-libs/libxml2
 	net-libs/libtirpc:=
 	>=net-nds/rpcbind-0.2.4
 	sys-libs/e2fsprogs-libs
@@ -58,7 +59,6 @@ RDEPEND="${DEPEND}
 	)
 "
 BDEPEND="
-	dev-libs/libxml2
 	net-libs/rpcsvc-proto
 	virtual/pkgconfig
 "

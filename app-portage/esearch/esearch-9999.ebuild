@@ -18,11 +18,7 @@ IUSE="l10n_fr l10n_it"
 
 KEYWORDS=""
 
-DEPEND="
-	|| (
-		sys-apps/portage
-		sys-apps/portage-mgorny
-	)"
+DEPEND="sys-apps/portage"
 RDEPEND="${DEPEND}"
 
 python_prepare_all() {

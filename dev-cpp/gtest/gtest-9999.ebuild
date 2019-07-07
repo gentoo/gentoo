@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=7
 
 # Python is required for tests and some build tasks.
 PYTHON_COMPAT=( python2_7 pypy )
@@ -12,9 +12,14 @@ if [[ ${PV} == "9999" ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/google/googletest"
 else
-	SRC_URI="https://github.com/google/googletest/archive/release-${PV}.tar.gz -> ${P}.tar.gz"
+	if [[ -z ${GOOGLETEST_COMMIT} ]]; then
+		MY_PV=release-${PV}
+	else
+		MY_PV=${GOOGLETEST_COMMIT}
+	fi
+	SRC_URI="https://github.com/google/googletest/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos"
-	S="${WORKDIR}"/googletest-release-${PV}
+	S="${WORKDIR}"/googletest-${MY_PV}
 fi
 
 DESCRIPTION="Google C++ Testing Framework"
@@ -28,8 +33,7 @@ DEPEND="test? ( ${PYTHON_DEPS} )"
 RDEPEND="!dev-cpp/gmock"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-9999-fix-gcc6-undefined-behavior.patch
-	"${FILESDIR}"/${PN}-1.8.0-increase-clone-stack-size.patch
+	"${FILESDIR}"/${PN}-1.9.0_pre20190607-add-mmap-stack-flag.patch
 )
 
 pkg_setup() {
@@ -47,7 +51,6 @@ multilib_src_configure() {
 	local mycmakeargs=(
 		-DBUILD_GMOCK=ON
 		-DINSTALL_GTEST=ON
-		-DBUILD_SHARED_LIBS=ON
 
 		# tests
 		-Dgmock_build_tests=$(usex test)

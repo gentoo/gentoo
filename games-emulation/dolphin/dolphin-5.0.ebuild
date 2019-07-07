@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -75,6 +75,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-CHAR_WIDTH-collision.patch
 	"${FILESDIR}"/${P}-xgetbv.patch
 	"${FILESDIR}"/${P}-no-pie.patch
+	"${FILESDIR}"/${P}-soundtouch-exceptions.patch
 )
 
 src_prepare() {

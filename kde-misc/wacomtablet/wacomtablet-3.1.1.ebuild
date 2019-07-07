@@ -45,7 +45,10 @@ RDEPEND="${CDEPEND}
 	!kde-misc/wacomtablet:4
 "
 
-PATCHES=( "${FILESDIR}/${P}-xlib-optional.patch" ) # bug 681674
+PATCHES=(
+	"${FILESDIR}/${P}-xlib-optional.patch" # bug 681674
+	"${FILESDIR}/${P}-gcc9.patch" # bug 686822
+)
 
 src_test() {
 	# test needs DBus, bug 675548

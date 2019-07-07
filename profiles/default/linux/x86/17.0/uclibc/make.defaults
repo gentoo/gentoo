@@ -3,7 +3,7 @@
 
 CHOST="i686-gentoo-linux-uclibc"
 
-# Anthony G. Basile <blueness@gentoo.org> (01 Jul 2014)
+# Anthony G. Basile <blueness@gentoo.org> (2014-07-01)
 # Multilib-related setup, bug #515130
 MULTILIB_ABIS="x86"
 CHOST_x86="${CHOST}"

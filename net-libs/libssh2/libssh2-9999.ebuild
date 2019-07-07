@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 inherit git-r3 cmake-multilib
 
 DESCRIPTION="Library implementing the SSH2 protocol"
@@ -53,6 +53,4 @@ multilib_src_configure() {
 multilib_src_install_all() {
 	einstalldocs
 	find "${ED}" -name '*.la' -delete || die
-	mv "${ED}"/usr/share/doc/${PN}/* "${ED}"/usr/share/doc/${PF}/ || die
-	rm -r "${ED}"/usr/share/doc/${PN}/ || die
 }

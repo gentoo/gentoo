@@ -9,7 +9,7 @@ if [[ ${PV} = 9999* ]]; then
 	GIT_ECLASS="git-r3"
 fi
 
-inherit ${GIT_ECLASS} meson multilib-minimal
+inherit ${GIT_ECLASS} meson multilib-minimal toolchain-funcs
 
 DESCRIPTION="Low-level pixel manipulation routines"
 HOMEPAGE="http://www.pixman.org/ https://gitlab.freedesktop.org/pixman/pixman/"
@@ -30,6 +30,9 @@ src_unpack() {
 }
 
 multilib_src_configure() {
+	local openmp=disabled
+	tc-has-openmp && openmp=enabled
+
 	local emesonargs=(
 		$(meson_feature cpu_flags_arm_iwmmxt iwmmxt)
 		$(meson_use     cpu_flags_arm_iwmmxt2 iwmmxt2)
@@ -41,7 +44,7 @@ multilib_src_configure() {
 		$(meson_feature loongson2f loongson-mmi)
 		-Dgtk=disabled
 		-Dlibpng=disabled
-		-Dopenmp=auto # only used in unit tests
+		-Dopenmp=$openmp # only used in unit tests
 	)
 	meson_src_configure
 }

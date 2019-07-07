@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>tupone@gentoo.org</email>
-		<name>Tupone Alfredo</name>
+	<maintainer type="project">
+		<email>ada@gentoo.org</email>
 	</maintainer>
+	<use>
+		<flag name="gnat_2018">Compile with dev-lang/gnat-gpl-2018</flag>
+		<flag name="gnat_2019">Compile with dev-lang/gnat-gpl-2019</flag>
+	</use>
 	<longdescription lang="en">
 		gnatsymbolize is a program which translates addresses into their
 		corresponding filename, line number, and function names.

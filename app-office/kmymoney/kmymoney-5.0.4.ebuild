@@ -18,7 +18,7 @@ if [[ ${KDE_BUILD_TYPE} = release ]]; then
 fi
 
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="activities addressbook calendar hbci holidays ofx quotes webkit weboob"
 
 REQUIRED_USE="weboob? ( ${PYTHON_REQUIRED_USE} )"
@@ -114,9 +114,9 @@ src_configure() {
 }
 
 src_test() {
-	# bug: 652636
+	# bug 652636; bug 673052: needs kmymoney installed to succeed
 	local myctestargs=(
-		-E "(reports-chart-test)"
+		-E "(reports-chart-test|qsqlcipher-test)"
 	)
 
 	kde5_src_test

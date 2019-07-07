@@ -3,7 +3,7 @@
 
 EAPI=6
 
-USE_RUBY="ruby23 ruby24 ruby25"
+USE_RUBY="ruby23 ruby24 ruby25 ruby26"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 RUBY_FAKEGEM_RECIPE_DOC="rdoc"
@@ -21,7 +21,7 @@ KEYWORDS="~amd64 ~arm ~x86"
 
 ruby_add_rdepend "
 	dev-ruby/network_interface:0
-	dev-ruby/pcaprub:0.12
+	dev-ruby/pcaprub:*
 "
 
 ruby_add_bdepend "test? ( >=dev-ruby/rspec-its-1.2.0:1 )

@@ -19,7 +19,7 @@ SRC_URI="https://github.com/cucumber/cucumber-ruby/archive/v${PV}.tar.gz -> ${P}
 RUBY_S="cucumber-ruby-${PV}"
 LICENSE="Ruby"
 
-KEYWORDS="alpha amd64 arm ~arm64 hppa ~ia64 ppc ppc64 s390 sparc ~x86"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ppc ppc64 s390 sparc x86"
 SLOT="0"
 IUSE="examples test"
 
@@ -51,6 +51,7 @@ all_ruby_prepare() {
 	# need or can't satisfy.
 	sed -e '/\(coveralls\|spork\|simplecov\|bcat\|kramdown\|yard\|capybara\|octokit\|rack-test\|ramaze\|rubocop\|sinatra\|webrat\|mime-types\|rubyzip\)/d' \
 		-e '/nokogiri/ s/1.8.1/1.8/' \
+		-e "/json/ s/, '~> 1.8.6'//" \
 		-i ${RUBY_FAKEGEM_GEMSPEC} || die
 
 	# Avoid dependency on unpackaged cucumber-pro

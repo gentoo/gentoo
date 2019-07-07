@@ -13,7 +13,7 @@ SRC_URI="https://launcher.mojang.com/v1/objects/${MY_PV}/server.jar -> ${P}.jar"
 
 LICENSE="Mojang"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND="
 	app-misc/screen

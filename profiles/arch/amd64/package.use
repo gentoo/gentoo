@@ -1,25 +1,25 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Mike Gilbert <floppym@gentoo.org> (17 Nov 2016)
+# Mike Gilbert <floppym@gentoo.org> (2016-11-17)
 # Enable both efi and pc by default.
 # https://bugs.gentoo.org/600110
 sys-boot/grub:2 grub_platforms_efi-64 grub_platforms_pc
 
-# Michał Górny <mgorny@gentoo.org> (24 Sep 2016)
+# Michał Górny <mgorny@gentoo.org> (2016-09-24)
 # Enable the GPU targets matching the default VIDEO_CARDS
 dev-ml/llvm-ocaml llvm_targets_AMDGPU llvm_targets_NVPTX
 sys-devel/clang llvm_targets_AMDGPU llvm_targets_NVPTX
 sys-devel/llvm llvm_targets_AMDGPU llvm_targets_NVPTX
 
-# James Le Cuirot <chewi@gentoo.org> (01 Aug 2016)
+# James Le Cuirot <chewi@gentoo.org> (2016-08-01)
 # Most users don't need a multilib JVM.
 dev-java/icedtea-bin -multilib
 
-# Michał Górny <mgorny@gentoo.org> (28 Jun 2014)
+# Michał Górny <mgorny@gentoo.org> (2014-06-28)
 # Packages that should be multilib by default.
 x11-drivers/nvidia-drivers abi_x86_32
 
-# Doug Goldstein <cardoe@gentoo.org> (29 Oct 2012)
+# Doug Goldstein <cardoe@gentoo.org> (2012-10-29)
 # Enable the native arch as the default qemu target
 app-emulation/qemu qemu_softmmu_targets_x86_64

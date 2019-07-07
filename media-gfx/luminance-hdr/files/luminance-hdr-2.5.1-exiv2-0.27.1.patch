@@ -1,0 +1,22 @@
+From 8c3f1571bfa7bb702228bb283e37e58c8b322d5b Mon Sep 17 00:00:00 2001
+From: Benitoite <kd6kxr@gmail.com>
+Date: Fri, 26 Apr 2019 18:07:52 -0700
+Subject: [PATCH] ExifOperations: include exiv2/exiv2.hpp
+
+Because type `AnyError` requires definition in the exiv2 namespace.
+---
+ src/Exif/ExifOperations.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/Exif/ExifOperations.cpp b/src/Exif/ExifOperations.cpp
+index 07ca742c..dd3d22a6 100644
+--- a/src/Exif/ExifOperations.cpp
++++ b/src/Exif/ExifOperations.cpp
+@@ -35,6 +35,7 @@
+ #include <boost/assign/list_of.hpp>
+ 
+ #include <exif.hpp>
++#include <exiv2/exiv2.hpp>
+ #include <image.hpp>
+ 
+ #include "Common/config.h"

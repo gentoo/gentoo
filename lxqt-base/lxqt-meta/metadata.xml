@@ -20,5 +20,7 @@
 		<flag name="ssh-askpass">Install <pkg>lxqt-base/lxqt-openssh-askpass</pkg> user password prompt tool</flag>
 		<flag name="sudo">Install <pkg>lxqt-base/lxqt-sudo</pkg></flag>
 		<flag name="terminal">Install <pkg>x11-terms/qterminal</pkg> package</flag>
+		<flag name="trash">Install <pkg>gnome-base/gvfs</pkg> to enable 'trash'
+			functionality in x11-misc/pcmanfm-qt</flag>
 	</use>
 </pkgmetadata>

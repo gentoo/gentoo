@@ -12,7 +12,7 @@ DESCRIPTION="Property editing framework with editor widget similar to Qt Designe
 
 LICENSE="LGPL-2+"
 SLOT="5/4"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="

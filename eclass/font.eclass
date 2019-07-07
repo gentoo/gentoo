@@ -52,13 +52,14 @@ FONT_CONF=( "" )
 # COPYRIGHT README{,.txt} NEWS AUTHORS BUGS ChangeLog FONTLOG.txt
 DOCS=${DOCS:-}
 
-IUSE="X"
-
-DEPEND="X? (
-		|| ( >=x11-apps/mkfontscale-1.2.0 x11-apps/mkfontdir )
-		media-fonts/encodings
+if [[ ${CATEGORY}/${PN} != media-fonts/encodings ]]; then
+	IUSE="X"
+	DEPEND="X? (
+			>=x11-apps/mkfontscale-1.2.0
+			media-fonts/encodings
 	)"
-RDEPEND=""
+	RDEPEND=""
+fi
 
 # @FUNCTION: font_xfont_config
 # @DESCRIPTION:

@@ -29,7 +29,7 @@ REQUIRED_USE="libcanberra? ( notification )
 	smime? ( pgp )"
 
 COMMONDEPEND="
-	dev-libs/nettle
+	dev-libs/nettle:=
 	net-mail/ytnef
 	sys-libs/zlib:=
 	x11-libs/cairo

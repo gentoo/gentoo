@@ -49,7 +49,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 # boost-1.52.0 is blacklisted, bug #461578, upstream #513, boost #7669
 RDEPEND="${PYTHON_DEPS}
 	>=dev-lang/orc-0.4.12
-	dev-libs/boost:0=[${PYTHON_USEDEP}]
+	dev-libs/boost:0=[python,${PYTHON_USEDEP}]
 	!<=dev-libs/boost-1.52.0-r6:0/1.52
 	dev-python/mako[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
@@ -120,6 +120,7 @@ src_prepare() {
 	sed -i '/qPixmapFromMimeSource/d' "${S}"/gr-qtgui/lib/spectrumdisplayform.ui || die
 	epatch "${WORKDIR}"/qt5-maint-00*.patch
 	epatch "${WORKDIR}"/codec2-next-00*.patch
+	epatch "${FILESDIR}"/${PN}-3.7.13.5-boost-1.70-asio.patch
 
 	use !alsa && sed -i 's#version.h#version-nonexistant.h#' cmake/Modules/FindALSA.cmake
 	use !jack && sed -i 's#jack.h#jack-nonexistant.h#' cmake/Modules/FindJack.cmake

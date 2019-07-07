@@ -1,7 +1,0 @@
-# Copyright 2005-2018 Gentoo Foundation.
-# Distributed under the terms of the GNU General Public License v2
-
-# Matt Turner <mattst88@gentoo.org> (19 Sep 2018)
-# kde is not keyworded
-kde
-

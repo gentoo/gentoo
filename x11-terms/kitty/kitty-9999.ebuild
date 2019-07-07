@@ -46,13 +46,14 @@ RDEPEND="
 	imagemagick? ( virtual/imagemagick-tools )
 "
 DEPEND="${RDEPEND}
+	media-libs/mesa
 	sys-libs/ncurses
 	virtual/pkgconfig
 "
 [[ ${PV} == *9999 ]] && DEPEND+=" >=dev-python/sphinx-1.7[${PYTHON_USEDEP}]"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-0.13.2-flags.patch
+	"${FILESDIR}"/${P}-flags.patch
 	"${FILESDIR}"/${PN}-0.11.0-svg-icon.patch
 )
 

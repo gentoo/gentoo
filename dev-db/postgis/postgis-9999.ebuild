@@ -1,8 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-POSTGRES_COMPAT=( 9.{3..6} 10 )
+POSTGRES_COMPAT=( 9.{4..6} {10..12} )
 POSTGRES_USEDEP="server"
 
 inherit autotools eutils postgres-multi subversion versionator
@@ -18,16 +18,18 @@ HOMEPAGE="http://postgis.net"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="doc gtk static-libs test"
+IUSE="address-standardizer doc gtk static-libs mapbox test topology"
 
 RDEPEND="
 	${POSTGRES_DEP}
 	dev-libs/json-c:=
 	dev-libs/libxml2:2
-	>=sci-libs/geos-3.4.2
+	>=sci-libs/geos-3.5.0
 	>=sci-libs/proj-4.6.0
-	>=sci-libs/gdal-1.10.0:=
+	>=sci-libs/gdal-1.10.0
+	address-standardizer? ( dev-libs/libpcre )
 	gtk? ( x11-libs/gtk+:2 )
+	mapbox? ( dev-libs/protobuf )
 "
 
 DEPEND="${RDEPEND}
@@ -46,8 +48,6 @@ REQUIRED_USE="test? ( doc )"
 # Needs a running psql instance, doesn't work out of the box
 RESTRICT="test"
 
-MAKEOPTS+=' -j1'
-
 src_prepare() {
 	source "${S}"/Version.config
 	export PGIS="${POSTGIS_MAJOR_VERSION}.${POSTGIS_MINOR_VERSION}"
@@ -57,6 +57,7 @@ src_prepare() {
 	# *FLAGS settings.
 	export QA_FLAGS_IGNORED="usr/lib(64)?/(rt)?postgis-${PGIS}\.so"
 
+	eapply "${FILESDIR}/${PN}-2.2.0-arflags.patch"
 	eapply_user
 
 	local AT_M4DIR="macros"
@@ -66,7 +67,13 @@ src_prepare() {
 
 src_configure() {
 	local myargs=""
-	use gtk && myargs+=" --with-gui"
+
+	use gtk                  && myargs+=" --with-gui"
+
+	use address-standardizer || myargs+=" --without-address-standardizer"
+	use mapbox               || myargs+=" --without-protobuf"
+	use topology             || myargs+=" --without-topology"
+
 	postgres-multi_foreach econf ${myargs}
 }
 

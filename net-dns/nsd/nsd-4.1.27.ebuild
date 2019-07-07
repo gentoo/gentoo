@@ -15,7 +15,7 @@ HOMEPAGE="http://www.nlnetlabs.nl/projects/nsd"
 SRC_URI="http://www.nlnetlabs.nl/downloads/${PN}/${MY_P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="bind8-stats dnstap ipv6 libevent minimal-responses mmap munin +nsec3 ratelimit root-server runtime-checks ssl systemd libressl"
 
 S="${WORKDIR}/${MY_P}"

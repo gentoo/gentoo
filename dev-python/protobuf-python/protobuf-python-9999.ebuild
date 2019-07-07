@@ -1,5 +1,7 @@
-# Copyright 2008-2019 Arfrever Frehtes Taifersar Arahesis and others
+# Copyright 2008-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# True Authors: Arfrever Frehtes Taifersar Arahesis and others
 
 EAPI="7"
 PYTHON_COMPAT=(python{2_7,3_5,3_6,3_7})
@@ -22,7 +24,7 @@ else
 fi
 
 LICENSE="BSD"
-SLOT="0/18"
+SLOT="0/20"
 KEYWORDS=""
 IUSE=""
 

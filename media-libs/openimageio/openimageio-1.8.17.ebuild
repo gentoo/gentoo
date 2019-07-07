@@ -2,8 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python{2_7,3_{5,6}} )
 
+PYTHON_COMPAT=( python{2_7,3_{5,6}} )
 inherit cmake-utils python-single-r1
 
 DESCRIPTION="A library for reading and writing images"
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/OpenImageIO/oiio/archive/Release-${PV}.tar.gz -> ${P
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~ppc64 ~x86"
 
 X86_CPU_FEATURES=(
 	sse2:sse2 sse3:sse3 ssse3:ssse3 sse4_1:sse4.1 sse4_2:sse4.2
@@ -20,7 +20,7 @@ X86_CPU_FEATURES=(
 )
 CPU_FEATURES=( ${X86_CPU_FEATURES[@]/#/cpu_flags_x86_} )
 
-IUSE="colorio doc ffmpeg field3d gif jpeg2k libressl opencv opengl ptex python qt5 raw ssl +truetype ${CPU_FEATURES[@]%:*}"
+IUSE="color-management doc ffmpeg field3d gif jpeg2k libressl opencv opengl ptex python qt5 raw ssl +truetype ${CPU_FEATURES[@]%:*}"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RESTRICT="test" #431412
@@ -34,7 +34,7 @@ RDEPEND=">=dev-libs/boost-1.62:=
 	media-libs/tiff:0=
 	sys-libs/zlib:=
 	virtual/jpeg:0
-	colorio? ( media-libs/opencolorio:= )
+	color-management? ( media-libs/opencolorio:= )
 	ffmpeg? ( media-video/ffmpeg:= )
 	field3d? ( media-libs/Field3D:= )
 	gif? ( media-libs/giflib:0= )
@@ -98,7 +98,7 @@ src_configure() {
 		-DUSE_LIBRAW=$(usex raw)
 		-DUSE_NUKE=NO # Missing in Gentoo
 		-DUSE_NUKE=OFF
-		-DUSE_OCIO=$(usex colorio)
+		-DUSE_OCIO=$(usex color-management)
 		-DUSE_OPENCV=$(usex opencv)
 		-DUSE_OPENGL=$(usex opengl)
 		-DUSE_OPENJPEG=$(usex jpeg2k)

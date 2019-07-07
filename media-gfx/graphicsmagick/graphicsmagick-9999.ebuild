@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 inherit autotools toolchain-funcs
 
 MY_P=${P/graphicsm/GraphicsM}
@@ -20,7 +20,7 @@ else
 fi
 
 IUSE="bzip2 cxx debug fpx imagemagick jbig jpeg jpeg2k lcms lzma modules openmp
-	perl png postscript q16 q32 static-libs svg test threads tiff truetype
+	perl png postscript q16 q32 static-libs svg threads tiff truetype
 	webp wmf X zlib"
 
 RDEPEND="dev-libs/libltdl:0
@@ -33,7 +33,7 @@ RDEPEND="dev-libs/libltdl:0
 	lcms? ( media-libs/lcms:2 )
 	lzma? ( app-arch/xz-utils )
 	perl? ( dev-lang/perl )
-	png? ( media-libs/libpng:0 )
+	png? ( media-libs/libpng:0= )
 	postscript? ( app-text/ghostscript-gpl )
 	svg? ( dev-libs/libxml2 )
 	tiff? ( media-libs/tiff:0 )
@@ -48,9 +48,7 @@ RDEPEND="dev-libs/libltdl:0
 		x11-libs/libXext
 		)
 	zlib? ( sys-libs/zlib )"
-# corefonts are required because needed arial font (bug #588398).
-DEPEND="${RDEPEND}
-	test? ( media-fonts/corefonts )"
+DEPEND="${RDEPEND}"
 
 S=${WORKDIR}/${MY_P}
 
@@ -92,7 +90,6 @@ src_configure() {
 		$(use_with bzip2 bzlib)
 		$(use_with postscript dps)
 		$(use_with fpx)
-		--without-gslib
 		$(use_with jbig)
 		$(use_with webp)
 		$(use_with jpeg)

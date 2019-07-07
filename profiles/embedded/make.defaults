@@ -40,5 +40,6 @@ USE_EXPAND_HIDDEN="USERLAND KERNEL ELIBC ABI_MIPS ABI_PPC ABI_S390 ABI_X86 CPU_F
 # and not by user configuration files.
 PROFILE_ONLY_VARIABLES="IUSE_IMPLICIT USERLAND USE_EXPAND_IMPLICIT USE_EXPAND_UNPREFIXED USE_EXPAND_VALUES_ARCH USE_EXPAND_VALUES_ELIBC USE_EXPAND_VALUES_KERNEL USE_EXPAND_VALUES_USERLAND"
 
-# Accept any license except those in the EULA license group.
-ACCEPT_LICENSE="* -@EULA"
+# Accept only licenses in the FREE license group, i.e., with
+# the freedom to use, share, modify and share modifications
+ACCEPT_LICENSE="-* @FREE"

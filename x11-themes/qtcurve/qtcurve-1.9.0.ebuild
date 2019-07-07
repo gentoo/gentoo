@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -71,6 +71,7 @@ DOCS=( AUTHORS ChangeLog.md README.md TODO.md )
 PATCHES=(
 	"${FILESDIR}/${PN}-1.9.0-build_testing.patch"
 	"${FILESDIR}/${PN}-1.9.0-no-X-buildfix.patch"
+	"${FILESDIR}/${PN}-1.9.0-gcc9.patch"
 )
 
 src_configure() {

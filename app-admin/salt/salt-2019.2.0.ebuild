@@ -7,7 +7,8 @@ PYTHON_COMPAT=( python2_7 python3_6 )
 inherit eutils systemd distutils-r1
 
 DESCRIPTION="Salt is a remote execution and configuration manager"
-HOMEPAGE="http://saltstack.org/"
+HOMEPAGE="https://www.saltstack.com/resources/community/
+	https://github.com/saltstack"
 
 if [[ ${PV} == 9999* ]]; then
 	inherit git-r3
@@ -55,12 +56,7 @@ RDEPEND="sys-apps/pciutils
 	)
 	cherrypy? ( >=dev-python/cherrypy-3.2.2[${PYTHON_USEDEP}] )
 	mongodb? ( dev-python/pymongo[${PYTHON_USEDEP}] )
-	portage? (
-		|| (
-			sys-apps/portage[${PYTHON_USEDEP}]
-			sys-apps/portage-mgorny[${PYTHON_USEDEP}]
-		)
-	)
+	portage? ( sys-apps/portage[${PYTHON_USEDEP}] )
 	keyring? ( dev-python/keyring[${PYTHON_USEDEP}] )
 	mysql? ( dev-python/mysql-python[$(python_gen_usedep 'python2*')] )
 	redis? ( dev-python/redis-py[${PYTHON_USEDEP}] )

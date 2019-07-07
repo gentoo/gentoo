@@ -1,0 +1,11 @@
+--- a/PSL/SENSORS/AD9833.py
++++ b/PSL/SENSORS/AD9833.py
+@@ -3,7 +3,7 @@
+ 
+ 
+ class AD9833:
+-    if sys.version.major == 3:
++    if sys.version_info.major == 3:
+         DDS_MAX_FREQ = 0xFFFFFFF - 1  # 24 bit resolution
+     else:
+         DDS_MAX_FREQ = eval("0xFFFFFFFL-1")  # 24 bit resolution

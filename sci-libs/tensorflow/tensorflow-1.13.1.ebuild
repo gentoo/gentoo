@@ -289,7 +289,7 @@ src_install() {
 
 		# libtensorflow_framework.so is in /usr/lib already
 		python_export PYTHON_SITEDIR PYTHON_SCRIPTDIR
-		rm -f "${D}/${PYTHON_SITEDIR}/${PN}/lib${PN}_framework.so" || die
+		rm -f "${D}/${PYTHON_SITEDIR}"/${PN}/lib${PN}_framework.so* || die
 		python_optimize
 	}
 

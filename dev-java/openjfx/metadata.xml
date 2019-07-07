@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>gyakovlev@gentoo.org</email>
+		<name>Georgy Yakovlev</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>java@gentoo.org</email>
+	</maintainer>
+	<longdescription lang="en">
+		OpenJFX is an open source, next generation client application platform for desktop,
+		mobile and embedded systems built on Java.
+	</longdescription>
+	<use>
+		<flag name="media">Compile media module, based on gstreamer-minimal (does not pull gstreamer)</flag>
+		<flag name="source">Install JavaFX sources</flag>
+	</use>
+</pkgmetadata>

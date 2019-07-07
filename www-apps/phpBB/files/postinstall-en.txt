@@ -1,22 +1,14 @@
-You are almost done!
+IMPORTANT! Ensure that the group assigned to group-writeable paths
+such as config.php (see above) is one your PHP user is a member
+of. This may or may not be your web server group, ${VHOST_SERVER_GID}.
+If not, adjust your PHP user and/or reinstall the application with
+webapp-config while specifying an appropriate group with -g. Then...
 
-  0. Setup a database (e.g. MySQL: see 
-                       http://www.gentoo.org/doc/en/mysql-howto.xml)
+1. Set up a database.
+2. Continue the installation by visiting the URL in your browser.
+3. Delete the "install" folder as follows:
 
-  1. Login on
+   # cd ${MY_INSTALLDIR}
+   # rm -rf install
 
-     http://${VHOST_HOSTNAME}/${VHOST_APPDIR}
-
-     and finish the installation.
-
-  2. Move into the directory where you installed phpBB and remove
-     the "install" folder:
-
-     # cd ${MY_INSTALLDIR}
-     # rm -rf install
-
-  3. You can now launch your browser and point it to your phpBB site:
-
-     http://${VHOST_HOSTNAME}/${VHOST_APPDIR} 
-
-  Enjoy phpBB!
+4. phpBB is now ready to use. Enjoy!

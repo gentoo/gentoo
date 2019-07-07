@@ -9,7 +9,7 @@ if [[ ${PV} == "99999999" ]] ; then
 else
 	SRC_URI="mirror://gentoo/${P}.tar.xz
 		https://dev.gentoo.org/~slyfox/distfiles/${P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sh ~sparc ~x86 ~x86-fbsd"
 fi
 
 DESCRIPTION="Gentoo Cross-toolchain generator"
@@ -20,10 +20,7 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
-	|| (
-		>=sys-apps/portage-2.1
-		sys-apps/portage-mgorny
-	)
+	>=sys-apps/portage-2.1
 	>=app-portage/portage-utils-0.55
 	app-shells/bash
 	sys-apps/gentoo-functions

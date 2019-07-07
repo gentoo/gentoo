@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
-inherit flag-o-matic python-single-r1 toolchain-funcs
+inherit flag-o-matic prefix python-single-r1 toolchain-funcs
 
 MY_PV="$(ver_rs 1- _)"
 
@@ -83,6 +83,7 @@ src_prepare() {
 }
 
 src_configure() {
+	hprefixify engine/Jambase
 	if use python; then
 		# replace versions by user-selected one (TODO: fix this when slot-op
 		# deps are available to always match the best version available)

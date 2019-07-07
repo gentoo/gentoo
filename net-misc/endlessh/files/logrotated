@@ -1,7 +1,0 @@
-/var/log/endlessh.log /var/log/endlessh.error.log {
-	missingok
-	notifempty
-	postrotate
-		/etc/init.d/endlessh -q reload
-	endscript
-}

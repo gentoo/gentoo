@@ -9,11 +9,11 @@ inherit distutils-r1
 
 DESCRIPTION="Official Hetzner Cloud python library"
 HOMEPAGE="https://github.com/hetznercloud/hcloud-python"
-SRC_URI="https://github.com/hetznercloud/${PN}/archive/v1.2.1.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/hetznercloud/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="doc examples"
 
 COMMON_DEPEND="dev-python/python-dateutil[${PYTHON_USEDEP}]

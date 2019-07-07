@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ ARCHIVE_URI="https://github.com/ksonnet/ksonnet/archive/v${PV}.tar.gz -> ${P}.ta
 KEYWORDS="~amd64"
 
 DESCRIPTION="CLI-supported framework for extensible Kubernetes configurations"
-HOMEPAGE="https://github.com/ksonnet/ksonnet http://ksonnet.heptio.com/"
+HOMEPAGE="https://github.com/ksonnet/ksonnet https://ksonnet.io/"
 SRC_URI="${ARCHIVE_URI}"
 
 LICENSE="Apache-2.0"

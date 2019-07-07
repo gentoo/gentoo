@@ -33,7 +33,7 @@ python_prepare_all() {
 	sed -i '/enum-compat/d' setup.py || die
 
 	if use doc; then
-		local PYTHON_DOC_ATOM=$(best_version --host-root dev-python/python-docs:2.7)
+		local PYTHON_DOC_ATOM=$(best_version -b dev-python/python-docs:2.7)
 		local PYTHON_DOC_VERSION="${PYTHON_DOC_ATOM#dev-python/python-docs-}"
 		local PYTHON_DOC="/usr/share/doc/python-docs-${PYTHON_DOC_VERSION}/html"
 		local PYTHON_DOC_INVENTORY="${PYTHON_DOC}/objects.inv"
@@ -66,6 +66,10 @@ python_test() {
 
 python_install_all() {
 	use doc && local HTML_DOCS=( doc/_build/html/. )
-	use examples && local EXAMPLES=( examples/. )
+	if use examples; then
+		docompress -x "/usr/share/doc/${PF}/examples"
+		docinto examples
+		dodoc -r examples/.
+	fi
 	distutils-r1_python_install_all
 }

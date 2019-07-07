@@ -1,0 +1,101 @@
+From 41d954dec0669c9a85730c0bde7df7ba7a0ff43e Mon Sep 17 00:00:00 2001
+From: Jose Dapena Paz <jose.dapena@lge.com>
+Date: Thu, 06 Jun 2019 15:30:49 +0000
+Subject: [PATCH] Fix AutocompleteMatch move constructor/assign operator noexcept
+
+For AutocompleteMatch to declare noexcept them, all the contained
+properties need to be noexcept too. This is required at least
+for SuggestionAnswer, because base::string16 will make default
+calculated signature of the move operator noexcept(false).
+
+To avoid this issue we explicitely declare them on SuggestionAnswer,
+and its member classes TextField and ImageLine.
+
+Bug: 819294
+Change-Id: I8714f2c6352a3292bdebdc3aed9790270e49c580
+Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/1554669
+Reviewed-by: Kevin Bailey <krb@chromium.org>
+Commit-Queue: José Dapena Paz <jose.dapena@lge.com>
+Cr-Commit-Position: refs/heads/master@{#666714}
+---
+
+diff --git a/components/omnibox/browser/suggestion_answer.cc b/components/omnibox/browser/suggestion_answer.cc
+index 151e55f..a0c9049 100644
+--- a/components/omnibox/browser/suggestion_answer.cc
++++ b/components/omnibox/browser/suggestion_answer.cc
+@@ -55,6 +55,12 @@
+ 
+ SuggestionAnswer::TextField::TextField() = default;
+ SuggestionAnswer::TextField::~TextField() = default;
++SuggestionAnswer::TextField::TextField(const TextField&) = default;
++SuggestionAnswer::TextField::TextField(TextField&&) noexcept = default;
++SuggestionAnswer::TextField& SuggestionAnswer::TextField::operator=(
++    const TextField&) = default;
++SuggestionAnswer::TextField& SuggestionAnswer::TextField::operator=(
++    TextField&&) noexcept = default;
+ 
+ // static
+ bool SuggestionAnswer::TextField::ParseTextField(const base::Value& field_json,
+@@ -93,9 +99,12 @@
+ SuggestionAnswer::ImageLine::ImageLine()
+     : num_text_lines_(1) {}
+ SuggestionAnswer::ImageLine::ImageLine(const ImageLine& line) = default;
++SuggestionAnswer::ImageLine::ImageLine(ImageLine&&) noexcept = default;
+ 
+ SuggestionAnswer::ImageLine& SuggestionAnswer::ImageLine::operator=(
+     const ImageLine& line) = default;
++SuggestionAnswer::ImageLine& SuggestionAnswer::ImageLine::operator=(
++    ImageLine&&) noexcept = default;
+ 
+ SuggestionAnswer::ImageLine::~ImageLine() {}
+ 
+@@ -251,9 +260,14 @@
+ 
+ SuggestionAnswer::SuggestionAnswer(const SuggestionAnswer& answer) = default;
+ 
++SuggestionAnswer::SuggestionAnswer(SuggestionAnswer&&) noexcept = default;
++
+ SuggestionAnswer& SuggestionAnswer::operator=(const SuggestionAnswer& answer) =
+     default;
+ 
++SuggestionAnswer& SuggestionAnswer::operator=(SuggestionAnswer&&) noexcept =
++    default;
++
+ SuggestionAnswer::~SuggestionAnswer() = default;
+ 
+ // static
+diff --git a/components/omnibox/browser/suggestion_answer.h b/components/omnibox/browser/suggestion_answer.h
+index 31be937..2840ace 100644
+--- a/components/omnibox/browser/suggestion_answer.h
++++ b/components/omnibox/browser/suggestion_answer.h
+@@ -125,6 +125,10 @@
+    public:
+     TextField();
+     ~TextField();
++    TextField(const TextField&);
++    TextField(TextField&&) noexcept;
++    TextField& operator=(const TextField&);
++    TextField& operator=(TextField&&) noexcept;
+ 
+     // Parses |field_json| dictionary and populates |text_field| with the
+     // contents.  If any of the required elements is missing, returns false and
+@@ -162,7 +166,9 @@
+    public:
+     ImageLine();
+     explicit ImageLine(const ImageLine& line);
++    ImageLine(ImageLine&&) noexcept;
+     ImageLine& operator=(const ImageLine& line);
++    ImageLine& operator=(ImageLine&&) noexcept;
+     ~ImageLine();
+ 
+     // Parses dictionary |line_json| and populates |image_line| with the
+@@ -213,7 +219,9 @@
+ 
+   SuggestionAnswer();
+   SuggestionAnswer(const SuggestionAnswer& answer);
++  SuggestionAnswer(SuggestionAnswer&&) noexcept;
+   SuggestionAnswer& operator=(const SuggestionAnswer& answer);
++  SuggestionAnswer& operator=(SuggestionAnswer&&) noexcept;
+   ~SuggestionAnswer();
+ 
+   // Parses dictionary |answer_json| and fills a SuggestionAnswer containing the

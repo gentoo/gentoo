@@ -13,7 +13,7 @@ DESCRIPTION="A library for handling unicode emoji and carrier's emoji"
 HOMEPAGE="https://github.com/lambdalisue/e4u"
 SRC_URI="https://github.com/lambdalisue/e4u/archive/${MY_PV}.tar.gz -> ${PN}-${MY_PV}.tar.gz"
 
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 LICENSE="BSD"
 SLOT="0"
 

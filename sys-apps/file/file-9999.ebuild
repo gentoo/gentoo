@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 PYTHON_COMPAT=( python2_7 python3_{5,6,7} pypy )
 DISTUTILS_OPTIONAL=1
@@ -123,5 +123,5 @@ multilib_src_install_all() {
 		cd python || die
 		distutils-r1_src_install
 	fi
-	find "${ED}" -name "*.la" -delete || die
+	find "${ED}" -type f -name "*.la" -delete || die
 }

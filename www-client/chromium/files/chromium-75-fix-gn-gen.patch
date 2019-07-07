@@ -1,0 +1,27 @@
+Fix 'gn gen' when gn is built in debug config
+
+Fixes this DCHECK:
+https://cs.chromium.org/chromium/gn/tools/gn/source_file.cc?q=source_file.cc&sq=package:chromium&dr&l=21
+
+BUG=None
+
+Change-Id: Ide60a650c800d4a0981b4f28cf0427fa91616464
+Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/1613888
+Reviewed-by: Brian Sheedy <bsheedy@chromium.org>
+Commit-Queue: Brian Sheedy <bsheedy@chromium.org>
+Commit-Queue: Thomas Anderson <thomasanderson@chromium.org>
+Auto-Submit: Thomas Anderson <thomasanderson@chromium.org>
+Cr-Commit-Position: refs/heads/master@{#660103}
+diff --git a/tools/perf/contrib/vr_benchmarks/BUILD.gn b/tools/perf/contrib/vr_benchmarks/BUILD.gn
+index 758057a..51644e0 100644
+--- a/tools/perf/contrib/vr_benchmarks/BUILD.gn
++++ b/tools/perf/contrib/vr_benchmarks/BUILD.gn
+@@ -72,7 +72,7 @@
+     "//chrome/browser/resources/vr/assets/vr_assets_component_files.json",
+   ]
+   outputs = [
+-    "$target_gen_dir/vr_assets_profile/",
++    "$target_gen_dir/vr_assets_profile",
+   ]
+   args = [
+     "--output",

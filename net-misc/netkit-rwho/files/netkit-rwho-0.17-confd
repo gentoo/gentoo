@@ -1,4 +1,0 @@
-# /etc/conf.d/rwhod: config file for /etc/init.d/rwhod
-
-# rwhod arguments
-RWHOD_OPTIONS="-b"

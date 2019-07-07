@@ -278,33 +278,33 @@ src_configure() {
 src_install() {
 	cmake-utils_src_install
 
-	# remove wrapper binaries and put the actual executable in place
-	for i in {paraview-config,pvserver,pvdataserver,pvrenderserver,pvbatch,pvpython,paraview}; do
-		if [ -f "${ED}"/usr/lib/"$i" ]; then
-			mv "${ED}"/usr/lib/"$i" "${ED}"/usr/bin/"$i" || die
-		fi
-	done
+		# remove wrapper binaries and put the actual executable in place
+		for i in {paraview-config,pvserver,pvdataserver,pvrenderserver,pvbatch,pvpython,paraview}; do
+			if [ -f "${ED}"/usr/lib/"$i" ]; then
+				mv "${ED}"/usr/lib/"$i" "${ED}"/usr/bin/"$i" || die
+			fi
+		done
 
-	# install libraries into correct directory respecting get_libdir:
-	mv "${ED}"/usr/lib "${ED}"/usr/lib_tmp || die
-	mkdir -p "${ED}"/usr/"${PVLIBDIR}" || die
-	mv "${ED}"/usr/lib_tmp/* "${ED}"/usr/"${PVLIBDIR}" || die
-	rmdir "${ED}"/usr/lib_tmp || die
+		# install libraries into correct directory respecting get_libdir:
+		mv "${ED}"/usr/lib "${ED}"/usr/lib_tmp || die
+		mkdir -p "${ED}"/usr/"${PVLIBDIR}" || die
+		mv "${ED}"/usr/lib_tmp/* "${ED}"/usr/"${PVLIBDIR}" || die
+		rmdir "${ED}"/usr/lib_tmp || die
 
-	# set up the environment
-	echo "LDPATH=${EPREFIX}/usr/${PVLIBDIR}" > "${T}"/40${PN} || die
-	doenvd "${T}"/40${PN}
+		# set up the environment
+		echo "LDPATH=${EPREFIX}/usr/${PVLIBDIR}" > "${T}"/40${PN} || die
+		doenvd "${T}"/40${PN}
 
-	newicon "${S}"/Applications/ParaView/pvIcon-32x32.png paraview.png
-	make_desktop_entry paraview "Paraview" paraview
+		newicon "${S}"/Applications/ParaView/pvIcon-32x32.png paraview.png
+		make_desktop_entry paraview "Paraview" paraview
 
-	use python && python_optimize "${D}"/usr/$(get_libdir)/${PN}-${MAJOR_PV}
-}
+		use python && python_optimize "${D}"/usr/$(get_libdir)/${PN}-${MAJOR_PV}
+	}
 
-pkg_postinst() {
-	gnome2_icon_cache_update
-}
+	pkg_postinst() {
+		gnome2_icon_cache_update
+	}
 
-pkg_postrm() {
-	gnome2_icon_cache_update
-}
+	pkg_postrm() {
+		gnome2_icon_cache_update
+	}

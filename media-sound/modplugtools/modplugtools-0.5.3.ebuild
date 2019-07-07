@@ -9,7 +9,7 @@ SRC_URI="mirror://sourceforge/modplug-xmms/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND=">=media-libs/libao-0.8.0

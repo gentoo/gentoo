@@ -1,6 +1,0 @@
-
-# Connection string for the configuration database (usually a unix socket)
-DATABASE="unix:/var/run/openvswitch/db.sock"
-
-# Additional options
-OPTIONS="--mlockall"

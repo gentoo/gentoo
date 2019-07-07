@@ -19,6 +19,7 @@ games-action/beathazardultra
 games-action/brutal-legend
 games-action/descent3
 games-action/descent3-demo
+games-action/guacamelee
 games-action/heretic2-demo
 games-action/hotline-miami
 games-action/intrusion2

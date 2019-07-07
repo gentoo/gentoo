@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python{2_7,3_{5,6,7}} )
 inherit kde5 python-any-r1
 
 DESCRIPTION="Library for extracting file metadata"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm arm64 x86"
 IUSE="epub exif ffmpeg kernel_linux libav office pdf taglib"
 
 BDEPEND="
@@ -32,6 +32,8 @@ DEPEND="${RDEPEND}
 "
 
 PATCHES=( "${FILESDIR}/${P}-non-speex-files-crash.patch" )
+
+RESTRICT+=" test"
 
 pkg_setup() {
 	use test && python-any-r1_pkg_setup

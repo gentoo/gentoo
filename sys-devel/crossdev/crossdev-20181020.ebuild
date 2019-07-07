@@ -20,10 +20,7 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
-	|| (
-		>=sys-apps/portage-2.1
-		sys-apps/portage-mgorny
-	)
+	>=sys-apps/portage-2.1
 	>=app-portage/portage-utils-0.55
 	app-shells/bash
 	sys-apps/gentoo-functions

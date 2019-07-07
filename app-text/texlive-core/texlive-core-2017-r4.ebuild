@@ -369,9 +369,4 @@ pkg_postinst() {
 	ewarn "Please make sure you have read:"
 	ewarn "https://wiki.gentoo.org/wiki/Project:TeX/Tex_Live_Migration_Guide"
 	ewarn "in order to avoid possible problems"
-	elog
-	elog "TeXLive has been split in various ebuilds. If you are missing a"
-	elog "package to process your TeX documents, you can install"
-	elog "dev-tex/texmfind to easily search for them."
-	elog
 }

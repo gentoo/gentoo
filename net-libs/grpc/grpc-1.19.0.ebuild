@@ -14,14 +14,14 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="examples doc systemtap static-libs"
+IUSE="examples doc perftools systemtap static-libs"
 
 RDEPEND="
 	>=dev-libs/openssl-1.0.2:0=[-bindist]
 	dev-libs/protobuf:=
-	dev-util/google-perftools
 	net-dns/c-ares:=
 	sys-libs/zlib:=
+	perftools? ( dev-util/google-perftools:= )
 	systemtap? ( dev-util/systemtap )
 "
 
@@ -66,7 +66,8 @@ src_compile() {
 		HOST_LD="$(tc-getBUILD_CC)" \
 		HOST_LDXX="$(tc-getBUILD_CXX)" \
 		HOST_AR="$(tc-getBUILD_AR)" \
-		HAS_SYSTEMTAP="$(usex systemtap true false)"
+		HAS_SYSTEMTAP="$(usex systemtap true false)" \
+		HAS_SYSTEM_PERFTOOLS="$(usex perftools true false)"
 }
 
 src_install() {

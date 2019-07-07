@@ -1,5 +1,7 @@
-# Copyright 2008-2019 Arfrever Frehtes Taifersar Arahesis and others
+# Copyright 2008-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# True Authors: Arfrever Frehtes Taifersar Arahesis and others
 
 EAPI="7"
 
@@ -22,7 +24,7 @@ fi
 
 LICENSE="BSD"
 SLOT="0/18"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
+KEYWORDS="alpha amd64 ~arm ~arm64 hppa ia64 ~mips ppc ppc64 s390 ~sh sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
 IUSE="emacs examples static-libs test zlib"
 RESTRICT="!test? ( test )"
 
@@ -47,6 +49,12 @@ src_prepare() {
 
 src_configure() {
 	append-cppflags -DGOOGLE_PROTOBUF_NO_RTTI
+
+	if tc-ld-is-gold; then
+		# https://sourceware.org/bugzilla/show_bug.cgi?id=24527
+		tc-ld-disable-gold
+	fi
+
 	multilib-minimal_src_configure
 }
 

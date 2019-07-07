@@ -8,10 +8,8 @@ inherit eutils libtool flag-o-matic gnuconfig multilib versionator
 DESCRIPTION="Tools necessary to build programs"
 HOMEPAGE="https://sourceware.org/binutils/"
 LICENSE="GPL-3+"
-# USE="+cxx" is a transitional flag until llvm migrates to new flags:
-#    bug #677888
-IUSE="+cxx default-gold doc +gold multitarget +nls +plugins static-libs test"
-REQUIRED_USE="cxx? ( gold plugins ) default-gold? ( gold )"
+IUSE="default-gold doc +gold multitarget +nls +plugins static-libs test"
+REQUIRED_USE="default-gold? ( gold )"
 
 # Variables that can be set here:
 # PATCH_VER          - the patchset version

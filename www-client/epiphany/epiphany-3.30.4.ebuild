@@ -66,6 +66,11 @@ src_test() {
 pkg_postinst() {
 	xdg_pkg_postinst
 	gnome2_schemas_update
+
+	if ! has_version net-libs/webkit-gtk[jpeg2k]; then
+		ewarn "Your net-libs/webkit-gtk is built without USE=jpeg2k."
+		ewarn "Various image galleries/managers may be broken."
+	fi
 }
 
 pkg_postrm() {
