@@ -4,17 +4,15 @@
 EAPI=7
 
 PYTHON_COMPAT=( python{2_7,3_{5,6,7}} )
-EGIT_REPO_URI="https://github.com/dbcli/${PN}.git"
-inherit distutils-r1 git-r3
+inherit distutils-r1
 
 DESCRIPTION="Python helpers for common CLI tasks"
 HOMEPAGE="http://cli-helpers.rtfd.io/"
-SRC_URI=""
+SRC_URI="https://github.com/dbcli/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS=""
-IUSE=""
+KEYWORDS="~amd64 ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
