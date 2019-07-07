@@ -1,0 +1,185 @@
+--- a/src/speakereditor.cc      2004-06-22 16:33:48.000000000 -0500
++++ b/src/speakereditor.cc      2016-02-03 13:24:51.126527093 -0600
+@@ -147,27 +147,27 @@
+   m_ScrolledWindow.set_shadow_type(Gtk::SHADOW_ETCHED_IN);
+   m_ScrolledWindow.set_policy(Gtk::POLICY_AUTOMATIC, Gtk::POLICY_AUTOMATIC);
+ 
+-  m_IdStringEntry.signal_changed().connect(bind<int>(mem_fun(*this, &Speaker_ListStore::on_entry_changed), 0));
+-  m_QtsEntry.signal_changed().connect(bind<int>(mem_fun(*this, &Speaker_ListStore::on_entry_changed), 1));
+-  m_FsEntry.signal_changed().connect(bind<int>(mem_fun(*this, &Speaker_ListStore::on_entry_changed), 2));
+-  m_VasEntry.signal_changed().connect(bind<int>(mem_fun(*this, &Speaker_ListStore::on_entry_changed), 3));
+-  m_RdcEntry.signal_changed().connect(bind<int>(mem_fun(*this, &Speaker_ListStore::on_entry_changed), 4));
+-  m_LvcEntry.signal_changed().connect(bind<int>(mem_fun(*this, &Speaker_ListStore::on_entry_changed), 5));
+-  m_QmsEntry.signal_changed().connect(bind<int>(mem_fun(*this, &Speaker_ListStore::on_entry_changed), 6));
+-  m_QesEntry.signal_changed().connect(bind<int>(mem_fun(*this, &Speaker_ListStore::on_entry_changed), 7));
+-  m_ImpEntry.signal_changed().connect(bind<int>(mem_fun(*this, &Speaker_ListStore::on_entry_changed), 8));
+-  m_SensEntry.signal_changed().connect(bind<int>(mem_fun(*this, &Speaker_ListStore::on_entry_changed), 9));
+-  m_MmdEntry.signal_changed().connect(bind<int>(mem_fun(*this, &Speaker_ListStore::on_entry_changed), 13));
+-  m_AdEntry.signal_changed().connect(bind<int>(mem_fun(*this, &Speaker_ListStore::on_entry_changed), 14));
+-  m_BlEntry.signal_changed().connect(bind<int>(mem_fun(*this, &Speaker_ListStore::on_entry_changed), 15));
+-  m_RmsEntry.signal_changed().connect(bind<int>(mem_fun(*this, &Speaker_ListStore::on_entry_changed), 16));
+-  m_CmsEntry.signal_changed().connect(bind<int>(mem_fun(*this, &Speaker_ListStore::on_entry_changed), 17));
+-  m_FreqRespFileEntry.signal_changed().connect(bind<int>(mem_fun(*this, &Speaker_ListStore::on_entry_changed), 18));
++  m_IdStringEntry.signal_changed().connect(sigc::bind<int>(mem_fun(*this, &Speaker_ListStore::on_entry_changed), 0));
++  m_QtsEntry.signal_changed().connect(sigc::bind<int>(mem_fun(*this, &Speaker_ListStore::on_entry_changed), 1));
++  m_FsEntry.signal_changed().connect(sigc::bind<int>(mem_fun(*this, &Speaker_ListStore::on_entry_changed), 2));
++  m_VasEntry.signal_changed().connect(sigc::bind<int>(mem_fun(*this, &Speaker_ListStore::on_entry_changed), 3));
++  m_RdcEntry.signal_changed().connect(sigc::bind<int>(mem_fun(*this, &Speaker_ListStore::on_entry_changed), 4));
++  m_LvcEntry.signal_changed().connect(sigc::bind<int>(mem_fun(*this, &Speaker_ListStore::on_entry_changed), 5));
++  m_QmsEntry.signal_changed().connect(sigc::bind<int>(mem_fun(*this, &Speaker_ListStore::on_entry_changed), 6));
++  m_QesEntry.signal_changed().connect(sigc::bind<int>(mem_fun(*this, &Speaker_ListStore::on_entry_changed), 7));
++  m_ImpEntry.signal_changed().connect(sigc::bind<int>(mem_fun(*this, &Speaker_ListStore::on_entry_changed), 8));
++  m_SensEntry.signal_changed().connect(sigc::bind<int>(mem_fun(*this, &Speaker_ListStore::on_entry_changed), 9));
++  m_MmdEntry.signal_changed().connect(sigc::bind<int>(mem_fun(*this, &Speaker_ListStore::on_entry_changed), 13));
++  m_AdEntry.signal_changed().connect(sigc::bind<int>(mem_fun(*this, &Speaker_ListStore::on_entry_changed), 14));
++  m_BlEntry.signal_changed().connect(sigc::bind<int>(mem_fun(*this, &Speaker_ListStore::on_entry_changed), 15));
++  m_RmsEntry.signal_changed().connect(sigc::bind<int>(mem_fun(*this, &Speaker_ListStore::on_entry_changed), 16));
++  m_CmsEntry.signal_changed().connect(sigc::bind<int>(mem_fun(*this, &Speaker_ListStore::on_entry_changed), 17));
++  m_FreqRespFileEntry.signal_changed().connect(sigc::bind<int>(mem_fun(*this, &Speaker_ListStore::on_entry_changed), 18));
+   m_FreqRespFileEntry.set_sensitive(false);
+   
+-  m_BassCheckButton.signal_toggled().connect(bind<int>(mem_fun(*this, &Speaker_ListStore::on_entry_changed), 10));
+-  m_MidrangeCheckButton.signal_toggled().connect(bind<int>(mem_fun(*this, &Speaker_ListStore::on_entry_changed), 11));
+-  m_TweeterCheckButton.signal_toggled().connect(bind<int>(mem_fun(*this, &Speaker_ListStore::on_entry_changed), 12));
++  m_BassCheckButton.signal_toggled().connect(sigc::bind<int>(mem_fun(*this, &Speaker_ListStore::on_entry_changed), 10));
++  m_MidrangeCheckButton.signal_toggled().connect(sigc::bind<int>(mem_fun(*this, &Speaker_ListStore::on_entry_changed), 11));
++  m_TweeterCheckButton.signal_toggled().connect(sigc::bind<int>(mem_fun(*this, &Speaker_ListStore::on_entry_changed), 12));
+ 
+   m_EditFreqRespButton.signal_clicked().connect( mem_fun(*this, &Speaker_ListStore::on_edit_freq_resp) );
+   m_BrowseFreqRespButton.signal_clicked().connect( mem_fun(*this, &Speaker_ListStore::on_browse_freq_resp) );
+--- a/src/boxeditor.cc     2004-06-22 16:33:48.000000000 -0500
++++ b/src/boxeditor.cc     2016-02-03 13:25:24.649550992 -0600
+@@ -94,16 +94,16 @@
+   m_bass_speaker_combo.get_entry()->set_editable(false);
+   m_bass_speaker_combo.get_entry()->signal_changed().connect(mem_fun(*this, &BoxEditor::on_combo_entry_changed));
+ 
+-  m_id_string_entry.signal_changed().connect(bind<int>(mem_fun(*this, &BoxEditor::on_box_data_changed), ID_STRING_ENTRY_CHANGED));
+-  m_vb1_entry.signal_changed().connect(bind<int>(mem_fun(*this, &BoxEditor::on_box_data_changed), VB1_ENTRY_CHANGED));
+-  m_fb1_entry.signal_changed().connect(bind<int>(mem_fun(*this, &BoxEditor::on_box_data_changed), FB1_ENTRY_CHANGED));
++  m_id_string_entry.signal_changed().connect(sigc::bind<int>(mem_fun(*this, &BoxEditor::on_box_data_changed), ID_STRING_ENTRY_CHANGED));
++  m_vb1_entry.signal_changed().connect(sigc::bind<int>(mem_fun(*this, &BoxEditor::on_box_data_changed), VB1_ENTRY_CHANGED));
++  m_fb1_entry.signal_changed().connect(sigc::bind<int>(mem_fun(*this, &BoxEditor::on_box_data_changed), FB1_ENTRY_CHANGED));
+ 
+   signal_speakerlist_loaded.connect(mem_fun(*this, &BoxEditor::on_speaker_list_loaded));
+   
+   /* Setup option menu */
+   Gtk::Menu::MenuList& menulist = m_option_menu.items();
+-  menulist.push_back( Gtk::Menu_Helpers::MenuElem(_("Sealed"), bind<int>(mem_fun(*this, &BoxEditor::on_box_data_changed), SEALED_SELECTED) ) ); 
+-  menulist.push_back( Gtk::Menu_Helpers::MenuElem(_("Ported"), bind<int>(mem_fun(*this, &BoxEditor::on_box_data_changed), PORTED_SELECTED) ) );
++  menulist.push_back( Gtk::Menu_Helpers::MenuElem(_("Sealed"), sigc::bind<int>(mem_fun(*this, &BoxEditor::on_box_data_changed), SEALED_SELECTED) ) ); 
++  menulist.push_back( Gtk::Menu_Helpers::MenuElem(_("Ported"), sigc::bind<int>(mem_fun(*this, &BoxEditor::on_box_data_changed), PORTED_SELECTED) ) );
+   m_box_type_optionmenu.set_menu(m_option_menu);
+   
+   signal_box_selected.connect(mem_fun(*this, &BoxEditor::on_box_selected));
+--- a/src/settingsdialog.cc        2004-06-22 16:33:48.000000000 -0500
++++ b/src/settingsdialog.cc        2016-02-03 13:30:19.230163765 -0600
+@@ -156,31 +156,31 @@
+   m_scale_crossover_image_parts.set_active(g_settings.getValueBool("ScaleCrossoverImageParts"));
+     
+   /* Setup configuration option change handlers */
+-  m_save_mainwindow_size.signal_clicked().connect(bind<GSpeakers::Settings>(mem_fun(*this, &SettingsDialog::on_config_option_change), 
++  m_save_mainwindow_size.signal_clicked().connect(sigc::bind<GSpeakers::Settings>(mem_fun(*this, &SettingsDialog::on_config_option_change), 
+                                                                                  GSpeakers::SAVE_MAIN_WINDOW_SIZE));
+-  m_save_mainwindow_position.signal_clicked().connect(bind<GSpeakers::Settings>(mem_fun(*this, &SettingsDialog::on_config_option_change), 
++  m_save_mainwindow_position.signal_clicked().connect(sigc::bind<GSpeakers::Settings>(mem_fun(*this, &SettingsDialog::on_config_option_change), 
+                                                                                      GSpeakers::SAVE_MAIN_WINDOW_SIZE));
+   
+-  m_autoupdate_filter_plots.signal_clicked().connect(bind<GSpeakers::Settings>(mem_fun(*this, &SettingsDialog::on_config_option_change), 
++  m_autoupdate_filter_plots.signal_clicked().connect(sigc::bind<GSpeakers::Settings>(mem_fun(*this, &SettingsDialog::on_config_option_change), 
+                                                                                      GSpeakers::AUTO_UPDATE_CROSSOVER_PLOT));
+-  m_draw_driver_imp_plot.signal_clicked().connect(bind<GSpeakers::Settings>(mem_fun(*this, &SettingsDialog::on_config_option_change), 
++  m_draw_driver_imp_plot.signal_clicked().connect(sigc::bind<GSpeakers::Settings>(mem_fun(*this, &SettingsDialog::on_config_option_change), 
+                                                                                      GSpeakers::DRAW_DRIVER_IMP_PLOT));
+-  m_draw_driver_freq_resp_plot.signal_clicked().connect(bind<GSpeakers::Settings>(mem_fun(*this, &SettingsDialog::on_config_option_change), 
++  m_draw_driver_freq_resp_plot.signal_clicked().connect(sigc::bind<GSpeakers::Settings>(mem_fun(*this, &SettingsDialog::on_config_option_change), 
+                                                                                      GSpeakers::DRAW_DRIVER_FREQ_RESP_PLOT));
+-  m_disable_filter_amp.signal_clicked().connect(bind<GSpeakers::Settings>(mem_fun(*this, &SettingsDialog::on_config_option_change), 
++  m_disable_filter_amp.signal_clicked().connect(sigc::bind<GSpeakers::Settings>(mem_fun(*this, &SettingsDialog::on_config_option_change), 
+                                                                                      GSpeakers::DISABLE_FILTER_AMP));
+-  m_scale_crossover_image_parts.signal_clicked().connect(bind<GSpeakers::Settings>(mem_fun(*this, &SettingsDialog::on_config_option_change), 
++  m_scale_crossover_image_parts.signal_clicked().connect(sigc::bind<GSpeakers::Settings>(mem_fun(*this, &SettingsDialog::on_config_option_change), 
+                                                                                      GSpeakers::SCALE_FILER_PARTS));
+-  m_spice_path_entry.signal_changed().connect(bind<GSpeakers::Settings>(mem_fun(*this, &SettingsDialog::on_config_option_change), 
++  m_spice_path_entry.signal_changed().connect(sigc::bind<GSpeakers::Settings>(mem_fun(*this, &SettingsDialog::on_config_option_change), 
+                                                                                      GSpeakers::SPICE_PATH));
+-  m_spice_use_ngspice.signal_clicked().connect(bind<GSpeakers::Settings>(mem_fun(*this, &SettingsDialog::on_config_option_change), 
++  m_spice_use_ngspice.signal_clicked().connect(sigc::bind<GSpeakers::Settings>(mem_fun(*this, &SettingsDialog::on_config_option_change), 
+                                                                                      GSpeakers::SPICE_TYPE));
+-  m_spice_use_berkley.signal_clicked().connect(bind<GSpeakers::Settings>(mem_fun(*this, &SettingsDialog::on_config_option_change), 
++  m_spice_use_berkley.signal_clicked().connect(sigc::bind<GSpeakers::Settings>(mem_fun(*this, &SettingsDialog::on_config_option_change), 
+                                                                                      GSpeakers::SPICE_TYPE));
+-  m_spice_use_gnucap.signal_clicked().connect(bind<GSpeakers::Settings>(mem_fun(*this, &SettingsDialog::on_config_option_change), 
++  m_spice_use_gnucap.signal_clicked().connect(sigc::bind<GSpeakers::Settings>(mem_fun(*this, &SettingsDialog::on_config_option_change), 
+                                                                                      GSpeakers::SPICE_TYPE));
+ 
+-  m_toolbar_style.signal_changed().connect(bind<GSpeakers::Settings>(mem_fun(*this, &SettingsDialog::on_config_option_change), 
++  m_toolbar_style.signal_changed().connect(sigc::bind<GSpeakers::Settings>(mem_fun(*this, &SettingsDialog::on_config_option_change), 
+                                                                                      GSpeakers::TOOLBAR_STYLE));
+ 
+ }
+@@ -269,7 +269,7 @@
+ #endif
+   m_file_selection = new Gtk::FileSelection(_("Select SPICE executable..."));
+   m_file_selection->get_ok_button()->signal_clicked().connect(
+-                      bind<Gtk::FileSelection *>(mem_fun(*this, &SettingsDialog::on_file_ok), m_file_selection) );
++                      sigc::bind<Gtk::FileSelection *>(mem_fun(*this, &SettingsDialog::on_file_ok), m_file_selection) );
+   m_file_selection->run();
+   m_file_selection->hide();
+   delete m_file_selection;
+--- a/src/freqrespeditor.cc        2016-02-03 13:27:57.898136003 -0600
++++ b/src/freqrespeditor.cc        2016-02-03 13:29:06.397503303 -0600
+@@ -122,7 +122,7 @@
+         f2 = g_ascii_strtod(substr_ptr, NULL);
+ 
+         dbmag_entries[i]->set_text(GSpeakers::double_to_ustring((double)f2, 2, 1));
+-        dbmag_entries[i]->signal_changed().connect(bind<bool>(mem_fun(m_save_button, &Gtk::Button::set_sensitive), true));
++        dbmag_entries[i]->signal_changed().connect(sigc::bind<bool>(mem_fun(m_save_button, &Gtk::Button::set_sensitive), true));
+         
+         delete buffer;
+       }
+@@ -148,7 +148,7 @@
+     delete buffer;
+     of.close();
+     for (int i = 0; i < 30; i++) {
+-      dbmag_entries[i]->signal_changed().connect(bind<bool>(mem_fun(m_save_button, &Gtk::Button::set_sensitive), true));
++      dbmag_entries[i]->signal_changed().connect(sigc::bind<bool>(mem_fun(m_save_button, &Gtk::Button::set_sensitive), true));
+     }
+ 
+   } else {
+--- a/src/crossoverpaned.cc     2004-06-22 16:33:48.000000000 -0500
++++ b/src/crossoverpaned.cc     2016-02-03 13:35:16.600748274 -0600
+@@ -86,26 +86,26 @@
+   //sub_menulist.push_back( Gtk::Menu_Helpers::SeparatorElem() );
+   sub_menulist.push_back( Gtk::Menu_Helpers::ImageMenuElem(_("New _lowpass crossover"), 
+                             GSpeakers::image_widget("stock_new_crossover_16.png"), 
+-                            bind<int>(mem_fun(*this, &CrossoverPaned::on_new_crossover_menu_action), CROSSOVER_TYPE_LOWPASS) ) );
++                            sigc::bind<int>(mem_fun(*this, &CrossoverPaned::on_new_crossover_menu_action), CROSSOVER_TYPE_LOWPASS) ) );
+   sub_menulist.push_back( Gtk::Menu_Helpers::ImageMenuElem(_("New _subsonic crossover"), 
+                             GSpeakers::image_widget("stock_new_crossover_16.png"),
+-                            bind<int>(mem_fun(*this, &CrossoverPaned::on_new_crossover_menu_action) , CROSSOVER_TYPE_SUBSONIC) ) );
++                            sigc::bind<int>(mem_fun(*this, &CrossoverPaned::on_new_crossover_menu_action) , CROSSOVER_TYPE_SUBSONIC) ) );
+   sub_menulist.push_back( Gtk::Menu_Helpers::ImageMenuElem(_("New _highpass crossover"), 
+                             GSpeakers::image_widget("stock_new_crossover_16.png"),
+-                            bind<int>(mem_fun(*this, &CrossoverPaned::on_new_crossover_menu_action), CROSSOVER_TYPE_HIGHPASS) ) );
++                            sigc::bind<int>(mem_fun(*this, &CrossoverPaned::on_new_crossover_menu_action), CROSSOVER_TYPE_HIGHPASS) ) );
+   sub_menulist.push_back( Gtk::Menu_Helpers::ImageMenuElem(_("New _2-way crossover"), 
+                             GSpeakers::image_widget("stock_new_crossover_16.png"),
+-                            bind<int>(mem_fun(*this, &CrossoverPaned::on_new_crossover_menu_action), CROSSOVER_TYPE_TWOWAY) ) );
++                            sigc::bind<int>(mem_fun(*this, &CrossoverPaned::on_new_crossover_menu_action), CROSSOVER_TYPE_TWOWAY) ) );
+   sub_menulist.push_back( Gtk::Menu_Helpers::ImageMenuElem(_("New 2._5-way crossover"), 
+                             GSpeakers::image_widget("stock_new_crossover_16.png"),
+-                            bind<int>(mem_fun(*this, &CrossoverPaned::on_new_crossover_menu_action), 
++                            sigc::bind<int>(mem_fun(*this, &CrossoverPaned::on_new_crossover_menu_action), 
+				      CROSSOVER_TYPE_LOWPASS | CROSSOVER_TYPE_TWOWAY) ) );
+   sub_menulist.push_back( Gtk::Menu_Helpers::ImageMenuElem(_("New _3-way crossover"), 
+                             GSpeakers::image_widget("stock_new_crossover_16.png"),
+-                            bind<int>(mem_fun(*this, &CrossoverPaned::on_new_crossover_menu_action), CROSSOVER_TYPE_THREEWAY) ) );
++                            sigc::bind<int>(mem_fun(*this, &CrossoverPaned::on_new_crossover_menu_action), CROSSOVER_TYPE_THREEWAY) ) );
+   sub_menulist.push_back( Gtk::Menu_Helpers::ImageMenuElem(_("New _4-way crossover"), 
+                             GSpeakers::image_widget("stock_new_crossover_16.png"),
+-                            bind<int>(mem_fun(*this, &CrossoverPaned::on_new_crossover_menu_action), CROSSOVER_TYPE_FOURWAY) ) );
++                            sigc::bind<int>(mem_fun(*this, &CrossoverPaned::on_new_crossover_menu_action), CROSSOVER_TYPE_FOURWAY) ) );
+   menulist.push_back( Gtk::Menu_Helpers::ImageMenuElem(_("_New Crossover"), GSpeakers::image_widget("stock_new_crossover_16.png"), 
+                                                        *new_crossover_submenu) );
+   menulist.push_back( Gtk::Menu_Helpers::ImageMenuElem(_("New _Copy"), GSpeakers::image_widget("stock_new_crossover_copy_16.png"), 
+
