@@ -152,9 +152,8 @@ multilib_src_configure() {
 		--disable-cloudproviders
 		--disable-mir-backend
 		--disable-papi
-		# sysprof integration needs >=sysprof-3.33.2 and passing --disable-profiler
-		# would force enable it - https://gitlab.gnome.org/GNOME/gtk/issues/1965
-		# --disable-profiler
+		# sysprof integration needs >=sysprof-3.33.2
+		--disable-profiler
 		--enable-man
 		--with-xml-catalog="${EPREFIX}"/etc/xml/catalog
 		# need libdir here to avoid a double slash in a path that libtool doesn't

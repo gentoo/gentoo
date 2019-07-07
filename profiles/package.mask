@@ -123,11 +123,6 @@ sci-biology/vaal
 # Bug #664708, #685924
 sci-biology/allpathslg
 
-# Sobhan Mohammadpour <sobhan@gentoo.org> (2019-06-19)
-# this is new and it needs testing
->=app-misc/geoclue-2.5.3
-=sys-apps/xdg-desktop-portal-1.4.2
-
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2019-06-17)
 # this is now provided by dev-lang/rust{-bin}[rustfmt]
 # it's tightly integrated with rust toolchain, eselect-rust
