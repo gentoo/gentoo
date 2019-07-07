@@ -7,6 +7,11 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2019-07-07)
+# media-video/pipewire is masked for now
+sys-apps/xdg-desktop-portal screencast
+kde-plasma/xdg-desktop-portal-kde screencast
+
 # Mike Gilbert <floppym@gentoo.org> (2019-06-21)
 # Fails to build.
 # https://bugs.gentoo.org/661880

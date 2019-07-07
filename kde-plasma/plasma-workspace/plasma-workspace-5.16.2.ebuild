@@ -125,9 +125,6 @@ RESTRICT+=" test"
 src_prepare() {
 	kde5_src_prepare
 
-	sed -e "s|\`qtpaths|\`$(qt5_get_bindir)/qtpaths|" \
-		-i startkde/startkde.cmake startkde/startplasmacompositor.cmake || die
-
 	cmake_comment_add_subdirectory libkworkspace
 	# delete colliding libkworkspace translations
 	if [[ ${KDE_BUILD_TYPE} = release ]]; then
