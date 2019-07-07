@@ -24,6 +24,7 @@ DEPEND="
 	test? (
 		${RDEPEND}
 		$(python_gen_impl_dep 'sqlite')
+		dev-python/colorclass[${PYTHON_USEDEP}]
 		dev-python/nose[${PYTHON_USEDEP}]
 		dev-python/numpy[${PYTHON_USEDEP}]
 		dev-python/pandas[${PYTHON_USEDEP}]
