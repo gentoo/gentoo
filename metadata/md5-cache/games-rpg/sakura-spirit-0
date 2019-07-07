@@ -1,0 +1,12 @@
+DEFINED_PHASES=install nofetch postinst postrm
+DESCRIPTION=Adult-themed visual novel and dating simulator set in Japan
+EAPI=7
+HOMEPAGE=http://wingedcloud.com
+KEYWORDS=~amd64 ~x86
+LICENSE=all-rights-reserved
+RDEPEND=games-engines/renpy:6.99
+RESTRICT=bindist fetch
+SLOT=0
+SRC_URI=Sakura_Spirit-linux.tar
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	xdg-utils	14d00d009167652b1fa363e55effe213
+_md5_=ffb29cc1fd6d81f0e70f24f47d634ad9
