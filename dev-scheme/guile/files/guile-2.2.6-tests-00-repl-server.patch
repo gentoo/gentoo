@@ -1,0 +1,91 @@
+--- guile-2.2.6/test-suite/tests/00-repl-server.test.old	2017-04-14 23:26:40.000000000 +0200
++++ guile-2.2.6/test-suite/tests/00-repl-server.test	2019-07-07 15:14:59.681831790 +0200
+@@ -105,47 +105,48 @@
+ ;;; Since we call 'primitive-fork', these tests must run before any
+ ;;; tests that create threads.
+ 
+-(with-test-prefix "repl-server"
++(if (provided? 'socket)
++    (with-test-prefix "repl-server"
+ 
+-  (pass-if-equal "simple expression"
+-      "scheme@(repl-server)> $1 = 42\n"
+-    (with-repl-server socket
+-      (read-until-prompt socket %last-line-before-prompt)
+-
+-      ;; Wait until 'repl-reader' in boot-9 has written the prompt.
+-      ;; Otherwise, if we write too quickly, 'repl-reader' checks for
+-      ;; 'char-ready?' and doesn't print the prompt.
+-      (match (select (list socket) '() (list socket) 3)
+-        (((_) () ())
+-         (display "(+ 40 2)\n(quit)\n" socket)
+-         (read-string socket)))))
+-
+-  (pass-if "HTTP inter-protocol attack"           ;CVE-2016-8606
+-    (with-repl-server socket
+-      ;; Avoid SIGPIPE when the server closes the connection.
+-      (sigaction SIGPIPE SIG_IGN)
+-
+-      (read-until-prompt socket %last-line-before-prompt)
+-
+-      ;; Simulate an HTTP inter-protocol attack.
+-      (write-request (build-request (string->uri "http://localhost"))
+-                     socket)
+-
+-      ;; Make sure the server reacts by closing the connection.  If it
+-      ;; fails to do that, this test hangs.
+-      (catch 'system-error
+-        (lambda ()
+-          (let loop ((n 0))
+-            (display "(+ 40 2)\n(quit)\n" socket) ;trigger EPIPE
+-            (read-string socket)
+-            (if (> n 5)
+-                #f                                ;failure
+-                (begin
+-                  (sleep 1)
+-                  (loop (+ 1 n))))))
+-        (lambda args
+-          (->bool (memv (system-error-errno args)
+-                        (list ECONNRESET EPIPE ECONNABORTED))))))))
++      (pass-if-equal "simple expression"
++          "scheme@(repl-server)> $1 = 42\n"
++        (with-repl-server socket
++          (read-until-prompt socket %last-line-before-prompt)
++
++          ;; Wait until 'repl-reader' in boot-9 has written the prompt.
++          ;; Otherwise, if we write too quickly, 'repl-reader' checks for
++          ;; 'char-ready?' and doesn't print the prompt.
++          (match (select (list socket) '() (list socket) 3)
++            (((_) () ())
++             (display "(+ 40 2)\n(quit)\n" socket)
++             (read-string socket)))))
++
++      (pass-if "HTTP inter-protocol attack"           ;CVE-2016-8606
++        (with-repl-server socket
++          ;; Avoid SIGPIPE when the server closes the connection.
++          (sigaction SIGPIPE SIG_IGN)
++
++          (read-until-prompt socket %last-line-before-prompt)
++
++          ;; Simulate an HTTP inter-protocol attack.
++          (write-request (build-request (string->uri "http://localhost"))
++                         socket)
++
++          ;; Make sure the server reacts by closing the connection.  If it
++          ;; fails to do that, this test hangs.
++          (catch 'system-error
++            (lambda ()
++              (let loop ((n 0))
++                (display "(+ 40 2)\n(quit)\n" socket) ;trigger EPIPE
++                (read-string socket)
++                (if (> n 5)
++                    #f                                ;failure
++                    (begin
++                      (sleep 1)
++                      (loop (+ 1 n))))))
++            (lambda args
++              (->bool (memv (system-error-errno args)
++                            (list ECONNRESET EPIPE ECONNABORTED)))))))))
+ 
+ ;;; Local Variables:
+ ;;; eval: (put 'with-repl-server 'scheme-indent-function 1)

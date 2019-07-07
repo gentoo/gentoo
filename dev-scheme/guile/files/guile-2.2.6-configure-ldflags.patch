@@ -1,0 +1,13 @@
+diff --git a/configure.ac b/configure.ac
+index 9073deba0..92966ce34 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -1688,7 +1688,7 @@ do
+ done
+ 
+ GUILE_CFLAGS="$GUILE_CFLAGS $PTHREAD_CFLAGS"
+-GUILE_LIBS="$LDFLAGS $LIBS"
++GUILE_LIBS="$LIBS"
+ 
+ AC_SUBST(GUILE_LIBS)
+ AC_SUBST(GUILE_CFLAGS)
