@@ -24,7 +24,7 @@ COMMON_DEPEND="dev-cpp/eigen:3
 	dev-cpp/gtkmm:2.4
 	dev-libs/glib:2
 	>=media-libs/libsndfile-1.0.17
-	>=media-libs/zita-convolver-3
+	>=media-libs/zita-convolver-3:=
 	media-libs/zita-resampler
 	>=net-misc/curl-7.26.0
 	>=sci-libs/fftw-3.1.2:3.0=
@@ -54,20 +54,22 @@ DEPEND="${COMMON_DEPEND}
 DOCS=( changelog README )
 
 src_configure() {
-	waf-utils_src_configure \
-		--cxxflags-debug="" \
-		--cxxflags-release="-DNDEBUG" \
-		--ldflags="${LDFLAGS}" \
-		--enable-lfs \
-		--lib-dev \
-		--no-desktop-update \
-		--no-faust \
-		--no-ldconfig \
-		--shared-lib \
-		$(use_enable nls) \
-		$(usex bluetooth "" "--no-bluez") \
-		$(usex debug "--debug" "") \
-		$(usex lv2 "--lv2dir=${EPREFIX}/usr/$(get_libdir)/lv2" "--no-lv2 --no-lv2-gui") \
-		$(usex standalone "" "--no-standalone") \
+	local myconf=(
+		--cxxflags-debug=""
+		--cxxflags-release="-DNDEBUG"
+		--ldflags="${LDFLAGS}"
+		--enable-lfs
+		--lib-dev
+		--no-desktop-update
+		--no-faust
+		--no-ldconfig
+		--shared-lib
+		$(use_enable nls)
+		$(usex bluetooth "" "--no-bluez")
+		$(usex debug "--debug" "")
+		$(usex lv2 "--lv2dir=${EPREFIX}/usr/$(get_libdir)/lv2" "--no-lv2 --no-lv2-gui")
+		$(usex standalone "" "--no-standalone")
 		$(usex zeroconf "" "--no-avahi")
+	)
+	waf-utils_src_configure "${myconf[@]}"
 }
