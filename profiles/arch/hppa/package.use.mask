@@ -4,6 +4,11 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# Sergei Trofimovich <slyfox@gentoo.org> (2019-07-07)
+# Test dependencies are no longer keyworded due to dropped Rails
+# keyword.
+dev-ruby/asciidoctor test
+
 # Sergei Trofimovich <slyfox@gentoo.org> (2019-05-25)
 # libgo needs an explicit port to hppa: bug #686624
 sys-devel/gcc go
