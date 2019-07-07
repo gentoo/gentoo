@@ -40,8 +40,10 @@ RDEPEND="
 	>=dev-python/stevedore-1.0.0[${PYTHON_USEDEP}]
 	virtual/python-futures[${PYTHON_USEDEP}]
 "
-DEPEND="${RDEPEND}
+DEPEND="
+	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
+		${RDEPEND}
 		app-arch/unzip
 		$(python_gen_cond_dep 'dev-python/mock[${PYTHON_USEDEP}]' python2_7)
 		dev-python/pytest-cov[${PYTHON_USEDEP}]
