@@ -57,7 +57,7 @@ src_configure() {
 pkg_pretend() {
 	if tc-is-gcc && [[ $(gcc-major-version) -lt 8 ]]; then
 		eerror "Compilation with gcc older than version 8 is not supported"
-		die "GCC to old, please use gcc-8 or above"
+		die "GCC too old, please use gcc-8 or above"
 	fi
 }
 
