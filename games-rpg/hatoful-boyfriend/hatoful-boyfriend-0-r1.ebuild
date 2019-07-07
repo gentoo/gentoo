@@ -7,7 +7,7 @@ inherit desktop xdg-utils
 
 MY_PN="Hatoful Boyfriend"
 DESCRIPTION="Japanese visual novel and dating simulator where birds rule the Earth"
-HOMEPAGE="http://clione.halfmoon.jp/hatoful-boyfriend/english.html"
+HOMEPAGE="https://www.devolverdigital.com/games/hatoful-boyfriend"
 SRC_URI="${MY_PN// /_}_Linux.zip"
 LICENSE="all-rights-reserved"
 SLOT="0"
