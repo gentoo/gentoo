@@ -2,7 +2,6 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-
 inherit autotools
 
 DESCRIPTION="Parser for Snort unified/unified2 files"
@@ -28,6 +27,7 @@ DOCS="RELEASE.NOTES etc/barnyard2.conf doc/README* schemas/create_*"
 S="${WORKDIR}/${PN}-2-${PV}"
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.13-free.patch
+	"${FILESDIR}"/${PN}-1.13-libdir.patch
 	"${FILESDIR}"/${PN}-1.13-pcap-1.9.0.patch
 )
 
