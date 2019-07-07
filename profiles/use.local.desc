@@ -2563,6 +2563,7 @@ kde-plasma/plasma-workspace:qalculate - Enable Qalculate runner using sci-libs/l
 kde-plasma/powerdevil:brightness-control - Enable screen brightness control using app-misc/ddcutil
 kde-plasma/powerdevil:wireless - Enable wireless energy saving actions via kde-frameworks/bluez-qt and kde-frameworks/networkmanager-qt
 kde-plasma/systemsettings:classic - Enable classic mode plugin, requires kde-frameworks/khtml
+kde-plasma/xdg-desktop-portal-kde:screencast - Enable screencast portal using media-video/pipewire
 lxde-base/lxdm:consolekit - Enables support for authorization using consolekit
 lxde-base/lxdm:gtk3 - Use GTK+3 instead of 2
 lxde-base/lxterminal:gtk3 - Use GTK+3 instead of GTK+2
@@ -5467,6 +5468,7 @@ sys-apps/util-linux:pam - build runuser helper
 sys-apps/util-linux:suid - install mount/umount as setuid so non-root users may mount/umount devices, and wall/write as setgid so non-root users can notify other users
 sys-apps/util-linux:tty-helpers - install the mesg/wall/write tools for talking to local users
 sys-apps/watchdog:nfs - enable support for checking nfs mounts
+sys-apps/xdg-desktop-portal:screencast - Enable screencast portal using media-video/pipewire
 sys-apps/xinetd:rpc - support RPC services
 sys-auth/consolekit:cgroups - Use the kernel to track processes instead of the session cookie.
 sys-auth/consolekit:evdev - For handling VT switching with a session controller.
