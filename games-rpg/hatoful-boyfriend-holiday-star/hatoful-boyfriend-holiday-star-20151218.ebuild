@@ -3,38 +3,32 @@
 
 EAPI=7
 
-inherit desktop xdg-utils
+inherit eutils desktop xdg-utils
 
-MY_PN="Hatoful Boyfriend"
-DESCRIPTION="Japanese visual novel and dating simulator where birds rule the Earth"
-HOMEPAGE="https://www.devolverdigital.com/games/hatoful-boyfriend"
-SRC_URI="${MY_PN// /_}_Linux.zip"
+DESCRIPTION="Holiday-themed sequel to the Japanese visual novel and dating sim about birds"
+HOMEPAGE="https://www.devolverdigital.com/games/hatoful-boyfriend-holiday-star"
+SRC_URI="Linux-Standalone-${PV}.rar"
 LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
 IUSE="+gui"
 RESTRICT="bindist fetch splitdebug"
 
+DEPEND="app-arch/unrar"
+
 RDEPEND="
-	virtual/glu
 	virtual/opengl
 	x11-libs/libX11
 	x11-libs/libXcursor
-	x11-libs/libXext
 	x11-libs/libXrandr
 	gui? (
-		dev-libs/atk
 		dev-libs/glib:2
-		media-libs/fontconfig:1.0
-		media-libs/freetype:2
-		x11-libs/cairo
 		x11-libs/gdk-pixbuf:2
 		x11-libs/gtk+:2
-		x11-libs/pango
 	)
 "
 
-S="${WORKDIR}/${MY_PN}_Linux"
+S="${WORKDIR}/Linux-Standalone"
 
 DIR="/opt/${PN}"
 QA_PREBUILT="${DIR#/}/*"
@@ -47,19 +41,19 @@ pkg_nofetch() {
 
 src_install() {
 	exeinto "${DIR}"
-	newexe hatoful.$(usex amd64 x86_64 x86) hatoful
-	dosym "${DIR}"/hatoful /usr/bin/${PN}
+	newexe HB2.$(usex amd64 x86_64 x86) HB2
+	make_wrapper ${PN} "${DIR}"/HB2
 
 	insinto "${DIR}"
-	doins -r hatoful_Data/
-	rm -r "${ED}/${DIR}"/hatoful_Data/*/$(usex amd64 x86 x86_64) || die
+	doins -r HB2_Data/
+	rm -r "${ED}/${DIR}"/HB2_Data/*/$(usex amd64 x86 x86_64) || die
 
 	if ! use gui; then
-		rm "${ED}/${DIR}"/hatoful_Data/Plugins/*/ScreenSelector.so || die
+		rm "${ED}/${DIR}"/HB2_Data/Plugins/*/ScreenSelector.so || die
 	fi
 
-	newicon -s 128 hatoful_Data/Resources/UnityPlayer.png ${PN}.png
-	make_desktop_entry ${PN} "${MY_PN}"
+	newicon -s 128 HB2_Data/Resources/UnityPlayer.png ${PN}.png
+	make_desktop_entry ${PN} "Hatoful Boyfriend - Holiday Star"
 }
 
 pkg_postinst() { xdg_icon_cache_update; }
