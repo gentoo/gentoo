@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 BASE_PACKAGENAME="debug"
 BASE_AMD64_URI="https://tamiko.kyomu.43-1.org/distfiles/amd64-${BASE_PACKAGENAME}-"
@@ -67,7 +67,7 @@ src_unpack() {
 	use gnome && patchname="-gnome"
 	use java && patchname="${patchname}-java"
 
-	if [ -n "${patchname}" ]; then
+	if [[ -n "${patchname}" ]]; then
 		einfo "Patching distfile ${ARCH}-${BASE_PACKAGENAME}-libreoffice-${PVR}.tar using ${ARCH}-${BASE_PACKAGENAME}-libreoffice${patchname}-${PVR}.xd3"
 		xdelta3 -d -s "${WORKDIR}/${ARCH}-${BASE_PACKAGENAME}-libreoffice-${PVR}.tar" "${DISTDIR}/${ARCH}-${BASE_PACKAGENAME}-libreoffice${patchname}-${PVR}.xd3" "${WORKDIR}/tmpdist.tar" || die
 		mv "${WORKDIR}/tmpdist.tar" "${WORKDIR}/${ARCH}-${BASE_PACKAGENAME}-libreoffice-${PVR}.tar" || die
