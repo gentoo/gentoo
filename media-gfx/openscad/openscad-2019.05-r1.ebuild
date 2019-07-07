@@ -16,13 +16,15 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="emacs"
 
-# FIXME: add optional lib3mf hidapi spnav
+# FIXME: add optional lib3mf
 RDEPEND="
 	dev-cpp/eigen:3
 	dev-libs/boost:=
 	dev-libs/double-conversion:=
 	dev-libs/glib:2
 	dev-libs/gmp:0=
+	dev-libs/hidapi
+	dev-libs/libspnav
 	dev-libs/libzip:=
 	dev-libs/mpfr:0=
 	dev-qt/qtconcurrent:5
