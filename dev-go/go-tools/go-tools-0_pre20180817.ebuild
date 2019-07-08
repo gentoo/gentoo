@@ -12,7 +12,7 @@ ARCHIVE_URI="https://github.com/golang/tools/archive/${EGIT_COMMIT}.tar.gz -> ${
 KEYWORDS="~amd64 ~arm ~x86"
 inherit golang-build golang-vcs-snapshot
 
-DESCRIPTION="Go Tools"
+DESCRIPTION="Tools that support the Go programming language (godoc, etc.)"
 HOMEPAGE="https://godoc.org/golang.org/x/tools"
 GO_FAVICON="go-favicon-20181103162401.ico"
 SRC_URI="${ARCHIVE_URI}
