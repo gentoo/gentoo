@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -30,14 +30,17 @@ HOMEPAGE="https://www.schedmd.com"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="debug hdf5 html ipmi json lua multiple-slurmd +munge mysql netloc numa ofed pam perl ssl static-libs torque X"
+IUSE="debug hdf5 html ipmi json lua multiple-slurmd +munge mysql netloc numa ofed pam perl slurmdbd ssl static-libs torque X"
 
 CDEPEND="
 	!sys-cluster/torque
 	!net-analyzer/slurm
 	!net-analyzer/sinfo
 	|| ( sys-cluster/pmix[-pmi] >=sys-cluster/openmpi-2.0.0 )
-	mysql? ( virtual/mysql )
+	mysql? (
+		|| ( dev-db/mariadb-connector-c dev-db/mysql-connector-c )
+		slurmdbd? ( || ( dev-db/mariadb dev-db/mysql ) )
+		)
 	munge? ( sys-auth/munge )
 	pam? ( virtual/pam )
 	ssl? ( dev-libs/openssl:0= )
@@ -88,27 +91,24 @@ src_prepare() {
 	default
 
 	# pids should go to /var/run/slurm
-	sed -e "s:/var/run/slurmctld.pid:${EPREFIX}/run/slurm/slurmctld.pid:g" \
+	sed \
+		-e 's:/tmp:/var/tmp:g' \
+		-e "s:/var/run/slurmctld.pid:${EPREFIX}/run/slurm/slurmctld.pid:g" \
 		-e "s:/var/run/slurmd.pid:${EPREFIX}/run/slurm/slurmd.pid:g" \
+		-e "s:StateSaveLocation=.*:StateSaveLocation=${EPREFIX}/var/spool/slurm:g" \
+		-e "s:SlurmdSpoolDir=.*:SlurmdSpoolDir=${EPREFIX}/var/spool/slurm/slurmd:g" \
 		-i "${S}/etc/slurm.conf.example" \
-			|| die "Can't sed for /var/run/slurmctld.pid"
-	sed -i "s:/var/run/slurmdbd.pid:${EPREFIX}/run/slurm/slurmdbd.pid:g" \
+		|| die "Can't sed for /var/run/slurmctld.pid"
+	sed \
+		-e "s:/var/run/slurmdbd.pid:${EPREFIX}/run/slurm/slurmdbd.pid:g" \
 		-i "${S}/etc/slurmdbd.conf.example" \
-			|| die "Can't sed for /var/run/slurmdbd.pid"
-	# also state dirs are in /var/spool/slurm
-	sed -e "s:StateSaveLocation=*.:StateSaveLocation=${EPREFIX}/var/spool/slurm:g" \
-		-e "s:SlurmdSpoolDir=*.:SlurmdSpoolDir=${EPREFIX}/var/spool/slurm/slurmd:g" \
-		-i "${S}/etc/slurm.conf.example" \
-			|| die "Can't sed ${S}/etc/slurm.conf.example for StateSaveLocation=*. or SlurmdSpoolDir=*"
-	# and tmp should go to /var/tmp/slurm
-	sed -e 's:/tmp:/var/tmp:g' \
-		-i "${S}/etc/slurm.conf.example" \
-			|| die "Can't sed for StateSaveLocation=*./tmp"
+		|| die "Can't sed for /var/run/slurmdbd.pid"
 	# gentooify systemd services
-	sed -e 's:sysconfig/.*:conf.d/slurm:g' \
+	sed \
+		-e 's:sysconfig/.*:conf.d/slurm:g' \
 		-e 's:var/run/:run/slurm/:g' \
 		-i "${S}/etc"/*.service.in \
-			|| die "Can't sed systemd services for sysconfig or var/run/"
+		|| die "Can't sed systemd services for sysconfig or var/run/"
 
 	hprefixify auxdir/{ax_check_zlib,x_ac_{lz4,ofed,munge}}.m4
 	eautoreconf
@@ -191,12 +191,9 @@ src_install() {
 	doins \
 		etc/bluegene.conf.example \
 		etc/cgroup.conf.example \
-		etc/cgroup_allowed_devices_file.conf.example \
 		etc/slurm.conf.example \
 		etc/slurmdbd.conf.example
 	exeinto /etc/slurm
-	doexe \
-		etc/slurm.epilog.clean
 	keepdir /etc/slurm/layouts.d
 	insinto /etc/slurm/layouts.d
 	newins etc/layouts.d.power.conf.example power.conf.example

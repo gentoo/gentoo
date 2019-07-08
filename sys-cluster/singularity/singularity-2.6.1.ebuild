@@ -1,18 +1,18 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 PYTHON_COMPAT=( python{2_7,3_{5,6}} )
 
 inherit autotools eutils python-single-r1
 
 DESCRIPTION="Application containers for Linux"
-HOMEPAGE="http://singularity.lbl.gov/"
+HOMEPAGE="https://sylabs.io"
 SRC_URI="https://github.com/${PN}ware/${PN}/releases/download/${PV}/${P}.tar.gz"
 
 SLOT="0"
-LICENSE="cctbx-2.0"
+LICENSE="BSD"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="examples static-libs +suid"
 
@@ -36,7 +36,6 @@ src_configure() {
 src_install() {
 	MAKEOPTS+=" -j1"
 	default
-	prune_libtool_files
 	dodoc README.md CONTRIBUTORS.md CONTRIBUTING.md
 	use examples && dodoc -r examples
 }
