@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -14,7 +14,7 @@ KEYWORDS="amd64 arm ppc ppc64 x86 ~x86-fbsd"
 IUSE="dbus doc elibc_FreeBSD gnome"
 
 COMMON_DEPEND="
-	>=dev-lang/lua-5.1:0
+	|| ( >=dev-lang/lua-5.1:0 dev-lang/lua:5.1 )
 	dev-libs/glib:2
 	>=dev-libs/libxdg-basedir-1
 	>=dev-lua/lgi-0.7
@@ -53,13 +53,18 @@ PATCHES=(
 	"${FILESDIR}/${PN}-xsession.patch"
 	"${FILESDIR}/${PN}-3.5.5-util.lua-xdg-icons-fix.patch"
 	"${FILESDIR}/${PN}-3.5.5-cflag-cleanup.patch"
+	"${FILESDIR}/${PN}-3.5.9-slotted-lua.patch"
 )
 
 src_configure() {
+	has_version 'dev-lang/lua:5.1' \
+		&& LUA=lua5.1 \
+		|| LUA=lua
 	mycmakeargs=(
 		-DSYSCONFDIR="${EPREFIX}"/etc
 		$(cmake-utils_use_with dbus DBUS)
 		$(cmake-utils_use doc GENERATE_DOC)
+		-DLUA_EXECUTABLE="${EPREFIX}"/usr/bin/${LUA}
 		)
 
 	cmake-utils_src_configure
