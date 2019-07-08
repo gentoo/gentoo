@@ -114,11 +114,12 @@ RDEPEND="${DEPEND}
 	nls? ( sys-devel/gettext )
 "
 
-RESTRICT="strip !test? ( test )"
+RESTRICT="!test? ( test )"
 
-QA_EXECSTACK="usr/bin/grub*-emu* usr/lib/grub/*"
-QA_WX_LOAD="usr/lib/grub/*"
+QA_EXECSTACK="usr/bin/grub-emu* usr/lib/grub/*"
+QA_PRESTRIPPED="usr/lib/grub/.*"
 QA_MULTILIB_PATHS="usr/lib/grub/.*"
+QA_WX_LOAD="usr/lib/grub/*"
 
 src_unpack() {
 	if [[ ${PV} == 9999 ]]; then
@@ -272,6 +273,8 @@ src_install() {
 
 	insinto /etc/default
 	newins "${FILESDIR}"/grub.default-3 grub
+
+	dostrip -x /usr/lib/grub
 }
 
 pkg_postinst() {
