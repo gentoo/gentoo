@@ -52,7 +52,7 @@ HOMEPAGE="https://www.gnu.org/software/grub/"
 # Includes licenses for dejavu and unifont
 LICENSE="GPL-3 fonts? ( GPL-2-with-font-exception ) themes? ( BitstreamVera )"
 SLOT="2/${PVR}"
-IUSE="device-mapper doc efiemu +fonts mount nls static sdl test +themes truetype libzfs"
+IUSE="device-mapper doc efiemu +fonts mount nls sdl test +themes truetype libzfs"
 
 GRUB_ALL_PLATFORMS=( coreboot efi-32 efi-64 emu ieee1275 loongson multiboot qemu qemu-mips pc uboot xen xen-32 )
 IUSE+=" ${GRUB_ALL_PLATFORMS[@]/#/grub_platforms_}"
@@ -92,7 +92,7 @@ BDEPEND="
 	)
 	truetype? ( virtual/pkgconfig )
 "
-COMMON_DEPEND="
+DEPEND="
 	app-arch/xz-utils
 	>=sys-libs/ncurses-5.2-r5:0=
 	sdl? ( media-libs/libsdl )
@@ -105,18 +105,7 @@ COMMON_DEPEND="
 	grub_platforms_xen? ( app-emulation/xen-tools:= )
 	grub_platforms_xen-32? ( app-emulation/xen-tools:= )
 "
-DEPEND="${COMMON_DEPEND}
-	static? (
-		app-arch/xz-utils[static-libs(+)]
-		truetype? (
-			app-arch/bzip2[static-libs(+)]
-			media-libs/freetype[static-libs(+)]
-			sys-libs/zlib[static-libs(+)]
-			virtual/pkgconfig
-		)
-	)
-"
-RDEPEND="${COMMON_DEPEND}
+RDEPEND="${DEPEND}
 	kernel_linux? (
 		grub_platforms_efi-32? ( sys-boot/efibootmgr )
 		grub_platforms_efi-64? ( sys-boot/efibootmgr )
@@ -244,8 +233,6 @@ src_configure() {
 	export HOST_CPPFLAGS=${CPPFLAGS}
 	export HOST_LDFLAGS=${LDFLAGS}
 	unset CCASFLAGS CFLAGS CPPFLAGS LDFLAGS
-
-	use static && HOST_LDFLAGS+=" -static"
 
 	tc-ld-disable-gold #439082 #466536 #526348
 	export TARGET_LDFLAGS="${TARGET_LDFLAGS} ${LDFLAGS}"
