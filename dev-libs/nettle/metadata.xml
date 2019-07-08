@@ -6,6 +6,6 @@
 		<name>Crypto</name>
 	</maintainer>
 	<use>
-		<flag name="cpu_flags_x86_sha">Enable support for Intel's SHA instruction set (SHA-NI)</flag>
+		<flag name="preview-cpu_flags_x86_sha">Enable support for Intel's SHA instruction set (SHA-NI)</flag>
 	</use>
 </pkgmetadata>
