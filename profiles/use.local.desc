@@ -216,7 +216,6 @@ app-backup/fsarchiver:lz4 - Enable lz4 compression support
 app-backup/snapper:lvm - Enable LVM thinprovisioned snapshots support sys-fs/lvm2
 app-backup/snapper:xattr - Add support for getting and setting POSIX extended attributes, through sys-apps/attr.
 app-benchmarks/httperf:idleconn - Build with the idleconn program
-app-benchmarks/ramspeed:pic - Force shared libraries to be built as PIC (this is slower)
 app-benchmarks/sysbench:aio - Enable libaio support
 app-cdr/brasero:libburn - Enable dev-libs/libburn backend
 app-cdr/brasero:nautilus - Build the gnome-base/nautilus extension
@@ -263,7 +262,6 @@ app-crypt/qca:sasl - Enable SASL plugin
 app-crypt/qca:softstore - Enable softstore plugin
 app-crypt/seahorse:ldap - Enable seahorse to manipulate GPG keys on a LDAP server.
 app-crypt/tpm-tools:pkcs11 - Build Token data management utilities based on OpenCryptoki's (dev-libs/opencryptoki) PKCS#11 implementation.
-app-crypt/veracrypt:asm - Enable assembly for optimization
 app-dicts/aspell-be:classic - Support classic spelling by default
 app-dicts/myspell-pt:preao - Use the pre ortographic agreement version of the dictionary
 app-doc/clsync-docs:api - Install doxygen generated API docs.
@@ -273,7 +271,6 @@ app-doc/doxygen:doxysearch - build doxyindexer and doxysearch.cgi
 app-doc/gnucash-docs:l10n_C - English
 app-doc/kicad-doc:html - Generate documentation in HTML format
 app-doc/kicad-doc:pdf - Generate documentation in PDF format
-app-doc/linuxfromscratch:htmlsingle - Install all-on-one-page HTML version.
 app-doc/pms:binary - Download pre-built files instead of building from sources
 app-doc/pms:html - Generate PMS as .html as well
 app-doc/pms:twoside - Enable two-sided layout suitable for printing
@@ -845,8 +842,6 @@ app-text/atril:xps - Enable XPS viewer using app-text/libgxps
 app-text/cb2bib:webengine - Use dev-qt/qtwebengine instead of dev-qt/qtwebkit
 app-text/dbacl:interactive - Enable the interactive mailinspect ability
 app-text/dblatex:inkscape - Use inkscape to convert SVG. Disable to use gnome-base/librsvg instead.
-app-text/dictd:judy - Build Judy-based (dev-libs/judy) plugin implementing fast "exact" and especially "lev" strategies
-app-text/dictd:minimal - Don't build server but dict client, dictzip and dictfmt only.
 app-text/docbook-sgml-utils:jadetex - Add support for app-text/jadetex (for processing tex files produced by the TeX backend of Jade)
 app-text/docbook-xsl-ns-stylesheets:ruby - Install the Ruby-based dbtoepub script; requires an interpreter compatible with app-eselect/eselect-ruby.
 app-text/docbook-xsl-stylesheets:ruby - Install the Ruby-based dbtoepub script; requires an interpreter compatible with app-eselect/eselect-ruby.
@@ -1115,7 +1110,6 @@ dev-db/redis:tcmalloc - Use tcmalloc from dev-util/google-perftools for allocati
 dev-db/spatialite:geos - Add the sci-libs/geos library for exact topological tests
 dev-db/spatialite:proj - Add the sci-libs/proj library for reprojection features
 dev-db/spatialite:xls - Add the dev-libs/freexl library for xls import support
-dev-db/sqldeveloper:sybase - Add support for the Sybase SQL Database Server
 dev-db/sqlite:secure-delete - Enable overwriting of deleted content with zeros by default (http://sqlite.org/pragma.html#pragma_secure_delete), causing some performance penalty
 dev-db/sqlite:tools - Install additional tools
 dev-db/unixODBC:minimal - Disable bundled drivers and extra libraries (most users don't need these)
@@ -1829,11 +1823,6 @@ dev-perl/Mail-IMAPClient:md5 - Install support for DIGEST-MD5 and CRAM-MD5 Authe
 dev-perl/Mail-IMAPClient:ntlm - Install support for NTLM Authentication
 dev-perl/Mail-IMAPClient:ssl - Install support for SSL Connections
 dev-perl/Mail-IMAPClient:zlib - Install support for COMPRESS DEFLATE connections
-dev-perl/PDL:badval - Enable bad values support
-dev-perl/PDL:hdf - Enable HDF (version 4) format support
-dev-perl/PDL:netpbm - Enable NETPBM and MPEG support
-dev-perl/PDL:pdl2 - Build pdf2 shell (requires Devel-REPL)
-dev-perl/PDL:pgplot - Enable PGPLOT plotting capabilities
 dev-perl/Sub-Name:suggested - Install extra dependencies needed for extended regression tests
 dev-perl/Test-Warnings:suggested - Install optional dependencies for extra tests
 dev-perl/Text-CSV:xs - Install dev-perl/Text-CSV_XS for accelerated decoding
@@ -2260,7 +2249,6 @@ games-emulation/dosbox:glide - Enable unofficial Glide emulation via media-libs/
 games-emulation/mgba:elf - Enable the use of elf utils via dev-libs/elfutils
 games-engines/renpy:development - Install IDE for game developers and an empty game template
 games-misc/xcowsay:fortune - Installs the fortune-mod xcow binary
-games-util/pyfa:graph - Enable support for graphs
 games-util/wit:fuse - Enable image mount support via fuse
 gnome-base/gconf:ldap - Build backend which enables default mail accounts, addressbooks and calendars for Evolution to be configured using each user's LDAP entry."
 gnome-base/gdm:bluetooth-sound - Allow loading of bluetooth sound modules. This may be necessary for accessibility screen readers, but may cause bluetooth sound issues for users logging in.
@@ -2694,7 +2682,6 @@ mail-filter/amavisd-new:zmq - Add support for zeromq sockets
 mail-filter/bogofilter:tokyocabinet - Enable Tokyo Cabinet database support
 mail-filter/clamassassin:clamd - Use the app-antivirus/clamav daemon for virus checking
 mail-filter/clamassassin:subject-rewrite - Adds support for subject rewriting
-mail-filter/dcc:rrdtool - Enable net-analyzer/rrdtool interface scripts
 mail-filter/dspam:daemon - Enable support for DSPAM to run in --daemon mode
 mail-filter/dspam:debug - Enable debugging support (don't enable this unless something needs testing!)
 mail-filter/dspam:domain-scale - Build for domain scale setups - puts data to $HOME/data/domain.com/user
@@ -2785,7 +2772,6 @@ mate-extra/mate-polkit:appindicator - Add support for AppIndicator
 mate-extra/mate-power-manager:applet - Enable building of the MATE applet.
 mate-extra/mate-screensaver:consolekit - Enable support for sys-auth/consolekit
 mate-extra/mate-utils:applet - Enable the mate dictionary applet
-media-fonts/corefonts:tahoma - Also install the Tahoma font. Due to the lack of a free bold variant, this may render badly. See bug 184790.
 media-fonts/culmus:ancient - Install ancient semitic scripts
 media-fonts/culmus:fancy - Install fancy fonts
 media-fonts/culmus:fontforge - Use media-gfx/fontforge to build fonts from source
@@ -2812,8 +2798,6 @@ media-fonts/terminus-font:ru-i - Changes view of Russian letter 'i' - not like L
 media-fonts/terminus-font:ru-k - Changes view of Russian letter 'k' (see homepage)
 media-fonts/unifont:fontforge - Use media-gfx/fontforge to build fonts from source
 media-fonts/unifont:utils - Install unifont utilities
-media-gfx/album:plugins - Install optional plugins
-media-gfx/album:themes - Install optional themes
 media-gfx/apngasm:7z - Enable support for 7zip compression
 media-gfx/apngasm:zopfli - Enable support for Zopfli compression
 media-gfx/asymptote:boehm-gc - Enables using the Boehm-Demers-Weiser conservative garbage collector
@@ -2903,7 +2887,6 @@ media-gfx/inkscape:inkjar - Enable support for OpenOffice.org SVG jar files
 media-gfx/inkscape:latex - pull in dependencies for LaTeX formulas
 media-gfx/inkscape:visio - Enable support for Microsoft Visio Diagrams
 media-gfx/inkscape:wpg - Enable support for WordPerfect Graphics
-media-gfx/jpeg2ps:metric - Default to A4 paper size
 media-gfx/kphotoalbum:kipi - Support for the KDE Image Plugin Interface
 media-gfx/kphotoalbum:map - Enable map display support using kde-apps/libkgeomap
 media-gfx/krita:color-management - Enable color management via media-libs/opencolorio
@@ -3820,7 +3803,6 @@ net-analyzer/net-snmp:pci - Use libpci (from sys-apps/pciutils) to look up netwo
 net-analyzer/net-snmp:rpm - Enable monitoring of app-arch/rpm. This flag requires the bzip2 and zlib flags to be enabled as well.
 net-analyzer/net-snmp:smux - Enable support for the legacy smux protocol (superseded by agentx)
 net-analyzer/net-snmp:ucd-compat - Build UCD compatibility library. Increases significantly the install size.
-net-analyzer/netperf:demo - Emit interim results during the run. May affect results
 net-analyzer/nfdump:compat15 - Enable read support for nfdump data files created with nfdump 1.5.x
 net-analyzer/nfdump:ftconv - Build the flow-tools to nfdump converter
 net-analyzer/nfdump:nfprofile - Build nfprofile used by NfSen
@@ -4587,7 +4569,6 @@ net-misc/dhcpcd-ui:gtk3 - Add support for x11-libs/gtk+ (The GIMP Toolkit)
 net-misc/dropbear:bsdpty - Add support for legacy BSD pty's rather than dynamic UNIX pty's -- do not use this flag unless you are absolutely sure you actually want it
 net-misc/dropbear:multicall - Build all the programs as one little binary (to save space)
 net-misc/dropbear:shadow - Enable shadow password support
-net-misc/dropbox:librsync-bundled - Use bundled librsync library
 net-misc/electrum:audio_modem - Enable plugin to support Audio Modem
 net-misc/electrum:cli - Enables the CLI interface
 net-misc/electrum:coldcard - Enable plugin to support Coldcard Hardware Wallet
@@ -4609,11 +4590,6 @@ net-misc/gsasl:gcrypt - Use dev-libs/libgcrypt for low-level crypto
 net-misc/gsasl:ntlm - Add support for Microsoft's NTLM mechanism using net-libs/libntlm
 net-misc/gwget:epiphany - Build epiphany extensions
 net-misc/htbinit:esfq - Add support for Enhanced Stochastic Fairness queueing discipline.
-net-misc/hylafaxplus:html - Convert faxes into html email
-net-misc/hylafaxplus:jbig - JBIG Fax Compression Support
-net-misc/hylafaxplus:mgetty - Receive faxes via serial port connections
-net-misc/hylafaxplus:pam - hfaxd authentication via PAM
-net-misc/icaclient:l10n_zh_CN - Install Chinese translation
 net-misc/icecast:kate - Add karaoke and text encapsulation support for Ogg files
 net-misc/icecast:logrotate - Install support files for app-admin/logrotate?
 net-misc/icecast:yp - Build support for yp public directory listings
@@ -5081,7 +5057,6 @@ sci-chemistry/apbs:fetk - Include support for FeTK
 sci-chemistry/apbs:iapbs - C/C++/Fortran interface
 sci-chemistry/apbs:tools - Install optional tools
 sci-chemistry/chemtool:emf - EMF export support
-sci-chemistry/cns:aria - Support patch for sci-chemistry/aria
 sci-chemistry/eden:double-precision - More precise calculations at the expense of speed
 sci-chemistry/gromacs:cuda - Enable cuda non-bonded kernels
 sci-chemistry/gromacs:double-precision - More precise calculations at the expense of speed
@@ -5198,8 +5173,6 @@ sci-libs/nlopt:octave - Add plugin for sci-mathematics/octave
 sci-libs/openfoam:opendx - Install opendx visualisation tool
 sci-libs/openfoam:paraview - Enable support for paraview library
 sci-libs/openfoam:src - Install source files
-sci-libs/parmetis:double-precision - Floating-point operation done as double precision
-sci-libs/parmetis:int64 - Build the 64 bits integer library (needed for > 2^31 vertices)
 sci-libs/pastix:int64 - Build the 64 bits integer library
 sci-libs/pastix:starpu - Build and link with dev-libs/starpu
 sci-libs/scipy:sparse - Adds support for sparse solving with sci-libs/umfpack
@@ -5721,10 +5694,6 @@ sys-fabric/ofed:rds - Tools to manage rds sockets
 sys-fabric/ofed:srp - Suport for userspace part for srp initiator
 sys-fabric/opensm:tools - Install ssld extra tool
 sys-firmware/edk2-ovmf:binary - Use pre-built binaries
-sys-firmware/intel-microcode:hostonly - only install ucode(s) supported by currently available (=online) processor(s)
-sys-firmware/intel-microcode:initramfs - install a small initramfs for use with CONFIG_MICROCODE_EARLY
-sys-firmware/intel-microcode:split-ucode - install the split binary ucode files (used by the kernel directly)
-sys-firmware/intel-microcode:vanilla - install only microcode updates from Intel's official microcode tarball
 sys-firmware/ipxe:binary - Use pre-built binaries
 sys-firmware/ipxe:efi - Build an EFI program for using PXE
 sys-firmware/ipxe:iso - Build a bootable ISO for using PXE
@@ -5813,9 +5782,6 @@ sys-kernel/genkernel-next:iscsi - Enable support for open-iscsi (include open-is
 sys-kernel/genkernel-next:mdadm - Enable support for mdadm (include mdadm dependency)
 sys-kernel/genkernel-next:plymouth - Enable support for Plymouth (include Plymouth dependency)
 sys-kernel/gentoo-sources:experimental - Apply experimental patches; for more information, see "https://wiki.gentoo.org/wiki/Project:Kernel/Experimental".
-sys-kernel/linux-firmware:redistributable - Install also non-free (but redistributable) firmware files
-sys-kernel/linux-firmware:savedconfig - Allows individual selection of firmware files
-sys-kernel/linux-firmware:unknown-license - Install firmware files whose license is unknown
 sys-libs/binutils-libs:64-bit-bfd - Support 64-bit targets even on 32-bit hosts (is ignored on 64-bit hosts)
 sys-libs/binutils-libs:multitarget - Enable all possible targets in libbfd
 sys-libs/compiler-rt:clang - Force building using installed clang (rather than the default CC/CXX).
@@ -6162,13 +6128,6 @@ x11-base/xorg-server:xnest - Build the Xnest server
 x11-base/xorg-server:xorg - Build the Xorg X server (HIGHLY RECOMMENDED)
 x11-base/xorg-server:xvfb - Build the Xvfb server
 x11-base/xorg-x11:fonts - Install fonts from X.Org
-x11-drivers/nvidia-drivers:X - Install the X.org driver, OpenGL libraries, XvMC libraries, and VDPAU libraries
-x11-drivers/nvidia-drivers:compat - Install non-GLVND libGL for backwards compatibility
-x11-drivers/nvidia-drivers:driver - Install the kernel driver module
-x11-drivers/nvidia-drivers:gtk3 - Install nvidia-settings with support for GTK+ 3
-x11-drivers/nvidia-drivers:kms - Enable support for kernel mode setting (KMS)
-x11-drivers/nvidia-drivers:tools - Install additional tools such as nvidia-settings
-x11-drivers/nvidia-drivers:uvm - Install the Unified Memory kernel module (nvidia-uvm) for sharing memory between CPU and GPU in CUDA programs
 x11-drivers/xf86-video-ati:glamor - Enable Glamor OpenGL 2D acceleration
 x11-drivers/xf86-video-intel:dri3 - Use DRI3 by default
 x11-drivers/xf86-video-intel:sna - Enable SandyBridge's New Acceleration (useful on all chipsets, not just SandyBridge)
@@ -6177,7 +6136,6 @@ x11-drivers/xf86-video-intel:uxa - Enable UMA Acceleration Architecture
 x11-drivers/xf86-video-intel:xvmc - Enables X-Video Motion Compensation support
 x11-drivers/xf86-video-openchrome:viaregtool - Install registers dumper tool
 x11-drivers/xf86-video-qxl:xspice - Build the xspice driver
-x11-libs/agg:gpc - Enable gpc polygon clipper library
 x11-libs/cairo:gles2 - Build the OpenGL ES 2 backend
 x11-libs/cairo:glib - Compile with GLib Object System support
 x11-libs/cairo:opengl - Build the OpenGL backend
