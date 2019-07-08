@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit desktop flag-o-matic toolchain-funcs user
+inherit desktop flag-o-matic toolchain-funcs
 
 MY_PV=${PV//.}
 DESCRIPTION="The ultimate old-school single player dungeon exploration game"
@@ -14,7 +14,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86 ~x86-fbsd"
 IUSE="X"
 
-RDEPEND="sys-libs/ncurses:0=
+RDEPEND="acct-group/gamestat
+	sys-libs/ncurses:0=
 	X? (
 		x11-libs/libXaw
 		x11-libs/libXpm
@@ -96,8 +97,6 @@ src_install() {
 }
 
 pkg_preinst() {
-	enewgroup gamestat 36
-
 	fowners root:gamestat /var/games/nethack /var/games/nethack/save
 	fperms 2770 /var/games/nethack /var/games/nethack/save
 
