@@ -42,7 +42,7 @@ src_prepare() {
 		-e 's:grep (.*) \$\{LSOF_INCLUDE\}/([[:alnum:]/._]*):echo "#include <\2>" | ${LSOF_CC} ${LSOF_CFGF} -E -P -dD - 2>/dev/null | grep \1:' \
 		Configure || die
 
-	# "create" man-page
+	# "create" man-page (bug #689462)
 	# inspired by shipped "makeman" ksh script
 	soelim < Lsof.8 > lsof.8 || die
 }
