@@ -7,7 +7,7 @@ inherit udev
 
 DESCRIPTION="Sets BIOS-given device names instead of kernel eth* names"
 HOMEPAGE="http://linux.dell.com/biosdevname/"
-SRC_URI="https://github.com/dell/${PN}/archive/v${PV}.tar.gz"
+SRC_URI="https://github.com/dell/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -20,6 +20,10 @@ DEPEND="${CDEPEND}
 RDEPEND="${CDEPEND}"
 
 src_prepare() {
+	default
+
 	sed -i -e 's|/sbin/biosdevname|/usr\0|g' biosdevname.rules.in || die
-	sed -i -e "/RULEDEST/s:/lib/udev:$(get_udevdir):" configure{,.ac} || die
+	sed -i -e "/RULEDEST/s:/lib/udev:$(get_udevdir):" configure.ac || die
+
+	./autogen.sh --no-configure || die
 }
