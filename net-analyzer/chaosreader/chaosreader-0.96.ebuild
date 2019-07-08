@@ -9,7 +9,7 @@ HOMEPAGE="http://chaosreader.sourceforge.net
 SRC_URI="https://github.com/brendangregg/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 SLOT="0"
 
-KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~x86-macos"
+KEYWORDS="amd64 ~ppc x86 ~amd64-linux ~x86-linux ~x86-macos"
 LICENSE="GPL-2+"
 
 DEPEND=">=dev-lang/perl-5.8.0"

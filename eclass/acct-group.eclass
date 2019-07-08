@@ -104,7 +104,7 @@ acct-group_pkg_pretend() {
 		elif [[ -n ${group_by_name} ]]; then
 			eerror "The requested group exists already with wrong GID."
 			eerror "  groupname: ${ACCT_GROUP_NAME}"
-			eerror "  requested UID: ${ACCT_GROUP_ID}"
+			eerror "  requested GID: ${ACCT_GROUP_ID}"
 			eerror "  current entry: ${group_by_name}"
 			die "Group ${ACCT_GROUP_NAME} exists with wrong GID"
 		fi

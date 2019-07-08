@@ -19,6 +19,9 @@ RDEPEND="rpc? ( net-libs/libtirpc )
 	selinux? ( sys-libs/libselinux )"
 DEPEND="${RDEPEND}
 	rpc? ( virtual/pkgconfig )"
+BDEPEND="
+	sys-apps/groff
+"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.85-cross.patch #432120
@@ -38,6 +41,10 @@ src_prepare() {
 		-e '/test -r/s:test -r \$\{LSOF_INCLUDE\}/([[:alnum:]/._]*):echo "#include <\1>" | ${LSOF_CC} ${LSOF_CFGF} -E - >/dev/null 2>\&1:g' \
 		-e 's:grep (.*) \$\{LSOF_INCLUDE\}/([[:alnum:]/._]*):echo "#include <\2>" | ${LSOF_CC} ${LSOF_CFGF} -E -P -dD - 2>/dev/null | grep \1:' \
 		Configure || die
+
+	# "create" man-page (bug #689462)
+	# inspired by shipped "makeman" ksh script
+	soelim < Lsof.8 > lsof.8 || die
 }
 
 target() {
@@ -91,7 +98,7 @@ src_install() {
 		doins scripts/*
 	fi
 
-	newman {L,l}sof.8
+	doman lsof.8
 	dodoc 00*
 }
 
