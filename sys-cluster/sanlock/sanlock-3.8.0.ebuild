@@ -8,7 +8,7 @@ inherit linux-info python-r1 systemd user
 
 DESCRIPTION="shared storage lock manager"
 HOMEPAGE="https://pagure.io/sanlock"
-SRC_URI="https://git.fedorahosted.org/cgit/${PN}.git/snapshot/${P}.tar.xz"
+SRC_URI="https://releases.pagure.org/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2+ GPL-2 GPL-2+"
 SLOT="0"
