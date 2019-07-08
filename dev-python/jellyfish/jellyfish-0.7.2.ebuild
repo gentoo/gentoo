@@ -4,7 +4,6 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{5,6,7} )
-DISTUTILS_IN_SOURCE_BUILD=1
 inherit distutils-r1
 
 DESCRIPTION="Python module for doing approximate and phonetic matching of strings"
@@ -25,11 +24,6 @@ DEPEND="
 	)
 "
 
-python_compile() {
-	esetup.py build_ext --inplace
-	esetup.py build
-}
-
 python_compile_all() {
 	if use doc; then
 		esetup.py build_sphinx
@@ -38,5 +32,7 @@ python_compile_all() {
 }
 
 python_test() {
-	py.test jellyfish/test.py || die "tests failed with ${EPYTHON}"
+	cp -r testdata "${BUILD_DIR}" || die
+	cd "${BUILD_DIR}" || die
+	pytest -vv lib/jellyfish/test.py || die "tests failed with ${EPYTHON}"
 }
