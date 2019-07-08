@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools desktop eutils user
+inherit autotools desktop eutils
 
 DESCRIPTION="An arcade 2D shoot-em-up game"
 HOMEPAGE="http://linux.tlk.fr/"
@@ -13,7 +13,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-RDEPEND=">=media-libs/libsdl-1.2[sound,joystick,video]
+RDEPEND="acct-group/gamestat
+	>=media-libs/libsdl-1.2[sound,joystick,video]
 	media-libs/libpng:0
 	media-libs/sdl-mixer[mod]
 	x11-libs/libX11
@@ -24,10 +25,6 @@ DEPEND=${RDEPEND}
 PATCHES=(
 	"${FILESDIR}"/${P}-flags.patch
 )
-
-pkg_setup(){
-	enewgroup gamestat 36
-}
 
 src_prepare() {
 	default
