@@ -240,7 +240,7 @@ app-backup/backup-manager 0.7.14: Backup Manager is a command line backup tool f
 app-backup/backupninja 1.0.1-r1: lightweight, extensible meta-backup system
 app-backup/backuppc 3.3.1-r5: High-performance backups to a server's disk
 app-backup/bacula 9.0.8-r1: Featureful client/server network backup suite
-app-backup/borgbackup 1.1.8: Deduplicating backup program with compression and authenticated encryption
+app-backup/borgbackup 1.1.8 1.1.9: Deduplicating backup program with compression and authenticated encryption
 app-backup/btrbk 0.24.0-r1 0.25.1-r1 0.27.0: Tool for creating snapshots and remote backups of btrfs subvolumes
 app-backup/burp 2.1.32-r1 2.2.18: Network backup and restore client and server for Unix and Windows
 app-backup/ccollect 0.8: Pseudo incremental backup with different exclude lists using hardlinks and rsync
@@ -1272,7 +1272,7 @@ app-text/ansifilter 2.13: Handles text files containing ANSI terminal escape cod
 app-text/antiword 0.37-r1: free MS Word reader
 app-text/apvlv 0.1.5-r2: Alf's PDF Viewer Like Vim
 app-text/asa 1.1-r1: ASA Carriage control conversion for ouput by Fortran programs
-app-text/asciidoc 8.6.9-r2 8.6.10: A plain text human readable/writable document format
+app-text/asciidoc 8.6.9-r2 8.6.10 8.6.10_p20181016: A plain text human readable/writable document format
 app-text/aspell 0.60.7_rc1: A spell checker replacement for ispell
 app-text/atril 1.22.1: Atril document viewer for MATE
 app-text/barcode 0.98-r1: barcode generator
@@ -3688,7 +3688,7 @@ dev-perl/File-chmod 0.420.0: Implements symbolic and ls chmod modes
 dev-perl/File-pushd 1.3.0-r1 1.14.0: Change directory temporarily for a limited scope
 dev-perl/FileHandle-Unget 0.162.800: A FileHandle which supports ungetting of multiple bytes
 dev-perl/Filesys-Df 0.920.0-r2: Disk free based on Filesys::Statvfs
-dev-perl/Filesys-DiskSpace 0.50.0-r2: Perl df
+dev-perl/Filesys-DiskSpace 0.50.0-r2: Disk space information
 dev-perl/Filesys-Notify-Simple 0.120.0: Simple and dumb file system watcher
 dev-perl/Filter 1.570.0: Interface for creation of Perl Filters
 dev-perl/Finance-Quote 1.470.0: Get stock and mutual fund quotes from various exchanges
@@ -4216,7 +4216,7 @@ dev-perl/Test-Regexp 2017040101.0.0: Provide commonly requested regular expressi
 dev-perl/Test-Requires 0.100.0: Checks to see if the module can be loaded
 dev-perl/Test-RequiresInternet 0.50.0: Easily test network connectivity
 dev-perl/Test-Script 1.100.0 1.180.0: Cross-platform basic tests for scripts
-dev-perl/Test-SharedFork 0.350.0: fork test
+dev-perl/Test-SharedFork 0.350.0: Ensure that tests work correctly when fork() is used
 dev-perl/Test-Spec 0.510.0 0.540.0: Write tests in a declarative specification style
 dev-perl/Test-SubCalls 1.90.0-r1 1.100.0: Track the number of times subs are called
 dev-perl/Test-TCP 2.190.0-r1: Testing TCP program
@@ -4552,7 +4552,9 @@ dev-python/PyContracts 1.7.9 1.8.0: Declare constraints on function parameters a
 dev-python/PyECLib 1.5.0 1.6.0: Messaging API for RPC and notifications over different messaging transports
 dev-python/PyGithub 1.39: Python library to access the Github API v3
 dev-python/PyPDF2 1.26.0: Python library to work with pdf files
-dev-python/PyQt5 5.10.1-r1: Python bindings for the Qt framework
+dev-python/PyQt5 5.10.1-r1 5.12.2: Python bindings for the Qt framework
+dev-python/PyQt5-sip 4.19.17: Private sip module for PyQt5
+dev-python/PyQtWebEngine 5.12.1: Python bindings for QtWebEngine
 dev-python/PyRSS2Gen 1.1: RSS feed generator written in Python
 dev-python/PySocks 1.6.7: SOCKS client module
 dev-python/QtPy 1.3.1-r1: Abstraction layer for PyQt5/PySide
@@ -5532,7 +5534,7 @@ dev-python/simplejson 3.13.2: Simple, fast, extensible JSON encoder/decoder for 
 dev-python/simplekv 0.9.2: A key-value storage for binary data, support many backends.
 dev-python/simpy 3.0.8: Object-oriented, process-based discrete-event simulation language
 dev-python/singledispatch 3.4.0.3: A library to bring functools.singledispatch from Python 3.4 to Python 2.6-3.3
-dev-python/sip 4.19.13: Python extension module generator for C and C++ libraries
+dev-python/sip 4.19.13 4.19.17: Python extension module generator for C and C++ libraries
 dev-python/six 1.10.0 1.11.0 1.12.0: Python 2 and 3 compatibility library
 dev-python/slowaes 0.1-r2: AES implementation in pure Python
 dev-python/smmap 0.9.0: A pure git implementation of a sliding window memory map manager
@@ -5794,7 +5796,7 @@ dev-ruby/bsearch 1.5.0-r2: A binary search library for Ruby
 dev-ruby/builder 3.2.3: A builder to facilitate programatic generation of XML markup
 dev-ruby/bundler 1.16.1: An easy way to vendor gem dependencies
 dev-ruby/capistrano 2.15.5-r2: A distributed application deployment system
-dev-ruby/capybara 2.18.0 3.18.0 3.22.0: Capybara aims to simplify the process of integration testing Rack applications
+dev-ruby/capybara 2.18.0 3.18.0 3.23.0: Capybara aims to simplify the process of integration testing Rack applications
 dev-ruby/certificate_authority 0.1.6-r2: Managing the core functions outlined in RFC-3280 for PKI
 dev-ruby/childlabor 0.0.3-r1: A scripting framework that replaces rake and sake
 dev-ruby/childprocess 0.9.0: Solution for controlling external programs running in the background
@@ -5924,7 +5926,7 @@ dev-ruby/rdoc 5.1.0: An extended version of the RDoc library from Ruby 1.8
 dev-ruby/rdtool 0.6.38-r2: A multipurpose documentation format for Ruby
 dev-ruby/redcarpet 3.4.0: A Ruby wrapper for Upskirt
 dev-ruby/redcloth 4.3.2-r1: A module for using Textile in Ruby
-dev-ruby/regexp_parser 1.3.0 1.4.0: A library for tokenizing, lexing, and parsing Ruby regular expressions
+dev-ruby/regexp_parser 1.3.0 1.4.0 1.5.1: A library for tokenizing, lexing, and parsing Ruby regular expressions
 dev-ruby/regexp_property_values 0.3.4: See which property values are supported by the regular expression engine
 dev-ruby/rest-client 2.0.2: Simple Simple HTTP and REST client for Ruby
 dev-ruby/rexical 1.0.5-r3: Rexical is a lexical scanner generator
@@ -8278,7 +8280,7 @@ net-analyzer/cacti 1.1.38-r1: Cacti is a complete frontend to rrdtool
 net-analyzer/cacti-spine 1.1.38-r2: Spine is a fast poller for Cacti (formerly known as Cactid)
 net-analyzer/calamaris 2.59: Calamaris parses the logfiles of a wide variety of Web proxy servers and generates reports
 net-analyzer/carl 0.9-r2: An rsync logfile analyzer
-net-analyzer/chaosreader 0.94-r1: Trace TCP/UDP/... sessions and fetch application data.
+net-analyzer/chaosreader 0.94-r1 0.96: Trace TCP/UDP/... sessions and fetch application data.
 net-analyzer/cryptcat 1.2.1-r1 1.2.1-r2: netcat clone extended with twofish encryption
 net-analyzer/cutter 1.03-r1: TCP/IP Connection cutting on Linux Firewalls and Routers
 net-analyzer/darkstat 3.0.719: Network traffic analyzer with cute web interface
