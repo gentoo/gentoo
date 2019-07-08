@@ -24,8 +24,8 @@ RDEPEND="
 	rbd? ( sys-cluster/ceph )
 	systemd? ( sys-apps/systemd )
 "
-DEPEND="
-	${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	virtual/pkgconfig
 "
 
