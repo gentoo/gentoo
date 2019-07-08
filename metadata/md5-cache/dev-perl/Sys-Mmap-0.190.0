@@ -4,10 +4,10 @@ DESCRIPTION=Uses mmap to map in a file as a Perl variable
 EAPI=6
 HOMEPAGE=https://metacpan.org/release/Sys-Mmap
 IUSE=test
-KEYWORDS=~amd64 ~x86 ~ppc
+KEYWORDS=~amd64 ~ppc ~x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=virtual/perl-XSLoader dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/S/SW/SWALTERS/Sys-Mmap-0.19.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	71c828c354a4cddced2641dda2695de5
-_md5_=279b3e052dd86894b958c1c717682e3a
+_md5_=84fdac6943ba20dd96c7bd26adc5f5de
