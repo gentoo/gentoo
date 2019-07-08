@@ -20,7 +20,7 @@ else
 fi
 inherit golang-build
 
-DESCRIPTION="Go Tools"
+DESCRIPTION="Tools that support the Go programming language (godoc, etc.)"
 HOMEPAGE="https://godoc.org/golang.org/x/tools"
 GO_FAVICON="go-favicon-20181103162401.ico"
 SRC_URI="${ARCHIVE_URI}
