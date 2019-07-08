@@ -1,0 +1,76 @@
+From c322f379e6ca972f1c4d3409ac97828b1b838d5d Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Zbigniew=20J=C4=99drzejewski-Szmek?= <zbyszek@in.waw.pl>
+Date: Fri, 22 Feb 2019 13:07:00 +0100
+Subject: [PATCH] Add wrapper for __msan_unpoinson() to reduce #ifdeffery
+
+This isn't really necessary for the subsequent commit, but I expect that we'll
+need to unpoison more often once we turn on msan in CI, so I think think this
+change makes sense in the long run.
+---
+ src/basic/alloc-util.h  | 10 ++++++++++
+ src/basic/random-util.c | 11 ++---------
+ 2 files changed, 12 insertions(+), 9 deletions(-)
+
+diff --git a/src/basic/alloc-util.h b/src/basic/alloc-util.h
+index 893a1238ff..78ee34bb71 100644
+--- a/src/basic/alloc-util.h
++++ b/src/basic/alloc-util.h
+@@ -8,6 +8,10 @@
+ 
+ #include "macro.h"
+ 
++#if HAS_FEATURE_MEMORY_SANITIZER
++#  include <sanitizer/msan_interface.h>
++#endif
++
+ typedef void (*free_func_t)(void *p);
+ 
+ /* If for some reason more than 4M are allocated on the stack, let's abort immediately. It's better than
+@@ -160,3 +164,9 @@ void* greedy_realloc0(void **p, size_t *allocated, size_t need, size_t size);
+                 (ptr) = NULL;                   \
+                 _ptr_;                          \
+         })
++
++#if HAS_FEATURE_MEMORY_SANITIZER
++#  define msan_unpoison(r, s) __msan_unpoison(r, s)
++#else
++#  define msan_unpoison(r, s)
++#endif
+diff --git a/src/basic/random-util.c b/src/basic/random-util.c
+index f7decf60b6..ca25fd2420 100644
+--- a/src/basic/random-util.c
++++ b/src/basic/random-util.c
+@@ -23,16 +23,13 @@
+ #  include <linux/random.h>
+ #endif
+ 
++#include "alloc-util.h"
+ #include "fd-util.h"
+ #include "io-util.h"
+ #include "missing.h"
+ #include "random-util.h"
+ #include "time-util.h"
+ 
+-#if HAS_FEATURE_MEMORY_SANITIZER
+-#include <sanitizer/msan_interface.h>
+-#endif
+-
+ int rdrand(unsigned long *ret) {
+ 
+ #if defined(__i386__) || defined(__x86_64__)
+@@ -58,11 +55,7 @@ int rdrand(unsigned long *ret) {
+                      "setc %1"
+                      : "=r" (*ret),
+                        "=qm" (err));
+-
+-#if HAS_FEATURE_MEMORY_SANITIZER
+-        __msan_unpoison(&err, sizeof(err));
+-#endif
+-
++        msan_unpoison(&err, sizeof(err));
+         if (!err)
+                 return -EAGAIN;
+ 
+-- 
+2.22.0
+
