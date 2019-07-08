@@ -117,7 +117,8 @@ acct-group_pkg_pretend() {
 acct-group_pkg_preinst() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	enewgroup -F "${ACCT_GROUP_NAME}" "${ACCT_GROUP_ID}"
+	enewgroup ${ACCT_GROUP_ENFORCE_ID:+-F} "${ACCT_GROUP_NAME}" \
+		"${ACCT_GROUP_ID}"
 }
 
 fi
