@@ -25,6 +25,8 @@ DEPEND="${COMMON}
 	test? ( dev-python/lit )"
 RDEPEND="${COMMON}"
 
+REQUIRED_USE="test? ( tools )"
+
 LLVM_MAX_SLOT=8
 
 PATCHES=(
