@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Needed by gnome-photos
@@ -30,9 +30,6 @@ app-accessibility/speech-dispatcher python
 
 # Pulled in by grilo-plugins which is needed for gnome-music
 media-libs/grilo playlist
-
-# Required for webkit-gtk-2
-media-libs/harfbuzz icu
 
 # Pulled in by tracker and grilo-plugins, has REQUIRED_USE="?? ( gtk qt5 )"
 media-libs/libmediaart gtk -qt5
