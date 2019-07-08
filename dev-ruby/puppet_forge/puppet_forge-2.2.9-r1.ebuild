@@ -40,4 +40,6 @@ all_ruby_prepare() {
 		-e '/faraday/ s/0.14.0/0.99.0/' \
 		-e '/faraday_middleware/ s/0.13.0/0.99.0/' \
 		${RUBY_FAKEGEM_GEMSPEC} || die
+
+	sed -i -e 's/git ls-files -z/find . -print0/' ${RUBY_FAKEGEM_GEMSPEC} || die
 }
