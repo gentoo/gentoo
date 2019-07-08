@@ -90,7 +90,7 @@ CDEPEND=">=app-eselect/eselect-opengl-1.3.0
 
 DEPEND="${CDEPEND}
 	sys-devel/flex
-	>=x11-base/xorg-proto-2018.3
+	>=x11-base/xorg-proto-2018.4
 	dmx? (
 		doc? (
 			|| (
