@@ -7,8 +7,7 @@ inherit autotools libtool multilib-minimal
 
 DESCRIPTION="Tag Image File Format (TIFF) library"
 HOMEPAGE="http://libtiff.maptools.org"
-SRC_URI="http://download.osgeo.org/libtiff/${P}.tar.gz
-	ftp://ftp.remotesensing.org/pub/libtiff/${P}.tar.gz"
+SRC_URI="https://download.osgeo.org/libtiff/${P}.tar.gz"
 
 LICENSE="libtiff"
 SLOT="0"
