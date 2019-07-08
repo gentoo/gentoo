@@ -6,7 +6,7 @@ EAPI=6
 inherit desktop eapi7-ver java-pkg-2 xdg-utils
 
 MY_PN="Moneydance"
-MY_PV="$(ver_cut 1)"
+MY_PV="$(ver_cut 1-2)_$(ver_cut 3)"
 
 DESCRIPTION="A cross-platform personal finance application"
 HOMEPAGE="https://moneydance.com/"
@@ -19,7 +19,6 @@ KEYWORDS="~amd64"
 RDEPEND="|| (
 		>=dev-java/openjdk-bin-11.0
 		>=dev-java/openjdk-11.0
-		>=dev-java/oracle-jdk-bin-11.0
 	)
 "
 
@@ -33,6 +32,8 @@ pkg_nofetch() {
 	elog "Please download ${A} from"
 	elog "https://infinitekind.com/stabledl/${MY_PV}/${MY_PN}_linux_amd64.tar.gz"
 	elog "and place it in your DISTDIR directory."
+	elog ""
+	elog "Please keep in mind, that you have to rename the download to ${P}-amd64.tar.gz."
 }
 
 src_compile() {
@@ -41,9 +42,14 @@ src_compile() {
 
 src_install() {
 	java-pkg_dojar lib/*.jar
-	java-pkg_dolauncher moneydance --main "Moneydance" --java_args "-client -Dawt.useSystemAAFontSettings=gasp -Dawt.useSystemAAFontSettings=on -Xmx1024m"
 
-	doicon resources/*.png
+	newbin "${FILESDIR}/moneydance-bin" moneydance
+
+	local iconsizes="32 128 512"
+	for iconsize in ${iconsizes}; do
+		newicon -s ${iconsize} resources/moneydance_icon${iconsize}.png moneydance.png
+	done
+
 	make_desktop_entry "moneydance" "Moneydance" moneydance Office
 }
 
