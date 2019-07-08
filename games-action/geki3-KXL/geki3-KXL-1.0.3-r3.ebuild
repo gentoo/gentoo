@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit autotools desktop user
+inherit autotools desktop
 
 DESCRIPTION="2D length scroll shooting game"
 HOMEPAGE="http://triring.net/ps2linux/games/kxl/kxlgames.html"
@@ -15,17 +15,14 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND="dev-games/KXL"
+DEPEND="acct-group/gamestat
+	dev-games/KXL"
 RDEPEND="${DEPEND}
 	media-fonts/font-adobe-100dpi"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-paths.patch
 )
-
-pkg_setup(){
-	enewgroup gamestat 36
-}
 
 src_prepare() {
 	default
