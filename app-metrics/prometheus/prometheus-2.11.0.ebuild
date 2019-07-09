@@ -6,8 +6,8 @@ inherit user golang-build golang-vcs-snapshot
 
 EGO_PN="github.com/prometheus/prometheus"
 MY_PV=v${PV/_rc/-rc.}
-PROMETHEUS_COMMIT="4d60eb3"
-KEYWORDS="amd64"
+PROMETHEUS_COMMIT="4ef6600"
+KEYWORDS="~amd64"
 
 DESCRIPTION="Prometheus monitoring system and time series database"
 HOMEPAGE="https://github.com/prometheus/prometheus"
@@ -17,7 +17,7 @@ SLOT="0"
 IUSE=""
 
 DEPEND="
-	>=dev-lang/go-1.11
+	>=dev-lang/go-1.12
 	>=dev-util/promu-0.3.0"
 
 PROMETHEUS_HOME="/var/lib/prometheus"
