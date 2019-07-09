@@ -18,7 +18,7 @@ RDEPEND="
 	>=x11-libs/libX11-1.6.2[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}
 	x11-base/xorg-proto
-	test? ( dev-libs/glib )"
+	test? ( dev-libs/glib[${MULTILIB_USEDEP}] )"
 
 pkg_setup() {
 	XORG_CONFIGURE_OPTIONS=(
