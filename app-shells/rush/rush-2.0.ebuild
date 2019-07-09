@@ -17,6 +17,9 @@ BDEPEND="
 	nls? ( sys-devel/gettext )
 "
 
+# Testsuite doesn't like our sandbox (bug #689554)
+RESTRICT="test"
+
 src_configure() {
 	local myeconfargs=(
 		$(use_enable nls)
