@@ -235,7 +235,7 @@ src_prepare() {
 	fi
 
 	# Tweak the init script:
-	cp "${FILESDIR}/libvirtd.init-r17" "${S}/libvirtd.init" || die
+	cp "${FILESDIR}/libvirtd.init-r18" "${S}/libvirtd.init" || die
 	sed -e "s/USE_FLAG_FIREWALLD/$(usex firewalld 'need firewalld' '')/" \
 		-e "s/USE_FLAG_ISCSI/$(usex iscsi 'use iscsid' '')/" \
 		-e "s/USE_FLAG_RBD/$(usex rbd 'use ceph' '')/" \
