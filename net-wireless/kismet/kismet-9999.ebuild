@@ -62,6 +62,7 @@ DEPEND="${CDEPEND}
 "
 
 RDEPEND="${CDEPEND}
+	dev-python/pyserial[${PYTHON_USEDEP}]
 	selinux? ( sec-policy/selinux-kismet )
 "
 
