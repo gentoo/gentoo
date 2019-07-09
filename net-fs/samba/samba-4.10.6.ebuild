@@ -293,7 +293,8 @@ multilib_src_install() {
 
 multilib_src_install_all() {
 	# Attempt to fix bug #673168
-	find "${ED}" -type d -name "Yapp" -print0 | xargs -0 rm -r || die
+	find "${ED}" -type d -name "Yapp" -print0 \
+		| xargs -0 --no-run-if-empty rm -r || die
 }
 
 multilib_src_test() {

@@ -169,7 +169,7 @@ PPC64_FIRMWARE_DEPEND="
 "
 
 BDEPEND="
-	${PYTHON_DEPS}
+	$(python_gen_impl_dep)
 	dev-lang/perl
 	sys-apps/texinfo
 	virtual/pkgconfig
@@ -190,7 +190,6 @@ CDEPEND="
 	qemu_softmmu_targets_ppc64? ( ${PPC64_FIRMWARE_DEPEND} )
 "
 DEPEND="${CDEPEND}
-	${PYTHON_DEPS}
 	kernel_linux? ( >=sys-kernel/linux-headers-2.6.35 )
 	static? (
 		${ALL_DEPEND}
