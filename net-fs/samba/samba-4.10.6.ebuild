@@ -50,7 +50,7 @@ CDEPEND="
 	>=dev-util/cmocka-1.1.1[${MULTILIB_USEDEP}]
 	net-libs/libnsl:=[${MULTILIB_USEDEP}]
 	sys-apps/attr[${MULTILIB_USEDEP}]
-	>=sys-libs/ldb-1.5.4[ldap(+)?,python?,${PYTHON_USEDEP},${MULTILIB_USEDEP}]
+	>=sys-libs/ldb-1.5.5[ldap(+)?,python?,${PYTHON_USEDEP},${MULTILIB_USEDEP}]
 	<sys-libs/ldb-1.6.0[ldap(+)?,python?,${PYTHON_USEDEP},${MULTILIB_USEDEP}]
 	sys-libs/libcap
 	sys-libs/ncurses:0=[${MULTILIB_USEDEP}]
@@ -289,6 +289,11 @@ multilib_src_install() {
 	keepdir /var/lock/samba
 	keepdir /var/log/samba
 	keepdir /var/run/{ctdb,samba}
+}
+
+multilib_src_install_all() {
+	# Attempt to fix bug #673168
+	find "${ED}" -type d -name "Yapp" -print0 | xargs -0 rm -r || die
 }
 
 multilib_src_test() {
