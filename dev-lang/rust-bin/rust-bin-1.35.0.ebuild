@@ -56,8 +56,8 @@ src_install() {
 	./install.sh \
 		--components="${components}" \
 		--disable-verify \
-		--prefix="${D}/opt/${P}" \
-		--mandir="${D}/usr/share/${P}/man" \
+		--prefix="${ED}/opt/${P}" \
+		--mandir="${ED}/usr/share/${P}/man" \
 		--disable-ldconfig \
 		|| die
 
@@ -67,11 +67,11 @@ src_install() {
 	local rustgdbgui=rust-gdbgui-bin-${PV}
 	local rustlldb=rust-lldb-bin-${PV}
 
-	mv "${D}/opt/${P}/bin/rustc" "${D}/opt/${P}/bin/${rustc}" || die
-	mv "${D}/opt/${P}/bin/rustdoc" "${D}/opt/${P}/bin/${rustdoc}" || die
-	mv "${D}/opt/${P}/bin/rust-gdb" "${D}/opt/${P}/bin/${rustgdb}" || die
-	mv "${D}/opt/${P}/bin/rust-gdbgui" "${D}/opt/${P}/bin/${rustgdbgui}" || die
-	mv "${D}/opt/${P}/bin/rust-lldb" "${D}/opt/${P}/bin/${rustlldb}" || die
+	mv "${ED}/opt/${P}/bin/rustc" "${ED}/opt/${P}/bin/${rustc}" || die
+	mv "${ED}/opt/${P}/bin/rustdoc" "${ED}/opt/${P}/bin/${rustdoc}" || die
+	mv "${ED}/opt/${P}/bin/rust-gdb" "${ED}/opt/${P}/bin/${rustgdb}" || die
+	mv "${ED}/opt/${P}/bin/rust-gdbgui" "${ED}/opt/${P}/bin/${rustgdbgui}" || die
+	mv "${ED}/opt/${P}/bin/rust-lldb" "${ED}/opt/${P}/bin/${rustlldb}" || die
 
 	dosym "${rustc}" "/opt/${P}/bin/rustc"
 	dosym "${rustdoc}" "/opt/${P}/bin/rustdoc"
@@ -86,15 +86,15 @@ src_install() {
 	dosym "../../opt/${P}/bin/${rustlldb}" "/usr/bin/${rustlldb}"
 
 	local cargo=cargo-bin-${PV}
-	mv "${D}/opt/${P}/bin/cargo" "${D}/opt/${P}/bin/${cargo}" || die
+	mv "${ED}/opt/${P}/bin/cargo" "${ED}/opt/${P}/bin/${cargo}" || die
 	dosym "${cargo}" "/opt/${P}/bin/cargo"
 	dosym "../../opt/${P}/bin/${cargo}" "/usr/bin/${cargo}"
 
 	if use clippy; then
 		local clippy_driver=clippy-driver-bin-${PV}
 		local cargo_clippy=cargo-clippy-bin-${PV}
-		mv "${D}/opt/${P}/bin/clippy-driver" "${D}/opt/${P}/bin/${clippy_driver}" || die
-		mv "${D}/opt/${P}/bin/cargo-clippy" "${D}/opt/${P}/bin/${cargo_clippy}" || die
+		mv "${ED}/opt/${P}/bin/clippy-driver" "${ED}/opt/${P}/bin/${clippy_driver}" || die
+		mv "${ED}/opt/${P}/bin/cargo-clippy" "${ED}/opt/${P}/bin/${cargo_clippy}" || die
 		dosym "${clippy_driver}" "/opt/${P}/bin/clippy-driver"
 		dosym "${cargo_clippy}" "/opt/${P}/bin/cargo-clippy"
 		dosym "../../opt/${P}/bin/${clippy_driver}" "/usr/bin/${clippy_driver}"
@@ -103,8 +103,8 @@ src_install() {
 	if use rustfmt; then
 		local rustfmt=rustfmt-bin-${PV}
 		local cargo_fmt=cargo-fmt-bin-${PV}
-		mv "${D}/opt/${P}/bin/rustfmt" "${D}/opt/${P}/bin/${rustfmt}" || die
-		mv "${D}/opt/${P}/bin/cargo-fmt" "${D}/opt/${P}/bin/${cargo_fmt}" || die
+		mv "${ED}/opt/${P}/bin/rustfmt" "${ED}/opt/${P}/bin/${rustfmt}" || die
+		mv "${ED}/opt/${P}/bin/cargo-fmt" "${ED}/opt/${P}/bin/${cargo_fmt}" || die
 		dosym "${rustfmt}" "/opt/${P}/bin/rustfmt"
 		dosym "${cargo_fmt}" "/opt/${P}/bin/cargo-fmt"
 		dosym "../../opt/${P}/bin/${rustfmt}" "/usr/bin/${rustfmt}"
@@ -117,6 +117,7 @@ src_install() {
 	EOF
 	doenvd "${T}"/50${P}
 
+	# note: eselect-rust adds EROOT to all paths below
 	cat <<-EOF > "${T}/provider-${P}"
 	/usr/bin/rustdoc
 	/usr/bin/rust-gdb

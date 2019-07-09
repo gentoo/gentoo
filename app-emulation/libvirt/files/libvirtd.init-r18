@@ -15,12 +15,9 @@ retry="${LIBVIRTD_TERMTIMEOUT}"
 
 depend() {
 	need virtlogd
-	use dbus virtlockd
-	after ntp-client ntpd nfs nfsmount portmap rpc.statd iptables ip6tables ebtables corosync sanlock cgconfig xenconsoled
+	use ceph dbus iscsid virtlockd
+	after cgconfig corosync ebtables iptables ip6tables nfs nfsmount ntp-client ntpdportmap rpc.statd sanlock xenconsoled
 	USE_FLAG_FIREWALLD
-	USE_FLAG_AVAHI
-	USE_FLAG_ISCSI
-	USE_FLAG_RBD
 }
 
 start_pre() {
@@ -29,6 +26,8 @@ start_pre() {
 
 	checkpath --directory /etc/libvirt/lxc || return 1
 	checkpath --directory /etc/libvirt/nwfilter || return 1
-	checkpath --directory /etc/libvirt/qemu || return 1
-	checkpath --directory /etc/libvirt/storage || return 1
+	[ -L /etc/libvirt/qemu ] ||
+		checkpath --directory /etc/libvirt/qemu || return 1
+	[ -L /etc/libvirt/storage ] ||
+		checkpath --directory /etc/libvirt/storage || return 1
 }
