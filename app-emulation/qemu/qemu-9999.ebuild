@@ -171,7 +171,6 @@ PPC64_FIRMWARE_DEPEND="
 
 BDEPEND="
 	dev-lang/perl
-	dev-python/sphinx
 	sys-apps/texinfo
 	virtual/pkgconfig
 	doc? ( dev-python/sphinx )
