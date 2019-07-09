@@ -28,10 +28,6 @@ src_prepare() {
 
 	rm LICENSE.txt NOTICE.txt || die
 	rmdir logs || die
-
-	if use x-pack; then
-		rm -r modules/x-pack-ml/platform/{darwin,windows}-x86_64 || die
-	fi
 }
 
 src_install() {
