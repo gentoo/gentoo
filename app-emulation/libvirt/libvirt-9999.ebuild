@@ -23,10 +23,10 @@ DESCRIPTION="C toolkit to manipulate virtual machines"
 HOMEPAGE="http://www.libvirt.org/"
 LICENSE="LGPL-2.1"
 IUSE="
-	apparmor audit +caps +dbus firewalld fuse glusterfs iscsi iscsi-direct
-	+libvirtd lvm libssh lxc +macvtap nfs nls numa openvz parted pcap phyp
-	policykit +qemu rbd sasl selinux +udev +vepa virtualbox virt-network
-	wireshark-plugins xen zfs
+	apparmor audit +caps +dbus dtrace firewalld fuse glusterfs iscsi
+	iscsi-direct +libvirtd lvm libssh lxc +macvtap nfs nls numa openvz
+	parted pcap phyp policykit +qemu rbd sasl selinux +udev +vepa
+	virtualbox virt-network wireshark-plugins xen zfs
 "
 
 REQUIRED_USE="
@@ -234,7 +234,7 @@ src_prepare() {
 	fi
 
 	# Tweak the init script:
-	cp "${FILESDIR}/libvirtd.init-r16" "${S}/libvirtd.init" || die
+	cp "${FILESDIR}/libvirtd.init-r17" "${S}/libvirtd.init" || die
 	sed -e "s/USE_FLAG_FIREWALLD/$(usex firewalld 'need firewalld' '')/" \
 		-e "s/USE_FLAG_ISCSI/$(usex iscsi 'use iscsid' '')/" \
 		-e "s/USE_FLAG_RBD/$(usex rbd 'use ceph' '')/" \
@@ -250,6 +250,7 @@ src_configure() {
 		$(use_with audit)
 		$(use_with caps capng)
 		$(use_with dbus)
+		$(use_with dtrace)
 		$(use_with firewalld)
 		$(use_with fuse)
 		$(use_with glusterfs)
@@ -297,7 +298,6 @@ src_configure() {
 		--disable-static
 		--disable-werror
 
-		--with-html-subdir=${PF}/html
 		--localstatedir=/var
 	)
 
@@ -350,7 +350,7 @@ src_install() {
 	systemd_newtmpfilesd "${FILESDIR}"/libvirtd.tmpfiles.conf libvirtd.conf
 
 	newinitd "${S}/libvirtd.init" libvirtd || die
-	newinitd "${FILESDIR}/libvirt-guests.init-r3" libvirt-guests || die
+	newinitd "${FILESDIR}/libvirt-guests.init-r4" libvirt-guests || die
 	newinitd "${FILESDIR}/virtlockd.init-r1" virtlockd || die
 	newinitd "${FILESDIR}/virtlogd.init-r1" virtlogd || die
 
