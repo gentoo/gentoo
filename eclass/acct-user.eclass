@@ -325,8 +325,9 @@ acct-user_pkg_preinst() {
 	debug-print-function ${FUNCNAME} "${@}"
 
 	local groups=${ACCT_USER_GROUPS[*]}
-	enewuser -F -M "${ACCT_USER_NAME}" "${ACCT_USER_ID}" \
-		"${ACCT_USER_SHELL}" "${ACCT_USER_HOME}" "${groups// /,}"
+	enewuser ${ACCT_USER_ENFORCE_ID:+-F} -M "${ACCT_USER_NAME}" \
+		"${ACCT_USER_ID}" "${ACCT_USER_SHELL}" "${ACCT_USER_HOME}" \
+		"${groups// /,}"
 
 	if [[ ${ACCT_USER_HOME} != /dev/null ]]; then
 		# default ownership to user:group

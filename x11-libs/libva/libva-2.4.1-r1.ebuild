@@ -77,3 +77,7 @@ multilib_src_configure() {
 	)
 	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
 }
+
+multilib_src_install_all() {
+	find "${ED}" -type f -name "*.la" -delete || die
+}
