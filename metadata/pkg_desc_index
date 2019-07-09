@@ -5875,7 +5875,7 @@ dev-ruby/metaclass 0.0.4: Adds a __metaclass__ method to all Ruby objects
 dev-ruby/method_source 0.9.0: Retrieve the source code for a method
 dev-ruby/mime-types 1.25.1 2.99.2 3.2.2: Provides a mailcap-like MIME Content-Type lookup for Ruby
 dev-ruby/mime-types-data 3.2019.0331: Registry for information about MIME media type definitions
-dev-ruby/mini_mime 1.0.0: A lightweight mime type lookup toy
+dev-ruby/mini_mime 1.0.0 1.0.1: A lightweight mime type lookup toy
 dev-ruby/minitest 4.7.5-r2 5.3.3-r1 5.10.3: minitest/unit is a small and fast replacement for ruby's huge and slow test/unit
 dev-ruby/minitest-bonus-assertions 3.0: Bonus assertions for minitest
 dev-ruby/minitest-hooks 1.5.0: Adds around and before_all/after_all/around_all hooks for Minitest
