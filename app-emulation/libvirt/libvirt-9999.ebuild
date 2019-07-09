@@ -66,6 +66,7 @@ RDEPEND="
 	audit? ( sys-process/audit )
 	caps? ( sys-libs/libcap-ng )
 	dbus? ( sys-apps/dbus )
+	dtrace? ( dev-util/systemtap )
 	firewalld? ( >=net-firewall/firewalld-0.6.3 )
 	fuse? ( >=sys-fs/fuse-2.8.6:= )
 	glusterfs? ( >=sys-cluster/glusterfs-3.4.1 )
@@ -121,7 +122,7 @@ DEPEND="${RDEPEND}
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.2.0-do-not-use-sysconf.patch
 	"${FILESDIR}"/${PN}-1.2.16-fix_paths_in_libvirt-guests_sh.patch
-	"${FILESDIR}"/${PN}-5.0.0-fix-paths-for-apparmor.patch
+	"${FILESDIR}"/${PN}-5.2.0-fix-paths-for-apparmor.patch
 )
 
 pkg_setup() {
@@ -234,10 +235,8 @@ src_prepare() {
 	fi
 
 	# Tweak the init script:
-	cp "${FILESDIR}/libvirtd.init-r17" "${S}/libvirtd.init" || die
+	cp "${FILESDIR}/libvirtd.init-r18" "${S}/libvirtd.init" || die
 	sed -e "s/USE_FLAG_FIREWALLD/$(usex firewalld 'need firewalld' '')/" \
-		-e "s/USE_FLAG_ISCSI/$(usex iscsi 'use iscsid' '')/" \
-		-e "s/USE_FLAG_RBD/$(usex rbd 'use ceph' '')/" \
 		-i "${S}/libvirtd.init" || die "sed failed"
 
 	eautoreconf
