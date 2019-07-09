@@ -1,16 +1,16 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit toolchain-funcs flag-o-matic multilib
 
 if [[ ${PV} == "9999" ]] ; then
-	EGIT_REPO_URI="git://git.kernel.org/pub/scm/linux/kernel/git/shemminger/iproute2.git"
+	EGIT_REPO_URI="https://git.kernel.org/pub/scm/linux/kernel/git/shemminger/iproute2.git"
 	inherit git-r3
 else
 	SRC_URI="mirror://kernel/linux/utils/net/${PN}/${P}.tar.xz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sh ~sparc ~x86"
 fi
 
 DESCRIPTION="kernel routing and traffic control utilities"
@@ -35,18 +35,19 @@ RDEPEND="
 # We require newer linux-headers for ipset support #549948 and some defines #553876
 DEPEND="
 	${RDEPEND}
+	>=sys-kernel/linux-headers-3.16
+"
+BDEPEND="
 	app-arch/xz-utils
-	iptables? ( virtual/pkgconfig )
 	>=sys-devel/bison-2.4
 	sys-devel/flex
-	>=sys-kernel/linux-headers-3.16
 	virtual/pkgconfig
-	elibc_glibc? ( >=sys-libs/glibc-2.7 )
 "
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.1.0-mtu.patch #291907
 	"${FILESDIR}"/${PN}-4.20.0-configure-nomagic.patch # bug 643722
+	"${FILESDIR}"/${PN}-5.1.0-portability.patch
 )
 
 src_prepare() {
@@ -73,10 +74,12 @@ src_prepare() {
 		man/man8/ip-netns.8 || die
 
 	# build against system headers
-	rm -r include/netinet #include/linux include/ip{,6}tables{,_common}.h include/libiptc
+	rm -r include/netinet || die #include/linux include/ip{,6}tables{,_common}.h include/libiptc
 	sed -i 's:TCPI_OPT_ECN_SEEN:16:' misc/ss.c || die
 
-	use minimal && sed -i -e '/^SUBDIRS=/s:=.*:=lib tc ip:' Makefile
+	if use minimal ; then
+		sed -i -e '/^SUBDIRS=/s:=.*:=lib tc ip:' Makefile || die
+	fi
 }
 
 src_configure() {
@@ -127,16 +130,16 @@ src_install() {
 
 	emake \
 		DESTDIR="${D}" \
-		LIBDIR="${EPREFIX%/}"/$(get_libdir) \
-		SBINDIR="${EPREFIX%/}"/sbin \
-		CONFDIR="${EPREFIX%/}"/etc/iproute2 \
-		DOCDIR="${EPREFIX%/}"/usr/share/doc/${PF} \
-		MANDIR="${EPREFIX%/}"/usr/share/man \
-		ARPDDIR="${EPREFIX%/}"/var/lib/arpd \
+		LIBDIR="${EPREFIX}"/$(get_libdir) \
+		SBINDIR="${EPREFIX}"/sbin \
+		CONFDIR="${EPREFIX}"/etc/iproute2 \
+		DOCDIR="${EPREFIX}"/usr/share/doc/${PF} \
+		MANDIR="${EPREFIX}"/usr/share/man \
+		ARPDDIR="${EPREFIX}"/var/lib/arpd \
 		install
 
 	dodir /bin
-	mv "${ED%/}"/{s,}bin/ip || die #330115
+	mv "${ED}"/{s,}bin/ip || die #330115
 
 	dolib.a lib/libnetlink.a
 	insinto /usr/include
@@ -144,12 +147,12 @@ src_install() {
 	# This local header pulls in a lot of linux headers it
 	# doesn't directly need.  Delete this header that requires
 	# linux-headers-3.8 until that goes stable.  #467716
-	sed -i '/linux\/netconf.h/d' "${ED%/}"/usr/include/libnetlink.h || die
+	sed -i '/linux\/netconf.h/d' "${ED}"/usr/include/libnetlink.h || die
 
 	if use berkdb ; then
-		dodir /var/lib/arpd
+		keepdir /var/lib/arpd
 		# bug 47482, arpd doesn't need to be in /sbin
 		dodir /usr/bin
-		mv "${ED%/}"/sbin/arpd "${ED%/}"/usr/bin/ || die
+		mv "${ED}"/sbin/arpd "${ED}"/usr/bin/ || die
 	fi
 }
