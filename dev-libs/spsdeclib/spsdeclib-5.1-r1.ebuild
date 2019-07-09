@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -9,7 +9,7 @@ DESCRIPTION="Kryoflux SPS Decoder Library"
 HOMEPAGE="https://www.kryoflux.com/"
 SRC_URI="https://www.kryoflux.com/download/${PN}_${PV}_source.zip"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 LICENSE="Kryoflux-MAME"
 SLOT="0"
 

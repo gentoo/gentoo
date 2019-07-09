@@ -1,0 +1,29 @@
+From 3ca71af0e83fce89df0bfb472b28abe3c4e08c57 Mon Sep 17 00:00:00 2001
+From: Bernd Waibel <waebbl@gmail.com>
+Date: Sat, 15 Jun 2019 15:13:03 +0200
+Subject: [PATCH 3/5] Fix env var for renderman. This is called RMANTREE on
+ linux.
+
+Signed-off-by: Bernd Waibel <waebbl@gmail.com>
+---
+ cmake/AlembicPRMan.cmake | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/cmake/AlembicPRMan.cmake b/cmake/AlembicPRMan.cmake
+index e02b237..fdbf26c 100644
+--- a/cmake/AlembicPRMan.cmake
++++ b/cmake/AlembicPRMan.cmake
+@@ -66,8 +66,8 @@ ELSE()
+ ENDIF()
+ 
+ # Prefer PRMAN_ROOT set from the environment over the CMakeCache'd variable
+-IF(NOT $ENV{PRMAN_ROOT}x STREQUAL "x")
+-  SET( ALEMBIC_PRMAN_ROOT $ENV{PRMAN_ROOT})
++IF(NOT $ENV{RMANTREE}x STREQUAL "x")
++  SET( ALEMBIC_PRMAN_ROOT $ENV{RMANTREE})
+ ENDIF()
+ 
+ 
+-- 
+2.22.0
+

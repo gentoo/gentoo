@@ -1,12 +1,10 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-
+EAPI=7
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="threads"
-
-inherit bash-completion-r1 eutils flag-o-matic git-r3 pax-utils python-single-r1 toolchain-funcs
+inherit bash-completion-r1 flag-o-matic git-r3 pax-utils python-single-r1 toolchain-funcs
 
 DESCRIPTION="A JavaScript runtime built on Chrome's V8 JavaScript engine"
 HOMEPAGE="https://nodejs.org/"
@@ -19,17 +17,17 @@ IUSE="cpu_flags_x86_sse2 debug doc icu inspector +npm +snapshot +ssl systemtap t
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
 	inspector? ( icu ssl )
+	npm? ( ssl )
 "
 
 RDEPEND="
-	>=dev-libs/libuv-1.19.2:=
+	>=dev-libs/libuv-1.29.1:=
 	>=net-dns/c-ares-1.15.0
-	>=net-libs/http-parser-2.9.0:=
-	>=net-libs/nghttp2-1.29.0
+	>=net-libs/http-parser-2.8.0:=
+	>=net-libs/nghttp2-1.38.0
 	sys-libs/zlib
-	icu? ( >=dev-libs/icu-61.1:= )
-	npm? ( ${PYTHON_DEPS} )
-	ssl? ( =dev-libs/openssl-1.1.0*:0= )
+	icu? ( >=dev-libs/icu-64.2:= )
+	ssl? ( >=dev-libs/openssl-1.1.1:0= )
 "
 DEPEND="
 	${RDEPEND}
@@ -69,12 +67,12 @@ src_prepare() {
 	# proper libdir, hat tip @ryanpcmcquen https://github.com/iojs/io.js/issues/504
 	local LIBDIR=$(get_libdir)
 	sed -i -e "s|lib/|${LIBDIR}/|g" tools/install.py || die
-	sed -i -e "s/'lib'/'${LIBDIR}'/" lib/module.js deps/npm/lib/npm.js || die
+	sed -i -e "s/'lib'/'${LIBDIR}'/" deps/npm/lib/npm.js || die
 
 	# Avoid writing a depfile, not useful
 	sed -i -e "/DEPFLAGS =/d" tools/gyp/pylib/gyp/generator/make.py || die
 
-	sed -i -e "/'-O3'/d" common.gypi deps/v8/gypfiles/toolchain.gypi || die
+	sed -i -e "/'-O3'/d" common.gypi node.gypi || die
 
 	# Avoid a test that I've only been able to reproduce from emerge. It doesnt
 	# seem sandbox related either (invoking it from a sandbox works fine).
@@ -93,13 +91,16 @@ src_prepare() {
 }
 
 src_configure() {
-	local myconf=( --shared-cares --shared-http-parser --shared-libuv --shared-nghttp2 --shared-zlib )
+	local myconf=(
+		--shared-cares --shared-http-parser --shared-libuv --shared-nghttp2
+		--shared-zlib
+	)
 	use debug && myconf+=( --debug )
 	use icu && myconf+=( --with-intl=system-icu ) || myconf+=( --with-intl=none )
 	use inspector || myconf+=( --without-inspector )
 	use npm || myconf+=( --without-npm )
 	use snapshot && myconf+=( --with-snapshot )
-	use ssl && myconf+=( --shared-openssl ) || myconf+=( --without-ssl )
+	use ssl && myconf+=( --shared-openssl --openssl-use-def-ca-store ) || myconf+=( --without-ssl )
 
 	local myarch=""
 	case ${ABI} in
@@ -130,7 +131,8 @@ src_compile() {
 
 src_install() {
 	local LIBDIR="${ED}/usr/$(get_libdir)"
-	emake install DESTDIR="${D}"
+	default
+
 	pax-mark -m "${ED}"usr/bin/node
 
 	# set up a symlink structure that node-gyp expects..
@@ -145,8 +147,9 @@ src_install() {
 		for i in `grep -rl 'fonts.googleapis.com' "${S}"/out/doc/api/*`; do
 			sed -i '/fonts.googleapis.com/ d' $i;
 		done
-		# Install docs!
-		dohtml -r "${S}"/doc/*
+		# Install docs
+		docinto html
+		dodoc -r "${S}"/doc/*
 	fi
 
 	if use npm; then
@@ -185,6 +188,8 @@ src_install() {
 				"${find_name[@]}" \
 			\) \) -exec rm -rf "{}" \;
 	fi
+
+	mv "${ED}"/usr/share/doc/node "${ED}"/usr/share/doc/${PF} || die
 }
 
 src_test() {
@@ -193,10 +198,10 @@ src_test() {
 }
 
 pkg_postinst() {
-	einfo "The global npm config lives in /etc/npm. This deviates slightly"
-	einfo "from upstream which otherwise would have it live in /usr/etc/."
-	einfo ""
-	einfo "Protip: When using node-gyp to install native modules, you can"
-	einfo "avoid having to download extras by doing the following:"
-	einfo "$ node-gyp --nodedir /usr/include/node <command>"
+	elog "The global npm config lives in /etc/npm. This deviates slightly"
+	elog "from upstream which otherwise would have it live in /usr/etc/."
+	elog ""
+	elog "Protip: When using node-gyp to install native modules, you can"
+	elog "avoid having to download extras by doing the following:"
+	elog "$ node-gyp --nodedir /usr/include/node <command>"
 }

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>hasan.calisir@psauxit.com</email>
+		<name>Hasan ÇALIŞIR</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	DNSViz is a tool suite for analysis and visualization of Domain Name 
+	System (DNS) behavior, including its security extensions (DNSSEC).
+	This tool suite powers the Web-based analysis.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">dnsviz/dnsviz</remote-id>
+	</upstream>
+</pkgmetadata>

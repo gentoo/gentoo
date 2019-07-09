@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: kernel-2.eclass
@@ -624,8 +624,9 @@ if [[ ${ETYPE} == sources ]]; then
 			IUSE="${IUSE} deblob"
 
 			# Reflect that kernels contain firmware blobs unless otherwise
-			# stripped
-			LICENSE="${LICENSE} !deblob? ( linux-firmware )"
+			# stripped. Starting with version 4.14, the whole firmware
+			# tree has been dropped from the kernel.
+			kernel_is lt 4 14 && LICENSE+=" !deblob? ( linux-firmware )"
 
 			DEPEND+=" deblob? ( ${PYTHON_DEPS} )"
 
@@ -654,10 +655,10 @@ if [[ ${ETYPE} == sources ]]; then
 					${DEBLOB_URI}
 					${DEBLOB_CHECK_URI}
 				)"
-		else
-			# We have no way to deblob older kernels, so just mark them as
-			# tainted with non-libre materials.
-			LICENSE="${LICENSE} linux-firmware"
+		elif kernel_is lt 4 14; then
+			# Deblobbing is not available, so just mark kernels older
+			# than 4.14 as tainted with non-libre materials.
+			LICENSE+=" linux-firmware"
 		fi
 	fi
 
@@ -1226,16 +1227,20 @@ unipatch() {
 			UNIPATCH_LIST_GENPATCHES+=" ${DISTDIR}/${tarball}"
 			debug-print "genpatches tarball: $tarball"
 
-			# check gcc version < 4.9.X uses patch 5000 and = 4.9.X uses patch 5010
-			if [[ $(gcc-major-version) -eq 4 ]] && [[ $(gcc-minor-version) -ne 9 ]]; then
-				# drop 5000_enable-additional-cpu-optimizations-for-gcc-4.9.patch
-				if [[ $UNIPATCH_DROP != *"5010_enable-additional-cpu-optimizations-for-gcc-4.9.patch"* ]]; then
-					UNIPATCH_DROP+=" 5010_enable-additional-cpu-optimizations-for-gcc-4.9.patch"
+			local GCC_MAJOR_VER=$(gcc-major-version)
+			local GCC_MINOR_VER=$(gcc-minor-version)
+
+			# optimization patch for gcc < 8.X and kernel > 4.13
+			if [[ ${GCC_MAJOR_VER} -lt 8 ]] && [[ ${GCC_MAJOR_VER} -gt 4 ]]; then
+				if kernel_is ge 4 13 ; then
+					UNIPATCH_DROP+=" 5011_enable-cpu-optimizations-for-gcc8.patch"
 				fi
-			else
-				if [[ $UNIPATCH_DROP != *"5000_enable-additional-cpu-optimizations-for-gcc.patch"* ]]; then
-					#drop 5000_enable-additional-cpu-optimizations-for-gcc.patch
-					UNIPATCH_DROP+=" 5000_enable-additional-cpu-optimizations-for-gcc.patch"
+			# optimization patch for gcc >= 8 and kernel ge 4.13
+			elif [[ "${GCC_MAJOR_VER}" -ge 8 ]]; then
+				if kernel_is ge 4 13; then
+					# support old kernels for a period. For now, remove as all gcc versions required are masked
+					UNIPATCH_DROP+=" 5010_enable-additional-cpu-optimizations-for-gcc.patch"
+					UNIPATCH_DROP+=" 5010_enable-additional-cpu-optimizations-for-gcc-4.9.patch"
 				fi
 			fi
 		fi

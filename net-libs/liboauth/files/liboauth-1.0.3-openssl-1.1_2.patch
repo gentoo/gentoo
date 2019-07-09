@@ -1,0 +1,22 @@
+diff --git a/src/hash.c b/src/hash.c
+index 551991f..a0bc8b6 100644
+--- a/src/hash.c
++++ b/src/hash.c
+@@ -455,7 +455,7 @@ int oauth_verify_rsa_sha1 (const char *m, const char *c, const char *s) {
+   EVP_VerifyInit(md_ctx, EVP_sha1());
+   EVP_VerifyUpdate(md_ctx, m, strlen(m));
+   err = EVP_VerifyFinal(md_ctx, b64d, slen, pkey);
+-  EVP_MD_CTX_cleanup(md_ctx);
++  EVP_MD_CTX_free(md_ctx);
+   EVP_PKEY_free(pkey);
+   xfree(b64d);
+   return (err);
+@@ -485,7 +485,7 @@ char *oauth_body_hash_file(char *filename) {
+   len=0;
+   md=(unsigned char*) xcalloc(EVP_MD_size(EVP_sha1()),sizeof(unsigned char));
+   EVP_DigestFinal(ctx, md,(unsigned int*) &len);
+-  EVP_MD_CTX_cleanup(ctx);
++  EVP_MD_CTX_free(ctx);
+   return oauth_body_hash_encode(len, md);
+ }
+ 

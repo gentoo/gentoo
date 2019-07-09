@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,7 +12,7 @@ SRC_URI="mirror://gentoo/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~sparc ~x86"
+KEYWORDS="amd64 ~ppc ~sparc x86"
 IUSE=""
 
 RDEPEND="media-libs/alsa-lib"

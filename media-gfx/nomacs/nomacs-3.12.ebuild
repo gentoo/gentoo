@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,8 +11,8 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux"
-IUSE="heif +jpeg +opencv raw tiff zip"
+KEYWORDS="amd64 x86 ~amd64-linux"
+IUSE="+jpeg +opencv raw tiff zip"
 
 REQUIRED_USE="
 	raw? ( opencv )
@@ -28,7 +28,6 @@ RDEPEND="
 	dev-qt/qtsvg:5
 	dev-qt/qtwidgets:5
 	media-gfx/exiv2:=
-	heif? ( media-libs/libheif:= )
 	opencv? ( >=media-libs/opencv-3.4:= )
 	raw? ( media-libs/libraw:= )
 	tiff? (
@@ -52,7 +51,6 @@ src_configure() {
 		-DENABLE_CODE_COV=OFF
 		-DUSE_SYSTEM_QUAZIP=ON
 		-DENABLE_TRANSLATIONS=ON
-		-DENABLE_HEIF=$(usex heif)
 		-DENABLE_OPENCV=$(usex opencv)
 		-DENABLE_RAW=$(usex raw)
 		-DENABLE_TIFF=$(usex tiff)

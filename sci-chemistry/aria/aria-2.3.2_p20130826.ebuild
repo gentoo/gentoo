@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -41,7 +41,7 @@ S="${WORKDIR}/${MY_P}"
 
 pkg_nofetch(){
 	einfo "Go to http://aria.pasteur.fr/archives/aria2.3.2.tar.gz/view, download ${A}"
-	einfo "and place it in ${DISTDIR}"
+	einfo "and place it into your DISTDIR directory."
 }
 
 pkg_setup() {

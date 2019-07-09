@@ -1,0 +1,13 @@
+https://bugs.gentoo.org/684948
+
+--- fs-uae-launcher-2.8.3/fsui/qt/qt.py	2017-01-08 19:48:56.000000000 +0000
++++ fs-uae-launcher-2.8.3/fsui/qt/qt.py	2019-05-03 22:28:16.979041988 +0100
+@@ -60,7 +60,7 @@
+     # fix_qt_for_maverick()
+ 
+     fsbc.desktop.set_open_url_in_browser_function(open_url_in_browser)
+-    qapplication = QtBaseApplication([])
++    qapplication = QtBaseApplication([''])
+     initialize_qt_style(qapplication)
+     return qapplication
+ 

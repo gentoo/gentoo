@@ -1,0 +1,213 @@
+https://roy.marples.name/git/dhcpcd.git/patch/?id=23525884a346ed81c808c1ed90e3c56a8bf0cc68
+
+From 8d11b33f6c60e2db257130fa383ba76b6018bcf6 Mon Sep 17 00:00:00 2001
+From: Roy Marples <roy@marples.name>
+Date: Fri, 19 Apr 2019 09:45:02 +0100
+Subject: DHCPv6: Fix a potential buffer overflow reading NA/TA addresses
+
+Only copy upto the size of the address option rather than the
+option length.
+
+Found by Maxime Villard <max@m00nbsd.net>
+---
+ src/dhcp6.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/dhcp6.c b/src/dhcp6.c
+index 99a452b..8fc4f00 100644
+--- a/src/dhcp6.c
++++ b/src/dhcp6.c
+@@ -2029,12 +2029,12 @@ dhcp6_findna(struct interface *ifp, uint16_t ot, const uint8_t *iaid,
+ 		nd = o + ol;
+ 		l -= (size_t)(nd - d);
+ 		d = nd;
+-		if (ol < 24) {
++		if (ol < sizeof(ia)) {
+ 			errno = EINVAL;
+ 			logerrx("%s: IA Address option truncated", ifp->name);
+ 			continue;
+ 		}
+-		memcpy(&ia, o, ol);
++		memcpy(&ia, o, sizeof(ia));
+ 		ia.pltime = ntohl(ia.pltime);
+ 		ia.vltime = ntohl(ia.vltime);
+ 		/* RFC 3315 22.6 */
+-- 
+cgit v1.1
+
+
+From 4b67f6f1038fd4ad5ca7734eaaeba1b2ec4816b8 Mon Sep 17 00:00:00 2001
+From: Roy Marples <roy@marples.name>
+Date: Fri, 19 Apr 2019 21:00:19 +0100
+Subject: DHCP: Fix a potential 1 byte read overflow with DHO_OPTSOVERLOADED
+
+This fix basically moves the option length check up and also
+corrects an off by one error with it.
+
+Thanks to Maxime Villard <max@m00nbsd.net>
+---
+ src/dhcp.c | 10 ++++++----
+ 1 file changed, 6 insertions(+), 4 deletions(-)
+
+diff --git a/src/dhcp.c b/src/dhcp.c
+index f7cdefc..e13d1b4 100644
+--- a/src/dhcp.c
++++ b/src/dhcp.c
+@@ -215,6 +215,12 @@ get_option(struct dhcpcd_ctx *ctx,
+ 		}
+ 		l = *p++;
+ 
++		/* Check we can read the option data, if present */
++		if (p + l > e) {
++			errno = EINVAL;
++			return NULL;
++		}
++
+ 		if (o == DHO_OPTSOVERLOADED) {
+ 			/* Ensure we only get this option once by setting
+ 			 * the last bit as well as the value.
+@@ -249,10 +255,6 @@ get_option(struct dhcpcd_ctx *ctx,
+ 				bp += ol;
+ 			}
+ 			ol = l;
+-			if (p + ol >= e) {
+-				errno = EINVAL;
+-				return NULL;
+-			}
+ 			op = p;
+ 			bl += ol;
+ 		}
+-- 
+cgit v1.1
+
+
+From 7121040790b611ca3fbc400a1bbcd4364ef57233 Mon Sep 17 00:00:00 2001
+From: Roy Marples <roy@marples.name>
+Date: Fri, 19 Apr 2019 21:40:14 +0100
+Subject: auth: Use consttime_memequal(3) to compare hashes
+
+This stops any attacker from trying to infer secrets from latency.
+
+Thanks to Maxime Villard <max@m00nbsd.net>
+---
+ src/auth.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/auth.c b/src/auth.c
+index 9e24998..ce97051 100644
+--- a/src/auth.c
++++ b/src/auth.c
+@@ -354,7 +354,7 @@ gottoken:
+ 	}
+ 
+ 	free(mm);
+-	if (memcmp(d, &hmac_code, dlen)) {
++	if (!consttime_memequal(d, &hmac_code, dlen)) {
+ 		errno = EPERM;
+ 		return NULL;
+ 	}
+-- 
+cgit v1.1
+
+
+From cfde89ab66cb4e5957b1c4b68ad6a9449e2784da Mon Sep 17 00:00:00 2001
+From: Roy Marples <roy@marples.name>
+Date: Fri, 19 Apr 2019 21:42:07 +0100
+Subject: compat: Provide consttime_memequal if not in libc
+
+Public domain version by Matthias Drochner <drochner@netbsd.org>
+---
+ configure | 22 ++++++++++++++++++++++
+ 1 file changed, 22 insertions(+)
+
+diff --git a/configure b/configure
+index 570e65f..4f58f0f 100755
+--- a/configure
++++ b/configure
+@@ -13,6 +13,7 @@ IPV4LL=
+ INET6=
+ ARC4RANDOM=
+ CLOSEFROM=
++CONSTTIME_MEMEQUAL=
+ STRLCPY=
+ UDEV=
+ OS=
+@@ -846,6 +847,27 @@ if [ "$STRTOI" = no ]; then
+ 	echo "#include			\"compat/strtoi.h\"" >>$CONFIG_H
+ fi
+ 
++if [ -z "$CONSTTIME_MEMEQUAL" ]; then
++	printf "Testing for consttime_memequal ... "
++	cat <<EOF >_consttime_memequal.c
++#include <string.h>
++int main(void) {
++	return consttime_memequal("deadbeef", "deadbeef", 8);
++}
++EOF
++	if $XCC _consttime_memequal.c -o _consttime_memequal 2>&3; then
++		CONSTTIME_MEMEQUAL=yes
++	else
++		CONSTTIME_MEMEQUAL=no
++	fi
++	echo "$CONSTTIME_MEMEQUAL"
++	rm -f _consttime_memequal.c _consttime_memequal
++fi
++if [ "$CONSTTIME_MEMEQUAL" = no ]; then
++	echo "#include			\"compat/consttime_memequal.h\"" \
++	    >>$CONFIG_H
++fi
++
+ if [ -z "$DPRINTF" ]; then
+ 	printf "Testing for dprintf ... "
+ 	cat <<EOF >_dprintf.c
+-- 
+cgit v1.1
+
+
+From aee631aadeef4283c8a749c1caf77823304acf5e Mon Sep 17 00:00:00 2001
+From: Roy Marples <roy@marples.name>
+Date: Fri, 19 Apr 2019 21:47:37 +0100
+Subject: Really add consttime_memequal
+
+---
+ compat/consttime_memequal.h | 28 ++++++++++++++++++++++++++++
+ 1 file changed, 28 insertions(+)
+ create mode 100644 compat/consttime_memequal.h
+
+diff --git a/compat/consttime_memequal.h b/compat/consttime_memequal.h
+new file mode 100644
+index 0000000..9830648
+--- /dev/null
++++ b/compat/consttime_memequal.h
+@@ -0,0 +1,28 @@
++/*
++ * Written by Matthias Drochner <drochner@NetBSD.org>.
++ * Public domain.
++ */
++
++#ifndef CONSTTIME_MEMEQUAL_H
++#define CONSTTIME_MEMEQUAL_H
++inline static int
++consttime_memequal(const void *b1, const void *b2, size_t len)
++{
++	const unsigned char *c1 = b1, *c2 = b2;
++	unsigned int res = 0;
++
++	while (len--)
++		res |= *c1++ ^ *c2++;
++
++	/*
++	 * Map 0 to 1 and [1, 256) to 0 using only constant-time
++	 * arithmetic.
++	 *
++	 * This is not simply `!res' because although many CPUs support
++	 * branchless conditional moves and many compilers will take
++	 * advantage of them, certain compilers generate branches on
++	 * certain CPUs for `!res'.
++	 */
++	return (1 & ((res - 1) >> 8));
++}
++#endif /* CONSTTIME_MEMEQUAL_H */
+-- 
+cgit v1.1
+

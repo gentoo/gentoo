@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ SRC_URI="https://swift.im/downloads/releases/${P}/${P}.tar.gz"
 
 LICENSE="BSD BSD-1 CC-BY-3.0 GPL-3 OFL-1.1"
 SLOT="4/0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="client expat gconf +icu +idn lua spell test zeroconf"
 REQUIRED_USE="
 	|| ( icu idn )
@@ -64,6 +64,7 @@ DOCS=(
 )
 
 PATCHES=(
+	"${FILESDIR}"/${P}-boost-1.69-compatibility.patch
 	"${FILESDIR}"/${P}-make-generated-files-handle-unicode-characters.patch
 	"${FILESDIR}"/${P}-qt-5.11-compatibility.patch
 )

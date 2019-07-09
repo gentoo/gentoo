@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
+PYTHON_COMPAT=( python{2_7,3_5,3_6} )
 
 inherit distutils-r1 perl-module toolchain-funcs vcs-snapshot
 
@@ -10,7 +10,7 @@ PY_P="python-${PN}-0.2.0_p20141211"
 PY_COMMIT="000915e115acac57a1fdbceb1e6361788af83a3d"
 
 DESCRIPTION="Network Kanji code conversion Filter with UTF-8/16 support"
-HOMEPAGE="http://sourceforge.jp/projects/nkf/"
+HOMEPAGE="https://ja.osdn.net/projects/nkf/"
 SRC_URI="mirror://sourceforge.jp/${PN}/64158/${P}.tar.gz
 	python? ( https://github.com/fumiyas/python-${PN}/archive/${PY_COMMIT}.tar.gz -> ${PY_P}.tar.gz )"
 

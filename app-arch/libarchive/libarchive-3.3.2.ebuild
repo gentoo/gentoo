@@ -1,12 +1,12 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit eutils libtool multilib-minimal toolchain-funcs
 
-DESCRIPTION="BSD tar command"
-HOMEPAGE="http://www.libarchive.org/"
-SRC_URI="http://www.libarchive.org/downloads/${P}.tar.gz"
+DESCRIPTION="Multi-format archive and compression library"
+HOMEPAGE="https://www.libarchive.org/"
+SRC_URI="https://www.libarchive.org/downloads/${P}.tar.gz"
 
 LICENSE="BSD BSD-2 BSD-4 public-domain"
 SLOT="0/13"

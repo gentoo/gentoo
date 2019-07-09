@@ -9,6 +9,7 @@
 		<remote-id type="github">lxqt/lxqt-config</remote-id>
 	</upstream>
 	<use>
-		<flag name="monitor" restrict="&gt;=lxqt-base/lxqt-config-0.13.0">Build monitor settings tool</flag>
+		<flag name="monitor">Build monitor settings tool</flag>
+		<flag name="touchpad">Build touchpad settings tool</flag>
 	</use>
 </pkgmetadata>

@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/alleg/${P}.tar.gz"
 
 LICENSE="Allegro MIT GPL-2+ ZLIB"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~mips ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm64 ~mips ppc ppc64 x86"
 IUSE="alsa fbcon jack jpeg opengl oss png svga test vga vorbis X"
 
 RDEPEND="

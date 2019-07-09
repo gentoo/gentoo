@@ -1,9 +1,9 @@
-# Copyright 2018 Gentoo Authors
+# Copyright 2018-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{4,5,6,7} pypy{,3} )
+PYTHON_COMPAT=( python2_7 python3_{5,6,7} pypy{,3} )
 inherit distutils-r1
 
 MY_P=py-filelock-${PV}
@@ -14,7 +14,7 @@ SRC_URI="https://github.com/benediktschmitt/py-filelock/archive/v${PV}.tar.gz ->
 
 LICENSE="Unlicense"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE=""
 
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"

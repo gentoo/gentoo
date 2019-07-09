@@ -1,15 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer restrict="&gt;=sys-boot/grub-2" type="person">
+<maintainer type="person">
 	<email>floppym@gentoo.org</email>
 	<name>Mike Gilbert</name>
-	<description>GRUB2 only - do not assign bugs related to GRUB Legacy (0.97)</description>
-</maintainer>
-<maintainer restrict="&lt;sys-boot/grub-1" type="person">
-	<email>axs@gentoo.org</email>
-	<name>Ian Stakenvicius</name>
-	<description>GRUB-Legacy only - do not assign bugs related to GRUB2</description>
 </maintainer>
 <maintainer type="project">
 	<email>base-system@gentoo.org</email>
@@ -33,7 +27,6 @@
 		Allow concurrent installation of <pkg>sys-boot/grub</pkg> SLOT 0 and
 		<pkg>sys-boot/grub</pkg> SLOT 2 by renaming all programs.
 	</flag>
-	<flag name="netboot">Enable network booting</flag>
 	<flag name="themes">Build and install GRUB themes (starfield)</flag>
 	<flag name="truetype">Build and install grub-mkfont conversion utility</flag>
 </use>

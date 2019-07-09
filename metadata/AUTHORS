@@ -13,4 +13,5 @@
 # Entries are single lines and contain the entity's name and an optional
 # e-mail address. Keep the list sorted (use "LC_ALL=en_US.utf-8 sort").
 #
+Michał Górny <mgorny@gentoo.org>
 Sony Interactive Entertainment Inc.

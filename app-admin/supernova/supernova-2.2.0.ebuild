@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -19,7 +19,7 @@ CDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 DEPEND="
 	${CDEPEND}
 	doc? ( >=dev-python/mkdocs-0.14.0[${PYTHON_USEDEP}] )
-	test? ( dev-python/pytest[${PYTHON_USEDEP}] )
+	test? ( <dev-python/pytest-4.0.0[${PYTHON_USEDEP}] )
 "
 RDEPEND="
 	${CDEPEND}

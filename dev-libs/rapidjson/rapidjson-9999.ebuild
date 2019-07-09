@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -29,10 +29,6 @@ DEPEND="
 		dev-util/valgrind
 	)"
 RDEPEND=""
-
-PATCHES=(
-	"${FILESDIR}/${P}-gcc-7.patch"
-)
 
 src_prepare() {
 	cmake-utils_src_prepare

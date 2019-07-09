@@ -1,0 +1,87 @@
+#!/sbin/openrc-run
+# Copyright 1999-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+alsastatedir=/var/lib/alsa
+alsascrdir=/etc/alsa.d
+alsahomedir=/run/alsasound
+
+extra_commands="save restore"
+
+depend() {
+	need localmount
+	after bootmisc modules isapnp coldplug hotplug
+}
+
+restore() {
+	ebegin "Restoring Mixer Levels"
+
+	checkpath -q -d -m 0700 -o root:root ${alsahomedir} || return 1
+
+	if [ ! -r "${alsastatedir}/asound.state" ] ; then
+		ewarn "No mixer config in ${alsastatedir}/asound.state, you have to unmute your card!"
+		eend 0
+		return 0
+	fi
+
+	local cards="$(sed -n -e 's/^ *\([[:digit:]]*\) .*/\1/p' /proc/asound/cards)"
+	local CARDNUM
+	for cardnum in ${cards}; do
+		[ -e /dev/snd/controlC${cardnum} ] || sleep 2
+		[ -e /dev/snd/controlC${cardnum} ] || sleep 2
+		[ -e /dev/snd/controlC${cardnum} ] || sleep 2
+		[ -e /dev/snd/controlC${cardnum} ] || sleep 2
+		alsactl -E HOME="${alsahomedir}" -I -f "${alsastatedir}/asound.state" restore ${cardnum} \
+			|| ewarn "Errors while restoring defaults, ignoring"
+	done
+
+	for ossfile in "${alsastatedir}"/oss/card*_pcm* ; do
+		[ -e "${ossfile}" ] || continue
+		# We use cat because I'm not sure if cp works properly on /proc
+		local procfile=${ossfile##${alsastatedir}/oss}
+		procfile="$(echo "${procfile}" | sed -e 's,_,/,g')"
+		if [ -e /proc/asound/"${procfile}"/oss ] ; then
+		    cat "${ossfile}" > /proc/asound/"${procfile}"/oss 
+		fi
+	done
+
+	eend 0
+}
+
+save() {
+	ebegin "Storing ALSA Mixer Levels"
+
+	checkpath -q -d -m 0700 -o root:root ${alsahomedir} || return 1
+
+	mkdir -p "${alsastatedir}"
+	if ! alsactl -E HOME="${alsahomedir}" -f "${alsastatedir}/asound.state" store; then
+		eerror "Error saving levels."
+		eend 1
+		return 1
+	fi
+
+	for ossfile in /proc/asound/card*/pcm*/oss; do
+		[ -e "${ossfile}" ] || continue
+		local device=${ossfile##/proc/asound/} ; device=${device%%/oss}
+		device="$(echo "${device}" | sed -e 's,/,_,g')"
+		mkdir -p "${alsastatedir}/oss/"
+		cp "${ossfile}" "${alsastatedir}/oss/${device}"
+	done
+
+	eend 0
+}
+
+start() {
+	if [ "${RESTORE_ON_START}" = "yes" ]; then
+		restore
+	fi
+
+	return 0
+}
+
+stop() {
+	if [ "${SAVE_ON_STOP}" = "yes" ]; then
+		save
+	fi
+	return 0
+}

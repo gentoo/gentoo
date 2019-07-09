@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # TODO: Add python support.
@@ -53,9 +53,9 @@ multilib_src_configure() {
 	local myeconfargs=(
 		--disable-examples
 		--disable-failmalloc
+		--disable-python-bindings
 		--disable-werror
 		--without-cython
-		--disable-python-bindings
 		$(use_enable cxx asio-lib)
 		$(use_enable debug)
 		$(multilib_native_use_enable hpack-tools)
@@ -69,5 +69,7 @@ multilib_src_configure() {
 }
 
 multilib_src_install_all() {
-	use static-libs || find "${ED%/}"/usr -name '*.la' -delete
+	if ! use static-libs ; then
+		find "${ED}"/usr -name '*.la' -delete || die
+	fi
 }

@@ -1,0 +1,54 @@
+From 9f2ffd36c5873f4d2645f07129ead7970871808c Mon Sep 17 00:00:00 2001
+From: Christoph Cullmann <cullmann@kde.org>
+Date: Sun, 14 Apr 2019 14:38:31 +0200
+Subject: avoid conflicting shortcuts for switching tabs
+
+Summary: use ALT + Home/End for top/bottom of view
+
+Subscribers: kwrite-devel, kde-frameworks-devel
+
+Tags: #kate, #frameworks
+
+Differential Revision: https://phabricator.kde.org/D20534
+---
+ src/view/kateview.cpp | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/src/view/kateview.cpp b/src/view/kateview.cpp
+index 7220d26..55457c7 100644
+--- a/src/view/kateview.cpp
++++ b/src/view/kateview.cpp
+@@ -1046,13 +1046,13 @@ void KTextEditor::ViewPrivate::setupEditActions()
+ 
+     a = ac->addAction(QStringLiteral("move_top_of_view"));
+     a->setText(i18n("Move to Top of View"));
+-    ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL + Qt::Key_PageUp));
++    ac->setDefaultShortcut(a, QKeySequence(Qt::ALT + Qt::Key_Home));
+     connect(a, SIGNAL(triggered(bool)), SLOT(topOfView()));
+     m_editActions << a;
+ 
+     a = ac->addAction(QStringLiteral("select_top_of_view"));
+     a->setText(i18n("Select to Top of View"));
+-    ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL + Qt::SHIFT +  Qt::Key_PageUp));
++    ac->setDefaultShortcut(a, QKeySequence(Qt::ALT + Qt::SHIFT + Qt::Key_Home));
+     connect(a, SIGNAL(triggered(bool)), SLOT(shiftTopOfView()));
+     m_editActions << a;
+ 
+@@ -1070,13 +1070,13 @@ void KTextEditor::ViewPrivate::setupEditActions()
+ 
+     a = ac->addAction(QStringLiteral("move_bottom_of_view"));
+     a->setText(i18n("Move to Bottom of View"));
+-    ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL + Qt::Key_PageDown));
++    ac->setDefaultShortcut(a, QKeySequence(Qt::ALT + Qt::Key_End));
+     connect(a, SIGNAL(triggered(bool)), SLOT(bottomOfView()));
+     m_editActions << a;
+ 
+     a = ac->addAction(QStringLiteral("select_bottom_of_view"));
+     a->setText(i18n("Select to Bottom of View"));
+-    ac->setDefaultShortcut(a, QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_PageDown));
++    ac->setDefaultShortcut(a, QKeySequence(Qt::ALT + Qt::SHIFT + Qt::Key_End));
+     connect(a, SIGNAL(triggered(bool)), SLOT(shiftBottomOfView()));
+     m_editActions << a;
+ 
+-- 
+cgit v1.1

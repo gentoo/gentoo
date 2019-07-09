@@ -1,30 +1,62 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-XORG_MULTILIB=yes
-inherit xorg-2
+EAPI=7
 
 EGIT_REPO_URI="https://gitlab.freedesktop.org/pixman/pixman.git"
-DESCRIPTION="Low-level pixel manipulation routines"
 
-if [[ $PV != 9999* ]]; then
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris ~x86-winnt"
+if [[ ${PV} = 9999* ]]; then
+	GIT_ECLASS="git-r3"
 fi
 
-IUSE="altivec cpu_flags_arm_iwmmxt loongson2f cpu_flags_x86_mmxext neon cpu_flags_x86_sse2 cpu_flags_x86_ssse3"
+inherit ${GIT_ECLASS} meson multilib-minimal toolchain-funcs
 
-src_configure() {
-	XORG_CONFIGURE_OPTIONS=(
-		$(use_enable cpu_flags_arm_iwmmxt arm-iwmmxt)
-		$(use_enable cpu_flags_x86_mmxext mmx)
-		$(use_enable cpu_flags_x86_sse2 sse2)
-		$(use_enable cpu_flags_x86_ssse3 ssse3)
-		$(use_enable altivec vmx)
-		$(use_enable neon arm-neon)
-		$(use_enable loongson2f loongson-mmi)
-		--disable-gtk
-		--disable-libpng
+DESCRIPTION="Low-level pixel manipulation routines"
+HOMEPAGE="http://www.pixman.org/ https://gitlab.freedesktop.org/pixman/pixman/"
+if [[ ${PV} = 9999* ]]; then
+	SRC_URI=""
+else
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris ~x86-winnt"
+	SRC_URI="https://www.x.org/releases/individual/lib/${P}.tar.gz"
+fi
+
+LICENSE="MIT"
+SLOT="0"
+IUSE="altivec cpu_flags_arm_iwmmxt cpu_flags_arm_iwmmxt2 loongson2f cpu_flags_x86_mmxext neon cpu_flags_x86_sse2 cpu_flags_x86_ssse3"
+
+src_unpack() {
+	default
+	[[ $PV = 9999* ]] && git-r3_src_unpack
+}
+
+multilib_src_configure() {
+	local openmp=disabled
+	tc-has-openmp && openmp=enabled
+
+	local emesonargs=(
+		$(meson_feature cpu_flags_arm_iwmmxt iwmmxt)
+		$(meson_use     cpu_flags_arm_iwmmxt2 iwmmxt2)
+		$(meson_feature cpu_flags_x86_mmxext mmx)
+		$(meson_feature cpu_flags_x86_sse2 sse2)
+		$(meson_feature cpu_flags_x86_ssse3 ssse3)
+		$(meson_feature altivec vmx)
+		$(meson_feature neon neon)
+		$(meson_feature loongson2f loongson-mmi)
+		-Dgtk=disabled
+		-Dlibpng=disabled
+		-Dopenmp=$openmp # only used in unit tests
 	)
-	xorg-2_src_configure
+	meson_src_configure
+}
+
+multilib_src_compile() {
+	meson_src_compile
+}
+
+multilib_src_test() {
+	meson test -v -C "${BUILD_DIR}" -t 100
+}
+
+multilib_src_install() {
+	meson_src_install
 }

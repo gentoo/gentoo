@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -30,9 +30,11 @@ RDEPEND="${DEPEND}
 
 S="${WORKDIR}"/${MY_P}
 
-PATCHES=( "${FILESDIR}"/${P}-parallel.patch
-		  "${FILESDIR}"/${P}-c++14.patch
-		)
+PATCHES=(
+	"${FILESDIR}"/${P}-parallel.patch
+	"${FILESDIR}"/${P}-c++14.patch
+	"${FILESDIR}"/${P}-jpeg-9c.patch
+)
 
 src_prepare() {
 	default

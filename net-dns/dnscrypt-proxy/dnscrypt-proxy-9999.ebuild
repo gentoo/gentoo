@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 EGO_PN="github.com/jedisct1/${PN}"
 
@@ -20,7 +20,9 @@ HOMEPAGE="https://github.com/jedisct1/dnscrypt-proxy"
 
 LICENSE="ISC"
 SLOT="0"
-IUSE="pie test"
+IUSE="pie"
+
+DEPEND=">=dev-lang/go-1.12"
 
 FILECAPS=( cap_net_bind_service+ep usr/bin/dnscrypt-proxy )
 PATCHES=( "${FILESDIR}"/config-full-paths-r10.patch )
@@ -34,6 +36,8 @@ src_prepare() {
 	default
 	# Create directory structure suitable for building
 	mkdir -p "src/${EGO_PN%/*}" || die
+	# fixes $GOPATH/go.mod exists but should not
+	rm go.mod || die
 	mv "${PN}" "src/${EGO_PN}" || die
 	mv "vendor" "src/" || die
 }
@@ -58,6 +62,9 @@ src_install() {
 	systemd_newunit "${FILESDIR}"/dnscrypt-proxy.service dnscrypt-proxy.service
 	systemd_newunit "${FILESDIR}"/dnscrypt-proxy.socket dnscrypt-proxy.socket
 
+	insinto /etc/logrotate.d
+	newins "${FILESDIR}"/dnscrypt-proxy.logrotate dnscrypt-proxy
+
 	einstalldocs
 }
 
@@ -73,20 +80,6 @@ pkg_postinst() {
 		ewarn "3) configure to run ${PN} as root (not recommended)"
 		ewarn
 	fi
-
-	local v
-	for v in ${REPLACING_VERSIONS}; do
-		if [[ ${v} == 1.* ]] ; then
-			elog "Version 2 is a complete rewrite of ${PN}"
-			elog "please clean up old config/log files"
-			elog
-		fi
-		if [[ ${v} == 2.* ]] ; then
-			elog "As of version 2.0.12 of ${PN} runs as an 'dnscrypt-proxy' user/group"
-			elog "you can remove obsolete 'dnscrypt' accounts from the system"
-			elog
-		fi
-	done
 
 	if systemd_is_booted || has_version sys-apps/systemd; then
 		elog "Using systemd socket activation may cause issues with speed"

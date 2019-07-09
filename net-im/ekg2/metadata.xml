@@ -7,20 +7,6 @@
 	</maintainer>
 
 	<use>
-		<!-- 0.3* flags -->
-		<flag name="gif" restrict="=net-im/ekg2-0.3*">
-			GIF token support for Gadu-Gadu protocol.</flag>
-		<flag name="gnutls">Enable SSL/TLS support through GnuTLS
-			for the plugins supporting it. If 'ssl' is enabled too, GnuTLS will
-			be preferred where possible (and OpenSSL will be used
-			elsewhere).</flag>
-		<flag name="jpeg">JPEG token support for Gadu-Gadu protocol.</flag>
-		<flag name="ssl" restrict="=net-im/ekg2-0.3*">
-			Enable the complete SSL/TLS support through OpenSSL.
-			This also enables the 'sim' plugin which relies on OpenSSL.</flag>
-		<flag name="oracle">Support logging messages into Oracle database.</flag>
-
-		<!-- common and modern flags -->
 		<flag name="gadu">Enable Gadu-Gadu protocol support (requires
 			<pkg>net-libs/libgadu</pkg>).</flag>
 		<flag name="gpg">Enable jabber message encryption through

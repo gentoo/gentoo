@@ -4,7 +4,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{4,5,6,7} )
+PYTHON_COMPAT=( python2_7 python3_{5,6,7} )
 
 inherit toolchain-funcs libtool flag-o-matic bash-completion-r1 \
 	pam python-r1 multilib-minimal multiprocessing systemd
@@ -17,7 +17,7 @@ if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://git.kernel.org/pub/scm/utils/util-linux/util-linux.git"
 else
 	[[ "${PV}" = *_rc* ]] || \
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~amd64-linux ~x86-linux"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~riscv ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~amd64-linux ~x86-linux"
 	SRC_URI="mirror://kernel/linux/utils/util-linux/v${PV:0:4}/${MY_P}.tar.xz"
 fi
 
@@ -62,6 +62,15 @@ RDEPEND+="
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 S="${WORKDIR}/${MY_P}"
+
+PATCHES=(
+	# In glibc-2.29+, a lot of changes were made to arch-specific
+	# handling of `struct termios', which breaks atleast MIPS.
+	# The below patch from upstream fixes this, and should be
+	# in the next release.
+	# See: https://git.kernel.org/pub/scm/utils/util-linux/util-linux.git/commit/?id=963413a1adf6767ab17712097e288e1a346f63a7
+	"${FILESDIR}/${P}-fix-struct_termios-check.patch"
+)
 
 src_prepare() {
 	default

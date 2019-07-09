@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 MY_P="${P/PEAR-/}"
 
 DESCRIPTION="Handle and modify HTTP headers and status codes in PHP"
-HOMEPAGE="http://pear.php.net/package/HTTP_Header"
+HOMEPAGE="https://pear.php.net/package/HTTP_Header"
 SRC_URI="http://download.pear.php.net/package/${MY_P}.tgz"
 LICENSE="BSD-2"
 SLOT="0"

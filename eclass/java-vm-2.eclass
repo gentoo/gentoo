@@ -123,7 +123,7 @@ get_system_arch() {
 	case $(get_abi_CHOST ${abi}) in
 		mips*l*) echo mipsel ;;
 		mips*) echo mips ;;
-		ppc64le*) echo ppc64le ;;
+		powerpc64le*) echo ppc64le ;;
 		*)
 			case ${abi} in
 				*_fbsd) get_system_arch ${abi%_fbsd} ;;

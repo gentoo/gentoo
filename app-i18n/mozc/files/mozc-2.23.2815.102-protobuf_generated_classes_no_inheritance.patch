@@ -1,0 +1,1039 @@
+https://github.com/google/mozc/issues/460
+
+--- /src/dictionary/user_dictionary.cc
++++ /src/dictionary/user_dictionary.cc
+@@ -289,7 +289,7 @@
+     }
+ 
+     auto_register_mode_ = false;
+-    dic_->Load(*(storage.get()));
++    dic_->Load(storage.get()->user_dictionary_storage_base);
+   }
+ 
+  private:
+--- /src/dictionary/user_dictionary_session.cc
++++ /src/dictionary/user_dictionary_session.cc
+@@ -69,11 +69,11 @@
+   }
+ 
+   virtual bool RunUndo(mozc::UserDictionaryStorage *storage) {
+-    if (storage->dictionaries_size() == 0) {
++    if (storage->user_dictionary_storage_base.dictionaries_size() == 0) {
+       return false;
+     }
+ 
+-    storage->mutable_dictionaries()->RemoveLast();
++    storage->user_dictionary_storage_base.mutable_dictionaries()->RemoveLast();
+     return true;
+   }
+ 
+@@ -94,7 +94,7 @@
+     }
+ 
+     RepeatedPtrField<UserDictionary> *dictionaries =
+-        storage->mutable_dictionaries();
++        storage->user_dictionary_storage_base.mutable_dictionaries();
+     dictionaries->AddAllocated(dictionary_.release());
+ 
+     // Adjust the position of the reverted dictionary.
+@@ -120,10 +120,10 @@
+   }
+ 
+   virtual bool RunUndo(mozc::UserDictionaryStorage *storage) {
+-    if (storage->dictionaries_size() != 1) {
++    if (storage->user_dictionary_storage_base.dictionaries_size() != 1) {
+       return false;
+     }
+-    dictionary_->Swap(storage->mutable_dictionaries(0));
++    dictionary_->Swap(storage->user_dictionary_storage_base.mutable_dictionaries(0));
+     return true;
+   }
+ 
+@@ -144,7 +144,7 @@
+   virtual bool RunUndo(mozc::UserDictionaryStorage *storage) {
+     UserDictionary *dictionary =
+         UserDictionaryUtil::GetMutableUserDictionaryById(
+-            storage, dictionary_id_);
++            &storage->user_dictionary_storage_base, dictionary_id_);
+     if (dictionary == NULL) {
+       return false;
+     }
+@@ -169,7 +169,7 @@
+   virtual bool RunUndo(mozc::UserDictionaryStorage *storage) {
+     UserDictionary *dictionary =
+         UserDictionaryUtil::GetMutableUserDictionaryById(
+-            storage, dictionary_id_);
++            &storage->user_dictionary_storage_base, dictionary_id_);
+     if (dictionary == NULL || dictionary->entries_size() == 0) {
+       return false;
+     }
+@@ -195,7 +195,7 @@
+   virtual bool RunUndo(mozc::UserDictionaryStorage *storage) {
+     UserDictionary *dictionary =
+         UserDictionaryUtil::GetMutableUserDictionaryById(
+-            storage, dictionary_id_);
++            &storage->user_dictionary_storage_base, dictionary_id_);
+     if (dictionary == NULL ||
+         index_ < 0 || dictionary->entries_size() <= index_) {
+       return false;
+@@ -240,7 +240,7 @@
+   virtual bool RunUndo(mozc::UserDictionaryStorage *storage) {
+     UserDictionary *dictionary =
+         UserDictionaryUtil::GetMutableUserDictionaryById(
+-            storage, dictionary_id_);
++            &storage->user_dictionary_storage_base, dictionary_id_);
+     if (dictionary == NULL) {
+       return false;
+     }
+@@ -306,7 +306,7 @@
+   virtual bool RunUndo(mozc::UserDictionaryStorage *storage) {
+     UserDictionary *dictionary =
+         UserDictionaryUtil::GetMutableUserDictionaryById(
+-            storage, dictionary_id_);
++            &storage->user_dictionary_storage_base, dictionary_id_);
+     if (dictionary == NULL) {
+       return false;
+     }
+@@ -345,7 +345,7 @@
+ 
+ // TODO(hidehiko) move this to header.
+ const UserDictionaryStorage &UserDictionarySession::storage() const {
+-  return *storage_;
++  return storage_->user_dictionary_storage_base;
+ }
+ mozc::UserDictionaryStorage *UserDictionarySession::mutable_storage() {
+   return storage_.get();
+@@ -464,7 +464,7 @@
+     const string &dictionary_name, uint64 *new_dictionary_id) {
+   UserDictionaryCommandStatus::Status status =
+       UserDictionaryUtil::CreateDictionary(
+-          storage_.get(), dictionary_name, new_dictionary_id);
++          &storage_->user_dictionary_storage_base, dictionary_name, new_dictionary_id);
+   if (status == UserDictionaryCommandStatus::USER_DICTIONARY_COMMAND_SUCCESS) {
+     AddUndoCommand(new UndoCreateDictionaryCommand);
+   }
+@@ -488,7 +488,7 @@
+   int original_index;
+   UserDictionary *deleted_dictionary;
+   if (!UserDictionaryUtil::DeleteDictionary(
+-          storage_.get(), dictionary_id,
++          &storage_->user_dictionary_storage_base, dictionary_id,
+           &original_index, &deleted_dictionary)) {
+     // Failed to delete the dictionary.
+     return UserDictionaryCommandStatus::UNKNOWN_DICTIONARY_ID;
+@@ -510,7 +510,7 @@
+     uint64 dictionary_id, const string &dictionary_name) {
+   string original_name;
+   const UserDictionary *dictionary =
+-      UserDictionaryUtil::GetUserDictionaryById(*storage_, dictionary_id);
++      UserDictionaryUtil::GetUserDictionaryById(storage_->user_dictionary_storage_base, dictionary_id);
+   if (dictionary != NULL) {
+     // Note that if dictionary is null, it means the dictionary_id is invalid
+     // so following RenameDictionary will fail, and error handling is done
+@@ -547,7 +547,7 @@
+     uint64 dictionary_id, const UserDictionary::Entry &entry) {
+   UserDictionary *dictionary =
+       UserDictionaryUtil::GetMutableUserDictionaryById(
+-          storage_.get(), dictionary_id);
++          &storage_->user_dictionary_storage_base, dictionary_id);
+   if (dictionary == NULL) {
+     return UserDictionaryCommandStatus::UNKNOWN_DICTIONARY_ID;
+   }
+@@ -575,7 +575,7 @@
+     uint64 dictionary_id, int index, const UserDictionary::Entry &entry) {
+   UserDictionary *dictionary =
+       UserDictionaryUtil::GetMutableUserDictionaryById(
+-          storage_.get(), dictionary_id);
++          &storage_->user_dictionary_storage_base, dictionary_id);
+   if (dictionary == NULL) {
+     return UserDictionaryCommandStatus::UNKNOWN_DICTIONARY_ID;
+   }
+@@ -604,7 +604,7 @@
+     uint64 dictionary_id, const std::vector<int> &index_list) {
+   UserDictionary *dictionary =
+       UserDictionaryUtil::GetMutableUserDictionaryById(
+-          storage_.get(), dictionary_id);
++          &storage_->user_dictionary_storage_base, dictionary_id);
+   if (dictionary == NULL) {
+     return UserDictionaryCommandStatus::UNKNOWN_DICTIONARY_ID;
+   }
+@@ -644,7 +644,7 @@
+     uint64 dictionary_id, const string &data) {
+   UserDictionary *dictionary =
+       UserDictionaryUtil::GetMutableUserDictionaryById(
+-          storage_.get(), dictionary_id);
++          &storage_->user_dictionary_storage_base, dictionary_id);
+   if (dictionary == NULL) {
+     return UserDictionaryCommandStatus::UNKNOWN_DICTIONARY_ID;
+   }
+@@ -699,7 +699,7 @@
+     uint64 *new_dictionary_id) {
+   UserDictionaryCommandStatus::Status status =
+       UserDictionaryUtil::CreateDictionary(
+-          storage_.get(), dictionary_name, new_dictionary_id);
++          &storage_->user_dictionary_storage_base, dictionary_name, new_dictionary_id);
+   if (status != UserDictionaryCommandStatus::USER_DICTIONARY_COMMAND_SUCCESS) {
+     return status;
+   }
+@@ -709,7 +709,7 @@
+ 
+   UserDictionary *dictionary =
+       UserDictionaryUtil::GetMutableUserDictionaryById(
+-          storage_.get(), *new_dictionary_id);
++          &storage_->user_dictionary_storage_base, *new_dictionary_id);
+   if (dictionary == NULL) {
+     // The dictionary should be always found.
+     return UserDictionaryCommandStatus::UNKNOWN_ERROR;
+@@ -719,7 +719,7 @@
+ }
+ 
+ bool UserDictionarySession::EnsureNonEmptyStorage() {
+-  if (storage_->dictionaries_size() > 0) {
++  if (storage_->user_dictionary_storage_base.dictionaries_size() > 0) {
+     // The storage already has at least one dictionary. Do nothing.
+     return false;
+   }
+@@ -728,7 +728,7 @@
+   uint64 new_dictionary_id;
+   UserDictionaryCommandStatus::Status status =
+       UserDictionaryUtil::CreateDictionary(
+-          storage_.get(), default_dictionary_name_, &new_dictionary_id);
++          &storage_->user_dictionary_storage_base, default_dictionary_name_, &new_dictionary_id);
+   CHECK_EQ(
+       status, UserDictionaryCommandStatus::USER_DICTIONARY_COMMAND_SUCCESS);
+   return true;
+@@ -755,7 +755,7 @@
+ 
+ void UserDictionarySession::ClearDictionariesAndUndoHistory() {
+   ScopedUserDictionaryLocker l(storage_.get());
+-  storage_->clear_dictionaries();
++  storage_->user_dictionary_storage_base.clear_dictionaries();
+   ClearUndoHistory();
+ }
+ 
+--- /src/dictionary/user_dictionary_session_test.cc
++++ /src/dictionary/user_dictionary_session_test.cc
+@@ -95,12 +95,12 @@
+ 
+   ASSERT_EQ(UserDictionaryCommandStatus::FILE_NOT_FOUND, session.Load());
+ 
+-  session.mutable_storage()->set_version(10);
++  session.mutable_storage()->user_dictionary_storage_base.set_version(10);
+   ASSERT_EQ(UserDictionaryCommandStatus::USER_DICTIONARY_COMMAND_SUCCESS,
+             session.Save());
+ 
+   // Clear once, in order to make sure that Load is actually working.
+-  session.mutable_storage()->Clear();
++  session.mutable_storage()->user_dictionary_storage_base.Clear();
+   ASSERT_EQ(UserDictionaryCommandStatus::USER_DICTIONARY_COMMAND_SUCCESS,
+             session.Load());
+ 
+@@ -130,7 +130,7 @@
+ 
+   // Create huge dummy data.
+   {
+-    UserDictionaryStorage *storage = session.mutable_storage();
++    UserDictionaryStorage *storage = &session.mutable_storage()->user_dictionary_storage_base;
+     for (int i = 0; i < 100; ++i) {
+       UserDictionary *dictionary = storage->add_dictionaries();
+       for (int j = 0; j < 1000; ++j) {
+@@ -147,7 +147,7 @@
+   ASSERT_EQ(UserDictionaryCommandStatus::FILE_SIZE_LIMIT_EXCEEDED,
+             session.Save());
+ 
+-  session.mutable_storage()->Clear();
++  session.mutable_storage()->user_dictionary_storage_base.Clear();
+   ASSERT_EQ(UserDictionaryCommandStatus::USER_DICTIONARY_COMMAND_SUCCESS,
+             session.Load());
+ 
+@@ -191,7 +191,7 @@
+ 
+   while (session.storage().dictionaries_size() <
+          ::mozc::UserDictionaryStorage::max_dictionary_size()) {
+-    session.mutable_storage()->add_dictionaries();
++    session.mutable_storage()->user_dictionary_storage_base.add_dictionaries();
+   }
+   EXPECT_EQ(UserDictionaryCommandStatus::DICTIONARY_SIZE_LIMIT_EXCEEDED,
+             session.CreateDictionary("dictionary 2", &dummy_dictionary_id));
+@@ -204,7 +204,7 @@
+   const uint64 kDummyId = 10;
+   {
+     UserDictionary *user_dictionary =
+-        session.mutable_storage()->add_dictionaries();
++        session.mutable_storage()->user_dictionary_storage_base.add_dictionaries();
+     user_dictionary->set_id(kDummyId);
+   }
+ 
+@@ -229,7 +229,7 @@
+   const uint64 kDummyId = 10;
+   {
+     UserDictionary *user_dictionary =
+-        session.mutable_storage()->add_dictionaries();
++        session.mutable_storage()->user_dictionary_storage_base.add_dictionaries();
+     user_dictionary->set_id(kDummyId);
+   }
+ 
+--- /src/dictionary/user_dictionary_storage.cc
++++ /src/dictionary/user_dictionary_storage.cc
+@@ -109,7 +109,7 @@
+   mozc::protobuf::io::IstreamInputStream zero_copy_input(&ifs);
+   mozc::protobuf::io::CodedInputStream decoder(&zero_copy_input);
+   decoder.SetTotalBytesLimit(kDefaultTotalBytesLimit, -1);
+-  if (!ParseFromCodedStream(&decoder)) {
++  if (!user_dictionary_storage_base.ParseFromCodedStream(&decoder)) {
+     LOG(ERROR) << "Failed to parse";
+     if (!decoder.ConsumedEntireMessage() || !ifs.eof()) {
+       LOG(ERROR) << "ParseFromStream failed: file seems broken";
+@@ -137,11 +137,11 @@
+   }
+ 
+   // Check dictionary id here. if id is 0, assign random ID.
+-  for (int i = 0; i < dictionaries_size(); ++i) {
+-    const UserDictionary &dict = dictionaries(i);
++  for (int i = 0; i < user_dictionary_storage_base.dictionaries_size(); ++i) {
++    const UserDictionary &dict = user_dictionary_storage_base.dictionaries(i);
+     if (dict.id() == 0) {
+-      mutable_dictionaries(i)->set_id(
+-          UserDictionaryUtil::CreateNewDictionaryId(*this));
++      user_dictionary_storage_base.mutable_dictionaries(i)->set_id(
++          UserDictionaryUtil::CreateNewDictionaryId(this->user_dictionary_storage_base));
+     }
+   }
+ 
+@@ -171,7 +171,7 @@
+       return false;
+     }
+ 
+-    if (!SerializeToOstream(&ofs)) {
++    if (!user_dictionary_storage_base.SerializeToOstream(&ofs)) {
+       LOG(ERROR) << "SerializeToString failed";
+       last_error_type_ = SYNC_FAILURE;
+       return false;
+@@ -227,7 +227,7 @@
+     return false;
+   }
+ 
+-  const UserDictionary &dic = dictionaries(index);
++  const UserDictionary &dic = user_dictionary_storage_base.dictionaries(index);
+   for (size_t i = 0; i < dic.entries_size(); ++i) {
+     const UserDictionaryEntry &entry = dic.entries(i);
+     ofs << entry.key() << "\t" << entry.value() << "\t"
+@@ -241,7 +241,7 @@
+ bool UserDictionaryStorage::CreateDictionary(
+     const string &dic_name, uint64 *new_dic_id) {
+   UserDictionaryCommandStatus::Status status =
+-      UserDictionaryUtil::CreateDictionary(this, dic_name, new_dic_id);
++      UserDictionaryUtil::CreateDictionary(&this->user_dictionary_storage_base, dic_name, new_dic_id);
+   // Update last_error_type_
+   switch (status) {
+     case UserDictionaryCommandStatus::DICTIONARY_NAME_EMPTY:
+@@ -273,7 +273,7 @@
+ }
+ 
+ bool UserDictionaryStorage::DeleteDictionary(uint64 dic_id) {
+-  if (!UserDictionaryUtil::DeleteDictionary(this, dic_id, NULL, NULL)) {
++  if (!UserDictionaryUtil::DeleteDictionary(&this->user_dictionary_storage_base, dic_id, NULL, NULL)) {
+     // Failed to delete dictionary.
+     last_error_type_ = INVALID_DICTIONARY_ID;
+     return false;
+@@ -304,8 +304,8 @@
+     return true;
+   }
+ 
+-  for (int i = 0; i < dictionaries_size(); ++i) {
+-    if (dic_name == dictionaries(i).name()) {
++  for (int i = 0; i < user_dictionary_storage_base.dictionaries_size(); ++i) {
++    if (dic_name == user_dictionary_storage_base.dictionaries(i).name()) {
+       last_error_type_ = DUPLICATED_DICTIONARY_NAME;
+       LOG(ERROR) << "duplicated dictionary name";
+       return false;
+@@ -318,14 +318,14 @@
+ }
+ 
+ int UserDictionaryStorage::GetUserDictionaryIndex(uint64 dic_id) const {
+-  return UserDictionaryUtil::GetUserDictionaryIndexById(*this, dic_id);
++  return UserDictionaryUtil::GetUserDictionaryIndexById(this->user_dictionary_storage_base, dic_id);
+ }
+ 
+ bool UserDictionaryStorage::GetUserDictionaryId(const string &dic_name,
+                                                 uint64 *dic_id) {
+-  for (size_t i = 0; i < dictionaries_size(); ++i) {
+-    if (dic_name == dictionaries(i).name()) {
+-      *dic_id = dictionaries(i).id();
++  for (size_t i = 0; i < user_dictionary_storage_base.dictionaries_size(); ++i) {
++    if (dic_name == user_dictionary_storage_base.dictionaries(i).name()) {
++      *dic_id = user_dictionary_storage_base.dictionaries(i).id();
+       return true;
+     }
+   }
+@@ -335,7 +335,7 @@
+ 
+ user_dictionary::UserDictionary *UserDictionaryStorage::GetUserDictionary(
+     uint64 dic_id) {
+-  return UserDictionaryUtil::GetMutableUserDictionaryById(this, dic_id);
++  return UserDictionaryUtil::GetMutableUserDictionaryById(&this->user_dictionary_storage_base, dic_id);
+ }
+ 
+ UserDictionaryStorage::UserDictionaryStorageErrorType
+@@ -352,8 +352,8 @@
+   }
+ 
+   int auto_index = -1;
+-  for (int i = 0; i < dictionaries_size(); ++i) {
+-    if (dictionaries(i).name() == kAutoRegisteredDictionaryName) {
++  for (int i = 0; i < user_dictionary_storage_base.dictionaries_size(); ++i) {
++    if (user_dictionary_storage_base.dictionaries(i).name() == kAutoRegisteredDictionaryName) {
+       auto_index = i;
+       break;
+     }
+@@ -361,17 +361,17 @@
+ 
+   UserDictionary *dic = NULL;
+   if (auto_index == -1) {
+-    if (UserDictionaryUtil::IsStorageFull(*this)) {
++    if (UserDictionaryUtil::IsStorageFull(this->user_dictionary_storage_base)) {
+       last_error_type_ = TOO_MANY_DICTIONARIES;
+       LOG(ERROR) << "too many dictionaries";
+       UnLock();
+       return false;
+     }
+-    dic = add_dictionaries();
+-    dic->set_id(UserDictionaryUtil::CreateNewDictionaryId(*this));
++    dic = user_dictionary_storage_base.add_dictionaries();
++    dic->set_id(UserDictionaryUtil::CreateNewDictionaryId(this->user_dictionary_storage_base));
+     dic->set_name(kAutoRegisteredDictionaryName);
+   } else {
+-    dic = mutable_dictionaries(auto_index);
++    dic = user_dictionary_storage_base.mutable_dictionaries(auto_index);
+   }
+ 
+   if (dic == NULL) {
+@@ -410,13 +410,13 @@
+ }
+ 
+ bool UserDictionaryStorage::ConvertSyncDictionariesToNormalDictionaries() {
+-  if (CountSyncableDictionaries(*this) == 0) {
++  if (CountSyncableDictionaries(this->user_dictionary_storage_base) == 0) {
+     return false;
+   }
+ 
+-  for (int dictionary_index = dictionaries_size() - 1;
++  for (int dictionary_index = user_dictionary_storage_base.dictionaries_size() - 1;
+        dictionary_index >= 0; --dictionary_index) {
+-    UserDictionary *dic = mutable_dictionaries(dictionary_index);
++    UserDictionary *dic = user_dictionary_storage_base.mutable_dictionaries(dictionary_index);
+     if (!dic->syncable()) {
+       continue;
+     }
+@@ -433,10 +433,10 @@
+ 
+     // Delete removed or unused sync dictionaries.
+     if (dic->removed() || dic->entries_size() == 0) {
+-      for (int i = dictionary_index + 1; i < dictionaries_size(); ++i) {
+-        mutable_dictionaries()->SwapElements(i - 1, i);
++      for (int i = dictionary_index + 1; i < user_dictionary_storage_base.dictionaries_size(); ++i) {
++        user_dictionary_storage_base.mutable_dictionaries()->SwapElements(i - 1, i);
+       }
+-      mutable_dictionaries()->RemoveLast();
++      user_dictionary_storage_base.mutable_dictionaries()->RemoveLast();
+       continue;
+     }
+ 
+@@ -445,7 +445,7 @@
+           kDictionaryNameConvertedFromSyncableDictionary;
+       int index = 0;
+       while (UserDictionaryUtil::ValidateDictionaryName(
+-                 *this, new_dictionary_name)
++                 this->user_dictionary_storage_base, new_dictionary_name)
+              != UserDictionaryCommandStatus::USER_DICTIONARY_COMMAND_SUCCESS) {
+         ++index;
+         new_dictionary_name = Util::StringPrintf(
+@@ -456,7 +456,7 @@
+     dic->set_syncable(false);
+   }
+ 
+-  DCHECK_EQ(0, CountSyncableDictionaries(*this));
++  DCHECK_EQ(0, CountSyncableDictionaries(this->user_dictionary_storage_base));
+ 
+   return true;
+ }
+@@ -487,7 +487,7 @@
+ bool UserDictionaryStorage::IsValidDictionaryName(const string &name) {
+   UserDictionaryCommandStatus::Status status =
+       UserDictionaryUtil::ValidateDictionaryName(
+-          UserDictionaryStorage::default_instance(), name);
++          user_dictionary::UserDictionaryStorage::default_instance(), name);
+ 
+   // Update last_error_type_.
+   switch (status) {
+--- /src/dictionary/user_dictionary_storage.h
++++ /src/dictionary/user_dictionary_storage.h
+@@ -72,13 +72,15 @@
+ class Mutex;
+ class ProcessMutex;
+ 
+-// Inherit from ProtocolBuffer
+-// TODO(hidehiko): Get rid of this implementation.
+-class UserDictionaryStorage : public user_dictionary::UserDictionaryStorage {
++class UserDictionaryStorage {
+  public:
+   typedef user_dictionary::UserDictionary UserDictionary;
+   typedef user_dictionary::UserDictionary::Entry UserDictionaryEntry;
+ 
++  // Instance of base class generated by Protocol Buffers compiler.
++  // Regular inheritance strongly discouraged.
++  user_dictionary::UserDictionaryStorage user_dictionary_storage_base;
++
+   enum UserDictionaryStorageErrorType {
+     USER_DICTIONARY_STORAGE_NO_ERROR = 0,  // default
+     FILE_NOT_EXISTS,
+--- /src/dictionary/user_dictionary_storage_test.cc
++++ /src/dictionary/user_dictionary_storage_test.cc
+@@ -118,13 +118,13 @@
+   const size_t kDictionariesSize = 3;
+   uint64 id[kDictionariesSize];
+ 
+-  const size_t dict_size = storage.dictionaries_size();
++  const size_t dict_size = storage.user_dictionary_storage_base.dictionaries_size();
+ 
+   for (size_t i = 0; i < kDictionariesSize; ++i) {
+     EXPECT_TRUE(storage.CreateDictionary(
+         "test" + std::to_string(static_cast<uint32>(i)),
+         &id[i]));
+-    EXPECT_EQ(i + 1 + dict_size, storage.dictionaries_size());
++    EXPECT_EQ(i + 1 + dict_size, storage.user_dictionary_storage_base.dictionaries_size());
+   }
+ 
+   for (size_t i = 0; i < kDictionariesSize; ++i) {
+@@ -133,7 +133,7 @@
+   }
+ 
+   for (size_t i = 0; i < kDictionariesSize; ++i) {
+-    EXPECT_EQ(storage.mutable_dictionaries(i + dict_size),
++    EXPECT_EQ(storage.user_dictionary_storage_base.mutable_dictionaries(i + dict_size),
+               storage.GetUserDictionary(id[i]));
+     EXPECT_EQ(NULL, storage.GetUserDictionary(id[i] + 1));
+   }
+@@ -165,7 +165,7 @@
+   EXPECT_FALSE(storage.DeleteDictionary(0));
+ 
+   EXPECT_TRUE(storage.DeleteDictionary(id[1]));
+-  EXPECT_EQ(kDictionariesSize + dict_size - 1, storage.dictionaries_size());
++  EXPECT_EQ(kDictionariesSize + dict_size - 1, storage.user_dictionary_storage_base.dictionaries_size());
+ }
+ 
+ TEST_F(UserDictionaryStorageTest, DeleteTest) {
+@@ -174,7 +174,7 @@
+ 
+   // repeat 10 times
+   for (int i = 0; i < 10; ++i) {
+-    storage.Clear();
++    storage.user_dictionary_storage_base.Clear();
+     std::vector<uint64> ids(100);
+     for (size_t i = 0; i < ids.size(); ++i) {
+       EXPECT_TRUE(storage.CreateDictionary(
+@@ -191,10 +191,10 @@
+       alive.push_back(ids[i]);
+     }
+ 
+-    EXPECT_EQ(alive.size(), storage.dictionaries_size());
++    EXPECT_EQ(alive.size(), storage.user_dictionary_storage_base.dictionaries_size());
+ 
+     for (size_t i = 0; i < alive.size(); ++i) {
+-      EXPECT_EQ(alive[i], storage.dictionaries(i).id());
++      EXPECT_EQ(alive[i], storage.user_dictionary_storage_base.dictionaries(i).id());
+     }
+   }
+ }
+@@ -268,7 +268,7 @@
+         const size_t entry_size = Util::Random(100) + 1;
+         for (size_t j = 0; j < entry_size; ++j) {
+           UserDictionaryStorage::UserDictionary *dic =
+-              storage1.mutable_dictionaries(i);
++              storage1.user_dictionary_storage_base.mutable_dictionaries(i);
+           UserDictionaryStorage::UserDictionaryEntry *entry =
+               dic->add_entries();
+           entry->set_key(GenRandomString(10));
+@@ -288,7 +288,7 @@
+       EXPECT_TRUE(storage2.Load());
+     }
+ 
+-    EXPECT_EQ(storage1.DebugString(), storage2.DebugString());
++    EXPECT_EQ(storage1.user_dictionary_storage_base.DebugString(), storage2.user_dictionary_storage_base.DebugString());
+   }
+ }
+ 
+@@ -352,7 +352,7 @@
+     uint64 dict_id = 0;
+     ASSERT_TRUE(storage.CreateDictionary(data.dictionary_name, &dict_id));
+     UserDictionaryStorage::UserDictionary *dict =
+-        storage.mutable_dictionaries(storage.GetUserDictionaryIndex(dict_id));
++        storage.user_dictionary_storage_base.mutable_dictionaries(storage.GetUserDictionaryIndex(dict_id));
+     dict->set_syncable(data.is_sync_dictionary);
+     dict->set_removed(data.is_removed_dictionary);
+     if (data.has_normal_entry) {
+@@ -369,7 +369,7 @@
+       entry->set_removed(true);
+     }
+   }
+-  EXPECT_EQ(9, UserDictionaryStorage::CountSyncableDictionaries(storage));
++  EXPECT_EQ(9, UserDictionaryStorage::CountSyncableDictionaries(storage.user_dictionary_storage_base));
+ 
+   ASSERT_TRUE(storage.ConvertSyncDictionariesToNormalDictionaries());
+ 
+@@ -385,12 +385,12 @@
+     { true, kDictionaryNameConvertedFromSyncableDictionary },
+   };
+ 
+-  EXPECT_EQ(0, UserDictionaryStorage::CountSyncableDictionaries(storage));
+-  ASSERT_EQ(arraysize(expected_data), storage.dictionaries_size());
++  EXPECT_EQ(0, UserDictionaryStorage::CountSyncableDictionaries(storage.user_dictionary_storage_base));
++  ASSERT_EQ(arraysize(expected_data), storage.user_dictionary_storage_base.dictionaries_size());
+   for (size_t i = 0; i < arraysize(expected_data); ++i) {
+     SCOPED_TRACE(Util::StringPrintf("verify %d", static_cast<int>(i)));
+     const ExpectedData &expected = expected_data[i];
+-    const UserDictionaryStorage::UserDictionary &dict = storage.dictionaries(i);
++    const UserDictionaryStorage::UserDictionary &dict = storage.user_dictionary_storage_base.dictionaries(i);
+ 
+     EXPECT_EQ(expected.dictionary_name, dict.name());
+     EXPECT_FALSE(dict.syncable());
+@@ -404,42 +404,42 @@
+   }
+ 
+   // Test duplicated dictionary name.
+-  storage.Clear();
++  storage.user_dictionary_storage_base.Clear();
+   {
+     uint64 dict_id = 0;
+     storage.CreateDictionary(
+         UserDictionaryStorage::default_sync_dictionary_name(), &dict_id);
+     storage.CreateDictionary(
+         kDictionaryNameConvertedFromSyncableDictionary, &dict_id);
+-    ASSERT_EQ(2, storage.dictionaries_size());
++    ASSERT_EQ(2, storage.user_dictionary_storage_base.dictionaries_size());
+     UserDictionaryStorage::UserDictionary *dict;
+-    dict = storage.mutable_dictionaries(0);
++    dict = storage.user_dictionary_storage_base.mutable_dictionaries(0);
+     dict->set_syncable(true);
+     dict->add_entries()->set_key("0");
+-    dict = storage.mutable_dictionaries(1);
++    dict = storage.user_dictionary_storage_base.mutable_dictionaries(1);
+     dict->set_syncable(false);
+     dict->add_entries()->set_key("1");
+   }
+   ASSERT_TRUE(storage.ConvertSyncDictionariesToNormalDictionaries());
+-  EXPECT_EQ(0, UserDictionaryStorage::CountSyncableDictionaries(storage));
+-  EXPECT_EQ(2, storage.dictionaries_size());
++  EXPECT_EQ(0, UserDictionaryStorage::CountSyncableDictionaries(storage.user_dictionary_storage_base));
++  EXPECT_EQ(2, storage.user_dictionary_storage_base.dictionaries_size());
+   EXPECT_EQ(Util::StringPrintf("%s_1",
+                                kDictionaryNameConvertedFromSyncableDictionary),
+-            storage.dictionaries(0).name());
++            storage.user_dictionary_storage_base.dictionaries(0).name());
+   EXPECT_EQ(kDictionaryNameConvertedFromSyncableDictionary,
+-            storage.dictionaries(1).name());
++            storage.user_dictionary_storage_base.dictionaries(1).name());
+ }
+ 
+ TEST_F(UserDictionaryStorageTest, AddToAutoRegisteredDictionary) {
+   {
+     UserDictionaryStorage storage(GetUserDictionaryFile());
+-    EXPECT_EQ(0, storage.dictionaries_size());
++    EXPECT_EQ(0, storage.user_dictionary_storage_base.dictionaries_size());
+     EXPECT_TRUE(storage.AddToAutoRegisteredDictionary(
+         "key1", "value1", UserDictionary::NOUN));
+-    EXPECT_EQ(1, storage.dictionaries_size());
+-    EXPECT_EQ(1, storage.dictionaries(0).entries_size());
++    EXPECT_EQ(1, storage.user_dictionary_storage_base.dictionaries_size());
++    EXPECT_EQ(1, storage.user_dictionary_storage_base.dictionaries(0).entries_size());
+     const UserDictionaryStorage::UserDictionaryEntry &entry1 =
+-        storage.dictionaries(0).entries(0);
++        storage.user_dictionary_storage_base.dictionaries(0).entries(0);
+     EXPECT_EQ("key1", entry1.key());
+     EXPECT_EQ("value1", entry1.value());
+     EXPECT_EQ(UserDictionary::NOUN, entry1.pos());
+@@ -447,10 +447,10 @@
+ 
+     EXPECT_TRUE(storage.AddToAutoRegisteredDictionary(
+         "key2", "value2", UserDictionary::NOUN));
+-    EXPECT_EQ(1, storage.dictionaries_size());
+-    EXPECT_EQ(2, storage.dictionaries(0).entries_size());
++    EXPECT_EQ(1, storage.user_dictionary_storage_base.dictionaries_size());
++    EXPECT_EQ(2, storage.user_dictionary_storage_base.dictionaries(0).entries_size());
+     const UserDictionaryStorage::UserDictionaryEntry &entry2 =
+-        storage.dictionaries(0).entries(1);
++        storage.user_dictionary_storage_base.dictionaries(0).entries(1);
+     EXPECT_EQ("key2", entry2.key());
+     EXPECT_EQ("value2", entry2.value());
+     EXPECT_EQ(UserDictionary::NOUN, entry2.pos());
+@@ -474,7 +474,7 @@
+   {
+     UserDictionaryStorage storage(GetUserDictionaryFile());
+     {
+-      UserDictionary *dictionary = storage.add_dictionaries();
++      UserDictionary *dictionary = storage.user_dictionary_storage_base.add_dictionaries();
+       dictionary->set_id(kDummyDictionaryId);
+       UserDictionary::Entry *entry = dictionary->add_entries();
+       entry->set_key("key");
+--- /src/dictionary/user_dictionary_test.cc
++++ /src/dictionary/user_dictionary_test.cc
+@@ -334,9 +334,9 @@
+     std::istringstream is(contents);
+     CHECK(is.good());
+ 
+-    storage->Clear();
++    storage->user_dictionary_storage_base.Clear();
+     UserDictionaryStorage::UserDictionary *dic
+-        = storage->add_dictionaries();
++        = storage->user_dictionary_storage_base.add_dictionaries();
+     CHECK(dic);
+ 
+     string line;
+@@ -389,7 +389,7 @@
+   {
+     UserDictionaryStorage storage("");
+     UserDictionaryTest::LoadFromString(kUserDictionary0, &storage);
+-    dic->Load(storage);
++    dic->Load(storage.user_dictionary_storage_base);
+   }
+ 
+   // A normal lookup operation.
+@@ -425,7 +425,7 @@
+   {
+     UserDictionaryStorage storage("");
+     LoadFromString(kUserDictionary1, &storage);
+-    dic->Load(storage);
++    dic->Load(storage.user_dictionary_storage_base);
+   }
+ 
+   // A normal lookup again.
+@@ -450,7 +450,7 @@
+   {
+     UserDictionaryStorage storage("");
+     LoadFromString(kUserDictionary0, &storage);
+-    dic->Load(storage);
++    dic->Load(storage.user_dictionary_storage_base);
+   }
+ 
+   // A normal lookup operation.
+@@ -480,7 +480,7 @@
+   {
+     UserDictionaryStorage storage("");
+     LoadFromString(kUserDictionary1, &storage);
+-    dic->Load(storage);
++    dic->Load(storage.user_dictionary_storage_base);
+   }
+ 
+   // A normal lookup.
+@@ -504,7 +504,7 @@
+   {
+     UserDictionaryStorage storage("");
+     LoadFromString(kUserDictionary0, &storage);
+-    dic->Load(storage);
++    dic->Load(storage.user_dictionary_storage_base);
+   }
+ 
+   // A normal lookup operation.
+@@ -540,7 +540,7 @@
+     uint64 id = 0;
+     EXPECT_TRUE(storage.CreateDictionary("test", &id));
+     UserDictionaryStorage::UserDictionary *dic =
+-        storage.mutable_dictionaries(0);
++        storage.user_dictionary_storage_base.mutable_dictionaries(0);
+ 
+     // "名詞"
+     UserDictionaryStorage::UserDictionaryEntry *entry =
+@@ -555,7 +555,7 @@
+     entry->set_value("suggest_only");
+     entry->set_pos(user_dictionary::UserDictionary::SUGGESTION_ONLY);
+ 
+-    user_dic->Load(storage);
++    user_dic->Load(storage.user_dictionary_storage_base);
+   }
+ 
+   // "suggestion_only" should not be looked up.
+@@ -577,7 +577,7 @@
+   {
+     UserDictionaryStorage storage("");
+     UserDictionaryTest::LoadFromString(kUserDictionary0, &storage);
+-    dic->Load(storage);
++    dic->Load(storage.user_dictionary_storage_base);
+   }
+ 
+   TestLookupPrefixHelper(nullptr, 0, "start", 4, *dic);
+@@ -612,7 +612,7 @@
+     uint64 id = 0;
+     EXPECT_TRUE(storage.CreateDictionary("test", &id));
+     UserDictionaryStorage::UserDictionary *dic =
+-        storage.mutable_dictionaries(0);
++        storage.user_dictionary_storage_base.mutable_dictionaries(0);
+     for (size_t j = 0; j < 10000; ++j) {
+       UserDictionaryStorage::UserDictionaryEntry *entry =
+           dic->add_entries();
+@@ -681,15 +681,15 @@
+     UserDictionaryStorage storage(filename);
+     EXPECT_TRUE(storage.Load());
+     int index = 0;
+-    EXPECT_EQ(1, storage.dictionaries_size());
+-    EXPECT_EQ(100, storage.dictionaries(index).entries_size());
++    EXPECT_EQ(1, storage.user_dictionary_storage_base.dictionaries_size());
++    EXPECT_EQ(100, storage.user_dictionary_storage_base.dictionaries(index).entries_size());
+     for (int i = 0; i < 100; ++i) {
+       EXPECT_EQ("key" + std::to_string(i),
+-                storage.dictionaries(index).entries(i).key());
++                storage.user_dictionary_storage_base.dictionaries(index).entries(i).key());
+       EXPECT_EQ("value" + std::to_string(i),
+-                storage.dictionaries(index).entries(i).value());
++                storage.user_dictionary_storage_base.dictionaries(index).entries(i).value());
+       EXPECT_EQ(user_dictionary::UserDictionary::NOUN,
+-                storage.dictionaries(index).entries(i).pos());
++                storage.user_dictionary_storage_base.dictionaries(index).entries(i).pos());
+     }
+   }
+ 
+@@ -722,12 +722,12 @@
+   {
+     UserDictionaryStorage storage(filename);
+     EXPECT_TRUE(storage.Load());
+-    EXPECT_EQ(1, storage.dictionaries_size());
+-    EXPECT_EQ(1, storage.dictionaries(0).entries_size());
+-    EXPECT_EQ("key", storage.dictionaries(0).entries(0).key());
+-    EXPECT_EQ("value", storage.dictionaries(0).entries(0).value());
++    EXPECT_EQ(1, storage.user_dictionary_storage_base.dictionaries_size());
++    EXPECT_EQ(1, storage.user_dictionary_storage_base.dictionaries(0).entries_size());
++    EXPECT_EQ("key", storage.user_dictionary_storage_base.dictionaries(0).entries(0).key());
++    EXPECT_EQ("value", storage.user_dictionary_storage_base.dictionaries(0).entries(0).value());
+     EXPECT_EQ(user_dictionary::UserDictionary::NOUN,
+-              storage.dictionaries(0).entries(0).pos());
++              storage.user_dictionary_storage_base.dictionaries(0).entries(0).pos());
+   }
+ }
+ 
+@@ -746,7 +746,7 @@
+     uint64 id = 0;
+     EXPECT_TRUE(storage.CreateDictionary("test", &id));
+     UserDictionaryStorage::UserDictionary *dic =
+-        storage.mutable_dictionaries(0);
++        storage.user_dictionary_storage_base.mutable_dictionaries(0);
+     for (size_t j = 0; j < 10000; ++j) {
+       UserDictionaryStorage::UserDictionaryEntry *entry =
+           dic->add_entries();
+@@ -770,7 +770,7 @@
+ 
+     suppression_dictionary_->Lock();
+     EXPECT_TRUE(suppression_dictionary_->IsLocked());
+-    user_dic->Load(storage);
++    user_dic->Load(storage.user_dictionary_storage_base);
+     EXPECT_FALSE(suppression_dictionary_->IsLocked());
+ 
+     for (size_t j = 0; j < 10; ++j) {
+@@ -782,11 +782,11 @@
+ 
+   // Remove suppression entry
+   {
+-    storage.Clear();
++    storage.user_dictionary_storage_base.Clear();
+     uint64 id = 0;
+     EXPECT_TRUE(storage.CreateDictionary("test", &id));
+     UserDictionaryStorage::UserDictionary *dic =
+-        storage.mutable_dictionaries(0);
++        storage.user_dictionary_storage_base.mutable_dictionaries(0);
+     for (size_t j = 0; j < 10000; ++j) {
+       UserDictionaryStorage::UserDictionaryEntry *entry =
+           dic->add_entries();
+@@ -798,7 +798,7 @@
+     }
+ 
+     suppression_dictionary_->Lock();
+-    user_dic->Load(storage);
++    user_dic->Load(storage.user_dictionary_storage_base);
+     EXPECT_FALSE(suppression_dictionary_->IsLocked());
+ 
+     for (size_t j = 0; j < 10; ++j) {
+@@ -825,7 +825,7 @@
+     uint64 id = 0;
+     EXPECT_TRUE(storage.CreateDictionary("test", &id));
+     UserDictionaryStorage::UserDictionary *dic =
+-        storage.mutable_dictionaries(0);
++        storage.user_dictionary_storage_base.mutable_dictionaries(0);
+ 
+     for (size_t j = 0; j < 10; ++j) {
+       UserDictionaryStorage::UserDictionaryEntry *entry =
+@@ -845,7 +845,7 @@
+       entry->set_pos(user_dictionary::UserDictionary::SUGGESTION_ONLY);
+     }
+ 
+-    user_dic->Load(storage);
++    user_dic->Load(storage.user_dictionary_storage_base);
+   }
+ 
+   {
+@@ -878,7 +878,7 @@
+   UserDictionaryStorage storage("");
+ 
+   {
+-    UserDictionaryStorage::UserDictionary *dic1 = storage.add_dictionaries();
++    UserDictionaryStorage::UserDictionary *dic1 = storage.user_dictionary_storage_base.add_dictionaries();
+     CHECK(dic1);
+     UserDictionaryStorage::UserDictionaryEntry *entry;
+     entry = dic1->add_entries();
+@@ -893,7 +893,7 @@
+     entry->set_pos(user_dictionary::UserDictionary::NOUN);
+   }
+   {
+-    UserDictionaryStorage::UserDictionary *dic2 = storage.add_dictionaries();
++    UserDictionaryStorage::UserDictionary *dic2 = storage.user_dictionary_storage_base.add_dictionaries();
+     CHECK(dic2);
+     UserDictionaryStorage::UserDictionaryEntry *entry;
+     entry = dic2->add_entries();
+@@ -912,7 +912,7 @@
+     entry->set_value("value5");
+     entry->set_pos(user_dictionary::UserDictionary::NOUN);
+   }
+-  dic->Load(storage);
++  dic->Load(storage.user_dictionary_storage_base);
+ 
+   EXPECT_INTEGER_STATS("UserRegisteredWord", 5);
+ }
+@@ -925,7 +925,7 @@
+   {
+     UserDictionaryStorage storage("");
+     UserDictionaryTest::LoadFromString(kUserDictionary0, &storage);
+-    dic->Load(storage);
++    dic->Load(storage.user_dictionary_storage_base);
+   }
+ 
+   // Entry is in user dictionary but has no comment.
+--- /src/gui/word_register_dialog/word_register_dialog.cc
++++ /src/gui/word_register_dialog/word_register_dialog.cc
+@@ -298,7 +298,7 @@
+   }
+ 
+   UserDictionary *dic =
+-      session_->mutable_storage()->mutable_dictionaries(index);
++      session_->mutable_storage()->user_dictionary_storage_base.mutable_dictionaries(index);
+   CHECK(dic);
+ 
+   if (dic->name() != DictionarycomboBox->currentText().toStdString()) {
+--- /src/prediction/user_history_predictor.cc
++++ /src/prediction/user_history_predictor.cc
+@@ -291,23 +291,23 @@
+     return false;
+   }
+ 
+-  if (!ParseFromString(input)) {
++  if (!user_history_base.ParseFromString(input)) {
+     LOG(ERROR) << "ParseFromString failed. message looks broken";
+     return false;
+   }
+ 
+-  VLOG(1) << "Loaded user histroy, size=" << entries_size();
++  VLOG(1) << "Loaded user histroy, size=" << user_history_base.entries_size();
+   return true;
+ }
+ 
+ bool UserHistoryStorage::Save() const {
+-  if (entries_size() == 0) {
++  if (user_history_base.entries_size() == 0) {
+     LOG(WARNING) << "etries size is 0. Not saved";
+     return false;
+   }
+ 
+   string output;
+-  if (!AppendToString(&output)) {
++  if (!user_history_base.AppendToString(&output)) {
+     LOG(ERROR) << "AppendToString failed";
+     return false;
+   }
+@@ -494,12 +494,12 @@
+     return false;
+   }
+ 
+-  for (size_t i = 0; i < history.entries_size(); ++i) {
+-    dic_->Insert(EntryFingerprint(history.entries(i)),
+-                 history.entries(i));
++  for (size_t i = 0; i < history.user_history_base.entries_size(); ++i) {
++    dic_->Insert(EntryFingerprint(history.user_history_base.entries(i)),
++                 history.user_history_base.entries(i));
+   }
+ 
+-  VLOG(1) << "Loaded user histroy, size=" << history.entries_size();
++  VLOG(1) << "Loaded user histroy, size=" << history.user_history_base.entries_size();
+ 
+   return true;
+ }
+@@ -521,13 +521,13 @@
+ 
+   UserHistoryStorage history(filename);
+   for (const DicElement *elm = tail; elm != nullptr; elm = elm->prev) {
+-    history.add_entries()->CopyFrom(elm->value);
++    history.user_history_base.add_entries()->CopyFrom(elm->value);
+   }
+ 
+   // Updates usage stats here.
+   UsageStats::SetInteger(
+       "UserHistoryPredictorEntrySize",
+-      static_cast<int>(history.entries_size()));
++      static_cast<int>(history.user_history_base.entries_size()));
+ 
+   if (!history.Save()) {
+     LOG(ERROR) << "UserHistoryStorage::Save() failed";
+--- /src/prediction/user_history_predictor.h
++++ /src/prediction/user_history_predictor.h
+@@ -61,11 +61,15 @@
+ class UserHistoryPredictorSyncer;
+ 
+ // Added serialization method for UserHistory.
+-class UserHistoryStorage : public mozc::user_history_predictor::UserHistory {
++class UserHistoryStorage {
+  public:
+   explicit UserHistoryStorage(const string &filename);
+   ~UserHistoryStorage();
+ 
++  // Instance of base class generated by Protocol Buffers compiler.
++  // Regular inheritance strongly discouraged.
++  mozc::user_history_predictor::UserHistory user_history_base;
++
+   // Loads from encrypted file.
+   bool Load();
+ 
+--- /src/prediction/user_history_predictor_test.cc
++++ /src/prediction/user_history_predictor_test.cc
+@@ -2222,7 +2222,7 @@
+ 
+   UserHistoryStorage storage1(filename);
+ 
+-  UserHistoryPredictor::Entry *entry = storage1.add_entries();
++  UserHistoryPredictor::Entry *entry = storage1.user_history_base.add_entries();
+   CHECK(entry);
+   entry->set_key("key");
+   entry->set_key("value");
+@@ -2230,7 +2230,7 @@
+   UserHistoryStorage storage2(filename);
+   storage2.Load();
+ 
+-  EXPECT_EQ(storage1.DebugString(), storage2.DebugString());
++  EXPECT_EQ(storage1.user_history_base.DebugString(), storage2.user_history_base.DebugString());
+   FileUtil::Unlink(filename);
+ }
+ 
+--- /src/rewriter/usage_rewriter_test.cc
++++ /src/rewriter/usage_rewriter_test.cc
+@@ -312,7 +312,7 @@
+   // Load mock data
+   {
+     UserDictionaryStorage storage("");
+-    UserDictionaryStorage::UserDictionary *dic = storage.add_dictionaries();
++    UserDictionaryStorage::UserDictionary *dic = storage.user_dictionary_storage_base.add_dictionaries();
+ 
+     UserDictionaryStorage::UserDictionaryEntry *entry = dic->add_entries();
+     entry->set_key("うま");
+@@ -320,7 +320,7 @@
+     entry->set_pos(user_dictionary::UserDictionary::NOUN);
+     entry->set_comment("アルパカコメント");
+ 
+-    user_dictionary_->Load(storage);
++    user_dictionary_->Load(storage.user_dictionary_storage_base);
+   }
+ 
+   // Emulates the conversion of key="うま".

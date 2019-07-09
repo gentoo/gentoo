@@ -67,5 +67,5 @@ src_install() {
 	rm -r "${ED}"/{etc,$(get_udevdir)} || die
 
 	# handled by the device manager
-	rm -r "${ED}"/dev || die
+	rm -r "${D}"/dev || die
 }

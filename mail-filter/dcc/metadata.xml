@@ -4,10 +4,6 @@
 <maintainer type="person">
 	<email>robbat2@gentoo.org</email>
 </maintainer>
-<maintainer type="project">
-	<email>net-mail@gentoo.org</email>
-	<name>Net-Mail</name>
-</maintainer>
 <use>
 	<flag name="rrdtool">Enable <pkg>net-analyzer/rrdtool</pkg> interface
 		scripts</flag>

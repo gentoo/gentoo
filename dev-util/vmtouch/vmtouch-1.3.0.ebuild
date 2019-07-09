@@ -6,7 +6,7 @@ EAPI=6
 inherit toolchain-funcs
 
 DESCRIPTION="Virtual Memory Toucher, portable file system cache diagnostics and control"
-HOMEPAGE="http://hoytech.com/vmtouch/"
+HOMEPAGE="https://hoytech.com/vmtouch/"
 SRC_URI="https://github.com/hoytech/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"

@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit cmake-multilib
 
@@ -13,23 +13,26 @@ if [[ ${PV} == *9999 ]] ; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/Haivision/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 -sparc ~x86 ~x86-fbsd ~ppc-macos ~x64-macos ~x86-macos"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 -sparc ~x86 ~x86-fbsd ~ppc-macos ~x64-macos ~x86-macos"
 fi
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-IUSE="doc libressl gnutls test"
+IUSE="gnutls libressl test"
 
 RDEPEND="
-	gnutls? ( net-libs/gnutls )
+	gnutls? ( net-libs/gnutls:=[${MULTILIB_USEDEP}] )
 	!gnutls? (
 		!libressl? ( dev-libs/openssl:0=[${MULTILIB_USEDEP}] )
 		libressl? ( dev-libs/libressl:0=[${MULTILIB_USEDEP}] )
 	)
 "
 DEPEND="${RDEPEND}
-	test? ( dev-cpp/gtest )"
+	test? ( dev-cpp/gtest )
+"
+
 RESTRICT="!test? ( test )"
+
 DOCS=( README.md )
 
 PATCHES=(

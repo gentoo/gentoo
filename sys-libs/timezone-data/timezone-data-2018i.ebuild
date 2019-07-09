@@ -8,7 +8,7 @@ inherit toolchain-funcs flag-o-matic
 code_ver=${PV}
 data_ver=${PV}
 DESCRIPTION="Timezone data (/usr/share/zoneinfo) and utilities (tzselect/zic/zdump)"
-HOMEPAGE="https://www.iana.org/time-zones http://www.twinsun.com/tz/tz-link.htm"
+HOMEPAGE="https://www.iana.org/time-zones"
 SRC_URI="https://www.iana.org/time-zones/repository/releases/tzdata${data_ver}.tar.gz
 	https://www.iana.org/time-zones/repository/releases/tzcode${code_ver}.tar.gz"
 

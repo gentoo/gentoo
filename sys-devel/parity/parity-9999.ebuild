@@ -1,10 +1,10 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 if [[ ${PV} == 9999 ]]; then
-	inherit git-r3
+	inherit autotools git-r3
 	EGIT_REPO_URI="git@github.com:haubi/parity.git https://github.com/haubi/parity.git"
 	DEPEND="dev-util/confix"
 else
@@ -26,8 +26,9 @@ IUSE="$(
 
 if [[ ${PV} == 9999 ]]; then
 	src_prepare() {
-		confix --bootstrap || die
 		default
+		confix --output || die
+		eautoreconf
 	}
 fi
 

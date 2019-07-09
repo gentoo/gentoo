@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6,3_7} pypy )
+PYTHON_COMPAT=( python{2_7,3_5,3_6,3_7} pypy )
 PYTHON_REQ_USE="xml(+),sqlite?"
 
 inherit eutils distutils-r1 linux-info prefix
@@ -41,18 +41,8 @@ RDEPEND="
 		)
 	)
 	gpg? ( >=dev-python/pyGPG-0.2 )
-	sync-plugin-portage? (
-		|| (
-			>=sys-apps/portage-2.2.16[${PYTHON_USEDEP}]
-			sys-apps/portage-mgorny[${PYTHON_USEDEP}]
-		)
-	)
-	!sync-plugin-portage? (
-		|| (
-			sys-apps/portage[${PYTHON_USEDEP}]
-			sys-apps/portage-mgorny[${PYTHON_USEDEP}]
-		)
-	)
+	sync-plugin-portage? ( >=sys-apps/portage-2.2.16[${PYTHON_USEDEP}] )
+	!sync-plugin-portage? ( sys-apps/portage[${PYTHON_USEDEP}] )
 	>=dev-python/ssl-fetch-0.4[${PYTHON_USEDEP}]
 	"
 
@@ -90,7 +80,8 @@ python_install_all() {
 	doins etc/layman.cfg
 
 	doman doc/layman.8
-	dohtml doc/layman.8.html
+	docinto html
+	dodoc doc/layman.8.html
 
 	keepdir /var/lib/layman
 	keepdir /etc/layman/overlays

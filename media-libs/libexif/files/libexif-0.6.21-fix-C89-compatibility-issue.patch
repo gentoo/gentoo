@@ -1,0 +1,30 @@
+From 3840e4f1f550e0d113e4ed70bd74f9f798f7e6f8 Mon Sep 17 00:00:00 2001
+From: Dan Fandrich <dan@coneharvesters.com>
+Date: Sat, 13 Jul 2013 13:34:50 -0700
+Subject: [PATCH] Fixed a C89 compatibility issue (bug #117 reported by Guenter
+ Knauf)
+
+---
+ libexif/exif-entry.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/libexif/exif-entry.c b/libexif/exif-entry.c
+index 54a90a2..bb42473 100644
+--- a/libexif/exif-entry.c
++++ b/libexif/exif-entry.c
+@@ -1375,12 +1375,14 @@ exif_entry_get_value (ExifEntry *e, char *val, unsigned int maxlen)
+ 	case EXIF_TAG_XP_KEYWORDS:
+ 	case EXIF_TAG_XP_SUBJECT:
+ 	{
++		unsigned short *utf16;
++
+ 		/* Sanity check the size to prevent overflow */
+ 		if (e->size+sizeof(unsigned short) < e->size) break;
+ 
+ 		/* The tag may not be U+0000-terminated , so make a local
+ 		   U+0000-terminated copy before converting it */
+-		unsigned short *utf16 = exif_mem_alloc (e->priv->mem, e->size+sizeof(unsigned short));
++		utf16 = exif_mem_alloc (e->priv->mem, e->size+sizeof(unsigned short));
+ 		if (!utf16) break;
+ 		memcpy(utf16, e->data, e->size);
+ 		utf16[e->size/sizeof(unsigned short)] = 0;

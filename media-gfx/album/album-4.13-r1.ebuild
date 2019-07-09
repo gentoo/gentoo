@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -10,7 +10,7 @@ SRC_URI="http://marginalhacks.com/bin/album.versions/${P}.tar.gz
 
 LICENSE="marginalhacks"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~ppc ~ppc64 x86"
 IUSE="doc ffmpeg plugins themes"
 
 DEPEND=""

@@ -1,15 +1,15 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 PYTHON_COMPAT=( python2_7 pypy )
 EHG_REPO_URI="https://bitbucket.org/pypy/pypy"
-inherit check-reqs mercurial pax-utils python-any-r1 toolchain-funcs versionator
+inherit check-reqs mercurial pax-utils python-any-r1 toolchain-funcs
 
 # note: remember to update this to newest dev-lang/python:2.7 on bump
-CPY_PATCHSET_VERSION="2.7.14-0"
-MY_P=pypy2-v${PV}
+CPY_PATCHSET_VERSION="2.7.15"
+MY_P=pypy2.7-v${PV}
 
 DESCRIPTION="A fast, compliant alternative implementation of the Python language"
 HOMEPAGE="http://pypy.org/"
@@ -18,7 +18,8 @@ SRC_URI="
 
 LICENSE="MIT"
 # pypy -c 'import sysconfig; print sysconfig.get_config_var("SOABI")'
-SLOT="0/41"
+# pypy 7.0.0: install directory changed to 'pypy2.7'
+SLOT="0/41-py27"
 KEYWORDS=""
 IUSE="bzip2 gdbm +jit libressl low-memory ncurses sandbox sqlite cpu_flags_x86_sse2 test tk"
 
@@ -104,12 +105,11 @@ src_unpack() {
 }
 
 src_prepare() {
-	eapply "${FILESDIR}/4.0.0-gentoo-path.patch"
+	eapply "${FILESDIR}/7.0.0-gentoo-path.patch"
 	eapply "${FILESDIR}/1.9-distutils.unixccompiler.UnixCCompiler.runtime_library_dir_option.patch"
 	eapply "${FILESDIR}"/5.9.0-shared-lib.patch	# 517002
 
 	sed -e "s^@EPREFIX@^${EPREFIX}^" \
-		-e "s^@libdir@^$(get_libdir)^" \
 		-i lib-python/2.7/distutils/command/install.py || die
 
 	# apply CPython stdlib patches
@@ -117,7 +117,7 @@ src_prepare() {
 	# TODO: cpy turkish locale patch now fixes C code
 	# probably needs better port to pypy, if it is broken there
 	eapply "${FILESDIR}"/5.8.0_all_distutils_cxx.patch
-	eapply "${WORKDIR}"/patches/62_all_xml.use_pyxml.patch
+	eapply -p2 "${WORKDIR}"/patches/0011-use_pyxml.patch
 	popd > /dev/null || die
 
 	eapply_user
@@ -249,7 +249,7 @@ src_test() {
 }
 
 src_install() {
-	local dest=/usr/$(get_libdir)/pypy
+	local dest=/usr/lib/pypy2.7
 	einfo "Installing PyPy ..."
 	exeinto "${dest}"
 	doexe pypy-c libpypy-c.so
@@ -258,7 +258,7 @@ src_install() {
 	# preserve mtimes to avoid obsoleting caches
 	insopts -p
 	doins -r include lib_pypy lib-python
-	dosym ../$(get_libdir)/pypy/pypy-c /usr/bin/pypy
+	dosym ../lib/pypy2.7/pypy-c /usr/bin/pypy
 	dodoc README.rst
 
 	if ! use gdbm; then
@@ -279,7 +279,7 @@ src_install() {
 	local -x PYTHON=${ED%/}${dest}/pypy-c
 	# we can't use eclass function since PyPy is dumb and always gives
 	# paths relative to the interpreter
-	local PYTHON_SITEDIR=${EPREFIX}/usr/$(get_libdir)/pypy/site-packages
+	local PYTHON_SITEDIR=${EPREFIX}/usr/lib/pypy2.7/site-packages
 	python_export pypy EPYTHON
 
 	echo "EPYTHON='${EPYTHON}'" > epython.py || die

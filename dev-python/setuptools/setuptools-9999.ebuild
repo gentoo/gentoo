@@ -1,8 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-PYTHON_COMPAT=( python2_7 python3_{4,5,6,7} pypy{,3} )
+EAPI=7
+PYTHON_COMPAT=( python2_7 python3_{5,6,7} pypy{,3} )
 PYTHON_REQ_USE="xml(+)"
 
 inherit distutils-r1
@@ -12,7 +12,7 @@ if [[ ${PV} == "9999" ]]; then
 	inherit git-r3
 else
 	SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.zip"
-	KEYWORDS="~amd64 ~ia64 ~ppc ~ppc64 ~x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sh ~sparc ~x86 ~x64-cygwin ~amd64-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 fi
 
 DESCRIPTION="Collection of extensions to Distutils"
@@ -21,18 +21,20 @@ HOMEPAGE="https://github.com/pypa/setuptools https://pypi.org/project/setuptools
 LICENSE="MIT"
 SLOT="0"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 "
 DEPEND="${RDEPEND}
 	app-arch/unzip
 	test? (
+		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/pip[${PYTHON_USEDEP}]
-		>=dev-python/pytest-2.8[${PYTHON_USEDEP}]
-		dev-python/pytest-fixture-config[${PYTHON_USEDEP}]
+		>=dev-python/pytest-3.7.0[${PYTHON_USEDEP}]
+		<dev-python/pytest-4
 		dev-python/pytest-virtualenv[${PYTHON_USEDEP}]
-		>=dev-python/backports-unittest-mock-1.2[${PYTHON_USEDEP}]
 		dev-python/wheel[${PYTHON_USEDEP}]
+		virtual/python-futures[${PYTHON_USEDEP}]
 	)
 "
 PDEPEND="
@@ -61,7 +63,7 @@ python_prepare_all() {
 python_test() {
 	# test_easy_install raises a SandboxViolation due to ${HOME}/.pydistutils.cfg
 	# It tries to sandbox the test in a tempdir
-	HOME="${PWD}" py.test --verbose ${PN} || die "Tests failed under ${EPYTHON}"
+	HOME="${PWD}" pytest -vv ${PN} || die "Tests failed under ${EPYTHON}"
 }
 
 python_install() {

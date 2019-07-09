@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -18,7 +18,7 @@ fi
 
 LICENSE="BSD-2"
 SLOT="0"
-IUSE="audit debug ncurses pam newnet prefix +netifrc selinux static-libs
+IUSE="audit bash debug ncurses pam newnet prefix +netifrc selinux static-libs
 	unicode kernel_linux kernel_FreeBSD"
 
 COMMON_DEPEND="kernel_FreeBSD? ( || ( >=sys-freebsd/freebsd-ubin-9.0_rc sys-process/fuser-bsd ) )
@@ -40,6 +40,7 @@ COMMON_DEPEND="kernel_FreeBSD? ( || ( >=sys-freebsd/freebsd-ubin-9.0_rc sys-proc
 	!<sys-fs/udev-init-scripts-27"
 DEPEND="${COMMON_DEPEND}
 	virtual/os-headers
+	bash? ( app-shells/bash )
 	ncurses? ( virtual/pkgconfig )"
 RDEPEND="${COMMON_DEPEND}
 	!prefix? (
@@ -79,7 +80,8 @@ src_compile() {
 		MKAUDIT=$(usex audit)
 		MKPAM=$(usev pam)
 		MKSTATICLIBS=$(usex static-libs)
-		MKZSHCOMP=yes"
+		MKZSHCOMP=yes
+		SH=$(usex bash /bin/bash /bin/sh)"
 
 	local brand="Unknown"
 	if use kernel_linux ; then

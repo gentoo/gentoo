@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
+PYTHON_COMPAT=( python{2_7,3_5,3_6} )
 
 inherit distutils-r1 virtualx
 
@@ -27,7 +27,7 @@ DEPEND="
 		dev-python/sphinx[${PYTHON_USEDEP}]
 		dev-python/matplotlib[${PYTHON_USEDEP}]
 		$(python_gen_cond_dep 'dev-python/numpydoc[${PYTHON_USEDEP}]' python2_7)
-		$(python_gen_cond_dep 'dev-python/sphinx_rtd_theme[${PYTHON_USEDEP}]' python2_7 python{3_3,3_4})
+		$(python_gen_cond_dep 'dev-python/sphinx_rtd_theme[${PYTHON_USEDEP}]' python2_7)
 	)
 	test? (
 		${COMMON_DEPEND}

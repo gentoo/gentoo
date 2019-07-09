@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,7 +16,7 @@ SRC_URI="https://download.filezilla-project.org/client/${MY_P}_src.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ia64 ~ppc ~x86"
+KEYWORDS="amd64 ~arm ~ia64 ~ppc x86"
 IUSE="dbus nls test"
 
 # pugixml 1.7 minimal dependency is for c++11 proper configuration
@@ -24,6 +24,7 @@ RDEPEND=">=app-eselect/eselect-wxwidgets-0.7-r1
 	>=dev-libs/nettle-3.1:=
 	>=dev-db/sqlite-3.7
 	>=dev-libs/libfilezilla-0.15.1
+	<dev-libs/libfilezilla-0.16.0
 	>=dev-libs/pugixml-1.7
 	>=net-libs/gnutls-3.4.15
 	>=x11-libs/wxGTK-3.0.4:${WX_GTK_VER}[X]

@@ -1,10 +1,10 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: rust-toolchain.eclass
 # @MAINTAINER:
 # Rust Project <rust@gentoo.org>
-# @SUPPORTED_EAPIS: 6
+# @SUPPORTED_EAPIS: 6 7
 # @BLURB: helps map gentoo arches to rust ABIs
 # @DESCRIPTION:
 # This eclass contains a src_unpack default phase function, and
@@ -91,7 +91,7 @@ rust_arch_uri() {
 }
 
 # @FUNCTION: rust_all_arch_uris
-# @USAGE <base-uri> [alt-distfile-basename]
+# @USAGE: <base-uri> [alt-distfile-basename]
 # @DESCRIPTION:
 # Outputs the URIs for SRC_URI to help fetch dependencies, using a base URI
 # provided as an argument.  Optionally allows for distfile renaming via a specified

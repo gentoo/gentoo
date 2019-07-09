@@ -1,0 +1,35 @@
+https://bugs.gentoo.org/687278
+
+--- ccgo-0.3.6.5/configure.ac
++++ ccgo-0.3.6.5/configure.ac
+@@ -30,7 +30,7 @@
+ PKG_CHECK_MODULES(GTKMM, gtkmm-2.4 gconfmm-2.6)
+ AC_SUBST(GTKMM_CFLAGS)
+ AC_SUBST(GTKMM_LIBS)
+-AC_CHECK_HEADERS(ncurses.h, [have_ncurses=true], [have_ncurses=false])
++PKG_CHECK_MODULES(NCURSES, ncurses, [have_ncurses=true], [have_ncurses=false])
+ AM_CONDITIONAL([HAVE_NCURSES], [test x$have_ncurses = xtrue])
+ 
+ AM_GNU_GETTEXT([external])
+--- ccgo-0.3.6.5/Makefile.am
++++ ccgo-0.3.6.5/Makefile.am
+@@ -53,7 +53,7 @@
+ nctest_SOURCES = \
+ 	nctest.cc \
+ 	nc.cc nc.hh
+-nctest_LDADD = arg.o debug.o ui/libui.a go/libgo.a -lncurses
++nctest_LDADD = arg.o debug.o ui/libui.a go/libgo.a $(NCURSES_LIBS)
+ endif
+ 
+ gtktest_SOURCES = gtktest.cc
+--- ccgo-0.3.6.5/nc/Makefile.am
++++ ccgo-0.3.6.5/nc/Makefile.am
+@@ -8,7 +8,7 @@
+ 	misc.cc misc.hh \
+ 	editor.cc editor.hh
+ 
+-LDADD = libnc.a -lncurses
++LDADD = libnc.a $(NCURSES_LIBS)
+ noinst_PROGRAMS =
+ 
+ noinst_PROGRAMS += test-entry

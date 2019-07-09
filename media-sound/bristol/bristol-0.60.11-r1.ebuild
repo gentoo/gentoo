@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,15 +17,16 @@ IUSE="alsa oss static-libs"
 # jack: fails to build if disabled
 # pulseaudio: not fully supported
 
+BDEPEND="
+	virtual/pkgconfig
+"
 RDEPEND="
-	>=media-sound/jack-audio-connection-kit-0.109.2
+	virtual/jack
 	x11-libs/libX11
 	alsa? ( >=media-libs/alsa-lib-1.0.0 )
 "
 # osc? ( >=media-libs/liblo-0.22 )
-DEPEND="${RDEPEND}"
-BDEPEND="
-	virtual/pkgconfig
+DEPEND="${RDEPEND}
 	x11-base/xorg-proto
 "
 

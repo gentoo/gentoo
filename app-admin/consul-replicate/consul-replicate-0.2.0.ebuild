@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -73,6 +73,11 @@ src_prepare() {
 	done < <(find "${WORKDIR}/src" -maxdepth 3 -mindepth 3 -type d -print0)
 
 	sed -e 's:TestParseConfig_parseFileError(:_\0:' -i config_test.go || die
+
+	sed -e 's|t.Errorf("expected %q to be %q", config.Prefixes, expected)|t.Errorf("expected %v to be %v", config.Prefixes, expected)|' \
+		-e 's|t.Errorf("expected %q to be %q", config.Prefixes\[0\], expected)|t.Errorf("expected %v to be %v", config.Prefixes[0], expected)|' \
+		-e 's|t.Errorf("expected %q to be %q", value.Data, data)|t.Errorf("expected %v to be %v", value.Data, data)|' \
+		-i cli_test.go runner_test.go || die
 }
 
 src_compile() {

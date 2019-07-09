@@ -1,0 +1,10 @@
+# Copyright 2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Even if someone makes Portage accept other keywords, here
+# we need specific versions / patches for riscv!
+sys-devel/gcc -amd64 -~amd64
+sys-libs/glibc -amd64 -~amd64
+
+# For the stages and qemu, we need static qemu *from* ~amd64
+app-emulation/qemu-riscv64-bin ~amd64

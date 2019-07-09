@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 : ${CMAKE_MAKEFILE_GENERATOR:=ninja}
 # (needed due to CMAKE_BUILD_TYPE != Gentoo)
 CMAKE_MIN_VERSION=3.7.0-r1
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python{2_7,3_{5,6,7}} )
 
 inherit cmake-utils git-r3 llvm multiprocessing python-any-r1
 
@@ -17,9 +17,9 @@ EGIT_REPO_URI="https://git.llvm.org/git/llvm.git
 	https://github.com/llvm-mirror/llvm.git"
 
 # Keep in sync with sys-devel/llvm
-ALL_LLVM_EXPERIMENTAL_TARGETS=( AVR Nios2 RISCV WebAssembly )
+ALL_LLVM_EXPERIMENTAL_TARGETS=( AVR Nios2 RISCV )
 ALL_LLVM_TARGETS=( AArch64 AMDGPU ARM BPF Hexagon Lanai Mips MSP430
-	NVPTX PowerPC Sparc SystemZ X86 XCore
+	NVPTX PowerPC Sparc SystemZ WebAssembly X86 XCore
 	"${ALL_LLVM_EXPERIMENTAL_TARGETS[@]}" )
 ALL_LLVM_TARGETS=( "${ALL_LLVM_TARGETS[@]/#/llvm_targets_}" )
 LLVM_TARGET_USEDEPS=${ALL_LLVM_TARGETS[@]/%/?}

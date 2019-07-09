@@ -3,6 +3,6 @@
 
 MULTILIB_ABIS="amd64"
 
-# Michał Górny <mgorny@gentoo.org> (26 Jan 2013)
+# Michał Górny <mgorny@gentoo.org> (2013-01-26)
 # Hide the ABI_X86 USE_EXPAND back for non-multilib profile.
 USE_EXPAND_HIDDEN="ABI_X86"

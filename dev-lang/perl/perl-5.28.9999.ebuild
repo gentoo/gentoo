@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 inherit eutils alternatives flag-o-matic toolchain-funcs multilib multiprocessing
 
 PATCH_VER=1
-CROSS_VER=1.1.9
+CROSS_VER=1.2.2
 PATCH_BASE="perl-5.28.0-patches-${PATCH_VER}"
 
 DIST_AUTHOR=XSAWYERX
@@ -49,7 +49,7 @@ LICENSE="|| ( Artistic GPL-1+ )"
 SLOT="0/${SUBSLOT}"
 
 if [[ "${PV##*.}" != "9999" ]]; then
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sh ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 fi
 
 IUSE="berkdb debug doc gdbm ithreads"
@@ -136,6 +136,7 @@ pkg_setup() {
 		*-netbsd*)    osname="netbsd" ;;
 		*-openbsd*)   osname="openbsd" ;;
 		*-darwin*)    osname="darwin" ;;
+		*-solaris*)   osname="solaris" ;;
 		*-interix*)   osname="interix" ;;
 		*-aix*)       osname="aix" ;;
 		*-cygwin*)    osname="cygwin" ;;
@@ -285,15 +286,6 @@ echo "${patchoutput}" >> "${S}/MANIFEST"
 src_prepare_perlcross() {
 	cp -a ../perl-cross-${CROSS_VER}/* . || die
 
-	sed -i \
-		-e 's/MakeMaker\.pm .*/MakeMaker.pm bf9174c70a0e50ff2fee4552c7df89b37d292da1/' \
-		-e 's/MM_Unix\.pm .*/MM_Unix.pm b0ec308fe2d7dcfcef5732880db0fae1f4ea80fa/' \
-		cnf/diffs/perl5-${PV}/customized.patch || die
-
-	sed -i \
-		-e 's|^lib/unicore/CombiningClass.pl pod/perluniprops.pod:|lib/unicore/CombiningClass.pl pod/perluniprops.pod: $(CONFIGPM)|' \
-		Makefile || die
-
 	# bug 604072
 	MAKEOPTS+=" -j1"
 	export MAKEOPTS
@@ -314,7 +306,7 @@ src_prepare() {
 	if [[ ${CHOST} == *-solaris* ]] ; then
 		# do NOT mess with nsl, on Solaris this is always necessary,
 		# when -lsocket is used e.g. to get h_errno
-		sed -i '/gentoo\/no-nsl\.patch/d' "${WORKDIR}/patches/series" || die "Can't exclude libnsl patch"
+		sed -i '/gentoo\/no-nsl-cl\.patch/d' "${WORKDIR}/patches/series" || die
 	fi
 
 	einfo "Applying patches from ${PATCH_BASE} ..."
@@ -337,6 +329,11 @@ src_prepare() {
 	# Use errno.h from prefix rather than from host system, bug #645804
 	if use prefix && [[ -e "${EPREFIX}"/usr/include/errno.h ]] ; then
 		sed -i "/my..sysroot/s:'':'${EPREFIX}':" ext/Errno/Errno_pm.PL || die
+	fi
+
+	if [[ ${CHOST} == *-solaris* ]] ; then
+		# set a soname, fix linking against just built libperl
+		sed -i -e 's/netbsd\*/netbsd*|solaris*/' Makefile.SH || die
 	fi
 
 	default
@@ -467,6 +464,10 @@ src_configure() {
 	[[ ${CHOST} == *-darwin* && ${CHOST##*darwin} -le 9 ]] && tc-is-gcc && \
 		append-cflags -Dinline=__inline__
 
+	# fix unaligned access misdetection
+	# https://rt.perl.org/Public/Bug/Display.html?id=133495
+	[[ ${CHOST} == sparc*-solaris* ]] && myconf "-Dd_u32align='define'"
+
 	# Prefix: the host system needs not to follow Gentoo multilib stuff, and in
 	# Prefix itself we don't do multilib either, so make sure perl can find
 	# something compatible.
@@ -585,9 +586,10 @@ src_install() {
 		rm -f "${ED}"${coredir}/${LIBPERL}
 		ln -sf ${LIBPERL} "${ED}"/usr/$(get_libdir)/libperl$(get_libname ${SHORT_PV}) || die
 		ln -sf ${LIBPERL} "${ED}"/usr/$(get_libdir)/libperl$(get_libname) || die
-		ln -sf ../../../../../$(get_libdir)/${LIBPERL} "${ED}"${coredir}/${LIBPERL} || die
-		ln -sf ../../../../../$(get_libdir)/${LIBPERL} "${ED}"${coredir}/libperl$(get_libname ${SHORT_PV}) || die
-		ln -sf ../../../../../$(get_libdir)/${LIBPERL} "${ED}"${coredir}/libperl$(get_libname) || die
+
+		ln -sf ../../../../${LIBPERL} "${ED}"${coredir}/${LIBPERL} || die
+		ln -sf ../../../../${LIBPERL} "${ED}"${coredir}/libperl$(get_libname ${SHORT_PV}) || die
+		ln -sf ../../../../${LIBPERL} "${ED}"${coredir}/libperl$(get_libname) || die
 	fi
 
 	rm -rf "${ED}"/usr/share/man/man3 || die "Unable to remove module man pages"

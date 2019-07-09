@@ -1,7 +1,7 @@
-From 61543b42289fc986e580f2e3443719f3334f17b5 Mon Sep 17 00:00:00 2001
+From 3637438dd1a772ee65e6b3091087bde89dc91db0 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
 Date: Sun, 30 Dec 2018 02:46:28 +0100
-Subject: [PATCH 1/2] Use forward declaration for Exiv2::Image, port to
+Subject: [PATCH 1/4] Use forward declaration for Exiv2::Image, port to
  std::unique_ptr
 
 Summary:
@@ -104,7 +104,7 @@ index d841ae5f..d3d0002c 100644
  
  void AbstractDocumentImpl::setDocumentDownSampledImage(const QImage& image, int invertedZoom)
 diff --git a/lib/document/abstractdocumentimpl.h b/lib/document/abstractdocumentimpl.h
-index 1f427e60..86e6bfd2 100644
+index 5d6862b8..6c6be825 100644
 --- a/lib/document/abstractdocumentimpl.h
 +++ b/lib/document/abstractdocumentimpl.h
 @@ -34,6 +34,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -129,7 +129,7 @@ index 1f427e60..86e6bfd2 100644
      void setDocumentCmsProfile(Cms::Profile::Ptr profile);
      void setDocumentErrorString(const QString&);
 diff --git a/lib/document/document.cpp b/lib/document/document.cpp
-index 18756700..afa9ed03 100644
+index c760be96..27003b3e 100644
 --- a/lib/document/document.cpp
 +++ b/lib/document/document.cpp
 @@ -31,6 +31,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
@@ -155,7 +155,7 @@ index 18756700..afa9ed03 100644
      emit metaInfoUpdated();
  }
 diff --git a/lib/document/document.h b/lib/document/document.h
-index c0bb454b..4b40a6e1 100644
+index 782111d9..4b2b3d48 100644
 --- a/lib/document/document.h
 +++ b/lib/document/document.h
 @@ -22,8 +22,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
@@ -191,7 +191,7 @@ index c0bb454b..4b40a6e1 100644
      void switchToImpl(AbstractDocumentImpl* impl);
      void setErrorString(const QString&);
 diff --git a/lib/document/document_p.h b/lib/document/document_p.h
-index 78e0ac6e..4de25f15 100644
+index 00c6f7ff..2701440f 100644
 --- a/lib/document/document_p.h
 +++ b/lib/document/document_p.h
 @@ -21,6 +21,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Cambridge, MA 02110-1301, USA
@@ -226,7 +226,7 @@ index 78e0ac6e..4de25f15 100644
      QByteArray mFormat;
      ImageMetaInfoModel mImageMetaInfoModel;
 diff --git a/lib/document/loadingdocumentimpl.cpp b/lib/document/loadingdocumentimpl.cpp
-index 07675783..766a1831 100644
+index 713ef32c..3bcf613a 100644
 --- a/lib/document/loadingdocumentimpl.cpp
 +++ b/lib/document/loadingdocumentimpl.cpp
 @@ -24,6 +24,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -248,7 +248,7 @@ index 07675783..766a1831 100644
      std::unique_ptr<JpegContent> mJpegContent;
      QImage mImage;
      Cms::Profile::Ptr mCmsProfile;
-@@ -486,7 +489,7 @@ void LoadingDocumentImpl::slotMetaInfoLoaded()
+@@ -488,7 +491,7 @@ void LoadingDocumentImpl::slotMetaInfoLoaded()
  
      setDocumentFormat(d->mFormat);
      setDocumentImageSize(d->mImageSize);
@@ -258,7 +258,7 @@ index 07675783..766a1831 100644
  
      d->mMetaInfoLoaded = true;
 diff --git a/lib/exiv2imageloader.cpp b/lib/exiv2imageloader.cpp
-index f2830f81..f13dff7a 100644
+index c298c9c3..49bdf2c8 100644
 --- a/lib/exiv2imageloader.cpp
 +++ b/lib/exiv2imageloader.cpp
 @@ -29,8 +29,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
@@ -288,7 +288,7 @@ index f2830f81..f13dff7a 100644
 +        d->mImage.reset(Exiv2::ImageFactory::open(filePathByteArray.constData()).release());
          d->mImage->readMetadata();
      } catch (const Exiv2::Error& error) {
-         d->mErrorMessage = QString::fromUtf8(error.what());
+         d->mErrorMessage = error.what();
 @@ -69,7 +68,7 @@ bool Exiv2ImageLoader::load(const QString& filePath)
  bool Exiv2ImageLoader::load(const QByteArray& data)
  {
@@ -297,7 +297,7 @@ index f2830f81..f13dff7a 100644
 +        d->mImage.reset(Exiv2::ImageFactory::open((unsigned char*)data.constData(), data.size()).release());
          d->mImage->readMetadata();
      } catch (const Exiv2::Error& error) {
-         d->mErrorMessage = QString::fromUtf8(error.what());
+         d->mErrorMessage = error.what();
 @@ -83,9 +82,9 @@ QString Exiv2ImageLoader::errorMessage() const
      return d->mErrorMessage;
  }
@@ -345,7 +345,7 @@ index 57ef24d2..12a45b68 100644
  private:
      Exiv2ImageLoaderPrivate* const d;
 diff --git a/lib/jpegcontent.cpp b/lib/jpegcontent.cpp
-index bb810dd4..a8cf909f 100644
+index d203da5a..989a1a54 100644
 --- a/lib/jpegcontent.cpp
 +++ b/lib/jpegcontent.cpp
 @@ -42,8 +42,7 @@ extern "C" {
@@ -384,7 +384,7 @@ index bb810dd4..a8cf909f 100644
      // Store Exif info
      image->setExifData(d->mExifData);
 diff --git a/lib/timeutils.cpp b/lib/timeutils.cpp
-index 9e8836a9..3c519098 100644
+index 1fcecc98..ecce3891 100644
 --- a/lib/timeutils.cpp
 +++ b/lib/timeutils.cpp
 @@ -21,6 +21,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Cambridge, MA 02110-1301, USA
@@ -476,10 +476,10 @@ index e3ec8d30..5a286b00 100644
 2.20.1
 
 
-From b81eed1dc4d879f06d651ea0954bee1b46c7947e Mon Sep 17 00:00:00 2001
+From fa287bfbd0bc95856c6a98bab2d81199a1618526 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
 Date: Sat, 29 Dec 2018 23:39:30 +0100
-Subject: [PATCH 2/2] Compile more files with enabled exceptions, required for
+Subject: [PATCH 2/4] Compile more files with enabled exceptions, required for
  exiv2 0.27
 
 Summary:
@@ -504,10 +504,10 @@ Differential Revision: https://phabricator.kde.org/D17873
  1 file changed, 5 insertions(+)
 
 diff --git a/lib/CMakeLists.txt b/lib/CMakeLists.txt
-index d60ae47f..229eac2a 100644
+index 5f135a4d..365bcb86 100644
 --- a/lib/CMakeLists.txt
 +++ b/lib/CMakeLists.txt
-@@ -224,6 +224,11 @@ kde_source_files_enable_exceptions(
+@@ -227,6 +227,11 @@ kde_source_files_enable_exceptions(
      exiv2imageloader.cpp
      imagemetainfomodel.cpp
      timeutils.cpp
@@ -521,3 +521,111 @@ index d60ae47f..229eac2a 100644
  ki18n_wrap_ui(gwenviewlib_SRCS
 -- 
 2.20.1
+
+
+From 6b3407024e1d297ed8466d1e7710a9f7804dc265 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Wed, 6 Feb 2019 22:38:55 +0100
+Subject: [PATCH 4/4] Switch to FindLibExiv2 in ECM 5.54
+
+---
+ CMakeLists.txt            |   3 +-
+ app/CMakeLists.txt        |   2 +-
+ cmake/FindExiv2.cmake     | 117 --------------------------------------
+ importer/CMakeLists.txt   |   2 +-
+ lib/CMakeLists.txt        |   4 +-
+ part/CMakeLists.txt       |   2 +-
+ tests/auto/CMakeLists.txt |   2 +-
+ 7 files changed, 7 insertions(+), 125 deletions(-)
+ delete mode 100644 cmake/FindExiv2.cmake
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index f8bb85e7..7181f6c9 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -97,8 +97,7 @@ set_package_properties(JPEG PROPERTIES URL "http://libjpeg.sourceforge.net/" DES
+ find_package(PNG)
+ set_package_properties(PNG PROPERTIES URL "http://www.libpng.org" DESCRIPTION "PNG image manipulation support" TYPE REQUIRED)
+ 
+-find_package(Exiv2)
+-set_package_properties(Exiv2 PROPERTIES URL "http://www.exiv2.org" DESCRIPTION "image metadata support" TYPE REQUIRED)
++find_package(LibExiv2)
+ 
+ find_package(CFitsio)
+ set_package_properties(CFitsio PROPERTIES URL "http://heasarc.gsfc.nasa.gov/fitsio/fitsio.html" DESCRIPTION "FITS format support" TYPE OPTIONAL)
+diff --git a/app/CMakeLists.txt b/app/CMakeLists.txt
+index 5fe34d69..eabd494d 100644
+--- a/app/CMakeLists.txt
++++ b/app/CMakeLists.txt
+@@ -1,6 +1,6 @@
+ include_directories(
+     ${CMAKE_CURRENT_SOURCE_DIR}/..
+-    ${EXIV2_INCLUDE_DIR}
++    ${LibExiv2_INCLUDE_DIRS}
+     )
+ 
+ # For lib/gwenviewconfig.h and config-gwenview.h
+diff --git a/importer/CMakeLists.txt b/importer/CMakeLists.txt
+index 81e585c1..39e219b7 100644
+--- a/importer/CMakeLists.txt
++++ b/importer/CMakeLists.txt
+@@ -3,7 +3,7 @@ project(importer)
+ include_directories(
+     ${CMAKE_CURRENT_SOURCE_DIR}/..
+     ${CMAKE_CURRENT_BINARY_DIR}/..
+-    ${EXIV2_INCLUDE_DIR}
++    ${LibExiv2_INCLUDE_DIRS}
+     )
+ 
+ set(importer_SRCS
+diff --git a/lib/CMakeLists.txt b/lib/CMakeLists.txt
+index 365bcb86..dcf9757c 100644
+--- a/lib/CMakeLists.txt
++++ b/lib/CMakeLists.txt
+@@ -53,7 +53,7 @@ include_directories(
+     ${CMAKE_CURRENT_SOURCE_DIR}/${GV_JPEG_DIR}
+     ${CMAKE_CURRENT_SOURCE_DIR}/..
+     ${CMAKE_CURRENT_BINARY_DIR}
+-    ${EXIV2_INCLUDE_DIR}
++    ${LibExiv2_INCLUDE_DIRS}
+     ${JPEG_INCLUDE_DIR}
+     ${PNG_INCLUDE_DIRS}
+     )
+@@ -265,7 +265,7 @@ target_link_libraries(gwenviewlib
+    KF5::WindowSystem
+    KF5::IconThemes
+     ${JPEG_LIBRARY}
+-    ${EXIV2_LIBRARIES}
++    LibExiv2::LibExiv2
+     ${PNG_LIBRARIES}
+     ${LCMS2_LIBRARIES}
+     ${PHONON_LIBRARY}
+diff --git a/part/CMakeLists.txt b/part/CMakeLists.txt
+index 9d17eed2..03dcf92f 100644
+--- a/part/CMakeLists.txt
++++ b/part/CMakeLists.txt
+@@ -2,7 +2,7 @@ add_definitions(-DTRANSLATION_DOMAIN="gwenview")
+ 
+ include_directories(
+     ${CMAKE_CURRENT_SOURCE_DIR}/..
+-    ${EXIV2_INCLUDE_DIR}
++    ${LibExiv2_INCLUDE_DIRS}
+     )
+ 
+ set(gvpart_SRCS
+diff --git a/tests/auto/CMakeLists.txt b/tests/auto/CMakeLists.txt
+index d5d3f015..9cc0e3b5 100644
+--- a/tests/auto/CMakeLists.txt
++++ b/tests/auto/CMakeLists.txt
+@@ -14,7 +14,7 @@ endmacro(gv_add_unit_test)
+ include_directories(
+     ${gwenview_SOURCE_DIR}
+     ${importer_SOURCE_DIR}
+-    ${EXIV2_INCLUDE_DIR}
++    ${LibExiv2_INCLUDE_DIRS}
+     )
+ 
+ # For config-gwenview.h
+-- 
+2.20.1
+

@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit autotools gnome2-utils xdg-utils
+inherit autotools xdg
 
 DESCRIPTION="GUI for gnuchess and for internet chess servers"
 HOMEPAGE="https://www.gnu.org/software/xboard/"
@@ -15,7 +15,12 @@ KEYWORDS="~amd64 ~ppc64 ~x86"
 IUSE="+default-font gtk nls Xaw3d zippy"
 RESTRICT="test" #124112
 
-RDEPEND="
+BDEPEND="
+	virtual/pkgconfig
+	x11-base/xorg-proto
+	nls? ( sys-devel/gettext )
+"
+DEPEND="
 	dev-libs/glib:2
 	gnome-base/librsvg:2
 	virtual/libintl
@@ -33,10 +38,7 @@ RDEPEND="
 		!Xaw3d? ( x11-libs/libXaw )
 	)
 	gtk? ( x11-libs/gtk+:2 )"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig
-	x11-base/xorg-proto
-	nls? ( sys-devel/gettext )"
+RDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.8.0-gettext.patch
@@ -51,16 +53,18 @@ src_prepare() {
 }
 
 src_configure() {
-	econf \
-		--disable-update-mimedb \
-		--datadir="${EPREFIX}"/usr/share \
-		$(use_enable nls) \
-		$(use_enable zippy) \
-		--disable-update-mimedb \
-		$(use_with gtk) \
-		$(use_with Xaw3d) \
-		$(usex gtk "--without-Xaw" "$(use_with !Xaw3d Xaw)") \
-		--with-gamedatadir="${EPREFIX}/usr/share/games/${PN}"
+	local myeconfargs=(
+		--disable-update-mimedb
+		--datadir="${EPREFIX}"/usr/share
+		$(use_enable nls)
+		$(use_enable zippy)
+		--disable-update-mimedb
+		$(use_with gtk)
+		$(use_with Xaw3d)
+		$(usex gtk "--without-Xaw" $(use_with !Xaw3d Xaw))
+		--with-gamedatadir="${EPREFIX}"/usr/share/games/${PN}
+	)
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {
@@ -69,19 +73,11 @@ src_install() {
 }
 
 pkg_postinst() {
-	xdg_mimeinfo_database_update
-	xdg_desktop_database_update
-	gnome2_icon_cache_update
+	xdg_pkg_postinst
 	elog "No chess engines are emerged by default! If you want a chess engine"
 	elog "to play with, you can emerge gnuchess or crafty."
 	elog "Read xboard FAQ for information."
 	if ! use default-font ; then
 		ewarn "Read the xboard(6) man page for specifying the font for xboard to use."
 	fi
-}
-
-pkg_postrm() {
-	xdg_mimeinfo_database_update
-	xdg_desktop_database_update
-	gnome2_icon_cache_update
 }

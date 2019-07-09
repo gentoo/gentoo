@@ -1,7 +1,2 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-
-# Andreas Sturmlechner <asturm@gentoo.org> (15 Jul 2018)
-# Old ICU is unsupported. ICU 58 only remains for 13.0 based profiles.
-<dev-libs/icu-59
-<dev-libs/icu-layoutex-59

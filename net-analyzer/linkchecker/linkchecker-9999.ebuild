@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="sqlite?"
@@ -16,29 +16,31 @@ SRC_URI=""
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="gnome sqlite"
+IUSE="sqlite"
 
 RDEPEND="
 	dev-python/pyxdg[${PYTHON_USEDEP}]
+	>=dev-python/requests-2.4[${PYTHON_USEDEP}]
 	virtual/python-dnspython[${PYTHON_USEDEP}]
-	gnome? ( dev-python/pygtk:2[${PYTHON_USEDEP}] )
 "
 DEPEND=""
 
 RESTRICT="test"
 
 python_prepare_all() {
-	local PATCHES=( "${FILESDIR}"/${PN}-9.3-bash-completion.patch )
+	local PATCHES=(
+		"${FILESDIR}/${PN}-9.3-bash-completion.patch"
+	)
 
 	distutils-r1_python_prepare_all
 }
 
 python_install_all() {
 	DOCS=(
-		doc/upgrading.txt
-		doc/python3.txt
 		doc/changelog.txt
 		doc/development.mdwn
+		doc/python3.txt
+		doc/upgrading.txt
 	)
 	distutils-r1_python_install_all
 

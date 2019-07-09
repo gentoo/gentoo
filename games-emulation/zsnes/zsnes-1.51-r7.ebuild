@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -105,6 +105,9 @@ src_compile() {
 }
 
 src_install() {
+	# Uses pic-unfriendly assembly code, bug #427104
+	QA_TEXTRELS="usr/bin/zsnes"
+
 	dobin zsnes
 	if use pax_kernel; then
 		pax-mark m "${D}""${GAMES_BINDIR}"/zsnes || die

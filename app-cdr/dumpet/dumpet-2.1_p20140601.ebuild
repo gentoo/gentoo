@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,16 +14,19 @@ SRC_URI="https://github.com/rhboot/dumpet/archive/${COMMIT}.tar.gz -> ${P}.tar.g
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="test"
 
 RDEPEND="dev-libs/libxml2
 	dev-libs/popt"
 DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+	virtual/pkgconfig
+	test? ( dev-util/valgrind )"
 
 src_prepare() {
 	sed -i Makefile \
 		-e "s/^install : all$/install :/" \
+		-e "s/^CFLAGS:=/CFLAGS?=/" \
+		-e "s/^CC:=/CC?=/" \
 		|| die
 	default
 }

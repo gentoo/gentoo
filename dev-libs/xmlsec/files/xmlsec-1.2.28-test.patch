@@ -1,0 +1,51 @@
+From 3d5c9e38d9576aea252ba186dd2913c57a7a8dd8 Mon Sep 17 00:00:00 2001
+From: Alon Bar-Lev <alon.barlev@gmail.com>
+Date: Tue, 16 Apr 2019 23:07:08 +0300
+Subject: [PATCH] tests: workout test --X509-skip-strict-checks
+
+Apply --X509-skip-strict-checks parameter to verify commands.
+
+[PORT]
+
+Signed-off-by: Alon Bar-Lev <alon.barlev@gmail.com>
+---
+diff --git a/tests/testrun.sh b/tests/testrun.sh
+index ea65802b..9950d4fb 100755
+--- a/tests/testrun.sh
++++ b/tests/testrun.sh
+@@ -59,7 +59,7 @@ if [ "z$XMLSEC_DEFAULT_CRYPTO" != "z" ] ; then
+ elif [ "z$crypto" != "z" ] ; then
+     xmlsec_params="$xmlsec_params --crypto $crypto"
+ fi
+-xmlsec_params="$xmlsec_params --X509-skip-strict-checks --crypto-config $crypto_config"
++xmlsec_params="$xmlsec_params --crypto-config $crypto_config"
+ 
+ #
+ # Setup keys config
+@@ -308,8 +308,9 @@ execDSigTest() {
+     # run tests
+     if [ -n "$params1" ] ; then
+         printf "    Verify existing signature                            "
+-        echo "$VALGRIND $xmlsec_app verify $xmlsec_params $params1 $full_file.xml" >> $curlogfile
+-        $VALGRIND $xmlsec_app verify $xmlsec_params $params1 $full_file.xml >> $curlogfile 2>> $curlogfile
++        params1="$(echo $params1 | sed 's/--X509-skip-strict-checks//')"
++        echo "$VALGRIND $xmlsec_app verify --X509-skip-strict-checks $xmlsec_params $params1 $full_file.xml" >> $curlogfile
++        $VALGRIND $xmlsec_app verify --X509-skip-strict-checks $xmlsec_params $params1 $full_file.xml >> $curlogfile 2>> $curlogfile
+         printRes $expected_res $?
+         if [ $? != 0 ]; then
+             failures=`expr $failures + 1`
+@@ -328,8 +328,9 @@ execDSigTest() {
+ 
+     if [ -n "$params3" -a -z "$PERF_TEST" ] ; then
+         printf "    Verify new signature                                 "
+-        echo "$VALGRIND $xmlsec_app verify $xmlsec_params $params3 $tmpfile" >> $curlogfile
+-        $VALGRIND $xmlsec_app verify $xmlsec_params $params3 $tmpfile >> $curlogfile 2>> $curlogfile
++        params3="$(echo $params3 | sed 's/--X509-skip-strict-checks//')"
++        echo "$VALGRIND $xmlsec_app verify --X509-skip-strict-checks $xmlsec_params $params3 $tmpfile" >> $curlogfile
++        $VALGRIND $xmlsec_app verify --X509-skip-strict-checks $xmlsec_params $params3 $tmpfile >> $curlogfile 2>> $curlogfile
+         printRes $res_success $?
+         if [ $? != 0 ]; then
+             failures=`expr $failures + 1`
+-- 
+2.21.0
+

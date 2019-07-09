@@ -1,0 +1,50 @@
+From cbba1ebf8fcecb24392f0cc07b1235b17d0de9d8 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Adam=20Go=C5=82=C4=99biowski?= <adamg@pld-linux.org>
+Date: Thu, 18 Apr 2019 12:35:54 +0200
+Subject: [PATCH] asio: support boost-1.70
+
+In boost 1.70, deprecated get_io_context() has finally been removed.
+Introduce GET_IO_SERVICE macro that based on boost version uses
+old get_io_service() interface (boost < 1.70), or get_executor().context()
+for boost 1.70+.
+
+Commit based idea seen in monero-project/monero@17769db9462e5201befcb05f86ccbaeabf35caf8
+---
+ src/asio_server_connection.h | 10 ++++++++--
+ 1 file changed, 8 insertions(+), 2 deletions(-)
+
+diff --git a/src/asio_server_connection.h b/src/asio_server_connection.h
+index 6be794060..56924c71a 100644
+--- a/src/asio_server_connection.h
++++ b/src/asio_server_connection.h
+@@ -51,6 +51,12 @@
+ #include "util.h"
+ #include "template.h"
+ 
++#if BOOST_VERSION >= 107000
++#define GET_IO_SERVICE(s) ((boost::asio::io_context&)(s).get_executor().context())
++#else
++#define GET_IO_SERVICE(s) ((s).get_io_service())
++#endif
++
+ namespace nghttp2 {
+ 
+ namespace asio_http2 {
+@@ -71,7 +77,7 @@ class connection : public std::enable_shared_from_this<connection<socket_type>>,
+       SocketArgs &&... args)
+       : socket_(std::forward<SocketArgs>(args)...),
+         mux_(mux),
+-        deadline_(socket_.get_io_service()),
++        deadline_(GET_IO_SERVICE(socket_)),
+         tls_handshake_timeout_(tls_handshake_timeout),
+         read_timeout_(read_timeout),
+         writing_(false),
+@@ -82,7 +88,7 @@ class connection : public std::enable_shared_from_this<connection<socket_type>>,
+     boost::system::error_code ec;
+ 
+     handler_ = std::make_shared<http2_handler>(
+-        socket_.get_io_service(), socket_.lowest_layer().remote_endpoint(ec),
++        GET_IO_SERVICE(socket_), socket_.lowest_layer().remote_endpoint(ec),
+         [this]() { do_write(); }, mux_);
+     if (handler_->start() != 0) {
+       stop();

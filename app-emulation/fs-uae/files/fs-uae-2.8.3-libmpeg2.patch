@@ -1,0 +1,36 @@
+From 5937f7587de5b96cbab120e99b6ae3a0cd722c53 Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Fri, 19 Apr 2019 21:56:58 +0100
+Subject: [PATCH] Only run configure in libmpeg2 when using built-in version
+
+---
+ configure.ac | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 39958ad..941391a 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -200,7 +200,7 @@ AS_IF([test "x$with_glew" = xyes], [
+ ])
+ 
+ AC_ARG_WITH(libmpeg2, AS_HELP_STRING(
+-    [--without-libmpeg2], [or --with-libmpeg=builtin to use included version]))
++    [--without-libmpeg2], [or --with-libmpeg2=builtin to use included version]))
+ AM_CONDITIONAL([BUILTIN_LIBMPEG2], [test x$with_libmpeg2 = xbuiltin])
+ AS_IF([test "x$with_libmpeg2" != xno], [
+     AS_IF([test "x$with_libmpeg2" = xbuiltin], [
+@@ -776,7 +776,9 @@ OPT_FEATURE([A_ZIP], [zip], [zip],
+ 
+ AC_DEFINE([FPU_UAE], [1], [Define to 1])
+ 
+-AC_CONFIG_SUBDIRS([libmpeg2])
++AS_IF([test "x$with_libmpeg2" = xbuiltin], [
++    AC_CONFIG_SUBDIRS([libmpeg2])
++])
+ 
+ # Write Makefile
+ 
+-- 
+2.20.1
+

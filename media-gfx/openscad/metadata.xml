@@ -1,8 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
-	<longdescription>
-OpenSCAD is a software for creating solid 3D CAD objects.  Unlike most free software for creating 3D models (such as the famous application Blender) it does not focus on the artistic aspects of 3D modelling but instead on the CAD aspects. Thus it might be the application you are looking for when you are planning to create 3D models of machine parts but pretty sure is not what you are looking for when you are more interested in creating computer-animated movies.  OpenSCAD is free software and available for Linux/UNIX, MS Windows and Mac OS X.
-	</longdescription>
+<maintainer type="person">
+	<email>waebbl@gmail.com</email>
+	<name>Bernd Waibel</name>
+</maintainer>
+<maintainer type="project">
+	<email>proxy-maint@gentoo.org</email>
+	<name>Proxy Maintainers</name>
+</maintainer>
+<longdescription>
+	OpenSCAD is a software for creating solid 3D CAD objects.  Unlike
+	most free software for creating 3D models (such as the famous
+	application Blender) it does not focus on the artistic aspects of 3D
+	modelling but instead on the CAD aspects. Thus it might be the
+	application you are looking for when you are planning to create 3D
+	models of machine parts but pretty sure is not what you are looking
+	for when you are more interested in creating computer-animated movies.
+	OpenSCAD is free software and available for Linux/UNIX, MS Windows and
+	Mac OS X.
+</longdescription>
+<upstream>
+	<remote-id type="github">openscad/openscad</remote-id>
+</upstream>
 </pkgmetadata>

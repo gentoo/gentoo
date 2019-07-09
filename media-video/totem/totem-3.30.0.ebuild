@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python{3_4,3_5,3_6} )
+PYTHON_COMPAT=( python{3_5,3_6} )
 PYTHON_REQ_USE="threads"
 
 inherit gnome.org gnome2-utils meson vala xdg python-single-r1
@@ -19,7 +19,7 @@ REQUIRED_USE="
 	vala? ( introspection )
 "
 
-KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~x86 ~x86-fbsd"
+KEYWORDS="amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 x86 ~x86-fbsd"
 
 # FIXME:
 # Runtime dependency on gnome-session-2.91

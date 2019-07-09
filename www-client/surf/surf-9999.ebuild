@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 inherit git-r3 savedconfig toolchain-funcs
 
 DESCRIPTION="a simple web browser based on WebKit/GTK+"
@@ -16,7 +16,6 @@ KEYWORDS=""
 COMMON_DEPEND="
 	app-crypt/gcr[gtk]
 	dev-libs/glib:2
-	net-libs/libsoup
 	net-libs/webkit-gtk:4
 	x11-libs/gtk+:3
 	x11-libs/libX11

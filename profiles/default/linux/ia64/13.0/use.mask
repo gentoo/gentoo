@@ -1,6 +1,0 @@
-# Copyright 1999-2017 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-
-# Anthony G. Basile <blueness@gentoo.org> (15 Apr 2012)
-# Pulls in net-libs/axtls which is not keyworded for arch
-curl_ssl_axtls

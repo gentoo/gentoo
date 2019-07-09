@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -23,6 +23,7 @@ RDEPEND="sys-libs/ncurses:0=
 	acl? ( virtual/acl )
 	alsa? ( media-libs/alsa-lib )
 	dbus? ( sys-apps/dbus )
+	games? ( acct-group/gamestat )
 	gpm? ( sys-libs/gpm )
 	!inotify? ( gfile? ( >=dev-libs/glib-2.28.6 ) )
 	kerberos? ( virtual/krb5 )

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -76,10 +76,9 @@ src_install() {
 	# link xsane so it is seen as a plugin in gimp
 	if use gimp; then
 		local plugindir
-		if [ -x "${EPREFIX}"/usr/bin/gimptool ]; then
-			plugindir="$(gimptool --gimpplugindir)/plug-ins"
-		elif [ -x "${EPREFIX}"/usr/bin/gimptool-2.0 ]; then
-			plugindir="$(gimptool-2.0 --gimpplugindir)/plug-ins"
+		local gimptool=$(ls "${EPREFIX}"/usr/bin/gimptool* | head -n1)
+		if [ -n "${gimptool}" ]; then
+			plugindir="$(${gimptool} --gimpplugindir)/plug-ins"
 		else
 			die "Can't find GIMP plugin directory."
 		fi

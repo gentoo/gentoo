@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -17,7 +17,7 @@ RDEPEND="
 	>=x11-libs/gtk+-3:3
 	>=gnome-base/libglade-2.3
 	dev-libs/popt
-	password? ( dev-libs/openssl )
+	password? ( dev-libs/openssl:0= )
 	fam? ( virtual/fam )
 	x11-libs/libX11
 	x11-libs/pango

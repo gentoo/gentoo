@@ -1,0 +1,41 @@
+TOP := $(abspath $(dir $(lastword $(MAKEFILE_LIST))))
+BASE_NAME = «MODULE»
+EXEC = «MODULE».efi
+SRC = $(shell find $(TOP) -type f -name '*.c')
+OBJ = $(SRC:.c=.o)
+INC_DIR = /usr/include/«PACKAGE_NAME»
+LIB_DIR = «LIB_DIR»
+DEST_DIR_DEBUG = .
+«STATIC_LIBS»
+
+EFI_LDS = «EFI_LDS»
+«MODULE_TYPE»
+«VARIABLES»
+
+comma:= ,
+empty:=
+space:= $(empty) $(empty)
+
+all:	$(EXEC)
+
+%.efi:	$(OBJ)
+	$(DLINK) -o $(@:.efi=.dll) $(DLINK_FLAGS) \
+		-Wl,--script,$(EFI_LDS) -Wl,--defsym=PECOFF_HEADER_SIZE=«PECOFF_HEADER_SIZE» \
+		-Wl,$(subst $(space),$(comma),--start-group $(STATIC_LIBRARY_FILES)$^ --end-group)
+	$(OBJCOPY) $(OBJCOPY_FLAGS) $(@:.efi=.dll)
+	$(CP) $(@:.efi=.dll) $(@:.efi=.debug)
+	$(OBJCOPY) --strip-unneeded -R .eh_frame $(@:.efi=.dll)
+	$(OBJCOPY) --add-gnu-debuglink=$(@:.efi=.debug) $(@:.efi=.dll)
+	$(GENFW) -e $(MODULE_TYPE) -o $@ $(@:.efi=.dll) $(GENFW_FLAGS)
+	$(RM) $(@:.efi=.dll)
+
+%.o:	%.c
+	$(CC) $(CC_FLAGS) -I$(INC_DIR) -iquote$(TOP) -c -o $@ $^
+
+clean:
+	$(RM) *.o
+
+mrproper: clean
+	$(RM) $(EXEC) $(EXEC:.efi=.debug)
+
+.PHONY: all clean mrproper

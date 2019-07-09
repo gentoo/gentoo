@@ -1,13 +1,13 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=0
 
 DESCRIPTION="compiler-compiler tool for aspect-oriented programming"
 HOMEPAGE="https://www.gnu.org/software/dotgnu"
-SRC_URI="http://download.savannah.gnu.org/releases/dotgnu-pnet/${P}.tar.gz"
+SRC_URI="https://download.savannah.gnu.org/releases/dotgnu-pnet/${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris"
 IUSE="doc examples"

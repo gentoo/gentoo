@@ -21,7 +21,7 @@ S="${WORKDIR}/${MY_P}"
 LICENSE="Subversion GPL-2"
 SLOT="0"
 [[ "${PV}" = *_rc* ]] || \
-KEYWORDS="~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="apache2 berkdb ctypes-python debug doc +dso extras gnome-keyring +http java kwallet nls perl python ruby sasl test vim-syntax"
 
 COMMON_DEPEND="
@@ -126,6 +126,9 @@ pkg_setup() {
 		echo -ne "\a"
 	fi
 
+	# https://issues.apache.org/jira/browse/SVN-4813#comment-16813739
+	append-cppflags -P
+
 	if use debug ; then
 		append-cppflags -DSVN_DEBUG -DAP_DEBUG
 	fi
@@ -151,6 +154,8 @@ pkg_setup() {
 
 src_prepare() {
 	eapply "${WORKDIR}/patches"
+	eapply "${FILESDIR}"/${PN}-1.9.7-fix-wc-queries-test-test.patch
+	eapply "${FILESDIR}"/${PN}-1.11.1-allow-apr-1.7.0+.patch
 	eapply_user
 
 	fperms +x build/transform_libtool_scripts.sh
@@ -182,7 +187,7 @@ src_configure() {
 	local myconf=(
 		--libdir="${EPREFIX%/}/usr/$(get_libdir)"
 		$(use_with apache2 apache-libexecdir)
-		$(use_with apache2 apxs "${APXS}")
+		$(use_with apache2 apxs "${EPREFIX}"/usr/bin/apxs)
 		$(use_with berkdb berkeley-db "db.h:${EPREFIX%/}/usr/include/db${SVN_BDB_VERSION}::db-${SVN_BDB_VERSION}")
 		$(use_with ctypes-python ctypesgen "${EPREFIX%/}/usr")
 		$(use_enable dso runtime-module-search)

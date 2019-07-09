@@ -1,0 +1,3 @@
+move net-nds/gss-proxy net-nds/gssproxy
+move app-emacs/anything app-emacs/helm
+move games-fps/prboom games-fps/prboom-plus

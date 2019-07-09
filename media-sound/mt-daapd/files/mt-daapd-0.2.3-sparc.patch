@@ -1,6 +1,5 @@
-diff -Nura mt-daapd-0.2.3/src/mp3-scanner.c mt-daapd-0.2.3.sparc/src/mp3-scanner.c
---- mt-daapd-0.2.3/src/mp3-scanner.c	2005-02-05 18:22:47.000000000 -0300
-+++ mt-daapd-0.2.3.sparc/src/mp3-scanner.c	2006-01-03 16:39:50.000000000 -0300
+--- a/src/mp3-scanner.c
++++ b/src/mp3-scanner.c
 @@ -1663,14 +1663,14 @@
      /* now check for an XING header */
      if(strncasecmp((char*)&buffer[index+fi.xing_offset+4],"XING",4) == 0) {

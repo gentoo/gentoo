@@ -1,0 +1,11 @@
+--- a/Source/GmmLib/CMakeLists.txt
++++ b/Source/GmmLib/CMakeLists.txt
+@@ -40,7 +40,7 @@
+ endif()
+ 
+ if(NOT DEFINED GMMLIB_API_PATCH_VERSION)
+-    set(GMMLIB_API_PATCH_VERSION PATCH_VERSION)
++    set(GMMLIB_API_PATCH_VERSION "${PATCH_VERSION}")
+ endif()
+ 
+ message(STATUS "API version: ${GMMLIB_API_MAJOR_VERSION}.${GMMLIB_API_MINOR_VERSION}.${GMMLIB_API_PATCH_VERSION}")

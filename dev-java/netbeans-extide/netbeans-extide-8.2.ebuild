@@ -1,17 +1,17 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 inherit eutils java-pkg-2 java-ant-2
 
 DESCRIPTION="Netbeans ExtIDE Cluster"
-HOMEPAGE="http://netbeans.org/projects/ide"
+HOMEPAGE="https://netbeans.org/projects/ide"
 SLOT="8.2"
-SOURCE_URL="http://download.netbeans.org/netbeans/8.2/final/zip/netbeans-8.2-201609300101-src.zip"
+SOURCE_URL="https://download.netbeans.org/netbeans/8.2/final/zip/netbeans-8.2-201609300101-src.zip"
 SRC_URI="${SOURCE_URL}
 	https://dev.gentoo.org/~fordfrog/distfiles/netbeans-8.2-build.xml.patch.bz2
-	http://hg.netbeans.org/binaries/BEA15848D713D491C6EBA1307E0564A5BC3965E7-ant-libs-1.9.7.zip
-	http://hg.netbeans.org/binaries/545E2B7AB1BD579CC76E3836055877982C5CD0C6-ant-misc-1.9.7.zip"
+	https://hg.netbeans.org/binaries/BEA15848D713D491C6EBA1307E0564A5BC3965E7-ant-libs-1.9.7.zip
+	https://hg.netbeans.org/binaries/545E2B7AB1BD579CC76E3836055877982C5CD0C6-ant-misc-1.9.7.zip"
 LICENSE="|| ( CDDL GPL-2-with-linking-exception )"
 KEYWORDS="amd64 ~x86"
 IUSE=""

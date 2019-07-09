@@ -17,10 +17,12 @@ HOMEPAGE="https://github.com/nex3/rb-inotify"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm ~arm64 hppa ppc ppc64 sparc x86 ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE=""
 
 ruby_add_rdepend "dev-ruby/ffi"
+
+ruby_add_bdepend "test? ( dev-ruby/concurrent-ruby )"
 
 all_ruby_prepare() {
 	# Avoid unneeded dependency on jeweler.

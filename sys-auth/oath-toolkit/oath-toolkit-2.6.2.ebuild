@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,7 +10,7 @@ SRC_URI="http://download.savannah.gnu.org/releases/${PN}/${P}.tar.gz"
 LICENSE="GPL-3 LGPL-2.1"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~arm64 ~ppc64 ~x86"
 IUSE="pam pskc test"
 
 RDEPEND="
@@ -27,6 +27,14 @@ PATCHES=(
 
 src_prepare() {
 	default
+
+	# Below files are verbatim copy. Effectively apply ${P}-gcc7.patch
+	# to all of them.
+	local s='oathtool/gl/intprops.h' d
+	for d in {liboath/gl/tests,libpskc/gl,pskctool/gl}/intprops.h; do
+		echo "Copy '${s}' to '${d}'"
+		cp "${s}" "${d}" || die
+	done
 
 	# These tests need git/cvs and don't reflect anything in the final app
 	sed -i -r \

@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit autotools multilib-minimal
+inherit autotools multilib-minimal systemd
 
 DESCRIPTION="Bluetooth Audio ALSA Backend"
 HOMEPAGE="https://github.com/Arkq/bluez-alsa"
@@ -17,10 +17,10 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="aac debug hcitop static-libs"
+IUSE="aac debug hcitop ldac ofono static-libs test"
 
 RDEPEND=">=dev-libs/glib-2.26[dbus,${MULTILIB_USEDEP}]
-	>=media-libs/alsa-lib-1.0[${MULTILIB_USEDEP}]
+	>=media-libs/alsa-lib-1.1.2[${MULTILIB_USEDEP}]
 	>=media-libs/sbc-1.2[${MULTILIB_USEDEP}]
 	>=net-wireless/bluez-5.0[${MULTILIB_USEDEP}]
 	sys-libs/readline:0=
@@ -28,7 +28,8 @@ RDEPEND=">=dev-libs/glib-2.26[dbus,${MULTILIB_USEDEP}]
 	hcitop? (
 		dev-libs/libbsd
 		sys-libs/ncurses:0=
-	)"
+	)
+	ldac? ( >=media-libs/libldac-2.0.0 )"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
@@ -42,8 +43,11 @@ multilib_src_configure() {
 		--enable-rfcomm
 		$(use_enable aac)
 		$(use_enable debug)
+		$(use_enable ofono)
 		$(use_enable static-libs static)
+		$(use_enable test)
 		$(multilib_native_use_enable hcitop)
+		$(multilib_native_use_enable ldac)
 	)
 	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
 }
@@ -54,6 +58,7 @@ multilib_src_install_all() {
 
 	newinitd "${FILESDIR}"/bluealsa-init.d bluealsa
 	newconfd "${FILESDIR}"/bluealsa-conf.d-2 bluealsa
+	systemd_dounit "${FILESDIR}"/bluealsa.service
 }
 
 pkg_postinst() {

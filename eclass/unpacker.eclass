@@ -339,6 +339,7 @@ _unpacker() {
 	a=$(find_unpackable_file "${a}")
 
 	# first figure out the decompression method
+	local comp=""
 	case ${m} in
 	*.bz2|*.tbz|*.tbz2)
 		local bzcmd=${PORTAGE_BZIP2_COMMAND:-$(type -P pbzip2 || type -P bzip2)}
@@ -353,11 +354,10 @@ _unpacker() {
 	*.lz)
 		: ${UNPACKER_LZIP:=$(type -P plzip || type -P pdlzip || type -P lzip)}
 		comp="${UNPACKER_LZIP} -dc" ;;
-	*)	comp="" ;;
 	esac
 
 	# then figure out if there are any archiving aspects
-	arch=""
+	local arch=""
 	case ${m} in
 	*.tgz|*.tbz|*.tbz2|*.txz|*.tar.*|*.tar)
 		arch="tar --no-same-owner -xof" ;;

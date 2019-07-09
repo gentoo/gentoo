@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -24,7 +24,6 @@ RDEPEND="
 	media-libs/libsoundtouch[abi_x86_32(-)]
 	media-libs/portaudio[abi_x86_32(-)]
 	>=sys-libs/zlib-1.2.4[abi_x86_32(-)]
-	virtual/jpeg:62[abi_x86_32(-)]
 	virtual/libudev[abi_x86_32(-)]
 	virtual/opengl[abi_x86_32(-)]
 	x11-libs/gtk+:2[abi_x86_32(-)]
@@ -42,8 +41,10 @@ DEPEND="${RDEPEND}
 
 pkg_setup() {
 	if [[ ${MERGE_TYPE} != binary && $(tc-getCC) == *gcc* ]]; then
-		if [[ $(gcc-major-version) -lt 4 || $(gcc-major-version) == 4 && $(gcc-minor-version) -lt 8 ]] ; then
-			die "${PN} does not compile with gcc less than 4.8"
+		# -mxsave flag is needed when GCC >= 8.2 is used
+		# https://bugs.gentoo.org/685156
+		if [[ $(gcc-major-version) -gt 8 || $(gcc-major-version) == 8 && $(gcc-minor-version) -ge 2 ]]; then
+			append-flags -mxsave
 		fi
 	fi
 }

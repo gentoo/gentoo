@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,8 +13,9 @@ SRC_URI="https://jak-linux.org/projects/${PN}/${MY_PR}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~sparc ~x86"
+KEYWORDS="amd64 ~ppc sparc x86"
 IUSE="aac flac mac mp3 musepack wavpack wma"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND="${PYTHON_DEPS}"
 RDEPEND="${DEPEND}

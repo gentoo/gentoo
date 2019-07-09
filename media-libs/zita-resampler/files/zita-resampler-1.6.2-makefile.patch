@@ -1,0 +1,90 @@
+diff -urN zita-resampler-1.6.2.orig/apps/Makefile zita-resampler-1.6.2/apps/Makefile
+--- zita-resampler-1.6.2.orig/apps/Makefile	2018-08-24 21:41:47.000000000 +0300
++++ zita-resampler-1.6.2/apps/Makefile	2019-04-13 18:49:50.005800712 +0300
+@@ -23,18 +23,17 @@
+ MANDIR ?= /usr/share/man/man1
+ 
+ VERSION = 1.6.0
+-CPPFLAGS += -MMD -MP -DVERSION=\"$(VERSION)\"
+-CXXFLAGS += -O2  -ffast-math -Wall
+-CXXFLAGS += -march=native
++CPPFLAGS += -MMD -MP -DVERSION=\"$(VERSION)\" -I ../source
++CXXFLAGS += -ffast-math -Wall
+ 
+ 
+-all:	zresample zretune zresample.1.gz zretune.1.gz
++all:	zresample zretune zresample.1 zretune.1
+ 
+ 
+ ZRESAMPLE_O = zresample.o audiofile.o dither.o
+ zresample:	LDLIBS += -lzita-resampler -lsndfile -lrt
+ zresample:	$(ZRESAMPLE_O)
+-	$(CXX) $(LDFLAGS) -o $@ $(ZRESAMPLE_O) $(LDLIBS)
++	$(CXX) -L ../source $(LDFLAGS) -o $@ $(ZRESAMPLE_O) $(LDLIBS)
+ $(ZRESAMPLE_O):
+ -include $(ZRESAMPLE_O:%.o=%.d)
+ 
+@@ -42,25 +41,18 @@
+ ZRETUNE_O = zretune.o audiofile.o dither.o
+ zretune:	LDLIBS += -lzita-resampler -lsndfile -lrt
+ zretune:	$(ZRETUNE_O)
+-	$(CXX) $(LDFLAGS) -o $@ $(ZRETUNE_O) $(LDLIBS)
++	$(CXX) -L ../source $(LDFLAGS) -o $@ $(ZRETUNE_O) $(LDLIBS)
+ $(ZRETUNE_O):
+ -include $(ZRETUNE_O:%.o=%.d)
+ 
+ 
+-zresample.1.gz:	zresample.1
+-	gzip -c zresample.1 > zresample.1.gz
+-
+-zretune.1.gz:	zretune.1
+-	gzip -c zretune.1 > zretune.1.gz
+-
+-
+ install:	all
+-	install -d $(BINDIR)
+-	install -d $(MANDIR)
++	install -d $(DESTDIR)$(BINDIR)
++	install -d $(DESTDIR)$(MANDIR)
+ 	install -m 755 zresample $(DESTDIR)$(BINDIR)
+ 	install -m 755 zretune $(DESTDIR)$(BINDIR)
+-	install -m 644 zresample.1.gz $(DESTDIR)$(MANDIR)
+-	install -m 644 zretune.1.gz $(DESTDIR)$(MANDIR)
++	install -m 644 zresample.1 $(DESTDIR)$(MANDIR)
++	install -m 644 zretune.1 $(DESTDIR)$(MANDIR)
+ 
+ uninstall: 
+ 	/bin/rm -f $(DESTDIR)$(BINDIR)/zresample
+diff -urN zita-resampler-1.6.2.orig/source/Makefile zita-resampler-1.6.2/source/Makefile
+--- zita-resampler-1.6.2.orig/source/Makefile	2018-08-24 21:41:47.000000000 +0300
++++ zita-resampler-1.6.2/source/Makefile	2019-04-13 18:49:25.936129640 +0300
+@@ -32,8 +32,7 @@
+ 
+ 
+ CPPFLAGS += -I. -D_REENTRANT -D_POSIX_PTHREAD_SEMANTICS
+-CXXFLAGS += -Wall -fPIC -O2 -ffast-math
+-CXXFLAGS += -march=native
++CXXFLAGS += -Wall -fPIC -ffast-math
+ LDFLAGS += 
+ LDLIBS +=
+ 
+@@ -47,6 +46,9 @@
+ 	zita-resampler/vresampler.h zita-resampler/cresampler.h
+ 
+ 
++$(ZITA-RESAMPLER_SO): $(ZITA-RESAMPLER_MIN)
++	ln -sf $(ZITA-RESAMPLER_MIN) $(ZITA-RESAMPLER_SO)
++
+ $(ZITA-RESAMPLER_MIN): $(ZITA-RESAMPLER_O)
+ 	$(CXX) -shared $(LDFLAGS) -Wl,-soname,$(ZITA-RESAMPLER_MAJ) -o $(ZITA-RESAMPLER_MIN) $(ZITA-RESAMPLER_O) $(ZITA-RESAMPLER_DEP)
+ 
+@@ -58,8 +60,8 @@
+ 	install -d $(DESTDIR)$(LIBDIR)
+ 	install -m 644 $(ZITA-RESAMPLER_H)   $(DESTDIR)$(INCDIR)/zita-resampler
+ 	install -m 755 $(ZITA-RESAMPLER_MIN) $(DESTDIR)$(LIBDIR)
+-	ldconfig
+ 	ln -sf $(ZITA-RESAMPLER_MIN) $(DESTDIR)$(LIBDIR)/$(ZITA-RESAMPLER_SO)
++	ln -sf $(ZITA-RESAMPLER_MIN) $(DESTDIR)$(LIBDIR)/$(ZITA-RESAMPLER_MAJ)
+ 
+ uninstall:
+ 	/bin/rm -rf $(DESTDIR)$(INCDIR)/zita-resampler

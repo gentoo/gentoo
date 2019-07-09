@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-EGIT_REPO_URI="https://git.videolan.org/git/ffmpeg.git"
+EGIT_REPO_URI="https://git.ffmpeg.org/ffmpeg.git"
 ESVN_REPO_URI="svn://svn.mplayerhq.hu/mplayer/trunk"
 [[ ${PV} = *9999* ]] && SVN_ECLASS="subversion git-r3"
 
@@ -19,7 +19,7 @@ radio rar rtc rtmp samba selinux +shm sdl speex cpu_flags_x86_sse cpu_flags_x86_
 tga theora tremor +truetype toolame twolame +unicode v4l vcd vdpau vidix
 vorbis +X x264 xinerama +xscreensaver +xv xvid yuv4mpeg zoran"
 
-VIDEO_CARDS="mga tdfx"
+VIDEO_CARDS="mga"
 for x in ${VIDEO_CARDS}; do
 	IUSE+=" video_cards_${x}"
 done
@@ -419,18 +419,11 @@ src_configure() {
 		 myconf+=" --disable-mga --disable-xmga"
 	fi
 
-	if use video_cards_tdfx; then
-		myconf+="
-			$(use_enable video_cards_tdfx tdfxvid)
-			$(use_enable fbcon tdfxfb)
-		"
-	else
-		myconf+="
-			--disable-3dfx
-			--disable-tdfxvid
-			--disable-tdfxfb
-		"
-	fi
+	myconf+="
+		--disable-3dfx
+		--disable-tdfxvid
+		--disable-tdfxfb
+	"
 
 	# sun card, disable by default, see bug #258729
 	myconf+=" --disable-xvr100"

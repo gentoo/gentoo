@@ -1,0 +1,24 @@
+From 111ee5ff9daf7db21ad0b6874c4b7cc05baf4703 Mon Sep 17 00:00:00 2001
+From: Milan Crha <mcrha@redhat.com>
+Date: Tue, 8 Jan 2019 22:13:47 +0100
+Subject: [PATCH] Fix typo in libical-glib.pc.in
+
+Missing '$' causes compiler warnings about missing-include-dirs, due to
+the {includedir} not being properly replaced with the variable value.
+
+Signed-off-by: Allen Winter <allen.winter@kdab.com>
+---
+ src/libical-glib/libical-glib.pc.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/libical-glib/libical-glib.pc.in b/src/libical-glib/libical-glib.pc.in
+index 42f1ffe5..e164cfb5 100644
+--- a/src/libical-glib/libical-glib.pc.in
++++ b/src/libical-glib/libical-glib.pc.in
+@@ -7,5 +7,5 @@ Name: libical-glib
+ Description: A GObject interface of the libical library
+ Version: @LIBICAL_LIB_VERSION_STRING@
+ Requires: glib-2.0, gobject-2.0, libical
+-Cflags: -I{includedir}
++Cflags: -I${includedir}
+ Libs: -L${libdir} -lical-glib

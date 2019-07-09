@@ -3,18 +3,18 @@
 
 EAPI=7
 
-inherit flag-o-matic multilib toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="An embeddable Javascript interpreter in C."
 HOMEPAGE="
-	http://mujs.com/
+	https://mujs.com/
 	https://github.com/ccxvii/mujs/
 "
 SRC_URI="https://github.com/ccxvii/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="AGPL-3"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ia64 ~ppc ~ppc64 ~s390 sparc ~x86 ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 ppc ppc64 s390 sparc x86 ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="static-libs"
 
 RDEPEND="sys-libs/readline:0="
@@ -48,7 +48,7 @@ src_install() {
 
 	emake "${myeconfargs[@]}"
 
-	mv -v "${D}"/usr/$(get_libdir)/lib${PN}.so{,.${PV}} || die
+	mv -v "${ED}"/usr/$(get_libdir)/lib${PN}.so{,.${PV}} || die
 
 	dosym lib${PN}.so.${PV} /usr/$(get_libdir)/lib${PN}.so
 	dosym lib${PN}.so.${PV} /usr/$(get_libdir)/lib${PN}.so.${PV:0:1}

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -19,7 +19,7 @@ LICENSE="|| ( LGPL-3+ GPL-2+ )"
 # The subslot reflects the C & C++ SONAMEs.
 SLOT="0/10.4"
 KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~ppc-aix ~x64-cygwin ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="+asm doc cxx pgo static-libs"
+IUSE="+asm doc cxx static-libs"
 
 DEPEND="sys-devel/m4
 	app-arch/xz-utils"
@@ -53,6 +53,7 @@ src_prepare() {
 	EOF
 	# Patches to original configure might have lost the +x bit.
 	chmod a+rx configure{,.wrapped}
+	epatch_user
 }
 
 multilib_src_configure() {
@@ -86,17 +87,6 @@ multilib_src_configure() {
 
 multilib_src_compile() {
 	emake
-
-	if use pgo ; then
-		emake -j1 -C tune tuneup
-		ebegin "Trying to generate tuned data"
-		./tune/tuneup | tee gmp.mparam.h.new
-		if eend $(( 0 + ${PIPESTATUS[*]/#/+} )) ; then
-			mv gmp.mparam.h.new gmp-mparam.h || die
-			emake clean
-			emake
-		fi
-	fi
 }
 
 multilib_src_test() {

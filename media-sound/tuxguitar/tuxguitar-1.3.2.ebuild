@@ -1,38 +1,39 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
-JAVA_PKG_IUSE="source"
-
-inherit eutils java-pkg-2 java-ant-2 toolchain-funcs flag-o-matic fdo-mime gnome2-utils
+EAPI=6
 
 MY_P="${P}-src"
-DESCRIPTION="TuxGuitar is a multitrack guitar tablature editor and player written in Java-SWT"
-HOMEPAGE="http://tuxguitar.herac.com.ar/"
+JAVA_PKG_IUSE="source"
+inherit desktop java-pkg-2 java-ant-2 toolchain-funcs flag-o-matic xdg-utils
+
+DESCRIPTION="Multitrack guitar tablature editor and player written in Java-SWT"
+HOMEPAGE="http://www.tuxguitar.com.ar/"
 SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
+
 LICENSE="LGPL-2.1"
 SLOT="0"
-
 IUSE="alsa fluidsynth jack lilypond oss pdf timidity tray"
-
 KEYWORDS="~amd64 ~x86"
 
-CDEPEND="dev-java/swt:3.7[cairo]
+COMMON_DEPEND="
+	dev-java/swt:3.7[cairo]
 	alsa? ( media-libs/alsa-lib )
 	pdf? ( dev-java/itext:5 )
-	fluidsynth? ( media-sound/fluidsynth )
-	lilypond? ( media-sound/lilypond )"
-
-RDEPEND=">=virtual/jre-1.5
+	fluidsynth? ( media-sound/fluidsynth:= )
+	lilypond? ( media-sound/lilypond )
+"
+RDEPEND="${COMMON_DEPEND}
+	>=virtual/jre-1.5
 	timidity? ( media-sound/timidity++[alsa?,oss?] )
-	${CDEPEND}"
-
-DEPEND=">=virtual/jdk-1.5
-	${CDEPEND}"
-
-S="${WORKDIR}/${MY_P}"
+"
+DEPEND="${COMMON_DEPEND}
+	>=virtual/jdk-1.5
+"
 
 PATCHES=( "${FILESDIR}"/${PN}-fixed-ant-files.patch )
+
+S="${WORKDIR}/${MY_P}"
 
 LIBRARY_LIST=()
 PLUGIN_LIST=()
@@ -116,8 +117,8 @@ src_install() {
 }
 
 pkg_postinst() {
-	fdo-mime_desktop_database_update
-	gnome2_icon_cache_update
+	xdg_desktop_database_update
+	xdg_icon_cache_update
 	if use fluidsynth; then
 		ewarn "Fluidsynth plugin blocks behavior of JSA plugin."
 		ewarn "Enable only one of them in \"Tools > Plugins\""
@@ -125,6 +126,6 @@ pkg_postinst() {
 }
 
 pkg_postrm() {
-	fdo-mime_desktop_database_update
-	gnome2_icon_cache_update
+	xdg_desktop_database_update
+	xdg_icon_cache_update
 }

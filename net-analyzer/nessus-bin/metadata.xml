@@ -5,8 +5,8 @@
 	<email>marecki@gentoo.org</email>
 	<name>Marek Szuba</name>
 </maintainer>
-<maintainer type="project">
-	<email>netmon@gentoo.org</email>
-	<name>Gentoo network monitoring and analysis project</name>
+<maintainer type="person">
+	<email>zerochaos@gentoo.org</email>
+	<name>Rick Farina</name>
 </maintainer>
 </pkgmetadata>

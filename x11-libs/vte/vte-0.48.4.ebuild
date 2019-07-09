@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -8,7 +8,7 @@ VALA_MIN_API_VERSION="0.32"
 inherit gnome2 vala
 
 DESCRIPTION="Library providing a virtual terminal emulator widget"
-HOMEPAGE="https://wiki.gnome.org/action/show/Apps/Terminal/VTE"
+HOMEPAGE="https://wiki.gnome.org/Apps/Terminal/VTE"
 
 LICENSE="LGPL-2+"
 SLOT="2.91"

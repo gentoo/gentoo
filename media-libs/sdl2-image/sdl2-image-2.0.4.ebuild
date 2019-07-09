@@ -11,11 +11,11 @@ SRC_URI="http://www.libsdl.org/projects/SDL_image/release/${MY_P}.tar.gz"
 
 LICENSE="ZLIB"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE="gif jpeg png static-libs tiff webp"
 
 RDEPEND="
-	>=media-libs/libsdl2-2.0.1-r1[${MULTILIB_USEDEP}]
+	>=media-libs/libsdl2-2.0.9[${MULTILIB_USEDEP}]
 	>=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}]
 	png? ( >=media-libs/libpng-1.6.10:0[${MULTILIB_USEDEP}] )
 	jpeg? ( >=virtual/jpeg-0-r2:0[${MULTILIB_USEDEP}] )

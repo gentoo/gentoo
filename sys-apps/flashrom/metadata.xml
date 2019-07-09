@@ -26,6 +26,7 @@
 		<flag name="internal">Enable internal/onboard support</flag>
 		<flag name="internal_dmi">Enable internal DMI decoding rather than use <pkg>sys-apps/dmidecode</pkg></flag>
 		<flag name="it8212">Support for ITE IT8212F ATA/RAID controllers</flag>
+		<flag name="jlink_spi">Support for SEGGER J-Link and compatible devices</flag>
 		<flag name="linux_mtd">Enable support for Linux mtd SPI flash devices</flag>
 		<flag name="linux_spi">Enable support for Linux userspace spidev interface</flag>
 		<flag name="mstarddc_spi">Support for SPI flash ROMs accessible through DDC in MSTAR-equipped displays</flag>

@@ -1,0 +1,22 @@
+diff --git a/build/CMakeLists.txt b/build/CMakeLists.txt
+index 949f6a46..a6d29990 100644
+--- a/build/CMakeLists.txt
++++ b/build/CMakeLists.txt
+@@ -103,8 +103,6 @@ set_target_properties(libi2pd PROPERTIES PREFIX "")
+ if (WITH_LIBRARY)
+   install(TARGETS libi2pd
+     EXPORT libi2pd
+-    ARCHIVE DESTINATION lib
+-    LIBRARY DESTINATION lib
+     COMPONENT Libraries)
+ # TODO Make libi2pd available to 3rd party projects via CMake as imported target
+ # FIXME This pulls stdafx
+@@ -135,8 +133,6 @@ set_target_properties(libi2pdclient PROPERTIES PREFIX "")
+ if (WITH_LIBRARY)
+   install(TARGETS libi2pdclient
+     EXPORT libi2pdclient
+-    ARCHIVE DESTINATION lib
+-    LIBRARY DESTINATION lib
+     COMPONENT Libraries)
+ endif()
+ 

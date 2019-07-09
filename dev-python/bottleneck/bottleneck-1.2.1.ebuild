@@ -1,9 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-
-PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
+PYTHON_COMPAT=( python2_7 python3_{5,6,7} )
 
 inherit distutils-r1
 
@@ -13,7 +12,7 @@ SRC_URI="https://github.com/kwgoodman/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 
 SLOT="0"
 LICENSE="BSD"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 IUSE="test"
 
 RDEPEND="

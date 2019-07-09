@@ -1,0 +1,17 @@
+Issue 945938: Build fails with clang/llvm-8
+https://bugs.chromium.org/p/chromium/issues/detail?id=945938&q=TabStripModelChange&colspec=ID%20Pri%20M%20Stars%20ReleaseBlock%20Component%20Status%20Owner%20Summary%20OS%20Modified
+
+diff --git a/chrome/browser/ui/tabs/tab_strip_model_observer.h b/chrome/browser/ui/tabs/tab_strip_model_observer.h
+index 6c8bce5..7f67b7d 100644
+--- a/chrome/browser/ui/tabs/tab_strip_model_observer.h
++++ b/chrome/browser/ui/tabs/tab_strip_model_observer.h
+@@ -135,7 +135,7 @@ class TabStripModelChange {
+ 
+  private:
+   const Type type_ = kSelectionOnly;
+-  const std::vector<Delta> deltas_;
++  std::vector<Delta> deltas_;
+ 
+   DISALLOW_COPY_AND_ASSIGN(TabStripModelChange);
+ };
+

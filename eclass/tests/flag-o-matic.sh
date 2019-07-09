@@ -58,6 +58,22 @@ strip-unsupported-flags
 [[ ${CFLAGS} == "--param l1-cache-size=32" ]] && [[ ${CXXFLAGS} == "-z=2" ]] && [[ ${LDFLAGS} == "" ]]
 ftend
 
+CFLAGS="-O2 -B/foo -O1"
+CXXFLAGS="-O2 -B/foo -O1"
+LDFLAGS="-O2 -B/foo -O1"
+tbegin "strip-unsupported-flags for '-B/foo'"
+strip-unsupported-flags
+[[ ${CFLAGS} == "-O2 -O1" ]] && [[ ${CXXFLAGS} == "-O2 -O1" ]] && [[ ${LDFLAGS} == "" ]]
+ftend
+
+CFLAGS="-O2 -B /foo -O1"
+CXXFLAGS="-O2 -B /foo -O1"
+LDFLAGS="-O2 -B /foo -O1"
+tbegin "strip-unsupported-flags for '-B /foo'"
+strip-unsupported-flags
+[[ ${CFLAGS} == "-O2 -O1" ]] && [[ ${CXXFLAGS} == "-O2 -O1" ]] && [[ ${LDFLAGS} == "" ]]
+ftend
+
 for var in $(all-flag-vars) ; do
 	eval ${var}=\"-filter -filter-glob -foo-${var%FLAGS}\"
 done

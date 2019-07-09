@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit gnome2 python-single-r1
 
 DESCRIPTION="Project manager for Gnome"
-HOMEPAGE="https://wiki.gnome.org/action/show/Apps/Planner"
+HOMEPAGE="https://wiki.gnome.org/Apps/Planner"
 SRC_URI="https://dev.gentoo.org/~eva/distfiles/${PN}/${P}.tar.xz"
 
 SLOT="0"

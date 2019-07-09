@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 PHP_EXT_NAME=ming
 MY_P="${PHP_EXT_NAME}-${PV//./_}"
-USE_PHP="php5-6 php7-0 php7-1 php7-2"
+USE_PHP="php5-6 php7-0 php7-1 php7-2 php7-3"
 PHP_EXT_S="${WORKDIR}/libming-${MY_P}/php_ext"
 inherit flag-o-matic php-ext-source-r3
 
@@ -15,7 +15,7 @@ SRC_URI="https://github.com/libming/libming/archive/${MY_P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd"
 IUSE=""
 
 RDEPEND="media-libs/ming"

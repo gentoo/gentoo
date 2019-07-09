@@ -1,25 +1,25 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: gnome2-utils.eclass
 # @MAINTAINER:
 # gnome@gentoo.org
-# @SUPPORTED_EAPIS: 0 1 2 3 4 5 6
+# @SUPPORTED_EAPIS: 0 1 2 3 4 5 6 7
 # @BLURB: Auxiliary functions commonly used by Gnome packages.
 # @DESCRIPTION:
 # This eclass provides a set of auxiliary functions needed by most Gnome
 # packages. It may be used by non-Gnome packages as needed for handling various
 # Gnome stack related functions such as:
-#  * Gtk+ icon cache management
 #  * GSettings schemas management
 #  * GConf schemas management
 #  * scrollkeeper (old Gnome help system) management
 
 [[ ${EAPI:-0} == [012345] ]] && inherit multilib
-inherit eutils xdg-utils
+[[ ${EAPI:-0} == [0123456] ]] && inherit eutils
+inherit xdg-utils
 
 case "${EAPI:-0}" in
-	0|1|2|3|4|5|6) ;;
+	0|1|2|3|4|5|6|7) ;;
 	*) die "EAPI=${EAPI} is not supported" ;;
 esac
 
@@ -40,12 +40,6 @@ esac
 # @DESCRIPTION:
 # Path to scrollkeeper-update
 : ${SCROLLKEEPER_UPDATE_BIN:="/usr/bin/scrollkeeper-update"}
-
-# @ECLASS-VARIABLE: GTK_UPDATE_ICON_CACHE
-# @INTERNAL
-# @DESCRIPTION:
-# Path to gtk-update-icon-cache
-: ${GTK_UPDATE_ICON_CACHE:="/usr/bin/gtk-update-icon-cache"}
 
 # @ECLASS-VARIABLE: GLIB_COMPILE_SCHEMAS
 # @INTERNAL
@@ -83,8 +77,6 @@ esac
 # @DESCRIPTION:
 # List of gdk-pixbuf loaders provided by the package
 
-DEPEND=">=sys-apps/sed-4"
-
 
 # @FUNCTION: gnome2_environment_reset
 # @DESCRIPTION:
@@ -102,7 +94,7 @@ gnome2_environment_reset() {
 	# Ensure we don't rely on dconf/gconf while building, bug #511946
 	export GSETTINGS_BACKEND="memory"
 
-	if has ${EAPI:-0} 6; then
+	if has ${EAPI:-0} 6 7; then
 		# Try to cover the packages honoring this variable, bug #508124
 		export GST_INSPECT="$(type -P true)"
 
@@ -203,72 +195,6 @@ gnome2_gconf_uninstall() {
 		kill -HUP ${pids}
 		eend $?
 	fi
-}
-
-# @FUNCTION: gnome2_icon_savelist
-# @DESCRIPTION:
-# Find the icons that are about to be installed and save their location
-# in the GNOME2_ECLASS_ICONS environment variable. This is only
-# necessary for eclass implementations that call
-# gnome2_icon_cache_update conditionally.
-# This function should be called from pkg_preinst.
-gnome2_icon_savelist() {
-	has ${EAPI:-0} 0 1 2 && ! use prefix && ED="${D}"
-	pushd "${ED}" > /dev/null || die
-	export GNOME2_ECLASS_ICONS=$(find 'usr/share/icons' -maxdepth 1 -mindepth 1 -type d 2> /dev/null)
-	popd > /dev/null || die
-}
-
-# @FUNCTION: gnome2_icon_cache_update
-# @DESCRIPTION:
-# Updates Gtk+ icon cache files under /usr/share/icons.
-# This function should be called from pkg_postinst and pkg_postrm.
-gnome2_icon_cache_update() {
-	has ${EAPI:-0} 0 1 2 && ! use prefix && EROOT="${ROOT}"
-	local updater="${EROOT}${GTK_UPDATE_ICON_CACHE}"
-
-	if [[ ! -x "${updater}" ]] ; then
-		debug-print "${updater} is not executable"
-		return
-	fi
-
-	ebegin "Updating icons cache"
-
-	local retval=0
-	local fails=( )
-
-	for dir in "${EROOT%/}"/usr/share/icons/*
-	do
-		if [[ -f "${dir}/index.theme" ]] ; then
-			local rv=0
-
-			"${updater}" -qf "${dir}"
-			rv=$?
-
-			if [[ ! $rv -eq 0 ]] ; then
-				debug-print "Updating cache failed on ${dir}"
-
-				# Add to the list of failures
-				fails+=( "${dir}" )
-
-				retval=2
-			fi
-		elif [[ $(ls "${dir}") = "icon-theme.cache" ]]; then
-			# Clear stale cache files after theme uninstallation
-			rm "${dir}/icon-theme.cache"
-		fi
-
-		if [[ -z $(ls "${dir}") ]]; then
-			# Clear empty theme directories after theme uninstallation
-			rmdir "${dir}"
-		fi
-	done
-
-	eend ${retval}
-
-	for f in "${fails[@]}" ; do
-		eerror "Failed to update cache with icon $f"
-	done
 }
 
 # @FUNCTION: gnome2_omf_fix
@@ -523,3 +449,31 @@ gnome2_disable_deprecation_warning() {
 		ewarn "Failed to disable deprecation warnings in ${makefile}"
 	done
 }
+
+case ${EAPI:-0} in
+0|1|2|3|4|5|6)
+
+# @FUNCTION: gnome2_icon_savelist
+# @DESCRIPTION:
+# Find the icons that are about to be installed and save their location
+# in the GNOME2_ECLASS_ICONS environment variable. This is only
+# necessary for eclass implementations that call
+# gnome2_icon_cache_update conditionally.
+# This function should be called from pkg_preinst.
+gnome2_icon_savelist() {
+	has ${EAPI:-0} 0 1 2 && ! use prefix && ED="${D}"
+	pushd "${ED}" > /dev/null || die
+	export GNOME2_ECLASS_ICONS=$(find 'usr/share/icons' -maxdepth 1 -mindepth 1 -type d 2> /dev/null)
+	popd > /dev/null || die
+}
+
+# @FUNCTION: gnome2_icon_cache_update
+# @DESCRIPTION:
+# Updates Gtk+ icon cache files under /usr/share/icons.
+# Deprecated. Please use xdg_icon_cache_update from xdg-utils.eclass
+gnome2_icon_cache_update() {
+	xdg_icon_cache_update
+}
+
+;;
+esac

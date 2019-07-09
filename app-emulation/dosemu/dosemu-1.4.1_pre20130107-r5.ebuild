@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,11 +7,13 @@ inherit autotools eutils flag-o-matic pax-utils toolchain-funcs
 
 P_FD="dosemu-freedos-1.0-bin"
 COMMIT="15cfb41ff20a052769d753c3262c57ecb050ad71"
+# snapshot is downloaded as:
+# https://sourceforge.net/code-snapshots/git/d/do/dosemu/code.git/dosemu-code-${COMMIT}.zip
 
 DESCRIPTION="DOS Emulator"
 HOMEPAGE="http://www.dosemu.org/"
 SRC_URI="mirror://sourceforge/dosemu/${P_FD}.tgz
-	https://sourceforge.net/code-snapshots/git/d/do/dosemu/code.git/dosemu-code-${COMMIT}.zip -> ${P}.zip"
+	https://dev.gentoo.org/~slyfox/distfiles/${P}.zip"
 
 LICENSE="GPL-2"
 SLOT="0"

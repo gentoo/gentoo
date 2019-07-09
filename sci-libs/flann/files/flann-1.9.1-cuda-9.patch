@@ -1,0 +1,22 @@
+From b9dd074526c18e7423085853518b58d602cb0b57 Mon Sep 17 00:00:00 2001
+From: "Petr A. Ermolaev" <petr.a.ermolaev@gmail.com>
+Date: Fri, 4 May 2018 07:50:24 +0000
+Subject: [PATCH] fix compilation via gcc and cuda 9.1 add missing #include
+ <thrust/gather> to kdtree_cuda_3d_index.cu
+
+---
+ src/cpp/flann/algorithms/kdtree_cuda_3d_index.cu | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/cpp/flann/algorithms/kdtree_cuda_3d_index.cu b/src/cpp/flann/algorithms/kdtree_cuda_3d_index.cu
+index e9b05080..8465322e 100644
+--- a/src/cpp/flann/algorithms/kdtree_cuda_3d_index.cu
++++ b/src/cpp/flann/algorithms/kdtree_cuda_3d_index.cu
+@@ -32,6 +32,7 @@
+ #include <flann/util/cuda/result_set.h>
+ // #define THRUST_DEBUG 1
+ #include <cuda.h>
++#include <thrust/gather.h>
+ #include <thrust/copy.h>
+ #include <thrust/device_vector.h>
+ #include <vector_types.h>

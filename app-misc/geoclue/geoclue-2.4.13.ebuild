@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -7,12 +7,12 @@ GNOME2_EAUTORECONF="yes" # 2.4.13 isn't properly disted, as released concurrentl
 inherit gnome2 systemd user
 
 DESCRIPTION="A geoinformation D-Bus service"
-HOMEPAGE="https://freedesktop.org/wiki/Software/GeoClue"
+HOMEPAGE="https://gitlab.freedesktop.org/geoclue/geoclue/wikis/home"
 SRC_URI="https://gitlab.freedesktop.org/geoclue/${PN}/-/archive/${PV}/${P}.tar.bz2"
 
 LICENSE="LGPL-2"
 SLOT="2.0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd"
+KEYWORDS="~alpha amd64 arm arm64 ~ia64 ~mips ppc ppc64 ~sparc x86 ~amd64-fbsd"
 IUSE="+introspection modemmanager zeroconf"
 
 RDEPEND="

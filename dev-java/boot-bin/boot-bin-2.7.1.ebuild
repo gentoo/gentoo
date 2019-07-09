@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -10,7 +10,7 @@ MY_PNV="${MY_PN}-${PV}"
 GITHUB_USER="boot-clj"
 
 DESCRIPTION="Build tooling for Clojure"
-HOMEPAGE="http://boot-clj.com/"
+HOMEPAGE="https://boot-clj.com/"
 SRC_URI="
 	https://github.com/${GITHUB_USER}/${MY_PN}/releases/download/${PV}/${MY_PN}.jar -> ${MY_PNV}.jar
 	https://raw.githubusercontent.com/${GITHUB_USER}/${MY_PN}/${PV}/README.md -> ${MY_PNV}-README.md

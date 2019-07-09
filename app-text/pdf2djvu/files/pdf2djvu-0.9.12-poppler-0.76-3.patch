@@ -1,0 +1,38 @@
+From 8325358a9769e8aa33693fc5ea2ac771dd82716f Mon Sep 17 00:00:00 2001
+From: Jakub Wilk <jwilk@jwilk.net>
+Date: Tue, 23 Apr 2019 08:23:46 +0200
+Subject: [PATCH] pdf-backend: simplify find_page() implementation.
+
+---
+ pdf-backend.cc | 16 +++++-----------
+ 1 file changed, 5 insertions(+), 11 deletions(-)
+
+diff --git a/pdf-backend.cc b/pdf-backend.cc
+index f6f5267..a94383e 100644
+--- a/pdf-backend.cc
++++ b/pdf-backend.cc
+@@ -631,19 +631,13 @@ const char * pdf::get_c_string(const pdf::String *str)
+ }
+ #endif
+ 
+-template <typename C> static auto find_page_impl(C *catalog, pdf::Ref pgref) -> decltype(catalog->findPage(0, 0))
+-{
+-  return catalog->findPage(pgref.num, pgref.gen);
+-}
+-
+-template <typename C> static auto find_page_impl(C *catalog, pdf::Ref pgref) -> decltype(catalog->findPage(pgref))
+-{
+-  return catalog->findPage(pgref);
+-}
+-
+ int pdf::find_page(pdf::Catalog *catalog, pdf::Ref pgref)
+ {
+-  return find_page_impl<pdf::Catalog>(catalog, pgref);
++#if POPPLER_VERSION >= 7600
++  return catalog->findPage(pgref);
++#else
++  return catalog->findPage(pgref.num, pgref.gen);
++#endif
+ }
+ 
+ // vim:ts=2 sts=2 sw=2 et

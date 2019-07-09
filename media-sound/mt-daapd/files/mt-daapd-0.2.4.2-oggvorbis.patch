@@ -1,5 +1,5 @@
---- configure.in.orig	2009-03-11 08:15:14.000000000 -0500
-+++ configure.in	2009-03-11 08:25:36.000000000 -0500
+--- a/configure.in
++++ b/configure.in
 @@ -63,9 +63,14 @@
  AC_SUBST(AVAHI_LIBS)
  

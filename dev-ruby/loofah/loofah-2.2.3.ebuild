@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-USE_RUBY="ruby23 ruby24 ruby25"
+USE_RUBY="ruby23 ruby24 ruby25 ruby26"
 
 RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 RUBY_FAKEGEM_EXTRADOC="CHANGELOG.md README.md"
@@ -19,7 +19,7 @@ IUSE=""
 
 ruby_add_rdepend "=dev-ruby/crass-1.0* >=dev-ruby/crass-1.0.2 >=dev-ruby/nokogiri-1.5.9"
 
-ruby_add_bdepend "test? ( >=dev-ruby/rr-1.1.0 >=dev-ruby/hoe-2.3.0 )"
+ruby_add_bdepend "test? ( >=dev-ruby/rr-1.1.0 )"
 
 all_ruby_prepare() {
 	# Avoid unneeded development dependencies
@@ -27,4 +27,8 @@ all_ruby_prepare() {
 
 	# Avoid test failing on different whitespace.
 	sed -i -e '/test_fragment_whitewash_on_microsofty_markup/askip "gentoo"' test/integration/test_ad_hoc.rb || die
+}
+
+each_ruby_test() {
+	${RUBY} -Ilib:. -e 'Dir["test/test_*.rb"].each{|f| require f}' || die
 }

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,7 +9,7 @@ DESCRIPTION="A free commandline encoder for X264/AVC streams"
 HOMEPAGE="https://www.videolan.org/developers/x264.html"
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="https://git.videolan.org/git/x264.git"
+	EGIT_REPO_URI="https://code.videolan.org/videolan/x264.git"
 	SRC_URI=""
 else
 	inherit versionator

@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{4,5,6,7} pypy pypy3 )
+PYTHON_COMPAT=( python2_7 python3_{5,6,7} pypy pypy3 )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1
@@ -28,7 +28,7 @@ RDEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
 	doc? ( >=dev-python/sphinx-0.6[${PYTHON_USEDEP}] )
-	test? ( || ( $(python_gen_cond_dep 'dev-python/twisted[${PYTHON_USEDEP}]' python2_7 python3_{4,5,6})
+	test? ( || ( $(python_gen_cond_dep 'dev-python/twisted[${PYTHON_USEDEP}]' python2_7 python3_{5,6})
 			$(python_gen_cond_dep 'dev-python/twisted-core[${PYTHON_USEDEP}]' python2_7)
 		 ) )"
 

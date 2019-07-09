@@ -2,8 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>nimiux@gentoo.org</email>
-		<name>Chema Alonso</name>
+		<email>monsieurp@gentoo.org</email>
+		<name>Patrice Clement</name>
 	</maintainer>
 	<longdescription>
 	Vifm is a ncurses based file manager with vi like keybindings. If you

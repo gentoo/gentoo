@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,12 +7,12 @@ PLOCALES="af am an ar as ast az be be@latin bg bn bn_IN br bs ca ca@valencia crh
 inherit l10n
 
 DESCRIPTION="Translation data for Cinnamon"
-HOMEPAGE="http://cinnamon.linuxmint.com/"
+HOMEPAGE="http://developer.linuxmint.com/projects/cinnamon-projects.html"
 SRC_URI="https://github.com/linuxmint/cinnamon-translations/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND=">gnome-extra/cinnamon-settings-daemon-3.6"

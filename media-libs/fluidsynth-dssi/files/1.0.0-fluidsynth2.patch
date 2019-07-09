@@ -1,0 +1,76 @@
+Patch based on https://sourceforge.net/p/dssi/fluidsynth-dssi/merge-requests/1
+
+diff --git a/configure.ac b/configure.ac
+index 365957d..dbf6d82 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -33,6 +33,12 @@ else
+   echo "using fluid_synth_nwrite_float() workaround"
+   echo "(You may wish to upgrade your FluidSynth to version 1.0.6 or later)"
+ fi
++have200=no
++PKG_CHECK_EXISTS(fluidsynth >= 2.0.0, have200=yes)
++if test "x${have200}" = xyes ; then
++  echo "using FluidSynth API V2 (>= 2.0.0)"
++  AC_DEFINE(USE_FLUIDSYNTH_API_V2, 1, [Define to 1 if your libfluidsynth is version 2.0.0 or later])
++fi
+ 
+ dnl Check for GTK+
+ AC_ARG_WITH(gtk2, AC_HELP_STRING([--with-gtk2], [use GTK+ 2.0 default=yes]),
+@@ -43,10 +49,6 @@ dnl First look for GTK+ 2.x, unless '--without-gtk2' was specified.
+ if test "x${try_gtk2}" = 'xyes'; then
+     AM_PATH_GTK_2_0(2.0.0, with_gtk='yes (version 2.0)', with_gtk=no)
+ fi
+-dnl  No GTK+ 2.x found, look for GTK+ 1.2 instead
+-if test "x${with_gtk}" = 'xno'; then
+-    AM_PATH_GTK(1.2.0, with_gtk='yes (version 1.2)', AC_MSG_WARN([GUI will not be built because no version of GTK+ was found]))
+-fi
+ AM_CONDITIONAL(BUILD_GUI, test "x${with_gtk}" != 'xno')
+ echo "GTK support: $with_gtk"
+ 
+diff --git a/src/fluidsynth-dssi.c b/src/fluidsynth-dssi.c
+index 99436c3..428f5bd 100644
+--- a/src/fluidsynth-dssi.c
++++ b/src/fluidsynth-dssi.c
+@@ -167,7 +167,11 @@ fsd_get_soundfont(const char *path)
+     fsd_sfont_t *sfont;
+     int palloc;
+     fluid_sfont_t *fluid_sfont;
++#ifdef USE_FLUIDSYNTH_API_V2
++    fluid_preset_t *preset;
++#else
+     fluid_preset_t preset;
++#endif
+ 
+     /* soundfont already loaded? */
+     sfont = fsd_find_loaded_soundfont(path);
+@@ -206,8 +210,13 @@ fsd_get_soundfont(const char *path)
+         return NULL;
+     }
+     fluid_sfont = fluid_synth_get_sfont_by_id(fsd_synth.fluid_synth, sfont->sfont_id);
++#ifdef USE_FLUIDSYNTH_API_V2
++    fluid_sfont_iteration_start(fluid_sfont);
++    while ((preset = fluid_sfont_iteration_next(fluid_sfont)) != NULL) {
++#else
+     fluid_sfont->iteration_start(fluid_sfont);
+     while (fluid_sfont->iteration_next(fluid_sfont, &preset)) {
++#endif
+         if (sfont->preset_count == palloc) {
+             palloc *= 2;
+             sfont->presets = (DSSI_Program_Descriptor *)realloc(sfont->presets,
+@@ -219,9 +228,15 @@ fsd_get_soundfont(const char *path)
+                 return NULL;
+             }
+         }
++#ifdef USE_FLUIDSYNTH_API_V2
++        sfont->presets[sfont->preset_count].Bank = fluid_preset_get_banknum(preset);
++        sfont->presets[sfont->preset_count].Program = fluid_preset_get_num(preset);
++        sfont->presets[sfont->preset_count].Name = fluid_preset_get_name(preset);
++#else
+         sfont->presets[sfont->preset_count].Bank = preset.get_banknum(&preset);
+         sfont->presets[sfont->preset_count].Program = preset.get_num(&preset);
+         sfont->presets[sfont->preset_count].Name = preset.get_name(&preset);
++#endif
+         sfont->preset_count++;
+     }
+ 

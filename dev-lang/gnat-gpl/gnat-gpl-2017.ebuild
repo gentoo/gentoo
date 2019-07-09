@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -125,6 +125,9 @@ src_prepare() {
 		-e 's:$(P) ::g' \
 		gcc/ada/gcc-interface/Makefile.in \
 		|| die "sed failed"
+	# fix missing ustat.h
+	epatch "${FILESDIR}/${P}-ustat.patch"
+
 	toolchain_src_prepare
 }
 

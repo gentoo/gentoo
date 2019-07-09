@@ -1,0 +1,43 @@
+From 8b648b9265ed6f09802bd749ec8bf74181032b39 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?J=C3=A9r=C3=B4me=20BOULMIER?= <jerome.boulmier@outlook.fr>
+Date: Sun, 7 Apr 2019 02:10:38 -0400
+Subject: [PATCH] fix(window): remove useless operator= and add default copy
+ cstr
+
+---
+ include/x11/window.hpp | 3 +--
+ src/x11/window.cpp     | 5 -----
+ 2 files changed, 1 insertion(+), 7 deletions(-)
+
+diff --git a/include/x11/window.hpp b/include/x11/window.hpp
+index 9490c3760..9ddfe9f45 100644
+--- a/include/x11/window.hpp
++++ b/include/x11/window.hpp
+@@ -12,10 +12,9 @@ class connection;
+ 
+ class window : public xpp::window<connection&> {
+  public:
++  window(const window&) = default;
+   using xpp::window<class connection&>::window;
+ 
+-  window& operator=(const xcb_window_t win);
+-
+   window reconfigure_geom(unsigned short int w, unsigned short int h, short int x = 0, short int y = 0);
+   window reconfigure_pos(short int x, short int y);
+   window reconfigure_struts(unsigned short int w, unsigned short int h, short int x, bool bottom = false);
+diff --git a/src/x11/window.cpp b/src/x11/window.cpp
+index e22e4451e..35393ddc8 100644
+--- a/src/x11/window.cpp
++++ b/src/x11/window.cpp
+@@ -7,11 +7,6 @@
+ 
+ POLYBAR_NS
+ 
+-window& window::operator=(const xcb_window_t win) {
+-  resource(connection(), win);
+-  return *this;
+-}
+-
+ /**
+  * Reconfigure the window geometry
+  */

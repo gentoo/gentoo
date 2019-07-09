@@ -5,12 +5,12 @@ EAPI=6
 
 PYTHON_COMPAT=(
 	pypy
-	python3_4 python3_5 python3_6 python3_7
+	python3_5 python3_6 python3_7
 	python2_7
 )
 PYTHON_REQ_USE='bzip2(+),threads(+)'
 
-inherit distutils-r1 git-r3 linux-info systemd
+inherit distutils-r1 git-r3 linux-info systemd prefix
 
 DESCRIPTION="Portage is the package management and distribution system for Gentoo"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Portage"
@@ -43,7 +43,7 @@ RDEPEND="
 		app-shells/bash:0[readline]
 		>=app-admin/eselect-1.2
 		$(python_gen_cond_dep 'dev-python/pyblake2[${PYTHON_USEDEP}]' \
-			python{2_7,3_4,3_5} pypy)
+			python{2_7,3_5} pypy)
 		rsync-verify? (
 			>=app-portage/gemato-14[${PYTHON_USEDEP}]
 			>=app-crypt/openpgp-keys-gentoo-release-20180706
@@ -136,14 +136,8 @@ python_prepare_all() {
 
 	if [[ -n ${EPREFIX} ]] ; then
 		einfo "Setting portage.const.EPREFIX ..."
-		sed -e "s|^\(SANDBOX_BINARY[[:space:]]*=[[:space:]]*\"\)\(/usr/bin/sandbox\"\)|\\1${EPREFIX}\\2|" \
-			-e "s|^\(FAKEROOT_BINARY[[:space:]]*=[[:space:]]*\"\)\(/usr/bin/fakeroot\"\)|\\1${EPREFIX}\\2|" \
-			-e "s|^\(BASH_BINARY[[:space:]]*=[[:space:]]*\"\)\(/bin/bash\"\)|\\1${EPREFIX}\\2|" \
-			-e "s|^\(MOVE_BINARY[[:space:]]*=[[:space:]]*\"\)\(/bin/mv\"\)|\\1${EPREFIX}\\2|" \
-			-e "s|^\(PRELINK_BINARY[[:space:]]*=[[:space:]]*\"\)\(/usr/sbin/prelink\"\)|\\1${EPREFIX}\\2|" \
-			-e "s|^\(EPREFIX[[:space:]]*=[[:space:]]*\"\).*|\\1${EPREFIX}\"|" \
-			-i lib/portage/const.py || \
-			die "Failed to patch portage.const.EPREFIX"
+		hprefixify -e "s|^(EPREFIX[[:space:]]*=[[:space:]]*\").*|\1${EPREFIX}\"|" \
+			-w "/_BINARY/" lib/portage/const.py
 
 		einfo "Prefixing shebangs ..."
 		while read -r -d $'\0' ; do
@@ -152,17 +146,11 @@ python_prepare_all() {
 				sed -i -e "1s:.*:#!${EPREFIX}${shebang:2}:" "$REPLY" || \
 					die "sed failed"
 			fi
-		done < <(find . -type f -print0)
+		done < <(find . -type f ! -name etc-update -print0)
 
-		einfo "Adjusting make.globals ..."
-		sed -e "s|\(/usr/portage\)|${EPREFIX}\\1|" \
-			-e "s|^\(PORTAGE_TMPDIR=\"\)\(/var/tmp\"\)|\\1${EPREFIX}\\2|" \
-			-i cnf/make.globals || die "sed failed"
+		einfo "Adjusting make.globals, repos.conf and etc-update ..."
+		hprefixify cnf/{make.globals,repos.conf} bin/etc-update
 
-		einfo "Adjusting repos.conf ..."
-		sed -e "s|^\(location = \)\(/usr/portage\)|\\1${EPREFIX}\\2|" \
-			-e "s|^\(sync-openpgp-key-path = \)\(.*\)|\\1${EPREFIX}\\2|" \
-			-i cnf/repos.conf || die "sed failed"
 		if prefix-guest ; then
 			sed -e "s|^\(main-repo = \).*|\\1gentoo_prefix|" \
 				-e "s|^\\[gentoo\\]|[gentoo_prefix]|" \
@@ -247,16 +235,16 @@ python_install_all() {
 }
 
 pkg_preinst() {
-	# comment out sanity test until it is fixed to work
-	# with the new PORTAGE_PYM_PATH
-	#if [[ $ROOT == / ]] ; then
-		## Run some minimal tests as a sanity check.
-		#local test_runner=$(find "${ED}" -name runTests)
-		#if [[ -n $test_runner && -x $test_runner ]] ; then
-			#einfo "Running preinst sanity tests..."
-			#"$test_runner" || die "preinst sanity tests failed"
-		#fi
-	#fi
+	python_setup
+	python_export PYTHON_SITEDIR
+	[[ -d ${D%/}${PYTHON_SITEDIR} ]] || die "${D%/}${PYTHON_SITEDIR}: No such directory"
+	env -u DISTDIR \
+		-u PORTAGE_OVERRIDE_EPREFIX \
+		-u PORTAGE_REPOSITORIES \
+		-u PORTDIR \
+		-u PORTDIR_OVERLAY \
+		PYTHONPATH="${D%/}${PYTHON_SITEDIR}${PYTHONPATH:+:${PYTHONPATH}}" \
+		"${PYTHON}" -m portage._compat_upgrade.default_locations || die
 
 	# elog dir must exist to avoid logrotate error for bug #415911.
 	# This code runs in preinst in order to bypass the mapping of

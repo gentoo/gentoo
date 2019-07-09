@@ -1,5 +1,5 @@
 #!/sbin/openrc-run
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 command="/usr/sbin/pdnsd-ctl"
@@ -10,10 +10,10 @@ depend() {
 
 wait_for_socket() {
 	local i=0 pdnsd_socket="/var/cache/pdnsd/pdnsd.status"
-	while [ $i -lt 10 ]; do
+	while [ ${i} -lt 10 ]; do
 		[ -S "${pdnsd_socket}" ] && return 0
-		i=$(($i+1))
-		sleep 1s
+		i=$((${i}+1))
+		sleep 1
 	done
 
     	return 1

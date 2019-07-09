@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,13 +6,13 @@ EAPI=6
 inherit autotools flag-o-matic pam qmake-utils readme.gentoo-r1 systemd vala xdg-utils
 
 DESCRIPTION="A lightweight display manager"
-HOMEPAGE="https://www.freedesktop.org/wiki/Software/LightDM"
+HOMEPAGE="https://github.com/CanonicalLtd/lightdm"
 SRC_URI="https://github.com/CanonicalLtd/lightdm/releases/download/${PV}/${P}.tar.xz
 	mirror://gentoo/introspection-20110205.m4.tar.bz2"
 
 LICENSE="GPL-3 LGPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ppc ppc64 x86"
 IUSE="audit +gnome +gtk +introspection qt5 vala"
 
 COMMON_DEPEND="
@@ -44,6 +44,7 @@ PDEPEND="gtk? ( x11-misc/lightdm-gtk-greeter )"
 
 DOCS=( NEWS )
 RESTRICT="test"
+REQUIRED_USE="vala? ( introspection )"
 
 src_prepare() {
 	xdg_environment_reset

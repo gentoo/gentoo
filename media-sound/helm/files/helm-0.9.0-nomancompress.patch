@@ -1,0 +1,24 @@
+--- a/Makefile  2018-11-13 23:44:54.081925553 +0000
++++ b/Makefile    2018-11-13 23:45:34.136381471 +0000
+@@ -91,7 +91,6 @@
+ 	$(MAKE) clean -C builds/linux/VST CONFIG=$(CONFIG)
+ 
+ install_patches:
+-	rm -rf $(PATCHES)
+ 	install -d $(PATCHES)
+ 	cp -rf patches/* $(PATCHES)
+
+@@ -100,11 +99,8 @@
+	install standalone/builds/linux/build/$(PROGRAM) $(BIN)
+	install -m644 standalone/helm.desktop $(DESKTOP)/helm.desktop
+	install -m644 images/* $(IMAGES)
+-	cp changelog changes
+-	gzip -n -9 changelog
+-	mv changes changelog
+-	mv changelog.gz $(CHANGES)/changelog.gz
+-	cp docs/helm.1.gz $(MAN)
++	gunzip docs/helm.1.gz
++	cp docs/helm.1 $(MAN)
+ 
+ install_lv2: lv2 install_patches
+	install -d $(PATCHES) $(LV2)

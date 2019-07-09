@@ -1,15 +1,19 @@
-# Copyright 1999-2017 Gentoo Foundation.
-# Distributed under the terms of the GNU General Public License, v2
-
-# Michael Palimaka <kensington@gentoo.org> (21 Jun 2016)
-# Unkeyworded
-qt5
+# Copyright 1999-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
 
 # Unmask the flag which corresponds to ARCH.
 -x86-fbsd
 -abi_x86_32
 
-# Diego Elio Pettenò <flameeyes@gentoo.org> (21 Aug 2012)
+# Andreas Sturmlechner <asturm@gentoo.org> (2019-03-31)
+# sys-auth/elogind is not keyworded here.
+elogind
+
+# Michael Palimaka <kensington@gentoo.org> (2016-06-21)
+# Unkeyworded
+qt5
+
+# Diego Elio Pettenò <flameeyes@gentoo.org> (2012-08-21)
 # IPMI is only implemented for x86, amd64 and ia64
 -ipmi
 
@@ -42,7 +46,7 @@ qt5
 -video_cards_vmware
 -input_devices_vmmouse
 
-# James Le Cuirot <chewi@gentoo.org> (19 May 2015)
+# James Le Cuirot <chewi@gentoo.org> (2015-05-19)
 # icedtea needs testing and gcj isn't supported
 java
 
@@ -57,6 +61,10 @@ valgrind
 # libva doesnt build on fbsd for now
 vaapi
 
-# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (22 Aug 2013)
+# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (2013-08-22)
 # virtual/opencl is not keyworded
 opencl
+
+# Benda Xu <heroxbd@gentoo.org> (2019-06-26)
+# Not tested
+eselect-ldso

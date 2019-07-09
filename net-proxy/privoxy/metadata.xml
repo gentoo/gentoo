@@ -21,6 +21,7 @@
 		<flag name="external-filters">Allow to filter content with scripts and programs. Experimental</flag>
 		<flag name="fast-redirects">Support fast redirects</flag>
 		<flag name="force">Allow single-page disable (force load)</flag>
+		<flag name="fuzz">Exposes Privoxy internals to input from files or stdout. Intended for fuzzing testing</flag>
 		<flag name="graceful-termination">Allow to shutdown Privoxy through the webinterface</flag>
 		<flag name="ie-images">Enable a quick but not always reliable auto-detect whether requests from MS Internet Explorer are for an image or not</flag>
 		<flag name="image-blocking">Allows the +handle-as-image action, to send "blocked" images instead of HTML</flag>

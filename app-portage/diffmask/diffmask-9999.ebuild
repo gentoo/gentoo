@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} pypy )
+PYTHON_COMPAT=( python{2_7,3_5,3_6} pypy )
 
 inherit distutils-r1 git-r3
 
@@ -16,8 +16,4 @@ SLOT="0"
 KEYWORDS=""
 IUSE=""
 
-RDEPEND="
-	|| (
-		sys-apps/portage[${PYTHON_USEDEP}]
-		sys-apps/portage-mgorny[${PYTHON_USEDEP}]
-	)"
+RDEPEND="sys-apps/portage[${PYTHON_USEDEP}]"

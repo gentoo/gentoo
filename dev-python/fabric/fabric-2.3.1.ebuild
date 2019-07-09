@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,13 +8,13 @@ PYTHON_COMPAT=( python2_7 python3_6 )
 inherit distutils-r1
 
 DESCRIPTION="A simple pythonic tool for remote execution and deployment"
-HOMEPAGE="http://fabfile.org https://pypi.org/project/Fabric/"
+HOMEPAGE="https://www.fabfile.org https://pypi.org/project/Fabric/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="2"
-KEYWORDS="~amd64 ~x86"
-IUSE="doc fab2 test"
+KEYWORDS="~amd64 ~arm64 ~x86"
+IUSE="doc fab2"
 
 RDEPEND="
 	!fab2? ( !dev-python/fabric:0 )
@@ -28,12 +28,10 @@ BDEPEND="
 		dev-python/alabaster[${PYTHON_USEDEP}]
 		>=dev-python/sphinx-1.4[${PYTHON_USEDEP}]
 		<dev-python/sphinx-1.7[${PYTHON_USEDEP}]
-	)
-	test? (
-		dev-python/mock[${PYTHON_USEDEP}]
-		dev-python/pytest[${PYTHON_USEDEP}]
-		>=dev-python/pytest-relaxed-1.1.4[${PYTHON_USEDEP}]
 	)"
+
+# Depends on pytest-relaxed which is broken
+RESTRICT="test"
 
 python_compile() {
 	if use fab2; then
@@ -47,11 +45,6 @@ python_compile_all() {
 	if use doc; then
 		sphinx-build -b html -c sites/docs/ sites/docs/ sites/docs/html || die
 	fi
-}
-
-python_test() {
-	# -p pytest_relaxed: this plugin has to be loaded explicitly
-	pytest -s -v -p pytest_relaxed.plugin || die "Tests failed"
 }
 
 python_install_all() {

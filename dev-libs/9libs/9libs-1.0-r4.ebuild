@@ -11,13 +11,11 @@ SRC_URI="https://www.netlib.org/research/9libs/${P}.tar.bz2"
 LICENSE="PLAN9"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="static-libs X"
+IUSE="static-libs"
 
 DEPEND="
-	X? (
-		>=x11-libs/libX11-1.0.0[static-libs?]
-		>=x11-libs/libXt-1.0.0[static-libs?]
-	)
+	>=x11-libs/libX11-1.0.0[static-libs?]
+	>=x11-libs/libXt-1.0.0[static-libs?]
 "
 RDEPEND="
 	${DEPEND}
@@ -39,9 +37,9 @@ src_configure() {
 
 	econf \
 		$(use_enable static-libs static) \
-		$(use_with X x) \
 		--enable-shared \
-		--includedir=/usr/include/9libs
+		--includedir=/usr/include/9libs \
+		--with-x
 }
 
 src_install() {

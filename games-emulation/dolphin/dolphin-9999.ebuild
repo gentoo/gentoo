@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -75,7 +75,10 @@ src_prepare() {
 	# preference. See CMakeLists.txt for conditional 'add_subdirectory' calls.
 	local KEEP_SOURCES=(
 		Bochs_disasm
+		FreeSurround
 		cpp-optparse
+		# no support for for using system library
+		fmt
 		glslang
 		imgui
 		# FIXME: xxhash can't be found by cmake

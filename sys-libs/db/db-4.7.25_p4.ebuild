@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=0
@@ -118,13 +118,19 @@ src_compile() {
 		--enable-o_direct \
 		--without-uniquename \
 		$(use_enable rpc) \
-		$(use arm && echo --with-mutex=ARM/gcc-assembly) \
 		$(use amd64 && echo --with-mutex=x86/gcc-assembly) \
 		$(use_enable cxx) \
 		$(use_enable java) \
 		${myconf} \
 		$(use_enable test) \
 		"$@"
+	# The embedded assembly on ARM does not work on newer hardware
+	# so you CANNOT use --with-mutex=ARM/gcc-assembly anymore.
+	# Specifically, it uses the SWPB op, which was deprecated:
+	# http://www.keil.com/support/man/docs/armasm/armasm_dom1361289909499.htm
+	# The op ALSO cannot be used in ARM-Thumb mode.
+	# Trust the compiler instead.
+	# >=db-6.1 uses LDREX instead.
 
 	emake || die "make failed"
 }

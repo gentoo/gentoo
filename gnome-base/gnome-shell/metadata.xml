@@ -19,10 +19,6 @@
 		and suspend support.</flag>
 	<flag name="ibus">Enable support for enhanced input methods through
 		<pkg>app-i18n/ibus</pkg></flag>
-	<flag name="openrc-force">Skip systemd dependency (#480336),
-		enabling this flag will become your setup to be fully
-		unsupported by upstream and downstream Gnome team. Do not
-		try to enable it unless completely needed</flag>
 	<flag name="telepathy">Ensure presence of telepathy chat integration</flag>
 </use>
 </pkgmetadata>

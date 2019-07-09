@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="project">
+		<email>sci@gentoo.org</email>
+		<name>Gentoo Science Project</name>
+	</maintainer>
+	<longdescription lang="en">
+		OpenBLAS is an optimized BLAS library based on GotoBLAS2 1.13 BSD version.
+	</longdescription>
+	<use>
+		<flag name="dynamic">Build dynamic architecture detection at run time (for multi targets)</flag>
+		<flag name="pthread">Build with pthread threadding model</flag>
+		<flag name="serial">Build without multi-thraedding</flag>
+		<flag name="eselect-ldso">Enable BLAS/LAPACK runtime switching</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">xianyi/OpenBLAS</remote-id>
+	</upstream>
+</pkgmetadata>

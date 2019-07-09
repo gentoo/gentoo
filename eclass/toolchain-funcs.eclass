@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 2002-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: toolchain-funcs.eclass
@@ -218,13 +218,11 @@ tc-cpp-is-true() {
 }
 
 # @FUNCTION: tc-detect-is-softfloat
-# @RETURN:
-# Shell true if (positive or negative) detection was possible, shell
-# false otherwise. Also outputs a string when detection succeeds, see
-# tc-is-softfloat for the possible values.
+# @RETURN: Shell true if detection was possible, shell false otherwise
 # @DESCRIPTION:
 # Detect whether the CTARGET (or CHOST) toolchain is a softfloat based
-# one by examining the toolchain's output, if possible.
+# one by examining the toolchain's output, if possible.  Outputs a value
+# alike tc-is-softfloat if detection was possible.
 tc-detect-is-softfloat() {
 	# If fetching CPP falls back to the default (gcc -E) then fail
 	# detection as this may not be the correct toolchain.
@@ -697,6 +695,7 @@ tc-endian() {
 		mips*)		echo big;;
 		powerpc*le)	echo little;;
 		powerpc*)	echo big;;
+		riscv*)		echo little;;
 		s390*)		echo big;;
 		sh*b*)		echo big;;
 		sh*)		echo little;;

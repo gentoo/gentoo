@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,11 +10,10 @@ SRC_URI="mirror://sourceforge/${PN}/${P/-/_}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux"
-IUSE="imlib nls perl"
+IUSE="nls perl"
 
 RDEPEND="x11-libs/gtk+:2
 	>=x11-wm/windowmaker-0.95.2
-	imlib? ( media-libs/imlib )
 	perl? ( dev-lang/perl
 		dev-perl/HTML-Parser
 		|| ( dev-perl/libwww-perl
@@ -36,10 +35,8 @@ src_prepare() {
 }
 
 src_configure() {
-	local myconf
-	use imlib || myconf="--disable-imlibtest"
-
 	econf \
+		--disable-imlibtest \
 		$(use_enable perl upgrade) \
 		$(use_enable nls) \
 		${myconf}

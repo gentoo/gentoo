@@ -5,6 +5,9 @@
 		<email>gnustep@gentoo.org</email>
 		<name>Gentoo GNUstep Project</name>
 	</maintainer>
+	<use>
+		<flag name="activesync">Build the ActiveSync support code</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">inverse-inc/sogo</remote-id>
 	</upstream>

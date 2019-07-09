@@ -1,0 +1,21 @@
+From f4bc59c6cad87f6a237f92ea4c54e38705beeaac Mon Sep 17 00:00:00 2001
+From: Craig Andrews <candrews@integralblue.com>
+Date: Fri, 5 Jul 2019 16:24:14 -0400
+Subject: [PATCH] In install, ensure destination exists
+
+---
+ Makefile | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/Makefile b/Makefile
+index bf9bae3..8bebca4 100644
+--- a/Makefile
++++ b/Makefile
+@@ -10,6 +10,7 @@ checker: confcheck.o
+ 
+ 
+ install:
++	mkdir -p $(DESTDIR)/$(bindir)
+ 	install -c conf2struct $(DESTDIR)$(bindir)/conf2struct
+ 	install -c confcheck $(DESTDIR)$(bindir)/confcheck
+ 

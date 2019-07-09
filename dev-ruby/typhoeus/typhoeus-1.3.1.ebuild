@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -23,7 +23,7 @@ IUSE=""
 
 ruby_add_rdepend ">=dev-ruby/ethon-0.9.0"
 
-ruby_add_bdepend "test? ( dev-ruby/json >=dev-ruby/faraday-0.9 >=dev-ruby/sinatra-1.3 >=dev-ruby/redis-3.0 )"
+ruby_add_bdepend "test? ( dev-ruby/json >=dev-ruby/faraday-0.9 >=dev-ruby/sinatra-1.3 >=dev-ruby/redis-3.0 >=dev-ruby/dalli-2.7.9 )"
 
 all_ruby_prepare() {
 	sed -e '/bundler/I s:^:#:' -i Rakefile spec/spec_helper.rb || die

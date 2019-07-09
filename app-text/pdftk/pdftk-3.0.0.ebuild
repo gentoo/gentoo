@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -39,4 +39,5 @@ DEPEND="
 src_install() {
 	java-pkg_newjar "build/jar/pdftk.jar"
 	java-pkg_dolauncher ${PN} --main com.gitlab.pdftk_java.pdftk
+	doman "${PN}.1"
 }

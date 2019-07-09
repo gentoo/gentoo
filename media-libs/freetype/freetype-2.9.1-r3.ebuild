@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -61,10 +61,10 @@ _egit_repo_handler() {
 		esac
 
 		local EGIT_REPO_URI
-		EGIT_REPO_URI="https://git.savannah.gnu.org/r/freetype/freetype2.git"
+		EGIT_REPO_URI="https://git.sv.nongnu.org/r/freetype/freetype2.git"
 		git-r3_src_${phase}
 		if use utils ; then
-			EGIT_REPO_URI="https://git.savannah.gnu.org/r/freetype/freetype2-demos.git"
+			EGIT_REPO_URI="https://git.sv.nongnu.org/r/freetype/freetype2-demos.git"
 			local EGIT_CHECKOUT_DIR="${WORKDIR}/ft2demos-${PV}"
 			git-r3_src_${phase}
 		fi
@@ -206,7 +206,7 @@ multilib_src_install() {
 		dodir /usr/bin #654780
 		local ft2demo
 		for ft2demo in ../ft2demos-${PV}/bin/*; do
-			./libtool --mode=install $(type -P install) -m 755 "$ft2demo" \
+			./libtool --mode=install $(type -P install) -m 755 "${ft2demo}" \
 				"${ED%/}"/usr/bin || die
 		done
 	fi

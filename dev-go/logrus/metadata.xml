@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>mattst88@gentoo.org</email>
+    <name>Matt Turner</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="github">sirupsen/logrus</remote-id>
+    <bugs-to>https://github.com/sirupsen/logrus/</bugs-to>
+  </upstream>
+</pkgmetadata>

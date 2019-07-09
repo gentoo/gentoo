@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -15,8 +15,8 @@ inherit eutils autotools-multilib
 
 MY_P="${PN%-cpp}-${PV}"
 DESCRIPTION="The ANTLR 2 C++ Runtime"
-HOMEPAGE="http://www.antlr2.org/"
-SRC_URI="http://www.antlr2.org/download/${MY_P}.tar.gz"
+HOMEPAGE="https://www.antlr2.org/"
+SRC_URI="https://www.antlr2.org/download/${MY_P}.tar.gz"
 LICENSE="public-domain"
 SLOT="2"
 KEYWORDS="amd64 ~arm ppc x86"

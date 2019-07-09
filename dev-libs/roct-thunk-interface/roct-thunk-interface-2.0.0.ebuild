@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -23,7 +23,8 @@ CONFIG_CHECK="~HSA_AMD"
 LICENSE="MIT"
 SLOT="0/$(ver_cut 1-2)"
 
-RDEPEND="sys-process/numactl"
+RDEPEND="sys-process/numactl
+	sys-apps/pciutils"
 DEPEND="${RDEPEND}"
 
 src_prepare() {

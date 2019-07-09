@@ -8,7 +8,7 @@ DESCRIPTION="A Qt Platform Theme aimed to accommodate GNOME settings"
 HOMEPAGE="https://github.com/FedoraQt/QGnomePlatform"
 SRC_URI="https://github.com/FedoraQt/QGnomePlatform/archive/${PV}/${P}.tar.gz"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~ppc64 x86"
 LICENSE="LGPL-2.1"
 SLOT="0"
 IUSE=""

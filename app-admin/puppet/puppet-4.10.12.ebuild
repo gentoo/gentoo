@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -12,7 +12,7 @@ RUBY_FAKEGEM_EXTRAINSTALL="locales"
 inherit xemacs-elisp-common eutils user ruby-fakegem versionator
 
 DESCRIPTION="A system automation and configuration management software."
-HOMEPAGE="http://puppetlabs.com/"
+HOMEPAGE="https://puppet.com/"
 SRC_URI="http://downloads.puppetlabs.com/puppet/${P}.tar.gz"
 
 LICENSE="Apache-2.0 GPL-2"

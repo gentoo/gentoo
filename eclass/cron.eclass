@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: cron.eclass
 # @MAINTAINER:
-# cron-bugs@gentoo.org
+# maintainer-needed@gentoo.org
 # @AUTHOR:
 # Original Author: Aaron Walker <ka0ttic@gentoo.org>
 # @BLURB: Some functions for cron

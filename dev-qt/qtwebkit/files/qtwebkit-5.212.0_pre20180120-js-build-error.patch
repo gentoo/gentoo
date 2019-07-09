@@ -1,0 +1,34 @@
+From e9a78eafc172a69d48ee48d971b3e430613ab513 Mon Sep 17 00:00:00 2001
+From: bernhardu <bernhardu@mailbox.org>
+Date: Mon, 25 Mar 2019 01:57:26 +0100
+Subject: [PATCH] Add attribute fastcall to derived class member
+ JSImageConstructor::construct (#803)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Otherwise the Debian build on i386 fails with this error:
+In file included from ../Source/WebCore/bindings/js/JSImageConstructor.cpp:24,
+                 from ../Source/WebCore/bindings/js/JSBindingsAllInOne.cpp:101:
+../Source/WebCore/bindings/js/JSDOMConstructor.h: In instantiation of ‘static JSC::ConstructType WebCore::JSDOMNamedConstructor<JSClass>::getConstructData(JSC::JSCell*, JSC::ConstructData&) [with JSClass = WebCore::JSHTMLImageElement]’:
+../Source/WebCore/bindings/js/JSImageConstructor.cpp:75:97:   required from here
+../Source/WebCore/bindings/js/JSDOMConstructor.h:195:35: error: invalid conversion from ‘JSC::EncodedJSValue (*)(JSC::ExecState*)’ {aka ‘long long int (*)(JSC::ExecState*)’} to ‘JSC::NativeFunction’ {aka ‘long long int (__attribute__((fastcall)) *)(JSC::ExecState*)’} [-fpermissive]
+     constructData.native.function = construct;
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~
+---
+ Source/WebCore/bindings/js/JSImageConstructor.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Source/WebCore/bindings/js/JSImageConstructor.cpp b/Source/WebCore/bindings/js/JSImageConstructor.cpp
+index 923690600ab1..de553f5fa899 100644
+--- a/Source/WebCore/bindings/js/JSImageConstructor.cpp
++++ b/Source/WebCore/bindings/js/JSImageConstructor.cpp
+@@ -44,7 +44,7 @@ template<> JSValue JSImageConstructor::prototypeForStructure(VM& vm, const JSDOM
+     return JSHTMLElement::getConstructor(vm, &globalObject);
+ }
+ 
+-template<> EncodedJSValue JSImageConstructor::construct(ExecState* state)
++template<> EncodedJSValue JSC_HOST_CALL JSImageConstructor::construct(ExecState* state)
+ {
+     JSImageConstructor* jsConstructor = jsCast<JSImageConstructor*>(state->callee());
+     Document* document = jsConstructor->document();

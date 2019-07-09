@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,7 +13,7 @@ SRC_URI="https://github.com/Xastir/Xastir/archive/Release-2.1.0.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="festival gdal geotiff +graphicsmagick"
 
 DEPEND=">=x11-libs/motif-2.3:0
@@ -28,7 +28,7 @@ DEPEND=">=x11-libs/motif-2.3:0
 	!graphicsmagick? ( <media-gfx/imagemagick-7:0=[-hdri,-q32] )
 	graphicsmagick? ( media-gfx/graphicsmagick:=[-q32] )
 	geotiff? ( sci-libs/proj
-		sci-libs/libgeotiff
+		sci-libs/libgeotiff:=
 		media-libs/tiff:0 )
 	gdal? ( sci-libs/gdal )
 	festival? ( app-accessibility/festival )"

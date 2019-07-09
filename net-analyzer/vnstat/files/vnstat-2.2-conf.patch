@@ -1,0 +1,11 @@
+--- a/cfg/vnstat.conf
++++ b/cfg/vnstat.conf
+@@ -143,7 +143,7 @@
+ LogFile "/var/log/vnstat/vnstat.log"
+ 
+ # file used as daemon pid / lock file
+-PidFile "/var/run/vnstat/vnstat.pid"
++PidFile "/run/vnstat/vnstat.pid"
+ 
+ # 1 = 64-bit, 0 = 32-bit, -1 = old style logic, -2 = automatic detection
+ 64bitInterfaceCounters -2

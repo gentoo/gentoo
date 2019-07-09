@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -11,14 +11,14 @@ HOMEPAGE="https://wiki.gnome.org/Projects/gspell"
 
 LICENSE="LGPL-2.1+"
 SLOT="0/1" # subslot = libgspell-1 soname version
-KEYWORDS="~alpha amd64 ~arm ~ppc ~ppc64 ~sparc x86 ~amd64-fbsd"
+KEYWORDS="~alpha amd64 ~arm arm64 ~ppc ~ppc64 ~sparc x86 ~amd64-fbsd"
 
 IUSE="+introspection vala"
 REQUIRED_USE="vala? ( introspection )"
 
 RDEPEND="
 	app-text/iso-codes
-	>=app-text/enchant-1.6.0
+	>=app-text/enchant-1.6.0:0/0
 	>=dev-libs/glib-2.44:2
 	>=x11-libs/gtk+-3.20:3[introspection?]
 	introspection? ( >=dev-libs/gobject-introspection-1.42.0:= )

@@ -1,0 +1,187 @@
+From c21bb5220a3ae835a5183afd58c186ba21f6c93d Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Daniel=20Vr=C3=A1til?= <dvratil@kde.org>
+Date: Fri, 28 Jun 2019 17:10:04 +0200
+Subject: Fix race-condition on akonadi_control start
+
+Summary:
+Check that there are no other akonadi_control instances running as the
+very first thing on startup. Previously this check would happen after
+AkApplication initialization, which contains some potential race-
+conditions, like rotating log files.
+
+The situation when akonadi_control is launched multiple times can occur
+on session startup, when multiple different components will attempt to
+launch Akonadi if its not yet running.
+
+BUG: 392092
+FIXED-IN: 19.04.3
+
+Reviewers: #kde_pim, vkrause
+
+Reviewed By: #kde_pim, vkrause
+
+Subscribers: kde-pim
+
+Tags: #kde_pim
+
+Differential Revision: https://phabricator.kde.org/D22092
+---
+ src/akonadicontrol/main.cpp  | 16 ++-------------
+ src/shared/akapplication.cpp |  7 +++----
+ src/shared/akapplication.h   | 49 ++++++++++++++++++++++++++++++++++++++------
+ 3 files changed, 48 insertions(+), 24 deletions(-)
+
+diff --git a/src/akonadicontrol/main.cpp b/src/akonadicontrol/main.cpp
+index 19bebb8..7dba85b 100644
+--- a/src/akonadicontrol/main.cpp
++++ b/src/akonadicontrol/main.cpp
+@@ -52,7 +52,7 @@ void crashHandler(int)
+ 
+ int main(int argc, char **argv)
+ {
+-    AkGuiApplication app(argc, argv, AKONADICONTROL_LOG());
++    AkUniqueGuiApplication app(argc, argv, Akonadi::DBus::serviceName(Akonadi::DBus::ControlLock), AKONADICONTROL_LOG());
+     app.setDescription(QStringLiteral("Akonadi Control Process\nDo not run this manually, use 'akonadictl' instead to start/stop Akonadi."));
+ 
+     KAboutData aboutData(QStringLiteral("akonadi_control"),
+@@ -64,20 +64,8 @@ int main(int argc, char **argv)
+ 
+     app.parseCommandLine();
+ 
+-    // try to acquire the lock first, that means there is no second instance trying to start up at the same time
+-    // registering the real service name happens in AgentManager::continueStartup(), when everything is in fact up and running
+-    if (!QDBusConnection::sessionBus().registerService(Akonadi::DBus::serviceName(Akonadi::DBus::ControlLock))) {
+-        // We couldn't register. Most likely, it's already running.
+-        const QString lastError = QDBusConnection::sessionBus().lastError().message();
+-        if (lastError.isEmpty()) {
+-            qCWarning(AKONADICONTROL_LOG) << "Unable to register service as" << Akonadi::DBus::serviceName(Akonadi::DBus::ControlLock) << "Maybe it's already running?";
+-        } else {
+-            qCWarning(AKONADICONTROL_LOG) << "Unable to register service as" << Akonadi::DBus::serviceName(Akonadi::DBus::ControlLock) << "Error was:" << lastError;
+-        }
+-        return -1;
+-    }
+-
+     // older Akonadi server versions don't use the lock service yet, so check if one is already running before we try to start another one
++    // TODO: Remove this legacy check?
+     if (QDBusConnection::sessionBus().interface()->isServiceRegistered(Akonadi::DBus::serviceName(Akonadi::DBus::Control))) {
+         qCWarning(AKONADICONTROL_LOG) << "Another Akonadi control process is already running.";
+         return -1;
+diff --git a/src/shared/akapplication.cpp b/src/shared/akapplication.cpp
+index af860e5..b790b8d 100644
+--- a/src/shared/akapplication.cpp
++++ b/src/shared/akapplication.cpp
+@@ -32,10 +32,9 @@
+ 
+ AkApplicationBase *AkApplicationBase::sInstance = nullptr;
+ 
+-AkApplicationBase::AkApplicationBase(int &argc, char **argv, const QLoggingCategory &loggingCategory)
++AkApplicationBase::AkApplicationBase(std::unique_ptr<QCoreApplication> app, const QLoggingCategory &loggingCategory)
+     : QObject(nullptr)
+-    , mArgc(argc)
+-    , mArgv(argv)
++    , mApp(std::move(app))
+     , mLoggingCategory(loggingCategory)
+ {
+     Q_ASSERT(!sInstance);
+@@ -59,7 +58,7 @@ AkApplicationBase *AkApplicationBase::instance()
+ 
+ void AkApplicationBase::init()
+ {
+-    akInit(QString::fromLatin1(mArgv[0]));
++    akInit(mApp->applicationName());
+     akInitRemoteLog();
+ 
+     if (!QDBusConnection::sessionBus().isConnected()) {
+diff --git a/src/shared/akapplication.h b/src/shared/akapplication.h
+index aae7a99..433b725 100644
+--- a/src/shared/akapplication.h
++++ b/src/shared/akapplication.h
+@@ -23,6 +23,10 @@
+ #include <QObject>
+ #include <QCommandLineParser>
+ #include <QLoggingCategory>
++#include <QDBusConnection>
++#include <QDBusError>
++
++#include <memory>
+ 
+ class QCoreApplication;
+ class QApplication;
+@@ -55,16 +59,15 @@ public:
+     int exec();
+ 
+ protected:
+-    AkApplicationBase(int &argc, char **argv, const QLoggingCategory &loggingCategory);
++    AkApplicationBase(std::unique_ptr<QCoreApplication> app, const QLoggingCategory &loggingCategory);
+     void init();
+-    QScopedPointer<QCoreApplication> mApp;
++
++    std::unique_ptr<QCoreApplication> mApp;
+ 
+ private Q_SLOTS:
+     void pollSessionBus() const;
+ 
+ private:
+-    int mArgc;
+-    char **mArgv;
+     QString mInstanceId;
+     const QLoggingCategory &mLoggingCategory;
+     static AkApplicationBase *sInstance;
+@@ -77,13 +80,46 @@ class AkApplicationImpl : public AkApplicationBase
+ {
+ public:
+     AkApplicationImpl(int &argc, char **argv, const QLoggingCategory &loggingCategory = *QLoggingCategory::defaultCategory())
+-        : AkApplicationBase(argc, argv, loggingCategory)
++        : AkApplicationBase(std::make_unique<T>(argc, argv), loggingCategory)
+     {
+-        mApp.reset(new T(argc, argv));
+         init();
+     }
+ };
+ 
++template<typename T>
++class AkUniqueApplicationImpl : public AkApplicationBase
++{
++public:
++    AkUniqueApplicationImpl(int &argc, char **argv, const QString &serviceName, const QLoggingCategory &loggingCategory = *QLoggingCategory::defaultCategory())
++        : AkApplicationBase(std::make_unique<T>(argc, argv), loggingCategory)
++    {
++        registerUniqueServiceOrTerminate(serviceName, loggingCategory);
++        init();
++    }
++
++private:
++    void registerUniqueServiceOrTerminate(const QString &serviceName, const QLoggingCategory &log)
++    {
++        auto bus = QDBusConnection::sessionBus();
++        if (!bus.isConnected()) {
++            qCCritical(log, "Session bus not found. Is DBus running?");
++            exit(1);
++        }
++
++        if (!bus.registerService(serviceName)) {
++            // We couldn't register. Most likely, it's already running.
++            const QString lastError = bus.lastError().message();
++            if (lastError.isEmpty()) {
++                qCInfo(log, "Service %s already registered, terminating now.", qUtf8Printable(serviceName));
++                exit(0); // already running, so it's OK. Terminate now.
++            } else {
++                qCCritical(log, "Unable to register service as %s due to an error: %s", qUtf8Printable(serviceName), qUtf8Printable(lastError));
++                exit(1); // :(
++            }
++        }
++    }
++};
++
+ /**
+  * Returns the contents of @p name environment variable if it is defined,
+  * or @p defaultValue otherwise.
+@@ -93,5 +129,6 @@ QString akGetEnv(const char *name, const QString &defaultValue = QString());
+ typedef AkApplicationImpl<QCoreApplication> AkCoreApplication;
+ typedef AkApplicationImpl<QApplication> AkApplication;
+ typedef AkApplicationImpl<QGuiApplication> AkGuiApplication;
++typedef AkUniqueApplicationImpl<QGuiApplication> AkUniqueGuiApplication;
+ 
+ #endif
+-- 
+cgit v1.1

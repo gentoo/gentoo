@@ -1,0 +1,33 @@
+diff --git a/data/Makefile b/data/Makefile
+index f5d1dd9..60c09e3 100644
+--- a/data/Makefile
++++ b/data/Makefile
+@@ -10,6 +10,7 @@ PERL=perl
+ MAKE=make
+ JULIA=julia
+ CURLFLAGS = --retry 5 --location
++UDATA=${EPREFIX}/usr/share/unicode-data
+ 
+ .PHONY: clean
+ 
+@@ -25,6 +26,7 @@ CharWidths.txt: charwidths.jl EastAsianWidth.txt
+ UNICODE_VERSION=12.0.0
+ 
+ UnicodeData.txt:
++	cp $(UDATA)/$@ $@
+ 	$(CURL) $(CURLFLAGS) -o $@ -O http://www.unicode.org/Public/$(UNICODE_VERSION)/ucd/UnicodeData.txt
+ 
+ EastAsianWidth.txt:
+@@ -43,10 +45,10 @@ CaseFolding.txt:
+ 	$(CURL) $(CURLFLAGS) -o $@ -O $(URLCACHE)http://www.unicode.org/Public/$(UNICODE_VERSION)/ucd/CaseFolding.txt
+ 
+ NormalizationTest.txt:
+-	$(CURL) $(CURLFLAGS) -o $@ -O $(URLCACHE)http://www.unicode.org/Public/$(UNICODE_VERSION)/ucd/NormalizationTest.txt
++	cp $(UDATA)/$@ $@
+ 
+ GraphemeBreakTest.txt:
+-	$(CURL) $(CURLFLAGS) $(URLCACHE)http://www.unicode.org/Public/$(UNICODE_VERSION)/ucd/auxiliary/GraphemeBreakTest.txt | $(PERL) -pe 's,÷,/,g;s,×,+,g' > $@
++	cat $(UDATA)/auxiliary/$@ | $(PERL) -pe 's,÷,/,g;s,×,+,g' > $@
+ 
+ emoji-data.txt:
+ 	$(CURL) $(CURLFLAGS) -o $@ -O $(URLCACHE)http://unicode.org/Public/emoji/`echo $(UNICODE_VERSION) | cut -d. -f1-2`/emoji-data.txt

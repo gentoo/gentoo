@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit gnome2-utils
+EAPI=7
+inherit xdg
 
 MY_PV="${PV/_rc/-RC}"
 MY_P="${PN}-${MY_PV}"
@@ -13,8 +13,9 @@ if [[ "${PV}" == *9999 ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/OpenTTD/OpenTTD.git"
 else
-	SRC_URI="http://binaries.openttd.org/releases/${MY_PV}/${MY_P}-source.tar.xz"
+	SRC_URI="https://proxy.binaries.openttd.org/openttd-releases/${MY_PV}/${MY_P}-source.tar.xz"
 	KEYWORDS="~amd64 ~ppc64 ~x86"
+	S="${WORKDIR}/${MY_P}"
 fi
 
 LICENSE="GPL-2"
@@ -32,14 +33,18 @@ RDEPEND="!dedicated? (
 		truetype? (
 			media-libs/fontconfig
 			media-libs/freetype:2
-			sys-libs/zlib
+			sys-libs/zlib:=
 		)
 	)
 	lzo? ( dev-libs/lzo:2 )
 	iconv? ( virtual/libiconv )
-	png? ( media-libs/libpng:0 )
-	zlib? ( sys-libs/zlib )"
-DEPEND="${RDEPEND}
+	png? (
+		media-libs/libpng:0
+		sys-libs/zlib:=
+	)
+	zlib? ( sys-libs/zlib:= )"
+DEPEND="${RDEPEND}"
+BDEPEND="
 	virtual/pkgconfig"
 PDEPEND="
 	!dedicated? (
@@ -52,32 +57,30 @@ PDEPEND="
 	)
 	openmedia? ( >=games-misc/opengfx-0.4.7 )"
 
-S="${WORKDIR}/${MY_P}"
-
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.6.0-cflags.patch
+	"${FILESDIR}"/${PN}-1.9.0-cflags.patch
+	"${FILESDIR}"/${PN}-1.9.0-dont_compress_manpages.patch
 )
 
 src_configure() {
 	local myopts=(
-		--disable-strip
-		--prefix-dir="${EPREFIX%/}/usr"
 		--binary-dir="bin"
+		--disable-strip
+		--doc-dir="share/doc/${PF}"
 		--install-dir="${D}"
 		--menu-group="Game;Simulation;"
-		$(use_with iconv)
-		$(use_with png)
+		--prefix-dir="${EPREFIX}/usr"
 		$(use_with cpu_flags_x86_sse sse)
+		$(use_with iconv)
 		$(use_with lzo liblzo2)
+		$(use_with png)
 		$(usex debug '--enable-debug=3' '')
 		# there is an allegro interface available as well as sdl, but
 		# the configure for it looks broken so the sdl interface is
 		# always built instead.
 		--without-allegro
-		# libtimidity not needed except for some embedded platform
-		# nevertheless, it will be automagically linked if it is
-		# installed. Hence, we disable it.
-		--without-libtimidity
+
+		--without-fluidsynth
 	)
 
 	if use dedicated ; then
@@ -109,17 +112,17 @@ src_install() {
 	default
 	if use dedicated ; then
 		newinitd "${FILESDIR}"/${PN}.initd-r1 ${PN}
-		rm -rf "${ED%/}"/usr/share/{applications,icons,pixmaps}
+		rm -rf "${ED}"/usr/share/{applications,icons,pixmaps}
 	fi
-	rm -f "${ED%/}"/usr/share/doc/${PF}/COPYING
+	rm -f "${ED}"/usr/share/doc/${PF}/COPYING
 }
 
 pkg_preinst() {
-	gnome2_icon_savelist
+	xdg_pkg_preinst
 }
 
 pkg_postinst() {
-	gnome2_icon_cache_update
+	xdg_pkg_postinst
 
 	if ! use lzo ; then
 		elog "OpenTTD was built without 'lzo' in USE. While 'lzo' is not"
@@ -173,5 +176,5 @@ pkg_postinst() {
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
+	xdg_pkg_postrm
 }

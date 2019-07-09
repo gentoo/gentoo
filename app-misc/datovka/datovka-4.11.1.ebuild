@@ -5,7 +5,7 @@ EAPI=6
 
 inherit gnome2-utils qmake-utils
 
-DESCRIPTION="GUI to access the Czech eGov system of Datove schranky"
+DESCRIPTION="GUI to access the Czech data box e-government system"
 HOMEPAGE="https://www.datovka.cz/"
 SRC_URI="https://secure.nic.cz/files/datove_schranky/${PV}/${P}.tar.xz"
 

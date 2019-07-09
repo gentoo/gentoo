@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-USE_RUBY="ruby23 ruby24 ruby25"
+USE_RUBY="ruby23 ruby24 ruby25 ruby26"
 
 RUBY_FAKEGEM_TASK_DOC=""
 RUBY_FAKEGEM_EXTRADOC="CHANGELOG.md README.md docs/TEMPLATES.md"
@@ -15,14 +15,13 @@ HOMEPAGE="https://github.com/rtomayko/tilt"
 
 LICENSE="MIT"
 SLOT="2"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="amd64 arm ~arm64 ~hppa ppc ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE=""
 
 # Block on some of the potential test dependencies. These dependencies
 # are optional for the test suite, and we don't want to depend on all of
 # them to faciliate keywording and stabling.
 ruby_add_bdepend "test? (
-	dev-ruby/bluecloth
 	dev-ruby/coffee-script
 	dev-ruby/erubis
 	dev-ruby/nokogiri

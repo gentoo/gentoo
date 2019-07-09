@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,7 +10,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Maps"
 LICENSE="GPL-2+ LGPL-2+ MIT CC-BY-3.0 CC-BY-SA-3.0"
 SLOT="0"
 IUSE=""
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 # Pure introspection dependencies found by grepping imports.gi in ${S}
 RDEPEND="
@@ -37,18 +37,16 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	dev-util/glib-utils
-	>=sys-devel/gettext-0.19.7
+	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
 "
 
 pkg_postinst() {
 	xdg_pkg_postinst
 	gnome2_schemas_update
-	gnome2_icon_cache_update
 }
 
 pkg_postinst() {
 	xdg_pkg_postrm
 	gnome2_schemas_update
-	gnome2_icon_cache_update
 }

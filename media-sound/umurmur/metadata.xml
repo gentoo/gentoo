@@ -5,20 +5,13 @@
 		<email>polynomial-c@gentoo.org</email>
 		<name>Lars Wendler</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>alex_y_xu@yahoo.ca</email>
-		<name>Alex Xu</name>
-	</maintainer>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
-	</maintainer>
 	<longdescription lang="en">
 		uMurmur is a minimalistic Mumble server primarily targeted to
 		run on routers with an open OS like OpenWRT. The server part
 		of Mumble is called Murmur, hence the name uMurmur.
 	</longdescription>
 	<use>
+		<flag name="mbedtls">Use <pkg>net-libs/mbedtls</pkg> as TLS provider</flag>
 		<flag name="shm">Enable shared memory support</flag>
 	</use>
 	<upstream>

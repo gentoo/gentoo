@@ -5,21 +5,24 @@ EAPI=7
 inherit eutils flag-o-matic multilib
 
 DESCRIPTION="An MTA designed specifically for maildirs"
-SRC_URI="mirror://sourceforge/courier/${P}.tar.bz2"
 HOMEPAGE="http://www.courier-mta.org/"
-SLOT="0"
+SRC_URI="mirror://sourceforge/courier/${P}.tar.bz2"
+
 LICENSE="GPL-2"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86"
+SLOT="0"
+KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 s390 sh sparc x86"
 IUSE="postgres ldap libressl mysql pam nls ipv6 spell fax crypt norewrite \
 	fam web webmail gnutls"
-REQUIRED_USE="?? ( gnutls libressl )"
 
 DEPEND="
 	>=net-libs/courier-authlib-0.69.0-r1
 	>=net-libs/courier-unicode-2.1
-	!gnutls? ( !libressl? ( dev-libs/openssl:0= ) )
-	libressl? ( dev-libs/libressl:= )
-	gnutls? ( net-libs/gnutls )
+	net-dns/libidn:=
+	gnutls? ( net-libs/gnutls:= )
+	!gnutls? (
+		!libressl? ( dev-libs/openssl:0= )
+		libressl? ( dev-libs/libressl:0= )
+	)
 	>=sys-libs/gdbm-1.8.0
 	dev-libs/libpcre
 	app-misc/mime-types
@@ -34,13 +37,13 @@ DEPEND="
 	!mail-mta/esmtp
 	!mail-mta/exim
 	!mail-mta/mini-qmail
-	!mail-mta/msmtp
+	!mail-mta/msmtp[mta]
 	!mail-mta/netqmail
 	!mail-mta/nullmailer
 	!mail-mta/postfix
 	!mail-mta/qmail-ldap
 	!mail-mta/sendmail
-	!mail-mta/ssmtp
+	!mail-mta/ssmtp[mta]
 	!mail-mta/opensmtpd
 	!net-mail/dot-forward
 	!sys-apps/ucspi-tcp

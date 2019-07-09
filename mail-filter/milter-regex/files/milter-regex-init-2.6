@@ -1,0 +1,15 @@
+#!/sbin/openrc-run
+# Copyright 1999-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+pidfile="/run/${RC_SVCNAME}.pid"
+command="/usr/bin/milter-regex"
+command_args="-c ${MR_CONF} -r ${pidfile} -u ${MR_USER} -p ${MR_SOCKET} -P ${MR_PERM} -U ${MR_USER} -G ${MR_GROUP} ${MR_OPTS}"
+
+depend() {
+	before mta
+}
+
+start_pre() {
+	checkpath --directory --mode 0755 --owner ${MR_USER}:${MR_GROUP} ${MR_RUNDIR}
+}

@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
@@ -6,8 +6,8 @@ EAPI=4
 inherit eutils toolchain-funcs multilib
 
 DESCRIPTION="A window manager for X in the spirit of dwm"
-HOMEPAGE="http://plhk.ru/echinus"
-SRC_URI="http://plhk.ru/static/${PN}/${P}.tar.gz"
+HOMEPAGE="https://plhk.ru/"
+SRC_URI="https://plhk.ru/static/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

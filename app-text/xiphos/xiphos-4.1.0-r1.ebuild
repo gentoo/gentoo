@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -32,6 +32,7 @@ DEPEND="${RDEPEND}
 	app-text/gnome-doc-utils[${PYTHON_USEDEP}]
 	app-text/rarian
 	dev-libs/libxslt[${PYTHON_USEDEP}]
+	dev-util/glib-utils
 	dev-util/intltool
 	>=net-libs/biblesync-1.1.2-r1[-static]
 	virtual/pkgconfig

@@ -3,7 +3,7 @@
 
 EAPI=6
 
-USE_RUBY="ruby23 ruby24 ruby25"
+USE_RUBY="ruby23 ruby24 ruby25 ruby26"
 
 RUBY_FAKEGEM_NAME=ZenTest
 
@@ -22,7 +22,9 @@ IUSE=""
 
 ruby_add_bdepend "
 	test? (
-		>=dev-ruby/hoe-2.10
-		dev-ruby/hoe-seattlerb
 		dev-ruby/minitest:5
 	)"
+
+each_ruby_test() {
+	${RUBY} -Ilib:. -e 'Dir["test/test_*.rb"].each{|f| require f}' || die
+}

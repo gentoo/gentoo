@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,10 +14,10 @@ LICENSE="CC-BY-SA-3.0"
 SLOT="live"
 IUSE="html twoside"
 
-# texlive-bibtexextra: plainurl.bst
-# texlive-latexextra: chngcntr, isodate, marginnote, paralist, tocbibind
-# texlive-mathscience: algorithm, algorithmic
-# leaflet used by eapi-cheatsheet
+# leaflet: used by eapi-cheatsheet
+# tl-bibtexextra: unsrturl.bst
+# tl-latexextra: chngcntr, gitinfo2, isodate, marginnote, paralist, tocbibind
+# tl-mathscience: algorithm, algorithmic
 BDEPEND="dev-tex/leaflet
 	dev-texlive/texlive-bibtexextra
 	dev-texlive/texlive-fontsrecommended
@@ -25,10 +25,7 @@ BDEPEND="dev-tex/leaflet
 	dev-texlive/texlive-latexextra
 	dev-texlive/texlive-latexrecommended
 	dev-texlive/texlive-mathscience
-	html? (
-		app-text/recode
-		>=dev-tex/tex4ht-20090611_p1038-r5
-	)"
+	html? ( >=dev-tex/tex4ht-20090611_p1038-r5 )"
 
 src_compile() {
 	# just in case; we shouldn't be generating any fonts

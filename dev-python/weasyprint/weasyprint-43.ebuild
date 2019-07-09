@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
 
-PYTHON_COMPAT=( python3_{4,5,6} )
+PYTHON_COMPAT=( python3_{5,6} )
 
 inherit distutils-r1
 
@@ -11,7 +11,7 @@ DESCRIPTION="Visual rendering engine for HTML and CSS that can export to PDF"
 MY_PN="WeasyPrint"
 MY_P="${MY_PN}-${PV}"
 SRC_URI="mirror://pypi/${MY_P:0:1}/${MY_PN}/${MY_P}.tar.gz"
-HOMEPAGE="http://weasyprint.org https://github.com/Kozea/WeasyPrint"
+HOMEPAGE="https://weasyprint.org https://github.com/Kozea/WeasyPrint"
 
 LICENSE="BSD"
 SLOT="0"

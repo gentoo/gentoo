@@ -3,15 +3,15 @@
 
 EAPI="7"
 
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6,3_7} )
+PYTHON_COMPAT=( python{2_7,3_5,3_6,3_7} )
 PYTHON_REQ_USE="ncurses,readline"
 
 PLOCALES="bg de_DE fr_FR hu it tr zh_CN"
 
 FIRMWARE_ABI_VERSION="2.11.1-r50"
 
-inherit eutils flag-o-matic linux-info toolchain-funcs multilib python-r1 \
-	user udev fcaps readme.gentoo-r1 pax-utils l10n
+inherit eutils linux-info toolchain-funcs multilib python-r1 \
+	user udev fcaps readme.gentoo-r1 pax-utils l10n xdg-utils
 
 if [[ ${PV} = *9999* ]]; then
 	EGIT_REPO_URI="git://git.qemu.org/qemu.git"
@@ -27,14 +27,12 @@ HOMEPAGE="http://www.qemu.org http://www.linux-kvm.org"
 
 LICENSE="GPL-2 LGPL-2 BSD-2"
 SLOT="0"
-IUSE="accessibility +aio alsa bzip2 capstone +caps +curl debug
+IUSE="accessibility +aio alsa bzip2 capstone +caps +curl debug doc
 	+fdt glusterfs gnutls gtk infiniband iscsi +jpeg kernel_linux
 	kernel_FreeBSD lzo ncurses nfs nls numa opengl +pin-upstream-blobs +png
 	pulseaudio python rbd sasl +seccomp sdl selinux smartcard snappy
 	spice ssh static static-user systemtap tci test usb usbredir vde
 	+vhost-net virgl virtfs +vnc vte xattr xen xfs"
-
-RESTRICT=strip
 
 COMMON_TARGETS="aarch64 alpha arm cris hppa i386 m68k microblaze microblazeel
 	mips mips64 mips64el mipsel nios2 or1k ppc ppc64 riscv32 riscv64 s390x
@@ -94,7 +92,7 @@ SOFTMMU_TOOLS_DEPEND="
 	capstone? ( dev-libs/capstone:= )
 	caps? ( sys-libs/libcap-ng[static-libs(+)] )
 	curl? ( >=net-misc/curl-7.15.4[static-libs(+)] )
-	fdt? ( >=sys-apps/dtc-1.4.2[static-libs(+)] )
+	fdt? ( >=sys-apps/dtc-1.5.0[static-libs(+)] )
 	glusterfs? ( >=sys-cluster/glusterfs-3.4.0[static-libs(+)] )
 	gnutls? (
 		dev-libs/nettle:=[static-libs(+)]
@@ -170,6 +168,18 @@ PPC64_FIRMWARE_DEPEND="
 	)
 "
 
+BDEPEND="
+	$(python_gen_impl_dep)
+	dev-lang/perl
+	sys-apps/texinfo
+	virtual/pkgconfig
+	doc? ( dev-python/sphinx )
+	gtk? ( nls? ( sys-devel/gettext ) )
+	test? (
+		dev-libs/glib[utils]
+		sys-devel/bc
+	)
+"
 CDEPEND="
 	!static? (
 		${ALL_DEPEND//\[static-libs(+)]}
@@ -180,21 +190,12 @@ CDEPEND="
 	qemu_softmmu_targets_ppc64? ( ${PPC64_FIRMWARE_DEPEND} )
 "
 DEPEND="${CDEPEND}
-	${PYTHON_DEPS}
-	dev-lang/perl
-	sys-apps/texinfo
-	virtual/pkgconfig
 	kernel_linux? ( >=sys-kernel/linux-headers-2.6.35 )
-	gtk? ( nls? ( sys-devel/gettext ) )
 	static? (
 		${ALL_DEPEND}
 		${SOFTMMU_TOOLS_DEPEND}
 	)
-	static-user? ( ${ALL_DEPEND} )
-	test? (
-		dev-libs/glib[utils]
-		sys-devel/bc
-	)"
+	static-user? ( ${ALL_DEPEND} )"
 RDEPEND="${CDEPEND}
 	selinux? ( sec-policy/selinux-qemu )"
 
@@ -202,6 +203,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.5.0-cflags.patch
 	"${FILESDIR}"/${PN}-2.5.0-sysmacros.patch
 	"${FILESDIR}"/${PN}-2.11.1-capstone_include_path.patch
+	"${FILESDIR}"/${PN}-4.0.0-mkdir_systemtap.patch #684902
+	"${FILESDIR}"/${PN}-4.0.0-fix_infiniband_include.patch #686412
 )
 
 QA_PREBUILT="
@@ -356,11 +359,6 @@ src_prepare() {
 	check_targets IUSE_SOFTMMU_TARGETS softmmu
 	check_targets IUSE_USER_TARGETS linux-user
 
-	# Alter target makefiles to accept CFLAGS set via flag-o
-	sed -i -r \
-		-e 's/^(C|OP_C|HELPER_C)FLAGS=/\1FLAGS+=/' \
-		Makefile Makefile.target || die
-
 	default
 
 	# Fix ld and objcopy being called directly
@@ -408,7 +406,7 @@ qemu_src_configure() {
 		--host-cc="$(tc-getBUILD_CC)"
 		$(use_enable debug debug-info)
 		$(use_enable debug debug-tcg)
-		--enable-docs
+		$(use_enable doc docs)
 		$(use_enable tci tcg-interpreter)
 		$(use_enable xattr attr)
 	)
@@ -481,7 +479,6 @@ qemu_src_configure() {
 		conf_opts+=(
 			--audio-drv-list="${audio_opts}"
 		)
-		use sdl && conf_opts+=( --with-sdlabi=2.0 )
 	fi
 
 	case ${buildtype} in
@@ -593,7 +590,7 @@ src_test() {
 }
 
 qemu_python_install() {
-	python_domodule "${S}/scripts/qmp/qmp.py"
+	python_domodule "${S}/python/qemu/qmp.py"
 
 	python_doscript "${S}/scripts/kvm/vmxcap"
 	python_doscript "${S}/scripts/qmp/qmp-shell"
@@ -639,9 +636,11 @@ generate_initd() {
 		sparc*) qcpu="sparc";;
 		esac
 
+		# we use 'printf' here to be portable across 'sh'
+		# implementations: #679168
 		cat <<EOF >>"${out}"
 	if [ "\${cpu}" != "${qcpu}" -a -x "${interpreter}" ] ; then
-		echo ':${package}:M::${magic}:${mask}:${interpreter}:'"\${QEMU_BINFMT_FLAGS}" >/proc/sys/fs/binfmt_misc/register
+		printf '%s\n' ':${package}:M::${magic}:${mask}:${interpreter}:'"\${QEMU_BINFMT_FLAGS}" >/proc/sys/fs/binfmt_misc/register
 	fi
 EOF
 
@@ -696,6 +695,9 @@ src_install() {
 	cd "${S}"
 	dodoc Changelog MAINTAINERS docs/specs/pci-ids.txt
 	newdoc pc-bios/README README.pc-bios
+
+	# Disallow stripping of prebuilt firmware files.
+	dostrip -x ${QA_PREBUILT}
 
 	if [[ -n ${softmmu_targets} ]]; then
 		# Remove SeaBIOS since we're using the SeaBIOS packaged one
@@ -760,7 +762,10 @@ pkg_postinst() {
 		udev_reload
 	fi
 
-	fcaps cap_net_admin /usr/libexec/qemu-bridge-helper
+	xdg_icon_cache_update
+
+	[[ -f ${EROOT}/usr/libexec/qemu-bridge-helper ]] && \
+		fcaps cap_net_admin /usr/libexec/qemu-bridge-helper
 
 	DISABLE_AUTOFORMATTING=true
 	readme.gentoo_print_elog
@@ -797,4 +802,8 @@ pkg_info() {
 		echo "    USE=''"
 	fi
 	echo "  $(best_version sys-firmware/sgabios)"
+}
+
+pkg_postrm() {
+	xdg_icon_cache_update
 }

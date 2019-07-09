@@ -1,0 +1,18 @@
+#!/usr/bin/pulseaudio -nF
+#
+
+# load system wide configuration
+.include /etc/pulse/default.pa
+
+### unload driver modules for Bluetooth hardware
+.nofail
+
+.ifexists module-bluetooth-policy.so
+unload-module module-bluetooth-policy
+.endif
+
+.ifexists module-bluetooth-discover.so
+unload-module module-bluetooth-discover
+.endif
+
+.fail

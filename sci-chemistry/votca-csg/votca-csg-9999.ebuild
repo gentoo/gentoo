@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -65,9 +65,8 @@ src_unpack() {
 src_configure() {
 	mycmakeargs=(
 		-DWITH_GMX=$(usex gromacs)
-		-DWITH_H5MD=$(usex hdf5)
+		-DCMAKE_DISABLE_FIND_PACKAGE_HDF5=$(usex '!hdf5')
 		-DWITH_RC_FILES=OFF
-		-DLIB=$(get_libdir)
 	)
 	cmake-utils_src_configure
 }

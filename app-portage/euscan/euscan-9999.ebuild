@@ -18,11 +18,7 @@ IUSE=""
 
 KEYWORDS=""
 
-DEPEND="
-	|| (
-		sys-apps/portage[${PYTHON_USEDEP}]
-		sys-apps/portage-mgorny[${PYTHON_USEDEP}]
-	)"
+DEPEND="sys-apps/portage[${PYTHON_USEDEP}]"
 RDEPEND="${DEPEND}
 	>=app-portage/gentoolkit-0.2.8[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]

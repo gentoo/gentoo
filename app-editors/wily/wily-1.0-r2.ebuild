@@ -12,10 +12,10 @@ SRC_URI="${HOMEPAGE}${MY_P}.tar.gz"
 
 LICENSE="Artistic"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="amd64 x86"
 
 DEPEND="
-	dev-libs/9libs[X]
+	dev-libs/9libs
 "
 RDEPEND="
 	${DEPEND}

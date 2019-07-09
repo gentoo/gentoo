@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,7 +15,7 @@ if [[ "${PV}" = *_rc* ]] ; then
 	S="${WORKDIR}/${PN}-${PN}-${MY_PV}"
 else
 	SRC_URI="mirror://sourceforge/nfs/${P}.tar.bz2"
-	KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86"
+	KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 sh sparc x86"
 fi
 
 LICENSE="GPL-2"
@@ -29,6 +29,7 @@ RESTRICT="test" #315573
 # so don't depend on virtual/krb.
 # (04 Feb 2005 agriffis)
 DEPEND_COMMON="
+	dev-libs/libxml2
 	net-libs/libtirpc:=
 	>=net-nds/rpcbind-0.2.4
 	sys-libs/e2fsprogs-libs
@@ -59,7 +60,6 @@ RDEPEND="${DEPEND_COMMON}
 	)
 "
 DEPEND="${DEPEND_COMMON}
-	dev-libs/libxml2
 	net-libs/rpcsvc-proto
 	virtual/pkgconfig"
 
@@ -68,6 +68,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.2.8-cross-build.patch
 	"${FILESDIR}"/${PN}-2.3.2-junction_libs.patch
 	"${FILESDIR}"/${PN}-2.3.2-no-werror.patch
+	"${FILESDIR}"/${PN}-2.3.1-limits.patch #651080
+	"${FILESDIR}"/${PN}-2.3.4_rc2-improved_res_querydomain_check.patch #651080
 )
 
 src_prepare() {

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 : ${CMAKE_MAKEFILE_GENERATOR:=ninja}
 # (needed due to CMAKE_BUILD_TYPE != Gentoo)
 CMAKE_MIN_VERSION=3.7.0-r1
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python{2_7,3_{5,6,7}} )
 
 inherit check-reqs cmake-utils flag-o-matic git-r3 llvm \
 	multiprocessing python-any-r1
@@ -19,7 +19,7 @@ EGIT_REPO_URI="https://git.llvm.org/git/compiler-rt.git
 
 LICENSE="|| ( UoI-NCSA MIT )"
 # Note: this needs to be updated to match version of clang-9999
-SLOT="8.0.0"
+SLOT="9.0.0"
 KEYWORDS=""
 IUSE="+clang +libfuzzer +profile +sanitize test +xray elibc_glibc"
 # FIXME: libfuzzer does not enable all its necessary dependencies
@@ -77,16 +77,11 @@ src_unpack() {
 src_prepare() {
 	cmake-utils_src_prepare
 
-	# apply the fixes for new glibc / split tirpc
-	eapply "${FILESDIR}/9999/0001-sanitizer_common-Fix-using-libtirpc-on-Linux.patch"
-	eapply "${FILESDIR}/9999/0002-test-Support-using-libtirpc-on-Linux.patch"
-
 	if use test; then
 		# remove tests that are (still) broken by new glibc
 		# https://bugs.llvm.org/show_bug.cgi?id=36065
 		if use elibc_glibc && has_version '>=sys-libs/glibc-2.25'; then
-			rm test/lsan/TestCases/Linux/use_tls_dynamic.cc || die
-			rm test/msan/dtls_test.c || die
+			rm test/lsan/TestCases/Linux/fork_and_leak.cc || die
 		fi
 	fi
 }
@@ -108,8 +103,9 @@ src_configure() {
 		-DCOMPILER_RT_OUTPUT_DIR="${BUILD_DIR}/lib/clang/${SLOT}"
 
 		-DCOMPILER_RT_INCLUDE_TESTS=$(usex test)
-		# built-ins installed by sys-libs/compiler-rt
+		# builtins & crt installed by sys-libs/compiler-rt
 		-DCOMPILER_RT_BUILD_BUILTINS=OFF
+		-DCOMPILER_RT_BUILD_CRT=OFF
 		-DCOMPILER_RT_BUILD_LIBFUZZER=$(usex libfuzzer)
 		-DCOMPILER_RT_BUILD_PROFILE=$(usex profile)
 		-DCOMPILER_RT_BUILD_SANITIZERS=$(usex sanitize)

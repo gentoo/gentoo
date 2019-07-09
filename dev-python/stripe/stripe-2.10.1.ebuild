@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{4,5,6,7} pypy{,3} )
+PYTHON_COMPAT=( python2_7 python3_{5,6,7} pypy{,3} )
 inherit distutils-r1
 
 DESCRIPTION="Stripe python bindings"
@@ -21,9 +21,11 @@ RDEPEND="
 "
 # See https://github.com/stripe/stripe-python/blob/v2.10.1/tests/conftest.py#L17
 # for minimum required version of stripe-mock
+# Running the tests against dev-util/stripe-mock-0.47.0 resulted in test errors
 DEPEND="${RDEPEND}
 	test? (
 		>=dev-util/stripe-mock-0.33.0
+		<dev-util/stripe-mock-0.47.0
 		dev-python/pytest[${PYTHON_USEDEP}]
 		dev-python/pytest-mock[${PYTHON_USEDEP}]
 		net-misc/curl

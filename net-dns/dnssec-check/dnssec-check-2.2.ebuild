@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -21,6 +21,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 src_prepare() {
+	default
 	sed -e '/Exec=/s:/opt::' -i ${PN}.desktop || die
 }
 
@@ -29,7 +30,7 @@ src_configure() {
 }
 
 src_install() {
-	emake INSTALL_ROOT="${D}usr" install
+	emake INSTALL_ROOT="${D}/usr" install
 
 	doicon ${PN}.png
 	domenu ${PN}.desktop

@@ -84,9 +84,9 @@ case "$APP" in
     VirtualBox|virtualbox)
         exec "$INSTALL_DIR/VirtualBox" "$@"
         ;;
-    #VirtualBoxVM|virtualboxvm)
-    #    exec "$INSTALL_DIR/VirtualBoxVM" "$@"
-    #    ;;
+    VirtualBoxVM|virtualboxvm)
+        exec "$INSTALL_DIR/VirtualBoxVM" "$@"
+        ;;
     VBoxManage|vboxmanage)
         exec "$INSTALL_DIR/VBoxManage" "$@"
         ;;

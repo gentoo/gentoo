@@ -1,20 +1,20 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
+PYTHON_COMPAT=( python{2_7,3_5,3_6} )
 
 inherit cmake-utils flag-o-matic python-single-r1
 
 DESCRIPTION="Libs for the efficient manipulation of volumetric data"
-HOMEPAGE="http://www.openvdb.org"
+HOMEPAGE="https://www.openvdb.org"
 SRC_URI="https://github.com/dreamworksanimation/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	https://dev.gentoo.org/~dracwyrm/patches/${P}-patchset-02.tar.xz"
 
 LICENSE="MPL-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="+abi3-compat doc python test"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 

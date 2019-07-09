@@ -1,8 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=0
-
+EAPI=7
 inherit toolchain-funcs
 
 DESCRIPTION="Touchpad config for ALPS and Synaptics TPs. Controls tap/click behaviour"
@@ -11,16 +10,14 @@ SRC_URI="http://www.compass.com/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
-
-DOCS=( README AUTHORS NEWS INSTALL )
+KEYWORDS="amd64 x86"
 
 src_compile() {
-	econf
 	emake CC="$(tc-getCC)"
 }
 
 src_install() {
+	einstalldocs
 	dobin "${PN}"
 	doinitd "${FILESDIR}"/"${PN}"
 	newconfd "${FILESDIR}"/"${PN}.conf" "${PN}"

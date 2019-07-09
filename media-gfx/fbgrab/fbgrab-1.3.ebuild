@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="Framebuffer screenshot utility"
 HOMEPAGE="https://fbgrab.monells.se/"
@@ -20,6 +20,7 @@ RDEPEND="media-libs/libpng:=
 DEPEND="${RDEPEND}"
 
 src_prepare() {
+	default
 	sed -i -e "s:-g::" Makefile || die "sed failed"
 }
 

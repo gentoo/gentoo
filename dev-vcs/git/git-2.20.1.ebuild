@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -45,7 +45,7 @@ if [[ ${PV} != *9999 ]]; then
 			${SRC_URI_KORG}/${PN}-htmldocs-${DOC_VER}.tar.${SRC_URI_SUFFIX}
 			)"
 	[[ "${PV}" = *_rc* ]] || \
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+	KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 ~sh sparc x86 ~ppc-aix ~x64-cygwin ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 fi
 
 LICENSE="GPL-2"
@@ -69,6 +69,7 @@ CDEPEND="
 		webdav? ( dev-libs/expat )
 	)
 	emacs? ( virtual/emacs )
+	iconv? ( virtual/libiconv )
 "
 
 RDEPEND="${CDEPEND}
@@ -76,7 +77,6 @@ RDEPEND="${CDEPEND}
 	perl? (
 		dev-perl/Error
 		dev-perl/MailTools
-		dev-perl/Net-SMTP-SSL
 		dev-perl/Authen-SASL
 		cgi? (
 			dev-perl/CGI
@@ -165,7 +165,7 @@ exportmakeopts() {
 		$(usex perl 'INSTALLDIRS=vendor NO_PERL_CPAN_FALLBACKS=YesPlease' NO_PERL=YesPlease)
 		$(usex python '' NO_PYTHON=YesPlease)
 		$(usex subversion '' NO_SVN_TESTS=YesPlease)
-		$(usex threads THREADED_DELTA_SEARCH=YesPlease NO_PTHREAD=YesPlease)
+		$(usex threads '' NO_PTHREAD=YesPlease)
 		$(usex tk '' NO_TCLTK=YesPlease)
 	)
 
@@ -242,8 +242,10 @@ exportmakeopts() {
 
 	# Bug 290465:
 	# builtin-fetch-pack.c:816: error: 'struct stat' has no member named 'st_mtim'
-	[[ "${CHOST}" == *-uclibc* ]] && \
+	if [[ "${CHOST}" == *-uclibc* ]] ; then
 		myopts+=( NO_NSEC=YesPlease )
+		use iconv && myopts+=( NEEDS_LIBICONV=YesPlease )
+	fi
 
 	export MY_MAKEOPTS="${myopts[@]}"
 	export EXTLIBS="${extlibs}"
@@ -300,7 +302,7 @@ git_emake() {
 	emake ${MY_MAKEOPTS} \
 		prefix="${EPREFIX}"/usr \
 		htmldir="${EPREFIX}"/usr/share/doc/${PF}/html \
-		perllibdir="$(perl_get_raw_vendorlib)" \
+		perllibdir="$(use perl && perl_get_raw_vendorlib)" \
 		sysconfdir="${EPREFIX}"/etc \
 		DESTDIR="${D}" \
 		GIT_TEST_OPTS="--no-color" \

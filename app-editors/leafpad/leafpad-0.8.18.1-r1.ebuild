@@ -1,10 +1,11 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit gnome2-utils xdg-utils
+EAPI=7
 
-DESCRIPTION="A simple GTK2 text editor"
+inherit xdg
+
+DESCRIPTION="Simple GTK2 text editor"
 HOMEPAGE="http://tarot.freeshell.org/leafpad/"
 SRC_URI="mirror://nongnu/${PN}/${P}.tar.gz"
 
@@ -13,15 +14,16 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="emacs"
 
-RDEPEND="
-	virtual/libintl
-	x11-libs/gtk+:2
-"
-DEPEND="${RDEPEND}
+BDEPEND="
 	dev-util/intltool
 	sys-devel/gettext
 	virtual/pkgconfig
 "
+DEPEND="
+	virtual/libintl
+	x11-libs/gtk+:2
+"
+RDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-fdo.patch
@@ -36,14 +38,4 @@ src_configure() {
 		--enable-chooser \
 		--enable-print \
 		$(use_enable emacs)
-}
-
-pkg_postinst() {
-	xdg_desktop_database_update
-	gnome2_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_desktop_database_update
-	gnome2_icon_cache_update
 }

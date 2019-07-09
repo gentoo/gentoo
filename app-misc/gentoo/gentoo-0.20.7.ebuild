@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit autotools eutils
 
 DESCRIPTION="Graphical file manager for Unix-like systems, using GTK+"
-HOMEPAGE="http://gentoo.sourceforge.net/"
+HOMEPAGE="https://sourceforge.net/projects/gentoo/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"

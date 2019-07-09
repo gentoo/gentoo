@@ -1,24 +1,26 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 # pypy3 needs to be built using python 2
 PYTHON_COMPAT=( python2_7 pypy )
 EHG_PROJECT="pypy"
 EHG_REPO_URI="https://bitbucket.org/pypy/pypy"
-EHG_REVISION="py3k"
-inherit check-reqs mercurial pax-utils python-any-r1 toolchain-funcs versionator
+EHG_REVISION="py3.6"
+inherit check-reqs mercurial pax-utils python-any-r1 toolchain-funcs
 
-DESCRIPTION="A fast, compliant alternative implementation of the Python (3.3) language"
+MY_P=pypy3.6-v${PV}
+
+DESCRIPTION="A fast, compliant alternative implementation of the Python (3.6) language"
 HOMEPAGE="http://pypy.org/"
 SRC_URI=""
 
 LICENSE="MIT"
 # pypy3 -c 'import sysconfig; print(sysconfig.get_config_var("SOABI"))'
-SLOT="0/60"
+SLOT="0/71-py36"
 KEYWORDS=""
-IUSE="bzip2 gdbm +jit libressl low-memory ncurses sandbox sqlite cpu_flags_x86_sse2 tk"
+IUSE="bzip2 gdbm +jit libressl low-memory ncurses sandbox sqlite tk"
 
 RDEPEND=">=sys-libs/zlib-1.1.3:0=
 	virtual/libffi:0=
@@ -47,8 +49,7 @@ DEPEND="${RDEPEND}
 		)
 	)"
 
-# Who would care about predictable directory names?
-S="${WORKDIR}/pypy3-v${PV%_*}-src"
+S="${WORKDIR}/${MY_P}-src"
 
 check_env() {
 	if use low-memory; then
@@ -91,17 +92,16 @@ src_unpack() {
 }
 
 src_prepare() {
-	eapply "${FILESDIR}/4.0.0-gentoo-path.patch"
+	eapply "${FILESDIR}/7.0.0-gentoo-path.patch"
 	eapply "${FILESDIR}/1.9-distutils.unixccompiler.UnixCCompiler.runtime_library_dir_option.patch"
 	eapply "${FILESDIR}"/5.9.0-shared-lib.patch	# 517002
+	eapply "${FILESDIR}"/7.0.0_all_distutils_cxx.patch
 
 	sed -e "s^@EPREFIX@^${EPREFIX}^" \
-		-e "s^@libdir@^$(get_libdir)^" \
 		-i lib-python/3/distutils/command/install.py || die
 
 	# apply CPython stdlib patches
 	pushd lib-python/3 > /dev/null || die
-	eapply "${FILESDIR}"/5.8.0_all_distutils_cxx.patch
 	eapply "${FILESDIR}"/python-3.5-distutils-OO-build.patch
 	popd > /dev/null || die
 
@@ -111,32 +111,12 @@ src_prepare() {
 src_configure() {
 	tc-export CC
 
-	local jit_backend
-	if use jit; then
-		jit_backend='--jit-backend='
-
-		# We only need the explicit sse2 switch for x86.
-		# On other arches we can rely on autodetection which uses
-		# compiler macros. Plus, --jit-backend= doesn't accept all
-		# the modern values...
-
-		if use x86; then
-			if use cpu_flags_x86_sse2; then
-				jit_backend+=x86
-			else
-				jit_backend+=x86-without-sse2
-			fi
-		else
-			jit_backend+=auto
-		fi
-	fi
-
 	local args=(
 		--shared
 		$(usex jit -Ojit -O2)
 		$(usex sandbox --sandbox '')
 
-		${jit_backend}
+		--jit-backend=auto
 
 		pypy/goal/targetpypystandalone
 	)
@@ -197,12 +177,18 @@ src_compile() {
 #    "resource": "_resource_build.py" if sys.platform != "win32" else None,
 #    "lzma": "_lzma_build.py",
 #    "_decimal": "_decimal_build.py",
-#    "ssl": "_ssl_build.py",
-	cffi_targets=( audioop syslog pwdgrp resource lzma decimal ssl )
+#    "_ssl": "_ssl_build.py",
+#    "_blake2": "_blake2/_blake2_build.py",
+#    "_sha3": "_sha3/_sha3_build.py",
+	cffi_targets=( blake2/_blake2 sha3/_sha3 ssl
+		audioop syslog pwdgrp resource lzma decimal )
 	use gdbm && cffi_targets+=( gdbm )
 	use ncurses && cffi_targets+=( curses )
 	use sqlite && cffi_targets+=( sqlite3 )
 	use tk && cffi_targets+=( tkinter/tklib )
+
+	einfo "Please disregard the import errors during CFFI cache generation."
+	einfo "They come from modules not built yet."
 
 	local t
 	# all modules except tkinter output to .
@@ -228,7 +214,7 @@ src_test() {
 }
 
 src_install() {
-	local dest=/usr/$(get_libdir)/pypy3
+	local dest=/usr/lib/pypy3.6
 	einfo "Installing PyPy ..."
 	exeinto "${dest}"
 	doexe pypy3-c libpypy3-c.so
@@ -237,16 +223,15 @@ src_install() {
 	# preserve mtimes to avoid obsoleting caches
 	insopts -p
 	doins -r include lib_pypy lib-python
-	dosym ../$(get_libdir)/pypy3/pypy3-c /usr/bin/pypy3
+	dosym ../lib/pypy3.6/pypy3-c /usr/bin/pypy3
 	dodoc README.rst
 
 	if ! use gdbm; then
-		rm -r "${ED%/}${dest}"/lib_pypy/gdbm.py \
-			"${ED%/}${dest}"/lib-python/*3/test/test_gdbm.py || die
+		rm -r "${ED%/}${dest}"/lib_pypy/_gdbm* || die
 	fi
 	if ! use sqlite; then
 		rm -r "${ED%/}${dest}"/lib-python/*3/sqlite3 \
-			"${ED%/}${dest}"/lib_pypy/_sqlite3.py \
+			"${ED%/}${dest}"/lib_pypy/_sqlite3* \
 			"${ED%/}${dest}"/lib-python/*3/test/test_sqlite.py || die
 	fi
 	if ! use tk; then
@@ -260,7 +245,7 @@ src_install() {
 	local -x PYTHON=${ED%/}${dest}/pypy3-c
 	# we can't use eclass function since PyPy is dumb and always gives
 	# paths relative to the interpreter
-	local PYTHON_SITEDIR=${EPREFIX}/usr/$(get_libdir)/pypy3/site-packages
+	local PYTHON_SITEDIR=${EPREFIX}/usr/lib/pypy3.6/site-packages
 	python_export pypy3 EPYTHON
 
 	echo "EPYTHON='${EPYTHON}'" > epython.py || die

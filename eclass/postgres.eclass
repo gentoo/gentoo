@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 inherit user
@@ -27,7 +27,7 @@ esac
 # @DESCRIPTION:
 # List of versions to reverse sort POSTGRES_COMPAT slots
 
-_POSTGRES_ALL_VERSIONS=( 12 11 10 9.6 9.5 9.4 9.3 9.2 )
+_POSTGRES_ALL_VERSIONS=( 13 12 11 10 9.6 9.5 9.4 9.3 9.2 )
 
 
 

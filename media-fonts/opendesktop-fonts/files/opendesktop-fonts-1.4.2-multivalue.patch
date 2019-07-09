@@ -1,0 +1,190 @@
+Fixup alias & test blocks in fontconfig definition.
+
+Fixes: https://bugs.gentoo.org/671790
+Partial-Credit: <code@edoceo.com>
+Signed-off-by: Robin H. Johnson <robbat2@gentoo.org>
+See-Also: https://cromwell-intl.com/open-source/font-config-warnings.html
+See-Also: https://cixtor.com/blog/fontconfig-warning
+
+--- opendesktop-fonts-1.4.2/69-odofonts.conf	2007-09-10 02:09:37.000000000 -0700
++++ opendesktop-fonts-1.4.2/69-odofonts.conf	2019-02-23 14:03:02.280680514 -0800
+@@ -1,38 +1,104 @@
+ <?xml version="1.0"?>
+ <!DOCTYPE fontconfig SYSTEM "fonts.dtd">
+ <fontconfig>
++<!-- serif group -->
+ <alias>
+ 	<family>文鼎ＰＬ新宋</family>
++	<default><family>serif</family></default>
++</alias>
++<alias>
+ 	<family>AR PL New Sung</family>
++	<default><family>serif</family></default>
++</alias>
++<alias>
+ 	<family>新細明體</family>
++	<default><family>serif</family></default>
++</alias>
++<alias>
+ 	<family>PMingLiU</family>
++	<default><family>serif</family></default>
++</alias>
++<alias>
+ 	<family>宋体</family>
++	<default><family>serif</family></default>
++</alias>
++<alias>
+ 	<family>SimSun</family>
++	<default><family>serif</family></default>
++</alias>
++<alias>
+ 	<family>文鼎ＰＬ新宋 ExtB</family>
++	<default><family>serif</family></default>
++</alias>
++<alias>
+ 	<family>AR PL New Sung ExtB</family>
+ 	<default><family>serif</family></default>
+ </alias>
+ 
++<!-- sans-serif group -->
+ <alias>
+ 	<family>文鼎ＰＬ新宋</family>
++	<default><family>sans-serif</family></default>
++</alias>
++<alias>
+ 	<family>AR PL New Sung</family>
++	<default><family>sans-serif</family></default>
++</alias>
++<alias>
+ 	<family>新細明體</family>
++	<default><family>sans-serif</family></default>
++</alias>
++<alias>
+ 	<family>PMingLiU</family>
++	<default><family>sans-serif</family></default>
++</alias>
++<alias>
+ 	<family>宋体</family>
++	<default><family>sans-serif</family></default>
++</alias>
++<alias>
+ 	<family>SimSun</family>
++	<default><family>sans-serif</family></default>
++</alias>
++<alias>
+ 	<family>文鼎ＰＬ新宋 ExtB</family>
++	<default><family>sans-serif</family></default>
++</alias>
++<alias>
+ 	<family>AR PL New Sung ExtB</family>
+ 	<default><family>sans-serif</family></default>
+ </alias>
+ 
++<!-- monospace group -->
+ <alias>
+ 	<family>文鼎ＰＬ新宋 Mono</family>
++	<default><family>monospace</family></default>
++</alias>
++<alias>
+ 	<family>AR PL New Sung Mono</family>
++	<default><family>monospace</family></default>
++</alias>
++<alias>
+ 	<family>細明體</family>
++	<default><family>monospace</family></default>
++</alias>
++<alias>
+ 	<family>MingLiU</family>
++	<default><family>monospace</family></default>
++</alias>
++<alias>
+ 	<family>新宋体</family>
++	<default><family>monospace</family></default>
++</alias>
++<alias>
+ 	<family>NSimSun</family>
++	<default><family>monospace</family></default>
++</alias>
++<alias>
+ 	<family>文鼎ＰＬ新宋 ExtB</family>
++	<default><family>monospace</family></default>
++</alias>
++<alias>
+ 	<family>AR PL New Sung ExtB</family>
+ 	<default><family>monospace</family></default>
+ </alias>
+@@ -82,12 +148,26 @@
+ <match target="font">
+ 	<test name="family" compare="eq">
+ 		<string>文鼎ＰＬ新宋</string>
++	</test>
++	<test name="family" compare="eq">
+ 		<string>AR PL New Sung</string>
++	</test>
++	<test name="family" compare="eq">
+ 		<string>新細明體</string>
++	</test>
++	<test name="family" compare="eq">
+ 		<string>PMingLiU</string>
++	</test>
++	<test name="family" compare="eq">
+ 		<string>宋体</string>
++	</test>
++	<test name="family" compare="eq">
+ 		<string>SimSun</string>
++	</test>
++	<test name="family" compare="eq">
+ 		<string>文鼎ＰＬ新宋 ExtB</string>
++	</test>
++	<test name="family" compare="eq">
+ 		<string>AR PL New Sung ExtB</string>
+ 	</test>
+ 	<edit name="embeddedbitmap">
+@@ -98,10 +178,20 @@
+ <match target="font">
+ 	<test name="family" compare="eq">
+ 		<string>文鼎ＰＬ新宋 Mono</string>
++	</test>
++	<test name="family" compare="eq">
+ 		<string>AR PL New Sung Mono</string>
++	</test>
++	<test name="family" compare="eq">
+ 		<string>細明體</string>
++	</test>
++	<test name="family" compare="eq">
+ 		<string>MingLiU</string>
++	</test>
++	<test name="family" compare="eq">
+ 		<string>新宋体</string>
++	</test>
++	<test name="family" compare="eq">
+ 		<string>NSimSun</string>
+ 	</test>
+ 	<edit name="globaladvance">
+@@ -115,12 +205,26 @@
+ <match target="font">
+ 	<test name="family" compare="eq">
+ 		<string>文鼎ＰＬ新中楷</string>
++	</test>
++	<test name="family" compare="eq">
+ 		<string>AR PL New Kai</string>
++	</test>
++	<test name="family" compare="eq">
+ 		<string>標楷體</string>
++	</test>
++	<test name="family" compare="eq">
+ 		<string>DFKai-SB</string>
++	</test>
++	<test name="family" compare="eq">
+ 		<string>楷体</string>
++	</test>
++	<test name="family" compare="eq">
+ 		<string>SimKai</string>
++	</test>
++	<test name="family" compare="eq">
+ 		<string>文鼎ＰＬ新中楷 ExtB</string>
++	</test>
++	<test name="family" compare="eq">
+ 		<string>AR PL New Kai ExtB</string>
+ 	</test>
+ 	<edit name="globaladvance">

@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_{4,5,6} )
+PYTHON_COMPAT=( python3_{5,6} )
 
 # The built-in ipaddress module handles the parsing of IP addresses. If
 # python is built without ipv6 support, then ipaddress can't parse ipv6
@@ -19,7 +19,7 @@ SRC_URI="mirror://pypi/p/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="dev-python/pyspf[${PYTHON_USEDEP}]"

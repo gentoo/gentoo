@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 ECM_KDEINSTALLDIRS="false"
 KDE_AUTODEPS="false"
@@ -25,7 +25,11 @@ REQUIRED_USE="gtk? ( X )
 	plasma? ( qt5 )
 "
 
-COMMON_DEPEND="
+BDEPEND="
+	virtual/pkgconfig
+	nls? ( sys-devel/gettext )
+"
+DEPEND="
 	gtk? ( x11-libs/gtk+:2 )
 	plasma? (
 		$(add_frameworks_dep frameworkintegration)
@@ -56,11 +60,7 @@ COMMON_DEPEND="
 		x11-libs/libxcb
 	)
 "
-DEPEND="${COMMON_DEPEND}
-	virtual/pkgconfig
-	nls? ( sys-devel/gettext )
-"
-RDEPEND="${COMMON_DEPEND}
+RDEPEND="${DEPEND}
 	!x11-themes/gtk-engines-qtcurve
 "
 

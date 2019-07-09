@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: qt5-build.eclass
@@ -6,7 +6,7 @@
 # qt@gentoo.org
 # @AUTHOR:
 # Davide Pesavento <pesa@gentoo.org>
-# @SUPPORTED_EAPIS: 6
+# @SUPPORTED_EAPIS: 6 7
 # @BLURB: Eclass for Qt5 split ebuilds.
 # @DESCRIPTION:
 # This eclass contains various functions that are used when building Qt5.
@@ -17,7 +17,8 @@ if [[ ${CATEGORY} != dev-qt ]]; then
 fi
 
 case ${EAPI} in
-	6)	: ;;
+	6)	inherit eapi7-ver ;;
+	7)	: ;;
 	*)	die "qt5-build.eclass: unsupported EAPI=${EAPI:-0}" ;;
 esac
 
@@ -57,7 +58,7 @@ esac
 # for tests you should proceed with setting VIRTUALX_REQUIRED=test.
 : ${VIRTUALX_REQUIRED:=manual}
 
-inherit eapi7-ver estack flag-o-matic toolchain-funcs virtualx
+inherit estack flag-o-matic toolchain-funcs virtualx
 
 HOMEPAGE="https://www.qt.io/"
 LICENSE="|| ( GPL-2 GPL-3 LGPL-3 ) FDL-1.3"
@@ -113,10 +114,13 @@ IUSE="debug test"
 
 [[ ${QT5_BUILD_TYPE} == release ]] && RESTRICT+=" test" # bug 457182
 
-DEPEND="
+BDEPEND="
 	dev-lang/perl
 	virtual/pkgconfig
 "
+case ${EAPI} in
+	6) DEPEND+=" ${BDEPEND}" ;;
+esac
 if [[ ${PN} != qttest ]]; then
 	DEPEND+=" test? ( ~dev-qt/qttest-${PV} )"
 fi
@@ -166,9 +170,9 @@ qt5-build_src_prepare() {
 			-e '/echo "Done."/a fi' configure || die "sed failed (skip qmake bootstrap)"
 
 		# Respect CC, CXX, *FLAGS, MAKEOPTS and EXTRA_EMAKE when bootstrapping qmake
-		sed -i -e "/outpath\/qmake\".*\"\$MAKE\")/ s:): \
+		sed -i -e "/outpath\/qmake\".*\"\$MAKE\")/ s|)| \
 			${MAKEOPTS} ${EXTRA_EMAKE} 'CC=$(tc-getCC)' 'CXX=$(tc-getCXX)' \
-			'QMAKE_CFLAGS=${CFLAGS}' 'QMAKE_CXXFLAGS=${CXXFLAGS}' 'QMAKE_LFLAGS=${LDFLAGS}'&:" \
+			'QMAKE_CFLAGS=${CFLAGS}' 'QMAKE_CXXFLAGS=${CXXFLAGS}' 'QMAKE_LFLAGS=${LDFLAGS}'&|" \
 			-e 's/\(setBootstrapVariable\s\+\|EXTRA_C\(XX\)\?FLAGS=.*\)QMAKE_C\(XX\)\?FLAGS_\(DEBUG\|RELEASE\).*/:/' \
 			configure || die "sed failed (respect env for qmake build)"
 		sed -i -e '/^CPPFLAGS\s*=/ s/-g //' \
@@ -177,15 +181,6 @@ qt5-build_src_prepare() {
 		# Respect CXX in bsymbolic_functions, fvisibility, precomp, and a few other tests
 		sed -i -e "/^QMAKE_CONF_COMPILER=/ s:=.*:=\"$(tc-getCXX)\":" \
 			configure || die "sed failed (QMAKE_CONF_COMPILER)"
-
-		# Don't inject -msse/-mavx/... into CXXFLAGS when detecting
-		# compiler support for extended instruction sets (bug 552942)
-		find config.tests/common -name '*.pro' -type f -execdir \
-			sed -i -e '/QMAKE_CXXFLAGS\s*+=/ d' '{}' + || die
-
-		# Don't add -O3 to CXXFLAGS (bug 549140)
-		sed -i -e '/CONFIG\s*+=/ s/optimize_full//' \
-			src/{corelib/corelib,gui/gui}.pro || die "sed failed (optimize_full)"
 
 		# Respect build variables in configure tests (bug #639494)
 		sed -i -e "s|\"\$outpath/bin/qmake\" \"\$relpathMangled\" -- \"\$@\"|& $(qt5_qmake_args) |" configure || die
@@ -258,8 +253,6 @@ qt5-build_src_install() {
 		"$@"
 
 		popd >/dev/null || die
-
-		docompress -x "${QT5_DOCDIR#${EPREFIX}}"/global
 
 		# install an empty Gentoo/gentoo-qconfig.h in ${D}
 		# so that it's placed under package manager control
@@ -417,7 +410,7 @@ qt5_prepare_env() {
 	QT5_IMPORTDIR=${QT5_ARCHDATADIR}/imports
 	QT5_QMLDIR=${QT5_ARCHDATADIR}/qml
 	QT5_DATADIR=${QT5_PREFIX}/share/qt5
-	QT5_DOCDIR=${QT5_PREFIX}/share/doc/qt-${PV}
+	QT5_DOCDIR=${QT5_PREFIX}/share/qt5-doc
 	QT5_TRANSLATIONDIR=${QT5_DATADIR}/translations
 	QT5_EXAMPLESDIR=${QT5_DATADIR}/examples
 	QT5_TESTSDIR=${QT5_DATADIR}/tests
@@ -576,9 +569,7 @@ qt5_base_configure() {
 		-no-freetype -no-harfbuzz
 		-no-openssl -no-libproxy
 		-no-xcb-xlib
-		$([[ ${QT5_MINOR_VERSION} -lt 12 ]] && echo -no-xinput2 -no-xkbcommon-x11 -no-xkbcommon-evdev)
-		$([[ ${PV} = 5.12.0* ]] && echo -no-xcb-xinput -no-xkbcommon-x11 -no-xkbcommon-evdev) # bug 672340
-		$([[ ${QT5_MINOR_VERSION} -ge 12 && ${PV} != 5.12.0* ]] && echo -no-xcb-xinput -no-xkbcommon) # bug 672340
+		-no-xcb-xinput -no-xkbcommon # bug 672340
 
 		# cannot use -no-gif because there is no way to override it later
 		#-no-gif
@@ -621,7 +612,8 @@ qt5_base_configure() {
 		$(tc-ld-is-gold && echo -use-gold-linker || echo -no-use-gold-linker)
 
 		# disable all platform plugins by default, override in qtgui
-		-no-xcb -no-eglfs -no-kms -no-gbm -no-directfb -no-linuxfb -no-mirclient
+		-no-xcb -no-eglfs -no-kms -no-gbm -no-directfb -no-linuxfb
+		$([[ ${QT5_MINOR_VERSION} -lt 14 ]] && echo -no-mirclient)
 
 		# disable undocumented X11-related flags, override in qtgui
 		# (not shown in ./configure -help output)

@@ -14,11 +14,11 @@ HOMEPAGE="https://www.calligra.org/"
 SRC_URI="mirror://kde/stable/${PN}/${PV}/${P}.tar.xz"
 
 LICENSE="GPL-2"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 CAL_FTS=( karbon sheets stage words )
 
-IUSE="activities +crypt +fontconfig gemini gsl import-filter +lcms okular openexr +pdf
+IUSE="activities +charts +crypt +fontconfig gemini gsl import-filter +lcms okular openexr +pdf
 	phonon pim spacenav +truetype X $(printf 'calligra_features_%s ' ${CAL_FTS[@]})"
 
 # TODO: Not packaged: Cauchy (https://bitbucket.org/cyrille/cauchy)
@@ -65,6 +65,7 @@ COMMON_DEPEND="
 	sys-libs/zlib
 	virtual/libiconv
 	activities? ( $(add_frameworks_dep kactivities) )
+	charts? ( dev-libs/kreport )
 	crypt? ( app-crypt/qca:2[qt5(+)] )
 	fontconfig? ( media-libs/fontconfig )
 	gemini? ( $(add_qt_dep qtdeclarative 'widgets') )
@@ -103,7 +104,6 @@ COMMON_DEPEND="
 DEPEND="${COMMON_DEPEND}
 	dev-libs/boost
 	sys-devel/gettext
-	x11-misc/shared-mime-info
 	test? ( $(add_frameworks_dep threadweaver) )
 "
 RDEPEND="${COMMON_DEPEND}
@@ -120,7 +120,6 @@ PATCHES=(
 	"${FILESDIR}"/${P}-stage-qt-5.11.patch
 	"${FILESDIR}"/${P}-poppler-0.69.patch
 	"${FILESDIR}"/${P}-poppler-0.71.patch
-	"${FILESDIR}"/${P}-poppler-0.72.patch # not upstreamable
 	"${FILESDIR}"/${P}-no-webkit.patch
 )
 
@@ -135,6 +134,11 @@ pkg_setup() {
 
 src_prepare() {
 	kde5_src_prepare
+
+	if has_version ">=app-text/poppler-0.72"; then
+		eapply "${FILESDIR}"/${P}-poppler-0.72.patch # not upstreamable
+		eapply "${FILESDIR}"/${P}-poppler-0.73.patch
+	fi
 
 	if ! use test; then
 		sed -e "/add_subdirectory( *benchmarks *)/s/^/#DONT/" \
@@ -174,6 +178,7 @@ src_configure() {
 		-DWITH_Iconv=ON
 		-DPRODUCTSET="${myproducts[*]}"
 		$(cmake-utils_use_find_package activities KF5Activities)
+		$(cmake-utils_use_find_package charts KChart)
 		-DWITH_Qca-qt5=$(usex crypt)
 		-DWITH_Fontconfig=$(usex fontconfig)
 		$(cmake-utils_use_find_package gemini Libgit2)

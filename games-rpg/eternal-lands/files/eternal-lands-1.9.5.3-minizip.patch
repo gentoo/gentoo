@@ -1,0 +1,90 @@
+From 7df2f0a47ff2d25898063dc2fb30ba3d80d63afb Mon Sep 17 00:00:00 2001
+From: Stefan Strogin <steils@gentoo.org>
+Date: Thu, 16 May 2019 05:31:16 +0300
+Subject: [PATCH 2/2] Unbundle minizip
+
+Original patch by Julian Ospald <hasufell@gentoo.org>.
+Bug: https://bugs.gentoo.org/423327
+
+Upstream-Status: Pending
+Signed-off-by: Stefan Strogin <steils@gentoo.org>
+---
+ Makefile.linux     | 4 +++-
+ io/elfilewrapper.c | 2 +-
+ io/ziputil.h       | 4 ++--
+ new_update.c       | 4 ++--
+ 4 files changed, 8 insertions(+), 6 deletions(-)
+
+diff --git a/Makefile.linux b/Makefile.linux
+index a0839c5c..d29ac912 100644
+--- a/Makefile.linux
++++ b/Makefile.linux
+@@ -12,6 +12,7 @@ OPTIONS = -DLINUX -DELC $(foreach FEATURE, $(FEATURES), -D$(FEATURE)) -D_7ZIP_ST
+ 	$(shell pkg-config cal3d --cflags) \
+ 	$(shell pkg-config gl --cflags) \
+ 	$(shell pkg-config glu --cflags) \
++	$(shell pkg-config minizip --cflags) \
+ 	$(shell pkg-config openal --cflags) \
+ 	$(shell pkg-config vorbis --cflags) \
+ 	$(shell pkg-config vorbisfile --cflags) \
+@@ -28,6 +29,7 @@ LDFLAGS += $(shell pkg-config sdl --libs) \
+ 	$(shell pkg-config cal3d --libs) \
+ 	$(shell pkg-config gl --libs) \
+ 	$(shell pkg-config glu --libs) \
++	$(shell pkg-config minizip --libs) \
+ 	$(shell pkg-config openal --libs) \
+ 	$(shell pkg-config vorbis --libs) \
+ 	$(shell pkg-config vorbisfile --libs) \
+@@ -64,7 +66,7 @@ COBJS=2d_objects.o 3d_objects.o \
+ 	hud.o hud_misc_window.o hud_quickbar_window.o hud_statsbar_window.o hud_quickspells_window.o	\
+ 	help.o highlight.o ignore.o image_loading.o init.o interface.o items.o io/fileutil.o	\
+ 	io/e3d_io.o io/elc_io.o	io/map_io.o io/elpathwrapper.o io/xmlcallbacks.o \
+-	io/half.o io/normal.o io/elfilewrapper.o io/unzip.o io/ioapi.o io/zip.o io/ziputil.o	\
++	io/half.o io/normal.o io/elfilewrapper.o io/ziputil.o	\
+ 	keys.o knowledge.o langselwin.o lights.o list.o load_gl_extensions.o loginwin.o loading_win.o	\
+ 	main.o manufacture.o map.o mapwin.o	\
+ 	md5.o mines.o minimap.o misc.o missiles.o multiplayer.o	\
+diff --git a/io/elfilewrapper.c b/io/elfilewrapper.c
+index fad99d62..5dee9a37 100644
+--- a/io/elfilewrapper.c
++++ b/io/elfilewrapper.c
+@@ -1,5 +1,5 @@
+ #include "elfilewrapper.h"
+-#include "unzip.h"
++#include <unzip.h>
+ #include "elpathwrapper.h"
+ #include "fileutil.h"
+ #include <sys/stat.h>
+diff --git a/io/ziputil.h b/io/ziputil.h
+index 86128315..51fa232b 100644
+--- a/io/ziputil.h
++++ b/io/ziputil.h
+@@ -8,8 +8,8 @@
+ 
+ #include <SDL.h>
+ #include "../md5.h"
+-#include "zip.h"
+-#include "unzip.h"
++#include <zip.h>
++#include <unzip.h>
+ 
+ #ifdef __cplusplus
+ extern "C"
+diff --git a/new_update.c b/new_update.c
+index febd10ae..ec039f6c 100644
+--- a/new_update.c
++++ b/new_update.c
+@@ -5,8 +5,8 @@
+ #include <string.h>
+ #include "md5.h"
+ #include "elc_private.h"
+-#include "io/zip.h"
+-#include "io/unzip.h"
++#include <zip.h>
++#include <unzip.h>
+ #include "io/ziputil.h"
+ #include "io/fileutil.h"
+ #include "io/elfilewrapper.h"
+-- 
+2.21.0
+

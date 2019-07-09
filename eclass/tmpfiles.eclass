@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 2016-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: tmpfiles.eclass
@@ -8,7 +8,7 @@
 # @AUTHOR:
 # Mike Gilbert <floppym@gentoo.org>
 # William Hubbs <williamh@gentoo.org>
-# @SUPPORTED_EAPIS: 5 6
+# @SUPPORTED_EAPIS: 5 6 7
 # @BLURB: Functions related to tmpfiles.d files
 # @DESCRIPTION:
 # This eclass provides functionality related to installing and
@@ -56,7 +56,7 @@ if [[ -z ${TMPFILES_ECLASS} ]]; then
 TMPFILES_ECLASS=1
 
 case "${EAPI}" in
-5|6) ;;
+5|6|7) ;;
 *) die "API is undefined for EAPI ${EAPI}" ;;
 esac
 
@@ -113,7 +113,7 @@ tmpfiles_process() {
 	[[ ${#} -gt 0 ]] || die "${FUNCNAME}: Must specify at least one filename"
 
 	# Only process tmpfiles for the currently running system
-	if [[ ${ROOT} != / ]]; then
+	if [[ ${ROOT:-/} != / ]]; then
 		ewarn "Warning: tmpfiles.d not processed on ROOT != /. If you do not use"
 		ewarn "a service manager supporting tmpfiles.d, you need to run"
 		ewarn "the following command after booting (or chroot-ing with all"

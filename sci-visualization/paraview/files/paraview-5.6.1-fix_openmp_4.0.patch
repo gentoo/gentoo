@@ -1,0 +1,32 @@
+diff -urNd ParaView-v5.6.0/VTK/ThirdParty/vtkm/vtk-m/vtkm/cont/openmp/internal/FunctorsOpenMP.h ParaView-v5.6.0-openmp/VTK/ThirdParty/vtkm/vtk-m/vtkm/cont/openmp/internal/FunctorsOpenMP.h
+--- ParaView-v5.6.0/VTK/ThirdParty/vtkm/vtk-m/vtkm/cont/openmp/internal/FunctorsOpenMP.h	2018-11-07 05:05:18.000000000 +1000
++++ ParaView-v5.6.0-openmp/VTK/ThirdParty/vtkm/vtk-m/vtkm/cont/openmp/internal/FunctorsOpenMP.h	2019-06-28 14:04:02.292922908 +1000
+@@ -290,7 +290,7 @@
+     std::unique_ptr<ReturnType[]> threadData;
+ 
+     VTKM_OPENMP_DIRECTIVE(parallel default(none) firstprivate(f)
+-                            shared(data, doParallel, numThreads, threadData))
++                            shared(data, doParallel, numThreads, threadData, numVals))
+     {
+ 
+       int tid = omp_get_thread_num();
+@@ -422,7 +422,7 @@
+   vtkm::Id outIdx = 0;
+ 
+   VTKM_OPENMP_DIRECTIVE(parallel default(none) firstprivate(keysIn, valuesIn, keysOut, valuesOut, f)
+-                          shared(outIdx))
++                          shared(outIdx, numValues))
+   {
+     int tid = omp_get_thread_num();
+     int numThreads = omp_get_num_threads();
+diff -urNd ParaView-v5.6.0/VTK/ThirdParty/vtkm/vtk-m/vtkm/cont/openmp/internal/ParallelSortOpenMP.h ParaView-v5.6.0-openmp/VTK/ThirdParty/vtkm/vtk-m/vtkm/cont/openmp/internal/ParallelSortOpenMP.h
+--- ParaView-v5.6.0/VTK/ThirdParty/vtkm/vtk-m/vtkm/cont/openmp/internal/ParallelSortOpenMP.h	2018-11-07 05:05:18.000000000 +1000
++++ ParaView-v5.6.0-openmp/VTK/ThirdParty/vtkm/vtk-m/vtkm/cont/openmp/internal/ParallelSortOpenMP.h	2019-06-28 13:54:33.132064191 +1000
+@@ -133,6 +133,7 @@
+       VTKM_OPENMP_DIRECTIVE(parallel for
+                             default(none)
+                             firstprivate(valuesInPortal, indexPortal, valuesOutPortal)
++                            shared(size)
+                             schedule(static))
+       for (vtkm::Id i = 0; i < size; ++i)
+       {

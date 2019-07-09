@@ -16,6 +16,7 @@
     <flag name="neutron">Installs Openstack Neutron</flag>
     <flag name="nova">Installs Openstack Nova</flag>
     <flag name="heat">Installs Openstack Heat</flag>
+    <flag name="placement">Installs Openstack Placement</flag>
     <!-- <flag name="horizon">Installs Openstack Horizon</flag> -->
   </use>
 </pkgmetadata>

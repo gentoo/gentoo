@@ -1,9 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-
-PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
+PYTHON_COMPAT=( python2_7 python3_{5,6} )
 
 inherit distutils-r1 user
 
@@ -80,7 +79,7 @@ RDEPEND="
 	>=dev-python/oslo-messaging-5.29.0[${PYTHON_USEDEP}]
 	>=dev-python/oslo-db-4.27.0[${PYTHON_USEDEP}]
 	>=dev-python/oslo-i18n-3.15.3[${PYTHON_USEDEP}]
-	>=dev-python/oslo-log-3.36.0[${PYTHON_USEDEP}]
+	>=dev-python/oslo-log-3.38.0[${PYTHON_USEDEP}]
 	>=dev-python/oslo-middleware-3.31.0[${PYTHON_USEDEP}]
 	>=dev-python/oslo-policy-1.30.0[${PYTHON_USEDEP}]
 	>=dev-python/oslo-serialization-1.18.0[${PYTHON_USEDEP}]
@@ -104,8 +103,8 @@ RDEPEND="
 		!~dev-python/pymongo-3.1[${PYTHON_USEDEP}]
 	)
 	ldap? (
-		>=dev-python/pyldap-2.4.20[${PYTHON_USEDEP}]
-		>=dev-python/ldappool-2.0.0[${PYTHON_USEDEP}]
+		>=dev-python/python-ldap-3.0.0[${PYTHON_USEDEP}]
+		>=dev-python/ldappool-2.3.1[${PYTHON_USEDEP}]
 	)
 	|| (
 		www-servers/uwsgi[python,${PYTHON_USEDEP}]

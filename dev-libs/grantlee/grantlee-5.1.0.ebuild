@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,7 +12,7 @@ SRC_URI="http://downloads.grantlee.org/${P}.tar.gz"
 
 LICENSE="LGPL-2.1+"
 SLOT="5"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 x86"
+KEYWORDS="amd64 ~arm arm64 ~ppc ~ppc64 x86"
 IUSE="debug doc test"
 
 RDEPEND="
@@ -25,11 +25,15 @@ DEPEND="${RDEPEND}
 	test? ( dev-qt/qttest:5 )
 "
 
+# bug 682258
+RESTRICT="test"
+
 DOCS=( AUTHORS CHANGELOG README.md )
 
 PATCHES=(
 	"${FILESDIR}/${PN}-0.3.0-nonfatal-warnings.patch"
-	"${FILESDIR}/${PN}-5.1.0-slot.patch"
+	"${FILESDIR}/${P}-slot.patch"
+	"${FILESDIR}/${P}-qt-5.13.patch"
 )
 
 src_prepare() {

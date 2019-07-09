@@ -1,0 +1,22 @@
+#!/sbin/openrc-run
+# Copyright 2016-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+description="Gitea, a self-hosted Git service"
+
+: ${GITEA_CONF:=/etc/gitea/app.ini}
+: ${GITEA_USER:=git}
+: ${GITEA_GROUP:=git}
+: ${GITEA_WORK_DIR:=/var/lib/gitea}
+: ${GITEA_CUSTOM:=${GITEA_WORK_DIR}/custom}
+
+command="/usr/bin/gitea web"
+command_args="--config ${GITEA_CONF}"
+command_background="true"
+command_user="${GITEA_USER}:${GITEA_GROUP}"
+error_log="/var/log/${RC_SVCNAME}/${RC_SVCNAME}.err"
+pidfile="/run/${RC_SVCNAME}.pid"
+required_files="${GITEA_CONF}"
+start_stop_daemon_args="-d ${GITEA_WORK_DIR}"
+start_stop_daemon_args="${start_stop_daemon_args} -e GITEA_WORK_DIR=${GITEA_WORK_DIR}"
+start_stop_daemon_args="${start_stop_daemon_args} -e GITEA_CUSTOM=${GITEA_CUSTOM}"

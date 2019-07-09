@@ -15,7 +15,7 @@ SRC_URI="mirror://sourceforge/project/${PN}/${PN}/$(ver_cut 1-3)/${P}.tar.bz2"
 
 LICENSE="GPL-2 BSD"
 SLOT="0/18.0"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~x86-fbsd"
+KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86 ~x86-fbsd"
 IUSE="acl cracklib dbus debug kerberos ldap pam pgp quota samba +shadow ssl static-libs tracker tcpd +utils zeroconf"
 
 CDEPEND="
@@ -99,7 +99,7 @@ src_configure() {
 		$(use_with ssl ssl-dir)
 		$(use_with tracker)
 		$(use_with tracker dbus-daemon "${EPREFIX}/usr/bin/dbus-daemon")
-		$(use_with tracker tracker-pkgconfig-version $(ver_cut 1-2 $(best_version app-misc/tracker | sed 's:app-misc/tracker-::g')))
+		$(use_with tracker tracker-pkgconfig-version $(ver_cut 1 $(best_version app-misc/tracker | sed 's:app-misc/tracker-::g')).0)
 		--enable-overwrite
 		--disable-krb4-uam
 		--disable-afs

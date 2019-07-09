@@ -1,12 +1,12 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 inherit eutils
 
 DESCRIPTION="A library of code shared between tuxmath and tuxtype"
-HOMEPAGE="http://tux4kids.alioth.debian.org/tuxmath/download.php"
-SRC_URI="http://alioth.debian.org/frs/download.php/3540/t4k_common-${PV}.tar.gz"
+HOMEPAGE="https://github.com/tux4kids/t4kcommon"
+SRC_URI="https://github.com/tux4kids/t4kcommon/archive/upstream/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -28,7 +28,7 @@ RDEPEND="dev-libs/libxml2:2
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
-S=${WORKDIR}/t4k_common-${PV}
+S=${WORKDIR}/t4kcommon-upstream-${PV}
 
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-libpng.patch

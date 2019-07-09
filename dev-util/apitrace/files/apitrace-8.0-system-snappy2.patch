@@ -1,0 +1,41 @@
+From 5777f1a8aaef7a39754db9708062b7630c5644a2 Mon Sep 17 00:00:00 2001
+From: Jose Fonseca <jfonseca@vmware.com>
+Date: Wed, 1 May 2019 10:40:43 +0100
+Subject: [PATCH] snappy: Place config.h on a subdirectory.
+
+And ensure it's only included internally.
+
+This addresses the issue described in
+https://github.com/apitrace/apitrace/pull/611#issuecomment-488087078
+---
+ thirdparty/snappy/CMakeLists.txt        | 6 +++++-
+ thirdparty/snappy/{ => config}/config.h | 0
+ 2 files changed, 5 insertions(+), 1 deletion(-)
+ rename thirdparty/snappy/{ => config}/config.h (100%)
+
+diff --git a/thirdparty/snappy/CMakeLists.txt b/thirdparty/snappy/CMakeLists.txt
+index 84ecbac8a..581de38fa 100644
+--- a/thirdparty/snappy/CMakeLists.txt
++++ b/thirdparty/snappy/CMakeLists.txt
+@@ -18,12 +18,16 @@ add_convenience_library (snappy_bundled EXCLUDE_FROM_ALL
+     snappy-sinksource.cc
+     snappy-stubs-internal.cc
+     snappy.cc
+-    config.h
+ 
+     snappy-c.h
+     snappy-sinksource.h
+     snappy.h
+     snappy-stubs-public.h
++    config/config.h
++)
++
++target_include_directories (snappy_bundled PRIVATE
++    ${CMAKE_CURRENT_SOURCE_DIR}/config
+ )
+ 
+ install (
+diff --git a/thirdparty/snappy/config.h b/thirdparty/snappy/config/config.h
+similarity index 100%
+rename from thirdparty/snappy/config.h
+rename to thirdparty/snappy/config/config.h

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -25,13 +25,11 @@ IUSE="
 	zenmap
 "
 NMAP_LINGUAS=( de fr hi hr it ja pl pt_BR ru zh )
-
 REQUIRED_USE="
 	system-lua? ( nse )
 	ndiff? ( ${PYTHON_REQUIRED_USE} )
 	zenmap? ( ${PYTHON_REQUIRED_USE} )
 "
-
 RDEPEND="
 	dev-libs/liblinear:=
 	dev-libs/libpcre
@@ -66,6 +64,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-7.25-CXXFLAGS.patch
 	"${FILESDIR}"/${PN}-7.25-libpcre.patch
 	"${FILESDIR}"/${PN}-7.31-libnl.patch
+	"${FILESDIR}"/${PN}-7.70-time.patch
 )
 S="${WORKDIR}/${MY_P}"
 

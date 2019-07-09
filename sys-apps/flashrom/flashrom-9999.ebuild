@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -22,7 +22,7 @@ SLOT="0"
 # by some other spi programmers.
 IUSE_PROGRAMMERS="
 atahpt +atapromise +atavia +buspirate_spi +ch341a_spi +dediprog +developerbox_spi
-+digilent_spi +drkaiser +dummy +ft2232_spi +gfxnvidia +internal +it8212
++digilent_spi +drkaiser +dummy +ft2232_spi +gfxnvidia +internal +it8212 jlink_spi
 +linux_mtd +linux_spi mstarddc_spi +nic3com +nicintel +nicintel_eeprom
 +nicintel_spi nicnatsemi +nicrealtek +ogp_spi +pickit2_spi +pony_spi +rayer_spi
 +satamv +satasii +serprog +usbblaster_spi"
@@ -40,6 +40,7 @@ LIB_DEPEND="atahpt? ( sys-apps/pciutils[static-libs(+)] )
 	gfxnvidia? ( sys-apps/pciutils[static-libs(+)] )
 	it8212? ( sys-apps/pciutils[static-libs(+)] )
 	internal? ( sys-apps/pciutils[static-libs(+)] )
+	jlink_spi? ( dev-embedded/libjaylink[static-libs(+)] )
 	nic3com? ( sys-apps/pciutils[static-libs(+)] )
 	nicintel? ( sys-apps/pciutils[static-libs(+)] )
 	nicintel_eeprom? ( sys-apps/pciutils[static-libs(+)] )

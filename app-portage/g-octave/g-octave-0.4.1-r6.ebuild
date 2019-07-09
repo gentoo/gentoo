@@ -23,11 +23,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="doc test"
 
 DEPEND="doc? ( >=dev-python/sphinx-1.0 )"
-RDEPEND="
-	|| (
-		sys-apps/portage
-		sys-apps/portage-mgorny
-	)"
+RDEPEND="sys-apps/portage"
 
 python_prepare_all() {
 	local PATCHES=(

@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-PYTHON_COMPAT=( python{2_7,3_4} )
+PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="threads(+)"
 
 FORTRAN_NEEDED=lapack
@@ -68,12 +68,13 @@ pc_libs() {
 python_prepare_all() {
 	if use lapack; then
 		append-ldflags "$($(tc-getPKG_CONFIG) --libs-only-other cblas lapack)"
+		local incdir="${EPREFIX}"/usr/include
 		local libdir="${EPREFIX}"/usr/$(get_libdir)
 		# make sure _dotblas.so gets built
 		sed -i -e '/NO_ATLAS_INFO/,+1d' numpy/core/setup.py || die
 		cat >> site.cfg <<-EOF
 			[blas]
-			include_dirs = $(pc_incdir cblas)
+			include_dirs = $(pc_incdir cblas):${incdir}
 			library_dirs = $(pc_libdir cblas blas):${libdir}
 			blas_libs = $(pc_libs cblas blas)
 			[lapack]

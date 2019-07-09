@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,10 +11,11 @@ SRC_URI="mirror://sourceforge/linuxquota/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="alpha amd64 arm ~arm64 ~hppa ia64 ~mips ppc ppc64 sparc x86"
 IUSE="ldap netlink nls rpc tcpd"
 
 RDEPEND="
+	sys-fs/e2fsprogs
 	ldap? ( >=net-nds/openldap-2.3.35 )
 	netlink? (
 		sys-apps/dbus
@@ -45,7 +46,7 @@ src_prepare() {
 
 src_configure() {
 	local myeconfargs=(
-		--docdir="${EPREFIX%/}/usr/share/doc/${PF}"
+		--enable-ext2direct
 		$(use_enable nls)
 		$(use_enable ldap ldapmail)
 		$(use_enable netlink)

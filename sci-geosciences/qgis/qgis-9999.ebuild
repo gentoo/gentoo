@@ -1,32 +1,36 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 PYTHON_COMPAT=( python3_{5,6} )
 PYTHON_REQ_USE="sqlite"
 QT_MIN_VER="5.9.4"
 
-if [[ ${PV} != *9999 ]]; then
+if [[ ${PV} = *9999 ]]; then
+	EGIT_REPO_URI="https://github.com/${PN}/${PN^^}.git"
+	inherit git-r3
+else
 	SRC_URI="https://qgis.org/downloads/${P}.tar.bz2
 		examples? ( https://qgis.org/downloads/data/qgis_sample_data.tar.gz -> qgis_sample_data-2.8.14.tar.gz )"
 	KEYWORDS="~amd64 ~x86"
-else
-	GIT_ECLASS="git-r3"
-	EGIT_REPO_URI="https://github.com/${PN}/${PN^^}.git"
 fi
-inherit cmake-utils desktop ${GIT_ECLASS} gnome2-utils python-single-r1 qmake-utils xdg-utils
-unset GIT_ECLASS
+inherit cmake-utils desktop python-single-r1 qmake-utils xdg
 
 DESCRIPTION="User friendly Geographic Information System"
 HOMEPAGE="https://www.qgis.org/"
 
 LICENSE="GPL-2+ GPL-3+"
 SLOT="0"
-IUSE="3d examples georeferencer grass mapserver oracle polar postgres python qml webkit"
+IUSE="3d examples georeferencer grass hdf5 mapserver netcdf opencl oracle polar postgres python qml webkit"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE} mapserver? ( python )"
 
+BDEPEND="
+	>=dev-qt/linguist-tools-${QT_MIN_VER}:5
+	sys-devel/bison
+	sys-devel/flex
+"
 COMMON_DEPEND="
 	app-crypt/qca:2[qt5(+),ssl]
 	>=dev-db/spatialite-4.2.0
@@ -41,6 +45,7 @@ COMMON_DEPEND="
 	>=dev-qt/qtnetwork-${QT_MIN_VER}:5[ssl]
 	>=dev-qt/qtpositioning-${QT_MIN_VER}:5
 	>=dev-qt/qtprintsupport-${QT_MIN_VER}:5
+	>=dev-qt/qtserialport-${QT_MIN_VER}:5
 	>=dev-qt/qtsvg-${QT_MIN_VER}:5
 	>=dev-qt/qtsql-${QT_MIN_VER}:5
 	>=dev-qt/qtwidgets-${QT_MIN_VER}:5
@@ -54,7 +59,10 @@ COMMON_DEPEND="
 	3d? ( >=dev-qt/qt3d-${QT_MIN_VER}:5 )
 	georeferencer? ( sci-libs/gsl:= )
 	grass? ( =sci-geosciences/grass-7*:= )
+	hdf5? ( sci-libs/hdf5:= )
 	mapserver? ( dev-libs/fcgi )
+	netcdf? ( sci-libs/netcdf:= )
+	opencl? ( virtual/opencl )
 	oracle? (
 		dev-db/oracle-instantclient:=
 		sci-libs/gdal:=[oracle]
@@ -84,11 +92,8 @@ COMMON_DEPEND="
 	webkit? ( >=dev-qt/qtwebkit-5.9.1:5 )
 "
 DEPEND="${COMMON_DEPEND}
-	>=dev-qt/linguist-tools-${QT_MIN_VER}:5
 	>=dev-qt/qttest-${QT_MIN_VER}:5
 	>=dev-qt/qtxmlpatterns-${QT_MIN_VER}:5
-	sys-devel/bison
-	sys-devel/flex
 	python? ( ${PYTHON_DEPS} )
 "
 RDEPEND="${COMMON_DEPEND}
@@ -102,7 +107,8 @@ PATCHES=(
 	# git master
 	"${FILESDIR}/${PN}-2.18.12-cmake-lib-suffix.patch"
 	# TODO upstream
-	"${FILESDIR}/${PN}-3.0.0-featuresummary.patch"
+	"${FILESDIR}/${PN}-3.4.7-featuresummary.patch"
+	"${FILESDIR}/${PN}-3.4.7-default-qmldir.patch"
 )
 
 pkg_setup() {
@@ -111,22 +117,11 @@ pkg_setup() {
 
 src_prepare() {
 	cmake-utils_src_prepare
-
-	sed -e "s:\${QT_BINARY_DIR}:$(qt5_get_bindir):" \
-		-i CMakeLists.txt || die "Failed to fix lrelease path"
-
-	sed -e "/QT_LRELEASE_EXECUTABLE/d" \
-		-e "/QT_LUPDATE_EXECUTABLE/s/set/find_program/" \
-		-e "s:lupdate-qt5:NAMES lupdate PATHS $(qt5_get_bindir) NO_DEFAULT_PATH:" \
-		-i cmake/modules/ECMQt4To5Porting.cmake || die "Failed to fix ECMQt4To5Porting.cmake"
-
-	cd src/plugins || die
 }
 
 src_configure() {
 	local mycmakeargs=(
-		-DQGIS_MANUAL_SUBDIR=/share/man/
-		-DBUILD_SHARED_LIBS=ON
+		-DQGIS_MANUAL_SUBDIR=share/man/
 		-DQGIS_LIB_SUBDIR=$(get_libdir)
 		-DQGIS_PLUGIN_SUBDIR=$(get_libdir)/qgis
 		-DQWT_INCLUDE_DIR=/usr/include/qwt6
@@ -134,12 +129,16 @@ src_configure() {
 		-DPEDANTIC=OFF
 		-DUSE_CCACHE=OFF
 		-DWITH_APIDOC=OFF
+		-DWITH_INTERNAL_MDAL=ON # not packaged, bug 684538
 		-DWITH_QSPATIALITE=ON
 		-DENABLE_TESTS=OFF
 		-DWITH_3D=$(usex 3d)
 		-DWITH_GEOREFERENCER=$(usex georeferencer)
 		-DWITH_GRASS7=$(usex grass)
+		$(cmake-utils_use_find_package hdf5 HDF5)
 		-DWITH_SERVER=$(usex mapserver)
+		$(cmake-utils_use_find_package netcdf NetCDF)
+		-DUSE_OPENCL=$(usex opencl)
 		-DWITH_ORACLE=$(usex oracle)
 		-DWITH_QWTPOLAR=$(usex polar)
 		-DWITH_POSTGRESQL=$(usex postgres)
@@ -167,14 +166,14 @@ src_configure() {
 src_install() {
 	cmake-utils_src_install
 
-	domenu debian/qgis.desktop
+	newmenu linux/org.qgis.qgis.desktop.in org.qgis.qgis.desktop
 
 	local size type
 	for size in 16 22 24 32 48 64 96 128 256; do
-		newicon -s ${size} debian/icons/${PN}-icon${size}x${size}.png ${PN}.png
-		newicon -c mimetypes -s ${size} debian/icons/${PN}-mime-icon${size}x${size}.png ${PN}-mime.png
+		newicon -s ${size} linux/icons/${PN}-icon${size}x${size}.png ${PN}.png
+		newicon -c mimetypes -s ${size} linux/icons/${PN}-mime-icon${size}x${size}.png ${PN}-mime.png
 		for type in qgs qml qlr qpt; do
-			newicon -c mimetypes -s ${size} debian/icons/${PN}-${type}${size}x${size}.png ${PN}-${type}.png
+			newicon -c mimetypes -s ${size} linux/icons/${PN}-${type}${size}x${size}.png ${PN}-${type}.png
 		done
 	done
 	newicon -s scalable images/icons/qgis_icon.svg qgis.svg
@@ -189,11 +188,11 @@ src_install() {
 	fi
 
 	if use python; then
-		python_optimize "${ED%/}"/usr/share/qgis/python
+		python_optimize "${ED}"/usr/share/qgis/python
 	fi
 
 	if use grass; then
-		python_fix_shebang "${ED%/}"/usr/share/qgis/grass/scripts
+		python_fix_shebang "${ED}"/usr/share/qgis/grass/scripts
 	fi
 }
 
@@ -212,13 +211,5 @@ pkg_postinst() {
 		elog "QGIS is now based on PyQt5. Old scripts may not work anymore."
 	fi
 
-	gnome2_icon_cache_update
-	xdg_mimeinfo_database_update
-	xdg_desktop_database_update
-}
-
-pkg_postrm() {
-	gnome2_icon_cache_update
-	xdg_mimeinfo_database_update
-	xdg_desktop_database_update
+	xdg_pkg_postinst
 }

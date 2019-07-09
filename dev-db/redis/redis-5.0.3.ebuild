@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -68,9 +68,23 @@ src_prepare() {
 	cp "${FILESDIR}"/configure.ac-3.2 configure.ac || die
 
 	# Use the correct pkgconfig name for Lua
-	has_version 'dev-lang/lua:5.1' \
-		&& LUAPKGCONFIG=lua5.1 \
-		|| LUAPKGCONFIG=lua
+	if false && has_version 'dev-lang/lua:5.3'; then
+		# Lua5.3 gives:
+		#lua_bit.c:83:2: error: #error "Unknown number type, check LUA_NUMBER_* in luaconf.h"
+		LUAPKGCONFIG=lua5.3
+	elif false && has_version 'dev-lang/lua:5.2'; then
+		# Lua5.2 fails with:
+		# scripting.c:(.text+0x1f9b): undefined reference to `lua_open'
+		# Because lua_open because lua_newstate in 5.2
+		LUAPKGCONFIG=lua5.2
+	elif has_version 'dev-lang/lua:5.1'; then
+		LUAPKGCONFIG=lua5.1
+	else
+		LUAPKGCONFIG=lua
+	fi
+	# The upstream configure script handles luajit specially, and is not
+	# effected by these changes.
+	einfo "Selected LUAPKGCONFIG=${LUAPKGCONFIG}"
 	sed -i	\
 		-e "/^AC_INIT/s|, [0-9].+, |, $PV, |" \
 		-e "s:AC_CONFIG_FILES(\[Makefile\]):AC_CONFIG_FILES([${makefiles}]):g" \

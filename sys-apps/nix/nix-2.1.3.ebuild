@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,9 +11,8 @@ HOMEPAGE="https://nixos.org/nix"
 SRC_URI="http://nixos.org/releases/${PN}/${P}/${P}.tar.xz"
 LICENSE="LGPL-2.1"
 SLOT="0"
-#keywords are blocked by boost-1.66
-#KEYWORDS="~amd64 ~x86"
-IUSE="+etc_profile +gc doc s3 sodium"
+KEYWORDS="~amd64 ~x86"
+IUSE="+etc_profile +gc doc s3 +sodium"
 
 RDEPEND="
 	app-arch/brotli

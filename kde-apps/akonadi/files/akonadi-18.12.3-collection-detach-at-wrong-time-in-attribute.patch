@@ -1,0 +1,97 @@
+From 53ad3b6d73d92ea289cf0183c10e2b8a35c8127a Mon Sep 17 00:00:00 2001
+From: David Faure <faure@kde.org>
+Date: Thu, 21 Mar 2019 23:37:36 +0100
+Subject: Fix collection detaching at the wrong time in attribute()
+
+Summary:
+Found in FatCRM where changes to collection attributes were not stored
+anymore.
+
+Test Plan:
+New unittest to ensure that we get the attribute from the
+detached collection, not from the original one.
+
+Reviewers: dvratil
+
+Reviewed By: dvratil
+
+Subscribers: kde-pim
+
+Tags: #kde_pim
+
+Differential Revision: https://phabricator.kde.org/D19741
+---
+ autotests/libs/collectionattributetest.cpp | 15 +++++++++++++++
+ autotests/libs/collectionattributetest.h   |  1 +
+ src/core/collection.h                      |  8 ++------
+ 3 files changed, 18 insertions(+), 6 deletions(-)
+
+diff --git a/autotests/libs/collectionattributetest.cpp b/autotests/libs/collectionattributetest.cpp
+index e264a37..9c46561 100644
+--- a/autotests/libs/collectionattributetest.cpp
++++ b/autotests/libs/collectionattributetest.cpp
+@@ -240,3 +240,18 @@ void CollectionAttributeTest::testCollectionIdentificationAttribute()
+     QCOMPARE(parsed.identifier(), id);
+     QCOMPARE(parsed.collectionNamespace(), ns);
+ }
++
++void CollectionAttributeTest::testDetach()
++{
++    // GIVEN a collection with an attribute
++    Collection col;
++    col.attribute<TestAttribute>(Akonadi::Collection::AddIfMissing);
++    Collection col2 = col; // and a copy, so that non-const access detaches
++
++    // WHEN
++    TestAttribute *attr = col2.attribute<TestAttribute>(Akonadi::Collection::AddIfMissing);
++    TestAttribute *attr2 = col2.attribute<TestAttribute>();
++
++    // THEN
++    QCOMPARE(attr, attr2);
++}
+diff --git a/autotests/libs/collectionattributetest.h b/autotests/libs/collectionattributetest.h
+index 420df78..2afa9eb 100644
+--- a/autotests/libs/collectionattributetest.h
++++ b/autotests/libs/collectionattributetest.h
+@@ -32,6 +32,7 @@ private Q_SLOTS:
+     void testDefaultAttributes();
+     void testCollectionRightsAttribute();
+     void testCollectionIdentificationAttribute();
++    void testDetach();
+ };
+ 
+ #endif
+diff --git a/src/core/collection.h b/src/core/collection.h
+index b5a496c..9c19cc9 100644
+--- a/src/core/collection.h
++++ b/src/core/collection.h
+@@ -565,10 +565,10 @@ inline T *Akonadi::Collection::attribute(Collection::CreateOption option)
+     Q_UNUSED(option);
+ 
+     const T dummy;
++    markAttributesChanged();
+     if (hasAttribute(dummy.type())) {
+         T *attr = dynamic_cast<T *>(attribute(dummy.type()));
+         if (attr) {
+-            markAttributesChanged();
+             return attr;
+         }
+         //Reuse 5250
+@@ -585,14 +585,10 @@ template <typename T>
+ inline T *Akonadi::Collection::attribute() const
+ {
+     const QByteArray type = T().type();
++    const_cast<Collection*>(this)->markAttributesChanged();
+     if (hasAttribute(type)) {
+         T *attr = dynamic_cast<T *>(attribute(type));
+         if (attr) {
+-            // FIXME: This method returns a non-const pointer, so callers may still modify the
+-            // attribute. Unfortunately, just making this function return a const pointer and
+-            // creating a non-const overload does not work, as many users of this function abuse the
+-            // non-const pointer and modify the attribute even on a const object.
+-            const_cast<Collection*>(this)->markAttributesChanged();
+             return attr;
+         }
+         //reuse 5250
+-- 
+cgit v1.1

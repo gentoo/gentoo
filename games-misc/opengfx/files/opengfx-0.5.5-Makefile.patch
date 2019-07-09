@@ -1,0 +1,22 @@
+--- opengfx-0.5.5-source/Makefile
++++ opengfx-0.5.5-source/Makefile
+@@ -99,8 +99,8 @@
+ AWK            ?= awk
+ GREP           ?= grep
+ PYTHON         ?= python
+-UNIX2DOS       ?= $(shell which unix2dos)
+-UNIX2DOS_FLAGS ?= $(shell [ -n $(UNIX2DOS) ] && $(UNIX2DOS) -q --version 2>/dev/null && echo "-q" || echo "")
++UNIX2DOS       ?= $(shell which unix2dos 2>/dev/null)
++UNIX2DOS_FLAGS ?= $(shell [ -n $(UNIX2DOS) ] && $(UNIX2DOS) -q --version 2>/dev/null >&2 && echo "-q" || echo "")
+ 
+ # Graphics processing
+ GIMP           ?= gimp
+@@ -719,7 +719,7 @@
+ 	$(_E)
+ endif
+ 	$(_E) "Release:"
+-	$(_E) "bananas:     Upload bundle to BaNaNaS
++	$(_E) "bananas:     Upload bundle to BaNaNaS"
+ 	$(_E)
+ 	$(_E) "Valid command line variables are:"
+ 	$(_E) "Helper programmes:"

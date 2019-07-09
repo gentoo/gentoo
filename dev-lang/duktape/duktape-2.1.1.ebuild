@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 DESCRIPTION="Embeddable Javascript engine"
-HOMEPAGE="http://duktape.org"
-SRC_URI="http://duktape.org/${P}.tar.xz"
+HOMEPAGE="https://duktape.org"
+SRC_URI="https://duktape.org/${P}.tar.xz"
 
 LICENSE="MIT"
 SLOT="0"

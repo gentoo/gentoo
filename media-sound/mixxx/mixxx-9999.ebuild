@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -78,13 +78,12 @@ DEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-2.0.0-docs.patch
 	"${FILESDIR}"/${PN}-2.2.0-lilv_include_fix.patch
 )
 
 src_prepare() {
 	# use multilib compatible directory for plugins
-	sed -i -e "/unix_lib_path =/s/'lib'/'$(get_libdir)'/" src/SConscript || die
+	sed -i -e "/env.Alias('install', docs)/d;"'/unix_lib_path =/!b;n;'"s/'lib'/'$(get_libdir)'/" SConscript || die
 
 	default
 }

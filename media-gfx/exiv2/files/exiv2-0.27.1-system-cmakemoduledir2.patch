@@ -1,0 +1,28 @@
+From 6819f2ac456c57291f94cc1f4db13ce134eed468 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sun, 23 Jun 2019 19:32:29 +0200
+Subject: [PATCH] Fix install path of exiv2ConfigVersion.cmake
+
+This seems to have been caused by duplicate work between master branch
+and 0.27-maintenance branch, as commit 3b48249eeb350301dfb3efa3ba6f7d7b162455be
+had already got that right.
+---
+ src/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 1d0ccee4..05ce4e14 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -245,7 +245,7 @@ install(FILES
+ 
+ install(EXPORT exiv2Config DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/exiv2")
+ 
+-install(FILES ${CMAKE_CURRENT_BINARY_DIR}/exiv2ConfigVersion.cmake DESTINATION "${CMAKE_INSTALL_LIBDIR}/exiv2/cmake")
++install(FILES ${CMAKE_CURRENT_BINARY_DIR}/exiv2ConfigVersion.cmake DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/exiv2")
+ 
+ # ******************************************************************************
+ # exiv2 application
+-- 
+2.22.0
+

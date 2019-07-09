@@ -1,0 +1,121 @@
+From d280caa72fbbcd362b820a71a01d4f0e2c1a3bcb Mon Sep 17 00:00:00 2001
+From: Alexey Sokolov <sokolov@google.com>
+Date: Sat, 18 May 2019 08:28:31 +0100
+Subject: [PATCH] Fix build with cmake -DBUILD_SHARED_LIBS=ON (#683)
+
+Ref https://github.com/gentoo/gentoo/pull/11770
+---
+ plugins/TelescopeControl/src/INDI/CMakeLists.txt    | 2 +-
+ plugins/TelescopeControl/src/Lx200/CMakeLists.txt   | 2 +-
+ plugins/TelescopeControl/src/NexStar/CMakeLists.txt | 2 +-
+ plugins/TelescopeControl/src/Rts2/CMakeLists.txt    | 2 +-
+ plugins/TelescopeControl/src/common/CMakeLists.txt  | 2 +-
+ plugins/TelescopeControl/src/gui/CMakeLists.txt     | 2 +-
+ src/CMakeLists.txt                                  | 2 +-
+ src/external/CMakeLists.txt                         | 2 +-
+ 8 files changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/plugins/TelescopeControl/src/INDI/CMakeLists.txt b/plugins/TelescopeControl/src/INDI/CMakeLists.txt
+index 40c27601a0..a250e1bb0f 100644
+--- a/plugins/TelescopeControl/src/INDI/CMakeLists.txt
++++ b/plugins/TelescopeControl/src/INDI/CMakeLists.txt
+@@ -10,7 +10,7 @@ SET(TelescopeControl_INDI_UIS
+ 
+ QT5_WRAP_UI(TelescopeControl_INDI_UIS_H ${TelescopeControl_INDI_UIS})
+ 
+-add_library(TelescopeControl_INDI
++add_library(TelescopeControl_INDI STATIC
+     INDIConnection.hpp
+     INDIConnection.cpp
+     TelescopeClientINDI.hpp
+diff --git a/plugins/TelescopeControl/src/Lx200/CMakeLists.txt b/plugins/TelescopeControl/src/Lx200/CMakeLists.txt
+index 068ecf6380..d12cefabb5 100644
+--- a/plugins/TelescopeControl/src/Lx200/CMakeLists.txt
++++ b/plugins/TelescopeControl/src/Lx200/CMakeLists.txt
+@@ -1,7 +1,7 @@
+ set(CMAKE_INCLUDE_CURRENT_DIR ON)
+ set(CMAKE_AUTOMOC ON)
+ 
+-add_library(TelescopeControl_Lx200
++add_library(TelescopeControl_Lx200 STATIC
+     Lx200Command.hpp
+     Lx200Command.cpp
+     Lx200Connection.hpp
+diff --git a/plugins/TelescopeControl/src/NexStar/CMakeLists.txt b/plugins/TelescopeControl/src/NexStar/CMakeLists.txt
+index 6c3ce1f0d8..cd1f4bddb7 100644
+--- a/plugins/TelescopeControl/src/NexStar/CMakeLists.txt
++++ b/plugins/TelescopeControl/src/NexStar/CMakeLists.txt
+@@ -1,7 +1,7 @@
+ set(CMAKE_INCLUDE_CURRENT_DIR ON)
+ set(CMAKE_AUTOMOC ON)
+ 
+-add_library(TelescopeControl_NexStar
++add_library(TelescopeControl_NexStar STATIC
+     NexStarCommand.hpp
+     NexStarCommand.cpp
+     NexStarConnection.hpp
+diff --git a/plugins/TelescopeControl/src/Rts2/CMakeLists.txt b/plugins/TelescopeControl/src/Rts2/CMakeLists.txt
+index d48bd80fc7..abb1016ab1 100644
+--- a/plugins/TelescopeControl/src/Rts2/CMakeLists.txt
++++ b/plugins/TelescopeControl/src/Rts2/CMakeLists.txt
+@@ -1,7 +1,7 @@
+ set(CMAKE_INCLUDE_CURRENT_DIR ON)
+ set(CMAKE_AUTOMOC ON)
+ 
+-add_library(TelescopeControl_Rts2
++add_library(TelescopeControl_Rts2 STATIC
+     TelescopeClientJsonRts2.hpp
+     TelescopeClientJsonRts2.cpp
+     )
+diff --git a/plugins/TelescopeControl/src/common/CMakeLists.txt b/plugins/TelescopeControl/src/common/CMakeLists.txt
+index be09183bb9..bdf7c20395 100644
+--- a/plugins/TelescopeControl/src/common/CMakeLists.txt
++++ b/plugins/TelescopeControl/src/common/CMakeLists.txt
+@@ -1,7 +1,7 @@
+ set(CMAKE_INCLUDE_CURRENT_DIR ON)
+ set(CMAKE_AUTOMOC ON)
+ 
+-add_library(TelescopeControl_common
++add_library(TelescopeControl_common STATIC
+     LogFile.hpp
+     LogFile.cpp
+     Socket.hpp
+diff --git a/plugins/TelescopeControl/src/gui/CMakeLists.txt b/plugins/TelescopeControl/src/gui/CMakeLists.txt
+index c5d62942cc..d73383c62e 100644
+--- a/plugins/TelescopeControl/src/gui/CMakeLists.txt
++++ b/plugins/TelescopeControl/src/gui/CMakeLists.txt
+@@ -10,7 +10,7 @@ SET(TelescopeControl_GUI_UIS
+ 
+ QT5_WRAP_UI(TelescopeControl_GUI_UIS_H ${TelescopeControl_GUI_UIS})
+ 
+-add_library(TelescopeControl_gui
++add_library(TelescopeControl_gui STATIC
+     SlewDialog.hpp
+     SlewDialog.cpp
+     TelescopeDialog.hpp
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 2ad5af164b..a34ee2eefc 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -469,7 +469,7 @@ IF(GENERATE_STELMAINLIB)
+      #stelMain should be after the plug-ins, otherwise the build crashes
+      TARGET_LINK_LIBRARIES(stellarium stelMain ${winMMLib})
+ ELSE()
+-     ADD_LIBRARY(stelMain ${stellarium_lib_SRCS} ${stellarium_RES_CXX})
++     ADD_LIBRARY(stelMain STATIC ${stellarium_lib_SRCS} ${stellarium_RES_CXX})
+      TARGET_LINK_LIBRARIES(stelMain ${STELMAIN_DEPS})
+      ADD_EXECUTABLE(stellarium WIN32 ${stellarium_exe_SRCS})
+      TARGET_LINK_LIBRARIES(stellarium ${winMMLib} ${STELMAIN_DEPS} stelMain)
+diff --git a/src/external/CMakeLists.txt b/src/external/CMakeLists.txt
+index 42a073e828..4c56837314 100644
+--- a/src/external/CMakeLists.txt
++++ b/src/external/CMakeLists.txt
+@@ -190,7 +190,7 @@ IF(USE_PLUGIN_TELESCOPECONTROL)
+     include_directories(libindi)
+     include_directories(libindi/libs)
+     include_directories(libindi/libs/indibase)
+-    add_library(indiclient
++    add_library(indiclient STATIC
+         libindi/libs/lilxml.c
+         libindi/base64.c
+         libindi/libs/indibase/basedevice.h

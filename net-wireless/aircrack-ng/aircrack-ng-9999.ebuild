@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -27,7 +27,7 @@ SLOT="0"
 IUSE="+airdrop-ng +airgraph-ng kernel_linux kernel_FreeBSD libressl +netlink +pcre +sqlite +experimental"
 
 DEPEND="net-libs/libpcap
-	sys-apps/hwloc
+	sys-apps/hwloc:0=
 	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:0= )
 	netlink? ( dev-libs/libnl:3 )
@@ -57,6 +57,7 @@ src_prepare() {
 
 src_configure() {
 	econf \
+		STATIC_LIBDIR_NAME="$(get_libdir)" \
 		--disable-asan \
 		--enable-shared \
 		--disable-static \

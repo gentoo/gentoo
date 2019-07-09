@@ -12,13 +12,11 @@
 	transparently through QEMU user-mode.
 	</longdescription>
 	<upstream>
-		<remote-id type="github">cedric-vincent/PRoot</remote-id>
-		<maintainer>
-			<email>gentoo@reproducible.io</email>
-			<name>Cédric Vincent</name>
-		</maintainer>
+		<bugs-to>mailto:proot_me@googlegroups.com</bugs-to>
+		<changelog>https://raw.githubusercontent.com/proot-me/PRoot/master/doc/proot/changelog.txt</changelog>
+		<remote-id type="github">proot-me/PRoot</remote-id>
 	</upstream>
 	<use>
-		<flag name="care">Build dynamic CARE binary (more info - http://reproducible.io/)</flag>
+		<flag name="care">Build dynamic CARE binary (more info - https://proot-me.github.io)</flag>
 	</use>
 </pkgmetadata>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>gyakovlev@gentoo.org</email>
+		<name>Georgy Yakovlev</name>
+	</maintainer>
+	<longdescription lang="en">
+		Minisign is a dead simple tool to sign files and verify signatures.
+		It is portable, lightweight, and uses the highly secure Ed25519 public-key signature system.
+		Signature written by minisign can be verified using OpenBSD's signify tool:
+			public key files and signature files are compatible.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">jedisct1/minisign</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation.
+# Copyright 1999-2019 Gentoo Authors.
 # Distributed under the terms of the GNU General Public License v2
 
 # This file contains descriptions of QEMU_SOFTMMU_TARGETS USE_EXPAND flags.
@@ -23,7 +23,6 @@ moxie - moxielogic system emulation target
 nios2 - system emulation target
 or1k - OpenRISC system emulation target
 ppc64 - system emulation target
-ppcemb - system emulation target
 ppc - system emulation target
 riscv32 - system emulation target
 riscv64 - system emulation target

@@ -10,6 +10,7 @@
   </maintainer>
   <use>
     <flag name="ccache">Enables ccache support</flag>
+    <flag name="iso">Pulls in the depends for building iso images</flag>
     <flag name="system-bootloader">Pulls in the depends needed to setup livecd bootloader from the host system rather than using a cdtar</flag>
   </use>
 </pkgmetadata>

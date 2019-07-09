@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -10,11 +10,11 @@ DESCRIPTION="broadcom firmware for b43legacy/bcm43xx"
 HOMEPAGE="http://linuxwireless.org/en/users/Drivers/b43"
 SRC_URI="http://downloads.openwrt.org/sources/wl_apsta-${PV}.o"
 
-RESTRICT="binchecks strip"
+RESTRICT="binchecks bindist strip"
 
 LICENSE="Broadcom"
 SLOT=0
-KEYWORDS="~amd64 ppc ~x86"
+KEYWORDS="amd64 ppc x86"
 IUSE=""
 
 RDEPEND=""

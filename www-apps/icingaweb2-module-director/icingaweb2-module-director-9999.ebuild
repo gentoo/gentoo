@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -22,7 +22,9 @@ DEPEND=">=net-analyzer/icinga2-2.4.3
 	>=www-apps/icingaweb2-2.2.0
 	|| (
 		dev-lang/php:5.6[curl]
-		dev-lang/php:7.0[curl]
+		dev-lang/php:7.1[curl]
+		dev-lang/php:7.2[curl]
+		dev-lang/php:7.3[curl]
 	)"
 RDEPEND="${DEPEND}"
 

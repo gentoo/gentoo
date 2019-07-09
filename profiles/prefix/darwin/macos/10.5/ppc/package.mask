@@ -1,6 +1,6 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-# Fabian Groffen <grobian@gentoo.org> (18 Jun 2018)
+# Fabian Groffen <grobian@gentoo.org> (2018-06-18)
 # FSF GCC is our system compiler here
 -sys-devel/gcc

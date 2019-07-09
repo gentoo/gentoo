@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -31,6 +31,9 @@ src_prepare() {
 	sed -e "s:git rev-parse --short HEAD:echo ${GIT_COMMIT}:" \
 		-e '/-s \\/d' \
 		-i src/${EGO_PN}/Makefile || die
+	# Printf format %q has arg r.config.PidFile of wrong type *string
+	sed -e 's|remove pid at %q: %s|remove pid at %v: %s|' \
+		-i src/${EGO_PN}/manager/runner.go || die
 }
 
 src_compile() {

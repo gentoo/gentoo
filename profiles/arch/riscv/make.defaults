@@ -1,0 +1,25 @@
+# Copyright 2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Main RISC-V profile directory.
+
+# This is not a complete profile. Use the subdirectories!
+
+ARCH="riscv"
+ACCEPT_KEYWORDS="riscv ~riscv"
+
+CHOST="riscv64-unknown-linux-gnu"
+
+# Since many people will want to test this in qemu...
+FEATURES="-pid-sandbox -network-sandbox -ipc-sandbox"
+
+# The following stuff is, e.g., defined in subdirs:
+# CFLAGS
+# CXXFLAGS
+# FFLAGS
+# FCFLAGS
+# ABI
+# DEFAULT_ABI
+# MULTILIB_ABIS
+# CHOST_riscv
+# LIBDIR_riscv

@@ -1,8 +1,8 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit eutils gnome2-utils
+inherit eutils flag-o-matic gnome2-utils
 
 DESCRIPTION="Beaver is an Early AdVanced EditoR"
 HOMEPAGE="http://beaver-editor.sourceforge.net/"
@@ -26,6 +26,8 @@ src_prepare() {
 }
 
 src_configure() {
+	append-cflags -fgnu89-inline
+
 	econf \
 		$(use_enable doc doxygen-doc) \
 		$(use_enable debug)

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -8,7 +8,7 @@ PYTHON_REQ_USE="threads"
 inherit python-single-r1 unpacker
 
 DESCRIPTION="Commercial version of app-emulation/wine with paid support"
-HOMEPAGE="http://www.codeweavers.com/products/crossover/"
+HOMEPAGE="https://www.codeweavers.com/products/"
 SRC_URI="install-crossover-${PV}.bin"
 
 LICENSE="CROSSOVER-2"
@@ -79,7 +79,7 @@ RDEPEND="${DEPEND}
 
 pkg_nofetch() {
 	einfo "Please visit ${HOMEPAGE}"
-	einfo "and place ${A} in ${DISTDIR}"
+	einfo "and place ${A} into your DISTDIR directory"
 }
 
 src_unpack() {

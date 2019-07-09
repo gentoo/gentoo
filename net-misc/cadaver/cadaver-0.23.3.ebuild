@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 2003-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -26,11 +26,12 @@ src_prepare() {
 
 	rm -r lib/{expat,intl,neon} || die "rm failed"
 	sed \
-		-e "/NE_REQUIRE_VERSIONS/s/29/& 30/" \
-		-e "s:lib/neon/Makefile lib/intl/Makefile ::" \
+		-e "/NE_REQUIRE_VERSIONS/s:29:& 30:" \
+		-e "/AM_GNU_GETTEXT/s:no-libtool:external:" \
+		-e "/AC_CONFIG_FILES/s: lib/neon/Makefile lib/intl/Makefile::" \
 		-i configure.ac || die "sed configure.ac failed"
-	sed -e "s/^\(SUBDIRS.*=\).*/\1/" -i Makefile.in || die "sed Makefile.in failed"
-	cp /usr/share/gettext/po/Makefile.in.in po || die "cp failed"
+	sed -e "s:^\(SUBDIRS.*=\).*:\1:" -i Makefile.in || die "sed Makefile.in failed"
+	cp "${EPREFIX}/usr/share/gettext/po/Makefile.in.in" po || die "cp failed"
 
 	AT_M4DIR="m4 m4/neon" eautoreconf
 }

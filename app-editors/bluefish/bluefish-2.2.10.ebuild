@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -27,7 +27,7 @@ RDEPEND="
 		gucharmap? ( gnome-extra/gucharmap:2.90 )
 	)
 	python? ( ${PYTHON_DEPS} )
-	spell? ( app-text/enchant )"
+	spell? ( <app-text/enchant-2 )"
 DEPEND="${RDEPEND}
 	dev-libs/libxml2:2
 	>=dev-libs/glib-2.24:2

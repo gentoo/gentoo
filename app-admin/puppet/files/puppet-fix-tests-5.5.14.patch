@@ -1,0 +1,18 @@
+--- puppet/spec/unit/network/http/api/indirected_routes_spec.rb
++++ puppet/spec/unit/network/http/api/indirected_routes_spec.rb
+@@ -142,15 +142,6 @@
+       handler.uri2indirection("GET", uri_escaped, params)
+     end
+ 
+-    it "should not pass through an environment to check_authorization and fail if the environment is unknown" do
+-      expect(handler).to receive(:check_authorization) do |_, _, arg|
+-        expect(arg).not_to include(:environment)
+-      end
+-      expect(lambda { handler.uri2indirection("GET",
+-                                              "#{master_url_prefix}/node/bar",
+-                                              {:environment => 'bogus'}) }).to raise_error(not_found_error)
+-    end
+-
+     it "should not URI unescape the indirection key as passed through to a call to check_authorization" do
+       expect(handler).to receive(:check_authorization).with(anything, anything, hash_including(environment: be_a(Puppet::Node::Environment).and(have_attributes(name: :env))))
+ 

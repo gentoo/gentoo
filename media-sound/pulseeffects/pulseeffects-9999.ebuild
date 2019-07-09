@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit gnome2-utils meson
 
@@ -14,7 +14,7 @@ if [[ ${PV} == *9999 ]];then
 	EGIT_REPO_URI="${HOMEPAGE}"
 else
 	SRC_URI="${HOMEPAGE}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~x86"
 fi
 
 LICENSE="GPL-3"
@@ -30,6 +30,7 @@ RDEPEND="
 	>=dev-libs/libsigc++-2.10:2
 	>=x11-libs/gtk+-3.18:3
 	>=media-libs/lilv-0.24.2-r1
+	>=media-libs/lsp-plugins-1.1.7[lv2]
 	>=media-libs/gstreamer-1.12.0:1.0
 	>=media-libs/gst-plugins-good-1.12.0:1.0
 	>=media-libs/gst-plugins-bad-1.12.0:1.0
@@ -48,9 +49,14 @@ RDEPEND="
 # and sys-devel/gettext depends reasoning
 DEPEND="
 	${RDEPEND}
-	virtual/pkgconfig
 	dev-libs/appstream-glib
 	sys-devel/gettext
+"
+BDEPEND="
+	>=sys-devel/gcc-7.3.0
+	dev-util/itstool
+	media-libs/libsamplerate
+	virtual/pkgconfig
 "
 
 pkg_postinst(){

@@ -1,0 +1,36 @@
+From c1aa2a464ed1a0fa2430a1e604fe6a3b9d785048 Mon Sep 17 00:00:00 2001
+From: O01eg <o01eg@yandex.ru>
+Date: Mon, 8 Jul 2019 22:49:24 +0300
+Subject: [PATCH] Fix double resolving custom libdir
+
+---
+ src/bootstrap/dist.rs | 9 ++++++---
+ 1 file changed, 6 insertions(+), 3 deletions(-)
+
+diff --git a/src/bootstrap/dist.rs b/src/bootstrap/dist.rs
+index 45bc77ec97d4..5ddd1c3da949 100644
+--- a/src/bootstrap/dist.rs
++++ b/src/bootstrap/dist.rs
+@@ -485,7 +485,9 @@ impl Step for Rustc {
+                     let name = entry.file_name();
+                     if let Some(s) = name.to_str() {
+                         if is_dylib(s) {
+-                            builder.install(&entry.path(), &image.join(&libdir_relative), 0o644);
++                            // Don't use custom libdir here because ^lib/ will be resolved again
++                            // with installer
++                            builder.install(&entry.path(), &image.join("lib"), 0o644);
+                         }
+                     }
+                 }
+@@ -493,8 +495,9 @@ impl Step for Rustc {
+ 
+             // Copy over the codegen backends
+             let backends_src = builder.sysroot_codegen_backends(compiler);
+-            let backends_rel = backends_src.strip_prefix(&src).unwrap();
+-            let backends_dst = image.join(&backends_rel);
++            let backends_rel = backends_src.strip_prefix(&libdir).unwrap();
++            // Don't use custom libdir here because ^lib/ will be resolved again with installer
++            let backends_dst = image.join("lib").join(&backends_rel);
+             t!(fs::create_dir_all(&backends_dst));
+             builder.cp_r(&backends_src, &backends_dst);
+ 

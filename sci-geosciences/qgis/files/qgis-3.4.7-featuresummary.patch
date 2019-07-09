@@ -1,0 +1,31 @@
+From 0744b51784b779eab4bb2e78ed084d31258b5b4d Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <andreas.sturmlechner@gmail.com>
+Date: Sun, 28 Apr 2019 00:10:21 +0200
+Subject: [PATCH] cmake: Use FeatureSummary
+
+---
+ CMakeLists.txt | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 4dff8ea0f4..4626042ca4 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -71,6 +71,8 @@ IF(NOT MSVC)
+   endif(USE_CCACHE)
+ endif(NOT MSVC)
+ 
++include(FeatureSummary)
++
+ # in generated makefiles use relative paths so the project dir is moveable
+ # Note commented out since it cause problems but it would be nice to resolve these and enable
+ #
+@@ -937,3 +939,5 @@ ENDIF (WITH_CORE)
+ IF (UNIX AND NOT APPLE)
+   ADD_SUBDIRECTORY(linux)
+ ENDIF (UNIX AND NOT APPLE)
++
++FEATURE_SUMMARY(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)
+-- 
+2.21.0
+

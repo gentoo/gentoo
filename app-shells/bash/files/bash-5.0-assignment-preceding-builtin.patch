@@ -1,0 +1,83 @@
+*** ../bash-5.0-patched/variables.c	2018-12-18 11:07:21.000000000 -0500
+--- variables.c	2019-03-20 10:30:56.000000000 -0400
+***************
+*** 4473,4476 ****
+--- 4473,4489 ----
+    var = (SHELL_VAR *)data;
+  
++ #if 1 /* TAG:bash-5.1 */
++   /* Just like do_assignment_internal(). This makes assignments preceding
++      special builtins act like standalone assignment statements when in
++      posix mode, satisfying the posix requirement that this affect the
++      "current execution environment." */
++   v = bind_variable (var->name, value_cell (var), ASS_FORCE|ASS_NOLONGJMP);
++ 
++   /* If this modifies an existing local variable, v->context will be non-zero.
++      If it comes back with v->context == 0, we bound at the global context.
++      Set binding_table appropriately. It doesn't matter whether it's correct
++      if the variable is local, only that it's not global_variables->table */
++   binding_table = v->context ? shell_variables->table : global_variables->table;
++ #else
+    binding_table = global_variables->table;
+    if (binding_table == 0)
+***************
+*** 4478,4486 ****
+  
+    v = bind_variable_internal (var->name, value_cell (var), binding_table, 0, ASS_FORCE|ASS_NOLONGJMP);
+  
+    /* global variables are no longer temporary and don't need propagating. */
+!   var->attributes &= ~(att_tempvar|att_propagate);
+    if (v)
+!     v->attributes |= var->attributes;
+  
+    if (find_special_var (var->name) >= 0)
+--- 4491,4508 ----
+  
+    v = bind_variable_internal (var->name, value_cell (var), binding_table, 0, ASS_FORCE|ASS_NOLONGJMP);
++ #endif
+  
+    /* global variables are no longer temporary and don't need propagating. */
+!   if (binding_table == global_variables->table)
+!     var->attributes &= ~(att_tempvar|att_propagate);
+! 
+    if (v)
+!     {
+!       v->attributes |= var->attributes;
+!       v->attributes &= ~att_tempvar;	/* not a temp var now */
+! #if 0	/* TAG:bash-5.1 code doesn't need this, disable for bash-5.1 */
+!       v->context = (binding_table == global_variables->table) ? 0 : shell_variables->scope;
+! #endif
+!     }
+  
+    if (find_special_var (var->name) >= 0)
+***************
+*** 4576,4587 ****
+  {
+    int i;
+  
+    tempvar_list = strvec_create (HASH_ENTRIES (temporary_env) + 1);
+    tempvar_list[tvlist_ind = 0] = 0;
+!     
+!   hash_flush (temporary_env, pushf);
+!   hash_dispose (temporary_env);
+    temporary_env = (HASH_TABLE *)NULL;
+  
+    tempvar_list[tvlist_ind] = 0;
+  
+--- 4598,4612 ----
+  {
+    int i;
++   HASH_TABLE *disposer;
+  
+    tempvar_list = strvec_create (HASH_ENTRIES (temporary_env) + 1);
+    tempvar_list[tvlist_ind = 0] = 0;
+! 
+!   disposer = temporary_env;
+    temporary_env = (HASH_TABLE *)NULL;
+  
++   hash_flush (disposer, pushf);
++   hash_dispose (disposer);
++ 
+    tempvar_list[tvlist_ind] = 0;
+  
+

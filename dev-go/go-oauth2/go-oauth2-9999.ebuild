@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -9,7 +9,7 @@ EGO_SRC=golang.org/x/oauth2
 if [[ ${PV} = *9999* ]]; then
 	inherit golang-vcs
 else
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~x86"
 	EGIT_COMMIT="b5adcc2dcdf009d0391547edc6ecbaff889f5bb9"
 	SRC_URI="https://github.com/golang/oauth2/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 	inherit golang-vcs-snapshot

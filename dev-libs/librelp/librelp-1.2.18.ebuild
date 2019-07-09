@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -16,26 +16,17 @@ SLOT="0/0.4.0"
 
 KEYWORDS="amd64 arm ~arm64 hppa sparc x86"
 IUSE="debug doc +ssl +gnutls libressl openssl static-libs"
-REQUIRED_USE="ssl? ( ^^ ( gnutls openssl ) )
-	gnutls? ( ssl )
-	openssl? ( ssl )
-	libressl? ( openssl )"
+REQUIRED_USE="ssl? ( ^^ ( gnutls openssl ) )"
 
-RDEPEND="ssl? (
+RDEPEND="
+	ssl? (
 		gnutls? ( >=net-libs/gnutls-3.3.17.1:0= )
 		openssl? (
 			!libressl? ( dev-libs/openssl:0= )
 			libressl? ( dev-libs/libressl:0= )
 		)
 	)"
-
-DEPEND="ssl? (
-		gnutls? ( >=net-libs/gnutls-3.3.17.1:0= )
-		openssl? (
-			!libressl? ( dev-libs/openssl:0= )
-			libressl? ( dev-libs/libressl:0= )
-		)
-	)
+DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 src_prepare() {
@@ -70,6 +61,6 @@ src_install() {
 	default
 
 	if ! use static-libs; then
-		find "${ED%/}"/usr/lib* -name '*.la' -delete || die
+		find "${D}" -name '*.la' -delete || die
 	fi
 }

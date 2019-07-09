@@ -10,5 +10,7 @@
 </longdescription>
 <use>
 	<flag name="custom-jdk">Install and use IntelliJ's custom JRE.</flag>
+	<flag name="jbr8">Install and use the Java 8 based version of JetBrains Runtime.</flag>
+	<flag name="jbr11">Install and use the Java 11 based version of JetBrains Runtime.</flag>
 </use>
 </pkgmetadata>

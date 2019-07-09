@@ -4,9 +4,6 @@
 sys-libs/uclibc-ng
 sys-libs/glibc
 
-# Older versions of net-mail/mailutils fail on musl, bug #604212
-<net-mail/mailutils-3.2
-
 # We use eudev which is tested on both uclibc and musl
 sys-apps/systemd
 sys-fs/udev
@@ -22,6 +19,7 @@ games-action/beathazardultra
 games-action/brutal-legend
 games-action/descent3
 games-action/descent3-demo
+games-action/guacamelee
 games-action/heretic2-demo
 games-action/hotline-miami
 games-action/intrusion2
@@ -83,6 +81,7 @@ games-misc/papers-please
 games-puzzle/world-of-goo
 games-puzzle/world-of-goo-demo
 games-roguelike/adom
+games-rpg/costume-quest
 games-rpg/dear-esther
 games-rpg/dungeon-defenders
 games-rpg/eschalon-book-1-demo

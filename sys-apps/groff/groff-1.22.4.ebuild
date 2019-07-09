@@ -15,7 +15,7 @@ SRC_URI="mirror://gnu/groff/${MY_P}.tar.gz
 LICENSE="GPL-2"
 SLOT="0"
 [[ "${PV}" == *_rc* ]] || \
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sh ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="examples X"
 
 RDEPEND="
@@ -47,18 +47,6 @@ src_prepare() {
 		Makefile.in \
 		|| die "failed to modify Makefile.in"
 
-	# Make sure we can cross-compile this puppy
-	if tc-is-cross-compiler ; then
-		sed -i \
-			-e '/^GROFFBIN=/s:=.*:=${EPREFIX}/usr/bin/groff:' \
-			-e '/^TROFFBIN=/s:=.*:=${EPREFIX}/usr/bin/troff:' \
-			-e '/^GROFF_BIN_PATH=/s:=.*:=:' \
-			-e '/^GROFF_BIN_DIR=/s:=.*:=:' \
-			contrib/*/Makefile.sub \
-			doc/Makefile.in \
-			doc/Makefile.sub || die "cross-compile sed failed"
-	fi
-
 	local pfx=$(usex prefix ' Prefix' '')
 	cat <<-EOF >> tmac/mdoc.local
 	.ds volume-operating-system Gentoo${pfx}
@@ -80,7 +68,18 @@ src_configure() {
 }
 
 src_compile() {
-	emake AR="$(tc-getAR)"
+	if tc-is-cross-compiler ; then
+		local CROSS_ARGS=(
+			GROFFBIN="$(type -P groff)"
+			TROFFBIN="$(type -P troff)"
+			GROFF_BIN_DIR=
+			GROFF_BIN_PATH=
+		)
+	else
+		unset CROSS_ARGS
+	fi
+
+	emake AR="$(tc-getAR)" "${CROSS_ARGS[@]}"
 }
 
 src_install() {

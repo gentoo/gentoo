@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -47,7 +47,7 @@ pkg_nofetch() {
 	elog "Download ${A} and rename them to"
 	use amd64 && elog "*_amd64.bz2"
 	use x86 && elog "*_x86.bz2"
-	elog "and place renamed tarballs in ${DISTDIR}."
+	elog "and place renamed tarballs into your DISTDIR directory."
 }
 
 src_install() {

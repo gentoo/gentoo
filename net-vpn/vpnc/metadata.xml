@@ -2,10 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
-    <email>lorand.jakab@schweiz.ch</email>
-    <name>Lorand Jakab</name>
-  </maintainer>
-  <maintainer type="person">
     <email>mmokrejs@gmail.com</email>
     <name>Martin Mokrejs</name>
   </maintainer>

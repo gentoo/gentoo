@@ -18,10 +18,7 @@ IUSE="smart samba"
 
 RDEPEND="
 	dev-perl/Monitoring-Plugin
-	|| (
-		sys-apps/portage
-		sys-apps/portage-mgorny
-	)
+	sys-apps/portage
 	dev-perl/Time-Duration
 	dev-perl/TimeDate
 	smart? (

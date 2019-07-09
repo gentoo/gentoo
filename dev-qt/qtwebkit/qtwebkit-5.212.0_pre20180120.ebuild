@@ -16,7 +16,7 @@ SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="BSD LGPL-2+"
 SLOT="5/5.212"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc ppc64 x86"
+KEYWORDS="amd64 arm arm64 ~ppc ppc64 x86"
 IUSE="geolocation gles2 +gstreamer +hyphen +jit multimedia nsplugin opengl orientation +printsupport qml webp X"
 
 REQUIRED_USE="
@@ -80,6 +80,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-functional.patch"
 	"${FILESDIR}/${P}-fix-pkgconfig.patch"
 	"${FILESDIR}/${P}-cmake-fix-pkgconfig_deps-spelling.patch"
+	"${FILESDIR}/${P}-js-build-error.patch"
 )
 
 CHECKREQS_DISK_BUILD="16G" # bug 417307

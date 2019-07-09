@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -13,13 +13,12 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="gnutls libressl systemd"
-REQUIRED_USE="?? ( gnutls libressl )"
 
 RDEPEND="app-i18n/skk-jisyo
-	gnutls? ( net-libs/gnutls )
+	gnutls? ( net-libs/gnutls:= )
 	!gnutls? (
-		!libressl? ( dev-libs/openssl:0 )
-		libressl? ( dev-libs/libressl )
+		!libressl? ( dev-libs/openssl:0= )
+		libressl? ( dev-libs/libressl:0= )
 	)
 	systemd? ( virtual/udev[systemd] )"
 DEPEND="${RDEPEND}

@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_{4,5,6,7}} )
+PYTHON_COMPAT=( python{2_7,3_{5,6,7}} )
 
 inherit autotools python-single-r1 linux-info libtool eapi7-ver
 
@@ -14,7 +14,7 @@ SRC_URI="mirror://kernel/linux/utils/${PN}/v$(ver_cut 1-2)/${P/_/-}.tar.xz"
 LICENSE="GPL-2+"
 SLOT="0/12" # libcryptsetup.so version
 [[ ${PV} != *_rc* ]] && \
-KEYWORDS="~amd64 ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 CRYPTO_BACKENDS="+gcrypt kernel nettle openssl"
 # we don't support nss since it doesn't allow cryptsetup to be built statically
 # and it's missing ripemd160 support so it can't provide full backward compatibility

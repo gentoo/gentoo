@@ -1,5 +1,5 @@
 #!/sbin/openrc-run
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 extra_commands="configcheck"
@@ -25,14 +25,14 @@ depend() {
 }
 
 start() {
-	checkpath -q -d ${PIDDIR} -o ${DNSDIST_USER}:${DNSDIST_GROUP} 
+	checkpath -q -d ${PIDDIR} -o ${DNSDIST_USER}:${DNSDIST_GROUP}
 
 	configcheck || return 1
 
 	ebegin "Starting dnsdist (${DNSDIST_INSTANCE})"
 	start-stop-daemon --start --exec $DNSDIST --pidfile ${PIDFILE} \
-		-- -d -p ${PIDFILE} -u ${DNSDIST_USER} -g ${DNSDIST_GROUP} \
-		-C $DNSDIST_CONFFILE ${DNSDIST_OPTIONS} 
+		-b -- --supervised -u ${DNSDIST_USER} -g ${DNSDIST_GROUP} \
+		-C $DNSDIST_CONFFILE ${DNSDIST_OPTIONS}
 	eend $?
 }
 

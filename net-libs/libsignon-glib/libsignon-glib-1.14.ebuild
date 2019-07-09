@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
+PYTHON_COMPAT=( python{2_7,3_5,3_6} )
 inherit autotools python-r1 vcs-snapshot xdg-utils
 
 DESCRIPTION="GLib binding for the D-Bus API provided by signond"
@@ -12,7 +12,7 @@ SRC_URI="https://gitlab.com/accounts-sso/libsignon-glib/repository/archive.tar.g
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE="debug doc +introspection python test"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} introspection )"

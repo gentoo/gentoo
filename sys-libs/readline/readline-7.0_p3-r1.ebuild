@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -28,7 +28,7 @@ patches() {
 }
 
 DESCRIPTION="Another cute console display library"
-HOMEPAGE="http://cnswww.cns.cwru.edu/php/chet/readline/rltop.html"
+HOMEPAGE="https://tiswww.case.edu/php/chet/readline/rltop.html"
 
 case ${PV} in
 	*_alpha*|*_beta*|*_rc*)

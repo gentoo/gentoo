@@ -3,18 +3,24 @@
 
 EAPI="6"
 
-inherit depend.apache eutils git-r3 multilib user
+inherit depend.apache eutils multilib user
 
 DESCRIPTION="Icinga Web 2 - Frontend for icinga2"
 HOMEPAGE="http://www.icinga.org/"
-EGIT_REPO_URI="https://github.com/Icinga/icingaweb2.git"
-EGIT_BRANCH="master"
+
+if [[ ${PV} == *9999 ]];then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/Icinga/icingaweb2.git"
+	EGIT_BRANCH="master"
+else
+	SRC_URI="https://codeload.github.com/Icinga/${PN}/tar.gz/v${PV} -> ${P}.tar.gz"
+	KEYWORDS="~amd64 ~x86"
+fi
 
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="apache2 apache2-server fpm ldap mysql nginx pdf postgres"
 REQUIRED_USE="( ^^ ( apache2-server nginx ) ) apache2? ( apache2-server )"
-KEYWORDS=""
 
 DEPEND=">=net-analyzer/icinga2-2.1.1
 		dev-php/pecl-imagick
@@ -23,9 +29,9 @@ DEPEND=">=net-analyzer/icinga2-2.1.1
 		nginx? ( >=www-servers/nginx-1.7.0:* )
 		|| (
 			dev-lang/php:5.6[apache2?,cli,fpm?,gd,json,intl,ldap?,mysql?,nls,pdo,postgres?,sockets,ssl,xslt,xml]
-			dev-lang/php:7.0[apache2?,cli,fpm?,gd,json,intl,ldap?,mysql?,nls,pdo,postgres?,sockets,ssl,xslt,xml]
 			dev-lang/php:7.1[apache2?,cli,fpm?,gd,json,intl,ldap?,mysql?,nls,pdo,postgres?,sockets,ssl,xslt,xml]
 			dev-lang/php:7.2[apache2?,cli,fpm?,gd,json,intl,ldap?,mysql?,nls,pdo,postgres?,sockets,ssl,xslt,xml]
+			dev-lang/php:7.3[apache2?,cli,fpm?,gd,json,intl,ldap?,mysql?,nls,pdo,postgres?,sockets,ssl,xslt,xml]
 		)"
 RDEPEND="${DEPEND}"
 

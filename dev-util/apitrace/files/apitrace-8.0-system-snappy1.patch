@@ -1,0 +1,21 @@
+From 1294f69ed84e3c35f108fb55533b6687cdfcd419 Mon Sep 17 00:00:00 2001
+From: "i.Dark_Templar" <darktemplar@dark-templar-archives.net>
+Date: Tue, 30 Apr 2019 22:19:08 +0300
+Subject: [PATCH] cmake: Fix out-of-source build without bundled snappy.
+
+---
+ CMakeLists.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 2cf5ab2f5..3751f078e 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -532,6 +532,7 @@ add_subdirectory (thirdparty/crc32c)
+ if (CMAKE_EXECUTABLE_FORMAT STREQUAL "ELF")
+     add_subdirectory (thirdparty/libbacktrace)
+     include_directories (${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/libbacktrace)
++    include_directories (${CMAKE_CURRENT_BINARY_DIR}/thirdparty/libbacktrace)
+     set (LIBBACKTRACE_LIBRARIES ${CMAKE_DL_LIBS} backtrace)
+     add_definitions (-DHAVE_BACKTRACE=1)
+ endif ()

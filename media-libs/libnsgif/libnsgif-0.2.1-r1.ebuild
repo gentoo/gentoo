@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,11 +11,11 @@ SRC_URI="https://download.netsurf-browser.org/libs/releases/${P}-src.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~m68k-mint"
+KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~m68k-mint"
 IUSE=""
 
 DEPEND="
-	dev-util/netsurf-buildsystem
+	>=dev-util/netsurf-buildsystem-1.7-r1
 	virtual/pkgconfig"
 
 src_prepare() {

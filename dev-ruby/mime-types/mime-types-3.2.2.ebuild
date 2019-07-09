@@ -15,7 +15,7 @@ HOMEPAGE="https://github.com/mime-types/ruby-mime-types"
 
 LICENSE="MIT"
 SLOT="3"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~x86"
 IUSE=""
 
 ruby_add_bdepend "test? ( dev-ruby/minitest:5 dev-ruby/minitest-bonus-assertions:2 dev-ruby/minitest-hooks:1 )"

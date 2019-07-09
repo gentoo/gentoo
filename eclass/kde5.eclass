@@ -31,10 +31,10 @@ _KDE5_ECLASS=1
 # for tests you should proceed with setting VIRTUALX_REQUIRED=test.
 : ${VIRTUALX_REQUIRED:=manual}
 
-inherit cmake-utils flag-o-matic gnome2-utils kde5-functions virtualx xdg
+inherit cmake-utils flag-o-matic kde5-functions virtualx xdg
 
 case ${EAPI} in
-	6) inherit eapi7-ver eutils ;;
+	6) inherit eapi7-ver eutils gnome2-utils ;;
 esac
 
 if [[ ${KDE_BUILD_TYPE} = live ]]; then
@@ -159,14 +159,7 @@ fi
 # a proper error message via pkg_nofetch.
 KDE_UNRELEASED=( )
 
-if [[ ${KDEBASE} = kdevelop ]]; then
-	HOMEPAGE="https://www.kdevelop.org/"
-elif [[ ${KMNAME} = kdepim ]]; then
-	HOMEPAGE="https://www.kde.org/applications/office/kontact/"
-else
-	HOMEPAGE="https://www.kde.org/"
-fi
-
+HOMEPAGE="https://kde.org/"
 LICENSE="GPL-2"
 
 SLOT=5
@@ -197,18 +190,13 @@ esac
 case ${KDE_AUTODEPS} in
 	false)	;;
 	*)
-		DEPEND+=" $(add_frameworks_dep extra-cmake-modules)"
+		BDEPEND+=" $(add_frameworks_dep extra-cmake-modules)"
 		RDEPEND+=" >=kde-frameworks/kf-env-4"
 		COMMONDEPEND+=" $(add_qt_dep qtcore)"
 
 		# all packages need breeze/oxygen icons for basic iconset, bug #564838
 		if [[ ${PN} != breeze-icons && ${PN} != oxygen-icons ]]; then
 			RDEPEND+=" || ( $(add_frameworks_dep breeze-icons) kde-frameworks/oxygen-icons:* )"
-		fi
-
-		if [[ ${CATEGORY} = kde-apps && ${PV} = 18.08.3 ]]; then
-			[[ ${KDE_BLOCK_SLOT4} = true ]] && RDEPEND+=" !kde-apps/${PN}:4"
-			RDEPEND+=" !kde-apps/kde-l10n"
 		fi
 		;;
 esac
@@ -224,7 +212,7 @@ case ${KDE_DESIGNERPLUGIN} in
 	false)  ;;
 	*)
 		IUSE+=" designer"
-		DEPEND+=" designer? ( $(add_frameworks_dep kdesignerplugin) )"
+		BDEPEND+=" designer? ( $(add_frameworks_dep kdesignerplugin) )"
 esac
 
 case ${KDE_EXAMPLES} in
@@ -238,7 +226,7 @@ case ${KDE_HANDBOOK} in
 	false)	;;
 	*)
 		IUSE+=" +handbook"
-		DEPEND+=" handbook? ( $(add_frameworks_dep kdoctools) )"
+		BDEPEND+=" handbook? ( $(add_frameworks_dep kdoctools) )"
 		;;
 esac
 
@@ -247,7 +235,7 @@ case ${KDE_QTHELP} in
 	*)
 		IUSE+=" doc"
 		COMMONDEPEND+=" doc? ( $(add_qt_dep qt-docs) )"
-		DEPEND+=" doc? (
+		BDEPEND+=" doc? (
 			$(add_qt_dep qthelp)
 			>=app-doc/doxygen-1.8.13-r1
 		)"
@@ -270,20 +258,16 @@ case ${KDE_SELINUX_MODULE} in
 		;;
 esac
 
-DEPEND+=" ${COMMONDEPEND} dev-util/desktop-file-utils"
+case ${EAPI} in
+	6) DEPEND+=" ${BDEPEND}" ;;
+esac
+
+DEPEND+=" ${COMMONDEPEND}"
 RDEPEND+=" ${COMMONDEPEND}"
 unset COMMONDEPEND
 
 if [[ -n ${KMNAME} && ${KMNAME} != ${PN} && ${KDE_BUILD_TYPE} = release ]]; then
 	S=${WORKDIR}/${KMNAME}-${PV}
-fi
-
-if [[ -n ${KDEBASE} && ${KDEBASE} = kdevelop && ${KDE_BUILD_TYPE} = release ]]; then
-	if [[ -n ${KMNAME} ]]; then
-		S=${WORKDIR}/${KMNAME}-${PV}
-	else
-		S=${WORKDIR}/${P}
-	fi
 fi
 
 _kde_is_unreleased() {
@@ -320,8 +304,6 @@ _calculate_src_uri() {
 			;;
 	esac
 
-	DEPEND+=" app-arch/xz-utils"
-
 	case ${CATEGORY} in
 		kde-apps)
 			case ${PV} in
@@ -351,23 +333,15 @@ _calculate_src_uri() {
 			;;
 	esac
 
-	if [[ -z ${SRC_URI} && -n ${KDEBASE} ]] ; then
-		local _kdebase
-		case ${PN} in
-			kdevelop-pg-qt)
-				_kdebase=${PN} ;;
-			*)
-				_kdebase=${KDEBASE} ;;
-		esac
+	if [[ ${PN} = kdevelop* ]]; then
 		case ${PV} in
 			*.*.[6-9]? )
-				SRC_URI="mirror://kde/unstable/${_kdebase}/${PV}/src/${_kmname}-${PV}.tar.xz"
+				SRC_URI="mirror://kde/unstable/kdevelop/${PV}/src/${_kmname}-${PV}.tar.xz"
 				RESTRICT+=" mirror"
 				;;
 			*)
-				SRC_URI="mirror://kde/stable/${_kdebase}/${PV}/src/${_kmname}-${PV}.tar.xz" ;;
+				SRC_URI="mirror://kde/stable/kdevelop/${PV}/src/${_kmname}-${PV}.tar.xz" ;;
 		esac
-		unset _kdebase
 	fi
 
 	if _kde_is_unreleased ; then
@@ -408,6 +382,10 @@ _calculate_live_repo() {
 
 	if [[ ${PV} != 9999 && ${CATEGORY} = kde-plasma ]]; then
 		EGIT_BRANCH="Plasma/$(ver_cut 1-2)"
+	fi
+
+	if [[ ${PV} != 9999 && ${PN} = kdevelop* ]]; then
+		EGIT_BRANCH="$(ver_cut 1-2)"
 	fi
 
 	EGIT_REPO_URI="${EGIT_MIRROR}/${_kmname}"
@@ -517,7 +495,10 @@ kde5_src_prepare() {
 	fi
 
 	# enable only the requested translations when required
-	if [[ -v LINGUAS ]] ; then
+	# always install unconditionally for kconfigwidgets - if you use language
+	# X as system language, and there is a combobox with language names, the
+	# translated language name for language Y is taken from /usr/share/locale/Y/kf5_entry.desktop
+	if [[ -v LINGUAS && ${PN} != kconfigwidgets ]] ; then
 		local po
 		for po in ${KDE_PO_DIRS}; do
 		if [[ -d ${po} ]] ; then
@@ -632,6 +613,8 @@ kde5_src_configure() {
 			# install mkspecs in the same directory as qt stuff
 			-DKDE_INSTALL_USE_QT_SYS_PATHS=ON
 		)
+		# move handbook outside of doc dir for at least two QA warnings, bug 667138
+		[[ ${EAPI} != 6 ]] && cmakeargs+=( -DKDE_INSTALL_DOCBUNDLEDIR="${EPREFIX}/usr/share/help" )
 	fi
 
 	# allow the ebuild to override what we set here
@@ -696,14 +679,20 @@ kde5_src_install() {
 	# cmake can't find the tags and qthelp viewers can't find the docs
 	local p=$(best_version dev-qt/qtcore:5)
 	local pv=$(echo ${p/%-r[0-9]*/} | rev | cut -d - -f 1 | rev)
-	if [[ -d ${ED%/}/usr/share/doc/qt-${pv} ]]; then
-		docompress -x /usr/share/doc/qt-${pv}
+	if [[ ${pv} = 5.11* ]]; then
+		#todo: clean up trailing slash check when EAPI <7 is removed
+		if [[ -d ${ED%/}/usr/share/doc/qt-${pv} ]]; then
+			docompress -x /usr/share/doc/qt-${pv}
+		fi
 	fi
 
-	# We don't want /usr/share/doc/HTML to be compressed,
-	# because then khelpcenter can't find the docs
-	if [[ -d ${ED%/}/usr/share/doc/HTML ]]; then
-		docompress -x /usr/share/doc/HTML
+	if [[ ${EAPI} = 6 ]]; then
+		# We don't want /usr/share/doc/HTML to be compressed,
+		# because then khelpcenter can't find the docs
+		#todo: clean up trailing slash check when EAPI <7 is removed
+		if [[ -d ${ED%/}/usr/share/doc/HTML ]]; then
+			docompress -x /usr/share/doc/HTML
+		fi
 	fi
 }
 
@@ -713,7 +702,6 @@ kde5_src_install() {
 kde5_pkg_preinst() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	gnome2_icon_savelist
 	xdg_pkg_preinst
 }
 
@@ -723,9 +711,6 @@ kde5_pkg_preinst() {
 kde5_pkg_postinst() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	if [[ -n ${GNOME2_ECLASS_ICONS} ]]; then
-		gnome2_icon_cache_update
-	fi
 	xdg_pkg_postinst
 
 	if [[ -z ${I_KNOW_WHAT_I_AM_DOING} ]]; then
@@ -744,9 +729,6 @@ kde5_pkg_postinst() {
 kde5_pkg_postrm() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	if [[ -n ${GNOME2_ECLASS_ICONS} ]]; then
-		gnome2_icon_cache_update
-	fi
 	xdg_pkg_postrm
 }
 

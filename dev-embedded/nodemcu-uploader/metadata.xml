@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>rafaelmartins@gentoo.org</email>
+		<name>Rafael G. Martins</name>
+	</maintainer>
+	<longdescription lang="en">
+		A simple tool for uploading files to the filesystem of an ESP8266
+		running NodeMCU as well as some other useful commands.
+	</longdescription>
+	<upstream>
+		<remote-id type="pypi">nodemcu-uploader</remote-id>
+	</upstream>
+</pkgmetadata>

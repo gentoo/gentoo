@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -19,8 +19,10 @@ LICENSE="GPL-2 LPPL-1.3c TeX"
 SRC_URI="mirror://gentoo/${MY_PV}.tar.xz"
 
 # Fetch patches
+POPPLERPATCHES="${P}-poppler076"
 SRC_URI="${SRC_URI} mirror://gentoo/${PN}-patches-${PATCHLEVEL}.tar.xz
 	https://dev.gentoo.org/~dilfridge/distfiles/${PN%-core}-${TL_SOURCE_VERSION}-source-freetype.patch.xz
+	https://dev.gentoo.org/~asturm/distfiles/${POPPLERPATCHES}.tar.xz
 "
 #	mirror://gentoo/texlive-core-upstream-patches-${TL_UPSTREAM_PATCHLEVEL}.tar.xz"
 
@@ -164,7 +166,16 @@ src_prepare() {
 	EPATCH_SUFFIX="patch" epatch "${WORKDIR}/patches"
 
 	# bug ?
-	epatch "${FILESDIR}/${P}-poppler064.patch"
+	epatch "${WORKDIR}/${POPPLERPATCHES}/${P}-poppler064.patch"
+
+	if has_version ">=app-text/poppler-0.69.0"; then
+		epatch "${WORKDIR}"/${POPPLERPATCHES}/${P}-poppler0{69,71,72,73}.patch # bugs #672854, 675448
+	fi
+
+	if has_version ">=app-text/poppler-0.75.0"; then
+		epatch "${WORKDIR}"/${POPPLERPATCHES}/${P}-pdftexdir-poppler0{75,76}.patch # bugs #681338, 685284
+		epatch "${WORKDIR}"/${POPPLERPATCHES}/${P}-luatexdir-poppler0{75,76}.patch # bugs #681338, 685284
+	fi
 
 	sed -i \
 		-e "s,/usr/include /usr/local/include.*echo \$KPATHSEA_INCLUDES.*,${EPREFIX}/usr/include\"," \
@@ -358,9 +369,4 @@ pkg_postinst() {
 	ewarn "Please make sure you have read:"
 	ewarn "https://wiki.gentoo.org/wiki/Project:TeX/Tex_Live_Migration_Guide"
 	ewarn "in order to avoid possible problems"
-	elog
-	elog "TeXLive has been split in various ebuilds. If you are missing a"
-	elog "package to process your TeX documents, you can install"
-	elog "dev-tex/texmfind to easily search for them."
-	elog
 }

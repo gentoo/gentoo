@@ -1,3 +1,5 @@
+acct-group
+acct-user
 app-accessibility
 app-admin
 app-antivirus
@@ -76,6 +78,9 @@ gnome-extra
 gnustep-apps
 gnustep-base
 gnustep-libs
+gui-apps
+gui-libs
+gui-wm
 java-virtuals
 kde-apps
 kde-frameworks

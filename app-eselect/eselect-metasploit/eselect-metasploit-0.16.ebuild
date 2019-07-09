@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 inherit multilib
 
 DESCRIPTION="eselect module for metasploit"
-HOMEPAGE="http://www.pentoo.ch/"
+HOMEPAGE="https://www.pentoo.ch/"
 SRC_URI=""
 
 LICENSE="GPL-2"

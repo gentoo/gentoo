@@ -1,0 +1,34 @@
+# /etc/conf.d/endlessh: config file for /etc/init.d/endlessh
+#
+#ENDLESSH_ARGS=""
+# Usage: [-vh] [-46] [-d MS] [-f CONFIG] [-l LEN] [-m LIMIT] [-p PORT]
+#   -4        Bind to IPv4 only
+#   -6        Bind to IPv6 only
+#   -d INT    Message millisecond delay [10000]
+#   -f        Set and load config file [/etc/endlessh/config]
+#   -h        Print this help message and exit
+#   -l INT    Maximum banner line length (3-255) [32]
+#   -m INT    Maximum number of clients [4096]
+#   -p INT    Listening port [2222]
+#   -v        Print diagnostics to standard output (repeatable)
+#   -V        Print version information and exit
+
+# EXAMPLE 1: listen on port 22, log all queries and errors in very verbose mode
+#ENDLESSH_ARGS="-p 22 -vv"
+
+# EXAMPLE 2: load settings from config file
+#ENDLESSH_ARGS="-f /etc/endlessh/config"
+
+# EXAMPLE 3: load settings from config file, but override port
+#ENDLESSH_ARGS="-f /etc/endlessh/config -p 22"
+
+
+# LOGGING: is disabled by default, enable this to actually redirect messages
+
+# plain file (preferred), change logrotate file as well if you change this.
+#output_log=/var/log/"${RC_SVCNAME}.log"
+#error_log=/var/log/"${RC_SVCNAME}.error.log"
+
+# syslog support via LOGGER(1). Note this spawns logger processes per io stream
+#output_logger="logger -p daemon.none --"
+#error_logger="logger -p daemon.err --"

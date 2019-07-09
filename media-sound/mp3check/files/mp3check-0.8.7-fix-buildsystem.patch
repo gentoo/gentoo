@@ -1,0 +1,17 @@
+--- a/Makefile
++++ b/Makefile
+@@ -2,12 +2,10 @@
+ # Please see COPYING for license.
+ 
+ # --- config ----------------------------------------------------------------
+-WARN = -Wall -W -g
++WARN = -Wall -W
+ #OPT = -O2
+ OPT =
+-CPPFLAGS = $(ADDITIONAL_CPPFLAGS)
+-CXXFLAGS = $(WARN) $(OPT)
+-CXX = g++
++CXXFLAGS += $(WARN)
+ CC = $(CXX)
+ 
+ # --- default target

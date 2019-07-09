@@ -1,12 +1,12 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 KDE_TEST="false" # build breaks otherwise. tests not isolated.
 inherit kde5
 
-DESCRIPTION="A data access layer handling synchronization, caching and indexing"
+DESCRIPTION="Data access layer handling synchronization, caching and indexing"
 SRC_URI="https://github.com/KDE/sink/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2+"

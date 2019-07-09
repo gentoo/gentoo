@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python3_{4,5,6,7} )
+PYTHON_COMPAT=( python3_{5,6,7} )
 inherit xdg-utils meson multilib-minimal python-any-r1
 
 DESCRIPTION="A thin layer of types for graphic libraries"
@@ -11,7 +11,7 @@ SRC_URI="https://github.com/ebassi/graphene/releases/download/${PV}/${P}.tar.xz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm ppc ppc64 ~sparc x86 ~amd64-fbsd"
+KEYWORDS="amd64 arm ~hppa ppc ppc64 ~sparc x86 ~amd64-fbsd"
 IUSE="cpu_flags_arm_neon cpu_flags_x86_sse2 doc +introspection test"
 
 RDEPEND="

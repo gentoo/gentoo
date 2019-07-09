@@ -1,0 +1,22 @@
+Move startx auth files in /tmp so they are removed on reboot.
+https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=357736
+The trap patch didn't seem to work on reboot.
+---
+ startx.cpp |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/startx.cpp
++++ b/startx.cpp
+@@ -278,11 +278,11 @@ if [ x"$enable_xauth" = x1 ] ; then
+         exit 1
+     fi
+     dummy=0
+ 
+     XCOMM create a file with auth information for the server. ':0' is a dummy.
+-    xserverauthfile=$HOME/.serverauth.$$
++    xserverauthfile=`mktemp --tmpdir serverauth.XXXXXXXXXX`
+     trap "rm -f '$xserverauthfile'" HUP INT QUIT ILL TRAP KILL BUS TERM
+     xauth -q -f "$xserverauthfile" << EOF
+ add :$dummy . $mcookie
+ EOF
+ #if defined(__APPLE__) || defined(__CYGWIN__)

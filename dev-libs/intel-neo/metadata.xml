@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>marecki@gentoo.org</email>
+		<name>Marek Szuba</name>
+	</maintainer>
+	<longdescription>The Intel Graphics Compute Runtime for OpenCL, informally
+		known as NEO, is an open source project to converge Intel's development
+		efforts on OpenCL compute stacks supporting Gen8 graphics devices
+		(Broadwell architecture) and newer.
+		For OpenCL support on Sandy Bridge, Ivy Bridge and Haswell architectures
+		please have a look at <pkg>dev-libs/beignet</pkg> instead.</longdescription>
+	<use>
+		<flag name="vaapi">Support the sharing of surfaces with Video Acceleration API
+			(OpenCL Extension #36)</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">intel/compute-runtime</remote-id>
+	</upstream>
+</pkgmetadata>
+

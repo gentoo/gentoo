@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-PYTHON_COMPAT=(python{2_7,3_4,3_5,3_6})
+EAPI=7
+PYTHON_COMPAT=(python{2_7,3_5,3_6,3_7})
 
 if [[ ${PV} == 9999* ]]; then
 	EGIT_REPO_URI="https://github.com/certbot/certbot.git"
@@ -24,11 +24,11 @@ IUSE="test"
 CDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 RDEPEND="
 	${CDEPEND}
-	>=app-crypt/acme-0.26.0[${PYTHON_USEDEP}]
+	>=app-crypt/acme-0.29.0[${PYTHON_USEDEP}]
 	>=dev-python/configargparse-0.9.3[${PYTHON_USEDEP}]
 	dev-python/configobj[${PYTHON_USEDEP}]
 	>=dev-python/cryptography-1.2[${PYTHON_USEDEP}]
-	dev-python/josepy[${PYTHON_USEDEP}]
+	>=dev-python/josepy-1.1.0[${PYTHON_USEDEP}]
 	dev-python/mock[${PYTHON_USEDEP}]
 	>=dev-python/parsedatetime-1.3[${PYTHON_USEDEP}]
 	dev-python/pyrfc3339[${PYTHON_USEDEP}]
@@ -42,5 +42,7 @@ DEPEND="
 	)"
 
 python_test() {
+	# acme is not installed, removing it here is fine, the dir just confuses tests
+	rm -R acme
 	pytest -vv ${PN} || die
 }

@@ -1,10 +1,10 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
 DISTUTILS_OPTIONAL=1
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6,3_7} )
+PYTHON_COMPAT=( python{2_7,3_5,3_6,3_7} )
 
 inherit autotools distutils-r1 linux-info libtool eutils versionator
 
@@ -14,7 +14,7 @@ SRC_URI="mirror://kernel/linux/utils/${PN}/v$(get_version_component_range 1-2)/$
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 s390 ~sh sparc x86"
 CRYPTO_BACKENDS="+gcrypt kernel nettle openssl"
 # we don't support nss since it doesn't allow cryptsetup to be built statically
 # and it's missing ripemd160 support so it can't provide full backward compatibility

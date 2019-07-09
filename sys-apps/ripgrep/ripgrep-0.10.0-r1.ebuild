@@ -100,7 +100,7 @@ SRC_URI="$(cargo_crate_uris ${CRATES})"
 
 LICENSE="|| ( MIT Unlicense )"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 ~arm64 ~ppc64 ~x86"
 IUSE="+man pcre"
 
 RDEPEND="pcre? ( dev-libs/libpcre2 )"
@@ -111,16 +111,12 @@ DEPEND="${RDEPEND}
 
 QA_FLAGS_IGNORED="usr/bin/rg"
 
-src_test() {
-	cargo test || die "tests failed"
-}
-
 src_compile() {
 	cargo_src_compile $(usex pcre "--features pcre2" "")
 }
 
 src_install() {
-	cargo_src_install $(usex pcre "--features pcre2" "")
+	cargo_src_install --path=. $(usex pcre "--features pcre2" "")
 
 	# hack to find/install generated files
 	# stamp file can be present in multiple dirs if we build additional features

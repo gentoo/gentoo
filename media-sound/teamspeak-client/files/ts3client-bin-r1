@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# Sets BASEDIR for teamspeak3-client
+BASEDIR="/opt/teamspeak3-client"
+
+# Work around DT_RPATH (.) security issue by chdir'ing into expected $LD_LIBRARY_PATH
+export LD_LIBRARY_PATH="${BASEDIR}${LD_LIBRARY_PATH:+:}${LD_LIBRARY_PATH}"
+
+# Preload the library that provides calloc@Qt_5 and such (gentoo bug 675874)
+export LD_PRELOAD="${BASEDIR}/overrides.so${LD_PRELOAD:+:}${LD_PRELOAD}"
+
+# Launch teamspeak3-client
+cd "${BASEDIR}" && exec "${BASEDIR}/ts3client" $*

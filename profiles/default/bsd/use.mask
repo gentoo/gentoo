@@ -65,6 +65,6 @@ video_cards_nouveau
 # Linux only sane backends
 sane_backends_qcam
 
-# Diego E. Pettenò <flameeyes@gentoo.org> (19 oct 2010)
+# Diego E. Pettenò <flameeyes@gentoo.org> (2010-10-19)
 # unmasking flags that only apply to FreeBSD
 -kqueue

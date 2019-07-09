@@ -43,7 +43,7 @@ pkg_setup() {
 		$(usex alsa_cards_mixart mixartloader '')
 		$(usex alsa_cards_vx222 vxloader '')
 		$(usex alsa_cards_usb-usx2y usx2yloader '')
-		$(usex alsa_cards_pcxhr pcxhr '')
+		$(usex alsa_cards_pcxhr pcxhrloader '')
 		$(usex alsa_cards_sscape sscape_ctl '')
 	)
 

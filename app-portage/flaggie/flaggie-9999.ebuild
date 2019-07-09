@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
+PYTHON_COMPAT=( python{2_7,3_5,3_6} )
 
 EGIT_REPO_URI="https://github.com/mgorny/flaggie.git"
 inherit bash-completion-r1 distutils-r1 git-r3
@@ -16,11 +16,7 @@ SLOT="0"
 KEYWORDS=""
 IUSE=""
 
-RDEPEND="
-	|| (
-		sys-apps/portage[${PYTHON_USEDEP}]
-		sys-apps/portage-mgorny[${PYTHON_USEDEP}]
-	)"
+RDEPEND="sys-apps/portage[${PYTHON_USEDEP}]"
 
 python_install_all() {
 	newbashcomp contrib/bash-completion/${PN}.bash-completion ${PN}

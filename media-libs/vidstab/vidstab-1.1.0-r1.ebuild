@@ -15,7 +15,7 @@ if [[ ${PV} == *9999 ]] ; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/georgmartius/vid.stab/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~x86"
 	S="${WORKDIR}/vid.stab-${PV}"
 fi
 
@@ -25,6 +25,7 @@ IUSE="openmp cpu_flags_x86_sse2"
 PATCHES=(
 	"${FILESDIR}/vidstab-1.1.0-tests-should-exit-with-code-0-on-success.patch"
 	"${FILESDIR}/vidstab-1.1.0-tests-use-sse2-only-if-available.patch"
+	"${FILESDIR}/vidstab-1.1.0-tests-1.1.0-fix-test_motiondetect-without-openmp.patch"
 )
 src_prepare() {
 	# USE=cpu_flags_x86_sse2 instead

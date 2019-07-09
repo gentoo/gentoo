@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,19 +6,20 @@ EAPI=6
 inherit cmake-utils kodi-addon
 
 DESCRIPTION="Kodi PVR addon VNSI"
-HOMEPAGE="https://github.com/fernetmenta/pvr.vdr.vnsi"
+HOMEPAGE="https://github.com/kodi-pvr/pvr.vdr.vnsi"
 SRC_URI=""
 
 case ${PV} in
 9999)
 	SRC_URI=""
-	EGIT_REPO_URI="https://github.com/fernetmenta/pvr.vdr.vnsi.git"
+	EGIT_REPO_URI="https://github.com/kodi-pvr/pvr.vdr.vnsi.git"
 	inherit git-r3
 	;;
 *)
 	KEYWORDS="~amd64 ~x86"
-	SRC_URI="https://github.com/fernetmenta/pvr.vdr.vnsi/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	S="${WORKDIR}/pvr.vdr.vnsi-${PV}"
+	CODENAME="Leia"
+	SRC_URI="https://github.com/kodi-pvr/pvr.vdr.vnsi/archive/${PV}-${CODENAME}.tar.gz -> ${P}.tar.gz"
+	S="${WORKDIR}/pvr.vdr.vnsi-${PV}-${CODENAME}"
 	;;
 esac
 

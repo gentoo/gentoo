@@ -1,0 +1,18 @@
+--- a/build/ac-macros/swig.m4
++++ b/build/ac-macros/swig.m4
+@@ -137,13 +137,13 @@
+     AC_CACHE_CHECK([for apr_int64_t Python/C API format string],
+                    [svn_cv_pycfmt_apr_int64_t], [
+       if test "x$svn_cv_pycfmt_apr_int64_t" = "x"; then
+-        AC_EGREP_CPP([MaTcHtHiS +\"lld\" +EnDeNd],
++        AC_EGREP_CPP([MaTcHtHiS +\"ll(\" *\")?d\" +EnDeNd],
+                      [#include <apr.h>
+                       MaTcHtHiS APR_INT64_T_FMT EnDeNd],
+                      [svn_cv_pycfmt_apr_int64_t="L"])
+       fi
+       if test "x$svn_cv_pycfmt_apr_int64_t" = "x"; then
+-        AC_EGREP_CPP([MaTcHtHiS +\"ld\" +EnDeNd],r
++        AC_EGREP_CPP([MaTcHtHiS +\"l(\" *\")?d\" +EnDeNd],r
+                      [#include <apr.h>
+                       MaTcHtHiS APR_INT64_T_FMT EnDeNd],
+                      [svn_cv_pycfmt_apr_int64_t="l"])

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,8 +6,8 @@ EAPI=7
 inherit autotools systemd
 
 DESCRIPTION="A strong & robust keepalive facility to the Linux Virtual Server project"
-HOMEPAGE="http://www.keepalived.org/"
-SRC_URI="http://www.keepalived.org/software/${P}.tar.gz"
+HOMEPAGE="https://www.keepalived.org/"
+SRC_URI="https://www.keepalived.org/software/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

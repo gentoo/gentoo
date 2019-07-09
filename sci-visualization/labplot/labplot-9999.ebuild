@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 KDE_HANDBOOK="forceoptional"
 KDE_TEST="forceoptional"
@@ -15,7 +15,12 @@ LICENSE="GPL-2"
 KEYWORDS=""
 IUSE="cantor fftw fits hdf5 libcerf netcdf root"
 
-COMMON_DEPEND="
+# not packaged: dev-qt/qtmqtt, bug 683994
+BDEPEND="
+	sys-devel/bison
+	sys-devel/gettext
+"
+DEPEND="
 	$(add_frameworks_dep karchive)
 	$(add_frameworks_dep kcompletion)
 	$(add_frameworks_dep kconfig)
@@ -23,7 +28,9 @@ COMMON_DEPEND="
 	$(add_frameworks_dep kcoreaddons)
 	$(add_frameworks_dep ki18n)
 	$(add_frameworks_dep kiconthemes)
+	$(add_frameworks_dep kio)
 	$(add_frameworks_dep knewstuff)
+	$(add_frameworks_dep kcrash)
 	$(add_frameworks_dep ktextwidgets)
 	$(add_frameworks_dep kwidgetsaddons)
 	$(add_frameworks_dep kxmlgui)
@@ -52,14 +59,7 @@ COMMON_DEPEND="
 		sys-libs/zlib
 	)
 "
-DEPEND="${COMMON_DEPEND}
-	sys-devel/bison
-	sys-devel/gettext
-	x11-misc/shared-mime-info
-"
-RDEPEND="${COMMON_DEPEND}
-	!sci-visualization/labplot:4
-"
+RDEPEND="${DEPEND}"
 
 src_configure() {
 	local mycmakeargs=(
@@ -70,7 +70,8 @@ src_configure() {
 		-DENABLE_LIBCERF=$(usex libcerf)
 		-DENABLE_NETCDF=$(usex netcdf)
 		-DENABLE_ROOT=$(usex root)
-		-DENABLE_TEST=$(usex test)
+		-DENABLE_TESTS=$(usex test)
+		-DENABLE_MQTT=OFF
 	)
 
 	kde5_src_configure

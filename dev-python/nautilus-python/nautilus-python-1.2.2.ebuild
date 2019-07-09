@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,7 +13,7 @@ HOMEPAGE="https://projects.gnome.org/nautilus-python/"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm64 ~x86"
+KEYWORDS="~alpha amd64 ~arm64 x86"
 IUSE=""
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 

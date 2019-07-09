@@ -1,28 +1,25 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
+
 inherit autotools
 
 DESCRIPTION="Program for adjusting soundcard volumes"
-HOMEPAGE="http://umix.sf.net"
+HOMEPAGE="http://umix.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~alpha ~amd64 ~ppc ~sparc ~x86"
+KEYWORDS="alpha amd64 ppc sparc x86"
 IUSE="ncurses oss"
 
 DEPEND="ncurses? ( >=sys-libs/ncurses-5.2:= )"
-RDEPEND="
-	${DEPEND}
-"
-PATCHES=(
-	"${FILESDIR}"/${P}-tinfo.patch
-)
-DOCS=(
-	AUTHORS ChangeLog NEWS README TODO
-)
+RDEPEND="${DEPEND}"
+
+DOCS=( AUTHORS ChangeLog NEWS README TODO )
+
+PATCHES=( "${FILESDIR}"/${P}-tinfo.patch )
 
 src_prepare() {
 	default

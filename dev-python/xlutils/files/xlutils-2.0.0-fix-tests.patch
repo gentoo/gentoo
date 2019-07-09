@@ -1,0 +1,23 @@
+From e9edf279ba2e699be92da7611368cf92b4d87cec Mon Sep 17 00:00:00 2001
+From: Chris Withers <chris@simplistix.co.uk>
+Date: Wed, 4 Apr 2018 08:05:06 +0100
+Subject: [PATCH] fix test expectations
+
+---
+ xlutils/tests/test_view.py | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/xlutils/tests/test_view.py b/xlutils/tests/test_view.py
+index 7b32892..5b4aa2b 100644
+--- a/xlutils/tests/test_view.py
++++ b/xlutils/tests/test_view.py
+@@ -219,6 +219,8 @@ def test_does_not_match(self):
+ ('XX',)
+ 
+ actual:
+-(u'',)'''
++(u'',)
++
++While comparing [5][1]: 'XX' (expected) != u'' (actual)'''
+ 
+         compare(expected, actual=str(s.raised))

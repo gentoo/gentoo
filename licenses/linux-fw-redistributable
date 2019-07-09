@@ -1,0 +1,7 @@
+Gentoo license note:
+
+Linux firmware images are distributed under a variety of licenses,
+many of them being non-free. However, all images whose license is
+subsumed under this license label should at least be redistributable.
+You will need to check the WHENCE and LICEN[CS]E.* files in the
+package for specific licensing terms.

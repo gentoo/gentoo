@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -43,7 +43,6 @@ src_configure() {
 		-DWITH_FFTW=$(usex fftw)
 		-DWITH_SQLITE3=$(usex sqlite)
 		-DWITH_RC_FILES=OFF
-		-DLIB=$(get_libdir)
 	)
 	cmake-utils_src_configure
 }

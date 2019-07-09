@@ -1,0 +1,9 @@
+--- a/setup.py
++++ b/setup.py
+@@ -50,6 +50,5 @@
+     packages=find_packages(),
+     #scripts=["PSL/bin/"+a for a in os.listdir("PSL/bin/")],
+     package_data={'': ['*.css','*.png','*.gif','*.html','*.css','*.js','*.png','*.jpg','*.jpeg','*.htm','99-pslab.rules']},
+-    cmdclass={'install': CustomInstall},
+ )
+ 

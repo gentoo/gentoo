@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,7 +12,7 @@ ARCHIVE_URI="https://github.com/golang/tools/archive/${EGIT_COMMIT}.tar.gz -> ${
 KEYWORDS="~amd64 ~arm ~x86"
 inherit golang-build golang-vcs-snapshot
 
-DESCRIPTION="Go Tools"
+DESCRIPTION="Tools that support the Go programming language (godoc, etc.)"
 HOMEPAGE="https://godoc.org/golang.org/x/tools"
 GO_FAVICON="go-favicon-20181103162401.ico"
 SRC_URI="${ARCHIVE_URI}
@@ -47,6 +47,7 @@ src_prepare() {
 }
 
 src_compile() {
+	export -n GOCACHE XDG_CACHE_HOME #678964
 	# Generate static.go with favicon included
 	pushd src/golang.org/x/tools/godoc/static >/dev/null || die
 	GOPATH="${S}:$(get_golibdir_gopath)" \

@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-USE_RUBY="ruby23 ruby24 ruby25"
+USE_RUBY="ruby23 ruby24 ruby25 ruby26"
 
 RUBY_FAKEGEM_TASK_TEST="MT_NO_PLUGINS=true test"
 RUBY_FAKEGEM_TASK_DOC="-Ilib doc"
@@ -21,7 +21,7 @@ SRC_URI="https://github.com/haml/haml/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="5"
-KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 
 IUSE="doc test"
 

@@ -1,12 +1,12 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit autotools fdo-mime flag-o-matic multilib-minimal
 
 DESCRIPTION="C++ user interface toolkit for X and OpenGL"
-HOMEPAGE="http://www.fltk.org/"
-SRC_URI="http://fltk.org/pub/${PN}/${PV}/${P}-source.tar.gz"
+HOMEPAGE="https://www.fltk.org/"
+SRC_URI="https://www.fltk.org/pub/${PN}/${PV}/${P}-source.tar.gz"
 
 SLOT="1"
 LICENSE="FLTK LGPL-2"

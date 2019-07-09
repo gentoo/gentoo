@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=( python{3_4,3_5,3_6,3_7} )
+PYTHON_COMPAT=( python{3_5,3_6,3_7} )
 
-inherit cmake-utils gnome2-utils python-single-r1
+inherit cmake-utils python-single-r1 xdg-utils
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
@@ -24,7 +24,11 @@ SLOT="0"
 IUSE="+alsa fdk imagemagick jack luajit nvenc pulseaudio python speex truetype v4l"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
-COMMON_DEPEND="
+BDEPEND="
+	luajit? ( dev-lang/swig )
+	python? ( dev-lang/swig )
+"
+DEPEND="
 	>=dev-libs/jansson-2.5
 	dev-qt/qtcore:5
 	dev-qt/qtdeclarative:5
@@ -33,6 +37,7 @@ COMMON_DEPEND="
 	dev-qt/qtnetwork:5
 	dev-qt/qtquickcontrols:5
 	dev-qt/qtsql:5
+	dev-qt/qtsvg:5
 	dev-qt/qttest:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtx11extras:5
@@ -61,11 +66,7 @@ COMMON_DEPEND="
 	)
 	v4l? ( media-libs/libv4l )
 "
-DEPEND="${COMMON_DEPEND}
-	luajit? ( dev-lang/swig )
-	python? ( dev-lang/swig )
-"
-RDEPEND="${COMMON_DEPEND}"
+RDEPEND="${DEPEND}"
 
 CMAKE_REMOVE_MODULES_LIST=( FindFreetype )
 
@@ -102,7 +103,7 @@ src_configure() {
 }
 
 pkg_postinst() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 
 	if ! use alsa && ! use pulseaudio; then
 		elog
@@ -124,5 +125,5 @@ pkg_postinst() {
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }

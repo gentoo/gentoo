@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="project">
-		<email>cpp@gentoo.org</email>
-		<name>Gentoo C++ Project</name>
+	<maintainer type="person">
+		<email>steils@gentoo.org</email>
+		<name>Stefan Strogin</name>
 	</maintainer>
 	<upstream>
 		<remote-id type="sourceforge">asio</remote-id>

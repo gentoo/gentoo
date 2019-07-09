@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,7 @@ MY_PN="${PN/PEAR-/}"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="A PHP implementation of the SMTP protocol"
-HOMEPAGE="http://pear.php.net/package/Net_SMTP"
+HOMEPAGE="https://pear.php.net/package/Net_SMTP"
 LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"

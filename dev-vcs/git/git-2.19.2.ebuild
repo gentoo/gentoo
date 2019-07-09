@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -69,6 +69,7 @@ CDEPEND="
 		webdav? ( dev-libs/expat )
 	)
 	emacs? ( virtual/emacs )
+	iconv? ( virtual/libiconv )
 "
 
 RDEPEND="${CDEPEND}
@@ -76,7 +77,6 @@ RDEPEND="${CDEPEND}
 	perl? (
 		dev-perl/Error
 		dev-perl/MailTools
-		dev-perl/Net-SMTP-SSL
 		dev-perl/Authen-SASL
 		cgi? (
 			dev-perl/CGI
@@ -165,7 +165,7 @@ exportmakeopts() {
 		$(usex perl 'INSTALLDIRS=vendor NO_PERL_CPAN_FALLBACKS=YesPlease' NO_PERL=YesPlease)
 		$(usex python '' NO_PYTHON=YesPlease)
 		$(usex subversion '' NO_SVN_TESTS=YesPlease)
-		$(usex threads THREADED_DELTA_SEARCH=YesPlease NO_PTHREAD=YesPlease)
+		$(usex threads '' NO_PTHREAD=YesPlease)
 		$(usex tk '' NO_TCLTK=YesPlease)
 	)
 
@@ -242,8 +242,10 @@ exportmakeopts() {
 
 	# Bug 290465:
 	# builtin-fetch-pack.c:816: error: 'struct stat' has no member named 'st_mtim'
-	[[ "${CHOST}" == *-uclibc* ]] && \
+	if [[ "${CHOST}" == *-uclibc* ]] ; then
 		myopts+=( NO_NSEC=YesPlease )
+		use iconv && myopts+=( NEEDS_LIBICONV=YesPlease )
+	fi
 
 	export MY_MAKEOPTS="${myopts[@]}"
 	export EXTLIBS="${extlibs}"

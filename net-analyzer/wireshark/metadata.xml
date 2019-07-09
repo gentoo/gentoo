@@ -29,15 +29,15 @@ be exported to XML, PostScript®, CSV, or plain text.
 <use>
 <flag name="adns">Use <pkg>net-dns/c-ares</pkg> to resolve DNS names</flag>
 <flag name="androiddump">Install androiddump, an extcap interface to capture from Android devices</flag>
-<flag name="bcg729">Use <pkg>media-plugins/mediastreamer-bcg729</pkg> to play G.729 codec</flag>
+<flag name="bcg729">Use <pkg>media-libs/bcg729</pkg> for G.729 codec support in RTP Player</flag>
+<flag name="brotli">Use <pkg>app-arch/brotli</pkg> for compression/decompression</flag>
 <flag name="capinfos">Install capinfos, to print information about capture files</flag>
 <flag name="captype">Install captype, to print the file types of capture files</flag>
 <flag name="ciscodump">Install ciscodump, extcap interface to capture from a remote Cisco router</flag>
 <flag name="dftest">Install dftest, to display filter byte-code, for debugging dfilter routines</flag>
-<flag name="doc-pdf">Build documentation in pdf format (US and a4 paper sizes)</flag>
+<flag name="dpauxmon">Install dpauxmon, an external capture interface (extcap) that captures DisplayPort AUX channel data from linux kernel drivers</flag>
 <flag name="dumpcap">Install dumpcap, to dump network traffic from inside wireshark</flag>
 <flag name="editcap">Install editcap, to edit and/or translate the format of capture files</flag>
-<flag name="libssh">Use <pkg>net-libs/libssh</pkg> (for sshdump)</flag>
 <flag name="libxml2">Use <pkg>dev-libs/libxml2</pkg> for handling XML configuration in dissectors</flag>
 <flag name="lz4">Use <pkg>app-arch/lz4</pkg> for compression/decompression</flag>
 <flag name="maxminddb">Use <pkg>dev-libs/libmaxminddb</pkg> for IP address geolocation</flag>
@@ -45,10 +45,13 @@ be exported to XML, PostScript®, CSV, or plain text.
 <flag name="netlink">Use <pkg>dev-libs/libnl</pkg></flag>
 <flag name="nghttp2">Use <pkg>net-libs/nghttp2</pkg> for HTTP/2 support</flag>
 <flag name="pcap">Use <pkg>net-libs/libpcap</pkg> for network packet capturing (build dumpcap, rawshark)</flag>
+<flag name="plugin_ifdemo">Install plugin interface demo</flag>
+<flag name="plugins">Install plugins</flag>
 <flag name="randpkt">Install randpkt, a utility for creating pcap trace files full of random packets</flag>
 <flag name="randpktdump">Install randpktdump, an extcap interface to provide access to the random packet generator (randpkt)</flag>
 <flag name="reordercap">Install reordercap, to reorder input file by timestamp into output file</flag>
 <flag name="sbc">Use <pkg>media-libs/sbc</pkg> for playing back SBC encoded packets</flag>
+<flag name="sdjournal">Install sdjournal, an extcap that captures systemd journal entries</flag>
 <flag name="sharkd">Install sharkd, the daemon variant of wireshark</flag>
 <flag name="smi">Use <pkg>net-libs/libsmi</pkg> to resolve numeric OIDs into human readable format</flag>
 <flag name="snappy">Use <pkg>app-arch/snappy</pkg> for snappy compression and decompression</flag>

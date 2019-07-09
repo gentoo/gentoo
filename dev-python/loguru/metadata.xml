@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>gyakovlev@gentoo.org</email>
+		<name>Georgy Yakovlev</name>
+	</maintainer>
+	<longdescription lang="en">
+		This library is intended to make Python logging less painful by adding a bunch of useful functionalities that solve caveats of the standard loggers.
+		Using logs in your application should be an automatism, Loguru tries to make it both pleasant and powerful.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">Delgan/loguru</remote-id>
+		<remote-id type="pypi">loguru</remote-id>
+	</upstream>
+</pkgmetadata>

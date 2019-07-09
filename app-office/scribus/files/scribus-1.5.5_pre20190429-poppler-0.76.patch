@@ -1,0 +1,59 @@
+From aeea6a2ed4cb15ce8c35bb83066ef03e4e04b29b Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Thu, 2 May 2019 00:08:12 +0200
+Subject: [PATCH] Fix build with poppler-0.76
+
+findPage(int num, int gen) -> findPage(const Ref ref)
+
+https://gitlab.freedesktop.org/poppler/poppler/commit/244c7d6926463b079b1f96e34d9e4451d352942e
+---
+ scribus/plugins/import/pdf/slaoutput.cpp | 12 ++++--------
+ 1 file changed, 4 insertions(+), 8 deletions(-)
+
+diff --git a/scribus/plugins/import/pdf/slaoutput.cpp b/scribus/plugins/import/pdf/slaoutput.cpp
+index fe9794a65..b25082de6 100644
+--- a/scribus/plugins/import/pdf/slaoutput.cpp
++++ b/scribus/plugins/import/pdf/slaoutput.cpp
+@@ -429,8 +429,7 @@ bool SlaOutputDev::handleLinkAnnot(Annot* annota, double xCoor, double yCoor, do
+ 			{
+ 				if (dst->isPageRef())
+ 				{
+-					Ref dstr = dst->getPageRef();
+-					pagNum = pdfDoc->findPage(dstr.num, dstr.gen);
++					pagNum = pdfDoc->findPage(dst->getPageRef());
+ 				}
+ 				else
+ 					pagNum = dst->getPageNum();
+@@ -451,8 +450,7 @@ bool SlaOutputDev::handleLinkAnnot(Annot* annota, double xCoor, double yCoor, do
+ 					{
+ 						if (dstn->isPageRef())
+ 						{
+-							Ref dstr = dstn->getPageRef();
+-							pagNum = pdfDoc->findPage(dstr.num, dstr.gen);
++							pagNum = pdfDoc->findPage(dstn->getPageRef());
+ 						}
+ 						else
+ 							pagNum = dstn->getPageNum();
+@@ -931,8 +929,7 @@ void SlaOutputDev::handleActions(PageItem* ite, AnnotWidget *ano)
+ 				{
+ 					if (dst->isPageRef())
+ 					{
+-						Ref dstr = dst->getPageRef();
+-						pagNum = pdfDoc->findPage(dstr.num, dstr.gen);
++						pagNum = pdfDoc->findPage(dst->getPageRef());
+ 					}
+ 					else
+ 						pagNum = dst->getPageNum();
+@@ -955,8 +952,7 @@ void SlaOutputDev::handleActions(PageItem* ite, AnnotWidget *ano)
+ 						{
+ 							if (dstn->isPageRef())
+ 							{
+-								Ref dstr = dstn->getPageRef();
+-								pagNum = pdfDoc->findPage(dstr.num, dstr.gen);
++								pagNum = pdfDoc->findPage(dstn->getPageRef());
+ 							}
+ 							else
+ 								pagNum = dstn->getPageNum();
+-- 
+2.21.0
+

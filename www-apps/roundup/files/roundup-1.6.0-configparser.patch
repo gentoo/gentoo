@@ -1,0 +1,40 @@
+changeset:   5625:99175953520e
+branch:      maint-1.6
+parent:      5537:d698d3d843a9
+user:        Joseph Myers <jsm@polyomino.org.uk>
+date:        Mon Aug 20 00:50:16 2018 +0000
+files:       CHANGES.txt roundup/configuration.py
+description:
+Fix issue2550994: breakage caused by configparser backports.
+
+
+diff -r d698d3d843a9 -r 99175953520e roundup/configuration.py
+--- a/roundup/configuration.py	Thu Sep 06 17:04:49 2018 -0400
++++ b/roundup/configuration.py	Mon Aug 20 00:50:16 2018 +0000
+@@ -2,9 +2,15 @@
+ #
+ __docformat__ = "restructuredtext"
+ 
+-try:
++# Some systems have a backport of the Python 3 configparser module to
++# Python 2: <https://pypi.org/project/configparser/>.  That breaks
++# Roundup if used with Python 2 because it generates unicode objects
++# where not expected by the Python code.  Thus, a version check is
++# used here instead of try/except.
++import sys
++if sys.version_info[0] > 2:
+     import configparser			# Python 3
+-except ImportError:
++else:
+     import ConfigParser as configparser	# Python 2
+ 
+ import getopt
+@@ -12,7 +18,6 @@
+ import logging, logging.config
+ import os
+ import re
+-import sys
+ import time
+ import smtplib
+ 
+

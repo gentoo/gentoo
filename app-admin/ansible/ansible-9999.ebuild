@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{5,6} )
+PYTHON_COMPAT=( python2_7 python3_{5,6,7} )
 
 inherit distutils-r1 git-r3 eutils
 
@@ -16,6 +16,7 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS=""
 IUSE="doc test"
+RESTRICT="test"
 
 RDEPEND="
 	dev-python/paramiko[${PYTHON_USEDEP}]

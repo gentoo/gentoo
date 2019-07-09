@@ -5,6 +5,14 @@
 		<email>aidecoe@gentoo.org</email>
 		<name>Amadeusz Żołnowski</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>guillaumeseren@gmail.com</email>
+		<name>Guillaume Seren</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<use>
 		<flag name="doc">Install user manual and API documentation</flag>
 	</use>

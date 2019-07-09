@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit eutils git-r3 systemd toolchain-funcs
+EAPI=7
+inherit git-r3 systemd toolchain-funcs
 
 DESCRIPTION="NTP client and server programs"
 HOMEPAGE="https://chrony.tuxfamily.org/"
@@ -35,7 +35,7 @@ RESTRICT=test
 S="${WORKDIR}/${P/_/-}"
 
 PATCHES=(
-	"${FILESDIR}"/chronyd-systemd-gentoo.patch
+	"${FILESDIR}"/${PN}-3.5-systemd-gentoo.patch
 )
 
 src_prepare() {

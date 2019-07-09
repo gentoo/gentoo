@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,7 +12,7 @@ HOMEPAGE="https://www.courier-mta.org/maildrop/"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 s390 ~sh sparc x86"
 IUSE="berkdb debug dovecot fam gdbm ldap mysql postgres static-libs authlib +tools trashquota"
 
 CDEPEND="!mail-mta/courier
@@ -128,7 +128,6 @@ src_install() {
 		for tool in "maildirmake" "deliverquota"; do
 			rm "${D}/usr/bin/${tool}" || die
 			rm "${D}/usr/share/man/man"[0-9]"/${tool}."[0-9] || die
-			rm "${D}/usr/share/maildrop/html/${tool}.html" || die
 		done
 		rm "${D}/usr/share/man/man5/maildir.5" || die
 	fi

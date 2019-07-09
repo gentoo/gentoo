@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -14,7 +14,7 @@ CCTOOLS=cctools-750
 LP64PATCHES=binutils-apple-LP64-patches-1
 
 DESCRIPTION="Darwin assembler as(1) and static linker ld(1), Xcode Tools 3.2"
-HOMEPAGE="http://www.opensource.apple.com/darwinsource/"
+HOMEPAGE="http://www.opensource.apple.com/"
 SRC_URI="https://opensource.apple.com/tarballs/ld64/${LD64}.tar.gz
 	https://opensource.apple.com/tarballs/cctools/${CCTOOLS}.tar.gz
 	https://dev.gentoo.org/~grobian/distfiles/${LP64PATCHES}.tar.bz2

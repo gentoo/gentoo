@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ SRC_URI="mirror://gentoo/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="2/8"
-KEYWORDS="~amd64 ~ia64 ~ppc ~sparc ~x86"
+KEYWORDS="alpha amd64 ia64 ppc ~sparc x86"
 IUSE="hyperspec X berkdb dbus fastcgi gdbm gtk +pcre postgres +readline svm -threads +unicode +zlib"
 # "jit" disabled ATM
 

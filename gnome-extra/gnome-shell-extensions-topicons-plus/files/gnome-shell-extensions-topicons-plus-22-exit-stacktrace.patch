@@ -1,0 +1,62 @@
+From e883e62a36c342bdf2e31af9d328b10f4ce61112 Mon Sep 17 00:00:00 2001
+From: Martin Wilck <mwilck@suse.com>
+Date: Tue, 19 Mar 2019 09:39:36 +0100
+Subject: [PATCH] Fix shell stack trace when removing icon
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+This fixes stacktraces like this when an application with a tray icon exits:
+
+Mar 19 09:09:53 apollon.suse.de gnome-shell[6868]: Object Shell.TrayIcon (0x5588a424ef80), has been already deallocated — impossible to access it. This might be caused by the object having been destroyed from C code using something such as destroy(), dispose(), or remove() vfuncs.
+Mar 19 09:09:53 apollon.suse.de gnome-shell[6868]: clutter_actor_destroy: assertion 'CLUTTER_IS_ACTOR (self)' failed
+Mar 19 09:09:53 apollon.suse.de org.gnome.Shell.desktop[6868]: == Stack trace for context 0x5588a17911b0 ==
+Mar 19 09:09:53 apollon.suse.de org.gnome.Shell.desktop[6868]: #0   5588a2b96d60 i   /home/mwilck/.local/share/gnome-shell/extensions/TopIcons@phocean.net/extension.js:127 (7feca5a061f0 @ 92)
+---
+ extension.js | 22 +++++++++++++++++++++-
+ 1 file changed, 21 insertions(+), 1 deletion(-)
+
+diff --git a/extension.js b/extension.js
+index 113b8ef..58a0433 100644
+--- a/extension.js
++++ b/extension.js
+@@ -31,6 +31,7 @@ const PanelMenu = imports.ui.panelMenu;
+ const ExtensionUtils = imports.misc.extensionUtils;
+ const Me = ExtensionUtils.getCurrentExtension();
+ const Convenience = Me.imports.convenience;
++const Config = imports.misc.config;
+ 
+ let settings = null;
+ let tray = null;
+@@ -118,7 +119,8 @@ function onTrayIconRemoved(o, icon) {
+     let parent = icon.get_parent();
+     if (parent)
+          parent.destroy();
+-    icon.destroy();
++    if (!parent || !versionAtLeast('3.30', Config.PACKAGE_VERSION))
++	icon.destroy();
+     icons.splice(icons.indexOf(icon), 1);
+ 
+     if (icons.length === 0)
+@@ -389,3 +391,21 @@ function setSpacing() {
+     iconsBoxLayout.set_style('spacing: ' + boxLayoutSpacing + 'px; margin_top: 2px; margin_bottom: 2px;');
+ 
+ }
++
++// Code copied from PanelOSD extension (GPL 2.0)
++function versionAtLeast(atleast, current) {
++    let currentArray = current.split('.');
++    let major = currentArray[0];
++    let minor = currentArray[1];
++    let point = currentArray[2];
++    let atleastArray = atleast.split('.');
++    if ((atleastArray[0] < major) ||
++        (atleastArray[0] == major &&
++         atleastArray[1] < minor) ||
++        (atleastArray[0] == major &&
++         atleastArray[1] == minor) &&
++        (atleastArray[2] == undefined ||
++         atleastArray[2] <= point))
++        return true;
++    return false;
++}

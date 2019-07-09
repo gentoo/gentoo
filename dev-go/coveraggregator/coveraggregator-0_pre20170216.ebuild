@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,6 +15,11 @@ SLOT="0"
 IUSE=""
 DEPEND="dev-go/go-tools:="
 RDEPEND=""
+
+src_compile() {
+	export -n GOCACHE XDG_CACHE_HOME #681202
+	golang-build_src_compile
+}
 
 src_install() {
 	dobin ${PN}

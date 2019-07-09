@@ -9,6 +9,10 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
 	<upstream>
 		<remote-id type="github">yquake2/yquake2</remote-id>
 	</upstream>

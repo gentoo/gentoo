@@ -1,6 +1,9 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# @DEAD
+# Removal on 2019-06-02.
+
 # @ECLASS: xfconf.eclass
 # @MAINTAINER:
 # XFCE maintainers <xfce@gentoo.org>

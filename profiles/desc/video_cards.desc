@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation.
+# Copyright 1999-2019 Gentoo Authors.
 # Distributed under the terms of the GNU General Public License v2
 
 # This file contains descriptions of VIDEO_CARDS USE_EXPAND flags.
@@ -17,8 +17,8 @@ i915 - VIDEO_CARDS setting to build driver for Intel i915 video cards
 i965 - VIDEO_CARDS setting to build driver for Intel i965 video cards
 imx - VIDEO_CARDS setting to build driver for Freescale i.MX video cards
 intel - VIDEO_CARDS setting to build driver for Intel video cards
+iris - VIDEO_CARDS setting to build driver for Intel video cards Gen8 / Broadwell or newer
 mga - VIDEO_CARDS setting to build driver for mga video cards
-newport - VIDEO_CARDS setting to build driver for newport video cards
 nouveau - VIDEO_CARDS setting to build reverse-engineered driver for nvidia cards
 nvidia - VIDEO_CARDS setting to build driver for nvidia video cards
 nv - VIDEO_CARDS setting to build driver for nv video cards
@@ -32,7 +32,6 @@ r600 - VIDEO_CARDS setting to build only r600, r700, Evergreen and Northern Isla
 radeon - VIDEO_CARDS setting to build driver for ATI radeon video cards
 radeonsi - VIDEO_CARDS setting to build only Southern Islands based chips code for radeon
 siliconmotion - VIDEO_CARDS setting to build driver for siliconmotion video cards
-tdfx - VIDEO_CARDS setting to build driver for tdfx video cards
 tegra - VIDEO_CARDS setting to build driver for tegra video cards
 vc4 - VIDEO_CARDS setting to build driver for vc4 video cards
 vesa - VIDEO_CARDS setting to build driver for vesa video cards
@@ -41,4 +40,3 @@ virgl - VIDEO_CARDS setting to build driver for virgil (virtual 3D GPU)
 virtualbox - VIDEO_CARDS setting to build driver for virtualbox emulation
 vivante - VIDEO_CARDS setting to build etnaviv driver for vivante video cards
 vmware - VIDEO_CARDS setting to build driver for vmware video cards
-voodoo - VIDEO_CARDS setting to build driver for voodoo video cards

@@ -1,0 +1,28 @@
+From dffb8b7722865a82c3a5d7ce9615b6da2313d583 Mon Sep 17 00:00:00 2001
+Message-Id: <dffb8b7722865a82c3a5d7ce9615b6da2313d583.1486417682.git.tommyhebb@gmail.com>
+From: Thomas Hebb <tommyhebb@gmail.com>
+Date: Mon, 6 Feb 2017 21:44:06 +0000
+Subject: [PATCH] Remove deprecated gnome-python dependency from configure.ac
+
+The code has not depended on the module for many years (the module was
+removed in 125cf9dc28f95617fc3b37bc29a714f708b7d2ef); however, the
+configure script was never updated to match.
+---
+ configure.ac | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index bdfae2a..5b6ad72 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -19,7 +19,6 @@ RVL_FDO_MIME()
+ RVL_PYTHON_MODULE(Crypto, yes)
+ RVL_PYTHON_MODULE(gconf, yes)
+ RVL_PYTHON_MODULE(gtk, yes)
+-RVL_PYTHON_MODULE(gnome, yes)
+ RVL_PYTHON_MODULE(gio, yes)
+ RVL_PYTHON_MODULE(gobject, yes)
+ RVL_PYTHON_MODULE(pango, yes)
+-- 
+2.11.1
+

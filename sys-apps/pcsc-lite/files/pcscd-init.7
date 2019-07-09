@@ -1,5 +1,5 @@
 #!/sbin/openrc-run
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 name="PC/SC Daemon"
@@ -18,5 +18,5 @@ depend() {
 }
 
 start_pre() {
-	checkpath -d -m 0755 -o pcscd:pcscd /run/pcscd
+	checkpath -q -d -m 0755 -o pcscd:pcscd /run/pcscd
 }

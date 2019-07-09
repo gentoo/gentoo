@@ -1,13 +1,13 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-DESCRIPTION="Website Pre-processor"
-HOMEPAGE="http://www.wsmake.org/"
-SRC_URI="http://ftp.wsmake.org/pub/wsmake6/stable/${P}.tar.bz2"
+DESCRIPTION="Website pre-processor features tag substitution and page ordering"
+HOMEPAGE="https://sourceforge.net/projects/wsmake/"
+SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 
-LICENSE="GPL-2 Artistic"
+LICENSE="GPL-2+ Artistic"
 SLOT="0"
 KEYWORDS="x86"
 IUSE="examples"

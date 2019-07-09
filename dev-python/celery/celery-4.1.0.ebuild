@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
+PYTHON_COMPAT=( python2_7 python3_{5,6} )
 
 inherit distutils-r1 bash-completion-r1
 
@@ -52,8 +52,8 @@ DEPEND="
 		>=dev-python/sphinx_celery-1.3[${PYTHON_USEDEP}]
 		dev-python/jinja[${PYTHON_USEDEP}]
 		dev-python/sqlalchemy[${PYTHON_USEDEP}]
-		$(python_gen_cond_dep 'dev-python/typing[${PYTHON_USEDEP}]' python2_7 python3_4)
-		)"
+		$(python_gen_cond_dep 'dev-python/typing[${PYTHON_USEDEP}]' python2_7)
+	)"
 
 # testsuite needs it own source
 DISTUTILS_IN_SOURCE_BUILD=1

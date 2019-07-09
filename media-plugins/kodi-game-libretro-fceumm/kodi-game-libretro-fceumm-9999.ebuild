@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,8 +15,9 @@ if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
 else
 	KEYWORDS="~amd64 ~x86"
-	SRC_URI="https://github.com/kodi-game/game.libretro.fceumm/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	S="${WORKDIR}/game.libretro.fceumm-${PV}"
+	CODENAME="Leia"
+	SRC_URI="https://github.com/kodi-game/game.libretro.fceumm/archive/${PV}-${CODENAME}.tar.gz -> ${P}.tar.gz"
+	S="${WORKDIR}/game.libretro.fceumm-${PV}-${CODENAME}"
 fi
 
 LICENSE="GPL-2"

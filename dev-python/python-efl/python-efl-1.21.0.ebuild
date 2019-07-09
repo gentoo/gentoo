@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{4..7} )
+PYTHON_COMPAT=( python2_7 python3_{5..7} )
 inherit distutils-r1
 
 DESCRIPTION="Python bindings for Enlightenment Foundation Libraries"
@@ -12,7 +12,7 @@ SRC_URI="https://download.enlightenment.org/rel/bindings/python/${P}.tar.xz"
 
 LICENSE="|| ( GPL-3 LGPL-3 )"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="doc test"
 
 RDEPEND="

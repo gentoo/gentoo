@@ -1,0 +1,13 @@
+diff --git a/src/common/blkdev.cc b/src/common/blkdev.cc
+index d95a397a84..d2cbf4b7b9 100644
+--- a/src/common/blkdev.cc
++++ b/src/common/blkdev.cc
+@@ -225,7 +225,7 @@ int get_device_by_uuid(uuid_d dev_uuid, const char* label, char* partition,
+     rc = get_block_device_base(partition, basename,
+       sizeof(basename));
+     if (rc >= 0) {
+-      strncpy(device, basename, sizeof(basename));
++      strncpy(device, basename, sizeof(device));
+       rc = 0;
+     } else {
+       rc = -ENODEV;

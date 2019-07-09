@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -32,14 +32,19 @@ ALL_LLVM_TARGETS=( "${ALL_LLVM_TARGETS[@]/#/llvm_targets_}" )
 LICENSE="UoI-NCSA rc BSD public-domain
 	llvm_targets_ARM? ( LLVM-Grant )"
 SLOT="$(ver_cut 1)"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86 ~amd64-fbsd ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="amd64 ~arm arm64 ~ppc64 x86 ~amd64-fbsd ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="debug doc gold libedit +libffi ncurses test xar xml
 	kernel_Darwin ${ALL_LLVM_TARGETS[*]}"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
 	sys-libs/zlib:0=
-	gold? ( >=sys-devel/binutils-2.22:*[cxx] )
+	gold? (
+		|| (
+			>=sys-devel/binutils-2.31.1-r4:*[plugins]
+			<sys-devel/binutils-2.31.1-r4:*[cxx]
+		)
+	)
 	libedit? ( dev-libs/libedit:0=[${MULTILIB_USEDEP}] )
 	libffi? ( >=virtual/libffi-3.0.13-r1:0=[${MULTILIB_USEDEP}] )
 	ncurses? ( >=sys-libs/ncurses-5.9-r3:0=[${MULTILIB_USEDEP}] )
@@ -78,7 +83,7 @@ CMAKE_BUILD_TYPE=RelWithDebInfo
 src_prepare() {
 	# Fix llvm-config for shared linking and sane flags
 	# https://bugs.gentoo.org/show_bug.cgi?id=565358
-	eapply "${FILESDIR}"/7.0.9999/0007-llvm-config-Clean-up-exported-values-update-for-shar.patch
+	eapply "${FILESDIR}"/7.1.0/0007-llvm-config-Clean-up-exported-values-update-for-shar.patch
 
 	# Fix appending -Wl,-rpath-link on non-Linux (-> FreeBSD).
 	eapply "${FILESDIR}"/6.0.1/0001-cmake-Append-Wl-rpath-link-conditionally-to-GNULD.patch

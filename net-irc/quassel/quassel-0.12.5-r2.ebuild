@@ -6,7 +6,7 @@ EAPI=6
 inherit cmake-utils gnome2-utils pax-utils systemd user versionator
 
 if [[ ${PV} != *9999* ]]; then
-	SRC_URI="http://quassel-irc.org/pub/${P}.tar.bz2"
+	SRC_URI="https://quassel-irc.org/pub/${P}.tar.bz2"
 	KEYWORDS="amd64 ~arm ~ppc x86 ~amd64-linux ~sparc-solaris"
 else
 	EGIT_REPO_URI=( "https://github.com/${PN}/${PN}" "git://git.${PN}-irc.org/${PN}" )
@@ -14,7 +14,7 @@ else
 fi
 
 DESCRIPTION="Qt/KDE IRC client supporting a remote daemon for 24/7 connectivity"
-HOMEPAGE="http://quassel-irc.org/"
+HOMEPAGE="https://quassel-irc.org/"
 LICENSE="GPL-3"
 SLOT="0"
 IUSE="crypt dbus debug kde monolithic phonon postgres +server

@@ -6,8 +6,7 @@
 		<name>BSD Project</name>
 	</maintainer>
 	<longdescription lang="en">
-		The bsdtar program creates and manipulates streaming archive files.
-		It has a number of advantages over previous tar implementations.
+		C library and command-line tools for reading and writing tar, cpio, zip, ISO, and other archive formats.
 	</longdescription>
 	<use>
 		<flag name="bzip2">
@@ -33,4 +32,8 @@
 			files.
 		</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">libarchive/libarchive</remote-id>
+		<bugs-to>https://github.com/libarchive/libarchive/issues</bugs-to>
+	</upstream>
 </pkgmetadata>

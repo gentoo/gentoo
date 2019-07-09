@@ -1,13 +1,13 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{4,5,6,7} pypy )
+PYTHON_COMPAT=( python2_7 python3_{5,6,7} pypy )
 DISTUTILS_OPTIONAL="1"
 DISTUTILS_IN_SOURCE_BUILD="1"
 
-inherit cmake-multilib distutils-r1 eapi7-ver
+inherit cmake-multilib distutils-r1
 
 DESCRIPTION="Generic-purpose lossless compression algorithm"
 HOMEPAGE="https://github.com/google/brotli"
@@ -40,7 +40,6 @@ src_prepare() {
 
 multilib_src_configure() {
 	local mycmakeargs=(
-		-DBUILD_SHARED_LIBS=ON
 		-DBUILD_TESTING="$(usex test)"
 	)
 	cmake-utils_src_configure

@@ -1,0 +1,59 @@
+From 3845caca60120a8f9a094833e44bc4184b1d6827 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Sun, 21 Apr 2019 13:56:00 +0200
+Subject: [PATCH] Permit building against LLVM 7.1.0
+
+Restrict building to any 7.* version rather than 7.0.*, as 7.1.0 has
+been released that is API-compatible with 7.0.*.
+---
+ README.rst                     | 2 +-
+ ffi/build.py                   | 4 ++--
+ llvmlite/tests/test_binding.py | 3 ++-
+ 3 files changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/README.rst b/README.rst
+index 2462e3f..8e551eb 100644
+--- a/README.rst
++++ b/README.rst
+@@ -70,7 +70,7 @@ Historical compatibility table:
+ =================  ========================
+ llvmlite versions  compatible LLVM versions
+ =================  ========================
+-0.27.0 - ...       7.0.x
++0.27.0 - ...       7.y.x
+ 0.23.0 - 0.26.0    6.0.x
+ 0.21.0 - 0.22.0    5.0.x
+ 0.17.0 - 0.20.0    4.0.x
+diff --git a/ffi/build.py b/ffi/build.py
+index 7d5247d..a87e857 100755
+--- a/ffi/build.py
++++ b/ffi/build.py
+@@ -109,9 +109,9 @@ def main_posix(kind, library_ext):
+ 
+     out = out.decode('latin1')
+     print(out)
+-    if not out.startswith('7.0.'):
++    if not out.startswith('7.'):
+         msg = (
+-            "Building llvmlite requires LLVM 7.0.x. Be sure to "
++            "Building llvmlite requires LLVM 7.y.x. Be sure to "
+             "set LLVM_CONFIG to the right executable path.\n"
+             "Read the documentation at http://llvmlite.pydata.org/ for more "
+             "information about building llvmlite.\n"
+diff --git a/llvmlite/tests/test_binding.py b/llvmlite/tests/test_binding.py
+index 335c30d..134f356 100644
+--- a/llvmlite/tests/test_binding.py
++++ b/llvmlite/tests/test_binding.py
+@@ -339,7 +339,8 @@ class TestMisc(BaseTest):
+ 
+     def test_version(self):
+         major, minor, patch = llvm.llvm_version_info
+-        self.assertEqual((major, minor), (7, 0))
++        self.assertEqual(major, 7)
++        self.assertIn(minor, (0, 1))
+         self.assertIn(patch, range(10))
+ 
+     def test_check_jit_execution(self):
+-- 
+2.21.0
+

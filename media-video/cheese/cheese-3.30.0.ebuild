@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Cheese"
 LICENSE="GPL-2+"
 SLOT="0/8" # subslot = libcheese soname version
 IUSE="+introspection"
-KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86"
 
 COMMON_DEPEND="
 	>=dev-libs/glib-2.39.90:2
@@ -44,16 +44,17 @@ RDEPEND="${COMMON_DEPEND}
 # libxml2+gdk-pixbuf required for glib-compile-resources
 DEPEND="${COMMON_DEPEND}
 	app-text/docbook-xml-dtd:4.3
-	app-text/yelp-tools
 	dev-libs/appstream-glib
 	dev-libs/libxml2:2
 	dev-libs/libxslt
+	dev-util/glib-utils
 	>=dev-util/gtk-doc-am-1.14
 	>=dev-util/intltool-0.50
 	dev-util/itstool
 	virtual/pkgconfig
 	x11-base/xorg-proto
 "
+# eautoreconf needs yelp-tools
 
 src_configure() {
 	gnome2_src_configure \

@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 
 inherit multilib toolchain-funcs multilib-minimal flag-o-matic
 
@@ -16,8 +16,8 @@ IUSE="gnutls ssl libressl"
 DEPEND="ssl? (
 		gnutls? ( >=net-libs/gnutls-2.12.23-r6[${MULTILIB_USEDEP},nettle(+)] )
 		!gnutls? (
-			!libressl? ( >=dev-libs/openssl-1.0.1h-r2[${MULTILIB_USEDEP}] )
-			libressl? ( dev-libs/libressl )
+			!libressl? ( dev-libs/openssl:0=[${MULTILIB_USEDEP}] )
+			libressl? ( dev-libs/libressl:0=[${MULTILIB_USEDEP}] )
 		)
 		>=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}]
 	)"
@@ -65,7 +65,7 @@ src_prepare() {
 		-e 's:OPT:OPTS:' \
 		-e 's:CFLAGS=.*:& $(OPT):' librtmp/Makefile \
 		|| die "failed to fix Makefile"
-	use ssl && use !gnutls && use !libressl && eapply "${FILESDIR}/${PN}-openssl-1.1.patch"
+	use ssl && use !gnutls && use !libressl && eapply "${FILESDIR}/${PN}-openssl-1.1-v2.patch"
 	default
 	multilib_copy_sources
 }

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,11 +17,8 @@ KEYWORDS=""
 IUSE="down-root examples inotify iproute2 libressl lz4 +lzo mbedtls pam"
 IUSE+=" pkcs11 +plugins selinux +ssl static systemd test userland_BSD"
 
-REQUIRED_USE="static? ( !plugins !pkcs11 )
+REQUIRED_USE="static? ( !inotify !plugins !pkcs11 )
 	lzo? ( !lz4 )
-	pkcs11? ( ssl )
-	mbedtls? ( ssl !libressl )
-	pkcs11? ( ssl )
 	!plugins? ( !pam !down-root )
 	inotify? ( plugins )"
 
@@ -33,8 +30,8 @@ CDEPEND="
 	pam? ( virtual/pam )
 	ssl? (
 		!mbedtls? (
-			!libressl? ( >=dev-libs/openssl-0.9.8:* )
-			libressl? ( dev-libs/libressl )
+			!libressl? ( >=dev-libs/openssl-0.9.8:0= )
+			libressl? ( dev-libs/libressl:0= )
 		)
 		mbedtls? ( net-libs/mbedtls )
 	)
@@ -50,7 +47,7 @@ RDEPEND="${CDEPEND}
 CONFIG_CHECK="~TUN"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-external-cmocka.patch"
+	"${FILESDIR}/${PN}-2.5-external-cmocka.patch"
 )
 
 pkg_setup()  {
@@ -67,10 +64,10 @@ src_configure() {
 	SYSTEMD_UNIT_DIR=$(systemd_get_systemunitdir) \
 	TMPFILES_DIR="/usr/lib/tmpfiles.d" \
 	econf \
-		--with-plugindir="${ROOT}/usr/$(get_libdir)/$PN" \
-		$(usex mbedtls 'with-crypto-library' 'mbedtls' '' '') \
+		--with-plugindir="${EPREFIX}/usr/$(get_libdir)/$PN" \
 		$(use_enable inotify async-push) \
 		$(use_enable ssl crypto) \
+		$(use_with ssl crypto-library $(usex mbedtls mbedtls openssl)) \
 		$(use_enable lz4) \
 		$(use_enable lzo) \
 		$(use_enable pkcs11) \

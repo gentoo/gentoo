@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,7 +15,7 @@ SRC_URI="
 "
 HOMEPAGE="http://www.freeradius.org/"
 
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="amd64 ~arm arm64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
 LICENSE="GPL-2"
 SLOT="0"
 
@@ -30,7 +30,6 @@ RESTRICT="test firebird? ( bindist )"
 #       (http://lists.freeradius.org/pipermail/freeradius-devel/2018-October/013228.html)
 RDEPEND="!net-dialup/cistronradius
 	!net-dialup/gnuradius
-	sys-devel/libtool
 	dev-lang/perl:=
 	sys-libs/gdbm:=
 	sys-libs/talloc

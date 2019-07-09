@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>haubi@gentoo.org</email>
+		<name>Michael Haubenwallner</name>
+	</maintainer>
+	<longdescription lang="en">
+		The rebaseall utility is a convenient way for users that suffer from the
+		Cygwin rebase problem to rebase their entire system (i.e., all of their
+		DLLs).  The following is a list of known Cygwin applications that are
+		affected by the rebase problem:
+
+			Apache
+			Perl
+			Python
+
+		The rebase problem is due to fork() failing when it is unable to load
+		DLLs in the child at the same address as in the parent.  This is caused
+		by DLLs which have conflicting base addresses.
+	</longdescription>
+</pkgmetadata>

@@ -1,0 +1,34 @@
+From 6a4ce55a69c5ecbbf06bc905ac0bfdd04f64bb66 Mon Sep 17 00:00:00 2001
+From: Matthias Clasen <mclasen@redhat.com>
+Date: Wed, 23 Jan 2019 12:02:27 -0500
+Subject: [PATCH] switch: Avoid problems with glyph availability
+
+If none of the glyphs we want are available, fall
+back to using empty strings here, rather than causing
+critical warnings.
+---
+ gtk/gtkswitch.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/gtk/gtkswitch.c b/gtk/gtkswitch.c
+index 1d42f572a9..4c49e243ed 100644
+--- a/gtk/gtkswitch.c
++++ b/gtk/gtkswitch.c
+@@ -302,12 +302,14 @@ gtk_switch_create_pango_layouts (GtkSwitch *self)
+   const char *on_glyphs[] = {
+     "⏽", /* U+23FD POWER ON SYMBOL */
+     "❙", /* U+2759 MEDIUM VERTICAL BAR */
++    ""
+   };
+ 
+   /* Glyphs for the OFF state, in descending order of preference */
+   const char *off_glyphs[] = {
+     "⭘", /* U+2B58 HEAVY CIRCLE */
+     "○", /* U+25CB WHITE CIRCLE */
++    ""
+   };
+   int i;
+ 
+-- 
+2.17.0
+

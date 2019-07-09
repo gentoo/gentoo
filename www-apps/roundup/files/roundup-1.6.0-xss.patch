@@ -1,0 +1,35 @@
+changeset:   5665:ab37c1705dbf
+branch:      maint-1.6
+parent:      5635:ea35ab75a4c0
+user:        John Rouillard <rouilj@ieee.org>
+date:        Fri Mar 22 18:16:11 2019 -0400
+files:       CHANGES.txt frontends/roundup.cgi roundup/cgi/wsgi_handler.py
+description:
+Fix fix XSS issue in wsgi and cgi when handing url not found/404. issue2551035
+
+
+diff -r ea35ab75a4c0 -r ab37c1705dbf frontends/roundup.cgi
+--- a/frontends/roundup.cgi	Thu Mar 07 15:42:21 2019 +0100
++++ b/frontends/roundup.cgi	Fri Mar 22 18:16:11 2019 -0400
+@@ -179,7 +179,7 @@
+                 request.send_response(404)
+                 request.send_header('Content-Type', 'text/html')
+                 request.end_headers()
+-                out.write('Not found: %s'%client.path)
++                out.write('Not found: %s'%cgi.escape(client.path))
+ 
+     else:
+         import urllib
+diff -r ea35ab75a4c0 -r ab37c1705dbf roundup/cgi/wsgi_handler.py
+--- a/roundup/cgi/wsgi_handler.py	Thu Mar 07 15:42:21 2019 +0100
++++ b/roundup/cgi/wsgi_handler.py	Fri Mar 22 18:16:11 2019 -0400
+@@ -66,7 +66,7 @@
+             client.main()
+         except roundup.cgi.client.NotFound:
+             request.start_response([('Content-Type', 'text/html')], 404)
+-            request.wfile.write('Not found: %s'%client.path)
++            request.wfile.write('Not found: %s'%cgi.escape(client.path))
+ 
+         # all body data has been written using wfile
+         return []
+

@@ -5,7 +5,7 @@ EAPI=7
 inherit autotools git-r3 toolchain-funcs
 
 DESCRIPTION="A window switcher, run dialog and dmenu replacement"
-HOMEPAGE="https://github.com/DaveDavenport/rofi/"
+HOMEPAGE="https://github.com/davatorium/rofi"
 EGIT_REPO_URI="${HOMEPAGE}"
 
 LICENSE="MIT"

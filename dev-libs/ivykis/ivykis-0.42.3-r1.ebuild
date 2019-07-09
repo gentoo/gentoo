@@ -3,14 +3,26 @@
 
 EAPI=6
 
+inherit autotools
+
 DESCRIPTION="Library for asynchronous I/O readiness notification"
 HOMEPAGE="https://github.com/buytenh/ivykis"
 SRC_URI="https://github.com/buytenh/ivykis/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 ppc ppc64 sparc x86"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 ~riscv ~s390 ~sh sparc x86"
 IUSE="static-libs"
+
+PATCHES=(
+	"${FILESDIR}/${PN}-fix-segfault-glibc-2.28.patch" # Bug 675338
+)
+
+src_prepare() {
+	default
+
+	eautoreconf
+}
 
 src_configure() {
 	econf $(use_enable static-libs static)

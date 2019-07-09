@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{4,5,6,7} )
+PYTHON_COMPAT=( python3_{5,6,7} )
 inherit cmake-utils python-any-r1
 
 DESCRIPTION="An implementation of basic iCAL protocols"
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/${PN}/${PN}/releases/download/v${PV}/${P}.tar.gz"
 
 LICENSE="|| ( MPL-2.0 LGPL-2.1 )"
 SLOT="0/3"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris"
+KEYWORDS="alpha amd64 arm arm64 ~hppa ia64 ~mips ppc ppc64 sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris"
 IUSE="berkdb doc examples static-libs test"
 
 # TODO: disabled until useful
@@ -41,8 +41,8 @@ DOCS=(
 )
 
 PATCHES=(
-	"${FILESDIR}/${PN}-3.0.1-pkgconfig-libdir.patch"
-	"${FILESDIR}/${P}-tests.patch"
+	"${FILESDIR}"/${PN}-3.0.{4,5}-pkgconfig-libdir.patch
+	"${FILESDIR}"/${P}-tests.patch
 )
 
 pkg_setup() {

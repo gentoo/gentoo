@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -7,7 +7,7 @@ SCM=""
 if [ "${PV%9999}" != "${PV}" ] ; then # Live ebuild
 	SCM=git-2
 	EGIT_BRANCH=master
-	EGIT_REPO_URI="git://anongit.freedesktop.org/vaapi/libva"
+	EGIT_REPO_URI="https://github.com/intel/libva"
 fi
 
 AUTOTOOLS_AUTORECONF="yes"
@@ -25,9 +25,9 @@ fi
 LICENSE="MIT"
 SLOT="0"
 if [ "${PV%9999}" = "${PV}" ] ; then
-	KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="amd64 arm64 x86 ~amd64-linux ~x86-linux"
 else
-	KEYWORDS=""
+	KEYWORDS="arm64"
 fi
 IUSE="+drm egl opengl vdpau wayland X"
 

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -459,7 +459,7 @@ setup_env() {
 
 	export ABI=${ABI:-${DEFAULT_ABI:-default}}
 
-	if use headers-only ; then
+	if just_headers ; then
 		# Avoid mixing host's CC and target's CFLAGS_${ABI}:
 		# At this bootstrap stage we have only binutils for
 		# target but not compiler yet.
@@ -809,6 +809,11 @@ glibc_do_configure() {
 	local myconf=()
 
 	case ${CTARGET} in
+		m68k*)
+			# setjmp() is not compatible with stack protection:
+			# https://sourceware.org/PR24202
+			myconf+=( --enable-stack-protector=no )
+			;;
 		powerpc-*)
 			# Currently gcc on powerpc32 generates invalid code for
 			# __builtin_return_address(0) calls. Normally programs

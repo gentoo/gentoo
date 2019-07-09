@@ -1,0 +1,32 @@
+From cf6d6b40d711fce93a24a2cf517fa3becdbae8bb Mon Sep 17 00:00:00 2001
+From: Jose Dapena Paz <jose.dapena@lge.com>
+Date: Wed, 05 Jun 2019 17:18:40 +0000
+Subject: [PATCH] Make blink::LayoutUnit::HasFraction constexpr
+
+Other HasFraction methods as in PhysicalUnit are declared already
+constexpr and using it. It breaks GCC build.
+
+Bug: 819294.
+Change-Id: I0c4bd9bd206d45cf31f7fa815ce8533718a425cb
+Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/1645222
+Reviewed-by: vmpstr <vmpstr@chromium.org>
+Reviewed-by: Xianzhu Wang <wangxianzhu@chromium.org>
+Commit-Queue: José Dapena Paz <jose.dapena@lge.com>
+Cr-Commit-Position: refs/heads/master@{#666336}
+---
+
+diff --git a/third_party/blink/renderer/platform/geometry/layout_unit.h b/third_party/blink/renderer/platform/geometry/layout_unit.h
+index f073986..b6dbc76 100644
+--- a/third_party/blink/renderer/platform/geometry/layout_unit.h
++++ b/third_party/blink/renderer/platform/geometry/layout_unit.h
+@@ -202,7 +202,9 @@
+     return value_ > 0 ? LayoutUnit() : *this;
+   }
+ 
+-  bool HasFraction() const { return RawValue() % kFixedPointDenominator; }
++  constexpr bool HasFraction() const {
++    return RawValue() % kFixedPointDenominator;
++  }
+ 
+   LayoutUnit Fraction() const {
+     // Compute fraction using the mod operator to preserve the sign of the value

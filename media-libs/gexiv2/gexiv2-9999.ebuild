@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
+PYTHON_COMPAT=( python2_7 python3_{5,6} )
 
 inherit meson python-r1 vala xdg-utils
 
@@ -37,6 +37,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	dev-util/glib-utils
 	virtual/pkgconfig
+	gtk-doc? ( dev-util/gtk-doc )
 	test? (
 		dev-python/pygobject:3
 		media-gfx/exiv2[xmp]
@@ -57,8 +58,8 @@ src_configure() {
 		$(meson_use gtk-doc gtk_doc)
 		# prevents installation of python modules (uses install_data from meson
 		# which does not optimize the modules
-		-Dpython2-girdir=no
-		-Dpython3-girdir=no
+		-Dpython2_girdir=no
+		-Dpython3_girdir=no
 	)
 	meson_src_configure
 }

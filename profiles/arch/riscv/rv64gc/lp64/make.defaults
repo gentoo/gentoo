@@ -1,0 +1,17 @@
+# Copyright 2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# RISC-V rv64gc/lp64 no-multilib profile
+
+CFLAGS="-O2 -pipe"
+CXXFLAGS="${CFLAGS}"
+FFLAGS="${CFLAGS}"
+FCFLAGS="${CFLAGS}"
+
+# We have only one ABI
+MULTILIB_ABIS="lp64"
+DEFAULT_ABI="lp64"
+ABI="lp64"
+
+# We hide the useflags for the ABIs
+USE_EXPAND_HIDDEN="ABI_RISCV"

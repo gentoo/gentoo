@@ -5,12 +5,12 @@ EAPI=6
 
 EGIT_REPO_URI="https://git.postgresql.org/git/pgpool2.git"
 
-POSTGRES_COMPAT=( 9.{3..6} {10..11} )
+POSTGRES_COMPAT=( 9.{4..6} {10..11} )
 
 inherit autotools git-r3 postgres-multi
 
 DESCRIPTION="Connection pool server for PostgreSQL"
-HOMEPAGE="http://www.pgpool.net/"
+HOMEPAGE="https://www.pgpool.net/"
 SRC_URI=""
 LICENSE="BSD"
 SLOT="0"
@@ -51,7 +51,7 @@ src_prepare() {
 		"${FILESDIR}/pgpool-configure-memcached.patch" \
 		"${FILESDIR}/pgpool-configure-pam.patch" \
 		"${FILESDIR}/pgpool-configure-pthread.patch" \
-		"${FILESDIR}/pgpool_run_paths-9999.patch"
+		"${FILESDIR}/pgpool_run_paths-3.7.10.patch"
 
 	eautoreconf
 

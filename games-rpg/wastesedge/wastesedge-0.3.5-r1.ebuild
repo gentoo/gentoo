@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit eutils python-single-r1
 
 DESCRIPTION="role playing game to showcase the adonthell engine"
-HOMEPAGE="http://adonthell.linuxgames.com/"
+HOMEPAGE="http://adonthell.nongnu.org/download/"
 SRC_URI="https://savannah.nongnu.org/download/adonthell/${PN}-src-${PV}.tar.gz"
 
 LICENSE="GPL-2"

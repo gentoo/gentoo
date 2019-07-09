@@ -1,0 +1,180 @@
+From c9cd7024140b837b5693d7c1bbaad1b0cd31cce6 Mon Sep 17 00:00:00 2001
+From: Emmanuele Bassi <ebassi@gnome.org>
+Date: Fri, 31 Aug 2018 13:32:16 +0100
+Subject: [PATCH] Depend on mozjs-60
+
+This is the new ESR version of the Mozilla JS engine, superceding
+mozjs-52.
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 5c37e48..5cedb4e 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -79,7 +79,7 @@ PKG_CHECK_MODULES(GLIB, [gmodule-2.0 gio-unix-2.0 >= 2.30.0])
+ AC_SUBST(GLIB_CFLAGS)
+ AC_SUBST(GLIB_LIBS)
+ 
+-PKG_CHECK_MODULES(LIBJS, [mozjs-52])
++PKG_CHECK_MODULES(LIBJS, [mozjs-60])
+ 
+ AC_SUBST(LIBJS_CFLAGS)
+ AC_SUBST(LIBJS_CXXFLAGS)
+
+
+From dd00683e8781d230a45781d509d86ad676138564 Mon Sep 17 00:00:00 2001
+From: Emmanuele Bassi <ebassi@gnome.org>
+Date: Fri, 31 Aug 2018 13:33:20 +0100
+Subject: [PATCH] Port the JS authority to mozjs-60
+
+API changes in mozjs that need to be reflected in the JS authority:
+
+ - the JS::CompileOptions constructor and the JS::CompartmentOptions
+   do not allow setting a JS version any more
+
+ - do not use NULL comparisons for C++ objects
+
+ - the resize() method for a vector has a return value that needs
+   to be handled
+
+ - JSClassOps has different fields
+---
+ .../polkitbackendjsauthority.cpp              | 65 +++++++++----------
+ 1 file changed, 32 insertions(+), 33 deletions(-)
+
+diff --git a/src/polkitbackend/polkitbackendjsauthority.cpp b/src/polkitbackend/polkitbackendjsauthority.cpp
+index 7602714..984a0f0 100644
+--- a/src/polkitbackend/polkitbackendjsauthority.cpp
++++ b/src/polkitbackend/polkitbackendjsauthority.cpp
+@@ -150,18 +150,17 @@ G_DEFINE_TYPE (PolkitBackendJsAuthority, polkit_backend_js_authority, POLKIT_BAC
+ /* ---------------------------------------------------------------------------------------------------- */
+ 
+ static const struct JSClassOps js_global_class_ops = {
+-  NULL,
+-  NULL,
+-  NULL,
+-  NULL,
+-  NULL,
+-  NULL,
+-  NULL,
+-  NULL,
+-  NULL,
+-  NULL,
+-  NULL,
+-  NULL
++  nullptr,  // addProperty
++  nullptr,  // deleteProperty
++  nullptr,  // enumerate
++  nullptr,  // newEnumerate
++  nullptr,  // resolve
++  nullptr,  // mayResolve
++  nullptr,  // finalize
++  nullptr,  // call
++  nullptr,  // hasInstance
++  nullptr,  // construct
++  JS_GlobalObjectTraceHook
+ };
+ 
+ static JSClass js_global_class = {
+@@ -172,18 +171,17 @@ static JSClass js_global_class = {
+ 
+ /* ---------------------------------------------------------------------------------------------------- */
+ static const struct JSClassOps js_polkit_class_ops = {
+-  NULL,
+-  NULL,
+-  NULL,
+-  NULL,
+-  NULL,
+-  NULL,
+-  NULL,
+-  NULL,
+-  NULL,
+-  NULL,
+-  NULL,
+-  NULL
++  nullptr,  // addProperty
++  nullptr,  // deleteProperty
++  nullptr,  // enumerate
++  nullptr,  // newEnumerate
++  nullptr,  // resolve
++  nullptr,  // mayResolve
++  nullptr,  // finalize
++  nullptr,  // call
++  nullptr,  // hasInstance
++  nullptr,  // construct
++  nullptr   // trace
+ };
+ 
+ static JSClass js_polkit_class = {
+@@ -469,19 +467,18 @@ polkit_backend_js_authority_constructed (GObject *object)
+ 
+   {
+     JS::CompartmentOptions compart_opts;
+-    compart_opts.behaviors().setVersion(JSVERSION_LATEST);
++
+     JS::RootedObject global(authority->priv->cx);
+ 
+     authority->priv->js_global = new JS::Heap<JSObject*> (JS_NewGlobalObject (authority->priv->cx, &js_global_class, NULL, JS::FireOnNewGlobalHook, compart_opts));
+ 
+     global = authority->priv->js_global->get ();
+-
+-    if (global == NULL)
++    if (!global)
+       goto fail;
+ 
+     authority->priv->ac = new JSAutoCompartment(authority->priv->cx,  global);
+ 
+-    if (authority->priv->ac == NULL)
++    if (!authority->priv->ac)
+       goto fail;
+ 
+     if (!JS_InitStandardClasses (authority->priv->cx, global))
+@@ -493,7 +490,7 @@ polkit_backend_js_authority_constructed (GObject *object)
+ 
+     polkit = authority->priv->js_polkit->get ();
+ 
+-    if (polkit == NULL)
++    if (!polkit)
+       goto fail;
+ 
+     if (!JS_DefineProperty(authority->priv->cx, global, "polkit", polkit, JSPROP_ENUMERATE))
+@@ -504,7 +501,7 @@ polkit_backend_js_authority_constructed (GObject *object)
+                              js_polkit_functions))
+       goto fail;
+ 
+-    JS::CompileOptions options(authority->priv->cx, JSVERSION_UNKNOWN);
++    JS::CompileOptions options(authority->priv->cx);
+     JS::RootedValue rval(authority->priv->cx);
+     if (!JS::Evaluate (authority->priv->cx,
+                        options,
+@@ -684,7 +681,9 @@ set_property_strv (PolkitBackendJsAuthority  *authority,
+   JS::AutoValueVector elems(authority->priv->cx);
+   guint n;
+ 
+-  elems.resize(value->len);
++  if (!elems.resize(value->len))
++    g_error ("Unable to resize vector");
++
+   for (n = 0; n < value->len; n++)
+     {
+       const char *c_string = (const char *) g_ptr_array_index(value, n);
+@@ -741,7 +740,7 @@ subject_to_jsval (PolkitBackendJsAuthority  *authority,
+                   GError                   **error)
+ {
+   gboolean ret = FALSE;
+-  JS::CompileOptions options(authority->priv->cx, JSVERSION_UNKNOWN);
++  JS::CompileOptions options(authority->priv->cx);
+   const char *src;
+   JS::RootedObject obj(authority->priv->cx);
+   pid_t pid;
+@@ -868,7 +867,7 @@ action_and_details_to_jsval (PolkitBackendJsAuthority  *authority,
+                              GError                   **error)
+ {
+   gboolean ret = FALSE;
+-  JS::CompileOptions options(authority->priv->cx, JSVERSION_UNKNOWN);
++  JS::CompileOptions options(authority->priv->cx);
+   const char *src;
+   JS::RootedObject obj(authority->priv->cx);
+   gchar **keys;

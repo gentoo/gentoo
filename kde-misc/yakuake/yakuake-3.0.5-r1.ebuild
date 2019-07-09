@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit kde5
 
@@ -10,7 +10,7 @@ HOMEPAGE="https://yakuake.kde.org/"
 if [[ ${KDE_BUILD_TYPE} != live ]]; then
 	SRC_URI="mirror://kde/stable/${PN}/${PV}/src/${P}.tar.xz
 	https://dev.gentoo.org/~asturm/distfiles/${P}-patches.tar.xz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 fi
 
 LICENSE="GPL-2 LGPL-2"
@@ -49,11 +49,7 @@ RDEPEND="${DEPEND}
 	!kde-misc/yakuake:4
 "
 
-PATCHES=(
-	"${WORKDIR}/${P}-patches/${P}-kmainwindow.patch"
-	"${WORKDIR}/${P}-patches/${P}-qicon.patch"
-	"${WORKDIR}/${P}-patches/${P}-kwindowsystem.patch"
-)
+PATCHES=( "${WORKDIR}/${P}-patches" )
 
 src_configure() {
 	local mycmakeargs=(

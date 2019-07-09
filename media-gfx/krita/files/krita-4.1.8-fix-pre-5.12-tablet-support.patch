@@ -1,0 +1,49 @@
+From 0218025b1725aa810f108d08802b590ce62f1044 Mon Sep 17 00:00:00 2001
+From: Dmitry Kazakov <dimula73@gmail.com>
+Date: Mon, 25 Mar 2019 21:16:41 +0300
+Subject: Add a workaround for Qt 5.9...5.11.X to fix tablet support
+
+Basically, the patch mimics this Qt's patch that has been
+added in Qt 5.12.0 only:
+https://codereview.qt-project.org/#/c/239918/
+
+BUG:399696
+---
+ libs/ui/input/kis_input_manager_p.cpp | 22 ++++++++++++++++++++++
+ 1 file changed, 22 insertions(+)
+
+diff --git a/libs/ui/input/kis_input_manager_p.cpp b/libs/ui/input/kis_input_manager_p.cpp
+index 4f5a58f..0a26655 100644
+--- a/libs/ui/input/kis_input_manager_p.cpp
++++ b/libs/ui/input/kis_input_manager_p.cpp
+@@ -333,6 +333,28 @@ KisInputManager::Private::ProximityNotifier::ProximityNotifier(KisInputManager::
+ 
+ bool KisInputManager::Private::ProximityNotifier::eventFilter(QObject* object, QEvent* event )
+ {
++    /**
++     * All Qt builds in range 5.7.0...5.11.X on X11 had a problem that made all
++     * the tablet events be accepted by default. It meant that no mouse
++     * events were synthesized, and, therefore, no Enter/Leave were generated.
++     *
++     * The fix for this bug has been added only in Qt 5.12.0:
++     * https://codereview.qt-project.org/#/c/239918/
++     *
++     * To avoid this problem we should explicitly ignore all the tablet events.
++     */
++#if defined Q_OS_LINUX && \
++    QT_VERSION >= QT_VERSION_CHECK(5, 7, 0) && \
++    QT_VERSION < QT_VERSION_CHECK(5, 12, 0)
++
++    if (event->type() == QEvent::TabletMove ||
++        event->type() == QEvent::TabletPress ||
++        event->type() == QEvent::TabletRelease) {
++
++        event->ignore();
++    }
++#endif
++
+     switch (event->type()) {
+     case QEvent::TabletEnterProximity:
+         d->debugEvent<QEvent, false>(event);
+-- 
+cgit v1.1

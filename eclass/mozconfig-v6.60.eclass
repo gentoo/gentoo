@@ -112,9 +112,12 @@ RDEPEND=">=app-text/hunspell-1.5.4:=
 	x11-libs/libXt
 	system-icu? ( >=dev-libs/icu-59.1:= )
 	system-jpeg? ( >=media-libs/libjpeg-turbo-1.2.1 )
-	system-libevent? ( >=dev-libs/libevent-2.0:0= )
+	system-libevent? ( >=dev-libs/libevent-2.0:0=[threads] )
 	system-sqlite? ( >=dev-db/sqlite-3.23.1:3[secure-delete,debug=] )
-	system-libvpx? ( >=media-libs/libvpx-1.5.0:0=[postproc] )
+	system-libvpx? (
+		>=media-libs/libvpx-1.5.0:0=[postproc]
+		<media-libs/libvpx-1.8:0=[postproc]
+	)
 	system-harfbuzz? ( >=media-libs/harfbuzz-1.4.2:0= >=media-gfx/graphite2-1.3.9-r1 )
 "
 
@@ -155,9 +158,31 @@ DEPEND="app-arch/zip
 	app-arch/unzip
 	>=sys-devel/binutils-2.30
 	sys-apps/findutils
-	clang? (
-		>=sys-devel/llvm-4.0.1[gold]
-		>=sys-devel/lld-4.0.1
+	|| (
+		(
+			sys-devel/clang:8
+			!clang? ( sys-devel/llvm:8 )
+			clang? (
+				=sys-devel/lld-8*
+				sys-devel/llvm:8[gold]
+			)
+		)
+		(
+			sys-devel/clang:7
+			!clang? ( sys-devel/llvm:7 )
+			clang? (
+				=sys-devel/lld-7*
+				sys-devel/llvm:7[gold]
+			)
+		)
+		(
+			sys-devel/clang:6
+			!clang? ( sys-devel/llvm:6 )
+			clang? (
+				=sys-devel/lld-6*
+				sys-devel/llvm:6[gold]
+			)
+		)
 	)
 	pulseaudio? ( media-sound/pulseaudio )
 	elibc_glibc? (
@@ -217,6 +242,11 @@ mozconfig_config() {
 
 	# Must pass release in order to properly select linker
 	mozconfig_annotate 'Enable by Gentoo' --enable-release
+
+	# Set correct update channel, bug 677722
+	if [[ -n "${MOZ_ESR}" ]] ; then
+		mozconfig_annotate 'set update channel to ESR' --enable-update-channel=esr
+	fi
 
 	# Avoid auto-magic on linker
 	if use clang ; then
@@ -331,8 +361,6 @@ mozconfig_config() {
 	if use clang ; then
 		# https://bugzilla.mozilla.org/show_bug.cgi?id=1423822
 		mozconfig_annotate 'elf-hack is broken when using Clang' --disable-elf-hack
-	elif use arm ; then
-		mozconfig_annotate 'elf-hack is broken on arm' --disable-elf-hack
 	fi
 
 	# Modifications to better support ARM, bug 553364

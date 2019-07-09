@@ -45,18 +45,8 @@ PATCHES=(
 )
 
 src_configure() {
-	local arch
-	case ${ARCH} in
-		amd64)
-			arch="x86_64" ;;
-		x86)
-			arch="i386" ;;
-		*) die "Architecture ${ARCH} not yet supported" ;;
-	esac
-
 	local mycmakeargs=(
 		-DCOMPILEFOR="linux"
-		-DCOMPILEARCH="${arch}"
 		-DCMAKE_SKIP_RPATH=YES
 		-DPREFIX="/usr/"
 		-DBINDIR="/usr/bin"

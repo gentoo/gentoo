@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-USE_RUBY="ruby22 ruby23 ruby24 ruby25"
+USE_RUBY="ruby23 ruby24 ruby25 ruby26"
 
 RUBY_FAKEGEM_TASK_TEST="none"
 RUBY_FAKEGEM_RECIPE_DOC="rdoc"
@@ -24,7 +24,7 @@ SRC_URI="https://github.com/rspec/${PN}/archive/v${PV}.tar.gz -> ${P}-git.tgz"
 
 LICENSE="MIT"
 SLOT="2"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ppc ppc64 s390 sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE=""
 
 ruby_add_bdepend "test? (
@@ -75,6 +75,15 @@ each_ruby_prepare() {
 			;;
 		*ruby25)
 			sed -i -e 's/SAFE = 3/SAFE = 1/' spec/support/helper_methods.rb || die
+			sed -i -e 's/Fixnum: 4/Integer: 4/' spec/rspec/core/memoized_helpers_spec.rb || die
+			sed -i -e '/warns when HOME env var is not set/,/^  end/ s:^:#:' spec/rspec/core/configuration_options_spec.rb || die
+			sed -i -e '/with mathn loaded/,/^          end/ s:^:#:' spec/rspec/core/formatters/html_formatter_spec.rb || die
+			sed -i -e '/with mathn loaded/,/^    end/ s:^:#:' spec/rspec/core/formatters/helpers_spec.rb || die
+			sed -i -e '/is still a private method/,/end/ s:^:#:' spec/rspec/core/memoized_helpers_spec.rb || die
+			sed -i -e '/leaves a raised exception unmodified/,/^      end/ s:^:#:' spec/rspec/core/example_spec.rb || die
+			;;
+		*ruby26)
+			sed -i -e 's/SAFE = 3/SAFE = 0/' spec/support/helper_methods.rb || die
 			sed -i -e 's/Fixnum: 4/Integer: 4/' spec/rspec/core/memoized_helpers_spec.rb || die
 			sed -i -e '/warns when HOME env var is not set/,/^  end/ s:^:#:' spec/rspec/core/configuration_options_spec.rb || die
 			sed -i -e '/with mathn loaded/,/^          end/ s:^:#:' spec/rspec/core/formatters/html_formatter_spec.rb || die

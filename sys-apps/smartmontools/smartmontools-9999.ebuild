@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -79,7 +79,6 @@ src_install() {
 
 		newinitd "${FILESDIR}"/smartd-r1.rc smartd
 		newconfd "${FILESDIR}"/smartd.confd smartd
-		systemd_newunit "${FILESDIR}"/smartd.systemd smartd.service
 	else
 		dosbin smartctl
 		doman smartctl.8

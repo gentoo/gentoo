@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/${PN}/${PN}/${MY_P}/${MY_P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="berkdb crypt debug filelog memtrace lzo snappy"
 
 RDEPEND="
@@ -32,6 +32,11 @@ S="${WORKDIR}/${MY_P}"
 DOC_CONTENTS="Default configuration file: /etc/${PN}.cfg.
 	If your host is a client consult the following configuration
 	file: /usr/share/doc/${PF}/${PN}.cfg-slave.*"
+
+PATCHES=(
+	# From PLD-Linux, bug #674422
+	"${FILESDIR}/${P}-openssl11.patch"
+)
 
 src_configure() {
 	econf \

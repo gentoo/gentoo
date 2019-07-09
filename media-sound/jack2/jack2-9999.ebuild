@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -47,7 +47,7 @@ RDEPEND="${COMMON_DEPEND}
 	pam? ( sys-auth/realtime-base )
 	!media-sound/jack-audio-connection-kit:0"
 
-DOCS=( ChangeLog README README_NETJACK2 TODO )
+DOCS=( AUTHORS.rst ChangeLog.rst README.rst README_NETJACK2 )
 
 src_prepare() {
 	default
@@ -63,7 +63,6 @@ multilib_src_configure() {
 		--celt=no
 		--doxygen=$(multilib_native_usex doc yes no)
 		--firewire=$(usex ieee1394 yes no)
-		--freebob=no
 		--iio=no
 		--opus=$(usex opus yes no)
 		--portaudio=no

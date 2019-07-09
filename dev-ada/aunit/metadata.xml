@@ -1,16 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>tupone@gentoo.org</email>
-		<name>Tupone Alfredo</name>
+	<maintainer type="project">
+		<email>ada@gentoo.org</email>
 	</maintainer>
 	<use>
 		<flag name="gnat_2016">Compile with dev-lang/gnat-gpl-2016</flag>
 		<flag name="gnat_2017">Compile with dev-lang/gnat-gpl-2017</flag>
 		<flag name="gnat_2018">Compile with dev-lang/gnat-gpl-2018</flag>
+		<flag name="gnat_2019">Compile with dev-lang/gnat-gpl-2019</flag>
 	</use>
 	<longdescription lang="en">
-		AUnit is a set of Ada packages based on the xUnit family of unit test frameworks. It’s intended as a developer’s tool to facilitate confident writing and evolution of Ada software. It is purposely lightweight, as one of its main goals is to make it easy to develop and run unit tests, rather than to generate artifacts for process management. The framework supports easy composition of sets of unit tests to provide flexibility in determining what tests to run for a given purpose.
+		AUnit is a set of Ada packages based on the xUnit family of unit test
+		frameworks. It’s intended as a developer’s tool to facilitate confident
+		writing and evolution of Ada software. It is purposely lightweight, as
+		one of its main goals is to make it easy to develop and run unit tests,
+		rather than to generate artifacts for process management. The framework
+		supports easy composition of sets of unit tests to provide flexibility
+		in determining what tests to run for a given purpose.
 	</longdescription>
 </pkgmetadata>

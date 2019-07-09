@@ -1,0 +1,49 @@
+From 747fe00d3b4e2648003715f949cf2ac18e32862a Mon Sep 17 00:00:00 2001
+From: Tim Harder <radhermit@gentoo.org>
+Date: Mon, 29 Apr 2019 20:45:42 +0200
+Subject: [PATCH 2/3] Allow building of just glxtrace library (without GUI
+ tools)
+
+Patch was rebased multiple times from 1.0 to 8.0 now.
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ CMakeLists.txt         | 2 ++
+ retrace/CMakeLists.txt | 4 ++++
+ 2 files changed, 6 insertions(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 36879db6..6466cd8a 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -47,6 +47,8 @@ if (ANDROID)
+     message (FATAL_ERROR "Android is no longer supported (https://git.io/vH2gW)")
+ endif ()
+ 
++option (BUILD_LIB_ONLY "Build the glxtrace library only" OFF)
++
+ # Proprietary Linux games often ship their own libraries (zlib, libstdc++,
+ # etc.) in order to ship a single set of binaries across multiple
+ # distributions.  Given that apitrace wrapper modules will be loaded into those
+diff --git a/retrace/CMakeLists.txt b/retrace/CMakeLists.txt
+index 76dc8362..e1bad990 100644
+--- a/retrace/CMakeLists.txt
++++ b/retrace/CMakeLists.txt
+@@ -15,6 +15,8 @@ include_directories (
+ 
+ add_definitions (-DRETRACE)
+ 
++if (NOT BUILD_LIB_ONLY)
++
+ add_custom_command (
+     OUTPUT glretrace_gl.cpp
+     COMMAND ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/glretrace.py > ${CMAKE_CURRENT_BINARY_DIR}/glretrace_gl.cpp
+@@ -343,3 +345,5 @@ if (WIN32)
+     install (TARGETS d3dretrace RUNTIME DESTINATION bin)
+     install_pdb (d3dretrace DESTINATION bin)
+ endif ()
++
++endif (NOT BUILD_LIB_ONLY)
+-- 
+2.21.0
+

@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="project">
-		<email>cron-bugs@gentoo.org</email>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<longdescription>
 		This lightweight cron daemon aims to be simple and secure, with just enough
 		features to stay useful.

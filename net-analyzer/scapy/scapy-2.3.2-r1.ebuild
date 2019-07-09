@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit eutils distutils-r1
 
 DESCRIPTION="A Python interactive packet manipulation program for mastering the network"
-HOMEPAGE="http://www.secdev.org/projects/scapy/"
+HOMEPAGE="https://scapy.net/ https://github.com/secdev/scapy"
 SRC_URI="https://github.com/secdev/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"

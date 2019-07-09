@@ -1,7 +1,7 @@
-# Copyright 1999-2013 Gentoo Foundation.
+# Copyright 2010-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Adding -Wl,--hash-style=gnu to default LDFLAGS for linux/x86 dev profile
+# Adding -Wl,--defsym=__gentoo_check_ldflags__=0 to default LDFLAGS for linux/x86 dev profile
 # This will help developers track down packages, that don't respect LDFLAGS,
 # more easily
-LDFLAGS="-Wl,--hash-style=gnu ${LDFLAGS}"
+LDFLAGS="${LDFLAGS} -Wl,--defsym=__gentoo_check_ldflags__=0"
