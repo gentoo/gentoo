@@ -49,7 +49,8 @@ IUSE+=" ${use_softmmu_targets} ${use_user_targets}"
 
 # Allow no targets to be built so that people can get a tools-only build.
 # Block USE flag configurations known to not work.
-REQUIRED_USE="${PYTHON_REQUIRED_USE}
+REQUIRED_USE="
+	python? ( ${PYTHON_REQUIRED_USE} )
 	qemu_softmmu_targets_arm? ( fdt )
 	qemu_softmmu_targets_microblaze? ( fdt )
 	qemu_softmmu_targets_mips64el? ( fdt )
@@ -169,13 +170,12 @@ PPC64_FIRMWARE_DEPEND="
 "
 
 BDEPEND="
-	${PYTHON_DEPS}
 	dev-lang/perl
-	dev-python/sphinx
 	sys-apps/texinfo
 	virtual/pkgconfig
 	doc? ( dev-python/sphinx )
 	gtk? ( nls? ( sys-devel/gettext ) )
+	python? ( ${PYTHON_DEPS} )
 	test? (
 		dev-libs/glib[utils]
 		sys-devel/bc
@@ -191,8 +191,8 @@ CDEPEND="
 	qemu_softmmu_targets_ppc64? ( ${PPC64_FIRMWARE_DEPEND} )
 "
 DEPEND="${CDEPEND}
-	${PYTHON_DEPS}
 	kernel_linux? ( >=sys-kernel/linux-headers-2.6.35 )
+	python? ( ${PYTHON_DEPS} )
 	static? (
 		${ALL_DEPEND}
 		${SOFTMMU_TOOLS_DEPEND}
@@ -402,10 +402,10 @@ qemu_src_configure() {
 		# are enabled), but it's not really worth the hassle.  Disable it
 		# all the time to avoid automatically detecting it. #568856
 		--disable-gcrypt
-		--python="${PYTHON}"
 		--cc="$(tc-getCC)"
 		--cxx="$(tc-getCXX)"
 		--host-cc="$(tc-getBUILD_CC)"
+		$(use python && echo "--python=${PYTHON}")
 		$(use_enable debug debug-info)
 		$(use_enable debug debug-tcg)
 		$(use_enable doc docs)
@@ -540,7 +540,7 @@ qemu_src_configure() {
 src_configure() {
 	local target
 
-	python_setup
+	use python && python_setup
 
 	softmmu_targets= softmmu_bins=()
 	user_targets= user_bins=()
