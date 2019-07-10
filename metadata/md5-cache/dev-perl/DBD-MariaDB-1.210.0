@@ -11,4 +11,4 @@ REQUIRED_USE=^^ ( mysql mariadb )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/P/PA/PALI/DBD-MariaDB-1.21.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	71c828c354a4cddced2641dda2695de5
-_md5_=f6d93907fdcdaf55ce28f3c2f958e705
+_md5_=4458a84e762eb5fc528835d1bc908a8f
