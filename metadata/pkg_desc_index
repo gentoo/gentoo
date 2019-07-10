@@ -3674,7 +3674,6 @@ dev-perl/File-ShareDir 1.104.0: Locate per-dist and per-module shared files
 dev-perl/File-ShareDir-Install 0.110.0: Install shared files
 dev-perl/File-Slurp 9999.190.0-r1: Efficient Reading/Writing of Complete Files
 dev-perl/File-Slurp-Tiny 0.4.0: A simple, sane and efficient file slurper
-dev-perl/File-Slurp-Unicode 0.7.1-r1: Reading/Writing of Complete Files with Character Encoding Support
 dev-perl/File-Slurper 0.0.800 0.10.0: A simple, sane and efficient module to slurp a file
 dev-perl/File-Sort 1.10.0-r1: Sort a file or merge sort multiple files
 dev-perl/File-Stat-Bits 1.10.0-r1: File stat bit mask constants
