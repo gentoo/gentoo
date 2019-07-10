@@ -274,6 +274,7 @@ src_install() {
 	insinto /etc/default
 	newins "${FILESDIR}"/grub.default-3 grub
 
+	# https://bugs.gentoo.org/231935
 	dostrip -x /usr/lib/grub
 }
 
