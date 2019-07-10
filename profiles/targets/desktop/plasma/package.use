@@ -1,8 +1,5 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-
-# Required by >=dev-qt/qtwebengine-5.9
-dev-libs/libxml2 icu
 
 # Required by app-editors/okteta
 dev-qt/qtscript:5 scripttools

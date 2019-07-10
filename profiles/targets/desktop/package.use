@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Lars Wendler <polynomial-c@gentoo.org> (2019-03-20)
@@ -21,10 +21,6 @@ app-arch/unzip natspec
 # Required by dev-qt/qtcore
 dev-libs/libpcre pcre16
 dev-libs/libpcre2 pcre16
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2017-11-30)
-# Required by kde-frameworks/kcoreaddons
-dev-qt/qtcore:5 icu
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2017-11-30)
 # Required by kde-frameworks/kwayland
