@@ -430,7 +430,6 @@ pkg_postinst() {
 	enewgroup kvm 78
 	enewgroup render
 	enewgroup systemd-journal
-	newusergroup systemd-bus-proxy
 	newusergroup systemd-coredump
 	newusergroup systemd-journal-gateway
 	newusergroup systemd-journal-remote
