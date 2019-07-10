@@ -336,9 +336,14 @@ multilib_src_install_all() {
 
 	# Preserve empty dirs in /etc & /var, bug #437008
 	keepdir /etc/{binfmt.d,modules-load.d,tmpfiles.d}
-	keepdir /etc/systemd/{ntp-units.d,user} /var/lib/systemd
+	keepdir /etc/kernel/install.d
+	keepdir /etc/systemd/{network,user}
 	keepdir /etc/udev/{hwdb.d,rules.d}
-	keepdir /var/log/journal/remote
+	keepdir "${rootprefix}"/lib/systemd/{system-sleep,system-shutdown}
+	keepdir /usr/lib/{binfmt.d,modules-load.d}
+	keepdir /usr/lib/systemd/user-generators
+	keepdir /var/lib/systemd
+	rm -rf "${ED}"/var/log || die
 
 	# Symlink /etc/sysctl.conf for easy migration.
 	dosym ../sysctl.conf /etc/sysctl.d/99-sysctl.conf
