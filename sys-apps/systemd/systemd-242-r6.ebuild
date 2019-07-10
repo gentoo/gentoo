@@ -42,7 +42,7 @@ COMMON_DEPEND=">=sys-apps/util-linux-2.30:0=[${MULTILIB_USEDEP}]
 	elfutils? ( >=dev-libs/elfutils-0.158:0= )
 	gcrypt? ( >=dev-libs/libgcrypt-1.4.5:0=[${MULTILIB_USEDEP}] )
 	http? (
-		>=net-libs/libmicrohttpd-0.9.33:0=
+		>=net-libs/libmicrohttpd-0.9.33:0=[epoll(+)]
 		>=net-libs/gnutls-3.1.4:0=
 	)
 	idn? (
@@ -173,6 +173,7 @@ src_prepare() {
 		"${FILESDIR}"/242-file-max.patch
 		"${FILESDIR}"/242-rdrand-ryzen.patch
 		"${FILESDIR}"/242-networkd-ipv6-token.patch
+		"${FILESDIR}"/242-network-domains.patch
 	)
 
 	if ! use vanilla; then
