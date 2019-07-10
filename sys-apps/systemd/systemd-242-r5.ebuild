@@ -175,6 +175,7 @@ src_prepare() {
 		"${FILESDIR}"/242-wireguard-listenport.patch
 		"${FILESDIR}"/242-file-max.patch
 		"${FILESDIR}"/242-rdrand-ryzen.patch
+		"${FILESDIR}"/242-networkd-ipv6-token.patch
 	)
 
 	if ! use vanilla; then
