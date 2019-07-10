@@ -47,19 +47,15 @@ PERL_RM_FILES=(
 )
 
 src_configure() {
-
+	local impl
+	impl=$(usex mariadb mariadb mysql)
 	if use test; then
 		myconf="${myconf} --testdb=test \
 			--testhost=localhost \
 			--testuser=test \
 			--testpassword=test"
 	fi
-	if use mysql; then
-		myconf+=" --mysql_config=${EROOT}usr/bin/mysql_config"
-	fi
-	if use mariadb; then
-		myconf+=" --mariadb_config=${EROOT}usr/bin/mariadb_config"
-	fi
+	myconf+=" --${impl}_config=${EROOT%/}/usr/bin/${impl}_config"
 	perl-module_src_configure
 }
 
