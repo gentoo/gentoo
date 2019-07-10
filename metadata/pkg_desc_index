@@ -3224,7 +3224,7 @@ dev-libs/wayland 1.17.0: Wayland protocol libraries
 dev-libs/wayland-protocols 1.17: Wayland protocol files
 dev-libs/weston 3.0.0: Wayland reference compositor
 dev-libs/xalan-c 1.11.0_pre1153059: XSLT processor for transforming XML into HTML, text, or other XML types
-dev-libs/xapian 1.2.24 1.2.25 1.4.5 1.4.7: Xapian Probabilistic Information Retrieval library
+dev-libs/xapian 1.2.24 1.2.25 1.4.5 1.4.7 1.4.11: Xapian Probabilistic Information Retrieval library
 dev-libs/xapian-bindings 1.2.25 1.4.5 1.4.7: SWIG and JNI bindings for Xapian
 dev-libs/xerces-c 3.1.4-r1 3.2.2-r1: A validating XML parser written in a portable subset of C++
 dev-libs/xmlrpc-c 1.32.05-r1 1.39.11-r1: A lightweigt RPC library based on XML and HTTP
@@ -8023,6 +8023,7 @@ media-sound/kmetronome 1.0.0: MIDI based metronome using ALSA sequencer
 media-sound/lame 3.100-r1: LAME Ain't an MP3 Encoder
 media-sound/lash 0.5.4-r3: LASH Audio Session Handler
 media-sound/lilypond 2.18.2-r3 2.19.80-r1: GNU Music Typesetter
+media-sound/lollypop 1.0.12: Modern music player for GNOME
 media-sound/lyvi 2.0.0: A simple command-line lyrics viewer
 media-sound/madplay 0.15.2b-r1: The MAD audio player
 media-sound/mangler 1.2.5-r1: Open source VOIP client capable of connecting to Ventrilo 3.x servers
@@ -8738,7 +8739,7 @@ net-mail/mlmmj 1.2.19.0-r1: Mailing list managing made joyful
 net-mail/mpack 1.6-r4: Command-line MIME encoding and decoding utilities
 net-mail/mu 0.9.18-r2: Set of tools to deal with Maildirs, in particular, searching and indexing
 net-mail/nmzmail 1.1: Fast mail searching for mutt using namazu
-net-mail/notmuch 0.23.7 0.24.2: Thread-based e-mail indexer, supporting quick search and tagging
+net-mail/notmuch 0.23.7 0.24.2 0.28.4: Thread-based e-mail indexer, supporting quick search and tagging
 net-mail/offlineimap 6.5.6: Powerful IMAP/Maildir synchronization and reader support
 net-mail/pflogsumm 1.1.5: Pflogsumm is a log analyzer for Postfix logs
 net-mail/pfqueue 0.5.6: pfqueue is an ncurses console-based tool for managing Postfix queued messages
@@ -9713,7 +9714,7 @@ sys-apps/install-xattr 0.5: Wrapper to coreutil's install to preserve Filesystem
 sys-apps/iotools 1.5: Simple commands to access hardware device registers
 sys-apps/ipmitool 1.8.17-r1 1.8.18-r1: Utility for controlling IPMI enabled devices.
 sys-apps/ipmiutil 3.0.6: IPMI Management Utilities
-sys-apps/iproute2 4.14.1-r2 4.17.0-r1: kernel routing and traffic control utilities
+sys-apps/iproute2 4.14.1-r2 4.17.0-r1 4.19.0-r1: kernel routing and traffic control utilities
 sys-apps/irqbalance 1.4.0-r1 1.5.0: Distribute hardware interrupts across processors on a multiprocessor system
 sys-apps/isapnptools 1.27: Tools for configuring ISA PnP devices
 sys-apps/iucode_tool 2.1.1 2.3.1: tool to manipulate Intel X86 and X86-64 processor microcode update collections
@@ -10001,7 +10002,7 @@ sys-firmware/vgabios 0.6c-r1 0.7a: VGA BIOS implementation
 sys-firmware/zd1201-firmware 0.14: Firmware for ZyDAS 1201 based USB 802.11b Network WiFi devices
 sys-firmware/zd1211-firmware 1.5: Firmware for ZyDAS ZD1211 USB-WLAN devices supported by the zd1211rw driver
 sys-fs/arm-fdisk 3.0.6-r1: edit disk partitions on Acorn machines
-sys-fs/avfs 1.0.4: AVFS is a virtual filesystem that allows browsing of compressed files
+sys-fs/avfs 1.0.4 1.0.6: AVFS is a virtual filesystem that allows browsing of compressed files
 sys-fs/bashmount 3.2.0: Bash script that uses udisks to mount removable devices without GUI
 sys-fs/btrfs-progs 4.4.1 4.10.2 4.19: Btrfs filesystem utilities
 sys-fs/btrfsmaintenance 0.4 0.4.1-r1 0.4.2: Scripts for btrfs maintenance tasks like periodic scrub, balance, trim or defrag
@@ -10016,7 +10017,7 @@ sys-fs/dfc 3.1.1: A simple CLI tool that display file system usage, with colors
 sys-fs/diskdev_cmds 332.14_p1: HFS and HFS+ utils ported from OSX, supplies mkfs and fsck
 sys-fs/dmraid 1.0.0_rc16-r3: Device-mapper RAID tool and library
 sys-fs/dosfstools 4.1: DOS filesystem tools - provides mkdosfs, mkfs.msdos, mkfs.vfat
-sys-fs/e2fsprogs 1.44.5: Standard EXT2/EXT3/EXT4 filesystem utilities
+sys-fs/e2fsprogs 1.44.5 1.45.2: Standard EXT2/EXT3/EXT4 filesystem utilities
 sys-fs/e4rat 0.2.4_pre20141201-r1: Toolset to accelerate the boot process and application startup
 sys-fs/encfs 1.9.2 1.9.4 1.9.5: An implementation of encrypted filesystem in user-space using FUSE
 sys-fs/eudev 3.2.5: Linux dynamic and persistent device naming support (aka userspace devfs)
@@ -10088,7 +10089,7 @@ sys-libs/compiler-rt 5.0.2 6.0.1 7.1.0: Compiler runtime library for clang (buil
 sys-libs/compiler-rt-sanitizers 5.0.2 6.0.1 7.1.0: Compiler runtime libraries for clang (sanitizers & xray)
 sys-libs/cracklib 2.9.6-r2: Password Checking Library
 sys-libs/db 1.85-r3 3.2.9_p2 4.2.52_p5-r1 4.3.29_p1-r1 4.5.20_p2-r1 4.6.21_p4 4.7.25_p4 4.8.30-r2 5.3.28-r2: Oracle Berkeley DB
-sys-libs/e2fsprogs-libs 1.44.5: e2fsprogs libraries (common error and subsystem)
+sys-libs/e2fsprogs-libs 1.44.5 1.45.2: e2fsprogs libraries (common error and subsystem)
 sys-libs/efivar 30 31 37: Tools and library to manipulate EFI variables
 sys-libs/freeipmi 1.4.8 1.5.7: Provides Remote-Console and System Management Software as per IPMI v1.5/2.0
 sys-libs/fts-standalone 0.2-r1 1.2.7: Standalone fts library for use with musl
