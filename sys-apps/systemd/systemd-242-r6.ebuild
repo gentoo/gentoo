@@ -173,6 +173,7 @@ src_prepare() {
 		"${FILESDIR}"/242-file-max.patch
 		"${FILESDIR}"/242-rdrand-ryzen.patch
 		"${FILESDIR}"/242-networkd-ipv6-token.patch
+		"${FILESDIR}"/242-network-domains.patch
 	)
 
 	if ! use vanilla; then
