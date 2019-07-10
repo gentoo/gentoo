@@ -10691,7 +10691,7 @@ x11-libs/librfm 5.3.16.3-r1: The basic library used by some rfm applications, su
 x11-libs/libva 1.7.3: Video Acceleration (VA) API for Linux
 x11-libs/libva-intel-driver 1.7.3: HW video decode support for Intel integrated graphics
 x11-libs/libva-vdpau-driver 0.7.4-r4: VDPAU Backend for Video Acceleration (VA) API
-x11-libs/libvdpau 1.1.1 1.2: VDPAU wrapper and trace libraries
+x11-libs/libvdpau 1.2: VDPAU wrapper and trace libraries
 x11-libs/libwnck 2.31.0 3.30.0: A window navigation construction kit
 x11-libs/libxcb 1.13.1: X C-language Bindings library
 x11-libs/libxkbcommon 0.8.4: X.Org xkbcommon library
