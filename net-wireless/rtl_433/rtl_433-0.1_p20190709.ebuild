@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,7 +12,7 @@ if [[ $PV == "9999" ]]; then
 	EGIT_REPO_URI="https://github.com/merbanan/rtl_433"
 	KEYWORDS=""
 else
-	COMMIT="51d275cd08c517d5445b568bf9c2f1b4103bec9f"
+	COMMIT="496f82b54b8957dbdd1bb60a080aeccfd31da73e"
 	SRC_URI="https://github.com/merbanan/rtl_433/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${PN}-${COMMIT}"
 	KEYWORDS="~amd64 ~x86"
@@ -20,7 +20,22 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE=""
+IUSE="+rtlsdr soapy"
 
-DEPEND="net-wireless/rtl-sdr:="
+DEPEND="rtlsdr? ( net-wireless/rtl-sdr:= )
+	soapy? ( net-wireless/soapysdr:= )"
 RDEPEND="${DEPEND}"
+
+src_configure() {
+	mycmakeargs=(
+		-DENABLE_RTLSDR="$(usex rtlsdr)"
+		-DENABLE_SOAPYSDR="$(usex soapy)"
+	)
+	cmake-utils_src_configure
+}
+
+src_install() {
+	cmake-utils_src_install
+	mv "${ED}/usr/etc" "${ED}/" || die
+	mv "${ED}/etc/${PN}/${PN}.example.conf" "${ED}/etc/${PN}/${PN}.conf" || die
+}
