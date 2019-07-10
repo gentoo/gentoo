@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,7 +13,7 @@ IUSE="libressl"
 
 RDEPEND="
 	!libressl? ( dev-libs/openssl:0 )
-	libressl? ( dev-libs/libressl )
+	libressl? ( >=dev-libs/libressl-2.7.2 )
 "
 DEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
