@@ -12,7 +12,7 @@ SRC_URI="http://www.mimedefang.org/static/${P}.tar.gz"
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="clamav +poll"
+IUSE="clamav +poll test"
 
 DEPEND=">=dev-perl/MIME-tools-5.412
 	dev-perl/IO-stringy
@@ -21,8 +21,13 @@ DEPEND=">=dev-perl/MIME-tools-5.412
 	dev-perl/MailTools
 	dev-perl/Unix-Syslog
 	clamav? ( app-antivirus/clamav )
-	|| ( mail-filter/libmilter mail-mta/sendmail )"
+	|| ( mail-filter/libmilter mail-mta/sendmail )
+	test? (
+		dev-perl/Test-Class
+		dev-perl/Test-Most
+	)"
 RDEPEND="${DEPEND}"
+RESTRICT="test? ( !test )"
 
 pkg_setup() {
 	enewgroup defang
@@ -31,6 +36,7 @@ pkg_setup() {
 
 src_prepare() {
 	eapply "${FILESDIR}/${PN}-2.72-ldflags.patch"
+	eapply -p0 "${FILESDIR}/${PN}-tests.patch"
 	eapply_user
 }
 
