@@ -7034,7 +7034,7 @@ mail-client/pinepgp 0.18.0-r1: Use GPG/PGP with Pine
 mail-client/roundcube 1.3.8: A browser-based multilingual IMAP client with an application-like user interface
 mail-client/sylpheed 3.6.0 3.7.0: A lightweight email client and newsreader
 mail-client/thunderbird 60.7.2: Thunderbird Mail Client
-mail-client/thunderbird-bin 60.7.2: Thunderbird Mail Client
+mail-client/thunderbird-bin 60.8.0: Thunderbird Mail Client
 mail-client/trojita 0.7-r2: A Qt IMAP e-mail client
 mail-filter/amavisd-milter 1.5.0 1.5.0-r1: sendmail milter for amavisd-new
 mail-filter/amavisd-new 2.11.1-r3: High-performance interface between the MTA and content checkers
@@ -10457,7 +10457,7 @@ www-client/epiphany 3.30.4: GNOME webbrowser based on Webkit
 www-client/falkon 3.1.0-r1: Cross-platform web browser using QtWebEngine
 www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
 www-client/firefox 60.7.2: Firefox Web Browser
-www-client/firefox-bin 60.7.2 67.0.4: Firefox Web Browser
+www-client/firefox-bin 60.8.0 68.0: Firefox Web Browser
 www-client/httrack 3.48.21-r1: HTTrack Website Copier, Open Source Offline Browser
 www-client/links 2.14-r1: A fast and lightweight web browser running in both graphics and text mode
 www-client/lynx 2.8.9_pre16 2.8.9_p1: An excellent console-based web browser with ssl support
