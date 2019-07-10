@@ -64,6 +64,12 @@ COMMON_DEPEND=">=sys-apps/util-linux-2.30:0=[${MULTILIB_USEDEP}]
 	selinux? ( sys-libs/libselinux:0= )
 	xkb? ( >=x11-libs/libxkbcommon-0.4.1:0= )"
 
+# Newer linux-headers needed by ia64, bug #480218
+DEPEND="${COMMON_DEPEND}
+	>=sys-kernel/linux-headers-${MINKV}
+	gnuefi? ( >=sys-boot/gnu-efi-3.0.2 )
+"
+
 # baselayout-2.2 has /run
 RDEPEND="${COMMON_DEPEND}
 	>=sys-apps/baselayout-2.2
@@ -87,12 +93,6 @@ PDEPEND=">=sys-apps/dbus-1.9.8[systemd]
 	>=sys-fs/udev-init-scripts-25
 	policykit? ( sys-auth/polkit )
 	!vanilla? ( sys-apps/gentoo-systemd-integration )"
-
-# Newer linux-headers needed by ia64, bug #480218
-DEPEND="
-	>=sys-kernel/linux-headers-${MINKV}
-	gnuefi? ( >=sys-boot/gnu-efi-3.0.2 )
-"
 
 BDEPEND="
 	app-arch/xz-utils:0
@@ -244,7 +244,7 @@ multilib_src_configure() {
 		-Delfutils=$(meson_multilib_native_use elfutils)
 		-Dgcrypt=$(meson_use gcrypt)
 		-Dgnu-efi=$(meson_multilib_native_use gnuefi)
-		-Defi-libdir="${EPREFIX}/usr/$(get_libdir)"
+		-Defi-libdir="${ESYSROOT}/usr/$(get_libdir)"
 		-Dmicrohttpd=$(meson_multilib_native_use http)
 		-Dimportd=$(meson_multilib_native_use importd)
 		-Dbzip2=$(meson_multilib_native_use importd)
