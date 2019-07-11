@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -45,7 +45,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	amr? ( media-libs/opencore-amr:0 )
 	dcaenc? ( media-sound/dcaenc:0 )
 	dts? ( media-libs/libdca:0 )
-	fdk? ( media-libs/fdk-aac:0 )
+	fdk? ( media-libs/fdk-aac:0= )
 	fontconfig? ( media-libs/fontconfig:1.0 )
 	fribidi? ( dev-libs/fribidi:0 )
 	jack? (

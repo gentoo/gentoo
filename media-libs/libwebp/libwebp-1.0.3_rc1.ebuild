@@ -1,17 +1,20 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit autotools eutils libtool multilib-minimal
+EAPI=7
+inherit autotools libtool multilib-minimal
+
+MY_P="${P/_/-}"
 
 DESCRIPTION="A lossy image compression format"
 HOMEPAGE="https://developers.google.com/speed/webp/download"
-SRC_URI="http://downloads.webmproject.org/releases/webp/${P}.tar.gz"
+SRC_URI="http://downloads.webmproject.org/releases/webp/${MY_P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/7" # subslot = libwebp soname version
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~x64-macos ~m68k-mint"
-IUSE="cpu_flags_x86_avx2 cpu_flags_x86_sse2 cpu_flags_x86_sse4_1 experimental gif +jpeg neon opengl +png static-libs swap-16bit-csp tiff"
+[[ "${PV}" = *_rc* ]] || \
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+IUSE="cpu_flags_x86_sse2 cpu_flags_x86_sse4_1 gif +jpeg neon opengl +png static-libs swap-16bit-csp tiff"
 
 # TODO: dev-lang/swig bindings in swig/ subdirectory
 RDEPEND="gif? ( media-libs/giflib:= )
@@ -24,7 +27,7 @@ RDEPEND="gif? ( media-libs/giflib:= )
 	tiff? ( media-libs/tiff:0= )"
 DEPEND="${RDEPEND}"
 
-ECONF_SOURCE=${S}
+S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
 	default
@@ -41,13 +44,11 @@ multilib_src_configure() {
 		--enable-libwebpdecoder
 		$(use_enable static-libs static)
 		$(use_enable swap-16bit-csp)
-		$(use_enable experimental)
 		$(use_enable jpeg)
 		$(use_enable png)
 		$(use_enable opengl gl)
 		$(use_enable tiff)
 
-		$(use_enable cpu_flags_x86_avx2 avx2)
 		$(use_enable cpu_flags_x86_sse2 sse2)
 		$(use_enable cpu_flags_x86_sse4_1 sse4.1)
 		$(use_enable neon)
@@ -56,7 +57,7 @@ multilib_src_configure() {
 		$(multilib_native_use_enable gif)
 	)
 
-	econf "${args[@]}"
+	ECONF_SOURCE="${S}" econf "${args[@]}"
 }
 
 multilib_src_install() {
@@ -64,6 +65,6 @@ multilib_src_install() {
 }
 
 multilib_src_install_all() {
-	prune_libtool_files
+	find "${ED}" -type f -name "*.la" -delete || die
 	dodoc AUTHORS ChangeLog doc/*.txt NEWS README{,.mux}
 }
