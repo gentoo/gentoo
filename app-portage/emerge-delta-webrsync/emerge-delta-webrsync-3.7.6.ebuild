@@ -1,10 +1,10 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 DESCRIPTION="emerge-webrsync using patches to minimize bandwidth"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Portage"
-SRC_URI="https://gitweb.gentoo.org/proj/portage.git/plain/misc/emerge-delta-webrsync?id=52d5d444ffb144911ca9b6e70b383405a8bd8af6 -> ${P}"
+SRC_URI="https://gitweb.gentoo.org/proj/portage.git/plain/misc/emerge-delta-webrsync?id=829623eadbeda97d37c0ea50dc5f08f19bf4561b -> ${P}"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~sparc ~x86 ~x86-fbsd"
@@ -13,7 +13,7 @@ IUSE=""
 DEPEND=""
 RDEPEND="
 	app-shells/bash
-	>=sys-apps/portage-2.1.10
+	>=sys-apps/portage-2.3.69
 	>=dev-util/diffball-0.6.5"
 
 S=${WORKDIR}
