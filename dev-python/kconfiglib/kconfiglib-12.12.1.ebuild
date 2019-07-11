@@ -2,8 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-# menuconfig script doesn't work on py2 so skip it
-PYTHON_COMPAT=( python3_{5,6,7} pypy3 )
+PYTHON_COMPAT=( python{2_7,3_{5,6,7}} pypy{,3} )
 PYTHON_REQ_USE="ncurses"
 
 inherit distutils-r1
