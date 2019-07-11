@@ -14,8 +14,9 @@ IUSE="dynamic openmp pthread serial static-libs eselect-ldso"
 REQUIRED_USE="?? ( openmp pthread serial )"
 
 RDEPEND="
->=app-eselect/eselect-blas-0.2
->=app-eselect/eselect-lapack-0.2
+eselect-ldso? ( >=app-eselect/eselect-blas-0.2
+                !app-eselect/eselect-cblas
+                >=app-eselect/eselect-lapack-0.2 )
 "
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
@@ -69,12 +70,32 @@ src_install () {
 }
 
 pkg_postinst () {
-	if use eselect-ldso; then
-		eselect blas add $(get_libdir) \
-			"${EROOT}"/usr/$(get_libdir)/blas/openblas openblas
-		eselect lapack add $(get_libdir) \
-			"${EROOT}"/usr/$(get_libdir)/lapack/openblas openblas
-	fi
+	use eselect-ldso || return
+	local libdir=$(get_libdir) me="openblas"
+
+        # check blas
+        eselect blas add ${libdir} "${EROOT}"/usr/${libdir}/blas/${me} ${me}
+        local current_blas=$(eselect blas show ${libdir} | cut -d' ' -f2)
+        if [[ ${current_blas} == "${me}" || -z ${current_blas} ]]; then
+                eselect blas set ${libdir} ${me}
+                elog "Current eselect: BLAS/CBLAS ($libdir) -> [${current_blas}]."
+        else
+                elog "Current eselect: BLAS/CBLAS ($libdir) -> [${current_blas}]."
+                elog "To use blas [${me}] implementation, you have to issue (as root):"
+                elog "\t eselect blas set ${libdir} ${me}"
+        fi
+
+        # check lapack
+        eselect lapack add ${libdir} "${EROOT}"/usr/${libdir}/lapack/${me} ${me}
+        local current_lapack=$(eselect lapack show ${libdir} | cut -d' ' -f2)
+        if [[ ${current_lapack} == "${me}" || -z ${current_lapack} ]]; then
+                eselect lapack set ${libdir} ${me}
+                elog "Current eselect: LAPACK ($libdir) -> [${current_lapack}]."
+        else
+                elog "Current eselect: LAPACK ($libdir) -> [${current_lapack}]."
+                elog "To use lapack [${me}] implementation, you have to issue (as root):"
+                elog "\t eselect lapack set ${libdir} ${me}"
+        fi
 }
 
 pkg_postrm () {
