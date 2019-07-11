@@ -47,6 +47,7 @@ PATCHES=(
 	"${FILESDIR}/pthread_lib2.patch"
 	"${FILESDIR}/${P}-version.patch"
 	"${FILESDIR}/${P}-armv7l.patch"
+	"${FILESDIR}/${P}-update-vsx-ppc.patch"
 )
 
 # the PATENTS file is required to be distributed with this package bug #682214
