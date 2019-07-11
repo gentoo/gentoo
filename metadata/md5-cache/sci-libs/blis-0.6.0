@@ -11,4 +11,4 @@ REQUIRED_USE=?? ( openmp pthread serial ) ?? ( eselect-ldso 64bit-index )
 SLOT=0
 SRC_URI=https://github.com/flame/blis/archive/0.6.0.tar.gz -> blis-0.6.0.tar.gz
 _eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8
-_md5_=075c1711ac07f18c39de9c31e45076c9
+_md5_=54d38a858e95abda996253c44e862fc9
