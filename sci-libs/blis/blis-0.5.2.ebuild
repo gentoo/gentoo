@@ -15,7 +15,7 @@ IUSE="openmp pthread serial static-libs eselect-ldso doc 64bit-index"
 REQUIRED_USE="?? ( openmp pthread serial ) ?? ( eselect-ldso 64bit-index )"
 
 RDEPEND="eselect-ldso? ( !app-eselect/eselect-cblas
-				   >=app-eselect/eselect-blas-0.2 )"
+                         >=app-eselect/eselect-blas-0.2 )"
 
 DEPEND="${RDEPEND}
 	dev-lang/python
@@ -91,8 +91,8 @@ pkg_postinst() {
 
 	# check blas
 	eselect blas add ${libdir} "${EROOT}"/usr/${libdir}/blas/${me} ${me}
-	local current_blas=$(eselect blas show ${libdir})
-	if [[ ${current_blas} == blis || -z ${current_blas} ]]; then
+	local current_blas=$(eselect blas show ${libdir} | cut -d' ' -f2)
+	if [[ ${current_blas} == "${me}" || -z ${current_blas} ]]; then
 		eselect blas set ${libdir} ${me}
 		elog "Current eselect: BLAS/CBLAS ($libdir) -> [${current_blas}]."
 	else
