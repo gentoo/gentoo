@@ -52,7 +52,7 @@ RDEPEND="${DEPEND}
 
 src_configure() {
 	local mycmakeargs=(
-		-DWITH_DDCUTIL=$(usex brightness-control)
+		-DHAVE_DDCUTIL=$(usex brightness-control)
 		$(cmake-utils_use_find_package wireless KF5BluezQt)
 		$(cmake-utils_use_find_package wireless KF5NetworkManagerQt)
 	)
