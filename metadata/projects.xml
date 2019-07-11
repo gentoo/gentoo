@@ -362,6 +362,10 @@
       <email>lu_zero@gentoo.org</email>
       <name>Luca Barbato</name>
     </member>
+    <member>
+      <email>mattst88@gentoo.org</email>
+      <name>Matt Turner</name>
+    </member>
     <member is-lead="1">
       <email>polynomial-c@gentoo.org</email>
       <name>Lars Wendler</name>
