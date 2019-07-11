@@ -52,6 +52,11 @@ sci-libs/ssm
 # Masked for removal after 2019-08-09, bug #631300
 dev-perl/File-Slurp-Unicode
 
+# Robin H. Johnson <robbat2@gentoo.org> (2019-07-08)
+# Needs LOTS of testing, broke boot on my laptop in early attempts, maybe needs
+# matching genkernel work?
+>=sys-fs/lvm2-2.03
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-07-07)
 # Initial package version, no potential revdeps have been tested yet
 # or amended for support. Please do test.
