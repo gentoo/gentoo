@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/ltp/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ppc x86 ~x86-linux ~x64-macos"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86 ~x86-linux ~x64-macos"
 IUSE=""
 
 DEPEND=""

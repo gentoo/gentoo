@@ -4,6 +4,22 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
+# Kent Fredric <kentnl@gentoo.org> (2019-07-30)
+# These features require dev-perl/GD, which currently can't be
+# considered stable due to serious defects upstream. Bug #661634
+app-admin/yaala gd
+app-misc/gcstar stats
+app-misc/g15daemon perl
+dev-lang/php coverage
+dev-util/lcov png
+dev-perl/Business-ISBN barcode
+dev-perl/Template-Toolkit gd
+media-fonts/unifont utils fontforge
+media-video/vdrsync dvdr
+net-analyzer/openvas-manager extras
+www-apps/bugzilla extras
+www-apps/otrs gd
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-07-16)
 # sci-libs/dcmtk is not stable
 media-libs/openimageio dicom
