@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_5,3_6} )
+PYTHON_COMPAT=( python2_7 python3_{5,6,7} )
 
 inherit distutils-r1
 
@@ -19,6 +19,8 @@ KEYWORDS="amd64 x86"
 IUSE="doc examples test"
 
 S="${WORKDIR}/${MY_PN}-${PV}"
+
+PATCHES="${FILESDIR}/0.6-fix-test-submit.patch"
 
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
