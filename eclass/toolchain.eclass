@@ -2253,6 +2253,7 @@ toolchain_pkg_postrm() {
 	# clean up the cruft left behind by cross-compilers
 	if is_crosscompile ; then
 		if [[ -z $(ls "${EROOT%/}"/etc/env.d/gcc/${CTARGET}* 2>/dev/null) ]] ; then
+			einfo "Removing last cross-compiler instance. Deleting dangling symlinks."
 			rm -f "${EROOT%/}"/etc/env.d/gcc/config-${CTARGET}
 			rm -f "${EROOT%/}"/etc/env.d/??gcc-${CTARGET}
 			rm -f "${EROOT%/}"/usr/bin/${CTARGET}-{gcc,{g,c}++}{,32,64}
