@@ -2241,6 +2241,7 @@ toolchain_pkg_postinst() {
 }
 
 toolchain_pkg_postrm() {
+	do_gcc_config
 	if [[ ! ${ROOT%/} && -f ${EPREFIX}/usr/share/eselect/modules/compiler-shadow.eselect ]] ; then
 		eselect compiler-shadow clean all
 	fi
@@ -2265,9 +2266,6 @@ toolchain_pkg_postrm() {
 	[[ ${ROOT%/} ]] && return 0
 
 	if [[ ! -e ${LIBPATH}/libstdc++.so ]] ; then
-		# make sure the profile is sane during same-slot upgrade #289403
-		do_gcc_config
-
 		einfo "Running 'fix_libtool_files.sh ${GCC_RELEASE_VER}'"
 		fix_libtool_files.sh ${GCC_RELEASE_VER}
 		if [[ -n ${BRANCH_UPDATE} ]] ; then
