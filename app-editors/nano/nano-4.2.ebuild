@@ -18,7 +18,7 @@ HOMEPAGE="https://www.nano-editor.org/ https://wiki.gentoo.org/wiki/Nano/Basics_
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="debug justify +magic minimal ncurses nls slang +spell static unicode"
+IUSE="debug justify +magic minimal ncurses nls slang +spell +split-usr static unicode"
 
 LIB_DEPEND=">=sys-libs/ncurses-5.9-r1:0=[unicode?]
 	sys-libs/ncurses:0=[static-libs(+)]
@@ -76,5 +76,5 @@ src_install() {
 			"${ED}"/etc/nanorc || die
 	fi
 
-	dosym ../../bin/nano /usr/bin/nano
+	use split-usr && dosym ../../bin/nano /usr/bin/nano
 }
