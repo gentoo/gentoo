@@ -5834,7 +5834,7 @@ dev-ruby/flexmock 2.3.6: Simple mock object library for Ruby unit testing
 dev-ruby/gettext-setup 0.30: A gem to ease i18n
 dev-ruby/gherkin 4.1.3 5.1.0: Fast Gherkin lexer and parser
 dev-ruby/git 1.4.0: Library for using Git in Ruby
-dev-ruby/gruff 0.7.0: Beautiful graphs for one or multiple datasets
+dev-ruby/gruff 0.7.0 0.7.0-r1: Beautiful graphs for one or multiple datasets
 dev-ruby/haml 4.0.7-r1 4.0.7-r3: A ruby web page templating engine
 dev-ruby/hashdiff 0.3.8: Simple Hash extension to make working with nested hashes easier
 dev-ruby/hashie 2.1.2-r1: Hashie is a small collection of tools that make hashes more powerful
@@ -9001,7 +9001,7 @@ net-p2p/ncdc 1.20: ncurses directconnect client
 net-p2p/qbittorrent 4.1.4-r1 4.1.5-r1: BitTorrent client in C++ and Qt
 net-p2p/retroshare 0.6.3-r1 0.6.4: P2P private sharing application
 net-p2p/rtorrent 0.9.7-r1: BitTorrent Client using libtorrent
-net-p2p/syncthing 0.14.52: Open Source Continuous File Synchronization
+net-p2p/syncthing 0.14.52 1.1.4: Open Source Continuous File Synchronization
 net-p2p/torrentinfo 1.8.6-r1: A torrent file parser
 net-p2p/transmission 2.94: A Fast, Easy and Free BitTorrent client
 net-p2p/transmission-remote-gtk 1.3.1: GTK+ client for management of the Transmission BitTorrent client, over HTTP RPC
@@ -9361,7 +9361,7 @@ sci-physics/pythia 6.4.28 8.1.86: Lund Monte Carlo high-energy physics event gen
 sci-visualization/epix 1.2.11-r1: 2- and 3-D plotter for creating images (to be used in LaTeX)
 sci-visualization/g3data 1.5.4: Tool for extracting data from graphs
 sci-visualization/ggobi 2.1.11: Visualization program for exploring high-dimensional data
-sci-visualization/gnuplot 5.0.7 5.2.5: Command-line driven interactive plotting program
+sci-visualization/gnuplot 5.0.7 5.2.5 5.2.6: Command-line driven interactive plotting program
 sci-visualization/gri 2.12.23-r1: Language for scientific graphics programming
 sci-visualization/gwyddion 2.44: Framework for Scanning Mode Microscopy data analysis
 sci-visualization/opendx 4.4.4-r7: 3D data visualization tool
