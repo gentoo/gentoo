@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit flag-o-matic libtool linux-info systemd
 
@@ -9,7 +9,8 @@ if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3 autotools
 	EGIT_REPO_URI="https://git.kernel.org/pub/scm/utils/kernel/kexec/kexec-tools.git"
 else
-	SRC_URI="mirror://kernel/linux/utils/kernel/kexec/${P}.tar.xz"
+	SRC_URI="mirror://kernel/linux/utils/kernel/kexec/${P/_/-}.tar.xz"
+	[[ "${PV}" == *_rc* ]] || \
 	KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 fi
 
@@ -27,6 +28,8 @@ DEPEND="
 	zlib? ( sys-libs/zlib )"
 RDEPEND="${DEPEND}"
 
+S="${WORKDIR}/${P/_/-}"
+
 CONFIG_CHECK="~KEXEC"
 
 PATCHES=(
@@ -41,7 +44,7 @@ pkg_setup() {
 
 src_prepare() {
 	default
-	if [[ ${PV} == "9999" ]] ; then
+	if [[ "${PV}" == 9999 ]] ; then
 		eautoreconf
 	else
 		elibtoolize
