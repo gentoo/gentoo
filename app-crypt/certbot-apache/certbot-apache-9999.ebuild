@@ -24,7 +24,7 @@ SLOT="0"
 IUSE="test"
 
 RDEPEND=">=app-crypt/acme-0.29.0[${PYTHON_USEDEP}]
-	>=app-crypt/certbot-0.34.0[${PYTHON_USEDEP}]
+	>=app-crypt/certbot-0.36.0[${PYTHON_USEDEP}]
 	dev-python/mock[${PYTHON_USEDEP}]
 	dev-python/python-augeas[${PYTHON_USEDEP}]
 	dev-python/zope-component[${PYTHON_USEDEP}]

@@ -1,8 +1,8 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-PYTHON_COMPAT=(python{2_7,3_5,3_6})
+EAPI=7
+PYTHON_COMPAT=(python{2_7,3_5,3_6,3_7})
 
 if [[ ${PV} == 9999* ]]; then
 	EGIT_REPO_URI="https://github.com/certbot/certbot.git"
@@ -10,7 +10,7 @@ if [[ ${PV} == 9999* ]]; then
 	S=${WORKDIR}/${P}/${PN}
 else
 	SRC_URI="https://github.com/${PN%-nginx}/${PN%-nginx}/archive/v${PV}.tar.gz -> ${PN%-nginx}-${PV}.tar.gz"
-	KEYWORDS="amd64 ~arm ~arm64 x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 	S=${WORKDIR}/${PN%-nginx}-${PV}/${PN}
 fi
 
@@ -26,7 +26,7 @@ IUSE=""
 CDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 RDEPEND="${CDEPEND}
 	>=app-crypt/acme-0.29.0[${PYTHON_USEDEP}]
-	>=app-crypt/certbot-0.34.0[${PYTHON_USEDEP}]
+	>=app-crypt/certbot-0.35.0[${PYTHON_USEDEP}]
 	dev-python/mock[${PYTHON_USEDEP}]
 	dev-python/pyopenssl[${PYTHON_USEDEP}]
 	>=dev-python/pyparsing-1.5.5[${PYTHON_USEDEP}]
