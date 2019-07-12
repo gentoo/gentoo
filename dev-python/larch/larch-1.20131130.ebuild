@@ -17,7 +17,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
-DEPEND="test? ( dev-python/CoverageTestRunner dev-util/cmdtest )"
+DEPEND="test? ( dev-python/coverage-test-runner dev-util/cmdtest )"
 
 RDEPEND="${PYTHON_DEPS}
 	dev-python/cliapp
