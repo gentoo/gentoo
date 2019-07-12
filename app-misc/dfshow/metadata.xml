@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>pepitsizous@zoho.com</email>
+		<name>Angelos Kouratzinos</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+		DF-SHOW (Directory File Show) is a Unix-like rewrite of some of
+		the applications from Larry Kroeker's DF-EDIT (Directory File Editor)
+		for MS-DOS and PC-DOS systems, based on the Version 2.3d release from 1986.
+	</longdescription>
+</pkgmetadata>
