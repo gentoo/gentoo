@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -26,9 +26,9 @@ RDEPEND="
 	selinux? ( sec-policy/selinux-vnstatd )
 "
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.17-conf.patch
-	"${FILESDIR}"/${PN}-1.17-drop-root.patch
-	"${FILESDIR}"/${PN}-1.17-run.patch
+	"${FILESDIR}"/${PN}-2.2-conf.patch
+	"${FILESDIR}"/${PN}-2.2-drop-root.patch
+	"${FILESDIR}"/${PN}-2.2-run.patch
 )
 
 pkg_setup() {
