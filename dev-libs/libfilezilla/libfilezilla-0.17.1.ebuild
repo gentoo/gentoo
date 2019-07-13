@@ -13,7 +13,10 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~ia64 ~ppc ~x86"
 IUSE="test"
 
-RDEPEND="dev-libs/nettle:0="
+RDEPEND="
+	dev-libs/nettle:0=
+	>=net-libs/gnutls-3.5.7:=
+"
 DEPEND="${RDEPEND}
 	test? ( dev-util/cppunit )"
 
