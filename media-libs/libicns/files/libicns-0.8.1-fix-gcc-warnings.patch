@@ -1,0 +1,52 @@
+From: Carlos Maddela <e7appew@gmail.com>
+Date: Fri, 11 Nov 2016 17:12:25 +1100
+Subject: Fix GCC warnings.
+
+Description: Fix GCC warnings.
+Author: Carlos Maddela <e7appew@gmail.com>
+Origin: vendor
+Forwarded: no
+Last-Update: 2016-11-11
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+---
+ icnsutils/icns2png.c | 12 +++++++-----
+ icnsutils/png2icns.c |  2 ++
+ 2 files changed, 9 insertions(+), 5 deletions(-)
+
+--- a/icnsutils/icns2png.c
++++ b/icnsutils/icns2png.c
+@@ -530,15 +530,17 @@
+ 			case ICNS_ICON_VERSION:
+ 			{
+ 				icns_byte_t	iconBytes[4];
+-				icns_uint32_t	iconVersion = 0;
+-				float		iconVersionNumber = 0;
++				union
++				{
++					icns_uint32_t	asUint32;
++					float		asFloat;
++				} iconVersion = { .asUint32 = 0 };
+ 				if(iconDataSize == 4) {
+ 					memcpy(&iconBytes[0],(dataPtr+dataOffset+8),4);
+-					iconVersion = iconBytes[3]|iconBytes[2]<<8|iconBytes[1]<<16|iconBytes[0]<<24;
+-					iconVersionNumber = *((float *)(&iconVersion));
++					iconVersion.asUint32 = iconBytes[3]|iconBytes[2]<<8|iconBytes[1]<<16|iconBytes[0]<<24;
+ 				}
+ 				if(extractMode & LIST_MODE) {
+-					printf(" value: %f\n",iconVersionNumber);
++					printf(" value: %f\n",iconVersion.asFloat);
+ 				}
+ 			}
+ 			break;
+--- a/icnsutils/png2icns.c
++++ b/icnsutils/png2icns.c
+@@ -28,6 +28,8 @@
+ #include <png.h>
+ #include <icns.h>
+ 
++#include <unistd.h>
++
+ #define	FALSE	0
+ #define	TRUE	1
+ 

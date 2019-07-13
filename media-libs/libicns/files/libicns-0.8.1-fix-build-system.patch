@@ -1,0 +1,61 @@
+Use pkg-config instead of brittle AC_CHECK_LIB hackery
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -142,41 +142,11 @@
+ ] )
+ 
+ # Check for libpng
+-AC_CHECK_LIB(png, png_create_read_struct, [
+-AC_SUBST(PNG_LIBS, "-lpng")
+-], [
+-  AC_CHECK_LIB(png10, png_create_read_struct, [
+-  AC_SUBST(PNG_LIBS, "-lpng10")
+-  ], [
+-    AC_CHECK_LIB(png12, png_create_read_struct, [
+-    AC_SUBST(PNG_LIBS, "-lpng12")
+-    ], [
+-      AC_MSG_ERROR([cannot find required library png])
+-    ], [])
+-  ], [])
+-], [])
+-AC_CHECK_HEADERS([png.h libpng/png.h libpng10/png.h libpng12/png.h])
++PKG_CHECK_MODULES([PNG], [libpng])
+ 
+ # Check for libopenjpeg, fall back to libjasper if not available
+-AC_CHECK_LIB(jasper, jas_init, [
+-AC_SUBST(JP2000_LIBS, "-ljasper")
+-AC_CHECK_HEADERS([jasper/jasper.h])
+-AC_DEFINE([ICNS_JASPER],[1],[We have Jasper])
+-], [
+-  AC_CHECK_LIB(openjpeg2, opj_setup_decoder, [
+-  AC_SUBST(JP2000_LIBS, "-lopenjpeg2")
+-  AC_CHECK_HEADERS([openjpeg.h])
+-  AC_DEFINE([ICNS_OPENJPEG],[1],[We have OpenJPEG])
+-  ], [
+-    AC_CHECK_LIB(openjpeg, opj_setup_decoder, [
+-    AC_SUBST(JP2000_LIBS, "-lopenjpeg")
+-    AC_CHECK_HEADERS([openjpeg.h])
+-    AC_DEFINE([ICNS_OPENJPEG],[1],[We have OpenJPEG])
+-    ], [
+-      AC_MSG_WARN([libopenjpeg or libjasper jp2000 codec libraries not found])
+-      AC_MSG_WARN([libicns will be built without 256x256 and 512x512 support])
+-    ])
+-  ])
++PKG_CHECK_MODULES([JP2000], [libopenjp2], [
++  AC_DEFINE([ICNS_OPENJPEG], [2], [We have OpenJPEG 2.x])
+ ])
+ 
+ AC_CONFIG_FILES([Makefile libicns.spec icnsutils/Makefile src/Makefile src/libicns.pc])
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -3,7 +3,8 @@
+ 
+ libicns_la_LDFLAGS = -version-info 3:0:2
+ 
+-libicns_la_LIBADD = @PNG_LIBS@ @JP2000_LIBS@
++libicns_la_LIBADD = $(PNG_LIBS) $(JP2000_LIBS)
++libicns_la_CPPFLAGS = $(PNG_CFLAGS) $(JP2000_CFLAGS)
+ 
+ libicns_la_SOURCES = \
+   icns_debug.c \
