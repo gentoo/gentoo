@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 GENQMAIL_PV=20080406
 QMAIL_SPP_PV=0.42
@@ -17,7 +17,7 @@ QMAIL_LARGE_DNS='qmail-103.patch'
 
 QMAIL_SMTPUTF8='qmail-smtputf8.patch'
 
-inherit eutils qmail
+inherit qmail
 
 DESCRIPTION="qmail -- a secure, reliable, efficient, simple message transfer agent"
 HOMEPAGE="
@@ -139,6 +139,8 @@ src_prepare() {
 	else
 		einfo "Enabled CRAM_MD5 support"
 	fi
+
+	eapply_user
 }
 
 src_compile() {
