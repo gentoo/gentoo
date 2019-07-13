@@ -152,7 +152,9 @@ src_configure() {
 }
 
 src_compile() {
-	emake so all
+	# The trouble for which -j1 is a workaround is fixed in upstream commit
+	# d86210973df93ccca0befd56afba2132da925ebc, expected in 9.28.
+	emake -j1 so all
 
 	cd ijs || die
 	emake
