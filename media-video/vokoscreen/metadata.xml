@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>hanhanzhiyeqianke@gmail.com</email>
+    <name>Han Han</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <longdescription>
+    vokoscreen is an easy to use screencast creator to record educational
+    videos, live recordings of browser, installation, videoconferences, etc.
+  </longdescription>
+  <upstream>
+    <remote-id type="github">vkohaupt/vokoscreen</remote-id>
+  </upstream>
+</pkgmetadata>
