@@ -39,7 +39,7 @@ DEPEND="
 	$(add_qt_dep qtx11extras)
 	virtual/libudev:=
 	x11-libs/libxcb
-	brightness-control? ( app-misc/ddcutil )
+	brightness-control? ( >=app-misc/ddcutil-0.9.1 )
 	wireless? (
 		$(add_frameworks_dep bluez-qt)
 		$(add_frameworks_dep networkmanager-qt)
