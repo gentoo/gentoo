@@ -7076,7 +7076,7 @@ mail-mta/esmtp 1.2: User configurable relay-only Mail Transfer Agent with a send
 mail-mta/exim 4.91-r2 4.92: A highly configurable, drop-in replacement for sendmail
 mail-mta/mini-qmail 1.06: a small null client that forwards mail via QMQP to a full qmail server
 mail-mta/msmtp 1.8.3: An SMTP client and SMTP plugin for mail user agents such as Mutt
-mail-mta/netqmail 1.06 1.06-r2 1.06-r4: qmail -- a secure, reliable, efficient, simple message transfer agent
+mail-mta/netqmail 1.06-r2 1.06-r4: qmail -- a secure, reliable, efficient, simple message transfer agent
 mail-mta/nullmailer 1.13-r5 2.0-r1: Simple relay-only local mail transport agent
 mail-mta/postfix 3.2.4 3.3.1-r1 3.3.4 3.4.5-r1: A fast and secure drop-in replacement for sendmail
 mail-mta/sendmail 8.14.9: Widely-used Mail Transport Agent (MTA)
