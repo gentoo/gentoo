@@ -14,7 +14,7 @@ SRC_URI="amd64? ( linuxx64-${PV}.tar.gz )
 LICENSE="icaclient"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
-IUSE="nsplugin l10n_de l10n_es l10n_fr l10n_ja l10n_zh_CN"
+IUSE="l10n_de l10n_es l10n_fr l10n_ja l10n_zh_CN"
 RESTRICT="mirror strip userpriv fetch"
 
 ICAROOT="/opt/Citrix/ICAClient"
@@ -98,12 +98,6 @@ src_install() {
 
 	exeinto "${ICAROOT}"/lib
 	doexe lib/*.so
-
-	if use nsplugin ; then
-		exeinto "${ICAROOT}"
-		doexe npica.so
-		dosym "${ICAROOT}"/npica.so /usr/$(get_libdir)/nsbrowser/plugins/npica.so
-	fi
 
 	for dest in "${ICAROOT}"{,/nls/en{,.UTF-8}} ; do
 		insinto "${dest}"
@@ -198,17 +192,6 @@ src_install() {
 
 	# 651926
 	domenu "${FILESDIR}"/*.desktop
-}
-
-pkg_preinst() {
-	local old_plugin="/usr/lib64/nsbrowser/plugins/npwrapper.npica.so"
-	if use amd64 && [[ -f ${old_plugin} ]] ; then
-		local wrapper="/usr/bin/nspluginwrapper"
-		if [[ -x ${wrapper} ]] ; then
-			einfo "Removing npica.so from wrapper."
-			${wrapper} -r ${old_plugin}
-		fi
-	fi
 }
 
 pkg_postinst() {
