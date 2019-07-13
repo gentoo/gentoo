@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">DBD-MariaDB</remote-id>
+    <remote-id type="cpan-module">DBD::MariaDB</remote-id>
+  </upstream>
+  <use>
+    <flag name="mariadb">Use <pkg>dev-db/mariadb-connector-c</pkg> as the client library</flag>
+    <flag name="mysql">Use <pkg>dev-db/mysql-connector-c</pkg> as the client library</flag>
+  </use>
+</pkgmetadata>

@@ -54,6 +54,13 @@ DEPEND="${RDEPEND}
 BDEPEND="
 	virtual/pkgconfig"
 
+if [[ "${PV}" == *9999 ]] ; then
+	# Required for the mkini.sh script which calls perl multiple times
+	BDEPEND+="
+		dev-lang/perl
+	"
+fi
+
 DOC_CONTENTS="
 	Useful scripts are located in /usr/share/doc/${PF}/scripts.\n
 	Please execute:\n
@@ -72,10 +79,20 @@ pkg_setup() {
 src_prepare() {
 	default
 
+	if [[ "${PV}" == *9999 ]] ; then
+		pushd scripts &>/dev/null || die
+		./mkini.sh || die
+		popd &>/dev/null || die
+	fi
+
 	sed \
 		-e 's:mumble-server:murmur:g' \
 		-e 's:/var/run:/run:g' \
-		-i "${S}"/scripts/murmur.{conf,ini} || die
+		-i "${S}"/scripts/murmur.{conf,ini.system} || die
+
+	# Adjust systemd service file to our config location #689208
+	sed "s@/etc/${PN}\.ini@/etc/${PN}/${PN}.ini@" \
+		-i scripts/${PN}.service || die
 }
 
 src_configure() {
@@ -103,15 +120,12 @@ src_install() {
 	dodoc -r scripts/server
 	docompress -x /usr/share/doc/${PF}/scripts
 
-	local dir=release
-	if use debug; then
-		dir=debug
-	fi
-
+	local dir="$(usex debug debug release)"
 	dobin "${dir}"/murmurd
 
-	insinto /etc/murmur/
-	doins scripts/murmur.ini
+	local etcdir="/etc/murmur"
+	insinto ${etcdir}
+	newins scripts/${PN}.ini.system ${PN}.ini
 
 	insinto /etc/logrotate.d/
 	newins "${FILESDIR}"/murmur.logrotate murmur
@@ -134,8 +148,8 @@ src_install() {
 
 	# Fix permissions on config file as it might contain passwords.
 	# (bug #559362)
-	fowners root:murmur /etc/murmur/murmur.ini
-	fperms 640 /etc/murmur/murmur.ini
+	fowners root:murmur ${etcdir}/murmur.ini
+	fperms 640 ${etcdir}/murmur.ini
 
 	doman man/murmurd.1
 

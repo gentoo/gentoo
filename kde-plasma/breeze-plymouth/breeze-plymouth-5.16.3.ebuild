@@ -3,6 +3,7 @@
 
 EAPI=7
 
+ECM_KDEINSTALLDIRS="false"
 KDE_AUTODEPS="false"
 inherit kde5
 

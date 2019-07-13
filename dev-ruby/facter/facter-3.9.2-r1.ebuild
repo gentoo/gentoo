@@ -26,6 +26,7 @@ CDEPEND="
 	app-emulation/virt-what
 	net-misc/curl
 	>=dev-libs/boost-1.54[nls]
+	<dev-libs/boost-1.70.0
 	>=dev-cpp/yaml-cpp-0.5.1
 	!<app-admin/puppet-4.0.0"
 

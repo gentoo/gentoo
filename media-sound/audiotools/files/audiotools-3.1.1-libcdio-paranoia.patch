@@ -1,4 +1,4 @@
-Add support for Gentoo's newer dev-libs/libcdio-paranoia file layout and
+Add support for Gentoo's dev-libs/libcdio-paranoia file layout and
 versioning.
 
 --- audiotools-3.1.1/setup.py
@@ -20,14 +20,17 @@ versioning.
                  # library not found
 --- audiotools-3.1.1/src/cdiomodule.h
 +++ audiotools-3.1.1/src/cdiomodule.h
-@@ -3,8 +3,8 @@
- #include <cdio/cdda.h>
- #include <cdio/paranoia.h>
- #else
+@@ -1,11 +1,6 @@
+ #include <Python.h>
+-#ifdef OLD_PARANOIA
+-#include <cdio/cdda.h>
+-#include <cdio/paranoia.h>
+-#else
 -#include <cdio/cdparanoia/cdda.h>
 -#include <cdio/cdparanoia/paranoia.h>
+-#endif
 +#include <cdio/paranoia/cdda.h>
 +#include <cdio/paranoia/paranoia.h>
- #endif
  
  /********************************************************
+  Audio Tools, a module and set of tools for manipulating audio data

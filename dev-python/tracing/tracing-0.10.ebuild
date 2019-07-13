@@ -8,10 +8,10 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1
 
 DESCRIPTION="Debug log/trace messages"
-HOMEPAGE="http://liw.fi/tracing/"
+HOMEPAGE="https://liw.fi/tracing/"
 SRC_URI="http://git.liw.fi/cgi-bin/cgit/cgit.cgi/python-tracing/snapshot/${P}.tar.gz"
 
-LICENSE="GPL-3"
+LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="doc examples"

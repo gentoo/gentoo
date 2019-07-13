@@ -3,7 +3,7 @@
 
 EAPI=6
 
-USE_RUBY="ruby24 ruby25"
+USE_RUBY="ruby24 ruby25 ruby26"
 
 RUBY_FAKEGEM_TASK_TEST="test"
 
@@ -85,6 +85,8 @@ all_ruby_prepare() {
 			lib/barby/outputter/cairo_outputter.rb \
 			test/outputter/cairo_outputter_test.rb
 	fi
+
+	sed -i -e '/files/ s:^:#:' ${RUBY_FAKEGEM_GEMSPEC} || die
 
 	rm -f \
 		lib/barby/barcode/data_matrix.rb \
