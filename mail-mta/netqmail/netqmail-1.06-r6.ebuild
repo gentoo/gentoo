@@ -1,12 +1,12 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 GENQMAIL_PV=20080406
 QMAIL_SPP_PV=0.42
 
-QMAIL_TLS_PV=20070417
+QMAIL_TLS_PV=20190114
 QMAIL_TLS_F=${PN}-1.05-tls-smtpauth-${QMAIL_TLS_PV}.patch
 QMAIL_TLS_CVE=vu555316.patch
 
@@ -15,7 +15,9 @@ QMAIL_BIGTODO_F=big-todo.${QMAIL_BIGTODO_PV}.patch
 
 QMAIL_LARGE_DNS='qmail-103.patch'
 
-inherit eutils qmail
+QMAIL_SMTPUTF8='qmail-smtputf8.patch'
+
+inherit qmail
 
 DESCRIPTION="qmail -- a secure, reliable, efficient, simple message transfer agent"
 HOMEPAGE="
@@ -27,16 +29,17 @@ SRC_URI="mirror://qmail/${P}.tar.gz
 	https://dev.gentoo.org/~hollow/distfiles/${GENQMAIL_F}
 	https://www.ckdhr.com/ckd/${QMAIL_LARGE_DNS}
 	http://inoa.net/qmail-tls/${QMAIL_TLS_CVE}
+	http://arnt.gulbrandsen.priv.no/qmail/qmail-smtputf8.patch
 	!vanilla? (
 		highvolume? ( mirror://qmail/${QMAIL_BIGTODO_F} )
 		qmail-spp? ( mirror://sourceforge/qmail-spp/${QMAIL_SPP_F} )
-		ssl? ( http://shupp.org/patches/${QMAIL_TLS_F} )
+		ssl? ( https://mirror.alexh.name/qmail/netqmail/${QMAIL_TLS_F} )
 	)
 "
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~x86"
 IUSE="authcram gencertdaily highvolume libressl qmail-spp ssl vanilla"
 REQUIRED_USE='vanilla? ( !ssl !qmail-spp !highvolume )'
 RESTRICT="test"
@@ -48,7 +51,9 @@ DEPEND="
 		!libressl? ( dev-libs/openssl:0= )
 		libressl? ( dev-libs/libressl:= )
 	)
+	sys-apps/gentoo-functions
 	sys-apps/groff
+	net-dns/libidn2
 "
 RDEPEND="
 	!mail-mta/courier
@@ -103,7 +108,7 @@ src_prepare() {
 		# This patch contains relative paths and needs to be cleaned up.
 		sed 's~^--- ../../~--- ~g' \
 			<"${DISTDIR}"/${QMAIL_TLS_F} \
-			>"${T}"/${QMAIL_TLS_F}
+			>"${T}"/${QMAIL_TLS_F} || die
 		use ssl        && epatch "${T}"/${QMAIL_TLS_F}
 		use ssl        && epatch "${DISTDIR}"/${QMAIL_TLS_CVE}
 		use highvolume && epatch "${DISTDIR}"/${QMAIL_BIGTODO_F}
@@ -114,21 +119,28 @@ src_prepare() {
 			else
 				epatch "${QMAIL_SPP_S}"/netqmail-spp.diff
 			fi
-			cd "${WORKDIR}"
+			cd "${WORKDIR}" || die
 			epatch "${FILESDIR}"/genqmail-20080406-ldflags.patch
-			cd -
+			cd - || die
 		fi
 	fi
+
+	cd "${WORKDIR}" || die
+	epatch "${FILESDIR}"/use-new-path-for-functions.sh.patch
+	epatch "${FILESDIR}"/qmail-smtputf8.patch
+	cd - || die
 
 	qmail_src_postunpack
 
 	# Fix bug #33818 but for netqmail (Bug 137015)
 	if ! use authcram; then
 		einfo "Disabled CRAM_MD5 support"
-		sed -e 's,^#define CRAM_MD5$,/*&*/,' -i "${S}"/qmail-smtpd.c
+		sed -e 's,^#define CRAM_MD5$,/*&*/,' -i "${S}"/qmail-smtpd.c || die
 	else
 		einfo "Enabled CRAM_MD5 support"
 	fi
+
+	eapply_user
 }
 
 src_compile() {

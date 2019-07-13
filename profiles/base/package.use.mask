@@ -206,10 +206,6 @@ net-fs/samba dmapi ceph
 # Mask local USE flag to satisfy repoman
 app-emulation/fuse backend-svga
 
-# Pacho Ramos <pacho@gentoo.org> (2018-03-13)
-# libewf is going to be removed, bug #547418
-app-admin/testdisk ewf
-
 # Patrick McLean <chutzpah@gentoo.org> (2018-03-06)
 # Requires dev-libs/boost-1.66 that is unkeyworded/masked
 >=sys-cluster/ceph-12.2.4 system-boost
