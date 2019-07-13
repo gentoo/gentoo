@@ -40,7 +40,7 @@ RDEPEND="
 	pdf? ( app-text/mupdf )
 	perl? ( dev-lang/perl:= )
 	png? ( media-libs/libpng:0= )
-	postscript? ( >=app-text/ghostscript-gpl-9.09[cups] )
+	postscript? ( >=app-text/ghostscript-gpl-9.09[cups] <app-text/ghostscript-gpl-9.27[cups] )
 	tiff? ( media-libs/tiff:0 )
 	zeroconf? ( net-dns/avahi[dbus] )
 "
