@@ -7,7 +7,7 @@ inherit autotools flag-o-matic xdg-utils
 
 DESCRIPTION="Checks and undeletes partitions + PhotoRec, signature based recovery tool"
 HOMEPAGE="https://www.cgsecurity.org/wiki/TestDisk"
-SRC_URI="http://www.cgsecurity.org/${P}.tar.bz2"
+SRC_URI="https://www.cgsecurity.org/${P}.tar.bz2"
 
 LICENSE="GPL-2+"
 SLOT="0"
