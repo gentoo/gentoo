@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python{2_7,3_{5,6,7}} )
+PYTHON_COMPAT=( python3_{5,6,7} )
 
 inherit distutils-r1
 
@@ -16,18 +16,18 @@ KEYWORDS="~amd64 ~x86"
 IUSE="doc examples test"
 
 RDEPEND="
+	dev-python/importlib_metadata[${PYTHON_USEDEP}]
+	dev-python/jaraco-collections[${PYTHON_USEDEP}]
 	>=dev-python/jaraco-functools-1.20[${PYTHON_USEDEP}]
 	>=dev-python/jaraco-itertools-1.8[${PYTHON_USEDEP}]
-	>=dev-python/tempora-1.6[${PYTHON_USEDEP}]
-	dev-python/jaraco-collections[${PYTHON_USEDEP}]
 	dev-python/jaraco-logging[${PYTHON_USEDEP}]
 	dev-python/jaraco-stream[${PYTHON_USEDEP}]
 	dev-python/jaraco-text[${PYTHON_USEDEP}]
 	dev-python/more-itertools[${PYTHON_USEDEP}]
 	dev-python/pytz[${PYTHON_USEDEP}]
-	dev-python/six[${PYTHON_USEDEP}]
+	>=dev-python/tempora-1.6[${PYTHON_USEDEP}]
 "
-DEPEND="
+BDEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	>=dev-python/setuptools_scm-1.15.0[${PYTHON_USEDEP}]
 	doc? (
