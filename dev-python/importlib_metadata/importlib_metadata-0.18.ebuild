@@ -3,33 +3,37 @@
 
 EAPI=7
 
-# This is a backport of Python 3.7's importlib.resources
-PYTHON_COMPAT=( pypy{,3} python{2_7,3_{5,6}} )
+PYTHON_COMPAT=( pypy{,3} python{2_7,3_{5,6,7}} )
 
 inherit distutils-r1
 
-DESCRIPTION="Read resources from Python packages"
-HOMEPAGE="https://importlib-resources.readthedocs.io/en/latest/"
+DESCRIPTION="Read metadata from Python packages"
+HOMEPAGE="https://importlib-metadata.readthedocs.io/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
-LICENSE="Apache-2.0"
 
+LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc test"
 
 RDEPEND="
+	dev-python/zipp[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '>=dev-python/configparser-3.5[${PYTHON_USEDEP}]' -2)
+	$(python_gen_cond_dep 'dev-python/contextlib2[${PYTHON_USEDEP}]' -2)
 	$(python_gen_cond_dep 'dev-python/pathlib2[${PYTHON_USEDEP}]' -2)
-	virtual/python-typing[${PYTHON_USEDEP}]
 "
 BDEPEND="
-	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
-	test? ( ${RDEPEND} )
 	dev-python/setuptools[${PYTHON_USEDEP}]
+	dev-python/setuptools_scm[${PYTHON_USEDEP}]
+	test? (
+		${RDEPEND}
+		$(python_gen_cond_dep 'dev-python/importlib_resources[${PYTHON_USEDEP}]' pypy pypy3 python2_7 python3_5 python3_6)
+	)
+	doc? (
+		>=dev-python/rst-linker-1.9[${PYTHON_USEDEP}]
+		dev-python/sphinx[${PYTHON_USEDEP}]
+	)
 "
-
-# https://gitlab.com/python-devs/importlib_resources/issues/71
-PATCHES=( "${FILESDIR}/${P}-skip-wheel.patch" )
-
 python_prepare_all() {
 	sed -i "/'sphinx.ext.intersphinx'/d" ${PN}/docs/conf.py || die
 	distutils-r1_python_prepare_all
