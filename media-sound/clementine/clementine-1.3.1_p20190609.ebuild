@@ -104,6 +104,8 @@ RESTRICT="test"
 
 DOCS=( Changelog README.md )
 
+PATCHES=( "${FILESDIR}/${P}-fix-restore-from-systray.patch" )
+
 src_prepare() {
 	l10n_find_plocales_changes "src/translations" "" ".po"
 
