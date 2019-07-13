@@ -1,0 +1,21 @@
+diff --git a/Resource/Init/Fontmap.GS b/Resource/Init/Fontmap.GS
+index fdc4b2873..a9fa335a2 100644
+--- a/Resource/Init/Fontmap.GS
++++ b/Resource/Init/Fontmap.GS
+@@ -94,13 +94,13 @@
+ /Courier			/NimbusMonoPS-Regular	;
+ /Courier-Oblique		/NimbusMonoPS-Italic	;
+ /Helvetica-Bold			/NimbusSans-Bold ;
+-/Helvetica-BoldOblique		/NimbusSans-BoldItalic      ;
++/Helvetica-BoldOblique		/NimbusSans-BoldOblique      ;
+ /Helvetica-Narrow-Bold		/NimbusSansNarrow-Bold    ;
+-/Helvetica-Narrow-BoldOblique	/NimbusSansNarrow-BoldOblique        ;
++/Helvetica-Narrow-BoldOblique	/NimbusSansNarrow-BdOblique        ;
+ /Helvetica-Narrow		/NimbusSansNarrow-Regular    ;
+ /Helvetica-Narrow-Oblique	/NimbusSansNarrow-Oblique        ;
+ /Helvetica			/NimbusSans-Regular ;
+-/Helvetica-Oblique		/NimbusSans-Italic      ;
++/Helvetica-Oblique		/NimbusSans-Oblique      ;
+ /NewCenturySchlbk-Bold		/C059-Bold	;
+ /NewCenturySchlbk-BoldItalic	/C059-BdIta	;
+ /NewCenturySchlbk-Italic	/C059-Italic	;
