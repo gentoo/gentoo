@@ -7470,7 +7470,7 @@ media-libs/glu 9.0.0-r1: The OpenGL Utility Library
 media-libs/glyr 1.0.10: Music related metadata searchengine, both with commandline interface and C API
 media-libs/gmtk 1.0.8 1.0.9: GTK+ widget and function libraries for gnome-mplayer
 media-libs/gnonlin 1.4.0-r1: Set of GStreamer elements to ease the creation of non-linear multimedia editors
-media-libs/graphene 1.8.2 1.8.6: A thin layer of types for graphic libraries
+media-libs/graphene 1.8.6: A thin layer of types for graphic libraries
 media-libs/grilo 0.3.7: A framework for easy media discovery and browsing
 media-libs/gsound 1.0.2-r1: Thin GObject wrapper around the libcanberra sound event library
 media-libs/gst-plugins-bad 1.14.3: Less plugins for GStreamer
@@ -8620,7 +8620,7 @@ net-libs/libmicrohttpd 0.9.62 0.9.63: Small C library to run an HTTP server as p
 net-libs/libmnl 1.0.3-r1 1.0.4: Minimalistic netlink library
 net-libs/libmrss 0.19.2: A C-library for parsing and writing RSS 0.91/0.92/1.0/2.0 files or streams
 net-libs/libnatpmp 20130911: An alternative protocol to UPnP IGD specification
-net-libs/libndp 1.6-r1 1.7: Library for Neighbor Discovery Protocol
+net-libs/libndp 1.7: Library for Neighbor Discovery Protocol
 net-libs/libnet 1.0.2a-r5 1.2_rc3-r1: library providing an API for commonly used low-level network functions
 net-libs/libnetfilter_acct 1.0.2: Userspace library providing interface to extended accounting infrastructure of NetFilter
 net-libs/libnetfilter_conntrack 1.0.4 1.0.6 1.0.7: programming interface (API) to the in-kernel connection tracking state table
@@ -8848,7 +8848,7 @@ net-misc/lldpd 0.9.3-r1: Implementation of IEEE 802.1ab (LLDP)
 net-misc/mcproxy 1.1.1-r1: A multicast proxy for IGMP/MLD
 net-misc/memcached 1.5.14 1.5.16: High-performance, distributed memory object caching system
 net-misc/minidlna 1.2.1-r1: DLNA/UPnP-AV compliant media server
-net-misc/mobile-broadband-provider-info 20170310 20190116: Database of mobile broadband service providers
+net-misc/mobile-broadband-provider-info 20190116: Database of mobile broadband service providers
 net-misc/modemmanager 1.8.2 1.8.2-r1: Modem and mobile broadband management libraries
 net-misc/mosh 1.2.6 1.3.2: Mobile shell that supports roaming and intelligent local echo
 net-misc/nat-traverse 0.6: Traverse NAT gateways with the Use of UDP
