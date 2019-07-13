@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,11 +12,8 @@ MY_P=${P/-gpl}
 PVM=$(ver_cut 1-2)
 PVM_S=$(ver_rs 1-2 "")
 
-MY_PATCHSET=1
-
 SRC_URI="
 	https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs${PVM_S}/${MY_P}.tar.xz
-	https://dev.gentoo.org/~dilfridge/distfiles/${P}-patchset-${MY_PATCHSET}.tar.xz
 "
 
 LICENSE="AGPL-3 CPL-1.0"
@@ -59,9 +56,11 @@ RDEPEND="${DEPEND}
 S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
-	# apply various patches, many borrowed from Fedora
-	# http://pkgs.fedoraproject.org/cgit/ghostscript.git
-	eapply "${WORKDIR}/patches/"*.patch
+	eapply "${FILESDIR}/ghostscript-9.20-run-dvipdf-securely.patch"
+	eapply "${FILESDIR}/ghostscript-9.20-runlibfileifexists.patch"
+	eapply "${FILESDIR}/ghostscript-9.25-urw-fonts-naming-1.patch"
+	eapply "${FILESDIR}/ghostscript-9.25-urw-fonts-naming-2.patch"
+
 	default
 
 	# remove internal copies of various libraries
@@ -175,11 +174,11 @@ src_install() {
 	# install our own cidfmap to handle CJK fonts
 	insinto /usr/share/ghostscript/${PVM}/Resource/Init
 	doins \
-		"${WORKDIR}/fontmaps/CIDFnmap" \
-		"${WORKDIR}/fontmaps/cidfmap"
+		"${FILESDIR}/fontmaps/CIDFnmap" \
+		"${FILESDIR}/fontmaps/cidfmap"
 	for X in ${LANGS} ; do
 		if use l10n_${X} ; then
-			doins "${WORKDIR}/fontmaps/cidfmap.${X/-/_}"
+			doins "${FILESDIR}/fontmaps/cidfmap.${X/-/_}"
 		fi
 	done
 

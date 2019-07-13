@@ -1,0 +1,5 @@
+% cidfmap.zh_TW
+/ZenKai-Medium			<< /FileType /TrueType /Path (/usr/share/fonts/arphicfonts/gkai00mp.ttf) /CSI [(CNS1) 4] >> ;
+/ShanHeiSun-Light		<< /FileType /TrueType /Path (/usr/share/fonts/arphicfonts/gbsn00lp.ttf) /CSI [(CNS1) 4] >> ;
+/Adobe-CNS1			/ShanHeiSun-Light ;
+

@@ -1,0 +1,101 @@
+From 54572e8cf529eeb6a01234341d01a2fd555204e6 Mon Sep 17 00:00:00 2001
+From: "David Kaspar [Dee'Kej]" <dkaspar@redhat.com>
+Date: Fri, 7 Oct 2016 13:38:13 +0200
+Subject: [PATCH] Use old names of urw-fonts
+
+---
+ Resource/Init/Fontmap.GS | 78 ++++++++++++++++++++++++++----------------------
+ 1 file changed, 43 insertions(+), 35 deletions(-)
+
+diff --git a/Resource/Init/Fontmap.GS b/Resource/Init/Fontmap.GS
+index a9fa335..949c152 100644
+--- a/Resource/Init/Fontmap.GS
++++ b/Resource/Init/Fontmap.GS
+@@ -81,41 +81,49 @@
+ 
+ % Aliases
+ 
+-/AvantGarde-BookOblique		/URWGothic-BookOblique    ;
+-/AvantGarde-Book		/URWGothic-Book        ;
+-/AvantGarde-DemiOblique		/URWGothic-DemiOblique    ;
+-/AvantGarde-Demi		/URWGothic-Demi        ;
+-/Bookman-DemiItalic		/URWBookman-DemiItalic	;
+-/Bookman-Demi			/URWBookman-Demi	;
+-/Bookman-LightItalic		/URWBookman-LightItalic	;
+-/Bookman-Light			/URWBookman-Light	;
+-/Courier-Bold			/NimbusMonoPS-Bold	;
+-/Courier-BoldOblique		/NimbusMonoPS-BoldItalic	;
+-/Courier			/NimbusMonoPS-Regular	;
+-/Courier-Oblique		/NimbusMonoPS-Italic	;
+-/Helvetica-Bold			/NimbusSans-Bold ;
+-/Helvetica-BoldOblique		/NimbusSans-BoldOblique      ;
+-/Helvetica-Narrow-Bold		/NimbusSansNarrow-Bold    ;
+-/Helvetica-Narrow-BoldOblique	/NimbusSansNarrow-BdOblique        ;
+-/Helvetica-Narrow		/NimbusSansNarrow-Regular    ;
+-/Helvetica-Narrow-Oblique	/NimbusSansNarrow-Oblique        ;
+-/Helvetica			/NimbusSans-Regular ;
+-/Helvetica-Oblique		/NimbusSans-Oblique      ;
+-/NewCenturySchlbk-Bold		/C059-Bold	;
+-/NewCenturySchlbk-BoldItalic	/C059-BdIta	;
+-/NewCenturySchlbk-Italic	/C059-Italic	;
+-/NewCenturySchlbk-Roman		/C059-Roman	;
+-/Palatino-BoldItalic		/P052-BoldItalic	;
+-/Palatino-Bold			/P052-Bold	;
+-/Palatino-Italic		/P052-Italic	;
+-/Palatino-Roman			/P052-Roman	;
+-/Symbol				/StandardSymbolsPS	;
+-/Times-BoldItalic		/NimbusRoman-BoldItalic	;
+-/Times-Bold			/NimbusRoman-Bold	;
+-/Times-Italic			/NimbusRoman-Italic	;
+-/Times-Roman			/NimbusRoman-Regular	;
+-/ZapfChancery-MediumItalic	/Z003-MediumItalic	;
+-/ZapfDingbats			/D050000L	;
++/AvantGarde-BookOblique		/URWGothicL-BookObli	;
++/AvantGarde-Book		/URWGothicL-Book	;
++/AvantGarde-DemiOblique		/URWGothicL-DemiObli	;
++/AvantGarde-Demi		/URWGothicL-Demi	;
++
++/Bookman-DemiItalic		/URWBookmanL-DemiBoldItal	;
++/Bookman-Demi			/URWBookmanL-DemiBold	;
++/Bookman-LightItalic		/URWBookmanL-LighItal	;
++/Bookman-Light			/URWBookmanL-Ligh	;
++
++/Courier-Bold			/NimbusMonL-Bold	;
++/Courier-BoldOblique		/NimbusMonL-BoldObli	;
++/Courier			/NimbusMonL-Regu	;
++/Courier-Oblique		/NimbusMonL-ReguObli	;
++
++/Helvetica-Bold			/NimbusSanL-Bold	;
++/Helvetica-BoldOblique		/NimbusSanL-BoldItal	;
++/Helvetica-Narrow-Bold		/NimbusSanL-BoldCond	;
++/Helvetica-Narrow-BoldOblique	/NimbusSanL-BoldCondItal	;
++/Helvetica-Narrow		/NimbusSanL-ReguCond	;
++/Helvetica-Narrow-Oblique	/NimbusSanL-ReguCondItal	;
++/Helvetica			/NimbusSanL-Regu	;
++/Helvetica-Oblique		/NimbusSanL-ReguItal	;
++
++/NewCenturySchlbk-Bold		/CenturySchL-Bold	;
++/NewCenturySchlbk-BoldItalic	/CenturySchL-BoldItal	;
++/NewCenturySchlbk-Italic	/CenturySchL-Ital	;
++/NewCenturySchlbk-Roman		/CenturySchL-Roma	;
++
++/Palatino-Roman			/URWPalladioL-Roma	;
++/Palatino-Italic		/URWPalladioL-Ital	;
++/Palatino-Bold			/URWPalladioL-Bold	;
++/Palatino-BoldItalic		/URWPalladioL-BoldItal	;
++
++/Symbol				/StandardSymL	;
++
++/Times-BoldItalic		/NimbusRomNo9L-MediItal	;
++/Times-Bold			/NimbusRomNo9L-Medi	;
++/Times-Italic			/NimbusRomNo9L-ReguItal	;
++/Times-Roman			/NimbusRomNo9L-Regu	;
++
++/ZapfChancery-MediumItalic	/URWChanceryL-MediItal	;
++/ZapfDingbats			/Dingbats	;
+ 
+ % 
+ %
+-- 
+2.7.4
+

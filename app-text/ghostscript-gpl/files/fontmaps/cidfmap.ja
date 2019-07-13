@@ -1,0 +1,14 @@
+% cidfmap.ja
+/Kochi-Gothic			<< /FileType /TrueType /Path (/usr/share/fonts/kochi-substitute/kochi-gothic-subst.ttf) /CSI [(Japan1) 6] >> ;
+/Kochi-Gothic-Regular		/Kochi-Gothic ;
+/Kochi-Gothic-JaH		<< /FileType /TrueType /Path (/usr/share/fonts/kochi-substitute/kochi-gothic-subst.ttf) /CSI [(Japan2) 0] >> ;
+/Kochi-Gothic-Regular-JaH	/Kochi-Gothic-JaH ;
+/Kochi-Mincho			<< /FileType /TrueType /Path (/usr/share/fonts/kochi-substitute/kochi-mincho-subst.ttf) /CSI [(Japan1) 6] >> ;
+/Kochi-Mincho-Regular		/Kochi-Mincho ;
+/Kochi-Mincho-JaH		<< /FileType /TrueType /Path (/usr/share/fonts/kochi-substitute/kochi-mincho-subst.ttf) /CSI [(Japan2) 0] >> ;
+/Kochi-Mincho-Regular-JaH	/Kochi-Mincho-JaH ;
+/Ryumin-Light			/Kochi-Mincho ;
+/GothicBBB-Medium		/Kochi-Gothic ;
+/Adobe-Japan1			/Kochi-Gothic ;
+/Adobe-Japan2			/Kochi-Gothic-JaH ;
+

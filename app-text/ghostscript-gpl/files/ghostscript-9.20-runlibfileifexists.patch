@@ -1,0 +1,93 @@
+From ea8addd686889af76d70031998680196913243ec Mon Sep 17 00:00:00 2001
+From: "David Kaspar [Dee'Kej]" <dkaspar@redhat.com>
+Date: Fri, 7 Oct 2016 12:20:29 +0200
+Subject: [PATCH 1/2] Fix error when using ImageMagick's convert:
+
+  Error: /undefined in .runlibfileexists
+---
+ Resource/Init/gs_fonts.ps | 15 ++++++++++++---
+ Resource/Init/gs_init.ps  |  9 +++++++++
+ 2 files changed, 21 insertions(+), 3 deletions(-)
+
+diff --git a/Resource/Init/gs_fonts.ps b/Resource/Init/gs_fonts.ps
+index a3da615..77814b8 100644
+--- a/Resource/Init/gs_fonts.ps
++++ b/Resource/Init/gs_fonts.ps
+@@ -96,10 +96,19 @@ userdict /.nativeFontmap .FontDirectory maxlength dict put
+                 % stack: dict file fontname filename|aliasname
+       1 index type /stringtype eq
+       1 index type /nametype eq and 1 index xcheck and
+-      1 index /run eq 2 index /.runlibfile eq or and {
++      1 index /run eq 2 index /.runlibfile eq 3 index /.runlibfileifexists eq or or and {
+                 % This is an inclusion entry.
+-        pop findlibfile { exch pop } { file } ifelse
+-        2 index exch .readFontmap pop
++        0 index /.runlibfileifexists eq {
++          pop findlibfile {
++            exch pop
++            2 index exch .readFontmap pop
++          } {
++            pop
++          } ifelse
++        } {
++          pop findlibfile { exch pop } { file } ifelse
++          2 index exch .readFontmap pop
++        } ifelse
+       } {
+                 % This is a real entry.
+                 % Read and pop tokens until a semicolon.
+diff --git a/Resource/Init/gs_init.ps b/Resource/Init/gs_init.ps
+index ab7cfed..f9e035b 100644
+--- a/Resource/Init/gs_init.ps
++++ b/Resource/Init/gs_init.ps
+@@ -689,6 +689,14 @@ systemdict /internaldict dup .makeinternaldict .makeoperator
+            { /undefinedfilename signalerror }
+           ifelse
+         } bind def
++/runlibfileifexists
++        {		% We don't want to bind 'run' into this procedure,
++                        % since run may get redefined.
++          findlibfile
++           { exch pop /run .systemvar exec }
++           { pop }
++          ifelse
++        } bind def
+ /selectdevice
+         { finddevice setdevice .setdefaultscreen } bind def
+ /signalerror		% <object> <errorname> signalerror -
+@@ -857,6 +865,7 @@ userdict /.currentresourcefile //null put
+         } bind def
+ % Temporarily substitute it for the real runlibfile.
+ /.runlibfile /runlibfile load def
++/.runlibfileifexists /runlibfileifexists load def
+ /runlibfile /runlibfile0 load def
+ 
+ % Create the error handling machinery.
+-- 
+2.7.4
+
+
+From 9878f41a229c67aba2e62ee7ab22ff37c2e5a04f Mon Sep 17 00:00:00 2001
+From: "David Kaspar [Dee'Kej]" <dkaspar@redhat.com>
+Date: Fri, 7 Oct 2016 12:57:06 +0200
+Subject: [PATCH 2/2] Make sure customizations to
+ /etc/ghostscript/Fontmap.local are used
+
+  For more info, see: https://bugzilla.redhat.com/show_bug.cgi?id=610301
+---
+ Resource/Init/Fontmap | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/Resource/Init/Fontmap b/Resource/Init/Fontmap
+index ae5af96..72aeb1f 100644
+--- a/Resource/Init/Fontmap
++++ b/Resource/Init/Fontmap
+@@ -2,3 +2,5 @@
+ % See Fontmap.GS for the syntax of real Fontmap files.
+ %% Replace 1 (Fontmap.GS)
+ (Fontmap.GS) .runlibfile
++% must be at the bottom of line to allow people overriding everything.
++(Fontmap.local) .runlibfileifexists
+-- 
+2.7.4
+

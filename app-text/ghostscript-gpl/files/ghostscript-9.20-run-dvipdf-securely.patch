@@ -1,0 +1,22 @@
+From 32d8df77bf3326f708c13d6913547c01ce6d728c Mon Sep 17 00:00:00 2001
+From: "David Kaspar [Dee'Kej]" <dkaspar@redhat.com>
+Date: Fri, 7 Oct 2016 13:57:01 +0200
+Subject: [PATCH] Make sure 'dvipdf' is being run securely
+
+---
+ lib/dvipdf | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lib/dvipdf b/lib/dvipdf
+index 802aeab..c92dfb0 100755
+--- a/lib/dvipdf
++++ b/lib/dvipdf
+@@ -43,4 +43,4 @@ fi
+ 
+ # We have to include the options twice because -I only takes effect if it
+ # appears before other options.
+-exec dvips -Ppdf $DVIPSOPTIONS -q -f "$infile" | $GS_EXECUTABLE $OPTIONS -q -P- -dSAFER -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sstdout=%stderr -sOutputFile="$outfile" $OPTIONS -c .setpdfwrite -
++exec dvips -R -Ppdf $DVIPSOPTIONS -q -f "$infile" | $GS_EXECUTABLE $OPTIONS -q -P- -dSAFER -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sstdout=%stderr -sOutputFile="$outfile" $OPTIONS -c .setpdfwrite -
+-- 
+2.7.4
+

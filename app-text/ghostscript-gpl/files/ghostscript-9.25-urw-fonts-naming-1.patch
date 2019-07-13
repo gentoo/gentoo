@@ -1,0 +1,38 @@
+diff --git a/Resource/Init/Fontmap.GS b/Resource/Init/Fontmap.GS
+index fdc4b2873..a9fa335a2 100644
+--- a/Resource/Init/Fontmap.GS
++++ b/Resource/Init/Fontmap.GS
+@@ -1,4 +1,4 @@
+-% Copyright (C) 2001-2018 Artifex Software, Inc.
++% Copyright (C) 2001-2012 Artifex Software, Inc.
+ % All Rights Reserved.
+ %
+ % This software is provided AS-IS with no warranty, either express or
+@@ -9,8 +9,8 @@
+ % of the license contained in the file LICENSE in this distribution.
+ %
+ % Refer to licensing information at http://www.artifex.com or contact
+-% Artifex Software, Inc.,  1305 Grant Avenue - Suite 200, Novato,
+-% CA 94945, U.S.A., +1(415)492-9861, for further information.
++% Artifex Software, Inc.,  7 Mt. Lassen Drive - Suite A-134, San Rafael,
++% CA  94903, U.S.A., +1(415)492-9861, for further information.
+ %
+ 
+ % Fontmap - standard font catalog for Ghostscript.
+@@ -94,13 +94,13 @@
+ /Courier			/NimbusMonoPS-Regular	;
+ /Courier-Oblique		/NimbusMonoPS-Italic	;
+ /Helvetica-Bold			/NimbusSans-Bold ;
+-/Helvetica-BoldOblique		/NimbusSans-BoldItalic      ;
++/Helvetica-BoldOblique		/NimbusSans-BoldOblique      ;
+ /Helvetica-Narrow-Bold		/NimbusSansNarrow-Bold    ;
+-/Helvetica-Narrow-BoldOblique	/NimbusSansNarrow-BoldOblique        ;
++/Helvetica-Narrow-BoldOblique	/NimbusSansNarrow-BdOblique        ;
+ /Helvetica-Narrow		/NimbusSansNarrow-Regular    ;
+ /Helvetica-Narrow-Oblique	/NimbusSansNarrow-Oblique        ;
+ /Helvetica			/NimbusSans-Regular ;
+-/Helvetica-Oblique		/NimbusSans-Italic      ;
++/Helvetica-Oblique		/NimbusSans-Oblique      ;
+ /NewCenturySchlbk-Bold		/C059-Bold	;
+ /NewCenturySchlbk-BoldItalic	/C059-BdIta	;
+ /NewCenturySchlbk-Italic	/C059-Italic	;

@@ -1,0 +1,11 @@
+% cidfmap.ko
+/Baekmuk-Batang			<< /FileType /TrueType /Path (/usr/share/fonts/baekmuk-fonts/batang.ttf) /CSI [(Korea1) 2] >> ;
+/Baekmuk-Batang-Regular		/Baekmuk-Batang ;
+/Baekmuk-Dotum			<< /FileType /TrueType /Path (/usr/share/fonts/baekmuk-fonts/dotum.ttf) /CSI [(Korea1) 2] >> ;
+/Baekmuk-Dotum-Regular		/Baekmuk-Dotum ;
+/Baekmuk-Gulim			<< /FileType /TrueType /Path (/usr/share/fonts/baekmuk-fonts/gulim.ttf) /CSI [(Korea1) 2] >> ;
+/Baekmuk-Gulim-Regular		/Baekmuk-Gulim ;
+/Baekmuk-Headline		<< /FileType /TrueType /Path (/usr/share/fonts/baekmuk-fonts/hline.ttf) /CSI [(Korea1) 2] >> ;
+/Baekmuk-Headline-Regular	/Baekmuk-Headline ;
+/Adobe-Korea1			/Baekmuk-Batang ;
+

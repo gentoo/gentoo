@@ -1,0 +1,8 @@
+%!
+% Don't change following line. We should ensure that the original one is surely loaded.
+(cidfmap.GS) .runlibfile
+% following lines are for CJK fonts.
+(cidfmap.ja) .runlibfileifexists
+(cidfmap.ko) .runlibfileifexists
+(cidfmap.zh_CN) .runlibfileifexists
+(cidfmap.zh_TW) .runlibfileifexists

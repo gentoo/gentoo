@@ -1,0 +1,6 @@
+% cidfmap.zh_CN
+/BousungEG-Light-GB		<< /FileType /TrueType /Path (/usr/share/fonts/arphicfonts/gbsn00lp.ttf) /CSI [(GB1) 4] >> ;
+/GBZenKai-Medium		<< /FileType /TrueType /Path (/usr/share/fonts/arphicfonts/gkai00mp.ttf) /CSI [(GB1) 4] >> ;
+/MSungGBK-Light			/BousungEG-Light-GB ;
+/Adobe-GB1			/BousungEG-Light-GB ;
+
