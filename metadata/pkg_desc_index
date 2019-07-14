@@ -7299,7 +7299,7 @@ media-gfx/gimp 2.8.22-r1 2.10.8-r1: GNU Image Manipulation Program
 media-gfx/gimp-arrow-brushes 20190407: Brushes for GIMP with the styles arrow, handpointer, button arrow and cursor
 media-gfx/gnofract4d 3.14-r1 3.14.1: A program for drawing beautiful mathematically-based images known as fractals
 media-gfx/gnome-font-viewer 3.30.0: Font viewer utility for GNOME
-media-gfx/gnome-photos 3.30.1: Access, organize and share your photos on GNOME
+media-gfx/gnome-photos 3.30.1-r1: Access, organize and share your photos on GNOME
 media-gfx/gnome-raw-thumbnailer 3.0.0-r1: A lightweight and fast raw image thumbnailer for GNOME
 media-gfx/gnome-screenshot 3.30.0: Screenshot utility for GNOME
 media-gfx/gozer 0.7-r3: tool for rendering arbitrary text as graphics, using ttfs and styles
