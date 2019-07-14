@@ -3104,11 +3104,6 @@
     <name>Gentoo Developer Recruiters</name>
     <url>https://wiki.gentoo.org/wiki/Project:Recruiters</url>
     <description>The Recruiters subproject provides a central location for information about developer recruitment and recruiter policy.</description>
-    <member>
-      <email>amynka@gentoo.org</email>
-      <name>Amy Liffey</name>
-      <role>Recruiter</role>
-    </member>
     <member is-lead="1">
       <email>zlogene@gentoo.org</email>
       <name>Mikle Kolyada</name>
@@ -3787,11 +3782,6 @@
     <name>Undertakers</name>
     <url>https://wiki.gentoo.org/wiki/Project:Undertakers</url>
     <description>The Community Relations Undertakers project handles developer retirement, both when developers announce their retirement as well as due to developer inactivity.</description>
-    <member>
-      <email>amynka@gentoo.org</email>
-      <name>Amy Liffey</name>
-      <role>Member</role>
-    </member>
     <member is-lead="1">
       <email>mgorny@gentoo.org</email>
       <name>Michał Górny</name>
