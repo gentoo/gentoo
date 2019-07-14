@@ -11,6 +11,8 @@ _USR_LDSCRIPT_ECLASS=1
 
 inherit multilib toolchain-funcs
 
+IUSE="split-usr"
+
 # @FUNCTION: gen_usr_ldscript
 # @USAGE: [-a] <list of libs to create linker scripts for>
 # @DESCRIPTION:
@@ -41,7 +43,9 @@ gen_usr_ldscript() {
 	*-darwin*) ;;
 	*-android*) return 0 ;;
 	*linux*|*-freebsd*|*-openbsd*|*-netbsd*)
-		use prefix && return 0 ;;
+		use prefix && return 0
+		use split-usr || return 0
+		;;
 	*) return 0 ;;
 	esac
 
