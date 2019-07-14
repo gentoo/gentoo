@@ -17,7 +17,6 @@ media-gfx/digikam jpeg2k
 media-gfx/exact-image jpeg2k
 media-gfx/fim jpeg2k
 media-gfx/gimp jpeg2k
-media-gfx/gnome-photos jpeg2k
 media-gfx/graphicsmagick jpeg2k
 media-gfx/ufraw jpeg2k
 media-libs/devil jpeg2k
