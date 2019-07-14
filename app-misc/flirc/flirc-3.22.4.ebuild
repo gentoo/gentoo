@@ -1,19 +1,20 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit desktop udev unpacker
 
 DESCRIPTION="Allows you to pair any remote control with your computer or media center"
 HOMEPAGE="https://flirc.tv/"
 SRC_URI="
-	amd64?	( https://packagecloud.io/Flirc/repo/packages/ubuntu/artful/flirc_${PV}_amd64.deb/download.deb  -> ${P}_amd64.deb )
-	arm?	( https://packagecloud.io/Flirc/repo/packages/debian/stretch/flirc_${PV}_armhf.deb/download.deb -> ${P}_armhf.deb )"
+	amd64?	( https://apt.fury.io/flirc/${P}-amd64 -> ${P}_amd64.deb )
+	arm?	( https://apt.fury.io/flirc/${P}-armhf -> ${P}_arm.deb   )
+	x86?	( https://apt.fury.io/flirc/${P}-i386  -> ${P}_x86.deb   )"
 
 LICENSE="all-rights-reserved"
 SLOT="0"
-KEYWORDS="-* ~amd64 ~arm"
+KEYWORDS="-* ~amd64 ~arm ~x86"
 IUSE="+qt5"
 
 RESTRICT="bindist mirror strip"
@@ -36,11 +37,11 @@ QA_PREBUILT="/usr/bin/*"
 
 src_install () {
 	udev_newrules etc/udev/rules.d/99-flirc.rules 51-flirc.rules
-	doman usr/share/doc/flirc/flirc_util.1
 	dobin usr/bin/flirc_util
+	doman usr/share/doc/flirc/flirc_util.1
 	if use qt5 ; then
-		doman usr/share/doc/flirc/Flirc.1
 		dobin usr/bin/Flirc
+		doman usr/share/doc/flirc/Flirc.1
 		doicon usr/share/pixmaps/Flirc.png
 		domenu usr/share/applications/Flirc.desktop
 	fi
