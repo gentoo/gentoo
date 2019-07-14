@@ -8276,7 +8276,7 @@ net-analyzer/cacti 1.1.38-r1: Cacti is a complete frontend to rrdtool
 net-analyzer/cacti-spine 1.1.38-r2: Spine is a fast poller for Cacti (formerly known as Cactid)
 net-analyzer/calamaris 2.59: Calamaris parses the logfiles of a wide variety of Web proxy servers and generates reports
 net-analyzer/carl 0.9-r2: An rsync logfile analyzer
-net-analyzer/chaosreader 0.94-r1 0.96: Trace TCP/UDP/... sessions and fetch application data.
+net-analyzer/chaosreader 0.96: Trace TCP/UDP/... sessions and fetch application data.
 net-analyzer/cryptcat 1.2.1-r1 1.2.1-r2: netcat clone extended with twofish encryption
 net-analyzer/cutter 1.03-r1: TCP/IP Connection cutting on Linux Firewalls and Routers
 net-analyzer/darkstat 3.0.719: Network traffic analyzer with cute web interface

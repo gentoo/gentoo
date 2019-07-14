@@ -1,0 +1,13 @@
+BDEPEND=>=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 ppc-aix? ( >=sys-devel/libtool-2.2.6a sys-devel/m4 >=x11-misc/util-macros-1.18 >=media-fonts/font-util-1.2.0 ) x86-winnt? ( >=sys-devel/libtool-2.2.6a sys-devel/m4 >=x11-misc/util-macros-1.18 >=media-fonts/font-util-1.2.0 ) virtual/pkgconfig
+DEFINED_PHASES=compile configure install prepare unpack
+DEPEND=x11-libs/libxcb >=x11-libs/xcb-util-0.3.8
+DESCRIPTION=Sets backlight level using the RandR 1.2 BACKLIGHT output property
+EAPI=7
+HOMEPAGE=https://www.x.org/wiki/ https://gitlab.freedesktop.org/xorg/app/xbacklight
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd
+LICENSE=MIT
+RDEPEND=x11-libs/libxcb >=x11-libs/xcb-util-0.3.8
+SLOT=0
+SRC_URI=https://www.x.org/releases/individual/app/xbacklight-1.2.3.tar.bz2
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	7ba73aee7fe4462b3a745e3645ab92ca	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529	xorg-3	9ac2b7a3cc6952c4f23a29369febbba1
+_md5_=93499bb2d5322df787e4a0783e8fea0c
