@@ -115,6 +115,10 @@ USE="${USE} cxx"
 # https://archives.gentoo.org/gentoo-dev/message/ba0e3457e4b807e79816f0df03566af0
 USE="${USE} xattr"
 
+# Mike Gilbert <floppym@gentoo.org> (2019-07-14)
+# Enable split-usr by default to keep systems working.
+USE="${USE} split-usr"
+
 # Tiziano Müller <dev-zero@gentoo.org> (2010-01-24)
 # We usually don't want python to (re)write .py[co] files during phase runs
 # since it could cause sandbox violations
