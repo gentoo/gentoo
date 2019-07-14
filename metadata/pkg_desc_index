@@ -5834,7 +5834,7 @@ dev-ruby/flexmock 2.3.6: Simple mock object library for Ruby unit testing
 dev-ruby/gettext-setup 0.30: A gem to ease i18n
 dev-ruby/gherkin 4.1.3 5.1.0: Fast Gherkin lexer and parser
 dev-ruby/git 1.4.0: Library for using Git in Ruby
-dev-ruby/gruff 0.7.0 0.7.0-r1: Beautiful graphs for one or multiple datasets
+dev-ruby/gruff 0.7.0-r1: Beautiful graphs for one or multiple datasets
 dev-ruby/haml 4.0.7-r1 4.0.7-r3: A ruby web page templating engine
 dev-ruby/hashdiff 0.3.8: Simple Hash extension to make working with nested hashes easier
 dev-ruby/hashie 2.1.2-r1: Hashie is a small collection of tools that make hashes more powerful
