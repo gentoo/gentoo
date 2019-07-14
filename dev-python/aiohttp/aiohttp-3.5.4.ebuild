@@ -1,9 +1,9 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=7
 
-PYTHON_COMPAT=( python3_{5,6} )
+PYTHON_COMPAT=( python3_{5,6,7} )
 
 inherit distutils-r1
 
@@ -13,7 +13,7 @@ SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="doc test"
 RESTRICT="!test? ( test )"
 
@@ -24,6 +24,8 @@ CDEPEND="
 	>=dev-python/multidict-4.0.0[${PYTHON_USEDEP}]
 	>=dev-python/yarl-1.0[${PYTHON_USEDEP}]
 	dev-python/idna-ssl[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep 'dev-python/typing-extensions[${PYTHON_USEDEP}]' \
+		python3_{5,6})
 "
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
@@ -40,26 +42,25 @@ DEPEND="
 	test? (
 		${CDEPEND}
 		dev-python/async_generator[${PYTHON_USEDEP}]
+		dev-python/brotlipy[${PYTHON_USEDEP}]
 		>=dev-python/pytest-3.4.0[${PYTHON_USEDEP}]
 		dev-python/pytest-mock[${PYTHON_USEDEP}]
 		dev-python/pytest-timeout[${PYTHON_USEDEP}]
+		dev-python/trustme[${PYTHON_USEDEP}]
 		www-servers/gunicorn[${PYTHON_USEDEP}]
 	)
 "
 RDEPEND="${CDEPEND}"
 
 DOCS=( CHANGES.rst CONTRIBUTING.rst CONTRIBUTORS.txt HISTORY.rst README.rst )
-PATCHES=( "${FILESDIR}"/${PN}-3.0.5-tests.patch )
 
 python_prepare_all() {
-	# skip failing tests until cause is determined
-	rm tests/{test_pytest_plugin.py,test_worker.py} || die
-	# AttributeError: 'brotli.Decompressor' object has no attribute 'flush'
-	sed -e 's:test_compression_brotli:_\0:' \
-		-e 's:test_feed_eof_no_err_brotli:_\0:' \
-		-i tests/test_http_parser.py || die
-	# make pytest warnings non-fatal, to unbreak tests
-	sed -i -e '/filterwarnings/d' setup.cfg || die
+	# FIXME
+	rm tests/test_pytest_plugin.py || die
+	sed -i -e 's:test_testcase_no_app:_&:' tests/test_test_utils.py || die
+
+	# remove pointless dep on pytest-cov
+	sed -i -e '/addopts/s/--cov=aiohttp//' pytest.ini || die
 
 	distutils-r1_python_prepare_all
 }
