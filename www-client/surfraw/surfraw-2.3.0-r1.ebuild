@@ -1,25 +1,32 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit bash-completion-r1 eutils
+EAPI=7
+inherit autotools bash-completion-r1
 
 DESCRIPTION="A fast unix command line interface to WWW"
-HOMEPAGE="http://surfraw.alioth.debian.org/ https://gitlab.com/surfraw/Surfraw"
-SRC_URI="http://${PN}.alioth.debian.org/dist/${P}.tar.gz"
-
+HOMEPAGE="https://gitlab.com/surfraw/Surfraw"
+SRC_URI="${HOMEPAGE}/-/archive/${P}/${PN^}-${P}.tar.bz2"
 SLOT="0"
 LICENSE="public-domain"
-KEYWORDS="amd64 hppa ~ppc ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris"
-RESTRICT="test"
+KEYWORDS="amd64 hppa ppc sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris"
+
 RDEPEND="
 	dev-lang/perl
 "
-
-DOCS=(AUTHORS ChangeLog HACKING NEWS README TODO)
+RESTRICT="test"
+DOCS=(
+	AUTHORS ChangeLog HACKING NEWS README TODO
+)
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.3.0-completion.patch
 )
+S=${WORKDIR}/${PN^}-${P}
+
+src_prepare() {
+	default
+	eautoreconf
+}
 
 src_configure() {
 	econf --with-elvidir='$(datadir)'/surfraw

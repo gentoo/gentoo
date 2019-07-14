@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit desktop
 
@@ -41,6 +41,11 @@ src_prepare() {
 		sed -e 's/^FPBIN=/#&/' /usr/lib/fpc/${FPCVER}/samplecfg |
 			sh -s /usr/lib/fpc/${FPCVER} "${PPC_CONFIG_PATH}" || die
 	fi
+	sed -i \
+		-e "s;SecondaryConfigPath:='/etc/lazarus';SecondaryConfigPath:=ExpandFileNameUTF8('~/.lazarus');g" \
+		-e "s;PrimaryConfigPath:=ExpandFileNameUTF8('~/.lazarus');PrimaryConfigPath:='/etc/lazarus';g" \
+		ide/include/unix/lazbaseconf.inc \
+		|| die
 }
 
 src_compile() {
@@ -49,13 +54,16 @@ src_compile() {
 		-j1
 	if use python; then
 		addpredict ide/exttools.pas
-		./lazbuild -B --lazarusdir="." --pcp="with-packages" --build-ide= \
+		./lazbuild -B --lazarusdir="." --pcp="../lazarus-package-config" --build-ide= \
 			--add-package ../Python-for-Lazarus-${PYTHON_HASH}/python4lazarus/python4lazarus_package.lpk \
 			|| die
-		sed -i -e "s:${WORKDIR}/Python-for-Lazarus-${PYTHON_HASH}:/usr/share/lazarus/with-packages:g" \
-			with-packages/packagefiles.xml \
-			with-packages/idemake.cfg \
+		sed -i -e "s:${WORKDIR}/Python-for-Lazarus-${PYTHON_HASH}:/etc/lazarus:g" \
+			../lazarus-package-config/packagefiles.xml \
+			../lazarus-package-config/idemake.cfg \
 			../Python-for-Lazarus-${PYTHON_HASH}/python4lazarus/lib/x86_64-linux/python4lazarus_package.compiled \
+			|| die
+		sed -i -e "s:${WORKDIR}/lazarus-package-config:/etc/lazarus:g" \
+			../lazarus-package-config/idemake.cfg \
 			|| die
 	fi
 }
@@ -86,8 +94,12 @@ src_install() {
 	dosym ../lazarus/images/ide_icon48x48.png /usr/share/pixmaps/lazarus.png
 
 	if use python; then
+		diropts -m0755
+		dodir /etc/lazarus
+		cp -rf ../lazarus-package-config/* \
+			"${ED%/}"/etc/lazarus || die
 		cp -rf ../Python-for-Lazarus-${PYTHON_HASH}/python4lazarus \
-			"${ED%/}"/usr/share/lazarus/with-packages || die
+			"${ED%/}"/etc/lazarus || die
 	fi
 
 	make_desktop_entry startlazarus "Lazarus IDE" "lazarus"

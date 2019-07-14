@@ -83,7 +83,7 @@ src_configure() {
 src_install() {
 	emake DESTDIR="${D}" install install.man
 
-	DOCS=( FAQ Fixes NewThings Ported README WishList Y2K )
+	DOCS=( FAQ Fixes NewThings Ported README.md WishList Y2K )
 	if use doc ; then
 		perl tcsh.man2html tcsh.man || die
 		HTML_DOCS=( tcsh.html/*.html )

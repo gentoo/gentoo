@@ -19,8 +19,6 @@ DEPEND_COMMON="
 	sys-libs/readline:0=
 	dev-libs/libxml2
 	>=dev-libs/boost-1.41
-	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:0= )
 	cpusets? ( sys-apps/hwloc )
 	munge? ( sys-auth/munge )
 	nvidia? ( >=x11-drivers/nvidia-drivers-275 )
