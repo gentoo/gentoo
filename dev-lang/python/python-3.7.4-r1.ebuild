@@ -7,7 +7,7 @@ WANT_LIBTOOL="none"
 inherit autotools flag-o-matic pax-utils python-utils-r1 toolchain-funcs
 
 MY_P="Python-${PV}"
-PATCHSET_VERSION="3.7.4-0"
+PATCHSET_VERSION="3.7.4-1"
 
 DESCRIPTION="An interpreted, interactive, object-oriented programming language"
 HOMEPAGE="https://www.python.org/"
