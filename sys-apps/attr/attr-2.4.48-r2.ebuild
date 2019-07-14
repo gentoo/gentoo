@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-inherit libtool ltprune toolchain-funcs multilib-minimal
+inherit libtool ltprune toolchain-funcs multilib-minimal usr-ldscript
 
 DESCRIPTION="Extended attributes tools"
 HOMEPAGE="https://savannah.nongnu.org/projects/attr"

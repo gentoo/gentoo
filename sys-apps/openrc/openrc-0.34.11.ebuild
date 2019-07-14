@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit flag-o-matic pam toolchain-funcs
+inherit flag-o-matic pam toolchain-funcs usr-ldscript
 
 DESCRIPTION="OpenRC manages the services, startup and shutdown of a host"
 HOMEPAGE="https://github.com/openrc/openrc/"

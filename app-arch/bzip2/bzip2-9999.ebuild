@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit meson multilib-minimal
+inherit meson multilib-minimal usr-ldscript
 
 DESCRIPTION="A high-quality data compressor used extensively by Gentoo Linux"
 HOMEPAGE="https://gitlab.com/federicomenaquintero/bzip2"

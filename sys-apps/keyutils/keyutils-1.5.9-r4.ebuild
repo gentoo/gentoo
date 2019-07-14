@@ -3,7 +3,7 @@
 
 EAPI="5"
 
-inherit multilib eutils toolchain-funcs linux-info multilib-minimal
+inherit multilib eutils toolchain-funcs linux-info multilib-minimal usr-ldscript
 
 DESCRIPTION="Linux Key Management Utilities"
 HOMEPAGE="https://people.redhat.com/dhowells/keyutils/"

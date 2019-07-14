@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-inherit flag-o-matic multilib toolchain-funcs
+inherit flag-o-matic multilib toolchain-funcs usr-ldscript
 
 DESCRIPTION="Standard EXT2/EXT3/EXT4 filesystem utilities"
 HOMEPAGE="http://e2fsprogs.sourceforge.net/"

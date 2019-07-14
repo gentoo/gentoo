@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools linux-info toolchain-funcs
+inherit autotools linux-info toolchain-funcs usr-ldscript
 
 DESCRIPTION="Netlink API to the in-kernel nf_tables subsystem"
 HOMEPAGE="https://netfilter.org/projects/nftables/"

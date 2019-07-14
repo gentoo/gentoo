@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit toolchain-funcs multilib systemd
+inherit toolchain-funcs multilib systemd usr-ldscript
 
 DESCRIPTION="xfs filesystem utilities"
 HOMEPAGE="https://xfs.wiki.kernel.org/"

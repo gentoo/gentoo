@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit multilib-minimal toolchain-funcs
+inherit multilib-minimal toolchain-funcs usr-ldscript
 
 DESCRIPTION="An extremely fast compression and decompression library"
 HOMEPAGE="http://www.oberhumer.com/opensource/lzo/"

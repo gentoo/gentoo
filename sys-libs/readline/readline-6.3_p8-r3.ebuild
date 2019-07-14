@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit eutils multilib toolchain-funcs flag-o-matic multilib-minimal
+inherit eutils multilib toolchain-funcs flag-o-matic multilib-minimal usr-ldscript
 
 # Official patches
 # See ftp://ftp.cwru.edu/pub/bash/readline-6.3-patches/

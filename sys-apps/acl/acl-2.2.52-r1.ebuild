@@ -3,7 +3,7 @@
 
 EAPI="4"
 
-inherit eutils libtool toolchain-funcs multilib-minimal
+inherit eutils libtool toolchain-funcs multilib-minimal usr-ldscript
 
 DESCRIPTION="access control list utilities, libraries and headers"
 HOMEPAGE="https://savannah.nongnu.org/projects/acl"

@@ -3,7 +3,7 @@
 
 EAPI="4"
 
-inherit versionator eutils autotools toolchain-funcs multilib flag-o-matic
+inherit versionator eutils autotools toolchain-funcs multilib flag-o-matic usr-ldscript
 
 DESCRIPTION="Light-weight 'standard library' of C functions"
 HOMEPAGE="https://launchpad.net/libnih"

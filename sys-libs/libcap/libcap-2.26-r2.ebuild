@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit multilib multilib-minimal toolchain-funcs pam
+inherit multilib multilib-minimal toolchain-funcs pam usr-ldscript
 
 DESCRIPTION="POSIX 1003.1e capabilities"
 HOMEPAGE="http://www.friedhoff.org/posixfilecaps.html"
