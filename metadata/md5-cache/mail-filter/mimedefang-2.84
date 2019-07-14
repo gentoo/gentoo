@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install postinst prepare setup
+DEPEND=>=dev-perl/MIME-tools-5.412 dev-perl/IO-stringy virtual/perl-MIME-Base64 dev-perl/Digest-SHA1 dev-perl/MailTools dev-perl/Unix-Syslog clamav? ( app-antivirus/clamav ) || ( mail-filter/libmilter mail-mta/sendmail ) test? ( dev-perl/Test-Class dev-perl/Test-Most )
+DESCRIPTION=Antispam, antivirus and other customizable filters for MTAs with Milter support
+EAPI=7
+HOMEPAGE=http://www.mimedefang.org/
+IUSE=clamav +poll test
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2+
+RDEPEND=>=dev-perl/MIME-tools-5.412 dev-perl/IO-stringy virtual/perl-MIME-Base64 dev-perl/Digest-SHA1 dev-perl/MailTools dev-perl/Unix-Syslog clamav? ( app-antivirus/clamav ) || ( mail-filter/libmilter mail-mta/sendmail )
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=http://www.mimedefang.org/static/mimedefang-2.84.tar.gz
+_eclasses_=user	e68863263b1e8611dacf381bec5c8b2b
+_md5_=2f2c4cbc0032c65a98088664d425a085
