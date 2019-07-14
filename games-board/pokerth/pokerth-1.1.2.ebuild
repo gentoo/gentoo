@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="dedicated"
 
 RDEPEND="dev-db/sqlite:3
-	dev-libs/boost:0=[threads(+)]
+	<dev-libs/boost-1.70:0=[threads(+)]
 	dev-libs/libgcrypt:0
 	dev-libs/protobuf:0=
 	dev-libs/tinyxml[stl]
