@@ -29,6 +29,13 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (2019-07-14)
+# Unmaintained, removed from Debian and other distros, tons of CVEs,
+# unreachable upstream, removal in 30 days
+# Bug #601068, #614028, #614032, #614566, #619120, #624988, #629286,
+# #635552, #662160, #674154, #674214, #684826, #689784
+media-libs/jasper
+
 # Matt Turner <mattst88@gentoo.org> (2019-07-10)
 # sci-chemistry/coot and its dependencies.
 # Unmaintained. Still depends on guile-1.8.

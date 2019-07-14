@@ -7,6 +7,29 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# David Seifert <soap@gentoo.org> (2019-07-14)
+# media-libs/jasper will be removed in 30 days, bug #689784
+dev-games/openscenegraph jpeg2k
+dev-python/weasyprint jpeg2k
+dev-qt/qtimageformats jpeg2k
+media-gfx/dcraw jpeg2k
+media-gfx/digikam jpeg2k
+media-gfx/exact-image jpeg2k
+media-gfx/fim jpeg2k
+media-gfx/gimp jpeg2k
+media-gfx/gnome-photos jpeg2k
+media-gfx/graphicsmagick jpeg2k
+media-gfx/ufraw jpeg2k
+media-libs/devil jpeg2k
+media-libs/gegl jpeg2k
+media-libs/libraw jpeg2k
+media-libs/netpbm jpeg2k
+media-libs/opencv jpeg2k
+media-libs/simage jpeg2k
+net-proxy/ziproxy jpeg2k
+sci-libs/grib_api jasper jpeg2k
+x11-libs/gdk-pixbuf jpeg2k
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-07-07)
 # media-video/pipewire is masked for now
 sys-apps/xdg-desktop-portal screencast
