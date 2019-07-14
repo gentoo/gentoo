@@ -14,15 +14,14 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
-IUSE="test"
+IUSE=""
 
 RDEPEND=""
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 
 python_test() {
-	local m=unittest
 	cd "${BUILD_DIR}"/lib || die
-	"${PYTHON}" -m ${m} discover || die "Tests fail with ${EPYTHON}"
+	"${EPYTHON}" -m unittest discover -v || die "Tests fail with ${EPYTHON}"
 }
 
 python_install_all() {
