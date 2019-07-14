@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit flag-o-matic libtool multilib-minimal toolchain-funcs
+inherit flag-o-matic libtool multilib-minimal toolchain-funcs usr-ldscript
 
 DESCRIPTION="Perl-compatible regular expression library"
 HOMEPAGE="http://www.pcre.org/"

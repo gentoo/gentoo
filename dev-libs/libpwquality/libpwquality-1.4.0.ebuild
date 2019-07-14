@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python{2_7,3_5,3_6} )
 
-inherit eutils multilib pam python-r1 toolchain-funcs
+inherit eutils multilib pam python-r1 toolchain-funcs usr-ldscript
 
 DESCRIPTION="Library for password quality checking and generating random passwords"
 HOMEPAGE="https://github.com/libpwquality/libpwquality"
