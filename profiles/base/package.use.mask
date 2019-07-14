@@ -16,7 +16,7 @@ media-gfx/dcraw jpeg2k
 media-gfx/digikam jpeg2k
 media-gfx/exact-image jpeg2k
 media-gfx/fim jpeg2k
-media-gfx/gimp jpeg2k
+<media-gfx/gimp-2.10 jpeg2k
 media-gfx/graphicsmagick jpeg2k
 media-gfx/ufraw jpeg2k
 media-libs/devil jpeg2k
