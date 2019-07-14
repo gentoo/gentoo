@@ -1,14 +1,14 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 MY_PN="${PN/-bin}"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Oracle SQLcl is the new SQL*Plus"
 HOMEPAGE="https://www.oracle.com/technetwork/developer-tools/sql-developer/downloads/index.html"
-SRC_URI="${MY_P}-no-jre.zip"
+SRC_URI="${MY_P}.zip"
 RESTRICT="bindist fetch mirror"
 
 LICENSE="OTN"
@@ -23,26 +23,29 @@ RDEPEND="virtual/jre:1.8
 S="${WORKDIR}"
 
 pkg_nofetch() {
-	eerror "Please go to"
-	eerror "	${HOMEPAGE}"
-	eerror "and download"
-	eerror "	Command Line - SQLcl"
-	eerror "		${SRC_URI}"
-	eerror "and move it to DISTDIR directory."
+	einfo "Please go to"
+	einfo
+	einfo "	${HOMEPAGE}"
+	einfo
+	einfo "and download"
+	einfo
+	einfo "	Command Line - SQLcl"
+	einfo "		${SRC_URI}"
+	einfo
+	einfo "which must be placed in DISTDIR directory."
 }
 
 src_prepare() {
 	default
-	find ./ \( -iname "*.bat" -or -iname "*.exe" \) -exec rm {} + || die "remove files failed"
-	mv sqlcl/bin/sql sqlcl/bin/"${MY_PN}" || die "rename executable failed"
+	find ./ \( -iname "*.bat" -or -iname "*.exe" \) -delete || die "remove files failed"
 }
 
 src_install() {
 	exeinto "/opt/${MY_PN}/bin/"
-	doexe "${S}/${MY_PN}/bin/${MY_PN}"
+	newexe "${MY_PN}"/bin/sql sqlcl
 
 	insinto "/opt/${MY_PN}/lib/"
-	doins -r "${S}/${MY_PN}/lib/"*
+	doins -r "${MY_PN}"/lib/.
 
-	dosym "${ED%/}/opt/${MY_PN}/bin/${MY_PN}" "/opt/bin/${MY_PN}"
+	dosym "../${MY_PN}/bin/sqlcl" /opt/bin/sqlcl
 }
