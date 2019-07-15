@@ -220,5 +220,12 @@ pkg_postinst() {
 				ewarn "in genkernel v4+ initramfs!"
 			fi
 		fi
+
+		if grep -q -E "^CMD_CALLBACK=.*emerge.*@module-rebuild" "${gk_config}" 2>/dev/null ; then
+			elog ""
+			elog "Please remove `emerge @module-rebuild` from genkernel config"
+			ewarn "file (${gk_config}) and make use of new MODULEREBUILD option"
+			ewarn "instead."
+		fi
 	fi
 }
