@@ -6771,7 +6771,7 @@ kde-apps/ksquares 18.12.3: KDE clone of the game squares
 kde-apps/ksudoku 18.12.3: Logic-based symbol placement puzzle by KDE
 kde-apps/ksystemlog 18.12.3: System log viewer by KDE
 kde-apps/kteatime 18.12.3: KDE timer for making a fine cup of tea
-kde-apps/ktimer 18.12.3: KDE Timer
+kde-apps/ktimer 18.12.3: Little tool to execute programs after some time
 kde-apps/ktouch 18.12.3-r1: Program that helps to learn and practice touch typing
 kde-apps/ktp-accounts-kcm 18.12.3: KDE Telepathy account management kcm
 kde-apps/ktp-approver 18.12.3: KDE Telepathy notification handler
