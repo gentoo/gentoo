@@ -207,7 +207,8 @@ stop() {
 
 	ebegin "Stopping ${myservice}"
 
-	if start-stop-daemon --quiet --test --stop --exec "${myexe}"; then
+        # Repeat --quiet twice to suppress meaningless errors.
+	if start-stop-daemon --quiet --quiet --test --stop --exec "${myexe}"; then
 		start-stop-daemon --stop --exec "${myexe}" --retry TERM/5/TERM/5 \
 			${mypidfile:+--pidfile} ${mypidfile} \
 			${myname:+--name} ${myname}
