@@ -46,7 +46,7 @@ DEPEND="
 "
 RDEPEND="${DEPEND}
 	media-video/ffmpeg
-	kipi? ( media-plugins/kipi-plugins:5 )
+	kipi? ( kde-apps/kipi-plugins:5 )
 "
 
 DOCS=( ChangeLog README.md )

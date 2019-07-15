@@ -1,21 +1,22 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 KDE_HANDBOOK="forceoptional"
 VIRTUALX_REQUIRED="test"
 inherit kde5
 
-DESCRIPTION="KControl module for Wacom tablets"
-HOMEPAGE="https://www.linux-apps.com/content/show.php?action=content&content=114856"
+DESCRIPTION="System settings module for Wacom tablets"
+HOMEPAGE="https://userbase.kde.org/Wacomtablet https://store.kde.org/p/1127862"
 SRC_URI="mirror://kde/stable/${PN}/${PV}/${P}.tar.xz"
 
 LICENSE="GPL-2"
 KEYWORDS="amd64 x86"
 IUSE=""
 
-CDEPEND="
+BDEPEND="sys-devel/gettext"
+RDEPEND="
 	$(add_frameworks_dep kconfig)
 	$(add_frameworks_dep kconfigwidgets)
 	$(add_frameworks_dep kcoreaddons)
@@ -37,17 +38,15 @@ CDEPEND="
 	x11-libs/libXi
 	x11-libs/libxcb
 "
-DEPEND="${CDEPEND}
-	sys-devel/gettext
+DEPEND="${RDEPEND}
 	x11-base/xorg-proto
-"
-RDEPEND="${CDEPEND}
-	!kde-misc/wacomtablet:4
+	x11-libs/libX11
 "
 
 PATCHES=(
 	"${FILESDIR}/${P}-xlib-optional.patch" # bug 681674
 	"${FILESDIR}/${P}-gcc9.patch" # bug 686822
+	"${FILESDIR}/${P}-correct-width-height-values.patch" # KDE-Bug 407712
 )
 
 src_test() {

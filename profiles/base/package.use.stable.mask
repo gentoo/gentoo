@@ -29,7 +29,7 @@ media-plugins/grilo-plugins chromaprint
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-02-16)
 # Unstable dependencies.
 media-gfx/digikam vkontakte
-media-plugins/kipi-plugins mediawiki vkontakte
+kde-apps/kipi-plugins mediawiki vkontakte
 
 # Brian Evans <grknight@gentoo.org> (2018-12-06)
 # Mask USE flag since argon2 dependency is not stable on most arches

@@ -1,0 +1,52 @@
+From fd099f89c5ded7e20c3a852d5539e9a0b269e11d Mon Sep 17 00:00:00 2001
+From: Jason Gerecke <jason.gerecke@wacom.com>
+Date: Thu, 13 Jun 2019 23:49:12 +0300
+Subject: Correct width/height values from X11Wacom::getMaximumTabletArea
+
+Summary:
+The "Wacom Tablet Area" property contains four values that define the
+top-left and bottom-right tablet coordinates of the tablet's input
+area. The driver will scale input coordinates according to the input
+area such that the border of the input area matches up with the border
+of the desktop or mapped monitor.
+
+Crucially, these coordinates are *NOT* necessarily equal to (0,0) and
+(SENSOR_MAX_X, SENSOR_MAX_Y) after a reset. In particular, many display
+tablet have sensors that are slightly larger than the display itself
+and so have their reset areas equal to something like (400, 400) and
+(SENSOR_MAX_X - 400, SENSOR_MAX_Y - 400) so that the pen is correctly
+mapped.
+
+This commit updates X11Wacom::getMaximumTabletArea to properly set the
+width and height properties by calculating the difference between the
+min and max values of X and Y. This is particularly important to ensure
+that the calibration routines work correctly.
+
+Ref: https://bugs.kde.org/show_bug.cgi?id=407712
+
+Reviewers: valeriymalov
+
+Reviewed By: valeriymalov
+
+Differential Revision: https://phabricator.kde.org/D21775
+---
+ src/common/x11wacom.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/common/x11wacom.cpp b/src/common/x11wacom.cpp
+index e269480..a4d95c8 100644
+--- a/src/common/x11wacom.cpp
++++ b/src/common/x11wacom.cpp
+@@ -70,8 +70,8 @@ const TabletArea X11Wacom::getMaximumTabletArea(const QString& deviceName)
+     if (x11Device.getLongProperty(areaProperty, maximumArea, 4) && maximumArea.size() == 4) {
+         maximumAreaRect.setX(maximumArea.at(0));
+         maximumAreaRect.setY(maximumArea.at(1));
+-        maximumAreaRect.setWidth(maximumArea.at(2));
+-        maximumAreaRect.setHeight(maximumArea.at(3));
++        maximumAreaRect.setWidth(maximumArea.at(2) - maximumArea.at(0));
++        maximumAreaRect.setHeight(maximumArea.at(3) - maximumArea.at(1));
+     }
+ 
+     // reset the area back to the previous value
+-- 
+cgit v1.1
