@@ -1,11 +1,9 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit versionator
-
-MY_P="${PN}-$(replace_version_separator 2 b)"
+MY_P="${PN}-$(ver_rs 2 b)"
 S=${WORKDIR}/${MY_P}
 DESCRIPTION="Dump/restore ext2fs backup utilities"
 HOMEPAGE="http://dump.sourceforge.net/"
@@ -44,10 +42,14 @@ RDEPEND=">=sys-fs/e2fsprogs-1.27:=
 		static? ( sys-libs/ncurses:=[static-libs] )
 	)"
 DEPEND="${RDEPEND}
-	virtual/pkgconfig
 	virtual/os-headers"
+BDEPEND="
+	virtual/pkgconfig
+"
 
-PATCHES=( "${FILESDIR}"/${P}-openssl11.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-openssl11.patch
+)
 
 src_configure() {
 	local myeconfargs=(
