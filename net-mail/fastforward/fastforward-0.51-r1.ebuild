@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=0
@@ -11,7 +11,7 @@ SRC_URI="http://cr.yp.to/software/${P}.tar.gz"
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="x86 sparc ~ppc"
+KEYWORDS="~ppc sparc x86"
 IUSE=""
 
 DEPEND="sys-apps/groff"
