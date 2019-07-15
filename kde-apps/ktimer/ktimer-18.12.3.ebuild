@@ -6,7 +6,7 @@ EAPI=7
 KDE_HANDBOOK="forceoptional"
 inherit kde5
 
-DESCRIPTION="KDE Timer"
+DESCRIPTION="Little tool to execute programs after some time"
 HOMEPAGE="https://www.kde.org/applications/utilities/ktimer
 https://utils.kde.org/projects/ktimer/"
 KEYWORDS="amd64 ~arm64 x86"
