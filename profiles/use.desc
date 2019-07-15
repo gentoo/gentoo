@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Keep them sorted
@@ -23,7 +23,6 @@ aqua - Include support for the Mac OS X Aqua (Carbon/Cocoa) GUI
 atm - Enable Asynchronous Transfer Mode protocol support
 audiofile - Add support for libaudiofile where applicable
 audit - Enable support for Linux audit subsystem using sys-process/audit
-avahi - Add avahi/Zeroconf support
 ayatana - Build in support for Ayatana notification using the libindicate or libappindicator plugin
 bash-completion - Enable bash-completion support
 berkdb - Add support for sys-libs/db (Berkeley DB for MySQL)
@@ -370,7 +369,6 @@ xpm - Add support for XPM graphics format
 xscreensaver - Add support for XScreenSaver extension
 xv - Add in optional support for the Xvideo extension (an X API for video playback)
 xvid - Add support for xvid.org's open-source mpeg-4 codec
-yahoo - Enable Yahoo Messenger IM protocol support
 zeroconf - Support for DNS Service Discovery (DNS-SD)
 zip - Enable support for ZIP archives
 zlib - Add support for zlib (de)compression

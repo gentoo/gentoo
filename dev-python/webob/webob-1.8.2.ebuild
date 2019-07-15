@@ -11,7 +11,7 @@ MY_PN=WebOb
 MY_P=${MY_PN}-${PV}
 
 DESCRIPTION="WSGI request and response object"
-HOMEPAGE="https://webob.org/ https://pypi.org/project/WebOb/"
+HOMEPAGE="https://webob.org/"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="MIT"

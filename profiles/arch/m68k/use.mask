@@ -82,7 +82,6 @@ gnome-keyring
 pango
 
 # Masking since net-dns/avahi and net-misc/mDNSResponder are masked
-avahi
 zeroconf
 
 # Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (2013-08-22)
