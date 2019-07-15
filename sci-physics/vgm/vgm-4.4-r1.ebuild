@@ -41,6 +41,9 @@ DOCS=(
 	doc/VGM.html
 	doc/VGMversions.html
 )
+PATCHES=(
+	"${FILESDIR}"/"${PN}-fix-FindCLHEP.patch"
+)
 
 src_configure() {
 	local mycmakeargs=(
