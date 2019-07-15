@@ -5,20 +5,20 @@ EAPI=6
 
 ETYPE="sources"
 K_WANT_GENPATCHES="base extras experimental"
-K_GENPATCHES_VER=45
+K_GENPATCHES_VER=18
 UNIPATCH_STRICTORDER=1
 inherit kernel-2 eutils readme.gentoo-r1
 
-AUFS_VERSION=4.19.17+_p20190610
+AUFS_VERSION=5.1_p20190715
 AUFS_TARBALL="aufs-sources-${AUFS_VERSION}.tar.xz"
-# git archive -v --remote=git://git.code.sf.net/p/aufs/aufs4-standalone aufs${AUFS_VERSION/_p*} > aufs-sources-${AUFS_VERSION}.tar
+# git archive -v --remote=git://git.code.sf.net/p/aufs/aufs5-standalone aufs${AUFS_VERSION/_p*} > aufs-sources-${AUFS_VERSION}.tar
 AUFS_URI="https://dev.gentoo.org/~jlec/distfiles/${AUFS_TARBALL}"
 
 KEYWORDS="~amd64 ~x86"
 HOMEPAGE="https://dev.gentoo.org/~mpagano/genpatches http://aufs.sourceforge.net/"
 IUSE="experimental module vanilla"
 
-DESCRIPTION="Full sources (incl. Gentoo patchset) for the linux kernel tree and aufs4 support"
+DESCRIPTION="Full sources (incl. Gentoo patchset) for the linux kernel tree and aufs5 support"
 SRC_URI="
 	${KERNEL_URI}
 	${ARCH_URI}
@@ -40,15 +40,15 @@ src_unpack() {
 	fi
 
 	UNIPATCH_LIST="
-		"${WORKDIR}"/aufs4-kbuild.patch
-		"${WORKDIR}"/aufs4-base.patch
-		"${WORKDIR}"/aufs4-mmap.patch"
+		"${WORKDIR}"/aufs5-kbuild.patch
+		"${WORKDIR}"/aufs5-base.patch
+		"${WORKDIR}"/aufs5-mmap.patch"
 
-	use module && UNIPATCH_LIST+=" "${WORKDIR}"/aufs4-standalone.patch"
+	use module && UNIPATCH_LIST+=" "${WORKDIR}"/aufs5-standalone.patch"
 
 	unpack ${AUFS_TARBALL}
 
-	einfo "Using aufs4 version: ${AUFS_VERSION}"
+	einfo "Using aufs5 version: ${AUFS_VERSION}"
 
 	kernel-2_src_unpack
 }
@@ -64,8 +64,8 @@ src_prepare() {
 
 src_install() {
 	kernel-2_src_install
-	dodoc "${WORKDIR}"/{aufs4-loopback,vfs-ino,tmpfs-idr}.patch
-	docompress -x /usr/share/doc/${PF}/{aufs4-loopback,vfs-ino,tmpfs-idr}.patch
+	dodoc "${WORKDIR}"/{aufs5-loopback,vfs-ino,tmpfs-idr}.patch
+	docompress -x /usr/share/doc/${PF}/{aufs5-loopback,vfs-ino,tmpfs-idr}.patch
 	readme.gentoo_create_doc
 }
 
