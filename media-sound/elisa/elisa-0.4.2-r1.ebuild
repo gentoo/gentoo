@@ -25,7 +25,7 @@ DEPEND="
 	$(add_frameworks_dep kcoreaddons)
 	$(add_frameworks_dep kcrash)
 	$(add_frameworks_dep kdeclarative)
-	$(add_frameworks_dep kfilemetadata)
+	$(add_frameworks_dep kfilemetadata 'taglib')
 	$(add_frameworks_dep ki18n)
 	$(add_frameworks_dep kio)
 	$(add_frameworks_dep kirigami)
@@ -33,17 +33,16 @@ DEPEND="
 	$(add_frameworks_dep kxmlgui)
 	$(add_qt_dep qtdeclarative)
 	$(add_qt_dep qtgui)
-	$(add_qt_dep qtmultimedia 'gstreamer')
+	$(add_qt_dep qtmultimedia)
 	$(add_qt_dep qtsql)
 	$(add_qt_dep qtwidgets)
 	mpris? (
 		$(add_frameworks_dep kdbusaddons)
 		$(add_qt_dep qtdbus)
 	)
-	semantic-desktop? (
-		$(add_frameworks_dep baloo)
-	)
+	semantic-desktop? ( $(add_frameworks_dep baloo) )
 	vlc? ( media-video/vlc:= )
+	!vlc? ( $(add_qt_dep qtmultimedia 'gstreamer') )
 "
 RDEPEND="${DEPEND}
 	$(add_qt_dep qtgraphicaleffects)
