@@ -102,6 +102,7 @@ anthy
 -video_cards_freedreno
 -video_cards_imx
 -video_cards_omap
+-video_cards_panfrost
 -video_cards_tegra
 -video_cards_vc4
 

@@ -18,12 +18,14 @@ i965 - VIDEO_CARDS setting to build driver for Intel i965 video cards
 imx - VIDEO_CARDS setting to build driver for Freescale i.MX video cards
 intel - VIDEO_CARDS setting to build driver for Intel video cards
 iris - VIDEO_CARDS setting to build driver for Intel video cards Gen8 / Broadwell or newer
+lima - VIDEO_CARDS setting to build driver for Mali 200/400 video cards
 mga - VIDEO_CARDS setting to build driver for mga video cards
 nouveau - VIDEO_CARDS setting to build reverse-engineered driver for nvidia cards
 nvidia - VIDEO_CARDS setting to build driver for nvidia video cards
 nv - VIDEO_CARDS setting to build driver for nv video cards
 omap - VIDEO_CARDS setting to build DRM driver for TI OMAP video cards
 qxl - VIDEO_CARDS setting to build driver for qxl (QEMU virtual GPU)
+panfrost - VIDEO_CARDS setting to build driver for Mali 600/700/800 video cards
 r100 - VIDEO_CARDS setting to build only r100 based chips code for radeon
 r128 - VIDEO_CARDS setting to build driver for ATI r128 video cards
 r200 - VIDEO_CARDS setting to build only r200 based chips code for radeon
