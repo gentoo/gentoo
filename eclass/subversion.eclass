@@ -12,20 +12,20 @@
 # The subversion eclass provides functions to fetch, patch and bootstrap
 # software sources from subversion repositories.
 
+inherit eutils
+
 ESVN="${ECLASS}"
 
 case "${EAPI:-0}" in
 	0|1)
-		inherit eutils
 		EXPORT_FUNCTIONS src_unpack pkg_preinst
 		DEPEND="dev-vcs/subversion"
 		;;
 	2|3|4|5)
-		inherit eutils
 		EXPORT_FUNCTIONS src_unpack src_prepare pkg_preinst
 		DEPEND="|| ( dev-vcs/subversion[http] dev-vcs/subversion[webdav-neon] dev-vcs/subversion[webdav-serf] )"
 		;;
-	6|7)
+	6)
 		EXPORT_FUNCTIONS src_unpack pkg_preinst
 		DEPEND="|| ( dev-vcs/subversion[http] dev-vcs/subversion[webdav-neon] dev-vcs/subversion[webdav-serf] )"
 		;;
