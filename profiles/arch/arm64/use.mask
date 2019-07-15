@@ -152,16 +152,12 @@ sdl
 vim-syntax
 
 # Unmask ARM-only video-cards
-# e.g. exynos5433
 -video_cards_exynos
-# e.g. Snapdragon 410E (dragonboard)
 -video_cards_freedreno
-# e.g. NXP i.MX
 -video_cards_imx
-# e.g. Nvidia's Tegra K1 T132 Denver
 -video_cards_nouveau
+-video_cards_panfrost
 -video_cards_tegra
-# e.g. Raspeberry Pi 3
 -video_cards_vc4
 
 # James Le Cuirot <chewi@gentoo.org>

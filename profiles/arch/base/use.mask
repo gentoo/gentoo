@@ -137,7 +137,9 @@ video_cards_siliconmotion
 video_cards_exynos
 video_cards_freedreno
 video_cards_imx
+video_cards_lima
 video_cards_omap
+video_cards_panfronst
 video_cards_tegra
 video_cards_vc4
 
