@@ -4,10 +4,16 @@
 # @ECLASS: usr-ldscript.eclass
 # @MAINTAINER:
 # Toolchain Ninjas <toolchain@gentoo.org>
+# @SUPPORTED_EAPIS: 4 5 6 7
 # @BLURB: Defines the gen_usr_ldscript function.
 
 if [[ -z ${_USR_LDSCRIPT_ECLASS} ]]; then
 _USR_LDSCRIPT_ECLASS=1
+
+case ${EAPI:-0} in
+	4|5|6|7) ;;
+	*) die "EAPI=${EAPI} is not supported" ;;
+esac
 
 inherit multilib toolchain-funcs
 
@@ -29,7 +35,6 @@ IUSE="split-usr"
 # correctly to point to the latest version of the library present.
 gen_usr_ldscript() {
 	local lib libdir=$(get_libdir) output_format="" auto=false suffix=$(get_libname)
-	[[ -z ${ED+set} ]] && local ED=${D%/}${EPREFIX}/
 
 	tc-is-static-only && return
 
