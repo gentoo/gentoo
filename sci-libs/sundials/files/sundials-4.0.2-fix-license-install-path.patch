@@ -6,6 +6,6 @@ diff -Nur old/CMakeLists.txt new/CMakeLists.txt
  INSTALL(
    FILES ${PROJECT_SOURCE_DIR}/NOTICE
 -  DESTINATION include/sundials
-+  DESTINATION share/doc/sundials-4.0.2)
++  DESTINATION share/doc/sundials-4.0.2
    )
  
