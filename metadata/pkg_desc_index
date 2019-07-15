@@ -10507,7 +10507,7 @@ x11-apps/fstobdf 1.0.6: generate BDF font from X font server
 x11-apps/iceauth 1.0.8: ICE authority file utility
 x11-apps/ico 1.0.4 1.0.5: animate an icosahedron or other polyhedron
 x11-apps/listres 1.0.4: list resources in widgets
-x11-apps/luit 1.1.1 20190106: Locale and ISO 2022 support for Unicode terminals
+x11-apps/luit 20190106: Locale and ISO 2022 support for Unicode terminals
 x11-apps/mesa-progs 8.4.0: Mesa's OpenGL utility and demo programs (glxgears and glxinfo)
 x11-apps/mkfontdir 1.2.0: create an index of X font files in a directory
 x11-apps/mkfontscale 1.2.1: create an index of scalable font files for X
