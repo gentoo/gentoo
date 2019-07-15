@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -15,7 +15,7 @@ SRC_URI="
 	https://dev.gentoo.org/~jlec/distfiles/${PN}-selfSignedCertificate.store.tar"
 
 LICENSE="LGPL-2.1"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE="+client-only vhosts"
 
 WEBAPP_MANUAL_SLOT="yes"
