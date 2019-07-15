@@ -1001,7 +1001,7 @@ app-misc/gnuit 4.9.5-r2: GNU Interactive Tools - increase speed and efficiency o
 app-misc/go-jira 1.0.17 1.0.20: A simple JIRA commandline client in Go
 app-misc/golly 3.2: simulator for Conway's Game of Life and other cellular automata
 app-misc/gourmet 0.17.4-r2: Recipe Organizer and Shopping List Generator for Gnome
-app-misc/gramps 4.2.5 4.2.8: Genealogical Research and Analysis Management Programming System
+app-misc/gramps 4.2.8: Genealogical Research and Analysis Management Programming System
 app-misc/graphlcd-base 0.1.9: Graphical LCD Driver
 app-misc/grc 1.5: Generic Colouriser beautifies your logfiles or output of commands
 app-misc/gtypist 2.9.5: Universal typing tutor
