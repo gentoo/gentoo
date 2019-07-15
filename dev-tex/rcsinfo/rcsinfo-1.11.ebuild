@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=0
@@ -13,7 +13,7 @@ HOMEPAGE="http://www.ctan.org/pkg/rcsinfo"
 # http://mirrors.ctan.org/macros/latex/contrib/rcsinfo.zip
 SRC_URI="mirror://gentoo/${P}.zip"
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DOCS="README-1.9 README"
