@@ -1,12 +1,12 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 FORTRAN_NEEDED=fortran
 FORTRAN_STANDARD=90
 
-inherit cmake-utils eapi7-ver toolchain-funcs fortran-2
+inherit cmake-utils toolchain-funcs fortran-2
 
 DESCRIPTION="Suite of nonlinear solvers"
 HOMEPAGE="https://computation.llnl.gov/projects/sundials"
