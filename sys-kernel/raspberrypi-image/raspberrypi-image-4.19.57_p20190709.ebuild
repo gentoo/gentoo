@@ -20,7 +20,7 @@ if [[ "${PV}" == 9999 ]]; then
 else
 	[[ "$(ver_cut 4)" == 'p' ]] || die "Unsupported version format, tweak the ebuild."
 	MY_PV="1.$(ver_cut 5)"
-	SRC_URI="https://github.com/raspberrypi/firmware/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/raspberrypi/firmware/archive/${MY_PV}.tar.gz -> raspberrypi-firmware-${MY_PV}.tar.gz"
 	S="${WORKDIR}/firmware-${MY_PV}"
 	KEYWORDS="-* ~arm"
 fi
