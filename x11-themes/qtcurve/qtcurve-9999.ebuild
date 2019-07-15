@@ -60,9 +60,7 @@ DEPEND="
 		x11-libs/libxcb
 	)
 "
-RDEPEND="${DEPEND}
-	!x11-themes/gtk-engines-qtcurve
-"
+RDEPEND="${DEPEND}"
 
 RESTRICT+=" test"
 
