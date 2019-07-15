@@ -369,7 +369,6 @@ xpm - Add support for XPM graphics format
 xscreensaver - Add support for XScreenSaver extension
 xv - Add in optional support for the Xvideo extension (an X API for video playback)
 xvid - Add support for xvid.org's open-source mpeg-4 codec
-yahoo - Enable Yahoo Messenger IM protocol support
 zeroconf - Support for DNS Service Discovery (DNS-SD)
 zip - Enable support for ZIP archives
 zlib - Add support for zlib (de)compression
