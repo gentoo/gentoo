@@ -29,6 +29,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Sobhan Mohammadpour <sobhan@gentoo.org> (2019-07-14)
+# Masked for testing
+>=media-video/totem-3.32.1
+
 # Kent Fredric <kentnl@gentoo.org> (2019-07-14)
 # Broken since 2007, Upstream not seen since 2004.
 # Removal after 2019-08-13
