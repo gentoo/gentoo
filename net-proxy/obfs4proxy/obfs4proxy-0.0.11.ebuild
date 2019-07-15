@@ -8,11 +8,12 @@ EGO_PN=${EGO_SRC}/...
 
 EGO_VENDOR=(
 	"github.com/dsnet/compress v0.0.1"
-	"gitlab.com/yawning/utls.git v0.0.9-2 gitlab.com/yawning/utls/-"
+	"gitlab.com/yawning/utls.git v0.0.11-1 gitlab.com/yawning/utls/-"
+	"git.schwanenlied.me/yawning/bsaes.git 26d1add596b6d800bdeeb3bc3b2c7b316c056b6d git.schwanenlied.me/yawning/bsaes"
 	# Newer versions of packages which are in the tree
-	"golang.org/x/crypto b8fe1690c61389d7d2a8074a507d1d40c5d30448 github.com/golang/crypto"
-	"golang.org/x/net ed066c81e75eba56dd9bd2139ade88125b855585 github.com/golang/net"
-	"golang.org/x/sys afcc84fd7533758f95a6e93ae710aa945a0b7e73 github.com/golang/sys"
+	"golang.org/x/crypto a5d413f7728c81fb97d96a2b722368945f651e78 github.com/golang/crypto"
+	"golang.org/x/net 74de082e2cca95839e88aa0aeee5aadf6ce7710f github.com/golang/net"
+	"golang.org/x/sys 9eb1bfa1ce65ae8a6ff3114b0aaf9a41a6cf3560 github.com/golang/sys"
 )
 
 inherit golang-build golang-vcs-snapshot
