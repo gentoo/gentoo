@@ -1,0 +1,28 @@
+From 2d191b49ea074cc69ba4c68a572f26c8bdb55abd Mon Sep 17 00:00:00 2001
+From: Albert Astals Cid <aacid@kde.org>
+Date: Wed, 10 Jul 2019 01:10:22 +0200
+Subject: [PATCH] Fix mistake on 093531cd0d0878b892d92ebc56c26936e5de3712
+
+These i should have been j too
+---
+ poppler/TextOutputDev.cc | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/poppler/TextOutputDev.cc b/poppler/TextOutputDev.cc
+index e62e088c..645e38fd 100644
+--- a/poppler/TextOutputDev.cc
++++ b/poppler/TextOutputDev.cc
+@@ -4791,8 +4791,8 @@ void TextSelectionPainter::endPage()
+         if (j != begin && sel->word->charPos[j] == sel->word->charPos[j - 1])
+           continue;
+ 
+-	out->drawChar(state, sel->word->textMat[i].m[4], sel->word->textMat[i].m[5], 0, 0, 0, 0,
+-		      sel->word->charcode[i], 1, nullptr, 0);
++	out->drawChar(state, sel->word->textMat[j].m[4], sel->word->textMat[j].m[5], 0, 0, 0, 0,
++		      sel->word->charcode[j], 1, nullptr, 0);
+       }
+       out->endString(state);
+       delete string;
+-- 
+2.21.0
+
