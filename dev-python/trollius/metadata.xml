@@ -7,7 +7,6 @@
   </maintainer>
   <upstream>
     <remote-id type="pypi">trollius</remote-id>
-    <remote-id type="bitbucket">enovance/trollius</remote-id>
-    <remote-id type="github">haypo/trollius</remote-id>
+    <remote-id type="github">vstinner/trollius</remote-id>
   </upstream>
 </pkgmetadata>
