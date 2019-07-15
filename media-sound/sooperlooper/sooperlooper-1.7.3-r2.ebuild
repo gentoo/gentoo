@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -40,6 +40,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-wx3.0.patch
 	"${FILESDIR}"/${P}-libsigc28.patch
 	"${FILESDIR}"/${P}-clash.patch
+	"${FILESDIR}"/${P}-tinfo.patch
 )
 
 src_prepare() {

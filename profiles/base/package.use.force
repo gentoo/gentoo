@@ -6,6 +6,14 @@
 # them is an experimental feature and needs testing.
 sys-libs/glibc static-libs
 
+# Michał Górny <mgorny@gentoo.org> (22 Mar 2019)
+# Force building separate tinfo to maintain stable library API.  This
+# is backwards-compatible with packages linked to -lncurses, so neither
+# installed packages nor pre-built software should be negatively
+# affected.  On the other hand, disabling USE=tinfo is capable of
+# breaking installed packages.
+sys-libs/ncurses tinfo
+
 # Mart Raudsepp <leio@gentoo.org> (2018-12-14)
 # Security is not optional if available for the architecture/kernel.
 gnome-base/gnome-desktop seccomp
