@@ -49,6 +49,7 @@ pkg_pretend() {
 src_prepare() {
 	default
 	eautoreconf
+	sed -i -e "s#usr/local/bin#usr/bin#" data/etc/udev/rules.d/45-ddcutil-usb.rules || die
 }
 
 src_configure() {
