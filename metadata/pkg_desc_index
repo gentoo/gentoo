@@ -8316,7 +8316,7 @@ net-analyzer/monitoring-plugins 2.2-r2 2.2-r3: 50+ standard plugins for Icinga, 
 net-analyzer/mping 2.01: IPv4/6 round-robin multiping client
 net-analyzer/mrtg 2.17.7: A tool to monitor the traffic load on network-links
 net-analyzer/mtr 0.87: My TraceRoute, an Excellent network diagnostic tool
-net-analyzer/munin 2.0.38: Munin Server Monitoring Tool
+net-analyzer/munin 2.0.38 2.0.49: Munin Server Monitoring Tool
 net-analyzer/nagios 4.3.4: The Nagios metapackage
 net-analyzer/nagios-check_glsa2 20120930-r1: Nagios check script for GLSAs (Gentoo Linux Security Advisories)
 net-analyzer/nagios-check_ipmi_sensor 3.1 3.2: IPMI Sensor Monitoring Plugin for Nagios/Icinga
