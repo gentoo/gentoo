@@ -1,0 +1,24 @@
+From e7c4847d9bbdc5d7c7435039aa5088d276ca5bce Mon Sep 17 00:00:00 2001
+From: Jonathan Riddell <jr@jriddell.org>
+Date: Mon, 10 Jun 2019 13:27:29 +0100
+Subject: remove unused link to kcrash, it can be used by the apps which use
+ libktorrent but it needs to be initialised not just arbitrarily linked to
+
+---
+ src/CMakeLists.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index d347e07..1578bf4 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -235,7 +235,6 @@ PRIVATE
+     qca-qt5
+ PUBLIC
+     KF5::Archive
+-    KF5::Crash
+     KF5::KIOCore
+     KF5::KIOWidgets
+     KF5::Solid
+-- 
+cgit v1.1
