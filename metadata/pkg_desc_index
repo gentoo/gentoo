@@ -6715,6 +6715,7 @@ kde-apps/killbots 18.12.3: Kill the bots or they kill you!
 kde-apps/kimagemapeditor 18.12.3: Generator of HTML image maps
 kde-apps/kimap 18.12.3: Library for interacting with IMAP servers
 kde-apps/kio-extras 18.12.3: KIO plugins present a filesystem-like view of arbitrary data
+kde-apps/kipi-plugins 5.9.1: Plugins for the KDE Image Plugin Interface
 kde-apps/kiriki 18.12.3: An addictive and fun dice game
 kde-apps/kiten 18.12.3: KDE Japanese dictionary and reference
 kde-apps/kitinerary 18.12.3: Data Model and Extraction System for Travel Reservation information
@@ -6834,6 +6835,7 @@ kde-apps/svgpart 18.12.3: Kpart for viewing SVGs
 kde-apps/sweeper 18.12.3: Privacy settings widget to clean unwanted traces on the system
 kde-apps/thumbnailers 18.12.3: Thumbnail generators for PDF/PS and RAW files
 kde-apps/umbrello 18.12.3: KDE UML Modeller
+kde-apps/yakuake 3.0.5-r1: Quake-style terminal emulator based on konsole
 kde-apps/zeroconf-ioslave 18.12.3: DNSSD (DNS Service Discovery - part of Rendezvous) ioslave and kded module
 kde-frameworks/attica 5.57.0: Framework providing access to Open Collaboration Services
 kde-frameworks/baloo 5.57.0: Framework for searching and managing metadata
@@ -6924,7 +6926,7 @@ kde-misc/kdirstat 3.1.4: GUI equivalent to the du command based on KDE Framework
 kde-misc/kio-gdrive 1.2.6: KIO Slave for Google Drive service
 kde-misc/kmarkdownwebview 0.5.5: KPart for rendering Markdown content
 kde-misc/krename 5.0.0-r1: Powerful batch file renamer
-kde-misc/krusader 2.7.1: Advanced twin-panel (commander-style) file-manager with many extras
+kde-misc/krusader 2.7.1-r1: Advanced twin-panel (commander-style) file-manager with many extras
 kde-misc/kshutdown 5.0: Shutdown manager for desktop environments like KDE Plasma
 kde-misc/kwebkitpart 1.4.0_pre20190110: WebKit KPart for Konqueror
 kde-misc/latte-dock 0.8.7: Elegant dock, based on KDE Frameworks
@@ -6935,8 +6937,7 @@ kde-misc/rsibreak 0.12.9-r1: Small utility which bothers you at certain interval
 kde-misc/skanlite 2.1.0.1: KDE image scanning application
 kde-misc/systemd-kcm 1.2.1: Plasma control module for systemd
 kde-misc/tellico 3.2: Collection manager based on KDE Frameworks
-kde-misc/wacomtablet 3.1.1: KControl module for Wacom tablets
-kde-misc/yakuake 3.0.5-r1: Quake-style terminal emulator based on konsole
+kde-misc/wacomtablet 3.1.1-r1: System settings module for Wacom tablets
 kde-misc/zanshin 0.5.0: Getting things done application by KDE
 kde-plasma/bluedevil 5.15.5: Bluetooth stack for KDE Plasma
 kde-plasma/breeze 5.15.5: Breeze visual style for the Plasma desktop
@@ -7843,7 +7844,6 @@ media-plugins/gst-plugins-x265 1.14.3: H.265 encoder plugin for GStreamer
 media-plugins/gst-plugins-ximagesrc 1.14.4: X11 video capture stream plugin for GStreamer
 media-plugins/gst-transcoder 1.8.2-r1: GStreamer Transcoding API
 media-plugins/hexter 1.0.2: Yamaha DX7 modeling DSSI plugin
-media-plugins/kipi-plugins 5.9.1: Plugins for the KDE Image Plugin Interface
 media-plugins/ladspa-bs2b 0.9.1: LADSPA plugin for bs2b headphone filter
 media-plugins/libvisual-plugins 0.4.0-r3: collection of visualization plugins for use with the libvisual framework
 media-plugins/libvisual-projectm 2.1.0-r1: A libvisual graphical music visualization plugin similar to milkdrop

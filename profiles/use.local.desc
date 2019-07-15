@@ -2419,6 +2419,10 @@ kde-apps/kio-extras:man - Enable manpages kioslave
 kde-apps/kio-extras:phonon - Enable file audio preview plugin using media-libs/phonon
 kde-apps/kio-extras:sftp - Enable SFTP protocol support using net-libs/libssh
 kde-apps/kio-extras:taglib - Enable audio thumbnails via media-libs/taglib
+kde-apps/kipi-plugins:flashexport - Build the flash export plugin
+kde-apps/kipi-plugins:mediawiki - Build the mediawiki export plugin
+kde-apps/kipi-plugins:remotestorage - Build plugin for remote storage using network protocols such as FTP, SSH, SAMBA via kde-frameworks/kio
+kde-apps/kipi-plugins:vkontakte - Build plugin for vkontakte.ru
 kde-apps/kmag:keyboardfocus - Enable keyboard focus tracking
 kde-apps/knights:speech - Enable text-to-speech support
 kde-apps/konqueror:activities - Enable kactivities support
@@ -2475,6 +2479,7 @@ kde-apps/pimcommon:share - Enable support for a share menu using kde-frameworks/
 kde-apps/spectacle:kipi - Enable support for the KDE Image Plugin Interface
 kde-apps/spectacle:share - Enable support for a share menu using kde-frameworks/purpose
 kde-apps/step:qalculate - Enable the libqalculate library for unit conversion
+kde-apps/yakuake:absolute-position - Use kde-frameworks/kwayland for absolute window positioning in KWin
 kde-frameworks/frameworkintegration:appstream - Enable AppStream software metadata support
 kde-frameworks/kconfigwidgets:man - Build and install man pages
 kde-frameworks/kded:man - Build and install man pages
@@ -2509,7 +2514,6 @@ kde-misc/kio-gdrive:kaccounts - Use kde-apps/kaccounts-integration backend (defa
 kde-misc/kmarkdownwebview:webkit - Use dev-qt/qtwebkit instead of dev-qt/qtwebengine
 kde-misc/tellico:discid - Add support for reading disc IDs from audio CDs
 kde-misc/tellico:yaz - Add support for searching Z39.50 databases
-kde-misc/yakuake:absolute-position - Use kde-frameworks/kwayland for absolute window positioning in KWin
 kde-plasma/discover:firmware - Enable support for firmware upgrades using sys-apps/fwupd
 kde-plasma/kde-cli-tools:kdesu - Build graphical frontend for kde-frameworks/kdesu
 kde-plasma/kdeplasma-addons:share - Enable applet for quickly sharing data to a variety of sources
@@ -3197,10 +3201,6 @@ media-plugins/gst-plugins-vaapi:drm - Enable DRM renderer
 media-plugins/gst-plugins-vaapi:egl - Enable EGL support
 media-plugins/gst-plugins-vaapi:gles2 - Enable GLESv2 and GLESv3 support
 media-plugins/hexter:gtk2 - Enable x11-libs/gtk+:2 based GUI
-media-plugins/kipi-plugins:flashexport - Build the flash export plugin
-media-plugins/kipi-plugins:mediawiki - Build the mediawiki export plugin
-media-plugins/kipi-plugins:remotestorage - Build plugin for remote storage using network protocols such as FTP, SSH, SAMBA via kde-frameworks/kio
-media-plugins/kipi-plugins:vkontakte - Build plugin for vkontakte.ru
 media-plugins/mediastreamer-ilbc:20ms-frames - enable 20ms frame size (default is 30ms). Some VOIP providers such as Gizmo5 (aka Sipphone) require the codec to be compiled with the 30ms setting.
 media-plugins/vdr-epgsearch:conflictcheckonly - install the "conflictcheckonly" vdr-plugin
 media-plugins/vdr-epgsearch:epgsearchonly - install the "epgsearchonly" vdr-plugin
