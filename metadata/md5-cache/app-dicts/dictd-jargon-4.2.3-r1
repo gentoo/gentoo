@@ -3,9 +3,9 @@ DEPEND=>=app-text/dictd-1.5.5
 DESCRIPTION=Jargon lexicon
 EAPI=0
 HOMEPAGE=http://www.dict.org/
-KEYWORDS=x86 sparc ppc amd64 ppc64
+KEYWORDS=amd64 ppc ppc64 sparc x86
 LICENSE=GPL-2
 RDEPEND=>=app-text/dictd-1.5.5
 SLOT=0
 SRC_URI=ftp://ftp.dict.org/pub/dict/pre/jargon_4.2.3.tar.gz
-_md5_=ea5279587f6c650815f9813c031d6118
+_md5_=df031e7a1f57230ecc3bc949125f6848

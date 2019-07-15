@@ -4,10 +4,10 @@ DESCRIPTION=Metadot is a CMS with file, page and link management, and collaborat
 EAPI=0
 HOMEPAGE=http://www.metadot.com
 IUSE=vhosts
-KEYWORDS=~x86 ppc
+KEYWORDS=ppc ~x86
 LICENSE=GPL-2
 RDEPEND=>=dev-lang/perl-5.005 >=www-apache/mod_perl-2.0 dev-perl/DBI dev-perl/DBD-mysql dev-perl/Apache-DBI dev-perl/XML-RSS virtual/perl-Storable dev-perl/perl-ldap dev-perl/Log-Agent dev-perl/Mail-POP3Client dev-perl/IO-stringy dev-perl/MailTools dev-perl/MIME-tools dev-perl/Unicode-String dev-perl/Spreadsheet-WriteExcel dev-perl/Date-Calc dev-perl/AppConfig dev-perl/Image-Size dev-perl/Template-Toolkit virtual/perl-Time-HiRes dev-perl/Lingua-EN-NameParse dev-perl/Number-Format dev-perl/XML-Simple dev-perl/Text-CSV_XS dev-perl/Archive-Zip dev-perl/Date-Manip >=app-admin/webapp-config-1.50.15
 SLOT=6.1.6-r1
 SRC_URI=http://download.metadot.com/metadot6.1.6.tar.gz
 _eclasses_=webapp	16783e418aca3ffa461d68310bf7ab12
-_md5_=e8647327087e76f3478dd089f77042e9
+_md5_=907b3a64e2ed37ea577311619bf1a5a6

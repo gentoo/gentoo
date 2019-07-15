@@ -3,9 +3,9 @@ DEPEND=sys-devel/bison >=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.
 DESCRIPTION=networked mud that can be used for different types of collaborative software
 EAPI=6
 HOMEPAGE=https://sourceforge.net/projects/lambdamoo/
-KEYWORDS=~x86 ~sparc
+KEYWORDS=~sparc ~x86
 LICENSE=LambdaMOO GPL-2
 SLOT=0
 SRC_URI=mirror://sourceforge/lambdamoo/LambdaMOO-1.8.1.tar.gz
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
-_md5_=3aa54d5bd151d020c468eba7108b3f5f
+_md5_=d9b6253f74f59e8823ec590497c30514

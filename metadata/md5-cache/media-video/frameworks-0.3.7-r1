@@ -3,10 +3,10 @@ DEPEND=>=gnome-base/libglade-2 x11-libs/gtk+:2 virtual/pkgconfig >=app-portage/e
 DESCRIPTION=A small v4l frame capture utility especially suited for stop motion animation
 EAPI=6
 HOMEPAGE=http://frameworks.polycrystal.org
-KEYWORDS=~ppc ~x86 ~amd64
+KEYWORDS=~amd64 ~ppc ~x86
 LICENSE=GPL-2
 RDEPEND=>=gnome-base/libglade-2 x11-libs/gtk+:2
 SLOT=0
 SRC_URI=http://frameworks.polycrystal.org/release/frameworks-0.3.7.tar.gz
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
-_md5_=21efa1c2cb47add5ff3f56e5bed7977e
+_md5_=7a5ee5fc436c85d88d8232e7867bd495

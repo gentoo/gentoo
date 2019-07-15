@@ -3,10 +3,10 @@ DESCRIPTION=Displays the last new messages of a logfile
 EAPI=6
 HOMEPAGE=http://fetchlog.sourceforge.net/
 IUSE=snmp
-KEYWORDS=amd64 ppc x86 ~ppc64
+KEYWORDS=amd64 ppc ~ppc64 x86
 LICENSE=GPL-2
 RDEPEND=snmp? ( >=dev-perl/Net-SNMP-4.0.1-r2 >=net-analyzer/net-snmp-5.0.6 )
 SLOT=0
 SRC_URI=mirror://sourceforge/fetchlog/fetchlog-1.4.tar.gz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
-_md5_=c451d7c39d813017e169ade66414e539
+_md5_=aba279ffba7cfe87b5217e20ab910041

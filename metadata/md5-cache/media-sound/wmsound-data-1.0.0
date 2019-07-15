@@ -3,9 +3,9 @@ DEPEND=>=x11-wm/windowmaker-0.80.2-r2
 DESCRIPTION=A bunch of sounds for WindowMaker Sound Server
 EAPI=0
 HOMEPAGE=http://largo.windowmaker.org/
-KEYWORDS=x86 ~ppc amd64 sparc
+KEYWORDS=amd64 ~ppc sparc x86
 LICENSE=GPL-2
 RDEPEND=>=x11-wm/windowmaker-0.80.2-r2
 SLOT=0
 SRC_URI=http://largo.windowmaker.org/files/worms2sounds.tar.gz http://largo.windowmaker.org/files/wmsdefault.tar.gz
-_md5_=ea422227d4d00b70f77bf92d8ccac772
+_md5_=7d710b1b8c9ee8c401531cd816b9d378
