@@ -1,4 +1,4 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
@@ -10,7 +10,7 @@ HOMEPAGE="http://www.tc.umn.edu/~erick205/Projects/"
 SRC_URI="http://www.tc.umn.edu/~erick205/Projects/${PN}/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~amd64 ~ppc"
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="debug"
 
 src_prepare() {

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=0
@@ -22,7 +22,7 @@ SRC_URI="http://www.zope.org/Products/Zope/${ZOPE_PV}/${ZOPE_P}.tgz
 		 mirror://gentoo/PCGI-HOWTO-${DOCDATE}.html.bz2"
 LICENSE="ZPL"
 SLOT="0"
-KEYWORDS="~x86 ~ppc"
+KEYWORDS="~ppc ~x86"
 IUSE=""
 DEPEND="${DEPEND}"
 RDEPEND="${RDEPEND}

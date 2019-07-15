@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=0
@@ -8,7 +8,7 @@ HOMEPAGE="http://www.cigital.com/its4/"
 SRC_URI="https://dev.gentoo.org/~robbat2/distfiles/${P}.tgz"
 LICENSE="ITS4"
 SLOT="0"
-KEYWORDS="x86 ppc"
+KEYWORDS="ppc x86"
 IUSE=""
 DEPEND="sys-devel/gcc"
 #RDEPEND=""

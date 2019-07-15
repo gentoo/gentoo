@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=0
@@ -11,7 +11,7 @@ HOMEPAGE="http://www.stratego-language.org"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="x86 sparc ppc alpha ia64"
+KEYWORDS="alpha ia64 ppc sparc x86"
 IUSE=""
 
 DEPEND=""
