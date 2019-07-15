@@ -1,1 +1,2 @@
 move dev-python/CoverageTestRunner dev-python/coverage-test-runner
+move media-plugins/kipi-plugins kde-apps/kipi-plugins

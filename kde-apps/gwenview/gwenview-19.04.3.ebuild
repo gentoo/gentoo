@@ -68,7 +68,7 @@ DEPEND="${COMMON_DEPEND}
 RDEPEND="${COMMON_DEPEND}
 	$(add_frameworks_dep kimageformats)
 	$(add_qt_dep qtimageformats)
-	kipi? ( media-plugins/kipi-plugins:5 )
+	kipi? ( kde-apps/kipi-plugins:5 )
 "
 
 src_prepare() {
