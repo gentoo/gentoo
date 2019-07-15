@@ -212,7 +212,7 @@ pkg_postinst() {
 	local gk_config="${EROOT%/}/etc/genkernel.conf"
 	if [[ -f "${gk_config}" ]] ; then
 		if grep -q -E "^SSH=[\"\']?yes" "${gk_config}" 2>/dev/null ; then
-			if ! grep -q dosshd "${gk_config}" 2>/dev/null ; then
+			if ! grep -q dosshd /proc/cmdline 2>/dev/null ; then
 				ewarn ""
 				ewarn "IMPORTANT: SSH is currently enabled in your genkernel config"
 				ewarn "file (${gk_config}). However, 'dosshd' is missing from current"
