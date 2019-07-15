@@ -1,0 +1,111 @@
+diff --git a/plugins/plugin_python.c b/plugins/plugin_python.c
+index e725ad8..196b825 100644
+--- a/plugins/plugin_python.c
++++ b/plugins/plugin_python.c
+@@ -81,7 +81,7 @@ int TEP_PLUGIN_LOADER(struct tep_handle *pevent)
+ 	} else
+ 		Py_DECREF(res);
+ 
+-	str = PyString_FromString("pevent");
++	str = PyUnicode_FromString("pevent");
+ 	if (!str)
+ 		return -ENOMEM;
+ 
+diff --git a/python/ctracecmd.i b/python/ctracecmd.i
+index 65a3d51..031e462 100644
+--- a/python/ctracecmd.i
++++ b/python/ctracecmd.i
+@@ -16,6 +16,7 @@
+ %{
+ #include "trace-cmd.h"
+ #include "event-utils.h"
++#include <Python.h>
+ %}
+ 
+ 
+@@ -108,7 +109,7 @@ static PyObject *py_field_get_stack(struct tep_handle *pevent,
+ 		    ((int)addr == -1))
+ 			break;
+ 		func = tep_find_function(event->tep, addr);
+-		if (PyList_Append(list, PyString_FromString(func))) {
++		if (PyList_Append(list, PyUnicode_FromString(func))) {
+ 			Py_DECREF(list);
+ 			return NULL;
+ 		}
+@@ -137,10 +138,10 @@ static PyObject *py_field_get_data(struct tep_format_field *f, struct tep_record
+ 		offset = val & 0xffff;
+ 		len = val >> 16;
+ 
+-		return PyBuffer_FromMemory((char *)r->data + offset, len);
++		return PyMemoryView_FromMemory((char *)r->data + offset, len, PyBUF_READ);
+ 	}
+ 
+-	return PyBuffer_FromMemory((char *)r->data + f->offset, f->size);
++	return PyMemoryView_FromMemory((char *)r->data + f->offset, f->size, PyBUF_READ);
+ }
+ 
+ static PyObject *py_field_get_str(struct tep_format_field *f, struct tep_record *r)
+@@ -162,10 +163,10 @@ static PyObject *py_field_get_str(struct tep_format_field *f, struct tep_record
+ 		 */
+ 		offset = val & 0xffff;
+ 
+-		return PyString_FromString((char *)r->data + offset);
++		return PyUnicode_FromString((char *)r->data + offset);
+ 	}
+ 
+-	return PyString_FromStringAndSize((char *)r->data + f->offset,
++	return PyUnicode_FromStringAndSize((char *)r->data + f->offset,
+ 				strnlen((char *)r->data + f->offset, f->size));
+ }
+ 
+@@ -177,7 +178,7 @@ static PyObject *py_format_get_keys(struct tep_event *ef)
+ 	list = PyList_New(0);
+ 
+ 	for (f = ef->format.fields; f; f = f->next) {
+-		if (PyList_Append(list, PyString_FromString(f->name))) {
++		if (PyList_Append(list, PyUnicode_FromString(f->name))) {
+ 			Py_DECREF(list);
+ 			return NULL;
+ 		}
+@@ -210,14 +211,14 @@ static int python_callback(struct trace_seq *s,
+ 	result = PyEval_CallObject(context, arglist);
+ 	Py_XDECREF(arglist);
+ 	if (result && result != Py_None) {
+-		if (!PyInt_Check(result)) {
++		if (!PyLong_Check(result)) {
+ 			PyErr_SetString(PyExc_TypeError,
+ 					"callback must return int");
+ 			PyErr_Print();
+ 			Py_XDECREF(result);
+ 			return 0;
+ 		}
+-		r = PyInt_AS_LONG(result);
++		r = PyLong_AsLong(result);
+ 	} else if (result == Py_None)
+ 		r = 0;
+ 	else
+diff --git a/python/ctracecmdgui.i b/python/ctracecmdgui.i
+index 1dcdab0..8ca38f7 100644
+--- a/python/ctracecmdgui.i
++++ b/python/ctracecmdgui.i
+@@ -7,6 +7,7 @@
+ #include <pygobject.h>
+ #include <pyglib.h>
+ #include <Python.h>
++#include <memoryobject.h>
+ 
+ extern GtkTreeModel *trace_view_store_as_gtk_tree_model(struct trace_view_store *store);
+ 
+@@ -37,10 +38,10 @@ pytype_from_gtype(GType gtype)
+ 
+ /* help swig cope with g* types */
+ %typemap(in) gint {
+-    $1 = PyInt_AsLong($input);
++    $1 = PyLong_AsLong($input);
+ }
+ %typemap(out) gint {
+-    $result = PyInt_FromLong($1);
++    $result = PyLong_FromLong($1);
+ }
+ %typemap(in) guint {
+     $1 = PyLong_AsUnsignedLong($input);
