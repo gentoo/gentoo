@@ -2405,8 +2405,9 @@ kde-apps/kdesdk-meta:mercurial - Enable support for Mercurial VCS in kde-apps/do
 kde-apps/kdesdk-meta:subversion - Enable support for Apache Subversion VCS in kde-apps/dolphin via kde-apps/dolphin-plugins-subversion
 kde-apps/kdeutils-meta:7zip - Install app-arch/p7zip for 7zip archive support in kde-apps/ark
 kde-apps/kdeutils-meta:floppy - Install kde-apps/kfloppy to format and create DOS or ext2fs filesystems in a floppy.
+kde-apps/kdeutils-meta:gpg - Install kde-apps/kgpg which depends on kde-apps/akonadi
 kde-apps/kdeutils-meta:lrz - Install app-arch/lrzip for LRZ archive support in kde-apps/ark
-kde-apps/kdeutils-meta:rar - Install app-arch/unar or app-arch/unrar for RAR archive support in kde-apps/ark
+kde-apps/kdeutils-meta:rar - Install one of app-arch/rar, app-arch/unrar or app-arch/unar for RAR archive support in kde-apps/ark
 kde-apps/keditbookmarks:man - Build and install man pages
 kde-apps/kget:bittorrent - Enable bittorrent transfer plugin through net-libs/libktorrent
 kde-apps/kget:gpg - Enable signature verification by GpgME++ via app-crypt/gpgme
