@@ -7,6 +7,7 @@ extra_started_commands="reload"
 group=${group:-${RC_SVCNAME}}
 user=${user:-${RC_SVCNAME}}
 pidfile=${pidfile:-"/run/${RC_SVCNAME}.pid"}
+rc_ulimit=${rc_ulimit-"-n 65536"}
 command="/usr/bin/${RC_SVCNAME}"
 command_args="agent ${command_args:-config-dir=/etc/consul.d}"
 command_background="true"
