@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: subversion.eclass
@@ -6,7 +6,7 @@
 # Akinori Hattori <hattya@gentoo.org>
 # @AUTHOR:
 # Original Author: Akinori Hattori <hattya@gentoo.org>
-# @SUPPORTED_EAPIS: 0 1 2 3 4 5 6 7
+# @SUPPORTED_EAPIS: 0 1 2 3 4 5 6
 # @BLURB: The subversion eclass is written to fetch software sources from subversion repositories
 # @DESCRIPTION:
 # The subversion eclass provides functions to fetch, patch and bootstrap
