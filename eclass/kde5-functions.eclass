@@ -53,7 +53,7 @@ case ${CATEGORY} in
 			: ${PLASMA_MINIMAL:=5.14.5}
 			: ${QT_MINIMAL:=5.11.1}
 		fi
-		: ${FRAMEWORKS_MINIMAL:=5.60.0}
+		[[ ${PV} = 19.04.3 ]] && : ${FRAMEWORKS_MINIMAL:=5.60.0}
 		;;
 esac
 
