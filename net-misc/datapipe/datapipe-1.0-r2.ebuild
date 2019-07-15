@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ SRC_URI="ftp://ftp.distributed.net/pub/dcti/unsupported/${P}.tar.gz http://http.
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~arm ~amd64"
+KEYWORDS="~amd64 ~arm ~ppc ~x86"
 
 src_compile() {
 	$(tc-getCC) ${CFLAGS} ${LDFLAGS} -o datapipe datapipe.c
