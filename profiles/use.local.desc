@@ -3100,8 +3100,6 @@ media-libs/opencv:vtk - Build new 3D visualization module viz based on sci-libs/
 media-libs/openh264:plugin - Install the Gecko Media Plugin (GMP) for use with Mozilla packages
 media-libs/openh264:utils - Install the CLI encoder and decoder utilities
 media-libs/openimageio:color-management - Enable color management via media-libs/opencolorio
-media-libs/openimageio:cpu_flags_x86_avx512f - SIMD Optimization
-media-libs/openimageio:cpu_flags_x86_f16c - SIMD Optimization
 media-libs/openimageio:field3d - Enable f3d file (write) support via media-libs/Field3D
 media-libs/openimageio:opencv - Enable OpenCV support via media-libs/opencv
 media-libs/openimageio:ptex - Enable Ptex texture mapping system file support via media-libs/ptex
@@ -3113,8 +3111,6 @@ media-libs/opus:custom-modes - Enable non-Opus modes, e.g. 44.1 kHz and 2^n fram
 media-libs/opusfile:fixed-point - Enable fixed-point arithmetic operations
 media-libs/opusfile:float - Enable floating point arithmetic operations
 media-libs/opusfile:http - Enable http connections
-media-libs/osl:cpu_flags_x86_avx512f - SIMD Optimization
-media-libs/osl:cpu_flags_x86_f16c - SIMD Optimization
 media-libs/osl:partio - Use media-libs/partio
 media-libs/osl:qt5 - Build the osltoy binary
 media-libs/phonon:designer - Install plugin for dev-qt/designer
