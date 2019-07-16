@@ -1,0 +1,30 @@
+--- a/tools/tracetop/Makefile.am
++++ b/tools/tracetop/Makefile.am
+@@ -6,6 +6,6 @@
+ include ../Makefile.tools
+ 
+ tracetop_SOURCES = tracetop.cc
+-tracetop_LDADD = -lncurses 
++tracetop_LDADD = @ncurses_LIBS@
+ tracetop_CPPFLAGS = -fno-strict-aliasing $(AM_CFLAGS)
+ endif
+--- a/configure.in
++++ b/configure.in
+@@ -79,6 +79,8 @@
+ AC_CHECK_PROGS(YACC, 'bison -y' byacc yacc) 
+ AM_PROG_LEX
+ 
++PKG_PROG_PKG_CONFIG
++
+ # All our source files for function replacements are in lib/
+ AC_CONFIG_LIBOBJ_DIR(lib)
+ 
+@@ -645,6 +663,8 @@
+ 	fi
+ fi
+ 
++PKG_CHECK_MODULES(ncurses,ncurses,have_ncurses=yes,have_ncurses=no)
++
+ AC_ARG_WITH([ncurses],
+ 	AC_HELP_STRING([--with-ncurses], [build tracetop (requires ncurses)]))
+ 
