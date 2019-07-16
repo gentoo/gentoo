@@ -1,9 +1,0 @@
---- a/requirements.txt
-+++ b/requirements.txt
-@@ -6,5 +6,5 @@
- raven>=5.23.0
- psutil>=3.0.0
- zipstream>=1.1.4
--typing>=3.5.3.0 # Otherwise yarl fails with python 3.4
-+typing>=3.5.3.0;python_version<"3.5" # Otherwise yarl fails with python 3.4
- prompt-toolkit
