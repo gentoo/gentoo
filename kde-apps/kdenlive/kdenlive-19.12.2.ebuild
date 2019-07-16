@@ -66,6 +66,8 @@ RDEPEND="${DEPEND}
 	virtual/ffmpeg[encode,sdl,X]
 "
 
+RESTRICT+=" test" # segfaults, bug 684132
+
 src_configure() {
 	local mycmakeargs=(
 		$(cmake_use_find_package freesound Qt5WebKitWidgets)
