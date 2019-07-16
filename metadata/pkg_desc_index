@@ -3213,7 +3213,7 @@ dev-libs/univalue 1.0.2: C++ universal value object and JSON library
 dev-libs/uriparser 0.9.1: Uriparser is a strictly RFC 3986 compliant URI parsing library in C
 dev-libs/userspace-rcu 0.9.1 0.10.1: userspace RCU (read-copy-update) library
 dev-libs/ustr 1.0.4-r5 1.0.4-r8: Low-overhead managed string library for C
-dev-libs/utfcpp 2.3.4: A portable and lightweight generic library for handling UTF-8 strings
+dev-libs/utfcpp 2.3.4: Portable and lightweight generic library for handling UTF-8 strings
 dev-libs/uthash 2.0.2: An easy-to-use hash implementation for C programmers
 dev-libs/uulib 0.5.20-r1: Library that supports Base64 (MIME), uuencode, xxencode and binhex coding
 dev-libs/vala-common 0.40.14 0.42.7: Build infrastructure for packages that use Vala
