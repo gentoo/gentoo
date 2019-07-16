@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Thomas Deutschmann <whissi@gentoo.org> (2018-10-23)
@@ -25,7 +25,6 @@ dev-lang/coffee-script
 dev-python/bokeh
 dev-python/blaze
 dev-ruby/autoprefixer-rails
-=dev-ruby/capybara-3.20*
 dev-ruby/coffee-rails
 dev-ruby/coffee-script
 dev-ruby/execjs
