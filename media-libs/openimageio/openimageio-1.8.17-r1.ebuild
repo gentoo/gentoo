@@ -78,6 +78,11 @@ pkg_setup() {
 	use python && python-single-r1_pkg_setup
 }
 
+src_prepare() {
+	cmake-utils_src_prepare
+	cmake_comment_add_subdirectory src/fonts
+}
+
 src_configure() {
 	# Build with SIMD support
 	local cpufeature
