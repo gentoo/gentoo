@@ -3102,6 +3102,7 @@ media-libs/opencv:vtk - Build new 3D visualization module viz based on sci-libs/
 media-libs/openh264:plugin - Install the Gecko Media Plugin (GMP) for use with Mozilla packages
 media-libs/openh264:utils - Install the CLI encoder and decoder utilities
 media-libs/openimageio:color-management - Enable color management via media-libs/opencolorio
+media-libs/openimageio:dicom - Enable DICOM medical image file support via sci-libs/dcmtk
 media-libs/openimageio:field3d - Enable f3d file (write) support via media-libs/Field3D
 media-libs/openimageio:opencv - Enable OpenCV support via media-libs/opencv
 media-libs/openimageio:ptex - Enable Ptex texture mapping system file support via media-libs/ptex
