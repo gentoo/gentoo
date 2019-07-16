@@ -30,8 +30,6 @@ src_install() {
 
 	einstalldocs
 
-	pushd "src/${EGO_PN}" || die
 	insinto /usr/share/zsh/site-functions
-	doins contrib/zsh-completion/_packer
-	popd || die
+	doins src/${EGO_PN}/contrib/zsh-completion/_packer
 }
