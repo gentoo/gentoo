@@ -1718,7 +1718,6 @@ dev-libs/openssl-compat:sslv3 - Support for the old/insecure SSLv3 protocol -- n
 dev-libs/openssl-compat:tls-heartbeat - Enable the Heartbeat Extension in TLS and DTLS
 dev-libs/pkcs11-helper:nss - Enable NSS crypto engine
 dev-libs/poco:7z - Add Support for the 7z archive format
-dev-libs/poco:apache - Enable support to write Apache modules using POCO
 dev-libs/poco:cppparser - Build and install a minimal C++ parser
 dev-libs/poco:crypto - Encryption and digital signing classes
 dev-libs/poco:data - Database abstraction layer to easily send/retrieve data to/from various databases
