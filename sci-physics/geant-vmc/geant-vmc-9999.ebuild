@@ -31,6 +31,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )"
 RESTRICT="
+	!examples? ( test )
 	!geant3? ( test )
 	!g4root? ( test )
 	!mtroot? ( test )
@@ -77,8 +78,8 @@ src_test() {
 	# see e.g. https://sft.its.cern.ch/jira/browse/ROOT-8146 .
 	addwrite /dev/random
 	cd examples || die
-	./test_suite.sh --g3=off --builddir="${BUILD_DIR}" || die
-	./test_suite_exe.sh --g3=off --builddir="${BUILD_DIR}" || die
+	./test_suite.sh --debug --g3=off --garfield=off --builddir="${BUILD_DIR}" || die
+	./test_suite_exe.sh -debug --g3=off --garfield=off --builddir="${BUILD_DIR}" || die
 }
 
 src_install() {
