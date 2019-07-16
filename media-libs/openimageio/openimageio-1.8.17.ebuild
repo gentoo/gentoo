@@ -25,7 +25,11 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RESTRICT="test" #431412
 
-RDEPEND=">=dev-libs/boost-1.62:=
+BDEPEND="
+	doc? ( app-doc/doxygen[latex] )
+"
+RDEPEND="
+	>=dev-libs/boost-1.62:=
 	dev-libs/pugixml:=
 	>=media-libs/ilmbase-2.2.0-r1:=
 	media-libs/libpng:0=
@@ -41,9 +45,9 @@ RDEPEND=">=dev-libs/boost-1.62:=
 	jpeg2k? ( >=media-libs/openjpeg-1.5:0= )
 	opencv? ( media-libs/opencv:= )
 	opengl? (
+		media-libs/glew:=
 		virtual/glu
 		virtual/opengl
-		media-libs/glew:=
 	)
 	ptex? ( media-libs/ptex:= )
 	python? (
@@ -61,9 +65,9 @@ RDEPEND=">=dev-libs/boost-1.62:=
 		!libressl? ( dev-libs/openssl:0= )
 		libressl? ( dev-libs/libressl:0= )
 	)
-	truetype? ( media-libs/freetype:2= )"
-DEPEND="${RDEPEND}
-	doc? ( app-doc/doxygen[latex] )"
+	truetype? ( media-libs/freetype:2= )
+"
+DEPEND="${RDEPEND}"
 
 DOCS=( CHANGES.md CREDITS.md README.md src/doc/${PN}.pdf )
 
@@ -85,27 +89,26 @@ src_configure() {
 	[[ -z ${mysimd} ]] && mysimd=("0")
 
 	local mycmakeargs=(
-		-DCMAKE_INSTALL_DOCDIR="share/doc/${PF}"
 		-DINSTALL_DOCS=$(usex doc)
 		-DOIIO_BUILD_TESTS=OFF # as they are RESTRICTed
 		-DSTOP_ON_WARNING=OFF
 		-DUSE_EXTERNAL_PUGIXML=ON
-		-DUSE_FFMPEG=$(usex ffmpeg)
-		-DUSE_FIELD3D=$(usex field3d)
-		-DUSE_FREETYPE=$(usex truetype)
-		-DUSE_GIF=$(usex gif)
 		-DUSE_JPEGTURBO=ON
-		-DUSE_LIBRAW=$(usex raw)
 		-DUSE_NUKE=NO # Missing in Gentoo
 		-DUSE_NUKE=OFF
 		-DUSE_OCIO=$(usex color-management)
+		-DUSE_FFMPEG=$(usex ffmpeg)
+		-DUSE_FIELD3D=$(usex field3d)
+		-DUSE_GIF=$(usex gif)
+		-DUSE_OPENJPEG=$(usex jpeg2k)
 		-DUSE_OPENCV=$(usex opencv)
 		-DUSE_OPENGL=$(usex opengl)
-		-DUSE_OPENJPEG=$(usex jpeg2k)
-		-DUSE_OPENSSL=$(usex ssl)
 		-DUSE_PTEX=$(usex ptex)
 		-DUSE_PYTHON=$(usex python)
 		-DUSE_QT=$(usex qt5)
+		-DUSE_LIBRAW=$(usex raw)
+		-DUSE_OPENSSL=$(usex ssl)
+		-DUSE_FREETYPE=$(usex truetype)
 		-DUSE_SIMD=$(local IFS=','; echo "${mysimd[*]}")
 	)
 
