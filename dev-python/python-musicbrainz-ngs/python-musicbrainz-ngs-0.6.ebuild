@@ -37,7 +37,7 @@ python_compile_all() {
 }
 
 python_test() {
-	esetup.py test
+	esetup.py test --verbosity=2
 }
 
 python_install_all() {
