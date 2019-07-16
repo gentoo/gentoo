@@ -4,6 +4,10 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2019-07-16)
+# sci-libs/dcmtk is not stable
+media-libs/openimageio dicom
+
 # Bernd Waibel <waebbl@gmail.com> (2019-05-22)
 # Marked experimental, needs build and runtime testing. Due to non-
 # available licenses for arnold and maya I can not test these addons.
