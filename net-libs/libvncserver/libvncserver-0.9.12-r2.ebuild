@@ -45,6 +45,7 @@ DOCS=( AUTHORS ChangeLog NEWS README.md TODO )
 PATCHES=(
 	"${FILESDIR}"/${P}-cmake-libdir.patch
 	"${FILESDIR}"/${P}-libgcrypt.patch
+	"${FILESDIR}"/${P}-sparc-unaligned.patch
 )
 
 src_configure() {
