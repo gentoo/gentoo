@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 LICENSE="GPL-2+"
 SLOT="5"
 KEYWORDS="amd64 x86"
-IUSE="acoustid flac kde mp3 mp4 +taglib vorbis"
+IUSE="acoustid flac kde mp3 mp4 +mpris +taglib vorbis"
 
 REQUIRED_USE="flac? ( vorbis )"
 
@@ -21,7 +21,6 @@ BDEPEND="
 "
 DEPEND="
 	dev-qt/qtcore:5
-	dev-qt/qtdbus:5
 	dev-qt/qtdeclarative:5
 	dev-qt/qtgui:5
 	dev-qt/qtmultimedia:5
@@ -46,6 +45,7 @@ DEPEND="
 	)
 	mp3? ( media-libs/id3lib )
 	mp4? ( media-libs/libmp4v2:0 )
+	mpris? ( dev-qt/qtdbus:5 )
 	taglib? ( >=media-libs/taglib-1.9.1 )
 	vorbis? (
 		media-libs/libogg
@@ -66,6 +66,7 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=(
 		-DWITH_CHROMAPRINT=$(usex acoustid)
+		-DWITH_DBUS=$(usex mpris)
 		-DWITH_FLAC=$(usex flac)
 		-DWITH_ID3LIB=$(usex mp3)
 		-DWITH_MP4V2=$(usex mp4)
