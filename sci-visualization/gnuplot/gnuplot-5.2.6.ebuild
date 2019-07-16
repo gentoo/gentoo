@@ -158,10 +158,10 @@ src_compile() {
 	if use doc; then
 		# Avoid sandbox violation in epstopdf/ghostscript
 		addpredict /var/cache/fontconfig
-		if use cairo; then
+		if use cairo && use gd; then
 			emake -C docs pdf
 		else
-			ewarn "Cannot build figures unless cairo is enabled."
+			ewarn "Cannot build figures unless cairo and gd are enabled."
 			ewarn "Building documentation without figures."
 			emake -C docs pdf_nofig
 			mv docs/nofigures.pdf docs/gnuplot.pdf || die
