@@ -31,7 +31,7 @@ RDEPEND="${DEPEND}
 	!<x11-terms/rxvt-unicode-9.06-r3
 	!<x11-terms/st-0.6-r1"
 
-S=${WORKDIR}/${MY_P}
+S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-5.7-nongnu.patch"
@@ -250,7 +250,12 @@ multilib_src_install() {
 	fi
 
 	# Build fails to create this ...
-	dosym ../share/terminfo /usr/$(get_libdir)/terminfo
+	# -FIXME-
+	# Ugly hackaround for riscv having two parts libdir (#689240)
+	# Replace this hack with an official solution once we have one...
+	# -FIXME-
+	dosym $(sed 's@[^/]\+@..@g' <<< $(get_libdir))/share/terminfo \
+		/usr/$(get_libdir)/terminfo
 }
 
 multilib_src_install_all() {

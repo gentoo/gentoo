@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_{5,6}} )
+PYTHON_COMPAT=( python2_7 python3_{5,6} )
 inherit cmake-utils python-single-r1
 
 DESCRIPTION="A library for reading and writing images"
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/OpenImageIO/oiio/archive/Release-${PV}.tar.gz -> ${P
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~ppc64 ~x86"
+KEYWORDS="~amd64 ~ppc64 ~x86"
 
 X86_CPU_FEATURES=(
 	sse2:sse2 sse3:sse3 ssse3:ssse3 sse4_1:sse4.1 sse4_2:sse4.2
@@ -20,10 +20,10 @@ X86_CPU_FEATURES=(
 )
 CPU_FEATURES=( ${X86_CPU_FEATURES[@]/#/cpu_flags_x86_} )
 
-IUSE="color-management doc ffmpeg field3d gif jpeg2k libressl opencv opengl ptex python qt5 raw ssl +truetype ${CPU_FEATURES[@]%:*}"
+IUSE="color-management dicom doc ffmpeg field3d gif jpeg2k libressl opencv opengl ptex python qt5 raw ssl +truetype ${CPU_FEATURES[@]%:*}"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
-RESTRICT="test" #431412
+RESTRICT="test" # bug 431412
 
 BDEPEND="
 	doc? ( app-doc/doxygen[latex] )
@@ -39,6 +39,7 @@ RDEPEND="
 	sys-libs/zlib:=
 	virtual/jpeg:0
 	color-management? ( media-libs/opencolorio:= )
+	dicom? ( sci-libs/dcmtk )
 	ffmpeg? ( media-video/ffmpeg:= )
 	field3d? ( media-libs/Field3D:= )
 	gif? ( media-libs/giflib:0= )
@@ -71,10 +72,17 @@ DEPEND="${RDEPEND}"
 
 DOCS=( CHANGES.md CREDITS.md README.md src/doc/${PN}.pdf )
 
+PATCHES=( "${FILESDIR}/${P}-boostpython.patch" )
+
 S="${WORKDIR}/oiio-Release-${PV}"
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
+}
+
+src_prepare() {
+	cmake-utils_src_prepare
+	cmake_comment_add_subdirectory src/fonts
 }
 
 src_configure() {
@@ -97,6 +105,7 @@ src_configure() {
 		-DUSE_NUKE=NO # Missing in Gentoo
 		-DUSE_NUKE=OFF
 		-DUSE_OCIO=$(usex color-management)
+		-DUSE_DICOM=$(usex dicom)
 		-DUSE_FFMPEG=$(usex ffmpeg)
 		-DUSE_FIELD3D=$(usex field3d)
 		-DUSE_GIF=$(usex gif)
