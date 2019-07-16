@@ -1,8 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils toolchain-funcs flag-o-matic user
+inherit eutils toolchain-funcs flag-o-matic
 
 MY_PV=${PV//.}
 DESCRIPTION="The ultimate old-school single player dungeon exploration game"
@@ -14,7 +14,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~hppa ~x86 ~x86-fbsd"
 IUSE="experimental X"
 
-RDEPEND="sys-libs/ncurses:0=
+RDEPEND="acct-group/gamestat
+	sys-libs/ncurses:0=
 	X? (
 		x11-libs/libXaw
 		x11-libs/libXpm
@@ -35,8 +36,6 @@ NETHACK_GROUP="gamestat"
 
 pkg_setup() {
 	HACKDIR="/usr/$(get_libdir)/${PN}"
-
-	enewgroup gamestat 36
 }
 
 src_prepare() {

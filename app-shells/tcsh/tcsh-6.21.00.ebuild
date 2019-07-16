@@ -32,6 +32,7 @@ CONFDIR=${WORKDIR}/tcsh-gentoo-patches-r${CONFVER}
 PATCHES=(
 	"${FILESDIR}"/${PN}-6.20.00-debian-dircolors.patch # bug #120792
 	"${FILESDIR}"/${PN}-6.18.01-aix.patch
+	"${FILESDIR}"/${PN}-6.21.00-no-nls.patch
 )
 
 src_prepare() {

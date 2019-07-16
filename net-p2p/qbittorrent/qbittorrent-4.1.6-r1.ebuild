@@ -1,9 +1,9 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit gnome2-utils xdg-utils
+inherit xdg-utils
 
 DESCRIPTION="BitTorrent client in C++ and Qt"
 HOMEPAGE="https://www.qbittorrent.org
@@ -23,6 +23,10 @@ SLOT="0"
 IUSE="+dbus debug webui +X"
 REQUIRED_USE="dbus? ( X )"
 
+BDEPEND="
+	dev-qt/linguist-tools:5
+	virtual/pkgconfig
+"
 RDEPEND="
 	>=dev-libs/boost-1.62.0-r1:=
 	dev-qt/qtcore:5
@@ -38,18 +42,18 @@ RDEPEND="
 		dev-qt/qtsvg:5
 		dev-qt/qtwidgets:5
 	)"
-DEPEND="${RDEPEND}
-	dev-qt/linguist-tools:5
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
+
+PATCHES=( "${FILESDIR}/${P}-no-screenblank-on-close-to-systray.patch" )
 
 DOCS=( AUTHORS Changelog CONTRIBUTING.md README.md TODO )
 
 src_configure() {
 	econf --with-qtsingleapplication=system \
-	$(use_enable dbus qt-dbus) \
-	$(use_enable debug) \
-	$(use_enable webui) \
-	$(use_enable X gui)
+		$(use_enable dbus qt-dbus) \
+		$(use_enable debug) \
+		$(use_enable webui) \
+		$(use_enable X gui)
 }
 
 src_install() {
@@ -58,11 +62,11 @@ src_install() {
 }
 
 pkg_postinst() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 	xdg_desktop_database_update
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 	xdg_desktop_database_update
 }
