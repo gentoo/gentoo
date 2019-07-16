@@ -8,7 +8,7 @@ inherit flag-o-matic toolchain-funcs multilib-minimal preserve-libs
 MY_PV="${PV:0:3}"
 MY_P="${PN}-${MY_PV}"
 DESCRIPTION="console display library"
-HOMEPAGE="https://www.gnu.org/software/ncurses/ http://dickey.his.com/ncurses/"
+HOMEPAGE="https://www.gnu.org/software/ncurses/ https://invisible-island.net/ncurses/"
 SRC_URI="mirror://gnu/ncurses/${MY_P}.tar.gz"
 
 if [[ "${PV}" == *_p* ]] ; then
