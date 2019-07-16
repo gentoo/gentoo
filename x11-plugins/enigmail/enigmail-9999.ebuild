@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -44,14 +44,19 @@ DEPEND="${RDEPEND}
 	dev-lang/perl
 	"
 
+PATCHES=( "${FILESDIR}"/enigmail-no_pEp_auto_download.patch )
+
 src_compile() {
+	# Required or parallel make fails
+	emake -C stdlib createlib
+
 	emake ipc public ui package lang stdlib
 	emake xpi
 
 }
 
 src_install() {
-	local emid=$(sed -n '/<em:id>/!d; s/.*\({.*}\).*/\1/; p; q' build/dist/install.rdf)
+	local emid=$(sed -n '/"id":/!d; s/.*\({.*}\).*/\1/; p; q' build/dist/manifest.json)
 	[[ -n ${emid} ]] || die "Could not scrape EM:ID from install.rdf"
 
 	mv build/enigmail*.xpi build/"${emid}.xpi" || die 'Could not rename XPI to match EM:ID'
