@@ -24,6 +24,6 @@ DEPEND="
 	)
 "
 src_test() {
-	perl_rm_files t/release-pod-{syntax,coverge}.t
+	perl_rm_files t/release-pod-{syntax,coverage}.t
 	perl-module_src_test
 }
