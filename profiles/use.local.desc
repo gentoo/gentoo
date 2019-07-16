@@ -6045,31 +6045,6 @@ www-misc/shellinabox:pam - Enable PAM support.
 www-misc/vdradmin-am:vdr - Support for media-video/vdr. Disable this if the VDR you want to control runs at a remote machine.
 www-plugins/freshplayerplugin:gles2 - Use system GLESv2 libraries instead of ANGLE for shader translation
 www-plugins/freshplayerplugin:v4l - Use libv4l2 for colorspace conversion
-www-servers/apache:apache2_modules_access_compat - Group authorizations based on host (name or IP address). Available as a compatibility module with previous versions.
-www-servers/apache:apache2_modules_authn_core - Provides core authentication capabilities common to all authentication providers (functionality provided by authn_alias in previous versions).
-www-servers/apache:apache2_modules_authz_core - Provides core authorization capabilities to various authorization/authorization modules, such as authn_file and authz_user.
-www-servers/apache:apache2_modules_authz_dbd - Provides authorization capabilities via SQL database so that authenticated users can be allowed or denied access to portions of the web site by group membership.
-www-servers/apache:apache2_modules_brotli - Enable brotli compression support
-www-servers/apache:apache2_modules_cache_disk - Disk based storage module for the HTTP caching filter (similar to mem_cache in previous versions).
-www-servers/apache:apache2_modules_cache_socache - Shared object cache (socache) based storage module for the HTTP caching filter.
-www-servers/apache:apache2_modules_http2 - Enable http2/alpn module
-www-servers/apache:apache2_modules_lbmethod_bybusyness - Pending request counting load balancer scheduler algorithm for proxy_balancer.
-www-servers/apache:apache2_modules_lbmethod_byrequests - Request counting load balancer scheduler algorithm for proxy_balancer.
-www-servers/apache:apache2_modules_lbmethod_bytraffic - Weighted traffic counting load balancer scheduler algorithm for proxy_balancer.
-www-servers/apache:apache2_modules_lbmethod_heartbeat - Heartbeat traffic counting load balancer scheduler algorithm for proxy_balancer.
-www-servers/apache:apache2_modules_macro - Macros for the Apache config file.
-www-servers/apache:apache2_modules_md - Managing domains across virtual hosts, certificate provisioning via the ACME protocol.
-www-servers/apache:apache2_modules_proxy_fcgi - FCGI support module for mod_proxy.
-www-servers/apache:apache2_modules_proxy_html - Module to rewrite links in html pages behind a reverse proxy
-www-servers/apache:apache2_modules_proxy_http2 - HTTP2 support module for mod_proxy.
-www-servers/apache:apache2_modules_proxy_wstunnel - Provides support for the tunnelling of web socket connections to a backend websockets server.
-www-servers/apache:apache2_modules_ratelimit - Ratelimit module for transfer rate management
-www-servers/apache:apache2_modules_remoteip - Remotip module for logging
-www-servers/apache:apache2_modules_slotmem_shm - Slot-based shared memory provider.
-www-servers/apache:apache2_modules_socache_shmcb - A shared object cache provider using a high-performance cyclic buffer inside a shared memory segment.
-www-servers/apache:apache2_modules_unixd - Basic (required) security for Unix-family platforms.
-www-servers/apache:apache2_modules_watchdog - Provides infrastructure for other modules to periodically run tasks
-www-servers/apache:apache2_modules_xml2enc - Enable xml2 encoding module
 www-servers/apache:static - Link in apache2 modules statically rather then plugins
 www-servers/apache:suexec - Install suexec with apache
 www-servers/apache:suexec-caps - Install suexec with capabilities instead of SUID
