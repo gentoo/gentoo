@@ -224,8 +224,8 @@ pkg_postinst() {
 		if grep -q -E "^CMD_CALLBACK=.*emerge.*@module-rebuild" "${gk_config}" 2>/dev/null ; then
 			elog ""
 			elog "Please remove `emerge @module-rebuild` from genkernel config"
-			ewarn "file (${gk_config}) and make use of new MODULEREBUILD option"
-			ewarn "instead."
+			elog "file (${gk_config}) and make use of new MODULEREBUILD option"
+			elog "instead."
 		fi
 	fi
 }
