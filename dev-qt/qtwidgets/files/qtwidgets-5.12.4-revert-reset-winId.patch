@@ -1,0 +1,41 @@
+From deac052a40c93633041da058d5c73c9e91aa76c7 Mon Sep 17 00:00:00 2001
+From: =?utf8?q?Tor=20Arne=20Vestb=C3=B8?= <tor.arne.vestbo@qt.io>
+Date: Fri, 12 Jul 2019 12:28:29 +0200
+Subject: [PATCH] Revert "Reset QWidget's winId when backing window surface is
+ destroyed"
+
+This reverts commit a9246c7132a2c8864d3ae6cebd260bb9ee711fcb.
+
+The QWidget machinery is way to fragile to reset the winId under the
+feet of QWidget like that. We would potentially need to include all
+the logic in QWidget::destroy. This also ties into the flow between
+QtGui and QtWidgets during window closing, which is still unresolved.
+
+Change-Id: I168048a63c89796398eb5331a80ce3e5c8d9a208
+Fixes: QTBUG-76588
+Task-number: QTBUG-69289
+Reviewed-by: Friedemann Kleint <Friedemann.Kleint@qt.io>
+Reviewed-by: Volker Hilsheimer <volker.hilsheimer@qt.io>
+---
+ src/widgets/kernel/qwidget.cpp | 6 ------
+ 1 file changed, 6 deletions(-)
+
+diff --git a/src/widgets/kernel/qwidget.cpp b/src/widgets/kernel/qwidget.cpp
+index fdb38729032..6f0f39a3443 100644
+--- a/src/widgets/kernel/qwidget.cpp
++++ b/src/widgets/kernel/qwidget.cpp
+@@ -9382,12 +9382,6 @@ bool QWidget::event(QEvent *event)
+         d->renderToTextureReallyDirty = 1;
+ #endif
+         break;
+-    case QEvent::PlatformSurface: {
+-        auto surfaceEvent = static_cast<QPlatformSurfaceEvent*>(event);
+-        if (surfaceEvent->surfaceEventType() == QPlatformSurfaceEvent::SurfaceAboutToBeDestroyed)
+-            d->setWinId(0);
+-        break;
+-    }
+ #ifndef QT_NO_PROPERTIES
+     case QEvent::DynamicPropertyChange: {
+         const QByteArray &propName = static_cast<QDynamicPropertyChangeEvent *>(event)->propertyName();
+-- 
+2.16.3
