@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python2_7 python3_{6,7} )
 # this ebuild currently only supports installing ruby bindings for a single ruby version
 # so USE_RUBY must contain only a single value (the latest stable) as the ebuild calls
 # /usr/bin/${USE_RUBY} directly
@@ -112,8 +112,12 @@ src_prepare() {
 
 	sed -i -e "s/env ruby/${USE_RUBY}/" src/swig/ruby/* || die
 
-	# fix python3 include dir
-	sed -i -e 's/python{}.{}/python{}.{}m/' src/swig/python/build || die
+	# fix python include dir
+	if use python; then
+		python_export PYTHON_INCLUDEDIR
+		sed -e "/PYTHON_INCLUDE=/s:=.*:=${PYTHON_INCLUDEDIR}:" \
+			-i src/swig/python/build || die
+	fi
 }
 
 src_configure() {
