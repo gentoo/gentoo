@@ -21,10 +21,6 @@ QA_PREBUILT="*"
 RESTRICT="mirror bindist strip" #299368
 
 RDEPEND="
-	|| (
-		sys-auth/elogind
-		sys-apps/systemd
-	)
 	app-crypt/libsecret[${MULTILIB_USEDEP}]
 	dev-libs/atk[${MULTILIB_USEDEP}]
 	dev-libs/expat[${MULTILIB_USEDEP}]
