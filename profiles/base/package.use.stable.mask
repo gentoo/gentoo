@@ -157,7 +157,6 @@ app-admin/packagekit-base entropy
 # flag until a source based version that doesn't depend
 # on a vulnerable libgcrypt version is in tree
 dev-db/mariadb sst-xtrabackup
-dev-db/mariadb-galera sst-xtrabackup
 
 # Sergey Popov <pinkbyte@gentoo.org> (2016-02-15)
 # Mask monitoring capabilities of Ganeti on stable branches

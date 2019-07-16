@@ -57,10 +57,6 @@ xine
 # qstat is not available on sparc, as it is
 nagios-game
 
-# Samuli Suominen <ssuominen@gentoo.org> (2012-05-07)
-# Missing keywording in www-client/firefox wrt #360427
-mozilla
-
 # Alexandre Rostovtsev <tetromino@gmail.com> (2011-10-28)
 # x11-misc/colord and app-admin/packagekit-base not tested. Bug #387959.
 colord
@@ -182,7 +178,6 @@ networkmanager
 pbs
 pcmcia
 rar
-uml
 valgrind
 wifi
 xvmc

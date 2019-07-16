@@ -170,11 +170,6 @@ dev-lang/gnat-gpl jit
 # address user visible breakage due to circular dependency #665008
 =media-fonts/encodings-1.0.4-r3 X
 
-# Dirkjan Ochtman <djc@gentoo.org> (2018-09-29)
-# Clippy is broken for now, can't find libraries (bug 667286)
-<dev-lang/rust-1.29.2 clippy
-<dev-lang/rust-bin-1.34.1 clippy
-
 # Virgil Dupras <vdupras@gentoo.org> (2018-09-26)
 # Server feature in paramiko is patched out for security reasons. It can
 # be re-enabled with the 'server' USE flag, but this flag is hard
@@ -240,7 +235,6 @@ dev-perl/DBD-mysql embedded
 # Brian Evans <grknight@gentoo.org> (2018-02-28)
 # Mask client-libs USE to force users to install alternative standard pacakges
 dev-db/mariadb client-libs
-dev-db/mariadb-galera client-libs
 dev-db/mysql client-libs
 dev-db/percona-server client-libs
 
