@@ -42,6 +42,10 @@ QT5_GENTOO_PRIVATE_CONFIG=(
 	:widgets
 )
 
+PATCHES+=(
+	"${FILESDIR}/${P}-revert-reset-winId.patch" # bug 689704
+)
+
 src_configure() {
 	local myconf=(
 		-opengl $(usex gles2 es2 desktop)
