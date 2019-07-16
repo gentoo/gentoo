@@ -5836,7 +5836,7 @@ dev-ruby/gherkin 4.1.3 5.1.0: Fast Gherkin lexer and parser
 dev-ruby/git 1.4.0: Library for using Git in Ruby
 dev-ruby/gruff 0.7.0-r1: Beautiful graphs for one or multiple datasets
 dev-ruby/haml 4.0.7-r1 4.0.7-r3: A ruby web page templating engine
-dev-ruby/hashdiff 0.3.8: Simple Hash extension to make working with nested hashes easier
+dev-ruby/hashdiff 0.3.8 0.3.9: Simple Hash extension to make working with nested hashes easier
 dev-ruby/hashie 2.1.2-r1: Hashie is a small collection of tools that make hashes more powerful
 dev-ruby/heredoc_unindent 1.2.0: Removes leading whitespace from Ruby heredocs
 dev-ruby/hiera 3.4.3: A simple pluggable Hierarchical Database
@@ -8441,7 +8441,7 @@ net-dns/ndu 0.4-r4: DNS serial number incrementer and reverse zone builder
 net-dns/nsd 4.1.27: An authoritative only, high performance, open source name server
 net-dns/openresolv 3.9.0: A framework for managing DNS information
 net-dns/pdns 4.1.10: The PowerDNS Daemon
-net-dns/pdns-recursor 4.1.12: The PowerDNS Recursor
+net-dns/pdns-recursor 4.1.12 4.1.14: The PowerDNS Recursor
 net-dns/pdnsd 1.2.9a-r1: Proxy DNS server with permanent caching
 net-dns/rbldnsd 0.998: DNS server designed to serve blacklist zones
 net-dns/resolv_wrapper 1.1.5: A wrapper for DNS name resolving or DNS faking
