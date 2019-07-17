@@ -5834,7 +5834,7 @@ dev-ruby/gettext-setup 0.30: A gem to ease i18n
 dev-ruby/gherkin 4.1.3 5.1.0: Fast Gherkin lexer and parser
 dev-ruby/git 1.4.0: Library for using Git in Ruby
 dev-ruby/gruff 0.7.0-r1: Beautiful graphs for one or multiple datasets
-dev-ruby/haml 4.0.7-r1 4.0.7-r3: A ruby web page templating engine
+dev-ruby/haml 4.0.7-r3: A ruby web page templating engine
 dev-ruby/hashdiff 0.3.8 0.3.9: Simple Hash extension to make working with nested hashes easier
 dev-ruby/hashie 2.1.2-r1: Hashie is a small collection of tools that make hashes more powerful
 dev-ruby/heredoc_unindent 1.2.0: Removes leading whitespace from Ruby heredocs
@@ -5860,7 +5860,7 @@ dev-ruby/kirbybase 2.6.1-r2: A simple Ruby DBMS that stores data in plaintext fi
 dev-ruby/kpeg 1.1.0-r1: A simple PEG library for Ruby
 dev-ruby/launchy 2.4.3-r2: Helper class for launching cross-platform applications
 dev-ruby/libxml 2.9.0: Ruby libxml with a user friendly API, akin to REXML
-dev-ruby/listen 0.7.3-r2 1.3.1-r4 3.1.5-r1 3.1.5-r3: Listens to file modifications and notifies you about the changes
+dev-ruby/listen 0.7.3-r2 1.3.1-r4 3.1.5-r3: Listens to file modifications and notifies you about the changes
 dev-ruby/locale 2.1.2-r1: A pure ruby library which provides basic APIs for localization
 dev-ruby/log4r 1.1.10-r2: A comprehensive and flexible logging library written in Ruby
 dev-ruby/logue 1.0.13-r1: A module that adds logging/trace functionality
@@ -5874,7 +5874,7 @@ dev-ruby/method_source 0.9.0: Retrieve the source code for a method
 dev-ruby/mime-types 1.25.1 2.99.2 3.2.2: Provides a mailcap-like MIME Content-Type lookup for Ruby
 dev-ruby/mime-types-data 3.2019.0331: Registry for information about MIME media type definitions
 dev-ruby/mini_mime 1.0.0 1.0.1: A lightweight mime type lookup toy
-dev-ruby/minitest 4.7.5-r2 5.3.3-r1 5.10.3: minitest/unit is a small and fast replacement for ruby's huge and slow test/unit
+dev-ruby/minitest 4.7.5-r2 5.10.3: minitest/unit is a small and fast replacement for ruby's huge and slow test/unit
 dev-ruby/minitest-bonus-assertions 3.0: Bonus assertions for minitest
 dev-ruby/minitest-hooks 1.5.0: Adds around and before_all/after_all/around_all hooks for Minitest
 dev-ruby/minitest-pretty_diff 0.1: Pretty-print hashes and arrays before diffing them in MiniTest
@@ -6009,7 +6009,7 @@ dev-ruby/test-unit-rr 1.0.5: RR adapter for Test::Unit
 dev-ruby/test_declarative 0.0.6: Simply adds a declarative test method syntax to test/unit
 dev-ruby/text 1.3.1: A collection of text algorithms
 dev-ruby/text-hyphen 1.4.1-r2: Hyphenates words according to the rules of the language the word is written in
-dev-ruby/thor 0.19.4 0.20.3: A scripting framework that replaces rake and sake
+dev-ruby/thor 0.20.3: A scripting framework that replaces rake and sake
 dev-ruby/thread_order 1.1.0: Test helper for ordering threaded code
 dev-ruby/thread_safe 0.3.6: A collection of thread-safe versions of common core Ruby classes
 dev-ruby/tidy-ext 0.1.14-r3: W3C HTML Tidy library implemented as a Ruby extension
