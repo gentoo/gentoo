@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,7 +12,10 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~sparc ~x86"
 IUSE=""
 
-RDEPEND=">=dev-perl/XML-Parser-2.190.0"
+RDEPEND="
+	>=dev-perl/XML-Parser-2.190.0
+	dev-perl/libxml-perl
+"
 DEPEND="${RDEPEND}"
 PATCHES=(
 	"${FILESDIR}/${PN}-0.46-badversion.patch"

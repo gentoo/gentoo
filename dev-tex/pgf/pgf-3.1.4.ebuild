@@ -6,8 +6,9 @@ EAPI=7
 inherit latex-package
 
 DESCRIPTION="The TeX Portable Graphic Format"
-HOMEPAGE="https://sourceforge.net/projects/pgf"
-SRC_URI="mirror://sourceforge/pgf/${PN}_${PV}.tds.zip"
+HOMEPAGE="https://github.com/pgf-tikz/pgf"
+SRC_URI=" https://github.com/pgf-tikz/pgf/archive/${PV}.tar.gz -> ${P}.tar.gz
+	doc? ( https://github.com/pgf-tikz/pgf/releases/download/${PV}/pgfmanual.pdf -> ${P}-pgfmanual.pdf )"
 
 LICENSE="GPL-2 LPPL-1.3c FDL-1.2"
 SLOT="0"
@@ -15,16 +16,10 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~spa
 IUSE="doc source"
 
 RDEPEND="dev-texlive/texlive-latexrecommended
-	>=dev-tex/xcolor-2.11"
-BDEPEND="app-arch/unzip"
-
-S=${WORKDIR}
+	dev-tex/xcolor"
 
 src_install() {
-	# Bug #607642
-	cp "${FILESDIR}/pgfsys-luatex.def" "${WORKDIR}/tex/generic/pgf/systemlayer/" || die
-
-	insinto ${TEXMF}
+	insinto "${TEXMF}"
 	doins -r tex
 
 	if use source ; then
@@ -33,11 +28,13 @@ src_install() {
 
 	cd "${S}/doc/generic/pgf" || die
 	dodoc AUTHORS ChangeLog README
-	if use doc ; then
+	if use doc; then
 		insinto /usr/share/doc/${PF}/texdoc
-		doins pgfmanual.pdf
+		# pgfmanual is now split from the main tar archive
+		newdoc "${DISTDIR}/${P}-pgfmanual.pdf" pgfmanual.pdf
 		doins -r images macros text-en version-*
-		dosym /usr/share/doc/${PF}/texdoc ${TEXMF}/doc/latex/${PN}
-		docompress -x /usr/share/doc/${PF}/texdoc/
+
+		dosym "/usr/share/doc/${PF}/texdoc" "${TEXMF}/doc/latex/${PN}"
+		docompress -x "/usr/share/doc/${PF}/texdoc/"
 	fi
 }
