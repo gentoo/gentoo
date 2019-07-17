@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install prepare test
-DEPEND=virtual/perl-ExtUtils-MakeMaker test? ( >=virtual/perl-Test-Simple-0.880.0 >=dev-perl/Test-YAML-1.50.0 ) dev-lang/perl:=
+DEPEND=virtual/perl-ExtUtils-MakeMaker test? ( virtual/perl-Encode dev-perl/Test-Deep >=virtual/perl-Test-Simple-0.880.0 >=dev-perl/Test-YAML-1.50.0 ) dev-lang/perl:=
 DESCRIPTION=YAML Ain't Markup Language (tm)
 EAPI=6
 HOMEPAGE=https://metacpan.org/release/YAML
@@ -10,4 +10,4 @@ RDEPEND=dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/T/TI/TINITA/YAML-1.26.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	71c828c354a4cddced2641dda2695de5
-_md5_=21ffb5865028f48dc10bf1f9fa89c31f
+_md5_=a8e25708d4f15416fe1fa45915a8f168
