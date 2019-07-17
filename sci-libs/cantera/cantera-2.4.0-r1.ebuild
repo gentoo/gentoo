@@ -46,7 +46,6 @@ DEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/${PN}_${PV}_libdirname_variable.patch"
 	"${FILESDIR}/${PN}_${PV}_env.patch"
 	)
 
