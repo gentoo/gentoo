@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,8 +6,6 @@ EAPI=6
 DIST_AUTHOR=DUNNIGANJ
 DIST_VERSION=0.4
 
-# https://rt.cpan.org/Ticket/Display.html?id=124794
-# DIST_EXAMPLES=( "demos/*" )
 inherit eutils perl-module virtualx
 
 DESCRIPTION="Manipulate the mouse cursor programmatically"
@@ -19,7 +17,7 @@ IUSE=""
 RDEPEND="dev-perl/Tk"
 DEPEND="${RDEPEND}"
 
-PATCHES=( "${FILESDIR}/${PN}-0.4-nodemo.patch" )
+PATCHES=( "${FILESDIR}/0.4-demo.patch" )
 
 src_prepare() {
 	perl-module_src_prepare
