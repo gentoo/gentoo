@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+	<!--maintainer-needed-->
 	<use>
 		<flag name="idle">Enable experimental support for MPD's idle command to reduce bandwidth and cpu usage, requires MPD 0.14</flag>
 		<flag name="scrobbler">Enable audioscrobbler/last.fm support <pkg>net-libs/libsoup</pkg></flag>
