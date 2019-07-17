@@ -328,7 +328,7 @@ app-crypt/easy-rsa 3.0.4 3.0.5: Small RSA key management package, based on OpenS
 app-crypt/gcr 3.20.0 3.28.0 3.28.1: Libraries for cryptographic UIs and accessing PKCS#11 modules
 app-crypt/gentoo-keys 201901130136: A OpenPGP/GPG keyring of official Gentoo release media GPG keys
 app-crypt/glep63-check 9: GLEP 63 compliance checker for OpenPGP keys
-app-crypt/gnupg 1.4.21 2.2.10 2.2.15: The GNU Privacy Guard, a GPL OpenPGP implementation
+app-crypt/gnupg 1.4.21 2.2.10 2.2.15 2.2.17: The GNU Privacy Guard, a GPL OpenPGP implementation
 app-crypt/gorilla 1.4-r1: Password Safe in secure way with GUI interface
 app-crypt/gpa 0.10.0: The GNU Privacy Assistant (GPA) is a graphical user interface for GnuPG
 app-crypt/gpg-ringmgr 1.12: GPG Keyring Manager to handle large GPG keyrings more easily
@@ -1156,10 +1156,10 @@ app-office/kexi 3.2.0: Visual database applications creator
 app-office/kmymoney 5.0.4: Personal finance manager based on KDE Frameworks
 app-office/ledger 3.1.1-r2: A double-entry accounting system with a command-line reporting interface
 app-office/libalkimia 7.0.2-r1: Library with common classes and functionality used by KDE finance applications
-app-office/libreoffice 6.1.5.2 6.2.4.2: A full office productivity suite
-app-office/libreoffice-bin 6.2.4.2: A full office productivity suite. Binary package
-app-office/libreoffice-bin-debug 6.2.4.2: LibreOffice, a full office productivity suite. Binary package, debug info
-app-office/libreoffice-l10n 6.1.5.2 6.2.4.2: Translations for the Libreoffice suite
+app-office/libreoffice 6.1.5.2 6.2.4.2 6.2.5.2: A full office productivity suite
+app-office/libreoffice-bin 6.2.4.2 6.2.5.2: A full office productivity suite. Binary package
+app-office/libreoffice-bin-debug 6.2.4.2 6.2.5.2: LibreOffice, a full office productivity suite. Binary package, debug info
+app-office/libreoffice-l10n 6.1.5.2 6.2.4.2 6.2.5.2: Translations for the Libreoffice suite
 app-office/lyx 2.3.0: WYSIWYM frontend for LaTeX, DocBook, etc.
 app-office/mdbtools 0.7.1-r2: Set of libraries and utilities for reading Microsoft Access database (MDB) files
 app-office/moneyguru 2.13.1: Future-aware personal finances management
@@ -3002,7 +3002,7 @@ dev-libs/libelf 0.8.13-r2: A ELF object file access library
 dev-libs/liberasurecode 1.6.1: Erasure Code API library written in C with pluggable Erasure Code backends.
 dev-libs/libestr 0.1.10 0.1.11: Library for some string essentials
 dev-libs/libev 4.23: A high-performance event loop/event model with lots of feature
-dev-libs/libevdev 1.6.0: Handler library for evdev events
+dev-libs/libevdev 1.6.0 1.7.0: Handler library for evdev events
 dev-libs/libevent 2.1.8: Library to execute a function when a specific event occurs on a file descriptor
 dev-libs/libevocosm 3.3.1-r1: A C++ framework for evolutionary computing
 dev-libs/libezV24 0.1.1: library that provides an easy API to Linux serial ports
@@ -3029,7 +3029,7 @@ dev-libs/libical 3.0.4 3.0.5: An implementation of basic iCAL protocols
 dev-libs/libiconv 1.14-r1: GNU charset conversion library for libc which doesn't implement it
 dev-libs/libindicate 12.10.1-r3: Library to raise flags on DBus for other components of the desktop
 dev-libs/libindicator 12.10.1-r201 12.10.1-r301: A set of symbols and convience functions that all indicators would like to use
-dev-libs/libinput 1.12.6: Library to handle input devices in Wayland
+dev-libs/libinput 1.12.6 1.13.4: Library to handle input devices in Wayland
 dev-libs/libintl 0.19.7 0.19.8.1: the GNU international library (split out of gettext)
 dev-libs/libisoburn 1.5.0: Creation/expansion of ISO-9660 filesystems on CD/DVD media supported by libburn
 dev-libs/libisofs 1.5.0: Open-source library for reading, mastering and writing optical discs
@@ -6025,7 +6025,7 @@ dev-ruby/unf_ext 0.0.7.5: Unicode Normalization Form support library for CRuby
 dev-ruby/unindent 1.0: Ruby method to unindent strings
 dev-ruby/uuidtools 2.1.5-r1: Simple library to generate UUIDs
 dev-ruby/vcr 4.0.0: Records your test suite's HTTP interactions and replay them during test runs
-dev-ruby/webmock 3.4.1 3.5.1: Allows stubbing HTTP requests and setting expectations on HTTP requests
+dev-ruby/webmock 2.3.2 3.4.1 3.5.1: Allows stubbing HTTP requests and setting expectations on HTTP requests
 dev-ruby/webrobots 0.1.2-r1: A library to help write robots.txt compliant web robots
 dev-ruby/wirble 0.1.3-r4: Wirble is a set of enhancements for Irb
 dev-ruby/xml-simple 1.1.5: Easy API to maintain XML. A Ruby port of Grant McLean's Perl module XML::Simple
@@ -6254,7 +6254,7 @@ dev-util/gertty 1.5.0: Gertty is a console-based interface to the Gerrit Code Re
 dev-util/glade 3.20.4: A user interface designer for GTK+ and GNOME
 dev-util/glib-utils 2.58.3: Build utilities for GLib using projects
 dev-util/global 6.3.1: tag system to find an object location in various sources
-dev-util/glslang 7.10.2984: Khronos reference front-end for GLSL and ESSL, and sample SPIR-V generator
+dev-util/glslang 7.10.2984 7.11.3114_pre20190415-r1: Khronos reference front-end for GLSL and ESSL, and sample SPIR-V generator
 dev-util/gn 0.1463: GN is a meta-build system that generates build files for Ninja
 dev-util/gnome-builder 3.30.3: An IDE for writing GNOME-based software
 dev-util/gnome-devel-docs 3.30.2: Documentation for developing for the GNOME desktop environment
@@ -6350,8 +6350,8 @@ dev-util/shflags 1.0.3: Command-line flags module for Unix shell scripts
 dev-util/shtool 2.0.8-r1: Set of stable and portable shell scripts
 dev-util/shunit2 2.1.6-r1: Unit-test framework for Bourne-based shell scripts
 dev-util/source-highlight 3.1.7-r2 3.1.8: Generate highlighted source code as an (x)html document
-dev-util/spirv-headers 1.3.4_pre20180917: Machine-readable files for the SPIR-V Registry
-dev-util/spirv-tools 2018.5: Provides an API and commands for processing SPIR-V modules
+dev-util/spirv-headers 1.3.4_pre20180917 1.3.4_pre20190302: Machine-readable files for the SPIR-V Registry
+dev-util/spirv-tools 2018.5 2019.1-r2: Provides an API and commands for processing SPIR-V modules
 dev-util/splint 3.1.2-r1: Check C programs for vulnerabilities and programming mistakes
 dev-util/statifier 1.7.4: Statifier is a tool for creating portable, self-containing Linux executables
 dev-util/strace 4.26: A useful diagnostic, instructional, and debugging tool
@@ -6370,8 +6370,8 @@ dev-util/usb-robot 0.2.0: USB Reverse engineering tools
 dev-util/valgrind 3.12.0 3.13.0 3.14.0: An open-source memory debugger for GNU/Linux
 dev-util/vbindiff 3.0_beta4-r1 3.0_beta5: Visual binary diff utility
 dev-util/vint 0.3.18: Lint tool for Vim script language
-dev-util/vulkan-headers 1.1.92.0: Vulkan Header files and API registry
-dev-util/vulkan-tools 1.1.92.0: Official Vulkan Tools and Utilities for Windows, Linux, Android, and MacOS
+dev-util/vulkan-headers 1.1.92.0 1.1.106: Vulkan Header files and API registry
+dev-util/vulkan-tools 1.1.92.0 1.1.106-r1: Official Vulkan Tools and Utilities for Windows, Linux, Android, and MacOS
 dev-util/weka 3.7.13: A Java data mining package
 dev-util/wiggle 0.9-r1: tool for applying patches that patch cannot apply because of conflicting changes
 dev-util/wxglade 0.8.2: Glade-like GUI designer which can generate Python, Perl, C++ or XRC code
@@ -7129,7 +7129,7 @@ media-fonts/dejavu 2.35 2.37: DejaVu fonts, bitstream vera with ISO-8859-2 chara
 media-fonts/droid 113-r5: Font family from Google's Android project
 media-fonts/eb-garamond 0.016: Claude Garamont's humanist typeface from the mid-16th century
 media-fonts/ekushey-bangla-fonts 20070420: A collection of Free fonts for the Bangla (Bengali) script
-media-fonts/encodings 1.0.4-r3: X.Org font encodings
+media-fonts/encodings 1.0.4-r3 1.0.5: X.Org font encodings
 media-fonts/essays1743 2.000: John Stracke's Essays 1743 font
 media-fonts/exo 2: A geometric sans-serif font with a technological feel
 media-fonts/farsi-fonts 0.4: Farsi (Persian) Unicode fonts
@@ -7538,7 +7538,7 @@ media-libs/libdvdread 6.0.0: Library for DVD navigation tools
 media-libs/libebur128 1.2.3: A library implementing the EBU R128 loudness standard
 media-libs/libemf 1.0.4-r1 1.0.7: Library implementation of ECMA-234 API for the generation of enhanced metafiles
 media-libs/libeot 0.01: Library for parsing Embedded OpenType files (Microsoft embedded font 'standard')
-media-libs/libepoxy 1.5.3: Epoxy is a library for handling OpenGL function pointer management for you
+media-libs/libepoxy 1.5.3 1.5.3-r1: Epoxy is a library for handling OpenGL function pointer management for you
 media-libs/libexif 0.6.21-r3: Library for parsing, editing, and saving EXIF data
 media-libs/libexif-gtk 0.3.5-r2: GTK+ frontend to the libexif library (parsing, editing, and saving EXIF data)
 media-libs/libextractor 1.8-r1: Library to extract metadata from files of arbitrary type
@@ -7652,7 +7652,7 @@ media-libs/lsp-plugins 1.1.7-r1: Linux Studio Plugins
 media-libs/lv2 1.14.0-r1: A simple but extensible successor of LADSPA
 media-libs/mediastreamer 2.9.0-r2: Mediastreaming library for telephony application
 media-libs/memphis 0.2.3: A map-rendering application and a library for OpenStreetMap
-media-libs/mesa 18.3.6: OpenGL-like graphic library for Linux
+media-libs/mesa 18.3.6 19.0.8: OpenGL-like graphic library for Linux
 media-libs/ming 0.20181112: An Open Source library for Flash movie generation
 media-libs/mlt 6.12.0: Open source multimedia framework for television broadcasting
 media-libs/musicbrainz 5.1.0: Client Library for accessing the latest XML based MusicBrainz web service
@@ -7737,9 +7737,9 @@ media-libs/vigra 1.11.1-r2: C++ computer vision library emphasizing customizable
 media-libs/virglrenderer 0.6.0: library used implement a virtual 3D GPU used by qemu
 media-libs/vo-aacenc 0.1.3: VisualOn AAC encoder library
 media-libs/vo-amrwbenc 0.1.3: VisualOn AMR-WB encoder library
-media-libs/vulkan-layers 1.1.92.0-r1: Vulkan Validation Layers
-media-libs/vulkan-loader 1.1.92.1: Vulkan Installable Client Driver (ICD) Loader
-media-libs/waffle 1.5.2: Library that allows selection of GL API and of window system at runtime
+media-libs/vulkan-layers 1.1.92.0-r1 1.1.106: Vulkan Validation Layers
+media-libs/vulkan-loader 1.1.92.1 1.1.106: Vulkan Installable Client Driver (ICD) Loader
+media-libs/waffle 1.5.2 1.6.0: Library that allows selection of GL API and of window system at runtime
 media-libs/webrtc-audio-processing 0.3.1: AudioProcessing library from the webrtc.org code base
 media-libs/woff2 1.0.2-r1: Encode/decode WOFF2 font format
 media-libs/wxsvg 1.5.9 1.5.11: C++ library to create, manipulate and render SVG files
@@ -10514,7 +10514,7 @@ x11-apps/oclock 1.0.4: round X clock
 x11-apps/rgb 1.0.5 1.0.6: uncompile an rgb color-name database
 x11-apps/rstart 1.0.5-r1: X.Org rstart application
 x11-apps/scripts 1.0.1-r1: start an X program on a remote machine
-x11-apps/sessreg 1.1.1: manage utmp/wtmp entries for non-init clients
+x11-apps/sessreg 1.1.1 1.1.2: manage utmp/wtmp entries for non-init clients
 x11-apps/setxkbmap 1.3.1: Controls the keyboard layout of a running X server
 x11-apps/showfont 1.0.4 1.0.5: font dumper for X font server
 x11-apps/smproxy 1.0.6: Session Manager Proxy
@@ -10524,7 +10524,7 @@ x11-apps/x11perf 1.6.1: X rendering operation stress test utility
 x11-apps/xauth 1.0.10: X authority file utility
 x11-apps/xbacklight 1.2.1-r1 1.2.2: Sets backlight level using the RandR 1.2 BACKLIGHT output property
 x11-apps/xbiff 1.0.3: mailbox flag for X
-x11-apps/xcalc 1.0.7: scientific calculator for X
+x11-apps/xcalc 1.0.7 1.1.0: scientific calculator for X
 x11-apps/xclipboard 1.1.3: interchange between cut buffer and selection
 x11-apps/xclock 1.0.8: analog / digital clock for X
 x11-apps/xcmsdb 1.0.5: Device Color Characterization utility for X Color Management System
@@ -10544,7 +10544,7 @@ x11-apps/xfontsel 1.0.5 1.0.6: point and click selection of X11 font names
 x11-apps/xgamma 1.0.6: Alter a monitor's gamma correction through the X server
 x11-apps/xgc 1.0.4 1.0.5: X graphics demo
 x11-apps/xhost 1.0.8: Controls host and/or user access to a running X server
-x11-apps/xinit 1.4.0-r1: X Window System initializer
+x11-apps/xinit 1.4.0-r1 1.4.1: X Window System initializer
 x11-apps/xinput 1.6.1 1.6.2: Utility to set XInput device parameters
 x11-apps/xinput_calibrator 0.7.5-r1: A generic touchscreen calibration program for X.Org
 x11-apps/xkbcomp 1.4.2: compile XKB keyboard description
@@ -10580,10 +10580,10 @@ x11-apps/xwininfo 1.1.3 1.1.4: window information utility for X
 x11-apps/xwud 1.0.5: image displayer for X
 x11-base/xcb-proto 1.13: X C-language Bindings protocol headers
 x11-base/xorg-drivers 1.20: Meta package containing deps on all xorg drivers
-x11-base/xorg-proto 2018.4: X.Org combined protocol headers
-x11-base/xorg-server 1.20.4: X.Org X servers
+x11-base/xorg-proto 2018.4 2019.1: X.Org combined protocol headers
+x11-base/xorg-server 1.20.4 1.20.5: X.Org X servers
 x11-base/xorg-x11 7.4-r3: An X11 implementation maintained by the X.Org Foundation (meta package)
-x11-drivers/xf86-input-elographics 1.4.1: Elographics input driver
+x11-drivers/xf86-input-elographics 1.4.1 1.4.2: Elographics input driver
 x11-drivers/xf86-input-evdev 2.10.6: Generic Linux input driver
 x11-drivers/xf86-input-joystick 1.6.3: X.Org driver for joystick input devices
 x11-drivers/xf86-input-keyboard 1.9.0: Keyboard input driver
@@ -10600,7 +10600,7 @@ x11-drivers/xf86-video-ati 19.0.1: ATI video driver
 x11-drivers/xf86-video-dummy 0.3.8: X.Org driver for dummy cards
 x11-drivers/xf86-video-fbdev 0.5.0: video driver for framebuffer device
 x11-drivers/xf86-video-glint 1.2.9: GLINT/Permedia video driver
-x11-drivers/xf86-video-intel 2.99.917_p20180214-r1 2.99.917_p20180214-r2: X.Org driver for Intel cards
+x11-drivers/xf86-video-intel 2.99.917_p20180214-r1 2.99.917_p20180214-r2 2.99.917_p20190301: X.Org driver for Intel cards
 x11-drivers/xf86-video-mga 1.6.5 2.0.0: Matrox video driver
 x11-drivers/xf86-video-nouveau 1.0.16: Accelerated Open Source driver for nVidia cards
 x11-drivers/xf86-video-nv 2.1.21: Nvidia 2D only video driver
@@ -10636,7 +10636,7 @@ x11-libs/libFS 1.0.8: X.Org FS library
 x11-libs/libGLw 8.0.0: Mesa GLw library
 x11-libs/libICE 1.0.9-r2: X.Org Inter-Client Exchange library
 x11-libs/libSM 1.2.3: X.Org Session Management library
-x11-libs/libX11 1.6.7: X.Org X11 library
+x11-libs/libX11 1.6.7 1.6.8: X.Org X11 library
 x11-libs/libXScrnSaver 1.2.3: X.Org XScrnSaver library
 x11-libs/libXau 1.0.9: X.Org X authorization library
 x11-libs/libXaw 1.0.13-r1: X.Org Xaw library
@@ -10650,7 +10650,7 @@ x11-libs/libXext 1.3.4: X.Org Xext library
 x11-libs/libXfixes 5.0.3-r1: X.Org Xfixes library
 x11-libs/libXfont2 2.0.3-r1: X.Org Xfont library
 x11-libs/libXft 2.3.3: X.Org Xft library
-x11-libs/libXi 1.7.9-r1: X.Org Xi library
+x11-libs/libXi 1.7.9-r1 1.7.10: X.Org Xi library
 x11-libs/libXinerama 1.1.4: X.Org Xinerama library
 x11-libs/libXmu 1.1.3: X.Org Xmu library
 x11-libs/libXpm 3.5.12-r1: X.Org Xpm library
@@ -10658,7 +10658,7 @@ x11-libs/libXpresent 1.0.0-r1: X Present Extension C Library
 x11-libs/libXrandr 1.5.2: X.Org Xrandr library
 x11-libs/libXrender 0.9.10-r1: X.Org Xrender library
 x11-libs/libXres 1.2.0-r1: X.Org XRes library
-x11-libs/libXt 1.1.5-r1: X.Org X Toolkit Intrinsics library
+x11-libs/libXt 1.1.5-r1 1.2.0: X.Org X Toolkit Intrinsics library
 x11-libs/libXtst 1.2.3-r1: X.Org Xlib-based client API for the XTEST & RECORD extensions library
 x11-libs/libXv 1.0.11-r1: X.Org Xv library
 x11-libs/libXvMC 1.0.11: X.Org XvMC library
@@ -10685,7 +10685,7 @@ x11-libs/libproplist 0.10.1-r4: An library to mimic property list functionality 
 x11-libs/librfm 5.3.16.3-r1: The basic library used by some rfm applications, such as Rodent filemanager
 x11-libs/libva 1.7.3: Video Acceleration (VA) API for Linux
 x11-libs/libva-intel-driver 1.7.3: HW video decode support for Intel integrated graphics
-x11-libs/libva-vdpau-driver 0.7.4-r4: VDPAU Backend for Video Acceleration (VA) API
+x11-libs/libva-vdpau-driver 0.7.4-r4 0.7.4-r5: VDPAU Backend for Video Acceleration (VA) API
 x11-libs/libvdpau 1.2: VDPAU wrapper and trace libraries
 x11-libs/libwnck 2.31.0 3.30.0: A window navigation construction kit
 x11-libs/libxcb 1.13.1: X C-language Bindings library
@@ -10888,7 +10888,7 @@ x11-misc/xfe 1.42: MS-Explorer-like minimalist file manager for X
 x11-misc/xfishtank 2.1-r2: Turns your root window into an aquarium
 x11-misc/xflux-gui 1.1.10 1.1.10_p20180910: A GUI for f.lux
 x11-misc/xkbd 0.8.16-r1: onscreen soft keyboard for X11
-x11-misc/xkeyboard-config 2.25 2.26-r1: X keyboard configuration database
+x11-misc/xkeyboard-config 2.25 2.26-r1 2.27: X keyboard configuration database
 x11-misc/xkeycaps 2.47-r2: GUI frontend to xmodmap
 x11-misc/xlockmore 5.50: Just another screensaver application for X
 x11-misc/xmobar 0.23.1: A Minimalistic Text Based Status Bar
