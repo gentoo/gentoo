@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 PYTHON_COMPAT=( python{2_7,3_{5,6,7}} )
 inherit flag-o-matic java-pkg-opt-2 linux-info pax-utils python-single-r1 tmpfiles toolchain-funcs udev xdg
@@ -21,7 +21,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="alsa debug doc dtrace headless java libressl lvm +opus pam pax_kernel pulseaudio +opengl python +qt5 +sdk +udev vboxwebsrv vnc"
 
-RDEPEND="!app-emulation/virtualbox-bin
+CDEPEND="
+	!app-emulation/virtualbox-bin
 	~app-emulation/virtualbox-modules-${PV}
 	dev-libs/libIDL
 	>=dev-libs/libxslt-1.1.19
@@ -54,15 +55,26 @@ RDEPEND="!app-emulation/virtualbox-bin
 	lvm? ( sys-fs/lvm2 )
 	opus? ( media-libs/opus )
 	udev? ( >=virtual/udev-171 )
-	vnc? ( >=net-libs/libvncserver-0.9.9 )"
-DEPEND="${RDEPEND}
+	vnc? ( >=net-libs/libvncserver-0.9.9 )
+"
+DEPEND="
+	${CDEPEND}
+	alsa? ( >=media-libs/alsa-lib-1.0.13 )
+	!headless? ( x11-libs/libXinerama )
+	pam? ( sys-libs/pam )
+	pax_kernel? ( sys-apps/elfix )
+	pulseaudio? ( media-sound/pulseaudio )
+	qt5? ( dev-qt/linguist-tools:5 )
+	vboxwebsrv? ( net-libs/gsoap[-gnutls(-)] )
+	${PYTHON_DEPS}
+"
+BDEPEND="
 	>=dev-util/kbuild-0.1.9998.3127
 	>=dev-lang/yasm-0.6.2
 	sys-devel/bin86
 	sys-libs/libcap
 	sys-power/iasl
 	virtual/pkgconfig
-	alsa? ( >=media-libs/alsa-lib-1.0.13 )
 	doc? (
 		app-text/docbook-sgml-dtd:4.4
 		dev-texlive/texlive-basic
@@ -72,16 +84,13 @@ DEPEND="${RDEPEND}
 		dev-texlive/texlive-fontsrecommended
 		dev-texlive/texlive-fontsextra
 	)
-	!headless? ( x11-libs/libXinerama )
 	java? ( >=virtual/jdk-1.6 )
-	pam? ( sys-libs/pam )
-	pax_kernel? ( sys-apps/elfix )
-	pulseaudio? ( media-sound/pulseaudio )
-	qt5? ( dev-qt/linguist-tools:5 )
-	vboxwebsrv? ( net-libs/gsoap[-gnutls(-)] )
-	${PYTHON_DEPS}"
-RDEPEND="${RDEPEND}
-	java? ( >=virtual/jre-1.6 )"
+	${PYTHON_DEPS}
+"
+RDEPEND="
+	${CDEPEND}
+	java? ( >=virtual/jre-1.6 )
+"
 
 QA_TEXTRELS_x86="usr/lib/virtualbox-ose/VBoxGuestPropSvc.so
 	usr/lib/virtualbox/VBoxSDL.so
@@ -431,13 +440,16 @@ src_install() {
 		| xargs --no-run-if-empty --null sed -i '/Version/s@_Gentoo@@' \
 		|| die
 
+
+	local extensions_dir="${vbox_inst_path}/ExtensionPacks"
+
 	if use vnc ; then
-		insinto ${vbox_inst_path}/ExtensionPacks
+		insinto ${extensions_dir}
 		doins -r ExtensionPacks/VNC
 	fi
 
 	if use dtrace ; then
-		insinto ${vbox_inst_path}/ExtensionPacks
+		insinto ${extensions_dir}
 		doins -r ExtensionPacks/Oracle_VBoxDTrace_Extension_Pack
 	fi
 
