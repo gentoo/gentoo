@@ -10,7 +10,7 @@ if [[ "${PV}" == "9999" ]]; then
 	inherit git-r3
 else
 	EGIT_COMMIT="08cbb5458f692d4778806775f65eb3dc642ddbbf"
-	KEYWORDS="~amd64 x86"
+	KEYWORDS="amd64 x86"
 	SRC_URI="https://github.com/KhronosGroup/Vulkan-Headers/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/Vulkan-Headers-${EGIT_COMMIT}"
 fi

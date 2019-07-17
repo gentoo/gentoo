@@ -37,7 +37,7 @@ dev-ruby/net-http-persistent:0
 dev-ruby/net-ssh-gateway:2
 dev-ruby/rouge:0
 dev-ruby/vcr:2
-dev-ruby/webmock:2
+#dev-ruby/webmock:2
 dev-util/cucumber-core:0
 
 # Sobhan Mohammadpour <sobhan@gentoo.org> (2019-07-14)
