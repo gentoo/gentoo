@@ -4399,7 +4399,6 @@ dev-perl/gtk2-trayicon 0.60.0-r2: Perl wrappers for the egg cup Gtk2::TrayIcon u
 dev-perl/gtk2-traymanager 0.50.0-r1 0.50.0-r2: Perl bindings for EggTrayManager
 dev-perl/indirect 0.360.0 0.370.0: Lexically warn about using the indirect method call syntax
 dev-perl/libintl-perl 1.240.0-r2 1.280.0: High-Level Interface to Uniforum Message Translation
-dev-perl/libvorbis-perl 0.50.0-r1: Ogg::Vorbis - Perl extension for Ogg Vorbis streams
 dev-perl/libwww-perl 6.150.0 6.270.0: A collection of Perl Modules for the WWW
 dev-perl/libxml-perl 0.80.0-r1 0.80.0-r2: Collection of Perl modules for working with XML
 dev-perl/local-lib 2.0.24: create and use a local lib/ for perl modules with PERL5LIB
