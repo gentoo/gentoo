@@ -10126,7 +10126,7 @@ sys-libs/llvm-libunwind 6.0.1 7.1.0: C++ runtime stack unwinder from LLVM
 sys-libs/lwp 2.2 2.8: Light-weight process library (used by Coda)
 sys-libs/mtdev 1.1.5: Multitouch Protocol Translation Library
 sys-libs/musl 1.1.20-r1 1.1.21 1.1.22: Light, fast and simple C library focused on standards-conformance and safety
-sys-libs/ncurses 5.9-r101 6.1-r2: console display library
+sys-libs/ncurses 5.9-r101 6.1-r2 6.1_p20181020: console display library
 sys-libs/nss_wrapper 1.1.3: A wrapper for the user, group and hosts NSS API
 sys-libs/obstack-standalone 1.1: A standalone library to implement GNU libc's obstack.
 sys-libs/openipmi 2.0.22 2.0.27-r1: Library interface to IPMI
