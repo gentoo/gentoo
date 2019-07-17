@@ -1,0 +1,31 @@
+diff --git a/src/lib/ostream-file.c b/src/lib/ostream-file.c
+index e7e6f62d12..82bf729ac0 100644
+--- a/src/lib/ostream-file.c
++++ b/src/lib/ostream-file.c
+@@ -333,17 +333,17 @@ static int buffer_flush(struct file_ostream *fstream)
+ static void o_stream_tcp_flush_via_nodelay(struct file_ostream *fstream)
+ {
+ 	if (net_set_tcp_nodelay(fstream->fd, TRUE) < 0) {
+-		if (errno != ENOTSUP && errno != ENOTSOCK &&
+-		    errno != ENOPROTOOPT) {
+-			i_error("file_ostream.net_set_tcp_nodelay(%s, TRUE) failed: %m",
+-				o_stream_get_name(&fstream->ostream.ostream));
+-		}
++		/* Don't bother logging errors. There are quite a lot of
++		   different errors that need to be ignored, and it differs
++		   between OSes. At least:
++		   Linux: ENOTSUP, ENOTSOCK, ENOPROTOOPT
++		   FreeBSD: EINVAL, ECONNRESET */
+ 		fstream->no_socket_nodelay = TRUE;
+ 	} else if (net_set_tcp_nodelay(fstream->fd, FALSE) < 0) {
+-		/* We already successfully enabled TCP_NODELAY, so we're really
+-		   not expecting any errors here. */
+-		i_error("file_ostream.net_set_tcp_nodelay(%s, FALSE) failed: %m",
+-			o_stream_get_name(&fstream->ostream.ostream));
++		/* We already successfully enabled TCP_NODELAY, so there
++		   shouldn't really be errors. Except ECONNRESET can possibly
++		   still happen between these two calls, so again don't log
++		   errors. */
+ 		fstream->no_socket_nodelay = TRUE;
+ 	}
+ }
