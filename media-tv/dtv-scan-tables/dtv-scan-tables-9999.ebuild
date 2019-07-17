@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 if [[ ${PV#9999} != ${PV} ]]; then
 	inherit git-r3
@@ -27,6 +27,6 @@ src_compile() {
 }
 
 src_install() {
-	emake PREFIX="${ED}usr" install install_v3
+	emake PREFIX="${ED}/usr" install install_v3
 	einstalldocs
 }
