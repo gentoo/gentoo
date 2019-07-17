@@ -9034,7 +9034,7 @@ net-proxy/havp 0.92a-r2: HTTP AntiVirus Proxy
 net-proxy/http-replicator 3.0-r8 4.0_alpha2-r7: Proxy cache for Gentoo packages
 net-proxy/polipo 1.1.1-r4: A caching web proxy
 net-proxy/privoxy 3.0.26: A web proxy with advanced filtering capabilities for enhancing privacy
-net-proxy/squid 4.6: A full-featured web proxy cache
+net-proxy/squid 4.8: A full-featured web proxy cache
 net-proxy/squidguard 1.5_beta-r2: Combined filter, redirector and access controller plugin for Squid
 net-proxy/sshuttle 0.78.5: Transparent proxy server that works as a poor man's VPN using ssh
 net-proxy/tayga 0.9.2-r1: out-of-kernel stateless NAT64 implementation based on TUN
@@ -10445,7 +10445,7 @@ www-apps/trac 1.0.9: Enhanced wiki and issue tracking system for software develo
 www-apps/venus 20100911-r1: A feed aggregator application
 www-apps/viewvc 1.1.26: ViewVC, a web interface to CVS and Subversion
 www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositories in PHP
-www-client/chromium 75.0.3770.90: Open-source version of Google Chrome web browser
+www-client/chromium 75.0.3770.90 75.0.3770.142: Open-source version of Google Chrome web browser
 www-client/dillo 3.0.5: Lean FLTK based web browser
 www-client/elinks 0.12_pre6-r1 0.12_pre6-r4: Advanced and well-established text-mode web browser
 www-client/epiphany 3.30.4: GNOME webbrowser based on Webkit
