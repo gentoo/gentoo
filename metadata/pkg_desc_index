@@ -11033,7 +11033,7 @@ x11-plugins/wmudmount 2.2-r2: A filesystem mounter that uses udisks to handle no
 x11-plugins/wmweather 2.4.4 2.4.7: a dockable weather monitor for standard METAR stations using ICAO location
 x11-plugins/wmweather+ 2.17: A dockapp for displaying data collected from METAR, AVN, ETA, and MRF forecasts
 x11-plugins/wmwifi 0.6-r1: wireless network interface monitor dockapp
-x11-terms/alacritty 0.3.2: GPU-accelerated terminal emulator
+x11-terms/alacritty 0.3.3-r1: GPU-accelerated terminal emulator
 x11-terms/aterm 1.0.1-r3: rxvt compatible terminal emulator with transparency support
 x11-terms/eterm 0.9.6-r2: A vt102 terminal emulator for X
 x11-terms/gnome-terminal 3.30.3: The Gnome Terminal

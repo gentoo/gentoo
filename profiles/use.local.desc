@@ -6213,7 +6213,6 @@ x11-plugins/vicious:contrib - Install extra widgets, some for less common hardwa
 x11-plugins/wmfire:session - Enable session management
 x11-plugins/wmudmount:gcr - Enable support for secure memory with app-crypt/gcr
 x11-plugins/wmudmount:secret - Enable support for secret service with app-crypt/libsecret
-x11-terms/alacritty:terminfo - Use tic from sys-libs/ncurses to generate alacritty terminfo files
 x11-terms/aterm:background - Enable background image support via media-libs/libafterimage
 x11-terms/aterm:xgetdefault - Enable resources via X instead of aterm small version
 x11-terms/eterm:escreen - Enable built-in app-misc/screen support
