@@ -10,10 +10,10 @@ diff --git a/docs/conf/inspircd.conf.example b/docs/conf/inspircd.conf
 similarity index 99%
 rename from docs/conf/inspircd.conf.example
 rename to docs/conf/inspircd.conf
-index 9baaa5261..60e277310 100644
+index dbd56d2fe..4a7aab514 100644
 --- a/docs/conf/inspircd.conf.example
 +++ b/docs/conf/inspircd.conf
-@@ -465,11 +465,11 @@
+@@ -494,11 +494,11 @@
  
  # This file has all the information about oper classes, types and o:lines.
  # You *MUST* edit it.
@@ -27,7 +27,7 @@ index 9baaa5261..60e277310 100644
  
  #-#-#-#-#-#-#-#-#-#-  MISCELLANEOUS CONFIGURATION  -#-#-#-#-#-#-#-#-#-#
  #                                                                     #
-@@ -478,7 +478,7 @@
+@@ -507,7 +507,7 @@
  #
  #   motd - displayed on connect and when a user executes /MOTD
  # Modules can also define their own files
@@ -36,7 +36,7 @@ index 9baaa5261..60e277310 100644
  
  # Example of an executable file include. Note this will be read on rehash,
  # not when the command is run.
-@@ -514,7 +514,7 @@
+@@ -543,7 +543,7 @@
  # the default of 'inspircd.pid' is used.                              #
  #                                                                     #
  
@@ -45,7 +45,7 @@ index 9baaa5261..60e277310 100644
  
  #-#-#-#-#-#-#-#-#-#-#-#-#- LIST MODE LIMITS #-#-#-#-#-#-#-#-#-#-#-#-#-#
  #                                                                     #
-@@ -1012,7 +1012,7 @@
+@@ -1041,7 +1041,7 @@
  # provide almost all the features of InspIRCd. :)                     #
  #                                                                     #
  # The default does nothing -- we include it for simplicity for you.   #
@@ -54,7 +54,7 @@ index 9baaa5261..60e277310 100644
  
  #-#-#-#-#-#-#-#-#-#-#-# SERVICES CONFIGURATION  #-#-#-#-#-#-#-#-#-#-#-#
  #                                                                     #
-@@ -1021,13 +1021,13 @@
+@@ -1050,13 +1050,13 @@
  # exemptions for services pseudoclients:                              #
  #
  # Anope users should uncomment this:
@@ -79,7 +79,7 @@ diff --git a/docs/conf/modules.conf.example b/docs/conf/modules.conf
 similarity index 99%
 rename from docs/conf/modules.conf.example
 rename to docs/conf/modules.conf
-index bb8a74dbc..397b61295 100644
+index 3bf1c2e99..b451a2f18 100644
 --- a/docs/conf/modules.conf.example
 +++ b/docs/conf/modules.conf
 @@ -832,7 +832,7 @@
@@ -91,7 +91,7 @@ index bb8a74dbc..397b61295 100644
  # detailed list of the restriction modes that can be exempted.        #
  # These are settable using: /MODE #chan +X <restriction>:<status>     #
  #<module name="exemptchanops">
-@@ -862,7 +862,7 @@
+@@ -868,7 +868,7 @@
  # Your choice of regex engine must match on all servers network-wide. #
  #                                                                     #
  # To learn more about the configuration of this module, read          #
@@ -100,7 +100,7 @@ index bb8a74dbc..397b61295 100644
  # filters and shows how to add exemptions.                            #
  #                                                                     #
  #-#-#-#-#-#-#-#-#-#-#-  FILTER  CONFIGURATION  -#-#-#-#-#-#-#-#-#-#-#-#
-@@ -871,7 +871,7 @@
+@@ -877,7 +877,7 @@
  # specify below the path to the filter.conf file, or define some      #
  # <keyword> tags.                                                     #
  #                                                                     #
@@ -109,7 +109,7 @@ index bb8a74dbc..397b61295 100644
  
  #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#
  # Flash Policy Daemon module: Allows Flash IRC clients (e.g. LightIRC)#
-@@ -961,7 +961,7 @@
+@@ -967,7 +967,7 @@
  # If you specify to use the helpop module, then specify below the     #
  # path to the helpop.conf file.                                       #
  #                                                                     #
@@ -118,7 +118,7 @@ index bb8a74dbc..397b61295 100644
  
  #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#
  # Hide chans module: Allows users to hide their channels list from non-
-@@ -1533,7 +1533,7 @@
+@@ -1545,7 +1545,7 @@
  # onoper        - If on, the message is sent on /OPER, otherwise it's #
  #                 only sent when /OPERMOTD is used.                   #
  #                                                                     #
@@ -127,7 +127,7 @@ index bb8a74dbc..397b61295 100644
  
  #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#
  # Override module: Adds support for oper override.
-@@ -2106,7 +2106,7 @@
+@@ -2123,7 +2123,7 @@
  # connections in order to oper up. It is highly recommended to load
  # this module if you use SSL on your network.
  # For how to use the oper features, please see the first
@@ -181,6 +181,14 @@ index 7cad2589c..082009da9 100644
  # ensure that you don't hastily include the file without reading it.
 -<die reason="Using opers.conf.example without editing it is a security risk">
 +<die reason="Using opers.conf without editing it is a security risk">
+diff --git a/docs/conf/providers/irccloud.conf.example b/docs/conf/providers/irccloud.conf
+similarity index 100%
+rename from docs/conf/providers/irccloud.conf.example
+rename to docs/conf/providers/irccloud.conf
+diff --git a/docs/conf/providers/kiwiirc-com.conf.example b/docs/conf/providers/kiwiirc-com.conf
+similarity index 100%
+rename from docs/conf/providers/kiwiirc-com.conf.example
+rename to docs/conf/providers/kiwiirc-com.conf
 diff --git a/docs/conf/quotes.txt.example b/docs/conf/quotes.txt
 similarity index 100%
 rename from docs/conf/quotes.txt.example
@@ -222,39 +230,38 @@ similarity index 100%
 rename from docs/conf/services/generic.conf.example
 rename to docs/conf/services/generic.conf
 diff --git a/make/template/main.mk b/make/template/main.mk
-index e39a24f87..e0fcbf4fc 100644
+index d77d59fa5..b28d7180d 100644
 --- a/make/template/main.mk
 +++ b/make/template/main.mk
-@@ -207,8 +207,8 @@ install: target
- 	@-$(INSTALL) -d -g @GID@ -o @UID@ -m $(INSTMODE_DIR) $(DATPATH)
- 	@-$(INSTALL) -d -g @GID@ -o @UID@ -m $(INSTMODE_DIR) $(LOGPATH)
+@@ -210,8 +210,8 @@ install: target
  	@-$(INSTALL) -d -g @GID@ -o @UID@ -m $(INSTMODE_DIR) $(BINPATH)
--	@-$(INSTALL) -d -g @GID@ -o @UID@ -m $(INSTMODE_DIR) $(CONPATH)/examples/services
--	@-$(INSTALL) -d -g @GID@ -o @UID@ -m $(INSTMODE_DIR) $(CONPATH)/examples/sql
+ 	@-$(INSTALL) -d -g @GID@ -o @UID@ -m $(INSTMODE_DIR) $(CONPATH)
+ 	@-$(INSTALL) -d -g @GID@ -o @UID@ -m $(INSTMODE_DIR) $(DATPATH)
+-	@-$(INSTALL) -d -g @GID@ -o @UID@ -m $(INSTMODE_DIR) $(EXAPATH)/services
+-	@-$(INSTALL) -d -g @GID@ -o @UID@ -m $(INSTMODE_DIR) $(EXAPATH)/sql
 +	@-$(INSTALL) -d -g @GID@ -o @UID@ -m $(INSTMODE_DIR) $(CONPATH)/services
 +	@-$(INSTALL) -d -g @GID@ -o @UID@ -m $(INSTMODE_DIR) $(CONPATH)/sql
+ 	@-$(INSTALL) -d -g @GID@ -o @UID@ -m $(INSTMODE_DIR) $(LOGPATH)
  	@-$(INSTALL) -d -g @GID@ -o @UID@ -m $(INSTMODE_DIR) $(MANPATH)
  	@-$(INSTALL) -d -g @GID@ -o @UID@ -m $(INSTMODE_DIR) $(MODPATH)
- 	@-$(INSTALL) -d -g @GID@ -o @UID@ -m $(INSTMODE_DIR) $(SCRPATH)
-@@ -225,9 +225,9 @@ endif
+@@ -229,9 +229,9 @@ endif
  	-$(INSTALL) -g @GID@ -o @UID@ -m $(INSTMODE_TXT) @CONFIGURE_DIRECTORY@/inspircd.1 $(MANPATH) 2>/dev/null
  	-$(INSTALL) -g @GID@ -o @UID@ -m $(INSTMODE_TXT) @CONFIGURE_DIRECTORY@/inspircd-genssl.1 $(MANPATH) 2>/dev/null
  	-$(INSTALL) -g @GID@ -o @UID@ -m $(INSTMODE_BIN) tools/genssl $(BINPATH)/inspircd-genssl 2>/dev/null
--	-$(INSTALL) -g @GID@ -o @UID@ -m $(INSTMODE_TXT) docs/conf/*.example $(CONPATH)/examples
--	-$(INSTALL) -g @GID@ -o @UID@ -m $(INSTMODE_TXT) docs/conf/services/*.example $(CONPATH)/examples/services
--	-$(INSTALL) -g @GID@ -o @UID@ -m $(INSTMODE_TXT) docs/sql/*.sql $(CONPATH)/examples/sql
+-	-$(INSTALL) -g @GID@ -o @UID@ -m $(INSTMODE_TXT) docs/conf/*.example $(EXAPATH)
+-	-$(INSTALL) -g @GID@ -o @UID@ -m $(INSTMODE_TXT) docs/conf/services/*.example $(EXAPATH)/services
+-	-$(INSTALL) -g @GID@ -o @UID@ -m $(INSTMODE_TXT) docs/sql/*.sql $(EXAPATH)/sql
 +	-$(INSTALL) -g @GID@ -o @UID@ -m $(INSTMODE_TXT) docs/conf/*.{conf,txt} $(CONPATH)
 +	-$(INSTALL) -g @GID@ -o @UID@ -m $(INSTMODE_TXT) docs/conf/services/* $(CONPATH)/services
 +	-$(INSTALL) -g @GID@ -o @UID@ -m $(INSTMODE_TXT) docs/sql/*.sql $(CONPATH)/sql
  	-$(INSTALL) -g @GID@ -o @UID@ -m $(INSTMODE_PRV) *.pem $(CONPATH) 2>/dev/null
  	@echo ""
  	@echo "*************************************"
-@@ -241,7 +241,7 @@ endif
+@@ -245,7 +245,6 @@ endif
  	@echo '  Data:' $(DATPATH)
  	@echo 'To start the ircd, run:' $(SCRPATH)/inspircd start
  	@echo 'Remember to create your config file:' $(CONPATH)/inspircd.conf
--	@echo 'Examples are available at:' $(CONPATH)/examples/
-+	@echo 'Examples are available at:' $(CONPATH)
+-	@echo 'Examples are available at:' $(EXAPATH)
  
  GNUmakefile: make/template/main.mk src/version.sh configure @CONFIGURE_CACHE_FILE@
  	./configure --update

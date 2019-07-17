@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -41,7 +41,7 @@ src_prepare() {
 	default
 
 	# Patch the inspircd launcher with the inspircd user
-	sed -i -e "s/@UID@/${PN}/" "${S}/make/template/${PN}" || die
+	sed -i -e "s/@UID@/${PN}/" "make/template/${PN}" || die
 }
 
 src_configure() {
