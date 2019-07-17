@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=zip? ( dev-perl/Archive-Zip ) >=dev-perl/Capture-Tiny-0.170.0 virtual/perl-ExtUtils-CBuilder >=virtual/perl-ExtUtils-MakeMaker-6.640.0 >=virtual/perl-ExtUtils-ParseXS-3.300.0 >=dev-perl/FFI-CheckLib-0.110.0 >=dev-perl/File-Which-1.100.0 dev-perl/File-chdir virtual/perl-JSON-PP virtual/perl-Module-Load >=dev-perl/Path-Tiny-0.77.0 >=virtual/perl-Test-Simple-1.302.15 >=virtual/perl-Text-ParseWords-3.260.0 virtual/pkgconfig test? ( dev-perl/Devel-Hide >=dev-perl/Test2-Suite-0.0.60 ) dev-lang/perl:=
+DESCRIPTION=Build external dependencies for use in CPAN
+EAPI=6
+HOMEPAGE=https://metacpan.org/release/Alien-Build
+IUSE=test zip examples
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=zip? ( dev-perl/Archive-Zip ) >=dev-perl/Capture-Tiny-0.170.0 virtual/perl-ExtUtils-CBuilder >=virtual/perl-ExtUtils-MakeMaker-6.640.0 >=virtual/perl-ExtUtils-ParseXS-3.300.0 >=dev-perl/FFI-CheckLib-0.110.0 >=dev-perl/File-Which-1.100.0 dev-perl/File-chdir virtual/perl-JSON-PP virtual/perl-Module-Load >=dev-perl/Path-Tiny-0.77.0 >=virtual/perl-Test-Simple-1.302.15 >=virtual/perl-Text-ParseWords-3.260.0 virtual/pkgconfig dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/P/PL/PLICEASE/Alien-Build-1.79.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	71c828c354a4cddced2641dda2695de5
+_md5_=dcce8f55e0fe75ca0785a3a6250ae237
