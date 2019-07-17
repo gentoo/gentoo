@@ -9,7 +9,7 @@ if [[ "${PV}" == "9999" ]]; then
 	EGIT_SUBMODULES=()
 	inherit git-r3
 else
-	KEYWORDS="~amd64 x86"
+	KEYWORDS="amd64 x86"
 	EGIT_COMMIT="1df2ebd329df1ece1a5ed485573ea58e5bc6ff97"
 	SRC_URI="https://github.com/KhronosGroup/Vulkan-Loader/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/Vulkan-Loader-${EGIT_COMMIT}"
