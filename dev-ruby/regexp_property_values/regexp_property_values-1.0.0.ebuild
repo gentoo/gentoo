@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-USE_RUBY="ruby23 ruby24 ruby25 ruby26"
+USE_RUBY="ruby24 ruby25 ruby26"
 
 RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 RUBY_FAKEGEM_EXTRADOC="README.md"
@@ -20,8 +20,8 @@ HOMEPAGE="https://github.com/janosch-x/regexp_property_values"
 SRC_URI="https://github.com/janosch-x/regexp_property_values/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
-SLOT="0"
-KEYWORDS="amd64 ~arm ~hppa ~x86"
+SLOT="1"
+KEYWORDS="~amd64 ~arm ~hppa ~x86"
 IUSE=""
 
 all_ruby_prepare() {
@@ -30,7 +30,7 @@ all_ruby_prepare() {
 
 	# Avoid dependency on character_set which would lead to circular
 	# dependencies.
-	sed -i -e '/returns a CharacterSet/askip "gentoo circular dependencies"' spec/regexp_property_values/extension_spec.rb || die
+	sed -i -e '/returns a CharacterSet/askip "gentoo circular dependencies"' spec/regexp_property_values/value_spec.rb || die
 }
 
 each_ruby_configure() {
