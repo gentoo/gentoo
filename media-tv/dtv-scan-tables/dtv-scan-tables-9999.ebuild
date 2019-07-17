@@ -20,7 +20,15 @@ SLOT="0"
 
 DEPEND=">=media-tv/v4l-utils-1.4"
 
+PATCHES=( "${FILESDIR}"/Makefile.patch )
 DOCS=( README )
+
+src_prepare() {
+	default
+
+	# Conversion failure!
+	rm -v dvb-t/ke-Nairobi || die
+}
 
 src_compile() {
 	emake dvbv3 dvbv5
