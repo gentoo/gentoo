@@ -103,7 +103,8 @@ NETBEANS_MODULES="apisupport cnd groovy gsf harness ide identity j2ee java mobil
 # Manuel Rüger <mrueg@gentoo.org> (2015-09-09)
 # Default Ruby build target(s)
 # Updated to include ruby24 on 2018-11-12
-RUBY_TARGETS="ruby24"
+# Updated to include ruby25 on 2019-07-17
+RUBY_TARGETS="ruby24 ruby25"
 
 # Samuli Suominen <ssuominen@gentoo.org> (2009-12-03)
 # Enable USE cxx by default so base-system and toolchain pkgs can start using USE cxx
