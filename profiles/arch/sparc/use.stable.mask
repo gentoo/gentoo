@@ -4,6 +4,10 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in use.mask
 
+# Hans de Graaff <graaff@gentoo.org> (2019-07-17)
+# Temporary mask for stable bug 688976
+ruby_targets_ruby25
+
 # Sergei Trofimovich <slyfox@gentoo.org> (2019-02-02)
 # No stable app-arch/rpm on sparc.
 rpm
