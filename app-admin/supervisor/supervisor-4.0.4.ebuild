@@ -30,6 +30,7 @@ BDEPEND="
 	test? (
 		${RDEPEND}
 		dev-python/mock[${PYTHON_USEDEP}]
+		dev-python/pytest[${PYTHON_USEDEP}]
 	)
 "
 
@@ -43,7 +44,7 @@ python_compile_all() {
 }
 
 python_test() {
-	esetup.py test
+	pytest -vv || die "tests failed with ${EPYTHON}"
 }
 
 python_install_all() {

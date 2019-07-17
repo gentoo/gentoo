@@ -75,6 +75,7 @@ src_install() {
 	dodir /usr/bin
 	cat <<-EOF >"${D}"/usr/bin/spotify || die
 		#! /bin/sh
+		LD_LIBRARY_PATH="/usr/$(get_libdir)/apulse" \\
 		exec ${SPOTIFY_HOME}/spotify "\$@"
 	EOF
 	fperms +x /usr/bin/spotify
