@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit bash-completion-r1 multiprocessing
+inherit bash-completion-r1 multiprocessing toolchain-funcs
 
 DESCRIPTION="compiled, garbage-collected systems programming language"
 HOMEPAGE="https://nim-lang.org/"
@@ -25,7 +25,7 @@ DEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-0.19.0-paths.patch
+	"${FILESDIR}"/${PN}-0.20.0-paths.patch
 )
 
 _run() {
@@ -40,6 +40,7 @@ nim_use_enable() {
 
 src_compile() {
 	export XDG_CACHE_HOME=${T}/cache #667182
+	tc-export CC LD
 
 	_run ./build.sh
 
