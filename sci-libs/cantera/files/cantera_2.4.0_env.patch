@@ -10,7 +10,20 @@ diff -Nur old/cantera-2.4.0/SConstruct new/cantera-2.4.0/SConstruct
                    toolchain=toolchain,
                    **extraEnvArgs)
  
-@@ -1061,7 +1061,7 @@
+@@ -727,11 +727,8 @@
+ env['cantera_pure_version'] = '.'.join(str(x) for x in ctversion.version)
+ env['cantera_short_version'] = '.'.join(str(x) for x in ctversion.version[:2])
+ 
+-try:
+-    env['git_commit'] = getCommandOutput('git', 'rev-parse', '--short', 'HEAD')
+-except Exception:
+-    env['git_commit'] = 'unknown'
++env['git_commit'] = 'unknown'
+ 
+ # Print values of all build options:
+ print("Configuration variables read from 'cantera.conf' and command line:")
+ for line in open('cantera.conf'):
+@@ -1062,7 +1062,7 @@
  
      # Ignore the minor version, e.g. 2.4.x -> 2.4
      env['sundials_version'] = '.'.join(sundials_version.split('.')[:2])
