@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit desktop eutils user
+inherit desktop eutils
 
 DESCRIPTION="Fast-paced Tetris-like puzzler"
 HOMEPAGE="http://www.chroniclogic.com/triptych.htm"
@@ -13,7 +13,8 @@ SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
 RESTRICT="bindist mirror strip"
 
-RDEPEND=">=media-libs/libsdl-1.2[abi_x86_32,opengl,sound,video]
+RDEPEND="acct-group/gamestat
+	>=media-libs/libsdl-1.2[abi_x86_32,opengl,sound,video]
 	virtual/opengl[abi_x86_32]
 	x11-libs/libX11[abi_x86_32]
 	x11-libs/libXext[abi_x86_32]"
@@ -25,10 +26,6 @@ S="${WORKDIR}/${PN}"
 
 DIR="/opt/${PN}"
 WRITABLE=( "${EROOT}${DIR}"/{hwconfig.cfg,${PN}.{clr,cnt,scr}} )
-
-pkg_setup() {
-	enewgroup gamestat 36
-}
 
 src_prepare() {
 	default

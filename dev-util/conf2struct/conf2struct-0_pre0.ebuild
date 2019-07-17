@@ -25,7 +25,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-dest-exists.patch"
 )
 
-LICENSE="GPL-2"
+LICENSE="BSD-2"
 SLOT="0"
 IUSE="caps pcre systemd tcpd"
 
