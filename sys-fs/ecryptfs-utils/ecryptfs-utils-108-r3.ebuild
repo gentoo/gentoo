@@ -44,6 +44,13 @@ pkg_setup() {
 	linux-info_pkg_setup
 }
 
+src_prepare() {
+	default
+	# Regenerate configure script to avoid hard coded paths e.g. /usr/lib that break
+	# cross-compilation on ARM32.
+	eautoreconf
+}
+
 src_configure() {
 	append-cppflags -D_FILE_OFFSET_BITS=64
 
