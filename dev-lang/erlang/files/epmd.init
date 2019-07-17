@@ -1,5 +1,5 @@
 #!/sbin/openrc-run
-# Copyright 2010-2018 Gentoo Authors
+# Copyright 2010-2019 Gentoo Authors
 # Distributed under the terms of the Apache License, Version 2.0
 
 ZT_ADDRESS=""
@@ -7,7 +7,7 @@ pidfile="/var/run/epmd.pid"
 command_args="-daemon -relaxed_command_check -address 127.0.0.1"
 
 depend() {
-	need loopback
+	need net.lo
 	before sshd
 }
 

@@ -1,11 +1,11 @@
 #!/sbin/openrc-run
-# Copyright 1999-2019 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the Erlang Public License 1.1
 
 pidfile="/var/run/epmd.pid"
 
 depend() {
-	need loopback
+	need net.lo
 	before sshd
 }
 
