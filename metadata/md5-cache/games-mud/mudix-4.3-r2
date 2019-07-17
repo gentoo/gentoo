@@ -1,11 +1,13 @@
-DEFINED_PHASES=compile install
-DEPEND=sys-libs/ncurses:0
+BDEPEND=virtual/pkgconfig >=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=compile install prepare
+DEPEND=sys-libs/ncurses:0=
 DESCRIPTION=A small, stable MUD client for the console
-EAPI=6
+EAPI=7
 HOMEPAGE=http://dw.nl.eu.org/mudix.html
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
-RDEPEND=sys-libs/ncurses:0
+RDEPEND=sys-libs/ncurses:0=
 SLOT=0
 SRC_URI=http://dw.nl.eu.org/mudix/mudix-4.3.tar.gz
-_md5_=1058362e634376f4cd7f39dc2827d92a
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
+_md5_=62d48b5b6f771baebd0fbf158d9d5772
