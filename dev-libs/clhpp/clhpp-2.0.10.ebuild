@@ -10,7 +10,7 @@ SRC_URI="https://github.com/KhronosGroup/OpenCL-CLHPP/archive/v${PV}.tar.gz -> $
 
 LICENSE="Khronos-CLHPP"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 inherit python-any-r1 cmake-utils
