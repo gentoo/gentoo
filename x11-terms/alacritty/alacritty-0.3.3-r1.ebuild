@@ -292,8 +292,8 @@ SRC_URI="https://github.com/jwilm/${PN}/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64"
-IUSE="+terminfo"
+KEYWORDS="amd64"
+IUSE=""
 
 DEPEND="
 	media-libs/fontconfig:=
@@ -303,6 +303,7 @@ DEPEND="
 
 RDEPEND="${DEPEND}
 	sys-libs/zlib
+	sys-libs/ncurses:0
 	x11-libs/libXcursor
 	x11-libs/libXi
 	x11-libs/libXrandr
@@ -311,7 +312,6 @@ RDEPEND="${DEPEND}
 
 BDEPEND="dev-util/cmake
 	>=virtual/rust-1.32.0
-	terminfo? ( sys-libs/ncurses )
 "
 
 DOCS=( CHANGELOG.md docs/ansicode.txt INSTALL.md README.md alacritty.yml )
@@ -340,12 +340,6 @@ src_install() {
 	doins -r scripts/*
 
 	einstalldocs
-
-	if use terminfo; then
-		tic -e alacritty,alacritty-direct -o "${T}" extra/alacritty.info || die "generating terminfo failed"
-		insinto /usr/share/terminfo/a/
-		doins  "${T}"/a/alacritty*
-	fi
 }
 
 pkg_postinst() {

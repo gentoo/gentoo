@@ -9,9 +9,6 @@
 		Alacritty is the fastest terminal emulator in existence.
 		Using the GPU for rendering enables optimizations that simply aren't possible in other emulators.
 	</longdescription>
-	<use>
-		<flag name="terminfo">Use tic from sys-libs/ncurses to generate alacritty terminfo files</flag>
-	</use>
 	<upstream>
 		<remote-id type="github">jwilm/alacritty</remote-id>
 	</upstream>
