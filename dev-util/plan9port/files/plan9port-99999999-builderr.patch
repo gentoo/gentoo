@@ -1,0 +1,27 @@
+diff --git a/INSTALL b/INSTALL
+index cb0df570..6f93fd70 100755
+--- a/INSTALL
++++ b/INSTALL
+@@ -41,7 +41,6 @@ echo " "
+ echo "* Resetting $PLAN9/config"
+ rm -f config
+ 
+-(
+ if [ `uname` = FreeBSD ]; then
+ 	case `cc -v 2>&1` in
+ 	*clang*)
+@@ -175,7 +174,7 @@ if $dobuild; then
+ 		echo "* Warning: not all binaries built successfully."
+ 	fi
+ 	echo "* Installing everything in $PLAN9/bin..."
+-	mk -k install || exit 1
++	mk install || exit 1
+ 	if [ ! -x $PLAN9/bin/cleanname -o ! -x $PLAN9/bin/acme -o ! -x $PLAN9/bin/sam ]; then
+ 		echo " "
+ 		echo "* Warning: not all binaries built successfully."
+@@ -227,5 +226,4 @@ if $doinstall; then
+ 	echo "	PLAN9=$PLAN9 export PLAN9"
+ 	echo '	PATH=$PATH:$PLAN9/bin export PATH'
+ fi
+-) 2>&1 | tee install.log | $awk -f $PLAN9/dist/isum.awk -v 'copy='install.sum
+ 
