@@ -1,0 +1,43 @@
+https://bugs.gentoo.org/690072
+
+--- mudix-4.3/configure.in
++++ mudix-4.3/configure.in
+@@ -4,9 +4,12 @@
+ 
+ dnl Checks for programs.
+ AC_PROG_CC
++PKG_PROG_PKG_CONFIG
+ 
+ dnl Checks for libraries.
+-AC_CHECK_LIB(ncurses, initscr)
++PKG_CHECK_MODULES(NCURSES, ncurses,,
++		  [AC_MSG_ERROR([Cannot find ncurses libs])]
++		 )
+ AC_CHECK_LIB(panel, new_panel)
+ 
+ dnl Checks for header files.
+--- mudix-4.3/Makefile.in
++++ mudix-4.3/Makefile.in
+@@ -1,5 +1,7 @@
++export NCURSES_LIBS=@NCURSES_LIBS@
++
+ all:
+-	(cd src; make) 
++	$(MAKE) -C src 
+ 
+ clean:
+-	(cd src; make $@)
++	$(MAKE) -C src $@
+--- mudix-4.3/src/Makefile.in
++++ mudix-4.3/src/Makefile.in
+@@ -2,9 +2,8 @@
+ #DEBUG   = -DKEY_DEBUG 
+ DEBUG   = 
+ EXEC    = ../mudix
+-O_FLAGS = -O -g
+ C_FLAGS = $(O_FLAGS) $(DEBUG) -Wall -I../include
+-L_FLAGS = $(O_FLAGS) $(DEBUG) -lpanel -lncurses
++L_FLAGS = $(O_FLAGS) $(DEBUG) -lpanel $(NCURSES_LIBS)
+ 
+ O_FILES = alias.o \
+           commands.o \
