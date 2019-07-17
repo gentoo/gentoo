@@ -35,9 +35,9 @@
 
 # Kent Fredric <kentnl@gentoo.org> (2019-07-14)
 # Broken since 2007, Upstream not seen since 2004.
-# Removal after 2019-08-13
+# Removal after 2019-08-16
 # Bug #635792
-dev-libs/libvorbis-perl
+dev-perl/libvorbis-perl
 
 # David Seifert <soap@gentoo.org> (2019-07-14)
 # Unmaintained, removed from Debian and other distros, tons of CVEs,
