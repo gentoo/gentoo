@@ -440,7 +440,6 @@ src_install() {
 		| xargs --no-run-if-empty --null sed -i '/Version/s@_Gentoo@@' \
 		|| die
 
-
 	local extensions_dir="${vbox_inst_path}/ExtensionPacks"
 
 	if use vnc ; then
