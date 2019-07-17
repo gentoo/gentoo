@@ -8,5 +8,5 @@ LICENSE=GPL-3+
 RDEPEND=>=virtual/emacs-23
 SLOT=0
 SRC_URI=https://github.com/ruby/elisp/archive/75bccbb384e6907df47ab69acdccb4536806c890.tar.gz -> ruby-mode-2.6.0.tar.gz
-_eclasses_=elisp	efe1c459331d853614b12c63ab169a32	elisp-common	23f47b2e1de7abf387105eddd1318738
+_eclasses_=elisp	f8026e46da659669c11e50c306d1aeb8	elisp-common	23f47b2e1de7abf387105eddd1318738
 _md5_=318f806f2cb0a2422797bfa1ec4d2ccc

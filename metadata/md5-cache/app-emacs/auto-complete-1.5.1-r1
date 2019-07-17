@@ -9,5 +9,5 @@ LICENSE=GPL-3+ FDL-1.1+
 RDEPEND=app-emacs/popup >=virtual/emacs-23
 SLOT=0
 SRC_URI=https://github.com/auto-complete/auto-complete/archive/v1.5.1.tar.gz -> auto-complete-1.5.1.tar.gz
-_eclasses_=elisp	efe1c459331d853614b12c63ab169a32	elisp-common	23f47b2e1de7abf387105eddd1318738
+_eclasses_=elisp	f8026e46da659669c11e50c306d1aeb8	elisp-common	23f47b2e1de7abf387105eddd1318738
 _md5_=b1b2b38bc7f144d4e15b3e8816ba9b89

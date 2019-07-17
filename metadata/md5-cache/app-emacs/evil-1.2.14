@@ -9,5 +9,5 @@ RDEPEND=>=app-emacs/undo-tree-0.6.3 >=virtual/emacs-23
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/emacs-evil/evil/archive/1.2.14.tar.gz -> evil-1.2.14.tar.gz
-_eclasses_=elisp	efe1c459331d853614b12c63ab169a32	elisp-common	23f47b2e1de7abf387105eddd1318738
+_eclasses_=elisp	f8026e46da659669c11e50c306d1aeb8	elisp-common	23f47b2e1de7abf387105eddd1318738
 _md5_=3c29f2eba7e6e408dcd99d800da5b9ca

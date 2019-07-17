@@ -8,5 +8,5 @@ LICENSE=GPL-3+
 RDEPEND=>=virtual/emacs-23
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~ulm/distfiles/paredit-23.tar.xz
-_eclasses_=elisp	efe1c459331d853614b12c63ab169a32	elisp-common	23f47b2e1de7abf387105eddd1318738	epatch	a1bf4756dba418a7238f3be0cb010c54
+_eclasses_=elisp	f8026e46da659669c11e50c306d1aeb8	elisp-common	23f47b2e1de7abf387105eddd1318738	epatch	a1bf4756dba418a7238f3be0cb010c54
 _md5_=cc59a57ffcb8673f6fcbedc308687d55

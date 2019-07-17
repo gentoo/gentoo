@@ -8,5 +8,5 @@ LICENSE=GPL-3+
 RDEPEND=>=app-emacs/dash-2.14.1 >=app-emacs/graphql-0.1.1 >=app-emacs/treepy-0.0.1 >=virtual/emacs-25
 SLOT=0
 SRC_URI=https://github.com/magit/ghub/archive/v3.0.0.tar.gz -> ghub-3.0.0.tar.gz
-_eclasses_=elisp	efe1c459331d853614b12c63ab169a32	elisp-common	23f47b2e1de7abf387105eddd1318738
+_eclasses_=elisp	f8026e46da659669c11e50c306d1aeb8	elisp-common	23f47b2e1de7abf387105eddd1318738
 _md5_=58eb719711c4867332a04700f2029a56

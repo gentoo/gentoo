@@ -9,5 +9,5 @@ LICENSE=GPL-2+
 RDEPEND=>=app-emacs/apel-10.6 app-emacs/flim app-emacs/semi bbdb? ( app-emacs/bbdb ) >=virtual/emacs-23
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~ulm/distfiles/wanderlust-2.15.9_p20130619.tar.xz
-_eclasses_=elisp	efe1c459331d853614b12c63ab169a32	elisp-common	23f47b2e1de7abf387105eddd1318738
+_eclasses_=elisp	f8026e46da659669c11e50c306d1aeb8	elisp-common	23f47b2e1de7abf387105eddd1318738
 _md5_=713957f6cba0e7593ef3e11cae0cb374
