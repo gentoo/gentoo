@@ -23,7 +23,7 @@ fi
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="alpha amd64 arm ~hppa ia64 ~mips ppc ppc64 ~sparc x86 ~x86-fbsd"
-IUSE="caps ipv6 pam ldap libressl samba sasl kerberos nis radius ssl snmp selinux logrotate test \
+IUSE="caps gnutls ipv6 pam ldap libressl samba sasl kerberos nis radius ssl snmp selinux logrotate test \
 	ecap esi ssl-crtd \
 	mysql postgres sqlite \
 	perl qos tproxy \
@@ -39,12 +39,14 @@ COMMON_DEPEND="caps? ( >=sys-libs/libcap-2.16 )
 	kerberos? ( virtual/krb5 )
 	qos? ( net-libs/libnetfilter_conntrack )
 	ssl? (
-		libressl? ( dev-libs/libressl:0 )
-		!libressl? ( dev-libs/openssl:0 )
-		dev-libs/nettle >=net-libs/gnutls-3.1.5 )
+		!gnutls? (
+			libressl? ( dev-libs/libressl:0 )
+			!libressl? ( dev-libs/openssl:0 ) )
+		dev-libs/nettle:= )
 	sasl? ( dev-libs/cyrus-sasl )
 	ecap? ( net-libs/libecap:1 )
 	esi? ( dev-libs/expat dev-libs/libxml2 )
+	gnutls? ( >=net-libs/gnutls-3.1.5 )
 	!x86-fbsd? ( logrotate? ( app-admin/logrotate ) )
 	>=sys-libs/db-4:*
 	dev-libs/libltdl:0"
@@ -206,7 +208,7 @@ src_configure() {
 		$(use_enable snmp) \
 		$(use_with ssl openssl) \
 		$(use_with ssl nettle) \
-		$(use_with ssl gnutls) \
+		$(use_with gnutls) \
 		$(use_enable ssl-crtd) \
 		$(use_enable ecap) \
 		$(use_enable esi) \
