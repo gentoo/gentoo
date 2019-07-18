@@ -3165,7 +3165,7 @@ dev-libs/ossp-uuid 1.6.2-r6: An ISO-C:1999 API with CLI for generating DCE, ISO/
 dev-libs/pakchois 0.4-r2: PaKChoiS - PKCS #11 wrapper library
 dev-libs/pcre++ 0.9.5-r1: A C++ support library for libpcre
 dev-libs/pkcs11-helper 1.25.1: PKCS#11 helper library
-dev-libs/poco 1.4.6_p4 1.9.0-r2: C++ libraries for building network-based applications
+dev-libs/poco 1.9.0-r2: C++ libraries for building network-based applications
 dev-libs/popt 1.16-r2: Parse Options - Command line parser
 dev-libs/ppl 1.1 1.2: The Parma Polyhedra Library for numerical analysis of complex systems
 dev-libs/protobuf 3.6.1.3 3.7.1: Google's Protocol Buffers - Extensible mechanism for serializing structured data
