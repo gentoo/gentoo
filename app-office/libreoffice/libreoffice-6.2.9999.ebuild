@@ -408,6 +408,7 @@ src_configure() {
 		--disable-epm
 		--disable-fetch-external
 		--disable-gstreamer-0-10
+		--disable-gtk3-kde5
 		--disable-online-update
 		--disable-openssl
 		--disable-pdfium
@@ -454,10 +455,6 @@ src_configure() {
 		$(use_with java)
 		$(use_with odk doxygen)
 	)
-
-	if use gtk && use kde; then
-		myeconfargs+=( --enable-gtk3-kde5 )
-	fi
 
 	if use eds || use gtk; then
 		myeconfargs+=( --enable-dconf --enable-gio )
