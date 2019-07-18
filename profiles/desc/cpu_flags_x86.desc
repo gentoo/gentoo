@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation.
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Whenever the flag name does not correspond to /proc/cpuinfo flags,
@@ -19,6 +19,7 @@ mmxext - Use the Extended MMX instruction set (a subset of SSE) ([mmxext] or [ss
 padlock - Use VIA padlock instructions ([phe] in cpuinfo)
 pclmul - Use Carry-less Multiplication instructions ([pclmulqdq] in cpuinfo)
 popcnt - Enable popcnt instruction support ([abm] or [popcnt] in cpuinfo)
+sha - Use the SHA-NI instruction set
 sse - Use the SSE instruction set
 sse2 - Use the SSE2 instruction set
 sse3 - Use the SSE3 instruction set ([pni] in cpuinfo, NOT ssse3)
