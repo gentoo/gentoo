@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-inherit toolchain-funcs multilib-minimal
+inherit toolchain-funcs multilib-minimal usr-ldscript
 
 MY_PN=${PN%-libs}
 MY_P="${MY_PN}-${PV}"

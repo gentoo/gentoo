@@ -6,7 +6,7 @@
 
 EAPI=6
 
-inherit toolchain-funcs multilib-minimal
+inherit toolchain-funcs multilib-minimal usr-ldscript
 
 DESCRIPTION="A high-quality data compressor used extensively by Gentoo Linux"
 HOMEPAGE="https://sourceware.org/bzip2/"

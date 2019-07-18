@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-inherit multilib-minimal toolchain-funcs flag-o-matic
+inherit multilib-minimal toolchain-funcs flag-o-matic usr-ldscript
 
 DESCRIPTION="Asynchronous input/output library that uses the kernels native interface"
 HOMEPAGE="https://pagure.io/libaio"

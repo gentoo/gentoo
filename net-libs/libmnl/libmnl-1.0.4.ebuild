@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils toolchain-funcs
+inherit eutils toolchain-funcs usr-ldscript
 
 DESCRIPTION="Minimalistic netlink library"
 HOMEPAGE="https://netfilter.org/projects/libmnl/"

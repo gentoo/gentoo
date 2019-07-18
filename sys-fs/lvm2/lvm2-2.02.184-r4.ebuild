@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools linux-info multilib systemd toolchain-funcs udev flag-o-matic
+inherit autotools linux-info multilib systemd toolchain-funcs udev flag-o-matic usr-ldscript
 
 DESCRIPTION="User-land utilities for LVM2 (device-mapper) software"
 HOMEPAGE="https://sourceware.org/lvm2/"

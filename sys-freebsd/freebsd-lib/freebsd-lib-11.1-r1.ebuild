@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit bsdmk freebsd flag-o-matic multilib toolchain-funcs eutils multibuild multilib-build
+inherit bsdmk freebsd flag-o-matic multilib toolchain-funcs eutils multibuild multilib-build usr-ldscript
 
 DESCRIPTION="FreeBSD's base system libraries"
 SLOT="0"
