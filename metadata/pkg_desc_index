@@ -4575,7 +4575,7 @@ dev-python/appdirs 1.4.3: Module for determining appropriate platform-specific d
 dev-python/apsw 3.23.1_p1: APSW - Another Python SQLite Wrapper
 dev-python/aquarium 2.3-r1: Aquarium web application framework
 dev-python/argcomplete 1.4.1 1.9.4: Bash tab completion for argparse
-dev-python/argh 0.26.2 0.26.2-r1: A simple argparse wrapper
+dev-python/argh 0.26.2-r1: A simple argparse wrapper
 dev-python/args 0.1.0: Command Arguments for Humans
 dev-python/arrayterator 1.0.1-r1: A buffered iterator for reading big arrays in small contiguous blocks
 dev-python/arrow 0.12.1 0.13.1: Better dates and times for Python
@@ -4926,7 +4926,7 @@ dev-python/incremental 16.10.1: Incremental is a small library that versions you
 dev-python/inflect 0.2.5: Correctly inflect words and numbers
 dev-python/iniparse 0.4-r2: Better INI parser for Python
 dev-python/into 0.2.2: Data migration utilities
-dev-python/iocapture 0.1.2 0.1.2-r1: Capture stdout,stderr easily
+dev-python/iocapture 0.1.2-r1: Capture stdout,stderr easily
 dev-python/ioflo 1.5.0: Automated Reasoning Engine and Flow Based Programming Framework
 dev-python/ipaddr 2.1.11-r1: Python IP address manipulation library
 dev-python/ipaddress 1.0.14 1.0.18 1.0.19 1.0.22: IPv4/IPv6 manipulation library, backport of the ipaddress module
