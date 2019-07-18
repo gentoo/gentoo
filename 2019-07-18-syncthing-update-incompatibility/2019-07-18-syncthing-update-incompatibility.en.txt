@@ -1,0 +1,15 @@
+Title: Syncthing 1.2.0 and newer do not interoperate with 0.14.45 and older
+Author: Marek Szuba <marecki@gentoo.org>
+Posted: 2019-07-18
+Revision: 1
+News-Item-Format: 2.0
+Display-If-Installed: net-p2p/syncthing
+
+Starting with version 1.2.0, Syncthing always uses large, variable-sized,
+blocks to index and transfer files larger than 256 MiB [1]. Syncthing
+version 0.14.45 and older will initially appear to accept files scanned
+with large blocks, but will later panic during some internal file
+operations. Do NOT enable large blocks in clusters with devices still
+on v0.14.45 or older, e.g. Debian Stretch servers using official packages.
+
+[1] https://docs.syncthing.net/advanced/folder-uselargeblocks.html
