@@ -20,7 +20,7 @@ RDEPEND=""
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
 		dev-python/pytest[${PYTHON_USEDEP}]
-		$(python_gen_cond_dep 'dev-python/mock[${PYTHON_USEDEP}]' -2)
+		dev-python/six[${PYTHON_USEDEP}]
 		${RDEPEND}
 	)"
 
