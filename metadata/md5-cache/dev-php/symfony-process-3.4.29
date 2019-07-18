@@ -1,0 +1,13 @@
+DEFINED_PHASES=install prepare test
+DEPEND=test? ( dev-lang/php:* dev-php/fedora-autoloader dev-php/phpunit )
+DESCRIPTION=Symfony Process Component
+EAPI=7
+HOMEPAGE=https://github.com/symfony/process
+IUSE=test
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT
+RDEPEND=dev-lang/php:* dev-php/fedora-autoloader
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/symfony/process/archive/v3.4.29.tar.gz -> symfony-process-3.4.29.tar.gz
+_md5_=be1b68527401fd1b584a05170e38d41a

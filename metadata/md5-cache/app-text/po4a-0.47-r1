@@ -4,10 +4,10 @@ DESCRIPTION=Tools for helping translation of documentation
 EAPI=6
 HOMEPAGE=https://po4a.org/
 IUSE=test
-KEYWORDS=alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris ~x86-solaris
+KEYWORDS=alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris ~x86-solaris
 LICENSE=GPL-2
 RDEPEND=app-text/openjade dev-libs/libxslt dev-perl/Locale-gettext dev-perl/SGMLSpm dev-perl/TermReadKey dev-perl/Text-WrapI18N sys-devel/gettext dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://debian/pool/main/p/po4a/po4a_0.47.orig.tar.gz
 _eclasses_=l10n	97f2753e3f1f3753d53d856c7c0bbb0b	multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	71c828c354a4cddced2641dda2695de5
-_md5_=c4cec25223795e54dd7a355996518ada
+_md5_=f9c706381f9b24e19b7fb3ae98acc055

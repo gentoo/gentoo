@@ -1065,7 +1065,7 @@ app-misc/pysmssend 1.48-r2: Python Application for sending sms over multiple ISP
 app-misc/pystopwatch 2012.12.24.1-r1: clock and two countdown functions that can minimize to the tray
 app-misc/ranger 1.9.2: A vim-inspired file manager for the console
 app-misc/realpath 1.17: Return the canonicalized absolute pathname
-app-misc/recoll 1.24.1: A personal full text search package
+app-misc/recoll 1.24.1 1.25.19: A personal full text search package
 app-misc/regex-markup 0.10.0-r1: A tool to color syslog files as well
 app-misc/regionset 0.1-r1 0.2: Sets the region on DVD drives
 app-misc/remind 03.01.15: Ridiculously functional reminder program
@@ -1183,7 +1183,7 @@ app-officeext/dmaths 3.4.9.0-r1: Mathematics Formula Editor Extension
 app-officeext/languagetool 3.4: Style and Grammar Checker for libreoffice
 app-officeext/ooo2gd 3.0.0-r1: Extension for export to Google docs, zoho and WebDAV
 app-officeext/ooofbtools 2.55: Open/LibreOffice extension for the FictionBook2 format with validation
-app-officeext/texmaths 0.46.1: LaTeX Equation Editor for LibreOffice
+app-officeext/texmaths 0.46.1 0.48: LaTeX Equation Editor for LibreOffice
 app-pda/gnupod 0.99.8-r1: A collection of Perl-scripts for iPod
 app-pda/gtkpod 2.1.5: A graphical user interface to the Apple productline
 app-pda/ideviceinstaller 1.1.0: A tool to interact with the installation_proxy of an Apple's iDevice
@@ -10930,7 +10930,7 @@ x11-plugins/astime 2.8-r2: Analogue clock utility for X Windows
 x11-plugins/bfm 0.6.4-r3: a dockapp and gkrellm plug-in combining timecop's bubblemon and wmfishtime
 x11-plugins/bubblemon 1.46-r3: A fun monitoring applet for your desktop, complete with swimming duck
 x11-plugins/docker 1.5-r1: Openbox app which acts as a system tray for KDE and GNOME2
-x11-plugins/enigmail 2.0.8-r1: Mozilla extension to provide GPG support in mail clients
+x11-plugins/enigmail 2.0.8-r1 2.0.12: Mozilla extension to provide GPG support in mail clients
 x11-plugins/fsviewer 0.2.6-r2: A file system viewer for Window Maker
 x11-plugins/gkrellaclock 0.3.4-r1: Nice analog clock for GKrellM2
 x11-plugins/gkrellfire 0.4.2-r1: CPU load flames for GKrellM 2
