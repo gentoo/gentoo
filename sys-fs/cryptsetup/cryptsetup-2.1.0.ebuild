@@ -12,7 +12,7 @@ SRC_URI="mirror://kernel/linux/utils/${PN}/v$(ver_cut 1-2)/${P/_/-}.tar.xz"
 LICENSE="GPL-2+"
 SLOT="0/12" # libcryptsetup.so version
 [[ ${PV} != *_rc* ]] && \
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86"
+KEYWORDS="alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86"
 # cryptsetup does _not_ have a libressl backend. We only have this for REQUIRED_USE
 # and change "libressl" to "openssl" in our econf call.
 CRYPTO_BACKENDS="gcrypt kernel libressl nettle +openssl"
