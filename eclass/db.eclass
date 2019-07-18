@@ -30,7 +30,7 @@ db_fix_so() {
 	# now rebuild all the correct ones
 	for ext in so a; do
 		for name in libdb libdb_{cxx,tcl,java,sql,stl}; do
-			target=`find . -maxdepth 1 -type f -name "${name}-*.${ext}" |sort -n |tail -n 1`
+			target=$(find . -maxdepth 1 -type f -name "${name}-*.${ext}" |sort -V |tail -n 1)
 			[ -n "${target}" ] && ln -sf ${target//.\//} ${name}.${ext}
 		done;
 	done;
