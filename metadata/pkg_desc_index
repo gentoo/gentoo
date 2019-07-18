@@ -4811,7 +4811,7 @@ dev-python/flake8 2.1.0 2.2.5 2.5.4 3.5.0: A wrapper around PyFlakes, pep8 & mcc
 dev-python/flaky 3.1.1: Plugin for nose or py.test that automatically reruns flaky tests
 dev-python/flask 0.12.2 1.0.2: A microframework based on Werkzeug, Jinja2 and good intentions
 dev-python/flask-admin 1.0.6 1.5.1: Simple and extensible admin interface framework for Flask
-dev-python/flask-babel 0.11.2 0.11.2-r1: i18n and l10n support for Flask based on Babel and pytz
+dev-python/flask-babel 0.11.2-r1: i18n and l10n support for Flask based on Babel and pytz
 dev-python/flask-babelex 0.9.3: Adds i18n/l10n support to Flask applications
 dev-python/flask-cors 2.1.0: A Flask extension for Cross Origin Resource Sharing (CORS)
 dev-python/flask-dashed 0.1b_p2: Admin app framework for flask
