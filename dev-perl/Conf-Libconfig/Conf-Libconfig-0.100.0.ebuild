@@ -15,12 +15,17 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
+PERL_RM_FILES=(
+	"t/boilerplate.t"
+	"t/pod-coverage.t"
+	"t/pod-spell.t"
+	"t/pod.t"
+)
 RDEPEND="dev-libs/libconfig
 	virtual/perl-XSLoader"
 DEPEND="${RDEPEND}
 	dev-perl/ExtUtils-PkgConfig
 	test? (
-		dev-perl/Test-Pod
 		>=dev-perl/Test-Exception-0.430.0
 		>=dev-perl/Test-Deep-1.127.0
 		>=dev-perl/Test-Warn-0.320.0
