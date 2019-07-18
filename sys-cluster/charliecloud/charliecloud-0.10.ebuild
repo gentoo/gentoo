@@ -40,6 +40,11 @@ DEPEND="doc? (
 		net-misc/rsync
 	)"
 
+PATCHES=(
+	# See upstream bug: https://github.com/hpc/charliecloud/pull/481/
+	"${FILESDIR}"/"${PN}-${PV}"-fix-hardcoded-gcc.patch
+)
+
 src_compile() {
 	emake
 	use doc && emake -C doc-src

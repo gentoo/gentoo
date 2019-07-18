@@ -80,7 +80,7 @@ src_prepare() {
 src_configure() {
 	mycmakeargs=(
 		-DDEVICES="${USED_MODELS/;/}"
-		-DUDEVDIR="${EPREFIX}/$(get_udevdir)/rules.d"
+		-DUDEVDIR="${EPREFIX}$(get_udevdir)/rules.d"
 	)
 	cmake-utils_src_configure
 }

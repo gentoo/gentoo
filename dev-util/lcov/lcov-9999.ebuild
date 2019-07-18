@@ -22,6 +22,8 @@ IUSE="png"
 
 RDEPEND="
 	dev-lang/perl
+	dev-perl/JSON
+	dev-perl/PerlIO-gzip
 	png? ( dev-perl/GD[png] )
 "
 
