@@ -4555,7 +4555,7 @@ dev-python/PyQt5-sip 4.19.17: Private sip module for PyQt5
 dev-python/PyQtWebEngine 5.12.1: Python bindings for QtWebEngine
 dev-python/PyRSS2Gen 1.1: RSS feed generator written in Python
 dev-python/PySocks 1.6.7: SOCKS client module
-dev-python/QtPy 1.3.1-r1: Abstraction layer for PyQt5/PySide
+dev-python/QtPy 1.3.1-r1 1.4.2: Abstraction layer for PyQt5/PySide
 dev-python/WSME 0.8.0 0.9.1 0.9.2 0.9.3: Simplify the writing of REST APIs, and extend them with additional protocols.
 dev-python/absl-py 0.7.1: Abseil Python Common Libraries
 dev-python/addons 0.7: Dynamically extend other objects (formerly ObjectRoles)
@@ -5167,7 +5167,7 @@ dev-python/patch 1.16: Library to parse and apply unified diffs
 dev-python/path-py 8.1.2: A module wrapper for os.path
 dev-python/pathlib 1.0.1-r1: Object-oriented filesystem paths
 dev-python/pathlib2 2.3.0 2.3.2: Fork of pathlib aiming to support the full stdlib Python API
-dev-python/pathtools 0.1.2-r1 0.1.2-r2: Pattern matching and various utilities for file systems paths
+dev-python/pathtools 0.1.2-r2: Pattern matching and various utilities for file systems paths
 dev-python/patsy 0.4.1 0.5.1: Python module to describe statistical models and design matrices
 dev-python/paver 1.2.4: Python-based software project scripting tool along the lines of Make
 dev-python/pbkdf2 1.3: Implementation of the password-based key derivation function, PBKDF2, specified in RSA PKCS#5 v2.0
