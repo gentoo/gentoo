@@ -4,6 +4,7 @@
 # @ECLASS: cvs.eclass
 # @MAINTAINER:
 # vapier@gentoo.org (and anyone who wants to help)
+# @SUPPORTED_EAPIS: 4 5 6 7
 # @BLURB: This eclass provides generic cvs fetching functions
 # @DESCRIPTION:
 # This eclass provides the generic cvs fetching functions. To use this from an
@@ -185,10 +186,14 @@ if [[ ${ECVS_AUTH} == "ext" ]] ; then
 	DEPEND+=" net-misc/openssh"
 fi
 
+case ${EAPI:-0} in
+	4|5|6) ;;
+	7) BDEPEND="${DEPEND}"; DEPEND="" ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} is not supported" ;;
+esac
+
 # called from cvs_src_unpack
 cvs_fetch() {
-	has "${EAPI:-0}" 0 1 2 && ! use prefix && EPREFIX=
-
 	# Make these options local variables so that the global values are
 	# not affected by modifications in this function.
 
