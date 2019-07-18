@@ -11,7 +11,7 @@ if [[ ${PV} == *9999* ]]; then
 else
 	SRC_URI="http://ivana.home.cern.ch/ivana/${PN}.${PV}.tar.gz"
 	KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-	S="${WORKDIR}/${PN}.${PV}"
+	S="${WORKDIR}/${PN}"
 fi
 
 DESCRIPTION="Virtual Geometry Model for High Energy Physics Experiments"
@@ -40,6 +40,9 @@ DOCS=(
 	doc/VGMhistory.txt
 	doc/VGM.html
 	doc/VGMversions.html
+)
+PATCHES=(
+	"${FILESDIR}"/"${PN}-fix-FindCLHEP.patch"
 )
 
 src_configure() {
