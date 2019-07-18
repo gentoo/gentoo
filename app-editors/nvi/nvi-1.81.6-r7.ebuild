@@ -5,7 +5,7 @@ EAPI=6
 
 inherit autotools db-use flag-o-matic
 
-DESCRIPTION="Vi clone"
+DESCRIPTION="Re-implementation of the classic 4BSD ex/vi"
 HOMEPAGE="https://sites.google.com/a/bostic.com/keithbostic/vi"
 SRC_URI="http://garage.linux.student.kuleuven.be/~skimo/nvi/devel/${P}.tar.bz2"
 
