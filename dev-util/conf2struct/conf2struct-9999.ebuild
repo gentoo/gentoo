@@ -17,7 +17,7 @@ fi
 
 LICENSE="BSD-2"
 SLOT="0"
-IUSE="caps pcre systemd tcpd"
+IUSE=""
 
 RDEPEND="dev-libs/libconfig
 	dev-perl/Conf-Libconfig"
