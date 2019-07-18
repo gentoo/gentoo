@@ -42,6 +42,9 @@ DOCS=(
 	history
 	README.md
 )
+PATCHES=(
+	"${FILESDIR}"/"${PN}-${PV}"-fix-cflags.patch
+)
 
 src_configure() {
 	local mycmakeargs=(
@@ -78,8 +81,12 @@ src_test() {
 	# see e.g. https://sft.its.cern.ch/jira/browse/ROOT-8146 .
 	addwrite /dev/random
 	cd examples || die
-	./test_suite.sh --debug --g3=off --garfield=off --builddir="${BUILD_DIR}" || die
-	./test_suite_exe.sh -debug --g3=off --garfield=off --builddir="${BUILD_DIR}" || die
+	# Bug: Can not disable Garfield in test suite, fixed upstream.
+	sed -i 's/ExGarfield//' test_suite.sh || die
+	# Bug: Path for E03 sub-examples wrong, see https://github.com/vmc-project/geant4_vmc/pull/11 .
+	sed -i 's#only in E03 test#only in E03 test\nG4EXEDIR=${BUILDDIR}/examples/$EXAMPLE/$OPTION#' test_suite_exe.sh || die
+	./test_suite.sh --g3=off --builddir="${BUILD_DIR}" || die
+	./test_suite_exe.sh --g3=off --garfield=off --builddir="${BUILD_DIR}" || die
 }
 
 src_install() {

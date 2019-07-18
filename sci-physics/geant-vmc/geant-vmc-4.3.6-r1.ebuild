@@ -11,8 +11,8 @@ if [[ ${PV} == *9999* ]]; then
 else
 	DOWN_PV=$(ver_cut 2-)
 	SRC_URI="http://root.cern.ch/download/vmc/geant4_vmc.${DOWN_PV}.tar.gz"
-	SOURCE_PV=$(ver_rs 1- . ${DOWN_PV})
-	S="${WORKDIR}/geant4_vmc.${SOURCE_PV}"
+	SOURCE_PV=$(ver_rs 1- - ${DOWN_PV})
+	S="${WORKDIR}/geant4_vmc-${SOURCE_PV}"
 	KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 fi
 
@@ -26,12 +26,12 @@ IUSE="doc examples geant3 +g4root +mtroot vgm test"
 # sci-physics/root[c++11] required to match sci-physics/geant flags.
 RDEPEND="
 	>=sci-physics/geant-4.10.03:=[opengl,geant3?]
+	<sci-physics/geant-4.10.05:=
 	sci-physics/root:=[c++11,vmc]
 	vgm? ( >=sci-physics/vgm-4.4:= )"
 DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )"
 RESTRICT="
-	!examples? ( test )
 	!geant3? ( test )
 	!g4root? ( test )
 	!mtroot? ( test )
@@ -78,8 +78,8 @@ src_test() {
 	# see e.g. https://sft.its.cern.ch/jira/browse/ROOT-8146 .
 	addwrite /dev/random
 	cd examples || die
-	./test_suite.sh --debug --g3=off --garfield=off --builddir="${BUILD_DIR}" || die
-	./test_suite_exe.sh -debug --g3=off --garfield=off --builddir="${BUILD_DIR}" || die
+	./test_suite.sh --g3=off --builddir="${BUILD_DIR}" || die
+	./test_suite_exe.sh --g3=off --builddir="${BUILD_DIR}" || die
 }
 
 src_install() {
