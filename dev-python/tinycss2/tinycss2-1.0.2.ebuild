@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{5,6} )
 inherit distutils-r1
 
 DESCRIPTION="A complete yet simple CSS parser for Python"
-HOMEPAGE="https://github.com/SimonSapin/tinycss2/ https://pypi.python.org/pypi/tinycss2/"
+HOMEPAGE="https://github.com/Kozea/tinycss2/ https://pypi.python.org/pypi/tinycss2/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
@@ -16,16 +16,19 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
-RDEPEND="dev-python/webencodings[${PYTHON_USEDEP}]"
+RDEPEND=">=dev-python/webencodings-0.4[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
+	>=dev-python/setuptools-39.2.0[${PYTHON_USEDEP}]
 	test? (
-		dev-python/pytest[${PYTHON_USEDEP}]
+		dev-python/pytest-cov[${PYTHON_USEDEP}]
 		dev-python/pytest-flake8[${PYTHON_USEDEP}]
 		dev-python/pytest-isort[${PYTHON_USEDEP}]
+		dev-python/pytest-runner[${PYTHON_USEDEP}]
+		dev-python/pytest[${PYTHON_USEDEP}]
 	)
 "
 
-DOCS=( CHANGES README.rst )
+DOCS=( README.rst )
 
 python_test() {
 	py.test || die "testsuite failed under ${EPYTHON}"

@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_5,3_6} )
 inherit distutils-r1
 
 DESCRIPTION="A complete yet simple CSS parser for Python"
-HOMEPAGE="https://github.com/SimonSapin/tinycss2/
+HOMEPAGE="https://github.com/Kozea/tinycss2/
 	https://pypi.org/project/tinycss2/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
