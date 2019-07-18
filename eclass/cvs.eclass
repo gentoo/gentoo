@@ -15,8 +15,6 @@
 if [[ -z ${_CVS_ECLASS} ]]; then
 _CVS_ECLASS=1
 
-inherit eutils
-
 # TODO:
 
 # Implement more auth types (gserver?, kserver?)
@@ -523,18 +521,6 @@ cvs_src_unpack() {
 	if [[ $(ls -A "${ECVS_TOP_DIR}/${ECVS_LOCALNAME}") == "CVS" ]] ; then
 		debug-print "${FUNCNAME}: removing empty CVS directory ${ECVS_LOCALNAME}"
 		rm -rf "${ECVS_TOP_DIR}/${ECVS_LOCALNAME}"
-	fi
-
-	# Implement some of base_src_unpack's functionality; note however
-	# that base.eclass may not have been inherited!
-	if [[ -n ${PATCHES} ]] ; then
-		debug-print "${FUNCNAME}: PATCHES=${PATCHES}, S=${S}, autopatching"
-		cd "${S}"
-		epatch ${PATCHES}
-		# Make sure we don't try to apply patches more than once,
-		# since cvs_src_unpack is usually called several times from
-		# e.g. kde-source_src_unpack
-		export PATCHES=""
 	fi
 
 	einfo "CVS module ${ECVS_MODULE} is now in ${WORKDIR}"
