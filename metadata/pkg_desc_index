@@ -570,7 +570,7 @@ app-editors/mousepad 0.4.1: GTK+-based editor for the Xfce Desktop Environment
 app-editors/nano 3.2 4.2: GNU GPL'd Pico clone with more functionality
 app-editors/nedit 5.6-r1: Multi-purpose text editor for the X Window System
 app-editors/ng 1.5_beta1-r2: Emacs like micro editor Ng -- based on mg2a
-app-editors/nvi 1.81.6-r7: Vi clone
+app-editors/nvi 1.81.6-r7: Re-implementation of the classic 4BSD ex/vi
 app-editors/okteta 0.26.1: Hex editor by KDE
 app-editors/pluma 1.22.0: Pluma text editor for the MATE desktop
 app-editors/qemacs 0.4.1_pre20150916 0.4.1_pre20170225: QEmacs is a very small but powerful UNIX editor
@@ -2051,7 +2051,7 @@ dev-haskell/cmdargs 0.10.7: Command line argument processing
 dev-haskell/cmdlib 0.3.5-r1 0.3.6: a library for command line parsing & online help
 dev-haskell/code-page 0.1.1: Windows code page library for Haskell
 dev-haskell/colour 2.3.3-r1: A model for human colour/color perception
-dev-haskell/comonad 4.2.7.2 5: Comonads
+dev-haskell/comonad 4.2.7.2 5: Haskell 98 compatible comonads
 dev-haskell/concurrent-extra 0.7.0.10: Extra concurrency primitives
 dev-haskell/conduit 1.0.15.1 1.1.6 1.2.6.6 1.2.8: Streaming data processing library
 dev-haskell/conduit-extra 1.1.9.1: Batteries included conduit: adapters for common libraries
