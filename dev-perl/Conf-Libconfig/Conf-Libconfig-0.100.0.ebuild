@@ -10,7 +10,7 @@ inherit perl-module
 
 DESCRIPTION="Perl extension for libconfig"
 
-LICENSE="|| ( Artistic GPL-1 GPL-2 GPL-3 )"
+LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
