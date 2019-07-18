@@ -37,5 +37,4 @@ src_configure() {
 src_install() {
 	cmake-utils_src_install
 	mv "${ED}/usr/etc" "${ED}/" || die
-	mv "${ED}/etc/${PN}/${PN}.example.conf" "${ED}/etc/${PN}/${PN}.conf" || die
 }
