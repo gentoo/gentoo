@@ -198,8 +198,6 @@ mozconfig_init() {
 	# Strip optimization so it does not end up in compile string
 	filter-flags '-O*'
 
-	filter-flags '-O*'
-
 	if is-flagq '-g*' ; then
 		mozconfig_annotate 'elf-hack broken with -g* flags' --disable-elf-hack
 	fi
