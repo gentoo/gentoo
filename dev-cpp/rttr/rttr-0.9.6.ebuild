@@ -11,7 +11,7 @@ SRC_URI="https://github.com/rttrorg/${PN}/releases/download/v${PV}/${P}-src.tar.
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="~amd64 ~arm64 x86"
 IUSE=""
 
 RESTRICT="test"
