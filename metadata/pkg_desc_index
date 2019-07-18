@@ -944,7 +944,7 @@ app-misc/bottlerocket 0.04c-r2: CLI interface to the X-10 Firecracker Kit
 app-misc/boxes 1.1.2-r1: Draw any kind of boxes around your text
 app-misc/byobu 5.123: A set of profiles for the GNU Screen console window manager (app-misc/screen)
 app-misc/c_rehash 1.7-r1: c_rehash script from OpenSSL
-app-misc/ca-certificates 20180409.3.37: Common CA Certificates PEM files
+app-misc/ca-certificates 20190110.3.43: Common CA Certificates PEM files
 app-misc/calendar 0.9.1-r1: Standard unix calendar program for Linux, ported from OpenBSD
 app-misc/cbrpager 0.9.22: a simple comic book pager
 app-misc/cdargs 1.35-r2: Bookmarks and browser for the shell builtin cd command
