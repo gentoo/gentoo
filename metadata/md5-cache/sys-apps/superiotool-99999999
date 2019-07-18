@@ -7,5 +7,5 @@ IUSE=pci
 LICENSE=GPL-2
 RDEPEND=pci? ( sys-apps/pciutils )
 SLOT=0
-_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	1d91b03d42ab6308b5f4f6b598ed110e	subversion	128c7b49f5671a6b089e47a6064db19e	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	1d91b03d42ab6308b5f4f6b598ed110e	subversion	128c7b49f5671a6b089e47a6064db19e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
 _md5_=78827e410dd0d79d6356fc45ff50413c

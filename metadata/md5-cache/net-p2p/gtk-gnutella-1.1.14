@@ -10,5 +10,5 @@ LICENSE=GPL-2
 RDEPEND=sys-libs/binutils-libs:= dev-libs/glib:2 sys-libs/zlib gtk? ( >=x11-libs/gtk+-2.2.1:2 ) dbus? ( >=sys-apps/dbus-0.35.2 ) ssl? ( >=net-libs/gnutls-2.2.5 ) nls? ( >=sys-devel/gettext-0.11.5 )
 SLOT=0
 SRC_URI=mirror://sourceforge/gtk-gnutella/gtk-gnutella-1.1.14.tar.xz
-_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
+_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
 _md5_=2267499cfb6fec5a3dcee29b167d2260

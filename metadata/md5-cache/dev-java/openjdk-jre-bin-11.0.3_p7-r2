@@ -11,5 +11,5 @@ RDEPEND=media-libs/fontconfig:1.0 media-libs/freetype:2 >net-libs/libnet-1.1 >=s
 RESTRICT=preserve-libs splitdebug
 SLOT=11
 SRC_URI=amd64? ( https://github.com/AdoptOpenJDK/openjdk11-binaries/releases/download/jdk-11.0.3+7/OpenJDK11U-jre_x64_linux_hotspot_11.0.3_7.tar.gz )
-_eclasses_=java-vm-2	7cfcabfd055e69d3568103a4e0b0fae7	multilib	1d91b03d42ab6308b5f4f6b598ed110e	pax-utils	db85a3c508cf82c45f24b2723791cc93	prefix	e51c7882b7b721e54e684f7eb143cbfe	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529	xdg-utils	14d00d009167652b1fa363e55effe213
+_eclasses_=java-vm-2	7cfcabfd055e69d3568103a4e0b0fae7	multilib	1d91b03d42ab6308b5f4f6b598ed110e	pax-utils	db85a3c508cf82c45f24b2723791cc93	prefix	e51c7882b7b721e54e684f7eb143cbfe	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56	xdg-utils	14d00d009167652b1fa363e55effe213
 _md5_=7b0a45293b961809995dfcb346264c66

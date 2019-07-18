@@ -8,5 +8,5 @@ LICENSE=public-domain
 RDEPEND=dev-lang/perl
 SLOT=0
 SRC_URI=http://pub.ks-and-ks.ne.jp/prog/pub/libmoe-1.5.8.tar.gz
-_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
+_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
 _md5_=71ad3febc7d381142f8b40955b17336b

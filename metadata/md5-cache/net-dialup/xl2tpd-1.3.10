@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=net-libs/libpcap >sys-kernel/linux-headers-2.6 net-dialup/ppp
 SLOT=0
 SRC_URI=https://github.com/xelerance/xl2tpd/archive/v1.3.10.tar.gz -> xl2tpd-1.3.10.tar.gz
-_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
+_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
 _md5_=a274efd4660fd1b177ca50bd1ee3ab66

@@ -8,5 +8,5 @@ IUSE=+gtk3 +vte
 LICENSE=GPL-2+ HPND
 RDEPEND=>=dev-libs/glib-2.32:2 !gtk3? ( >=x11-libs/gtk+-2.24:2 vte? ( x11-libs/vte:0 ) ) gtk3? ( >=x11-libs/gtk+-3.0:3 vte? ( x11-libs/vte:2.91 ) )
 SLOT=0
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	git-r3	0d4635eeb5a96cd5315597a47eba25c9	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	14d00d009167652b1fa363e55effe213
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	git-r3	0d4635eeb5a96cd5315597a47eba25c9	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	14d00d009167652b1fa363e55effe213
 _md5_=f271bfeab1344b5b36839304b876c77f

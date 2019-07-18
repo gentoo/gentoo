@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=dev-libs/json-c:0= >=sys-apps/dbus-1.4 sys-libs/ncurses:0=
 SLOT=0
 SRC_URI=https://github.com/l4rzy/ncman/archive/21a55145ddbc5d085e91352586875abe92cff73b.tar.gz -> ncman-0.0.1_p20190327.tar.gz
-_eclasses_=meson	2fbe03e3b496f82fd941bcdb9d351c91	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	08e17157a6807add7db1f8d01e7e391f	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529	vcs-snapshot	b77011b62e2053c646ad720defe6d921
+_eclasses_=meson	2fbe03e3b496f82fd941bcdb9d351c91	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	08e17157a6807add7db1f8d01e7e391f	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56	vcs-snapshot	b77011b62e2053c646ad720defe6d921
 _md5_=108fed96519e296d25bd49ea1bddffd9

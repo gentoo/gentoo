@@ -9,5 +9,5 @@ LICENSE=MIT
 RDEPEND=>=dev-libs/libparserutils-0.2.1-r1 >=dev-libs/libwapcaplet-0.4.0
 SLOT=0/0.8.0
 SRC_URI=https://download.netsurf-browser.org/libs/releases/libcss-0.8.0-src.tar.gz
-_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
+_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
 _md5_=874b89e8df469595ed2f2627f624cffe

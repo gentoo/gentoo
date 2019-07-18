@@ -6,5 +6,5 @@ KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
 LICENSE=GPL-2
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~jlec/distfiles/openvas-tools-0_pre20512.tar.xz
-_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
+_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
 _md5_=c7a290ce4405add8161427aebae7d2d1

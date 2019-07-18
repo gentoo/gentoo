@@ -10,5 +10,5 @@ LICENSE=GPL-2
 RDEPEND=dev-libs/libnl:= dev-libs/openssl:= dev-libs/popt net-libs/libnfnetlink sys-apps/iproute2 dbus? ( sys-apps/dbus ) json? ( dev-libs/json-c:= ) snmp? ( net-analyzer/net-snmp )
 SLOT=0
 SRC_URI=https://www.keepalived.org/software/keepalived-2.0.11.tar.gz
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
 _md5_=e4d67999ad4d3e8197e4ef40e4cea84d

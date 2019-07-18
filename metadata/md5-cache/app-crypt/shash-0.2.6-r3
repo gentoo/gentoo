@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=>=app-crypt/mhash-0.8.18-r1 static? ( app-crypt/mhash[static-libs(+)] )
 SLOT=0
 SRC_URI=ftp://mcrypt.hellug.gr/pub/mcrypt/shash/shash-0.2.6.tar.gz
-_eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
+_eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
 _md5_=cb4a960dfcef9c56df738bf4c2d1ef5a

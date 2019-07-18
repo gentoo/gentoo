@@ -8,5 +8,5 @@ KEYWORDS=amd64 ~arm ~arm64 hppa ~mips ppc ppc64 s390 sparc x86 ~x86-fbsd
 LICENSE=BSD
 SLOT=0/17
 SRC_URI=http://miniupnp.free.fr/files/miniupnpc-2.1.20190408.tar.gz
-_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
+_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
 _md5_=c6924d1f520882d10bf09978cef318a6

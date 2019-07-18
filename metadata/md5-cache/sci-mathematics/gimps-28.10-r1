@@ -8,5 +8,5 @@ LICENSE=GIMPS
 RDEPEND=net-misc/curl
 SLOT=0
 SRC_URI=amd64? ( ftp://mersenne.org/gimps/p95v2810.linux64.tar.gz ) x86? ( ftp://mersenne.org/gimps/p95v2810.linux32.tar.gz )
-_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	pax-utils	db85a3c508cf82c45f24b2723791cc93	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
+_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	pax-utils	db85a3c508cf82c45f24b2723791cc93	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
 _md5_=ac90d9dde2f1adb111b07612081b2cd0

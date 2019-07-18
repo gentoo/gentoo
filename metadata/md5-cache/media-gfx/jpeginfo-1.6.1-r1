@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=virtual/jpeg:0
 SLOT=0
 SRC_URI=https://www.kokkonen.net/tjko/src/jpeginfo-1.6.1.tar.gz
-_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
+_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
 _md5_=18fc011f9ec09bf0afba092058b0f29f

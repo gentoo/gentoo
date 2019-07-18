@@ -10,5 +10,5 @@ LICENSE=GPL-2
 RDEPEND=rsh? ( net-misc/netkit-rsh ) >=net-libs/neon-0.24.6[zlib?,ssl?,expat?] <=net-libs/neon-0.30.9999[zlib?,ssl?,expat?] xml? ( >=net-libs/neon-0.24.6[-expat] )
 SLOT=0
 SRC_URI=mirror://gentoo/sitecopy-0.16.6.tar.gz https://dev.gentoo.org/~jstein/files/sitecopy-0.16.6-04-manpages-addition-fixes.patch
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
 _md5_=05bb2fe55f18b750807b7e927f237340

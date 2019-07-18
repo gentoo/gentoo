@@ -10,5 +10,5 @@ LICENSE=GPL-2 LGPL-2.1
 RDEPEND=nls? ( >=virtual/libintl-0-r1[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_riscv_lp64d(-)?,abi_riscv_lp64(-)?,abi_s390_32(-)?,abi_s390_64(-)?] )
 SLOT=0
 SRC_URI=mirror://gnupg/libgpg-error/libgpg-error-1.36.tar.bz2
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multibuild	40fe59465edacd730c644ec2bc197809	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multilib-build	0d0c25170069d06d0eb233154229af97	multilib-minimal	8bddda43703ba94d8341f4e247f97566	prefix	e51c7882b7b721e54e684f7eb143cbfe	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multibuild	40fe59465edacd730c644ec2bc197809	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multilib-build	0d0c25170069d06d0eb233154229af97	multilib-minimal	8bddda43703ba94d8341f4e247f97566	prefix	e51c7882b7b721e54e684f7eb143cbfe	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
 _md5_=67de49c00c3e6a1d63bb3d8c4da95689

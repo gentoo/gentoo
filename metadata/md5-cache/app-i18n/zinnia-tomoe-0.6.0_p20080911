@@ -8,5 +8,5 @@ LICENSE=LGPL-2.1
 RDEPEND=app-i18n/zinnia
 SLOT=0
 SRC_URI=mirror://sourceforge/zinnia/zinnia-tomoe-0.6.0-20080911.tar.bz2
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
 _md5_=a41937dbee90edefc0b8972530381c5a

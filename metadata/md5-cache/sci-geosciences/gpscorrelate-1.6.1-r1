@@ -9,5 +9,5 @@ KEYWORDS=~amd64 ~hppa ~x86
 LICENSE=GPL-2
 SLOT=0
 SRC_URI=http://freefoote.dview.net/linux/gpscorrelate-1.6.1.tar.gz
-_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
 _md5_=e110af0e5ffedfb94dfae9fd469e47a1

@@ -9,5 +9,5 @@ LICENSE=LGPL-2.1
 RDEPEND=>=app-emulation/spice-protocol-0.12.8 media-libs/alsa-lib >=x11-libs/libpciaccess-0.10 x11-libs/libXfixes x11-libs/libXrandr x11-libs/libX11 x11-libs/libXinerama consolekit? ( sys-auth/consolekit sys-apps/dbus ) systemd? ( sys-apps/systemd ) selinux? ( sec-policy/selinux-vdagent )
 SLOT=0
 SRC_URI=https://www.spice-space.org/download/releases/spice-vdagent-0.17.0.tar.bz2 https://dev.gentoo.org/~tamiko/distfiles/spice-vdagent-0.17.0-patches-20180319.tar.xz
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	libtool	f143db5a74ccd9ca28c1234deffede96	linux-info	953c3b1c472dcadbf62098a9301327f2	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	libtool	f143db5a74ccd9ca28c1234deffede96	linux-info	953c3b1c472dcadbf62098a9301327f2	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
 _md5_=77a9149c6ea46c8bd266596df85ac75a

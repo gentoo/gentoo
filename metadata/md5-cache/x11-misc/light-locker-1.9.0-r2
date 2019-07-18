@@ -11,5 +11,5 @@ RDEPEND=dev-libs/dbus-glib dev-libs/glib sys-apps/dbus x11-libs/cairo x11-libs/g
 REQUIRED_USE=?? ( elogind systemd )
 SLOT=0
 SRC_URI=https://github.com/the-cavalry/light-locker/archive/v1.9.0.tar.gz -> light-locker-1.9.0.tar.gz
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	gnome2-utils	532371cfcba45b2ab0d2950547c97d95	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529	xdg-utils	14d00d009167652b1fa363e55effe213
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	gnome2-utils	532371cfcba45b2ab0d2950547c97d95	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56	xdg-utils	14d00d009167652b1fa363e55effe213
 _md5_=b1e439aa5d120a2910e0802efac92514

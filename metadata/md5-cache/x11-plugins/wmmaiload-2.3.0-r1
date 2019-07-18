@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=x11-libs/gtk+:2 x11-libs/libXpm
 SLOT=0
 SRC_URI=http://tnemeth.free.fr/projets/programmes/wmmaiload-2.3.0.tar.bz2
-_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
+_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
 _md5_=e940b3f4a921d643e1dc24764e1c1a77

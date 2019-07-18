@@ -9,5 +9,5 @@ LICENSE=MIT
 RDEPEND=x11-libs/libX11 xft? ( x11-libs/libXft ) xinerama? ( x11-libs/libXinerama ) xpm? ( x11-libs/libXpm )
 SLOT=2
 SRC_URI=https://github.com/robm/dzen/tarball/488ab66019f475e35e067646621827c18a879ba1 -> dzen-0.9.5_p1.tar.gz
-_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
+_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
 _md5_=dfce9c8409bcb15510ad3e7794785536

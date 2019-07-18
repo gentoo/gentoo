@@ -11,5 +11,5 @@ RDEPEND=zlib? ( sys-libs/zlib ) readline? ( sys-libs/readline:0= ) ssl? ( !libre
 REQUIRED_USE=pcsc-lite? ( !openct !ctapi ) openct? ( !pcsc-lite !ctapi ) ctapi? ( !pcsc-lite !openct ) || ( pcsc-lite openct ctapi )
 SLOT=0
 SRC_URI=https://github.com/OpenSC/OpenSC/releases/download/0.19.0/opensc-0.19.0.tar.gz
-_eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
+_eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
 _md5_=f3e6c9454543418d4ea356be73904b58

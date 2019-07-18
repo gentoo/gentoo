@@ -11,5 +11,5 @@ RDEPEND=>=sys-apps/dbus-1.4 >=dev-libs/glib-2.32 net-misc/mobile-broadband-provi
 REQUIRED_USE=dundee? ( bluetooth )
 SLOT=0
 SRC_URI=mirror://kernel/linux/network/ofono/ofono-1.28.tar.xz
-_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	multilib	1d91b03d42ab6308b5f4f6b598ed110e	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
+_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	multilib	1d91b03d42ab6308b5f4f6b598ed110e	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
 _md5_=7a921d91f7ee6b2fc12c9e56cf58deba

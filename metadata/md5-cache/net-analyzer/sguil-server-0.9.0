@@ -9,5 +9,5 @@ LICENSE=GPL-2 QPL
 RDEPEND=>=dev-lang/tcl-8.3:0=[-threads] >=dev-tcltk/tclx-8.3 dev-tcltk/tcllib dev-tcltk/mysqltcl ssl? ( >=dev-tcltk/tls-1.4.1 ) net-analyzer/p0f net-analyzer/tcpflow net-misc/openssh
 SLOT=0
 SRC_URI=https://github.com/bammv/sguil/archive/v0.9.0.tar.gz -> sguil-0.9.0.tar.gz
-_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	ssl-cert	a1a4daed6b2479901759d6fe367c4c29	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529	user	e68863263b1e8611dacf381bec5c8b2b
+_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	ssl-cert	a1a4daed6b2479901759d6fe367c4c29	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56	user	e68863263b1e8611dacf381bec5c8b2b
 _md5_=8c39529fb73afbb0907145afd7be12b9

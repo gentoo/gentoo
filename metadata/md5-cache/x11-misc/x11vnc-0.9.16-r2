@@ -10,5 +10,5 @@ LICENSE=GPL-2
 RDEPEND=>=net-libs/libvncserver-0.9.8[ssl] x11-libs/libX11 x11-libs/libXcursor x11-libs/libXext >=x11-libs/libXtst-1.1.0 !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:= ) xcomposite? ( x11-libs/libXcomposite ) xdamage? ( x11-libs/libXdamage ) xfixes? ( x11-libs/libXfixes ) xinerama? ( x11-libs/libXinerama ) xrandr? ( x11-libs/libXrandr ) zeroconf? ( >=net-dns/avahi-0.6.4 ) dev-lang/tk:0
 SLOT=0
 SRC_URI=https://github.com/LibVNC/x11vnc/archive/0.9.16.tar.gz -> x11vnc-0.9.16.tar.gz
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
 _md5_=27a2d7551d2b77d6caba4787eb616bc8

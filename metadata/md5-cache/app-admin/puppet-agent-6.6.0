@@ -11,5 +11,5 @@ RDEPEND=!app-admin/augeas !app-admin/puppet !dev-ruby/hiera !dev-ruby/facter !ap
 RESTRICT=strip
 SLOT=0
 SRC_URI=amd64? ( http://apt.puppetlabs.com/pool/stretch/puppet/p/puppet-agent/puppet-agent_6.6.0-1stretch_amd64.deb ) x86? ( http://apt.puppetlabs.com/pool/stretch/puppet/p/puppet-agent/puppet-agent_6.6.0-1stretch_i386.deb )
-_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	multilib	1d91b03d42ab6308b5f4f6b598ed110e	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529	unpacker	3cd8bad0d31e525cd26be1bfa4e61631	user	e68863263b1e8611dacf381bec5c8b2b
+_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	multilib	1d91b03d42ab6308b5f4f6b598ed110e	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56	unpacker	3cd8bad0d31e525cd26be1bfa4e61631	user	e68863263b1e8611dacf381bec5c8b2b
 _md5_=016066072d84907cd2a8cf6320d23290

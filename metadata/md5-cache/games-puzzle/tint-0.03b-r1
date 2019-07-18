@@ -9,5 +9,5 @@ LICENSE=BSD
 RDEPEND=>=sys-libs/ncurses-5.4-r1:0=
 SLOT=0
 SRC_URI=http://oasis.frogfoot.net/code/tint/download/0.03b/tint_0.03b.tar.gz
-_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
+_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
 _md5_=e3fb94c2b5ecdd9f74d80254e0b87d24

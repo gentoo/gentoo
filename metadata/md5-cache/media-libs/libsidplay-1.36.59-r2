@@ -8,5 +8,5 @@ KEYWORDS=alpha amd64 hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd
 LICENSE=GPL-2
 SLOT=1
 SRC_URI=http://critical.ch/distfiles/libsidplay-1.36.59.tgz
-_eclasses_=libtool	f143db5a74ccd9ca28c1234deffede96	multibuild	40fe59465edacd730c644ec2bc197809	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multilib-build	0d0c25170069d06d0eb233154229af97	multilib-minimal	8bddda43703ba94d8341f4e247f97566	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
+_eclasses_=libtool	f143db5a74ccd9ca28c1234deffede96	multibuild	40fe59465edacd730c644ec2bc197809	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multilib-build	0d0c25170069d06d0eb233154229af97	multilib-minimal	8bddda43703ba94d8341f4e247f97566	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
 _md5_=77b45ec74b46c068e6bb05af6ae1f6de

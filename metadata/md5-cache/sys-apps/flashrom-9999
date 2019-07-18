@@ -7,5 +7,5 @@ IUSE=atahpt +atapromise +atavia +buspirate_spi +ch341a_spi +dediprog +developerb
 LICENSE=GPL-2
 RDEPEND=!static? ( atahpt? ( sys-apps/pciutils ) atapromise? ( sys-apps/pciutils ) atavia? ( sys-apps/pciutils ) ch341a_spi? ( virtual/libusb:1 ) dediprog? ( virtual/libusb:1 ) developerbox_spi? ( virtual/libusb:1 ) digilent_spi? ( virtual/libusb:1 ) drkaiser? ( sys-apps/pciutils ) ft2232_spi? ( dev-embedded/libftdi:= ) gfxnvidia? ( sys-apps/pciutils ) it8212? ( sys-apps/pciutils ) internal? ( sys-apps/pciutils ) jlink_spi? ( dev-embedded/libjaylink ) nic3com? ( sys-apps/pciutils ) nicintel? ( sys-apps/pciutils ) nicintel_eeprom? ( sys-apps/pciutils ) nicintel_spi? ( sys-apps/pciutils ) nicnatsemi? ( sys-apps/pciutils ) nicrealtek? ( sys-apps/pciutils ) ogp_spi? ( sys-apps/pciutils ) pickit2_spi? ( virtual/libusb:0 ) rayer_spi? ( sys-apps/pciutils ) satamv? ( sys-apps/pciutils ) satasii? ( sys-apps/pciutils ) usbblaster_spi? ( dev-embedded/libftdi:= ) ) !internal_dmi? ( sys-apps/dmidecode )
 SLOT=0
-_eclasses_=git-r3	0d4635eeb5a96cd5315597a47eba25c9	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
+_eclasses_=git-r3	0d4635eeb5a96cd5315597a47eba25c9	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
 _md5_=afabb61c1fddd5f684d9729b28d4aa08

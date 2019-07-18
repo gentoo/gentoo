@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=>=x11-wm/windowmaker-0.95.2 x11-libs/libXft x11-libs/libXpm x11-libs/libX11
 SLOT=0
 SRC_URI=http://wie-im-flug.net/linux/fsviewer/fsviewer-app-0.2.6.tar.bz2
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
 _md5_=512b2cf254a118f5f45ea6e4aff3773e

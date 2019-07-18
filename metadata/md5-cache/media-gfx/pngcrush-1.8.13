@@ -9,5 +9,5 @@ LICENSE=pngcrush
 RDEPEND=system-libs? ( media-libs/libpng:0= sys-libs/zlib:= )
 SLOT=0
 SRC_URI=system-libs? ( mirror://sourceforge/pmt/pngcrush-1.8.13-nolib.tar.xz ) !system-libs? ( mirror://sourceforge/pmt/pngcrush-1.8.13.tar.xz )
-_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
+_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
 _md5_=b9284e7a10fd2b74571e4883e32e3dd2

@@ -11,5 +11,5 @@ REQUIRED_USE=test? ( debug )
 RESTRICT=test
 SLOT=0
 SRC_URI=https://i3wm.org/downloads/i3-4.15.tar.bz2
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	out-of-source	15edba2977da53bbf4d1e5a60abc0e34	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529	virtualx	401b718cc14d43a5a7fbe062c4851ba5
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	out-of-source	15edba2977da53bbf4d1e5a60abc0e34	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56	virtualx	401b718cc14d43a5a7fbe062c4851ba5
 _md5_=7a320b3d4208fa06ee4d7c1cb64cf9e2

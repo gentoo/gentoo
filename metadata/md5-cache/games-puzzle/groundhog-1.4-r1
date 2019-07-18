@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=x11-libs/gtk+:2 nls? ( virtual/libintl )
 SLOT=0
 SRC_URI=http://home-2.consunet.nl/~cb007736/groundhog-1.4.tar.gz mirror://debian/pool/main/g/groundhog/groundhog_1.4-9.diff.gz
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
 _md5_=f02b04e82a09b036001de4a0fe143c4d

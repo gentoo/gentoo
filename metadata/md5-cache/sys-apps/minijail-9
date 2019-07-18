@@ -9,5 +9,5 @@ LICENSE=BSD
 RDEPEND=sys-libs/libcap-ng:=
 SLOT=0
 SRC_URI=https://github.com/google/minijail/archive/linux-v9.tar.gz -> minijail-9.tar.gz
-_eclasses_=linux-info	953c3b1c472dcadbf62098a9301327f2	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
+_eclasses_=linux-info	953c3b1c472dcadbf62098a9301327f2	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
 _md5_=b605d9da44456b32f34e5d2abd16d818

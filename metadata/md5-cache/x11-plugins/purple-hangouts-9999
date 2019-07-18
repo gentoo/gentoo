@@ -7,5 +7,5 @@ HOMEPAGE=https://bitbucket.org/EionRobb/purple-hangouts
 LICENSE=GPL-3+
 RDEPEND=dev-libs/glib:2 dev-libs/json-glib dev-libs/protobuf-c:= net-im/pidgin sys-libs/zlib
 SLOT=0
-_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	mercurial	9813bb616cb1bd0c943177ab52204409	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
+_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	mercurial	9813bb616cb1bd0c943177ab52204409	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
 _md5_=270e7a6f5294f69696cc19fde378df13

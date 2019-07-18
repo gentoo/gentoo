@@ -11,5 +11,5 @@ RDEPEND=>=dev-libs/openssl-1.0.2:0=[-bindist] >=dev-libs/protobuf-3.7.0:= >=net-
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/grpc/grpc/archive/v1.21.1.tar.gz -> grpc-1.21.1.tar.gz
-_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	7ba73aee7fe4462b3a745e3645ab92ca	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
+_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	7ba73aee7fe4462b3a745e3645ab92ca	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
 _md5_=28ab7d08c5f1185675e6eabd2ea2e66a

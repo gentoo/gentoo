@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=dev-libs/glib:2 dev-libs/json-glib >=net-im/bitlbee-3[plugins]
 SLOT=0
 SRC_URI=https://github.com/bitlbee/bitlbee-facebook/archive/v1.2.0.tar.gz -> bitlbee-facebook-1.2.0.tar.gz
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
 _md5_=64a32a23c970502ff8537e47d5211fb0

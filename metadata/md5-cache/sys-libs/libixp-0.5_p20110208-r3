@@ -7,5 +7,5 @@ KEYWORDS=~amd64 ~hppa ~ppc ~ppc64 ~x86 ~x86-fbsd
 LICENSE=MIT
 SLOT=0
 SRC_URI=mirror://gentoo/libixp-0.5_p20110208.tar.xz
-_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
+_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
 _md5_=cbaacb82bba28004a5a4700fdb3cdf8b

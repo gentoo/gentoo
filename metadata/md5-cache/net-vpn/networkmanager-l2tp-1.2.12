@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=>=net-misc/networkmanager-1.2[ppp] dev-libs/dbus-glib net-dialup/ppp[eap-tls] net-dialup/xl2tpd >=dev-libs/glib-2.32 net-vpn/libreswan gnome? ( x11-libs/gtk+:3 gnome-base/libgnome-keyring )
 SLOT=0
 SRC_URI=https://github.com/nm-l2tp/NetworkManager-l2tp/releases/download/1.2.12/NetworkManager-l2tp-1.2.12.tar.xz
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	gnome.org	532d56d07b9eace4831aaa817d2b756a	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	gnome.org	532d56d07b9eace4831aaa817d2b756a	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
 _md5_=86191481a36e815c6e9f3b99e2d707ca

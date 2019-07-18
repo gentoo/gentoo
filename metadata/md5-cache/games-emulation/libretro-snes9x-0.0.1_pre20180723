@@ -8,5 +8,5 @@ LICENSE=Snes9x GPL-2 GPL-2+ LGPL-2.1 LGPL-2.1+ ISC MIT ZLIB Info-ZIP
 RESTRICT=bindist
 SLOT=0
 SRC_URI=https://github.com/libretro/snes9x/archive/d2aefd2f73d9f9241ede79c19598ecaa7079f82a.tar.gz -> libretro-snes9x-0.0.1_pre20180723.tar.gz
-_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	7ba73aee7fe4462b3a745e3645ab92ca	libretro-core	a24db3f198650e3d23b1fb9d8114df40	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
+_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	7ba73aee7fe4462b3a745e3645ab92ca	libretro-core	a24db3f198650e3d23b1fb9d8114df40	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
 _md5_=f56dca56e3b67f6a5fb2d5a29ded43d1

@@ -11,5 +11,5 @@ RDEPEND=alsa? ( media-libs/alsa-lib ) g726? ( >=media-libs/spandsp-0.0.6_pre1 ) 
 REQUIRED_USE=|| ( oss alsa portaudio coreaudio pulseaudio ) opengl? ( video ) theora? ( video ) v4l? ( video ) video? ( || ( opengl sdl X ) ) X? ( video )
 SLOT=0/3
 SRC_URI=mirror://nongnu/linphone/mediastreamer/mediastreamer-2.9.0.tar.gz
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
 _md5_=88b678639afc6357e13bd19106e3dde4

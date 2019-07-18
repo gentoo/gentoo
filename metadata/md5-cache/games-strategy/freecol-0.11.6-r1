@@ -9,5 +9,5 @@ LICENSE=GPL-2+
 RDEPEND=>=virtual/jre-1.8 dev-java/commons-cli:1 dev-java/cortado:0 dev-java/miglayout:0 >=dev-java/java-config-2.2.0-r3
 SLOT=0
 SRC_URI=mirror://sourceforge/freecol/freecol-0.11.6-src.zip
-_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	java-ant-2	6505e8068920164179b7e3926220c89f	java-pkg-2	c4e6af2574fd1dc79b43a6e27af4b5fb	java-utils-2	dd352559d0e143500ec878acc74da909	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	java-ant-2	6505e8068920164179b7e3926220c89f	java-pkg-2	c4e6af2574fd1dc79b43a6e27af4b5fb	java-utils-2	dd352559d0e143500ec878acc74da909	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
 _md5_=3c30e10550a74e31fbb27d1bcc40c282

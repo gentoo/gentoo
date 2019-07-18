@@ -9,5 +9,5 @@ LICENSE=Whitehead-MIT
 RDEPEND=!sci-biology/allpaths !sci-biology/allpathslg
 SLOT=0
 SRC_URI=ftp://ftp.broad.mit.edu/pub/crd/VAAL/latest_source_code/vaal-46233.tar.gz ftp://ftp.broad.mit.edu/pub/crd/VAAL/VAAL_manual.doc https://dev.gentoo.org/~mgorny/dist/vaal-46233_remove-namespace-std.patch.bz2
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
 _md5_=7fc8bec051332364e3d7f84f905d6f98

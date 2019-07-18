@@ -7,5 +7,5 @@ KEYWORDS=amd64 ppc x86 ~amd64-linux ~x86-linux
 LICENSE=richardson
 SLOT=0
 SRC_URI=http://kinemage.biochem.duke.edu/downloads/software/reduce31/reduce.3.16.111118.src.zip
-_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
+_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
 _md5_=4343b0ecf27a7f35d50655af17773bee

@@ -8,5 +8,5 @@ IUSE=jpeg png seccomp xpm
 LICENSE=ISC
 RDEPEND=x11-libs/pixman x11-libs/xcb-util x11-libs/xcb-util-image jpeg? ( virtual/jpeg:0= ) png? ( media-libs/libpng:0= ) seccomp? ( >=sys-libs/libseccomp-2.3.1:0= ) xpm? ( x11-libs/libXpm )
 SLOT=0
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	git-r3	0d4635eeb5a96cd5315597a47eba25c9	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	git-r3	0d4635eeb5a96cd5315597a47eba25c9	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
 _md5_=8f9b81d62d3e4c57a13f57365163bed3

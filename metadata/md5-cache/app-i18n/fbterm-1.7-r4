@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=media-libs/fontconfig media-libs/freetype:2 gpm? ( sys-libs/gpm ) video_cards_vesa? ( dev-libs/libx86 ) !>=sys-libs/ncurses-6.1
 SLOT=0
 SRC_URI=https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/fbterm/fbterm-1.7.0.tar.gz
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	fcaps	9445d60c1eb084a91c38ef4c070b2f16	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	fcaps	9445d60c1eb084a91c38ef4c070b2f16	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
 _md5_=247459bce431d78b30f78de634fcf1de

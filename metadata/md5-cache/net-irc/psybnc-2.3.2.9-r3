@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=ssl? ( >=dev-libs/openssl-0.9.7d ) oidentd? ( >=net-misc/oidentd-2.0 )
 SLOT=0
 SRC_URI=http://www.psybnc.at/download/beta/psyBNC-2.3.2-9.tar.gz
-_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529	user	e68863263b1e8611dacf381bec5c8b2b
+_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56	user	e68863263b1e8611dacf381bec5c8b2b
 _md5_=bcd0b15aee5ff1f60c74611621461441

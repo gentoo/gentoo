@@ -9,5 +9,5 @@ LICENSE=LGPL-2.1
 RDEPEND=media-libs/alsa-lib media-libs/munt-mt32emu X? ( x11-libs/libX11 x11-libs/libXpm x11-libs/libXt )
 SLOT=0
 SRC_URI=https://github.com/munt/munt/archive/munt_2_3_0.tar.gz
-_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	prefix	e51c7882b7b721e54e684f7eb143cbfe	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
+_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	prefix	e51c7882b7b721e54e684f7eb143cbfe	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
 _md5_=fa1e6d19714b9f84ef84e6e6bb55942e

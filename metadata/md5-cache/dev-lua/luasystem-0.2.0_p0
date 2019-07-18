@@ -8,5 +8,5 @@ LICENSE=MIT
 RDEPEND=>=dev-lang/lua-5.1:=
 SLOT=0
 SRC_URI=https://github.com/LuaDist2/luasystem/archive/0.2.0-0.tar.gz -> luasystem-0.2.0_p0.tar.gz
-_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
+_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
 _md5_=3fded8880e78b21f241373ac49e05e79

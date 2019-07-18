@@ -11,5 +11,5 @@ RDEPEND=>=dev-libs/glib-2.44:2 dev-libs/json-glib >=media-libs/babl-0.1.62 >=med
 REQUIRED_USE=svg? ( cairo ) vala? ( introspection )
 SLOT=0.4
 SRC_URI=http://download.gimp.org/pub/gegl/0.4/gegl-0.4.14.tar.bz2
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	gnome2-utils	532371cfcba45b2ab0d2950547c97d95	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-any-r1	4900ae970f827a22d33d41bd8b8f9ace	python-utils-r1	08e17157a6807add7db1f8d01e7e391f	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529	vala	682da46cf615b9f7a7d3680058139dcd	xdg-utils	14d00d009167652b1fa363e55effe213
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	gnome2-utils	532371cfcba45b2ab0d2950547c97d95	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-any-r1	4900ae970f827a22d33d41bd8b8f9ace	python-utils-r1	08e17157a6807add7db1f8d01e7e391f	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56	vala	682da46cf615b9f7a7d3680058139dcd	xdg-utils	14d00d009167652b1fa363e55effe213
 _md5_=e3338e465dfcc7fce052db5be5142bb4

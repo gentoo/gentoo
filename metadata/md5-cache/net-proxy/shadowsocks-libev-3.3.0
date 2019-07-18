@@ -10,5 +10,5 @@ LICENSE=GPL-3+
 RDEPEND=net-libs/mbedtls:= net-libs/libbloom net-libs/libcork net-libs/libcorkipset >=dev-libs/libsodium-1.0.8:= dev-libs/libev net-dns/c-ares dev-libs/libpcre
 SLOT=0
 SRC_URI=https://github.com/shadowsocks/shadowsocks-libev/archive/v3.3.0.tar.gz -> shadowsocks-libev-3.3.0.tar.gz
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
 _md5_=9b6618911e421f590a7cd23d6046f256

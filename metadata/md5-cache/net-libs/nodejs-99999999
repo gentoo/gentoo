@@ -9,5 +9,5 @@ LICENSE=Apache-1.1 Apache-2.0 BSD BSD-2 MIT
 RDEPEND=>=dev-libs/libuv-1.29.1:= >=net-dns/c-ares-1.15.0 >=net-libs/http-parser-2.8.0:= >=net-libs/nghttp2-1.38.0 sys-libs/zlib icu? ( >=dev-libs/icu-64.2:= ) ssl? ( >=dev-libs/openssl-1.1.1:0= )
 REQUIRED_USE=python_targets_python2_7 inspector? ( icu ssl ) npm? ( ssl )
 SLOT=0
-_eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	7ba73aee7fe4462b3a745e3645ab92ca	git-r3	0d4635eeb5a96cd5315597a47eba25c9	multilib	1d91b03d42ab6308b5f4f6b598ed110e	pax-utils	db85a3c508cf82c45f24b2723791cc93	python-single-r1	3a0fc81f484bfdbd9c2b7448015a36e4	python-utils-r1	08e17157a6807add7db1f8d01e7e391f	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
+_eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	7ba73aee7fe4462b3a745e3645ab92ca	git-r3	0d4635eeb5a96cd5315597a47eba25c9	multilib	1d91b03d42ab6308b5f4f6b598ed110e	pax-utils	db85a3c508cf82c45f24b2723791cc93	python-single-r1	3a0fc81f484bfdbd9c2b7448015a36e4	python-utils-r1	08e17157a6807add7db1f8d01e7e391f	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
 _md5_=e0b63462be0068a0d9b8030530326b04

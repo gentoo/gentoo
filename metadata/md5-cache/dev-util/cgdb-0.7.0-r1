@@ -10,5 +10,5 @@ LICENSE=GPL-2
 RDEPEND=sys-libs/ncurses:0= sys-libs/readline:0= sys-devel/gdb
 SLOT=0
 SRC_URI=https://github.com/cgdb/cgdb/archive/v0.7.0.tar.gz -> cgdb-0.7.0.tar.gz
-_eclasses_=multibuild	40fe59465edacd730c644ec2bc197809	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multilib-build	0d0c25170069d06d0eb233154229af97	multilib-minimal	8bddda43703ba94d8341f4e247f97566	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
+_eclasses_=multibuild	40fe59465edacd730c644ec2bc197809	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multilib-build	0d0c25170069d06d0eb233154229af97	multilib-minimal	8bddda43703ba94d8341f4e247f97566	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
 _md5_=18cb126c28de3324f76db7f5adf6e43a

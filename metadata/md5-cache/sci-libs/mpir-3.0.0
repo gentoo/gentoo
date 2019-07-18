@@ -8,5 +8,5 @@ KEYWORDS=~alpha amd64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh x86 ~amd64-fbsd ~amd64-l
 LICENSE=LGPL-3
 SLOT=0/23
 SRC_URI=http://www.mpir.org/mpir-3.0.0.tar.bz2
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
 _md5_=fa9a4c9e9d95c92e56a8eec54ca9f7e3

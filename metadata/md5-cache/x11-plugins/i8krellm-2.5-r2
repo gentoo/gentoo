@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=app-admin/gkrellm:2[X] >=app-laptop/i8kutils-1.5
 SLOT=0
 SRC_URI=http://www.coding-zone.com/i8krellm-2.5.tar.gz
-_eclasses_=gkrellm-plugin	c01023a3c28bc24f50c00ae019e8861e	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
+_eclasses_=gkrellm-plugin	c01023a3c28bc24f50c00ae019e8861e	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
 _md5_=1cd25cff53e4bd65e61b6c87c55d3afb

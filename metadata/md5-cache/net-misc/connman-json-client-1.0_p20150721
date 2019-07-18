@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=dev-libs/json-c:0= >=sys-apps/dbus-1.4 sys-libs/ncurses:0
 SLOT=0
 SRC_URI=https://github.com/eurogiciel-oss/connman-json-client/archive/3c34b2ee62d2e188090d20e7ed2fd94bab9c47f2.tar.gz -> connman-json-client-1.0_p20150721.tar.gz
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529	vcs-snapshot	b77011b62e2053c646ad720defe6d921
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56	vcs-snapshot	b77011b62e2053c646ad720defe6d921
 _md5_=3cc7e4d386ca80a02352e35f9458d451

@@ -8,5 +8,5 @@ IUSE=alsa debug jpeg mpeg2 mp3 opengl png truetype vorbis zlib
 LICENSE=GPL-2 LGPL-2.1
 RDEPEND=media-libs/glew:0= media-libs/libsdl2[X,sound,alsa,joystick,opengl,video] virtual/glu alsa? ( media-libs/alsa-lib ) jpeg? ( virtual/jpeg:0 ) mp3? ( media-libs/libmad ) mpeg2? ( media-libs/libmpeg2 ) opengl? ( virtual/opengl ) png? ( media-libs/libpng:0= ) truetype? ( media-libs/freetype:2 ) vorbis? ( media-libs/libvorbis ) zlib? ( sys-libs/zlib:= )
 SLOT=0
-_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	git-r3	0d4635eeb5a96cd5315597a47eba25c9	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	14d00d009167652b1fa363e55effe213
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	git-r3	0d4635eeb5a96cd5315597a47eba25c9	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	14d00d009167652b1fa363e55effe213
 _md5_=9041f6dc32f9524a9969a0391034dd3c

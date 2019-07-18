@@ -10,5 +10,5 @@ RDEPEND=x11-misc/xsel !static? ( >=app-text/mupdf-1.12.0:0= media-libs/openjpeg:
 RESTRICT=!ocamlopt? ( strip )
 SLOT=0
 SRC_URI=https://github.com/moosotc/llpp/archive/v30.tar.gz -> llpp-30.tar.gz
-_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529	xdg-utils	14d00d009167652b1fa363e55effe213
+_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56	xdg-utils	14d00d009167652b1fa363e55effe213
 _md5_=7c97418b9f5ae1a2430a298fdb37646b

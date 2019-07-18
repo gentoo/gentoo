@@ -10,5 +10,5 @@ RDEPEND=!dev-db/etcdctl
 RESTRICT=strip
 SLOT=0
 SRC_URI=https://github.com/etcd-io/etcd/archive/v3.3.12.tar.gz -> etcd-3.3.12.tar.gz
-_eclasses_=golang-base	c57d2c3f9e1a02d0feb8b87c7b689892	golang-vcs-snapshot	12177e83bede6f7fb87eae383864b40b	multilib	1d91b03d42ab6308b5f4f6b598ed110e	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529	user	e68863263b1e8611dacf381bec5c8b2b
+_eclasses_=golang-base	c57d2c3f9e1a02d0feb8b87c7b689892	golang-vcs-snapshot	12177e83bede6f7fb87eae383864b40b	multilib	1d91b03d42ab6308b5f4f6b598ed110e	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56	user	e68863263b1e8611dacf381bec5c8b2b
 _md5_=b876317d88f76efa6a56bd988991ea88

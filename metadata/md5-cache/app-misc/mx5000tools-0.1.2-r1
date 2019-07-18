@@ -9,5 +9,5 @@ LICENSE=GPL-2+
 RDEPEND=dev-libs/glib:2 media-libs/netpbm:=
 SLOT=0
 SRC_URI=https://web.archive.org/web/20170225160711/http://download.gna.org/mx5000tools/mx5000tools-0.1.2.tar.gz
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
 _md5_=452808c8e3e30fe0663a2d97e245be3a

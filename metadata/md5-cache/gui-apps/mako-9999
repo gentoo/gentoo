@@ -8,5 +8,5 @@ IUSE=+icons
 LICENSE=MIT
 RDEPEND=dev-libs/wayland x11-libs/pango x11-libs/cairo || ( sys-apps/systemd sys-auth/elogind ) sys-apps/dbus[user-session] icons? ( x11-libs/gtk+:3 x11-libs/gdk-pixbuf )
 SLOT=0
-_eclasses_=git-r3	0d4635eeb5a96cd5315597a47eba25c9	meson	2fbe03e3b496f82fd941bcdb9d351c91	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	08e17157a6807add7db1f8d01e7e391f	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
+_eclasses_=git-r3	0d4635eeb5a96cd5315597a47eba25c9	meson	2fbe03e3b496f82fd941bcdb9d351c91	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	08e17157a6807add7db1f8d01e7e391f	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
 _md5_=8f32dfe76f36e5bada6568c87347f2e4

@@ -10,5 +10,5 @@ LICENSE=GPL-2
 RDEPEND=!luajit? ( >=dev-lang/lua-5.1:= ) luajit? ( dev-lang/luajit:= ) protobuf? ( dev-libs/protobuf >=dev-libs/boost-1.42:= ) systemd? ( sys-apps/systemd:0= ) snmp? ( net-analyzer/net-snmp ) sodium? ( dev-libs/libsodium:= ) libressl? ( dev-libs/libressl:= ) !libressl? ( dev-libs/openssl:= ) >=dev-libs/boost-1.35:= !<net-dns/pdns-2.9.20-r1
 SLOT=0
 SRC_URI=https://downloads.powerdns.com/releases/pdns-recursor-4.2.0.tar.bz2
-_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	7ba73aee7fe4462b3a745e3645ab92ca	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
+_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	7ba73aee7fe4462b3a745e3645ab92ca	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
 _md5_=d0ea448e5aefb02e8c646f1f8066dbdb

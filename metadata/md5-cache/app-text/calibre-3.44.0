@@ -10,5 +10,5 @@ RDEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[sqlite,ssl] )
 REQUIRED_USE=python_targets_python2_7
 SLOT=0
 SRC_URI=https://download.calibre-ebook.com/3.44.0/calibre-3.44.0.tar.xz
-_eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	desktop	b1d22ac8bdd4679ab79c71aca235009d	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-single-r1	3a0fc81f484bfdbd9c2b7448015a36e4	python-utils-r1	08e17157a6807add7db1f8d01e7e391f	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529	xdg-utils	14d00d009167652b1fa363e55effe213
+_eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	desktop	b1d22ac8bdd4679ab79c71aca235009d	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-single-r1	3a0fc81f484bfdbd9c2b7448015a36e4	python-utils-r1	08e17157a6807add7db1f8d01e7e391f	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56	xdg-utils	14d00d009167652b1fa363e55effe213
 _md5_=d2c43b60830f643dc869fdc1a73172b1
