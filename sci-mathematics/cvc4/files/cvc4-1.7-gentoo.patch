@@ -33,3 +33,11 @@
    regress4/hole10.cvc
    regress4/instance_1151.smt
  )
+--- a/src/CMakeLists.txt	2019-07-18 08:56:47.923025745 +0200
++++ b/src/CMakeLists.txt	2019-07-18 08:58:10.584750385 +0200
+@@ -915,4 +915,4 @@
+ # Note: This is a temporary fix until the new C++ API is in place.
+ install(CODE "execute_process(COMMAND
+                 ${CMAKE_CURRENT_LIST_DIR}/fix-install-headers.sh
+-                ${CMAKE_INSTALL_PREFIX})")
++                \$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX})")
