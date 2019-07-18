@@ -89,14 +89,24 @@ SLOT="0"
 RESTRICT=""
 IUSE="ibm +firmware"
 
+# Note:
+# We need sys-devel/* deps like autoconf or automake at _runtime_
+# because genkernel will usually build things like LVM2, cryptsetup,
+# mdadm... during initramfs generation which will require these
+# things.
 DEPEND=""
 RDEPEND="${DEPEND}
 	app-arch/cpio
 	>=app-misc/pax-utils-1.2.2
+	app-portage/elt-patches
 	sys-apps/sandbox
+	sys-devel/autoconf
+	sys-devel/autoconf-archive
+	sys-devel/automake
+	sys-devel/libtool
+	virtual/pkgconfig
 	firmware? ( sys-kernel/linux-firmware )
 	!<sys-apps/openrc-0.9.9"
-# pax-utils is used for lddtree
 
 if [[ ${PV} == 9999* ]]; then
 	DEPEND="${DEPEND} app-text/asciidoc"
