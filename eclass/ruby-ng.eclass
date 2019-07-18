@@ -71,7 +71,7 @@ case ${EAPI} in
 	4|5)
 		inherits="eutils"
 		;;
-	6)
+	*)
 		inherits="estack"
 		;;
 esac
@@ -417,7 +417,7 @@ _ruby_apply_patches() {
 				fi
 			done
 			;;
-		6)
+		*)
 			if [[ -n ${RUBY_PATCHES[@]} ]]; then
 			   eqawarn "RUBY_PATCHES is no longer supported, use PATCHES instead"
 			fi
@@ -449,7 +449,9 @@ ruby-ng_src_prepare() {
 
 	# Handle PATCHES and user supplied patches via the default phase
 	case ${EAPI} in
-		6)
+		4|5)
+			;;
+		*)
 			_ruby_invoke_environment all default
 			;;
 	esac
