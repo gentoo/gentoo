@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile
+DEPEND=dev-libs/libaio dev-libs/libbsd dev-libs/libgcrypt:0= net-misc/lksctp-tools sys-apps/attr sys-apps/keyutils sys-libs/libapparmor sys-libs/libcap sys-libs/zlib:=
+DESCRIPTION=Stress test for a computer system with various selectable ways
+EAPI=7
+HOMEPAGE=https://kernel.ubuntu.com/~cking/stress-ng/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-libs/libaio dev-libs/libbsd dev-libs/libgcrypt:0= net-misc/lksctp-tools sys-apps/attr sys-apps/keyutils sys-libs/libapparmor sys-libs/libcap sys-libs/zlib:=
+SLOT=0
+SRC_URI=https://kernel.ubuntu.com/~cking/tarballs/stress-ng/stress-ng-0.10.00.tar.xz
+_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	8c7f9d80beedd16f2e5a7f612c609529
+_md5_=a95041841819e50aa140ab0c6272dd83

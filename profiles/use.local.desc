@@ -317,6 +317,7 @@ app-editors/nano:debug - Enable debug messages and assert warnings. Note that th
 app-editors/nano:justify - Enable justify/unjustify functions for text formatting.
 app-editors/nano:magic - Add magic file support (sys-apps/file) to automatically detect appropriate syntax highlighting
 app-editors/nano:minimal - Disable all fancy features, including ones that otherwise have a dedicated USE flag (such as spelling).
+app-editors/nano:split-usr - Enable this if /bin and /usr/bin are separate directories
 app-editors/okteta:designer - Build plugins for dev-qt/designer
 app-editors/tea:aspell - Enable spellchecking using app-text/aspell
 app-editors/tea:hunspell - Enable spellchecking using app-text/hunspell
