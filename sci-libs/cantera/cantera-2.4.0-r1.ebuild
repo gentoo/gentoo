@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 PYTHON_COMPAT=( python3_{5,6,7} )
 
@@ -100,12 +100,12 @@ src_test() {
 }
 
 src_install() {
-	escons install stage_dir="${D%/}" libdirname="$(get_libdir)"
+	escons install stage_dir="${D}" libdirname="$(get_libdir)"
 	if ! use cti ; then
-		rm -r "${D%/}/usr/share/man" || die "Can't remove man files."
+		rm -r "${D}/usr/share/man" || die "Can't remove man files."
 	else
 		# Run the byte-compile of modules
-		python_optimize "${D%/}/$(python_get_sitedir)/${PN}"
+		python_optimize "${D}/$(python_get_sitedir)/${PN}"
 	fi
 }
 
