@@ -42,6 +42,9 @@ DOCS=(
 	history
 	README.md
 )
+PATCHES=(
+	"${FILESDIR}"/"${PN}-${PV}"-fix-cflags.patch
+)
 
 src_configure() {
 	local mycmakeargs=(
