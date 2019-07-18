@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python{2_7,3_{5,6,7}} )
-inherit flag-o-matic java-pkg-opt-2 linux-info pax-utils python-single-r1 tmpfiles toolchain-funcs udev xdg
+inherit desktop flag-o-matic java-pkg-opt-2 linux-info pax-utils python-single-r1 tmpfiles toolchain-funcs udev xdg
 
 MY_PV="${PV/beta/BETA}"
 MY_PV="${MY_PV/rc/RC}"
