@@ -26,7 +26,7 @@ DEPEND="
 "
 RDEPEND="
 	>=dev-python/Babel-2.3.4[${PYTHON_USEDEP}]
-	!~dev-pythn/Babel-2.4.0
+	!~dev-python/Babel-2.4.0
 "
 
 python_install_all() {
