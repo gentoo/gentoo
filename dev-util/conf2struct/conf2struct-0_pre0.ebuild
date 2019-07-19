@@ -33,6 +33,11 @@ RDEPEND="dev-libs/libconfig
 	dev-perl/Conf-Libconfig"
 DEPEND="${RDEPEND}"
 
+src_compile(){
+	# -j1 due to parallel make issue reported upstream at: https://github.com/yrutschle/conf2struct/issues/10
+	emake -j1
+}
+
 src_install(){
 	emake DESTDIR="${D}" prefix="${EPREFIX%/}/usr" install
 }
