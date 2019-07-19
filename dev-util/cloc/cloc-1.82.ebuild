@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="Count Lines of Code"
 HOMEPAGE="https://github.com/AlDanial/cloc"
-SRC_URI="https://github.com/AlDanial/${PN}/archive/${PV}.tar.gz -> {P}.tar.gz"
+SRC_URI="https://github.com/AlDanial/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
