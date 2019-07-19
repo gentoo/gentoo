@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>christinavitting@gmail.com</email>
+		<name>Christina Vitting</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">teejee2008/timeshift</remote-id>
+	</upstream>
+</pkgmetadata>
