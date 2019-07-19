@@ -102,13 +102,3 @@ update_db() {
 		grep "${id}" "${dst}" 2>&1 >/dev/null || echo "${line}" >> "${dst}"
 	done < "${src}"
 }
-
-pkg_config() {
-	cd "${ROOT}"/usr/share/hddtemp || die
-
-	einfo "Trying to download the latest hddtemp.db file"
-	wget http://download.savannah.nongnu.org/releases/hddtemp/hddtemp.db -O hddtemp.db \
-		|| die "failed to download hddtemp.db"
-
-	update_db "hddgentoo.db" "hddtemp.db"
-}
