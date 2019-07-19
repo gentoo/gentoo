@@ -1,7 +1,8 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
+
 inherit toolchain-funcs
 
 MY_P="${P/-/_}"
@@ -18,7 +19,8 @@ RESTRICT="test" #59327
 RDEPEND="iconv? ( virtual/libiconv )
 	idn? ( net-dns/libidn2:= )
 	nls? ( virtual/libintl )"
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	app-arch/xz-utils
 	>=dev-lang/perl-5
 	virtual/pkgconfig
@@ -28,6 +30,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-4.7.2-config-file.patch
 	"${FILESDIR}"/${PN}-5.3.0-libidn_automagic.patch
 )
+
+S="${WORKDIR}/${PN}-5.4.4"
 
 src_prepare() {
 	default
@@ -59,7 +63,7 @@ src_install() {
 	dodoc README debian/changelog
 
 	if [[ ${USERLAND} != "GNU" ]]; then
-		mv "${ED%/}"/usr/share/man/man1/{whois,mdwhois}.1 || die
-		mv "${ED%/}"/usr/bin/{whois,mdwhois} || die
+		mv "${ED}"/usr/share/man/man1/{whois,mdwhois}.1 || die
+		mv "${ED}"/usr/bin/{whois,mdwhois} || die
 	fi
 }
