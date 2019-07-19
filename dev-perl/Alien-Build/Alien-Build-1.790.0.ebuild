@@ -10,7 +10,7 @@ inherit perl-module
 
 DESCRIPTION="Build external dependencies for use in CPAN"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~riscv ~x86"
 IUSE="test zip"
 
 # No, pkgconfig is not suspect, it actually uses it at runtime, and this module
