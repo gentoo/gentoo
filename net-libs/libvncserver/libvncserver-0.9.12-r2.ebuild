@@ -17,9 +17,10 @@ LICENSE="GPL-2+ LGPL-2.1+ BSD MIT"
 SLOT="0"
 KEYWORDS="alpha amd64 ~arm ~arm64 ~hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 IUSE="+24bpp gcrypt gnutls ipv6 +jpeg libressl lzo +png sasl ssl systemd +threads +zlib"
+# https://bugs.gentoo.org/690202
 # https://bugs.gentoo.org/435326
 # https://bugs.gentoo.org/550916
-REQUIRED_USE="ssl? ( !gnutls? ( threads ) ) png? ( zlib )"
+REQUIRED_USE="jpeg? ( zlib ) png? ( zlib ) ssl? ( !gnutls? ( threads ) )"
 
 DEPEND="
 	gcrypt? ( >=dev-libs/libgcrypt-1.5.3:0= )
