@@ -10,19 +10,11 @@ PYTHON_COMPAT=( python3_{5,6,7} )
 PYTHON_REQ_USE='ncurses,sqlite,ssl,threads(+)'
 
 # This list can be updated with scripts/get_langs.sh from the mozilla overlay
-<<<<<<< HEAD
-MOZ_LANGS=( ach af an ar ast az bg br bs ca cak cs cy da de dsb
-el en en-GB en-US eo es-AR es-CL es-ES es-MX et eu fa ff fi fr fy-NL ga-IE
-gd gl gn gu-IN he hi-IN hr hsb hu hy-AM id is it ja ka kab kk km kn ko lij lt lv
-mk mr ms nb-NO nl nn-NO pa-IN pl pt-BR pt-PT rm ro ru si sk sl son sq
-sr sv-SE ta te th tr uk uz vi xh zh-CN zh-TW )
-=======
 MOZ_LANGS=(ach af an ar ast az be bg bn br bs ca cak cs cy da de dsb el en en-CA
 en-GB en-US eo es-AR es-CL es-ES es-MX et eu fa ff fi fr fy-NL ga-IE gd gl gn gu-IN
 he hi-IN hr hsb hu hy-AM ia id is it ja ka kab kk km kn ko lij lt lv mk mr ms my
 nb-NO nl nn-NO oc pa-IN pl pt-BR pt-PT rm ro ru si sk sl son sq sr sv-SE ta te
 th tr uk ur uz vi xh zh-CN zh-TW )
->>>>>>> upstream/master
 
 # Convert the ebuild version to the upstream mozilla version, used by mozlinguas
 MOZ_PV="${PV/_alpha/a}" # Handle alpha for SRC_URI
@@ -72,11 +64,7 @@ SRC_URI="${SRC_URI}
 	${PATCH_URIS[@]}"
 
 CDEPEND="
-<<<<<<< HEAD
-	>=dev-libs/nss-3.43
-=======
 	>=dev-libs/nss-3.44.1
->>>>>>> upstream/master
 	>=dev-libs/nspr-4.21
 	dev-libs/atk
 	dev-libs/expat
@@ -107,17 +95,10 @@ CDEPEND="
 	x11-libs/libXrender
 	x11-libs/libXt
 	system-av1? (
-<<<<<<< HEAD
-		>=media-libs/dav1d-0.2.0:=
-		>=media-libs/libaom-1.0.0:=
-	)
-	system-harfbuzz? ( >=media-libs/harfbuzz-2.3.1:0= >=media-gfx/graphite2-1.3.13 )
-=======
 		>=media-libs/dav1d-0.3.0:=
 		>=media-libs/libaom-1.0.0:=
 	)
 	system-harfbuzz? ( >=media-libs/harfbuzz-2.4.0:0= >=media-gfx/graphite2-1.3.13 )
->>>>>>> upstream/master
 	system-icu? ( >=dev-libs/icu-63.1:= )
 	system-jpeg? ( >=media-libs/libjpeg-turbo-1.2.1 )
 	system-libevent? ( >=dev-libs/libevent-2.0:0=[threads] )
@@ -125,11 +106,7 @@ CDEPEND="
 		>=media-libs/libvpx-1.7.0:0=[postproc]
 		<media-libs/libvpx-1.8:0=[postproc]
 	)
-<<<<<<< HEAD
-	system-sqlite? ( >=dev-db/sqlite-3.27.2:3[secure-delete,debug=] )
-=======
 	system-sqlite? ( >=dev-db/sqlite-3.28.0:3[secure-delete,debug=] )
->>>>>>> upstream/master
 	system-webp? ( >=media-libs/libwebp-1.0.2:0= )
 	wifi? ( kernel_linux? ( >=sys-apps/dbus-0.60
 			>=dev-libs/dbus-glib-0.72
@@ -146,11 +123,7 @@ RDEPEND="${CDEPEND}
 DEPEND="${CDEPEND}
 	app-arch/zip
 	app-arch/unzip
-<<<<<<< HEAD
-	>=dev-util/cbindgen-0.8.2
-=======
 	>=dev-util/cbindgen-0.8.7
->>>>>>> upstream/master
 	>=net-libs/nodejs-8.11.0
 	>=sys-devel/binutils-2.30
 	sys-apps/findutils
@@ -184,21 +157,12 @@ DEPEND="${CDEPEND}
 		)
 	)
 	pulseaudio? ( media-sound/pulseaudio )
-<<<<<<< HEAD
-	>=virtual/cargo-1.31.0
-	>=virtual/rust-1.31.0
-	wayland? ( >=x11-libs/gtk+-3.11:3[wayland] )
-	amd64? ( >=dev-lang/yasm-1.1 virtual/opengl )
-	x86? ( >=dev-lang/yasm-1.1 virtual/opengl )
-	!system-av1? ( dev-lang/nasm )"
-=======
 	>=virtual/cargo-1.34.0
 	>=virtual/rust-1.34.0
 	wayland? ( >=x11-libs/gtk+-3.11:3[wayland] )
 	amd64? ( >=dev-lang/yasm-1.1 virtual/opengl )
 	x86? ( >=dev-lang/yasm-1.1 virtual/opengl )
 	!system-av1? ( >=dev-lang/nasm-2.13 )"
->>>>>>> upstream/master
 
 # Due to a bug in GCC, profile guided optimization will produce
 # AVX2 instructions, bug #677052
@@ -223,15 +187,12 @@ llvm_check_deps() {
 		return 1
 	fi
 
-<<<<<<< HEAD
-=======
 	if use pgo ; then
 		if ! has usersandbox $FEATURES ; then
 			eerror "You must enable usersandbox as X server can not run as root!"
 		fi
 	fi
 
->>>>>>> upstream/master
 	if use clang ; then
 		if ! has_version --host-root "=sys-devel/lld-${LLVM_SLOT}*" ; then
 			ewarn "=sys-devel/lld-${LLVM_SLOT}* is missing! Cannot use LLVM slot ${LLVM_SLOT} ..."
@@ -315,15 +276,6 @@ src_prepare() {
 		|| die "sed failed to drop --as-needed for ia64"
 	fi
 
-<<<<<<< HEAD
-	# Ensure that our plugins dir is enabled as default
-	sed -i -e "s:/usr/lib/mozilla/plugins:/usr/lib/nsbrowser/plugins:" \
-		"${S}"/xpcom/io/nsAppFileLocationProvider.cpp || die "sed failed to replace plugin path for 32bit!"
-	sed -i -e "s:/usr/lib64/mozilla/plugins:/usr/lib64/nsbrowser/plugins:" \
-		"${S}"/xpcom/io/nsAppFileLocationProvider.cpp || die "sed failed to replace plugin path for 64bit!"
-
-=======
->>>>>>> upstream/master
 	# Fix sandbox violations during make clean, bug 372817
 	sed -e "s:\(/no-such-file\):${T}\1:g" \
 		-i "${S}"/config/rules.mk \
