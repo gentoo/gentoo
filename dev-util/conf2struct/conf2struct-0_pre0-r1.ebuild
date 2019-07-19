@@ -12,8 +12,18 @@ if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3
 else
 	KEYWORDS="~amd64"
-	SRC_URI="https://github.com/yrutschle/conf2struct/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	GIT_COMMIT="10ea3356b65e712fb000f4d37f00e1dc09c1e722"
+	SRC_URI="https://github.com/yrutschle/conf2struct/archive/${GIT_COMMIT}.tar.gz -> ${P}.tar.gz"
+	S="${WORKDIR}/${PN}-${GIT_COMMIT}"
 fi
+
+PATCHES=(
+	"${FILESDIR}/${P}-install-and-uninstall.patch"
+	"${FILESDIR}/${P}-cc-and-cflags.patch"
+	"${FILESDIR}/${P}-destdir.patch"
+	"${FILESDIR}/${P}-install-not-run-all.patch"
+	"${FILESDIR}/${P}-dest-exists.patch"
+)
 
 LICENSE="BSD-2"
 SLOT="0"
@@ -24,7 +34,8 @@ RDEPEND="dev-libs/libconfig
 DEPEND="${RDEPEND}"
 
 src_compile(){
-	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS}"
+	# -j1 due to parallel make issue reported upstream at: https://github.com/yrutschle/conf2struct/issues/10
+	emake -j1 CC="$(tc-getCC)" CFLAGS="${CFLAGS}"
 }
 
 src_install(){
