@@ -152,7 +152,6 @@ PATCHES=(
 	"${FILESDIR}/ceph-14.2.0-dpdk-cflags.patch"
 	"${FILESDIR}/ceph-14.2.0-link-crc32-statically.patch"
 	"${FILESDIR}/ceph-14.2.0-cython-0.29.patch"
-	"${FILESDIR}/ceph-14.2.1-ncurses-tinfo.patch"
 )
 
 # dpdk and ninja don't get along
@@ -227,6 +226,7 @@ ceph_src_configure() {
 		-DWITH_MGR_DASHBOARD_FRONTEND=NO
 		-DWITH_NUMA=$(usex numa)
 		-DWITH_OPENLDAP=$(usex ldap)
+		-DMGR_PYTHON_VERSION=$(if python_is_python3; then echo 3; else echo 2; fi)
 		-DWITH_PYTHON3=$(if python_is_python3; then echo "ON"; else echo "OFF"; fi)
 		-DWITH_PYTHON2=$(if python_is_python3; then echo "OFF"; else echo "ON"; fi)
 		-DWITH_RADOSGW=$(usex radosgw)
