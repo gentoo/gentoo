@@ -199,7 +199,6 @@ src_prepare() {
 
 	# Prepare tools and libs witch are configured with autotools during compile time
 	AUTOTOOLS_DIRS=(
-		"${S}"/lib/cpluff
 		"${S}"/tools/depends/native/TexturePacker/src
 		"${S}"/tools/depends/native/JsonSchemaBuilder/src
 	)
@@ -214,7 +213,6 @@ src_prepare() {
 
 	# Prevent autoreconf rerun
 	sed -e 's/autoreconf -vif/echo "autoreconf already done in src_prepare()"/' -i \
-		"${S}"/cmake/modules/FindCpluff.cmake \
 		"${S}"/tools/depends/native/TexturePacker/src/autogen.sh \
 		"${S}"/tools/depends/native/JsonSchemaBuilder/src/autogen.sh \
 		|| die
