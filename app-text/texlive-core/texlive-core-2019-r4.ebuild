@@ -228,6 +228,7 @@ src_configure() {
 		--disable-native-texlive-build \
 		--disable-largefile \
 		--disable-build-in-source-tree \
+		--with-banner-add=" Gentoo Linux" \
 		$(use_enable luajittex) \
 		$(use_enable luajittex mfluajit) \
 		$(use_enable xetex) \
@@ -246,7 +247,7 @@ src_configure() {
 
 src_compile() {
 	tc-export CC CXX AR RANLIB
-	emake SHELL="${EPREFIX}"/bin/sh texmf="${EPREFIX}"${TEXMF_PATH:-/usr/share/texmf-dist}
+	emake AR="$(tc-getAR)" SHELL="${EPREFIX}"/bin/sh texmf="${EPREFIX}"${TEXMF_PATH:-/usr/share/texmf-dist}
 
 	cd "${B}" || die
 	# Mimic updmap --syncwithtrees to enable only fonts installed
