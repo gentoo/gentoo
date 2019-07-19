@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=0
@@ -10,7 +10,7 @@ HOMEPAGE="http://web.taranis.org/drraw"
 SRC_URI="http://web.taranis.org/${PN}/dist/${P}.tgz"
 
 LICENSE="GPL-2"
-KEYWORDS="~x86 ppc"
+KEYWORDS="ppc ~x86"
 IUSE=""
 
 RDEPEND=">=dev-lang/perl-5.6

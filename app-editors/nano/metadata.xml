@@ -35,5 +35,8 @@ perhaps providing other extra functionality.
   Disable all fancy features, including ones that otherwise have a dedicated
   USE flag (such as spelling).
  </flag>
+ <flag name="split-usr">
+  Enable this if /bin and /usr/bin are separate directories
+ </flag>
 </use>
 </pkgmetadata>

@@ -9,7 +9,7 @@ HOMEPAGE="https://pocoproject.org/"
 SRC_URI="https://github.com/pocoproject/${PN}/archive/${P}-release.tar.gz -> ${P}.tar.gz"
 LICENSE="Boost-1.0"
 SLOT="0"
-KEYWORDS="amd64 arm ~x86"
+KEYWORDS="amd64 arm x86"
 
 IUSE="7z cppparser +crypto +data examples +file2pagecompiler +json +pagecompiler iodbc libressl mariadb +mongodb mysql +net odbc pdf pocodoc sqlite +ssl test +util +xml +zip"
 REQUIRED_USE="
@@ -54,7 +54,7 @@ src_prepare() {
 		# and tests requiring running DB-servers, internet connections, etc.
 		sed -i \
 			-e '/testsuite/d' \
-			{Data/{MySQL,ODBC},MongoDB,Net,NetSSL_OpenSSL,PDF}/CMakeLists.txt || die
+			{Data/{MySQL,ODBC},MongoDB,Net,NetSSL_OpenSSL,PDF,Redis}/CMakeLists.txt || die
 		# Poco expands ~ using passwd, which does not match $HOME in the build environment
 		sed -i \
 			-e '/CppUnit_addTest.*testExpand/d' \
@@ -67,16 +67,19 @@ src_prepare() {
 	fi
 
 	if use mariadb ; then
-	        # Fix MariaDB detection
+		# Fix MariaDB detection
 		sed -i -e 's~/usr/include/mysql~~' \
 			-e 's/STATUS "Couldn/FATAL_ERROR "Couldn/' \
 		cmake/FindMySQL.cmake || die
 	else
-	        # Fix MySQL detection
+		# Fix MySQL detection
 		sed -i -e 's/mysqlclient_r/mysqlclient/' \
 			-e 's/STATUS "Couldn/FATAL_ERROR "Couldn/' \
 		cmake/FindMySQL.cmake || die
 	fi
+
+	# Add missing directory that breaks the build
+	mkdir -p Encodings/testsuite/data || die
 
 	cmake-utils_src_prepare
 }
@@ -113,6 +116,10 @@ src_configure() {
 	fi
 
 	cmake-utils_src_configure
+}
+
+src_test() {
+	POCO_BASE="${S}" cmake-utils_src_test
 }
 
 src_install() {

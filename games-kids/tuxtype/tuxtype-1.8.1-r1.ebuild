@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils user
+inherit eutils
 
 DESCRIPTION="Typing tutorial with lots of eye-candy"
 HOMEPAGE="https://github.com/tux4kids/tuxtype"
@@ -13,7 +13,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="svg"
 
-DEPEND="media-libs/libsdl[video]
+DEPEND="acct-group/gamestat
+	media-libs/libsdl[video]
 	media-libs/sdl-image
 	media-libs/sdl-mixer
 	media-libs/sdl-pango
@@ -22,10 +23,6 @@ DEPEND="media-libs/libsdl[video]
 RDEPEND=${DEPEND}
 
 S=${WORKDIR}/${PN}-upstream-${PV}
-
-pkg_setup(){
-	enewgroup gamestat 36
-}
 
 src_configure() {
 	econf \

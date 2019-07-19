@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_5,3_6} )
+PYTHON_COMPAT=( python{2_7,3_5,3_6,3_7} )
 
 inherit distutils-r1
 
@@ -44,5 +44,5 @@ src_prepare() {
 }
 
 python_test() {
-	py.test -v || die "Testing failed"
+	pytest -vv || die "Testing failed"
 }

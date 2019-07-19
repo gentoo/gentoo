@@ -531,16 +531,6 @@ _each_ruby_check_install() {
 	local sitedir=$(${RUBY} -rrbconfig -e 'puts RbConfig::CONFIG["sitedir"]')
 	local sitelibdir=$(${RUBY} -rrbconfig -e 'puts RbConfig::CONFIG["sitelibdir"]')
 
-	# Look for wrong files in sitedir
-	# if [[ -d "${D}${sitedir}" ]]; then
-	# 	local f=$(find "${D}${sitedir}" -mindepth 1 -maxdepth 1 -not -wholename "${D}${sitelibdir}")
-	# 	if [[ -n ${f} ]]; then
-	# 		eerror "Found files in sitedir, outsite sitelibdir:"
-	# 		eerror "${f}"
-	# 		die "Misplaced files in sitedir"
-	# 	fi
-	# fi
-
 	# The current implementation lacks libruby (i.e.: jruby)
 	[[ -z ${libruby_soname} ]] && return 0
 

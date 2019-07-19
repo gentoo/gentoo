@@ -62,10 +62,13 @@ pkg_setup() {
 
 src_prepare() {
 	cmake-utils_src_prepare
-	sed -r -i \
-		-e '/set.BOOST_PYTHON/s/python27/python-2.7/g' \
-		"${S}/CMakeLists.txt" \
-		|| die "Failed to update CMakeLists.txt for python2.7 boost"
+
+	if ! has_version ">=dev-libs/boost-1.70"; then
+		sed -r -i \
+			-e '/set.BOOST_PYTHON/s/python27/python-2.7/g' \
+			"${S}/CMakeLists.txt" \
+			|| die "Failed to update CMakeLists.txt for python2.7 boost"
+	fi
 
 	# Want to type "info ledger" not "info ledger3"
 	sed -i -e 's/ledger3/ledger/g' \

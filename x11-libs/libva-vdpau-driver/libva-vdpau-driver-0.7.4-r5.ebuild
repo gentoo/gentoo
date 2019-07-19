@@ -11,7 +11,7 @@ SRC_URI="https://www.freedesktop.org/software/vaapi/releases/libva-vdpau-driver/
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE="debug opengl"
 
 RDEPEND=">=x11-libs/libva-1.2.1-r1:=[X,opengl?,${MULTILIB_USEDEP}]
@@ -29,6 +29,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-VAEncH264VUIBufferType.patch
 	"${FILESDIR}"/${P}-libvdpau-0.8.patch
 	"${FILESDIR}"/${P}-sigfpe-crash.patch
+	"${FILESDIR}"/${P}-include-linux-videodev2.h.patch
 )
 
 src_prepare() {

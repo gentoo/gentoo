@@ -1,0 +1,26 @@
+diff --git a/Makefile.old b/Makefile
+index a4e4285..b3b3690 100644
+--- a/Makefile.old
++++ b/Makefile
+@@ -39,7 +39,7 @@ stamp-unpack-git:
+ 	touch $@
+ 
+ setup: stamp-setup
+-stamp-setup: stamp-unpack
++stamp-setup:
+ 	$(MAKE) -C perkamon setup
+ 	mv perkamon/build .
+ 	touch $@
+diff --git a/perkamon/Makefile.old b/perkamon/Makefile
+index 3a3aa32..57e532c 100644
+--- a/perkamon/Makefile.old
++++ b/perkamon/Makefile
+@@ -99,7 +99,7 @@ stamp-unpack-git:
+ #  Prepare sources for being used by po4a.
+ #  This target is called once after manual pages are unpacked.
+ setup: stamp-setup
+-stamp-setup: stamp-unpack
++stamp-setup:
+ 	-rm -rf build
+ 	mkdir -p build/C
+ 	for i in $$(seq 8); do mkdir build/C/man$$i; done

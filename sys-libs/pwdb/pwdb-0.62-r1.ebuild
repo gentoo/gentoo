@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit eutils toolchain-funcs flag-o-matic
+inherit eutils toolchain-funcs flag-o-matic usr-ldscript
 
 DESCRIPTION="Password database"
 HOMEPAGE="https://packages.gentoo.org/package/sys-libs/pwdb"

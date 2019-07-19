@@ -1,0 +1,13 @@
+diff --git a/scripts/utils.mk b/scripts/utils.mk
+index 260023a..9eb127d 100644
+--- a/scripts/utils.mk
++++ b/scripts/utils.mk
+@@ -54,7 +54,7 @@ do_build_static_lib =				\
+ 
+ do_compile_shared_library =			\
+ 	($(print_shared_lib_compile)		\
+-	$(CC) --shared $^ -o $@)
++	$(CC) --shared $^ -Wl,-soname,$@ -o $@)
+ 
+ do_compile_plugin_obj =				\
+ 	($(print_plugin_obj_compile)		\

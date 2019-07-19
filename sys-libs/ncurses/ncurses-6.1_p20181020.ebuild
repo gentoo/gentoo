@@ -3,12 +3,12 @@
 
 EAPI=7
 
-inherit flag-o-matic toolchain-funcs multilib-minimal preserve-libs
+inherit flag-o-matic toolchain-funcs multilib-minimal preserve-libs usr-ldscript
 
 MY_PV="${PV:0:3}"
 MY_P="${PN}-${MY_PV}"
 DESCRIPTION="console display library"
-HOMEPAGE="https://www.gnu.org/software/ncurses/ http://dickey.his.com/ncurses/"
+HOMEPAGE="https://www.gnu.org/software/ncurses/ https://invisible-island.net/ncurses/"
 SRC_URI="mirror://gnu/ncurses/${MY_P}.tar.gz"
 
 if [[ "${PV}" == *_p* ]] ; then
@@ -19,7 +19,7 @@ fi
 LICENSE="MIT"
 # The subslot reflects the SONAME.
 SLOT="0/6"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="alpha amd64 ~arm ~arm64 ~hppa ia64 ~m68k ~mips ppc ppc64 ~riscv s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd"
 IUSE="ada +cxx debug doc gpm minimal profile static-libs test threads tinfo trace unicode"
 
 DEPEND="gpm? ( sys-libs/gpm[${MULTILIB_USEDEP}] )"

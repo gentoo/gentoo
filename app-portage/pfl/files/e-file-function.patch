@@ -1,0 +1,15 @@
+--- pfl-3.0.1/bin/e-file.old	2019-06-22 20:32:10.437137086 +0200
++++ pfl-3.0.1/bin/e-file	2019-07-13 14:19:47.383823446 +0200
+@@ -3,10 +3,10 @@
+ #License: GPL
+ #e-file is like apt-file in debian,it's used to search package name via filename for gentoo
+ #thanks for portagefilelist.de and Daniel
+-VERSION=20110906
++VERSION=20190713
+ 
+ coloropt=always
+-function usage () {
++usage () {
+ 	echo "This is e-file ($VERSION)"
+ 	echo "Usage: $(basename ${0})   [-c] [-h] filename"
+ 	echo "  -c color output could be either [always|never|auto]"

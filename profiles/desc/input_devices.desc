@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors.
+# Copyright 1999-2019 Gentoo Authors.
 # Distributed under the terms of the GNU General Public License v2
 
 # This file contains descriptions of INPUT_DEVICES USE_EXPAND flags.
@@ -29,7 +29,11 @@ roccat_nyth - INPUT_DEVICES setting to build driver for Roccat Nyth input device
 roccat_pyra - INPUT_DEVICES setting to build driver for Roccat Pyra input devices
 roccat_savu - INPUT_DEVICES setting to build driver for Roccat Savu input devices
 roccat_ryosmk - INPUT_DEVICES setting to build driver for Roccat RyosMK Pro input devices
+roccat_ryosmkfx - INPUT_DEVICES setting to build driver for Roccat RyosMK FX input devices
 roccat_ryostkl - INPUT_DEVICES setting to build driver for Roccat RyosMK Pro input devices
+roccat_skeltr - INPUT_DEVICES setting to build driver for Roccat Skeltr input devices
+roccat_sova - INPUT_DEVICES setting to build driver for Roccat Sova input devices
+roccat_suora - INPUT_DEVICES setting to build driver for Roccat Suora input devices
 roccat_tyon - INPUT_DEVICES setting to build driver for Roccat Tyon input devices
 synaptics - INPUT_DEVICES setting to build driver for synaptics input devices
 vmmouse - INPUT_DEVICES setting to build driver for vmmouse input devices

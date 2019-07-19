@@ -21,7 +21,7 @@ HOMEPAGE="https://hpc.github.io/charliecloud/"
 
 SLOT="0"
 LICENSE="Apache-2.0"
-IUSE="doc examples +pv"
+IUSE="doc examples +pv squashfuse"
 
 # Extensive test suite exists, but downloads container images
 # directly and via Docker and installs packages inside using apt/yum.
@@ -32,6 +32,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
 	pv? ( sys-apps/pv )
+	squashfuse? ( sys-fs/squashfuse )
 "
 DEPEND="doc? (
 		dev-python/sphinx[${PYTHON_USEDEP}]

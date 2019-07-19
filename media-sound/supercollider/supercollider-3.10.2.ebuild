@@ -62,8 +62,10 @@ DEPEND="${RDEPEND}
 "
 
 PATCHES=(
+	"${FILESDIR}"/${P}-no-ccache.patch
 	"${FILESDIR}"/${P}-system-boost.patch
 	"${FILESDIR}"/${P}-boost-1.67.patch
+	"${FILESDIR}"/${P}-boost-1.70.patch
 )
 
 S="${WORKDIR}/SuperCollider-Source"

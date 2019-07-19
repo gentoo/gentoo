@@ -49,7 +49,7 @@ CDEPEND=">=app-eselect/eselect-opengl-1.3.0
 		>=x11-libs/libXtst-1.0.99.2
 	)
 	glamor? (
-		media-libs/libepoxy[X]
+		media-libs/libepoxy[X,egl(+)]
 		>=media-libs/mesa-18[egl,gbm]
 		!x11-libs/glamor
 	)
@@ -74,7 +74,7 @@ CDEPEND=">=app-eselect/eselect-opengl-1.3.0
 	unwind? ( sys-libs/libunwind )
 	wayland? (
 		>=dev-libs/wayland-1.3.0
-		media-libs/libepoxy
+		media-libs/libepoxy[egl(+)]
 		>=dev-libs/wayland-protocols-1.1
 	)
 	>=x11-apps/xinit-1.3.3-r1

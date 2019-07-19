@@ -3,13 +3,13 @@
 
 EAPI=6
 
-inherit flag-o-matic toolchain-funcs multilib-minimal preserve-libs
+inherit flag-o-matic toolchain-funcs multilib-minimal preserve-libs usr-ldscript
 
 MY_PV=${PV:0:3}
 PV_SNAP=${PV:4}
 MY_P=${PN}-${MY_PV}
 DESCRIPTION="console display library"
-HOMEPAGE="https://www.gnu.org/software/ncurses/ http://dickey.his.com/ncurses/"
+HOMEPAGE="https://www.gnu.org/software/ncurses/ https://invisible-island.net/ncurses/"
 SRC_URI="mirror://gnu/ncurses/${MY_P}.tar.gz"
 
 LICENSE="MIT"

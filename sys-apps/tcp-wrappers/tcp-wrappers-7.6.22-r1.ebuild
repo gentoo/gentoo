@@ -3,7 +3,7 @@
 
 EAPI="4"
 
-inherit eutils toolchain-funcs versionator flag-o-matic multilib-minimal
+inherit eutils toolchain-funcs versionator flag-o-matic multilib-minimal usr-ldscript
 
 MY_PV=$(get_version_component_range 1-2)
 DEB_PV=$(get_version_component_range 3)

@@ -18,7 +18,7 @@ SRC_URI="https://github.com/arvidn/libtorrent/releases/download/libtorrent-${MY_
 
 LICENSE="BSD"
 SLOT="0/9"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="amd64 ~arm ~ppc ~ppc64 ~sparc x86 ~x86-fbsd"
 IUSE="debug +dht doc examples libressl python +ssl static-libs test"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
@@ -58,9 +58,9 @@ src_configure() {
 
 	local myeconfargs=(
 		$(use_enable debug)
-		$(use_enable debug logging)
 		$(use_enable debug disk-stats)
-		$(use_enable dht dht $(usex debug logging $(usex ('yes' 'no'))))
+		$(use_enable debug logging)
+		$(use_enable dht)
 		$(use_enable examples)
 		$(use_enable ssl encryption)
 		$(use_enable static-libs static)

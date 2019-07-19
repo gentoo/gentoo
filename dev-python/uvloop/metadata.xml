@@ -9,6 +9,9 @@
     <email>proxy-maint@gentoo.org</email>
     <name>Proxy Maintainers</name>
   </maintainer>
+  <maintainer type="project">
+    <email>python@gentoo.org</email>
+  </maintainer>
   <longdescription>
     uvloop is a fast, drop-in replacement of the built-in asyncio
     event loop. uvloop is implemented in Cython and uses libuv under

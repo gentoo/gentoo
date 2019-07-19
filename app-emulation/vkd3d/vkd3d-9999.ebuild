@@ -24,7 +24,7 @@ RDEPEND="spirv-tools? ( dev-util/spirv-tools:=[${MULTILIB_USEDEP}] )
 
 DEPEND="${RDEPEND}
 		dev-util/spirv-headers
-		dev-util/vulkan-headers"
+		>=dev-util/vulkan-headers-1.1.114"
 
 DESCRIPTION="D3D12 to Vulkan translation library"
 HOMEPAGE="https://source.winehq.org/git/vkd3d.git/"

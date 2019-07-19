@@ -23,7 +23,7 @@ HOMEPAGE="https://www.freedesktop.org/wiki/Software/systemd"
 
 LICENSE="GPL-2 LGPL-2.1 MIT public-domain"
 SLOT="0/2"
-IUSE="acl apparmor audit build cryptsetup curl elfutils +gcrypt gnuefi http idn importd +kmod libidn2 +lz4 lzma nat pam pcre policykit qrcode +resolvconf +seccomp selinux +split-usr ssl +sysv-utils test vanilla xkb"
+IUSE="acl apparmor audit build cryptsetup curl elfutils +gcrypt gnuefi http idn importd +kmod libidn2 +lz4 lzma nat pam pcre policykit qrcode +resolvconf +seccomp selinux split-usr ssl +sysv-utils test vanilla xkb"
 
 REQUIRED_USE="importd? ( curl gcrypt lzma )"
 RESTRICT="!test? ( test )"

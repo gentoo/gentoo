@@ -6,7 +6,7 @@
 
 EAPI=6
 
-inherit multilib toolchain-funcs libtool multilib-minimal preserve-libs
+inherit multilib toolchain-funcs libtool multilib-minimal preserve-libs usr-ldscript
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://git.tukaani.org/xz.git"

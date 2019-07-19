@@ -30,7 +30,7 @@ RESTRICT="
 "
 
 RADEON_CARDS="r100 r200 r300 r600 radeon radeonsi"
-VIDEO_CARDS="${RADEON_CARDS} freedreno i915 i965 intel iris nouveau vc4 virgl vivante vmware"
+VIDEO_CARDS="${RADEON_CARDS} freedreno i915 i965 intel iris lima nouveau panfrost vc4 virgl vivante vmware"
 for card in ${VIDEO_CARDS}; do
 	IUSE_VIDEO_CARDS+=" video_cards_${card}"
 done
@@ -54,7 +54,9 @@ REQUIRED_USE="
 	video_cards_i915?   ( || ( classic gallium ) )
 	video_cards_i965?   ( classic )
 	video_cards_iris?   ( gallium )
+	video_cards_lima?   ( gallium )
 	video_cards_nouveau? ( || ( classic gallium ) )
+	video_cards_panfrost? ( gallium )
 	video_cards_radeon? ( || ( classic gallium )
 						  gallium? ( x86? ( llvm ) amd64? ( llvm ) ) )
 	video_cards_r100?   ( classic )
@@ -401,11 +403,15 @@ multilib_src_configure() {
 		fi
 
 		if use video_cards_freedreno ||
+		   use video_cards_lima ||
+		   use video_cards_panfrost ||
 		   use video_cards_vc4 ||
 		   use video_cards_vivante; then
 			gallium_enable -- kmsro
 		fi
 
+		gallium_enable video_cards_lima lima
+		gallium_enable video_cards_panfrost panfrost
 		gallium_enable video_cards_vc4 vc4
 		gallium_enable video_cards_vivante etnaviv
 		gallium_enable video_cards_vmware svga

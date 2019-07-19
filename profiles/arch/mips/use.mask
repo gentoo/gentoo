@@ -197,10 +197,6 @@ jack
 accessibility
 
 # Stephen P. Becker <geoman@gentoo.org>
-# masked because mozilla doesn't work on mips
-mozilla
-
-# Stephen P. Becker <geoman@gentoo.org>
 # masked because I say so, gnome--
 pda
 

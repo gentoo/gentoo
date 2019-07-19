@@ -3,7 +3,7 @@
 
 EAPI=4
 
-inherit bsdmk freebsd toolchain-funcs multilib
+inherit bsdmk freebsd toolchain-funcs multilib usr-ldscript
 
 DESCRIPTION="FreeBSD CDDL (opensolaris/zfs) extra software"
 SLOT="0"

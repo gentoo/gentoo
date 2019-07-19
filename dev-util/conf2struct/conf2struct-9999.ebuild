@@ -15,13 +15,17 @@ else
 	SRC_URI="https://github.com/yrutschle/conf2struct/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 fi
 
-LICENSE="GPL-2"
+LICENSE="BSD-2"
 SLOT="0"
-IUSE="caps pcre systemd tcpd"
+IUSE=""
 
 RDEPEND="dev-libs/libconfig
 	dev-perl/Conf-Libconfig"
 DEPEND="${RDEPEND}"
+
+src_compile(){
+	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS}"
+}
 
 src_install(){
 	emake DESTDIR="${D}" prefix="${EPREFIX%/}/usr" install

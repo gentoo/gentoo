@@ -4,7 +4,7 @@
 EAPI=7
 
 CMAKE_IN_SOURCE_BUILD="yes"
-inherit cmake-utils prefix user
+inherit cmake-utils prefix
 
 DESCRIPTION="The Dungeons of Moria, a single player roguelike game, also known as Umoria"
 HOMEPAGE="https://umoria.org/"
@@ -15,7 +15,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~m68k ~x86 ~x86-fbsd"
 IUSE=""
 
-RDEPEND=">=sys-libs/ncurses-6.0:0="
+RDEPEND="acct-group/gamestat
+	>=sys-libs/ncurses-6.0:0="
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
@@ -25,10 +26,6 @@ PATCHES=(
 	"${FILESDIR}/${P}-gentoo-paths.patch"
 	"${FILESDIR}/${P}-tinfo.patch"
 )
-
-pkg_setup(){
-	enewgroup gamestat 36
-}
 
 src_prepare() {
 	cmake-utils_src_prepare

@@ -10,7 +10,7 @@ if [[ ${PV} == *9999 ]]; then
 	EGIT_REPO_URI="https://github.com/seanmiddleditch/libtelnet.git"
 else
 	SRC_URI="https://github.com/seanmiddleditch/libtelnet/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~x86 ~amd64"
+	KEYWORDS="~amd64 ~x86"
 fi
 
 DESCRIPTION="Simple RFC-complient TELNET implementation as a C library"

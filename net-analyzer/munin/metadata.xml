@@ -71,11 +71,6 @@
       web pages and graphs. This is only meaningful if the minimal USE
       flag is disabled.
     </flag>
-    <flag name="apache">
-      Set up the configuration of the CGI generation of HTML and
-      graphs to work with Apache. This also install an include-able
-      configuration file.
-    </flag>
     <flag name="ipv6">
       Add support for IPv6 in munin-node. IPv6 support for the master
       is always enabled, but the node requires a newer version of

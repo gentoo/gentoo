@@ -1,0 +1,55 @@
+From 17049393c60503d305787d06b7137227a99ed2af Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Sat, 13 Jul 2019 16:23:23 +0100
+Subject: [PATCH] Improve Makefile to avoid "Argument list too long" error
+
+I wouldn't expect a foreach loop to be prone to this issue but it's
+not the right way to write a Makefile anyway.
+
+Note that conversion failures are now fatal and the dvb-t/ke-Nairobi
+file is failing to convert at the moment.
+
+Signed-off-by: James Le Cuirot <chewi@gentoo.org>
+---
+ Makefile | 16 ++++++++++------
+ 1 file changed, 10 insertions(+), 6 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 901dc9d..7cdb5bc 100644
+--- a/Makefile
++++ b/Makefile
+@@ -17,6 +17,8 @@ DVBV3DIRS = atsc dvb-c dvb-s dvb-t
+ DVBV5DIRS = $(DVBV3DIRS) isdb-t
+ 
+ DVBV3CHANNELFILES = $(foreach dir,$(DVBV3DIRS),$(wildcard $(dir)/*))
++DVBV3OUTPUTFILES = $(patsubst %,$(DVBV3OUTPUTDIR)/%,$(DVBV3CHANNELFILES))
++DVBV5OUTPUTFILES = $(patsubst %,$(DVBV5OUTPUTDIR)/%,$(DVBV3CHANNELFILES))
+ 
+ DVBFORMATCONVERT_CHANNEL_DVBV5 = -ICHANNEL -ODVBV5
+ DVBFORMATCONVERT_CHANNEL_DVBV3 = -IDVBV5 -OCHANNEL
+@@ -42,14 +44,16 @@ ifeq ($(DVBV3DIR),)
+ DVBV3DIR = dvbv3
+ endif
+ 
+-dvbv3:
+-	@$(foreach var,$(DVBV3DIRS), $(MKDIR) $(DVBV3OUTPUTDIR)/$(var);)
+-	@$(foreach var,$(DVBV3CHANNELFILES), $(DVBFORMATCONVERT) $(DVBFORMATCONVERT_CHANNEL_DVBV3) $(var) $(DVBV3OUTPUTDIR)/$(var);)
++$(DVBV3OUTPUTFILES): $(DVBV3OUTPUTDIR)/%: %
++	@$(MKDIR) "$(dir $@)"
++	@$(DVBFORMATCONVERT) $(DVBFORMATCONVERT_CHANNEL_DVBV3) "$<" "$@"
+ 
++$(DVBV5OUTPUTFILES): $(DVBV5OUTPUTDIR)/%: $(DVBV3OUTPUTDIR)/%
++	@$(MKDIR) "$(dir $@)"
++	@$(DVBFORMATCONVERT) $(DVBFORMATCONVERT_CHANNEL_DVBV5) "$<" "$@"
+ 
+-dvbv5: $(DVBV3OUTPUTDIR)
+-	@$(foreach var,$(DVBV3DIRS), $(MKDIR) $(DVBV5OUTPUTDIR)/$(var);)
+-	@$(foreach var,$(DVBV3CHANNELFILES), $(DVBFORMATCONVERT) $(DVBFORMATCONVERT_CHANNEL_DVBV5) $(DVBV3OUTPUTDIR)/$(var) $(DVBV5OUTPUTDIR)/$(var);)
++dvbv3: $(DVBV3OUTPUTFILES)
++dvbv5: $(DVBV5OUTPUTFILES)
+ 
+ install:
+ 	@mkdir -p $(DATADIR)/$(DVBV5DIR)
+-- 
+2.21.0
+

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # James Le Cuirot <chewi@gentoo.org> (2017-06-29)
@@ -137,7 +137,9 @@ video_cards_siliconmotion
 video_cards_exynos
 video_cards_freedreno
 video_cards_imx
+video_cards_lima
 video_cards_omap
+video_cards_panfrost
 video_cards_tegra
 video_cards_vc4
 

@@ -157,7 +157,7 @@ src_prepare() {
 	eapply "${FILESDIR}"/${PN}-1.11.1-allow-apr-1.7.0+.patch
 	eapply_user
 
-	fperms +x build/transform_libtool_scripts.sh
+	chmod +x build/transform_libtool_scripts.sh || die
 
 	sed -i \
 		-e "s/\(BUILD_RULES=.*\) bdb-test\(.*\)/\1\2/g" \

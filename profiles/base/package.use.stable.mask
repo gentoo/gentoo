@@ -4,6 +4,10 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2019-07-16)
+# sci-libs/dcmtk is not stable
+media-libs/openimageio dicom
+
 # Bernd Waibel <waebbl@gmail.com> (2019-05-22)
 # Marked experimental, needs build and runtime testing. Due to non-
 # available licenses for arnold and maya I can not test these addons.
@@ -29,7 +33,7 @@ media-plugins/grilo-plugins chromaprint
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-02-16)
 # Unstable dependencies.
 media-gfx/digikam vkontakte
-media-plugins/kipi-plugins mediawiki vkontakte
+kde-apps/kipi-plugins mediawiki vkontakte
 
 # Brian Evans <grknight@gentoo.org> (2018-12-06)
 # Mask USE flag since argon2 dependency is not stable on most arches
@@ -157,7 +161,6 @@ app-admin/packagekit-base entropy
 # flag until a source based version that doesn't depend
 # on a vulnerable libgcrypt version is in tree
 dev-db/mariadb sst-xtrabackup
-dev-db/mariadb-galera sst-xtrabackup
 
 # Sergey Popov <pinkbyte@gentoo.org> (2016-02-15)
 # Mask monitoring capabilities of Ganeti on stable branches

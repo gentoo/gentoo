@@ -11,7 +11,7 @@ dev-qt/qtsql:5 mysql
 kde-apps/ktp-common-internals otr
 
 # Enable by default, requires kde-frameworks/kwayland
-kde-misc/yakuake absolute-position
+kde-apps/yakuake absolute-position
 
 # Required by kde-apps/libkexiv2
 media-gfx/exiv2 xmp

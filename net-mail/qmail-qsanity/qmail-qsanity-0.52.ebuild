@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=0
@@ -10,7 +10,7 @@ SRC_URI="mirror://qmail/${P}"
 LICENSE="qmail-nelson"
 SLOT="0"
 # Should run on all platforms without issue
-KEYWORDS="x86 ~ppc ~hppa"
+KEYWORDS="~hppa ~ppc x86"
 IUSE=""
 
 DEPEND=""

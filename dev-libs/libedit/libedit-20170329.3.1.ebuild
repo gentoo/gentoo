@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
-inherit autotools multilib-minimal toolchain-funcs
+inherit autotools multilib-minimal toolchain-funcs usr-ldscript
 
 MY_PV=${PV/./-}
 MY_P=${PN}-${MY_PV}

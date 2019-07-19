@@ -5,7 +5,7 @@
 
 EAPI=5
 
-inherit eutils systemd toolchain-funcs autotools multilib-minimal
+inherit eutils systemd toolchain-funcs autotools multilib-minimal usr-ldscript
 
 DESCRIPTION="Console-based mouse driver"
 HOMEPAGE="https://www.nico.schottelius.org/software/gpm/"

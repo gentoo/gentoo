@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-inherit libtool ltprune toolchain-funcs multilib-minimal
+inherit libtool ltprune toolchain-funcs multilib-minimal usr-ldscript
 
 DESCRIPTION="access control list utilities, libraries and headers"
 HOMEPAGE="https://savannah.nongnu.org/projects/acl"

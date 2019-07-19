@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=0
@@ -9,7 +9,7 @@ SRC_URI="http://www.freebsoft.org/pub/projects/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ppc"
+KEYWORDS="ppc x86"
 IUSE=""
 
 DEPEND=">=app-accessibility/festival-1.4.3"

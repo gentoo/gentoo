@@ -56,6 +56,9 @@ src_prepare() {
 
 	default
 
+	# echo -n is not POSIX compliant
+	sed 's@echo -n@printf@' -i configure || die
+
 	sed -i \
 		-e '/^CC :\?=/d' \
 		-e "/^LIBDIR/s:=.*:=/$(get_libdir):" \

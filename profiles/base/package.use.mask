@@ -7,6 +7,28 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# David Seifert <soap@gentoo.org> (2019-07-14)
+# media-libs/jasper will be removed in 30 days, bug #689784
+dev-games/openscenegraph jpeg2k
+dev-python/weasyprint jpeg2k
+dev-qt/qtimageformats jpeg2k
+media-gfx/dcraw jpeg2k
+media-gfx/digikam jpeg2k
+media-gfx/exact-image jpeg2k
+media-gfx/fim jpeg2k
+<media-gfx/gimp-2.10 jpeg2k
+media-gfx/graphicsmagick jpeg2k
+media-gfx/ufraw jpeg2k
+media-libs/devil jpeg2k
+media-libs/gegl jpeg2k
+media-libs/libraw jpeg2k
+media-libs/netpbm jpeg2k
+media-libs/opencv jpeg2k
+media-libs/simage jpeg2k
+net-proxy/ziproxy jpeg2k
+sci-libs/grib_api jasper jpeg2k
+x11-libs/gdk-pixbuf jpeg2k
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-07-07)
 # media-video/pipewire is masked for now
 sys-apps/xdg-desktop-portal screencast
@@ -148,11 +170,6 @@ dev-lang/gnat-gpl jit
 # address user visible breakage due to circular dependency #665008
 =media-fonts/encodings-1.0.4-r3 X
 
-# Dirkjan Ochtman <djc@gentoo.org> (2018-09-29)
-# Clippy is broken for now, can't find libraries (bug 667286)
-<dev-lang/rust-1.29.2 clippy
-<dev-lang/rust-bin-1.34.1 clippy
-
 # Virgil Dupras <vdupras@gentoo.org> (2018-09-26)
 # Server feature in paramiko is patched out for security reasons. It can
 # be re-enabled with the 'server' USE flag, but this flag is hard
@@ -206,10 +223,6 @@ net-fs/samba dmapi ceph
 # Mask local USE flag to satisfy repoman
 app-emulation/fuse backend-svga
 
-# Pacho Ramos <pacho@gentoo.org> (2018-03-13)
-# libewf is going to be removed, bug #547418
-app-admin/testdisk ewf
-
 # Patrick McLean <chutzpah@gentoo.org> (2018-03-06)
 # Requires dev-libs/boost-1.66 that is unkeyworded/masked
 >=sys-cluster/ceph-12.2.4 system-boost
@@ -222,7 +235,6 @@ dev-perl/DBD-mysql embedded
 # Brian Evans <grknight@gentoo.org> (2018-02-28)
 # Mask client-libs USE to force users to install alternative standard pacakges
 dev-db/mariadb client-libs
-dev-db/mariadb-galera client-libs
 dev-db/mysql client-libs
 dev-db/percona-server client-libs
 

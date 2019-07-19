@@ -4,7 +4,7 @@
 # @ECLASS: wxwidgets.eclass
 # @MAINTAINER:
 # wxwidgets@gentoo.org
-# @SUPPORTED_EAPIS: 0 1 2 3 4 5 6
+# @SUPPORTED_EAPIS: 0 1 2 3 4 5 6 7
 # @BLURB: Manages build configuration for wxGTK-using packages.
 # @DESCRIPTION:
 # This eclass sets up the proper environment for ebuilds using the wxGTK
@@ -23,9 +23,11 @@
 
 if [[ -z ${_WXWIDGETS_ECLASS} ]]; then
 
-case ${EAPI} in
+inherit flag-o-matic
+
+case ${EAPI:-0} in
 	0|1|2|3|4|5)
-		inherit eutils flag-o-matic multilib
+		inherit eutils multilib
 
 		# This was used to set up a sane default for ebuilds so they could
 		# avoid calling need-wxwidgets if they didn't need a particular build.
@@ -56,12 +58,9 @@ case ${EAPI} in
 		unset _wxdebug
 		unset _wxconf
 		;;
-	6)
-		inherit flag-o-matic multilib
-		;;
-	*)
-		die "EAPI=${EAPI:-0} is not supported"
-		;;
+	6)	inherit multilib ;; # compatibility only, not needed by eclass
+	7)	;;
+	*)	die "${ECLASS}: EAPI ${EAPI:-0} is not supported" ;;
 esac
 
 # @FUNCTION: setup-wxwidgets
@@ -130,10 +129,14 @@ setup-wxwidgets() {
 	echo
 }
 
-# deprecated
-need-wxwidgets() {
-	setup-wxwidgets
-}
+case ${EAPI:-0} in
+	0|1|2|3|4|5|6)
+		# deprecated
+		need-wxwidgets() {
+			setup-wxwidgets
+		}
+		;;
+esac
 
 _WXWIDGETS_ECLASS=1
 fi

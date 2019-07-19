@@ -59,10 +59,6 @@ media-sound/mpd fluidsynth
 <media-video/libav-13 frei0r
 <=media-video/ffmpeg-4.1.3 frei0r sofalizer
 
-# Alexis Ballier <aballier@gentoo.org> (2017-04-18)
-# No gst-plugins-vp8:0.10, gst-plugins-musepack:0.10 stable
-media-plugins/gst-plugins-meta:0.10 musepack vpx
-
 # Michael Weber <xmw@gentoo.org> (2017-04-01)
 # no stable jdk
 media-libs/libbluray java
@@ -98,7 +94,6 @@ sys-fs/dmraid dietlibc klibc
 
 # Christoph Junghans <junghans@gentoo.org> (2016-11-27)
 # no stable mpi on arm yet, but maybe in the future
-<=app-crypt/johntheripper-1.7.9-r6 mpi
 <=sci-libs/fftw-3.3.4 mpi
 
 # Markus Meier <maekke@gentoo.org> (2016-09-27)

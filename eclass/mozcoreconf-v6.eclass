@@ -196,7 +196,11 @@ mozconfig_init() {
 	fi
 
 	# Strip optimization so it does not end up in compile string
-	filter-flags '-O* -ggdb3'
+	filter-flags '-O*'
+
+	if is-flagq '-g*' ; then
+		mozconfig_annotate 'elf-hack broken with -g* flags' --disable-elf-hack
+	fi
 
 	# Strip over-aggressive CFLAGS
 	use custom-cflags || strip-flags

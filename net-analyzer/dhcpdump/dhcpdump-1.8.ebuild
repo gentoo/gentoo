@@ -10,7 +10,7 @@ SRC_URI="https://www.mavetju.org/download/${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="amd64 ~mips x86 arm"
+KEYWORDS="amd64 arm ~mips x86"
 
 RDEPEND="net-libs/libpcap"
 DEPEND="

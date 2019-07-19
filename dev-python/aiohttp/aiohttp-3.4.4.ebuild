@@ -15,6 +15,7 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE="doc test"
+RESTRICT="!test? ( test )"
 
 CDEPEND="
 	>=dev-python/async_timeout-3.0.0[${PYTHON_USEDEP}]
@@ -57,6 +58,8 @@ python_prepare_all() {
 	sed -e 's:test_compression_brotli:_\0:' \
 		-e 's:test_feed_eof_no_err_brotli:_\0:' \
 		-i tests/test_http_parser.py || die
+	# make pytest warnings non-fatal, to unbreak tests
+	sed -i -e '/filterwarnings/d' setup.cfg || die
 
 	distutils-r1_python_prepare_all
 }
@@ -66,7 +69,7 @@ python_compile_all() {
 }
 
 python_test() {
-	esetup.py test
+	pytest -vv || die "Tests fail with ${EPYTHON}"
 }
 
 python_install_all() {

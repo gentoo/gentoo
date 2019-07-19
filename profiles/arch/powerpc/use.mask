@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # PPC Specific use flags
@@ -81,8 +81,6 @@ dmi
 lcd_devices_graphlcd
 # Masked vaapi for PowerPC until it works on hardware available to PowerPC users (cell, etc.)
 vaapi
-# User Mode Linux isn't supported on ppc yet
-uml
 
 
 ### Other flags -- Please put additional maskings below here

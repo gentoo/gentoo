@@ -1,4 +1,4 @@
-https://bugs.gentoo.org/56178
+https://bugs.gentoo.org/456178
 
 stick to the size of files on disk rather than their byte size.
 this func is only used for stats management, so this should be safe.

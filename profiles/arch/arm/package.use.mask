@@ -1,6 +1,10 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Michał Górny <mgorny@gentoo.org> (2019-07-13)
+# app-forensics/libewf is not keyworded here.
+app-admin/testdisk ewf
+
 # Craig Andrews <candrews@gentoo.org> (2019-07-03)
 # Unmask Raspberry Pi support on arm.
 media-tv/kodi -raspberry-pi

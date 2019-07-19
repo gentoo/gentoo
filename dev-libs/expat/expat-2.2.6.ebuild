@@ -3,7 +3,7 @@
 
 EAPI=6
 AUTOTOOLS_AUTO_DEPEND=no
-inherit autotools eutils libtool multilib toolchain-funcs multilib-minimal
+inherit autotools eutils libtool multilib toolchain-funcs multilib-minimal usr-ldscript
 
 DESCRIPTION="Stream-oriented XML parser library"
 HOMEPAGE="https://libexpat.github.io/"

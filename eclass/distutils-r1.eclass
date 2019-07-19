@@ -590,7 +590,7 @@ distutils-r1_python_install() {
 
 	esetup.py install --root="${root}" "${args[@]}"
 
-	local forbidden_package_names=( examples test tests )
+	local forbidden_package_names=( examples test tests .pytest_cache )
 	local p
 	for p in "${forbidden_package_names[@]}"; do
 		if [[ -d ${root}$(python_get_sitedir)/${p} ]]; then

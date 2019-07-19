@@ -612,7 +612,7 @@ cmake-utils_src_configure() {
 		fi
 	fi
 
-	if [[ ${EPREFIX} ]]; then
+	if use prefix-guest; then
 		cat >> "${build_rules}" <<- _EOF_ || die
 			# in Prefix we need rpath and must ensure cmake gets our default linker path
 			# right ... except for Darwin hosts

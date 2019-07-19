@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: elisp.eclass
@@ -9,7 +9,7 @@
 # Jeremy Maitin-Shepard <jbms@attbi.com>
 # Christian Faulhammer <fauli@gentoo.org>
 # Ulrich Müller <ulm@gentoo.org>
-# @SUPPORTED_EAPIS: 0 1 2 3 4 5 6 7
+# @SUPPORTED_EAPIS: 4 5 6 7
 # @BLURB: Eclass for Emacs Lisp packages
 # @DESCRIPTION:
 #
@@ -67,21 +67,17 @@
 
 inherit elisp-common
 case ${EAPI:-0} in
-	0|1|2|3|4|5) inherit epatch ;;
+	4|5) inherit epatch ;;
 	6|7) ;;
-	*) die "${ECLASS}: EAPI ${EAPI} not supported" ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
 esac
 
-case ${EAPI:-0} in
-	0|1) EXPORT_FUNCTIONS src_{unpack,compile,install} \
-			pkg_{setup,postinst,postrm} ;;
-	*) EXPORT_FUNCTIONS src_{unpack,prepare,configure,compile,install} \
-			pkg_{setup,postinst,postrm} ;;
-esac
+EXPORT_FUNCTIONS src_{unpack,prepare,configure,compile,install} \
+	pkg_{setup,postinst,postrm}
 
 RDEPEND=">=virtual/emacs-${NEED_EMACS:-23}"
-case ${EAPI:-0} in
-	0|1|2|3|4|5|6) DEPEND="${RDEPEND}" ;;
+case ${EAPI} in
+	4|5|6) DEPEND="${RDEPEND}" ;;
 	*) BDEPEND="${RDEPEND}" ;;
 esac
 
@@ -102,8 +98,7 @@ elisp_pkg_setup() {
 # @FUNCTION: elisp_src_unpack
 # @DESCRIPTION:
 # Unpack the sources; also handle the case of a single *.el file in
-# WORKDIR for packages distributed that way.  For EAPIs without
-# src_prepare, call elisp_src_prepare.
+# WORKDIR for packages distributed that way.
 
 elisp_src_unpack() {
 	[[ -n ${A} ]] && unpack ${A}
@@ -112,11 +107,6 @@ elisp_src_unpack() {
 		mv ${P}.el ${PN}.el || die
 		[[ -d ${S} ]] || S=${WORKDIR}
 	fi
-
-	case ${EAPI:-0} in
-		0|1) [[ -d ${S} ]] && cd "${S}"
-			elisp_src_prepare ;;
-	esac
 }
 
 # @FUNCTION: elisp_src_prepare
@@ -136,15 +126,15 @@ elisp_src_prepare() {
 		else
 			die "Cannot find ${patch}"
 		fi
-		case ${EAPI:-0} in
-			0|1|2|3|4|5) epatch "${file}" ;;
+		case ${EAPI} in
+			4|5) epatch "${file}" ;;
 			*) eapply "${file}" ;;
 		esac
 	done
 
 	# apply any user patches
-	case ${EAPI:-0} in
-		0|1|2|3|4|5) epatch_user ;;
+	case ${EAPI} in
+		4|5) epatch_user ;;
 		*) eapply_user ;;
 	esac
 

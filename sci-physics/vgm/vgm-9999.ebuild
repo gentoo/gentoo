@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit cmake-utils
 
@@ -21,9 +21,10 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE="doc examples +geant4 +root test"
 
+# sci-physics/root[c++11] required to match sci-physics/geant
 RDEPEND="
 	sci-physics/clhep:=
-	root? ( sci-physics/root:= )
+	root? ( sci-physics/root:=[c++11] )
 	geant4? ( >=sci-physics/geant-4.10.03 )"
 DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen[dot] )

@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit prefix eutils versionator toolchain-funcs flag-o-matic gnuconfig \
+inherit prefix eutils versionator toolchain-funcs flag-o-matic gnuconfig usr-ldscript \
 	multilib systemd multiprocessing
 
 DESCRIPTION="GNU libc C library"
@@ -18,7 +18,7 @@ if [[ ${PV} == 9999* ]]; then
 	EGIT_REPO_URI="https://sourceware.org/git/glibc.git"
 	inherit git-r3
 else
-	KEYWORDS=""
+	KEYWORDS="~amd64"
 	SRC_URI="mirror://gnu/glibc/${P}.tar.xz"
 fi
 

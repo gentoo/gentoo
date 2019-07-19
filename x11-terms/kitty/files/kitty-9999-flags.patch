@@ -1,6 +1,6 @@
---- kitty-0.13.2/setup.py
-+++ kitty-0.13.2/setup.py
-@@ -178,7 +178,7 @@
+--- kitty-9999/setup.py	2019-07-16 18:04:24.052780940 -0500
++++ kitty-9999/setup.py	2019-07-16 18:05:54.564383192 -0500
+@@ -202,7 +202,7 @@
      df = '-g3'
      if ccver >= (5, 0):
          df += ' -Og'
@@ -8,8 +8,8 @@
 +    optimize = ''
      sanitize_args = get_sanitize_args(cc, ccver) if sanitize else set()
      cppflags = os.environ.get(
-         'OVERRIDE_CPPFLAGS', (
-@@ -191,7 +191,7 @@
+         'OVERRIDE_CPPFLAGS', '-D{}DEBUG'.format('' if debug else 'N'),
+@@ -213,7 +213,7 @@
      cflags = os.environ.get(
          'OVERRIDE_CFLAGS', (
              '-Wextra -Wno-missing-field-initializers -Wall -Wstrict-prototypes -std=c11'
@@ -18,7 +18,7 @@
          ).format(
              optimize,
              ' '.join(sanitize_args),
-@@ -205,7 +205,7 @@
+@@ -227,7 +227,7 @@
      )
      ldflags = os.environ.get(
          'OVERRIDE_LDFLAGS',
@@ -27,21 +27,25 @@
      )
      ldflags = shlex.split(ldflags)
      ldflags.append('-shared')
-@@ -517,14 +517,14 @@
+@@ -606,20 +606,17 @@
  
  
- def build_launcher(args, launcher_dir='.', for_bundle=False, sh_launcher=False, for_freeze=False):
+ def build_launcher(args, launcher_dir='.', bundle_type='source'):
 -    cflags = '-Wall -Werror -fpie'.split()
 +    cflags = '-Wall -fpie'.split()
      cppflags = []
      libs = []
-     if args.profile:
-         cppflags.append('-DWITH_PROFILER'), cflags.append('-g')
-         libs.append('-lprofiler')
+     if args.profile or args.sanitize:
+         if args.sanitize:
+-            cflags.append('-g3')
+             cflags.extend(get_sanitize_args(env.cc, env.ccver))
+             libs += ['-lasan'] if env.cc == 'gcc' and not is_macos else []
+         else:
+             cflags.append('-g')
+         if args.profile:
+             libs.append('-lprofiler')
 -    else:
 -        cflags.append('-O3')
-+    #else:
-+    #    cflags.append('-O3')
-     if for_bundle or for_freeze:
+     if bundle_type.endswith('-freeze'):
          cppflags.append('-DFOR_BUNDLE')
          cppflags.append('-DPYVER="{}"'.format(sysconfig.get_python_version()))

@@ -7,7 +7,7 @@ EAPI="5"
 
 MY_P="gettext-${PV}"
 
-inherit multilib-minimal toolchain-funcs libtool
+inherit multilib-minimal toolchain-funcs libtool usr-ldscript
 
 DESCRIPTION="the GNU international library (split out of gettext)"
 HOMEPAGE="https://www.gnu.org/software/gettext/"

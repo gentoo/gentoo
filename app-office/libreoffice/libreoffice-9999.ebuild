@@ -63,7 +63,7 @@ unset ADDONS_SRC
 LO_EXTS="nlpsolver scripting-beanshell scripting-javascript wiki-publisher"
 
 IUSE="accessibility bluetooth +branding coinmp +cups dbus debug eds firebird
-googledrive gstreamer +gtk gtk2 kde ldap +mariadb odk pdfimport postgres test vlc
+googledrive gstreamer +gtk gtk2 kde ldap +mariadb odk pdfimport postgres test
 $(printf 'libreoffice_extensions_%s ' ${LO_EXTS})"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
@@ -234,7 +234,6 @@ RDEPEND="${COMMON_DEPEND}
 	|| ( x11-misc/xdg-utils kde-plasma/kde-cli-tools )
 	java? ( >=virtual/jre-1.6 )
 	kde? ( kde-frameworks/breeze-icons:* )
-	vlc? ( media-video/vlc )
 "
 if [[ ${MY_PV} != *9999* ]] && [[ ${PV} != *_* ]]; then
 	PDEPEND="=app-office/libreoffice-l10n-$(ver_cut 1-2)*"
@@ -407,10 +406,12 @@ src_configure() {
 		--disable-epm
 		--disable-fetch-external
 		--disable-gstreamer-0-10
+		--disable-gtk3-kde5
 		--disable-online-update
 		--disable-openssl
 		--disable-pdfium
 		--disable-report-builder
+		--disable-vlc
 		--with-build-version="${gentoo_buildid}"
 		--enable-extension-integration
 		--with-external-dict-dir="${EPREFIX}/usr/share/myspell"
@@ -445,7 +446,6 @@ src_configure() {
 		$(use_enable odk)
 		$(use_enable pdfimport)
 		$(use_enable postgres postgresql-sdbc)
-		$(use_enable vlc)
 		$(use_with accessibility lxml)
 		$(use_with coinmp system-coinmp)
 		$(use_with googledrive gdrive-client-id ${google_default_client_id})
@@ -453,10 +453,6 @@ src_configure() {
 		$(use_with java)
 		$(use_with odk doxygen)
 	)
-
-	if use gtk && use kde; then
-		myeconfargs+=( --enable-gtk3-kde5 )
-	fi
 
 	if use eds || use gtk; then
 		myeconfargs+=( --enable-dconf --enable-gio )

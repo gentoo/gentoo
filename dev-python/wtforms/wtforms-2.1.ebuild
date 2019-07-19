@@ -11,7 +11,7 @@ MY_PN="WTForms"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Flexible forms validation and rendering library for python web development"
-HOMEPAGE="http://wtforms.simplecodes.com/ https://pypi.org/project/WTForms/"
+HOMEPAGE="https://wtforms.readthedocs.io/"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.zip"
 
 LICENSE="BSD"

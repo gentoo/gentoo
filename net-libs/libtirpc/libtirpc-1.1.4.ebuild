@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools multilib-minimal toolchain-funcs
+inherit autotools multilib-minimal toolchain-funcs usr-ldscript
 
 DESCRIPTION="Transport Independent RPC library (SunRPC replacement)"
 HOMEPAGE="http://libtirpc.sourceforge.net/"

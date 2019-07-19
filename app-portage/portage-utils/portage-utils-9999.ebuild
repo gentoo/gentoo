@@ -8,7 +8,7 @@ HOMEPAGE="https://wiki.gentoo.org/wiki/Portage-utils"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="nls static openmp +qmanifest libressl"
+IUSE="nls static openmp +qmanifest +qtegrity libressl"
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3 autotools
@@ -43,6 +43,22 @@ RDEPEND="
 			app-crypt/gpgme:=
 		)
 	)
+	qtegrity? (
+		openmp? (
+			|| (
+				>=sys-devel/gcc-4.2:*[openmp]
+				sys-devel/clang-runtime:*[openmp]
+			)
+		)
+		static? (
+			!libressl? ( dev-libs/openssl:0=[static-libs] )
+			libressl? ( dev-libs/libressl:0=[static-libs] )
+		)
+		!static? (
+			!libressl? ( dev-libs/openssl:0= )
+			libressl? ( dev-libs/libressl:0= )
+		)
+	)
 "
 DEPEND="${RDEPEND}"
 
@@ -51,6 +67,7 @@ src_configure() {
 		--disable-maintainer-mode \
 		--with-eprefix="${EPREFIX}" \
 		$(use_enable qmanifest) \
+		$(use_enable qtegrity) \
 		$(use_enable openmp) \
 		$(use_enable static)
 }

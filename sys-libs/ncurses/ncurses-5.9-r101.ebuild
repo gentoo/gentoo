@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # This version is just for the ABI .5 library
@@ -10,7 +10,7 @@ inherit eutils toolchain-funcs multilib-minimal
 MY_PV=${PV:0:3}
 MY_P=${PN}-${MY_PV}
 DESCRIPTION="console display library"
-HOMEPAGE="https://www.gnu.org/software/ncurses/ http://dickey.his.com/ncurses/"
+HOMEPAGE="https://www.gnu.org/software/ncurses/ https://invisible-island.net/ncurses/"
 SRC_URI="mirror://gnu/ncurses/${MY_P}.tar.gz"
 
 LICENSE="MIT"

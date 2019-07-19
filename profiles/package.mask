@@ -29,6 +29,34 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (2019-07-17)
+# Mask ruby24-only slots for removal in 30 days. These slots do not
+# have any reverse dependencies. Please migrate to or use a newer slot.
+dev-ruby/gherkin:4
+dev-ruby/net-http-persistent:0
+dev-ruby/net-ssh-gateway:2
+dev-ruby/rouge:0
+dev-ruby/vcr:2
+#dev-ruby/webmock:2
+dev-util/cucumber-core:0
+
+# Sobhan Mohammadpour <sobhan@gentoo.org> (2019-07-14)
+# Masked for testing
+>=media-video/totem-3.32.1
+
+# Kent Fredric <kentnl@gentoo.org> (2019-07-14)
+# Broken since 2007, Upstream not seen since 2004.
+# Removal after 2019-08-16
+# Bug #635792
+dev-perl/libvorbis-perl
+
+# David Seifert <soap@gentoo.org> (2019-07-14)
+# Unmaintained, removed from Debian and other distros, tons of CVEs,
+# unreachable upstream, removal in 30 days
+# Bug #601068, #614028, #614032, #614566, #619120, #624988, #629286,
+# #635552, #662160, #674154, #674214, #684826, #689784
+media-libs/jasper
+
 # Matt Turner <mattst88@gentoo.org> (2019-07-10)
 # sci-chemistry/coot and its dependencies.
 # Unmaintained. Still depends on guile-1.8.
@@ -167,13 +195,6 @@ games-misc/yadex
 # days. See bug #688134.
 games-kids/pytraffic
 
-# David Seifert <soap@gentoo.org> (2019-06-15)
-# Abandoned upstream, last release 8 years ago,
-# multiple bugs, fails with boost 1.70 and
-# openssl 1.1, removal in 30 days
-# Bug #561314, #594894, #672090, #674606.
-net-analyzer/sslsniff
-
 # Mikle Kolyada <zlogene@gentoo.org> (2019-06-15)
 # Part of dev-texlive/texlive-latexextra
 # does not work with utf-8 (bug #688096)
@@ -303,11 +324,6 @@ app-accessibility/festival-ru
 app-accessibility/perlbox-voice
 app-accessibility/pidgin-festival
 dev-ros/sound_play
-
-# Patrice Clement <monsieurp@gentoo.org> (2019-05-06)
-# Broken build. Outdated version. No interest from the Java team to maintain
-# it. Removal in 30 days. Bug #581720.
-media-tv/tvbrowser
 
 # Jeroen Roovers <jer@gentoo.org> (2019-04-24)
 # Depends on =dev-libs/openssl-1.1.1* due to newly introduced
@@ -649,9 +665,13 @@ app-eselect/eselect-lua
 =dev-lang/lua-5.2.3-r1
 =dev-lang/lua-5.2.3-r2
 =dev-lang/lua-5.2.3-r3
+=dev-lang/lua-5.2.4
+=dev-lang/lua-5.2.4-r1
 =dev-lang/lua-5.3.3
 =dev-lang/lua-5.3.3-r1
 =dev-lang/lua-5.3.3-r2
+=dev-lang/lua-5.3.5
+=dev-lang/lua-5.3.5-r1
 
 # Samuli Suominen <ssuominen@gentoo.org> (2012-03-06)
 # Masked for testing since this is known to break nearly
