@@ -7,7 +7,7 @@
 # To regenerate man/html pages emerge iputils-99999999[doc] with
 # EGIT_COMMIT set to release tag and tar ${S}/doc folder.
 
-EAPI="6"
+EAPI="7"
 
 PLOCALES="ja"
 
@@ -28,6 +28,11 @@ HOMEPAGE="https://wiki.linuxfoundation.org/networking/iputils"
 LICENSE="BSD GPL-2+ rdisc"
 SLOT="0"
 IUSE="+arping caps clockdiff doc gcrypt idn ipv6 libressl nettle nls rarpd rdisc SECURITY_HAZARD ssl static tftpd tracepath traceroute6"
+
+BDEPEND="
+	virtual/os-headers
+	virtual/pkgconfig
+"
 
 LIB_DEPEND="
 	caps? ( sys-libs/libcap[static-libs(+)] )
@@ -53,12 +58,12 @@ RDEPEND="
 	traceroute6? ( !net-analyzer/traceroute )
 	!static? ( ${LIB_DEPEND//\[static-libs(+)]} )
 "
+
 DEPEND="
 	${RDEPEND}
 	static? ( ${LIB_DEPEND} )
-	virtual/os-headers
-	virtual/pkgconfig
 "
+
 if [[ ${PV} == "99999999" ]] ; then
 	DEPEND+="
 		app-text/docbook-xml-dtd:4.2
@@ -160,7 +165,6 @@ src_install() {
 		local -a man_pages
 		local -a html_man_pages
 
-		local oifs=${IFS}
 		while IFS= read -r -u 3 -d $'\0' my_bin
 		do
 			my_bin=$(basename "${my_bin}")
@@ -174,7 +178,6 @@ src_install() {
 				html_man_pages+=( ${my_bin}.html )
 			fi
 		done 3< <(find "${ED%/}"/{bin,usr/bin,usr/sbin} -type f -perm -a+x -print0 2>/dev/null)
-		IFS=${oifs}
 
 		pushd doc &>/dev/null || die
 		doman "${man_pages[@]}"
