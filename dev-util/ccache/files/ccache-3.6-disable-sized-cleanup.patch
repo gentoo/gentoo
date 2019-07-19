@@ -1,4 +1,5 @@
 https://bugs.gentoo.org/649440
+https://github.com/ccache/ccache/issues/442
 
 Disable cleanup based on free filesystem size.
 
