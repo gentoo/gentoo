@@ -35,8 +35,8 @@ pkg_setup() {
 
 src_prepare() {
 	# gentoo libdir
-	sed -e 's|/lib|/lib'$(get_libdir)'|' \
-            -e '/DESTINATION/s|lib|lib'$(get_libdir)'|g' \
+	sed -e 's|/lib|/'$(get_libdir)'|' \
+            -e '/DESTINATION/s|lib|'$(get_libdir)'|g' \
             -i src/CMakeLists.txt || die
 	# dont hard code link
 	sed -e '/link_directories/d' \
