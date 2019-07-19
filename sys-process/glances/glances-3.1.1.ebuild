@@ -3,33 +3,32 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_{5,6}} )
+PYTHON_COMPAT=( python{2_7,3_{5,6,7}} )
 PYTHON_REQ_USE="ncurses"
 
 inherit distutils-r1 eutils linux-info
 
 DESCRIPTION="CLI curses based monitoring tool"
 HOMEPAGE="https://github.com/nicolargo/glances"
-SRC_URI="mirror://pypi/G/${PN^}/${P^}.tar.gz"
+SRC_URI="https://github.com/nicolargo/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~x86 ~amd64-linux ~x86-linux"
-IUSE="doc"
+KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux"
+IUSE="doc test"
 
-DEPEND="
+RDEPEND="dev-python/future[${PYTHON_USEDEP}]
+	>=dev-python/psutil-5.4.3[${PYTHON_USEDEP}]"
+
+DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	doc? (
 		dev-python/sphinx[${PYTHON_USEDEP}]
 		dev-python/sphinx_rtd_theme[${PYTHON_USEDEP}]
 	)
-	dev-python/setuptools[${PYTHON_USEDEP}]"
-
-RDEPEND="${DEPEND}
-	>=dev-python/psutil-5.4.3[${PYTHON_USEDEP}]"
+	test? ( ${RDEPEND} )
+"
 
 CONFIG_CHECK="~TASK_IO_ACCOUNTING ~TASK_DELAY_ACCT ~TASKSTATS"
-
-S="${WORKDIR}/${P^}"
 
 pkg_setup() {
 	linux-info_pkg_setup
@@ -60,23 +59,38 @@ python_install_all() {
 	distutils-r1_python_install_all
 }
 
+python_test() {
+	esetup.py test
+}
+
 pkg_postinst() {
 	optfeature "Action script feature" dev-python/pystache
 	optfeature "Autodiscover mode" dev-python/zeroconf
-	optfeature "Battery monitoring support" dev-python/batinfo
-	optfeature "Docker monitoring support" dev-python/docker-py
-	optfeature "Graphical/chart support" dev-python/matplotlib
-	# https://bitbucket.org/gleb_zhulik/py3sensors
-	# optfeature "Hardware monitoring support" dev-python/py3sensors
-	optfeature "IP plugin" dev-python/netifaces
-	optfeature "InfluxDB export module" dev-python/influxdb
-	optfeature "Hard drive temperature monitoring" app-admin/hddtemp
+	optfeature "Cloud support" dev-python/requests
 	optfeature "Quicklook CPU info" dev-python/py-cpuinfo
+	optfeature "Docker monitoring support" dev-python/docker-py
+	#optfeature "Export module" \
+	#	unpackaged/bernhard \
+	#	unpackaged/cassandra-driver \
+	#	unpackaged/potsdb \
+	#	dev-python/couchdb-python \
+	#	dev-python/elasticsearch-py \
+	#	dev-python/influxdb \
+	#	dev-python/kafka-python \
+	#	dev-python/pika \
+	#	dev-python/paho-mqtt \
+	#	dev-python/prometheus_client \
+	#	dev-python/pyzmq \
+	#	dev-python/statsd
+	optfeature "Folder monitoring" dev-python/scandir
+	#optfeature "Nvidia GPU monitoring" unpackaged/nvidia-ml-py3
+	optfeature "SVG graph support" dev-python/pygal
+	optfeature "IP plugin" dev-python/netifaces
+	optfeature "RAID monitoring" dev-python/pymdstat
+	#optfeature "SMART support" unpackaged/pySMART.smartx
 	optfeature "RAID support" dev-python/pymdstat
-	optfeature "RabbitMQ/ActiveMQ export module" dev-python/pika
-	# https://github.com/banjiewen/bernhard
-	# optfeature "Riemann export" dev-python/bernhard
 	optfeature "SNMP support" dev-python/pysnmp
-	optfeature "StatsD export module" dev-python/statsd
-	optfeature "Web server mode" dev-python/bottle
+	#optfeature "sparklines plugin" unpackaged/sparklines
+	optfeature "Web server mode" dev-python/bottle dev-python/requests
+	optfeature "WIFI plugin" net-wireless/python-wifi
 }
