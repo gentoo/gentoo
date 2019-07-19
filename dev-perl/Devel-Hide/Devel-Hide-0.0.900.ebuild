@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Forces the unavailability of specified Perl modules (for testing)"
 
 SLOT="0"
-KEYWORDS="amd64 ~arm ~hppa ppc ~riscv x86"
+KEYWORDS="~alpha amd64 ~arm ~hppa ppc ~riscv x86"
 IUSE="test"
 
 DEPEND="test? ( virtual/perl-Test-Simple )"
