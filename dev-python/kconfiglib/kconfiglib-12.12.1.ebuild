@@ -23,6 +23,8 @@ RDEPEND="${DEPEND}"
 
 S=${WORKDIR}/${P/k/K}
 
+PATCHES=( "${FILESDIR}"/${P}-setup.patch )
+
 python_prepare_all() {
 	distutils-r1_python_prepare_all
 
