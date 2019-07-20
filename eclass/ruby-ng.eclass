@@ -71,6 +71,9 @@ case ${EAPI} in
 	2|3|4|5)
 		inherits="eutils"
 		;;
+	6)
+		inherits="estack"
+		;;
 esac
 
 inherit ${inherits} multilib toolchain-funcs ruby-utils
