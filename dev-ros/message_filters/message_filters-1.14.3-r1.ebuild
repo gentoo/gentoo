@@ -29,4 +29,4 @@ DEPEND="${RDEPEND}
 		dev-cpp/gtest
 		dev-python/nose[${PYTHON_USEDEP}]
 	)"
-PATCHES=( "${FILESDIR}/tests.patch" )
+PATCHES=( "${FILESDIR}/tests.patch" "${FILESDIR}/boost.patch" )
