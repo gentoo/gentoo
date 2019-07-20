@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Perl binding for libxml2"
 
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~riscv ~x86"
+KEYWORDS="~alpha ~amd64 ~ia64 ~riscv ~x86"
 IUSE="test minimal"
 
 RDEPEND="
