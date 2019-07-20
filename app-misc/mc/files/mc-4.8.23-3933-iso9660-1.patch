@@ -1,0 +1,85 @@
+From afdc9719f3e37921b621046f01f23fe6b705f059 Mon Sep 17 00:00:00 2001
+From: Andrew Borodin <aborodin@vmail.ru>
+Date: Sun, 7 Jul 2019 14:44:10 +0300
+Subject: [PATCH 1/2] Ticket #3933: report iso9660  listing errors.
+
+Variation 1:
+
+Steps to reproduce:
+
+    * create empty .iso file (touch foo.iso)
+    * run 'mc' and press enter on empty .iso
+
+Expected result: some error about invalid file format (sililar to what
+F3 view would yield).
+Actual result: mc elters a file as if it would be empty valid file.
+
+Variation 2:
+Steps to reproduce:
+
+    * pick valid .iso file
+    * deinstall all helper tools that handle .sio (isoinfo, xorriso, etc.)
+    * run 'mc' and press enter on empty .iso
+
+Expected result: some error about invalid file format (sililar to what
+F3 view would yield)
+Actual result: mc enters a file as if it would be empty valid file
+
+Variation 2 is especially confusing for users as it does not hint them
+that they should install a tool to get it working. They just observe
+silently broken behaviour.
+
+Signed-off-by: Andrew Borodin <aborodin@vmail.ru>
+---
+ src/vfs/extfs/helpers/iso9660.in | 14 +++++++++++---
+ 1 file changed, 11 insertions(+), 3 deletions(-)
+
+diff --git a/src/vfs/extfs/helpers/iso9660.in b/src/vfs/extfs/helpers/iso9660.in
+index 8c2240e8e..76273522e 100644
+--- a/src/vfs/extfs/helpers/iso9660.in
++++ b/src/vfs/extfs/helpers/iso9660.in
+@@ -93,6 +93,8 @@ xorriso_rm() {
+ 
+ # tested to comply with isoinfo 2.0's output
+ test_iso () {
++    which isoinfo 2>/dev/null || (echo "isoinfo not found" >&2;  return 1)
++
+     CHARSET=$(locale charmap 2>/dev/null)
+     if test -z "$CHARSET"; then
+         CHARSET=$(locale 2>/dev/null | @GREP@ LC_CTYPE | sed -n -e 's/.*\.\(.*\)"$/\1/p')
+@@ -119,6 +121,8 @@ test_iso () {
+ }
+ 
+ mcisofs_list () {
++    local lsl r
++
+     # left as a reminder to implement compressed image support =)
+     case "$1" in
+       *.lz)  MYCAT="lzip -dc";;
+@@ -133,7 +137,11 @@ mcisofs_list () {
+       *)     MYCAT="cat";;
+     esac
+ 
+-    $ISOINFO -l -i "$1" 2>/dev/null | @AWK@ -v SEMICOLON=$SEMICOLON '
++    lsl=$($ISOINFO -l -i "$1"  2>/dev/null)
++    r=$?
++    test $r -gt 0 && return $r
++
++    echo "$lsl" | @AWK@ -v SEMICOLON=$SEMICOLON '
+ BEGIN {
+   dir="";
+   # Pattern to match 8 first fields.
+@@ -183,8 +191,8 @@ shift
+ case "$cmd" in
+   list)
+     xorriso_list "$@" || {
+-        test_iso "$@";
+-        mcisofs_list "$@";
++        test_iso "$@" || exit 1
++        mcisofs_list "$@" || exit 1
+     }
+     exit 0
+     ;;
+-- 
+2.22.0
+
