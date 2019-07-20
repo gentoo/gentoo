@@ -47,6 +47,7 @@ RDEPEND="${COMMON_DEPEND}
 	)
 "
 DEPEND="${COMMON_DEPEND}
+	${PYTHON_DEPS}
 	virtual/pkgconfig
 	nls? ( dev-util/intltool )
 "
