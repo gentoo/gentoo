@@ -1,10 +1,10 @@
+BDEPEND=>=dev-vcs/git-1.8.2.1[curl]
 DEFINED_PHASES=compile configure install test unpack
-DEPEND=>=dev-vcs/git-1.8.2.1[curl]
 DESCRIPTION=Common files shared between multiple slots of clang
-EAPI=6
+EAPI=7
 HOMEPAGE=https://llvm.org/
 LICENSE=UoI-NCSA
 PDEPEND=sys-devel/clang:*
 SLOT=0
 _eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	git-r3	0d4635eeb5a96cd5315597a47eba25c9	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
-_md5_=7ff8b04e24dad63edafc353344756c10
+_md5_=1fbf183f081e196db039fd595b70f82b

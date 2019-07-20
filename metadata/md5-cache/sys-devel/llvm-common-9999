@@ -1,10 +1,10 @@
+BDEPEND=>=dev-vcs/git-1.8.2.1[curl]
 DEFINED_PHASES=compile configure install test unpack
-DEPEND=>=dev-vcs/git-1.8.2.1[curl]
 DESCRIPTION=Common files shared between multiple slots of LLVM
-EAPI=6
+EAPI=7
 HOMEPAGE=https://llvm.org/
 LICENSE=UoI-NCSA
 RDEPEND=!sys-devel/llvm:0
 SLOT=0
 _eclasses_=git-r3	0d4635eeb5a96cd5315597a47eba25c9
-_md5_=334f03899559c7fc9f9c008741e37a97
+_md5_=0c8985840bd12ac0ef9501311f780a02
