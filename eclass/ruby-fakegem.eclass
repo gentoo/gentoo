@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: ruby-fakegem.eclass
@@ -39,7 +39,7 @@ RUBY_FAKEGEM_TASK_DOC="${RUBY_FAKEGEM_TASK_DOC-rdoc}"
 #  - rspec (calls ruby-ng_rspec, adds dev-ruby/rspec:2 to the dependencies)
 #  - rspec3 (calls ruby-ng_rspec, adds dev-ruby/rspec:3 to the dependencies)
 #  - cucumber (calls ruby-ng_cucumber, adds dev-util/cucumber to the
-#    dependencies; does not work on JRuby).
+#    dependencies)
 #  - none
 RUBY_FAKEGEM_RECIPE_TEST="${RUBY_FAKEGEM_RECIPE_TEST-rake}"
 
@@ -159,10 +159,7 @@ case ${RUBY_FAKEGEM_RECIPE_TEST} in
 		;;
 	cucumber)
 		IUSE+=" test"
-		# Unfortunately as of August 2012, cucumber is not supported on
-		# JRuby.  We work it around here to avoid repeating the same
-		# code over and over again.
-		USE_RUBY="${USE_RUBY/jruby/}" ruby_add_bdepend "test? ( dev-util/cucumber )"
+		ruby_add_bdepend "test? ( dev-util/cucumber )"
 		;;
 	*)
 		RUBY_FAKEGEM_RECIPE_TEST="none"
@@ -266,14 +263,7 @@ ruby_fakegem_gemspec_gemspec() {
 # the metadata distributed by the gem itself. This is similar to how
 # rubygems creates an installation from a .gem file.
 ruby_fakegem_metadata_gemspec() {
-	case ${RUBY} in
-		*jruby)
-			${RUBY} -r yaml -e "puts Gem::Specification.from_yaml(File::open('$1').read).to_ruby" > $2
-				;;
-		*)
-			${RUBY} -r yaml -e "puts Gem::Specification.from_yaml(File::open('$1', :encoding => 'UTF-8').read).to_ruby" > $2
-				;;
-	esac
+	${RUBY} -r yaml -e "puts Gem::Specification.from_yaml(File::open('$1', :encoding => 'UTF-8').read).to_ruby" > $2
 }
 
 # @FUNCTION: ruby_fakegem_genspec
@@ -332,8 +322,7 @@ ruby_fakegem_binwrapper() {
 		# one or multiple implementations; if we're installing for a
 		# *single* implementation, no need to use “/usr/bin/env ruby”
 		# in the shebang, and we can actually avoid errors when
-		# calling the script by default (see for instance the
-		# JRuby-specific commands).
+		# calling the script by default.
 		local rubycmd=
 		for implementation in $(_ruby_get_all_impls); do
 			# ignore non-enabled implementations
