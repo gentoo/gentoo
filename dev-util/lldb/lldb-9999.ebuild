@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 : ${CMAKE_MAKEFILE_GENERATOR:=ninja}
 # (needed due to CMAKE_BUILD_TYPE != Gentoo)
@@ -98,6 +98,7 @@ src_configure() {
 }
 
 src_test() {
+	local -x LIT_PRESERVES_TMP=1
 	cmake-utils_src_make check-lldb-lit
 	use python && cmake-utils_src_make check-lldb
 }
