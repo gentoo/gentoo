@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit toolchain-funcs multilib systemd usr-ldscript
 
@@ -20,8 +20,10 @@ LIB_DEPEND=">=sys-apps/util-linux-2.17.2[static-libs(+)]
 	!readline? ( libedit? ( dev-libs/libedit[static-libs(+)] ) )"
 RDEPEND="${LIB_DEPEND//\[static-libs(+)]}
 	!<sys-fs/xfsdump-3"
-DEPEND="${RDEPEND}
-	nls? ( sys-devel/gettext )"
+DEPEND="${RDEPEND}"
+BDEPEND="
+	nls? ( sys-devel/gettext )
+"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.9.0-underlinking.patch
@@ -80,6 +82,6 @@ src_install() {
 	gen_usr_ldscript -a handle xcmd xfs xlog frog
 	# removing unnecessary .la files if not needed
 	if ! use static-libs ; then
-		find "${ED}" -name '*.la' -delete || die
+		find "${ED}" -type f -name '*.la' -delete || die
 	fi
 }
