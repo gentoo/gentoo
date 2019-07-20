@@ -7,7 +7,7 @@ COMMIT=777b31219179b43f56c7b95857d2fbd7f33199aa
 inherit cmake-utils xdg-utils
 
 DESCRIPTION="Multi-source social music player"
-HOMEPAGE="https://www.tomahawk-player.org/"
+HOMEPAGE="https://github.com/tomahawk-player/tomahawk"
 SRC_URI="https://github.com/${PN}-player/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3 BSD"

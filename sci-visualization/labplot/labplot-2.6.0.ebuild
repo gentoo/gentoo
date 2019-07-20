@@ -8,7 +8,7 @@ KDE_TEST="forceoptional"
 inherit kde5
 
 DESCRIPTION="Scientific data analysis and visualisation based on KDE Frameworks"
-HOMEPAGE="https://www.kde.org/applications/education/labplot/"
+HOMEPAGE="https://labplot.kde.org/ https://kde.org/applications/education/org.kde.labplot2"
 [[ ${KDE_BUILD_TYPE} != live ]] && SRC_URI="mirror://kde/stable/${PN}/${PV}/${P}.tar.xz"
 
 LICENSE="GPL-2"

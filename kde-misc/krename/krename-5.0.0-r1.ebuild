@@ -7,7 +7,7 @@ KDE_TEST="true"
 inherit kde5
 
 DESCRIPTION="Powerful batch file renamer"
-HOMEPAGE="http://www.krename.net/"
+HOMEPAGE="https://kde.org/applications/utilities/org.kde.krename"
 SRC_URI="mirror://kde/stable/${PN}/${PV}/src/${P}.tar.xz"
 
 LICENSE="GPL-2"

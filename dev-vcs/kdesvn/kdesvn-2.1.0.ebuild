@@ -7,15 +7,19 @@ KDE_HANDBOOK="forceoptional"
 inherit kde5
 
 DESCRIPTION="A frontend to the subversion vcs"
-HOMEPAGE="https://kdesvn.alwins-world.de/ https://cgit.kde.org/kdesvn.git"
+HOMEPAGE="https://kde.org/applications/development/org.kde.kdesvn"
+
 if [[ ${PV} != 9999* ]]; then
 	SRC_URI="mirror://kde/stable/${PN}/${PV}/${P}.tar.xz"
+	KEYWORDS="~amd64 ~x86"
 fi
 
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~x86"
 IUSE="+man"
 
+BDEPEND="
+	man? ( $(add_frameworks_dep kdoctools) )
+"
 DEPEND="
 	$(add_frameworks_dep kbookmarks)
 	$(add_frameworks_dep kcodecs)
