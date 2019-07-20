@@ -8,7 +8,7 @@
 # Author: Diego E. Pettenò <flameeyes@gentoo.org>
 # Author: Alex Legler <a3li@gentoo.org>
 # Author: Hans de Graaff <graaff@gentoo.org>
-# @SUPPORTED_EAPIS: 0 1 2 3 4 5 6
+# @SUPPORTED_EAPIS: 4 5 6
 # @BLURB: An eclass for installing Ruby packages to behave like RubyGems.
 # @DESCRIPTION:
 # This eclass allows to install arbitrary Ruby libraries (including Gems),
@@ -107,11 +107,13 @@ RUBY_FAKEGEM_BINDIR="${RUBY_FAKEGEM_BINDIR-bin}"
 # Rails generators, or data that needs to be installed as well.
 
 case "${EAPI:-0}" in
-		0|1|2|3|4|5|6)
-				;;
-		*)
-				die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}"
-				;;
+	0|1|2|3)
+		die "Unsupported EAPI=${EAPI} (too old) for ruby-fakegem.eclass" ;;
+	4|5|6)
+		;;
+	*)
+		die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}"
+		;;
 esac
 
 
@@ -178,8 +180,6 @@ ruby_add_rdepend virtual/rubygems
 # This function returns the gems data directory for the ruby
 # implementation in question.
 ruby_fakegem_gemsdir() {
-	has "${EAPI}" 2 && ! use prefix && EPREFIX=
-
 	local _gemsitedir=$(ruby_rbconfig_value 'sitelibdir')
 	_gemsitedir=${_gemsitedir//site_ruby/gems}
 	_gemsitedir=${_gemsitedir#${EPREFIX}}
