@@ -25,6 +25,7 @@ CONFIG_CHECK="~ATM"
 
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-headers.patch
+	epatch "${FILESDIR}"/${P}-linux-5.2-SIOCGSTAMP.patch
 
 	sed -i '/#define _LINUX_NETDEVICE_H/d' \
 		src/arpd/*.c || die "sed command on arpd/*.c files failed"
