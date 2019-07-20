@@ -11,7 +11,7 @@ inherit perl-module
 DESCRIPTION="Nearly transparent SSL encapsulation for IO::Socket::INET"
 
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
 IUSE="idn"
 
 RDEPEND="
