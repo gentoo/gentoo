@@ -1964,6 +1964,7 @@ dev-games/cardpics 0.4 0.4-r1: set of free cards sets
 dev-games/cegui 0.8.7: Crazy Eddie's GUI System
 dev-games/clanlib 0.8.1 2.3.7: multi-platform game development library
 dev-games/flatzebra 0.1.6: A generic game engine for 2D double-buffering animation
+dev-games/freecell-solver 5.6.0: C library for automatically solving Freecell and some other solitaire variants
 dev-games/goatee 0.3.0 0.3.1.2: A monadic take on a 2,500-year-old board game - library
 dev-games/guichan 0.8.2: a portable C++ GUI library designed for games using Allegro, SDL and/or OpenGL
 dev-games/hawknl 1.68-r2: A cross-platform network library designed for games
@@ -5346,6 +5347,7 @@ dev-python/pyserial 3.2.1: Python Serial Port extension
 dev-python/pysha3 1.0.2-r1: SHA-3 (Keccak) for Python 2.7 - 3.5
 dev-python/pysmi 0.1.3: Python Lex & Yacc
 dev-python/pysnmp 4.4.4: Python SNMP library
+dev-python/pysol_cards 0.6.2: Deal PySol FreeCell cards
 dev-python/pysolr 3.3.2: Lightweight python wrapper for Apache Solr
 dev-python/pyspf 2.0.12: Python implementation of the Sender Policy Framework (SPF) protocol
 dev-python/pysrt 1.1.1: Python library used to edit or create SubRip files
