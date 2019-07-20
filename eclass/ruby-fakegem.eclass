@@ -7,6 +7,7 @@
 # @AUTHOR:
 # Author: Diego E. Pettenò <flameeyes@gentoo.org>
 # Author: Alex Legler <a3li@gentoo.org>
+# Author: Hans de Graaff <graaff@gentoo.org>
 # @SUPPORTED_EAPIS: 0 1 2 3 4 5 6
 # @BLURB: An eclass for installing Ruby packages to behave like RubyGems.
 # @DESCRIPTION:
