@@ -20,7 +20,7 @@ else
 fi
 
 LICENSE="GPL-2+ LGPL-2.1+"
-SLOT="0"
+SLOT="0/${PV}"
 IUSE="+audit doc python udis86"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
@@ -42,7 +42,7 @@ CONFIG_CHECK="
 	~BLK_DEV_IO_TRACE"
 
 PATCHES=(
-	"${FILESDIR}/trace-cmd-2.7-makefile.patch"
+	"${FILESDIR}/trace-cmd-2.8-makefile.patch"
 	"${FILESDIR}/trace-cmd-2.8-python-pkgconfig-name.patch"
 	"${FILESDIR}/trace-cmd-2.8-soname.patch"
 )
@@ -53,8 +53,8 @@ pkg_setup() {
 
 src_configure() {
 	EMAKE_FLAGS=(
-		"prefix=/usr"
-		"libdir=/usr/$(get_libdir)"
+		"prefix=${EPREFIX}/usr"
+		"libdir=${EPREFIX}/usr/$(get_libdir)"
 		"CC=$(tc-getCC)"
 		"AR=$(tc-getAR)"
 		$(usex audit '' '' '' 'NO_AUDIT=1')
