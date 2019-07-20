@@ -6189,7 +6189,7 @@ dev-util/bustle 0.4.2-r1 0.5.4: Draw sequence diagrams of D-Bus traffic
 dev-util/byacc 20170201: the best variant of the Yacc parser generator
 dev-util/catalyst 2.0.18-r1 2.0.18-r4 3.0.2 3.0.2-r1 3.0.3: Release metatool used for creating releases based on Gentoo Linux
 dev-util/catfish 1.4.7: A frontend for find, (s)locate, doodle, tracker, beagle, strigi and pinot
-dev-util/ccache 3.3.4-r1: fast compiler cache
+dev-util/ccache 3.3.4-r1 3.6: fast compiler cache
 dev-util/cdiff 1.0: Colored, side-by-side diff terminal viewer
 dev-util/cgdb 0.6.8: A curses front-end for GDB, the GNU debugger
 dev-util/cgvg 1.6.2 1.6.3: Minimal command-line source browsing tool similar to cscope
