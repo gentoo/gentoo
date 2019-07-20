@@ -12,7 +12,7 @@ if [[ ${KDE_BUILD_TYPE} = release ]]; then
 fi
 
 DESCRIPTION="Library for managing partitions"
-HOMEPAGE="https://kde.org/applications/system/kdepartitionmanager"
+HOMEPAGE="https://kde.org/applications/system/org.kde.partitionmanager"
 LICENSE="GPL-3"
 SLOT="5/8"
 IUSE=""
