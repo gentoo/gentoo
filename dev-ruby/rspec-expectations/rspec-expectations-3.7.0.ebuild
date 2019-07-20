@@ -11,7 +11,7 @@ RUBY_FAKEGEM_EXTRADOC="Changelog.md README.md"
 
 RUBY_FAKEGEM_GEMSPEC="${PN}.gemspec"
 
-inherit ruby-fakegem
+inherit ruby-fakegem versionator
 
 DESCRIPTION="A Behaviour Driven Development (BDD) framework for Ruby"
 HOMEPAGE="https://github.com/rspec/rspec-expectations"
