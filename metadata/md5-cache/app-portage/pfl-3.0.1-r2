@@ -1,0 +1,14 @@
+BDEPEND=python_targets_python3_5? ( dev-lang/python:3.5[xml] ) python_targets_python3_6? ( dev-lang/python:3.6[xml] ) >=dev-lang/python-exec-2:=[python_targets_python3_5(-)?,python_targets_python3_6(-)?,-python_single_target_python3_5(-),-python_single_target_python3_6(-)]
+DEFINED_PHASES=compile configure install postinst prepare test
+DESCRIPTION=Searchable online file/package database for Gentoo
+EAPI=7
+HOMEPAGE=http://www.portagefilelist.de
+IUSE=+network-cron python_targets_python3_5 python_targets_python3_6
+KEYWORDS=~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos
+LICENSE=GPL-2
+RDEPEND=>=dev-python/ssl-fetch-0.4[python_targets_python3_5(-)?,python_targets_python3_6(-)?,-python_single_target_python3_5(-),-python_single_target_python3_6(-)] net-misc/curl sys-apps/portage[python_targets_python3_5(-)?,python_targets_python3_6(-)?,-python_single_target_python3_5(-),-python_single_target_python3_6(-)] sys-apps/util-linux[caps] python_targets_python3_5? ( dev-lang/python:3.5[xml] ) python_targets_python3_6? ( dev-lang/python:3.6[xml] ) >=dev-lang/python-exec-2:=[python_targets_python3_5(-)?,python_targets_python3_6(-)?,-python_single_target_python3_5(-),-python_single_target_python3_6(-)]
+REQUIRED_USE=|| ( python_targets_python3_5 python_targets_python3_6 )
+SLOT=0
+SRC_URI=https://dev.gentoo.org/~billie/distfiles/pfl-3.0.1.tar.bz2
+_eclasses_=distutils-r1	9838160d624a44b2d56d1266a69fd473	multibuild	40fe59465edacd730c644ec2bc197809	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	ce1cd23cfdc1848e8e32743efe34f299	python-utils-r1	08e17157a6807add7db1f8d01e7e391f	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
+_md5_=8bde8c2c4b7d05503d55269856c245b5
