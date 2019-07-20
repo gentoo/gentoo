@@ -12,6 +12,7 @@ RDEPEND="
 	!eselect-ldso? ( >=sci-libs/lapack-3.8.0[-eselect-ldso] )
 	eselect-ldso? ( || (
 		>=sci-libs/lapack-3.8.0[eselect-ldso]
+		sci-libs/openblas[eselect-ldso]
 		sci-libs/blis[eselect-ldso] ) )
 "
 DEPEND="${RDEPEND}"
