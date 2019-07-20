@@ -6,7 +6,7 @@ EAPI=7
 inherit kde5
 
 DESCRIPTION="Note taking utility by KDE"
-HOMEPAGE="https://www.kde.org/applications/utilities/kjots/"
+HOMEPAGE="https://userbase.kde.org/KJots https://community.kde.org/PIM/KJots"
 SRC_URI="mirror://kde/stable/${PN}/${PV}/${P}.tar.xz"
 
 KEYWORDS="~amd64 ~x86"
