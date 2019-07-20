@@ -15,13 +15,14 @@ SRC_URI="${HOMEPAGE%/}/files/${P}.tar.bz2"
 
 LICENSE="MIT GPL-2 GPL-2+ GPL-3 GPL-3+"
 SLOT="0"
-KEYWORDS="alpha amd64 arm x86"
+KEYWORDS="~alpha ~amd64 ~arm ~x86"
 IUSE="contrib debug java kernel_Darwin kernel_FreeBSD kernel_linux perl selinux static-libs udev xfs"
 
 # The plugin lists have to follow here since they extend IUSE
 
 # Plugins that don't build (e.g. dependencies not in Gentoo)
 # apple_sensors: Requires libIOKit
+# amqp1:         Requires libqpid-proton
 # aquaero:       Requires aerotools-ng/libaquaero5
 # barometer:     Requires libi2c (i2c_smbus_read_i2c_block_data)
 # dpdkevents:    Requires dpdk
@@ -39,8 +40,8 @@ IUSE="contrib debug java kernel_Darwin kernel_FreeBSD kernel_linux perl selinux 
 # write_riemann: Requires riemann-c-client
 # xmms:          Requires libxmms (v1)
 # zone:          Solaris only...
-COLLECTD_IMPOSSIBLE_PLUGINS="apple_sensors aquaero barometer dpdkstat grpc
-	intel_pmu intel_rdt lpar mic netapp pf pinba tape write_riemann
+COLLECTD_IMPOSSIBLE_PLUGINS="apple_sensors amqp1 aquaero barometer dpdkstat
+	grpc intel_pmu intel_rdt lpar mic netapp pf pinba tape write_riemann
 	xmms zone"
 
 # Plugins that have been (compile) tested and can be enabled via COLLECTD_PLUGINS
@@ -159,7 +160,7 @@ REQUIRED_USE="
 	collectd_plugins_python?		( ${PYTHON_REQUIRED_USE} )
 	collectd_plugins_smart?			( udev )"
 
-PATCHES=( "${FILESDIR}"/${P}-disk-plugin-udev-fix.patch )
+PATCHES=()
 
 # @FUNCTION: collectd_plugin_kernel_linux
 # @DESCRIPTION:
@@ -344,7 +345,11 @@ src_configure() {
 
 	# Disable what needs to be disabled.
 	for plugin in ${COLLECTD_DISABLED_PLUGINS}; do
-		myconf+=" --disable-${plugin}"
+		if [[ "${plugin}" == 'dpdkstat' ]]; then
+			myconf+=" --without-libdpdk"
+		else
+			myconf+=" --disable-${plugin}"
+		fi
 	done
 
 	# Set enable/disable for each single plugin.
