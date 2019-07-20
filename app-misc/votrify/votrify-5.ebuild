@@ -14,8 +14,10 @@ LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
+REQUIRED_USE=${PYTHON_REQUIRED_USE}
 
-RDEPEND="app-misc/gentoo-elections"
+RDEPEND="${PYTHON_DEPS}
+	app-misc/gentoo-elections"
 
 src_configure() {
 	# update default location for election scripts
