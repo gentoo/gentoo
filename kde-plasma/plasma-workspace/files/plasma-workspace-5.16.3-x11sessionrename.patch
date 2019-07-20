@@ -1,0 +1,91 @@
+From bcabb38b1f07a52847752fb54eb61696a1312a61 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Tue, 2 Jul 2019 10:13:54 +0200
+Subject: [PATCH] Fix Name conflict between plasma.desktop and
+ plasmawayland.desktop
+
+Summary:
+SDDM as of 0.18.1 appends " (Wayland)" to the Name of any session file it
+finds in wayland-sessions dir, and Plasma is relying on that behaviour to
+distinguish between its X11 and Wayland sessions. This leads to duplicate
+"Plasma" entries on any other DM not applying the same hack, e.g. lightdm,
+and users are lost without downstream patching.
+
+Instead of waiting for which of (SDDM, Plasma) is doing something about
+it first, renaming X11 session to "Plasma on Xorg" appears to be the most
+elegant solution out of the deadlock. SDDM can be fixed any time later.
+
+CCBUG: https://bugs.kde.org/show_bug.cgi?id=368409
+See also: https://github.com/sddm/sddm/pull/997
+
+Reviewers: #plasma
+
+Subscribers: plasma-devel
+
+Tags: #plasma
+
+Differential Revision: https://phabricator.kde.org/D22210
+---
+ plasma.desktop.cmake | 46 +----------------------------
+ 1 file changed, 1 insertion(+), 45 deletions(-)
+
+diff --git a/plasma.desktop.cmake b/plasma.desktop.cmake
+index 4d361606d..099de2908 100644
+--- a/plasma.desktop.cmake
++++ b/plasma.desktop.cmake
+@@ -3,51 +3,7 @@ Type=XSession
+ Exec=${CMAKE_INSTALL_FULL_BINDIR}/startplasma-x11
+ TryExec=${CMAKE_INSTALL_FULL_BINDIR}/startplasma-x11
+ DesktopNames=KDE
+-Name=Plasma
+-Name[ar]=بلازما
+-Name[bs]=Plazma
+-Name[ca]=Plasma
+-Name[ca@valencia]=Plasma
+-Name[cs]=Plasma
+-Name[da]=Plasma
+-Name[de]=Plasma
+-Name[el]=Plasma
+-Name[en_GB]=Plasma
+-Name[es]=Plasma
+-Name[et]=Plasma
+-Name[eu]=Plasma
+-Name[fi]=Plasma
+-Name[fr]=Plasma
+-Name[gl]=Plasma
+-Name[he]=פלזמה
+-Name[hu]=Plasma
+-Name[id]=Plasma
+-Name[is]=Plasma
+-Name[it]=Plasma
+-Name[ja]=プラズマ
+-Name[ko]=Plasma
+-Name[lt]=Plasma
+-Name[nb]=Plasma
+-Name[nds]=Plasma
+-Name[nl]=Plasma
+-Name[nn]=Plasma
+-Name[pa]=ਪਲਾਜ਼ਮਾ
+-Name[pl]=Plazma
+-Name[pt]=Plasma
+-Name[pt_BR]=Plasma
+-Name[ru]=Plasma
+-Name[sk]=Plasma
+-Name[sl]=Plasma
+-Name[sr]=Плазма
+-Name[sr@ijekavian]=Плазма
+-Name[sr@ijekavianlatin]=Plasma
+-Name[sr@latin]=Plasma
+-Name[sv]=Plasma
+-Name[tr]=Plama
+-Name[uk]=Плазма
+-Name[x-test]=xxPlasmaxx
+-Name[zh_CN]=Plasma
+-Name[zh_TW]=Plasma
++Name=Plasma on Xorg
+ Comment=Plasma by KDE
+ Comment[ar]=بلازما كدي
+ Comment[bs]=Plazma od strane KDe
+-- 
+2.22.0
+
