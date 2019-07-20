@@ -11,7 +11,7 @@ SRC_URI="https://www.samba.org/ftp/ccache/${P}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd"
+KEYWORDS="alpha amd64 ~arm arm64 hppa ia64 ~mips ppc ppc64 s390 sparc x86 ~amd64-fbsd"
 IUSE=""
 
 DEPEND="app-arch/xz-utils
@@ -23,9 +23,8 @@ RDEPEND="${DEPEND}
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.4-size-on-disk.patch #456178
 	"${FILESDIR}"/${PN}-3.5-nvcc-test.patch
+	"${FILESDIR}"/${PN}-3.6-disable-sized-cleanup.patch #649440
 )
-
-S=${WORKDIR}/${P%a} # 3.5.1a->3.5.1, bug #674516
 
 src_prepare() {
 	default
@@ -55,8 +54,8 @@ src_install() {
 
 	DOC_CONTENTS="
 To use ccache with **non-Portage** C compiling, add
-${EPREFIX}/usr/lib/ccache/bin to the beginning of your path, before ${EPREFIX}/usr/bin.
-Portage 2.0.46-r11+ will automatically take advantage of ccache with
+'${EPREFIX}/usr/lib/ccache/bin' to the beginning of your path, before
+'${EPREFIX}/usr/bin'. Portage will automatically take advantage of ccache with
 no additional steps.  If this is your first install of ccache, type
 something like this to set a maximum cache size of 2GB:\\n
 # ccache -M 2G\\n
