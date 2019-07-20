@@ -103,7 +103,7 @@ src_install() {
 }
 
 get_TIMEZONE() {
-	local tz src="${EROOT}etc/timezone"
+	local tz src="${EROOT}/etc/timezone"
 	if [[ -e ${src} ]] ; then
 		tz=$(sed -e 's:#.*::' -e 's:[[:space:]]*::g' -e '/^$/d' "${src}")
 	else
@@ -135,11 +135,11 @@ pkg_preinst() {
 
 configure_tz_data() {
 	# make sure the /etc/localtime file does not get stale #127899
-	local tz src="${EROOT}etc/timezone" etc_lt="${EROOT}etc/localtime"
+	local tz src="${EROOT}/etc/timezone" etc_lt="${EROOT}/etc/localtime"
 
 	# If it's a symlink, assume the user knows what they're doing and
 	# they're managing it themselves. #511474
-	if [[ -L ${etc_lt} ]] ; then
+	if [[ -L "${etc_lt}" ]] ; then
 		einfo "Assuming your ${etc_lt} symlink is what you want; skipping update."
 		return 0
 	fi
@@ -148,10 +148,10 @@ configure_tz_data() {
 		einfo "Assuming your empty ${etc_lt} file is what you want; skipping update."
 		return 0
 	fi
-	if [[ ${tz} == "FOOKABLOIE" ]] ; then
+	if [[ "${tz}" == "FOOKABLOIE" ]] ; then
 		elog "You do not have TIMEZONE set in ${src}."
 
-		if [[ ! -e ${etc_lt} ]] ; then
+		if [[ ! -e "${etc_lt}" ]] ; then
 			cp -f "${EROOT}"/usr/share/zoneinfo/Factory "${etc_lt}"
 			elog "Setting ${etc_lt} to Factory."
 		else
@@ -160,13 +160,13 @@ configure_tz_data() {
 		return 0
 	fi
 
-	if [[ ! -e ${EROOT}/usr/share/zoneinfo/${tz} ]] ; then
+	if [[ ! -e "${EROOT}/usr/share/zoneinfo/${tz}" ]] ; then
 		elog "You have an invalid TIMEZONE setting in ${src}"
 		elog "Your ${etc_lt} has been reset to Factory; enjoy!"
 		tz="Factory"
 	fi
-	einfo "Updating ${etc_lt} with ${EROOT}usr/share/zoneinfo/${tz}"
-	cp -f "${EROOT}"/usr/share/zoneinfo/"${tz}" "${etc_lt}"
+	einfo "Updating ${etc_lt} with ${EROOT}/usr/share/zoneinfo/${tz}"
+	cp -f "${EROOT}/usr/share/zoneinfo/${tz}" "${etc_lt}"
 }
 
 pkg_config() {
