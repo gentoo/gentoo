@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install
+DEPEND=doc? ( app-text/asciidoc ) app-arch/unzip dev-lang/tcl:0
+DESCRIPTION=Small footprint implementation of Tcl programming language
+EAPI=7
+HOMEPAGE=http://jim.tcl.tk/
+IUSE=doc static-libs
+KEYWORDS=~amd64 ~arm ~arm64 ~m68k ~mips ~s390 ~sh ~x86
+LICENSE=LGPL-2
+SLOT=0/78
+SRC_URI=https://github.com/msteveb/jimtcl/archive/0.78.tar.gz -> jimtcl-0.78.tar.gz
+_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8
+_md5_=39c55d13cff1930e0fcd26f8cd2b831e
