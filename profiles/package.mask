@@ -33,6 +33,7 @@
 # Ancient theme for KDE SC 4.4, useless for Plasma 5
 # Removal in 15 days
 x11-themes/korilla
+x11-themes/noia
 x11-themes/oxygen-molecule
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2019-07-20)
