@@ -18,9 +18,9 @@ IUSE="lha"
 
 RDEPEND="
 	app-emulation/fs-uae
-	dev-python/pyopengl[${PYTHON_USEDEP}]
 	dev-python/PyQt5[${PYTHON_USEDEP},declarative,gui,network,opengl,widgets]
-	dev-python/six[${PYTHON_USEDEP}]
+	dev-python/pyopengl[${PYTHON_USEDEP}]
+	dev-python/requests[${PYTHON_USEDEP}]
 	lha? ( dev-python/python-lhafile[${PYTHON_USEDEP}] )
 "
 
@@ -29,17 +29,17 @@ DEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/${P}-German-ROMs.patch
-	"${FILESDIR}"/${P}-QApplication.patch
+	"${FILESDIR}"/${P}-ROMs.patch
+	"${FILESDIR}"/${PN}-2.8.3-QApplication.patch
 )
 
 src_prepare() {
 	default
 
-	# Unbundle some libraries. Keep oyoyo IRC library because upstream
+	# Unbundle OpenGL library. Keep oyoyo IRC library because upstream
 	# is long dead and it's not worth packaging separately.
-	rm -r {OpenGL,six}/ || die
-	sed -i -r "/OpenGL|six/d" setup.py || die
+	rm -r OpenGL || die
+	sed -i -r "/OpenGL/d" setup.py || die
 }
 
 src_compile() {

@@ -27,6 +27,7 @@ RDEPEND="
 
 DEPEND="
 	${RDEPEND}
+	x11-base/xorg-proto
 "
 
 BDEPEND="
@@ -35,18 +36,18 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-2.8.3-libmpeg2.patch
+	"${FILESDIR}"/${PN}-3.0.0-libmpeg2.patch
 )
 
 src_prepare() {
 	default
 	AT_NO_RECURSIVE=1 eautoreconf
 
-	# Ensure bundled libraries are not used. GLee and Udis86 are unused
+	# Ensure bundled libraries are not used. Udis86 is unused
 	# regardless. Only FLAC headers are bundled and the library is never
 	# used? Lua is bundled but differs from upstream. We keep the
 	# default of disabling the Lua feature anyway as it is unfinished.
-	rm -r glee/ libmpeg2/ libudis86/ || die
+	rm -r libmpeg2/ libudis86/ || die
 }
 
 src_configure() {
@@ -67,18 +68,18 @@ src_configure() {
 		--enable-gfxboard \
 		--enable-jit \
 		--enable-jit-fpu \
-		--enable-ncr9x \
-		--enable-ncr \
 		--enable-netplay \
+		--enable-ncr \
+		--enable-ncr9x \
 		--enable-parallel-port \
 		--enable-prowizard \
-		--enable-qemu-cpu \
-		--enable-qemu-slirp \
 		--enable-savestate \
 		--enable-scp \
 		--enable-serial-port \
 		--enable-slirp \
 		--enable-softfloat \
+		--enable-qemu-cpu \
+		--enable-qemu-slirp \
 		--enable-uaenative \
 		--enable-uaenet \
 		--enable-uaescsi \

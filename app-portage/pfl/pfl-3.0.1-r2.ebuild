@@ -23,7 +23,7 @@ RDEPEND="
 	>=dev-python/ssl-fetch-0.4[${PYTHON_USEDEP}]
 	net-misc/curl
 	sys-apps/portage[${PYTHON_USEDEP}]
-	sys-apps/util-linux[caps]
+	network-cron? ( sys-apps/util-linux[caps] )
 "
 
 PATCHES=(
