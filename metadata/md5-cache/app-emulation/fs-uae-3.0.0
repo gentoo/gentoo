@@ -1,6 +1,6 @@
 BDEPEND=sys-devel/gettext virtual/pkgconfig >=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DEFINED_PHASES=configure install postinst postrm prepare
-DEPEND=dev-libs/glib:2 media-libs/libpng:0= media-libs/libsdl2[opengl] media-libs/openal virtual/opengl x11-libs/libdrm x11-libs/libX11 fmv? ( media-libs/libmpeg2 ) glew? ( media-libs/glew:0= )
+DEPEND=dev-libs/glib:2 media-libs/libpng:0= media-libs/libsdl2[opengl] media-libs/openal virtual/opengl x11-libs/libdrm x11-libs/libX11 fmv? ( media-libs/libmpeg2 ) glew? ( media-libs/glew:0= ) x11-base/xorg-proto
 DESCRIPTION=Integrates the most accurate Amiga emulation code available from WinUAE
 EAPI=7
 HOMEPAGE=https://fs-uae.net/
@@ -9,6 +9,6 @@ KEYWORDS=~amd64
 LICENSE=GPL-2
 RDEPEND=dev-libs/glib:2 media-libs/libpng:0= media-libs/libsdl2[opengl] media-libs/openal virtual/opengl x11-libs/libdrm x11-libs/libX11 fmv? ( media-libs/libmpeg2 ) glew? ( media-libs/glew:0= )
 SLOT=0
-SRC_URI=https://fs-uae.net/stable/2.8.3/fs-uae-2.8.3.tar.gz
+SRC_URI=https://fs-uae.net/stable/3.0.0/fs-uae-3.0.0.tar.gz
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56	xdg-utils	14d00d009167652b1fa363e55effe213
-_md5_=9604972a91a781a07715ace3d5f658f5
+_md5_=fbc90b5879a0ca2bab43a394e4836edb
