@@ -515,10 +515,10 @@ _each_ruby_check_install() {
 	# we have a Mach-O object here
 	[[ ${CHOST} == *-darwin ]] && scancmd=scanmacho
 
-	local libruby_basename=$(${RUBY} -rrbconfig -e 'puts RbConfig::CONFIG["LIBRUBY_SO"]')
+	local libruby_basename=$(ruby_rbconfig_value 'LIBRUBY_SO')
 	local libruby_soname=$(basename $(${scancmd} -F "%S#F" -qS "${EPREFIX}/usr/$(get_libdir)/${libruby_basename}") 2>/dev/null)
-	local sitedir=$(${RUBY} -rrbconfig -e 'puts RbConfig::CONFIG["sitedir"]')
-	local sitelibdir=$(${RUBY} -rrbconfig -e 'puts RbConfig::CONFIG["sitelibdir"]')
+	local sitedir=$(ruby_rbconfig_value 'sitedir')
+	local sitelibdir=$(ruby_rbconfig_value 'sitelibdir')
 
 	# The current implementation lacks libruby (i.e.: jruby)
 	[[ -z ${libruby_soname} ]] && return 0
