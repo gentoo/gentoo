@@ -1,17 +1,19 @@
 certificate version 0.1
-pusher Mikle Kolyada <zlogene@gentoo.org> 1563736213 +0300
-pushee git+ssh://git.gentoo.org/repo/gentoo.git
-nonce 1563736210-a93097879a3b5a63da974038e03b84369ab6f63f
+pusher DF84256885283521 1563738046 +0200
+pushee git.gentoo.org:repo/gentoo.git
+nonce 1563738046-095f3f7d51b84cb4a18e3d900861610238194afd
 
-a42f58fbc175d1960f9ee61e6223f54298445778 df6107eb78afe10dceff4c2f1d544ee80801c047 refs/heads/master
+df6107eb78afe10dceff4c2f1d544ee80801c047 3aeec3b3bf290469fa22f8c04ea5edbc2120da96 refs/heads/master
 -----BEGIN PGP SIGNATURE-----
 
-iQFHBAABCgAxFiEEWmyBGnI+Eihw6dN8HICQJIqVl8cFAl00uJUTHHpsb2dlbmVA
-Z2VudG9vLm9yZwAKCRAcgJAkipWXx4S6B/9JgxI5Ht+8Gt6Yhx+ZLMgHUL/pPtTt
-kBzhA898pFsfJ04yT2qe/o4KsTToqWyteQ3jcqn82JatdKc6a+Xpp7qZmaN1HYy3
-00fvHDiAcdlxGuuCwBi6e9bCqofmLkYpIkFF/ARu10xgaKETbsruFwgA3or/lY6V
-SuynqRUaPzPCqSLvb3pWtlVu+CnzJzVDxCyjiQPHbEu/8LKB3sbCt2Ne9bkTZxMA
-JcGoM4BVI2uc5GSJPZixUyk0R91LoycyNdD9T8wAQwCD6pQW7aoEjMhtwqAnwUf+
-cJY8nwQWrmvI6cRYTe5ts01Ll1SxuQ2rVMonLxkYj2yYaCgN0T1IJ0a6
-=nxjx
+iQGTBAABCgB9FiEEx2qEUJQJjSjMiybFY5ra4jKeJA4FAl00v75fFIAAAAAALgAo
+aXNzdWVyLWZwckBub3RhdGlvbnMub3BlbnBncC5maWZ0aGhvcnNlbWFuLm5ldEM3
+NkE4NDUwOTQwOThEMjhDQzhCMjZDNTYzOUFEQUUyMzI5RTI0MEUACgkQY5ra4jKe
+JA7wfwf9GgYIRfFGMHwpeAxcl2JoPciaR8B+XGqDuJJI9/I9eWtH7u+k1YhB98Zj
+rLO4NboLfoEqabOgW6g81wwJcazD0Jtc0eLKCA3CzFU6P8OOC/iMdDqi8eQzQHpT
+5ZJhi34yXTU4RpVd8O2anDNqnOeJaU3XXqHvJaiZITGtELJ0v4J1Um68vcorbJqn
+MeZiO+ttUNJrawTVFLvFRrFCKmyiKp/ImcPEod+oqRdQ9fiQPJYEIUriwfTFFU8e
+bFtnpT91JlhbFqLO1NLuwz2P+iywlhBkV6qKJdu+enMnFn+5gQexIW11dWdkTSGW
+E5dVAay5Ac74aAjzOe9fo4tg09trJA==
+=7D23
 -----END PGP SIGNATURE-----
