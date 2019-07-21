@@ -35,7 +35,7 @@ ALL_LLVM_TARGETS=( "${ALL_LLVM_TARGETS[@]/#/llvm_targets_}" )
 
 LICENSE="UoI-NCSA rc BSD public-domain
 	llvm_targets_ARM? ( LLVM-Grant )"
-SLOT="10"
+SLOT="$(ver_cut 1)"
 KEYWORDS=""
 IUSE="debug doc exegesis gold libedit +libffi ncurses test xar xml
 	kernel_Darwin ${ALL_LLVM_TARGETS[*]}"
