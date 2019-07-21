@@ -10,8 +10,7 @@ HOMEPAGE="https://clang.llvm.org/"
 SRC_URI=""
 
 LICENSE="metapackage"
-# Note: keep it matching clang-9999 version
-SLOT="10.0.0"
+SLOT="$(ver_cut 1-3)"
 KEYWORDS=""
 IUSE="+compiler-rt crt libcxx openmp +sanitize"
 
