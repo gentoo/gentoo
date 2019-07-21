@@ -20,7 +20,7 @@ SLOT="0"
 IUSE=""
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-CDEPEND="
+CDEPEND="${PYTHON_DEPS}
 	>=dev-python/appdirs-1.4.3[${PYTHON_USEDEP}]
 	>=dev-python/pyparsing-2.2.0[${PYTHON_USEDEP}]
 	>=dev-python/packaging-16.8[${PYTHON_USEDEP}]
@@ -34,8 +34,7 @@ RDEPEND="${CDEPEND}"
 DEPEND=""
 
 src_install() {
-	dobin acmebot
-	python_replicate_script "${ED}"/usr/bin/acmebot
+	python_foreach_impl python_doscript acmebot
 	insinto /etc/logrotate.d
 	doins logrotate.d/acmebot
 	insinto /etc/acmebot
