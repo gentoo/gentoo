@@ -9750,7 +9750,7 @@ sys-apps/netkit-base 0.17-r9: Old-style inetd
 sys-apps/netplug 1.2.9.2-r2: Brings up/down ethernet ports automatically with cable detection
 sys-apps/noexec 1.1.0-r1: a package for preventing processes from using exec system calls
 sys-apps/nvme-cli 1.6-r1: NVM-Express user space tooling for Linux
-sys-apps/onerng 3.6-r1: Software for the Open Hardware Random Number Generator called OneRNG
+sys-apps/onerng 3.6-r2: Software for the Open Hardware Random Number Generator called OneRNG
 sys-apps/openrc 0.34.11 0.38.3 0.38.3-r1 0.41.2: OpenRC manages the services, startup and shutdown of a host
 sys-apps/opentmpfiles 0.1.1 0.1.2 0.1.3 0.2: A standalone utility to process systemd-style tmpfiles.d files
 sys-apps/osinfo-db 20190218: osinfo database files
