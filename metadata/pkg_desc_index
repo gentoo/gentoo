@@ -164,7 +164,7 @@ app-admin/xtail 2.1-r1: Tail multiple logfiles at once, even if rotated
 app-admin/yaala 0.7.3-r2: Yet Another Log Analyzer
 app-antivirus/clamav 0.101.2: Clam Anti-Virus Scanner
 app-antivirus/clamav-unofficial-sigs 5.6.2: Download and install third-party clamav signatures
-app-antivirus/clamtk 6.00: A graphical front-end for ClamAV
+app-antivirus/clamtk 6.00-r1: A graphical front-end for ClamAV
 app-arch/advancecomp 2.2_pre20190301: Recompress ZIP, PNG and MNG, considerably improving compression
 app-arch/afio 2.5.1-r2: Afio creates cpio-format archives.
 app-arch/alien 8.95 8.95-r1: Converts between the rpm, dpkg, stampede slp, and slackware tgz file formats

@@ -1,5 +1,6 @@
+BDEPEND=dev-vcs/cvs
 DEFINED_PHASES=compile install test unpack
-DEPEND=static? ( dev-libs/klibc ) test? ( dev-lang/perl sys-apps/ed ) dev-vcs/cvs
+DEPEND=static? ( dev-libs/klibc ) test? ( dev-lang/perl sys-apps/ed )
 DESCRIPTION=MirBSD Korn Shell
 EAPI=7
 HOMEPAGE=http://mirbsd.de/mksh
@@ -7,5 +8,5 @@ IUSE=static test
 LICENSE=BSD
 RDEPEND=static? ( dev-libs/klibc )
 SLOT=0
-_eclasses_=cvs	c57fc648b829862b38ad2a8b8c1c02e8	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
+_eclasses_=cvs	d3ce3771c64d6a9644a7d57480a5d206	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
 _md5_=6ce61af51f9e8aa4f6648a252887a3a6
