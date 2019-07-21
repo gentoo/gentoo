@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 inherit eutils linux-info linux-mod
 
 DESCRIPTION="Broadcom's IEEE 802.11a/b/g/n hybrid Linux device driver"
@@ -71,22 +71,20 @@ pkg_setup() {
 	BUILD_TARGETS="wl.ko"
 }
 
-src_prepare() {
-	epatch \
-		"${FILESDIR}/${PN}-6.30.223.141-makefile.patch" \
-		"${FILESDIR}/${PN}-6.30.223.141-eth-to-wlan.patch" \
-		"${FILESDIR}/${PN}-6.30.223.141-gcc.patch" \
-		"${FILESDIR}/${PN}-6.30.223.248-r3-Wno-date-time.patch" \
-		"${FILESDIR}/${PN}-6.30.223.271-r1-linux-3.18.patch" \
-		"${FILESDIR}/${PN}-6.30.223.271-r2-linux-4.3-v2.patch" \
-		"${FILESDIR}/${PN}-6.30.223.271-r4-linux-4.7.patch" \
-		"${FILESDIR}/${PN}-6.30.223.271-r4-linux-4.8.patch" \
-		"${FILESDIR}/${PN}-6.30.223.271-r4-linux-4.11.patch" \
-		"${FILESDIR}/${PN}-6.30.223.271-r4-linux-4.12.patch" \
+PATCHES=(
+		"${FILESDIR}/${PN}-6.30.223.141-makefile.patch"
+		"${FILESDIR}/${PN}-6.30.223.141-eth-to-wlan.patch"
+		"${FILESDIR}/${PN}-6.30.223.141-gcc.patch"
+		"${FILESDIR}/${PN}-6.30.223.248-r3-Wno-date-time.patch"
+		"${FILESDIR}/${PN}-6.30.223.271-r1-linux-3.18.patch"
+		"${FILESDIR}/${PN}-6.30.223.271-r2-linux-4.3-v2.patch"
+		"${FILESDIR}/${PN}-6.30.223.271-r4-linux-4.7.patch"
+		"${FILESDIR}/${PN}-6.30.223.271-r4-linux-4.8.patch"
+		"${FILESDIR}/${PN}-6.30.223.271-r4-linux-4.11.patch"
+		"${FILESDIR}/${PN}-6.30.223.271-r4-linux-4.12.patch"
 		"${FILESDIR}/${PN}-6.30.223.271-r4-linux-4.15.patch"
-
-	epatch_user
-}
+		"${FILESDIR}/${PN}-6.30.223.271-r5-linux-5.1.patch"
+)
 
 src_install() {
 	linux-mod_src_install
