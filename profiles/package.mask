@@ -201,16 +201,6 @@ sci-biology/allpathslg
 # and it no longer makes sense ship this as standalone pkg
 dev-util/rustfmt
 
-# James Le Cuirot <chewi@gentoo.org> (2019-06-18)
-# Web site and SRC_URI dead. Has required heavy patching. Superseded
-# by games-util/deutex. Removal in 30 days.
-games-misc/yadex
-
-# James Le Cuirot <chewi@gentoo.org> (2019-06-18)
-# Web site and SRC_URI dead. Last release in 2007. Removal in 30
-# days. See bug #688134.
-games-kids/pytraffic
-
 # Mikle Kolyada <zlogene@gentoo.org> (2019-06-15)
 # Part of dev-texlive/texlive-latexextra
 # does not work with utf-8 (bug #688096)
@@ -228,11 +218,6 @@ dev-tex/quotchap
 >=dev-db/myodbc-8.0
 >=dev-db/mysql-connector-c-8.0
 ~virtual/libmysqlclient-21
-
-# James Le Cuirot <chewi@gentoo.org> (2019-06-09)
-# Dead upstream, no release since 2008, not used by anything, possibly
-# doesn't work any more. Removal in 30 days.
-dev-libs/liblazy
 
 # Zac Medico <zmedico@gentoo.org> (2019-05-31)
 # Upstream is dead and there are multiple security vulnerabilities.
