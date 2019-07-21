@@ -15,6 +15,7 @@ LICENSE="CROSSOVER-3"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
 IUSE="+capi +cups doc +gphoto2 +gsm +jpeg +lcms +ldap +mp3 +nls +openal +opencl +opengl +png +scanner +ssl +v4l"
+REQUIRED_USE=${PYTHON_REQUIRED_USE}
 RESTRICT="bindist test"
 
 QA_FLAGS_IGNORED="opt/cxoffice/.*"
@@ -45,6 +46,7 @@ BDEPEND="${PYTHON_DEPS}
 "
 
 RDEPEND="${DEPEND}
+	${PYTHON_DEPS}
 	!prefix? ( sys-libs/glibc )
 	>=dev-python/pygtk-2.10:2[${PYTHON_USEDEP}]
 	dev-python/dbus-python[${PYTHON_USEDEP}]

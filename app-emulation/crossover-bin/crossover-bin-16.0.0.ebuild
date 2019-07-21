@@ -15,6 +15,7 @@ LICENSE="CROSSOVER-3"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
 IUSE="+capi +cups doc +gphoto2 +gsm +jpeg +lcms +ldap +mp3 +nls +openal +opengl +png +scanner +ssl +v4l"
+REQUIRED_USE=${PYTHON_REQUIRED_USE}
 RESTRICT="bindist test"
 QA_FLAGS_IGNORED="opt/cxoffice/.*"
 QA_PRESTRIPPED="opt/cxoffice/lib/.*
