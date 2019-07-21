@@ -208,9 +208,16 @@ ruby_add_rdepend() {
 	case $# in
 		1) ;;
 		2)
-			[[ "${GENTOO_DEV}" == "yes" ]] && eqawarn "You can now use the usual syntax in ruby_add_rdepend for $CATEGORY/$PF"
-			ruby_add_rdepend "$(_ruby_wrap_conditions "$1" "$2")"
-			return
+			case ${EAPI} in
+				4|5|6)
+					[[ "${GENTOO_DEV}" == "yes" ]] && eqawarn "You can now use the usual syntax in ruby_add_rdepend for $CATEGORY/$PF"
+					ruby_add_rdepend "$(_ruby_wrap_conditions "$1" "$2")"
+					return
+					;;
+				*)
+					die "Use the usual depend syntax with a single argument in ruby_add_rdepend"
+					;;
+			esac
 			;;
 		*)
 			die "bad number of arguments to $0"
@@ -243,9 +250,16 @@ ruby_add_bdepend() {
 	case $# in
 		1) ;;
 		2)
-			[[ "${GENTOO_DEV}" == "yes" ]] && eqawarn "You can now use the usual syntax in ruby_add_bdepend for $CATEGORY/$PF"
-			ruby_add_bdepend "$(_ruby_wrap_conditions "$1" "$2")"
-			return
+			case ${EAPI} in
+				4|5|6)
+					[[ "${GENTOO_DEV}" == "yes" ]] && eqawarn "You can now use the usual syntax in ruby_add_bdepend for $CATEGORY/$PF"
+					ruby_add_bdepend "$(_ruby_wrap_conditions "$1" "$2")"
+					return
+					;;
+				*)
+					die "Use the usual depend syntax with a single argument in ruby_add_bdepend"
+					;;
+			esac
 			;;
 		*)
 			die "bad number of arguments to $0"
