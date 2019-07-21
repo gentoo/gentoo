@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit autotools readme.gentoo-r1 user
+inherit autotools readme.gentoo-r1 systemd user
 
 DESCRIPTION="GNU package manager (nix sibling)"
 HOMEPAGE="https://www.gnu.org/software/guix/"
@@ -40,7 +40,7 @@ copy_boot_guile_binaries() {
 	done
 }
 
-SRC_URI="mirror://gnu-alpha/${PN}/${P}.tar.gz
+SRC_URI="mirror://gnu/${PN}/${P}.tar.gz
 	$(binary_src_uris)"
 
 LICENSE="GPL-3"
@@ -52,10 +52,10 @@ RESTRICT=test # complains about size of config.log and refuses to start tests
 
 RDEPEND="
 	dev-libs/libgcrypt:0=
-	>=dev-scheme/guile-2:=[regex,networking,threads]
+	>=dev-scheme/guile-2.2:=[regex,networking,threads]
 	dev-scheme/bytestructures
 	dev-scheme/guile-gcrypt
-	dev-scheme/guile-git
+	>=dev-scheme/guile-git-0.2.0
 	dev-scheme/guile-json
 	dev-scheme/guile-sqlite3
 	net-libs/gnutls[guile]
@@ -116,6 +116,10 @@ src_prepare() {
 	# To work it around we bump last modification timestamp of
 	# '*.scm' files.
 	find "${S}" -name "*.scm" -exec touch {} + || die
+
+	# Gentoo stores systemd unit files in lib, never in lib64: bug #689772
+	sed -i nix/local.mk \
+		-e 's|systemdservicedir = $(libdir)/systemd/system|systemdservicedir = '"$(systemd_get_systemunitdir)"'|' || die
 }
 
 src_configure() {
