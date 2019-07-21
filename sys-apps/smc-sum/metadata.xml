@@ -20,4 +20,7 @@
 		of the OS on the managed system and even before the system OS is installed.
 		Licensing: SFT-OOB-LIC or SFT-DCMS-Single required for each monitor node.
 	</longdescription>
+	<use>
+		<flag name="module">Install Supermicro's kernel module.</flag>
+	</use>
 </pkgmetadata>
