@@ -69,14 +69,17 @@
 local inherits=""
 case ${EAPI} in
 	4|5)
-		inherits="eutils"
+		inherits="eutils toolchain-funcs"
+		;;
+	6)
+		inherits="estack toolchain-funcs"
 		;;
 	*)
 		inherits="estack"
 		;;
 esac
 
-inherit ${inherits} multilib toolchain-funcs ruby-utils
+inherit ${inherits} multilib ruby-utils
 
 EXPORT_FUNCTIONS src_unpack src_prepare src_configure src_compile src_test src_install pkg_setup
 
