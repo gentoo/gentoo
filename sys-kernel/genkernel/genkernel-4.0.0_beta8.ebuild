@@ -33,7 +33,7 @@ VERSION_STRACE="5.2"
 VERSION_UNIONFS_FUSE="2.0"
 VERSION_USERSPACE_RCU="0.10.2"
 VERSION_UTIL_LINUX="2.34"
-VERSION_XFSPROGS="5.0.0"
+VERSION_XFSPROGS="5.1.0"
 VERSION_ZLIB="1.2.11"
 VERSION_ZSTD="1.4.0"
 
@@ -111,6 +111,19 @@ RDEPEND="${DEPEND}
 if [[ ${PV} == 9999* ]]; then
 	DEPEND="${DEPEND} app-text/asciidoc"
 fi
+
+src_unpack() {
+	if [[ ${PV} == 9999* ]]; then
+		git-r3_src_unpack
+	else
+		local gk_src_file
+		for gk_src_file in ${A} ; do
+			if [[ ${gk_src_file} == genkernel-* ]] ; then
+				unpack "${gk_src_file}"
+			fi
+		done
+	fi
+}
 
 src_prepare() {
 	default
