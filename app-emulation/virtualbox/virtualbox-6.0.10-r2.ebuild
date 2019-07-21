@@ -56,6 +56,7 @@ CDEPEND="
 	opus? ( media-libs/opus )
 	udev? ( >=virtual/udev-171 )
 	vnc? ( >=net-libs/libvncserver-0.9.9 )
+	${PYTHON_DEPS}
 "
 DEPEND="
 	${CDEPEND}
@@ -66,7 +67,6 @@ DEPEND="
 	pulseaudio? ( media-sound/pulseaudio )
 	qt5? ( dev-qt/linguist-tools:5 )
 	vboxwebsrv? ( net-libs/gsoap[-gnutls(-)] )
-	${PYTHON_DEPS}
 "
 BDEPEND="
 	>=dev-util/kbuild-0.1.9998.3127
