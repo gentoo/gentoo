@@ -12,7 +12,7 @@ SLOT="0"
 IUSE="ostree selinux"
 EGO_PN="${HOMEPAGE#*//}"
 EGIT_COMMIT="v${PV}"
-GIT_COMMIT="00eb895"
+GIT_COMMIT="2110f05"
 SRC_URI="https://${EGO_PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 RDEPEND="app-crypt/gpgme:=
 	app-emulation/skopeo
