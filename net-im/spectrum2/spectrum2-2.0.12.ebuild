@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit cmake-utils python-single-r1 systemd user
+inherit cmake-utils python-any-r1 systemd user
 
 DESCRIPTION="An open source instant messaging transport"
 HOMEPAGE="https://www.spectrum.im"
@@ -38,7 +38,7 @@ RDEPEND="
 			dev-db/mysql-connector-c
 		)
 	)
-	postgres? ( dev-libs/libpqxx:= )
+	postgres? ( >=dev-libs/libpqxx-6.4.5:= )
 	purple? (
 		dev-libs/glib
 		net-im/pidgin:=
@@ -49,11 +49,11 @@ RDEPEND="
 	whatsapp? ( net-im/transwhat )"
 
 DEPEND="
-	${PYTHON_DEPS}
 	${RDEPEND}
 	doc? ( app-doc/doxygen )
 	test? (
-		dev-python/sleekxmpp[${PYTHON_USEDEP}]
+		${PYTHON_DEPS}
+		$(python_gen_any_dep 'dev-python/sleekxmpp[${PYTHON_USEDEP}]')
 		dev-util/cppunit
 		net-irc/ngircd
 	)
@@ -62,11 +62,15 @@ DEPEND="
 # Tests are currently restricted, as they do completly fail
 RESTRICT="test"
 
+python_check_deps() {
+	has_version "dev-python/sleekxmpp[${PYTHON_USEDEP}]"
+}
+
 pkg_setup() {
 	enewgroup spectrum
 	enewuser spectrum -1 -1 /var/lib/spectrum2 spectrum
 
-	use test && python-single-r1_pkg_setup
+	use test && python-any-r1_pkg_setup
 }
 
 src_prepare() {

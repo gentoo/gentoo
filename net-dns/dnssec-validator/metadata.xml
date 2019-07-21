@@ -16,7 +16,6 @@
 	</longdescription>
 	<use>
 		<flag name="dlv">Enable support for the DNSSEC look-aside validation</flag>
-		<flag name="ecdsa-check">Requires openssl[-bindist]</flag>
 		<flag name="nsec3">Enable support for the NSEC3 Resource Record</flag>
 	</use>
 	<upstream>
