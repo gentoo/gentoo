@@ -1,12 +1,12 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 : ${CMAKE_MAKEFILE_GENERATOR:=ninja}
 # (needed due to CMAKE_BUILD_TYPE != Gentoo)
 CMAKE_MIN_VERSION=3.7.0-r1
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python{2_7,3_{5,6,7}} )
 
 inherit cmake-multilib git-r3 linux-info multiprocessing python-any-r1
 
@@ -15,7 +15,7 @@ HOMEPAGE="https://openmp.llvm.org"
 SRC_URI=""
 EGIT_REPO_URI="https://git.llvm.org/git/openmp.git
 	https://github.com/llvm-mirror/openmp.git"
-EGIT_BRANCH="release_80"
+EGIT_BRANCH="release_90"
 
 # Additional licenses:
 # - MIT-licensed Intel code,

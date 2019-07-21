@@ -1,22 +1,22 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 : ${CMAKE_MAKEFILE_GENERATOR:=ninja}
 # (needed due to CMAKE_BUILD_TYPE != Gentoo)
 CMAKE_MIN_VERSION=3.7.0-r1
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python{2_7,3_{5,6,7}} )
 
-inherit cmake-utils eapi7-ver flag-o-matic git-r3 multilib-minimal \
-	multiprocessing pax-utils python-any-r1 toolchain-funcs
+inherit cmake-utils git-r3 multilib-minimal multiprocessing pax-utils \
+	python-any-r1 toolchain-funcs
 
 DESCRIPTION="Low Level Virtual Machine"
 HOMEPAGE="https://llvm.org/"
 SRC_URI=""
 EGIT_REPO_URI="https://git.llvm.org/git/llvm.git
 	https://github.com/llvm-mirror/llvm.git"
-EGIT_BRANCH="release_80"
+EGIT_BRANCH="release_90"
 
 # Keep in sync with CMakeLists.txt
 ALL_LLVM_TARGETS=( AArch64 AMDGPU ARM BPF Hexagon Lanai Mips MSP430
@@ -67,7 +67,6 @@ DEPEND="${RDEPEND}
 		dev-python/recommonmark[${PYTHON_USEDEP}]
 		dev-python/sphinx[${PYTHON_USEDEP}]
 	') )
-	!doc? ( ${PYTHON_DEPS} )
 	gold? ( sys-libs/binutils-libs )
 	libffi? ( virtual/pkgconfig )
 	!!<dev-python/configparser-3.3.0.2
@@ -254,15 +253,15 @@ src_install() {
 	multilib-minimal_src_install
 
 	# move wrapped headers back
-	mv "${ED%/}"/usr/include "${ED%/}"/usr/lib/llvm/${SLOT}/include || die
+	mv "${ED}"/usr/include "${ED}"/usr/lib/llvm/${SLOT}/include || die
 }
 
 multilib_src_install() {
 	cmake-utils_src_install
 
 	# move headers to /usr/include for wrapping
-	rm -rf "${ED%/}"/usr/include || die
-	mv "${ED%/}"/usr/lib/llvm/${SLOT}/include "${ED%/}"/usr/include || die
+	rm -rf "${ED}"/usr/include || die
+	mv "${ED}"/usr/lib/llvm/${SLOT}/include "${ED}"/usr/include || die
 
 	LLVM_LDPATHS+=( "${EPREFIX}/usr/lib/llvm/${SLOT}/$(get_libdir)" )
 }
@@ -282,8 +281,8 @@ multilib_src_install_all() {
 
 pkg_postinst() {
 	elog "You can find additional opt-viewer utility scripts in:"
-	elog "  ${EROOT%/}/usr/lib/llvm/${SLOT}/share/opt-viewer"
-	elog "To use these scripts, you will need Python 2.7 along with the following"
+	elog "  ${EROOT}/usr/lib/llvm/${SLOT}/share/opt-viewer"
+	elog "To use these scripts, you will need Python along with the following"
 	elog "packages:"
 	elog "  dev-python/pygments (for opt-viewer)"
 	elog "  dev-python/pyyaml (for all of them)"

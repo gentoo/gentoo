@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 # Ninja provides better scalability and cleaner verbose output, and is used
 # throughout all LLVM projects.
@@ -10,8 +10,8 @@ EAPI=6
 CMAKE_MIN_VERSION=3.7.0-r1
 EGIT_REPO_URI="https://git.llvm.org/git/libcxx.git
 	https://github.com/llvm-mirror/libcxx.git"
-EGIT_BRANCH="release_80"
-PYTHON_COMPAT=( python2_7 )
+EGIT_BRANCH="release_90"
+PYTHON_COMPAT=( python{2_7,3_{5,6,7}} )
 
 [[ ${PV} == *9999 ]] && SCM="git-r3" || SCM=""
 
@@ -167,6 +167,7 @@ multilib_src_configure() {
 }
 
 multilib_src_test() {
+	local -x LIT_PRESERVES_TMP=1
 	cmake-utils_src_make check-libcxx
 }
 

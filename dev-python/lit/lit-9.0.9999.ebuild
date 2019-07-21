@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 PYTHON_COMPAT=( python2_7 python3_{5,6,7} )
 inherit distutils-r1 git-r3 multiprocessing
@@ -11,7 +11,7 @@ HOMEPAGE="https://llvm.org/"
 SRC_URI=""
 EGIT_REPO_URI="https://git.llvm.org/git/llvm.git
 	https://github.com/llvm-mirror/llvm.git"
-EGIT_BRANCH="release_80"
+EGIT_BRANCH="release_90"
 
 LICENSE="UoI-NCSA"
 SLOT="0"
@@ -36,6 +36,7 @@ src_unpack() {
 }
 
 python_test() {
+	local -x LIT_PRESERVES_TMP=1
 	./lit.py -j "${LIT_JOBS:-$(makeopts_jobs "${MAKEOPTS}" "$(get_nproc)")}" \
 		-vv tests || die
 }

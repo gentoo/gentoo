@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit bash-completion-r1 git-r3
 
@@ -10,7 +10,7 @@ HOMEPAGE="https://llvm.org/"
 SRC_URI=""
 EGIT_REPO_URI="https://git.llvm.org/git/clang.git
 	https://github.com/llvm-mirror/clang.git"
-EGIT_BRANCH="release_80"
+EGIT_BRANCH="release_90"
 
 LICENSE="UoI-NCSA"
 SLOT="0"

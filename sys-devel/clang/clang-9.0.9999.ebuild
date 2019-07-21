@@ -1,23 +1,22 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 : ${CMAKE_MAKEFILE_GENERATOR:=ninja}
 # (needed due to CMAKE_BUILD_TYPE != Gentoo)
 CMAKE_MIN_VERSION=3.7.0-r1
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python{2_7,3_{5,6,7}} )
 
-inherit cmake-utils eapi7-ver flag-o-matic git-r3 llvm \
-	multilib-minimal multiprocessing pax-utils python-single-r1 \
-	toolchain-funcs
+inherit cmake-utils git-r3 llvm multilib-minimal multiprocessing \
+	pax-utils python-single-r1 toolchain-funcs
 
 DESCRIPTION="C language family frontend for LLVM"
 HOMEPAGE="https://llvm.org/"
 SRC_URI=""
 EGIT_REPO_URI="https://git.llvm.org/git/clang.git
 	https://github.com/llvm-mirror/clang.git"
-EGIT_BRANCH="release_80"
+EGIT_BRANCH="release_90"
 
 # Keep in sync with sys-devel/llvm
 ALL_LLVM_TARGETS=( AArch64 AMDGPU ARM BPF Hexagon Lanai Mips MSP430
@@ -211,9 +210,9 @@ src_install() {
 	multilib-minimal_src_install
 
 	# Move runtime headers to /usr/lib/clang, where they belong
-	mv "${ED%/}"/usr/include/clangrt "${ED%/}"/usr/lib/clang || die
+	mv "${ED}"/usr/include/clangrt "${ED}"/usr/lib/clang || die
 	# move (remaining) wrapped headers back
-	mv "${ED%/}"/usr/include "${ED%/}"/usr/lib/llvm/${SLOT}/include || die
+	mv "${ED}"/usr/include "${ED}"/usr/lib/llvm/${SLOT}/include || die
 
 	# Apply CHOST and version suffix to clang tools
 	# note: we use two version components here (vs 3 in runtime path)
@@ -233,7 +232,7 @@ src_install() {
 	# - clang, clang++, clang-cl, clang-cpp -> clang*-X
 	# also in CHOST variant
 	for i in "${clang_tools[@]:1}"; do
-		rm "${ED%/}/usr/lib/llvm/${SLOT}/bin/${i}" || die
+		rm "${ED}/usr/lib/llvm/${SLOT}/bin/${i}" || die
 		dosym "clang-${clang_version}" "/usr/lib/llvm/${SLOT}/bin/${i}-${clang_version}"
 		dosym "${i}-${clang_version}" "/usr/lib/llvm/${SLOT}/bin/${i}"
 	done
@@ -260,9 +259,9 @@ multilib_src_install() {
 
 	# move headers to /usr/include for wrapping & ABI mismatch checks
 	# (also drop the version suffix from runtime headers)
-	rm -rf "${ED%/}"/usr/include || die
-	mv "${ED%/}"/usr/lib/llvm/${SLOT}/include "${ED%/}"/usr/include || die
-	mv "${ED%/}"/usr/lib/llvm/${SLOT}/$(get_libdir)/clang "${ED%/}"/usr/include/clangrt || die
+	rm -rf "${ED}"/usr/include || die
+	mv "${ED}"/usr/lib/llvm/${SLOT}/include "${ED}"/usr/include || die
+	mv "${ED}"/usr/lib/llvm/${SLOT}/$(get_libdir)/clang "${ED}"/usr/include/clangrt || die
 }
 
 multilib_src_install_all() {
@@ -279,7 +278,7 @@ multilib_src_install_all() {
 }
 
 pkg_postinst() {
-	if [[ ${ROOT} == / && -f ${EPREFIX}/usr/share/eselect/modules/compiler-shadow.eselect ]] ; then
+	if [[ -z ${ROOT} && -f ${EPREFIX}/usr/share/eselect/modules/compiler-shadow.eselect ]] ; then
 		eselect compiler-shadow update all
 	fi
 
@@ -292,7 +291,7 @@ pkg_postinst() {
 }
 
 pkg_postrm() {
-	if [[ ${ROOT} == / && -f ${EPREFIX}/usr/share/eselect/modules/compiler-shadow.eselect ]] ; then
+	if [[ -z ${ROOT} && -f ${EPREFIX}/usr/share/eselect/modules/compiler-shadow.eselect ]] ; then
 		eselect compiler-shadow clean all
 	fi
 }

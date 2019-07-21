@@ -1,12 +1,12 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 : ${CMAKE_MAKEFILE_GENERATOR:=ninja}
 # (needed due to CMAKE_BUILD_TYPE != Gentoo)
 CMAKE_MIN_VERSION=3.7.0-r1
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python{2_7,3_{5,6,7}} )
 
 inherit cmake-utils flag-o-matic git-r3 llvm multiprocessing \
 	python-any-r1 toolchain-funcs
@@ -16,11 +16,11 @@ HOMEPAGE="https://llvm.org/"
 SRC_URI=""
 EGIT_REPO_URI="https://git.llvm.org/git/compiler-rt.git
 	https://github.com/llvm-mirror/compiler-rt.git"
-EGIT_BRANCH="release_80"
+EGIT_BRANCH="release_90"
 
 LICENSE="|| ( UoI-NCSA MIT )"
 # Note: this needs to be updated to match version of clang-9999
-SLOT="8.0.1"
+SLOT="9.0.0"
 KEYWORDS=""
 IUSE="+clang test"
 RESTRICT="!test? ( test ) !clang? ( test )"

@@ -1,12 +1,12 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 : ${CMAKE_MAKEFILE_GENERATOR:=ninja}
 # (needed due to CMAKE_BUILD_TYPE != Gentoo)
 CMAKE_MIN_VERSION=3.7.0-r1
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python{2_7,3_{5,6,7}} )
 
 inherit cmake-multilib git-r3 llvm multiprocessing python-any-r1
 
@@ -15,7 +15,7 @@ HOMEPAGE="https://libcxxabi.llvm.org/"
 SRC_URI=""
 EGIT_REPO_URI="https://git.llvm.org/git/libcxxabi.git
 	https://github.com/llvm-mirror/libcxxabi.git"
-EGIT_BRANCH="release_80"
+EGIT_BRANCH="release_90"
 
 LICENSE="|| ( UoI-NCSA MIT )"
 SLOT="0"
@@ -93,8 +93,8 @@ build_libcxx() {
 	local BUILD_DIR=${BUILD_DIR}/libcxx
 	local mycmakeargs=(
 		-DLIBCXX_LIBDIR_SUFFIX=
-		-DLIBCXX_ENABLE_SHARED=ON
-		-DLIBCXX_ENABLE_STATIC=OFF
+		-DLIBCXX_ENABLE_SHARED=OFF
+		-DLIBCXX_ENABLE_STATIC=ON
 		-DLIBCXX_ENABLE_EXPERIMENTAL_LIBRARY=OFF
 		-DLIBCXX_CXX_ABI=libcxxabi
 		-DLIBCXX_CXX_ABI_INCLUDE_PATHS="${S}"/include
@@ -113,6 +113,7 @@ multilib_src_test() {
 	build_libcxx
 	mv "${BUILD_DIR}"/libcxx/lib/libc++* "${BUILD_DIR}/$(get_libdir)/" || die
 
+	local -x LIT_PRESERVES_TMP=1
 	cmake-utils_src_make check-libcxxabi
 }
 
