@@ -43,7 +43,7 @@
 # @DESCRIPTION:
 # Set the value to "yes" to make the dependency on a Ruby interpreter
 # optional and then ruby_implementations_depend() to help populate
-# DEPEND and RDEPEND.
+# BDEPEND, DEPEND and RDEPEND.
 
 # @ECLASS-VARIABLE: RUBY_S
 # @DEFAULT_UNSET
@@ -223,19 +223,22 @@ ruby_add_rdepend() {
 
 	# Add the dependency as a test-dependency since we're going to
 	# execute the code during test phase.
-	DEPEND="${DEPEND} test? ( ${dependency} )"
+	case ${EAPI} in
+		4|5|6) DEPEND="${DEPEND} test? ( ${dependency} )" ;;
+		*) BDEPEND="${BDEPEND} test? ( ${dependency} )" ;;
+	esac
 	has test "$IUSE" || IUSE="${IUSE} test"
 }
 
 # @FUNCTION: ruby_add_bdepend
 # @USAGE: dependencies
 # @DESCRIPTION:
-# Adds the specified dependencies, with use condition(s) to DEPEND,
-# taking the current set of ruby targets into account. This makes sure
-# that all ruby dependencies of the package are installed for the same
-# ruby targets. Use this function for all ruby dependencies instead of
-# setting DEPEND yourself. The list of atoms uses the same syntax as
-# normal dependencies.
+# Adds the specified dependencies, with use condition(s) to DEPEND (or
+# BDEPEND in EAPI7), taking the current set of ruby targets into
+# account. This makes sure that all ruby dependencies of the package are
+# installed for the same ruby targets. Use this function for all ruby
+# dependencies instead of setting DEPEND or BDEPEND yourself. The list
+# of atoms uses the same syntax as normal dependencies.
 ruby_add_bdepend() {
 	case $# in
 		1) ;;
@@ -251,8 +254,33 @@ ruby_add_bdepend() {
 
 	local dependency=$(_ruby_atoms_samelib "$1")
 
-	DEPEND="${DEPEND} $dependency"
+	case ${EAPI} in
+		4|5|6) DEPEND="${DEPEND} $dependency" ;;
+		*) BDEPEND="${BDEPEND} $dependency" ;;
+	esac
 	RDEPEND="${RDEPEND}"
+}
+
+# @FUNCTION: ruby_add_depend
+# @USAGE: dependencies
+# @DESCRIPTION:
+
+# Adds the specified dependencies to DEPEND in EAPI7, similar to
+# ruby_add_bdepend.
+ruby_add_depend() {
+	case ${EAPI} in
+		4|5|6) die "only available in EAPI 7 and newer" ;;
+		*) ;;
+	esac
+
+	case $# in
+		1) ;;
+		*) die "bad number of arguments to $0" ;;
+	esac
+
+	local dependency=$(_ruby_atoms_samelib "$1")
+
+	DEPEND="${DEPEND} $dependency"
 }
 
 # @FUNCTION: ruby_get_use_implementations
@@ -308,6 +336,10 @@ if [[ ${RUBY_OPTIONAL} != yes ]]; then
 	DEPEND="${DEPEND} $(ruby_implementations_depend)"
 	RDEPEND="${RDEPEND} $(ruby_implementations_depend)"
 	REQUIRED_USE+=" || ( $(ruby_get_use_targets) )"
+	case ${EAPI} in
+		4|5|6) ;;
+		*) BDEPEND="${BDEPEND} $(ruby_implementations_depend)" ;;
+	esac
 fi
 
 _ruby_invoke_environment() {
@@ -634,8 +666,8 @@ ruby-ng_rspec() {
 		files="spec"
 	fi
 
-	if [[ ${DEPEND} != *"dev-ruby/rspec"* ]]; then
-		ewarn "Missing dev-ruby/rspec in \${DEPEND}"
+	if [[ "${DEPEND}${BDEPEND}" != *"dev-ruby/rspec"* ]]; then
+		ewarn "Missing test dependency dev-ruby/rspec"
 	fi
 
 	local rspec_params=
@@ -665,8 +697,8 @@ ruby-ng_rspec() {
 # This is simply a wrapper around the cucumber command (executed by $RUBY})
 # which also respects TEST_VERBOSE and NOCOLOR environment variables.
 ruby-ng_cucumber() {
-	if [[ ${DEPEND} != *"dev-util/cucumber"* ]]; then
-		ewarn "Missing dev-util/cucumber in \${DEPEND}"
+	if [[ "${DEPEND}${BDEPEND}" != *"dev-util/cucumber"* ]]; then
+		ewarn "Missing test dependency dev-util/cucumber"
 	fi
 
 	local cucumber_params=
@@ -699,8 +731,8 @@ ruby-ng_cucumber() {
 # their script and we installed a broken wrapper for a while.
 # This also respects TEST_VERBOSE and NOCOLOR environment variables.
 ruby-ng_testrb-2() {
-	if [[ ${DEPEND} != *"dev-ruby/test-unit"* ]]; then
-		ewarn "Missing dev-ruby/test-unit in \${DEPEND}"
+	if [[ "${DEPEND}${BDEPEND}" != *"dev-ruby/test-unit"* ]]; then
+		ewarn "Missing test dependency dev-ruby/test-unit"
 	fi
 
 	local testrb_params=
