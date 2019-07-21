@@ -80,8 +80,7 @@ RDEPEND="${RDEPEND}
 PDEPEND="sys-devel/llvm-common
 	gold? ( >=sys-devel/llvmgold-${SLOT} )"
 
-REQUIRED_USE="${PYTHON_REQUIRED_USE}
-	|| ( ${ALL_LLVM_TARGETS[*]} )"
+REQUIRED_USE="|| ( ${ALL_LLVM_TARGETS[*]} )"
 
 # least intrusive of all
 CMAKE_BUILD_TYPE=RelWithDebInfo

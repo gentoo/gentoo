@@ -72,8 +72,7 @@ RDEPEND="${RDEPEND}
 PDEPEND="sys-devel/llvm-common
 	gold? ( >=sys-devel/llvmgold-${SLOT} )"
 
-REQUIRED_USE="${PYTHON_REQUIRED_USE}
-	|| ( ${ALL_LLVM_TARGETS[*]} )"
+REQUIRED_USE="|| ( ${ALL_LLVM_TARGETS[*]} )"
 
 S=${WORKDIR}/${P/_/}.src
 
