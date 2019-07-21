@@ -420,9 +420,14 @@ _ruby_apply_patches() {
 				fi
 			done
 			;;
-		*)
+		6)
 			if [[ -n ${RUBY_PATCHES[@]} ]]; then
 			   eqawarn "RUBY_PATCHES is no longer supported, use PATCHES instead"
+			fi
+			;;
+		*)
+			if [[ -n ${RUBY_PATCHES[@]} ]]; then
+				die "RUBY_PATCHES is no longer supported, use PATCHES instead"
 			fi
 			;;
 	esac
