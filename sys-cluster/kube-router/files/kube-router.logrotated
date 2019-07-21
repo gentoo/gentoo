@@ -1,0 +1,7 @@
+/var/log/kube-router/*.log {
+	missingok
+	size 5M
+	rotate 3
+	compress
+	copytruncate
+}
