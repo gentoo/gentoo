@@ -6,8 +6,8 @@ PYTHON_COMPAT=( python2_7 )
 
 inherit autotools python-single-r1
 
-DESCRIPTION="ilmbase Python bindings"
-HOMEPAGE="http://www.openexr.com"
+DESCRIPTION="IlmBase Python bindings"
+HOMEPAGE="https://www.openexr.com"
 SRC_URI="https://github.com/openexr/openexr/releases/download/v${PV}/${P}.tar.gz"
 LICENSE="BSD"
 
@@ -17,12 +17,12 @@ IUSE="+numpy"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-RDEPEND="${PYTHON_DEP}
+RDEPEND="${PYTHON_DEPS}
 	>=dev-libs/boost-1.62.0-r1[python(+),${PYTHON_USEDEP}]
 	~media-libs/ilmbase-${PV}:=
 	numpy? ( >=dev-python/numpy-1.10.4 )"
 DEPEND="${RDEPEND}
-	${PYTHON_DEP}
+	${PYTHON_DEPS}
 	>=virtual/pkgconfig-0-r1"
 
 PATCHES=(
