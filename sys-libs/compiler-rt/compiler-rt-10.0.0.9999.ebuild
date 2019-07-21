@@ -18,8 +18,7 @@ EGIT_REPO_URI="https://git.llvm.org/git/compiler-rt.git
 	https://github.com/llvm-mirror/compiler-rt.git"
 
 LICENSE="|| ( UoI-NCSA MIT )"
-# Note: this needs to be updated to match version of clang-9999
-SLOT="10.0.0"
+SLOT="$(ver_cut 1-3)"
 KEYWORDS=""
 IUSE="+clang test"
 RESTRICT="!test? ( test ) !clang? ( test )"
