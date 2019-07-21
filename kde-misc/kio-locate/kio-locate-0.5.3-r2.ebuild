@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 KDE_HANDBOOK="forceoptional" # not optional until !kdelibs4support
 inherit kde5
@@ -15,8 +15,6 @@ LICENSE="GPL-2"
 KEYWORDS="~amd64 ~x86"
 IUSE="debug"
 
-DOCS=( AUTHORS ChangeLog )
-
 PATCHES=(
 	"${FILESDIR}/${P}-gcc-4.7.patch"
 	"${FILESDIR}/${P}-kf5port.patch"
@@ -29,6 +27,5 @@ DEPEND="
 	$(add_qt_dep qtwidgets)
 "
 RDEPEND="${DEPEND}
-	!kde-misc/kio-locate:4
 	sys-apps/mlocate
 "
