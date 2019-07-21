@@ -14,8 +14,9 @@ SRC_URI="https://github.com/Yubico/yubikey-manager-qt/releases/download/${P}/${P
 LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="~amd64"
+REQUIRED_USE=${PYTHON_REQUIRED_USE}
 
-DEPEND="
+DEPEND="${PYTHON_DEPS}
 	>=app-crypt/yubikey-manager-0.7.0[${PYTHON_USEDEP}]
 	<app-crypt/yubikey-manager-0.8
 	dev-python/cryptography[${PYTHON_USEDEP}]

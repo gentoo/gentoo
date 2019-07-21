@@ -16,8 +16,9 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="+channel"
+REQUIRED_USE=${PYTHON_REQUIRED_USE}
 
-RDEPEND="
+RDEPEND="${PYTHON_DEPS}
 	dev-util/android-tools
 	channel? ( net-misc/socat )"
 DEPEND=""

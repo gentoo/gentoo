@@ -14,8 +14,9 @@ SRC_URI="https://developers.yubico.com/${PN}/Releases/${P}.tar.gz"
 LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="~amd64"
+REQUIRED_USE=${PYTHON_REQUIRED_USE}
 
-DEPEND="
+DEPEND="${PYTHON_DEPS}
 	>=app-crypt/yubikey-manager-1.0.0[${PYTHON_USEDEP}]
 	<app-crypt/yubikey-manager-3.0.0[${PYTHON_USEDEP}]
 	dev-python/cryptography[${PYTHON_USEDEP}]
