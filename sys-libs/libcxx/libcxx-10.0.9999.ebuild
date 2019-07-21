@@ -12,14 +12,14 @@ EGIT_REPO_URI="https://git.llvm.org/git/libcxx.git
 	https://github.com/llvm-mirror/libcxx.git"
 PYTHON_COMPAT=( python{2_7,3_{5,6,7}} )
 
-[[ ${PV} == 9999 ]] && SCM="git-r3" || SCM=""
+[[ ${PV} == *9999 ]] && SCM="git-r3" || SCM=""
 
 inherit ${SCM} cmake-multilib llvm multiprocessing python-any-r1 \
 	toolchain-funcs
 
 DESCRIPTION="New implementation of the C++ standard library, targeting C++11"
 HOMEPAGE="https://libcxx.llvm.org/"
-if [[ ${PV} != 9999 ]] ; then
+if [[ ${PV} != *9999 ]] ; then
 	SRC_URI="https://llvm.org/releases/${PV}/${P}.src.tar.xz"
 	S="${WORKDIR}/${P}.src"
 else
@@ -28,7 +28,7 @@ fi
 
 LICENSE="|| ( UoI-NCSA MIT )"
 SLOT="0"
-if [[ ${PV} != 9999 ]] ; then
+if [[ ${PV} != *9999 ]] ; then
 	KEYWORDS="~amd64 ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
 else
 	KEYWORDS=""
