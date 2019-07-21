@@ -60,8 +60,8 @@ src_install() {
 		fi
 	done
 
-	newconfd "$(prefixify_ro "${FILESDIR}"/${PN}d.confd)" ${PN}d
-	newinitd "$(prefixify_ro "${FILESDIR}"/${PN}d.initd)" ${PN}d
+	newconfd "$(prefixify_ro "${FILESDIR}"/${PN}d.confd-${PV})" ${PN}d
+	newinitd "$(prefixify_ro "${FILESDIR}"/${PN}d.initd-${PV})" ${PN}d
 
 	if ! use static-libs; then
 		find "${D}" -name '*.la' -delete || die

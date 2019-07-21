@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
@@ -53,8 +53,8 @@ src_install() {
 	[ -d "${D}"/etc/default ] && rm -r "${D}"/etc/default
 	[ -d "${D}"/etc/sysconfig ] && rm -r "${D}"/etc/sysconfig
 
-	newconfd "${FILESDIR}"/${PN}d.confd ${PN}d || die
-	newinitd "${FILESDIR}"/${PN}d.initd ${PN}d || die
+	newconfd "${FILESDIR}"/${PN}d.confd-${PV} ${PN}d || die
+	newinitd "${FILESDIR}"/${PN}d.initd-${PV} ${PN}d || die
 }
 
 src_test() {
