@@ -19,7 +19,9 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE="test"
 
-RDEPEND="dev-python/docutils"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+
+RDEPEND="dev-python/docutils ${PYTHON_DEPS}"
 DEPEND="test? ( ${RDEPEND} )"
 
 ruby_add_bdepend "

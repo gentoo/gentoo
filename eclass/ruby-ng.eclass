@@ -8,7 +8,7 @@
 # Author: Diego E. Pettenò <flameeyes@gentoo.org>
 # Author: Alex Legler <a3li@gentoo.org>
 # Author: Hans de Graaff <graaff@gentoo.org>
-# @SUPPORTED_EAPIS: 2 3 4 5 6
+# @SUPPORTED_EAPIS: 4 5 6
 # @BLURB: An eclass for installing Ruby packages with proper support for multiple Ruby slots.
 # @DESCRIPTION:
 # The Ruby eclass is designed to allow an easier installation of Ruby packages
@@ -68,10 +68,10 @@
 
 local inherits=""
 case ${EAPI} in
-	2|3|4|5)
+	4|5)
 		inherits="eutils"
 		;;
-	6)
+	*)
 		inherits="estack"
 		;;
 esac
@@ -81,9 +81,8 @@ inherit ${inherits} multilib toolchain-funcs ruby-utils
 EXPORT_FUNCTIONS src_unpack src_prepare src_configure src_compile src_test src_install pkg_setup
 
 case ${EAPI} in
-	0|1)
+	0|1|2|3)
 		die "Unsupported EAPI=${EAPI} (too old) for ruby-ng.eclass" ;;
-	2|3) ;;
 	4|5|6)
 		# S is no longer automatically assigned when it doesn't exist.
 		S="${WORKDIR}"
@@ -305,40 +304,21 @@ IUSE+=" $(ruby_get_use_targets)"
 if [[ ${RUBY_OPTIONAL} != yes ]]; then
 	DEPEND="${DEPEND} $(ruby_implementations_depend)"
 	RDEPEND="${RDEPEND} $(ruby_implementations_depend)"
-
-	case ${EAPI:-0} in
-		4|5|6)
-			REQUIRED_USE+=" || ( $(ruby_get_use_targets) )"
-			;;
-	esac
+	REQUIRED_USE+=" || ( $(ruby_get_use_targets) )"
 fi
 
 _ruby_invoke_environment() {
 	old_S=${S}
-	case ${EAPI} in
-		4|5|6)
-			if [ -z "${RUBY_S}" ]; then
-				sub_S=${P}
-			else
-				sub_S=${RUBY_S}
-			fi
-			;;
-		*)
-			sub_S=${S#${WORKDIR}/}
-			;;
-	esac
+	if [ -z "${RUBY_S}" ]; then
+		sub_S=${P}
+	else
+		sub_S=${RUBY_S}
+	fi
 
 	# Special case, for the always-lovely GitHub fetches. With this,
 	# we allow the star glob to just expand to whatever directory it's
 	# called.
 	if [[ "${sub_S}" = *"*"* ]]; then
-		case ${EAPI} in
-			2|3)
-				#The old method of setting S depends on undefined package
-				# manager behaviour, so encourage upgrading to EAPI=4.
-				eqawarn "Using * expansion of S is deprecated. Use EAPI and RUBY_S instead."
-				;;
-		esac
 		pushd "${WORKDIR}"/all &>/dev/null || die
 		# use an array to trigger filename expansion
 		# fun fact: this expansion fails in src_unpack() but the original
@@ -426,7 +406,7 @@ ruby-ng_src_unpack() {
 
 _ruby_apply_patches() {
 	case ${EAPI} in
-		2|3|4|5)
+		4|5)
 			for patch in "${RUBY_PATCHES[@]}"; do
 				if [ -f "${patch}" ]; then
 					epatch "${patch}"
@@ -437,7 +417,7 @@ _ruby_apply_patches() {
 				fi
 			done
 			;;
-		6)
+		*)
 			if [[ -n ${RUBY_PATCHES[@]} ]]; then
 			   eqawarn "RUBY_PATCHES is no longer supported, use PATCHES instead"
 			fi
@@ -469,7 +449,9 @@ ruby-ng_src_prepare() {
 
 	# Handle PATCHES and user supplied patches via the default phase
 	case ${EAPI} in
-		6)
+		4|5)
+			;;
+		*)
 			_ruby_invoke_environment all default
 			;;
 	esac
@@ -525,8 +507,6 @@ _each_ruby_check_install() {
 	# we have a Mach-O object here
 	[[ ${CHOST} == *-darwin ]] && scancmd=scanmacho
 
-	has "${EAPI}" 2 && ! use prefix && EPREFIX=
-
 	local libruby_basename=$(${RUBY} -rrbconfig -e 'puts RbConfig::CONFIG["LIBRUBY_SO"]')
 	local libruby_soname=$(basename $(${scancmd} -F "%S#F" -qS "${EPREFIX}/usr/$(get_libdir)/${libruby_basename}") 2>/dev/null)
 	local sitedir=$(${RUBY} -rrbconfig -e 'puts RbConfig::CONFIG["sitedir"]')
@@ -579,7 +559,6 @@ ruby_rbconfig_value() {
 # Installs the specified file(s) into the sitelibdir of the Ruby interpreter in ${RUBY}.
 doruby() {
 	[[ -z ${RUBY} ]] && die "\$RUBY is not set"
-	has "${EAPI}" 2 && ! use prefix && EPREFIX=
 	( # don't want to pollute calling env
 		sitelibdir=$(ruby_rbconfig_value 'sitelibdir')
 		insinto ${sitelibdir#${EPREFIX}}
