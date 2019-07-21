@@ -45,7 +45,10 @@ RDEPEND="
 	virtual/perl-MIME-Base64
 	virtual/perl-Time-Piece
 	x11-themes/faenza-icon-theme
-	nautilus? ( dev-python/nautilus-python[${PYTHON_USEDEP}] )
+	nautilus? (
+		${PYTHON_DEPS}
+		dev-python/nautilus-python[${PYTHON_USEDEP}]
+	)
 "
 
 BDEPEND="nls? ( sys-devel/gettext )"
