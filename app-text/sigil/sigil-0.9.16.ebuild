@@ -15,6 +15,7 @@ SRC_URI="https://github.com/Sigil-Ebook/Sigil/archive/${PV}.tar.gz -> ${P}.tar.g
 LICENSE="GPL-3+ Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+IUSE="system-mathjax"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
@@ -22,7 +23,6 @@ RDEPEND="
 	app-text/hunspell:=
 	dev-libs/boost:=[threads]
 	dev-libs/libpcre:3=[pcre16]
-	dev-libs/mathjax
 	dev-libs/xerces-c[icu]
 	dev-python/chardet[${PYTHON_USEDEP}]
 	dev-python/cssselect[${PYTHON_USEDEP}]
@@ -40,6 +40,7 @@ RDEPEND="
 	>=dev-qt/qtwidgets-5.12:5
 	>=dev-qt/qtxmlpatterns-5.12:5
 	sys-libs/zlib[minizip]
+	system-mathjax? ( dev-libs/mathjax )
 "
 DEPEND="${RDEPEND}"
 
@@ -69,13 +70,14 @@ src_configure() {
 	python_export PYTHON_LIBPATH PYTHON_INCLUDEDIR
 	local mycmakeargs=(
 		-DINSTALL_BUNDLED_DICTS=0
-		-DMATHJAX_DIR="${EPREFIX}"/usr/share/mathjax
 		-DUSE_SYSTEM_LIBS=1
 		-DSYSTEM_LIBS_REQUIRED=1
 		-DPYTHON_EXECUTABLE="${PYTHON}"
 		-DPYTHON_LIBRARY="${PYTHON_LIBPATH}"
 		-DPYTHON_INCLUDE_DIR="${PYTHON_INCLUDEDIR}"
 	)
+	use system-mathjax && mycmakeargs+=( -DMATHJAX_DIR="${EPREFIX}"/usr/share/mathjax )
+
 	cmake-utils_src_configure
 }
 
