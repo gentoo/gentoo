@@ -201,11 +201,6 @@ sci-biology/allpathslg
 # and it no longer makes sense ship this as standalone pkg
 dev-util/rustfmt
 
-# James Le Cuirot <chewi@gentoo.org> (2019-06-18)
-# Web site and SRC_URI dead. Has required heavy patching. Superseded
-# by games-util/deutex. Removal in 30 days.
-games-misc/yadex
-
 # Mikle Kolyada <zlogene@gentoo.org> (2019-06-15)
 # Part of dev-texlive/texlive-latexextra
 # does not work with utf-8 (bug #688096)
