@@ -229,11 +229,6 @@ dev-tex/quotchap
 >=dev-db/mysql-connector-c-8.0
 ~virtual/libmysqlclient-21
 
-# James Le Cuirot <chewi@gentoo.org> (2019-06-09)
-# Dead upstream, no release since 2008, not used by anything, possibly
-# doesn't work any more. Removal in 30 days.
-dev-libs/liblazy
-
 # Zac Medico <zmedico@gentoo.org> (2019-05-31)
 # Upstream is dead and there are multiple security vulnerabilities.
 # Removal in 30 days. Bug #687100.
