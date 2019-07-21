@@ -5288,7 +5288,7 @@ dev-python/pygtksourceview 2.10.1-r1: GTK+2 bindings for Python
 dev-python/pyhamcrest 1.9.0: Hamcrest framework for matcher objects
 dev-python/pyicu 2.0.2 2.3: Python bindings for dev-libs/icu
 dev-python/pyid3lib 0.5.1-r2: Module for manipulating ID3 tags in Python
-dev-python/pyilmbase 2.3.0: ilmbase Python bindings
+dev-python/pyilmbase 2.3.0: IlmBase Python bindings
 dev-python/pyinotify 0.9.6: Python module used for monitoring filesystems events
 dev-python/pyjwt 1.5.3 1.7.1: JSON Web Token implementation in Python
 dev-python/pykerberos 1.1.9 1.2.1: A high-level Python wrapper for Kerberos/GSSAPI operations
