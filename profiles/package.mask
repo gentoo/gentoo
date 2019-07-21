@@ -29,6 +29,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Lars Wendler <polynomial-c@gentoo.org> (2019-07-21)
+# Requires >=mail-client/thunderbird-68_beta1 which is not in the tree yet
+>=x11-plugins/enigmail-2.1
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-07-20)
 # Ancient theme for KDE SC 4.4, useless for Plasma 5
 # Removal in 15 days
