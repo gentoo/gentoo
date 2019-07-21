@@ -96,6 +96,7 @@ src_configure() {
 	econf \
 		--localstatedir="${EPREFIX}"/var \
 		--with-user=${NETDATA_USER} \
+		--disable-jsonc \
 		$(use_enable cups plugin-cups) \
 		$(use_enable dbengine) \
 		$(use_enable nfacct plugin-nfacct) \
