@@ -265,7 +265,7 @@ app-benchmarks/acovea 5.1.1 5.1.1-r2: Analysis of Compiler Options via Evolution
 app-benchmarks/bashmark 0.6.2: Geno's cross platform benchmarking suite
 app-benchmarks/bonnie++ 1.97.2 1.97.3: Hard drive bottleneck testing benchmark suite
 app-benchmarks/contest 0.61-r1: Test system responsiveness to compare different kernels
-app-benchmarks/cpuburn 1.4a-r1 1.4a-r3: CPU testing utilities in optimized assembler for maximum loading
+app-benchmarks/cpuburn 1.4a-r3: CPU testing utilities in optimized assembler for maximum loading
 app-benchmarks/dbench 4.0: Popular filesystem benchmark
 app-benchmarks/httperf 0.9.1_p20181111: A tool from HP for measuring web server performance
 app-benchmarks/i7z 93_p20131012-r2: A better i7 (and now i3, i5) reporting tool for Linux
@@ -273,10 +273,10 @@ app-benchmarks/interbench 0.31: A Linux interactivity benchmark
 app-benchmarks/pipebench 0.40-r2: Measures the speed of stdin/stdout communication
 app-benchmarks/siege 4.0.4: A HTTP regression testing and benchmarking utility
 app-benchmarks/spew 1.0.8-r1: Measures I/O performance and/or generates I/O load
-app-benchmarks/stress 1.0.4-r1 1.0.4-r2: A deliberately simple workload generator for POSIX systems
+app-benchmarks/stress 1.0.4-r2: A deliberately simple workload generator for POSIX systems
 app-benchmarks/sysbench 1.0.10 1.0.15: System performance benchmark
 app-benchmarks/tiobench 0.4.2: Portable, robust, fully-threaded I/O benchmark program
-app-benchmarks/wrk 3.1.2 4.1.0-r1: A HTTP benchmarking tool
+app-benchmarks/wrk 4.1.0-r1: A HTTP benchmarking tool
 app-cdr/b5i2iso 0.2-r1: Convert CD images from b5i (BlindWrite) to iso
 app-cdr/bashburn 3.1.0: A shell script for burning optical media
 app-cdr/bchunk 1.2.0-r4: Convert CD images from bin/cue to iso+wav/cdr
@@ -2891,7 +2891,7 @@ dev-libs/crossguid 0_pre20150817: Lightweight cross platform C++ GUID/UUID libra
 dev-libs/crypto++ 5.6.5-r1 7.0.0-r3 8.2.0: C++ class library of cryptographic schemes
 dev-libs/cvector 1.0.3-r1: An ANSI C implementation of dynamic arrays (Approximation of C++ vectors)
 dev-libs/cxxtools 2.2.1: Collection of general purpose C++-classes
-dev-libs/cyberjack 3.99.5_p11 3.99.5_p13: REINER SCT cyberJack USB chipcard reader user space driver
+dev-libs/cyberjack 3.99.5_p13: REINER SCT cyberJack USB chipcard reader user space driver
 dev-libs/cyrus-sasl 2.1.26-r9 2.1.26-r10 2.1.27-r2: The Cyrus SASL (Simple Authentication and Security Layer)
 dev-libs/d0_blind_id 0.5: Blind-ID library for user identification using RSA blind signatures
 dev-libs/darts 0.32: A C++ template library that implements Double-Array
