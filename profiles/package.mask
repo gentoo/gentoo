@@ -206,11 +206,6 @@ dev-util/rustfmt
 # by games-util/deutex. Removal in 30 days.
 games-misc/yadex
 
-# James Le Cuirot <chewi@gentoo.org> (2019-06-18)
-# Web site and SRC_URI dead. Last release in 2007. Removal in 30
-# days. See bug #688134.
-games-kids/pytraffic
-
 # Mikle Kolyada <zlogene@gentoo.org> (2019-06-15)
 # Part of dev-texlive/texlive-latexextra
 # does not work with utf-8 (bug #688096)
