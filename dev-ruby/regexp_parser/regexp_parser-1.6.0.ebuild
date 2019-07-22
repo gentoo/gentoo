@@ -17,7 +17,7 @@ SRC_URI="https://github.com/ammar/regexp_parser/archive/v${PV}.tar.gz -> ${P}.ta
 
 LICENSE="MIT"
 SLOT="1"
-KEYWORDS="~amd64 ~arm ~hppa ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~x86"
 IUSE=""
 
 DEPEND+=" =dev-util/ragel-6*"
