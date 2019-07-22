@@ -6260,7 +6260,7 @@ dev-util/gertty 1.5.0: Gertty is a console-based interface to the Gerrit Code Re
 dev-util/glade 3.20.4: A user interface designer for GTK+ and GNOME
 dev-util/glib-utils 2.58.3: Build utilities for GLib using projects
 dev-util/global 6.3.1: tag system to find an object location in various sources
-dev-util/glslang 7.10.2984 7.11.3114_pre20190415-r1: Khronos reference front-end for GLSL and ESSL, and sample SPIR-V generator
+dev-util/glslang 7.11.3114_pre20190415-r1: Khronos reference front-end for GLSL and ESSL, and sample SPIR-V generator
 dev-util/gn 0.1463: GN is a meta-build system that generates build files for Ninja
 dev-util/gnome-builder 3.30.3: An IDE for writing GNOME-based software
 dev-util/gnome-devel-docs 3.30.2: Documentation for developing for the GNOME desktop environment
@@ -6356,7 +6356,7 @@ dev-util/shflags 1.0.3: Command-line flags module for Unix shell scripts
 dev-util/shtool 2.0.8-r1: Set of stable and portable shell scripts
 dev-util/shunit2 2.1.6-r1: Unit-test framework for Bourne-based shell scripts
 dev-util/source-highlight 3.1.7-r2 3.1.8: Generate highlighted source code as an (x)html document
-dev-util/spirv-headers 1.3.4_pre20180917 1.3.4_pre20190302: Machine-readable files for the SPIR-V Registry
+dev-util/spirv-headers 1.3.4_pre20190302: Machine-readable files for the SPIR-V Registry
 dev-util/spirv-tools 2018.5 2019.1-r2: Provides an API and commands for processing SPIR-V modules
 dev-util/splint 3.1.2-r1: Check C programs for vulnerabilities and programming mistakes
 dev-util/statifier 1.7.4: Statifier is a tool for creating portable, self-containing Linux executables
@@ -6376,8 +6376,8 @@ dev-util/usb-robot 0.2.0: USB Reverse engineering tools
 dev-util/valgrind 3.12.0 3.13.0 3.14.0: An open-source memory debugger for GNU/Linux
 dev-util/vbindiff 3.0_beta4-r1 3.0_beta5: Visual binary diff utility
 dev-util/vint 0.3.18: Lint tool for Vim script language
-dev-util/vulkan-headers 1.1.92.0 1.1.106: Vulkan Header files and API registry
-dev-util/vulkan-tools 1.1.92.0 1.1.106-r1: Official Vulkan Tools and Utilities for Windows, Linux, Android, and MacOS
+dev-util/vulkan-headers 1.1.106: Vulkan Header files and API registry
+dev-util/vulkan-tools 1.1.106-r1: Official Vulkan Tools and Utilities for Windows, Linux, Android, and MacOS
 dev-util/weka 3.7.13: A Java data mining package
 dev-util/wiggle 0.9-r1: tool for applying patches that patch cannot apply because of conflicting changes
 dev-util/wxglade 0.8.2: Glade-like GUI designer which can generate Python, Perl, C++ or XRC code
@@ -7744,8 +7744,8 @@ media-libs/vigra 1.11.1-r2: C++ computer vision library emphasizing customizable
 media-libs/virglrenderer 0.6.0: library used implement a virtual 3D GPU used by qemu
 media-libs/vo-aacenc 0.1.3: VisualOn AAC encoder library
 media-libs/vo-amrwbenc 0.1.3: VisualOn AMR-WB encoder library
-media-libs/vulkan-layers 1.1.92.0-r1 1.1.106: Vulkan Validation Layers
-media-libs/vulkan-loader 1.1.92.1 1.1.106: Vulkan Installable Client Driver (ICD) Loader
+media-libs/vulkan-layers 1.1.106: Vulkan Validation Layers
+media-libs/vulkan-loader 1.1.106: Vulkan Installable Client Driver (ICD) Loader
 media-libs/waffle 1.5.2 1.6.0: Library that allows selection of GL API and of window system at runtime
 media-libs/webrtc-audio-processing 0.3.1: AudioProcessing library from the webrtc.org code base
 media-libs/woff2 1.0.2-r1: Encode/decode WOFF2 font format
@@ -10607,7 +10607,7 @@ x11-drivers/xf86-video-ati 19.0.1: ATI video driver
 x11-drivers/xf86-video-dummy 0.3.8: X.Org driver for dummy cards
 x11-drivers/xf86-video-fbdev 0.5.0: video driver for framebuffer device
 x11-drivers/xf86-video-glint 1.2.9: GLINT/Permedia video driver
-x11-drivers/xf86-video-intel 2.99.917_p20180214-r1 2.99.917_p20180214-r2 2.99.917_p20190301: X.Org driver for Intel cards
+x11-drivers/xf86-video-intel 2.99.917_p20190301: X.Org driver for Intel cards
 x11-drivers/xf86-video-mga 1.6.5 2.0.0: Matrox video driver
 x11-drivers/xf86-video-nouveau 1.0.16: Accelerated Open Source driver for nVidia cards
 x11-drivers/xf86-video-nv 2.1.21: Nvidia 2D only video driver
@@ -10692,7 +10692,7 @@ x11-libs/libproplist 0.10.1-r4: An library to mimic property list functionality 
 x11-libs/librfm 5.3.16.3-r1: The basic library used by some rfm applications, such as Rodent filemanager
 x11-libs/libva 1.7.3: Video Acceleration (VA) API for Linux
 x11-libs/libva-intel-driver 1.7.3: HW video decode support for Intel integrated graphics
-x11-libs/libva-vdpau-driver 0.7.4-r4 0.7.4-r5: VDPAU Backend for Video Acceleration (VA) API
+x11-libs/libva-vdpau-driver 0.7.4-r5: VDPAU Backend for Video Acceleration (VA) API
 x11-libs/libvdpau 1.2: VDPAU wrapper and trace libraries
 x11-libs/libwnck 2.31.0 3.30.0: A window navigation construction kit
 x11-libs/libxcb 1.13.1: X C-language Bindings library
