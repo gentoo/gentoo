@@ -1,10 +1,6 @@
 # Copyright 1999-2019 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-# Aaron Bauman <bman@gentoo.org> (2019-05-27)
-# media-libs/dav1d is not stable
-~media-video/vlc-3.0.6 dav1d
-
 # Aaron Bauman <bman@gentoo.org> (2019-05-20)
 # deps are not stable yet
 virtual/notification-daemon gnome kde
