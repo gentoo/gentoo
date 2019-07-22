@@ -9,7 +9,7 @@ inherit perl-module
 
 DESCRIPTION="Install the C libxml2 library on your system"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ia64 ~riscv ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~riscv ~x86"
 IUSE="test"
 
 RDEPEND="
