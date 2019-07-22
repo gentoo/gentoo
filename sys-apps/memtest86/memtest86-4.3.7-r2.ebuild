@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI="7"
 
 inherit mount-boot eutils toolchain-funcs
 
@@ -11,8 +11,15 @@ SRC_URI="https://www.memtest86.com/downloads/${P}-src.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="-* ~amd64 ~x86"
+KEYWORDS="-* amd64 x86"
 IUSE="serial"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-4.3.3-build-nopie.patch #66630 + #206726
+	"${FILESDIR}"/${PN}-4.3.7-io-extern-inline.patch #548312 #568292
+	"${FILESDIR}"/${PN}-4.3.7-reboot-def.patch #548312 #568292
+	"${FILESDIR}"/${PN}-4.3.7-no-clean.patch #557890
+)
 
 S="${WORKDIR}/src"
 
@@ -21,10 +28,7 @@ QA_PRESTRIPPED="${BOOTDIR}/memtest"
 QA_FLAGS_IGNORED="${BOOTDIR}/memtest"
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-4.3.3-build-nopie.patch #66630 + #206726
-	epatch "${FILESDIR}"/${PN}-4.3.7-io-extern-inline.patch #548312 #568292
-	epatch "${FILESDIR}"/${PN}-4.3.7-reboot-def.patch #548312 #568292
-	epatch "${FILESDIR}"/${PN}-4.3.7-no-clean.patch #557890
+	default
 
 	sed -i -e 's,0x10000,0x100000,' memtest.lds || die
 
