@@ -10837,7 +10837,7 @@ x11-misc/rofi 1.5.2: A window switcher, run dialog and dmenu replacement
 x11-misc/rss-glx 0.9.1-r1: Really Slick OpenGL Screensavers for XScreenSaver
 x11-misc/screengrab 1.101: Qt application for getting screenshots
 x11-misc/sct 0.4: Set color temperature of the screen
-x11-misc/sddm 0.18.0 0.18.1-r1: Simple Desktop Display Manager
+x11-misc/sddm 0.18.1-r1: Simple Desktop Display Manager
 x11-misc/shared-mime-info 1.10: The Shared MIME-info Database specification
 x11-misc/shutterbug 1.7.49: Screenshot utility based on the FOX Toolkit
 x11-misc/skippy 0.5.0-r1: A full-screen task-switcher providing Apple Expose-like functionality
