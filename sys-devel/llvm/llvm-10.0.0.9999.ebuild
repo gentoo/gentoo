@@ -37,7 +37,7 @@ LICENSE="UoI-NCSA rc BSD public-domain
 	llvm_targets_ARM? ( LLVM-Grant )"
 SLOT="$(ver_cut 1)"
 KEYWORDS=""
-IUSE="debug doc exegesis gold libedit +libffi ncurses test xar xml
+IUSE="debug doc exegesis gold libedit +libffi ncurses test xar xml z3
 	kernel_Darwin ${ALL_LLVM_TARGETS[*]}"
 RESTRICT="!test? ( test )"
 
@@ -54,7 +54,8 @@ RDEPEND="
 	libffi? ( >=virtual/libffi-3.0.13-r1:0=[${MULTILIB_USEDEP}] )
 	ncurses? ( >=sys-libs/ncurses-5.9-r3:0=[${MULTILIB_USEDEP}] )
 	xar? ( app-arch/xar )
-	xml? ( dev-libs/libxml2:2=[${MULTILIB_USEDEP}] )"
+	xml? ( dev-libs/libxml2:2=[${MULTILIB_USEDEP}] )
+	z3? ( >=sci-mathematics/z3-4.7.1:0=[${MULTILIB_USEDEP}] )"
 # configparser-3.2 breaks the build (3.3 or none at all are fine)
 DEPEND="${RDEPEND}
 	dev-lang/perl
@@ -146,6 +147,7 @@ multilib_src_configure() {
 		-DLLVM_ENABLE_LIBPFM=$(usex exegesis)
 		-DLLVM_ENABLE_EH=ON
 		-DLLVM_ENABLE_RTTI=ON
+		-DLLVM_ENABLE_Z3_SOLVER=$(usex z3)
 
 		-DWITH_POLLY=OFF # TODO
 
