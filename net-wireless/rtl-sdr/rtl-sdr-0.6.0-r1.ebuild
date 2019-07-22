@@ -44,6 +44,12 @@ src_configure() {
 	cmake-utils_src_configure
 }
 
+src_install() {
+	cmake-utils_src_install
+	newinitd "${FILESDIR}"/rtl_tcp.initd rtl_tcp
+	newconfd "${FILESDIR}"/rtl_tcp.confd rtl_tcp
+}
+
 pkg_postinst() {
 	elog "Only users in the usb group can capture."
 	elog "Just run 'gpasswd -a <USER> usb', then have <USER> re-login."

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -41,9 +41,15 @@ src_configure() {
 	mycmakeargs=(
 		-DINSTALL_UDEV_RULES=OFF
 		-DDETACH_KERNEL_DRIVER=ON
-		-DLIB_INSTALL_DIR=/usr/$(get_libdir)
+		-DLIB_INSTALL_DIR=$(get_libdir)
 	)
 	cmake-utils_src_configure
+}
+
+src_install() {
+	cmake-utils_src_install
+	newinitd "${FILESDIR}"/rtl_tcp.initd rtl_tcp
+	newconfd "${FILESDIR}"/rtl_tcp.confd rtl_tcp
 }
 
 pkg_postinst() {
