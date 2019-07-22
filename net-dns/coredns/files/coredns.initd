@@ -7,9 +7,10 @@ pidfile=${pidfile:-"/run/${SVCNAME}.pid"}
 user=${user:-root}
 group=${group:-root}
 
+supervisor="supervise-daemon"
 command="/usr/bin/coredns"
 command_args="${command_args}"
-command_background="true"
+
 start_stop_daemon_args="--user ${user} --group ${group} \
 	--stdout /var/log/${SVCNAME}/${SVCNAME}.log \
 	--stderr /var/log/${SVCNAME}/${SVCNAME}.log"
