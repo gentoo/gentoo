@@ -3277,7 +3277,7 @@ dev-lua/mediator_lua 1.1.2_p0: Event handling through channels
 dev-lua/mpack 1.0.4: Lua bindings for libmpack
 dev-lua/penlight 1.3.2: Lua utility libraries loosely based on the Python standard libraries
 dev-lua/say 1.3_p1 1.3_p1-r1: Lua String Hashing/Indexing Library
-dev-lua/toluapp 1.0.93 1.0.93_p20190513-r1: A tool to integrate C/C++ code with Lua
+dev-lua/toluapp 1.0.93_p20190513-r1: A tool to integrate C/C++ code with Lua
 dev-ml/cairo-ocaml 1.2.0: Ocaml bindings for the cairo vector graphics library
 dev-ml/camldbm 1.0: OCaml binding to the NDBM/GDBM Unix databases
 dev-ml/camlidl 1.05-r1: CamlIDL is a stub code generator for using C/C++ libraries from O'Caml
@@ -5836,7 +5836,7 @@ dev-ruby/ffi 1.9.25: Ruby extension for programmatically loading dynamic librari
 dev-ruby/flexmock 2.3.6: Simple mock object library for Ruby unit testing
 dev-ruby/gettext-setup 0.30: A gem to ease i18n
 dev-ruby/gherkin 5.1.0: Fast Gherkin lexer and parser
-dev-ruby/git 1.4.0: Library for using Git in Ruby
+dev-ruby/git 1.4.0 1.5.0: Library for using Git in Ruby
 dev-ruby/gruff 0.7.0-r1: Beautiful graphs for one or multiple datasets
 dev-ruby/haml 4.0.7-r3: A ruby web page templating engine
 dev-ruby/hashdiff 0.3.8 0.3.9: Simple Hash extension to make working with nested hashes easier
