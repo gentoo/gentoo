@@ -14,7 +14,10 @@ SLOT="0"
 IUSE="gnutls ssl libressl"
 
 DEPEND="ssl? (
-		gnutls? ( >=net-libs/gnutls-2.12.23-r6[${MULTILIB_USEDEP},nettle(+)] )
+		gnutls? (
+			>=net-libs/gnutls-2.12.23-r6[${MULTILIB_USEDEP},nettle(+)]
+			dev-libs/nettle:0=[${MULTILIB_USEDEP}]
+		)
 		!gnutls? (
 			!libressl? ( dev-libs/openssl:0=[${MULTILIB_USEDEP}] )
 			libressl? ( dev-libs/libressl:0=[${MULTILIB_USEDEP}] )
