@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -22,13 +22,14 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 VIM_PLUGIN_HELPFILES="vimoutliner"
 VIM_PLUGIN_MESSAGES="filetype"
 
-RDEPEND="dev-python/autopep8"
+RDEPEND="${PYTHON_DEPS}
+	dev-python/autopep8[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
 
 src_prepare() {
 	default
 
-	sed -i -e '1s:^:#!/usr/bin/python\n:' vimoutliner/scripts/otl2latex/otl2latex.py
+	sed -i -e '1s:^:#!/usr/bin/python\n:' vimoutliner/scripts/otl2latex/otl2latex.py || die
 	find "${S}" -type f -exec chmod a+r {} \; || die
 }
 

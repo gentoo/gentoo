@@ -18,6 +18,7 @@ IUSE="test"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
+	${PYTHON_DEPS}
 	>=app-text/poppler-0.12.3-r3[cairo]
 	>=dev-cpp/gtkmm-2.8:2.4
 	>=dev-cpp/libglademm-2.6.0

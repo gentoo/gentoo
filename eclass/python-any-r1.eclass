@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: python-any-r1.eclass
@@ -170,6 +170,12 @@ _python_any_set_globals() {
 	else
 		PYTHON_DEPS=${deps}
 		readonly PYTHON_DEPS
+	fi
+
+	if [[ ! ${PYTHON_REQUIRED_USE+1} ]]; then
+		# fake var to catch mistaken usage
+		PYTHON_REQUIRED_USE='I-DO-NOT-EXIST-IN-PYTHON-ANY-R1'
+		readonly PYTHON_REQUIRED_USE
 	fi
 }
 _python_any_set_globals

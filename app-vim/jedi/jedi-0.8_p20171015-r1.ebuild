@@ -16,8 +16,10 @@ SRC_URI="https://github.com/davidhalter/jedi-vim/archive/${COMMIT}.zip -> ${P}.z
 
 LICENSE="MIT"
 KEYWORDS="~amd64 ~x86"
+REQUIRED_USE=${PYTHON_REQUIRED_USE}
 
-RDEPEND="dev-python/jedi[${PYTHON_USEDEP}]"
+RDEPEND="${PYTHON_DEPS}
+	dev-python/jedi[${PYTHON_USEDEP}]"
 DEPEND="app-editors/vim[python]"
 
 S="${WORKDIR}/jedi-vim-${COMMIT}"
