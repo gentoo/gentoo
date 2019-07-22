@@ -5,11 +5,11 @@ DESCRIPTION=Daemon providing interfaces to work with storage devices
 EAPI=7
 HOMEPAGE=https://www.freedesktop.org/wiki/Software/udisks
 IUSE=acl debug elogind +introspection lvm nls selinux systemd vdo kernel_linux
-KEYWORDS=~alpha amd64 ~arm ~arm64 ~ia64 ~mips ppc ppc64 sparc x86
+KEYWORDS=~alpha amd64 ~arm arm64 ~ia64 ~mips ppc ppc64 sparc x86
 LICENSE=LGPL-2+ GPL-2+
 RDEPEND=>=dev-libs/glib-2.50:2 >=dev-libs/libatasmart-0.19 >=sys-auth/polkit-0.110 >=sys-libs/libblockdev-2.19[cryptsetup,lvm?,vdo?] >=virtual/libgudev-165:= virtual/udev acl? ( virtual/acl ) elogind? ( >=sys-auth/elogind-219 ) introspection? ( >=dev-libs/gobject-introspection-1.30:= ) lvm? ( sys-fs/lvm2 ) systemd? ( >=sys-apps/systemd-209 ) >=sys-apps/util-linux-2.30 >=sys-block/parted-3 virtual/eject selinux? ( sec-policy/selinux-devicekit )
 REQUIRED_USE=?? ( elogind systemd )
 SLOT=2
 SRC_URI=https://github.com/storaged-project/udisks/releases/download/udisks-2.8.2/udisks-2.8.2.tar.bz2
 _eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	linux-info	953c3b1c472dcadbf62098a9301327f2	multilib	1d91b03d42ab6308b5f4f6b598ed110e	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56	udev	7752f306eec7b286d00bdb47b763e7ac	xdg-utils	14d00d009167652b1fa363e55effe213
-_md5_=98d76d393e58be1047c3add98416ba22
+_md5_=b09b38904e3ed474b1b6dae61b830573

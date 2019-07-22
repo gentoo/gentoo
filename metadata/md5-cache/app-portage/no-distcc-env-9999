@@ -1,0 +1,9 @@
+BDEPEND=>=dev-vcs/git-1.8.2.1[curl]
+DEFINED_PHASES=install unpack
+DESCRIPTION=package.env files to disable distcc on a per-package basis
+EAPI=7
+HOMEPAGE=https://gitweb.gentoo.org/proj/no-distcc-env.git/
+LICENSE=public-domain
+SLOT=0
+_eclasses_=git-r3	0d4635eeb5a96cd5315597a47eba25c9
+_md5_=c6b5b8b1dddb8145f3960e0758361274
