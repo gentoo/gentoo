@@ -1,0 +1,12 @@
+BDEPEND=virtual/pkgconfig
+DEFINED_PHASES=compile install prepare setup
+DESCRIPTION=inotify based cron daemon
+EAPI=7
+HOMEPAGE=https://incron.aiken.cz/
+IUSE=kernel_linux
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2 LGPL-2.1
+SLOT=0
+SRC_URI=https://github.com/ar-/incron/archive/1eedfbc9b318372efd119fd17f4abdbde561a53d.tar.gz -> incron-0.5.12_p20191114.tar.gz
+_eclasses_=linux-info	953c3b1c472dcadbf62098a9301327f2	multilib	1d91b03d42ab6308b5f4f6b598ed110e	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
+_md5_=7a48f7aff5ab44fad56bc0a137b9a8c2

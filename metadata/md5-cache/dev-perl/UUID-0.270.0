@@ -3,10 +3,10 @@ DEPEND=virtual/perl-ExtUtils-MakeMaker >=dev-perl/Devel-CheckLib-1.20.0 dev-lang
 DESCRIPTION=Perl extension for using UUID interfaces as defined in e2fsprogs
 EAPI=6
 HOMEPAGE=https://metacpan.org/release/UUID
-KEYWORDS=~amd64 ~x86
+KEYWORDS=~amd64 ~arm ~x86
 LICENSE=Artistic-2
 RDEPEND=dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/J/JR/JRM/UUID-0.27.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	71c828c354a4cddced2641dda2695de5
-_md5_=873357edfdf3a0fcfa8cdcaa2da7f9f5
+_md5_=0935847e1d5bdf73c627756a98eb76f7

@@ -728,7 +728,7 @@ app-emulation/docker-runc 1.0.0_rc4_p20180122: runc container cli tools (docker 
 app-emulation/dosemu 1.4.1_pre20130107-r5: DOS Emulator
 app-emulation/free42 2.0.20: An HP-42S Calculator Simulator
 app-emulation/ganeti 2.15.2-r5 2.15.2-r8: Ganeti is a virtual server management software tool
-app-emulation/ganeti-instance-debootstrap 0.11: Scripts to build Ganeti VMs with debootstrap
+app-emulation/ganeti-instance-debootstrap 0.11-r1: Scripts to build Ganeti VMs with debootstrap
 app-emulation/ganeti-instance-image 0.6: Scripts to build out CD or image based VMs using Ganeti
 app-emulation/grub-xen-host 1.0: Grub2 built as a PV grub per the Xen PV Boot Protocol
 app-emulation/hercules 3.10: Hercules System/370, ESA/390 and zArchitecture Mainframe Emulator
@@ -993,6 +993,7 @@ app-misc/gcstar 1.7.0: Manage your collections of movies, games, books, music an
 app-misc/geekcode 1.7.3-r1: Geek code generator
 app-misc/geneweb 6.08-r1: Genealogy software program with a Web interface
 app-misc/gentoo 0.20.7: Graphical file manager for Unix-like systems, using GTK+
+app-misc/gentoo-elections 0_p20190710: Gentoo election control data and scripts
 app-misc/geoclue 2.4.13: A geoinformation D-Bus service
 app-misc/glcdprocdriver 0.0.6: Glue library for the glcdlib LCDproc driver based on GraphLCD
 app-misc/glimpse 4.18.6-r1: A index/query system to search a large set of files quickly
@@ -1116,6 +1117,7 @@ app-misc/utimer 0.4-r1: A command line timer and stopwatch
 app-misc/vcp 2.2-r2: Copy files/directories in a curses interface
 app-misc/vifm 0.9.1: Console file manager with vi(m)-like keybindings
 app-misc/vlock 2.2.3-r1: A console screen locker
+app-misc/votrify 5: Tool for community verification of Gentoo elections
 app-misc/wcd 5.2.7: Wherever Change Directory
 app-misc/webcomics-collector 0.7.3-r1: python script for downloading webcomics
 app-misc/when 1.1.36: Minimalistic personal calendar program
@@ -1865,15 +1867,15 @@ dev-db/percona-xtrabackup 2.4.13: Hot backup utility for MySQL based servers
 dev-db/pg_top 3.7.0: 'top' for PostgreSQL
 dev-db/pgadmin4 4.5: GUI administration and development platform for PostgreSQL
 dev-db/pgagent 3.4.0-r3: pgAgent is a job scheduler for PostgreSQL
-dev-db/pgbadger 10.0: pgBadger is a PostgreSQL log analyzer.
+dev-db/pgbadger 10.0 10.3: pgBadger is a PostgreSQL log analyzer.
 dev-db/pgbouncer 1.9.0: Lightweight connection pooler for PostgreSQL
 dev-db/pgpool2 3.7.8 4.0.3: Connection pool server for PostgreSQL
 dev-db/pgtap 0.99.0: Unit testing for PostgreSQL
 dev-db/phpmyadmin 4.8.5: Web-based administration for MySQL database in PHP
 dev-db/postgis 2.4.6 2.4.7 2.5.1-r1 2.5.2: Geographic Objects for PostgreSQL
 dev-db/postgresql 9.4.22 9.5.17 9.6.13 10.8 10.9 11.3 11.4: PostgreSQL RDBMS
-dev-db/pspg 1.3.0: A better pager for psql and mysql
-dev-db/psqlodbc 10.01.0000: Official ODBC driver for PostgreSQL
+dev-db/pspg 1.3.0 1.6.5: A better pager for psql and mysql
+dev-db/psqlodbc 10.01.0000 11.01.0000: Official ODBC driver for PostgreSQL
 dev-db/qdbm 1.8.78-r2: Quick Database Manager
 dev-db/redis 4.0.2-r1 4.0.10 4.0.14: A persistent caching system, key-value and data structures database
 dev-db/slony1 2.2.6: A replication system for the PostgreSQL Database Management System
@@ -6192,7 +6194,7 @@ dev-util/bustle 0.4.2-r1 0.5.4: Draw sequence diagrams of D-Bus traffic
 dev-util/byacc 20170201: the best variant of the Yacc parser generator
 dev-util/catalyst 2.0.18-r1 2.0.18-r4 3.0.2 3.0.2-r1 3.0.3: Release metatool used for creating releases based on Gentoo Linux
 dev-util/catfish 1.4.7: A frontend for find, (s)locate, doodle, tracker, beagle, strigi and pinot
-dev-util/ccache 3.3.4-r1 3.6: fast compiler cache
+dev-util/ccache 3.3.4-r1 3.6 3.7.1: fast compiler cache
 dev-util/cdiff 1.0: Colored, side-by-side diff terminal viewer
 dev-util/cgdb 0.6.8: A curses front-end for GDB, the GNU debugger
 dev-util/cgvg 1.6.2 1.6.3: Minimal command-line source browsing tool similar to cscope
@@ -6513,7 +6515,7 @@ gnome-extra/gnome-calendar 3.30.1: Manage your online calendars with simple and 
 gnome-extra/gnome-characters 3.30.0: Unicode character map viewer and library
 gnome-extra/gnome-clocks 3.30.1: Clocks application for GNOME
 gnome-extra/gnome-color-manager 3.30.0-r1: GNOME color profile tools
-gnome-extra/gnome-commander 1.8.1: A graphical, full featured, twin-panel file manager
+gnome-extra/gnome-commander 1.8.1 1.10.0: A graphical, full featured, twin-panel file manager
 gnome-extra/gnome-contacts 3.30.2: GNOME contact management application
 gnome-extra/gnome-directory-thumbnailer 0.1.10: Thumbnail generator for directories
 gnome-extra/gnome-documents 3.30.1: A document manager application for GNOME
@@ -7128,7 +7130,7 @@ media-fonts/clearsans 1.00: OpenType font optimized for readability on small scr
 media-fonts/cm-unicode 0.7.0-r1: Computer Modern Unicode fonts
 media-fonts/comic-neue 2.2: Typographically savvy casual script typeface
 media-fonts/croscorefonts 1.23.0 1.31.0: Open licensed fonts metrically compatible with MS corefonts
-media-fonts/culmus 0.120-r4: Hebrew Type1 fonts
+media-fonts/culmus 0.120-r4 0.120-r5: Hebrew Type1 fonts
 media-fonts/dejavu 2.35 2.37: DejaVu fonts, bitstream vera with ISO-8859-2 characters
 media-fonts/droid 113-r5: Font family from Google's Android project
 media-fonts/eb-garamond 0.016: Claude Garamont's humanist typeface from the mid-16th century
@@ -8949,7 +8951,7 @@ net-misc/vino 3.22.0: An integrated VNC server for GNOME
 net-misc/wakeonlan 0.41-r2: Client for Wake-On-LAN
 net-misc/wget 1.20.3-r1: Network utility to retrieve files from the WWW
 net-misc/whatmask 1.2-r1: little C program to compute different subnet mask notations
-net-misc/whois 5.3.2: improved Whois Client
+net-misc/whois 5.3.2 5.4.3: improved Whois Client
 net-misc/wicd 1.7.4-r3: A lightweight wired and wireless network manager for Linux
 net-misc/wol 0.7.1-r1: Wake up hardware that is Magic Packet compliant
 net-misc/wput 0.6.1-r1: Tiny program like wget, to upload files/whole directories via FTP
