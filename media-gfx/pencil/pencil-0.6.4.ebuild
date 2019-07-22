@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit desktop qmake-utils xdg-utils
+inherit desktop l10n qmake-utils xdg-utils
 
 DESCRIPTION="2D animation and drawing program based on Qt5"
 HOMEPAGE="https://www.pencil2d.org/"
@@ -13,6 +13,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
+PLOCALES="ca cs da de el es et fr he hu_HU id it ja kab pl pt pt_BR ru sl vi zh_CN zh_TW"
 
 RDEPEND="
 	dev-qt/qtcore:5
@@ -25,12 +26,6 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/${P/_/-}"
-
-src_prepare() {
-	default
-	sed -e "/^QT/s/xmlpatterns //" \
-		-i core_lib/core_lib.pro tests/tests.pro || die
-}
 
 src_configure() {
 	eqmake5
@@ -48,8 +43,9 @@ src_install() {
 
 	insinto /usr/share/mime/packages/
 	doins app/data/pencil2d.xml
+	dodoc LICENSE.TXT
 
-	# TODO: Install l10n files
+	l10n_find_plocales_changes "${S}/translations" "${PN}_" '.ts'
 }
 
 pkg_postinst() {
