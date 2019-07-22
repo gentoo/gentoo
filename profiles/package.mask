@@ -176,11 +176,6 @@ sys-apps/cobalt-panel-utils
 # app-text/htmltidy; removal in 30 days, bug 686324
 www-apache/mod_tidy
 
-# Jimi Huotari <chiitoo@gentoo.org> (2019-06-22)
-# Deprecated package with no consumers left.
-# Removal in 30 days.
-lxqt-base/lxqt-l10n
-
 # David Seifert <soap@gentoo.org> (2019-06-22)
 # Abandoned upstream, last release 5 years ago,
 # extremely brittle codebase, requires constant
