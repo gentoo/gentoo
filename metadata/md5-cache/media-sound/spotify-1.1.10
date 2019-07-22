@@ -10,6 +10,6 @@ LICENSE=Spotify
 RDEPEND=dev-libs/nss dev-python/dbus-python dev-python/pygobject:3 gnome-base/gconf gnome-extra/zenity libnotify? ( x11-libs/libnotify ) !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) media-libs/alsa-lib media-libs/fontconfig media-libs/harfbuzz media-libs/mesa net-misc/curl[ssl] net-print/cups[ssl] || ( media-sound/pulseaudio media-sound/apulse ) systray? ( gnome-extra/gnome-integration-spotify ) x11-libs/gtk+:2 x11-libs/libXScrnSaver x11-libs/libXtst
 RESTRICT=mirror strip
 SLOT=0
-SRC_URI=http://repository.spotify.com/pool/non-free/s/spotify-client/spotify-client_1.1.5.153.gf614956d-16_amd64.deb
+SRC_URI=http://repository.spotify.com/pool/non-free/s/spotify-client/spotify-client_1.1.10.546.ge08ef575-19_amd64.deb
 _eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	pax-utils	db85a3c508cf82c45f24b2723791cc93	unpacker	3cd8bad0d31e525cd26be1bfa4e61631	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	14d00d009167652b1fa363e55effe213
-_md5_=e01eb6df46d4d51315a85ed4bbae7cbe
+_md5_=928748e7635b7dabcdf7f89a6a8d1959
