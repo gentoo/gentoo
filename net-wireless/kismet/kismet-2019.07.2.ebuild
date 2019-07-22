@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
 
@@ -62,6 +62,7 @@ DEPEND="${CDEPEND}
 "
 
 RDEPEND="${CDEPEND}
+	dev-python/pyserial[${PYTHON_USEDEP}]
 	selinux? ( sec-policy/selinux-kismet )
 "
 
@@ -90,6 +91,7 @@ src_configure() {
 		$(use_enable lm_sensors lmsensors) \
 		$(use_enable mousejack libusb) \
 		$(use_enable networkmanager libnm) \
+		--sysconfdir=/etc/kismet \
 		--disable-optimization
 }
 
@@ -102,8 +104,8 @@ src_install() {
 
 	#dodoc CHANGELOG RELEASENOTES.txt README* docs/DEVEL.client docs/README.newcore
 	dodoc CHANGELOG README*
-	newinitd "${FILESDIR}"/${PN}.initd kismet
-	newconfd "${FILESDIR}"/${PN}.confd kismet
+	newinitd "${FILESDIR}"/${PN}.initd-r2 kismet
+	newconfd "${FILESDIR}"/${PN}.confd-r1 kismet
 }
 
 pkg_preinst() {
@@ -125,5 +127,35 @@ pkg_preinst() {
 		ewarn "It is highly discouraged to run a sniffer as root,"
 		ewarn "Please consider enabling the suid use flag and adding"
 		ewarn "your user to the kismet group."
+	fi
+}
+
+migrate_config() {
+	einfo "Kismet Configuration files are now read from /etc/kismet/"
+	if [ -n "$(ls ${EROOT}/etc/kismet_*.conf)" ]; then
+		ewarn "Files at /etc/kismet_*.conf will not be read and should be removed"
+		ewarn "Please keep user specific settings in /etc/kismet/kismet_site.conf"
+	fi
+	if [ -f "${EROOT}/etc/kismet_site.conf" ] && [ ! -f "${EROOT}/etc/kismet/kismet_site.conf" ]; then
+		mv /etc/kismet_site.conf /etc/kismet/kismet_site.conf || die "Failed to migrate kismet_site.conf to new location"
+		ewarn "Your /etc/kismet_site.conf file has been automatically moved to /etc/kismet/kismet_site.conf"
+	elif [ -f "${EROOT}/etc/kismet_site.conf" ] && [ -f "${EROOT}/etc/kismet/kismet_site.conf" ]; then
+		ewarn "Both /etc/kismet_site.conf and /etc/kismet/kismet_site.conf exist, please migrate needed bits"
+		ewarn "into /etc/kismet/kismet_site.conf and remove /etc/kismet_site.conf"
+	fi
+}
+
+pkg_postinst() {
+	if [ -n "${REPLACING_VERSIONS}" ]; then
+		for v in ${REPLACING_VERSIONS}; do
+			if ver_test ${v} -lt 2019.07.2 ; then
+				migrate_config
+				break
+			fi
+			if ver_test ${v} -eq 9999 ; then
+				migrate_config
+				break
+			fi
+		done
 	fi
 }
