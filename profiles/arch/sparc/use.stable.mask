@@ -15,10 +15,6 @@ rpm
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-04-23)
 openal
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2019-04-09)
-# sys-auth/elogind not stable yet. bug #682158
-elogind
-
 # Sergei Trofimovich <slyfox@gentoo.org> (2019-02-02)
 # clamav has no stable versions yet
 clamav
