@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+inherit toolchain-funcs
 
 DESCRIPTION="Optimized BLAS library based on GotoBLAS2"
 HOMEPAGE="http://xianyi.github.com/OpenBLAS/"
@@ -10,7 +11,7 @@ SRC_URI="https://github.com/xianyi/OpenBLAS/tarball/v${PV} -> ${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
-IUSE="dynamic openmp pthread serial static-libs eselect-ldso"
+IUSE="dynamic openmp pthread serial static-libs eselect-ldso index-64bit"
 REQUIRED_USE="?? ( openmp pthread serial )"
 
 RDEPEND="
@@ -27,6 +28,7 @@ openblas_flags() {
 	use dynamic && \
 		flags+=( DYNAMIC_ARCH=1 TARGET=GENERIC NUM_THREADS=64 NO_AFFINITY=1 )
 	if use openmp; then
+		tc-check-openmp
 		flags+=( USE_THREAD=1 USE_OPENMP=1 )
 	elif use pthread; then
 		flags+=( USE_THREAD=1 USE_OPENMP=0 )
@@ -41,13 +43,18 @@ openblas_flags() {
 
 src_unpack () {
 	default
-	find "${WORKDIR}" -maxdepth 1 -type d -name \*OpenBLAS\* && \
-		mv "${WORKDIR}"/*OpenBLAS* "${S}" || die
+	mv "${WORKDIR}"/*OpenBLAS* "${S}" || die
+	if use index-64bit; then
+		cp -aL "${S}" "${S}-index-64bit" || die
+	fi
 }
 
 src_compile () {
 	emake $(openblas_flags)
 	emake -Cinterface shared-blas-lapack $(openblas_flags)
+	if use index-64bit; then
+		emake -C"${S}-index-64bit" $(openblas_flags) INTERFACE64=1 LIBPREFIX=libopenblas64
+	fi
 }
 
 src_install () {
@@ -65,6 +72,11 @@ src_install () {
 		insinto /usr/$(get_libdir)/lapack/openblas/
 		doins interface/liblapack.so.3
 		dosym liblapack.so.3 usr/$(get_libdir)/lapack/openblas/liblapack.so
+	fi
+
+	if use index-64bit; then
+		insinto /usr/$(get_libdir)/
+		dolib.so "${S}-index-64bit"/libopenblas64*.so*
 	fi
 }
 
