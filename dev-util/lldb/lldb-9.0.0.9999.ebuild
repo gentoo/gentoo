@@ -107,15 +107,5 @@ src_test() {
 src_install() {
 	cmake-utils_src_install
 
-	# oh my...
-	if use python; then
-		# remove custom readline.so for now
-		# TODO: figure out how to deal with it
-		# upstream is basically building a custom readline.so with -ledit
-		# to avoid symbol collisions between readline and libedit...
-		rm "${D}$(python_get_sitedir)/readline.so" || die
-
-		# byte-compile the modules
-		python_optimize
-	fi
+	use python && python_optimize
 }

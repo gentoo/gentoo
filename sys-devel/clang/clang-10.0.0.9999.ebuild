@@ -29,15 +29,12 @@ LICENSE="UoI-NCSA"
 SLOT="$(ver_cut 1)"
 KEYWORDS=""
 IUSE="debug default-compiler-rt default-libcxx doc +static-analyzer
-	test xml z3 kernel_FreeBSD ${ALL_LLVM_TARGETS[*]}"
+	test xml kernel_FreeBSD ${ALL_LLVM_TARGETS[*]}"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
 	~sys-devel/llvm-${PV}:${SLOT}=[debug=,${LLVM_TARGET_USEDEPS// /,},${MULTILIB_USEDEP}]
-	static-analyzer? (
-		dev-lang/perl:*
-		z3? ( >=sci-mathematics/z3-4.7.1:0=[${MULTILIB_USEDEP}] )
-	)
+	static-analyzer? ( dev-lang/perl:* )
 	xml? ( dev-libs/libxml2:2=[${MULTILIB_USEDEP}] )
 	${PYTHON_DEPS}"
 # configparser-3.2 breaks the build (3.3 or none at all are fine)
@@ -135,8 +132,6 @@ multilib_src_configure() {
 
 		-DCLANG_ENABLE_ARCMT=$(usex static-analyzer)
 		-DCLANG_ENABLE_STATIC_ANALYZER=$(usex static-analyzer)
-		# z3 is not multilib-friendly
-		-DCLANG_ANALYZER_ENABLE_Z3_SOLVER=$(usex z3)
 	)
 	use test && mycmakeargs+=(
 		-DLLVM_MAIN_SRC_DIR="${WORKDIR}/llvm"
@@ -156,9 +151,6 @@ multilib_src_configure() {
 			-DCLANG_INSTALL_SPHINX_HTML_DIR="${EPREFIX}/usr/share/doc/${PF}/html"
 			-DCLANG-TOOLS_INSTALL_SPHINX_HTML_DIR="${EPREFIX}/usr/share/doc/${PF}/tools-extra"
 			-DSPHINX_WARNINGS_AS_ERRORS=OFF
-		)
-		use z3 && mycmakeargs+=(
-			-DZ3_INCLUDE_DIR="${EPREFIX}/usr/include/z3"
 		)
 	else
 		mycmakeargs+=(
