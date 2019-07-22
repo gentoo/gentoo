@@ -2,25 +2,17 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-checkconfig() {
-	if [ ! -e /etc/kismet.conf ]; then
-		eerror "Configuration file /etc/kismet.conf not found"
-		return 1
-	fi
-}
-
 start() {
-	checkconfig || return 1
-
-	ebegin "Starting kismet server"
+	ebegin "Starting kismet"
 	start-stop-daemon --start --quiet --pidfile /run/kismet.pid \
 		--background --make-pidfile --exec /usr/bin/kismet \
-		-- ${KISMET_SERVER_OPTIONS}
+    -1 /var/log/kismet.log -2 /var/log/kismet.log \
+		-- --no-ncurses ${KISMET_SERVER_OPTIONS}
 	eend ${?}
 }
 
 stop() {
-	ebegin "Stopping kismet server"
+	ebegin "Stopping kismet"
 	start-stop-daemon --stop --quiet --pidfile /run/kismet.pid
 	eend ${?}
 }

@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_6 )
+PYTHON_COMPAT=( python2_7 )
 
 inherit autotools eutils multilib user python-single-r1
 
