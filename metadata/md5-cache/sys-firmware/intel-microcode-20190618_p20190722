@@ -10,6 +10,6 @@ RDEPEND=hostonly? ( sys-apps/iucode_tool )
 REQUIRED_USE=|| ( initramfs split-ucode )
 RESTRICT=binchecks bindist mirror strip
 SLOT=0
-SRC_URI=https://github.com/intel/Intel-Linux-Processor-Microcode-Data-Files/archive/microcode-20190618.tar.gz https://dev.gentoo.org/~whissi/dist/intel-microcode/intel-microcode-collection-20190623.tar.xz
+SRC_URI=https://github.com/intel/Intel-Linux-Processor-Microcode-Data-Files/archive/microcode-20190618.tar.gz https://dev.gentoo.org/~whissi/dist/intel-microcode/intel-microcode-collection-20190722.tar.xz
 _eclasses_=eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	linux-info	953c3b1c472dcadbf62098a9301327f2	mount-boot	1e82d96b7a7dcb483b412497a90bb646	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
 _md5_=c0177ee4ed4324001311edc0f8cd7300
