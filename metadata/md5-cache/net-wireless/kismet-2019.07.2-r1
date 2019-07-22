@@ -11,4 +11,4 @@ RDEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/
 SLOT=0/2019.07.2
 SRC_URI=https://www.kismetwireless.net/code/kismet-2019-07-R2.tar.xz
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-single-r1	3a0fc81f484bfdbd9c2b7448015a36e4	python-utils-r1	08e17157a6807add7db1f8d01e7e391f	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56	user	e68863263b1e8611dacf381bec5c8b2b
-_md5_=b8303109cc987fa30865c4054aab3c90
+_md5_=7bfc267100330c05c7069499445f323f
