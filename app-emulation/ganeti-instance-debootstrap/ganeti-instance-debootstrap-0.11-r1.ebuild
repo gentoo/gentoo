@@ -1,9 +1,7 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=2
-
-inherit eutils
+EAPI=7
 
 DESCRIPTION="Scripts to build Ganeti VMs with debootstrap"
 HOMEPAGE="http://www.ganeti.org/"
@@ -24,11 +22,11 @@ RDEPEND="app-arch/dpkg
 	sys-fs/e2fsprogs"
 
 src_configure() {
-	econf --docdir=/usr/share/doc/${P} || die "econf failed"
+	econf --docdir=/usr/share/doc/${P}
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die "install failed"
+	default
 	insinto /etc/ganeti/instance-debootstrap/hooks
 	doins examples/hooks/*
 }

@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Parses ISO8601 formats"
 
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~sparc x86 ~x86-fbsd"
+KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sh ~sparc x86 ~x86-fbsd"
 IUSE="test"
 
 RDEPEND="dev-perl/DateTime
