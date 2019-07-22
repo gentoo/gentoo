@@ -10,7 +10,7 @@ inherit perl-module
 
 DESCRIPTION="Check that a library is available for FFI"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ia64 ~riscv ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~riscv ~x86"
 IUSE="test"
 
 RDEPEND="
