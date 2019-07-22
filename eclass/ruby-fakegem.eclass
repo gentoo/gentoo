@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: ruby-fakegem.eclass
@@ -7,7 +7,8 @@
 # @AUTHOR:
 # Author: Diego E. Pettenò <flameeyes@gentoo.org>
 # Author: Alex Legler <a3li@gentoo.org>
-# @SUPPORTED_EAPIS: 0 1 2 3 4 5 6
+# Author: Hans de Graaff <graaff@gentoo.org>
+# @SUPPORTED_EAPIS: 4 5 6
 # @BLURB: An eclass for installing Ruby packages to behave like RubyGems.
 # @DESCRIPTION:
 # This eclass allows to install arbitrary Ruby libraries (including Gems),
@@ -39,7 +40,7 @@ RUBY_FAKEGEM_TASK_DOC="${RUBY_FAKEGEM_TASK_DOC-rdoc}"
 #  - rspec (calls ruby-ng_rspec, adds dev-ruby/rspec:2 to the dependencies)
 #  - rspec3 (calls ruby-ng_rspec, adds dev-ruby/rspec:3 to the dependencies)
 #  - cucumber (calls ruby-ng_cucumber, adds dev-util/cucumber to the
-#    dependencies; does not work on JRuby).
+#    dependencies)
 #  - none
 RUBY_FAKEGEM_RECIPE_TEST="${RUBY_FAKEGEM_RECIPE_TEST-rake}"
 
@@ -106,11 +107,13 @@ RUBY_FAKEGEM_BINDIR="${RUBY_FAKEGEM_BINDIR-bin}"
 # Rails generators, or data that needs to be installed as well.
 
 case "${EAPI:-0}" in
-		0|1|2|3|4|5|6)
-				;;
-		*)
-				die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}"
-				;;
+	0|1|2|3)
+		die "Unsupported EAPI=${EAPI} (too old) for ruby-fakegem.eclass" ;;
+	4|5|6)
+		;;
+	*)
+		die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}"
+		;;
 esac
 
 
@@ -159,10 +162,7 @@ case ${RUBY_FAKEGEM_RECIPE_TEST} in
 		;;
 	cucumber)
 		IUSE+=" test"
-		# Unfortunately as of August 2012, cucumber is not supported on
-		# JRuby.  We work it around here to avoid repeating the same
-		# code over and over again.
-		USE_RUBY="${USE_RUBY/jruby/}" ruby_add_bdepend "test? ( dev-util/cucumber )"
+		ruby_add_bdepend "test? ( dev-util/cucumber )"
 		;;
 	*)
 		RUBY_FAKEGEM_RECIPE_TEST="none"
@@ -180,8 +180,6 @@ ruby_add_rdepend virtual/rubygems
 # This function returns the gems data directory for the ruby
 # implementation in question.
 ruby_fakegem_gemsdir() {
-	has "${EAPI}" 2 && ! use prefix && EPREFIX=
-
 	local _gemsitedir=$(ruby_rbconfig_value 'sitelibdir')
 	_gemsitedir=${_gemsitedir//site_ruby/gems}
 	_gemsitedir=${_gemsitedir#${EPREFIX}}
@@ -266,14 +264,7 @@ ruby_fakegem_gemspec_gemspec() {
 # the metadata distributed by the gem itself. This is similar to how
 # rubygems creates an installation from a .gem file.
 ruby_fakegem_metadata_gemspec() {
-	case ${RUBY} in
-		*jruby)
-			${RUBY} -r yaml -e "puts Gem::Specification.from_yaml(File::open('$1').read).to_ruby" > $2
-				;;
-		*)
-			${RUBY} -r yaml -e "puts Gem::Specification.from_yaml(File::open('$1', :encoding => 'UTF-8').read).to_ruby" > $2
-				;;
-	esac
+	${RUBY} -r yaml -e "puts Gem::Specification.from_yaml(File::open('$1', :encoding => 'UTF-8').read).to_ruby" > $2
 }
 
 # @FUNCTION: ruby_fakegem_genspec
@@ -332,8 +323,7 @@ ruby_fakegem_binwrapper() {
 		# one or multiple implementations; if we're installing for a
 		# *single* implementation, no need to use “/usr/bin/env ruby”
 		# in the shebang, and we can actually avoid errors when
-		# calling the script by default (see for instance the
-		# JRuby-specific commands).
+		# calling the script by default.
 		local rubycmd=
 		for implementation in $(_ruby_get_all_impls); do
 			# ignore non-enabled implementations

@@ -27,4 +27,4 @@ VIDEO_CARDS="fbdev"
 
 # Hans de Graaff <graaff@gentoo.org) (2019-07-17)
 # Temporary RUBY_TARGETS for bug 688976
-RUBY_TARGETS="ruby24"
+RUBY_TARGETS="ruby24 -ruby25"
