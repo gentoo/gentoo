@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure prepare unpack
+DEPEND=lz4? ( app-arch/lz4:= ) lzo? ( dev-libs/lzo:= ) xz? ( app-arch/xz-utils:= ) selinux? ( sys-libs/libselinux:= ) zlib? ( sys-libs/zlib:= ) zstd? ( app-arch/zstd:= )
+DESCRIPTION=A new set of tools for working with SquashFS images
+EAPI=7
+HOMEPAGE=https://github.com/AgentD/squashfs-tools-ng
+IUSE=lz4 lzo selinux +xz +zlib zstd
+KEYWORDS=~alpha ~amd64 ~ia64 ~ppc64
+LICENSE=GPL-3+
+RDEPEND=lz4? ( app-arch/lz4:= ) lzo? ( dev-libs/lzo:= ) xz? ( app-arch/xz-utils:= ) selinux? ( sys-libs/libselinux:= ) zlib? ( sys-libs/zlib:= ) zstd? ( app-arch/zstd:= )
+REQUIRED_USE=|| ( lz4 lzo xz zlib zstd )
+SLOT=0
+SRC_URI=https://infraroot.at/pub/squashfs/squashfs-tools-ng-0.4.2.tar.xz
+_md5_=9f663b52770a0846ed32407ebaafd34c

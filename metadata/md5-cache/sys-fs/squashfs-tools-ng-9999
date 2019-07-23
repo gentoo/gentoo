@@ -1,0 +1,13 @@
+BDEPEND=>=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1[curl]
+DEFINED_PHASES=configure prepare unpack
+DEPEND=lz4? ( app-arch/lz4:= ) lzo? ( dev-libs/lzo:= ) xz? ( app-arch/xz-utils:= ) selinux? ( sys-libs/libselinux:= ) zlib? ( sys-libs/zlib:= ) zstd? ( app-arch/zstd:= )
+DESCRIPTION=A new set of tools for working with SquashFS images
+EAPI=7
+HOMEPAGE=https://github.com/AgentD/squashfs-tools-ng
+IUSE=lz4 lzo selinux +xz +zlib zstd
+LICENSE=GPL-3+
+RDEPEND=lz4? ( app-arch/lz4:= ) lzo? ( dev-libs/lzo:= ) xz? ( app-arch/xz-utils:= ) selinux? ( sys-libs/libselinux:= ) zlib? ( sys-libs/zlib:= ) zstd? ( app-arch/zstd:= )
+REQUIRED_USE=|| ( lz4 lzo xz zlib zstd )
+SLOT=0
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	git-r3	0d4635eeb5a96cd5315597a47eba25c9	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
+_md5_=9f663b52770a0846ed32407ebaafd34c
