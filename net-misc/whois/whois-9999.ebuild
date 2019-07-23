@@ -8,11 +8,15 @@ inherit toolchain-funcs
 MY_P="${P/-/_}"
 DESCRIPTION="improved Whois Client"
 HOMEPAGE="https://github.com/rfc1036/whois"
-SRC_URI="mirror://debian/pool/main/w/whois/${MY_P}.tar.xz"
-
+if [[ "${PV}" == *9999 ]] ; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/rfc1036/whois.git"
+else
+	SRC_URI="mirror://debian/pool/main/w/whois/${MY_P}.tar.xz"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
+fi
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 IUSE="iconv idn nls"
 RESTRICT="test" #59327
 

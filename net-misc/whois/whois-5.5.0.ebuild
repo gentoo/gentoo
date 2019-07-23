@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 MY_P="${P/-/_}"
 DESCRIPTION="improved Whois Client"
-HOMEPAGE="https://www.linux.it/~md/software/"
+HOMEPAGE="https://github.com/rfc1036/whois"
 SRC_URI="mirror://debian/pool/main/w/whois/${MY_P}.tar.xz"
 
 LICENSE="GPL-2"
