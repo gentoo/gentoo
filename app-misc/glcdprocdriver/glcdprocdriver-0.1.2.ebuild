@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,7 +13,7 @@ HOMEPAGE="https://lucianm.github.io/GLCDprocDriver
 	https://github.com/lucianm/GLCDprocDriver"
 SRC_URI="https://github.com/lucianm/${MY_PN}/archive/0.1.2.tar.gz -> ${MY_P}.tar.gz"
 
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc ~x86"
 SLOT="0"
 LICENSE="GPL-2"
 
