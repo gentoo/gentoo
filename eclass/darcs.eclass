@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: darcs.eclass
@@ -84,6 +84,8 @@ SRC_URI=""
 : ${EDARCS_CLEAN:=}
 
 # --- end ebuild-configurable settings ---
+
+PROPERTIES+=" live"
 
 case ${EAPI:-0} in
 	[0-6]) # no need to care about 5-HDEPEND and similar

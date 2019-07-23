@@ -173,6 +173,8 @@ _CVS_ECLASS=1
 # Set this to get a clean copy when updating (passes the
 # -C option to cvs update)
 
+PROPERTIES+=" live"
+
 # add cvs to deps
 # ssh is used for ext auth
 DEPEND="dev-vcs/cvs"
