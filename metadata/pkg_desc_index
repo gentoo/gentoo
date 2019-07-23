@@ -84,7 +84,7 @@ app-admin/hardinfo 0.5.2_pre20130823: System information and benchmark tool for 
 app-admin/haskell-updater 1.2.9 1.2.10 1.3.1: Rebuild Haskell dependencies in Gentoo
 app-admin/hcloud 1.12.0: A command-line interface for Hetzner Cloud
 app-admin/hddtemp 0.3_beta15-r28: A simple utility to read the temperature of SMART capable hard drives
-app-admin/helm 2.13.1: Kubernetes Package Manager
+app-admin/helm 2.14.1: Kubernetes Package Manager
 app-admin/ide-smart 1.4-r2: A tool to read SMART information from harddiscs
 app-admin/installer 0.1.1_beta: A software for Gentoo installation
 app-admin/keepass 2.41: A free, open source, light-weight and easy-to-use password manager
@@ -9284,7 +9284,7 @@ sci-libs/lapack-reference 3.2.1-r4: FORTRAN reference implementation of LAPACK L
 sci-libs/libcerf 1.4 1.5: Efficient and accurate implementation of complex error functions
 sci-libs/libctl 3.1: Guile-based library for scientific simulations
 sci-libs/libdap 3.18.1: Implementation of a C++ SDK for DAP 2.0 and 3.2
-sci-libs/libgeotiff 1.4.0 1.4.1-r1: Library for reading TIFF files with embedded tags for geographic information
+sci-libs/libgeotiff 1.4.1-r1: Library for reading TIFF files with embedded tags for geographic information
 sci-libs/libint 1.1.6: Matrix elements (integrals) evaluation over Cartesian Gaussian functions
 sci-libs/libnova 0.15.0: Celestial Mechanics and Astronomical Calculation Library
 sci-libs/libqalculate 0.9.9 2.8.1: A modern multi-purpose calculator library
