@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install prepare setup test unpack
+DEPEND=ruby_targets_ruby24? ( dev-lang/ruby:2.4 ) ruby_targets_ruby25? ( dev-lang/ruby:2.5 ) ruby_targets_ruby26? ( dev-lang/ruby:2.6 ) ruby_targets_ruby24? ( doc? ( dev-ruby/rdoc[ruby_targets_ruby24] ) ) ruby_targets_ruby25? ( doc? ( dev-ruby/rdoc[ruby_targets_ruby25] ) ) ruby_targets_ruby26? ( doc? ( dev-ruby/rdoc[ruby_targets_ruby26] ) ) ruby_targets_ruby24? ( virtual/rubygems[ruby_targets_ruby24] ) ruby_targets_ruby25? ( virtual/rubygems[ruby_targets_ruby25] ) ruby_targets_ruby26? ( virtual/rubygems[ruby_targets_ruby26] ) test? ( ruby_targets_ruby24? ( virtual/rubygems[ruby_targets_ruby24] ) ruby_targets_ruby25? ( virtual/rubygems[ruby_targets_ruby25] ) ruby_targets_ruby26? ( virtual/rubygems[ruby_targets_ruby26] ) )
+DESCRIPTION=Rex library for text generation and manipulation
+EAPI=6
+HOMEPAGE=https://github.com/rapid7/rex-text
+IUSE=ruby_targets_ruby24 ruby_targets_ruby25 ruby_targets_ruby26 doc test
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=BSD
+RDEPEND=ruby_targets_ruby24? ( dev-lang/ruby:2.4 ) ruby_targets_ruby25? ( dev-lang/ruby:2.5 ) ruby_targets_ruby26? ( dev-lang/ruby:2.6 ) ruby_targets_ruby24? ( virtual/rubygems[ruby_targets_ruby24] ) ruby_targets_ruby25? ( virtual/rubygems[ruby_targets_ruby25] ) ruby_targets_ruby26? ( virtual/rubygems[ruby_targets_ruby26] )
+REQUIRED_USE=|| ( ruby_targets_ruby24 ruby_targets_ruby25 ruby_targets_ruby26 )
+SLOT=0
+SRC_URI=mirror://rubygems/rex-text-0.2.22.gem
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	1d91b03d42ab6308b5f4f6b598ed110e	ruby-fakegem	f4ce0a486f364c9defe9ee2b2b06e2f3	ruby-ng	adcdd52f589f9feb16890a9ff28fef71	ruby-utils	10cec86289e60f4b0d731b2e4b545e5d	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
+_md5_=e337bfa96d034a273dc53182ce893bcc
