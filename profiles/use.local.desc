@@ -6211,6 +6211,7 @@ x11-plugins/pidgin-sipe:ocs2005-message-hack - Disable message timeout for OCS20
 x11-plugins/pidgin-sipe:openssl - Enable crypto support via dev-libs/openssl
 x11-plugins/pidgin-sipe:telepathy - Support use as a telepathy backend
 x11-plugins/pidgin-sipe:voice - Enable experimental voice/video support
+x11-plugins/pidgin-telegram:gcrypt - Use dev-libs/libgcrypt instead of dev-libs/openssl.
 x11-plugins/purple-plugin_pack:talkfilters - Enable support for app-text/talkfilters
 x11-plugins/vicious:contrib - Install extra widgets, some for less common hardware, some contributed by Vicious users.
 x11-plugins/wmfire:session - Enable session management
