@@ -19,7 +19,7 @@ SRC_URI="mirror://mysql/Downloads/MySQLGUITools/${MY_P}.tar.gz https://www.antlr
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="debug doc gnome-keyring"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
