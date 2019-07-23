@@ -10751,7 +10751,7 @@ x11-misc/cairo-clock 0.3.4-r1: An analog clock displaying the system-time
 x11-misc/calise 0.4.2: Computes ambient brightness and sets screen's correct backlight using a webcam
 x11-misc/cbatticon 1.6.5: A lightweight and fast battery icon that sits in your system tray
 x11-misc/chgres 0.1-r2: A very simple command line utility for changing X resolutions
-x11-misc/colord 1.3.4 1.3.5: System service to accurately color manage input and output devices
+x11-misc/colord 1.3.5: System service to accurately color manage input and output devices
 x11-misc/compton 0.1_beta2: A compositor for X, and a fork of xcompmgr-dana
 x11-misc/dclock 2.2.2_p9: Digital clock for the X window system
 x11-misc/devilspie 0.23: A Window Matching utility similar to Sawfish's Matched Windows feature
