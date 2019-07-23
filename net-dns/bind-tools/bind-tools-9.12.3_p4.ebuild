@@ -21,8 +21,7 @@ IUSE="doc gost gssapi idn ipv6 libedit libidn2 libressl readline seccomp ssl ura
 # no PKCS11 currently as it requires OpenSSL to be patched, also see bug 409687
 
 REQUIRED_USE="gost? ( !libressl ssl )
-	idn? ( !libidn2 )
-	libidn2? ( !idn )"
+	libidn2? ( idn )"
 
 CDEPEND="
 	ssl? (
@@ -39,8 +38,10 @@ CDEPEND="
 		)
 	)
 	xml? ( dev-libs/libxml2 )
-	idn? ( <net-dns/idnkit-2:= )
-	libidn2? ( net-dns/libidn2:= )
+	idn? (
+		!libidn2? ( <net-dns/idnkit-2:= )
+		libidn2? ( net-dns/libidn2:= )
+	)
 	gssapi? ( virtual/krb5 )
 	libedit? ( dev-libs/libedit )
 	!libedit? (
@@ -79,9 +80,6 @@ src_configure() {
 		--without-zlib
 		--without-lmdb
 		$(use_enable ipv6)
-		$(use_with idn idnkit)
-		$(usex idn --with-idnlib=-lidnkit '')
-		$(use_with libidn2)
 		$(use_enable seccomp)
 		$(use_with ssl openssl "${EPREFIX}"/usr)
 		$(use_with xml libxml2)
@@ -89,6 +87,14 @@ src_configure() {
 		$(use_with readline)
 		$(use_with gost)
 	)
+
+	if use idn ; then
+		if use libidn2 ; then
+			myeconfargs+=( --with-libidn2 )
+		else
+			myeconfargs+=( --with-idnkit --with-idnlib=-lidnkit )
+		fi
+	fi
 
 	if use urandom; then
 		myeconfargs+=( --with-randomdev=/dev/urandom )
