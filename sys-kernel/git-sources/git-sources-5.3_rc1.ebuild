@@ -33,7 +33,8 @@ report the problem so it can be fixed in time for the next kernel release."
 
 RDEPEND=""
 DEPEND="${RDEPEND}
-	>=sys-devel/patch-2.7.5"
+	>=sys-devel/patch-2.7.5
+	>=sys-devel/bc-1.07.1-r2"
 
 pkg_postinst() {
 	postinst_sources
