@@ -142,11 +142,6 @@ sys-freebsd/freebsd-ubin
 sys-freebsd/freebsd-usbin
 sys-freebsd/ubin-wrappers
 
-# Andreas K. Hüttel <dilfridge@gentoo.org> (2019-06-27)
-# Badly outdated, EAPI=2. Removal in 30days, ack'ed by
-# cynede for dotnet. Bug 685626.
-dev-dotnet/flickrnet-bin
-
 # Ulrich Müller <ulm@gentoo.org> (2019-06-24)
 # Byte-compilation with recent Emacs versions fails.
 # SRC_URI is gone. Last visible upstream activity in 2008.
@@ -165,16 +160,6 @@ media-sound/sfc
 # builds only static libs, fails with GCC 9.
 # Bug #452220, #461288, #623360, #685728
 sci-mathematics/gwnum
-
-# Andreas K. Hüttel <dilfridge@gentoo.org> (2019-06-23)
-# EAPI2, broken HOMEPAGE, maintainer-needed, lots of QA warnings,
-# for hardware that was EOL'ed <=2007. Removal in 30 days. Bug 681060
-sys-apps/cobalt-panel-utils
-
-# Andreas K. Hüttel <dilfridge@gentoo.org> (2019-06-23)
-# last release was 2006, EAPI2, maintainer-needed, depends on
-# app-text/htmltidy; removal in 30 days, bug 686324
-www-apache/mod_tidy
 
 # David Seifert <soap@gentoo.org> (2019-06-22)
 # Abandoned upstream, last release 5 years ago,
