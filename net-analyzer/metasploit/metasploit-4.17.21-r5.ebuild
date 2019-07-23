@@ -45,6 +45,7 @@ RUBY_COMMON_DEPEND="virtual/ruby-ssl
 	dev-ruby/bundler
 	dev-ruby/dnsruby
 	dev-ruby/faker
+	dev-ruby/faraday
 	dev-ruby/filesize:*
 	dev-ruby/jsobfu:*
 	dev-ruby/json:*
@@ -238,6 +239,10 @@ all_ruby_prepare() {
 
 	#https://bugs.gentoo.org/show_bug.cgi?id=584522 no tzinfo-data by choice in gentoo
 	sed -i '/tzinfo-data/d' metasploit-framework.gemspec
+
+	#fails without faraday in Gemfile.lock
+	#despite activesupport(?) needing it, it doesn't end up there :-(
+	sed -i "/'activesupport'/a \ \ spec.add_runtime_dependency 'faraday'" metasploit-framework.gemspec
 
 	#let's bogart msfupdate
 	rm msfupdate
