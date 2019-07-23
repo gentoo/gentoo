@@ -3,7 +3,6 @@
 
 EAPI=7
 
-
 DESCRIPTION="A new set of tools for working with SquashFS images"
 HOMEPAGE="https://github.com/AgentD/squashfs-tools-ng"
 if [[ ${PV} = 9999* ]]; then
