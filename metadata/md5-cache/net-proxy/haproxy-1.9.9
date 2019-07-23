@@ -4,12 +4,12 @@ DEPEND=pcre? ( dev-libs/libpcre pcre-jit? ( dev-libs/libpcre[jit] ) ) pcre2? ( d
 DESCRIPTION=A TCP/HTTP reverse proxy for high availability environments
 EAPI=7
 HOMEPAGE=http://www.haproxy.org
-IUSE=+crypt doc examples libressl slz +net_ns +pcre pcre-jit pcre2 pcre2-jit prometheus-exporter ssl systemd +threads tools vim-syntax +zlib lua device-atlas 51degrees wurfl kernel_linux
+IUSE=+crypt doc examples libressl slz net_ns +pcre pcre-jit pcre2 pcre2-jit ssl systemd +threads tools vim-syntax +zlib lua device-atlas 51degrees wurfl kernel_linux
 KEYWORDS=~amd64 ~arm ~ppc ~x86
 LICENSE=GPL-2 LGPL-2.1
 RDEPEND=pcre? ( dev-libs/libpcre pcre-jit? ( dev-libs/libpcre[jit] ) ) pcre2? ( dev-libs/libpcre pcre2-jit? ( dev-libs/libpcre2[jit] ) ) ssl? ( !libressl? ( dev-libs/openssl:0=[zlib?] ) libressl? ( dev-libs/libressl:0= ) ) slz? ( dev-libs/libslz:= ) zlib? ( sys-libs/zlib ) lua? ( dev-lang/lua:5.3 ) device-atlas? ( dev-libs/device-atlas-api-c )
 REQUIRED_USE=pcre-jit? ( pcre ) pcre2-jit? ( pcre2 ) pcre? ( !pcre2 ) device-atlas? ( pcre ) ?? ( slz zlib )
 SLOT=0
-SRC_URI=http://haproxy.1wt.eu/download/2.0/src/haproxy-2.0.2.tar.gz
+SRC_URI=http://haproxy.1wt.eu/download/1.9/src/haproxy-1.9.9.tar.gz
 _eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	7ba73aee7fe4462b3a745e3645ab92ca	linux-info	953c3b1c472dcadbf62098a9301327f2	multilib	1d91b03d42ab6308b5f4f6b598ed110e	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56	user	e68863263b1e8611dacf381bec5c8b2b
-_md5_=e90439f01c70e1cad9e9d0c9b2276767
+_md5_=7c8f5ae183f2dff0b04bd0b00f6e2c5c
