@@ -25,7 +25,7 @@ RDEPEND="${PYTHON_DEPS}
 	dev-ada/gnatcoll-db[gnat_2017=,gnat_2018=,gnatcoll_db2ada,gnatinspect,xref]
 	dev-ada/gnatcoll-bindings[gnat_2017=,gnat_2018=,python]
 	~dev-ada/gtkada-2018[gnat_2017=,gnat_2017=]
-	dev-ada/libadalang[gnat_2017=,gnat_2018=]
+	dev-ada/libadalang[gnat_2017(-)?,gnat_2018(-)?]
 	dev-libs/gobject-introspection
 	dev-libs/libffi
 	gnat_2017? ( sys-devel/llvm:5 )
@@ -42,6 +42,8 @@ RDEPEND="${PYTHON_DEPS}
 	dev-python/jedi[${PYTHON_USEDEP}]"
 
 DEPEND="${RDEPEND}"
+
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RESTRICT="test"
 
