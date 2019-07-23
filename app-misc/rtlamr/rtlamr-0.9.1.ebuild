@@ -6,7 +6,7 @@ EGO_PN=github.com/bemasher/rtlamr
 inherit golang-build golang-vcs-snapshot
 
 DESCRIPTION="software defined radio receiver for utility smart meters"
-HOMEPAGE="https://github.com/demasher/rtlamr"
+HOMEPAGE="https://github.com/bemasher/rtlamr"
 SRC_URI="https://${EGO_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="AGPL-3"
