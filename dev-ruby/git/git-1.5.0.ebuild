@@ -19,7 +19,7 @@ RUBY_S="ruby-git-${PV}"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~ppc ~ppc64 ~x86"
 IUSE="test"
 
 DEPEND+="test? ( >=dev-vcs/git-1.6.0.0 app-arch/tar )"

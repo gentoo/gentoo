@@ -31,7 +31,9 @@ RDEPEND="dev-qt/qtcore:5
 	virtual/fortran
 	app-text/asciidoc
 	doc? ( dev-ruby/asciidoctor )"
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	dev-qt/linguist-tools
+	"
 
 S=${WORKDIR}/wsjtx
 

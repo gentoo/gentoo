@@ -10,5 +10,8 @@ IUSE="eselect-ldso"
 
 RDEPEND="
 	>=sci-libs/lapack-3.8.0[eselect-ldso?]
+	eselect-ldso? ( || (
+		>=sci-libs/lapack-3.8.0[eselect-ldso]
+		sci-libs/openblas[eselect-ldso] ) )
 "
 DEPEND="${RDEPEND}"

@@ -126,6 +126,18 @@ alt_prefix() {
 	is_crosscompile && echo /usr/${CTARGET}
 }
 
+# This prefix is applicable to CHOST when building against this
+# glibc. It is baked into the library at configure time.
+host_eprefix() {
+	is_crosscompile || echo "${EPREFIX}"
+}
+
+# This prefix is applicable to CBUILD when building against this
+# glibc. It determines the destination path at install time.
+build_eprefix() {
+	is_crosscompile && echo "${EPREFIX}"
+}
+
 # We need to be able to set alternative headers for compiling for non-native
 # platform. Will also become useful for testing kernel-headers without screwing
 # up the whole system.
@@ -135,7 +147,7 @@ alt_headers() {
 
 alt_build_headers() {
 	if [[ -z ${ALT_BUILD_HEADERS} ]] ; then
-		ALT_BUILD_HEADERS="${EPREFIX}$(alt_headers)"
+		ALT_BUILD_HEADERS="$(host_eprefix)$(alt_headers)"
 		if tc-is-cross-compiler ; then
 			ALT_BUILD_HEADERS=${SYSROOT}$(alt_headers)
 			if [[ ! -e ${ALT_BUILD_HEADERS}/linux/version.h ]] ; then
@@ -585,7 +597,7 @@ eend_KV() {
 
 get_kheader_version() {
 	printf '#include <linux/version.h>\nLINUX_VERSION_CODE\n' | \
-	$(tc-getCPP ${CTARGET}) -I "${EPREFIX}/$(alt_build_headers)" - | \
+	$(tc-getCPP ${CTARGET}) -I "$(build_eprefix)$(alt_build_headers)" - | \
 	tail -n 1
 }
 
@@ -609,7 +621,7 @@ sanity_prechecks() {
 		if has_version ">${CATEGORY}/${P}-r10000" ; then
 			eerror "Sanity check to keep you from breaking your system:"
 			eerror " Downgrading glibc is not supported and a sure way to destruction."
-			die "Aborting to save your system."
+			[[ ${I_ALLOW_TO_BREAK_MY_SYSTEM} = yes ]] || die "Aborting to save your system."
 		fi
 
 		if ! do_run_test '#include <unistd.h>\n#include <sys/syscall.h>\nint main(){return syscall(1000)!=-1;}\n' ; then
@@ -899,9 +911,9 @@ glibc_do_configure() {
 		$(use_enable profile)
 		$(use_with gd)
 		--with-headers=$(alt_build_headers)
-		--prefix="${EPREFIX}/usr"
-		--sysconfdir="${EPREFIX}/etc"
-		--localstatedir="${EPREFIX}/var"
+		--prefix="$(host_eprefix)/usr"
+		--sysconfdir="$(host_eprefix)/etc"
+		--localstatedir="$(host_eprefix)/var"
 		--libdir='$(prefix)'/$(get_libdir)
 		--mandir='$(prefix)'/share/man
 		--infodir='$(prefix)'/share/info
@@ -923,8 +935,8 @@ glibc_do_configure() {
 
 	# There is no configure option for this and we need to export it
 	# since the glibc build will re-run configure on itself
-	export libc_cv_rootsbindir="${EPREFIX}/sbin"
-	export libc_cv_slibdir="${EPREFIX}/$(get_libdir)"
+	export libc_cv_rootsbindir="$(host_eprefix)/sbin"
+	export libc_cv_slibdir="$(host_eprefix)/$(get_libdir)"
 
 	# We take care of patching our binutils to use both hash styles,
 	# and many people like to force gnu hash style only, so disable
@@ -1053,7 +1065,7 @@ glibc_headers_configure() {
 		--build=${CBUILD_OPT:-${CBUILD}}
 		--host=${CTARGET_OPT:-${CTARGET}}
 		--with-headers=$(alt_build_headers)
-		--prefix="${EPREFIX}/usr"
+		--prefix="$(host_eprefix)/usr"
 		${EXTRA_ECONF}
 	)
 
@@ -1143,7 +1155,7 @@ glibc_do_src_install() {
 	local builddir=$(builddir nptl)
 	cd "${builddir}"
 
-	emake install_root="${D}$(alt_prefix)" install || die
+	emake install_root="${D}$(build_eprefix)$(alt_prefix)" install || die
 
 	# This version (2.26) provides some compatibility libraries for the NIS/NIS+ support
 	# which come without headers etc. Only needed for binary packages since the
@@ -1327,7 +1339,7 @@ glibc_do_src_install() {
 glibc_headers_install() {
 	local builddir=$(builddir "headers")
 	cd "${builddir}"
-	emake install_root="${D}$(alt_prefix)" install-headers
+	emake install_root="${D}$(build_eprefix)$(alt_prefix)" install-headers
 
 	insinto $(alt_headers)/gnu
 	doins "${S}"/include/gnu/stubs.h

@@ -10,7 +10,7 @@ SRC_URI="ftp://ftp.fvwm.org/pub/fvwm/version-2/${P}.tar.bz2"
 
 LICENSE="GPL-2 FVWM"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~ia64 ppc ~ppc64 ~sparc x86 ~x86-fbsd"
+KEYWORDS="~alpha amd64 ~arm ~ia64 ppc ~ppc64 ~sparc x86"
 IUSE="bidi debug doc gtk2-perl netpbm nls perl png readline rplay stroke svg tk truetype +vanilla xinerama lock"
 
 COMMON_DEPEND="

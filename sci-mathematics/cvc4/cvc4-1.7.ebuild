@@ -12,7 +12,7 @@ SRC_URI="https://github.com/CVC4/CVC4/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="+cln"
+IUSE="+cln +statistics proofs replay"
 
 RDEPEND="dev-libs/antlr-c
 	dev-java/antlr:3
@@ -30,7 +30,11 @@ src_configure() {
 	local mycmakeargs=(
 		-DANTLR_BINARY=/usr/bin/antlr3
 		-DENABLE_GPL=ON
+		-DENABLE_OPTIMIZED=ON
 		-DUSE_CLN="$(usex cln ON OFF)"
+		-DENABLE_STATISTICS="$(usex statistics ON OFF)"
+		-DENABLE_PROOFS="$(usex proofs ON OFF)"
+		-DENABLE_REPLAY="$(usex replay ON OFF)"
 	)
 	cmake-utils_src_configure
 }

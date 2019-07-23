@@ -54,11 +54,6 @@ ayatana
 luajittex
 
 # Markos Chandras <hwoarang@gentoo.org>
-# app-arch/lz4 does not seem to build on MIPS
-# Original bug report: #501600
-lz4
-
-# Markos Chandras <hwoarang@gentoo.org>
 # Profiles are ISA agnostic so these
 # should be masked on per user basis
 # See #498082

@@ -29,6 +29,22 @@
 
 #--- END OF EXAMPLES ---
 
+# Lars Wendler <polynomial-c@gentoo.org> (2019-07-21)
+# Requires >=mail-client/thunderbird-68_beta1 which is not in the tree yet
+>=x11-plugins/enigmail-2.1
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2019-07-20)
+# Ancient theme for KDE SC 4.4, useless for Plasma 5
+# Removal in 15 days
+x11-themes/korilla
+x11-themes/noia
+x11-themes/oxygen-molecule
+
+# Sergei Trofimovich <slyfox@gentoo.org> (2019-07-20)
+# Mask linux-headers-5.2 as it breaks at least firefox
+# and qemu. See bug #690296.
+>=sys-kernel/linux-headers-5.2
+
 # Hans de Graaff <graaff@gentoo.org> (2019-07-17)
 # Mask ruby24-only slots for removal in 30 days. These slots do not
 # have any reverse dependencies. Please migrate to or use a newer slot.
@@ -160,11 +176,6 @@ sys-apps/cobalt-panel-utils
 # app-text/htmltidy; removal in 30 days, bug 686324
 www-apache/mod_tidy
 
-# Jimi Huotari <chiitoo@gentoo.org> (2019-06-22)
-# Deprecated package with no consumers left.
-# Removal in 30 days.
-lxqt-base/lxqt-l10n
-
 # David Seifert <soap@gentoo.org> (2019-06-22)
 # Abandoned upstream, last release 5 years ago,
 # extremely brittle codebase, requires constant
@@ -185,16 +196,6 @@ sci-biology/allpathslg
 # and it no longer makes sense ship this as standalone pkg
 dev-util/rustfmt
 
-# James Le Cuirot <chewi@gentoo.org> (2019-06-18)
-# Web site and SRC_URI dead. Has required heavy patching. Superseded
-# by games-util/deutex. Removal in 30 days.
-games-misc/yadex
-
-# James Le Cuirot <chewi@gentoo.org> (2019-06-18)
-# Web site and SRC_URI dead. Last release in 2007. Removal in 30
-# days. See bug #688134.
-games-kids/pytraffic
-
 # Mikle Kolyada <zlogene@gentoo.org> (2019-06-15)
 # Part of dev-texlive/texlive-latexextra
 # does not work with utf-8 (bug #688096)
@@ -212,11 +213,6 @@ dev-tex/quotchap
 >=dev-db/myodbc-8.0
 >=dev-db/mysql-connector-c-8.0
 ~virtual/libmysqlclient-21
-
-# James Le Cuirot <chewi@gentoo.org> (2019-06-09)
-# Dead upstream, no release since 2008, not used by anything, possibly
-# doesn't work any more. Removal in 30 days.
-dev-libs/liblazy
 
 # Zac Medico <zmedico@gentoo.org> (2019-05-31)
 # Upstream is dead and there are multiple security vulnerabilities.

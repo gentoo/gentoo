@@ -8,11 +8,11 @@ KDE_HANDBOOK="optional"
 inherit kde5
 
 DESCRIPTION="Utility for management of disks, partitions and file systems"
-HOMEPAGE="https://kde.org/applications/system/kdepartitionmanager"
+HOMEPAGE="https://kde.org/applications/system/org.kde.partitionmanager"
 [[ ${KDE_BUILD_TYPE} == release ]] && SRC_URI="mirror://kde/stable/${PN}/${PV}/src/${P}.tar.xz"
 
 LICENSE="GPL-3"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~x86"
 IUSE=""
 
 DEPEND="

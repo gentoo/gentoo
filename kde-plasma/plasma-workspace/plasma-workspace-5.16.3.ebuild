@@ -118,6 +118,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-5.14.80-startkde-script.patch"
 	"${FILESDIR}/${PN}-5.10-startplasmacompositor-script.patch"
 	"${FILESDIR}/${PN}-5.14.2-split-libkworkspace.patch"
+	"${FILESDIR}/${PN}-5.16.3-x11sessionrename.patch"
 )
 
 RESTRICT+=" test"

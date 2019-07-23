@@ -33,7 +33,7 @@ DEPEND="${RDEPEND}
 	)
 "
 
-REQUIRED_USE="test? ( graphicsmagick ${PYTHON_REQUIRED_USE} )"
+REQUIRED_USE="test? ( graphicsmagick )"
 
 DOCS=(
 	doc/{changelog,credits,djvudigital,README}

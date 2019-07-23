@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -16,7 +16,10 @@ KEYWORDS="amd64 arm ~arm64 hppa ~mips ppc ppc64 x86 ~amd64-fbsd ~x86-fbsd ~amd64
 IUSE="gnutls ssl libressl"
 
 DEPEND="ssl? (
-		gnutls? ( >=net-libs/gnutls-2.12.23-r6[${MULTILIB_USEDEP},nettle(+)] )
+		gnutls? (
+			>=net-libs/gnutls-2.12.23-r6[${MULTILIB_USEDEP},nettle(+)]
+			dev-libs/nettle:0=[${MULTILIB_USEDEP}]
+		)
 		!gnutls? (
 			!libressl? ( >=dev-libs/openssl-1.0.1h-r2[${MULTILIB_USEDEP}] )
 			libressl? ( dev-libs/libressl )

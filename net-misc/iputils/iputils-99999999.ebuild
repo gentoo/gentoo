@@ -29,10 +29,7 @@ LICENSE="BSD GPL-2+ rdisc"
 SLOT="0"
 IUSE="+arping caps clockdiff doc gcrypt idn ipv6 libressl nettle nls rarpd rdisc SECURITY_HAZARD ssl static tftpd tracepath traceroute6"
 
-BDEPEND="
-	virtual/os-headers
-	virtual/pkgconfig
-"
+BDEPEND="virtual/pkgconfig"
 
 LIB_DEPEND="
 	caps? ( sys-libs/libcap[static-libs(+)] )
@@ -61,6 +58,7 @@ RDEPEND="
 
 DEPEND="
 	${RDEPEND}
+	virtual/os-headers
 	static? ( ${LIB_DEPEND} )
 "
 

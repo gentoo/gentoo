@@ -54,7 +54,8 @@ RDEPEND="!app-emulation/virtualbox-bin
 	lvm? ( sys-fs/lvm2 )
 	opus? ( media-libs/opus )
 	udev? ( >=virtual/udev-171 )
-	vnc? ( >=net-libs/libvncserver-0.9.9 )"
+	vnc? ( >=net-libs/libvncserver-0.9.9 )
+	${PYTHON_DEPS}"
 DEPEND="${RDEPEND}
 	>=dev-util/kbuild-0.1.9998.3127
 	>=dev-lang/yasm-0.6.2

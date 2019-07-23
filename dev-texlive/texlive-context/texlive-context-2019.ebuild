@@ -22,7 +22,7 @@ DEPEND=">=dev-texlive/texlive-basic-2019
 "
 RDEPEND="${DEPEND} dev-lang/ruby"
 
-TL_CONTEXT_UNIX_STUBS="contextjit mtxrunjit mtxrun texexec texmfstart"
+TL_CONTEXT_UNIX_STUBS="context contextjit luatools mtxrunjit mtxrun texexec texmfstart"
 
 TEXLIVE_MODULE_BINSCRIPTS=""
 

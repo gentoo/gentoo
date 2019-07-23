@@ -14,7 +14,7 @@ RUBY_FAKEGEM_EXTRAINSTALL="exe"
 
 RUBY_FAKEGEM_GEMSPEC="rspec-core.gemspec"
 
-inherit ruby-fakegem
+inherit ruby-fakegem versionator
 
 DESCRIPTION="A Behaviour Driven Development (BDD) framework for Ruby"
 HOMEPAGE="https://github.com/rspec/rspec-core"

@@ -1,0 +1,18 @@
+#!/sbin/openrc-run
+# Copyright 1999-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+start() {
+	ebegin "Starting kismet"
+	start-stop-daemon --start --quiet --pidfile /run/kismet.pid \
+		--background --make-pidfile --exec /usr/bin/kismet \
+    -1 /var/log/kismet.log -2 /var/log/kismet.log \
+		-- --no-ncurses ${KISMET_SERVER_OPTIONS}
+	eend ${?}
+}
+
+stop() {
+	ebegin "Stopping kismet"
+	start-stop-daemon --stop --quiet --pidfile /run/kismet.pid
+	eend ${?}
+}

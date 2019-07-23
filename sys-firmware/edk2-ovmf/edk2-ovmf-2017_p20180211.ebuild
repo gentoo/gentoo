@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,9 +11,6 @@ inherit eutils python-any-r1 readme.gentoo-r1
 DESCRIPTION="UEFI firmware for 64-bit x86 virtual machines"
 HOMEPAGE="https://github.com/tianocore/edk2"
 
-REQUIRED_USE="
-	${PYTHON_REQUIRED_USE}
-"
 SOURCE_DEPEND="
 	>=dev-lang/nasm-2.0.7
 	>=sys-power/iasl-20160729

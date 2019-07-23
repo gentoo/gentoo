@@ -87,11 +87,11 @@ RDEPEND="${COMMON_DEPEND}
 	tcmalloc? ( !<x11-drivers/nvidia-drivers-331.20 )
 	widevine? ( www-plugins/chrome-binary-plugins[widevine(-)] )
 "
-# dev-vcs/git - https://bugs.gentoo.org/593476
-# sys-apps/sandbox - https://crbug.com/586444
 DEPEND="${COMMON_DEPEND}
 "
+# dev-vcs/git - https://bugs.gentoo.org/593476
 BDEPEND="
+	${PYTHON_DEPS}
 	>=app-arch/gzip-1.7
 	!arm? (
 		dev-lang/yasm

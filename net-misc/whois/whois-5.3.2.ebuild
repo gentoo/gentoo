@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ inherit toolchain-funcs
 
 MY_P="${P/-/_}"
 DESCRIPTION="improved Whois Client"
-HOMEPAGE="https://www.linux.it/~md/software/"
+HOMEPAGE="https://github.com/rfc1036/whois"
 SRC_URI="mirror://debian/pool/main/w/whois/${MY_P}.tar.xz"
 
 LICENSE="GPL-2"
