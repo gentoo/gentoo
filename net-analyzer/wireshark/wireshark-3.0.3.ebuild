@@ -1,9 +1,9 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 PYTHON_COMPAT=( python3_{5,6,7} )
-inherit cmake-utils fcaps flag-o-matic ltprune multilib python-r1 qmake-utils user xdg-utils
+inherit fcaps flag-o-matic multilib python-r1 qmake-utils user xdg-utils cmake-utils
 
 DESCRIPTION="A network protocol analyzer formerly known as ethereal"
 HOMEPAGE="https://www.wireshark.org/"
@@ -59,6 +59,8 @@ CDEPEND="
 DEPEND="
 	${CDEPEND}
 	${PYTHON_DEPS}
+"
+BDEPEND="
 	!<perl-core/Pod-Simple-3.170
 	!<virtual/perl-Pod-Simple-3.170
 	dev-lang/perl
@@ -168,8 +170,7 @@ src_configure() {
 }
 
 src_test() {
-	emake -C "${BUILD_DIR}" test-programs
-	emake -C "${BUILD_DIR}" test
+	cmake-utils_src_test
 }
 
 src_install() {
@@ -215,8 +216,6 @@ src_install() {
 			newins image/WiresharkDoc-${s}.png application-vnd.tcpdump.pcap.png
 		done
 	fi
-
-	prune_libtool_files
 }
 
 pkg_postinst() {
