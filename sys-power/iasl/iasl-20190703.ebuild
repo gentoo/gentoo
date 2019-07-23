@@ -1,13 +1,13 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit toolchain-funcs flag-o-matic eutils
+inherit toolchain-funcs flag-o-matic
 
 MY_PN=acpica-unix
-MY_P=${MY_PN}-${PV}
-MY_TESTS_P=${MY_PN/ca/tests}-${PV}
+MY_P="${MY_PN}-${PV}"
+MY_TESTS_P="${MY_PN/ca/tests}-${PV}"
 DESCRIPTION="Intel ACPI Source Language (ASL) compiler"
 HOMEPAGE="https://www.acpica.org/downloads/"
 SRC_URI="http://www.acpica.org/sites/acpica/files/${MY_P}.tar.gz
@@ -15,14 +15,14 @@ SRC_URI="http://www.acpica.org/sites/acpica/files/${MY_P}.tar.gz
 
 LICENSE="iASL"
 SLOT="0"
-KEYWORDS="amd64 ppc x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="~amd64 ~arm64 ~ppc ~x86 ~amd64-fbsd ~x86-fbsd"
 IUSE="test"
 
 DEPEND="sys-devel/bison
 	sys-devel/flex"
 RDEPEND=""
 
-S=${WORKDIR}/${MY_P}
+S="${WORKDIR}/${MY_P}"
 
 pkg_setup() {
 	if use test && has test ${FEATURES}; then
@@ -66,14 +66,14 @@ src_compile() {
 
 src_test() {
 	aslts_test
-	#aapits_test
 	#The aapits test currently fails, missing include probably.
+	#aapits_test
 }
 
 src_install() {
 	cd generate/unix || die
 	emake install DESTDIR="${D}" BITS=${BITS}
-	default_src_install
+	default
 	#local bin
 	#for bin in $(<"${T}"/binlist) ; do
 	#	dobin "${T}"/${bin}
@@ -99,6 +99,7 @@ src_install() {
 
 aslts_test() {
 	export	ASL="${S}"/generate/unix/bin/iasl \
+		acpibin="${S}"/generate/unix/bin/acpibin \
 		acpiexec="${S}"/generate/unix/bin/acpiexec \
 		ASLTSDIR="${WORKDIR}/${MY_TESTS_P}"/tests/aslts
 	export	PATH="${PATH}:${ASLTSDIR}/bin"

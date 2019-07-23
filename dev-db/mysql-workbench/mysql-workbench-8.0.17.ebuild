@@ -44,7 +44,7 @@ CDEPEND="${PYTHON_DEPS}
 		>=dev-libs/libxml2-2.6.2:2
 		dev-libs/libzip
 		dev-libs/libpcre[cxx]
-		>=sci-libs/gdal-1.11.1-r1[-mdb]
+		>=sci-libs/gdal-1.11.1-r1
 		virtual/opengl
 		|| ( sys-libs/e2fsprogs-libs dev-libs/ossp-uuid )
 		dev-libs/tinyxml[stl]
