@@ -14,6 +14,7 @@
 		<flag name="geoip2">Add support for geo lookup based on IPs via <pkg>dev-libs/libmaxminddb</pkg></flag>
 		<flag name="http">Enable support for HTTP destinations</flag>
 		<flag name="json">Enable support for JSON template formatting via <pkg>dev-libs/json-c</pkg></flag>
+		<flag name="kafka">Enable support for Kafka destinations</flag>
 		<flag name="mongodb">Enable support for mongodb destinations</flag>
 		<flag name="pacct">Enable support for reading Process Accounting files (EXPERIMENTAL, Linux only)</flag>
 		<flag name="redis">Enable support for Redis destinations</flag>

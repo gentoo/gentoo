@@ -46,7 +46,7 @@ sys-devel/llvm gold
 
 # Tomáš Mózes <hydrapolic@gmail.com> (2018-06-05)
 # Unkeyworded dependencies.
-app-admin/syslog-ng mongodb
+app-admin/syslog-ng kafka mongodb
 
 # Anthony G. Basile <blueness@gentoo.org> (2018-04-14)
 # net-vpn/tor, tests are broken on ppc/ppc64, bug #653098
