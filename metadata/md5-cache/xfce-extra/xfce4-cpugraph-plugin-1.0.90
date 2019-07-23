@@ -3,10 +3,10 @@ DEPEND=>=x11-libs/gtk+-3.22:3 >=xfce-base/libxfce4ui-4.12:= >=xfce-base/xfce4-pa
 DESCRIPTION=A system load plug-in for the Xfce panel
 EAPI=7
 HOMEPAGE=https://goodies.xfce.org/projects/panel-plugins/xfce4-cpugraph-plugin
-KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux
 LICENSE=BSD-2 GPL-2+
 RDEPEND=>=x11-libs/gtk+-3.22:3 >=xfce-base/libxfce4ui-4.12:= >=xfce-base/xfce4-panel-4.12:=
 SLOT=0
 SRC_URI=https://archive.xfce.org/src/panel-plugins/xfce4-cpugraph-plugin/1.0/xfce4-cpugraph-plugin-1.0.90.tar.bz2
 _eclasses_=xdg-utils	14d00d009167652b1fa363e55effe213
-_md5_=b9439ba647b5f5ad3e21fc033c0109aa
+_md5_=e16cff66a0498d9b5abb029c866cc5a3

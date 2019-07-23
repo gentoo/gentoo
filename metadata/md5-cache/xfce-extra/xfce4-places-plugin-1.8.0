@@ -4,9 +4,9 @@ DESCRIPTION=A panel plug-in to provide quick access to files, folders and remova
 EAPI=7
 HOMEPAGE=https://goodies.xfce.org/projects/panel-plugins/xfce4-places-plugin
 IUSE=libnotify
-KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux
 LICENSE=GPL-2+
 RDEPEND=>=dev-libs/glib-2.42:2 >=x11-libs/gtk+-3.22:3 x11-libs/libX11:= >=xfce-base/exo-0.6:= >=xfce-base/libxfce4ui-4.12:= >=xfce-base/libxfce4util-4.12:= >=xfce-base/xfce4-panel-4.12:= >=xfce-base/xfconf-4.8:= libnotify? ( >=x11-libs/libnotify-0.7:= )
 SLOT=0
 SRC_URI=https://archive.xfce.org/src/panel-plugins/xfce4-places-plugin/1.8/xfce4-places-plugin-1.8.0.tar.bz2
-_md5_=f85cc1f5b6d3fc33eb2d9974f58ce4c3
+_md5_=c41262e507821a5edd66d2cd5db88bd9
