@@ -1823,6 +1823,7 @@ dev-cpp/lucene++ 3.0.7-r1: C++ port of Lucene library, a high-performance, full-
 dev-cpp/mm-common 0.9.12: Build infrastructure and utilities for GNOME C++ bindings
 dev-cpp/ms-gsl 2.0.0: Guideline Support Library implementation by Microsoft
 dev-cpp/muParser 2.2.5 2.2.6.1: Library for parsing mathematical expressions
+dev-cpp/nlohmann_json 3.6.1-r1: JSON for Modern C++
 dev-cpp/pangomm 2.42.0: C++ interface for pango
 dev-cpp/pngpp 0.2.9: A simple but powerful C++ interface to libpng
 dev-cpp/rttr 0.9.6: Run Time Type Reflection - library adding reflection to C++
@@ -3149,7 +3150,7 @@ dev-libs/mm 1.4.2-r2: Shared Memory Abstraction Library
 dev-libs/mongo-c-driver 0.7.1-r1 0.8.1-r1 1.8.2 1.13.0-r1: Client library written in C for MongoDB
 dev-libs/mpc 1.0.3: A library for multiprecision complex arithmetic with exact rounding
 dev-libs/mpfr 3.1.3_p4 3.1.6: library for multiple-precision floating-point computations with exact rounding
-dev-libs/mxml 2.12: A small XML parsing library that you can use to read XML data files or strings
+dev-libs/mxml 2.12 3.0: A small XML parsing library that you can use to read XML data files or strings
 dev-libs/nettle 3.4.1: Low-level cryptographic library
 dev-libs/newt 0.52.20: Redhat's Newt windowing toolkit development files
 dev-libs/nmeap 0.3-r1: Extensible NMEA-0183 (GPS) data parser in standard C
@@ -5379,7 +5380,7 @@ dev-python/pytest-virtualenv 1.2.11: Virtualenv fixture for py.test
 dev-python/pytest-xdist 1.23.2: Distributed testing and loop-on-failing modes
 dev-python/pytest-xprocess 0.12.1: Manage external processes across test runs
 dev-python/python-augeas 0.5.0: Python bindings for Augeas
-dev-python/python-axolotl 0.1.42-r1: A python module for the axolotl protocol
+dev-python/python-axolotl 0.1.42-r1 0.2.3: A python module for the axolotl protocol
 dev-python/python-axolotl-curve25519 0.4.1_p2-r1: A python wrapper for the curve25519 library with ed25519 signatures
 dev-python/python-backoff 1.6.0: Function decoration for backoff and retry
 dev-python/python-barbicanclient 4.5.2 4.6.0 4.8.1: Client library for Barbican API.
@@ -8220,7 +8221,7 @@ media-video/matroxset 0.4: Matrox utility to switch output modes (activate tvout
 media-video/mediainfo 19.04: MediaInfo supplies technical and tag information about media files
 media-video/minitube 2.5.2-r1: Qt5 YouTube Client
 media-video/mjpegtools 2.1.0-r4: Tools for MJPEG video
-media-video/mkvtoolnix 29.0.0: Tools to create, alter, and inspect Matroska files
+media-video/mkvtoolnix 29.0.0 35.0.0: Tools to create, alter, and inspect Matroska files
 media-video/motion 4.1.1-r1: A software motion detector
 media-video/movit 1.2.0: Modern Video Toolkit
 media-video/mpeg-tools 1.5b-r4 1.5b-r5: Tools for MPEG video
@@ -10157,7 +10158,7 @@ sys-power/apcupsd 3.14.13 3.14.14-r2: APC UPS daemon with integrated tcp/ip remo
 sys-power/bbswitch 0.8-r2: Toggle discrete NVIDIA Optimus graphics card
 sys-power/cpupower 3.18 4.9.0-r1 4.13.0: Shows and sets processor power related values
 sys-power/hibernate-script 2.0-r6: Hibernate script supporting multiple suspend methods
-sys-power/iasl 20160729 20180810: Intel ACPI Source Language (ASL) compiler
+sys-power/iasl 20180810: Intel ACPI Source Language (ASL) compiler
 sys-power/ncpufreqd 2.4: Daemon controlling CPU speed and temperature
 sys-power/nut 2.7.4-r1 2.7.4-r3: Network-UPS Tools
 sys-power/nvclock 0.8_p20110102-r2: NVIDIA Overclocking Utility
