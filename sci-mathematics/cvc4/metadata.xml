@@ -7,6 +7,9 @@
 	</maintainer>
 	<use>
 		<flag name="cln">Use sci-libs/cln</flag>
+		<flag name="statistics">Include statistics</flag>
+		<flag name="replay">Turn on the replay feature</flag>
+		<flag name="proofs">Support for proof generation</flag>
 	</use>
 	<longdescription lang="en">
 		CVC4 is an efficient open-source automatic theorem prover for
