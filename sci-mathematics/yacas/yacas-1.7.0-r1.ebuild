@@ -3,13 +3,14 @@
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake-utils desktop
 
 DESCRIPTION="General purpose computer algebra system"
 HOMEPAGE="http://www.yacas.org/"
-SRC_URI="https://codeload.github.com/grzegorzmazur/${PN}/tar.gz/v${PV} -> ${P}.tar.gz"
+SRC_URI="https://codeload.github.com/grzegorzmazur/${PN}/tar.gz/v${PV} -> ${P}.tar.gz
+gui? ( https://dev.gentoo.org/~asturm/distfiles/${PN}-bundled-${PV}.tar.xz )"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2 gui? ( MIT Apache-2.0 OFL-1.1 )"
 SLOT="0/1"
 KEYWORDS="~amd64 ~x86"
 IUSE="gui +jupyter static-libs test"
@@ -38,7 +39,11 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
-PATCHES=( "${FILESDIR}/${P}-gnuinstalldirs.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-gnuinstalldirs.patch"
+	"${FILESDIR}/${P}-desktop.patch"
+	"${FILESDIR}/${P}-use-bundled-not-external.patch" # bug 690534
+)
 
 src_configure() {
 	local mycmakeargs=(

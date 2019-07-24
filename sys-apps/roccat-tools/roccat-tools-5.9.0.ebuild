@@ -42,6 +42,8 @@ IUSE_INPUT_DEVICES=(
 
 IUSE="${IUSE_INPUT_DEVICES[@]}"
 
+LUA_DEPEND="|| ( dev-lang/lua:5.1 dev-lang/lua:0 )"
+
 RDEPEND="
 	dev-libs/dbus-glib
 	dev-libs/glib:2
@@ -52,9 +54,9 @@ RDEPEND="
 	x11-libs/libX11
 	virtual/libgudev:=
 	virtual/libusb:1
-	input_devices_roccat_ryosmk? ( || ( dev-lang/lua:5.1 dev-lang/lua:0 ) )
-	input_devices_roccat_ryosmkfx? ( || ( dev-lang/lua:5.1 dev-lang/lua:0 ) )
-	input_devices_roccat_ryostkl? ( || ( dev-lang/lua:5.1 dev-lang/lua:0 ) )
+	input_devices_roccat_ryosmk? ( ${LUA_DEPEND} )
+	input_devices_roccat_ryosmkfx? ( ${LUA_DEPEND} )
+	input_devices_roccat_ryostkl? ( ${LUA_DEPEND} )
 "
 
 DEPEND="
@@ -82,6 +84,20 @@ src_configure() {
 		-DDEVICES="${USED_MODELS/;/}"
 		-DUDEVDIR="${EPREFIX}$(get_udevdir)/rules.d"
 	)
+
+	local lua_use=(
+		input_devices_roccat_ryosmk
+		input_devices_roccat_ryosmkfx
+		input_devices_roccat_ryostkl
+	)
+	local luse
+	for luse in ${lua_use[@]} ; do
+		if use ${luse} ; then
+			mycmakeargs+=( -DWITH_LUA="5.1" )
+			break
+		fi
+	done
+
 	cmake-utils_src_configure
 }
 

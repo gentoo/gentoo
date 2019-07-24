@@ -57,7 +57,7 @@ COMMON_DEPEND="
 	sasl? ( dev-libs/cyrus-sasl )"
 RDEPEND="${COMMON_DEPEND}
 	apache2? ( www-servers/apache[apache2_modules_dav] )
-	java? ( >=virtual/jre-1.5 )
+	java? ( >=virtual/jre-1.8 )
 	nls? ( virtual/libintl )
 	perl? ( dev-perl/URI )"
 # Note: ctypesgen doesn't need PYTHON_USEDEP, it's used once
@@ -67,7 +67,7 @@ DEPEND="${COMMON_DEPEND}
 	doc? ( app-doc/doxygen )
 	gnome-keyring? ( virtual/pkgconfig )
 	http? ( virtual/pkgconfig )
-	java? ( >=virtual/jdk-1.5 )
+	java? ( >=virtual/jdk-1.8 )
 	kwallet? (
 		kde-frameworks/kdelibs4support:5
 		virtual/pkgconfig

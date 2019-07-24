@@ -19,7 +19,12 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="chrome chromium firefox vivaldi"
-REQUIRED_USE="|| ( chrome chromium firefox vivaldi )"
+REQUIRED_USE="
+	${PYTHON_REQUIRED_USE}
+	|| ( chrome chromium firefox vivaldi )
+"
+
+RDEPEND="${PYTHON_DEPS}"
 
 S="${WORKDIR}"
 

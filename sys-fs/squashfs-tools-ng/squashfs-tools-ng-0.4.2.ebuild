@@ -3,13 +3,11 @@
 
 EAPI=7
 
-EGIT_REPO_URI="https://github.com/AgentD/${PN}.git"
-[[ ${PV} == 9999* ]] && inherit autotools git-r3
-
 DESCRIPTION="A new set of tools for working with SquashFS images"
 HOMEPAGE="https://github.com/AgentD/squashfs-tools-ng"
 if [[ ${PV} = 9999* ]]; then
-	SRC_URI=""
+	inherit autotools git-r3
+	EGIT_REPO_URI="https://github.com/AgentD/${PN}.git"
 else
 	KEYWORDS="~alpha ~amd64 ~ia64 ~ppc64"
 	SRC_URI="https://infraroot.at/pub/squashfs/${P}.tar.xz"
@@ -29,11 +27,6 @@ DEPEND="
 	zstd?    ( app-arch/zstd:= )
 "
 RDEPEND="${DEPEND}"
-
-src_unpack() {
-	default
-	[[ $PV = 9999* ]] && git-r3_src_unpack
-}
 
 src_prepare() {
 	default
