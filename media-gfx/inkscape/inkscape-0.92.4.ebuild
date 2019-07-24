@@ -102,8 +102,6 @@ PATCHES=(
 
 S="${WORKDIR}/${MY_P}"
 
-MAKEOPTS+=" -j1" # bug 686304, fix it if you don't like it
-
 RESTRICT="test"
 
 pkg_pretend() {
@@ -150,6 +148,7 @@ src_configure() {
 }
 
 src_compile() {
+	emake -C src helper/sp-marshal.h #686304
 	emake AR="$(tc-getAR)"
 }
 
