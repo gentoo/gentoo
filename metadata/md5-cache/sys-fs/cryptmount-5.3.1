@@ -5,11 +5,11 @@ DESCRIPTION=A utility for management and user-mode mounting of encrypted filesys
 EAPI=7
 HOMEPAGE=http://cryptmount.sourceforge.net/
 IUSE=argv0switch cswap fsck +gcrypt +largefile mount +nls +luks +openssl selinux systemd udev kernel_linux
-KEYWORDS=~amd64 ~x86
+KEYWORDS=~amd64 x86
 LICENSE=GPL-2+
 RDEPEND=gcrypt? ( dev-libs/libgcrypt:0= ) nls? ( sys-devel/gettext ) luks? ( sys-fs/cryptsetup ) openssl? ( dev-libs/openssl:0= ) systemd? ( sys-apps/systemd ) udev? ( virtual/udev ) virtual/libiconv virtual/libintl
 REQUIRED_USE=luks? ( gcrypt ) openssl? ( gcrypt )
 SLOT=0
 SRC_URI=mirror://sourceforge/cryptmount/cryptmount-5.3.1.tar.gz
 _eclasses_=linux-info	953c3b1c472dcadbf62098a9301327f2	multilib	1d91b03d42ab6308b5f4f6b598ed110e	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
-_md5_=478602c395d9695367258215fa765a6f
+_md5_=d38debf3b2ed46b28f918e02280e002f
