@@ -1,0 +1,34 @@
+From 2f427b0d3654509f180d8c717dfbb590b907fff5 Mon Sep 17 00:00:00 2001
+From: Sebastian Pipping <sebastian@pipping.org>
+Date: Wed, 24 Jul 2019 16:41:57 +0200
+Subject: [PATCH] checksec: Fix usage
+
+---
+ checksec | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/checksec b/checksec
+index fd83b0b..00a602f 100755
+--- a/checksec
++++ b/checksec
+@@ -232,7 +232,7 @@ version() {
+ 
+ # help
+ help() {
+-  echo "Usage: checksec [--output {cli|csv|xml|json}] [OPTION]"
++  echo "Usage: checksec [--format={cli|csv|xml|json}] [OPTION]"
+   echo
+   echo
+   echo "Options:"
+@@ -255,7 +255,7 @@ help() {
+   echo " ## Modifiers"
+   echo "  --debug"
+   echo "  --verbose"
+-  echo "  --format=[cli|csv|xml|json]"
++  echo "  --format={cli|csv|xml|json}"
+   echo
+   echo "For more information, see:"
+   echo "  http://github.com/slimm609/checksec.sh"
+-- 
+2.21.0
+
