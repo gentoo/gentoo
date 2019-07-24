@@ -1,0 +1,11 @@
+--- a/manpages/man1/jt65code.1.txt	2019-07-23 19:27:07.690602674 +0200
++++ b/manpages/man1/jt65code.1.txt	2019-07-23 19:27:22.098060819 +0200
+@@ -31,7 +31,7 @@
+ 
+ *jt65code*, *jt9code* and *jt4code* are utility programs that let you
+ explore the conversion of user-level messages into channel symbols or
+-“tone numbers.”  These programs can be useful to someone designing a
++"tone numbers."  These programs can be useful to someone designing a
+ beacon generator for JT9 or JT65, or for studying behavior of the
+ error-control codes for each of the protocols.
+ 
