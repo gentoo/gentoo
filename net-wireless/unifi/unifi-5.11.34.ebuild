@@ -3,18 +3,18 @@
 
 EAPI=6
 
-# Used when it's an unstable, beta or release candidate
-#RC_SUFFIX=""
+# Set this var for any releases except stable
+RC_SUFFIX="-2def560057"
 
 inherit systemd user
 
 DESCRIPTION="A Management Controller for Ubiquiti Networks UniFi APs"
 HOMEPAGE="https://www.ubnt.com"
-SRC_URI="https://dl.ubnt.com/unifi/${PV}${RC_SUFFIX}/UniFi.unix.zip -> ${P}.zip"
+SRC_URI="https://dl.ui.com/unifi/${PV}${RC_SUFFIX}/UniFi.unix.zip -> ${P}.zip"
 
-KEYWORDS="amd64"
+KEYWORDS="~amd64"
 LICENSE="Apache-1.0 Apache-2.0 BSD-1 BSD-2 BSD CDDL EPL-1.0 GPL-2 LGPL-2.1 LGPL-3 MIT ubiquiti"
-SLOT="0/5.10"
+SLOT="0/5.11"
 IUSE="systemd"
 
 RDEPEND="dev-db/mongodb
