@@ -102,6 +102,8 @@ PATCHES=(
 
 S="${WORKDIR}/${MY_P}"
 
+MAKEOPTS+=" -j1" # bug 686304, fix it if you don't like it
+
 RESTRICT="test"
 
 pkg_pretend() {
