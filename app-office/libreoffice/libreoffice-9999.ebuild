@@ -109,7 +109,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	>=app-text/libwps-0.4
 	app-text/mythes
 	>=dev-cpp/clucene-2.3.3.4-r2
-	=dev-cpp/libcmis-0.5*
+	>=dev-cpp/libcmis-0.5.2
 	dev-db/unixODBC
 	dev-lang/perl
 	dev-libs/boost:=[nls]
