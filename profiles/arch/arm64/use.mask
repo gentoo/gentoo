@@ -181,7 +181,3 @@ video_cards_radeonsi
 # Bug #184563, (2007-09-18)
 # Robin H. Johnson <robbat2@gentoo.org>
 audit
-
-# Alexandre Rostovtsev <tetromino@gentoo.org> (2012-12-31)
-# media-libs/xine-lib is not keyworded
-xine
