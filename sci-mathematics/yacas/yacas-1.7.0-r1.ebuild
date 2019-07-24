@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake-utils desktop
 
 DESCRIPTION="General purpose computer algebra system"
 HOMEPAGE="http://www.yacas.org/"
@@ -41,6 +41,7 @@ RDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${FILESDIR}/${P}-gnuinstalldirs.patch"
+	"${FILESDIR}/${P}-desktop.patch"
 	"${FILESDIR}/${P}-use-bundled-not-external.patch" # bug 690534
 )
 
