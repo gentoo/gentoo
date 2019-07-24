@@ -440,7 +440,7 @@ src_configure() {
 		$(use_enable gstreamer gstreamer-1-0)
 		$(use_enable gtk gtk3)
 		$(use_enable gtk2 gtk)
-		$(use_enable kde kf5)
+		$(use_enable kde kde5)
 		$(use_enable kde qt5)
 		$(use_enable ldap)
 		$(use_enable odk)
