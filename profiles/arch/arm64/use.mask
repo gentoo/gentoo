@@ -43,10 +43,6 @@ python_single_target_python3_7
 # No OpenCL provider is available on arm64.
 opencl
 
-# Brian Evans <grknight@gentoo.org> (2018-03-02)
-# dev-db/qdbm is net yet keyworded
-qdbm
-
 # Mart Raudsepp <leio@gentoo.org> (2018-02-13)
 # net-libs/libsmi not tested on arm64 yet
 smi
