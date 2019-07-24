@@ -9,7 +9,7 @@ if [[ ${PV} = 9999* ]]; then
 	inherit autotools git-r3
 	EGIT_REPO_URI="https://github.com/AgentD/${PN}.git"
 else
-	KEYWORDS="~alpha ~amd64 ~ia64 ~mips ~ppc ~ppc64 ~s390 ~x86"
+	KEYWORDS="~alpha ~amd64 ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~s390 ~x86"
 	SRC_URI="https://infraroot.at/pub/squashfs/${P}.tar.xz"
 fi
 
