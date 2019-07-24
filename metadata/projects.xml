@@ -199,7 +199,7 @@
     <member>
       <email>mattst88@gentoo.org</email>
       <name>Matt Turner</name>
-      <role>Member ( Porting )</role>
+      <role>Member</role>
     </member>
     <member>
       <email>zlogene@gentoo.org</email>
@@ -1580,7 +1580,7 @@
     <member>
       <email>mattst88@gentoo.org</email>
       <name>Matt Turner</name>
-      <role>Member ( Gentoo/IA-64 )</role>
+      <role>Member</role>
     </member>
     <member>
       <email>slyfox@gentoo.org</email>
@@ -2653,7 +2653,7 @@
     <member>
       <email>mattst88@gentoo.org</email>
       <name>Matt Turner</name>
-      <role>ppc/ppc64 keywording/stabilization</role>
+      <role>Member</role>
     </member>
     <member>
       <email>slyfox@gentoo.org</email>
@@ -3257,6 +3257,11 @@
       <role>Member ( Gentoo/s390 )</role>
     </member>
     <member>
+      <email>mattst88@gentoo.org</email>
+      <name>Matt Turner</name>
+      <role>Member</role>
+    </member>
+    <member>
       <email>pinkbyte@gentoo.org</email>
       <name>Sergey Popov</name>
       <role>Member ( Gentoo/s390 )</role>
@@ -3301,7 +3306,7 @@
     <member>
       <email>mattst88@gentoo.org</email>
       <name>Matt Turner</name>
-      <role>Member ( Gentoo/SPARC )</role>
+      <role>Member</role>
     </member>
     <member>
       <email>slyfox@gentoo.org</email>
