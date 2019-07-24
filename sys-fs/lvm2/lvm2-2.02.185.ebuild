@@ -188,6 +188,9 @@ src_configure() {
 		--with-systemdsystemunitdir="$(systemd_get_systemunitdir)"
 		CLDFLAGS="${LDFLAGS}"
 	)
+	# Hard-wire this to bash as some shells (dash) don't know
+	# "-o pipefail" #682404
+	CONFIG_SHELL="/bin/bash" \
 	econf "${myeconfargs[@]}"
 }
 
