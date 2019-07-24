@@ -21,6 +21,7 @@ RDEPEND="app-text/hunspell:=
 	app-text/poppler[qt5]
 	dev-qt/designer:5
 	dev-qt/qtcore:5
+	dev-qt/qtconcurrent:5
 	dev-qt/qtdbus:5
 	dev-qt/qtgui:5
 	dev-qt/qtscript:5[scripttools]
