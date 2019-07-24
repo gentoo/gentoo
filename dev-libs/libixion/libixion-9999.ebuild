@@ -32,8 +32,6 @@ DEPEND="${RDEPEND}
 	dev-libs/spdlog
 "
 
-PATCHES=( "${FILESDIR}"/${P}-spdlog-non-bundled-fmt.patch )
-
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
 }
