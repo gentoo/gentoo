@@ -3,9 +3,9 @@ DEPEND=>=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >
 DESCRIPTION=Default MyPaint brushes
 EAPI=6
 HOMEPAGE=https://github.com/Jehan/mypaint-brushes
-KEYWORDS=amd64 x86
+KEYWORDS=amd64 arm64 x86
 LICENSE=CC0-1.0
 SLOT=1.0
 SRC_URI=https://github.com/Jehan/mypaint-brushes/archive/v1.3.0.tar.gz -> mypaint-brushes-1.3.0.tar.gz
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
-_md5_=14813ae0c1565bdb4ea1761c50f38569
+_md5_=c46baa8e478dfc5da16608e09a349eff
