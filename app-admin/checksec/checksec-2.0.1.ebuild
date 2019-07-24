@@ -19,7 +19,6 @@ DOCS=( ChangeLog README.md )
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.7.2-path.patch
-	"${FILESDIR}"/${P}-usage.patch
 )
 
 src_prepare() {
