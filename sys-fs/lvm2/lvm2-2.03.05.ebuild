@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 inherit autotools linux-info multilib systemd toolchain-funcs udev flag-o-matic usr-ldscript
 
 DESCRIPTION="User-land utilities for LVM2 (device-mapper) software"
@@ -38,35 +38,38 @@ RDEPEND="${DEPEND_COMMON}
 # note: thin- 0.3.0 is required to avoid --disable-thin_check_needs_check
 # USE 'static' currently only works with eudev, bug 520450
 DEPEND="${DEPEND_COMMON}
-	virtual/pkgconfig
 	>=sys-devel/binutils-2.20.1-r1
-	sys-devel/autoconf-archive
 	static? (
 		selinux? ( sys-libs/libselinux[static-libs] )
 		udev? ( >=sys-fs/eudev-3.1.2[static-libs] )
 		>=sys-apps/util-linux-2.16[static-libs]
 	)"
+BDEPEND="
+	sys-devel/autoconf-archive
+	virtual/pkgconfig
+"
 
-S=${WORKDIR}/${PN/lvm/LVM}.${PV}
+S="${WORKDIR}/${PN/lvm/LVM}.${PV}"
 
 PATCHES=(
 	# Gentoo specific modification(s):
-	"${FILESDIR}"/${PN}-2.02.178-example.conf.in.patch
+	"${FILESDIR}"/${PN}-2.03.05-example.conf.in.patch
 
 	# For upstream -- review and forward:
-	"${FILESDIR}"/${PN}-2.02.63-always-make-static-libdm.patch
+	#"${FILESDIR}"/${PN}-2.02.63-always-make-static-libdm.patch # FIXME: breaks libdm/dm-tools build
 	"${FILESDIR}"/${PN}-2.02.56-lvm2create_initrd.patch
 	"${FILESDIR}"/${PN}-2.02.67-createinitrd.patch #301331
 	"${FILESDIR}"/${PN}-2.02.99-locale-muck.patch #330373
-	"${FILESDIR}"/${PN}-2.02.178-asneeded.patch # -Wl,--as-needed
-	"${FILESDIR}"/${PN}-2.02.178-dynamic-static-ldflags.patch #332905
+	#"${FILESDIR}"/${PN}-2.02.178-asneeded.patch # -Wl,--as-needed
+	"${FILESDIR}"/${PN}-2.03.05-dynamic-static-ldflags.patch #332905
 	"${FILESDIR}"/${PN}-2.02.178-static-pkgconfig-libs.patch #370217, #439414 + blkid
-	"${FILESDIR}"/${PN}-2.02.176-pthread-pkgconfig.patch #492450
+	"${FILESDIR}"/${PN}-2.03.05-pthread-pkgconfig.patch #492450
 	"${FILESDIR}"/${PN}-2.02.171-static-libm.patch #617756
 	"${FILESDIR}"/${PN}-2.02.166-HPPA-no-O_DIRECT.patch #657446
 	#"${FILESDIR}"/${PN}-2.02.145-mkdev.patch #580062 # Merged upstream
-	"${FILESDIR}"/${PN}-2.02.184-dmeventd-no-idle-exit.patch
+	"${FILESDIR}"/${PN}-2.03.05-dmeventd-no-idle-exit.patch
 	#"${FILESDIR}"/${PN}-2.02.184-allow-reading-metadata-with-invalid-creation_time.patch #682380 # merged upstream
+	"${FILESDIR}"/${PN}-2.02.184-mksh_build.patch #686652
 )
 
 pkg_setup() {
@@ -76,7 +79,7 @@ pkg_setup() {
 		local WARNING_SYSVIPC="CONFIG_SYSVIPC:\tis not set (required for udev sync)\n"
 		if linux_config_exists; then
 			local uevent_helper_path=$(linux_chkconfig_string UEVENT_HELPER_PATH)
-			if [ -n "${uevent_helper_path}" ] && [ "${uevent_helper_path}" != '""' ]; then
+			if [[ -n "${uevent_helper_path}" ]] && [[ "${uevent_helper_path}" != '""' ]]; then
 				ewarn "It's recommended to set an empty value to the following kernel config option:"
 				ewarn "CONFIG_UEVENT_HELPER_PATH=${uevent_helper_path}"
 			fi
@@ -103,13 +106,6 @@ src_prepare() {
 
 	sed -i -e '/FLAG/s:-O2::' configure{.ac,} || die #480212
 
-	if use udev && ! use device-mapper-only; then
-		sed -i -e '/use_lvmetad =/s:0:1:' conf/example.conf.in || die #514196
-		elog "Notice that \"use_lvmetad\" setting is enabled with USE=\"udev\" in"
-		elog "/etc/lvm/lvm.conf, which will require restart of udev, lvm, and lvmetad"
-		elog "if it was previously disabled."
-	fi
-
 	sed -i -e "s:/usr/bin/true:$(type -P true):" scripts/blk_availability_systemd_red_hat.service.in || die #517514
 
 	# Without thin-privision-tools, there is nothing to install for target install_man7:
@@ -131,9 +127,7 @@ src_configure() {
 		$(use_enable !device-mapper-only dmfilemapd)
 		$(use_enable !device-mapper-only dmeventd)
 		$(use_enable !device-mapper-only cmdlib)
-		$(use_enable !device-mapper-only applib)
 		$(use_enable !device-mapper-only fsadm)
-		$(use_enable !device-mapper-only lvmetad)
 		$(use_enable !device-mapper-only lvmpolld)
 		$(usex device-mapper-only --disable-udev-systemd-background-jobs '')
 
@@ -160,8 +154,6 @@ src_configure() {
 		myeconfargs+=( --with-thin=none --with-cache=none )
 	fi
 
-	myeconfargs+=( --with-clvmd=none --with-cluster=none )
-
 	myeconfargs+=(
 		$(use_enable readline)
 		$(use_enable selinux)
@@ -178,7 +170,7 @@ src_configure() {
 		--with-default-pid-dir=/run
 		$(use_enable udev udev_rules)
 		$(use_enable udev udev_sync)
-		$(use_with udev udevdir "$(get_udevdir)"/rules.d)
+		$(use_with udev udevdir "${EPREFIX}$(get_udevdir)"/rules.d)
 		$(use_enable sanlock lvmlockd-sanlock)
 		$(use_enable systemd udev-systemd-background-jobs)
 		$(use_enable systemd notify-dbus)
@@ -190,14 +182,14 @@ src_configure() {
 
 src_compile() {
 	pushd include >/dev/null
-	emake
+	emake V=1
 	popd >/dev/null
 
 	if use device-mapper-only ; then
-		emake device-mapper
+		emake V=1 device-mapper
 	else
-		emake
-		emake CC="$(tc-getCC)" -C scripts lvm2_activation_generator_systemd_red_hat
+		emake V=1
+		emake V=1 CC="$(tc-getCC)" -C scripts lvm2_activation_generator_systemd_red_hat
 	fi
 }
 
@@ -208,7 +200,7 @@ src_install() {
 	use systemd && INSTALL_TARGETS+=( install_systemd_units install_systemd_generators )
 	use device-mapper-only && INSTALL_TARGETS=( install_device-mapper )
 	for inst in ${INSTALL_TARGETS[@]}; do
-		emake DESTDIR="${D}" ${inst}
+		emake V=1 DESTDIR="${D}" ${inst}
 	done
 
 	newinitd "${FILESDIR}"/device-mapper.rc-2.02.105-r2 device-mapper
@@ -216,7 +208,7 @@ src_install() {
 
 	if use !device-mapper-only ; then
 		newinitd "${FILESDIR}"/dmeventd.initd-2.02.184-r2 dmeventd
-		newinitd "${FILESDIR}"/lvm.rc-2.02.184-r3 lvm
+		newinitd "${FILESDIR}"/lvm.rc-2.03.05 lvm
 		newconfd "${FILESDIR}"/lvm.confd-2.02.184-r3 lvm
 		if ! use udev ; then
 			# We keep the variable but remove udev from it.
@@ -226,7 +218,6 @@ src_install() {
 		fi
 
 		newinitd "${FILESDIR}"/lvm-monitoring.initd-2.02.105-r2 lvm-monitoring
-		newinitd "${FILESDIR}"/lvmetad.initd-2.02.116-r3 lvmetad
 		newinitd "${FILESDIR}"/lvmpolld.initd-2.02.183 lvmpolld
 	fi
 
@@ -241,7 +232,7 @@ src_install() {
 		dolib.a daemons/dmeventd/libdevmapper-event.a
 		#gen_usr_ldscript libdevmapper-event.so
 	else
-		rm -f "${ED%/}"/usr/$(get_libdir)/{libdevmapper-event,liblvm2cmd,liblvm2app,libdevmapper}.a
+		rm -f "${ED}"/usr/$(get_libdir)/{libdevmapper-event,liblvm2cmd,liblvm2app,libdevmapper}.a
 	fi
 
 	if use lvm2create_initrd; then
@@ -259,9 +250,6 @@ src_install() {
 pkg_postinst() {
 	ewarn "Make sure the \"lvm\" init script is in the runlevels:"
 	ewarn "# rc-update add lvm boot"
-	ewarn
-	ewarn "Make sure to enable lvmetad in /etc/lvm/lvm.conf if you want"
-	ewarn "to enable lvm autoactivation and metadata caching."
 }
 
 src_test() {
