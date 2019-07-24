@@ -4092,7 +4092,6 @@ net-ftp/proftpd:shaper - Enable support for the mod_shaper module
 net-ftp/proftpd:sitemisc - Enable support for the sitemisc module
 net-ftp/proftpd:sodium - Use dev-libs/libsodium for password encryption an key exchange
 net-ftp/proftpd:softquota - Enable support for the quotatab module
-net-ftp/proftpd:trace - Build with trace support. Should not be enabled on production servers
 net-ftp/proftpd:unique_id - Enable support for the mod_unique_id module, every connection gets unique ID.
 net-ftp/proftpd:vroot - Enable support for the virtual root module
 net-ftp/pure-ftpd:anondel - Permit anonymous to delete files

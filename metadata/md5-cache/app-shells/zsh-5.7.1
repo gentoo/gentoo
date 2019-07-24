@@ -1,3 +1,4 @@
+BDEPEND=>=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DEFINED_PHASES=compile configure install postinst prepare test
 DEPEND=sys-apps/groff >=sys-libs/ncurses-5.1:0= static? ( >=sys-libs/ncurses-5.7-r4:0=[static-libs] ) caps? ( sys-libs/libcap ) pcre? ( >=dev-libs/libpcre-3.9 static? ( >=dev-libs/libpcre-3.9[static-libs] ) ) gdbm? ( sys-libs/gdbm:= ) !<sys-apps/baselayout-2.4.1
 DESCRIPTION=UNIX Shell similar to the Korn shell
@@ -10,5 +11,5 @@ PDEPEND=examples? ( app-doc/zsh-lovers )
 RDEPEND=>=sys-libs/ncurses-5.1:0= static? ( >=sys-libs/ncurses-5.7-r4:0=[static-libs] ) caps? ( sys-libs/libcap ) pcre? ( >=dev-libs/libpcre-3.9 static? ( >=dev-libs/libpcre-3.9[static-libs] ) ) gdbm? ( sys-libs/gdbm:= ) !<sys-apps/baselayout-2.4.1
 SLOT=0
 SRC_URI=https://www.zsh.org/pub/zsh-5.7.1.tar.xz https://www.zsh.org/pub/old/zsh-5.7.1.tar.xz mirror://sourceforge/zsh/zsh-5.7.1.tar.xz doc? ( https://www.zsh.org/pub/zsh-5.7.1-doc.tar.xz mirror://sourceforge/zsh/zsh-5.7.1-doc.tar.xz )
-_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	7ba73aee7fe4462b3a745e3645ab92ca	multilib	1d91b03d42ab6308b5f4f6b598ed110e	prefix	e51c7882b7b721e54e684f7eb143cbfe	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
-_md5_=54d84097957ff901cbf18d0579890cb6
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	7ba73aee7fe4462b3a745e3645ab92ca	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	prefix	e51c7882b7b721e54e684f7eb143cbfe	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
+_md5_=4e3fa25800089607b87971e1fa8037ce
