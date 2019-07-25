@@ -42,9 +42,8 @@ CONFIG_CHECK="
 	~BLK_DEV_IO_TRACE"
 
 PATCHES=(
-	"${FILESDIR}/trace-cmd-2.8-makefile.patch"
 	"${FILESDIR}/trace-cmd-2.8-python-pkgconfig-name.patch"
-	"${FILESDIR}/trace-cmd-2.8-soname.patch"
+	"${FILESDIR}/trace-cmd-2.8.3-soname.patch"
 )
 
 pkg_setup() {
@@ -53,6 +52,7 @@ pkg_setup() {
 
 src_configure() {
 	EMAKE_FLAGS=(
+		BUILD_OUTPUT="${WORKDIR}/${P}_build"
 		"prefix=${EPREFIX}/usr"
 		"libdir=${EPREFIX}/usr/$(get_libdir)"
 		"CC=$(tc-getCC)"
@@ -65,7 +65,7 @@ src_configure() {
 
 src_compile() {
 	emake "${EMAKE_FLAGS[@]}" NO_PYTHON=1 \
-		trace-cmd libs
+		trace-cmd
 
 	if use python; then
 		python_copy_sources
@@ -77,7 +77,7 @@ src_compile() {
 
 python_compile() {
 	pushd "${BUILD_DIR}" > /dev/null || die
-	python_is_python3 && eapply "${FILESDIR}/trace-cmd-2.8-python3-warnings.patch"
+	python_is_python3 && eapply "${FILESDIR}/trace-cmd-2.8.3-python3-warnings.patch"
 
 	emake "${EMAKE_FLAGS[@]}" \
 		PYTHON_VERS="${EPYTHON}" \
