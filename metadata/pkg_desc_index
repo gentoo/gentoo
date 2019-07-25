@@ -8549,7 +8549,7 @@ net-irc/hexchat 2.12.4-r2: Graphical IRC client based on XChat
 net-irc/inspircd 2.0.25: Inspire IRCd - The Stable, High-Performance Modular IRCd
 net-irc/ircii 20110228 20111115: An IRC and ICB client that runs under most UNIX platforms
 net-irc/iroffer-dinoex 3.30-r1: IRC fileserver using DCC
-net-irc/irssi 1.1.2 1.2.0-r2 1.2.1: A modular textUI IRC client with IPv6 support
+net-irc/irssi 1.2.1: A modular textUI IRC client with IPv6 support
 net-irc/irssi-otr 1.0.0-r1 1.0.2: Off-The-Record messaging (OTR) for irssi
 net-irc/irssistats 0.75-r1: Generates HTML IRC stats based on irssi logs
 net-irc/konversation 1.7.5: A user friendly IRC Client
