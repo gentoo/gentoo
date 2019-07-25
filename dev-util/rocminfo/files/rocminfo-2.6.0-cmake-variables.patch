@@ -1,0 +1,31 @@
+https://github.com/RadeonOpenCompute/rocminfo/pull/17
+
+From c9bfc4b3db029b8502f900cd9bb545a675ca0898 Mon Sep 17 00:00:00 2001
+From: Craig Andrews <candrews@integralblue.com>
+Date: Thu, 25 Jul 2019 17:59:51 -0400
+Subject: [PATCH] Use CACHE variables, allow overriding
+ ROCR_LIB_DIR/ROCR_INC_DIR
+
+CACHE variables allow for variables to be documented, and ROCR_LIB_DIR/ROCR_INC_DIR should be overridable as they'll have different values on different Linux distributions.
+---
+ CMakeLists.txt | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index b5fa9dd..f8f430f 100755
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -43,9 +43,10 @@ endif()
+ #
+ 
+ # Required Defines first:
+-
+-set(ROCR_INC_DIR ${ROCM_DIR}/include)
+-set(ROCR_LIB_DIR ${ROCM_DIR}/lib)
++set(ROCRTST_BLD_BITS CACHE "64" STRING "Either 32 or 64")
++set(ROCM_DIR CACHE PATH "Root for RocM install")
++set(ROCR_INC_DIR ${ROCM_DIR}/include CACHE PATH "Path for RocM includes")
++set(ROCR_LIB_DIR ${ROCM_DIR}/lib CACHE PATH "Path for RocM libraries")
+ #
+ # Determine ROCR Header files are present
+ #
