@@ -58,6 +58,7 @@ EXPORT_FUNCTIONS src_unpack
 vcs-snapshot_src_unpack() {
 	debug-print-function ${FUNCNAME} "${@}"
 
+	local renamed_any=
 	local f
 
 	for f in ${A}
@@ -82,6 +83,7 @@ vcs-snapshot_src_unpack() {
 					done
 					die "${FUNCNAME}: Invalid directory structure in archive ${f}"
 				fi
+				[[ ${topdirs[0]} != ${f%.tar*} ]] && renamed_any=1
 
 				mkdir "${destdir}" || die
 				# -o (--no-same-owner) to avoid restoring original owner
@@ -97,4 +99,14 @@ vcs-snapshot_src_unpack() {
 				;;
 		esac
 	done
+
+	if [[ ! ${renamed_any} ]]; then
+		local w=eerror
+		[[ ${EAPI} == [0123456] ]] && w=eqawarn
+		"${w}" "${FUNCNAME} did not find any archives that needed renaming."
+		"${w}" "Please verify that its usage is really necessary, and remove"
+		"${w}" "the inherit if it is not."
+
+		[[ ${w} == eerror ]] && die "${FUNCNAME}: Unnecessary usage detected"
+	fi
 }
