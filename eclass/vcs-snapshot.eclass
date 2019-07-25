@@ -7,33 +7,36 @@
 # @SUPPORTED_EAPIS: 0 1 2 3 4 5 6 7
 # @BLURB: support eclass for unpacking VCS snapshot tarballs
 # @DESCRIPTION:
+# THIS ECLASS IS NOT NECESSARY FOR MODERN GITHUB AND GITLAB SNAPSHOTS.
+# THEIR DIRECTORY STRUCTURE IS ENTIRELY PREDICTABLE, SO UPDATE YOUR
+# EBUILD TO USE /ARCHIVE/ URI AND SET S IF NECESSARY.
+#
 # This eclass provides a convenience src_unpack() which does unpack all
 # the tarballs in SRC_URI to locations matching their (local) names,
 # discarding the original parent directory.
 #
-# The typical use case are VCS snapshots, coming from bitbucket
-# and similar services. They have hash appended to the directory name
-# which makes extracting them a painful experience. But if you just use
-# a SRC_URI arrow to rename it (which you're likely have to do anyway),
-# vcs-snapshot will just extract it into a matching directory.
+# The typical use case are VCS tag snapshots coming from BitBucket
+# (but not GitHub or GitLab).  They have hash appended to the directory
+# name which makes extracting them a painful experience.  But if you are
+# using a SRC_URI arrow to rename them (which quite likely you have to
+# do anyway), vcs-snapshot will just extract them into matching
+# directories.
 #
 # Please note that this eclass handles only tarballs (.tar, .tar.gz,
-# .tar.bz2 & .tar.xz). For any other file format (or suffix) it will
-# fall back to regular unpack. Support for additional formats may be
-# added at some point so please keep your SRC_URIs clean.
-#
-# Note: this eclass is no longer needed with the new-style 'archive'
-# GitHub URLs. They have sane directory names and stable contents,
-# so you should really prefer them.
+# .tar.bz2 & .tar.xz).  For any other file format (or suffix) it will
+# fall back to regular unpack.  Support for additional formats may be
+# added in the future if necessary.
 #
 # @EXAMPLE:
 #
 # @CODE
-# EAPI=6
+# EAPI=7
 # inherit vcs-snapshot
 #
-# SRC_URI="https://github.com/example/${PN}/tarball/v${PV} -> ${P}.tar.gz
-# 	https://github.com/example/${PN}-otherstuff/tarball/v${PV} -> ${P}-otherstuff.tar.gz"
+# SRC_URI="
+#    https://bitbucket.org/foo/bar/get/${PV}.tar.bz2 -> ${P}.tar.bz2
+#    https://bitbucket.org/foo/bar-otherstuff/get/${PV}.tar.bz2
+#        -> ${P}-otherstuff.tar.bz2"
 # @CODE
 #
 # and however the tarballs were originally packed, all files will appear
