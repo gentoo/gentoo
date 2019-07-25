@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Brian Evans <grknight@gentoo.org> (2019-07-25)
+# Mask new beta versions until release
+dev-lang/php:7.4
+~virtual/httpd-php-7.4
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-07-24)
 # Unmaintained and broken with current Plasma, removal in 30 days
 # Bugs: https://bugs.kde.org/show_bug.cgi?id=404359,
