@@ -150,7 +150,7 @@ PATCHES=(
 	"${FILESDIR}/chromium-75-unique_ptr.patch"
 	"${FILESDIR}/chromium-75-noexcept.patch"
 	"${FILESDIR}/chromium-75-llvm8.patch"
-	"${FILESDIR}/chromium-75-pure-virtual.patch"
+	"${FILESDIR}/chromium-76-gcc-pure-virtual.patch"
 	"${FILESDIR}/chromium-75-post-task-crash.patch"
 )
 
