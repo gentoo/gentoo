@@ -1,0 +1,307 @@
+Greenbone Vulnerability Management (GVM) 10|
+--------------------------------------------
+
+Introduction for Gentoo/Linux
+OpenVAS with version 10 has been renamed in Greenbone Vulnerability Management (GVM).
+
+GVM can be tricky for the first time use. 
+Following these 4 step carefully may solve common issues.
+
+Important:
+----------
+* Command order is important,
+* Never run feed rsync commands under root,
+* All daemons (expect scanner) runs under user 'gvm' also rsync 
+  commands must be used under user 'gvm'
+* Greenbone daemons ignores SIGHUP. So restart & reload commands not work as expected.
+
+------------------------------
+1)Redis                      |
+------------------------------
+
+For redis configurations we will work under root.
+
+Openvas-scanner relies on Redis. 
+Redis should be configured to listen to a socket.
+
+Modify /etc/redis.conf by setting :
+
+unixsocket /tmp/redis.sock
+unixsocketperm 700
+port 0
+#save 900 1
+#save 300 10
+#save 60 10000
+#maxmemory 64mb
+
+Check /etc/openvas/openvassd.conf by setting :
+
+db_address = /tmp/redis.sock 
+
+Then start redis and add it to default runlevel:
+
+Open-RC
+-------
+rc-service redis start
+rc-update add redis
+
+Systemd:
+--------
+systemctl start redis.service
+systemctl enable redis.service
+
+Note:
+--------
+* Other than /tmp/redis.sock may causes problems !.
+* Comment out all "save" parts.
+* Disable redis "maxmemory" option.
+
+You can find example config file installed to:
+/etc/openvas/redis.conf.example
+
+--------------------------------------
+2)Rsync Greenbone Vulnerability Feeds |
+--------------------------------------
+
+Upgrade the NVT (Network Vulnerability Tests) archives.(NVT,SCAPDATA,CERTDATA)
+!!! The following commands must be executed sequentially under user 'gvm'. 
+
+su gvm
+greenbone-nvt-sync
+greenbone-scapdata-sync 
+greenbone-certdata-sync
+
+Be patient...it will take a while. If you get these errors:
+
+rsync: failed to connect to feed.openvas.org (89.146.224.58): Connection refused (111)
+rsync: failed to connect to feed.openvas.org (2a01:130:2000:127::d1): Network unreachable (101)
+rsync error: error in socket IO (code 10) at clientserver.c(127) [Receiver=3.1.3]
+then try to append --rsync or --curl arg, like:
+
+greenbone-nvt-sync --curl
+greenbone-scapdata-sync --rsync 
+greenbone-certdata-sync --rsync
+
+Again Be patient...it will take a while to connect greenbone server.
+Try several times to download all feeds before starting daemons.
+* Daemons will not start without feeds.
+
+Now, generate the certificate for gvmd.
+The certificate infrastructure enables OpenVAS daemons to communicate in a secure manner 
+and is used for authentication and authorization before establishing TLS connections between the daemons. 
+
+Setup the certificate automatically with:
+gvm-manage-certs -a
+
+------------------------------------------------------
+3)Starting Greenbone Daemons & Create WEBUI User     |
+------------------------------------------------------
+
+After redis configuration & Greenbone Vulnerability feed rsync tasks completed we will start daemons under root.
+
+Note:
+-----
+* Start services sequentially | openvassd > gvmd > gsad , 
+* Greenbone daemons ignores SIGHUP. So restart & reload commands not work as expected,
+* Work under root.
+
+Start openvas scanner daemon:
+
+exit (back to root,we were working under user 'gvm')
+
+OpenRC
+------
+rc-service openvassd start
+rc-update add openvassd
+
+Systemd
+-------
+systemctl start openvassd.service
+systemctl enable openvassd.service
+
+This will take a while, since OpenVAS here is loading all NVT definition downloaded. 
+Check the status of openvassd that completed loading NVTs before starting gvmd:
+
+ps aux | grep openvassd
+openvassd: Waiting for incoming connections
+openvassd: Serving /var/run/openvassd.sock
+
+Now start Greenbone Vulnerability Manager daemon (gvmd):
+
+OpenRC
+------
+rc-service gvmd start
+rc-update add gvmd
+
+Systemd
+-------
+systemctl start gvmd.service
+systemctl enable gvmd.service
+
+This will take a while, since 'gvmd' here is rebuilding his database with all NVT definition downloaded. 
+You will see with ```ps aux``` the gvmd process in "Syncing SCAP" state.
+Don't worry, after a while gvmd will load scapdata.This is normal to take long time.
+
+Create a new user with Admin role, and take note of the generated password under user gvm:
+su gvm
+gvmd --create-user=admin --role=Admin
+
+User created with password '18664575-7101-4ceb-8a94-429a376824e6
+
+Note: if you want to change the password you can run:
+gvmd --user=admin --new-password=MyNewVeryStrongPassword
+
+Now start Greenbone Vulnerability Assistant daemon (gsad) under root:
+
+exit (back to root, we were working under user 'gvm' for creating WebUI user) 
+
+OpenRC
+------
+rc-service gsad start
+rc-update add gsad
+
+Systemd
+-------
+systemctl start gsad.service
+systemctl enable gsad.service
+
+Greenbone Security Assistant (GSA) WebUI listens port
+9392 default. 
+You can change it under:
+
+Systemd
+-------
+/etc/gvm/sysconfig/gsad-daemon.conf
+
+OpenRC
+------
+/etc/conf.d/gsad
+
+If you want to use nginx reverse proxy to reach WebUI
+please see the example config file :
+
+/etc/openvas/gsa.nginx.reverse.proxy.example
+
+--------------------------
+4)Configure Trusted NVTs |
+--------------------------
+
+Note:
+-----
+* Work under root.
+
+"Signed NVTs are usually provided by NVT Feed Services. 
+For example, the NVTs contained in the OpenVAS NVT 
+Feed are signed by the "OpenVAS Transfer Integrity" 
+key which you can find at the bottom of this page. If 
+you have already installed OpenVAS, you can use the 
+"greenbone-nvt-sync" command to synchronize your NVT 
+collection with the OpenVAS NVT Feed and receive signatures for all NVTs."
+
+Generate Key:
+gpg --homedir=/etc/openvas/gnupg --gen-key
+
+You need to choose Realname, Email and a Password. Example:
+
+Realname: openvas
+Email: openvas@localhost
+Password: admin
+
+Add a certificate to OpenVAS Scanner Keyring:
+wget https://www.greenbone.net/GBCommunitySigningKey.asc
+gpg --homedir=/etc/openvas/gnupg --import GBCommunitySigningKey.asc
+
+Set Trust:
+To mark a certificate as trusted for your purpose, you have to sign it. 
+The preferred way is to use local signatures that remain only 
+in the keyring of your OpenVAS Scanner installation.
+
+gpg --homedir=/etc/openvas/gnupg --list-keys
+gpg --homedir=/etc/openvas/gnupg --lsign-key $KEY_ID
+e.g. --> gpg --homedir=/etc/openvas/gnupg --lsign-key 0ED1E580
+
+Before signing you should be absolutely sure that you are signing the correct certificate. 
+You may use its fingerprint and other methods to convince yourself.
+
+To enable NVT signing on openvassd:
+
+sed -i -e "s/nasl_no_signature_check.*/nasl_no_signature_check = no/g" /etc/openvas/openvassd.conf
+
+As last step, restart openvas-scanner service:
+
+OpenRC
+------
+rc-service openvassd stop
+rc-service openvassd start
+
+Systemd
+-------
+
+systemctl stop openvassd.service
+systemctl start openvassd.service
+
+---------------------------
+Systemd & OpenRC Settings |
+---------------------------
+
+'openvassd-daemon.conf'  
+--> OpenVAS Scanner systemd daemon settings
+--> Installed in /etc/openvas/sysconfig
+
+'gvmd-daemon.conf'
+--> Greenbone Vulnerability Manager systemd daemon settings
+--> Installed in /etc/gvm/sysconfig
+
+'gsad-daemon.conf'
+--> Greenbone Security Assistant systemd daemon settings
+--> Installed in /etc/gvm/sysconfig
+
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+'openvassd'
+--> OpenVAS Scanner open-rc daemon settings
+--> Installed in /etc/conf.d
+
+'gvmd'
+--> Greenbone Vulnerability Manager open-rc daemon settings
+--> Installed in /etc/conf.d
+
+'gsad'
+--> Greenbone Security Assistant open-rc daemon settings
+--> Installed in /etc/conf.d
+
+------
+Cron |
+------
+
+If you used 'cron' use flag cron job installed in /etc/cron.d
+The cron script installed in /etc/gvm/gvm-feed-sync.sh
+Cron will run under user 'gvm'.
+
+--------------------
+POSTGRESQL BACKEND |
+--------------------
+
+Create PostgreSQL User and Database
+-----------------------------------
+Once the installation is done, create the PostgreSQL user and 
+database for OpenVAS manager. Note that the database and user 
+should be created as PostgreSQL user, postgres.
+
+sudo -Hiu postgres         
+createuser root            
+createdb -O root tasks     
+
+Grant PostgreSQL User DBA Roles:
+
+Next, login to PostgreSQL database and grant the user (created above) 
+the administrative roles on that database.
+
+sudo -Hiu postgres                        
+psql tasks                                
+create role dba with superuser noinherit; 
+grant dba to root;                        
+create extension "uuid-ossp";             
+\q                                        
+exit                                      
+
