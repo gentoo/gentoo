@@ -72,10 +72,6 @@ cblas-external
 # media-libs/amrnb and media-libs/amrwb not tested.
 amr
 
-# Samuli Suominen <drac@gentoo.org>
-# media-gfx/gimp not tested.
-gimp
-
 # No hardware to test by the team
 dvb
 ios
