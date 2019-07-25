@@ -1,10 +1,10 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: vcs-snapshot.eclass
 # @MAINTAINER:
 # mgorny@gentoo.org
-# @SUPPORTED_EAPIS: 0 1 2 3 4 5 6
+# @SUPPORTED_EAPIS: 0 1 2 3 4 5 6 7
 # @BLURB: support eclass for unpacking VCS snapshot tarballs
 # @DESCRIPTION:
 # This eclass provides a convenience src_unpack() which does unpack all
@@ -40,7 +40,7 @@
 # in ${WORKDIR}/${P} and ${WORKDIR}/${P}-otherstuff respectively.
 
 case ${EAPI:-0} in
-	0|1|2|3|4|5|6) ;;
+	0|1|2|3|4|5|6|7) ;;
 	*) die "vcs-snapshot.eclass API in EAPI ${EAPI} not yet established."
 esac
 
