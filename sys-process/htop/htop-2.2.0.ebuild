@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 python3_{5,6,7} )
 
-inherit linux-info python-single-r1
+inherit linux-info python-any-r1
 
 DESCRIPTION="interactive process viewer"
 HOMEPAGE="https://hisham.hm/htop/"
@@ -21,8 +21,6 @@ DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
 	virtual/pkgconfig"
 
-REQUIRED_USE=${PYTHON_REQUIRED_USE}
-
 DOCS=( ChangeLog README )
 
 CONFIG_CHECK="~TASKSTATS ~TASK_XACCT ~TASK_IO_ACCOUNTING ~CGROUPS"
@@ -33,7 +31,7 @@ pkg_setup() {
 		ewarn "what files), you must have sys-process/lsof installed."
 	fi
 
-	python-single-r1_pkg_setup
+	python-any-r1_pkg_setup
 	linux-info_pkg_setup
 }
 
