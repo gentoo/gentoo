@@ -1,4 +1,4 @@
-BDEPEND=dev-lang/perl >=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 =sys-devel/automake-1.15* >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+BDEPEND=dev-lang/perl >=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DEFINED_PHASES=configure install postinst prepare pretend setup
 DEPEND=caps? ( >=sys-libs/libcap-2.16 ) pam? ( virtual/pam ) ldap? ( net-nds/openldap ) kerberos? ( virtual/krb5 ) qos? ( net-libs/libnetfilter_conntrack ) ssl? ( !gnutls? ( libressl? ( dev-libs/libressl:0 ) !libressl? ( dev-libs/openssl:0 ) ) dev-libs/nettle:= ) sasl? ( dev-libs/cyrus-sasl ) ecap? ( net-libs/libecap:1 ) esi? ( dev-libs/expat dev-libs/libxml2 ) gnutls? ( >=net-libs/gnutls-3.1.5 ) !x86-fbsd? ( logrotate? ( app-admin/logrotate ) ) >=sys-libs/db-4:* dev-libs/libltdl:0 dev-lang/perl ecap? ( virtual/pkgconfig ) test? ( dev-util/cppunit )
 DESCRIPTION=A full-featured web proxy cache
@@ -12,4 +12,4 @@ REQUIRED_USE=tproxy? ( caps ) qos? ( caps )
 SLOT=0
 SRC_URI=http://www.squid-cache.org/Versions/v4/squid-4.8.tar.xz
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	7ba73aee7fe4462b3a745e3645ab92ca	libtool	f143db5a74ccd9ca28c1234deffede96	linux-info	953c3b1c472dcadbf62098a9301327f2	multilib	1d91b03d42ab6308b5f4f6b598ed110e	pam	756a09f72c4cdbb55f2694c95f1e0860	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56	user	e68863263b1e8611dacf381bec5c8b2b
-_md5_=1c6a8df0bfd62aba5e982b14d7aec4d1
+_md5_=0bb962ea107ac0cba877c71b10301dfe
