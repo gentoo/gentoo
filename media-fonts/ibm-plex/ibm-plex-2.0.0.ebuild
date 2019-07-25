@@ -37,7 +37,7 @@ if use otf; then
 		"${S}"/IBM-Plex-Sans/fonts/complete/otf
 		"${S}"/IBM-Plex-Serif/fonts/complete/otf
 		"${S}"/IBM-Plex-Thai/fonts/complete/otf
-		"${S}"/IBM-Plex-Thai-Looped/fonts/complete/otf"
+		"${S}"/IBM-Plex-Sans-Thai-Looped/fonts/complete/otf"
 fi
 
 if use ttf; then
@@ -53,7 +53,7 @@ if use ttf; then
 		"${S}"/IBM-Plex-Sans/fonts/complete/ttf
 		"${S}"/IBM-Plex-Serif/fonts/complete/ttf
 		"${S}"/IBM-Plex-Thai/fonts/complete/ttf
-		"${S}"/IBM-Plex-Thai-Looped/fonts/complete/ttf"
+		"${S}"/IBM-Plex-Sans-Thai-Looped/fonts/complete/ttf"
 fi
 
 font_src_install
