@@ -1,0 +1,44 @@
+From 35d787c782a075c0a01e29605d254950fd1e81a6 Mon Sep 17 00:00:00 2001
+From: Sergei Trofimovich <slyfox@gentoo.org>
+Date: Thu, 25 Jul 2019 10:17:39 -0500
+Subject: [PATCH] Add support for ia64 atomic-ops
+
+Signed-off-by: Jory Pratt <anarchy@gentoo.org>
+---
+ js/src/jit/AtomicOperations.h                    | 2 ++
+ js/src/jit/none/AtomicOperations-feeling-lucky.h | 6 ++++++
+ 2 files changed, 8 insertions(+)
+
+diff --git a/js/src/jit/AtomicOperations.h b/js/src/jit/AtomicOperations.h
+index 3501e65b..44c3f358 100644
+--- a/js/src/jit/AtomicOperations.h
++++ b/js/src/jit/AtomicOperations.h
+@@ -393,6 +393,8 @@ inline bool AtomicOperations::isLockfreeJS(int32_t size) {
+ #include "jit/none/AtomicOperations-feeling-lucky.h"
+ #elif defined(__s390__) || defined(__s390x__)
+ #include "jit/none/AtomicOperations-feeling-lucky.h"
++#elif defined(__ia64__)
++#include "jit/none/AtomicOperations-feeling-lucky.h"
+ #else
+ #error "No AtomicOperations support provided for this platform"
+ #endif
+diff --git a/js/src/jit/none/AtomicOperations-feeling-lucky.h b/js/src/jit/none/AtomicOperations-feeling-lucky.h
+index c0b43699..a3f4497e 100644
+--- a/js/src/jit/none/AtomicOperations-feeling-lucky.h
++++ b/js/src/jit/none/AtomicOperations-feeling-lucky.h
+@@ -80,6 +80,12 @@
+ #define GNUC_COMPATIBLE
+ #endif
+ 
++#ifdef __ia64__
++#define HAS_64BIT_ATOMICS
++#define HAS_64BIT_LOCKFREE
++#define GNUC_COMPATIBLE
++#endif
++
+ // The default implementation tactic for gcc/clang is to use the newer
+ // __atomic intrinsics added for use in C++11 <atomic>.  Where that
+ // isn't available, we use GCC's older __sync functions instead.
+-- 
+2.22.0
+
