@@ -445,11 +445,12 @@ egetgroups() {
 	local egroups_arr
 	read -r -a egroups_arr < <(id -G -n "$1")
 
-	local defgroup=${egroups_arr[0]}
+	local g groups=${egroups_arr[0]}
 	# sort supplementary groups to make comparison possible
-	readarray -t exgroups_arr < <(printf '%s\n' "${egroups_arr[@]:1}" | sort)
-	local exgroups=${exgroups_arr[*]}
-	echo "${defgroup}${exgroups:+,${exgroups// /,}}"
+	while read -r g; do
+		[[ -n ${g} ]] && groups+=",${g}"
+	done < <(printf '%s\n' "${egroups_arr[@]:1}" | sort)
+	echo "${groups}"
 }
 
 # @FUNCTION: esethome
