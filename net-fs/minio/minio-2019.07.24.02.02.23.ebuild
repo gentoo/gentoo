@@ -100,7 +100,6 @@ EGO_VENDOR=( "gopkg.in/yaml.v2 51d6538a90f86fe93ac480b35f37b2be17fef232 github.c
 	     "github.com/grpc-ecosystem/grpc-gateway 20f268a412e5b342ebfb1a0eef7c3b7bd6c260ea"
 	     "github.com/mattn/go-colorable 3a70a971f94a22f2fa562ffcc7a0eb45f5daf045"
 	     "github.com/minio/blazer 2081f5bf046503f576d8712253724fbf2950fffe"
-	     "github.com/minio/dsync fb604afd87b2a095432c17af2dda742960ef111e"
 	     "github.com/minio/highwayhash 02ca4b43caa3297fbb615700d8800acc7933be98"
 	     "github.com/minio/lsync a4e43e3d0887e88d151bb3f90f678178b4ec0c5f"
 	     "github.com/minio/sha256-simd 05b4dd3047e5d6e86cb4e0477164b850cd896261"
@@ -112,14 +111,24 @@ EGO_VENDOR=( "gopkg.in/yaml.v2 51d6538a90f86fe93ac480b35f37b2be17fef232 github.c
 	     "github.com/hashicorp/golang-lru 7087cb70de9f7a8bc0a10c375cb0d2280a8edf9c"
 	     "github.com/json-iterator/go 0ff49de124c6f76f8494e194af75bde0f1a49a29"
 	     "github.com/colinmarc/hdfs/v2 fd1e410ff7bf76b870f625dc0aa3eb4e44f5bc50 github.com/colinmarc/hdfs"
-	     "gopkg.in/jcmturner/gokrb5.v5 32ba44ca5b42f17a4a9f33ff4305e70665a1bc0f github.com/jcmturner/gokrb5"
 	     "github.com/hashicorp/go-uuid 4f571afc59f3043a65f8fe6bf46d887b10a01d43"
 	     "github.com/jcmturner/gofork dc7c13fece037a4a36e2b3c69db4991498d30692"
 	     "github.com/modern-go/concurrent bacd9c7ef1dd9b15be4a9909b8ac7a4e313eec94"
 	     "github.com/modern-go/reflect2 94122c33edd36123c84d5368cfb2b69df93a0ec8"
 	     "gopkg.in/jcmturner/aescts.v1 f6abebb3171c4c1b1fea279cb7c7325020a26290 github.com/jcmturner/aescts"
 	     "gopkg.in/jcmturner/dnsutils.v1 13eeb8d49ffb74d7a75784c35e4d900607a3943c github.com/jcmturner/dnsutils"
-	     "gopkg.in/jcmturner/rpc.v0 4480c480c9cd343b54b0acb5b62261cbd33d7adf github.com/jcmturner/rpc"
+	     "github.com/klauspost/readahead v1.3.0"
+	     "github.com/kurin/blazer v0.5.3"
+	     "github.com/minio/dsync/v2 fedfb5c974fa2ab238e45a6e6b19d38774e0326f github.com/minio/dsync"
+	     "github.com/ncw/directio v1.0.5"
+	     "github.com/nats-io/stan.go v0.4.5"
+	     "github.com/nats-io/nats.go v1.8.0"
+	     "github.com/minio/minio-go v6.0.29"
+	     "github.com/minio/hdfs/v3 v3.0.1 github.com/minio/hdfs"
+	     "github.com/minio/gokrb5/v7 v7.2.5 github.com/minio/gokrb5"
+	     "github.com/minio/minio-go/v6 v6.0.29 github.com/minio/minio-go"
+	     "gopkg.in/jcmturner/goidentity.v3 v5.0.0 github.com/jcmturner/goidentity"
+	     "gopkg.in/jcmturner/rpc.v1  99a8ce2fbf8b8087b6ed12a37c61b10f04070043 github.com/jcmturner/rpc"
 )
 
 inherit user golang-build golang-vcs-snapshot
@@ -127,7 +136,7 @@ inherit user golang-build golang-vcs-snapshot
 EGO_PN="github.com/minio/minio"
 MY_PV="$(ver_cut 1-3)T$(ver_cut 4-7)Z"
 MY_PV=${MY_PV//./-}
-EGIT_COMMIT="ce419c98352324caa4c79b159a9f840ca714c3d5"
+EGIT_COMMIT="3e3fbdf8e6e5e889232eb7afc0b27ac054adfda0"
 ARCHIVE_URI="https://${EGO_PN}/archive/RELEASE.${MY_PV}.tar.gz -> ${P}.tar.gz
 	${EGO_VENDOR_URI}"
 
@@ -169,6 +178,7 @@ src_compile() {
 	MINIO_RELEASE="${MY_PV}"
 	go run buildscripts/gen-ldflags.go
 	GOPATH="${S}" go build --ldflags "$(go run buildscripts/gen-ldflags.go)" -o ${PN} || die
+
 	popd || die
 }
 
