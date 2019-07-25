@@ -14,14 +14,12 @@ KEYWORDS="~amd64 ~x86"
 IUSE="+cli +extras +gsa ldap +ospd radius"
 
 RDEPEND="
-	>=net-analyzer/openvas-libraries-9.0.3[extras?]
+	>=net-analyzer/openvas-libraries-9.0.3[extras?,ldap?,radius?]
 	>=net-analyzer/openvas-manager-7.0.3[extras?]
-	>=net-analyzer/openvas-scanner-5.1.3[extras?]
+	>=net-analyzer/openvas-scanner-5.1.3:0[extras?]
 	cli? ( >=net-analyzer/gvm-tools-1.4.1 )
-	gsa? ( >=net-analyzer/greenbone-security-assistant-7.0.3[extras?] )
-	ldap? ( >=net-analyzer/openvas-libraries-9.0.3[ldap] )
-	ospd? ( >=net-analyzer/ospd-1.3.2[extras?] )
-	radius? ( >=net-analyzer/openvas-libraries-9.0.3[radius] )"
+	gsa? ( >=net-analyzer/greenbone-security-assistant-7.0.3:0[extras?] )
+	ospd? ( >=net-analyzer/ospd-1.3.2[extras?] )"
 
 pkg_postinst() {
 	elog "----------------------------IMPORTANT----------------------------"
