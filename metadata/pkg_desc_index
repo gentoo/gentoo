@@ -1874,7 +1874,7 @@ dev-db/pgpool2 3.7.8 4.0.3: Connection pool server for PostgreSQL
 dev-db/pgtap 0.99.0: Unit testing for PostgreSQL
 dev-db/phpmyadmin 4.8.5: Web-based administration for MySQL database in PHP
 dev-db/postgis 2.4.6 2.4.7 2.5.1-r1 2.5.2: Geographic Objects for PostgreSQL
-dev-db/postgresql 9.4.22 9.5.17 9.6.13 10.8 10.9 11.3 11.4: PostgreSQL RDBMS
+dev-db/postgresql 9.4.22 9.4.23 9.5.17 9.5.18 9.6.13 9.6.14 10.8 10.9 11.3 11.4: PostgreSQL RDBMS
 dev-db/pspg 1.3.0 1.6.5: A better pager for psql and mysql
 dev-db/psqlodbc 10.01.0000 11.01.0000: Official ODBC driver for PostgreSQL
 dev-db/qdbm 1.8.78-r2: Quick Database Manager
@@ -2927,7 +2927,7 @@ dev-libs/gf-complete 0.0.0: A Comprehensive Open Source Library for Galois Field
 dev-libs/gf2x 1.0-r1: C/C++ routines for fast arithmetic in GF(2)[x]
 dev-libs/girara 0.3.1 0.3.2: UI library that focuses on simplicity and minimalism
 dev-libs/gjs 1.48.7 1.54.3: Javascript bindings for GNOME
-dev-libs/glib 2.58.3: The GLib library of C routines
+dev-libs/glib 2.58.3 2.58.3-r1: The GLib library of C routines
 dev-libs/gmime 2.6.23 3.2.3: Utilities for creating and parsing messages using MIME
 dev-libs/gmp 4.3.2-r1 6.1.2: Library for arbitrary-precision arithmetic on different type of numbers
 dev-libs/gobject-introspection 1.56.1 1.58.3: Introspection system for GObject-based libraries
@@ -6483,7 +6483,7 @@ gnome-base/gnome-settings-daemon 3.30.2-r1: Gnome Settings Daemon
 gnome-base/gnome-shell 3.30.2-r2: Provides core UI functions for the GNOME 3 desktop
 gnome-base/gnome-vfs 2.24.4-r5: Gnome Virtual Filesystem
 gnome-base/gsettings-desktop-schemas 3.24.1 3.28.1: Collection of GSettings schemas for GNOME desktop
-gnome-base/gvfs 1.32.2 1.38.2: Virtual filesystem implementation for GIO
+gnome-base/gvfs 1.32.2 1.38.2 1.38.3: Virtual filesystem implementation for GIO
 gnome-base/libbonobo 2.24.3-r1: GNOME CORBA framework
 gnome-base/libbonoboui 2.24.5-r1: User Interface part of libbonobo
 gnome-base/libglade 2.6.4-r2: Library to construct graphical interfaces at runtime
@@ -7060,7 +7060,7 @@ mail-filter/libsrs_alt 1.0: Sender Rewriting Scheme library
 mail-filter/maildrop 2.8.3 3.0.0: Mail delivery agent/filter
 mail-filter/mailfilter 0.8.4: Mailfilter is a utility to get rid of unwanted spam mails
 mail-filter/mapson 3.3: A challenge/response-based white-list spam filter
-mail-filter/milter-regex 1.9: A milter-based regular expression filter
+mail-filter/milter-regex 1.9 2.6: A milter-based regular expression filter
 mail-filter/normalizemime 1.19: Helper program to normalize MIME encoded messages
 mail-filter/opendkim 2.10.3-r16: A milter providing DKIM signing and verification
 mail-filter/opendmarc 1.1.3 1.3.2-r2: Open source DMARC implementation
@@ -8502,7 +8502,7 @@ net-ftp/lftp 4.8.4-r1: A sophisticated ftp/sftp/http/https/torrent client and fi
 net-ftp/linksys-tftp 1.2.1-r3: TFTP client suitable for uploading to the Linksys WRT54G Wireless Router
 net-ftp/ncftp 3.2.6: An extremely configurable ftp client
 net-ftp/oftpd 0.3.7-r10: Secure, small, anonymous only ftpd
-net-ftp/proftpd 1.3.6-r3: An advanced and very configurable FTP server
+net-ftp/proftpd 1.3.6-r3 1.3.6-r5: An advanced and very configurable FTP server
 net-ftp/pure-ftpd 1.0.47-r4: Fast, production-quality, standard-conformant FTP server
 net-ftp/pureadmin 0.4-r1: GUI tool used to make the management of Pure-FTPd a little easier
 net-ftp/tftp-hpa 5.2-r1: port of the OpenBSD TFTP server
@@ -8801,7 +8801,7 @@ net-misc/curl 7.64.0 7.64.1 7.65.0: A Client that groks URLs
 net-misc/dahdi 2.10.0.1 2.10.1 2.10.2-r2: Kernel modules for Digium compatible hardware (formerly known as Zaptel)
 net-misc/dahdi-tools 2.6.2 2.8.0 2.9.0.1 2.10.0 2.10.1: Userspace tools to configure the kernel modules from net-misc/dahdi
 net-misc/dhcp 4.3.6_p1 4.4.1: ISC Dynamic Host Configuration Protocol (DHCP) client/server
-net-misc/dhcpcd 7.1.1-r3: A fully featured, yet light weight RFC2131 compliant DHCP client
+net-misc/dhcpcd 7.1.1-r3 7.2.3: A fully featured, yet light weight RFC2131 compliant DHCP client
 net-misc/dhcpcd-ui 0.7.5-r1: Desktop notification and configuration for dhcpcd
 net-misc/dhcping 1.2: Utility for sending a dhcp request to a dhcp server to see if it is responding
 net-misc/dibbler 1.0.1: Portable DHCPv6 implementation (server, client and relay)
@@ -9631,7 +9631,7 @@ sec-policy/selinux-xscreensaver 2.20180114-r1 2.20180114-r2 2.20180701-r1: SELin
 sec-policy/selinux-xserver 2.20180114-r1 2.20180114-r2 2.20180701-r1: SELinux policy for xserver
 sec-policy/selinux-zabbix 2.20180114-r1 2.20180114-r2 2.20180701-r1: SELinux policy for zabbix
 sys-apps/accountsservice 0.6.50-r1: D-Bus interfaces for querying and manipulating user account information
-sys-apps/ack 2.18-r1: ack is a tool like grep, optimized for programmers
+sys-apps/ack 2.18-r1 3.0.0: ack is a tool like grep, optimized for programmers
 sys-apps/acl 2.2.52-r1: access control list utilities, libraries and headers
 sys-apps/apmd 3.2.2_p14-r1: Advanced Power Management Daemon
 sys-apps/apply-default-acl 0.4.2: Apply default POSIX ACLs to files and directories
