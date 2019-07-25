@@ -46,6 +46,7 @@ pkg_setup(){
 
 src_prepare() {
 	eapply "${WORKDIR}/${PN}"
+	eapply "${FILESDIR}/${PN}-60.5.2-ia64-support.patch"
 
 	eapply_user
 
