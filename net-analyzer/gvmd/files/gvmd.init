@@ -1,0 +1,24 @@
+#!/sbin/openrc-run
+# Copyright 1999-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+: ${GVMD_USER:=gvm}
+: ${GVMD_GROUP:=gvm}
+: ${GVMD_TIMEOUT:=30}
+
+name="Greenbone Vulnerability Manager"
+command=/usr/bin/gvmd
+command_args="${GVMD_OPTIONS} ${GVMD_LISTEN_ADDRESS_TCP} ${GVMD_PORT} ${GVMD_SCANNER_HOST} ${GVMD_GNUTLS_PRIORITIES}"
+command_background="true"
+command_user="${GVMD_USER}:${GVMD_GROUP}"
+pidfile="/run/gvmd.pid"
+retry="${GVMD_TIMEOUT}"
+
+depend() {
+	after bootmisc
+	need localmount net openvassd
+}
+
+start_pre() {
+	/bin/bash /etc/gvm/gvmd-startpre.sh
+}
