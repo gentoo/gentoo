@@ -1,0 +1,34 @@
+--- a/gsa/CMakeLists.txt	2019-07-17 16:45:39.000000000 +0300
++++ b/gsa/CMakeLists.txt	2019-07-17 22:24:49.466906757 +0300
+@@ -1095,28 +1095,17 @@
+      ${GSA_JS_SRC_FILES}
+      PARENT_SCOPE)
+ 
+-
+-add_custom_command (OUTPUT node-modules.stamp
+-                    DEPENDS ${GSA_PKG_FILES}
+-                    COMMAND ${INSTALLER} "${INSTALLER_ARGS}" "install"
+-                    COMMAND ${CMAKE_COMMAND} -E touch ${CMAKE_CURRENT_BINARY_DIR}/node-modules.stamp
+-                    WORKING_DIRECTORY ${GSA_SRC_DIR}
+-                    COMMENT "Install gsa-ng js dependencies")
+-
+-
+ add_custom_command (OUTPUT bundle.stamp
+-                    COMMAND ${CMAKE_COMMAND} -E env REACT_APP_VERSION=${PROJECT_VERSION_STRING} ${INSTALLER} "${INSTALLER_ARGS}" run build
++                    COMMAND ${CMAKE_COMMAND} -E env REACT_APP_VERSION=${PROJECT_VERSION_STRING} ${INSTALLER} --offline run build
+                     COMMAND ${CMAKE_COMMAND} -E touch ${CMAKE_CURRENT_BINARY_DIR}/bundle.stamp
+                     WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+-                    DEPENDS  ${CMAKE_CURRENT_BINARY_DIR}/node-modules.stamp
+-                             ${GSA_PKG_FILES}
++                    DEPENDS  ${GSA_PKG_FILES}
+                              ${GSA_STATIC_SRC_FILES}
+                              ${GSA_JS_SRC_FILES}
+                     COMMENT "Build gsa-ng install files")
+ 
+ add_custom_target (gsa-ng ALL
+-                   DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/node-modules.stamp
+-                           ${CMAKE_CURRENT_BINARY_DIR}/bundle.stamp)
++                   DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/bundle.stamp)
+ 
+ set (GSA_STATIC_BUILD_FILES
+      ${GSA_BUILD_DIR}/index.html)
