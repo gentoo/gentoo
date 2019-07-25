@@ -295,6 +295,15 @@ ruby_fakegem_metadata_gemspec() {
 # See RUBY_FAKEGEM_NAME and RUBY_FAKEGEM_VERSION for setting name and version.
 # See RUBY_FAKEGEM_REQUIRE_PATHS for setting extra require paths.
 ruby_fakegem_genspec() {
+	case ${EAPI} in
+		4|5|6) ;;
+		*)
+			eqawarn "Generating generic fallback gemspec *without* dependencies"
+			eqawarn "This will only work when there are no runtime dependencies"
+			eqawarn "Set RUBY_FAKEGEM_GEMSPEC to generate a proper specifications file"
+			;;
+	esac
+
 	local required_paths="'lib'"
 	for path in ${RUBY_FAKEGEM_REQUIRE_PATHS}; do
 		required_paths="${required_paths}, '${path}'"
