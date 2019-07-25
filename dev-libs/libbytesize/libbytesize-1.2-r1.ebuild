@@ -32,6 +32,8 @@ DEPEND="
 	)
 "
 
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+
 RESTRICT="test"
 
 pkg_setup() {
