@@ -5,14 +5,15 @@ EAPI=7
 
 PYTHON_COMPAT=( python{3_5,3_6,3_7} )
 
-inherit distutils-r1 eutils git-r3
+inherit distutils-r1 eutils
 
 DESCRIPTION="Open multi-site list manager for media tracking sites"
 HOMEPAGE="https://github.com/z411/trackma"
-EGIT_REPO_URI="https://github.com/z411/${PN}"
+SRC_URI="https://github.com/z411/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 
 IUSE="+cli gtk inotify ncurses qt5"
 REQUIRED_USE="|| ( cli gtk ncurses qt5 )"
