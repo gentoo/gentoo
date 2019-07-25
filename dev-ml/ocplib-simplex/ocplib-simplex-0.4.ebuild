@@ -7,7 +7,7 @@ inherit autotools findlib multilib
 
 DESCRIPTION="A library implementing a simplex algorithm"
 HOMEPAGE="https://github.com/OCamlPro-Iguernlala/ocplib-simplex"
-SRC_URI="https://github.com/OCamlPro-Iguernlala/${PN}/archive/${PV}.tar.gz
+SRC_URI="https://github.com/OCamlPro-Iguernlala/${PN}/archive/v${PV}.tar.gz
 	-> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1-with-linking-exception"

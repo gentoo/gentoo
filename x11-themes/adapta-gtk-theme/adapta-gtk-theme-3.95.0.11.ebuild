@@ -18,7 +18,8 @@ src_prepare(){
 	eautoreconf
 }
 
-DEPEND="dev-libs/glib:2
+DEPEND="dev-lang/sassc
+	dev-libs/glib:2
 	dev-ruby/sass:*
 	media-gfx/inkscape
 	x11-libs/gdk-pixbuf:2"
