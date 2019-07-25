@@ -72,6 +72,7 @@ vcs-snapshot_src_unpack() {
 				# fine? i.e. if the tarball has actually a parent dir.
 				mkdir "${destdir}" || die
 				# -o (--no-same-owner) to avoid restoring original owner
+				einfo "Unpacking ${f}"
 				tar -C "${destdir}" -x -o --strip-components 1 \
 					-f "${DISTDIR}/${f}" || die
 				;;
