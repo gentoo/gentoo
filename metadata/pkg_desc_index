@@ -6331,7 +6331,7 @@ dev-util/pkgconfig 0.28-r2 0.29.2: Package config system that manages compile/li
 dev-util/premake 3.7 4.3-r1: A makefile generation tool
 dev-util/promu 0.2.0 0.3.0: Prometheus Utility Tool
 dev-util/pscan 20000721-r1: A limited problem scanner for C source files
-dev-util/pycharm-community 2019.1.1: Intelligent Python IDE with unique code assistance and analysis
+dev-util/pycharm-community 2019.1.3: Intelligent Python IDE with unique code assistance and analysis
 dev-util/qbs 1.12.2: Modern build tool for software projects
 dev-util/qmtest 2.4.1-r1: CodeSourcery's test harness system
 dev-util/qstlink2 1.2.3: GUI and CLI ST-Link V2(Debugger/Programmer) client
