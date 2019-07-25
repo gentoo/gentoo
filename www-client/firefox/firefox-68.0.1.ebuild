@@ -354,6 +354,12 @@ src_configure() {
 	# Must pass release in order to properly select linker
 	mozconfig_annotate 'Enable by Gentoo' --enable-release
 
+	if use pgo ; then
+		if ! has userpriv $FEATURES ; then
+			eerror "Building firefox with USE=pgo and FEATURES=-userpriv is not supported!"
+		fi
+	fi
+
 	# Don't let user's LTO flags clash with upstream's flags
 	filter-flags -flto*
 
