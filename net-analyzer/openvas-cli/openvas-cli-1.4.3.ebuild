@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,11 +11,11 @@ HOMEPAGE="http://www.openvas.org/"
 SRC_URI="http://wald.intevation.org/frs/download.php/${DL_ID}/${P/_beta/+beta}.tar.gz"
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~arm ~ppc ~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="
-	>=net-analyzer/openvas-libraries-8.0.4
+	>=net-analyzer/openvas-libraries-9.0.3
 "
 RDEPEND="${DEPEND}
 	!net-analyzer/openvas-client
