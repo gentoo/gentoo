@@ -57,7 +57,14 @@ RUBY_FAKEGEM_TASK_TEST="${RUBY_FAKEGEM_TASK_TEST-test}"
 #  - rdoc (calls `rdoc-2`, adds dev-ruby/rdoc to the dependencies);
 #  - yard (calls `yard`, adds dev-ruby/yard to the dependencies);
 #  - none
-RUBY_FAKEGEM_RECIPE_DOC="${RUBY_FAKEGEM_RECIPE_DOC-rake}"
+case ${EAPI} in
+	4|5|6)
+		RUBY_FAKEGEM_RECIPE_DOC="${RUBY_FAKEGEM_RECIPE_DOC-rake}"
+		;;
+	*)
+		RUBY_FAKEGEM_RECIPE_DOC="${RUBY_FAKEGEM_RECIPE_DOC-rdoc}"
+		;;
+esac
 
 # @ECLASS-VARIABLE: RUBY_FAKEGEM_DOCDIR
 # @DEFAULT_UNSET
