@@ -9,4 +9,15 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
+	<longdescription lang="en">
+	The Greenbone Vulnerability Management Tools or gvm-tools 
+	in short are a collection of tools that help with remote controlling 
+	a Greenbone Security Manager (GSM) appliance and its 
+	underlying Greenbone Vulnerability Manager (GVM).
+	The tools essentially aid accessing the communication protocols 
+	GMP (Greenbone Management Protocol) and OSP (Open Scanner Protocol).
+	</longdescription>
+	<upstream>
+		<remote-id type="github">greenbone/gvm-tools</remote-id>
+	</upstream>
 </pkgmetadata>

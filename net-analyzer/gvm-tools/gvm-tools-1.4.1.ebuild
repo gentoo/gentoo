@@ -6,8 +6,8 @@ EAPI=7
 PYTHON_COMPAT=( python3_{5,6} )
 inherit distutils-r1
 
-DESCRIPTION="A remote security scanner for Linux (OpenVAS-cli)"
-HOMEPAGE="http://www.openvas.org/"
+DESCRIPTION="Remote control for Greenbone Vulnerability Manager, previously named openvas-cli"
+HOMEPAGE="https://www.greenbone.net/en/"
 SRC_URI="https://github.com/greenbone/gvm-tools/archive/v1.4.1.tar.gz -> ${P}.tar.gz"
 
 SLOT="0"
@@ -21,12 +21,10 @@ RDEPEND="
 	dev-python/paramiko[${PYTHON_USEDEP}]
 	dev-python/pythondialog:0[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	>=net-analyzer/openvas-manager-7.0.3
 	!net-analyzer/openvas-cli"
 
 DEPEND="
-	${RDEPEND}
-	>=net-analyzer/openvas-libraries-9.0.3"
+	${RDEPEND}"
 
 src_prepare() {
 	distutils-r1_python_prepare_all
