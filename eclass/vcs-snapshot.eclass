@@ -68,8 +68,21 @@ vcs-snapshot_src_unpack() {
 
 				debug-print "${FUNCNAME}: unpacking ${f} to ${destdir}"
 
-				# XXX: check whether the directory structure inside is
-				# fine? i.e. if the tarball has actually a parent dir.
+				local l topdirs=()
+				while read -r l; do
+					topdirs+=( "${l}" )
+				done < <(tar -t -f "${DISTDIR}/${f}" | cut -d/ -f1 | sort -u)
+				if [[ ${#topdirs[@]} -gt 1 ]]; then
+					eerror "The archive ${f} contains multiple or no top directory."
+					eerror "It is impossible for vcs-snapshot to unpack this correctly."
+					eerror "Top directories found:"
+					local d
+					for d in "${topdirs[@]}"; do
+						eerror "    ${d}"
+					done
+					die "${FUNCNAME}: Invalid directory structure in archive ${f}"
+				fi
+
 				mkdir "${destdir}" || die
 				# -o (--no-same-owner) to avoid restoring original owner
 				einfo "Unpacking ${f}"
