@@ -1,0 +1,1 @@
+0 2 * * * gvm [ -x /etc/gvm/gvm-feed-sync.sh ] && /bin/bash /etc/gvm/gvm-feed-sync.sh > /dev/null
