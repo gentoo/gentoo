@@ -21,10 +21,10 @@ REQUIRED_USE="
 "
 
 RDEPEND="
-	>=dev-libs/libuv-1.29.1:=
+	>=dev-libs/libuv-1.30.1:=
 	>=net-dns/c-ares-1.15.0
 	>=net-libs/http-parser-2.8.0:=
-	>=net-libs/nghttp2-1.38.0
+	>=net-libs/nghttp2-1.39.1
 	sys-libs/zlib
 	icu? ( >=dev-libs/icu-64.2:= )
 	ssl? ( >=dev-libs/openssl-1.1.1:0= )
