@@ -1,0 +1,10 @@
+--- a/Makefile	2019-07-21 21:17:32.334645928 +0200
++++ b/Makefile	2019-07-21 21:18:28.565894767 +0200
+@@ -9,6 +9,6 @@
+ TOINSTALL=$(wildcard _build/src/*)
+ 
+ install:
+-	ocamlfind install seq META $(TOINSTALL)
++	ocamlfind install -destdir $(DESTDIR)@LIBDIR@ seq META $(TOINSTALL)
+ 
+ .PHONY: build clean install
