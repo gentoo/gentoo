@@ -222,7 +222,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	if [[ ! -n $(readlink "${EROOT}"usr/bin/ruby) ]] ; then
+	if [[ ! -n $(readlink "${EROOT}"/usr/bin/ruby) ]] ; then
 		eselect ruby set ruby${MY_SUFFIX}
 	fi
 
