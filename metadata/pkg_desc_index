@@ -1178,7 +1178,7 @@ app-office/taskcoach 1.4.3-r1: Simple personal tasks and todo lists manager
 app-office/texmacs 1.99.6-r2: Wysiwyg text processor with high-quality maths
 app-office/texmaker 5.0-r1 5.0.3: A nice LaTeX-IDE
 app-office/texstudio 2.11.2-r2 2.12.6-r1 2.12.14: Free cross-platform LaTeX editor (fork from texmakerX)
-app-office/unoconv 0.7 0.8.2: Convert between document formats supported by Libreoffice
+app-office/unoconv 0.8.2: Convert between document formats supported by Libreoffice
 app-officeext/barcode 1.3.5.0-r1: Extension for reading barcodes
 app-officeext/ct2n 1.5.0: Extension for converting text to numbers
 app-officeext/dmaths 3.4.9.0-r1: Mathematics Formula Editor Extension
@@ -8324,7 +8324,7 @@ net-analyzer/monitoring-plugins 2.2-r2 2.2-r3: 50+ standard plugins for Icinga, 
 net-analyzer/mping 2.01: IPv4/6 round-robin multiping client
 net-analyzer/mrtg 2.17.7: A tool to monitor the traffic load on network-links
 net-analyzer/mtr 0.87: My TraceRoute, an Excellent network diagnostic tool
-net-analyzer/munin 2.0.38 2.0.49: Munin Server Monitoring Tool
+net-analyzer/munin 2.0.49: Munin Server Monitoring Tool
 net-analyzer/nagios 4.3.4: The Nagios metapackage
 net-analyzer/nagios-check_glsa2 20120930-r1: Nagios check script for GLSAs (Gentoo Linux Security Advisories)
 net-analyzer/nagios-check_ipmi_sensor 3.1 3.2: IPMI Sensor Monitoring Plugin for Nagios/Icinga

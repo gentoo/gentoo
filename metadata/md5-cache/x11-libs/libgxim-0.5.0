@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install prepare
-DEPEND=dev-libs/dbus-glib dev-libs/glib:2 sys-apps/dbus virtual/libintl x11-libs/gtk+:2 x11-libs/libX11 || ( dev-lang/ruby:2.4 dev-lang/ruby:2.3 ) virtual/rubygems dev-util/glib-utils dev-util/intltool sys-devel/autoconf-archive sys-devel/gettext virtual/pkgconfig test? ( dev-libs/check ) >=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=dev-libs/dbus-glib dev-libs/glib:2 sys-apps/dbus virtual/libintl x11-libs/gtk+:2 x11-libs/libX11 || ( dev-lang/ruby:2.4 ) virtual/rubygems dev-util/glib-utils dev-util/intltool sys-devel/autoconf-archive sys-devel/gettext virtual/pkgconfig test? ( dev-libs/check ) >=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=GObject-based XIM protocol library
 EAPI=6
 HOMEPAGE=https://tagoh.bitbucket.io/libgxim
@@ -9,5 +9,5 @@ LICENSE=LGPL-2.1
 RDEPEND=dev-libs/dbus-glib dev-libs/glib:2 sys-apps/dbus virtual/libintl x11-libs/gtk+:2 x11-libs/libX11
 SLOT=0
 SRC_URI=https://bitbucket.org/tagoh/libgxim/downloads/libgxim-0.5.0.tar.bz2
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	ruby-single	e6530f43a549f120f9396ccb852288f5	ruby-utils	10cec86289e60f4b0d731b2e4b545e5d	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	ruby-single	e6530f43a549f120f9396ccb852288f5	ruby-utils	5b782a86f95c84466cdb53f8c8a8be37	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
 _md5_=ea2330762c6db6d484109535825f2c16
