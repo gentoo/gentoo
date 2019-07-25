@@ -8,7 +8,7 @@
 # Author: Diego E. Pettenò <flameeyes@gentoo.org>
 # Author: Alex Legler <a3li@gentoo.org>
 # Author: Hans de Graaff <graaff@gentoo.org>
-# @SUPPORTED_EAPIS: 4 5 6
+# @SUPPORTED_EAPIS: 4 5 6 7
 # @BLURB: An eclass for installing Ruby packages with proper support for multiple Ruby slots.
 # @DESCRIPTION:
 # The Ruby eclass is designed to allow an easier installation of Ruby packages
@@ -43,7 +43,7 @@
 # @DESCRIPTION:
 # Set the value to "yes" to make the dependency on a Ruby interpreter
 # optional and then ruby_implementations_depend() to help populate
-# DEPEND and RDEPEND.
+# BDEPEND, DEPEND and RDEPEND.
 
 # @ECLASS-VARIABLE: RUBY_S
 # @DEFAULT_UNSET
@@ -69,21 +69,24 @@
 local inherits=""
 case ${EAPI} in
 	4|5)
-		inherits="eutils"
+		inherits="eutils toolchain-funcs"
+		;;
+	6)
+		inherits="estack toolchain-funcs"
 		;;
 	*)
 		inherits="estack"
 		;;
 esac
 
-inherit ${inherits} multilib toolchain-funcs ruby-utils
+inherit ${inherits} multilib ruby-utils
 
 EXPORT_FUNCTIONS src_unpack src_prepare src_configure src_compile src_test src_install pkg_setup
 
 case ${EAPI} in
 	0|1|2|3)
 		die "Unsupported EAPI=${EAPI} (too old) for ruby-ng.eclass" ;;
-	4|5|6)
+	4|5|6|7)
 		# S is no longer automatically assigned when it doesn't exist.
 		S="${WORKDIR}"
 		;;
@@ -205,9 +208,16 @@ ruby_add_rdepend() {
 	case $# in
 		1) ;;
 		2)
-			[[ "${GENTOO_DEV}" == "yes" ]] && eqawarn "You can now use the usual syntax in ruby_add_rdepend for $CATEGORY/$PF"
-			ruby_add_rdepend "$(_ruby_wrap_conditions "$1" "$2")"
-			return
+			case ${EAPI} in
+				4|5|6)
+					[[ "${GENTOO_DEV}" == "yes" ]] && eqawarn "You can now use the usual syntax in ruby_add_rdepend for $CATEGORY/$PF"
+					ruby_add_rdepend "$(_ruby_wrap_conditions "$1" "$2")"
+					return
+					;;
+				*)
+					die "Use the usual depend syntax with a single argument in ruby_add_rdepend"
+					;;
+			esac
 			;;
 		*)
 			die "bad number of arguments to $0"
@@ -220,26 +230,36 @@ ruby_add_rdepend() {
 
 	# Add the dependency as a test-dependency since we're going to
 	# execute the code during test phase.
-	DEPEND="${DEPEND} test? ( ${dependency} )"
+	case ${EAPI} in
+		4|5|6) DEPEND="${DEPEND} test? ( ${dependency} )" ;;
+		*) BDEPEND="${BDEPEND} test? ( ${dependency} )" ;;
+	esac
 	has test "$IUSE" || IUSE="${IUSE} test"
 }
 
 # @FUNCTION: ruby_add_bdepend
 # @USAGE: dependencies
 # @DESCRIPTION:
-# Adds the specified dependencies, with use condition(s) to DEPEND,
-# taking the current set of ruby targets into account. This makes sure
-# that all ruby dependencies of the package are installed for the same
-# ruby targets. Use this function for all ruby dependencies instead of
-# setting DEPEND yourself. The list of atoms uses the same syntax as
-# normal dependencies.
+# Adds the specified dependencies, with use condition(s) to DEPEND (or
+# BDEPEND in EAPI7), taking the current set of ruby targets into
+# account. This makes sure that all ruby dependencies of the package are
+# installed for the same ruby targets. Use this function for all ruby
+# dependencies instead of setting DEPEND or BDEPEND yourself. The list
+# of atoms uses the same syntax as normal dependencies.
 ruby_add_bdepend() {
 	case $# in
 		1) ;;
 		2)
-			[[ "${GENTOO_DEV}" == "yes" ]] && eqawarn "You can now use the usual syntax in ruby_add_bdepend for $CATEGORY/$PF"
-			ruby_add_bdepend "$(_ruby_wrap_conditions "$1" "$2")"
-			return
+			case ${EAPI} in
+				4|5|6)
+					[[ "${GENTOO_DEV}" == "yes" ]] && eqawarn "You can now use the usual syntax in ruby_add_bdepend for $CATEGORY/$PF"
+					ruby_add_bdepend "$(_ruby_wrap_conditions "$1" "$2")"
+					return
+					;;
+				*)
+					die "Use the usual depend syntax with a single argument in ruby_add_bdepend"
+					;;
+			esac
 			;;
 		*)
 			die "bad number of arguments to $0"
@@ -248,8 +268,33 @@ ruby_add_bdepend() {
 
 	local dependency=$(_ruby_atoms_samelib "$1")
 
-	DEPEND="${DEPEND} $dependency"
+	case ${EAPI} in
+		4|5|6) DEPEND="${DEPEND} $dependency" ;;
+		*) BDEPEND="${BDEPEND} $dependency" ;;
+	esac
 	RDEPEND="${RDEPEND}"
+}
+
+# @FUNCTION: ruby_add_depend
+# @USAGE: dependencies
+# @DESCRIPTION:
+
+# Adds the specified dependencies to DEPEND in EAPI7, similar to
+# ruby_add_bdepend.
+ruby_add_depend() {
+	case ${EAPI} in
+		4|5|6) die "only available in EAPI 7 and newer" ;;
+		*) ;;
+	esac
+
+	case $# in
+		1) ;;
+		*) die "bad number of arguments to $0" ;;
+	esac
+
+	local dependency=$(_ruby_atoms_samelib "$1")
+
+	DEPEND="${DEPEND} $dependency"
 }
 
 # @FUNCTION: ruby_get_use_implementations
@@ -283,7 +328,7 @@ ruby_get_use_targets() {
 # confuse this function with ruby_implementation_depend().
 #
 # @EXAMPLE:
-# EAPI=6
+# EAPI=7
 # RUBY_OPTIONAL=yes
 #
 # inherit ruby-ng
@@ -305,6 +350,10 @@ if [[ ${RUBY_OPTIONAL} != yes ]]; then
 	DEPEND="${DEPEND} $(ruby_implementations_depend)"
 	RDEPEND="${RDEPEND} $(ruby_implementations_depend)"
 	REQUIRED_USE+=" || ( $(ruby_get_use_targets) )"
+	case ${EAPI} in
+		4|5|6) ;;
+		*) BDEPEND="${BDEPEND} $(ruby_implementations_depend)" ;;
+	esac
 fi
 
 _ruby_invoke_environment() {
@@ -417,9 +466,14 @@ _ruby_apply_patches() {
 				fi
 			done
 			;;
-		*)
+		6)
 			if [[ -n ${RUBY_PATCHES[@]} ]]; then
 			   eqawarn "RUBY_PATCHES is no longer supported, use PATCHES instead"
+			fi
+			;;
+		*)
+			if [[ -n ${RUBY_PATCHES[@]} ]]; then
+				die "RUBY_PATCHES is no longer supported, use PATCHES instead"
 			fi
 			;;
 	esac
@@ -507,10 +561,10 @@ _each_ruby_check_install() {
 	# we have a Mach-O object here
 	[[ ${CHOST} == *-darwin ]] && scancmd=scanmacho
 
-	local libruby_basename=$(${RUBY} -rrbconfig -e 'puts RbConfig::CONFIG["LIBRUBY_SO"]')
+	local libruby_basename=$(ruby_rbconfig_value 'LIBRUBY_SO')
 	local libruby_soname=$(basename $(${scancmd} -F "%S#F" -qS "${EPREFIX}/usr/$(get_libdir)/${libruby_basename}") 2>/dev/null)
-	local sitedir=$(${RUBY} -rrbconfig -e 'puts RbConfig::CONFIG["sitedir"]')
-	local sitelibdir=$(${RUBY} -rrbconfig -e 'puts RbConfig::CONFIG["sitelibdir"]')
+	local sitedir=$(ruby_rbconfig_value 'sitedir')
+	local sitelibdir=$(ruby_rbconfig_value 'sitelibdir')
 
 	# The current implementation lacks libruby (i.e.: jruby)
 	[[ -z ${libruby_soname} ]] && return 0
@@ -626,8 +680,8 @@ ruby-ng_rspec() {
 		files="spec"
 	fi
 
-	if [[ ${DEPEND} != *"dev-ruby/rspec"* ]]; then
-		ewarn "Missing dev-ruby/rspec in \${DEPEND}"
+	if [[ "${DEPEND}${BDEPEND}" != *"dev-ruby/rspec"* ]]; then
+		ewarn "Missing test dependency dev-ruby/rspec"
 	fi
 
 	local rspec_params=
@@ -657,8 +711,8 @@ ruby-ng_rspec() {
 # This is simply a wrapper around the cucumber command (executed by $RUBY})
 # which also respects TEST_VERBOSE and NOCOLOR environment variables.
 ruby-ng_cucumber() {
-	if [[ ${DEPEND} != *"dev-util/cucumber"* ]]; then
-		ewarn "Missing dev-util/cucumber in \${DEPEND}"
+	if [[ "${DEPEND}${BDEPEND}" != *"dev-util/cucumber"* ]]; then
+		ewarn "Missing test dependency dev-util/cucumber"
 	fi
 
 	local cucumber_params=
@@ -691,8 +745,8 @@ ruby-ng_cucumber() {
 # their script and we installed a broken wrapper for a while.
 # This also respects TEST_VERBOSE and NOCOLOR environment variables.
 ruby-ng_testrb-2() {
-	if [[ ${DEPEND} != *"dev-ruby/test-unit"* ]]; then
-		ewarn "Missing dev-ruby/test-unit in \${DEPEND}"
+	if [[ "${DEPEND}${BDEPEND}" != *"dev-ruby/test-unit"* ]]; then
+		ewarn "Missing test dependency dev-ruby/test-unit"
 	fi
 
 	local testrb_params=
