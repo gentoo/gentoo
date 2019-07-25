@@ -3,8 +3,6 @@
 
 EAPI=7
 
-WANT_AUTOMAKE="1.15"
-
 inherit autotools linux-info pam toolchain-funcs user
 
 DESCRIPTION="A full-featured web proxy cache"
