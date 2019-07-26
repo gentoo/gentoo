@@ -38,5 +38,5 @@ DEPEND="
 	dev-libs/libxslt
 "
 RDEPEND="${DEPEND}
-	!kde-apps/kjots:4
+	!app-text/kjots:4
 "
