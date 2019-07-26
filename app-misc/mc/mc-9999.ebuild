@@ -107,7 +107,7 @@ src_install() {
 
 	if ! use xdg ; then
 		sed 's@MC_XDG_OPEN="xdg-open"@MC_XDG_OPEN="/bin/false"@' \
-			-i "${ED%/}"/usr/libexec/mc/ext.d/*.sh || die
+			-i "${ED}"/usr/libexec/mc/ext.d/*.sh || die
 	fi
 }
 
