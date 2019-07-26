@@ -3,7 +3,7 @@
 
 EAPI=6
 
-DESCRIPTION="LXDE Session default configuration files and nuoveXT2 iconset"
+DESCRIPTION="LXDE Session default configuration files"
 HOMEPAGE="https://wiki.lxde.org/en/LXDE_Common"
 SRC_URI="mirror://sourceforge/lxde/${P}.tar.xz"
 
@@ -16,7 +16,12 @@ RDEPEND="x11-libs/gtk+:2"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	sys-devel/gettext"
-PDEPEND="lxde-base/lxde-icon-theme"
+
+src_prepare() {
+	sed -i 's/\(sNet\/IconThemeName=\).*/\1Adwaita' desktop.conf || die
+
+	default
+}
 
 src_install () {
 	emake DESTDIR="${D}" install
