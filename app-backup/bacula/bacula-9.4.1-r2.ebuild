@@ -173,16 +173,19 @@ src_prepare() {
 	touch src/qt-console/.libs/bat || die
 	chmod 755 src/qt-console/.libs/bat || die
 
-	# fix wrong handling of libressl version
+	# fix handling of libressl version
 	# needs separate handling for <libressl-2.7 and >=libressl2.7
 	# (see bug #655520)
 	if has_version "<dev-libs/libressl-2.7"; then
-		eapply -p0 "${FILESDIR}"/9.0.6/${PN}-9.0.6-libressl26.patch
+		eapply -p0 "${FILESDIR}"/9.4.0/${PN}-9.4.0-libressl26.patch
 	else
-		eapply -p0 "${FILESDIR}"/9.0.6/${PN}-9.0.6-libressl27.patch
+		eapply -p0 "${FILESDIR}"/9.4.0/${PN}-9.4.0-libressl27.patch
 	fi
 
-	# Don't let program instal man pages directly
+	# Fix an integer overflow (Thanks Ph. Stracchino)
+	eapply -p1 "${FILESDIR}"/9.4.1/${PN}-9.4.1_sql.patch
+
+	# Don't let program install man pages directly
 	rm "${S}"/manpages/Makefile.in || die "Unable to remove man pages Makefile.in"
 	eapply -p1 "${FILESDIR}/bacula-fix-manpages.patch"
 
@@ -250,6 +253,7 @@ src_configure() {
 		--with-fd-group=bacula \
 		--enable-smartalloc \
 		--disable-afs \
+		--without-s3 \
 		--host=${CHOST} \
 		${myconf}
 }
@@ -310,6 +314,9 @@ src_install() {
 		fi
 	fi
 
+	# Install all man pages
+	doman "${S}"/manpages/*
+
 	if ! use qt5; then
 		rm -vf "${D}"/usr/share/man/man1/bat.1*
 	fi
@@ -332,9 +339,6 @@ src_install() {
 
 	# documentation
 	dodoc ChangeLog ReleaseNotes SUPPORT
-
-	# Install all man pages
-	doman "${S}"/manpages/*
 
 	# install examples (bug #457504)
 	if use examples; then

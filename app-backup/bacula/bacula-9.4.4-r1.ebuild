@@ -311,6 +311,9 @@ src_install() {
 		fi
 	fi
 
+	# Install all man pages
+	doman "${S}"/manpages/*
+
 	if ! use qt5; then
 		rm -vf "${D}"/usr/share/man/man1/bat.1*
 	fi
@@ -333,9 +336,6 @@ src_install() {
 
 	# documentation
 	dodoc ChangeLog ReleaseNotes SUPPORT
-
-	# Install all man pages
-	doman "${S}"/manpages/*
 
 	# install examples (bug #457504)
 	if use examples; then
