@@ -94,14 +94,10 @@ prelude
 mssql
 
 # havent tested yet
-ctypes-python
 libproxy
-pkcs11
 bazaar
 darcs
 mercurial
-gpg
-gphoto2
 afs
 mono
 lirc
