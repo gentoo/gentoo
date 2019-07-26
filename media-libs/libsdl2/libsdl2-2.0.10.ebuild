@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit autotools flag-o-matic ltprune toolchain-funcs multilib-minimal
+EAPI=7
+inherit autotools flag-o-matic toolchain-funcs multilib-minimal
 
 MY_P="SDL2-${PV}"
 DESCRIPTION="Simple Direct Media Layer"
@@ -11,20 +11,21 @@ SRC_URI="http://www.libsdl.org/release/${MY_P}.tar.gz"
 
 LICENSE="ZLIB"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 ~hppa ia64 ppc ppc64 ~sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 
-IUSE="cpu_flags_x86_3dnow alsa altivec aqua custom-cflags dbus gles haptic libsamplerate +joystick kms cpu_flags_x86_mmx nas opengl oss pulseaudio +sound cpu_flags_x86_sse cpu_flags_x86_sse2 static-libs +threads tslib udev +video video_cards_vc4 wayland X xinerama xscreensaver"
+IUSE="cpu_flags_x86_3dnow alsa altivec aqua custom-cflags dbus gles haptic libsamplerate +joystick kms cpu_flags_x86_mmx nas opengl oss pulseaudio +sound cpu_flags_x86_sse cpu_flags_x86_sse2 static-libs +threads tslib udev +video video_cards_vc4 vulkan wayland X xinerama xscreensaver"
 REQUIRED_USE="
 	alsa? ( sound )
 	gles? ( video )
 	nas? ( sound )
 	opengl? ( video )
 	pulseaudio? ( sound )
+	vulkan? ( video )
 	wayland? ( gles )
 	xinerama? ( X )
 	xscreensaver? ( X )"
 
-RDEPEND="
+CDEPEND="
 	alsa? ( >=media-libs/alsa-lib-1.0.27.2[${MULTILIB_USEDEP}] )
 	dbus? ( >=sys-apps/dbus-1.6.18-r1[${MULTILIB_USEDEP}] )
 	gles? ( >=media-libs/mesa-9.1.6[${MULTILIB_USEDEP},gles2] )
@@ -59,9 +60,15 @@ RDEPEND="
 		xinerama? ( >=x11-libs/libXinerama-1.1.3[${MULTILIB_USEDEP}] )
 		xscreensaver? ( >=x11-libs/libXScrnSaver-1.2.2-r1[${MULTILIB_USEDEP}] )
 	)"
-DEPEND="${RDEPEND}
+RDEPEND="${CDEPEND}
+	vulkan? ( media-libs/vulkan-loader )"
+DEPEND="${CDEPEND}
+	vulkan? ( dev-util/vulkan-headers )
 	X? ( x11-base/xorg-proto )
-	virtual/pkgconfig"
+"
+BDEPEND="
+	virtual/pkgconfig
+"
 
 MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/SDL2/SDL_config.h
@@ -72,19 +79,18 @@ MULTILIB_WRAPPED_HEADERS=(
 
 PATCHES=(
 	# https://bugzilla.libsdl.org/show_bug.cgi?id=1431
-	"${FILESDIR}"/${PN}-2.0.6-static-libs.patch
-	# https://bugzilla.libsdl.org/show_bug.cgi?id=4144
-	"${FILESDIR}"/${P}-rework-variables.patch
-	# https://bugzilla.libsdl.org/show_bug.cgi?id=3977
-	"${FILESDIR}"/${P}-wayland-headers.patch
+	"${FILESDIR}"/${PN}-2.0.10-static-libs.patch
 )
 
 S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
 	default
-	sed -i -e 's/configure.in/configure.ac/' Makefile.in || die
-	mv configure.{in,ac} || die
+
+	# Unbundle some headers.
+	rm -rv src/video/khronos || die
+	ln -s "${SYSROOT}${EPREFIX}"/usr/include src/video/khronos || die
+
 	AT_M4DIR="/usr/share/aclocal acinclude" eautoreconf
 }
 
@@ -106,7 +112,7 @@ multilib_src_configure() {
 		$(use_enable threads)
 		--enable-timers
 		--enable-file
-		$(use_enable kernel_Winnt loadso)
+		--enable-loadso
 		--enable-cpuinfo
 		--enable-assembly
 		$(use_enable cpu_flags_x86_sse ssemath)
@@ -131,7 +137,6 @@ multilib_src_configure() {
 		$(use_enable sound dummyaudio)
 		$(use_enable wayland video-wayland)
 		--disable-wayland-shared
-		--disable-video-mir
 		$(use_enable video_cards_vc4 video-rpi)
 		$(use_enable X video-x11)
 		--disable-x11-shared
@@ -153,7 +158,7 @@ multilib_src_configure() {
 		$(use_enable opengl video-opengl)
 		--disable-video-opengles1
 		$(use_enable gles video-opengles2)
-		--disable-video-vulkan
+		$(use_enable vulkan video-vulkan)
 		$(use_enable udev libudev)
 		$(use_enable dbus)
 		--disable-ibus
@@ -176,6 +181,9 @@ multilib_src_install() {
 }
 
 multilib_src_install_all() {
-	prune_libtool_files
+	find "${ED}" -type f -name "*.la" -delete || die
+	if ! use static-libs ; then
+		find "${ED}" -type f -name "*.a" -delete || die
+	fi
 	dodoc {BUGS,CREDITS,README,README-SDL,TODO,WhatsNew}.txt docs/README*.md
 }
