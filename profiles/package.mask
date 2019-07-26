@@ -29,6 +29,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2019-07-26)
+# Mask new version until more deps keyworded
+>=dev-python/pytest-5.0.1
+
 # Brian Evans <grknight@gentoo.org> (2019-07-25)
 # Mask new beta versions until release
 dev-lang/php:7.4
