@@ -3078,7 +3078,7 @@ dev-libs/libpeas 1.22.0: A GObject plugins library
 dev-libs/libpfm 4.10.1: Hardware-based performance monitoring interface for Linux
 dev-libs/libpipeline 1.4.2: a pipeline manipulation library
 dev-libs/libplatform 2.0.1: Platform support library used by libCEC and binary add-ons for Kodi
-dev-libs/libpqxx 6.0.0: Standard front-end for writing C++ programs that use PostgreSQL
+dev-libs/libpqxx 6.0.0 6.4.5: Standard front-end for writing C++ programs that use PostgreSQL
 dev-libs/libproccpuinfo 0.0.8-r1: Architecture independent C API for reading /proc/cpuinfo
 dev-libs/libpthread-stubs 0.4-r1: Pthread functions stubs for platforms missing them
 dev-libs/libpwquality 1.4.0: Library for password quality checking and generating random passwords
@@ -7038,7 +7038,7 @@ mail-client/neomutt 20180512 20180716: A small but very powerful text-based mail
 mail-client/pinepgp 0.18.0-r1: Use GPG/PGP with Pine
 mail-client/roundcube 1.3.8: A browser-based multilingual IMAP client with an application-like user interface
 mail-client/sylpheed 3.6.0 3.7.0: A lightweight email client and newsreader
-mail-client/thunderbird 60.7.2: Thunderbird Mail Client
+mail-client/thunderbird 60.7.2 60.8.0: Thunderbird Mail Client
 mail-client/thunderbird-bin 60.8.0: Thunderbird Mail Client
 mail-client/trojita 0.7-r2: A Qt IMAP e-mail client
 mail-filter/amavisd-milter 1.5.0 1.5.0-r1: sendmail milter for amavisd-new
@@ -8256,7 +8256,7 @@ media-video/ttcut 0.19.6_p1: Tool for cutting MPEG files especially for removing
 media-video/ushare 1.1a-r8: uShare is a UPnP (TM) A/V & DLNA Media Server
 media-video/vamps 0.99.2 0.99.2-r1: Very fast requantisizing tool for backup DVDs
 media-video/vcdimager 0.7.24 2.0.1: GNU VCDimager
-media-video/vdr 2.0.6-r1 2.2.0-r1: Video Disk Recorder - turns a pc into a powerful set top box for DVB
+media-video/vdr 2.0.6-r1 2.2.0-r1 2.2.0-r3: Video Disk Recorder - turns a pc into a powerful set top box for DVB
 media-video/vdr2jpeg 0.1.9-r1 0.2.0: Addon needed for XXV - WWW Admin for the Video Disk Recorder
 media-video/vdrtools-genindex 0.1.3-r1: VDR: genindex Script
 media-video/vlc 3.0.6-r1 3.0.7.1: Media player and framework with support for most multimedia files and streaming
@@ -10460,7 +10460,7 @@ www-client/elinks 0.12_pre6-r1 0.12_pre6-r4: Advanced and well-established text-
 www-client/epiphany 3.30.4: GNOME webbrowser based on Webkit
 www-client/falkon 3.1.0-r1: Cross-platform web browser using QtWebEngine
 www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
-www-client/firefox 60.7.2: Firefox Web Browser
+www-client/firefox 60.7.2 60.8.0: Firefox Web Browser
 www-client/firefox-bin 60.8.0 68.0.1: Firefox Web Browser
 www-client/httrack 3.48.21-r1: HTTrack Website Copier, Open Source Offline Browser
 www-client/links 2.14-r1: A fast and lightweight web browser running in both graphics and text mode
