@@ -28,7 +28,7 @@ HOMEPAGE="http://www.tvdr.de/"
 SRC_URI="ftp://ftp.tvdr.de/vdr/${MY_P}.tar.bz2
 	https://dev.gentoo.org/~hd_brummy/distfiles/${EXT_P}.patch.bz2"
 
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~x86"
 SLOT="0"
 LICENSE="GPL-2"
 
