@@ -8,12 +8,10 @@ PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1 toolchain-funcs elisp-common
 
-MY_PN="Cython"
-MY_P="${MY_PN}-${PV/_/}"
-
 DESCRIPTION="A Python to C compiler"
-HOMEPAGE="https://cython.org https://pypi.org/project/Cython/"
-SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
+HOMEPAGE="https://cython.org https://pypi.org/project/Cython/
+	https://github.com/cython/cython"
+SRC_URI="https://github.com/cython/cython/archive/${PV}.tar.gz -> ${P}.gh.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
@@ -30,15 +28,6 @@ DEPEND="${RDEPEND}
 	test? ( dev-python/numpy[${PYTHON_USEDEP}] )"
 
 SITEFILE=50cython-gentoo.el
-S="${WORKDIR}/${MY_PN}-${PV%_*}"
-
-python_prepare_all() {
-	# tests behavior that is illegal in Python 3.7+
-	# https://github.com/cython/cython/issues/2454
-	sed -i -e '/with_outer_raising/,/return/d' tests/run/generators_py.py || die
-
-	distutils-r1_python_prepare_all
-}
 
 python_compile() {
 	if ! python_is_python3; then

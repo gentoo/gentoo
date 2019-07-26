@@ -101,7 +101,6 @@ bazaar
 darcs
 mercurial
 gpg
-emacs
 gphoto2
 afs
 mono
