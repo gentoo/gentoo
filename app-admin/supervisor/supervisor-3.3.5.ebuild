@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -73,8 +73,8 @@ pkg_preinst() {
 pkg_postinst() {
 	if [[ -z "${REPLACING_VERSIONS}" ]]; then
 		# This is a new installation
-		elog "You may install your configuration files in ${EROOT%/}/etc/supervisord.d"
-		elog "For config examples, see ${EROOT%/}/usr/share/doc/${PF}/sample.conf.bz2"
+		elog "You may install your configuration files in ${EROOT}/etc/supervisord.d"
+		elog "For config examples, see ${EROOT}/usr/share/doc/${PF}/sample.conf.bz2"
 		elog ""
 		elog "By default, only members of the supervisor group can run supervisorctl."
 	fi

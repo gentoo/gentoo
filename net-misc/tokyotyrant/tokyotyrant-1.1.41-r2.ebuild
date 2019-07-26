@@ -1,13 +1,13 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=2
+EAPI=7
 
-inherit eutils user
+inherit user
 
 DESCRIPTION="A network interface to Tokyo Cabinet"
-HOMEPAGE="http://fallabs.com/tokyotyrant/"
-SRC_URI="${HOMEPAGE}${P}.tar.gz"
+HOMEPAGE="https://fallabs.com/tokyotyrant/"
+SRC_URI="https://fallabs.com/tokyotyrant/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
@@ -16,7 +16,6 @@ IUSE="debug examples lua"
 
 DEPEND="dev-db/tokyocabinet
 	sys-libs/zlib
-	app-arch/bzip2
 	lua? ( dev-lang/lua )"
 RDEPEND="${DEPEND}"
 
@@ -28,8 +27,9 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/fix_makefiles-1.4.41.patch
-	epatch "${FILESDIR}"/fix_testsuite.patch
+	default
+	eapply "${FILESDIR}"/fix_makefiles-1.4.41.patch
+	eapply "${FILESDIR}"/fix_testsuite.patch
 }
 
 src_configure() {
@@ -40,7 +40,7 @@ src_configure() {
 
 src_install() {
 	rm ttservctl || die "Install failed"
-	emake DESTDIR="${D}" install || die "Install failed"
+	default
 
 	for x in /var/{lib,run,log}/${PN}; do
 		dodir "${x}" || die "Install failed"
@@ -49,16 +49,16 @@ src_install() {
 
 	if use examples; then
 		insinto /usr/share/${PF}/example
-		doins example/* || die "Install failed"
+		doins -r example/
 	fi
 
-	dohtml doc/* || die
+	dodoc -r doc
 
-	newinitd "${FILESDIR}/${PN}.initd" ${PN} || die "Install failed"
-	newconfd "${FILESDIR}/${PN}.confd" ${PN} || die "Install failed"
+	newinitd "${FILESDIR}/${PN}.initd" ${PN}
+	newconfd "${FILESDIR}/${PN}.confd" ${PN}
 
 }
 
 src_test() {
-	emake -j1 check || die "Tests failed"
+	emake -j1 check
 }
