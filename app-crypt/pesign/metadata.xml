@@ -10,6 +10,6 @@
     <name>Proxy Maintainers</name>
   </maintainer>
   <upstream>
-    <remote-id type="github">vathpela/pesign</remote-id>
+    <remote-id type="github">rhboot/pesign</remote-id>
   </upstream>
 </pkgmetadata>
