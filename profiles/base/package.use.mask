@@ -7,6 +7,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Lars Wendler <polynomial-c@gentoo.org> (2019-07-26)
+# Requires dev-libs/gumbo which is only keyworded for amd64 and x86
+mail-client/claws-mail litehtml
+
 # David Seifert <soap@gentoo.org> (2019-07-14)
 # media-libs/jasper will be removed in 30 days, bug #689784
 dev-games/openscenegraph jpeg2k
