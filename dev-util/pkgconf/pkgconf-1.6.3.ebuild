@@ -24,7 +24,7 @@ IUSE="+pkg-config test"
 # tests require 'kyua'
 RESTRICT="!test? ( test )"
 
-DEPEND="
+BDEPEND="
 	test? (
 		dev-libs/atf
 		dev-util/kyua
@@ -54,7 +54,8 @@ src_prepare() {
 }
 
 multilib_src_configure() {
-	ECONF_SOURCE="${S}" econf
+	local ECONF_SOURCE="${S}"
+	econf
 }
 
 multilib_src_test() {
@@ -70,6 +71,9 @@ multilib_src_install() {
 		dosym pkgconf.1 /usr/share/man/man1/pkg-config.1
 	else
 		rm "${ED}"/usr/share/aclocal/pkg.m4 || die
+		rmdir "${ED}"/usr/share/aclocal || die
+		rm "${ED}"/usr/share/man/man7/pkg.m4.7 || die
+		rmdir "${ED}"/usr/share/man/man7 || die
 	fi
 }
 
