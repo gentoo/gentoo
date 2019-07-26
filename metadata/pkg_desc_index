@@ -8771,7 +8771,7 @@ net-mail/vchkuser 0.4: qmail-spp plugin to check recipient existance with vpopma
 net-mail/vpopmail 5.4.33: Collection of programs to manage virtual email on Qmail servers
 net-mail/yosucker 73: Downloads mail from a Yahoo! webmail account to a local mail spool, an mbox file, or to procmail
 net-mail/ytnef 1.9.3: Yeraze's TNEF Stream Reader - for winmail.dat files
-net-misc/adjtimex 1.29-r1: display or set the kernel time variables
+net-misc/adjtimex 1.29-r2: display or set the kernel time variables
 net-misc/aget 0.4.1-r2: multithreaded HTTP download accelerator
 net-misc/aggregate 1.6: Perform two optimisations on a list of prefixes to reduce the length of the list
 net-misc/aggregate-flim 1.0.2: aggregate is a tool for aggregating CIDR networks
