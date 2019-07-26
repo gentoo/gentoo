@@ -77,5 +77,5 @@ src_install() {
 	newinitd "${FILESDIR}"/${PN}.init.d ${PN}
 	systemd_dounit ${PN}.service
 
-	rm -f "${D}"usr/share/doc/${PF}/COPYING
+	rm "${D}"usr/share/doc/${PF}/COPYING || die
 }
