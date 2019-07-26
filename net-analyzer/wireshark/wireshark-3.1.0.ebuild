@@ -3,11 +3,11 @@
 
 EAPI=7
 PYTHON_COMPAT=( python3_{5,6,7} )
-inherit fcaps flag-o-matic git-r3 multilib python-r1 qmake-utils user xdg-utils cmake-utils
+inherit fcaps flag-o-matic multilib python-r1 qmake-utils user xdg-utils cmake-utils
 
 DESCRIPTION="A network protocol analyzer formerly known as ethereal"
 HOMEPAGE="https://www.wireshark.org/"
-EGIT_REPO_URI="https://code.wireshark.org/review/wireshark"
+SRC_URI="${HOMEPAGE}download/src/all-versions/${P/_/}.tar.xz"
 LICENSE="GPL-2"
 
 SLOT="0/${PV}"
