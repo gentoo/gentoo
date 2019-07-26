@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/opencryptoki/${PV}/${P}.tgz"
 # token sources are under CPL-1.0 already.
 LICENSE="CPL-0.5"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~s390 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~s390 ~x86"
 IUSE="debug libressl +tpm"
 
 RDEPEND="tpm? ( app-crypt/trousers )
