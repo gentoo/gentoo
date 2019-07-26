@@ -6087,7 +6087,7 @@ dev-tcltk/togl 2.0-r2: A Tk widget for OpenGL rendering
 dev-tcltk/vtcl 1.6.0-r1: Visual Tcl is a high-quality application development environment
 dev-tex/aastex 5.2: LaTeX package for American Astronomical Society journals. (AASTeX)
 dev-tex/biber 2.7: A BibTeX replacement for users of biblatex
-dev-tex/biblatex 3.4-r2 3.7-r1: Reimplementation of the bibliographic facilities provided by LaTeX
+dev-tex/biblatex 3.7-r1: Reimplementation of the bibliographic facilities provided by LaTeX
 dev-tex/bibtex2html 1.98: A bibtex to HTML converter
 dev-tex/bibtexu 3.71_p20150521 3.71_p20160523 3.71_p20170524: 8-bit Implementation of BibTeX 0.99 with a Very Large Capacity
 dev-tex/catdvi 0.14-r1: DVI to plain text translator
