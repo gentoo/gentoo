@@ -1,0 +1,33 @@
+diff --git a/CMakeLists.txt b/kernel-shark/CMakeLists.txt
+index 45c6f23..e2394d9 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -63,11 +63,11 @@ set(KS_LOGO_LABEL  KS_logo_horizontal.svg)
+ 
+ set(CMAKE_INSTALL_RPATH "${_INSTALL_PREFIX}/lib/${KS_APP_NAME}/")
+ 
+-if (CMAKE_BUILD_TYPE MATCHES Package)
++if (NOT CMAKE_BUILD_TYPE MATCHES Package)
+ 
+     set(CMAKE_BUILD_WITH_INSTALL_RPATH TRUE)
+ 
+-else (CMAKE_BUILD_TYPE MATCHES Package)
++else (CMAKE_BUILD_TYPE MATCHES Gentoo)
+ 
+     set(CMAKE_BUILD_WITH_INSTALL_RPATH FALSE)
+ 
+diff --git a/build/FindTraceCmd.cmake b/kernel-shark/build/FindTraceCmd.cmake
+index 2da4eee..c454ce6 100644
+--- a/build/FindTraceCmd.cmake
++++ b/build/FindTraceCmd.cmake
+@@ -40,8 +40,8 @@ find_library(TRACEEVENT_LIBRARY NAMES  traceevent/libtraceevent.a
+ # search was successful "find_path" will do nothing this time.
+ find_program(TRACECMD_EXECUTABLE   NAMES  trace-cmd)
+ find_path(TRACECMD_INCLUDE_DIR  NAMES  trace-cmd/trace-cmd.h)
+-find_library(TRACECMD_LIBRARY   NAMES  trace-cmd/libtracecmd.so)
+-find_library(TRACEEVENT_LIBRARY NAMES  traceevent/libtraceevent.so)
++find_library(TRACECMD_LIBRARY   NAMES  libtracecmd.so)
++find_library(TRACEEVENT_LIBRARY NAMES  libtraceevent.so)
+ 
+ IF (TRACECMD_INCLUDE_DIR AND TRACECMD_LIBRARY AND TRACECMD_EXECUTABLE)
+ 
