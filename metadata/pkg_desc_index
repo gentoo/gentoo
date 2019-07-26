@@ -8942,7 +8942,7 @@ net-misc/tcpsound 0.3.1-r1: Play sounds in response to network traffic
 net-misc/telnet-bsd 1.2-r1: Telnet and telnetd ported from OpenBSD with IPv6 support
 net-misc/throttle 1.2: Bandwidth limiting pipe
 net-misc/tigervnc 1.9.0-r1: Remote desktop viewer display system
-net-misc/tokyotyrant 1.1.41-r1: A network interface to Tokyo Cabinet
+net-misc/tokyotyrant 1.1.41-r2: A network interface to Tokyo Cabinet
 net-misc/udpcast 20120424: Multicast file transfer tool
 net-misc/unison 2.48.4: Two-way cross-platform file synchronizer
 net-misc/unix2tcp 0.8.2-r1: a connection forwarder that converts Unix sockets into TCP sockets
