@@ -44,6 +44,7 @@ dev-python/pygments doc test
 dev-python/setuptools test
 dev-python/snakeoil test
 dev-util/catalyst iso
+dev-util/cmake doc system-jsoncpp test
 dev-util/meson test
 dev-util/ninja doc test
 dev-util/pkgconf test
