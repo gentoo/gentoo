@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install prepare setup test unpack
+DEPEND=dev-lang/go >=dev-lang/go-1.10 virtual/pkgconfig
+DESCRIPTION=Generic template rendering and notifications with Consul
+EAPI=6
+HOMEPAGE=https://github.com/hashicorp/consul-template
+KEYWORDS=~amd64
+LICENSE=MPL-2.0
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/hashicorp/consul-template/archive/v0.20.0.tar.gz -> consul-template-0.20.0.tar.gz
+_eclasses_=golang-base	c57d2c3f9e1a02d0feb8b87c7b689892	golang-vcs-snapshot	12177e83bede6f7fb87eae383864b40b	multilib	1d91b03d42ab6308b5f4f6b598ed110e	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56	user	e68863263b1e8611dacf381bec5c8b2b
+_md5_=6ba88e2ee65aa1d5ad229454ceb5b791
