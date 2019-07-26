@@ -134,7 +134,6 @@ aacplus
 devil
 gts
 anthy
-R
 sdl
 vim-syntax
 
