@@ -157,14 +157,6 @@ sys-freebsd/freebsd-ubin
 sys-freebsd/freebsd-usbin
 sys-freebsd/ubin-wrappers
 
-# Ulrich Müller <ulm@gentoo.org> (2019-06-24)
-# Byte-compilation with recent Emacs versions fails.
-# SRC_URI is gone. Last visible upstream activity in 2008.
-# Use app-emacs/flim as replacement.
-# Masked for removal in 30 days, bug #688596.
-app-emacs/limit
-virtual/emacs-flim
-
 # Jonas Stein <jstein@gentoo.org> (2019-06-24)
 # Source is broken. Upstream is dead since 2011.
 # Removal after 2019-08-01. (bug #688552)
