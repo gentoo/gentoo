@@ -8,10 +8,10 @@ DISTUTILS_OPTIONAL=1
 inherit linux-info python-r1 toolchain-funcs
 
 DESCRIPTION="User-space front-end for Ftrace"
-HOMEPAGE="https://git.kernel.org/cgit/linux/kernel/git/rostedt/trace-cmd.git"
+HOMEPAGE="http://trace-cmd.org/"
 
 if [[ ${PV} == *9999 ]] ; then
-	EGIT_REPO_URI="https://git.kernel.org/pub/scm/linux/kernel/git/rostedt/${PN}.git"
+	EGIT_REPO_URI="https://git.kernel.org/pub/scm/utils/trace-cmd/trace-cmd.git"
 	inherit git-r3
 else
 	SRC_URI="https://git.kernel.org/pub/scm/utils/trace-cmd/trace-cmd.git/snapshot/${PN}-v${PV}.tar.gz"
@@ -33,17 +33,12 @@ DEPEND="${RDEPEND}
 		virtual/pkgconfig
 		dev-lang/swig
 	)
-
 	doc? ( app-text/asciidoc )"
 
 CONFIG_CHECK="
 	~TRACING
 	~FTRACE
 	~BLK_DEV_IO_TRACE"
-
-PATCHES=(
-	"${FILESDIR}/trace-cmd-2.8-python-pkgconfig-name.patch"
-)
 
 pkg_setup() {
 	linux-info_pkg_setup
@@ -64,7 +59,7 @@ src_configure() {
 
 src_compile() {
 	emake "${EMAKE_FLAGS[@]}" NO_PYTHON=1 \
-		trace-cmd libs
+		trace-cmd
 
 	if use python; then
 		python_copy_sources
@@ -76,7 +71,6 @@ src_compile() {
 
 python_compile() {
 	pushd "${BUILD_DIR}" > /dev/null || die
-	python_is_python3 && eapply "${FILESDIR}/trace-cmd-2.8.3-python3-warnings.patch"
 
 	emake "${EMAKE_FLAGS[@]}" \
 		PYTHON_VERS="${EPYTHON}" \
