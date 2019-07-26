@@ -6326,7 +6326,7 @@ dev-util/osc 0.152.0: Command line tool for Open Build Service
 dev-util/patchbin 20160208: Apply binary patches without git
 dev-util/patchelf 0.8: Small utility to modify the dynamic linker and RPATH of ELF executables
 dev-util/patchutils 0.3.3 0.3.4: A collection of tools that operate on patch files
-dev-util/pkgconf 1.3.7 1.5.4: pkg-config compatible replacement with no dependencies other than ANSI C89
+dev-util/pkgconf 1.5.4: pkg-config compatible replacement with no dependencies other than ANSI C89
 dev-util/pkgconfig 0.28-r2 0.29.2: Package config system that manages compile/link flags
 dev-util/premake 3.7 4.3-r1: A makefile generation tool
 dev-util/promu 0.2.0 0.3.0: Prometheus Utility Tool
