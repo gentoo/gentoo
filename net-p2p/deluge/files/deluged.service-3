@@ -1,0 +1,18 @@
+[Unit]
+Description=Deluge Bittorrent Client Daemon
+Documentation=man:deluged
+After=network-online.target
+
+[Service]
+Type=simple
+UMask=007
+
+ExecStart=/usr/bin/deluged -d -c ${DELUGED_HOME} ${DELUGED_OPTS}
+
+Restart=on-failure
+
+# Time to wait before forcefully stopped.
+TimeoutStopSec=300
+
+[Install]
+WantedBy=multi-user.target
