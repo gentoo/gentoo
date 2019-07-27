@@ -1,0 +1,8 @@
+DEFINED_PHASES=install postinst preinst prerm pretend
+DESCRIPTION=System user: systemd-timesync
+EAPI=7
+KEYWORDS=alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 ~riscv s390 sh sparc x86 ~ppc-aix ~x64-cygwin ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+RDEPEND=acct-group/systemd-timesync
+SLOT=0
+_eclasses_=acct-user	4257c71dde1a4622a9e79037d31884ca	user	b3c37f3375252e9ac4c6a157df4e595c
+_md5_=bb13fbcbb1217c0817d90f47c25a46c6

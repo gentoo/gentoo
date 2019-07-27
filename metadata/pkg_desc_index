@@ -6,6 +6,12 @@ acct-group/rtkit 0: Group for the Realtime Policy and Watchdog Daemon
 acct-group/stdiscosrv 0: Group for the Syncthing discovery server
 acct-group/strelaysrv 0: Group for the Syncthing relay server
 acct-group/syncthing 0: Group for the system-wide net-p2p/syncthing server
+acct-group/systemd-coredump 0: System group: systemd-coredump
+acct-group/systemd-journal 0: System group: systemd-journal
+acct-group/systemd-journal-remote 0: System group: systemd-journal-remote
+acct-group/systemd-network 0: System group: systemd-network
+acct-group/systemd-resolve 0: System group: systemd-resolve
+acct-group/systemd-timesync 0: System group: systemd-timesync
 acct-user/burp 0: User for the app-backup/burp server
 acct-user/ftp 0: File Transfer Protocol server user
 acct-user/mail 0: Mail program user
@@ -14,6 +20,11 @@ acct-user/rtkit 0: User for the Realtime Policy and Watchdog Daemon
 acct-user/stdiscosrv 0: User for the Syncthing discovery server
 acct-user/strelaysrv 0: User for the Syncthing relay server
 acct-user/syncthing 0: User for the system-wide net-p2p/syncthing server
+acct-user/systemd-coredump 0: System user: systemd-coredump
+acct-user/systemd-journal-remote 0: System user: systemd-journal-remote
+acct-user/systemd-network 0: System user: systemd-network
+acct-user/systemd-resolve 0: System user: systemd-resolve
+acct-user/systemd-timesync 0: System user: systemd-timesync
 app-accessibility/SphinxTrain 1.0.8: Speech Recognition (Training Module)
 app-accessibility/accerciser 3.22.0: Interactive Python accessibility explorer
 app-accessibility/at-spi2-atk 2.26.2 2.30.1: Gtk module for bridging AT-SPI to Atk
