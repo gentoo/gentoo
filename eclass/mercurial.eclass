@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: mercurial.eclass
@@ -17,6 +17,8 @@
 inherit eutils
 
 EXPORT_FUNCTIONS src_unpack
+
+PROPERTIES+=" live"
 
 DEPEND="dev-vcs/mercurial"
 

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: git-2.eclass
@@ -19,6 +19,8 @@ esac
 
 # This eclass support all EAPIs.
 EXPORT_FUNCTIONS src_unpack
+
+PROPERTIES+=" live"
 
 DEPEND="dev-vcs/git"
 

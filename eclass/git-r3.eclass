@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: git-r3.eclass
@@ -24,6 +24,8 @@ esac
 EXPORT_FUNCTIONS src_unpack
 
 if [[ ! ${_GIT_R3} ]]; then
+
+PROPERTIES+=" live"
 
 if [[ ! ${_INHERITED_BY_GIT_2} ]]; then
 	if [[ ${EAPI:-0} != [0123456] ]]; then
