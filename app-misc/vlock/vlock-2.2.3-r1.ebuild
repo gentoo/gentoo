@@ -17,7 +17,7 @@ KEYWORDS="alpha amd64 ~arm hppa ia64 ~mips ppc ppc64 sparc x86"
 IUSE="pam test"
 
 RDEPEND="
-	!>=sys-apps/kbd-2.1.0[pam]
+	!>=sys-apps/kbd-2.0.4-r1[pam]
 	pam? ( sys-libs/pam )"
 
 DEPEND="
