@@ -173,13 +173,6 @@ media-sound/sfc
 # Bug #452220, #461288, #623360, #685728
 sci-mathematics/gwnum
 
-# David Seifert <soap@gentoo.org> (2019-06-22)
-# Abandoned upstream, last release 5 years ago,
-# extremely brittle codebase, requires constant
-# patching, removal in 30 days
-# Bug #664708, #685924
-sci-biology/allpathslg
-
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2019-06-17)
 # this is now provided by dev-lang/rust{-bin}[rustfmt]
 # it's tightly integrated with rust toolchain, eselect-rust
