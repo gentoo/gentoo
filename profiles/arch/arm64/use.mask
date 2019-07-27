@@ -98,22 +98,17 @@ libproxy
 bazaar
 darcs
 afs
-mono
 lirc
 lm_sensors
-xemacs
-rpm
 scanner
 zvbi
 fluidsynth
 sid
 mms
-mtp
 ieee1394
 pm-utils
 darcs
 bs2b
-toolame
 ladspa
 ldns
 ggi
@@ -124,17 +119,13 @@ tokyocabinet
 rtmp
 vpx
 lpsol
-upnp
 quvi
-bluray
 libtar
 zvbi
-aacplus
 devil
 gts
 anthy
 sdl
-vim-syntax
 
 # Unmask ARM-only video-cards
 -video_cards_exynos
