@@ -5165,7 +5165,7 @@ dev-python/oslo-versionedobjects 1.33.3 1.35.1: A library that provides a generi
 dev-python/oslo-vmware 2.26.0 2.32.2: Oslo VMware library for OpenStack projects
 dev-python/oslotest 3.2.0 3.7.1: Oslo test framework
 dev-python/osprofiler 1.11.0 1.15.2 2.6.0: OpenStack Profiler Library
-dev-python/ovs 2.7.0 2.7.2 2.8.1 2.9.2 2.10.0-r1: OVS bindings for python.
+dev-python/ovs 2.7.0 2.7.2 2.8.1 2.9.2 2.10.0-r1 2.11.0: OVS bindings for python.
 dev-python/ovsdbapp 0.12.2 0.15.0: A library for creating OVSDB applications
 dev-python/owslib 0.16.0-r1: Library for client programming with Open Geospatial Consortium web service
 dev-python/packaging 16.8: Core utilities for Python packages
@@ -5447,7 +5447,7 @@ dev-python/python-openstackclient 3.14.3 3.16.2 3.18.0: A client for the OpenSta
 dev-python/python-poppler 0.12.1-r4: Python bindings to the Poppler PDF library
 dev-python/python-poppler-qt5 0.24.2_p20170214: A python binding for libpoppler-qt5
 dev-python/python-ptrace 0.8.1-r1: A debugger using ptrace (Linux, BSD and Darwin system call to trace processes)
-dev-python/python-saharaclient 2.2.0: This is a client for the OpenStack Sahara API, aka HADOOP
+dev-python/python-saharaclient 2.2.1: This is a client for the OpenStack Sahara API, aka HADOOP
 dev-python/python-senlinclient 1.0.0 1.2.0: A client for the OpenStack Senlin API
 dev-python/python-sense-hat 2.2.0-r1: Raspberry Pi Sense HAT python library
 dev-python/python-slip 0.6.5: Miscellaneous convenience, extension and workaround code for Python
@@ -5841,7 +5841,7 @@ dev-ruby/erubi 1.7.0: a ERB template engine for ruby; a simplified fork of Erubi
 dev-ruby/erubis 2.7.0-r2: Erubis is an implementation of eRuby
 dev-ruby/eventmachine 1.2.7: EventMachine is a fast, simple event-processing library for Ruby programs
 dev-ruby/execjs 2.7.0: ExecJS lets you run JavaScript code from Ruby
-dev-ruby/facter 3.9.2-r1 3.13.2-r1: A cross-platform ruby library for retrieving facts from operating systems
+dev-ruby/facter 3.9.2-r1 3.13.2-r1 3.14.2: A cross-platform ruby library for retrieving facts from operating systems
 dev-ruby/fakefs 0.19.2: A fake filesystem. Use it in your tests
 dev-ruby/fakeweb 1.3.0.20170806: Helper for faking web requests in Ruby
 dev-ruby/fast_gettext 1.6.0: GetText but 3.5x faster, 560x less memory, clean namespace and threadsave!
