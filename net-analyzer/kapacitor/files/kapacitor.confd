@@ -10,3 +10,6 @@
 
 # Extra options to pass to kapacitord:
 #kapacitor_opts=""
+
+# Uncomment / edit to enable healthchecks
+#KAPACITOR_HEALTHCHECK_URI="http://127.0.0.1:9092/kapacitor/v1/ping"
