@@ -97,7 +97,6 @@ mssql
 libproxy
 bazaar
 darcs
-mercurial
 afs
 mono
 lirc
