@@ -1,46 +1,49 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: vcs-snapshot.eclass
 # @MAINTAINER:
 # mgorny@gentoo.org
-# @SUPPORTED_EAPIS: 0 1 2 3 4 5 6
+# @SUPPORTED_EAPIS: 0 1 2 3 4 5 6 7
 # @BLURB: support eclass for unpacking VCS snapshot tarballs
 # @DESCRIPTION:
+# THIS ECLASS IS NOT NECESSARY FOR MODERN GITHUB AND GITLAB SNAPSHOTS.
+# THEIR DIRECTORY STRUCTURE IS ENTIRELY PREDICTABLE, SO UPDATE YOUR
+# EBUILD TO USE /ARCHIVE/ URI AND SET S IF NECESSARY.
+#
 # This eclass provides a convenience src_unpack() which does unpack all
 # the tarballs in SRC_URI to locations matching their (local) names,
 # discarding the original parent directory.
 #
-# The typical use case are VCS snapshots, coming from bitbucket
-# and similar services. They have hash appended to the directory name
-# which makes extracting them a painful experience. But if you just use
-# a SRC_URI arrow to rename it (which you're likely have to do anyway),
-# vcs-snapshot will just extract it into a matching directory.
+# The typical use case are VCS tag snapshots coming from BitBucket
+# (but not GitHub or GitLab).  They have hash appended to the directory
+# name which makes extracting them a painful experience.  But if you are
+# using a SRC_URI arrow to rename them (which quite likely you have to
+# do anyway), vcs-snapshot will just extract them into matching
+# directories.
 #
 # Please note that this eclass handles only tarballs (.tar, .tar.gz,
-# .tar.bz2 & .tar.xz). For any other file format (or suffix) it will
-# fall back to regular unpack. Support for additional formats may be
-# added at some point so please keep your SRC_URIs clean.
-#
-# Note: this eclass is no longer needed with the new-style 'archive'
-# GitHub URLs. They have sane directory names and stable contents,
-# so you should really prefer them.
+# .tar.bz2 & .tar.xz).  For any other file format (or suffix) it will
+# fall back to regular unpack.  Support for additional formats may be
+# added in the future if necessary.
 #
 # @EXAMPLE:
 #
 # @CODE
-# EAPI=6
+# EAPI=7
 # inherit vcs-snapshot
 #
-# SRC_URI="https://github.com/example/${PN}/tarball/v${PV} -> ${P}.tar.gz
-# 	https://github.com/example/${PN}-otherstuff/tarball/v${PV} -> ${P}-otherstuff.tar.gz"
+# SRC_URI="
+#    https://bitbucket.org/foo/bar/get/${PV}.tar.bz2 -> ${P}.tar.bz2
+#    https://bitbucket.org/foo/bar-otherstuff/get/${PV}.tar.bz2
+#        -> ${P}-otherstuff.tar.bz2"
 # @CODE
 #
 # and however the tarballs were originally packed, all files will appear
 # in ${WORKDIR}/${P} and ${WORKDIR}/${P}-otherstuff respectively.
 
 case ${EAPI:-0} in
-	0|1|2|3|4|5|6) ;;
+	0|1|2|3|4|5|6|7) ;;
 	*) die "vcs-snapshot.eclass API in EAPI ${EAPI} not yet established."
 esac
 
@@ -55,6 +58,7 @@ EXPORT_FUNCTIONS src_unpack
 vcs-snapshot_src_unpack() {
 	debug-print-function ${FUNCNAME} "${@}"
 
+	local renamed_any=
 	local f
 
 	for f in ${A}
@@ -65,10 +69,25 @@ vcs-snapshot_src_unpack() {
 
 				debug-print "${FUNCNAME}: unpacking ${f} to ${destdir}"
 
-				# XXX: check whether the directory structure inside is
-				# fine? i.e. if the tarball has actually a parent dir.
+				local l topdirs=()
+				while read -r l; do
+					topdirs+=( "${l}" )
+				done < <(tar -t -f "${DISTDIR}/${f}" | cut -d/ -f1 | sort -u)
+				if [[ ${#topdirs[@]} -gt 1 ]]; then
+					eerror "The archive ${f} contains multiple or no top directory."
+					eerror "It is impossible for vcs-snapshot to unpack this correctly."
+					eerror "Top directories found:"
+					local d
+					for d in "${topdirs[@]}"; do
+						eerror "    ${d}"
+					done
+					die "${FUNCNAME}: Invalid directory structure in archive ${f}"
+				fi
+				[[ ${topdirs[0]} != ${f%.tar*} ]] && renamed_any=1
+
 				mkdir "${destdir}" || die
 				# -o (--no-same-owner) to avoid restoring original owner
+				einfo "Unpacking ${f}"
 				tar -C "${destdir}" -x -o --strip-components 1 \
 					-f "${DISTDIR}/${f}" || die
 				;;
@@ -80,4 +99,14 @@ vcs-snapshot_src_unpack() {
 				;;
 		esac
 	done
+
+	if [[ ! ${renamed_any} ]]; then
+		local w=eerror
+		[[ ${EAPI} == [0123456] ]] && w=eqawarn
+		"${w}" "${FUNCNAME} did not find any archives that needed renaming."
+		"${w}" "Please verify that its usage is really necessary, and remove"
+		"${w}" "the inherit if it is not."
+
+		[[ ${w} == eerror ]] && die "${FUNCNAME}: Unnecessary usage detected"
+	fi
 }
