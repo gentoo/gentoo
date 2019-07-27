@@ -97,7 +97,6 @@ src_prepare() {
 	fi
 
 	local PATCHES=(
-		"${FILESDIR}/236-uucp-group.patch"
 	)
 
 	default
