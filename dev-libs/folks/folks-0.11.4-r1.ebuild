@@ -58,6 +58,7 @@ DEPEND="${COMMON_DEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/${PV}-vala-0.42-compat.patch
+	"${FILESDIR}"/${PV}-vala-0.42-tests-compat.patch
 )
 
 src_prepare() {
