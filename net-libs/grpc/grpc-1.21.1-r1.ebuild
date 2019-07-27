@@ -32,9 +32,9 @@ BDEPEND="virtual/pkgconfig"
 RESTRICT="test"
 
 PATCHES=(
-	"${FILESDIR}/1.21.0-fix-host-ar-handling.patch"
-	"${FILESDIR}/0003-grpc-1.3.0-Don-t-run-ldconfig.patch"
-	"${FILESDIR}/0005-grpc-1.11.0-pkgconfig-libdir.patch"
+	"${FILESDIR}/grpc-1.21.0-fix-host-ar-handling.patch"
+	"${FILESDIR}/grpc-1.3.0-Don-t-run-ldconfig.patch"
+	"${FILESDIR}/grpc-1.11.0-pkgconfig-libdir.patch"
 	"${FILESDIR}/grpc-1.16.0-Prevent-shell-calls-longer-than-ARG_MAX.patch"
 )
 
