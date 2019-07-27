@@ -177,13 +177,6 @@ sci-mathematics/gwnum
 # Abandoned upstream, last release 5 years ago,
 # extremely brittle codebase, requires constant
 # patching, removal in 30 days
-# Bug #664700, #685980
-sci-biology/vaal
-
-# David Seifert <soap@gentoo.org> (2019-06-22)
-# Abandoned upstream, last release 5 years ago,
-# extremely brittle codebase, requires constant
-# patching, removal in 30 days
 # Bug #664708, #685924
 sci-biology/allpathslg
 
