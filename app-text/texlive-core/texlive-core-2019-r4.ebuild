@@ -167,6 +167,11 @@ src_configure() {
 	# that don't have the same alphabetical order than ascii. Bug #242430
 	# So we set LC_ALL to C in order to avoid problems.
 	export LC_ALL=C
+
+	# Disable freetype-config as this is considered obsolete.
+	# Also only pkg-config works for prefix as described in bug #690094
+	export ac_cv_prog_ac_ct_FT2_CONFIG=no
+
 	tc-export CC CXX AR RANLIB
 	ECONF_SOURCE="${B}" \
 		econf -C \
