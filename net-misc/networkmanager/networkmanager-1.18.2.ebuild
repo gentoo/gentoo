@@ -22,7 +22,7 @@ REQUIRED_USE="
 	iwd? ( wifi )
 	vala? ( introspection )
 	wext? ( wifi )
-	^^ ( nss gnutls )
+	|| ( nss gnutls )
 	?? ( consolekit elogind systemd )
 "
 
@@ -50,14 +50,14 @@ COMMON_DEPEND="
 	dhclient? ( >=net-misc/dhcp-4[client] )
 	dhcpcd? ( net-misc/dhcpcd )
 	elogind? ( >=sys-auth/elogind-219 )
-	gnutls? (
-		dev-libs/libgcrypt:0=[${MULTILIB_USEDEP}]
-		>=net-libs/gnutls-2.12:=[${MULTILIB_USEDEP}] )
 	introspection? ( >=dev-libs/gobject-introspection-0.10.3:= )
 	json? ( >=dev-libs/jansson-2.5[${MULTILIB_USEDEP}] )
 	modemmanager? ( >=net-misc/modemmanager-0.7.991:0= )
 	ncurses? ( >=dev-libs/newt-0.52.15 )
 	nss? ( >=dev-libs/nss-3.11:=[${MULTILIB_USEDEP}] )
+	!nss? ( gnutls? (
+		dev-libs/libgcrypt:0=[${MULTILIB_USEDEP}]
+		>=net-libs/gnutls-2.12:=[${MULTILIB_USEDEP}] ) )
 	ofono? ( net-misc/ofono )
 	ovs? ( dev-libs/jansson )
 	ppp? ( >=net-dialup/ppp-2.4.5:=[ipv6] )
