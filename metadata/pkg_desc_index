@@ -1797,7 +1797,7 @@ dev-ada/gnatcoll-core 2018: GNAT Component Collection Core packages
 dev-ada/gnatcoll-db 2018: GNAT Component Collection
 dev-ada/gnatmem 2018: Monitors dynamic allocation and deallocation activity in a program
 dev-ada/gnatsymbolize 2018: Translates addresses into filename, line number, and function names
-dev-ada/gprbuild 2017-r1 2018-r3: Multi-Language Management
+dev-ada/gprbuild 2017-r1 2018-r3 2018-r4 2019: Multi-Language Management
 dev-ada/gps 2017 2018-r1: The GNAT Programming Studio
 dev-ada/gtkada 2017 2018: A complete Ada graphical toolkit
 dev-ada/langkit 2017 2018: A Python framework to generate language parsers
@@ -6113,7 +6113,7 @@ dev-tex/detex 2.8-r1: A filter program that removes the LaTeX (or TeX) control s
 dev-tex/dot2tex 2.9.0: A Graphviz to LaTeX converter
 dev-tex/dot2texi 3.0: Create graphs within LaTeX using the dot2tex tool
 dev-tex/dvi2tty 5.3.4: Preview dvi-files on text-only devices
-dev-tex/dvipost 1.1-r2 1.1-r3: post processor for dvi files
+dev-tex/dvipost 1.1-r3: post processor for dvi files
 dev-tex/envlab 1.2-r1: A LaTeX module to format envelopes
 dev-tex/europecv 20060424-r2: LaTeX class for the standard model for curricula vitae as recommended by the EC
 dev-tex/feynmf 1.08-r6: Combined LaTeX/Metafont package for drawing of Feynman diagrams
