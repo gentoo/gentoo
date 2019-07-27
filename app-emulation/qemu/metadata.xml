@@ -40,6 +40,7 @@
 		<flag name="snappy">Enable support for snappy compression</flag>
 		<flag name="systemtap">Enable SystemTAP/DTrace tracing</flag>
 		<flag name="tci">Enable the TCG Interpreter which can speed up or slowdown workloads depending on the host and guest CPUs being emulated. In the future it will be a runtime option but for now its compile time.</flag>
+		<flag name="jemalloc">Enable jemalloc allocator support</flag>
 		<flag name="jpeg">Enable jpeg image support for the VNC console server</flag>
 		<flag name="png">Enable png image support for the VNC console server</flag>
 		<flag name="usb">Enable USB passthrough via <pkg>dev-libs/libusb</pkg></flag>
