@@ -72,6 +72,12 @@ DEPEND="${COMMON_DEPEND}
 
 # baselayout-2.2 has /run
 RDEPEND="${COMMON_DEPEND}
+	acct-group/systemd-journal
+	acct-user/systemd-journal-remote
+	acct-user/systemd-coredump
+	acct-user/systemd-network
+	acct-user/systemd-resolve
+	acct-user/systemd-timesync
 	>=sys-apps/baselayout-2.2
 	selinux? ( sec-policy/selinux-base-policy[systemd] )
 	sysv-utils? ( !sys-apps/sysvinit )
@@ -85,7 +91,8 @@ RDEPEND="${COMMON_DEPEND}
 	!sys-auth/nss-myhostname
 	!<sys-kernel/dracut-044
 	!sys-fs/eudev
-	!sys-fs/udev"
+	!sys-fs/udev
+"
 
 # sys-apps/dbus: the daemon only (+ build-time lib dep for tests)
 PDEPEND=">=sys-apps/dbus-1.9.8[systemd]
@@ -419,22 +426,9 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	newusergroup() {
-		enewgroup "$1"
-		enewuser "$1" -1 -1 -1 "$1"
-	}
-
 	enewgroup input
 	enewgroup kvm 78
 	enewgroup render
-	enewgroup systemd-journal
-	newusergroup systemd-coredump
-	newusergroup systemd-journal-gateway
-	newusergroup systemd-journal-remote
-	newusergroup systemd-journal-upload
-	newusergroup systemd-network
-	newusergroup systemd-resolve
-	newusergroup systemd-timesync
 
 	systemd_update_catalog
 
