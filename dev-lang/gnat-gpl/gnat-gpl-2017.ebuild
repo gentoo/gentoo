@@ -100,13 +100,11 @@ src_prepare() {
 	GNATBIND="${gnatbase/gcc/gnatbind}"
 	GNATLINK="${gnatbase/gcc/gnatlink}"
 	GNATLS="${gnatbase/gcc/gnatls}"
-	GCCAR="${gnatbase/gcc/gcc-ar}"
 	if [[ ${gnatpath} != "." ]] ; then
 		CXX="${gnatpath}/${CXX}"
 		GNATBIND="${gnatpath}/${GNATBIND}"
 		GNATLINK="${gnatpath}/${GNATLINK}"
 		GNATLS="${gnatpath}/${GNATLS}"
-		GCCAR="${gnatpath}/${GCCAR}"
 	fi
 	mkdir bin || die
 	ln -s $(which ${GCC}) bin/gcc || die
@@ -115,7 +113,6 @@ src_prepare() {
 	ln -s $(which ${GNATBIND}) bin/gnatbind || die
 	ln -s $(which ${GNATLINK}) bin/gnatlink || die
 	ln -s $(which ${GNATLS}) bin/gnatls || die
-	ln -s $(which ${GCCAR}) bin/ar || die
 
 	echo ${TOOLCHAIN_GCC_PV} > gcc/BASE-VER
 
