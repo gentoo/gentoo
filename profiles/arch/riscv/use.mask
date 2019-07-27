@@ -13,6 +13,7 @@ consolekit
 dbus
 elogind
 emacs
+fontconfig
 fuse
 gtk
 gtk2
