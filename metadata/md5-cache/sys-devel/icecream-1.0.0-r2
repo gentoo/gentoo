@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=sys-libs/libcap-ng dev-util/shadowman
 SLOT=0
 SRC_URI=ftp://ftp.suse.com/pub/projects/icecream/icecc-1.0.0.tar.bz2
-_eclasses_=user	e68863263b1e8611dacf381bec5c8b2b
+_eclasses_=user	b3c37f3375252e9ac4c6a157df4e595c
 _md5_=9671d6ba5c4e88e39a0ae1d220b83e18

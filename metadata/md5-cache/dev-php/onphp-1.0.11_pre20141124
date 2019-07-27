@@ -8,5 +8,5 @@ LICENSE=LGPL-2
 RDEPEND=dev-lang/php:*
 SLOT=0
 SRC_URI=https://github.com/onPHP/onphp-framework/archive/706ddd5a2a33bd65a13c4e3ec8c46c5ce700133c.tar.gz -> onphp-1.0.11_pre20141124.tar.gz doc? ( http://onphp.org/download/onphp-api-1.0.10.tar.bz2 )
-_eclasses_=vcs-snapshot	b77011b62e2053c646ad720defe6d921
+_eclasses_=vcs-snapshot	b1abf460a493fc59ebb25de0df3f09dd
 _md5_=989437e668302b593d989f071673c9ab

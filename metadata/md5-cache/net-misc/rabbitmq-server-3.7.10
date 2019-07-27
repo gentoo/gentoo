@@ -10,5 +10,5 @@ RDEPEND=>=dev-lang/erlang-19.3[ssl,smp]
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/rabbitmq/rabbitmq-server/releases/download/v3.7.10/rabbitmq-server-3.7.10.tar.xz
-_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-any-r1	b5f01473006ccc2cd78bc3dab20fced4	python-utils-r1	08e17157a6807add7db1f8d01e7e391f	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56	user	e68863263b1e8611dacf381bec5c8b2b
+_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-any-r1	b5f01473006ccc2cd78bc3dab20fced4	python-utils-r1	08e17157a6807add7db1f8d01e7e391f	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56	user	b3c37f3375252e9ac4c6a157df4e595c
 _md5_=2e75549219168a8dd25b86a8925b1424

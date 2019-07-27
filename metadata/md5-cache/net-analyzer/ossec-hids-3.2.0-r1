@@ -10,5 +10,5 @@ RDEPEND=mysql? ( virtual/mysql ) sqlite? ( dev-db/sqlite:3 ) postgres? ( dev-db/
 REQUIRED_USE=^^ ( agent hybrid local server ) ?? ( mysql postgres )
 SLOT=0
 SRC_URI=https://github.com/ossec/ossec-hids/archive/3.2.0.tar.gz -> ossec-hids-3.2.0.tar.gz
-_eclasses_=user	e68863263b1e8611dacf381bec5c8b2b
+_eclasses_=user	b3c37f3375252e9ac4c6a157df4e595c
 _md5_=e7139498b4902f3d8f4e8e0ae33d51f8

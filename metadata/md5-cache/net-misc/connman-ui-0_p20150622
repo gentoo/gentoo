@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=dev-libs/glib:2 sys-apps/dbus x11-libs/gtk+:3 net-misc/connman
 SLOT=0
 SRC_URI=https://github.com/tbursztyka/connman-ui/archive/fce0af94e121bde77c7fa2ebd6a319f0180c5516.tar.gz -> connman-ui-0_p20150622.tar.gz
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56	vcs-snapshot	b77011b62e2053c646ad720defe6d921
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56	vcs-snapshot	b1abf460a493fc59ebb25de0df3f09dd
 _md5_=249fa7a1106a0d6846f88969aaff354b

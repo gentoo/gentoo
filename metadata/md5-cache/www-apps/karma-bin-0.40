@@ -7,5 +7,5 @@ LICENSE=Apache-2.0
 RESTRICT=strip
 SLOT=0
 SRC_URI=https://github.com/prymitive/karma/releases/download/v0.40/karma-linux-amd64.tar.gz -> karma-bin-0.40-amd64.tar.gz
-_eclasses_=user	e68863263b1e8611dacf381bec5c8b2b
+_eclasses_=user	b3c37f3375252e9ac4c6a157df4e595c
 _md5_=1507946e3374b94519ac96ef38f33019

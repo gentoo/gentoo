@@ -10,5 +10,5 @@ RDEPEND=virtual/tmpfiles
 REQUIRED_USE=test? ( xtinyproxy-header )
 SLOT=0
 SRC_URI=https://github.com/tinyproxy/tinyproxy/releases/download/1.10.0/tinyproxy-1.10.0.tar.xz
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	tmpfiles	96a7c72c5b059d0b75854baf84950ce3	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56	user	e68863263b1e8611dacf381bec5c8b2b
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	tmpfiles	96a7c72c5b059d0b75854baf84950ce3	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56	user	b3c37f3375252e9ac4c6a157df4e595c
 _md5_=5021c8a62f4951f76dced2be4bb172f1

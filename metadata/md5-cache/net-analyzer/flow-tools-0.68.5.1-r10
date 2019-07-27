@@ -9,5 +9,5 @@ LICENSE=BSD GPL-2
 RDEPEND=sys-apps/tcp-wrappers sys-libs/zlib mysql? ( dev-db/mysql-connector-c:0= ) postgres? ( dev-db/postgresql:* ) ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) )
 SLOT=0
 SRC_URI=https://flow-tools.googlecode.com/files/flow-tools-0.68.5.1.tar.bz2
-_eclasses_=user	e68863263b1e8611dacf381bec5c8b2b
+_eclasses_=user	b3c37f3375252e9ac4c6a157df4e595c
 _md5_=afc46b0d4ee0abe8035fb258bd8b22c6

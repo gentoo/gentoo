@@ -10,5 +10,5 @@ RDEPEND=dev-libs/boehm-gc:= sys-libs/ncurses:0= sys-libs/zlib X? ( x11-libs/libX
 REQUIRED_USE=X? ( ?? ( gdk-pixbuf imlib ) ) fbcon? ( ?? ( gdk-pixbuf imlib ) )
 SLOT=0
 SRC_URI=https://github.com/tats/w3m/archive/v0.5.3+git20180125.tar.gz -> w3m-0.5.3+git20180125.tar.gz
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	prefix	e51c7882b7b721e54e684f7eb143cbfe	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56	vcs-snapshot	b77011b62e2053c646ad720defe6d921
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	prefix	e51c7882b7b721e54e684f7eb143cbfe	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56	vcs-snapshot	b1abf460a493fc59ebb25de0df3f09dd
 _md5_=7d97d1f753b04a898919115534d0fc7c

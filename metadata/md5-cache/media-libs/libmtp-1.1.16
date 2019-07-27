@@ -10,5 +10,5 @@ LICENSE=LGPL-2.1
 RDEPEND=virtual/libusb:1 crypt? ( >=dev-libs/libgcrypt-1.5.4:0= )
 SLOT=0/9
 SRC_URI=mirror://sourceforge/libmtp/libmtp-1.1.16.tar.gz
-_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56	udev	7752f306eec7b286d00bdb47b763e7ac	user	e68863263b1e8611dacf381bec5c8b2b
+_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56	udev	7752f306eec7b286d00bdb47b763e7ac	user	b3c37f3375252e9ac4c6a157df4e595c
 _md5_=8ad8dd121a67639aada68e6bb9594bad

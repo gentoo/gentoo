@@ -10,5 +10,5 @@ LICENSE=Apache-2.0 BSD BSD-2 LGPL-3 MIT MPL-2.0
 RDEPEND=daemon? ( app-arch/xz-utils >=app-emulation/lxc-2.0.7[seccomp] dev-libs/libuv dev-libs/lzo dev-util/xdelta:3 dnsmasq? ( net-dns/dnsmasq[dhcp,ipv6?] ) net-firewall/ebtables net-firewall/iptables[ipv6?] net-libs/libnfnetlink net-libs/libnsl:0= net-misc/rsync[xattr] sys-apps/iproute2[ipv6?] sys-fs/fuse sys-fs/lxcfs sys-fs/squashfs-tools virtual/acl )
 SLOT=0
 SRC_URI=https://linuxcontainers.org/downloads/lxd/lxd-3.14.tar.gz
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	bash-completion-r1	47a7402d95930413ce25ba8d857339bb	libtool	f143db5a74ccd9ca28c1234deffede96	linux-info	953c3b1c472dcadbf62098a9301327f2	multilib	1d91b03d42ab6308b5f4f6b598ed110e	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56	user	e68863263b1e8611dacf381bec5c8b2b
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	bash-completion-r1	47a7402d95930413ce25ba8d857339bb	libtool	f143db5a74ccd9ca28c1234deffede96	linux-info	953c3b1c472dcadbf62098a9301327f2	multilib	1d91b03d42ab6308b5f4f6b598ed110e	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56	user	b3c37f3375252e9ac4c6a157df4e595c
 _md5_=07aa339a4202b51aac34cf2641ea3a52

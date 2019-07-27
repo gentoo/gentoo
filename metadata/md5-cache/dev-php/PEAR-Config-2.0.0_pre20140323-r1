@@ -9,5 +9,5 @@ LICENSE=PHP-2.02
 RDEPEND=xml? ( dev-php/PEAR-XML_Parser dev-php/PEAR-XML_Util ) >=dev-php/pear-1.8.1
 SLOT=0
 SRC_URI=https://github.com/pear/Config/archive/606a24034ad80f9d6ccb5a8b698b702b392e4674.tar.gz -> Config-2.0.0_pre20140323.tar.gz
-_eclasses_=php-pear-r2	479e8a084e98f4d730da647bba3e589e	vcs-snapshot	b77011b62e2053c646ad720defe6d921
+_eclasses_=php-pear-r2	479e8a084e98f4d730da647bba3e589e	vcs-snapshot	b1abf460a493fc59ebb25de0df3f09dd
 _md5_=7f1a4d7b439d08115f04f71012cc2c99

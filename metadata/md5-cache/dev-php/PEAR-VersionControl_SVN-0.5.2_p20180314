@@ -9,5 +9,5 @@ LICENSE=BSD
 RDEPEND=>=dev-php/pear-1.8.1
 SLOT=0
 SRC_URI=https://github.com/pear/VersionControl_SVN/archive/6c9580df92f0cc77a6eb6fcc216c56913bf308e7.tar.gz -> PEAR-VersionControl_SVN-0.5.2_p20180314.tar.gz
-_eclasses_=php-pear-r2	479e8a084e98f4d730da647bba3e589e	vcs-snapshot	b77011b62e2053c646ad720defe6d921
+_eclasses_=php-pear-r2	479e8a084e98f4d730da647bba3e589e	vcs-snapshot	b1abf460a493fc59ebb25de0df3f09dd
 _md5_=7c89bc31a6cda70419c0e67a101727ae

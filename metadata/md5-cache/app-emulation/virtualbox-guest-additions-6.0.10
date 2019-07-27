@@ -11,5 +11,5 @@ PDEPEND=X? ( x11-drivers/xf86-video-vboxvideo )
 RDEPEND=X? ( x11-apps/xrandr x11-apps/xrefresh x11-libs/libXmu x11-libs/libX11 x11-libs/libXt x11-libs/libXext x11-libs/libXau x11-libs/libXdmcp x11-libs/libSM x11-libs/libICE ) sys-apps/dbus kernel_linux? ( virtual/modutils )
 SLOT=0
 SRC_URI=https://download.virtualbox.org/virtualbox/6.0.10/VirtualBox-6.0.10.tar.bz2 https://dev.gentoo.org/~polynomial-c/virtualbox/patchsets/virtualbox-6.0.0_beta2-patches-01.tar.xz
-_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	linux-info	953c3b1c472dcadbf62098a9301327f2	linux-mod	6c7b3e7b9d39bd049bf23a991c16315e	multilib	1d91b03d42ab6308b5f4f6b598ed110e	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56	user	e68863263b1e8611dacf381bec5c8b2b
+_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	linux-info	953c3b1c472dcadbf62098a9301327f2	linux-mod	6c7b3e7b9d39bd049bf23a991c16315e	multilib	1d91b03d42ab6308b5f4f6b598ed110e	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56	user	b3c37f3375252e9ac4c6a157df4e595c
 _md5_=fedec4ed725d102cc7d0047d8ec910ce

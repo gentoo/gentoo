@@ -11,5 +11,5 @@ RDEPEND=alsa? ( media-libs/alsa-lib ) ao? ( >=media-libs/libao-0.8.5 ) emacs? ( 
 REQUIRED_USE=tk? ( X )
 SLOT=0
 SRC_URI=mirror://sourceforge/timidity/TiMidity++-2.14.0.tar.xz
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	desktop	b1d22ac8bdd4679ab79c71aca235009d	elisp-common	23f47b2e1de7abf387105eddd1318738	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56	user	e68863263b1e8611dacf381bec5c8b2b	xdg-utils	14d00d009167652b1fa363e55effe213
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	desktop	b1d22ac8bdd4679ab79c71aca235009d	elisp-common	23f47b2e1de7abf387105eddd1318738	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56	user	b3c37f3375252e9ac4c6a157df4e595c	xdg-utils	14d00d009167652b1fa363e55effe213
 _md5_=0697f987ee9a3baa03abdfb7ddf7952c

@@ -8,5 +8,5 @@ LICENSE=GPL-3
 RDEPEND=>=app-shells/bash-4.0:* dev-libs/glib:2 sys-apps/util-linux virtual/acl >=virtual/udev-143
 SLOT=0
 SRC_URI=https://github.com/IgnorantGuru/udevil/archive/0.4.4.tar.gz -> udevil-0.4.4.tar.gz
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	epatch	a1bf4756dba418a7238f3be0cb010c54	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56	user	e68863263b1e8611dacf381bec5c8b2b
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	epatch	a1bf4756dba418a7238f3be0cb010c54	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56	user	b3c37f3375252e9ac4c6a157df4e595c
 _md5_=ebb76c13bde82108aa5206ecdc139436

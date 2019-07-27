@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=>=dev-libs/boost-1.35:= dev-libs/libedit:= fstrm? ( dev-libs/fstrm:= ) luajit? ( dev-lang/luajit:= ) !luajit? ( >=dev-lang/lua-5.1:= ) remote-logging? ( >=dev-libs/protobuf-3:= ) regex? ( dev-libs/re2:= ) snmp? ( net-analyzer/net-snmp:= ) ssl? ( dev-libs/libsodium:= gnutls? ( net-libs/gnutls:= ) !gnutls? ( dev-libs/openssl:= ) ) systemd? ( sys-apps/systemd:0= )
 REQUIRED_USE=dnscrypt? ( ssl ) gnutls? ( ssl )
 SLOT=0
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	7ba73aee7fe4462b3a745e3645ab92ca	git-r3	0d4635eeb5a96cd5315597a47eba25c9	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56	user	e68863263b1e8611dacf381bec5c8b2b
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	7ba73aee7fe4462b3a745e3645ab92ca	git-r3	0d4635eeb5a96cd5315597a47eba25c9	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56	user	b3c37f3375252e9ac4c6a157df4e595c
 _md5_=e79dc9227628fa254b6285fe70bed67a

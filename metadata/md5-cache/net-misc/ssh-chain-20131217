@@ -7,5 +7,5 @@ LICENSE=BSD
 RDEPEND=dev-lang/perl virtual/ssh
 SLOT=0
 SRC_URI=https://github.com/ryancdotorg/ssh-chain/archive/c1bd9d82d750bf001d12a9cd41b9b24a3fd84f81.tar.gz -> ssh-chain-20131217.tar.gz
-_eclasses_=vcs-snapshot	b77011b62e2053c646ad720defe6d921
+_eclasses_=vcs-snapshot	b1abf460a493fc59ebb25de0df3f09dd
 _md5_=9847b4d0a6c79027e11210554d2f055c

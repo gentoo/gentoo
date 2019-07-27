@@ -7,5 +7,5 @@ LICENSE=newrelic Apache-2.0 MIT ISC openssl GPL-2
 RESTRICT=strip
 SLOT=0
 SRC_URI=http://download.newrelic.com/server_monitor/archive/1.1.2.124/newrelic-sysmond-1.1.2.124-linux.tar.gz
-_eclasses_=user	e68863263b1e8611dacf381bec5c8b2b
+_eclasses_=user	b3c37f3375252e9ac4c6a157df4e595c
 _md5_=0cb671061e919a743debd7f1cf6267e2

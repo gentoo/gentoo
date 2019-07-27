@@ -7,5 +7,5 @@ LICENSE=Apache-2.0 Artistic-2 BSD BSD-2 CC-BY-3.0 CC-BY-4.0 icu ISC MIT MPL-2.0 
 RDEPEND=>=net-libs/nodejs-6.17.0
 SLOT=0
 SRC_URI=https://artifacts.elastic.co/downloads/kibana/kibana-5.6.16-linux-x86_64.tar.gz
-_eclasses_=user	e68863263b1e8611dacf381bec5c8b2b
+_eclasses_=user	b3c37f3375252e9ac4c6a157df4e595c
 _md5_=c114588fe69367b0ea607a41fa806bc0

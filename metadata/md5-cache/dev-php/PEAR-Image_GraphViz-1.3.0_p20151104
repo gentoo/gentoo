@@ -9,5 +9,5 @@ LICENSE=PHP-3
 RDEPEND=media-gfx/graphviz >=dev-php/pear-1.8.1
 SLOT=0
 SRC_URI=https://github.com/pear/Image_GraphViz/archive/3f8a01ae0597ca9d1d08a6e442cb0b153358fc0d.tar.gz -> Image_GraphViz-1.3.0_p20151104.tar.gz
-_eclasses_=php-pear-r2	479e8a084e98f4d730da647bba3e589e	vcs-snapshot	b77011b62e2053c646ad720defe6d921
+_eclasses_=php-pear-r2	479e8a084e98f4d730da647bba3e589e	vcs-snapshot	b1abf460a493fc59ebb25de0df3f09dd
 _md5_=7c968d81da48495346002681f783c19b

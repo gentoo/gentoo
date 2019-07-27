@@ -9,5 +9,5 @@ LICENSE=LGPL-2.1
 RDEPEND=>=dev-php/PEAR-Text_Wiki-1.2.2_p20170904 >=dev-php/pear-1.8.1
 SLOT=0
 SRC_URI=https://github.com/pear/Text_Wiki_Mediawiki/archive/11a902741d3f8cc6010fb97b825d66345143e4dc.tar.gz -> Text_Wiki_Mediawiki-0.2.0_p20140604.tar.gz
-_eclasses_=php-pear-r2	479e8a084e98f4d730da647bba3e589e	vcs-snapshot	b77011b62e2053c646ad720defe6d921
+_eclasses_=php-pear-r2	479e8a084e98f4d730da647bba3e589e	vcs-snapshot	b1abf460a493fc59ebb25de0df3f09dd
 _md5_=325124f60446464f4fc3508066524d62
