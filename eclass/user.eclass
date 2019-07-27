@@ -157,10 +157,10 @@ enewuser() {
 		euid="next"
 	fi
 	if [[ ${euid} == "next" ]] ; then
-		for ((euid = 101; euid <= 999; euid++)); do
+		for ((euid = 999; euid >= 101; euid--)); do
 			[[ -z $(egetent passwd ${euid}) ]] && break
 		done
-		[[ ${euid} -le 999 ]] || die "${FUNCNAME}: no free UID found"
+		[[ ${euid} -ge 101 ]] || die "${FUNCNAME}: no free UID found"
 	fi
 	opts+=( -u ${euid} )
 	einfo " - Userid: ${euid}"
@@ -318,10 +318,10 @@ enewgroup() {
 	_enewgroup_next_gid() {
 		if [[ ${egid} == *[!0-9]* ]] ; then
 			# Non numeric
-			for ((egid = 101; egid <= 999; egid++)) ; do
+			for ((egid = 999; egid >= 101; egid--)) ; do
 				[[ -z $(egetent group ${egid}) ]] && break
 			done
-			[[ ${egid} -le 999 ]] || die "${FUNCNAME}: no free GID found"
+			[[ ${egid} -ge 101 ]] || die "${FUNCNAME}: no free GID found"
 		fi
 	}
 
