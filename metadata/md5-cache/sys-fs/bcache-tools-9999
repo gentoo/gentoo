@@ -4,7 +4,8 @@ DESCRIPTION=Tools for bcachefs
 EAPI=5
 HOMEPAGE=http://bcache.evilpiepirate.org/
 LICENSE=GPL-2
+PROPERTIES=live
 RDEPEND=>=sys-apps/util-linux-2.24
 SLOT=0
-_eclasses_=git-r3	0d4635eeb5a96cd5315597a47eba25c9	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56	udev	7752f306eec7b286d00bdb47b763e7ac
+_eclasses_=git-r3	562b380fc59ae6a8622171d0acb777d1	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56	udev	7752f306eec7b286d00bdb47b763e7ac
 _md5_=977caf5e701a4f3deadf704d879ed8af

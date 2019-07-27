@@ -5,9 +5,10 @@ EAPI=6
 HOMEPAGE=https://www.oyranos.org/
 IUSE=cairo cups doc examples exif fltk jpeg qt5 raw scanner static-libs test tiff X
 LICENSE=BSD
+PROPERTIES=live
 RDEPEND=app-admin/elektra dev-libs/libxml2 >=dev-libs/yajl-2.0.4-r1 media-libs/lcms:2 media-libs/libpng:0= >=media-libs/libXcm-0.5.4 media-libs/openicc cairo? ( x11-libs/cairo ) cups? ( net-print/cups ) exif? ( media-gfx/exiv2:= ) fltk? ( x11-libs/fltk:1 ) jpeg? ( virtual/jpeg:0 ) qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtsvg:5 dev-qt/qtwidgets:5 dev-qt/qtx11extras:5 dev-qt/qtxml:5 ) raw? ( media-libs/libraw ) scanner? ( media-gfx/sane-backends ) tiff? ( media-libs/tiff:0 ) X? ( x11-libs/libX11 x11-libs/libXfixes x11-libs/libXinerama x11-libs/libXmu x11-libs/libXrandr x11-libs/libXxf86vm ) media-libs/icc-profiles-basiccolor-printing2009 media-libs/icc-profiles-openicc
 REQUIRED_USE=qt5? ( X ) test? ( static-libs )
 RESTRICT=test
 SLOT=0
-_eclasses_=cmake-utils	91d6ef31dc426240577497cacbf2508c	desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	7ba73aee7fe4462b3a745e3645ab92ca	git-r3	0d4635eeb5a96cd5315597a47eba25c9	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	14d00d009167652b1fa363e55effe213
+_eclasses_=cmake-utils	91d6ef31dc426240577497cacbf2508c	desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	7ba73aee7fe4462b3a745e3645ab92ca	git-r3	562b380fc59ae6a8622171d0acb777d1	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	14d00d009167652b1fa363e55effe213
 _md5_=620da6d9f8f9d040e712f9a6581a1fa8

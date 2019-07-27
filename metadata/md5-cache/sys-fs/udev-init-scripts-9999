@@ -4,8 +4,9 @@ DESCRIPTION=udev startup scripts for openrc
 EAPI=7
 HOMEPAGE=https://www.gentoo.org
 LICENSE=GPL-2
+PROPERTIES=live
 RDEPEND=>=virtual/udev-217 !<sys-apps/openrc-0.14
 RESTRICT=test
 SLOT=0
-_eclasses_=git-r3	0d4635eeb5a96cd5315597a47eba25c9
+_eclasses_=git-r3	562b380fc59ae6a8622171d0acb777d1
 _md5_=342f5ef300eccca3b740e2cfc2454b1d

@@ -6,8 +6,9 @@ EAPI=7
 HOMEPAGE=https://tt-rss.org/
 IUSE=+acl daemon +mysqli postgres vhosts
 LICENSE=GPL-3
+PROPERTIES=live
 RDEPEND=daemon? ( acl? ( sys-apps/acl ) ) daemon? ( dev-lang/php:*[mysqli?,postgres?,curl,cli,intl,pcntl,pdo] ) !daemon? ( dev-lang/php:*[mysqli?,postgres?,curl,intl,pdo] ) virtual/httpd-php:* >=app-admin/webapp-config-1.50.15
 REQUIRED_USE=|| ( mysqli postgres )
 SLOT=99999999
-_eclasses_=git-r3	0d4635eeb5a96cd5315597a47eba25c9	prefix	e51c7882b7b721e54e684f7eb143cbfe	user	b3c37f3375252e9ac4c6a157df4e595c	webapp	16783e418aca3ffa461d68310bf7ab12
+_eclasses_=git-r3	562b380fc59ae6a8622171d0acb777d1	prefix	e51c7882b7b721e54e684f7eb143cbfe	user	b3c37f3375252e9ac4c6a157df4e595c	webapp	16783e418aca3ffa461d68310bf7ab12
 _md5_=15732b2927bbee0903215752c2191054

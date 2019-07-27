@@ -6,7 +6,8 @@ EAPI=7
 HOMEPAGE=https://www.ctan.org/tex-archive/support/latexdiff/ https://github.com/ftilmann/latexdiff/
 IUSE=test
 LICENSE=GPL-3
+PROPERTIES=live
 RDEPEND=>=dev-lang/perl-5.8 virtual/latex-base dev-texlive/texlive-plaingeneric dev-perl/Algorithm-Diff
 SLOT=0
-_eclasses_=git-r3	0d4635eeb5a96cd5315597a47eba25c9
+_eclasses_=git-r3	562b380fc59ae6a8622171d0acb777d1
 _md5_=6a2b57839b42f0207137220550b5de10

@@ -6,7 +6,8 @@ EAPI=7
 HOMEPAGE=http://www.openscad.org/
 IUSE=emacs
 LICENSE=GPL-2
+PROPERTIES=live
 RDEPEND=dev-cpp/eigen:3 dev-libs/boost:= dev-libs/glib:2 dev-libs/gmp:0= dev-libs/libzip:= dev-libs/mpfr:0= dev-qt/qtconcurrent:5 dev-qt/qtcore:5 dev-qt/qtdbus:5 dev-qt/qtgui:5[-gles2] dev-qt/qtmultimedia:5[-gles2] dev-qt/qtopengl:5 media-gfx/opencsg media-libs/fontconfig:1.0 media-libs/freetype:2 >=media-libs/glew-2.0.0:* media-libs/harfbuzz sci-mathematics/cgal:= >=x11-libs/qscintilla-2.9.4:=[qt5(+)] emacs? ( virtual/emacs )
 SLOT=0
-_eclasses_=elisp-common	23f47b2e1de7abf387105eddd1318738	estack	43ddf5aaffa7a8d0482df54d25a66a1f	git-r3	0d4635eeb5a96cd5315597a47eba25c9	multilib	1d91b03d42ab6308b5f4f6b598ed110e	qmake-utils	bdf97e69a34b864d6d545f4ec3143ff7	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	14d00d009167652b1fa363e55effe213
+_eclasses_=elisp-common	23f47b2e1de7abf387105eddd1318738	estack	43ddf5aaffa7a8d0482df54d25a66a1f	git-r3	562b380fc59ae6a8622171d0acb777d1	multilib	1d91b03d42ab6308b5f4f6b598ed110e	qmake-utils	bdf97e69a34b864d6d545f4ec3143ff7	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	14d00d009167652b1fa363e55effe213
 _md5_=2d9df0d90bfe215eb32a5ee1af8604df

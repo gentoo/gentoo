@@ -7,8 +7,9 @@ HOMEPAGE=http://www.openttd.org/
 IUSE=aplaymidi debug dedicated iconv icu lzo +openmedia +png cpu_flags_x86_sse +timidity +truetype zlib
 LICENSE=GPL-2
 PDEPEND=!dedicated? ( openmedia? ( games-misc/openmsx games-misc/opensfx ) aplaymidi? ( media-sound/alsa-utils ) !aplaymidi? ( timidity? ( media-sound/timidity++ ) ) ) openmedia? ( >=games-misc/opengfx-0.4.7 )
+PROPERTIES=live
 RDEPEND=!dedicated? ( media-libs/libsdl[sound,X,video] icu? ( dev-libs/icu-layoutex dev-libs/icu-le-hb >=dev-libs/icu-58.1:= ) truetype? ( media-libs/fontconfig media-libs/freetype:2 sys-libs/zlib:= ) ) lzo? ( dev-libs/lzo:2 ) iconv? ( virtual/libiconv ) png? ( media-libs/libpng:0 sys-libs/zlib:= ) zlib? ( sys-libs/zlib:= )
 RESTRICT=test
 SLOT=0
-_eclasses_=git-r3	0d4635eeb5a96cd5315597a47eba25c9	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	14d00d009167652b1fa363e55effe213
+_eclasses_=git-r3	562b380fc59ae6a8622171d0acb777d1	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	14d00d009167652b1fa363e55effe213
 _md5_=a3dd0653de796d614193352059dbebed

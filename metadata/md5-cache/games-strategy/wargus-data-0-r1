@@ -8,5 +8,5 @@ LICENSE=all-rights-reserved
 PROPERTIES=interactive
 RESTRICT=userpriv
 SLOT=0
-_eclasses_=cdrom	c64e4c5e9cbf2a58be31431e015a6210	portability	2b88d3ecc35035a3b8ab628b49cafb0e
+_eclasses_=cdrom	6ffe90ac67bc6ac95249cae335323907	portability	2b88d3ecc35035a3b8ab628b49cafb0e
 _md5_=0f0563cee2808c9c204c3aff4b28dd27

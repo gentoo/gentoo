@@ -4,7 +4,8 @@ DESCRIPTION=A tool to display info about the system's OpenCL capabilities
 EAPI=6
 HOMEPAGE=https://github.com/Oblomov/clinfo
 LICENSE=CC0-1.0
+PROPERTIES=live
 RDEPEND=>=app-eselect/eselect-opencl-1.1.0-r4 virtual/opencl
 SLOT=0
-_eclasses_=git-r3	0d4635eeb5a96cd5315597a47eba25c9
+_eclasses_=git-r3	562b380fc59ae6a8622171d0acb777d1
 _md5_=5c7f85382c06fc156aed219cc3948351

@@ -4,7 +4,8 @@ DESCRIPTION=Icinga Web 2 plugin for pnp4nagios
 EAPI=6
 HOMEPAGE=http://www.icinga.org/
 LICENSE=GPL-2
+PROPERTIES=live
 RDEPEND=>=net-analyzer/icinga2-2.1.1 >=www-apps/icingaweb2-2.0.0
 SLOT=0
-_eclasses_=git-r3	0d4635eeb5a96cd5315597a47eba25c9
+_eclasses_=git-r3	562b380fc59ae6a8622171d0acb777d1
 _md5_=2b85730b1799b56fb5d1e223e71a7ac8

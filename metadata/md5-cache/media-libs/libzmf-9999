@@ -5,7 +5,8 @@ EAPI=6
 HOMEPAGE=https://wiki.documentfoundation.org/DLP/Libraries/libzmf
 IUSE=debug doc test tools
 LICENSE=MPL-2.0
+PROPERTIES=live
 RDEPEND=dev-libs/icu:= dev-libs/librevenge media-libs/libpng:0= sys-libs/zlib
 SLOT=0
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	git-r3	0d4635eeb5a96cd5315597a47eba25c9	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	git-r3	562b380fc59ae6a8622171d0acb777d1	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
 _md5_=df4d7abfc18879c2ce0387b745b436e9

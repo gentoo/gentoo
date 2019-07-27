@@ -4,7 +4,8 @@ DESCRIPTION=Provides basic bluetooth support in kismet
 EAPI=6
 HOMEPAGE=http://ubertooth.sourceforge.net/
 LICENSE=GPL-2
+PROPERTIES=live
 RDEPEND=>=net-wireless/kismet-2011.03.2-r1:= <net-wireless/kismet-2017.0.0 >=net-wireless/ubertooth-9999:= >=net-libs/libbtbb-9999:= virtual/libusb:1
 SLOT=0/9999
-_eclasses_=git-r3	0d4635eeb5a96cd5315597a47eba25c9	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
+_eclasses_=git-r3	562b380fc59ae6a8622171d0acb777d1	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
 _md5_=2bd826e618b20af263cc6d3bf132029a

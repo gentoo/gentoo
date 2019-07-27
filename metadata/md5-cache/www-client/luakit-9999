@@ -5,7 +5,8 @@ EAPI=6
 HOMEPAGE=https://luakit.github.io/luakit
 IUSE=doc luajit test
 LICENSE=GPL-3
+PROPERTIES=live
 RDEPEND=dev-db/sqlite:3 dev-libs/glib:2 dev-lua/luafilesystem[luajit=] net-libs/webkit-gtk:4= x11-libs/gtk+:3 luajit? ( dev-lang/luajit:2 ) !luajit? ( dev-lang/lua:0 )
 SLOT=0
-_eclasses_=git-r3	0d4635eeb5a96cd5315597a47eba25c9	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
+_eclasses_=git-r3	562b380fc59ae6a8622171d0acb777d1	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
 _md5_=af3e7ccbb1534cf14758429bbe415c76

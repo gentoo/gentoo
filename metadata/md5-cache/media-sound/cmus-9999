@@ -6,8 +6,9 @@ EAPI=7
 HOMEPAGE=https://cmus.github.io/
 IUSE=aac alsa ao cddb cdio cue debug discid elogind examples ffmpeg +flac jack libsamplerate +mad mikmod modplug mp4 musepack opus oss pidgin pulseaudio systemd tremor +unicode +vorbis wavpack
 LICENSE=GPL-2
+PROPERTIES=live
 RDEPEND=sys-libs/ncurses:0=[unicode?] aac? ( media-libs/faad2 ) alsa? ( >=media-libs/alsa-lib-1.0.11 ) ao? ( media-libs/libao ) cddb? ( media-libs/libcddb ) cdio? ( dev-libs/libcdio-paranoia ) cue? ( media-libs/libcue ) discid? ( media-libs/libdiscid ) elogind? ( sys-auth/elogind ) ffmpeg? ( media-video/ffmpeg:= ) flac? ( media-libs/flac ) jack? ( virtual/jack ) libsamplerate? ( media-libs/libsamplerate ) mad? ( >=media-libs/libmad-0.14 ) mikmod? ( media-libs/libmikmod:0 ) modplug? ( >=media-libs/libmodplug-0.7 ) mp4? ( >=media-libs/libmp4v2-1.9:0 ) musepack? ( >=media-sound/musepack-tools-444 ) opus? ( media-libs/opusfile ) pulseaudio? ( media-sound/pulseaudio ) systemd? ( sys-apps/systemd ) tremor? ( media-libs/tremor ) !tremor? ( vorbis? ( >=media-libs/libvorbis-1.0 ) ) wavpack? ( media-sound/wavpack ) pidgin? ( dev-python/dbus-python net-im/pidgin )
 REQUIRED_USE=tremor? ( vorbis ) mp4? ( aac )
 SLOT=0
-_eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	git-r3	0d4635eeb5a96cd5315597a47eba25c9	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
+_eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	git-r3	562b380fc59ae6a8622171d0acb777d1	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
 _md5_=f600084015861e38f031ff12577896e1

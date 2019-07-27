@@ -6,10 +6,11 @@ EAPI=7
 HOMEPAGE=https://sourceware.org/gdb/
 IUSE=+client lzma multitarget nls +python +server source-highlight test vanilla xml python_targets_python2_7 python_targets_python3_5 python_targets_python3_6 python_targets_python3_7 python_single_target_python2_7 python_single_target_python3_5 python_single_target_python3_6 python_single_target_python3_7
 LICENSE=GPL-2 LGPL-2
+PROPERTIES=live
 RDEPEND=server? ( !dev-util/gdbserver ) client? ( dev-libs/mpfr:0= >=sys-libs/ncurses-5.2-r2:0= sys-libs/readline:0= lzma? ( app-arch/xz-utils ) python? ( python_single_target_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_single_target_python3_5? ( dev-lang/python:3.5 ) python_single_target_python3_6? ( dev-lang/python:3.6 ) python_single_target_python3_7? ( dev-lang/python:3.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_5(-)?,python_targets_python3_6(-)?,python_targets_python3_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),python_single_target_python2_7(+)?,python_single_target_python3_5(+)?,python_single_target_python3_6(+)?,python_single_target_python3_7(+)?] ) xml? ( dev-libs/expat ) sys-libs/zlib ) source-highlight? ( dev-util/source-highlight )
 REQUIRED_USE=python? ( ^^ ( python_single_target_python2_7 python_single_target_python3_5 python_single_target_python3_6 python_single_target_python3_7 ) python_single_target_python2_7? ( python_targets_python2_7 ) python_single_target_python3_5? ( python_targets_python3_5 ) python_single_target_python3_6? ( python_targets_python3_6 ) python_single_target_python3_7? ( python_targets_python3_7 ) ) || ( client server )
 RESTRICT=hppa? ( test ) ia64? ( test )
 SLOT=0
 SRC_URI=
-_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	7ba73aee7fe4462b3a745e3645ab92ca	git-r3	0d4635eeb5a96cd5315597a47eba25c9	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-single-r1	3a0fc81f484bfdbd9c2b7448015a36e4	python-utils-r1	08e17157a6807add7db1f8d01e7e391f	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
+_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	7ba73aee7fe4462b3a745e3645ab92ca	git-r3	562b380fc59ae6a8622171d0acb777d1	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-single-r1	3a0fc81f484bfdbd9c2b7448015a36e4	python-utils-r1	08e17157a6807add7db1f8d01e7e391f	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
 _md5_=fe49fbee4de0c35c79314f2dc8a36664

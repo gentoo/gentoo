@@ -6,7 +6,8 @@ HOMEPAGE=https://wiki.gentoo.org/wiki/Project:SELinux
 IUSE=systemd +unconfined
 LICENSE=GPL-2
 PDEPEND=unconfined? ( sec-policy/selinux-unconfined )
+PROPERTIES=live
 RDEPEND==sec-policy/selinux-base-9999[systemd?]
 SLOT=0
-_eclasses_=git-r3	0d4635eeb5a96cd5315597a47eba25c9
+_eclasses_=git-r3	562b380fc59ae6a8622171d0acb777d1
 _md5_=8217ecccdcff546f287da55e51c9cb22

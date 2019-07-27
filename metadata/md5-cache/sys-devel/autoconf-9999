@@ -6,7 +6,8 @@ HOMEPAGE=https://www.gnu.org/software/autoconf/autoconf.html
 IUSE=emacs
 LICENSE=GPL-3
 PDEPEND=emacs? ( app-emacs/autoconf-mode )
+PROPERTIES=live
 RDEPEND=>=sys-devel/m4-1.4.16 >=dev-lang/perl-5.6 !~sys-devel/autoconf-9999:2.5 >=sys-devel/autoconf-wrapper-13
 SLOT=9999
-_eclasses_=git-r3	0d4635eeb5a96cd5315597a47eba25c9	toolchain-autoconf	030c94515d35f2a4ae476066dd7bb59a
+_eclasses_=git-r3	562b380fc59ae6a8622171d0acb777d1	toolchain-autoconf	030c94515d35f2a4ae476066dd7bb59a
 _md5_=dd931cd70ced23ed6f013e53875765a9

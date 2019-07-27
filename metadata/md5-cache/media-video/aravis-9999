@@ -6,7 +6,8 @@ EAPI=7
 HOMEPAGE=https://wiki.gnome.org/Projects/Aravis
 IUSE=X gstreamer caps
 LICENSE=LGPL-2.1
+PROPERTIES=live
 RDEPEND=>=dev-libs/glib-2.26 dev-libs/libxml2 X? ( >=x11-libs/gtk+-3.12:3 media-libs/gstreamer:1.0 media-libs/gst-plugins-base:1.0 media-libs/gst-plugins-base:1.0 x11-libs/libnotify ) caps? ( sys-libs/libcap-ng sys-process/audit ) gstreamer? ( media-libs/gstreamer:1.0 media-libs/gst-plugins-base:1.0 )
 SLOT=0
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	git-r3	0d4635eeb5a96cd5315597a47eba25c9	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	git-r3	562b380fc59ae6a8622171d0acb777d1	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
 _md5_=1091c1e88b7ec9296f5e8dc028931577

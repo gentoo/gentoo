@@ -7,5 +7,5 @@ KEYWORDS=-* ~amd64 ~x86
 LICENSE=ETQW
 PROPERTIES=interactive
 SLOT=0
-_eclasses_=cdrom	c64e4c5e9cbf2a58be31431e015a6210	portability	2b88d3ecc35035a3b8ab628b49cafb0e
+_eclasses_=cdrom	6ffe90ac67bc6ac95249cae335323907	portability	2b88d3ecc35035a3b8ab628b49cafb0e
 _md5_=364a67dd43e2fa90554188afd67769a9
