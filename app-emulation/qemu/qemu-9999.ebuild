@@ -34,7 +34,7 @@ LICENSE="GPL-2 LGPL-2 BSD-2"
 SLOT="0"
 
 IUSE="accessibility +aio alsa bzip2 capstone +caps +curl debug doc
-	+fdt glusterfs gnutls gtk infiniband iscsi +jpeg kernel_linux
+	+fdt glusterfs gnutls gtk infiniband iscsi +jpeg jemalloc kernel_linux
 	kernel_FreeBSD lzo ncurses nfs nls numa opengl +oss +pin-upstream-blobs
 	+png pulseaudio python rbd sasl +seccomp sdl selinux smartcard snappy
 	spice ssh static static-user systemtap tci test usb usbredir vde
@@ -114,6 +114,7 @@ SOFTMMU_TOOLS_DEPEND="
 		sys-fabric/librdmacm:=[static-libs(+)]
 	)
 	iscsi? ( net-libs/libiscsi )
+	jemalloc? ( dev-libs/jemalloc )
 	jpeg? ( virtual/jpeg:0=[static-libs(+)] )
 	lzo? ( dev-libs/lzo:2[static-libs(+)] )
 	ncurses? (
@@ -443,6 +444,7 @@ qemu_src_configure() {
 		$(conf_notuser gtk)
 		$(conf_notuser infiniband rdma)
 		$(conf_notuser iscsi libiscsi)
+		$(conf_notuser jemalloc jemalloc)
 		$(conf_notuser jpeg vnc-jpeg)
 		$(conf_notuser kernel_linux kvm)
 		$(conf_notuser lzo)
