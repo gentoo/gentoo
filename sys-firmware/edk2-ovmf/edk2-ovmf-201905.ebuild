@@ -12,6 +12,7 @@ DESCRIPTION="UEFI firmware for 64-bit x86 virtual machines"
 HOMEPAGE="https://github.com/tianocore/edk2"
 
 NON_BINARY_DEPEND="
+	app-emulation/qemu
 	>=dev-lang/nasm-2.0.7
 	>=sys-power/iasl-20160729
 	${PYTHON_DEPS}
@@ -123,6 +124,8 @@ src_compile() {
 
 	. ./edksetup.sh
 
+	# Build all EFI firmware blobs:
+
 	mkdir -p ovmf
 
 	./OvmfPkg/build.sh \
@@ -137,8 +140,17 @@ src_compile() {
 		${SECUREBOOT_BUILD_FLAGS} || die "OvmfPkg/build.sh failed"
 
 	cp Build/OvmfX64/*/FV/OVMF_CODE.fd ovmf/OVMF_CODE.secboot.fd || die "cp failed"
-	cp Build/OvmfX64/*/X64/Shell.efi ovmf/ || dies "cp failed"
-	cp Build/OvmfX64/*/X64/EnrollDefaultKeys.efi ovmf || dies "cp failed"
+	cp Build/OvmfX64/*/X64/Shell.efi ovmf/ || die "cp failed"
+	cp Build/OvmfX64/*/X64/EnrollDefaultKeys.efi ovmf || die "cp failed"
+
+	# Build a convenience UefiShell.img:
+
+	mkdir -p iso_image/efi/boot || die "mkdir failed"
+	cp ovmf/Shell.efi iso_image/efi/boot/bootx64.efi || die "cp failed"
+	cp ovmf/EnrollDefaultKeys.efi iso_image || die "cp failed"
+	qemu-img convert --image-opts \
+		driver=vvfat,floppy=on,fat-type=12,label=UEFI_SHELL,dir=iso_image \
+		ovmf/UefiShell.img || die "qemu-img failed"
 }
 
 src_install() {
