@@ -12,6 +12,5 @@ KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 ~sh sparc x86 ~am
 RDEPEND="
 	|| (
 		>=media-libs/glu-9.0.0-r1[${MULTILIB_USEDEP}]
-		media-libs/opengl-apple
 		dev-util/mingw64-runtime
 	)"
