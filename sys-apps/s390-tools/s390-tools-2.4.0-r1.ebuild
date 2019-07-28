@@ -23,6 +23,11 @@ DEPEND="${RDEPEND}
 	dev-util/indent
 	app-admin/genromfs"
 
+src_prepare() {
+	default
+	sed -i -e 's/-lncurses/-lncurses -ltinfo/' "${S}"/hyptop/Makefile || die
+}
+
 src_configure() {
 	export MAKEOPTS+=" V=1"
 	export HAVE_DRACUT=0
