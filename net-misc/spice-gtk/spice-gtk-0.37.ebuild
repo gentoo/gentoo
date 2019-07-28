@@ -1,7 +1,8 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
+
 GCONF_DEBUG="no"
 VALA_MIN_API_VERSION="0.14"
 VALA_USE_DEPEND="vapigen"
@@ -14,7 +15,7 @@ HOMEPAGE="https://www.spice-space.org https://cgit.freedesktop.org/spice/spice-g
 LICENSE="LGPL-2.1"
 SLOT="0"
 SRC_URI="https://www.spice-space.org/download/gtk/${P}.tar.bz2"
-KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="dbus gstaudio gstvideo +gtk3 +introspection lz4 mjpeg policykit pulseaudio sasl smartcard static-libs usbredir vala webdav libressl"
 
 REQUIRED_USE="?? ( pulseaudio gstaudio )"
@@ -39,7 +40,7 @@ RDEPEND="
 	>=x11-libs/pixman-0.17.7
 	media-libs/opus
 	gtk3? ( x11-libs/gtk+:3[introspection?] )
-	>=dev-libs/glib-2.36:2
+	>=dev-libs/glib-2.46:2
 	>=x11-libs/cairo-1.2
 	virtual/jpeg:0=
 	sys-libs/zlib
@@ -59,11 +60,10 @@ RDEPEND="
 		)
 	webdav? (
 		net-libs/phodav:2.0
-		>=dev-libs/glib-2.43.90:2
 		>=net-libs/libsoup-2.49.91 )
 "
 DEPEND="${RDEPEND}
-	>=app-emulation/spice-protocol-0.12.13
+	>=app-emulation/spice-protocol-0.14.0
 	dev-perl/Text-CSV
 	dev-util/glib-utils
 	>=dev-util/gtk-doc-am-1.14
@@ -72,6 +72,9 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	vala? ( $(vala_depend) )
 "
+
+PATCHES=(
+)
 
 src_prepare() {
 	# bug 558558
@@ -95,12 +98,6 @@ src_configure() {
 	xdg_environment_reset
 
 	local myconf
-
-	if use vala ; then
-		# force vala regen for MinGW, etc
-		rm -fv gtk/controller/controller.{c,vala.stamp} gtk/controller/menu.c
-	fi
-
 	myconf="
 		$(use_enable static-libs static)
 		$(use_enable introspection)
@@ -138,8 +135,6 @@ src_compile() {
 
 src_install() {
 	default
-
-	dodoc AUTHORS ChangeLog NEWS README THANKS TODO
 
 	# Remove .la files if they're not needed
 	use static-libs || prune_libtool_files

@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 GCONF_DEBUG="no"
 WANT_AUTOMAKE="1.12"
 VALA_MIN_API_VERSION="0.14"
@@ -132,8 +132,6 @@ src_compile() {
 
 src_install() {
 	default
-
-	dodoc AUTHORS NEWS README
 
 	# Remove .la files if they're not needed
 	use static-libs || prune_libtool_files

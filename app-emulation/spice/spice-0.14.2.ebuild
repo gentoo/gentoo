@@ -4,16 +4,15 @@
 EAPI=7
 PYTHON_COMPAT=( python{3_5,3_6,3_7} )
 
-inherit autotools eutils git-r3 python-any-r1 readme.gentoo-r1 xdg-utils
+inherit autotools python-any-r1 readme.gentoo-r1 xdg-utils
 
 DESCRIPTION="SPICE server"
 HOMEPAGE="https://www.spice-space.org/"
-SRC_URI=""
-EGIT_REPO_URI="https://anongit.freedesktop.org/git/spice/spice.git"
+SRC_URI="https://www.spice-space.org/download/releases/spice-server/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="libressl lz4 sasl smartcard static-libs gstreamer"
 
 # the libspice-server only uses the headers of libcacard
@@ -35,13 +34,17 @@ RDEPEND="
 	)"
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
-	~app-emulation/spice-protocol-9999
+	>=app-emulation/spice-protocol-0.14.0
 	virtual/pkgconfig
 	$(python_gen_any_dep '
 		>=dev-python/pyparsing-1.5.6-r2[${PYTHON_USEDEP}]
 		dev-python/six[${PYTHON_USEDEP}]
 	')
 	smartcard? ( app-emulation/qemu[smartcard] )"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.14.0-openssl1.1_fix.patch
+)
 
 python_check_deps() {
 	has_version ">=dev-python/pyparsing-1.5.6-r2[${PYTHON_USEDEP}]"

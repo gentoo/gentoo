@@ -74,5 +74,5 @@ src_install() {
 }
 
 pkg_postinst() {
-	udevadm hwdb --update --root="${ROOT%/}"
+	udevadm hwdb --update --root="${ROOT}"
 }

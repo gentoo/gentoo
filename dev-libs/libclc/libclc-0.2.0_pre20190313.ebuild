@@ -42,8 +42,6 @@ DEPEND="
 		sys-devel/clang:7
 		sys-devel/clang:6
 		sys-devel/clang:5
-		sys-devel/clang:4
-		>=sys-devel/clang-3.9:0
 	)
 	${PYTHON_DEPS}"
 

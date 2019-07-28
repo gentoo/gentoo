@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python{2_7,3_{5,6,7}} )
 inherit kde5 python-any-r1
 
 DESCRIPTION="Library for extracting file metadata"
-KEYWORDS="amd64 ~arm ~arm64 x86"
+KEYWORDS="amd64 ~arm arm64 x86"
 IUSE="epub exif ffmpeg kernel_linux libav office pdf taglib"
 
 BDEPEND="
