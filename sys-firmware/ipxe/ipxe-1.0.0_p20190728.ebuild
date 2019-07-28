@@ -1,38 +1,45 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI="6"
 
 inherit toolchain-funcs eutils savedconfig
 
-GIT_REV="cba22d36b77da53890bd65fdadd0e63925687af0"
-GIT_SHORT="cba22d3"
+GIT_REV="a4f8c6e31f6c62522cfc633bbbffa81b22f9d6f3"
+GIT_SHORT=${GIT_REV:0:7}
 
 DESCRIPTION="Open source network boot (PXE) firmware"
-HOMEPAGE="http://ipxe.org"
-SRC_URI="https://git.ipxe.org/ipxe.git/snapshot/${GIT_REV}.tar.bz2 -> ${P}-${GIT_SHORT}.tar.bz2"
+HOMEPAGE="http://ipxe.org/"
+SRC_URI="
+	!binary? ( https://git.ipxe.org/ipxe.git/snapshot/${GIT_REV}.tar.bz2 -> ${P}-${GIT_SHORT}.tar.bz2 )
+	binary? ( https://dev.gentoo.org/~tamiko/distfiles/${P}-${GIT_SHORT}-bin.tar.xz )"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
-IUSE="efi ipv6 iso lkrn +qemu undi usb vmware"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~x86"
+IUSE="+binary efi ipv6 iso lkrn +qemu undi usb vmware"
 
-DEPEND="dev-lang/perl
+REQUIRED_USE="!amd64? ( !x86? ( binary ) )"
+
+SOURCE_DEPEND="app-arch/xz-utils
+	dev-lang/perl
 	sys-libs/zlib
 	iso? (
 		sys-boot/syslinux
 		virtual/cdrtools
 	)"
+DEPEND="
+	!binary? (
+		amd64? ( ${SOURCE_DEPEND} )
+		x86? ( ${SOURCE_DEPEND} )
+	)"
 RDEPEND=""
 
 S="${WORKDIR}/ipxe-${GIT_SHORT}/src"
 
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-git-version.patch #482804
-	epatch "${FILESDIR}"/${P}-no-pie.patch #585752
-}
-
 src_configure() {
+	use binary && return
+
 	cat <<-EOF > "${S}"/config/local/general.h
 #undef BANNER_TIMEOUT
 #define BANNER_TIMEOUT 0
@@ -52,19 +59,23 @@ EOF
 	tc-ld-disable-gold
 }
 
+ipxemake() {
+	# Q='' makes the build verbose since that's what everyone loves now
+	emake Q='' \
+		CC="$(tc-getCC)" \
+		LD="$(tc-getLD)" \
+		AS="$(tc-getAS)" \
+		AR="$(tc-getAR)" \
+		NM="$(tc-getNM)" \
+		OBJCOPY="$(tc-getOBJCOPY)" \
+		RANLIB="$(tc-getRANLIB)" \
+		OBJDUMP="$(tc-getOBJDUMP)" \
+		HOST_CC="$(tc-getBUILD_CC)" \
+		"$@"
+}
+
 src_compile() {
-	ipxemake() {
-		# Q='' makes the build verbose since that's what everyone loves now
-		emake Q='' \
-			CC="$(tc-getCC)" \
-			LD="$(tc-getLD)" \
-			AR="$(tc-getAR)" \
-			OBJCOPY="$(tc-getOBJCOPY)" \
-			RANLIB="$(tc-getRANLIB)" \
-			OBJDUMP="$(tc-getOBJDUMP)" \
-			HOST_CC="$(tc-getBUILD_CC)" \
-			"$@"
-	}
+	use binary && return
 
 	export NO_WERROR=1
 	if use qemu; then
@@ -75,7 +86,7 @@ src_compile() {
 		ipxemake bin/10222000.rom # pxe-pcnet.rom
 		ipxemake bin/10ec8139.rom # pxe-rtl8139.rom
 		ipxemake bin/1af41000.rom # pxe-virtio.rom
-		fi
+	fi
 
 	if use vmware; then
 		ipxemake bin/8086100f.mrom # e1000
