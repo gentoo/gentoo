@@ -8,7 +8,7 @@ inherit kde5
 
 DESCRIPTION="Go game by KDE"
 HOMEPAGE="https://kde.org/applications/games/kigo/"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 ~x86"
 IUSE=""
 
 DEPEND="
