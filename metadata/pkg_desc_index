@@ -10011,10 +10011,10 @@ sys-fabric/rds-tools 2.0.4-r3: OpenIB userspace rds-tools
 sys-fabric/srptools 1.0.2: Tools for discovering and connecting to SRP CSI targets on InfiniBand fabrics
 sys-firmware/alsa-firmware 1.0.29: Advanced Linux Sound Architecture firmware
 sys-firmware/edk2-ovmf 2017_pre20170505-r1 2017_p20180211: UEFI firmware for 64-bit x86 virtual machines
-sys-firmware/ipxe 1.0.0_p20130925 1.0.0_p20160620 1.0.0_p20180211: Open source network boot (PXE) firmware
+sys-firmware/ipxe 1.0.0_p20180211: Open source network boot (PXE) firmware
 sys-firmware/seabios 1.10.2 1.11.0: Open Source implementation of a 16-bit x86 BIOS
 sys-firmware/sgabios 0.1_pre8-r1: serial graphics adapter bios option rom for x86
-sys-firmware/vgabios 0.6c-r1 0.7a: VGA BIOS implementation
+sys-firmware/vgabios 0.7a: VGA BIOS implementation
 sys-firmware/zd1201-firmware 0.14: Firmware for ZyDAS 1201 based USB 802.11b Network WiFi devices
 sys-firmware/zd1211-firmware 1.5: Firmware for ZyDAS ZD1211 USB-WLAN devices supported by the zd1211rw driver
 sys-fs/arm-fdisk 3.0.6-r1: edit disk partitions on Acorn machines
