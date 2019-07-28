@@ -7,7 +7,8 @@ inherit pam
 
 if [[ ${PV} == "9999" ]] ; then
 	inherit autotools git-r3
-	EGIT_REPO_URI="https://git.kernel.org/pub/scm/linux/kernel/git/legion/kbd.git"
+	#EGIT_REPO_URI="https://git.kernel.org/pub/scm/linux/kernel/git/legion/kbd.git"
+	EGIT_REPO_URI="https://github.com/legionus/kbd.git"
 	EGIT_BRANCH="master"
 else
 	SRC_URI="https://www.kernel.org/pub/linux/utils/kbd/${P}.tar.xz"
