@@ -11,7 +11,7 @@ HOMEPAGE="
 	https://kde.org/applications/games/kbreakout/
 	https://games.kde.org/game.php?game=kbreakout
 "
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 ~x86"
 IUSE=""
 
 DEPEND="
