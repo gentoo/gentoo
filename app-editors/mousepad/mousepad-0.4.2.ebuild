@@ -8,7 +8,7 @@ DESCRIPTION="GTK+-based editor for the Xfce Desktop Environment"
 HOMEPAGE="https://git.xfce.org/apps/mousepad/about/"
 SRC_URI="https://archive.xfce.org/src/apps/${PN}/${PV%.*}/${P}.tar.bz2"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="dbus +gtk3"
