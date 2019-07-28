@@ -8,7 +8,7 @@ inherit kde5
 
 DESCRIPTION="Kill the bots or they kill you!"
 HOMEPAGE="https://kde.org/applications/games/killbots/"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 ~x86"
 IUSE=""
 
 DEPEND="
