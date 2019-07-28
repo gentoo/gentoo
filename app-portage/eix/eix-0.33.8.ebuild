@@ -76,10 +76,8 @@ src_configure() {
 	# https://github.com/vaeth/eix/issues/35
 	append-cxxflags -std=c++14
 
-	if [[ ${CHOST} == *-cygwin* ]]; then
-		# work around https://github.com/vaeth/eix/issues/64, bug#687988
-		export mv_fCXXFLAGS_cache='-mindirect-branch=thunk'
-	fi
+	# work around https://github.com/vaeth/eix/issues/64, bug#687988
+	local -x mv_fCXXFLAGS_cache='-mindirect-branch=thunk'
 
 	econf "${myconf[@]}"
 }
