@@ -133,8 +133,6 @@ src_compile() {
 src_install() {
 	default
 
-	dodoc AUTHORS NEWS README
-
 	# Remove .la files if they're not needed
 	use static-libs || prune_libtool_files
 
