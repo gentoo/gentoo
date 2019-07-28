@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ if [[ ${PV} == 9999 ]]; then
 else
 	COMMIT_ID=e327df26fa9dbdf363b778ada91e83967f4bd500
 	SRC_URI="https://anonscm.debian.org/cgit/d-i/console-setup.git/snapshot/${COMMIT_ID}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~x86"
 	S="${WORKDIR}/${COMMIT_ID}"
 fi
 
