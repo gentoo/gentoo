@@ -27,6 +27,11 @@ COMMON_DEPEND="udev? ( virtual/udev )"
 DEPEND="${COMMON_DEPEND}"
 RDEPEND="${COMMON_DEPEND}"
 
+PATCHES=(
+	"${FILESDIR}/${P}-delete_tmpfiles.patch"
+	"${FILESDIR}/${P}-fix_check_for_open_memstream.patch"
+)
+
 src_configure() {
 	local myeconfargs=(
 		--dbdir="${EPREFIX}/var/lib/dhcpcd"
