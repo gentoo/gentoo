@@ -9,7 +9,7 @@
     <email>ruby@gentoo.org</email>
     <name>Gentoo Ruby Project</name>
   </maintainer>
-	<upstream>
-		<remote-id type="github">alexgenco/neovim-ruby</remote-id>
-	</upstream>
+  <upstream>
+    <remote-id type="github">alexgenco/neovim-ruby</remote-id>
+  </upstream>
 </pkgmetadata>
