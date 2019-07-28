@@ -761,7 +761,7 @@ app-emulation/simh 3.9.0-r1: a simulator for historical computers such as Vax, P
 app-emulation/spectemu 0.99.3-r1: 48k ZX Spectrum Emulator
 app-emulation/spice 0.14.0-r2: SPICE server
 app-emulation/spice-html5 0.2.1: Spice Javascript client
-app-emulation/spice-protocol 0.12.13 0.12.14: Headers defining the SPICE protocol
+app-emulation/spice-protocol 0.12.14: Headers defining the SPICE protocol
 app-emulation/spice-vdagent 0.17.0_p20180319-r1: SPICE VD Linux Guest Agent
 app-emulation/spim 8.0-r3: MIPS Simulator
 app-emulation/uade 2.13: Unix Amiga Delitracker Emulator - plays old Amiga tunes through UAE emulation
@@ -8475,7 +8475,7 @@ net-firewall/dshieldpy 3.2-r2: Python script to submit firewall logs to dshield.
 net-firewall/ebtables 2.0.10.4: Controls Ethernet frame filtering on a Linux bridge, MAC NAT and brouting
 net-firewall/ferm 2.4 2.4.1: Command line util for managing firewall rules
 net-firewall/firehol 3.1.6: iptables firewall generator
-net-firewall/firewalld 0.5.1-r2 0.6.3: A firewall daemon with D-BUS interface providing a dynamic firewall
+net-firewall/firewalld 0.6.3: A firewall daemon with D-BUS interface providing a dynamic firewall
 net-firewall/fwbuilder 5.3.7: A firewall GUI
 net-firewall/fwipsec 0.4.2-r1: Firewall scripts that control iptables, FreeS/WAN, and squid
 net-firewall/ipkungfu 0.6.1-r1: A nice iptables firewall script
@@ -8939,7 +8939,7 @@ net-misc/snarf 7.0-r4: Small and fast CLI resource grabber for http, gopher, fin
 net-misc/sobby 0.4.8-r1: Standalone Obby server
 net-misc/socat 1.7.3.2: Multipurpose relay (SOcket CAT)
 net-misc/sock 1.1-r1: A shell interface to network sockets
-net-misc/spice-gtk 0.34-r2 0.35: Set of GObject and Gtk objects for connecting to Spice servers and a client GUI
+net-misc/spice-gtk 0.35: Set of GObject and Gtk objects for connecting to Spice servers and a client GUI
 net-misc/spiped 1.6.0-r1: secure pipe daemon
 net-misc/ssh-askpass-fullscreen 1.0-r1: A small SSH Askpass replacement written with GTK2
 net-misc/sshpass 1.05 1.06: Tool for noninteractively performing password authentication with ssh
@@ -10191,7 +10191,7 @@ sys-process/at 3.1.18-r1: Queues jobs for later execution
 sys-process/atop 2.3.0-r1: Resource-specific view of processes
 sys-process/audit 2.6.4 2.7.1 2.8.3 2.8.4: Userspace utilities for storing and processing auditing records
 sys-process/bcron 0.10: A new cron system designed with secure operations in mind by Bruce Guenter
-sys-process/criu 2.5-r1 3.6: utility to checkpoint/restore a process tree
+sys-process/criu 3.6: utility to checkpoint/restore a process tree
 sys-process/cronbase 0.3.7-r6: base for all cron ebuilds
 sys-process/cronie 1.5.4: Cronie is a standard UNIX daemon cron based on the original vixie-cron
 sys-process/cronutils 1.9: Utilities to assist running batch processing jobs

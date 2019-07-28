@@ -1,15 +1,15 @@
 DEFINED_PHASES=compile configure install prepare setup test
-DEPEND=dev-libs/protobuf-c dev-libs/libnl:3 net-libs/libnet:1.1 sys-libs/libcap python? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) selinux? ( sys-libs/libselinux ) setproctitle? ( dev-libs/libbsd ) app-text/asciidoc app-text/xmlto
+DEPEND=dev-libs/protobuf-c dev-libs/libnl:3 net-libs/libnet:1.1 sys-libs/libcap python? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) selinux? ( sys-libs/libselinux ) setproctitle? ( dev-libs/libbsd ) doc? ( app-text/asciidoc app-text/xmlto )
 DESCRIPTION=utility to checkpoint/restore a process tree
 EAPI=6
-HOMEPAGE=http://criu.org/
-IUSE=python selinux setproctitle static-libs kernel_linux python_targets_python2_7
+HOMEPAGE=https://criu.org/
+IUSE=doc python selinux setproctitle static-libs kernel_linux python_targets_python2_7
 KEYWORDS=~amd64 ~arm ~arm64
 LICENSE=GPL-2
 RDEPEND=dev-libs/protobuf-c dev-libs/libnl:3 net-libs/libnet:1.1 sys-libs/libcap python? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] ) selinux? ( sys-libs/libselinux ) setproctitle? ( dev-libs/libbsd ) python? ( dev-python/protobuf-python[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/ipaddr[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] )
 REQUIRED_USE=python? ( || ( python_targets_python2_7 ) )
 RESTRICT=test
 SLOT=0
-SRC_URI=http://download.openvz.org/criu/criu-3.7.tar.bz2
+SRC_URI=https://download.openvz.org/criu/criu-3.12.tar.bz2
 _eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	7ba73aee7fe4462b3a745e3645ab92ca	linux-info	953c3b1c472dcadbf62098a9301327f2	ltprune	2729691420b6deeda2a90b1f1183fb55	multibuild	40fe59465edacd730c644ec2bc197809	multilib	1d91b03d42ab6308b5f4f6b598ed110e	preserve-libs	ef207dc62baddfddfd39a164d9797648	python-r1	ce1cd23cfdc1848e8e32743efe34f299	python-utils-r1	08e17157a6807add7db1f8d01e7e391f	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
-_md5_=9f6ee0f328a0617b0d2a21a05c734b3f
+_md5_=e7fbf4e176ba3bab24471195283ca9cf
