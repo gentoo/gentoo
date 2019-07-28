@@ -14,7 +14,7 @@ HOMEPAGE="
 "
 
 LICENSE="GPL-2+ handbook? ( FDL-1.2 )"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE="activities fits kipi +mpris raw semantic-desktop X"
 
 # requires running environment

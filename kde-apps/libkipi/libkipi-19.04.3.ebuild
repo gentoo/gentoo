@@ -8,7 +8,7 @@ inherit kde5
 DESCRIPTION="A library for image plugins accross KDE applications"
 LICENSE="GPL-2+"
 SLOT="5/32"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE=""
 
 DEPEND="

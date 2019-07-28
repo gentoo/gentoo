@@ -9,7 +9,7 @@ MY_PLUGIN_NAME="dropbox"
 inherit kde5
 
 DESCRIPTION="Dolphin plugin for Dropbox service integration"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="

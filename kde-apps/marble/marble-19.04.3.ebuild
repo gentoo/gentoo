@@ -12,7 +12,7 @@ inherit kde5
 DESCRIPTION="Virtual Globe and World Atlas to learn more about Earth"
 HOMEPAGE="https://marble.kde.org/"
 
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE="aprs +dbus designer gps +kde nls phonon +geolocation shapefile +webengine"
 
 # FIXME (new package): libwlocate, WLAN-based geolocation

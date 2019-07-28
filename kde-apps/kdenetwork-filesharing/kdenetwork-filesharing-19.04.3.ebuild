@@ -6,7 +6,7 @@ EAPI=7
 inherit kde5
 
 DESCRIPTION="SMB filesharing config module for systemsettings"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE=""
 
 DEPEND="

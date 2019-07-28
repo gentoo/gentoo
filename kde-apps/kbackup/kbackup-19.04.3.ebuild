@@ -8,7 +8,7 @@ inherit kde5
 
 DESCRIPTION="Program that lets you back up any directories or files"
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE=""
 
 DEPEND="

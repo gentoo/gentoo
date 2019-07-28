@@ -9,7 +9,7 @@ MY_PLUGIN_NAME="git"
 inherit kde5
 
 DESCRIPTION="Dolphin plugin for Git integration"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE=""
 
 DEPEND="

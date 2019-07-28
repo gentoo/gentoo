@@ -9,7 +9,7 @@ MY_PLUGIN_NAME="svn"
 inherit kde5
 
 DESCRIPTION="Dolphin plugin for Subversion integration"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE=""
 
 DEPEND="
