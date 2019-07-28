@@ -6956,7 +6956,7 @@ kde-misc/skanlite 2.1.0.1 2.1.0.1-r1: KDE image scanning application
 kde-misc/systemd-kcm 1.2.1: Plasma control module for systemd
 kde-misc/tellico 3.2: Collection manager based on KDE Frameworks
 kde-misc/wacomtablet 3.1.1-r1: System settings module for Wacom tablets
-kde-misc/zanshin 0.5.0: Getting things done application by KDE
+kde-misc/zanshin 0.5.0-r1: Getting things done application by KDE
 kde-plasma/bluedevil 5.15.5: Bluetooth stack for KDE Plasma
 kde-plasma/breeze 5.15.5: Breeze visual style for the Plasma desktop
 kde-plasma/breeze-grub 5.15.5: Breeze theme for GRUB
@@ -9878,7 +9878,7 @@ sys-block/gpart 0.1h-r2: Partition table rescue/guessing tool
 sys-block/gparted 0.33.0: Gnome Partition Editor
 sys-block/io-scheduler-udev-rules 1: Udev rules to allow easier customization of kernel I/O schedulers
 sys-block/iscsitarget 0.4.17 1.4.19 1.4.20.2 1.4.20.2_p20130103 1.4.20.2_p20130821: Open Source iSCSI target with professional features
-sys-block/kvpm 0.9.10: KDE frontend for Linux LVM2 and GNU parted
+sys-block/kvpm 0.9.10-r1: GUI front end for Linux LVM2 and GNU parted based on KDE Frameworks
 sys-block/mbuffer 20150412 20171011 20181119: M(easuring)buffer is a replacement for buffer with additional functionality
 sys-block/megactl 0.4.1-r3: LSI MegaRAID control utility
 sys-block/mpt-status 1.2.0-r1: Query tool to access the running configuration and status of LSI SCSI HBAs
