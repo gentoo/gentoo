@@ -19,7 +19,7 @@ IUSE="+consolekit selinux systemd"
 S="${WORKDIR}/${MY_P}"
 
 CDEPEND="
-	>=app-emulation/spice-protocol-0.12.8
+	>=app-emulation/spice-protocol-0.14.0
 	media-libs/alsa-lib
 	>=x11-libs/libpciaccess-0.10
 	x11-libs/libXfixes
