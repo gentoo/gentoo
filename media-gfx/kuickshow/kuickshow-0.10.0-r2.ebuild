@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 KDE_HANDBOOK="forceoptional"
 inherit kde5
@@ -19,7 +19,6 @@ DEPEND="
 	$(add_frameworks_dep kconfig)
 	$(add_frameworks_dep kconfigwidgets)
 	$(add_frameworks_dep kcoreaddons)
-	$(add_frameworks_dep kdelibs4support)
 	$(add_frameworks_dep ki18n)
 	$(add_frameworks_dep kiconthemes)
 	$(add_frameworks_dep kinit)

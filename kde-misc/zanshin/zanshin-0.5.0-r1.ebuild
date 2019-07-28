@@ -1,9 +1,8 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-KDE_APPS_MINIMAL="17.12.0"
 KDE_TEST="forceoptional"
 VIRTUALX_REQUIRED="test"
 inherit kde5
@@ -16,7 +15,9 @@ LICENSE="|| ( GPL-2 GPL-3 )"
 KEYWORDS="amd64 x86"
 IUSE=""
 
-# FIXME: bundles libkdepim
+BDEPEND="
+	test? ( <kde-apps/akonadi-19.04.50:5[tools] )
+"
 COMMON_DEPEND="
 	$(add_frameworks_dep kcodecs)
 	$(add_frameworks_dep kcompletion)
@@ -35,17 +36,17 @@ COMMON_DEPEND="
 	$(add_frameworks_dep kwidgetsaddons)
 	$(add_frameworks_dep kwindowsystem)
 	$(add_frameworks_dep kxmlgui)
-	$(add_kdeapps_dep akonadi)
-	$(add_kdeapps_dep akonadi-calendar)
-	$(add_kdeapps_dep akonadi-contacts)
-	$(add_kdeapps_dep akonadi-notes)
-	$(add_kdeapps_dep akonadi-search)
-	$(add_kdeapps_dep kcalcore)
-	$(add_kdeapps_dep kcontacts)
-	$(add_kdeapps_dep kidentitymanagement)
-	$(add_kdeapps_dep kldap)
-	$(add_kdeapps_dep kmime)
-	$(add_kdeapps_dep kontactinterface)
+	<kde-apps/akonadi-19.04.50:5
+	<kde-apps/akonadi-calendar-19.04.50:5
+	<kde-apps/akonadi-contacts-19.04.50:5
+	<kde-apps/akonadi-notes-19.04.50:5
+	<kde-apps/akonadi-search-19.04.50:5
+	<kde-apps/kcalcore-19.04.50:5
+	<kde-apps/kcontacts-19.04.50:5
+	<kde-apps/kidentitymanagement-19.04.50:5
+	<kde-apps/kldap-19.04.50:5
+	<kde-apps/kmime-19.04.50:5
+	<kde-apps/kontactinterface-19.04.50:5
 	$(add_qt_dep qtdbus)
 	$(add_qt_dep qtdeclarative)
 	$(add_qt_dep qtgui)
@@ -54,11 +55,10 @@ COMMON_DEPEND="
 "
 DEPEND="${COMMON_DEPEND}
 	dev-libs/boost
-	test? ( $(add_kdeapps_dep akonadi 'tools') )
 "
 RDEPEND="${COMMON_DEPEND}
 	!kde-misc/zanshin:4
-	$(add_kdeapps_dep kdepim-runtime)
+	<kde-apps/kdepim-runtime-19.04.50:5
 "
 
 PATCHES=( "${FILESDIR}/${P}-cmake.patch" )
