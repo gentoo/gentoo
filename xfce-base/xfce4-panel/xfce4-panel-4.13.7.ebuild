@@ -1,9 +1,9 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit gnome2-utils xdg-utils
+inherit vala xdg-utils
 
 DESCRIPTION="Panel for the Xfce desktop environment"
 HOMEPAGE="https://www.xfce.org/projects/"
@@ -12,7 +12,8 @@ SRC_URI="https://archive.xfce.org/src/xfce/${PN}/${PV%.*}/${P}.tar.bz2"
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~x86-solaris"
-IUSE="introspection"
+IUSE="introspection vala"
+REQUIRED_USE="vala? ( introspection )"
 
 RDEPEND=">=dev-libs/glib-2.42:=
 	>=x11-libs/cairo-1:=
@@ -27,20 +28,28 @@ RDEPEND=">=dev-libs/glib-2.42:=
 	>=xfce-base/xfconf-4.13:=
 	introspection? ( dev-libs/gobject-introspection:= )"
 DEPEND="${RDEPEND}
+	vala? ( $(vala_depend) )
 	dev-lang/perl
 	dev-util/gtk-doc-am
 	dev-util/intltool
 	sys-devel/gettext
 	virtual/pkgconfig"
 
+src_prepare() {
+	# stupid vala.eclass...
+	default
+}
+
 src_configure() {
 	local myconf=(
 		$(use_enable introspection)
+		$(use_enable vala)
 
 		# enable GTK+2 compatibility
 		--enable-gtk2
 	)
 
+	use vala && vala_src_prepare
 	econf "${myconf[@]}"
 }
 
@@ -51,11 +60,11 @@ src_install() {
 }
 
 pkg_postinst() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 	xdg_desktop_database_update
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 	xdg_desktop_database_update
 }

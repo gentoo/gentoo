@@ -1,15 +1,15 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit gnome2-utils vala
+inherit xdg-utils vala
 
 DESCRIPTION="Unified widget and session management libs for Xfce"
 HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 SRC_URI="https://archive.xfce.org/src/xfce/${PN}/${PV%.*}/${P}.tar.bz2"
 
-LICENSE="LGPL-2"
+LICENSE="LGPL-2+ GPL-2+"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-fbsd ~amd64-linux ~x86-linux ~x86-solaris"
 IUSE="debug glade introspection startup-notification vala"
@@ -26,13 +26,13 @@ RDEPEND=">=dev-libs/glib-2.42:2=
 	glade? ( dev-util/glade:3.10= )
 	introspection? ( dev-libs/gobject-introspection:= )
 	startup-notification? ( x11-libs/startup-notification:= )
-	vala? ( $(vala_depend) )
 	!xfce-base/xfce-utils"
 DEPEND="${RDEPEND}
 	dev-lang/perl
 	dev-util/intltool
 	sys-devel/gettext
-	virtual/pkgconfig"
+	virtual/pkgconfig
+	vala? ( $(vala_depend) )"
 
 src_prepare() {
 	# stupid vala.eclass...
@@ -64,9 +64,9 @@ src_install() {
 }
 
 pkg_postinst() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }

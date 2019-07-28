@@ -16,13 +16,13 @@ IUSE="introspection vala"
 REQUIRED_USE="vala? ( introspection )"
 
 RDEPEND=">=dev-libs/glib-2.42:=
-	introspection? ( dev-libs/gobject-introspection:= )
-	vala? ( $(vala_depend) )"
+	introspection? ( dev-libs/gobject-introspection:= )"
 DEPEND="${RDEPEND}
 	dev-util/intltool
 	dev-util/gtk-doc-am
 	sys-devel/gettext
-	virtual/pkgconfig"
+	virtual/pkgconfig
+	vala? ( $(vala_depend) )"
 
 src_prepare() {
 	# stupid vala.eclass...
