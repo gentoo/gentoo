@@ -8,7 +8,7 @@ inherit kde5
 
 DESCRIPTION="Single player arcade bombing game"
 HOMEPAGE="https://kde.org/applications/games/bomber/"
-KEYWORDS="amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE=""
 
 DEPEND="
