@@ -9,7 +9,7 @@ inherit kde5
 
 DESCRIPTION="Advanced download manager by KDE"
 HOMEPAGE="https://kde.org/applications/internet/kget/"
-KEYWORDS="amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE="bittorrent gpg kde mms sqlite"
 
 RDEPEND="
