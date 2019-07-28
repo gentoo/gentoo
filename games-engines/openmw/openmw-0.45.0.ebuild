@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit cmake-utils gnome2-utils readme.gentoo-r1
+inherit cmake-utils xdg-utils readme.gentoo-r1
 
 DESCRIPTION="Open source reimplementation of TES III: Morrowind"
 HOMEPAGE="https://openmw.org/"
@@ -14,27 +14,32 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc devtools +qt5"
 
+# FIXME: Unbundle dev-games/openscenegraph-qt in extern/osgQt directory,
+# used when BUILD_OPENCS flag is enabled. See bug #676266.
+
 RDEPEND="
 	dev-games/mygui
 	>=dev-games/openscenegraph-3.5.5:=[ffmpeg,jpeg,png,sdl,svg,truetype,zlib]
-	dev-games/openscenegraph-qt
 	dev-libs/boost:=[threads]
 	dev-libs/tinyxml[stl]
-	media-libs/libsdl2[joystick,opengl,video,X]
+	media-libs/libsdl2[joystick,opengl,video]
 	media-libs/openal
 	media-video/ffmpeg:=
-	>=sci-physics/bullet-2.86
+	>=sci-physics/bullet-2.86:=
 	virtual/opengl
 	qt5? (
 		app-arch/unshield
-		dev-qt/qtcore:5
-		dev-qt/qtgui:5
-		dev-qt/qtnetwork:5
-		dev-qt/qtopengl:5
-		dev-qt/qtwidgets:5
+		dev-qt/qtcore:5=
+		dev-qt/qtgui:5=
+		dev-qt/qtnetwork:5=
+		dev-qt/qtopengl:5=
+		dev-qt/qtwidgets:5=
 	)
 "
-DEPEND="${RDEPEND}
+
+DEPEND="${RDEPEND}"
+
+BDEPEND="
 	virtual/pkgconfig
 	doc? (
 		app-doc/doxygen[doc]
@@ -48,12 +53,10 @@ src_prepare() {
 	cmake-utils_src_prepare
 
 	# We don't install license files
-	sed -e '/LICDIR/d' \
-		-i CMakeLists.txt || die
+	sed -i '/LICDIR/d' CMakeLists.txt || die
+
 	# Use the system tinyxml headers
-	sed -e 's/"tinyxml.h"/<tinyxml.h>/g' \
-		-e 's/"tinystr.h"/<tinystr.h>/g' \
-		-i extern/oics/ICSPrerequisites.h || die
+	rm -v extern/oics/tiny{str,xml}* || die
 }
 
 src_configure() {
@@ -117,10 +120,10 @@ src_install() {
 }
 
 pkg_postinst() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 	readme.gentoo_print_elog
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }
