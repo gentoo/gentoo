@@ -5,7 +5,4 @@
 		<email>kde@gentoo.org</email>
 		<name>Gentoo KDE Project</name>
 	</maintainer>
-	<use>
-		<flag name="oauth">Enable support OAuth authentication for EWS via <pkg>dev-qt/qtnetworkauth</pkg></flag>
-	</use>
 </pkgmetadata>
