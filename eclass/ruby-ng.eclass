@@ -278,7 +278,6 @@ ruby_add_bdepend() {
 # @FUNCTION: ruby_add_depend
 # @USAGE: dependencies
 # @DESCRIPTION:
-
 # Adds the specified dependencies to DEPEND in EAPI7, similar to
 # ruby_add_bdepend.
 ruby_add_depend() {
