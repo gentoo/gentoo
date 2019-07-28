@@ -22,7 +22,7 @@ RDEPEND="${PYTHON_DEPS}
 	dev-python/decorator[${PYTHON_USEDEP}]
 	>=dev-python/python-slip-0.2.7[dbus,${PYTHON_USEDEP}]
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
-	net-firewall/ebtables
+	|| ( net-firewall/ebtables net-firewall/iptables[nftables] )
 	net-firewall/iptables[ipv6]
 	net-firewall/ipset
 	net-firewall/nftables
