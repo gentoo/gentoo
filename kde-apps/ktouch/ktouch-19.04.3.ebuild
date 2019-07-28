@@ -8,7 +8,7 @@ inherit kde5
 
 DESCRIPTION="Program that helps to learn and practice touch typing"
 HOMEPAGE="https://kde.org/applications/education/ktouch/"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 ~x86"
 IUSE=""
 # USE !X is broken, https://bugs.kde.org/show_bug.cgi?id=402902
 
