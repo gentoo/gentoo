@@ -1,19 +1,21 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{5,6} )
+PYTHON_COMPAT=( python2_7 python3_{5,6,7} )
 
 inherit distutils-r1 vcs-snapshot
 
 DESCRIPTION="Pure python reader and writer of Excel OpenXML files"
 HOMEPAGE="https://openpyxl.readthedocs.io/en/stable/"
+# Upstream doesn't want to include tests in PyPI tarballs
+# https://bitbucket.org/openpyxl/openpyxl/issues/1308/include-tests-in-pypi-tarballs
 SRC_URI="https://bitbucket.org/${PN}/${PN}/get/${PV}.tar.bz2 -> ${P}.tar.bz2"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux"
 IUSE="test"
 
 RDEPEND="
@@ -25,9 +27,10 @@ DEPEND="
 		${RDEPEND}
 		dev-python/pytest[${PYTHON_USEDEP}]
 		dev-python/lxml[${PYTHON_USEDEP}]
-		dev-python/pillow[${PYTHON_USEDEP}]
+		dev-python/pillow[${PYTHON_USEDEP},tiff,jpeg]
 	)"
+BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 
 python_test() {
-	pytest -v || die "Testing failed with ${EPYTHON}"
+	pytest -vv || die "Testing failed with ${EPYTHON}"
 }
