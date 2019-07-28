@@ -41,7 +41,10 @@ src_configure() {
 	local emesonargs=(
 		-Denable_tracing=false # extra trace debugging that would make things slower
 		-Denable_profiling=false # -pg passing
-		# -Denable_rdtscp=false # TODO: CPU_FLAGS_X86 for it?
+		# On linux it'll always use a vdso based implementation that is even faster
+		# than rdtscp insn, thus never build with rdtscp until we don't support non-linux
+		# as the rdtscp using function will never get called anyways.
+		-Denable_rdtscp=false
 		-Denable_tools=true # /usr/bin/dazzle-list-counters
 		$(meson_use introspection with_introspection)
 		$(meson_use vala with_vapi)
