@@ -4,11 +4,11 @@ DESCRIPTION=Id3 library for C/C++
 EAPI=6
 HOMEPAGE=http://id3lib.sourceforge.net/
 IUSE=doc static-libs
-KEYWORDS=alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 sh sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-macos ~x86-solaris
+KEYWORDS=alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 sh sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-macos ~x86-solaris
 LICENSE=LGPL-2.1
 RDEPEND=sys-libs/zlib:=
 RESTRICT=test
 SLOT=0
 SRC_URI=mirror://sourceforge/id3lib/id3lib-3.8.3.tar.gz
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
-_md5_=b4cc5a3fe7c44d7bcafa5fb963a6b0de
+_md5_=86b63f4e14064b3155f128e5bc3bfdf6
