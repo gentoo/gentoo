@@ -7471,7 +7471,7 @@ media-libs/fluidsynth-dssi 1.0.0: DSSI Soft Synth Interface
 media-libs/fontconfig 2.12.6 2.13.0-r4: A library for configuring and customizing font access
 media-libs/fontconfig-infinality 20130404: Configuration for freetype-infinality subpixel hinting
 media-libs/freealut 1.1.0-r3: The OpenAL Utility Toolkit
-media-libs/freeglut 2.8.1-r1 3.0.0: Completely OpenSourced alternative to the OpenGL Utility Toolkit (GLUT) library
+media-libs/freeglut 3.0.0: Completely OpenSourced alternative to the OpenGL Utility Toolkit (GLUT) library
 media-libs/freeimage 3.15.4-r1: Image library supporting many formats
 media-libs/freetype 2.9.1-r3: A high-quality and portable font engine
 media-libs/freeverb3 3.1.2-r1 3.2.1-r1: Reverb and Impulse Response Convolution plug-ins (Audacious/JACK)
@@ -8580,7 +8580,7 @@ net-irc/sic 1.2-r1: An extremly simple IRC client
 net-irc/telepathy-idle 0.2.0: Full-featured IRC connection manager for Telepathy
 net-irc/unrealircd 4.2.2: An advanced Internet Relay Chat daemon
 net-irc/weechat 2.3 2.4: Portable and multi-interface IRC client
-net-irc/znc 1.7.3 1.7.4: An advanced IRC Bouncer
+net-irc/znc 1.7.4: An advanced IRC Bouncer
 net-libs/accounts-qt 1.15: Qt5 bindings for libaccounts-glib
 net-libs/aqbanking 5.7.8: Generic Online Banking Interface
 net-libs/axtls 1.5.3 2.1.3: Embedded client/server TLSv1 SSL library and small HTTP(S) server
@@ -10010,7 +10010,7 @@ sys-fabric/qperf 0.4.9: Measure RDMA and IP performance
 sys-fabric/rds-tools 2.0.4-r3: OpenIB userspace rds-tools
 sys-fabric/srptools 1.0.2: Tools for discovering and connecting to SRP CSI targets on InfiniBand fabrics
 sys-firmware/alsa-firmware 1.0.29: Advanced Linux Sound Architecture firmware
-sys-firmware/edk2-ovmf 2017_pre20170505-r1 2017_p20180211: UEFI firmware for 64-bit x86 virtual machines
+sys-firmware/edk2-ovmf 2017_p20180211: UEFI firmware for 64-bit x86 virtual machines
 sys-firmware/ipxe 1.0.0_p20180211: Open source network boot (PXE) firmware
 sys-firmware/seabios 1.10.2 1.11.0: Open Source implementation of a 16-bit x86 BIOS
 sys-firmware/sgabios 0.1_pre8-r1: serial graphics adapter bios option rom for x86
