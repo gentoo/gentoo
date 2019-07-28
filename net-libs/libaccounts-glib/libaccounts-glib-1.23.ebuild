@@ -11,7 +11,7 @@ SRC_URI="https://gitlab.com/accounts-sso/libaccounts-glib/repository/archive.tar
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 x86"
+KEYWORDS="amd64 ~arm arm64 x86"
 IUSE="debug"
 
 RDEPEND="
