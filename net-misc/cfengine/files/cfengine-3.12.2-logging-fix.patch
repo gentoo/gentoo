@@ -1,0 +1,118 @@
+From e17e99964dfa69e7243366a5fdecec985ef31883 Mon Sep 17 00:00:00 2001
+From: Chris Rorvick <chris@rorvick.com>
+Date: Sun, 19 May 2019 21:32:01 -0500
+Subject: [PATCH] fix bogus success message for 'cfe_internal' package
+
+Commit 9cd859620825 ("Fix cfe_internal packages to avoid return code
+check.") had ExecPackageCommand() skip the return code verification to
+avoid noise in the log for a command that is expected to fail.  This
+results in ExecPackageCommand() indicating success, though, which leads
+to the completely bogus message:
+
+  verbose: Package schedule execution ok for 'cfe_internal_non_existing_package' (outcome cannot be promised by cf-agent)
+
+Decide if we want to ignore the package before looking at the status
+code to restore the intended behavior.
+---
+ cf-agent/verify_packages.c | 44 +++++++++++++++++++++-----------------
+ 1 file changed, 24 insertions(+), 20 deletions(-)
+
+diff --git a/cf-agent/verify_packages.c b/cf-agent/verify_packages.c
+index 54b8564bc..9d0d3fb92 100644
+--- a/cf-agent/verify_packages.c
++++ b/cf-agent/verify_packages.c
+@@ -2695,16 +2695,18 @@ static bool ExecuteSchedule(EvalContext *ctx, const PackageManager *schedule, Pa
+                     EvalContextStackPushPromiseFrame(ctx, ppi);
+                     if (EvalContextStackPushPromiseIterationFrame(ctx, NULL))
+                     {
+-                        if (ExecPackageCommand(ctx, command_string, verify, true, a, ppi, &result))
++                        bool ok = ExecPackageCommand(ctx, command_string, verify, true, a, ppi, &result);
++
++                        if (StringSafeEqual(pi->name, PACKAGE_IGNORED_CFE_INTERNAL))
++                        {
++                            Log(LOG_LEVEL_DEBUG, "ExecuteSchedule: Ignoring outcome for special package '%s'", pi->name);
++                        }
++                        else if (ok)
+                         {
+                             Log(LOG_LEVEL_VERBOSE,
+                                 "Package schedule execution ok for '%s' (outcome cannot be promised by cf-agent)",
+                                   pi->name);
+                         }
+-                        else if (strncmp(pi->name, PACKAGE_IGNORED_CFE_INTERNAL, strlen(PACKAGE_IGNORED_CFE_INTERNAL)) == 0)
+-                        {
+-                            Log(LOG_LEVEL_DEBUG, "ExecuteSchedule: Ignoring outcome for special package '%s'", pi->name);
+-                        }
+                         else
+                         {
+                             Log(LOG_LEVEL_ERR, "Package schedule execution failed for '%s'", pi->name);
+@@ -2760,16 +2762,16 @@ static bool ExecuteSchedule(EvalContext *ctx, const PackageManager *schedule, Pa
+ 
+                         for (const PackageItem *pi = pm->pack_list; pi != NULL; pi = pi->next)
+                         {
+-                            if (ok)
++                            if (StringSafeEqual(pi->name, PACKAGE_IGNORED_CFE_INTERNAL))
++                            {
++                                Log(LOG_LEVEL_DEBUG, "ExecuteSchedule: Ignoring outcome for special package '%s'", pi->name);
++                            }
++                            else if (ok)
+                             {
+                                 Log(LOG_LEVEL_VERBOSE,
+                                     "Bulk package schedule execution ok for '%s' (outcome cannot be promised by cf-agent)",
+                                       pi->name);
+                             }
+-                            else if (strncmp(pi->name, PACKAGE_IGNORED_CFE_INTERNAL, strlen(PACKAGE_IGNORED_CFE_INTERNAL)) == 0)
+-                            {
+-                                Log(LOG_LEVEL_DEBUG, "ExecuteSchedule: Ignoring outcome for special package '%s'", pi->name);
+-                            }
+                             else
+                             {
+                                 Log(LOG_LEVEL_ERR, "Bulk package schedule execution failed somewhere - unknown outcome for '%s'",
+@@ -2946,16 +2948,18 @@ static bool ExecutePatch(EvalContext *ctx, const PackageManager *schedule, Packa
+                     EvalContextStackPushPromiseFrame(ctx, pp);
+                     if (EvalContextStackPushPromiseIterationFrame(ctx, NULL))
+                     {
+-                        if (ExecPackageCommand(ctx, command_string, false, true, a, pp, &result))
++                        bool ok = ExecPackageCommand(ctx, command_string, false, true, a, pp, &result);
++
++                        if (StringSafeEqual(pi->name, PACKAGE_IGNORED_CFE_INTERNAL))
++                        {
++                            Log(LOG_LEVEL_DEBUG, "ExecutePatch: Ignoring outcome for special package '%s'", pi->name);
++                        }
++                        else if (ok)
+                         {
+                             Log(LOG_LEVEL_VERBOSE,
+                                 "Package schedule execution ok for '%s' (outcome cannot be promised by cf-agent)",
+                                   pi->name);
+                         }
+-                        else if (strncmp(pi->name, PACKAGE_IGNORED_CFE_INTERNAL, strlen(PACKAGE_IGNORED_CFE_INTERNAL)) == 0)
+-                        {
+-                            Log(LOG_LEVEL_DEBUG, "ExecutePatch: Ignoring outcome for special package '%s'", pi->name);
+-                        }
+                         else
+                         {
+                             Log(LOG_LEVEL_ERR, "Package schedule execution failed for '%s'", pi->name);
+@@ -2989,16 +2993,16 @@ static bool ExecutePatch(EvalContext *ctx, const PackageManager *schedule, Packa
+ 
+                     for (const PackageItem *pi = pm->patch_list; pi != NULL; pi = pi->next)
+                     {
+-                        if (ok)
++                        if (StringSafeEqual(pi->name, PACKAGE_IGNORED_CFE_INTERNAL))
++                        {
++                            Log(LOG_LEVEL_DEBUG, "ExecutePatch: Ignoring outcome for special package '%s'", pi->name);
++                        }
++                        else if (ok)
+                         {
+                             Log(LOG_LEVEL_VERBOSE,
+                                 "Bulk package schedule execution ok for '%s' (outcome cannot be promised by cf-agent)",
+                                   pi->name);
+                         }
+-                        else if (strncmp(pi->name, PACKAGE_IGNORED_CFE_INTERNAL, strlen(PACKAGE_IGNORED_CFE_INTERNAL)) == 0)
+-                        {
+-                            Log(LOG_LEVEL_DEBUG, "ExecutePatch: Ignoring outcome for special package '%s'", pi->name);
+-                        }
+                         else
+                         {
+                             Log(LOG_LEVEL_ERR, "Bulk package schedule execution failed somewhere - unknown outcome for '%s'",
+-- 
+2.21.0
+
