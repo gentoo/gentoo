@@ -10,4 +10,4 @@ PROPERTIES=live
 RDEPEND=udev? ( virtual/udev )
 SLOT=0
 _eclasses_=git-r3	562b380fc59ae6a8622171d0acb777d1	multilib	1d91b03d42ab6308b5f4f6b598ed110e	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
-_md5_=3e79487d812ceb610da151a72fd7d5fa
+_md5_=3518889b8d1368da5c759c9f60f5f350
