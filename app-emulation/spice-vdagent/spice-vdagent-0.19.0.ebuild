@@ -65,6 +65,6 @@ src_install() {
 
 	keepdir /var/log/spice-vdagentd
 
-	newinitd "${FILESDIR}/${PN}.initd-3" "${PN}"
+	newinitd "${FILESDIR}/${PN}.initd-4" "${PN}"
 	newconfd "${FILESDIR}/${PN}.confd-2" "${PN}"
 }
