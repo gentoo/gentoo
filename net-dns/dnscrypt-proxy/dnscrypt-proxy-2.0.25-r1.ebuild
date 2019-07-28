@@ -5,7 +5,7 @@ EAPI=7
 
 EGO_PN="github.com/jedisct1/${PN}"
 
-inherit fcaps golang-build systemd user
+inherit fcaps golang-build systemd
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
@@ -24,13 +24,13 @@ IUSE="pie"
 
 DEPEND=">=dev-lang/go-1.12"
 
+RDEPEND="
+	acct-group/dnscrypt-proxy
+	acct-user/dnscrypt-proxy
+"
+
 FILECAPS=( cap_net_bind_service+ep usr/bin/dnscrypt-proxy )
 PATCHES=( "${FILESDIR}"/config-full-paths-r10.patch )
-
-pkg_setup() {
-	enewgroup dnscrypt-proxy
-	enewuser dnscrypt-proxy -1 -1 /var/empty dnscrypt-proxy
-}
 
 src_prepare() {
 	default
@@ -61,6 +61,9 @@ src_install() {
 	newconfd "${FILESDIR}"/dnscrypt-proxy.confd dnscrypt-proxy
 	systemd_newunit "${FILESDIR}"/dnscrypt-proxy.service dnscrypt-proxy.service
 	systemd_newunit "${FILESDIR}"/dnscrypt-proxy.socket dnscrypt-proxy.socket
+
+	insinto /etc/logrotate.d
+	newins "${FILESDIR}"/dnscrypt-proxy.logrotate dnscrypt-proxy
 
 	einstalldocs
 }
