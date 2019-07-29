@@ -1,0 +1,15 @@
+diff -Naur a/setup.py b/setup.py
+--- a/setup.py	2019-07-29 20:46:23.212292642 +0300
++++ b/setup.py	2019-07-29 20:47:47.426300796 +0300
+@@ -20,10 +20,7 @@
+ from distutils.dir_util import remove_tree
+ from distutils.sysconfig import get_python_lib
+ 
+-try:
+-    from sphinx.application import Sphinx
+-except ImportError:
+-    Sphinx = None
++Sphinx = None
+ 
+ try:
+     import py2exe
