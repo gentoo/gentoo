@@ -8151,7 +8151,7 @@ media-sound/umix 1.0.2-r1: Program for adjusting soundcard volumes
 media-sound/umurmur 0.2.16a-r1: Minimalistic Murmur (Mumble server)
 media-sound/upmpdcli 1.4.0: UPnP Media Renderer front-end for MPD, the Music Player Daemon
 media-sound/vbrfixc 0.24: Vbrfix fixes MP3s and re-constructs VBR headers
-media-sound/vimpc 0.09.1 0.09.2: An ncurses based mpd client with vi-like key bindings
+media-sound/vimpc 0.09.2: An ncurses based mpd client with vi-like key bindings
 media-sound/vkeybd 0.1.18d: A virtual MIDI keyboard for X
 media-sound/vlevel 0.5-r1: Dynamic compressor to amplify quiet parts of music
 media-sound/vlorb 1.2: a high quality Audio CD to audio file encoder

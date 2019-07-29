@@ -199,7 +199,6 @@
     <member>
       <email>mattst88@gentoo.org</email>
       <name>Matt Turner</name>
-      <role>Member</role>
     </member>
     <member>
       <email>zlogene@gentoo.org</email>
@@ -465,7 +464,7 @@
   </project>
   <project>
     <email>catalyst@gentoo.org</email>
-    <name>Catalyst</name>
+    <name>Gentoo Catalyst Project</name>
     <url>https://wiki.gentoo.org/wiki/Project:Catalyst</url>
     <description>The Gentoo Catalyst Project develops and supports the Catalyst release building tool. Catalyst has been designed to be easy to use, customize, and maintain. It is also used in other Gentoo projects, such as GNAP.</description>
     <member>
@@ -487,6 +486,10 @@
       <email>jmbsvicetto@gentoo.org</email>
       <name>Jorge Manuel B. S. Vicetto</name>
       <role>Member</role>
+    </member>
+    <member>
+      <email>mattst88@gentoo.org</email>
+      <name>Matt Turner</name>
     </member>
     <member>
       <email>vapier@gentoo.org</email>
@@ -1439,7 +1442,6 @@
     <member>
       <email>mattst88@gentoo.org</email>
       <name>Matt Turner</name>
-      <role>Member</role>
     </member>
     <member>
       <email>slyfox@gentoo.org</email>
@@ -1580,7 +1582,6 @@
     <member>
       <email>mattst88@gentoo.org</email>
       <name>Matt Turner</name>
-      <role>Member</role>
     </member>
     <member>
       <email>slyfox@gentoo.org</email>
@@ -2653,7 +2654,6 @@
     <member>
       <email>mattst88@gentoo.org</email>
       <name>Matt Turner</name>
-      <role>Member</role>
     </member>
     <member>
       <email>slyfox@gentoo.org</email>
@@ -3112,7 +3112,7 @@
   </project>
   <project>
     <email>releng@gentoo.org</email>
-    <name>Release Engineering</name>
+    <name>Gentoo Release Engineering</name>
     <url>https://wiki.gentoo.org/wiki/Project:RelEng</url>
     <description>Release Engineering ("RelEng") is the official Gentoo project focused on coordinating and improving the creation of official media releases of Gentoo Linux and the associated tools used by the installation process.</description>
     <subproject ref="catalyst@gentoo.org"/>
@@ -3259,7 +3259,6 @@
     <member>
       <email>mattst88@gentoo.org</email>
       <name>Matt Turner</name>
-      <role>Member</role>
     </member>
     <member>
       <email>pinkbyte@gentoo.org</email>
@@ -3306,7 +3305,6 @@
     <member>
       <email>mattst88@gentoo.org</email>
       <name>Matt Turner</name>
-      <role>Member</role>
     </member>
     <member>
       <email>slyfox@gentoo.org</email>
@@ -3992,7 +3990,7 @@
   </project>
   <project>
     <email>x11@gentoo.org</email>
-    <name>X11</name>
+    <name>Gentoo X11 Project</name>
     <url>https://wiki.gentoo.org/wiki/Project:X11</url>
     <description>The X11 project manages the X implementations and related packages in Portage.</description>
     <member>
