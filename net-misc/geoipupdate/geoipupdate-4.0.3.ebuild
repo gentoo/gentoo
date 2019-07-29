@@ -38,7 +38,7 @@ src_compile() {
 src_install() {
 	mkdir "${D}/usr/bin" -p
 	cd "src/${EGO_PN}/build" || die
-	cp "geoipupdate ${D}/usr/bin" || die
+	cp geoipupdate "${D}/usr/bin" || die
 	keepdir /usr/share/GeoIP
 	insinto /etc
 	doins GeoIP.conf
