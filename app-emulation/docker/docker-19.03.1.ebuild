@@ -11,10 +11,10 @@ if [[ ${PV} = *9999* ]]; then
 	EGIT_CHECKOUT_DIR="${WORKDIR}/${P}/src/${EGO_PN}"
 	inherit git-r3
 else
-	DOCKER_GITCOMMIT="2d0083d"
+	DOCKER_GITCOMMIT="74b1e89"
 	MY_PV=${PV/_/-}
 	SRC_URI="https://${EGO_PN}/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="amd64 ~arm ~arm64"
+	KEYWORDS="~amd64 ~arm ~arm64"
 	[ "$DOCKER_GITCOMMIT" ] || die "DOCKER_GITCOMMIT must be added manually for each bump!"
 	inherit golang-vcs-snapshot
 fi
@@ -57,7 +57,7 @@ RDEPEND="
 	dev-libs/libltdl
 	~app-emulation/containerd-1.2.6
 	~app-emulation/runc-1.0.0_rc8[apparmor?,seccomp?]
-	~app-emulation/docker-proxy-0.8.0_p20190513
+	~app-emulation/docker-proxy-0.8.0_p20190604
 	container-init? ( >=sys-process/tini-0.18.0[static] )
 "
 
@@ -71,7 +71,7 @@ CONFIG_CHECK="
 	~CGROUPS ~CGROUP_CPUACCT ~CGROUP_DEVICE ~CGROUP_FREEZER ~CGROUP_SCHED ~CPUSETS ~MEMCG
 	~KEYS
 	~VETH ~BRIDGE ~BRIDGE_NETFILTER
-	~NF_NAT_IPV4 ~IP_NF_FILTER ~IP_NF_TARGET_MASQUERADE
+	~IP_NF_FILTER ~IP_NF_TARGET_MASQUERADE
 	~NETFILTER_XT_MATCH_ADDRTYPE ~NETFILTER_XT_MATCH_CONNTRACK ~NETFILTER_XT_MATCH_IPVS
 	~IP_NF_NAT ~NF_NAT ~NF_NAT_NEEDED
 	~POSIX_MQUEUE
@@ -81,7 +81,7 @@ CONFIG_CHECK="
 	~CGROUP_PIDS
 	~MEMCG_SWAP ~MEMCG_SWAP_ENABLED
 
-	~BLK_CGROUP ~BLK_DEV_THROTTLING ~IOSCHED_CFQ ~CFQ_GROUP_IOSCHED
+	~BLK_CGROUP ~BLK_DEV_THROTTLING
 	~CGROUP_PERF
 	~CGROUP_HUGETLB
 	~NET_CLS_CGROUP
@@ -138,6 +138,14 @@ pkg_setup() {
 	if kernel_is lt 4 7; then
 		CONFIG_CHECK+="
 			~DEVPTS_MULTIPLE_INSTANCES
+		"
+	fi
+
+	if kernel_is lt 5 1; then
+		CONFIG_CHECK+="
+			~NF_NAT_IPV4
+			~IOSCHED_CFQ
+			~CFQ_GROUP_IOSCHED
 		"
 	fi
 
