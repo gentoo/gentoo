@@ -3,12 +3,10 @@
 
 EAPI=7
 
-inherit eutils
-
 DESCRIPTION="Security sandbox for any type of processes"
 HOMEPAGE="https://firejail.wordpress.com/"
 
-SRC_URI="https://github.com/netblue30/${PN}/archive/${PV}.tar.gz"
+SRC_URI="https://github.com/netblue30/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -26,13 +24,13 @@ RESTRICT="test"
 src_prepare() {
 	default
 
-	find ./contrib -type f -name '*.py' | xargs sed --in-place 's-#!/usr/bin/python3-#!/usr/bin/env python3-g'
+	find ./contrib -type f -name '*.py' | xargs sed --in-place 's-#!/usr/bin/python3-#!/usr/bin/env python3-g' || die
 
 	find -type f -name Makefile.in | xargs sed --inplace --regexp-extended \
 			--expression='/^\tinstall .*COPYING /d' \
-			--expression='/CFLAGS/s: (-O2|-ggdb) : :g'
+			--expression='/CFLAGS/s: (-O2|-ggdb) : :g' || die
 
-	sed --inplace --regexp-extended '/CFLAGS/s: (-O2|-ggdb) : :g' ./src/common.mk.in
+	sed --inplace --regexp-extended '/CFLAGS/s: (-O2|-ggdb) : :g' ./src/common.mk.in || die
 }
 
 src_configure() {
