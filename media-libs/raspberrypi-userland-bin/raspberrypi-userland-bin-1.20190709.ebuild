@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit multilib vcs-snapshot
+inherit multilib
 
 DESCRIPTION="Raspberry Pi userspace tools and libraries"
 HOMEPAGE="https://github.com/raspberrypi/firmware"
@@ -18,7 +18,7 @@ IUSE="+hardfp examples"
 RDEPEND="!media-libs/raspberrypi-userland"
 DEPEND="${DEPEND}"
 
-S=${WORKDIR}/${MY_P}
+S="${WORKDIR}/firmware-${PV}"
 
 RESTRICT="binchecks"
 
