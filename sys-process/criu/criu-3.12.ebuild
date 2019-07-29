@@ -46,8 +46,7 @@ RESTRICT="test"
 PATCHES=(
 	"${FILESDIR}"/2.2/${PN}-2.2-flags.patch
 	"${FILESDIR}"/2.3/${PN}-2.3-no-git.patch
-	"${FILESDIR}"/${PN}-2.8-automagic-libbsd.patch
-	"${FILESDIR}"/2.0/${PN}-2.0-sysroot.patch
+	"${FILESDIR}"/${PN}-3.12-automagic-libbsd.patch
 )
 
 criu_arch() {
