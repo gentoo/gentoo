@@ -1,12 +1,12 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit readme.gentoo-r1
 
 DESCRIPTION="Excellent program to automatically configure PPP sessions"
-HOMEPAGE="https://code.google.com/archive/p/wvstreams/"
-SRC_URI="https://wvstreams.googlecode.com/files/${P}.tar.gz"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
+SRC_URI="http://distfiles.gentoo.org/distfiles/${P}.tar.gz"
 
 LICENSE="LGPL-2"
 SLOT="0"
