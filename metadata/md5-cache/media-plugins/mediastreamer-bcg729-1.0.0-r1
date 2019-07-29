@@ -3,9 +3,9 @@ DEPEND=>=media-libs/mediastreamer-2.8.2:=[ortp] virtual/pkgconfig
 DESCRIPTION=Backported G729 implementation for Linphone
 EAPI=5
 HOMEPAGE=http://www.linphone.org
-KEYWORDS=~amd64 ~arm64 ~ppc ~ppc64 ~x86
+KEYWORDS=~amd64 arm64 ~ppc ~ppc64 ~x86
 LICENSE=GPL-2
 RDEPEND=>=media-libs/mediastreamer-2.8.2:=[ortp]
 SLOT=0
 SRC_URI=mirror://nongnu/linphone/plugins/sources/bcg729-1.0.0.tar.gz
-_md5_=c69fb9ec8a5a3b080f2303e688664b46
+_md5_=cd9310bc52d27290ad6366f0bf3e34ec
