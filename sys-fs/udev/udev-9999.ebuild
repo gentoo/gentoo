@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit bash-completion-r1 linux-info meson ninja-utils multilib-minimal toolchain-funcs udev user
+inherit bash-completion-r1 linux-info meson ninja-utils multilib-minimal toolchain-funcs udev
 
 if [[ ${PV} = 9999* ]]; then
 	EGIT_REPO_URI="https://github.com/systemd/systemd.git"
@@ -47,6 +47,18 @@ DEPEND="${COMMON_DEPEND}
 	app-text/docbook-xsl-stylesheets
 	dev-libs/libxslt"
 RDEPEND="${COMMON_DEPEND}
+	acct-group/kmem
+	acct-group/tty
+	acct-group/audio
+	acct-group/cdrom
+	acct-group/dialout
+	acct-group/disk
+	acct-group/input
+	acct-group/kvm
+	acct-group/lp
+	acct-group/render
+	acct-group/tape
+	acct-group/video
 	!<sys-fs/lvm2-2.02.103
 	!<sec-policy/selinux-base-2.20120725-r10"
 PDEPEND=">=sys-apps/hwids-20140304[udev]
@@ -85,7 +97,6 @@ src_prepare() {
 	fi
 
 	local PATCHES=(
-		"${FILESDIR}/236-uucp-group.patch"
 	)
 
 	default
@@ -310,11 +321,6 @@ pkg_postinst() {
 		fi
 		eend $?
 	fi
-
-	# https://cgit.freedesktop.org/systemd/systemd/commit/rules/50-udev-default.rules?id=3dff3e00e044e2d53c76fa842b9a4759d4a50e69
-	# https://bugs.gentoo.org/246847
-	# https://bugs.gentoo.org/514174
-	enewgroup input
 
 	# Update hwdb database in case the format is changed by udev version.
 	if has_version 'sys-apps/hwids[udev]'; then

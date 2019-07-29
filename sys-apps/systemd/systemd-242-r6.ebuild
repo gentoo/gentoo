@@ -16,7 +16,7 @@ fi
 
 PYTHON_COMPAT=( python{3_5,3_6,3_7} )
 
-inherit bash-completion-r1 linux-info meson multilib-minimal ninja-utils pam python-any-r1 systemd toolchain-funcs udev user
+inherit bash-completion-r1 linux-info meson multilib-minimal ninja-utils pam python-any-r1 systemd toolchain-funcs udev
 
 DESCRIPTION="System and service manager for Linux"
 HOMEPAGE="https://www.freedesktop.org/wiki/Software/systemd"
@@ -72,6 +72,20 @@ DEPEND="${COMMON_DEPEND}
 
 # baselayout-2.2 has /run
 RDEPEND="${COMMON_DEPEND}
+	acct-group/adm
+	acct-group/wheel
+	acct-group/kmem
+	acct-group/tty
+	acct-group/utmp
+	acct-group/audio
+	acct-group/cdrom
+	acct-group/dialout
+	acct-group/disk
+	acct-group/input
+	acct-group/kvm
+	acct-group/render
+	acct-group/tape
+	acct-group/video
 	acct-group/systemd-journal
 	acct-user/systemd-journal-remote
 	acct-user/systemd-coredump
@@ -187,7 +201,6 @@ src_prepare() {
 		PATCHES+=(
 			"${FILESDIR}/gentoo-Dont-enable-audit-by-default.patch"
 			"${FILESDIR}/gentoo-systemd-user-pam.patch"
-			"${FILESDIR}/gentoo-uucp-group-r1.patch"
 			"${FILESDIR}/gentoo-generator-path-r1.patch"
 		)
 	fi
@@ -433,10 +446,6 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	enewgroup input
-	enewgroup kvm 78
-	enewgroup render
-
 	systemd_update_catalog
 
 	# Keep this here in case the database format changes so it gets updated
