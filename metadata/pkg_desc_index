@@ -1,8 +1,18 @@
+acct-group/adm 0: System group: adm
+acct-group/audio 0: System group: audio
 acct-group/burp 0: Group for the app-backup/burp server
+acct-group/cdrom 0: System group: cdrom
+acct-group/dialout 0: System group: dialout
+acct-group/disk 0: System group: disk
 acct-group/dnscrypt-proxy 0: Group for net-dns/dnscrypt-proxy
 acct-group/ftp 0: File Transfer Protocol server user
 acct-group/gamestat 0: Group for shared high-score and game state files
+acct-group/input 0: System group: input
+acct-group/kmem 0: System group: kmem
+acct-group/kvm 0: System group: kvm
+acct-group/lp 0: System group: lp
 acct-group/mail 0: Mail program group
+acct-group/render 0: System group: render
 acct-group/rtkit 0: Group for the Realtime Policy and Watchdog Daemon
 acct-group/stdiscosrv 0: Group for the Syncthing discovery server
 acct-group/strelaysrv 0: Group for the Syncthing relay server
@@ -13,6 +23,11 @@ acct-group/systemd-journal-remote 0: System group: systemd-journal-remote
 acct-group/systemd-network 0: System group: systemd-network
 acct-group/systemd-resolve 0: System group: systemd-resolve
 acct-group/systemd-timesync 0: System group: systemd-timesync
+acct-group/tape 0: System group: tape
+acct-group/tty 0: System group: tty
+acct-group/utmp 0: System group: utmp
+acct-group/video 0: System group: video
+acct-group/wheel 0: System group: wheel
 acct-user/burp 0: User for the app-backup/burp server
 acct-user/dnscrypt-proxy 0: User for net-dns/dnscrypt-proxy
 acct-user/ftp 0: File Transfer Protocol server user
@@ -1554,7 +1569,7 @@ app-vim/frawor 0.2.3: vim plugin: modular vim framework
 app-vim/fugitive 2.4: vim plugin: a git wrapper for vim
 app-vim/fuzzyfinder 4.2.2: vim plugin: buffer/file/command/tag/etc explorer with fuzzy matching
 app-vim/genindent 1.1-r1: vim plugin: library for simplifying indent files
-app-vim/gentoo-syntax 20181023: vim plugin: Gentoo and Portage syntax highlighting
+app-vim/gentoo-syntax 20181023 20190609: vim plugin: Gentoo and Portage syntax highlighting
 app-vim/genutils 2.5: vim plugin: library with various useful functions
 app-vim/gist 7.3: vim plugin: interact with gists (gist.github.com)
 app-vim/gitgutter 20180316: vim plugin: shows a git diff in the sign column and stages/reverts hunks
@@ -2860,7 +2875,7 @@ dev-lang/php 5.6.40-r4 7.1.30 7.2.20 7.3.7-r1: The PHP language runtime engine
 dev-lang/python 2.7.15 3.5.5 3.6.5: An interpreted, interactive, object-oriented programming language
 dev-lang/python-exec 2.4.6: Python script wrapper
 dev-lang/qu-prolog 10.1: Extended Prolog supporting quantifiers, object-variables and substitutions
-dev-lang/ruby 2.4.5 2.4.6: An object-oriented scripting language
+dev-lang/ruby 2.4.6: An object-oriented scripting language
 dev-lang/rust 1.34.2: Systems programming language from Mozilla
 dev-lang/rust-bin 1.34.2: Systems programming language from Mozilla
 dev-lang/sassc 3.5.0: A libsass command line driver
