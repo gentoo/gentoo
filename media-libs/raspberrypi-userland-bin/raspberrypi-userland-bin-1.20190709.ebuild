@@ -3,8 +3,6 @@
 
 EAPI=5
 
-inherit multilib
-
 DESCRIPTION="Raspberry Pi userspace tools and libraries"
 HOMEPAGE="https://github.com/raspberrypi/firmware"
 MY_P="raspberrypi-firmware-${PV}"
@@ -30,7 +28,7 @@ src_install() {
 	into /opt
 	dobin bin/*
 	insopts -m 0755
-	insinto "/opt/vc/$(get_libdir)"
+	insinto "/opt/vc/lib"
 	doins -r lib/*
 
 	doenvd "${FILESDIR}"/04${PN}
