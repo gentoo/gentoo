@@ -6,11 +6,11 @@
 
 EAPI="7"
 
-inherit bash-completion-r1
+inherit bash-completion-r1 mount-boot
 
 # Whenever you bump a GKPKG, check if you have to move
 # or add new patches!
-VERSION_BTRFS_PROGS="5.1.1"
+VERSION_BTRFS_PROGS="5.2.1"
 VERSION_BUSYBOX="1.31.0"
 VERSION_CRYPTSETUP="2.1.0"
 VERSION_DMRAID="1.0.0.rc16-3"
@@ -35,7 +35,7 @@ VERSION_USERSPACE_RCU="0.10.2"
 VERSION_UTIL_LINUX="2.34"
 VERSION_XFSPROGS="5.1.0"
 VERSION_ZLIB="1.2.11"
-VERSION_ZSTD="1.4.0"
+VERSION_ZSTD="1.4.1"
 
 RH_HOME="ftp://sourceware.org/pub"
 DM_HOME="https://people.redhat.com/~heinzm/sw/dmraid/src"
@@ -230,6 +230,17 @@ pkg_postinst() {
 			break
 		fi
 	done
+
+	mount-boot_mount_boot_partition
+	if [[ $(find /boot -name 'kernel-genkernel-*' 2>/dev/null | wc -l) -gt 0 ]] ; then
+		ewarn ''
+		ewarn 'Default kernel filename was changed from "kernel-genkernel-<ARCH>-<KV>"'
+		ewarn 'to "vmlinuz-<KV>". Please be aware that due to lexical ordering the'
+		ewarn '*default* boot entry in your boot manager could still point to last kernel'
+		ewarn 'built with genkernel before that name change, resulting in booting old'
+		ewarn 'kernel when not paying attention on boot.'
+	fi
+	mount-boot_pkg_postinst
 
 	# Show special warning for users depending on remote unlock capabilities
 	local gk_config="${EROOT%/}/etc/genkernel.conf"
