@@ -51,6 +51,7 @@ CHECKREQS_DISK_BUILD="800M"
 
 PATCHES=(
 	"${FILESDIR}"/"${PN}-5.1.0-help.patch"
+	"${FILESDIR}"/"${PN}-5.1.0-swig-4.0.0.patch"
 )
 
 pkg_setup() {
