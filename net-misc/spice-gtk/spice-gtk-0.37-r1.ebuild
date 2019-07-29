@@ -7,7 +7,7 @@ GCONF_DEBUG="no"
 VALA_MIN_API_VERSION="0.14"
 VALA_USE_DEPEND="vapigen"
 
-inherit autotools eutils xdg-utils vala readme.gentoo-r1
+inherit autotools desktop eutils xdg-utils vala readme.gentoo-r1
 
 DESCRIPTION="Set of GObject and Gtk objects for connecting to Spice servers and a client GUI"
 HOMEPAGE="https://www.spice-space.org https://cgit.freedesktop.org/spice/spice-gtk/"
@@ -137,7 +137,7 @@ src_install() {
 	default
 
 	# Remove .la files if they're not needed
-	use static-libs || prune_libtool_files
+	use static-libs || find "${D}" -name '*.la' -delete || die
 
 	make_desktop_entry spicy Spicy "utilities-terminal" "Network;RemoteAccess;"
 	readme.gentoo_create_doc

@@ -14,12 +14,13 @@ SRC_URI="mirror://pypi/${PN:0:1}/${MY_PN}/${MY_PN}-${PV}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-fbsd"
+KEYWORDS="~amd64 ~ppc64 ~x86"
 IUSE="doc test"
 
 RDEPEND="
+	dev-python/importlib_metadata[${PYTHON_USEDEP}]
+	>=dev-python/namespace-jaraco-2[${PYTHON_USEDEP}]
 	>=dev-python/six-1.4[${PYTHON_USEDEP}]
-	<dev-python/namespace-jaraco-2[${PYTHON_USEDEP}]
 "
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
@@ -52,7 +53,9 @@ python_test() {
 		|| die "tests failed with ${EPYTHON}"
 }
 
-python_install_all() {
-	distutils-r1_python_install_all
-	find "${ED}" -name '*.pth' -delete || die
+# https://wiki.gentoo.org/wiki/Project:Python/Namespace_packages#File_collisions_between_pkgutil-style_packages
+python_install() {
+	rm "${BUILD_DIR}"/lib/jaraco/__init__.py || die
+	# note: eclass may default to --skip-build in the future
+	distutils-r1_python_install --skip-build
 }
