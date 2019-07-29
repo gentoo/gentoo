@@ -1453,6 +1453,7 @@ dev-lang/php:coverage - Include gcov symbols for test coverage and lcov reports.
 dev-lang/php:ctype - Enable ctype functions
 dev-lang/php:embed - Enable embed SAPI
 dev-lang/php:enchant - Add supports Enchant spelling library.
+dev-lang/php:ffi - Add foreign function interface (ffi extension) support
 dev-lang/php:fileinfo - Add fileinfo extension support
 dev-lang/php:filter - Add filter extension support
 dev-lang/php:flatfile - Add dbm support for flat files
