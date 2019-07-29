@@ -95,7 +95,6 @@ mssql
 
 # havent tested yet
 libproxy
-bazaar
 darcs
 afs
 lirc
