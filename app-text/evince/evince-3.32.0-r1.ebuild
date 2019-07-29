@@ -21,21 +21,17 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbs
 COMMON_DEPEND="
 	>=app-arch/libarchive-3.2.0
 	>=app-text/poppler-0.33[cairo]
+	dev-libs/atk
 	>=dev-libs/glib-2.36:2[dbus?]
 	>=dev-libs/libxml2-2.5:2
-	>=x11-libs/cairo-1.10:=
-	>=x11-libs/gdk-pixbuf-2.36.5:2
-	>=x11-libs/gtk+-3.22.0:3[introspection?]
-	dev-libs/atk
-	gnome-base/gsettings-desktop-schemas
-	sys-libs/zlib:=
 	djvu? ( >=app-text/djvu-3.5.22:= )
 	dvi? (
 		t1lib? ( >=media-libs/t1lib-5:= )
 		virtual/tex-base dev-libs/kpathsea:=
 	)
-	gnome-keyring? ( >=app-crypt/libsecret-0.5 )
+	gnome-base/gsettings-desktop-schemas
 	gnome? ( gnome-base/gnome-desktop:3= )
+	gnome-keyring? ( >=app-crypt/libsecret-0.5 )
 	gstreamer? (
 		media-libs/gst-plugins-base:1.0
 		media-libs/gst-plugins-good:1.0
@@ -45,7 +41,11 @@ COMMON_DEPEND="
 	nautilus? ( >=gnome-base/nautilus-2.91.4 )
 	postscript? ( >=app-text/libspectre-0.2:= )
 	spell? ( >=app-text/gspell-1.6.0:= )
+	sys-libs/zlib:=
 	tiff? ( >=media-libs/tiff-3.6:0= )
+	>=x11-libs/cairo-1.10:=
+	>=x11-libs/gdk-pixbuf-2.36.5:2
+	>=x11-libs/gtk+-3.22.0:3[introspection?]
 	xps? ( >=app-text/libgxps-0.2.1:= )
 "
 RDEPEND="${COMMON_DEPEND}
@@ -53,18 +53,17 @@ RDEPEND="${COMMON_DEPEND}
 	gnome-base/librsvg
 	|| (
 		>=x11-themes/adwaita-icon-theme-2.17.1
-		>=x11-themes/hicolor-icon-theme-0.10
-	)
+		>=x11-themes/hicolor-icon-theme-0.10 )
 "
 # eautoreconf needs:
 #  app-text/yelp-tools
 DEPEND="${COMMON_DEPEND}
-	>=dev-util/gtk-doc-am-1.13
-	>=dev-util/intltool-0.35
 	app-text/docbook-xml-dtd:4.3
 	app-text/yelp-tools
 	dev-util/gdbus-codegen
 	dev-util/glib-utils
+	>=dev-util/gtk-doc-am-1.13
+	>=dev-util/intltool-0.35
 	dev-util/itstool
 	sys-devel/gettext
 	virtual/pkgconfig
