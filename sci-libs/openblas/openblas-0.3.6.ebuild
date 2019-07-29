@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit toolchain-funcs
+inherit fortran-2 toolchain-funcs
 
 DESCRIPTION="Optimized BLAS library based on GotoBLAS2"
 HOMEPAGE="http://xianyi.github.com/OpenBLAS/"
@@ -11,34 +11,45 @@ SRC_URI="https://github.com/xianyi/OpenBLAS/tarball/v${PV} -> ${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
-IUSE="dynamic openmp pthread serial static-libs eselect-ldso index-64bit"
-REQUIRED_USE="?? ( openmp pthread serial )"
+IUSE="dynamic eselect-ldso index-64bit openmp pthread"
+REQUIRED_USE="?? ( openmp pthread )"
 
 RDEPEND="
-eselect-ldso? ( >=app-eselect/eselect-blas-0.2
-				!app-eselect/eselect-cblas
-				>=app-eselect/eselect-lapack-0.2 )
-"
+	eselect-ldso? ( >=app-eselect/eselect-blas-0.2
+			!app-eselect/eselect-cblas
+			>=app-eselect/eselect-lapack-0.2 )"
+
 DEPEND="virtual/pkgconfig"
 
 PATCHES=( "${FILESDIR}/shared-blas-lapack.patch" )
 
-openblas_flags() {
-	local flags=()
+src_prepare() {
+	default
+	# Set compiler and common CFLAGS.
+	sed \
+		-e "s:^#\s*\(CC\)\s*=.*:\1=$(tc-getCC):" \
+		-e "s:^#\s*\(FC\)\s*=.*:\1=$(tc-getFC):" \
+		-e "s:^#\s*\(COMMON_OPT\)\s*=.*:\1=${CFLAGS}:" \
+		-i "$S"/Makefile.rule || die
+}
+
+src_configure() {
+	default
+	flags=()
 	use dynamic && \
 		flags+=( DYNAMIC_ARCH=1 TARGET=GENERIC NUM_THREADS=64 NO_AFFINITY=1 )
-	if use openmp; then
-		tc-check-openmp
-		flags+=( USE_THREAD=1 USE_OPENMP=1 )
-	elif use pthread; then
+	if use pthread; then
 		flags+=( USE_THREAD=1 USE_OPENMP=0 )
+	elif use openmp; then
+		flags+=( USE_THREAD=1 USE_OPENMP=1 )
+		# Check OpenMP support on compiler.
+		tc-check-openmp
 	else
-		flags+=( USE_THREAD=0 ) # serial
+		flags+=( USE_THREAD=0 )
 	fi
 	flags+=( DESTDIR="${D}" PREFIX="${EPREFIX}/usr" )
 	flags+=( OPENBLAS_INCLUDE_DIR='$(PREFIX)'/include/${PN} )
 	flags+=( OPENBLAS_LIBRARY_DIR='$(PREFIX)'/$(get_libdir) )
-	echo "${flags[@]}"
 }
 
 src_unpack () {
@@ -50,15 +61,24 @@ src_unpack () {
 }
 
 src_compile () {
-	emake $(openblas_flags)
-	emake -Cinterface shared-blas-lapack $(openblas_flags)
+	# Openblas already does multi-jobs.
+	MAKEOPTS+=" -j1"
+	# Flags already defined, fix twice definition.
+	unset CFLAGS && unset FFLAGS || die "couldn't unset flags"
+	emake "${flags[@]}"
+	emake -Cinterface shared-blas-lapack "${flags[@]}"
 	if use index-64bit; then
-		emake -C"${S}-index-64bit" $(openblas_flags) INTERFACE64=1 LIBPREFIX=libopenblas64
+		emake -C"${S}-index-64bit" "${flags[@]}" INTERFACE64=1 LIBPREFIX=libopenblas64
 	fi
 }
 
+src_test() {
+	emake tests "${flags[@]}"
+}
+
 src_install () {
-	emake install $(openblas_flags)
+	emake install "${flags[@]}"
+	dodoc GotoBLAS_{00License,01Readme,02QuickInstall,03FAQ,04FAQ,05LargePage,06WeirdPerformance}.txt *md Changelog.txt
 
 	if use eselect-ldso; then
 		dodir /usr/$(get_libdir)/blas/openblas/
