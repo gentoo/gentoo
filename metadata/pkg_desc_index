@@ -562,7 +562,7 @@ app-editors/gedit-plugins 3.30.1: Official plugins for gedit
 app-editors/ghex 3.18.3: GNOME hexadecimal editor
 app-editors/gnome-latex 3.28.1: Integrated LaTeX environment for GNOME
 app-editors/gummi 0.6.6-r2: Simple LaTeX editor for GTK+ users
-app-editors/gvim 8.0.1298 8.1.0648-r1 8.1.1486: GUI version of the Vim text editor
+app-editors/gvim 8.1.1486: GUI version of the Vim text editor
 app-editors/hexcurse 1.55: ncurses based hex editor
 app-editors/hexedit 1.2.13: View and edit files in hex or ASCII
 app-editors/hteditor 2.1.0: A file viewer, editor and analyzer for text, binary, and executable files
@@ -594,8 +594,8 @@ app-editors/shed 1.12 1.13: Simple Hex EDitor
 app-editors/tea 47.0.0: Small, lightweight Qt text editor
 app-editors/ted 2.23: X-based rich text editor
 app-editors/vile 9.8r: VI Like Emacs -- yet another full-featured vi clone
-app-editors/vim 8.0.1298 8.1.0648-r1 8.1.1486: Vim, an improved vi-style text editor
-app-editors/vim-core 8.0.1298 8.1.0648 8.1.1486: vim and gvim shared files
+app-editors/vim 8.1.1486: Vim, an improved vi-style text editor
+app-editors/vim-core 8.1.1486: vim and gvim shared files
 app-editors/wily 1.0-r2: An emulation of ACME, Plan9's hybrid window system, shell and editor
 app-editors/xemacs 21.4.24 21.4.24-r1: highly customizable open source text editor and application development system
 app-editors/xvile 9.8r-r1: VI Like Emacs -- yet another full-featured vi clone
@@ -5854,7 +5854,7 @@ dev-ruby/flexmock 2.3.6: Simple mock object library for Ruby unit testing
 dev-ruby/gettext-setup 0.30: A gem to ease i18n
 dev-ruby/gherkin 5.1.0: Fast Gherkin lexer and parser
 dev-ruby/git 1.4.0 1.5.0: Library for using Git in Ruby
-dev-ruby/gruff 0.7.0-r1: Beautiful graphs for one or multiple datasets
+dev-ruby/gruff 0.7.0-r1 0.7.0-r2: Beautiful graphs for one or multiple datasets
 dev-ruby/haml 4.0.7-r3: A ruby web page templating engine
 dev-ruby/hashdiff 0.3.8 0.3.9: Simple Hash extension to make working with nested hashes easier
 dev-ruby/hashie 2.1.2-r1: Hashie is a small collection of tools that make hashes more powerful
