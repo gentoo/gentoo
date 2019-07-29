@@ -6207,7 +6207,7 @@ dev-util/buildbot 0.8.12-r3: BuildBot build automation system
 dev-util/buildbot-slave 0.8.12: BuildBot Slave Daemon
 dev-util/bustle 0.4.2-r1 0.5.4: Draw sequence diagrams of D-Bus traffic
 dev-util/byacc 20170201: the best variant of the Yacc parser generator
-dev-util/catalyst 2.0.18-r1 2.0.18-r4 3.0.2 3.0.2-r1 3.0.3: Release metatool used for creating releases based on Gentoo Linux
+dev-util/catalyst 3.0.5: Release metatool used for creating releases based on Gentoo Linux
 dev-util/catfish 1.4.7: A frontend for find, (s)locate, doodle, tracker, beagle, strigi and pinot
 dev-util/ccache 3.3.4-r1 3.6 3.7.1: fast compiler cache
 dev-util/cdiff 1.0: Colored, side-by-side diff terminal viewer
@@ -6423,7 +6423,7 @@ dev-vcs/git-cola 2.11: The highly caffeinated git GUI
 dev-vcs/git-flow 1.11.0: Git extensions to provide high-level repository operations
 dev-vcs/git-lfs 2.6.1: command line extension and specification for managing large files with Git
 dev-vcs/gitg 3.26.0: git repository viewer for GNOME
-dev-vcs/gitolite 2.3.1-r1 3.6.6 3.6.11: Highly flexible server for git directory version tracker
+dev-vcs/gitolite 2.3.1-r1 3.6.11: Highly flexible server for git directory version tracker
 dev-vcs/gitolite-gentoo 2.3.1-r1: Highly flexible server for git directory version tracker, Gentoo fork
 dev-vcs/guilt 0.36-r1: A series of bash scripts which add a quilt-like interface to git
 dev-vcs/hg-git 0.8.8: push to and pull from a Git repository using Mercurial
