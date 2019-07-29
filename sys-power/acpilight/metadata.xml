@@ -6,6 +6,6 @@
     <name>Brian Evans</name>
   </maintainer>
   <upstream>
-    <remote-id type="github">wavexx/acpilight</remote-id>
+    <remote-id type="gitlab">wavexx/acpilight</remote-id>
   </upstream>
 </pkgmetadata>
