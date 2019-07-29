@@ -4,10 +4,10 @@ DESCRIPTION=A tool for linting and static analysis of Lua code
 EAPI=6
 HOMEPAGE=https://github.com/mpeterv/luacheck
 IUSE=doc luajit test
-KEYWORDS=amd64 ~arm ppc ppc64 x86
+KEYWORDS=amd64 arm ppc ppc64 x86
 LICENSE=MIT
 RDEPEND=dev-lua/luafilesystem[luajit=] !luajit? ( >=dev-lang/lua-5.1:= ) luajit? ( dev-lang/luajit:2 )
 SLOT=0
 SRC_URI=https://github.com/mpeterv/luacheck/archive/0.20.0.tar.gz -> luacheck-0.20.0.tar.gz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
-_md5_=f6301dfe9763e470a8f765dd6a24c508
+_md5_=3726b3f16e2a6c34e3e82d9754b962ae
