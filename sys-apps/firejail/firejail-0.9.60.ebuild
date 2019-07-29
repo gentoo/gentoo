@@ -26,11 +26,11 @@ src_prepare() {
 
 	find ./contrib -type f -name '*.py' | xargs sed --in-place 's-#!/usr/bin/python3-#!/usr/bin/env python3-g' || die
 
-	find -type f -name Makefile.in | xargs sed --inplace --regexp-extended \
+	find -type f -name Makefile.in | xargs sed --in-place --regexp-extended \
 			--expression='/^\tinstall .*COPYING /d' \
 			--expression='/CFLAGS/s: (-O2|-ggdb) : :g' || die
 
-	sed --inplace --regexp-extended '/CFLAGS/s: (-O2|-ggdb) : :g' ./src/common.mk.in || die
+	sed --in-place --regexp-extended '/CFLAGS/s: (-O2|-ggdb) : :g' ./src/common.mk.in || die
 }
 
 src_configure() {
