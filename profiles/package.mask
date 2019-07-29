@@ -29,6 +29,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Thomas Deutschmann <whissi@gentoo.org> (2019-07-29)
+# Broken config parser
+>=app-metrics/collectd-5.9.0
+
 # Mart Raudsepp <leio@gentoo.org> (2019-07-28)
 # GNOME 3.33 development release packages
 >=dev-libs/vala-common-0.45
