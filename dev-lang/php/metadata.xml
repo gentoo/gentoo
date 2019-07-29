@@ -16,6 +16,7 @@
     <flag name="ctype">Enable ctype functions</flag>
     <flag name="embed">Enable embed SAPI </flag>
     <flag name="enchant">Add supports Enchant spelling library. </flag>
+    <flag name="ffi"> Add foreign function interface (ffi extension) support</flag>
     <flag name="fileinfo"> Add fileinfo extension support</flag>
     <flag name="filter">Add filter extension support</flag>
     <flag name="flatfile">Add dbm support for flat files</flag>

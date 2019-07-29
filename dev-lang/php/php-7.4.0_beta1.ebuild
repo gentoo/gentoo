@@ -35,7 +35,7 @@ IUSE="${IUSE}
 
 IUSE="${IUSE} acl argon2 bcmath berkdb bzip2 calendar cdb cjk
 	coverage +ctype curl debug
-	enchant exif +fileinfo +filter firebird
+	enchant exif ffi +fileinfo +filter firebird
 	+flatfile ftp gd gdbm gmp +iconv imap inifile
 	intl iodbc ipv6 +json kerberos ldap ldap-sasl libedit libressl lmdb
 	mhash mssql mysql mysqli nls
@@ -66,6 +66,7 @@ COMMON_DEPEND="
 	coverage? ( dev-util/lcov )
 	curl? ( >=net-misc/curl-7.10.5 )
 	enchant? ( <app-text/enchant-2.0:0 )
+	ffi? ( >=virtual/libffi-3.0.11 )
 	firebird? ( dev-db/firebird )
 	gd? ( virtual/jpeg:0 media-libs/libpng:0= )
 	gdbm? ( >=sys-libs/gdbm-1.8.0:0= )
@@ -252,6 +253,7 @@ src_configure() {
 		$(use_enable xml dom)
 		$(use_with enchant)
 		$(use_enable exif)
+		$(use_with ffi)
 		$(use_enable fileinfo)
 		$(use_enable filter)
 		$(use_enable ftp)
