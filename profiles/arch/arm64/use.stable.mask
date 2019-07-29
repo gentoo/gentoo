@@ -37,10 +37,6 @@ python_single_target_python3_7
 # dev-lang/tk is not stable here.
 tk
 
-# Mart Raudsepp <leio@gentoo.org> (2017-02-04)
-# dev-vcs/subversion not marked stable yet
-subversion
-
 # Mart Raudsepp <leio@gentoo.org> (2017-01-28)
 # sys-auth/skey not marked stable yet
 skey
