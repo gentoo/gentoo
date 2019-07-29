@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{5,6,7} )
 
-inherit autotools bash-completion-r1 eutils linux-info python-any-r1 readme.gentoo-r1 systemd user
+inherit autotools bash-completion-r1 eutils linux-info python-any-r1 readme.gentoo-r1 systemd
 
 if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
@@ -47,6 +47,8 @@ REQUIRED_USE="
 # package will use 3 by default. Since we don't have slot pinning in an API,
 # we must go with the most recent
 RDEPEND="
+	acct-user/qemu
+	policykit? ( acct-group/libvirt )
 	app-misc/scrub
 	dev-libs/libgcrypt:0
 	dev-libs/libnl:3
@@ -126,13 +128,6 @@ PATCHES=(
 )
 
 pkg_setup() {
-	if use qemu; then
-		enewgroup qemu 77
-		enewuser qemu 77 -1 -1 "qemu,kvm"
-	fi
-
-	use policykit && enewgroup libvirt
-
 	# Check kernel configuration:
 	CONFIG_CHECK=""
 	use fuse && CONFIG_CHECK+="
