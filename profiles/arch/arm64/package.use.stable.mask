@@ -2,6 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Aaron Bauman (2019-07-29)
+# app-arch/rar not supported
+kde-apps/kdeutils-meta rar
+kde-apps/ark rar
+
+# Aaron Bauman (2019-07-29)
 # deps are not stable yet
 net-im/pidgin eds
 

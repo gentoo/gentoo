@@ -7,8 +7,7 @@ if [[ ${PV} = *9999 ]]; then
 	EGIT_REPO_URI="https://github.com/Exiv2/exiv2.git"
 	inherit git-r3
 else
-# 	SRC_URI="https://exiv2.org/builds/${P}-Source.tar.gz"
-	SRC_URI="https://github.com/Exiv2/${PN}/archive/v${PV/_rc/-RC}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://exiv2.org/builds/${P}-Source.tar.gz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~x64-solaris ~x86-solaris"
 fi
 
@@ -46,8 +45,7 @@ RDEPEND="${DEPEND}"
 
 DOCS=( README.md doc/ChangeLog doc/cmd.txt )
 
-# S="${S}-Source"
-S="${WORKDIR}/${P/_rc/-RC}"
+S="${S}-Source"
 
 pkg_setup() {
 	use doc && python-any-r1_pkg_setup

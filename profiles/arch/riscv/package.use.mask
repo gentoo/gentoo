@@ -65,3 +65,4 @@ sys-fs/squashfs-tools lz4 lzma lzo zstd
 sys-libs/libcap-ng python
 sys-process/audit gssapi python
 sys-process/procps test
+sys-fs/squashfs-tools-ng lz4 lzo zstd
