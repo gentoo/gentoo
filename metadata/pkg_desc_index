@@ -734,7 +734,7 @@ app-emulation/aqemu 0.9.2: Graphical interface for QEMU and KVM emulators, using
 app-emulation/cloud-init 17.2: cloud initialisation magic
 app-emulation/containerd 1.2.6: A daemon to control runC
 app-emulation/diskimage-builder 2.24.0: Golden Disk Image builder.
-app-emulation/docker 18.09.7: The core functions you need to create Docker images and run Docker containers
+app-emulation/docker 18.09.8: The core functions you need to create Docker images and run Docker containers
 app-emulation/docker-compose 1.24.0: Multi-container orchestration for Docker
 app-emulation/docker-proxy 0.8.0_p20190513: Docker container networking
 app-emulation/docker-runc 1.0.0_rc4_p20180122: runc container cli tools (docker fork)

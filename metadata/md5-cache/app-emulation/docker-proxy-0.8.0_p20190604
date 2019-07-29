@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install unpack
+DEPEND=>=dev-lang/go-1.10
+DESCRIPTION=Docker container networking
+EAPI=6
+HOMEPAGE=https://github.com/docker/libnetwork
+KEYWORDS=~amd64 ~arm ~arm64 ~ppc64
+LICENSE=Apache-2.0
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/docker/libnetwork/archive/fc5a7d91d54cc98f64fc28f9e288b46a0bee756c.tar.gz -> docker-proxy-0.8.0_p20190604.tar.gz
+_eclasses_=golang-base	c57d2c3f9e1a02d0feb8b87c7b689892	golang-vcs-snapshot	12177e83bede6f7fb87eae383864b40b
+_md5_=4a43ef0ffff39208cc3d797cc7c2caac
