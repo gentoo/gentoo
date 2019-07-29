@@ -145,6 +145,7 @@ PATCHES=(
 	"${FILESDIR}/chromium-widevine-r4.patch"
 	"${FILESDIR}/chromium-fix-char_traits.patch"
 	"${FILESDIR}/chromium-angle-inline.patch"
+	"${FILESDIR}/chromium-76-arm64-skia.patch"
 	"${FILESDIR}/chromium-76-quiche.patch"
 	"${FILESDIR}/chromium-76-gcc-vulkan.patch"
 	"${FILESDIR}/chromium-76-gcc-private.patch"
