@@ -40,7 +40,8 @@ dev-lang/vala:0.46
 ~sys-apps/kbd-2.1.0
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2019-07-26)
-# Mask new version until more deps keyworded
+# Mask 5.x version
+# It breaks hundreds of py2 ebuilds and not all deps are keyworded
 >=dev-python/pytest-5.0.1
 
 # Brian Evans <grknight@gentoo.org> (2019-07-25)
