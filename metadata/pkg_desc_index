@@ -10,8 +10,10 @@ acct-group/gamestat 0: Group for shared high-score and game state files
 acct-group/input 0: System group: input
 acct-group/kmem 0: System group: kmem
 acct-group/kvm 0: System group: kvm
+acct-group/libvirt 0: System group: libvirt
 acct-group/lp 0: System group: lp
 acct-group/mail 0: Mail program group
+acct-group/qemu 0: System group: qemu
 acct-group/render 0: System group: render
 acct-group/rtkit 0: Group for the Realtime Policy and Watchdog Daemon
 acct-group/stdiscosrv 0: Group for the Syncthing discovery server
@@ -33,6 +35,7 @@ acct-user/dnscrypt-proxy 0: User for net-dns/dnscrypt-proxy
 acct-user/ftp 0: File Transfer Protocol server user
 acct-user/mail 0: Mail program user
 acct-user/postmaster 0: Postmaster user
+acct-user/qemu 0: System user: qemu
 acct-user/rtkit 0: User for the Realtime Policy and Watchdog Daemon
 acct-user/stdiscosrv 0: User for the Syncthing discovery server
 acct-user/strelaysrv 0: User for the Syncthing relay server
