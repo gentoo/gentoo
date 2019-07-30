@@ -19,10 +19,10 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND="
 	${PYTHON_DEPS}
+	dev-python/dnspython[${PYTHON_USEDEP}]
 	virtual/mta
 	virtual/cron
-	virtual/httpd-cgi
-	virtual/python-dnspython[${PYTHON_USEDEP}]"
+	virtual/httpd-cgi"
 RDEPEND="${DEPEND}
 	selinux? ( sec-policy/selinux-mailman )
 "
