@@ -16,7 +16,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE="test"
 
-RDEPEND=">=virtual/python-dnspython-2[${PYTHON_USEDEP}]
+RDEPEND="dev-python/dnspython[${PYTHON_USEDEP}]
 	>=dev-python/pyopenssl-0.14[${PYTHON_USEDEP}]
 	>=dev-python/urllib3-1.7.1[${PYTHON_USEDEP}]"
 
