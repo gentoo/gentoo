@@ -30,7 +30,10 @@ else
 		>=dev-python/snakeoil-0.8.0[${PYTHON_USEDEP}]
 		>=sys-apps/pkgcore-0.10.0[${PYTHON_USEDEP}]"
 fi
-RDEPEND+=" dev-python/lxml[${PYTHON_USEDEP}]"
+RDEPEND+="
+	dev-python/chardet[${PYTHON_USEDEP}]
+	dev-python/lxml[${PYTHON_USEDEP}]
+"
 DEPEND="${RDEPEND}
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
 	dev-python/setuptools[${PYTHON_USEDEP}]"
