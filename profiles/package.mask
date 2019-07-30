@@ -29,6 +29,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Miroslav Šulc <fordfrog@gentoo.org> (2019-07-30)
+# Depends on >=virtual/{jdk,jre}-11 which is masked
+=www-servers/tomcat-9.0.22
+
 # Michał Górny <mgorny@gentoo.org> (30 Jul 2019)
 # Obsolete virtual that was created back when dev-python/dnspython
 # needed separate slots for py2 & py3.  The versions needing it are long
@@ -240,10 +244,6 @@ x11-plugins/gkrellflynn
 # Masked for removal in 30 days (bug #686562)
 # Unfixed bug, dead upstream, not relevant enough
 sys-fs/pytagsfs
-
-# Miroslav Šulc <fordfrog@gentoo.org> (2019-05-15)
-# Depends on >=virtual/{jdk,jre}-11 which is masked
-=www-servers/tomcat-9.0.20
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2019-05-11)
 # Perl 5.24 will be removed soon. Please upgrade.
