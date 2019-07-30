@@ -57,7 +57,7 @@ src_install() {
 	newinitd "${FILESDIR}/${PN}-0.8-initd-r1" ${PN}
 	systemd_dounit "${FILESDIR}/${PN}.service"
 	sed -i -e "s:INSPATH:$(python_get_sitedir)/${PN}:" \
-		"${ED}/etc/init.d/${PN}" "${ED}/$(systemd_get_systemunitdir)/${PN}.service" || die
+		"${ED}/etc/init.d/${PN}" "${D%/}/$(systemd_get_systemunitdir)/${PN}.service" || die
 
 	python_fix_shebang "${D}$(python_get_sitedir)/${PN}"
 }
