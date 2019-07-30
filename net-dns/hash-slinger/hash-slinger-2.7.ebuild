@@ -21,10 +21,10 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 DEPEND=""
 RDEPEND="
 	${PYTHON_DEPS}
+	dev-python/dnspython[$PYTHON_USEDEP]
 	dev-python/ipaddr[$PYTHON_USEDEP]
 	dev-python/m2crypto[$PYTHON_USEDEP]
 	net-dns/unbound[python,$PYTHON_USEDEP]
-	virtual/python-dnspython[$PYTHON_USEDEP]
 	ipsec? ( net-vpn/libreswan[dnssec] )
 	openpgp? ( dev-python/python-gnupg[$PYTHON_USEDEP] )
 	ssh? ( net-misc/openssh )

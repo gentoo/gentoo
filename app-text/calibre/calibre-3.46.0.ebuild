@@ -52,6 +52,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	>=dev-python/dbus-python-1.2.4[${PYTHON_USEDEP}]
 	>=dev-libs/dbus-glib-0.106
 	>=sys-apps/dbus-1.10.8
+	dev-python/dnspython[${PYTHON_USEDEP}]
 	>=dev-python/feedparser-5.2.1[${PYTHON_USEDEP}]
 	>=dev-python/html5-parser-0.4.3[${PYTHON_USEDEP}]
 	>=dev-python/lxml-3.8.0[${PYTHON_USEDEP}]
@@ -79,7 +80,6 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	>=media-gfx/optipng-0.7.6
 	>=sys-libs/zlib-1.2.11:=
 	virtual/libusb:1=
-	virtual/python-dnspython[${PYTHON_USEDEP}]
 	x11-libs/libxkbcommon:=
 	x11-libs/libX11:=
 	x11-libs/libXext:=

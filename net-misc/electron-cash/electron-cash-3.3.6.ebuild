@@ -31,6 +31,7 @@ REQUIRED_USE="
 "
 
 RDEPEND="
+	dev-python/dnspython[${PYTHON_USEDEP}]
 	dev-python/ecdsa[${PYTHON_USEDEP}]
 	dev-python/jsonrpclib[${PYTHON_USEDEP}]
 	dev-python/pbkdf2[${PYTHON_USEDEP}]
@@ -42,7 +43,6 @@ RDEPEND="
 	dev-python/six[${PYTHON_USEDEP}]
 	dev-python/tlslite[${PYTHON_USEDEP}]
 	dev-python/protobuf-python[${PYTHON_USEDEP}]
-	virtual/python-dnspython[${PYTHON_USEDEP}]
 	qrcode? ( media-gfx/zbar[v4l] )
 	qt5? (
 		dev-python/PyQt5[gui,widgets,${PYTHON_USEDEP}]

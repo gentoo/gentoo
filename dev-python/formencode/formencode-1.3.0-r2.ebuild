@@ -20,9 +20,9 @@ IUSE="doc test"
 
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
+		dev-python/dnspython[${PYTHON_USEDEP}]
 		dev-python/nose[${PYTHON_USEDEP}]
-		dev-python/pycountry[${PYTHON_USEDEP}]
-		virtual/python-dnspython[${PYTHON_USEDEP}] )"
+		dev-python/pycountry[${PYTHON_USEDEP}] )"
 RDEPEND=""
 
 RESTRICT="test"
