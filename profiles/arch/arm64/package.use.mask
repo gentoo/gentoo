@@ -192,10 +192,6 @@ dev-python/pymongo test
 net-libs/gnutls test-full
 
 # Matthew Thode <prometheanfire@gentoo.org> (2018-02-13)
-# USE=mercurial requires dev-vcs/mercurial, which is not keyworded yet
-dev-python/setuptools_scm mercurial
-
-# Matthew Thode <prometheanfire@gentoo.org> (2018-02-13)
 # USE=scipy requires scipy, which is not keyworded yet
 dev-python/networkx scipy
 

@@ -88,9 +88,13 @@ arm             default/linux/arm/17.0/armv7a/developer         dev
 # ARM64 Profiles
 # @MAINTAINER: arm64@gentoo.org
 arm64           default/linux/arm64/17.0                        dev
-arm64           default/linux/arm64/17.0/desktop                exp
+arm64           default/linux/arm64/17.0/desktop                dev
+arm64           default/linux/arm64/17.0/desktop/gnome          dev
+arm64           default/linux/arm64/17.0/desktop/gnome/systemd  dev
+arm64           default/linux/arm64/17.0/desktop/plasma         dev
+arm64           default/linux/arm64/17.0/desktop/plasma/systemd dev
 arm64           default/linux/arm64/17.0/desktop/systemd        dev
-arm64           default/linux/arm64/17.0/developer              exp
+arm64           default/linux/arm64/17.0/developer              dev
 arm64           default/linux/arm64/17.0/systemd                dev
 
 # ARM64 Profiles (big-endian)

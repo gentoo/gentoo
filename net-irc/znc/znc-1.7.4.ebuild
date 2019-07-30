@@ -22,7 +22,7 @@ else
 		https://znc.in/releases/archive/${MY_P}.tar.gz
 		test? ( ${GTEST_URL} )
 	"
-	KEYWORDS="amd64 ~arm x86"
+	KEYWORDS="amd64 arm x86"
 	S=${WORKDIR}/${MY_P}
 fi
 
@@ -149,19 +149,19 @@ pkg_postinst() {
 		readme.gentoo_print_elog
 	fi
 
-	if [[ -d "${EROOT%/}"/etc/znc ]]; then
-		ewarn "${EROOT%/}/etc/znc exists on your system."
+	if [[ -d "${EROOT}"/etc/znc ]]; then
+		ewarn "${EROOT}/etc/znc exists on your system."
 		ewarn "Due to the nature of the contents of that folder,"
 		ewarn "we have changed the default configuration to use"
-		ewarn "	${EROOT%/}/var/lib/znc"
-		ewarn "please move ${EROOT%/}/etc/znc to ${EROOT%/}/var/lib/znc"
+		ewarn "	${EROOT}/var/lib/znc"
+		ewarn "please move ${EROOT}/etc/znc to ${EROOT}/var/lib/znc"
 		ewarn "or adjust your service configuration."
 	fi
 }
 
 pkg_config() {
-	if [[ -e "${EROOT%/}/var/lib/znc" ]]; then
-		ewarn "${EROOT%/}/var/lib/znc already exists, aborting to avoid damaging"
+	if [[ -e "${EROOT}/var/lib/znc" ]]; then
+		ewarn "${EROOT}/var/lib/znc already exists, aborting to avoid damaging"
 		ewarn "any existing configuration. If you are sure you want"
 		ewarn "to generate a new configuration, remove the folder"
 		ewarn "and try again."
@@ -169,11 +169,11 @@ pkg_config() {
 		einfo "Press enter to interactively create a new configuration file for znc."
 		einfo "To abort, press Control-C"
 		read
-		mkdir -p "${EROOT%/}/var/lib/znc" || die
-		chown -R ${PN}:${PN} "${EROOT%/}/var/lib/znc" ||
+		mkdir -p "${EROOT}/var/lib/znc" || die
+		chown -R ${PN}:${PN} "${EROOT}/var/lib/znc" ||
 			die "Setting permissions failed"
 		start-stop-daemon --start --user ${PN}:${PN} --env ZNC_NO_LAUNCH_AFTER_MAKECONF=1 \
-			"${EROOT%/}"/usr/bin/znc -- --makeconf --datadir "${EROOT%/}/var/lib/znc" ||
+			"${EROOT}"/usr/bin/znc -- --makeconf --datadir "${EROOT}/var/lib/znc" ||
 			die "Config failed"
 		einfo
 		einfo "You can now start the znc service using the init system of your choice."

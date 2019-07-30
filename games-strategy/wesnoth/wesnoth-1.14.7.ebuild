@@ -40,6 +40,8 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=( "${FILESDIR}"/${P}-boost-1.70.patch )
+
 pkg_setup() {
 	if use openmp; then
 		tc-has-openmp || die "Please switch to an openmp compatible compiler"

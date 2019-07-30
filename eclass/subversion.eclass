@@ -28,6 +28,8 @@ case ${EAPI:-0} in
 		;;
 esac
 
+PROPERTIES+=" live"
+
 DEPEND="|| (
 		dev-vcs/subversion[http]
 		dev-vcs/subversion[webdav-neon]

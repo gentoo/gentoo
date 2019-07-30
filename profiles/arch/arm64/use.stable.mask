@@ -20,10 +20,6 @@ consolekit
 # media-sound/musepack-tools not stable yet
 musepack
 
-# Mart Raudsepp <leio@gentoo.org> (2019-02-07)
-# media-libs/portaudio not stable yet
-portaudio
-
 # Mart Raudsepp <leio@gentoo.org> (2018-11-27)
 # x11-libs/fltk not stable yet
 fltk
@@ -36,10 +32,6 @@ python_single_target_python3_7
 # Michał Górny <mgorny@gentoo.org> (2018-02-19)
 # dev-lang/tk is not stable here.
 tk
-
-# Mart Raudsepp <leio@gentoo.org> (2017-02-04)
-# dev-vcs/subversion not marked stable yet
-subversion
 
 # Mart Raudsepp <leio@gentoo.org> (2017-01-28)
 # sys-auth/skey not marked stable yet

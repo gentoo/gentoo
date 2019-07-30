@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit flag-o-matic pam toolchain-funcs usr-ldscript
 
@@ -19,7 +19,7 @@ fi
 LICENSE="BSD-2"
 SLOT="0"
 IUSE="audit bash debug ncurses pam newnet prefix +netifrc selinux static-libs
-	unicode kernel_linux kernel_FreeBSD"
+	sysv-utils unicode kernel_linux kernel_FreeBSD"
 
 COMMON_DEPEND="kernel_FreeBSD? ( || ( >=sys-freebsd/freebsd-ubin-9.0_rc sys-process/fuser-bsd ) )
 	ncurses? ( sys-libs/ncurses:0= )
@@ -40,12 +40,13 @@ COMMON_DEPEND="kernel_FreeBSD? ( || ( >=sys-freebsd/freebsd-ubin-9.0_rc sys-proc
 	!<sys-fs/udev-init-scripts-27"
 DEPEND="${COMMON_DEPEND}
 	virtual/os-headers
-	bash? ( app-shells/bash )
 	ncurses? ( virtual/pkgconfig )"
 RDEPEND="${COMMON_DEPEND}
+	bash? ( app-shells/bash )
 	!prefix? (
 		kernel_linux? (
-			>=sys-apps/sysvinit-2.86-r6[selinux?]
+		sysv-utils? ( !sys-apps/sysvinit )
+		!sysv-utils? ( >=sys-apps/sysvinit-2.86-r6[selinux?] )
 			virtual/tmpfiles
 		)
 		kernel_FreeBSD? ( sys-freebsd/freebsd-sbin )
@@ -77,6 +78,7 @@ src_compile() {
 		MKBASHCOMP=yes
 		MKNET=$(usex newnet)
 		MKSELINUX=$(usex selinux)
+		MKSYSVINIT=$(usex sysv-utils)
 		MKAUDIT=$(usex audit)
 		MKPAM=$(usev pam)
 		MKSTATICLIBS=$(usex static-libs)

@@ -44,7 +44,7 @@ S="${WORKDIR}/${PN}"
 DOCS=( README.md CHANGES.md )
 
 # needs to talk to Google to run tests
-RESTRICT="test? ( network-sandbox )"
+RESTRICT="test"
 
 python_prepare_all() {
 	distutils-r1_python_prepare_all

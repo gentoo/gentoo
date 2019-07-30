@@ -25,7 +25,7 @@ all_ruby_prepare() {
 	sed -i -e '/coveralls/ s:^:#:' spec/spec_helper.rb || die
 	sed -i -e '/Coveralls/ s:^:#:' spec/spec_helper.rb || die
 
-	# Avoid performance specs to avoid ruby-prof dependency and 
+	# Avoid performance specs to avoid ruby-prof dependency and
 	# because we cannot provide a good environment for performance testing.
 	rm -f spec/timers/performance_spec.rb || die
 }

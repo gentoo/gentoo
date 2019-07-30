@@ -17,7 +17,7 @@ SRC_URI="${DEBIAN_URI}/${DEBIAN_PATCH}
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ppc ~x86"
+KEYWORDS="alpha amd64 ppc x86"
 IUSE=""
 
 DEPEND="sys-apps/sed"

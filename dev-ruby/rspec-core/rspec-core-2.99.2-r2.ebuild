@@ -33,6 +33,7 @@ ruby_add_bdepend "test? (
 		>=dev-ruby/zentest-4.6.2
 		>=dev-ruby/rspec-expectations-2.14.0:2
 		>=dev-ruby/rspec-mocks-2.99.0:2
+		dev-ruby/rspec:2
 	)"
 
 all_ruby_prepare() {

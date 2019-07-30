@@ -70,7 +70,7 @@ src_install() {
 
 	update_db "${ED}/usr/share/hddtemp/hddgentoo.db" "${ED}/usr/share/hddtemp/hddtemp.db"
 	newconfd "${FILESDIR}"/hddtemp-conf.d hddtemp
-	newinitd "${FILESDIR}"/hddtemp-init hddtemp
+	newinitd "${FILESDIR}"/hddtemp-init-r1 hddtemp
 	systemd_newunit "${FILESDIR}"/hddtemp.service-r1 "${PN}.service"
 	systemd_install_serviced "${FILESDIR}"/hddtemp.service.conf
 

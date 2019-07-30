@@ -1,15 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
-    <email>david.michael@coreos.com</email>
-    <name>David Michael</name>
-  </maintainer>
-  <maintainer type="project">
-    <email>proxy-maint@gentoo.org</email>
-    <name>Proxy Maintainers</name>
-  </maintainer>
+  <!--maintainer-needed-->
   <upstream>
-    <remote-id type="github">vathpela/pesign</remote-id>
+    <remote-id type="github">rhboot/pesign</remote-id>
   </upstream>
 </pkgmetadata>

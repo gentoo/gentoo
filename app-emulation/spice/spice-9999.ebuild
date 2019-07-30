@@ -1,10 +1,10 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-PYTHON_COMPAT=( python{2_7,3_5,3_6,3_7} )
+EAPI=7
+PYTHON_COMPAT=( python{3_5,3_6,3_7} )
 
-inherit autotools eutils git-r3 ltprune python-any-r1 readme.gentoo-r1 xdg-utils
+inherit autotools eutils git-r3 python-any-r1 readme.gentoo-r1 xdg-utils
 
 DESCRIPTION="SPICE server"
 HOMEPAGE="https://www.spice-space.org/"
@@ -35,7 +35,7 @@ RDEPEND="
 	)"
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
-	=app-emulation/spice-protocol-9999
+	~app-emulation/spice-protocol-9999
 	virtual/pkgconfig
 	$(python_gen_any_dep '
 		>=dev-python/pyparsing-1.5.6-r2[${PYTHON_USEDEP}]
@@ -88,7 +88,7 @@ src_compile() {
 
 src_install() {
 	default
-	use static-libs || prune_libtool_files
+	use static-libs || find "${D}" -name '*.la' -type f -delete || die
 	readme.gentoo_create_doc
 }
 

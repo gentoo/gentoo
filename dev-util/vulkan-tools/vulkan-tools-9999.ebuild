@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{5,6} )
+PYTHON_COMPAT=( python3_{5,6,7} )
 
 if [[ "${PV}" == "9999" ]]; then
 	EGIT_REPO_URI="https://github.com/KhronosGroup/Vulkan-Tools.git"
@@ -22,7 +22,7 @@ HOMEPAGE="https://github.com/KhronosGroup/Vulkan-Tools"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-IUSE="+cube +vulkaninfo X wayland"
+IUSE="+cube +vulkaninfo +X wayland"
 COMMON_DEPEND="media-libs/vulkan-loader:=[${MULTILIB_USEDEP},wayland?,X?]
 	wayland? ( dev-libs/wayland:=[${MULTILIB_USEDEP}] )
 	X? (
@@ -37,7 +37,7 @@ RDEPEND="${COMMON_DEPEND}"
 
 # Vulkaninfo does not support wayland
 REQUIRED_USE="|| ( X wayland )
-			  vulkaninfo? ( X )"
+			vulkaninfo? ( X )"
 
 pkg_setup() {
 	MULTILIB_CHOST_TOOLS=()

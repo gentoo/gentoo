@@ -8,10 +8,10 @@ DISTUTILS_OPTIONAL=1
 inherit linux-info python-r1 toolchain-funcs
 
 DESCRIPTION="User-space front-end for Ftrace"
-HOMEPAGE="https://git.kernel.org/cgit/linux/kernel/git/rostedt/trace-cmd.git"
+HOMEPAGE="http://trace-cmd.org/"
 
 if [[ ${PV} == *9999 ]] ; then
-	EGIT_REPO_URI="https://git.kernel.org/pub/scm/linux/kernel/git/rostedt/${PN}.git"
+	EGIT_REPO_URI="https://git.kernel.org/pub/scm/utils/trace-cmd/trace-cmd.git"
 	inherit git-r3
 else
 	SRC_URI="https://git.kernel.org/pub/scm/utils/trace-cmd/trace-cmd.git/snapshot/${PN}-v${PV}.tar.gz"
@@ -20,7 +20,7 @@ else
 fi
 
 LICENSE="GPL-2+ LGPL-2.1+"
-SLOT="0"
+SLOT="0/${PV}"
 IUSE="+audit doc python udis86"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
@@ -33,7 +33,6 @@ DEPEND="${RDEPEND}
 		virtual/pkgconfig
 		dev-lang/swig
 	)
-
 	doc? ( app-text/asciidoc )"
 
 CONFIG_CHECK="
@@ -41,20 +40,15 @@ CONFIG_CHECK="
 	~FTRACE
 	~BLK_DEV_IO_TRACE"
 
-PATCHES=(
-	"${FILESDIR}/trace-cmd-2.7-makefile.patch"
-	"${FILESDIR}/trace-cmd-2.8-python-pkgconfig-name.patch"
-	"${FILESDIR}/trace-cmd-2.8-soname.patch"
-)
-
 pkg_setup() {
 	linux-info_pkg_setup
 }
 
 src_configure() {
 	EMAKE_FLAGS=(
-		"prefix=/usr"
-		"libdir=/usr/$(get_libdir)"
+		BUILD_OUTPUT="${WORKDIR}/${P}_build"
+		"prefix=${EPREFIX}/usr"
+		"libdir=${EPREFIX}/usr/$(get_libdir)"
 		"CC=$(tc-getCC)"
 		"AR=$(tc-getAR)"
 		$(usex audit '' '' '' 'NO_AUDIT=1')
@@ -65,7 +59,7 @@ src_configure() {
 
 src_compile() {
 	emake "${EMAKE_FLAGS[@]}" NO_PYTHON=1 \
-		trace-cmd libs
+		trace-cmd
 
 	if use python; then
 		python_copy_sources
@@ -77,7 +71,6 @@ src_compile() {
 
 python_compile() {
 	pushd "${BUILD_DIR}" > /dev/null || die
-	python_is_python3 && eapply "${FILESDIR}/trace-cmd-2.8-python3-warnings.patch"
 
 	emake "${EMAKE_FLAGS[@]}" \
 		PYTHON_VERS="${EPYTHON}" \

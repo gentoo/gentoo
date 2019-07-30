@@ -4,6 +4,7 @@
 EAPI=6
 GNOME2_LA_PUNT="yes"
 VALA_USE_DEPEND="vapigen"
+VALA_MAX_API_VERSION="0.42"
 
 inherit gnome2 vala virtualx
 
@@ -58,6 +59,7 @@ DEPEND="${COMMON_DEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/${PV}-vala-0.42-compat.patch
+	"${FILESDIR}"/${PV}-vala-0.42-tests-compat.patch
 )
 
 src_prepare() {

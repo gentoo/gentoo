@@ -19,7 +19,6 @@ move kde-base/kaddressbook kde-apps/kaddressbook
 move kde-base/kalarm kde-apps/kalarm
 move kde-base/kdepim-meta kde-apps/kdepim-meta
 move kde-base/kdepim-runtime kde-apps/kdepim-runtime
-move kde-base/kjots kde-apps/kjots
 move kde-base/kleopatra kde-apps/kleopatra
 move kde-base/kmail kde-apps/kmail
 move kde-base/knotes kde-apps/knotes

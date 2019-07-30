@@ -55,9 +55,16 @@ python_prepare() {
 		eapply "${FILESDIR}"/${PN}-py2k-pillow.patch
 	fi
 
+	local boostpy_ver="${EPYTHON#python}"
+	if has_version ">=dev-libs/boost-1.70"; then
+		boostpy_ver="${boostpy_ver/\.}"
+	else
+		boostpy_ver="-${boostpy_ver}"
+	fi
+
 	cp config_template.cfg config.cfg || die
 	cat >> config.cfg <<- _EOF_ || die
-		BOOST_LIB = 'boost_python-${EPYTHON#python}'
+		BOOST_LIB = 'boost_python${boostpy_ver}'
 		LIBS += ['GL', 'GLU', 'glut']
 		LIB3DS_AVAILABLE = $(usex 3ds True False)
 	_EOF_

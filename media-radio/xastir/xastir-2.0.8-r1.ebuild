@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -44,6 +44,9 @@ src_prepare() {
 
 	# do not filter duplicate flags (see bug 411095)
 	epatch "${FILESDIR}"/${PN}-2.0.0-dont-filter-flags.diff
+
+	# fix compile problem with newer graphicsmagic
+	epatch "${FILESDIR}"/${PN}-2.0.8-fix-graphicsmagick.diff
 
 	eautoreconf
 }

@@ -23,12 +23,14 @@ IUSE="debug python static-libs +threads"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
-DEPEND="
+RDEPEND="
 	dev-libs/boost:=
-	>=dev-util/mdds-1.4.1:1=
+	>=dev-util/mdds-1.5.0:1=
 	python? ( ${PYTHON_DEPS} )
 "
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}
+	dev-libs/spdlog
+"
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup

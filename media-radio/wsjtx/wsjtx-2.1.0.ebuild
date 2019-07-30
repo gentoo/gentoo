@@ -37,7 +37,11 @@ DEPEND="${RDEPEND}
 
 S=${WORKDIR}/wsjtx
 
-PATCHES=( "${FILESDIR}/${PN}-2.0.1-hamlib.patch" )
+PATCHES=( "${FILESDIR}/${PN}-2.0.1-hamlib.patch"
+		  "${FILESDIR}/${PN}-fix-unicode.patch"
+		  "${FILESDIR}/${PN}-drop-docs.patch" )
+
+DOCS=( AUTHORS BUGS NEWS README THANKS )
 
 src_unpack() {
 	unpack ${A}
@@ -45,9 +49,11 @@ src_unpack() {
 }
 
 src_configure() {
+	cmake_comment_add_subdirectory debian
+
 	local mycmakeargs=(
 		-DWSJT_GENERATE_DOCS="$(usex doc)"
-		-DWSJT_DOC_DESTINATION="/doc/${PF}"
+		-DCMAKE_INSTALL_DOCDIR="share/doc/${PF}"
 	)
 	cmake-utils_src_configure
 }
@@ -59,7 +65,5 @@ src_compile() {
 src_install() {
 	cmake-utils_src_install
 	rm "${D}"/usr/bin/rigctl{,d}-wsjtx || die
-	rm "${D}"/usr/share/man/man1/rigctl{,d}-wsjtx.1.gz || die
-	rm "${D}"/usr/share/doc/WSJT-X -R || die
-
+	rm "${D}"/usr/share/man/man1/rigctl{,d,com}-wsjtx.1.gz || die
 }

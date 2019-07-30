@@ -260,13 +260,12 @@ meson_src_test() {
 	debug-print-function ${FUNCNAME} "$@"
 
 	local mesontestargs=(
-		--verbose
 		-C "${BUILD_DIR}"
-		)
+	)
 	[[ -n ${NINJAOPTS} || -n ${MAKEOPTS} ]] &&
 		mesontestargs+=(
 			--num-processes "$(makeopts_jobs ${NINJAOPTS:-${MAKEOPTS}})"
-			)
+		)
 
 	# Append additional arguments from ebuild
 	mesontestargs+=("${emesontestargs[@]}")

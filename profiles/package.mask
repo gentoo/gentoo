@@ -29,6 +29,47 @@
 
 #--- END OF EXAMPLES ---
 
+# Miroslav Šulc <fordfrog@gentoo.org> (2019-07-30)
+# Depends on >=virtual/{jdk,jre}-11 which is masked
+=www-servers/tomcat-9.0.22
+
+# Michał Górny <mgorny@gentoo.org> (30 Jul 2019)
+# Obsolete virtual that was created back when dev-python/dnspython
+# needed separate slots for py2 & py3.  The versions needing it are long
+# gone.  Replace all its uses with dev-python/dnspython.
+# Removal in 30 days.
+virtual/python-dnspython
+
+# Thomas Deutschmann <whissi@gentoo.org> (2019-07-29)
+# Broken config parser
+>=app-metrics/collectd-5.9.0
+
+# Mart Raudsepp <leio@gentoo.org> (2019-07-28)
+# GNOME 3.33 development release packages
+>=dev-libs/vala-common-0.45
+dev-lang/vala:0.46
+
+# Lars Wendler <polynomial-c@gentoo.org> (2019-07-27)
+# Fails to load keymaps through /etc/init.d/keymaps (from openrc) during
+# boot. Emits spurious error messages which upstream hasn't fully fixed yet.
+~sys-apps/kbd-2.1.0
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2019-07-26)
+# Mask 5.x version
+# It breaks hundreds of py2 ebuilds and not all deps are keyworded
+>=dev-python/pytest-5.0.1
+
+# Brian Evans <grknight@gentoo.org> (2019-07-25)
+# Mask new beta versions until release
+dev-lang/php:7.4
+~virtual/httpd-php-7.4
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2019-07-24)
+# Unmaintained and broken with current Plasma, removal in 30 days
+# Bugs: https://bugs.kde.org/show_bug.cgi?id=404359,
+# https://bugs.kde.org/show_bug.cgi?id=404360, see also HOMEPAGE comments
+kde-misc/plasma-active-window-control
+
 # Lars Wendler <polynomial-c@gentoo.org> (2019-07-21)
 # Requires >=mail-client/thunderbird-68_beta1 which is not in the tree yet
 >=x11-plugins/enigmail-2.1
@@ -142,14 +183,6 @@ sys-freebsd/freebsd-ubin
 sys-freebsd/freebsd-usbin
 sys-freebsd/ubin-wrappers
 
-# Ulrich Müller <ulm@gentoo.org> (2019-06-24)
-# Byte-compilation with recent Emacs versions fails.
-# SRC_URI is gone. Last visible upstream activity in 2008.
-# Use app-emacs/flim as replacement.
-# Masked for removal in 30 days, bug #688596.
-app-emacs/limit
-virtual/emacs-flim
-
 # Jonas Stein <jstein@gentoo.org> (2019-06-24)
 # Source is broken. Upstream is dead since 2011.
 # Removal after 2019-08-01. (bug #688552)
@@ -160,20 +193,6 @@ media-sound/sfc
 # builds only static libs, fails with GCC 9.
 # Bug #452220, #461288, #623360, #685728
 sci-mathematics/gwnum
-
-# David Seifert <soap@gentoo.org> (2019-06-22)
-# Abandoned upstream, last release 5 years ago,
-# extremely brittle codebase, requires constant
-# patching, removal in 30 days
-# Bug #664700, #685980
-sci-biology/vaal
-
-# David Seifert <soap@gentoo.org> (2019-06-22)
-# Abandoned upstream, last release 5 years ago,
-# extremely brittle codebase, requires constant
-# patching, removal in 30 days
-# Bug #664708, #685924
-sci-biology/allpathslg
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2019-06-17)
 # this is now provided by dev-lang/rust{-bin}[rustfmt]
@@ -225,10 +244,6 @@ x11-plugins/gkrellflynn
 # Masked for removal in 30 days (bug #686562)
 # Unfixed bug, dead upstream, not relevant enough
 sys-fs/pytagsfs
-
-# Miroslav Šulc <fordfrog@gentoo.org> (2019-05-15)
-# Depends on >=virtual/{jdk,jre}-11 which is masked
-=www-servers/tomcat-9.0.20
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2019-05-11)
 # Perl 5.24 will be removed soon. Please upgrade.

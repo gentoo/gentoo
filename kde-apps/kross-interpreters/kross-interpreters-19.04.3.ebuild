@@ -4,11 +4,11 @@
 EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
-USE_RUBY="ruby25"
+USE_RUBY="ruby24"
 inherit kde5 python-single-r1 ruby-single
 
 DESCRIPTION="Kross interpreter plugins for programming languages"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 arm64 x86"
 IUSE="+python ruby"
 
 REQUIRED_USE="|| ( python ruby ) python? ( ${PYTHON_REQUIRED_USE} )"

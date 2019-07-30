@@ -5,9 +5,7 @@
 		<email>freedesktop-bugs@gentoo.org</email>
 	</maintainer>
 	<use>
-		<flag name="cryptsetup">Enable <pkg>sys-fs/cryptsetup</pkg> support</flag>
 		<flag name="elogind">Use <pkg>sys-auth/elogind</pkg> for session tracking</flag>
-		<flag name="gptfdisk">Pull in <pkg>sys-apps/gptfdisk</pkg> for sgdisk command as used by partitioning functionality</flag>
 		<flag name="lvm">Add support for Logical Volume Management via <pkg>sys-fs/lvm2</pkg>.</flag>
 		<flag name="remote-access">Control whether connections from other clients over LAN are allowed</flag>
 		<flag name="systemd">Support <pkg>sys-apps/systemd</pkg>'s logind</flag>

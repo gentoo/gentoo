@@ -1,0 +1,19 @@
+#!/sbin/openrc-run
+# Copyright 1999-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+SCCACHE_SERVER_CONF="${SCCACHE_SERVER_CONF:-/etc/sccache/server.conf}"
+
+depend() {
+        need localmount
+        use net
+}
+
+description="Starts sccache build server"
+
+command="/usr/bin/sccache-dist"
+command_args="--config ${SCCACHE_SERVER_CONF} ${SCCACHE_SERVER_LOGLEVEL:+--syslog ${SCCACHE_SERVER_LOGLEVEL}}"
+command_background="true"
+pidfile="/run/${RC_SVCNAME}.pid"
+procname="${command} server"
+required_files="${SCCACHE_SERVER_CONF}"

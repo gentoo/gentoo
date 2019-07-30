@@ -12,7 +12,7 @@ HOMEPAGE="https://github.com/maxrd2/subtitlecomposer"
 SRC_URI="https://github.com/maxrd2/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="gstreamer libav mpv unicode xine"
 
 BDEPEND="

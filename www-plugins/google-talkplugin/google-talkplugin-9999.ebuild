@@ -14,10 +14,10 @@ if [ "${PV}" != "9999" ]; then
 		amd64? ( ${MY_URL}/${MY_PKG/i386/amd64} )"
 	KEYWORDS="-* ~amd64 ~x86"
 else
-	inherit cvs #hack to make it part of @live-rebuild
 	MY_URL="https://dl.google.com/linux/direct"
 	MY_PKG="${PN}_current_i386.deb"
 	SRC_URI=""
+	PROPERTIES="live"
 fi
 
 DESCRIPTION="Video chat browser plug-in for Google Talk"

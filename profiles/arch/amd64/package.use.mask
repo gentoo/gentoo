@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Lars Wendler <polynomial-c@gentoo.org> (2019-07-26)
+# dev-libs/gumbo is keyworded on amd64
+mail-client/claws-mail -litehtml
+
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2019-06-22)
 # openjfx is keyworded on amd64
 dev-java/openjdk:11 -javafx

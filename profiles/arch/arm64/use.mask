@@ -43,10 +43,6 @@ python_single_target_python3_7
 # No OpenCL provider is available on arm64.
 opencl
 
-# Brian Evans <grknight@gentoo.org> (2018-03-02)
-# dev-db/qdbm is net yet keyworded
-qdbm
-
 # Mart Raudsepp <leio@gentoo.org> (2018-02-13)
 # net-libs/libsmi not tested on arm64 yet
 smi
@@ -76,10 +72,6 @@ cblas-external
 # media-libs/amrnb and media-libs/amrwb not tested.
 amr
 
-# Samuli Suominen <drac@gentoo.org>
-# media-gfx/gimp not tested.
-gimp
-
 # No hardware to test by the team
 dvb
 ios
@@ -102,32 +94,20 @@ prelude
 mssql
 
 # havent tested yet
-ctypes-python
 libproxy
-pkcs11
-bazaar
 darcs
-mercurial
-gpg
-emacs
-gphoto2
 afs
-mono
 lirc
 lm_sensors
-xemacs
-rpm
 scanner
 zvbi
 fluidsynth
 sid
 mms
-mtp
 ieee1394
 pm-utils
 darcs
 bs2b
-toolame
 ladspa
 ldns
 ggi
@@ -138,18 +118,13 @@ tokyocabinet
 rtmp
 vpx
 lpsol
-upnp
 quvi
-bluray
 libtar
 zvbi
-aacplus
 devil
 gts
 anthy
-R
 sdl
-vim-syntax
 
 # Unmask ARM-only video-cards
 -video_cards_exynos
@@ -185,7 +160,3 @@ video_cards_radeonsi
 # Bug #184563, (2007-09-18)
 # Robin H. Johnson <robbat2@gentoo.org>
 audit
-
-# Alexandre Rostovtsev <tetromino@gentoo.org> (2012-12-31)
-# media-libs/xine-lib is not keyworded
-xine

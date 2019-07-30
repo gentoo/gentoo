@@ -209,10 +209,6 @@ media-libs/libcaca java mono
 # dev-libs/opencryptoki will not be stabile any time soon (bug#510204)
 app-crypt/tpm-tools pkcs11
 
-# Doug Goldstein <cardoe@gentoo.org> (2013-09-12)
-# Waiting on glusterfs maintainers in bug #484016
-app-emulation/qemu glusterfs
-
 # Ian Delaney <idella4@gentoo.org> (2013-12-09)
 # subsequent to the total inaction of the maintainer of
 # ocaml to honour / respond in any way to

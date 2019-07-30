@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 #
 # @ECLASS: bzr.eclass
@@ -20,6 +20,8 @@
 # of this eclass will export the branch to ${WORKDIR}/${P}.
 
 EBZR="bzr.eclass"
+
+PROPERTIES+=" live"
 
 if [[ ${EBZR_REPO_URI%%:*} = sftp ]]; then
 	DEPEND=">=dev-vcs/bzr-2.6.0[sftp]"

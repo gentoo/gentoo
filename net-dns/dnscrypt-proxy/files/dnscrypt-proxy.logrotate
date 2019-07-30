@@ -1,5 +1,6 @@
 /var/log/dnscrypt-proxy/*.log {
-        copytruncate
-        missingok
-        notifempty
+	su dnscrypt-proxy dnscrypt-proxy
+	copytruncate
+	missingok
+	notifempty
 }

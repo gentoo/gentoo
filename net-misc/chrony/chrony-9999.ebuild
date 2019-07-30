@@ -11,7 +11,10 @@ LICENSE="GPL-2"
 SLOT="0"
 
 KEYWORDS=""
-IUSE="caps +cmdmon ipv6 libedit +ntp +phc pps readline +refclock +rtc seccomp selinux +adns"
+IUSE="
+	+adns caps +cmdmon html ipv6 libedit +ntp +phc pps readline +refclock +rtc
+	seccomp selinux
+"
 REQUIRED_USE="
 	?? ( libedit readline )
 "

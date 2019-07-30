@@ -32,10 +32,10 @@ BDEPEND="virtual/pkgconfig"
 RESTRICT="test"
 
 PATCHES=(
-	"${FILESDIR}/1.21.0-fix-host-ar-handling.patch"
-	"${FILESDIR}/0003-grpc-1.3.0-Don-t-run-ldconfig.patch"
-	"${FILESDIR}/0005-grpc-1.11.0-pkgconfig-libdir.patch"
-	"${FILESDIR}/1.22.0-cxx_arg_list_too_long_forloop.patch" # https://github.com/grpc/grpc/issues/14844
+	"${FILESDIR}/grpc-1.21.0-fix-host-ar-handling.patch"
+	"${FILESDIR}/grpc-1.3.0-Don-t-run-ldconfig.patch"
+	"${FILESDIR}/grpc-1.11.0-pkgconfig-libdir.patch"
+	"${FILESDIR}/grpc-1.22.0-cxx_arg_list_too_long_forloop.patch" # https://github.com/grpc/grpc/issues/14844
 )
 
 S="${WORKDIR}/${PN}-${MY_PV}"

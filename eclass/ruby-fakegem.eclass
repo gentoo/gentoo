@@ -8,7 +8,7 @@
 # Author: Diego E. Pettenò <flameeyes@gentoo.org>
 # Author: Alex Legler <a3li@gentoo.org>
 # Author: Hans de Graaff <graaff@gentoo.org>
-# @SUPPORTED_EAPIS: 4 5 6
+# @SUPPORTED_EAPIS: 4 5 6 7
 # @BLURB: An eclass for installing Ruby packages to behave like RubyGems.
 # @DESCRIPTION:
 # This eclass allows to install arbitrary Ruby libraries (including Gems),
@@ -57,7 +57,14 @@ RUBY_FAKEGEM_TASK_TEST="${RUBY_FAKEGEM_TASK_TEST-test}"
 #  - rdoc (calls `rdoc-2`, adds dev-ruby/rdoc to the dependencies);
 #  - yard (calls `yard`, adds dev-ruby/yard to the dependencies);
 #  - none
-RUBY_FAKEGEM_RECIPE_DOC="${RUBY_FAKEGEM_RECIPE_DOC-rake}"
+case ${EAPI} in
+	4|5|6)
+		RUBY_FAKEGEM_RECIPE_DOC="${RUBY_FAKEGEM_RECIPE_DOC-rake}"
+		;;
+	*)
+		RUBY_FAKEGEM_RECIPE_DOC="${RUBY_FAKEGEM_RECIPE_DOC-rdoc}"
+		;;
+esac
 
 # @ECLASS-VARIABLE: RUBY_FAKEGEM_DOCDIR
 # @DEFAULT_UNSET
@@ -109,7 +116,7 @@ RUBY_FAKEGEM_BINDIR="${RUBY_FAKEGEM_BINDIR-bin}"
 case "${EAPI:-0}" in
 	0|1|2|3)
 		die "Unsupported EAPI=${EAPI} (too old) for ruby-fakegem.eclass" ;;
-	4|5|6)
+	4|5|6|7)
 		;;
 	*)
 		die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}"
@@ -173,6 +180,13 @@ SRC_URI="mirror://rubygems/${RUBY_FAKEGEM_NAME}-${RUBY_FAKEGEM_VERSION}${RUBY_FA
 
 ruby_add_bdepend virtual/rubygems
 ruby_add_rdepend virtual/rubygems
+case ${EAPI} in
+	4|5|6)
+		;;
+	*)
+		ruby_add_depend virtual/rubygems
+		;;
+esac
 
 # @FUNCTION: ruby_fakegem_gemsdir
 # @RETURN: Returns the gem data directory
@@ -281,6 +295,15 @@ ruby_fakegem_metadata_gemspec() {
 # See RUBY_FAKEGEM_NAME and RUBY_FAKEGEM_VERSION for setting name and version.
 # See RUBY_FAKEGEM_REQUIRE_PATHS for setting extra require paths.
 ruby_fakegem_genspec() {
+	case ${EAPI} in
+		4|5|6) ;;
+		*)
+			eqawarn "Generating generic fallback gemspec *without* dependencies"
+			eqawarn "This will only work when there are no runtime dependencies"
+			eqawarn "Set RUBY_FAKEGEM_GEMSPEC to generate a proper specifications file"
+			;;
+	esac
+
 	local required_paths="'lib'"
 	for path in ${RUBY_FAKEGEM_REQUIRE_PATHS}; do
 		required_paths="${required_paths}, '${path}'"

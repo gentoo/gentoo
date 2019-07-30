@@ -20,7 +20,7 @@ fi
 SLOT="0"
 LICENSE="GPL-3"
 
-IUSE="archive bogofilter calendar clamav dbus debug dillo doc gdata +gnutls gtk3 +imap ipv6 ldap +libcanberra +libindicate +libnotify networkmanager nls nntp +notification pda pdf perl +pgp python rss session sieve smime spamassassin spam-report spell startup-notification svg valgrind xface"
+IUSE="archive bogofilter calendar clamav dbus debug dillo doc gdata +gnutls gtk3 +imap ipv6 ldap +libcanberra +libindicate +libnotify litehtml networkmanager nls nntp +notification pda pdf perl +pgp python rss session sieve smime spamassassin spam-report spell startup-notification svg valgrind xface"
 REQUIRED_USE="libcanberra? ( notification )
 	libindicate? ( notification )
 	libnotify? ( notification )
@@ -56,6 +56,12 @@ COMMONDEPEND="
 	!gtk3? ( >=x11-libs/gtk+-2.24:2 )
 	imap? ( >=net-libs/libetpan-0.57 )
 	ldap? ( >=net-nds/openldap-2.0.7 )
+	litehtml? (
+		>=dev-libs/glib-2.36:2
+		>=dev-libs/gumbo-0.10
+		net-misc/curl
+		media-libs/fontconfig
+	)
 	nls? ( >=sys-devel/gettext-0.18 )
 	nntp? ( >=net-libs/libetpan-0.57 )
 	notification? (
@@ -80,10 +86,12 @@ COMMONDEPEND="
 "
 
 DEPEND="${COMMONDEPEND}
+	xface? ( >=media-libs/compface-1.4 )
+"
+BDEPEND="
 	app-arch/xz-utils
 	virtual/pkgconfig
-	xface? ( >=media-libs/compface-1.4 )"
-
+"
 RDEPEND="${COMMONDEPEND}
 	app-misc/mime-types
 	x11-misc/shared-mime-info
@@ -140,6 +148,7 @@ src_configure() {
 		$(use_enable gtk3)
 		$(use_enable ipv6)
 		$(use_enable ldap)
+		$(use_enable litehtml litehtml_viewer-plugin)
 		$(use_enable networkmanager)
 		$(use_enable nls)
 		$(use_enable notification notification-plugin)
@@ -199,7 +208,7 @@ src_install() {
 	doexe tb2claws-mail update-po uudec uuooffice
 
 	# kill useless files
-	rm -f "${ED%/}"/usr/lib*/claws-mail/plugins/*.{a,la}
+	rm -f "${ED}"/usr/lib*/claws-mail/plugins/*.{a,la}
 }
 
 pkg_preinst() {

@@ -19,6 +19,7 @@ IUSE="test"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
+	${PYTHON_DEPS}
 	app-crypt/gpgme
 	dev-libs/glib:2
 	dev-libs/nspr

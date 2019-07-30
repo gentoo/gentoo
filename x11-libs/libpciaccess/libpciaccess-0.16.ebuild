@@ -27,6 +27,6 @@ multilib_src_install() {
 
 	if multilib_is_native_abi; then
 		dodir /usr/bin
-		${BASH} libtool --mode=install "$(type -P install)" -c scanpci/scanpci "${ED}"/usr/bin || die
+		/bin/sh libtool --mode=install "$(type -P install)" -c scanpci/scanpci "${ED}"/usr/bin || die
 	fi
 }

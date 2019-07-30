@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit python-single-r1 user flag-o-matic
+inherit python-single-r1 flag-o-matic
 
 MY_P="${PN}2-${PV}"
 
@@ -27,6 +27,7 @@ COMMON_DEPS="pcap? ( net-libs/libpcap )
 	)"
 DEPEND="${COMMON_DEPS}"
 RDEPEND="${COMMON_DEPS}
+	acct-group/qemu
 	selinux? ( sec-policy/selinux-vde )"
 
 S="${WORKDIR}/${MY_P}"
@@ -34,8 +35,6 @@ S="${WORKDIR}/${MY_P}"
 PATCHES=( "${FILESDIR}/${P}-format-security.patch" )
 
 pkg_setup() {
-	# default group already used in kqemu
-	enewgroup qemu
 	use python && python-single-r1_pkg_setup
 }
 

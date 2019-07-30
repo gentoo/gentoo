@@ -8,8 +8,8 @@ inherit fcaps flag-o-matic git-r3 multilib python-r1 qmake-utils user xdg-utils 
 DESCRIPTION="A network protocol analyzer formerly known as ethereal"
 HOMEPAGE="https://www.wireshark.org/"
 EGIT_REPO_URI="https://code.wireshark.org/review/wireshark"
-
 LICENSE="GPL-2"
+
 SLOT="0/${PV}"
 KEYWORDS=""
 IUSE="
@@ -19,7 +19,6 @@ IUSE="
 	+reordercap sbc selinux +sharkd smi snappy spandsp sshdump ssl sdjournal
 	+text2pcap tfshark +tshark +udpdump zlib
 "
-
 S=${WORKDIR}/${P/_/}
 
 CDEPEND="

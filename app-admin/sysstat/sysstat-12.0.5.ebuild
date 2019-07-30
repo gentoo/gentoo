@@ -10,7 +10,7 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 ~arm ~arm64 hppa ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86"
 IUSE="debug nls lm_sensors selinux static"
 
 CDEPEND="
@@ -77,5 +77,5 @@ src_install() {
 	newinitd "${FILESDIR}"/${PN}.init.d ${PN}
 	systemd_dounit ${PN}.service
 
-	rm -f "${D}"usr/share/doc/${PF}/COPYING
+	rm "${D}"/usr/share/doc/${PF}/COPYING || die
 }

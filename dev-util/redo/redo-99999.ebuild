@@ -17,6 +17,9 @@ BDEPEND="
 	dev-python/beautifulsoup[${PYTHON_USEDEP}]
 	dev-python/markdown[${PYTHON_USEDEP}]
 "
+RDEPEND="
+	${BDEPEND}
+"
 
 src_compile() {
 	./do -j$(makeopts_jobs) build || die
