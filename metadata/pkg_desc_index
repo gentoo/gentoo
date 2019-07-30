@@ -3182,7 +3182,7 @@ dev-libs/mm 1.4.2-r2: Shared Memory Abstraction Library
 dev-libs/mongo-c-driver 0.7.1-r1 0.8.1-r1 1.8.2 1.13.0-r1: Client library written in C for MongoDB
 dev-libs/mpc 1.0.3: A library for multiprecision complex arithmetic with exact rounding
 dev-libs/mpfr 3.1.3_p4 3.1.6: library for multiple-precision floating-point computations with exact rounding
-dev-libs/mxml 2.12 3.0: A small XML parsing library that you can use to read XML data files or strings
+dev-libs/mxml 3.0: A small XML parsing library that you can use to read XML data files or strings
 dev-libs/nettle 3.4.1: Low-level cryptographic library
 dev-libs/newt 0.52.20: Redhat's Newt windowing toolkit development files
 dev-libs/nmeap 0.3-r1: Extensible NMEA-0183 (GPS) data parser in standard C
