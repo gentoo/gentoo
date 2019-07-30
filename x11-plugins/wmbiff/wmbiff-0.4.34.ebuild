@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 inherit autotools eutils
 
 DESCRIPTION="WMBiff is a dock applet for WindowMaker which can monitor up to 5 mailboxes"
@@ -21,8 +21,8 @@ RDEPEND="x11-libs/libX11
 		>=net-libs/gnutls-2.2.0
 		)"
 DEPEND="${RDEPEND}
-	virtual/pkgconfig
 	x11-base/xorg-proto"
+BDEPEND="virtual/pkgconfig"
 
 DOCS="ChangeLog FAQ NEWS README TODO wmbiff/sample.wmbiffrc"
 
