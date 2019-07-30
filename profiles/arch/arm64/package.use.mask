@@ -9,10 +9,6 @@ dev-util/bcc test
 # not yet keyworded
 dev-java/openjdk javafx
 
-# Aaron Bauman <bman@gentoo.org> (2019-05-27)
-# plasma is not stable yet
-kde-frameworks/purpose kaccounts
-
 # Aaron Bauman <bman@gentoo.org> (2019-05-20)
 # doc USE ultimately pulls in dev-lang/ocaml[ocamlopt]
 media-gfx/enblend doc
