@@ -33,6 +33,8 @@ DEPEND="
 	test? ( dev-util/shellcheck-bin )
 "
 
+PATCHES=( "${FILESDIR}"/${P}-disable-dwarf-compression.patch )
+
 pkg_setup() {
 	if use kmod; then
 		if kernel_is gt 3 9 0; then
