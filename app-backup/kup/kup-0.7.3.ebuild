@@ -42,6 +42,7 @@ RDEPEND="${DEPEND}
 	$(add_qt_dep qtsvg)
 	app-backup/bup
 	net-misc/rsync
+	!app-text/kup
 "
 
 S="${WORKDIR}/${PN^}-${P}"
