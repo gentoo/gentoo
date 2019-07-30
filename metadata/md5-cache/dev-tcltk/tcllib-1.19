@@ -9,5 +9,5 @@ LICENSE=BSD
 RDEPEND=dev-lang/tcl:0= dev-tcltk/tdom
 SLOT=0
 SRC_URI=mirror://sourceforge/tcllib/tcllib/1.19/tcllib-1.19.tar.xz
-_eclasses_=virtualx	401b718cc14d43a5a7fbe062c4851ba5
+_eclasses_=virtualx	53625127887b62eabb9ec61d3d943462
 _md5_=8cc4f98b137175b026836be6a1cf93ec
