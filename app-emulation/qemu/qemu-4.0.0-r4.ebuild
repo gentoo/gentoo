@@ -11,7 +11,7 @@ PLOCALES="bg de_DE fr_FR hu it tr zh_CN"
 FIRMWARE_ABI_VERSION="2.11.1-r50"
 
 inherit eutils linux-info toolchain-funcs multilib python-r1 \
-	user udev fcaps readme.gentoo-r1 pax-utils l10n xdg-utils
+	udev fcaps readme.gentoo-r1 pax-utils l10n xdg-utils
 
 if [[ ${PV} = *9999* ]]; then
 	EGIT_REPO_URI="git://git.qemu.org/qemu.git"
@@ -197,6 +197,7 @@ DEPEND="${CDEPEND}
 	)
 	static-user? ( ${ALL_DEPEND} )"
 RDEPEND="${CDEPEND}
+	acct-group/kvm
 	selinux? ( sec-policy/selinux-qemu )"
 
 PATCHES=(
@@ -310,10 +311,6 @@ pkg_pretend() {
 		eerror "and the right system binary (e.g. qemu-system-x86_64)."
 		die "update your virt configs to not use qemu-kvm"
 	fi
-}
-
-pkg_setup() {
-	enewgroup kvm 78
 }
 
 # Sanity check to make sure target lists are kept up-to-date.
