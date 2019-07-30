@@ -6,9 +6,9 @@ EAPI=0
 inherit font
 
 DESCRIPTION="Hacked version of IPA fonts, which is suitable for browsing 2ch"
-HOMEPAGE="http://www.geocities.jp/ipa_mona/index.html"
+HOMEPAGE="https://web.archive.org/web/20190326123924/http://www.geocities.jp/ipa_mona/"
 MY_PN="opfc-ModuleHP-1.1.1_withIPAMonaFonts"
-SRC_URI="http://www.geocities.jp/ipa_mona/${MY_PN}-${PV}.tar.gz"
+SRC_URI="http://freebsd.sin.openmirrors.asia/pub/FreeBSD/ports/local-distfiles/hrs/${MY_PN}-${PV}.tar.gz"
 
 LICENSE="grass-ipafonts mplus-fonts public-domain"
 SLOT="0"
