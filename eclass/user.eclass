@@ -358,7 +358,7 @@ enewgroup() {
 egetusername() {
 	[[ $# -eq 1 ]] || die "usage: egetusername <uid>"
 
-	id -u -n "$1"
+	egetent passwd "$1" | cut -d: -f1
 }
 
 # @FUNCTION: egetgroupname
@@ -368,7 +368,7 @@ egetusername() {
 egetgroupname() {
 	[[ $# -eq 1 ]] || die "usage: egetgroupname <gid>"
 
-	id -g -n "$1"
+	egetent group "$1" | cut -d: -f1
 }
 
 # @FUNCTION: egethome
