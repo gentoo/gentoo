@@ -97,6 +97,7 @@ src_prepare() {
 	fi
 
 	local PATCHES=(
+		"${FILESDIR}"/242-gcc-9.patch
 	)
 
 	default
