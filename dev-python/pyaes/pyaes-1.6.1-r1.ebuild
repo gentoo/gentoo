@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{5,6} )
+PYTHON_COMPAT=( python2_7 python3_{5,6,7} )
 
 inherit distutils-r1
 
@@ -16,8 +16,11 @@ SLOT="0"
 KEYWORDS="amd64 ~arm x86"
 IUSE=""
 
-DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
-
 python_test() {
-	${EPYTHON} tests/test-{aes,blockfeeder,util}.py || die
+	local t fail=
+	for t in tests/test-*.py; do
+		einfo "${t}"
+		"${EPYTHON}" "${t}" || fail=1
+	done
+	[[ ${fail} ]] && die "Tests fail with ${EPYTHON}"
 }

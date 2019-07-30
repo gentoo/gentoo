@@ -1,14 +1,15 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
+
 inherit toolchain-funcs
 
-DEB_VER="9"
+DEB_VER="10"
 DESCRIPTION="Classic networked version of T*tris"
 HOMEPAGE="http://www.netris.org/"
 SRC_URI="ftp://ftp.netris.org/pub/netris/${P}.tar.gz
-	mirror://debian/pool/main/n/netris/netris_${PV}-${DEB_VER}.diff.gz"
+	mirror://debian/pool/main/n/netris/netris_${PV}-${DEB_VER}.debian.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -23,8 +24,8 @@ src_prepare() {
 
 	tc-export CC CXX LD AR RANLIB
 
-	eapply "${WORKDIR}"/netris_${PV}-${DEB_VER}.diff
-	eapply "${S}"/debian/patches/[01]*
+	eapply "${S}"/../debian/patches/[01]*
+	eapply "${FILESDIR}"/${P}-tinfo.patch
 
 	# bug #185332
 	sed -i \
@@ -56,6 +57,7 @@ src_configure() {
 }
 
 src_install() {
-	dobin netris sr
+	dobin netris
+	newbin sr netris-sample-robot
 	dodoc FAQ README robot_desc
 }
