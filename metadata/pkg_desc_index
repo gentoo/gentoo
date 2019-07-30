@@ -5004,7 +5004,7 @@ dev-python/jsonext 0.4.2: Well-structured helpers for serializing commonly encou
 dev-python/jsonpatch 1.13 1.21 1.23: Apply JSON-Patches like http://tools.ietf.org/html/draft-pbryan-json-patch-04
 dev-python/jsonpickle 0.9.3: Python library for serializing any arbitrary object graph into JSON
 dev-python/jsonpointer 1.10 2.0: Identify specific nodes in a JSON document (according to draft 08)
-dev-python/jsonrpclib 0_pre20110820-r1 0.3.1: python implementation of the JSON-RPC spec (1.0 and 2.0)
+dev-python/jsonrpclib 0.3.1: python implementation of the JSON-RPC spec (1.0 and 2.0)
 dev-python/jsonschema 2.3.0 2.5.1-r2 2.6.0: An implementation of JSON-Schema validation for Python
 dev-python/jupyter_client 5.1.0-r1: Jupyter protocol implementation and client libraries
 dev-python/jupyter_core 4.4.0: Core common functionality of Jupyter projects
@@ -5261,7 +5261,7 @@ dev-python/py-xmlrpc 0.9: Fast XML-RPC implementation for Python
 dev-python/py2play 0.1.10-r1: A Peer To Peer network game engine
 dev-python/pyGPG 0.2: A python interface wrapper for gnupg's gpg command
 dev-python/pyPdf 1.13-r1: Python library to work with pdf files
-dev-python/pyaes 1.6.1: Pure-Python Implementation of the AES block-cipher and common modes of operation
+dev-python/pyaes 1.6.1-r1: Pure-Python Implementation of the AES block-cipher and common modes of operation
 dev-python/pyalsa 1.0.29 1.1.6: Python bindings for ALSA library
 dev-python/pyalsaaudio 0.7-r2 0.8.2: A Python wrapper for the ALSA API
 dev-python/pyao 0.82-r3: Python bindings for the libao library
