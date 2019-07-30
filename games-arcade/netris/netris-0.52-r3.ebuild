@@ -57,6 +57,7 @@ src_configure() {
 }
 
 src_install() {
-	dobin netris sr
+	dobin netris
+	newbin sr netris-sample-robot
 	dodoc FAQ README robot_desc
 }
