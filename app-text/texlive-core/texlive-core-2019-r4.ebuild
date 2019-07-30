@@ -294,8 +294,8 @@ src_install() {
 	cd "${B}/texk/makeindexk" || die
 	dodoc ChangeLog NOTES README
 
-	docinto web2c || die
-	cd "${B}/texk/web2c"
+	docinto web2c
+	cd "${B}/texk/web2c" || die
 	dodoc ChangeLog NEWS PROJECTS README
 
 	use doc || rm -rf "${ED}/usr/share/texmf-dist/doc"
