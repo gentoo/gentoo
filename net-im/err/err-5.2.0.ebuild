@@ -26,6 +26,7 @@ RDEPEND="
 	dev-python/colorlog[${PYTHON_USEDEP}]
 	dev-python/cryptography[${PYTHON_USEDEP}]
 	dev-python/daemonize[${PYTHON_USEDEP}]
+	dev-python/dnspython[${PYTHON_USEDEP}]
 	dev-python/jinja[${PYTHON_USEDEP}]
 	dev-python/markdown[${PYTHON_USEDEP}]
 	dev-python/pygments[${PYTHON_USEDEP}]
@@ -33,7 +34,6 @@ RDEPEND="
 	dev-python/requests[${PYTHON_USEDEP}]
 	dev-python/webtest[${PYTHON_USEDEP}]
 	dev-python/yapsy[${PYTHON_USEDEP}]
-	virtual/python-dnspython[${PYTHON_USEDEP}]
 	irc? (
 		dev-python/irc[${PYTHON_USEDEP}]
 	)
