@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 python3_{5,6,7} )
 
-inherit distutils-r1 vcs-snapshot
+inherit distutils-r1
 
 DESCRIPTION="DNS toolkit for Python"
 HOMEPAGE="http://www.dnspython.org/ https://pypi.org/project/dnspython/"
