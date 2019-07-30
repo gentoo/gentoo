@@ -1,16 +1,16 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 MY_PN="ADOdb"
 DESCRIPTION="Database abstraction layer for PHP"
-HOMEPAGE="http://www.adodb.org/"
+HOMEPAGE="https://github.com/ADOdb"
 SRC_URI="https://github.com/${MY_PN}/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="BSD LGPL-2.1"
+LICENSE="BSD LGPL-2.1+"
 SLOT="0"
-KEYWORDS="alpha amd64 ~arm hppa ia64 ppc ppc64 sparc x86"
+KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 sparc x86"
 IUSE=""
 
 # If you want to be picky, we should require that PHP be built with at
