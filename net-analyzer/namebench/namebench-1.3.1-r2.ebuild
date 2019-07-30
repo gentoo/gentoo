@@ -19,11 +19,11 @@ IUSE="X"
 # PYTHON_REQ_USE does not support X? ( tk ) syntax yet
 DEPEND="X? ( $(python_gen_cond_dep dev-lang/python:2.7[tk] python2_7) )"
 RDEPEND="${DEPEND}
+	dev-python/dnspython[${PYTHON_USEDEP}]
 	>=dev-python/httplib2-0.6[${PYTHON_USEDEP}]
 	>=dev-python/graphy-1.0[${PYTHON_USEDEP}]
 	>=dev-python/jinja-2.2.1[${PYTHON_USEDEP}]
 	>=dev-python/simplejson-2.1.2[${PYTHON_USEDEP}]
-	virtual/python-dnspython[${PYTHON_USEDEP}]
 "
 
 python_prepare_all() {
