@@ -19,5 +19,10 @@ IUSE=""
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 
 python_test() {
-	${EPYTHON} tests/test-{aes,blockfeeder,util}.py || die
+	local t fail=
+	for t in tests/test-*.py; do
+		einfo "${t}"
+		"${EPYTHON}" "${t}" || fail=1
+	done
+	[[ ${fail} ]] && die "Tests fail with ${EPYTHON}"
 }
