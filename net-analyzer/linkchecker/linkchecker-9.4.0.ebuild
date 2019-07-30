@@ -18,9 +18,9 @@ KEYWORDS="amd64 x86 ~ppc-macos ~x64-solaris"
 IUSE="sqlite"
 
 RDEPEND="
+	dev-python/dnspython[${PYTHON_USEDEP}]
 	dev-python/pyxdg[${PYTHON_USEDEP}]
 	>=dev-python/requests-2.2[${PYTHON_USEDEP}]
-	virtual/python-dnspython[${PYTHON_USEDEP}]
 "
 DEPEND=""
 
