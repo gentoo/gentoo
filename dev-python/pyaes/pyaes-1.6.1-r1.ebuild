@@ -16,8 +16,6 @@ SLOT="0"
 KEYWORDS="amd64 ~arm x86"
 IUSE=""
 
-DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
-
 python_test() {
 	local t fail=
 	for t in tests/test-*.py; do
