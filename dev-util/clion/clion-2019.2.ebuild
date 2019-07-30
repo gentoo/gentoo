@@ -40,7 +40,7 @@ src_prepare() {
 	use arm || remove_me+=( bin/fsnotifier-arm )
 	use x86 || remove_me+=( bin/fsnotifier lib/pty4j-native/linux/x86)
 
-	use custom-jdk || remove_me+=( jre64 )
+	use custom-jdk || remove_me+=( jbr )
 
 	rm -rv "${remove_me[@]}" || die
 }
@@ -63,8 +63,8 @@ src_install() {
 	fi
 
 	if use custom-jdk; then
-		if [[ -d jre64 ]]; then
-		fperms 755 "${dir}"/jre64/bin/{java,jjs,keytool,orbd,pack200,policytool,rmid,rmiregistry,servertool,tnameserv,unpack200}
+		if [[ -d jbr ]]; then
+		fperms 755 "${dir}"/jbr/bin/{jaotc,java,javac,jdb,jjs,jrunscript,keytool,pack200,rmid,rmiregistry,serialver,unpack200}
 		fi
 	fi
 
