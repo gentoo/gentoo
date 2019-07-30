@@ -14,7 +14,7 @@ dev-vcs/git pcre-jit
 # This includes also packages which do not support python-3 or
 # do not support python-3.7 yet.
 
-app-admin/syslog-ng amqp dbi geoip geoip2 json mongodb python redis spoof-source smtp
+app-admin/syslog-ng amqp dbi geoip geoip2 json kafka mongodb python redis spoof-source smtp snmp
 app-admin/sysstat lm_sensors
 app-arch/unzip natspec
 app-crypt/gnupg smartcard tofu wks-server
