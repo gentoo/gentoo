@@ -10,7 +10,7 @@ inherit kde5 qmake-utils
 
 DESCRIPTION="KDE Plasma workspace"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
-IUSE="appstream +calendar geolocation gps prison qalculate +semantic-desktop systemd"
+IUSE="appstream +calendar geolocation gps qalculate qrcode +semantic-desktop systemd"
 
 REQUIRED_USE="gps? ( geolocation )"
 
@@ -36,8 +36,6 @@ COMMON_DEPEND="
 	$(add_frameworks_dep kitemmodels)
 	$(add_frameworks_dep kitemviews)
 	$(add_frameworks_dep kjobwidgets)
-	$(add_frameworks_dep kjs)
-	$(add_frameworks_dep kjsembed)
 	$(add_frameworks_dep knewstuff)
 	$(add_frameworks_dep knotifications)
 	$(add_frameworks_dep knotifyconfig)
@@ -81,8 +79,8 @@ COMMON_DEPEND="
 	calendar? ( $(add_frameworks_dep kholidays) )
 	geolocation? ( $(add_frameworks_dep networkmanager-qt) )
 	gps? ( sci-geosciences/gpsd )
-	prison? ( $(add_frameworks_dep prison) )
 	qalculate? ( sci-libs/libqalculate:= )
+	qrcode? ( $(add_frameworks_dep prison) )
 	semantic-desktop? ( $(add_frameworks_dep baloo) )
 "
 DEPEND="${COMMON_DEPEND}
@@ -119,6 +117,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-5.10-startplasmacompositor-script.patch"
 	"${FILESDIR}/${PN}-5.14.2-split-libkworkspace.patch"
 	"${FILESDIR}/${PN}-5.16.3-x11sessionrename.patch"
+	"${FILESDIR}/${PN}-5.16.4-no-share-dataengine.patch"
 )
 
 RESTRICT+=" test"
@@ -139,8 +138,8 @@ src_configure() {
 		$(cmake-utils_use_find_package appstream AppStreamQt)
 		$(cmake-utils_use_find_package calendar KF5Holidays)
 		$(cmake-utils_use_find_package geolocation KF5NetworkManagerQt)
-		$(cmake-utils_use_find_package prison KF5Prison)
 		$(cmake-utils_use_find_package qalculate Qalculate)
+		$(cmake-utils_use_find_package qrcode KF5Prison)
 		$(cmake-utils_use_find_package semantic-desktop KF5Baloo)
 	)
 

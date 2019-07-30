@@ -109,9 +109,6 @@ RDEPEND="${COMMON_DEPEND}
 	$(add_qt_dep qtquickcontrols2)
 	sys-apps/util-linux
 	x11-apps/setxkbmap
-	!kde-apps/kcontrol
-	!<kde-apps/kde4-l10n-17.08.1-r1
-	!kde-apps/knetattach[handbook]
 	!<kde-plasma/kdeplasma-addons-5.15.80
 "
 

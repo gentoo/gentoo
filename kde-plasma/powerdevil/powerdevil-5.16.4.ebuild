@@ -39,7 +39,7 @@ DEPEND="
 	$(add_qt_dep qtx11extras)
 	virtual/libudev:=
 	x11-libs/libxcb
-	brightness-control? ( >=app-misc/ddcutil-0.9.1 )
+	brightness-control? ( app-misc/ddcutil )
 	wireless? (
 		$(add_frameworks_dep bluez-qt)
 		$(add_frameworks_dep networkmanager-qt)
@@ -52,7 +52,7 @@ RDEPEND="${DEPEND}
 
 src_configure() {
 	local mycmakeargs=(
-		-DHAVE_DDCUTIL=$(usex brightness-control)
+		-DWITH_DDCUTIL=$(usex brightness-control)
 		$(cmake-utils_use_find_package wireless KF5BluezQt)
 		$(cmake-utils_use_find_package wireless KF5NetworkManagerQt)
 	)

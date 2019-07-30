@@ -55,7 +55,6 @@ DEPEND="${COMMON_DEPEND}
 RDEPEND="${COMMON_DEPEND}
 	$(add_plasma_dep kde-cli-tools)
 	$(add_qt_dep qtquickcontrols2)
-	!kde-apps/kcontrol:4
 "
 
 src_configure() {
