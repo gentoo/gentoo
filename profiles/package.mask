@@ -29,6 +29,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (30 Jul 2019)
+# Obsolete virtual that was created back when dev-python/dnspython
+# needed separate slots for py2 & py3.  The versions needing it are long
+# gone.  Replace all its uses with dev-python/dnspython.
+# Removal in 30 days.
+virtual/python-dnspython
+
 # Thomas Deutschmann <whissi@gentoo.org> (2019-07-29)
 # Broken config parser
 >=app-metrics/collectd-5.9.0

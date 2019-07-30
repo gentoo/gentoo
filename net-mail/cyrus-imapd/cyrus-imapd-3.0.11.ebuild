@@ -4,33 +4,33 @@
 EAPI=6
 inherit autotools flag-o-matic pam ssl-cert user
 
-MY_P=${P/_/}
-
 DESCRIPTION="The Cyrus IMAP Server"
 HOMEPAGE="https://www.cyrusimap.org/"
-SRC_URI="ftp://ftp.cyrusimap.org/cyrus-imapd/${MY_P}.tar.gz"
+SRC_URI="https://github.com/cyrusimap/${PN}/releases/download/${P}/${P}.tar.gz"
 
-LICENSE="BSD-with-attribution"
+LICENSE="BSD-with-attribution GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~hppa ~ia64 ppc ppc64 ~sparc x86"
-IUSE="afs backup calalarm caps clamav http jmap kerberos ldap lmdb \
+KEYWORDS="~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+IUSE="afs backup calalarm caps clamav http kerberos ldap lmdb \
 	mysql nntp pam perl postgres replication +server sieve snmp \
-	sphinx sqlite ssl static-libs tcpd test xapian"
+	sqlite ssl static-libs tcpd test xapian"
 
-# virtual/mysql-5.5 added for the --variable= option below
-CDEPEND="sys-libs/zlib
-	dev-libs/libpcre
-	>=dev-libs/cyrus-sasl-2.1.13
+CDEPEND="
+	sys-libs/zlib:0=
+	dev-libs/libpcre:3
+	>=dev-libs/cyrus-sasl-2.1.13:2
 	dev-libs/jansson
-	dev-libs/icu:=
+	dev-libs/icu:0=
+	sys-libs/e2fsprogs-libs
 	afs? ( net-fs/openafs )
+	calalarm? ( dev-libs/libical:0= )
 	caps? ( sys-libs/libcap )
 	clamav? ( app-antivirus/clamav )
-	http? ( dev-libs/libxml2 dev-libs/libical )
+	http? ( dev-libs/libxml2:2 dev-libs/libical:0= )
 	kerberos? ( virtual/krb5 )
 	ldap? ( net-nds/openldap )
-	lmdb? ( dev-db/lmdb )
-	mysql? ( >=virtual/mysql-5.5 )
+	lmdb? ( dev-db/lmdb:0= )
+	mysql? ( dev-db/mysql-connector-c:0= )
 	nntp? ( !net-nntp/leafnode )
 	pam? (
 			virtual/pam
@@ -38,42 +38,47 @@ CDEPEND="sys-libs/zlib
 		)
 	perl? ( dev-lang/perl:= )
 	postgres? ( dev-db/postgresql:* )
-	snmp? ( >=net-analyzer/net-snmp-5.2.2-r1 )
-	ssl? ( >=dev-libs/openssl-1.0.1e:0[-bindist] )
+	snmp? ( >=net-analyzer/net-snmp-5.2.2-r1:0= )
+	ssl? ( >=dev-libs/openssl-1.0.1e:0=[-bindist] )
 	sqlite? ( dev-db/sqlite:3 )
-	tcpd? ( >=sys-apps/tcp-wrappers-7.6 snmp? ( net-analyzer/net-snmp[tcpd=] ) )
-	xapian? ( >=dev-libs/xapian-1.4.0 )"
-
+	tcpd? ( >=sys-apps/tcp-wrappers-7.6
+		snmp? ( net-analyzer/net-snmp:0=[tcpd=] )
+		)
+	xapian? ( >=dev-libs/xapian-1.4.0:0= )
+"
 DEPEND="${CDEPEND}
-	test? ( dev-util/cunit )"
+	test? ( dev-util/cunit )
+"
 
 # all blockers really needed?
+# file collision with app-arch/dump - bug 619584
 RDEPEND="${CDEPEND}
 	!mail-mta/courier
 	!net-mail/bincimap
 	!net-mail/courier-imap
 	!net-mail/uw-imap
-	!net-mail/cyrus-imap-admin"
+	!app-arch/dump
+"
 
-REQUIRED_USE="afs? ( kerberos )
+REQUIRED_USE="
+	afs? ( kerberos )
 	backup? ( sqlite )
 	calalarm? ( http )
 	http? ( sqlite )
-	jmap? ( http xapian )
-	sphinx? ( mysql )"
+"
 
-S=${WORKDIR}/${MY_P}
+# https://bugs.gentoo.org/678754
+# TODO: check underlinking for other libraries
+PATCHES=( "${FILESDIR}/cyrus-imapd-libcap-libs-r1.patch" )
 
 pkg_setup() {
 	enewuser cyrus -1 -1 /usr/cyrus mail
+	# https://bugs.gentoo.org/604466
 	append-ldflags $(no-as-needed)
 }
 
 src_prepare() {
-	# bug 604470
-	eapply -p1 "${FILESDIR}/${PN}-sieve-libs-v4.patch"
-	eapply -p1 "${FILESDIR}/${PN}-libcap-libs.patch"
-	eapply -p1 "${FILESDIR}/${PN}-fix-tests.patch"
+	default
 	# Fix master(8)->cyrusmaster(8) manpage.
 	for i in `grep -rl -e 'master\.8' -e 'master(8)' "${S}"` ; do
 		sed -i -e 's:master\.8:cyrusmaster.8:g' \
@@ -90,7 +95,6 @@ src_prepare() {
 	sed -i -e '/lock.h/s:lock.h:afs/lock.h:' \
 		ptclient/afskrb.c || die
 
-	eapply_user
 	eautoreconf
 }
 
@@ -100,6 +104,7 @@ src_configure() {
 		myconf+=" --with-afs-libdir=/usr/$(get_libdir)"
 		myconf+=" --with-afs-incdir=/usr/include/afs"
 	fi
+	# sphinx is unmaintained and dead, bug #662944
 	econf \
 		--enable-unit-tests \
 		--enable-murder \
@@ -107,12 +112,12 @@ src_configure() {
 		--enable-event-notification \
 		--enable-autocreate \
 		--enable-pcre \
+		--with-com_err \
 		--with-cyrus-user=cyrus \
-		--with-cyrus-group=mail \
-		--with-com_err=yes \
 		--with-sasl \
 		--without-krb \
 		--without-krbdes \
+		--disable-sphinx \
 		--enable-squat \
 		--with-zlib \
 		$(use_enable afs) \
@@ -121,7 +126,6 @@ src_configure() {
 		$(use_enable calalarm calalarmd) \
 		$(use_with caps libcap) \
 		$(use_with clamav) \
-		$(use_enable jmap) \
 		$(use_enable nntp) \
 		$(use_enable http) \
 		$(use_enable replication) \
@@ -136,7 +140,6 @@ src_configure() {
 		$(use_enable server) \
 		$(use_enable sieve) \
 		$(use_with snmp) \
-		$(use_enable sphinx) \
 		$(use_enable static-libs static) \
 		$(use_with tcpd libwrap) \
 		$(use_enable xapian) \
@@ -215,7 +218,7 @@ pkg_postinst() {
 	fi
 
 	echo
-	ewarn "Please see https://www.cyrusimap.org/imap/download/upgrade.html"
-	ewarn "for upgrade instructions."
+	einfo "Please see https://www.cyrusimap.org/imap/download/upgrade.html"
+	einfo "for upgrade instructions."
 	echo
 }
