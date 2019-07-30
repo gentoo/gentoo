@@ -6231,7 +6231,7 @@ dev-util/ccache 3.3.4-r1 3.6 3.7.1: fast compiler cache
 dev-util/cdiff 1.0: Colored, side-by-side diff terminal viewer
 dev-util/cgdb 0.6.8: A curses front-end for GDB, the GNU debugger
 dev-util/cgvg 1.6.2 1.6.3: Minimal command-line source browsing tool similar to cscope
-dev-util/checkbashisms 2.18.11: Perl script to check for commonly used bash features not defined by POSIX
+dev-util/checkbashisms 2.19.6: Perl script to check for commonly used bash features not defined by POSIX
 dev-util/checkstyle 7.2: Development tool to help write Java code that adheres to a coding standard
 dev-util/clazy 1.5: Compiler plugin which allows clang to understand Qt semantics
 dev-util/cloc 1.72 1.76-r1: Count Lines of Code
