@@ -112,4 +112,9 @@ src_configure() {
 src_install() {
 	default
 	find "${ED}" -type f -name "*.la" -delete || die
+	# This is installed even with USE=-lvm, but libbd_lvm are omitted so it
+	# doesn't work at all.
+	if ! use lvm; then
+		rm -f "${ED}"/usr/bin/lvm-cache-stats || die
+	fi
 }
