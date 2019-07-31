@@ -2,7 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>chead@chead.ca</email>
+		<email>bugs@chead.ca</email>
 		<name>Christopher Head</name>
 	</maintainer>
 	<maintainer type="project">
