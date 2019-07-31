@@ -1,0 +1,43 @@
+https://github.com/RadeonOpenCompute/ROCm-CompilerSupport/pull/17
+
+From 4588c1a5aad3edae9d3e121685d8d1f5fddd54ba Mon Sep 17 00:00:00 2001
+From: Craig Andrews <candrews@integralblue.com>
+Date: Wed, 31 Jul 2019 10:45:01 -0400
+Subject: [PATCH] Find lld includes in LLVM_INCLUDE_DIRS
+
+Allows building against an LLVM build tree
+---
+ CMakeLists.txt | 20 ++------------------
+ 1 file changed, 2 insertions(+), 18 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 454b830..db28533 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -19,24 +19,8 @@ include_directories(${LLVM_INCLUDE_DIRS})
+ link_directories(${LLVM_LIBRARY_DIRS})
+ include_directories(${CLANG_INCLUDE_DIRS})
+ 
+-# FIXME: There is no way to directly determine the include paths for LLD when
+-# working with an LLVM build tree, but we want to avoid having to install LLVM
+-# to build Comgr. This should eventually be fixed in usptream LLD so this can
+-# be removed.
+-if(DEFINED LLVM_BUILD_MAIN_SRC_DIR)
+-  set(INTERNAL_LLD_INCLUDE_DIRS "${LLVM_BUILD_MAIN_SRC_DIR}/tools/lld/include")
+-  set(EXTERNAL_LLD_INCLUDE_DIRS "${LLVM_BUILD_MAIN_SRC_DIR}/../lld/include")
+-  if (EXISTS "${INTERNAL_LLD_INCLUDE_DIRS}"
+-      AND IS_DIRECTORY "${INTERNAL_LLD_INCLUDE_DIRS}")
+-    set(LLD_INCLUDE_DIRS "${INTERNAL_LLD_INCLUDE_DIRS}")
+-  elseif (EXISTS "${EXTERNAL_LLD_INCLUDE_DIRS}"
+-      AND IS_DIRECTORY "${EXTERNAL_LLD_INCLUDE_DIRS}")
+-    set(LLD_INCLUDE_DIRS "${EXTERNAL_LLD_INCLUDE_DIRS}")
+-  else()
+-    message(FATAL_ERROR "You are attempting to compile using an LLVM build tree, but the LLD include directory could not be located. The paths '${INTERNAL_LLD_INCLUDE_DIRS}' and '${EXTERNAL_LLD_INCLUDE_DIRS}' were tried.")
+-  endif()
+-  include_directories(${LLD_INCLUDE_DIRS})
+-endif()
++set(LLD_INCLUDE_DIRS "${LLVM_INCLUDE_DIRS}/lld")
++include_directories(${LLD_INCLUDE_DIRS})
+ 
+ find_package(AMDDeviceLibs CONFIG)
+ 
