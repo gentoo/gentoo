@@ -5402,7 +5402,7 @@ dev-python/pytest-virtualenv 1.2.11: Virtualenv fixture for py.test
 dev-python/pytest-xdist 1.23.2: Distributed testing and loop-on-failing modes
 dev-python/pytest-xprocess 0.12.1: Manage external processes across test runs
 dev-python/python-augeas 0.5.0: Python bindings for Augeas
-dev-python/python-axolotl 0.1.42-r1 0.2.3: A python module for the axolotl protocol
+dev-python/python-axolotl 0.2.3: A python module for the axolotl protocol
 dev-python/python-axolotl-curve25519 0.4.1_p2-r1: A python wrapper for the curve25519 library with ed25519 signatures
 dev-python/python-backoff 1.6.0: Function decoration for backoff and retry
 dev-python/python-barbicanclient 4.5.2 4.6.0 4.8.1: Client library for Barbican API.
