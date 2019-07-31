@@ -20,7 +20,7 @@ IUSE="system-cmark"
 
 RDEPEND=">=dev-haskell/text-1.0:=[profile?] <dev-haskell/text-1.3:=[profile?]
 	>=dev-lang/ghc-7.4.1:=
-	system-cmark? ( app-text/cmark )
+	system-cmark? ( app-text/cmark:0= )
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.14
