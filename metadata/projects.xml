@@ -2807,6 +2807,11 @@
       <name>Jonas Stein</name>
       <role>Member</role>
     </member>
+    <member>
+      <email>juippis@gentoo.org</email>
+      <name>Joonas Niilola</name>
+      <role>Member</role>
+    </member>
     <member is-lead="1">
       <email>mgorny@gentoo.org</email>
       <name>Michał Górny</name>

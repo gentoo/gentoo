@@ -1,13 +1,13 @@
 DEFINED_PHASES=compile configure install postinst postrm setup test
-DEPEND=>=dev-haskell/text-1.0:=[profile?] <dev-haskell/text-1.3:=[profile?] >=dev-lang/ghc-7.4.1:= system-cmark? ( app-text/cmark ) >=dev-haskell/cabal-1.14 test? ( >=dev-haskell/hunit-1.2 <dev-haskell/hunit-1.7 ) system-cmark? ( virtual/pkgconfig ) doc? ( || ( dev-haskell/haddock >=dev-lang/ghc-7.10.2 ) ) hscolour? ( dev-haskell/hscolour )
+DEPEND=>=dev-haskell/text-1.0:=[profile?] <dev-haskell/text-1.3:=[profile?] >=dev-lang/ghc-7.4.1:= system-cmark? ( app-text/cmark:0= ) >=dev-haskell/cabal-1.14 test? ( >=dev-haskell/hunit-1.2 <dev-haskell/hunit-1.7 ) system-cmark? ( virtual/pkgconfig ) doc? ( || ( dev-haskell/haddock >=dev-lang/ghc-7.10.2 ) ) hscolour? ( dev-haskell/hscolour )
 DESCRIPTION=Fast, accurate CommonMark (Markdown) parser and renderer
 EAPI=7
 HOMEPAGE=https://github.com/jgm/cmark-hs
 IUSE=system-cmark doc hscolour profile test
 KEYWORDS=~amd64 ~x86
 LICENSE=BSD
-RDEPEND=>=dev-haskell/text-1.0:=[profile?] <dev-haskell/text-1.3:=[profile?] >=dev-lang/ghc-7.4.1:= system-cmark? ( app-text/cmark )
+RDEPEND=>=dev-haskell/text-1.0:=[profile?] <dev-haskell/text-1.3:=[profile?] >=dev-lang/ghc-7.4.1:= system-cmark? ( app-text/cmark:0= )
 SLOT=0/0.6
 SRC_URI=mirror://hackage/packages/archive/cmark/0.6/cmark-0.6.tar.gz
 _eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	ghc-package	fac7ea2deca456f8e70b85a6ebef9e8a	haskell-cabal	b5e68c01ecdfbaa48ee638388bdc1c7c	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
-_md5_=999b193157ccdfb75f53e34e2ba852f3
+_md5_=346e63d9545e6b1d695183175ad0d9ee
