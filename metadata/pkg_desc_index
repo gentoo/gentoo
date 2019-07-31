@@ -192,7 +192,7 @@ app-admin/whowatch 1.8.5 1.8.6: Displays information about users currently logge
 app-admin/xstow 1.0.1: replacement for GNU stow with extensions
 app-admin/xtail 2.1-r1: Tail multiple logfiles at once, even if rotated
 app-admin/yaala 0.7.3-r2: Yet Another Log Analyzer
-app-antivirus/clamav 0.101.2: Clam Anti-Virus Scanner
+app-antivirus/clamav 0.101.2-r1: Clam Anti-Virus Scanner
 app-antivirus/clamav-unofficial-sigs 5.6.2: Download and install third-party clamav signatures
 app-antivirus/clamtk 6.00-r1: A graphical front-end for ClamAV
 app-arch/advancecomp 2.2_pre20190301: Recompress ZIP, PNG and MNG, considerably improving compression
@@ -6226,7 +6226,7 @@ dev-util/checkbashisms 2.19.6: Perl script to check for commonly used bash featu
 dev-util/checkstyle 7.2: Development tool to help write Java code that adheres to a coding standard
 dev-util/clazy 1.5: Compiler plugin which allows clang to understand Qt semantics
 dev-util/cloc 1.72 1.76-r1: Count Lines of Code
-dev-util/cmake 3.14.3: Cross platform Make
+dev-util/cmake 3.14.3 3.14.6: Cross platform Make
 dev-util/cmake-fedora 2.7.1: Provides cmake helper macros and targets for linux, especially fedora developers
 dev-util/cmdtest 0.30: black box tests Unix command line tools
 dev-util/cmocka 1.1.5: Unit testing framework for C
@@ -8676,7 +8676,7 @@ net-libs/libsignon-glib 1.14: GLib binding for the D-Bus API provided by signond
 net-libs/libsmi 0.4.8-r1: A Library to Access SMI MIB Information
 net-libs/libsoup 2.58.2 2.64.2: An HTTP library implementation in C
 net-libs/libsrtp 1.6.0 1.6.0-r1 2.2.0: Open-source implementation of the Secure Real-time Transport Protocol (SRTP)
-net-libs/libssh 0.8.6: Access a working SSH implementation by means of a library
+net-libs/libssh 0.8.6 0.9.0: Access a working SSH implementation by means of a library
 net-libs/libssh2 1.8.0-r1 1.8.2 1.9.0: Library implementing the SSH2 protocol
 net-libs/libtirpc 1.0.2-r1: Transport Independent RPC library (SunRPC replacement)
 net-libs/libtorrent 0.13.7-r1: BitTorrent library written in C++ for *nix
@@ -9919,7 +9919,7 @@ sys-boot/refind 0.10.4-r2: The UEFI Boot Manager by Rod Smith
 sys-boot/shim 15.5-r1: Fedora's signed UEFI shim
 sys-boot/syslinux 4.07 5.10 6.04_pre1: SYSLINUX, PXELINUX, ISOLINUX, EXTLINUX and MEMDISK bootloaders
 sys-boot/unetbootin 661: UNetbootin installs Linux/BSD distributions to a partition or USB drive
-sys-boot/woeusb 3.1.5 3.2.12: Creates windows installer on usb media from an iso image
+sys-boot/woeusb 3.1.5 3.2.12 3.3.0: Creates windows installer on usb media from an iso image
 sys-cluster/ceph 12.2.8-r1 12.2.11: Ceph distributed filesystem
 sys-cluster/cinder 13.0.5 14.0.0: Cinder is the OpenStack Block storage service, a spin out of nova-volumes
 sys-cluster/cluster-glue 1.0.11 1.0.12: Library pack for Heartbeat / Pacemaker
