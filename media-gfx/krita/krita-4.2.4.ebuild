@@ -4,7 +4,6 @@
 EAPI=7
 
 KDE_TEST="forceoptional"
-QT_MINIMAL="5.12.3"
 VIRTUALX_REQUIRED="test"
 PYTHON_COMPAT=( python3_{5,6,7} )
 inherit kde5 python-single-r1
@@ -87,7 +86,7 @@ RDEPEND="${COMMON_DEPEND}
 # bug 630508
 RESTRICT+=" test"
 
-PATCHES=( "${FILESDIR}"/${PN}-4.2.2-tests-optional.patch )
+PATCHES=( "${FILESDIR}"/${P}-tests-optional.patch )
 
 pkg_setup() {
 	python-single-r1_pkg_setup
