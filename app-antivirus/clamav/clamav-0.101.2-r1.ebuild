@@ -40,20 +40,19 @@ RDEPEND="${CDEPEND}
 DOCS=( docs/UserManual.md docs/UserManual )
 HTML_DOCS=( docs/html )
 
-#PATCHES=(
-#	"${FILESDIR}/clamav-0.100.0_autotools.patch"
-#)
+PATCHES=(
+	"${FILESDIR}/clamav-0.101.2-libxml2_pkgconfig.patch" #661328
+)
 
 pkg_setup() {
 	enewgroup clamav
 	enewuser clamav -1 -1 /dev/null clamav
 }
 
-#src_prepare() {
-#	default
-#
-#	eautoconf
-#}
+src_prepare() {
+	default
+	eautoconf
+}
 
 src_configure() {
 	use elibc_musl && append-ldflags -lfts
