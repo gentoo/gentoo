@@ -41,7 +41,8 @@ DOCS=( docs/UserManual.md docs/UserManual )
 HTML_DOCS=( docs/html )
 
 PATCHES=(
-	"${FILESDIR}/clamav-0.101.2-libxml2_pkgconfig.patch" #661328
+	"${FILESDIR}/${PN}-0.101.2-libxml2_pkgconfig.patch" #661328
+	"${FILESDIR}/${PN}-0.101.2-tinfo.patch" #670729
 )
 
 pkg_setup() {
