@@ -4,10 +4,10 @@ DEPEND=dev-libs/glib || ( dev-lang/python:3.6 dev-lang/python:3.5 >=dev-lang/pyt
 DESCRIPTION=QEMU Guest Agent (qemu-ga) for use when running inside a VM
 EAPI=7
 HOMEPAGE=https://wiki.qemu.org/Features/GuestAgent
-KEYWORDS=~amd64 ~ppc ~ppc64 ~x86 ~x86-fbsd
+KEYWORDS=amd64 ~ppc ~ppc64 x86 ~x86-fbsd
 LICENSE=GPL-2 BSD-2
 RDEPEND=dev-libs/glib
 SLOT=0
 SRC_URI=http://wiki.qemu.org/download/qemu-4.0.0.tar.xz
 _eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-any-r1	b5f01473006ccc2cd78bc3dab20fced4	python-utils-r1	08e17157a6807add7db1f8d01e7e391f	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56	udev	7752f306eec7b286d00bdb47b763e7ac
-_md5_=864fef0a17d9214e0d63135b492e11bf
+_md5_=b1df1cd62e727016623e1401312cddf7
