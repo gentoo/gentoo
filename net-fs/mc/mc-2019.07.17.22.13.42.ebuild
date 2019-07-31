@@ -58,7 +58,6 @@ src_prepare() {
 	default
 
 	pushd src/${EGO_PN} || die
-	rm go.mod || die
 
 	sed -i -e "s/time.Now().UTC().Format(time.RFC3339)/\"${VERSION}\"/"\
 		-e "s/-s //"\
@@ -76,7 +75,7 @@ src_compile() {
 	pushd src/${EGO_PN} || die
 
 	MC_RELEASE="${MY_PV}"
-	GOPATH="${S}" go build --ldflags "$(go run buildscripts/gen-ldflags.go)" -o ${PN} || die
+	GO111MODULE=on GOPATH="${S}" go build --ldflags "$(go run buildscripts/gen-ldflags.go)" -o ${PN} || die
 	popd || die
 
 }
