@@ -10,7 +10,7 @@ HOMEPAGE="http://gwave.sourceforge.net"
 SRC_URI="mirror://sourceforge/${PN}/gwave3/${P}.tar.gz"
 
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="gnuplot plotutils"
 SLOT="0"
 

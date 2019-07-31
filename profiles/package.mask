@@ -49,11 +49,6 @@ virtual/python-dnspython
 >=dev-libs/vala-common-0.45
 dev-lang/vala:0.46
 
-# Lars Wendler <polynomial-c@gentoo.org> (2019-07-27)
-# Fails to load keymaps through /etc/init.d/keymaps (from openrc) during
-# boot. Emits spurious error messages which upstream hasn't fully fixed yet.
-~sys-apps/kbd-2.1.0
-
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2019-07-26)
 # Mask 5.x version
 # It breaks hundreds of py2 ebuilds and not all deps are keyworded
