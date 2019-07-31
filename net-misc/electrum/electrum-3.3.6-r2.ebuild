@@ -6,7 +6,7 @@ EAPI="7"
 PYTHON_COMPAT=( python3_6 )
 PYTHON_REQ_USE="ncurses?"
 
-inherit desktop distutils-r1 gnome2-utils xdg-utils
+inherit desktop distutils-r1 xdg-utils
 
 MY_P="Electrum-${PV}"
 DESCRIPTION="User friendly Bitcoin client"
@@ -48,7 +48,7 @@ REQUIRED_USE="
 
 RDEPEND="${PYTHON_DEPS}
 	dev-python/aiohttp-socks[${PYTHON_USEDEP}]
-	=dev-python/aiorpcX-0.17.0[${PYTHON_USEDEP}]
+	~dev-python/aiorpcX-0.17.0[${PYTHON_USEDEP}]
 	dev-python/dnspython[${PYTHON_USEDEP}]
 	dev-python/ecdsa[${PYTHON_USEDEP}]
 	dev-python/jsonrpclib[${PYTHON_USEDEP}]
@@ -59,7 +59,6 @@ RDEPEND="${PYTHON_DEPS}
 	dev-python/requests[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
-	dev-python/tlslite[${PYTHON_USEDEP}]
 	dev-python/protobuf-python[${PYTHON_USEDEP}]
 	qrcode? ( media-gfx/zbar[v4l] )
 	qt5? (
@@ -163,16 +162,12 @@ src_install() {
 	distutils-r1_src_install
 }
 
-pkg_preinst() {
-	gnome2_icon_savelist
-}
-
 pkg_postinst() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 	xdg_desktop_database_update
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 	xdg_desktop_database_update
 }
