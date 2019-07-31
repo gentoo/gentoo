@@ -23,7 +23,7 @@ HOMEPAGE="https://www.freedesktop.org/wiki/Software/systemd"
 
 LICENSE="GPL-2 LGPL-2.1 MIT public-domain"
 SLOT="0/2"
-IUSE="acl apparmor audit build cryptsetup curl dns-over-tls elfutils +gcrypt gnuefi http idn importd +kmod libidn2 +lz4 lzma nat pam pcre policykit qrcode +resolvconf +seccomp selinux split-usr +sysv-utils test vanilla xkb"
+IUSE="acl apparmor audit build cryptsetup curl dns-over-tls elfutils +gcrypt gnuefi http idn importd +kmod +lz4 lzma nat pam pcre policykit qrcode +resolvconf +seccomp selinux split-usr +sysv-utils test vanilla xkb"
 
 REQUIRED_USE="importd? ( curl gcrypt lzma )"
 RESTRICT="!test? ( test )"
@@ -45,10 +45,7 @@ COMMON_DEPEND=">=sys-apps/util-linux-2.30:0=[${MULTILIB_USEDEP}]
 		>=net-libs/libmicrohttpd-0.9.33:0=[epoll(+)]
 		>=net-libs/gnutls-3.1.4:0=
 	)
-	idn? (
-		libidn2? ( net-dns/libidn2:= )
-		!libidn2? ( net-dns/libidn:= )
-	)
+	idn? ( net-dns/libidn2:= )
 	importd? (
 		app-arch/bzip2:0=
 		sys-libs/zlib:0=
@@ -259,6 +256,7 @@ multilib_src_configure() {
 		-Dgnu-efi=$(meson_multilib_native_use gnuefi)
 		-Defi-libdir="${ESYSROOT}/usr/$(get_libdir)"
 		-Dmicrohttpd=$(meson_multilib_native_use http)
+		-Didn=$(meson_multilib_native_use idn)
 		-Dimportd=$(meson_multilib_native_use importd)
 		-Dbzip2=$(meson_multilib_native_use importd)
 		-Dzlib=$(meson_multilib_native_use importd)
@@ -302,18 +300,6 @@ multilib_src_configure() {
 		-Dtmpfiles=$(meson_multilib)
 		-Dvconsole=$(meson_multilib)
 	)
-
-	if multilib_is_native_abi && use idn; then
-		myconf+=(
-			-Dlibidn2=$(usex libidn2 true false)
-			-Dlibidn=$(usex libidn2 false true)
-		)
-	else
-		myconf+=(
-			-Dlibidn2=false
-			-Dlibidn=false
-		)
-	fi
 
 	meson_src_configure "${myconf[@]}"
 }

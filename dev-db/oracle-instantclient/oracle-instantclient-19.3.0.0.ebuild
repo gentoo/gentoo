@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -169,9 +169,15 @@ src_unpack() {
 }
 
 src_prepare() {
+	local PATCHES=()
+	if use precomp; then
+		PATCHES+=( "${FILESDIR}"/18.3.0.0-proc-makefile.patch )
+		# Not supporting COBOL for now
+		rm -f sdk/demo/*procob*
+	fi
 	if use sdk; then
+		PATCHES+=( "${FILESDIR}"/18.3.0.0-makefile.patch )
 		rm sdk/include/ldap.h || die #299562
-		PATCHES=( "${FILESDIR}"/18.3.0.0-makefile.patch )
 	fi
 	default
 }
@@ -183,6 +189,7 @@ src_compile() { :; }
 src_install() {
 	# all content goes here without version number, bug#578402
 	local oracle_home=/usr/$(get_libdir)/oracle/client
+	local oracle_home_to_root=../../../.. # for dosym
 	local ldpath=
 
 	local ABI
@@ -219,8 +226,8 @@ src_install() {
 		# Vanilla filesystem layout does not support multilib
 		# installation, so we need to move the libs into the
 		# ABI specific libdir.  However, ruby-oci8 build system
-		# detects an instantclient along the libraries, and
-		# does expect the sdk right there.
+		# detects an instantclient along the shared libraries,
+		# and does expect the sdk right there.
 		use sdk && dosym ../sdk "${oracle_home}"/$(get_libdir)/sdk
 
 		eend $?
@@ -241,28 +248,42 @@ src_install() {
 	fi
 	if use precomp; then
 		DOCS+=( PRECOMP_README )
-		paxbins+=( sdk/{proc,procob,rtsora} )
-		insinto "${oracle_home}/precomp/admin"
-		doins precomp/admin/{pcs,pcb}cfg.cfg
+		paxbins+=( sdk/proc )
+		# Install pcscfg.cfg into /etc/oracle, as the user probably
+		# wants to add the include path for the compiler headers
+		# here and we do not want this to be overwritten.
+		insinto /etc/oracle
+		doins precomp/admin/pcscfg.cfg
+		sed -i -e "s%^sys_include=.*%sys_include=(${oracle_home}/include,${EPREFIX}/usr/include)%" \
+			"${ED}"/etc/oracle/pcscfg.cfg || die
+		dosym ../../${oracle_home_to_root}/etc/oracle/pcscfg.cfg "${oracle_home}/precomp/admin/pcscfg.cfg"
+		dosym ../.."${oracle_home}"/bin/proc /usr/bin/proc
+		# Not supporting COBOL for now
+		# paxbins+=( sdk/{procob,rtsora} )
+		# doins precomp/admin/pcbcfg.cfg
 	fi
 	if use sdk; then
 		einfo "Installing SDK ..."
-		DOCS+=( sdk/SDK_README )
+		DOCS+=( SDK_README )
 		scripts+=( sdk/ott )
 		insinto "${oracle_home}"/$(get_libdir)
 		doins sdk/ottclasses.zip
 		insinto "${oracle_home}"/sdk
 		doins -r sdk/{admin,demo,include}
-
-		# The build system in DBD::Oracle perl module would detect
-		# an instantclient along the sharedlibs in ORACLE_HOME, which
-		# we cannot provide. But it also knows Oracle eXpress Edition's
-		# layout - which we emulate enough here to let DBD::Oracle work.
+		# Some build systems simply expect ORACLE_HOME/include.
+		dosym sdk/include "${oracle_home}"/include
+		# Some build systems do not know the instant client,
+		# expecting headers in rdbms/public, see bug#669316.
+		# Additionally, some (probably older ruby-oci8) do
+		# require rdbms/public to be a real directory.
+		insinto "${oracle_home}"/rdbms/public
+		doins -r sdk/include/*
+		# Others (like the DBD::Oracle perl module) know the Oracle
+		# eXpress Edition's client, parsing an rdbms/demo/demo_xe.mk.
 		dosym ../../sdk/demo/demo.mk "${oracle_home}"/rdbms/demo/demo_xe.mk
-
-		# some build systems expect the headers here, also see bug#652096
-		dosym "${oracle_home}"/sdk/include /usr/include/oracle/${MY_PVM}/client
-
+		# And some do expect /usr/include/oracle/<ver>/client/include,
+		# querying 'sqlplus' for the version number, also see bug#652096.
+		dosym ../../../.."${oracle_home}"/sdk/include /usr/include/oracle/${MY_PVM}/client
 		eend $?
 	fi
 	if use sqlplus; then
@@ -270,7 +291,7 @@ src_install() {
 		paxbins+=( sqlplus )
 		insinto "${oracle_home}"/sqlplus/admin
 		doins glogin.sql
-		dosym "${oracle_home}"/bin/sqlplus /usr/bin/sqlplus
+		dosym ../.."${oracle_home}"/bin/sqlplus /usr/bin/sqlplus
 	fi
 	if use tools; then
 		DOCS+=( TOOLS_README )
@@ -337,6 +358,21 @@ pkg_postinst() {
 	elog "TNS_ADMIN has been set to ${EPREFIX}/etc/oracle by default,"
 	elog "put your tnsnames.ora there or configure TNS_ADMIN"
 	elog "to point to your user specific configuration."
+	if use precomp; then
+		elog ""
+		elog "The proc precompiler uses the system library headers, which in"
+		elog "turn include the headers of the used compiler."
+		elog "To make proc work, please add the compiler header path of your"
+		elog "preferred compiler to sys_include in:"
+		elog "  ${EPREFIX}/etc/oracle/pcscfg.cfg"
+		elog "Remember to update this setting when you switch or update the"
+		elog "compiler."
+		elog "For gcc, the headers are usually found in a path matching the"
+		elog "following pattern:"
+		elog "  ${EPREFIX}/usr/lib/gcc/*/*/include"
+		elog "The exact details depend on the architecture and the version of"
+		elog "the compiler to be used."
+	fi
 	ewarn "Please re-source your shell settings for ORACLE_HOME"
 	ewarn "  changes, such as: source ${EPREFIX}/etc/profile"
 }

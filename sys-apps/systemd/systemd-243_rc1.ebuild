@@ -11,19 +11,19 @@ else
 	MY_P=${PN}-${MY_PV}
 	S=${WORKDIR}/${MY_P}
 	SRC_URI="https://github.com/systemd/systemd/archive/v${MY_PV}/${MY_P}.tar.gz"
-	KEYWORDS="alpha amd64 arm arm64 ~hppa ia64 ~mips ppc ppc64 sparc x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 fi
 
 PYTHON_COMPAT=( python{3_5,3_6,3_7} )
 
-inherit bash-completion-r1 linux-info meson multilib-minimal ninja-utils pam python-any-r1 systemd toolchain-funcs udev user
+inherit bash-completion-r1 linux-info meson multilib-minimal ninja-utils pam python-any-r1 systemd toolchain-funcs udev
 
 DESCRIPTION="System and service manager for Linux"
 HOMEPAGE="https://www.freedesktop.org/wiki/Software/systemd"
 
 LICENSE="GPL-2 LGPL-2.1 MIT public-domain"
 SLOT="0/2"
-IUSE="acl apparmor audit build cryptsetup curl elfutils +gcrypt gnuefi http idn importd +kmod libidn2 +lz4 lzma nat pam pcre policykit qrcode +resolvconf +seccomp selinux split-usr ssl +sysv-utils test vanilla xkb"
+IUSE="acl apparmor audit build cryptsetup curl dns-over-tls elfutils +gcrypt gnuefi http idn importd +kmod +lz4 lzma nat pam pcre policykit qrcode +resolvconf +seccomp selinux split-usr +sysv-utils test vanilla xkb"
 
 REQUIRED_USE="importd? ( curl gcrypt lzma )"
 RESTRICT="!test? ( test )"
@@ -38,16 +38,14 @@ COMMON_DEPEND=">=sys-apps/util-linux-2.30:0=[${MULTILIB_USEDEP}]
 	audit? ( >=sys-process/audit-2:0= )
 	cryptsetup? ( >=sys-fs/cryptsetup-1.6:0= )
 	curl? ( net-misc/curl:0= )
+	dns-over-tls? ( >=net-libs/gnutls-3.5.3:0= )
 	elfutils? ( >=dev-libs/elfutils-0.158:0= )
 	gcrypt? ( >=dev-libs/libgcrypt-1.4.5:0=[${MULTILIB_USEDEP}] )
 	http? (
-		>=net-libs/libmicrohttpd-0.9.33:0=
-		ssl? ( >=net-libs/gnutls-3.1.4:0= )
+		>=net-libs/libmicrohttpd-0.9.33:0=[epoll(+)]
+		>=net-libs/gnutls-3.1.4:0=
 	)
-	idn? (
-		libidn2? ( net-dns/libidn2:= )
-		!libidn2? ( net-dns/libidn:= )
-	)
+	idn? ( net-dns/libidn2:= )
 	importd? (
 		app-arch/bzip2:0=
 		sys-libs/zlib:0=
@@ -63,8 +61,34 @@ COMMON_DEPEND=">=sys-apps/util-linux-2.30:0=[${MULTILIB_USEDEP}]
 	selinux? ( sys-libs/libselinux:0= )
 	xkb? ( >=x11-libs/libxkbcommon-0.4.1:0= )"
 
+# Newer linux-headers needed by ia64, bug #480218
+DEPEND="${COMMON_DEPEND}
+	>=sys-kernel/linux-headers-${MINKV}
+	gnuefi? ( >=sys-boot/gnu-efi-3.0.2 )
+"
+
 # baselayout-2.2 has /run
 RDEPEND="${COMMON_DEPEND}
+	acct-group/adm
+	acct-group/wheel
+	acct-group/kmem
+	acct-group/tty
+	acct-group/utmp
+	acct-group/audio
+	acct-group/cdrom
+	acct-group/dialout
+	acct-group/disk
+	acct-group/input
+	acct-group/kvm
+	acct-group/render
+	acct-group/tape
+	acct-group/video
+	acct-group/systemd-journal
+	acct-user/systemd-journal-remote
+	acct-user/systemd-coredump
+	acct-user/systemd-network
+	acct-user/systemd-resolve
+	acct-user/systemd-timesync
 	>=sys-apps/baselayout-2.2
 	selinux? ( sec-policy/selinux-base-policy[systemd] )
 	sysv-utils? ( !sys-apps/sysvinit )
@@ -78,7 +102,8 @@ RDEPEND="${COMMON_DEPEND}
 	!sys-auth/nss-myhostname
 	!<sys-kernel/dracut-044
 	!sys-fs/eudev
-	!sys-fs/udev"
+	!sys-fs/udev
+"
 
 # sys-apps/dbus: the daemon only (+ build-time lib dep for tests)
 PDEPEND=">=sys-apps/dbus-1.9.8[systemd]
@@ -86,12 +111,6 @@ PDEPEND=">=sys-apps/dbus-1.9.8[systemd]
 	>=sys-fs/udev-init-scripts-25
 	policykit? ( sys-auth/polkit )
 	!vanilla? ( sys-apps/gentoo-systemd-integration )"
-
-# Newer linux-headers needed by ia64, bug #480218
-DEPEND="
-	>=sys-kernel/linux-headers-${MINKV}
-	gnuefi? ( >=sys-boot/gnu-efi-3.0.2 )
-"
 
 BDEPEND="
 	app-arch/xz-utils:0
@@ -166,21 +185,13 @@ src_prepare() {
 
 	# Add local patches here
 	PATCHES+=(
-		"${FILESDIR}"/CVE-2019-6454/0001-Refuse-dbus-message-paths-longer-than-BUS_PATH_SIZE_.patch
-		"${FILESDIR}"/CVE-2019-6454/0002-Allocate-temporary-strings-to-hold-dbus-paths-on-the.patch
-		"${FILESDIR}"/241-version-dep.patch
-		"${FILESDIR}"/242-gcc-9.patch
-		"${FILESDIR}"/242-file-max.patch
-		"${FILESDIR}"/241-wrapper-msan-unpoinson.patch
-		"${FILESDIR}"/242-rdrand-ryzen.patch
-		"${FILESDIR}"/242-networkd-ipv6-token.patch
+		"${FILESDIR}"/243-rc1-analyze.patch
 	)
 
 	if ! use vanilla; then
 		PATCHES+=(
 			"${FILESDIR}/gentoo-Dont-enable-audit-by-default.patch"
 			"${FILESDIR}/gentoo-systemd-user-pam.patch"
-			"${FILESDIR}/gentoo-uucp-group-r1.patch"
 			"${FILESDIR}/gentoo-generator-path-r1.patch"
 		)
 	fi
@@ -240,12 +251,13 @@ multilib_src_configure() {
 		-Daudit=$(meson_multilib_native_use audit)
 		-Dlibcryptsetup=$(meson_multilib_native_use cryptsetup)
 		-Dlibcurl=$(meson_multilib_native_use curl)
+		-Ddns-over-tls=$(meson_multilib_native_use dns-over-tls)
 		-Delfutils=$(meson_multilib_native_use elfutils)
 		-Dgcrypt=$(meson_use gcrypt)
 		-Dgnu-efi=$(meson_multilib_native_use gnuefi)
-		-Defi-libdir="${EPREFIX}/usr/$(get_libdir)"
+		-Defi-libdir="${ESYSROOT}/usr/$(get_libdir)"
 		-Dmicrohttpd=$(meson_multilib_native_use http)
-		$(usex http -Dgnutls=$(meson_multilib_native_use ssl) -Dgnutls=false)
+		-Didn=$(meson_multilib_native_use idn)
 		-Dimportd=$(meson_multilib_native_use importd)
 		-Dbzip2=$(meson_multilib_native_use importd)
 		-Dzlib=$(meson_multilib_native_use importd)
@@ -259,7 +271,6 @@ multilib_src_configure() {
 		-Dqrencode=$(meson_multilib_native_use qrcode)
 		-Dseccomp=$(meson_multilib_native_use seccomp)
 		-Dselinux=$(meson_multilib_native_use selinux)
-		#-Dtests=$(meson_multilib_native_use test)
 		-Ddbus=$(meson_multilib_native_use test)
 		-Dxkbcommon=$(meson_multilib_native_use xkb)
 		# hardcode a few paths to spare some deps
@@ -290,18 +301,6 @@ multilib_src_configure() {
 		-Dtmpfiles=$(meson_multilib)
 		-Dvconsole=$(meson_multilib)
 	)
-
-	if multilib_is_native_abi && use idn; then
-		myconf+=(
-			-Dlibidn2=$(usex libidn2 true false)
-			-Dlibidn=$(usex libidn2 false true)
-		)
-	else
-		myconf+=(
-			-Dlibidn2=false
-			-Dlibidn=false
-		)
-	fi
 
 	meson_src_configure "${myconf[@]}"
 }
@@ -344,22 +343,17 @@ multilib_src_install_all() {
 
 	# Preserve empty dirs in /etc & /var, bug #437008
 	keepdir /etc/{binfmt.d,modules-load.d,tmpfiles.d}
-	keepdir /etc/systemd/{ntp-units.d,user} /var/lib/systemd
+	keepdir /etc/kernel/install.d
+	keepdir /etc/systemd/{network,user}
 	keepdir /etc/udev/{hwdb.d,rules.d}
-	keepdir /var/log/journal/remote
+	keepdir "${rootprefix}"/lib/systemd/{system-sleep,system-shutdown}
+	keepdir /usr/lib/{binfmt.d,modules-load.d}
+	keepdir /usr/lib/systemd/user-generators
+	keepdir /var/lib/systemd
+	rm -rf "${ED}"/var/log || die
 
 	# Symlink /etc/sysctl.conf for easy migration.
 	dosym ../sysctl.conf /etc/sysctl.d/99-sysctl.conf
-
-	# If we install these symlinks, there is no way for the sysadmin to remove them
-	# permanently.
-	rm -f "${ED}"/etc/systemd/system/multi-user.target.wants/systemd-networkd.service || die
-	rm -f "${ED}"/etc/systemd/system/dbus-org.freedesktop.network1.service || die
-	rm -f "${ED}"/etc/systemd/system/multi-user.target.wants/systemd-resolved.service || die
-	rm -f "${ED}"/etc/systemd/system/dbus-org.freedesktop.resolve1.service || die
-	rm -fr "${ED}"/etc/systemd/system/network-online.target.wants || die
-	rm -fr "${ED}"/etc/systemd/system/sockets.target.wants || die
-	rm -fr "${ED}"/etc/systemd/system/sysinit.target.wants || die
 
 	local udevdir=/lib/udev
 	use split-usr || udevdir=/usr/lib/udev
@@ -417,25 +411,21 @@ migrate_locale() {
 	fi
 }
 
+save_enabled_units() {
+	ENABLED_UNITS=()
+	type systemctl &>/dev/null || return
+	for x; do
+		if systemctl --quiet --root="${ROOT:-/}" is-enabled "${x}"; then
+			ENABLED_UNITS+=( "${x}" )
+		fi
+	done
+}
+
+pkg_preinst() {
+	save_enabled_units {machines,remote-{cryptsetup,fs}}.target getty@tty1.service
+}
+
 pkg_postinst() {
-	newusergroup() {
-		enewgroup "$1"
-		enewuser "$1" -1 -1 -1 "$1"
-	}
-
-	enewgroup input
-	enewgroup kvm 78
-	enewgroup render
-	enewgroup systemd-journal
-	newusergroup systemd-bus-proxy
-	newusergroup systemd-coredump
-	newusergroup systemd-journal-gateway
-	newusergroup systemd-journal-remote
-	newusergroup systemd-journal-upload
-	newusergroup systemd-network
-	newusergroup systemd-resolve
-	newusergroup systemd-timesync
-
 	systemd_update_catalog
 
 	# Keep this here in case the database format changes so it gets updated
@@ -451,6 +441,14 @@ pkg_postinst() {
 	migrate_locale
 
 	systemd_reenable systemd-networkd.service systemd-resolved.service
+
+	if [[ ${ENABLED_UNITS[@]} ]]; then
+		systemctl --root="${ROOT:-/}" enable "${ENABLED_UNITS[@]}"
+	fi
+
+	if [[ -L ${EROOT}/var/lib/systemd/timesync ]]; then
+		rm "${EROOT}/var/lib/systemd/timesync"
+	fi
 
 	if [[ -z ${ROOT} && -d /run/systemd/system ]]; then
 		ebegin "Reexecuting system manager"
