@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit pam
+inherit autotools pam
 
 if [[ ${PV} == "9999" ]] ; then
 	inherit autotools git-r3
@@ -35,6 +35,10 @@ BDEPEND="
 	test? ( dev-libs/check )
 "
 
+PATCHES=(
+	"${FILESDIR}/${PN}-2.2.0-cflags.patch" #691142
+)
+
 src_unpack() {
 	if [[ ${PV} == "9999" ]] ; then
 		git-r3_src_unpack
@@ -52,9 +56,7 @@ src_unpack() {
 
 src_prepare() {
 	default
-	if [[ ${PV} == "9999" ]] ; then
-		eautoreconf
-	fi
+	eautoreconf
 }
 
 src_configure() {
