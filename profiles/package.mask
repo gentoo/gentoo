@@ -29,6 +29,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Brian Evans <grknight@gentoo.org> (2019-07-31)
+# MySQL 5.5 will no longer receive updates from Oracle
+# It may or may not have unaccounced security vulnerabilities
+# Please upgrade to 5.6 or use dev-db/mariadb
+# Removal in 30 days
+=dev-db/mysql-5.5*
+
 # Miroslav Šulc <fordfrog@gentoo.org> (2019-07-30)
 # Depends on >=virtual/{jdk,jre}-11 which is masked
 =www-servers/tomcat-9.0.22
