@@ -3,7 +3,9 @@
 
 EAPI=6
 
-inherit eutils perl-module
+DIST_TEST="do"
+
+inherit eutils perl-module virtualx
 
 DESCRIPTION="Scan documents, perform OCR, produce PDFs and DjVus"
 HOMEPAGE="http://gscan2pdf.sourceforge.net/"
@@ -12,9 +14,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.xz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-
-# OCR tests fail with tesseract[opencl], not fixed by addpredict
-RESTRICT="test"
+IUSE="test"
 
 RDEPEND="
 	dev-perl/Config-General
@@ -46,6 +46,22 @@ RDEPEND="
 	media-gfx/sane-backends
 	media-libs/tiff"
 
+DEPEND="test? (
+		${RDEPEND}
+		dev-perl/Sub-Override
+		media-libs/fontconfig
+
+		app-text/djvu[tiff]
+		app-text/poppler[utils]
+		app-text/tesseract[-opencl,osd,tiff]
+		app-text/unpaper
+		media-gfx/imagemagick[djvu,png,tiff,perl]
+		media-gfx/sane-backends[sane_backends_test]
+		media-gfx/sane-frontends
+	)"
+
+PERL_RM_FILES=( t/{90_MANIFEST,91_critic,99_pod}.t )
+
 mydoc="History"
 
 pkg_postinst() {
@@ -56,4 +72,16 @@ pkg_postinst() {
 	optfeature "scan post-processing" app-text/unpaper
 	optfeature "automatic document feeder support" media-gfx/sane-frontends
 	optfeature "sending PDFs as email attachments" x11-misc/xdg-utils
+}
+
+src_test(){
+	local confdir="${HOME}/.config/ImageMagick"
+	mkdir -p "${confdir}" || die
+	cat > "${confdir}/policy.xml" <<-EOT || die
+		<policymap>
+			<policy domain="coder" rights="read|write" pattern="PDF" />
+			<policy domain="coder" rights="read" pattern="PS" />
+		</policymap>
+	EOT
+	virtx perl-module_src_test
 }
