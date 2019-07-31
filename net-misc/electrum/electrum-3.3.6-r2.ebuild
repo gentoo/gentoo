@@ -110,12 +110,10 @@ src_prepare() {
 
 	# And install requested ones...
 	for gui in  \
-		$(usex qt5      qt   '')  \
+		$(usex !qt5     qt   '')  \
 	; do
-		setup_py_gui="${setup_py_gui}'electrum_gui.${gui}',"
+		sed -i -e "/electrum\.gui\.${gui}/d" setup.py || die
 	done
-
-	sed -i "s/'electrum_gui\\.qt',/${setup_py_gui}/" setup.py || die
 
 	local bestgui
 	if use qt5; then
