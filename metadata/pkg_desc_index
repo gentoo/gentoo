@@ -7906,7 +7906,7 @@ media-plugins/vdr-extrecmenu 1.2.2-r2 1.2.4: VDR Plugin: Extended recordings men
 media-plugins/vdr-femon 2.0.4: VDR Plugin: DVB Frontend Status Monitor (signal strengt/noise)
 media-plugins/vdr-fepg 0.4.1: VDR plugin: show epg of multiple channels graphically
 media-plugins/vdr-freecell 0.0.2-r3: VDR plugin: play 'Freecell' on the On Screen Display
-media-plugins/vdr-fritzbox 1.5.3 1.5.3-r1: VDR Plugin: Inform about incoming phone-calls and use the fritz!box phonebook
+media-plugins/vdr-fritzbox 1.5.3-r1: VDR Plugin: Inform about incoming phone-calls and use the fritz!box phonebook
 media-plugins/vdr-lcr 0.0.9 0.0.9-r1: VDR Plugin: informe about Least Cost Routing (LCR)
 media-plugins/vdr-live 0.3.0_p20130504-r1: VDR Plugin: Web Access To Settings
 media-plugins/vdr-mailbox 0.7.0-r1: VDR plugin: MailBox provides access to multiple e-mail accounts
@@ -8276,7 +8276,7 @@ media-video/ttcut 0.19.6_p1: Tool for cutting MPEG files especially for removing
 media-video/ushare 1.1a-r8: uShare is a UPnP (TM) A/V & DLNA Media Server
 media-video/vamps 0.99.2 0.99.2-r1: Very fast requantisizing tool for backup DVDs
 media-video/vcdimager 0.7.24 2.0.1: GNU VCDimager
-media-video/vdr 2.0.6-r1 2.2.0-r1 2.2.0-r3: Video Disk Recorder - turns a pc into a powerful set top box for DVB
+media-video/vdr 2.2.0-r3: Video Disk Recorder - turns a pc into a powerful set top box for DVB
 media-video/vdr2jpeg 0.1.9-r1 0.2.0: Addon needed for XXV - WWW Admin for the Video Disk Recorder
 media-video/vdrtools-genindex 0.1.3-r1: VDR: genindex Script
 media-video/vlc 3.0.6-r1 3.0.7.1: Media player and framework with support for most multimedia files and streaming
@@ -9220,7 +9220,7 @@ sci-electronics/gnucap 0.35.20091207-r1: GNUCap is the GNU Circuit Analysis Pack
 sci-electronics/gresistor 0.0.2: Translate a resistor color codes into a readable value
 sci-electronics/gspiceui 1.1.0: GUI frontend for Ngspice and Gnucap
 sci-electronics/gtkwave 3.3.68: A wave viewer for LXT, LXT2, VZT, GHW and standard Verilog VCD/EVCD files
-sci-electronics/gwave 20090213-r1 20190116: Analog waveform viewer for SPICE-like simulations
+sci-electronics/gwave 20190116: Analog waveform viewer for SPICE-like simulations
 sci-electronics/iverilog 0.9.6: A Verilog simulation and synthesis tool
 sci-electronics/kicad 4.0.7: Electronic Schematic and PCB design tools.
 sci-electronics/klayout 0.25.6: Viewer and editor for GDS and OASIS integrated circuit layouts
@@ -9300,7 +9300,7 @@ sci-libs/itpp 4.3.1-r1: C++ library of mathematical, signal processing and commu
 sci-libs/keras-applications 1.0.7: Keras deep learning library reference implementations of deep learning models
 sci-libs/keras-preprocessing 1.0.9: Easy data preprocessing and data augmentation for deep learning models
 sci-libs/lapack-reference 3.2.1-r4: FORTRAN reference implementation of LAPACK Linear Algebra PACKage
-sci-libs/libcerf 1.4 1.5: Efficient and accurate implementation of complex error functions
+sci-libs/libcerf 1.5: Efficient and accurate implementation of complex error functions
 sci-libs/libctl 3.1: Guile-based library for scientific simulations
 sci-libs/libdap 3.18.1: Implementation of a C++ SDK for DAP 2.0 and 3.2
 sci-libs/libgeotiff 1.4.1-r1: Library for reading TIFF files with embedded tags for geographic information
