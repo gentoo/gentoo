@@ -22,6 +22,7 @@
 		Currently RDP, VNC, SPICE, NX, XDMCP and SSH are supported.
 	</longdescription>
 	<use>
+		<flag name="kwallet">Enable KDE Wallet plugin</flag>
 		<flag name="spice">Support connecting to SPICE-enabled virtual machines</flag>
 		<flag name="ssh">Enable support for SSH/SFTP protocol</flag>
 		<flag name="telepathy">Enable telepathy support</flag>
