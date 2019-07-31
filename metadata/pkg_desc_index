@@ -4587,6 +4587,9 @@ dev-python/WSME 0.8.0 0.9.1 0.9.2 0.9.3: Simplify the writing of REST APIs, and 
 dev-python/absl-py 0.7.1: Abseil Python Common Libraries
 dev-python/addons 0.7: Dynamically extend other objects (formerly ObjectRoles)
 dev-python/aioeventlet 0.5.1-r1: asyncio event loop scheduling callbacks in eventlet
+dev-python/aiohttp 3.5.4: http client/server for asyncio
+dev-python/aiohttp-socks 0.2.2: SOCKS proxy connector for aiohttp
+dev-python/aiorpcX 0.17.0: Generic async RPC implementation, including JSON-RPC
 dev-python/aiotest 0.3: Test suite for an implementation of asyncio (PEP 3156)
 dev-python/alabaster 0.7.9: A configurable sidebar-enabled Sphinx theme
 dev-python/alembic 0.9.3 0.9.7 1.0.8: database migrations tool, written by the author of SQLAlchemy
@@ -4613,6 +4616,8 @@ dev-python/astor 0.5: Read/rewrite/write Python ASTs
 dev-python/astroid 1.4.8: Abstract Syntax Tree for logilab packages
 dev-python/astropy 1.2.1 1.3.3: Core functionality for performing astrophysics with Python
 dev-python/astropy-helpers 1.2 1.3.1: Helpers for Astropy and Affiliated packages
+dev-python/async_generator 1.10: Making it easy to write async iterators in Python 3.5
+dev-python/async_timeout 3.0.1: Timeout context manager for asyncio programs
 dev-python/atom 0.4.1: Memory efficient Python objects
 dev-python/atomicwrites 1.1.5-r2 1.1.5-r3: Atomic file writes
 dev-python/attrs 18.2.0: Attributes without boilerplate
@@ -4651,6 +4656,7 @@ dev-python/blaze 0.10.2 0.11.3: Next generation Python numpy
 dev-python/bleach 2.1.3 3.0.2: an easy whitelist-based HTML-sanitizing tool
 dev-python/blessings 1.6-r1: A thin, practical wrapper around terminal coloring, styling, and positioning
 dev-python/blinker 1.4: Fast, simple object-to-object and broadcast signaling
+dev-python/blockdiag 1.5.4: Generate block-diagram image from text
 dev-python/blosc 1.2.8 1.5.1: High performance compressor optimized for binary data
 dev-python/bokeh 0.11.1 0.12.6: Statistical and interactive HTML plots for Python
 dev-python/booleanOperations 0.8.0: Boolean operations on paths
@@ -4660,6 +4666,7 @@ dev-python/botocore 1.12.4-r1 1.12.122: Low-level, data-driven core of boto 3.
 dev-python/bottle 0.12.12: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 1.0.0 1.2.1: Fast NumPy array functions written in Cython
 dev-python/bpython 0.17.1: Syntax highlighting and autocompletion for the Python interpreter
+dev-python/brotlipy 0.7.0: Python binding to the Brotli library
 dev-python/brython 3.7.0: A Python 3 implementation for client-side web programming
 dev-python/bsddb3 6.1.1 6.2.4: Python bindings for Berkeley DB
 dev-python/buzhug 1.8-r1: Fast, pure-Python database engine
@@ -4946,6 +4953,7 @@ dev-python/hypothesis 3.6.0-r1 3.59.1: A library for property based testing
 dev-python/icalendar 3.9.2: Package used for parsing and generating iCalendar files (RFC 2445)
 dev-python/id3-py 1.2-r1: Module for manipulating ID3 tags in Python
 dev-python/idna 2.5: Internationalized Domain Names in Applications (IDNA)
+dev-python/idna-ssl 1.1.0: Patch ssl.match_hostname for Unicode(idna) domains support
 dev-python/ijson 2.3: Iterative JSON parser with a Pythonic interface
 dev-python/imagesize 0.7.1: Pure Python module for getting image size from png/jpeg/jpeg2000/gif files
 dev-python/imapclient 0.13: easy-to-use, pythonic, and complete IMAP client library
@@ -5383,6 +5391,7 @@ dev-python/pysvn 1.8.0: Object-oriented python bindings for subversion
 dev-python/pytables 3.4.4: Hierarchical datasets for Python
 dev-python/pyte 0.5.2-r2: Simple VTXXX-compatible terminal emulator
 dev-python/pytest 3.10.1: Simple powerful testing with Python
+dev-python/pytest-aiohttp 0.3.0: pytest plugin for aiohttp support
 dev-python/pytest-cache 1.0-r1: mechanisms for caching across test runs
 dev-python/pytest-catchlog 1.2.2: py.test plugin to catch log messages, fork of pytest-capturelog
 dev-python/pytest-cov 2.3.1: py.test plugin for coverage reporting
@@ -5578,16 +5587,21 @@ dev-python/soya 0.15_rc1-r1: A high-level 3D engine for Python, designed with ga
 dev-python/sparql-wrapper 1.7.6 1.8.0: Wrapper around a SPARQL service
 dev-python/speaklater 1.3-r1: Lazy strings for Python
 dev-python/sphinx 1.2.2-r1 1.7.5-r1: Python documentation generator
+dev-python/sphinx-aiohttp-theme 0.1.5: Sphinx theme for aiohttp
 dev-python/sphinx-better-theme 0.1.5: A nice-looking, customizable theme for Sphinx
 dev-python/sphinx-bootstrap-theme 0.4.9 0.6.5: Sphinx theme integrates the Bootstrap CSS / JavaScript framework
 dev-python/sphinx-gallery 0.1.12: Sphinx extension to automatically generate an examples gallery
 dev-python/sphinx-py3doc-enhanced-theme 2.3.2: Enhanced Sphinx theme (based on Python 3 docs)
+dev-python/sphinx-testing 1.0.1: Testing utility classes and functions for Sphinx extensions
 dev-python/sphinx_celery 1.3.1: Celery Sphinx Theme and Utilities
 dev-python/sphinx_rtd_theme 0.1.9 0.2.4: ReadTheDocs.org theme for Sphinx
+dev-python/sphinxcontrib-asyncio 0.2.0-r2: sphinx extension to support coroutines in markup
+dev-python/sphinxcontrib-blockdiag 1.5.5-r2: A sphinx extension for embedding block diagrams using blockdiag
 dev-python/sphinxcontrib-github-alt 1.0: Link to GitHub issues, pull requests, commits and users from Sphinx docs
 dev-python/sphinxcontrib-googleanalytics 0.1-r1: Sphinx extension googleanalytics
 dev-python/sphinxcontrib-httpdomain 1.4.0 1.5.0: Extension providing a Sphinx domain for describing RESTful HTTP APIs
 dev-python/sphinxcontrib-issuetracker 0.11-r1: Extension to sphinx to create links to issue trackers
+dev-python/sphinxcontrib-newsfeed 0.1.4: News Feed extension for Sphinx
 dev-python/sphinxcontrib-programoutput 0.8 0.11: Extension to sphinx to include program output
 dev-python/sphinxcontrib-spelling 2.1.2: Sphinx spelling extension
 dev-python/sphinxcontrib-websupport 1.1.0: Sphinx websupport extension
@@ -5648,6 +5662,7 @@ dev-python/traitlets 4.3.2: A configuration system for Python applications
 dev-python/translate-toolkit 2.0.0: Toolkit to convert between many translation formats
 dev-python/translationstring 1.3: Utility library for i18n relied on by various Repoze packages
 dev-python/trollius 2.1: A port of the Tulip project (asyncio module, PEP3156)
+dev-python/trustme 0.5.0: #1 quality TLS certs while you wait, for the discerning tester
 dev-python/ttfquery 1.0.5-r1: Font metadata and glyph outline extraction utility library
 dev-python/ttystatus 0.35: Terminal progress bar and status output for command line
 dev-python/tvdb_api 1.9 1.10_pre20150406-r1: Python interface to thetvdb.com API
@@ -5667,6 +5682,7 @@ dev-python/twython 3.3.0: An easy (and up to date) way to access Twitter data wi
 dev-python/txAMQP 0.6.2: Python library for communicating with AMQP peers using Twisted
 dev-python/txaio 2.7.1: Compatibility API between asyncio/Twisted/Trollius
 dev-python/typing 3.6.2-r1: Type Hints for Python
+dev-python/typing-extensions 3.7.4: Type Hint extensions from Python 3.7 backported to 3.5/3.6
 dev-python/tzlocal 1.2: tzinfo object for the local timezone
 dev-python/u-msgpack 2.4.1: A portable, lightweight MessagePack serializer and deserializer
 dev-python/ufoLib 3.0.0: A low-level UFO reader and writer
@@ -8276,7 +8292,7 @@ media-video/ttcut 0.19.6_p1: Tool for cutting MPEG files especially for removing
 media-video/ushare 1.1a-r8: uShare is a UPnP (TM) A/V & DLNA Media Server
 media-video/vamps 0.99.2 0.99.2-r1: Very fast requantisizing tool for backup DVDs
 media-video/vcdimager 0.7.24 2.0.1: GNU VCDimager
-media-video/vdr 2.2.0-r3: Video Disk Recorder - turns a pc into a powerful set top box for DVB
+media-video/vdr 2.0.6-r1 2.2.0-r3: Video Disk Recorder - turns a pc into a powerful set top box for DVB
 media-video/vdr2jpeg 0.1.9-r1 0.2.0: Addon needed for XXV - WWW Admin for the Video Disk Recorder
 media-video/vdrtools-genindex 0.1.3-r1: VDR: genindex Script
 media-video/vlc 3.0.6-r1 3.0.7.1: Media player and framework with support for most multimedia files and streaming
@@ -8829,7 +8845,7 @@ net-misc/drive 0.3.9.1: Google Drive client for the commandline
 net-misc/dropbear 2017.75: small SSH 2 client/server designed for small memory environments
 net-misc/dropbox-cli 1-r1 1.6.0 1.6.0-r1: Cli interface for dropbox (python), part of nautilus-dropbox
 net-misc/efax 0.9a-r4: A simple fax program for single-user systems
-net-misc/electrum 3.1.3-r1: User friendly Bitcoin client
+net-misc/electrum 3.1.3-r1 3.3.6-r2: User friendly Bitcoin client
 net-misc/fakeidentd 2.6-r1: A static, secure identd. One source file only!
 net-misc/freerdp 2.0.0_rc2-r1 2.0.0_rc4: Free implementation of the Remote Desktop Protocol
 net-misc/gcap 0.1.1-r1: Command line tool for downloading Youtube closed captions
@@ -9811,7 +9827,7 @@ sys-apps/shadow 4.6: Utilities to deal with user accounts
 sys-apps/smartmontools 7.0-r1: Tools to monitor storage systems to provide advanced warning of disk degradation
 sys-apps/syscriptor 1.5.15: display misc information about your hardware
 sys-apps/syslog-notify 0.2: Notifications for syslog entries via libnotify
-sys-apps/systemd 241-r4 242-r6: System and service manager for Linux
+sys-apps/systemd 242-r6: System and service manager for Linux
 sys-apps/systemd-readahead 216: Split of readahead systemd implementation
 sys-apps/sysvinit 2.93: /sbin/init - parent of all processes
 sys-apps/tcp-wrappers 7.6.22-r1: TCP Wrappers
