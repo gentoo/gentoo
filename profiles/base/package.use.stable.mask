@@ -4,6 +4,11 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
+# Michał Górny <mgorny@gentoo.org> (2019-07-31)
+# Freshly added test dependency for a test-restricted package.  Mask
+# the flag to avoid stabilizing it for the time being.
+dev-python/aiohttp-socks test
+
 # Kent Fredric <kentnl@gentoo.org> (2019-07-30)
 # These features require dev-perl/GD, which currently can't be
 # considered stable due to serious defects upstream. Bug #661634
