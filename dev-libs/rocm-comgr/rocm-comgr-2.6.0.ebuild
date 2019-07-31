@@ -19,6 +19,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-find-clang.patch"
 	"${FILESDIR}/${P}-find-lld-includes.patch"
 	"${FILESDIR}/${P}-dependencies.patch"
+	"${FILESDIR}/${P}-unbundle-yaml-cpp.patch"
 )
 
 DESCRIPTION="Radeon Open Compute Code Object Manager"
@@ -27,12 +28,12 @@ LICENSE="MIT"
 SLOT="0/$(ver_cut 1-2)"
 
 RDEPEND="dev-libs/rocm-device-libs
-	dev-cpp/yaml-cpp
-	sys-devel/llvm-roc"
+	dev-cpp/yaml-cpp:=
+	sys-devel/llvm-roc:="
 DEPEND="${RDEPEND}"
 
 src_prepare() {
-#	rm -rf yaml-cpp || die
+	rm -rf yaml-cpp || die
 	cmake-utils_src_prepare
 }
 
