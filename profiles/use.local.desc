@@ -1812,8 +1812,6 @@ dev-perl/DBD-mysql:embedded - Support embedded server (libmysqld)
 dev-perl/DBD-mysql:ssl - Compile in support for SSL connections via libmysqlclient
 dev-perl/File-HomeDir:xdg - Ensure XDG Semantics for returned paths via x11-misc/xdg-user-dirs
 dev-perl/File-Which:pwhich - Install dev-perl/App-pwhich which used to be a part of this package
-dev-perl/GD:animgif - Enable animated gif support
-dev-perl/GD:fcgi - Build for FastCGI compatibility via dev-libs/fcgi instead of using PerlIO
 dev-perl/Graphics-ColorNames:recommended - Install recommended support modules
 dev-perl/HTML-Mason:modperl - Enable www-apache/mod_perl support
 dev-perl/HTTP-Entity-Parser:xs - Install C-Based dependieces for faster performance
