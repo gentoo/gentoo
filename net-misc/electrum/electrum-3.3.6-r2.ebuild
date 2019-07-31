@@ -59,7 +59,6 @@ RDEPEND="${PYTHON_DEPS}
 	dev-python/requests[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
-	dev-python/tlslite[${PYTHON_USEDEP}]
 	dev-python/protobuf-python[${PYTHON_USEDEP}]
 	qrcode? ( media-gfx/zbar[v4l] )
 	qt5? (
