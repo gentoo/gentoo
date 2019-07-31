@@ -1,0 +1,63 @@
+https://github.com/RadeonOpenCompute/ROCm-CompilerSupport/pull/19
+
+--- comgr/CMakeLists.old	2019-07-19 17:19:26.080276421 +0200
++++ comgr/CMakeLists.txt	2019-07-19 18:17:25.780163592 +0200
+@@ -185,7 +185,11 @@
+ include_directories(./yaml-cpp/include)
+ 
+ set(CLANG_LIBS
+-  clangFrontendTool)
++  clangFrontendTool
++  clangFrontend
++  clangBasic
++  clangDriver
++  clangSerialization)
+ 
+ set(LLD_LIBS
+   lldELF
+@@ -193,8 +197,19 @@
+ 
+ llvm_map_components_to_libnames(LLVM_LIBS
+   ${LLVM_TARGETS_TO_BUILD}
++  Option
+   DebugInfoDWARF
+-  Symbolize)
++  Symbolize
++  Support
++  Object
++  BitWriter
++  MC
++  MCParser
++  MCDisassembler
++  Core
++  IRReader
++  CodeGen
++  Linker)
+ 
+ target_link_libraries(amd_comgr
+   PUBLIC
+@@ -203,8 +218,8 @@
+     ${AMD_COMGR_PRIVATE_LINKER_OPTIONS}
+     yaml-cpp
+     ${CLANG_LIBS}
+-    ${LLD_LIBS}
+     ${LLVM_LIBS}
++    ${LLD_LIBS}
+ )
+ 
+ if (NOT UNIX)
+@@ -238,3 +253,14 @@
+ if (NOT CPack_CMake_INCLUDED)
+   include(CPack)
+ endif()
++
++MESSAGE(STATUS "<<< Gentoo configuration >>>
++Build type      ${CMAKE_BUILD_TYPE}
++Install path    ${CMAKE_INSTALL_PREFIX}
++Compiler flags:
++C               ${CMAKE_C_FLAGS}
++C++             ${CMAKE_CXX_FLAGS}
++Linker flags:
++Executable      ${CMAKE_EXE_LINKER_FLAGS}
++Module          ${CMAKE_MODULE_LINKER_FLAGS}
++Shared          ${CMAKE_SHARED_LINKER_FLAGS}\n")
