@@ -11,7 +11,7 @@ MY_PV="${MY_PV//_rc/rc}"
 MY_PV="${MY_PV//_p/-P}"
 MY_P="${PN}-${MY_PV}"
 DESCRIPTION="ISC Dynamic Host Configuration Protocol (DHCP) client/server"
-HOMEPAGE="http://www.isc.org/products/DHCP"
+HOMEPAGE="https://www.isc.org/dhcp"
 SRC_URI="ftp://ftp.isc.org/isc/dhcp/${MY_P}.tar.gz
 	ftp://ftp.isc.org/isc/dhcp/${MY_PV}/${MY_P}.tar.gz"
 
