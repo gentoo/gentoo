@@ -981,7 +981,6 @@ app-misc/cdargs 1.35-r2: Bookmarks and browser for the shell builtin cd command
 app-misc/cdcat 0.3-r1: Simple yet effective CD indexing program
 app-misc/cdircmp 0.3-r2: Compare directories and select files to copy
 app-misc/cdspeed 0.4-r2: Change the speed of your CD drive
-app-misc/cfiles 1.5: A ncurses file manager written in C with vim like keybindings
 app-misc/chkcrontab 1.6 1.7: A tool to detect crontab errors
 app-misc/clockywock 0.3.1a: ncurses based analog clock
 app-misc/cmatrix 1.2a-r3: An ncurses based app to show a scrolling screen from the Matrix
@@ -7550,7 +7549,7 @@ media-libs/libaacplus 2.0.2-r2 2.0.2-r3: HE-AAC+ v2 library, based on the refere
 media-libs/libaacs 0.9.0: Open implementation of the Advanced Access Content System (AACS) specification
 media-libs/libafterimage 1.20-r2 1.20-r3: Afterstep's standalone generic image manipulation library
 media-libs/libao 1.2.2: The Audio Output library
-media-libs/libaom 1.0.0-r1 1.0.0-r2: Alliance for Open Media AV1 Codec SDK
+media-libs/libaom 1.0.0-r2: Alliance for Open Media AV1 Codec SDK
 media-libs/libart_lgpl 2.3.21-r3: A LGPL version of libart
 media-libs/libass 0.14.0: Library for SSA/ASS subtitles rendering
 media-libs/libbdplus 0.1.2: Blu-ray library for BD+ decryption
@@ -8518,7 +8517,7 @@ net-fs/curlftpfs 0.9.2-r3: File system for accessing ftp hosts based on FUSE
 net-fs/davfs2 1.5.4: Linux FUSE (or coda) driver that allows you to mount a WebDAV resource
 net-fs/libnfs 2.0.0: Client library for accessing NFS shares over a network
 net-fs/ncpfs 2.2.6-r3: Provides Access to Netware services using the NCP protocol
-net-fs/netatalk 3.1.10 3.1.12: Open Source AFP server
+net-fs/netatalk 3.1.12: Open Source AFP server
 net-fs/nfs-utils 2.3.3: NFS client and server daemons
 net-fs/openafs 1.6.22.1: The OpenAFS distributed file system
 net-fs/s3fs 1.80: Amazon S3 mounting via fuse
