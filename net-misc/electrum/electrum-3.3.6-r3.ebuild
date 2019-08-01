@@ -16,20 +16,9 @@ SRC_URI="https://download.electrum.org/${PV}/${MY_P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="audio_modem cli coldcard cosign digitalbitbox email greenaddress_it ncurses qrcode +qt5 safe_t sync revealer trustedcoin_com vkb"
+IUSE="cli ncurses qrcode +qt5"
 
-REQUIRED_USE="
-	|| ( cli ncurses qt5 )
-	audio_modem? ( qt5 )
-	cosign? ( qt5 )
-	digitalbitbox? ( qt5 )
-	email? ( qt5 )
-	greenaddress_it? ( qt5 )
-	qrcode? ( qt5 )
-	sync? ( qt5 )
-	trustedcoin_com? ( qt5 )
-	vkb? ( qt5 )
-"
+REQUIRED_USE="|| ( cli ncurses qt5 )"
 
 RDEPEND="${PYTHON_DEPS}
 	dev-python/aiohttp-socks[${PYTHON_USEDEP}]
@@ -91,30 +80,6 @@ src_prepare() {
 		bestgui=stdio
 	fi
 	sed -i 's/^\([[:space:]]*\)\(config_options\['\''cwd'\''\] = .*\)$/\1\2\n\1config_options.setdefault("gui", "'"${bestgui}"'")\n/' ${PN}/${PN} || die
-
-	local plugin
-	# trezor requires python trezorlib module
-	# keepkey requires trezor
-	for plugin in  \
-		$(usex audio_modem     '' audio_modem          ) \
-		$(usex coldcard        '' coldcard             ) \
-		$(usex cosign          '' cosigner_pool        ) \
-		$(usex digitalbitbox   '' digitalbitbox        ) \
-		$(usex email           '' email_requests       ) \
-		$(usex greenaddress_it '' greenaddress_instant ) \
-		hw_wallet \
-		ledger \
-		keepkey \
-		$(usex safe_t          '' safe_t               ) \
-		$(usex sync            '' labels               ) \
-		$(usex revealer        '' revealer             ) \
-		trezor  \
-		$(usex trustedcoin_com '' trustedcoin          ) \
-		$(usex vkb             '' virtualkeyboard      ) \
-	; do
-		rm -r ${PN}/plugins/"${plugin}"* || die
-		sed -i "/${plugin}/d" setup.py || die
-	done
 
 	eapply_user
 
