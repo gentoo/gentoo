@@ -38,7 +38,7 @@ RDEPEND="${PYTHON_DEPS}
 	qt5? (
 		dev-python/PyQt5[gui,widgets,${PYTHON_USEDEP}]
 	)
-	ncurses? ( dev-lang/python )
+	ncurses? ( $(python_gen_impl_dep 'ncurses') )
 "
 
 S="${WORKDIR}/${MY_P}"
