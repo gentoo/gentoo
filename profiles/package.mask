@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (2019-08-01)
+# Last touched over 3 years ago, broken tests,
+# fails with boost 1.70, removal in 30 days.
+# Bug #655886, #690704
+dev-python/pgmagick
+
 # Brian Evans <grknight@gentoo.org> (2019-07-31)
 # MySQL 5.5 will no longer receive updates from Oracle
 # It may or may not have unaccounced security vulnerabilities
