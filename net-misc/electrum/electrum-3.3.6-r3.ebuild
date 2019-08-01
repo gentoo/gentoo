@@ -45,7 +45,6 @@ S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
 	eapply "${FILESDIR}/3.1.2-no-user-root.patch"
-	eapply "${FILESDIR}/3.2.3-pip-optional-pkgs.patch"
 	eapply "${FILESDIR}/3.3.2-desktop.patch"
 
 	# Prevent icon from being installed in the wrong location
