@@ -1,6 +1,10 @@
 # Copyright 1999-2019 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Aaron Bauman (2019-08-01)
+# app-text/docbook2X fails test
+dev-cpp/libcmis man
+
 # Aaron Bauman (2019-07-29)
 # no ocamlopt stuff here...
 kde-apps/kalzium solver

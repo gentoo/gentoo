@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>lillyjsm@gmail.com</email>
+		<name>Jake Lilly</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<use>
+		<flag name="playerctl">
+			Uses <pkg>media-sound/playerctl</pkg> to retrieve the name of the currently 
+			played song
+		</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">geommer/yabar</remote-id>
+	</upstream>
+</pkgmetadata>
