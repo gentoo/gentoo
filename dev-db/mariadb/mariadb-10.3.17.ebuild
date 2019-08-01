@@ -265,7 +265,7 @@ src_prepare() {
 
 	local plugin
 	local server_plugins=( handler_socket auth_socket feedback metadata_lock_info
-				locale_info qc_info server_audit sql_errlog )
+				locale_info qc_info server_audit sql_errlog auth_ed25519 )
 	local test_plugins=( audit_null auth_examples daemon_example fulltext
 				debug_key_management example_key_management versioning )
 	if ! use server; then # These plugins are for the server
@@ -356,6 +356,7 @@ src_configure(){
 		-DWITHOUT_CLIENTLIBS=YES
 		-DCLIENT_PLUGIN_DIALOG=OFF
 		-DCLIENT_PLUGIN_AUTH_GSSAPI_CLIENT=OFF
+		-DCLIENT_PLUGIN_CLIENT_ED25519=OFF
 		-DCLIENT_PLUGIN_MYSQL_CLEAR_PASSWORD=STATIC
 		-DCLIENT_PLUGIN_CACHING_SHA2_PASSWORD=OFF
 	)
