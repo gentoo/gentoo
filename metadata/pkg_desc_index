@@ -7613,7 +7613,7 @@ media-libs/libkate 0.4.1-r3: Codec for karaoke and text encapsulation for Ogg
 media-libs/liblastfm 1.1.0_pre20150206: Collection of libraries to integrate Last.fm services
 media-libs/libldac 2.0.2-r1: LDAC codec library from AOSP
 media-libs/liblingoteach 0.2.3: A library to support lingoteach-ui and for generic lesson development
-media-libs/liblo 0.29 0.30: Lightweight OSC (Open Sound Control) implementation
+media-libs/liblo 0.30: Lightweight OSC (Open Sound Control) implementation
 media-libs/liblqr 0.4.2-r1: An easy to use C/C++ seam carving library
 media-libs/liblrdf 0.6.1: Library for manipulation of RDF files in LADSPA plugins
 media-libs/liblscp 0.6.0: C++ library for the Linux Sampler control protocol
