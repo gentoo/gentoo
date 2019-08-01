@@ -661,12 +661,18 @@ src_test() {
 		_disable_test  "$t" "False positive due to varying policies"
 	done
 
-	for t in main.mysql_client_test main.mysql_client_test_nonblock \
+	for t in main.mysql_client_test main.mysql_client_test_nonblock main.mysql \
 		main.mysql_client_test_comp rpl.rpl_extra_col_master_myisam ; do
 			_disable_test  "$t" "False positives in Gentoo"
 	done
 
+	for t in funcs_1.is_columns_mysql main.gis_notembedded main.information_schema \
+		main.mysql_upgrade main.system_mysql_db  ; do
+			_disable_test  "$t" "Failure for difference between latin1 and utf-8"
+	done
+
 	_disable_test main.plugin_auth "Needs client libraries built"
+	_disable_test plugins.auth_ed25519 "Needs client libraries built"
 
 	_disable_test main.func_time "Dependent on time test was written"
 
