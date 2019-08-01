@@ -1,45 +1,20 @@
---- a/acinclude.m4
-+++ b/acinclude.m4
-@@ -437,7 +437,7 @@
-    if test "$FT2_CONFIG" = "no" ; then
-      no_ft=yes
-    else
--     FT2_CFLAGS=`$FT2_CONFIG $ft_config_args --cflags`
-+     FT2_CFLAGS="`$FT2_CONFIG $ft_config_args --cflags` `$FT2_CONFIG $ft_config_args --cflags | sed -e 's:freetype2:freetype2/freetype:'`"
-      FT2_LIBS=`$FT2_CONFIG $ft_config_args --libs`
-      ft_config_major_version=`$FT2_CONFIG $ft_config_args --version | \
-        sed 's/\([[0-9]]*\).\([[0-9]]*\).\([[0-9]]*\)/\1/'`
---- a/src/client/GLEXT/GLFont2dFreeType.h
-+++ b/src/client/GLEXT/GLFont2dFreeType.h
-@@ -23,10 +23,10 @@
- 
- #include <GLEXT/GLFont2dStorage.h>
- #include <ft2build.h>
--#include <freetype/freetype.h>
--#include <freetype/ftglyph.h>
--#include <freetype/ftoutln.h>
--#include <freetype/fttrigon.h>
-+#include <freetype.h>
-+#include <ftglyph.h>
-+#include <ftoutln.h>
-+#include <fttrigon.h>
- #include <string>
- 
- class GLFont2dFreeType
---- a/src/launcher/wxdialogs/TrueTypeFont.h
-+++ b/src/launcher/wxdialogs/TrueTypeFont.h
-@@ -25,10 +25,10 @@
- #include <wx/image.h>
- #include <ft2build.h>
- #include <string>
--#include <freetype/freetype.h>
--#include <freetype/ftglyph.h>
--#include <freetype/ftoutln.h>
--#include <freetype/fttrigon.h>
-+#include <freetype.h>
-+#include <ftglyph.h>
-+#include <ftoutln.h>
-+#include <fttrigon.h>
- 
- class TrueTypeFont
- {
+diff --git a/configure-ft.m4 b/configure-ft.m4
+index d27678ca..ce369bf4 100644
+--- a/configure-ft.m4
++++ b/configure-ft.m4
+@@ -1,14 +1,2 @@
+ dnl Check for FreeType2
+-AC_CHECK_FT2(7.0.1, ftype=1)
+-if test "$ftype" != 1; then
+-	AC_MSG_ERROR([
+-		FreeType2 must be installed on your system
+-		but freetype-config couldn't be found.
+-		Please check that freetype-config is in the path, the directory
+-		where the freetype libraries are installed (returned by
+-		'freetype-config --libs' command) is in LD_LIBRARY_PATH or
+-                equivalent variable and freetype version is 7.0.1 or above
+-                Try http://www.freetype.org to download freetype.
+-	])
+-fi
+-
++PKG_CHECK_MODULES(FT2, freetype2 >= 7.0.1)
