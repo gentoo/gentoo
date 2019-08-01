@@ -53,7 +53,7 @@ RDEPEND="
 		media-libs/dssi
 		media-libs/ladspa-sdk
 	)
-	fluidsynth? ( media-sound/fluidsynth:= )
+	fluidsynth? ( <media-sound/fluidsynth-2:= )
 	fltk? ( x11-libs/fltk:1[threads?] )
 	image? ( media-libs/libpng:0= )
 	jack? ( media-sound/jack-audio-connection-kit )
@@ -110,6 +110,9 @@ pkg_setup() {
 
 src_prepare() {
 	cmake-utils_src_prepare
+
+	has_version ">=media-sound/fluidsynth-2" &&
+		eapply "${FILESDIR}/${P}-fluidsynth2.patch" # 680062
 
 	sed -e '/set(PLUGIN_INSTALL_DIR/s/-${APIVERSION}//' \
 		-e '/-O3/d' \
