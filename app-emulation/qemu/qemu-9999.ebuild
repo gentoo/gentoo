@@ -137,7 +137,7 @@ SOFTMMU_TOOLS_DEPEND="
 		>=app-emulation/spice-protocol-0.12.3
 		>=app-emulation/spice-0.12.0[static-libs(+)]
 	)
-	ssh? ( >=net-libs/libssh2-1.2.8[static-libs(+)] )
+	ssh? ( >=net-libs/libssh-0.8.6[static-libs(+)] )
 	usb? ( >=virtual/libusb-1-r2[static-libs(+)] )
 	usbredir? ( >=sys-apps/usbredir-0.6[static-libs(+)] )
 	vde? ( net-misc/vde[static-libs(+)] )
@@ -446,7 +446,7 @@ qemu_src_configure() {
 		$(conf_notuser smartcard)
 		$(conf_notuser snappy)
 		$(conf_notuser spice)
-		$(conf_notuser ssh libssh2)
+		$(conf_notuser ssh libssh)
 		$(conf_notuser usb libusb)
 		$(conf_notuser usbredir usb-redir)
 		$(conf_notuser vde)
