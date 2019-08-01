@@ -13,6 +13,7 @@ LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="amd64 ~x86"
 
+DEPEND="app-arch/unzip"
 RDEPEND=">=virtual/jre-1.7"
 
 S=${WORKDIR}
