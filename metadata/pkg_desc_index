@@ -981,6 +981,7 @@ app-misc/cdargs 1.35-r2: Bookmarks and browser for the shell builtin cd command
 app-misc/cdcat 0.3-r1: Simple yet effective CD indexing program
 app-misc/cdircmp 0.3-r2: Compare directories and select files to copy
 app-misc/cdspeed 0.4-r2: Change the speed of your CD drive
+app-misc/cfiles 1.5: A ncurses file manager written in C with vim like keybindings
 app-misc/chkcrontab 1.6 1.7: A tool to detect crontab errors
 app-misc/clockywock 0.3.1a: ncurses based analog clock
 app-misc/cmatrix 1.2a-r3: An ncurses based app to show a scrolling screen from the Matrix
