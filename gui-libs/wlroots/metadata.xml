@@ -18,7 +18,7 @@
 		excellent hardware compatibility, broad support for many wayland
 		interfaces, and comfortable development tools.
 
-		wlroots is developed under the direction of the <pkg>dev-libs/sway</pkg> project.
+		wlroots is developed under the direction of the <pkg>gui-wm/sway</pkg> project.
 	</longdescription>
 	<use>
 		<flag name="elogind">Enable support for rootless session via elogind</flag>
