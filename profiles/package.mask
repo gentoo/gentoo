@@ -190,12 +190,6 @@ sys-freebsd/ubin-wrappers
 # Removal after 2019-08-01. (bug #688552)
 media-sound/sfc
 
-# David Seifert <soap@gentoo.org> (2019-06-23)
-# QA issues, fails tests, RWX sections, ignores CC/CFLAGS,
-# builds only static libs, fails with GCC 9.
-# Bug #452220, #461288, #623360, #685728
-sci-mathematics/gwnum
-
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2019-06-17)
 # this is now provided by dev-lang/rust{-bin}[rustfmt]
 # it's tightly integrated with rust toolchain, eselect-rust
