@@ -60,6 +60,7 @@ src_configure() {
 		LDFLAGS = ${LDFLAGS}
 		#  libs
 		LIBDIRARCH = $(get_libdir)
+		PREFIX = ${EPREFIX}/usr
 		EOF
 	} >> config.mk || die
 
