@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install
+DESCRIPTION=An extended version of rxvt-unicode's tabbed perl extension
+EAPI=7
+HOMEPAGE=https://github.com/mina86/urxvt-tabbedex
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=>=x11-terms/rxvt-unicode-9.21[perl]
+SLOT=0
+SRC_URI=https://github.com/mina86/urxvt-tabbedex/archive/v19.21.tar.gz -> urxvt-tabbedex-19.21.tar.gz
+_md5_=0703086967fb17dcef143bb4eaee3357
