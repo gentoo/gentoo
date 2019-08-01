@@ -1,0 +1,8 @@
+DEFINED_PHASES=install
+DESCRIPTION=Quickly look up and input emoji and/or emoticons
+EAPI=7
+HOMEPAGE=https://github.com/cspeterson/splatmoji/
+LICENSE=MIT
+RDEPEND=app-shells/bash x11-misc/rofi x11-misc/xdotool x11-misc/xsel
+SLOT=0
+_md5_=5de4c2b15abc9972581b5d6f0976bc0e
