@@ -15,7 +15,6 @@ KEYWORDS="~amd64 ~x86"
 IUSE="dbus debug +idle nls taglib zeroconf"
 
 RDEPEND="dev-libs/glib:2
-	dev-libs/libgcrypt:0
 	dev-libs/libxml2:2
 	media-libs/libmpdclient
 	net-misc/curl
@@ -31,19 +30,26 @@ BDEPEND="dev-util/intltool
 DOCS=( AUTHORS )
 
 src_configure() {
-	econf \
-		--disable-static \
-		--disable-xmms2 \
-		--enable-libmpdclient2 \
-		--enable-search \
-		--enable-playlists \
-		--disable-deprecations \
-		$(use_enable dbus) \
-		$(use_enable debug) \
-		$(use_enable idle mpdidle) \
-		$(use_enable nls) \
-		$(use_enable taglib) \
+	local myconf=(
+		--disable-static
+		--disable-xmms2
+		--enable-libmpdclient2
+		--enable-search
+		--enable-playlists
+		--disable-deprecations
+		$(use_enable dbus)
+		$(use_enable debug)
+		$(use_enable idle mpdidle)
+		$(use_enable nls)
+		$(use_enable taglib)
 		$(use_enable zeroconf avahi)
+	)
+	econf "${myconf[@]}"
+}
+
+src_install() {
+	default
+	find "${D}" -name '*.la' -delete || die
 }
 
 pkg_postinst() {
@@ -52,9 +58,4 @@ pkg_postinst() {
 
 pkg_postrm() {
 	xdg_icon_cache_update
-}
-
-src_install() {
-	default
-	find "${D}" -name '*.la' -delete || die
 }
