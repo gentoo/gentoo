@@ -10,6 +10,10 @@
     <name>Mo Zhou</name>
     <email>lumin@debian.org</email>
   </maintainer>
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
 
   <longdescription>
     Intel® Math Kernel Library (Intel® MKL) optimizes code with minimal

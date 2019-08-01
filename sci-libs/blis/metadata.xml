@@ -9,6 +9,10 @@
     <name>Mo Zhou</name>
     <email>lumin@debian.org</email>
   </maintainer>
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
   <longdescription>
     BLIS is a portable software framework for instantiating high-performance
     BLAS-like dense linear algebra libraries. The framework was designed to
