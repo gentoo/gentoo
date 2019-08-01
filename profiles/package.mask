@@ -165,12 +165,6 @@ media-video/pipewire
 # Requires >=dev-lang/lua-5.2 which is masked
 >=app-admin/conky-1.11.4
 
-# Ulrich Müller <ulm@gentoo.org> (2019-07-05)
-# Fetch restricted, SRC_URI is gone, last release in 2008.
-# Binary-only 32 bit package. Program fails with SIGSEGV.
-# Masked for removal in 30 days, bug #689158.
-media-sound/ventrilo-server-bin
-
 # Sobhan Mohammadpour <sobhan@gentoo.org> (2019-07-04)
 # Mask until further testing is done
 =dev-libs/libgdata-0.17.10
