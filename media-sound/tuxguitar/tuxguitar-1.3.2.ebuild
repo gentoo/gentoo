@@ -20,7 +20,7 @@ COMMON_DEPEND="
 	dev-java/swt:3.7[cairo]
 	alsa? ( media-libs/alsa-lib )
 	pdf? ( dev-java/itext:5 )
-	fluidsynth? ( media-sound/fluidsynth:= )
+	fluidsynth? ( <media-sound/fluidsynth-2:= )
 	lilypond? ( media-sound/lilypond )
 "
 RDEPEND="${COMMON_DEPEND}
