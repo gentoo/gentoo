@@ -43,8 +43,6 @@ RDEPEND="${PYTHON_DEPS}
 
 S="${WORKDIR}/${MY_P}"
 
-DOCS="RELEASE-NOTES"
-
 src_prepare() {
 	eapply "${FILESDIR}/3.1.2-no-user-root.patch"
 	eapply "${FILESDIR}/3.2.3-pip-optional-pkgs.patch"
@@ -89,6 +87,7 @@ src_prepare() {
 
 src_install() {
 	doicon -s 128 electrum/gui/icons/${PN}.png
+	dodoc RELEASE-NOTES
 	distutils-r1_src_install
 }
 
