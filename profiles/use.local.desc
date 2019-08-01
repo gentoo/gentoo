@@ -3701,7 +3701,6 @@ media-video/vlc:linsys - Enable support for Linux Linear Systems Ltd. SDI and HD
 media-video/vlc:live - Enable live555 streaming media support (client support for rtsp)
 media-video/vlc:lua - Enable Lua scripting support, needed for including support for Jamendo (online music platform) and similar things
 media-video/vlc:macosx-notifications - Enable Mac OS X notifications module (formerly growl)
-media-video/vlc:macosx-qtkit - Enable Mac OS X qtkit module: qtcapture (video) and qtsound (audio) module
 media-video/vlc:matroska - Enable matroska support using reference libraries (fallback on other existing matroska support if disabled, i.e., matroska enabled FFmpeg)
 media-video/vlc:mpeg - Add libmpeg2 support for mpeg-1 and mpeg-2 video streams
 media-video/vlc:nfs - Enable support for nfs protocol via net-fs/libnfs
@@ -3722,7 +3721,6 @@ media-video/vlc:tremor - Enable tremor, a fixed-point version of the Ogg Vorbis 
 media-video/vlc:twolame - Enable twolame support (MPEG Audio Layer 2 encoder)
 media-video/vlc:upnp - Enable support for the Intel SDK stack based UPnP discovery module instead of CyberLink
 media-video/vlc:vpx - Enable the decoder(s) from the WebM VP8 / VP9 Codec SDK
-media-video/vlc:wma-fixed - Enable fixed point WMA decoder
 media-video/vlc:x265 - Support X265 Encoder
 media-video/vlc:zeroconf - Enable support for zero-configuration networking via avahi
 media-video/vlc:zvbi - Enable support for teletext subtitles via the zvbi library
