@@ -29,6 +29,18 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (2019-08-01)
+# Dead upstream, last release over 5 years ago,
+# broken build system, fails with boost 1.70,
+# removal in 30 days. Bug #646014, #691162
+dev-games/vamos
+
+# David Seifert <soap@gentoo.org> (2019-08-01)
+# Last touched over 3 years ago, broken tests,
+# fails with boost 1.70, removal in 30 days.
+# Bug #655886, #690704
+dev-python/pgmagick
+
 # Brian Evans <grknight@gentoo.org> (2019-07-31)
 # MySQL 5.5 will no longer receive updates from Oracle
 # It may or may not have unaccounced security vulnerabilities
@@ -189,12 +201,6 @@ sys-freebsd/ubin-wrappers
 # Source is broken. Upstream is dead since 2011.
 # Removal after 2019-08-01. (bug #688552)
 media-sound/sfc
-
-# David Seifert <soap@gentoo.org> (2019-06-23)
-# QA issues, fails tests, RWX sections, ignores CC/CFLAGS,
-# builds only static libs, fails with GCC 9.
-# Bug #452220, #461288, #623360, #685728
-sci-mathematics/gwnum
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2019-06-17)
 # this is now provided by dev-lang/rust{-bin}[rustfmt]
