@@ -569,14 +569,17 @@ src_test() {
 	done
 
 	for t in main.mysql_client_test main.mysql_client_test_nonblock \
-		rpl.rpl_semi_sync_uninstall_plugin \
+		rpl.rpl_semi_sync_uninstall_plugin main.mysql \
 		main.mysql_client_test_comp rpl.rpl_extra_col_master_myisam ; do
 			_disable_test  "$t" "False positives in Gentoo"
 	done
 
 	if ! use client-libs ; then
 		_disable_test main.plugin_auth "Needs client libraries built"
+		_disable_test plugins.auth_ed25519 "Needs client libraries built"
 	fi
+
+	_disable_test main.gis_notembedded "Fails when latin1 USE is not set"
 
 	_disable_test sys_vars.sysvars_server_notembedded "Broken test" # bug #661700 required profiling always on
 
