@@ -50,24 +50,6 @@ src_prepare() {
 	# Prevent icon from being installed in the wrong location
 	sed -i '/icons_dirname/d' setup.py || die
 
-	# Remove unrequested GUI implementations:
-	local gui setup_py_gui
-	for gui in  \
-		$(usex cli      '' stdio)  \
-		kivy \
-		$(usex qt5      '' qt   )  \
-		$(usex ncurses  '' text )  \
-	; do
-		rm ${PN}/gui/"${gui}"* -r || die
-	done
-
-	# And install requested ones...
-	for gui in  \
-		$(usex !qt5     qt   '')  \
-	; do
-		sed -i -e "/electrum\.gui\.${gui}/d" setup.py || die
-	done
-
 	local bestgui
 	if use qt5; then
 		bestgui=qt
