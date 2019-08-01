@@ -272,11 +272,10 @@ multilib_src_configure() {
 		-Dselinux=$(meson_multilib_native_use selinux)
 		-Ddbus=$(meson_multilib_native_use test)
 		-Dxkbcommon=$(meson_multilib_native_use xkb)
-		# hardcode a few paths to spare some deps
-		-Dkill-path=/bin/kill
 		-Dntp-servers="0.gentoo.pool.ntp.org 1.gentoo.pool.ntp.org 2.gentoo.pool.ntp.org 3.gentoo.pool.ntp.org"
 		# Breaks screen, tmux, etc.
 		-Ddefault-kill-user-processes=false
+		-Dcreate-log-dirs=false
 
 		# multilib options
 		-Dbacklight=$(meson_multilib)
@@ -349,7 +348,7 @@ multilib_src_install_all() {
 	keepdir /usr/lib/{binfmt.d,modules-load.d}
 	keepdir /usr/lib/systemd/user-generators
 	keepdir /var/lib/systemd
-	rm -rf "${ED}"/var/log || die
+	keepdir /var/log/journal
 
 	# Symlink /etc/sysctl.conf for easy migration.
 	dosym ../sysctl.conf /etc/sysctl.d/99-sysctl.conf
