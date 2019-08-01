@@ -29,6 +29,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (01 Aug 2019)
+# Discontinued upstream in July 2017.  Has irritating bugs, and is hard
+# to build from source (we have binary package only).  Upstream
+# recommends net-misc/electrum as a replacement.
+# See: https://multibit.org/blog/2017/07/26/multibit-shutdown.html
+# Removal in 30 days.  Bug #639530.
+net-p2p/multibit
+
 # David Seifert <soap@gentoo.org> (2019-08-01)
 # Dead upstream, last release over 5 years ago,
 # broken build system, fails with boost 1.70,
