@@ -7,4 +7,4 @@ LICENSE=GPL-2+
 SLOT=0
 SRC_URI=https://bisqwit.iki.fi/src/arch/erec-2.2.0.1.tar.bz2
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
-_md5_=095e47820f93718e8715685d1286140b
+_md5_=484f0d57513e6eaa825c351a9c4e82d6
