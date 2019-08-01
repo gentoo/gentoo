@@ -1,0 +1,36 @@
+From 5539b080824bd4bcd0f212829012993ef193dc41 Mon Sep 17 00:00:00 2001
+From: Lars Wendler <polynomial-c@gentoo.org>
+Date: Thu, 1 Aug 2019 04:53:14 +0200
+Subject: [PATCH] configure.ac: Raise AM_GNU_GETTEXT_VERSION to 0.17
+
+the shipped copy of po/Makefile.in.in comes from gettext-0.17 and since
+m4/po.m4 has been changed to use AC_PROG_MKDIR_P (Trac ticket #4701)
+autopoint from gettext would produce a broken po/Makefile.in.in which has
+no MKDIR_P definition. This again would result in "make install" throwing
+the following error when invoking install-data-yes target in /po/ dir:
+
+  make[1]: execvp: /usr/share: Permission denied
+
+Raising AM_GNU_GETTEXT_VERSION fixes the described issue.
+
+Signed-off-by: Lars Wendler <polynomial-c@gentoo.org>
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 7e9c31433..30a732447 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -71,7 +71,7 @@ AC_CHECK_HEADERS(alloca.h sys/ucontext.h)
+ 
+ # Check for gettext
+ AM_GNU_GETTEXT([external])
+-AM_GNU_GETTEXT_VERSION([0.15])
++AM_GNU_GETTEXT_VERSION([0.17])
+ 
+ # Check for pkg-config
+ PKG_PROG_PKG_CONFIG
+-- 
+2.22.0
+
