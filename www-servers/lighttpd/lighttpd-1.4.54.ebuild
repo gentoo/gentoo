@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,12 +11,15 @@ SRC_URI="https://download.lighttpd.net/lighttpd/releases-1.4.x/${P}.tar.xz"
 
 LICENSE="BSD GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 ~hppa ia64 ~mips ppc ppc64 s390 ~sh sparc x86 ~x86-fbsd"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd"
 IUSE="bzip2 dbi doc fam gdbm geoip ipv6 kerberos ldap libev libressl lua minimal mmap memcached mysql pcre php postgres rrdtool sasl selinux ssl sqlite test webdav xattr zlib"
 
 REQUIRED_USE="kerberos? ( ssl !libressl ) webdav? ( sqlite )"
 
-CDEPEND="
+BDEPEND="dev-libs/libgamin
+	virtual/pkgconfig"
+
+COMMON_DEPEND="
 	bzip2?    ( app-arch/bzip2 )
 	dbi?	( dev-db/libdbi )
 	fam?    ( virtual/fam )
@@ -33,7 +36,7 @@ CDEPEND="
 	rrdtool?  ( net-analyzer/rrdtool )
 	sasl?     ( dev-libs/cyrus-sasl )
 	ssl? (
-		!libressl? ( >=dev-libs/openssl-0.9.7:0=[kerberos?] )
+		!libressl? ( >=dev-libs/openssl-0.9.7:0=[kerberos(-)?] )
 		libressl? ( dev-libs/libressl:= )
 	)
 	sqlite?	( dev-db/sqlite:3 )
@@ -44,15 +47,14 @@ CDEPEND="
 	xattr? ( kernel_linux? ( sys-apps/attr ) )
 	zlib? ( >=sys-libs/zlib-1.1 )"
 
-DEPEND="${CDEPEND}
-	virtual/pkgconfig
+DEPEND="${COMMON_DEPEND}
 	doc?  ( dev-python/docutils )
 	test? (
 		virtual/perl-Test-Harness
 		dev-libs/fcgi
 	)"
 
-RDEPEND="${CDEPEND}
+RDEPEND="${COMMON_DEPEND}
 	selinux? ( sec-policy/selinux-apache )
 "
 
@@ -135,7 +137,7 @@ src_configure() {
 		$(use_with postgres pgsql) \
 		$(use_with sasl) \
 		$(use_with ssl openssl) \
-		$(use_with sqlite sqlite) \
+		$(use_with sqlite) \
 		$(use_with webdav webdav-props) \
 		$(use_with webdav webdav-locks) \
 		$(use_with xattr attr) \
