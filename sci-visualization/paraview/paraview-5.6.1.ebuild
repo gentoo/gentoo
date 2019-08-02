@@ -29,7 +29,7 @@ REQUIRED_USE="python? ( mpi ${PYTHON_REQUIRED_USE} )
 RDEPEND="
 	app-arch/lz4
 	dev-libs/expat
-	dev-libs/jsoncpp
+	dev-libs/jsoncpp:=
 	dev-libs/libxml2:2
 	dev-libs/protobuf:=
 	dev-libs/pugixml
