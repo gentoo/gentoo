@@ -663,6 +663,7 @@ src_test() {
 	done
 
 	_disable_test main.plugin_auth "Needs client libraries built"
+	_disable_test plugins.auth_ed25519 "Needs client libraries built"
 
 	_disable_test main.func_time "Dependent on time test was written"
 
