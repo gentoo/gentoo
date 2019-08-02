@@ -76,6 +76,7 @@ RDEPEND="
 	iscsi-direct? ( >=net-libs/libiscsi-1.18.0 )
 	libssh? ( net-libs/libssh )
 	lvm? ( >=sys-fs/lvm2-2.02.48-r2[-device-mapper-only(-)] )
+	lxc? ( !sys-apps/systemd[-cgroup-hybrid(+)] )
 	nfs? ( net-fs/nfs-utils )
 	numa? (
 		>sys-process/numactl-2.0.2
