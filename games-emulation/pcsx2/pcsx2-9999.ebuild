@@ -18,7 +18,7 @@ RDEPEND="
 	app-arch/bzip2[abi_x86_32(-)]
 	app-arch/xz-utils[abi_x86_32(-)]
 	dev-libs/libaio[abi_x86_32(-)]
-	dev-libs/libxml2[abi_x86_32(-)]
+	dev-libs/libxml2:2[abi_x86_32(-)]
 	media-libs/alsa-lib[abi_x86_32(-)]
 	media-libs/libpng:=[abi_x86_32(-)]
 	media-libs/libsdl2[abi_x86_32(-),haptic,joystick,sound]
