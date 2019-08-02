@@ -29,7 +29,9 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 
 python_configure_all() {
 	rm tests/3proxy/bin/*/* || die
-	ln -s "$(type -P 3proxy)" tests/3proxy/bin/linux/ || die
+	if use test; then
+		ln -s "$(type -P 3proxy)" tests/3proxy/bin/linux/ || die
+	fi
 }
 
 python_test() {
