@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -123,7 +123,7 @@ ruby_add_bdepend "${RUBY_COMMON_DEPEND}
 ruby_add_rdepend "${RUBY_COMMON_DEPEND}"
 
 COMMON_DEPEND="dev-db/postgresql[server]
-	|| ( app-crypt/johntheripper-jumbo >=app-crypt/johntheripper-1.7.9-r1[-minimal] )
+	|| ( app-crypt/johntheripper-jumbo >=app-crypt/johntheripper-1.7.9-r1[-minimal(-)] )
 	net-analyzer/nmap"
 RDEPEND+=" ${COMMON_DEPEND}
 	>=app-eselect/eselect-metasploit-0.16"
