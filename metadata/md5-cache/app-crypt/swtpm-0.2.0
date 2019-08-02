@@ -1,0 +1,14 @@
+BDEPEND=>=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=configure install prepare setup
+DEPEND=dev-libs/libtpms dev-libs/openssl:0 fuse? ( dev-libs/glib:2 sys-fs/fuse:0 ) gnutls? ( dev-libs/libtasn1:= >=net-libs/gnutls-3.1.0[tools] ) seccomp? ( sys-libs/libseccomp ) test? ( net-misc/socat || ( dev-lang/python:3.7 dev-lang/python:3.6 dev-lang/python:3.5 ) )
+DESCRIPTION=Libtpms-based TPM emulator
+EAPI=7
+HOMEPAGE=https://github.com/stefanberger/swtpm
+IUSE=fuse gnutls seccomp test
+KEYWORDS=~amd64
+LICENSE=BSD
+RDEPEND=dev-libs/libtpms dev-libs/openssl:0 fuse? ( dev-libs/glib:2 sys-fs/fuse:0 ) gnutls? ( dev-libs/libtasn1:= >=net-libs/gnutls-3.1.0[tools] ) seccomp? ( sys-libs/libseccomp ) app-crypt/tpm-tools app-crypt/trousers dev-tcltk/expect
+SLOT=0
+SRC_URI=https://github.com/stefanberger/swtpm/archive/v0.2.0.tar.gz -> swtpm-0.2.0.tar.gz
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-any-r1	b5f01473006ccc2cd78bc3dab20fced4	python-utils-r1	08e17157a6807add7db1f8d01e7e391f	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
+_md5_=712295e0fe45382ae7960d8fe7db3b62
