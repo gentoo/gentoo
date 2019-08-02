@@ -10524,7 +10524,7 @@ www-plugins/freshplayerplugin 0.3.9: PPAPI-host NPAPI-plugin adapter for flashpl
 www-servers/apache 2.2.34 2.4.39: The Apache Web Server
 www-servers/caddy 0.10.11: Fast, cross-platform HTTP/2 web server with automatic HTTPS
 www-servers/gunicorn 19.8.1 19.9.0: A WSGI HTTP Server for UNIX
-www-servers/lighttpd 1.4.51: Lightweight high-performance web server
+www-servers/lighttpd 1.4.53: Lightweight high-performance web server
 www-servers/monkeyd 1.6.9-r1: A small, fast, and scalable web server
 www-servers/nginx 1.16.0-r1: Robust, small and high performance http and reverse proxy server
 www-servers/nginx-unit 1.8.0: A dynamic web and application server
