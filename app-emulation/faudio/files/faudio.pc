@@ -1,4 +1,4 @@
-prefix=/usr
+prefix=%PREFIX%
 exec_prefix=${prefix}
 libdir=${prefix}/%LIB%
 includedir=${prefix}/include/FAudio
