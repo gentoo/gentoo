@@ -3,6 +3,10 @@
 
 EAPI=7
 
+PYTHON_COMPAT=( python2_7 )
+
+inherit python-single-r1
+
 DESCRIPTION="Function (graph) tracer for user-space"
 HOMEPAGE="https://github.com/namhyung/uftrace"
 SRC_URI="https://github.com/namhyung/uftrace/archive/v${PV}.tar.gz -> ${P}.tar.gz"
@@ -15,7 +19,7 @@ IUSE="capstone"
 RESTRICT="test"
 
 RDEPEND="
-	dev-lang/python:2.7
+	${PYTHON_DEPS}
 	sys-devel/gcc:*[cxx]
 	sys-libs/ncurses:=
 	virtual/libelf:=
