@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -28,12 +28,12 @@ PDF_VIEWER_COMMIT="a5251e497fb52e699b28f627e3cbb6d8cefb62df"
 # Keep this in sync with vendor/pdf_viewer/vendor/grit
 GRIT_COMMIT="9536fb6429147d27ef1563088341825db0a893cd"
 # Keep this in sync with vendor/libchromiumcontent
-LIBCHROMIUMCONTENT_COMMIT="cbd04c0dccc7655cd42f02baee3a622d5170ac08"
+LIBCHROMIUMCONTENT_COMMIT="daf9bdcdfdfd6bad258b5e1e48b2e17d06c1a987"
 # Keep this in sync with package.json#devDependencies
 ASAR_VERSION="0.13.0"
 BROWSERIFY_VERSION="14.0.0"
 NINJA_VERSION="1.8.2"
-GENTOO_PATCHES_VERSION="f0fb7725cfe73704dce84ec51bdccc024dc7ceff"
+GENTOO_PATCHES_VERSION="26715595f4fe3658a73adb0d2fb338f62c79e492"
 
 PATCHES_P="gentoo-electron-patches-${GENTOO_PATCHES_VERSION}"
 CHROMIUM_P="chromium-${CHROMIUM_VERSION}"
@@ -79,7 +79,8 @@ LICENSE="BSD"
 SLOT="$(ver_cut 1-2)"
 KEYWORDS="~amd64"
 IUSE="cups custom-cflags gconf gnome-keyring kerberos lto neon pic
-	  +proprietary-codecs pulseaudio selinux +system-ffmpeg +tcmalloc"
+	+proprietary-codecs pulseaudio selinux +system-ffmpeg +system-libvpx
+	+system-ssl +tcmalloc"
 RESTRICT="!system-ffmpeg? ( proprietary-codecs? ( bindist ) )"
 
 # Native Client binaries are compiled with different set of flags, bug #452066.
@@ -100,6 +101,7 @@ COMMON_DEPEND="
 	dev-libs/libxslt:=
 	dev-libs/nspr:=
 	>=dev-libs/nss-3.14.3:=
+	system-ssl? ( <dev-libs/openssl-1.1:= )
 	>=dev-libs/re2-0.2016.05.01:=
 	gconf? ( >=gnome-base/gconf-2.24.0:= )
 	gnome-keyring? ( >=gnome-base/libgnome-keyring-3.12:= )
@@ -110,11 +112,13 @@ COMMON_DEPEND="
 	media-libs/libexif:=
 	media-libs/libjpeg-turbo:=
 	media-libs/libpng:=
-	>=media-libs/libvpx-1.7.0:=[postproc,svc]
+	system-libvpx? (
+		=media-libs/libvpx-1.7*:=[postproc,svc]
+	)
 	>=media-libs/openh264-1.6.0:=
 	pulseaudio? ( media-sound/pulseaudio:= )
 	system-ffmpeg? (
-		>=media-video/ffmpeg-3:=
+		>=media-video/ffmpeg-4:=
 		|| (
 			media-video/ffmpeg[-samba]
 			>=net-fs/samba-4.5.10-r1[-debug(-)]
@@ -166,7 +170,7 @@ DEPEND="${COMMON_DEPEND}
 		dev-lang/yasm
 	)
 	dev-lang/perl
-	dev-util/gn
+	<dev-util/gn-0.1583
 	>=dev-util/gperf-3.0.3
 	>=dev-util/ninja-1.7.2
 	>=net-libs/nodejs-4.6.1
@@ -496,6 +500,10 @@ src_prepare() {
 	if ! use system-ffmpeg; then
 		keeplibs+=( third_party/ffmpeg third_party/opus )
 	fi
+	if ! use system-libvpx; then
+		keeplibs+=( third_party/libvpx )
+		keeplibs+=( third_party/libvpx/source/libvpx/third_party/x86inc )
+	fi
 	if use tcmalloc; then
 		keeplibs+=( third_party/tcmalloc )
 	fi
@@ -532,7 +540,6 @@ src_configure() {
 	# TODO: use_system_libsrtp (bug #459932).
 	# TODO: xml (bug #616818).
 	# TODO: use_system_protobuf (bug #525560).
-	# TODO: use_system_ssl (http://crbug.com/58087).
 	# TODO: use_system_sqlite (http://crbug.com/22208).
 
 	# libevent: https://bugs.gentoo.org/593458
@@ -554,6 +561,9 @@ src_configure() {
 		zlib)
 	if use system-ffmpeg; then
 		gn_system_libraries+=( libvpx ffmpeg opus )
+	fi
+	if use system-libvpx; then
+		gn_system_libraries+=( libvpx )
 	fi
 	build/linux/unbundle/replace_gn_files.py \
 		--system-libraries ${gn_system_libraries[@]} || die
@@ -687,7 +697,8 @@ src_configure() {
 	# --shared-libuv cannot be used as electron's node fork
 	# patches uv_loop structure.
 	./configure --shared --without-bundled-v8 \
-		--shared-openssl --shared-http-parser --shared-zlib \
+		$(usex system-ssl '--shared-openssl' '' ) \
+		--shared-http-parser --shared-zlib \
 		--shared-nghttp2 --shared-cares \
 		--without-npm --with-intl=system-icu --without-dtrace \
 		--dest-cpu=${target_arch} --prefix="" || die
