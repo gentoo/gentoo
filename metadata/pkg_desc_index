@@ -7500,7 +7500,7 @@ media-libs/freeverb3 3.1.2-r1 3.2.1-r1: Reverb and Impulse Response Convolution 
 media-libs/ftgl 2.1.3_rc5: library to use arbitrary fonts in OpenGL applications
 media-libs/game-music-emu 0.6.2: Video game music file emulators
 media-libs/gavl 1.4.0-r1: library for handling uncompressed audio and video data
-media-libs/gd 2.2.5-r1 2.2.5-r2: Graphics library for fast image creation
+media-libs/gd 2.2.5-r2: Graphics library for fast image creation
 media-libs/gegl 0.2.0-r2 0.2.0-r5 0.2.0-r6 0.3.0 0.3.26 0.3.34 0.4.14: A graph based image processing framework
 media-libs/gexiv2 0.10.10-r1: GObject-based wrapper around the Exiv2 library
 media-libs/giblib 1.2.4-r1: a graphics library built on top of imlib2
@@ -9918,7 +9918,7 @@ sys-block/raid-check 20140719-r1: Script to do "scrubbing" on software RAID syst
 sys-block/scsiping 0.0.1: SCSIPing pings a host on the SCSI-chain
 sys-block/seekwatcher 0.12_p20091015-r1: generates graphs from blktrace to help visualize IO patterns and performance
 sys-block/tapecat 1.0.0: tapecat is a tape utility used to describe the physical content of a tape
-sys-block/tgt 1.0.77 1.0.78: Linux SCSI target framework (tgt)
+sys-block/tgt 1.0.78 1.0.79: Linux SCSI target framework (tgt)
 sys-block/thin-provisioning-tools 0.7.0: A suite of tools for thin provisioning on Linux
 sys-block/vblade 20: vblade exports a block device using AoE
 sys-block/viaideinfo 0.5: Query VIA IDE controllers for various information
