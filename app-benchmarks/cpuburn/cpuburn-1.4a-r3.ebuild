@@ -9,7 +9,7 @@ DESCRIPTION="CPU testing utilities in optimized assembler for maximum loading"
 HOMEPAGE="https://downloads.bl4ckb0x.de/pages.sbcglobal.net/redelm/"
 SRC_URI="https://downloads.bl4ckb0x.de/pages.sbcglobal.net/redelm/${PN}_${MY_PV}_tar.gz -> ${P}.tar.gz"
 
-KEYWORDS="-* amd64 ~arm x86"
+KEYWORDS="-* amd64 arm x86"
 LICENSE="GPL-2"
 SLOT="0"
 
