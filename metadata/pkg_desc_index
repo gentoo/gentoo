@@ -7117,7 +7117,7 @@ mail-filter/spamprobe 1.4d-r1: Fast, intelligent, automatic spam detector using 
 mail-filter/sqlgrey 1.7.6-r2: SQLgrey is a postfix policy service implementing a grey-listing policy
 mail-mta/courier 1.0.5: An MTA designed specifically for maildirs
 mail-mta/esmtp 1.2: User configurable relay-only Mail Transfer Agent with a sendmail-like syntax
-mail-mta/exim 4.91-r2 4.92 4.92-r2: A highly configurable, drop-in replacement for sendmail
+mail-mta/exim 4.92 4.92-r2: A highly configurable, drop-in replacement for sendmail
 mail-mta/mini-qmail 1.06: a small null client that forwards mail via QMQP to a full qmail server
 mail-mta/msmtp 1.8.3: An SMTP client and SMTP plugin for mail user agents such as Mutt
 mail-mta/netqmail 1.06-r2 1.06-r4: qmail -- a secure, reliable, efficient, simple message transfer agent
