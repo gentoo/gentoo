@@ -17,6 +17,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="+downloader opengl +python"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 RESTRICT="mirror" # contains keen files, but we do not install them
 
 RDEPEND="media-libs/libsdl2[opengl?,video]
