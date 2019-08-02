@@ -196,6 +196,13 @@ src_prepare() {
 		echo > "${S}/support-files/SELinux/CMakeLists.txt" || die
 	fi
 
+	# Don't clash with dev-db/mysql-connector-c
+	rm \
+		man/my_print_defaults.1 \
+		man/perror.1 \
+		man/zlib_decompress.1 \
+		|| die
+
 	if use libressl ; then
 		sed -i 's/OPENSSL_MAJOR_VERSION STREQUAL "1"/OPENSSL_MAJOR_VERSION STREQUAL "2"/' \
 			"${S}/cmake/ssl.cmake" || die

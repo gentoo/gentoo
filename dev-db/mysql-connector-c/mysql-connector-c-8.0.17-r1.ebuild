@@ -32,7 +32,7 @@ DOCS=( README )
 
 S="${WORKDIR}/mysql-${PV}"
 
-PATCHES=( "${FILESDIR}/8.0.16-libressl.patch" )
+PATCHES=( "${FILESDIR}"/${PN}-8.0.17-libressl.patch )
 
 src_prepare() {
 	sed -i -e 's/CLIENT_LIBS/CONFIG_CLIENT_LIBS/' "${S}/scripts/CMakeLists.txt" || die
@@ -86,6 +86,11 @@ multilib_src_install() {
 }
 
 multilib_src_install_all() {
+	doman \
+		man/my_print_defaults.1 \
+		man/perror.1 \
+		man/zlib_decompress.1
+
 	if ! use static-libs ; then
 		find "${ED}" -name "*.a" -delete || die
 	fi
