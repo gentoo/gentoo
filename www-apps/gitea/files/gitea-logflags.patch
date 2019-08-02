@@ -1,0 +1,13 @@
+diff --git a/modules/log/flags.go b/modules/log/flags.go
+index 992fc62..5578a1b 100644
+--- a/modules/log/flags.go
++++ b/modules/log/flags.go
+@@ -31,7 +31,7 @@ const (
+ 	Lmedfile = Lshortfile | Llongfile
+ 
+ 	// LstdFlags is the initial value for the standard logger
+-	LstdFlags = Ldate | Ltime | Lmedfile | Lshortfuncname | Llevelinitial
++	LstdFlags = Ldate | Ltime | Llevelinitial
+ )
+ 
+ var flagFromString = map[string]int{
