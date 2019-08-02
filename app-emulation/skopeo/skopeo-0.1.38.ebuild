@@ -1,14 +1,14 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-EGO_PN=github.com/projectatomic/skopeo
-COMMIT=5d24b67
-inherit golang-vcs-snapshot
+EAPI=7
+EGO_PN=github.com/containers/skopeo
+COMMIT=37f616e
+inherit golang-vcs-snapshot bash-completion-r1
 
 DESCRIPTION="Command line utility foroperations on container images and image repositories"
-HOMEPAGE="https://github.com/projectatomic/skopeo"
-SRC_URI="https://github.com/projectatomic/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/containers/skopeo"
+SRC_URI="https://github.com/containers/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
@@ -16,16 +16,13 @@ KEYWORDS="~amd64"
 IUSE=""
 
 COMMON_DEPEND=">=app-crypt/gpgme-1.5.5:=
-	>=dev-libs/libassuan-2.4.3
+	>=dev-libs/libassuan-2.4.3:=
+	dev-libs/libgpg-error:=
 	>=sys-fs/btrfs-progs-4.0.1
-	>=sys-fs/lvm2-2.02.145"
+	>=sys-fs/lvm2-2.02.145:="
 DEPEND="${COMMON_DEPEND}
-dev-go/go-md2man"
+	dev-go/go-md2man"
 RDEPEND="${COMMON_DEPEND}"
-
-PATCHES=(
-	"${FILESDIR}"/${P}-make-ostree-optional.patch
-)
 
 S="${WORKDIR}/${P}/src/${EGO_PN}"
 
@@ -33,13 +30,13 @@ RESTRICT="test"
 
 src_compile() {
 	local BUILDTAGS="containers_image_ostree_stub"
-	set -- env GOPATH="${WORKDIR}/${P}" \
+	set -- env -u GOCACHE -u XDG_CACHE_HOME GOPATH="${WORKDIR}/${P}" \
 		go build -ldflags "-X main.gitCommit=${COMMIT}" \
 		-gcflags "${GOGCFLAGS}" -tags "${BUILDTAGS}" \
 		-o skopeo ./cmd/skopeo
 	echo "$@"
 	"$@" || die
-	cd docs
+	cd docs || die
 	for f in *.1.md; do
 		go-md2man -in ${f} -out ${f%%.md} || die
 	done
@@ -47,11 +44,12 @@ src_compile() {
 
 src_install() {
 	dobin skopeo
-doman docs/*.1
+	doman docs/*.1
+	dobashcomp completions/bash/skopeo
 	insinto /etc/containers
 	newins default-policy.json policy.json
 	insinto /etc/containers/registries.d
 	doins default.yaml
-	dodir /var/lib/atomic/sigstore
+	keepdir /var/lib/atomic/sigstore
 	einstalldocs
 }
