@@ -237,6 +237,7 @@ src_prepare() {
 
 	# man pages for client-lib tools we don't install
 	rm \
+		man/my_print_defaults.1 \
 		man/perror.1 \
 		man/zlib_decompress.1 \
 		|| die
