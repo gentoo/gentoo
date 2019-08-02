@@ -5402,6 +5402,7 @@ sys-apps/smartmontools:daemon - Install the monitoring daemon (smartd) and assoc
 sys-apps/smartmontools:update_drivedb - Install a script to update the drivedb file.
 sys-apps/systemd:apparmor - Enable AppArmor support
 sys-apps/systemd:audit - Enable support for sys-process/audit
+sys-apps/systemd:cgroup-hybrid - Default to hybrid cgroup hierarchy instead of unified.
 sys-apps/systemd:cryptsetup - Enable cryptsetup tools (includes unit generator for crypttab)
 sys-apps/systemd:curl - Enable support for uploading journals
 sys-apps/systemd:dns-over-tls - Enable DNS-over-TLS support
