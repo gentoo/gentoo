@@ -368,7 +368,7 @@ multilib_src_configure() {
 		--libexecdir="${MY_LIBEXECDIR}"
 		--localstatedir="${MY_LOCALSTATEDIR}"
 		--mandir="${MY_MANDIR}"
-		--sysconfdir=/etc/wine
+		--sysconfdir="${EPREFIX}/etc/wine"
 		$(use_with alsa)
 		$(use_with capi)
 		$(use_with lcms cms)
@@ -481,6 +481,9 @@ multilib_src_install_all() {
 	use abi_x86_32 && pax-mark psmr "${D%/}${MY_PREFIX}"/bin/wine{,-preloader} #255055
 	use abi_x86_64 && pax-mark psmr "${D%/}${MY_PREFIX}"/bin/wine64{,-preloader}
 
+	# Avoid double prefix from dosym and make_wrapper
+	MY_PREFIX=${MY_PREFIX#${EPREFIX}}
+
 	if use abi_x86_64 && ! use abi_x86_32; then
 		dosym wine64 "${MY_PREFIX}"/bin/wine # 404331
 		dosym wine64-preloader "${MY_PREFIX}"/bin/wine-preloader
@@ -491,7 +494,7 @@ multilib_src_install_all() {
 	# Make wrappers for binaries for handling multiple variants
 	# Note: wrappers instead of symlinks because some are shell which use basename
 	local b
-	for b in "${D%/}${MY_PREFIX}"/bin/*; do
+	for b in "${ED%/}${MY_PREFIX}"/bin/*; do
 		make_wrapper "${b##*/}-${WINE_VARIANT}" "${MY_PREFIX}/bin/${b##*/}"
 	done
 	eshopts_pop
