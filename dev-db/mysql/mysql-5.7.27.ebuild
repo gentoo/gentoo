@@ -303,7 +303,6 @@ src_prepare() {
 		man/zlib_decompress.1 \
 		|| die
 
-
 	if use libressl ; then
 		sed -i 's/OPENSSL_MAJOR_VERSION STREQUAL "1"/OPENSSL_MAJOR_VERSION STREQUAL "2"/' \
 			"${S}/cmake/ssl.cmake" || die
