@@ -1,13 +1,12 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-USE_RUBY="ruby23 ruby24 ruby25"
+USE_RUBY="ruby24 ruby25 ruby26"
 
 RUBY_FAKEGEM_TASK_TEST="test spec NO_CONNECTION=true"
 
-RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 RUBY_FAKEGEM_EXTRADOC="CHANGELOG.md README.md"
 
 inherit ruby-fakegem
@@ -17,10 +16,10 @@ HOMEPAGE="https://github.com/bblimke/webmock"
 
 LICENSE="GPL-2"
 SLOT="3"
-KEYWORDS="amd64 ~arm ~hppa ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
+KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
 IUSE=""
 
-ruby_add_rdepend ">=dev-ruby/addressable-2.3.6 >=dev-ruby/crack-0.3.2 dev-ruby/hashdiff"
+ruby_add_rdepend ">=dev-ruby/addressable-2.3.6 >=dev-ruby/crack-0.3.2 >=dev-ruby/hashdiff-0.4.0:0"
 
 ruby_add_bdepend "test? (
 	dev-ruby/minitest:5
@@ -28,8 +27,7 @@ ruby_add_bdepend "test? (
 	>=dev-ruby/test-unit-3.0.0
 	dev-ruby/rack
 	>=dev-ruby/httpclient-2.8.0
-	>=dev-ruby/patron-0.4.18
-	dev-ruby/http:3 )"
+	|| ( dev-ruby/http:4 dev-ruby/http:3 ) )"
 
 all_ruby_prepare() {
 	# Remove bundler support
@@ -40,9 +38,9 @@ all_ruby_prepare() {
 
 	# There is now optional support for curb and typhoeus which we don't
 	# have in Gentoo yet. em_http_request is available in Gentoo but its
-	# version is too old.
-	sed -i -e '/\(curb\|typhoeus\|em-http\)/d' spec/spec_helper.rb || die
-	rm spec/acceptance/{typhoeus,curb,excon,em_http_request}/* || die
+	# version is too old. patron's latest version is not compatible.
+	sed -i -e '/\(curb\|typhoeus\|em-http\|patron\)/d' spec/spec_helper.rb || die
+	rm spec/acceptance/{typhoeus,curb,excon,em_http_request,patron}/* || die
 
 	# Avoid httpclient specs that require network access, most likely
 	# because mocking does not fully work.
