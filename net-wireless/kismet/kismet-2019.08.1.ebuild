@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python3_6 )
 
 inherit autotools eutils multilib user python-single-r1
 
@@ -104,7 +104,7 @@ src_install() {
 
 	#dodoc CHANGELOG RELEASENOTES.txt README* docs/DEVEL.client docs/README.newcore
 	dodoc CHANGELOG README*
-	newinitd "${FILESDIR}"/${PN}.initd-r2 kismet
+	newinitd "${FILESDIR}"/${PN}.initd-r3 kismet
 	newconfd "${FILESDIR}"/${PN}.confd-r2 kismet
 }
 
