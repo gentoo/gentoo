@@ -23,7 +23,7 @@ else
 		https://bitbucket.org/atlas0fd00m/rfcat/downloads/RfCatDonsCCBootloader-${FIRMWARE_DATE}.hex \
 		https://bitbucket.org/atlas0fd00m/rfcat/downloads/RfCatYS1CCBootloader-${FIRMWARE_DATE}.hex"
 	KEYWORDS="~amd64 ~x86"
-	S="${WORKDIR}/${PN}_${COMMIT}"
+	S="${WORKDIR}/${PN}-${COMMIT}"
 fi
 
 LICENSE="BSD"
