@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-perl/Shell-Guess virtual/perl-ExtUtils-MakeMaker test? ( >=dev-perl/Test2-Suite-0.0.60 >=virtual/perl-Test-Simple-1.302.15 ) dev-lang/perl:=
+DESCRIPTION=Portably generate config for any shell
+EAPI=6
+HOMEPAGE=https://metacpan.org/release/Shell-Config-Generate
+IUSE=test
+KEYWORDS=~amd64
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=dev-perl/Shell-Guess dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/P/PL/PLICEASE/Shell-Config-Generate-0.33.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	71c828c354a4cddced2641dda2695de5
+_md5_=e85a61f434482645228dea111e120e70

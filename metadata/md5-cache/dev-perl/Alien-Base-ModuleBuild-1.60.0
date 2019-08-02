@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=>=dev-perl/Alien-Build-1.200.0 >=dev-perl/Capture-Tiny-0.170.0 >=dev-perl/File-chdir-0.100.500 >=dev-perl/Module-Build-0.400.400 >=dev-perl/Path-Tiny-0.77.0 >=virtual/perl-Archive-Tar-1.400.0 >=virtual/perl-HTTP-Tiny-0.44.0 >=virtual/perl-Scalar-List-Utils-1.450.0 >=virtual/perl-Text-ParseWords-3.260.0 dev-perl/Archive-Extract dev-perl/HTML-Parser dev-perl/Shell-Config-Generate dev-perl/Shell-Guess dev-perl/Sort-Versions dev-perl/URI virtual/perl-JSON-PP virtual/perl-parent test? ( >=dev-perl/Test2-Suite-0.0.71 ) dev-lang/perl:=
+DESCRIPTION=A Module::Build subclass for building Alien:: modules and their libraries
+EAPI=6
+HOMEPAGE=https://metacpan.org/release/Alien-Base-ModuleBuild
+IUSE=test
+KEYWORDS=~amd64
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=>=dev-perl/Alien-Build-1.200.0 >=dev-perl/Capture-Tiny-0.170.0 >=dev-perl/File-chdir-0.100.500 >=dev-perl/Module-Build-0.400.400 >=dev-perl/Path-Tiny-0.77.0 >=virtual/perl-Archive-Tar-1.400.0 >=virtual/perl-HTTP-Tiny-0.44.0 >=virtual/perl-Scalar-List-Utils-1.450.0 >=virtual/perl-Text-ParseWords-3.260.0 dev-perl/Archive-Extract dev-perl/HTML-Parser dev-perl/Shell-Config-Generate dev-perl/Shell-Guess dev-perl/Sort-Versions dev-perl/URI virtual/perl-JSON-PP virtual/perl-parent dev-lang/perl:=
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/P/PL/PLICEASE/Alien-Base-ModuleBuild-1.06.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	71c828c354a4cddced2641dda2695de5
+_md5_=1e7bcd135c2b2f6d3d846f55a2b9ec19
