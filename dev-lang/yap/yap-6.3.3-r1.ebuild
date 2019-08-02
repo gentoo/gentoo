@@ -5,7 +5,7 @@ EAPI=6
 
 inherit flag-o-matic java-pkg-opt-2
 
-PATCHSET_VER="11"
+PATCHSET_VER="12"
 
 DESCRIPTION="YAP is a high-performance Prolog compiler"
 HOMEPAGE="http://www.dcc.fc.up.pt/~vsc/Yap/"
@@ -29,10 +29,7 @@ RDEPEND="sys-libs/zlib
 DEPEND="${RDEPEND}
 	doc? ( app-text/texi2html )"
 
-PATCHES=(
-	"${WORKDIR}"/${PV}
-	"${FILESDIR}"/${PN}-6.3.3-fix-gcc9.patch
-)
+PATCHES=( "${WORKDIR}"/${PV} )
 
 src_prepare() {
 	default
@@ -64,6 +61,7 @@ src_configure() {
 
 	econf \
 		--libdir=/usr/$(get_libdir) \
+		--disable-chr \
 		--disable-prism \
 		--disable-gecode \
 		$(use_enable !static dynamic-loading) \
