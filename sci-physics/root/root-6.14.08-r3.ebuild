@@ -18,10 +18,10 @@ SRC_URI="https://root.cern/download/${PN}_v${PV}.source.tar.gz"
 
 IUSE="+X aqua +asimage +c++11 c++14 c++17 cuda +davix emacs +examples
 	fits fftw fortran +gdml graphviz +gsl http jemalloc kerberos ldap
-	libcxx memstat +minuit mysql odbc +opengl oracle postgres prefix
-	pythia6 pythia8 +python qt5 R +roofit root7 shadow sqlite +ssl
-	table +tbb test +threads +tiff +tmva +unuran vc xinetd +xml xrootd
-	zeroconf"
+	libcxx memstat +minuit mysql nosplash odbc +opengl oracle postgres
+	prefix pythia6 pythia8 +python qt5 R +roofit root7 shadow sqlite
+	+ssl table +tbb test +threads +tiff +tmva +unuran vc xinetd +xml
+	xrootd zeroconf"
 
 SLOT="$(ver_cut 1-2)/$(ver_cut 3)"
 LICENSE="LGPL-2.1 freedist MSttfEULA LGPL-3 libpng UoI-NCSA"
@@ -130,6 +130,10 @@ src_prepare() {
 
 	# CSS should use local images
 	sed -i -e 's,http://.*/,,' etc/html/ROOT.css || die "html sed failed"
+
+	if use nosplash; then
+		sed -i -e '/bool gNoLogo/s@false@true@' rootx/src/rootx.cxx
+	fi
 
 	hprefixify core/clingutils/CMakeLists.txt
 }
