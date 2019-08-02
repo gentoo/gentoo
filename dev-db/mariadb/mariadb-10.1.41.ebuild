@@ -267,6 +267,11 @@ src_prepare() {
 	use oqgraph || _disable_engine oqgraph
 	_disable_engine example
 
+	# Don't clash with dev-db/mysql-connector-c
+	sed -i -e 's/ my_print_defaults.1//' \
+		-e 's/ perror.1//' \
+		"${S}"/man/CMakeLists.txt || die
+
 	cmake-utils_src_prepare
 	java-pkg-opt-2_src_prepare
 }

@@ -296,6 +296,17 @@ src_prepare() {
 		_disable_engine mroonga
 	fi
 
+	# Fix static bindings in galera replication
+	sed -i -e 's~add_library(wsrep_api_v26$~add_library(wsrep_api_v26 STATIC~' \
+		"${S}"/wsrep-lib/wsrep-API/CMakeLists.txt || die
+	sed -i -e 's~add_library(wsrep-lib$~add_library(wsrep-lib STATIC~' \
+		"${S}"/wsrep-lib/src/CMakeLists.txt || die
+
+	# Don't clash with dev-db/mysql-connector-c
+	sed -i -e 's/ my_print_defaults.1//' \
+		-e 's/ perror.1//' \
+		"${S}"/man/CMakeLists.txt || die
+
 	cmake-utils_src_prepare
 	java-pkg-opt-2_src_prepare
 }

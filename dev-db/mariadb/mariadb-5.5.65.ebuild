@@ -229,6 +229,11 @@ src_prepare() {
 		_disable_engine oqgraph
 	fi
 
+	# Don't clash with dev-db/mysql-connector-c
+	sed -i -e 's/ my_print_defaults.1//' \
+		-e 's/ perror.1//' \
+		"${S}"/man/CMakeLists.txt || die
+
 	cmake-utils_src_prepare
 }
 
