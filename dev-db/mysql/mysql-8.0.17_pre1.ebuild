@@ -2,16 +2,16 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
-MY_EXTRAS_VER="20190802-0031Z"
+MY_EXTRAS_VER="20190802-1549Z"
 
 CMAKE_MAKEFILE_GENERATOR=emake
 
 # Keeping eutils in EAPI=6 for emktemp in pkg_config
 
 inherit cmake-utils eutils flag-o-matic linux-info \
-	prefix toolchain-funcs user
+	prefix toolchain-funcs
 
-MY_PV="${PV//_pre}"
+MY_PV="${PV//_pre*}"
 MY_P="${PN}-${MY_PV}"
 
 S="${WORKDIR}/${PN}-${MY_PV}"
@@ -32,7 +32,7 @@ DESCRIPTION="A fast, multi-threaded, multi-user SQL database server"
 LICENSE="GPL-2"
 SLOT="0/21"
 IUSE="cjk cracklib debug experimental jemalloc latin1 libressl numa +perl profiling
-	selinux static static-libs tcmalloc test"
+	router selinux ssl static tcmalloc test"
 
 # Tests always fail when libressl is enabled due to hard-coded ciphers in the tests
 RESTRICT="libressl? ( test )"
@@ -74,10 +74,8 @@ COMMON_DEPEND="net-misc/curl:=
 	>=app-arch/lz4-0_p131:=
 	dev-libs/libedit
 	cjk? ( app-text/mecab:= )
-	experimental? (
-		dev-libs/libevent:=
-		net-libs/libtirpc:=
-	)
+	dev-libs/libevent:=
+	net-libs/libtirpc:=
 	numa? ( sys-process/numactl )
 	>=sys-libs/zlib-1.2.3:0=
 	jemalloc? ( dev-libs/jemalloc:0= )
@@ -86,8 +84,10 @@ COMMON_DEPEND="net-misc/curl:=
 		sys-process/procps:0=
 	)
 	tcmalloc? ( dev-util/google-perftools:0= )
-	!libressl? ( >=dev-libs/openssl-1.0.0:0= )
-	libressl? ( dev-libs/libressl:0= )
+	ssl? (
+		!libressl? ( >=dev-libs/openssl-1.0.0:0= )
+		libressl? ( dev-libs/libressl:0= )
+	)
 "
 DEPEND="${COMMON_DEPEND}
 	|| ( >=sys-devel/gcc-3.4.6 >=sys-devel/gcc-apple-4.0 )
@@ -95,12 +95,18 @@ DEPEND="${COMMON_DEPEND}
 	dev-libs/libevent
 	experimental? ( net-libs/rpcsvc-proto )
 	static? ( sys-libs/ncurses[static-libs] )
-	test? ( dev-perl/JSON )
+	test? (
+		acct-group/mysql acct-user/mysql
+		dev-perl/JSON
+	)
 "
 RDEPEND="${COMMON_DEPEND}
 	!dev-db/mariadb !dev-db/mariadb-galera !dev-db/percona-server !dev-db/mysql-cluster
 	selinux? ( sec-policy/selinux-mysql )
-	!prefix? ( dev-db/mysql-init-scripts )
+	!prefix? (
+		acct-group/mysql acct-user/mysql
+		dev-db/mysql-init-scripts
+	)
 "
 # For other stuff to bring us in
 # dev-perl/DBD-mysql is needed by some scripts installed by MySQL
@@ -229,19 +235,12 @@ src_prepare() {
 		echo > "${S}/support-files/SELinux/CMakeLists.txt" || die
 	fi
 
-	## Remove bundled libs so we cannot accidentally use them
-	## We keep extra/lz4 directory because we use extra/lz4/xxhash.c via sql/CMakeLists.txt:394
-	#rm -rv \
-	#	"${S}"/extra/libevent \
-	#	"${S}"/extra/zlib \
-	#	|| die
+	# man pages for client-lib tools we don't install
+	rm \
+		man/perror.1 \
+		man/zlib_decompress.1 \
+		|| die
 
-	if use libressl ; then
-		sed -i 's/OPENSSL_MAJOR_VERSION STREQUAL "1"/OPENSSL_MAJOR_VERSION STREQUAL "2"/' \
-			"${S}/cmake/ssl.cmake" || die
-	fi
-
-	#sed -i 's~ADD_SUBDIRECTORY(storage/ndb)~~' CMakeLists.txt || die
 	cmake-utils_src_prepare
 }
 
@@ -249,9 +248,7 @@ src_configure(){
 	# Bug #114895, bug #110149
 	filter-flags "-O" "-O[01]"
 
-	append-cflags -fPIC
-
-	append-cxxflags -felide-constructors -fPIC
+	append-cxxflags -felide-constructors
 
 	# bug #283926, with GCC4.4, this is required to get correct behavior.
 	append-flags -fno-strict-aliasing
@@ -282,6 +279,7 @@ src_configure(){
 		### TODO: make this system but issues with UTF-8 prevent it
 		-DWITH_EDITLINE=system
 		-DWITH_ZLIB=system
+		-DWITH_SSL=$(usex ssl system wolfssl)
 		-DWITH_LIBWRAP=0
 		-DENABLED_LOCAL_INFILE=1
 		-DMYSQL_UNIX_ADDR="${EPREFIX}/var/run/mysqld/mysqld.sock"
@@ -290,16 +288,16 @@ src_configure(){
 		# The build forces this to be defined when cross-compiling. We pass it
 		# all the time for simplicity and to make sure it is actually correct.
 		-DSTACK_DIRECTION=$(tc-stack-grows-down && echo -1 || echo 1)
+		-DCMAKE_POSITION_INDEPENDENT_CODE=ON
 		-DWITH_CURL=system
 		-DWITH_BOOST="${S}/boost"
+		-DWITH_ROUTER=$(usex router ON OFF)
 	)
 	if use test ; then
 		mycmakeargs+=( -DINSTALL_MYSQLTESTDIR=share/mysql/mysql-test )
 	else
 		mycmakeargs+=( -DINSTALL_MYSQLTESTDIR='' )
 	fi
-
-	mycmakeargs+=( -DWITH_SSL=system )
 
 	mycmakeargs+=( -DWITHOUT_CLIENTLIBS=YES )
 
@@ -318,7 +316,6 @@ src_configure(){
 		-DWITH_PROTOBUF=bundled
 		-DWITH_MECAB=$(usex cjk system OFF)
 		-DWITH_NUMA=$(usex numa ON OFF)
-		-DWITH_RAPID=$(usex experimental ON OFF)
 		# Our dev-libs/rapidjson doesn't carry necessary fixes for std::regex
 		-DWITH_RAPIDJSON=bundled
 	)
@@ -548,11 +545,11 @@ src_install() {
 	eprefixify "${TMPDIR}/my.cnf"
 	doins "${TMPDIR}/my.cnf"
 	insinto "${MY_SYSCONFDIR#${EPREFIX}}/mysql.d"
-	cp "${FILESDIR}/my.cnf.distro-client" "${TMPDIR}/50-distro-client.cnf" || die
+	cp "${FILESDIR}/my.cnf-8.0.distro-client" "${TMPDIR}/50-distro-client.cnf" || die
 	eprefixify "${TMPDIR}/50-distro-client.cnf"
 	doins "${TMPDIR}/50-distro-client.cnf"
 
-	mycnf_src="my.cnf.distro-server"
+	mycnf_src="my.cnf-8.0.distro-server"
 	sed -e "s!@DATADIR@!${MY_DATADIR}!g" \
 		"${FILESDIR}/${mycnf_src}" \
 		> "${TMPDIR}/my.cnf.ok" || die
@@ -564,7 +561,7 @@ src_install() {
 
 	if use latin1 ; then
 		sed -i \
-			-e "/character-set/s|utf8|latin1|g" \
+			-e "/character-set/s|utf8mb4|latin1|g" \
 			"${TMPDIR}/my.cnf.ok" || die
 	fi
 
@@ -574,6 +571,15 @@ src_install() {
 
 	#Remove mytop if perl is not selected
 	[[ -e "${ED}/usr/bin/mytop" ]] && ! use perl && rm -f "${ED}/usr/bin/mytop"
+
+	if use router ; then
+		rm -rf \
+			"${ED}/usr/LICENSE.router" \
+			"${ED}/usr/README.router" \
+			"${ED}/usr/run" \
+			"${ED}/usr/var" \
+			|| die
+	fi
 
 	# Kill old libmysqclient_r symlinks if they exist. Time to fix what depends on them.
 	find "${D}" -name 'libmysqlclient_r.*' -type l -delete || die
