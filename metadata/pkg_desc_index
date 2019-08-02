@@ -762,7 +762,7 @@ app-emulation/ganeti-instance-debootstrap 0.11-r1: Scripts to build Ganeti VMs w
 app-emulation/ganeti-instance-image 0.6: Scripts to build out CD or image based VMs using Ganeti
 app-emulation/grub-xen-host 1.0: Grub2 built as a PV grub per the Xen PV Boot Protocol
 app-emulation/hercules 3.10: Hercules System/370, ESA/390 and zArchitecture Mainframe Emulator
-app-emulation/libcacard 0.1.2 2.5.1 2.6.0: virtual Common Access Card (CAC) library emulator
+app-emulation/libcacard 2.6.0: virtual Common Access Card (CAC) library emulator
 app-emulation/libdsk 1.5.8: LIBDSK is a library for accessing discs and disc image files
 app-emulation/libvirt 5.2.0-r2: C toolkit to manipulate virtual machines
 app-emulation/libvirt-glib 1.0.0-r1 2.0.0: GLib and GObject mappings for libvirt
@@ -6257,7 +6257,7 @@ dev-util/cproto 4.7e: Generate C function prototypes from C source code
 dev-util/cpuinfo-collection 20070104: huge collection of /proc/cpuinfo files
 dev-util/cram 0.7: Functional testing framework for command line applications
 dev-util/cscope 15.8a-r1: Interactively examine a C program
-dev-util/ctags 20161028 20190331: Exuberant Ctags creates tags files for code browsing in editors
+dev-util/ctags 20190331: Exuberant Ctags creates tags files for code browsing in editors
 dev-util/cucumber 3.1.2: Executable feature scenarios
 dev-util/cucumber-core 3.2.1: Executable feature scenarios
 dev-util/cucumber-expressions 6.0.1: a simpler alternative to Regular Expressions
