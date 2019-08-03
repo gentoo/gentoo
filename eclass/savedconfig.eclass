@@ -38,6 +38,13 @@ case ${EAPI} in
 	*) die "EAPI=${EAPI:-0} is not supported" ;;
 esac
 
+# @ECLASS-VARIABLE: _SAVEDCONFIG_CONFIGURATION_FILE
+# @DEFAULT_UNSET
+# @INTERNAL
+# @DESCRIPTION:
+# Path of configuration file, relative to /etc/portage/savedconfig,
+# restored by restore_config() and saved by save_config().
+
 # @FUNCTION: save_config
 # @USAGE: <config files to save>
 # @DESCRIPTION:
@@ -51,20 +58,26 @@ save_config() {
 	fi
 	[[ $# -eq 0 ]] && die "Usage: save_config <files>"
 
-	local dest="/etc/portage/savedconfig/${CATEGORY}"
-	if [[ $# -eq 1 && -f $1 ]] ; then
-		# Just one file, so have the ${PF} be that config file
-		dodir "${dest}"
-		cp "$@" "${ED%/}/${dest}/${PF}" || die "failed to save $*"
+	local configfile
+	if [[ -n ${_SAVEDCONFIG_CONFIGURATION_FILE} ]] ; then
+		configfile="/etc/portage/savedconfig/${_SAVEDCONFIG_CONFIGURATION_FILE}"
 	else
-		# A dir, or multiple files, so have the ${PF} be a dir
+		configfile="/etc/portage/savedconfig/${CATEGORY}/${PF}"
+	fi
+
+	if [[ $# -eq 1 && -f $1 ]] ; then
+		# Just one file, so have the ${configfile} be that config file
+		dodir "${configfile%/*}"
+		cp "$@" "${ED%/}/${configfile}" || die "failed to save $*"
+	else
+		# A dir, or multiple files, so have the ${configfile} be a dir
 		# with all the saved stuff below it
-		dodir "${dest}/${PF}"
-		treecopy "$@" "${ED%/}/${dest}/${PF}" || die "failed to save $*"
+		dodir "${configfile}"
+		treecopy "$@" "${ED%/}/${configfile}" || die "failed to save $*"
 	fi
 
 	elog "Your configuration for ${CATEGORY}/${PF} has been saved in "
-	elog "/etc/portage/savedconfig/${CATEGORY}/${PF} for your editing pleasure."
+	elog "\"${configfile}\" for your editing pleasure."
 	elog "You can edit these files by hand and remerge this package with"
 	elog "USE=savedconfig to customise the configuration."
 	elog "You can rename this file/directory to one of the following for"
@@ -76,7 +89,7 @@ save_config() {
 # @FUNCTION: restore_config
 # @USAGE: <config files to restore>
 # @DESCRIPTION:
-# Restores the configuation saved ebuild previously potentially with user edits.
+# Restores the package's configuration file probably with user edits.
 # You can restore a single file or a whole bunch, just make sure you call
 # restore_config with all of the files to restore at the same time.
 #
@@ -107,10 +120,11 @@ restore_config() {
 		[[ -r ${configfile} ]] || configfile=${base}/${CHOST}/${check}
 		[[ -r ${configfile} ]] || configfile=${base}/${check}
 		einfo "Checking existence of ${configfile} ..."
-		if [[ -r "${configfile}" ]]; then
-			einfo "found ${configfile}"
-			found=${configfile};
-			break;
+		if [[ -r "${configfile}" ]] ; then
+			einfo "Found \"${configfile}\""
+			found=${configfile}
+			_SAVEDCONFIG_CONFIGURATION_FILE=${configfile#${base}/}
+			break
 		fi
 	done
 	if [[ -f ${found} ]]; then
