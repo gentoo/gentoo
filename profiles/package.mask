@@ -30,6 +30,13 @@
 #--- END OF EXAMPLES ---
 
 # Matt Turner <mattst88@gentoo.org> (2019-08-02)
+# Unmaintained in Gentoo. Incompatible with guile-2
+# Masked for removal in 30 days, Bugs #685540, #629058
+sci-libs/libctl
+sci-physics/harminv
+sci-physics/meep
+
+# Matt Turner <mattst88@gentoo.org> (2019-08-02)
 # Unmaintained. Incompatible with guile-2
 # Masked for removal in 30 days, Bugs #641864, #647536, #688244
 x11-libs/guile-gtk
