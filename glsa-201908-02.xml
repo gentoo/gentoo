@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201908-02">
+  <title>libpng: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in libpng, the worst of
+    which could result in a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">libpng</product>
+  <announced>2019-08-03</announced>
+  <revised count="1">2019-08-03</revised>
+  <bug>683366</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/libpng" auto="yes" arch="*">
+      <unaffected range="ge" slot="0">1.6.37</unaffected>
+      <vulnerable range="lt" slot="0">1.6.37</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>libpng is a standard library used to process PNG (Portable Network
+      Graphics) images. It is used by several programs, including web browsers
+      and potentially server processes.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in libpng. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker, by enticing a user to process a specially crafted PNG
+      file, could cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All libpng users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-libs/libpng-1.6.37"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-14048">CVE-2018-14048</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-14550">CVE-2018-14550</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-7317">CVE-2019-7317</uri>
+  </references>
+  <metadata tag="requester" timestamp="2019-04-27T06:35:05Z">BlueKnight</metadata>
+  <metadata tag="submitter" timestamp="2019-08-03T11:26:12Z">b-man</metadata>
+</glsa>
