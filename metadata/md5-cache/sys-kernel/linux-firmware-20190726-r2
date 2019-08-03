@@ -11,4 +11,4 @@ RESTRICT=binchecks strip unknown-license? ( bindist )
 SLOT=0
 SRC_URI=https://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git/snapshot/linux-firmware-dff98c6c57383fe343407bcb7b6e775e0b87274f.tar.gz -> linux-firmware-20190726.tar.gz
 _eclasses_=mount-boot	1e82d96b7a7dcb483b412497a90bb646	portability	2b88d3ecc35035a3b8ab628b49cafb0e	savedconfig	1de3f25f1039cd1772fbf707ef87dbe3
-_md5_=7097a4665b044af9805fffe341df4bda
+_md5_=1fedf758ae16a43c0df9e8961bd6c7d0
