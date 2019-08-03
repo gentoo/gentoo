@@ -35,7 +35,7 @@ acct-user/burp 0: User for the app-backup/burp server
 acct-user/dnscrypt-proxy 0: User for net-dns/dnscrypt-proxy
 acct-user/ftp 0: File Transfer Protocol server user
 acct-user/mail 0: Mail program user
-acct-user/man 0: man user
+acct-user/man 0: user for man page viewer
 acct-user/postmaster 0: Postmaster user
 acct-user/qemu 0: System user: qemu
 acct-user/rtkit 0: User for the Realtime Policy and Watchdog Daemon
