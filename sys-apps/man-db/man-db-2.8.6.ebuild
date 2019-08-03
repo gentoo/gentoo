@@ -1,9 +1,9 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit ltprune user versionator
+inherit systemd
 
 DESCRIPTION="a man replacement that utilizes berkdb instead of flat files"
 HOMEPAGE="http://www.nongnu.org/man-db/"
@@ -17,7 +17,7 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="berkdb +gdbm +manpager nls seccomp selinux static-libs zlib"
+IUSE="berkdb +gdbm +manpager nls +seccomp selinux static-libs zlib"
 
 CDEPEND="
 	!sys-apps/man
@@ -29,8 +29,8 @@ CDEPEND="
 	seccomp? ( sys-libs/libseccomp )
 	zlib? ( sys-libs/zlib )
 "
-DEPEND="
-	${CDEPEND}
+DEPEND="${CDEPEND}"
+BDEPEND="
 	app-arch/xz-utils
 	virtual/pkgconfig
 	nls? (
@@ -40,17 +40,13 @@ DEPEND="
 "
 RDEPEND="
 	${CDEPEND}
+	acct-group/man
+	acct-user/man
 	selinux? ( sec-policy/selinux-mandb )
 "
 PDEPEND="manpager? ( app-text/manpager )"
 
-PATCHES=( "${FILESDIR}"/${P}-berkdb_build_fix.patch )
-
 pkg_setup() {
-	# Create user now as Makefile in src_install does setuid/chown
-	enewgroup man 15
-	enewuser man 13 -1 /usr/share/man man
-
 	if (use gdbm && use berkdb) || (use !gdbm && use !berkdb) ; then #496150
 		ewarn "Defaulting to USE=gdbm due to ambiguous berkdb/gdbm USE flag settings"
 	fi
@@ -59,9 +55,9 @@ pkg_setup() {
 src_configure() {
 	export ac_cv_lib_z_gzopen=$(usex zlib)
 	local myeconfargs=(
-		--docdir='$(datarootdir)'/doc/${PF}
 		--with-systemdtmpfilesdir="${EPREFIX}"/usr/lib/tmpfiles.d
-		--enable-setuid
+		--with-systemdsystemunitdir="$(systemd_get_systemunitdir)"
+		--disable-setuid #662438
 		--enable-cache-owner=man
 		--with-sections="1 1p 8 2 3 3p 4 5 6 7 9 0p tcl n l p o 1x 2x 3x 4x 5x 6x 7x 8x"
 		$(use_enable nls)
@@ -75,26 +71,33 @@ src_configure() {
 	sed -i \
 		-e '/^#DEFINE.*\<[nt]roff\>/{s:^#::;s:$: -c:}' \
 		src/man_db.conf || die
+
+	cat > 15man-db <<-EOF || die
+	SANDBOX_PREDICT="/var/cache/man"
+	EOF
 }
 
 src_install() {
 	default
 	dodoc docs/{HACKING,TODO}
-	prune_libtool_files
+	find "${ED}" -name "*.la" -delete || die
 
 	exeinto /etc/cron.daily
-	newexe "${FILESDIR}"/man-db.cron man-db #289884
+	newexe "${FILESDIR}"/man-db.cron-r1 man-db #289884
+
+	insinto /etc/sandbox.d
+	doins 15man-db
 }
 
 pkg_preinst() {
-	local cachedir="${EROOT}var/cache/man"
+	local cachedir="${EROOT}/var/cache/man"
 	# If the system was already exploited, and the attacker is hiding in the
 	# cachedir of the old man-db, let's wipe them out.
 	# see bug  #602588 comment 18
 	local _replacing_version=
 	local _setgid_vuln=0
 	for _replacing_version in ${REPLACING_VERSIONS}; do
-		if version_is_at_least '2.7.6.1-r2' "${_replacing_version}"; then
+		if ver_test '2.7.6.1-r2' -le "${_replacing_version}"; then
 			debug-print "Skipping security bug #602588 ... existing installation (${_replacing_version}) should not be affected!"
 		else
 			_setgid_vuln=1
@@ -117,8 +120,8 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	if [[ $(get_version_component_range 2 ${REPLACING_VERSIONS}) -lt 7 ]] ; then
+	if [[ $(ver_cut 2 ${REPLACING_VERSIONS}) -lt 7 ]] ; then
 		einfo "Rebuilding man-db from scratch with new database format!"
-		mandb --quiet --create
+		su man -s /bin/sh -c 'mandb --quiet --create' 2>/dev/null
 	fi
 }
