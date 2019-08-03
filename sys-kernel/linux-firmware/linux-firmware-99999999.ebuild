@@ -27,6 +27,7 @@ RESTRICT="binchecks strip
 
 BDEPEND="initramfs? ( app-arch/cpio )"
 
+#add anything else that collides to this
 RDEPEND="!savedconfig? (
 		redistributable? (
 			!sys-firmware/alsa-firmware[alsa_cards_ca0132]
@@ -71,7 +72,9 @@ RDEPEND="!savedconfig? (
 		)
 	)"
 
-#add anything else that collides to this
+pkg_pretend() {
+	use initramfs && mount-boot_pkg_pretend
+}
 
 src_unpack() {
 	if [[ ${PV} == 99999999* ]]; then
@@ -317,7 +320,8 @@ pkg_preinst() {
 		ewarn "USE=savedconfig is active. You must handle file collisions manually."
 	fi
 
-	mount-boot_pkg_preinst
+	# Make sure /boot is available if needed.
+	use initramfs && mount-boot_pkg_preinst
 }
 
 pkg_postinst() {
@@ -335,5 +339,16 @@ pkg_postinst() {
 		fi
 	done
 
-	mount-boot_pkg_postinst
+	# Don't forget to umount /boot if it was previously mounted by us.
+	use initramfs && mount-boot_pkg_postinst
+}
+
+pkg_prerm() {
+	# Make sure /boot is mounted so that we can remove /boot/amd-uc.img!
+	use initramfs && mount-boot_pkg_prerm
+}
+
+pkg_postrm() {
+	# Don't forget to umount /boot if it was previously mounted by us.
+	use initramfs && mount-boot_pkg_postrm
 }
