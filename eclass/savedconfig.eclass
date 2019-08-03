@@ -113,20 +113,24 @@ restore_config() {
 
 	use savedconfig || return
 
-	local found check configfile
+	local found check checked configfile
 	local base=${PORTAGE_CONFIGROOT%/}/etc/portage/savedconfig
 	for check in {${CATEGORY}/${PF},${CATEGORY}/${P},${CATEGORY}/${PN}}; do
-		configfile=${base}/${CTARGET}/${check}
-		[[ -r ${configfile} ]] || configfile=${base}/${CHOST}/${check}
+		configfile=${base}/${CTARGET:+"${CTARGET}/"}${check}
+		[[ -r ${configfile} ]] || configfile=${base}/${CHOST:+"${CHOST}/"}${check}
 		[[ -r ${configfile} ]] || configfile=${base}/${check}
-		einfo "Checking existence of ${configfile} ..."
+		[[ "${checked}" == *"${configfile} "* ]] && continue
+		einfo "Checking existence of \"${configfile}\" ..."
 		if [[ -r "${configfile}" ]] ; then
 			einfo "Found \"${configfile}\""
 			found=${configfile}
 			_SAVEDCONFIG_CONFIGURATION_FILE=${configfile#${base}/}
 			break
 		fi
+
+		checked+="${configfile} "
 	done
+
 	if [[ -f ${found} ]]; then
 		elog "Building using saved configfile \"${found}\""
 		if [ $# -gt 0 ]; then
