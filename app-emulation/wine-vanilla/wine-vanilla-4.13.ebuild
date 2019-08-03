@@ -109,7 +109,7 @@ RDEPEND="${COMMON_DEPEND}
 	!app-emulation/wine:0
 	dos? ( >=games-emulation/dosbox-0.74_p20160629 )
 	gecko? ( app-emulation/wine-gecko:2.47[abi_x86_32?,abi_x86_64?] )
-	mono? ( app-emulation/wine-mono:4.8.3 )
+	mono? ( app-emulation/wine-mono:4.9.0 )
 	perl? (
 		dev-lang/perl
 		dev-perl/XML-Simple
@@ -406,7 +406,7 @@ multilib_src_configure() {
 		$(use_enable test tests)
 		$(use_with truetype freetype)
 		$(use_with udev)
-		$(use_with v4l)
+		$(use_with v4l v4l2)
 		$(use_with vkd3d)
 		$(use_with vulkan)
 		$(use_with X x)
