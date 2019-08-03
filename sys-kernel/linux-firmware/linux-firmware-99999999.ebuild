@@ -274,13 +274,13 @@ src_prepare() {
 	fi
 
 	echo "# Remove files that shall not be installed from this list." > ${PN}.conf
-	find * ! -type d \( ! -name ${PN}.conf -o -name amd-uc.img \) >> ${PN}.conf
+	find * ! -type d ! \( -name ${PN}.conf -o -name amd-uc.img \) >> ${PN}.conf
 
 	if use savedconfig; then
 		restore_config ${PN}.conf
 
 		ebegin "Removing all files not listed in config"
-		find ! -type d ! -name ${PN}.conf -printf "%P\n" \
+		find ! -type d ! \( -name ${PN}.conf -o -name amd-uc.img \) -printf "%P\n" \
 			| grep -Fvx -f <(grep -v '^#' ${PN}.conf \
 				|| die "grep failed, empty config file?") \
 			| xargs -d '\n' --no-run-if-empty rm
