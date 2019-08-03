@@ -38,6 +38,8 @@ PATCHES=(
 	"${FILESDIR}/zig-0.4.0-r1-suppress-warnings.patch"
 )
 
+LLVM_MAX_SLOT=8
+
 src_prepare() {
 	if use experimental; then
 		sed -i '/^NEED_TARGET(/d' cmake/Findllvm.cmake || die "unable to modify cmake/Findllvm.cmake"
