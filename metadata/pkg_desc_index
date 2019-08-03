@@ -9316,7 +9316,6 @@ sci-libs/keras-applications 1.0.7: Keras deep learning library reference impleme
 sci-libs/keras-preprocessing 1.0.9: Easy data preprocessing and data augmentation for deep learning models
 sci-libs/lapack-reference 3.2.1-r4: FORTRAN reference implementation of LAPACK Linear Algebra PACKage
 sci-libs/libcerf 1.5: Efficient and accurate implementation of complex error functions
-sci-libs/libctl 3.1: Guile-based library for scientific simulations
 sci-libs/libdap 3.18.1: Implementation of a C++ SDK for DAP 2.0 and 3.2
 sci-libs/libgeotiff 1.4.1-r1: Library for reading TIFF files with embedded tags for geographic information
 sci-libs/libint 1.1.6: Matrix elements (integrals) evaluation over Cartesian Gaussian functions
