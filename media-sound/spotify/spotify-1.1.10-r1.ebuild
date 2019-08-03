@@ -16,13 +16,11 @@ IUSE="libnotify libressl systray pax_kernel"
 RESTRICT="mirror strip"
 
 BDEPEND=">=dev-util/patchelf-0.10"
-# zenity needed for filepicker
 RDEPEND="
 	dev-libs/nss
 	dev-python/dbus-python
 	dev-python/pygobject:3
 	gnome-base/gconf
-	gnome-extra/zenity
 	libnotify? ( x11-libs/libnotify )
 	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:0= )
@@ -92,7 +90,7 @@ src_install() {
 		pax-mark z "${ED}${SPOTIFY_HOME}/${PN}" || die
 		pax-mark m "${ED}${SPOTIFY_HOME}/${PN}" || die
 		eqawarn "You have set USE=pax_kernel meaning that you intend to run"
-		eqawarn "${PN} under a PaX enabled kernel.  To do so, we must modify"
+		eqawarn "${PN} under a PaX enabled kernel.	To do so, we must modify"
 		eqawarn "the ${PN} binary itself and this *may* lead to breakage!  If"
 		eqawarn "you suspect that ${PN} is being broken by this modification,"
 		eqawarn "please open a bug."
