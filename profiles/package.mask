@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Hans de Graaff <graaff@gentoo.org> (2019-08-03)
+# ruby24-only, no longer compiles with gcc 9, last release in 2009,
+# upstream gone, no reverse dependencies.
+# Masked for removal in 30 days, bug #691302
+dev-ruby/priorityqueue
+
 # Matt Turner <mattst88@gentoo.org> (2019-08-02)
 # Incompatible with guile-2
 # Masked for removal in 30 days, Bugs #592188
