@@ -3,9 +3,9 @@
 
 # Can switch to EAPI=7 when wxwidgets eclass also supports it
 EAPI=6
-PYTHON_COMPAT=( python3_{5,6,7} )
+PYTHON_COMPAT=( python2_7 )
 
-WX_GTK_VER="3.0-gtk3"
+WX_GTK_VER="3.0"
 
 inherit check-reqs cmake-utils eapi7-ver eutils gnome2-utils python-single-r1 toolchain-funcs wxwidgets xdg-utils
 
@@ -15,7 +15,7 @@ SRC_URI="https://launchpad.net/${PN}/5.0/${PV}/+download/${P}.tar.xz"
 
 LICENSE="GPL-2+ GPL-3+ Boost-1.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="doc examples github +ngspice occ +oce openmp +python"
 
 REQUIRED_USE="
@@ -23,9 +23,9 @@ REQUIRED_USE="
 	?? ( occ oce )
 "
 
-COMMON_DEPEND="x11-libs/wxGTK:${WX_GTK_VER}[X,opengl]
+COMMON_DEPEND=">=x11-libs/wxGTK-3.0.2:${WX_GTK_VER}[X,opengl]
 	python? (
-		dev-python/wxpython:4.0[${PYTHON_USEDEP}]
+		dev-python/wxpython:${WX_GTK_VER}[opengl,${PYTHON_USEDEP}]
 		${PYTHON_DEPS}
 	)
 	>=dev-libs/boost-1.61[context,nls,threads,python?,${PYTHON_USEDEP}]
@@ -51,6 +51,7 @@ CHECKREQS_DISK_BUILD="800M"
 
 PATCHES=(
 	"${FILESDIR}"/"${PN}-5.1.0-help.patch"
+	"${FILESDIR}"/"${PN}-5.1.0-swig-4.0.0.patch"
 )
 
 pkg_setup() {
@@ -70,8 +71,6 @@ src_configure() {
 		-DKICAD_SCRIPTING="$(usex python)"
 		-DKICAD_SCRIPTING_MODULES="$(usex python)"
 		-DKICAD_SCRIPTING_WXPYTHON="$(usex python)"
-		-DKICAD_SCRIPTING_WXPYTHON_PHOENIX="$(usex python)"
-		-DKICAD_SCRIPTING_PYTHON3="$(usex python)"
 		-DKICAD_SCRIPTING_ACTION_MENU="$(usex python)"
 		-DKICAD_SPICE="$(usex ngspice)"
 		-DKICAD_USE_OCC="$(usex occ)"
