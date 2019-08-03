@@ -316,6 +316,8 @@ pkg_preinst() {
 	if use savedconfig; then
 		ewarn "USE=savedconfig is active. You must handle file collisions manually."
 	fi
+
+	mount-boot_pkg_preinst
 }
 
 pkg_postinst() {
@@ -332,4 +334,6 @@ pkg_postinst() {
 			break
 		fi
 	done
+
+	mount-boot_pkg_postinst
 }
