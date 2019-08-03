@@ -7,6 +7,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Thomas Deutschmann <whissi@gentoo.org> (2019-08-03)
+# Early microcode loading is only supported on amd64 & x86
+sys-kernel/linux-firmware initramfs
+
 # Lars Wendler <polynomial-c@gentoo.org> (2019-07-26)
 # Requires dev-libs/gumbo which is only keyworded for amd64 and x86
 mail-client/claws-mail litehtml
