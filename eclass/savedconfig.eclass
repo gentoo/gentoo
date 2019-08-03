@@ -128,14 +128,14 @@ restore_config() {
 		fi
 	done
 	if [[ -f ${found} ]]; then
-		elog "Building using saved configfile ${found}"
+		elog "Building using saved configfile \"${found}\""
 		if [ $# -gt 0 ]; then
 			cp -pPR	"${found}" "$1" || die "Failed to restore ${found} to $1"
 		else
 			die "need to know the restoration filename"
 		fi
 	elif [[ -d ${found} ]]; then
-		elog "Building using saved config directory ${found}"
+		elog "Building using saved config directory \"${found}\""
 		local dest=${PWD}
 		pushd "${found}" > /dev/null
 		treecopy . "${dest}" || die "Failed to restore ${found} to $1"
@@ -147,7 +147,7 @@ restore_config() {
 			die "Reading config files failed"
 		fi
 		ewarn "No saved config to restore - please remove USE=savedconfig or"
-		ewarn "provide a configuration file in ${PORTAGE_CONFIGROOT}/etc/portage/savedconfig/${CATEGORY}/${PN}"
+		ewarn "provide a configuration file in ${PORTAGE_CONFIGROOT%/}/etc/portage/savedconfig/${CATEGORY}/${PN}"
 		ewarn "Your config file(s) will not be used this time"
 	fi
 }
