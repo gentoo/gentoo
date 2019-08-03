@@ -53,7 +53,7 @@ RDEPEND="
 	dev-db/lmdb
 	dev-db/sqlite
 	dev-libs/icu
-	>=dev-libs/jsoncpp-1.8.4
+	>=dev-libs/jsoncpp-1.9
 	dev-libs/libpcre
 	dev-libs/nsync
 	dev-libs/openssl:0=
@@ -62,7 +62,7 @@ RDEPEND="
 	media-libs/giflib
 	media-libs/libjpeg-turbo
 	media-libs/libpng:0
-	>=net-libs/grpc-1.16.0
+	>=net-libs/grpc-1.22.0
 	net-misc/curl
 	sys-libs/zlib
 	>=sys-apps/hwloc-2
@@ -82,9 +82,9 @@ RDEPEND="
 		>=dev-python/protobuf-python-3.6.0[${PYTHON_USEDEP}]
 		dev-python/six[${PYTHON_USEDEP}]
 		dev-python/termcolor[${PYTHON_USEDEP}]
-		dev-python/grpcio[${PYTHON_USEDEP}]
+		>=dev-python/grpcio-1.22.0[${PYTHON_USEDEP}]
 		>=dev-python/wrapt-1.11.1[${PYTHON_USEDEP}]
-		>=net-libs/google-cloud-cpp-0.9.0
+		>=net-libs/google-cloud-cpp-0.10.0
 		>=sci-libs/keras-applications-1.0.6[${PYTHON_USEDEP}]
 		>=sci-libs/keras-preprocessing-1.0.5[${PYTHON_USEDEP}]
 		>=sci-visualization/tensorboard-1.13.0[${PYTHON_USEDEP}]
@@ -112,7 +112,7 @@ BDEPEND="
 	)
 	!python? ( dev-lang/python )
 	python? (
-		dev-python/grpcio-tools
+		>=dev-python/grpcio-tools-1.22.0
 	)"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
@@ -120,6 +120,10 @@ S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
 	"${FILESDIR}/tensorflow-1.14.0-0001-systemlibs-unbundle-enum34.patch"
+	"${FILESDIR}/tensorflow-1.14.0-0002-install_headers-fix-paths-of-generated-headers.patch"
+	"${FILESDIR}/tensorflow-1.14.0-0003-systemlibs-jsoncpp-update-header-symlinks-for-jsoncp.patch"
+	"${FILESDIR}/tensorflow-1.14.0-0004-pkgconfig-generate-tensorflow_cc-pkg-config-entry.patch"
+	"${FILESDIR}/tensorflow-1.14.0-0005-gen_git_source-builtins-does-not-exist-in-python2.patch"
 )
 DOCS=( AUTHORS CONTRIBUTING.md ISSUE_TEMPLATE.md README.md RELEASE.md )
 CHECKREQS_MEMORY="5G"
@@ -328,7 +332,7 @@ src_install() {
 	# Generate pkg-config file
 	${PN}/c/generate-pc.sh --prefix="${EPREFIX}"/usr --libdir=$(get_libdir) --version=${MY_PV} || die
 	insinto /usr/$(get_libdir)/pkgconfig
-	doins ${PN}.pc
+	doins ${PN}.pc ${PN}_cc.pc
 
 	for l in libtensorflow{,_framework,_cc}.so; do
 		dolib.so bazel-bin/tensorflow/${l}
