@@ -5,7 +5,7 @@ EAPI=7
 
 inherit acct-user
 
-DESCRIPTION="man user"
+DESCRIPTION="user for man page viewer"
 ACCT_USER_ID=13
 ACCT_USER_HOME=/usr/share/man
 ACCT_USER_HOME_OWNER=root:root
