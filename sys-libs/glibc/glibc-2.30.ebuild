@@ -1142,6 +1142,9 @@ run_locale_gen() {
 	# if the host locales.gen contains no entries, we'll install everything
 	local root="$1"
 	local locale_list="${root}/etc/locale.gen"
+
+	pushd "${ED}"/$(get_libdir)
+
 	if [[ -z $(locale-gen --list --config "${locale_list}") ]] ; then
 		ewarn "Generating all locales; edit /etc/locale.gen to save time/space"
 		locale_list="${root}/usr/share/i18n/SUPPORTED"
@@ -1149,6 +1152,8 @@ run_locale_gen() {
 
 	locale-gen --jobs $(makeopts_jobs) --config "${locale_list}" \
 		--destdir "${root}"
+
+	popd
 }
 
 glibc_do_src_install() {
@@ -1333,6 +1338,7 @@ glibc_do_src_install() {
 	# Generate all locales if this is a native build as locale generation
 	if use compile-locales && ! is_crosscompile ; then
 		run_locale_gen "${ED}"
+		sed -e 's:COMPILED_LOCALES="":COMPILED_LOCALES="1":' -i "${ED}"/usr/sbin/locale-gen || die
 	fi
 }
 
