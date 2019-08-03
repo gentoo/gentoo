@@ -20,7 +20,7 @@ SRC_URI="mirror://mysql/Downloads/MySQLGUITools/${MY_P}.tar.gz https://www.antlr
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="debug doc gnome-keyring"
+IUSE="debug doc"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 # glibc: deprecated mutex functions, removed in 2.36.0
@@ -51,7 +51,6 @@ CDEPEND="${PYTHON_DEPS}
 		>=dev-db/mysql-connector-c++-1.1.8
 		dev-db/vsqlite++
 		|| ( dev-db/libiodbc dev-db/unixODBC )
-		gnome-keyring? ( gnome-base/libgnome-keyring )
 		dev-python/pexpect
 		>=dev-python/paramiko-1.7.4
 "
