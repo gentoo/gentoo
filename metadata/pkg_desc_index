@@ -939,7 +939,7 @@ app-i18n/uchardet 0.0.6-r2: An encoding detector library
 app-i18n/uim 1.8.6-r1 1.8.8: A multilingual input method framework
 app-i18n/uim-tomoe-gtk 0.6.0: Japanese input method Tomoe IMEngine for uim
 app-i18n/unicode-cldr 31.0.1 33.0: Unicode Common Locale Data Repository
-app-i18n/unicode-data 9.0.0 10.0.0 11.0.0: Unicode data from unicode.org
+app-i18n/unicode-data 9.0.0 10.0.0 11.0.0 12.0.0: Unicode data from unicode.org
 app-i18n/unicode-emoji 5.0 11.0: UTS #51 Unicode Emoji
 app-i18n/xvnkb 0.2.9a-r1: Vietnamese input keyboard for X
 app-i18n/yaskkserv 1.1.0: Yet Another SKK server
