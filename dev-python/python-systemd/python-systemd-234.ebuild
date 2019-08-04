@@ -27,8 +27,16 @@ RDEPEND="${COMMON_DEPEND}
 "
 
 PATCHES=(
-#	"${FILESDIR}"/233-xfail-bind.patch
 )
+
+python_compile() {
+	if python_is_python3; then
+		# https://bugs.gentoo.org/690316
+		distutils-r1_python_compile -j1
+	else
+		distutils-r1_python_compile
+	fi
+}
 
 python_test() {
 	pushd "${BUILD_DIR}/lib" > /dev/null || die
