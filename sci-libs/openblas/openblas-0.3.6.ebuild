@@ -23,32 +23,26 @@ DEPEND="virtual/pkgconfig"
 
 PATCHES=( "${FILESDIR}/shared-blas-lapack.patch" )
 
-src_prepare() {
-	default
-	# Set compiler and common CFLAGS.
-	sed \
-		-e "/^#\s*CC/cCC=$(tc-getCC)" \
-		-e "/^#\s*FC/cFC=$(tc-getFC)" \
-		-e "/^#\s*COMMON_OPT/cCOMMON_OPT=${CFLAGS}" \
-		-i "${S}"/Makefile.rule || die
-}
+pkg_setup() {
+	fortran-2_pkg_setup
+	use openmp && tc-check-openmp
+	export CC=$(tc-getCC) FC=$(tc-getFC)
 
-openblas_flags() {
-	local flags=()
 	use dynamic && \
-		flags+=( DYNAMIC_ARCH=1 TARGET=GENERIC NUM_THREADS=64 NO_AFFINITY=1 )
+		export DYNAMIC_ARCH=1 TARGET=GENERIC NUM_THREADS=64 NO_AFFINITY=1
+
+	# disable submake with -j
+	export MAKE_NB_JOBS=-1
+
+	USE_THREAD=0
 	if use openmp; then
-		tc-check-openmp
-		flags+=( USE_THREAD=1 USE_OPENMP=1 )
+		USE_THREAD=1; USE_OPENMP=1;
 	elif use pthread; then
-		flags+=( USE_THREAD=1 USE_OPENMP=0 )
-	else
-		flags+=( USE_THREAD=0 ) # serial
+		USE_THREAD=1; USE_OPENMP=0;
 	fi
-	flags+=( DESTDIR="${D}" PREFIX="${EPREFIX}/usr" )
-	flags+=( OPENBLAS_INCLUDE_DIR='$(PREFIX)'/include/${PN} )
-	flags+=( OPENBLAS_LIBRARY_DIR='$(PREFIX)'/$(get_libdir) )
-	echo "${flags[@]}"
+	export USE_THREAD USE_OPENMP
+
+	export PREFIX="${EPREFIX}/usr"
 }
 
 src_unpack () {
@@ -60,19 +54,20 @@ src_unpack () {
 }
 
 src_compile () {
-	emake $(openblas_flags)
-	emake -Cinterface shared-blas-lapack $(openblas_flags)
+	emake
+	emake -Cinterface shared-blas-lapack
 	if use index-64bit; then
-		emake -C"${S}-index-64bit" $(openblas_flags) INTERFACE64=1 LIBPREFIX=libopenblas64
+		emake -C"${S}-index-64bit" INTERFACE64=1 LIBPREFIX=libopenblas64
 	fi
 }
 
 src_test() {
-	emake tests $(openblas_flags)
+	emake tests
 }
 
 src_install () {
-	emake install $(openblas_flags)
+	emake install DESTDIR="${D}" OPENBLAS_INCLUDE_DIR='$(PREFIX)'/include/${PN} \
+		OPENBLAS_LIBRARY_DIR='$(PREFIX)'/$(get_libdir)
 	dodoc GotoBLAS_*.txt *.md Changelog.txt
 
 	if use eselect-ldso; then
