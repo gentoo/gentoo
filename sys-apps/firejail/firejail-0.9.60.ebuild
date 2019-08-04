@@ -17,7 +17,7 @@ DEPEND="!sys-apps/firejail-lts
 	apparmor? ( sys-libs/libapparmor )
 	test? ( dev-tcltk/expect )"
 
-RDEPEND=" apparmor? ( sys-libs/libapparmor )"
+RDEPEND="apparmor? ( sys-libs/libapparmor )"
 
 RESTRICT="test"
 
