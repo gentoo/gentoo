@@ -28,7 +28,10 @@ RDEPEND="
 	dev-qt/qtwidgets:5
 	dev-qt/qtx11extras:5
 	sys-apps/dbus
+	!sys-auth/consolekit
 "
+
+# For consolekit incompatibility see https://forums.gentoo.org/viewtopic-p-8332956.html?sid=3cc21e5a27935e38975ee85bf03317ae#8332956
 
 RESTRICT="bindist mirror"
 
@@ -122,6 +125,10 @@ pkg_postinst() {
 	elog
 	elog "To display additional command line options simply run:"
 	elog "$ teamviewer help"
+	elog
+	elog "Most likely TeamViewer will work normally only on systems with systemd"
+	elog "or elogind. See this thread for additional info:"
+	elog "https://forums.gentoo.org/viewtopic-p-8332956.html?sid=3cc21e5a27935e38975ee85bf03317ae#8332956"
 }
 
 pkg_postrm() {
