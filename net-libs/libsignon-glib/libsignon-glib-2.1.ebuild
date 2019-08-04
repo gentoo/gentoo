@@ -34,8 +34,6 @@ BDEPEND="
 	test? ( dev-libs/check )
 "
 
-#DOCS=( AUTHORS NEWS README.md )
-
 # needs more love
 RESTRICT="test"
 
@@ -62,7 +60,6 @@ src_configure() {
 	}
 
 	if use python; then
-#		python_copy_sources
 		python_foreach_impl run_in_build_dir myconfigure
 	else
 		myconfigure
