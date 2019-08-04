@@ -5,7 +5,7 @@ EAPI="5"
 GCONF_DEBUG="no"
 PYTHON_COMPAT=( python2_7 )
 
-inherit versionator eutils gnome2 python-any-r1
+inherit versionator eutils gnome2 python-r1
 
 # This ebuild does nothing -- we just want to get the pkgconfig file installed
 
@@ -16,6 +16,7 @@ PVP="$(get_version_component_range 1-2)"
 SRC_URI="mirror://gnome/sources/${MY_PN}/${PVP}/${MY_PN}-${PV}.tar.bz2"
 
 IUSE=""
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 LICENSE="LGPL-2.1"
 SLOT="2"
 RESTRICT="${RESTRICT} test"
@@ -23,10 +24,9 @@ RESTRICT="${RESTRICT} test"
 # From the gnome-python eclass
 RDEPEND=">=x11-libs/gtk+-2.6:2
 	>=dev-libs/glib-2.6:2
-	$(python_gen_any_dep '
-		>=dev-python/pygtk-2.14.0:2[${PYTHON_USEDEP}]
-		>=dev-python/pygobject-2.17:2[${PYTHON_USEDEP}]
-	')
+	${PYTHON_DEPS}
+	>=dev-python/pygtk-2.14.0:2[${PYTHON_USEDEP}]
+	>=dev-python/pygobject-2.17:2[${PYTHON_USEDEP}]
 	!<dev-python/gnome-python-2.22.1"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
