@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -22,7 +22,9 @@ RDEPEND="
 	dev-qt/qtwidgets:5
 	media-libs/libmpdclient
 "
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	app-arch/unzip
+"
 
 src_unpack() {
 	default
