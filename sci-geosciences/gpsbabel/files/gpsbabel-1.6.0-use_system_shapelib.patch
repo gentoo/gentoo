@@ -1,0 +1,61 @@
+diff --git a/Makefile.in b/Makefile.in
+index fbf22821..d03e5574 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -105,7 +105,7 @@ JEEPS=jeeps/gpsapp.o jeeps/gpscom.o \
+ # Extra modules in Jeeps that we don't use
+ # 	jeeps/gpsfmt.o jeeps/gpsinput.o jeeps/gpsproj.o
+ 
+-SHAPE=shapelib/shpopen.o shapelib/dbfopen.o shapelib/safileio.o
++SHAPE=-lshp
+ 
+ ZLIB=zlib/adler32.o zlib/compress.o zlib/crc32.o zlib/deflate.o zlib/inffast.o \
+ 	zlib/inflate.o zlib/infback.o zlib/inftrees.o zlib/trees.o \
+@@ -121,7 +121,7 @@ LIBOBJS = route.o waypt.o filter_vecs.o util.o vecs.o mkshort.o \
+     src/core/textstream.o \
+ 	  src/core/usasciicodec.o \
+ 	  src/core/xmlstreamwriter.o \
+-	  $(GARMIN) $(JEEPS) $(SHAPE) @ZLIB@ $(FMTS) $(FILTERS)
++	  $(GARMIN) $(JEEPS) @ZLIB@ $(FMTS) $(FILTERS)
+ OBJS = main.o globals.o $(LIBOBJS) @FILEINFO@
+ 
+ DEPFILES = $(OBJS:.o=.d)
+@@ -154,10 +154,10 @@ toolinfo
+ all: gpsbabel$(EXEEXT)
+ 
+ gpsbabel$(EXEEXT): configure Makefile $(OBJS) @GPSBABEL_DEBUG@
+-	$(CXX) $(CXXFLAGS) $(LDFLAGS) $(OBJS) @LIBS@ $(QT_LIBS) @USB_LIBS@ $(OUTPUT_SWITCH)$@
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) $(OBJS) $(SHAPE) @LIBS@ $(QT_LIBS) @USB_LIBS@ $(OUTPUT_SWITCH)$@
+ 
+ gpsbabel-debug: $(OBJS)
+-	$(CXX) $(CXXFLAGS) $(LDFLAGS) $(OBJS) @LIBS@ $(QT_LIBS) @USB_LIBS@ $(OUTPUT_SWITCH)$@
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) $(OBJS) $(SHAPE) @LIBS@ $(QT_LIBS) @USB_LIBS@ $(OUTPUT_SWITCH)$@
+ 
+ Makefile gbversion.h: Makefile.in config.status xmldoc/makedoc.in \
+ 	  gbversion.h.in gui/setup.iss.in
+@@ -909,11 +909,7 @@ sbp.o: sbp.cc defs.h config.h zlib/zlib.h zlib/zconf.h cet.h inifile.h \
+ session.o: session.cc defs.h config.h zlib/zlib.h zlib/zconf.h cet.h \
+   inifile.h gbfile.h session.h src/core/datetime.h src/core/optional.h
+ shape.o: shape.cc defs.h config.h zlib/zlib.h zlib/zconf.h cet.h \
+-  inifile.h gbfile.h session.h src/core/datetime.h src/core/optional.h \
+-  shapelib/shapefil.h
+-shapelib/dbfopen.o: shapelib/dbfopen.c shapelib/shapefil.h
+-shapelib/safileio.o: shapelib/safileio.c shapelib/shapefil.h
+-shapelib/shpopen.o: shapelib/shpopen.c shapelib/shapefil.h
++  inifile.h gbfile.h session.h src/core/datetime.h src/core/optional.h
+ skyforce.o: skyforce.cc defs.h config.h zlib/zlib.h zlib/zconf.h cet.h \
+   inifile.h gbfile.h session.h src/core/datetime.h src/core/optional.h
+ skytraq.o: skytraq.cc defs.h config.h zlib/zlib.h zlib/zconf.h cet.h \
+diff --git a/shape.cc b/shape.cc
+index 6f0c7612..85970e1a 100644
+--- a/shape.cc
++++ b/shape.cc
+@@ -25,7 +25,7 @@
+ #include <QtCore/QVector>
+ 
+ #include "defs.h"
+-#include "shapelib/shapefil.h"
++#include <libshp/shapefil.h>
+ #include <cstdlib>
+ 
+ #if SHAPELIB_ENABLED

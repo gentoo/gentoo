@@ -1,0 +1,38 @@
+diff --git a/Makefile.in b/Makefile.in
+index d03e5574..d13ef894 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -107,10 +107,7 @@ JEEPS=jeeps/gpsapp.o jeeps/gpscom.o \
+ 
+ SHAPE=-lshp
+ 
+-ZLIB=zlib/adler32.o zlib/compress.o zlib/crc32.o zlib/deflate.o zlib/inffast.o \
+-	zlib/inflate.o zlib/infback.o zlib/inftrees.o zlib/trees.o \
+-	zlib/uncompr.o zlib/gzlib.o zlib/gzclose.o zlib/gzread.o \
+-	zlib/gzwrite.o zlib/zutil.o
++ZLIB=-lz
+ 
+ 
+ LIBOBJS = route.o waypt.o filter_vecs.o util.o vecs.o mkshort.o \
+@@ -121,7 +118,7 @@ LIBOBJS = route.o waypt.o filter_vecs.o util.o vecs.o mkshort.o \
+     src/core/textstream.o \
+ 	  src/core/usasciicodec.o \
+ 	  src/core/xmlstreamwriter.o \
+-	  $(GARMIN) $(JEEPS) @ZLIB@ $(FMTS) $(FILTERS)
++	  $(GARMIN) $(JEEPS) $(FMTS) $(FILTERS)
+ OBJS = main.o globals.o $(LIBOBJS) @FILEINFO@
+ 
+ DEPFILES = $(OBJS:.o=.d)
+@@ -154,10 +151,10 @@ toolinfo
+ all: gpsbabel$(EXEEXT)
+ 
+ gpsbabel$(EXEEXT): configure Makefile $(OBJS) @GPSBABEL_DEBUG@
+-	$(CXX) $(CXXFLAGS) $(LDFLAGS) $(OBJS) $(SHAPE) @LIBS@ $(QT_LIBS) @USB_LIBS@ $(OUTPUT_SWITCH)$@
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) $(OBJS) $(SHAPE) $(ZLIB) @LIBS@ $(QT_LIBS) @USB_LIBS@ $(OUTPUT_SWITCH)$@
+ 
+ gpsbabel-debug: $(OBJS)
+-	$(CXX) $(CXXFLAGS) $(LDFLAGS) $(OBJS) $(SHAPE) @LIBS@ $(QT_LIBS) @USB_LIBS@ $(OUTPUT_SWITCH)$@
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) $(OBJS) $(SHAPE) $(ZLIB) @LIBS@ $(QT_LIBS) @USB_LIBS@ $(OUTPUT_SWITCH)$@
+ 
+ Makefile gbversion.h: Makefile.in config.status xmldoc/makedoc.in \
+ 	  gbversion.h.in gui/setup.iss.in
