@@ -83,7 +83,7 @@ RDEPEND="
 		dev-qt/qtopengl:5[-gles2]
 		dev-qt/qtsql:5
 		dev-qt/qttest:5
-		dev-qt/qtwebkit:5
+		dev-qt/qtwebengine:5[widgets]
 		dev-qt/qtx11extras:5
 	)
 	sqlite? ( dev-db/sqlite:3 )
