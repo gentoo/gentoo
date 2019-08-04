@@ -66,7 +66,7 @@ src_install() {
 		mv "${ED}$(get_libdir)/libpwquality.a" "${ED}/usr/$(get_libdir)/" || die
 		gen_usr_ldscript libpwquality.so
 	fi
-	prune_libtool_files --modules
+	find "${ED}" -name '*.la' -type f -delete || die
 }
 
 if_use_python_python_foreach_impl() {
