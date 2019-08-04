@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -35,6 +35,7 @@ RESTRICT="test"
 
 src_prepare() {
 	gnome2_src_prepare
+	python_setup
 	python_fix_shebang .
 }
 
