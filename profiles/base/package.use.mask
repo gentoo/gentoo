@@ -7,6 +7,11 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Aaron Bauman <bman@gentoo.org> (2019-08-04)
+# media-libs/ming will be removed in 30 days
+media-gfx/pstoedit flash
+sci-chemistry/wxmacmolplt flash
+
 # Thomas Deutschmann <whissi@gentoo.org> (2019-08-03)
 # Early microcode loading is only supported on amd64 & x86
 sys-kernel/linux-firmware initramfs
