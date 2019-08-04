@@ -18,7 +18,7 @@ DEPEND="
 	dev-libs/glib:2
 	net-im/telepathy-mission-control
 	net-libs/libaccounts-glib
-	net-libs/libsignon-glib
+	=net-libs/libsignon-glib-1*
 	net-libs/telepathy-glib
 "
 RDEPEND="${DEPEND}"
