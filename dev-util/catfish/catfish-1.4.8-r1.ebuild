@@ -15,9 +15,13 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 
 RDEPEND="
+	dev-libs/gobject-introspection
+	dev-python/dbus-python[${PYTHON_USEDEP}]
 	dev-python/pexpect[${PYTHON_USEDEP}]
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
+	x11-libs/gdk-pixbuf[introspection]
 	x11-libs/gtk+:3[introspection]
+	x11-libs/pango[introspection]
 	virtual/freedesktop-icon-theme
 "
 DEPEND="
