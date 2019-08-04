@@ -1,0 +1,22 @@
+From 38a10d64fb33484f0e50c3d8f40a6c19c0ee37ec Mon Sep 17 00:00:00 2001
+From: Slava <slava@bacher09.org>
+Date: Sun, 4 Aug 2019 04:00:12 +0300
+Subject: [PATCH] Fix build with system capstone (--with-syscapstone) (#14753)
+
+---
+ shlr/capstone.mk | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/shlr/capstone.mk b/shlr/capstone.mk
+index b3cc42d24..f1a2de04d 100644
+--- a/shlr/capstone.mk
++++ b/shlr/capstone.mk
+@@ -1 +1,5 @@
++ifeq ($(USE_CAPSTONE),1)
++LINK+=${CAPSTONE_LDFLAGS}
++else
+ LINK+=$(SHLR)/capstone/libcapstone.a
++endif
+-- 
+2.22.0
+
