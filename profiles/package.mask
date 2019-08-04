@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Aaron Bauman <bman@gentoo.org> (2019-08-04)
+# multiple open sec bugs. no response from upstream
+# Masked for removal in 30 days
+media-libs/ming
+
 # Hans de Graaff <graaff@gentoo.org> (2019-08-03)
 # ruby24-only, no longer compiles with gcc 9, last release in 2009,
 # upstream gone, no reverse dependencies.
