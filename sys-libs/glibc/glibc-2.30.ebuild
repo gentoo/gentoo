@@ -1143,7 +1143,7 @@ run_locale_gen() {
 	local root="$1"
 	local inplace=""
 
-	if [[ ${root}=="--inplace-glibc" ]] ; then
+	if [[ "${root}" == "--inplace-glibc" ]] ; then
 		inplace="--inplace-glibc"
 		root="$2"
 	fi
