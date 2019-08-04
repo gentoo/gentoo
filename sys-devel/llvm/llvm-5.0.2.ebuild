@@ -38,7 +38,7 @@ IUSE="debug doc gold libedit +libffi ncurses test
 	kernel_Darwin kernel_linux ${ALL_LLVM_TARGETS[*]}"
 
 RDEPEND="
-	sys-libs/zlib:0=
+	sys-libs/zlib:0=[${MULTILIB_USEDEP}]
 	gold? (
 		|| (
 			>=sys-devel/binutils-2.31.1-r4:*[plugins]

@@ -42,7 +42,7 @@ IUSE="debug doc exegesis gold libedit +libffi ncurses test xar xml z3
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	sys-libs/zlib:0=
+	sys-libs/zlib:0=[${MULTILIB_USEDEP}]
 	exegesis? ( dev-libs/libpfm:= )
 	gold? (
 		|| (
