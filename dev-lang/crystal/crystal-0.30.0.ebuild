@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit bash-completion-r1 llvm multiprocessing toolchain-funcs
 
-BV=0.26.0-1
+BV=0.30.0-1
 BV_AMD64=${BV}-linux-x86_64
 BV_X86=${BV}-linux-i686
 
@@ -20,7 +20,9 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE="doc debug examples blocking-stdio-hack +xml +yaml"
 
-LLVM_MAX_SLOT=6
+RESTRICT=test # not stable for day-to-day runs
+
+LLVM_MAX_SLOT=8
 
 # dev-libs/boehm-gc[static-libs] dependency problem,  check the issue: https://github.com/manastech/crystal/issues/1382
 DEPEND="
@@ -39,11 +41,15 @@ RDEPEND="${DEPEND}
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-0.25.0-verbose.patch
+	"${FILESDIR}"/${PN}-0.27.1-verbose.patch
 	"${FILESDIR}"/${PN}-0.26.1-gentoo-tests-sandbox.patch
-	"${FILESDIR}"/${PN}-0.24.2-gentoo-tests-network-sandbox.patch
-	"${FILESDIR}"/${PN}-0.26.0-gentoo-tests-network-sandbox-2.patch
 	"${FILESDIR}"/${PN}-0.26.1-gentoo-tests-network-sandbox-3.patch
+	"${FILESDIR}"/${PN}-0.27.0-extra-spec-flags.patch
+	#"${FILESDIR}"/${PN}-0.27.0-max-age-0-test.patch
+	"${FILESDIR}"/${PN}-0.27.0-gentoo-tests-long-unix.patch
+	"${FILESDIR}"/${PN}-0.27.0-gentoo-tests-long-unix-2.patch
+	"${FILESDIR}"/${PN}-0.27.0-tcp-server-test.patch
+	"${FILESDIR}"/${PN}-0.29.0-no-usr-lib.patch
 )
 
 src_prepare() {
@@ -78,6 +84,9 @@ src_compile() {
 }
 
 src_test() {
+	# EXTRA_SPEC_FLAGS is useful to debug individual tests
+	# as part of full build:
+	#    USE=debug EXTRA_SPEC_FLAGS='-e parse_set_cookie' emerge -1 crystal
 	emake spec \
 		$(usex debug "" release=1) \
 		progress=true \
@@ -90,7 +99,9 @@ src_test() {
 		AR=$(tc-getAR) \
 		\
 		CRYSTAL_PATH=src \
-		CRYSTAL_CONFIG_VERSION=${PV}
+		CRYSTAL_CONFIG_VERSION=${PV} \
+		\
+		"EXTRA_SPEC_FLAGS=${EXTRA_SPEC_FLAGS}"
 }
 
 src_install() {
