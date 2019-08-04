@@ -1,0 +1,29 @@
+From 53690d5cee51bdb7c3f7680d3c22b316b1086f2c Mon Sep 17 00:00:00 2001
+From: Rico Tzschichholz <ricotz@ubuntu.com>
+Date: Sat, 1 Dec 2018 19:04:59 +0100
+Subject: [PATCH] vala: Fix build with vala 0.43+ git master due to empty
+ struct definition
+
+This should get a proper refactoring as the FIXME suggests.
+
+See https://gitlab.gnome.org/GNOME/vte/issues/76
+---
+ bindings/vala/app.vala | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/bindings/vala/app.vala b/bindings/vala/app.vala
+index 8663d63c..a534e76b 100644
+--- a/bindings/vala/app.vala
++++ b/bindings/vala/app.vala
+@@ -819,6 +819,8 @@ class App : Gtk.Application
+ 
+   public struct Options
+   {
++    //FIXME Merge this struct into App class
++    public int dummy;
+     public static bool audible = false;
+     public static string? command = null;
+     private static string? cjk_ambiguous_width_string = null;
+-- 
+2.20.1
+

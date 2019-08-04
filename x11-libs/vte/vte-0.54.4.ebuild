@@ -3,8 +3,7 @@
 
 EAPI="6"
 VALA_USE_DEPEND="vapigen"
-VALA_MIN_API_VERSION="0.36"
-VALA_MAX_API_VERSION="0.42"
+VALA_MIN_API_VERSION="0.32"
 
 inherit gnome2 vala
 
@@ -52,6 +51,9 @@ src_prepare() {
 		# Adds OSC 777 support for desktop notifications in gnome-terminal or elsewhere
 		eapply "${WORKDIR}"/${PN}-0.54.1-command-notify.patch
 	fi
+
+	# Fix bindings test compilation with vala:0.44 and newer - https://gitlab.gnome.org/GNOME/vte/issues/76
+	eapply "${FILESDIR}"/${PV}-vala-0.44-compat.patch
 
 	use vala && vala_src_prepare
 
