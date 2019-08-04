@@ -1,12 +1,12 @@
+BDEPEND=>=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1[curl]
 DEFINED_PHASES=configure install preinst prepare unpack
-DEPEND=>=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1[curl]
 DESCRIPTION=Python script wrapper
-EAPI=6
+EAPI=7
 HOMEPAGE=https://github.com/mgorny/python-exec/
 IUSE=python_targets_jython2_7 python_targets_pypy python_targets_pypy3 python_targets_python2_7 python_targets_python3_5 python_targets_python3_6 python_targets_python3_7
 LICENSE=BSD-2
 PROPERTIES=live
 RDEPEND=!<app-eselect/eselect-python-20160206 !<dev-lang/python-2.7.10-r4:2.7 !<dev-lang/python-3.3.5-r4:3.3 !<dev-lang/python-3.4.3-r4:3.4 !<dev-lang/python-3.5.0-r3:3.5
 SLOT=2
-_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	git-r3	562b380fc59ae6a8622171d0acb777d1	libtool	f143db5a74ccd9ca28c1234deffede96	multibuild	40fe59465edacd730c644ec2bc197809	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-r1	ce1cd23cfdc1848e8e32743efe34f299	python-utils-r1	08e17157a6807add7db1f8d01e7e391f	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
-_md5_=41bd1afb04a669fc45c06ab80671c0b9
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	git-r3	562b380fc59ae6a8622171d0acb777d1	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-utils-r1	08e17157a6807add7db1f8d01e7e391f	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
+_md5_=3a0c772a26819761c0e8218b30249cd1
