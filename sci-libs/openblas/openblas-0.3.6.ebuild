@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit toolchain-funcs
+inherit fortran-2 toolchain-funcs
 
 DESCRIPTION="Optimized BLAS library based on GotoBLAS2"
 HOMEPAGE="http://xianyi.github.com/OpenBLAS/"
@@ -11,17 +11,27 @@ SRC_URI="https://github.com/xianyi/OpenBLAS/tarball/v${PV} -> ${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
-IUSE="dynamic openmp pthread serial static-libs eselect-ldso index-64bit"
-REQUIRED_USE="?? ( openmp pthread serial )"
+IUSE="dynamic eselect-ldso index-64bit openmp pthread"
+REQUIRED_USE="?? ( openmp pthread )"
 
 RDEPEND="
-eselect-ldso? ( >=app-eselect/eselect-blas-0.2
-				!app-eselect/eselect-cblas
-				>=app-eselect/eselect-lapack-0.2 )
-"
+	eselect-ldso? ( >=app-eselect/eselect-blas-0.2
+			!app-eselect/eselect-cblas
+			>=app-eselect/eselect-lapack-0.2 )"
+
 DEPEND="virtual/pkgconfig"
 
 PATCHES=( "${FILESDIR}/shared-blas-lapack.patch" )
+
+src_prepare() {
+	default
+	# Set compiler and common CFLAGS.
+	sed \
+		-e "/^#\s*CC/cCC=$(tc-getCC)" \
+		-e "/^#\s*FC/cFC=$(tc-getFC)" \
+		-e "/^#\s*COMMON_OPT/cCOMMON_OPT=${CFLAGS}" \
+		-i "${S}"/Makefile.rule || die
+}
 
 openblas_flags() {
 	local flags=()
@@ -57,8 +67,13 @@ src_compile () {
 	fi
 }
 
+src_test() {
+	emake tests $(openblas_flags)
+}
+
 src_install () {
 	emake install $(openblas_flags)
+	dodoc GotoBLAS_*.txt *.md Changelog.txt
 
 	if use eselect-ldso; then
 		dodir /usr/$(get_libdir)/blas/openblas/
