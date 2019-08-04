@@ -1,25 +1,24 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit eutils pam multilib libtool tmpfiles
-if [[ ${PV} == "9999" ]] ; then
-	EHG_REPO_URI="https://www.sudo.ws/repos/sudo"
-	inherit mercurial
-fi
+inherit pam multilib libtool tmpfiles
 
-MY_P=${P/_/}
-MY_P=${MY_P/beta/b}
-
-uri_prefix=
-case ${P} in
-	*_beta*|*_rc*) uri_prefix=beta/ ;;
-esac
+MY_P="${P/_/}"
+MY_P="${MY_P/beta/b}"
 
 DESCRIPTION="Allows users or groups to run commands as other users"
 HOMEPAGE="https://www.sudo.ws/"
-if [[ ${PV} != "9999" ]] ; then
+if [[ ${PV} == "9999" ]] ; then
+	inherit mercurial
+	EHG_REPO_URI="https://www.sudo.ws/repos/sudo"
+else
+	uri_prefix=
+	case ${P} in
+		*_beta*|*_rc*) uri_prefix=beta/ ;;
+	esac
+
 	SRC_URI="https://www.sudo.ws/sudo/dist/${uri_prefix}${MY_P}.tar.gz
 		ftp://ftp.sudo.ws/pub/sudo/${uri_prefix}${MY_P}.tar.gz"
 	if [[ ${PV} != *_beta* ]] && [[ ${PV} != *_rc* ]] ; then
@@ -33,7 +32,7 @@ LICENSE="ISC BSD"
 SLOT="0"
 IUSE="gcrypt ldap libressl nls offensive pam sasl +secure-path selinux +sendmail skey sssd system-digest"
 
-CDEPEND="
+DEPEND="
 	sys-libs/zlib:=
 	ldap? (
 		>=net-nds/openldap-2.1.30-r1
@@ -52,7 +51,7 @@ CDEPEND="
 	)
 "
 RDEPEND="
-	${CDEPEND}
+	${DEPEND}
 	>=app-misc/editor-wrapper-3
 	virtual/editor
 	ldap? ( dev-lang/perl )
@@ -60,8 +59,7 @@ RDEPEND="
 	selinux? ( sec-policy/selinux-sudo )
 	sendmail? ( virtual/mta )
 "
-DEPEND="
-	${CDEPEND}
+BDEPEND="
 	sys-devel/bison
 "
 
@@ -103,7 +101,7 @@ set_secure_path() {
 		local newpath thisp IFS=:
 		for thisp in $1 ; do
 			if [[ :${newpath}: != *:${thisp}:* ]] ; then
-				newpath+=:$thisp
+				newpath+=:${thisp}
 			else
 				einfo "   Duplicate entry ${thisp} removed..."
 			fi
@@ -116,8 +114,8 @@ set_secure_path() {
 	rmpath() {
 		local e newpath thisp IFS=:
 		for thisp in ${SECURE_PATH} ; do
-			for e ; do [[ $thisp == $e ]] && continue 2 ; done
-			newpath+=:$thisp
+			for e ; do [[ ${thisp} == ${e} ]] && continue 2 ; done
+			newpath+=:${thisp}
 		done
 		SECURE_PATH=${newpath#:}
 	}
@@ -201,7 +199,7 @@ src_install() {
 
 	# Don't install into /run as that is a tmpfs most of the time
 	# (bug #504854)
-	rm -rf "${ED%/}"/run
+	rm -rf "${ED}"/run
 }
 
 pkg_postinst() {
