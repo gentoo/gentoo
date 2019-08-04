@@ -128,13 +128,6 @@ kde-misc/plasma-active-window-control
 # Requires >=mail-client/thunderbird-68_beta1 which is not in the tree yet
 >=x11-plugins/enigmail-2.1
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2019-07-20)
-# Ancient theme for KDE SC 4.4, useless for Plasma 5
-# Removal in 15 days
-x11-themes/korilla
-x11-themes/noia
-x11-themes/oxygen-molecule
-
 # Sergei Trofimovich <slyfox@gentoo.org> (2019-07-20)
 # Mask linux-headers-5.2 as it breaks at least firefox
 # and qemu. See bug #690296.
