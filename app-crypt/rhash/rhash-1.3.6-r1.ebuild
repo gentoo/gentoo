@@ -6,7 +6,7 @@ EAPI=6
 inherit toolchain-funcs multilib-minimal
 
 DESCRIPTION="Console utility and library for computing and verifying file hash sums"
-HOMEPAGE="http://rhash.anz.ru/"
+HOMEPAGE="http://rhash.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}-src.tar.gz"
 
 LICENSE="MIT"
