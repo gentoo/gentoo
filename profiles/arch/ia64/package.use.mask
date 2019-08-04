@@ -24,7 +24,7 @@ media-sound/lame debug
 # USE=server does not compile and needs upstream fix: bug #662040
 >=sys-devel/gdb-8.1 server
 
-# Joonas Niilola <juippis@gmail.com> (2018-06-17)
+# Joonas Niilola <juippis@gentoo.org> (2018-06-17)
 # Optional dependency not available for this arch
 dev-libs/efl vlc
 
