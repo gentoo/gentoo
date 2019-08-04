@@ -52,6 +52,9 @@ src_prepare() {
 		eapply "${WORKDIR}"/${P}-command-notify.patch
 	fi
 
+	# Fix bindings test compilation with vala:0.44 and newer - https://gitlab.gnome.org/GNOME/vte/issues/76
+	eapply "${FILESDIR}"/0.54.4-vala-0.44-compat.patch
+
 	use vala && vala_src_prepare
 
 	# build fails because of -Werror with gcc-5.x
