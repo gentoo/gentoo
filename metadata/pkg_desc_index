@@ -7248,7 +7248,7 @@ media-fonts/mplus-outline-fonts 0_pre062 0_pre063: M+ Japanese outline fonts
 media-fonts/nanumfont 2.0-r2: Korean monospace font distributed by NHN
 media-fonts/noto 20170403 20181024: Google's font family that aims to support all the world's languages
 media-fonts/noto-cjk 20150615 20170602: Google's CJK font family
-media-fonts/noto-emoji 20180823: Google Noto Emoji fonts
+media-fonts/noto-emoji 20180823 20190328: Google Noto Emoji fonts
 media-fonts/oldstandard 2.2: Old Standard - font with wide range of Latin, Greek and Cyrillic characters
 media-fonts/open-sans 1: Clean and modern sans-serif typeface designed for legibility across interfaces
 media-fonts/opendesktop-fonts 1.4.2: Chinese TrueType Fonts
