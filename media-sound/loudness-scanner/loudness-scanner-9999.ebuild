@@ -12,7 +12,7 @@ EGIT_REPO_URI="https://github.com/jiixyj/loudness-scanner.git"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS=""
-IUSE="ffmpeg gtk mpg123 musepack qt5 sndfile"
+IUSE="+ffmpeg gtk mpg123 musepack qt5 sndfile"
 REQUIRED_USE="|| ( sndfile ffmpeg mpg123 musepack )"
 
 DEPEND="
