@@ -27,6 +27,7 @@ acct-group/systemd-network 0: System group: systemd-network
 acct-group/systemd-resolve 0: System group: systemd-resolve
 acct-group/systemd-timesync 0: System group: systemd-timesync
 acct-group/tape 0: System group: tape
+acct-group/transmission 0: System group: transmission
 acct-group/tty 0: System group: tty
 acct-group/utmp 0: System group: utmp
 acct-group/video 0: System group: video
@@ -47,6 +48,7 @@ acct-user/systemd-journal-remote 0: System user: systemd-journal-remote
 acct-user/systemd-network 0: System user: systemd-network
 acct-user/systemd-resolve 0: System user: systemd-resolve
 acct-user/systemd-timesync 0: System user: systemd-timesync
+acct-user/transmission 0: System user: transmission
 app-accessibility/SphinxTrain 1.0.8: Speech Recognition (Training Module)
 app-accessibility/accerciser 3.22.0: Interactive Python accessibility explorer
 app-accessibility/at-spi2-atk 2.26.2 2.30.1: Gtk module for bridging AT-SPI to Atk
