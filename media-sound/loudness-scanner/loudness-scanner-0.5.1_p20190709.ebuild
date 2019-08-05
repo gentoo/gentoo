@@ -12,7 +12,7 @@ SRC_URI="https://dev.gentoo.org/~tamiko/distfiles/${P}.tar.xz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="ffmpeg gtk mpg123 musepack qt5 sndfile"
+IUSE="+ffmpeg gtk mpg123 musepack qt5 sndfile"
 REQUIRED_USE="|| ( sndfile ffmpeg mpg123 musepack )"
 
 DEPEND="
