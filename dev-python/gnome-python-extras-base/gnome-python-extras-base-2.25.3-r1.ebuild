@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -40,6 +40,7 @@ src_prepare() {
 	epatch "${FILESDIR}/${P}-python-libs.patch" #344231
 	sed -e "s/AM_CONFIG_HEADER/AC_CONFIG_HEADERS/" -i configure.ac || die
 	eautoreconf
+	python_setup
 	gnome2_src_prepare
 }
 
