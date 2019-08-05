@@ -4789,7 +4789,7 @@ dev-python/django-setuptest 0.2.1: Simple test suite enabling Django app testing
 dev-python/django-xslt 0.4.5-r1: an XSLT template system for Django
 dev-python/dnspython 1.15.0-r1 1.16.0: DNS toolkit for Python
 dev-python/doc8 0.6.0: Style checker for Sphinx (or other) RST documentation
-dev-python/docker-py 2.4.2 2.7.0 3.6.0 3.7.1: Python client for Docker
+dev-python/docker-py 2.7.0 3.6.0 3.7.1: Python client for Docker
 dev-python/docker-pycreds 0.2.1 0.3.0 0.4.0: Python bindings for the docker credentials store API
 dev-python/dockerpty 0.4.1: Python library to use the pseudo-tty of a docker container
 dev-python/docopt 0.6.2-r2: Pythonic argument parser, that will make you smile
