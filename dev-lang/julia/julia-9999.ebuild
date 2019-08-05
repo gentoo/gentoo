@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -162,7 +162,7 @@ src_install() {
 		prefix="${EPREFIX}/usr" DESTDIR="${D}" \
 		CC="$(tc-getCC)" CXX="$(tc-getCXX)"
 	cat > 99julia <<-EOF
-		LDPATH=${EROOT%/}/usr/$(get_libdir)/julia
+		LDPATH=${EROOT}/usr/$(get_libdir)/julia
 	EOF
 	doenvd 99julia
 
