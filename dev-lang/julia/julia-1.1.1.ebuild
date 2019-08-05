@@ -185,7 +185,7 @@ src_install() {
 		prefix="${EPREFIX}/usr" DESTDIR="${D}" \
 		CC="$(tc-getCC)" CXX="$(tc-getCXX)"
 	cat > 99julia <<-EOF
-		LDPATH=${EROOT%/}/usr/$(get_libdir)/julia
+		LDPATH=${EROOT}/usr/$(get_libdir)/julia
 	EOF
 	doenvd 99julia
 
