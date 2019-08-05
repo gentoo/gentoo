@@ -1,11 +1,11 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit eutils flag-o-matic python-any-r1 toolchain-funcs versionator
+inherit eutils flag-o-matic python-any-r1 toolchain-funcs
 
 DESCRIPTION="Scalable Library for Eigenvalue Problem Computations"
 HOMEPAGE="http://slepc.upv.es/"
@@ -16,9 +16,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="complex-scalars doc mpi"
 
-PETSC_PV="$(get_version_component_range 1-2 ${PV})"
 RDEPEND="
-	=sci-mathematics/petsc-${PETSC_PV}*:=[mpi=,complex-scalars=]
+	=sci-mathematics/petsc-$(ver_cut 1-2)*:=[mpi=,complex-scalars=]
 	sci-libs/arpack[mpi=]
 	mpi? ( virtual/mpi )
 "
@@ -29,7 +28,7 @@ DEPEND="${RDEPEND}
 	dev-util/cmake
 "
 
-MAKEOPTS="${MAKEOPTS} -j1 V=1"
+MAKEOPTS="${MAKEOPTS} V=1"
 
 src_prepare() {
 	default
@@ -70,6 +69,7 @@ src_install() {
 
 	if use doc ; then
 		dodoc docs/slepc.pdf
-		dohtml -r docs/*.html docs/manualpages
+		docinto html
+		dodoc -r docs/*.html docs/manualpages
 	fi
 }
