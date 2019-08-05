@@ -168,7 +168,7 @@ app-admin/sagan-rules 20130430 20140617: Rules for Sagan log analyzer
 app-admin/setools 4.1.1: Policy Analysis Tools for SELinux
 app-admin/spectre-meltdown-checker 0.40 0.41: Spectre & Meltdown vulnerability/mitigation checker for Linux
 app-admin/sshguard 2.1.0-r1: protects hosts from brute force attacks against ssh
-app-admin/sudo 1.8.25_p1-r1: Allows users or groups to run commands as other users
+app-admin/sudo 1.8.25_p1-r1 1.8.27-r1: Allows users or groups to run commands as other users
 app-admin/superadduser 1.0.9: Interactive adduser script from Slackware
 app-admin/supervisor 3.1.4: A system for controlling process state under UNIX
 app-admin/swatchdog 3.2.4-r1: Simple log watcher
@@ -357,6 +357,7 @@ app-crypt/certbot-nginx 0.35.0: Nginx plugin for certbot (Let's Encrypt Client)
 app-crypt/cfssl 1.3.2: Cloudflare's PKI and TLS toolkit
 app-crypt/dehydrated 0.6.5: a client for signing certificates with an ACME-server
 app-crypt/easy-rsa 3.0.4 3.0.5: Small RSA key management package, based on OpenSSL
+app-crypt/efitools 1.9.2: Tools for manipulating UEFI secure boot platforms
 app-crypt/gcr 3.20.0 3.28.0 3.28.1: Libraries for cryptographic UIs and accessing PKCS#11 modules
 app-crypt/gentoo-keys 201901130136: A OpenPGP/GPG keyring of official Gentoo release media GPG keys
 app-crypt/glep63-check 9: GLEP 63 compliance checker for OpenPGP keys
