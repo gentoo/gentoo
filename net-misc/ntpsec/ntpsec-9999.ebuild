@@ -32,15 +32,17 @@ IUSE_NTPSEC_REFCLOCK=${NTPSEC_REFCLOCK[@]/#/rclock_}
 
 LICENSE="HPND MIT BSD-2 BSD CC-BY-SA-4.0"
 SLOT="0"
-IUSE="${IUSE_NTPSEC_REFCLOCK} debug doc early gdb heat nist ntpviz samba seccomp smear tests" #ionice
+IUSE="${IUSE_NTPSEC_REFCLOCK} debug doc early gdb heat libbsd libressl nist ntpviz samba seccomp smear tests" #ionice
 REQUIRED_USE="${PYTHON_REQUIRED_USE} nist? ( rclock_local )"
 
 # net-misc/pps-tools oncore,pps
 CDEPEND="${PYTHON_DEPS}
 	${BDEPEND}
 	sys-libs/libcap
-	dev-libs/openssl:0=
 	dev-python/psutil[${PYTHON_USEDEP}]
+	libbsd? ( dev-libs/libbsd:0= )
+	libressl? ( dev-libs/libressl:0= )
+	!libressl? ( dev-libs/openssl:0= )
 	seccomp? ( sys-libs/libseccomp )
 "
 RDEPEND="${CDEPEND}
@@ -50,6 +52,7 @@ RDEPEND="${CDEPEND}
 "
 DEPEND="${CDEPEND}
 	app-text/asciidoc
+	dev-libs/libxslt
 	app-text/docbook-xsl-stylesheets
 	sys-devel/bison
 	rclock_oncore? ( net-misc/pps-tools )
@@ -67,6 +70,9 @@ src_prepare() {
 	default
 	# Remove autostripping of binaries
 	sed -i -e '/Strip binaries/d' wscript
+	if ! use libbsd ; then
+		epatch "${FILESDIR}/${PN}-no-bsd.patch"
+	fi
 	python_copy_sources
 }
 
@@ -91,7 +97,6 @@ src_configure() {
 		$(use doc	&& echo "--enable-doc")
 		$(use early	&& echo "--enable-early-droproot")
 		$(use gdb	&& echo "--enable-debug-gdb")
-		$(use nist	&& echo "--enable-lockclock")
 		$(use samba	&& echo "--enable-mssntp")
 		$(use seccomp	&& echo "--enable-seccomp")
 		$(use smear	&& echo "--enable-leap-smear")
