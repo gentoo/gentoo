@@ -19,7 +19,7 @@ LICENSE="BSD LGPL-2.1"
 SLOT="0"
 
 IUSE="
-	adolc arprec boost clp cppunit cuda eigen glpk gtest hdf5 hwloc hypre
+	adolc arprec boost clp cuda eigen glpk gtest hdf5 hwloc hypre
 	matio metis mkl mumps netcdf petsc qd scalapack scotch sparse
 	superlu taucs tbb test threads tvmet yaml zlib X
 "
@@ -89,11 +89,11 @@ src_configure() {
 	local mycmakeargs=(
 		-DBUILD_SHARED_LIBS=ON
 		-DCMAKE_INSTALL_PREFIX="${EPREFIX}"
+		-DCMAKE_SKIP_INSTALL_RPATH=ON
 		-DTrilinos_INSTALL_CONFIG_DIR="${EPREFIX}/usr/$(get_libdir)/cmake"
 		-DTrilinos_INSTALL_INCLUDE_DIR="${EPREFIX}/usr/include/trilinos"
 		-DTrilinos_INSTALL_LIB_DIR="${EPREFIX}/usr/$(get_libdir)/trilinos"
 		-DTrilinos_ENABLE_ALL_PACKAGES=ON
-		-DTrilinos_ENABLE_CTrilinos=OFF
 		-DTrilinos_ENABLE_PyTrilinos=OFF
 		-DTrilinos_ENABLE_SEACASChaco=OFF
 		-DTrilinos_ENABLE_SEACASExodiff="$(usex netcdf)"
@@ -111,7 +111,6 @@ src_configure() {
 		-DTPL_ENABLE_BoostLib="$(usex boost)"
 		-DTPL_ENABLE_Boost="$(usex boost)"
 		-DTPL_ENABLE_Clp="$(usex clp)"
-		-DTPL_ENABLE_Cppunit="$(usex cppunit)"
 		-DTPL_ENABLE_CSparse="$(usex sparse)"
 		-DTPL_ENABLE_CUDA="$(usex cuda)"
 		-DTPL_ENABLE_CUSPARSE="$(usex cuda)"
@@ -194,9 +193,8 @@ src_install() {
 	cmake-utils_src_install
 
 	# Clean up the mess:
-	rm "${ED}"/TrilinosRepoVersion.txt
 	mv "${ED}"/bin "${ED}/usr/$(get_libdir)"/trilinos || die "mv failed"
-	mv "${ED}"/usr/lib/exodus.py "${ED}/usr/$(get_libdir)"/trilinos || die "mv failed"
+	mv "${ED}"/lib/exodus.py "${ED}/usr/$(get_libdir)"/trilinos || die "mv failed"
 
 	#
 	# register $(get_libdir)/trilinos in LDPATH so that the dynamic linker
