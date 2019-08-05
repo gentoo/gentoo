@@ -1902,7 +1902,7 @@ dev-db/pgadmin4 4.5: GUI administration and development platform for PostgreSQL
 dev-db/pgagent 3.4.0-r3: pgAgent is a job scheduler for PostgreSQL
 dev-db/pgbadger 10.0 10.3: pgBadger is a PostgreSQL log analyzer.
 dev-db/pgbouncer 1.9.0: Lightweight connection pooler for PostgreSQL
-dev-db/pgpool2 3.7.8 3.7.10 4.0.3 4.0.5: Connection pool server for PostgreSQL
+dev-db/pgpool2 3.7.10 4.0.5: Connection pool server for PostgreSQL
 dev-db/pgtap 0.99.0: Unit testing for PostgreSQL
 dev-db/phpmyadmin 4.8.5: Web-based administration for MySQL database in PHP
 dev-db/postgis 2.4.6 2.4.7 2.5.1-r1 2.5.2: Geographic Objects for PostgreSQL
@@ -3109,7 +3109,7 @@ dev-libs/libpeas 1.22.0: A GObject plugins library
 dev-libs/libpfm 4.10.1: Hardware-based performance monitoring interface for Linux
 dev-libs/libpipeline 1.4.2: a pipeline manipulation library
 dev-libs/libplatform 2.0.1: Platform support library used by libCEC and binary add-ons for Kodi
-dev-libs/libpqxx 6.0.0 6.4.5: Standard front-end for writing C++ programs that use PostgreSQL
+dev-libs/libpqxx 6.4.5: Standard front-end for writing C++ programs that use PostgreSQL
 dev-libs/libproccpuinfo 0.0.8-r1: Architecture independent C API for reading /proc/cpuinfo
 dev-libs/libpthread-stubs 0.4-r1: Pthread functions stubs for platforms missing them
 dev-libs/libpwquality 1.4.0: Library for password quality checking and generating random passwords
