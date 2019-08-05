@@ -33,10 +33,10 @@ fi
 LICENSE="LGPL-2.1+"
 SLOT="0"
 IUSE="
-	adolc assimp arpack cpu_flags_x86_avx cpu_flags_x86_sse2 cuda +debug
-	doc +examples gmsh +gsl hdf5 +lapack metis mpi muparser nanoflann
-	opencascade netcdf p4est petsc scalapack slepc +sparse static-libs
-	sundials symengine +tbb trilinos
+	adolc assimp arpack cpu_flags_x86_avx cpu_flags_x86_avx512f
+	cpu_flags_x86_sse2 cuda +debug doc +examples gmsh +gsl hdf5 +lapack
+	metis mpi muparser nanoflann opencascade netcdf p4est petsc scalapack
+	slepc +sparse static-libs sundials symengine +tbb trilinos
 "
 
 # TODO: add slepc use flag once slepc is packaged for gentoo-science
@@ -76,6 +76,10 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen[dot] dev-lang/perl )"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-9.1.1-no-ld-flags.patch
+)
+
 src_configure() {
 	# deal.II needs a custom build type:
 	local CMAKE_BUILD_TYPE=$(usex debug DebugRelease Release)
@@ -97,9 +101,7 @@ src_configure() {
 		-DDEAL_II_WITH_ADOLC="$(usex adolc)"
 		-DDEAL_II_WITH_ASSIMP="$(usex assimp)"
 		-DDEAL_II_WITH_ARPACK="$(usex arpack)"
-		-DDEAL_II_HAVE_AVX="$(usex cpu_flags_x86_avx)"
 		-DDEAL_II_WITH_CUDA="$(usex cuda)"
-		-DDEAL_II_HAVE_SSE2="$(usex cpu_flags_x86_sse2)"
 		-DDEAL_II_COMPONENT_DOCUMENTATION="$(usex doc)"
 		-DDEAL_II_COMPONENT_EXAMPLES="$(usex examples)"
 		-DDEAL_II_WITH_GMSH="$(usex gmsh)"
@@ -125,6 +127,18 @@ src_configure() {
 		-DDEAL_II_WITH_THREADS="$(usex tbb)"
 		-DDEAL_II_WITH_TRILINOS="$(usex trilinos)"
 	)
+
+	# Do a little dance for purely cosmetic "QA" reasons. The build system
+	# does query for the highest instruction set first and skips the other
+	# variables if a "higher" variant is set
+	if use cpu_flags_x86_avx512f; then
+		mycmakeargs+=( -DDEAL_II_HAVE_AVX512=yes )
+	elif use cpu_flags_x86_avx; then
+		mycmakeargs+=( -DDEAL_II_HAVE_AVX=yes )
+	elif use cpu_flags_x86_avx; then
+		mycmakeargs+=( -DDEAL_II_HAVE_SSE2=yes )
+	fi
+
 	cmake-utils_src_configure
 }
 
