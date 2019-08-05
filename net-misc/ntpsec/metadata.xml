@@ -16,7 +16,8 @@ NTPsec project - a secure, hardened, and improved implementation of Network Time
 		<flag name="early">Drop root privileges early</flag>
 		<flag name="gdb">Enable debugging with gdb</flag>
 		<flag name="heat">Install contrib heat generating scripts</flag>
-		<flag name="nist">Enable lockclock</flag>
+		<flag name="libbsd">Use libbsd instead of internal funcs</flag>
+		<flag name="nist">Set local clock deps</flag>
 		<flag name="ntpviz">Make visualizations of offsets, jiffies, etc.</flag>
 		<flag name="rclock_oncore">Oncore driver</flag>
 		<flag name="rclock_trimble">Trimble driver</flag>
