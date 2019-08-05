@@ -5,6 +5,10 @@
 		<email>dlan@gentoo.org</email>
 		<name>Yixun Lan</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>mattst88@gentoo.org</email>
+		<name>Matt Turner</name>
+	</maintainer>
 	<use>
 		<flag name="dmalloc">Enable debugging with the dmalloc library</flag>
 		<flag name="ldap">Install LDAP module</flag>
