@@ -11,7 +11,7 @@ SRC_URI="https://github.com/smuellerDD/jitterentropy-library/archive/v${PV}.tar.
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64"
+KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~riscv"
 IUSE="static-libs"
 
 S="${WORKDIR}/${PN}-library-${PV}"
