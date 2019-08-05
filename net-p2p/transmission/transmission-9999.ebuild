@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit cmake-utils gnome2-utils readme.gentoo-r1 systemd user xdg-utils
+inherit cmake-utils gnome2-utils readme.gentoo-r1 systemd xdg-utils
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
@@ -24,7 +24,7 @@ SLOT="0"
 IUSE="ayatana gtk libressl lightweight nls mbedtls qt5 systemd test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="
+COMMON_DEPEND="
 	dev-libs/libb64:0=
 	>=dev-libs/libevent-2.0.10:=
 	!mbedtls? (
@@ -51,7 +51,7 @@ RDEPEND="
 	)
 	systemd? ( >=sys-apps/systemd-209:= )
 "
-DEPEND="${RDEPEND}
+DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig
 	nls? (
 		virtual/libintl
@@ -63,6 +63,9 @@ DEPEND="${RDEPEND}
 			dev-qt/linguist-tools:5
 		)
 	)
+"
+RDEPEND="${COMMON_DEPEND}
+	acct-user/transmission
 "
 
 src_unpack() {
@@ -137,14 +140,5 @@ pkg_postrm() {
 pkg_postinst() {
 	xdg_desktop_database_update
 	gnome2_icon_cache_update
-
-	enewgroup transmission
-	enewuser transmission -1 -1 /var/lib/transmission transmission
-
-	if [[ ! -e "${EROOT%/}"/var/lib/transmission ]]; then
-		mkdir -p "${EROOT%/}"/var/lib/transmission || die
-		chown transmission:transmission "${EROOT%/}"/var/lib/transmission || die
-	fi
-
 	readme.gentoo_print_elog
 }
