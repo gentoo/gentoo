@@ -141,8 +141,6 @@ src_prepare() {
 	if use nosplash; then
 		sed -i -e '/bool gNoLogo/s@false@true@' rootx/src/rootx.cxx
 	fi
-
-	hprefixify core/clingutils/CMakeLists.txt
 }
 
 # Note: ROOT uses bundled clang because it is patched and API-incompatible
