@@ -196,7 +196,7 @@ src_install() {
 	# Clean up the mess:
 	rm "${ED}"/TrilinosRepoVersion.txt
 	mv "${ED}"/bin "${ED}/usr/$(get_libdir)"/trilinos || die "mv failed"
-	rm "${ED}"/usr/lib/exodus.py "${ED}/usr/$(get_libdir)"/trilinos || die "mv failed"
+	mv "${ED}"/usr/lib/exodus.py "${ED}/usr/$(get_libdir)"/trilinos || die "mv failed"
 
 	#
 	# register $(get_libdir)/trilinos in LDPATH so that the dynamic linker
