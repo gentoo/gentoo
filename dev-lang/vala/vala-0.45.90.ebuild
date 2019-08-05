@@ -2,7 +2,6 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-GNOME2_EAUTORECONF="yes"
 
 inherit gnome2
 
@@ -20,7 +19,6 @@ RDEPEND="
 	valadoc? ( >=media-gfx/graphviz-2.16 )
 "
 DEPEND="${RDEPEND}
-	!${CATEGORY}/${PN}:0
 	dev-libs/libxslt
 	sys-devel/flex
 	virtual/pkgconfig
@@ -30,11 +28,6 @@ DEPEND="${RDEPEND}
 		>=dev-libs/glib-2.26:2
 		dev-libs/gobject-introspection )
 "
-
-PATCHES=(
-	# Add missing bits to make valadoc parallel installable
-	"${FILESDIR}"/0.44-valadoc-doclets-data-parallel-installable.patch
-)
 
 src_configure() {
 	# weasyprint enables generation of PDF from HTML
