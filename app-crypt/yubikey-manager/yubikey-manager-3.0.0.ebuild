@@ -8,26 +8,28 @@ inherit readme.gentoo-r1 distutils-r1
 
 DESCRIPTION="Python library and command line tool for configuring a YubiKey"
 HOMEPAGE="https://developers.yubico.com/yubikey-manager/"
-SRC_URI="https://developers.yubico.com/${PN}/Releases/${P}.tar.gz
-	test? ( https://dev.gentoo.org/~gokturk/distfiles/app-crypt/${PN}/${PN}-0.7.1-test-files.tar.xz )"
+# Per https://github.com/Yubico/yubikey-manager/issues/217, Yubico is
+# the official source for tarballs, not Github
+SRC_URI="https://developers.yubico.com/${PN}/Releases/${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
 RDEPEND="
-	dev-python/fido2[${PYTHON_USEDEP}]
-	dev-python/six[${PYTHON_USEDEP}]
-	dev-python/pyscard[${PYTHON_USEDEP}]
-	dev-python/pyusb[${PYTHON_USEDEP}]
 	dev-python/click[${PYTHON_USEDEP}]
 	dev-python/cryptography[${PYTHON_USEDEP}]
-	dev-python/pyopenssl[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep 'dev-python/enum34[${PYTHON_USEDEP}]' python2_7)
+	>=dev-python/fido2-0.7.0[${PYTHON_USEDEP}]
+	dev-python/pyopenssl[${PYTHON_USEDEP}]
+	dev-python/pyscard[${PYTHON_USEDEP}]
+	dev-python/pyusb[${PYTHON_USEDEP}]
+	dev-python/six[${PYTHON_USEDEP}]
 	>=sys-auth/ykpers-1.19.0
 "
 DEPEND="
+	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
 		${RDEPEND}
 		$(python_gen_cond_dep 'dev-python/mock[${PYTHON_USEDEP}]' 'python2_7')
@@ -35,8 +37,6 @@ DEPEND="
 "
 
 python_test() {
-	touch "${S}"/test/__init__.py || die
-	cp -r "${WORKDIR}/files" "${S}"/test/ || die
 	esetup.py test
 }
 
@@ -51,8 +51,9 @@ python_install_all() {
 		daemon is running and has correct access permissions to USB
 		devices.
 	"
-
 	readme.gentoo_create_doc
+
+	doman "${S}"/man/ykman.1
 }
 
 pkg_postinst() {
