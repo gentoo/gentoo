@@ -30,7 +30,7 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}/1.7.0-Make.rules.patch"
-	"${FILESDIR}/${P}-libressl-compatibility.patch"
+	"${FILESDIR}/${PN}-1.8.1-libressl-compatibility.patch"
 )
 
 src_prepare() {
