@@ -55,7 +55,7 @@ src_prepare() {
 }
 
 src_configure() {
-	local rccgroupmode="$(grep rc_cgroup_mode /etc/rc.conf | cut -d '"' -f 2)"
+	local rccgroupmode="$(grep rc_cgroup_mode \"${EPREFIX}/etc/rc.conf\" | cut -d '"' -f 2)"
 	local cgroupmode="legacy"
 
 	if [[ "xhybrid" = "x${rccgroupmode}" ]] ; then
@@ -68,7 +68,7 @@ src_configure() {
 		-Ddocdir="${EPREFIX}/usr/share/doc/${PF}"
 		-Dhtmldir="${EPREFIX}/usr/share/doc/${PF}/html"
 		-Dpamlibdir=$(getpam_mod_dir)
-		-Dudevrulesdir="$(get_udevdir)"/rules.d
+		-Dudevrulesdir="${EPREFIX}$(get_udevdir)"/rules.d
 		--libdir="${EPREFIX}"/usr/$(get_libdir)
 		-Drootlibdir="${EPREFIX}"/$(get_libdir)
 		-Drootlibexecdir="${EPREFIX}"/$(get_libdir)/elogind
