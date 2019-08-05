@@ -29,6 +29,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	dev-util/gdbus-codegen
 	dev-util/glib-utils
+	dev-libs/check
 	doc? ( dev-util/gtk-doc )
 "
 
