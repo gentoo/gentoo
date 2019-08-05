@@ -29,6 +29,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Mikle Kolyada <zlogene@gentoo.org> (2019-08-05)
+# dead upstream, does not work and compile
+#(bug #688006, bug #686630)
+# masked for removal in 14 days
+app-text/winefish
+dev-tex/oesch
+
 # Aaron Bauman <bman@gentoo.org> (2019-08-04)
 # multiple open sec bugs. no response from upstream
 # Masked for removal in 30 days
