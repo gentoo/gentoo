@@ -1,0 +1,11 @@
+# K8S_APISERVER='https://127.0.0.1:6443'
+# KUBECONFIG=/etc/kubernetes/kube-router.kubeconfig
+
+# Leave empty to autodetect:
+# HOSTNAME=
+
+# RUN_PROXY=true
+# RUN_FIREWALL=true
+# RUN_ROUTER=false
+
+EXTRA_ARGS=''
