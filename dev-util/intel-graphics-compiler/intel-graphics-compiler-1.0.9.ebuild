@@ -22,6 +22,7 @@ LLVM_MAX_SLOT=8
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.0.9-no_Werror.patch
+	"${FILESDIR}"/${PN}-1.0.9-opencl-clang_solib_filename.patch
 )
 
 S="${WORKDIR}"/${PN}-igc-${PV}
