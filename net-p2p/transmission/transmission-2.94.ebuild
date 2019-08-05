@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools flag-o-matic gnome2-utils qmake-utils systemd user xdg-utils
+inherit autotools flag-o-matic gnome2-utils qmake-utils systemd xdg-utils
 
 DESCRIPTION="A Fast, Easy and Free BitTorrent client"
 HOMEPAGE="http://www.transmissionbt.com/"
@@ -16,7 +16,7 @@ SLOT=0
 IUSE="ayatana gtk libressl lightweight systemd qt5 xfs"
 KEYWORDS="amd64 ~arm ~arm64 ~mips ppc ppc64 x86 ~x86-fbsd ~amd64-linux"
 
-RDEPEND=">=dev-libs/libevent-2.0.10:=
+COMMON_DEPEND=">=dev-libs/libevent-2.0.10:=
 	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:0= )
 	net-libs/libnatpmp
@@ -37,7 +37,7 @@ RDEPEND=">=dev-libs/libevent-2.0.10:=
 		dev-qt/qtwidgets:5
 		)
 	systemd? ( >=sys-apps/systemd-209:= )"
-DEPEND="${RDEPEND}
+DEPEND="${COMMON_DEPEND}
 	>=dev-libs/glib-2.32
 	dev-util/intltool
 	sys-devel/gettext
@@ -45,6 +45,8 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	qt5? ( dev-qt/linguist-tools:5 )
 	xfs? ( sys-fs/xfsprogs )"
+RDEPEND="${COMMON_DEPEND}
+	acct-user/transmission"
 
 REQUIRED_USE="ayatana? ( gtk )"
 
@@ -136,14 +138,6 @@ pkg_preinst() {
 pkg_postinst() {
 	xdg_desktop_database_update
 	gnome2_icon_cache_update
-
-	enewgroup transmission
-	enewuser transmission -1 -1 /var/lib/transmission transmission
-
-	if [[ ! -e "${EROOT%/}"/var/lib/transmission ]]; then
-		mkdir -p "${EROOT%/}"/var/lib/transmission || die
-		chown transmission:transmission "${EROOT%/}"/var/lib/transmission || die
-	fi
 
 	elog "If you use transmission-daemon, please, set 'rpc-username' and"
 	elog "'rpc-password' (in plain text, transmission-daemon will hash it on"
