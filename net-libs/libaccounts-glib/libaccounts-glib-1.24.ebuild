@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_6 )
+PYTHON_COMPAT=( python3_{6,7} )
 inherit meson python-r1 vala vcs-snapshot
 
 DESCRIPTION="Accounts SSO (Single Sign-On) management library for GLib applications"
@@ -29,6 +29,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	dev-util/gdbus-codegen
 	dev-util/glib-utils
+	dev-libs/check
 	doc? ( dev-util/gtk-doc )
 "
 
