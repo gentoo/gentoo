@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install prepare setup
+DEPEND=virtual/blas virtual/lapack afterimage? ( media-libs/libafterimage ) boost? ( dev-libs/boost ) fftw? ( sci-libs/fftw:3.0[mpi?] ) hdf5? ( sci-libs/hdf5[mpi?] ) hypre? ( >=sci-libs/hypre-2.8.0b[mpi?] ) metis? ( >=sci-libs/parmetis-4 ) mpi? ( virtual/mpi[cxx?,fortran?] ) mumps? ( sci-libs/mumps[mpi?] sci-libs/scalapack ) scotch? ( sci-libs/scotch[mpi?] ) sparse? ( sci-libs/suitesparse >=sci-libs/cholmod-1.7.0 ) superlu? ( >=sci-libs/superlu-5 ) X? ( x11-libs/libX11 ) || ( >=dev-lang/python-2.7.5-r2:2.7 ) virtual/pkgconfig dev-util/cmake virtual/fortran
+DESCRIPTION=Portable, Extensible Toolkit for Scientific Computation
+EAPI=7
+HOMEPAGE=http://www.mcs.anl.gov/petsc/
+IUSE=afterimage boost complex-scalars cxx debug doc fftw fortran hdf5 hypre mpi metis mumps scotch sparse superlu threads X
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD-2
+RDEPEND=virtual/blas virtual/lapack afterimage? ( media-libs/libafterimage ) boost? ( dev-libs/boost ) fftw? ( sci-libs/fftw:3.0[mpi?] ) hdf5? ( sci-libs/hdf5[mpi?] ) hypre? ( >=sci-libs/hypre-2.8.0b[mpi?] ) metis? ( >=sci-libs/parmetis-4 ) mpi? ( virtual/mpi[cxx?,fortran?] ) mumps? ( sci-libs/mumps[mpi?] sci-libs/scalapack ) scotch? ( sci-libs/scotch[mpi?] ) sparse? ( sci-libs/suitesparse >=sci-libs/cholmod-1.7.0 ) superlu? ( >=sci-libs/superlu-5 ) X? ( x11-libs/libX11 ) virtual/fortran
+REQUIRED_USE=afterimage? ( X ) complex-scalars? ( !hypre !superlu ) hdf5? ( mpi ) hypre? ( cxx mpi !superlu ) mumps? ( mpi scotch ) scotch? ( mpi ) superlu? ( !hypre )
+SLOT=0
+SRC_URI=http://ftp.mcs.anl.gov/pub/petsc/release-snapshots/petsc-3.11.3.tar.gz
+_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	7ba73aee7fe4462b3a745e3645ab92ca	fortran-2	f75a2d9321053acf424991e805f32ede	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-any-r1	b5f01473006ccc2cd78bc3dab20fced4	python-utils-r1	08e17157a6807add7db1f8d01e7e391f	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
+_md5_=7958cdc73b1d7b5f29e66fba3e45bec5
