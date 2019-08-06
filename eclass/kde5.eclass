@@ -206,7 +206,11 @@ case ${KDE_DESIGNERPLUGIN} in
 	false)  ;;
 	*)
 		IUSE+=" designer"
-		BDEPEND+=" designer? ( $(add_frameworks_dep kdesignerplugin) )"
+		if [[ ${CATEGORY} = kde-frameworks ]]; then
+			BDEPEND+=" designer? ( $(add_qt_dep designer) )"
+		else
+			BDEPEND+=" designer? ( $(add_frameworks_dep kdesignerplugin) )"
+		fi
 esac
 
 case ${KDE_EXAMPLES} in
@@ -598,8 +602,12 @@ kde5_src_configure() {
 		cmakeargs+=( -DCMAKE_DISABLE_FIND_PACKAGE_KF5DocTools=ON )
 	fi
 
-	if in_iuse designer && ! use designer && [[ ${KDE_DESIGNERPLUGIN} != false ]] ; then
-		cmakeargs+=( -DCMAKE_DISABLE_FIND_PACKAGE_KF5DesignerPlugin=ON )
+	if in_iuse designer && [[ ${KDE_DESIGNERPLUGIN} != false ]] ; then
+		if [[ ${CATEGORY} = kde-frameworks ]]; then
+			cmakeargs+=( -DBUILD_DESIGNERPLUGIN=$(usex designer) )
+		else
+			cmakeargs+=( $(cmake-utils_use_find_package designer KF5DesignerPlugin) )
+		fi
 	fi
 
 	if [[ ${KDE_QTHELP} != false ]]; then
