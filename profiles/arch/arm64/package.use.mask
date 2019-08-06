@@ -2,6 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Aaron Bauman <bman@gentoo.org> (2019-08-05)
+# dep not keyworded here
+media-gfx/gnome-photos upnp-av
+
+# Aaron Bauman <bman@gentoo.org> (2019-08-05)
 # jitterentropy is keyworded now
 sys-apps/rng-tools -jitterentropy
 
