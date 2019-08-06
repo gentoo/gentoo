@@ -1,0 +1,5 @@
+# Command line options, check pdnsd --help for a list of valid
+# parameters. Note that most of the options that can be given at
+# command-line are also available as configuration parameters in
+# /etc/pdnsd/pdnsd.conf
+PDNSDCONFIG=""
