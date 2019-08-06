@@ -19,10 +19,9 @@ of large-scale, complex multi-physics engineering and scientific problems.
 		<flag name="arprec">Add support for arprec (<pkg>sci-libs/arprec</pkg>)</flag>
 		<flag name="boost">Add support for boost (<pkg>dev-libs/boost</pkg>)</flag>
 		<flag name="clp">Add support for clp (<pkg>sci-libs/coinor-clp</pkg>)</flag>
-		<flag name="cppunit">Add support for (...)</flag>
 		<flag name="cuda">Add support for cuda (<pkg>dev-util/nvidia-cuda-toolkit</pkg>)</flag>
 		<flag name="eigen">Add support for eigen (<pkg>dev-cpp/eigen</pkg>)</flag>
-		<flag name="glpk">Add support for (...)</flag>
+		<flag name="glpk">Add support for glpk (<pkg>sci-mathematics/glpk</pkg>)</flag>
 		<flag name="gtest">Add support for gtest (<pkg>dev-cpp/gtest</pkg>)</flag>
 		<flag name="hwloc">Add support for hwloc (<pkg>sys-apps/hwloc</pkg>)</flag>
 		<flag name="hdf5">Add support for hdf5 (<pkg>sci-libs/hdf5</pkg>)</flag>
