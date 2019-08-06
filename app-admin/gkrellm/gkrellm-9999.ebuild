@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit desktop multilib user systemd toolchain-funcs
+inherit desktop multilib systemd toolchain-funcs
 
 MY_P="${P/_/-}"
 
@@ -21,6 +21,8 @@ SLOT="2"
 IUSE="gnutls hddtemp libressl lm_sensors nls ntlm ssl kernel_FreeBSD X"
 
 RDEPEND="
+	acct-group/gkrellmd
+	acct-user/gkrellmd
 	dev-libs/glib:2
 	hddtemp? ( app-admin/hddtemp )
 	ssl? (
@@ -142,9 +144,4 @@ src_install() {
 	doins server/gkrellmd.conf
 
 	einstalldocs
-}
-
-pkg_preinst() {
-	enewgroup gkrellmd
-	enewuser gkrellmd -1 -1 -1 gkrellmd
 }
