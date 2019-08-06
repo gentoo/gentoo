@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools systemd readme.gentoo-r1 user
+inherit autotools systemd readme.gentoo-r1
 
 DESCRIPTION="Minimalistic Murmur (Mumble server)"
 HOMEPAGE="https://github.com/umurmur/umurmur"
@@ -35,7 +35,10 @@ DEPEND=">=dev-libs/protobuf-c-1.0.0_rc2
 	)
 "
 
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	acct-group/murmur
+	acct-user/murmur
+"
 
 DOC_CONTENTS="
 	A configuration file has been installed at /etc/umurmur/umurmur.conf - you
@@ -64,11 +67,6 @@ pkg_pretend() {
 		ewarn "More than one ssl provider selected (${ssl_provider[@]})"
 		ewarn "defaulting to ${ssl_provider[0]}."
 	fi
-}
-
-pkg_setup() {
-	enewgroup murmur
-	enewuser murmur "" "" "" murmur
 }
 
 src_prepare() {
