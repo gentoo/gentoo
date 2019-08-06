@@ -38,6 +38,7 @@ RDEPEND="
 	clp? ( sci-libs/coinor-clp )
 	cuda? ( >=dev-util/nvidia-cuda-toolkit-3.2 )
 	eigen? ( dev-cpp/eigen:3 )
+	glpk? ( sci-mathematics/glpk )
 	gtest? ( dev-cpp/gtest )
 	hdf5? ( sci-libs/hdf5[mpi] )
 	hypre? ( sci-libs/hypre )
