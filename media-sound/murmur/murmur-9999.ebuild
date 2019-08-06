@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit qmake-utils systemd user readme.gentoo-r1
+inherit qmake-utils systemd readme.gentoo-r1
 
 DESCRIPTION="Mumble is an open source, low-latency, high quality voice chat software"
 HOMEPAGE="https://wiki.mumble.info"
@@ -32,6 +32,8 @@ SLOT="0"
 IUSE="+dbus debug +ice pch zeroconf"
 
 RDEPEND="
+	acct-group/murmur
+	acct-user/murmur
 	>=dev-libs/openssl-1.0.0b:0=
 	>=dev-libs/protobuf-2.2.0:=
 	dev-qt/qtcore:5
@@ -70,11 +72,6 @@ DOC_CONTENTS="
 	Please restart dbus before starting murmur, or else dbus
 	registration will fail.
 "
-
-pkg_setup() {
-	enewgroup murmur
-	enewuser murmur -1 -1 /var/lib/murmur murmur
-}
 
 src_prepare() {
 	default
