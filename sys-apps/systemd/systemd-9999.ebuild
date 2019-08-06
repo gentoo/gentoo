@@ -343,7 +343,7 @@ multilib_src_install_all() {
 	# Preserve empty dirs in /etc & /var, bug #437008
 	keepdir /etc/{binfmt.d,modules-load.d,tmpfiles.d}
 	keepdir /etc/kernel/install.d
-	keepdir /etc/systemd/{network,user}
+	keepdir /etc/systemd/{network,system,user}
 	keepdir /etc/udev/{hwdb.d,rules.d}
 	keepdir "${rootprefix}"/lib/systemd/{system-sleep,system-shutdown}
 	keepdir /usr/lib/{binfmt.d,modules-load.d}
