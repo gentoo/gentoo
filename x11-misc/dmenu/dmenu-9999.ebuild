@@ -24,7 +24,7 @@ DEPEND="${RDEPEND}
 	x11-base/xorg-proto
 "
 PATCHES=(
-	"${FILESDIR}"/${P}-gentoo.patch
+	"${FILESDIR}"/${PN}-4.9-gentoo.patch
 )
 
 src_prepare() {
