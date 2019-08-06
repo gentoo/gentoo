@@ -5,11 +5,11 @@ DESCRIPTION=bind tools: dig, nslookup, host, nsupdate, dnssec-keygen
 EAPI=7
 HOMEPAGE=http://www.isc.org/software/bind
 IUSE=doc gssapi idn ipv6 libedit libressl readline ssl xml
-KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+KEYWORDS=~alpha ~amd64 ~arm arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
 LICENSE=Apache-2.0 BSD BSD-2 GPL-2 HPND ISC MPL-2.0
 RDEPEND=ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) ) xml? ( dev-libs/libxml2 ) idn? ( net-dns/libidn2:= ) gssapi? ( virtual/krb5 ) libedit? ( dev-libs/libedit ) !libedit? ( readline? ( sys-libs/readline:0= ) ) !<net-dns/bind-9.10.2
 RESTRICT=test
 SLOT=0
 SRC_URI=https://www.isc.org/downloads/file/bind-9.14.4/?version=tar-gz -> bind-9.14.4.tar.gz
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	7ba73aee7fe4462b3a745e3645ab92ca	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
-_md5_=f5a62e9dce85477b58d193b2b8fb6328
+_md5_=43ebc1cf33957fc05d0f5ceb46b08a74
