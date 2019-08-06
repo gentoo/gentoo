@@ -7449,6 +7449,7 @@ media-gfx/uniconvertor 2.0_pre379-r1 2.0_pre379-r2: Convert vector graphic file 
 media-gfx/videorbits 2.205: a collection of programs for creating high dynamic range images
 media-gfx/viewnior 1.6: Fast and simple image viewer
 media-gfx/wings 2.1.5: Wings 3D is an advanced subdivision modeler
+media-gfx/xdot 1.1: Interactive viewer for Graphviz dot files
 media-gfx/xfig 3.2.6a-r1: A menu-driven tool to draw and manipulate objects interactively in an X window
 media-gfx/xli 1.17.0-r5: X Load Image: view images or load them to root window
 media-gfx/xloadimage 4.1-r12: utility to view many different types of images under X11
