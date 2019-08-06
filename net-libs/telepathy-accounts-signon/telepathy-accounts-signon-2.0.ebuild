@@ -18,7 +18,7 @@ BDEPEND=">=dev-util/meson-0.49.2"
 DEPEND="
 	dev-libs/glib:2
 	net-im/telepathy-mission-control
-	net-libs/libaccounts-glib
+	net-libs/libaccounts-glib:=
 	>=net-libs/libsignon-glib-2.0
 	net-libs/telepathy-glib
 "
