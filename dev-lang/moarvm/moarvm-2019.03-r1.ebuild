@@ -24,7 +24,7 @@ SLOT="0"
 IUSE="asan clang debug doc +jit static-libs optimize ubsan"
 
 RDEPEND="dev-libs/libatomic_ops
-		dev-libs/libuv
+		>=dev-libs/libuv-1.26
 		dev-lang/lua:=
 		virtual/libffi"
 DEPEND="${RDEPEND}
@@ -38,12 +38,16 @@ RESTRICT=test
 
 src_configure() {
 	use doc && DOCS+=( docs/* )
+	local prefix="${EROOT%/}/usr"
+	local libdir="${EROOT%/}/usr/$(get_libdir)"
+	einfo "--prefix '${prefix}'"
+	einfo "--libdir '${libdir}'"
 	local myconfigargs=(
-		"--prefix=/usr"
+		"--prefix=${prefix}"
 		"--has-libuv"
 		"--has-libatomic_ops"
 		"--has-libffi"
-		"--libdir=$(get_libdir)"
+		"--libdir=${libdir}"
 		"--compiler=$(usex clang clang gcc)"
 		"$(usex asan        --asan)"
 		"$(usex debug       --debug            --no-debug)"

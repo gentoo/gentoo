@@ -49,12 +49,16 @@ src_prepare() {
 
 src_configure() {
 	use doc && DOCS+=( docs/* )
+	local prefix="${EROOT}/usr"
+	local libdir="${EROOT}/usr/$(get_libdir)"
+	einfo "--prefix '${prefix}'"
+	einfo "--libdir '${libdir}'"
 	local myconfigargs=(
-		"--prefix" "/usr"
+		"--prefix" "${prefix}"
 		"--has-libuv"
 		"--has-libatomic_ops"
 		"--has-libffi"
-		"--libdir" "$(get_libdir)"
+		"--libdir" "${libdir}"
 		"--compiler" "$(usex clang clang gcc)"
 		"$(usex asan        --asan)"
 		"$(usex debug       --debug            --no-debug)"
