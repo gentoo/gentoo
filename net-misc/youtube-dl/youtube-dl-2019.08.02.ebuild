@@ -6,11 +6,11 @@ PYTHON_COMPAT=(python{2_7,3_5,3_6,3_7})
 inherit bash-completion-r1 distutils-r1 readme.gentoo-r1
 
 DESCRIPTION="Download videos from YouTube.com (and more sites...)"
-HOMEPAGE="https://rg3.github.com/youtube-dl/"
+HOMEPAGE="https://github.com/ytdl-org/youtube-dl/"
 SRC_URI="https://youtube-dl.org/downloads/${PV}/${P}.tar.gz"
 LICENSE="public-domain"
 
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x86-solaris"
+KEYWORDS="amd64 arm ~arm64 hppa ppc ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x86-solaris"
 RESTRICT="test"
 SLOT="0"
 DEPEND="
