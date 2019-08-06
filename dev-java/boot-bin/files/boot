@@ -1,3 +1,4 @@
+#!/bin/bash
 source @@JAVA_PKG_SHAREPATH@@/package.env
 jarpath="@@JAVA_PKG_JARDEST@@/@@PN@@.jar"
 declare -a "options=($BOOT_JVM_OPTIONS)"
