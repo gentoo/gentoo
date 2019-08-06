@@ -24,7 +24,7 @@ SLOT="0"
 IUSE="asan clang debug doc +jit static-libs optimize ubsan"
 
 RDEPEND="dev-libs/libatomic_ops
-		dev-libs/libuv
+		>=dev-libs/libuv-1.26
 		dev-lang/lua:=
 		virtual/libffi"
 DEPEND="${RDEPEND}
