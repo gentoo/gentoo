@@ -18,7 +18,7 @@ IUSE="doc test"
 RESTRICT="test"
 
 RDEPEND="
-	>=net-libs/libaccounts-glib-1.23
+	>=net-libs/libaccounts-glib-1.23:=
 	dev-libs/glib:2
 	dev-qt/qtcore:5
 	dev-qt/qtxml:5
