@@ -19,6 +19,8 @@ KEYWORDS="amd64 ~ppc x86"
 
 DEPEND=">=net-misc/asterisk-1.4"
 
+S="${WORKDIR}"
+
 src_install() {
 	local c
 
