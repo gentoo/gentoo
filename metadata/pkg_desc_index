@@ -14,6 +14,7 @@ acct-group/libvirt 0: System group: libvirt
 acct-group/lp 0: System group: lp
 acct-group/mail 0: Mail program group
 acct-group/man 0: System group: man
+acct-group/mysql 0: MySQL program group
 acct-group/qemu 0: System group: qemu
 acct-group/render 0: System group: render
 acct-group/rtkit 0: Group for the Realtime Policy and Watchdog Daemon
@@ -37,6 +38,7 @@ acct-user/dnscrypt-proxy 0: User for net-dns/dnscrypt-proxy
 acct-user/ftp 0: File Transfer Protocol server user
 acct-user/mail 0: Mail program user
 acct-user/man 0: user for man page viewer
+acct-user/mysql 0: MySQL program user
 acct-user/postmaster 0: Postmaster user
 acct-user/qemu 0: System user: qemu
 acct-user/rtkit 0: User for the Realtime Policy and Watchdog Daemon
@@ -2891,7 +2893,7 @@ dev-lang/scala-bin 2.12.4: The Scala Programming Language
 dev-lang/spark 2017 2018: Software development for high-reliability applications.
 dev-lang/spidermonkey 1.7.0-r3 1.8.5-r6 1.8.5-r7 17.0.0-r5 38.3.0 52.9.1_pre1 60.5.2_p0-r2: Stand-alone JavaScript C++ library
 dev-lang/squirrel 3.1: A interpreted language mainly used for games
-dev-lang/swi-prolog 7.4.2: free, small, and standard compliant Prolog compiler
+dev-lang/swi-prolog 7.4.2 8.0.3: versatile implementation of the Prolog programming language
 dev-lang/swig 2.0.9 3.0.12: Simplified Wrapper and Interface Generator
 dev-lang/tcl 8.5.17-r1 8.6.8: Tool Command Language
 dev-lang/tk 8.5.17-r1 8.6.8: Tk Widget Set
