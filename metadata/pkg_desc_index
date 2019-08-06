@@ -3030,7 +3030,7 @@ dev-libs/libdaemon 0.14-r1 0.14-r2 0.14-r3: Simple library for creating daemon p
 dev-libs/libdazzle 3.30.2: Experimental new features for GTK+ and GLib
 dev-libs/libdbh 5.0.19: a small library to create and manage 64-bit disk based hash tables
 dev-libs/libdbusmenu 16.04.0: Library to pass menu structure across DBus
-dev-libs/libdbusmenu-qt 0.9.3_pre20160218-r2 0.9.3_pre20160218-r3: Library providing Qt implementation of DBusMenu specification
+dev-libs/libdbusmenu-qt 0.9.3_pre20160218-r3: Library providing Qt implementation of DBusMenu specification
 dev-libs/libdnet 1.12: simplified, portable interface to several low-level networking routines
 dev-libs/libdnsres 0.1a-r2: A non-blocking DNS resolver library
 dev-libs/libdshconfig 0.20.13: Library for parsing dsh.style configuration files
