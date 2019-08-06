@@ -19,7 +19,7 @@ SRC_URI="${SRC_URI_amd64} ${SRC_URI_arm64} ${SRC_URI_ppc} ${SRC_URI_x86} ${SRC_U
 
 LICENSE="distributed.net GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc ~x86" # sparc not available for this version
+KEYWORDS="amd64 ~arm64 ~ppc ~x86" # sparc not available for this version
 IUSE=""
 RESTRICT="mirror"
 
