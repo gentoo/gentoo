@@ -1,7 +1,7 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 inherit toolchain-funcs
 
@@ -11,15 +11,19 @@ SRC_URI="https://www.kernel.org/pub/software/network/${PN}/${P}.tar.xz"
 
 LICENSE="ISC"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
-RDEPEND="dev-libs/libnl"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+RDEPEND="dev-libs/libnl:="
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 src_prepare() {
+	default
 	tc-export CC LD PKG_CONFIG
+
+	# do not compress man pages by default.
+	sed 's@\(iw\.8\)\.gz@\1@' -i Makefile || die
 }
 
 src_compile() {
@@ -29,5 +33,5 @@ src_compile() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" PREFIX="${EPREFIX}/usr" install
+	emake V=1 DESTDIR="${D}" PREFIX="${EPREFIX}/usr" install
 }
