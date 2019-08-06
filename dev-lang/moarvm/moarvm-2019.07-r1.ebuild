@@ -21,7 +21,9 @@ DESCRIPTION="A 6model-based VM for NQP and Rakudo Perl 6"
 HOMEPAGE="http://moarvm.org"
 LICENSE="Artistic-2"
 SLOT="0"
-IUSE="asan clang debug doc +jit static-libs optimize ubsan"
+
+#USE=optimize triggers makefile bug
+IUSE="asan clang debug doc +jit static-libs ubsan"
 
 RDEPEND="dev-libs/libatomic_ops
 		>=dev-libs/libuv-1.26
@@ -36,22 +38,27 @@ DOCS=( CREDITS README.markdown )
 # Tests are conducted via nqp
 RESTRICT=test
 
+# known configure bug
+PATCHES="${FILESDIR}/fix-quoting.patch"
+
 src_configure() {
 	use doc && DOCS+=( docs/* )
+	local prefix="${EROOT%/}/usr"
+	local libdir="${EROOT%/}/usr/$(get_libdir)"
+	einfo "--prefix '${prefix}'"
+	einfo "--libdir '${libdir}'"
 	local myconfigargs=(
-		"--prefix=/usr"
+		"--prefix" "${prefix}"
 		"--has-libuv"
 		"--has-libatomic_ops"
 		"--has-libffi"
-		"--libdir=$(get_libdir)"
-		"--compiler=$(usex clang clang gcc)"
+		"--libdir" "${libdir}"
+		"--compiler" "$(usex clang clang gcc)"
 		"$(usex asan        --asan)"
 		"$(usex debug       --debug            --no-debug)"
-		"$(usex optimize    --optimize=        --no-optimize)"
 		"$(usex static-libs --static)"
 		"$(usex ubsan       --ubsan)"
 	)
-	use optimize && filter-flags '-O*'
 
-	perl Configure.pl "${myconfigargs[@]}" || die
+	perl Configure.pl "${myconfigargs[@]}" moarshared || die
 }
