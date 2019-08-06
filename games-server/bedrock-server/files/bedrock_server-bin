@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Sets BASEDIR for bedrock-server
+BASEDIR="/opt/bedrock-server"
+
+# Work around DT_RPATH (.) security issue by chdir'ing into expected $LD_LIBRARY_PATH
+export LD_LIBRARY_PATH="${BASEDIR}${LD_LIBRARY_PATH:+:}${LD_LIBRARY_PATH}"
+
+# Launch bedrock-server
+cd "${BASEDIR}" && exec "${BASEDIR}/bedrock_server" $*

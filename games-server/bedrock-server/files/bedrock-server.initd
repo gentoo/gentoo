@@ -1,0 +1,23 @@
+#!/sbin/openrc-run
+# Copyright 1999-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+bedrock_path="/opt/bedrock-server"
+name="Minecraft Bedrock Server"
+pidfile="/run/bedrock-server.pid"
+start_stop_daemon_args="--chdir ${bedrock_path}"
+
+command="/opt/bin/bedrock_server"
+command_background="true"
+command_group="minecraft"
+command_user="minecraft"
+
+depend() {
+	use net
+}
+
+start_pre() {
+	checkpath -d -o "${command_user}:${command_group}" -q "${bedrock_path}"
+
+	return 0
+}
