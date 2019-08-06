@@ -155,4 +155,19 @@ pkg_postinst() {
 
 		break
 	done
+
+	if use postgres; then
+		for old in ${REPLACING_VERSIONS}; do
+			ver_test ${old} -lt 4.1.11-r1 || continue
+
+			echo
+			ewarn "PowerDNS 4.1.11 contains a security fix for the PostgreSQL backend."
+			ewarn "This security fix needs to be applied manually to the database schema."
+			ewarn "Please refer to the official security advisory for more information:"
+			ewarn
+			ewarn "  https://doc.powerdns.com/authoritative/security-advisories/powerdns-advisory-2019-06.html"
+
+			break
+		done
+	fi
 }
