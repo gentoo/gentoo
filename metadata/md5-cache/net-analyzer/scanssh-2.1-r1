@@ -1,0 +1,11 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=dev-libs/libdnet dev-libs/libevent:= net-libs/libpcap
+DESCRIPTION=network scanner that gathers info on SSH protocols and versions
+EAPI=7
+HOMEPAGE=https://monkey.org/~provos/scanssh/
+KEYWORDS=~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86
+LICENSE=BSD
+RDEPEND=dev-libs/libdnet dev-libs/libevent:= net-libs/libpcap
+SLOT=0
+SRC_URI=https://monkey.org/~provos/scanssh-2.1.tar.gz
+_md5_=8766a5f3296f1c4a53b51e8f56393062

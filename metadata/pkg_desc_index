@@ -608,7 +608,7 @@ app-editors/nano 4.2: GNU GPL'd Pico clone with more functionality
 app-editors/nedit 5.6-r1: Multi-purpose text editor for the X Window System
 app-editors/ng 1.5_beta1-r2: Emacs like micro editor Ng -- based on mg2a
 app-editors/nvi 1.81.6-r7: Re-implementation of the classic 4BSD ex/vi
-app-editors/okteta 0.26.1 0.26.2: Hex editor by KDE
+app-editors/okteta 0.26.2: Hex editor by KDE
 app-editors/pluma 1.22.0: Pluma text editor for the MATE desktop
 app-editors/qemacs 0.4.1_pre20150916 0.4.1_pre20170225: QEmacs is a very small but powerful UNIX editor
 app-editors/qxmledit 0.9.10: Simple Qt-based XML editor
@@ -6249,7 +6249,7 @@ dev-util/checkbashisms 2.19.6: Perl script to check for commonly used bash featu
 dev-util/checkstyle 7.2: Development tool to help write Java code that adheres to a coding standard
 dev-util/clazy 1.5: Compiler plugin which allows clang to understand Qt semantics
 dev-util/cloc 1.72 1.76-r1: Count Lines of Code
-dev-util/cmake 3.14.3 3.14.6: Cross platform Make
+dev-util/cmake 3.14.6: Cross platform Make
 dev-util/cmake-fedora 2.7.1: Provides cmake helper macros and targets for linux, especially fedora developers
 dev-util/cmdtest 0.30: black box tests Unix command line tools
 dev-util/cmocka 1.1.5: Unit testing framework for C
