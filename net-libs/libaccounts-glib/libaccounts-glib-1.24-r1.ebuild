@@ -11,7 +11,7 @@ HOMEPAGE="https://01.org/gsso/"
 SRC_URI="https://gitlab.com/accounts-sso/${PN}/-/archive/VERSION_${PV}/${PN}-VERSION_${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
-SLOT="0"
+SLOT="0/1"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE="doc"
 
