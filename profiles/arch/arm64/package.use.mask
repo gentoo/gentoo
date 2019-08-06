@@ -1,6 +1,10 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Aaron Bauman <bman@gentoo.org> (2019-08-05)
+# jitterentropy is keyworded now
+sys-apps/rng-tools -jitterentropy
+
 # Patrick McLean <chutzpah@gentoo.org> (2019-06-14)
 # test deps not keyworded
 dev-util/bcc test
