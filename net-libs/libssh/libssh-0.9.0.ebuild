@@ -97,7 +97,7 @@ multilib_src_compile() {
 
 multilib_src_install() {
 	cmake-utils_src_install
-	use doc && HTML_DOCS=( "${BUILD_DIR}"/doc/html/. )
+	multilib_is_native_abi && use doc && HTML_DOCS=( "${BUILD_DIR}"/doc/html/. )
 
 	# compatibility symlink until all consumers have been updated
 	# to no longer use libssh_threads.so
