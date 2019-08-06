@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -47,6 +47,13 @@ RDEPEND="${DEPEND}
 "
 
 DOCS=( AUTHORS ChangeLog README )
+
+src_prepare() {
+	kde5_src_prepare
+
+	# unused dependency
+	sed -e "/KCMUtils/d" -i CMakeLists.txt -i src/kcm/CMakeLists.txt || die
+}
 
 src_configure() {
 	local mycmakeargs=(
