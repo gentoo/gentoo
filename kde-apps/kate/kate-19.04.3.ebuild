@@ -53,6 +53,8 @@ RDEPEND="${DEPEND}
 	!kde-misc/ktexteditorpreviewplugin
 "
 
+PATCHES=( "${FILESDIR}/${P}-qt-5.12.4-missing-header.patch" )
+
 src_prepare() {
 	kde5_src_prepare
 	# test hangs
