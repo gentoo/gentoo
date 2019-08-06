@@ -122,7 +122,7 @@ app-admin/hddtemp 0.3_beta15-r28: A simple utility to read the temperature of SM
 app-admin/helm 2.14.1: Kubernetes Package Manager
 app-admin/ide-smart 1.4-r2: A tool to read SMART information from harddiscs
 app-admin/installer 0.1.1_beta: A software for Gentoo installation
-app-admin/keepass 2.41: A free, open source, light-weight and easy-to-use password manager
+app-admin/keepass 2.41 2.42.1: A free, open source, light-weight and easy-to-use password manager
 app-admin/keepassxc 2.3.4-r1: KeePassXC - KeePass Cross-platform Community Edition
 app-admin/killproc 2.13-r1: killproc and assorted tools for boot scripts
 app-admin/lastpass-cli 1.3.1-r1: Interfaces with LastPass.com from the command line.
@@ -541,7 +541,7 @@ app-doc/blas-docs 3.1.1: Documentation reference and man pages for blas implemen
 app-doc/casting-spels-emacs 19-r2: Casting SPELs in Lisp - A Comic Book (Emacs Lisp Edition)
 app-doc/clsync-docs 0.4.2: Clsync and libclsync API documentation
 app-doc/diveintopython 2 3: 'Dive Into Python' by Mark Pilgrim - Python 3
-app-doc/doxygen 1.8.14-r1: Documentation system for most programming languages
+app-doc/doxygen 1.8.14-r1 1.8.15: Documentation system for most programming languages
 app-doc/eclass-manpages 20190714 20190728: Collection of Gentoo eclass manpages
 app-doc/elisp-manual 18.1.03 21.2.8-r2 22.2.9 23.4 24.5 25.3: The GNU Emacs Lisp Reference Manual
 app-doc/gimp-help 2.8.2: GNU Image Manipulation Program help files
@@ -769,8 +769,9 @@ app-emulation/grub-xen-host 1.0: Grub2 built as a PV grub per the Xen PV Boot Pr
 app-emulation/hercules 3.10: Hercules System/370, ESA/390 and zArchitecture Mainframe Emulator
 app-emulation/libcacard 2.6.0: virtual Common Access Card (CAC) library emulator
 app-emulation/libdsk 1.5.8: LIBDSK is a library for accessing discs and disc image files
-app-emulation/libvirt 5.2.0-r2: C toolkit to manipulate virtual machines
+app-emulation/libvirt 5.2.0-r2 5.5.0-r1: C toolkit to manipulate virtual machines
 app-emulation/libvirt-glib 1.0.0-r1 2.0.0: GLib and GObject mappings for libvirt
+app-emulation/libvirt-snmp 0.0.4: Provides SNMP functionality for libvirt
 app-emulation/lxc 2.1.1-r1 3.0.3: LinuX Containers userspace utilities
 app-emulation/lxc-templates 3.0.3: Old style template scripts for LXC
 app-emulation/lxd 3.12: Fast, dense and secure container management
@@ -904,7 +905,7 @@ app-i18n/libchewing 0.5.1: Intelligent phonetic (Zhuyin/Bopomofo) input method l
 app-i18n/libhangul 0.1.0: Library for hangul input method logic, hanja dictionary
 app-i18n/libpinyin 2.3.0: Libraries for handling of Hanyu Pinyin and Zhuyin Fuhao
 app-i18n/librime 1.2.9: Rime Input Method Engine, the core library
-app-i18n/libskk 1.0.1: GObject-based library to deal with Japanese kana-to-kanji conversion method
+app-i18n/libskk 1.0.1 1.0.2: GObject-based library to deal with Japanese kana-to-kanji conversion method
 app-i18n/libtabe 0.2.6.1.2: Libtabe provides bimsphone support for xcin-2.5+
 app-i18n/man-pages-de 1.15 2.12: A somewhat comprehensive collection of Linux german man page translations
 app-i18n/man-pages-fr 3.70: A somewhat comprehensive collection of french Linux man pages
@@ -1197,7 +1198,7 @@ app-office/libreoffice 6.1.5.2 6.2.5.2: A full office productivity suite
 app-office/libreoffice-bin 6.2.5.2: A full office productivity suite. Binary package
 app-office/libreoffice-bin-debug 6.2.5.2: LibreOffice, a full office productivity suite. Binary package, debug info
 app-office/libreoffice-l10n 6.1.5.2 6.2.5.2: Translations for the Libreoffice suite
-app-office/lyx 2.3.0: WYSIWYM frontend for LaTeX, DocBook, etc.
+app-office/lyx 2.3.0 2.3.3: WYSIWYM frontend for LaTeX, DocBook, etc.
 app-office/mdbtools 0.7.1-r2: Set of libraries and utilities for reading Microsoft Access database (MDB) files
 app-office/moneyguru 2.13.1-r1: Future-aware personal finances management
 app-office/ooextras 20060909: OOExtras: Extra Templates for OpenOffice.org!
@@ -1305,7 +1306,7 @@ app-text/XML-Schema-learner 1.0.1: Algorithmic inferencing of XML schema definit
 app-text/a2ps 4.14-r6: Any to PostScript filter
 app-text/aiksaurus 1.2.1: A thesaurus lib, tool and database
 app-text/an 1.2: Very fast anagram generator with dictionary lookup
-app-text/ansifilter 2.13: Handles text files containing ANSI terminal escape codes
+app-text/ansifilter 2.13 2.14: Handles text files containing ANSI terminal escape codes
 app-text/antiword 0.37-r1: free MS Word reader
 app-text/apvlv 0.1.5-r2: Alf's PDF Viewer Like Vim
 app-text/asa 1.1-r1: ASA Carriage control conversion for ouput by Fortran programs
@@ -2025,7 +2026,7 @@ dev-games/physfs 3.0.2: Abstraction layer for filesystem and archive access
 dev-games/poker-eval 138.0: A fast C library for evaluating poker hands
 dev-games/ps2-packer 0.4.4: another ELF packer for the PS2
 dev-games/t4k-common 0.1.1: A library of code shared between tuxmath and tuxtype
-dev-games/tiled 1.2.3: A general purpose tile map editor
+dev-games/tiled 1.2.3 1.2.4: A general purpose tile map editor
 dev-games/wfmath 1.0.2: Worldforge math library
 dev-go/blackfriday 1.2_p20150720: a markdown processor implemented in Go
 dev-go/go-bindata 0_pre20151023 1.0.0: A small utility which generates Go code from any file
@@ -3029,7 +3030,7 @@ dev-libs/libdaemon 0.14-r1 0.14-r2 0.14-r3: Simple library for creating daemon p
 dev-libs/libdazzle 3.30.2: Experimental new features for GTK+ and GLib
 dev-libs/libdbh 5.0.19: a small library to create and manage 64-bit disk based hash tables
 dev-libs/libdbusmenu 16.04.0: Library to pass menu structure across DBus
-dev-libs/libdbusmenu-qt 0.9.3_pre20160218-r2: Library providing Qt implementation of DBusMenu specification
+dev-libs/libdbusmenu-qt 0.9.3_pre20160218-r2 0.9.3_pre20160218-r3: Library providing Qt implementation of DBusMenu specification
 dev-libs/libdnet 1.12: simplified, portable interface to several low-level networking routines
 dev-libs/libdnsres 0.1a-r2: A non-blocking DNS resolver library
 dev-libs/libdshconfig 0.20.13: Library for parsing dsh.style configuration files
@@ -4676,6 +4677,7 @@ dev-python/buzhug 1.8-r1: Fast, pure-Python database engine
 dev-python/bytecodeassembler 0.6: Generate Python code objects by assembling bytecode
 dev-python/bz2file 0.98: Replacement for bz2.BZ2File with features from newest CPython
 dev-python/cached-property 1.3.1: A cached-property for decorating methods in classes
+dev-python/cachelib 0.1: Collection of cache libraries in the same API interface. Extracted from werkzeug
 dev-python/cachetools 3.1.0 3.1.1: Extensible memoizing collections and decorators
 dev-python/cairocffi 0.8.0: CFFI-based drop-in replacement for Pycairo
 dev-python/cangjie 1.2-r1: Python wrapper for libcangjie
@@ -5037,7 +5039,7 @@ dev-python/libgnomecanvas-python 2.28.1-r1: Python bindings for the Gnome Canvas
 dev-python/libnacl 1.4.4 1.6.1: Python ctypes wrapper for libsodium
 dev-python/librharris 0.1.14-r1: Python Internet Programming Library
 dev-python/librsvg-python 2.32.0-r1: Python bindings for the librsvg library
-dev-python/libvirt-python 5.2.0: libvirt Python bindings
+dev-python/libvirt-python 5.2.0 5.5.0: libvirt Python bindings
 dev-python/libwnck-python 2.32.0-r1: Python bindings for the libwnck library
 dev-python/libzilla 1.4 1.5: Library for managing Bugzilla bug reports from the CLI
 dev-python/linecache2 1.0.0: Backports of the linecache module
@@ -6316,7 +6318,7 @@ dev-util/gtk-doc 1.25-r1: GTK+ Documentation Generator
 dev-util/gtk-doc-am 1.25-r1: Automake files from gtk-doc
 dev-util/gtk-update-icon-cache 3.24.3 3.24.8: GTK update icon cache
 dev-util/gyp 20170904022846: GYP (Generate Your Projects) meta-build system
-dev-util/howdoi 1.1.14: A code search tool
+dev-util/howdoi 1.1.14 1.2.1: A code search tool
 dev-util/huc 0.1-r1: HTML umlaut conversion tool
 dev-util/imediff2 1.1.2-r5: An interactive, user friendly 2-way merge tool in text mode
 dev-util/indent 2.2.11-r1: Indent program source files
@@ -7323,7 +7325,7 @@ media-gfx/enblend 4.2.0_p20161007-r1: Image Blending with Multiresolution Spline
 media-gfx/eog 3.28.4: The Eye of GNOME image viewer
 media-gfx/eog-plugins 3.26.3: Eye of GNOME plugins
 media-gfx/eom 1.22.0: The MATE image viewer
-media-gfx/evoluspencil 2.0.5: A simple GUI prototyping tool to create mockups
+media-gfx/evoluspencil 2.0.5 3.0.4: A simple GUI prototyping tool to create mockups
 media-gfx/exif 0.6.21: Small CLI util to show EXIF infos hidden in JPEG files
 media-gfx/exiftags 1.01: Extracts JPEG EXIF headers from digital camera photos
 media-gfx/exiv2 0.27.2: EXIF, IPTC and XMP metadata C++ library and command line utility
@@ -7398,7 +7400,7 @@ media-gfx/nvidia-texture-tools 2.0.8-r4: A set of cuda-enabled texture tools and
 media-gfx/opcion 1.1.1-r2: Free font viewer written in Java
 media-gfx/openclipart 0.20: Open Clip Art Library (openclipart.org)
 media-gfx/openvdb 4.0.2-r2: Libs for the efficient manipulation of volumetric data
-media-gfx/optipng 0.7.6-r2: Compress PNG files without affecting image quality
+media-gfx/optipng 0.7.6-r2 0.7.7: Compress PNG files without affecting image quality
 media-gfx/pdf2svg 0.2.3: pdf2svg is based on poppler and cairo and can convert pdf to svg files
 media-gfx/peps 2.0-r1: Preprocess and convert EPS files to bitmap with Ghostscript
 media-gfx/photopc 3.07: Utility to control digital cameras based on Sierra Imaging firmware
@@ -7774,7 +7776,7 @@ media-libs/stops 0.3.0: Organ stops for aeolus by Fons Adriaensen <fons.adriaens
 media-libs/t1lib 5.1.2-r2: A Type 1 Font Rasterizer Library for UNIX/X11
 media-libs/taglib 1.11.1_p20181028: A library for reading and editing audio meta data
 media-libs/taglib-extras 1.0.1-r1: Unofficial taglib plugins maintained by the Amarok team
-media-libs/tiff 4.0.10: Tag Image File Format (TIFF) library
+media-libs/tiff 4.0.10 4.0.10-r1: Tag Image File Format (TIFF) library
 media-libs/tremor 0_pre20130223-r1: A fixed-point version of the Ogg Vorbis decoder (also known as libvorbisidec)
 media-libs/tse3 0.3.1-r1: TSE3 Sequencer library
 media-libs/urt 3.1b-r1 3.1b-r3: the Utah Raster Toolkit is a library for dealing with raster images
@@ -8603,7 +8605,7 @@ net-irc/scrollz 2.3: Advanced IRC client based on ircII
 net-irc/sic 1.2-r1: An extremly simple IRC client
 net-irc/telepathy-idle 0.2.0: Full-featured IRC connection manager for Telepathy
 net-irc/unrealircd 4.2.2: An advanced Internet Relay Chat daemon
-net-irc/weechat 2.3 2.4: Portable and multi-interface IRC client
+net-irc/weechat 2.3 2.4 2.5-r1: Portable and multi-interface IRC client
 net-irc/znc 1.7.4: An advanced IRC Bouncer
 net-libs/accounts-qt 1.15: Qt5 bindings for libaccounts-glib
 net-libs/aqbanking 5.7.8: Generic Online Banking Interface
@@ -8659,7 +8661,7 @@ net-libs/libktorrent 2.1-r1 2.1-r2: BitTorrent library based on KDE Frameworks
 net-libs/liblockfile 1.09: Implements functions designed to lock the standard mailboxes
 net-libs/libmbim 1.6.0 1.10.0 1.14.0 1.16.2: Mobile Broadband Interface Model (MBIM) modem protocol helper library
 net-libs/libmicrodns 0.0.9: Minimal mDNS resolver (and announcer) library
-net-libs/libmicrohttpd 0.9.63: Small C library to run an HTTP server as part of another application
+net-libs/libmicrohttpd 0.9.63 0.9.65: Small C library to run an HTTP server as part of another application
 net-libs/libmnl 1.0.3-r1 1.0.4: Minimalistic netlink library
 net-libs/libmrss 0.19.2: A C-library for parsing and writing RSS 0.91/0.92/1.0/2.0 files or streams
 net-libs/libnatpmp 20130911: An alternative protocol to UPnP IGD specification
@@ -8945,7 +8947,7 @@ net-misc/rclone 1.45: A program to sync files to and from various cloud storage 
 net-misc/rdate 1.4-r3 1.4-r4: use TCP or UDP to retrieve the current time of another machine
 net-misc/rdesktop 1.8.4-r1 1.8.6: A Remote Desktop Protocol Client
 net-misc/redir 3.2: Redir is a port redirector
-net-misc/remmina 1.2.0_rc24 1.2.31.3: A GTK+ RDP, SPICE, VNC, XDMCP and SSH client
+net-misc/remmina 1.2.0_rc24 1.2.31.3 1.3.4: A GTK+ RDP, SPICE, VNC, XDMCP and SSH client
 net-misc/rinetd 0.62-r2: redirects TCP connections from one IP address and port to another
 net-misc/rsync 3.1.3: File transfer program to keep remote files into sync
 net-misc/rygel 0.36.2: Rygel is an open source UPnP/DLNA MediaServer
@@ -9034,7 +9036,7 @@ net-p2p/ctcs 1.4.1: interface for monitoring and managing Enhanced CTorrent clie
 net-p2p/ctorrent 3.3.2-r4: Enhanced CTorrent is a BitTorrent console client written in C and C++
 net-p2p/deluge 1.3.15-r2 1.3.15-r3: BitTorrent client with a client/server model
 net-p2p/ed2k_hash 0.4.0-r2: Tool for generating eDonkey2000 links
-net-p2p/gtk-gnutella 1.1.13 1.1.14: A GTK+ Gnutella client
+net-p2p/gtk-gnutella 1.1.13 1.1.14 1.1.15: A GTK+ Gnutella client
 net-p2p/gtorrentviewer 0.2b: A GTK2-based viewer and editor for BitTorrent meta files
 net-p2p/ktorrent 5.1.1 5.1.1-r1: Powerful BitTorrent client based on KDE Frameworks
 net-p2p/mktorrent 1.0-r1: Simple command line utility to create BitTorrent metainfo files
@@ -9123,7 +9125,7 @@ net-wireless/gnome-bluetooth 3.28.2: Bluetooth graphical utilities integrated wi
 net-wireless/hostap-utils 0.4.7-r1: Utilities for Intersil Prism2/2.5/3 based IEEE 802.11b wireless LAN products
 net-wireless/hostapd 2.7-r2 2.8: IEEE 802.11 wireless LAN Host AP daemon
 net-wireless/irda-utils 0.9.18-r6: IrDA management and handling utilities
-net-wireless/iw 3.17 4.9: nl80211-based configuration utility for wireless devices using the mac80211 kernel stack
+net-wireless/iw 4.9: nl80211-based configuration utility for wireless devices using the mac80211 kernel stack
 net-wireless/kismet 2016.07.1-r2 2019.08.1: IEEE 802.11 wireless LAN sniffer
 net-wireless/linssid 3.6-r1: Graphical wireless scanning for Linux
 net-wireless/lorcon 0.0_p20150109: A generic library for injecting 802.11 frames
