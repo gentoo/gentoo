@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{5,6} )
+PYTHON_COMPAT=( python2_7 python3_{5,6,7} )
 
 inherit latex-package python-r1
 
@@ -22,7 +22,7 @@ DEPEND="${PYTHON_DEPS}
 	>=dev-texlive/texlive-latexextra-2016
 	dev-tex/pgf"
 RDEPEND="${DEPEND}
-	highlighting? ( dev-python/pygments[${PYTHON_USEDEP}] )"
+	dev-python/pygments[${PYTHON_USEDEP}]"
 
 TEXMF=/usr/share/texmf-site
 
