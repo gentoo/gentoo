@@ -19,7 +19,6 @@ KEYWORDS="~amd64 ~ppc ~sparc ~x86 ~x86-fbsd"
 IUSE="lzma zlib"
 
 RDEPEND=">=dev-libs/ucl-1.02
-	!app-arch/upx
 	!app-arch/upx-bin"
 DEPEND="${RDEPEND}
 	dev-lang/perl"

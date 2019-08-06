@@ -19,7 +19,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 RESTRICT="strip"
 
-RDEPEND="!app-arch/upx-ucl"
+RDEPEND="!app-arch/upx"
 
 S="${WORKDIR}"
 
