@@ -905,7 +905,7 @@ app-i18n/libchewing 0.5.1: Intelligent phonetic (Zhuyin/Bopomofo) input method l
 app-i18n/libhangul 0.1.0: Library for hangul input method logic, hanja dictionary
 app-i18n/libpinyin 2.3.0: Libraries for handling of Hanyu Pinyin and Zhuyin Fuhao
 app-i18n/librime 1.2.9: Rime Input Method Engine, the core library
-app-i18n/libskk 1.0.1 1.0.2: GObject-based library to deal with Japanese kana-to-kanji conversion method
+app-i18n/libskk 1.0.2: GObject-based library to deal with Japanese kana-to-kanji conversion method
 app-i18n/libtabe 0.2.6.1.2: Libtabe provides bimsphone support for xcin-2.5+
 app-i18n/man-pages-de 1.15 2.12: A somewhat comprehensive collection of Linux german man page translations
 app-i18n/man-pages-fr 3.70: A somewhat comprehensive collection of french Linux man pages
