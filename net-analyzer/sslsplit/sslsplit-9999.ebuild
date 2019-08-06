@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit flag-o-matic
 
@@ -22,23 +22,25 @@ else
 fi
 
 RDEPEND="
-	elibc_musl? ( sys-libs/fts-standalone )
 	dev-libs/libevent[ssl,threads]
-	dev-libs/openssl:0="
+	dev-libs/openssl:0=
+	net-libs/libnet:1.1
+	elibc_musl? ( sys-libs/fts-standalone )"
 DEPEND="${RDEPEND}
 	test? ( dev-libs/check )"
+BDEPEND=""
 
 src_prepare() {
 	default
 
 	use elibc_musl && append-libs "-lfts"
 
-	sed -i 's/-D_FORTIFY_SOURCE=2 //g' GNUmakefile || die
-	sed -i 's/\<FEATURES\>/SSLSPLIT_FEATURES/g' GNUmakefile build.c || die
+	sed -i -e 's/-D_FORTIFY_SOURCE=2 //g' \
+		-e 's/\<FEATURES\>/SSLSPLIT_FEATURES/g' GNUmakefile || die
 	sed -i '/opts_suite/d' main.t.c || die
 }
 
 src_install() {
-	emake DESTDIR="${D}" PREFIX="${EPREFIX}/usr" install
+	emake DESTDIR="${D}" PREFIX="${EPREFIX}/usr" SYSCONFDIR="${EPREFIX}/etc" install
 	dodoc AUTHORS.md NEWS.md README.md
 }
