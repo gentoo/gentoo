@@ -5,10 +5,10 @@ DESCRIPTION=Library and tool for personalization of Yubico's YubiKey
 EAPI=7
 HOMEPAGE=https://github.com/Yubico/yubikey-personalization
 IUSE=consolekit static-libs
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 ~x86
 LICENSE=BSD-2
 RDEPEND=dev-libs/json-c:= >=sys-auth/libyubikey-1.6 virtual/libusb:1 consolekit? ( sys-auth/consolekit[acl] )
 SLOT=0
 SRC_URI=https://github.com/Yubico/yubikey-personalization/archive/v1.19.3.tar.gz -> ykpers-1.19.3.tar.gz
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56	udev	7752f306eec7b286d00bdb47b763e7ac
-_md5_=3b0a0120562e220011fa9b050fc5a7a3
+_md5_=f3cf72490548de040564d2d36a694786
