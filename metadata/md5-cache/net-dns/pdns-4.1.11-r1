@@ -12,4 +12,4 @@ REQUIRED_USE=mydns? ( mysql )
 SLOT=0
 SRC_URI=https://downloads.powerdns.com/releases/pdns-4.1.11.tar.bz2
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56	user	f8dcb46ee7b0bcdec51dac1ef4bfdfc9
-_md5_=1f11419a66304cef9152d46615931739
+_md5_=5218551b7254dedf1fb3340dbb394a5c
