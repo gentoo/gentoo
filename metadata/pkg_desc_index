@@ -122,7 +122,7 @@ app-admin/hddtemp 0.3_beta15-r28: A simple utility to read the temperature of SM
 app-admin/helm 2.14.1: Kubernetes Package Manager
 app-admin/ide-smart 1.4-r2: A tool to read SMART information from harddiscs
 app-admin/installer 0.1.1_beta: A software for Gentoo installation
-app-admin/keepass 2.41 2.42.1: A free, open source, light-weight and easy-to-use password manager
+app-admin/keepass 2.42.1: A free, open source, light-weight and easy-to-use password manager
 app-admin/keepassxc 2.3.4-r1: KeePassXC - KeePass Cross-platform Community Edition
 app-admin/killproc 2.13-r1: killproc and assorted tools for boot scripts
 app-admin/lastpass-cli 1.3.1-r1: Interfaces with LastPass.com from the command line.
@@ -1306,7 +1306,7 @@ app-text/XML-Schema-learner 1.0.1: Algorithmic inferencing of XML schema definit
 app-text/a2ps 4.14-r6: Any to PostScript filter
 app-text/aiksaurus 1.2.1: A thesaurus lib, tool and database
 app-text/an 1.2: Very fast anagram generator with dictionary lookup
-app-text/ansifilter 2.13 2.14: Handles text files containing ANSI terminal escape codes
+app-text/ansifilter 2.14: Handles text files containing ANSI terminal escape codes
 app-text/antiword 0.37-r1: free MS Word reader
 app-text/apvlv 0.1.5-r2: Alf's PDF Viewer Like Vim
 app-text/asa 1.1-r1: ASA Carriage control conversion for ouput by Fortran programs
@@ -2026,7 +2026,7 @@ dev-games/physfs 3.0.2: Abstraction layer for filesystem and archive access
 dev-games/poker-eval 138.0: A fast C library for evaluating poker hands
 dev-games/ps2-packer 0.4.4: another ELF packer for the PS2
 dev-games/t4k-common 0.1.1: A library of code shared between tuxmath and tuxtype
-dev-games/tiled 1.2.3 1.2.4: A general purpose tile map editor
+dev-games/tiled 1.2.4: A general purpose tile map editor
 dev-games/wfmath 1.0.2: Worldforge math library
 dev-go/blackfriday 1.2_p20150720: a markdown processor implemented in Go
 dev-go/go-bindata 0_pre20151023 1.0.0: A small utility which generates Go code from any file
@@ -6318,7 +6318,7 @@ dev-util/gtk-doc 1.25-r1: GTK+ Documentation Generator
 dev-util/gtk-doc-am 1.25-r1: Automake files from gtk-doc
 dev-util/gtk-update-icon-cache 3.24.3 3.24.8: GTK update icon cache
 dev-util/gyp 20170904022846: GYP (Generate Your Projects) meta-build system
-dev-util/howdoi 1.1.14 1.2.1: A code search tool
+dev-util/howdoi 1.2.1: A code search tool
 dev-util/huc 0.1-r1: HTML umlaut conversion tool
 dev-util/imediff2 1.1.2-r5: An interactive, user friendly 2-way merge tool in text mode
 dev-util/indent 2.2.11-r1: Indent program source files
@@ -7325,7 +7325,7 @@ media-gfx/enblend 4.2.0_p20161007-r1: Image Blending with Multiresolution Spline
 media-gfx/eog 3.28.4: The Eye of GNOME image viewer
 media-gfx/eog-plugins 3.26.3: Eye of GNOME plugins
 media-gfx/eom 1.22.0: The MATE image viewer
-media-gfx/evoluspencil 2.0.5 3.0.4: A simple GUI prototyping tool to create mockups
+media-gfx/evoluspencil 3.0.4: A simple GUI prototyping tool to create mockups
 media-gfx/exif 0.6.21: Small CLI util to show EXIF infos hidden in JPEG files
 media-gfx/exiftags 1.01: Extracts JPEG EXIF headers from digital camera photos
 media-gfx/exiv2 0.27.2: EXIF, IPTC and XMP metadata C++ library and command line utility
@@ -8487,7 +8487,7 @@ net-dns/mydns 1.2.8.31-r1: A DNS-Server which gets its data from a MySQL-/Postgr
 net-dns/ndu 0.4-r4: DNS serial number incrementer and reverse zone builder
 net-dns/nsd 4.1.27: An authoritative only, high performance, open source name server
 net-dns/openresolv 3.9.0: A framework for managing DNS information
-net-dns/pdns 4.1.10: The PowerDNS Daemon
+net-dns/pdns 4.1.10 4.1.11-r1: The PowerDNS Daemon
 net-dns/pdns-recursor 4.1.14: The PowerDNS Recursor
 net-dns/pdnsd 1.2.9a-r1: Proxy DNS server with permanent caching
 net-dns/rbldnsd 0.998: DNS server designed to serve blacklist zones
