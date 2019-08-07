@@ -69,7 +69,7 @@ src_test() {
 src_install() {
 	emake -j1 install-dev DESTDIR="${D}" DOC_DIR="${EPREFIX}/usr/share/doc/${PF}" || die
 	dodoc CREDITS DONORS.pod PBC_COMPAT PLATFORMS RESPONSIBLE_PARTIES TODO || die
-	dosym /usr/bin/parrot-ops2c /usr/bin/ops2c || die
+	dosym parrot-ops2c /usr/bin/ops2c || die
 	if use examples; then
 		insinto "/usr/share/doc/${PF}/examples"
 		doins -r examples/* || die
