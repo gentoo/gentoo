@@ -1,9 +1,9 @@
 # Copyright 2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=6
 
-inherit cmake-utils
+inherit cmake-utils llvm
 
 DESCRIPTION="A robust, optimal, and maintainable programming language"
 HOMEPAGE="https://ziglang.org/"
@@ -33,24 +33,17 @@ RDEPEND="
 
 DEPEND="${RDEPEND}"
 
+PATCHES=(
+	"${FILESDIR}/zig-0.4.0-r1-build-artifacts.patch"
+	"${FILESDIR}/zig-0.4.0-r1-suppress-warnings.patch"
+)
+
+LLVM_MAX_SLOT=8
+
 src_prepare() {
 	if use experimental; then
 		sed -i '/^NEED_TARGET(/d' cmake/Findllvm.cmake || die "unable to modify cmake/Findllvm.cmake"
 	fi
 
-	sed -i '/^install(TARGETS zig_cpp/d' CMakeLists.txt || die "unable to modify CMakeLists.txt"
-	sed -i '/install(TARGETS embedded/d' CMakeLists.txt || die "unable to modify CMakeLists.txt"
-
-	# Suppress error messages
-	sed -i '/if(NOT(CMAKE_BUILD_TYPE/,/endif()/d' cmake/Findllvm.cmake || die "unable to modify cmake/Findllvm.cmake"
-
 	cmake-utils_src_prepare
-}
-
-src_configure() {
-	local mycmakeargs=(
-		-DBUILD_SHARED_LIBS=OFF
-	)
-
-	cmake-utils_src_configure
 }
