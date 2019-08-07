@@ -102,6 +102,7 @@ qmail_set_cc() {
 
 	echo "${cc} ${CFLAGS} ${CPPFLAGS}"  > ./conf-cc || die 'Patching conf-cc failed.'
 	echo "${ld} ${LDFLAGS}" > ./conf-ld || die 'Patching conf-ld failed.'
+	sed -e "s#'ar #'$(tc-getAR) #" -e "s#'ranlib #'$(tc-getRANLIB) #" -i make-makelib.sh
 }
 
 # @FUNCTION: qmail_create_groups
