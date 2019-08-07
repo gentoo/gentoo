@@ -29,10 +29,10 @@ CDEPEND="java? (
 	)
 	moar? ( ~dev-lang/moarvm-${PV}[clang=] )"
 RDEPEND="${CDEPEND}
-	java? ( >=virtual/jre-1.7 )"
+	java? ( >=virtual/jre-1.8 )"
 DEPEND="${CDEPEND}
 	clang? ( sys-devel/clang )
-	java? ( >=virtual/jdk-1.7 )
+	java? ( >=virtual/jdk-1.8 )
 	dev-lang/perl"
 
 pkg_pretend() {
