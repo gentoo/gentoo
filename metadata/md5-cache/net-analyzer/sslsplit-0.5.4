@@ -1,13 +1,13 @@
-BDEPEND=>=dev-vcs/git-1.8.2.1[curl]
-DEFINED_PHASES=install prepare unpack
+DEFINED_PHASES=install prepare
 DEPEND=dev-libs/libevent[ssl,threads] dev-libs/openssl:0= net-libs/libnet:1.1 elibc_musl? ( sys-libs/fts-standalone ) test? ( dev-libs/check )
 DESCRIPTION=Transparent SSL/TLS interception
 EAPI=7
 HOMEPAGE=https://www.roe.ch/SSLsplit
 IUSE=elibc_musl test
+KEYWORDS=~amd64 ~x86
 LICENSE=BSD-2
-PROPERTIES=live
 RDEPEND=dev-libs/libevent[ssl,threads] dev-libs/openssl:0= net-libs/libnet:1.1 elibc_musl? ( sys-libs/fts-standalone )
 SLOT=0
-_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	7ba73aee7fe4462b3a745e3645ab92ca	git-r3	562b380fc59ae6a8622171d0acb777d1	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
-_md5_=c10ba8e557991af33a768ce1c908599f
+SRC_URI=https://github.com/droe/sslsplit/archive/0.5.4.tar.gz -> sslsplit-0.5.4.tar.gz
+_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	7ba73aee7fe4462b3a745e3645ab92ca	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
+_md5_=e16ded5611f308f802ee0eaa2f2fbbc6
