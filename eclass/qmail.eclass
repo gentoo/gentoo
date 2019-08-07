@@ -227,12 +227,6 @@ qmail_config_install() {
 qmail_man_install() {
 	einfo "Installing manpages and documentation"
 
-	# those are tagged for section 8 but named for
-	# section 9 (which does not exist anyway)
-	for i in *.9; do
-		mv ${i} ${i/.9/.8}
-	done
-
 	into /usr
 	doman *.[1578]
 	dodoc BLURB* CHANGES FAQ INSTALL* PIC* README* REMOVE* SECURITY \
