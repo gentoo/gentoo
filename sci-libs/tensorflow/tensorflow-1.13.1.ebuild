@@ -119,6 +119,12 @@ DOCS=( AUTHORS CONTRIBUTING.md ISSUE_TEMPLATE.md README.md RELEASE.md )
 CHECKREQS_MEMORY="5G"
 CHECKREQS_DISK_BUILD="5G"
 
+PATCHES=(
+	"${FILESDIR}/tensorflow-1.14.0-0002-install_headers-fix-paths-of-generated-headers.patch"
+	"${FILESDIR}/tensorflow-1.14.0-0003-systemlibs-jsoncpp-update-header-symlinks-for-jsoncp.patch"
+	"${FILESDIR}/tensorflow-1.14.0-0004-pkgconfig-generate-tensorflow_cc-pkg-config-entry.patch"
+	)
+
 get-cpu-flags() {
 	local i f=()
 	# Keep this list in sync with tensorflow/core/platform/cpu_feature_guard.cc.
