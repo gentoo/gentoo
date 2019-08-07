@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit autotools multilib user
+inherit autotools multilib
 
 DESCRIPTION="Implements functions designed to lock the standard mailboxes"
 HOMEPAGE="http://www.debian.org/"
@@ -11,20 +11,17 @@ SRC_URI="mirror://debian/pool/main/libl/${PN}/${PN}_${PV}.orig.tar.gz"
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
 IUSE=""
 
-S="${WORKDIR}/${PN}"
+RDEPEND="acct-group/mail"
+DEPEND="${RDEPEND}"
 
 DOCS=( Changelog README )
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.13-makefile.patch"
 )
-
-pkg_setup() {
-	enewgroup mail 12
-}
 
 src_prepare() {
 	default
