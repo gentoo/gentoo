@@ -7,6 +7,12 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Kent Fredric <kentnl@gentoo.org> (2019-08-07)
+# Newer versions of nqp need newer versions of jdk to run on the jvm,
+# but these currently don't exist in gentoo. The USE flags have to be
+# kept around for dependency reasons from rakudo and friends.
+>=dev-lang/nqp-2019.07 java
+
 # Aaron Bauman <bman@gentoo.org> (2019-08-04)
 # media-libs/ming will be removed in 30 days
 media-gfx/pstoedit flash
