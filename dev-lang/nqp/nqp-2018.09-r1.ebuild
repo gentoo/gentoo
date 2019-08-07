@@ -10,8 +10,7 @@ if [[ ${PV} == "9999" ]]; then
 	inherit git-r3
 	KEYWORDS=""
 else
-	SRC_URI="https://github.com/perl6/${PN}/tarball/${PV} -> ${P}.tar.gz"
-	inherit vcs-snapshot
+	SRC_URI="https://github.com/perl6/${PN}/releases/download/${PV}/${P}.tar.gz -> ${P}.official.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 fi
 
@@ -30,10 +29,10 @@ CDEPEND="java? (
 	)
 	moar? ( ~dev-lang/moarvm-${PV}[clang=] )"
 RDEPEND="${CDEPEND}
-	java? ( >=virtual/jre-1.7 )"
+	java? ( >=virtual/jre-1.8 )"
 DEPEND="${CDEPEND}
 	clang? ( sys-devel/clang )
-	java? ( >=virtual/jdk-1.7 )
+	java? ( >=virtual/jdk-1.8 )
 	dev-lang/perl"
 
 pkg_pretend() {
@@ -70,7 +69,7 @@ nqp_configure() {
 	pushd "${BUILD_DIR}" > /dev/null || die
 	local myconfargs=(
 		"--backend=${MULTIBUILD_VARIANT}"
-		"--prefix=/usr" )
+		"--prefix=${EPREFIX%/}/usr" )
 
 	perl Configure.pl "${myconfargs[@]}" || die
 	popd || die
