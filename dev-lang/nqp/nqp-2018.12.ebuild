@@ -10,8 +10,7 @@ if [[ ${PV} == "9999" ]]; then
 	inherit git-r3
 	KEYWORDS=""
 else
-	SRC_URI="https://github.com/perl6/${PN}/tarball/${PV} -> ${P}.tar.gz"
-	inherit vcs-snapshot
+	SRC_URI="https://github.com/perl6/${PN}/releases/download/${PV}/${P}.tar.gz -> ${P}.official.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 fi
 
