@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 inherit java-pkg-opt-2 multibuild
 
@@ -30,7 +30,8 @@ CDEPEND="java? (
 	moar? ( ~dev-lang/moarvm-${PV}[clang=] )"
 RDEPEND="${CDEPEND}
 	java? ( >=virtual/jre-1.8 )"
-DEPEND="${CDEPEND}
+DEPEND="${CDEPEND}"
+BDEPEND="${CDEPEND}
 	clang? ( sys-devel/clang )
 	java? ( >=virtual/jdk-1.8 )
 	dev-lang/perl"
