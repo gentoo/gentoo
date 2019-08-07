@@ -43,7 +43,7 @@ src_prepare() {
 	default
 
 	[[ -f ${S}/src/${EGO_PN}/hack/btrfs_tag.sh ]] || die
-	use btrfs || { echo -e "#!/bin/sh\necho btrfs_noversion" > \
+	use btrfs || { echo -e "#!/bin/sh\necho exclude_graphdriver_btrfs" > \
 		"${S}/src/${EGO_PN}/hack/btrfs_tag.sh" || die; }
 
 	[[ -f ${S}/src/${EGO_PN}/hack/libdm_tag.sh ]] || die
