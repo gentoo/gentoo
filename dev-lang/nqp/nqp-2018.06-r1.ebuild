@@ -69,7 +69,7 @@ nqp_configure() {
 	pushd "${BUILD_DIR}" > /dev/null || die
 	local myconfargs=(
 		"--backend=${MULTIBUILD_VARIANT}"
-		"--prefix=/usr" )
+		"--prefix=${EPREFIX%/}/usr" )
 
 	perl Configure.pl "${myconfargs[@]}" || die
 	popd || die
