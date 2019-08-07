@@ -42,6 +42,7 @@ DEPEND="abi_x86_32? ( dev-lang/yasm )
 
 PATCHES=(
 	"${FILESDIR}/libvpx-1.3.0-sparc-configure.patch" # 501010
+	"${FILESDIR}/libvpx-1.8.0-ppc64le-disable-vsx.patch" #688138
 )
 
 src_configure() {

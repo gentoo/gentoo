@@ -1,0 +1,28 @@
+From 7bf48f92e884fc01c28a4652ea0883b28744519d Mon Sep 17 00:00:00 2001
+From: Johann <johannkoenig@google.com>
+Date: Mon, 10 Jun 2019 14:35:03 -0700
+Subject: [PATCH] ppc: disable vsx optimizations with hbd
+
+vsx optimizations do not support 32 bit tran_low_t values.
+
+BUG=webm:1563
+
+Change-Id: I9e6348078f6e4855acfd381133eb840a435b7f81
+---
+
+diff --git a/build/make/configure.sh b/build/make/configure.sh
+index e950353..4a874f1 100644
+--- a/build/make/configure.sh
++++ b/build/make/configure.sh
+@@ -1239,7 +1239,10 @@
+     ppc64le*)
+       link_with_cc=gcc
+       setup_gnu_toolchain
+-      check_gcc_machine_option "vsx"
++      # Only enable vsx optimizations when vp9_highbitdepth is not enabled.
++      # https://bugs.chromium.org/p/webm/issues/detail?id=1538
++      enabled vp9_highbitdepth || check_gcc_machine_option "vsx"
++      enabled vsx || RTCD_OPTIONS="${RTCD_OPTIONS}--disable-vsx "
+       if [ -n "${tune_cpu}" ]; then
+         case ${tune_cpu} in
+           power?)
