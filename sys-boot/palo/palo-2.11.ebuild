@@ -2,24 +2,19 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit git-r3 toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="PALO : PArisc Linux Loader"
 HOMEPAGE="http://parisc-linux.org/ https://parisc.wiki.kernel.org/"
-EGIT_REPO_URI="https://git.kernel.org/pub/scm/linux/kernel/git/deller/palo.git"
+SRC_URI="https://git.kernel.org/pub/scm/linux/kernel/git/deller/${PN}.git/snapshot/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="-* ~hppa"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.00-toolchain.patch
 )
-
-src_prepare() {
-	default
-	sed -i lib/common.h -e '/^#define PALOVERSION/{s|".*"|"'${PV}'"|g}' || die
-}
 
 src_compile() {
 	local target
