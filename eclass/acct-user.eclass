@@ -67,6 +67,9 @@ readonly ACCT_USER_NAME
 # @DESCRIPTION:
 # Preferred UID for the new user.  This variable is obligatory, and its
 # value must be unique across all user packages.
+#
+# Overlays should set this to -1 to dynamically allocate UID.  Using -1
+# in ::gentoo is prohibited by policy.
 
 # @ECLASS-VARIABLE: ACCT_USER_ENFORCE_ID
 # @DESCRIPTION:
@@ -279,6 +282,7 @@ acct-user_pkg_pretend() {
 
 	# verify ACCT_USER_ID
 	[[ -n ${ACCT_USER_ID} ]] || die "Ebuild error: ACCT_USER_ID must be set!"
+	[[ ${ACCT_USER_ID} -eq -1 ]] && return
 	[[ ${ACCT_USER_ID} -ge 0 ]] || die "Ebuild errors: ACCT_USER_ID=${ACCT_USER_ID} invalid!"
 
 	# check for ACCT_USER_ID collisions early
