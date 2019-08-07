@@ -20,7 +20,7 @@ HTML_DOCS=( README.html )
 
 src_prepare() {
 	sed -i \
-		-e "s:BINDIR=/usr/local/bin:BINDIR=${D}usr/bin:" \
+		-e "s:BINDIR=/usr/local/bin:BINDIR=${D}/usr/bin:" \
 		-e "s:^\\(ARGHLINK.*-L.*\\):#\\1:" \
 		-e "s:^#\\(ARGHLINK=.*a\\)$:\\1:" \
 		-e "s:\$(CXX):\$(CXX) \$(CXXFLAGS) -I\"${S}\"/argh:g" \

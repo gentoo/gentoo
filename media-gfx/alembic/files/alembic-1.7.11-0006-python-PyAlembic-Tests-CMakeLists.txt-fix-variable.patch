@@ -1,0 +1,29 @@
+From 13b88370a862e16b417e9df6e40c2a9cba10852c Mon Sep 17 00:00:00 2001
+From: Bernd Waibel <waebbl@gmail.com>
+Date: Fri, 2 Aug 2019 21:31:03 +0200
+Subject: [PATCH] python/PyAlembic/Tests/CMakeLists.txt: fix variable
+
+The patch fixes a boost_python related variable which didn't had
+the version suffix for python.
+
+Signed-off-by: Bernd Waibel <waebbl@gmail.com>
+---
+ python/PyAlembic/Tests/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/python/PyAlembic/Tests/CMakeLists.txt b/python/PyAlembic/Tests/CMakeLists.txt
+index c32a018..ed9b23d 100644
+--- a/python/PyAlembic/Tests/CMakeLists.txt
++++ b/python/PyAlembic/Tests/CMakeLists.txt
+@@ -57,7 +57,7 @@ TARGET_LINK_LIBRARIES(PyAlembic_Test Alembic::Alembic ${ALEMBIC_PYILMBASE_LIBS})
+ 
+ ADD_TEST(PyAlembic_Python_TEST PyAlembic_Test)
+ 
+-GET_FILENAME_COMPONENT(BOOST_LIBRARY_DIR ${Boost_PYTHON_LIBRARY} PATH)
++GET_FILENAME_COMPONENT(BOOST_LIBRARY_DIR ${Boost_PYTHON27_LIBRARY} PATH)
+ GET_FILENAME_COMPONENT(ILMBASE_LIBRARY_DIR ${ALEMBIC_ILMBASE_IMATH_LIB} PATH)
+ 
+ CONFIGURE_FILE(
+-- 
+2.22.0
+

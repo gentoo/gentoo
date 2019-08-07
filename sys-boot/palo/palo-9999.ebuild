@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit flag-o-matic git-r3 toolchain-funcs
+inherit git-r3 toolchain-funcs
 
 DESCRIPTION="PALO : PArisc Linux Loader"
 HOMEPAGE="http://parisc-linux.org/ https://parisc.wiki.kernel.org/"
@@ -13,7 +13,7 @@ SLOT="0"
 KEYWORDS=""
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-9999-toolchain.patch
+	"${FILESDIR}"/${PN}-2.00-toolchain.patch
 )
 
 src_prepare() {
@@ -32,6 +32,9 @@ src_install() {
 	into /
 	dosbin palo/palo
 
+	insinto /usr/share/palo
+	doins iplboot
+
 	insinto /etc
 	doins "${FILESDIR}"/palo.conf
 
@@ -42,7 +45,4 @@ src_install() {
 	doman palo.8
 
 	dodoc TODO debian/changelog README.html
-
-	insinto /usr/share/palo
-	doins iplboot
 }

@@ -3,6 +3,10 @@
 
 # This file requires >=portage-2.1.1
 
+# Thomas Deutschmann <whissi@gentoo.org> (2019-08-03)
+# Early microcode loading is supported on x86
+sys-kernel/linux-firmware -initramfs
+
 # Lars Wendler <polynomial-c@gentoo.org> (2019-07-26)
 # dev-libs/gumbo is keyworded on x86
 mail-client/claws-mail -litehtml

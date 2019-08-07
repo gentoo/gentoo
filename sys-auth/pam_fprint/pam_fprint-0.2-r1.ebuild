@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/fprint/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ia64 ppc ppc64 sparc x86"
+KEYWORDS="alpha amd64 arm ~arm64 ia64 ppc ppc64 sparc x86"
 IUSE=""
 
 RDEPEND="

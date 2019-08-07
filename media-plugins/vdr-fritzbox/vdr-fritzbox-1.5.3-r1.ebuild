@@ -11,7 +11,7 @@ SRC_URI="https://github.com/jowi24/vdr-fritz/releases/download/1.5.3/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="

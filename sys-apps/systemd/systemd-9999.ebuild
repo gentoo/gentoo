@@ -23,7 +23,7 @@ HOMEPAGE="https://www.freedesktop.org/wiki/Software/systemd"
 
 LICENSE="GPL-2 LGPL-2.1 MIT public-domain"
 SLOT="0/2"
-IUSE="acl apparmor audit build cryptsetup curl dns-over-tls elfutils +gcrypt gnuefi http idn importd +kmod libidn2 +lz4 lzma nat pam pcre policykit qrcode +resolvconf +seccomp selinux split-usr +sysv-utils test vanilla xkb"
+IUSE="acl apparmor audit build cgroup-hybrid cryptsetup curl dns-over-tls elfutils +gcrypt gnuefi http idn importd +kmod +lz4 lzma nat pam pcre policykit qrcode +resolvconf +seccomp selinux split-usr +sysv-utils test vanilla xkb"
 
 REQUIRED_USE="importd? ( curl gcrypt lzma )"
 RESTRICT="!test? ( test )"
@@ -45,10 +45,7 @@ COMMON_DEPEND=">=sys-apps/util-linux-2.30:0=[${MULTILIB_USEDEP}]
 		>=net-libs/libmicrohttpd-0.9.33:0=[epoll(+)]
 		>=net-libs/gnutls-3.1.4:0=
 	)
-	idn? (
-		libidn2? ( net-dns/libidn2:= )
-		!libidn2? ( net-dns/libidn:= )
-	)
+	idn? ( net-dns/libidn2:= )
 	importd? (
 		app-arch/bzip2:0=
 		sys-libs/zlib:0=
@@ -247,6 +244,7 @@ multilib_src_configure() {
 		# no deps
 		-Defi=$(meson_multilib)
 		-Dima=true
+		-Ddefault-hierarchy=$(usex cgroup-hybrid hybrid unified)
 		# Optional components/dependencies
 		-Dacl=$(meson_multilib_native_use acl)
 		-Dapparmor=$(meson_multilib_native_use apparmor)
@@ -259,6 +257,7 @@ multilib_src_configure() {
 		-Dgnu-efi=$(meson_multilib_native_use gnuefi)
 		-Defi-libdir="${ESYSROOT}/usr/$(get_libdir)"
 		-Dmicrohttpd=$(meson_multilib_native_use http)
+		-Didn=$(meson_multilib_native_use idn)
 		-Dimportd=$(meson_multilib_native_use importd)
 		-Dbzip2=$(meson_multilib_native_use importd)
 		-Dzlib=$(meson_multilib_native_use importd)
@@ -274,11 +273,10 @@ multilib_src_configure() {
 		-Dselinux=$(meson_multilib_native_use selinux)
 		-Ddbus=$(meson_multilib_native_use test)
 		-Dxkbcommon=$(meson_multilib_native_use xkb)
-		# hardcode a few paths to spare some deps
-		-Dkill-path=/bin/kill
 		-Dntp-servers="0.gentoo.pool.ntp.org 1.gentoo.pool.ntp.org 2.gentoo.pool.ntp.org 3.gentoo.pool.ntp.org"
 		# Breaks screen, tmux, etc.
 		-Ddefault-kill-user-processes=false
+		-Dcreate-log-dirs=false
 
 		# multilib options
 		-Dbacklight=$(meson_multilib)
@@ -302,18 +300,6 @@ multilib_src_configure() {
 		-Dtmpfiles=$(meson_multilib)
 		-Dvconsole=$(meson_multilib)
 	)
-
-	if multilib_is_native_abi && use idn; then
-		myconf+=(
-			-Dlibidn2=$(usex libidn2 true false)
-			-Dlibidn=$(usex libidn2 false true)
-		)
-	else
-		myconf+=(
-			-Dlibidn2=false
-			-Dlibidn=false
-		)
-	fi
 
 	meson_src_configure "${myconf[@]}"
 }
@@ -357,13 +343,13 @@ multilib_src_install_all() {
 	# Preserve empty dirs in /etc & /var, bug #437008
 	keepdir /etc/{binfmt.d,modules-load.d,tmpfiles.d}
 	keepdir /etc/kernel/install.d
-	keepdir /etc/systemd/{network,user}
+	keepdir /etc/systemd/{network,system,user}
 	keepdir /etc/udev/{hwdb.d,rules.d}
 	keepdir "${rootprefix}"/lib/systemd/{system-sleep,system-shutdown}
 	keepdir /usr/lib/{binfmt.d,modules-load.d}
 	keepdir /usr/lib/systemd/user-generators
 	keepdir /var/lib/systemd
-	rm -rf "${ED}"/var/log || die
+	keepdir /var/log/journal
 
 	# Symlink /etc/sysctl.conf for easy migration.
 	dosym ../sysctl.conf /etc/sysctl.d/99-sysctl.conf

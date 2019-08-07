@@ -2,11 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
-    <email>juippis@gmail.com</email>
-  </maintainer>
-  <maintainer type="project">
-    <email>proxy-maint@gentoo.org</email>
-    <name>Proxy Maintainers</name>
+    <email>juippis@gentoo.org</email>
+    <name>Joonas Niilola</name>
   </maintainer>
   <longdescription>
     EFL is a collection of libraries for handling many common tasks a 

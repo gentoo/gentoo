@@ -14,7 +14,7 @@ HOMEPAGE="
 
 LICENSE="BSD"
 # libevent-2.1.so.6
-SLOT="0/2.1-6"
+SLOT="0/2.1-7"
 KEYWORDS=""
 IUSE="debug libressl +ssl static-libs test +threads"
 RESTRICT="test"

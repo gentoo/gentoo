@@ -135,6 +135,7 @@ pkg_postinst() {
 	elog "/etc/powerdns/pdns-<suffix>.conf configuration file instead of the default."
 
 	if use ldap ; then
+		echo
 		ewarn "The official LDAP backend module is only compile-tested by upstream."
 		ewarn "Try net-dns/pdns-ldap-backend if you have problems with it."
 	fi
@@ -143,6 +144,7 @@ pkg_postinst() {
 	for old in ${REPLACING_VERSIONS}; do
 		ver_test ${old} -lt 3.2 || continue
 
+		echo
 		ewarn "To fix a security bug (bug #458018) had the following"
 		ewarn "files/directories the world-readable bit removed (if set):"
 		ewarn "  ${EPREFIX}/etc/powerdns"
@@ -153,4 +155,19 @@ pkg_postinst() {
 
 		break
 	done
+
+	if use postgres; then
+		for old in ${REPLACING_VERSIONS}; do
+			ver_test ${old} -lt 4.1.11-r1 || continue
+
+			echo
+			ewarn "PowerDNS 4.1.11 contains a security fix for the PostgreSQL backend."
+			ewarn "This security fix needs to be applied manually to the database schema."
+			ewarn "Please refer to the official security advisory for more information:"
+			ewarn
+			ewarn "  https://doc.powerdns.com/authoritative/security-advisories/powerdns-advisory-2019-06.html"
+
+			break
+		done
+	fi
 }

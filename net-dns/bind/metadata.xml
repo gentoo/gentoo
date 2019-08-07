@@ -5,6 +5,10 @@
 		<email>idl0r@gentoo.org</email>
 		<name>Christian Ruppert</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>zlogene@gentoo.org</email>
+		<name>Mikle Kolyada</name>
+	</maintainer>
 	<longdescription>ISC's bind dns server, used the world 'round.</longdescription>
 	<use>
 		<flag name="dnstap">Enables dnstap packet logging</flag>
@@ -15,7 +19,6 @@
 		<flag name="gssapi">Enable gssapi support</flag>
 		<flag name="json">Enable JSON statistics channel</flag>
 		<flag name="lmdb">Enable LMDB support to store configuration for 'addzone' zones</flag>
-		<flag name="rpz">Enable response policy rewriting (rpz)</flag>
 		<flag name="urandom">Use /dev/urandom instead of /dev/random</flag>
 	</use>
 </pkgmetadata>

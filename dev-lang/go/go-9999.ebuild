@@ -48,20 +48,20 @@ case ${PV}  in
 	esac
 esac
 
-# If gccgo is not being used to build Go, there is no way to know the
-# architecture or operating system of the build machine, so we need to
-# download all of our bootstrap archives to allow this ebuild to work
-# under crossdev.
+# If gccgo or a previously installed version of dev-lang/go is not being
+# used to build Go, there is no way to know the architecture or operating system
+# of the build machine, so we need to download all of our bootstrap
+# archives to allow this ebuild to work under crossdev.
 #
 # https://bugs.gentoo.org/671394
-SRC_URI+="!gccgo? ( ${BOOTSTRAP_URI} )"
+SRC_URI+="!gccgo? ( !system-bootstrap? ( ${BOOTSTRAP_URI} ) )"
 
 DESCRIPTION="A concurrent garbage collected and typesafe programming language"
 HOMEPAGE="https://golang.org"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-IUSE="gccgo"
+IUSE="gccgo system-bootstrap"
 
 BDEPEND="gccgo? ( >=sys-devel/gcc-5[go] )"
 RDEPEND="!<dev-go/go-tools-0_pre20150902"
@@ -151,6 +151,9 @@ pkg_pretend()
 	if [[ $(go_tuple) != $(go_tuple ${CTARGET}) ]]; then
 		die "CHOST CTARGET pair unsupported: CHOST=${CHOST} CTARGET=${CTARGET}"
 	fi
+	[[ ${MERGE_TYPE} != binary ]] &&
+		use system-bootstrap && ! has_version "dev-lang/go" &&
+		die "dev-lang/go must be installed to use the system-bootstrap use flag"
 }
 
 src_unpack()
@@ -160,7 +163,7 @@ src_unpack()
 	else
 		unpack "go${MY_PV}.src.tar.gz"
 	fi
-	use gccgo ||
+	use gccgo || use system-bootstrap ||
 		unpack "go-$(go_os ${CBUILD})-$(go_arch ${CBUILD})-${BOOTSTRAP_VERSION}.tbz"
 }
 
@@ -176,6 +179,8 @@ src_compile()
 		[[ -x ${go_binary} ]] ||
 			die "go-$(gcc-major-version): command not found"
 		ln -s "${go_binary}" "${GOROOT_BOOTSTRAP}/bin/go" || die
+	elif use system-bootstrap; then
+		export GOROOT_BOOTSTRAP="${EPREFIX}"/usr/lib/go
 	fi
 	export GOROOT_FINAL="${EPREFIX}"/usr/lib/go
 	export GOROOT="$(pwd)"

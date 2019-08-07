@@ -12,7 +12,7 @@ DESCRIPTION="Perl extension for libconfig"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE="test"
 
 PERL_RM_FILES=(

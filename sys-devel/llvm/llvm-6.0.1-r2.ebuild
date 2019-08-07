@@ -38,7 +38,7 @@ IUSE="debug doc gold libedit +libffi ncurses test xar xml
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	sys-libs/zlib:0=
+	sys-libs/zlib:0=[${MULTILIB_USEDEP}]
 	gold? (
 		|| (
 			>=sys-devel/binutils-2.31.1-r4:*[plugins]

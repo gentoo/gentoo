@@ -16,7 +16,7 @@ KEYWORDS=""
 IUSE=""
 
 DEPEND="
-	media-libs/fdk-aac
+	media-libs/fdk-aac:0=
 	virtual/ffmpeg
 	media-libs/sbc
 	media-libs/libldac

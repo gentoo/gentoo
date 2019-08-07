@@ -1,15 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-# Kids, don't do this at home!
-inherit python-utils-r1
-PYTHON_COMPAT=( "${_PYTHON_ALL_IMPLS[@]}" )
-
-# Inherited purely to have PYTHON_TARGET flags which will satisfy USE
-# dependencies and trigger necessary rebuilds.
-inherit autotools git-r3 python-r1
+inherit autotools git-r3 python-utils-r1
 
 DESCRIPTION="Python script wrapper"
 HOMEPAGE="https://github.com/mgorny/python-exec/"
@@ -19,7 +13,8 @@ EGIT_REPO_URI="https://github.com/mgorny/python-exec.git"
 LICENSE="BSD-2"
 SLOT="2"
 KEYWORDS=""
-IUSE=""
+# Internal Python project hack.  Do not copy it.  Ever.
+IUSE="${_PYTHON_ALL_IMPLS[@]/#/python_targets_}"
 
 # eselect-python because of /usr/bin/python* collisions and new config
 # python versions because of missing $scriptdir/python* symlinks
@@ -37,7 +32,7 @@ src_prepare() {
 
 src_configure() {
 	local pyimpls=() i EPYTHON
-	for i in "${PYTHON_COMPAT[@]}"; do
+	for i in "${_PYTHON_ALL_IMPLS[@]}"; do
 		python_export "${i}" EPYTHON
 		pyimpls+=( "${EPYTHON}" )
 	done

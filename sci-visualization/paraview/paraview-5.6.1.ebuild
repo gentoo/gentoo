@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python{2_7,3_5,3_6} )
-inherit cmake-utils desktop python-single-r1 toolchain-funcs xdg-utils
+inherit cmake-utils desktop gnome2-utils python-single-r1 qmake-utils toolchain-funcs
 
 MAIN_PV=$(ver_cut 0-1)
 MAJOR_PV=$(ver_cut 1-2)
@@ -83,7 +83,7 @@ RDEPEND="
 		dev-qt/qtopengl:5[-gles2]
 		dev-qt/qtsql:5
 		dev-qt/qttest:5
-		dev-qt/qtwebkit:5
+		dev-qt/qtwebengine:5[widgets]
 		dev-qt/qtx11extras:5
 	)
 	sqlite? ( dev-db/sqlite:3 )

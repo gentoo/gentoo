@@ -45,6 +45,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-0003-Fix-env-var-for-renderman.patch"
 	"${FILESDIR}/${P}-0004-Fix-a-compile-issue-with-const.patch"
 	"${FILESDIR}/${P}-0005-Fix-install-locations.patch"
+	"${FILESDIR}/${P}-0006-python-PyAlembic-Tests-CMakeLists.txt-fix-variable.patch"
 )
 
 src_prepare() {

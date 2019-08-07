@@ -16,6 +16,7 @@ dev-vcs/git pcre-jit
 
 app-admin/syslog-ng amqp dbi geoip geoip2 json kafka mongodb python redis spoof-source smtp snmp
 app-admin/sysstat lm_sensors
+app-arch/libarchive lz4 lzo zstd
 app-arch/unzip natspec
 app-crypt/gnupg smartcard tofu wks-server
 app-crypt/mit-krb5 doc test xinetd
@@ -44,6 +45,7 @@ dev-python/setuptools test
 dev-python/snakeoil test
 dev-util/catalyst iso
 dev-util/meson test
+dev-util/ninja doc test
 dev-util/pkgconf test
 dev-vcs/git cvs highlight gnome-keyring subversion tk xinetd
 media-libs/freetype harfbuzz png
@@ -56,7 +58,7 @@ net-misc/ntp openntpd snmp vim-syntax zeroconf
 net-nds/openldap cxx kerberos sasl
 sys-apps/kmod doc
 sys-apps/portage epydoc
-sys-apps/rng-tools jitterentropy nistbeacon pkcs11
+sys-apps/rng-tools -jitterentropy nistbeacon pkcs11
 sys-auth/pambase pam_krb5 pam_ssh passwdqc mktemp
 sys-devel/automake test
 sys-devel/gdb source-highlight

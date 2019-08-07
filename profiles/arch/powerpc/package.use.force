@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Joonas Niilola <juippis@gmail.com> (2019-01-12)
+# Joonas Niilola <juippis@gentoo.org> (2019-01-12)
 # Force 'unwind' on for ppc and ppc64 with dev-libs/efl
 # #668486, #657750
 dev-libs/efl unwind

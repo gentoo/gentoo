@@ -4,6 +4,8 @@
 EAPI=6
 PYTHON_COMPAT=( python{2_7,3_5,3_6} )
 
+CMAKE_MAKEFILE_GENERATOR="emake"
+
 inherit cmake-utils eutils python-any-r1
 if [[ ${PV} = *9999* ]]; then
 	inherit git-r3

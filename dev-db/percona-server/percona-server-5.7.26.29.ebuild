@@ -335,6 +335,13 @@ src_prepare() {
 		"${S}"/zlib \
 		|| die
 
+	# Don't clash with dev-db/mysql-connector-c
+	rm \
+		man/my_print_defaults.1 \
+		man/perror.1 \
+		man/zlib_decompress.1 \
+		|| die
+
 	# Remove the centos and rhel selinux policies to support mysqld_safe under SELinux
 	if [[ -d "${S}/support-files/SELinux" ]] ; then
 		echo > "${S}/support-files/SELinux/CMakeLists.txt" || die

@@ -1,6 +1,10 @@
 # Copyright 1999-2019 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Aaron Bauman (2019-08-01)
+# app-text/docbook2X fails test
+dev-cpp/libcmis man
+
 # Aaron Bauman (2019-07-29)
 # no ocamlopt stuff here...
 kde-apps/kalzium solver
@@ -21,14 +25,6 @@ virtual/notification-daemon gnome
 # Aaron Bauman <bman@gentoo.org> (2019-05-15)
 # packages for these USE flags fail tests
 media-libs/opencv contrib_cvv contrib_hdf contrib_sfm glog gstreamer
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2019-02-10)
-# kde-frameworks/kconfig is not stable for arm64
-net-libs/libproxy kde
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2019-02-10)
-# kde-plasma/polkit-kde-agent is not stable for arm64
-sys-auth/polkit kde
 
 # Mart Raudsepp <leio@gentoo.org> (2019-01-18)
 # Respective x11-drivers/ not tested and stable yet

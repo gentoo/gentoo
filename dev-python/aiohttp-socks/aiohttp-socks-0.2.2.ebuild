@@ -13,7 +13,7 @@ SRC_URI="https://github.com/romis2012/aiohttp-socks/archive/${PV}.tar.gz -> ${P}
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="test"
 # Tests require Internet access
 RESTRICT="test"
@@ -29,7 +29,9 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 
 python_configure_all() {
 	rm tests/3proxy/bin/*/* || die
-	ln -s "$(type -P 3proxy)" tests/3proxy/bin/linux/ || die
+	if use test; then
+		ln -s "$(type -P 3proxy)" tests/3proxy/bin/linux/ || die
+	fi
 }
 
 python_test() {

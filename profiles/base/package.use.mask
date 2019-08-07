@@ -7,6 +7,21 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Kent Fredric <kentnl@gentoo.org> (2019-08-07)
+# Newer versions of nqp need newer versions of jdk to run on the jvm,
+# but these currently don't exist in gentoo. The USE flags have to be
+# kept around for dependency reasons from rakudo and friends.
+>=dev-lang/nqp-2019.07 java
+
+# Aaron Bauman <bman@gentoo.org> (2019-08-04)
+# media-libs/ming will be removed in 30 days
+media-gfx/pstoedit flash
+sci-chemistry/wxmacmolplt flash
+
+# Thomas Deutschmann <whissi@gentoo.org> (2019-08-03)
+# Early microcode loading is only supported on amd64 & x86
+sys-kernel/linux-firmware initramfs
+
 # Lars Wendler <polynomial-c@gentoo.org> (2019-07-26)
 # Requires dev-libs/gumbo which is only keyworded for amd64 and x86
 mail-client/claws-mail litehtml
@@ -239,8 +254,8 @@ dev-db/mysql client-libs
 dev-db/percona-server client-libs
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2018-02-02)
-# This feature is not ready yet, see bug 146882 comment 26
-sys-libs/glibc compile-locales
+# This feature is not ready yet pre-2.29-r4, see bug 146882 comment 26
+<sys-libs/glibc-2.29-r4 compile-locales
 
 # Mart Raudsepp <leio@gentoo.org> (2018-01-10)
 # Failing tests, with extra deps that aren't keyworded due to that

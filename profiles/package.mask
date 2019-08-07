@@ -29,6 +29,78 @@
 
 #--- END OF EXAMPLES ---
 
+# Mikle Kolyada <zlogene@gentoo.org> (2019-08-05)
+# dead upstream, does not work and compile
+#(bug #688006, bug #686630)
+# masked for removal in 14 days
+app-text/winefish
+dev-tex/oesch
+
+# Aaron Bauman <bman@gentoo.org> (2019-08-04)
+# multiple open sec bugs. no response from upstream
+# Masked for removal in 30 days
+media-libs/ming
+dev-php/ming-php
+
+# Hans de Graaff <graaff@gentoo.org> (2019-08-03)
+# ruby24-only, no longer compiles with gcc 9, last release in 2009,
+# upstream gone, no reverse dependencies.
+# Masked for removal in 30 days, bug #691302
+dev-ruby/priorityqueue
+
+# Matt Turner <mattst88@gentoo.org> (2019-08-02)
+# Incompatible with guile-2
+# Masked for removal in 30 days, Bugs #592188
+sci-mathematics/drgeo
+
+# Matt Turner <mattst88@gentoo.org> (2019-08-02)
+# Incompatible with guile-2. No longer a use case
+# Masked for removal in 30 days, Bugs #617792
+mail-filter/anubis
+
+# Matt Turner <mattst88@gentoo.org> (2019-08-02)
+# Unmaintained in Gentoo. Incompatible with guile-2
+# Masked for removal in 30 days, Bugs #685540, #629058
+sci-libs/libctl
+sci-physics/harminv
+sci-physics/meep
+
+# Matt Turner <mattst88@gentoo.org> (2019-08-02)
+# Unmaintained. Incompatible with guile-2
+# Masked for removal in 30 days, Bugs #641864, #647536, #688244
+x11-libs/guile-gtk
+
+# Thomas Deutschmann <whissi@gentoo.org> (2019-08-02)
+# Ebuild is still in development and shouldn't be used.
+=dev-db/mysql-8*
+
+# Michał Górny <mgorny@gentoo.org> (2019-08-01)
+# Discontinued upstream in July 2017.  Has irritating bugs, and is hard
+# to build from source (we have binary package only).  Upstream
+# recommends net-misc/electrum as a replacement.
+# See: https://multibit.org/blog/2017/07/26/multibit-shutdown.html
+# Removal in 30 days.  Bug #639530.
+net-p2p/multibit
+
+# David Seifert <soap@gentoo.org> (2019-08-01)
+# Dead upstream, last release over 5 years ago,
+# broken build system, fails with boost 1.70,
+# removal in 30 days. Bug #646014, #691162
+dev-games/vamos
+
+# David Seifert <soap@gentoo.org> (2019-08-01)
+# Last touched over 3 years ago, broken tests,
+# fails with boost 1.70, removal in 30 days.
+# Bug #655886, #690704
+dev-python/pgmagick
+
+# Brian Evans <grknight@gentoo.org> (2019-07-31)
+# MySQL 5.5 will no longer receive updates from Oracle
+# It may or may not have unaccounced security vulnerabilities
+# Please upgrade to 5.6 or use dev-db/mariadb
+# Removal in 30 days
+=dev-db/mysql-5.5*
+
 # Miroslav Šulc <fordfrog@gentoo.org> (2019-07-30)
 # Depends on >=virtual/{jdk,jre}-11 which is masked
 =www-servers/tomcat-9.0.22
@@ -49,11 +121,6 @@ virtual/python-dnspython
 >=dev-libs/vala-common-0.45
 dev-lang/vala:0.46
 
-# Lars Wendler <polynomial-c@gentoo.org> (2019-07-27)
-# Fails to load keymaps through /etc/init.d/keymaps (from openrc) during
-# boot. Emits spurious error messages which upstream hasn't fully fixed yet.
-~sys-apps/kbd-2.1.0
-
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2019-07-26)
 # Mask 5.x version
 # It breaks hundreds of py2 ebuilds and not all deps are keyworded
@@ -73,13 +140,6 @@ kde-misc/plasma-active-window-control
 # Lars Wendler <polynomial-c@gentoo.org> (2019-07-21)
 # Requires >=mail-client/thunderbird-68_beta1 which is not in the tree yet
 >=x11-plugins/enigmail-2.1
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2019-07-20)
-# Ancient theme for KDE SC 4.4, useless for Plasma 5
-# Removal in 15 days
-x11-themes/korilla
-x11-themes/noia
-x11-themes/oxygen-molecule
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2019-07-20)
 # Mask linux-headers-5.2 as it breaks at least firefox
@@ -151,12 +211,6 @@ media-video/pipewire
 # Requires >=dev-lang/lua-5.2 which is masked
 >=app-admin/conky-1.11.4
 
-# Ulrich Müller <ulm@gentoo.org> (2019-07-05)
-# Fetch restricted, SRC_URI is gone, last release in 2008.
-# Binary-only 32 bit package. Program fails with SIGSEGV.
-# Masked for removal in 30 days, bug #689158.
-media-sound/ventrilo-server-bin
-
 # Sobhan Mohammadpour <sobhan@gentoo.org> (2019-07-04)
 # Mask until further testing is done
 =dev-libs/libgdata-0.17.10
@@ -187,12 +241,6 @@ sys-freebsd/ubin-wrappers
 # Source is broken. Upstream is dead since 2011.
 # Removal after 2019-08-01. (bug #688552)
 media-sound/sfc
-
-# David Seifert <soap@gentoo.org> (2019-06-23)
-# QA issues, fails tests, RWX sections, ignores CC/CFLAGS,
-# builds only static libs, fails with GCC 9.
-# Bug #452220, #461288, #623360, #685728
-sci-mathematics/gwnum
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2019-06-17)
 # this is now provided by dev-lang/rust{-bin}[rustfmt]
@@ -324,7 +372,7 @@ dev-ros/sound_play
 # Jeroen Roovers <jer@gentoo.org> (2019-04-24)
 # Depends on =dev-libs/openssl-1.1.1* due to newly introduced
 # support for EVP_PKEY_ED25519 and EVP_PKEY_ED448 (bug #670574).
-=net-libs/nodejs-10.16.0
+=net-libs/nodejs-10.16*
 =net-libs/nodejs-11.15.0
 =net-libs/nodejs-12*
 

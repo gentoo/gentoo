@@ -17,9 +17,9 @@ HOMEPAGE="https://root.cern"
 
 IUSE="+X aqua +asimage +c++11 c++14 c++17 cuda +davix emacs +examples
 	fits fftw fortran +gdml graphviz +gsl http libcxx +minuit mysql
-	odbc +opengl oracle postgres prefix pythia6 pythia8 +python qt5 R
-	+roofit root7 shadow sqlite +ssl +tbb test +tmva +unuran vc vmc
-	+xml xrootd"
+	nosplash odbc +opengl oracle postgres prefix pythia6 pythia8
+	+python qt5 R +roofit root7 shadow sqlite +ssl +tbb test +tmva
+	+unuran vc vmc +xml xrootd"
 
 if [[ ${PV} =~ "9999" ]] ; then
 	inherit git-r3
@@ -138,7 +138,9 @@ src_prepare() {
 	# CSS should use local images
 	sed -i -e 's,http://.*/,,' etc/html/ROOT.css || die "html sed failed"
 
-	hprefixify core/clingutils/CMakeLists.txt
+	if use nosplash; then
+		sed -i -e '/bool gNoLogo/s@false@true@' rootx/src/rootx.cxx
+	fi
 }
 
 # Note: ROOT uses bundled clang because it is patched and API-incompatible

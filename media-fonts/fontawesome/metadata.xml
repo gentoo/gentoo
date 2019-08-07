@@ -5,6 +5,10 @@
 		<email>hilobakho@gmail.com</email>
 		<name>Mykyta Holubakha</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>bernardo@standard.ai</email>
+		<name>Bernardo Meurer</name>
+	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Gentoo Proxy Maintainers Project</name>
@@ -16,4 +20,5 @@
 		<flag name="otf">Install the OpenType version of the font</flag>
 		<flag name="ttf">Install the TrueType version of the font</flag>
 	</use>
+	<stabilize-allarches/>
 </pkgmetadata>

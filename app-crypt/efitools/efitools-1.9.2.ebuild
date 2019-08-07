@@ -11,7 +11,7 @@ SRC_URI="https://git.kernel.org/pub/scm/linux/kernel/git/jejb/efitools.git/snaps
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 ~x86"
 IUSE="libressl static"
 
 LIB_DEPEND="!libressl? ( dev-libs/openssl:0=[static-libs(+)] )
@@ -30,7 +30,7 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}/1.7.0-Make.rules.patch"
-	"${FILESDIR}/${P}-libressl-compatibility.patch"
+	"${FILESDIR}/${PN}-1.8.1-libressl-compatibility.patch"
 )
 
 src_prepare() {

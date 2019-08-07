@@ -3,6 +3,7 @@
 <pkgmetadata>
   <maintainer type="person">
     <email>juippis@gentoo.org</email>
+    <name>Joonas Niilola</name>
   </maintainer>
   <use>
     <flag name="extras">Install additional testing tools</flag>
