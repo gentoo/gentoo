@@ -12,4 +12,4 @@ RESTRICT=test? ( userpriv ) !test? ( test )
 SLOT=0
 SRC_URI=https://github.com/containers/storage/archive/v1.12.16.tar.gz -> containers-storage-1.12.16.tar.gz https://github.com/pquerna/ffjson/archive/e517b90714f7c0eabe6d2e570a5886ae077d6db6.tar.gz -> github.com-pquerna-ffjson-e517b90714f7c0eabe6d2e570a5886ae077d6db6.tar.gz
 _eclasses_=golang-base	c57d2c3f9e1a02d0feb8b87c7b689892	golang-vcs-snapshot	12177e83bede6f7fb87eae383864b40b
-_md5_=ff34107fe407d4032ae193b04c75061c
+_md5_=fd41406dfca0ea7940af3a47751f9f3d
