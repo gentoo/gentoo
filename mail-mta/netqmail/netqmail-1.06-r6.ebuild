@@ -105,12 +105,14 @@ src_prepare() {
 	ht_fix_file Makefile*
 
 	if ! use vanilla; then
-		# This patch contains relative paths and needs to be cleaned up.
-		sed 's~^--- ../../~--- ~g' \
-			<"${DISTDIR}"/${QMAIL_TLS_F} \
-			>"${T}"/${QMAIL_TLS_F} || die
-		use ssl        && epatch "${T}"/${QMAIL_TLS_F}
-		use ssl        && epatch "${DISTDIR}"/${QMAIL_TLS_CVE}
+		if use ssl; then
+			# This patch contains relative paths and needs to be cleaned up.
+			sed 's~^--- ../../~--- ~g' \
+				< "${DISTDIR}"/${QMAIL_TLS_F} \
+				> "${T}"/${QMAIL_TLS_F} || die
+			epatch "${T}"/${QMAIL_TLS_F}
+			epatch "${DISTDIR}"/${QMAIL_TLS_CVE}
+		fi
 		use highvolume && epatch "${DISTDIR}"/${QMAIL_BIGTODO_F}
 
 		if use qmail-spp; then
@@ -127,7 +129,7 @@ src_prepare() {
 
 	cd "${WORKDIR}" || die
 	epatch "${FILESDIR}"/use-new-path-for-functions.sh.patch
-	epatch "${FILESDIR}"/qmail-smtputf8.patch
+	use ssl && epatch "${FILESDIR}"/qmail-smtputf8.patch
 	cd - || die
 
 	qmail_src_postunpack
