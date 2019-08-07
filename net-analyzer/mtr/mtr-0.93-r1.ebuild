@@ -35,6 +35,8 @@ PATCHES=(
 src_prepare() {
 	default
 
+	sed -i -e 's|m4_esyscmd(\[build-aux/git-version-gen .tarball-version\])|'"${PV}"'|g' configure.ac || die
+
 	eautoreconf
 }
 
