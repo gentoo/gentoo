@@ -3,8 +3,6 @@
 
 EAPI="7"
 
-inherit autotools
-
 DESCRIPTION="Parallel bzip2 utility"
 HOMEPAGE="https://github.com/kjn/lbzip2/"
 SRC_URI="https://dev.gentoo.org/~whissi/dist/${PN}/${P}.tar.gz"
@@ -19,13 +17,8 @@ DEPEND=""
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.3-s_isreg.patch
+	"${FILESDIR}"/${P}-fix-unaligned.patch
 )
-
-src_prepare() {
-	default
-
-	eautoreconf
-}
 
 src_configure() {
 	local myeconfargs=(
