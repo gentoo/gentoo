@@ -1593,6 +1593,7 @@ dev-libs/granite:demo - Build the Granite demo application (to present all avail
 dev-libs/hidapi:fox - Build a x11-libs/fox GUI
 dev-libs/jemalloc:hugepages - Enable transparent huge page support
 dev-libs/jemalloc:lazy-lock - Enable lazy locking (only lock when multi-threaded)
+dev-libs/jemalloc:prof - Enable allocation profiling
 dev-libs/jemalloc:stats - Enable statistics calculation/reporting
 dev-libs/jemalloc:xmalloc - Add support for xmalloc (abort-on-out-of-memory)
 dev-libs/kreport:marble - Enable displaying of maps using kde-apps/marble
