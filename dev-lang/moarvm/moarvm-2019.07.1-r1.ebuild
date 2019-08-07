@@ -49,8 +49,8 @@ src_prepare() {
 
 src_configure() {
 	use doc && DOCS+=( docs/* )
-	local prefix="${EROOT}/usr"
-	local libdir="${EROOT}/usr/$(get_libdir)"
+	local prefix="${EPREFIX}/usr"
+	local libdir="${EPREFIX}/usr/$(get_libdir)"
 	einfo "--prefix '${prefix}'"
 	einfo "--libdir '${libdir}'"
 	local myconfigargs=(
