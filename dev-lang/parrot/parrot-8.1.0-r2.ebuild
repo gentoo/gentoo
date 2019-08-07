@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 inherit eutils multilib
 
@@ -17,18 +17,21 @@ SLOT="0/${PV}"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="opengl nls doc examples gdbm +gmp ssl +unicode pcre"
 
-RDEPEND="sys-libs/readline
+CDEPEND="sys-libs/readline:0=
 	dev-libs/libffi
+	net-libs/libnsl:0=
 	opengl? ( media-libs/freeglut )
 	nls? ( sys-devel/gettext )
 	unicode? ( >=dev-libs/icu-2.6:= )
 	gdbm? ( >=sys-libs/gdbm-1.8.3-r1 )
-	gmp? ( >=dev-libs/gmp-4.1.4 )
+	gmp? ( >=dev-libs/gmp-4.1.4:0= )
 	ssl? ( dev-libs/openssl:0= )
 	pcre? ( dev-libs/libpcre )
+"
+RDEPEND="${CDEPEND}
 	doc? ( dev-perl/JSON )"
-
-DEPEND="dev-lang/perl[doc?]
+DEPEND="${CDEPEND}"
+BDEPEND="dev-lang/perl[doc?]
 	${RDEPEND}"
 
 src_configure() {
@@ -55,29 +58,44 @@ src_configure() {
 src_compile() {
 	export LD_LIBRARY_PATH=${LD_LIBRARY_PATH:+$LD_LIBRARY_PATH:}"${S}"/blib/lib
 	# occasionally dies in parallel make
-	emake -j1 || die
+	emake -j1
 	if use doc ; then
-		emake -j1 html || die
+		emake -j1 html
 	fi
 }
 
 src_test() {
-	emake -j1 test || die
+	emake -j1 test
 }
 
 src_install() {
-	emake -j1 install-dev DESTDIR="${D}" DOC_DIR="${EPREFIX}/usr/share/doc/${PF}" || die
-	dodoc CREDITS DONORS.pod PBC_COMPAT PLATFORMS RESPONSIBLE_PARTIES TODO || die
-	dosym /usr/bin/parrot-ops2c /usr/bin/ops2c || die
-	if use examples; then
-		insinto "/usr/share/doc/${PF}/examples"
-		doins -r examples/* || die
-	fi
-	if use doc; then
-		insinto "/usr/share/doc/${PF}/editor"
-		doins -r editor || die
-		cd docs/html
-		dohtml -r developer.html DONORS.pod.html index.html ops.html parrotbug.html pdds.html \
-			pmc.html tools.html docs src tools || die
-	fi
+	emake -j1 install-dev DESTDIR="${D}" DOC_DIR="${EPREFIX}/usr/share/doc/${PF}"
+	dosym parrot-ops2c /usr/bin/ops2c
+	rm -vfr "${ED}/usr/share/doc/${PF}/parrot" || die "Unable to prune excess docs"
+	DOCS=(
+		CREDITS
+		ChangeLog
+		DONORS.pod
+		PBC_COMPAT
+		PLATFORMS
+		README.pod
+		RESPONSIBLE_PARTIES
+		TODO
+	)
+	use doc && DOCS+=( editor )
+	use examples && DOCS+=( examples )
+	use doc && HTML_DOCS=(
+			docs/html/developer.html
+			docs/html/DONORS.pod.html
+			docs/html/index.html
+			docs/html/ops.html
+			docs/html/parrotbug.html
+			docs/html/pdds.html
+			docs/html/pmc.html
+			docs/html/tools.html
+			docs/html/docs
+			docs/html/src
+			docs/html/tools
+	)
+	einstalldocs
 }
