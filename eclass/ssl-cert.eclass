@@ -18,7 +18,7 @@ case "${EAPI:-0}" in
 	0)
 		die "${ECLASS}.eclass: EAPI=0 is not supported.  Please upgrade to EAPI >= 1."
 		;;
-	1|2|3|4|5|6)
+	1|2|3|4|5|6|7)
 		;;
 	*)
 		die "${ECLASS}.eclass: EAPI=${EAPI} is not supported yet."
