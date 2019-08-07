@@ -6,7 +6,7 @@ inherit autotools eutils fcaps flag-o-matic git-r3
 
 DESCRIPTION="My TraceRoute, an Excellent network diagnostic tool"
 HOMEPAGE="http://www.bitwizard.nl/mtr/"
-EGIT_REPO_URI="https://github.com/traviscross/mtr.git"
+EGIT_REPO_URI="https://github.com/traviscross/mtr"
 SRC_URI="mirror://gentoo/gtk-2.0-for-mtr.m4.bz2"
 
 LICENSE="GPL-2"
