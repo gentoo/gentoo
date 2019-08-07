@@ -5,6 +5,6 @@ EAPI=7
 
 inherit acct-group
 
-DESCRIPTION="MySQL program group"
-ACCT_GROUP_ID=60
-SLOT="0"
+DESCRIPTION="A group for the Minecraft server"
+
+ACCT_GROUP_ID="490"

@@ -1,33 +1,33 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-MY_PV="808be3869e2ca6b62378f9f4b33c946621620019"
+EGIT_COMMIT="3dc3d84a581f14691199cf6831b71ed1296a9fdf"
 
-inherit readme.gentoo-r1 java-pkg-2 user
+inherit readme.gentoo-r1 java-pkg-2
 
 DESCRIPTION="The official server for the sandbox video game"
 HOMEPAGE="https://www.minecraft.net/"
-SRC_URI="https://launcher.mojang.com/v1/objects/${MY_PV}/server.jar -> ${P}.jar"
+SRC_URI="https://launcher.mojang.com/v1/objects/${EGIT_COMMIT}/server.jar -> ${P}.jar"
 
 LICENSE="Mojang"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
+	acct-group/minecraft
+	acct-user/minecraft
 	app-misc/screen
-	>=virtual/jre-1.8
+	|| (
+		>=virtual/jre-1.8
+		>=virtual/jdk-1.8
+	)
 "
 
 RESTRICT="bindist mirror strip"
 
 S="${WORKDIR}"
-
-pkg_setup() {
-	enewgroup minecraft
-	enewuser minecraft -1 -1 /var/lib/minecraft-server minecraft
-}
 
 src_unpack() {
 	# Don't unpack that jar, just copy it to WORKDIR
