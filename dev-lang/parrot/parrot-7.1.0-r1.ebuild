@@ -15,16 +15,15 @@ SRC_URI="ftp://ftp.parrot.org/pub/parrot/releases/all/${PV}/${P}.tar.gz"
 LICENSE="Artistic-2"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
-IUSE="opengl nls doc examples gdbm +gmp ssl +unicode pcre"
+IUSE="opengl nls doc examples gdbm gmp ssl +unicode pcre"
 
-RDEPEND="sys-libs/readline
+RDEPEND="sys-libs/readline:0=
 	dev-libs/libffi
-	net-libs/libnsl:0=
 	opengl? ( media-libs/freeglut )
 	nls? ( sys-devel/gettext )
 	unicode? ( >=dev-libs/icu-2.6:= )
 	gdbm? ( >=sys-libs/gdbm-1.8.3-r1 )
-	gmp? ( >=dev-libs/gmp-4.1.4 )
+	gmp? ( >=dev-libs/gmp-4.1.4:0= )
 	ssl? ( dev-libs/openssl:0= )
 	pcre? ( dev-libs/libpcre )
 	doc? ( dev-perl/JSON )"
