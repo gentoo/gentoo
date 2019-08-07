@@ -198,11 +198,11 @@ src_test() {
 src_install() {
 	perf_make -f Makefile.perf install DESTDIR="${D}"
 
-	rm -rv "${D}"/usr/share/doc/perf-tip || die
+	rm -rv "${ED}"/usr/share/doc/perf-tip || die
 
 	if use gtk; then
-		mv "${D}"/usr/$(get_libdir)/libperf-gtk.so \
-			"${D}"/usr/libexec/perf-core || die
+		mv "${ED}"/usr/$(get_libdir)/libperf-gtk.so \
+			"${ED}"/usr/libexec/perf-core || die
 	fi
 
 	dodoc CREDITS

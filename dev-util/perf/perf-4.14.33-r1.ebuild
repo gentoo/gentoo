@@ -163,8 +163,8 @@ src_install() {
 	perf_make -f Makefile.perf install DESTDIR="${D}"
 
 	if use gtk; then
-		mv "${D}"/usr/$(get_libdir)/libperf-gtk.so \
-			"${D}"/usr/libexec/perf-core || die
+		mv "${ED}"/usr/$(get_libdir)/libperf-gtk.so \
+			"${ED}"/usr/libexec/perf-core || die
 	fi
 
 	dodoc CREDITS
