@@ -1,5 +1,5 @@
 DEFINED_PHASES=install prepare
-DEPEND=|| ( >=app-arch/upx-ucl-3.01[lzma] >=app-arch/upx-bin-3.01 )
+DEPEND=|| ( >=app-arch/upx-3.01[lzma] >=app-arch/upx-bin-3.01 )
 DESCRIPTION=Utility to create and demux TS and M2TS files
 EAPI=6
 HOMEPAGE=http://forum.doom9.org/showthread.php?t=168539
@@ -8,4 +8,4 @@ LICENSE=SmartLabs
 RDEPEND=>=media-libs/freetype-2.5.0.1:2[abi_x86_32(-)]
 SLOT=0
 SRC_URI=https://drive.google.com/uc?export=download&id=0B0VmPcEZTp8NekJxLUVJRWMwejQ -> tsmuxer-2.6.11.tar.gz
-_md5_=d415940c129925bb418de84d925dece5
+_md5_=350393784c67aae4fd4e9dd68c529447
