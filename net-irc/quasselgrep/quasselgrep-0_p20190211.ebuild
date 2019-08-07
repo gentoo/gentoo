@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python2_7 python3_{5,6,7} )
 PYTHON_REQ_USE=( sqlite )
 
-inherit distutils-r1 eutils python-r1
+inherit distutils-r1 eutils
 
 DESCRIPTION="Tool for searching quassel logs from the commandline"
 HOMEPAGE="https://github.com/fish-face/quasselgrep"
@@ -25,8 +25,7 @@ fi
 LICENSE="GPL-2"
 SLOT="0"
 
-RDEPEND="dev-lang/python[${PYTHON_REQ_USE}]
-	dev-python/future[${PYTHON_USEDEP}]
+RDEPEND="dev-python/future[${PYTHON_USEDEP}]
 	dev-python/pycryptodome[${PYTHON_USEDEP}]
 	dev-python/python-dateutil[${PYTHON_USEDEP}]"
 
