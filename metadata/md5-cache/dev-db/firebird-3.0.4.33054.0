@@ -1,0 +1,14 @@
+BDEPEND=>=dev-util/btyacc-3.0-r2 doc? ( app-arch/unzip ) >=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=configure install prepare pretend setup unpack
+DEPEND=dev-libs/icu:= dev-libs/libedit dev-libs/libtommath
+DESCRIPTION=Relational database offering many ANSI SQL:2003 and some SQL:2008 features
+EAPI=7
+HOMEPAGE=https://www.firebirdsql.org/
+IUSE=doc examples +server xinetd
+KEYWORDS=~amd64 ~x86
+LICENSE=IDPL Interbase-1.0
+RDEPEND=dev-libs/icu:= dev-libs/libedit dev-libs/libtommath xinetd? ( virtual/inetd ) !sys-cluster/ganglia
+SLOT=0
+SRC_URI=https://github.com/FirebirdSQL/firebird/releases/download/R3_0_4/Firebird-3.0.4.33054-0.tar.bz2 doc? ( ftp://ftpc.inprise.com/pub/interbase/techpubs/ib_b60_doc.zip )
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	7ba73aee7fe4462b3a745e3645ab92ca	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56	user	f8dcb46ee7b0bcdec51dac1ef4bfdfc9
+_md5_=1f17ac01762dd91a01969ad8e9723278
