@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -31,7 +31,7 @@ RDEPEND="
 	app-crypt/gpgme[python,${PYTHON_USEDEP}]
 "
 if [[ ${PV} == *9999 ]] ; then
-	RDEPEND+=" =dev-python/snakeoil-9999[${PYTHON_USEDEP}]"
+	RDEPEND+=" ~dev-python/snakeoil-9999[${PYTHON_USEDEP}]"
 	SPHINX="dev-python/sphinx[${PYTHON_USEDEP}]"
 else
 	RDEPEND+=" >=dev-python/snakeoil-0.8[${PYTHON_USEDEP}]"
