@@ -1,0 +1,25 @@
+From e1bbdec720a333937bd1b990ae0f7ee97db0d3b0 Mon Sep 17 00:00:00 2001
+From: Your Name <you@example.com>
+Date: Fri, 28 Jun 2019 15:56:23 +0000
+Subject: [PATCH] update zlib
+
+---
+ third_party/perfetto/gn/BUILD.gn | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/third_party/perfetto/gn/BUILD.gn b/third_party/perfetto/gn/BUILD.gn
+index c951f5f..297eee3 100644
+--- a/third_party/perfetto/gn/BUILD.gn
++++ b/third_party/perfetto/gn/BUILD.gn
+@@ -200,7 +200,7 @@ group("zlib") {
+       "//buildtools:zlib",
+     ]
+   } else if (build_with_chromium) {
+-    public_configs = [ "//third_party/zlib:zlib_config" ]
++    public_configs = [ "//third_party/zlib:system_zlib" ]
+     public_deps = [
+       "//third_party/zlib",
+     ]
+-- 
+2.21.0
+
