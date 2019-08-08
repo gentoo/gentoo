@@ -41,10 +41,28 @@
 		control via a LIRC device.</flag>
 		<flag name="mythlogserver">Enable support for syslog and file logging. Not
 		used with systemd.</flag>
+         
+                <flag name="zmserver">Stub</flag>
+                <flag name="ivtv">Stub</flag>
+                <flag name="hdpvr">Stub</flag>
+                <flag name="hdhomerun">Stub</flag>
+                <flag name="vbox">Stub</flag>
+                <flag name="ceton">Stub</flag>
+                <flag name="mytharchive">Stub</flag>
+                <flag name="mythbrowser">Stub</flag>
+                <flag name="mythgallery">Stub</flag>
+                <flag name="mythgame">Stub</flag>
+                <flag name="mythmusic">Stub</flag>
+                <flag name="mythnetvision">Stub</flag>
+                <flag name="mythnews">Stub</flag>
+                <flag name="mythweather">Stub</flag>
+                <flag name="mythzoneminder">Stub</flag>
 		<flag name="perl">Builds the perl bindings for MythTV. Allows you to write
 		scripts in Perl to control your MythTV setup or communicate with
 		it.</flag>
+		<flag name="vpx">Enable VP8/VP9 support for <pkg>media-libs/libvpx</pkg></flag>
 		<flag name="wrapper">Use Ubuntu mythtfrontend wrapper.</flag>
+		<flag name="x265">Enable h265 encoding using x265</flag>
 		<flag name="xmltv">Pulls in the <pkg>media-tv/xmltv</pkg> TV listing
 		grabbers for users not using Schedules Direct.</flag>
 	</use>
