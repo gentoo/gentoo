@@ -267,8 +267,11 @@ _check_reqs() {
 }
 
 pkg_pretend() {
-	use java || \
-		ewarn "If you plan to use Base application you should enable java or you will get various crashes."
+	if ! use java && ! use firebird; then
+		ewarn "If you plan to use Base application you must enable either firebird or java."
+	fi
+
+	use java || ewarn "Without java, several wizards are not going to be available."
 
 	if has_version "<app-office/libreoffice-5.3.0[firebird]"; then
 		ewarn "Firebird has been upgraded to version 3. It is unable to read back Firebird 2.5 data, so"
