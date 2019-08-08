@@ -3,24 +3,24 @@
 
 EAPI=6
 
-CMAKE_BUILD_TYPE=Release
 # ninja does not work due to fortran
 CMAKE_MAKEFILE_GENERATOR=emake
 FORTRAN_NEEDED="fortran"
 PYTHON_COMPAT=( python2_7 python3_{5,6,7} )
 
 inherit cmake-utils cuda eapi7-ver elisp-common eutils fortran-2 \
-	llvm prefix python-single-r1 toolchain-funcs
+	prefix python-single-r1 toolchain-funcs
 
 DESCRIPTION="C++ data analysis framework and interpreter from CERN"
 HOMEPAGE="https://root.cern"
 SRC_URI="https://root.cern/download/${PN}_v${PV}.source.tar.gz"
 
-IUSE="+X aqua +asimage +c++11 c++14 c++17 cuda +davix emacs +examples
-	fits fftw fortran +gdml graphviz +gsl http jemalloc libcxx memstat
-	+minuit mysql nosplash odbc +opengl oracle postgres prefix pythia6
-	pythia8 +python qt5 R +roofit root7 shadow sqlite +ssl +tbb test
-	+threads +tiff +tmva +unuran vc +vmc +xml xrootd"
+IUSE="+X aqua +asimage +c++11 c++14 c++17 cuda +davix debug emacs
+	+examples fits fftw fortran +gdml graphviz +gsl http jemalloc
+	kerberos ldap libcxx memstat +minuit mysql nosplash odbc +opengl
+	oracle postgres prefix pythia6 pythia8 +python qt5 R +roofit root7
+	shadow sqlite +ssl table +tbb test +threads +tiff +tmva +unuran vc
+	xinetd +xml xrootd zeroconf"
 
 SLOT="$(ver_cut 1-2)/$(ver_cut 3)"
 LICENSE="LGPL-2.1 freedist MSttfEULA LGPL-3 libpng UoI-NCSA"
@@ -46,7 +46,6 @@ CDEPEND="
 	media-fonts/dejavu
 	media-libs/freetype:2
 	media-libs/libpng:0=
-	sys-devel/llvm:5=
 	sys-libs/ncurses:=
 	sys-libs/zlib
 	X? (
@@ -68,6 +67,7 @@ CDEPEND="
 		)
 	)
 	asimage? ( media-libs/libafterimage[gif,jpeg,png,tiff?] )
+	zeroconf? ( net-dns/avahi[mdnsresponder-compat] )
 	cuda? ( >=dev-util/nvidia-cuda-toolkit-9.0 )
 	davix? ( net-libs/davix )
 	emacs? ( virtual/emacs )
@@ -77,6 +77,8 @@ CDEPEND="
 	gsl? ( sci-libs/gsl:= )
 	http? ( dev-libs/fcgi:0= )
 	jemalloc? ( dev-libs/jemalloc )
+	kerberos? ( virtual/krb5 )
+	ldap? ( net-nds/openldap:0= )
 	libcxx? ( sys-libs/libcxx )
 	unuran? ( sci-mathematics/unuran:0= )
 	minuit? ( !sci-libs/minuit )
@@ -101,15 +103,16 @@ CDEPEND="
 DEPEND="${CDEPEND}
 	virtual/pkgconfig"
 
-RDEPEND="${CDEPEND}"
+RDEPEND="${CDEPEND}
+	xinetd? ( sys-apps/xinetd )"
 
 PATCHES=(
+	"${FILESDIR}"/${PN}-6.12.04-no-ocaml.patch
 	"${FILESDIR}"/${PN}-6.12.06_cling-runtime-sysroot.patch
+	"${FILESDIR}"/${PN}-6.14.06-oracle.patch
 )
 
 pkg_setup() {
-	LLVM_MAX_SLOT=5 llvm_pkg_setup
-
 	use fortran && fortran-2_pkg_setup
 	use python && python-single-r1_pkg_setup
 
@@ -144,8 +147,6 @@ src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_C_FLAGS="${CFLAGS}"
 		-DCMAKE_CXX_FLAGS="${CXXFLAGS}"
-		-DCMAKE_CXX_STANDARD=$((usev c++11 || usev c++14 || usev c++17) | cut -c4-)
-		-DLLVM_CONFIG="$(type -P "${CHOST}-llvm-config")"
 		-DCMAKE_INSTALL_PREFIX="${EPREFIX%/}/usr/lib/${PN}/$(ver_cut 1-2)"
 		-DCMAKE_INSTALL_MANDIR="${EPREFIX%/}/usr/lib/${PN}/$(ver_cut 1-2)/share/man"
 		-DCMAKE_INSTALL_LIBDIR="lib"
@@ -157,7 +158,7 @@ src_configure() {
 		-Dgnuinstall=OFF
 		-Dshared=ON
 		-Dsoversion=ON
-		-Dbuiltin_llvm=OFF
+		-Dbuiltin_llvm=ON
 		-Dbuiltin_clang=ON
 		-Dbuiltin_afterimage=OFF
 		-Dbuiltin_cfitsio=OFF
@@ -182,18 +183,23 @@ src_configure() {
 		-Dbuiltin_zlib=OFF
 		-Dx11=$(usex X)
 		-Dxft=$(usex X)
+		-Dafdsmgrd=OFF
+		-Dafs=OFF # not implemented
 		-Dalien=OFF
-		-Darrow=OFF
 		-Dasimage=$(usex asimage)
 		-Dastiff=$(usex tiff)
+		-Dbonjour=$(usex zeroconf)
 		-Dlibcxx=$(usex libcxx)
 		-Dccache=OFF # use ccache via portage
-		-Dcefweb=OFF
+		-Dcastor=OFF
 		-Dchirp=OFF
 		-Dclad=OFF
 		-Dcling=ON # cling=OFF is broken
 		-Dcocoa=$(usex aqua)
 		-Dcuda=$(usex cuda)
+		-Dcxx11=$(usex c++11)
+		-Dcxx14=$(usex c++14)
+		-Dcxx17=$(usex c++17)
 		-Dcxxmodules=OFF # requires clang, unstable
 		-Ddavix=$(usex davix)
 		-Ddcache=OFF
@@ -206,12 +212,17 @@ src_configure() {
 		-Dgeocad=OFF
 		-Dgfal=OFF
 		-Dgl2ps=$(usex opengl)
+		-Dglite=OFF # not implemented
+		-Dglobus=OFF
 		-Dgminimal=OFF
 		-Dgsl_shared=$(usex gsl)
 		-Dgviz=$(usex graphviz)
+		-Dhdfs=OFF
 		-Dhttp=$(usex http)
 		-Dimt=$(usex tbb)
 		-Djemalloc=$(usex jemalloc)
+		-Dkrb5=$(usex kerberos)
+		-Dldap=$(usex ldap)
 		-Dmathmore=$(usex gsl)
 		-Dmemstat=$(usex memstat)
 		-Dminimal=OFF
@@ -228,16 +239,23 @@ src_configure() {
 		-Dpythia8=$(usex pythia8)
 		-Dpython=$(usex python)
 		-Dqt5web=$(usex qt5)
+		-Dqtgsi=OFF
+		-Dqt=OFF
+		-Drfio=OFF
 		-Droofit=$(usex roofit)
 		-Droot7=$(usex root7)
 		-Drootbench=OFF
 		-Droottest=OFF
 		-Drpath=OFF
+		-Druby=OFF # deprecated and broken
 		-Druntime_cxxmodules=OFF # does not work yet
 		-Dr=$(usex R)
+		-Dsapdb=OFF # not implemented
 		-Dshadowpw=$(usex shadow)
 		-Dsqlite=$(usex sqlite)
+		-Dsrp=OFF # not implemented
 		-Dssl=$(usex ssl)
+		-Dtable=$(usex table)
 		-Dtcmalloc=OFF
 		-Dtesting=$(usex test)
 		-Dthread=$(usex threads)
@@ -246,7 +264,6 @@ src_configure() {
 		-Dtmva-gpu=$(usex cuda)
 		-Dunuran=$(usex unuran)
 		-Dvc=$(usex vc)
-		-Dvmc=$(usex vmc)
 		-Dvdt=OFF
 		-Dveccore=OFF
 		-Dxml=$(usex xml)
@@ -254,6 +271,7 @@ src_configure() {
 		${EXTRA_ECONF}
 	)
 
+	CMAKE_BUILD_TYPE=$(usex debug Debug Release) \
 	cmake-utils_src_configure
 }
 
@@ -288,7 +306,7 @@ src_install() {
 
 	pushd "${D}/${ROOTSYS}" > /dev/null
 
-	rm -r emacs bin/*.{csh,sh,fish} || die
+	rm -r test emacs bin/*.{csh,sh} || die
 
 	if ! use examples; then
 		rm -r tutorials || die
