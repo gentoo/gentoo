@@ -164,10 +164,12 @@ DEPEND="${CDEPEND}
 	x86? ( >=dev-lang/yasm-1.1 virtual/opengl )
 	!system-av1? ( >=dev-lang/nasm-2.13 )"
 
-# Due to a bug in GCC, profile guided optimization will produce
-# AVX2 instructions, bug #677052
+# We use virtx eclass which cannot handle wayland
 REQUIRED_USE="wifi? ( dbus )
-	pgo? ( lto )"
+	pgo? (
+		lto
+		!wayland
+	)"
 
 S="${WORKDIR}/firefox-${PV%_*}"
 
