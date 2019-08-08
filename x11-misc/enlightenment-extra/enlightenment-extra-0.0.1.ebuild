@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,10 +16,8 @@ KEYWORDS="~amd64 ~x86"
 IUSE="nls"
 
 RDEPEND=">=dev-libs/efl-1.18[X]"
-DEPEND="
-	${RDEPEND}
-	nls? ( sys-devel/gettext )
-"
+DEPEND="${RDEPEND}"
+BDEPEND="nls? ( sys-devel/gettext )"
 
 S="${WORKDIR}"/"${MY_P}"
 
