@@ -17,6 +17,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-correctly-install.patch"
 	"${FILESDIR}/${P}-correctly-install-pc.patch"
 	"${FILESDIR}/${P}-pc-prefix.patch"
+	"${FILESDIR}/${P}-do-not-install-kfd_ioctl.h.patch"
 )
 
 DESCRIPTION="Radeon Open Compute Thunk Interface"
