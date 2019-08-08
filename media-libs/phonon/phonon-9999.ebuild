@@ -3,55 +3,48 @@
 
 EAPI=7
 
-if [[ ${PV} != *9999* ]]; then
+inherit kde5
+
+DESCRIPTION="KDE multimedia abstraction library"
+HOMEPAGE="https://phonon.kde.org/"
+
+if [[ ${KDE_BUILD_TYPE} = release ]]; then
 	SRC_URI="mirror://kde/stable/phonon/${PV}/${P}.tar.xz"
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-fbsd"
-else
-	EGIT_REPO_URI=( "git://anongit.kde.org/${PN}" )
-	inherit git-r3
 fi
-
-inherit cmake-utils qmake-utils
-
-DESCRIPTION="KDE multimedia API"
-HOMEPAGE="https://phonon.kde.org/"
 
 LICENSE="|| ( LGPL-2.1 LGPL-3 )"
 SLOT="0"
-IUSE="debug designer gstreamer pulseaudio +vlc"
+IUSE="debug designer gstreamer gui pulseaudio +vlc"
 
 BDEPEND="
 	dev-qt/linguist-tools:5
-	kde-frameworks/extra-cmake-modules:5
 	virtual/pkgconfig
 "
 DEPEND="
 	!!dev-qt/qtphonon:4
-	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
 	dev-qt/qtgui:5
 	dev-qt/qtwidgets:5
 	designer? ( dev-qt/designer:5 )
 	pulseaudio? (
 		dev-libs/glib:2
-		>=media-sound/pulseaudio-0.9.21[glib]
+		media-sound/pulseaudio[glib]
 	)
 "
 RDEPEND="${DEPEND}"
 PDEPEND="
-	gstreamer? ( >=media-libs/phonon-gstreamer-4.9.0[qt5(+)] )
-	vlc? ( >=media-libs/phonon-vlc-0.9.0[qt5(+)] )
+	gstreamer? ( >=media-libs/phonon-gstreamer-4.9.60 )
+	vlc? ( >=media-libs/phonon-vlc-0.9.60 )
 "
 
 src_configure() {
 	local mycmakeargs=(
-		-DPHONON_BUILD_PHONON4QT5=ON
-		-DPHONON_INSTALL_QT_EXTENSIONS_INTO_SYSTEM_QT=TRUE
-		-DPHONON_BUILD_DESIGNER_PLUGIN=$(usex designer)
 		-DCMAKE_DISABLE_FIND_PACKAGE_Qt5Declarative=ON
-		-DWITH_GLIB2=$(usex pulseaudio)
-		-DWITH_PulseAudio=$(usex pulseaudio)
-		-DQT_QMAKE_EXECUTABLE="$(qt5_get_bindir)"/qmake
+		-DPHONON_BUILD_DESIGNER_PLUGIN=$(usex designer)
+		-DCMAKE_DISABLE_FIND_PACKAGE_GLIB2=$(usex !pulseaudio)
+		-DCMAKE_DISABLE_FIND_PACKAGE_PulseAudio=$(usex !pulseaudio)
+		-DPHONON_BUILD_SETTINGS=$(usex gui)
 	)
-	cmake-utils_src_configure
+	kde5_src_configure
 }
