@@ -6,6 +6,7 @@
 		<name>Gentoo KDE Project</name>
 	</maintainer>
 	<use>
+		<flag name="gui">Install device preferences and backend settings GUI</flag>
 		<flag name="designer">Install plugin for <pkg>dev-qt/designer</pkg></flag>
 		<flag name="vlc">Install VLC Phonon backend</flag>
 	</use>
