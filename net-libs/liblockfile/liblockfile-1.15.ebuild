@@ -3,10 +3,10 @@
 
 EAPI=7
 
-inherit autotools multilib
+inherit autotools toolchain-funcs multilib
 
 DESCRIPTION="Implements functions designed to lock the standard mailboxes"
-HOMEPAGE="http://www.debian.org/"
+HOMEPAGE="https://www.debian.org/"
 SRC_URI="mirror://debian/pool/main/libl/${PN}/${PN}_${PV}.orig.tar.gz"
 
 LICENSE="LGPL-2"
@@ -20,7 +20,7 @@ DEPEND="${RDEPEND}"
 DOCS=( Changelog README )
 
 PATCHES=(
-	"${FILESDIR}/${PN}-1.13-makefile.patch"
+	"${FILESDIR}/${PN}-1.15-makefile.patch"
 )
 
 src_prepare() {
@@ -42,4 +42,8 @@ src_configure() {
 		grp=$(id -g)
 	fi
 	econf --with-mailgroup=${grp} --enable-shared
+}
+
+src_compile() {
+	emake AR="$(tc-getAR)"
 }
