@@ -38,7 +38,7 @@ src_prepare() {
 src_install() {
 	default
 
-	newinitd "${FILESDIR}"/${PN}.initd-r1 ${PN}
+	newinitd "${FILESDIR}"/${PN}.initd-r2 ${PN}
 	newconfd "${FILESDIR}"/${PN}.confd ${PN}
 
 	insinto /etc
