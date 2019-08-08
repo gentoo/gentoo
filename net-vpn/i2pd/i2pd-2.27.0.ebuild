@@ -15,6 +15,8 @@ IUSE="cpu_flags_x86_aes cpu_flags_x86_avx i2p-hardening libressl static +upnp we
 
 # if using libressl, require >=boost-1.65, see #597798
 RDEPEND="
+	acct-user/i2pd
+	acct-group/i2pd
 	!static? (
 		dev-libs/boost:=[threads]
 		!libressl? ( dev-libs/openssl:0=[-bindist] )
@@ -36,9 +38,6 @@ DEPEND="${RDEPEND}
 		upnp? ( net-libs/miniupnpc[static-libs] )
 	)
 	websocket? ( dev-cpp/websocketpp )"
-
-I2PD_USER=i2pd
-I2PD_GROUP=i2pd
 
 CMAKE_USE_DIR="${S}/build"
 
@@ -95,21 +94,6 @@ src_install() {
 	# logrotate
 	insinto /etc/logrotate.d
 	newins "${FILESDIR}/i2pd-2.6.0-r3.logrotate" i2pd
-}
-
-pkg_preinst() {
-	enewgroup "${I2PD_GROUP}"
-	enewuser "${I2PD_USER}" -1 -1 /var/lib/run/i2pd "${I2PD_GROUP}"
-
-	fowners "root:${I2PD_GROUP}" \
-		/etc/i2pd/i2pd.conf \
-		/etc/i2pd/tunnels.conf
-	fperms 660 \
-		/etc/i2pd/i2pd.conf \
-		/etc/i2pd/tunnels.conf
-
-	fowners "${I2PD_USER}:${I2PD_GROUP}" /var/lib/i2pd/
-	fperms 700 /var/lib/i2pd/
 }
 
 pkg_postinst() {
