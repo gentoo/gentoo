@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Mike Gilbert <floppym@gentoo.org> (2019-08-08)
+# Dev channel releases are only for people who
+# are developers or want more experimental features
+# and accept a more unstable release.
+>=www-client/chromium-77
+
 # Mikle Kolyada <zlogene@gentoo.org> (2019-08-05)
 # dead upstream, does not work and compile
 #(bug #688006, bug #686630)
