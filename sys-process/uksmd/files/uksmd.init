@@ -1,0 +1,7 @@
+#!/sbin/openrc-run
+# Copyright 2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+description="Userspace KSM helper daemon"
+command=/usr/bin/uksmd
+pidfile="/var/run/uksmd.pid"
