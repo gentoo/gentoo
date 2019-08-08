@@ -6,10 +6,8 @@ MY_EXTRAS_VER="20190802-1549Z"
 
 CMAKE_MAKEFILE_GENERATOR=emake
 
-# Keeping eutils in EAPI=6 for emktemp in pkg_config
-
 inherit cmake-utils eutils flag-o-matic linux-info \
-	prefix toolchain-funcs
+	multiprocessing prefix toolchain-funcs
 
 MY_PV="${PV//_pre*}"
 MY_P="${PN}-${MY_PV}"
@@ -30,9 +28,9 @@ fi
 HOMEPAGE="https://www.mysql.com/"
 DESCRIPTION="A fast, multi-threaded, multi-user SQL database server"
 LICENSE="GPL-2"
-SLOT="0/21"
-IUSE="cjk cracklib debug experimental jemalloc latin1 libressl numa +perl profiling
-	router selinux ssl static tcmalloc test"
+SLOT="0"
+IUSE="cjk cracklib debug jemalloc latin1 libressl numa +perl profiling
+	router selinux ssl tcmalloc test"
 
 # Tests always fail when libressl is enabled due to hard-coded ciphers in the tests
 RESTRICT="libressl? ( test )"
@@ -65,36 +63,32 @@ PATCHES=(
 
 # Be warned, *DEPEND are version-dependant
 # These are used for both runtime and compiletime
-COMMON_DEPEND="net-misc/curl:=
-	>=sys-apps/sed-4
-	>=sys-apps/texinfo-4.7-r1
-	sys-libs/ncurses:0=
-	dev-db/mysql-connector-c
-	>=dev-libs/protobuf-3.8
+COMMON_DEPEND="
 	>=app-arch/lz4-0_p131:=
+	dev-libs/icu:=
 	dev-libs/libedit
-	cjk? ( app-text/mecab:= )
 	dev-libs/libevent:=
 	net-libs/libtirpc:=
-	numa? ( sys-process/numactl )
 	>=sys-libs/zlib-1.2.3:0=
+	cjk? ( app-text/mecab:= )
 	jemalloc? ( dev-libs/jemalloc:0= )
 	kernel_linux? (
 		dev-libs/libaio:0=
 		sys-process/procps:0=
 	)
-	tcmalloc? ( dev-util/google-perftools:0= )
+	numa? ( sys-process/numactl )
 	ssl? (
 		!libressl? ( >=dev-libs/openssl-1.0.0:0= )
 		libressl? ( dev-libs/libressl:0= )
 	)
+	tcmalloc? ( dev-util/google-perftools:0= )
 "
 DEPEND="${COMMON_DEPEND}
 	|| ( >=sys-devel/gcc-3.4.6 >=sys-devel/gcc-apple-4.0 )
+	dev-libs/re2
+	>=dev-libs/protobuf-3.8
+	net-libs/rpcsvc-proto
 	virtual/yacc
-	dev-libs/libevent
-	experimental? ( net-libs/rpcsvc-proto )
-	static? ( sys-libs/ncurses[static-libs] )
 	test? (
 		acct-group/mysql acct-user/mysql
 		dev-perl/JSON
@@ -168,14 +162,39 @@ mysql_init_vars() {
 	export MY_DATADIR
 }
 
-pkg_pretend() {
-	if use numa ; then
-		local CONFIG_CHECK="~NUMA"
+pkg_setup() {
+	[[ ${MERGE_TYPE} == binary ]] && return
 
-		local WARNING_NUMA="This package expects NUMA support in kernel which this system does not have at the moment;"
-		WARNING_NUMA+=" Either expect runtime errors, enable NUMA support in kernel or rebuild the package without NUMA support"
+	if has test ${FEATURES} ; then
+		# Bug #213475 - MySQL _will_ object strenuously if your machine is named
+		# localhost. Also causes weird failures.
+		[[ "${HOSTNAME}" == "localhost" ]] && die "Your machine must NOT be named localhost"
 
-		check_extra_config
+		if ! has userpriv ${FEATURES} ; then
+			die "Testing with FEATURES=-userpriv is no longer supported by upstream. Tests MUST be run as non-root."
+		fi
+
+		local aio_max_nr=$(sysctl -n fs.aio-max-nr 2>/dev/null)
+		[[ -z "${aio_max_nr}" || ${aio_max_nr} -lt 250000 ]] \
+			&& die "FEATURES=test will require fs.aio-max-nr=250000 at minimum!"
+
+		if use latin1 ; then
+			# Upstream only supports tests with default charset
+			die "Testing with USE=latin1 is not supported."
+		fi
+	fi
+
+	if use kernel_linux ; then
+		if use numa ; then
+			linux-info_get_any_version
+
+			local CONFIG_CHECK="~NUMA"
+
+			local WARNING_NUMA="This package expects NUMA support in kernel which this system does not have at the moment;"
+			WARNING_NUMA+=" Either expect runtime errors, enable NUMA support in kernel or rebuild the package without NUMA support"
+
+			check_extra_config
+		fi
 	fi
 }
 
@@ -215,6 +234,7 @@ pkg_postinst() {
 
 src_unpack() {
 	unpack ${A}
+
 	# Grab the patches
 	[[ "${MY_EXTRAS_VER}" == "live" ]] && S="${WORKDIR}/mysql-extras" git-r3_src_unpack
 
@@ -235,7 +255,7 @@ src_prepare() {
 		echo > "${S}/support-files/SELinux/CMakeLists.txt" || die
 	fi
 
-	# man pages for client-lib tools we don't install
+	# Remove man pages for client-lib tools we don't install
 	rm \
 		man/my_print_defaults.1 \
 		man/perror.1 \
@@ -345,7 +365,7 @@ src_configure(){
 
 	mycmakeargs+=(
 		-DWITH_EXTRA_CHARSETS=all
-		-DDISABLE_SHARED=$(usex static YES NO)
+		-DDISABLE_SHARED=NO
 		-DWITH_DEBUG=$(usex debug)
 	)
 
@@ -354,10 +374,6 @@ src_configure(){
 		# to `mysqld --help` output via sql/sys_vars.cc causing
 		# "main.mysqld--help-notwin" test to fail
 		mycmakeargs+=( -DENABLED_PROFILING=ON )
-	fi
-
-	if use static ; then
-		mycmakeargs+=( -DWITH_PIC=1 )
 	fi
 
 	# Storage engines
@@ -380,7 +396,7 @@ src_configure(){
 # Official test instructions:
 # ulimit -n 16500 && \
 # USE='perl server' \
-# FEATURES='test userpriv -usersandbox' \
+# FEATURES='test userpriv' \
 # ebuild mysql-X.X.XX.ebuild \
 # digest clean package
 src_test() {
@@ -397,32 +413,29 @@ src_test() {
 	local retstatus_unit
 	local retstatus_tests
 
-	# Bug #213475 - MySQL _will_ object strenously if your machine is named
-	# localhost. Also causes weird failures.
-	[[ "${HOSTNAME}" == "localhost" ]] && die "Your machine must NOT be named localhost"
-
-	if [[ $UID -eq 0 ]] ; then
-		die "Testing with FEATURES=-userpriv is no longer supported by upstream. Tests MUST be run as non-root."
-	fi
-	has usersandbox $FEATURES && ewarn "Some tests may fail with FEATURES=usersandbox"
-
-	if use latin1 ; then
-		# Upstream only supports tests with default charset
-		die "Testing with USE=latin1 is not supported."
-	fi
-
-	einfo ">>> Test phase [test]: ${CATEGORY}/${PF}"
-
 	# Run CTest (test-units)
 	cmake-utils_src_test
 	retstatus_unit=$?
 
 	# Ensure that parallel runs don't die
 	export MTR_BUILD_THREAD="$((${RANDOM} % 100))"
-	# Enable parallel testing, auto will try to detect number of cores
-	# You may set this by hand.
-	# The default maximum is 8 unless MTR_MAX_PARALLEL is increased
-	export MTR_PARALLEL="${MTR_PARALLEL:-auto}"
+
+	if [[ -z "${MTR_PARALLEL}" ]] ; then
+		local -x MTR_PARALLEL=$(makeopts_jobs)
+
+		if [[ ${MTR_PARALLEL} -gt 4 ]] ; then
+			# Running multiple tests in parallel usually require higher ulimit
+			# and fs.aio-max-nr setting. In addition, tests like main.multi_update
+			# are known to hit timeout when system is busy.
+			# To avoid test failure we will limit MTR_PARALLEL to 4 instead of
+			# using "auto".
+			local info_msg="Parallel MySQL test suite jobs limited to 4 (MAKEOPTS=${MTR_PARALLEL})"
+			info_msg+=" to avoid test failures. Set MTR_PARALLEL if you know what you are doing!"
+			einfo "${info_msg}"
+			unset info_msg
+			MTR_PARALLEL=4
+		fi
+	fi
 
 	# create directories because mysqladmin might run out of order
 	mkdir -p "${T}"/var-tests{,/log} || die
@@ -433,6 +446,7 @@ src_test() {
 	touch "${T}/disabled.def"
 
 	local -a disabled_tests
+	disabled_tests+=( "auth_sec.keyring_file_data_qa;0;Won't work with user privileges")
 	disabled_tests+=( "gis.spatial_analysis_functions_buffer;5452;Known rounding error with latest AMD processors (PS)")
 	disabled_tests+=( "gis.gis_bugs_crashes;5452;Known rounding error with latest AMD processors (PS)")
 	disabled_tests+=( "gis.geometry_class_attri_prop;5452;Known rounding error with latest AMD processors (PS)")
@@ -443,16 +457,16 @@ src_test() {
 	disabled_tests+=( "gis.spatial_utility_function_simplify;5452;Known rounding error with latest AMD processors (PS)")
 	disabled_tests+=( "gis.spatial_op_testingfunc_mix;5452;Known rounding error with latest AMD processors (PS)")
 	disabled_tests+=( "gis.spatial_analysis_functions_distance;5452;Known rounding error with latest AMD processors (PS)")
+	disabled_tests+=( "main.mysqlslap;1253001;Known failure - no upstream bug yet (RH)" )
 	disabled_tests+=( "main.window_std_var;0;Known rounding error with latest AMD processors -- no upstream bug yet")
 	disabled_tests+=( "main.window_std_var_optimized;0;Known rounding error with latest AMD processors -- no upstream bug yet")
-	disabled_tests+=( "sys_vars.myisam_data_pointer_size_func;87935;Test will fail on slow hardware")
-	disabled_tests+=( "rpl_gtid.rpl_gtid_stm_drop_table;90612;Known test failure" )
-	disabled_tests+=( "rpl_gtid.rpl_multi_source_mtr_includes;0;Know failure - no upstream bug yet" )
-	disabled_tests+=( "x.connection;0;Know failure - no upstream bug yet" )
-	disabled_tests+=( "main.mysqlslap;1253001;Known failure - no upstream bug yet (RH)" )
 	disabled_tests+=( "perfschema.idx_threads;0;Know failure - no upstream bug yet" )
 	disabled_tests+=( "perfschema.idx_session_connect_attrs;0;Know failure - no upstream bug yet" )
 	disabled_tests+=( "perfschema.idx_session_account_connect_attrs;0;Know failure - no upstream bug yet" )
+	disabled_tests+=( "rpl_gtid.rpl_gtid_stm_drop_table;90612;Known test failure" )
+	disabled_tests+=( "rpl_gtid.rpl_multi_source_mtr_includes;0;Know failure - no upstream bug yet" )
+	disabled_tests+=( "sys_vars.myisam_data_pointer_size_func;87935;Test will fail on slow hardware")
+	disabled_tests+=( "x.connection;0;Know failure - no upstream bug yet" )
 
 	local test_ds
 	for test_infos_str in "${disabled_tests[@]}" ; do
@@ -485,15 +499,6 @@ src_test() {
 		fi
 	else
 		einfo "Will run test suite with open file limit set to 16500 (best test coverage)."
-	fi
-
-	local aio_max_nr=$(sysctl -n fs.aio-max-nr 2>/dev/null)
-	if [[ ${aio_max_nr} -lt 250000 ]] ; then
-		if ! sysctl -w fs.aio-max-nr=250000 2>&1 ; then
-			ewarn "Failed to rais fs.aio-max-nr to >=250000! Expect test failures ..."
-		else
-			einfo "fs.aio-max-nr raised to 250000!"
-		fi
 	fi
 
 	# run mysql-test tests
