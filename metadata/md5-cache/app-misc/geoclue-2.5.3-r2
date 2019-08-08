@@ -5,11 +5,11 @@ DESCRIPTION=A location information D-Bus service
 EAPI=7
 HOMEPAGE=https://gitlab.freedesktop.org/geoclue/geoclue/wikis/home
 IUSE=+introspection gtk-doc modemmanager vala zeroconf
-KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd
+KEYWORDS=~alpha ~amd64 ~arm arm64 ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd
 LICENSE=LGPL-2.1+ GPL-2+
 RDEPEND=>=dev-libs/glib-2.44:2 >=dev-libs/json-glib-0.14.0 >=net-libs/libsoup-2.42.0:2.4 introspection? ( >=dev-libs/gobject-introspection-1.54:= ) modemmanager? ( >=net-misc/modemmanager-1.6 ) zeroconf? ( >=net-dns/avahi-0.6.10[dbus] ) x11-libs/libnotify sys-apps/dbus
 REQUIRED_USE=vala? ( introspection )
 SLOT=2.0
 SRC_URI=https://gitlab.freedesktop.org/geoclue/geoclue/-/archive/2.5.3/geoclue-2.5.3.tar.bz2
 _eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	meson	22b6eb3dc04a3ba65083811a5e17c913	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	08e17157a6807add7db1f8d01e7e391f	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56	user	f8dcb46ee7b0bcdec51dac1ef4bfdfc9	vala	682da46cf615b9f7a7d3680058139dcd	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	14d00d009167652b1fa363e55effe213
-_md5_=0a77e00ff37327a019d2b2dcc70a9bba
+_md5_=8fc660ef984aa647ebfe9dbf6dad23dd
