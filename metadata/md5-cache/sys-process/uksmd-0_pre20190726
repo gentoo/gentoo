@@ -1,0 +1,13 @@
+BDEPEND=virtual/pkgconfig
+DEFINED_PHASES=install setup
+DESCRIPTION=Userspace KSM helper daemon
+EAPI=7
+HOMEPAGE=https://gitlab.com/post-factum/uksmd
+IUSE=kernel_linux
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=sys-kernel/pf-sources:* sys-process/procps
+SLOT=0
+SRC_URI=https://gitlab.com/post-factum/uksmd/-/archive/42f4ff8eb09011bf1a199938aa2afe23040d7faf/uksmd-42f4ff8eb09011bf1a199938aa2afe23040d7faf.tar.bz2 -> uksmd-0_pre20190726.tar.bz2
+_eclasses_=linux-info	953c3b1c472dcadbf62098a9301327f2	multilib	1d91b03d42ab6308b5f4f6b598ed110e	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
+_md5_=3deb25a637f9141eb3828487753e5838
