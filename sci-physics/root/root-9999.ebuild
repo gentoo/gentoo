@@ -3,7 +3,6 @@
 
 EAPI=6
 
-CMAKE_BUILD_TYPE=Release
 # ninja does not work due to fortran
 CMAKE_MAKEFILE_GENERATOR=emake
 FORTRAN_NEEDED="fortran"
@@ -15,9 +14,9 @@ inherit cmake-utils cuda eapi7-ver elisp-common eutils fortran-2 \
 DESCRIPTION="C++ data analysis framework and interpreter from CERN"
 HOMEPAGE="https://root.cern"
 
-IUSE="+X aqua +asimage +c++11 c++14 c++17 cuda +davix emacs +examples
-	fits fftw fortran +gdml graphviz +gsl http libcxx +minuit mysql
-	nosplash odbc +opengl oracle postgres prefix pythia6 pythia8
+IUSE="+X aqua +asimage +c++11 c++14 c++17 cuda +davix debug emacs
+	+examples fits fftw fortran +gdml graphviz +gsl http libcxx +minuit
+	mysql nosplash odbc +opengl oracle postgres prefix pythia6 pythia8
 	+python qt5 R +roofit root7 shadow sqlite +ssl +tbb test +tmva
 	+unuran vc vmc +xml xrootd"
 
@@ -255,6 +254,7 @@ src_configure() {
 		${EXTRA_ECONF}
 	)
 
+	CMAKE_BUILD_TYPE=$(usex debug Debug Release) \
 	cmake-utils_src_configure
 }
 

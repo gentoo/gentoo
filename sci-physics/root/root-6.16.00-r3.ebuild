@@ -3,7 +3,6 @@
 
 EAPI=6
 
-CMAKE_BUILD_TYPE=Release
 # ninja does not work due to fortran
 CMAKE_MAKEFILE_GENERATOR=emake
 FORTRAN_NEEDED="fortran"
@@ -16,12 +15,12 @@ DESCRIPTION="C++ data analysis framework and interpreter from CERN"
 HOMEPAGE="https://root.cern"
 SRC_URI="https://root.cern/download/${PN}_v${PV}.source.tar.gz"
 
-IUSE="+X aqua +asimage +c++11 c++14 c++17 cuda +davix emacs +examples
-	fits fftw fortran +gdml graphviz +gsl http jemalloc kerberos ldap
-	libcxx memstat +minuit mysql nosplash odbc +opengl oracle postgres
-	prefix pythia6 pythia8 +python qt5 R +roofit root7 shadow sqlite
-	+ssl table +tbb test +threads +tiff +tmva +unuran vc xinetd +xml
-	xrootd zeroconf"
+IUSE="+X aqua +asimage +c++11 c++14 c++17 cuda +davix debug emacs
+	+examples fits fftw fortran +gdml graphviz +gsl http jemalloc
+	kerberos ldap libcxx memstat +minuit mysql nosplash odbc +opengl
+	oracle postgres prefix pythia6 pythia8 +python qt5 R +roofit root7
+	shadow sqlite +ssl table +tbb test +threads +tiff +tmva +unuran vc
+	xinetd +xml xrootd zeroconf"
 
 SLOT="$(ver_cut 1-2)/$(ver_cut 3)"
 LICENSE="LGPL-2.1 freedist MSttfEULA LGPL-3 libpng UoI-NCSA"
@@ -275,6 +274,7 @@ src_configure() {
 		${EXTRA_ECONF}
 	)
 
+	CMAKE_BUILD_TYPE=$(usex debug Debug Release) \
 	cmake-utils_src_configure
 }
 
