@@ -39,8 +39,8 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 PDEPEND="
-	gstreamer? ( >=media-libs/phonon-gstreamer-4.9.0[qt5(+)] )
-	vlc? ( >=media-libs/phonon-vlc-0.9.0[qt5(+)] )
+	gstreamer? ( =media-libs/phonon-gstreamer-4.9* )
+	vlc? ( =media-libs/phonon-vlc-0.10* )
 "
 
 src_configure() {
