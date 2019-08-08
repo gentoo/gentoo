@@ -113,6 +113,7 @@ src_install() {
 	rm "${ED}"/usr/bin/lastb || die
 
 	newinitd "${FILESDIR}"/bootlogd.initd bootlogd
+	doinitd "${FILESDIR}"/halt
 }
 
 pkg_postinst() {

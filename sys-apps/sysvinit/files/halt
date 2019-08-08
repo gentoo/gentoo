@@ -1,0 +1,24 @@
+#!/sbin/openrc-run
+# Copyright 2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Add this service to the shutdown runlevel to make shutdown -hH work properly.
+
+depend() {
+	after killprocs mount-ro savecache
+}
+
+start() {
+	if [ "$RC_REBOOT" = YES ]; then
+		ebegin "Rebooting system"
+		reboot -d
+	elif [ "$INIT_HALT" = HALT ]; then
+		ebegin "Halting system"
+		halt -d
+	else
+		ebegin "Powering off system"
+		poweroff -d
+	fi
+	# We should never get here.
+	eend $?
+}
