@@ -38,13 +38,14 @@ LICENSE="Apache-2.0 BSD BSD-2 GPL-2 HPND ISC MPL-2.0"
 SLOT="0"
 KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 # -berkdb by default re bug 602682
-IUSE="-berkdb +caps dlz dnstap doc dnsrps fixed-rrset geoip gost gssapi
+IUSE="-berkdb +caps dlz dnstap doc dnsrps fixed-rrset geoip geoip2 gost gssapi
 json ldap libressl lmdb mysql odbc postgres python selinux ssl static-libs
 urandom xml +zlib"
 # sdb-ldap - patch broken
 # no PKCS11 currently as it requires OpenSSL to be patched, also see bug 409687
 
 REQUIRED_USE="
+	?? ( geoip geoip2 )
 	postgres? ( dlz )
 	berkdb? ( dlz )
 	mysql? ( dlz )
@@ -65,6 +66,7 @@ DEPEND="
 	caps? ( >=sys-libs/libcap-2.1.0 )
 	xml? ( dev-libs/libxml2 )
 	geoip? ( >=dev-libs/geoip-1.4.6 )
+	geoip2? ( dev-libs/libmaxminddb )
 	gssapi? ( virtual/krb5 )
 	json? ( dev-libs/json-c:= )
 	lmdb? ( dev-db/lmdb )
@@ -160,6 +162,7 @@ src_configure() {
 	)
 
 	use geoip && myeconfargs+=( --with-geoip )
+	use geoip2 && myeconfargs+=( --with-geoip2 )
 
 	# bug #158664
 #	gcc-specs-ssp && replace-flags -O[23s] -O
@@ -253,10 +256,11 @@ src_install() {
 	# bug 450406
 	dosym named.cache /var/bind/root.cache
 
-	dosym /var/bind/pri /etc/bind/pri
-	dosym /var/bind/sec /etc/bind/sec
-	dosym /var/bind/dyn /etc/bind/dyn
+	dosym "${ED%/}/var/bind/pri" "/etc/bind/pri"
+	dosym "${ED%/}/var/bind/sec" "/etc/bind/sec"
+	dosym "${ED%/}/var/bind/dyn" "/etc/bind/dyn"
 	keepdir /var/bind/{pri,sec,dyn}
+	keepdir /var/log/named
 
 	dodir /var/log/named
 
@@ -375,9 +379,17 @@ pkg_config() {
 	fi
 
 	if [ "${CHROOT_GEOIP:-0}" -eq 1 ]; then
-		mkdir -m 0755 -p ${CHROOT}/usr/share/GeoIP || die
+	   if use geoip; then
+	        mkdir -m 0755 -p ${CHROOT}/usr/share/GeoIP || die
+	   elif use geoip2; then
+		mkdir -m 0755 -p ${CHROOT}/usr/share/GeoIP2 || die
+	   fi
 	fi
 
 	elog "You may need to add the following line to your syslog-ng.conf:"
 	elog "source jail { unix-stream(\"${CHROOT}/dev/log\"); };"
+	elog "If you use new geoip2 API, keep in mind that bind now needs"
+	elog "binary databases in /usr/share/GeoIP2 folder"
+	elog "Additional support for GeoIP2 can be get from"
+	optfeature "Automatic updates of GeoIP2 binary databases" net-misc/geoipupdate
 }

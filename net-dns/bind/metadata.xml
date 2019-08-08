@@ -15,6 +15,7 @@
 		<flag name="dnsrps">Enable the DNS Response Policy Service (DNSRPS) API, a mechanism to allow an external response policy provider</flag>
 		<flag name="dlz">Enables dynamic loaded zones, 3rd party extension</flag>
 		<flag name="fixed-rrset">Enables fixed rrset-order option</flag>
+		<flag name="geoip2">Enable GeoIP2 API from MaxMind</flag>
 		<flag name="gost">Enables gost OpenSSL engine support</flag>
 		<flag name="gssapi">Enable gssapi support</flag>
 		<flag name="json">Enable JSON statistics channel</flag>

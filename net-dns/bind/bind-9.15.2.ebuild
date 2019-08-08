@@ -38,7 +38,7 @@ LICENSE="Apache-2.0 BSD BSD-2 GPL-2 HPND ISC MPL-2.0"
 SLOT="0"
 KEYWORDS=""
 # -berkdb by default re bug 602682
-IUSE="-berkdb +caps dlz dnstap doc dnsrps fixed-rrset geoip gost gssapi
+IUSE="-berkdb +caps dlz dnstap doc dnsrps fixed-rrset geoip2 gost gssapi
 json ldap libressl lmdb mysql odbc postgres python selinux ssl static-libs
 urandom xml +zlib"
 # sdb-ldap - patch broken
@@ -64,7 +64,7 @@ DEPEND="
 	postgres? ( dev-db/postgresql:= )
 	caps? ( >=sys-libs/libcap-2.1.0 )
 	xml? ( dev-libs/libxml2 )
-	geoip? ( >=dev-libs/geoip-1.4.6 )
+	geoip2? ( dev-libs/libmaxminddb )
 	gssapi? ( virtual/krb5 )
 	json? ( dev-libs/json-c:= )
 	lmdb? ( dev-db/lmdb )
@@ -159,8 +159,6 @@ src_configure() {
 		$(use_with zlib)
 	)
 
-	use geoip && myeconfargs+=( --enable-geoip )
-
 	# bug #158664
 #	gcc-specs-ssp && replace-flags -O[23s] -O
 
@@ -253,10 +251,11 @@ src_install() {
 	# bug 450406
 	dosym named.cache /var/bind/root.cache
 
-	dosym /var/bind/pri /etc/bind/pri
-	dosym /var/bind/sec /etc/bind/sec
-	dosym /var/bind/dyn /etc/bind/dyn
+	dosym "${ED%/}/var/bind/pri" "/etc/bind/pri"
+	dosym "${ED%/}/var/bind/sec" "/etc/bind/sec"
+	dosym "${ED%/}/var/bind/dyn" "/etc/bind/dyn"
 	keepdir /var/bind/{pri,sec,dyn}
+	keepdir /var/log/named
 
 	dodir /var/log/named
 
@@ -380,4 +379,6 @@ pkg_config() {
 
 	elog "You may need to add the following line to your syslog-ng.conf:"
 	elog "source jail { unix-stream(\"${CHROOT}/dev/log\"); };"
+	elog "Additional support for GeoIP2 can be get from"
+	optfeature "Automatic updates of GeoIP2 binary databases" net-misc/geoipupdate
 }
