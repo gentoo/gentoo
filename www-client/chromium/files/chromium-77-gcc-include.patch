@@ -1,0 +1,26 @@
+From 8c747a9c14ed4905f60f6680e2e09e33ea34163e Mon Sep 17 00:00:00 2001
+From: Jose Dapena Paz <jose.dapena@lge.com>
+Date: Fri, 26 Jul 2019 16:18:17 +0000
+Subject: [PATCH] IWYU: include <memory> in one_euro_filter.h as it uses std::unique_ptr
+
+Bug: 819294
+Change-Id: Ie1530f7046b0c8eb76e26adca530fa57c67ed876
+Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/1720637
+Reviewed-by: Ella Ge <eirage@chromium.org>
+Commit-Queue: José Dapena Paz <jose.dapena@lge.com>
+Cr-Commit-Position: refs/heads/master@{#681321}
+---
+
+diff --git a/third_party/one_euro_filter/src/one_euro_filter.h b/third_party/one_euro_filter/src/one_euro_filter.h
+index 7f8d15b..a8cd0ab 100644
+--- a/third_party/one_euro_filter/src/one_euro_filter.h
++++ b/third_party/one_euro_filter/src/one_euro_filter.h
+@@ -1,6 +1,8 @@
+ #ifndef ONE_EURO_ONE_EURO_FILTER_H_
+ #define ONE_EURO_ONE_EURO_FILTER_H_
+ 
++#include <memory>
++
+ #include "low_pass_filter.h"
+ 
+ namespace one_euro_filter {
