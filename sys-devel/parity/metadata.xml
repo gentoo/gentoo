@@ -18,6 +18,7 @@
 		<flag name="vc12_0">Enable support for Visual Studio 2013</flag>
 		<flag name="vc14_0">Enable support for Visual Studio 2015</flag>
 		<flag name="vc15_0">Enable support for Visual Studio 2017</flag>
+		<flag name="vc16_2">Enable support for Visual Studio 2019</flag>
 		<flag name="vc_x86">Enable support for 32bit Visual Studio compilers</flag>
 	</use>
 </pkgmetadata>

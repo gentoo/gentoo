@@ -15,7 +15,7 @@ DESCRIPTION="A POSIX to native Win32 Cross-Compiler Tool (requires Visual Studio
 HOMEPAGE="https://github.com/haubi/parity"
 
 parity-vcarchs() { echo x86 ; }
-parity-vcvers() { echo 7_0 7_1 8_0 9_0 10_0 11_0 12_0 14_0 15_0 ; }
+parity-vcvers() { echo 7_0 7_1 8_0 9_0 10_0 11_0 12_0 14_0 15_0 16_2 ; }
 
 LICENSE="LGPL-3"
 SLOT="0"
