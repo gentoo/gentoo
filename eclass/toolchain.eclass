@@ -687,9 +687,9 @@ do_gcc_CYGWINPORTS_patches() {
 	[[ -n ${CYGWINPORTS_GITREV} ]] || return 0
 	use elibc_Cygwin || return 0
 
-	local -a patches
 	local p d="${WORKDIR}/gcc-${CYGWINPORTS_GITREV}"
-	readarray -t patches < <(sed -e '1,/PATCH_URI="/d;/"/,$d' < "${d}"/gcc.cygport)
+	# readarray -t is available since bash-4.4 only, #690686
+	local patches=( $(sed -e '1,/PATCH_URI="/d;/"/,$d' < "${d}"/gcc.cygport) )
 	for p in ${patches[*]}; do
 		epatch "${d}/${p}"
 	done
