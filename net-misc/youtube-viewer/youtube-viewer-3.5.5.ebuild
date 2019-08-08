@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -63,6 +63,7 @@ pkg_postinst() {
 	optfeature "faster JSON to HASH conversion" dev-perl/JSON-XS
 	optfeature "the case if there are SSL problems" dev-perl/Mozilla-CA
 	optfeature "printing results in a fixed-width format (--fixed-width, -W)" dev-perl/Text-CharWidth
+	optfeature "live streams support" net-misc/youtube-dl
 	optfeature "threads support" virtual/perl-threads
 	elog
 	elog "Check the configuration file in ~/.config/youtube-viewer/"
