@@ -144,7 +144,7 @@ app-admin/mcollective 2.12.3 2.12.4: Framework to build server orchestration or 
 app-admin/metalog 3-r2 20181125: A highly configurable replacement for syslogd/klogd
 app-admin/mktwpol 1.0.0: Bash scripts to install tripwire and generate tripwire policy files
 app-admin/mms-agent 3.7.0.212_p1: MongoDB MMS agents
-app-admin/mongo-tools 3.6.8: A high-performance, open source, schema-free document-oriented database
+app-admin/mongo-tools 3.6.8 4.0.10: A high-performance, open source, schema-free document-oriented database
 app-admin/monit 5.25.3: Monitoring and managing daemons or similar programs running on a Unix system
 app-admin/needrestart 3.3: Restart daemons after library updates
 app-admin/newsyslog 1.1-r1: a highly configurable program for managing and archiving log files
@@ -2882,7 +2882,7 @@ dev-lang/mono-basic 4.7-r1: Visual Basic Compiler and Runtime
 dev-lang/mujs 1.0.5: An embeddable Javascript interpreter in C.
 dev-lang/nasm 2.14.02: groovy little assembler
 dev-lang/ocaml 4.04.2-r1: Type-inferring functional programming language descended from the ML family
-dev-lang/orc 0.4.28-r1: The Oil Runtime Compiler, a just-in-time compiler for array operations
+dev-lang/orc 0.4.28-r1 0.4.29: The Oil Runtime Compiler, a just-in-time compiler for array operations
 dev-lang/perl 5.26.2 5.28.2-r1: Larry Wall's Practical Extraction and Report Language
 dev-lang/php 5.6.40-r4 5.6.40-r5 7.1.30 7.1.31 7.2.20 7.2.21 7.3.7-r1 7.3.8: The PHP language runtime engine
 dev-lang/python 2.7.15 3.5.5 3.6.5: An interpreted, interactive, object-oriented programming language
@@ -9861,7 +9861,7 @@ sys-apps/vbetool 1.1: Run real-mode video BIOS code to alter hw state (i.e. rein
 sys-apps/watchdog 5.15: A software watchdog and /dev/watchdog daemon
 sys-apps/which 2.21: Prints out location of specified executables that are in your path
 sys-apps/x86info 1.30: Dave Jones' handy, informative x86 CPU diagnostic utility
-sys-apps/xdg-desktop-portal 1.2.0: Desktop integration portal
+sys-apps/xdg-desktop-portal 1.2.0 1.4.2: Desktop integration portal
 sys-apps/xinetd 2.3.15-r3 2.3.15.3: powerful replacement for inetd
 sys-apps/xmbmon 2.0.5-r1: Mother Board Monitor Program for X Window System
 sys-auth/consolekit 0.4.6 1.1.0-r1 1.1.2 1.2.0 1.2.1: Framework for defining and tracking users, login sessions and seats
