@@ -1,0 +1,80 @@
+https://bugs.gentoo.org/691426
+
+diff --git a/src/dhcp-common.c b/src/dhcp-common.c
+index 08ab9493..9f556557 100644
+--- a/src/dhcp-common.c
++++ b/src/dhcp-common.c
+@@ -645,14 +645,16 @@ print_option(FILE *fp, const char *prefix, const struct dhcp_opt *opt,
+ 	if (fputc('=', fp) == EOF)
+ 		return -1;
+ 	if (dl == 0)
+-		return 1;
++		goto out;
+ 
+ 	if (opt->type & OT_RFC1035) {
+ 		char domain[NS_MAXDNAME];
+ 
+ 		sl = decode_rfc1035(domain, sizeof(domain), data, dl);
+-		if (sl == 0 || sl == -1)
+-			return sl;
++		if (sl == -1)
++			return -1;
++		if (sl == 0)
++			goto out;
+ 		if (valid_domainname(domain, opt->type) == -1)
+ 			return -1;
+ 		return efprintf(fp, "%s", domain);
+@@ -693,9 +695,7 @@ print_option(FILE *fp, const char *prefix, const struct dhcp_opt *opt,
+ 					return -1;
+ 			}
+ 		}
+-		if (fputc('\0', fp) == EOF)
+-			return -1;
+-		return 1;
++		goto out;
+ 	}
+ 
+ 	t = data;
+@@ -760,6 +760,7 @@ print_option(FILE *fp, const char *prefix, const struct dhcp_opt *opt,
+ 		}
+ 	}
+ 
++out:
+ 	if (fputc('\0', fp) == EOF)
+ 		return -1;
+ 	return 1;
+diff --git a/src/script.c b/src/script.c
+index 74aef1b1..3dee7b08 100644
+--- a/src/script.c
++++ b/src/script.c
+@@ -33,6 +33,7 @@
+ #include <netinet/in.h>
+ #include <arpa/inet.h>
+ 
++#include <assert.h>
+ #include <ctype.h>
+ #include <errno.h>
+ #include <signal.h>
+@@ -477,12 +478,21 @@ dumplease:
+ 	fp = NULL;
+ #endif
+ 
++	/* Count the terminated env strings.
++	 * assert that the terminations are correct. */
+ 	nenv = 0;
+ 	endp = buf + buf_pos;
+ 	for (bufp = buf; bufp < endp; bufp++) {
+-		if (*bufp == '\0')
++		if (*bufp == '\0') {
++#ifndef NDEBUG
++			if (bufp + 1 < endp)
++				assert(*(bufp + 1) != '\0');
++#endif
+ 			nenv++;
++		}
+ 	}
++	assert(*--bufp == '\0');
++
+ 	if (ctx->script_envlen < nenv) {
+ 		env = reallocarray(ctx->script_env, nenv + 1, sizeof(*env));
+ 		if (env == NULL)
