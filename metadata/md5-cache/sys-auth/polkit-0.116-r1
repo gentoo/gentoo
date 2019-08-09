@@ -1,0 +1,16 @@
+BDEPEND=acct-user/polkitd app-text/docbook-xml-dtd:4.1.2 app-text/docbook-xsl-stylesheets dev-libs/gobject-introspection-common dev-libs/libxslt dev-util/glib-utils dev-util/gtk-doc-am dev-util/intltool sys-devel/gettext virtual/pkgconfig introspection? ( dev-libs/gobject-introspection ) >=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig
+DEFINED_PHASES=compile configure install postinst prepare
+DEPEND=dev-lang/spidermonkey:60[-debug] dev-libs/glib:2 dev-libs/expat elogind? ( sys-auth/elogind ) pam? ( sys-auth/pambase virtual/pam ) systemd? ( sys-apps/systemd:0=[policykit] )
+DESCRIPTION=Policy framework for controlling privileges for system-wide services
+EAPI=7
+HOMEPAGE=https://www.freedesktop.org/wiki/Software/polkit https://gitlab.freedesktop.org/polkit/polkit
+IUSE=consolekit elogind examples gtk +introspection jit kde nls pam selinux systemd test
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86
+LICENSE=LGPL-2
+PDEPEND=consolekit? ( sys-auth/consolekit[policykit] ) gtk? ( || ( >=gnome-extra/polkit-gnome-0.105 >=lxde-base/lxsession-0.5.2 ) ) kde? ( kde-plasma/polkit-kde-agent )
+RDEPEND=dev-lang/spidermonkey:60[-debug] dev-libs/glib:2 dev-libs/expat elogind? ( sys-auth/elogind ) pam? ( sys-auth/pambase virtual/pam ) systemd? ( sys-apps/systemd:0=[policykit] ) acct-user/polkitd selinux? ( sec-policy/selinux-policykit )
+REQUIRED_USE=^^ ( consolekit elogind systemd )
+SLOT=0
+SRC_URI=https://www.freedesktop.org/software/polkit/releases/polkit-0.116.tar.gz
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	7ba73aee7fe4462b3a745e3645ab92ca	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	pam	756a09f72c4cdbb55f2694c95f1e0860	pax-utils	db85a3c508cf82c45f24b2723791cc93	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56	xdg-utils	14d00d009167652b1fa363e55effe213
+_md5_=ad54b0b33dc65579e895349ed9ded0dc
