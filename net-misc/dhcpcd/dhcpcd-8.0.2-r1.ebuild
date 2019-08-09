@@ -27,6 +27,10 @@ COMMON_DEPEND="udev? ( virtual/udev )"
 DEPEND="${COMMON_DEPEND}"
 RDEPEND="${COMMON_DEPEND}"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-string_termination.patch #691426
+)
+
 src_configure() {
 	local myeconfargs=(
 		--dbdir="${EPREFIX}/var/lib/dhcpcd"
