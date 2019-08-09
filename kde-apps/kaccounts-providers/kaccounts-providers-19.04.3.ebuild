@@ -30,3 +30,5 @@ RDEPEND="${DEPEND}
 	net-libs/signon-ui
 	net-libs/signon-oauth2
 "
+
+PATCHES=( "${FILESDIR}/${P}-missing-header.patch" )
