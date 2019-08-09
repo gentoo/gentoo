@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201908-04">
+  <title>Redis: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Redis, the worst of
+    which may allow execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">redis</product>
+  <announced>2019-08-09</announced>
+  <revised count="1">2019-08-09</revised>
+  <bug>658066</bug>
+  <bug>689700</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-db/redis" auto="yes" arch="*">
+      <unaffected range="ge">4.0.14</unaffected>
+      <vulnerable range="lt">4.0.14</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Redis is an open source (BSD licensed), in-memory data structure store,
+      used as a database, cache and message broker.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Redis. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Please review the referenced CVE identifiers for details.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Redis users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-db/redis-4.0.14"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-11218">CVE-2018-11218</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-11219">CVE-2018-11219</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-10192">CVE-2019-10192</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-10193">CVE-2019-10193</uri>
+  </references>
+  <metadata tag="requester" timestamp="2019-08-03T15:15:24Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2019-08-09T20:41:48Z">b-man</metadata>
+</glsa>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201908-03">
+  <title>JasPer: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in JasPer, the worst of
+    which could result in a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">jasper</product>
+  <announced>2019-08-09</announced>
+  <revised count="1">2019-08-09</revised>
+  <bug>614028</bug>
+  <bug>614032</bug>
+  <bug>624988</bug>
+  <bug>629286</bug>
+  <bug>635552</bug>
+  <bug>662160</bug>
+  <bug>674154</bug>
+  <bug>674214</bug>
+  <access>remote</access>
+  <affected>
+    <package name="media-libs/jasper" auto="yes" arch="*">
+      <unaffected range="ge"></unaffected>
+      <vulnerable range="le">2.0.16</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>JasPer is a software-based implementation of the codec specified in the
+      JPEG-2000 Part-1 standard.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in JasPer. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Please review the referenced CVE identifiers for details.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>JasPer is no longer maintained upstream and contains many
+      vulnerabilities which remain unaddressed. Gentoo users are advised to
+      unmerge this package.
+    </p>
+    
+    <code>
+      # emerge --unmerge media-libs/jasper
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-1000050">
+      CVE-2017-1000050
+    </uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-13745">CVE-2017-13745</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-13746">CVE-2017-13746</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-13747">CVE-2017-13747</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-13748">CVE-2017-13748</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-13749">CVE-2017-13749</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-13750">CVE-2017-13750</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-13751">CVE-2017-13751</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-13752">CVE-2017-13752</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-13753">CVE-2017-13753</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-14132">CVE-2017-14132</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-14229">CVE-2017-14229</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-14232">CVE-2017-14232</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-5503">CVE-2017-5503</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-5504">CVE-2017-5504</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-5505">CVE-2017-5505</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-6851">CVE-2017-6851</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-6852">CVE-2017-6852</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-9782">CVE-2017-9782</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-18873">CVE-2018-18873</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-20584">CVE-2018-20584</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-9055">CVE-2018-9055</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-9154">CVE-2018-9154</uri>
+  </references>
+  <metadata tag="requester" timestamp="2019-08-04T18:37:11Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2019-08-09T20:37:53Z">b-man</metadata>
+</glsa>
