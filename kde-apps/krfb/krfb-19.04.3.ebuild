@@ -36,3 +36,5 @@ DEPEND="
 	x11-libs/xcb-util-image
 "
 RDEPEND="${DEPEND}"
+
+PATCHES=( "${FILESDIR}/${P}-missing-header.patch" )
