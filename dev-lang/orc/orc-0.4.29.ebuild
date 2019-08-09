@@ -22,6 +22,12 @@ DEPEND="${RDEPEND}
 
 DOCS=( README RELEASE )
 
+PATCHES=(
+	# Fixes some tests on various platforms (AMD Phenom, ARM, etc) with more suitable
+	# float comparison - https://gitlab.freedesktop.org/gstreamer/orc/issues/18
+	"${FILESDIR}"/${PV}-test-rounding.patch
+)
+
 src_prepare() {
 	default
 
