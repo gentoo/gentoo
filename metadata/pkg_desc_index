@@ -1036,7 +1036,7 @@ app-misc/geekcode 1.7.3-r1: Geek code generator
 app-misc/geneweb 6.08-r1: Genealogy software program with a Web interface
 app-misc/gentoo 0.20.7: Graphical file manager for Unix-like systems, using GTK+
 app-misc/gentoo-elections 0_p20190710: Gentoo election control data and scripts
-app-misc/geoclue 2.4.13: A geoinformation D-Bus service
+app-misc/geoclue 2.4.13 2.5.3-r2: A location information D-Bus service
 app-misc/glcdprocdriver 0.0.6 0.1.2: A glue between the graphlcd-base library from the GraphLCD project
 app-misc/glimpse 4.18.6-r1: A index/query system to search a large set of files quickly
 app-misc/gnote 3.30.0: Desktop note-taking application
@@ -6510,7 +6510,7 @@ games-puzzle/quadrapassel 3.22.0: Fit falling blocks together
 games-puzzle/swell-foop 3.30.0: Clear the screen by removing groups of colored and shaped tiles
 games-strategy/seven-kingdoms 2.14.7: Seven Kingdoms: Ancient Adversaries
 games-util/qstat 2.11: Server statics collector supporting many FPS games
-games-util/wit 2.40a: command line tools to manipulate Wii/GameCube ISO images and WBFS containers
+games-util/wit 2.40a 3.02a: command line tools to manipulate Wii/GameCube ISO images and WBFS containers
 gnome-base/dconf 0.26.1 0.30.1: Simple low-level configuration system
 gnome-base/dconf-editor 3.30.2: Graphical tool for editing the dconf configuration database
 gnome-base/gconf 3.2.6-r4: GNOME configuration system and daemon
@@ -9007,7 +9007,7 @@ net-misc/x2goclient 4.1.2.1: The X2Go Qt client
 net-misc/x2goserver 4.1.0.2: The X2Go server
 net-misc/you-get 0.4.536: utility to download media contents from the web
 net-misc/youtube-dl 2019.08.02: Download videos from YouTube.com (and more sites...)
-net-misc/youtube-viewer 3.3.3: A command line utility for viewing youtube-videos in Mplayer
+net-misc/youtube-viewer 3.3.3 3.5.4: A command line utility for viewing youtube-videos in Mplayer
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
 net-misc/zsync 0.6.2-r1: Partial/differential file download client over HTTP which uses the rsync algorithm
 net-nds/gssproxy 0.8.2: daemon to proxy GSSAPI context establishment and channel handling
