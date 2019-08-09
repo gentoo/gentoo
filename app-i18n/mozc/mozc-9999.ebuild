@@ -1,4 +1,4 @@
-# Copyright 2010-2019 Arfrever Frehtes Taifersar Arahesis and others
+# Copyright 2010-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
