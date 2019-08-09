@@ -208,7 +208,7 @@ DEPEND="${COMMON_DEPEND}
 	>=dev-libs/libatomic_ops-7.2d
 	dev-perl/Archive-Zip
 	>=dev-util/cppunit-1.14.0
-	>=dev-util/gperf-3
+	>=dev-util/gperf-3.1
 	>=dev-util/mdds-1.4.1:1=
 	media-libs/glm
 	sys-devel/ucpp
