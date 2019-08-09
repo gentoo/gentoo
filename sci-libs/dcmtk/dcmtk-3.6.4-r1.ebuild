@@ -50,6 +50,7 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_SHARED_LIBS=ON
+		-DCMAKE_INSTALL_SYSCONFDIR=/etc
 		-DDCMTK_WITH_ICU=ON
 		-DDCMTK_WITH_TIFF=$(usex tiff)
 		-DDCMTK_WITH_PNG=$(usex png)
