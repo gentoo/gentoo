@@ -33,12 +33,24 @@ RDEPEND="app-i18n/opencc:0=
 	dev-libs/leveldb:0=
 	dev-libs/marisa:0="
 DEPEND="${RDEPEND}
+	dev-libs/darts
+	dev-libs/utfcpp
 	x11-base/xorg-proto
 	test? ( dev-cpp/gtest )"
 
 DOCS=(CHANGELOG.md README.md)
 
+src_prepare() {
+	# Use headers of dev-libs/darts, dev-libs/utfcpp and x11-base/xorg-proto.
+	sed -e "/\${PROJECT_SOURCE_DIR}\/thirdparty/d" -i CMakeLists.txt || die
+	rm -r thirdparty || die
+
+	cmake-utils_src_prepare
+}
+
 src_configure() {
+	local -x CXXFLAGS="${CXXFLAGS} -I/usr/include/utf8cpp"
+
 	local mycmakeargs=(
 		-DBOOST_USE_CXX11=ON
 		-DBUILD_TEST=$(usex test ON OFF)
