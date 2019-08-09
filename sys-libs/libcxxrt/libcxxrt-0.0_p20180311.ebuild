@@ -10,7 +10,7 @@ EGIT_REPO_URI="https://github.com/pathscale/libcxxrt.git"
 inherit flag-o-matic toolchain-funcs portability ${SCM} multilib-minimal
 
 DESCRIPTION="C++ Runtime from PathScale, FreeBSD and NetBSD"
-HOMEPAGE="https://github.com/pathscale/libcxxrt http://www.pathscale.com/node/265"
+HOMEPAGE="https://github.com/pathscale/libcxxrt"
 if [ "${PV%9999}" = "${PV}" ] ; then
 	SRC_URI="mirror://gentoo/${P}.tar.xz"
 	DEPEND="app-arch/xz-utils"
