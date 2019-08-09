@@ -9,7 +9,7 @@ if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/pirko/${PN}.git"
 	inherit git-r3
 else
-	SRC_URI="https://github.com/jpirko/libteam/archive/v${PV}.tar.gz"
+	SRC_URI="https://github.com/jpirko/libteam/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 fi
 
