@@ -1,4 +1,4 @@
-#wayidle-1.3.ebuild 2019-07-09 14:35:07.685881181 -0500Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
