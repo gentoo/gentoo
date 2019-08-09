@@ -9,7 +9,7 @@ DESCRIPTION="Rime Input Method Engine, the core library"
 HOMEPAGE="https://rime.im/ https://github.com/rime/librime"
 SRC_URI="https://github.com/rime/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="GPL-3"
+LICENSE="BSD"
 SLOT="0/1"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 IUSE="test"
