@@ -22,6 +22,7 @@ RDEPEND="
 	zlib? ( sys-libs/zlib:0= )
 "
 DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 DOCS="doc/*.txt"
 
