@@ -81,6 +81,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-kdehig.patch"
 	"${FILESDIR}/${P}-singlefile-torrent.patch"
 	"${FILESDIR}/${P}-kcrash.patch"
+	"${FILESDIR}/${P}-missing-header.patch"
 )
 
 src_configure() {
