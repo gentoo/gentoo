@@ -2950,7 +2950,7 @@ dev-libs/dotconf 1.3-r1: dot.conf configuration file parser
 dev-libs/double-conversion 3.1.4-r1: Binary-decimal and decimal-binary conversion routines for IEEE doubles
 dev-libs/eb 4.4.1-r1: EB is a C library and utilities for accessing CD-ROM books
 dev-libs/efl 1.21.1-r3: Enlightenment Foundation Libraries all-in-one package
-dev-libs/elfutils 0.170-r1 0.173-r1 0.176-r1: Libraries/utilities to handle ELF objects (drop in replacement for libelf)
+dev-libs/elfutils 0.176-r1: Libraries/utilities to handle ELF objects (drop in replacement for libelf)
 dev-libs/ell 0.9: Embedded Linux Library provides core, low-level functionality for system daemons
 dev-libs/eventlog 0.2.12: Support library for syslog-ng
 dev-libs/expat 2.2.6 2.2.7: Stream-oriented XML parser library
@@ -9991,7 +9991,7 @@ sys-devel/automake 1.9.6-r5 1.10.3-r3 1.11.6-r3 1.12.6-r2 1.13.4-r2 1.14.1-r2 1.
 sys-devel/automake-wrapper 10 11: wrapper for automake to manage multiple automake versions
 sys-devel/bc 1.06.95-r2: Handy console-based calculator utility
 sys-devel/bin86 0.16.20-r2 0.16.21: Assembler and loader used to create kernel bootsector
-sys-devel/binutils 2.31.1-r6 2.32-r1: Tools necessary to build programs
+sys-devel/binutils 2.32-r1: Tools necessary to build programs
 sys-devel/binutils-config 5-r4: Utility to change the binutils version being used
 sys-devel/bison 3.1: A general-purpose (yacc-compatible) parser generator
 sys-devel/boost-m4 0.4_p20160328: Another set of autoconf macros for compiling against boost
@@ -10004,7 +10004,7 @@ sys-devel/distcc 3.3.2-r5: Distribute compilation of C code across several machi
 sys-devel/flex 2.6.1 2.6.4-r1: The Fast Lexical Analyzer
 sys-devel/gcc 6.4.0-r1 7.3.0-r3 8.2.0-r6 8.3.0-r1: The GNU Compiler Collection
 sys-devel/gcc-config 1.8-r1 2.0: Utility to manage compilers
-sys-devel/gdb 7.10.1 7.12.1 8.1-r1 8.3: GNU debugger
+sys-devel/gdb 8.3: GNU debugger
 sys-devel/gettext 0.19.8.1: GNU locale utilities
 sys-devel/gnuconfig 20161104 20170101: Updated config.sub and config.guess file from GNU
 sys-devel/libtool 2.4.6-r3: A shared library tool for developers
@@ -10134,7 +10134,7 @@ sys-kernel/gentoo-sources 4.14.132 4.19.57: Full sources including the Gentoo pa
 sys-kernel/linux-headers 3.18 4.4 4.13 4.14-r1 4.19: Linux system headers
 sys-kernel/spl 0.6.5.11 0.7.13: The Solaris Porting Layer provides many of the Solaris kernel APIs
 sys-libs/argp-standalone 1.3-r2: Standalone argp library for use with uclibc
-sys-libs/binutils-libs 2.31.1-r6 2.32-r1: Core binutils libraries (libbfd, libopcodes, libiberty) for external packages
+sys-libs/binutils-libs 2.32-r1: Core binutils libraries (libbfd, libopcodes, libiberty) for external packages
 sys-libs/compiler-rt 5.0.2 6.0.1 7.1.0: Compiler runtime library for clang (built-in part)
 sys-libs/compiler-rt-sanitizers 5.0.2 6.0.1 7.1.0: Compiler runtime libraries for clang (sanitizers & xray)
 sys-libs/cracklib 2.9.6-r2: Password Checking Library
