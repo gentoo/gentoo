@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+    <maintainer type="person">
+        <email>bernardo@standard.ai</email>
+        <name>Bernardo Meurer</name>
+    </maintainer>
+    <maintainer type="person">
+        <email>bman@gentoo.org</email>
+        <name>Aaron Bauman</name>
+    </maintainer>
+    <longdescription lang="en">
+        Select a region in a Wayland compositor and print it to the standard output.
+    </longdescription>
+    <use>
+        <flag name="man">Generate and install man pages.</flag>
+    </use>
+    <upstream>
+        <remote-id type="github">emersion/slurp</remote-id>
+        <bugs-to>https://github.com/emersion/slurp/issues</bugs-to>
+        <changelog>https://github.com/emersion/slurp/releases</changelog>
+    </upstream>
+</pkgmetadata>
