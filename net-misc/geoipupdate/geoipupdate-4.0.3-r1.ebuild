@@ -32,6 +32,9 @@ src_compile() {
 	# the horror, the horror ... but it's all automagic
 	export GO111MODULE=on
 	export GOFLAGS=-mod=vendor
+	export CONFFILE=/etc/GeoIP.conf
+	export DATADIR=/usr/share/GeoIP
+	export VERSION=${PV}
 	default
 }
 
