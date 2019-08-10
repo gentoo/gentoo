@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install prepare
+DEPEND=bzip2? ( app-arch/bzip2 ) natspec? ( dev-libs/libnatspec )
+DESCRIPTION=unzipper for pkzip-compressed files
+EAPI=7
+HOMEPAGE=http://www.info-zip.org/
+IUSE=bzip2 natspec unicode
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-linux
+LICENSE=Info-ZIP
+RDEPEND=bzip2? ( app-arch/bzip2 ) natspec? ( dev-libs/libnatspec )
+SLOT=0
+SRC_URI=mirror://sourceforge/infozip/unzip60.tar.gz mirror://debian/pool/main/u/unzip/unzip_6.0-25.debian.tar.xz
+_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	7ba73aee7fe4462b3a745e3645ab92ca	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
+_md5_=1dcfa98eb07424bd7463d64a150bee42
