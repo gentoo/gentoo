@@ -3,6 +3,6 @@
 <pkgmetadata>
 	<!-- maintainer-needed -->
 	<upstream>
-		<remote-id type="freshmeat">sxid</remote-id>
+		<remote-id type="github">taem/sxid</remote-id>
 	</upstream>
 </pkgmetadata>
