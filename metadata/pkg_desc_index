@@ -257,7 +257,7 @@ app-arch/pxz 5.0_pre20151029: Parallel implementation of the XZ compression util
 app-arch/rpm 4.14.1: Red Hat Package Management Utils
 app-arch/rpm2targz 9.0.0.5g: Convert a .rpm file to a .tar.gz archive
 app-arch/rzip 2.1-r3: Compression program for large files
-app-arch/sharutils 4.14-r1 4.15.2-r1: Tools to deal with shar archives
+app-arch/sharutils 4.15.2-r1: Tools to deal with shar archives
 app-arch/snappy 1.1.7: A high-speed compression/decompression library by Google
 app-arch/tar 1.32: Use this to make tarballs :)
 app-arch/tarsync 0.2.1-r1: Delta compression suite for using/generating binary patches
