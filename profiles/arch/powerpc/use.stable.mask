@@ -21,7 +21,6 @@ dia
 eds
 epiphany
 evo
-gdm
 gnome-online-accounts
 gnome-shell
 gnumeric
