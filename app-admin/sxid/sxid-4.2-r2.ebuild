@@ -5,8 +5,8 @@ EAPI=6
 
 inherit autotools
 
-DESCRIPTION="suid, sgid file and directory checking https://github.com/taem/sxid"
-HOMEPAGE="http://linukz.org/sxid.shtml"
+DESCRIPTION="suid, sgid file and directory checking"
+HOMEPAGE="http://linukz.org/sxid.shtml https://github.com/taem/sxid"
 SRC_URI="http://linukz.org/download/${P}.tar.gz"
 
 LICENSE="GPL-2"
