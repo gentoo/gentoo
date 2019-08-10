@@ -1,5 +1,15 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Benda Xu <heroxbd@gentoo.org> (2019-08-20)
+# avoid gnome-extra/gnome-user-share, which depends on systemd.
+gnome-base/gnome-extra-apps share
+
+# Benda Xu <heroxbd@gentoo.org> (2019-08-20)
+# avoid sys-apps/systemd
+net-analyzer/wireshark sdjournal
+sys-apps/dbus-broker launcher
+www-servers/uwsgi uwsgi_plugins_systemd_logger
 
 # Benda Xu <heroxbd@gentoo.org> (2016-07-28)
 # Needs root privilege.
