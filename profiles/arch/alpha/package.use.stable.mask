@@ -26,12 +26,6 @@ media-sound/easytag nautilus
 # stable (yet?), bug #663248
 app-editors/emacs mailutils xwidgets
 
-# Tobias Klausmann <klausman@gentoo.org> (2015-09-17)
-# Move this mask here (from package.use.mask) until net-fs/libnfs goes stable.
-# Gilles Dartiguelongue <eva@gentoo.org> (2015-06-09)
-# net-fs/libnfs lacks alpha keyword, bug #551576
-gnome-base/gvfs nfs
-
 # Pacho Ramos <pacho@gentoo.org> (2014-07-02)
 # Mask due Gnome3 not going to be stabilized on this arch
 dev-util/geany-plugins gtkspell
