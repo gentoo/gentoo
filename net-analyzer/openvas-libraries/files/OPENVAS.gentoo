@@ -8,24 +8,11 @@ For details, please see the example config file installed to:
 Please configure /etc/openvas/openvassd.conf properly
 according to redis listening unix socket.
 e.g. /etc/openvas/openvassd.conf --> kb_location = /tmp/redis.sock
-If you use first-start script it will check various issues and
-automatically setup OpenVAS for first time use.
 GSA(Greenbone Security Agent) WebUI listens port
 9392(local) default. If you want to use nginx reverse proxy
 to reach WebUI please see the example config file
 --> /etc/openvas/gsa.nginx.reverse.proxy.example
 otherwise you can change port to 443 or 80.
-
------------------------------------------------------------------
----------------------------SCRIPTS-------------------------------
------------------------------------------------------------------
-'first-start'                  
---> Automatically setup OpenVAS for first time use
---> Installed in /etc/openvas/scripts
-
-'openvas-feed-sync'
---> Updates Feeds | You can add this to cron
---> Installed in /etc/openvas/scripts
 
 -----------------------------------------------------------------
 ----------ENVIRONMENT SETTINGS FOR SYSTEMD & OPEN-RC-------------
@@ -55,7 +42,7 @@ otherwise you can change port to 443 or 80.
 --> Installed in /etc/config.d
 
 -----------------------------------------------------------------
---------QUICK START COMMANDS (IF YOU DON'T USE SCRIPTS)----------
+------------------QUICK START COMMANDS---------------------------
 -----------------------------------------------------------------
 'env-update && source /etc/profile'
 --> Update PATHS

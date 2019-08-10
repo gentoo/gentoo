@@ -3,7 +3,7 @@
 # Daemon ignore HUP so we use 'copytruncate' instead of 'create' 
 # with safe file size to prevent losing log entries.
 
-/var/log/gvm/openvassd.log {
+/var/log/gvm/gvmd.log {
 	compress
 	missingok
 	notifempty
