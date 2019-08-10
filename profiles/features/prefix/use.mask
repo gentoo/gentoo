@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # prefix USE flag should always be unmasked in prefix profiles
@@ -8,12 +8,7 @@
 -userland_GNU
 
 # USE flags inherited by the base/use.defaults file that shouldn't be in Prefix
-cups
 gpm
 
-# USE=pam just does not make sense in Gentoo Prefix. Should be using the host
-# auth system.
-pam
-
-# USE=udev just does not make sense in Gentoo Prefix. bug 293480
-udev
+# need to invade pid 1, which is not possible for Prefix.
+systemd
