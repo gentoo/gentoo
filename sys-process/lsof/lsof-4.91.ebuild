@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,7 +7,7 @@ inherit flag-o-matic toolchain-funcs
 
 MY_P="${P/-/_}"
 DESCRIPTION="Lists open files for running Unix processes"
-HOMEPAGE="ftp://lsof.itap.purdue.edu/pub/tools/unix/lsof/"
+HOMEPAGE="https://github.com/lsof-org/lsof"
 SRC_URI="ftp://lsof.itap.purdue.edu/pub/tools/unix/lsof/${MY_P}.tar.bz2
 	ftp://lsof.itap.purdue.edu/pub/tools/unix/lsof/OLD/${MY_P}.tar.bz2
 	http://www.mirrorservice.org/sites/lsof.itap.purdue.edu/pub/tools/unix/lsof/${MY_P}.tar.bz2"
