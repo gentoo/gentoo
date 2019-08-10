@@ -25,11 +25,12 @@ fi
 LICENSE="MIT CC-BY-SA-3.0"
 SLOT="0"
 
-IUSE="colord +desktop +drm editor examples fbdev fullscreen +gles2 headless ivi jpeg +launch lcms rdp remoting +resize-optimization screen-sharing static-libs +suid systemd test wayland-compositor webp +X xwayland"
+IUSE="colord +desktop +drm editor examples fbdev fullscreen +gles2 headless ivi jpeg +launch lcms pipewire rdp remoting +resize-optimization screen-sharing static-libs +suid systemd test wayland-compositor webp +X xwayland"
 
 REQUIRED_USE="
 	colord? ( lcms )
 	drm? ( gles2 )
+	pipewire? ( drm )
 	screen-sharing? ( rdp )
 	test? ( desktop headless xwayland )
 	wayland-compositor? ( gles2 )
@@ -39,7 +40,7 @@ REQUIRED_USE="
 RDEPEND="
 	>=dev-libs/libinput-0.8.0
 	>=dev-libs/wayland-1.17.0
-	>=dev-libs/wayland-protocols-1.17
+	>=dev-libs/wayland-protocols-1.18
 	lcms? ( media-libs/lcms:2 )
 	media-libs/libpng:0=
 	webp? ( media-libs/libwebp:0= )
@@ -63,6 +64,7 @@ RDEPEND="
 	gles2? (
 		media-libs/mesa[gles2,wayland]
 	)
+	pipewire? ( >=media-video/pipewire-0.2 )
 	rdp? ( >=net-misc/freerdp-2.0.0_rc2:= )
 	remoting? (
 		media-libs/gstreamer:1.0
@@ -106,6 +108,7 @@ src_configure() {
 		$(meson_use xwayland)
 		$(meson_use systemd)
 		$(meson_use remoting)
+		$(meson_use pipewire)
 		$(meson_use desktop shell-desktop)
 		$(meson_use fullscreen shell-fullscreen)
 		$(meson_use ivi shell-ivi)
