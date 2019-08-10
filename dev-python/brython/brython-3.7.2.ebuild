@@ -12,7 +12,7 @@ HOMEPAGE="http://www.brython.info"
 SRC_URI="https://github.com/${PN}-dev/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ppc ppc64 x86"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
