@@ -1,0 +1,9 @@
+# owner of amuled process (must be existing)
+AMULEUSER="amule"
+
+# home directory for amuled (must be existing)
+AMULEHOME="/var/lib/amule"
+
+# log file (/dev/null for nowhere)
+LOG=/var/log/amuled.log
+
