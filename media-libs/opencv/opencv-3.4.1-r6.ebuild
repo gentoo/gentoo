@@ -236,6 +236,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-fix-build-with-va.patch" # bug https://bugs.gentoo.org/656576
 	"${FILESDIR}/${P}-popcnt.patch" # https://bugs.gentoo.org/633900
 	"${FILESDIR}/${P}-fix-on-x86.patch" # https://bugs.gentoo.org/682104
+	"${FILESDIR}/${P}-python37.patch" # https://bugs.gentoo.org/691480
 )
 
 pkg_pretend() {

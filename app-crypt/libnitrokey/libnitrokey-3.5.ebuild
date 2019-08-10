@@ -32,6 +32,8 @@ DEPEND="
 	test? ( >=dev-cpp/catch-2.5.0:0 )"
 BDEPEND="virtual/pkgconfig"
 
+PATCHES=( "${FILESDIR}"/${PN}-3.5-tests-version-gitless.patch )
+
 src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_INSTALL_UDEVRULESDIR="$(get_udevdir)"/rules.d
