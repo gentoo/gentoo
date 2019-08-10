@@ -50,6 +50,7 @@ x11-libs/gdk-pixbuf jpeg2k
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-07-07)
 # media-video/pipewire is masked for now
+dev-libs/weston pipewire
 sys-apps/xdg-desktop-portal screencast
 kde-plasma/xdg-desktop-portal-kde screencast
 
