@@ -16,6 +16,8 @@ KEYWORDS="amd64 ppc ppc64 x86"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
+RDEPEND="${PYTHON_DEPS}"
+
 need_httpd_cgi
 
 pkg_setup() {
