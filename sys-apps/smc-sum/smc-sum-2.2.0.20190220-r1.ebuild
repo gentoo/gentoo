@@ -13,9 +13,10 @@ SRC_URI="${MY_PN}_${MY_PV}_Linux_x86_64_${MY_DATE}.tar.gz"
 
 LICENSE="supermicro"
 SLOT="0"
-KEYWORDS="-* ~amd64 ~x86"
+KEYWORDS="-* ~amd64"
+IUSE="module"
 
-RDEPEND="sys-apps/smc-sum-driver"
+RDEPEND="module? ( sys-apps/smc-sum-driver )"
 
 RESTRICT="bindist fetch mirror"
 

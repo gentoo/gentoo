@@ -10,6 +10,7 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<upstream>
+		<bugs-to>https://github.com/fish-face/quasselgrep/issues</bugs-to>
 		<doc>https://github.com/fish-face/quasselgrep/blob/master/README.md</doc>
 	</upstream>
 </pkgmetadata>
