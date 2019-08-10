@@ -134,7 +134,7 @@ app-admin/keepass 2.42.1: A free, open source, light-weight and easy-to-use pass
 app-admin/keepassxc 2.3.4-r1: KeePassXC - KeePass Cross-platform Community Edition
 app-admin/killproc 2.13-r1: killproc and assorted tools for boot scripts
 app-admin/lastpass-cli 1.3.1-r1: Interfaces with LastPass.com from the command line.
-app-admin/lib_users 0.11-r1 0.13: Check for mapped libs and open files that are marked as deleted
+app-admin/lib_users 0.13: Check for mapped libs and open files that are marked as deleted
 app-admin/logcheck 1.3.18-r1: Mails anomalies in the system logfiles to the administrator
 app-admin/logmon 0.4.4-r1: Split-screen terminal/ncurses based log viewer
 app-admin/logrotate 3.9.1 3.13.0 3.14.0: Rotates, compresses, and mails system logs
@@ -1457,7 +1457,7 @@ app-text/pdfshuffler 0.6.0-r1: GUI app that can merge or split pdfs and rotate, 
 app-text/pdftk 3.0.0: gcj-free version of pdftk written in Java
 app-text/pelican 3.7.1: A tool to generate a static blog, with restructured text or markdown input files
 app-text/pep 2.8-r2: General purpose filter and file cleaning program
-app-text/pinfo 0.6.10-r5: Hypertext info and man viewer based on (n)curses
+app-text/pinfo 0.6.10-r5 0.6.13: Hypertext info and man viewer based on (n)curses
 app-text/po4a 0.47-r1: Tools for helping translation of documentation
 app-text/podofo 0.9.6_pre20170508-r1 0.9.6_p20180715: PoDoFo is a C++ library to work with the PDF file format
 app-text/poppler 0.77.0: PDF rendering library based on the xpdf-3.0 code base
