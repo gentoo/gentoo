@@ -9,7 +9,7 @@ KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 ~riscv s390 sh sp
 IUSE="kernel_linux prefix"
 
 RDEPEND="
-	prefix? ( >=sys-apps/baselayout-prefix-2.2 )
+	prefix-guest? ( >=sys-apps/baselayout-prefix-2.2 )
 	!prefix? (
 		|| (
 		sys-apps/openrc
