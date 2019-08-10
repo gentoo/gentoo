@@ -1,0 +1,16 @@
+diff --git a/setup.py b/setup.py
+index e7c6ba93..4a27fb69 100755
+--- a/setup.py
++++ b/setup.py
+@@ -708,9 +708,9 @@ def create_linux_bundle_gunk(ddir, libdir_name):
+         run_tool(['make', 'docs'])
+     copy_man_pages(ddir)
+     copy_html_docs(ddir)
+-    icdir = os.path.join(ddir, 'share', 'icons', 'hicolor', '256x256', 'apps')
++    icdir = os.path.join(ddir, 'share', 'icons', 'hicolor', 'scalable', 'apps')
+     safe_makedirs(icdir)
+-    shutil.copy2('logo/kitty.png', icdir)
++    shutil.copy2('logo/kitty.svg', icdir)
+     deskdir = os.path.join(ddir, 'share', 'applications')
+     safe_makedirs(deskdir)
+     with open(os.path.join(deskdir, 'kitty.desktop'), 'w') as f:
