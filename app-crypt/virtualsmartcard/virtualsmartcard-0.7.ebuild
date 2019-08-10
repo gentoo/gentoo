@@ -14,8 +14,9 @@ LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
+REQUIRED_USE=${PYTHON_REQUIRED_USE}
 
-RDEPEND="
+RDEPEND="${PYTHON_DEPS}
 	media-gfx/qrencode:=
 	sys-apps/pcsc-lite"
 DEPEND="${RDEPEND}"
