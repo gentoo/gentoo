@@ -17,10 +17,6 @@
 
 #--- END OF EXAMPLES ---
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2019-06-09)
-# media-libs/dav1d is not stable yet
-~media-video/vlc-3.0.6 dav1d
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-02-16)
 # app-text/libwpd and app-text/libwpg are not stable
 media-gfx/inkscape cdr visio wpg

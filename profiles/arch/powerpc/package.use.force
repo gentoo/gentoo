@@ -15,10 +15,3 @@ dev-lang/rust llvm_targets_PowerPC
 dev-ml/llvm-ocaml llvm_targets_PowerPC
 sys-devel/clang llvm_targets_PowerPC
 sys-devel/llvm llvm_targets_PowerPC
-
-# Kacper Kowalik <xarthisius@gentoo.org> (2011-01-16)
-# bug 303931
-# sci-chemistry/arp-warp-bin is not available for ppc
-# sci-chemistry/solve-resolve-bin is not available for ppc
-# sci-chemistry/cns is not available for ppc
-sci-libs/cctbx minimal
