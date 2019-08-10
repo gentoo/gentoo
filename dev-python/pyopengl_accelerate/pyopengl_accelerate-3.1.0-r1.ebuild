@@ -21,4 +21,9 @@ RDEPEND="dev-python/pyopengl[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]"
 
-S=${WORKDIR}/${MY_P}
+S="${WORKDIR}/${MY_P}"
+
+src_prepare() {
+	sed -e 's:>exc_:>curexc_:g' -i src/*.c || die "sed failed" # bug 691520
+	default
+}
