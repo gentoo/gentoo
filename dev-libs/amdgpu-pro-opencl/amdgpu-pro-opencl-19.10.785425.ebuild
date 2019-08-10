@@ -76,10 +76,7 @@ multilib_src_install() {
 	doins "${T}/${SUPER_PN}-${ABI}.icd"
 }
 
-# FIXME: is this right?
 multilib_src_install_all() {
-	ewarn "FOO $PWD"
-	ewarn `ls`
 	insinto "/opt/amdgpu"
 	doins -r opt/amdgpu/share
 }
