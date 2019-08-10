@@ -384,8 +384,9 @@ mate-base/mate bluetooth
 # Ulrich Müller <ulm@gentoo.org> (2016-10-15)
 # The --with-cairo option is considered as experimental by upstream
 # and causes problems with updating the X window, bug #592238
-app-editors/emacs cairo
-app-editors/emacs-vcs cairo
+app-editors/emacs:25 cairo
+app-editors/emacs:26 cairo
+app-editors/emacs-vcs:26 cairo
 
 # Michał Górny <mgorny@gentoo.org> (2016-07-05)
 # Mask system-clang support as it requires llvm-3.4 that is subject
