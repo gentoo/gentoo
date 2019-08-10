@@ -153,10 +153,6 @@ sys-block/gparted kde
 virtual/notification-daemon kde
 x11-wm/sawfish kde
 
-# Justin Lecher <jlec@gentoo.org> (2016-02-22)
-# Missing test deps keyword #575366
-dev-cpp/eigen test
-
 # Pacho Ramos <pacho@gentoo.org> (2015-11-15)
 # Missing keywords
 media-sound/rhythmbox upnp-av
@@ -177,10 +173,6 @@ x11-base/xorg-drivers video_cards_amdgpu
 # Missing keywords
 net-dns/unbound dnstap
 
-# Markos Chandras <hwoarang@gentoo.org> (2015-04-18)
-# samba-4 not keyworded on ppc/ppc64
-sys-auth/sssd samba
-
 # Mike Frysinger <vapier@gentoo.org> (2015-03-16)
 # Needs sci-physics/bullet & media-libs/libsdl2 tested #499974
 dev-libs/efl physics sdl
@@ -188,14 +180,6 @@ dev-libs/efl physics sdl
 # Andreas K. Huettel <dilfridge@gentoo.org> (2015-02-15)
 # There's no keyworded office implementation anymore.
 gnome-extra/sushi office
-
-# Alexis Ballier <aballier@gentoo.org> (2015-02-11)
-# Missing ffmpeg deps, bug #510340
-media-video/ffmpeg x265
-
-# Patrick Lauer <patrick@gentoo.org> (2015-02-10)
-# Missing keywords for media-libs/x265
-media-video/libav x265
 
 # Markos Chandras <hwoarang@gentoo.org> (2015-02-07)
 # app-admin/cgmanager misses PPC/PPC64 keywords. Bug #539208

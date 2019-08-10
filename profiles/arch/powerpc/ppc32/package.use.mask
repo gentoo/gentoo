@@ -64,11 +64,6 @@ app-text/texlive pdfannotextractor
 dev-lang/logtalk fop
 gnome-extra/libgda reports
 
-# Anthony G. Basile <blueness@gentoo.org> (2015-10-26)
-# Mask x265 on vlc for bug #564138
-# media-libs/dav1d is not yet keyworded
-media-video/vlc dav1d x265
-
 # Ben de Groot <yngwin@gentoo.org> (2015-07-20)
 # missing keyword
 media-sound/audacity midi soundtouch
