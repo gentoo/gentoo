@@ -80,12 +80,8 @@ pkg_postinst() {
 	done
 
 	if [[ ${doshow} == true ]] ; then
-		elog "This is a pre-release of the next version of Portage Utils"
-		elog "which has undergone significant changes.  Please read the"
-		elog "manpages for applets like qlop(1) where argument options have"
-		elog "changed."
-		elog "There will likely be changes to come before 0.80, and bugs are"
-		elog "possible.  Please report the latter, and request the former if"
-		elog "applicable."
+		elog "This version of Portage utils has undergone significant changes."
+		elog "Please read the elog manpages for applets like qlop(1) and"
+		elog "qfile(1) where argument options have changed."
 	fi
 }
