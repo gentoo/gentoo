@@ -180,24 +180,6 @@ dev-perl/libvorbis-perl
 # #635552, #662160, #674154, #674214, #684826, #689784
 media-libs/jasper
 
-# Matt Turner <mattst88@gentoo.org> (2019-07-10)
-# sci-chemistry/coot and its dependencies.
-# Unmaintained. Still depends on guile-1.8.
-# Masked for removal in 30 days, bug #639760.
-dev-scheme/guile-gui
-dev-scheme/guile-www
-dev-scheme/net-http
-sci-chemistry/coot
-sci-chemistry/reduce
-sci-libs/cctbx
-sci-libs/clipper
-sci-libs/coot-data
-sci-libs/gpp4
-sci-libs/libccp4
-sci-libs/mmdb
-sci-libs/monomer-db
-sci-libs/ssm
-
 # Kent Fredric <kentnl@gentoo.org> (2019-07-10)
 # Dead upstream, no remaining revdeps.
 # Masked for removal after 2019-08-09, bug #631300
