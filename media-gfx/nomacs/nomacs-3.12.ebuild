@@ -45,6 +45,7 @@ BDEPEND="
 S="${WORKDIR}/${P}/ImageLounge"
 
 DOCS=( src/changelog.txt )
+PATCHES=( "${FILESDIR}/${P}-gcc9.patch" )
 
 src_configure() {
 	local mycmakeargs=(
