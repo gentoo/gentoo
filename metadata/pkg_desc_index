@@ -1206,7 +1206,7 @@ app-office/libreoffice 6.1.5.2 6.2.5.2: A full office productivity suite
 app-office/libreoffice-bin 6.2.5.2: A full office productivity suite. Binary package
 app-office/libreoffice-bin-debug 6.2.5.2: LibreOffice, a full office productivity suite. Binary package, debug info
 app-office/libreoffice-l10n 6.1.5.2 6.2.5.2: Translations for the Libreoffice suite
-app-office/lyx 2.3.0 2.3.3: WYSIWYM frontend for LaTeX, DocBook, etc.
+app-office/lyx 2.3.3: WYSIWYM frontend for LaTeX, DocBook, etc.
 app-office/mdbtools 0.7.1-r2: Set of libraries and utilities for reading Microsoft Access database (MDB) files
 app-office/moneyguru 2.13.1-r1: Future-aware personal finances management
 app-office/ooextras 20060909: OOExtras: Extra Templates for OpenOffice.org!
