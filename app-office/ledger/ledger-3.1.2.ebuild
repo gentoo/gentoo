@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit check-reqs cmake-utils elisp-common python-single-r1
+inherit check-reqs cmake-utils python-single-r1
 
 DESCRIPTION="A double-entry accounting system with a command-line reporting interface"
 HOMEPAGE="https://www.ledger-cli.org/"
@@ -17,15 +17,12 @@ IUSE="debug doc emacs python"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 RESTRICT="test"
 
-SITEFILE=50${PN}-gentoo.el
-
 CHECKREQS_MEMORY=8G
 
 RDEPEND="
 	dev-libs/boost:=[python?]
 	dev-libs/gmp:0=
 	dev-libs/mpfr:0=
-	emacs? ( virtual/emacs )
 	python? (
 		dev-libs/boost:=[${PYTHON_USEDEP}]
 		dev-python/cheetah
@@ -41,8 +38,6 @@ DEPEND="
 		dev-texlive/texlive-fontsrecommended
 	)
 "
-
-PATCHES=()
 
 # Building with python integration seems to fail without 8G available
 # RAM(!)  Since the memory check in check-reqs doesn't count swap, it
@@ -82,8 +77,6 @@ src_prepare() {
 		|| die "Failed to update info file name in file contents"
 
 	mv doc/ledger{3,}.texi || die "Failed to rename info file name"
-
-	eapply_user
 }
 
 src_configure() {
@@ -108,21 +101,14 @@ src_compile() {
 
 src_install() {
 	cmake-utils_src_install
-
-	use emacs && elisp-site-file-install "${FILESDIR}/${SITEFILE}"
 }
 
 pkg_postinst() {
-	use emacs && elisp-site-regen
-
-	einfo
-	einfo "Since version 3, vim support is released separately."
-	einfo "See https://github.com/ledger/vim-ledger"
-	einfo
-}
-
-pkg_postrm() {
-	use emacs && elisp-site-regen
+	elog
+	elog "Since version 3, vim support is released separately."
+	elog "See https://github.com/ledger/vim-ledger"
+	elog
+	elog "For Emacs mode, emerge app-emacs/ledger-mode"
 }
 
 # rainy day TODO:
