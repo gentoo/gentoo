@@ -14,6 +14,8 @@ LICENSE="MIT"
 
 KEYWORDS="~amd64 ~x86"
 
+RDEPEND="!net-libs/librouteros"
+
 src_prepare() {
 	default
 	eautoreconf
