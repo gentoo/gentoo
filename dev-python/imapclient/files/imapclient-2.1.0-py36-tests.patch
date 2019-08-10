@@ -1,0 +1,28 @@
+From 26fb9c9794ad0b2541320d71d5704fce5642a53c Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Sat, 10 Aug 2019 09:15:37 +0200
+Subject: [PATCH] test_imapclient: Fix LoggerAdapter version check
+
+The LoggerAdapter behavior change has been backported into Python 3.6.4.
+Update the check to expect logger.log() call in 3.6.4+ rather than 3.7+.
+
+Fixes #383.
+---
+ tests/test_imapclient.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/tests/test_imapclient.py b/tests/test_imapclient.py
+index 91ccfa9..0f12823 100644
+--- a/tests/test_imapclient.py
++++ b/tests/test_imapclient.py
+@@ -604,8 +604,8 @@ def test_redacted_password(self):
+         adapter = IMAPlibLoggerAdapter(logger_mock, dict())
+         if six.PY3:
+             adapter.info("""> b'ICHH1 LOGIN foo@bar.org "secret"'""")
+-            if sys.version_info >= (3, 7):
+-                # LoggerAdapter in Python 3.7+ calls logger.log()
++            if sys.version_info >= (3, 6, 4):
++                # LoggerAdapter in Python 3.6.4+ calls logger.log()
+                 logger_mock.log.assert_called_once_with(
+                     logging.INFO,
+                     "> b'ICHH1 LOGIN **REDACTED**",
