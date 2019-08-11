@@ -103,9 +103,9 @@ pkg_postinst() {
 		elog "This version of ${PN} requires a kernel with autofs4 supporting"
 		elog "protocol version 5.00. Patches for kernels older than 2.6.30 have"
 		elog "been installed into"
-		elog "${EROOT}usr/share/doc/${P}/patches."
+		elog "${EROOT}/usr/share/doc/${P}/patches."
 		elog "For further instructions how to patch the kernel, please refer to"
-		elog "${EROOT}usr/share/doc/${P}/INSTALL."
+		elog "${EROOT}/usr/share/doc/${P}/INSTALL."
 		elog
 	fi
 	elog "If you plan on using autofs for automounting remote NFS mounts,"
