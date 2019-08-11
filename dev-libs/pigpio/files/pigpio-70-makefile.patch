@@ -1,0 +1,98 @@
+--- a/Makefile	2019-08-10 10:10:22.834043361 +0200
++++ b/Makefile	2019-08-10 10:43:15.797503591 +0200
+@@ -9,6 +9,9 @@
+ STRIP        = $(CROSS_PREFIX)strip
+ SHLIB        = $(CC) -shared
+ STRIPLIB     = $(STRIP) --strip-unneeded
++LDCONFIG     = ldconfig
++PYTHON2      = $(shell type -P python2 || echo ':' 2> /dev/null)
++PYTHON3      = $(shell type -P python3 || echo ':' 2> /dev/null)
+ 
+ SOVERSION    = 1
+ 
+@@ -25,7 +28,7 @@
+ 
+ LIB      = $(LIB1) $(LIB2) $(LIB3)
+ 
+-ALL     = $(LIB) x_pigpio x_pigpiod_if x_pigpiod_if2 pig2vcd pigpiod pigs
++ALL     = $(LIB) pig2vcd pigpiod pigs
+ 
+ LL1      = -L. -lpigpio -pthread -lrt
+ 
+@@ -66,28 +69,21 @@
+ 	$(CC) -o x_pigpiod_if2 x_pigpiod_if2.o $(LL3)
+ 
+ pigpiod:	pigpiod.o $(LIB1)
+-	$(CC) -o pigpiod pigpiod.o $(LL1)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o pigpiod pigpiod.o $(LL1)
+ 	$(STRIP) pigpiod
+ 
+ pigs:		pigs.o command.o
+-	$(CC) -o pigs pigs.o command.o
++	$(CC) $(CFLAGS) $(LDFLAGS) -o pigs pigs.o command.o
+ 	$(STRIP) pigs
+ 
+ pig2vcd:	pig2vcd.o
+-	$(CC) -o pig2vcd pig2vcd.o
++	$(CC) $(CFLAGS) $(LDFLAGS) -o pig2vcd pig2vcd.o
+ 	$(STRIP) pig2vcd
+ 
+ clean:
+ 	rm -f *.o *.i *.s *~ $(ALL) *.so.$(SOVERSION)
+ 
+-ifeq ($(DESTDIR),)
+-  PYINSTALLARGS =
+-else
+-  PYINSTALLARGS = --root=$(DESTDIR)
+-endif
+-
+ install:	$(ALL)
+-	install -m 0755 -d                             $(DESTDIR)/opt/pigpio/cgi
+ 	install -m 0755 -d                             $(DESTDIR)$(includedir)
+ 	install -m 0644 pigpio.h                       $(DESTDIR)$(includedir)
+ 	install -m 0644 pigpiod_if.h                   $(DESTDIR)$(includedir)
+@@ -103,15 +99,13 @@
+ 	install -m 0755 pig2vcd                        $(DESTDIR)$(bindir)
+ 	install -m 0755 pigpiod                        $(DESTDIR)$(bindir)
+ 	install -m 0755 pigs                           $(DESTDIR)$(bindir)
+-	if which python2; then python2 setup.py install $(PYINSTALLARGS); fi
+-	if which python3; then python3 setup.py install $(PYINSTALLARGS); fi
++	$(PYTHON2) setup.py install
++	$(PYTHON3) setup.py install
+ 	install -m 0755 -d                             $(DESTDIR)$(mandir)/man1
+-	install -m 0644 p*.1                           $(DESTDIR)$(mandir)/man1
++	install -m 0644 *.1                            $(DESTDIR)$(mandir)/man1
+ 	install -m 0755 -d                             $(DESTDIR)$(mandir)/man3
+-	install -m 0644 p*.3                           $(DESTDIR)$(mandir)/man3
+-ifeq ($(DESTDIR),)
+-	ldconfig
+-endif
++	install -m 0644 *.3                            $(DESTDIR)$(mandir)/man3
++	$(LDCONFIG)
+ 
+ uninstall:
+ 	rm -f $(DESTDIR)$(includedir)/pigpio.h
+@@ -136,19 +130,19 @@
+ endif
+ 
+ $(LIB1):	$(OBJ1)
+-	$(SHLIB) -pthread -Wl,-soname,$(LIB1).$(SOVERSION) -o $(LIB1).$(SOVERSION) $(OBJ1)
++	$(SHLIB) -o $(LIB1).$(SOVERSION) $(OBJ1)
+ 	ln -fs $(LIB1).$(SOVERSION) $(LIB1)
+ 	$(STRIPLIB) $(LIB1)
+ 	$(SIZE)     $(LIB1)
+ 
+ $(LIB2):	$(OBJ2)
+-	$(SHLIB) -pthread -Wl,-soname,$(LIB2).$(SOVERSION) -o $(LIB2).$(SOVERSION) $(OBJ2)
++	$(SHLIB) -o $(LIB2).$(SOVERSION) $(OBJ2)
+ 	ln -fs $(LIB2).$(SOVERSION) $(LIB2)
+ 	$(STRIPLIB) $(LIB2)
+ 	$(SIZE)     $(LIB2)
+ 
+ $(LIB3):	$(OBJ3)
+-	$(SHLIB) -pthread -Wl,-soname,$(LIB3).$(SOVERSION) -o $(LIB3).$(SOVERSION) $(OBJ3)
++	$(SHLIB) -o $(LIB3).$(SOVERSION) $(OBJ3)
+ 	ln -fs $(LIB3).$(SOVERSION) $(LIB3)
+ 	$(STRIPLIB) $(LIB3)
+ 	$(SIZE)     $(LIB3)
+
