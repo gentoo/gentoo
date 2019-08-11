@@ -1,0 +1,24 @@
+From 79aeb3f4d3cc01761d99af5868c7fb5101cf2258 Mon Sep 17 00:00:00 2001
+From: Luca Beltrame <lbeltrame@kde.org>
+Date: Sun, 21 Jul 2019 09:19:40 +0200
+Subject: Fix build with Qt 5.13
+
+---
+ plugins/generic/skg_monthly/grantlee_filters/skgdocumentfilter.cpp | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/plugins/generic/skg_monthly/grantlee_filters/skgdocumentfilter.cpp b/plugins/generic/skg_monthly/grantlee_filters/skgdocumentfilter.cpp
+index 423eb3a..dfcfb43 100644
+--- a/plugins/generic/skg_monthly/grantlee_filters/skgdocumentfilter.cpp
++++ b/plugins/generic/skg_monthly/grantlee_filters/skgdocumentfilter.cpp
+@@ -27,6 +27,8 @@
+ #include "skgmainpanel.h"
+ #include "skgtraces.h"
+ 
++#include <QMetaProperty>
++
+ #include <KFormat>
+ 
+ QVariant SKGDocumentTableFilter::doFilter(const QVariant& input, const QVariant& argument, bool autoescape) const
+-- 
+cgit v1.1

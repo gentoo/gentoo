@@ -75,6 +75,8 @@ RDEPEND="${COMMON_DEPEND}
 	$(add_qt_dep qtquickcontrols)
 "
 
+PATCHES=( "${FILESDIR}"/${P}-missing-header.patch )
+
 # hangs + installs files
 RESTRICT+=" test"
 
