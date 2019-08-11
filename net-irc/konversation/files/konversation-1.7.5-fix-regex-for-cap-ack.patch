@@ -1,0 +1,25 @@
+From 6d896b4efc93c18246ce4db7c788929b0ce75559 Mon Sep 17 00:00:00 2001
+From: Peter Simonsson <peter.simonsson@gmail.com>
+Date: Sun, 23 Sep 2018 08:29:43 +0200
+Subject: Fix regex for cap ack
+
+Seems to have worked despite being broken
+---
+ src/irc/inputfilter.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/irc/inputfilter.cpp b/src/irc/inputfilter.cpp
+index fbd268b..45d4f88 100644
+--- a/src/irc/inputfilter.cpp
++++ b/src/irc/inputfilter.cpp
+@@ -795,7 +795,7 @@ void InputFilter::parseServerCommand(const QString &prefix, const QString &comma
+ 
+                 foreach(const QString& capability, capabilities)
+                 {
+-                    int nameStart = capability.indexOf(QRegExp(QStringLiteral("[a-z0-9"), Qt::CaseInsensitive));
++                    int nameStart = capability.indexOf(QRegExp(QStringLiteral("[a-z0-9]"), Qt::CaseInsensitive));
+                     QString modifierString = capability.left(nameStart);
+                     QString name = capability.mid(nameStart);
+ 
+-- 
+cgit v1.1
