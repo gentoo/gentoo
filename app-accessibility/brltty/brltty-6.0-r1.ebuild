@@ -208,7 +208,7 @@ src_install() {
 
 pkg_postinst() {
 	elog
-	elog "please be sure ${ROOT}etc/brltty.conf is correct for your system."
+	elog "please be sure ${ROOT}/etc/brltty.conf is correct for your system."
 	elog
 	elog "To make brltty start on boot, type this command as root:"
 	elog
