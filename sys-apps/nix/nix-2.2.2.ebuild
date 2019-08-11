@@ -136,7 +136,7 @@ src_install() {
 
 pkg_postinst() {
 	if ! use etc_profile; then
-		ewarn "${EROOT}etc/profile.d/nix.sh was removed (due to USE=-etc_profile)."
+		ewarn "${EROOT}/etc/profile.d/nix.sh was removed (due to USE=-etc_profile)."
 	fi
 
 	readme.gentoo_print_elog
