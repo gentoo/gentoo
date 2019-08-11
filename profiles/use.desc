@@ -181,6 +181,7 @@ lzma - Support for LZMA (de)compression algorithm
 lzo - Enable support for lzo compression
 m17n-lib - Enable m17n-lib support
 mad - Add support for mad (high-quality mp3 decoder library and cli frontend)
+magic - Add support for file type detection via magic bytes (usually via libmagic from sys-apps/file)
 maildir - Add support for maildir (~/.maildir) style mail spools
 matroska - Add support for the matroska container format (extensions .mkv, .mka and .mks)
 mbox - Add support for mbox (/var/spool/mail) style mail spools
