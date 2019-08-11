@@ -47,7 +47,6 @@
   <use>
     <flag name="contrib">Install contrib modules</flag>
     <flag name="doc">Include documentation</flag>
-    <flag name="emacs">Add support for GNU Emacs</flag>
   </use>
   <upstream>
     <remote-id type="github">stumpwm/stumpwm</remote-id>

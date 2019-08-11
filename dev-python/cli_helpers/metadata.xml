@@ -5,7 +5,7 @@
 		<email>grknight@gentoo.org</email>
 		<name>Brian Evans</name>
 	</maintainer>
-	<maintainer type="person">
+	<maintainer type="project">
 		<email>python@gentoo.org</email>
 	</maintainer>
 	<upstream>
