@@ -32,3 +32,5 @@ DEPEND="
 	dev-games/freecell-solver
 "
 RDEPEND="${DEPEND}"
+
+PATCHES=( "${FILESDIR}"/${P}-missing-header.patch )
