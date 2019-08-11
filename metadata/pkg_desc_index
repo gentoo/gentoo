@@ -19469,7 +19469,7 @@ x11-themes/neutral-xcursors 20150106: A family of smoothed and shadowed cursors 
 x11-themes/nimbus 0.1.7-r1: The default OpenSolaris theme (GTK+ 2.x engine, icon- and metacity theme)
 x11-themes/notify-osd-icons 0.7-r1: Icons for on-screen-display notification agent
 x11-themes/nou-icon-theme 09.02.08: A scalable icon theme called Nou
-x11-themes/numix-gtk-theme 2.6.7: A modern flat theme with a combination of light and dark elements
+x11-themes/numix-gtk-theme 2.6.7-r1: A modern flat theme with a combination of light and dark elements
 x11-themes/numix-icon-theme 18.07.17: An official icon theme from the Numix Project
 x11-themes/numix-icon-theme-circle 18.08.29 18.09.19 18.10.03 18.12.01 19.01.24 19.02.07 19.02.22 19.03.20 19.04.15 19.05.07: An icon theme for Linux from the Numix project
 x11-themes/nuovo-icon-theme 0.5: A scalable icon theme called Nuovo
