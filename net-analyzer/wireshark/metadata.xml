@@ -42,6 +42,7 @@ be exported to XML, PostScript®, CSV, or plain text.
 <flag name="lz4">Use <pkg>app-arch/lz4</pkg> for compression/decompression</flag>
 <flag name="maxminddb">Use <pkg>dev-libs/libmaxminddb</pkg> for IP address geolocation</flag>
 <flag name="mergecap">Install mergecap, to merge two or more capture files into one</flag>
+<flag name="minizip">Build with zip file compression support</flag>
 <flag name="netlink">Use <pkg>dev-libs/libnl</pkg></flag>
 <flag name="nghttp2">Use <pkg>net-libs/nghttp2</pkg> for HTTP/2 support</flag>
 <flag name="pcap">Use <pkg>net-libs/libpcap</pkg> for network packet capturing (build dumpcap, rawshark)</flag>
