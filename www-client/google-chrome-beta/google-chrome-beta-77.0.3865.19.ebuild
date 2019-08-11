@@ -109,7 +109,7 @@ src_install() {
 	[[ ${PN} == google-chrome-unstable ]] && suffix=_dev
 
 	local size
-	for size in 16 22 24 32 48 64 128 256 ; do
+	for size in 16 24 32 48 64 128 256 ; do
 		newicon -s ${size} "${CHROME_HOME}/product_logo_${size}${suffix}.png" ${PN}.png
 	done
 
