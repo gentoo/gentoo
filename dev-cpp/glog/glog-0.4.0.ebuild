@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI="7"
 
 inherit autotools multilib-minimal
 
@@ -11,20 +11,18 @@ SRC_URI="https://github.com/google/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux"
-IUSE="gflags static-libs test unwind"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux"
+IUSE="static-libs test"
 RESTRICT="test"
 
-RDEPEND="
-	gflags? ( >=dev-cpp/gflags-2.0-r1[${MULTILIB_USEDEP}] )
-	unwind? ( sys-libs/libunwind[${MULTILIB_USEDEP}] )"
+RDEPENDS="sys-libs/libunwind[${MULTILIB_USEDEP}]"
 DEPEND="${RDEPEND}
 	test? ( >=dev-cpp/gtest-1.8.0[${MULTILIB_USEDEP}] )"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-0.3.2-avoid-inline-asm.patch
-	"${FILESDIR}"/${PN}-0.3.4-fix-build-system.patch
-	"${FILESDIR}"/${PN}-0.3.4-fix-gcc5-demangling.patch
+	"${FILESDIR}"/${PN}-0.4.0-fix-x32-build.patch
+	"${FILESDIR}"/${PN}-0.4.0-errnos.patch
+	"${FILESDIR}"/${PN}-0.4.0-fix-test-on-ports.patch
 )
 
 src_prepare() {
@@ -34,10 +32,7 @@ src_prepare() {
 
 multilib_src_configure() {
 	ECONF_SOURCE="${S}" econf \
-		$(use_enable gflags) \
-		$(use_enable static-libs static) \
-		$(use_enable test gtest-config) \
-		$(use_enable unwind)
+		$(use_enable static-libs static)
 }
 
 multilib_src_install_all() {

@@ -481,6 +481,11 @@ pkg_postinst() {
 		eerror "systemd again."
 		eerror
 	fi
+
+	if [[ -z ${REPLACING_VERSIONS} ]]; then
+		elog "To enable a useful set of services, run the following:"
+		elog "  systemctl preset-all"
+	fi
 }
 
 pkg_prerm() {
