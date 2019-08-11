@@ -17,4 +17,5 @@ SITEFILE="50${PN}-gentoo.el"
 ELISP_TEXINFO="doc/ledger-mode.texi"
 BYTECOMPFLAGS+=" -l ledger-regex.el"
 
+RDEPEND="!<app-office/ledger-3.1.2[emacs(-)]"
 BDEPEND="sys-apps/texinfo"
