@@ -1,9 +1,9 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit desktop gnome2-utils qmake-utils
+inherit desktop qmake-utils xdg
 
 DESCRIPTION="Texas Hold'em poker game"
 HOMEPAGE="https://www.pokerth.net/"
@@ -47,7 +47,7 @@ PATCHES=(
 )
 
 src_prepare() {
-	default
+	xdg_src_prepare
 	sed -i 's/!client//' *.pro || die
 
 	# delete bundled dev-cpp/websocketpp to be safe
@@ -73,7 +73,3 @@ src_install() {
 		doicon -s 128 ${PN}.png
 	fi
 }
-
-pkg_preinst() { gnome2_icon_savelist; }
-pkg_postinst() { gnome2_icon_cache_update; }
-pkg_postrm() { gnome2_icon_cache_update; }
