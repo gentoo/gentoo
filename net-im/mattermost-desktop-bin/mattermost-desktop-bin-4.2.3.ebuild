@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 MY_PN="${PN%-*}"
 
-inherit eutils
+inherit desktop eutils
 
 DESCRIPTION="Mattermost Desktop application"
 HOMEPAGE="https://about.mattermost.com/"
@@ -52,8 +52,6 @@ RDEPEND="
 	x11-libs/libXtst:0
 	x11-libs/pango:0"
 
-S="${WORKDIR}/mattermost-desktop-${PV}"
-
 QA_PREBUILT="
 	opt/mattermost-desktop/mattermost-desktop
 	opt/mattermost-desktop/libnode.so
@@ -67,6 +65,12 @@ DOCS=(
 	LICENSE.electron.txt
 	README.md
 )
+
+src_unpack() {
+	unpack ${A}
+	use amd64 && mv "${WORKDIR}/mattermost-desktop-${PV}-linux-x64" "${S}"
+	use x86 && mv "${WORKDIR}/mattermost-desktop-${PV}-linux-ia32" "${S}"
+}
 
 src_install() {
 	insinto "/opt/${MY_PN}/locales"
@@ -82,7 +86,7 @@ src_install() {
 
 	dosym "/opt/${MY_PN}/${MY_PN}" "/usr/bin/${MY_PN}"
 
-	newicon "${S}/icon.png" "${MY_PN}.png"
+	newicon "${S}/icon.svg" "${MY_PN}.svg"
 	make_desktop_entry "${MY_PN}" Mattermost "${MY_PN}"
 
 	einstalldocs
