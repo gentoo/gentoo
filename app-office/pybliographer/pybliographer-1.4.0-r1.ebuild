@@ -61,5 +61,5 @@ src_install() {
 	gnome2_src_install
 	python_fix_shebang "${D}"
 	dodir /usr/share/${PN}
-	mv "${ED}/$(python_get_sitedir)/${PN}/pixmaps" "${ED}"/usr/share/${PN} || die
+	mv "${D}/$(python_get_sitedir)/${PN}/pixmaps" "${ED}"/usr/share/${PN} || die
 }

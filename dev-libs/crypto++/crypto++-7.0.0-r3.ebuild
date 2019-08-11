@@ -44,5 +44,5 @@ src_compile() {
 src_install() {
 	default
 
-	use static-libs || rm -f "${ED}${EPREFIX}"/usr/$(get_libdir)/*.a
+	use static-libs || rm -f "${ED}"/usr/$(get_libdir)/*.a
 }
