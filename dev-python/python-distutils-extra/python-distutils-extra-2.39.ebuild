@@ -19,7 +19,6 @@ IUSE="test"
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
-		dev-python/pytest-runner[${PYTHON_USEDEP}]
 		dev-python/pytest[${PYTHON_USEDEP}]
 	)
 "
