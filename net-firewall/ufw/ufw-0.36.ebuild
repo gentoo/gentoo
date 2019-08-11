@@ -90,7 +90,7 @@ pkg_pretend() {
 		mod_msg+=" mandatory, but they are often useful."
 		mod_msg+=" If you don't need some of them, please remove relevant"
 		mod_msg+=" module name(s) from IPT_MODULES in"
-		mod_msg+=" '${EROOT}etc/default/ufw' before (re)starting ufw."
+		mod_msg+=" '${EROOT}/etc/default/ufw' before (re)starting ufw."
 		mod_msg+=" Otherwise ufw may fail to start!"
 		ewarn "${mod_msg}"
 		if [[ "${nf_nat_ftp_ok}" == "no" ]]; then
