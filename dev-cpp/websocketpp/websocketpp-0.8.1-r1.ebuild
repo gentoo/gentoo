@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit cmake-utils
 
@@ -9,15 +9,14 @@ DESCRIPTION="C++/Boost Asio based websocket client/server library"
 HOMEPAGE="https://www.zaphoyd.com/websocketpp"
 SRC_URI="https://github.com/zaphoyd/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
-KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~x86"
 LICENSE="BSD"
 SLOT="0"
-IUSE="boost examples test"
+KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~x86"
+IUSE="examples test"
+RESTRICT="!test? ( test )"
 
-DEPEND=""
-RDEPEND="${DEPEND}
-	boost? ( dev-libs/boost )
-"
+DEPEND="test? ( dev-libs/boost )"
+RDEPEND="dev-libs/boost"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.7.0-cmake-install.patch
@@ -29,14 +28,17 @@ PATCHES=(
 
 src_configure() {
 	local mycmakeargs=(
-		-DENABLE_CPP11="$(usex !boost)"
+		-DENABLE_CPP11=ON
 		-DBUILD_TESTS="$(usex test)"
 	)
-
 	cmake-utils_src_configure
 }
 
 src_install() {
-	use examples && DOCS=( examples/ )
 	cmake-utils_src_install
+
+	if use examples; then
+		dodoc -r examples
+		docompress -x /usr/share/doc/${PF}/examples
+	fi
 }
