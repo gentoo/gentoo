@@ -59,3 +59,5 @@ src_configure() {
 
 	kde5_src_configure
 }
+
+PATCHES=( "${FILESDIR}"/${P}-missing-header.patch )
