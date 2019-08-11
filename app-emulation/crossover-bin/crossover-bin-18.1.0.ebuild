@@ -126,7 +126,7 @@ src_install() {
 
 	# Install files
 	dodir /opt/cxoffice
-	#cp -r ./* "${ED}opt/cxoffice" \
+	#cp -r ./* "${ED}/opt/cxoffice" \
 	find . | cpio -dumpl "${ED}/opt/cxoffice" 2>/dev/null \
 		|| die "Could not install into ${ED}/opt/cxoffice"
 
