@@ -78,6 +78,7 @@ RESTRICT+=" test"
 PATCHES=(
 	"${FILESDIR}"/${P}-qt-5.11.patch
 	"${FILESDIR}"/${P}-qca.patch
+	"${FILESDIR}"/${P}-missing-header.patch
 )
 
 src_prepare() {
