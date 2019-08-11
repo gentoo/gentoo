@@ -23,10 +23,11 @@ LICENSE="GPL-3"
 SLOT="0"
 
 # A few comments
-# the ssl flag is just there to enable the plugin for low level crypto algorithms. 
+# the ssl flag is just there to enable the plugin for low level crypto algorithms.
 # It has nothing to do with the SSL/TLS protocol itself.
 
 IUSE="distorm python qscintilla ssl"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
 	${PYTHON_DEPS}
@@ -53,7 +54,7 @@ src_configure() {
 	)
 
 	# distorm is statically linked, due to insufficiencies
-	# in the current distorm64 package 
+	# in the current distorm64 package
 
 	if use distorm; then
 		mycmakeargs+=(-DWITH_DISTORM_LINK_STATICALLY=ON)
