@@ -31,7 +31,7 @@ src_compile() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" LDCONFIG=: PYTHON2=: PYTHON3=: libdir="$(get_libdir)" prefix="/usr" mandir="/usr/share/man" install
+	emake DESTDIR="${D}" LDCONFIG=: PYTHON2=: PYTHON3=: libdir="/usr/$(get_libdir)" prefix="/usr" mandir="/usr/share/man" install
 	einstalldocs
 	newinitd "${FILESDIR}"/pigpiod.initd pigpiod
 	newconfd "${FILESDIR}"/pigpiod.confd pigpiod
