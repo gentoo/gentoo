@@ -121,6 +121,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-poppler-0.69.patch
 	"${FILESDIR}"/${P}-poppler-0.71.patch
 	"${FILESDIR}"/${P}-no-webkit.patch
+	"${FILESDIR}"/${P}-missing-header.patch
 )
 
 pkg_pretend() {
