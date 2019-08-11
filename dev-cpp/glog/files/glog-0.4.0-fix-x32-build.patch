@@ -1,0 +1,35 @@
+Description: fix FTBFS on x32
+Author: Guillaume Morin <guillaume@morinfr.org>
+Forwarded: no
+Last-Update: 2019-08-05
+
+---
+
+--- google-glog-0.3.4.orig/src/symbolize_unittest.cc
++++ google-glog-0.3.4/src/symbolize_unittest.cc
+@@ -313,8 +313,12 @@ extern "C" {
+ inline void* always_inline inline_func() {
+   void *pc = NULL;
+ #ifdef TEST_X86_32_AND_64
++#if __x86_64__ || (__x86_64__ && __ILP32__)
++  __asm__ __volatile__("call 1f; 1: popq %q0" : "=r"(pc));
++#else
+   __asm__ __volatile__("call 1f; 1: pop %0" : "=r"(pc));
+ #endif
++#endif
+   return pc;
+ }
+ 
+@@ -322,8 +326,12 @@ void* ATTRIBUTE_NOINLINE non_inline_func
+ void* ATTRIBUTE_NOINLINE non_inline_func() {
+   void *pc = NULL;
+ #ifdef TEST_X86_32_AND_64
++#if __x86_64__ || (__x86_64__ && __ILP32__)
++  __asm__ __volatile__("call 1f; 1: popq %q0" : "=r"(pc));
++#else
+   __asm__ __volatile__("call 1f; 1: pop %0" : "=r"(pc));
+ #endif
++#endif
+   return pc;
+ }
+ 
