@@ -8268,7 +8268,7 @@ dev-python/openstackdocstheme 1.16.1 1.18.1: Theme and extension support for Sph
 dev-python/openstacksdk 0.9.17 0.11.3 0.17.2 0.27.0: A collection of libraries for building applications to work with OpenStack.
 dev-python/optcomplete 1.2-r1: Shell completion self-generator for Python
 dev-python/ordereddict 1.1: A drop-in substitute for Py2.7's new collections.OrderedDict that works in Python 2.4-2.6.
-dev-python/os-brick 2.5.5 2.8.1 2.8.2: OpenStack Cinder brick library for managing local volume attaches
+dev-python/os-brick 2.5.5 2.8.2: OpenStack Cinder brick library for managing local volume attaches
 dev-python/os-client-config 1.29.0 1.32.0: OpenStack Client Configuation Library
 dev-python/os-diskconfig-python-novaclient-ext 0.1.3 9999: Disk Config extension for python-novaclient
 dev-python/os-ken 0.3.1: OpenStack Cinder brick library for managing local volume attaches
@@ -8700,7 +8700,7 @@ dev-python/python-caja 1.22.0-r1: Python bindings for the Caja file manager
 dev-python/python-catcher 0.1.7: Beautiful stack traces for Python
 dev-python/python-cdb 0.34-r1: A Python extension module for cdb
 dev-python/python-ceilometerclient 2.6.2: This is a client library for Ceilometer built on the Ceilometer API
-dev-python/python-cinderclient 4.1.0 4.2.0 4.2.1: A client for the OpenStack Cinder API
+dev-python/python-cinderclient 4.1.0 4.2.1: A client for the OpenStack Cinder API
 dev-python/python-cluster 1.2.2: Allows grouping a list of arbitrary objects into related groups (clusters)
 dev-python/python-consul 1.1.0: Python client for Consul
 dev-python/python-cstruct 1.7: C-style structs for Python
@@ -13099,7 +13099,7 @@ media-gfx/solvespace 2.3: Parametric 2d/3d CAD
 media-gfx/springgraph 88: Generate spring graphs from graphviz input files
 media-gfx/svg2rlg 0.3: python tool to convert SVG files to reportlab graphics
 media-gfx/sxiv 24 25 9999: Simple (or small or suckless) X Image Viewer
-media-gfx/symboleditor 2.0.0-r1 2.1.0: Application to create libraries of QPainterPath objects with rendering hints
+media-gfx/symboleditor 2.1.0: Application to create libraries of QPainterPath objects with rendering hints
 media-gfx/synnefo 1.1.0: Qt front end for the Oyranos Color Management System
 media-gfx/tachyon 0.99_beta6-r1: A portable, high performance parallel ray tracing system
 media-gfx/termtosvg 0.7.0 0.8.0: Record terminal sessions as SVG animations
@@ -17657,7 +17657,7 @@ sys-cluster/ceph 12.2.8-r1 12.2.11 12.2.12-r2 13.2.5-r4 13.2.6 14.2.2: Ceph dist
 sys-cluster/charliecloud 0.9.6 0.9.10 0.10 9999: Lightweight user-defined software stacks for high-performance computing
 sys-cluster/charm 6.5.1-r1 6.5.1-r2 6.5.1-r3 6.6.0 6.6.0-r1 6.6.1 6.7.1 6.8.2: Message-passing parallel language and runtime system
 sys-cluster/charmdebug 6.2.0-r1: A debugger for Charm++ applications
-sys-cluster/cinder 13.0.5 13.0.6 14.0.0 14.0.1 2018.2.9999 2019.1.9999: Cinder is the OpenStack Block storage service, a spin out of nova-volumes
+sys-cluster/cinder 13.0.6 14.0.1 2018.2.9999 2019.1.9999: Cinder is the OpenStack Block storage service, a spin out of nova-volumes
 sys-cluster/classads 1.0.10: Condor's classified advertisement language
 sys-cluster/cluster-glue 1.0.11 1.0.12 1.0.12-r1: Library pack for Heartbeat / Pacemaker
 sys-cluster/cman-lib 2.03.09-r1: A library for cluster management common to the various pieces of Cluster Suite
@@ -17999,7 +17999,7 @@ sys-kernel/ck-sources 4.9.120 4.9.123 4.9.124 4.9.126 4.9.128 4.9.130 4.9.132 4.
 sys-kernel/cryptodev 1.9 9999: device that allows access to Linux kernel cryptographic drivers
 sys-kernel/dracut 044-r1 044-r3 045-r2 046-r1 047-r1 048 048-r1 049 049-r1 9999: Generic initramfs generation tool
 sys-kernel/dracut-crypt-ssh 1.0.6-r1: early unlocking of encrypted systems via ssh for dracut
-sys-kernel/genkernel 3.4.52.3 3.4.52.4-r1 3.4.52.4-r2 3.4.52.4-r3 3.5.1.1 3.5.2.0-r1 3.5.2.1 3.5.2.2 3.5.2.3 3.5.2.4 3.5.2.5 3.5.3.2 3.5.3.3 4.0.0_beta11 9999: Gentoo automatic kernel building scripts
+sys-kernel/genkernel 3.4.52.3 3.4.52.4-r1 3.4.52.4-r2 3.4.52.4-r3 3.5.1.1 3.5.2.0-r1 3.5.2.1 3.5.2.2 3.5.2.3 3.5.2.4 3.5.2.5 3.5.3.2 3.5.3.3 4.0.0_beta12 9999: Gentoo automatic kernel building scripts
 sys-kernel/genkernel-next 69 70: Gentoo automatic kernel building scripts, reloaded
 sys-kernel/gentoo-sources 4.4.184 4.4.186 4.4.187 4.4.188 4.4.189 4.9.184 4.9.186 4.9.187 4.9.188 4.9.189 4.14.132 4.14.135 4.14.136 4.14.137 4.14.138 4.19.57 4.19.63 4.19.64 4.19.65 4.19.66 5.2.5 5.2.6 5.2.7 5.2.8: Full sources including the Gentoo patchset for the 5.2 kernel tree
 sys-kernel/git-sources 5.3_rc1 5.3_rc2 5.3_rc3: The very latest -git version of the Linux kernel

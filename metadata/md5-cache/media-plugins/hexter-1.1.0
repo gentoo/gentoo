@@ -5,9 +5,9 @@ DESCRIPTION=Yamaha DX7 modeling DSSI plugin
 EAPI=7
 HOMEPAGE=http://smbolton.com/hexter.html
 IUSE=gtk2 readline
-KEYWORDS=amd64 ~x86
+KEYWORDS=amd64 x86
 LICENSE=GPL-2
 RDEPEND=media-libs/alsa-lib >=media-libs/dssi-0.4 >=media-libs/liblo-0.12 gtk2? ( x11-libs/gtk+:2 ) readline? ( sys-libs/ncurses:0= sys-libs/readline:0= )
 SLOT=0
 SRC_URI=https://github.com/smbolton/hexter/releases/download/version_1.1.0/hexter-1.1.0.tar.bz2
-_md5_=abba73afd5773c4b255ae212b904bb29
+_md5_=088e471e43977b3670a852fab5979194
