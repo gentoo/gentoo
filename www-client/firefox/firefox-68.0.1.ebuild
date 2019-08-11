@@ -162,7 +162,10 @@ DEPEND="${CDEPEND}
 	wayland? ( >=x11-libs/gtk+-3.11:3[wayland] )
 	amd64? ( >=dev-lang/yasm-1.1 virtual/opengl )
 	x86? ( >=dev-lang/yasm-1.1 virtual/opengl )
-	!system-av1? ( >=dev-lang/nasm-2.13 )"
+	!system-av1? (
+		amd64? ( >=dev-lang/nasm-2.13 )
+		x86? ( >=dev-lang/nasm-2.13 )
+	)"
 
 # We use virtx eclass which cannot handle wayland
 REQUIRED_USE="wifi? ( dbus )
