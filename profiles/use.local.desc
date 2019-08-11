@@ -2313,7 +2313,6 @@ gnome-extra/gnome-color-manager:packagekit - Enable support for the distro-neutr
 gnome-extra/gnome-commander:chm - Enable metadata support for Microsoft Compiled HTML Help files
 gnome-extra/gnome-commander:gsf - Add metadata support for OLE, OLE2 and ODF
 gnome-extra/gnome-commander:pdf - Add metadata support for PDF
-gnome-extra/gnome-commander:samba - Add support for SAMBA (Windows File and Printer sharing)
 gnome-extra/gnome-commander:taglib - Add metadata support for ID3, Vorbis, FLAC and APE
 gnome-extra/gnome-commander:unique - Enable single instance support using dev-libs/libunique
 gnome-extra/gnome-contacts:telepathy - Start chat from contact details
@@ -2637,7 +2636,6 @@ mail-client/evolution:weather - Enable optional weather calendar support
 mail-client/evolution:ytnef - Enable optional TNEF attachments parser support using net-mail/ytnef
 mail-client/mail-notification:sylpheed - Enable support for MH mailboxes used by mail-client/sylpheed
 mail-client/mutt:berkdb - Enable sys-libs/db database backend for header caching
-mail-client/mutt:crypt - Add support for encryption -- using mcrypt or gpg where applicable
 mail-client/mutt:gdbm - Enable sys-libs/gdbm database backend for header caching
 mail-client/mutt:gpg - Enable support for app-crypt/gpgme
 mail-client/mutt:gpgme - Build gpgme backend to support S/MIME, PGP/MIME and traditional/inline PGP
@@ -2651,7 +2649,6 @@ mail-client/mutt:smime_classic - Build classic_smime backend to support S/MIME
 mail-client/mutt:smtp - Enable support for direct SMTP delivery
 mail-client/mutt:tokyocabinet - Enable dev-db/tokyocabinet database backend for header caching
 mail-client/neomutt:berkdb - Enable BDB (Berkley DB) backend for header caching
-mail-client/neomutt:crypt - Add support for encryption -- using mcrypt or gpg where applicable
 mail-client/neomutt:gdbm - Enable GDBM (GNU dbm) backend for header caching
 mail-client/neomutt:gpg - Enable support for app-crypt/gpgme
 mail-client/neomutt:gpgme - Build gpgme backend to support S/MIME, PGP/MIME and traditional/inline PGP
@@ -5244,7 +5241,6 @@ sys-apps/dbus:elogind - Use sys-auth/elogind for session tracking.
 sys-apps/dbus:systemd - Build with sys-apps/systemd at_console support
 sys-apps/dbus:user-session - Enable user-session semantics for session bus under systemd
 sys-apps/debianutils:installkernel - Install /sbin/installkernel script (for Linux)
-sys-apps/dstat:wifi - Enable wireless network functions
 sys-apps/elfix:ptpax - Enable PT_PAX_FLAGS support.
 sys-apps/elfix:xtpax - Enable XATTR_PAX_FLAGS support.
 sys-apps/etckeeper:bazaar - Support dev-vcs/bzr based repository
@@ -5546,7 +5542,6 @@ sys-cluster/cinder:tgt - Enable tgt storage backend support
 sys-cluster/cinder:volume - Installs the initscripts for the cinder volume service
 sys-cluster/cluster-glue:ipmilan - Install the ipmilan plugin (requires sys-libs/openipmi)
 sys-cluster/cluster-glue:libnet - Force use of net-libs/libnet
-sys-cluster/corosync:infiniband - Enable Infiniband RDMA transport support
 sys-cluster/drbd-utils:heartbeat - Enable Heartbeat integration
 sys-cluster/drbd-utils:pacemaker - Enable Pacemaker integration
 sys-cluster/drbd-utils:xen - Enable Xen integration
