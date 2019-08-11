@@ -159,10 +159,10 @@ src_install() {
 
 pkg_preinst() {
 	# avoid default thrashing in conf.d files when possible #295406
-	if [[ -e "${EROOT}"etc/conf.d/hostname ]] ; then
+	if [[ -e "${EROOT}"/etc/conf.d/hostname ]] ; then
 		(
 		unset hostname HOSTNAME
-		source "${EROOT}"etc/conf.d/hostname
+		source "${EROOT}"/etc/conf.d/hostname
 		: ${hostname:=${HOSTNAME}}
 		[[ -n ${hostname} ]] && set_config /etc/conf.d/hostname hostname "${hostname}"
 		)
@@ -183,11 +183,11 @@ pkg_postinst() {
 	# Added for 0.35.
 	if use kernel_linux && [[ ! -h "${EROOT}"/lib ]]; then
 		if [[ -d "${EROOT}$(get_libdir)"/rc ]]; then
-			cp -RPp "${EROOT}$(get_libdir)/rc" "${EROOT}"lib
+			cp -RPp "${EROOT}$(get_libdir)/rc" "${EROOT}"/lib
 		fi
 	elif ! use kernel_linux; then
 		if [[ -d "${EROOT}$(get_libdir)"/rc ]]; then
-			cp -RPp "${EROOT}$(get_libdir)/rc" "${EROOT}"lib
+			cp -RPp "${EROOT}$(get_libdir)/rc" "${EROOT}"/lib
 		fi
 	fi
 
@@ -202,7 +202,7 @@ pkg_postinst() {
 		ewarn
 	fi
 
-	if use newnet && [ ! -e "${EROOT}"etc/runlevels/boot/network ]; then
+	if use newnet && [ ! -e "${EROOT}"/etc/runlevels/boot/network ]; then
 		ewarn "Please add the network service to your boot runlevel"
 		ewarn "as soon as possible. Not doing so could leave you with a system"
 		ewarn "without networking."
