@@ -5716,6 +5716,7 @@ net-analyzer/wireshark:libxml2 - Use dev-libs/libxml2 for handling XML configura
 net-analyzer/wireshark:lz4 - Use app-arch/lz4 for compression/decompression
 net-analyzer/wireshark:maxminddb - Use dev-libs/libmaxminddb for IP address geolocation
 net-analyzer/wireshark:mergecap - Install mergecap, to merge two or more capture files into one
+net-analyzer/wireshark:minizip - Build with zip file compression support
 net-analyzer/wireshark:netlink - Use dev-libs/libnl
 net-analyzer/wireshark:nghttp2 - Use net-libs/nghttp2 for HTTP/2 support
 net-analyzer/wireshark:pcap - Use net-libs/libpcap for network packet capturing (build dumpcap, rawshark)
