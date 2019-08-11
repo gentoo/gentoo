@@ -67,6 +67,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.1.4-mtab-sym.patch
 	"${FILESDIR}"/${PN}-1.2.8-cross-build.patch
 	"${FILESDIR}"/${PN}-2.3.4-no-werror.patch
+	"${FILESDIR}"/${P}-gssd-Look-in-lib32-for-gss-libs-aswell.patch
 )
 
 src_prepare() {
