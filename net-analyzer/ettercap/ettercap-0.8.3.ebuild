@@ -63,7 +63,7 @@ src_configure() {
 		-DENABLE_GEOIP="$(usex geoip)"
 		-DBUNDLED_LIBS=OFF
 		-DSYSTEM_LIBS=ON
-		-DINSTALL_SYSCONFDIR="${EROOT}"etc
+		-DINSTALL_SYSCONFDIR="${EPREFIX}"/etc
 	)
 		#right now we only support gtk2, but ettercap also supports gtk3
 		#do we care? do we want to support both?
