@@ -57,7 +57,7 @@ src_install() {
 pkg_postinst() {
 	echo
 	elog "Example configuration files have been installed at"
-	elog "${ROOT}usr/share/doc/${PF}"
+	elog "${ROOT}/usr/share/doc/${PF}"
 	elog "${P} uses ~/.ncmpcpp/config and ~/.ncmpcpp/bindings"
 	elog "as user configuration files."
 	echo
