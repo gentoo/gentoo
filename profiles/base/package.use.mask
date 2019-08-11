@@ -202,11 +202,6 @@ dev-python/paramiko server
 # and compiler/binutils combinations.)
 sys-libs/glibc cet
 
-# Göktürk Yüksek <gokturk@gentoo.org> (2018-07-06)
-# Dependency app-crypt/jitterentropy is keyworded for
-# only a subset of the archs rng-tools supports
-sys-apps/rng-tools jitterentropy
-
 # Michał Górny <mgorny@gentoo.org> (2018-06-13)
 # Requires app-arch/snappy[static-libs] that is no longer available.
 # Bugs #651604, #651606.
