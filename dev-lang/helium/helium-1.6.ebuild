@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=0
@@ -6,7 +6,7 @@ EAPI=0
 inherit autotools eutils
 
 DESCRIPTION="Helium (for learning Haskell)"
-HOMEPAGE="http://www.cs.uu.nl/helium"
+HOMEPAGE="https://github.com/Helium4Haskell/helium"
 SRC_URI="http://www.cs.uu.nl/helium/distr/${P}-src.tar.gz
 	mirror://gentoo/${P}-ghc.patch.bz2"
 
