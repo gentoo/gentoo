@@ -162,8 +162,7 @@ src_install () {
 	insinto /etc/revdep-rebuild && doins "${T}/50-${PN}"
 
 	# remove soffice bin to avoid collision with libreoffice
-	rm -rf "${ED}${EPREFIX}/usr/bin/soffice"
-
+	rm -rf "${ED}/usr/bin/soffice" || die
 }
 
 pkg_preinst() {
