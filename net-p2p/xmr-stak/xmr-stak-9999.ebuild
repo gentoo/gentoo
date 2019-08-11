@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -55,7 +55,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	if [ ! -e "${ROOT}etc/xmr-stak/main.config" ]; then
+	if [ ! -e "${ROOT}/etc/xmr-stak/main.config" ]; then
 		ewarn "To use xmr-stack:"
 		if use cuda || use opencl; then
 			ewarn "As root or as a user that is a member of the 'video' group,"

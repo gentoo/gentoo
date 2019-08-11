@@ -55,7 +55,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	if [ ! -e "${ROOT}etc/xmr-stak/main.config" ]; then
+	if [ ! -e "${ROOT}/etc/xmr-stak/main.config" ]; then
 		ewarn "To use xmr-stack:"
 		if use cuda || use opencl; then
 			ewarn "As root or as a user that is a member of the 'video' group,"
