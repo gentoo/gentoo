@@ -1,11 +1,15 @@
-DEFINED_PHASES=-
-DEPEND=dev-libs/libxml2:2 x11-libs/gtk+:3 x11-themes/gtk-engines-murrine dev-libs/glib:2 >=dev-ruby/sass-3.5 x11-libs/gdk-pixbuf:2
+BDEPEND=ruby_targets_ruby24? ( dev-lang/ruby:2.4 ) ruby_targets_ruby25? ( dev-lang/ruby:2.5 ) ruby_targets_ruby26? ( dev-lang/ruby:2.6 )
+DEFINED_PHASES=compile configure install prepare setup test unpack
+DEPEND=dev-libs/libxml2:2 x11-libs/gtk+:3 x11-themes/gtk-engines-murrine dev-libs/glib:2 x11-libs/gdk-pixbuf:2 ruby_targets_ruby24? ( >=dev-ruby/sass-3.5[ruby_targets_ruby24] ) ruby_targets_ruby25? ( >=dev-ruby/sass-3.5[ruby_targets_ruby25] ) ruby_targets_ruby26? ( >=dev-ruby/sass-3.5[ruby_targets_ruby26] ) ruby_targets_ruby24? ( dev-lang/ruby:2.4 ) ruby_targets_ruby25? ( dev-lang/ruby:2.5 ) ruby_targets_ruby26? ( dev-lang/ruby:2.6 )
 DESCRIPTION=A modern flat theme with a combination of light and dark elements
 EAPI=7
 HOMEPAGE=https://github.com/numixproject/numix-gtk-theme
+IUSE=ruby_targets_ruby24 ruby_targets_ruby25 ruby_targets_ruby26
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-3
-RDEPEND=dev-libs/libxml2:2 x11-libs/gtk+:3 x11-themes/gtk-engines-murrine
+RDEPEND=dev-libs/libxml2:2 x11-libs/gtk+:3 x11-themes/gtk-engines-murrine ruby_targets_ruby24? ( dev-lang/ruby:2.4 ) ruby_targets_ruby25? ( dev-lang/ruby:2.5 ) ruby_targets_ruby26? ( dev-lang/ruby:2.6 )
+REQUIRED_USE=|| ( ruby_targets_ruby24 ruby_targets_ruby25 ruby_targets_ruby26 )
 SLOT=0
 SRC_URI=https://github.com/numixproject/numix-gtk-theme/archive/2.6.7.tar.gz -> numix-gtk-theme-2.6.7.tar.gz
-_md5_=df4750548aa6f2108fddc69678e79017
+_eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	1d91b03d42ab6308b5f4f6b598ed110e	ruby-ng	a28f4a400304e633468f10ad1b9e2f6e	ruby-utils	5b782a86f95c84466cdb53f8c8a8be37	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
+_md5_=4773f35197d566c6ce2d8aa3d93557b4
