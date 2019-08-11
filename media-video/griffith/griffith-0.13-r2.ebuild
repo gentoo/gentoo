@@ -71,7 +71,7 @@ src_install() {
 	cd "${WORKDIR}/${PN}-extra-artwork-${ARTWORK_PV}/" || die
 	emake DESTDIR="${D}" install
 	# This carries over from -0.13 but appears to have no effect.
-	python_optimize "${ED}"usr/share/${PN}
+	python_optimize "${ED}"/usr/share/${PN}
 }
 
 pkg_postinst() {
