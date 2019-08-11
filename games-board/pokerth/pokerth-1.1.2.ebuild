@@ -32,8 +32,8 @@ RDEPEND="dev-db/sqlite:3
 	)"
 DEPEND="${RDEPEND}
 	dev-cpp/websocketpp
-	!dedicated? ( dev-qt/qtsql:5 )
-	virtual/pkgconfig"
+	!dedicated? ( dev-qt/qtsql:5 )"
+BDEPEND="virtual/pkgconfig"
 
 S="${WORKDIR}/${P}-rc"
 
