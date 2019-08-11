@@ -7,7 +7,7 @@ inherit autotools fdo-mime flag-o-matic gnome2-utils eutils
 
 DESCRIPTION="Periodic table viewer with detailed information on the chemical elements"
 HOMEPAGE="https://github.com/ginggs/gelemental/"
-SRC_URI="https://github.com/ginggs/${PN}/archive/v${PV}.tar.gz"
+SRC_URI="https://github.com/ginggs/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3 MIT"
 SLOT="0"
