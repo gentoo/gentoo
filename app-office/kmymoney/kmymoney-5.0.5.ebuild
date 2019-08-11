@@ -90,6 +90,8 @@ RDEPEND="${COMMON_DEPEND}
 	quotes? ( dev-perl/Finance-Quote )
 "
 
+PATCHES=( "${FILESDIR}"/${P}-missing-header.patch )
+
 pkg_setup() {
 	use weboob && python_setup
 	kde5_pkg_setup
