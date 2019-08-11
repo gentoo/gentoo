@@ -8636,7 +8636,7 @@ dev-python/pysnmp 4.4.4 4.4.9 4.4.10-r1 999999: Python SNMP library
 dev-python/pysnmp-apps 0.5.2 0.5.3: PySNMP applications
 dev-python/pysnmp-mibs 0.1.6: SNMP framework in Python - MIBs
 dev-python/pysol_cards 0.6.2 0.6.2-r1: Deal PySol FreeCell cards
-dev-python/pysolr 3.3.2 3.6.0: Lightweight python wrapper for Apache Solr
+dev-python/pysolr 3.3.2 3.6.0 3.8.1: Lightweight python wrapper for Apache Solr
 dev-python/pyspf 2.0.12: Python implementation of the Sender Policy Framework (SPF) protocol
 dev-python/pysrt 1.1.1 1.1.1-r1 9999: Python library used to edit or create SubRip files
 dev-python/pystache 0.5.4: Mustache for Python
