@@ -44,7 +44,7 @@ DOCS=(
 
 src_configure() {
 	local mycmakeargs=(
-		-DCLHEP_DIR="${EROOT}usr"
+		-DCLHEP_DIR="${EPREFIX}/usr"
 		-DWITH_EXAMPLES="$(usex examples)"
 		-DINSTALL_EXAMPLES="$(usex examples)"
 		-DWITH_GEANT4="$(usex geant4)"
