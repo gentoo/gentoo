@@ -67,14 +67,14 @@ src_install() {
 }
 
 pkg_preinst() {
-	if [[ -e ${EROOT}etc/python-exec/python-exec.conf ]]; then
+	if [[ -e ${EROOT}/etc/python-exec/python-exec.conf ]]; then
 		# preserve current configuration
-		cp "${EROOT}"etc/python-exec/python-exec.conf \
-			"${ED}"etc/python-exec/python-exec.conf || die
+		cp "${EROOT}"/etc/python-exec/python-exec.conf \
+			"${ED}"/etc/python-exec/python-exec.conf || die
 	else
 		# preserve previous Python version preference
 		local py old_pythons=()
-		local config_base=${EROOT}etc/env.d/python
+		local config_base=${EROOT}/etc/env.d/python
 
 		# start with the 'global' preference (2 vs 3)
 		if [[ -f ${config_base}/config ]]; then
@@ -121,14 +121,14 @@ pkg_preinst() {
 			elog "you may want to modify the preference list yourself. In order to do so,"
 			elog "open the following file in your favorite editor:"
 			elog
-			elog "  ${EROOT}etc/python-exec/python-exec.conf"
+			elog "  ${EROOT}/etc/python-exec/python-exec.conf"
 			elog
 			elog "For more information on the new configuration format, please read"
 			elog "the comment on top of the installed configuration file."
 
 			local IFS=$'\n'
 			echo "${old_pythons[*]}" \
-				>> "${ED}"etc/python-exec/python-exec.conf || die
+				>> "${ED}"/etc/python-exec/python-exec.conf || die
 		fi
 	fi
 }
