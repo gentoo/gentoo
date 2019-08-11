@@ -53,8 +53,8 @@ pkg_pretend() {
 			eerror "You can do this by:"
 			eerror "# mkdir -p ${ROOT}/var/lib/anope ${ROOT}/etc/anope"
 			eerror "# chown anope:anope ${ROOT}/var/lib/anope"
-			eerror "# mv ${ROOT}/opt/anope/data/*.db ${ROOT}var/lib/anope"
-			eerror "# mv ${ROOT}/opt/anope/data/services.conf ${ROOT}etc/anope"
+			eerror "# mv ${ROOT}/opt/anope/data/*.db ${ROOT}/var/lib/anope"
+			eerror "# mv ${ROOT}/opt/anope/data/services.conf ${ROOT}/etc/anope"
 			die "Please move your anope database files from /opt/anope/data"
 		fi
 	done
