@@ -213,13 +213,13 @@ src_install() {
 pkg_postinst () {
 	use ipv6 && readme.gentoo_print_elog
 
-	if [[ -f ${ROOT}etc/conf.d/spawn-fcgi.conf ]] ; then
+	if [[ -f ${ROOT}/etc/conf.d/spawn-fcgi.conf ]] ; then
 		einfo "spawn-fcgi is now provided by www-servers/spawn-fcgi."
 		einfo "spawn-fcgi's init script configuration is now located"
 		einfo "at /etc/conf.d/spawn-fcgi."
 	fi
 
-	if [[ -f ${ROOT}etc/lighttpd.conf ]] ; then
+	if [[ -f ${ROOT}/etc/lighttpd.conf ]] ; then
 		elog "Gentoo has a customized configuration,"
 		elog "which is now located in /etc/lighttpd.  Please migrate your"
 		elog "existing configuration."

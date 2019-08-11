@@ -164,14 +164,14 @@ pkg_postinst() {
 
 	# Register the package from the package.xml file
 	# It is not critical to complete so only warn on failure
-	if [[ -f "${EROOT}usr/share/php/.packagexml/${MY_P}.xml" ]] ; then
-		"${EROOT}usr/bin/peardev" install -nrO --force \
-			"${EROOT}usr/share/php/.packagexml/${MY_P}.xml" 2> /dev/null \
+	if [[ -f "${EROOT}/usr/share/php/.packagexml/${MY_P}.xml" ]] ; then
+		"${EROOT}/usr/bin/peardev" install -nrO --force \
+			"${EROOT}/usr/share/php/.packagexml/${MY_P}.xml" 2> /dev/null \
 			|| ewarn "Failed to insert package into local PEAR database"
 	fi
 }
 
 pkg_prerm() {
 	# Uninstall known dependency
-	"${EROOT}usr/bin/peardev" uninstall -nrO "pear.php.net/PEAR"
+	"${EROOT}/usr/bin/peardev" uninstall -nrO "pear.php.net/PEAR"
 }

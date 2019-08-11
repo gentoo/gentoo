@@ -35,12 +35,12 @@ src_compile() {
 }
 
 src_install() {
-	emake INSTALL="${D}"usr install
+	emake INSTALL="${D}"/usr install
 	einstalldocs
-	mv "${D}"usr/share/doc/${PN}/* "${D}"usr/share/doc/${PF}/ || die
-	rmdir "${D}"usr/share/doc/${PN} || die
-	mv "${D}"usr/share/examples/${PN} "${D}"usr/share/doc/${PF}/examples || die
-	rmdir "${D}"usr/share/examples || die
+	mv "${D}"/usr/share/doc/${PN}/* "${D}"/usr/share/doc/${PF}/ || die
+	rmdir "${D}"/usr/share/doc/${PN} || die
+	mv "${D}"/usr/share/examples/${PN} "${D}"/usr/share/doc/${PF}/examples || die
+	rmdir "${D}"/usr/share/examples || die
 	rm -r "${D}"/usr/share/gpr/manifests || die
 }
 

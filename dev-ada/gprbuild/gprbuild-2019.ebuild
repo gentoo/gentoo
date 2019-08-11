@@ -53,7 +53,7 @@ src_prepare() {
 }
 
 src_configure() {
-	emake prefix="${D}"usr setup
+	emake prefix="${D}"/usr setup
 }
 
 bin_progs="gprbuild gprconfig gprclean gprinstall gprname gprls"
