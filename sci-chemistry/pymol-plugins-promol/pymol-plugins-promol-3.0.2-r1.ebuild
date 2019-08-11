@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -33,7 +33,7 @@ src_prepare() {
 	preparation() {
 		cd "${BUILD_DIR}" || die
 		sed \
-			-e "s:./modules/pmg_tk/startup:${EPREFIX}/$(python_get_sitedir)/pmg_tk/startup/ProMol:g" \
+			-e "s:./modules/pmg_tk/startup:$(python_get_sitedir)/pmg_tk/startup/ProMol:g" \
 			-i ProMOL_302.py || die
 	}
 	python_foreach_impl preparation
