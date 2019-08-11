@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # note: wxGTK interface has been removed wrt #391685. this ebuild is only for
@@ -45,7 +45,7 @@ python_install() {
 
 	# get rid of any reference to the not-installed gui version
 	rm "${ED%/}"/usr/bin/*gui.py || die
-	rm "${ED%/}$(python_get_scriptdir)"/*gui.py || die
+	rm "${D}/$(python_get_scriptdir)"/*gui.py || die
 }
 
 python_install_all() {
