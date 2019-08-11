@@ -1,0 +1,39 @@
+From e2244412ae8b0b04446063ff6e8a1d0ebebe55a8 Mon Sep 17 00:00:00 2001
+From: Matt Turner <mattst88@gmail.com>
+Date: Sun, 11 Aug 2019 14:50:01 -0700
+Subject: [PATCH] gssd: Look in lib32 for gss libs aswell.
+
+Akin to commit da999b81b058 ("Look in lib64 for gss libs aswell.")
+
+mips/n32 systems have libraries in lib32 (but not lib or lib64). Without
+checking lib32, configure fails with
+
+checking for Kerberos v5... configure: error: Kerberos v5 with GSS
+         support not found: consider --disable-gss or --with-krb5=
+
+Signed-off-by: Matt Turner <mattst88@gmail.com>
+---
+ aclocal/kerberos5.m4 | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/aclocal/kerberos5.m4 b/aclocal/kerberos5.m4
+index 8a0f3e4c..faa58049 100644
+--- a/aclocal/kerberos5.m4
++++ b/aclocal/kerberos5.m4
+@@ -38,9 +38,11 @@ AC_DEFUN([AC_KERBEROS_V5],[
+       AC_DEFINE_UNQUOTED(KRB5_VERSION, $K5VERS, [Define this as the Kerberos version number])
+       if test -f $dir/include/gssapi/gssapi_krb5.h -a \
+                 \( -f $dir/lib/libgssapi_krb5.a -o \
++                   -f $dir/lib/libgssapi_krb5.so -o \
++                   -f $dir/lib32/libgssapi_krb5.a -o \
++                   -f $dir/lib32/libgssapi_krb5.so -o \
+                    -f $dir/lib64/libgssapi_krb5.a -o \
+-                   -f $dir/lib64/libgssapi_krb5.so -o \
+-                   -f $dir/lib/libgssapi_krb5.so \) ; then
++                   -f $dir/lib64/libgssapi_krb5.so \) ; then
+          AC_DEFINE(HAVE_KRB5, 1, [Define this if you have MIT Kerberos libraries])
+          KRBDIR="$dir"
+          gssapi_lib=gssapi_krb5
+-- 
+2.21.0
+
