@@ -1,0 +1,94 @@
+From 08fb06b63a78888e6703de6ac1a4fd6a0e2791eb Mon Sep 17 00:00:00 2001
+From: Albert Astals Cid <aacid@kde.org>
+Date: Sun, 28 Jul 2019 00:14:30 +0200
+Subject: Fix compile on CI
+
+plugins/uploaders/flickr/flickr.h:50:24: error: field mUrlMap has incomplete type QMap<KJob*, QUrl>
+plugins/uploaders/imageshack/imageshack.h:48:24: error: field mUrlMap has incomplete type QMap<KJob*, QUrl>
+---
+ plugins/uploaders/flickr/flickr.h         | 2 ++
+ plugins/uploaders/imageshack/imageshack.h | 2 ++
+ 2 files changed, 4 insertions(+)
+
+diff --git a/plugins/uploaders/flickr/flickr.h b/plugins/uploaders/flickr/flickr.h
+index 890219a..7b26609 100644
+--- a/plugins/uploaders/flickr/flickr.h
++++ b/plugins/uploaders/flickr/flickr.h
+@@ -26,6 +26,8 @@
+ 
+ #include "uploader.h"
+ 
++#include <QMap>
++
+ /**
+ @author Andrey Esin \<gmlastik@gmail.com\>
+ */
+diff --git a/plugins/uploaders/imageshack/imageshack.h b/plugins/uploaders/imageshack/imageshack.h
+index d9ddc88..63d0e3f 100644
+--- a/plugins/uploaders/imageshack/imageshack.h
++++ b/plugins/uploaders/imageshack/imageshack.h
+@@ -26,6 +26,8 @@
+ 
+ #include "uploader.h"
+ 
++#include <QMap>
++
+ /**
+ @author Mehrdad Momeny \<mehrdad.momeny@gmail.com\>
+ */
+-- 
+cgit v1.1
+
+From bef6784596bf0b41287ebad81f138e1c8c2a6be2 Mon Sep 17 00:00:00 2001
+From: Albert Astals Cid <aacid@kde.org>
+Date: Sun, 28 Jul 2019 00:20:34 +0200
+Subject: Fix build on CI
+
+Even more missing QMap includes
+---
+ plugins/uploaders/mobypicture/mobypicture.h | 2 ++
+ plugins/uploaders/posterous/posterous.h     | 2 ++
+ plugins/uploaders/twitgoo/twitgoo.h         | 2 ++
+ 3 files changed, 6 insertions(+)
+
+diff --git a/plugins/uploaders/mobypicture/mobypicture.h b/plugins/uploaders/mobypicture/mobypicture.h
+index 098f411..86f61fd 100644
+--- a/plugins/uploaders/mobypicture/mobypicture.h
++++ b/plugins/uploaders/mobypicture/mobypicture.h
+@@ -26,6 +26,8 @@
+ 
+ #include "uploader.h"
+ 
++#include <QMap>
++
+ class KJob;
+ 
+ class Mobypicture : public Choqok::Uploader
+diff --git a/plugins/uploaders/posterous/posterous.h b/plugins/uploaders/posterous/posterous.h
+index c7f6fe1..5c9442d 100644
+--- a/plugins/uploaders/posterous/posterous.h
++++ b/plugins/uploaders/posterous/posterous.h
+@@ -26,6 +26,8 @@
+ 
+ #include "uploader.h"
+ 
++#include <QMap>
++
+ class KJob;
+ 
+ class Posterous : public Choqok::Uploader
+diff --git a/plugins/uploaders/twitgoo/twitgoo.h b/plugins/uploaders/twitgoo/twitgoo.h
+index ee3f496..020080e 100644
+--- a/plugins/uploaders/twitgoo/twitgoo.h
++++ b/plugins/uploaders/twitgoo/twitgoo.h
+@@ -26,6 +26,8 @@
+ 
+ #include "uploader.h"
+ 
++#include <QMap>
++
+ class KJob;
+ 
+ class Twitgoo : public Choqok::Uploader
+-- 
+cgit v1.1
