@@ -56,21 +56,23 @@ MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/xapian/registry.h
 )
 
+multilib_src_test() {
+	emake check VALGRIND=
+}
+
 multilib_src_install() {
 	emake DESTDIR="${D}" install
 }
 
 multilib_src_install_all() {
 	# bug #573466
-	ln -sf "${D}usr/bin/xapian-config" "${D}usr/bin/xapian-config-1.3"
+	dosym xapian-config /usr/bin/xapian-config-1.3
 
-	use doc || rm -rf "${D}usr/share/doc/xapian-core-${PV}"
+	if use doc; then
+		rm -rf "${D}/usr/share/doc/xapian-core-${PV}" || die
+	fi
 
 	dodoc AUTHORS HACKING PLATFORMS README NEWS
 
 	find "${D}" -name "*.la" -type f -delete || die
-}
-
-multilib_src_test() {
-	emake check VALGRIND=
 }
