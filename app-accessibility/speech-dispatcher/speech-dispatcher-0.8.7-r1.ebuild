@@ -103,7 +103,7 @@ pkg_postinst() {
 		editconfig="y"
 	fi
 	if [[ "${editconfig}" == "y" ]]; then
-		ewarn "You must edit ${EROOT}etc/speech-dispatcher/speechd.conf"
+		ewarn "You must edit ${EROOT}/etc/speech-dispatcher/speechd.conf"
 		ewarn "and make sure the settings there match your system."
 		ewarn
 	fi
