@@ -66,6 +66,8 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
+PATCHES=( "${FILESDIR}"/${P}-missing-header.patch )
+
 # tests need network access
 RESTRICT+=" test"
 
