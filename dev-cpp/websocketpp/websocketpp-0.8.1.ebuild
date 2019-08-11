@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,10 +19,13 @@ RDEPEND="${DEPEND}
 	boost? ( dev-libs/boost )
 "
 
-# bug 630450
-RESTRICT="test"
-
-PATCHES=( "${FILESDIR}/${PN}-0.7.0-cmake-install.patch" )
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.7.0-cmake-install.patch
+	"${FILESDIR}"/${PN}-0.8.1-boost-1.70.patch
+	# disable tests that are timing sensitive
+	# https://bugzilla.redhat.com/show_bug.cgi?id=1461069
+	"${FILESDIR}"/${PN}-0.8.1-disable-test_transport-test_transport_asio_timers.patch
+)
 
 src_configure() {
 	local mycmakeargs=(
