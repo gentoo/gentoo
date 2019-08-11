@@ -166,7 +166,7 @@ pkg_postinst() {
 		if [[ -d "${EROOT}/usr/share/doc/${PF}" ]]; then
 			einfo "Please consult the installed documentation for learning the configuration file's syntax."
 			einfo "The documentation and sample configuration files are installed here:"
-			einfo "   ${EROOT}usr/share/doc/${PF}"
+			einfo "   ${EROOT}/usr/share/doc/${PF}"
 		fi
 	fi
 }
