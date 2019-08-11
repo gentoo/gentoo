@@ -11,7 +11,7 @@ SRC_URI="https://github.com/ueno/${PN}/releases/download/${P}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="nls"
 
 CDEPEND="app-i18n/ibus
