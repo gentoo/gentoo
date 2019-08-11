@@ -12,4 +12,4 @@ RESTRICT=bindist test
 SLOT=0
 SRC_URI=https://media.codeweavers.com/pub/crossover/cxlinux/demo/install-crossover-18.1.0.bin
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-single-r1	3a0fc81f484bfdbd9c2b7448015a36e4	python-utils-r1	08e17157a6807add7db1f8d01e7e391f	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56	unpacker	3cd8bad0d31e525cd26be1bfa4e61631
-_md5_=6f26e8e84237e37c22217746b6711053
+_md5_=de5f2c361dc41fd529d2380b374316a4
