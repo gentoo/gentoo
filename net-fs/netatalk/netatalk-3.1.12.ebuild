@@ -144,11 +144,11 @@ pkg_postinst() {
 	for v in ${REPLACING_VERSIONS}; do
 		if [[ $(ver_test ${v} -lt 3) ]]; then
 			for fle in afp_signature.conf afp_voluuid.conf; do
-				if [[ -f "${ROOT}"etc/netatalk/${fle} ]]; then
-					if [[ ! -f "${ROOT}"var/lib/netatalk/${fle} ]]; then
+				if [[ -f "${ROOT}"/etc/netatalk/${fle} ]]; then
+					if [[ ! -f "${ROOT}"/var/lib/netatalk/${fle} ]]; then
 						mv \
-							"${ROOT}"etc/netatalk/${fle} \
-							"${ROOT}"var/lib/netatalk/
+							"${ROOT}"/etc/netatalk/${fle} \
+							"${ROOT}"/var/lib/netatalk/
 					fi
 				fi
 			done
