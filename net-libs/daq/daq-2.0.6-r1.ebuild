@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -66,7 +66,7 @@ src_install() {
 	# This has been bugged upstream
 	if ! use static-libs; then
 		for z in libdaq_static libdaq_static_modules; do
-			rm "${D}"usr/$(get_libdir)/${z}.a
+			rm "${D}"/usr/$(get_libdir)/${z}.a
 		done
 	fi
 }
