@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="dedicated"
 
 RDEPEND="dev-db/sqlite:3
-	<dev-libs/boost-1.70:0=[threads(+)]
+	dev-libs/boost:0=[threads(+)]
 	dev-libs/libgcrypt:0
 	dev-libs/protobuf:0=
 	dev-libs/tinyxml[stl]
@@ -31,6 +31,7 @@ RDEPEND="dev-db/sqlite:3
 		media-libs/sdl-mixer[mod,vorbis]
 	)"
 DEPEND="${RDEPEND}
+	dev-cpp/websocketpp
 	!dedicated? ( dev-qt/qtsql:5 )
 	virtual/pkgconfig"
 
@@ -39,11 +40,18 @@ S="${WORKDIR}/${P}-rc"
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.1.1-boost-1.65-ambiguous-advance.patch
 	"${FILESDIR}"/${PN}-1.1.2-protobuf.patch
+	"${FILESDIR}"/${PN}-1.1.2-boost-1.66.patch
+	"${FILESDIR}"/${PN}-1.1.2-fix-includes.patch
+	# unbundle dev-cpp/websocketpp
+	"${FILESDIR}"/${PN}-1.1.2-system-websockets.patch
 )
 
 src_prepare() {
 	default
 	sed -i 's/!client//' *.pro || die
+
+	# delete bundled dev-cpp/websocketpp to be safe
+	rm -r src/third_party/websocketpp || die
 }
 
 src_configure() {
