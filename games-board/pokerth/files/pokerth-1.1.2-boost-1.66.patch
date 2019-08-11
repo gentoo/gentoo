@@ -1,0 +1,38 @@
+Description: Fix build failure with deprecated io_control in boost 1.66
+Origin: https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=224123
+Last-Update: 2018-09-11
+
+Index: pokerth-1.1.2/src/net/common/clientthread.cpp
+===================================================================
+--- pokerth-1.1.2.orig/src/net/common/clientthread.cpp
++++ pokerth-1.1.2/src/net/common/clientthread.cpp
+@@ -993,8 +993,12 @@
+ 			newSock.reset(new boost::asio::ip::tcp::socket(*m_ioService, tcp::v6()));
+ 		else
+ 			newSock.reset(new boost::asio::ip::tcp::socket(*m_ioService, tcp::v4()));
++#if BOOST_VERSION < 106600
+ 		boost::asio::socket_base::non_blocking_io command(true);
+ 		newSock->io_control(command);
++#else
++		newSock->non_blocking(true);
++#endif
+ 		newSock->set_option(tcp::no_delay(true));
+ 		newSock->set_option(boost::asio::socket_base::keep_alive(true));
+ 
+Index: pokerth-1.1.2/src/net/serveraccepthelper.h
+===================================================================
+--- pokerth-1.1.2.orig/src/net/serveraccepthelper.h
++++ pokerth-1.1.2/src/net/serveraccepthelper.h
+@@ -122,8 +122,12 @@
+ 					  const boost::system::error_code &error)
+ 	{
+ 		if (!error) {
++#if BOOST_VERSION < 106600
+ 			boost::asio::socket_base::non_blocking_io command(true);
+ 			acceptedSocket->io_control(command);
++#else
++			acceptedSocket->non_blocking(true);
++#endif
+ 			acceptedSocket->set_option(typename P::no_delay(true));
+ 			acceptedSocket->set_option(boost::asio::socket_base::keep_alive(true));
+ 			boost::shared_ptr<SessionData> sessionData(new SessionData(acceptedSocket, m_lobbyThread->GetNextSessionId(), m_lobbyThread->GetSessionDataCallback(), *m_ioService));
