@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -12,15 +12,6 @@ SRC_URI="https://github.com/cjlin1/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0/3"
 KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86"
-IUSE="blas"
-
-RDEPEND="
-	blas? ( virtual/blas )
-"
-DEPEND="
-	${RDEPEND}
-	blas? ( virtual/pkgconfig )
-"
 
 src_prepare() {
 	sed -i \
@@ -34,9 +25,6 @@ src_prepare() {
 		-e '/^CFLAGS/d;/^CXXFLAGS/d' \
 		-e 's|$${SHARED_LIB_FLAG}|& $(LDFLAGS)|g' \
 		Makefile || die
-	if use blas; then
-		sed -i -e 's:blas/blas.a::g' Makefile || die
-	fi
 }
 
 src_compile() {
@@ -47,7 +35,6 @@ src_compile() {
 		CXXFLAGS="${CXXFLAGS} -fPIC" \
 		AR="$(tc-getAR) rcv" \
 		RANLIB="$(tc-getRANLIB)" \
-		LIBS="$(usex blas "$( $(tc-getPKG_CONFIG) --libs blas )" blas/blas.a)" \
 		lib all
 }
 

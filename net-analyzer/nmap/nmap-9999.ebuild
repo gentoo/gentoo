@@ -65,6 +65,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-7.25-CXXFLAGS.patch
 	"${FILESDIR}"/${PN}-7.25-libpcre.patch
 	"${FILESDIR}"/${PN}-7.31-libnl.patch
+	"${FILESDIR}"/${PN}-7.80-ac-config-subdirs.patch
 )
 S="${WORKDIR}/${MY_P}"
 
@@ -105,11 +106,6 @@ src_prepare() {
 		-e 's|^Categories=.*|Categories=Network;System;Security;|g' \
 		zenmap/install_scripts/unix/zenmap-root.desktop \
 		zenmap/install_scripts/unix/zenmap.desktop || die
-
-	sed -i \
-		-e '/AC_CONFIG_SUBDIRS(libz)/d' \
-		-e '/AC_CONFIG_SUBDIRS(libssh2)/d' \
-		configure.ac
 
 	cp libdnet-stripped/include/config.h.in{,.nmap-orig} || die
 
