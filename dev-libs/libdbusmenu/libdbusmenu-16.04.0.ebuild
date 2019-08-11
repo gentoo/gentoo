@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -59,6 +59,7 @@ src_prepare() {
 	python_fix_shebang tools
 
 	eapply "${FILESDIR}/${P}-configure-fix.patch"
+	eapply "${FILESDIR}/${P}-werror.patch"
 	eapply_user
 	eautoreconf
 }
