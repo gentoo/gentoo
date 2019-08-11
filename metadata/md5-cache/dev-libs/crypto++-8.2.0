@@ -9,4 +9,4 @@ LICENSE=Boost-1.0
 SLOT=0/8
 SRC_URI=https://www.cryptopp.com/cryptopp820.zip
 _eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	7ba73aee7fe4462b3a745e3645ab92ca	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
-_md5_=861a9b59aabcd7a49981602e167f8bb7
+_md5_=f0936b84e4dfcd017bc7aa9b13b61b63
