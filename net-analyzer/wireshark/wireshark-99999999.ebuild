@@ -15,9 +15,9 @@ KEYWORDS=""
 IUSE="
 	adns androiddump bcg729 brotli +capinfos +captype ciscodump +dftest doc
 	dpauxmon +dumpcap +editcap kerberos libxml2 lua lz4 maxminddb +mergecap
-	+netlink nghttp2 +plugins plugin_ifdemo +pcap +qt5 +randpkt +randpktdump
-	+reordercap sbc selinux +sharkd smi snappy spandsp sshdump ssl sdjournal
-	+text2pcap tfshark +tshark +udpdump zlib
+	+minizip +netlink nghttp2 +plugins plugin_ifdemo +pcap +qt5 +randpkt
+	+randpktdump +reordercap sbc selinux +sharkd smi snappy spandsp sshdump ssl
+	sdjournal +text2pcap tfshark +tshark +udpdump zlib
 "
 S=${WORKDIR}/${P/_/}
 
@@ -34,6 +34,7 @@ CDEPEND="
 	lua? ( >=dev-lang/lua-5.1:* )
 	lz4? ( app-arch/lz4 )
 	maxminddb? ( dev-libs/libmaxminddb )
+	minizip? ( sys-libs/zlib[minizip] )
 	netlink? ( dev-libs/libnl:3 )
 	nghttp2? ( net-libs/nghttp2 )
 	pcap? ( net-libs/libpcap )
@@ -158,6 +159,7 @@ src_configure() {
 		-DENABLE_LIBXML2=$(usex libxml2)
 		-DENABLE_LUA=$(usex lua)
 		-DENABLE_LZ4=$(usex lz4)
+		-DENABLE_MINIZIP=$(usex minizip)
 		-DENABLE_NETLINK=$(usex netlink)
 		-DENABLE_NGHTTP2=$(usex nghttp2)
 		-DENABLE_PCAP=$(usex pcap)
