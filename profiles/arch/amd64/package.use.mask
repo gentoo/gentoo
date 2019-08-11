@@ -71,10 +71,6 @@ net-misc/networkmanager -iwd
 # Dependency sys-cluster/ceph is keyworded for amd64
 net-fs/samba -ceph
 
-# Göktürk Yüksek <gokturk@gentoo.org> (2018-07-06)
-# Dependency app-crypt/jitterentropy is keyworded for amd64
-sys-apps/rng-tools -jitterentropy
-
 # Rick Farina <zerochaos@gentoo.org> (2018-06-27)
 # Catalyst has support for assembling bootloader on this arch
 dev-util/catalyst -system-bootloader
