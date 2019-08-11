@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 PYTHON_COMPAT=( python3_{6,7} )
 
 inherit python-single-r1 toolchain-funcs gnome2-utils
@@ -16,39 +16,38 @@ fi
 
 DESCRIPTION="A modern, hackable, featureful, OpenGL-based terminal emulator"
 HOMEPAGE="https://github.com/kovidgoyal/kitty"
-
 LICENSE="GPL-3"
 SLOT="0"
+
 IUSE="debug doc imagemagick wayland"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-COMMON_DEPS="
+BDEPEND="virtual/pkgconfig"
+DEPEND="
 	${PYTHON_DEPS}
-	>=media-libs/harfbuzz-1.5.0:=
-	sys-apps/dbus
-	sys-libs/zlib
-	media-libs/libpng:0=
-	media-libs/freetype:2
 	media-libs/fontconfig
+	media-libs/freetype:2
+	>=media-libs/harfbuzz-1.5.0:=
+	media-libs/libcanberra
+	media-libs/libpng:0=
+	media-libs/mesa[X(+)]
+	sys-apps/dbus
+	sys-libs/ncurses:=
+	sys-libs/zlib:=
 	x11-libs/libXcursor
-	x11-libs/libXrandr
 	x11-libs/libXi
 	x11-libs/libXinerama
-	x11-libs/libxkbcommon[X]
+	x11-libs/libXrandr
 	x11-libs/libxcb[xkb]
+	x11-libs/libxkbcommon[X]
 	wayland? (
 		dev-libs/wayland
 		>=dev-libs/wayland-protocols-1.17
 	)
 "
 RDEPEND="
-	${COMMON_DEPS}
+	${DEPEND}
 	imagemagick? ( virtual/imagemagick-tools )
-"
-DEPEND="${RDEPEND}
-	media-libs/mesa[X(+)]
-	sys-libs/ncurses
-	virtual/pkgconfig
 "
 [[ ${PV} == *9999 ]] && DEPEND+=" >=dev-python/sphinx-1.7[${PYTHON_USEDEP}]"
 
@@ -89,8 +88,8 @@ src_test() {
 }
 
 src_install() {
-	mkdir -p "${ED}"usr || die
-	cp -r linux-package/* "${ED}usr" || die
+	mkdir -p "${ED}"/usr || die
+	cp -r linux-package/* "${ED}/usr" || die
 	python_fix_shebang "${ED}"
 
 	if ! use doc; then
