@@ -29,7 +29,7 @@ src_compile() {
 
 src_install() {
 	emake DESTDIR="${D}" LDCONFIG=: PYTHON2=: PYTHON3=: \
-		libdir="$(get_libdir)" prefix="${EPREFIX}/usr" \
+		libdir="${EPREFIX}/usr/$(get_libdir)" prefix="${EPREFIX}/usr" \
 		mandir="${EPREFIX}/usr/share/man" install
 	einstalldocs
 	newinitd "${FILESDIR}"/pigpiod.initd pigpiod
