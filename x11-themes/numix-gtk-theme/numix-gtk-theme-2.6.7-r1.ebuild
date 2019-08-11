@@ -24,3 +24,21 @@ DEPEND="${RDEPEND}
 	x11-libs/gdk-pixbuf:2"
 
 ruby_add_depend ">=dev-ruby/sass-3.5"
+
+S="${WORKDIR}/${P}"
+
+src_unpack() {
+	default
+}
+
+src_prepare() {
+	default
+}
+
+src_compile() {
+	default
+}
+
+src_install() {
+	default
+}
