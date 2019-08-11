@@ -1488,7 +1488,6 @@ dev-cpp/libjson-rpc-cpp:redis-client - Build support for Redis client using dev-
 dev-cpp/libjson-rpc-cpp:redis-server - Build support for Redis server using dev-libs/hiredis
 dev-cpp/libjson-rpc-cpp:stubgen - Build header stub code generator (needed for development and when pregenerated headers are not bundled)
 dev-cpp/sourcetrail:examples - Install example projects.
-dev-cpp/websocketpp:boost - Use dev-libs/boost instead of C++11
 dev-cpp/xsd:ace - Enable support for serializing to/from an ACE CDR stream
 dev-db/aerospike-server-community:tools - Install extra tools
 dev-db/clickhouse:client - Build CLI client.

@@ -1,0 +1,14 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=>=dev-libs/glib-2.42:= introspection? ( dev-libs/gobject-introspection:= ) dev-util/intltool dev-util/gtk-doc-am sys-devel/gettext virtual/pkgconfig vala? ( || ( dev-lang/vala:0.46 dev-lang/vala:0.44 dev-lang/vala:0.42 dev-lang/vala:0.40 dev-lang/vala:0.36 ) )
+DESCRIPTION=A basic utility library for the Xfce desktop environment
+EAPI=7
+HOMEPAGE=https://git.xfce.org/xfce/libxfce4util/
+IUSE=introspection vala
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~x64-solaris ~x86-solaris
+LICENSE=LGPL-2+ GPL-2+
+RDEPEND=>=dev-libs/glib-2.42:= introspection? ( dev-libs/gobject-introspection:= )
+REQUIRED_USE=vala? ( introspection )
+SLOT=0/7
+SRC_URI=https://archive.xfce.org/src/xfce/libxfce4util/4.14/libxfce4util-4.14.0.tar.bz2
+_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56	vala	682da46cf615b9f7a7d3680058139dcd
+_md5_=2897a355f0b462fa99b0757dfe27538a

@@ -3027,7 +3027,7 @@ dev-cpp/tclap 1.2.1 1.2.2: Simple templatized C++ library for parsing command li
 dev-cpp/threadpool 0.2.5-r1: A cross-platform C++ thread pool library (built on top of Boost)
 dev-cpp/tree 2.81: An STL-like tree class
 dev-cpp/waylandpp 0.2.3 0.2.4 0.2.5 9999: Wayland C++ bindings
-dev-cpp/websocketpp 0.8.1: C++/Boost Asio based websocket client/server library
+dev-cpp/websocketpp 0.8.1-r1: C++/Boost Asio based websocket client/server library
 dev-cpp/xsd 4.0.0: An open-source, cross-platform W3C XML Schema to C++ data binding compiler
 dev-cpp/yaml-cpp 0.6.2: YAML parser and emitter in C++
 dev-db/4store 1.1.5-r1: 4store is an efficient, scalable and stable RDF database
@@ -10957,7 +10957,7 @@ dev-util/wstool 0.1.13 0.1.17 9999: Commands to manage several local SCM reposit
 dev-util/wxglade 0.8.2: Glade-like GUI designer which can generate Python, Perl, C++ or XRC code
 dev-util/xdelta 1.1.4-r1 3.0.11 3.1.0: Computes changes between binary or text files and creates deltas
 dev-util/xesam-tools 0.7.0-r1: Development tools and examples for the Xesam desktop search API
-dev-util/xfce4-dev-tools 4.12.0-r1 4.13.0: A set of scripts and m4/autoconf macros that ease build system maintenance
+dev-util/xfce4-dev-tools 4.12.0-r1 4.13.0 4.14.0: A set of scripts and m4/autoconf macros that ease build system maintenance
 dev-util/xmlindent 0.2.17-r2: XML stream reformatter for ASCII text, but not UTF-8, written in ANSI C
 dev-util/xxdi 1.0.0: Simple alternative to vim's 'xxd -i' mode
 dev-util/xxdiff 4.0.1_p20170622: A graphical file and directories comparator and merge tool
@@ -18537,7 +18537,7 @@ www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositor
 www-apps/wiliki 0.6.1-r1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
 www-apps/wordpress 5.1 5.1.1 5.2 5.2.1: Wordpress PHP and MySQL based content management system (CMS)
 www-apps/zeppelin-bin 0.8.1: Web-based interactive data analytics notebook launcher
-www-client/chromium 76.0.3809.100 77.0.3865.10: Open-source version of Google Chrome web browser
+www-client/chromium 76.0.3809.87 76.0.3809.100 77.0.3865.10: Open-source version of Google Chrome web browser
 www-client/ck4up 1.2: Check for Updates on HTTP pages
 www-client/dillo 3.0.5 3.0.5-r1 9999: Lean FLTK based web browser
 www-client/elinks 0.12_pre6-r1 0.12_pre6-r4 0.13_pre_pre20180225 9999: Advanced and well-established text-mode web browser
@@ -19576,7 +19576,7 @@ x11-wm/xpra 2.2.2-r1 2.2.6-r2 2.4.3: X Persistent Remote Apps (xpra) and Partiti
 xfce-base/exo 0.12.4 0.12.7: Extensions, widgets and framework library with session support for Xfce
 xfce-base/garcon 0.6.2 0.6.3 0.6.4: Xfce's freedesktop.org specification compatible menu implementation library
 xfce-base/libxfce4ui 4.13.4 4.13.7: Unified widget and session management libs for Xfce
-xfce-base/libxfce4util 4.13.2 4.13.5: A basic utility library for the Xfce desktop environment
+xfce-base/libxfce4util 4.13.2 4.13.5 4.14.0: A basic utility library for the Xfce desktop environment
 xfce-base/thunar 1.6.16 1.6.17 1.8.7 1.8.8: File manager for the Xfce desktop environment
 xfce-base/xfce4-appfinder 4.12.0-r2 4.13.5: A tool to find and launch installed applications for the Xfce desktop
 xfce-base/xfce4-meta 4.12-r1 4.14_pre1 4.14_pre2 4.14_pre3: The Xfce Desktop Environment (meta package)
