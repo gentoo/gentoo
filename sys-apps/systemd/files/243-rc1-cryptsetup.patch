@@ -1,0 +1,148 @@
+From f4ea8432e67110b73b07dd0e47a5339d83b350fb Mon Sep 17 00:00:00 2001
+From: Lennart Poettering <lennart@poettering.net>
+Date: Wed, 31 Jul 2019 09:38:15 +0200
+Subject: [PATCH] cryptsetup-generator: fix coverity issue
+
+Fixes coverity issue 1403772
+---
+ src/cryptsetup/cryptsetup-generator.c | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/src/cryptsetup/cryptsetup-generator.c b/src/cryptsetup/cryptsetup-generator.c
+index c51bb9ae189..960f4762b7d 100644
+--- a/src/cryptsetup/cryptsetup-generator.c
++++ b/src/cryptsetup/cryptsetup-generator.c
+@@ -46,30 +46,30 @@ STATIC_DESTRUCTOR_REGISTER(arg_disks, hashmap_freep);
+ STATIC_DESTRUCTOR_REGISTER(arg_default_options, freep);
+ STATIC_DESTRUCTOR_REGISTER(arg_default_keyfile, freep);
+ 
+-static int split_keyspec(const char *keyspec, char **keyfile, char **keydev) {
++static int split_keyspec(const char *keyspec, char **ret_keyfile, char **ret_keydev) {
+         _cleanup_free_ char *kfile = NULL, *kdev = NULL;
+-        char *c;
++        const char *c;
+ 
+         assert(keyspec);
+-        assert(keyfile);
+-        assert(keydev);
++        assert(ret_keyfile);
++        assert(ret_keydev);
+ 
+         c = strrchr(keyspec, ':');
+         if (c) {
+                 kfile = strndup(keyspec, c-keyspec);
+                 kdev = strdup(c + 1);
+-                if (!*kfile || !*kdev)
++                if (!kfile || !kdev)
+                         return log_oom();
+         } else {
+                 /* No keydev specified */
+                 kfile = strdup(keyspec);
+                 kdev = NULL;
+-                if (!*kfile)
++                if (!kfile)
+                         return log_oom();
+         }
+ 
+-        *keyfile = TAKE_PTR(kfile);
+-        *keydev = TAKE_PTR(kdev);
++        *ret_keyfile = TAKE_PTR(kfile);
++        *ret_keydev = TAKE_PTR(kdev);
+ 
+         return 0;
+ }
+From 5d2100dc4c32abbce4109e75cbfbbef6e1b2b7b1 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Zbigniew=20J=C4=99drzejewski-Szmek?= <zbyszek@in.waw.pl>
+Date: Thu, 1 Aug 2019 08:13:13 +0200
+Subject: [PATCH] cryptsetup: use unabbrieviated variable names
+
+Now that "ret_" has been added to the output variables, we can name
+the internal variables without artificial abbrevs.
+---
+ src/cryptsetup/cryptsetup-generator.c | 18 +++++++++---------
+ 1 file changed, 9 insertions(+), 9 deletions(-)
+
+diff --git a/src/cryptsetup/cryptsetup-generator.c b/src/cryptsetup/cryptsetup-generator.c
+index 960f4762b7d..84483143945 100644
+--- a/src/cryptsetup/cryptsetup-generator.c
++++ b/src/cryptsetup/cryptsetup-generator.c
+@@ -47,7 +47,7 @@ STATIC_DESTRUCTOR_REGISTER(arg_default_options, freep);
+ STATIC_DESTRUCTOR_REGISTER(arg_default_keyfile, freep);
+ 
+ static int split_keyspec(const char *keyspec, char **ret_keyfile, char **ret_keydev) {
+-        _cleanup_free_ char *kfile = NULL, *kdev = NULL;
++        _cleanup_free_ char *keyfile = NULL, *keydev = NULL;
+         const char *c;
+ 
+         assert(keyspec);
+@@ -56,20 +56,20 @@ static int split_keyspec(const char *keyspec, char **ret_keyfile, char **ret_key
+ 
+         c = strrchr(keyspec, ':');
+         if (c) {
+-                kfile = strndup(keyspec, c-keyspec);
+-                kdev = strdup(c + 1);
+-                if (!kfile || !kdev)
++                keyfile = strndup(keyspec, c-keyspec);
++                keydev = strdup(c + 1);
++                if (!keyfile || !keydev)
+                         return log_oom();
+         } else {
+                 /* No keydev specified */
+-                kfile = strdup(keyspec);
+-                kdev = NULL;
+-                if (!kfile)
++                keyfile = strdup(keyspec);
++                keydev = NULL;
++                if (!keyfile)
+                         return log_oom();
+         }
+ 
+-        *ret_keyfile = TAKE_PTR(kfile);
+-        *ret_keydev = TAKE_PTR(kdev);
++        *ret_keyfile = TAKE_PTR(keyfile);
++        *ret_keydev = TAKE_PTR(keydev);
+ 
+         return 0;
+ }
+From fef716b28be6e866b8afe995805d5ebe2af6bbfa Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Zbigniew=20J=C4=99drzejewski-Szmek?= <zbyszek@in.waw.pl>
+Date: Thu, 1 Aug 2019 08:15:43 +0200
+Subject: [PATCH] cryptsetup: don't assert on variable which is optional
+
+https://github.com/systemd/systemd/commit/50d2eba27b9bfc77ef6b40e5721713846815418b#commitcomment-34519739
+
+In add_crypttab_devices() split_keyspec is called on the keyfile argument,
+which may be NULL.
+---
+ src/cryptsetup/cryptsetup-generator.c | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/src/cryptsetup/cryptsetup-generator.c b/src/cryptsetup/cryptsetup-generator.c
+index 84483143945..4815ded753f 100644
+--- a/src/cryptsetup/cryptsetup-generator.c
++++ b/src/cryptsetup/cryptsetup-generator.c
+@@ -50,10 +50,14 @@ static int split_keyspec(const char *keyspec, char **ret_keyfile, char **ret_key
+         _cleanup_free_ char *keyfile = NULL, *keydev = NULL;
+         const char *c;
+ 
+-        assert(keyspec);
+         assert(ret_keyfile);
+         assert(ret_keydev);
+ 
++        if (!keyspec) {
++                *ret_keyfile = *ret_keydev = NULL;
++                return 0;
++        }
++
+         c = strrchr(keyspec, ':');
+         if (c) {
+                 keyfile = strndup(keyspec, c-keyspec);
+@@ -567,7 +571,7 @@ static int add_crypttab_devices(void) {
+         }
+ 
+         for (;;) {
+-                _cleanup_free_ char *line = NULL, *name = NULL, *device = NULL, *keydev = NULL, *keyfile = NULL, *keyspec = NULL, *options = NULL;
++                _cleanup_free_ char *line = NULL, *name = NULL, *device = NULL, *keyspec = NULL, *options = NULL, *keyfile = NULL, *keydev = NULL;
+                 crypto_device *d = NULL;
+                 char *l, *uuid;
+                 int k;
