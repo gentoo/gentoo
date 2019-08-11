@@ -56,6 +56,8 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
+PATCHES=( "${FILESDIR}"/${P}-missing-header.patch )
+
 src_prepare() {
 	if ! use webkit; then
 		punt_bogus_dep Qt5 WebKit
