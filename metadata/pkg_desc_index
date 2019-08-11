@@ -17251,7 +17251,7 @@ sys-apps/fbset 2.1: A utility to set the framebuffer videomode
 sys-apps/fd 7.3.0: Alternative to find that provides sensible defaults for 80% of the use cases
 sys-apps/file 5.36 5.37 9999: identify a file's format by scanning binary data for patterns
 sys-apps/findutils 4.6.0-r1: GNU utilities for finding files
-sys-apps/firejail 0.9.50 0.9.60-r1: Security sandbox for any type of processes
+sys-apps/firejail 0.9.50 0.9.60-r1 9999: Security sandbox for any type of processes
 sys-apps/firejail-lts 0.9.38.10 0.9.38.12 0.9.56.2 0.9.56.2-r1: Security sandbox for any type of processes; LTS version
 sys-apps/fix-gnustack 0.1: Utility to report and remove the executable flag from an ELF object's GNU_STACK
 sys-apps/flashrom 0.9.6.1 0.9.7 0.9.8 0.9.9 1.0 9999: Utility for reading, writing, erasing and verifying flash ROM chips
@@ -19635,7 +19635,7 @@ xfce-extra/xfce4-vala 4.10.3-r5 4.10.3-r6: Vala bindings for the Xfce desktop en
 xfce-extra/xfce4-verve-plugin 2.0.0: A comfortable command line plugin for the Xfce panel
 xfce-extra/xfce4-volumed-pulse 0.2.3: Daemon to control volume up/down and mute keys for pulseaudio
 xfce-extra/xfce4-wavelan-plugin 0.6.0: A panel plug-in to display wireless interface statistics
-xfce-extra/xfce4-weather-plugin 0.9.1: A weather plug-in for the Xfce desktop environment
+xfce-extra/xfce4-weather-plugin 0.9.1 0.10.0: A weather plug-in for the Xfce desktop environment
 xfce-extra/xfce4-whiskermenu-plugin 2.3.2: Alternate application launcher for Xfce
 xfce-extra/xfce4-windowck-plugin 0.4.6: Xfce plugin puts the maximized window title and windows buttons on the panel
 xfce-extra/xfce4-xkb-plugin 0.8.1: XKB layout switching panel plug-in for the Xfce desktop environment
