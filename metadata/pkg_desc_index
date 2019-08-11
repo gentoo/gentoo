@@ -10985,7 +10985,7 @@ dev-vcs/cvsync 2014.08.24.014706 9999: portable CVS repository synchronization u
 dev-vcs/darcs 2.8.4-r6 2.10.1 2.10.3-r1 2.12.0 2.12.4 2.12.5: a distributed, interactive, smart revision control system
 dev-vcs/easygit 1.7.5.2: Easy GIT (eg), a frontend for git designed for former cvs and svn users
 dev-vcs/fossil 2.8 2.9: Simple, high-reliability, source control management, and more
-dev-vcs/git 2.19.2 2.21.0 2.21.0-r2 2.22.0 2.23.0_rc1 9999 9999-r1 9999-r2 9999-r3: stupid content tracker: distributed VCS designed for speed and efficiency
+dev-vcs/git 2.19.2 2.21.0 2.21.0-r2 2.22.0 2.23.0_rc2 9999 9999-r1 9999-r2 9999-r3: stupid content tracker: distributed VCS designed for speed and efficiency
 dev-vcs/git-annex 6.20170818: manage files with git, without checking their contents into git
 dev-vcs/git-bz 0.2015.09.08 9999: Bugzilla subcommand for git
 dev-vcs/git-cola 2.11 3.2: The highly caffeinated git GUI
@@ -14904,7 +14904,7 @@ net-im/kadu 4.3-r2: An open source Gadu-Gadu and Jabber/XMPP protocol Instant Me
 net-im/kouchat 1.1.0: KouChat is a simple serverless chat client for local area networks
 net-im/libcommuni 3.5.0_p20180116: A cross-platform IRC framework written with Qt
 net-im/librvp 0.9.7: An RVP (Microsoft Exchange Instant Messaging) plugin for Pidgin
-net-im/mattermost-desktop-bin 4.0.0: Mattermost Desktop application
+net-im/mattermost-desktop-bin 4.2.3: Mattermost Desktop application
 net-im/mcabber 1.1.0-r1 9999: A small Jabber console client with various features, like MUC, SSL, PGP
 net-im/minbif 1.0.5-r2: IRC gateway to IM networks
 net-im/openfire 4.2.3-r1 4.2.3-r2: Openfire (formerly wildfire) real time collaboration (RTC) server
