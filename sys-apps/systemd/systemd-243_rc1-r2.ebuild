@@ -449,6 +449,14 @@ pkg_postinst() {
 		systemctl --root="${ROOT:-/}" enable "${ENABLED_UNITS[@]}"
 	fi
 
+	if [[ -z ${REPLACING_VERSIONS} ]]; then
+		if type systemctl &>/dev/null; then
+			systemctl --root="${ROOT:-/}" enable getty@.service remote-fs.target || FAIL=1
+		fi
+		elog "To enable a useful set of services, run the following:"
+		elog "  systemctl preset-all --preset-mode=enable-only"
+	fi
+
 	if [[ -L ${EROOT}/var/lib/systemd/timesync ]]; then
 		rm "${EROOT}/var/lib/systemd/timesync"
 	fi
@@ -464,11 +472,6 @@ pkg_postinst() {
 		eerror "for errors. You may need to clean up your system and/or try installing"
 		eerror "systemd again."
 		eerror
-	fi
-
-	if [[ -z ${REPLACING_VERSIONS} ]]; then
-		elog "To enable a useful set of services, run the following:"
-		elog "  systemctl preset-all"
 	fi
 }
 
