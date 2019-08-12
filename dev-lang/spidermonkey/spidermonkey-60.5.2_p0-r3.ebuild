@@ -60,7 +60,7 @@ src_prepare() {
 	eautoconf
 
 	# remove options that are not correct from js-config
-	sed '/ib-filenames/d' -i "${S}"/js/src/build/js-config.in
+	sed '/lib-filenames/d' -i "${S}"/js/src/build/js-config.in || die "failed to remove invalid option from js-config"
 
 	# there is a default config.cache that messes everything up
 	rm -f "${S}/js/src"/config.cache || die
