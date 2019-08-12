@@ -193,7 +193,7 @@
 
 PYTHON_COMPAT=( python{2_6,2_7} )
 
-inherit toolchain-funcs python-any-r1
+inherit toolchain-funcs
 [[ ${EAPI:-0} == [012345] ]] && inherit epatch
 [[ ${EAPI:-0} == [0123456] ]] && inherit estack eapi7-ver
 case ${EAPI:-0} in
@@ -621,6 +621,8 @@ if [[ ${ETYPE} == sources ]]; then
 				kernel_is le 2 6 ${DEBLOB_MAX_VERSION} && \
 					K_DEBLOB_AVAILABLE=1
 		if [[ ${K_DEBLOB_AVAILABLE} == "1" ]] ; then
+			inherit python-any-r1
+
 			IUSE="${IUSE} deblob"
 
 			# Reflect that kernels contain firmware blobs unless otherwise
