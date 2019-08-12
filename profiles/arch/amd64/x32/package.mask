@@ -4,6 +4,7 @@
 # Hasan ÇALIŞIR <hasan.calisir@psauxit.com> (2019-08-12)
 # requires net-libs/nodejs | sys-apps/yarn
 >=net-analyzer/greenbone-security-assistant-8.0.1
+net-analyzer/gvm
 
 # Marek Szuba <marecki@gentoo.org> (2019-07-26)
 # Binary-only package with no x32 support
