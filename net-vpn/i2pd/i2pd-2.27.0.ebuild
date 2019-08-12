@@ -1,12 +1,13 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit systemd user cmake-utils eapi7-ver toolchain-funcs
+EAPI=7
+inherit systemd cmake-utils toolchain-funcs
 
 DESCRIPTION="A C++ daemon for accessing the I2P anonymous network"
 HOMEPAGE="https://github.com/PurpleI2P/i2pd"
 SRC_URI="https://github.com/PurpleI2P/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~x86"
@@ -14,6 +15,8 @@ IUSE="cpu_flags_x86_aes cpu_flags_x86_avx i2p-hardening libressl static +upnp we
 
 # if using libressl, require >=boost-1.65, see #597798
 RDEPEND="
+	acct-user/i2pd
+	acct-group/i2pd
 	!static? (
 		dev-libs/boost:=[threads]
 		!libressl? ( dev-libs/openssl:0=[-bindist] )
@@ -36,14 +39,12 @@ DEPEND="${RDEPEND}
 	)
 	websocket? ( dev-cpp/websocketpp )"
 
-I2PD_USER=i2pd
-I2PD_GROUP=i2pd
-
 CMAKE_USE_DIR="${S}/build"
 
 DOCS=( README.md contrib/i2pd.conf contrib/tunnels.conf )
 
-PATCHES=( "${FILESDIR}/${PN}-2.14.0-fix_installed_components.patch" )
+PATCHES=( "${FILESDIR}/${PN}-2.14.0-fix_installed_components.patch"
+	"${FILESDIR}/i2pd-2.25.0-lib-path.patch" )
 
 pkg_pretend() {
 	if tc-is-gcc && ! ver_test "$(gcc-version)" -ge "4.7"; then
@@ -77,20 +78,9 @@ src_install() {
 	doins contrib/i2pd.conf
 	doins contrib/tunnels.conf
 
-	# grant i2pd group read and write access to config files
-	fowners "root:${I2PD_GROUP}" \
-		/etc/i2pd/i2pd.conf \
-		/etc/i2pd/tunnels.conf
-	fperms 660 \
-		/etc/i2pd/i2pd.conf \
-		/etc/i2pd/tunnels.conf
-
 	# working directory
-	keepdir /var/lib/i2pd
 	insinto /var/lib/i2pd
 	doins -r contrib/certificates
-	fowners "${I2PD_USER}:${I2PD_GROUP}" /var/lib/i2pd/
-	fperms 700 /var/lib/i2pd/
 
 	# add /var/lib/i2pd/certificates to CONFIG_PROTECT
 	doenvd "${FILESDIR}/99i2pd"
@@ -103,11 +93,6 @@ src_install() {
 	# logrotate
 	insinto /etc/logrotate.d
 	newins "${FILESDIR}/i2pd-2.6.0-r3.logrotate" i2pd
-}
-
-pkg_setup() {
-	enewgroup "${I2PD_GROUP}"
-	enewuser "${I2PD_USER}" -1 -1 /var/lib/run/i2pd "${I2PD_GROUP}"
 }
 
 pkg_postinst() {
