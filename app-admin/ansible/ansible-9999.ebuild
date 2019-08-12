@@ -33,7 +33,11 @@ RDEPEND="
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	>=dev-python/packaging-16.6[${PYTHON_USEDEP}]
-	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
+	doc? (
+		dev-python/sphinx[${PYTHON_USEDEP}]
+		dev-python/sphinx-notfound-page[${PYTHON_USEDEP}]
+		>=dev-python/pygments-2.4.0[${PYTHON_USEDEP}]
+	)
 	test? (
 		${RDEPEND}
 		dev-python/nose[${PYTHON_USEDEP}]
