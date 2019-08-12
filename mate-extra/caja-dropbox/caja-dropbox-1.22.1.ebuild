@@ -17,6 +17,7 @@ LICENSE="GPL-2"
 SLOT="0"
 
 IUSE="debug"
+REQUIRED_USE=${PYTHON_REQUIRED_USE}
 
 COMMON_DEPEND="
 	dev-libs/atk
@@ -29,7 +30,8 @@ COMMON_DEPEND="
 	x11-libs/gdk-pixbuf:2
 	>=x11-libs/gtk+-3.22:3
 	x11-libs/libXinerama
-	x11-libs/pango"
+	x11-libs/pango
+	${PYTHON_DEPS}"
 
 RDEPEND="${COMMON_DEPEND}
 	net-misc/dropbox"
