@@ -198,21 +198,14 @@ cygwin-rebase-merge() {
 }
 
 cygwin-rebase-post_pkg_prerm() {
-	# The pending list is installed as part of the package, but
-	# the merged list is not.  Move from merged back to pending,
-	# in case the unmerge fails...
-	local pendingdir=$(cygwin-rebase-get_pendingdir)
+	# The pending list is registered as being installed with the package, but
+	# the merged list is not.  Just remove the unregistered one.
 	local mergeddir=$(cygwin-rebase-get_mergeddir)
 	local listname=$(cygwin-rebase-get_listname)
 	(
 		set -e
 		cd "${EROOT}"
 		[[ -w ./${mergeddir}/. ]]
-		[[ -w ./${pendingdir}/. ]]
-		if [[ -s ./${mergeddir}/${listname} ]]
-		then
-			mv -f "./${mergeddir}/${listname}" "./${pendingdir}/${listname}" || :
-		fi
 		rm -f "./${mergeddir}/${listname}"
 	)
 }
