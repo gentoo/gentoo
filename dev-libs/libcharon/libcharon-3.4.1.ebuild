@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,5 +16,9 @@ LICENSE="LGPL-3"
 SLOT="0/3"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
+REQUIRED_USE=${PYTHON_REQUIRED_USE}
+
+RDEPEND=${PYTHON_DEPS}
+DEPEND=${RDEPEND}
 
 S="${WORKDIR}/${MY_PN}-${PV}"
