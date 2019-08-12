@@ -7,6 +7,7 @@ acct-group/disk 0: System group: disk
 acct-group/dnscrypt-proxy 0: Group for net-dns/dnscrypt-proxy
 acct-group/ftp 0: File Transfer Protocol server user
 acct-group/gamestat 0: Group for shared high-score and game state files
+acct-group/i2pd 0: Group for the system-wide net-vpn/i2pd server
 acct-group/input 0: System group: input
 acct-group/kmem 0: System group: kmem
 acct-group/kvm 0: System group: kvm
@@ -40,6 +41,7 @@ acct-group/wheel 0: System group: wheel
 acct-user/burp 0: User for the app-backup/burp server
 acct-user/dnscrypt-proxy 0: User for net-dns/dnscrypt-proxy
 acct-user/ftp 0: File Transfer Protocol server user
+acct-user/i2pd 0: User for the system-wide net-vpn/i2pd server
 acct-user/logstash 0: Logstash program user
 acct-user/mail 0: Mail program user
 acct-user/man 0: user for man page viewer
@@ -1125,7 +1127,7 @@ app-editors/padre 1.0.0-r1: Perl Application Development and Refactoring Environ
 app-editors/pluma 1.22.0 1.22.1: Pluma text editor for the MATE desktop
 app-editors/qemacs 0.4.1_pre20150916 0.4.1_pre20170225: QEmacs is a very small but powerful UNIX editor
 app-editors/qhexedit2 0.8.4 0.8.4_p20170719: Hex editor library, Qt application written in C++ with Python bindings
-app-editors/qxmledit 0.9.10 0.9.12: Simple Qt-based XML editor
+app-editors/qxmledit 0.9.12: Simple Qt-based XML editor
 app-editors/retext 7.0.3 7.0.4-r1 9999: Simple editor for Markdown and reStructuredText
 app-editors/sandy 0.4: an ncurses text editor with an easy-to-read, hackable C source
 app-editors/scite 3.5.5 3.6.5-r1 4.0.2 4.1.3 4.2.0: A very powerful, highly configurable, small editor with syntax coloring
@@ -12455,7 +12457,7 @@ kde-misc/plasma-pass 1.0.0: Plasma applet to access password from pass
 kde-misc/plasma-redshift-control 1.0.18-r1: Plasma 5 applet for controlling redshift
 kde-misc/playbar2 2.5-r1: MPRIS2 client, written in QML for Plasma 5
 kde-misc/rsibreak 0.12.9-r1 0.12.10-r1: Small utility which bothers you at certain intervals
-kde-misc/skanlite 2.1.0.1 2.1.0.1-r1: KDE image scanning application
+kde-misc/skanlite 2.1.0.1-r1: KDE image scanning application
 kde-misc/systemd-kcm 1.2.1: Plasma control module for systemd
 kde-misc/tellico 3.2 3.2.1: Collection manager based on KDE Frameworks
 kde-misc/wacomtablet 3.1.1-r1 3.2.0: System settings module for Wacom tablets
@@ -13641,7 +13643,7 @@ media-plugins/gst-plugins-x265 1.14.3: H.265 encoder plugin for GStreamer
 media-plugins/gst-plugins-ximagesrc 1.14.4: X11 video capture stream plugin for GStreamer
 media-plugins/gst-plugins-zbar 1.14.3: Bar codes detection in video streams for GStreamer
 media-plugins/gst-transcoder 1.8.2-r1: GStreamer Transcoding API
-media-plugins/hexter 1.0.2 1.1.0: Yamaha DX7 modeling DSSI plugin
+media-plugins/hexter 1.1.0: Yamaha DX7 modeling DSSI plugin
 media-plugins/imlib2_loaders 1.5.1: Additional image loaders for Imlib2
 media-plugins/ir_lv2 1.3.2: LV2 convolver plugin especially for creating reverb effects
 media-plugins/kodi-audiodecoder-modplug 1.1.0-r1 2.0.0 9999: Modplug decoder addon for Kodi
@@ -15069,7 +15071,7 @@ net-libs/libiio 0.15-r1 9999: Library for interfacing with IIO devices
 net-libs/libircclient 1.8 1.10: Small but powerful library implementing the client-server IRC protocol
 net-libs/libiscsi 1.18.0 9999: iscsi client library and utilities
 net-libs/libisds 0.10.6 0.10.7 0.10.8 9999: Client library for accessing ISDS Soap services
-net-libs/libktorrent 2.1-r1 2.1-r2: BitTorrent library based on KDE Frameworks
+net-libs/libktorrent 2.1-r2: BitTorrent library based on KDE Frameworks
 net-libs/libkvkontakte 5.0.0-r1: Library for accessing the features of social networking site vkontakte.ru
 net-libs/liblockfile 1.09 1.14-r1 1.15: Implements functions designed to lock the standard mailboxes
 net-libs/libmbim 1.6.0 1.10.0 1.12.2 1.12.4 1.14.0 1.14.4 1.16.0 1.16.2 1.18.0: Mobile Broadband Interface Model (MBIM) modem protocol helper library
@@ -15712,7 +15714,7 @@ net-p2p/go-ethereum 1.8.15: Official golang implementation of the Ethereum proto
 net-p2p/go-ipfs-bin 0.4.18 0.4.19 0.4.20: Main implementation of IPFS
 net-p2p/gtk-gnutella 1.1.14 1.1.15: A GTK+ Gnutella client
 net-p2p/gtorrentviewer 0.2b: A GTK2-based viewer and editor for BitTorrent meta files
-net-p2p/ktorrent 5.1.1 5.1.1-r1: Powerful BitTorrent client based on KDE Frameworks
+net-p2p/ktorrent 5.1.1-r1: Powerful BitTorrent client based on KDE Frameworks
 net-p2p/litecoind 0.10.4.0: P2P Internet currency based on Bitcoin but easier to mine
 net-p2p/mktorrent 1.0-r1 1.1_p20180502: Simple command line utility to create BitTorrent metainfo files
 net-p2p/mktorrent-borg 0.9.9: Console .torrent file creator. It support Multi Trackers (tier groups)
@@ -15821,7 +15823,7 @@ net-vpn/corkscrew 2.0: a tool for tunneling SSH through HTTP proxies
 net-vpn/freelan 2.1 2.2: Peer-to-peer VPN software that abstracts a LAN over the Internet
 net-vpn/httptunnel 3.3-r2: httptunnel can create IP tunnels through firewalls/proxies using HTTP
 net-vpn/i2p 0.9.39 0.9.40: A privacy-centric, anonymous network
-net-vpn/i2pd 2.24.0 2.25.0 2.25.0-r1 2.26.0: A C++ daemon for accessing the I2P anonymous network
+net-vpn/i2pd 2.25.0-r1 2.26.0 2.27.0: A C++ daemon for accessing the I2P anonymous network
 net-vpn/iodine 0.7.0-r2: IP over DNS tunnel
 net-vpn/ipsec-tools 0.8.2-r5: A port of KAME's IPsec utilities to the Linux-2.6 IPsec implementation
 net-vpn/isatapd 0.9.7-r2: Creates and maintains an ISATAP tunnel (rfc5214)
@@ -17472,7 +17474,7 @@ sys-apps/vbetool 1.1: Run real-mode video BIOS code to alter hw state (i.e. rein
 sys-apps/watchdog 5.15: A software watchdog and /dev/watchdog daemon
 sys-apps/which 2.21: Prints out location of specified executables that are in your path
 sys-apps/x86info 1.30: Dave Jones' handy, informative x86 CPU diagnostic utility
-sys-apps/xdg-desktop-portal 1.2.0 1.4.2: Desktop integration portal
+sys-apps/xdg-desktop-portal 1.4.2: Desktop integration portal
 sys-apps/xinetd 2.3.15-r3 2.3.15.3 2.3.15.3-r2 2.3.15.4: powerful replacement for inetd
 sys-apps/xmbmon 2.0.5-r1: Mother Board Monitor Program for X Window System
 sys-apps/yarn 1.9.4 1.10.1 1.12.3 1.13.0 1.15.2 1.16.0 1.17.3: Fast, reliable, and secure node dependency management
