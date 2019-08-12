@@ -49,6 +49,7 @@ CDEPEND="
 	lmfit? ( sci-libs/lmfit )
 	mkl? ( sci-libs/mkl )
 	mpi? ( virtual/mpi )
+	${PYTHON_DEPS}
 	"
 DEPEND="${CDEPEND}
 	virtual/pkgconfig
@@ -67,7 +68,8 @@ REQUIRED_USE="
 	|| ( single-precision double-precision )
 	cuda? ( single-precision )
 	cuda? ( !opencl )
-	mkl? ( !blas !fftw !lapack )"
+	mkl? ( !blas !fftw !lapack )
+	${PYTHON_REQUIRED_USE}"
 
 DOCS=( AUTHORS README )
 

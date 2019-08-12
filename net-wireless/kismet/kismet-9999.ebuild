@@ -34,6 +34,7 @@ HOMEPAGE="https://www.kismetwireless.net"
 LICENSE="GPL-2"
 SLOT="0/${PV}"
 IUSE="lm_sensors mousejack networkmanager +pcre selinux +suid"
+REQUIRED_USE=${PYTHON_REQUIRED_USE}
 
 CDEPEND="
 	${PYTHON_DEPS}
