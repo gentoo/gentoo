@@ -1,0 +1,14 @@
+BDEPEND=>=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 ppc-aix? ( >=sys-devel/libtool-2.2.6a sys-devel/m4 >=x11-misc/util-macros-1.18 >=media-fonts/font-util-1.2.0 ) x86-winnt? ( >=sys-devel/libtool-2.2.6a sys-devel/m4 >=x11-misc/util-macros-1.18 >=media-fonts/font-util-1.2.0 ) virtual/pkgconfig
+DEFINED_PHASES=compile configure install prepare pretend setup unpack
+DEPEND=>=dev-libs/libinput-1.7.0:0= x11-base/xorg-proto x11-base/xorg-proto >=x11-base/xorg-server-1.20[xorg]
+DESCRIPTION=X.org input driver based on libinput
+EAPI=7
+HOMEPAGE=https://www.x.org/wiki/ https://gitlab.freedesktop.org/xorg/driver/xf86-input-libinput
+IUSE=kernel_linux
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86
+LICENSE=MIT
+RDEPEND=>=dev-libs/libinput-1.7.0:0= x11-base/xorg-server:= >=x11-base/xorg-server-1.20[xorg]
+SLOT=0
+SRC_URI=https://www.x.org/releases/individual/driver/xf86-input-libinput-0.29.0.tar.bz2
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	7ba73aee7fe4462b3a745e3645ab92ca	libtool	f143db5a74ccd9ca28c1234deffede96	linux-info	953c3b1c472dcadbf62098a9301327f2	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56	xorg-3	9ac2b7a3cc6952c4f23a29369febbba1
+_md5_=2d5faba0b50c9873728559eade86b6d4
