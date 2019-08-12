@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: perl-functions.eclass
@@ -8,7 +8,7 @@
 # Seemant Kulleen <seemant@gentoo.org>
 # Andreas K. Huettel <dilfridge@gentoo.org>
 # Kent Fredric <kentnl@gentoo.org>
-# @SUPPORTED_EAPIS: 5 6
+# @SUPPORTED_EAPIS: 5 6 7
 # @BLURB: helper functions eclass for perl modules
 # @DESCRIPTION:
 # The perl-functions eclass is designed to allow easier installation of perl
@@ -19,7 +19,7 @@
 [[ ${CATEGORY} == "perl-core" ]] && inherit alternatives
 
 case "${EAPI:-0}" in
-	5|6)
+	5|6|7)
 		;;
 	*)
 		die "EAPI=${EAPI} is not supported by perl-functions.eclass"
@@ -142,7 +142,7 @@ perl_fix_packlist() {
                         einfo "Fixing packlist file /${f#${D}}"
 
 			# remove the temporary build dir path
-			sed -i -e "s:${D}:/:g" "${f}"
+			sed -i -e "s:${D%/}/:/:g" "${f}"
 
 			# remove duplicate entries
 			sort -u "${f}" > "${packlist_temp}"
@@ -170,7 +170,7 @@ perl_remove_temppath() {
 	find "${D}" -type f -not -name '*.so' -print0 | while read -rd '' f ; do
 		if file "${f}" | grep -q -i " text" ; then
 			grep -q "${D}" "${f}" && ewarn "QA: File contains a temporary path ${f}"
-			sed -i -e "s:${D}:/:g" "${f}"
+			sed -i -e "s:${D%/}/:/:g" "${f}"
 		fi
 	done
 }
