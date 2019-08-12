@@ -30,6 +30,13 @@
 #--- END OF EXAMPLES ---
 
 # Hasan ÇALIŞIR <hasan.calisir@psauxit.com> (2019-08-13)
+# openvas-libraries has been renamed in
+# Greenbone Vulnerability Management Libraries (gvm-libs).
+# New package name is net-analyzer/gvm-libs.
+# Masked for removal in 30 days. Bug #692004.
+net-analyzer/openvas-libraries
+
+# Hasan ÇALIŞIR <hasan.calisir@psauxit.com> (2019-08-13)
 # OpenVAS project name has been renamed in
 # Greenbone Vulnerability Management (GVM).
 # New loader package is net-analyzer/gvm.
