@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python{2_7,3_5,3_6} )
 
-inherit distutils-r1
+inherit distutils-r1 virtualx
 
 DESCRIPTION="Python interface to DBus notifications."
 HOMEPAGE="https://bitbucket.org/takluyver/pynotify2"
@@ -18,7 +18,7 @@ IUSE="examples"
 RDEPEND="dev-python/dbus-python[${PYTHON_USEDEP}]"
 
 python_test() {
-	${EPYTHON} test_notify2.py || die
+	virtx ${EPYTHON} test_notify2.py || die
 }
 
 python_install_all() {
