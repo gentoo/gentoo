@@ -27,7 +27,7 @@ DEPEND="
 
 RDEPEND="
 	${DEPEND}
-	>=net-analyzer/openvas-scanner-5.1.3"
+	~net-analyzer/openvas-scanner-5.1.3"
 
 BDEPEND="
 	virtual/pkgconfig
