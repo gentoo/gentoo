@@ -1,0 +1,12 @@
+--- a/gsa/CMakeLists.txt	2019-07-18 23:14:04.639202986 +0300
++++ b/gsa/CMakeLists.txt	2019-07-18 23:21:54.568052589 +0300
+@@ -1116,9 +1116,6 @@
+ install (FILES public/robots.txt
+          DESTINATION ${GSA_DEST_DIR})
+ 
+-# remove old generated files
+-install (CODE "file(REMOVE_RECURSE ${GSA_DEST_DIR}/static)")
+-
+ install (DIRECTORY
+          ${GSA_BUILD_DIR}/static
+          ${GSA_BUILD_DIR}/img

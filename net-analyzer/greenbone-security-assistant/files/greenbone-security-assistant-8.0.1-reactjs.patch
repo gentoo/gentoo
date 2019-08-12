@@ -1,0 +1,20 @@
+--- a/gsa/package.json	2019-07-17 16:45:39.000000000 +0300
++++ b/gsa/package.json	2019-07-17 22:40:31.371899489 +0300
+@@ -66,12 +66,12 @@
+     "x2js": "^3.2.6"
+   },
+   "scripts": {
+-    "test": "react-scripts test",
+-    "test:coverage": "react-scripts test --coverage --maxWorkers 2",
++    "test": "NODE_ENV=production node_modules/react-scripts/bin/react-scripts.js test",
++    "test:coverage": "NODE_ENV=production node_modules/react-scripts/bin/react-scripts.js test --coverage --maxWorkers 2",
+     "lint": "eslint --max-warnings 0 src",
+-    "start": "react-scripts start",
+-    "build": "react-scripts build",
+-    "eject": "react-scripts eject"
++    "start": "NODE_ENV=production node_modules/react-scripts/bin/react-scripts.js start",
++    "build": "NODE_ENV=production node_modules/react-scripts/bin/react-scripts.js build",
++    "eject": "NODE_ENV=production node_modules/react-scripts/bin/react-scripts.js eject"
+   },
+   "devDependencies": {
+     "@types/jest": "^24.0.12",
