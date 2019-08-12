@@ -1,11 +1,10 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-USE_RUBY="ruby23 ruby24 ruby25 ruby26"
+USE_RUBY="ruby24 ruby25 ruby26"
 
-RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 RUBY_FAKEGEM_EXTRADOC="CHANGELOG.md README.md ROADMAP.md STANDARD_RESPONSES.md"
 
 RUBY_FAKEGEM_EXTRAINSTALL="ext"
@@ -22,17 +21,17 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="${RDEPEND}
-	>=dev-libs/libxml2-2.9.8:=
-	>=dev-libs/libxslt-1.1.30
+	>=dev-libs/libxml2-2.9.9:=
+	>=dev-libs/libxslt-1.1.33
 	virtual/libiconv"
 DEPEND="${DEPEND}
-	>=dev-libs/libxml2-2.9.8
-	>=dev-libs/libxslt-1.1.30
+	>=dev-libs/libxml2-2.9.9
+	>=dev-libs/libxslt-1.1.33
 	virtual/libiconv"
 
 ruby_add_bdepend "
 	>=dev-ruby/pkg-config-1.1.7
-	dev-ruby/rexical
+	>=dev-ruby/rexical-1.0.7
 	dev-ruby/rdoc
 	dev-ruby/racc
 	test? ( dev-ruby/minitest )"
