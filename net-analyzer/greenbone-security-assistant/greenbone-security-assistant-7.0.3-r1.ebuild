@@ -27,7 +27,7 @@ DEPEND="
 
 RDEPEND="
 	${DEPEND}
-	>=net-analyzer/openvas-scanner-5.1.3
+	~net-analyzer/openvas-scanner-5.1.3
 	>=net-analyzer/openvas-manager-7.0.3
 	extras? ( dev-texlive/texlive-latexextra )"
 
