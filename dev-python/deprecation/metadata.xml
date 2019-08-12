@@ -11,4 +11,9 @@
 	<longdescription lang="en">
 		A library to handle automated deprecations
 	</longdescription>
+	<upstream>
+		<remote-id type="pypi">deprecation</remote-id>
+		<remote-id type="github">briancurtin/deprecation</remote-id>
+		<bugs-to>https://github.com/briancurtin/deprecation/issues</bugs-to>
+	</upstream>
 </pkgmetadata>
