@@ -1596,7 +1596,7 @@ app-i18n/ibus-libpinyin 1.9.2 1.9.3 1.9.3-r1 1.10.0: Intelligent Pinyin and Bopo
 app-i18n/ibus-m17n 1.3.4: M17N engine for IBus
 app-i18n/ibus-pinyin 1.5.0-r2: Chinese Pinyin and Bopomofo engines for IBus
 app-i18n/ibus-rime 1.2 1.3.0 1.4.0: Chinese Rime Input Method Engine for IBus
-app-i18n/ibus-skk 1.4.1-r1 1.4.2: Japanese SKK engine for IBus
+app-i18n/ibus-skk 1.4.2: Japanese SKK engine for IBus
 app-i18n/ibus-sunpinyin 3.0.0_rc1: Chinese SunPinyin engine for IBus
 app-i18n/ibus-table 1.9.18 1.9.21: Tables engines for IBus
 app-i18n/ibus-table-chinese 1.8.2: Chinese tables for IBus-Table
@@ -1623,7 +1623,7 @@ app-i18n/libhangul 0.1.0: Library for hangul input method logic, hanja dictionar
 app-i18n/libkkc 0.3.5: Japanese Kana Kanji conversion input method library
 app-i18n/libpinyin 2.3.0 9999: Libraries for handling of Hanyu Pinyin and Zhuyin Fuhao
 app-i18n/librime 1.2.9 1.3.1 1.4.0 1.5.3: RIME (Rime Input Method Engine) core library
-app-i18n/libskk 1.0.1 1.0.2: GObject-based library to deal with Japanese kana-to-kanji conversion method
+app-i18n/libskk 1.0.2: GObject-based library to deal with Japanese kana-to-kanji conversion method
 app-i18n/libtabe 0.2.6 0.2.6.1.2: Libtabe provides bimsphone support for xcin-2.5+
 app-i18n/man-pages-da 0.1.2: A somewhat comprehensive collection of Danish Linux man pages
 app-i18n/man-pages-de 1.15 1.21 2.10 2.12: A somewhat comprehensive collection of Linux german man page translations
