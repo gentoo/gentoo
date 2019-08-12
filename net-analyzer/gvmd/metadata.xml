@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>hasan.calisir@psauxit.com</email>
+		<name>Hasan ÇALIŞIR</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<use>
+		<flag name="extras">Html docs support</flag>
+	</use>
+	<longdescription lang="en">
+	The Greenbone Vulnerability Manager is the central management service between security scanners and the user clients.
+	It manages the storage of any vulnerability management configurations and of the scan results.
+	Access to data, control commands and workflows is offered via the XML-based Greenbone Management Protocol (GMP).
+	The primary scanner OpenVAS Scanner is controlled directly via protocol OTP while any other 
+	remote scanner is coupled with the Open Scanner Protocol (OSP).
+	</longdescription>
+	<upstream>
+		<remote-id type="github">greenbone/gvmd</remote-id>
+	</upstream>
+</pkgmetadata>
