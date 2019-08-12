@@ -12,4 +12,13 @@
 	<use>
 		<flag name="extras">Pdf results, extra fonts, html docs support</flag>
 	</use>
+	<longdescription lang="en">
+	The Greenbone Security Assistant is the web interface developed for the Greenbone Security Manager appliances.
+	It connects to the Greenbone Vulnerability Manager GVM to provide a full-featured user interface for vulnerability management.
+	Greenbone Security Assistant consists of GSA - The webpage written in React and 
+	GSAD - The HTTP server talking to the GVM daemon.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">greenbone/gsa</remote-id>
+	</upstream>
 </pkgmetadata>
