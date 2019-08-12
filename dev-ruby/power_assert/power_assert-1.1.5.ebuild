@@ -29,6 +29,9 @@ all_ruby_prepare() {
 	sed -i -e '1igem "test-unit"' \
 		-e '/byebug/ s:^:#:' test/test_helper.rb || die
 
+	# Avoid git dependency
+	sed -i -e 's/git ls-files -z/find . -print0/' ${RUBY_FAKEGEM_GEMSPEC} || die
+
 	# Avoid circular dependency on byebug when bootstrapping ruby
 	sed -i -e '/byebug/ s:^:#:' -e '/test_core_ext_helper/ s:^:#:' test/test_helper.rb || die
 	rm test/test_core_ext_helper.rb test/trace_test.rb || die
