@@ -58,7 +58,7 @@ LLVM_MAX_SLOT=8
 COMMON_DEPEND="
 	sys-libs/zlib
 	!libressl? ( dev-libs/openssl:0= )
-	libressl? ( dev-libs/libressl:0= )
+	libressl? ( <dev-libs/libressl-3.0.0:0= )
 	net-libs/libssh2
 	net-libs/http-parser:=
 	net-misc/curl[ssl]
