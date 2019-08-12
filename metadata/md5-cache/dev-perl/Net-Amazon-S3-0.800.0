@@ -9,5 +9,5 @@ LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=virtual/perl-Carp dev-perl/Data-Stream-Bulk dev-perl/DateTime-Format-HTTP dev-perl/Digest-HMAC virtual/perl-Digest-MD5 dev-perl/Digest-MD5-File dev-perl/File-Find-Rule virtual/perl-Getopt-Long dev-perl/HTTP-Date dev-perl/HTTP-Message virtual/perl-IO >=dev-perl/libwww-perl-6.30.0 dev-perl/LWP-UserAgent-Determined virtual/perl-MIME-Base64 dev-perl/MIME-Types >=dev-perl/Moose-0.850.0 >=dev-perl/MooseX-StrictConstructor-0.160.0 >=dev-perl/MooseX-Types-DateTime-MoreCoercions-0.70.0 dev-perl/Path-Class dev-perl/Regexp-Common dev-perl/Term-Encoding dev-perl/Term-ProgressBar-Simple dev-perl/URI dev-perl/VM-EC2-Security-CredentialCache dev-perl/XML-LibXML dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/R/RC/RCONOVER/Net-Amazon-S3-0.80.tar.gz
-_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	71c828c354a4cddced2641dda2695de5
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	fa19a21c943f26d9b3720dc7620b8541
 _md5_=ce1fcc19472b76ba92dbcd3eb352f7bb

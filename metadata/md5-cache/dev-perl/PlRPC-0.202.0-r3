@@ -8,5 +8,5 @@ LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=>=virtual/perl-Storable-1.0.7 >=dev-perl/Net-Daemon-0.34 dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/M/MN/MNOONING/PlRPC/PlRPC-0.2020.tar.gz
-_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	f2e3420aed32cf1abe33b4129b842636	perl-module	71c828c354a4cddced2641dda2695de5
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	fa19a21c943f26d9b3720dc7620b8541
 _md5_=59e529ccc7e01a9fddc85e6a77bd07af

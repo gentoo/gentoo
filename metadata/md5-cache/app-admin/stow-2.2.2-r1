@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://gnu/stow/stow-2.2.2.tar.gz
-_eclasses_=perl-functions	f2e3420aed32cf1abe33b4129b842636
+_eclasses_=perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b
 _md5_=2f5f8e9b73ffaf1f90dbe8e9450f9005
