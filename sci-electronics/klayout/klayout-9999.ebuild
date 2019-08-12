@@ -25,6 +25,7 @@ HOMEPAGE="https://www.klayout.de/"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE=""
+REQUIRED_USE=${PYTHON_REQUIRED_USE}
 
 RDEPEND="
 	dev-qt/designer:5
