@@ -1,14 +1,13 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-USE_RUBY="ruby23 ruby24 ruby25"
+USE_RUBY="ruby24 ruby25 ruby26"
 
 # Avoid the complexity of the "rake" recipe and run the tests manually.
 RUBY_FAKEGEM_RECIPE_TEST=none
 
-RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 RUBY_FAKEGEM_EXTRADOC="README.md"
 
 RUBY_FAKEGEM_GEMSPEC="${PN}.gemspec"
@@ -19,13 +18,13 @@ DESCRIPTION="Ruby on Rails RBPDF plugin"
 HOMEPAGE="https://github.com/naitoh/rbpdf"
 SRC_URI="https://github.com/naitoh/rbpdf/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="LGPL-2.1+"
+LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
 ruby_add_bdepend "test? ( >=dev-ruby/test-unit-3 )"
-ruby_add_rdepend "dev-ruby/actionview:*
+ruby_add_rdepend "
 	dev-ruby/htmlentities
 	=dev-ruby/rbpdf-font-1.19*"
 
@@ -36,9 +35,6 @@ all_ruby_prepare() {
 	# then fails.
 	rm -f test/rbpdf_image_rmagick_test.rb \
 		|| die "failed to remove rmagick tests"
-
-	# Loosen very restrictive htmlentities dependency
-	sed -i -e '/htmlentities/ s/=/>=/' ${RUBY_FAKEGEM_GEMSPEC} || die
 }
 
 each_ruby_test() {
