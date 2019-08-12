@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install postinst postrm prepare setup
-DEPEND=app-arch/gzip virtual/awk pcf? ( x11-apps/bdftopcf ) X? ( >=x11-apps/mkfontscale-1.2.0 media-fonts/encodings )
+DEPEND=app-arch/gzip || ( dev-lang/python:3.6 dev-lang/python:3.5 ) virtual/awk pcf? ( x11-apps/bdftopcf ) X? ( >=x11-apps/mkfontscale-1.2.0 media-fonts/encodings )
 DESCRIPTION=A clean fixed font for the console and X11
 EAPI=6
 HOMEPAGE=http://terminus-font.sourceforge.net/
@@ -10,4 +10,4 @@ REQUIRED_USE=X? ( pcf )
 SLOT=0
 SRC_URI=mirror://sourceforge/terminus-font/terminus-font-4.46/terminus-font-4.46.tar.gz
 _eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	font	3a7bf49a5b835558d339d7bf8dfee9d6	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	1d91b03d42ab6308b5f4f6b598ed110e	preserve-libs	ef207dc62baddfddfd39a164d9797648	python-any-r1	b5f01473006ccc2cd78bc3dab20fced4	python-utils-r1	08e17157a6807add7db1f8d01e7e391f	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
-_md5_=60a4ec95e7d676731cc3fe7277fe18b6
+_md5_=0303ed6da1bb00f766bdc3d0dbac802d

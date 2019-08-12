@@ -7,8 +7,9 @@ IUSE=capstone python_targets_python2_7
 KEYWORDS=~amd64
 LICENSE=GPL-2
 RDEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_jython2_7(-),-python_single_target_pypy(-),-python_single_target_pypy3(-),-python_single_target_python3_5(-),-python_single_target_python3_6(-),-python_single_target_python3_7(-),python_single_target_python2_7(+)] sys-devel/gcc:*[cxx] sys-libs/ncurses:= virtual/libelf:= capstone? ( dev-libs/capstone:0= )
+REQUIRED_USE=python_targets_python2_7
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/namhyung/uftrace/archive/v0.9.3.tar.gz -> uftrace-0.9.3.tar.gz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-single-r1	3a0fc81f484bfdbd9c2b7448015a36e4	python-utils-r1	08e17157a6807add7db1f8d01e7e391f	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
-_md5_=0713cca3216cdf15125fd2ec0db7a7ca
+_md5_=d4d8941ee844db5f2464c9470c32de46
