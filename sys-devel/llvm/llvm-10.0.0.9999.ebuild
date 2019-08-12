@@ -18,10 +18,10 @@ EGIT_REPO_URI="https://git.llvm.org/git/llvm.git
 	https://github.com/llvm-mirror/llvm.git"
 
 # Those are in lib/Targets, without explicit CMakeLists.txt mention
-ALL_LLVM_EXPERIMENTAL_TARGETS=( AVR Nios2 RISCV )
+ALL_LLVM_EXPERIMENTAL_TARGETS=( AVR Nios2 )
 # Keep in sync with CMakeLists.txt
 ALL_LLVM_TARGETS=( AArch64 AMDGPU ARM BPF Hexagon Lanai Mips MSP430
-	NVPTX PowerPC Sparc SystemZ WebAssembly X86 XCore
+	NVPTX PowerPC RISCV Sparc SystemZ WebAssembly X86 XCore
 	"${ALL_LLVM_EXPERIMENTAL_TARGETS[@]}" )
 ALL_LLVM_TARGETS=( "${ALL_LLVM_TARGETS[@]/#/llvm_targets_}" )
 
