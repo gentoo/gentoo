@@ -8243,7 +8243,7 @@ dev-python/nosehtmloutput 0.0.5: Nose plugin to produce test results in html
 dev-python/nosexcover 1.0.10 1.0.11: Extends nose.plugins.cover to add Cobertura-style XML reports
 dev-python/notebook 5.0.0 5.2.1 5.7.0 5.7.8: Jupyter Interactive Notebook
 dev-python/notify-python 0.1.1-r3: Python bindings for libnotify
-dev-python/notify2 0.3: Python interface to DBus notifications.
+dev-python/notify2 0.3 0.3.1: Python interface to DBus notifications.
 dev-python/nototools 20180827: Noto fonts support tools and scripts plus web site generation
 dev-python/ntlm-auth 1.1.0 1.2.0 1.3.0: Calculates NTLM Authentication codes
 dev-python/ntplib 0.3.3: Python NTP library
@@ -9013,6 +9013,7 @@ dev-python/sphinx-better-theme 0.1.5: A nice-looking, customizable theme for Sph
 dev-python/sphinx-bootstrap-theme 0.4.9 0.6.0 0.6.5: Sphinx theme integrates the Bootstrap CSS / JavaScript framework
 dev-python/sphinx-gallery 0.1.12 0.3.1: Sphinx extension to automatically generate an examples gallery
 dev-python/sphinx-jinja 0.2.1 0.3.0: A sphinx extension to include jinja based templates into a sphinx doc
+dev-python/sphinx-notfound-page 0.4: Create a custom 404 page with absolute URLs hardcoded.
 dev-python/sphinx-py3doc-enhanced-theme 2.3.2 2.3.2-r1: Enhanced Sphinx theme (based on Python 3 docs)
 dev-python/sphinx-testing 0.7.2 1.0.1: Testing utility classes and functions for Sphinx extensions
 dev-python/sphinx_celery 1.3.1 2.0.0-r1: Celery Sphinx Theme and Utilities
@@ -13399,7 +13400,7 @@ media-libs/libtimidity 0.2.4: MIDI to WAVE converter library
 media-libs/libtxc_dxtn 1.0.1-r4: Helper library for S3TC texture (de)compression
 media-libs/libuninameslist 20091231-r1: Library of unicode annotation data
 media-libs/libuvc 0.0.6-r1: A cross-platform library for USB video devices, built atop libusb
-media-libs/libv4l 1.6.2 1.10.0 1.10.1 1.12.3 1.12.5 1.14.1 1.16.3 1.16.6: Separate libraries ebuild from upstream v4l-utils package
+media-libs/libv4l 1.6.2 1.10.1 1.16.3 1.16.6: Separate libraries ebuild from upstream v4l-utils package
 media-libs/libvisio 0.1.6 9999: Library parsing the visio documents
 media-libs/libvisual 0.4.0-r3: Libvisual is an abstraction library that comes between applications and audio visualisation plugins
 media-libs/libvorbis 1.3.6: The Ogg Vorbis sound file format library
@@ -14259,7 +14260,7 @@ media-tv/tvbrowser-bin 4.0.1: Themeable and easy to use TV Guide - written in Ja
 media-tv/tvheadend 4.2.8 9999: Tvheadend is a TV streaming server and digital video recorder
 media-tv/tvnamer 2.4 2.5: Automatic TV episode file renamer, data from thetvdb.com
 media-tv/v4l-dvb-saa716x 0.0.1_p20170225 0.0.1_p20170225-r1 0.0.1_p20170225-r2: driver for saa716x based dvb cards like TT S2-6400 or Skystar 2 eXpress HD
-media-tv/v4l-utils 1.10.1 1.12.3 1.12.5 1.14.1 1.16.3 1.16.3-r1: Separate utilities ebuild from upstream v4l-utils package
+media-tv/v4l-utils 1.10.1 1.16.3 1.16.3-r1 1.16.6: Separate utilities ebuild from upstream v4l-utils package
 media-tv/w_scan 20141122 20170107: Scan DVB-C/DVB-T/DVB-S channels
 media-tv/xmltv 0.5.70: Set of utilities to manage TV listings stored in the XMLTV format
 media-video/acidrip 0.14-r4: A gtk-perl mplayer/mencoder frontend for ripping DVDs
@@ -18714,7 +18715,7 @@ x11-apps/xmodmap 1.0.10: utility for modifying keymaps and pointer button mappin
 x11-apps/xmore 1.0.3: plain text display program for the X Window System
 x11-apps/xpr 1.0.5: X.Org xpr application
 x11-apps/xprop 1.2.4: property displayer for X
-x11-apps/xrandr 1.4.3 1.5.0: primitive command line interface to RandR extension
+x11-apps/xrandr 1.4.3 1.5.0 1.5.1: primitive command line interface to RandR extension
 x11-apps/xrdb 1.2.0: X server resource database utility
 x11-apps/xrectsel 0.3.2: Print the geometry of a rectangular screen region
 x11-apps/xrefresh 1.0.5 1.0.6: refresh all or part of an X screen
