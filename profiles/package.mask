@@ -30,6 +30,11 @@
 #--- END OF EXAMPLES ---
 
 # Hasan ÇALIŞIR <hasan.calisir@psauxit.com> (2019-08-13)
+# Deprecated, removed from all other linux distributions.
+# Masked for removal in 30 days. Bug #692004.
+net-analyzer/openvas-tools
+
+# Hasan ÇALIŞIR <hasan.calisir@psauxit.com> (2019-08-13)
 # openvas-cli has been renamed in
 # Greenbone Vulnerability Manager tools (gvm-tools).
 # New package name is net-analyzer/gvm-tools.
