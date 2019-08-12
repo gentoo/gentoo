@@ -89,10 +89,16 @@ fi
 
 HOMEPAGE="https://www.x.org/wiki/ https://gitlab.freedesktop.org/xorg/${XORG_MODULE}${XORG_PACKAGE_NAME}"
 
+# @ECLASS-VARIABLE: XORG_TARBALL_SUFFIX
+# @DESCRIPTION:
+# Most X11 projects provide tarballs as tar.bz2 or tar.xz. This eclass defaults
+# to bz2.
+: ${XORG_TARBALL_SUFFIX:="bz2"}
+
 if [[ -n ${GIT_ECLASS} ]]; then
 	: ${EGIT_REPO_URI:="https://gitlab.freedesktop.org/xorg/${XORG_MODULE}${XORG_PACKAGE_NAME}.git"}
 elif [[ -n ${XORG_BASE_INDIVIDUAL_URI} ]]; then
-	SRC_URI="${XORG_BASE_INDIVIDUAL_URI}/${XORG_MODULE}${P}.tar.bz2"
+	SRC_URI="${XORG_BASE_INDIVIDUAL_URI}/${XORG_MODULE}${P}.tar.${XORG_TARBALL_SUFFIX}"
 fi
 
 : ${SLOT:=0}
