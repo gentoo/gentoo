@@ -16,7 +16,7 @@ IUSE="adplug +alsa ao audiofile bzip2 cdio chromaprint +cue +curl +dbus debug
 	+eventfd expat faad +ffmpeg +fifo flac fluidsynth gme +icu +id3tag +inotify
 	+ipv6 jack lame libav libmpdclient libsamplerate libsoxr +mad mikmod mms
 	modplug mpg123 musepack +network nfs openal opus oss pipe pulseaudio qobuz
-	recorder samba selinux sid signalfd sndfile soundcloud sqlite systemd tcpd
+	recorder samba selinux sid signalfd sndfile soundcloud sqlite systemd
 	test tidal twolame udisks unicode vorbis wavpack webdav wildmidi upnp
 	zeroconf zip zlib"
 
@@ -94,7 +94,6 @@ RDEPEND="
 	soundcloud? ( >=dev-libs/yajl-2:= )
 	sqlite? ( dev-db/sqlite:3 )
 	systemd? ( sys-apps/systemd )
-	tcpd? ( sys-apps/tcp-wrappers )
 	twolame? ( media-sound/twolame )
 	udisks? ( sys-fs/udisks:2 )
 	upnp? ( net-libs/libupnp:0 )
@@ -165,7 +164,6 @@ src_configure() {
 		-Diso9660=$(usex cdio enabled disabled)
 		-Dlibmpdclient=$(usex libmpdclient enabled disabled)
 		-Dlibsamplerate=$(usex libsamplerate enabled disabled)
-		-Dlibwrap=$(usex tcpd enabled disabled)
 		-Dmms=$(usex mms enabled disabled)
 		-Dnfs=$(usex nfs enabled disabled)
 		-Dsignalfd=$(usex signalfd true false)
