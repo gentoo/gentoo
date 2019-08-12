@@ -23,11 +23,10 @@ IUSE="+man"
 DEPEND="
 	>=dev-libs/wayland-protocols-1.14
 	dev-libs/wayland
-	x11-libs/cairo
-"
-RDEPEND="
-	${DEPEND}
-"
+	x11-libs/cairo"
+
+RDEPEND="${DEPEND}"
+
 if [[ ${PV} == 9999 ]]; then
 	BDEPEND+="man? ( ~app-text/scdoc-9999 )"
 else
