@@ -48,10 +48,9 @@ RDEPEND="
 		virtual/opengl
 	)
 	sys-libs/zlib
-"
-DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
 "
+DEPEND="${RDEPEND}"
 
 pkg_setup() {
 	# build system is using FindPythonLibs.cmake which needs python:2
