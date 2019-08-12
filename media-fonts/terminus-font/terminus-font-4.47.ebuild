@@ -17,7 +17,7 @@ IUSE="a-like-o +center-tilde distinct-l +pcf +pcf-unicode-only +psf quote
 	ru-dv +ru-g ru-i ru-k"
 
 DEPEND="app-arch/gzip
-	${PYTHON_DEPEND}
+	${PYTHON_DEPS}
 	virtual/awk
 	pcf? ( x11-apps/bdftopcf )"
 RDEPEND=""
