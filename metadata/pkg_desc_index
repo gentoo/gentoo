@@ -10027,7 +10027,7 @@ dev-ruby/network_interface 0.0.2: network_interface layer from metasploit pcapru
 dev-ruby/nexpose 7.2.1: API client for Nexpose vulnerability managment product
 dev-ruby/niceogiri 1.1.2: Some wrappers around and helpers for XML manipulation using Nokogiri
 dev-ruby/nio4r 1.2.1-r1 2.3.1 2.4.0: A high performance selector API for monitoring IO objects
-dev-ruby/nokogiri 1.8.4 1.9.1 1.10.3: Nokogiri is an HTML, XML, SAX, and Reader parser
+dev-ruby/nokogiri 1.8.4 1.10.4: Nokogiri is an HTML, XML, SAX, and Reader parser
 dev-ruby/nokogiri-diff 0.2.0-r2: Calculate the differences between two XML/HTML documents
 dev-ruby/nokogumbo 1.5.0 2.0.1: A Nokogiri interface to the Gumbo HTML5 parser
 dev-ruby/notify 0.5.2-r1: A function to notify on cross platform
@@ -10144,7 +10144,7 @@ dev-ruby/rex-sslscan 0.1.5: ruby implmenetation of the SSLScan tool
 dev-ruby/rex-struct2 0.1.2: Ruby Exploitation(Rex) library for generating/manipulating C-Style structs
 dev-ruby/rex-text 0.2.20 0.2.21 0.2.22: Rex library for text generation and manipulation
 dev-ruby/rex-zip 0.1.3: Ruby Exploitation(Rex) library for working with zip and related files
-dev-ruby/rexical 1.0.5-r3 1.0.5-r4 1.0.7: Rexical is a lexical scanner generator
+dev-ruby/rexical 1.0.5-r3 1.0.7: Rexical is a lexical scanner generator
 dev-ruby/rgen 0.8.3 0.8.4: Ruby Modelling and Generator Framework
 dev-ruby/riel 1.2.0-r2: This library extends the core Ruby libraries
 dev-ruby/rinku 2.0.4 2.0.5 2.0.6: A Ruby library that does autolinking
@@ -11036,7 +11036,7 @@ dev-vcs/rcs 5.8.2 5.9.3 5.9.4: Revision Control System
 dev-vcs/rcsi 0.5: A program to give information about RCS files
 dev-vcs/rsvndump 0.6: Dump a remote Subversion repository
 dev-vcs/stgit 0.16-r2 0.18 0.19: Manage a stack of patches using GIT as a backend
-dev-vcs/subversion 1.10.4 1.11.1 1.12.0 1.12.2: Advanced version control system
+dev-vcs/subversion 1.12.2: Advanced version control system
 dev-vcs/svn2cl 0.12: Create a GNU-style ChangeLog from subversion's svn log --xml output
 dev-vcs/svn2git 1.0.11-r1 1.0.12 1.0.13 1.0.13-r1 1.0.16 9999: Tool for one-time conversion from svn to git
 dev-vcs/svneverever 1.3.0 1.3.1 1.3.2: Tool collecting path entries across SVN history
@@ -14451,8 +14451,8 @@ net-analyzer/bwbar 1.2.3: The kernel.org "Current bandwidth utilization" bar
 net-analyzer/bwm-ng 0.6.1-r1: Bandwidth Monitor NG is a small and simple console-based bandwidth monitor
 net-analyzer/bwmon 1.3-r2: Simple ncurses bandwidth monitor
 net-analyzer/bwping 1.7-r1 1.14 1.15: A tool to measure bandwidth and RTT between two hosts using ICMP
-net-analyzer/cacti 1.1.38-r1 1.2.2: Cacti is a complete frontend to rrdtool
-net-analyzer/cacti-spine 1.1.38-r2 1.2.2-r1: Spine is a fast poller for Cacti (formerly known as Cactid)
+net-analyzer/cacti 1.1.38-r1 1.2.2 1.2.5: Cacti is a complete frontend to rrdtool
+net-analyzer/cacti-spine 1.1.38-r2 1.2.2-r1 1.2.5: Spine is a fast poller for Cacti (formerly known as Cactid)
 net-analyzer/calamaris 2.59 2.99.4.0: Calamaris parses the logfiles of a wide variety of Web proxy servers and generates reports
 net-analyzer/carl 0.9-r2: An rsync logfile analyzer
 net-analyzer/cbm 0.1-r1: Display the current traffic on all network devices
@@ -18005,7 +18005,7 @@ sys-kernel/dracut-crypt-ssh 1.0.6-r1: early unlocking of encrypted systems via s
 sys-kernel/genkernel 3.4.52.3 3.4.52.4-r1 3.4.52.4-r2 3.4.52.4-r3 3.5.1.1 3.5.2.0-r1 3.5.2.1 3.5.2.2 3.5.2.3 3.5.2.4 3.5.2.5 3.5.3.2 3.5.3.3 4.0.0_beta12 9999: Gentoo automatic kernel building scripts
 sys-kernel/genkernel-next 69 70: Gentoo automatic kernel building scripts, reloaded
 sys-kernel/gentoo-sources 4.4.184 4.4.186 4.4.187 4.4.188 4.4.189 4.9.184 4.9.186 4.9.187 4.9.188 4.9.189 4.14.132 4.14.135 4.14.136 4.14.137 4.14.138 4.19.57 4.19.63 4.19.64 4.19.65 4.19.66 5.2.5 5.2.6 5.2.7 5.2.8: Full sources including the Gentoo patchset for the 5.2 kernel tree
-sys-kernel/git-sources 5.3_rc1 5.3_rc2 5.3_rc3: The very latest -git version of the Linux kernel
+sys-kernel/git-sources 5.3_rc1 5.3_rc2 5.3_rc3 5.3_rc4: The very latest -git version of the Linux kernel
 sys-kernel/kergen 0.1.4: Kernel config generator
 sys-kernel/kpatch 0.6.3 0.7.1 9999: Dynamic kernel patching for Linux
 sys-kernel/linux-docs 4.19: Developer documentation generated from the Linux kernel
