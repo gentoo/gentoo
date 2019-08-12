@@ -30,20 +30,16 @@ DEPEND="
 	dev-libs/wayland
 	dev-libs/wayland-protocols
 	gui-libs/wlroots
-
 	libcxx? ( sys-libs/libcxx )
 	mpd? ( media-libs/libmpdclient )
 	network? ( dev-libs/libnl:3 )
 	pulseaudio? ( media-sound/pulseaudio )
 	tray? ( dev-libs/libdbusmenu[gtk3] )
-	udev? ( virtual/libudev:= )
-"
-RDEPEND="
-	${DEPEND}
-"
-BDEPEND="
-	virtual/pkgconfig
-"
+	udev? ( virtual/libudev:= )"
+
+RDEPEND="${DEPEND}"
+
+BDEPEND="virtual/pkgconfig"
 
 if [[ ${PV} != 9999 ]]; then
 	S="${WORKDIR}/${PN^}-${PV}"
