@@ -23,14 +23,11 @@ IUSE="+man"
 DEPEND="
 	>=dev-libs/wayland-protocols-1.14
 	dev-libs/wayland
-	x11-libs/cairo
-"
-RDEPEND="
-	${DEPEND}
-"
-BDEPEND="
-	man? ( app-text/scdoc )
-"
+	x11-libs/cairo"
+
+RDEPEND="${DEPEND}"
+
+BDEPEND="man? ( ~app-text/scdoc-9999 )"
 
 src_configure() {
 	local emesonargs=(
