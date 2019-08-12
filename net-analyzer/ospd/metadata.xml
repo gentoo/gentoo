@@ -12,4 +12,14 @@
 	<use>
 		<flag name="extras">Html docs support</flag>
 	</use>
+	<longdescription lang="en">
+	OSPD is a base class for scanner wrappers which share the same communication protocol: 
+	OSP (Open Scanner Protocol). OSP creates a unified interface for different security scanners 
+	and makes their control flow and scan results consistently available under the central 
+	Greenbone Vulnerability Manager service.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">greenbone/ospd</remote-id>
+	</upstream>
 </pkgmetadata>
+
