@@ -57,6 +57,8 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
+PATCHES=( "${FILESDIR}/${P}-missing-header.patch" )
+
 RESTRICT+=" test"
 
 pkg_pretend() {
