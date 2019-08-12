@@ -8,5 +8,5 @@ LICENSE=LSI
 RESTRICT=strip fetch mirror
 SLOT=0
 SRC_URI=http://www.lsi.com/downloads/Public/Host%20Bus%20Adapters/Host%20Bus%20Adapters%20Common%20Files/SAS_SATA_6G_P19/SAS2IRCU_P19.zip doc? ( http://www.lsi.com/downloads/Public/Host%20Bus%20Adapters/Host%20Bus%20Adapters%20Common%20Files/SAS_SATA_6G_P12/SAS2IRCU_User_Guide.pdf )
-_eclasses_=mount-boot	1e82d96b7a7dcb483b412497a90bb646
+_eclasses_=mount-boot	0ed73d6bc7399be07e136b5dc46709d9
 _md5_=471c2c7d08f958477c729275ae9acad8

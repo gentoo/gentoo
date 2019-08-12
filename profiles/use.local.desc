@@ -8530,6 +8530,7 @@ sys-devel/parity:vc11_0 - Enable support for Visual Studio 2012
 sys-devel/parity:vc12_0 - Enable support for Visual Studio 2013
 sys-devel/parity:vc14_0 - Enable support for Visual Studio 2015
 sys-devel/parity:vc15_0 - Enable support for Visual Studio 2017
+sys-devel/parity:vc16_2 - Enable support for Visual Studio 2019
 sys-devel/parity:vc7_0 - Enable support for Visual Studio 2002
 sys-devel/parity:vc7_1 - Enable support for Visual Studio 2003
 sys-devel/parity:vc8_0 - Enable support for Visual Studio 2005
