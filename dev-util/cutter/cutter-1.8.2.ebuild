@@ -15,7 +15,8 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="jupyter webengine"
-REQUIRED_USE="webengine? ( jupyter )"
+REQUIRED_USE="webengine? ( jupyter )
+	${PYTHON_REQUIRED_USE}"
 
 DEPEND="
 	${PYTHON_DEPS}
