@@ -30,6 +30,7 @@ LICENSE="Apache-2.0 BSD-2"
 SLOT="0"
 KEYWORDS="amd64 ~arm x86 ~x86-linux"
 IUSE="python"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 DEPEND="sys-libs/zlib:=
 	dev-libs/libpcre2:=
