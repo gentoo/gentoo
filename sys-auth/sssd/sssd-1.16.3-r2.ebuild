@@ -3,9 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_5,3_6,3_7} )
-
-inherit autotools flag-o-matic linux-info multilib-minimal pam python-r1 systemd toolchain-funcs
+inherit autotools flag-o-matic linux-info multilib-minimal pam systemd toolchain-funcs
 
 DESCRIPTION="System Security Services Daemon provides access to identity and authentication"
 HOMEPAGE="https://pagure.io/SSSD/sssd"
@@ -14,7 +12,7 @@ KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="acl autofs +locator +netlink nfsv4 nls +manpages python samba selinux sudo ssh test"
+IUSE="acl autofs +locator +netlink nfsv4 nls +manpages samba selinux sudo ssh test"
 
 COMMON_DEP="
 	>=virtual/pam-0-r1[${MULTILIB_USEDEP}]
@@ -104,12 +102,6 @@ multilib_src_configure() {
 	# set initscript to sysv because the systemd option needs systemd to
 	# be installed. We provide our own systemd file anyway.
 	local myconf=()
-	if [[ "${PYTHON_TARGETS}" == *python2* ]]; then
-		myconf+=($(multilib_native_use_with python python2-bindings))
-	fi
-	if [[ "${PYTHON_TARGETS}" == *python3* ]]; then
-		myconf+=($(multilib_native_use_with python python3-bindings))
-	fi
 	#Work around linker dependency problem.
 	append-ldflags "-Wl,--allow-shlib-undefined"
 
@@ -142,6 +134,8 @@ multilib_src_configure() {
 		$(multilib_native_use_with ssh)
 		--with-crypto="nss"
 		--with-initscript="sysv"
+		--without-python2-bindings
+		--without-python3-bindings
 
 		KRB5_CONFIG=/usr/bin/${CHOST}-krb5-config
 	)
