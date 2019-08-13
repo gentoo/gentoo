@@ -4,7 +4,7 @@
 EAPI=6
 inherit toolchain-funcs
 
-DESCRIPTION="Advanced parallized login hacker"
+DESCRIPTION="Parallelized network login hacker"
 HOMEPAGE="https://www.thc.org/thc-hydra/"
 SRC_URI="
 	https://github.com/vanhauser-thc/thc-${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
