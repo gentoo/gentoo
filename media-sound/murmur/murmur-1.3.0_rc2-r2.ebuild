@@ -32,8 +32,6 @@ SLOT="0"
 IUSE="+dbus debug +ice pch zeroconf"
 
 RDEPEND="
-	acct-group/murmur
-	acct-user/murmur
 	>=dev-libs/openssl-1.0.0b:0=
 	>=dev-libs/protobuf-2.2.0:=
 	dev-qt/qtcore:5
@@ -54,7 +52,10 @@ DEPEND="${RDEPEND}
 	>=dev-libs/boost-1.41.0
 "
 BDEPEND="
-	virtual/pkgconfig"
+	acct-group/murmur
+	acct-user/murmur
+	virtual/pkgconfig
+"
 
 DOC_CONTENTS="
 	Useful scripts are located in /usr/share/doc/${PF}/scripts.\n
