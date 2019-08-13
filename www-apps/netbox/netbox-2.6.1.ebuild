@@ -13,8 +13,11 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="ldap webhooks"
+REQUIRED_USE=${PYTHON_REQUIRED_USE}
 
-RDEPEND=">=dev-python/django-2.2[${PYTHON_USEDEP}]
+RDEPEND="
+	${PYTHON_DEPS}
+	>=dev-python/django-2.2[${PYTHON_USEDEP}]
 	>=dev-python/django-cacheops-4.1[${PYTHON_USEDEP}]
 	>=dev-python/django-cors-headers-3.0.2[${PYTHON_USEDEP}]
 	>=dev-python/django-debug-toolbar-2.0[${PYTHON_USEDEP}]
