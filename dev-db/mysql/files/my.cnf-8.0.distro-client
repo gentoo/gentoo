@@ -1,7 +1,9 @@
-# @GENTOO_PORTAGE_EPREFIX@/etc/mysql/50-distro-client.cnf: The global mysql configuration file.
+# @GENTOO_PORTAGE_EPREFIX@/etc/mysql/mysql.d/50-distro-client.cnf: The global mysql configuration file.
 
 # The following options will be passed to all MySQL clients
 [client]
+# Should match default server to save a round trip
+loose-default-auth				= mysql_native_password
 socket						= @GENTOO_PORTAGE_EPREFIX@/var/run/mysqld/mysqld.sock
 character-sets-dir				= @GENTOO_PORTAGE_EPREFIX@/usr/share/mysql/charsets
 loose-default-character-set			= utf8mb4
