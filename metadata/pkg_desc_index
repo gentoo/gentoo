@@ -7,6 +7,7 @@ acct-group/disk 0: System group: disk
 acct-group/dnscrypt-proxy 0: Group for net-dns/dnscrypt-proxy
 acct-group/ftp 0: File Transfer Protocol server user
 acct-group/gamestat 0: Group for shared high-score and game state files
+acct-group/gkrellmd 0: System group: gkrellmd
 acct-group/i2pd 0: Group for the system-wide net-vpn/i2pd server
 acct-group/input 0: System group: input
 acct-group/kmem 0: System group: kmem
@@ -17,7 +18,11 @@ acct-group/lp 0: System group: lp
 acct-group/mail 0: Mail program group
 acct-group/man 0: System group: man
 acct-group/minecraft 0: A group for the Minecraft server
+acct-group/msmtpd 0: System group: msmtpd
+acct-group/murmur 0: System group: murmur
 acct-group/mysql 0: MySQL program group
+acct-group/nsd 0: System group: nsd
+acct-group/pdnsd 0: System group: pdnsd
 acct-group/polkitd 0: System group: polkitd
 acct-group/qemu 0: System group: qemu
 acct-group/render 0: System group: render
@@ -35,18 +40,24 @@ acct-group/tape 0: System group: tape
 acct-group/transmission 0: System group: transmission
 acct-group/tty 0: System group: tty
 acct-group/unrealircd 0: System group: unrealircd
+acct-group/uptimed 0: System group: uptimed
 acct-group/utmp 0: System group: utmp
 acct-group/video 0: System group: video
 acct-group/wheel 0: System group: wheel
 acct-user/burp 0: User for the app-backup/burp server
 acct-user/dnscrypt-proxy 0: User for net-dns/dnscrypt-proxy
 acct-user/ftp 0: File Transfer Protocol server user
+acct-user/gkrellmd 0: user for gkrellm daemon
 acct-user/i2pd 0: User for the system-wide net-vpn/i2pd server
 acct-user/logstash 0: Logstash program user
 acct-user/mail 0: Mail program user
 acct-user/man 0: user for man page viewer
 acct-user/minecraft 0: A user for the Minecraft server
+acct-user/msmtpd 0: user for msmtp daemon
+acct-user/murmur 0: user for murmur daemon
 acct-user/mysql 0: MySQL program user
+acct-user/nsd 0: user for nsd daemon
+acct-user/pdnsd 0: user for pdns daemon
 acct-user/polkitd 0: System user: polkitd
 acct-user/postmaster 0: Postmaster user
 acct-user/qemu 0: System user: qemu
@@ -61,6 +72,7 @@ acct-user/systemd-resolve 0: System user: systemd-resolve
 acct-user/systemd-timesync 0: System user: systemd-timesync
 acct-user/transmission 0: System user: transmission
 acct-user/unrealircd 0: System user: unrealircd
+acct-user/uptimed 0: user for uptime daemon
 app-accessibility/SphinxTrain 1.0.8: Speech Recognition (Training Module)
 app-accessibility/accerciser 3.22.0: Interactive Python accessibility explorer
 app-accessibility/at-spi2-atk 2.26.2 2.30.1: Gtk module for bridging AT-SPI to Atk
@@ -171,7 +183,7 @@ app-admin/gentoo-perl-helpers 0.3.1-r1 0.4.0: Introspection and Upgrade Assistan
 app-admin/gentoo-rsync-mirror 1.0-r5: Ebuild for setting up a Gentoo rsync mirror
 app-admin/github-backup-utils 2.5.0 2.6.0 2.6.3 2.6.4 2.7.0 2.7.0-r1 2.7.1 2.8.2 2.9.0 2.9.0-r1 2.10.0 2.10.0-r1 2.11.0 2.11.0-r1 2.11.1 2.11.1-r1 2.11.2 2.11.2-r1 2.13.0 2.13.2 2.14.2 2.15.0 2.15.1 2.16.1 2.17.0: Backup and recovery utilities for GitHub Enterprise
 app-admin/gixy 0.1.5 0.1.8 0.1.20: Nginx configuration static analyzer
-app-admin/gkrellm 2.3.10-r2 2.3.11 9999: Single process stack of various system monitors
+app-admin/gkrellm 2.3.10-r2 2.3.11 2.3.11-r1 9999: Single process stack of various system monitors
 app-admin/glance 17.0.0 18.0.0 2018.2.9999 2019.1.9999: Services for discovering, registering, and retrieving VM images
 app-admin/gnome-abrt 1.2.6 1.2.7: A utility for viewing problems that have occurred with the system
 app-admin/gnome-system-log 3.9.90: System log viewer for GNOME
@@ -2081,7 +2093,7 @@ app-misc/ttyload 0.5.3: color-coded graph of load averages over time
 app-misc/ttyrec 1.0.8-r2: ttyrec provides tools to record and replay a terminal session
 app-misc/ttysnoop 0.12d: Tool to snoop on login tty's through another tty-device or pseudo-tty
 app-misc/unfoo 1.0.8: A simple bash driven frontend to simplify decompression of files
-app-misc/uptimed 0.4.0-r1 0.4.1-r1: System uptime record daemon that keeps track of your highest uptimes
+app-misc/uptimed 0.4.0-r1 0.4.1-r1 0.4.1-r2: System uptime record daemon that keeps track of your highest uptimes
 app-misc/utimer 0.4-r1: A command line timer and stopwatch
 app-misc/vcontrold 0.98.5 0.98.6: Daemon for communication with Viessmann Vito heatings
 app-misc/vcp 2.2-r2: Copy files/directories in a curses interface
@@ -12632,7 +12644,7 @@ mail-mta/courier 1.0.5: An MTA designed specifically for maildirs
 mail-mta/esmtp 1.2 1.2-r1: User configurable relay-only Mail Transfer Agent with a sendmail-like syntax
 mail-mta/exim 4.92 4.92-r2 4.92.1: A highly configurable, drop-in replacement for sendmail
 mail-mta/mini-qmail 1.06: a small null client that forwards mail via QMQP to a full qmail server
-mail-mta/msmtp 1.8.3 1.8.4 1.8.5: An SMTP client and SMTP plugin for mail user agents such as Mutt
+mail-mta/msmtp 1.8.3 1.8.4 1.8.5 1.8.5-r1: An SMTP client and SMTP plugin for mail user agents such as Mutt
 mail-mta/netqmail 1.06-r2 1.06-r4 1.06-r5 1.06-r6: qmail -- a secure, reliable, efficient, simple message transfer agent
 mail-mta/nullmailer 1.13-r5 2.0 2.0-r1 2.0-r2 2.2: Simple relay-only local mail transport agent
 mail-mta/opensmtpd 6.0.3_p1-r1 6.4.0_p1: Lightweight but featured SMTP daemon from OpenBSD
@@ -14077,7 +14089,7 @@ media-sound/multimux 0.2.5.2: combines up to 8 audio mono wave ch. into one big 
 media-sound/mumble 1.3.0_rc1-r1 1.3.0_rc2 9999: Mumble is an open source, low-latency, high quality voice chat software
 media-sound/munt-mt32emu-alsadrv 2.3.0: ALSA MIDI driver for emulating the Roland MT-32, CM-32L, CM-64 and LAPC-I
 media-sound/mup 6.6: Program for printing music scores
-media-sound/murmur 1.3.0_rc2-r1 9999: Mumble is an open source, low-latency, high quality voice chat software
+media-sound/murmur 1.3.0_rc2-r1 1.3.0_rc2-r2 9999: Mumble is an open source, low-latency, high quality voice chat software
 media-sound/muse 0.9.2_p20161002: Multiple Streaming Engine, an icecast source streamer
 media-sound/musepack-tools 465-r1: Musepack SV8 libraries and utilities
 media-sound/musescore 3.0.1-r1 9999: WYSIWYG Music Score Typesetter
@@ -14207,7 +14219,7 @@ media-sound/tunapie 2.1.17-r1 2.1.19: Directory browser for Radio and TV streams
 media-sound/tuxguitar 1.3.2: Multitrack guitar tablature editor and player written in Java-SWT
 media-sound/twolame 0.3.13-r2: An optimised MPEG Audio Layer 2 (MP2) encoder
 media-sound/umix 1.0.2-r1: Program for adjusting soundcard volumes
-media-sound/umurmur 0.2.16a-r1 0.2.17-r1 0.2.17-r2 9999: Minimalistic Murmur (Mumble server)
+media-sound/umurmur 0.2.16a-r1 0.2.17-r1 0.2.17-r2 0.2.17-r3 9999: Minimalistic Murmur (Mumble server)
 media-sound/upmpdcli 1.4.0 1.4.2: UPnP Media Renderer front-end for MPD, the Music Player Daemon
 media-sound/vb2rip 1.4: Konami VB2 sound format ripping utility
 media-sound/vbrfixc 0.24: Vbrfix fixes MP3s and re-constructs VBR headers
@@ -14783,14 +14795,14 @@ net-dns/maradns 2.0.09-r2 2.0.14 2.0.16: A security-aware DNS server
 net-dns/mdns-repeater 20110921: Multicast DNS repeater
 net-dns/mydns 1.2.8.31-r1 1.2.8.31-r2: A DNS-Server which gets its data from a MySQL-/PostgreSQL-database
 net-dns/ndu 0.4-r4: DNS serial number incrementer and reverse zone builder
-net-dns/nsd 4.1.27 4.2.0 4.2.1: An authoritative only, high performance, open source name server
+net-dns/nsd 4.1.27 4.2.0 4.2.1 4.2.1-r1: An authoritative only, high performance, open source name server
 net-dns/odsclient 1.03-r1: Client for the Open Domain Server's dynamic dns
 net-dns/opendnssec 1.3.18-r1 1.4.8.2 1.4.12-r1 2.0.1-r1 2.0.3-r1: An open-source turn-key solution for DNSSEC
 net-dns/openresolv 3.9.0: A framework for managing DNS information
 net-dns/pdns 4.1.13 4.2.0_rc3: The PowerDNS Daemon
 net-dns/pdns-ldap-backend 0.2: Fork of the official but unmaintained LDAP backend
 net-dns/pdns-recursor 4.1.14 4.2.0: The PowerDNS Recursor
-net-dns/pdnsd 1.2.9a-r1: Proxy DNS server with permanent caching
+net-dns/pdnsd 1.2.9a-r1 1.2.9a-r2: Proxy DNS server with permanent caching
 net-dns/rbldnsd 0.998 0.998-r2: DNS server designed to serve blacklist zones
 net-dns/resolv_wrapper 1.1.4 1.1.5: A wrapper for DNS name resolving or DNS faking
 net-dns/resolvconf-symlink 0: Make /etc/resolv.conf a symlink to a runtime-writable location
@@ -14831,7 +14843,7 @@ net-firewall/rtsp-conntrack 3.7-r1: RTSP conntrack module for Netfilter
 net-firewall/sanewall 1.1.6-r2: iptables firewall generator (fork of firehol)
 net-firewall/shapecfg 36: configuration tool for setting traffic bandwidth parameters
 net-firewall/shorewall 5.2.3.3: A high-level tool for configuring Netfilter
-net-firewall/ufw 0.34_pre805-r2 0.35-r1 0.36: A program used to manage a netfilter firewall
+net-firewall/ufw 0.35-r1 0.36: A program used to manage a netfilter firewall
 net-firewall/ufw-frontends 0.3.2-r5: Provides graphical frontend to ufw
 net-firewall/xtables-addons 2.13 3.3: iptables extensions not yet accepted in the main kernel
 net-fs/autofs 5.1.2 5.1.3 5.1.4 5.1.5-r1 5.1.5-r2: Kernel based automounter
