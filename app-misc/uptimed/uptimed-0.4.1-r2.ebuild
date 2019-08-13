@@ -19,6 +19,7 @@ RDEPEND="
 	acct-user/uptimed
 "
 DEPEND="${RDEPEND}"
+BDEPEND="${RDEPEND}"
 
 src_prepare() {
 	default
