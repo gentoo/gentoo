@@ -2,17 +2,15 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit toolchain-funcs
+inherit git-r3 toolchain-funcs
 
 DESCRIPTION="Parallelized network login hacker"
 HOMEPAGE="https://github.com/vanhauser-thc/thc-hydra"
-SRC_URI="
-	${HOMEPAGE}/archive/v${PV}.tar.gz -> ${P}.tar.gz
-"
+EGIT_REPO_URI="${HOMEPAGE}"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS=""
 IUSE="
 	debug firebird gcrypt gtk idn libressl memcached mongodb mysql ncp ncurses
 	oracle pcre postgres rdp libssh subversion zlib
@@ -47,7 +45,6 @@ DEPEND="
 	${RDEPEND}
 	virtual/pkgconfig
 "
-S=${WORKDIR}/thc-${P}
 
 src_prepare() {
 	default
@@ -121,5 +118,5 @@ src_compile() {
 src_install() {
 	dobin hydra pw-inspector
 	use gtk && dobin hydra-gtk/src/xhydra
-	dodoc CHANGES README
+	dodoc CHANGES README.md
 }
