@@ -2,10 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
-    <email>beschindler@gmail.com</email>
-    <name>Benjamin Schindler</name>
-  </maintainer>
-  <maintainer type="person">
     <email>azamat.hackimov@gmail.com</email>
     <name>Azamat H. Hackimov</name>
   </maintainer>
