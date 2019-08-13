@@ -75,6 +75,7 @@ MODULE_DEPENDS="
 	proxy_html:proxy
 	proxy_html:xml2enc
 	proxy_http:proxy
+	proxy_http2:proxy
 	proxy_scgi:proxy
 	proxy_fcgi:proxy
 	proxy_wstunnel:proxy
@@ -140,6 +141,7 @@ IUSE="${IUSE} +suexec-caps suexec-syslog"
 
 CDEPEND="apache2_modules_brotli? ( >=app-arch/brotli-0.6.0:= )
 	apache2_modules_http2? ( >=net-libs/nghttp2-1.2.1 )
+	apache2_modules_proxy_http2? ( >=net-libs/nghttp2-1.2.1 )
 	apache2_modules_md? ( >=dev-libs/jansson-2.10 )"
 
 DEPEND+="${CDEPEND}
