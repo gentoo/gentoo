@@ -17,7 +17,7 @@ IUSE="hardened"
 src_compile() {
 	pushd src || die
 	local i
-	for i in plugins/{meta/{bandwidth,firewall,flannel,portmap,sbr,tuning},main/{bridge,host-device,ipvlan,loopback,macvlan,ptp,vlan},ipam/{dhcp,host-local,static},sample}; do
+	for i in plugins/{meta/{flannel,portmap,tuning},main/{bridge,host-device,ipvlan,loopback,macvlan,ptp,vlan},ipam/{dhcp,host-local},sample}; do
 		CGO_LDFLAGS="$(usex hardened '-fno-PIC ' '')" GOPATH="${WORKDIR}/${P}" go install -v "${EGO_PN}/${i}" || die
 	done
 	popd || die
@@ -29,7 +29,7 @@ src_install() {
 	pushd src/${EGO_PN} || die
 	dodoc README.md
 	local i
-	for i in plugins/{meta/{bandwidth,firewall,flannel,portmap,sbr,tuning},main/{bridge,host-device,ipvlan,loopback,macvlan,ptp,vlan},ipam/{dhcp,host-local,static},sample}; do
+	for i in plugins/{meta/{flannel,portmap,tuning},main/{bridge,host-device,ipvlan,loopback,macvlan,ptp,vlan},ipam/{dhcp,host-local},sample}; do
 		newdoc README.md ${i##*/}.README.md
 	done
 	popd || die
