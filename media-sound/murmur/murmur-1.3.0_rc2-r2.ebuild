@@ -32,6 +32,8 @@ SLOT="0"
 IUSE="+dbus debug +ice pch zeroconf"
 
 RDEPEND="
+	acct-group/murmur
+	acct-user/murmur
 	>=dev-libs/openssl-1.0.0b:0=
 	>=dev-libs/protobuf-2.2.0:=
 	dev-qt/qtcore:5
