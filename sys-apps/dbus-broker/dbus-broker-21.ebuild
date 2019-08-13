@@ -11,7 +11,7 @@ if [[ ${PV} == 9999 ]]; then
 else
 	KEYWORDS="~amd64"
 	SRC_URI="https://github.com/bus1/dbus-broker/archive/v${PV}/${P}.tar.gz"
-	declare -A SUBPROJECTS=(
+	declare -Ag SUBPROJECTS=(
 		[c-dvar]=7c0833f9cae446163077b204b2296287bbee7c67
 		[c-ini]=847c55f5b3d33baa47af9a1286175d58b34f91d5
 		[c-list]=2e4b605c6217cd3c8a1ef773f82f5cc329ba650d
