@@ -2477,7 +2477,7 @@ app-text/lout 3.40: High-level language for document formatting
 app-text/lv 4.51-r4: Powerful Multilingual File Viewer
 app-text/mandoc 1.14.4 1.14.5: Suite of tools compiling mdoc and man
 app-text/manpager 1: Enable colorization of man pages
-app-text/master-pdf-editor 5.2.20 5.3.02 5.3.12 5.3.22: A complete solution for viewing and editing PDF files
+app-text/master-pdf-editor 5.2.20 5.3.02 5.3.12 5.3.22 5.4.38: A complete solution for viewing and editing PDF files
 app-text/mathtex 1.04: Lets you easily embed LaTeX math in your own html pages, blogs, wikis, etc
 app-text/mecab 0.996-r1: Yet Another Part-of-Speech and Morphological Analyzer
 app-text/mftrace 1.2.18-r3 1.2.19-r1: Traces TeX fonts to PFA or PFB fonts (formerly pktrace)
@@ -18541,7 +18541,7 @@ www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositor
 www-apps/wiliki 0.6.1-r1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
 www-apps/wordpress 5.1 5.1.1 5.2 5.2.1: Wordpress PHP and MySQL based content management system (CMS)
 www-apps/zeppelin-bin 0.8.1: Web-based interactive data analytics notebook launcher
-www-client/chromium 76.0.3809.87 76.0.3809.100 77.0.3865.10: Open-source version of Google Chrome web browser
+www-client/chromium 76.0.3809.87 76.0.3809.100 77.0.3865.19: Open-source version of Google Chrome web browser
 www-client/ck4up 1.2: Check for Updates on HTTP pages
 www-client/dillo 3.0.5 3.0.5-r1 9999: Lean FLTK based web browser
 www-client/elinks 0.12_pre6-r1 0.12_pre6-r4 0.13_pre_pre20180225 9999: Advanced and well-established text-mode web browser

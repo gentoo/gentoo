@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst postrm
+DESCRIPTION=A complete solution for viewing and editing PDF files
+EAPI=7
+HOMEPAGE=https://code-industry.net/free-pdf-editor/
+KEYWORDS=~amd64
+LICENSE=master-pdf-editor
+RDEPEND=>=dev-qt/qtcore-5.9.8:5 >=dev-qt/qtgui-5.9.8:5 >=dev-qt/qtnetwork-5.9.8:5 >=dev-qt/qtprintsupport-5.9.8:5 >=dev-qt/qtsvg-5.9.8:5 >=media-gfx/sane-backends-1.0
+RESTRICT=mirror
+SLOT=0
+SRC_URI=https://code-industry.net/public/master-pdf-editor-5.4.38-qt5-all.amd64.tar.gz
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	xdg-utils	14d00d009167652b1fa363e55effe213
+_md5_=80726df93e08b07ac1581ea382229b3b
