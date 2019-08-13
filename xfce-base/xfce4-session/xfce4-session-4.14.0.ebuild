@@ -28,6 +28,7 @@ RDEPEND="${COMMON_DEPEND}
 	x11-apps/xrdb
 	nls? ( x11-misc/xdg-user-dirs )
 	xscreensaver? ( || (
+		xfce-extra/xfce4-screensaver
 		>=x11-misc/xscreensaver-5.26
 		>=x11-misc/xlockmore-5.43
 		x11-misc/slock
