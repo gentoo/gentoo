@@ -18,6 +18,7 @@ authn_dbd - User authentication using an SQL database
 authn_dbm - User authentication using DBM files
 authn_default - Authentication fallback module
 authn_file - User authentication using text files
+authn_socache - Maintains a cache of authentication credentials, so that a new backend lookup is not required for every authenticated request
 authz_core - Provides core authorization capabilities to various authorization/authorization modules, such as authn_file and authz_user
 authz_dbd - Provides authorization capabilities via SQL database so that authenticated users can be allowed or denied access to portions of the web site by group membership
 authz_dbm - Group authorization using DBM files
