@@ -30,7 +30,7 @@ IUSE_MPMS_THREAD="event worker"
 # slotmem_shm: Slot-based shared memory provider (for lbmethod_byrequests).
 # socache_shmcb: shared object cache provider. Default config with ssl needs it
 # unixd: fixes startup error: Invalid command 'User'
-IUSE_MODULES="access_compat actions alias asis auth_basic auth_digest
+IUSE_MODULES="access_compat actions alias asis auth_basic auth_digest auth_form
 authn_alias authn_anon authn_core authn_dbd authn_dbm authn_file authz_core
 authz_dbd authz_dbm authz_groupfile authz_host authz_owner authz_user autoindex
 brotli cache cache_disk cache_socache cern_meta charset_lite cgi cgid dav dav_fs dav_lock
@@ -38,9 +38,10 @@ dbd deflate dir dumpio env expires ext_filter file_cache filter headers http2
 ident imagemap include info lbmethod_byrequests lbmethod_bytraffic lbmethod_bybusyness
 lbmethod_heartbeat log_config log_forensic logio macro md mime mime_magic negotiation
 proxy proxy_ajp proxy_balancer proxy_connect proxy_ftp proxy_html proxy_http proxy_scgi
-proxy_http2 proxy_fcgi  proxy_wstunnel rewrite ratelimit remoteip reqtimeout setenvif
-slotmem_shm speling socache_shmcb status substitute unique_id userdir usertrack
-unixd version vhost_alias watchdog xml2enc"
+proxy_http2 proxy_fcgi  proxy_wstunnel rewrite ratelimit remoteip reqtimeout
+session session_cookie session_crypto session_dbd setenvif slotmem_shm speling
+socache_shmcb status substitute unique_id userdir usertrack unixd version vhost_alias
+watchdog xml2enc"
 # The following are also in the source as of this version, but are not available
 # for user selection:
 # bucketeer case_filter case_filter_in echo http isapi optional_fn_export
@@ -49,6 +50,7 @@ unixd version vhost_alias watchdog xml2enc"
 # inter-module dependencies
 # TODO: this may still be incomplete
 MODULE_DEPENDS="
+	auth_form:session
 	brotli:filter
 	dav_fs:dav
 	dav_lock:dav
@@ -79,6 +81,9 @@ MODULE_DEPENDS="
 	proxy_scgi:proxy
 	proxy_fcgi:proxy
 	proxy_wstunnel:proxy
+	session_cookie:session
+	session_dbd:dbd
+	session_dbd:session
 	substitute:filter
 "
 
@@ -142,7 +147,11 @@ IUSE="${IUSE} +suexec-caps suexec-syslog"
 CDEPEND="apache2_modules_brotli? ( >=app-arch/brotli-0.6.0:= )
 	apache2_modules_http2? ( >=net-libs/nghttp2-1.2.1 )
 	apache2_modules_proxy_http2? ( >=net-libs/nghttp2-1.2.1 )
-	apache2_modules_md? ( >=dev-libs/jansson-2.10 )"
+	apache2_modules_md? ( >=dev-libs/jansson-2.10 )
+	apache2_modules_session_crypto? (
+		libressl? ( dev-libs/apr-util[libressl] )
+		!libressl? ( dev-libs/apr-util[openssl] )
+	)"
 
 DEPEND+="${CDEPEND}
 	suexec? ( suexec-caps? ( sys-libs/libcap ) )"
