@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -37,7 +37,10 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 "
 
-PATCHES=( "${FILESDIR}"/${PN}-0.6.1-no-mono.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.6.1-no-mono.patch
+	"${FILESDIR}"/${PN}-12.10.1-werror.patch
+)
 
 src_prepare() {
 	default
