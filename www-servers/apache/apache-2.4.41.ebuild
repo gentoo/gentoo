@@ -31,7 +31,7 @@ IUSE_MPMS_THREAD="event worker"
 # socache_shmcb: shared object cache provider. Default config with ssl needs it
 # unixd: fixes startup error: Invalid command 'User'
 IUSE_MODULES="access_compat actions alias asis auth_basic auth_digest auth_form
-authn_alias authn_anon authn_core authn_dbd authn_dbm authn_file authz_core
+authn_alias authn_anon authn_core authn_dbd authn_dbm authn_file authn_socache authz_core
 authz_dbd authz_dbm authz_groupfile authz_host authz_owner authz_user autoindex
 brotli cache cache_disk cache_socache cern_meta charset_lite cgi cgid dav dav_fs dav_lock
 dbd deflate dir dumpio env expires ext_filter file_cache filter headers http2
