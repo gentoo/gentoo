@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python{2_7,3_{5,6,7}} )
-inherit autotools flag-o-matic linux-info python-any-r1 readme.gentoo-r1 systemd virtualx user multilib-minimal
+inherit autotools flag-o-matic linux-info python-any-r1 readme.gentoo-r1 systemd virtualx multilib-minimal
 
 DESCRIPTION="A message bus system, a simple way for applications to talk to each other"
 HOMEPAGE="https://dbus.freedesktop.org/"
@@ -18,6 +18,7 @@ IUSE="debug doc elogind kernel_linux selinux static-libs systemd test user-sessi
 REQUIRED_USE="?? ( elogind systemd )"
 
 BDEPEND="
+	acct-user/messagebus
 	app-text/xmlto
 	app-text/docbook-xml-dtd:4.4
 	sys-devel/autoconf-archive
@@ -42,6 +43,7 @@ DEPEND="${COMMON_DEPEND}
 	)
 "
 RDEPEND="${COMMON_DEPEND}
+	acct-user/messagebus
 	selinux? ( sec-policy/selinux-dbus )
 "
 
@@ -59,9 +61,6 @@ PATCHES=(
 )
 
 pkg_setup() {
-	enewgroup messagebus
-	enewuser messagebus -1 -1 -1 messagebus
-
 	use test && python-any-r1_pkg_setup
 
 	if use kernel_linux; then
