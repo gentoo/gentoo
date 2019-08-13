@@ -10,6 +10,7 @@ alias - Provides for mapping different parts of the host filesystem in the docum
 asis - Sends files that contain their own HTTP headers
 auth_basic - Basic authentication
 auth_digest - User authentication using MD5 Digest Authentication
+auth_form - Allows the use of an HTML login form to restrict access by looking up users in the given providers
 authn_alias - Provides the ability to create extended authentication providers based on actual providers
 authn_anon - Allows "anonymous" user access to authenticated areas
 authn_core - Provides core authentication capabilities common to all authentication providers (functionality provided by authn_alias in previous versions)
@@ -17,6 +18,7 @@ authn_dbd - User authentication using an SQL database
 authn_dbm - User authentication using DBM files
 authn_default - Authentication fallback module
 authn_file - User authentication using text files
+authn_socache - Maintains a cache of authentication credentials, so that a new backend lookup is not required for every authenticated request
 authz_core - Provides core authorization capabilities to various authorization/authorization modules, such as authn_file and authz_user
 authz_dbd - Provides authorization capabilities via SQL database so that authenticated users can be allowed or denied access to portions of the web site by group membership
 authz_dbm - Group authorization using DBM files
@@ -81,6 +83,10 @@ ratelimit - Bandwidth Rate Limiting for Clients
 remoteip - Replaces the original client IP address for the connection with the useragent IP address list presented by a proxies or a load balancer via the request headers
 reqtimeout - Set timeout and minimum data rate for receiving requests
 rewrite - Provides a rule-based rewriting engine to rewrite requested URLs on the fly
+session - Provides support for a server wide per user session interface
+session_crypto - Provides support for the encryption of user sessions before being written to a local database, or written to a remote browser via an HTTP cookie
+session_cookie - Provides support for the storage of user sessions on the remote browser within HTTP cookies
+session_dbd - Provides support for the storage of user sessions within a SQL database using the mod_dbd module
 setenvif - Allows the setting of environment variables based on characteristics of the request
 slotmem_shm - Slot-based shared memory provider
 socache_shmcb - A shared object cache provider using a high-performance cyclic buffer inside a shared memory segment
