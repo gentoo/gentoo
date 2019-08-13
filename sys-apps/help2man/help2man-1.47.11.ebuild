@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 DESCRIPTION="GNU utility to convert program --help output to a man page"
 HOMEPAGE="https://www.gnu.org/software/help2man/"
@@ -14,7 +14,7 @@ IUSE="nls"
 
 RDEPEND="dev-lang/perl
 	nls? ( dev-perl/Locale-gettext )"
-DEPEND=${RDEPEND}
+DEPEND="${RDEPEND}"
 
 DOCS=( debian/changelog NEWS README THANKS ) #385753
 
@@ -33,7 +33,9 @@ src_prepare() {
 
 src_configure() {
 	# Disable gettext requirement as the release includes the gmo files #555018
-	econf \
-		ac_cv_path_MSGFMT=$(type -P false) \
+	local myeconfargs=(
+		ac_cv_path_MSGFMT=$(type -P false)
 		$(use_enable nls)
+	)
+	econf "${myeconfargs[@]}"
 }
