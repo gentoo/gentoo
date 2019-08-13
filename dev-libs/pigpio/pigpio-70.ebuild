@@ -1,9 +1,9 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_{5,6}} )
+PYTHON_COMPAT=( python{2_7,3_{5,6,7}} )
 
 inherit distutils-r1 systemd toolchain-funcs
 
@@ -17,11 +17,8 @@ KEYWORDS="~arm"
 IUSE="python"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
-DEPEND=""
-RDEPEND="${DEPEND}"
-
 src_prepare() {
-	eapply "${FILESDIR}/${P}-makefile.patch"
+	eapply "${FILESDIR}/${PN}-70-makefile.patch"
 	eapply_user
 }
 
@@ -31,7 +28,9 @@ src_compile() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" LDCONFIG=: PYTHON2=: PYTHON3=: libdir="/usr/$(get_libdir)" prefix="/usr" mandir="/usr/share/man" install
+	emake DESTDIR="${D}" LDCONFIG=: PYTHON2=: PYTHON3=: \
+		libdir="${EPREFIX}/usr/$(get_libdir)" prefix="${EPREFIX}/usr" \
+		mandir="${EPREFIX}/usr/share/man" install
 	einstalldocs
 	newinitd "${FILESDIR}"/pigpiod.initd pigpiod
 	newconfd "${FILESDIR}"/pigpiod.confd pigpiod
