@@ -46,6 +46,8 @@ DEPEND="${RDEPEND}
 	$(add_qt_dep qtconcurrent)
 "
 
+PATCHES=( "${FILESDIR}/${P}-missing-header.patch" )
+
 # bug #560548, last checked with 16.04.1
 RESTRICT+=" test"
 
