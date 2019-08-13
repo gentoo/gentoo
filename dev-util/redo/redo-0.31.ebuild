@@ -20,6 +20,9 @@ BDEPEND="
 	dev-python/markdown[${PYTHON_USEDEP}]
 	${PYTHON_DEPS}
 "
+RDEPEND="
+	${BDEPEND}
+"
 S=${WORKDIR}/${PN}-${P}
 
 src_compile() {
