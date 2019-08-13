@@ -1,13 +1,13 @@
-BDEPEND=virtual/pkgconfig dev-lang/perl virtual/pkgconfig >=dev-vcs/git-1.8.2.1[curl]
+BDEPEND=acct-group/murmur acct-user/murmur virtual/pkgconfig dev-lang/perl virtual/pkgconfig >=dev-vcs/git-1.8.2.1[curl]
 DEFINED_PHASES=configure install postinst prepare unpack
-DEPEND=acct-group/murmur acct-user/murmur >=dev-libs/openssl-1.0.0b:0= >=dev-libs/protobuf-2.2.0:= dev-qt/qtcore:5 dev-qt/qtnetwork:5 || ( dev-qt/qtsql:5[sqlite] dev-qt/qtsql:5[mysql] ) dev-qt/qtxml:5 sys-apps/lsb-release >=sys-libs/libcap-2.15 dbus? ( dev-qt/qtdbus:5 ) ice? ( dev-libs/Ice:= ) zeroconf? ( net-dns/avahi[mdnsresponder-compat] ) >=dev-libs/boost-1.41.0
+DEPEND=>=dev-libs/openssl-1.0.0b:0= >=dev-libs/protobuf-2.2.0:= dev-qt/qtcore:5 dev-qt/qtnetwork:5 || ( dev-qt/qtsql:5[sqlite] dev-qt/qtsql:5[mysql] ) dev-qt/qtxml:5 sys-apps/lsb-release >=sys-libs/libcap-2.15 dbus? ( dev-qt/qtdbus:5 ) ice? ( dev-libs/Ice:= ) zeroconf? ( net-dns/avahi[mdnsresponder-compat] ) >=dev-libs/boost-1.41.0
 DESCRIPTION=Mumble is an open source, low-latency, high quality voice chat software
 EAPI=7
 HOMEPAGE=https://wiki.mumble.info
 IUSE=+dbus debug +ice pch zeroconf
 LICENSE=BSD
 PROPERTIES=live
-RDEPEND=acct-group/murmur acct-user/murmur >=dev-libs/openssl-1.0.0b:0= >=dev-libs/protobuf-2.2.0:= dev-qt/qtcore:5 dev-qt/qtnetwork:5 || ( dev-qt/qtsql:5[sqlite] dev-qt/qtsql:5[mysql] ) dev-qt/qtxml:5 sys-apps/lsb-release >=sys-libs/libcap-2.15 dbus? ( dev-qt/qtdbus:5 ) ice? ( dev-libs/Ice:= ) zeroconf? ( net-dns/avahi[mdnsresponder-compat] )
+RDEPEND=>=dev-libs/openssl-1.0.0b:0= >=dev-libs/protobuf-2.2.0:= dev-qt/qtcore:5 dev-qt/qtnetwork:5 || ( dev-qt/qtsql:5[sqlite] dev-qt/qtsql:5[mysql] ) dev-qt/qtxml:5 sys-apps/lsb-release >=sys-libs/libcap-2.15 dbus? ( dev-qt/qtdbus:5 ) ice? ( dev-libs/Ice:= ) zeroconf? ( net-dns/avahi[mdnsresponder-compat] )
 SLOT=0
 _eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	git-r3	562b380fc59ae6a8622171d0acb777d1	multilib	1d91b03d42ab6308b5f4f6b598ed110e	qmake-utils	bdf97e69a34b864d6d545f4ec3143ff7	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
-_md5_=cfa014c132c63f8ffffef68812801153
+_md5_=2c35ba161fb84e1cce6b978f6280ccc4
