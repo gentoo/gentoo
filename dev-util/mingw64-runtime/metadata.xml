@@ -8,6 +8,7 @@
   <use>
     <flag name="idl">Install idl files.</flag>
     <flag name="libraries">Build extra libraries: mangle, pseh, winpthreads.</flag>
+    <flag name="secure-api">Expose secure API (*_s function) by default.</flag>
     <flag name="tools">Build extra tools: gendef, genidl.</flag>
   </use>
   <upstream>
