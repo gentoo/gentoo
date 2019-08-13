@@ -19,8 +19,10 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="libnotify appindicator +keybinder"
+REQUIRED_USE=${PYTHON_REQUIRED_USE}
 
 RDEPEND="
+	${PYTHON_DEPS}
 	dev-python/pylast[${PYTHON_USEDEP}]
 	dev-python/dbus-python[${PYTHON_USEDEP}]
 	>=dev-python/pygobject-3.12[${PYTHON_USEDEP}]
