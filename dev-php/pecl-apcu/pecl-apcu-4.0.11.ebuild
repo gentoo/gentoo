@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,7 +14,7 @@ inherit php-ext-pecl-r3
 
 USE_PHP="php5-6"
 
-KEYWORDS="amd64 x86"
+KEYWORDS="amd64 ~arm64 x86"
 
 DESCRIPTION="Stripped down version of APC supporting only user cache"
 LICENSE="PHP-3.01"

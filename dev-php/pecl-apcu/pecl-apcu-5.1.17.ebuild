@@ -17,7 +17,7 @@ inherit php-ext-pecl-r3
 # However, we only really build for 7.x; so redefine it here
 USE_PHP="php7-0 php7-1 php7-2 php7-3"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 
 DESCRIPTION="Stripped down version of APC supporting only user cache"
 LICENSE="PHP-3.01"
