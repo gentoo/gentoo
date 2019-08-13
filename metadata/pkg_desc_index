@@ -10988,7 +10988,7 @@ dev-vcs/cvsync 2014.08.24.014706 9999: portable CVS repository synchronization u
 dev-vcs/darcs 2.8.4-r6 2.10.1 2.10.3-r1 2.12.0 2.12.4 2.12.5: a distributed, interactive, smart revision control system
 dev-vcs/easygit 1.7.5.2: Easy GIT (eg), a frontend for git designed for former cvs and svn users
 dev-vcs/fossil 2.8 2.9: Simple, high-reliability, source control management, and more
-dev-vcs/git 2.19.2 2.21.0 2.21.0-r2 2.22.0 2.23.0_rc2 9999 9999-r1 9999-r2 9999-r3: stupid content tracker: distributed VCS designed for speed and efficiency
+dev-vcs/git 2.19.2 2.21.0 2.21.0-r2 2.22.0 2.22.1 2.23.0_rc2 9999 9999-r1 9999-r2 9999-r3: stupid content tracker: distributed VCS designed for speed and efficiency
 dev-vcs/git-annex 6.20170818: manage files with git, without checking their contents into git
 dev-vcs/git-bz 0.2015.09.08 9999: Bugzilla subcommand for git
 dev-vcs/git-cola 2.11 3.2: The highly caffeinated git GUI
@@ -17287,7 +17287,7 @@ sys-apps/hbaapi 2.2: The Host Bus Adapter API for managing Fibre Channel Host Bu
 sys-apps/hd-idle 1.05: Utility for spinning down hard disks after a period of idle time
 sys-apps/hdparm 9.56 9.58: Utility to change hard drive performance parameters
 sys-apps/heirloom-tools 070715 070715-r1: Heirloom toolchest - original Unix tools
-sys-apps/help2man 1.47.6 1.47.8 1.47.9 1.47.10: GNU utility to convert program --help output to a man page
+sys-apps/help2man 1.47.6 1.47.10 1.47.11: GNU utility to convert program --help output to a man page
 sys-apps/hexdump-esr 1.8: Eric Raymond's hex dumper
 sys-apps/highway 1.1.0: High performance source code search tool
 sys-apps/hotplug2stdout 1.2.1: A tool for reading kernel uevent(s) to stdout
