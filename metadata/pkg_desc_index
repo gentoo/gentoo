@@ -8634,7 +8634,7 @@ dev-python/pyserial 3.2.1 3.4: Python Serial Port extension
 dev-python/pysha3 1.0.2-r1: SHA-3 (Keccak) for Python 2.7 - 3.5
 dev-python/pyshark 0.3.7.2-r1 0.4.2.3: A Python wrapper for tshark output parsing
 dev-python/pysmi 0.1.3 0.3.1 0.3.4: Python Lex & Yacc
-dev-python/pysnmp 4.4.4 4.4.9 4.4.10-r1 999999: Python SNMP library
+dev-python/pysnmp 4.4.4 4.4.10-r1 4.4.11 999999: Python SNMP library
 dev-python/pysnmp-apps 0.5.2 0.5.3: PySNMP applications
 dev-python/pysnmp-mibs 0.1.6: SNMP framework in Python - MIBs
 dev-python/pysol_cards 0.6.2 0.6.2-r1: Deal PySol FreeCell cards
@@ -14499,7 +14499,7 @@ net-analyzer/hexinject 1.5 1.6 1.6-r1: Network packet sniffer and injector
 net-analyzer/hping 3_pre20051105-r6 3_pre20141226: A ping-like TCP/IP packet assembler/analyzer
 net-analyzer/httping 2.5 9999999: like ping but for HTTP requests
 net-analyzer/hunt 1.5-r1 1.5-r3: tool for checking well known weaknesses in the TCP/IP protocol
-net-analyzer/hydra 8.1 8.5-r1 8.6-r1 8.9.1 9.0: Advanced parallized login hacker
+net-analyzer/hydra 8.1 8.5-r1 8.6-r1 8.9.1 9.0 9999999: Parallelized network login hacker
 net-analyzer/ibmonitor 1.4: Interactive bandwidth monitor
 net-analyzer/icinga 1.14.2: Nagios Fork - Check daemon, CGIs, docs, IDOutils
 net-analyzer/icinga-web 1.14.1: Icinga Web - new Web Interface
@@ -17765,7 +17765,7 @@ sys-devel/dev86 0.16.21-r3: Bruce's C compiler - Simple C compiler to generate 8
 sys-devel/distcc 3.3.2-r5: Distribute compilation of C code across several machines on a network
 sys-devel/dwz 0.12-r1: DWARF optimization and duplicate removal tool
 sys-devel/flex 2.6.1 2.6.3 2.6.3-r1 2.6.4 2.6.4-r1: The Fast Lexical Analyzer
-sys-devel/gcc 3.3.6-r3 3.3.6-r4 3.4.6-r2 3.4.6-r3 3.4.6-r4 4.0.4-r2 4.1.2 4.1.2-r2 4.2.4-r1 4.2.4-r3 4.3.6-r1 4.3.6-r3 4.4.7 4.4.7-r2 4.5.4 4.5.4-r2 4.6.4 4.6.4-r2 4.7.4-r1 4.7.4-r3 4.8.5-r1 4.8.5-r3 4.9.4 4.9.4-r1 5.4.0-r4 5.4.0-r6 5.5.0 6.4.0-r1 6.4.0-r5 6.5.0-r1 7.3.0-r3 7.3.0-r6 7.4.0-r1 7.4.0-r2 8.2.0-r5 8.2.0-r6 8.3.0 8.3.0-r1 9.1.0 9.1.0-r1: The GNU Compiler Collection
+sys-devel/gcc 3.3.6-r3 3.3.6-r4 3.4.6-r2 3.4.6-r3 3.4.6-r4 4.0.4-r2 4.1.2 4.1.2-r2 4.2.4-r1 4.2.4-r3 4.3.6-r1 4.3.6-r3 4.4.7 4.4.7-r2 4.5.4 4.5.4-r2 4.6.4 4.6.4-r2 4.7.4-r1 4.7.4-r3 4.8.5-r1 4.8.5-r3 4.9.4 4.9.4-r1 5.4.0-r4 5.4.0-r6 5.5.0 6.4.0-r1 6.4.0-r5 6.5.0-r1 7.3.0-r3 7.3.0-r6 7.4.0-r1 7.4.0-r2 8.2.0-r5 8.2.0-r6 8.3.0 8.3.0-r1 9.1.0 9.1.0-r1 9.2.0: The GNU Compiler Collection
 sys-devel/gcc-apple 4.2.1_p5666-r2: Apple branch of the GNU Compiler Collection, Developer Tools 4.0
 sys-devel/gcc-config 1.8-r1 1.9.0-r1 1.9.1 2.0 9999: Utility to manage compilers
 sys-devel/gdb 8.3 9999: GNU debugger
@@ -19146,7 +19146,7 @@ x11-misc/xkblayout-state 0_p20180118 9999: A small program to get/set the curren
 x11-misc/xkbset 0.5_p5_p1 0.5_p6 0.5_p7_p1: User preference utility for XKB extensions for X
 x11-misc/xkeyboard-config 2.27 9999: X keyboard configuration database
 x11-misc/xkeycaps 2.47-r2: GUI frontend to xmodmap
-x11-misc/xlockmore 5.50 5.56 5.57: Just another screensaver application for X
+x11-misc/xlockmore 5.50 5.56 5.57 5.58_alpha: Just another screensaver application for X
 x11-misc/xmobar 0.23.1 0.24.2 0.24.3: A Minimalistic Text Based Status Bar
 x11-misc/xmonad-log-applet 2.0.0-r301: Gnome and XFCE applet for displaying XMonad log
 x11-misc/xmountains 2.9-r1: Fractal terrains of snow-capped mountains near water

@@ -1,13 +1,13 @@
-DEFINED_PHASES=compile configure install prepare
+BDEPEND=>=dev-vcs/git-1.8.2.1[curl]
+DEFINED_PHASES=compile configure install prepare unpack
 DEPEND=gtk? ( dev-libs/atk dev-libs/glib:2 x11-libs/gdk-pixbuf:2 x11-libs/gtk+:2 ) firebird? ( dev-db/firebird ) gcrypt? ( dev-libs/libgcrypt ) idn? ( net-dns/libidn:0= ) !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) memcached? ( dev-libs/libmemcached[sasl] ) mongodb? ( dev-libs/mongo-c-driver ) mysql? ( dev-db/mysql-connector-c:0= ) ncp? ( net-fs/ncpfs ) ncurses? ( sys-libs/ncurses:= ) oracle? ( dev-db/oracle-instantclient-basic ) pcre? ( dev-libs/libpcre ) postgres? ( dev-db/postgresql:* ) rdp? ( net-misc/freerdp ) libssh? ( >=net-libs/libssh-0.4.0 ) subversion? ( dev-vcs/subversion ) zlib? ( sys-libs/zlib ) virtual/pkgconfig
 DESCRIPTION=Parallelized network login hacker
 EAPI=7
 HOMEPAGE=https://github.com/vanhauser-thc/thc-hydra
 IUSE=debug firebird gcrypt gtk idn libressl memcached mongodb mysql ncp ncurses oracle pcre postgres rdp libssh subversion zlib
-KEYWORDS=~amd64 ~ppc ~x86
 LICENSE=GPL-3
+PROPERTIES=live
 RDEPEND=gtk? ( dev-libs/atk dev-libs/glib:2 x11-libs/gdk-pixbuf:2 x11-libs/gtk+:2 ) firebird? ( dev-db/firebird ) gcrypt? ( dev-libs/libgcrypt ) idn? ( net-dns/libidn:0= ) !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) memcached? ( dev-libs/libmemcached[sasl] ) mongodb? ( dev-libs/mongo-c-driver ) mysql? ( dev-db/mysql-connector-c:0= ) ncp? ( net-fs/ncpfs ) ncurses? ( sys-libs/ncurses:= ) oracle? ( dev-db/oracle-instantclient-basic ) pcre? ( dev-libs/libpcre ) postgres? ( dev-db/postgresql:* ) rdp? ( net-misc/freerdp ) libssh? ( >=net-libs/libssh-0.4.0 ) subversion? ( dev-vcs/subversion ) zlib? ( sys-libs/zlib )
 SLOT=0
-SRC_URI=https://github.com/vanhauser-thc/thc-hydra/archive/v9.0.tar.gz -> hydra-9.0.tar.gz
-_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
-_md5_=3adf8a0307d5d269537e01c521c2f91c
+_eclasses_=git-r3	562b380fc59ae6a8622171d0acb777d1	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
+_md5_=bc3ebc6ae9740f2a8ace0ad47d77283e
