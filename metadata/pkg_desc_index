@@ -15074,7 +15074,7 @@ net-libs/libiscsi 1.18.0 9999: iscsi client library and utilities
 net-libs/libisds 0.10.6 0.10.7 0.10.8 9999: Client library for accessing ISDS Soap services
 net-libs/libktorrent 2.1-r2: BitTorrent library based on KDE Frameworks
 net-libs/libkvkontakte 5.0.0-r1: Library for accessing the features of social networking site vkontakte.ru
-net-libs/liblockfile 1.09 1.14-r1 1.15: Implements functions designed to lock the standard mailboxes
+net-libs/liblockfile 1.09 1.14-r1 1.15 1.16: Implements functions designed to lock the standard mailboxes
 net-libs/libmbim 1.6.0 1.10.0 1.12.2 1.12.4 1.14.0 1.14.4 1.16.0 1.16.2 1.18.0: Mobile Broadband Interface Model (MBIM) modem protocol helper library
 net-libs/libmediawiki 5.37.0-r1: C++ interface for MediaWiki based web service as wikipedia.org
 net-libs/libmicrodns 0.0.9 9999: Minimal mDNS resolver (and announcer) library
