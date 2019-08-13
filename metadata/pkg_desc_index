@@ -10791,11 +10791,11 @@ dev-util/jenkins-bin 2.176.2 2.186: Extensible continuous integration server
 dev-util/kbuild 0.1.9998.3149 9999: A makefile framework for writing simple makefiles for complex tasks
 dev-util/kcov 33 34 9999: Kcov is a code coverage tester for compiled languages, Python and Bash
 dev-util/kdbg 3.0.0-r1: Graphical debugger interface
-dev-util/kdevelop 5.3.2 5.3.3 5.4.0: Integrated Development Environment, supporting KF5/Qt, C/C++ and much more
+dev-util/kdevelop 5.3.2 5.3.3 5.4.0 5.4.1: Integrated Development Environment, supporting KF5/Qt, C/C++ and much more
 dev-util/kdevelop-clang-tidy 0.3.3-r1: KDevelop plugin for clang-tidy static analysis support
 dev-util/kdevelop-pg-qt 2.2.0: LL(1) parser generator used mainly by KDevelop language plugins
-dev-util/kdevelop-php 5.3.2 5.3.3 5.4.0: PHP plugin for KDevelop
-dev-util/kdevelop-python 5.3.2 5.3.3 5.4.0: Python plugin for KDevelop
+dev-util/kdevelop-php 5.3.2 5.3.3 5.4.0 5.4.1: PHP plugin for KDevelop
+dev-util/kdevelop-python 5.3.2 5.3.3 5.4.0 5.4.1: Python plugin for KDevelop
 dev-util/kdstatemachineeditor 1.2.4 9999: Framework for creating Qt State Machine metacode using graphical user interfaces
 dev-util/kelbt 0.15: A backtracking LR parser by the author of Ragel
 dev-util/kernelshark 1.0 9999: Graphical reader for trace-cmd output
@@ -15657,7 +15657,7 @@ net-misc/x2goclient 4.1.2.1 4.1.2.1-r1: The X2Go Qt client
 net-misc/x2goserver 4.1.0.2 4.1.0.3: The X2Go server
 net-misc/yandex-disk 0.1.5.978_p1: CLI to access Yandex Disk file storage service
 net-misc/you-get 0.4.536 0.4.1270: utility to download media contents from the web
-net-misc/youtube-dl 2019.08.02 99999999: Download videos from YouTube.com (and more sites...)
+net-misc/youtube-dl 2019.08.02 2019.08.13 99999999: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.3.3 3.5.4 3.5.5 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/zerotier 1.2.12: A software-based managed Ethernet switch for planet Earth
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
@@ -18502,7 +18502,7 @@ www-apps/jekyll-coffeescript 1.2.2: A CoffeeScript Converter for Jekyll
 www-apps/jekyll-sass-converter 1.5.2: A basic Sass converter for Jekyll
 www-apps/jekyll-sitemap 0.13.0: Automatically generate a sitemap.xml for your Jekyll site
 www-apps/jekyll-watch 2.2.1: Rebuild your Jekyll site when a file changes with the --watch switch
-www-apps/karma-bin 0.24 0.27 0.33 0.39 0.40 0.41: Alerts dashboard for Prometheus Alertmanager
+www-apps/karma-bin 0.24 0.27 0.33 0.39 0.40 0.41 0.43: Alerts dashboard for Prometheus Alertmanager
 www-apps/kibana-bin 5.6.16 6.6.1 6.7.1 6.8.1 7.0.0 7.2.0: Analytics and search dashboard for Elasticsearch
 www-apps/klaus 1.3.0 1.4.0: A simple, easy-to-set-up Git web viewer
 www-apps/liquid_feedback_core 2.2.3 2.2.6 3.0.4: Internet platforms for proposition development and decision making
@@ -18574,7 +18574,7 @@ www-client/midori 7.0: A lightweight web browser based on WebKitGTK+
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.8-r2: a free, open source web browser
 www-client/opera 12.16_p1860-r1 62.0.3331.116: A fast and secure web browser
-www-client/opera-beta 63.0.3368.17 63.0.3368.22: A fast and secure web browser
+www-client/opera-beta 63.0.3368.22 63.0.3368.29: A fast and secure web browser
 www-client/opera-developer 64.0.3401.0 64.0.3407.0: A fast and secure web browser
 www-client/otter 0.9.99.3 1.0.01 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/phantomjs 2.1.1 2.1.1-r1: A headless WebKit scriptable with a JavaScript API
