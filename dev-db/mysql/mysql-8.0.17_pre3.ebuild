@@ -115,15 +115,17 @@ mysql_init_vars() {
 	if [[ -z "${MY_DATADIR}" ]] ; then
 		MY_DATADIR=""
 		if [[ -f "${MY_SYSCONFDIR}/my.cnf" ]] ; then
-			MY_DATADIR=`"my_print_defaults" mysqld 2>/dev/null \
+			MY_DATADIR=$(my_print_defaults mysqld 2>/dev/null \
 				| sed -ne '/datadir/s|^--datadir=||p' \
-				| tail -n1`
+				| tail -n1)
+
 			if [[ -z "${MY_DATADIR}" ]] ; then
-				MY_DATADIR=`grep ^datadir "${MY_SYSCONFDIR}/my.cnf" \
+				MY_DATADIR=$(grep ^datadir "${MY_SYSCONFDIR}/my.cnf" \
 				| sed -e 's/.*=\s*//' \
-				| tail -n1`
+				| tail -n1)
 			fi
 		fi
+
 		if [[ -z "${MY_DATADIR}" ]] ; then
 			MY_DATADIR="${MY_LOCALSTATEDIR}"
 			einfo "Using default MY_DATADIR"
@@ -143,17 +145,9 @@ mysql_init_vars() {
 		fi
 	else
 		if [[ ${EBUILD_PHASE} == "config" ]] ; then
-			local new_MY_DATADIR
-			new_MY_DATADIR=`"my_print_defaults" mysqld 2>/dev/null \
+			MY_DATADIR=$(my_print_defaults mysqld 2>/dev/null \
 				| sed -ne '/datadir/s|^--datadir=||p' \
-				| tail -n1`
-
-			if [[ ( -n "${new_MY_DATADIR}" ) && ( "${new_MY_DATADIR}" != "${MY_DATADIR}" ) ]] ; then
-				ewarn "MySQL MY_DATADIR has changed"
-				ewarn "from ${MY_DATADIR}"
-				ewarn "to ${new_MY_DATADIR}"
-				MY_DATADIR="${new_MY_DATADIR}"
-			fi
+				| tail -n1)
 		fi
 	fi
 
@@ -196,40 +190,6 @@ pkg_setup() {
 			check_extra_config
 		fi
 	fi
-}
-
-pkg_postinst() {
-	# Make sure the vars are correctly initialized
-	mysql_init_vars
-
-	# Create log directory securely if it does not exist
-	[[ -d "${ROOT}${MY_LOGDIR}" ]] || install -d -m0750 -o mysql -g mysql "${ROOT}${MY_LOGDIR}"
-
-	if [[ -z "${REPLACING_VERSIONS}" ]] ; then
-		einfo
-		elog "You might want to run:"
-		elog "\"emerge --config =${CATEGORY}/${PF}\""
-		elog "if this is a new install."
-		elog
-		elog "If you are switching server implentations, you should run the"
-		elog "mysql_upgrade tool."
-		einfo
-	else
-		einfo
-		elog "If you are upgrading major versions, you should run the"
-		elog "mysql_upgrade tool."
-		einfo
-	fi
-
-	# Note about configuration change
-	einfo
-	elog "This version of ${PN} reorganizes the configuration from a single my.cnf"
-	elog "to several files in /etc/mysql/mysql.d."
-	elog "Please backup any changes you made to /etc/mysql/my.cnf"
-	elog "and add them as a new file under /etc/mysql/mysql.d with a .cnf extension."
-	elog "You may have as many files as needed and they are read alphabetically."
-	elog "Be sure the options have the appropriate section headers, i.e. [mysqld]."
-	einfo
 }
 
 src_unpack() {
@@ -591,56 +551,254 @@ src_install() {
 	find "${D}" -name 'libmysqlclient_r.*' -type l -delete || die
 }
 
+pkg_postinst() {
+	# Make sure the vars are correctly initialized
+	mysql_init_vars
+
+	# Create log directory securely if it does not exist
+	[[ -d "${EROOT}/${MY_LOGDIR#/}" ]] || install -d -m0750 -o mysql -g mysql "${EROOT}/${MY_LOGDIR#/}"
+
+	# Note about configuration change
+	einfo
+	elog "This version of ${PN} reorganizes the configuration from a single my.cnf"
+	elog "to several files in /etc/mysql/mysql.d."
+	elog "Please backup any changes you made to /etc/mysql/my.cnf"
+	elog "and add them as a new file under /etc/mysql/mysql.d with a .cnf extension."
+	elog "You may have as many files as needed and they are read alphabetically."
+	elog "Be sure the options have the appropriate section headers, i.e. [mysqld]."
+	einfo
+
+	if [[ -z "${REPLACING_VERSIONS}" ]] ; then
+		einfo
+		elog "You might want to run:"
+		elog "  \"emerge --config =${CATEGORY}/${PF}\""
+		elog "if this is a new install."
+		einfo
+	else
+		einfo
+		elog "Upgrade process for ${PN}-8.x has changed. Please read"
+		elog "https://dev.mysql.com/doc/refman/8.0/en/upgrade-binary-package.html"
+		einfo
+	fi
+}
+
 pkg_config() {
+	local mysqld_binary="${EROOT}/usr/sbin/mysqld"
+	if [[ ! -x "${mysqld_binary}" ]] ; then
+		die "'${mysqld_binary}' not found! Please re-install ${CATEGORY}/${PN}!"
+	fi
+
+	local mysql_binary="${EROOT}/usr/bin/mysql"
+	if [[ ! -x "${mysql_binary}" ]] ; then
+		die "'${mysql_binary}' not found! Please re-install ${CATEGORY}/${PN}!"
+	fi
+
+	local my_print_defaults_binary="${EROOT}/usr/bin/my_print_defaults"
+	if [[ ! -x "${my_print_defaults_binary}" ]] ; then
+		die "'${my_print_defaults_binary}' not found! Please re-install dev-db/mysql-connector-c!"
+	fi
+
 	_getoptval() {
-		local mypd="${EROOT}"/usr/bin/my_print_defaults
 		local section="$1"
 		local flag="--${2}="
 		local extra_options="${3}"
-		"${mypd}" $extra_options $section | sed -n "/^${flag}/s,${flag},,gp"
+		local results=( $("${my_print_defaults_binary}" ${extra_options} ${section} | sed -n "/^${flag}/s,${flag},,gp") )
+
+		if [[ ${#results[@]} -gt 0 ]] ; then
+			# When option is set multiple times only return last value
+			echo "${results[-1]}"
+		fi
 	}
+
 	local old_MY_DATADIR="${MY_DATADIR}"
 	local old_HOME="${HOME}"
 	# my_print_defaults needs to read stuff in $HOME/.my.cnf
-	export HOME=${EPREFIX}/root
+	local -x HOME="${EROOT}/root"
 
 	# Make sure the vars are correctly initialized
 	mysql_init_vars
 
-	[[ -z "${MY_DATADIR}" ]] && die "Sorry, unable to find MY_DATADIR"
-	if [[ ! -x "${EROOT}/usr/sbin/mysqld" ]] ; then
-		die "Minimal builds do NOT include the MySQL server"
+	# Bug #213475 - MySQL _will_ object strenously if your machine is named
+	# localhost. Also causes weird failures.
+	[[ "${HOSTNAME}" == "localhost" ]] && die "Your machine must NOT be named localhost"
+
+	if [[ -z "${MY_DATADIR}" ]] ; then
+		die "Sorry, unable to find MY_DATADIR!"
+	elif [[ -d "${EROOT}/${MY_DATADIR#/}/mysql" ]] ; then
+		ewarn "Looks like your data directory '${EROOT}/${MY_DATADIR#/}' is already initialized!"
+		ewarn "Please rename or delete its content if you wish to initialize a new data directory."
+		die "${PN} data directory at '${EROOT}/${MY_DATADIR#/}' looks already initialized!"
+	else
+		einfo "${PN} data directory detected as '${EROOT}/${MY_DATADIR#/}' ..."
 	fi
 
-	if [[ ( -n "${MY_DATADIR}" ) && ( "${MY_DATADIR}" != "${old_MY_DATADIR}" ) ]] ; then
-		local MY_DATADIR_s="${ROOT}/${MY_DATADIR}"
-		MY_DATADIR_s="${MY_DATADIR_s%}"
-		local old_MY_DATADIR_s="${ROOT}/${old_MY_DATADIR}"
-		old_MY_DATADIR_s="${old_MY_DATADIR_s%}"
+	MYSQL_TMPDIR="$(_getoptval mysqld tmpdir)"
+	# These are dir+prefix
+	MYSQL_LOG_BIN="$(_getoptval mysqld log-bin)"
+	MYSQL_LOG_BIN=${MYSQL_LOG_BIN%/*}
+	MYSQL_RELAY_LOG="$(_getoptval mysqld relay-log)"
+	MYSQL_RELAY_LOG=${MYSQL_RELAY_LOG%/*}
 
-		if [[ ( -d "${old_MY_DATADIR_s}" ) && ( "${old_MY_DATADIR_s}" != / ) ]] ; then
-			if [[ -d "${MY_DATADIR_s}" ]] ; then
-				ewarn "Both ${old_MY_DATADIR_s} and ${MY_DATADIR_s} exist"
-				ewarn "Attempting to use ${MY_DATADIR_s} and preserving ${old_MY_DATADIR_s}"
-			else
-				elog "Moving MY_DATADIR from ${old_MY_DATADIR_s} to ${MY_DATADIR_s}"
-				mv --strip-trailing-slashes -T "${old_MY_DATADIR_s}" "${MY_DATADIR_s}" \
-				|| die "Moving MY_DATADIR failed"
-			fi
+	# Create missing directories.
+	# Always check if mysql user can write to directory even if we just
+	# created directory because a parent directory might be not
+	# accessible for that user.
+	PID_DIR="${EROOT}/run/mysqld"
+	if [[ ! -d "${PID_DIR}" ]] ; then
+		einfo "Creating ${PN} PID directory '${PID_DIR}' ..."
+		install -d -m 755 -o mysql -g mysql "${PID_DIR}" \
+			|| die "Failed to create PID directory '${PID_DIR}'!"
+	fi
+
+	local _pid_dir_testfile="$(mktemp --dry-run "${PID_DIR}/.pkg_config-access-test.XXXXXXXXX")"
+	su -s /bin/sh -c "touch ${_pid_dir_testfile}" mysql &>/dev/null
+	if [[ $? -ne 0 ]] ; then
+		die "mysql user cannot write into PID dir '${PID_DIR}'!"
+	else
+		rm "${_pid_dir_testfile}" || die
+		unset _pid_dir_testfile
+	fi
+
+	if [[ ! -d "${EROOT}/${MY_DATADIR#/}" ]] ; then
+		einfo "Creating ${PN} data directory '${EROOT}/${MY_DATADIR#/}' ..."
+		install -d -m 770 -o mysql -g mysql "${EROOT}/${MY_DATADIR#/}" \
+			|| die "Failed to create ${PN} data directory '${EROOT}/${MY_DATADIR#/}'!"
+	fi
+
+	local _my_datadir_testfile="$(mktemp --dry-run "${EROOT}/${MY_DATADIR#/}/.pkg_config-access-test.XXXXXXXXX")"
+	su -s /bin/sh -c "touch '${_my_datadir_testfile}'" mysql &>/dev/null
+	if [[ $? -ne 0 ]]; then
+		die "mysql user cannot write into data directory '${EROOT}/${MY_DATADIR#/}'!"
+	else
+		rm "${_my_datadir_testfile}" || die
+		unset _my_datadir_testfile
+	fi
+
+	if [[ -n "${MYSQL_TMPDIR}" && ! -d "${EROOT}/${MYSQL_TMPDIR#/}" ]] ; then
+		einfo "Creating ${PN} tmpdir '${EROOT}/${MYSQL_TMPDIR#/}' ..."
+		install -d -m 770 -o mysql -g mysql "${EROOT}/${MYSQL_TMPDIR#/}" \
+			|| die "Failed to create ${PN} tmpdir '${EROOT}/${MYSQL_TMPDIR#/}'!"
+	fi
+
+	if [[ -n "${MYSQL_TMPDIR}" ]] ; then
+		local _my_tmpdir_testfile="$(mktemp --dry-run "${EROOT}/${MYSQL_TMPDIR#/}/.pkg_config-access-test.XXXXXXXXX")"
+		su -s /bin/sh -c "touch '${_my_tmpdir_testfile}'" mysql &>/dev/null
+		if [[ $? -ne 0 ]]; then
+			die "mysql user cannot write into data directory '${EROOT}/${MYSQL_TMPDIR#/}'!"
 		else
-			ewarn "Previous MY_DATADIR (${old_MY_DATADIR_s}) does not exist"
-			if [[ -d "${MY_DATADIR_s}" ]] ; then
-				ewarn "Attempting to use ${MY_DATADIR_s}"
-			else
-				eerror "New MY_DATADIR (${MY_DATADIR_s}) does not exist"
-				die "Configuration Failed! Please reinstall ${CATEGORY}/${PN}"
-			fi
+			rm "${_my_tmpdir_testfile}" || die
+			unset _my_tmpdir_testfile
 		fi
 	fi
 
-	local pwd1="a"
-	local pwd2="b"
-	local maxtry=15
+	if [[ -n "${MYSQL_LOG_BIN}" && ! -d "${EROOT}/${MYSQL_LOG_BIN#/}" ]] ; then
+		einfo "Creating ${PN} log-bin directory '${EROOT}/${MYSQL_LOG_BIN}' ..."
+		install -d -m 770 -o mysql -g mysql "${EROOT}/${MYSQL_LOG_BIN}" \
+			|| die "Failed to create ${PN} log-bin directory '${EROOT}/${MYSQL_LOG_BIN}'"
+	fi
+
+	if [[ -n "${MYSQL_LOG_BIN}" ]] ; then
+		local _my_logbin_testfile="$(mktemp --dry-run "${EROOT}/${MYSQL_LOG_BIN#/}/.pkg_config-access-test.XXXXXXXXX")"
+		su -s /bin/sh -c "touch '${_my_logbin_testfile}'" mysql &>/dev/null
+		if [[ $? -ne 0 ]]; then
+			die "mysql user cannot write into data directory '${EROOT}/${MYSQL_LOG_BIN#/}'!"
+		else
+			rm "${_my_logbin_testfile}" || die
+			unset _my_logbin_testfile
+		fi
+	fi
+
+	if [[ -n "${MYSQL_RELAY_LOG}" && ! -d "${EROOT}/${MYSQL_RELAY_LOG#/}" ]] ; then
+		einfo "Creating ${PN} relay-log directory '${EROOT}/${MYSQL_RELAY_LOG#/}' ..."
+		install -d -m 770 -o mysql -g mysql "${EROOT}/${MYSQL_RELAY_LOG#/}" \
+			|| die "Failed to create ${PN} relay-log directory '${EROOT}/${MYSQL_RELAY_LOG#/}'!"
+	fi
+
+	if [[ -n "${MYSQL_RELAY_LOG}" ]] ; then
+		local _my_relaylog_testfile="$(mktemp --dry-run "${EROOT}/${MYSQL_RELAY_LOG#/}/.pkg_config-access-test.XXXXXXXXX")"
+		su -s /bin/sh -c "touch '${_my_relaylog_testfile}'" mysql &>/dev/null
+		if [[ $? -ne 0 ]]; then
+			die "mysql user cannot write into data directory '${EROOT}/${MYSQL_RELAY_LOG#/}'!"
+		else
+			rm "${_my_relaylog_testfile}" || die
+			unset _my_relaylog_testfile
+		fi
+	fi
+
+	local -a config_files
+
+	local config_file="${EROOT}/etc/mysql/mysql.d/50-distro-client.cnf"
+	if [[ -f "${config_file}" ]] ; then
+		config_files+=( "${config_file}" )
+	else
+		ewarn "Client configuration '${config_file}' not found; Skipping configuration of default authentication plugin for client ..."
+	fi
+
+	config_file="${EROOT}/etc/mysql/mysql.d/50-distro-server.cnf"
+	if [[ -f "${config_file}" ]] ; then
+		config_files+=( "${config_file}" )
+	else
+		ewarn "Server configuration '${config_file}' not found; Skipping configuration of default authentication plugin for mysqld ..."
+	fi
+
+	if [[ ${#config_files[@]} -gt 0 ]] ; then
+		if [[ -z "${MYSQL_DEFAULT_AUTHENTICATION_PLUGIN}" ]] ; then
+			local tmp_mysql_default_authentication_plugin
+
+			echo
+			einfo "Please select default authentication plugin (enter number or plugin name):"
+			einfo "1) caching_sha2_password [MySQL 8.0 default]"
+			einfo "2) mysql_native_password [MySQL 5.7 default]"
+			einfo
+			einfo "For details see:"
+			einfo "https://dev.mysql.com/doc/refman/8.0/en/upgrading-from-previous-series.html#upgrade-caching-sha2-password"
+			read -p "    >" tmp_mysql_default_authentication_plugin
+			echo
+
+			case "${tmp_mysql_default_authentication_plugin}" in
+				1|caching_sha2_password)
+					MYSQL_DEFAULT_AUTHENTICATION_PLUGIN=caching_sha2_password
+					;;
+				2|mysql_native_password)
+					MYSQL_DEFAULT_AUTHENTICATION_PLUGIN=mysql_native_password
+					;;
+				'')
+					die "No authentication plugin selected!"
+					;;
+				*)
+					die "Authentication plugin '${tmp_mysql_default_authentication_plugin}' is unknown/unsupported!"
+					;;
+			esac
+		fi
+
+		local cfg_option cfg_option_tabs cfg_section
+		for config_file in "${config_files[@]}" ; do
+			cfg_option="default-authentication-plugin"
+			cfg_section="mysqld"
+			cfg_option_tabs="\t\t"
+			if [[ "${config_file}" == *client.cnf ]] ; then
+				cfg_option="default-auth"
+				cfg_section="client"
+				cfg_option_tabs="\t\t\t\t"
+			fi
+
+			if grep -qE "^(loose-)?${cfg_option}\b.*=" "${config_file}" 2>/dev/null ; then
+				einfo "Ensuring that ${cfg_option} is set to '${MYSQL_DEFAULT_AUTHENTICATION_PLUGIN}' in '${config_file}' ..."
+				sed -i \
+					-e "s/^\(loose-\)\?${cfg_option}\b.*=.*/loose-${cfg_option}${cfg_option_tabs}= ${MYSQL_DEFAULT_AUTHENTICATION_PLUGIN}/" \
+					"${config_file}" || die "Failed to change ${cfg_option} in '${config_file}'!"
+			else
+				einfo "Setting ${cfg_option} to '${MYSQL_DEFAULT_AUTHENTICATION_PLUGIN}' in '${config_file}' ..."
+				sed -i \
+					-e "/^\[${cfg_section}\]$/a loose-${cfg_option}${cfg_option_tabs}= ${MYSQL_DEFAULT_AUTHENTICATION_PLUGIN}" \
+					"${config_file}" || die "Failed to add ${cfg_option} to '${config_file}'!"
+			fi
+		done
+		unset cfg_option cfg_option_tabs cfg_section
+	fi
+	unset config_files config_file
+
+	echo
 
 	if [[ -z "${MYSQL_ROOT_PASSWORD}" ]] ; then
 		local tmp_mysqld_password_source=
@@ -667,154 +825,188 @@ pkg_config() {
 
 		unset tmp_mysqld_password_source
 	fi
-	MYSQL_TMPDIR="$(_getoptval mysqld tmpdir)"
-	# These are dir+prefix
-	MYSQL_RELAY_LOG="$(_getoptval mysqld relay-log)"
-	MYSQL_RELAY_LOG=${MYSQL_RELAY_LOG%/*}
-	MYSQL_LOG_BIN="$(_getoptval mysqld log-bin)"
-	MYSQL_LOG_BIN=${MYSQL_LOG_BIN%/*}
-
-	if [[ ! -d "${EROOT}/$MYSQL_TMPDIR" ]] ; then
-		einfo "Creating MySQL tmpdir $MYSQL_TMPDIR"
-		install -d -m 770 -o mysql -g mysql "${EROOT}/$MYSQL_TMPDIR"
-	fi
-
-	if [[ ! -d "${EROOT}/$MYSQL_LOG_BIN" ]] ; then
-		einfo "Creating MySQL log-bin directory $MYSQL_LOG_BIN"
-		install -d -m 770 -o mysql -g mysql "${EROOT}/$MYSQL_LOG_BIN"
-	fi
-
-	if [[ ! -d "${EROOT}/$MYSQL_RELAY_LOG" ]] ; then
-		einfo "Creating MySQL relay-log directory $MYSQL_RELAY_LOG"
-		install -d -m 770 -o mysql -g mysql "${EROOT}/$MYSQL_RELAY_LOG"
-	fi
-
-	if [[ -d "${ROOT}/${MY_DATADIR}/mysql" ]] ; then
-		ewarn "You have already a MySQL database in place."
-		ewarn "(${ROOT}/${MY_DATADIR}/*)"
-		ewarn "Please rename or delete it if you wish to replace it."
-		die "MySQL database already exists!"
-	fi
-
-	# Bug #213475 - MySQL _will_ object strenously if your machine is named
-	# localhost. Also causes weird failures.
-	[[ "${HOSTNAME}" == "localhost" ]] && die "Your machine must NOT be named localhost"
 
 	if [[ -z "${MYSQL_ROOT_PASSWORD}" ]] ; then
+		local pwd1="a"
+		local pwd2="b"
 
-		einfo "Please provide a password for the mysql 'root' user now"
-		einfo "or through the ${HOME}/.my.cnf file."
-		ewarn "Avoid [\"'\\_%] characters in the password"
+		echo
+		einfo "No password for mysql 'root' user was specified via environment"
+		einfo "variable MYSQL_ROOT_PASSWORD and no password was found in config"
+		einfo "file like '${HOME}/.my.cnf'."
+		einfo "To continue please provide a password for the mysql 'root' user"
+		einfo "now on console:"
+		ewarn "NOTE: Please avoid [\"'\\_%] characters in the password!"
 		read -rsp "    >" pwd1 ; echo
 
 		einfo "Retype the password"
 		read -rsp "    >" pwd2 ; echo
 
 		if [[ "x$pwd1" != "x$pwd2" ]] ; then
-			die "Passwords are not the same"
+			die "Passwords are not the same!"
 		fi
+
 		MYSQL_ROOT_PASSWORD="${pwd1}"
 		unset pwd1 pwd2
+
+		echo
 	fi
 
-	local options
-	local sqltmp="$(emktemp)"
+	local -a mysqld_options
 
 	# Fix bug 446200. Don't reference host my.cnf, needs to come first,
 	# see http://bugs.mysql.com/bug.php?id=31312
-	use prefix && options="${options} '--defaults-file=${MY_SYSCONFDIR}/my.cnf'"
+	use prefix && mysqld_options+=( "--defaults-file='${MY_SYSCONFDIR}/my.cnf'" )
 
 	# Figure out which options we need to disable to do the setup
 	local helpfile="${TMPDIR}/mysqld-help"
 	"${EROOT}/usr/sbin/mysqld" --verbose --help >"${helpfile}" 2>/dev/null
+
+	local opt optexp optfull
 	for opt in host-cache name-resolve networking slave-start \
 		federated ssl log-bin relay-log slow-query-log external-locking \
 		log-slave-updates \
-		; do
+	; do
 		optexp="--(skip-)?${opt}" optfull="--loose-skip-${opt}"
-		egrep -sq -- "${optexp}" "${helpfile}" && options="${options} ${optfull}"
+		egrep -sq -- "${optexp}" "${helpfile}" && mysqld_options+=( "${optfull}" )
 	done
 
-	einfo "Creating the mysql database and setting proper permissions on it ..."
-
-	# Now that /var/run is a tmpfs mount point, we need to ensure it exists before using it
-	PID_DIR="${EROOT}/var/run/mysqld"
-	if [[ ! -d "${PID_DIR}" ]] ; then
-		install -d -m 755 -o mysql -g mysql "${PID_DIR}" || die "Could not create pid directory"
+	# Prepare timezones, see
+	# https://dev.mysql.com/doc/mysql/en/time-zone-support.html
+	local tz_sql="${TMPDIR}/tz.sql"
+	echo "USE mysql;" >"${tz_sql}"
+	"${EROOT}/usr/bin/mysql_tzinfo_to_sql" "${EROOT}/usr/share/zoneinfo" >> "${tz_sql}" 2>/dev/null
+	if [[ $? -ne 0 ]] ; then
+		die "mysql_tzinfo_to_sql failed!"
 	fi
 
-	if [[ ! -d "${MY_DATADIR}" ]] ; then
-		install -d -m 750 -o mysql -g mysql "${MY_DATADIR}" || die "Could not create data directory"
-	fi
+	chown mysql "${tz_sql}" || die
 
-	pushd "${TMPDIR}" &>/dev/null || die
-
-	# Filling timezones, see
-	# http://dev.mysql.com/doc/mysql/en/time-zone-support.html
-	echo "USE mysql;" >"${sqltmp}"
-	"${EROOT}/usr/bin/mysql_tzinfo_to_sql" "${EROOT}/usr/share/zoneinfo" >> "${sqltmp}" 2>/dev/null
-	chown mysql "${sqltmp}" || die
+	local mysql_install_log="${TMPDIR}/mysql_install_db.log"
+	touch "${mysql_install_log}" || die
+	chown mysql "${mysql_install_log}" || die
 
 	# --initialize-insecure will not set root password
 	# --initialize would set a random one in the log which we don't need as we set it ourselves
-	local cmd=( "${EROOT}/usr/sbin/mysqld" "--initialize-insecure" "--init-file='${sqltmp}'" )
-	cmd+=( "--basedir=${EPREFIX}/usr" ${options} "--datadir=${ROOT}${MY_DATADIR}" "--tmpdir=${ROOT}${MYSQL_TMPDIR}" )
-	einfo "Command: ${cmd[*]}"
+	local cmd=(
+		"${mysqld_binary}"
+		"${mysqld_options[@]}"
+		"--initialize-insecure"
+		"--init-file='${tz_sql}'"
+		"--basedir='${EROOT}/usr'"
+		"--datadir='${EROOT}/${MY_DATADIR#/}'"
+		"--tmpdir='${EROOT}/${MYSQL_TMPDIR#/}'"
+		"--log-error='${mysql_install_log}'"
+	)
+
+	einfo "Initializing ${PN} data directory: ${cmd[@]}"
 	su -s /bin/sh -c "${cmd[*]}" mysql \
-		>"${TMPDIR}"/mysql_install_db.log 2>&1
-	if [[ $? -ne 0 ]] ; then
-		grep -B5 -A999 -i "ERROR" "${TMPDIR}"/mysql_install_db.log 1>&2
-		die "Failed to initialize mysqld. Please review ${EPREFIX}/var/log/mysql/mysqld.err AND ${TMPDIR}/mysql_install_db.log"
+		>>"${mysql_install_log}" 2>&1
+
+	if [[ $? -ne 0 || ! -f "${EROOT}/${MY_DATADIR#/}/mysql.ibd" ]] ; then
+		grep -B5 -A999 -iE "(Aborting|ERROR|errno)" "${mysql_install_log}"
+		die "Failed to initialize ${PN} data directory. Please review '${mysql_install_log}'!"
 	fi
-	popd &>/dev/null || die
-	[[ -f "${ROOT}/${MY_DATADIR}/mysql/user.frm" ]] \
-	|| die "MySQL databases not installed"
 
-	use prefix || options="${options} --user=mysql"
+	local x=${RANDOM}
+	local socket="${EROOT}/run/mysqld/mysqld${x}.sock"
+	local pidfile="${EROOT}/run/mysqld/mysqld${x}.pid"
+	unset x
 
-	local socket="${EROOT}/var/run/mysqld/mysqld${RANDOM}.sock"
-	local pidfile="${EROOT}/var/run/mysqld/mysqld${RANDOM}.pid"
-	local mysqld="${EROOT}/usr/sbin/mysqld \
-		${options} \
-		$(use prefix || echo --user=mysql) \
-		--log-warnings=0 \
-		--basedir=${EROOT}/usr \
-		--datadir=${ROOT}/${MY_DATADIR} \
-		--max_allowed_packet=8M \
-		--net_buffer_length=16K \
-		--socket=${socket} \
-		--pid-file=${pidfile} \
-		--tmpdir=${ROOT}/${MYSQL_TMPDIR}"
-	#einfo "About to start mysqld: ${mysqld}"
-	ebegin "Starting mysqld"
-	einfo "Command ${mysqld}"
-	${mysqld} &
-	rc=$?
-	while ! [[ -S "${socket}" || "${maxtry}" -lt 1 ]] ; do
+	local mysqld_logfile="${TMPDIR}/mysqld.log"
+	touch "${mysqld_logfile}" || die
+	chown mysql "${mysqld_logfile}" || die
+
+	cmd=(
+		"${mysqld_binary}"
+		"${mysqld_options[@]}"
+		"--basedir='${EROOT}/usr'"
+		"--datadir='${EROOT}/${MY_DATADIR#/}'"
+		--max_allowed_packet=8M
+		--net_buffer_length=16K
+		"--socket='${socket}'"
+		"--pid-file='${pidfile}'"
+		"--tmpdir='${EROOT}/${MYSQL_TMPDIR#/}'"
+		"--log-error='${mysqld_logfile}'"
+	)
+
+	einfo "Starting mysqld to finalize initialization: ${cmd[@]}"
+	su -s /bin/sh -c "${cmd[*]} &" mysql \
+		>>"${mysqld_logfile}" 2>&1
+
+	echo -n "Waiting for mysqld to accept connections "
+	local maxtry=15
+	while [[ ! -S "${socket}" && "${maxtry}" -gt 1 ]] ; do
 		maxtry=$((${maxtry}-1))
 		echo -n "."
 		sleep 1
 	done
-	eend $rc
 
-	if ! [[ -S "${socket}" ]] ; then
-		die "Completely failed to start up mysqld with: ${mysqld}"
+	if [[ -S "${socket}" ]] ; then
+		# Even with a socket we don't know if mysqld will abort
+		# start due to an error so just wait a little bit more...
+		maxtry=5
+		while [[ -S "${socket}" && "${maxtry}" -gt 1 ]] ; do
+			maxtry=$((${maxtry}-1))
+			echo -n "."
+			sleep 1
+		done
 	fi
+
+	echo
+
+	if [[ ! -S "${socket}" ]] ; then
+		grep -B5 -A999 -iE "(Aborting|ERROR|errno)" "${mysqld_logfile}"
+		die "mysqld was unable to start from initialized data directory. Please review '${mysqld_logfile}'!"
+	fi
+
+	local mysql_logfile="${TMPDIR}/set_root_pw.log"
+	touch "${mysql_logfile}" || die
 
 	ebegin "Setting root password"
 	# Do this from memory, as we don't want clear text passwords in temp files
-	local sql="ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '${MYSQL_ROOT_PASSWORD}'"
-	"${EROOT}/usr/bin/mysql" \
-		--no-defaults \
-		"--socket=${socket}" \
-		-hlocalhost \
-		-e "${sql}"
-	eend $?
+	local sql="ALTER USER 'root'@'localhost' IDENTIFIED BY '${MYSQL_ROOT_PASSWORD}'"
+	cmd=(
+		"${mysql_binary}"
+		--no-defaults
+		"--socket='${socket}'"
+		-hlocalhost
+		"-e \"${sql}\""
+	)
+	eval "${cmd[@]}" >"${mysql_logfile}" 2>&1
+	local rc=$?
+	eend ${rc}
 
-	# Stop the server and cleanup
-	einfo "Stopping the server ..."
-	kill $(< "${pidfile}" )
-	rm -f "${sqltmp}"
-	wait %1
-	einfo "Done"
+	if [[ ${rc} -ne 0 ]] ; then
+		# Poor man's solution which tries to avoid having password
+		# in log.  NOTE: sed can fail if user didn't follow advice
+		# and included character which will require escaping...
+		sed -i -e "s/${MYSQL_ROOT_PASSWORD}/*****/" "${mysql_logfile}" 2>/dev/null
+
+		grep -B5 -A999 -iE "(Aborting|ERROR|errno)" "${mysql_logfile}"
+		die "Failed to set ${PN} root password. Please review '${mysql_logfile}'!"
+	fi
+
+	# Stop the server
+	if [[ -f "${pidfile}" ]] && pgrep -F "${pidfile}" &>/dev/null ; then
+		echo -n "Stopping the server "
+		pkill -F "${pidfile}" &>/dev/null
+
+		maxtry=10
+		while [[ -f "${pidfile}" ]] && pgrep -F "${pidfile}" &>/dev/null ; do
+			maxtry=$((${maxtry}-1))
+			echo -n "."
+			sleep 1
+		done
+
+		echo
+
+		if [[ -f "${pidfile}" ]] && pgrep -F "${pidfile}" &>/dev/null ; then
+			# We somehow failed to stop server.
+			# However, not a fatal error. Just warn the user.
+			ewarn "WARNING: mysqld[$(cat "${pidfile}")] is still running!"
+		fi
+	fi
+
+	einfo "${PN} data directory at '${EROOT}/${MY_DATADIR#/}' successfully initialized!"
 }
