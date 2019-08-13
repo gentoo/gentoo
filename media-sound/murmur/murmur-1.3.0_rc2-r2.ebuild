@@ -56,13 +56,6 @@ DEPEND="${RDEPEND}
 BDEPEND="
 	virtual/pkgconfig"
 
-if [[ "${PV}" == *9999 ]] ; then
-	# Required for the mkini.sh script which calls perl multiple times
-	BDEPEND+="
-		dev-lang/perl
-	"
-fi
-
 DOC_CONTENTS="
 	Useful scripts are located in /usr/share/doc/${PF}/scripts.\n
 	Please execute:\n
