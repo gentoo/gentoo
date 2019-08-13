@@ -3218,6 +3218,7 @@ dev-util/massif-visualizer:callgraph - Enable detailed snapshot analysis using m
 dev-util/mdds:valgrind - Add support for memory debugging using dev-util/valgrind
 dev-util/mingw64-runtime:idl - Install idl files.
 dev-util/mingw64-runtime:libraries - Build extra libraries: mangle, pseh, winpthreads.
+dev-util/mingw64-runtime:secure-api - Expose secure API (*_s function) by default.
 dev-util/mingw64-runtime:tools - Build extra tools: gendef, genidl.
 dev-util/molecule:plugins - Add plugins provided by dev-util/molecule-plugins
 dev-util/nemiver:memoryview - Enable the optional hexadecimal memory inspection with app-editors/ghex
