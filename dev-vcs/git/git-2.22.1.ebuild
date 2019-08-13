@@ -51,7 +51,7 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="+blksha1 +curl cgi doc emacs gnome-keyring +gpg highlight +iconv libressl mediawiki mediawiki-experimental +nls +pcre +pcre-jit +perl +python ppcsha1 tk +threads +webdav xinetd cvs subversion test"
+IUSE="+blksha1 +curl cgi doc emacs gnome-keyring +gpg highlight +iconv libressl mediawiki mediawiki-experimental +nls +pcre +pcre-jit perforce +perl ppcsha1 tk +threads +webdav xinetd cvs subversion test"
 
 # Common to both DEPEND and RDEPEND
 CDEPEND="
@@ -99,7 +99,7 @@ RDEPEND="${CDEPEND}
 			dev-perl/TermReadKey
 		)
 	)
-	python? ( ${PYTHON_DEPS} )
+	perforce? ( ${PYTHON_DEPS} )
 "
 
 # This is how info docs are created with Git:
@@ -133,7 +133,7 @@ REQUIRED_USE="
 	subversion? ( perl )
 	webdav? ( curl )
 	pcre-jit? ( pcre )
-	python? ( ${PYTHON_REQUIRED_USE} )
+	perforce? ( ${PYTHON_REQUIRED_USE} )
 "
 
 PATCHES=(
@@ -152,7 +152,7 @@ pkg_setup() {
 		ewarn "with USE=dso, there may be weird crashes in git-svn. You"
 		ewarn "have been warned."
 	fi
-	if use python ; then
+	if use perforce ; then
 		python-single-r1_pkg_setup
 	fi
 }
@@ -167,7 +167,7 @@ exportmakeopts() {
 		$(usex iconv '' NO_ICONV=YesPlease)
 		$(usex nls '' NO_GETTEXT=YesPlease)
 		$(usex perl 'INSTALLDIRS=vendor NO_PERL_CPAN_FALLBACKS=YesPlease' NO_PERL=YesPlease)
-		$(usex python '' NO_PYTHON=YesPlease)
+		$(usex perforce '' NO_PYTHON=YesPlease)
 		$(usex subversion '' NO_SVN_TESTS=YesPlease)
 		$(usex threads '' NO_PTHREAD=YesPlease)
 		$(usex tk '' NO_TCLTK=YesPlease)
@@ -302,7 +302,7 @@ src_prepare() {
 git_emake() {
 	# bug #320647: PYTHON_PATH
 	local PYTHON_PATH=""
-	use python && PYTHON_PATH="${PYTHON}"
+	use perforce && PYTHON_PATH="${PYTHON}"
 	emake ${MY_MAKEOPTS} \
 		prefix="${EPREFIX}"/usr \
 		htmldir="${EPREFIX}"/usr/share/doc/${PF}/html \
