@@ -3039,7 +3039,7 @@ dev-db/apgdiff 1.4 2.2.1 2.2.2 2.3 2.4: A simple PostgreSQL diff tool that is us
 dev-db/barman 2.1 2.3 2.4: Administration tool for disaster recovery of PostgreSQL servers
 dev-db/bucardo 5.4.1: An asynchronous PostgreSQL replication system
 dev-db/cdb 0.75-r4: Fast, reliable, simple package for creating and reading constant databases
-dev-db/clickhouse 18.6.0 18.10.3 18.12.17 19.5.3.8 19.9.5.36: An OSS column-oriented database management system for real-time data analysis
+dev-db/clickhouse 18.6.0 18.10.3 18.12.17 19.5.3.8 19.9.5.36 19.13.1.11: An OSS column-oriented database management system for real-time data analysis
 dev-db/cockroach 2.1.5 19.1.1: open source database for building cloud services
 dev-db/cpp-driver 2.9.0 2.11.0: DataStax C/C++ Driver for Cassandra
 dev-db/cppdb 0.3.1-r3: SQL connectivity library for platform and database independent connectivity
@@ -15342,7 +15342,7 @@ net-misc/clockspeed 0.62-r6: A simple Network Time Protocol (NTP) client
 net-misc/clockspeed-conf 0.4.5-r1: scripts to setup a clockspeed client and/or a taiclockd server
 net-misc/clusterssh 4.03.03 4.30.600 9999: Concurrent Multi-Server Terminal Access
 net-misc/cmst 2018.01.06 2019.01.13: Qt GUI for Connman with system tray icon
-net-misc/cni-plugins 0.7.5 0.8.0 0.8.1: Standard networking plugins for container networking
+net-misc/cni-plugins 0.7.5 0.7.6 0.8.1: Standard networking plugins for container networking
 net-misc/connect 1.103: network connection relaying command (proxy)
 net-misc/connman 1.35-r1 1.37: Provides a daemon for managing internet connections
 net-misc/connman-gtk 1.1.1 1.1.1-r1: GTK GUI for Connman

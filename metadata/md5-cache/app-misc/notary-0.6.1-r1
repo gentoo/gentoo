@@ -9,4 +9,4 @@ RESTRICT=strip
 SLOT=0
 SRC_URI=https://github.com/theupdateframework/notary/archive/v0.6.1.tar.gz -> notary-0.6.1.tar.gz
 _eclasses_=golang-base	c57d2c3f9e1a02d0feb8b87c7b689892	golang-build	dc25bafa8fc1305a4de66a0a448472e7	golang-vcs-snapshot	12177e83bede6f7fb87eae383864b40b	user	00484e1be1aac73e24fca1c99557a7d6
-_md5_=d93fbad1058b24d44b6177769819957c
+_md5_=0dafc89ac04f8177aed8837658e6933e
