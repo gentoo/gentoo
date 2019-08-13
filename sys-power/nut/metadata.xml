@@ -63,4 +63,8 @@
 		<flag name="ups_drivers_snmp-ups">Multi-MIB Driver for SNMP UPS equipment</flag>
 		<flag name="ups_drivers_nut-ipmipsu">Driver for IPMI Power Supply Units (PSU)</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">networkupstools/nut</remote-id>
+		<bugs-to>https://github.com/networkupstools/nut/issues</bugs-to>
+	</upstream>
 </pkgmetadata>
