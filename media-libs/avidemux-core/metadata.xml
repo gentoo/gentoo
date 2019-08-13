@@ -10,6 +10,6 @@
     <flag name="system-ffmpeg">Use the ffmpeg provided by the system.</flag>
   </use>
   <upstream>
-    <remote-id type="sourceforge">avidemux</remote-id>
+    <remote-id type="github">mean00/avidemux2</remote-id>
   </upstream>
 </pkgmetadata>
