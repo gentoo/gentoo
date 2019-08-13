@@ -626,10 +626,6 @@
     <description>Community Relations handles many personnel-related tasks, solving conflicts and also ensuring that the Gentoo Code of Conduct and proper and professional behavior is followed across Gentoo's borders.</description>
     <subproject ref="undertakers@gentoo.org"/>
     <member>
-      <email>bircoph@gentoo.org</email>
-      <name>Andrew Savchenko</name>
-    </member>
-    <member>
       <email>jmbsvicetto@gentoo.org</email>
       <name>Jorge Manuel B. S. Vicetto</name>
     </member>
