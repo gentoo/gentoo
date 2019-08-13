@@ -13,6 +13,7 @@ LICENSE="Boost-1.0"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="cblas debug cuda examples gif jpeg lapack mkl png python sqlite static-libs test X"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 # doc needs a bunch of deps not in portage
 
