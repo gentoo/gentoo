@@ -149,6 +149,7 @@ PATCHES=(
 	"${FILESDIR}/chromium-77-system-icu.patch"
 	"${FILESDIR}/chromium-77-system-hb.patch"
 	"${FILESDIR}/chromium-77-clang.patch"
+	"${FILESDIR}/chromium-77-blink-include.patch"
 	"${FILESDIR}/chromium-77-std-string.patch"
 	"${FILESDIR}/chromium-77-gcc-abstract.patch"
 	"${FILESDIR}/chromium-77-gcc-include.patch"

@@ -24,3 +24,33 @@ index 7f8d15b..a8cd0ab 100644
  #include "low_pass_filter.h"
  
  namespace one_euro_filter {
+
+From 258f5f182f8dd72f727af26e614794c67a5996e6 Mon Sep 17 00:00:00 2001
+From: Jose Dapena Paz <jose.dapena@lge.com>
+Date: Fri, 26 Jul 2019 15:17:54 +0000
+Subject: [PATCH] IWYU: ScopedObserver of TabStripModel requires it to be included
+
+Build with GCC and libstdc++ is failing in files using tab_sharing_ui.h
+as it has a ScopedObserver of a TabStripModel without including it
+in advance.
+
+Bug: 819294
+Change-Id: I4b12073484f65ad2bb873119daa748245296d282
+Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/1713526
+Reviewed-by: Guido Urdaneta <guidou@chromium.org>
+Commit-Queue: José Dapena Paz <jose.dapena@lge.com>
+Cr-Commit-Position: refs/heads/master@{#681290}
+---
+
+diff --git a/chrome/browser/ui/tab_sharing/tab_sharing_ui.h b/chrome/browser/ui/tab_sharing/tab_sharing_ui.h
+index 6d931129..147868f 100644
+--- a/chrome/browser/ui/tab_sharing/tab_sharing_ui.h
++++ b/chrome/browser/ui/tab_sharing/tab_sharing_ui.h
+@@ -14,6 +14,7 @@
+ #include "base/strings/string16.h"
+ #include "chrome/browser/media/webrtc/media_stream_capture_indicator.h"
+ #include "chrome/browser/ui/browser_list_observer.h"
++#include "chrome/browser/ui/tabs/tab_strip_model.h"
+ #include "chrome/browser/ui/tabs/tab_strip_model_observer.h"
+ #include "components/infobars/core/infobar_manager.h"
+ #include "content/public/browser/desktop_media_id.h"
