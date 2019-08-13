@@ -64,6 +64,16 @@ fi
 # We need a new-enough binutils/gcc to match upstream baseline.
 # Also we need to make sure our binutils/gcc supports TLS,
 # and that gcc already contains the hardened patches.
+BDEPEND="
+	${PYTHON_DEPS}
+	>=app-misc/pax-utils-0.1.10
+	sys-devel/bison
+	!<sys-apps/sandbox-1.6
+	!<sys-apps/portage-2.1.2
+	!<sys-devel/bison-2.7
+	!<sys-devel/make-4
+	doc? ( sys-apps/texinfo )
+"
 COMMON_DEPEND="
 	nscd? ( selinux? (
 		audit? ( sys-process/audit )
@@ -74,14 +84,6 @@ COMMON_DEPEND="
 	systemtap? ( dev-util/systemtap )
 "
 DEPEND="${COMMON_DEPEND}
-	${PYTHON_DEPS}
-	>=app-misc/pax-utils-0.1.10
-	sys-devel/bison
-	!<sys-apps/sandbox-1.6
-	!<sys-apps/portage-2.1.2
-	!<sys-devel/bison-2.7
-	!<sys-devel/make-4
-	doc? ( sys-apps/texinfo )
 	test? ( >=net-dns/libidn2-2.0.5 )
 "
 RDEPEND="${COMMON_DEPEND}
@@ -91,17 +93,17 @@ RDEPEND="${COMMON_DEPEND}
 "
 
 if [[ ${CATEGORY} == cross-* ]] ; then
-	DEPEND+=" !headers-only? (
+	BDEPEND+=" !headers-only? (
 		>=${CATEGORY}/binutils-2.24
 		>=${CATEGORY}/gcc-6
 	)"
-	[[ ${CATEGORY} == *-linux* ]] && DEPEND+=" ${CATEGORY}/linux-headers"
+	[[ ${CATEGORY} == *-linux* ]] && BDEPEND+=" ${CATEGORY}/linux-headers"
 else
-	DEPEND+="
+	BDEPEND+="
 		>=sys-devel/binutils-2.24
 		>=sys-devel/gcc-6
-		virtual/os-headers
 	"
+	DEPEND+=" virtual/os-headers "
 	RDEPEND+="
 		>=net-dns/libidn2-2.0.5
 		vanilla? ( !sys-libs/timezone-data )
