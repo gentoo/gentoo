@@ -29,7 +29,7 @@ RDEPEND="
 	python? (
 		dev-python/numpy[${PYTHON_USEDEP}]
 	)
-	<sci-libs/sundials-4.0.0:0=
+	<sci-libs/sundials-5.0.0:0=
 "
 
 DEPEND="
@@ -48,6 +48,7 @@ DEPEND="
 PATCHES=(
 	"${FILESDIR}/${PN}_${PV}_env.patch"
 	"${FILESDIR}/${PN}_${PV}_env_python_install.patch"
+	"${FILESDIR}/${PN}_${PV}_sundials4.patch"
 	)
 
 pkg_setup() {
