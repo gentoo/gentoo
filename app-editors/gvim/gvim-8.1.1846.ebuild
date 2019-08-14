@@ -30,7 +30,6 @@ REQUIRED_USE="
 "
 
 RDEPEND="
-	~app-editors/vim-core-${PV}
 	>=app-eselect/eselect-vi-1.1
 	>=sys-libs/ncurses-5.2-r2:0=
 	x11-libs/libICE
@@ -77,6 +76,8 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )
 "
+# temporarily use PDEPEND to allow upgrades past icon file collision, bug #673880
+PDEPEND="~app-editors/vim-core-${PV}"
 
 # various failures (bugs #630042 and #682320)
 RESTRICT="test"
