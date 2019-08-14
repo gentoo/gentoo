@@ -113,7 +113,6 @@ src_configure() {
 		-DDEAL_II_WITH_MUPARSER="$(usex muparser)"
 		-DDEAL_II_WITH_NANOFLANN="$(usex nanoflann)"
 		-DDEAL_II_WITH_NETCDF="$(usex netcdf)"
-		-DOPENCASCADE_DIR="${CASROOT}"
 		-DDEAL_II_WITH_OPENCASCADE="$(usex opencascade)"
 		-DDEAL_II_WITH_P4EST="$(usex p4est)"
 		-DDEAL_II_WITH_PETSC="$(usex petsc)"
@@ -127,6 +126,9 @@ src_configure() {
 		-DDEAL_II_WITH_THREADS="$(usex tbb)"
 		-DDEAL_II_WITH_TRILINOS="$(usex trilinos)"
 	)
+
+	# Do a little dance for purely cosmetic "QA" reasons.
+	use opencascade && mycmakeargs+=( -DOPENCASCADE_DIR="${CASROOT}" )
 
 	# Do a little dance for purely cosmetic "QA" reasons. The build system
 	# does query for the highest instruction set first and skips the other
