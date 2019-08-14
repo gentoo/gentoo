@@ -97,7 +97,7 @@ if [[ ${CATEGORY} == cross-* ]] ; then
 		>=${CATEGORY}/binutils-2.24
 		>=${CATEGORY}/gcc-6
 	)"
-	[[ ${CATEGORY} == *-linux* ]] && BDEPEND+=" ${CATEGORY}/linux-headers"
+	[[ ${CATEGORY} == *-linux* ]] && DEPEND+=" ${CATEGORY}/linux-headers"
 else
 	BDEPEND+="
 		>=sys-devel/binutils-2.24
