@@ -1,0 +1,31 @@
+From acf93e44f6d036303f95555069031f6fb12ce9d1 Mon Sep 17 00:00:00 2001
+From: Alexey Gladkov <gladkov.alexey@gmail.com>
+Date: Tue, 6 Aug 2019 13:59:34 +0200
+Subject: [PATCH] libkbdfile: Do not stop on the first error
+
+The kbdfile_find() gets a list of directories in which the filename. If
+we could not find the filename in the first directory, you do not need
+to return an error.
+
+Link: https://github.com/legionus/kbd/issues/31
+
+Signed-off-by: Alexey Gladkov <gladkov.alexey@gmail.com>
+---
+ src/libkbdfile/kbdfile.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/libkbdfile/kbdfile.c b/src/libkbdfile/kbdfile.c
+index 804f04a..fb8e035 100644
+--- a/src/libkbdfile/kbdfile.c
++++ b/src/libkbdfile/kbdfile.c
+@@ -433,8 +433,8 @@ kbdfile_find(char *fnam, char **dirpath, char **suffixes, struct kbdfile *fp)
+ 		rc = findfile_in_dir(fnam, dir, recdepth, suffixes, fp);
+ 		free(dir);
+ 
+-		if (rc <= 0)
+-			return rc;
++		if (!rc)
++			return 0;
+ 	}
+ 
+ 	return 1;
