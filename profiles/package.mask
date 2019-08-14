@@ -29,6 +29,61 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2019-08-14)
+# Replaced by sys-freebsd/freebsd-ubin, therefore not installable
+# anymore.  All revdeps support the replacement.
+# Removal in 14 days.  Bug #688502.
+sys-process/fuser-bsd
+
+# Aaron Bauman <bman@gentoo.org> (2019-08-14)
+# longstanding sec vulns, unpatched, not maintained
+# bug #509354, #519216, #603440
+# list includes rdeps. Removal in 30 days.
+dev-java/smack
+dev-java/netbeans-ide
+dev-java/netbeans-apisupport
+dev-java/netbeans-cnd
+dev-java/netbeans-dlight
+dev-java/netbeans-enterprise
+dev-java/netbeans-enterprise
+dev-java/netbeans-ergonomics
+dev-java/netbeans-extide
+dev-java/netbeans-groovy
+dev-java/netbeans-java
+dev-java/netbeans-java
+dev-java/netbeans-javacard
+dev-java/netbeans-javadoc
+dev-java/netbeans-javafx
+dev-java/netbeans-mobility
+dev-java/netbeans-nb
+dev-java/netbeans-php
+dev-java/netbeans-profiler
+dev-java/netbeans-webcommon
+dev-java/netbeans-websvccommon
+dev-util/netbeans
+
+# Aaron Bauman <bman@gentoo.org> (2019-08-14)
+# open sec bug #612914, unmaintained
+# Removal in 30 days
+dev-java/logback
+
+# Aaron Bauman <bman@gentoo.org> (2019-08-14)
+# open sec bug #607720, unmaintained
+# Removal in 30 days
+dev-java/svgsalamander
+dev-java/flyingsaucer
+
+# Aaron Bauman <bman@gentoo.org> (2019-08-14)
+# open sec bug #605690, unmaintained
+# Removal in 30 days
+dev-java/groovy
+app-misc/freemind
+
+# Aaron Bauman <bman@gentoo.org> (2019-08-14)
+# open sec bug #576874, unmaintained in Gentoo
+# no rdeps. Removal in 30 days
+dev-java/kryo
+
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2019-08-14)
 # EAPI=2, ages old, effectively unmaintained. Gone in
 # 30 days. Bug 688154
