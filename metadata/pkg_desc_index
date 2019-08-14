@@ -1805,7 +1805,7 @@ app-metrics/postfix_exporter 0.1.2: Prometheus Exporter for Postfix
 app-metrics/postgres_exporter 0.4.6 0.4.7: PostgreSQL stats exporter for Prometheus
 app-metrics/process-exporter 0.4.0 0.4.0-r1: Process exporter for prometheus
 app-metrics/prom2json 0.1.0_p20170523: A tool to scrape a Prometheus client and dump the result as JSON
-app-metrics/prometheus 2.9.2 2.10.0 2.11.0 2.11.1: Prometheus monitoring system and time series database
+app-metrics/prometheus 2.9.2 2.11.2: Prometheus monitoring system and time series database
 app-metrics/pushgateway 0.7.0 0.8.0 0.9.0: Prometheus push acceptor for ephemeral and batch jobs
 app-metrics/rabbitmq_exporter 0.29.0: Rabbitmq exporter for Prometheus
 app-metrics/redis_exporter 0.20.2: Prometheus Exporter for Redis Metrics. Supports Redis 2.x, 3.x and 4.x
@@ -5056,7 +5056,7 @@ dev-libs/libvformat 1.13-r2: Library to read and write vcard files
 dev-libs/libvolume_id 0.81.1: Library to provide file system information
 dev-libs/libvterm 0.0_pre20160305 0.0_pre20171004 0.0_pre20181126: An abstract library implementation of a VT220/xterm/ECMA-48 terminal emulator
 dev-libs/libvterm-neovim 0.0_pre20150309 0.0_pre20150621: An abstract library implementation of a VT220/xterm/ECMA-48 terminal emulator
-dev-libs/libwacom 0.30: Library for identifying Wacom tablets and their model-specific features
+dev-libs/libwacom 0.30 0.33: Library for identifying Wacom tablets and their model-specific features
 dev-libs/libwapcaplet 0.4.1-r1: string internment library, written in C
 dev-libs/libwbxml 0.11.2: Library and tools to parse, encode and handle WBXML documents
 dev-libs/libx86 1.1-r4: A hardware-independent library for executing real-mode x86 code
@@ -13902,7 +13902,7 @@ media-sound/asunder 2.9.3-r1: Graphical Audio CD ripper and encoder with support
 media-sound/aucdtect 0.8.2-r1: Commandline FLAC CDDA authenticity verifier
 media-sound/audacious 3.9-r1 3.10.1 9999: Lightweight and versatile audio player
 media-sound/audacity 2.2.2: Free crossplatform audio editor
-media-sound/audex 0.95_pre20190112 0.95_pre20190721: Tool for ripping compact discs
+media-sound/audex 0.95_pre20190721: Tool for ripping compact discs
 media-sound/audicle 1.0.0.7-r2: A Context-sensitive, On-the-fly Audio Programming Environ/mentality
 media-sound/audiocompress 2.0: Very gentle 1-band dynamic range compressor
 media-sound/audiotag 0.19: A command-line tool for mass tagging/renaming of audio files
