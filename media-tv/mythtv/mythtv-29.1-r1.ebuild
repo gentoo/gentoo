@@ -156,6 +156,8 @@ to journald via the console at the notice verbosity.
 
 MYTHTV_GROUPS="video,audio,tty,uucp"
 
+PATCHES=( "${FILESDIR}/${P}-exiv2-0.27.1.patch" ) # bug 691904
+
 pkg_setup() {
 	python-single-r1_pkg_setup
 	enewuser mythtv -1 /bin/bash /home/mythtv ${MYTHTV_GROUPS}
