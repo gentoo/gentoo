@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="threads"
 
-inherit bash-completion-r1 eutils flag-o-matic pax-utils python-single-r1 toolchain-funcs
+inherit bash-completion-r1 eutils flag-o-matic pax-utils python-any-r1 toolchain-funcs
 
 DESCRIPTION="A JavaScript runtime built on Chrome's V8 JavaScript engine"
 HOMEPAGE="https://nodejs.org/"
@@ -17,7 +17,6 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 IUSE="cpu_flags_x86_sse2 debug doc icu inspector +npm +snapshot +ssl test"
 REQUIRED_USE="
-	${PYTHON_REQUIRED_USE}
 	inspector? ( icu ssl )
 "
 
