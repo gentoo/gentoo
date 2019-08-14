@@ -62,12 +62,6 @@ EXPORT_FUNCTIONS pkg_setup pkg_nofetch src_unpack src_prepare src_configure src_
 # be set depending on the value of CATEGORY.
 : ${KDE_AUTODEPS:=true}
 
-# @ECLASS-VARIABLE: KDE_BLOCK_SLOT4
-# @DESCRIPTION:
-# This variable only has any effect when when CATEGORY = "kde-apps" and
-# KDE_AUTODEPS is also set. If set to "true", add RDEPEND block on kde-apps/${PN}:4
-: ${KDE_BLOCK_SLOT4:=true}
-
 # @ECLASS-VARIABLE: KDE_DEBUG
 # @DESCRIPTION:
 # If set to "false", add -DNDEBUG (via cmake-utils_src_configure) and -DQT_NO_DEBUG
