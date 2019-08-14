@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit cmake-utils udev
 
@@ -28,7 +28,8 @@ if [[ ${PV} == "9999" ]] ; then
 else
 	MY_PV=${PV/\_/-}
 	S="${WORKDIR}/${MY_PN}-${MY_PV}"
-	SRC_URI="https://github.com/Nuand/${MY_PN}/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/Nuand/${MY_PN}/archive/${MY_PV}.tar.gz -> ${P}.tar.gz \
+			https://github.com/analogdevicesinc/no-OS/archive/0bba46e6f6f75785a65d425ece37d0a04daf6157.tar.gz -> analogdevices-no-OS-0bba46.tar.gz"
 	KEYWORDS="~amd64 ~arm ~x86"
 fi
 
@@ -37,8 +38,17 @@ CDEPEND=">=dev-libs/libusb-1.0.16
 DEPEND="${CDEPEND}
 	virtual/pkgconfig"
 RDEPEND="${CDEPEND}"
-PDEPEND=">=net-wireless/bladerf-firmware-2.2.0
-	>=net-wireless/bladerf-fpga-0.7.3"
+PDEPEND=">=net-wireless/bladerf-firmware-2.3.2
+	>=net-wireless/bladerf-fpga-0.11.0"
+
+src_unpack() {
+	if [ "${PV}" = "9999" ]; then
+		git-r3_src_unpack
+	else
+		default
+		mv "${WORKDIR}/no-OS-0bba46e6f6f75785a65d425ece37d0a04daf6157/ad9361" "${S}/thirdparty/analogdevicesinc/no-OS/" || die
+	fi
+}
 
 src_configure() {
 	mycmakeargs=(

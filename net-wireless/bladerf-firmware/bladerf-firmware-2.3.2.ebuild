@@ -1,7 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 DESCRIPTION="bladeRF FX3 firmware images"
 HOMEPAGE="http://nuand.com/fx3.php"
@@ -20,6 +20,10 @@ DEPEND=""
 RDEPEND="${DEPEND}"
 
 S="${DISTDIR}"
+
+src_unpack() {
+	true
+}
 
 src_install() {
 	insinto /usr/share/Nuand/bladeRF/
