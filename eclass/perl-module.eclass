@@ -72,13 +72,13 @@ case ${EAPI:-0} in
 				;;
 		esac
 		;;
-	6|7)
+	6)
 		[[ ${CATEGORY} == perl-core ]] && \
 			PERL_EXPF+=" pkg_postinst pkg_postrm"
 
 		case "${GENTOO_DEPEND_ON_PERL:-yes}" in
 			yes)
-				DEPEND="dev-lang/perl:="
+				DEPEND="dev-lang/perl"
 				RDEPEND="dev-lang/perl:="
 				;;
 			noslotop)
@@ -95,6 +95,33 @@ case ${EAPI:-0} in
 		if [[ "${PERL_EXPORT_PHASE_FUNCTIONS}" ]]; then
 			eerror "PERL_EXPORT_PHASE_FUNCTIONS is banned in EAPI=6 and later. Use perl-module.eclass if you need"
 			die    "phase functions, perl-functions.eclass if not."
+		fi
+
+		EXPORT_FUNCTIONS ${PERL_EXPF}
+		;;
+	7)
+		[[ ${CATEGORY} == perl-core ]] && \
+			PERL_EXPF+=" pkg_postinst pkg_postrm"
+
+		case "${GENTOO_DEPEND_ON_PERL:-yes}" in
+			yes)
+				DEPEND="dev-lang/perl"
+				BDEPEND="dev-lang/perl"
+				RDEPEND="dev-lang/perl:="
+				;;
+			noslotop)
+				DEPEND="dev-lang/perl"
+				BDEPEND="dev-lang/perl"
+				RDEPEND="dev-lang/perl"
+				;;
+		esac
+
+		if [[ "${GENTOO_DEPEND_ON_PERL_SUBSLOT:-yes}" != "yes" ]]; then
+			die "GENTOO_DEPEND_ON_PERL_SUBSLOT=no is banned in EAPI=6 and later."
+		fi
+
+		if [[ "${PERL_EXPORT_PHASE_FUNCTIONS}" ]]; then
+			die "PERL_EXPORT_PHASE_FUNCTIONS is banned in EAPI=6 and later."
 		fi
 
 		EXPORT_FUNCTIONS ${PERL_EXPF}
