@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,7 +9,7 @@ RESTRICT="test"
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="threads"
 
-inherit pax-utils python-single-r1 toolchain-funcs
+inherit pax-utils python-any-r1 toolchain-funcs
 
 DESCRIPTION="Evented IO for V8 Javascript"
 HOMEPAGE="http://nodejs.org/"
@@ -28,7 +28,6 @@ RDEPEND="icu? ( dev-libs/icu )
 DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/node-v${PV}"
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 src_prepare() {
 	tc-export CC CXX PKG_CONFIG
