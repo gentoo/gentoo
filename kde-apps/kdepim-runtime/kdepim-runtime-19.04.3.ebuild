@@ -74,6 +74,8 @@ RDEPEND="${COMMON_DEPEND}
 	!kde-misc/akonadi-ews
 "
 
+PATCHES=( "${FILESDIR}/${P}-ui_lockfilepage-race-condition.patch" )
+
 RESTRICT+=" test"
 
 src_prepare() {
