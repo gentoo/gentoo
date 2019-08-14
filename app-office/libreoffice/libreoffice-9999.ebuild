@@ -404,7 +404,7 @@ src_configure() {
 		--disable-epm
 		--disable-fetch-external
 		--disable-gstreamer-0-10
-		--disable-gtk2
+		--disable-gtk
 		--disable-gtk3-kde5
 		--disable-online-update
 		--disable-openssl
