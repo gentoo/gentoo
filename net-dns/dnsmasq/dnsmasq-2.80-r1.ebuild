@@ -1,5 +1,4 @@
 # Copyright 1999-2019 Gentoo Authors
-# Copyright 2017-2018 Sony Interactive Entertainment Inc.
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -57,6 +56,10 @@ RDEPEND="${COMMON_DEPEND}
 REQUIRED_USE="dhcp-tools? ( dhcp )
 	lua? ( script )
 	libidn2? ( idn )"
+
+PATCHES=(
+	"${FILESDIR}/dnsmasq-2.80-linux-headers-5.2.patch"
+)
 
 use_have() {
 	local useflag no_only uword
