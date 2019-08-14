@@ -3844,6 +3844,11 @@
       <name>Tim Harder</name>
       <role>Member</role>
     </member>
+    <member>
+      <email>steils@gentoo.org</email>
+      <name>Stefan Strogin</name>
+      <role>Member ( OpenShot )</role>
+    </member>
   </project>
   <project>
     <email>vim@gentoo.org</email>
