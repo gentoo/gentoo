@@ -17,6 +17,7 @@ acct-group/logstash 0: Logstash program group
 acct-group/lp 0: System group: lp
 acct-group/mail 0: Mail program group
 acct-group/man 0: System group: man
+acct-group/messagebus 0: System group: messagebus
 acct-group/minecraft 0: A group for the Minecraft server
 acct-group/msmtpd 0: System group: msmtpd
 acct-group/murmur 0: System group: murmur
@@ -52,6 +53,7 @@ acct-user/i2pd 0: User for the system-wide net-vpn/i2pd server
 acct-user/logstash 0: Logstash program user
 acct-user/mail 0: Mail program user
 acct-user/man 0: user for man page viewer
+acct-user/messagebus 0: System user: messagebus
 acct-user/minecraft 0: A user for the Minecraft server
 acct-user/msmtpd 0: user for msmtp daemon
 acct-user/murmur 0: user for murmur daemon
