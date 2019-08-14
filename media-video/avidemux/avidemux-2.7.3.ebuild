@@ -9,7 +9,7 @@ inherit cmake-utils desktop qmake-utils xdg
 
 DESCRIPTION="Video editor designed for simple cutting, filtering and encoding tasks"
 HOMEPAGE="http://fixounet.free.fr/avidemux"
-SRC_URI="https://github.com/mean00/avidemux2/archive/${PV}.tar.gz"
+SRC_URI="https://github.com/mean00/avidemux2/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 # Multiple licenses because of all the bundled stuff.
 LICENSE="GPL-1 GPL-2 MIT PSF-2 public-domain"
