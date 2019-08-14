@@ -1,11 +1,13 @@
-DEFINED_PHASES=install
+BDEPEND=virtual/pkgconfig
+DEFINED_PHASES=compile install
 DEPEND=sys-libs/ncurses:0
 DESCRIPTION=An ncurses-based Xenon clone
-EAPI=6
+EAPI=7
 HOMEPAGE=http://www.alessandropira.org/alienwave/aw.html
 KEYWORDS=~amd64 ~x86 ~x86-fbsd
 LICENSE=GPL-2
 RDEPEND=sys-libs/ncurses:0
 SLOT=0
 SRC_URI=http://www.alessandropira.org/alienwave/alienwave-0.4.0.tar.gz
-_md5_=52dd0a543aabc845013a93b0f97ec0f3
+_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
+_md5_=a5c0629648e53009c8ed703dd494e804
