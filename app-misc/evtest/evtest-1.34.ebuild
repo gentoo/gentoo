@@ -11,12 +11,12 @@ SRC_URI="https://cgit.freedesktop.org/evtest/snapshot/${PN}-${P}.tar.gz -> ${P}.
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 
 BDEPEND="virtual/pkgconfig"
 
 DEPEND="app-text/asciidoc
-		app-text/xmlto"
+	app-text/xmlto"
 
 S="${WORKDIR}/${PN}-${P}"
 
