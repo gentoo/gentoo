@@ -63,7 +63,7 @@ unset ADDONS_SRC
 LO_EXTS="nlpsolver scripting-beanshell scripting-javascript wiki-publisher"
 
 IUSE="accessibility bluetooth +branding coinmp +cups dbus debug eds firebird
-googledrive gstreamer +gtk gtk2 kde ldap +mariadb odk pdfimport postgres test
+googledrive gstreamer +gtk kde ldap +mariadb odk pdfimport postgres test
 $(printf 'libreoffice_extensions_%s ' ${LO_EXTS})"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
@@ -174,11 +174,6 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		gnome-base/dconf
 		media-libs/mesa[egl]
 		x11-libs/gtk+:3
-		x11-libs/pango
-	)
-	gtk2? (
-		x11-libs/gdk-pixbuf
-		>=x11-libs/gtk+-2.24:2
 		x11-libs/pango
 	)
 	kde? (
@@ -409,6 +404,7 @@ src_configure() {
 		--disable-epm
 		--disable-fetch-external
 		--disable-gstreamer-0-10
+		--disable-gtk
 		--disable-gtk3-kde5
 		--disable-online-update
 		--disable-openssl
@@ -442,7 +438,6 @@ src_configure() {
 		$(use_enable firebird firebird-sdbc)
 		$(use_enable gstreamer gstreamer-1-0)
 		$(use_enable gtk gtk3)
-		$(use_enable gtk2 gtk)
 		$(use_enable kde kf5)
 		$(use_enable kde qt5)
 		$(use_enable ldap)
