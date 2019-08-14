@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python2_7 python3_{5..7})
 PYTHON_REQ_USE="threads(+)"
 
-inherit distutils-r1
+inherit distutils-r1 toolchain-funcs
 
 MY_PN="M2Crypto"
 
@@ -41,14 +41,26 @@ PATCHES=(
 	"${FILESDIR}/${PN}-crossdev-${PV}.patch"
 )
 
+swig_define() {
+	local x
+	for x; do
+		if tc-cpp-is-true "defined(${x})"; then
+			SWIG_FEATURES+=" -D${x}"
+		fi
+	done
+}
+
 python_compile() {
 	# setup.py looks at platform.machine() to determine swig options.
 	# For exotic ABIs, we need to give swig a hint.
-	# https://bugs.gentoo.org/617946
 	local -x SWIG_FEATURES=
-	case ${ABI} in
-		x32) SWIG_FEATURES="-D__ILP32__" ;;
-	esac
+
+	# https://bugs.gentoo.org/617946
+	swig_define __ILP32__
+
+	# https://bugs.gentoo.org/674112
+	swig_define __ARM_PCS_VFP
+
 	distutils-r1_python_compile --openssl="${ESYSROOT}"/usr
 }
 
