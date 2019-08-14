@@ -10,7 +10,7 @@ inherit cmake-utils python-single-r1
 
 DESCRIPTION="Plugins for the video editor media-video/avidemux"
 HOMEPAGE="http://fixounet.free.fr/avidemux"
-SRC_URI="https://github.com/mean00/avidemux2/archive/${PV}.tar.gz"
+SRC_URI="https://github.com/mean00/avidemux2/archive/${PV}.tar.gz -> avidemux-${PV}.tar.gz"
 
 # Multiple licenses because of all the bundled stuff.
 LICENSE="GPL-1 GPL-2 MIT PSF-2 public-domain"
