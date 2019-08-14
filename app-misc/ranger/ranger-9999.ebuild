@@ -20,6 +20,7 @@ HOMEPAGE="https://ranger.github.io/"
 LICENSE="GPL-3"
 SLOT="0"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="virtual/pager"
 DEPEND="test? ( dev-python/pytest[${PYTHON_USEDEP}] )"
