@@ -676,17 +676,6 @@ kde5_src_install() {
 
 	cmake-utils_src_install
 
-	# We don't want QCH and tags files to be compressed, because then
-	# cmake can't find the tags and qthelp viewers can't find the docs
-	local p=$(best_version dev-qt/qtcore:5)
-	local pv=$(echo ${p/%-r[0-9]*/} | rev | cut -d - -f 1 | rev)
-	if [[ ${pv} = 5.11* ]]; then
-		#todo: clean up trailing slash check when EAPI <7 is removed
-		if [[ -d ${ED%/}/usr/share/doc/qt-${pv} ]]; then
-			docompress -x /usr/share/doc/qt-${pv}
-		fi
-	fi
-
 	if [[ ${EAPI} = 6 ]]; then
 		# We don't want /usr/share/doc/HTML to be compressed,
 		# because then khelpcenter can't find the docs
