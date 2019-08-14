@@ -42,6 +42,14 @@ sys-apps/lomoco
 sys-process/fuser-bsd
 
 # Aaron Bauman <bman@gentoo.org> (2019-08-14)
+# open sec bug #622428, unmaintained
+# list includes rdeps. Removal in 30 days.
+dev-java/xstream
+dev-java/jsap
+net-misc/java-wakeonlan
+sci-biology/goby
+
+# Aaron Bauman <bman@gentoo.org> (2019-08-14)
 # longstanding sec vulns, unpatched, not maintained
 # bug #509354, #519216, #603440
 # list includes rdeps. Removal in 30 days.
