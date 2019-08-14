@@ -3,7 +3,7 @@
 
 EAPI=7
 PYTHON_COMPAT=( python3_{5,6,7} )
-inherit fcaps flag-o-matic multilib python-r1 qmake-utils user xdg-utils cmake-utils
+inherit fcaps flag-o-matic multilib python-any-r1 qmake-utils user xdg-utils cmake-utils
 
 DESCRIPTION="A network protocol analyzer formerly known as ethereal"
 HOMEPAGE="https://www.wireshark.org/"
@@ -82,7 +82,6 @@ RDEPEND="
 	selinux? ( sec-policy/selinux-wireshark )
 "
 REQUIRED_USE="
-	${PYTHON_REQUIRED_USE}
 	plugin_ifdemo? ( plugins )
 "
 PATCHES=(
@@ -119,7 +118,7 @@ src_configure() {
 		append-cxxflags -fPIC -DPIC
 	fi
 
-	python_setup 'python3*'
+	python_setup
 
 	mycmakeargs+=(
 		$(use androiddump && use pcap && echo -DEXTCAP_ANDROIDDUMP_LIBPCAP=yes)
