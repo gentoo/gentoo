@@ -36,7 +36,8 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/${PN}-2.2.0-cflags.patch" #691142
+	"${FILESDIR}/${P}-cflags.patch" #691142
+	"${FILESDIR}/${P}-kbdfile-dont_stop_on_first_error.patch"
 )
 
 src_unpack() {
