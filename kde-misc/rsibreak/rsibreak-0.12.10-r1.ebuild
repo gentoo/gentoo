@@ -14,7 +14,7 @@ if [[ ${KDE_BUILD_TYPE} = release ]]; then
 fi
 
 LICENSE="GPL-2+ handbook? ( FDL-1.2 )"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 BDEPEND="sys-devel/gettext"
