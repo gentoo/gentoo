@@ -64,7 +64,7 @@ fi
 # foo is added to IUSE.
 FFMPEG_FLAG_MAP=(
 		+bzip2:bzlib cpudetection:runtime-cpudetect debug gcrypt gnutls gmp
-		+gpl +hardcoded-tables +iconv libressl:libtls libxml2 lzma +network opencl
+		+gpl hardcoded-tables +iconv libressl:libtls libxml2 lzma +network opencl
 		openssl +postproc samba:libsmbclient sdl:ffplay sdl:sdl2 vaapi vdpau
 		X:xlib xcb:libxcb xcb:libxcb-shm xcb:libxcb-xfixes +zlib
 		# libavdevice options
