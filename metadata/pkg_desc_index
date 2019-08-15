@@ -4930,7 +4930,7 @@ dev-libs/libgcrypt-compat 1.5.6: Old version of libgcrypt needed by some binarie
 dev-libs/libgdata 0.17.8 0.17.9-r1 0.17.10: GLib-based library for accessing online service APIs using the GData protocol
 dev-libs/libgee 0.6.8 0.20.1 0.20.2: GObject-based interfaces and classes for commonly used data structures
 dev-libs/libgit2 0.26.8 0.28.2 0.28.3 9999: A linkable library for Git
-dev-libs/libgit2-glib 0.26.2 0.26.4 0.28.0.1: Git library for GLib
+dev-libs/libgit2-glib 0.26.4 0.28.0.1: Git library for GLib
 dev-libs/libgnome-games-support 1.4.3: Library for code common to Gnome games
 dev-libs/libgpg-error 1.27-r1 1.29 1.32 1.32-r1 1.36: Contains error handling functions used by GnuPG software
 dev-libs/libgpiod 1.1.1: C library and tools for interacting with the linux GPIO character device
