@@ -8,7 +8,7 @@ PHP_EXT_INI="yes"
 PHP_EXT_ZENDEXT="no"
 DOCS=( NOTICE README.md TECHNOTES.txt TODO )
 
-USE_PHP="php5-6 php7-0 php7-1"
+USE_PHP="php5-6 php7-1 php7-2 php7-3"
 
 inherit php-ext-pecl-r3
 
@@ -23,8 +23,9 @@ IUSE="+mmap"
 
 DEPEND=""
 PDEPEND="
-php_targets_php7-0? ( dev-php/pecl-apcu:7[php_targets_php7-0] )
 php_targets_php7-1? ( dev-php/pecl-apcu:7[php_targets_php7-1] )
+php_targets_php7-2? ( dev-php/pecl-apcu:7[php_targets_php7-2] )
+php_targets_php7-3? ( dev-php/pecl-apcu:7[php_targets_php7-3] )
 "
 
 LOCKS="pthreadmutex pthreadrw spinlock semaphore"
@@ -63,7 +64,7 @@ src_install() {
 	if use php_targets_php5-6 ; then
 		php-ext-pecl-r3_src_install
 
-		insinto "${PHP_EXT_SHARED_DIR}"
+		insinto "${PHP_EXT_SHARED_DIR#$EPREFIX}"
 		doins apc.php
 	fi
 }
