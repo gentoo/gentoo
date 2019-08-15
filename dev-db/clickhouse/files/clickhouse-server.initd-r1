@@ -1,0 +1,23 @@
+#!/sbin/openrc-run
+# Copyright 1999-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+user="clickhouse"
+group="clickhouse"
+logdir="/var/log/clickhouse-server"
+pidfile="/run/clickhouse-server.pid"
+command_background=1
+command="/usr/bin/clickhouse-server"
+start_stop_daemon_args="--user ${user} --group ${group} \
+	--chdir /etc/clickhouse-server \
+	-1 ${logdir}/stdout.log \
+	-2 ${logdir}/stderr.log"
+
+depend() {
+	need net
+	after mongodb
+}
+
+start_pre() {
+    checkpath -m 0755 -o "${user}:${group}" -d "${logdir}"
+}
