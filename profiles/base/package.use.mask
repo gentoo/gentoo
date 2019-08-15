@@ -53,6 +53,7 @@ x11-libs/gdk-pixbuf jpeg2k
 dev-libs/weston pipewire
 sys-apps/xdg-desktop-portal screencast
 kde-plasma/xdg-desktop-portal-kde screencast
+kde-apps/krfb wayland
 
 # James Le Cuirot <chewi@gentoo.org> (2019-05-21)
 # Doesn't support ffmpeg-4. Portage takes a long time to report the
