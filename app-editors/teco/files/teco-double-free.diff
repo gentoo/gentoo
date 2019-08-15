@@ -1,5 +1,7 @@
---- te_exec2.c	1993-11-12 21:12:47.000000000 +0000
-+++ te_exec2.c.new	2005-08-21 18:31:26.495907720 +0100
+https://bugs.gentoo.org/103257
+
+--- teco-orig/te_exec2.c
++++ teco/te_exec2.c
 @@ -197,7 +197,7 @@
  		{
  		if (eisw)       /* if ending a file execute, restore the previous "old command string" */
