@@ -4,10 +4,10 @@ DEPEND=dev-libs/glib:2
 DESCRIPTION=An icon taskbar for the Gnome Shell
 EAPI=7
 HOMEPAGE=https://github.com/home-sweet-gnome/dash-to-panel
-KEYWORDS=~amd64
+KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2+
 RDEPEND=dev-libs/glib:2 app-eselect/eselect-gnome-shell-extensions >=gnome-base/gnome-shell-3.18.0
 SLOT=0
 SRC_URI=https://github.com/home-sweet-gnome/dash-to-panel/archive/v20.tar.gz -> gnome-shell-extension-dash-to-panel-20.tar.gz
 _eclasses_=gnome2-utils	532371cfcba45b2ab0d2950547c97d95	xdg-utils	14d00d009167652b1fa363e55effe213
-_md5_=170baab5da3318211be59afc6cfbd2fb
+_md5_=7d116921f54db015f00f2087bcd644f3
