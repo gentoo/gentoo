@@ -36,7 +36,6 @@ media-gfx/imagemagick raw
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2018-05-07)
 # sci-visualization/gnuplot is not stable.
-app-admin/sysstat isag
 sci-libs/libqalculate gnuplot
 sci-mathematics/octave gnuplot
 
