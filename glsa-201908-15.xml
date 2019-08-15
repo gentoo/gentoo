@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201908-15">
+  <title>ZNC: Privilege escalation</title>
+  <synopsis>A vulnerability in ZNC allows users to escalate privileges.</synopsis>
+  <product type="ebuild">znc</product>
+  <announced>2019-08-15</announced>
+  <revised count="1">2019-08-15</revised>
+  <bug>688152</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-irc/znc" auto="yes" arch="*">
+      <unaffected range="ge">1.7.4_rc1</unaffected>
+      <vulnerable range="lt">1.7.4_rc1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>ZNC is an advanced IRC bouncer.</p>
+  </background>
+  <description>
+    <p>It was discovered that ZNC’s “Modules.cpp” allows remote
+      authenticated non-admin users to escalate privileges.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote authenticated attacker could escalate privileges and
+      subsequently execute arbitrary code or conduct a Denial of Service
+      attack.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All ZNC users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-irc/znc-1.7.4_rc1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-12816">CVE-2019-12816</uri>
+  </references>
+  <metadata tag="requester" timestamp="2019-08-11T22:44:54Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2019-08-15T15:56:13Z">b-man</metadata>
+</glsa>
