@@ -206,8 +206,6 @@ src_install() {
 		[[ -e ${x} ]] && addpredict ${x}
 	done
 
-	#dodir "/usr/$(get_libdir)/python2.7/site-packages" # for init_calibre.py
-	#dodir $(python_get_sitedir)
 	PATH=${T}:${PATH} PYTHONPATH=${S}/src${PYTHONPATH:+:}${PYTHONPATH} \
 	"${PYTHON}" setup.py install \
 		--root="${D}" \
