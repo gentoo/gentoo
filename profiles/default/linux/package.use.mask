@@ -13,12 +13,6 @@ sys-auth/consolekit -cgroups
 # Native inotify support is preferred on linux.
 kde-frameworks/kcoreaddons fam
 
-# Christian Ruppert <idl0r@gentoo.org> (2015-08-23)
-# seccomp seems completely broken currently but has been added as global default
-# apparently... #558100
-# https://archives.gentoo.org/gentoo-dev/message/38503d86a1c41bccfa607745467b1be7
-net-dns/bind seccomp
-
 # Diego Elio Pettenò (2012-08-27)
 # The libpci access is only used for linux.
 net-analyzer/net-snmp -pci
