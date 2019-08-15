@@ -13,7 +13,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 
-IUSE="3d debug doc tools"
+IUSE="debug doc tools"
 
 RDEPEND="
 	dev-cpp/muParser
