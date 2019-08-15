@@ -334,6 +334,14 @@ acct-user_pkg_preinst() {
 		if [[ -z ${ACCT_USER_HOME_OWNER} ]]; then
 			ACCT_USER_HOME_OWNER=${ACCT_USER_NAME}:${ACCT_USER_GROUPS[0]}
 		fi
+		# Path might be missing due to INSTALL_MASK, etc.
+		# https://bugs.gentoo.org/691478
+		if [[ ! -e "${ED}/${ACCT_USER_HOME#/}" ]]; then
+			eerror "Home directory is missing from the installation image:"
+			eerror "  ${ACCT_USER_HOME}"
+			eerror "Check INSTALL_MASK for entries that would cause this."
+			die "${ACCT_USER_HOME} does not exist"
+		fi
 		fowners "${ACCT_USER_HOME_OWNER}" "${ACCT_USER_HOME}"
 		fperms "${ACCT_USER_HOME_PERMS}" "${ACCT_USER_HOME}"
 	fi
