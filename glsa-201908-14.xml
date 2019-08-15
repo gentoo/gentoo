@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201908-14">
+  <title>polkit: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in polkit, the worst of
+    which could result in privilege escalation.
+  </synopsis>
+  <product type="ebuild">polkit</product>
+  <announced>2019-08-15</announced>
+  <revised count="1">2019-08-15</revised>
+  <bug>661470</bug>
+  <bug>672578</bug>
+  <access>remote</access>
+  <affected>
+    <package name="sys-auth/polkit" auto="yes" arch="*">
+      <unaffected range="ge">0.115-r2</unaffected>
+      <vulnerable range="lt">0.115-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>polkit is a toolkit for managing policies relating to unprivileged
+      processes communicating with privileged processes.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in polkit. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Please review the referenced CVE identifiers for details.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All polkit users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-auth/polkit-0.115-r2"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-1116">CVE-2018-1116</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-19788">CVE-2018-19788</uri>
+  </references>
+  <metadata tag="requester" timestamp="2019-08-11T21:46:16Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2019-08-15T15:54:53Z">b-man</metadata>
+</glsa>
