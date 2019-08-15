@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 DESCRIPTION="Icons for use with FVWM"
 HOMEPAGE="http://www.fvwm.org/"
-SRC_URI="http://www.fvwm.org/generated/icon_download/fvwm_icons.tar.bz2"
+SRC_URI="mirror://gentoo/fvwm_icons.tar.bz2 -> ${P}.tar.bz2"
 
 LICENSE="GPL-2 FVWM"
 SLOT="0"
