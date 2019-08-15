@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201908-12">
+  <title>Mozilla Firefox: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Mozilla Firefox, the
+    worst of which could result in the arbitrary execution of code.
+  </synopsis>
+  <product type="ebuild">firefox</product>
+  <announced>2019-08-15</announced>
+  <revised count="1">2019-08-15</revised>
+  <bug>688332</bug>
+  <bug>690626</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-client/firefox" auto="yes" arch="*">
+      <unaffected range="ge">60.8.0</unaffected>
+      <vulnerable range="lt">60.8.0</vulnerable>
+    </package>
+    <package name="www-client/firefox-bin" auto="yes" arch="*">
+      <unaffected range="ge">60.8.0</unaffected>
+      <vulnerable range="lt">60.8.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Mozilla Firefox is a popular open-source web browser from the Mozilla
+      Project.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Mozilla Firefox. Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A remote attacker could entice a user to view a specially crafted web
+      page, possibly resulting in the execution of arbitrary code with the
+      privileges of the process or a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Mozilla Firefox users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=www-client/firefox-60.8.0"
+    </code>
+    
+    <p>All Mozilla Firefox binary users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=www-client/firefox-bin-60.8.0"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-11707">CVE-2019-11707</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-11708">CVE-2019-11708</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-11709">CVE-2019-11709</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-11710">CVE-2019-11710</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-11711">CVE-2019-11711</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-11712">CVE-2019-11712</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-11713">CVE-2019-11713</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-11714">CVE-2019-11714</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-11715">CVE-2019-11715</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-11716">CVE-2019-11716</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-11717">CVE-2019-11717</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-11718">CVE-2019-11718</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-11719">CVE-2019-11719</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-11720">CVE-2019-11720</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-11721">CVE-2019-11721</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-11723">CVE-2019-11723</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-11724">CVE-2019-11724</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-11725">CVE-2019-11725</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-11727">CVE-2019-11727</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-11728">CVE-2019-11728</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-11729">CVE-2019-11729</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-11730">CVE-2019-11730</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-9811">CVE-2019-9811</uri>
+    <uri link="https://www.mozilla.org/en-US/security/advisories/mfsa2019-18/">
+      MFSA2019-18
+    </uri>
+    <uri link="https://www.mozilla.org/en-US/security/advisories/mfsa2019-19/">
+      MFSA2019-19
+    </uri>
+    <uri link="https://www.mozilla.org/en-US/security/advisories/mfsa2019-21/">
+      MFSA2019-21
+    </uri>
+    <uri link="https://www.mozilla.org/en-US/security/advisories/mfsa2019-22/">
+      MFSA2019-22
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2019-06-20T18:12:58Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2019-08-15T15:52:20Z">b-man</metadata>
+</glsa>
