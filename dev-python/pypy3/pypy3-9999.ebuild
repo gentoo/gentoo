@@ -20,7 +20,8 @@ LICENSE="MIT"
 # pypy3 -c 'import sysconfig; print(sysconfig.get_config_var("SOABI"))'
 SLOT="0/71-py36"
 KEYWORDS=""
-IUSE="bzip2 gdbm +jit libressl low-memory ncurses sandbox sqlite tk"
+IUSE="bzip2 cpu_flags_x86_sse2 gdbm +jit libressl low-memory ncurses
+	sandbox sqlite tk"
 
 RDEPEND=">=sys-libs/zlib-1.1.3:0=
 	virtual/libffi:0=
@@ -111,12 +112,32 @@ src_prepare() {
 src_configure() {
 	tc-export CC
 
+	local jit_backend
+	if use jit; then
+		jit_backend='--jit-backend='
+
+		# We only need the explicit sse2 switch for x86.
+		# On other arches we can rely on autodetection which uses
+		# compiler macros. Plus, --jit-backend= doesn't accept all
+		# the modern values...
+
+		if use x86; then
+			if use cpu_flags_x86_sse2; then
+				jit_backend+=x86
+			else
+				jit_backend+=x86-without-sse2
+			fi
+		else
+			jit_backend+=auto
+		fi
+	fi
+
 	local args=(
 		--shared
 		$(usex jit -Ojit -O2)
 		$(usex sandbox --sandbox '')
 
-		--jit-backend=auto
+		${jit_backend}
 
 		pypy/goal/targetpypystandalone
 	)
