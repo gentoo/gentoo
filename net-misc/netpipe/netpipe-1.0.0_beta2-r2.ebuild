@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="tool to reliably distribute binary data using UDP broadcasting techniques"
 HOMEPAGE="https://www.wudika.de/~jan/netpipe/"
-SRC_URI="https://www.wudika.de/~jan/${PN}/${PN}.tar.gz"
+SRC_URI="https://www.wudika.de/~jan/${PN}/${PN}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
