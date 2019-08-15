@@ -30,7 +30,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DROCM_DIR="${ESYSROOT}/usr"
 		-DROCR_INC_DIR="${ESYSROOT}/usr/include"
-		-DROCR_LIB_DIR="${EPREFIX}/usr/$(get_libdir)/hsa"
+		-DROCR_LIB_DIR="${EPREFIX}/usr/$(get_libdir)"
 	)
 	cmake-utils_src_configure
 }
