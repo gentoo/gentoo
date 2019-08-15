@@ -36,6 +36,7 @@ dev-java/itext
 app-text/jpdftweak
 dev-util/deskzilla
 media-sound/tuxguitar
+sci-mathematics/isabelle
 sci-chemistry/jmol
 sci-mathematics/cvc3
 sci-mathematics/e
