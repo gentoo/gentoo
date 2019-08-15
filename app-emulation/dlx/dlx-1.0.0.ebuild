@@ -6,8 +6,8 @@ EAPI=6
 S=${WORKDIR}/dlx
 
 DESCRIPTION="DLX Simulator"
-HOMEPAGE="http://www.davidviner.com/dlx.php"
-SRC_URI="http://www.davidviner.com/dlx/dlx.tar.gz"
+HOMEPAGE="https://www.davidviner.com/dlx"
+SRC_URI="mirror://gentoo/dlx.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
