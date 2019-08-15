@@ -42,7 +42,6 @@ case ${CATEGORY} in
 			: ${FRAMEWORKS_MINIMAL:=5.57.0}
 			: ${QT_MINIMAL:=5.11.1}
 		fi
-		[[ ${PV} = 5.16.3 ]] && : ${FRAMEWORKS_MINIMAL:=5.58.0}
 		[[ ${KDE_BUILD_TYPE} = live ]] && : ${FRAMEWORKS_MINIMAL:=9999}
 		;;
 esac
