@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit autotools gnome2-utils
+inherit autotools desktop gnome2-utils xdg-utils
 
 DESCRIPTION="Electronic Identity Card middleware supplied by the Belgian Federal Government"
 HOMEPAGE="https://eid.belgium.be"
@@ -56,6 +56,14 @@ src_prepare() {
 		-e "s:get_lsb_info('c'):strdup(_(\"n/a\")):" \
 		plugins_tools/aboutmw/gtk/about-main.c || die
 
+	# Fix libdir for pkcs11_manifestdir
+	sed -i \
+		-e "/pkcs11_manifestdir/ s:prefix)/lib:libdir):" \
+		cardcomm/pkcs11/src/Makefile.am || die
+
+	# See bug #691308
+	eapply "${FILESDIR}/eid-sign-test-${PV}.patch"
+
 	eautoreconf
 }
 
@@ -81,13 +89,15 @@ src_install() {
 pkg_postinst(){
 	if use gtk; then
 		gnome2_schemas_update
-		gnome2_icon_cache_update
+		xdg_desktop_database_update
+		xdg_icon_cache_update
 	fi
 }
 
 pkg_postrm(){
 	if use gtk; then
 		gnome2_schemas_update
-		gnome2_icon_cache_update
+		xdg_desktop_database_update
+		xdg_icon_cache_update
 	fi
 }
