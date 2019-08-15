@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="redirects TCP connections from one IP address and port to another"
 HOMEPAGE="http://www.boutell.com/rinetd/"
-SRC_URI="http://www.boutell.com/rinetd/http/rinetd.tar.gz"
+SRC_URI="http://www.boutell.com/rinetd/http/rinetd.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
