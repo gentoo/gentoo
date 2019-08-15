@@ -1,0 +1,42 @@
+From f81aed7bd13fd1d7fcd1f37baade3f1f6f34c54d Mon Sep 17 00:00:00 2001
+From: David Barchiesi <david@barchie.si>
+Date: Wed, 3 Jul 2019 20:18:59 +0200
+Subject: Remove useless FileFetchJob field specifications. Fixes D21838
+ related issues.
+
+---
+ src/kio_gdrive.cpp | 12 +++++-------
+ 1 file changed, 5 insertions(+), 7 deletions(-)
+
+diff --git a/src/kio_gdrive.cpp b/src/kio_gdrive.cpp
+index 4d80baf..5add144 100644
+--- a/src/kio_gdrive.cpp
++++ b/src/kio_gdrive.cpp
+@@ -149,8 +149,7 @@ void KIOGDrive::fileSystemFreeSpace(const QUrl &url)
+         aboutFetch.setFields({
+             About::Fields::Kind,
+             About::Fields::QuotaBytesTotal,
+-            About::Fields::QuotaBytesUsedAggregate,
+-            About::Fields::CanCreateTeamDrives,
++            About::Fields::QuotaBytesUsedAggregate
+         });
+         if (runJob(aboutFetch, url, accountId)) {
+             const AboutPtr about = aboutFetch.aboutData();
+@@ -462,11 +461,10 @@ void KIOGDrive::listDir(const QUrl &url)
+     query.addQuery(FileSearchQuery::Parents, FileSearchQuery::In, folderId);
+     FileFetchJob fileFetchJob(query, getAccount(accountId));
+     const auto extraFields =
+-        KGAPI2::Drive::FileFetchJob::FieldShorthands::BasicFields +
+-            QStringList({ KGAPI2::Drive::File::Fields::Labels,
+-                          KGAPI2::Drive::File::Fields::ExportLinks,
+-                          KGAPI2::Drive::File::Fields::LastViewedByMeDate,
+-            });
++        QStringList({ KGAPI2::Drive::File::Fields::Labels,
++                      KGAPI2::Drive::File::Fields::ExportLinks,
++                      KGAPI2::Drive::File::Fields::LastViewedByMeDate,
++        });
+     fileFetchJob.setFields(KGAPI2::Drive::FileFetchJob::FieldShorthands::BasicFields + extraFields);
+     runJob(fileFetchJob, url, accountId);
+ 
+-- 
+cgit v1.1
