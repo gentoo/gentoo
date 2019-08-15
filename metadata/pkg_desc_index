@@ -1107,7 +1107,7 @@ app-editors/ghex 3.18.3 3.18.4-r1: GNOME hexadecimal editor
 app-editors/ghostwriter 1.7.4-r1 1.8.0: Cross-platform, aesthetic, distraction-free markdown editor
 app-editors/gnome-latex 3.28.1: Integrated LaTeX environment for GNOME
 app-editors/gummi 0.6.6-r2: Simple LaTeX editor for GTK+ users
-app-editors/gvim 8.1.1486 9999: GUI version of the Vim text editor
+app-editors/gvim 8.1.1486 8.1.1846 9999: GUI version of the Vim text editor
 app-editors/hexcurse 1.55 1.60.0: ncurses based hex editor
 app-editors/hexedit 1.2.13: View and edit files in hex or ASCII
 app-editors/hteditor 2.1.0 2.1.0-r1: A file viewer, editor and analyzer for text, binary, and executable files
@@ -1153,8 +1153,8 @@ app-editors/ted 2.23: X-based rich text editor
 app-editors/texworks 0.6.3: A simple interface for working with TeX documents
 app-editors/uemacs-pk 4.0.15_p20180117 4.0.15_p20180719: uEmacs/PK is an enhanced version of MicroEMACS
 app-editors/vile 9.8t: VI Like Emacs -- yet another full-featured vi clone
-app-editors/vim 8.1.1486 9999: Vim, an improved vi-style text editor
-app-editors/vim-core 8.1.1486 9999: vim and gvim shared files
+app-editors/vim 8.1.1486 8.1.1846 9999: Vim, an improved vi-style text editor
+app-editors/vim-core 8.1.1486 8.1.1846 9999: vim and gvim shared files
 app-editors/vis 0.5 9999: modern, legacy free, simple yet efficient vim-like editor
 app-editors/wily 1.0-r2: An emulation of ACME, Plan9's hybrid window system, shell and editor
 app-editors/wxhexeditor 0.24: A cross-platform hex editor designed specially for large files
@@ -3088,7 +3088,7 @@ dev-db/mtop 0.6.6-r3: Mysql top monitors a MySQL server
 dev-db/mycli 1.15.0-r2 1.17.0-r1 1.19.0 9999: CLI for MySQL Database with auto-completion and syntax highlighting
 dev-db/mydumper 0.9.3-r1 0.9.5 0.9.5-r1: A high-performance multi-threaded backup (and restore) toolset for MySQL
 dev-db/myodbc 5.3.9 5.3.10-r2 8.0.16: ODBC driver for MySQL
-dev-db/mysql 5.5.61 5.5.62 5.6.40-r2 5.6.42 5.6.43 5.6.44 5.6.45 5.7.23-r2 5.7.24 5.7.25 5.7.26 5.7.27 8.0.17_pre3: A fast, multi-threaded, multi-user SQL database server
+dev-db/mysql 5.5.61 5.5.62 5.6.40-r2 5.6.42 5.6.43 5.6.44 5.6.45 5.7.23-r2 5.7.24 5.7.25 5.7.26 5.7.27 8.0.17_pre4: A fast, multi-threaded, multi-user SQL database server
 dev-db/mysql++ 2.3.2-r1 3.2.3 3.2.4 3.2.5: C++ API interface to the MySQL database
 dev-db/mysql-cluster 7.2.34 7.3.22 7.4.21: An enhanced, drop-in replacement for MySQL
 dev-db/mysql-connector-c 6.1.11-r2 8.0.17-r1: C client library for MariaDB/MySQL
@@ -4781,7 +4781,7 @@ dev-libs/editline 1.16.0: line editing library for UNIX call compatible with the
 dev-libs/eekboard 1.0.8_p20121001: An easy to use virtual keyboard toolkit
 dev-libs/efl 1.21.1-r3 1.22.2: Enlightenment Foundation Libraries all-in-one package
 dev-libs/elfio 1.0.3-r1: ELF reader and producer implemented as a C++ library
-dev-libs/elfutils 0.176-r1: Libraries/utilities to handle ELF objects (drop in replacement for libelf)
+dev-libs/elfutils 0.176-r1 0.177: Libraries/utilities to handle ELF objects (drop in replacement for libelf)
 dev-libs/ell 0.9 0.20 0.21 9999: Embedded Linux Library provides core, low-level functionality for system daemons
 dev-libs/eventlog 0.2.12: Support library for syslog-ng
 dev-libs/expat 2.2.6 2.2.7: Stream-oriented XML parser library
@@ -7578,7 +7578,7 @@ dev-python/cddb-py 1.4-r1: CDDB Module for Python
 dev-python/celementtree 1.0.5-r2: The cElementTree module is a C implementation of the ElementTree API
 dev-python/celery 4.1.0 4.3.0: Asynchronous task queue/job queue based on distributed message passing
 dev-python/cement 2.0.2 2.10.0: CLI Application Framework for Python
-dev-python/certifi 2018.4.16 2018.8.24 2018.10.15 2018.11.29: Python package for providing Mozilla's CA Bundle
+dev-python/certifi 2018.4.16 2018.8.24 2018.10.15 2018.11.29 2019.6.16: Python package for providing Mozilla's CA Bundle
 dev-python/cffi 1.9.1 1.11.2 1.11.4 1.11.5 1.12.1 1.12.3: Foreign Function Interface for Python calling C code
 dev-python/cfgio 0.1.2: Python library for reading and writing configuration file formats
 dev-python/cfgparse 1.3-r1: Config File parser for Python
@@ -8973,7 +8973,7 @@ dev-python/serpent 1.19 1.28: A simple serialization library based on ast.litera
 dev-python/serverfiles 0.2.1: Utility for accessing HTTP server and storing files locally for reuse
 dev-python/service_identity 14.0.0 16.0.0 17.0.0 17.0.0-r1: Service identity verification for pyOpenSSL
 dev-python/setproctitle 1.1.8 1.1.10 1.1.10-r1: Allow customization of the process title
-dev-python/setuptools 36.7.2 40.6.3 40.7.3 40.8.0 40.9.0 41.0.0 41.0.1 9999: Collection of extensions to Distutils
+dev-python/setuptools 36.7.2 40.6.3 40.7.3 40.8.0 40.9.0 41.0.0 41.0.1 41.1.0 9999: Collection of extensions to Distutils
 dev-python/setuptools-git 1.2: Setuptools revision control system plugin for Git
 dev-python/setuptools_hg 0.4-r1: Setuptools/distribute plugin for finding files under Mercurial version control
 dev-python/setuptools_scm 1.15.6-r1 1.15.7 3.2.0 3.3.1: package to manage versions by scm tags via setuptools
@@ -9203,7 +9203,7 @@ dev-python/urwidtrees 1.0.2 1.0.2-r1: Tree widgets for urwid
 dev-python/ushlex 0.99.1: Replacement for shlex for Python 2.X
 dev-python/utidylib 0.3-r2: TidyLib Python wrapper
 dev-python/utmp 0.4: utmp/wtmp reader
-dev-python/uvloop 0.8.1 0.12.2: Ultra-fast implementation of asyncio event loop on top of libuv
+dev-python/uvloop 0.8.1 0.12.2 0.13.0: Ultra-fast implementation of asyncio event loop on top of libuv
 dev-python/vatnumber 1.1-r1: Module to validate VAT numbers
 dev-python/vcrpy 1.10.3 1.11.1 1.12.0: Automatically mock your HTTP interactions to simplify and speed up testing
 dev-python/vcstools 0.1.38 0.1.39 0.1.40 9999: Python library for interacting with various VCS systems
@@ -10885,7 +10885,7 @@ dev-util/qdevicemonitor 1.0.1-r1 9999: Crossplatform log viewer for Android, iOS
 dev-util/qmtest 2.4.1-r1: CodeSourcery's test harness system
 dev-util/qstlink2 1.2.3: GUI and CLI ST-Link V2(Debugger/Programmer) client
 dev-util/quilt 0.50 0.66 9999: quilt patch manager
-dev-util/radare2 3.5.1-r1 3.6.0 3.7.0 9999: unix-like reverse engineering framework and commandline tools
+dev-util/radare2 3.5.1-r1 3.6.0 3.7.0 3.7.1 9999: unix-like reverse engineering framework and commandline tools
 dev-util/ragel 6.7-r1 6.8 6.9 6.10 7.0.0.9 7.0.0.10 7.0.0.10-r1: Compiles finite state machines from regular languages into executable code
 dev-util/rats 2.4: RATS - Rough Auditing Tool for Security
 dev-util/rbtools 0.7.10 0.7.11: Command line tools for use with Review Board
@@ -14128,7 +14128,7 @@ media-sound/podget 0.7.14 0.8.1 0.8.2: A simple podcast aggregator optimized for
 media-sound/podracer 1.4-r2: A simple podcast aggregator, designed for cron
 media-sound/positron 1.1-r1: Synchronization manager for the Neuros Audio Computer
 media-sound/potamus 16: A lightweight audio player with a simple interface and an emphasis on high audio quality
-media-sound/pragha 1.3.4 1.3.99: A lightweight music player (for Xfce)
+media-sound/pragha 1.3.4 1.3.99 1.3.99.1: A lightweight music player (for Xfce)
 media-sound/protux 0.50.100: Professional Audio Tools for GNU/Linux
 media-sound/ptabtools 0.5.0: Utilities for PowerTab Guitar files (.ptb)
 media-sound/pulseaudio 12.2 12.2-r1 12.2-r2: A networked sound server with an advanced plugin system
@@ -14558,7 +14558,7 @@ net-analyzer/mtr 0.87 0.92-r1 0.93-r1 9999: My TraceRoute, an Excellent network 
 net-analyzer/multimon-ng 1.1.4 9999: a fork of multimon, decodes multiple digital transmission modes
 net-analyzer/munin 2.0.49: Munin Server Monitoring Tool
 net-analyzer/munin-plugins-zfs 0.20170127: A Munin plugin for monitoring ZFS on Linux
-net-analyzer/nagios 4.3.4 4.4.3: The Nagios metapackage
+net-analyzer/nagios 4.3.4 4.4.4: The Nagios metapackage
 net-analyzer/nagios-check_dnssec 0.1_p28: check_dnssec is a set of Nagios plugins to monitor DNSSEC services
 net-analyzer/nagios-check_fail2ban 3: A nagios plugin for checking the fail2ban daemon
 net-analyzer/nagios-check_glsa2 20120930-r1: Nagios check script for GLSAs (Gentoo Linux Security Advisories)
@@ -14568,7 +14568,7 @@ net-analyzer/nagios-check_logfiles 3.7.6.3: A nagios plugin for checking logfile
 net-analyzer/nagios-check_mysql_health 2.2.2: A nagios plugin for checking MySQL server health
 net-analyzer/nagios-check_pidfile 1: A nagios plugin for checking daemons via pidfiles
 net-analyzer/nagios-check_rbl 1.4.1: Monitor whether or not a host is blacklisted
-net-analyzer/nagios-core 4.3.4 4.4.3-r1: Nagios core - monitoring daemon, web GUI, and documentation
+net-analyzer/nagios-core 4.3.4 4.4.4: Nagios core - monitoring daemon, web GUI, and documentation
 net-analyzer/nagios-icinga-openvpn 0.0.1: A Nagios plugin to check whether an OpenVPN server is alive
 net-analyzer/nagios-plugin-check_lm_sensors 4.1.1_p20170912: Nagios plugin to monitor the values of onboard sensors and disk temperatures
 net-analyzer/nagios-plugin-check_raid 4.0.0-r1 4.0.0_p20151215 4.0.0_p20160215 4.0.1 4.0.2 4.0.8: Nagios/Icinga plugin to check current server's RAID status
@@ -17193,7 +17193,7 @@ sec-policy/selinux-xscreensaver 2.20180114-r1 2.20180114-r2 2.20180114-r3 2.2018
 sec-policy/selinux-xserver 2.20180114-r1 2.20180114-r2 2.20180114-r3 2.20180701-r1 2.20180701-r2 2.20190201-r1 9999: SELinux policy for xserver
 sec-policy/selinux-zabbix 2.20180114-r1 2.20180114-r2 2.20180114-r3 2.20180701-r1 2.20180701-r2 2.20190201-r1 9999: SELinux policy for zabbix
 sys-apps/accountsservice 0.6.50-r1: D-Bus interfaces for querying and manipulating user account information
-sys-apps/ack 2.18-r1 2.22 2.24 2.28 3.0.0: ack is a tool like grep, optimized for programmers
+sys-apps/ack 3.0.0: ack is a tool like grep, optimized for programmers
 sys-apps/acl 2.2.52-r1 2.2.53: access control list utilities, libraries and headers
 sys-apps/adjtime 0.4-r2: A perl script to adjust the clock tick of the hardware clock on the system board
 sys-apps/agedu 20180329 20180522 20190630: A utility for tracking down wasted disk space
@@ -17722,7 +17722,7 @@ sys-cluster/mpich2 1.5: A high performance and portable MPI implementation
 sys-cluster/mvapich2 1.6: MVAPICH2 MPI-over-infiniband package auto-configured for OpenIB
 sys-cluster/native-mpi 0: Use native OS MPI in prefix environment
 sys-cluster/neutron 13.0.4 14.0.2 2018.2.9999 2019.1.9999: A virtual network service for Openstack
-sys-cluster/nova 18.2.1 19.0.1 2018.2.9999 2019.1.9999: Cloud computing fabric controller (main part of an IaaS system) in Python
+sys-cluster/nova 18.2.2 19.0.2 2018.2.9999 2019.1.9999: Cloud computing fabric controller (main part of an IaaS system) in Python
 sys-cluster/nullmpi 0.7: MPI substitute library
 sys-cluster/ocfs 1.0.14: The Oracle Cluster Filesystem
 sys-cluster/onesis 2.0.2: Diskless computing made easy
@@ -17777,7 +17777,7 @@ sys-devel/cons 2.2.0 2.3.0: Extensible perl-based build utility
 sys-devel/crossdev 20181020 20181202 20190311 20190712 99999999: Gentoo Cross-toolchain generator
 sys-devel/ct-ng 1.23.0 1.24.0: crosstool-ng is a tool to build cross-compiling toolchains
 sys-devel/dev86 0.16.21-r3: Bruce's C compiler - Simple C compiler to generate 8086 code
-sys-devel/distcc 3.3.2-r5: Distribute compilation of C code across several machines on a network
+sys-devel/distcc 3.3.2-r5 3.3.3: Distribute compilation of C code across several machines on a network
 sys-devel/dwz 0.12-r1: DWARF optimization and duplicate removal tool
 sys-devel/flex 2.6.1 2.6.3 2.6.3-r1 2.6.4 2.6.4-r1: The Fast Lexical Analyzer
 sys-devel/gcc 3.3.6-r3 3.3.6-r4 3.4.6-r2 3.4.6-r3 3.4.6-r4 4.0.4-r2 4.1.2 4.1.2-r2 4.2.4-r1 4.2.4-r3 4.3.6-r1 4.3.6-r3 4.4.7 4.4.7-r2 4.5.4 4.5.4-r2 4.6.4 4.6.4-r2 4.7.4-r1 4.7.4-r3 4.8.5-r1 4.8.5-r3 4.9.4 4.9.4-r1 5.4.0-r4 5.4.0-r6 5.5.0 6.4.0-r1 6.4.0-r5 6.5.0-r1 7.3.0-r3 7.3.0-r6 7.4.0-r1 7.4.0-r2 8.2.0-r5 8.2.0-r6 8.3.0 8.3.0-r1 9.1.0 9.1.0-r1 9.2.0: The GNU Compiler Collection
@@ -18193,7 +18193,7 @@ sys-process/parallel 20190422 20190622 20190722: A shell tool for executing jobs
 sys-process/pidof-bsd 20050501-r4: pidof(1) utility for *BSD
 sys-process/pkill-darwin 1.0: pgrep(1) and pkill(1) for Darwin
 sys-process/prll 0.6.2 0.6.4: A utility for parallelizing execution of shell functions
-sys-process/procenv 0.49 0.50: command-line utility to show process environment
+sys-process/procenv 0.51: command-line utility to show process environment
 sys-process/procps 3.3.15-r1: standard informational utilities and process-handling tools
 sys-process/psinfo 0.12: Process information and statistics using the kernel /proc interface
 sys-process/psmisc 23.1-r1 23.2-r1 23.2-r2: A set of tools that use the proc filesystem
@@ -18563,8 +18563,8 @@ www-client/elinks 0.12_pre6-r1 0.12_pre6-r4 0.13_pre_pre20180225 9999: Advanced 
 www-client/epiphany 3.30.4: GNOME webbrowser based on Webkit
 www-client/falkon 3.1.0-r1: Cross-platform web browser using QtWebEngine
 www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
-www-client/firefox 52.9.0 60.8.0 68.0.1: Firefox Web Browser
-www-client/firefox-bin 52.9.0 60.8.0 68.0.1: Firefox Web Browser
+www-client/firefox 52.9.0 60.8.0 68.0.1 68.0.2: Firefox Web Browser
+www-client/firefox-bin 52.9.0 60.8.0 68.0.2: Firefox Web Browser
 www-client/google-chrome 76.0.3809.100: The web browser from Google
 www-client/google-chrome-beta 77.0.3865.19: The web browser from Google
 www-client/google-chrome-unstable 78.0.3880.4: The web browser from Google
