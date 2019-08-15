@@ -59,7 +59,7 @@ DEPEND="
 		app-crypt/qca:2[qt5(+)]
 	)
 	pim? (
-		$(add_kdeapps_dep kcalcore)
+		<kde-apps/kcalcore-19.04.50:5
 		$(add_kdeapps_dep kcontacts)
 	)
 	X? (
