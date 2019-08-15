@@ -710,6 +710,7 @@ src_install() {
 
 	# Install manpage; bug #684550
 	doman out/Release/chromium-browser.1
+	dosym chromium-browser.1 /usr/share/man/man1/chromium.1
 
 	readme.gentoo_create_doc
 }
