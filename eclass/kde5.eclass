@@ -62,12 +62,6 @@ EXPORT_FUNCTIONS pkg_setup pkg_nofetch src_unpack src_prepare src_configure src_
 # be set depending on the value of CATEGORY.
 : ${KDE_AUTODEPS:=true}
 
-# @ECLASS-VARIABLE: KDE_BLOCK_SLOT4
-# @DESCRIPTION:
-# This variable only has any effect when when CATEGORY = "kde-apps" and
-# KDE_AUTODEPS is also set. If set to "true", add RDEPEND block on kde-apps/${PN}:4
-: ${KDE_BLOCK_SLOT4:=true}
-
 # @ECLASS-VARIABLE: KDE_DEBUG
 # @DESCRIPTION:
 # If set to "false", add -DNDEBUG (via cmake-utils_src_configure) and -DQT_NO_DEBUG
@@ -295,15 +289,13 @@ _calculate_src_uri() {
 
 	case ${PN} in
 		kdelibs4support | \
+		kdewebkit | \
 		khtml | \
 		kjs | \
 		kjsembed | \
 		kmediaplayer | \
 		kross)
 			_kmname="portingAids/${_kmname}"
-			;;
-		kdewebkit)
-			[[ ${PV} = 5.57.0 ]] || _kmname="portingAids/${_kmname}"
 			;;
 	esac
 
@@ -677,17 +669,6 @@ kde5_src_install() {
 	debug-print-function ${FUNCNAME} "$@"
 
 	cmake-utils_src_install
-
-	# We don't want QCH and tags files to be compressed, because then
-	# cmake can't find the tags and qthelp viewers can't find the docs
-	local p=$(best_version dev-qt/qtcore:5)
-	local pv=$(echo ${p/%-r[0-9]*/} | rev | cut -d - -f 1 | rev)
-	if [[ ${pv} = 5.11* ]]; then
-		#todo: clean up trailing slash check when EAPI <7 is removed
-		if [[ -d ${ED%/}/usr/share/doc/qt-${pv} ]]; then
-			docompress -x /usr/share/doc/qt-${pv}
-		fi
-	fi
 
 	if [[ ${EAPI} = 6 ]]; then
 		# We don't want /usr/share/doc/HTML to be compressed,
