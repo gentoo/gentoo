@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit flag-o-matic toolchain-funcs multilib prefix
 
@@ -52,7 +52,6 @@ IUSE="afs bashlogger examples mem-scramble +net nls plugins +readline"
 DEPEND="
 	>=sys-libs/ncurses-5.2-r2:0=
 	readline? ( >=sys-libs/readline-${READLINE_VER}:0= )
-	nls? ( virtual/libintl )
 "
 RDEPEND="
 	${DEPEND}
@@ -60,14 +59,15 @@ RDEPEND="
 "
 # we only need yacc when the .y files get patched (bash42-005)
 #DEPEND+=" virtual/yacc"
+BDEPEND="
+	nls? ( virtual/libintl )
+"
 
 S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
 	# Patches from Chet sent to bashbug ml
-	"${FILESDIR}"/${PN}-5.0-history-zero-length.patch
 	"${FILESDIR}"/${PN}-5.0-history-append.patch
-	"${FILESDIR}"/${PN}-5.0-optimize-connection-fork.patch
 	"${FILESDIR}"/${PN}-5.0-syslog-history-extern.patch
 	"${FILESDIR}"/${PN}-5.0-assignment-preceding-builtin.patch
 )
@@ -190,7 +190,7 @@ src_install() {
 	default
 
 	dodir /bin
-	mv "${ED%/}"/usr/bin/bash "${ED%/}"/bin/ || die
+	mv "${ED}"/usr/bin/bash "${ED}"/bin/ || die
 	dosym bash /bin/rbash
 
 	insinto /etc/bash
@@ -214,8 +214,8 @@ src_install() {
 	fi
 	sed -i \
 		"${sed_args[@]}" \
-		"${ED%/}"/etc/skel/.bashrc \
-		"${ED%/}"/etc/bash/bashrc || die
+		"${ED}"/etc/skel/.bashrc \
+		"${ED}"/etc/bash/bashrc || die
 
 	if use plugins ; then
 		exeinto /usr/$(get_libdir)/bash

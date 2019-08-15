@@ -1,16 +1,16 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=7
 
-inherit eutils multilib toolchain-funcs flag-o-matic multilib-minimal usr-ldscript
+inherit flag-o-matic multilib-minimal toolchain-funcs usr-ldscript
 
 # Official patches
 # See ftp://ftp.cwru.edu/pub/bash/readline-7.0-patches/
-PLEVEL=${PV##*_p}
-MY_PV=${PV/_p*}
-MY_PV=${MY_PV/_/-}
-MY_P=${PN}-${MY_PV}
+PLEVEL="${PV##*_p}"
+MY_PV="${PV/_p*}"
+MY_PV="${MY_PV/_/-}"
+MY_P="${PN}-${MY_PV}"
 [[ ${PV} != *_p* ]] && PLEVEL=0
 patches() {
 	[[ ${PLEVEL} -eq 0 ]] && return 1
@@ -29,32 +29,45 @@ patches() {
 
 DESCRIPTION="Another cute console display library"
 HOMEPAGE="https://tiswww.case.edu/php/chet/readline/rltop.html"
+
 case ${PV} in
-*_alpha*|*_beta*|*_rc*) SRC_URI+=" ftp://ftp.cwru.edu/pub/bash/${MY_P}.tar.gz" ;;
-*) SRC_URI="mirror://gnu/${PN}/${MY_P}.tar.gz $(patches)" ;;
+	*_alpha*|*_beta*|*_rc*)
+		SRC_URI+=" ftp://ftp.cwru.edu/pub/bash/${MY_P}.tar.gz"
+	;;
+	*)
+		SRC_URI="mirror://gnu/${PN}/${MY_P}.tar.gz $(patches)"
+	;;
 esac
 
 LICENSE="GPL-3"
-SLOT="0/7"  # subslot matches SONAME major
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
+SLOT="0/8"  # subslot matches SONAME major
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
 IUSE="static-libs utils"
 
 RDEPEND=">=sys-libs/ncurses-5.9-r3:0=[static-libs?,${MULTILIB_USEDEP}]"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
+BDEPEND="
+	virtual/pkgconfig
+"
 
-S=${WORKDIR}/${MY_P}
+S="${WORKDIR}/${MY_P}"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-5.0-no_rpath.patch
+	"${FILESDIR}"/${PN}-6.2-rlfe-tgoto.patch #385091
+	"${FILESDIR}"/${PN}-7.0-headers.patch
+	"${FILESDIR}"/${PN}-8.0-headers.patch
+)
+
+# Needed because we don't want the patches being unpacked
+# (which emits annoying and useless error messages)
 src_unpack() {
 	unpack ${MY_P}.tar.gz
 }
 
 src_prepare() {
-	[[ ${PLEVEL} -gt 0 ]] && epatch $(patches -s)
-	epatch "${FILESDIR}"/${PN}-5.0-no_rpath.patch
-	epatch "${FILESDIR}"/${PN}-6.2-rlfe-tgoto.patch #385091
-	epatch "${FILESDIR}"/${PN}-7.0-headers.patch
-	epatch "${FILESDIR}"/${PN}-7.0-missing-echo-proto.patch
+	[[ ${PLEVEL} -gt 0 ]] && eapply -p0 $(patches -s)
+	default
 
 	# Force ncurses linking. #71420
 	# Use pkg-config to get the right values. #457558
@@ -70,7 +83,7 @@ src_prepare() {
 	# objformat for years, so we don't want to rely on that.
 	sed -i -e '/objformat/s:if .*; then:if true; then:' support/shobj-conf || die
 
-	ln -s ../.. examples/rlfe/readline # for local readline headers
+	ln -s ../.. examples/rlfe/readline || die # for local readline headers
 }
 
 src_configure() {
@@ -89,7 +102,7 @@ src_configure() {
 	# In cases where the C library doesn't support wide characters, readline
 	# itself won't work correctly, so forcing the answer below should be OK.
 	if tc-is-cross-compiler ; then
-		export bash_cv_func_sigsetjmp='present'
+		use kernel_Winnt || export bash_cv_func_sigsetjmp='present'
 		export bash_cv_func_ctype_nonascii='yes'
 		export bash_cv_wcwidth_broken='no' #503312
 	fi
@@ -102,18 +115,18 @@ src_configure() {
 }
 
 multilib_src_configure() {
-	ECONF_SOURCE=${S} \
-	econf \
-		--cache-file="${BUILD_DIR}"/config.cache \
-		--docdir='$(datarootdir)'/doc/${PF} \
-		--with-curses \
+	local myeconfargs=(
+		--cache-file="${BUILD_DIR}"/config.cache
+		--with-curses
 		$(use_enable static-libs static)
+	)
+	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
 
 	if use utils && multilib_is_native_abi && ! tc-is-cross-compiler ; then
 		# code is full of AC_TRY_RUN()
 		mkdir -p examples/rlfe || die
 		cd examples/rlfe || die
-		ECONF_SOURCE=${S}/examples/rlfe \
+		ECONF_SOURCE="${S}"/examples/rlfe \
 		econf --cache-file="${BUILD_DIR}"/config.cache
 	fi
 }
@@ -126,8 +139,8 @@ multilib_src_compile() {
 		cd examples/rlfe || die
 		local l
 		for l in readline history ; do
-			ln -s ../../shlib/lib${l}$(get_libname)* lib${l}$(get_libname)
-			ln -sf ../../lib${l}.a lib${l}.a
+			ln -s ../../shlib/lib${l}$(get_libname)* lib${l}$(get_libname) || die
+			ln -s ../../lib${l}.a lib${l}.a || die
 		done
 		emake
 	fi
@@ -146,18 +159,17 @@ multilib_src_install() {
 }
 
 multilib_src_install_all() {
-	einstalldocs
+	HTML_DOCS="doc/history.html doc/readline.html doc/rluserman.html" einstalldocs
 	dodoc USAGE
-	dohtml -r doc/.
 	docinto ps
 	dodoc doc/*.ps
 }
 pkg_preinst() {
 	# bug #29865
 	# Reappeared in #595324 with paludis so keeping this for now...
-	preserve_old_lib /$(get_libdir)/lib{history,readline}.so.{4,5,6}
+	preserve_old_lib /$(get_libdir)/lib{history,readline}.so.{4,5,6,7}
 }
 
 pkg_postinst() {
-	preserve_old_lib_notify /$(get_libdir)/lib{history,readline}.so.{4,5,6}
+	preserve_old_lib_notify /$(get_libdir)/lib{history,readline}.so.{4,5,6,7}
 }
