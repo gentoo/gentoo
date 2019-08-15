@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201908-11">
+  <title>libarchive: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in libarchive, the worst
+    of which could result in the arbitrary execution of code.
+  </synopsis>
+  <product type="ebuild">libarchive</product>
+  <announced>2019-08-15</announced>
+  <revised count="1">2019-08-15</revised>
+  <bug>631294</bug>
+  <bug>636070</bug>
+  <access>remote</access>
+  <affected>
+    <package name="app-arch/libarchive" auto="yes" arch="*">
+      <unaffected range="ge">3.3.3</unaffected>
+      <vulnerable range="lt">3.3.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>libarchive is a library for manipulating different streaming archive
+      formats, including certain tar variants, several cpio formats, and both
+      BSD and GNU ar variants.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in libarchive. Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Please review the referenced CVE identifiers for details.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All libarchive users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-arch/libarchive-3.3.3"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-14166">CVE-2017-14166</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-14501">CVE-2017-14501</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-14502">CVE-2017-14502</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-14503">CVE-2017-14503</uri>
+  </references>
+  <metadata tag="requester" timestamp="2019-08-10T17:06:02Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2019-08-15T15:49:48Z">b-man</metadata>
+</glsa>

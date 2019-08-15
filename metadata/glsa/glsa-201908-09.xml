@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201908-09">
+  <title>SQLite: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in SQLite, the worst of
+    which could result in the arbitrary execution of code.
+  </synopsis>
+  <product type="ebuild">sqlite</product>
+  <announced>2019-08-15</announced>
+  <revised count="1">2019-08-15</revised>
+  <bug>684840</bug>
+  <bug>685838</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-db/sqlite" auto="yes" arch="*">
+      <unaffected range="ge">3.28.0</unaffected>
+      <vulnerable range="lt">3.28.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>SQLite is a C library that implements an SQL database engine.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in SQLite. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A remote attacker could, by executing arbitrary SQL statements against a
+      vulnerable host, execute arbitrary code.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All SQLite users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-db/sqlite-3.28.0"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5018">CVE-2019-5018</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-9936">CVE-2019-9936</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-9937">CVE-2019-9937</uri>
+  </references>
+  <metadata tag="requester" timestamp="2019-08-09T20:49:17Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2019-08-15T15:45:09Z">b-man</metadata>
+</glsa>
