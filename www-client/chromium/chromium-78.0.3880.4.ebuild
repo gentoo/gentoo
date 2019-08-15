@@ -148,8 +148,9 @@ PATCHES=(
 	"${FILESDIR}/chromium-77-fix-gn-gen.patch"
 	"${FILESDIR}/chromium-77-system-icu.patch"
 	"${FILESDIR}/chromium-77-clang.patch"
-	"${FILESDIR}/chromium-77-std-string.patch"
 	"${FILESDIR}/chromium-77-blink-include.patch"
+	"${FILESDIR}/chromium-78-const-std-string.patch"
+	"${FILESDIR}/chromium-78-include.patch"
 )
 
 pre_build_checks() {
@@ -322,6 +323,7 @@ src_prepare() {
 		third_party/pffft
 		third_party/ply
 		third_party/polymer
+		third_party/private-join-and-compute
 		third_party/protobuf
 		third_party/protobuf/third_party/six
 		third_party/pyjson5
@@ -622,6 +624,12 @@ src_compile() {
 	use suid && eninja -C out/Release chrome_sandbox
 
 	pax-mark m out/Release/chrome
+
+	# Build manpage; bug #684550
+	sed -e 's|@@PACKAGE@@|chromium-browser|g;
+		s|@@MENUNAME@@|Chromium|g;' \
+		chrome/app/resources/manpage.1.in > \
+		out/Release/chromium-browser.1 || die
 }
 
 src_install() {
@@ -699,6 +707,9 @@ src_install() {
 	# Install GNOME default application entry (bug #303100).
 	insinto /usr/share/gnome-control-center/default-apps
 	newins "${FILESDIR}"/chromium-browser.xml chromium-browser.xml
+
+	# Install manpage; bug #684550
+	doman out/Release/chromium-browser.1
 
 	readme.gentoo_create_doc
 }
