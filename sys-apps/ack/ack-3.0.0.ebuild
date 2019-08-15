@@ -13,6 +13,7 @@ LICENSE="Artistic-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~arm ~hppa x86 ~amd64-fbsd ~amd64-linux ~x86-linux ~x86-macos"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND=">=dev-perl/File-Next-1.160.0"
 DEPEND="${RDEPEND}

@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit autotools
 
@@ -13,11 +13,10 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~hppa ~ppc64 ~x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
-DEPEND="
-	virtual/pkgconfig
-	test? ( dev-libs/check )
-"
+DEPEND="test? ( dev-libs/check )"
+BDEPEND="virtual/pkgconfig"
 
 src_prepare() {
 	local PATCHES=(

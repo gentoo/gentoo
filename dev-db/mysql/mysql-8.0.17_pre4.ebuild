@@ -6,7 +6,7 @@ MY_EXTRAS_VER="20190802-1549Z"
 
 CMAKE_MAKEFILE_GENERATOR=emake
 
-inherit cmake-utils eutils flag-o-matic linux-info \
+inherit cmake-utils flag-o-matic linux-info \
 	multiprocessing prefix toolchain-funcs
 
 MY_PV="${PV//_pre*}"
@@ -107,49 +107,11 @@ RDEPEND="${COMMON_DEPEND}
 PDEPEND="perl? ( >=dev-perl/DBD-mysql-2.9004 )"
 
 mysql_init_vars() {
-	MY_SHAREDSTATEDIR=${MY_SHAREDSTATEDIR="${EPREFIX}/usr/share/mysql"}
-	MY_SYSCONFDIR=${MY_SYSCONFDIR="${EPREFIX}/etc/mysql"}
-	MY_LOCALSTATEDIR=${MY_LOCALSTATEDIR="${EPREFIX}/var/lib/mysql"}
-	MY_LOGDIR=${MY_LOGDIR="${EPREFIX}/var/log/mysql"}
-
-	if [[ -z "${MY_DATADIR}" ]] ; then
-		MY_DATADIR=""
-		if [[ -f "${MY_SYSCONFDIR}/my.cnf" ]] ; then
-			MY_DATADIR=$(my_print_defaults mysqld 2>/dev/null \
-				| sed -ne '/datadir/s|^--datadir=||p' \
-				| tail -n1)
-
-			if [[ -z "${MY_DATADIR}" ]] ; then
-				MY_DATADIR=$(grep ^datadir "${MY_SYSCONFDIR}/my.cnf" \
-				| sed -e 's/.*=\s*//' \
-				| tail -n1)
-			fi
-		fi
-
-		if [[ -z "${MY_DATADIR}" ]] ; then
-			MY_DATADIR="${MY_LOCALSTATEDIR}"
-			einfo "Using default MY_DATADIR"
-		fi
-		elog "MySQL MY_DATADIR is ${MY_DATADIR}"
-
-		if [[ -z "${PREVIOUS_DATADIR}" ]] ; then
-			if [[ -e "${MY_DATADIR}" ]] ; then
-				# If you get this and you're wondering about it, see bug #207636
-				elog "MySQL datadir found in ${MY_DATADIR}"
-				elog "A new one will not be created."
-				PREVIOUS_DATADIR="yes"
-			else
-				PREVIOUS_DATADIR="no"
-			fi
-			export PREVIOUS_DATADIR
-		fi
-	else
-		if [[ ${EBUILD_PHASE} == "config" ]] ; then
-			MY_DATADIR=$(my_print_defaults mysqld 2>/dev/null \
-				| sed -ne '/datadir/s|^--datadir=||p' \
-				| tail -n1)
-		fi
-	fi
+	: ${MY_SHAREDSTATEDIR="${EPREFIX}/usr/share/mysql"}
+	: ${MY_SYSCONFDIR="${EPREFIX}/etc/mysql"}
+	: ${MY_LOCALSTATEDIR="${EPREFIX}/var/lib/mysql"}
+	: ${MY_LOGDIR="${EPREFIX}/var/log/mysql"}
+	MY_DATADIR="${MY_LOCALSTATEDIR}"
 
 	export MY_SHAREDSTATEDIR MY_SYSCONFDIR
 	export MY_LOCALSTATEDIR MY_LOGDIR
@@ -500,7 +462,7 @@ src_install() {
 	# testsuite. It DOES have a use to be installed, esp. when you want to do a
 	# validation of your database configuration after tuning it.
 	if ! use test ; then
-		rm -rf "${D}/${MY_SHAREDSTATEDIR}/mysql-test"
+		rm -rf "${ED}/${MY_SHAREDSTATEDIR#${EPREFIX}}/mysql-test"
 	fi
 
 	# Configuration stuff
@@ -556,7 +518,8 @@ pkg_postinst() {
 	mysql_init_vars
 
 	# Create log directory securely if it does not exist
-	[[ -d "${EROOT}/${MY_LOGDIR#/}" ]] || install -d -m0750 -o mysql -g mysql "${EROOT}/${MY_LOGDIR#/}"
+	# NOTE: $MY_LOGDIR contains $EPREFIX by default
+	[[ -d "${MY_LOGDIR}" ]] || install -d -m0750 -o mysql -g mysql "${MY_LOGDIR}"
 
 	# Note about configuration change
 	einfo
@@ -598,11 +561,38 @@ pkg_config() {
 		die "'${my_print_defaults_binary}' not found! Please re-install dev-db/mysql-connector-c!"
 	fi
 
+	if [[ -z "${MYSQL_USER}" ]] ; then
+		MYSQL_USER=mysql
+		if use prefix ; then
+			MYSQL_USER=$(id -u -n 2>/dev/null)
+			if [[ -z "${MYSQL_USER}" ]] ; then
+				die "Failed to determine current username!"
+			fi
+		fi
+	fi
+
+	if [[ -z "${MYSQL_GROUP}" ]] ; then
+		MYSQL_GROUP=mysql
+		if use prefix ; then
+			MYSQL_GROUP=$(id -g -n 2>/dev/null)
+			if [[ -z "${MYSQL_GROUP}" ]] ; then
+				die "Failed to determine current user groupname!"
+			fi
+		fi
+	fi
+
+	einfo "Will use username '${MYSQL_USER}' and group '${MYSQL_GROUP}' ..."
+
 	_getoptval() {
 		local section="$1"
 		local flag="--${2}="
 		local extra_options="${3}"
-		local results=( $("${my_print_defaults_binary}" ${extra_options} ${section} | sed -n "/^${flag}/s,${flag},,gp") )
+		local cmd=(
+			"${my_print_defaults_binary}"
+			"${extra_options}"
+			"${section}"
+		)
+		local results=( $(eval "${cmd[@]}" 2>/dev/null | sed -n "/^${flag}/s,${flag},,gp") )
 
 		if [[ ${#results[@]} -gt 0 ]] ; then
 			# When option is set multiple times only return last value
@@ -610,13 +600,61 @@ pkg_config() {
 		fi
 	}
 
-	local old_MY_DATADIR="${MY_DATADIR}"
-	local old_HOME="${HOME}"
+	_mktemp_dry() {
+		# emktemp has no --dry-run option
+		local template="${1}"
+
+		if [[ -z "${template}" ]] ; then
+			if [[ -z "${T}" ]] ; then
+				template="/tmp/XXXXXXX"
+			else
+				template="${T}/XXXXXXX"
+			fi
+		fi
+
+		local template_wo_X=${template//X/}
+		local n_X
+		let n_X=${#template}-${#template_wo_X}
+		if [[ ${n_X} -lt 3 ]] ; then
+			echo "${FUNCNAME[0]}: too few X's in template ‘${template}’" >&2
+			return
+		fi
+
+		local attempts=0
+		local character tmpfile
+		while [[ true ]] ; do
+			let attempts=attempts+1
+
+			new_file=
+			while read -n1 character ; do
+				if [[ "${character}" == "X" ]] ; then
+					tmpfile+="${RANDOM:0:1}"
+				else
+					tmpfile+="${character}"
+				fi
+			done < <(echo -n "${template}")
+
+			if [[ ! -f "${tmpfile}" ]]
+			then
+				echo "${tmpfile}"
+				return
+			fi
+
+			if [[ ${attempts} -ge 100 ]] ; then
+				echo "${FUNCNAME[0]}: Cannot create temporary file after 100 attempts." >&2
+				return
+			fi
+		done
+	}
+
 	# my_print_defaults needs to read stuff in $HOME/.my.cnf
 	local -x HOME="${EROOT}/root"
 
 	# Make sure the vars are correctly initialized
 	mysql_init_vars
+
+	# Read currently set data directory
+	MY_DATADIR="$(_getoptval mysqld datadir "--defaults-file='${MY_SYSCONFDIR}/my.cnf'")"
 
 	# Bug #213475 - MySQL _will_ object strenously if your machine is named
 	# localhost. Also causes weird failures.
@@ -624,19 +662,19 @@ pkg_config() {
 
 	if [[ -z "${MY_DATADIR}" ]] ; then
 		die "Sorry, unable to find MY_DATADIR!"
-	elif [[ -d "${EROOT}/${MY_DATADIR#/}/mysql" ]] ; then
-		ewarn "Looks like your data directory '${EROOT}/${MY_DATADIR#/}' is already initialized!"
+	elif [[ -d "${MY_DATADIR}/mysql" ]] ; then
+		ewarn "Looks like your data directory '${MY_DATADIR}' is already initialized!"
 		ewarn "Please rename or delete its content if you wish to initialize a new data directory."
-		die "${PN} data directory at '${EROOT}/${MY_DATADIR#/}' looks already initialized!"
+		die "${PN} data directory at '${MY_DATADIR}' looks already initialized!"
 	else
-		einfo "${PN} data directory detected as '${EROOT}/${MY_DATADIR#/}' ..."
+		einfo "${PN} data directory detected as '${MY_DATADIR}' ..."
 	fi
 
-	MYSQL_TMPDIR="$(_getoptval mysqld tmpdir)"
+	MYSQL_TMPDIR="$(_getoptval mysqld tmpdir "--defaults-file='${MY_SYSCONFDIR}/my.cnf'")"
 	# These are dir+prefix
-	MYSQL_LOG_BIN="$(_getoptval mysqld log-bin)"
+	MYSQL_LOG_BIN="$(_getoptval mysqld log-bin "--defaults-file='${MY_SYSCONFDIR}/my.cnf'")"
 	MYSQL_LOG_BIN=${MYSQL_LOG_BIN%/*}
-	MYSQL_RELAY_LOG="$(_getoptval mysqld relay-log)"
+	MYSQL_RELAY_LOG="$(_getoptval mysqld relay-log "--defaults-file='${MY_SYSCONFDIR}/my.cnf'")"
 	MYSQL_RELAY_LOG=${MYSQL_RELAY_LOG%/*}
 
 	# Create missing directories.
@@ -646,79 +684,129 @@ pkg_config() {
 	PID_DIR="${EROOT}/run/mysqld"
 	if [[ ! -d "${PID_DIR}" ]] ; then
 		einfo "Creating ${PN} PID directory '${PID_DIR}' ..."
-		install -d -m 755 -o mysql -g mysql "${PID_DIR}" \
+		install -d -m 755 -o ${MYSQL_USER} -g ${MYSQL_GROUP} "${PID_DIR}" \
 			|| die "Failed to create PID directory '${PID_DIR}'!"
 	fi
 
-	local _pid_dir_testfile="$(mktemp --dry-run "${PID_DIR}/.pkg_config-access-test.XXXXXXXXX")"
-	su -s /bin/sh -c "touch ${_pid_dir_testfile}" mysql &>/dev/null
+	local _pid_dir_testfile="$(_mktemp_dry "${PID_DIR}/.pkg_config-access-test.XXXXXXXXX")"
+	[[ -z "${_pid_dir_testfile}" ]] \
+		&& die "_mktemp_dry() for '${PID_DIR}/.pkg_config-access-test.XXXXXXXXX' failed!"
+
+	if use prefix ; then
+		touch "${_pid_dir_testfile}" &>/dev/null
+	else
+		su -s /bin/sh -c "touch ${_pid_dir_testfile}" ${MYSQL_USER} &>/dev/null
+	fi
+
 	if [[ $? -ne 0 ]] ; then
-		die "mysql user cannot write into PID dir '${PID_DIR}'!"
+		die "${MYSQL_USER} user cannot write into PID dir '${PID_DIR}'!"
 	else
 		rm "${_pid_dir_testfile}" || die
 		unset _pid_dir_testfile
 	fi
 
-	if [[ ! -d "${EROOT}/${MY_DATADIR#/}" ]] ; then
-		einfo "Creating ${PN} data directory '${EROOT}/${MY_DATADIR#/}' ..."
-		install -d -m 770 -o mysql -g mysql "${EROOT}/${MY_DATADIR#/}" \
-			|| die "Failed to create ${PN} data directory '${EROOT}/${MY_DATADIR#/}'!"
+	if [[ ! -d "${MY_DATADIR}" ]] ; then
+		einfo "Creating ${PN} data directory '${MY_DATADIR}' ..."
+		install -d -m 770 -o ${MYSQL_USER} -g ${MYSQL_GROUP} "${MY_DATADIR}" \
+			|| die "Failed to create ${PN} data directory '${MY_DATADIR}'!"
 	fi
 
-	local _my_datadir_testfile="$(mktemp --dry-run "${EROOT}/${MY_DATADIR#/}/.pkg_config-access-test.XXXXXXXXX")"
-	su -s /bin/sh -c "touch '${_my_datadir_testfile}'" mysql &>/dev/null
+	local _my_datadir_testfile="$(_mktemp_dry "${MY_DATADIR}/.pkg_config-access-test.XXXXXXXXX")"
+	[[ -z "${_my_datadir_testfile}" ]] \
+		&& die "_mktemp_dry() for '${MY_DATADIR}/.pkg_config-access-test.XXXXXXXXX' failed!"
+
+	if use prefix ; then
+		touch "${_my_datadir_testfile}" &>/dev/null
+	else
+		su -s /bin/sh -c "touch ${_my_datadir_testfile}" ${MYSQL_USER} &>/dev/null
+	fi
+
 	if [[ $? -ne 0 ]]; then
-		die "mysql user cannot write into data directory '${EROOT}/${MY_DATADIR#/}'!"
+		die "${MYSQL_USER} user cannot write into data directory '${MY_DATADIR}'!"
 	else
 		rm "${_my_datadir_testfile}" || die
 		unset _my_datadir_testfile
 	fi
 
-	if [[ -n "${MYSQL_TMPDIR}" && ! -d "${EROOT}/${MYSQL_TMPDIR#/}" ]] ; then
-		einfo "Creating ${PN} tmpdir '${EROOT}/${MYSQL_TMPDIR#/}' ..."
-		install -d -m 770 -o mysql -g mysql "${EROOT}/${MYSQL_TMPDIR#/}" \
-			|| die "Failed to create ${PN} tmpdir '${EROOT}/${MYSQL_TMPDIR#/}'!"
+	if [[ -n "${MYSQL_TMPDIR}" && ! -d "${MYSQL_TMPDIR}" ]] ; then
+		einfo "Creating ${PN} tmpdir '${MYSQL_TMPDIR}' ..."
+		install -d -m 770 -o ${MYSQL_USER} -g ${MYSQL_GROUP} "${MYSQL_TMPDIR}" \
+			|| die "Failed to create ${PN} tmpdir '${MYSQL_TMPDIR}'!"
 	fi
 
 	if [[ -n "${MYSQL_TMPDIR}" ]] ; then
-		local _my_tmpdir_testfile="$(mktemp --dry-run "${EROOT}/${MYSQL_TMPDIR#/}/.pkg_config-access-test.XXXXXXXXX")"
-		su -s /bin/sh -c "touch '${_my_tmpdir_testfile}'" mysql &>/dev/null
+		local _my_tmpdir_testfile="$(_mktemp_dry "${MYSQL_TMPDIR}/.pkg_config-access-test.XXXXXXXXX")"
+		[[ -z "${_my_tmpdir_testfile}" ]] \
+			&& die "_mktemp_dry() for '${MYSQL_TMPDIR}/.pkg_config-access-test.XXXXXXXXX' failed!"
+
+		if use prefix ; then
+			touch "${_my_tmpdir_testfile}" &>/dev/null
+		else
+			su -s /bin/sh -c "touch ${_my_tmpdir_testfile}" ${MYSQL_USER} &>/dev/null
+		fi
+
 		if [[ $? -ne 0 ]]; then
-			die "mysql user cannot write into data directory '${EROOT}/${MYSQL_TMPDIR#/}'!"
+			die "${MYSQL_USER} user cannot write into data directory '${MYSQL_TMPDIR}'!"
 		else
 			rm "${_my_tmpdir_testfile}" || die
 			unset _my_tmpdir_testfile
 		fi
+	else
+		# If no tmpdir is set, mysqld will use default system tmpdir.
+		# However, we are using tmpdir from package manager at the
+		# moment which maybe isn't writeable for $MYSQL_USER...
+		MYSQL_TMPDIR="$(_mktemp_dry "${T}/mysqld-tmp.XXXXXXXXX")"
+		[[ -z "${MYSQL_TMPDIR}" ]] \
+			&& die "_mktemp_dry() for '${MYSQL_TMPDIR}' failed!"
+
+		mkdir "${MYSQL_TMPDIR}" || die
+		chown ${MYSQL_USER} "${MYSQL_TMPDIR}" || die
 	fi
 
-	if [[ -n "${MYSQL_LOG_BIN}" && ! -d "${EROOT}/${MYSQL_LOG_BIN#/}" ]] ; then
-		einfo "Creating ${PN} log-bin directory '${EROOT}/${MYSQL_LOG_BIN}' ..."
-		install -d -m 770 -o mysql -g mysql "${EROOT}/${MYSQL_LOG_BIN}" \
-			|| die "Failed to create ${PN} log-bin directory '${EROOT}/${MYSQL_LOG_BIN}'"
+	if [[ -n "${MYSQL_LOG_BIN}" && ! -d "${MYSQL_LOG_BIN}" ]] ; then
+		einfo "Creating ${PN} log-bin directory '${MYSQL_LOG_BIN}' ..."
+		install -d -m 770 -o ${MYSQL_USER} -g ${MYSQL_GROUP} "${MYSQL_LOG_BIN}" \
+			|| die "Failed to create ${PN} log-bin directory '${MYSQL_LOG_BIN}'"
 	fi
 
 	if [[ -n "${MYSQL_LOG_BIN}" ]] ; then
-		local _my_logbin_testfile="$(mktemp --dry-run "${EROOT}/${MYSQL_LOG_BIN#/}/.pkg_config-access-test.XXXXXXXXX")"
-		su -s /bin/sh -c "touch '${_my_logbin_testfile}'" mysql &>/dev/null
+		local _my_logbin_testfile="$(_mktemp_dry "${MYSQL_LOG_BIN}/.pkg_config-access-test.XXXXXXXXX")"
+		[[ -z "${_my_logbin_testfile}" ]] \
+			&& die "_mktemp_dry() for '${MYSQL_LOG_BIN}/.pkg_config-access-test.XXXXXXXXX' failed!"
+
+		if use prefix ; then
+			touch "${_my_logbin_testfile}" &>/dev/null
+		else
+			su -s /bin/sh -c "touch ${_my_logbin_testfile}" ${MYSQL_USER} &>/dev/null
+		fi
+
 		if [[ $? -ne 0 ]]; then
-			die "mysql user cannot write into data directory '${EROOT}/${MYSQL_LOG_BIN#/}'!"
+			die "${MYSQL_USER} user cannot write into log-bin directory '${MYSQL_LOG_BIN}'!"
 		else
 			rm "${_my_logbin_testfile}" || die
 			unset _my_logbin_testfile
 		fi
 	fi
 
-	if [[ -n "${MYSQL_RELAY_LOG}" && ! -d "${EROOT}/${MYSQL_RELAY_LOG#/}" ]] ; then
-		einfo "Creating ${PN} relay-log directory '${EROOT}/${MYSQL_RELAY_LOG#/}' ..."
-		install -d -m 770 -o mysql -g mysql "${EROOT}/${MYSQL_RELAY_LOG#/}" \
-			|| die "Failed to create ${PN} relay-log directory '${EROOT}/${MYSQL_RELAY_LOG#/}'!"
+	if [[ -n "${MYSQL_RELAY_LOG}" && ! -d "${MYSQL_RELAY_LOG}" ]] ; then
+		einfo "Creating ${PN} relay-log directory '${MYSQL_RELAY_LOG}' ..."
+		install -d -m 770 -o ${MYSQL_USER} -g ${MYSQL_GROUP} "${MYSQL_RELAY_LOG}" \
+			|| die "Failed to create ${PN} relay-log directory '${MYSQL_RELAY_LOG}'!"
 	fi
 
 	if [[ -n "${MYSQL_RELAY_LOG}" ]] ; then
-		local _my_relaylog_testfile="$(mktemp --dry-run "${EROOT}/${MYSQL_RELAY_LOG#/}/.pkg_config-access-test.XXXXXXXXX")"
-		su -s /bin/sh -c "touch '${_my_relaylog_testfile}'" mysql &>/dev/null
+		local _my_relaylog_testfile="$(_mktemp_dry "${MYSQL_RELAY_LOG}/.pkg_config-access-test.XXXXXXXXX")"
+		[[ -z "${_my_relaylog_testfile}" ]] \
+			&& die "_mktemp_dry() for '${MYSQL_RELAY_LOG}/.pkg_config-access-test.XXXXXXXXX' failed!"
+
+		if use prefix ; then
+			touch "${_my_relaylog_testfile}" &>/dev/null
+		else
+			su -s /bin/sh -c "touch ${_my_relaylog_testfile}" ${MYSQL_USER} &>/dev/null
+		fi
+
 		if [[ $? -ne 0 ]]; then
-			die "mysql user cannot write into data directory '${EROOT}/${MYSQL_RELAY_LOG#/}'!"
+			die "${MYSQL_USER} user cannot write into relay-log directory '${MYSQL_RELAY_LOG}'!"
 		else
 			rm "${_my_relaylog_testfile}" || die
 			unset _my_relaylog_testfile
@@ -743,7 +831,7 @@ pkg_config() {
 
 	if [[ ${#config_files[@]} -gt 0 ]] ; then
 		if [[ -z "${MYSQL_DEFAULT_AUTHENTICATION_PLUGIN}" ]] ; then
-			local tmp_mysql_default_authentication_plugin
+			local user_answer
 
 			echo
 			einfo "Please select default authentication plugin (enter number or plugin name):"
@@ -752,10 +840,10 @@ pkg_config() {
 			einfo
 			einfo "For details see:"
 			einfo "https://dev.mysql.com/doc/refman/8.0/en/upgrading-from-previous-series.html#upgrade-caching-sha2-password"
-			read -p "    >" tmp_mysql_default_authentication_plugin
+			read -p "    >" user_answer
 			echo
 
-			case "${tmp_mysql_default_authentication_plugin}" in
+			case "${user_answer}" in
 				1|caching_sha2_password)
 					MYSQL_DEFAULT_AUTHENTICATION_PLUGIN=caching_sha2_password
 					;;
@@ -766,9 +854,11 @@ pkg_config() {
 					die "No authentication plugin selected!"
 					;;
 				*)
-					die "Authentication plugin '${tmp_mysql_default_authentication_plugin}' is unknown/unsupported!"
+					die "Authentication plugin '${user_answer}' is unknown/unsupported!"
 					;;
 			esac
+
+			unset user_answer
 		fi
 
 		local cfg_option cfg_option_tabs cfg_section
@@ -880,11 +970,11 @@ pkg_config() {
 		die "mysql_tzinfo_to_sql failed!"
 	fi
 
-	chown mysql "${tz_sql}" || die
+	chown ${MYSQL_USER} "${tz_sql}" || die
 
 	local mysql_install_log="${TMPDIR}/mysql_install_db.log"
 	touch "${mysql_install_log}" || die
-	chown mysql "${mysql_install_log}" || die
+	chown ${MYSQL_USER} "${mysql_install_log}" || die
 
 	# --initialize-insecure will not set root password
 	# --initialize would set a random one in the log which we don't need as we set it ourselves
@@ -894,17 +984,17 @@ pkg_config() {
 		"--initialize-insecure"
 		"--init-file='${tz_sql}'"
 		"--basedir='${EROOT}/usr'"
-		"--datadir='${EROOT}/${MY_DATADIR#/}'"
-		"--tmpdir='${EROOT}/${MYSQL_TMPDIR#/}'"
+		"--datadir='${MY_DATADIR}'"
+		"--tmpdir='${MYSQL_TMPDIR}'"
 		"--log-error='${mysql_install_log}'"
+		"--user=${MYSQL_USER}"
 	)
 
 	einfo "Initializing ${PN} data directory: ${cmd[@]}"
-	su -s /bin/sh -c "${cmd[*]}" mysql \
-		>>"${mysql_install_log}" 2>&1
+	eval "${cmd[@]}" >>"${mysql_install_log}" 2>&1
 
-	if [[ $? -ne 0 || ! -f "${EROOT}/${MY_DATADIR#/}/mysql.ibd" ]] ; then
-		grep -B5 -A999 -iE "(Aborting|ERROR|errno)" "${mysql_install_log}"
+	if [[ $? -ne 0 || ! -f "${MY_DATADIR}/mysql.ibd" ]] ; then
+		grep -B5 -A999 -iE "(Aborting|ERROR|errno)" "${mysql_install_log}" 1>&2
 		die "Failed to initialize ${PN} data directory. Please review '${mysql_install_log}'!"
 	fi
 
@@ -915,24 +1005,24 @@ pkg_config() {
 
 	local mysqld_logfile="${TMPDIR}/mysqld.log"
 	touch "${mysqld_logfile}" || die
-	chown mysql "${mysqld_logfile}" || die
+	chown ${MYSQL_USER} "${mysqld_logfile}" || die
 
 	cmd=(
 		"${mysqld_binary}"
 		"${mysqld_options[@]}"
 		"--basedir='${EROOT}/usr'"
-		"--datadir='${EROOT}/${MY_DATADIR#/}'"
+		"--datadir='${MY_DATADIR}'"
+		"--tmpdir='${MYSQL_TMPDIR}'"
 		--max_allowed_packet=8M
 		--net_buffer_length=16K
 		"--socket='${socket}'"
 		"--pid-file='${pidfile}'"
-		"--tmpdir='${EROOT}/${MYSQL_TMPDIR#/}'"
 		"--log-error='${mysqld_logfile}'"
+		"--user=${MYSQL_USER}"
 	)
 
 	einfo "Starting mysqld to finalize initialization: ${cmd[@]}"
-	su -s /bin/sh -c "${cmd[*]} &" mysql \
-		>>"${mysqld_logfile}" 2>&1
+	eval "${cmd[@]}" >>"${mysqld_logfile}" 2>&1 &
 
 	echo -n "Waiting for mysqld to accept connections "
 	local maxtry=15
@@ -956,7 +1046,7 @@ pkg_config() {
 	echo
 
 	if [[ ! -S "${socket}" ]] ; then
-		grep -B5 -A999 -iE "(Aborting|ERROR|errno)" "${mysqld_logfile}"
+		grep -B5 -A999 -iE "(Aborting|ERROR|errno)" "${mysqld_logfile}" 1>&2
 		die "mysqld was unable to start from initialized data directory. Please review '${mysqld_logfile}'!"
 	fi
 
@@ -1008,5 +1098,5 @@ pkg_config() {
 		fi
 	fi
 
-	einfo "${PN} data directory at '${EROOT}/${MY_DATADIR#/}' successfully initialized!"
+	einfo "${PN} data directory at '${MY_DATADIR}' successfully initialized!"
 }
