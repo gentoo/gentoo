@@ -5,4 +5,7 @@
 		<email>kde@gentoo.org</email>
 		<name>Gentoo KDE Project</name>
 	</maintainer>
+	<use>
+		<flag name="barcode">Enable support for PDF417 and Aztec barcode decoding using <pkg>media-libs/zxing-cpp</pkg></flag>
+	</use>
 </pkgmetadata>
