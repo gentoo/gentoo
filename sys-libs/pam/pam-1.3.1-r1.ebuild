@@ -81,21 +81,7 @@ multilib_src_install() {
 	emake DESTDIR="${D}" install \
 		sepermitlockdir="${EPREFIX}/run/sepermit"
 
-	local prefix
-	if multilib_is_native_abi; then
-		prefix=
-		gen_usr_ldscript -a pam pamc pam_misc
-	else
-		prefix=/usr
-	fi
-
-	# create extra symlinks just in case something depends on them...
-	local lib
-	for lib in pam pamc pam_misc; do
-		if ! [[ -f "${ED}"${prefix}/$(get_libdir)/lib${lib}$(get_libname) ]]; then
-			dosym lib${lib}$(get_libname 0) ${prefix}/$(get_libdir)/lib${lib}$(get_libname)
-		fi
-	done
+	gen_usr_ldscript -a pam pam_misc pamc
 }
 
 multilib_src_install_all() {
