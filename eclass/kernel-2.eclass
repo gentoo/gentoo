@@ -191,9 +191,7 @@
 # If you do change them, there is a chance that we will not fix resulting bugs;
 # that of course does not mean we're not willing to help.
 
-PYTHON_COMPAT=( python{2_6,2_7} )
-
-inherit toolchain-funcs python-any-r1
+inherit toolchain-funcs
 [[ ${EAPI:-0} == [012345] ]] && inherit epatch
 [[ ${EAPI:-0} == [0123456] ]] && inherit estack eapi7-ver
 case ${EAPI:-0} in
@@ -621,6 +619,10 @@ if [[ ${ETYPE} == sources ]]; then
 				kernel_is le 2 6 ${DEBLOB_MAX_VERSION} && \
 					K_DEBLOB_AVAILABLE=1
 		if [[ ${K_DEBLOB_AVAILABLE} == "1" ]] ; then
+			PYTHON_COMPAT=( python2_7 )
+
+			inherit python-any-r1
+
 			IUSE="${IUSE} deblob"
 
 			# Reflect that kernels contain firmware blobs unless otherwise
