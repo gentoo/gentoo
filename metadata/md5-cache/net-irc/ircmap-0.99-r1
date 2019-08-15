@@ -1,0 +1,11 @@
+BDEPEND=media-gfx/graphviz dev-lang/perl >=sys-apps/sed-4
+DEFINED_PHASES=compile install postinst
+DESCRIPTION=Scripts to treate diagrams of IRC networks using the LINKS command
+EAPI=7
+HOMEPAGE=http://pasky.or.cz/irc/
+KEYWORDS=~amd64 x86
+LICENSE=GPL-2
+RDEPEND=media-gfx/graphviz dev-lang/perl
+SLOT=0
+SRC_URI=http://pasky.or.cz/irc/ircmap.tar.gz -> ircmap-0.99.tar.gz
+_md5_=db48af10913709b5cd263d706801455b

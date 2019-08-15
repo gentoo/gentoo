@@ -14970,7 +14970,7 @@ net-irc/ii 1.7-r1 1.8 9999: A minimalist FIFO and filesystem-based IRC client
 net-irc/inspircd 2.0.25 2.0.27 3.2.0: Inspire IRCd - The Stable, High-Performance Modular IRCd
 net-irc/irc-server 2.11.1_p1-r4: RFC compliant IRC server
 net-irc/ircii 20110228 20111115 20170704 20190117: An IRC and ICB client that runs under most UNIX platforms
-net-irc/ircmap 0.99: Scripts to treate diagrams of IRC networks using the LINKS command
+net-irc/ircmap 0.99-r1: Scripts to treate diagrams of IRC networks using the LINKS command
 net-irc/ircstats 1.2: IRCStats is a Linux log analyzer
 net-irc/irker 2.9 2.11 2.12 2.13 2.15 2.16 2.18 2.18-r1: Submission tools for IRC notifications
 net-irc/iroffer-dinoex 3.30-r1 3.31 3.32: IRC fileserver using DCC
