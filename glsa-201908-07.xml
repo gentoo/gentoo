@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201908-07">
+  <title>KDE KConfig: User-assisted execution of arbitrary code</title>
+  <synopsis>A vulnerablity has been found in KDE KConfig that could allow a
+    remote attacker to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">kconfig</product>
+  <announced>2019-08-15</announced>
+  <revised count="1">2019-08-15</revised>
+  <bug>691858</bug>
+  <access>remote</access>
+  <affected>
+    <package name="kde-frameworks/kconfig" auto="yes" arch="*">
+      <unaffected range="ge">5.60.0-r1</unaffected>
+      <vulnerable range="lt">5.60.0-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Provides an advanced configuration system.</p>
+  </background>
+  <description>
+    <p>A vulnerability was discovered in KDE KConfig’s handling of .desktop
+      and .directory files.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>An attacker could entice a user to execute a specially crafted .desktop
+      or .directory file possibly resulting in execution of arbitrary code with
+      the privileges of the process.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All KConfig users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=kde-frameworks/kconfig-5.60.0-r1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-14744">CVE-2019-14744</uri>
+  </references>
+  <metadata tag="requester" timestamp="2019-08-09T20:56:22Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2019-08-15T15:41:03Z">b-man</metadata>
+</glsa>
