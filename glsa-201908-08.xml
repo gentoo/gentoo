@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201908-08">
+  <title>CUPS: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in CUPS, the worst of
+    which could result in the arbitrary execution of code.
+  </synopsis>
+  <product type="ebuild">cups</product>
+  <announced>2019-08-15</announced>
+  <revised count="1">2019-08-15</revised>
+  <bug>660954</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-print/cups" auto="yes" arch="*">
+      <unaffected range="ge">2.2.8</unaffected>
+      <vulnerable range="lt">2.2.8</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>CUPS, the Common Unix Printing System, is a full-featured print server.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in CUPS. Please review the
+      CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Please review the referenced CVE identifiers for details.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All CUPS users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-print/cups-2.2.8"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-15400">CVE-2017-15400</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-4180">CVE-2018-4180</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-4181">CVE-2018-4181</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-4182">CVE-2018-4182</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-4183">CVE-2018-4183</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-6553">CVE-2018-6553</uri>
+  </references>
+  <metadata tag="requester" timestamp="2019-08-10T20:43:16Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2019-08-15T15:43:11Z">b-man</metadata>
+</glsa>
