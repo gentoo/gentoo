@@ -24,6 +24,7 @@ LICENSE="BSD"
 SLOT="0/1"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 BDEPEND=""
 RDEPEND="app-i18n/opencc:0=
