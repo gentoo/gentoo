@@ -17929,7 +17929,7 @@ sys-fs/fatcat 1.0.6: FAT filesystems explore, extract, repair, and forensic tool
 sys-fs/fatresize 1.0.4: Resize FAT partitions using libparted
 sys-fs/fatsort 1.5.0: Sorts files on FAT16/32 partitions, ideal for basic audio players
 sys-fs/fragview 0.1.1 9999: Disk fragmentation visualizer based on FIEMAP and FIBMAP ioctls
-sys-fs/fuse 2.9.8 2.9.9 2.9.9-r1 3.5.0 3.6.1 3.6.2: An interface for filesystems implemented in userspace
+sys-fs/fuse 2.9.8 2.9.9 2.9.9-r1 3.6.2: An interface for filesystems implemented in userspace
 sys-fs/fuse-common 3.2.6 3.3.0-r1 3.4.1: Common files for multiple slots of sys-fs/fuse
 sys-fs/fuse-convmvfs 0.2.6-r1: FUSE file system to convert filename charset
 sys-fs/fuse-exfat 1.2.8 1.3.0: exFAT filesystem FUSE module
