@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
+CMAKE_MAKEFILE_GENERATOR="emake"
 PYTHON_COMPAT=(python2_7)
 
 inherit cmake-utils flag-o-matic python-single-r1 xdg-utils
@@ -137,6 +138,25 @@ src_configure() {
 	)
 
 	cmake-utils_src_configure
+}
+
+src_compile() {
+	cmake-utils_src_compile
+
+	if use doc; then
+		cmake-utils_src_compile devdocs
+	fi
+}
+
+src_install() {
+	cmake-utils_src_install
+
+	if use doc; then
+		(
+			docinto html
+			dodoc -r "${BUILD_DIR}/doc/api/html/"*
+		)
+	fi
 }
 
 pkg_postinst() {
