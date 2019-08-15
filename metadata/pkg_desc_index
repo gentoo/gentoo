@@ -15504,7 +15504,7 @@ net-misc/netkit-timed 0.17-r10: Netkit - timed
 net-misc/netpipe 1.0.0_beta2-r2: tool to reliably distribute binary data using UDP broadcasting techniques
 net-misc/netpipes 4.2-r2: a package to manipulate BSD TCP/IP stream sockets
 net-misc/netprofiles-ims 0.1.0134: Netprofiles Interface Management System manages network configurations
-net-misc/netsed 0.01b: Small tool for altering forwarded network data in real time
+net-misc/netsed 0.01b 0.01b-r1: Small tool for altering forwarded network data in real time
 net-misc/netstat-nat 1.4.10: Display NAT connections
 net-misc/networkmanager 1.16.0 1.16.2 1.18.2: A set of co-operative tools that make networking simple and straightforward
 net-misc/networkmanager-wireguard 9999: NetworkManager WireGuard plugin
@@ -15953,7 +15953,7 @@ net-wireless/rtl_433 0.1_p20190709-r1 9999: Decode OOK modulated signals
 net-wireless/rtl_power_fftw 0.0_p20180528 9999: power spectrum for RTLSDR dongles
 net-wireless/sdrplay 2.13.1-r1: SDRplay API/HW driver for all RSPs
 net-wireless/soapy_power 1.6.1-r1 9999: Obtain power spectrum from SoapySDR devices
-net-wireless/soapybladerf 0.3.5-r2 0.3.5_p20180908-r1 0.4.0 9999: Soapy SDR plugin for the Blade RF
+net-wireless/soapybladerf 0.3.5_p20180908-r1 0.4.0 9999: Soapy SDR plugin for the Blade RF
 net-wireless/soapyhackrf 0.3.3-r1 9999: SoapySDR HackRF module
 net-wireless/soapyplutosdr 0.0_p20180825-r1 0.1.0 9999: Soapy SDR plugin for the Pluto SDR
 net-wireless/soapyremote 0.5.0 9999: Soapy SDR remote module

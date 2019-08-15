@@ -6,5 +6,5 @@ KEYWORDS=~alpha amd64 ~ia64 ~ppc ~ppc64 ~sparc x86 ~x86-fbsd
 LICENSE=GPL-2 FVWM
 RDEPEND=>=x11-wm/fvwm-2.6.2
 SLOT=0
-SRC_URI=http://www.fvwm.org/generated/icon_download/fvwm_icons.tar.bz2
-_md5_=64ae64b39392388011437c2b82e03b31
+SRC_URI=mirror://gentoo/fvwm_icons.tar.bz2 -> fvwm_icons-1.0.tar.bz2
+_md5_=6abaa51e94293df639d58a27f0c6db07
