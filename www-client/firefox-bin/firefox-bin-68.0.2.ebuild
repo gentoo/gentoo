@@ -105,11 +105,6 @@ src_install() {
 	sed -i -e "s:@NAME@:${name}:" -e "s:@ICON@:${icon}:" \
 		"${ED}usr/share/applications/${PN}.desktop" || die
 
-	# Add StartupNotify=true bug 237317
-	if use startup-notification; then
-		echo "StartupNotify=true" >> "${ED}"usr/share/applications/${PN}.desktop
-	fi
-
 	# Install firefox in /opt
 	dodir ${MOZILLA_FIVE_HOME%/*}
 	mv "${S}" "${ED}"${MOZILLA_FIVE_HOME} || die
