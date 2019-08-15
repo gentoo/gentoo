@@ -1,9 +1,9 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_5,3_6} )
+PYTHON_COMPAT=( python2_7 python3_{5,6} )
 PYTHON_REQ_USE="threads,xml"
 
 # 14 and 15 spit out a lot of warnings about subdirs
@@ -14,16 +14,13 @@ inherit autotools linux-info python-single-r1 readme.gentoo-r1 udev
 DESCRIPTION="HP Linux Imaging and Printing - Print, scan, fax drivers and service tools"
 HOMEPAGE="https://developers.hp.com/hp-linux-imaging-and-printing"
 SRC_URI="mirror://sourceforge/hplip/${P}.tar.gz
-		https://dev.gentoo.org/~billie/distfiles/${PN}-3.18.3-patches-2.tar.xz"
+		https://dev.gentoo.org/~billie/distfiles/${PN}-3.18.12-patches-1.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 arm ppc ppc64 x86"
 
-IUSE="doc fax +hpcups hpijs kde libressl -libusb0 minimal parport policykit qt5 scanner +snmp static-ppds X"
-
-# dependency on dev-python/notify-python dropped due to python 3 incompatibility
-# possible replacement notify2 (https://pypi.org/project/notify2/0.3) not in tree
+IUSE="doc fax +hpcups hpijs kde libnotify libressl -libusb0 minimal parport policykit qt5 scanner +snmp static-ppds X"
 
 COMMON_DEPEND="
 	net-print/cups
@@ -42,10 +39,14 @@ COMMON_DEPEND="
 		)
 	)
 "
-DEPEND="${COMMON_DEPEND}
+BDEPEND="
 	virtual/pkgconfig
 "
-RDEPEND="${COMMON_DEPEND}
+DEPEND="
+	${COMMON_DEPEND}
+"
+RDEPEND="
+	${COMMON_DEPEND}
 	app-text/ghostscript-gpl
 	!minimal? (
 		>=dev-python/dbus-python-1.2.0-r1[${PYTHON_USEDEP}]
@@ -53,15 +54,20 @@ RDEPEND="${COMMON_DEPEND}
 		$(python_gen_cond_dep 'dev-python/pygobject:3[${PYTHON_USEDEP}]' 'python3*')
 		fax? ( dev-python/reportlab[${PYTHON_USEDEP}] )
 		kernel_linux? ( virtual/udev )
-		qt5? ( >=dev-python/PyQt5-5.5.1[dbus,gui,widgets,${PYTHON_USEDEP}] )
+		qt5? (
+			>=dev-python/PyQt5-5.5.1[dbus,gui,widgets,${PYTHON_USEDEP}]
+			libnotify? ( dev-python/notify2[${PYTHON_USEDEP}] )
+		)
 		scanner? (
 			>=dev-python/reportlab-3.2[${PYTHON_USEDEP}]
 			>=dev-python/pillow-3.1.1[${PYTHON_USEDEP}]
-			X? ( || (
-				kde? ( kde-misc/skanlite )
-				media-gfx/xsane
-				media-gfx/sane-frontends
-			) )
+			X? (
+				|| (
+					kde? ( kde-misc/skanlite )
+					media-gfx/xsane
+					media-gfx/sane-frontends
+				)
+			)
 		)
 	)
 	policykit? ( sys-auth/polkit )
@@ -239,7 +245,7 @@ src_install() {
 
 	# Installed by sane-backends
 	# Gentoo Bug: https://bugs.gentoo.org/show_bug.cgi?id=201023
-	rm -f "${ED%/}"/etc/sane.d/dll.conf || die
+	rm -f "${ED}"/etc/sane.d/dll.conf || die
 
 	# Remove desktop and autostart files
 	# Gentoo Bug: https://bugs.gentoo.org/show_bug.cgi?id=638770
@@ -247,17 +253,17 @@ src_install() {
 		rm -Rf "${ED}"/usr/share/applications "${ED}"/etc/xdg
 	}
 
-	rm -f "${ED%/}"/usr/share/doc/${PF}/{copyright,README_LIBJPG,COPYING} || die
-	rmdir --ignore-fail-on-non-empty "${ED%/}"/usr/share/doc/${PF}/ || die
+	rm -f "${ED}"/usr/share/doc/${PF}/{copyright,README_LIBJPG,COPYING} || die
+	rmdir --ignore-fail-on-non-empty "${ED}"/usr/share/doc/${PF}/ || die
 
 	# Remove hal fdi files
-	rm -rf "${ED%/}"/usr/share/hal || die
+	rm -rf "${ED}"/usr/share/hal || die
 
 	find "${D}" -name '*.la' -delete || die
 
 	if use !minimal ; then
 		python_export EPYTHON PYTHON
-		python_optimize "${ED%/}"/usr/share/hplip
+		python_optimize "${ED}"/usr/share/hplip
 	fi
 
 	readme.gentoo_create_doc
