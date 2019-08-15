@@ -87,7 +87,7 @@ COMMON_DEPEND="
 	openexr? ( media-libs/openexr )
 	pdf? ( >=app-text/poppler-0.64:=[qt5] )
 	phonon? ( media-libs/phonon[qt5(+)] )
-	pim? ( $(add_kdeapps_dep kcalcore) )
+	pim? ( <kde-apps/kcalcore-19.04.50:5 )
 	spacenav? ( dev-libs/libspnav )
 	truetype? ( media-libs/freetype:2 )
 	X? (
