@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201908-19">
+  <title>GNU Wget: Arbitrary code execution</title>
+  <synopsis>A vulnerability in GNU Wget might allow an attacker to execute
+    arbitrary code.
+  </synopsis>
+  <product type="ebuild">wget</product>
+  <announced>2019-08-15</announced>
+  <revised count="1">2019-08-15</revised>
+  <bug>682994</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/wget" auto="yes" arch="*">
+      <unaffected range="ge">1.20.3</unaffected>
+      <vulnerable range="lt">1.20.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>GNU Wget is a free software package for retrieving files using HTTP,
+      HTTPS and FTP, the most widely-used Internet protocols.
+    </p>
+  </background>
+  <description>
+    <p>A buffer overflow was discovered in GNU’s Wget.</p>
+  </description>
+  <impact type="normal">
+    <p>An attacker could possibly execute arbitrary code with the privileges of
+      the process or cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All GNU Wget users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/wget-1.20.3"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5953">CVE-2019-5953</uri>
+  </references>
+  <metadata tag="requester" timestamp="2019-08-10T20:46:31Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2019-08-15T17:51:26Z">b-man</metadata>
+</glsa>
