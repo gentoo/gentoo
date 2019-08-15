@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -18,7 +18,7 @@ SLOT="0"
 KEYWORDS="alpha amd64 ~ppc x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris"
 IUSE="doc"
 
-RDEPEND="sys-libs/ncurses:0"
+RDEPEND="sys-libs/ncurses:0="
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
