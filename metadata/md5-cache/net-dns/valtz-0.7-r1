@@ -6,5 +6,5 @@ KEYWORDS=~amd64 ~x86
 LICENSE=BSD
 RDEPEND=dev-lang/perl
 SLOT=0
-SRC_URI=https://x42.com/software/valtz/valtz.tgz
-_md5_=6489d804cf748e2c336e1b91fede121c
+SRC_URI=https://x42.com/software/valtz/valtz.tgz -> valtz-0.7.tgz
+_md5_=6f42a7a2b572a5ce9914f0b4c75ab227
