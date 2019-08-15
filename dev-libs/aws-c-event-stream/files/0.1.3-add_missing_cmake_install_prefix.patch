@@ -1,0 +1,11 @@
+--- a/CMakeLists.txt	2019-09-20 08:43:35.141590222 +0200
++++ b/CMakeLists.txt	2019-09-20 08:43:48.309590263 +0200
+@@ -28,7 +28,7 @@
+ endif()
+ 
+ # This is required in order to append /lib/cmake to each element in CMAKE_PREFIX_PATH
+-set(AWS_MODULE_DIR "/${CMAKE_INSTALL_LIBDIR}/cmake")
++set(AWS_MODULE_DIR "${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}/cmake")
+ string(REPLACE ";" "${AWS_MODULE_DIR};" AWS_MODULE_PATH "${CMAKE_PREFIX_PATH}${AWS_MODULE_DIR}")
+ # Append that generated list to the module search path
+ list(APPEND CMAKE_MODULE_PATH ${AWS_MODULE_PATH})
