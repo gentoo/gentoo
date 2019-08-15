@@ -39,7 +39,10 @@ BDEPEND="dev-util/intltool"
 
 DOCS=( README.md )
 
-PATCHES=( "${FILESDIR}"/${P}-libkgapi-19.08-{1,2}.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-libkgapi-19.08-{1,2}.patch
+	"${FILESDIR}"/${P}-refresh-credentials.patch
+)
 
 src_configure() {
 	local mycmakeargs=(
