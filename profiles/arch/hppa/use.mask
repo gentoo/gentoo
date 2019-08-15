@@ -106,11 +106,6 @@ cg
 # media-libs/fdk-aac is not supported on HPPA (bug #442806)
 fdk
 
-# Jeroen Roovers <jer@gentoo.org> (2012-05-23)
-# sys-apps/gptfdisk creates partition tables incompatible with the HPPA
-# bootloader (bug #412801).
-gptfdisk
-
 # Jeroen Roovers <jer@gentoo.org> (2012-04-04)
 # media-video/vlc is not tested
 vlc

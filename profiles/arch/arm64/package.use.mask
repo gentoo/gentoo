@@ -63,7 +63,6 @@ media-video/libav -sdl
 media-video/mplayer -sdl
 media-video/mpv -sdl
 media-video/transcode -sdl
-net-libs/libvncserver -sdl
 virtual/ffmpeg -sdl
 >=x11-libs/wxGTK-3 -sdl
 
@@ -114,7 +113,6 @@ dev-python/notebook doc
 
 # Mart Raudsepp <leio@gentoo.org> (2018-05-30)
 # Require old gnome2 libraries, not keywording legacy on purpose
-<=app-editors/gvim-8.0.1699 gnome
 sys-devel/distcc gnome
 
 # Mart Raudsepp <leio@gentoo.org> (2018-05-13)

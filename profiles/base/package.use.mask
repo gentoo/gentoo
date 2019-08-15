@@ -54,11 +54,6 @@ dev-libs/weston pipewire
 sys-apps/xdg-desktop-portal screencast
 kde-plasma/xdg-desktop-portal-kde screencast
 
-# Mike Gilbert <floppym@gentoo.org> (2019-06-21)
-# Fails to build.
-# https://bugs.gentoo.org/661880
-<www-client/chromium-76 system-icu
-
 # James Le Cuirot <chewi@gentoo.org> (2019-05-21)
 # Doesn't support ffmpeg-4. Portage takes a long time to report the
 # conflict and the feature is half broken anyway. See
@@ -411,12 +406,6 @@ sys-devel/gcc vtv
 # invokes it wrong.
 dev-lang/moarvm asan
 
-# Patrice Clement <monsieurp@gentoo.org>
-# Merged on behalf of:
-# Jonathan Scruggs <j.scruggs@gmail.com> (2017-09-28)
-# Newer versions have a patch to fix the python issues.
-<=media-libs/openimageio-1.6.13 python
-
 # Ian Stakenvicius <axs@gentoo.org> (2016-04-28)
 # system-cairo support causes lots of crashing in mozilla pkgs
 # (see bug #556378 and others)
@@ -627,5 +616,3 @@ net-proxy/squid ipf-transparent pf-transparent
 # Alexis Ballier <aballier@gentoo.org> (2011-02-16)
 # Win32 specific useflag for vlc. Can be used for cross-compiling.
 media-video/vlc directx
-# Mac OSX / iPhone OS specific useflags
-media-video/vlc macosx-qtkit
