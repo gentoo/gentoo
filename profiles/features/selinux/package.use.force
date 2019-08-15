@@ -17,9 +17,3 @@ dev-lang/python xml
 # so stages can build with no interacton. Bug #527938
 sys-libs/libselinux static-libs
 dev-libs/libpcre static-libs
-
-# Jason Zaman <perfinion@gentoo.org> (2015-06-27)
-# SystemD has no support in the SELinux policy at the moment.
-# Please see: https://wiki.gentoo.org/wiki/SELinux/FAQ#Can_I_use_SELinux_with_SystemD.3F
-gnome-base/gnome-settings-daemon openrc-force
-gnome-base/gnome-shell openrc-force

@@ -47,14 +47,13 @@ media-video/ffmpeg gme ieee1394 x264
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2018-05-06)
 # sci-visualization/gnuplot is not stable.
-app-admin/sysstat isag
 sci-mathematics/octave gnuplot
 sci-libs/libqalculate gnuplot
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2018-02-12)
 # dev-libs/libical stabilisation timeout, bug #621724
 app-mobilephone/gnokii ical
-net-mail/cyrus-imapd calalarm http jmap
+net-mail/cyrus-imapd calalarm http
 net-wireless/bluez obex
 
 # Hans de Graaff <graaff@gentoo.org> (2017-11-26)

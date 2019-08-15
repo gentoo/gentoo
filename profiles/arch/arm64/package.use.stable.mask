@@ -12,7 +12,6 @@ kde-apps/kalzium solver
 # Aaron Bauman (2019-07-29)
 # app-arch/rar not supported
 kde-apps/kdeutils-meta rar
-kde-apps/ark rar
 
 # Aaron Bauman (2019-07-29)
 # deps are not stable yet

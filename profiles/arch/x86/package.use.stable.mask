@@ -26,10 +26,6 @@ dev-lang/python-exec -python_targets_python3_7
 # dev-db/oracle-instantclient ain't stable
 dev-qt/qtsql oci8
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2019-05-06)
-# media-libs/dav1d is not yet stable
-~media-video/vlc-3.0.6 dav1d
-
 # Amy Liffey <amynka@gentoo.org> (2019-01-15)
 # Mask experimental contrib repo
 media-libs/opencv contrib contrib_cvv contrib_dnn contrib_hdf contrib_sfm contrib_xfeatures2d gflags glog tesseract
