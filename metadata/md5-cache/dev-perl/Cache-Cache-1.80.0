@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install prepare test
-DEPEND=>=dev-perl/Digest-SHA1-2.20.0 >=dev-perl/Error-0.150.0 >=virtual/perl-File-Spec-0.820.0 >=dev-perl/IPC-ShareLite-0.90.0 >=virtual/perl-Storable-1.14.0 virtual/perl-ExtUtils-MakeMaker dev-lang/perl:=
+DEPEND=>=dev-perl/Digest-SHA1-2.20.0 >=dev-perl/Error-0.150.0 >=virtual/perl-File-Spec-0.820.0 >=dev-perl/IPC-ShareLite-0.90.0 >=virtual/perl-Storable-1.14.0 virtual/perl-ExtUtils-MakeMaker dev-lang/perl
 DESCRIPTION=Generic cache interface and implementations
 EAPI=6
 HOMEPAGE=https://metacpan.org/release/Cache-Cache
@@ -8,5 +8,5 @@ LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=>=dev-perl/Digest-SHA1-2.20.0 >=dev-perl/Error-0.150.0 >=virtual/perl-File-Spec-0.820.0 >=dev-perl/IPC-ShareLite-0.90.0 >=virtual/perl-Storable-1.14.0 dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/R/RJ/RJBS/Cache-Cache-1.08.tar.gz
-_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	fa19a21c943f26d9b3720dc7620b8541
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	20c90ae7e826995a597683580cdfcdcb
 _md5_=e10651734372320acd9bf9d1f2baf9c2

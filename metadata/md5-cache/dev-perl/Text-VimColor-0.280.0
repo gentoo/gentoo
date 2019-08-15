@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install prepare test
-DEPEND=app-editors/vim[-minimal] virtual/perl-Carp dev-perl/File-ShareDir virtual/perl-File-Temp virtual/perl-Getopt-Long virtual/perl-IO >=dev-perl/Path-Class-0.40.0 >=virtual/perl-Term-ANSIColor-1.30.0 virtual/perl-ExtUtils-MakeMaker >=dev-perl/File-ShareDir-Install-0.60.0 test? ( virtual/perl-Exporter virtual/perl-File-Spec dev-perl/Test-File-ShareDir >=virtual/perl-Test-Simple-0.880.0 dev-perl/XML-Parser ) dev-lang/perl:=
+DEPEND=app-editors/vim[-minimal] virtual/perl-Carp dev-perl/File-ShareDir virtual/perl-File-Temp virtual/perl-Getopt-Long virtual/perl-IO >=dev-perl/Path-Class-0.40.0 >=virtual/perl-Term-ANSIColor-1.30.0 virtual/perl-ExtUtils-MakeMaker >=dev-perl/File-ShareDir-Install-0.60.0 test? ( virtual/perl-Exporter virtual/perl-File-Spec dev-perl/Test-File-ShareDir >=virtual/perl-Test-Simple-0.880.0 dev-perl/XML-Parser ) dev-lang/perl
 DESCRIPTION=Syntax highlighting using vim
 EAPI=6
 HOMEPAGE=https://github.com/rwstauner/Text-VimColor
@@ -9,5 +9,5 @@ LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=app-editors/vim[-minimal] virtual/perl-Carp dev-perl/File-ShareDir virtual/perl-File-Temp virtual/perl-Getopt-Long virtual/perl-IO >=dev-perl/Path-Class-0.40.0 >=virtual/perl-Term-ANSIColor-1.30.0 dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/R/RW/RWSTAUNER/Text-VimColor-0.28.tar.gz
-_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	fa19a21c943f26d9b3720dc7620b8541
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	20c90ae7e826995a597683580cdfcdcb
 _md5_=77823566ae53301f1129dc32e6838be7

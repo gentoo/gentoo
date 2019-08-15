@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install prepare test
-DEPEND=virtual/perl-Carp virtual/perl-Exporter virtual/perl-Scalar-List-Utils dev-perl/Try-Tiny !minimal? ( >=dev-perl/Devel-LexAlias-0.50.0 dev-perl/Perl-Tidy ) virtual/perl-ExtUtils-MakeMaker test? ( virtual/perl-File-Spec virtual/perl-IO dev-perl/Test-Fatal dev-perl/Test-Requires >=virtual/perl-Test-Simple-0.880.0 ) dev-lang/perl:=
+DEPEND=virtual/perl-Carp virtual/perl-Exporter virtual/perl-Scalar-List-Utils dev-perl/Try-Tiny !minimal? ( >=dev-perl/Devel-LexAlias-0.50.0 dev-perl/Perl-Tidy ) virtual/perl-ExtUtils-MakeMaker test? ( virtual/perl-File-Spec virtual/perl-IO dev-perl/Test-Fatal dev-perl/Test-Requires >=virtual/perl-Test-Simple-0.880.0 ) dev-lang/perl
 DESCRIPTION=safely and cleanly create closures via string eval
 EAPI=6
 HOMEPAGE=https://metacpan.org/release/Eval-Closure
@@ -9,5 +9,5 @@ LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=virtual/perl-Carp virtual/perl-Exporter virtual/perl-Scalar-List-Utils dev-perl/Try-Tiny !minimal? ( >=dev-perl/Devel-LexAlias-0.50.0 dev-perl/Perl-Tidy ) dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/D/DO/DOY/Eval-Closure-0.14.tar.gz
-_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	fa19a21c943f26d9b3720dc7620b8541
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	20c90ae7e826995a597683580cdfcdcb
 _md5_=13d33e1cef5c6d0c78869ea80336d4af

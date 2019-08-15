@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install prepare test
-DEPEND=virtual/libintl !minimal? ( dev-perl/File-ShareDir ) virtual/perl-File-Spec >=virtual/perl-version-0.770.0 virtual/perl-ExtUtils-MakeMaker dev-lang/perl:=
+DEPEND=virtual/libintl !minimal? ( dev-perl/File-ShareDir ) virtual/perl-File-Spec >=virtual/perl-version-0.770.0 virtual/perl-ExtUtils-MakeMaker dev-lang/perl
 DESCRIPTION=High-Level Interface to Uniforum Message Translation
 EAPI=6
 HOMEPAGE=http://guido-flohr.net/projects/libintl-perl https://metacpan.org/release/libintl-perl
@@ -9,5 +9,5 @@ LICENSE=GPL-3
 RDEPEND=virtual/libintl !minimal? ( dev-perl/File-ShareDir ) virtual/perl-File-Spec >=virtual/perl-version-0.770.0 dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/G/GU/GUIDO/libintl-perl-1.31.tar.gz
-_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	fa19a21c943f26d9b3720dc7620b8541
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	20c90ae7e826995a597683580cdfcdcb
 _md5_=3ecd70606f6a19711eb584b4687a042f

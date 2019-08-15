@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install postinst prepare test
-DEPEND=dev-perl/Error >=dev-perl/Net-DNS-0.620.0 >=dev-perl/NetAddr-IP-4 >=dev-perl/URI-1.130.0 >=dev-perl/Net-DNS-Resolver-Programmable-0.3.0 virtual/perl-version !!dev-perl/Mail-SPF-Query >=dev-perl/Module-Build-0.280.500 >=dev-perl/Net-DNS-Resolver-Programmable-0.3.0 test? ( virtual/perl-Test-Simple ) dev-lang/perl:=
+DEPEND=dev-perl/Error >=dev-perl/Net-DNS-0.620.0 >=dev-perl/NetAddr-IP-4 >=dev-perl/URI-1.130.0 >=dev-perl/Net-DNS-Resolver-Programmable-0.3.0 virtual/perl-version !!dev-perl/Mail-SPF-Query >=dev-perl/Module-Build-0.280.500 >=dev-perl/Net-DNS-Resolver-Programmable-0.3.0 test? ( virtual/perl-Test-Simple ) dev-lang/perl
 DESCRIPTION=An object-oriented implementation of Sender Policy Framework
 EAPI=6
 HOMEPAGE=https://metacpan.org/release/Mail-SPF
@@ -9,5 +9,5 @@ LICENSE=BSD
 RDEPEND=dev-perl/Error >=dev-perl/Net-DNS-0.620.0 >=dev-perl/NetAddr-IP-4 >=dev-perl/URI-1.130.0 >=dev-perl/Net-DNS-Resolver-Programmable-0.3.0 virtual/perl-version !!dev-perl/Mail-SPF-Query dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/J/JM/JMEHNLE/mail-spf/Mail-SPF-v2.9.0.tar.gz
-_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	fa19a21c943f26d9b3720dc7620b8541
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	20c90ae7e826995a597683580cdfcdcb
 _md5_=29ec26ccbd8fc59efd985ad364323ff2

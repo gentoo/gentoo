@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install prepare test
-DEPEND=virtual/perl-Carp dev-perl/Module-Pluggable dev-perl/Moose dev-perl/MooseX-FollowPBP virtual/perl-Scalar-List-Utils dev-perl/Template-Toolkit virtual/perl-version virtual/perl-File-Spec dev-perl/Module-Build test? ( dev-perl/Test-NoWarnings ) dev-lang/perl:=
+DEPEND=virtual/perl-Carp dev-perl/Module-Pluggable dev-perl/Moose dev-perl/MooseX-FollowPBP virtual/perl-Scalar-List-Utils dev-perl/Template-Toolkit virtual/perl-version virtual/perl-File-Spec dev-perl/Module-Build test? ( dev-perl/Test-NoWarnings ) dev-lang/perl
 DESCRIPTION=Perl extension for the automatic generation of LaTeX tables
 EAPI=6
 HOMEPAGE=https://metacpan.org/release/LaTeX-Table
@@ -9,5 +9,5 @@ LICENSE=|| ( GPL-1+ Artistic )
 RDEPEND=virtual/perl-Carp dev-perl/Module-Pluggable dev-perl/Moose dev-perl/MooseX-FollowPBP virtual/perl-Scalar-List-Utils dev-perl/Template-Toolkit virtual/perl-version dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/L/LI/LIMAONE/LaTeX-Table-v1.0.6.tar.gz
-_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	fa19a21c943f26d9b3720dc7620b8541
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	20c90ae7e826995a597683580cdfcdcb
 _md5_=cc40ac23fcfda00a8e995098ad0fa4f1

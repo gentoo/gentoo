@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install prepare test
-DEPEND=dev-perl/Clone virtual/perl-Storable >=virtual/perl-ExtUtils-MakeMaker-6.310.0 test? ( dev-perl/Test-Most ) dev-lang/perl:=
+DEPEND=dev-perl/Clone virtual/perl-Storable >=virtual/perl-ExtUtils-MakeMaker-6.310.0 test? ( dev-perl/Test-Most ) dev-lang/perl
 DESCRIPTION=Recursively merge two or more hashes, simply
 EAPI=6
 HOMEPAGE=https://metacpan.org/release/Hash-Merge-Simple
@@ -9,5 +9,5 @@ LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=dev-perl/Clone virtual/perl-Storable dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/R/RO/ROKR/Hash-Merge-Simple-0.051.tar.gz
-_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	fa19a21c943f26d9b3720dc7620b8541
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	20c90ae7e826995a597683580cdfcdcb
 _md5_=eef90861740f78ecaa2c0b73e9f2f7bf

@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install prepare test
-DEPEND=>=dev-perl/XML-Parser-2.31 >=virtual/perl-Scalar-List-Utils-1.230.0 >=virtual/perl-Encode-2.240.100_rc >=dev-libs/expat-1.95.5 dev-perl/Tie-IxHash dev-perl/XML-XPath >=dev-perl/libwww-perl-6.40.0 >=dev-perl/HTML-Parser-3.690.0 nls? ( >=dev-perl/Text-Iconv-1.2-r1 ) virtual/perl-ExtUtils-MakeMaker test? ( >=dev-perl/XML-Handler-YAWriter-0.230.0 >=dev-perl/XML-SAX-Writer-0.530.0 ) dev-lang/perl:=
+DEPEND=>=dev-perl/XML-Parser-2.31 >=virtual/perl-Scalar-List-Utils-1.230.0 >=virtual/perl-Encode-2.240.100_rc >=dev-libs/expat-1.95.5 dev-perl/Tie-IxHash dev-perl/XML-XPath >=dev-perl/libwww-perl-6.40.0 >=dev-perl/HTML-Parser-3.690.0 nls? ( >=dev-perl/Text-Iconv-1.2-r1 ) virtual/perl-ExtUtils-MakeMaker test? ( >=dev-perl/XML-Handler-YAWriter-0.230.0 >=dev-perl/XML-SAX-Writer-0.530.0 ) dev-lang/perl
 DESCRIPTION=Process huge XML documents in tree mode
 EAPI=6
 HOMEPAGE=https://metacpan.org/release/XML-Twig
@@ -9,5 +9,5 @@ LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=>=dev-perl/XML-Parser-2.31 >=virtual/perl-Scalar-List-Utils-1.230.0 >=virtual/perl-Encode-2.240.100_rc >=dev-libs/expat-1.95.5 dev-perl/Tie-IxHash dev-perl/XML-XPath >=dev-perl/libwww-perl-6.40.0 >=dev-perl/HTML-Parser-3.690.0 nls? ( >=dev-perl/Text-Iconv-1.2-r1 ) dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/M/MI/MIROD/XML-Twig-3.52.tar.gz
-_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	fa19a21c943f26d9b3720dc7620b8541
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	20c90ae7e826995a597683580cdfcdcb
 _md5_=93479cdcf5c458a83faeeced8a2ff22d

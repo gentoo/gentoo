@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install prepare test
-DEPEND=>=dev-perl/Net-SSLeay-1.350.0 dev-perl/Test-Exception >=dev-perl/RPC-XML-0.640.0 dev-perl/XML-LibXML dev-lang/perl:=
+DEPEND=>=dev-perl/Net-SSLeay-1.350.0 dev-perl/Test-Exception >=dev-perl/RPC-XML-0.640.0 dev-perl/XML-LibXML dev-lang/perl
 DESCRIPTION=Client API for the NeuStar UltraDNS Transaction Protocol
 EAPI=6
 HOMEPAGE=https://metacpan.org/release/UltraDNS
@@ -8,5 +8,5 @@ LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=>=dev-perl/Net-SSLeay-1.350.0 dev-perl/Test-Exception >=dev-perl/RPC-XML-0.640.0 dev-perl/XML-LibXML virtual/perl-ExtUtils-MakeMaker dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/T/TI/TIMB/UltraDNS-0.06.tar.gz
-_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	fa19a21c943f26d9b3720dc7620b8541
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	20c90ae7e826995a597683580cdfcdcb
 _md5_=5ee657b3f7065fb76a83e896057d217c

@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install prepare test
-DEPEND=app-arch/bzip2 virtual/perl-Carp virtual/perl-File-Spec virtual/perl-ExtUtils-MakeMaker test? ( virtual/perl-Test-Simple ) dev-lang/perl:=
+DEPEND=app-arch/bzip2 virtual/perl-Carp virtual/perl-File-Spec virtual/perl-ExtUtils-MakeMaker test? ( virtual/perl-Test-Simple ) dev-lang/perl
 DESCRIPTION=Interface to Bzip2 compression library
 EAPI=6
 HOMEPAGE=https://metacpan.org/release/Compress-Bzip2
@@ -9,5 +9,5 @@ LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=app-arch/bzip2 virtual/perl-Carp virtual/perl-File-Spec dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/R/RU/RURBAN/Compress-Bzip2-2.26.tar.gz
-_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	fa19a21c943f26d9b3720dc7620b8541
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	20c90ae7e826995a597683580cdfcdcb
 _md5_=4c581409cbdcaa2935bbd88dbb959a81

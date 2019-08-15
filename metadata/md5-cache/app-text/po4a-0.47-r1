@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install prepare test
-DEPEND=app-text/openjade dev-libs/libxslt dev-perl/Locale-gettext dev-perl/SGMLSpm dev-perl/TermReadKey dev-perl/Text-WrapI18N sys-devel/gettext app-text/docbook-xml-dtd:4.1.2 app-text/docbook-xsl-stylesheets dev-perl/Module-Build test? ( app-text/docbook-sgml-dtd:4.1 virtual/tex-base ) dev-lang/perl:=
+DEPEND=app-text/openjade dev-libs/libxslt dev-perl/Locale-gettext dev-perl/SGMLSpm dev-perl/TermReadKey dev-perl/Text-WrapI18N sys-devel/gettext app-text/docbook-xml-dtd:4.1.2 app-text/docbook-xsl-stylesheets dev-perl/Module-Build test? ( app-text/docbook-sgml-dtd:4.1 virtual/tex-base ) dev-lang/perl
 DESCRIPTION=Tools for helping translation of documentation
 EAPI=6
 HOMEPAGE=https://po4a.org/
@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=app-text/openjade dev-libs/libxslt dev-perl/Locale-gettext dev-perl/SGMLSpm dev-perl/TermReadKey dev-perl/Text-WrapI18N sys-devel/gettext dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://debian/pool/main/p/po4a/po4a_0.47.orig.tar.gz
-_eclasses_=l10n	97f2753e3f1f3753d53d856c7c0bbb0b	multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	fa19a21c943f26d9b3720dc7620b8541
+_eclasses_=l10n	97f2753e3f1f3753d53d856c7c0bbb0b	multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	20c90ae7e826995a597683580cdfcdcb
 _md5_=f9c706381f9b24e19b7fb3ae98acc055
