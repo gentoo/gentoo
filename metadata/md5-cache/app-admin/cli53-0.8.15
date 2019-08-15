@@ -7,6 +7,6 @@ KEYWORDS=~amd64
 LICENSE=MIT
 RESTRICT=strip
 SLOT=0
-SRC_URI=https://github.com/barnybug/cli53/archive/0.8.14.tar.gz -> cli53-0.8.14.tar.gz
+SRC_URI=https://github.com/barnybug/cli53/archive/0.8.15.tar.gz -> cli53-0.8.15.tar.gz
 _eclasses_=golang-base	c57d2c3f9e1a02d0feb8b87c7b689892	golang-vcs-snapshot	12177e83bede6f7fb87eae383864b40b
 _md5_=2cebd88c9997534ca8a9d2392840adaa
