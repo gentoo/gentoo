@@ -13,13 +13,12 @@ LICENSE="GPL-2+"
 SLOT="0/12" # libcryptsetup.so version
 [[ ${PV} != *_rc* ]] && \
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
-# cryptsetup does _not_ have a libressl backend. We only have this for REQUIRED_USE
-# and change "libressl" to "openssl" in our econf call.
-CRYPTO_BACKENDS="gcrypt kernel libressl nettle +openssl"
+CRYPTO_BACKENDS="gcrypt kernel nettle +openssl"
 # we don't support nss since it doesn't allow cryptsetup to be built statically
 # and it's missing ripemd160 support so it can't provide full backward compatibility
 IUSE="${CRYPTO_BACKENDS} +argon2 libressl +luks1_default nls pwquality reencrypt static static-libs +udev urandom"
 REQUIRED_USE="^^ ( ${CRYPTO_BACKENDS//+/} )
+	libressl? ( openssl )
 	static? ( !gcrypt )" #496612
 
 LIB_DEPEND="
@@ -32,7 +31,7 @@ LIB_DEPEND="
 	nettle? ( >=dev-libs/nettle-2.4[static-libs(+)] )
 	openssl? (
 		!libressl? ( dev-libs/openssl:0=[static-libs(+)] )
-		libressl? ( dev-libs/libressl:=[static-libs(+)] )
+		libressl? ( dev-libs/libressl:0=[static-libs(+)] )
 	)
 	pwquality? ( dev-libs/libpwquality[static-libs(+)] )
 	sys-fs/lvm2[static-libs(+)]
@@ -83,11 +82,6 @@ src_configure() {
 		ewarn "userspace crypto libraries."
 	fi
 
-	local x cryptobackend
-	for x in ${CRYPTO_BACKENDS//+/} ; do
-		use ${x} && cryptobackend="${x/libressl/openssl}"
-	done
-
 	local myeconfargs=(
 		--disable-internal-argon2
 		--enable-shared
@@ -95,7 +89,7 @@ src_configure() {
 		# for later use
 		--with-default-luks-format=LUKS$(usex luks1_default 1 2)
 		--with-tmpfilesdir="${EPREFIX}/usr/lib/tmpfiles.d"
-		--with-crypto_backend=${cryptobackend}
+		--with-crypto_backend=$(for x in ${CRYPTO_BACKENDS//+/} ; do usev ${x} ; done)
 		$(use_enable argon2 libargon2)
 		$(use_enable nls)
 		$(use_enable pwquality)
