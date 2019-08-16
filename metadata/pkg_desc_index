@@ -7417,7 +7417,7 @@ dev-python/RecSQL 0.7.11: Simple SQL analysis of python records
 dev-python/Rx 1.6.1: Reactive Extensions for Python
 dev-python/SaltTesting 2017.6.1 2018.1.16: Required testing tools needed in the several Salt Stack projects
 dev-python/SchemaObject 0.5.3-r1 0.5.7 0.5.8: A simple Python object interface to a MySQL database schema
-dev-python/URLObject 2.4.0 2.4.2-r1: A utility class for manipulating URLs
+dev-python/URLObject 2.4.0 2.4.2-r1 2.4.3: A utility class for manipulating URLs
 dev-python/WSME 0.8.0 0.9.1 0.9.2 0.9.3: Simplify the writing of REST APIs, and extend them with additional protocols.
 dev-python/XenAPI 1.2: Xen API SDK, for communication with Citrix XenServer and Xen Cloud Platform
 dev-python/YURL 0.13: Yurl is the replacement of built in python urlparse module
