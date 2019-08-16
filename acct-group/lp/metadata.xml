@@ -4,4 +4,7 @@
 	<maintainer type="project">
 		<email>systemd@gentoo.org</email>
 	</maintainer>
+	<maintainer type="project">
+		<email>printing@gentoo.org</email>
+	</maintainer>
 </pkgmetadata>
