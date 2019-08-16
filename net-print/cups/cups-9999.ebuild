@@ -55,10 +55,12 @@ CDEPEND="
 
 DEPEND="${CDEPEND}"
 BDEPEND="
+	acct-group/lp
 	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]
 "
 
 RDEPEND="${CDEPEND}
+	acct-group/lp
 	selinux? ( sec-policy/selinux-cups )
 "
 
@@ -73,7 +75,6 @@ RESTRICT="test"
 
 # systemd-socket.patch from Fedora
 PATCHES=(
-	"${FILESDIR}/${PN}-2.2.0-dont-compress-manpages.patch"
 	"${FILESDIR}/${PN}-2.2.6-fix-install-perms.patch"
 	"${FILESDIR}/${PN}-1.4.4-nostrip.patch"
 	"${FILESDIR}/${PN}-2.0.2-rename-systemd-service-files.patch"
@@ -87,7 +88,7 @@ MULTILIB_CHOST_TOOLS=(
 S="${WORKDIR}/${MY_P}"
 
 pkg_setup() {
-	enewgroup lp
+	#enewgroup lp -> acct-group/lp
 	enewuser lp -1 -1 -1 lp
 	enewgroup lpadmin 106
 
@@ -131,6 +132,10 @@ src_prepare() {
 
 	# Fix install-sh, posix sh does not have 'function'.
 	sed 's#function gzipcp#gzipcp()#g' -i "${S}/install-sh"
+
+	# Do not add -Werror even for live ebuilds
+	sed '/WARNING_OPTIONS/s@-Werror@@' \
+		-i config-scripts/cups-compiler.m4 || die
 
 	AT_M4DIR=config-scripts eaclocal
 	eautoconf
@@ -234,10 +239,11 @@ multilib_src_install_all() {
 	rm -rf "${ED}"/etc/{init.d/cups,rc*,pam.d/cups}
 
 	# install our init script
-	local neededservices
-	use zeroconf && neededservices+=" avahi-daemon"
-	use dbus && neededservices+=" dbus"
-	[[ -n ${neededservices} ]] && neededservices="need${neededservices}"
+	local neededservices=(
+		$(usex zeroconf avahi-daemon '')
+		$(usex dbus dbus '')
+	)
+	[[ -n ${neededservices[@]} ]] && neededservices="need ${neededservices[@]}"
 	cp "${FILESDIR}"/cupsd.init.d-r3 "${T}"/cupsd || die
 	sed -i \
 		-e "s/@neededservices@/${neededservices}/" \
