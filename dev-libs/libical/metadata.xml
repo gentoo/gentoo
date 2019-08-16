@@ -8,4 +8,7 @@
 	<upstream>
 		<remote-id type="github">libical/libical</remote-id>
 	</upstream>
+	<use>
+		<flag name="glib">Enable dev-libs/glib interface support</flag>
+	</use>
 </pkgmetadata>
