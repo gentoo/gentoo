@@ -9,6 +9,10 @@
 		<email>mgorny@gentoo.org</email>
 		<name>Michał Górny</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>amadio@gentoo.org</email>
+		<name>Guilherme Amadio</name>
+	</maintainer>
 	<upstream>
 		<remote-id type="github">Cyan4973/lz4</remote-id>
 	</upstream>
