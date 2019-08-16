@@ -2440,6 +2440,7 @@ dev-libs/libgpiod:tools - Build some useful gpio tools that use libgpiod.
 dev-libs/libgpuarray:cuda - Enable NVIDIA CUDA toolkit support
 dev-libs/libgpuarray:opencl - Enable OpenCL support
 dev-libs/libgweather:glade - Installs catalog files for dev-util/glade
+dev-libs/libical:glib - Enable dev-libs/glib interface support
 dev-libs/libisoburn:external-filters - Allow the use of external processes as file content filters (Note: this is a potential security risk)
 dev-libs/libisoburn:external-filters-setuid - Also allow the use of external setuid processes as file content filters (Note: this is a potential security risk)
 dev-libs/libisoburn:frontend-optional - Use dev-tcltk/bwidget which is not strictly required for the frontend
