@@ -167,7 +167,6 @@ DEPEND="${CDEPEND}
 		x86? ( >=dev-lang/nasm-2.13 )
 	)"
 
-# We use virtx eclass which cannot handle wayland
 REQUIRED_USE="wifi? ( dbus )
 	pgo? ( lto )"
 
