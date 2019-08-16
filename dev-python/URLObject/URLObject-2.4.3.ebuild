@@ -19,7 +19,8 @@ KEYWORDS="~amd64 ~x86"
 SLOT="0"
 IUSE="test"
 
-RDEPEND=""
+RDEPEND="
+	dev-python/six[${PYTHON_USEDEP}]"
 DEPEND="
 	${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
@@ -27,6 +28,13 @@ DEPEND="
 "
 
 S=${WORKDIR}/${GITHUB_P}
+
+python_prepare_all() {
+	rm "${S}/urlobject/six.py" || die
+	find "${S}/urlobject" -type f -name \*.py \
+		-exec sed -e 's/from \.six import/from six import/g' -i "{}" \; || die
+	distutils-r1_python_prepare_all
+}
 
 python_test() {
 	nosetests -v || die "Tests fail with ${EPYTHON}"
