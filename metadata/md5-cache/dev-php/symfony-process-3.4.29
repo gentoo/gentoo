@@ -10,4 +10,4 @@ RDEPEND=dev-lang/php:* dev-php/fedora-autoloader
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/symfony/process/archive/v3.4.29.tar.gz -> symfony-process-3.4.29.tar.gz
-_md5_=be1b68527401fd1b584a05170e38d41a
+_md5_=5fcb60b28fba22c393839a19e1dd92e2

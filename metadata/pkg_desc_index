@@ -7255,9 +7255,9 @@ dev-php/YAML 1.0.6-r3: The Symfony YAML Component
 dev-php/adodb 5.20.14: Database abstraction layer for PHP
 dev-php/agavi 1.0.8: PHP MVC application framework
 dev-php/awl 0.59: Andrew McMillan's Web Libraries
-dev-php/ca-bundle 1.0.3 1.1.2 1.1.3: Find the system CA bundle or fall back to the Mozilla one
+dev-php/ca-bundle 1.1.3: Find the system CA bundle or fall back to the Mozilla one
 dev-php/cli-prompt 1.0.0 1.0.3: Allows you to prompt for user input on the command line
-dev-php/composer 1.6.3 1.6.5 1.7.2 1.7.3 1.8.0 1.8.3 1.8.4 1.8.6: Dependency Manager for PHP
+dev-php/composer 1.8.6: Dependency Manager for PHP
 dev-php/cphplib 0.51-r1: Cute PHP Library (cphplib)
 dev-php/doctrine 1.2.5 2.4.6 2.6.1: An object relational mapper for PHP
 dev-php/doctrine-instantiator 1.0.5 1.1.0: Utility to instantiate objects in PHP without invoking their constructors
@@ -7265,12 +7265,12 @@ dev-php/fedora-autoloader 0.2.1 1.0.0: Fedora's Static PSR-4, PSR-0, and classma
 dev-php/geos-php 1.0.0: A PHP interface to GEOS - Geometry Engine, Open Source
 dev-php/igbinary 2.0.8 3.0.1: A fast drop-in replacement for the standard PHP serialize
 dev-php/jpgraph 4.0.2 4.2.0: Object-oriented graphing library for PHP
-dev-php/json-schema 4.1.0 5.2.7 5.2.8: PHP implementation of JSON schema
-dev-php/jsonlint 1.6.0 1.7.1: JSON Lint for PHP
+dev-php/json-schema 5.2.8: PHP implementation of JSON schema
+dev-php/jsonlint 1.7.1: JSON Lint for PHP
 dev-php/libchart 1.3: Easy-to-use chart creation library for PHP
 dev-php/libvirt-php 0.5.3 0.5.4 9999: PHP bindings for libvirt
 dev-php/magickwand 1.0.9-r3: A native PHP-extension to the ImageMagick MagickWand API
-dev-php/maxmind-db-reader 1.2.0 1.3.0 1.4.1: PHP reader for the MaxMind database format
+dev-php/maxmind-db-reader 1.4.1: PHP reader for the MaxMind database format
 dev-php/ming-php 0.4.8: PHP extension for the ming Flash movie generation library
 dev-php/mmslib 0.97: library for encoding, decoding, and sending MMSes
 dev-php/mockery 0.9.0-r1: Simple yet flexible PHP mock object framework for use in unit testing
@@ -7329,8 +7329,8 @@ dev-php/pecl-xrange 1.3.2-r2: Implementation of weak references
 dev-php/pecl-yaml 1.3.2 2.0.4: YAML 1.1 (YAML Ain't Markup Language) serialization for PHP
 dev-php/pecl-yaz 1.2.1 1.2.2-r1 1.2.3: This extension implements a Z39.50 client for PHP using the YAZ toolkit
 dev-php/pecl-zmq 1.1.3-r1 1.1.3-r2 9999: PHP Bindings for ZeroMQ messaging
-dev-php/phar-io-manifest 1.0.1 1.0.3: Reading phar.io manifest information from a PHP Archive (PHAR)
-dev-php/phar-io-version 1.0.1 2.0.1: Library for handling version information and constraints
+dev-php/phar-io-manifest 1.0.3: Reading phar.io manifest information from a PHP Archive (PHAR)
+dev-php/phar-io-version 2.0.1: Library for handling version information and constraints
 dev-php/phar-utils 1.0.0 1.0.1: PHAR file format utilities, for when PHP phars you up
 dev-php/phing 2.16.1: PHP project build system based on Apache Ant
 dev-php/php-codebrowser 1.0.2-r1: Creates highlighted code by reading xml reports from codesniffer or phpunit
@@ -7370,9 +7370,9 @@ dev-php/symfony-config 2.8.20: Symfony Config Component
 dev-php/symfony-console 2.7.9-r1 2.8.43 2.8.48 2.8.50: Subtree split of the Symfony Console Component
 dev-php/symfony-dependency-injection 2.8.20 2.8.50: Symfony DependencyInjection Component
 dev-php/symfony-event-dispatcher 2.1.0-r1 2.8.50: Symfony EventDispatcher Component
-dev-php/symfony-filesystem 3.2.8 3.4.28: Symfony Filesystem Component
+dev-php/symfony-filesystem 3.4.28: Symfony Filesystem Component
 dev-php/symfony-finder 3.2.8 3.4.28: Symfony Finder Component
-dev-php/symfony-process 3.2.6 3.4.29: Symfony Process Component
+dev-php/symfony-process 3.4.29: Symfony Process Component
 dev-php/symfony-yaml 2.1.0: Symfony YAML Component
 dev-php/tcpdf 6.2.25 6.2.26: TCPDF is a FLOSS PHP class for generating PDF documents
 dev-php/theseer-tokenizer 1.1.0: Convert tokenized PHP source code into XML and other formats
@@ -7775,8 +7775,8 @@ dev-python/editobj 0.5.7-r2: EditObj can create a dialog box to edit ANY Python 
 dev-python/editorconfig-core-py 0.12.0: Clone of EditorConfig core written in Python
 dev-python/egenix-mx-base 3.2.5 3.2.8 3.2.9: eGenix utils for Python
 dev-python/egg-python 2.25.3-r1: EggTrayIcon bindings for Python
-dev-python/elasticsearch-curator 5.4.1 5.5.4-r1 5.6.0: Tending time-series indices in Elasticsearch
-dev-python/elasticsearch-py 5.5.2 5.5.3 5.5.5 6.0.0 6.1.1 6.2.0 6.3.0 6.3.1-r1: official Python low-level client for Elasticsearch
+dev-python/elasticsearch-curator 5.5.4-r1 5.6.0: Tending time-series indices in Elasticsearch
+dev-python/elasticsearch-py 6.3.1-r1: official Python low-level client for Elasticsearch
 dev-python/elementtree 1.2.6-r3: A light-weight XML object model for Python
 dev-python/elib-intl 0_pre20110711: Enhanced internationalization (I18N) services for your Python modules and applications
 dev-python/embedly 0.5.0-r1: Python Library for Embedly
@@ -9197,7 +9197,7 @@ dev-python/uranium 3.6.0-r1: A Python framework for building 3D printing related
 dev-python/urdf_parser_py 0.3.3 0.4.0: URDF parser for Python
 dev-python/uritemplate 0.6 3.0.0: Python implementation of RFC6570, URI Template
 dev-python/urlgrabber 3.9.1-r2 3.10.1 3.10.1-r1: Python module for downloading files
-dev-python/urllib3 1.22 1.23 1.24.1 1.24.2: HTTP library with thread-safe connection pooling, file post, and more
+dev-python/urllib3 1.24.2: HTTP library with thread-safe connection pooling, file post, and more
 dev-python/urwid 1.3.1 2.0.1: Curses-based user interface library for Python
 dev-python/urwidtrees 1.0.2 1.0.2-r1: Tree widgets for urwid
 dev-python/ushlex 0.99.1: Replacement for shlex for Python 2.X
@@ -18020,7 +18020,7 @@ sys-kernel/dracut 044-r1 044-r3 045-r2 046-r1 047-r1 048 048-r1 049 049-r1 9999:
 sys-kernel/dracut-crypt-ssh 1.0.6-r1: early unlocking of encrypted systems via ssh for dracut
 sys-kernel/genkernel 3.4.52.3 3.4.52.4-r1 3.4.52.4-r2 3.4.52.4-r3 3.5.1.1 3.5.2.0-r1 3.5.2.1 3.5.2.2 3.5.2.3 3.5.2.4 3.5.2.5 3.5.3.2 3.5.3.3 4.0.0_beta12 9999: Gentoo automatic kernel building scripts
 sys-kernel/genkernel-next 69 70: Gentoo automatic kernel building scripts, reloaded
-sys-kernel/gentoo-sources 4.4.184 4.4.186 4.4.187 4.4.188 4.4.189 4.9.184 4.9.186 4.9.187 4.9.188 4.9.189 4.14.132 4.14.135 4.14.136 4.14.137 4.14.138 4.19.57 4.19.63 4.19.64 4.19.65 4.19.66 4.19.67 5.2.5 5.2.6 5.2.7 5.2.8 5.2.9: Full sources including the Gentoo patchset for the 5.2 kernel tree
+sys-kernel/gentoo-sources 4.4.184 4.4.186 4.4.187 4.4.188 4.4.189 4.9.184 4.9.186 4.9.187 4.9.188 4.9.189 4.14.132 4.14.135 4.14.136 4.14.137 4.14.138 4.14.139 4.19.57 4.19.63 4.19.64 4.19.65 4.19.66 4.19.67 5.2.5 5.2.6 5.2.7 5.2.8 5.2.9: Full sources including the Gentoo patchset for the 5.2 kernel tree
 sys-kernel/git-sources 5.3_rc1 5.3_rc2 5.3_rc3 5.3_rc4: The very latest -git version of the Linux kernel
 sys-kernel/kergen 0.1.4: Kernel config generator
 sys-kernel/kpatch 0.6.3 0.7.1 9999: Dynamic kernel patching for Linux
