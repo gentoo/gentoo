@@ -104,7 +104,6 @@ openexr
 afs
 ots
 frei0r
-libev
 prelude
 libtar
 aacplus

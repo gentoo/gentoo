@@ -93,7 +93,6 @@ rtmp
 vpx
 frei0r
 lpsol
-libev
 prelude
 ladspa
 aacplus
