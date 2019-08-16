@@ -17,7 +17,6 @@
 		<flag name="lcms">Build colorengine plugins using <pkg>media-libs/lcms</pkg></flag>
 		<flag name="okular">Enable bindings for <pkg>kde-apps/okular</pkg></flag>
 		<flag name="phonon">Build stage/eventplugins and videoshape plugin using <pkg>media-libs/phonon</pkg></flag>
-		<flag name="pim">Enable support for KDE PIM resources integration</flag>
 		<flag name="spacenav">Enable support for the 3Dconnexion spacenav input device via <pkg>dev-libs/libspnav</pkg></flag>
 	</use>
 </pkgmetadata>
