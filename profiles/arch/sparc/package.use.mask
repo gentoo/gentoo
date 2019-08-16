@@ -332,10 +332,6 @@ sys-cluster/openmpi numa
 # missing keywords on needed plugins
 media-plugins/gst-plugins-meta dts dv libvisual modplug vcd wavpack
 
-# Michael Weber <xmw@gentoo.org> (2011-01-03)
-# dev-libs/libev is not keyworded
-www-servers/lighttpd libev
-
 # Justin Lecher <jlec@gentoo.org> (2010-08-13)
 # MKL not available on this arch
 media-gfx/povray mkl

@@ -38,7 +38,6 @@ fits
 networkmanager
 lpsol
 openexr
-libev
 clang
 
 # Stuff that doesn't make sense on this arch
