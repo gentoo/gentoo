@@ -101,7 +101,7 @@ EGO_VENDOR=( "gopkg.in/yaml.v2 51d6538a90f86fe93ac480b35f37b2be17fef232 github.c
 	     "github.com/mattn/go-colorable 3a70a971f94a22f2fa562ffcc7a0eb45f5daf045"
 	     "github.com/minio/blazer 2081f5bf046503f576d8712253724fbf2950fffe"
 	     "github.com/minio/highwayhash 02ca4b43caa3297fbb615700d8800acc7933be98"
-	     "github.com/minio/lsync a4e43e3d0887e88d151bb3f90f678178b4ec0c5f"
+	     "github.com/minio/lsync v1.0.1"
 	     "github.com/minio/sha256-simd 05b4dd3047e5d6e86cb4e0477164b850cd896261"
 	     "github.com/minio/sio 035b4ef8c449ba2ba21ec143c91964e76a1fb68c"
 	     "golang.org/x/sync e225da77a7e68af35c70ccbf71af2b83e6acac3c github.com/golang/sync"
@@ -129,6 +129,9 @@ EGO_VENDOR=( "gopkg.in/yaml.v2 51d6538a90f86fe93ac480b35f37b2be17fef232 github.c
 	     "github.com/minio/minio-go/v6 v6.0.29 github.com/minio/minio-go"
 	     "gopkg.in/jcmturner/goidentity.v3 v5.0.0 github.com/jcmturner/goidentity"
 	     "gopkg.in/jcmturner/rpc.v1  99a8ce2fbf8b8087b6ed12a37c61b10f04070043 github.com/jcmturner/rpc"
+	     "gopkg.in/jcmturner/goidentity.v2 v2.0.0 github.com/jcmturner/goidentity"
+	     "gopkg.in/jcmturner/goidentity.v3 v3.0.0 github.com/jcmturner/goidentity"
+	     "github.com/kurin/blazer cf2f27cc0be3dac3c1a94c3c8b76834ce741439e"
 )
 
 inherit user golang-build golang-vcs-snapshot
@@ -160,6 +163,8 @@ src_prepare() {
 
 	pushd src/${EGO_PN} || die
 
+	rm go.mod || die
+
 	sed -i -e "s/time.Now().UTC().Format(time.RFC3339)/\"${MY_PV}\"/"\
 		-e "s/-s //"\
 		-e "/time/d"\
@@ -175,7 +180,7 @@ src_compile() {
 	pushd src/${EGO_PN} || die
 	MINIO_RELEASE="${MY_PV}"
 	go run buildscripts/gen-ldflags.go
-	GO111MODULE=on GOPATH="${S}" GOCACHE="${T}"/go-cache go build --ldflags "$(go run buildscripts/gen-ldflags.go)" -o ${PN} || die
+	GOPATH="${S}" GOCACHE="${T}"/go-cache go build --ldflags "$(go run buildscripts/gen-ldflags.go)" -o ${PN} || die
 
 	popd || die
 }
