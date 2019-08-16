@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 KDE_HANDBOOK="true"
 inherit kde5
@@ -14,7 +14,10 @@ LICENSE="GPL-2 FDL-1.2 LGPL-2.1"
 KEYWORDS="amd64 x86"
 IUSE="cairo npp"
 
-CDEPEND="
+BDEPEND="
+	sys-devel/gettext
+"
+DEPEND="
 	$(add_frameworks_dep kbookmarks)
 	$(add_frameworks_dep kcompletion)
 	$(add_frameworks_dep kconfig)
@@ -46,12 +49,8 @@ CDEPEND="
 		>=x11-libs/gtk+-2.10.14:2
 	)
 "
-DEPEND="${CDEPEND}
-	sys-devel/gettext
-"
-RDEPEND="${CDEPEND}
+RDEPEND="${DEPEND}
 	media-video/mplayer
-	!media-video/kmplayer:4
 "
 
 PATCHES=(

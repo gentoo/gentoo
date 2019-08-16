@@ -1,18 +1,18 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 GNOME2_LA_PUNT="yes"
 
-inherit gnome2
+inherit gnome2 toolchain-funcs
 
 DESCRIPTION="A graphical, full featured, twin-panel file manager"
 HOMEPAGE="https://gcmd.github.io/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="chm exif gsf pdf taglib samba test +unique"
 
 RDEPEND="
@@ -31,6 +31,9 @@ RDEPEND="
 	pdf? ( >=app-text/poppler-0.18 )
 	taglib? ( >=media-libs/taglib-1.4 )
 "
+
+PATCHES=( "${FILESDIR}/gnome-commander-1.10.0-exiv2-0.27.1-missing-header.patch" )
+
 DEPEND="
 	${RDEPEND}
 	dev-util/gtk-doc-am
@@ -49,6 +52,13 @@ src_configure() {
 		$(use_with samba) \
 		$(use_with taglib) \
 		$(use_with unique)
+}
+
+pkg_pretend() {
+	if tc-is-gcc && [[ $(gcc-major-version) -lt 8 ]]; then
+		eerror "Compilation with gcc older than version 8 is not supported"
+		die "GCC too old, please use gcc-8 or above"
+	fi
 }
 
 pkg_postinst() {
