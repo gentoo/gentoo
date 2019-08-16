@@ -13,6 +13,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 arm hppa ia64 ppc ppc64 sparc x86"
 IUSE="examples test"
+RESTRICT="!test? ( test )"
 
 # Only needs PEAR_Exception (not yet packaged) -- not all of PEAR-PEAR.
 RDEPEND="dev-lang/php:*
