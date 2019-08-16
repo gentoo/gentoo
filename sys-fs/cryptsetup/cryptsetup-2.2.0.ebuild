@@ -1,9 +1,9 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit autotools linux-info libtool eapi7-ver
+inherit autotools linux-info libtool
 
 DESCRIPTION="Tool to setup encrypted devices with dm-crypt"
 HOMEPAGE="https://gitlab.com/cryptsetup/cryptsetup/blob/master/README.md"
@@ -12,7 +12,7 @@ SRC_URI="mirror://kernel/linux/utils/${PN}/v$(ver_cut 1-2)/${P/_/-}.tar.xz"
 LICENSE="GPL-2+"
 SLOT="0/12" # libcryptsetup.so version
 [[ ${PV} != *_rc* ]] && \
-KEYWORDS="~alpha ~amd64 ~arm arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 # cryptsetup does _not_ have a libressl backend. We only have this for REQUIRED_USE
 # and change "libressl" to "openssl" in our econf call.
 CRYPTO_BACKENDS="gcrypt kernel libressl nettle +openssl"
@@ -43,8 +43,10 @@ LIB_DEPEND="
 RDEPEND="static-libs? ( ${LIB_DEPEND} )
 	${LIB_DEPEND//\[static-libs\(+\)\]}"
 DEPEND="${RDEPEND}
-	virtual/pkgconfig
 	static? ( ${LIB_DEPEND} )"
+BDEPEND="
+	virtual/pkgconfig
+"
 
 S="${WORKDIR}/${P/_/-}"
 
@@ -92,7 +94,7 @@ src_configure() {
 		--sbindir=/sbin
 		# for later use
 		--with-default-luks-format=LUKS$(usex luks1_default 1 2)
-		--with-tmpfilesdir="${EPREFIX%/}/usr/lib/tmpfiles.d"
+		--with-tmpfilesdir="${EPREFIX}/usr/lib/tmpfiles.d"
 		--with-crypto_backend=${cryptobackend}
 		$(use_enable argon2 libargon2)
 		$(use_enable nls)
@@ -124,11 +126,13 @@ src_install() {
 	default
 
 	if use static ; then
-		mv "${ED%}"/sbin/cryptsetup{.static,} || die
-		mv "${ED%}"/sbin/veritysetup{.static,} || die
-		use reencrypt && { mv "${ED%}"/sbin/cryptsetup-reencrypt{.static,} || die ; }
+		mv "${ED}"/sbin/cryptsetup{.static,} || die
+		mv "${ED}"/sbin/veritysetup{.static,} || die
+		if use reencrypt ; then
+			mv "${ED}"/sbin/cryptsetup-reencrypt{.static,} || die
+		fi
 	fi
-	find "${ED}" -name "*.la" -delete || die
+	find "${ED}" -type f -name "*.la" -delete || die
 
 	dodoc docs/v*ReleaseNotes
 
