@@ -1,14 +1,15 @@
 DEFINED_PHASES=compile configure install postinst prepare pretend setup test
-DEPEND=>=dev-libs/libuv-1.28.0:= >=net-dns/c-ares-1.15.0 >=net-libs/http-parser-2.9.0:= >=net-libs/nghttp2-1.34.0 sys-libs/zlib icu? ( >=dev-libs/icu-64.2:= ) ssl? ( >=dev-libs/openssl-1.1.1:0= ) || ( >=dev-lang/python-2.7.5-r2:2.7[threads] ) systemtap? ( dev-util/systemtap ) test? ( net-misc/curl )
+DEPEND=>=dev-libs/libuv-1.23.2:= >=net-dns/c-ares-1.10.1 >=net-libs/http-parser-2.9.0:= >=net-libs/nghttp2-1.39.2 sys-libs/zlib icu? ( >=dev-libs/icu-60.1:= ) ssl? ( =dev-libs/openssl-1.0.2*:0=[-bindist] ) || ( >=dev-lang/python-2.7.5-r2:2.7[threads] ) systemtap? ( dev-util/systemtap ) test? ( net-misc/curl )
 DESCRIPTION=A JavaScript runtime built on Chrome's V8 JavaScript engine
 EAPI=6
 HOMEPAGE=https://nodejs.org/
 IUSE=cpu_flags_x86_sse2 debug doc icu inspector +npm +snapshot +ssl systemtap test
 KEYWORDS=~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x64-macos
 LICENSE=Apache-1.1 Apache-2.0 BSD BSD-2 MIT
-RDEPEND=>=dev-libs/libuv-1.28.0:= >=net-dns/c-ares-1.15.0 >=net-libs/http-parser-2.9.0:= >=net-libs/nghttp2-1.34.0 sys-libs/zlib icu? ( >=dev-libs/icu-64.2:= ) ssl? ( >=dev-libs/openssl-1.1.1:0= )
+RDEPEND=>=dev-libs/libuv-1.23.2:= >=net-dns/c-ares-1.10.1 >=net-libs/http-parser-2.9.0:= >=net-libs/nghttp2-1.39.2 sys-libs/zlib icu? ( >=dev-libs/icu-60.1:= ) ssl? ( =dev-libs/openssl-1.0.2*:0=[-bindist] )
 REQUIRED_USE=inspector? ( icu ssl ) npm? ( ssl )
+RESTRICT=test
 SLOT=0
-SRC_URI=https://nodejs.org/dist/v10.16.2/node-v10.16.2.tar.xz
+SRC_URI=https://nodejs.org/dist/v8.16.1/node-v8.16.1.tar.xz
 _eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	7ba73aee7fe4462b3a745e3645ab92ca	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	1d91b03d42ab6308b5f4f6b598ed110e	pax-utils	db85a3c508cf82c45f24b2723791cc93	preserve-libs	ef207dc62baddfddfd39a164d9797648	python-any-r1	b5f01473006ccc2cd78bc3dab20fced4	python-utils-r1	08e17157a6807add7db1f8d01e7e391f	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
-_md5_=b7aaa2a0edd102e57c6a4ec049993feb
+_md5_=151d7ebc64a8dc1cf244842c232dc731
