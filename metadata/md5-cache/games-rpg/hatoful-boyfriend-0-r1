@@ -9,5 +9,5 @@ RDEPEND=virtual/glu virtual/opengl x11-libs/libX11 x11-libs/libXcursor x11-libs/
 RESTRICT=bindist fetch splitdebug
 SLOT=0
 SRC_URI=Hatoful_Boyfriend_Linux.zip
-_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	xdg-utils	14d00d009167652b1fa363e55effe213
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	xdg-utils	92c60e3d7f481da372979bdcd33e5109
 _md5_=ea3a8d38d1b8ad8e89aa27325fdf38f8

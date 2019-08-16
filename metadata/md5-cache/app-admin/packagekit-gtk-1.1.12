@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=>=dev-libs/glib-2.54:2 media-libs/fontconfig >=x11-libs/gtk+-2:2 >=x11-libs/gtk+-3:3 x11-libs/pango ~app-admin/packagekit-base-1.1.12[introspection]
 SLOT=0
 SRC_URI=https://www.freedesktop.org/software/PackageKit/releases/PackageKit-1.1.12.tar.xz
-_eclasses_=xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	14d00d009167652b1fa363e55effe213
+_eclasses_=xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	92c60e3d7f481da372979bdcd33e5109
 _md5_=fe5ef428f6cc415ddd2ac0cb97cc3d46

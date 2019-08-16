@@ -10,5 +10,5 @@ LICENSE=GPL-2
 RDEPEND=virtual/libintl x11-libs/gtk+:2
 SLOT=0
 SRC_URI=mirror://nongnu/leafpad/leafpad-0.8.18.1.tar.gz
-_eclasses_=xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	14d00d009167652b1fa363e55effe213
+_eclasses_=xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	92c60e3d7f481da372979bdcd33e5109
 _md5_=86388cb1f7ea8cb6b6cce7cffb610e35

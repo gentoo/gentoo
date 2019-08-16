@@ -9,5 +9,5 @@ LICENSE=BSD LGPL-2.1
 RDEPEND=>=dev-libs/expat-2 >=dev-libs/uriparser-0.7.5
 SLOT=0
 SRC_URI=mirror://sourceforge/libspiff/libxspf-1.2.0.tar.bz2
-_eclasses_=xdg-utils	14d00d009167652b1fa363e55effe213
+_eclasses_=xdg-utils	92c60e3d7f481da372979bdcd33e5109
 _md5_=1e68bd165cfd602c89b6c9f1c478a808

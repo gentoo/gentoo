@@ -8,5 +8,5 @@ LICENSE=GPL-2+
 RDEPEND=>=dev-libs/glib-2.42:2 media-libs/libexif:0= sys-apps/file x11-libs/cairo:0 >=x11-libs/gtk+-3.22:3 x11-libs/libX11:0= >=xfce-base/libxfce4ui-4.10:0= >=xfce-base/libxfce4util-4.10:0= >=xfce-base/xfconf-4.12.1:0=
 SLOT=0
 SRC_URI=https://archive.xfce.org/src/apps/ristretto/0.10/ristretto-0.10.0.tar.bz2
-_eclasses_=xdg-utils	14d00d009167652b1fa363e55effe213
+_eclasses_=xdg-utils	92c60e3d7f481da372979bdcd33e5109
 _md5_=4e188941b1a07281bed90dfe0af01849

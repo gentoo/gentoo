@@ -7,5 +7,5 @@ LICENSE=GPL-3
 PROPERTIES=live
 RDEPEND=x11-terms/terminology
 SLOT=0
-_eclasses_=git-r3	562b380fc59ae6a8622171d0acb777d1	xdg-utils	14d00d009167652b1fa363e55effe213
+_eclasses_=git-r3	562b380fc59ae6a8622171d0acb777d1	xdg-utils	92c60e3d7f481da372979bdcd33e5109
 _md5_=f495666dc6a9e2ae1e5d9bdee7f05385
