@@ -4,6 +4,7 @@
 # @ECLASS: xdg-utils.eclass
 # @MAINTAINER:
 # gnome@gentoo.org
+# freedesktop-bugs@gentoo.org
 # @AUTHOR:
 # Original author: Gilles Dartiguelongue <eva@gentoo.org>
 # @SUPPORTED_EAPIS: 0 1 2 3 4 5 6 7
