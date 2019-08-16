@@ -8,5 +8,5 @@ LICENSE=GPL-3
 RDEPEND=x11-terms/terminology
 SLOT=0
 SRC_URI=https://github.com/sylveon/terminology-themes/archive/ba7b71ffd290cbce4bf87d47276fa516c6563345.tar.gz -> terminology-themes-0_p20180106.tgz
-_eclasses_=xdg-utils	92c60e3d7f481da372979bdcd33e5109
+_eclasses_=xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=a921623d570ba2eb20d49edd84dc920c

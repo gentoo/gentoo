@@ -8,5 +8,5 @@ LICENSE=GPL-3+
 RDEPEND=media-libs/alsa-lib media-libs/freetype media-libs/lv2 virtual/jack virtual/opengl x11-libs/libX11 x11-libs/libXcursor x11-libs/libXext x11-libs/libXinerama x11-libs/libXrandr !app-admin/helm
 SLOT=0
 SRC_URI=https://github.com/mtytel/helm/archive/v0.9.0.tar.gz -> helm-0.9.0.tar.gz
-_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	xdg-utils	92c60e3d7f481da372979bdcd33e5109
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=58e6feedefd11051252019dc03e8d160

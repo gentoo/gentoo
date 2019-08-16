@@ -9,5 +9,5 @@ RDEPEND=x11-libs/libICE x11-libs/libSM x11-libs/libX11 x11-libs/libXext x11-libs
 RESTRICT=strip mirror
 SLOT=0
 SRC_URI=amd64? ( http://kdl.cc.ksosoft.com/wps-community/download/8372/wps-office_11.1.0.8372_amd64.deb ) x86? ( http://kdl.cc.ksosoft.com/wps-community/download/8372/wps-office_11.1.0.8372_i386.deb )
-_eclasses_=unpacker	3cd8bad0d31e525cd26be1bfa4e61631	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	92c60e3d7f481da372979bdcd33e5109
+_eclasses_=unpacker	3cd8bad0d31e525cd26be1bfa4e61631	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=516052d20df4d9b5312024294fbf8f8a

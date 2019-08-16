@@ -8,5 +8,5 @@ LICENSE=GPL-3-with-openssl-exception
 RDEPEND=dev-libs/glib:2 dev-libs/gobject-introspection >=media-libs/fontconfig-2.13 >=sys-apps/dbus-1.4.20 x11-libs/libX11 >=x11-libs/libxcb-1.10[xkb]
 SLOT=0
 SRC_URI=https://github.com/telegramdesktop/tdesktop/archive/v1.7.10.tar.gz -> tdesktop-1.7.10.tar.gz amd64? ( https://updates.tdesktop.com/tlinux/tsetup.1.7.10.tar.xz ) x86? ( https://updates.tdesktop.com/tlinux32/tsetup32.1.7.10.tar.xz )
-_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	92c60e3d7f481da372979bdcd33e5109
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=0f0ef4d130905511954aefe40da9dda2

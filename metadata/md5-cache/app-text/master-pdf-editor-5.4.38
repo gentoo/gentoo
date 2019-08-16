@@ -8,5 +8,5 @@ RDEPEND=>=dev-qt/qtcore-5.9.8:5 >=dev-qt/qtgui-5.9.8:5 >=dev-qt/qtnetwork-5.9.8:
 RESTRICT=mirror
 SLOT=0
 SRC_URI=https://code-industry.net/public/master-pdf-editor-5.4.38-qt5-all.amd64.tar.gz
-_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	xdg-utils	92c60e3d7f481da372979bdcd33e5109
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=80726df93e08b07ac1581ea382229b3b
