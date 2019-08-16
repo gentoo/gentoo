@@ -11,7 +11,7 @@ HOMEPAGE="https://kile.sourceforge.io/"
 SRC_URI="https://dev.gentoo.org/~asturm/distfiles/${P}.tar.xz"
 
 LICENSE="FDL-1.2 GPL-2"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 x86"
 IUSE="+pdf +png"
 
 DEPEND="
