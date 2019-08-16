@@ -8,7 +8,8 @@
   </synopsis>
   <product type="ebuild">chorme,chromium</product>
   <announced>2019-08-15</announced>
-  <revised count="1">2019-08-15</revised>
+  <revised count="2">2019-08-16</revised>
+  <bug>672606</bug>
   <bug>684238</bug>
   <bug>684272</bug>
   <bug>687732</bug>
@@ -119,7 +120,87 @@
     <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5865">CVE-2019-5865</uri>
     <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5867">CVE-2019-5867</uri>
     <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5868">CVE-2019-5868</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-17480">CVE-2018-17480</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-17481">CVE-2018-17481</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-18335">CVE-2018-18335</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-18336">CVE-2018-18336</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-18337">CVE-2018-18337</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-18338">CVE-2018-18338</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-18339">CVE-2018-18339</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-18340">CVE-2018-18340</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-18341">CVE-2018-18341</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-18342">CVE-2018-18342</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-18343">CVE-2018-18343</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-18344">CVE-2018-18344</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-18345">CVE-2018-18345</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-18346">CVE-2018-18346</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-18347">CVE-2018-18347</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-18348">CVE-2018-18348</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-18349">CVE-2018-18349</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-18350">CVE-2018-18350</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-18351">CVE-2018-18351</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-18352">CVE-2018-18352</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-18353">CVE-2018-18353</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-18354">CVE-2018-18354</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-18355">CVE-2018-18355</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-18356">CVE-2018-18356</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-18357">CVE-2018-18357</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-18358">CVE-2018-18358</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-18359">CVE-2018-18359</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5805">CVE-2019-5805</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5806">CVE-2019-5806</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5807">CVE-2019-5807</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5808">CVE-2019-5808</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5809">CVE-2019-5809</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5810">CVE-2019-5810</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5811">CVE-2019-5811</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5812">CVE-2019-5812</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5813">CVE-2019-5813</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5814">CVE-2019-5814</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5815">CVE-2019-5815</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5816">CVE-2019-5816</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5817">CVE-2019-5817</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5818">CVE-2019-5818</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5819">CVE-2019-5819</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5820">CVE-2019-5820</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5821">CVE-2019-5821</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5822">CVE-2019-5822</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5823">CVE-2019-5823</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5828">CVE-2019-5828</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5829">CVE-2019-5829</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5830">CVE-2019-5830</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5831">CVE-2019-5831</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5832">CVE-2019-5832</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5833">CVE-2019-5833</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5834">CVE-2019-5834</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5835">CVE-2019-5835</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5836">CVE-2019-5836</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5837">CVE-2019-5837</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5838">CVE-2019-5838</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5839">CVE-2019-5839</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5840">CVE-2019-5840</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5842">CVE-2019-5842</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5847">CVE-2019-5847</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5848">CVE-2019-5848</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5850">CVE-2019-5850</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5851">CVE-2019-5851</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5852">CVE-2019-5852</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5853">CVE-2019-5853</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5854">CVE-2019-5854</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5855">CVE-2019-5855</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5856">CVE-2019-5856</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5857">CVE-2019-5857</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5858">CVE-2019-5858</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5859">CVE-2019-5859</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5860">CVE-2019-5860</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5861">CVE-2019-5861</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5862">CVE-2019-5862</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5863">CVE-2019-5863</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5864">CVE-2019-5864</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5865">CVE-2019-5865</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5867">CVE-2019-5867</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5868">CVE-2019-5868</uri>
   </references>
   <metadata tag="requester" timestamp="2019-04-27T08:00:47Z">BlueKnight</metadata>
-  <metadata tag="submitter" timestamp="2019-08-15T16:02:10Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2019-08-16T17:41:13Z">b-man</metadata>
 </glsa>
