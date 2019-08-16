@@ -263,9 +263,7 @@ src_prepare() {
 }
 
 src_install() {
-	if use !savedconfig; then
-		save_config ${PN}.conf
-	fi
+	save_config ${PN}.conf
 	rm ${PN}.conf || die
 
 	if ! ( shopt -s failglob; : * ) 2>/dev/null; then
