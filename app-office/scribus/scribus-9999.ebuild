@@ -94,7 +94,7 @@ DEPEND="${COMMON_DEPEND}
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.5.5-docdir.patch
+	"${FILESDIR}"/${PN}-1.5.6-docdir.patch
 	"${FILESDIR}"/${PN}-1.5.3-fpic.patch
 )
 
