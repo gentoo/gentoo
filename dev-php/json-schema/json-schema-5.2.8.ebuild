@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="PHP implementation of JSON schema"
 HOMEPAGE="https://github.com/justinrainbow/json-schema"
-SRC_URI="${HOMEPAGE}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/justinrainbow/json-schema/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
