@@ -3060,7 +3060,7 @@ dev-db/cppdb 0.3.1-r3: SQL connectivity library for platform and database indepe
 dev-db/datadraw 3.1.1: feature rich database generator for high performance C applications
 dev-db/db-je 3.3.75: A high performance, transactional storage engine written entirely in Java
 dev-db/etcd 3.3.12 3.3.13: Highly-available key value store for shared configuration and service discovery
-dev-db/firebird 3.0.2.32703.0-r2 3.0.4.33054.0: Relational database offering many ANSI SQL:2003 and some SQL:2008 features
+dev-db/firebird 3.0.4.33054.0: Relational database offering many ANSI SQL:2003 and some SQL:2008 features
 dev-db/freetds 1.00.558: Tabular Datastream Library
 dev-db/gigabase 3.83-r2: OO-DBMS with interfaces for C/C++/Java/PHP/Perl
 dev-db/go-etcd 0_p20141013-r1 2.0.0 2.0.0-r1: Go client library for etcd
@@ -12010,7 +12010,7 @@ gnome-extra/gnome-calendar 3.30.1: Manage your online calendars with simple and 
 gnome-extra/gnome-characters 3.30.0: Unicode character map viewer and library
 gnome-extra/gnome-clocks 3.30.1: Clocks application for GNOME
 gnome-extra/gnome-color-manager 3.30.0-r1: GNOME color profile tools
-gnome-extra/gnome-commander 1.8.1 1.10.0: A graphical, full featured, twin-panel file manager
+gnome-extra/gnome-commander 1.10.0 1.10.1: A graphical, full featured, twin-panel file manager
 gnome-extra/gnome-contacts 3.30.2: GNOME contact management application
 gnome-extra/gnome-directory-thumbnailer 0.1.10: Thumbnail generator for directories
 gnome-extra/gnome-documents 3.30.1: A document manager application for GNOME
@@ -14343,7 +14343,7 @@ media-video/jubler 5.1: Java subtitle editor
 media-video/kaffeine 2.0.18: Media player with digital TV support by KDE
 media-video/kamerka 0.20: Simple photo taking application with fancy animated interface
 media-video/kino 1.3.4-r1: Kino is a non-linear DV editor for GNU/Linux
-media-video/kmplayer 0.12.0b-r1: Video player plugin for Konqueror and basic MPlayer frontend
+media-video/kmplayer 0.12.0b-r2: Video player plugin for Konqueror and basic MPlayer frontend
 media-video/libav 12.3 13_pre20171219 9999: Complete solution to record, convert and stream audio and video
 media-video/libva-utils 2.0.0-r1 2.1.0 2.2.0 2.3.0 2.4.0 9999: Collection of utilities and tests for VA-API
 media-video/lsdvd 0.17: Utility for getting info out of DVDs
