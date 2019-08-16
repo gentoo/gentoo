@@ -26,7 +26,7 @@ RDEPEND="
 	>=dev-libs/libuv-1.23.2:=
 	>=net-dns/c-ares-1.10.1
 	>=net-libs/http-parser-2.9.0:=
-	>=net-libs/nghttp2-1.33.0
+	>=net-libs/nghttp2-1.39.2
 	sys-libs/zlib
 	icu? ( >=dev-libs/icu-60.1:= )
 	ssl? ( =dev-libs/openssl-1.0.2*:0=[-bindist] )
