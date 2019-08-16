@@ -4,6 +4,10 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2019-09-16)
+# dev-libs/libical[glib] was not stable tested, bug #689434
+=dev-libs/libical-3.0.5 glib
+
 # Michał Górny <mgorny@gentoo.org> (2019-07-31)
 # Freshly added test dependency for a test-restricted package.  Mask
 # the flag to avoid stabilizing it for the time being.
