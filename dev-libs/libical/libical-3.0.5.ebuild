@@ -13,7 +13,7 @@ SRC_URI="https://github.com/${PN}/${PN}/releases/download/v${PV}/${P}.tar.gz"
 LICENSE="|| ( MPL-2.0 LGPL-2.1 )"
 SLOT="0/3"
 KEYWORDS="alpha amd64 arm arm64 ~hppa ia64 ~mips ppc ppc64 sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris"
-IUSE="berkdb doc examples static-libs test"
+IUSE="berkdb doc examples glib static-libs test"
 
 BDEPEND="
 	dev-lang/perl
@@ -22,14 +22,14 @@ BDEPEND="
 	test? ( ${PYTHON_DEPS} )
 "
 # TODO: disabled until useful
-# 	glib? (
-# 		dev-libs/glib:2
-# 		dev-libs/libxml2:2
-# 	)
 # 	introspection? ( dev-libs/gobject-introspection:= )
 DEPEND="
 	dev-libs/icu:=
 	berkdb? ( sys-libs/db:= )
+	glib? (
+		dev-libs/glib:2
+		dev-libs/libxml2:2
+	)
 "
 RDEPEND="${DEPEND}
 	sys-libs/timezone-data
@@ -57,7 +57,7 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		-DICAL_GLIB=OFF
+		-DICAL_GLIB=$(usex glib)
 		-DICAL_GLIB_VAPI=OFF
 		-DGOBJECT_INTROSPECTION=OFF
 		$(cmake-utils_use_find_package berkdb BDB)
@@ -65,7 +65,6 @@ src_configure() {
 		-DSHARED_ONLY=$(usex !static-libs)
 	)
 # 	TODO: disabled until useful
-# 		-DICAL_GLIB=$(usex glib)
 # 		-DGOBJECT_INTROSPECTION=$(usex introspection)
 	cmake-utils_src_configure
 }
