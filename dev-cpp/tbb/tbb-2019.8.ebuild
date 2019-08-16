@@ -1,30 +1,27 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit eutils flag-o-matic multilib-minimal multilib toolchain-funcs versionator
+inherit eutils flag-o-matic multilib-minimal multilib toolchain-funcs
 
-PV1="$(get_version_component_range 1)"
-PV2=5
+PV1="$(ver_cut 1)"
+PV2="$(ver_cut 2)"
 MY_PV="${PV1}_U${PV2}"
 
 DESCRIPTION="High level abstract threading library"
 HOMEPAGE="https://www.threadingbuildingblocks.org"
-SRC_URI="https://github.com/01org/${PN}/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/intel/${PN}/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~amd64-linux ~x86-linux"
-IUSE="debug doc examples"
+IUSE="debug examples"
 
 DEPEND=""
 RDEPEND="${DEPEND}"
 S="${WORKDIR}/${PN}-${MY_PV}"
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-4.4.20160803-underlinking.patch
-	"${FILESDIR}"/${PN}-2017.20161128-build.patch
-)
+DOCS=( CHANGES README README.md doc/Release_Notes.txt )
 
 src_prepare() {
 	default
@@ -132,13 +129,13 @@ multilib_src_install() {
 multilib_src_install_all() {
 	doheader -r include/*
 
-	dodoc README CHANGES doc/Release_Notes.txt
-	use doc && dohtml -r doc/html/*
+	einstalldocs
 
 	if use examples ; then
 		insinto /usr/share/doc/${PF}/examples/build
 		doins build/*.inc
 		insinto /usr/share/doc/${PF}/examples
 		doins -r examples
+		docompress -x "/usr/share/doc/${PF}/examples"
 	fi
 }

@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 CHECKREQS_DISK_BUILD="4G"
 KDE_DOC_DIR="xxx" # contains no language subdirs
@@ -18,11 +18,14 @@ KEYWORDS="amd64 x86"
 
 CAL_FTS=( karbon sheets stage words )
 
-IUSE="activities +charts +crypt +fontconfig gemini gsl import-filter +lcms okular openexr +pdf
-	phonon pim spacenav +truetype X $(printf 'calligra_features_%s ' ${CAL_FTS[@]})"
+IUSE="activities +charts +crypt +fontconfig gemini gsl import-filter +lcms okular openexr
+	+pdf phonon spacenav +truetype X $(printf 'calligra_features_%s ' ${CAL_FTS[@]})"
 
 # TODO: Not packaged: Cauchy (https://bitbucket.org/cyrille/cauchy)
 # Required for the matlab/octave formula tool
+BDEPEND="
+	sys-devel/gettext
+"
 COMMON_DEPEND="
 	$(add_frameworks_dep karchive)
 	$(add_frameworks_dep kcmutils)
@@ -65,7 +68,7 @@ COMMON_DEPEND="
 	sys-libs/zlib
 	virtual/libiconv
 	activities? ( $(add_frameworks_dep kactivities) )
-	charts? ( dev-libs/kreport )
+	charts? ( dev-libs/kdiagram:5 )
 	crypt? ( app-crypt/qca:2[qt5(+)] )
 	fontconfig? ( media-libs/fontconfig )
 	gemini? ( $(add_qt_dep qtdeclarative 'widgets') )
@@ -85,9 +88,8 @@ COMMON_DEPEND="
 		media-libs/lcms:2
 	)
 	openexr? ( media-libs/openexr )
-	pdf? ( >=app-text/poppler-0.64:=[qt5] )
+	pdf? ( >=app-text/poppler-0.73:=[qt5] )
 	phonon? ( media-libs/phonon[qt5(+)] )
-	pim? ( <kde-apps/kcalcore-19.04.50:5 )
 	spacenav? ( dev-libs/libspnav )
 	truetype? ( media-libs/freetype:2 )
 	X? (
@@ -103,7 +105,6 @@ COMMON_DEPEND="
 "
 DEPEND="${COMMON_DEPEND}
 	dev-libs/boost
-	sys-devel/gettext
 	test? ( $(add_frameworks_dep threadweaver) )
 "
 RDEPEND="${COMMON_DEPEND}
@@ -116,10 +117,8 @@ RESTRICT+=" test"
 PATCHES=(
 	"${FILESDIR}"/${P}-no-arch-detection.patch
 	"${FILESDIR}"/${P}-doc.patch
-	"${FILESDIR}"/${P}-qt-5.11.patch
-	"${FILESDIR}"/${P}-stage-qt-5.11.patch
-	"${FILESDIR}"/${P}-poppler-0.69.patch
-	"${FILESDIR}"/${P}-poppler-0.71.patch
+	"${FILESDIR}"/${P}-{,stage-}qt-5.11.patch
+	"${FILESDIR}"/${P}-poppler-0.{69,71,72,73}.patch
 	"${FILESDIR}"/${P}-no-webkit.patch
 	"${FILESDIR}"/${P}-missing-header.patch
 )
@@ -135,11 +134,6 @@ pkg_setup() {
 
 src_prepare() {
 	kde5_src_prepare
-
-	if has_version ">=app-text/poppler-0.72"; then
-		eapply "${FILESDIR}"/${P}-poppler-0.72.patch # not upstreamable
-		eapply "${FILESDIR}"/${P}-poppler-0.73.patch
-	fi
 
 	if ! use test; then
 		sed -e "/add_subdirectory( *benchmarks *)/s/^/#DONT/" \
@@ -193,7 +187,7 @@ src_configure() {
 		-DWITH_LibWpg=$(usex import-filter)
 		-DWITH_LibWps=$(usex import-filter)
 		$(cmake-utils_use_find_package phonon Phonon4Qt5)
-		$(cmake-utils_use_find_package pim KF5CalendarCore)
+		-DCMAKE_DISABLE_FIND_PACKAGE_KF5CalendarCore=ON
 		-DWITH_LCMS2=$(usex lcms)
 		-DWITH_Okular5=$(usex okular)
 		-DWITH_OpenEXR=$(usex openexr)

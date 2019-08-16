@@ -1,8 +1,9 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
+KDE_APPS_MINIMAL="19.08.0"
 KDE_HANDBOOK="forceoptional"
 KDE_TEST="forceoptional"
 inherit kde5
@@ -12,14 +13,14 @@ HOMEPAGE="https://www.calligra.org/"
 SRC_URI="mirror://kde/stable/${PN/plan/}/${PV}/${P}.tar.xz"
 
 LICENSE="GPL-2"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="activities +holidays kwallet pim X"
 
 # FIXME: Disabled by upstream for good reason
-# Crashes plan (https://bugs.kde.org/show_bug.cgi?id=311940)
+# Crashes (https://bugs.kde.org/show_bug.cgi?id=311940)
 # $(add_kdeapps_dep akonadi)
 # $(add_kdeapps_dep akonadi-contacts)
-# Currently upstream-disabled in plan
+# Currently upstream-disabled:
 # =dev-libs/kproperty-3.0*:5
 # =dev-libs/kreport-3.0*:5
 DEPEND="
@@ -59,7 +60,7 @@ DEPEND="
 		app-crypt/qca:2[qt5(+)]
 	)
 	pim? (
-		<kde-apps/kcalcore-19.04.50:5
+		$(add_kdeapps_dep kcalcore)
 		$(add_kdeapps_dep kcontacts)
 	)
 	X? (
@@ -79,17 +80,9 @@ PATCHES=(
 	"${FILESDIR}"/${P}-qt-5.11.patch
 	"${FILESDIR}"/${P}-qca.patch
 	"${FILESDIR}"/${P}-missing-header.patch
+	"${FILESDIR}"/${P}-unused-deps.patch
+	"${FILESDIR}"/${P}-kcalcore-19.08-{1,2,3}.patch
 )
-
-src_prepare() {
-	kde5_src_prepare
-	# Unconditionally disable deprecated deps
-	punt_bogus_dep Qt5 OpenGL
-	# FIXME: disable bogus deps
-	punt_bogus_dep KF5 KCMUtils
-	punt_bogus_dep Qt5 Network
-	punt_bogus_dep Qt5 Svg
-}
 
 src_configure() {
 	local mycmakeargs=(
