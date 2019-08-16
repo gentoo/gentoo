@@ -27,11 +27,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-warnings.patch
 )
 
-src_unpack() {
-	unpack ${P}.tar.gz
-	use doc && unpack tecodoc.tar.gz
-}
-
 src_prepare() {
 	default
 	local pkg_config=$("$(tc-getPKG_CONFIG)" --libs ncurses)
