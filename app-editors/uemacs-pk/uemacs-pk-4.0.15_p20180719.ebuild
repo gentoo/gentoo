@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,8 +16,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86 ~x86-fbsd"
 
 RDEPEND="sys-libs/ncurses:0="
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 S="${WORKDIR}/uemacs"
 PATCHES=("${FILESDIR}"/${PN}-4.0.15_p20110825-gentoo.patch)
