@@ -25,10 +25,11 @@ IUSE="custom-cflags debug kernel-builtin python +rootfs test-suite static-libs"
 
 COMMON_DEPEND="
 	${PYTHON_DEPS}
-	net-libs/libtirpc
+	net-libs/libtirpc[static-libs?]
 	sys-apps/util-linux[static-libs?]
 	sys-libs/zlib[static-libs(+)?]
 	virtual/awk
+	virtual/libudev[static-libs?]
 	python? (
 		virtual/python-cffi[${PYTHON_USEDEP}]
 	)
@@ -123,6 +124,7 @@ src_configure() {
 
 	local myconf=(
 		--bindir="${EPREFIX}/bin"
+		--enable-shared
 		--enable-systemd
 		--enable-sysvinit
 		--localstatedir="${EPREFIX}/var"
@@ -136,6 +138,7 @@ src_configure() {
 		--with-systemdpresetdir="${EPREFIX}/lib/systemd/system-preset"
 		$(use_enable debug)
 		$(use_enable python pyzfs)
+		$(use_enable static-libs static)
 	)
 
 	econf "${myconf[@]}"
