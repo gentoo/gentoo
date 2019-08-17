@@ -1,0 +1,89 @@
+From 2a23bf672f25da3a0b6619969f308133fbd92a7c Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sat, 17 Aug 2019 22:42:39 +0200
+Subject: [PATCH] KF5DocToolsMacros.cmake: Use non-deprecated KDEInstallDirs
+ variables
+
+Summary:
+HTML_INSTALL_DIR -> KDE_INSTALL_DOCBUNDLEDIR
+MAN_INSTALL_DIR -> KDE_INSTALL_MANDIR
+
+BUG: 410998
+
+Test Plan: Install paths are correct by example of marble.
+
+Subscribers: kde-frameworks-devel, kde-doc-english
+
+Tags: #frameworks, #documentation
+
+Differential Revision: https://phabricator.kde.org/D23229
+---
+ KF5DocToolsMacros.cmake | 30 +++++++++++++++++++-----------
+ 1 file changed, 19 insertions(+), 11 deletions(-)
+
+diff --git a/KF5DocToolsMacros.cmake b/KF5DocToolsMacros.cmake
+index 88a2b3e..91d8736 100644
+--- a/KF5DocToolsMacros.cmake
++++ b/KF5DocToolsMacros.cmake
+@@ -63,13 +63,13 @@
+ #
+ #   KDOCTOOLS_INSTALL(po) does the following:
+ #   - Create man pages from footool.1.docbook and footool.conf.5.docbook,
+-#     install them in ${MAN_INSTALL_DIR}/fr
++#     install them in ${KDE_INSTALL_MANDIR}/fr
+ #   - Create handbooks from index.docbook files, install the one from the
+-#     fooslave/ directory in ${HTML_INSTALL_DIR}/fr/kioslave5/fooslave
+-#     and the one from the docs/ directory in $[HTML_INSTALL_DIR}/fr
++#     fooslave/ directory in ${KDE_INSTALL_DOCBUNDLEDIR}/fr/kioslave5/fooslave
++#     and the one from the docs/ directory in ${KDE_INSTALL_DOCBUNDLEDIR}/fr
+ #
+-#   If ${HTML_INSTALL_DIR} is not set, share/doc/HTML is used instead.
+-#   If ${MAN_INSTALL_DIR} is not set, share/man/<lang> is used instead.
++#   If ${KDE_INSTALL_DOCBUNDLEDIR} is not set, share/doc/HTML is used instead.
++#   If ${KDE_INSTALL_MANDIR} is not set, share/man/<lang> is used instead.
+ #
+ #  KDOCTOOLS_MEINPROC_EXECUTABLE - the meinproc5 executable
+ #
+@@ -232,11 +232,19 @@ endfunction()
+ 
+ function(kdoctools_install podir)
+     file(GLOB lang_dirs "${podir}/*")
+-    if (NOT MAN_INSTALL_DIR)
+-        set(MAN_INSTALL_DIR share/man)
++    if (NOT KDE_INSTALL_MANDIR)
++        if (MAN_INSTALL_DIR) # TODO KF6: deprecated, remove
++            set(KDE_INSTALL_MANDIR ${MAN_INSTALL_DIR})
++        else()
++            set(KDE_INSTALL_MANDIR share/man)
++        endif()
+     endif()
+-    if (NOT HTML_INSTALL_DIR)
+-        set(HTML_INSTALL_DIR share/doc/HTML)
++    if (NOT KDE_INSTALL_DOCBUNDLEDIR)
++        if (HTML_INSTALL_DIR) # TODO KF6: deprecated, remove
++            set(KDE_INSTALL_DOCBUNDLEDIR ${HTML_INSTALL_DIR})
++        else()
++            set(KDE_INSTALL_DOCBUNDLEDIR share/doc/HTML)
++        endif()
+     endif()
+     foreach(lang_dir ${lang_dirs})
+         get_filename_component(lang ${lang_dir} NAME)
+@@ -246,13 +254,13 @@ function(kdoctools_install podir)
+             string(REGEX MATCH "\\.([0-9])\\.docbook" match ${docbook})
+             if (match)
+                 kdoctools_create_manpage(${docbook} ${CMAKE_MATCH_1}
+-                    INSTALL_DESTINATION ${MAN_INSTALL_DIR}/${lang}
++                    INSTALL_DESTINATION ${KDE_INSTALL_MANDIR}/${lang}
+                 )
+             else()
+                 string(REGEX MATCH "${lang_dir}/docs/(.*)/index.docbook" match ${docbook})
+                 if (match)
+                     kdoctools_create_handbook(${docbook}
+-                        INSTALL_DESTINATION ${HTML_INSTALL_DIR}/${lang}
++                        INSTALL_DESTINATION ${KDE_INSTALL_DOCBUNDLEDIR}/${lang}
+                         SUBDIR ${CMAKE_MATCH_1}
+                     )
+                 endif()
+-- 
+2.22.1
+
