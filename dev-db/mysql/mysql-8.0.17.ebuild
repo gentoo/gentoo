@@ -164,6 +164,11 @@ src_unpack() {
 }
 
 src_prepare() {
+	# Avoid rpm call which would trigger sandbox, #692368
+	sed -i \
+		-e 's/MY_RPM rpm/MY_RPM rpmNOTEXISTENT/' \
+		CMakeLists.txt || die
+
 	if use jemalloc ; then
 		echo "TARGET_LINK_LIBRARIES(mysqld jemalloc)" >> "${S}/sql/CMakeLists.txt" || die
 	fi
