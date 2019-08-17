@@ -13,7 +13,7 @@ SRC_URI="amd64? ( https://downloads.linux.hpe.com/SDR/repo/spp/RHEL/7/x86_64/cur
 
 LICENSE="hpe"
 SLOT="0"
-KEYWORDS="-* ~amd64"
+KEYWORDS="-* amd64"
 IUSE=""
 
 DEPEND=""
