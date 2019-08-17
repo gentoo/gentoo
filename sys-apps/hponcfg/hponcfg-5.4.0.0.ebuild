@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit pax-utils rpm versionator
+inherit pax-utils rpm
 
-MY_PV=$(replace_version_separator 3 '-')
+MY_PV=$(ver_rs 3 '-')
 
 DESCRIPTION="HP Lights-Out Online Configuration Utility (HPONCFG)"
 HOMEPAGE="http://h20564.www2.hpe.com/hpsc/swd/public/detail?swItemId=MTX_5ab6295f49964f16a699064f29"
@@ -13,7 +13,7 @@ SRC_URI="amd64? ( https://downloads.linux.hpe.com/SDR/repo/spp/RHEL/7/x86_64/cur
 
 LICENSE="hpe"
 SLOT="0"
-KEYWORDS="-* ~amd64"
+KEYWORDS="-* amd64"
 IUSE=""
 
 DEPEND=""
@@ -21,8 +21,8 @@ RDEPEND="elibc_glibc? ( >sys-libs/glibc-2.14 )"
 
 S="${WORKDIR}"
 
-QA_PRESTRIPPED="/usr/sbin/hponcfg /usr/li.*/libcpqc.*"
-QA_PREBUILT="/usr/sbin/hponcfg"
+QA_PRESTRIPPED="usr/sbin/hponcfg usr/lib*/libcp*"
+QA_PREBUILT="${QA_PRESTRIPPED}"
 
 src_install() {
 	dosbin sbin/hponcfg

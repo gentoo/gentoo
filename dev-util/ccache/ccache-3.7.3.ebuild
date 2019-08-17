@@ -6,12 +6,12 @@ EAPI=7
 inherit readme.gentoo-r1
 
 DESCRIPTION="fast compiler cache"
-HOMEPAGE="https://ccache.samba.org/"
-SRC_URI="https://www.samba.org/ftp/ccache/${P}.tar.xz"
+HOMEPAGE="https://ccache.dev/"
+SRC_URI="https://github.com/ccache/ccache/releases/download/v${PV}/ccache-${PV}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="alpha amd64 ~arm arm64 hppa ia64 ~mips ppc ppc64 s390 sparc x86 ~amd64-fbsd"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sh ~sparc ~x86 ~amd64-fbsd"
 IUSE=""
 
 DEPEND="app-arch/xz-utils
@@ -21,9 +21,7 @@ RDEPEND="${DEPEND}
 	sys-apps/gentoo-functions"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-3.4-size-on-disk.patch #456178
 	"${FILESDIR}"/${PN}-3.5-nvcc-test.patch
-	"${FILESDIR}"/${PN}-3.6-disable-sized-cleanup.patch #649440
 )
 
 src_prepare() {

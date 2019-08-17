@@ -30,6 +30,7 @@ DEPEND="
 	$(add_qt_dep qtsvg)
 	$(add_qt_dep qtwidgets)
 	$(add_qt_dep qtxml)
+	sys-libs/zlib
 	aprs? ( $(add_qt_dep qtserialport) )
 	dbus? ( $(add_qt_dep qtdbus) )
 	designer? ( $(add_qt_dep designer) )
@@ -58,13 +59,14 @@ RDEPEND="${DEPEND}"
 RESTRICT+=" test"
 
 src_prepare() {
+	kde5_src_prepare
+
+	rm -rf src/3rdparty/zlib || die "Failed to remove bundled libs"
+
 	if use kde; then
 		sed -e "/add_subdirectory(marble-qt)/ s/^/#DONT/" \
-			-i src/apps/CMakeLists.txt \
-			|| die "Failed to disable marble-qt"
+			-i src/apps/CMakeLists.txt || die "Failed to disable marble-qt"
 	fi
-
-	kde5_src_prepare
 }
 
 src_configure() {
@@ -83,5 +85,9 @@ src_configure() {
 		# bug 608890
 		-DKDE_INSTALL_CONFDIR="/etc/xdg"
 	)
-	kde5_src_configure
+	if use kde; then
+		kde5_src_configure
+	else
+		cmake-utils_src_configure
+	fi
 }
