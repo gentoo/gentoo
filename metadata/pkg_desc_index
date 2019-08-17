@@ -3088,7 +3088,7 @@ dev-db/mtop 0.6.6-r3: Mysql top monitors a MySQL server
 dev-db/mycli 1.15.0-r2 1.17.0-r1 1.19.0 9999: CLI for MySQL Database with auto-completion and syntax highlighting
 dev-db/mydumper 0.9.3-r1 0.9.5 0.9.5-r1: A high-performance multi-threaded backup (and restore) toolset for MySQL
 dev-db/myodbc 5.3.9 5.3.10-r2 8.0.16: ODBC driver for MySQL
-dev-db/mysql 5.5.61 5.5.62 5.6.40-r2 5.6.42 5.6.43 5.6.44 5.6.45 5.7.23-r2 5.7.24 5.7.25 5.7.26 5.7.27 8.0.17_pre4: A fast, multi-threaded, multi-user SQL database server
+dev-db/mysql 5.5.61 5.5.62 5.6.40-r2 5.6.42 5.6.43 5.6.44-r1 5.6.45-r1 5.7.23-r2 5.7.24 5.7.25 5.7.26 5.7.27 8.0.17_pre4: A fast, multi-threaded, multi-user SQL database server
 dev-db/mysql++ 2.3.2-r1 3.2.3 3.2.4 3.2.5: C++ API interface to the MySQL database
 dev-db/mysql-cluster 7.2.34 7.3.22 7.4.21: An enhanced, drop-in replacement for MySQL
 dev-db/mysql-connector-c 6.1.11-r2 8.0.17-r1: C client library for MariaDB/MySQL
