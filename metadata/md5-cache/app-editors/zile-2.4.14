@@ -7,7 +7,8 @@ IUSE=acl test
 KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~ppc ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris
 LICENSE=GPL-3+
 RDEPEND=>=dev-libs/boehm-gc-7.2:= sys-libs/ncurses:0= acl? ( virtual/acl )
+RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://gnu/zile/zile-2.4.14.tar.gz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
-_md5_=cf8384e34917d25dea6c457b8e62d592
+_md5_=e6638bc0067818886cad4f170cc8d3ff

@@ -1,13 +1,13 @@
 DEFINED_PHASES=compile configure install prepare test
-DEPEND=sci-libs/gerris media-libs/ftgl media-libs/mesa[osmesa] x11-libs/gtk+:2 >=x11-libs/gtkglext-1.0.6 x11-libs/startup-notification virtual/pkgconfig >=app-portage/elt-patches-20170815
+DEPEND=sci-libs/gerris media-libs/ftgl media-libs/mesa[osmesa,X(+)] x11-libs/gtk+:2 >=x11-libs/gtkglext-1.0.6 x11-libs/startup-notification virtual/pkgconfig >=app-portage/elt-patches-20170815
 DESCRIPTION=Graphical viewer for Gerris simulation files
 EAPI=5
 HOMEPAGE=http://gfs.sourceforge.net/
 IUSE=static-libs
 KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
 LICENSE=GPL-2
-RDEPEND=sci-libs/gerris media-libs/ftgl media-libs/mesa[osmesa] x11-libs/gtk+:2 >=x11-libs/gtkglext-1.0.6 x11-libs/startup-notification
+RDEPEND=sci-libs/gerris media-libs/ftgl media-libs/mesa[osmesa,X(+)] x11-libs/gtk+:2 >=x11-libs/gtkglext-1.0.6 x11-libs/startup-notification
 SLOT=0
 SRC_URI=http://gerris.dalembert.upmc.fr/gerris/tarballs/gfsview-snapshot-120706.tar.gz
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	autotools-utils	696393cddf6200db17a31641f597b403	desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	libtool	f143db5a74ccd9ca28c1234deffede96	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	1d91b03d42ab6308b5f4f6b598ed110e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
-_md5_=862119b1bda141a2a4ca44b43bba8be2
+_md5_=49d3fa6a49c3060c962a301f17bcec45

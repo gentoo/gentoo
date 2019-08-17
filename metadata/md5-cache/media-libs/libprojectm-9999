@@ -1,12 +1,12 @@
 DEFINED_PHASES=configure prepare unpack
-DEPEND=gles2? ( media-libs/mesa[gles2] ) media-libs/glm media-libs/mesa qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 dev-qt/qtopengl:5 media-sound/pulseaudio ) sdl? ( >=media-libs/libsdl2-2.0.5 ) sys-libs/zlib virtual/pkgconfig >=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1[curl]
+DEPEND=gles2? ( media-libs/mesa[gles2] ) media-libs/glm media-libs/mesa[X(+)] qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 dev-qt/qtopengl:5 media-sound/pulseaudio ) sdl? ( >=media-libs/libsdl2-2.0.5 ) sys-libs/zlib virtual/pkgconfig >=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1[curl]
 DESCRIPTION=A graphical music visualization plugin similar to milkdrop
 EAPI=6
 HOMEPAGE=https://github.com/projectM-visualizer/projectm
 IUSE=gles2 qt5 sdl
 LICENSE=LGPL-2
 PROPERTIES=live
-RDEPEND=gles2? ( media-libs/mesa[gles2] ) media-libs/glm media-libs/mesa qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 dev-qt/qtopengl:5 media-sound/pulseaudio ) sdl? ( >=media-libs/libsdl2-2.0.5 ) sys-libs/zlib
+RDEPEND=gles2? ( media-libs/mesa[gles2] ) media-libs/glm media-libs/mesa[X(+)] qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 dev-qt/qtopengl:5 media-sound/pulseaudio ) sdl? ( >=media-libs/libsdl2-2.0.5 ) sys-libs/zlib
 SLOT=0
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	git-r3	562b380fc59ae6a8622171d0acb777d1	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
-_md5_=da84aa589495d42adbe6b938a93244ef
+_md5_=835c5125481279626cee57f0ad217c8f
