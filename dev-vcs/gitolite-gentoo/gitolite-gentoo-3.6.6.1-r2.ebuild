@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 [[ ${PV} == *9999 ]] && SCM="git-2"
 EGIT_REPO_URI="git://git.gentoo.org/proj/gitolite-gentoo"
 EGIT_MASTER=master
@@ -37,8 +37,11 @@ RDEPEND="${DEPEND}
 	>=dev-perl/Net-SSH-AuthorizedKeysFile-0.17
 	dev-perl/JSON"
 
+PATCHES=( )
+
 src_prepare() {
-	echo "${PF}-gentoo" > src/VERSION
+	default
+	echo "${PF}-gentoo" > src/VERSION || die
 }
 
 src_install() {
