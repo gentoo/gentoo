@@ -14,6 +14,7 @@ LICENSE="GPL-2+ myspell-en_CA-KevinAtkinson public-domain Princeton Ispell"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="sqlite test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="dev-perl/IO-CaptureOutput
 	dev-perl/Spreadsheet-WriteExcel
