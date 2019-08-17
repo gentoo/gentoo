@@ -612,6 +612,38 @@ src_test() {
 		done
 	fi
 
+	if has_version '>=dev-libs/openssl-1.1.1' ; then
+		# Tests are expecting <openssl-1.1.1 default cipher
+		for t in \
+			auth_sec.cert_verify \
+			auth_sec.mysql_ssl_connection \
+			auth_sec.openssl_cert_generation \
+			auth_sec.ssl_auto_detect \
+			auth_sec.ssl_mode \
+			auth_sec.tls \
+			binlog.binlog_grant_alter_user \
+			encryption.innodb_onlinealter_encryption \
+			main.grant_alter_user_qa \
+			main.grant_user_lock_qa \
+			main.mysql_ssl_default \
+			main.openssl_1 \
+			main.plugin_auth_sha256_tls \
+			main.ssl \
+			main.ssl_8k_key \
+			main.ssl_bug75311 \
+			main.ssl_ca \
+			main.ssl_cipher \
+			main.ssl_compress \
+			main.ssl_crl \
+			main.ssl_ecdh \
+			main.ssl_verify_identity \
+			x.connection_tls_version \
+			x.connection_openssl \
+		; do
+			_disable_test  "$t" "Requires <dev-libs/openssl-1.1.1"
+		done
+	fi
+
 	# Try to increase file limits to increase test coverage
 	if ! ulimit -n 16500 1>/dev/null 2>&1 ; then
 		# Upper limit comes from parts.partition_* tests
