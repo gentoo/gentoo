@@ -30,11 +30,6 @@
 #--- END OF EXAMPLES ---
 
 # Aaron Bauman <bman@gentoo.org> (2019-08-17)
-# Outstanding sec vuln bug #544228. No releases from upstream
-# Upstream still has not addressed the bug. Removal in 30 days.
-dev-python/restkit
-
-# Aaron Bauman <bman@gentoo.org> (2019-08-17)
 # Unmaintained, outstanding sec vuln bug #540360
 # Lots of new versions upstream. Removal in 30 days.
 dev-embedded/bitbake
