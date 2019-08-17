@@ -21,7 +21,7 @@ fi
 
 LICENSE="BSD-2 CDDL MIT"
 SLOT="0"
-IUSE="custom-cflags debug kernel-builtin python +rootfs test-suite static-libs"
+IUSE="custom-cflags debug kernel-builtin libressl python +rootfs test-suite static-libs"
 
 COMMON_DEPEND="
 	${PYTHON_DEPS}
@@ -30,6 +30,8 @@ COMMON_DEPEND="
 	sys-libs/zlib[static-libs(+)?]
 	virtual/awk
 	virtual/libudev[static-libs?]
+	libressl? ( dev-libs/libressl:0=[static-libs?] )
+	!libressl? ( dev-libs/openssl:0=[static-libs?] )
 	python? (
 		virtual/python-cffi[${PYTHON_USEDEP}]
 	)
