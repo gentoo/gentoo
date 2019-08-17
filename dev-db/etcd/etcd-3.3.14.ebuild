@@ -5,9 +5,9 @@ EAPI=6
 
 inherit user systemd golang-vcs-snapshot
 
-KEYWORDS="amd64"
-EGO_PN="github.com/etcd-io/etcd"
-GIT_COMMIT="d57e8b8"
+KEYWORDS="~amd64"
+EGO_PN="github.com/coreos/etcd"
+GIT_COMMIT="5cf5d88"
 MY_PV="${PV/_rc/-rc.}"
 DESCRIPTION="Highly-available key value store for shared configuration and service discovery"
 HOMEPAGE="https://github.com/etcd-io/etcd"
@@ -15,7 +15,7 @@ SRC_URI="https://${EGO_PN}/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="Apache-2.0"
 SLOT="0"
 IUSE="doc +server"
-DEPEND=">=dev-lang/go-1.10:="
+DEPEND=">=dev-lang/go-1.12:="
 RDEPEND="!dev-db/etcdctl"
 
 src_prepare() {
@@ -73,6 +73,6 @@ src_install() {
 
 src_test() {
 	pushd src/${EGO_PN} || die
-	./test || die
+	GO111MODULES=on ./test || die
 	popd || die
 }
