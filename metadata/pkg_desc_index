@@ -12680,8 +12680,8 @@ mate-extra/mate-power-manager 1.22.1: A session daemon for MATE that makes it ea
 mate-extra/mate-screensaver 1.22.1: Replaces xscreensaver, integrating with the MATE desktop
 mate-extra/mate-sensors-applet 1.22.1: MATE panel applet to display readings from hardware sensors
 mate-extra/mate-system-monitor 1.22.0 1.22.1: The MATE System Monitor
-mate-extra/mate-user-guide 1.22.0: User documentation for MATE Desktop
-mate-extra/mate-user-share 1.22.0: Personal file sharing for the MATE desktop
+mate-extra/mate-user-guide 1.22.0 1.22.2: User documentation for MATE Desktop
+mate-extra/mate-user-share 1.22.0 1.22.1: Personal file sharing for the MATE desktop
 mate-extra/mate-utils 1.22.0 1.22.1-r1: Utilities for the MATE desktop
 media-fonts/Humor-Sans 1.0-r1: A sanserif typeface in the style of xkcd
 media-fonts/ahem 1.0: A font developed to help test writers develop predictable tests
@@ -19559,7 +19559,7 @@ x11-wm/jwm 2.3.2 2.3.4-r1 2.3.5 2.3.6 2.3.7: Very fast and lightweight still pow
 x11-wm/larswm 7.5.3-r2: Tiling window manager for X11, based on 9wm by David Hogan
 x11-wm/lumina 1.3.0_p1 1.4.0_p1-r1 1.5.0-r1 9999: Lumina desktop environment
 x11-wm/lwm 1.2.4: The ultimate lightweight window manager
-x11-wm/marco 1.22.1-r1: MATE default window manager
+x11-wm/marco 1.22.1-r1 1.22.2: MATE default window manager
 x11-wm/matwm2 0.1.2_pre3-r1: Simple EWMH compatible window manager with titlebars and frames
 x11-wm/metacity 3.32.0: GNOME Flashback window manager
 x11-wm/muffin 3.6.0 3.8.2 4.0.3: Compositing window manager forked from Mutter for use with Cinnamon
