@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 [[ ${PV} == *9999 ]] && SCM="git-2"
 EGIT_REPO_URI="https://github.com/sitaramc/${PN}.git"
 EGIT_MASTER=master
@@ -15,12 +15,12 @@ if [[ ${PV} != *9999 ]]; then
 	KEYWORDS="~amd64 ~arm ~x86"
 else
 	SRC_URI=""
-	KEYWORDS=""
+	KEYWORDS="~amd64 ~arm ~x86"
 fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="selinux tools vim-syntax"
+IUSE="selinux tools"
 
 DEPEND="
 	acct-group/git
@@ -30,14 +30,17 @@ DEPEND="
 	virtual/perl-File-Temp
 	>=dev-vcs/git-1.6.6"
 RDEPEND="${DEPEND}
+	!app-vim/gitolite-syntax
 	!dev-vcs/gitolite-gentoo
 	!www-apps/gitea
 	selinux? ( sec-policy/selinux-gitosis )
-	vim-syntax? ( app-vim/gitolite-syntax )
 	dev-perl/JSON"
 
+PATCHES=( )
+
 src_prepare() {
-	echo $PF > src/VERSION
+	default
+	echo $PF > src/VERSION || die
 }
 
 src_install() {
@@ -51,6 +54,9 @@ src_install() {
 	# These are meant by upstream as examples, you are strongly recommended to
 	# customize them for your needs.
 	dodoc contrib/utils/ipa_groups.pl contrib/utils/ldap_groups.sh
+
+	insinto /usr/share/vim/vimfiles
+	doins -r contrib/vim/*
 
 	insopts -m0755
 	insinto $uexec
