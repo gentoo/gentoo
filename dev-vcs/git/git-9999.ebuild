@@ -133,7 +133,7 @@ REQUIRED_USE="
 	subversion? ( perl )
 	webdav? ( curl )
 	pcre-jit? ( pcre )
-	python? ( ${PYTHON_REQUIRED_USE} )
+	perforce? ( ${PYTHON_REQUIRED_USE} )
 "
 
 PATCHES=(
