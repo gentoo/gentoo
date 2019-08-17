@@ -488,7 +488,7 @@ app-backup/tsm 7.1.8.0 8.1.6.0: IBM Spectrum Protect (former Tivoli Storage Mana
 app-backup/untangle-https-backup 0.0.10: Back up Untangle configurations via the web admin UI
 app-backup/vzdump 1.2: A utility to make consistent snapshots of running OpenVZ containers
 app-backup/zbackup 1.4.4-r1 9999: A versatile deduplicating backup tool
-app-benchmarks/acovea 5.1.1 5.1.1-r2: Analysis of Compiler Options via Evolutionary Algorithm
+app-benchmarks/acovea 5.1.1-r2: Analysis of Compiler Options via Evolutionary Algorithm
 app-benchmarks/acovea-gtk 1.0.1: Analysis of Compiler Options via Evolutionary Algorithm GUI
 app-benchmarks/bashmark 0.6.2: Geno's cross platform benchmarking suite
 app-benchmarks/bonnie 2.0.6-r2: Performance Test of Filesystem I/O using standard C library calls
