@@ -2373,7 +2373,6 @@ is_ada() {
 
 is_cxx() {
 	gcc-lang-supported 'c++' || return 1
-	! is_crosscompile && tc_version_is_at_least 4.8 && return 0
 	use_if_iuse cxx
 }
 
