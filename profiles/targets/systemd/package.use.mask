@@ -15,6 +15,7 @@ virtual/libudev static-libs
 sys-fs/cryptsetup static static-libs
 sys-fs/lvm2 static static-libs
 sys-fs/dmraid static
+sys-fs/zfs static-libs
 dev-libs/libgudev static-libs
 # These are actually possible, but only if you USE=-udev when building pciutils.
 # But package.use.mask doesn't have a way to express that, so this profile loses.
