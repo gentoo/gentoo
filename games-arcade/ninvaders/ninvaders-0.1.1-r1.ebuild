@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -21,7 +21,8 @@ PATCHES=( "${FILESDIR}"/${P}-compile.patch )
 src_compile() {
 	emake \
 		CC="$(tc-getCC)" \
-		CFLAGS="${CFLAGS}"
+		CFLAGS="${CFLAGS}" \
+		LIBS="$($(tc-getPKG_CONFIG) --libs ncurses)"
 }
 
 src_install() {
