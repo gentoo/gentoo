@@ -17463,7 +17463,7 @@ sys-apps/syscriptor 1.5.15: display misc information about your hardware
 sys-apps/syslog-notify 0.2: Notifications for syslog entries via libnotify
 sys-apps/systemd 242-r6 243_rc1-r2 9999: System and service manager for Linux
 sys-apps/systemd-readahead 216: Split of readahead systemd implementation
-sys-apps/sysvinit 2.93 2.94 2.95: /sbin/init - parent of all processes
+sys-apps/sysvinit 2.93 2.94 2.95 2.95-r1: /sbin/init - parent of all processes
 sys-apps/tas 1.5.2.180622: Supermicro Thin-Agent Service for monitoring through the BMC/IPMI
 sys-apps/tcp-wrappers 7.6.22-r1: TCP Wrappers
 sys-apps/texinfo 6.3 6.6-r1 6.6-r3: The GNU info program and utilities
