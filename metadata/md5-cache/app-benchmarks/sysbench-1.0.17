@@ -1,0 +1,15 @@
+BDEPEND=>=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=configure install prepare test
+DEPEND=aio? ( dev-libs/libaio ) mysql? ( virtual/libmysqlclient ) postgres? ( dev-db/postgresql:= ) dev-lang/luajit:= dev-libs/concurrencykit dev-libs/libxslt sys-devel/libtool virtual/pkgconfig test? ( dev-util/cram )
+DESCRIPTION=System performance benchmark
+EAPI=7
+HOMEPAGE=https://github.com/akopytov/sysbench
+IUSE=aio mysql postgres test
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2+
+RDEPEND=aio? ( dev-libs/libaio ) mysql? ( virtual/libmysqlclient ) postgres? ( dev-db/postgresql:= ) dev-lang/luajit:=
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=https://github.com/akopytov/sysbench/archive/1.0.17.tar.gz -> sysbench-1.0.17.tar.gz
+_eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	pax-utils	db85a3c508cf82c45f24b2723791cc93	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
+_md5_=1413af9be86f9d57986e784ebfde2765
