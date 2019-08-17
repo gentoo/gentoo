@@ -506,14 +506,15 @@ src_test() {
 	if has_version '>=dev-libs/openssl-1.1.0' ; then
 		# Tests are expecting <openssl-1.1 default cipher
 		for t in \
-			main.ssl_8k_key \
-			main.ssl-sha512 \
-			main.ssl_crl \
-			main.ssl_ca \
-			main.ssl \
-			main.ssl_compress \
-			main.plugin_auth_sha256_tls \
 			main.openssl_1 \
+			main.plugin_auth_sha256_tls \
+			main.ssl \
+			main.ssl_8k_key \
+			main.ssl_ca \
+			main.ssl_cipher\
+			main.ssl_compress \
+			main.ssl_crl \
+			main.ssl-sha512 \
 		; do
 			_disable_test  "$t" "Requires <dev-libs/openssl-1.1.0"
 		done
