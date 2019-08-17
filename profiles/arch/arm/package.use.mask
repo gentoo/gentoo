@@ -1,6 +1,13 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2019-09-18)
+# media-video/pipewire is not keyworded yet
+dev-libs/weston pipewire
+kde-apps/krfb wayland
+kde-plasma/xdg-desktop-portal-kde screencast
+sys-apps/xdg-desktop-portal screencast
+
 # Michał Górny <mgorny@gentoo.org> (2019-07-13)
 # app-forensics/libewf is not keyworded here.
 app-admin/testdisk ewf
