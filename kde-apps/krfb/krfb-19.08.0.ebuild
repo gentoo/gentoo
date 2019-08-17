@@ -35,7 +35,7 @@ DEPEND="
 	x11-libs/libxcb
 	x11-libs/libXtst
 	x11-libs/xcb-util-image
-	wayland? ( media-video/pipewire )
+	wayland? ( media-video/pipewire:= )
 "
 RDEPEND="${DEPEND}
 	wayland? ( sys-apps/xdg-desktop-portal[screencast] )
