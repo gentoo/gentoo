@@ -111,7 +111,7 @@ src_prepare() {
 }
 
 src_configure() {
-	# TODO: pipewire remote desktop support; --disable-remote-desktop actually enables it due to upstream autotools bug in 3.26.2 (omitted means disabled)
+	# TODO: pipewire remote desktop support
 	# TODO: nvidia EGLDevice support
 	# TODO: elogind vs systemd is automagic in 3.28.3 - if elogind is found, it's used instead of systemd; but not a huge problem as elogind package blocks systemd package
 	# TODO: lack of --with-xwayland-grab-default-access-rules relies on default settings, but in Gentoo we might have some more packages we want to give Xgrab access (mostly virtual managers and remote desktops)
@@ -130,6 +130,7 @@ src_configure() {
 		--enable-xlib-egl-platform \
 		--with-default-driver=gl \
 		--with-libcanberra \
+		--disable-remote-desktop \
 		$(usex debug --enable-debug=yes "") \
 		$(use_enable gles2)        \
 		$(use_enable gles2 cogl-gles2) \
