@@ -1,7 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+
+inherit toolchain-funcs
 
 DESCRIPTION="client for the french tarot game maitretarot"
 HOMEPAGE="http://www.nongnu.org/maitretarot/"
@@ -22,3 +24,8 @@ RDEPEND=${DEPEND}
 PATCHES=(
 	"${FILESDIR}"/${P}-format.patch
 )
+
+src_configure() {
+	export LIBS="$( $(tc-getPKG_CONFIG) --libs ncurses )"
+	default
+}
