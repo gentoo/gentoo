@@ -481,8 +481,40 @@ src_test() {
 			_disable_test  "$t" "False positives in Gentoo"
 	done
 
-	# Bad test definition
-	_disable_test main.mysqldump "Test fails after 2018-12-31 with new warnings"
+	if ! use latin1 ; then
+		for t in \
+			binlog.binlog_mysqlbinlog_filter \
+			binlog.binlog_statement_insert_delayed \
+			funcs_1.is_columns_mysql \
+			funcs_1.is_tables_mysql \
+			funcs_1.is_triggers \
+			main.information_schema \
+			main.mysql_client_test \
+			main.mysqld--help-notwin \
+			perfschema.binlog_edge_mix \
+			perfschema.binlog_edge_stmt \
+		; do
+			_disable_test  "$t" "Requires DEFAULT_CHARSET=latin1 but USE=-latin1 is set"
+		done
+	fi
+
+	if has_version '>=dev-libs/openssl-1.1.0' ; then
+		# Tests are expecting <openssl-1.1 default cipher
+		for t in \
+			main.ssl_8k_key \
+			main.ssl-sha512 \
+			main.ssl_crl \
+			main.ssl_ca \
+			main.ssl \
+			main.ssl_compress \
+			main.plugin_auth_sha256_tls \
+			main.openssl_1 \
+		; do
+			_disable_test  "$t" "Requires <dev-libs/openssl-1.1.0"
+		done
+	fi
+
+	_disable_test main.gis-precise "Known rounding error with latest AMD processors"
 
 	# run mysql-test tests
 	perl mysql-test-run.pl --force --vardir="${T}/var-tests" --reorder --skip-test=tokudb --skip-test-list="${T}/disabled.def"
