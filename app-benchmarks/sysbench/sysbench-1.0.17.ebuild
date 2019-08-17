@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit pax-utils
+inherit autotools pax-utils
 
 DESCRIPTION="System performance benchmark"
 HOMEPAGE="https://github.com/akopytov/sysbench"
@@ -11,15 +11,15 @@ SRC_URI="https://github.com/akopytov/sysbench/archive/${PV}.tar.gz -> ${P}.tar.g
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="aio mysql postgres test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="aio? ( dev-libs/libaio )
 	mysql? ( virtual/libmysqlclient )
 	postgres? ( dev-db/postgresql:= )
 	dev-lang/luajit:="
 DEPEND="${RDEPEND}
-	app-editors/vim-core
 	dev-libs/concurrencykit
 	dev-libs/libxslt
 	sys-devel/libtool
@@ -29,18 +29,16 @@ DEPEND="${RDEPEND}
 src_prepare() {
 	default
 
-	sed -i -e "/^htmldir =/s:=.*:=/usr/share/doc/${PF}/html:" doc/Makefile.am || die
-
 	# remove bundled libs
 	rm -r third_party/luajit/luajit third_party/concurrency_kit/ck third_party/cram || die
 
-	./autogen.sh || die
+	eautoreconf
 }
 
 src_configure() {
 	local myeconfargs=(
-		$(use_enable aio aio)
-		$(use_with mysql mysql)
+		$(use_enable aio)
+		$(use_with mysql)
 		$(use_with postgres pgsql)
 		--without-attachsql
 		--without-drizzle
@@ -52,12 +50,12 @@ src_configure() {
 	econf "${myeconfargs[@]}"
 }
 
-src_compile() {
-	default
-
-	pax-mark m "${S}/src/${PN}"
-}
-
 src_test() {
 	emake check test
+}
+
+src_install() {
+	default
+
+	pax-mark m "${ED}"/usr/bin/${PN}
 }
