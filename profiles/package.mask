@@ -539,10 +539,6 @@ x11-drivers/xf86-video-voodoo
 # Requires dev-libs/openssl-1.1.1, Bug 674148
 dev-libs/gost-engine
 
-# Lars Wendler <polynomial-c@gentoo.org> (2018-12-28)
-# Masked while being tested and reverse deps aren't fully compatible
-=dev-libs/openssl-1.1.1*
-
 # Hanno Boeck <hanno@gentoo.org (2018-12-23)
 # Needs new OpenSSL, should be unmasked together with
 # OpenSSL 1.1.1
