@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,9 +12,11 @@ SRC_URI="https://dev.gentoo.org/~mgorny/dist/${P}.tar.xz"
 LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="test"
+RESTRICT="!test? ( test )"
 
-DEPEND="app-arch/xz-utils"
+DEPEND="app-arch/xz-utils
+	test? ( sys-devel/clang )"
 
 S=${WORKDIR}/${P}/lib/csu
 
@@ -60,9 +62,14 @@ multilib_src_compile() {
 }
 
 multilib_src_test() {
+	# TODO: fix gcc support
+	local -x CC=${CHOST}-clang
+	local -x CXX=${CHOST}-clang++
+	strip-unsupported-flags
+
 	local cc=(
 		# -B sets prefix for internal gcc/clang file lookup
-		$(tc-getCC) -B"${BUILD_DIR}"
+		"${CC}" -B"${BUILD_DIR}"
 	)
 
 	# 1. figure out the correct location for crt* files
