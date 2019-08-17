@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,7 +15,7 @@ else
 fi
 
 DESCRIPTION="Simple crossplatform IDE for NASM assembly language"
-HOMEPAGE="https://dman95.github.io/SASM/"
+HOMEPAGE="http://dman95.github.io/SASM/"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -23,16 +23,33 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
+PATCHES=(
+	"${FILESDIR}"/${P}-unbundle-qtsingleapplication.patch
+)
+
 DEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
-	dev-qt/qtnetwork:5
+	dev-qt/qtsingleapplication
 	dev-qt/qtwidgets:5
 "
 REPEND="${DEPEND}
 	dev-lang/nasm
 	sys-devel/gdb
 "
+
+# SASM repository contains precompiled binaries ¯\_(ツ)_/¯
+QA_PREBUILT="usr/bin/fasm usr/bin/listing"
+
+src_prepare() {
+	# To recompress it with gentoo tools
+	gunzip Linux/share/doc/sasm/changelog.gz || die
+	sed -e 's@changelog.gz@changelog@g' \
+		-e '/docfiles.path/s@doc/sasm@doc/'${PF}'@g' \
+		-i SASM.pro || die
+
+	default
+}
 
 src_configure() {
 	eqmake5
