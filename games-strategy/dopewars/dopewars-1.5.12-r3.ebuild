@@ -1,8 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit desktop
+
+inherit desktop toolchain-funcs
 
 DESCRIPTION="Re-Write of the game Drug Wars"
 HOMEPAGE="http://dopewars.sourceforge.net/"
@@ -36,6 +37,8 @@ src_prepare() {
 		-e "/\/doc\// s:DPDATADIR:\"/usr/share\":" \
 		-e 's:index.html:html/index.html:' \
 		src/dopewars.c || die
+	sed -i -e "s/\-lncurses/$($(tc-getPKG_CONFIG) --libs ncurses)/g" \
+		configure || die
 }
 
 src_configure() {
