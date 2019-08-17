@@ -1,6 +1,12 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Sergei Trofimovich <slyfox@gentoo.org> (2019-08-17)
+# USE=-cxx us a sure way to break native install as modern gcc
+# requires C++ to bootstrap. But in rare cases it's useful
+# to have a compiler not capable of C++, bug #692126.
+sys-devel/gcc cxx
+
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2019-04-14)
 # Make sure glibc static libs are installed for now. Not installing
 # them is an experimental feature and needs testing.
