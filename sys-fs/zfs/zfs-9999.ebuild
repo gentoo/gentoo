@@ -16,19 +16,22 @@ if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/zfsonlinux/zfs.git"
 else
 	SRC_URI="https://github.com/zfsonlinux/${PN}/releases/download/${P}/${P}.tar.gz"
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~ppc64"
 fi
 
 LICENSE="BSD-2 CDDL MIT"
 SLOT="0"
-IUSE="custom-cflags debug kernel-builtin python +rootfs test-suite static-libs"
+IUSE="custom-cflags debug kernel-builtin libressl python +rootfs test-suite static-libs"
 
 COMMON_DEPEND="
 	${PYTHON_DEPS}
-	net-libs/libtirpc
+	net-libs/libtirpc[static-libs?]
 	sys-apps/util-linux[static-libs?]
 	sys-libs/zlib[static-libs(+)?]
 	virtual/awk
+	virtual/libudev[static-libs?]
+	libressl? ( dev-libs/libressl:0=[static-libs?] )
+	!libressl? ( dev-libs/openssl:0=[static-libs?] )
 	python? (
 		virtual/python-cffi[${PYTHON_USEDEP}]
 	)
@@ -123,6 +126,7 @@ src_configure() {
 
 	local myconf=(
 		--bindir="${EPREFIX}/bin"
+		--enable-shared
 		--enable-systemd
 		--enable-sysvinit
 		--localstatedir="${EPREFIX}/var"
@@ -136,6 +140,7 @@ src_configure() {
 		--with-systemdpresetdir="${EPREFIX}/lib/systemd/system-preset"
 		$(use_enable debug)
 		$(use_enable python pyzfs)
+		$(use_enable static-libs static)
 	)
 
 	econf "${myconf[@]}"
