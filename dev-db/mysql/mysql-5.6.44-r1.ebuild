@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
-MY_EXTRAS_VER="20190604-1109Z"
+MY_EXTRAS_VER="20190817-0024Z"
 
 CMAKE_MAKEFILE_GENERATOR=emake
 
@@ -66,6 +66,7 @@ PATCHES=(
 	"${MY_PATCH_DIR}"/20031_all_mysql-5.6-fix-monitor.test.patch
 	"${MY_PATCH_DIR}"/20036_all_mysql-5.6-fix-rpl_semi_sync_shutdown_hang.test.patch
 	"${MY_PATCH_DIR}"/20018_all_mysql-5.6.44-fix-libressl-support.patch
+	"${MY_PATCH_DIR}"/20018_all_mysql-5.6.44-add-openssl-1.1-support.patch
 )
 
 # Be warned, *DEPEND are version-dependant
@@ -82,7 +83,7 @@ COMMON_DEPEND="
 	tcmalloc? ( dev-util/google-perftools:0= )
 	systemtap? ( >=dev-util/systemtap-1.3:0= )
 	!yassl? (
-		!libressl? ( =dev-libs/openssl-1.0.2*:0= )
+		!libressl? ( >=dev-libs/openssl-1.0.0:0= )
 		libressl? ( =dev-libs/libressl-2.6.5*:0= )
 	)
 	>=sys-libs/zlib-1.2.3:0=
@@ -368,6 +369,10 @@ src_install() {
 	# INSTALL_LAYOUT=STANDALONE causes cmake to create a /usr/data dir
 	if [[ -d "${ED}/usr/data" ]] ; then
 		rm -Rf "${ED}/usr/data" || die
+	fi
+
+	if [[ -d "${ED%/}/usr/sql-bench" ]] ; then
+		mv "${ED%/}/usr/sql-bench" "${ED%/}/usr/share/mysql/" || die
 	fi
 
 	# Unless they explicitly specific USE=test, then do not install the
