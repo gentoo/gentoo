@@ -12114,6 +12114,7 @@ gui-apps/swaylock 1.3 1.4 9999: Screen locker for Wayland
 gui-apps/waybar 0.7.2 9999: Highly customizable Wayland bar for Sway and Wlroots based compositors.
 gui-apps/wl-clipboard 1.0.0 9999: Wayland clipboard utilities
 gui-libs/amtk 5.0.0: Actions, Menus and Toolbars Kit for GTK+ applications
+gui-libs/libhandy 0.0.9: Library with GTK widgets for mobile phones
 gui-libs/tepl 4.2.0: GtkSourceView-based text editors and IDE helper library
 gui-libs/wlroots 0.4.1 0.5.0 0.6.0 9999: Pluggable, composable, unopinionated modules for building a Wayland compositor
 gui-wm/sway 1.0 1.1.1 9999: i3-compatible Wayland window manager
@@ -18560,7 +18561,7 @@ www-client/chromium 76.0.3809.100 77.0.3865.35 78.0.3880.4: Open-source version 
 www-client/ck4up 1.2: Check for Updates on HTTP pages
 www-client/dillo 3.0.5 3.0.5-r1 9999: Lean FLTK based web browser
 www-client/elinks 0.12_pre6-r1 0.12_pre6-r4 0.13_pre_pre20180225 9999: Advanced and well-established text-mode web browser
-www-client/epiphany 3.30.4: GNOME webbrowser based on Webkit
+www-client/epiphany 3.30.4 3.32.4: GNOME webbrowser based on Webkit
 www-client/falkon 3.1.0-r1: Cross-platform web browser using QtWebEngine
 www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
 www-client/firefox 52.9.0 60.8.0 68.0.1 68.0.2: Firefox Web Browser

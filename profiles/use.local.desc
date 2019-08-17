@@ -3746,6 +3746,7 @@ gui-apps/waybar:libcxx - Build with Clang's libc++ instead of libstdc++ on Linux
 gui-apps/waybar:mpd - Enable support for the Music Player Daemon
 gui-apps/waybar:network - Enable libnl support for network related features
 gui-apps/waybar:tray - Enable support for tray
+gui-libs/libhandy:glade - Install module and catalog for dev-util/glade
 gui-libs/wlroots:X - Enable support for X11 applications (XWayland)
 gui-libs/wlroots:elogind - Enable support for rootless session via elogind
 gui-libs/wlroots:icccm - Use xcb-icccm (from x11-libs/xcb-util-wm) util library for improved Xwayland introspection
