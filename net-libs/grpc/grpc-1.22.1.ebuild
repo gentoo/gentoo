@@ -13,7 +13,7 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~ppc64 ~x86"
 IUSE="examples doc perftools systemtap static-libs"
 
 DEPEND="
@@ -36,6 +36,7 @@ PATCHES=(
 	"${FILESDIR}/grpc-1.3.0-Don-t-run-ldconfig.patch"
 	"${FILESDIR}/grpc-1.11.0-pkgconfig-libdir.patch"
 	"${FILESDIR}/grpc-1.22.0-cxx_arg_list_too_long_forloop.patch" # https://github.com/grpc/grpc/issues/14844
+	"${FILESDIR}/grpc-1.22.1-glibc-2.30-compat.patch" # https://github.com/grpc/grpc/pull/18950
 )
 
 S="${WORKDIR}/${PN}-${MY_PV}"
