@@ -33,6 +33,7 @@
 # Relies on vulnerable automake:1.10
 # Removal in 30 days
 games-simulation/crrcsim
+media-gfx/pixie
 
 # Aaron Bauman <bman@gentoo.org> (2019-08-17)
 # Unmaintained, outstanding sec vuln bug #540360
