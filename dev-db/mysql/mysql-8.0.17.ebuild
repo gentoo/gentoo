@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
-MY_EXTRAS_VER="20190802-1549Z"
+MY_EXTRAS_VER="20190817-0024Z"
 
 CMAKE_MAKEFILE_GENERATOR=emake
 
