@@ -256,7 +256,7 @@ src_configure(){
 		-DWITH_RE2=system
 		-DWITH_LIBEVENT=system
 		-DWITH_LZ4=system
-		-DWITH_PROTOBUF=bundled
+		-DWITH_PROTOBUF=system
 		-DWITH_MECAB=$(usex cjk system OFF)
 		-DWITH_NUMA=$(usex numa ON OFF)
 		# Our dev-libs/rapidjson doesn't carry necessary fixes for std::regex
