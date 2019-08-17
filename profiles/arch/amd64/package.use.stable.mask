@@ -17,6 +17,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2019-09-18)
+# media-video/pipewire is not stable yet
+dev-libs/weston pipewire
+kde-apps/krfb wayland
+kde-plasma/xdg-desktop-portal-kde screencast
+sys-apps/xdg-desktop-portal screencast
+
 # Brian Evans <grknight@gentoo.org> (2019-05-22)
 # Allow python-exec to install all targets
 # Ack by mgorny
