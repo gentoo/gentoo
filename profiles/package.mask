@@ -171,10 +171,6 @@ sci-physics/meep
 # Masked for removal in 30 days, Bugs #641864, #647536, #688244
 x11-libs/guile-gtk
 
-# Thomas Deutschmann <whissi@gentoo.org> (2019-08-02)
-# Ebuild is still in development and shouldn't be used.
-=dev-db/mysql-8*
-
 # Michał Górny <mgorny@gentoo.org> (2019-08-01)
 # Discontinued upstream in July 2017.  Has irritating bugs, and is hard
 # to build from source (we have binary package only).  Upstream
@@ -335,14 +331,6 @@ dev-tex/quotchap
 # Miroslav Šulc <fordfrog@gentoo.org> (2019-06-12)
 # Depends on >=virtual/{jdk,jre}-11 which is masked
 =www-servers/tomcat-9.0.21
-
-# Brian Evans <grknight@gentoo.org> (2019-06-11)
-# Mask these packages for further testing
-# There is known API breakage and some packages fail,
-# particuarly with "my_bool" dropped for "bool"
->=dev-db/myodbc-8.0
->=dev-db/mysql-connector-c-8.0
-~virtual/libmysqlclient-21
 
 # Zac Medico <zmedico@gentoo.org> (2019-05-31)
 # Upstream is dead and there are multiple security vulnerabilities.
