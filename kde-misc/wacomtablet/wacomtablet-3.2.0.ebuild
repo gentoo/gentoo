@@ -12,7 +12,7 @@ HOMEPAGE="https://userbase.kde.org/Wacomtablet https://store.kde.org/p/1127862"
 SRC_URI="mirror://kde/stable/${PN}/${PV}/${P}.tar.xz"
 
 LICENSE="GPL-2"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 BDEPEND="sys-devel/gettext"
