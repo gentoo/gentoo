@@ -189,8 +189,6 @@ multilib_src_install_all() {
 	newinitd "${FILESDIR}"/auditd-init.d-2.4.3 auditd
 	newconfd "${FILESDIR}"/auditd-conf.d-2.1.3 auditd
 
-	fperms 644 "$(systemd_get_systemunitdir)"/auditd.service # 556436
-
 	[ -f "${ED}"/sbin/audisp-remote ] && \
 	dodir /usr/sbin && \
 	mv "${ED}"/{sbin,usr/sbin}/audisp-remote || die
