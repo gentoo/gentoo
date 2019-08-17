@@ -14,6 +14,7 @@ LICENSE="GPL-2+ BitstreamVera OFL-1.1 Apache-2.0 CC0-1.0 MIT BSD"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="dev-db/qt5-sqlcipher
 	>=dev-libs/libsodium-1.0.11:=
