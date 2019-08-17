@@ -7,7 +7,8 @@ inherit bsdmk multilib-minimal toolchain-funcs
 
 DESCRIPTION="crtbegin.o/crtend.o from NetBSD CSU for GCC-free toolchain"
 HOMEPAGE="http://cvsweb.netbsd.org/bsdweb.cgi/src/lib/csu/"
-SRC_URI="https://dev.gentoo.org/~mgorny/dist/${P}.tar.xz"
+SRC_URI="https://dev.gentoo.org/~mgorny/dist/${P}.tar.xz
+	test? ( https://dev.gentoo.org/~mgorny/dist/${P}-tests.tar.bz2 )"
 
 LICENSE="BSD-2"
 SLOT="0"
@@ -59,9 +60,14 @@ multilib_src_compile() {
 	opts+=( crtbegin.o crtbeginS.o crtend.o )
 
 	bsdmk_src_compile "${opts[@]}"
+
+	ln -s crtbegin.o crtbeginT.o || die
+	ln -s crtend.o crtendS.o || die
 }
 
 multilib_src_test() {
+	cd "${WORKDIR}"/*-tests || die
+
 	# TODO: fix gcc support
 	local -x CC=${CHOST}-clang
 	local -x CXX=${CHOST}-clang++
@@ -97,37 +103,33 @@ multilib_src_test() {
 		die "Compiler uses wrong crtend: ${crtend}"
 	fi
 
-	cat > hello.c <<-EOF || die
-		#include <stdio.h>
+	# 3. build and run the tests
+	emake CC="${cc[*]}"
 
-		__attribute__((constructor))
-		static void ctor_test()
-		{
-			fputs("ctor:", stdout);
-		}
+	local p out exp
+	for p in ./hello{,-static,-dyn}; do
+		if [[ ${p} == ./hello-dyn && ${ABI} == x32 ]]; then
+			einfo "Skipping ${p} on x32 -- known to crash"
+			continue
+		fi
 
-		__attribute__((destructor))
-		static void dtor_test()
-		{
-			fputs(":dtor", stdout);
-		}
+		ebegin "Testing ${p}"
+		exp='ctor:main:dtor'
+		[[ ${p} == ./hello-dyn ]] && exp=libctor:${exp}:libdtor
+		if ! out=$("${p}"); then
+			eend 1
+			die "Test ${p} crashed for ${ABI:-${ARCH}}"
+		fi
 
-		int main()
-		{
-			fputs("main", stdout);
-			return 0;
-		}
-	EOF
+		[[ ${out} == ${exp} ]]
+		if ! eend "${?}"; then
+			eerror "  Expected: ${exp}"
+			eerror "  Output  : ${out}"
+			die "Test ${p} failed for ${ABI:-${ARCH}}"
+		fi
+	done
 
-	emake -f /dev/null CC="${cc[*]}" hello
-
-	local out=$(./hello) || die
-	if [[ ${out} != ctor:main:dtor ]]; then
-		eerror "Invalid output from the test case."
-		eerror "  Expected: ctor:main:dtor"
-		eerror "  Output  : ${out}"
-		die "Test failed for ${ABI:-${ARCH}}"
-	fi
+	emake clean
 }
 
 multilib_src_install() {
