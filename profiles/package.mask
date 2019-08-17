@@ -289,11 +289,6 @@ dev-perl/File-Slurp-Unicode
 # matching genkernel work?
 >=sys-fs/lvm2-2.03
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2019-07-07)
-# Initial package version, no potential revdeps have been tested yet
-# or amended for support. Please do test.
-media-video/pipewire
-
 # Daniel Pielmeier <billie@gentoo.org> (2019-07-06)
 # Requires >=dev-lang/lua-5.2 which is masked
 >=app-admin/conky-1.11.4

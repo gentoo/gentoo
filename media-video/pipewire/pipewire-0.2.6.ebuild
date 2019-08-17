@@ -16,8 +16,8 @@ fi
 DESCRIPTION="Multimedia processing graphs"
 HOMEPAGE="https://pipewire.org/"
 
-LICENSE="LGPL-2.1"
-SLOT="0"
+LICENSE="LGPL-2.1+"
+SLOT="0/0.2"
 IUSE="bluetooth doc ffmpeg libav gstreamer sdl systemd vaapi X"
 
 BDEPEND="
