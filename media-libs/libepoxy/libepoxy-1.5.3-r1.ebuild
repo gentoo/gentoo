@@ -43,6 +43,7 @@ multilib_src_configure() {
 		-Degl=$(usex egl)
 		-Dglx=$(usex X)
 		-Dx11=$(usex X true false)
+		-Dtests=$(usex test true false)
 	)
 	meson_src_configure
 }
