@@ -546,15 +546,29 @@ src_test() {
 
 	# Unstable tests
 	# - main.xa_prepared_binlog_off: https://bugs.mysql.com/bug.php?id=83340
+	# - rpl.rpl_innodb_info_tbl_slave_tmp_tbl_mismatch: https://bugs.mysql.com/bug.php?id=89223
 	# - rpl.rpl_non_direct_stm_mixing_engines: MDEV-14489
-	for t in main.xa_prepared_binlog_off rpl.rpl_non_direct_stm_mixing_engines ; do
-			_disable_test "$t" "Unstable test"
+	for t in \
+		main.xa_prepared_binlog_off \
+		rpl.rpl_innodb_info_tbl_slave_tmp_tbl_mismatch \
+		rpl.rpl_non_direct_stm_mixing_engines \
+	; do
+		_disable_test "$t" "Unstable test"
 	done
 
-	if ! use amd64 ; then
-		# fixed in >=mysql-8 via commit 0a417e84
-		_disable_test "gis.gis_bugs_crashes" "Unstable results on non-amd64 architectures due to floating-point operation"
-	fi
+	for t in \
+		gis.geometry_class_attri_prop \
+		gis.geometry_property_function_issimple \
+		gis.gis_bugs_crashes \
+		gis.spatial_op_testingfunc_mix \
+		gis.spatial_analysis_functions_buffer \
+		gis.spatial_analysis_functions_distance \
+		gis.spatial_utility_function_distance_sphere \
+		gis.spatial_utility_function_simplify \
+		gis.spatial_analysis_functions_centroid \
+	; do
+		_disable_test "$t" "Known rounding error with latest AMD processors"
+	done
 
 	if use numa && use kernel_linux ; then
 		# bug 584880
@@ -587,7 +601,7 @@ src_test() {
 			rpl.rpl_xa_survive_disconnect_lsu_off \
 			rpl.rpl_xa_survive_disconnect_table \
 		; do
-				_disable_test "$t" "requires DEFAULT_CHARSET=latin1 but USE=-latin1 is set"
+			_disable_test "$t" "Requires DEFAULT_CHARSET=latin1 but USE=-latin1 is set"
 		done
 	fi
 
