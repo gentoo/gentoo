@@ -67,7 +67,7 @@ CDEPEND=">=app-eselect/eselect-opengl-1.3.0
 	!minimal? (
 		>=x11-libs/libX11-1.1.5
 		>=x11-libs/libXext-1.0.5
-		>=media-libs/mesa-18
+		>=media-libs/mesa-18[X(+)]
 	)
 	udev? ( virtual/libudev:= )
 	unwind? ( sys-libs/libunwind )
