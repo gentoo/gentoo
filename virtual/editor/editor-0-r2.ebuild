@@ -17,7 +17,6 @@ RDEPEND="|| (
 	app-editors/dav
 	app-editors/e3
 	app-editors/ee
-	app-editors/efte
 	app-editors/elvis
 	app-editors/emacs
 	app-editors/emacs-vcs
