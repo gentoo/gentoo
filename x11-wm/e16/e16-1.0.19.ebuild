@@ -22,7 +22,7 @@ CDEPEND="
 	dbus? ( sys-apps/dbus )
 	doc? ( app-doc/e16-docs )
 	nls? ( virtual/libintl )
-	opengl? ( media-libs/glu media-libs/mesa )
+	opengl? ( media-libs/glu media-libs/mesa[X(+)] )
 	pango? ( x11-libs/pango[X] )
 	sound? (
 		|| ( media-sound/pulseaudio media-sound/apulse[sdk] )

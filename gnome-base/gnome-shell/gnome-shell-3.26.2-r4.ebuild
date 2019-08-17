@@ -60,7 +60,7 @@ COMMON_DEPEND="
 
 	${PYTHON_DEPS}
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
-	media-libs/mesa
+	media-libs/mesa[X(+)]
 "
 # Runtime-only deps are probably incomplete and approximate.
 # Introspection deps generated using:
