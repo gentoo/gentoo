@@ -37,7 +37,7 @@ RESTRICT="libressl? ( test )"
 
 REQUIRED_USE="?? ( tcmalloc jemalloc ) static? ( yassl )"
 
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ~mips ppc ppc64 ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
 
 # Shorten the path because the socket path length must be shorter than 107 chars
 # and we will run a mysql server during test phase
@@ -62,6 +62,7 @@ PATCHES=(
 	"${MY_PATCH_DIR}"/20009_all_mysql_myodbc_symbol_fix-5.6.patch
 	"${MY_PATCH_DIR}"/20018_all_mysql-5.6.25-without-clientlibs-tools.patch
 	"${MY_PATCH_DIR}"/20027_all_mysql-5.5-perl5.26-includes.patch
+	"${MY_PATCH_DIR}"/20028_all_mysql-5.6-gcc7.patch
 	"${MY_PATCH_DIR}"/20031_all_mysql-5.6-fix-monitor.test.patch
 	"${MY_PATCH_DIR}"/20036_all_mysql-5.6-fix-rpl_semi_sync_shutdown_hang.test.patch
 	"${MY_PATCH_DIR}"/20018_all_mysql-5.6.44-fix-libressl-support.patch
@@ -196,12 +197,6 @@ src_prepare() {
 	if [[ -d "${S}/support-files/SELinux" ]] ; then
 		echo > "${S}/support-files/SELinux/CMakeLists.txt" || die
 	fi
-
-	# Don't clash with dev-db/mysql-connector-c
-	rm \
-		man/my_print_defaults.1 \
-		man/perror.1 \
-		|| die
 
 	if use libressl ; then
 		sed -i 's/OPENSSL_MAJOR_VERSION STREQUAL "1"/OPENSSL_MAJOR_VERSION STREQUAL "2"/' \
@@ -374,6 +369,10 @@ src_install() {
 	# INSTALL_LAYOUT=STANDALONE causes cmake to create a /usr/data dir
 	if [[ -d "${ED}/usr/data" ]] ; then
 		rm -Rf "${ED}/usr/data" || die
+	fi
+
+	if [[ -d "${ED%/}/usr/sql-bench" ]] ; then
+		mv "${ED%/}/usr/sql-bench" "${ED%/}/usr/share/mysql/" || die
 	fi
 
 	# Unless they explicitly specific USE=test, then do not install the
