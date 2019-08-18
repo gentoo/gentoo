@@ -9,5 +9,5 @@ LICENSE=GPL-2 QPL
 RDEPEND=>=dev-lang/tcl-8.3:0=[-threads] >=dev-tcltk/tclx-8.3 dev-tcltk/tcllib dev-tcltk/mysqltcl ssl? ( >=dev-tcltk/tls-1.4.1 ) net-analyzer/p0f net-analyzer/tcpflow net-misc/openssh
 SLOT=0
 SRC_URI=mirror://sourceforge/sguil/sguil-server-0.8.0.tar.gz
-_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	ssl-cert	dfe435cfb22d3ff084f4d5b8ebbbcf3c	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56	user	00484e1be1aac73e24fca1c99557a7d6
+_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	ssl-cert	876f0e74ef1cc2e7c4edd9bca336d350	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56	user	00484e1be1aac73e24fca1c99557a7d6
 _md5_=5c45310bddef668385dad0e9ddc25d9f
