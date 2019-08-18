@@ -318,12 +318,6 @@ sys-freebsd/ubin-wrappers
 # Removal after 2019-08-01. (bug #688552)
 media-sound/sfc
 
-# Georgy Yakovlev <gyakovlev@gentoo.org> (2019-06-17)
-# this is now provided by dev-lang/rust{-bin}[rustfmt]
-# it's tightly integrated with rust toolchain, eselect-rust
-# and it no longer makes sense ship this as standalone pkg
-dev-util/rustfmt
-
 # Mikle Kolyada <zlogene@gentoo.org> (2019-06-15)
 # Part of dev-texlive/texlive-latexextra
 # does not work with utf-8 (bug #688096)
