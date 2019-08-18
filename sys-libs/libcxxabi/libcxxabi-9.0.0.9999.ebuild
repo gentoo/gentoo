@@ -17,7 +17,7 @@ EGIT_REPO_URI="https://git.llvm.org/git/libcxxabi.git
 	https://github.com/llvm-mirror/libcxxabi.git"
 EGIT_BRANCH="release_90"
 
-LICENSE="|| ( UoI-NCSA MIT )"
+LICENSE="Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )"
 SLOT="0"
 KEYWORDS=""
 IUSE="+libunwind +static-libs test elibc_musl"
