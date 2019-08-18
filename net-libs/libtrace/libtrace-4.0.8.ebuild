@@ -24,6 +24,7 @@ DEPEND="
 	${RDEPEND}
 	app-doc/doxygen
 	sys-devel/flex
+	virtual/os-headers
 	virtual/pkgconfig
 	virtual/yacc
 "

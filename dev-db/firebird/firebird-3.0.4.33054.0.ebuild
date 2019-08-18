@@ -123,7 +123,7 @@ src_configure() {
 		--with-fbplugins=/usr/$(get_libdir)/${PN}/plugins
 		--with-gnu-ld
 	)
-	econf "${myeconfargs[@]}"		
+	econf "${myeconfargs[@]}"
 }
 
 # from linux underground, merging into this here

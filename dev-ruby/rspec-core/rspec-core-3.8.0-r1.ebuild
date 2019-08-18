@@ -74,7 +74,7 @@ all_ruby_prepare() {
 	sed -i -e '/loads mocks and expectations when the constants are referenced/askip "gentoo: bug 662328"' spec/rspec/core_spec.rb || die
 
 	# Avoid a spec depending on specifics on local networks
-	# This fails when localhost resolves to ::1 which may be a 
+	# This fails when localhost resolves to ::1 which may be a
 	# ruby regression in the drb/acl code.
 	rm -f spec/rspec/core/bisect/server_spec.rb || die
 }

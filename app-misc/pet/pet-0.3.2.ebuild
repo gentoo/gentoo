@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-EGO_VENDOR=( 
+EGO_VENDOR=(
 	"github.com/BurntSushi/toml b26d9c308763d68093482582cea63d69be07a0f0"
 	"github.com/briandowns/spinner 48dbb65d7bd5c74ab50d53d04c949f20e3d14944"
 	"github.com/chzyer/readline 2972be24d48e78746da79ba8e24e8b488c9880de"

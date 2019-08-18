@@ -64,7 +64,7 @@ src_configure() {
 	# $(use_enable xml)
 	# but that does not work
 	# do not add this, since --disable-xml seems to override
-	# --without-xml 
+	# --without-xml
 
 	econf \
 		$(use_enable bzip2) \

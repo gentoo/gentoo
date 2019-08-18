@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -25,7 +25,7 @@ DOCS=( README RELEASE )
 src_prepare() {
 	default
 
-	# Do not build examples	
+	# Do not build examples
 	sed -e '/SUBDIRS/ s:examples::' \
 		-i Makefile.am Makefile.in || die
 }
