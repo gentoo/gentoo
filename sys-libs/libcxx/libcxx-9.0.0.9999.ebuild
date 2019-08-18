@@ -27,7 +27,7 @@ else
 	SRC_URI=""
 fi
 
-LICENSE="|| ( UoI-NCSA MIT )"
+LICENSE="Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )"
 SLOT="0"
 if [[ ${PV} != *9999 ]] ; then
 	KEYWORDS="~amd64 ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
