@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -62,11 +62,11 @@ precedence over the latter if both are used.
 
 You can change the default sampling rate by modifing
 
-  /sys/devices/platform/hdaps/sampling_rate
+	/sys/devices/platform/hdaps/sampling_rate
 
 and you may need to enable shock protection manually by running
 
-  # echo -1 > /sys/block/<disk>/device/unload_heads
+	# echo -1 > /sys/block/<disk>/device/unload_heads
 
 as root.
 "
