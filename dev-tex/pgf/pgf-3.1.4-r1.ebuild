@@ -8,6 +8,7 @@ inherit latex-package
 DESCRIPTION="The TeX Portable Graphic Format"
 HOMEPAGE="https://github.com/pgf-tikz/pgf"
 SRC_URI=" https://github.com/pgf-tikz/pgf/archive/${PV}.tar.gz -> ${P}.tar.gz
+	https://dev.gentoo.org/~zlogene/distfiles/${CATEGORY}/${PN}/${P}-revisioned.tex.xz
 	doc? ( https://github.com/pgf-tikz/pgf/releases/download/${PV}/pgfmanual.pdf -> ${P}-pgfmanual.pdf )"
 
 LICENSE="GPL-2 LPPL-1.3c FDL-1.2"
@@ -21,6 +22,8 @@ RDEPEND="dev-texlive/texlive-latexrecommended
 src_install() {
 	insinto "${TEXMF}"
 	doins -r tex
+	insinto "${TEXMF}"/tex/generic/${PN}
+	newins "${WORKDIR}"/${P}-revisioned.tex pgf.revision.tex
 
 	if use source ; then
 		doins -r source
