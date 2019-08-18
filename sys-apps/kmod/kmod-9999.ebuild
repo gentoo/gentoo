@@ -143,14 +143,14 @@ src_install() {
 	find "${ED}" -name "*.la" -delete || die
 
 	if use tools; then
-		local bincmd sbincmd
-		for sbincmd in depmod insmod lsmod modinfo modprobe rmmod; do
-			dosym ../bin/kmod /sbin/${sbincmd}
+		local cmd
+		for cmd in depmod insmod modprobe rmmod; do
+			dosym ../bin/kmod /sbin/${cmd}
 		done
 
 		# These are also usable as normal user
-		for bincmd in lsmod modinfo; do
-			dosym kmod /bin/${bincmd}
+		for cmd in lsmod modinfo; do
+			dosym kmod /bin/${cmd}
 		done
 	fi
 
