@@ -52,7 +52,7 @@ src_compile() {
 }
 
 src_install() {
-	emake install DESTDIR="${D}" || die
+	emake DESTDIR="${D}" install
 
 	if use python; then
 		pushd python > /dev/null
