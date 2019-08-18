@@ -5169,7 +5169,7 @@ dev-libs/satyr 0.26 0.27: Satyr is a collection of low-level algorithms for prog
 dev-libs/sblim-sfcc 2.2.8: Small Footprint CIM Client Library
 dev-libs/sdformat 6.0.0 6.1.0 6.2.0: Simulation Description Format (SDF) parser
 dev-libs/serd 0.28.0-r1: Library for RDF syntax which supports reading and writing Turtle and NTriples
-dev-libs/serdisplib 1.97.9 2.01: Library to drive several displays with built-in controllers or display modules
+dev-libs/serdisplib 1.97.9 2.01 2.01-r1: Library to drive several displays with built-in controllers or display modules
 dev-libs/shhopt 1.1.7-r3: library for parsing command line options
 dev-libs/sink 0.7.0: Data access layer handling synchronization, caching and indexing
 dev-libs/skalibs 2.3.2.0 2.6.1.0 2.6.3.0 2.6.4.0 2.7.0.0 2.8.1.0: General-purpose libraries from skarnet.org
