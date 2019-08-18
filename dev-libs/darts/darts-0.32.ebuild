@@ -9,7 +9,7 @@ SRC_URI="http://chasen.org/~taku/software/darts/src/${P}.tar.gz"
 
 LICENSE="|| ( BSD LGPL-2.1 )"
 SLOT="0"
-KEYWORDS="amd64 ~ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris"
+KEYWORDS="amd64 ~arm64 ~ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris"
 IUSE="zlib"
 
 BDEPEND=""
