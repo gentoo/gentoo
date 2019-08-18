@@ -29,6 +29,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Mart Raudsepp <leio@gentoo.org> (2019-08-18)
+# Fails to dbus activate properly for me. Help welcome figuring it out.
+net-misc/gnome-remote-desktop
+
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2019-08-17)
 # Unmaintained both upstream and in gentoo, author retired
 # Removal in 30 days
