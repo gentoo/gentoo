@@ -25,6 +25,7 @@ DEPEND="
 	${RDEPEND}
 	app-doc/doxygen
 	sys-devel/flex
+	virtual/os-headers
 	virtual/pkgconfig
 	virtual/yacc
 "
@@ -37,7 +38,6 @@ PATCHES=(
 S=${WORKDIR}/${P/_p/-}
 
 src_prepare() {
-cp -av configure.in{,.orig} || die
 	default
 
 	eautoreconf
