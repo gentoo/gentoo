@@ -1220,7 +1220,7 @@ app-emacs/edit-server 1.15: Service edit requests from a web browser for editing
 app-emacs/editorconfig-emacs 0.7.8-r1: EditorConfig plugin for emacs
 app-emacs/elib 1.0-r1: The Emacs Lisp Library
 app-emacs/elscreen 1.4.6-r1: Frame configuration management for GNU Emacs modelled after GNU Screen
-app-emacs/emacs-common-gentoo 1.6-r1 1.6-r2: Common files needed by all GNU Emacs versions
+app-emacs/emacs-common-gentoo 1.6-r2: Common files needed by all GNU Emacs versions
 app-emacs/emacs-daemon 0.22: Gentoo support for Emacs running as a server in the background
 app-emacs/emacs-jabber 0.8.92: A Jabber client for Emacs
 app-emacs/emacs-w3m 1.4.528_pre20140213 1.4.570_pre20170203 1.4.625_pre20180518: emacs-w3m is an interface program of w3m on Emacs
@@ -14927,7 +14927,7 @@ net-im/mattermost-desktop-bin 4.2.3: Mattermost Desktop application
 net-im/mcabber 1.1.0-r1 9999: A small Jabber console client with various features, like MUC, SSL, PGP
 net-im/minbif 1.0.5-r2: IRC gateway to IM networks
 net-im/openfire 4.2.3-r1 4.2.3-r2: Openfire (formerly wildfire) real time collaboration (RTC) server
-net-im/openmittsu 0.9.13.32: An open source chat client for Threema-style end-to-end encrypted chat networks
+net-im/openmittsu 0.9.13.32 0.9.13.46: An open source chat client for Threema-style end-to-end encrypted chat networks
 net-im/pidgin 2.13.0 2.13.0-r1: GTK Instant Messenger client
 net-im/poezio 0.12 9999: Console XMPP client that looks like most famous IRC clients
 net-im/profanity 0.6.0: A console based XMPP client inspired by Irssi
