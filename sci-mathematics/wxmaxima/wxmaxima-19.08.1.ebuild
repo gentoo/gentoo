@@ -3,7 +3,7 @@
 
 EAPI=6
 WX_GTK_VER="3.0"
-PLOCALES="ca cs da de el es fi fr gl hu it ja kab nb pl pt_BR ru tr uk zh_CN zh_TW"
+PLOCALES="ca cs da de el en es fi fr gl hu it ja kab nb pl pt_BR ru tr uk zh_CN zh_TW"
 inherit cmake-utils wxwidgets l10n xdg-utils gnome2-utils
 
 DESCRIPTION="Graphical frontend to Maxima, using the wxWidgets toolkit"
