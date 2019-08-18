@@ -17,7 +17,8 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="python"
 RDEPEND="python? ( ${PYTHON_DEPS} )"
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	sys-apps/help2man"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 src_prepare() {
