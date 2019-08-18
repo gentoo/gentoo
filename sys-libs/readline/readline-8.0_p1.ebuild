@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit flag-o-matic multilib-minimal toolchain-funcs usr-ldscript
+inherit flag-o-matic multilib-minimal preserve-libs toolchain-funcs usr-ldscript
 
 # Official patches
 # See ftp://ftp.cwru.edu/pub/bash/readline-7.0-patches/
@@ -163,4 +163,13 @@ multilib_src_install_all() {
 	dodoc USAGE
 	docinto ps
 	dodoc doc/*.ps
+}
+pkg_preinst() {
+	# bug #29865
+	# Reappeared in #595324 with paludis so keeping this for now...
+	preserve_old_lib /$(get_libdir)/lib{history,readline}.so.{4,5,6,7}
+}
+
+pkg_postinst() {
+	preserve_old_lib_notify /$(get_libdir)/lib{history,readline}.so.{4,5,6,7}
 }
