@@ -281,10 +281,6 @@ media-video/ffmpeg -mmal
 # unkeyworded deps, bug #555896
 sci-libs/armadillo mkl
 
-# Pawel Hajdan jr <phajdan.jr@gentoo.org> (2015-10-15)
-# Repoman reports dependency issues on arm.
-www-client/chromium system-ffmpeg
-
 # Markus Meier <maekke@gentoo.org> (2015-10-10)
 # unkeyworded deps, bug #552330
 app-portage/g-sorcery bson

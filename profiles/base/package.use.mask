@@ -203,10 +203,6 @@ sys-cluster/ceph static-libs
 # Depends on last-rited sci-libs/coinhsl.
 sci-libs/ipopt hsl
 
-# Mike Gilbert <floppym@gentoo.org> (2018-05-01)
-# Requires >=media-video/ffmpeg-4 (bug 654208).
->=www-client/chromium-67 system-ffmpeg
-
 # Göktürk Yüksek <gokturk@gentoo.org> (2018-04-04)
 # libewf is getting treecleaned (#547418).
 # Starting with sleuthkit-4.6.0, we statically link sleuthkit to a
