@@ -29,6 +29,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2019-08-17)
+# Unmaintained both upstream and in gentoo, author retired
+# Removal in 30 days
+sys-kernel/bliss-initramfs
+
 # Aaron Bauman <bman@gentoo.org> (2019-08-17)
 # Relies on vulnerable automake:{1.9,1.10}
 # Removal in 30 days
