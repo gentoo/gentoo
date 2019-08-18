@@ -108,22 +108,15 @@ src_prepare() {
 		sed -i "s/\(Release:\)\(.*\)1/\1\2${PR}-gentoo/" META || die "Could not set Gentoo release"
 	fi
 
-	# Update paths
-	sed -e "s|/sbin/lsmod|/bin/lsmod|" \
-		-e "s|/usr/bin/scsi-rescan|/usr/sbin/rescan-scsi-bus|" \
-		-e "s|/sbin/parted|/usr/sbin/parted|" \
-		-i scripts/common.sh.in || die
-
 	if use python; then
 		pushd contrib/pyzfs >/dev/null || die
 		distutils-r1_src_prepare
 		popd >/dev/null || die
 	fi
 
-	# prevent errors showing up on zfs-mount stop, openrc will unmount all filesystems anyway
-	if use rootfs; then
-		sed -i "/^ZFS_UNMOUNT=/ s/yes/no/" etc/init.d/zfs.in || die
-	fi
+	# prevent errors showing up on zfs-mount stop, #647688
+	# openrc will unmount all filesystems anyway.
+	sed -i "/^ZFS_UNMOUNT=/ s/yes/no/" etc/init.d/zfs.in || die
 }
 
 src_configure() {
