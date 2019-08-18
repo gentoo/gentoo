@@ -1180,7 +1180,7 @@ app-emacs/bison-mode 0.3: Emacs major mode for Bison, Yacc and Lex grammars
 app-emacs/blogmax 20110305 20170321: Blogging in Emacs
 app-emacs/bm 1.32_p20140214: Visible bookmarks in buffer
 app-emacs/bongo 20110621: Buffer-oriented media player for Emacs
-app-emacs/boxquote 1.23: Quote text with a semi-box
+app-emacs/boxquote 1.23 2.1: Quote text with a semi-box
 app-emacs/browse-kill-ring 1.3c: An improved interface to kill-ring
 app-emacs/bubblet 0.74-r1: A bubble-popping game
 app-emacs/buffer-extension 0.1: Some enhanced functions for buffer manipulate
