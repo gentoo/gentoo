@@ -7,21 +7,46 @@
 	</maintainer>
 	<use>
 		<flag name="3d">Install documentation for <pkg>dev-qt/qt3d</pkg></flag>
+		<flag name="assistant">Install documentation for <pkg>dev-qt/assistant</pkg></flag>
 		<flag name="bluetooth">Install documentation for <pkg>dev-qt/qtbluetooth</pkg></flag>
 		<flag name="charts">Install documentation for <pkg>dev-qt/qtcharts</pkg></flag>
+		<flag name="concurrent">Install documentation for <pkg>dev-qt/qtconcurrent</pkg></flag>
+		<flag name="core">Install documentation for <pkg>dev-qt/qtcore</pkg></flag>
 		<flag name="datavis">Install documentation for <pkg>dev-qt/qtdatavis3d</pkg></flag>
-		<flag name="declarative">Install documentation for <pkg>dev-qt/qtdeclarative</pkg>,
-			<pkg>dev-qt/qtquickcontrols</pkg>, and <pkg>dev-qt/qtquickcontrols2</pkg></flag>
+		<flag name="declarative">Install documentation for <pkg>dev-qt/qtdeclarative</pkg></flag>
+		<flag name="designer">Install documentation for <pkg>dev-qt/designer</pkg></flag>
+		<flag name="gamepad">Install documentation for dev-qt/qtgamepad (available in qt overlay only)</flag>
 		<flag name="graphicaleffects">Install documentation for <pkg>dev-qt/qtgraphicaleffects</pkg></flag>
+		<flag name="gui">Install documentation for <pkg>dev-qt/qtgui</pkg></flag>
+		<flag name="help">Install documentation for <pkg>dev-qt/qthelp</pkg></flag>
 		<flag name="html">Install documentation in HTML format</flag>
+		<flag name="imageformats">Install documentation for <pkg>dev-qt/qtimageformats</pkg></flag>
+		<flag name="linguist">Install documentation for <pkg>dev-qt/linguist</pkg></flag>
 		<flag name="location">Install documentation for <pkg>dev-qt/qtlocation</pkg></flag>
 		<flag name="multimedia">Install documentation for <pkg>dev-qt/qtmultimedia</pkg></flag>
+		<flag name="network">Install documentation for <pkg>dev-qt/qtnetwork</pkg></flag>
 		<flag name="networkauth">Install documentation for <pkg>dev-qt/qtnetworkauth</pkg></flag>
+		<flag name="positioning">Install documentation for <pkg>dev-qt/qtpositioning</pkg></flag>
+		<flag name="printsupport">Install documentation for <pkg>dev-qt/qtprintsupport</pkg></flag>
 		<flag name="qch">Install documentation in QCH format</flag>
+		<flag name="qdoc">Install documentation for <pkg>dev-qt/qdoc</pkg></flag>
+		<flag name="quickcontrols">Install documentation for <pkg>dev-qt/qtquickcontrols</pkg></flag>
+		<flag name="quickcontrols2">Install documentation for <pkg>dev-qt/qtquickcontrols2</pkg></flag>
 		<flag name="script">Install documentation for <pkg>dev-qt/qtscript</pkg></flag>
+		<flag name="scxml">Install documentation for <pkg>dev-qt/qtscxml</pkg></flag>
 		<flag name="sensors">Install documentation for <pkg>dev-qt/qtsensors</pkg></flag>
+		<flag name="serialbus">Install documentation for <pkg>dev-qt/qtserialbus</pkg></flag>
+		<flag name="serialport">Install documentation for <pkg>dev-qt/qtserialport</pkg></flag>
+		<flag name="speech">Install documentation for <pkg>dev-qt/qtspeech</pkg></flag>
+		<flag name="sql">Install documentation for <pkg>dev-qt/qtsql</pkg></flag>
 		<flag name="virtualkeyboard">Install documentation for <pkg>dev-qt/qtvirtualkeyboard</pkg></flag>
+		<flag name="webchannel">Install documentation for <pkg>dev-qt/qtwebchannel</pkg></flag>
 		<flag name="webengine">Install documentation for <pkg>dev-qt/qtwebengine</pkg></flag>
+		<flag name="websockets">Install documentation for <pkg>dev-qt/qtwebsockets</pkg></flag>
+		<flag name="webview">Install documentation for <pkg>dev-qt/qtwebview</pkg></flag>
+		<flag name="widgets">Install documentation for <pkg>dev-qt/qtwidgets</pkg></flag>
+		<flag name="x11extras">Install documentation for <pkg>dev-qt/qtx11extras</pkg></flag>
+		<flag name="xmlpatterns">Install documentation for <pkg>dev-qt/qtxmlpatterns</pkg></flag>
 	</use>
 	<upstream>
 		<bugs-to>https://bugreports.qt.io/</bugs-to>
