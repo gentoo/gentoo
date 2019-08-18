@@ -9,6 +9,7 @@ dev-libs/weston pipewire
 kde-apps/krfb wayland
 kde-plasma/xdg-desktop-portal-kde screencast
 sys-apps/xdg-desktop-portal screencast
+x11-wm/mutter screencast
 
 # Thomas Deutschmann <whissi@gentoo.org> (2019-08-03)
 # Early microcode loading is supported on x86
