@@ -1,0 +1,25 @@
+From 125259eab4ddc525e816a9479d93038bffb73353 Mon Sep 17 00:00:00 2001
+From: Tomaz Canabrava <tcanabrava@kde.org>
+Date: Thu, 18 Jul 2019 18:07:39 +0200
+Subject: Add missing include
+
+(cherry picked from commit 8a3d8936fc4fce7eee1bcd62c0eb473ef908268d)
+---
+ kdevplatform/shell/mainwindow_p.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/kdevplatform/shell/mainwindow_p.h b/kdevplatform/shell/mainwindow_p.h
+index 3020957..1e915a0 100644
+--- a/kdevplatform/shell/mainwindow_p.h
++++ b/kdevplatform/shell/mainwindow_p.h
+@@ -25,7 +25,7 @@ Boston, MA 02110-1301, USA.
+ #include <QObject>
+ #include <QPointer>
+ #include <QWidget>
+-
++#include <QMap>
+ #include <KXMLGUIClient>
+ 
+ #include <language/util/navigationtooltip.h>
+-- 
+cgit v1.1
