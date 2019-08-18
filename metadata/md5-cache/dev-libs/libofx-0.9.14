@@ -5,10 +5,10 @@ DESCRIPTION=A library to support the Open Financial eXchange XML format
 EAPI=7
 HOMEPAGE=https://github.com/libofx/libofx
 IUSE=static-libs test
-KEYWORDS=~amd64 ~hppa ~x86
+KEYWORDS=amd64 ~hppa ~x86
 LICENSE=GPL-2
 RDEPEND=>=net-misc/curl-7.9.7 virtual/libiconv
 SLOT=0
 SRC_URI=https://github.com/libofx/libofx/archive/0.9.14.tar.gz -> libofx-0.9.14.tar.gz
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	7ba73aee7fe4462b3a745e3645ab92ca	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
-_md5_=a6dda142cdca784314ae6ea1739cfbd8
+_md5_=a65ab36d46ff0f6c46114219d28852f9
