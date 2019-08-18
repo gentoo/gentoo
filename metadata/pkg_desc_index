@@ -10514,7 +10514,7 @@ dev-tex/minted 2.0 2.1 2.4.1: LaTeX package for source code syntax highlighting
 dev-tex/newlfm 8.3-r1: Extensive LaTeX class for writing letters
 dev-tex/oesch 20080712: Metafont font used in Austrian schools for hand writing
 dev-tex/pdfannotextractor 0.1l-r1: Extract annotations from pdf files
-dev-tex/pgf 3.1.4 3.1.4b-r1: The TeX Portable Graphic Format
+dev-tex/pgf 3.1.4-r1 3.1.4b-r1: The TeX Portable Graphic Format
 dev-tex/polytable 0.8.2: tabular-like environments with named columns
 dev-tex/ppower4 0.9.6: The Java tool PPower4 adds effects to slides using LaTeX
 dev-tex/prosper 1.5-r1: Prosper is a LaTeX class for writing transparencies
