@@ -3,7 +3,7 @@
 
 # This file requires >=portage-2.1.1
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2019-09-18)
+# Andreas Sturmlechner <asturm@gentoo.org> (2019-08-18)
 # media-video/pipewire is not keyworded yet
 dev-libs/weston pipewire
 kde-apps/krfb wayland
