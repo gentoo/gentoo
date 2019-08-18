@@ -73,6 +73,7 @@ multilib_src_configure() {
 		-DMYSQL_UNIX_ADDR="${EPREFIX}/run/mysqld/mysqld.sock"
 		-DWITH_ZLIB=system
 		-DWITH_SSL=system
+		-DWITH_NUMA=OFF
 		-DLIBMYSQL_OS_OUTPUT_NAME=mysqlclient
 		-DSHARED_LIB_PATCH_VERSION="0"
 		-DCMAKE_POSITION_INDEPENDENT_CODE=ON
