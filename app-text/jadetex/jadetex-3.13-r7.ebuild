@@ -21,7 +21,7 @@ DEPEND=">=app-text/openjade-1.3.1
 
 src_compile() {
 	fmt_call="$(has_version '>=app-text/texlive-core-2019' \
-         && echo "fmtutil-user" || echo "fmtutil")"
+		&& echo "fmtutil-user" || echo "fmtutil")"
 	VARTEXFONTS="${T}/fonts" emake
 	VARTEXFONTS="${T}/fonts" TEXMFHOME="${S}" env -u TEXINPUTS \
 		$fmt_call --cnffile "${FILESDIR}/format.jadetex.cnf" --fmtdir "${S}/texmf-var/web2c" --all\
