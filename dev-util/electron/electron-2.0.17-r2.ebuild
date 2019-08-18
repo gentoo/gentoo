@@ -327,7 +327,7 @@ src_prepare() {
 	rsync -a "${WORKDIR}/${ASAR_P}/node_modules/" \
 		"${S}/node_modules/" || die
 	rsync -a "${WORKDIR}/${BROWSERIFY_P}/node_modules/" \
-        "${S}/node_modules/" || die
+		"${S}/node_modules/" || die
 
 	# node patches
 	cd "${NODE_S}" || die
