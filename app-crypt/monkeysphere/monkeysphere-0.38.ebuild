@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -39,11 +39,12 @@ pkg_setup()
 
 src_prepare()
 {
-	epatch "${FILESDIR}/${P}-asprintf.patch" \
-           "${FILESDIR}/${P}-revert-executable-patch.patch"\
-           "${FILESDIR}/${P}-syssharedir-whitespace.patch"\
-		   "${FILESDIR}/${PN}-0.37_default_shell.patch"\
-	       "${FILESDIR}/${PN}-0.37_hd_od.patch"
+	epatch \
+		"${FILESDIR}/${P}-asprintf.patch" \
+		"${FILESDIR}/${P}-revert-executable-patch.patch" \
+		"${FILESDIR}/${P}-syssharedir-whitespace.patch" \
+		"${FILESDIR}/${PN}-0.37_default_shell.patch" \
+		"${FILESDIR}/${PN}-0.37_hd_od.patch"
 
 	sed -i "s#share/doc/monkeysphere#share/doc/${PF}#" Makefile || die
 }
