@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201908-23">
+  <title>VLC: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in VLC, the worst of which
+    could result in the arbitrary execution of code.
+  </synopsis>
+  <product type="ebuild">vlc</product>
+  <announced>2019-08-18</announced>
+  <revised count="1">2019-08-18</revised>
+  <bug>688642</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="media-video/vlc" auto="yes" arch="*">
+      <unaffected range="ge">3.0.7</unaffected>
+      <vulnerable range="lt">3.0.7</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>VLC is a cross-platform media player and streaming server.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in VLC. Please review the
+      CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Remote attackers, by enticing a user to execute a specially crafted
+      media file, could cause a Denial of Service condition or possibly execute
+      arbitrary code.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All VLC users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-video/vlc-3.0.7"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-12874">CVE-2019-12874</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5439">CVE-2019-5439</uri>
+  </references>
+  <metadata tag="requester" timestamp="2019-08-01T21:30:30Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2019-08-18T02:26:26Z">b-man</metadata>
+</glsa>

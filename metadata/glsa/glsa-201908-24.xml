@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201908-24">
+  <title>MariaDB, MySQL: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in MariaDB and MySQL, the
+    worst of which could result in privilege escalation.
+  </synopsis>
+  <product type="ebuild">mariadb,mysql</product>
+  <announced>2019-08-18</announced>
+  <revised count="1">2019-08-18</revised>
+  <bug>661500</bug>
+  <bug>670388</bug>
+  <bug>679024</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="dev-db/mariadb" auto="yes" arch="*">
+      <unaffected range="ge">10.1.38-r1</unaffected>
+      <unaffected range="ge">10.2.22</unaffected>
+      <vulnerable range="lt">10.1.38-r1</vulnerable>
+      <vulnerable range="lt">10.2.22</vulnerable>
+    </package>
+    <package name="dev-db/mysql" auto="yes" arch="*">
+      <unaffected range="ge">5.6.42</unaffected>
+      <unaffected range="ge">5.7.24</unaffected>
+      <vulnerable range="lt">5.6.42</vulnerable>
+      <vulnerable range="lt">5.7.24</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>MariaDB is an enhanced, drop-in replacement for MySQL. MySQL is a
+      popular multi-threaded, multi-user SQL server. MySQL is a popular
+      multi-threaded, multi-user SQL server
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in MariaDB and MySQL.
+      Please review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Please review the referenced CVE identifiers for details.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All MariaDB 10.1.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-db/mariadb-10.1.38-r1"
+    </code>
+    
+    <p>All MariaDB 10.2.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-db/mariadb-10.2.22"
+    </code>
+    
+    <p>All MySQL 5.6.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-db/mysql-5.6.42"
+    </code>
+    
+    <p>All MySQL 5.7.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-db/mysql-5.7.24"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-2755">CVE-2018-2755</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-2759">CVE-2018-2759</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-2761">CVE-2018-2761</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-2766">CVE-2018-2766</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-2771">CVE-2018-2771</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-2777">CVE-2018-2777</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-2781">CVE-2018-2781</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-2782">CVE-2018-2782</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-2784">CVE-2018-2784</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-2786">CVE-2018-2786</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-2787">CVE-2018-2787</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-2810">CVE-2018-2810</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-2813">CVE-2018-2813</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-2817">CVE-2018-2817</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-2819">CVE-2018-2819</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-3143">CVE-2018-3143</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-3156">CVE-2018-3156</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-3162">CVE-2018-3162</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-3173">CVE-2018-3173</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-3174">CVE-2018-3174</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-3185">CVE-2018-3185</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-3200">CVE-2018-3200</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-3251">CVE-2018-3251</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-3252">CVE-2018-3252</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-3277">CVE-2018-3277</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-3282">CVE-2018-3282</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-3284">CVE-2018-3284</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-2510">CVE-2019-2510</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-2529">CVE-2019-2529</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-2537">CVE-2019-2537</uri>
+  </references>
+  <metadata tag="requester" timestamp="2019-08-12T23:27:01Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2019-08-18T02:28:58Z">b-man</metadata>
+</glsa>
