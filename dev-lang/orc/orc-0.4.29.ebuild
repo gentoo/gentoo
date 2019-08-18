@@ -31,7 +31,7 @@ PATCHES=(
 src_prepare() {
 	default
 
-	# Do not build examples	
+	# Do not build examples
 	sed -e '/SUBDIRS/ s:examples::' \
 		-i Makefile.am Makefile.in || die
 }
