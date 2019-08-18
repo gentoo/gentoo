@@ -93,6 +93,8 @@ RDEPEND="${COMMON_DEPEND}
 RESTRICT+=" test"
 # see bug 366471
 
+PATCHES=( "${FILESDIR}/${P}-missing-header.patch" )
+
 src_configure() {
 	local mycmakeargs=(
 		$(cmake-utils_use_find_package gdbui KF5SysGuard)
