@@ -33,5 +33,5 @@ src_install() {
 
 	dodoc "${S}"/usr/share/doc/hponcfg/*
 
-	pax-mark m "${D}"usr/sbin/hponcfg
+	pax-mark m "${D}"/usr/sbin/hponcfg
 }
