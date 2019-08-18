@@ -2143,11 +2143,6 @@
       <name>Ian Stakenvicius</name>
       <role>Member</role>
     </member>
-    <member>
-      <email>jcallen@gentoo.org</email>
-      <name>Jonathan Callen</name>
-      <role>Member</role>
-    </member>
     <member is-lead="1">
       <email>mgorny@gentoo.org</email>
       <name>Michał Górny</name>
@@ -2324,11 +2319,6 @@
     <name>The #gentoo Operators Project</name>
     <url>https://wiki.gentoo.org/wiki/Project:Ops</url>
     <description>The &lt;span style="font-family: monospace; font-size: 95%;"&gt;[irc://irc.gentoo.org/gentoo #gentoo]&lt;/span&gt; Operators project describes the tasks and policies carried out by the operators of the #gentoo channel on the Freenode network.</description>
-    <member>
-      <email>blackace@gentoo.org</email>
-      <name>Matt Kasa</name>
-      <role>Operator</role>
-    </member>
     <member is-lead="1">
       <email>jer@gentoo.org</email>
       <name>Jeroen Roovers</name>
@@ -3822,11 +3812,6 @@
       <email>aballier@gentoo.org</email>
       <name>Alexis Ballier</name>
       <role>Member ( FFmpeg, x265, etc. )</role>
-    </member>
-    <member>
-      <email>beandog@gentoo.org</email>
-      <name>Steve Dibb</name>
-      <role>Member ( DVD, Blu-ray, Optical, Video )</role>
     </member>
     <member>
       <email>lordvan@gentoo.org</email>

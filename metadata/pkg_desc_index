@@ -10514,7 +10514,7 @@ dev-tex/minted 2.0 2.1 2.4.1: LaTeX package for source code syntax highlighting
 dev-tex/newlfm 8.3-r1: Extensive LaTeX class for writing letters
 dev-tex/oesch 20080712: Metafont font used in Austrian schools for hand writing
 dev-tex/pdfannotextractor 0.1l-r1: Extract annotations from pdf files
-dev-tex/pgf 3.1.4 3.1.4b: The TeX Portable Graphic Format
+dev-tex/pgf 3.1.4 3.1.4b-r1: The TeX Portable Graphic Format
 dev-tex/polytable 0.8.2: tabular-like environments with named columns
 dev-tex/ppower4 0.9.6: The Java tool PPower4 adds effects to slides using LaTeX
 dev-tex/prosper 1.5-r1: Prosper is a LaTeX class for writing transparencies
@@ -15505,7 +15505,7 @@ net-misc/netkit-timed 0.17-r10: Netkit - timed
 net-misc/netpipe 1.0.0_beta2-r2: tool to reliably distribute binary data using UDP broadcasting techniques
 net-misc/netpipes 4.2-r2: a package to manipulate BSD TCP/IP stream sockets
 net-misc/netprofiles-ims 0.1.0134: Netprofiles Interface Management System manages network configurations
-net-misc/netsed 0.01b 0.01b-r1: Small tool for altering forwarded network data in real time
+net-misc/netsed 0.01b-r1: Small tool for altering forwarded network data in real time
 net-misc/netstat-nat 1.4.10: Display NAT connections
 net-misc/networkmanager 1.16.0 1.16.2 1.18.2: A set of co-operative tools that make networking simple and straightforward
 net-misc/networkmanager-wireguard 9999: NetworkManager WireGuard plugin
