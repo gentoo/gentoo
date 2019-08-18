@@ -15,6 +15,7 @@ IUSE=""
 RDEPEND="dev-qt/qtwebengine:5[widgets]
 	dev-qt/qtdeclarative:5[widgets]
 	dev-qt/qtprintsupport:5
+	dev-qt/qtpositioning:5
 	dev-qt/qtdbus:5
 	dev-qt/qttest:5
 	dev-qt/designer:5
@@ -23,10 +24,17 @@ RDEPEND="dev-qt/qtwebengine:5[widgets]
 	dev-libs/quazip
 	>=sci-geosciences/routino-3.1.1
 	sci-libs/gdal
-	sci-libs/proj
+	>=sci-libs/proj-5.0.0
 	sci-libs/alglib"
 DEPEND="${RDEPEND}
 	dev-qt/linguist-tools:5"
+
+PATCHES=( "${FILESDIR}"/${PN}-positioning.patch )
+
+src_prepare() {
+	default
+	cp "${FILESDIR}"/FindPROJ4.cmake cmake/Modules/ || die
+}
 
 pkg_postinst() {
 	xdg_desktop_database_update
