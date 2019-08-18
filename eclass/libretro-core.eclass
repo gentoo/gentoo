@@ -128,6 +128,7 @@ libretro-core_src_prepare() {
 			-e 's/\r$//g' \
 			-e "/flags.*=/s:-O[[:digit:]]:${CFLAGS}:g" \
 			-e "/CFLAGS.*=/s:-O[[:digit:]]:${CFLAGS}:g" \
+			-e "/CXXFLAGS.*=/s:-O[[:digit:]]:${CXXFLAGS}:g" \
 			-e "/.*,--version-script=.*/s:$: ${LDFLAGS} ${LIBS}:g" \
 			-e "/\$(CC)/s:\(\$(SHARED)\):\1 ${LDFLAGS} ${LIBS}:" \
 			-e 's:\(\$(CC)\):\1 \$(CFLAGS):g' \
