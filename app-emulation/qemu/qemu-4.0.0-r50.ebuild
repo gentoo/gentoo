@@ -8,7 +8,7 @@ PYTHON_REQ_USE="ncurses,readline"
 
 PLOCALES="bg de_DE fr_FR hu it tr zh_CN"
 
-FIRMWARE_ABI_VERSION="2.11.1-r50"
+FIRMWARE_ABI_VERSION="4.0.0-r50"
 
 inherit eutils linux-info toolchain-funcs multilib python-r1 \
 	udev fcaps readme.gentoo-r1 pax-utils l10n xdg-utils
@@ -148,9 +148,9 @@ SOFTMMU_TOOLS_DEPEND="
 
 X86_FIRMWARE_DEPEND="
 	pin-upstream-blobs? (
-		~sys-firmware/edk2-ovmf-2017_p20180211[binary]
-		~sys-firmware/ipxe-1.0.0_p20180211[binary]
-		~sys-firmware/seabios-1.11.0[binary,seavgabios]
+		~sys-firmware/edk2-ovmf-201905[binary]
+		~sys-firmware/ipxe-1.0.0_p20190728[binary]
+		~sys-firmware/seabios-1.12.0[binary,seavgabios]
 		~sys-firmware/sgabios-0.1_pre8[binary]
 	)
 	!pin-upstream-blobs? (
@@ -161,7 +161,7 @@ X86_FIRMWARE_DEPEND="
 	)"
 PPC64_FIRMWARE_DEPEND="
 	pin-upstream-blobs? (
-		~sys-firmware/seabios-1.11.0[binary,seavgabios]
+		~sys-firmware/seabios-1.12.0[binary,seavgabios]
 	)
 	!pin-upstream-blobs? (
 		>=sys-firmware/seabios-1.10.2[seavgabios]
