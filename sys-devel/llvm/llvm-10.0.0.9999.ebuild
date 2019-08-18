@@ -27,14 +27,11 @@ ALL_LLVM_TARGETS=( "${ALL_LLVM_TARGETS[@]/#/llvm_targets_}" )
 
 # Additional licenses:
 # 1. OpenBSD regex: Henry Spencer's license ('rc' in Gentoo) + BSD.
-# 2. ARM backend: LLVM Software Grant by ARM.
+# 2. xxhash: BSD.
 # 3. MD5 code: public-domain.
-# 4. Tests (not installed):
-#  a. gtest: BSD.
-#  b. YAML tests: MIT.
+# 4. ConvertUTF.h: TODO.
 
-LICENSE="UoI-NCSA rc BSD public-domain
-	llvm_targets_ARM? ( LLVM-Grant )"
+LICENSE="Apache-2.0-with-LLVM-exceptions UoI-NCSA BSD public-domain rc"
 SLOT="$(ver_cut 1)"
 KEYWORDS=""
 IUSE="debug doc exegesis gold libedit +libffi ncurses test xar xml z3
