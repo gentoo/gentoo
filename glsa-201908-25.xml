@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201908-25">
+  <title>hostapd and wpa_supplicant: Denial of Service</title>
+  <synopsis>A vulnerability in hostapd and wpa_supplicant could lead to a
+    Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">wpa_supplicant</product>
+  <announced>2019-08-18</announced>
+  <revised count="1">2019-08-18</revised>
+  <bug>685860</bug>
+  <bug>688588</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-wireless/hostapd" auto="yes" arch="*">
+      <unaffected range="ge">2.8</unaffected>
+      <vulnerable range="lt">2.8</vulnerable>
+    </package>
+    <package name="net-wireless/wpa_supplicant" auto="yes" arch="*">
+      <unaffected range="ge">2.8</unaffected>
+      <vulnerable range="lt">2.8</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>wpa_supplicant is a WPA Supplicant with support for WPA and WPA2 (IEEE
+      802.11i / RSN).
+    </p>
+    
+    <p>hostapd is a user space daemon for access point and authentication
+      servers.
+    </p>
+  </background>
+  <description>
+    <p>A vulnerability was discovered in hostapd’s and wpa_supplicant’s
+      eap_server/eap_server_pwd.c and eap_peer/eap_pwd.c files.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>An attacker could cause a possible Denial of Service condition.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All hostapd users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-wireless/hostapd-2.8"
+    </code>
+    
+    <p>All wpa_supplicant users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-wireless/wpa_supplicant-2.8"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-11555">CVE-2019-11555</uri>
+  </references>
+  <metadata tag="requester" timestamp="2019-08-11T00:58:42Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2019-08-18T02:31:07Z">b-man</metadata>
+</glsa>
