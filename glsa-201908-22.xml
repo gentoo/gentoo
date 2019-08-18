@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201908-22">
+  <title>Patch: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Patch, the worst of
+    which could result in the arbitrary execution of code.
+  </synopsis>
+  <product type="ebuild">patch</product>
+  <announced>2019-08-18</announced>
+  <revised count="1">2019-08-18</revised>
+  <bug>690136</bug>
+  <access>local</access>
+  <affected>
+    <package name="sys-devel/patch" auto="yes" arch="*">
+      <unaffected range="ge">2.7.6-r4</unaffected>
+      <vulnerable range="lt">2.7.6-r4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Patch takes a patch file containing a difference listing produced by the
+      diff program and applies those differences to one or more original files,
+      producing patched versions.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Patch. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A local attacker could pass a specially crafted diff file to Patch,
+      possibly resulting in a Denial of Service condition or arbitrary code
+      execution.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Patch users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-devel/patch-2.7.6-r4"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-13636">CVE-2019-13636</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-13638">CVE-2019-13638</uri>
+  </references>
+  <metadata tag="requester" timestamp="2019-08-16T21:41:00Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2019-08-18T02:24:40Z">b-man</metadata>
+</glsa>
