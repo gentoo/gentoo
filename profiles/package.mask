@@ -515,11 +515,6 @@ x11-drivers/xf86-video-voodoo
 =dev-java/ant-eclipse-ecj-4.10
 =dev-java/eclipse-ecj-4.10
 
-# Hanno Boeck <hanno@gentoo.org (2018-12-23)
-# Needs new OpenSSL, should be unmasked together with
-# OpenSSL 1.1.1
->=app-crypt/osslsigncode-2.0
-
 # Thomas Deutschmann <whissi@gentoo.org> (2018-12-10)
 # Requires >=dev-lang/lua-5.2 which is masked
 >=app-admin/lsyncd-2.2.3
