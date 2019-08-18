@@ -76,12 +76,6 @@ else
 fi
 inherit flag-o-matic
 
-# @ECLASS-VARIABLE: LIBRETRO_CORE_LIB_FILE
-# @REQUIRED
-# @DESCRIPTION:
-# Absolute path of this Libretro core's shared library.
-: ${LIBRETRO_CORE_LIB_FILE:="${S}/${LIBRETRO_CORE_NAME}_libretro.so"}
-
 case "${EAPI:-0}" in
 	6|7)
 		EXPORT_FUNCTIONS src_unpack src_prepare src_compile src_install
@@ -172,12 +166,27 @@ libretro-core_src_compile() {
 		$([[ -f Makefile.libretro ]] && echo '-f Makefile.libretro')
 }
 
+# @VARIABLE: LIBRETRO_CORE_LIB_FILE
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Absolute path of this Libretro core's shared library.
+# src_install.
+# @CODE
+# src_install() {
+# 	local LIBRETRO_CORE_LIB_FILE="${S}/somecore_libretro.so"
+#
+# 	libretro-core_src_install
+# }
+# @CODE
+
 # @FUNCTION: libretro-core_src_install
 # @DESCRIPTION:
 # The libretro-core src_install function which is exported.
 #
 # This function installs the shared library for this Libretro core.
 libretro-core_src_install() {
+	local LIBRETRO_CORE_LIB_FILE=${LIBRETRO_CORE_LIB_FILE:-"${S}/${LIBRETRO_CORE_NAME}_libretro.so"}
+
 	# Absolute path of the directory containing Libretro shared libraries.
 	local libretro_lib_dir="/usr/$(get_libdir)/libretro"
 	# If this core's shared library exists, install that.
