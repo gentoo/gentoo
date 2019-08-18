@@ -15002,7 +15002,7 @@ net-irc/rhapsody 0.28b: IRC client intended to be displayed on a text console
 net-irc/scrollz 2.3: Advanced IRC client based on ircII
 net-irc/sic 1.2-r1: An extremly simple IRC client
 net-irc/telepathy-idle 0.2.0: Full-featured IRC connection manager for Telepathy
-net-irc/unrealircd 4.2.2 4.2.3-r1 4.2.4.1: An advanced Internet Relay Chat daemon
+net-irc/unrealircd 4.2.2 4.2.4.1: An advanced Internet Relay Chat daemon
 net-irc/weechat 2.5-r1 9999: Portable and multi-interface IRC client
 net-irc/xaric 0.13.6: An IRC client similar to ircII, BitchX, or ircII EPIC
 net-irc/znc 1.7.4 9999: An advanced IRC Bouncer
@@ -16934,7 +16934,7 @@ sci-visualization/xgraph 12.1-r4: X11 Plotting Utility
 sci-visualization/xyscan 4.3.0: Tool for extracting data points from graphs
 sci-visualization/yt 3.3.5 3.4.0: Astrophysical Simulation Analysis and Vizualization package
 sci-visualization/zhu3d 4.2.6-r1: Interactive 3D mathematical function viewer
-sec-policy/apparmor-profiles 2.13.1 2.13.2 2.13.3 9999: A collection of profiles for the AppArmor application security system
+sec-policy/apparmor-profiles 2.13.1 2.13.3 9999: A collection of profiles for the AppArmor application security system
 sec-policy/selinux-abrt 2.20180114-r1 2.20180114-r2 2.20180114-r3 2.20180701-r1 2.20180701-r2 2.20190201-r1 9999: SELinux policy for abrt
 sec-policy/selinux-accountsd 2.20180114-r1 2.20180114-r2 2.20180114-r3 2.20180701-r1 2.20180701-r2 2.20190201-r1 9999: SELinux policy for accountsd
 sec-policy/selinux-acct 2.20180114-r1 2.20180114-r2 2.20180114-r3 2.20180701-r1 2.20180701-r2 2.20190201-r1 9999: SELinux policy for acct
@@ -17199,8 +17199,8 @@ sys-apps/adjtime 0.4-r2: A perl script to adjust the clock tick of the hardware 
 sys-apps/agedu 20180329 20180522 20190630: A utility for tracking down wasted disk space
 sys-apps/aix-miscutils 0.1.1671: Miscellaneous helpers for AIX (currently just ldd)
 sys-apps/apmd 3.2.2_p14-r1: Advanced Power Management Daemon
-sys-apps/apparmor 2.13.1-r1 2.13.2 2.13.3: Userspace utils and init scripts for the AppArmor application security system
-sys-apps/apparmor-utils 2.13.1 2.13.2 2.13.2-r1 2.13.3: Additional userspace utils to assist with AppArmor profile management
+sys-apps/apparmor 2.13.1-r1 2.13.3: Userspace utils and init scripts for the AppArmor application security system
+sys-apps/apparmor-utils 2.13.1 2.13.3: Additional userspace utils to assist with AppArmor profile management
 sys-apps/apply-default-acl 0.4.2: Apply default POSIX ACLs to files and directories
 sys-apps/arrayprobe 2.0-r2: Utility to report status of an HP (Compaq) array controller (both IDA & CCISS)
 sys-apps/attr 2.4.47-r2 2.4.48-r2 2.4.48-r3: Extended attributes tools
@@ -18058,7 +18058,7 @@ sys-libs/ldb 1.1.26 1.1.29-r1 1.1.31 1.2.3 1.2.4 1.3.6 1.3.8 1.4.6 1.4.7 1.5.4 1
 sys-libs/lib-compat 1.5: Compatibility C++ library for very old programs
 sys-libs/lib-compat-loki 0.2-r1: Compatibility libc6 libraries for Loki games
 sys-libs/libaal 1.0.6 1.0.7 1.0.7-r1: library required by reiser4progs
-sys-libs/libapparmor 2.13.1 2.13.2 2.13.3: Library to support AppArmor userspace utilities
+sys-libs/libapparmor 2.13.1 2.13.3: Library to support AppArmor userspace utilities
 sys-libs/libavc1394 0.5.4-r1: library for the 1394 AV/C (Audio/Video Control) Digital Interface Command Set
 sys-libs/libblockdev 2.20-r2 2.21 2.22 9999: A library for manipulating block devices
 sys-libs/libcap 2.26-r2 2.27: POSIX 1003.1e capabilities
