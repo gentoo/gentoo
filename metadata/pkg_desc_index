@@ -9719,7 +9719,7 @@ dev-ruby/acts_as_list 0.9.17 0.9.18 0.9.19: Capabilities for sorting and reorder
 dev-ruby/addressable 2.5.2 2.6.0: A replacement for the URI implementation that is part of Ruby's standard library
 dev-ruby/ae 1.8.2: Assertive Expressive is an assertions library designed for reuse
 dev-ruby/afm 0.2.2: A very simple library to read Adobe Font Metrics files
-dev-ruby/airbrussh 1.3.0 1.3.1 1.3.2: A replacement log formatter for SSHKit
+dev-ruby/airbrussh 1.3.2 1.3.3: A replacement log formatter for SSHKit
 dev-ruby/allison 2.0.3-r3: A modern, pretty RDoc template
 dev-ruby/amatch 0.4.0: Approximate Matching Extension for Ruby
 dev-ruby/ammeter 1.1.4-r1: Write specs for your Rails 3+ generators
@@ -9890,7 +9890,7 @@ dev-ruby/fuubar 2.3.2 2.4.0 2.4.1: Instafailing RSpec progress bar formatter
 dev-ruby/gettext-setup 0.30 0.31: A gem to ease i18n
 dev-ruby/gettext_i18n_rails 1.8.0: FastGettext / Rails integration
 dev-ruby/gh 0.15.1-r2: multi-layer client for the github api v3
-dev-ruby/gherkin 4.1.3 5.1.0: Fast Gherkin lexer and parser
+dev-ruby/gherkin 5.1.0: Fast Gherkin lexer and parser
 dev-ruby/gist 5.0.0: Potentially the best command line gister.
 dev-ruby/git 1.4.0 1.5.0: Library for using Git in Ruby
 dev-ruby/github_api 0.18.2: A Ruby wrapper for the GitHub REST API v3
@@ -10031,12 +10031,12 @@ dev-ruby/necromancer 0.5.0: Conversion from one object type to another with a bi
 dev-ruby/nenv 0.3.0: Convenient wrapper for Ruby's ENV
 dev-ruby/neovim-ruby-client 0.7.1 0.8.1: Ruby bindings for Neovim
 dev-ruby/net-http-digest_auth 1.4.1: An implementation of RFC 2617 - Digest Access Authentication
-dev-ruby/net-http-persistent 2.9.4-r2 3.0.0 3.0.1 3.1.0: Manages persistent connections using Net::HTTP plus a speed fix for Ruby 1.8
+dev-ruby/net-http-persistent 3.0.0 3.0.1 3.1.0: Manages persistent connections using Net::HTTP plus a speed fix for Ruby 1.8
 dev-ruby/net-http-pipeline 1.0.1: An HTTP/1.1 pipelining implementation atop Net::HTTP
 dev-ruby/net-scp 1.2.1-r1 2.0.0: A pure Ruby implementation of the SCP client protocol
 dev-ruby/net-sftp 2.1.2-r2 2.1.2-r4: SFTP in pure Ruby
 dev-ruby/net-ssh 4.2.0 5.0.2 5.1.0 5.2.0: Non-interactive SSH processing in pure Ruby
-dev-ruby/net-ssh-gateway 1.3.0 2.0.0: A simple library to assist in enabling tunneled Net::SSH connections
+dev-ruby/net-ssh-gateway 2.0.0: A simple library to assist in enabling tunneled Net::SSH connections
 dev-ruby/net-telnet 0.1.1-r1 0.2.0: Provides telnet client functionality
 dev-ruby/netrc 0.11.0: This library reads and writes .netrc files
 dev-ruby/network_interface 0.0.2: network_interface layer from metasploit pcaprub
@@ -10171,7 +10171,7 @@ dev-ruby/rmagick 2.16.0 3.0.0 3.1.0 3.2.0 4.0.0: An interface between Ruby and t
 dev-ruby/roadie 3.4.0 3.5.0: Making HTML emails comfortable for the Rails rockstars
 dev-ruby/roadie-rails 1.2.1 1.3.0: Hooks Roadie into your Rails application to help with email generation
 dev-ruby/robots 0.10.1-r2: A simple Ruby library to parse robots.txt
-dev-ruby/rouge 1.11.1-r2 3.6.0 3.7.0 3.8.0: Yet-another-markdown-parser using a strict syntax definition in pure Ruby
+dev-ruby/rouge 3.6.0 3.7.0 3.8.0: Yet-another-markdown-parser using a strict syntax definition in pure Ruby
 dev-ruby/rqrcode 0.10.1: Library for encoding QR Codes
 dev-ruby/rr 1.2.1: A double framework featuring a selection of double techniques and a terse syntax
 dev-ruby/rrdtool-bindings 1.6.0 1.7.0 1.7.1 1.7.1-r1 1.7.2: Ruby bindings for rrdtool
@@ -10360,7 +10360,7 @@ dev-ruby/unindent 1.0: Ruby method to unindent strings
 dev-ruby/uuidtools 2.1.5-r1: Simple library to generate UUIDs
 dev-ruby/vagrant_cloud 2.0.2: Vagrant Cloud API Library
 dev-ruby/vcard 0.2.15: Ruby vcard support extracted from Vpim
-dev-ruby/vcr 1.11.3 2.9.3 4.0.0 5.0.0: Records your test suite's HTTP interactions and replay them during test runs
+dev-ruby/vcr 1.11.3 4.0.0 5.0.0: Records your test suite's HTTP interactions and replay them during test runs
 dev-ruby/virtus 1.0.5: Attributes on Steroids for Plain Old Ruby Objects
 dev-ruby/vlad 2.7.0: Pragmatic application deployment automation, without mercy
 dev-ruby/warden 1.2.8: General Rack Authentication Framework
@@ -10684,7 +10684,7 @@ dev-util/cscope 15.8a-r1 15.8a-r2 15.9: Interactively examine a C program
 dev-util/csup 20060318-r1: A rewrite of CVSup
 dev-util/ctags 20190331: Exuberant Ctags creates tags files for code browsing in editors
 dev-util/cucumber 3.1.2: Executable feature scenarios
-dev-util/cucumber-core 1.5.0 3.2.1: Executable feature scenarios
+dev-util/cucumber-core 3.2.1: Executable feature scenarios
 dev-util/cucumber-expressions 6.0.1: a simpler alternative to Regular Expressions
 dev-util/cucumber-messages 2.1.1 2.1.2: Protocol Buffer messages for Cucumber's inter-process communication
 dev-util/cucumber-rails 1.6.0 1.7.0 1.8.0: Executable feature scenarios for Rails
@@ -18518,8 +18518,8 @@ www-apps/mod_survey 3.2.5: XML-defined web questionnaires as a plug-in module us
 www-apps/moodle 3.5.7 3.6.5 3.7.1: The Moodle Course Management System
 www-apps/mythweb 0.28.1: PHP scripts intended to manage MythTV from a web browser
 www-apps/nanoblogger 3.2.3 3.5_rc1-r1: Small and simple weblog engine written in Bash for the command-line
-www-apps/nanoc 4.10.4 4.11.0 4.11.2 4.11.5 4.11.6 4.11.7 4.11.8: nanoc is a simple but very flexible static site generator written in Ruby
-www-apps/nanoc-core 4.11.2 4.11.5 4.11.6 4.11.7 4.11.8: nanoc is a simple but very flexible static site generator written in Ruby
+www-apps/nanoc 4.10.4 4.11.7 4.11.8 4.11.9: nanoc is a simple but very flexible static site generator written in Ruby
+www-apps/nanoc-core 4.11.7 4.11.8 4.11.9: nanoc is a simple but very flexible static site generator written in Ruby
 www-apps/netbox 2.5.11 2.5.12 2.6.1: IP address and data center infrastructure management tool
 www-apps/nextcloud 14.0.13 15.0.10 16.0.3: Personal cloud that runs on your own server
 www-apps/nikola 7.8.8 7.8.11 7.8.12 7.8.13 7.8.14 7.8.14-r1 7.8.15 7.8.15-r1: A static website and blog generator
