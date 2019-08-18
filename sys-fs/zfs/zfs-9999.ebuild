@@ -119,6 +119,11 @@ src_prepare() {
 		distutils-r1_src_prepare
 		popd >/dev/null || die
 	fi
+
+	# prevent errors showing up on zfs-mount stop, openrc will unmount all filesystems anyway
+	if use rootfs; then
+		sed -i "/^ZFS_UNMOUNT=/ s/yes/no/" etc/init.d/zfs.in || die
+	fi
 }
 
 src_configure() {
@@ -162,6 +167,10 @@ src_install() {
 
 	use test-suite || rm -rf "${ED}/usr/share/zfs"
 
+	if ! use static-libs; then
+		find "${ED}/" -name '*.la' -delete || die
+	fi
+
 	dobashcomp contrib/bash_completion.d/zfs
 	bashcomp_alias zfs zpool
 
@@ -183,7 +192,7 @@ pkg_postinst() {
 	if has_version "<=sys-kernel/genkernel-3.5.3.3"; then
 		einfo "genkernel version 3.5.3.3 and earlier does NOT support"
 		einfo " unlocking pools with native zfs encryption enabled at boot"
-		einfo " use dracut or genkernel-9999 if you requre this functionality"
+		einfo " use dracut or >=genkernel-4.0.0 if you requre this functionality"
 	fi
 
 	if ! use kernel-builtin && [[ ${PV} = "9999" ]]; then
@@ -192,60 +201,14 @@ pkg_postinst() {
 		update_moduledb
 	fi
 
-	if [[ -e "${EROOT}/etc/runlevels/boot/zfs" ]]; then
-		einfo 'The zfs boot script has been split into the zfs-import,'
-		einfo 'zfs-mount and zfs-share scripts.'
-		einfo
-		einfo 'You had the zfs script in your boot runlevel. For your'
-		einfo 'convenience, it has been automatically removed and the three'
-		einfo 'scripts that replace it have been configured to start.'
-		einfo 'The zfs-import and zfs-mount scripts have been added to the boot'
-		einfo 'runlevel while the zfs-share script is in the default runlevel.'
-
-		rm "${EROOT}/etc/runlevels/boot/zfs"
-		ln -snf "${EROOT}/etc/init.d/zfs-import" \
-			"${EROOT}/etc/runlevels/boot/zfs-import"
-		ln -snf "${EROOT}/etc/init.d/zfs-mount" \
-			"${EROOT}/etc/runlevels/boot/zfs-mount"
-		ln -snf "${EROOT}/etc/init.d/zfs-share" \
-			"${EROOT}/etc/runlevels/default/zfs-share"
-	else
-		[[ -e "${EROOT}/etc/runlevels/boot/zfs-import" ]] || \
-			einfo "You should add zfs-import to the boot runlevel."
-		[[ -e "${EROOT}/etc/runlevels/boot/zfs-mount" ]]|| \
-			einfo "You should add zfs-mount to the boot runlevel."
-		[[ -e "${EROOT}/etc/runlevels/default/zfs-share" ]] || \
-			einfo "You should add zfs-share to the default runlevel."
-	fi
-
-	if [[ -e "${EROOT}/etc/runlevels/default/zed" ]]; then
-		einfo 'The downstream OpenRC zed script has replaced by the upstream'
-		einfo 'OpenRC zfs-zed script.'
-		einfo
-		einfo 'You had the zed script in your default runlevel. For your'
-		einfo 'convenience, it has been automatically removed and the zfs-zed'
-		einfo 'script that replaced it has been configured to start.'
-
-		rm "${EROOT}/etc/runlevels/boot/zed"
-		ln -snf "${EROOT}/etc/init.d/zfs-zed" \
-			"${EROOT}/etc/runlevels/default/zfs-zed"
-	else
-		[[ -e "${EROOT}/etc/runlevels/default/zfs-zed" ]] || \
-			einfo "You should add zfs-zed to the default runlevel."
-	fi
-
-	if [[ -e "${EROOT}/etc/runlevels/shutdown/zfs-shutdown" ]]; then
-		einfo "The zfs-shutdown script is obsolete. Removing it from runlevel."
-		rm "${EROOT}/etc/runlevels/shutdown/zfs-shutdown"
-	fi
-
-	systemd_reenable zfs-zed.service
-	systemd_reenable zfs-import-cache.service
-	systemd_reenable zfs-import-scan.service
-	systemd_reenable zfs-mount.service
-	systemd_reenable zfs-share.service
-	systemd_reenable zfs-import.target
-	systemd_reenable zfs.target
+	[[ -e "${EROOT}/etc/runlevels/boot/zfs-import" ]] || \
+		einfo "You should add zfs-import to the boot runlevel."
+	[[ -e "${EROOT}/etc/runlevels/boot/zfs-mount" ]]|| \
+		einfo "You should add zfs-mount to the boot runlevel."
+	[[ -e "${EROOT}/etc/runlevels/default/zfs-share" ]] || \
+		einfo "You should add zfs-share to the default runlevel."
+	[[ -e "${EROOT}/etc/runlevels/default/zfs-zed" ]] || \
+		einfo "You should add zfs-zed to the default runlevel."
 }
 
 pkg_postrm() {
