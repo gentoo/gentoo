@@ -17,7 +17,7 @@ EGIT_REPO_URI="https://git.llvm.org/git/lld.git
 	https://github.com/llvm-mirror/lld.git"
 EGIT_BRANCH="release_90"
 
-LICENSE="UoI-NCSA"
+LICENSE="Apache-2.0-with-LLVM-exceptions UoI-NCSA"
 SLOT="0"
 KEYWORDS=""
 IUSE="test"
