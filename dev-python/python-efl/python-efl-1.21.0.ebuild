@@ -15,6 +15,8 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="doc test"
 
+RESTRICT="!test? ( test )"
+
 RDEPEND="
 	=dev-libs/efl-1.21*
 	dev-python/dbus-python[${PYTHON_USEDEP}]
