@@ -256,17 +256,6 @@ kde-misc/plasma-active-window-control
 # Requires >=mail-client/thunderbird-68_beta1 which is not in the tree yet
 >=x11-plugins/enigmail-2.1
 
-# Hans de Graaff <graaff@gentoo.org> (2019-07-17)
-# Mask ruby24-only slots for removal in 30 days. These slots do not
-# have any reverse dependencies. Please migrate to or use a newer slot.
-dev-ruby/gherkin:4
-dev-ruby/net-http-persistent:0
-dev-ruby/net-ssh-gateway:2
-dev-ruby/rouge:0
-dev-ruby/vcr:2
-#dev-ruby/webmock:2
-dev-util/cucumber-core:0
-
 # Sobhan Mohammadpour <sobhan@gentoo.org> (2019-07-14)
 # Masked for testing
 >=media-video/totem-3.32.1

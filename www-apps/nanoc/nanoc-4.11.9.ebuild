@@ -1,12 +1,12 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-USE_RUBY="ruby24 ruby25"
+EAPI=7
+USE_RUBY="ruby24 ruby25 ruby26"
 
 RUBY_FAKEGEM_EXTRADOC="NEWS.md README.md"
 
-RUBY_FAKEGEM_RECIPE_DOC="rdoc"
+RUBY_FAKEGEM_GEMSPEC="nanoc.gemspec"
 
 inherit ruby-fakegem
 
@@ -29,11 +29,16 @@ ruby_add_rdepend "!minimal? (
 	www-servers/adsf
 )
 	>=dev-ruby/addressable-2.5
+	>=dev-ruby/colored-1.2:0
 	>=dev-ruby/cri-2.15:0
 	~www-apps/nanoc-core-${PV}
 	>=dev-ruby/parallel-1.12:1
-	>=dev-ruby/slow_enumerator_tools-1.1.0:1
-	>=dev-ruby/tomlrb-1.2:1"
+	>=dev-ruby/tomlrb-1.2:1
+	>=dev-ruby/tty-command-0.8:0
+	>=dev-ruby/tty-file-0.7:0
+	>=dev-ruby/tty-platform-0.2:0
+	>=dev-ruby/tty-which-0.4:0
+"
 
 ruby_add_bdepend "test? (
 	dev-ruby/rspec:3
@@ -46,7 +51,7 @@ ruby_add_bdepend "test? (
 	dev-ruby/mustache
 	dev-ruby/pry
 	dev-ruby/rdoc
-	dev-ruby/rouge:2
+	>=dev-ruby/rouge-3.5.1:2
 	dev-ruby/rubypants
 	dev-ruby/systemu
 	dev-ruby/timecop
@@ -70,8 +75,12 @@ all_ruby_prepare() {
 
 	echo "-r ./spec/spec_helper.rb" > .rspec || die
 
-	# Avoid tests requiring a network connection
-	rm -f test/checking/checks/test_{css,html}.rb || die
+	# Avoid basepath issues when generating gemspec
+	sed -i -e "s:require_relative ':require './:" ${RUBY_FAKEGEM_GEMSPEC} || die
+
+	# Avoid tests requiring a network connection or make assumptions
+	# about the local network environment.
+	rm -f test/checking/checks/test_{css,html}.rb spec/nanoc/cli/commands/view_spec.rb || die
 
 	# Avoid tests for unpackaged dependencies
 	rm spec/nanoc/deploying/fog_spec.rb \
@@ -80,7 +89,6 @@ all_ruby_prepare() {
 
 	# Avoid non-fatal failing tests due to specifics in the environment
 	sed -i -e '145askip "gentoo"' spec/nanoc/cli/error_handler_spec.rb || die
-	sed -i -e '/does not crash when output dir does not exist and/askip "gentoo"' spec/nanoc/cli/commands/view_spec.rb || die
 	sed -i -e '/watches with --watch/askip "gentoo"' spec/nanoc/cli/commands/compile_spec.rb || die
 	sed -i -e '124askip "ordering issues"' -e '168askip "ordering issues"' spec/nanoc/data_sources/filesystem_spec.rb || die
 }
