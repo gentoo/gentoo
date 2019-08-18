@@ -1319,7 +1319,7 @@ app-emacs/rfcview 0.13: An Emacs mode that reformats IETF RFCs for display
 app-emacs/riece 8.0.0 9.0.0: A redesign of Liece IRC client
 app-emacs/rnc-mode 1.0.6: An Emacs mode for editing Relax NG compact schema files
 app-emacs/rpm-spec-mode 0.15: Emacs mode to ease editing of RPM spec files
-app-emacs/ruby-mode 2.3.0 2.4.1 2.5.3 2.5.5 2.6.0 2.6.3: Emacs major mode for editing Ruby code
+app-emacs/ruby-mode 2.4.1 2.5.3 2.5.5 2.6.0 2.6.3: Emacs major mode for editing Ruby code
 app-emacs/rudel 0.3_pre20110721-r1 0.3.1: Collaborative editing environment for GNU Emacs
 app-emacs/rust-mode 0.3.0_p20180221 0.3.0_p20190125: A major emacs mode for editing Rust source code
 app-emacs/s 1.11.0 1.12.0: The long lost Emacs string manipulation library
@@ -10904,7 +10904,6 @@ dev-util/rosinstall 0.7.8 9999: Command-line tools for maintaining a workspace o
 dev-util/rosinstall_generator 0.1.13 0.1.14 9999: Generates rosinstall metadata about repositories with ROS packages/stacks
 dev-util/rpmdevtools 8.10: Collection of rpm packaging related utilities
 dev-util/rr 4.5.0 5.0.0 5.1.0 5.2.0 5.2.0-r1: Record and Replay Framework
-dev-util/rustfmt 0.8.6 0.9.0: Tool to find and fix Rust formatting issues
 dev-util/sasm 2.2-r1 3.10.1: Simple crossplatform IDE for NASM assembly language
 dev-util/scala-ide 4.7.0: The Scala IDE
 dev-util/scanmem 0.16.1 0.17: Locate and modify variables in executing processes
