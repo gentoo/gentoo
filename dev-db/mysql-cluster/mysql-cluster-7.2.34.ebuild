@@ -481,11 +481,11 @@ src_test() {
 
 	local t
 	for t in main.mysql_client_test \
-                        binlog.binlog_statement_insert_delayed main.information_schema \
-                        main.mysqld--help-notwin main.flush_read_lock_kill \
-                        sys_vars.plugin_dir_basic main.openssl_1 \
-                        main.mysqlhotcopy_archive main.mysqlhotcopy_myisam \
-                        ndb.ndbinfo ndb_binlog.ndb_binlog_index ; do
+				binlog.binlog_statement_insert_delayed main.information_schema \
+				main.mysqld--help-notwin main.flush_read_lock_kill \
+				sys_vars.plugin_dir_basic main.openssl_1 \
+				main.mysqlhotcopy_archive main.mysqlhotcopy_myisam \
+				ndb.ndbinfo ndb_binlog.ndb_binlog_index ; do
 			_disable_test  "$t" "False positives in Gentoo"
 	done
 
