@@ -8,5 +8,6 @@
 	<use>
 		<flag name="elogind">Rely on <pkg>sys-auth/elogind</pkg> as logind provider for Wayland sessions</flag>
 		<flag name="gles2">Enable OpenGL ES 2.0 support</flag>
+		<flag name="screencast">Enable support for remote desktop and screen cast using <pkg>media-video/pipewire</pkg></flag>
 	</use>
 </pkgmetadata>
