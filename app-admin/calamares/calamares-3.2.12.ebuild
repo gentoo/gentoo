@@ -1,9 +1,10 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=( python{3_5,3_6} )
+KDE_TEST="true"
+PYTHON_COMPAT=( python3_{5,6} )
 inherit kde5 python-r1
 
 DESCRIPTION="Distribution-independent installer framework"
@@ -20,14 +21,17 @@ IUSE="+networkmanager pythonqt +upower"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-DEPEND="${PYTHON_DEPS}
+BDEPEND="
+	$(add_qt_dep linguist-tools)
+"
+COMMON_DEPEND="${PYTHON_DEPS}
 	$(add_frameworks_dep kconfig)
 	$(add_frameworks_dep kcoreaddons)
 	$(add_frameworks_dep kcrash)
 	$(add_frameworks_dep kpackage)
 	$(add_frameworks_dep kparts)
 	$(add_frameworks_dep kservice)
-	$(add_qt_dep linguist-tools)
+	$(add_qt_dep qtconcurrent)
 	$(add_qt_dep qtdbus)
 	$(add_qt_dep qtdeclarative)
 	$(add_qt_dep qtgui)
@@ -37,20 +41,21 @@ DEPEND="${PYTHON_DEPS}
 	$(add_qt_dep qtwidgets)
 	$(add_qt_dep qtxml)
 	dev-cpp/yaml-cpp:=
-	>=dev-libs/boost-1.55:=[${PYTHON_USEDEP}]
+	>=dev-libs/boost-1.55:=[python,${PYTHON_USEDEP}]
 	dev-libs/libpwquality[${PYTHON_USEDEP}]
 	sys-apps/dbus
 	sys-apps/dmidecode
 	sys-auth/polkit-qt[qt5(+)]
-	>=sys-libs/kpmcore-3.0.3:5=
+	>=sys-libs/kpmcore-4.0.0:5=
 	pythonqt? ( >=dev-python/PythonQt-3.1:=[${PYTHON_USEDEP}] )
 "
-
-RDEPEND="${DEPEND}
+DEPEND="${COMMON_DEPEND}
+	test? ( $(add_qt_dep qttest) )
+"
+RDEPEND="${COMMON_DEPEND}
 	app-admin/sudo
 	dev-libs/libatasmart
 	net-misc/rsync
-	>=sys-block/parted-3.0
 	|| ( sys-boot/grub:2 sys-boot/systemd-boot )
 	sys-boot/os-prober
 	sys-fs/squashfs-tools
@@ -67,17 +72,21 @@ src_prepare() {
 	       PYTHON_INCLUDE_PATH="$(python_get_library_path)"\
 	       PYTHON_CFLAGS="$(python_get_CFLAGS)"\
 	       PYTHON_LIBS="$(python_get_LIBS)"
+
+	sed -i -e 's:pkexec /usr/bin/calamares:calamares-pkexec:' \
+		calamares.desktop || die
+	sed -i -e 's:Icon=calamares:Icon=drive-harddisk:' \
+		calamares.desktop || die
 }
 
 src_configure() {
 	local mycmakeargs=(
 		-DWEBVIEW_FORCE_WEBKIT=OFF
+		-DCMAKE_DISABLE_FIND_PACKAGE_LIBPARTED=ON
 		-DWITH_PYTHONQT=$(usex pythonqt)
 	)
 
 	kde5_src_configure
-	sed -i -e 's:pkexec /usr/bin/calamares:calamares-pkexec:' "${S}"/calamares.desktop
-	sed -i -e 's:Icon=calamares:Icon=drive-harddisk:' "${S}"/calamares.desktop
 }
 
 src_install() {
