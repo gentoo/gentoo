@@ -515,10 +515,6 @@ x11-drivers/xf86-video-voodoo
 =dev-java/ant-eclipse-ecj-4.10
 =dev-java/eclipse-ecj-4.10
 
-# Craig Andrews <candrews@gentoo.org> (2019-01-01)
-# Requires dev-libs/openssl-1.1.1, Bug 674148
-dev-libs/gost-engine
-
 # Hanno Boeck <hanno@gentoo.org (2018-12-23)
 # Needs new OpenSSL, should be unmasked together with
 # OpenSSL 1.1.1
