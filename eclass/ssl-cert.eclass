@@ -5,7 +5,7 @@
 # @MAINTAINER:
 # @AUTHOR:
 # Max Kalika <max@gentoo.org>
-# @SUPPORTED_EAPIS: 1 2 3 4 5 6
+# @SUPPORTED_EAPIS: 1 2 3 4 5 6 7
 # @BLURB: Eclass for SSL certificates
 # @DESCRIPTION:
 # This eclass implements a standard installation procedure for installing
@@ -42,11 +42,22 @@ esac
 
 if [[ "${SSL_DEPS_SKIP}" == "0" ]]; then
 	if [[ "${SSL_CERT_MANDATORY}" == "0" ]]; then
-		DEPEND="${SSL_CERT_USE}? ( || ( dev-libs/openssl:0 dev-libs/libressl:0 ) )"
+		SSL_DEPEND="${SSL_CERT_USE}? ( || ( dev-libs/openssl:0 dev-libs/libressl:0 ) )"
 		IUSE="${SSL_CERT_USE}"
 	else
-		DEPEND="|| ( dev-libs/openssl:0 dev-libs/libressl:0 )"
+		SSL_DEPEND="|| ( dev-libs/openssl:0 dev-libs/libressl:0 )"
 	fi
+
+	case "${EAPI}" in
+		1|2|3|4|5|6)
+			DEPEND="${SSL_DEPEND}"
+		;;
+		*)
+			BDEPEND="${SSL_DEPEND}"
+		;;
+	esac
+
+	unset SSL_DEPEND
 fi
 
 # @FUNCTION: gen_cnf
