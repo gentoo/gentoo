@@ -30,7 +30,7 @@ DESCRIPTION="A fast, multi-threaded, multi-user SQL database server"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="cjk cracklib debug jemalloc latin1 libressl numa +perl profiling
-	router selinux ssl tcmalloc test"
+	router selinux tcmalloc test"
 
 # Tests always fail when libressl is enabled due to hard-coded ciphers in the tests
 RESTRICT="libressl? ( test )"
@@ -77,10 +77,8 @@ COMMON_DEPEND="
 		sys-process/procps:0=
 	)
 	numa? ( sys-process/numactl )
-	ssl? (
-		!libressl? ( >=dev-libs/openssl-1.0.0:0= )
-		libressl? ( dev-libs/libressl:0= )
-	)
+	!libressl? ( >=dev-libs/openssl-1.0.0:0= )
+	libressl? ( dev-libs/libressl:0= )
 	tcmalloc? ( dev-util/google-perftools:0= )
 "
 DEPEND="${COMMON_DEPEND}
@@ -224,10 +222,9 @@ src_configure(){
 		-DINSTALL_SUPPORTFILESDIR="${EPREFIX}/usr/share/mysql"
 		-DCOMPILATION_COMMENT="Gentoo Linux ${PF}"
 		-DWITH_UNIT_TESTS=$(usex test ON OFF)
-		### TODO: make this system but issues with UTF-8 prevent it
 		-DWITH_EDITLINE=system
 		-DWITH_ZLIB=system
-		-DWITH_SSL=$(usex ssl system wolfssl)
+		-DWITH_SSL=system
 		-DWITH_LIBWRAP=0
 		-DENABLED_LOCAL_INFILE=1
 		-DMYSQL_UNIX_ADDR="${EPREFIX}/var/run/mysqld/mysqld.sock"
