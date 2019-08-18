@@ -1,9 +1,9 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Conrad Kostecki <ck+gentoo@bl4ckb0x.de> (2019-08-07)
+# Conrad Kostecki <ck+gentoo@bl4ckb0x.de> (2019-08-17)
 # app-misc/graphlcd-base won't work on PowerPC/PowerPC64
-app-misc/lcdproc lcd_devices_glcd
+app-misc/lcdproc freetype lcd_devices_glcd png
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2019-06-01)
 # not yet keyworded
