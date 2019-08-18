@@ -16,11 +16,7 @@ SRC_URI=""
 EGIT_REPO_URI="https://git.llvm.org/git/openmp.git
 	https://github.com/llvm-mirror/openmp.git"
 
-# Additional licenses:
-# - MIT-licensed Intel code,
-# - LLVM Software Grant from Intel.
-
-LICENSE="|| ( UoI-NCSA MIT ) MIT LLVM-Grant"
+LICENSE="Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )"
 SLOT="0"
 KEYWORDS=""
 IUSE="cuda hwloc kernel_linux offload ompt test"
