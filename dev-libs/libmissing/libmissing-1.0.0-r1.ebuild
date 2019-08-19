@@ -83,11 +83,12 @@ src_prepare() {
 	# get platform specific set of missing functions
 	einfo "Including sources for missing functions on ${platform}:"
 	einfo "${modules[*]}"
-	"${S}"/gnulib-tool \
+	"${S}"/gnulib-tool -S \
 		--import \
 		--lib=libmissing \
 		--libtool \
 		--no-vc-files \
+		--no-cache-modules \
 		"${modules[@]}"
 
 	sed -i -e '/^noinst_LTLIBRARIES /s/noinst_/lib_/' lib/Makefile.am || die
@@ -95,8 +96,7 @@ src_prepare() {
 	cat >> lib/Makefile.am << 'EOS'
 install-data-local: $(BUILT_SOURCES)
 	@for hdr in $(BUILT_SOURCES); do \
-		$(mkinstalldirs) $(DESTDIR)$(includedir)/$${hdr%/*}; \
-		$(INSTALL_HEADER) "$$hdr" $(DESTDIR)$(includedir)/$${hdr}; \
+		$(INSTALL_HEADER) -D "$$hdr" $(DESTDIR)$(includedir)/missing/$${hdr}; \
 	done;
 EOS
 
@@ -105,6 +105,13 @@ EOS
 
 src_configure() {
 	cd "${PN}" || die
+
+	# ensure we don't pick up installed libmissing
+	export CPPFLAGS="${CPPFLAGS/-I${EPREFIX}\/usr\/include\/missing/}"
+	export LIBS="${LIBS/-lmissing/}"
+	einfo "CPPFLAGS: ${CPPFLAGS}"
+	einfo "LIBS: ${LIBS}"
+
 	default
 }
 
