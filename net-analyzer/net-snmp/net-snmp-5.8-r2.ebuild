@@ -1,32 +1,30 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 PYTHON_COMPAT=( python2_7 )
 DISTUTILS_SINGLE_IMPL=yesplz
 DISTUTILS_OPTIONAL=yesplz
 WANT_AUTOMAKE=none
-PATCHSET=2
+PATCHSET=3
 GENTOO_DEPEND_ON_PERL=no
 
 inherit autotools distutils-r1 eutils perl-module systemd
 
 DESCRIPTION="Software for generating and retrieving SNMP data"
-HOMEPAGE="http://net-snmp.sourceforge.net/"
+HOMEPAGE="http://www.net-snmp.org/"
 SRC_URI="
-	mirror://sourceforge/project/${PN}/${PN}/${PV}/${P}.tar.gz
-	https://dev.gentoo.org/~jer/${PN}-5.7.3-patches-${PATCHSET}.tar.xz
-	https://dev.gentoo.org/~dilfridge/distfiles/${P}-perl524.patch.gz
-	https://dev.gentoo.org/~dilfridge/distfiles/${P}-perl524-2.patch.gz
+	mirror://sourceforge/project/${PN}/${PN}/${PV/_p*/}/${P/_p*/}.tar.gz
+	https://dev.gentoo.org/~jer/${PN}-5.7.3-patches-3.tar.xz
 "
 
 S=${WORKDIR}/${P/_/.}
 
 # GPL-2 for the init scripts
 LICENSE="HPND BSD GPL-2"
-SLOT="0"
+SLOT="0/35"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
-IUSE="X bzip2 doc elf ipv6 libressl lm_sensors mfd-rewrites minimal mysql netlink pci perl python rpm selinux smux ssl tcpd ucd-compat zlib"
+IUSE="X bzip2 doc elf kmem ipv6 libressl lm_sensors mfd-rewrites minimal mysql netlink pci perl python rpm selinux smux ssl tcpd ucd-compat zlib"
 
 COMMON_DEPEND="
 	ssl? (
@@ -48,7 +46,7 @@ COMMON_DEPEND="
 	pci? ( sys-apps/pciutils )
 	lm_sensors? ( sys-apps/lm_sensors )
 	netlink? ( dev-libs/libnl:3 )
-	mysql? ( virtual/mysql )
+	mysql? ( dev-db/mysql-connector-c:0= )
 	perl? ( dev-lang/perl:= )
 "
 DEPEND="
@@ -68,6 +66,7 @@ REQUIRED_USE="
 	python? ( ${PYTHON_REQUIRED_USE} )
 	rpm? ( bzip2 zlib )
 "
+S=${WORKDIR}/${P/_p*/}
 
 RESTRICT=test
 
@@ -77,15 +76,17 @@ pkg_setup() {
 
 src_prepare() {
 	# snmpconf generates config files with proper selinux context
-	use selinux && epatch "${FILESDIR}"/${PN}-5.1.2-snmpconf-selinux.patch
+	use selinux && eapply "${FILESDIR}"/${PN}-5.1.2-snmpconf-selinux.patch
 
-	epatch "${WORKDIR}"/${P}-perl524.patch
-	epatch "${WORKDIR}"/${P}-perl524-2.patch
-	epatch "${FILESDIR}"/${PN}-5.7.3-include-limits.patch
+	eapply "${FILESDIR}"/${PN}-5.7.3-include-limits.patch
+	eapply "${FILESDIR}"/${PN}-5.8-my_bool.patch
+	eapply "${FILESDIR}"/${PN}-5.8-tinfo.patch
 
-	epatch "${WORKDIR}"/patches/*.patch
+	mv "${WORKDIR}"/patches/0002-Respect-DESTDIR-for-pythoninstall.patch{,.disabled} || die
+	mv "${WORKDIR}"/patches/0004-Don-t-report-CFLAGS-and-LDFLAGS-in-net-snmp-config.patch{,.disabled} || die
+	eapply "${WORKDIR}"/patches/*.patch
 
-	epatch_user
+	eapply_user
 
 	eautoconf
 }
@@ -107,6 +108,7 @@ src_configure() {
 		$(use_enable ucd-compat ucd-snmp-compatibility) \
 		$(use_with bzip2) \
 		$(use_with elf) \
+		$(use_with kmem kmem-usage) \
 		$(use_with mysql) \
 		$(use_with netlink nl) \
 		$(use_with pci) \
@@ -163,7 +165,10 @@ src_install () {
 	dodoc AGENT.txt ChangeLog FAQ INSTALL NEWS PORTING README* TODO
 	newdoc EXAMPLE.conf.def EXAMPLE.conf
 
-	use doc && dohtml docs/html/*
+	if use doc; then
+		docinto html
+		dodoc -r docs/html/*
+	fi
 
 	keepdir /var/lib/net-snmp
 
