@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -24,7 +24,7 @@ DEPEND="
 	net-firewall/iptables
 	net-libs/gnutls
 	ldap? ( >=net-nds/openldap-2 )
-	mysql? ( virtual/mysql )
+	mysql? ( dev-db/mysql-connector-c )
 	nfconntrack? ( net-libs/libnetfilter_conntrack )
 	nfqueue? ( net-libs/libnfnetlink net-libs/libnetfilter_queue )
 	pam? ( sys-libs/pam )
