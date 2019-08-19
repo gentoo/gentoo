@@ -70,6 +70,8 @@ RDEPEND="${DEPEND}
 
 S="${WORKDIR}/${MY_P}"
 
+PATCHES=( "${FILESDIR}/${P}-no-zombie-processes.patch" )
+
 pkg_setup() {
 	enewgroup nagios
 	enewuser nagios -1 /bin/bash /var/nagios/home nagios
