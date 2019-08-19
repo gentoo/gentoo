@@ -1,7 +1,7 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 SSL_CERT_MANDATORY=1
 inherit autotools eutils multilib pam ssl-cert
@@ -24,20 +24,25 @@ DEPEND="
 	net-firewall/iptables
 	net-libs/gnutls
 	ldap? ( >=net-nds/openldap-2 )
-	mysql? ( virtual/mysql )
+	mysql? ( dev-db/mysql-connector-c )
 	nfconntrack? ( net-libs/libnetfilter_conntrack )
 	nfqueue? ( net-libs/libnfnetlink net-libs/libnetfilter_queue )
 	pam? ( sys-libs/pam )
 	pam_nuauth? ( sys-libs/pam )
-	postgres? ( dev-db/postgresql[server] )
+	postgres? ( dev-db/postgresql:*[server] )
 	prelude? ( dev-libs/libprelude )
 "
 RDEPEND=${DEPEND}
 
+PATCHES=(
+	"${FILESDIR}/${P}-var-run.patch"
+	"${FILESDIR}/${P}-gnutls-3.4.patch"
+)
+
 RESTRICT="test"
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-var-run.patch
+	default
 	sed -i \
 		-e 's:^#\(nuauth_tls_key="/etc/nufw/\)nuauth-key.pem:\1nuauth.key:' \
 		-e 's:^#\(nuauth_tls_cert="/etc/nufw/\)nuauth-cert.pem:\1nuauth.pem:' \
@@ -74,6 +79,7 @@ src_configure() {
 
 src_install() {
 	default
+	prune_libtool_files
 
 	newinitd "${FILESDIR}"/nufw-init.d nufw
 	newconfd "${FILESDIR}"/nufw-conf.d nufw
@@ -84,7 +90,6 @@ src_install() {
 	insinto /etc/nufw
 	doins conf/nuauth.conf
 
-	dodoc AUTHORS ChangeLog NEWS README TODO
 	docinto scripts
 	dodoc scripts/{clean_conntrack.pl,nuaclgen,nutop,README,ulog_rotate_daily.sh,ulog_rotate_weekly.sh}
 	docinto conf
@@ -93,8 +98,6 @@ src_install() {
 	if use pam; then
 		pamd_mimic system-auth nufw auth account password session
 	fi
-
-	prune_libtool_files
 }
 
 pkg_postinst() {
