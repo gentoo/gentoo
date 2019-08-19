@@ -7,6 +7,7 @@
 # @AUTHOR:
 # Michael Orlitzky <mjo@gentoo.org>
 # Michał Górny <mgorny@gentoo.org>
+# @SUPPORTED_EAPIS: 7
 # @BLURB: Eclass used to create and maintain a single user entry
 # @DESCRIPTION:
 # This eclass represents and creates a single user entry.  The name
@@ -43,7 +44,7 @@ _ACCT_USER_ECLASS=1
 
 case ${EAPI:-0} in
 	7) ;;
-	*) die "EAPI=${EAPI} not supported";;
+	*) die "EAPI=${EAPI:-0} not supported";;
 esac
 
 inherit user
@@ -107,7 +108,7 @@ readonly ACCT_USER_NAME
 # @REQUIRED
 # @DESCRIPTION:
 # List of groups the user should belong to.  This must be a bash
-# array. 
+# array.
 
 
 # << Boilerplate ebuild variables >>
