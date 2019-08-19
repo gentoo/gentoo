@@ -1,0 +1,16 @@
+Some non-x86 compilers accept -msse4.2 as a flag but ignore it (because it
+doesn't make sense for non-x86 machines), then fail when encountering any of
+the relevant intrinsics. Include an intrinsic in the probe for support.
+
+--- a/build_detect_platform
++++ b/build_detect_platform
+@@ -225,7 +225,7 @@ EOF
+ 
+     # Test if gcc SSE 4.2 is supported
+     $CXX $CXXFLAGS -x c++ - -o $CXXOUTPUT -msse4.2 2>/dev/null  <<EOF
+-      int main() {}
++      int main() { __builtin_ia32_crc32qi(0, 0); }
+ EOF
+     if [ "$?" = 0 ]; then
+         PLATFORM_SSEFLAGS="-msse4.2"
+

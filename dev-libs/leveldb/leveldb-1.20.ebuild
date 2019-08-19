@@ -26,7 +26,7 @@ REQUIRED_USE="snappy? ( !static-libs )"
 
 # https://github.com/google/leveldb/issues/234
 # https://github.com/google/leveldb/issues/236
-PATCHES=( "${FILESDIR}"/{${PN}-1.18-configure.patch,${P}-memenv-so.patch} )
+PATCHES=( "${FILESDIR}"/{${PN}-1.18-configure.patch,${P}-memenv-so.patch,${P}-sse-detect.patch} )
 
 src_configure() {
 	# These vars all get picked up by build_detect_platform
