@@ -5214,6 +5214,7 @@ media-video/ffmpeg:chromaprint - Enables audio fingerprinting support with media
 media-video/ffmpeg:chromium - Builds libffmpeg.so to enable media playback in Chromium-based browsers like Opera and Vivaldi.
 media-video/ffmpeg:codec2 - Enables codec2 low bit rate speech codec support via media-libs/codec2.
 media-video/ffmpeg:cpudetection - Enables runtime CPU detection (useful for bindist, compatibility on other CPUs)
+media-video/ffmpeg:cuda - Enables CUDA-based acceleration. Mostly used for specific filters.
 media-video/ffmpeg:dav1d - Enables AV1 decoding viamedia-libs/dav1d.
 media-video/ffmpeg:ebur128 - Enables EBU R128 loudness normalization filter via media-libs/libebur128
 media-video/ffmpeg:fdk - Use external fdk-aac library for AAC encoding
@@ -5227,6 +5228,7 @@ media-video/ffmpeg:hardcoded-tables - Use pre-calculated tables rather than calc
 media-video/ffmpeg:iec61883 - Support for FireWire DV/HDV input device using media-libs/libiec61883.
 media-video/ffmpeg:kvazaar - Enables media-libs/kvazaar based HEVC encoder.
 media-video/ffmpeg:libaom - Enables media-libs/libaom based AV1 codec support.
+media-video/ffmpeg:libaribb24 - Enables ARIB text and caption decoding via media-libs/aribb24.
 media-video/ffmpeg:libdrm - Enables x11-libs/libdrm support for better screen grabbing and hardware accelerated codecs.
 media-video/ffmpeg:libilbc - Enables iLBC de/encoding via media-libs/libilbc.
 media-video/ffmpeg:librtmp - Enables Real Time Messaging Protocol using librtmp (media-video/rtmpdump) in addition to FFmpeg's native implementation.
