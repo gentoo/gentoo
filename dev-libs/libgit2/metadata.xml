@@ -15,8 +15,6 @@
 		speed custom Git applications in any language which supports C bindings.
 	</longdescription>
 	<use>
-		<flag name="curl">Use <pkg>net-misc/curl</pkg> for HTTP support
-			(otherwise, limited built-in implementation will be used)</flag>
 		<flag name="gssapi">Enable GSSAPI support for SPNEGO auth</flag>
 		<flag name="ssh">Enable SSH transport support</flag>
 		<flag name="trace">Enable tracing support</flag>
