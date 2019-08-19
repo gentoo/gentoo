@@ -5,9 +5,6 @@
 		<email>graphics@gentoo.org</email>
 		<name>Gentoo Graphics Project</name>
 	</maintainer>
-	<use>
-		<flag name="magic">Use libmagic to determine mimetypes</flag>
-	</use>
 	<upstream>
 		<remote-id type="bitbucket">ciberandy/qiv</remote-id>
 	</upstream>
