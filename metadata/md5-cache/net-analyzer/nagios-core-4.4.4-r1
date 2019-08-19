@@ -11,4 +11,4 @@ REQUIRED_USE=apache2? ( !lighttpd )
 SLOT=0
 SRC_URI=mirror://sourceforge/nagios/nagios-4.4.4.tar.gz web? ( https://dev.gentoo.org/~mjo/distfiles/nagios-core-gentoo-icons-20141125.tar )
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56	user	00484e1be1aac73e24fca1c99557a7d6
-_md5_=0e563849df14a1d55de951a281df6f40
+_md5_=b93547c8c6e7a3aa6c2ec9828bb783be

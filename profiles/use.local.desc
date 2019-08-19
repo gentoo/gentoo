@@ -5208,7 +5208,7 @@ media-video/ffmpeg:chromium - Builds libffmpeg.so to enable media playback in Ch
 media-video/ffmpeg:codec2 - Enables codec2 low bit rate speech codec support via media-libs/codec2.
 media-video/ffmpeg:cpudetection - Enables runtime CPU detection (useful for bindist, compatibility on other CPUs)
 media-video/ffmpeg:cuda - Enables CUDA-based acceleration. Mostly used for specific filters.
-media-video/ffmpeg:dav1d - Enables AV1 decoding viamedia-libs/dav1d.
+media-video/ffmpeg:dav1d - Enables AV1 decoding via media-libs/dav1d.
 media-video/ffmpeg:ebur128 - Enables EBU R128 loudness normalization filter via media-libs/libebur128
 media-video/ffmpeg:fdk - Use external fdk-aac library for AAC encoding
 media-video/ffmpeg:flite - Adds a text-to-speech filter based on app-accessibility/flite.
