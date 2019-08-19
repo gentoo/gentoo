@@ -16604,6 +16604,7 @@ sci-libs/hypre 2.9.0b 2.11.1 2.11.2 2.14.0: Parallel matrix preconditioners libr
 sci-libs/idlcoyote 20161220 99999999: GDL library from D. Fannings IDL courses
 sci-libs/idlmarkwardt 20130418 20160319: Craig Markwardt IDL procedures (MPFIT, CMSVLIB, etc)
 sci-libs/ignition-math 4.0.0-r1: A small, fast, and high performance math library for robot applications
+sci-libs/iml 1.0.5: Integer Matrix Library
 sci-libs/inchi 1.04: Program and library for generating standard and non-standard InChI and InChIKeys
 sci-libs/indilib 1.7.5: INDI Astronomical Control Protocol library
 sci-libs/io_lib 1.14.7: General purpose trace and experiment file reading/writing interface
