@@ -80,7 +80,7 @@ FFMPEG_FLAG_MAP=(
 		vorbis:libvorbis vpx:libvpx zvbi:libzvbi
 		# libavfilter options
 		appkit
-		bs2b:libbs2b chromaprint flite:libflite frei0r
+		bs2b:libbs2b chromaprint cuda:cuda-llvm flite:libflite frei0r
 		fribidi:libfribidi fontconfig ladspa libass lv2 truetype:libfreetype vidstab:libvidstab
 		rubberband:librubberband zeromq:libzmq zimg:libzimg
 		# libswresample options
@@ -278,9 +278,10 @@ DEPEND="${RDEPEND}
 "
 BDEPEND="
 	>=sys-devel/make-3.81
-	doc? ( sys-apps/texinfo )
 	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]
 	cpu_flags_x86_mmx? ( || ( >=dev-lang/nasm-2.13 >=dev-lang/yasm-1.3 ) )
+	cuda? ( >=sys-devel/clang-7[llvm_targets_NVPTX] )
+	doc? ( sys-apps/texinfo )
 	test? ( net-misc/wget sys-devel/bc )
 "
 
@@ -298,6 +299,7 @@ GPL_REQUIRED_USE="
 	)
 "
 REQUIRED_USE="
+	cuda? ( video_cards_nvidia )
 	libv4l? ( v4l )
 	fftools_cws2fws? ( zlib )
 	test? ( encode )
