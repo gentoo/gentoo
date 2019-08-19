@@ -29,6 +29,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Miroslav Šulc <fordfrog@gentoo.org> (2019-08-19)
+# Depends on >=virtual/{jdk,jre}-11 which is masked
+=www-servers/tomcat-9.0.24
+
 # Michael Orlitzky <mjo@gentoo.org> (2019-08-18)
 # Ebuilds contain a two-year old root exploit. Less-than-maintained
 # since robbat2's announcement on 2017-11-30. Binary package to begin
