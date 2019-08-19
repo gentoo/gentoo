@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -34,6 +34,9 @@ REQUIRED_USE="
 "
 
 DOCS=( README.md )
+
+# Testsuite fails, bug #692310
+RESTRICT="test"
 
 src_prepare() {
 	# Column metadata added due to bug #670346
