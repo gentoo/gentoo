@@ -72,6 +72,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.3.6-use-trace.patch
 	"${FILESDIR}"/${PN}-1.3.6-sighup-crash.patch
 	"${FILESDIR}"/${PN}-1.3.6-mod_copy.patch
+	"${FILESDIR}"/${PN}-1.3.6-mysql-8.patch
 )
 
 RESTRICT=test # tests corrupt memory. need to be fixed upstream first
