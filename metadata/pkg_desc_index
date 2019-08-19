@@ -12536,7 +12536,7 @@ lxde-base/lxlauncher 0.2.2 0.2.5: An open source clone of the Asus launcher for 
 lxde-base/lxmenu-data 0.1.5: Provides files needed for LXDE application menus
 lxde-base/lxpanel 0.9.2 0.9.3 0.9.3-r1 0.10.0: Lightweight X11 desktop panel for LXDE
 lxde-base/lxrandr 0.3.1 0.3.1-r1 0.3.2: LXDE GUI interface to RandR extention
-lxde-base/lxsession 0.5.2 0.5.4: LXDE session manager
+lxde-base/lxsession 0.5.2 0.5.4 0.5.4-r1: LXDE session manager
 lxde-base/lxtask 0.1.8 0.1.8-r1 0.1.9: LXDE Task manager
 lxde-base/lxterminal 0.3.1 0.3.2: Lightweight vte-based tabbed terminal emulator for LXDE
 lxde-base/menu-cache 1.1.0: Library to create and utilize caches to speed up freedesktop application menus
