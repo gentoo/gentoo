@@ -14837,7 +14837,7 @@ net-firewall/itval 1.2_p20121104: Iptables policy testing and validation tool
 net-firewall/lutelwall 0.99: IPTables firewall setup script
 net-firewall/nfacct 1.0.1 1.0.2: Command line tool to create/retrieve/delete accounting objects in NetFilter
 net-firewall/nftables 0.9.0-r4 0.9.1: Linux kernel (3.13+) firewall, NAT and packet mangling tools
-net-firewall/nufw 2.2.22-r1 2.2.22-r2: An enterprise grade authenticating firewall based on netfilter
+net-firewall/nufw 2.2.22-r3: An enterprise grade authenticating firewall based on netfilter
 net-firewall/pftop 0.7-r2: Tool for real-time display of active states and rule statistics for pf
 net-firewall/pglinux 2.3.1_p20171006: Privacy oriented firewall application
 net-firewall/psad 2.2.5 2.4.5 2.4.6: Port Scanning Attack Detection daemon
