@@ -4,10 +4,10 @@ DEPEND=sys-libs/ncurses:0=
 DESCRIPTION=uEmacs/PK is an enhanced version of MicroEMACS
 EAPI=7
 HOMEPAGE=https://git.kernel.org/?p=editors/uemacs/uemacs.git;a=summary ftp://ftp.cs.helsinki.fi/pub/Software/Local/uEmacs-PK
-KEYWORDS=~amd64 ~x86 ~x86-fbsd
+KEYWORDS=amd64 ~x86 ~x86-fbsd
 LICENSE=free-noncomm
 RDEPEND=sys-libs/ncurses:0=
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~ulm/distfiles/uemacs-4.0.15_p20180719.tar.xz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
-_md5_=f70f924517afe482e38ff7f2fcffd8c2
+_md5_=c46be174937cd22ea1ec62568dcda3e7
