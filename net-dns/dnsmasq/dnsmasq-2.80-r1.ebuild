@@ -16,10 +16,6 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~spa
 IUSE="auth-dns conntrack dbus +dhcp dhcp-tools dnssec +dumpfile id idn libidn2"
 IUSE+=" +inotify ipv6 lua nls script selinux static tftp"
 
-PATCHES=(
-	"${FILESDIR}/${P}-nettle-3.5.patch"
-)
-
 DM_LINGUAS=(de es fi fr id it no pl pt_BR ro)
 
 BDEPEND="app-arch/xz-utils
@@ -58,6 +54,7 @@ REQUIRED_USE="dhcp-tools? ( dhcp )
 	libidn2? ( idn )"
 
 PATCHES=(
+	"${FILESDIR}/dnsmasq-2.80-nettle-3.5.patch"
 	"${FILESDIR}/dnsmasq-2.80-linux-headers-5.2.patch"
 )
 
