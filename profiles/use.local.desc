@@ -3245,9 +3245,9 @@ dev-util/sccache:dist-server - Enables the sccache-dist binary
 dev-util/sccache:gcs - Enable Google Cloud Storage support
 dev-util/sccache:redis - Enable Redis support
 dev-util/sccache:s3 - Enable Amazon S3 support
-dev-util/schroot:btrfs - Enable support for chroots using btrfs snapshots.
-dev-util/schroot:dchroot - Enables the building of a wrapper named "dchroot", replacing sys-apps/dchroot.
-dev-util/schroot:lvm - Enable support for chroots using LVM snapshots.
+dev-util/schroot:btrfs - Enable support for chroots using btrfs snapshots
+dev-util/schroot:dchroot - Enables the building of a wrapper named "dchroot", replacing sys-apps/dchroot
+dev-util/schroot:lvm - Enable support for chroots using LVM snapshots
 dev-util/spirv-llvm-translator:tools - Install the command-line translator llvm-spirv
 dev-util/squashdelta:lz4 - Enable support for LZ4 compression using app-arch/lz4
 dev-util/squashmerge:lz4 - Enable support for LZ4 compression using app-arch/lz4
