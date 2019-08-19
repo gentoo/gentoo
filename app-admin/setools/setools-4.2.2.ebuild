@@ -20,6 +20,7 @@ fi
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
 IUSE="X test"
+S="${WORKDIR}/${PN}"
 
 RDEPEND="${PYTHON_DEPS}
 	>=dev-python/networkx-2.0[${PYTHON_USEDEP}]
@@ -40,7 +41,7 @@ python_prepare_all() {
 	sed -i "s@^lib_dirs = .*@lib_dirs = ['${ROOT:-/}usr/$(get_libdir)']@" "${S}"/setup.py || \
 		die "failed to set lib_dirs"
 
-	use X || local PATCHES=( "${FILESDIR}"/setools-4.2.0-remove-gui.patch )
+	use X || local PATCHES=( "${FILESDIR}"/setools-4.2.2-remove-gui.patch )
 	distutils-r1_python_prepare_all
 }
 
