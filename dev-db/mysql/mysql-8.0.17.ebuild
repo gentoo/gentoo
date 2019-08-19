@@ -58,6 +58,7 @@ PATCHES=(
 	"${MY_PATCH_DIR}"/20007_all_cmake-debug-werror-8.0.17.patch
 	"${MY_PATCH_DIR}"/20018_all_mysql-5.7.23-fix-grant_user_lock-a-root.patch
 	"${MY_PATCH_DIR}"/20018_all_mysql-8.0.17-without-clientlibs-tools.patch
+	"${MY_PATCH_DIR}"/20018_all_mysql-8.0.17-add-protobuf-3.8+-support.patch
 	"${MY_PATCH_DIR}"/20018_all_mysql-8.0.17-fix-libressl-support.patch
 )
 
