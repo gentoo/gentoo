@@ -71,7 +71,7 @@ src_install() {
 pkg_postinst() {
 	if use php_targets_php7-0 || use php_targets_php7-1 || use php_targets_php7-2 || use php_targets_php7-3 ; then
 		elog "The apc.php file shipped with this release of pecl-apcu was"
-		elog "installed into ${EPREFIX}/usr/share/php7/apcu/."
+		elog "installed to ${EPREFIX}/usr/share/php7/apcu/."
 		elog
 		elog "If you depend on the apc_* functions,"
 		elog "please install dev-php/pecl-apcu_bc as this extension no longer"
