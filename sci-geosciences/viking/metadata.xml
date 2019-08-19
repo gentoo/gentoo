@@ -15,9 +15,6 @@
     <flag name="libexif">
       Use <pkg>media-libs/libexif</pkg> for EXIF support
     </flag>
-    <flag name="magic">
-      Use libmagic to determine mimetypes
-    </flag>
     <flag name="mapnik">
       Enable a layer based on <pkg>sci-geosciences/mapnik</pkg>
     </flag>

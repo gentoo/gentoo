@@ -10,6 +10,5 @@
 </longdescription>
 <use>
   <flag name="avfs">Enable support for <pkg>sys-fs/avfs</pkg></flag>
-  <flag name="magic">Add magic file support from <pkg>sys-apps/file</pkg> to automatically detect file types</flag>
 </use>
 </pkgmetadata>

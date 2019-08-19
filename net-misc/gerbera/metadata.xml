@@ -11,7 +11,6 @@
     <flag name="exiv2">Use <pkg>media-gfx/exiv2</pkg> to extract EXIF information</flag>
     <flag name="ffmpegthumbnailer">Enable video thumbnail support with <pkg>media-video/ffmpegthumbnailer</pkg></flag>
     <flag name="lastfm">Enable last.fm support</flag>
-    <flag name="magic">Use libmagic to determine file types</flag>
     <flag name="mysql">Use <pkg>dev-db/mysql</pkg> as backend rather than SQLite3</flag>
     <flag name="protocol-extensions">Enable partial DLNA support</flag>
     <flag name="taglib">Use <pkg>media-libs/taglib</pkg> for reading files' metadata</flag>
