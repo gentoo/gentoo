@@ -12,7 +12,7 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~x86-fbsd"
-IUSE="dbus dedicated doc fribidi libressl nls openmp server"
+IUSE="dbus dedicated doc fribidi libressl nls server"
 
 RDEPEND="
 	>=dev-libs/boost-1.50:=[nls,threads,icu]
@@ -41,10 +41,6 @@ BDEPEND="
 "
 
 pkg_setup() {
-	if use openmp; then
-		tc-has-openmp || die "Please switch to an openmp compatible compiler"
-	fi
-
 	enewgroup ${PN}
 	enewuser ${PN} -1 /bin/bash -1 ${PN}
 }
@@ -99,7 +95,6 @@ src_configure() {
 		-DENABLE_NLS="$(usex nls)"
 		-DENABLE_NOTIFICATIONS="$(usex dbus)"
 		-DENABLE_FRIBIDI="$(usex fribidi)"
-		-DENABLE_OMP="$(usex openmp)"
 		-DENABLE_STRICT_COMPILATION="OFF"
 		-DCMAKE_INSTALL_PREFIX="${EPREFIX}/usr"
 		)
