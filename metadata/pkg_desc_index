@@ -4871,7 +4871,7 @@ dev-libs/libbase58 0.1.4: C implementation of Bitcoin's base58 encoding
 dev-libs/libbegemot 1.11: begemot utility function library
 dev-libs/libbpf 0.0.3 0.0.4: Stand-alone build of libbpf from the Linux kernel
 dev-libs/libbrahe 1.1.0-r1: A Heterogenous C Library of Numeric Functions
-dev-libs/libbsd 0.8.6 0.8.7 0.9.1: An library to provide useful functions commonly found on BSD systems
+dev-libs/libbsd 0.9.1 0.10.0: An library to provide useful functions commonly found on BSD systems
 dev-libs/libbson 0.98.0 1.1.2 1.1.10 1.3.5 1.3.6 1.6.2 1.8.2 1.9.3 1.10.3 1.11.0 1.12.0 1.13.0 1.13.1 1.14.0: Library routines related to building,parsing and iterating BSON documents
 dev-libs/libbulletml 0.0.6: A Library of Bullet Markup Language
 dev-libs/libburn 1.5.0: Open-source library for reading, mastering and writing optical discs
@@ -5028,7 +5028,7 @@ dev-libs/libstrl 0.5.1-r1: Compat library for functions like strlcpy(), strlcat(
 dev-libs/libstroke 0.5.1: A Stroke and Gesture recognition Library
 dev-libs/libstrophe 0.9.2: A simple, lightweight C library for writing XMPP clients
 dev-libs/libtar 1.2.20-r4: C library for manipulating tar archives
-dev-libs/libtasn1 4.13: ASN.1 library
+dev-libs/libtasn1 4.13 4.14: ASN.1 library
 dev-libs/libtecla 1.6.1-r2 1.6.2 1.6.3: Tecla command-line editing library
 dev-libs/libtermkey 0.19 0.20 0.22: Library for easy processing of keyboard entry from terminal-based programs
 dev-libs/libtomfloat 0.02: library for floating point number manipulation
@@ -12021,7 +12021,7 @@ gnome-extra/gnome-packagekit 3.24.0 3.30.0: PackageKit client for the GNOME desk
 gnome-extra/gnome-power-manager 3.30.0: GNOME power statistics
 gnome-extra/gnome-search-tool 3.6.0: Search tool for GNOME 3
 gnome-extra/gnome-shell-extension-applications-overview-tooltip 5: Show tooltip with full name and description
-gnome-extra/gnome-shell-extension-dash-to-panel 19 20: An icon taskbar for the Gnome Shell
+gnome-extra/gnome-shell-extension-dash-to-panel 19 21: An icon taskbar for the Gnome Shell
 gnome-extra/gnome-shell-extension-desktop-icons 19.01.3: A GNOME Shell extension for providing desktop icons
 gnome-extra/gnome-shell-extension-gsconnect 24: KDE Connect implementation for Gnome Shell
 gnome-extra/gnome-shell-extensions 3.30.1: JavaScript extensions for GNOME Shell
@@ -14055,7 +14055,7 @@ media-sound/meterbridge 0.9.3: Software meterbridge for the UNIX based JACK audi
 media-sound/mhwaveedit 1.4.22 1.4.23: GTK+ Sound file editor (wav, and a few others.)
 media-sound/mikmod 3.2.8: A console MOD-Player based on libmikmod
 media-sound/milkytracker 1.0.0: FastTracker 2 inspired music tracker
-media-sound/mixxx 2.1.8 2.2.0 2.2.1 9999: Advanced Digital DJ tool based on Qt
+media-sound/mixxx 2.1.8 2.2.1 2.2.2 9999: Advanced Digital DJ tool based on Qt
 media-sound/mmix 0.3 0.3-r1: A soundcard mixer for the OSS driver
 media-sound/moc 2.5.2 2.6_alpha3: Music On Console - ncurses interface for playing audio files
 media-sound/modplugtools 0.5.3: libmodplug based module players modplug123 and modplugplay
@@ -17331,7 +17331,7 @@ sys-apps/inxi 3.0.33.1 3.0.34.1: The CLI inxi collects and prints hardware and s
 sys-apps/iotools 1.5: Simple commands to access hardware device registers
 sys-apps/ipmicfg 1.29.0.181029: An in-band utility for configuring Supermicro IPMI devices
 sys-apps/ipmitool 1.8.17-r1 1.8.18-r1: Utility for controlling IPMI enabled devices.
-sys-apps/ipmiutil 3.0.6 3.0.9 3.1.2 3.1.3: IPMI Management Utilities
+sys-apps/ipmiutil 3.0.6 3.0.9 3.1.3 3.1.4: IPMI Management Utilities
 sys-apps/iproute2 4.19.0-r1 5.1.0 5.2.0 9999: kernel routing and traffic control utilities
 sys-apps/irqbalance 1.4.0-r1 1.5.0 1.6.0: Distribute hardware interrupts across processors on a multiprocessor system
 sys-apps/isapnptools 1.27: Tools for configuring ISA PnP devices
