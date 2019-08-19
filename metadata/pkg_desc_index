@@ -4548,7 +4548,7 @@ dev-java/tomcat-jstl-el 1.2.5-r1: JSP Standard Tag Library (JSTL) - EL jar
 dev-java/tomcat-jstl-impl 1.2.5-r1: JSP Standard Tag Library (JSTL) - Implementation jar
 dev-java/tomcat-jstl-spec 1.2.5-r1: JSP Standard Tag Library (JSTL) - Specification jar
 dev-java/tomcat-native 1.2.21 1.2.23: Allows Tomcat to use certain native resources for better performance
-dev-java/tomcat-servlet-api 3 4.1.36 5.5.27-r1 5.5.34 6.0.44-r1 6.0.53 7.0.82 7.0.94 7.0.96 8.0.53 8.5.23 8.5.42 8.5.43 9.0.7 9.0.21 9.0.22: Tomcat's Servlet API 4.0/JSP API 2.4?/EL API 3.1? implementation
+dev-java/tomcat-servlet-api 3 4.1.36 5.5.27-r1 5.5.34 6.0.44-r1 6.0.53 7.0.82 7.0.94 7.0.96 8.0.53 8.5.23 8.5.42 8.5.43 9.0.7 9.0.21 9.0.22 9.0.24: Tomcat's Servlet API 4.0/JSP API 2.4?/EL API 3.1? implementation
 dev-java/toolbar 1.1.0-r2: An improved version of JToolBar
 dev-java/touchgraph-graphlayout 1.22-r1: TouchGraph provides a set of interfaces for graph visualization
 dev-java/treelayout 1.0.2: Efficiently create compact tree layouts in Java
@@ -5136,7 +5136,7 @@ dev-libs/popt 1.16-r2: Parse Options - Command line parser
 dev-libs/ppl 1.1 1.2: The Parma Polyhedra Library for numerical analysis of complex systems
 dev-libs/processor-trace 1.6.1 1.6.2 2.0: Intel(R) Processor Trace decoder library
 dev-libs/protobuf 3.6.1.3 3.7.1 3.8.0 3.9.1 9999: Google's Protocol Buffers - Extensible mechanism for serializing structured data
-dev-libs/protobuf-c 1.3.1: Protocol Buffers implementation in C
+dev-libs/protobuf-c 1.3.1 1.3.2: Protocol Buffers implementation in C
 dev-libs/pslib 0.4.5: pslib is a C-library to create PostScript files on the fly
 dev-libs/ptexenc 1.3.4_p20160523 1.3.5_p20170524 1.3.7_p20190410: Library for Japanese pTeX providing a better way of handling character encodings
 dev-libs/pugixml 1.9 1.9-r1 9999: Light-weight, simple, and fast XML parser for C++ with XPath support
@@ -11907,7 +11907,7 @@ games-strategy/wargus 2.4.1: Warcraft II for the Stratagus game engine
 games-strategy/wargus-data 0-r1: Warcraft II data for wargus (needs DOS CD)
 games-strategy/warmux 11.04.1-r1: A free Worms clone
 games-strategy/warzone2100 3.2.3 3.3.0_beta1: 3D real-time strategy game
-games-strategy/wesnoth 1.14.6 1.14.7: Battle for Wesnoth - A fantasy turn-based strategy game
+games-strategy/wesnoth 1.14.7 1.15.0: Battle for Wesnoth - A fantasy turn-based strategy game
 games-strategy/widelands 0.20_rc1 0.20: A game similar to Settlers 2
 games-strategy/xbattleai 1.2.2-r2: A multi-player game of strategy and coordination
 games-util/antimicro 2.23: Map keyboard and mouse buttons to gamepad buttons
@@ -14585,7 +14585,7 @@ net-analyzer/nbtscan 1.5.1-r3: NBTscan is a program for scanning IP networks for
 net-analyzer/nbwmon 0.5.2: ncurses bandwidth monitor
 net-analyzer/ndoutils 2.1.3-r1: Nagios addon to store Nagios data in a MySQL database
 net-analyzer/ndsad 1.33-r1: Cisco netflow probe from libpcap, ULOG, tee/divert sources
-net-analyzer/nessus-agent-bin 7.4.0 7.4.1: A remote security scanner for Linux - agent component
+net-analyzer/nessus-agent-bin 7.4.0 7.4.1 7.4.2: A remote security scanner for Linux - agent component
 net-analyzer/nessus-bin 8.4.0 8.5.2: A remote security scanner for Linux
 net-analyzer/net-snmp 5.7.3-r5 5.7.3-r6 5.7.3_p3-r1 5.8-r1 99999999: Software for generating and retrieving SNMP data
 net-analyzer/netcat 110-r9 110.20180111: the network swiss army knife
@@ -18020,7 +18020,7 @@ sys-kernel/ck-sources 4.9.120 4.9.123 4.9.124 4.9.126 4.9.128 4.9.130 4.9.132 4.
 sys-kernel/cryptodev 1.9 9999: device that allows access to Linux kernel cryptographic drivers
 sys-kernel/dracut 044-r1 044-r3 045-r2 046-r1 047-r1 048 048-r1 049 049-r1 9999: Generic initramfs generation tool
 sys-kernel/dracut-crypt-ssh 1.0.6-r1: early unlocking of encrypted systems via ssh for dracut
-sys-kernel/genkernel 3.4.52.3 3.4.52.4-r1 3.4.52.4-r2 3.4.52.4-r3 3.5.1.1 3.5.2.0-r1 3.5.2.1 3.5.2.2 3.5.2.3 3.5.2.4 3.5.2.5 3.5.3.2 3.5.3.3 4.0.0_beta12 9999: Gentoo automatic kernel building scripts
+sys-kernel/genkernel 3.4.52.3 3.4.52.4-r1 3.4.52.4-r2 3.4.52.4-r3 3.5.1.1 3.5.2.0-r1 3.5.2.1 3.5.2.2 3.5.2.3 3.5.2.4 3.5.2.5 3.5.3.2 3.5.3.3 4.0.0_beta13 9999: Gentoo automatic kernel building scripts
 sys-kernel/genkernel-next 69 70: Gentoo automatic kernel building scripts, reloaded
 sys-kernel/gentoo-sources 4.4.184 4.4.186 4.4.187 4.4.188 4.4.189 4.9.184 4.9.186 4.9.187 4.9.188 4.9.189 4.14.132 4.14.135 4.14.136 4.14.137 4.14.138 4.14.139 4.19.57 4.19.63 4.19.64 4.19.65 4.19.66 4.19.67 5.2.5 5.2.6 5.2.7 5.2.8 5.2.9: Full sources including the Gentoo patchset for the 5.2 kernel tree
 sys-kernel/git-sources 5.3_rc1 5.3_rc2 5.3_rc3 5.3_rc4 5.3_rc5: The very latest -git version of the Linux kernel
@@ -18652,7 +18652,7 @@ www-servers/sniproxy 0.5.0 0.6.0: Proxies incoming HTTP and TLS connections base
 www-servers/spawn-fcgi 1.6.3-r1 1.6.4-r1: A FCGI spawner for lighttpd and cherokee and other webservers
 www-servers/thin 1.7.2: A fast and very simple Ruby web server
 www-servers/thttpd 2.27.1 9999: Fork of thttpd, a small, fast, multiplexing webserver
-www-servers/tomcat 7.0.94 7.0.96 8.0.53 8.5.42 8.5.43 9.0.7 9.0.21 9.0.22: Tomcat Servlet-4.0/JSP-2.4?/EL-3.1?/WebSocket-1.2?/JASPIC-1.1 Container
+www-servers/tomcat 7.0.94 7.0.96 8.0.53 8.5.42 8.5.43 9.0.7 9.0.21 9.0.22 9.0.24: Tomcat Servlet-4.0/JSP-2.4?/EL-3.1?/WebSocket-1.2?/JASPIC-1.1 Container
 www-servers/tornado 4.4.2-r1 4.5.1 4.5.3 5.0.2 5.1: Python web framework and asynchronous networking library
 www-servers/uwsgi 2.0.17 2.0.17.1 2.0.17.1-r1 2.0.18: uWSGI server for Python web applications
 www-servers/varnish 4.0.5 4.1.8 5.1.3 5.2.1 6.0.1 6.1.0 6.1.1 6.2.0: Varnish is a state-of-the-art, high-performance HTTP accelerator
