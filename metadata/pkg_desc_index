@@ -4971,6 +4971,7 @@ dev-libs/libmcrypt 2.5.8-r4: libmcrypt provides uniform interface to access seve
 dev-libs/libmelf 0.4.0-r1: libmelf is a library interface for manipulating ELF object files
 dev-libs/libmemcached 1.0.18-r3: a C client library to the memcached server
 dev-libs/libmirage 3.2.2: CD and DVD image access library
+dev-libs/libmissing 1.0.0: Library with missing functions based on GNUlib
 dev-libs/libmix 2.05-r7: Programs Crypto/Network/Multipurpose Library
 dev-libs/libmodbus 3.1.4: Modbus library which supports RTU communication over a serial line or a TCP link
 dev-libs/libmoe 1.5.8-r3: Multi octet character encoding handling library
@@ -18006,7 +18007,7 @@ sys-fs/vhba 20190410: Virtual (SCSI) Host Bus Adapter kernel module for the CDEm
 sys-fs/vzquota 3.1: OpenVZ VPS disk quota utility
 sys-fs/wpflash 0: flash the firmware on a Webpal
 sys-fs/xfsdump 3.1.6 3.1.8: xfs dump/restore utilities
-sys-fs/xfsprogs 4.19.0 5.0.0 5.1.0: xfs filesystem utilities
+sys-fs/xfsprogs 4.19.0 5.0.0 5.1.0 5.2.0: xfs filesystem utilities
 sys-fs/xwmfs 0.83: FUSE-based X11 Window-Manager file system
 sys-fs/yaffs2-utils 9999: tools for generating YAFFS images
 sys-fs/yaffs2utils 0.2.9: tools for generating YAFFS images
