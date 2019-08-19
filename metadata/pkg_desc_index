@@ -1090,7 +1090,7 @@ app-editors/curses-hexedit 0.9.7: full screen curses hex editor (with insert/del
 app-editors/dav 0.8.5-r2: A minimal console text editor
 app-editors/dhex 0.68: ncurses-based hex-editor with diff mode
 app-editors/diakonos 0.9.4: A Linux editor for the masses
-app-editors/e3 2.8: Very tiny editor in ASM with emacs, pico, wordstar, and vi keybindings
+app-editors/e3 2.8 2.8.2: Very tiny editor in ASM with emacs, pico, wordstar, and vi keybindings
 app-editors/editra 0.7.20-r2: Multi-platform text editor supporting over 50 programming languages
 app-editors/ee 1.5.2: An easy to use text editor. A subset of aee
 app-editors/elvis 2.2.0-r6 2.2.0-r7: A vi/ex clone
