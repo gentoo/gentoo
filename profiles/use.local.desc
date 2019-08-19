@@ -1961,7 +1961,6 @@ dev-java/icedtea:pch - Build using pre-compiled headers.
 dev-java/icedtea:sctp - Build the SCTP NIO channel implementation against lksctp
 dev-java/icedtea:shenandoah - Include the Shenandoah ultra-low pause time garbage collector (-XX:+UseShenandoahGC) (arm64 and x86_64 only)
 dev-java/icedtea:smartcard - Build the PCSC driver against pcsc-lite
-dev-java/icedtea:sunec - Build the SunEC provider against system NSS
 dev-java/icedtea:system-lcms - Build against the system LCMS installation rather than the in-tree copy.
 dev-java/icedtea:webstart - Enable Web Start support (via NetX).
 dev-java/icedtea:zero - Enable Zero assembler port (usually for non-HotSpot architectures)
@@ -2430,7 +2429,6 @@ dev-libs/libffi:pax_kernel - Use PaX emulated trampolines, for we can't use PROT
 dev-libs/libflatarray:cuda - Enables plugins for NVIDIA GPUs (e.g. CUDAAllocator)
 dev-libs/libgcrypt:o-flag-munging - Enable O-flag mangling during build
 dev-libs/libgdata:gnome-online-accounts - Enable net-libs/gnome-online-accounts support
-dev-libs/libgit2:curl - Use net-misc/curl for HTTP support (otherwise, limited built-in implementation will be used)
 dev-libs/libgit2:gssapi - Enable GSSAPI support for SPNEGO auth
 dev-libs/libgit2:ssh - Enable SSH transport support
 dev-libs/libgit2:trace - Enable tracing support
