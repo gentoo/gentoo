@@ -7,6 +7,7 @@
 # @AUTHOR:
 # Michael Orlitzky <mjo@gentoo.org>
 # Michał Górny <mgorny@gentoo.org>
+# @SUPPORTED_EAPIS: 7
 # @BLURB: Eclass used to create and maintain a single group entry
 # @DESCRIPTION:
 # This eclass represents and creates a single group entry.  The name
@@ -35,7 +36,7 @@ _ACCT_GROUP_ECLASS=1
 
 case ${EAPI:-0} in
 	7) ;;
-	*) die "EAPI=${EAPI} not supported";;
+	*) die "EAPI=${EAPI:-0} not supported";;
 esac
 
 inherit user
