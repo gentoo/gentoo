@@ -15652,7 +15652,7 @@ net-misc/vrrpd 1.0 1.9: Virtual Router Redundancy Protocol Daemon
 net-misc/wakeonlan 0.41-r2: Client for Wake-On-LAN
 net-misc/wget 1.20.3-r1 1.20.3-r2: Network utility to retrieve files from the WWW
 net-misc/whatmask 1.2-r1: little C program to compute different subnet mask notations
-net-misc/whois 5.4.3 5.5.0 9999: improved Whois Client
+net-misc/whois 5.4.3 5.5.0 5.5.1 9999: improved Whois Client
 net-misc/wicd 1.7.4-r3: A lightweight wired and wireless network manager for Linux
 net-misc/wol 0.7.1-r1 0.7.1-r2: Implements Wake On LAN (Magic Paket) functionality in a small program
 net-misc/wput 0.6.1-r1: Tiny program like wget, to upload files/whole directories via FTP
