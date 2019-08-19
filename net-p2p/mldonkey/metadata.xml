@@ -11,7 +11,6 @@
     <flag name="fasttrack">enable fasttrack support</flag>
     <flag name="gnutella">enable gnutella and gnutella2 support</flag>
     <flag name="guionly">enable client build only</flag>
-    <flag name="magic">enable use of libmagic</flag>
   </use>
   <upstream>
     <remote-id type="sourceforge">mldonkey</remote-id>
