@@ -1,0 +1,22 @@
+Patch to detect ATLAS or cblas. Ported from 1.0.3 to 1.0.4.
+
+Patch by Marius Brehler.
+--- a/configure.ac
++++ b/configure.ac
+@@ -76,15 +76,7 @@ location with the options --with-gmp-inc
+ respectively when running configure.
+ )])
+ 
+-IML_CHECK_CBLAS(,,[AC_MSG_WARN(
+-CBLAS not found!
+-Please make sure that --with-cblas=<linker flags> and optional --with-cblas-include=<path> and --with-cblas-lib=<path> are correctly set.
+-Trying legacy ATLAS configuration.)
+-IML_CHECK_ATLAS(,,[AC_MSG_ERROR(
+-ATLAS not found! 
+-ATLAS version 3.0 or greater is required for this library to compile. Please make sure ATLAS is installed and specify the header and libraries location with the options --with-atlas-include=<path> and --with-atlas-lib=<path> respectively when running configure.)
+-])
+-])
++PKG_CHECK_MODULES([ATLAS], [cblas])
+ 
+ AC_SUBST(LIBIML_LDFLAGS)
+ AC_SUBST(LDFLAGS)
