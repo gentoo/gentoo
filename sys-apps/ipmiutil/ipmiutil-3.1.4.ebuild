@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 inherit autotools systemd
 
 DESCRIPTION="IPMI Management Utilities"
@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~x86"
+KEYWORDS="~amd64 ~hppa ~ppc ~x86"
 IUSE="static-libs"
 
 RDEPEND=">=dev-libs/openssl-1:0="
@@ -27,6 +27,9 @@ src_prepare() {
 
 	sed -i -e 's|-O2 -g|$(CFLAGS)|g;s|-g -O2|$(CFLAGS)|g' util/Makefile.am* || die
 	sed -i -e 's|which rpm |which we_are_gentoo_rpm_is_a_guest |' configure.ac || die
+
+	# Don't compress man pages
+	sed '/gzip -f/d' -i doc/Makefile.am || die
 
 	eautoreconf
 }
@@ -52,10 +55,10 @@ src_install() {
 	dodoc -r AUTHORS ChangeLog NEWS README TODO doc/UserGuide
 
 	# Init scripts are only for Fedora
-	rm -r "${ED%/}"/etc/init.d || die 'remove initscripts failed'
+	rm -r "${ED}"/etc/init.d || die 'remove initscripts failed'
 
 	if ! use static-libs ; then
-		find "${ED}" -name '*.a' -delete || die
+		find "${ED}" -type f -name '*.a' -delete || die
 	fi
 
 	keepdir /var/lib/ipmiutil
