@@ -53,6 +53,7 @@ COMMON_DEPEND="
 DEPEND="${COMMON_DEPEND}
 	>=dev-libs/boost-1.44
 	>=media-libs/plib-1.8.5
+	qt5? ( >=dev-qt/linguist-tools-5.7.1:5 )
 	utils? (
 		x11-libs/libXi
 		x11-libs/libXmu
@@ -61,6 +62,8 @@ DEPEND="${COMMON_DEPEND}
 RDEPEND="${COMMON_DEPEND}
 	~games-simulation/${PN}-data-${PV}
 "
+
+PATCHES=("${FILESDIR}/${PN}-2018.3.2-cmake.patch")
 
 DOCS=(AUTHORS ChangeLog NEWS README Thanks)
 
