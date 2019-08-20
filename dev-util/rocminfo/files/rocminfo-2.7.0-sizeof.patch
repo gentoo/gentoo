@@ -1,0 +1,23 @@
+From cf96f42165fe76b98f653f979b4c182279dcac64 Mon Sep 17 00:00:00 2001
+From: Wilfried Holzke <gentoo@holzke.net>
+Date: Fri, 16 Aug 2019 22:04:52 +0200
+Subject: [PATCH] Fixed sizeof(err_val) to return the number of characters in
+ the array
+
+---
+ rocminfo.cc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/rocminfo.cc b/rocminfo.cc
+index 9fddcfb..ee20da8 100755
+--- a/rocminfo.cc
++++ b/rocminfo.cc
+@@ -72,7 +72,7 @@
+     char* err_str = NULL;                                                     \
+     if (hsa_status_string(err,                                                \
+             (const char**)&err_str) != HSA_STATUS_SUCCESS) {                  \
+-      snprintf(&(err_val[0]), sizeof(err_val[12]), "%#x", (uint32_t)err);     \
++      snprintf(&(err_val[0]), sizeof(err_val), "%#x", (uint32_t)err);         \
+       err_str = &(err_val[0]);                                                \
+     }                                                                         \
+     printf("%shsa api call failure at: %s:%d\n",                              \
