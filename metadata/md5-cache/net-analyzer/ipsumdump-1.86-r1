@@ -1,7 +1,7 @@
 DEFINED_PHASES=configure
 DEPEND=net-libs/libpcap dev-lang/perl dev-libs/expat sys-apps/texinfo virtual/os-headers
 DESCRIPTION=Simple TCP/IP Dump summarizer/analyzer
-EAPI=6
+EAPI=7
 HOMEPAGE=http://read.seas.harvard.edu/~kohler/ipsumdump/
 IUSE=+ipv6 +nanotimestamp
 KEYWORDS=~amd64 ~x86
@@ -9,4 +9,4 @@ LICENSE=the-Click-license
 RDEPEND=net-libs/libpcap
 SLOT=0
 SRC_URI=http://read.seas.harvard.edu/~kohler/ipsumdump/ipsumdump-1.86.tar.gz
-_md5_=7226a59a9f591668ff77d86c05063aef
+_md5_=602550ea3a3c0668cbd4c3a6970b341a

@@ -2,12 +2,12 @@ DEFINED_PHASES=compile configure install prepare
 DEPEND=net-analyzer/rrdtool[perl] net-libs/libpcap net-libs/libtirpc:= sys-libs/ncurses:= sys-libs/readline:= sys-libs/zlib ft? ( net-analyzer/flow-tools ) geoip? ( dev-libs/geoip ) mysql? ( dev-db/mysql-connector-c:0= ) sasl? ( dev-libs/cyrus-sasl ) sys-devel/bison sys-devel/flex virtual/pkgconfig >=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=Clients for net-analyzer/argus
 EAPI=6
-HOMEPAGE=http://www.qosient.com/argus/
+HOMEPAGE=https://www.qosient.com/argus/
 IUSE=debug ft geoip mysql sasl tcpd
 KEYWORDS=~amd64 ~ppc ~x86
 LICENSE=GPL-3
 RDEPEND=net-analyzer/rrdtool[perl] net-libs/libpcap net-libs/libtirpc:= sys-libs/ncurses:= sys-libs/readline:= sys-libs/zlib ft? ( net-analyzer/flow-tools ) geoip? ( dev-libs/geoip ) mysql? ( dev-db/mysql-connector-c:0= ) sasl? ( dev-libs/cyrus-sasl )
 SLOT=0
-SRC_URI=http://qosient.com/argus/dev/argus-clients-3.0.8.2.tar.gz
+SRC_URI=https://qosient.com/argus/dev/argus-clients-3.0.8.2.tar.gz
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
-_md5_=1baf2f3e3e9b919de9b899d0ca23c053
+_md5_=fc1c5699722632a34790abdaf61a4651
