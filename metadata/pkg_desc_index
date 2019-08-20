@@ -10901,7 +10901,7 @@ dev-util/rej 0.16: A utility for solving diff/patch rejects
 dev-util/repo 1.12.37 1.13.2: Google tool for managing git, particularly multiple repos
 dev-util/reswrap 4.0.0: Utility to wrap icon resources into C++ code, from the FOX Toolkit
 dev-util/rocm-cmake 0.2 2.7.0 9999: Radeon Open Compute CMake Modules
-dev-util/rocminfo 2.6.0: ROCm Application for Reporting System Info
+dev-util/rocminfo 2.6.0 2.7.0: ROCm Application for Reporting System Info
 dev-util/rosdep 0.13.0 0.14.0 0.15.0 9999: Command-line tool for installing ROS system dependencies
 dev-util/rosinstall 0.7.8 9999: Command-line tools for maintaining a workspace of projects for ROS
 dev-util/rosinstall_generator 0.1.13 0.1.14 9999: Generates rosinstall metadata about repositories with ROS packages/stacks
@@ -17396,7 +17396,7 @@ sys-apps/nix 2.0.4 2.1.3 2.2.2: A purely functional package manager
 sys-apps/noexec 1.1.0-r1: a package for preventing processes from using exec system calls
 sys-apps/nvme-cli 1.5 1.6 1.6-r1: NVM-Express user space tooling for Linux
 sys-apps/onerng 3.6-r2: Software for the Open Hardware Random Number Generator called OneRNG
-sys-apps/openrc 0.34.11 0.38.3 0.38.3-r1 0.41.2 9999: OpenRC manages the services, startup and shutdown of a host
+sys-apps/openrc 0.34.11 0.38.3 0.38.3-r1 0.41.2 0.42 9999: OpenRC manages the services, startup and shutdown of a host
 sys-apps/opentmpfiles 0.1.1 0.1.2 0.1.3 0.1.3-r1 0.2 9999: A standalone utility to process systemd-style tmpfiles.d files
 sys-apps/osinfo-db 20190218 20190304 20190319: osinfo database files
 sys-apps/osinfo-db-tools 1.2.0 1.3.0 1.4.0: Tools for managing the osinfo database
