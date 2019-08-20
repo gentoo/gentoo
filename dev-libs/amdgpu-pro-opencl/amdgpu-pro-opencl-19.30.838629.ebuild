@@ -93,5 +93,10 @@ pkg_postinst() {
 		ewarn "has become officially supported by Gentoo."
 	fi
 
+	elog ""
+	elog "This package is now DEPRECATED on amd64 in favour of dev-libs/rocm-opencl-runtime."
+	elog "Moreover, it only provides legacy AMDGPU-Pro OpenCL libraries which are not compatible with Vega 10 and newer GPUs."
+	elog ""
+
 	"${ROOT}"/usr/bin/eselect opencl set --use-old ocl-icd
 }
