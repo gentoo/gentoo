@@ -18,9 +18,7 @@ if [[ ${PV} = 9999* ]]; then
 	SRC_URI=""
 else
 	KEYWORDS="~amd64"
-	COMMIT=""
-	SRC_URI="https://github.com/NVIDIA/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
-	S=${WORKDIR}/${PN}-${COMMIT}
+	SRC_URI="https://github.com/NVIDIA/${PN}/releases/download/v${PV}/${P}.tar.gz"
 fi
 
 LICENSE="MIT"
