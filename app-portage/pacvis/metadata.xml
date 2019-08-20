@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>brian.gloyer@gmail.com</email>
+    <name>brian gloyer</name>
+  </maintainer>
+  <upstream>
+    <maintainer status="active">
+      <email>brian.gloyer@gmail.com</email>
+      <name>brian gloyer</name>
+    </maintainer>
+    <bugs-to>https://github.com/bgloyer/pacvis/issues/</bugs-to>
+    <remote-id type="github">bgloyer/pacvis</remote-id>
+  </upstream>
+</pkgmetadata>
