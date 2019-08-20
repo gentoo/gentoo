@@ -11,7 +11,10 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~x86-fbsd"
+# uneven minor versions are development versions
+if [[ $(( $(ver_cut 2) % 2 )) == 0 ]] ; then
+	KEYWORDS="~amd64 ~x86 ~x86-fbsd"
+fi
 IUSE="dbus dedicated doc fribidi libressl nls openmp server"
 
 RDEPEND="
