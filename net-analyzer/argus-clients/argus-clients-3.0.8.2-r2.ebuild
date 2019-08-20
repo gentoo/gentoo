@@ -5,8 +5,8 @@ EAPI=6
 inherit autotools toolchain-funcs
 
 DESCRIPTION="Clients for net-analyzer/argus"
-HOMEPAGE="http://www.qosient.com/argus/"
-SRC_URI="http://qosient.com/argus/dev/${P}.tar.gz"
+HOMEPAGE="https://www.qosient.com/argus/"
+SRC_URI="https://qosient.com/argus/dev/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
