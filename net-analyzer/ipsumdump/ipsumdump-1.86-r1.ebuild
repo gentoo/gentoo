@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 DESCRIPTION="Simple TCP/IP Dump summarizer/analyzer"
 HOMEPAGE="http://read.seas.harvard.edu/~kohler/ipsumdump/"
@@ -25,6 +25,9 @@ DEPEND="
 DOCS=(
 	NEWS.md
 	README.md
+)
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.86-SIOCGSTAMP.patch
 )
 
 src_configure() {
