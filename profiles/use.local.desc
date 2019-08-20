@@ -2393,6 +2393,7 @@ dev-libs/gmp:asm - Enable use of hand optimized assembly routines (faster execut
 dev-libs/gobject-introspection:doctool - Install g-ir-doc-tool for generating documentation from introspected data
 dev-libs/granite:demo - Build the Granite demo application (to present all available UI features provided by the library)
 dev-libs/hidapi:fox - Build a x11-libs/fox GUI
+dev-libs/hsa-ext-rocr:deprecated - Install the deprecated debug/trace/profiling library
 dev-libs/input-pad:eekboard - Enable support for dev-libs/eekboard
 dev-libs/input-pad:xtest - Enable support for x11-libs/libXtst
 dev-libs/intel-neo:vaapi - Support the sharing of surfaces with Video Acceleration API (OpenCL Extension #36)

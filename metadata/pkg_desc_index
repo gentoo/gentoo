@@ -4710,7 +4710,7 @@ dev-libs/OpenNI 1.5.7.10 9999: OpenNI SDK
 dev-libs/OpenNI2 2.2_beta2 9999: OpenNI2 SDK
 dev-libs/OpenSRF 2.1.1: Framework for the high-level development of the Evergreen ILS software
 dev-libs/actor-framework 0.13.2 0.14.5: The C++ Actor Framework (CAF)
-dev-libs/amdgpu-pro-opencl 18.20.684755 19.10.785425 19.10.785425-r1 19.30.838629: Proprietary OpenCL implementation for AMD GPUs
+dev-libs/amdgpu-pro-opencl 18.20.684755 19.30.838629: Proprietary OpenCL implementation for AMD GPUs
 dev-libs/angelscript 2.33.0: A flexible, cross-platform scripting library
 dev-libs/antlr-c 3.5.2: The ANTLR3 C Runtime
 dev-libs/appstream 0.12.6 0.12.7 0.12.8: Cross-distro effort for providing metadata for software in the Linux ecosystem
@@ -4822,6 +4822,7 @@ dev-libs/gumbo 0.10.1: The HTML5 parsing algorithm implemented as a pure C99 lib
 dev-libs/hashit 0.9.8: Generic C hash library which supports multiple collision handling methods
 dev-libs/hidapi 0.8.0_rc1_p20140719: A multi-platform library for USB and Bluetooth HID-Class devices
 dev-libs/hiredis 0.13.3 0.14.0: Minimalistic C client library for the Redis database
+dev-libs/hsa-ext-rocr 1.1.9.99: Proprietary image-support library for Radeon Open Compute
 dev-libs/http-fetcher 1.1.0-r1: Library for downloading files via HTTP using the GET method
 dev-libs/hyperleveldb 1.2.2-r1: Hyperdex fork/extension of leveldb
 dev-libs/hyperscan 5.1.0: High-performance regular expression matching library
