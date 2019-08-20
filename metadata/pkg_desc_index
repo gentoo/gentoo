@@ -15157,7 +15157,7 @@ net-libs/loudmouth 1.5.3-r1 1.5.3-r2 1.5.3-r3: Lightweight C Jabber library
 net-libs/mbedtls 2.10.0 2.12.0 2.13.1 2.14.1 2.15.1 2.16.0 2.16.1 2.17.0: Cryptographic library for embedded systems
 net-libs/meanwhile 1.0.2-r1: Meanwhile (Sametime protocol) library
 net-libs/miniupnpc 2.1.20190210 2.1.20190408 2.1.20190625: UPnP client library and a simple UPnP client
-net-libs/nDPI 2.0 2.2: Open Source Deep Packet Inspection Software Toolkit
+net-libs/nDPI 2.0 2.2 2.8: Open Source Deep Packet Inspection Software Toolkit
 net-libs/nacl 0_p20110221: high-speed software library for network communication, encryption, decryption, signatures
 net-libs/nativebiginteger 0.8.7 0.9.36 0.9.36-r1: jbigi library used by net-vpn/i2p
 net-libs/neon 0.30.2: HTTP and WebDAV client library
