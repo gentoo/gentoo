@@ -23,9 +23,12 @@ PATCHES=(
 
 LICENSE="MIT"
 SLOT="0/$(ver_cut 1-2)"
+IUSE="nonfree"
 
-RDEPEND="sys-process/numactl"
-DEPEND="${RDEPEND}
+COMMON_DEPEND="sys-process/numactl"
+RDEPEND="${COMMON_DEPEND}
+	nonfree? ( dev-libs/hsa-ext-rocr )"
+DEPEND="${COMMON_DEPEND}
 	>=dev-libs/roct-thunk-interface-${PV}"
 
 src_prepare() {
