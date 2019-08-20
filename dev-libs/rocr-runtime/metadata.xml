@@ -15,4 +15,7 @@
     <longdescription lang="en">
         Radeon Open Compute Platform Runtime
     </longdescription>
+    <use>
+      <flag name="nonfree">Enables HSA image support using <pkg>dev-libs/hsa-ext-rocr</pkg></flag>
+    </use>
 </pkgmetadata>
