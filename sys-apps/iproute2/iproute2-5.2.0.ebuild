@@ -136,7 +136,9 @@ src_install() {
 		LIBDIR="${EPREFIX}"/$(get_libdir) \
 		SBINDIR="${EPREFIX}"/sbin \
 		CONFDIR="${EPREFIX}"/etc/iproute2 \
+		DATADIR="${EPREFIX}"/usr/share \
 		DOCDIR="${EPREFIX}"/usr/share/doc/${PF} \
+		HDRDIR="${EPREFIX}"/usr/include \
 		MANDIR="${EPREFIX}"/usr/share/man \
 		ARPDDIR="${EPREFIX}"/var/lib/arpd \
 		install
