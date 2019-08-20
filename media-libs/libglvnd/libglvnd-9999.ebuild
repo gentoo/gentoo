@@ -34,14 +34,9 @@ RDEPEND="
 DEPEND="${PYTHON_DEPS}
 	${RDEPEND}"
 
-src_unpack() {
-	default
-	[[ $PV = 9999* ]] && git-r3_src_unpack
-}
-
 src_prepare() {
 	default
-	eautoreconf
+	[[ $PV = 9999* ]] && eautoreconf
 }
 
 multilib_src_configure() {
