@@ -28,6 +28,7 @@ S="${WORKDIR}/${PN}-2-${PV}"
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.13-free.patch
 	"${FILESDIR}"/${PN}-1.13-libdir.patch
+	"${FILESDIR}"/${PN}-1.13-my_bool.patch
 	"${FILESDIR}"/${PN}-1.13-odbc.patch
 	"${FILESDIR}"/${PN}-1.13-pcap-1.9.0.patch
 )
