@@ -1,12 +1,12 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit fcaps
+EAPI=7
+inherit autotools fcaps
 
 DESCRIPTION="A utility to see if a specific IP address is taken and what MAC address owns it"
 HOMEPAGE="http://www.habets.pp.se/synscan/programs.php?prog=arping"
-SRC_URI="http://www.habets.pp.se/synscan/files/${P}.tar.gz"
+SRC_URI="https://github.com/ThomasHabets/${PN}/archive/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="2"
@@ -25,5 +25,10 @@ RDEPEND="
 	${CDEPEND}
 	!net-misc/iputils[arping(+)]
 "
-
 FILECAPS=( cap_net_raw /usr/sbin/arping )
+S=${WORKDIR}/${PN}-${P}
+
+src_prepare() {
+	default
+	eautoreconf
+}

@@ -61,7 +61,7 @@ src_install() {
 	systemd_newtmpfilesd "${FILESDIR}"/vnstatd.tmpfile vnstatd.conf
 
 	use gd && doman man/vnstati.1
-	doman man/vnstat.1 man/vnstatd.1
+	doman man/vnstat.1 man/vnstatd.8
 
 	newdoc INSTALL README.setup
 	dodoc CHANGES README UPGRADE FAQ examples/vnstat.cgi
