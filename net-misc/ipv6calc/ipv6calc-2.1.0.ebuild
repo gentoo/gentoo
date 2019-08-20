@@ -4,7 +4,7 @@
 EAPI="7"
 
 DESCRIPTION="IPv6 address calculator"
-HOMEPAGE="http://www.deepspace6.net/projects/ipv6calc.html"
+HOMEPAGE="https://www.deepspace6.net/projects/ipv6calc.html"
 SRC_URI="https://github.com/pbiering/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
