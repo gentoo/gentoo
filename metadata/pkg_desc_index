@@ -3166,7 +3166,7 @@ dev-dotnet/gnome-keyring-sharp 1.0.2-r2: C# implementation of gnome-keyring
 dev-dotnet/gsf-sharp 0.8.1: C# bindings for libgsf
 dev-dotnet/gtk-sharp 2.12.21: gtk bindings for mono
 dev-dotnet/ikvm-bin 7.1.4532.2: Java VM for .NET
-dev-dotnet/libgdiplus 2.10.9-r1 2.10.9-r2 2.10.9-r3 4.2-r2 4.2-r3 5.6.1-r1: Library for using System.Drawing with mono
+dev-dotnet/libgdiplus 2.10.9-r1 2.10.9-r2 2.10.9-r3 4.2-r2 4.2-r3 5.6.1-r1 6.0.2: Library for using System.Drawing with Mono
 dev-dotnet/log4net 1.2.11: tool to help the programmer output log statements to a variety of output targets
 dev-dotnet/mono-addins 0.6.2 1.0-r1: A generic framework for creating extensible applications
 dev-dotnet/monocalendar 0.7.2: iCal clone for .NET
@@ -10940,7 +10940,7 @@ dev-util/stressapptest 1.0.9: Stressful Application Test
 dev-util/stripe-mock 0.34.1 0.47.0: Mock HTTP server that responds like the real Stripe API
 dev-util/stubgen 2.08: a member function stub generator for C++
 dev-util/suse-build 2015.11.05 9999: Script to build SUSE Linux RPMs
-dev-util/sysdig 0.26.1 0.26.2: A system exploration and troubleshooting tool
+dev-util/sysdig 0.26.1 0.26.2 0.26.3: A system exploration and troubleshooting tool
 dev-util/sysprof 3.30.2-r1 3.32.0: System-wide Linux Profiler
 dev-util/systemtap 2.4-r1 3.1-r1 4.0-r1: A linux trace/probe tool
 dev-util/tailor 0.9.35-r1: A tool to migrate changesets between version control systems
