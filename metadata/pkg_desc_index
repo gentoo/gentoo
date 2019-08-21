@@ -1792,7 +1792,7 @@ app-metrics/bind_exporter 0.2.0_p20180307 0.2.0_p20190226: Prometheus exporter f
 app-metrics/blackbox_exporter 0.12.0 0.13.0 0.13.0-r1 0.14.0: Prometheus exporter for blackbox probing via HTTP, HTTPS, DNS, TCP and ICMP
 app-metrics/buildbot-prometheus 17.7.2-r2: A Prometheus metrics exporter for Buildbot
 app-metrics/burrow_exporter 0.0.6 0.0.6-r1: Prometheus exporter for Burrow
-app-metrics/collectd 5.8.1 5.9.1: Collects system statistics and provides mechanisms to store the values
+app-metrics/collectd 5.8.1 5.9.1-r1: Collects system statistics and provides mechanisms to store the values
 app-metrics/consul_exporter 0.4.0: Prometheus exporter for consul metrics
 app-metrics/elasticsearch_exporter 1.0.2 1.0.4_rc1 1.1.0_rc1 1.1.0: Elasticsearch stats exporter for Prometheus
 app-metrics/github-exporter 04 04-r1: Github statistics exporter for prometheus
