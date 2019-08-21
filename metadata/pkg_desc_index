@@ -364,7 +364,7 @@ app-arch/lha 114i-r7 114i-r8 114i-r9: Utility for creating and opening lzh archi
 app-arch/libarchive 3.3.3: Multi-format archive and compression library
 app-arch/libpar2 0.4: A library for par2, extracted from par2cmdline
 app-arch/lrzip 0.621 0.631-r1: Long Range ZIP or Lzma RZIP optimized for compressing large files
-app-arch/lz4 1.8.3 1.9.1 9999: Extremely Fast Compression algorithm
+app-arch/lz4 1.8.3 1.9.1 1.9.2 9999: Extremely Fast Compression algorithm
 app-arch/lz5 2.0: An efficient compressor with very fast decompression
 app-arch/lzip 1.21: lossless data compressor based on the LZMA algorithm
 app-arch/lziprecover 1.21: Lziprecover is a data recovery tool and decompressor for lzip compressed files
