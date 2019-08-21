@@ -1,0 +1,16 @@
+BDEPEND=>=dev-lang/go-1.10
+DEFINED_PHASES=compile install postinst preinst prepare unpack
+DEPEND=app-crypt/gpgme:= >=app-emulation/conmon-2.0.0 >=app-emulation/runc-1.0.0_rc6 dev-libs/libassuan:= dev-libs/libgpg-error:= sys-fs/lvm2 sys-libs/libseccomp:= apparmor? ( sys-libs/libapparmor ) btrfs? ( sys-fs/btrfs-progs ) ostree? ( dev-libs/glib:= dev-util/ostree:= ) rootless? ( app-emulation/slirp4netns ) selinux? ( sys-libs/libselinux:= ) dev-go/go-md2man
+DESCRIPTION=Library and podman tool for running OCI-based containers in Pods
+EAPI=7
+HOMEPAGE=https://github.com/containers/libpod/
+IUSE=apparmor btrfs ostree +rootless selinux
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+RDEPEND=app-crypt/gpgme:= >=app-emulation/conmon-2.0.0 >=app-emulation/runc-1.0.0_rc6 dev-libs/libassuan:= dev-libs/libgpg-error:= sys-fs/lvm2 sys-libs/libseccomp:= apparmor? ( sys-libs/libapparmor ) btrfs? ( sys-fs/btrfs-progs ) ostree? ( dev-libs/glib:= dev-util/ostree:= ) rootless? ( app-emulation/slirp4netns ) selinux? ( sys-libs/libselinux:= )
+REQUIRED_USE=!selinux? ( !ostree )
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/containers/libpod/archive/v1.5.1.tar.gz -> libpod-1.5.1.tar.gz
+_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	7ba73aee7fe4462b3a745e3645ab92ca	golang-base	c57d2c3f9e1a02d0feb8b87c7b689892	golang-vcs-snapshot	12177e83bede6f7fb87eae383864b40b	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
+_md5_=03c04434ab224435c8919eebade23731
