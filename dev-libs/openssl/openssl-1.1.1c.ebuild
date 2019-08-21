@@ -6,6 +6,16 @@ EAPI=7
 inherit flag-o-matic toolchain-funcs multilib multilib-minimal
 
 MY_P=${P/_/-}
+
+# This patch set is based on the following files from Fedora 31,
+# see https://src.fedoraproject.org/rpms/openssl/blob/f31/f/openssl.spec
+# for more details:
+# - hobble-openssl (SOURCE1)
+# - ec_curve.c (SOURCE12)
+# - ectest.c (SOURCE13)
+# - openssl-1.1.1-ec-curves.patch (PATCH37) -- MODIFIED
+BINDIST_PATCH_SET="openssl-1.1.1c-bindist-1.0.tar.xz"
+
 DESCRIPTION="full-strength general purpose cryptography library (including SSL and TLS)"
 HOMEPAGE="https://www.openssl.org/"
 SRC_URI="mirror://openssl/source/${MY_P}.tar.gz"
@@ -33,25 +43,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.1.0j-parallel_install_fix.patch #671602
 )
 
-# This does not copy the entire Fedora patchset, but JUST the parts that
-# are needed to make it safe to use EC with RESTRICT=bindist.
-# See openssl.spec for the matching numbering of SourceNNN, PatchNNN
-SOURCE1=hobble-openssl
-SOURCE12=ec_curve.c
-SOURCE13=ectest.c
-PATCH37=openssl-1.1.1-ec-curves.patch
-FEDORA_GIT_BASE='https://src.fedoraproject.org/cgit/rpms/openssl.git/plain/'
-FEDORA_GIT_BRANCH='f29'
-FEDORA_SRC_URI=()
-FEDORA_SOURCE=( ${SOURCE1} ${SOURCE12} ${SOURCE13} )
-FEDORA_PATCH=( ${PATCH37} )
-for i in "${FEDORA_SOURCE[@]}" ; do
-	FEDORA_SRC_URI+=( "${FEDORA_GIT_BASE}/${i}?h=${FEDORA_GIT_BRANCH} -> ${P}_${i}" )
-done
-for i in "${FEDORA_PATCH[@]}" ; do # Already have a version prefix
-	FEDORA_SRC_URI+=( "${FEDORA_GIT_BASE}/${i}?h=${FEDORA_GIT_BRANCH} -> ${i}" )
-done
-SRC_URI+=" bindist? ( ${FEDORA_SRC_URI[@]} )"
+SRC_URI+=" bindist? ( https://dev.gentoo.org/~whissi/dist/openssl/${BINDIST_PATCH_SET} )"
 
 S="${WORKDIR}/${MY_P}"
 
@@ -61,27 +53,27 @@ MULTILIB_WRAPPED_HEADERS=(
 
 src_prepare() {
 	if use bindist; then
-		# This just removes the prefix, and puts it into WORKDIR like the RPM.
-		for i in "${FEDORA_SOURCE[@]}" ; do
-			cp -f "${DISTDIR}"/"${P}_${i}" "${WORKDIR}"/"${i}" || die
+		mv "${WORKDIR}"/bindist-patches/hobble-openssl "${WORKDIR}" || die
+		bash "${WORKDIR}"/hobble-openssl || die
+
+		cp -f "${WORKDIR}"/bindist-patches/ec_curve.c "${S}"/crypto/ec/ || die
+		cp -f "${WORKDIR}"/bindist-patches/ectest.c "${S}"/test/ || die
+
+		eapply "${WORKDIR}"/bindist-patches/ec-curves.patch
+
+		local known_failing_test
+		for known_failing_test in \
+			30-test_evp_extra.t \
+			80-test_ssl_new.t \
+		; do
+			ebegin "Disabling test '${known_failing_test}' which is known to fail with USE=bindist"
+			rm test/recipes/${known_failing_test} || die
+			eend $?
 		done
 
-		# .spec %prep
-		bash "${WORKDIR}"/"${SOURCE1}" || die
-		cp -f "${WORKDIR}"/"${SOURCE12}" "${S}"/crypto/ec/ || die
-		cp -f "${WORKDIR}"/"${SOURCE13}" "${S}"/test/ || die
-		for i in "${FEDORA_PATCH[@]}" ; do
-			if [[ "${i}" == "${PATCH37}" ]] ; then
-				# apply our own for OpenSSL 1.1.1b adjusted version of this patch
-				eapply "${FILESDIR}"/openssl-1.1.1b-ec-curves-patch.patch
-			else
-				eapply "${DISTDIR}"/"${i}"
-			fi
-		done
 		# Also see the configure parts below:
 		# enable-ec \
 		# $(use_ssl !bindist ec2m) \
-
 	fi
 
 	# keep this in sync with app-misc/c_rehash
