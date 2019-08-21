@@ -1,5 +1,5 @@
---- src/Makefile.am.orig	2006-07-11 01:18:20.000000000 +1000
-+++ src/Makefile.am	2006-07-11 01:21:20.000000000 +1000
+--- a/src/Makefile.am
++++ b/src/Makefile.am
 @@ -10,6 +10,8 @@
  doCPLC.c     gainquant.c      hpOutput.c  iLBC_define.h   lsf.c          syntFilter.c \
  doCPLC.h     gainquant.h      hpOutput.h  iLBC_encode.c   lsf.h          syntFilter.h 
