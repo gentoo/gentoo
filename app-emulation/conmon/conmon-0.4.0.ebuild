@@ -9,7 +9,7 @@ HOMEPAGE="https://github.com/containers/conmon"
 LICENSE="Apache-2.0"
 SLOT="0"
 IUSE="systemd"
-EGIT_COMMIT="59952292a3b07ac125575024ae21956efe0ecdfb"
+EGIT_COMMIT="ba305505e9621fc0b4429287bfc2c2a7057af51a"
 SRC_URI="${HOMEPAGE}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 RDEPEND="dev-libs/glib:=
 	systemd? ( sys-apps/systemd:= )"
@@ -32,10 +32,9 @@ src_compile() {
 
 src_install() {
 	emake DESTDIR="${D}" \
-		PREFIX="${ED}/usr" \
+		PREFIX="/usr" \
 		install
-	mv "${ED}/usr/libexec"/{crio,podman} || die
-	dodir /usr/bin
-	ln "${ED}/usr/"{libexec/podman,bin}/conmon || die
+	dodir /usr/libexec/podman
+	ln "${ED}/usr/"{bin,libexec/podman}/conmon || die
 	dodoc README.md
 }
