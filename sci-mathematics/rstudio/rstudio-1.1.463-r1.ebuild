@@ -1,9 +1,9 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit eutils user cmake-utils gnome2-utils pam versionator xdg-utils java-pkg-2 pax-utils qmake-utils
+inherit eutils user cmake-utils gnome2-utils pam xdg-utils java-pkg-2 pax-utils qmake-utils
 
 # TODO
 # * package gin and gwt
@@ -53,7 +53,7 @@ RDEPEND="
 	>=app-text/pandoc-${PANDOC_VER}
 	dev-haskell/pandoc-citeproc
 	>=dev-lang/R-2.11.1
-	<dev-libs/boost-1.70:=
+	>=dev-libs/boost-1.63:=
 	>=dev-libs/mathjax-2.7.4
 	sys-apps/util-linux
 	>=sys-devel/clang-3.5.0:*
@@ -103,6 +103,7 @@ PATCHES=(
 		"${FILESDIR}/${PN}-1.1.463-boost-1.69.0_p2.patch"
 		"${FILESDIR}/${PN}-1.1.463-boost-1.69.0_p3.patch"
 		"${FILESDIR}/${PN}-1.1.463-fix-ptr-int-compare.patch"
+		"${FILESDIR}/${PN}-1.1.463-boost-1.70.0.patch"
 )
 
 src_unpack() {
@@ -194,9 +195,9 @@ src_prepare() {
 }
 
 src_configure() {
-	export RSTUDIO_VERSION_MAJOR=$(get_version_component_range 1)
-	export RSTUDIO_VERSION_MINOR=$(get_version_component_range 2)
-	export RSTUDIO_VERSION_PATCH=$(get_version_component_range 3)
+	export RSTUDIO_VERSION_MAJOR=$(ver_cut 1)
+	export RSTUDIO_VERSION_MINOR=$(ver_cut 2)
+	export RSTUDIO_VERSION_PATCH=$(ver_cut 3)
 
 	local mycmakeargs=(
 		-DDISTRO_SHARE=share/${PN}
@@ -219,7 +220,7 @@ src_compile() {
 src_install() {
 	export ANT_OPTS="-Duser.home=${T}"
 	cmake-utils_src_install
-	pax-mark m "${ED}usr/bin/rstudio"
+	pax-mark m "${ED}/usr/bin/rstudio"
 	doconfd "${FILESDIR}"/rstudio-server.conf
 	dodir /etc/rstudio
 	insinto /etc/rstudio

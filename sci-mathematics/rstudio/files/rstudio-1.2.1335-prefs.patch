@@ -1,0 +1,53 @@
+--- rstudio-1.2.1335-orig/src/gwt/build.xml	2019-03-28 16:08:20.000000000 +1100
++++ rstudio-1.2.1335/src/gwt/build.xml	2019-04-09 16:44:15.089471934 +1000
+@@ -34,6 +34,7 @@
+    <property name="gwt.extra.args" value=""/>
+    <property name="gwt.main.module" value="org.rstudio.studio.RStudio"/>
+    <property name="ace.bin" value="${src.dir}/org/rstudio/studio/client/workbench/views/source/editors/text/ace"/>
++   <property environment="env"/>
+ 
+    <path id="project.class.path">
+      <pathelement location="${build.dir}"/>
+@@ -112,8 +113,10 @@
+             <pathelement location="${src.dir}"/>
+             <path refid="project.class.path"/>
+          </classpath>
++         <jvmarg value="-Duser.home=${env.T}"/>
+          <!-- add jvmarg -Xss16M or similar if you see a StackOverflowError -->
+          <jvmarg value="-Xmx1536M"/>
++         <jvmarg value="-Djava.util.prefs.userRoot=${env.T}"/>
+          <arg value="-war"/>
+          <arg value="${www.dir}"/>
+          <arg value="-localWorkers"/>
+@@ -154,6 +157,7 @@
+             <pathelement location="${src.dir}"/>
+             <path refid="project.class.path"/>
+          </classpath>
++         <jvmarg value="-Duser.home=${env.T}"/>
+          <jvmarg value="-Xmx2048M"/>
+          <arg value="-style"/>
+          <arg value="PRETTY"/>
+@@ -176,6 +180,7 @@
+             <pathelement location="src"/>
+             <path refid="project.class.path"/>
+          </classpath>
++         <jvmarg value="-Duser.home=${env.T}"/>
+          <jvmarg value="-Xmx2048M"/>
+          <arg value="-style"/>
+          <arg value="PRETTY"/>
+@@ -202,6 +207,7 @@
+             <pathelement location="src"/>
+             <path refid="project.class.path"/>
+          </classpath>
++         <jvmarg value="-Duser.home=${env.T}"/>
+          <jvmarg value="-Xmx2048M"/>
+       	<arg value="-src"/>
+       	<arg value = "src"/>
+@@ -237,6 +243,7 @@
+             <pathelement location="${test.dir}"/>
+             <pathelement location="${src.dir}"/>
+         </classpath>
++        <jvmarg value="-Duser.home=${env.T}"/>
+         <classpath refid="project.class.path"/>
+         <classpath refid="unittest.class.path"/>
+         <arg value="org.rstudio.studio.client.RStudioUnitTestSuite"/>
