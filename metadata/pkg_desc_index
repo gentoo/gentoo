@@ -1376,7 +1376,7 @@ app-emulation/buildah 1.8.4 1.9.2 1.10.0 1.10.1: A tool that facilitates buildin
 app-emulation/cadvisor 0.33.0-r1 0.33.1: Analyzes resource usage and performance characteristics of running containers
 app-emulation/cloud-init 17.2 18.4-r1 18.5 9999: Cloud instance initialisation magic
 app-emulation/coldfire 0.3.1: Motorola Coldfire Emulator
-app-emulation/conmon 0.3.0 0.4.0: An OCI container runtime monitor
+app-emulation/conmon 0.3.0 0.4.0 2.0.0: An OCI container runtime monitor
 app-emulation/containerd 1.2.6 1.2.7: A daemon to control runC
 app-emulation/containers-storage 1.12.16 1.13.1: containers/storage library
 app-emulation/cri-o 1.10.6 1.13.9 1.14.2 1.14.4 1.14.9 1.15.0: OCI-based implementation of Kubernetes Container Runtime Interface
@@ -15866,7 +15866,7 @@ net-vpn/peervpn 0.044-r4: P2P mesh VPN
 net-vpn/pptpd 1.4.0-r2: Linux Point-to-Point Tunnelling Protocol Server
 net-vpn/strongswan 5.7.2: IPsec-based VPN solution, supporting IKEv1/IKEv2 and MOBIKE
 net-vpn/tinc 1.0.35-r2 1.1_pre17: tinc is an easy to configure VPN implementation
-net-vpn/tor 0.4.0.5 0.4.1.4_rc: Anonymizing overlay network for TCP
+net-vpn/tor 0.4.0.5 0.4.1.5: Anonymizing overlay network for TCP
 net-vpn/vpnc 0.5.3_p550: Free client for Cisco VPN routing software
 net-vpn/vpncwatch 1.8 1.8.1: Keepalive daemon for vpnc on Linux systems
 net-vpn/vtun 3.0.3 3.0.3-r1: Create tunnels over TCP/IP networks with shaping, encryption, and compression

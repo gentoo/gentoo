@@ -8,5 +8,5 @@ KEYWORDS=~amd64
 LICENSE=Apache-2.0
 RDEPEND=dev-libs/glib:= systemd? ( sys-apps/systemd:= )
 SLOT=0
-SRC_URI=https://github.com/containers/conmon/archive/v0.4.0.tar.gz -> conmon-0.4.0.tar.gz
-_md5_=d1e52b00f80ff56a4cc7b3cecbda24fe
+SRC_URI=https://github.com/containers/conmon/archive/v2.0.0.tar.gz -> conmon-2.0.0.tar.gz
+_md5_=5ce8f6508c0bb556e477b3f25cf1b1a7
