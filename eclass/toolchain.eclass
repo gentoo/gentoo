@@ -1961,8 +1961,8 @@ toolchain_src_install() {
 	# for people who are testing as non-root.
 	chown -R root:0 "${D}${LIBPATH}" 2>/dev/null
 
-	# Move pretty-printers to gdb datadir to shut ldconfig up
-	local py gdbdir=/usr/share/gdb/auto-load${LIBPATH/\/lib\//\/$(get_libdir)\/}
+	# Installing gdb pretty-printers into gdb-specific location.
+	local py gdbdir=/usr/share/gdb/auto-load${LIBPATH}
 	pushd "${D}${LIBPATH}" >/dev/null
 	for py in $(find . -name '*-gdb.py') ; do
 		local multidir=${py%/*}
