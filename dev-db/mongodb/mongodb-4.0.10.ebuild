@@ -10,7 +10,7 @@ CHECKREQS_DISK_BUILD="2400M"
 CHECKREQS_DISK_USR="512M"
 CHECKREQS_MEMORY="1024M"
 
-inherit check-reqs flag-o-matic multiprocessing pax-utils python-single-r1 scons-utils systemd toolchain-funcs user
+inherit check-reqs flag-o-matic multiprocessing pax-utils python-any-r1 scons-utils systemd toolchain-funcs user
 
 MY_P=${PN}-src-r${PV/_rc/-rc}
 
@@ -38,14 +38,16 @@ RDEPEND=">=app-arch/snappy-1.1.3
 	)"
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
-	dev-python/cheetah[${PYTHON_USEDEP}]
-	dev-python/pyyaml[${PYTHON_USEDEP}]
-	virtual/python-typing[${PYTHON_USEDEP}]
+	$(python_gen_any_dep '
+		dev-python/cheetah[${PYTHON_USEDEP}]
+		dev-python/pyyaml[${PYTHON_USEDEP}]
+		virtual/python-typing[${PYTHON_USEDEP}]
+	')
 	sys-libs/ncurses:0=
 	sys-libs/readline:0=
 	debug? ( dev-util/valgrind )
 	test? (
-		dev-python/pymongo[${PYTHON_USEDEP}]
+		$(python_gen_any_dep 'dev-python/pymongo[${PYTHON_USEDEP}]')
 	)"
 PDEPEND="tools? ( >=app-admin/mongo-tools-${PV} )"
 
@@ -73,7 +75,7 @@ pkg_setup() {
 	enewgroup mongodb
 	enewuser mongodb -1 -1 /var/lib/${PN} mongodb
 
-	python-single-r1_pkg_setup
+	python-any-r1_pkg_setup
 }
 
 src_prepare() {
