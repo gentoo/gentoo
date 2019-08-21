@@ -9,7 +9,7 @@ HOMEPAGE="https://github.com/containers/conmon"
 LICENSE="Apache-2.0"
 SLOT="0"
 IUSE="systemd"
-EGIT_COMMIT="ba305505e9621fc0b4429287bfc2c2a7057af51a"
+EGIT_COMMIT="e217fdff82e0b1a6184a28c43043a4065083407f"
 SRC_URI="${HOMEPAGE}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 RDEPEND="dev-libs/glib:=
 	systemd? ( sys-apps/systemd:= )"
