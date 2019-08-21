@@ -44,20 +44,3 @@ src_install() {
 
 	domenu "${WORKDIR}/tdesktop-${PV}"/lib/xdg/telegramdesktop.desktop
 }
-
-pkg_preinst() {
-	xdg_pkg_preinst
-}
-
-pkg_postinst() {
-	xdg_pkg_postinst
-	einfo
-	einfo "Previous versions of ${PN} have created "
-	einfo "\"~/.local/share/applications/telegram.desktop\". These files"
-	einfo "conflict with the one shipped by portage and should be removed"
-	einfo "from all homedirs. (https://bugs.gentoo.org/618662)"
-}
-
-pkg_postrm() {
-	xdg_pkg_postrm
-}
