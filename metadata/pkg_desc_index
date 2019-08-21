@@ -11650,7 +11650,7 @@ games-puzzle/arrows 0.6-r1: Simple maze-like game where you navigate around and 
 games-puzzle/atomix 3.22.0: Build molecules, from simple inorganic to extremely complex organic ones
 games-puzzle/bastet 0.43.2: a simple, evil, ncurses-based Tetris(R) clone
 games-puzzle/biniax2 1.30-r1: Logic game with arcade and tactics modes
-games-puzzle/braincurses 0.5b-r1: An ncurses-based mastermind clone
+games-puzzle/braincurses 0.5b-r1 1.1.0: A version of the classic game Mastermind
 games-puzzle/brainparty 0.61-r1: A puzzle-solving, brain-stretching game for all ages
 games-puzzle/brainworkshop 5_beta20180712: Short-term-memory training N-Back game
 games-puzzle/color-lines 0.6-r1: Color lines game written with SDL with bonus features

@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install
+DESCRIPTION=A version of the classic game Mastermind
+EAPI=7
+HOMEPAGE=https://github.com/bderrly/braincurses
+KEYWORDS=~amd64 ~ppc64 ~x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=https://github.com/bderrly/braincurses/archive/1.1.0.tar.gz -> braincurses-1.1.0.tar.gz
+_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
+_md5_=bd6f36d468d8da207236b1331a3c4522
