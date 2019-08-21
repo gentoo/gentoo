@@ -160,7 +160,7 @@ REQUIRED_USE="
 	collectd_plugins_python?		( ${PYTHON_REQUIRED_USE} )
 	collectd_plugins_smart?			( udev )"
 
-PATCHES=()
+PATCHES=( "${FILESDIR}"/${P}-fixup.patch )
 
 S="${WORKDIR}/${PN}-${PN}-${PV}"
 
