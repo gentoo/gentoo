@@ -1,9 +1,9 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit eutils user cmake-utils gnome2-utils pam versionator xdg-utils java-pkg-2 pax-utils qmake-utils
+inherit eutils user cmake-utils gnome2-utils pam xdg-utils java-pkg-2 pax-utils qmake-utils
 
 # TODO
 # * package gin and gwt
@@ -12,11 +12,12 @@ inherit eutils user cmake-utils gnome2-utils pam versionator xdg-utils java-pkg-
 
 # update from scripts in dependencies/common
 # egrep '(GWT_SDK_VER=|GIN_VER=|SELENIUM_VER=|CHROMEDRIVER_VER=)' dependencies/common/install-gwt
-GWT_VER=2.7.0
-GIN_VER=1.5
+GWT_VER=2.8.1
+GIN_VER=2.1.2
 SELENIUM_VER=2.37.0
 CHROMEDRIVER_VER=2.7
 # grep 'PANDOC_VERSION=' dependencies/common/install-pandoc
+# It should be PANDOC_VER=2.3.1 however >=app-text/pandoc-2.3.1 is not yet in portage
 PANDOC_VER=1.19.2.1
 # ls dependencies/common/*.tar.gz
 PACKRAT_VER=0.98.1000
@@ -53,7 +54,7 @@ RDEPEND="
 	>=app-text/pandoc-${PANDOC_VER}
 	dev-haskell/pandoc-citeproc
 	>=dev-lang/R-2.11.1
-	<dev-libs/boost-1.70:=
+	>=dev-libs/boost-1.63:=
 	>=dev-libs/mathjax-2.7.4
 	sys-apps/util-linux
 	>=sys-devel/clang-3.5.0:*
@@ -91,18 +92,16 @@ DEPEND="${RDEPEND}
 #	test? ( dev-java/junit:4 )
 
 PATCHES=(
-		"${FILESDIR}/${PN}-0.99.879-prefs.patch"
-		"${FILESDIR}/${PN}-1.0.44-paths.patch"
-		"${FILESDIR}/${PN}-1.1.357-clang-pandoc.patch"
-		"${FILESDIR}/${PN}-0.98.490-linker_flags.patch"
-		"${FILESDIR}/${PN}-0.99.473-qtsingleapplication.patch"
+		"${FILESDIR}/${PN}-1.2.1335-prefs.patch"
+		"${FILESDIR}/${PN}-1.2.1335-paths.patch"
+		"${FILESDIR}/${PN}-1.2.1335-pandoc.patch"
+		"${FILESDIR}/${PN}-1.2.1335-linker_flags.patch"
+		"${FILESDIR}/${PN}-1.2.1335-qtsingleapplication.patch"
 		"${FILESDIR}/${PN}-1.0.44-systemd.patch"
-		"${FILESDIR}/${PN}-1.1.453-boost-1.67.0.patch"
-		"${FILESDIR}/${PN}-1.1.453-core.patch"
-		"${FILESDIR}/${PN}-1.1.463-boost-1.69.0_p1.patch"
-		"${FILESDIR}/${PN}-1.1.463-boost-1.69.0_p2.patch"
-		"${FILESDIR}/${PN}-1.1.463-boost-1.69.0_p3.patch"
-		"${FILESDIR}/${PN}-1.1.463-fix-ptr-int-compare.patch"
+		"${FILESDIR}/${PN}-1.2.1335-core.patch"
+		"${FILESDIR}/${PN}-1.2.1335-fix-ptr-int-compare.patch"
+		"${FILESDIR}/${PN}-1.2.1335-boost-1.70.0_p1.patch"
+		"${FILESDIR}/${PN}-1.2.1335-boost-1.70.0_p2.patch"
 )
 
 src_unpack() {
@@ -194,9 +193,9 @@ src_prepare() {
 }
 
 src_configure() {
-	export RSTUDIO_VERSION_MAJOR=$(get_version_component_range 1)
-	export RSTUDIO_VERSION_MINOR=$(get_version_component_range 2)
-	export RSTUDIO_VERSION_PATCH=$(get_version_component_range 3)
+	export RSTUDIO_VERSION_MAJOR=$(ver_cut 1)
+	export RSTUDIO_VERSION_MINOR=$(ver_cut 2)
+	export RSTUDIO_VERSION_PATCH=$(ver_cut 3)
 
 	local mycmakeargs=(
 		-DDISTRO_SHARE=share/${PN}
@@ -219,7 +218,7 @@ src_compile() {
 src_install() {
 	export ANT_OPTS="-Duser.home=${T}"
 	cmake-utils_src_install
-	pax-mark m "${ED}usr/bin/rstudio"
+	pax-mark m "${ED}/usr/bin/rstudio"
 	doconfd "${FILESDIR}"/rstudio-server.conf
 	dodir /etc/rstudio
 	insinto /etc/rstudio

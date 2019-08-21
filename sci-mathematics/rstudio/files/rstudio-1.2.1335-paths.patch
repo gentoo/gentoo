@@ -1,0 +1,118 @@
+--- rstudio-1.2.1335-orig/CMakeGlobals.txt	2019-03-28 16:08:20.000000000 +1100
++++ rstudio-1.2.1335/CMakeGlobals.txt	2019-04-09 17:10:07.680657631 +1000
+@@ -161,7 +161,7 @@
+    set(RSTUDIO_INSTALL_SUPPORTING RStudio.app/Contents/Resources)
+ else()
+    set(RSTUDIO_INSTALL_BIN bin)
+-   set(RSTUDIO_INSTALL_SUPPORTING .)
++   set(RSTUDIO_INSTALL_SUPPORTING ${DISTRO_SHARE})
+ endif()
+ 
+ # if the install prefix is /usr/local then tweak as appropriate
+--- rstudio-1.2.1335-orig/src/cpp/server/CMakeLists.txt	2019-03-28 16:08:20.000000000 +1100
++++ rstudio-1.2.1335/src/cpp/server/CMakeLists.txt	2019-04-09 16:54:34.740739744 +1000
+@@ -194,7 +194,7 @@
+    configure_file(${CMAKE_CURRENT_SOURCE_DIR}/${RSERVER_INITD_DEBIAN_SCRIPT}.in
+                   ${CMAKE_CURRENT_BINARY_DIR}/${RSERVER_INITD_DEBIAN_SCRIPT})
+    install(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/${RSERVER_INITD_DEBIAN_SCRIPT}
+-           DESTINATION ${RSERVER_INITD_DEBIAN_DIR})
++           DESTINATION ${DISTRO_SHARE}/${RSERVER_INITD_DEBIAN_DIR})
+ 
+    # install configured redhat init.d script
+    set(RSERVER_INITD_REDHAT_DIR "extras/init.d/redhat")
+@@ -202,7 +202,7 @@
+    configure_file(${CMAKE_CURRENT_SOURCE_DIR}/${RSERVER_INITD_REDHAT_SCRIPT}.in
+                   ${CMAKE_CURRENT_BINARY_DIR}/${RSERVER_INITD_REDHAT_SCRIPT})
+    install(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/${RSERVER_INITD_REDHAT_SCRIPT}
+-           DESTINATION ${RSERVER_INITD_REDHAT_DIR})
++           DESTINATION ${DISTRO_SHARE}/${RSERVER_INITD_REDHAT_DIR})
+ 
+    # install configured suse init.d script
+    set(RSERVER_INITD_SUSE_DIR "extras/init.d/suse")
+@@ -210,13 +210,13 @@
+    configure_file(${CMAKE_CURRENT_SOURCE_DIR}/${RSERVER_INITD_SUSE_SCRIPT}.in
+                   ${CMAKE_CURRENT_BINARY_DIR}/${RSERVER_INITD_SUSE_SCRIPT})
+    install(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/${RSERVER_INITD_SUSE_SCRIPT}
+-           DESTINATION ${RSERVER_INITD_SUSE_DIR})
++           DESTINATION ${DISTRO_SHARE}/${RSERVER_INITD_SUSE_DIR})
+ 
+    # install pam profile
+    set(RSERVER_PAM_DIR "extras/pam")
+    set(RSERVER_PAM_PROFILE "${RSERVER_PAM_DIR}/rstudio")
+    install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/${RSERVER_PAM_PROFILE}
+-           DESTINATION ${RSERVER_PAM_DIR})
++           DESTINATION ${DISTRO_SHARE}/${RSERVER_PAM_DIR})
+ 
+    # install configured upstart profile
+    set(RSERVER_UPSTART_DIR "extras/upstart")
+@@ -224,12 +224,12 @@
+    configure_file(${CMAKE_CURRENT_SOURCE_DIR}/${RSERVER_UPSTART_PROFILE}.in
+                   ${CMAKE_CURRENT_BINARY_DIR}/${RSERVER_UPSTART_PROFILE})
+    install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${RSERVER_UPSTART_PROFILE}
+-           DESTINATION ${RSERVER_UPSTART_DIR})
++           DESTINATION ${DISTRO_SHARE}/${RSERVER_UPSTART_DIR})
+    set(RSERVER_UPSTART_PROFILE_REDHAT "${RSERVER_UPSTART_DIR}/rstudio-server.redhat.conf")
+    configure_file(${CMAKE_CURRENT_SOURCE_DIR}/${RSERVER_UPSTART_PROFILE_REDHAT}.in
+                   ${CMAKE_CURRENT_BINARY_DIR}/${RSERVER_UPSTART_PROFILE_REDHAT})
+    install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${RSERVER_UPSTART_PROFILE_REDHAT}
+-           DESTINATION ${RSERVER_UPSTART_DIR})
++           DESTINATION ${DISTRO_SHARE}/${RSERVER_UPSTART_DIR})
+ 
+     # install configured systemd profile
+    set(RSERVER_SYSTEMD_DIR "extras/systemd")
+--- rstudio-1.2.1335-orig/src/cpp/server/ServerOptions.cpp	2019-03-28 16:08:20.000000000 +1100
++++ rstudio-1.2.1335/src/cpp/server/ServerOptions.cpp	2019-04-09 16:54:34.740739744 +1000
+@@ -389,8 +389,8 @@
+ 
+    // convert relative paths by completing from the system installation
+    // path (this allows us to be relocatable)
+-   resolvePath(resourcePath, &wwwLocalPath_);
+-   resolvePath(resourcePath, &wwwSymbolMapsPath_);
++   resolvePath(resourcePath.childPath(DISTRO_SHARE), &wwwLocalPath_);
++   resolvePath(resourcePath.childPath(DISTRO_SHARE), &wwwSymbolMapsPath_);
+    resolvePath(binaryPath, &authPamHelperPath_);
+    resolvePath(binaryPath, &rsessionPath_);
+    resolvePath(binaryPath, &rldpathPath_);
+--- rstudio-1.2.1335-orig/src/cpp/session/SessionOptions.cpp	2019-03-28 16:08:20.000000000 +1100
++++ rstudio-1.2.1335/src/cpp/session/SessionOptions.cpp	2019-04-09 17:17:06.035206050 +1000
+@@ -53,7 +53,7 @@
+ namespace session {  
+ 
+ namespace {
+-const char* const kDefaultPandocPath = "bin/pandoc";
++const char* const kDefaultPandocPath = "bin";
+ const char* const kDefaultPostbackPath = "bin/postback/rpostback";
+ const char* const kDefaultRsclangPath = "bin/rsclang";
+ 
+@@ -569,14 +569,14 @@
+    }
+    
+    // convert relative paths by completing from the app resource path
+-   resolvePath(resourcePath_, &rResourcesPath_);
+-   resolvePath(resourcePath_, &agreementFilePath_);
+-   resolvePath(resourcePath_, &wwwLocalPath_);
+-   resolvePath(resourcePath_, &wwwSymbolMapsPath_);
+-   resolvePath(resourcePath_, &coreRSourcePath_);
+-   resolvePath(resourcePath_, &modulesRSourcePath_);
+-   resolvePath(resourcePath_, &sessionLibraryPath_);
+-   resolvePath(resourcePath_, &sessionPackageArchivesPath_);
++   resolvePath(resourcePath_.childPath(DISTRO_SHARE), &rResourcesPath_);
++   resolvePath(resourcePath_.childPath(DISTRO_SHARE), &agreementFilePath_);
++   resolvePath(resourcePath_.childPath(DISTRO_SHARE), &wwwLocalPath_);
++   resolvePath(resourcePath_.childPath(DISTRO_SHARE), &wwwSymbolMapsPath_);
++   resolvePath(resourcePath_.childPath(DISTRO_SHARE), &coreRSourcePath_);
++   resolvePath(resourcePath_.childPath(DISTRO_SHARE), &modulesRSourcePath_);
++   resolvePath(resourcePath_.childPath(DISTRO_SHARE), &sessionLibraryPath_);
++   resolvePath(resourcePath_.childPath(DISTRO_SHARE), &sessionPackageArchivesPath_);
+    resolvePostbackPath(resourcePath_, &rpostbackPath_);
+ #ifdef _WIN32
+    resolvePath(resourcePath_, &consoleIoPath_);
+@@ -601,7 +601,7 @@
+    }
+    winptyPath_ = pty.complete(completion).absolutePath();
+ #endif // _WIN32
+-   resolvePath(resourcePath_, &hunspellDictionariesPath_);
++   resolvePath(resourcePath_.childPath(DISTRO_SHARE), &hunspellDictionariesPath_);
+    resolvePath(resourcePath_, &mathjaxPath_);
+    resolvePath(resourcePath_, &libclangHeadersPath_);
+    resolvePandocPath(resourcePath_, &pandocPath_);
