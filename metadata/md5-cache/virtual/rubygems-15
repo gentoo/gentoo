@@ -3,9 +3,9 @@ DEPEND=ruby_targets_ruby24? ( dev-lang/ruby:2.4 ) ruby_targets_ruby25? ( dev-lan
 DESCRIPTION=Virtual ebuild for rubygems
 EAPI=6
 IUSE=ruby_targets_ruby24 ruby_targets_ruby25 ruby_targets_ruby26
-KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+KEYWORDS=alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 ~sh sparc x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
 RDEPEND=ruby_targets_ruby24? ( >=dev-ruby/rubygems-2.6.11[ruby_targets_ruby24] ) ruby_targets_ruby25? ( >=dev-ruby/rubygems-2.7.3[ruby_targets_ruby25] ) ruby_targets_ruby26? ( >=dev-ruby/rubygems-3.0.1[ruby_targets_ruby26] ) ruby_targets_ruby24? ( dev-lang/ruby:2.4 ) ruby_targets_ruby25? ( dev-lang/ruby:2.5 ) ruby_targets_ruby26? ( dev-lang/ruby:2.6 )
 REQUIRED_USE=|| ( ruby_targets_ruby24 ruby_targets_ruby25 ruby_targets_ruby26 )
 SLOT=0
 _eclasses_=estack	43ddf5aaffa7a8d0482df54d25a66a1f	multilib	1d91b03d42ab6308b5f4f6b598ed110e	ruby-ng	a28f4a400304e633468f10ad1b9e2f6e	ruby-utils	5b782a86f95c84466cdb53f8c8a8be37	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
-_md5_=e223d6c2e1814c8fcc344565cda41862
+_md5_=e23bcc86eaac9cde7b0da18a3a718311
