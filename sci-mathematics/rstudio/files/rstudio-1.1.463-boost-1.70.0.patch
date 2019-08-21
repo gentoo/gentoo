@@ -1,0 +1,46 @@
+--- rstudio-1.1.463-orig/src/cpp/ext/websocketpp/transport/asio/connection.hpp	2018-10-25 09:42:55.000000000 +1100
++++ rstudio-1.1.463/src/cpp/ext/websocketpp/transport/asio/connection.hpp	2019-03-30 20:14:40.634057634 +1100
+@@ -296,7 +296,11 @@
+      */
+     timer_ptr set_timer(long duration, timer_handler callback) {
+         timer_ptr new_timer = lib::make_shared<boost::asio::deadline_timer>(
++#if defined(BOOST_VERSION) && BOOST_VERSION >= 107000
++            *m_io_service,
++#else
+             lib::ref(*m_io_service),
++#endif
+             boost::posix_time::milliseconds(duration)
+         );
+ 
+--- rstudio-1.1.463-orig/src/cpp/ext/websocketpp/transport/asio/endpoint.hpp	2018-10-25 09:42:55.000000000 +1100
++++ rstudio-1.1.463/src/cpp/ext/websocketpp/transport/asio/endpoint.hpp	2019-03-30 20:14:36.319021594 +1100
+@@ -184,7 +184,12 @@
+         m_io_service = ptr;
+         m_external_io_service = true;
+         m_acceptor = lib::make_shared<boost::asio::ip::tcp::acceptor>(
+-            lib::ref(*m_io_service));
++#if defined(BOOST_VERSION) && BOOST_VERSION >= 107000
++            *m_io_service
++#else
++            lib::ref(*m_io_service)
++#endif
++        );
+ 
+         m_state = READY;
+         ec = lib::error_code();
+--- rstudio-1.1.463-orig/src/cpp/ext/websocketpp/transport/asio/security/none.hpp	2018-10-25 09:42:55.000000000 +1100
++++ rstudio-1.1.463/src/cpp/ext/websocketpp/transport/asio/security/none.hpp	2019-03-30 20:15:22.353406097 +1100
+@@ -167,7 +167,12 @@
+         }
+ 
+         m_socket = lib::make_shared<boost::asio::ip::tcp::socket>(
+-            lib::ref(*service));
++#if defined(BOOST_VERSION) && BOOST_VERSION >= 107000
++            *service
++#else
++            lib::ref(*service)
++#endif
++        );
+ 
+         m_state = READY;
+ 
