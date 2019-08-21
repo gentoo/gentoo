@@ -52,7 +52,6 @@ DEPEND="${RDEPEND}
 PDEPEND="tools? ( >=app-admin/mongo-tools-${PV} )"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-3.4.7-no-boost-check.patch"
 	"${FILESDIR}/${PN}-3.6.1-fix-scons.patch"
 	"${FILESDIR}/${PN}-4.0.0-no-compass.patch"
 )
