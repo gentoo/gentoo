@@ -19,8 +19,8 @@ src_prepare() {
 	default
 
 	if ! use systemd; then
-		sed -e 's| pkg-config --exists libsystemd-journal | false |' \
-			-e 's| pkg-config --exists libsystemd | false |' \
+		sed -e 's| $(PKG_CONFIG) --exists libsystemd-journal | false |' \
+			-e 's| $(PKG_CONFIG) --exists libsystemd | false |' \
 			-i Makefile || die
 	fi
 }
