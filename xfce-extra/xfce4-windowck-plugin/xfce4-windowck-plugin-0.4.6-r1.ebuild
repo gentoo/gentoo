@@ -20,7 +20,7 @@ RDEPEND=">=x11-libs/gtk+-2.20:2
 	>=x11-libs/libwnck-2.30:1
 	>=xfce-base/libxfce4ui-4.10:=
 	>=xfce-base/libxfce4util-4.10:=
-	>=xfce-base/xfce4-panel-4.12:=
+	>=xfce-base/xfce4-panel-4.12:=[gtk2(+)]
 	>=xfce-base/xfconf-4.10:="
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
