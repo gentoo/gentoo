@@ -4,6 +4,9 @@
 EAPI=6
 VALA_USE_DEPEND="vapigen"
 VALA_MIN_API_VERSION="0.36"
+# Needs libsoup-2.4.vapi fixes to work with vala:0.46 onwards
+# https://gitlab.gnome.org/GNOME/libsoup/commit/1c6f47df99cc5b2efe3d629c71c5d85a7871689c
+VALA_MAX_API_VERSION="0.44"
 
 inherit gnome.org gnome2-utils linux-info meson readme.gentoo-r1 vala xdg
 
@@ -26,14 +29,14 @@ COMMON_DEPEND="
 	>=dev-libs/glib-2.52:2
 	>=dev-libs/gobject-introspection-1.54:=
 	>=x11-libs/gtk+-3.22.20:3[introspection]
-	>=net-libs/gtk-vnc-0.8.0-r1[gtk3(+),vala]
-	>=sys-libs/libosinfo-1.1.0[vala]
-	app-crypt/libsecret[vala]
-	>=net-libs/libsoup-2.44:2.4[vala]
+	>=net-libs/gtk-vnc-0.8.0-r1[gtk3(+)]
+	>=sys-libs/libosinfo-1.1.0
+	app-crypt/libsecret
+	>=net-libs/libsoup-2.44:2.4
 	virtual/libusb:1
-	>=app-emulation/libvirt-glib-0.2.3[vala]
+	>=app-emulation/libvirt-glib-0.2.3
 	>=dev-libs/libxml2-2.7.8:2
-	>=net-misc/spice-gtk-0.32[gtk3(+),smartcard,usbredir,vala]
+	>=net-misc/spice-gtk-0.32[gtk3(+),smartcard,usbredir]
 	app-misc/tracker:0/2.0
 	net-libs/webkit-gtk:4
 	>=virtual/libgudev-165:=
@@ -41,6 +44,12 @@ COMMON_DEPEND="
 "
 DEPEND="${COMMON_DEPEND}
 	$(vala_depend)
+	net-libs/gtk-vnc[vala]
+	sys-libs/libosinfo[vala]
+	app-crypt/libsecret[vala]
+	net-libs/libsoup:2.4[vala]
+	app-emulation/libvirt-glib[vala]
+	net-misc/spice-gtk[vala]
 	dev-libs/appstream-glib
 	dev-util/itstool
 	>=sys-devel/gettext-0.19.8
