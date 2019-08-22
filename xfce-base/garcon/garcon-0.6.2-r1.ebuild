@@ -15,7 +15,7 @@ IUSE="+gtk2"
 RDEPEND=">=dev-libs/glib-2.30:=
 	gtk2? ( >=x11-libs/gtk+-2.24:2= )
 	>=x11-libs/gtk+-3.20:3=
-	>=xfce-base/libxfce4ui-4.12:=[gtk3(+)]
+	>=xfce-base/libxfce4ui-4.12:=[gtk2(+)?,gtk3(+)]
 	>=xfce-base/libxfce4util-4.12:="
 DEPEND="${RDEPEND}
 	dev-util/glib-utils
