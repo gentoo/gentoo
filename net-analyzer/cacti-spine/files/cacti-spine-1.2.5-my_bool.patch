@@ -1,0 +1,11 @@
+--- a/sql.c
++++ b/sql.c
+@@ -229,7 +229,7 @@ void db_connect(int type, MYSQL *mysql) {
+ 	timeout = 5;
+ 	rtimeout = 10;
+ 	wtimeout = 20;
+-	my_bool reconnect = 1;
++	_Bool reconnect = 1;
+ 
+ 	mysql_init(mysql);
+ 
