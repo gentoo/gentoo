@@ -1,0 +1,10 @@
+--- a/test/unit/utVersion.cpp	2017-07-28 22:33:41.000000000 +0200
++++ b/test/unit/utVersion.cpp	2018-08-26 01:48:54.935116440 +0200
+@@ -65,7 +65,3 @@
+     EXPECT_NE( aiGetCompileFlags(), 0U );
+ }
+ 
+-TEST_F( utVersion, aiGetVersionRevisionTest ) {
+-    EXPECT_NE( aiGetVersionRevision(), 0U );
+-}
+-
