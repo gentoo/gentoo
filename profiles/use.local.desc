@@ -4646,7 +4646,6 @@ media-libs/opusfile:http - Enable http connections
 media-libs/osl:partio - Use media-libs/partio
 media-libs/osl:qt5 - Build the osltoy binary
 media-libs/phonon:designer - Install plugin for dev-qt/designer
-media-libs/phonon:gui - Install device preferences and backend settings GUI
 media-libs/phonon:vlc - Install VLC Phonon backend
 media-libs/phonon-gstreamer:network - Enable network streaming support via libsoup
 media-libs/portmidi:test-programs - Install various example programs
