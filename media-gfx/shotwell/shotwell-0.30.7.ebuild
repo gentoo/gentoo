@@ -3,7 +3,10 @@
 
 EAPI=6
 VALA_MIN_API_VERSION="0.40"
-VALA_MAX_API_VERSION="0.42"
+# supposedly works with 0.46, but fails to compile due to libsoup-2.4.vapi
+# from libsoup-2.64 and even fails with vala:0.46 libsoup vapi copy as well
+# https://gitlab.gnome.org/GNOME/libsoup/commit/1c6f47df99cc5b2efe3d629c71c5d85a7871689c
+VALA_MAX_API_VERSION="0.44"
 
 inherit gnome.org gnome2-utils meson vala xdg
 
@@ -12,10 +15,10 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Shotwell"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="opencv udev"
 
-COMMON_DEPEND="
+DEPEND="
 	>=x11-libs/gtk+-3.22.0:3
 	>=dev-libs/glib-2.40.0:2
 	>=dev-libs/libgee-0.8.5:0.8
@@ -29,7 +32,6 @@ COMMON_DEPEND="
 	>=media-libs/libgphoto2-2.5:=
 	udev? ( >=virtual/libgudev-145:= )
 	>=media-libs/gexiv2-0.10.4
-	<media-libs/gexiv2-0.11
 	>=media-libs/libraw-0.13.2:=
 	>=media-libs/libexif-0.6.16:=
 	dev-libs/libgdata
@@ -37,11 +39,11 @@ COMMON_DEPEND="
 	x11-libs/cairo
 	opencv? ( >=media-libs/opencv-2.3.0:= )
 "
-RDEPEND="${COMMON_DEPEND}
+RDEPEND="${DEPEND}
 	media-plugins/gst-plugins-gdkpixbuf:1.0
 	media-plugins/gst-plugins-meta:1.0
 "
-DEPEND="${COMMON_DEPEND}
+BDEPEND="
 	$(vala_depend)
 	dev-libs/appstream-glib
 	dev-util/itstool
