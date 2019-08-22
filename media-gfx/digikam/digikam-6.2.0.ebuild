@@ -109,6 +109,7 @@ RESTRICT+=" test"
 PATCHES=(
 	"${FILESDIR}/${P}-googlephoto-upload.patch"
 	"${FILESDIR}/${P}-cmake.patch"
+	"${FILESDIR}/${P}-imagemagick-7.0.8.60.patch"
 )
 
 pkg_pretend() {
