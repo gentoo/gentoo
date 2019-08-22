@@ -2,14 +2,14 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
-MY_EXTRAS_VER="20190817-0024Z"
+MY_EXTRAS_VER="20190822-1908Z"
 
 CMAKE_MAKEFILE_GENERATOR=emake
 
 # Keeping eutils in EAPI=6 for emktemp in pkg_config
 
 inherit eutils flag-o-matic prefix toolchain-funcs \
-	user cmake-utils multilib-build
+	cmake-utils multilib-build
 
 SRC_URI="http://cdn.mysql.com/Downloads/MySQL-5.6/${P}.tar.gz
 	https://cdn.mysql.com/archives/mysql-5.6/${P}.tar.gz
@@ -94,13 +94,21 @@ COMMON_DEPEND="
 "
 DEPEND="virtual/yacc
 	static? ( sys-libs/ncurses[static-libs] )
-	test? ( dev-perl/JSON )
+	test? (
+		acct-group/mysql acct-user/mysql
+		dev-perl/JSON
+	)
 	|| ( >=sys-devel/gcc-3.4.6 >=sys-devel/gcc-apple-4.0 )
 	${COMMON_DEPEND}"
 RDEPEND="selinux? ( sec-policy/selinux-mysql )
 	client-libs? ( !dev-db/mariadb-connector-c[mysqlcompat] !dev-db/mysql-connector-c )
 	!dev-db/mariadb !dev-db/mariadb-galera !dev-db/percona-server !dev-db/mysql-cluster
-	server? ( !prefix? ( dev-db/mysql-init-scripts ) )
+	server? (
+		!prefix? (
+			acct-group/mysql acct-user/mysql
+			dev-db/mysql-init-scripts
+		)
+	)
 	${COMMON_DEPEND}
 "
 # For other stuff to bring us in
@@ -124,10 +132,6 @@ pkg_setup() {
 		use server && ! has userpriv ${FEATURES} ; then
 			eerror "Testing with FEATURES=-userpriv is no longer supported by upstream. Tests MUST be run as non-root."
 	fi
-
-	# This should come after all of the die statements
-	enewgroup mysql 60 || die "problem adding 'mysql' group"
-	enewuser mysql 60 -1 /dev/null mysql || die "problem adding 'mysql' user"
 }
 
 pkg_preinst() {
