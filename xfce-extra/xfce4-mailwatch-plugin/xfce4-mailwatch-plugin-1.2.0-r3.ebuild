@@ -20,7 +20,7 @@ RDEPEND=">=dev-libs/glib-2:=
 	<xfce-base/exo-0.12.5-r100
 	>=xfce-base/libxfce4ui-4.10:=
 	>=xfce-base/libxfce4util-4.10:=
-	>=xfce-base/xfce4-panel-4.10
+	>=xfce-base/xfce4-panel-4.10[gtk2(+)]
 	ssl? (
 		dev-libs/libgcrypt:0=
 		>=net-libs/gnutls-2:=
