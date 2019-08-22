@@ -18,7 +18,7 @@ COMMON_DEPEND=">=dev-libs/glib-2.30
 	virtual/libgudev:=
 	>=x11-libs/gtk+-2.24:2
 	>=xfce-base/exo-0.10
-	>=xfce-base/libxfce4ui-4.10
+	>=xfce-base/libxfce4ui-4.10[gtk2(+)]
 	>=xfce-base/libxfce4util-4.10
 	>=xfce-base/xfconf-4.10
 	libnotify? ( >=x11-libs/libnotify-0.7 )"
