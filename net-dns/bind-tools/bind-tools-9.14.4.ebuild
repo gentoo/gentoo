@@ -42,6 +42,8 @@ S="${WORKDIR}/${MY_P}"
 # bug 479092, requires networking
 RESTRICT="test"
 
+PATCHES=( "${FILESDIR}"/sparc-pause-instruction.patch )
+
 src_prepare() {
 	default
 
