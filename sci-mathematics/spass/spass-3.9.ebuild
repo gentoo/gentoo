@@ -123,7 +123,7 @@ pkg_postinst() {
 				sed -e "/contrib\/${PN}-[0-9.]*/d" \
 					-i "${EROOT}/etc/isabelle/components"
 			fi
-			cat <<- EOF >> "${ROOT}etc/isabelle/components"
+			cat <<- EOF >> "${EROOT}/etc/isabelle/components"
 				contrib/${PN}-${PV}
 			EOF
 		fi
