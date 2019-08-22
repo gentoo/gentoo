@@ -23,7 +23,6 @@ BDEPEND="
 "
 DEPEND="
 	!!dev-qt/qtphonon:4
-	dev-qt/qtdbus:5
 	dev-qt/qtgui:5
 	dev-qt/qtwidgets:5
 	designer? ( dev-qt/designer:5 )
@@ -40,7 +39,6 @@ PDEPEND="
 
 src_configure() {
 	local mycmakeargs=(
-		-DCMAKE_DISABLE_FIND_PACKAGE_Qt5Declarative=ON
 		-DPHONON_BUILD_DESIGNER_PLUGIN=$(usex designer)
 		-DCMAKE_DISABLE_FIND_PACKAGE_GLIB2=$(usex !pulseaudio)
 		-DCMAKE_DISABLE_FIND_PACKAGE_PulseAudio=$(usex !pulseaudio)
