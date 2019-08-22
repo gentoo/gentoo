@@ -9,7 +9,7 @@ CMAKE_MAKEFILE_GENERATOR=emake
 # Keeping eutils in EAPI=6 for emktemp in pkg_config
 
 inherit cmake-utils eutils flag-o-matic linux-info \
-	prefix toolchain-funcs user multilib-minimal
+	prefix toolchain-funcs multilib-minimal
 
 SRC_URI="https://cdn.mysql.com/Downloads/MySQL-5.7/${PN}-boost-${PV}.tar.gz
 	https://cdn.mysql.com/archives/mysql-5.7/mysql-boost-${PV}.tar.gz
@@ -112,13 +112,21 @@ DEPEND="${COMMON_DEPEND}
 		experimental? ( net-libs/rpcsvc-proto )
 	)
 	static? ( sys-libs/ncurses[static-libs] )
-	test? ( dev-perl/JSON )
+	test? (
+		acct-group/mysql acct-user/mysql
+		dev-perl/JSON
+	)
 "
 RDEPEND="${COMMON_DEPEND}
 	!dev-db/mariadb !dev-db/mariadb-galera !dev-db/percona-server !dev-db/mysql-cluster
 	client-libs? ( !dev-db/mariadb-connector-c[mysqlcompat] !dev-db/mysql-connector-c dev-libs/protobuf:= )
 	selinux? ( sec-policy/selinux-mysql )
-	server? ( !prefix? ( dev-db/mysql-init-scripts ) )
+	server? (
+		!prefix? (
+			acct-group/mysql acct-user/mysql
+			dev-db/mysql-init-scripts
+		)
+	)
 "
 # For other stuff to bring us in
 # dev-perl/DBD-mysql is needed by some scripts installed by MySQL
@@ -209,10 +217,6 @@ pkg_setup() {
 		use server && ! has userpriv ${FEATURES} ; then
 			eerror "Testing with FEATURES=-userpriv is no longer supported by upstream. Tests MUST be run as non-root."
 	fi
-
-	# This should come after all of the die statements
-	enewgroup mysql 60 || die "problem adding 'mysql' group"
-	enewuser mysql 60 -1 /dev/null mysql || die "problem adding 'mysql' user"
 }
 
 pkg_preinst() {
