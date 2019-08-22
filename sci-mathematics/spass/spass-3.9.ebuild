@@ -108,7 +108,7 @@ src_install() {
 		[[ -n "${ISABELLE_HOME}" ]] || die "ISABELLE_HOME empty"
 		dodir "${ISABELLE_HOME}/contrib/${PN}-${PV}/etc"
 		cat <<- EOF >> "${S}/settings"
-			SPASS_HOME="${ROOT}usr/bin"
+			SPASS_HOME="${EROOT}/usr/bin"
 			SPASS_VERSION="${PV}"
 		EOF
 		insinto "${ISABELLE_HOME}/contrib/${PN}-${PV}/etc"
@@ -118,10 +118,10 @@ src_install() {
 
 pkg_postinst() {
 	if use isabelle; then
-		if [ -f "${ROOT}etc/isabelle/components" ]; then
-			if egrep "contrib/${PN}-[0-9.]*" "${ROOT}etc/isabelle/components"; then
+		if [ -f "${EROOT}/etc/isabelle/components" ]; then
+			if egrep "contrib/${PN}-[0-9.]*" "${EROOT}/etc/isabelle/components"; then
 				sed -e "/contrib\/${PN}-[0-9.]*/d" \
-					-i "${ROOT}etc/isabelle/components"
+					-i "${EROOT}/etc/isabelle/components"
 			fi
 			cat <<- EOF >> "${ROOT}etc/isabelle/components"
 				contrib/${PN}-${PV}
@@ -132,13 +132,13 @@ pkg_postinst() {
 
 pkg_postrm() {
 	if use isabelle; then
-		if [ ! -f "${ROOT}usr/bin/SPASS" ]; then
-			if [ -f "${ROOT}etc/isabelle/components" ]; then
+		if [ ! -f "${EROOT}/usr/bin/SPASS" ]; then
+			if [ -f "${EROOT}/etc/isabelle/components" ]; then
 				# Note: this sed should only match the version of this ebuild
 				# Which is what we want as we do not want to remove the line
 				# of a new spass being installed during an upgrade.
 				sed -e "/contrib\/${PN}-${PV}/d" \
-					-i "${ROOT}etc/isabelle/components"
+					-i "${EROOT}/etc/isabelle/components"
 			fi
 		fi
 	fi
