@@ -12,7 +12,7 @@ PYTHON_COMPAT=( python2_7 )
 # Keeping eutils in EAPI=6 for emktemp in pkg_config
 
 inherit eapi7-ver cmake-utils eutils flag-o-matic linux-info \
-	prefix python-any-r1 toolchain-funcs user multilib-minimal
+	prefix python-any-r1 toolchain-funcs multilib-minimal
 
 MY_PV=$(ver_rs 3 '-')
 MY_PN="Percona-Server"
@@ -132,6 +132,7 @@ DEPEND="${COMMON_DEPEND}
 	)
 	static? ( sys-libs/ncurses[static-libs] )
 	test? (
+		acct-group/mysql acct-user/mysql
 		$(python_gen_any_dep 'dev-python/mysql-python[${PYTHON_USEDEP}]')
 		dev-perl/JSON
 	)
@@ -140,7 +141,12 @@ RDEPEND="${COMMON_DEPEND}
 	!dev-db/mariadb !dev-db/mariadb-galera !dev-db/mysql !dev-db/mysql-cluster
 	client-libs? ( !dev-db/mariadb-connector-c[mysqlcompat] !dev-db/mysql-connector-c dev-libs/protobuf:= )
 	selinux? ( sec-policy/selinux-mysql )
-	server? ( !prefix? ( dev-db/mysql-init-scripts ) )
+	server? (
+		!prefix? (
+			acct-group/mysql acct-user/mysql
+			dev-db/mysql-init-scripts
+		)
+	)
 "
 # For other stuff to bring us in
 # dev-perl/DBD-mysql is needed by some scripts installed by MySQL
@@ -237,10 +243,6 @@ pkg_setup() {
 		use server && ! has userpriv ${FEATURES} ; then
 			eerror "Testing with FEATURES=-userpriv is no longer supported by upstream. Tests MUST be run as non-root."
 	fi
-
-	# This should come after all of the die statements
-	enewgroup mysql 60 || die "problem adding 'mysql' group"
-	enewuser mysql 60 -1 /dev/null mysql || die "problem adding 'mysql' user"
 }
 
 pkg_preinst() {
