@@ -15,7 +15,7 @@ KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc x86 ~amd64-linu
 
 RDEPEND=">=x11-libs/gtk+-2.12:2
 	>=xfce-base/libxfce4ui-4.8
-	>=xfce-base/xfce4-panel-4.8"
+	>=xfce-base/xfce4-panel-4.8[gtk2(+)]"
 DEPEND="${RDEPEND}
 	dev-util/intltool
 	sys-devel/gettext
