@@ -19598,25 +19598,25 @@ x11-wm/xmonad-contrib 0.11.2 0.11.4 0.12 0.13: Third party extensions for xmonad
 x11-wm/xoat 9999: X Obstinate Asymmetric Tiler
 x11-wm/xpra 2.2.2-r1 2.2.6-r2 2.4.3: X Persistent Remote Apps (xpra) and Partitioning WM (parti) based on wimpiggy
 xfce-base/exo 0.12.4 0.12.7 0.12.8: Extensions, widgets and framework library with session support for Xfce
-xfce-base/garcon 0.6.2 0.6.3 0.6.4: Xfce's freedesktop.org specification compatible menu implementation library
+xfce-base/garcon 0.6.2-r1 0.6.3 0.6.4-r1: Xfce's freedesktop.org specification compatible menu implementation library
 xfce-base/libxfce4ui 4.13.4 4.13.7 4.14.1: Unified widget and session management libs for Xfce
 xfce-base/libxfce4util 4.13.2 4.13.5 4.14.0: A basic utility library for the Xfce desktop environment
-xfce-base/thunar 1.6.16 1.6.17 1.8.7 1.8.8 1.8.9: File manager for the Xfce desktop environment
+xfce-base/thunar 1.6.16-r1 1.6.17 1.8.7 1.8.8 1.8.9: File manager for the Xfce desktop environment
 xfce-base/xfce4-appfinder 4.12.0-r2 4.13.5 4.14.0: A tool to find and launch installed applications for the Xfce desktop
 xfce-base/xfce4-meta 4.12-r1 4.14-r1: The Xfce Desktop Environment (meta package)
 xfce-base/xfce4-panel 4.12.2 4.13.6 4.13.7 4.14.0: Panel for the Xfce desktop environment
 xfce-base/xfce4-session 4.12.1-r2 4.13.3 4.13.4 4.14.0: A session manager for the Xfce desktop environment
-xfce-base/xfce4-settings 4.12.4 4.14.0 4.14.1: Configuration system for the Xfce desktop environment
+xfce-base/xfce4-settings 4.12.4-r1 4.14.0 4.14.1: Configuration system for the Xfce desktop environment
 xfce-base/xfconf 4.12.1-r1 4.13.7 4.13.8 4.14.1: A configuration management system for Xfce
-xfce-base/xfdesktop 4.12.4 4.12.5 4.13.5 4.13.6 4.14.0 4.14.1: Desktop manager for the Xfce desktop environment
-xfce-base/xfwm4 4.12.5 4.13.3 4.13.4 4.14.0: Window manager for the Xfce desktop environment
+xfce-base/xfdesktop 4.12.4 4.12.5-r1 4.13.5 4.13.6 4.14.0 4.14.1: Desktop manager for the Xfce desktop environment
+xfce-base/xfwm4 4.12.5-r1 4.13.3 4.13.4 4.14.0: Window manager for the Xfce desktop environment
 xfce-extra/eatmonkey 0.1.4-r1: A download manager that works exclusively with aria2
 xfce-extra/multiload-nandhp 0.3-r2: A port of the GNOME multiload applet for the Xfce panel
 xfce-extra/thunar-archive-plugin 0.3.1-r3 0.4.0: Archive plug-in for the Thunar filemanager
 xfce-extra/thunar-media-tags-plugin 0.2.1-r1 0.3.0: Adds special features for media files to the Thunar File Manager
 xfce-extra/thunar-shares-plugin 0.2.0_p20101105-r1 0.3.0: Thunar plugin to share files using Samba
 xfce-extra/thunar-vcs-plugin 0.1.5-r1 0.2.0: Adds Subversion and GIT actions to the context menu of thunar
-xfce-extra/thunar-volman 0.8.1-r1 0.9.4 0.9.5: Daemon that enforces volume-related policies
+xfce-extra/thunar-volman 0.8.1-r2 0.9.4 0.9.5: Daemon that enforces volume-related policies
 xfce-extra/transd 0_p20120503-r1: A small daemon to watch for window creation and set window transparency values
 xfce-extra/tumbler 0.2.3 0.2.6 0.2.7: A thumbnail service for Thunar
 xfce-extra/xfce4-alsa-plugin 0.1.1 0.2.0 0.2.1: Simple ALSA volume control for xfce4-panel
@@ -19653,7 +19653,7 @@ xfce-extra/xfce4-smartbookmark-plugin 0.5.0 0.5.1: Smart bookmark plug-in for th
 xfce-extra/xfce4-statusnotifier-plugin 0.2.1: A panel area for fd.o Status Notifiers (systray replacement)
 xfce-extra/xfce4-systemload-plugin 1.2.2 1.2.3: System load plug-in for Xfce panel
 xfce-extra/xfce4-taskmanager 1.2.2: Easy to use task manager
-xfce-extra/xfce4-time-out-plugin 1.0.2-r1 1.0.3: A panel plug-in to take periodical breaks from the computer
+xfce-extra/xfce4-time-out-plugin 1.0.2-r1 1.0.3-r1: A panel plug-in to take periodical breaks from the computer
 xfce-extra/xfce4-timer-plugin 1.7.0: A simple timer plug-in for the Xfce desktop environment
 xfce-extra/xfce4-vala 4.10.3-r5 4.10.3-r6: Vala bindings for the Xfce desktop environment
 xfce-extra/xfce4-verve-plugin 2.0.0: A comfortable command line plugin for the Xfce panel

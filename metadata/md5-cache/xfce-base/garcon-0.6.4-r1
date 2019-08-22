@@ -8,5 +8,5 @@ KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86
 LICENSE=LGPL-2+ FDL-1.1+
 RDEPEND=>=dev-libs/glib-2.30:= >=x11-libs/gtk+-3.20:3= >=xfce-base/libxfce4ui-4.12:=[gtk2(+)?,gtk3(+)] >=xfce-base/libxfce4util-4.12:= gtk2? ( >=x11-libs/gtk+-2.24:2= )
 SLOT=0
-SRC_URI=https://archive.xfce.org/src/xfce/garcon/0.6/garcon-0.6.3.tar.bz2
+SRC_URI=https://archive.xfce.org/src/xfce/garcon/0.6/garcon-0.6.4.tar.bz2
 _md5_=cced29407f4c4c1ac750b19590e529f8

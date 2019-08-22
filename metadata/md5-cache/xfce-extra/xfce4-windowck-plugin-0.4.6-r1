@@ -1,13 +1,13 @@
 BDEPEND=>=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DEFINED_PHASES=install postinst postrm prepare setup
-DEPEND=>=x11-libs/gtk+-2.20:2 x11-libs/libX11 >=x11-libs/libwnck-2.30:1 >=xfce-base/libxfce4ui-4.10:= >=xfce-base/libxfce4util-4.10:= >=xfce-base/xfce4-panel-4.12:=[gtk2(+)] >=xfce-base/xfconf-4.10:= || ( dev-lang/python:3.7 dev-lang/python:3.6 ) dev-util/intltool dev-util/xfce4-dev-tools media-gfx/imagemagick[png] sys-devel/gettext virtual/pkgconfig
+DEPEND=>=x11-libs/gtk+-2.20:2 x11-libs/libX11 >=x11-libs/libwnck-2.30:1 >=xfce-base/libxfce4ui-4.10:=[gtk2(+)] >=xfce-base/libxfce4util-4.10:= >=xfce-base/xfce4-panel-4.12:=[gtk2(+)] >=xfce-base/xfconf-4.10:= || ( dev-lang/python:3.7 dev-lang/python:3.6 ) dev-util/intltool dev-util/xfce4-dev-tools media-gfx/imagemagick[png] sys-devel/gettext virtual/pkgconfig
 DESCRIPTION=Xfce plugin puts the maximized window title and windows buttons on the panel
 EAPI=7
 HOMEPAGE=https://github.com/cedl38/xfce4-windowck-plugin
 KEYWORDS=amd64 x86
 LICENSE=GPL-3+
-RDEPEND=>=x11-libs/gtk+-2.20:2 x11-libs/libX11 >=x11-libs/libwnck-2.30:1 >=xfce-base/libxfce4ui-4.10:= >=xfce-base/libxfce4util-4.10:= >=xfce-base/xfce4-panel-4.12:=[gtk2(+)] >=xfce-base/xfconf-4.10:=
+RDEPEND=>=x11-libs/gtk+-2.20:2 x11-libs/libX11 >=x11-libs/libwnck-2.30:1 >=xfce-base/libxfce4ui-4.10:=[gtk2(+)] >=xfce-base/libxfce4util-4.10:= >=xfce-base/xfce4-panel-4.12:=[gtk2(+)] >=xfce-base/xfconf-4.10:=
 SLOT=0
 SRC_URI=https://github.com/cedl38/xfce4-windowck-plugin/archive/v0.4.6.tar.gz -> xfce4-windowck-plugin-0.4.6.tar.gz
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-any-r1	b5f01473006ccc2cd78bc3dab20fced4	python-utils-r1	08e17157a6807add7db1f8d01e7e391f	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=b3721cf954a7da362b4237508ad280f2
+_md5_=eabd749d4d7a4efbc9f0af77ba742a5d
