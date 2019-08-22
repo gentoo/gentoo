@@ -8,10 +8,6 @@ sys-libs/glibc
 sys-apps/systemd
 sys-fs/udev
 
-# dev-libs/elfutils needs a port to musl, bug #602126
-dev-libs/elfutils
->virtual/libelf-2
-
 # Ian Stakenvicius, 2017-06-14
 # on behalf of mozilla@gentoo.org
 # Mask firefox-54 and above as it requires rust
