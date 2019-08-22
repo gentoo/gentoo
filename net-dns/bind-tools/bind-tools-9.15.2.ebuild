@@ -17,10 +17,11 @@ SRC_URI="https://downloads.isc.org/isc/bind9/${PV}/${MY_P}.tar.gz"
 LICENSE="Apache-2.0 BSD BSD-2 GPL-2 HPND ISC MPL-2.0"
 SLOT="0"
 KEYWORDS=""
-IUSE="doc gssapi idn ipv6 libedit libressl readline ssl xml"
+IUSE="caps doc gssapi idn ipv6 libedit libressl readline ssl xml"
 # no PKCS11 currently as it requires OpenSSL to be patched, also see bug 409687
 
-CDEPEND="
+COMMON_DEPEND="
+	caps? ( sys-libs/libcap )
 	ssl? (
 		!libressl? ( dev-libs/openssl:0= )
 		libressl? ( dev-libs/libressl:0= )
@@ -32,10 +33,13 @@ CDEPEND="
 	!libedit? (
 		readline? ( sys-libs/readline:0= )
 	)"
-DEPEND="${CDEPEND}
-	virtual/pkgconfig"
-RDEPEND="${CDEPEND}
+
+DEPEND="${COMMON_DEPEND}"
+
+RDEPEND="${COMMON_DEPEND}
 	!<net-dns/bind-9.10.2"
+
+BDEPEND="virtual/pkgconfig"
 
 S="${WORKDIR}/${MY_P}"
 
@@ -69,6 +73,7 @@ src_configure() {
 		$(use_with xml libxml2)
 		$(use_with gssapi)
 		$(use_with readline)
+		$(use_enable caps linux-caps)
 	)
 
 	# bug 607400
