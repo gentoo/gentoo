@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit elisp-common desktop xdg-utils gnome2-utils readme.gentoo-r1
+inherit elisp-common desktop xdg-utils readme.gentoo-r1
 
 DESCRIPTION="Common files needed by all GNU Emacs versions"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Emacs"
@@ -48,8 +48,6 @@ src_install() {
 		doicon -s scalable emacs23.svg
 		newicon -s scalable emacs25.svg emacs.svg
 		popd
-
-		gnome2_icon_savelist
 	fi
 
 	DOC_CONTENTS="All site initialisation for Gentoo-installed packages is
@@ -91,7 +89,7 @@ pkg_preinst() {
 pkg_postinst() {
 	if use X; then
 		xdg_desktop_database_update
-		gnome2_icon_cache_update
+		xdg_icon_cache_update
 	fi
 	readme.gentoo_print_elog
 }
@@ -99,6 +97,6 @@ pkg_postinst() {
 pkg_postrm() {
 	if use X; then
 		xdg_desktop_database_update
-		gnome2_icon_cache_update
+		xdg_icon_cache_update
 	fi
 }
