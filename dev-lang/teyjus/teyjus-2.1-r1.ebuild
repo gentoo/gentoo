@@ -1,16 +1,13 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 
-inherit elisp-common multilib versionator
-
-MY_PN="${PN}-source"
-MY_P=$(version_format_string '${MY_PN}-$1.$2-b$3')
+inherit elisp-common multilib
 
 DESCRIPTION="Higher-order logic programming language Lambda Prolog"
 HOMEPAGE="http://teyjus.cs.umn.edu/"
-SRC_URI="https://teyjus.googlecode.com/files/${MY_P}.tar.gz"
+SRC_URI="https://github.com/teyjus/teyjus/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
@@ -22,15 +19,18 @@ RDEPEND=">=sys-devel/binutils-2.17:*
 	>=dev-lang/ocaml-3.10[ocamlopt?]
 	emacs? ( virtual/emacs )"
 DEPEND="${RDEPEND}
+	app-text/dos2unix
 	dev-util/omake"
-
-S=${WORKDIR}/${PN}
 
 SITEFILE=50${PN}-gentoo.el
 
+PATCHES=( "${FILESDIR}/${P}-p001-Fixes-arity-for-pervasive-modulo-operation.patch"
+		  "${FILESDIR}/${P}-p002-Add-string-literals-from-proper-character-groups.patch"
+		  "${FILESDIR}/${P}-p003-Removing-deprecated-function-String.set.patch")
+
 src_prepare() {
+	find . -type f -exec dos2unix {} \;
 	default
-	eapply "${FILESDIR}/${PN}-2.0.2-flags.patch"
 	local cflags=""
 	for i in ${CFLAGS}
 	do
@@ -41,9 +41,8 @@ src_prepare() {
 	do
 		lflags="${lflags} -cclib ${i}"
 	done
-	sed -e "s@CFLAGS +=@CFLAGS += ${CFLAGS}@" \
-		-e "s@LDFLAGS +=@LDFLAGS += ${LDFLAGS}@" \
-		-e "s@OCAMLFLAGS +=@OCAMLFLAGS +=${cflags}${lflags}@" \
+	sed	-e "s@\(OCAMLFLAGS= -w -A\)@\1 ${cflags}${lflags}@" \
+		-e "s@\(CFLAGS +=\) -g@\1 ${CFLAGS}\nLDFLAGS += ${LDFLAGS}@" \
 		-i "${S}/source/OMakefile" \
 		|| die "Could not set flags in ${S}/teyjus/source/OMakefile"
 	if has_version ">=dev-lang/ocaml-4.03.0"; then
@@ -60,12 +59,8 @@ src_prepare() {
 }
 
 src_compile() {
-	addpredict "/usr/$(get_libdir)/omake/Pervasives.omc"
-	addpredict "/usr/$(get_libdir)/omake/build/C.omc"
-	addpredict "/usr/$(get_libdir)/omake/build/Common.omc"
-	addpredict "/usr/$(get_libdir)/omake/configure/Configure.omc"
-	addpredict "/usr/$(get_libdir)/omake/build/OCaml.omc"
-	omake --verbose all || die "omake all failed"
+	export HOME="${T}"
+	omake --verbose --force-dotomake all || die "omake all failed"
 	if use emacs ; then
 		pushd "${S}/emacs" || die "Could change directory to emacs"
 		elisp-compile *.el || die "emacs elisp compile failed"
@@ -86,7 +81,7 @@ src_install() {
 	newbin source/tjdis.opt tjdis
 	newbin source/tjlink.opt tjlink
 	newbin source/tjsim.opt tjsim
-	dodoc README
+	dodoc README.md QUICKSTART
 	if use emacs ; then
 		elisp-install ${PN} emacs/*.{el,elc}
 		cp "${FILESDIR}"/${SITEFILE} "${S}"
