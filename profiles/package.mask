@@ -282,12 +282,6 @@ dev-lang/vala:0.46
 dev-lang/php:7.4
 ~virtual/httpd-php-7.4
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2019-07-24)
-# Unmaintained and broken with current Plasma, removal in 30 days
-# Bugs: https://bugs.kde.org/show_bug.cgi?id=404359,
-# https://bugs.kde.org/show_bug.cgi?id=404360, see also HOMEPAGE comments
-kde-misc/plasma-active-window-control
-
 # Lars Wendler <polynomial-c@gentoo.org> (2019-07-21)
 # Requires >=mail-client/thunderbird-68_beta1 which is not in the tree yet
 >=x11-plugins/enigmail-2.1
