@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,7 +16,7 @@ IUSE=""
 
 RDEPEND=">=xfce-base/libxfce4ui-4.8
 	>=xfce-base/libxfce4util-4.8
-	>=xfce-base/xfce4-panel-4.8
+	>=xfce-base/xfce4-panel-4.8[gtk2(+)]
 	>=x11-libs/gtk+-2.20:2"
 DEPEND="${RDEPEND}
 	dev-util/intltool
