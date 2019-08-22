@@ -23,7 +23,7 @@ RDEPEND=">=x11-libs/cairo-1.6:=
 	x11-libs/libX11:=
 	<xfce-base/exo-0.12.5-r100:=
 	>=xfce-base/garcon-0.3:=
-	>=xfce-base/libxfce4ui-4.11:=
+	>=xfce-base/libxfce4ui-4.11:=[gtk2(+)]
 	>=xfce-base/libxfce4util-4.11:=
 	>=xfce-base/xfconf-4.10:=
 	libnotify? ( >=x11-libs/libnotify-0.7:= )
