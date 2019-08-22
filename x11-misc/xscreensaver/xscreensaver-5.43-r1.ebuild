@@ -7,7 +7,7 @@ inherit autotools desktop flag-o-matic multilib pam
 DESCRIPTION="A modular screen saver and locker for the X Window System"
 HOMEPAGE="https://www.jwz.org/xscreensaver/"
 SRC_URI="
-	${HOMEPAGE}${P}.tar.gz
+	${HOMEPAGE}${P}.tar.gz -> ${PF}.tar.gz
 "
 
 LICENSE="BSD"
