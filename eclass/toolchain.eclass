@@ -136,7 +136,7 @@ else
 	# is commonly used as a main compiler.
 	GCC_EBUILD_TEST_FLAG='regression-test'
 fi
-IUSE="${GCC_EBUILD_TEST_FLAG} vanilla +nls +nptl"
+IUSE="${GCC_EBUILD_TEST_FLAG} vanilla +nls"
 
 TC_FEATURES=()
 
@@ -145,7 +145,7 @@ tc_has_feature() {
 }
 
 if [[ ${PN} != "kgcc64" && ${PN} != gcc-* ]] ; then
-	IUSE+=" altivec debug +cxx +fortran" TC_FEATURES+=(fortran)
+	IUSE+=" altivec debug +cxx +fortran +nptl" TC_FEATURES+=(fortran nptl)
 	[[ -n ${PIE_VER} ]] && IUSE+=" nopie"
 	[[ -n ${HTB_VER} ]] && IUSE+=" boundschecking"
 	[[ -n ${D_VER}   ]] && IUSE+=" d"
@@ -1100,10 +1100,12 @@ toolchain_src_configure() {
 	# destructors", but apparently requires glibc.
 	case ${CTARGET} in
 	*-uclibc*)
-		confgcc+=(
-			--disable-__cxa_atexit
-			$(use_enable nptl tls)
-		)
+		if tc_has_feature nptl ; then
+			confgcc+=(
+				--disable-__cxa_atexit
+				$(use_enable nptl tls)
+			)
+		fi
 		tc_version_is_between 3.3 3.4 && confgcc+=( --enable-sjlj-exceptions )
 		if tc_version_is_between 3.4 4.3 ; then
 			confgcc+=( --enable-clocale=uclibc )
