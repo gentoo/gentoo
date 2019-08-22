@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
-MY_EXTRAS_VER="20190524-1046Z"
+MY_EXTRAS_VER="20190822-1908Z"
 
 CMAKE_MAKEFILE_GENERATOR=emake
 
@@ -63,7 +63,7 @@ PATCHES=(
 	"${MY_PATCH_DIR}"/20001_all_fix-minimal-build-cmake-mysql-5.7.patch
 	"${MY_PATCH_DIR}"/20007_all_cmake-debug-werror-5.7.patch
 	"${MY_PATCH_DIR}"/20009_all_mysql_myodbc_symbol_fix-5.7.10.patch
-	"${MY_PATCH_DIR}"/20018_all_percona-server-5.7.23-without-clientlibs-tools.patch
+	"${MY_PATCH_DIR}"/20018_all_percona-server-5.7.26-without-clientlibs-tools.patch
 	"${MY_PATCH_DIR}"/20018_all_percona-server-5.7.25-fix-libressl-support.patch
 	"${MY_PATCH_DIR}"/20018_all_mysql-5.7.23-add-missing-gcc-8-fix.patch
 	"${MY_PATCH_DIR}"/20018_all_mysql-5.7.23-fix-grant_user_lock-a-root.patch
