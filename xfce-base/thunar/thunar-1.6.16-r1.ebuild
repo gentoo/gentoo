@@ -21,7 +21,7 @@ COMMON_DEPEND=">=dev-lang/perl-5.6
 	>=x11-libs/gdk-pixbuf-2.14:=
 	>=x11-libs/gtk+-2.24:2=
 	>=xfce-base/exo-0.10:=
-	>=xfce-base/libxfce4ui-4.10:=
+	>=xfce-base/libxfce4ui-4.10:=[gtk2(+)]
 	>=xfce-base/libxfce4util-4.10.1:=
 	>=xfce-base/xfconf-4.10:=
 	dbus? ( >=dev-libs/dbus-glib-0.100:= )
