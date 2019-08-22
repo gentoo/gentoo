@@ -19,6 +19,7 @@ SLOT="0/21"
 IUSE="ldap libressl static-libs"
 
 RDEPEND="
+	>=app-arch/lz4-0_p131:=
 	sys-libs/zlib:=[${MULTILIB_USEDEP}]
 	ldap? ( dev-libs/cyrus-sasl:=[${MULTILIB_USEDEP}] )
 	libressl? ( dev-libs/libressl:0=[${MULTILIB_USEDEP}] )
@@ -26,11 +27,22 @@ RDEPEND="
 	"
 DEPEND="${RDEPEND}"
 
+# Avoid file collisions, #692580
+RDEPEND+=" !<dev-db/mysql-5.6.45-r1"
+RDEPEND+=" !=dev-db/mysql-5.7.23*"
+RDEPEND+=" !=dev-db/mysql-5.7.24*"
+RDEPEND+=" !=dev-db/mysql-5.7.25*"
+RDEPEND+=" !=dev-db/mysql-5.7.26-r0"
+RDEPEND+=" !=dev-db/mysql-5.7.27-r0"
+
 DOCS=( README )
 
 S="${WORKDIR}/mysql-${PV}"
 
-PATCHES=( "${FILESDIR}"/${PN}-8.0.17-libressl.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-8.0.17-always-build-decompress-utilities.patch
+	"${FILESDIR}"/${PN}-8.0.17-libressl.patch
+)
 
 src_prepare() {
 	sed -i -e 's/CLIENT_LIBS/CONFIG_CLIENT_LIBS/' "${S}/scripts/CMakeLists.txt" || die
@@ -42,7 +54,6 @@ src_prepare() {
 		-e '/MYSQL_CHECK_RAPIDJSON/d' \
 		-e '/MYSQL_CHECK_ICU/d' \
 		-e '/MYSQL_CHECK_RE2/d' \
-		-e '/MYSQL_CHECK_LZ4/d' \
 		-e '/MYSQL_CHECK_EDITLINE/d' \
 		-e '/MYSQL_CHECK_CURL/d' \
 		-e '/ADD_SUBDIRECTORY(man)/d' \
