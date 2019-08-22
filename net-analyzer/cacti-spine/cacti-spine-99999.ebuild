@@ -35,7 +35,7 @@ PATCHES=(
 src_prepare() {
 	default
 
-	AT_M4DIR="config" eautoreconf
+	eautoreconf
 }
 
 src_install() {
