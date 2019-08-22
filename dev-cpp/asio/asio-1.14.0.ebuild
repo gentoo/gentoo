@@ -1,10 +1,10 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 DESCRIPTION="Asynchronous Network Library"
-HOMEPAGE="http://asio.sourceforge.net/"
+HOMEPAGE="https://think-async.com"
 SRC_URI="mirror://sourceforge/${PN}/${PN}/${P}.tar.bz2"
 
 LICENSE="Boost-1.0"
