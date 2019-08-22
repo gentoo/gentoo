@@ -30,12 +30,13 @@ RDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.8.8d-ping.patch
 	"${FILESDIR}"/${PN}-0.8.8g-net-snmp.patch
+	"${FILESDIR}"/${PN}-1.2.5-my_bool.patch
 )
 
 src_prepare() {
 	default
 
-	AT_M4DIR="config" eautoreconf
+	eautoreconf
 }
 
 src_install() {
