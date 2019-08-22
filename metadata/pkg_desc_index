@@ -16841,7 +16841,7 @@ sci-mathematics/sha1-polyml 5.5.0 5.6_p1: implementation of SHA1 is taken from t
 sci-mathematics/singular 3.1.6 4.0.2 4.0.3: Computer algebra system for polynomial computations
 sci-mathematics/slepc 3.11.1: Scalable Library for Eigenvalue Problem Computations
 sci-mathematics/snns 4.3-r2 4.3-r3: Stuttgart Neural Network Simulator
-sci-mathematics/spass 3.7 3.9: An Automated Theorem Prover for First-Order Logic with Equality
+sci-mathematics/spass 3.9: An Automated Theorem Prover for First-Order Logic with Equality
 sci-mathematics/spin 6.4.5: Tool for formal verification of distributed software systems
 sci-mathematics/topcom 0.17.7: Computing Triangulations Of Point Configurations and Oriented Matroids
 sci-mathematics/twelf 1.7.1 1.7.1-r1: Implementation of the logical framework LF
