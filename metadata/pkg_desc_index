@@ -1220,7 +1220,7 @@ app-emacs/edit-server 1.15: Service edit requests from a web browser for editing
 app-emacs/editorconfig-emacs 0.7.8-r1: EditorConfig plugin for emacs
 app-emacs/elib 1.0-r1: The Emacs Lisp Library
 app-emacs/elscreen 1.4.6-r1: Frame configuration management for GNU Emacs modelled after GNU Screen
-app-emacs/emacs-common-gentoo 1.6-r2: Common files needed by all GNU Emacs versions
+app-emacs/emacs-common-gentoo 1.6-r1 1.6-r3: Common files needed by all GNU Emacs versions
 app-emacs/emacs-daemon 0.22: Gentoo support for Emacs running as a server in the background
 app-emacs/emacs-jabber 0.8.92: A Jabber client for Emacs
 app-emacs/emacs-w3m 1.4.528_pre20140213 1.4.570_pre20170203 1.4.625_pre20180518: emacs-w3m is an interface program of w3m on Emacs
@@ -4986,7 +4986,7 @@ dev-libs/libnl 1.1.4 1.1.4-r1 3.4.0 99999999: Libraries providing APIs to netlin
 dev-libs/libnsfb 0.2.0-r1: framebuffer abstraction library, written in C
 dev-libs/libnsutils 0.0.5-r1: base64 and time library, written in C
 dev-libs/libntru 0.4.1-r1: C Implementation of NTRUEncrypt
-dev-libs/libofx 0.9.10 0.9.14: A library to support the Open Financial eXchange XML format
+dev-libs/libofx 0.9.10 0.9.14 0.9.14-r1: A library to support the Open Financial eXchange XML format
 dev-libs/liboil 0.3.17-r2: Library of simple functions that are optimized for various CPUs
 dev-libs/liboobs 3.0.0: Liboobs is a wrapping library to the System Tools Backends
 dev-libs/liborcus 0.13.4 0.14.1 9999: Standalone file import filter library for spreadsheet documents
@@ -18581,7 +18581,7 @@ www-client/lynx 2.8.9_p1 2.9.0_pre1: An excellent console-based web browser with
 www-client/midori 7.0: A lightweight web browser based on WebKitGTK+
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.8-r2: a free, open source web browser
-www-client/opera 12.16_p1860-r1 62.0.3331.116 63.0.3368.35: A fast and secure web browser
+www-client/opera 12.16_p1860-r1 62.0.3331.116 63.0.3368.35 63.0.3368.43: A fast and secure web browser
 www-client/opera-beta 63.0.3368.33: A fast and secure web browser
 www-client/opera-developer 64.0.3409.0 64.0.3416.0: A fast and secure web browser
 www-client/otter 0.9.99.3 1.0.01 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
