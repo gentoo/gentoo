@@ -148,8 +148,6 @@ PATCHES=(
 	"${FILESDIR}/chromium-77-fix-gn-gen.patch"
 	"${FILESDIR}/chromium-77-system-icu.patch"
 	"${FILESDIR}/chromium-77-clang.patch"
-	"${FILESDIR}/chromium-77-blink-include.patch"
-	"${FILESDIR}/chromium-78-const-std-string.patch"
 	"${FILESDIR}/chromium-78-include.patch"
 )
 
@@ -363,6 +361,7 @@ src_prepare() {
 		third_party/widevine
 		third_party/woff2
 		third_party/zlib/google
+		tools/grit/third_party/six
 		url/third_party/mozilla
 		v8/src/third_party/siphash
 		v8/src/third_party/valgrind
