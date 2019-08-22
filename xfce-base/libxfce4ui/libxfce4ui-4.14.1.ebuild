@@ -12,11 +12,11 @@ SRC_URI="https://archive.xfce.org/src/xfce/${PN}/${PV%.*}/${P}.tar.bz2"
 LICENSE="LGPL-2+ GPL-2+"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-fbsd ~amd64-linux ~x86-linux ~x86-solaris"
-IUSE="debug glade introspection startup-notification vala"
+IUSE="debug glade +gtk2 introspection startup-notification vala"
 REQUIRED_USE="vala? ( introspection )"
+RESTRICT="!gtk2? ( test )"
 
 RDEPEND=">=dev-libs/glib-2.42:2=
-	>=x11-libs/gtk+-2.24:2=
 	>=x11-libs/gtk+-3.18:3=[introspection?]
 	x11-libs/libX11:=
 	x11-libs/libICE:=
@@ -24,6 +24,7 @@ RDEPEND=">=dev-libs/glib-2.42:2=
 	>=xfce-base/libxfce4util-4.12:=[introspection?]
 	>=xfce-base/xfconf-4.12:=
 	glade? ( dev-util/glade:3.10= )
+	gtk2? ( >=x11-libs/gtk+-2.24:2= )
 	introspection? ( dev-libs/gobject-introspection:= )
 	startup-notification? ( x11-libs/startup-notification:= )
 	!xfce-base/xfce-utils"
@@ -41,11 +42,10 @@ src_prepare() {
 
 src_configure() {
 	local myconf=(
+		$(use_enable gtk2)
 		$(use_enable introspection)
 		$(use_enable startup-notification)
 		$(use_enable vala)
-		# TODO: check revdeps and make it optional one day
-		--enable-gtk2
 		# requires deprecated glade:3 (gladeui-1.0), bug #551296
 		--disable-gladeui
 		# this one's for :3.10
