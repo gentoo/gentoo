@@ -3,7 +3,8 @@
 
 EAPI=7
 PYTHON_COMPAT=( python3_{5,6,7} )
-VALA_MIN_API_VERSION="0.32" # Needed when gtk+-3.20 is found
+# vala-0.36 fails to build, https://bugs.gentoo.org/692538
+VALA_MIN_API_VERSION="0.40"
 
 inherit gnome.org gnome2-utils meson python-r1 vala xdg-utils
 
