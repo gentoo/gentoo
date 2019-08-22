@@ -8976,7 +8976,7 @@ dev-python/serpent 1.19 1.28: A simple serialization library based on ast.litera
 dev-python/serverfiles 0.2.1: Utility for accessing HTTP server and storing files locally for reuse
 dev-python/service_identity 14.0.0 16.0.0 17.0.0 17.0.0-r1: Service identity verification for pyOpenSSL
 dev-python/setproctitle 1.1.8 1.1.10 1.1.10-r1: Allow customization of the process title
-dev-python/setuptools 36.7.2 40.6.3 40.7.3 40.8.0 40.9.0 41.0.0 41.0.1 41.1.0 9999: Collection of extensions to Distutils
+dev-python/setuptools 36.7.2 40.6.3 41.1.0 41.2.0 9999: Collection of extensions to Distutils
 dev-python/setuptools-git 1.2: Setuptools revision control system plugin for Git
 dev-python/setuptools_hg 0.4-r1: Setuptools/distribute plugin for finding files under Mercurial version control
 dev-python/setuptools_scm 1.15.6-r1 1.15.7 3.2.0 3.3.1: package to manage versions by scm tags via setuptools
@@ -10942,7 +10942,7 @@ dev-util/stressapptest 1.0.9: Stressful Application Test
 dev-util/stripe-mock 0.34.1 0.47.0: Mock HTTP server that responds like the real Stripe API
 dev-util/stubgen 2.08: a member function stub generator for C++
 dev-util/suse-build 2015.11.05 9999: Script to build SUSE Linux RPMs
-dev-util/sysdig 0.26.1 0.26.2 0.26.3: A system exploration and troubleshooting tool
+dev-util/sysdig 0.26.3 0.26.4: A system exploration and troubleshooting tool
 dev-util/sysprof 3.30.2-r1 3.32.0: System-wide Linux Profiler
 dev-util/systemtap 2.4-r1 3.1-r1 4.0-r1: A linux trace/probe tool
 dev-util/tailor 0.9.35-r1: A tool to migrate changesets between version control systems
@@ -19606,7 +19606,7 @@ xfce-base/xfce4-appfinder 4.12.0-r2 4.13.5 4.14.0: A tool to find and launch ins
 xfce-base/xfce4-meta 4.12-r1 4.14-r1: The Xfce Desktop Environment (meta package)
 xfce-base/xfce4-panel 4.12.2 4.13.6 4.13.7 4.14.0: Panel for the Xfce desktop environment
 xfce-base/xfce4-session 4.12.1-r2 4.13.3 4.13.4 4.14.0: A session manager for the Xfce desktop environment
-xfce-base/xfce4-settings 4.12.4 4.13.7 4.13.8 4.14.0: Configuration system for the Xfce desktop environment
+xfce-base/xfce4-settings 4.12.4 4.14.0 4.14.1: Configuration system for the Xfce desktop environment
 xfce-base/xfconf 4.12.1-r1 4.13.7 4.13.8 4.14.1: A configuration management system for Xfce
 xfce-base/xfdesktop 4.12.4 4.12.5 4.13.5 4.13.6 4.14.0 4.14.1: Desktop manager for the Xfce desktop environment
 xfce-base/xfwm4 4.12.5 4.13.3 4.13.4 4.14.0: Window manager for the Xfce desktop environment
