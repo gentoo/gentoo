@@ -13674,7 +13674,7 @@ media-plugins/kodi-audiodecoder-timidity 1.1.0-r1 2.0.1 2.0.1-r1 9999: Timidity 
 media-plugins/kodi-audiodecoder-vgmstream 1.1.0-r1 1.1.3 9999: vgmstream decoder addon for Kodi
 media-plugins/kodi-audioencoder-flac 1.1.0-r1 2.0.1 9999: Flac encoder addon for Kodi
 media-plugins/kodi-audioencoder-lame 1.2.0-r1 2.0.1 9999: Lame MP3 encoder addon for Kodi
-media-plugins/kodi-audioencoder-vorbis 1.1.0-r1 2.0.1 9999: Vorbis encoder addon for Kodi
+media-plugins/kodi-audioencoder-vorbis 1.1.0-r1 2.0.1 2.0.2 9999: Vorbis encoder addon for Kodi
 media-plugins/kodi-audioencoder-wav 1.1.0-r1 2.0.1 9999: WAV encoder addon for Kodi
 media-plugins/kodi-game-libretro 1.1.0 9999: Libretro compatibility layer for the Kodi Game API
 media-plugins/kodi-game-libretro-bnes 0.83.0.3 0.83.0.4 9999: bNES GameClient for Kodi
