@@ -2,14 +2,14 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
-MY_EXTRAS_VER="20190524-1046Z"
+MY_EXTRAS_VER="20190822-1908Z"
 
 CMAKE_MAKEFILE_GENERATOR=emake
 
 # Keeping eutils in EAPI=6 for emktemp in pkg_config
 
 inherit cmake-utils eutils flag-o-matic linux-info \
-	prefix toolchain-funcs user multilib-minimal
+	prefix toolchain-funcs multilib-minimal
 
 SRC_URI="https://cdn.mysql.com/Downloads/MySQL-5.7/${PN}-boost-${PV}.tar.gz
 	https://cdn.mysql.com/archives/mysql-5.7/mysql-boost-${PV}.tar.gz
@@ -34,7 +34,7 @@ RESTRICT="libressl? ( test )"
 
 REQUIRED_USE="?? ( tcmalloc jemalloc ) static? ( yassl )"
 
-KEYWORDS="alpha amd64 arm arm64 ~hppa ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
 
 # Shorten the path because the socket path length must be shorter than 107 chars
 # and we will run a mysql server during test phase
@@ -54,7 +54,7 @@ PATCHES=(
 	"${MY_PATCH_DIR}"/20001_all_fix-minimal-build-cmake-mysql-5.7.23.patch
 	"${MY_PATCH_DIR}"/20007_all_cmake-debug-werror-5.7.patch
 	"${MY_PATCH_DIR}"/20009_all_mysql_myodbc_symbol_fix-5.7.10.patch
-	"${MY_PATCH_DIR}"/20018_all_mysql-5.7.21-without-clientlibs-tools.patch
+	"${MY_PATCH_DIR}"/20018_all_mysql-5.7.26-without-clientlibs-tools.patch
 	"${MY_PATCH_DIR}"/20018_all_mysql-5.7.25-fix-libressl-support.patch
 	"${MY_PATCH_DIR}"/20018_all_mysql-5.7.23-add-missing-gcc-8-fix.patch
 	"${MY_PATCH_DIR}"/20018_all_mysql-5.7.23-fix-grant_user_lock-a-root.patch
@@ -112,13 +112,21 @@ DEPEND="${COMMON_DEPEND}
 		experimental? ( net-libs/rpcsvc-proto )
 	)
 	static? ( sys-libs/ncurses[static-libs] )
-	test? ( dev-perl/JSON )
+	test? (
+		acct-group/mysql acct-user/mysql
+		dev-perl/JSON
+	)
 "
 RDEPEND="${COMMON_DEPEND}
 	!dev-db/mariadb !dev-db/mariadb-galera !dev-db/percona-server !dev-db/mysql-cluster
 	client-libs? ( !dev-db/mariadb-connector-c[mysqlcompat] !dev-db/mysql-connector-c dev-libs/protobuf:= )
 	selinux? ( sec-policy/selinux-mysql )
-	server? ( !prefix? ( dev-db/mysql-init-scripts ) )
+	server? (
+		!prefix? (
+			acct-group/mysql acct-user/mysql
+			dev-db/mysql-init-scripts
+		)
+	)
 "
 # For other stuff to bring us in
 # dev-perl/DBD-mysql is needed by some scripts installed by MySQL
@@ -209,10 +217,6 @@ pkg_setup() {
 		use server && ! has userpriv ${FEATURES} ; then
 			eerror "Testing with FEATURES=-userpriv is no longer supported by upstream. Tests MUST be run as non-root."
 	fi
-
-	# This should come after all of the die statements
-	enewgroup mysql 60 || die "problem adding 'mysql' group"
-	enewuser mysql 60 -1 /dev/null mysql || die "problem adding 'mysql' user"
 }
 
 pkg_preinst() {
@@ -292,8 +296,15 @@ src_prepare() {
 	# We keep extra/lz4 directory because we use extra/lz4/xxhash.c via sql/CMakeLists.txt:394
 	rm -rv \
 		"${S}"/extra/protobuf \
-		"${S}"/libevent \
+		"${S}"/extra/libevent \
 		"${S}"/zlib \
+		|| die
+
+	# Don't clash with dev-db/mysql-connector-c
+	rm \
+		man/my_print_defaults.1 \
+		man/perror.1 \
+		man/zlib_decompress.1 \
 		|| die
 
 	if use libressl ; then
@@ -546,15 +557,29 @@ src_test() {
 
 	# Unstable tests
 	# - main.xa_prepared_binlog_off: https://bugs.mysql.com/bug.php?id=83340
+	# - rpl.rpl_innodb_info_tbl_slave_tmp_tbl_mismatch: https://bugs.mysql.com/bug.php?id=89223
 	# - rpl.rpl_non_direct_stm_mixing_engines: MDEV-14489
-	for t in main.xa_prepared_binlog_off rpl.rpl_non_direct_stm_mixing_engines ; do
-			_disable_test "$t" "Unstable test"
+	for t in \
+		main.xa_prepared_binlog_off \
+		rpl.rpl_innodb_info_tbl_slave_tmp_tbl_mismatch \
+		rpl.rpl_non_direct_stm_mixing_engines \
+	; do
+		_disable_test "$t" "Unstable test"
 	done
 
-	if ! use amd64 ; then
-		# fixed in >=mysql-8 via commit 0a417e84
-		_disable_test "gis.gis_bugs_crashes" "Unstable results on non-amd64 architectures due to floating-point operation"
-	fi
+	for t in \
+		gis.geometry_class_attri_prop \
+		gis.geometry_property_function_issimple \
+		gis.gis_bugs_crashes \
+		gis.spatial_op_testingfunc_mix \
+		gis.spatial_analysis_functions_buffer \
+		gis.spatial_analysis_functions_distance \
+		gis.spatial_utility_function_distance_sphere \
+		gis.spatial_utility_function_simplify \
+		gis.spatial_analysis_functions_centroid \
+	; do
+		_disable_test "$t" "Known rounding error with latest AMD processors"
+	done
 
 	if use numa && use kernel_linux ; then
 		# bug 584880
@@ -587,7 +612,39 @@ src_test() {
 			rpl.rpl_xa_survive_disconnect_lsu_off \
 			rpl.rpl_xa_survive_disconnect_table \
 		; do
-				_disable_test "$t" "requires DEFAULT_CHARSET=latin1 but USE=-latin1 is set"
+			_disable_test "$t" "Requires DEFAULT_CHARSET=latin1 but USE=-latin1 is set"
+		done
+	fi
+
+	if has_version '>=dev-libs/openssl-1.1.1' ; then
+		# Tests are expecting <openssl-1.1.1 default cipher
+		for t in \
+			auth_sec.cert_verify \
+			auth_sec.mysql_ssl_connection \
+			auth_sec.openssl_cert_generation \
+			auth_sec.ssl_auto_detect \
+			auth_sec.ssl_mode \
+			auth_sec.tls \
+			binlog.binlog_grant_alter_user \
+			encryption.innodb_onlinealter_encryption \
+			main.grant_alter_user_qa \
+			main.grant_user_lock_qa \
+			main.mysql_ssl_default \
+			main.openssl_1 \
+			main.plugin_auth_sha256_tls \
+			main.ssl \
+			main.ssl_8k_key \
+			main.ssl_bug75311 \
+			main.ssl_ca \
+			main.ssl_cipher \
+			main.ssl_compress \
+			main.ssl_crl \
+			main.ssl_ecdh \
+			main.ssl_verify_identity \
+			x.connection_tls_version \
+			x.connection_openssl \
+		; do
+			_disable_test  "$t" "Requires <dev-libs/openssl-1.1.1"
 		done
 	fi
 

@@ -1,19 +1,28 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
-MY_EXTRAS_VER="20181023-0012Z"
+MY_EXTRAS_VER="20190822-1908Z"
 
 CMAKE_MAKEFILE_GENERATOR=emake
 
+# Python2 required for innodb_stress.innodb_stress{,_blob,_crash} test
+PYTHON_COMPAT=( python2_7 )
+
 # Keeping eutils in EAPI=6 for emktemp in pkg_config
 
-inherit cmake-utils eutils flag-o-matic linux-info \
-	prefix toolchain-funcs user multilib-minimal
+inherit eapi7-ver cmake-utils eutils flag-o-matic linux-info \
+	prefix python-any-r1 toolchain-funcs multilib-minimal
 
-SRC_URI="https://cdn.mysql.com/Downloads/MySQL-5.7/${PN}-boost-${PV}.tar.gz
-	https://cdn.mysql.com/archives/mysql-5.7/mysql-boost-${PV}.tar.gz
-	http://downloads.mysql.com/archives/MySQL-5.7/${PN}-boost-${PV}.tar.gz"
+MY_PV=$(ver_rs 3 '-')
+MY_PN="Percona-Server"
+MY_P="${PN}-${MY_PV}"
+MY_MAJOR_PV=$(ver_cut 1-2)
+MY_RELEASE_NOTES_URI="https://www.percona.com/doc/percona-server/5.7/release-notes/release-notes_index.html"
+
+SRC_URI="https://www.percona.com/downloads/${MY_PN}-${MY_MAJOR_PV}/${MY_PN}-${MY_PV}/source/tarball/${PN}-${MY_PV}.tar.gz
+	mirror://sourceforge/boost/boost_1_59_0.tar.gz
+"
 
 # Gentoo patches to MySQL
 if [[ "${MY_EXTRAS_VER}" != "live" && "${MY_EXTRAS_VER}" != "none" ]] ; then
@@ -22,19 +31,19 @@ if [[ "${MY_EXTRAS_VER}" != "live" && "${MY_EXTRAS_VER}" != "none" ]] ; then
 		https://gitweb.gentoo.org/proj/mysql-extras.git/snapshot/mysql-extras-${MY_EXTRAS_VER}.tar.bz2"
 fi
 
-HOMEPAGE="https://www.mysql.com/"
+HOMEPAGE="https://www.percona.com/software/mysql-database/percona-server"
 DESCRIPTION="A fast, multi-threaded, multi-user SQL database server"
 LICENSE="GPL-2"
 SLOT="0/18"
-IUSE="cjk client-libs cracklib debug experimental jemalloc latin1 libressl numa +perl profiling
-	selinux +server static static-libs systemtap tcmalloc test yassl"
+IUSE="cjk client-libs cracklib debug experimental jemalloc latin1 libressl numa pam +perl profiling rocksdb
+	selinux +server static static-libs systemtap tcmalloc test tokudb tokudb-backup-plugin yassl"
 
 # Tests always fail when libressl is enabled due to hard-coded ciphers in the tests
 RESTRICT="libressl? ( test )"
 
 REQUIRED_USE="?? ( tcmalloc jemalloc ) static? ( yassl )"
 
-KEYWORDS="alpha amd64 arm ~hppa ia64 ~mips ppc ppc64 ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
 
 # Shorten the path because the socket path length must be shorter than 107 chars
 # and we will run a mysql server during test phase
@@ -51,15 +60,16 @@ else
 fi
 
 PATCHES=(
-	"${MY_PATCH_DIR}"/20001_all_fix-minimal-build-cmake-mysql-5.7.23.patch
+	"${MY_PATCH_DIR}"/20001_all_fix-minimal-build-cmake-mysql-5.7.patch
 	"${MY_PATCH_DIR}"/20007_all_cmake-debug-werror-5.7.patch
 	"${MY_PATCH_DIR}"/20009_all_mysql_myodbc_symbol_fix-5.7.10.patch
-	"${MY_PATCH_DIR}"/20018_all_mysql-5.7.21-without-clientlibs-tools.patch
-	"${MY_PATCH_DIR}"/20018_all_mysql-5.7.23-fix-libressl-support.patch
+	"${MY_PATCH_DIR}"/20018_all_percona-server-5.7.26-without-clientlibs-tools.patch
+	"${MY_PATCH_DIR}"/20018_all_percona-server-5.7.25-fix-libressl-support.patch
 	"${MY_PATCH_DIR}"/20018_all_mysql-5.7.23-add-missing-gcc-8-fix.patch
 	"${MY_PATCH_DIR}"/20018_all_mysql-5.7.23-fix-grant_user_lock-a-root.patch
 	"${MY_PATCH_DIR}"/20018_all_mysql-5.7.23-round-off-test-values-for-same-output-on-all-architectures.patch
 	"${MY_PATCH_DIR}"/20018_all_mysql-5.7.23-fix-mips-ASM.patch
+	"${MY_PATCH_DIR}"/20018_all_percona-server-5.7.23-rocksdb-use-system-libs.patch
 )
 
 # Be warned, *DEPEND are version-dependant
@@ -88,6 +98,16 @@ COMMON_DEPEND="net-misc/curl:=
 			net-libs/libtirpc:=
 		)
 		numa? ( sys-process/numactl )
+		pam? ( virtual/pam:0= )
+		rocksdb? (
+			app-arch/zstd:=
+			dev-libs/protobuf:=
+		)
+		tokudb? (
+			app-arch/snappy:=
+			app-arch/xz-utils:=
+		)
+		tokudb-backup-plugin? ( dev-util/valgrind )
 	)
 	systemtap? ( >=dev-util/systemtap-1.3:0= )
 	tcmalloc? ( dev-util/google-perftools:0= )
@@ -111,16 +131,30 @@ DEPEND="${COMMON_DEPEND}
 		experimental? ( net-libs/rpcsvc-proto )
 	)
 	static? ( sys-libs/ncurses[static-libs] )
+	test? (
+		acct-group/mysql acct-user/mysql
+		$(python_gen_any_dep 'dev-python/mysql-python[${PYTHON_USEDEP}]')
+		dev-perl/JSON
+	)
 "
 RDEPEND="${COMMON_DEPEND}
-	!dev-db/mariadb !dev-db/mariadb-galera !dev-db/percona-server !dev-db/mysql-cluster
+	!dev-db/mariadb !dev-db/mariadb-galera !dev-db/mysql !dev-db/mysql-cluster
 	client-libs? ( !dev-db/mariadb-connector-c[mysqlcompat] !dev-db/mysql-connector-c dev-libs/protobuf:= )
 	selinux? ( sec-policy/selinux-mysql )
-	server? ( !prefix? ( dev-db/mysql-init-scripts ) )
+	server? (
+		!prefix? (
+			acct-group/mysql acct-user/mysql
+			dev-db/mysql-init-scripts
+		)
+	)
 "
 # For other stuff to bring us in
 # dev-perl/DBD-mysql is needed by some scripts installed by MySQL
 PDEPEND="perl? ( >=dev-perl/DBD-mysql-2.9004 )"
+
+python_check_deps() {
+	has_version "dev-python/mysql-python[${PYTHON_USEDEP}]"
+}
 
 mysql_init_vars() {
 	MY_SHAREDSTATEDIR=${MY_SHAREDSTATEDIR="${EPREFIX%/}/usr/share/mysql"}
@@ -201,26 +235,24 @@ pkg_setup() {
 			eerror "Please use gcc-config to switch to gcc-4.7 or later version."
 			die
 		fi
+
+		use test && python-any-r1_pkg_setup
 	fi
 
 	if has test ${FEATURES} && \
 		use server && ! has userpriv ${FEATURES} ; then
 			eerror "Testing with FEATURES=-userpriv is no longer supported by upstream. Tests MUST be run as non-root."
 	fi
-
-	# This should come after all of the die statements
-	enewgroup mysql 60 || die "problem adding 'mysql' group"
-	enewuser mysql 60 -1 /dev/null mysql || die "problem adding 'mysql' user"
 }
 
 pkg_preinst() {
 	# Here we need to see if the implementation switched client libraries
 	# We check if this is a new instance of the package and a client library already exists
 	local SHOW_ABI_MESSAGE libpath
-	if use client-libs && [[ -z ${REPLACING_VERSIONS} && -e "${EROOT}usr/$(get_libdir)/libmysqlclient.so" ]] ; then
-		libpath=$(readlink "${EROOT}usr/$(get_libdir)/libmysqlclient.so")
+	if use client-libs && [[ -z ${REPLACING_VERSIONS} && -e "${EROOT%/}/usr/$(get_libdir)/libperconaserverclient.so" ]] ; then
+		libpath=$(readlink "${EROOT%/}/usr/$(get_libdir)/libperconaserverclient.so")
 		elog "Due to ABI changes when switching between different client libraries,"
-		elog "revdep-rebuild must find and rebuild all packages linking to libmysqlclient."
+		elog "revdep-rebuild must find and rebuild all packages linking to libperconaserverclient."
 		elog "Please run: revdep-rebuild --library ${libpath}"
 		ewarn "Failure to run revdep-rebuild may cause issues with other programs or libraries"
 	fi
@@ -267,7 +299,7 @@ src_unpack() {
 	# Grab the patches
 	[[ "${MY_EXTRAS_VER}" == "live" ]] && S="${WORKDIR}/mysql-extras" git-r3_src_unpack
 
-	mv -f "${WORKDIR}/${P}" "${S}" || die
+	mv -f "${WORKDIR}/${MY_P}" "${S}" || die
 }
 
 src_prepare() {
@@ -281,18 +313,41 @@ src_prepare() {
 		echo "TARGET_LINK_LIBRARIES(mysqld tcmalloc)" >> "${S}/sql/CMakeLists.txt" || die
 	fi
 
-	# Remove the centos and rhel selinux policies to support mysqld_safe under SELinux
-	if [[ -d "${S}/support-files/SELinux" ]] ; then
-		echo > "${S}/support-files/SELinux/CMakeLists.txt" || die
+	# Don't build bundled xz-utils
+	if [[ -d "${S}/storage/tokudb/ft-index" ]] ; then
+		echo > "${S}/storage/tokudb/ft-index/cmake_modules/TokuThirdParty.cmake" || die
+		sed -i 's/ build_lzma//' "${S}/storage/tokudb/ft-index/ft/CMakeLists.txt" || die
+	elif [[ -d "${S}/storage/tokudb/PerconaFT" ]] ; then
+		echo > "${S}/storage/tokudb/PerconaFT/cmake_modules/TokuThirdParty.cmake" || die
+		sed -i -e 's/ build_lzma//' -e 's/ build_snappy//' "${S}/storage/tokudb/PerconaFT/ft/CMakeLists.txt" || die
+		sed -i -e 's/add_dependencies\(tokuportability_static_conv build_jemalloc\)//' "${S}/storage/tokudb/PerconaFT/portability/CMakeLists.txt" || die
+	fi
+
+	if [[ -d "${S}/plugin/tokudb-backup-plugin" ]] && ! use tokudb-backup-plugin ; then
+		 rm -r "${S}/plugin/tokudb-backup-plugin/Percona-TokuBackup" || die
 	fi
 
 	# Remove bundled libs so we cannot accidentally use them
 	# We keep extra/lz4 directory because we use extra/lz4/xxhash.c via sql/CMakeLists.txt:394
 	rm -rv \
 		"${S}"/extra/protobuf \
-		"${S}"/libevent \
+		"${S}"/extra/libevent \
+		"${S}"/storage/rocksdb/third_party \
+		"${S}"/storage/tokudb/PerconaFT/third_party \
 		"${S}"/zlib \
 		|| die
+
+	# Don't clash with dev-db/mysql-connector-c
+	rm \
+		man/my_print_defaults.1 \
+		man/perror.1 \
+		man/zlib_decompress.1 \
+		|| die
+
+	# Remove the centos and rhel selinux policies to support mysqld_safe under SELinux
+	if [[ -d "${S}/support-files/SELinux" ]] ; then
+		echo > "${S}/support-files/SELinux/CMakeLists.txt" || die
+	fi
 
 	if use libressl ; then
 		sed -i 's/OPENSSL_MAJOR_VERSION STREQUAL "1"/OPENSSL_MAJOR_VERSION STREQUAL "2"/' \
@@ -310,6 +365,11 @@ src_configure(){
 
 	# bug #283926, with GCC4.4, this is required to get correct behavior.
 	append-flags -fno-strict-aliasing
+
+	if use tokudb ; then
+		# https://jira.percona.com/browse/PS-4399
+		append-cxxflags -Wno-error=shadow
+	fi
 
 	if use client-libs ; then
 		multilib-minimal_src_configure
@@ -361,8 +421,10 @@ multilib_src_configure() {
 		# all the time for simplicity and to make sure it is actually correct.
 		-DSTACK_DIRECTION=$(tc-stack-grows-down && echo -1 || echo 1)
 		-DWITH_CURL=system
-		-DWITH_BOOST="${S}/boost"
+		-DWITH_BOOST="${WORKDIR}/boost_1_59_0"
+		-DWITH_PROTOBUF=system
 	)
+
 	if use test ; then
 		mycmakeargs+=( -DINSTALL_MYSQLTESTDIR=share/mysql/mysql-test )
 	else
@@ -397,7 +459,6 @@ multilib_src_configure() {
 		mycmakeargs+=(
 			-DWITH_LIBEVENT=system
 			-DWITH_LZ4=system
-			-DWITH_PROTOBUF=system
 			-DWITH_MECAB=$(usex cjk system OFF)
 			-DWITH_NUMA=$(usex numa ON OFF)
 			-DWITH_RAPID=$(usex experimental ON OFF)
@@ -455,7 +516,16 @@ multilib_src_configure() {
 			-DWITH_MYISAMMRG_STORAGE_ENGINE=1
 			-DWITH_MYISAM_STORAGE_ENGINE=1
 			-DWITH_PARTITION_STORAGE_ENGINE=1
+			-DWITH_ROCKSDB=$(usex rocksdb 1 0)
+			$(usex tokudb '' -DWITHOUT_TOKUDB=1)
 		)
+
+		if use tokudb ; then
+			# TokuDB Backup plugin requires valgrind unconditionally
+			mycmakeargs+=(
+				$(usex tokudb-backup-plugin '' -DTOKUDB_BACKUP_DISABLED=1)
+			)
+		fi
 
 	else
 		mycmakeargs+=(
@@ -484,7 +554,7 @@ multilib_src_compile() {
 # ulimit -n 16500 && \
 # USE='latin1 perl server' \
 # FEATURES='test userpriv -usersandbox' \
-# ebuild mysql-X.X.XX.ebuild \
+# ebuild percona-server-X.X.XX.ebuild \
 # digest clean package
 src_test() {
 	_disable_test() {
@@ -533,20 +603,83 @@ src_test() {
 	pushd "${TESTDIR}" &>/dev/null || die
 
 	touch "${T}/disabled.def"
-	# These are failing in MySQL 5.7 for now and are believed to be
-	# false positives:
+	# These are failing in Percona-Server 5.7 for now and are believed to be
+	# false positives or are known to fail:
+	#
+	# group_replication.gr_communication_configuration: requires a valid local network address
+	#                                                   which clashes with FEATURES=network-sandbox
+	# innodb.xtradb_compressed_columns_consistency:     long running test which tends to timeout
+	#                                                   on a busy host
+	# keyring_vault.keyring_vault_timeout:              requires network access to vault.public-ci.percona.com
+	#                                                   which clashes with FEATURES=network-sandbox
+	# rocksdb.prefix_extractor_override:                https://jira.percona.com/browse/PS-5199
+	# rpl.rpl_innodb_info_tbl_slave_tmp_tbl_mismatch:   https://bugs.mysql.com/bug.php?id=89223
+	# rpl.rpl_multi_source_mts_reset_worker_info:       https://jira.percona.com/browse/PS-3786
+	# tokudb.bugs.5733_tokudb:                          https://jira.percona.com/browse/PS-4274
+	# x.crud_insert_cast:                               https://jira.percona.com/browse/PS-5032
+	# x.insert_table_bad_column:                        https://jira.percona.com/browse/PS-5032
+	# x.insert_table_bad_numcolumns:                    https://jira.percona.com/browse/PS-5032
+	# x.insert_table_bad_column_type:                   https://jira.percona.com/browse/PS-5032
+	# x.insert_table:                                   https://jira.percona.com/browse/PS-5032
+	# x.update_crud_arrayappend_o:                      https://jira.percona.com/browse/PS-5032
+	# x.update_crud_arrayinsert_o:                      https://jira.percona.com/browse/PS-5032
+	# x.mysqlxtest_help:                                https://jira.percona.com/browse/PS-5019
+	# x.admin_kill_client_mysqlx:                       https://jira.percona.com/browse/PS-5019
 	#
 	local t
 
-	for t in auth_sec.keyring_udf ; do
-			_disable_test "$t" "False positives in Gentoo"
+	for t in \
+		group_replication.gr_communication_configuration \
+		innodb.xtradb_compressed_columns_consistency \
+		keyring_vault.keyring_vault_timeout \
+		rocksdb.prefix_extractor_override \
+		rpl.rpl_innodb_info_tbl_slave_tmp_tbl_mismatch \
+		rpl.rpl_multi_source_mts_reset_worker_info \
+		tokudb.bugs.5733_tokudb \
+		x.crud_insert_cast \
+		x.insert_table_bad_column \
+		x.insert_table_bad_numcolumns \
+		x.insert_table_bad_column_type \
+		x.insert_table \
+		x.update_crud_arrayappend_o \
+		x.update_crud_arrayinsert_o \
+		x.mysqlxtest_help \
+		x.admin_kill_client_mysqlx \
+	; do
+			_disable_test "$t" "False positives in Gentoo / Known bug"
 	done
 
-	# Unstable tests
-	# - main.xa_prepared_binlog_off: https://bugs.mysql.com/bug.php?id=83340
-	for t in main.xa_prepared_binlog_off ; do
-			_disable_test "$t" "Unstable test"
-	done
+	if has_version ">=dev-libs/openssl-1.1.1" ; then
+		for t in \
+			main.ssl_8k_key \
+			auth_sec.mysql_ssl_connection \
+			main.ssl_verify_identity \
+			main.ssl_crl \
+			main.grant_alter_user_qa \
+			auth_sec.ssl_auto_detect \
+			encryption.innodb_onlinealter_encryption \
+			main.ssl_ca \
+			main.ssl_cipher \
+			main.grant_user_lock_qa \
+			auth_sec.openssl_cert_generation \
+			main.ssl_bug75311 \
+			main.ssl_compress \
+			main.ssl \
+			main.plugin_auth_sha256_tls \
+			main.ssl_ecdh \
+			main.openssl_1 \
+			auth_sec.cert_verify \
+			main.mysql_ssl_default \
+			main.percona_tls \
+			auth_sec.tls \
+			auth_sec.ssl_mode \
+			binlog.binlog_grant_alter_user \
+			x.connection_tls_version \
+			x.connection_openssl \
+		; do
+			_disable_test "$t" "Known >=openssl-1.1.1 failures"
+		done
+	fi
 
 	if use numa && use kernel_linux ; then
 		# bug 584880
@@ -554,6 +687,29 @@ src_test() {
 			for t in sys_vars.innodb_numa_interleave_basic ; do
 				_disable_test "$t" "Test $t requires system with NUMA support"
 			done
+		fi
+	fi
+
+	if use tokudb ; then
+		if [[ -f "/sys/kernel/mm/transparent_hugepage/enabled" ]] ; then
+			if grep -q -E "\[always\]" /sys/kernel/mm/transparent_hugepage/enabled &>/dev/null ; then
+				# TokuDB refuses to start when transparent hugepages are enabled
+				for t in \
+					tokudb.rows-32m-rand-insert \
+					tokudb.savepoint-2 \
+					tokudb.savepoint-3 \
+					tokudb.savepoint-4 \
+					tokudb.savepoint-1078 \
+					tokudb.savepoint-1078-2 \
+					tokudb.savepoint-1078-3 \
+					tokudb.savepoint-1078-4 \
+				; do
+						_disable_test "$t" "TokuDB will not work with transparent hugepages enabled"
+				done
+			fi
+		else
+			einfo "Cannot determine transparent hugepage status."
+			einfo "Please note that TokuDB refuses to start when transparent hugepages are enabled!"
 		fi
 	fi
 
@@ -605,7 +761,7 @@ src_test() {
 	fi
 
 	# run mysql-test tests
-	perl mysql-test-run.pl --force --vardir="${T}/var-tests" --reorder --skip-test=tokudb --skip-test-list="${T}/disabled.def"
+	perl mysql-test-run.pl --force --vardir="${T}/var-tests" --reorder --skip-test-list="${T}/disabled.def"
 	retstatus_tests=$?
 
 	popd &>/dev/null || die
@@ -703,6 +859,16 @@ multilib_src_install_all() {
 		eprefixify "${TMPDIR}/my.cnf.ok"
 
 		newins "${TMPDIR}/my.cnf.ok" 50-distro-server.cnf
+
+		if use tokudb ; then
+			# Remove some unwanted files
+			rm -fv \
+				"${ED%/}"/usr/COPYING.AGPLv3 \
+				"${ED%/}"/usr/COPYING.GPLv2 \
+				"${ED%/}"/usr/PATENTS \
+				"${ED%/}"/usr/README.md \
+				|| die
+		fi
 	fi
 
 	#Remove mytop if perl is not selected

@@ -1,15 +1,15 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
-MY_EXTRAS_VER="20181111-2314Z"
+MY_EXTRAS_VER="20190822-1908Z"
 
 CMAKE_MAKEFILE_GENERATOR=emake
 
 # Keeping eutils in EAPI=6 for emktemp in pkg_config
 
 inherit eutils flag-o-matic prefix toolchain-funcs \
-	user cmake-utils multilib-build
+	cmake-utils multilib-build
 
 SRC_URI="http://cdn.mysql.com/Downloads/MySQL-5.6/${P}.tar.gz
 	https://cdn.mysql.com/archives/mysql-5.6/${P}.tar.gz
@@ -37,7 +37,7 @@ RESTRICT="libressl? ( test )"
 
 REQUIRED_USE="?? ( tcmalloc jemalloc ) static? ( yassl )"
 
-KEYWORDS="alpha amd64 arm ~hppa ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
 
 # Shorten the path because the socket path length must be shorter than 107 chars
 # and we will run a mysql server during test phase
@@ -62,9 +62,10 @@ PATCHES=(
 	"${MY_PATCH_DIR}"/20009_all_mysql_myodbc_symbol_fix-5.6.patch
 	"${MY_PATCH_DIR}"/20018_all_mysql-5.6.25-without-clientlibs-tools.patch
 	"${MY_PATCH_DIR}"/20027_all_mysql-5.5-perl5.26-includes.patch
-	"${MY_PATCH_DIR}"/20028_all_mysql-5.6-gcc7.patch
 	"${MY_PATCH_DIR}"/20031_all_mysql-5.6-fix-monitor.test.patch
 	"${MY_PATCH_DIR}"/20036_all_mysql-5.6-fix-rpl_semi_sync_shutdown_hang.test.patch
+	"${MY_PATCH_DIR}"/20018_all_mysql-5.6.44-fix-libressl-support.patch
+	"${MY_PATCH_DIR}"/20018_all_mysql-5.6.44-add-openssl-1.1-support.patch
 )
 
 # Be warned, *DEPEND are version-dependant
@@ -82,7 +83,7 @@ COMMON_DEPEND="
 	systemtap? ( >=dev-util/systemtap-1.3:0= )
 	!yassl? (
 		!libressl? ( >=dev-libs/openssl-1.0.0:0= )
-		libressl? ( dev-libs/libressl:0= )
+		libressl? ( =dev-libs/libressl-2.6.5*:0= )
 	)
 	>=sys-libs/zlib-1.2.3:0=
 	sys-libs/ncurses:0=
@@ -93,13 +94,21 @@ COMMON_DEPEND="
 "
 DEPEND="virtual/yacc
 	static? ( sys-libs/ncurses[static-libs] )
-	test? ( dev-perl/JSON )
+	test? (
+		acct-group/mysql acct-user/mysql
+		dev-perl/JSON
+	)
 	|| ( >=sys-devel/gcc-3.4.6 >=sys-devel/gcc-apple-4.0 )
 	${COMMON_DEPEND}"
 RDEPEND="selinux? ( sec-policy/selinux-mysql )
 	client-libs? ( !dev-db/mariadb-connector-c[mysqlcompat] !dev-db/mysql-connector-c )
 	!dev-db/mariadb !dev-db/mariadb-galera !dev-db/percona-server !dev-db/mysql-cluster
-	server? ( !prefix? ( dev-db/mysql-init-scripts ) )
+	server? (
+		!prefix? (
+			acct-group/mysql acct-user/mysql
+			dev-db/mysql-init-scripts
+		)
+	)
 	${COMMON_DEPEND}
 "
 # For other stuff to bring us in
@@ -123,10 +132,6 @@ pkg_setup() {
 		use server && ! has userpriv ${FEATURES} ; then
 			eerror "Testing with FEATURES=-userpriv is no longer supported by upstream. Tests MUST be run as non-root."
 	fi
-
-	# This should come after all of the die statements
-	enewgroup mysql 60 || die "problem adding 'mysql' group"
-	enewuser mysql 60 -1 /dev/null mysql || die "problem adding 'mysql' user"
 }
 
 pkg_preinst() {
@@ -195,6 +200,12 @@ src_prepare() {
 	if [[ -d "${S}/support-files/SELinux" ]] ; then
 		echo > "${S}/support-files/SELinux/CMakeLists.txt" || die
 	fi
+
+	# Don't clash with dev-db/mysql-connector-c
+	rm \
+		man/my_print_defaults.1 \
+		man/perror.1 \
+		|| die
 
 	if use libressl ; then
 		sed -i 's/OPENSSL_MAJOR_VERSION STREQUAL "1"/OPENSSL_MAJOR_VERSION STREQUAL "2"/' \
@@ -369,6 +380,10 @@ src_install() {
 		rm -Rf "${ED}/usr/data" || die
 	fi
 
+	if [[ -d "${ED%/}/usr/sql-bench" ]] ; then
+		mv "${ED%/}/usr/sql-bench" "${ED%/}/usr/share/mysql/" || die
+	fi
+
 	# Unless they explicitly specific USE=test, then do not install the
 	# testsuite. It DOES have a use to be installed, esp. when you want to do a
 	# validation of your database configuration after tuning it.
@@ -474,6 +489,42 @@ src_test() {
 	for t in auth_sec.keyring_udf federated.federated_plugin ; do
 			_disable_test  "$t" "False positives in Gentoo"
 	done
+
+	if ! use latin1 ; then
+		for t in \
+			binlog.binlog_mysqlbinlog_filter \
+			binlog.binlog_statement_insert_delayed \
+			funcs_1.is_columns_mysql \
+			funcs_1.is_tables_mysql \
+			funcs_1.is_triggers \
+			main.information_schema \
+			main.mysql_client_test \
+			main.mysqld--help-notwin \
+			perfschema.binlog_edge_mix \
+			perfschema.binlog_edge_stmt \
+		; do
+			_disable_test  "$t" "Requires DEFAULT_CHARSET=latin1 but USE=-latin1 is set"
+		done
+	fi
+
+	if has_version '>=dev-libs/openssl-1.1.0' ; then
+		# Tests are expecting <openssl-1.1 default cipher
+		for t in \
+			main.openssl_1 \
+			main.plugin_auth_sha256_tls \
+			main.ssl \
+			main.ssl_8k_key \
+			main.ssl_ca \
+			main.ssl_cipher\
+			main.ssl_compress \
+			main.ssl_crl \
+			main.ssl-sha512 \
+		; do
+			_disable_test  "$t" "Requires <dev-libs/openssl-1.1.0"
+		done
+	fi
+
+	_disable_test main.gis-precise "Known rounding error with latest AMD processors"
 
 	# run mysql-test tests
 	perl mysql-test-run.pl --force --vardir="${T}/var-tests" --reorder --skip-test=tokudb --skip-test-list="${T}/disabled.def"
