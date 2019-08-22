@@ -23,7 +23,7 @@ RDEPEND=">=dev-libs/dbus-glib-0.100
 	>=x11-libs/libXrandr-1.2
 	>=xfce-base/garcon-0.2
 	>=xfce-base/exo-0.8
-	>=xfce-base/libxfce4ui-4.11
+	>=xfce-base/libxfce4ui-4.11[gtk2(+)]
 	>=xfce-base/libxfce4util-4.11
 	>=xfce-base/xfconf-4.10
 	libcanberra? ( >=media-libs/libcanberra-0.25[sound] )
