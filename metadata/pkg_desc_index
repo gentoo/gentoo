@@ -14081,7 +14081,7 @@ media-sound/mp3val 0.1.8: Validate and fix MPEG audio files
 media-sound/mp3wrap 0.5: Command-line utility that wraps quickly two or more mp3 files in one single large playable mp3
 media-sound/mpc 0.30 0.31-r1 0.32: Commandline client for Music Player Daemon (media-sound/mpd)
 media-sound/mpck 0.15: Checks MP3s for errors
-media-sound/mpd 0.21.10 0.21.11 0.21.12 0.21.13: The Music Player Daemon (mpd)
+media-sound/mpd 0.21.10 0.21.11 0.21.12 0.21.13 0.21.14: The Music Player Daemon (mpd)
 media-sound/mpdas 0.4.2: AudioScrobbler client for MPD written in C++
 media-sound/mpdscribble 0.22 9999: An MPD client that submits information to Audioscrobbler
 media-sound/mpfc 1.3.8.1-r2: Music Player For Console
@@ -14471,7 +14471,7 @@ net-analyzer/bwm-ng 0.6.1-r1: Bandwidth Monitor NG is a small and simple console
 net-analyzer/bwmon 1.3-r2: Simple ncurses bandwidth monitor
 net-analyzer/bwping 1.7-r1 1.14 1.15: A tool to measure bandwidth and RTT between two hosts using ICMP
 net-analyzer/cacti 1.1.38-r1 1.2.2 1.2.5: Cacti is a complete frontend to rrdtool
-net-analyzer/cacti-spine 1.1.38-r2 1.2.2-r1 1.2.5 99999: Spine is a fast poller for Cacti (formerly known as Cactid)
+net-analyzer/cacti-spine 1.1.38-r2 1.2.2-r1 1.2.5-r1 99999: Spine is a fast poller for Cacti (formerly known as Cactid)
 net-analyzer/calamaris 2.59 2.99.4.0: Calamaris parses the logfiles of a wide variety of Web proxy servers and generates reports
 net-analyzer/carl 0.9-r2: An rsync logfile analyzer
 net-analyzer/cbm 0.1-r1: Display the current traffic on all network devices
@@ -19611,7 +19611,7 @@ xfce-base/xfconf 4.12.1-r1 4.13.7 4.13.8 4.14.1: A configuration management syst
 xfce-base/xfdesktop 4.12.4 4.12.5 4.13.5 4.13.6 4.14.0 4.14.1: Desktop manager for the Xfce desktop environment
 xfce-base/xfwm4 4.12.5 4.13.3 4.13.4 4.14.0: Window manager for the Xfce desktop environment
 xfce-extra/eatmonkey 0.1.4-r1: A download manager that works exclusively with aria2
-xfce-extra/multiload-nandhp 0.3-r1: A port of the GNOME multiload applet for the Xfce panel
+xfce-extra/multiload-nandhp 0.3-r2: A port of the GNOME multiload applet for the Xfce panel
 xfce-extra/thunar-archive-plugin 0.3.1-r3 0.4.0: Archive plug-in for the Thunar filemanager
 xfce-extra/thunar-media-tags-plugin 0.2.1-r1 0.3.0: Adds special features for media files to the Thunar File Manager
 xfce-extra/thunar-shares-plugin 0.2.0_p20101105-r1 0.3.0: Thunar plugin to share files using Samba
@@ -19624,26 +19624,26 @@ xfce-extra/xfce4-battery-plugin 1.1.2 1.1.3: A battery monitor panel plugin for 
 xfce-extra/xfce4-clipman-plugin 1.4.3: A clipboard manager plug-in for the Xfce panel
 xfce-extra/xfce4-composite-editor 0-r1: An graphical interface to modify composite settings
 xfce-extra/xfce4-cpufreq-plugin 1.2.1: A panel plugin for showing information about cpufreq settings
-xfce-extra/xfce4-cpugraph-plugin 1.0.5-r1 1.0.90 1.0.91 1.1.0: A system load plug-in for the Xfce panel
+xfce-extra/xfce4-cpugraph-plugin 1.0.5-r2 1.0.90 1.0.91 1.1.0: A system load plug-in for the Xfce panel
 xfce-extra/xfce4-datetime-plugin 0.7.0 0.7.1 0.8.0: A panel plug-in with date, time and embedded calender
 xfce-extra/xfce4-dict 0.8.2: A dict.org querying application and panel plug-in for the Xfce desktop
 xfce-extra/xfce4-diskperf-plugin 2.6.1-r1 2.6.2: A panel plug-in for disk usage and performance statistics
-xfce-extra/xfce4-embed-plugin 1.6.0-r1: A plug-in for embedding arbitrary application windows into the Xfce panel
+xfce-extra/xfce4-embed-plugin 1.6.0-r2: A plug-in for embedding arbitrary application windows into the Xfce panel
 xfce-extra/xfce4-equake-plugin 1.3.8.1: Panel plug-in that displays information about earthquakes at regular intervals
-xfce-extra/xfce4-eyes-plugin 4.4.5-r1: A panel plug-in which adds classic eyes to your every step
+xfce-extra/xfce4-eyes-plugin 4.4.5-r2: A panel plug-in which adds classic eyes to your every step
 xfce-extra/xfce4-fsguard-plugin 1.1.0 1.1.1: A filesystem guard plug-in for the Xfce panel
 xfce-extra/xfce4-genmon-plugin 4.0.1 4.0.2: Cyclically spawned executable output on the panel
-xfce-extra/xfce4-hdaps 0.0.9-r1: A plugin to indicate the status of the IBM Hard Drive Active Protection System
+xfce-extra/xfce4-hdaps 0.0.9-r2: A plugin to indicate the status of the IBM Hard Drive Active Protection System
 xfce-extra/xfce4-indicator-plugin 2.3.4: A panel plugin that uses indicator-applet to show new messages
-xfce-extra/xfce4-kbdleds-plugin 0.0.6-r1: A panel plug-in to show state of Caps, Num and Scroll Lock keys
-xfce-extra/xfce4-mailwatch-plugin 1.2.0-r2: An mail notification panel plug-in for the Xfce desktop environment
+xfce-extra/xfce4-kbdleds-plugin 0.0.6-r2: A panel plug-in to show state of Caps, Num and Scroll Lock keys
+xfce-extra/xfce4-mailwatch-plugin 1.2.0-r3: An mail notification panel plug-in for the Xfce desktop environment
 xfce-extra/xfce4-mount-plugin 1.1.3: An mount plug-in for the Xfce panel
 xfce-extra/xfce4-mpc-plugin 0.5.1 0.5.2: Music Player Daemon (mpd) panel plugin
 xfce-extra/xfce4-netload-plugin 1.3.1 1.3.2: A network load plug-in for the Xfce panel
-xfce-extra/xfce4-notes-plugin 1.8.1-r1: Xfce4 panel sticky notes plugin
+xfce-extra/xfce4-notes-plugin 1.8.1-r2: Xfce4 panel sticky notes plugin
 xfce-extra/xfce4-notifyd 0.4.3-r1 0.4.4: Notification daemon for the Xfce desktop environment
 xfce-extra/xfce4-panel-profiles 1.0.8 1.0.9: Simple application to manage Xfce panel layouts
-xfce-extra/xfce4-places-plugin 1.7.0-r1 1.8.0 1.8.1: A panel plug-in to provide quick access to files, folders and removable media
+xfce-extra/xfce4-places-plugin 1.7.0-r2 1.8.0 1.8.1: A panel plug-in to provide quick access to files, folders and removable media
 xfce-extra/xfce4-power-manager 1.6.1 1.6.3 1.6.4 1.6.5: Power manager for the Xfce desktop environment
 xfce-extra/xfce4-pulseaudio-plugin 0.4.1 0.4.2: A panel plug-in for PulseAudio volume control
 xfce-extra/xfce4-screensaver 0.1.4-r1 0.1.6 0.1.7 0.1.8: Screen saver and locker (port of MATE screensaver)
@@ -19661,6 +19661,6 @@ xfce-extra/xfce4-volumed-pulse 0.2.3: Daemon to control volume up/down and mute 
 xfce-extra/xfce4-wavelan-plugin 0.6.0: A panel plug-in to display wireless interface statistics
 xfce-extra/xfce4-weather-plugin 0.9.1 0.10.0: A weather plug-in for the Xfce desktop environment
 xfce-extra/xfce4-whiskermenu-plugin 2.3.2 2.3.3: Alternate application launcher for Xfce
-xfce-extra/xfce4-windowck-plugin 0.4.6: Xfce plugin puts the maximized window title and windows buttons on the panel
+xfce-extra/xfce4-windowck-plugin 0.4.6-r1: Xfce plugin puts the maximized window title and windows buttons on the panel
 xfce-extra/xfce4-xkb-plugin 0.8.1: XKB layout switching panel plug-in for the Xfce desktop environment
 xfce-extra/xfdashboard 0.6.1 0.7.5: Maybe a GNOME shell like dashboard for the Xfce desktop environment

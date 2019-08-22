@@ -10,4 +10,4 @@ RDEPEND=dev-libs/openssl:0= net-analyzer/net-snmp:= dev-db/mysql-connector-c:0= 
 SLOT=0
 SRC_URI=https://www.cacti.net/downloads/spine/cacti-spine-1.2.5.tar.gz
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
-_md5_=f04c170d0f4bb8a91c017b187f12240a
+_md5_=feca08acbd9c133cd620e53ad896f731
