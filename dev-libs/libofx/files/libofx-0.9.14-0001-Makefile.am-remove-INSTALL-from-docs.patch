@@ -1,0 +1,28 @@
+From a8f965718de5c046fa64344b6bae521cbd5a6a20 Mon Sep 17 00:00:00 2001
+From: Bernd Waibel <waebbl@gmail.com>
+Date: Wed, 21 Aug 2019 10:50:46 +0200
+Subject: [PATCH] Makefile.am: remove INSTALL from docs
+
+Gentoo specific: Remove the missing INSTALL file from Makefile.am
+This could have been copied by eautoreconf, but unfortunately isn't.
+
+Signed-off-by: Bernd Waibel <waebbl@gmail.com>
+---
+ Makefile.am | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index 3a83560..fd81144 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -11,7 +11,6 @@ docdir = $(datadir)/doc/libofx
+ doc_DATA = \
+   AUTHORS \
+   COPYING \
+-  INSTALL \
+   NEWS \
+   README \
+   ChangeLog \
+-- 
+2.22.0
+
