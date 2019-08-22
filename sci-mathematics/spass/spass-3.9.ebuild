@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit versionator
+inherit toolchain-funcs
 
-MY_PV=$(delete_all_version_separators "${PV}")
+MY_PV=$(ver_rs 1- '' "${PV}")
 MY_P="${PN}${MY_PV}"
 
 DESCRIPTION="An Automated Theorem Prover for First-Order Logic with Equality"
