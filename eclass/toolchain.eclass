@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Maintainer: Toolchain Ninjas <toolchain@gentoo.org>
@@ -136,7 +136,7 @@ else
 	# is commonly used as a main compiler.
 	GCC_EBUILD_TEST_FLAG='regression-test'
 fi
-IUSE="${GCC_EBUILD_TEST_FLAG} vanilla +nls +nptl"
+IUSE="${GCC_EBUILD_TEST_FLAG} vanilla +nls"
 
 TC_FEATURES=()
 
@@ -145,7 +145,7 @@ tc_has_feature() {
 }
 
 if [[ ${PN} != "kgcc64" && ${PN} != gcc-* ]] ; then
-	IUSE+=" altivec debug +cxx +fortran" TC_FEATURES+=(fortran)
+	IUSE+=" altivec debug +cxx +fortran +nptl" TC_FEATURES+=(fortran nptl)
 	[[ -n ${PIE_VER} ]] && IUSE+=" nopie"
 	[[ -n ${HTB_VER} ]] && IUSE+=" boundschecking"
 	[[ -n ${D_VER}   ]] && IUSE+=" d"
@@ -1100,10 +1100,12 @@ toolchain_src_configure() {
 	# destructors", but apparently requires glibc.
 	case ${CTARGET} in
 	*-uclibc*)
-		confgcc+=(
-			--disable-__cxa_atexit
-			$(use_enable nptl tls)
-		)
+		if tc_has_feature nptl ; then
+			confgcc+=(
+				--disable-__cxa_atexit
+				$(use_enable nptl tls)
+			)
+		fi
 		tc_version_is_between 3.3 3.4 && confgcc+=( --enable-sjlj-exceptions )
 		if tc_version_is_between 3.4 4.3 ; then
 			confgcc+=( --enable-clocale=uclibc )
@@ -1238,10 +1240,11 @@ toolchain_src_configure() {
 	### library options
 
 	if tc_version_is_between 3.0 7.0 ; then
-		if ! is_gcj ; then
+		if is_gcj ; then
+			confgcc+=( --disable-gjdoc )
+			use awt && confgcc+=( --enable-java-awt=gtk )
+		else
 			confgcc+=( --disable-libgcj )
-		elif use awt ; then
-			confgcc+=( --enable-java-awt=gtk )
 		fi
 	fi
 
@@ -1961,8 +1964,8 @@ toolchain_src_install() {
 	# for people who are testing as non-root.
 	chown -R root:0 "${D}${LIBPATH}" 2>/dev/null
 
-	# Move pretty-printers to gdb datadir to shut ldconfig up
-	local py gdbdir=/usr/share/gdb/auto-load${LIBPATH/\/lib\//\/$(get_libdir)\/}
+	# Installing gdb pretty-printers into gdb-specific location.
+	local py gdbdir=/usr/share/gdb/auto-load${LIBPATH}
 	pushd "${D}${LIBPATH}" >/dev/null
 	for py in $(find . -name '*-gdb.py') ; do
 		local multidir=${py%/*}

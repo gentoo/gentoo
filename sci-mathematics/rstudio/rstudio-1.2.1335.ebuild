@@ -162,12 +162,12 @@ src_prepare() {
 		CMakeGlobals.txt src/cpp/desktop/CMakeLists.txt || die
 
 	# On Gentoo the rstudio-server configuration file is /etc/conf.d/rstudio-server.conf
-	sed -e "s@/etc/rstudio/rserver.conf@${EROOT}etc/conf.d/rstudio-server.conf@" \
+	sed -e "s@/etc/rstudio/rserver.conf@${EROOT}/etc/conf.d/rstudio-server.conf@" \
 		-i src/cpp/server/ServerOptions.cpp \
 		|| die
 
 	# Set the rsession.conf file location for Gentoo prefix
-	sed -e "s@/etc/rstudio/rsession.conf@${EROOT}etc/rstudio/rsession.conf@" \
+	sed -e "s@/etc/rstudio/rsession.conf@${EROOT}/etc/rstudio/rsession.conf@" \
 		-i src/cpp/session/SessionOptions.cpp \
 		|| die
 
@@ -223,7 +223,7 @@ src_install() {
 	dodir /etc/rstudio
 	insinto /etc/rstudio
 	doins "${FILESDIR}"/rsession.conf
-	dosym "${ROOT}etc/conf.d/rstudio-server.conf" "${ROOT}etc/rstudio/rserver.conf"
+	dosym "${ED}/etc/conf.d/rstudio-server.conf" "/etc/rstudio/rserver.conf"
 	if use dedicated || use server; then
 		dopamd src/cpp/server/extras/pam/rstudio
 		newinitd "${FILESDIR}"/rstudio-server.initd rstudio-server
