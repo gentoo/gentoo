@@ -23,7 +23,7 @@ RDEPEND="dev-libs/dbus-glib:=
 	x11-libs/pango:=
 	>=x11-libs/libwnck-2.30:1=
 	>=xfce-base/libxfce4util-4.10:=
-	>=xfce-base/libxfce4ui-4.11:=
+	>=xfce-base/libxfce4ui-4.11:=[gtk2(+)]
 	>=xfce-base/xfconf-4.10:=
 	startup-notification? ( x11-libs/startup-notification:= )
 	xcomposite? (
