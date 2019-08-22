@@ -25,6 +25,8 @@ IUSE="initramfs +redistributable savedconfig unknown-license"
 RESTRICT="binchecks strip
 	unknown-license? ( bindist )"
 
+REQUIRED_USE="initramfs? ( redistributable )"
+
 BDEPEND="initramfs? ( app-arch/cpio )"
 
 #add anything else that collides to this
