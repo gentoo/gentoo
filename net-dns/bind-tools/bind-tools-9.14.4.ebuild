@@ -47,6 +47,8 @@ PATCHES=( "${FILESDIR}"/sparc-pause-instruction.patch )
 src_prepare() {
 	default
 
+	export LDFLAGS="${LDFLAGS} -L${EPREFIX}/usr/$(get_libdir)"
+
 	# Disable tests for now, bug 406399
 	sed -i '/^SUBDIRS/s:tests::' bin/Makefile.in lib/Makefile.in || die
 
