@@ -1,0 +1,14 @@
+LOGFILE=/var/log/procmail.log
+TRAP=/usr/libexec/webmin/virtual-server/procmail-logger.pl
+VERBOSE=true
+
+:0wi
+VIRTUALMIN=|/etc/webmin/virtual-server/lookup-domain.pl $LOGNAME
+:0
+* ?test "$VIRTUALMIN" != ""
+{
+INCLUDERC=/etc/webmin/virtual-server/procmail/$VIRTUALMIN
+}
+DROPPRIVS=yes
+DEFAULT=$HOME/Maildir/
+ORGMAIL=$HOME/Maildir/

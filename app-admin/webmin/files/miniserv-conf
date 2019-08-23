@@ -1,0 +1,11 @@
+perllib=/usr/libexec/webmin
+PERLLIB=/usr/libexec/webmin
+pam=webmin
+pam_only=1
+pam_end=1
+pam_conv=
+no_pam=0
+logouttime=10
+error_handler_404=404.cgi
+error_handler_403=403.cgi
+error_handler_401=401.cgi
