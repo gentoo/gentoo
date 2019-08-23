@@ -1,0 +1,12 @@
+BDEPEND=sys-apps/texinfo >=virtual/emacs-23
+DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
+DESCRIPTION=Major mode for Povray scene files
+EAPI=7
+HOMEPAGE=https://github.com/emacsmirror/pov-mode
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3+ FDL-1.2+
+RDEPEND=>=virtual/emacs-23
+SLOT=0
+SRC_URI=https://github.com/emacsmirror/pov-mode/archive/v3.3.tar.gz -> pov-mode-3.3.tar.gz
+_eclasses_=elisp	f8026e46da659669c11e50c306d1aeb8	elisp-common	23f47b2e1de7abf387105eddd1318738
+_md5_=312448465a6b35031145ec99e081ed8e
