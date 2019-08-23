@@ -1175,7 +1175,7 @@ app-emacs/auto-complete 1.5.1-r1: Auto-complete package
 app-emacs/autoconf-mode 2.69: Emacs major modes for editing autoconf and autotest input
 app-emacs/basic-toolkit 0.3: Basic edit toolkit
 app-emacs/bbdb 2.35-r1 3.1.2: The Insidious Big Brother Database
-app-emacs/binclock 1.7-r1: Display the current time using a binary clock
+app-emacs/binclock 1.7-r1 1.11: Display the current time using a binary clock
 app-emacs/bison-mode 0.3: Emacs major mode for Bison, Yacc and Lex grammars
 app-emacs/blogmax 20110305 20170321: Blogging in Emacs
 app-emacs/bm 1.32_p20140214: Visible bookmarks in buffer
@@ -1274,7 +1274,7 @@ app-emacs/mailcrypt 3.5.9-r1: Provides a simple interface to public key cryptogr
 app-emacs/markdown-mode 2.1 2.3: Major mode for editing Markdown-formatted text files
 app-emacs/matlab 3.3.2_pre20130829: Major modes for MATLAB .m and .tlc files
 app-emacs/mediawiki 2.2.4.1: MediaWiki client for Emacs
-app-emacs/mew 6.5 6.6: Great MIME mail reader for Emacs/XEmacs
+app-emacs/mew 6.6 6.8: Great MIME mail reader for Emacs/XEmacs
 app-emacs/mic-paren 3.11: Advanced highlighting of matching parentheses
 app-emacs/mldonkey 0.0.4b-r1: An Emacs Lisp interface to the MLDonkey core
 app-emacs/mmm-mode 0.5.4: Enables the user to edit different parts of a file in different major modes
@@ -1316,7 +1316,7 @@ app-emacs/regress 1.5.1: Regression test harness for Emacs Lisp code
 app-emacs/remember 2.0: Simplify writing short notes in emacs
 app-emacs/revive 2.23: Resume Emacs
 app-emacs/rfcview 0.13: An Emacs mode that reformats IETF RFCs for display
-app-emacs/riece 8.0.0 9.0.0: A redesign of Liece IRC client
+app-emacs/riece 9.0.0: A redesign of Liece IRC client
 app-emacs/rnc-mode 1.0.6: An Emacs mode for editing Relax NG compact schema files
 app-emacs/rpm-spec-mode 0.15: Emacs mode to ease editing of RPM spec files
 app-emacs/ruby-mode 2.4.1 2.5.3 2.5.5 2.6.0 2.6.3: Emacs major mode for editing Ruby code
@@ -12582,7 +12582,7 @@ mail-client/neomutt 20180223 20180323 20180512 20180622 20180716 99999999: A sma
 mail-client/novell-groupwise-client 8.0.2.96933-r1: Novell Groupwise Client for Linux
 mail-client/pinepgp 0.18.0-r1: Use GPG/PGP with Pine
 mail-client/roundcube 1.3.8 1.3.9: A browser-based multilingual IMAP client with an application-like user interface
-mail-client/s-nail 14.9.13: Enhanced mailx-compatible mail client based on Hierloom mailx (nail)
+mail-client/s-nail 14.9.13 14.9.15: Enhanced mailx-compatible mail client based on Hierloom mailx (nail)
 mail-client/sylpheed 3.6.0 3.7.0: A lightweight email client and newsreader
 mail-client/thunderbird 52.9.1 60.8.0: Thunderbird Mail Client
 mail-client/thunderbird-bin 52.9.1-r1 60.8.0: Thunderbird Mail Client
