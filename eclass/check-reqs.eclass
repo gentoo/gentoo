@@ -7,7 +7,7 @@
 # @AUTHOR:
 # Bo Ørsted Andresen <zlin@gentoo.org>
 # Original Author: Ciaran McCreesh <ciaranm@gentoo.org>
-# @SUPPORTED_EAPIS: 0 1 2 3 4 5 6 7
+# @SUPPORTED_EAPIS: 4 5 6 7
 # @BLURB: Provides a uniform way of handling ebuild which have very high build requirements
 # @DESCRIPTION:
 # This eclass provides a uniform way of handling ebuilds which have very high
@@ -60,12 +60,12 @@ if [[ ! ${_CHECK_REQS_ECLASS_} ]]; then
 # @DESCRIPTION:
 # How much space is needed in /var? Eg.: CHECKREQS_DISK_VAR=3000M
 
-EXPORT_FUNCTIONS pkg_setup
-case "${EAPI:-0}" in
-	0|1|2|3) ;;
-	4|5|6|7) EXPORT_FUNCTIONS pkg_pretend ;;
-	*) die "EAPI=${EAPI} is not supported" ;;
+case ${EAPI:-0} in
+	4|5|6|7) ;;
+	*) die "${ECLASS}: EAPI=${EAPI:-0} is not supported" ;;
 esac
+
+EXPORT_FUNCTIONS pkg_pretend pkg_setup
 
 # Obsolete function executing all the checks and printing out results
 check_reqs() {
@@ -123,9 +123,6 @@ check-reqs_run() {
 	# some people are *censored*
 	unset CHECKREQS_FAILED
 
-	[[ ${EAPI:-0} == [0123] ]] && local MERGE_TYPE=""
-
-	# use != in test, because MERGE_TYPE only exists in EAPI 4 and later
 	if [[ ${MERGE_TYPE} != binary ]]; then
 		[[ -n ${CHECKREQS_MEMORY} ]] && \
 			check-reqs_memory \
@@ -140,12 +137,12 @@ check-reqs_run() {
 	if [[ ${MERGE_TYPE} != buildonly ]]; then
 		[[ -n ${CHECKREQS_DISK_USR} ]] && \
 			check-reqs_disk \
-				"${EROOT}/usr" \
+				"${EROOT%/}/usr" \
 				"${CHECKREQS_DISK_USR}"
 
 		[[ -n ${CHECKREQS_DISK_VAR} ]] && \
 			check-reqs_disk \
-				"${EROOT}/var" \
+				"${EROOT%/}/var" \
 				"${CHECKREQS_DISK_VAR}"
 	fi
 }
