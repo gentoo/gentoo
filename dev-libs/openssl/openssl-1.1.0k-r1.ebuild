@@ -53,6 +53,7 @@ SRC_URI+=" bindist? ( ${FEDORA_SRC_URI[@]} )"
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.0.2a-x32-asm.patch #542618
 	"${FILESDIR}"/${PN}-1.1.0j-parallel_install_fix.patch #671602
+	"${FILESDIR}"/${PN}-1.1.0k-fix-test_fuzz.patch
 )
 
 S="${WORKDIR}/${MY_P}"
