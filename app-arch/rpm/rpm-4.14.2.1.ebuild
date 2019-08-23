@@ -82,7 +82,7 @@ src_configure() {
 		$(use_enable python) \
 		$(use_with doc hackingdocs) \
 		$(use_enable nls) \
-		$(use_with dbus) \
+		$(use_enable dbus inhibit-plugin) \
 		$(use_with lua) \
 		$(use_with caps cap) \
 		$(use_with acl) \
