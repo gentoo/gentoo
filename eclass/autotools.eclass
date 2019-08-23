@@ -109,10 +109,7 @@ if [[ -n ${WANT_LIBTOOL} ]] ; then
 	export WANT_LIBTOOL
 fi
 
-# Force people (nicely) to upgrade to a newer version of gettext as
-# older ones are known to be crappy.  #496454
-AUTOTOOLS_DEPEND="!<sys-devel/gettext-0.18.1.1-r3
-	${_automake_atom}
+AUTOTOOLS_DEPEND="${_automake_atom}
 	${_autoconf_atom}
 	${_libtool_atom}"
 RDEPEND=""
