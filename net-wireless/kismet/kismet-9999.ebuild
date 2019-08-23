@@ -48,7 +48,7 @@ CDEPEND="
 			dev-libs/libnl:3
 			net-libs/libpcap
 			)
-	mousejack? ( dev-libs/libusb:= )
+	mousejack? ( virtual/libusb:1 )
 	dev-libs/protobuf-c:=
 	dev-libs/protobuf:=
 	dev-python/protobuf-python[${PYTHON_USEDEP}]
