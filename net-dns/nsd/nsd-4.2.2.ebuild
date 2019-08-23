@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools user systemd
+inherit autotools systemd
 
 # version voodoo needed only for non-release tarballs: 4.0.0_rc1 => 4.0.0rc1
 MY_PV="${PV/_beta/b}"
@@ -21,6 +21,8 @@ IUSE="bind8-stats dnstap ipv6 libevent minimal-responses mmap munin +nsec3 ratel
 S="${WORKDIR}/${MY_P}"
 
 RDEPEND="
+	acct-group/nsd
+	acct-user/nsd
 	dnstap? (
 		dev-libs/fstrm
 		dev-libs/protobuf-c
@@ -105,10 +107,6 @@ src_install() {
 }
 
 pkg_postinst() {
-	# Do this in postinst to ensure the uid/gid is consistent for binpkgs
-	enewgroup nsd
-	enewuser nsd -1 -1 -1 nsd
-
 	# database directory, writable by nsd for database updates and zone transfers
 	install -d -m 750 -o nsd -g nsd "${EROOT}"/var/db/nsd
 
