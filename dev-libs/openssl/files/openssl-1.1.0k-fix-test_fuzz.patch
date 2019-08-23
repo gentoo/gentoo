@@ -1,0 +1,19 @@
+Test fuzz was forgotten when
+
+   Perl: Use our own globbing wrapper rather than File::Glob::glob
+
+was backported to openssl-1.1.0 branch.
+
+Link: https://github.com/openssl/openssl/commit/b81cfa07ada850fd287d0a0c82ba280907f18ce7
+
+--- a/test/recipes/90-test_fuzz.t
++++ b/test/recipes/90-test_fuzz.t
+@@ -9,7 +9,7 @@
+ use strict;
+ use warnings;
+ 
+-use if $^O ne "VMS", 'File::Glob' => qw/glob/;
++use OpenSSL::Glob;
+ use OpenSSL::Test qw/:DEFAULT srctop_file/;
+ use OpenSSL::Test::Utils;
+ 
