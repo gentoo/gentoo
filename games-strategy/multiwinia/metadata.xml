@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<longdescription>
+		Welcome to Multiwinia: Survival of the Flattest – the ultimate retro-arcade multiplayer experience!
+		Choose from a selection of six hilariously fun, action-packed game modes, set in one of the most
+		beautiful game environs you will ever set eyes on.
+
+		Challenge your opponent to a game of stick-man slaughter, and watch digital-war unfold,
+		as your Multiwinian army struggles to complete a chosen task faster and better than your rivals.
+		Its fast, its furious, and only the flattest will survive!
+	</longdescription>
+</pkgmetadata>
