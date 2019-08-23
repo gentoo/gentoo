@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=0
@@ -6,7 +6,7 @@ EAPI=0
 inherit eutils
 
 DESCRIPTION="A portable assembler for processors of the PowerPC family"
-SRC_URI="http://devnull.owl.de/~frank/${PN}.tar.gz"
+SRC_URI="https://dev.gentoo.org/~mgorny/dist/${P}.tar.gz"
 HOMEPAGE="http://sun.hasenbraten.de/~frank/projects/"
 LICENSE="GPL-2"
 SLOT="0"
