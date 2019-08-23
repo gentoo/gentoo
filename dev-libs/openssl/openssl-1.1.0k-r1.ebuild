@@ -176,7 +176,9 @@ multilib_src_configure() {
 	# 'srp' was restricted until early 2017 as well.
 	# "disable-deprecated" option breaks too many consumers.
 	# Don't set it without thorough revdeps testing.
-	echoit \
+	# Make sure user flags don't get added *yet* to avoid duplicated
+	# flags.
+	CFLAGS= LDFLAGS= echoit \
 	./${config} \
 		${sslout} \
 		$(use cpu_flags_x86_sse2 || echo "no-sse2") \
@@ -203,16 +205,20 @@ multilib_src_configure() {
 		|| die
 
 	# Clean out hardcoded flags that openssl uses
-	# Fix quoting for sed
 	local DEFAULT_CFLAGS=$(grep ^CFLAGS= Makefile | LC_ALL=C sed \
 		-e 's:^CFLAGS=::' \
-		-e 's:-fomit-frame-pointer ::g' \
-		-e 's:-O[0-9] ::g' \
-		-e 's:-march=[-a-z0-9]* ::g' \
-		-e 's:-mcpu=[-a-z0-9]* ::g' \
-		-e 's:-m[a-z0-9]* ::g' \
-		-e 's:\\:\\\\:g' \
+		-e 's:\(^\| \)-fomit-frame-pointer::g' \
+		-e 's:\(^\| \)-O[^ ]*::g' \
+		-e 's:\(^\| \)-march=[^ ]*::g' \
+		-e 's:\(^\| \)-mcpu=[^ ]*::g' \
+		-e 's:\(^\| \)-m[^ ]*::g' \
+		-e 's:^ *::' \
+		-e 's: *$::' \
+		-e 's: \+: :g' \
+		-e 's:\\:\\\\:g'
 	)
+
+	# Now insert clean default flags with user flags
 	sed -i \
 		-e "/^CFLAGS=/s|=.*|=${DEFAULT_CFLAGS} ${CFLAGS}|" \
 		-e "/^LDFLAGS=/s|=[[:space:]]*$|=${LDFLAGS}|" \

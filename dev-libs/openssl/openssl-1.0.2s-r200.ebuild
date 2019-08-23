@@ -191,7 +191,9 @@ multilib_src_configure() {
 	[[ -z ${sslout} ]] && config="config"
 
 	# Fedora hobbled-EC needs 'no-ec2m', 'no-srp'
-	echoit \
+	# Make sure user flags don't get added *yet* to avoid duplicated
+	# flags.
+	CFLAGS= LDFLAGS= echoit \
 	./${config} \
 		${sslout} \
 		$(use cpu_flags_x86_sse2 || echo "no-sse2") \
@@ -220,17 +222,23 @@ multilib_src_configure() {
 		|| die
 
 	# Clean out hardcoded flags that openssl uses
-	local CFLAG=$(grep ^CFLAG= Makefile | LC_ALL=C sed \
+	local DEFAULT_CFLAGS=$(grep ^CFLAG= Makefile | LC_ALL=C sed \
 		-e 's:^CFLAG=::' \
-		-e 's:-fomit-frame-pointer ::g' \
-		-e 's:-O[0-9] ::g' \
-		-e 's:-march=[-a-z0-9]* ::g' \
-		-e 's:-mcpu=[-a-z0-9]* ::g' \
-		-e 's:-m[a-z0-9]* ::g' \
+		-e 's:\(^\| \)-fomit-frame-pointer::g' \
+		-e 's:\(^\| \)-O[^ ]*::g' \
+		-e 's:\(^\| \)-march=[^ ]*::g' \
+		-e 's:\(^\| \)-mcpu=[^ ]*::g' \
+		-e 's:\(^\| \)-m[^ ]*::g' \
+		-e 's:^ *::' \
+		-e 's: *$::' \
+		-e 's: \+: :g' \
+		-e 's:\\:\\\\:g'
 	)
+
+	# Now insert clean default flags with user flags
 	sed -i \
-		-e "/^CFLAG/s|=.*|=${CFLAG} ${CFLAGS}|" \
-		-e "/^SHARED_LDFLAGS=/s|$| ${LDFLAGS}|" \
+		-e "/^CFLAG/s|=.*|=${DEFAULT_CFLAGS} ${CFLAGS}|" \
+		-e "/^LDFLAGS=/s|=[[:space:]]*$|=${LDFLAGS}|" \
 		Makefile || die
 }
 
