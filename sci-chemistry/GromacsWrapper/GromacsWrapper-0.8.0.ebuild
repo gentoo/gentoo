@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_5,3_6} )
+PYTHON_COMPAT=( python2_7 python3_{5,6,7} )
 
 if [[ $PV = *9999* ]]; then
 	scm_eclass=git-r3
@@ -26,8 +26,9 @@ LICENSE="GPL-3 LGPL-3"
 SLOT="0"
 IUSE=""
 
-DEPEND="
-	>=dev-python/matplotlib-0.91.3[${PYTHON_USEDEP}]
-	>=sci-libs/scipy-0.9[${PYTHON_USEDEP}]
-	dev-python/six[${PYTHON_USEDEP}]"
+BDEPEND="
+	dev-python/six[${PYTHON_USEDEP}]
+	dev-python/numpy[${PYTHON_USEDEP}]
+	dev-python/matplotlib[${PYTHON_USEDEP}]
+	sci-libs/numkit[${PYTHON_USEDEP}]"
 RDEPEND="${DEPEND}"
