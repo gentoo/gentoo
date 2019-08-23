@@ -34,6 +34,7 @@ RDEPEND+=" !=dev-db/mysql-5.7.24*"
 RDEPEND+=" !=dev-db/mysql-5.7.25*"
 RDEPEND+=" !=dev-db/mysql-5.7.26-r0"
 RDEPEND+=" !=dev-db/mysql-5.7.27-r0"
+RDEPEND+=" !<dev-db/percona-server-5.7.26.29-r1"
 
 DOCS=( README )
 
