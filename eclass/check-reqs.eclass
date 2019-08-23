@@ -137,12 +137,12 @@ check-reqs_run() {
 	if [[ ${MERGE_TYPE} != buildonly ]]; then
 		[[ -n ${CHECKREQS_DISK_USR} ]] && \
 			check-reqs_disk \
-				"${EROOT}/usr" \
+				"${EROOT%/}/usr" \
 				"${CHECKREQS_DISK_USR}"
 
 		[[ -n ${CHECKREQS_DISK_VAR} ]] && \
 			check-reqs_disk \
-				"${EROOT}/var" \
+				"${EROOT%/}/var" \
 				"${CHECKREQS_DISK_VAR}"
 	fi
 }
