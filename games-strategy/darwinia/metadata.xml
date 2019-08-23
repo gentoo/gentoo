@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-	<email>games@gentoo.org</email>
-	<name>Gentoo Games Project</name>
-</maintainer>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<longdescription>
+		The world of Darwinia is a virtual themepark, running entirely inside a computer network
+		and populated by a sentient evolving life form called the Darwinians.
+
+		Unfortunately Darwinia has been overrun by a computer virus which has multiplied out of control.
+		Your task is to destroy the Viral Infection and save the Darwinians from extinction.
+	</longdescription>
 </pkgmetadata>
