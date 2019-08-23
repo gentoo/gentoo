@@ -1,0 +1,24 @@
+https://bugs.gentoo.org/692644
+
+--- a/include/mysql.h.pp
++++ b/include/mysql.h.pp
+@@ -175,7 +175,7 @@ struct rand_struct {
+   unsigned long seed1, seed2, max_value;
+   double max_value_dbl;
+ };
+-#include <mysql/udf_registration_types.h>
++#include "mysql/udf_registration_types.h"
+ enum Item_result {
+   INVALID_RESULT = -1,
+   STRING_RESULT = 0,
+--- a/include/mysql_com.h
++++ b/include/mysql_com.h
+@@ -1002,7 +1002,7 @@ struct rand_struct {
+ };
+ 
+ /* Include the types here so existing UDFs can keep compiling */
+-#include <mysql/udf_registration_types.h>
++#include "mysql/udf_registration_types.h"
+ 
+ /**
+   @addtogroup group_cs_compresson_constants Constants when using compression
