@@ -41,6 +41,7 @@ S="${WORKDIR}/mysql-${PV}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-8.0.17-always-build-decompress-utilities.patch
+	"${FILESDIR}"/${PN}-8.0.17-use-relative-include-path-for-udf_registration_types-h.patch
 	"${FILESDIR}"/${PN}-8.0.17-libressl.patch
 )
 
