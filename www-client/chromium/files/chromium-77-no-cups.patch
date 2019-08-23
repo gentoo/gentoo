@@ -1,0 +1,42 @@
+From f768afdd3104e7da663aa82e1e8f969aea3f85c3 Mon Sep 17 00:00:00 2001
+From: Lei Zhang <thestig@chromium.org>
+Date: Thu, 22 Aug 2019 11:44:27 -0700
+Subject: [PATCH] Handle unsupported configs in CreatePrinterHandlerTaskRunner().
+
+CreatePrinterHandlerTaskRunner(), which was added in
+https://crrev.com/658397, used ifdefs to only handle the supported build
+configs. Add a #else case as a catch-all to conservatively handle the
+unsupported configs. Since it is only a couple lines of trivial code,
+doing this does not create much of a maintenance burden.
+
+(backported to chromium-77)
+
+Bug: 990727
+Change-Id: I07bd21abaeffc8223e88b519c3891185d5d2be12
+---
+
+diff --git a/chrome/browser/ui/webui/print_preview/local_printer_handler_default.cc b/chrome/browser/ui/webui/print_preview/local_printer_handler_default.cc
+index a1f3fd3..6e81f5e 100644
+--- a/chrome/browser/ui/webui/print_preview/local_printer_handler_default.cc
++++ b/chrome/browser/ui/webui/print_preview/local_printer_handler_default.cc
+@@ -33,12 +33,15 @@ scoped_refptr<base::TaskRunner> CreatePrinterHandlerTaskRunner() {
+   static constexpr base::TaskTraits kTraits = {
+       base::MayBlock(), base::TaskPriority::USER_VISIBLE};
+
+-#if defined(OS_WIN)
+-  // Windows drivers are likely not thread-safe.
+-  return base::CreateSingleThreadTaskRunnerWithTraits(kTraits);
+-#elif defined(USE_CUPS)
++#if defined(USE_CUPS)
+   // CUPS is thread safe.
+-  return base::CreateTaskRunnerWithTraits(kTraits);
++  return base::CreateTaskRunner(kTraits);
++#elif defined(OS_WIN)
++  // Windows drivers are likely not thread-safe.
++  return base::CreateSingleThreadTaskRunner(kTraits);
++#else
++  // Be conservative on unsupported platforms.
++  return base::CreateSingleThreadTaskRunner(kTraits);
+ #endif
+ }
+
