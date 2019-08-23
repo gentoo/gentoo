@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI="7"
 
 inherit flag-o-matic toolchain-funcs multilib multilib-minimal
 
@@ -18,7 +18,8 @@ BINDIST_PATCH_SET="openssl-1.1.1c-bindist-1.0.tar.xz"
 
 DESCRIPTION="full-strength general purpose cryptography library (including SSL and TLS)"
 HOMEPAGE="https://www.openssl.org/"
-SRC_URI="mirror://openssl/source/${MY_P}.tar.gz"
+SRC_URI="mirror://openssl/source/${MY_P}.tar.gz
+	bindist? ( https://dev.gentoo.org/~whissi/dist/openssl/${BINDIST_PATCH_SET} )"
 
 LICENSE="openssl"
 SLOT="0/1.1" # .so version of libssl/libcrypto
@@ -42,8 +43,6 @@ PDEPEND="app-misc/ca-certificates"
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.1.0j-parallel_install_fix.patch #671602
 )
-
-SRC_URI+=" bindist? ( https://dev.gentoo.org/~whissi/dist/openssl/${BINDIST_PATCH_SET} )"
 
 S="${WORKDIR}/${MY_P}"
 
