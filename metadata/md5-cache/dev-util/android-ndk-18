@@ -9,5 +9,5 @@ RDEPEND=>=dev-util/android-sdk-update-manager-10 >=sys-devel/make-3.81 sys-libs/
 RESTRICT=mirror strip installsources test
 SLOT=0
 SRC_URI=https://dl.google.com/android/repository/android-ndk-r18-linux-x86_64.zip
-_eclasses_=check-reqs	bae50193798868d09ca5083a4c45b3a0
+_eclasses_=check-reqs	5e40a693d9c828e8f3655184116e8b73
 _md5_=c0496467c4e70815f895fdacff9b7483

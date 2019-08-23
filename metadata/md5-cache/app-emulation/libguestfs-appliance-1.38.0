@@ -8,5 +8,5 @@ LICENSE=GPL-2 LGPL-2
 RDEPEND=!<app-emulation/libguestfs-1.38.0
 SLOT=0
 SRC_URI=http://libguestfs.org/download/binaries/appliance/appliance-1.38.0.tar.xz
-_eclasses_=check-reqs	bae50193798868d09ca5083a4c45b3a0
+_eclasses_=check-reqs	5e40a693d9c828e8f3655184116e8b73
 _md5_=620c84be8dd5e26fc666fa152a4ec8a5
