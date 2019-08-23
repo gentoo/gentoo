@@ -1,0 +1,33 @@
+From 6c9bbf0d91688e831f8f19232e18619bfc57e12e Mon Sep 17 00:00:00 2001
+From: Mart Raudsepp <leio@gentoo.org>
+Date: Fri, 23 Aug 2019 21:11:57 +0300
+Subject: [PATCH] meson: Force disable apache/php using tests for now
+
+We had them disabled in autotools with a sed. Keep them disabled for now
+in meson port as well. Should be revisited at some point.
+---
+ meson.build | 7 ++-----
+ 1 file changed, 2 insertions(+), 5 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index 89837c15..f0e34cb0 100644
+--- a/meson.build
++++ b/meson.build
+@@ -162,12 +162,9 @@ endif
+ #
+ # The summary is that for the configuration parsing we will use the apachectl,
+ # but for running the tests we will use the httpd binary.
+-apachectl = find_program('apachectl', '/sbin/apachectl', '/usr/sbin/apachectl', required : false)
++apachectl = disabler()
+ # This abomination is a result of https://github.com/mesonbuild/meson/issues/1576
+-apache_httpd2 = find_program('httpd2', 'httpd', 'apache2', 'apache',
+-             '/sbin/httpd2', '/sbin/httpd', '/sbin/apache2', '/sbin/apache',
+-             '/usr/sbin/httpd2', '/usr/sbin/httpd', '/usr/sbin/apache2', '/usr/sbin/apache',
+-             required : false)
++apache_httpd2 = disabler()
+ have_apache=false
+ apache_httpd2_version = ''
+ if apache_httpd2.found() and apachectl.found()
+-- 
+2.20.1
+
