@@ -30,5 +30,3 @@ RDEPEND="${DEPEND}
 	<dev-python/requests-3[${PYTHON_USEDEP}]
 	>=dev-python/semantic_version-2.5.0[${PYTHON_USEDEP}]
 	<dev-python/semantic_version-3[${PYTHON_USEDEP}]"
-
-PATCHES=( "${FILESDIR}/${P}-Make-scripts-compatible-with-py2-and-py3.patch" )
