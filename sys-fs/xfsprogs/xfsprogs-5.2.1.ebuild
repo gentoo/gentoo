@@ -1,9 +1,9 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit toolchain-funcs multilib systemd usr-ldscript
+inherit flag-o-matic toolchain-funcs systemd
 
 DESCRIPTION="xfs filesystem utilities"
 HOMEPAGE="https://xfs.wiki.kernel.org/"
@@ -12,7 +12,7 @@ SRC_URI="https://www.kernel.org/pub/linux/utils/fs/xfs/${PN}/${P}.tar.xz"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
-IUSE="icu libedit nls readline static-libs"
+IUSE="icu libedit nls readline"
 
 LIB_DEPEND=">=sys-apps/util-linux-2.17.2[static-libs(+)]
 	icu? ( dev-libs/icu:=[static-libs(+)] )
@@ -20,8 +20,10 @@ LIB_DEPEND=">=sys-apps/util-linux-2.17.2[static-libs(+)]
 	!readline? ( libedit? ( dev-libs/libedit[static-libs(+)] ) )"
 RDEPEND="${LIB_DEPEND//\[static-libs(+)]}
 	!<sys-fs/xfsdump-3"
-DEPEND="${RDEPEND}
-	nls? ( sys-devel/gettext )"
+DEPEND="${RDEPEND}"
+BDEPEND="
+	nls? ( sys-devel/gettext )
+"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.9.0-underlinking.patch
@@ -39,14 +41,13 @@ pkg_setup() {
 src_prepare() {
 	default
 
-	# Clear out -static from all flags since we want to link against dynamic xfs libs.
+	# Fix doc dir
 	sed -i \
 		-e "/^PKG_DOC_DIR/s:@pkg_name@:${PF}:" \
 		include/builddefs.in || die
+
 	# Don't install compressed docs
 	sed 's@\(CHANGES\)\.gz[[:space:]]@\1 @' -i doc/Makefile || die
-	find -name Makefile -exec \
-		sed -i -r -e '/^LLDFLAGS [+]?= -static(-libtool-libs)?$/d' {} +
 }
 
 src_configure() {
@@ -54,8 +55,10 @@ src_configure() {
 	export OPTIMIZER=${CFLAGS}
 	unset PLATFORM # if set in user env, this breaks configure
 
+	# Upstream does NOT support --disable-static anymore,
+	# https://www.spinics.net/lists/linux-xfs/msg30185.html
+	# https://www.spinics.net/lists/linux-xfs/msg30272.html
 	local myconf=(
-		--disable-lto #655638
 		--enable-blkid
 		--with-crond-dir="${EPREFIX}/etc/cron.d"
 		--with-systemd-unit-dir="$(systemd_get_systemunitdir)"
@@ -63,23 +66,40 @@ src_configure() {
 		$(use_enable nls gettext)
 		$(use_enable readline)
 		$(usex readline --disable-editline $(use_enable libedit editline))
-		$(use_enable static-libs static)
 	)
 
-	econf "${myconf[@]}"
+	if is-flagq -fno-lto ; then
+		einfo "LTO disabled via {C,CXX,F,FC}FLAGS"
+		myconf+=( --disable-lto )
+	else
+		if is-flagq -flto ; then
+			einfo "LTO forced via {C,CXX,F,FC}FLAGS"
+			myconf+=( --enable-lto )
+		elif use amd64 || use x86  ; then
+			# match upstream default
+			myconf+=( --enable-lto )
+		else
+			# LTO can cause problems on some architectures, bug 655638
+			myconf+=( --disable-lto )
+		fi
+	fi
 
-	MAKEOPTS+=" V=1"
+	econf "${myconf[@]}"
+}
+
+src_compile() {
+	# Unset {CF,LD}FLAGS which are already set via configure
+	# but will cause problems when available during make.
+	# Fixed in >=xfsprogs-5.3.0.
+	unset CFLAGS LDFLAGS
+
+	emake V=1
 }
 
 src_install() {
-	emake DIST_ROOT="${ED}" install
-	# parallel install fails on this target for >=xfsprogs-3.2.0
-	emake -j1 DIST_ROOT="${ED}" install-dev
+	emake DIST_ROOT="${ED}" install 
+	emake DIST_ROOT="${ED}" install-dev
 
-	# handle is for xfsdump, the rest for xfsprogs
-	gen_usr_ldscript -a handle xcmd xfs xlog frog
 	# removing unnecessary .la files if not needed
-	if ! use static-libs ; then
-		find "${ED}" -name '*.la' -delete || die
-	fi
+	find "${ED}" -type f -name '*.la' -delete || die
 }
