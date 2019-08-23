@@ -5122,8 +5122,8 @@ dev-libs/openct 0.6.20-r4: library for accessing smart card terminals
 dev-libs/openobex 1.7.2-r1 1.7.2-r2: Implementation of the OBEX protocol used for transferring data to mobile devices
 dev-libs/opensc 0.19.0-r2: Libraries and applications to access smartcards
 dev-libs/openspecfun 0.5.1: A collection of special mathematical functions
-dev-libs/openssl 1.0.2r 1.0.2s 1.0.2s-r200 1.1.0j-r1 1.1.0k 1.1.1b-r2 1.1.1c: full-strength general purpose cryptography library (including SSL and TLS)
-dev-libs/openssl-compat 0.9.8z_p8-r1 1.0.2r: full-strength general purpose cryptography library (including SSL and TLS)
+dev-libs/openssl 1.0.2r 1.0.2s-r1 1.0.2s-r200 1.1.0k-r1 1.1.1c-r1: full-strength general purpose cryptography library (including SSL and TLS)
+dev-libs/openssl-compat 0.9.8z_p8-r1 1.0.2r 1.0.2s: full-strength general purpose cryptography library (including SSL and TLS)
 dev-libs/ossp-uuid 1.6.2-r6: An ISO-C:1999 API with CLI for generating DCE, ISO/IEC and RFC compliant UUID
 dev-libs/pakchois 0.4-r2: PaKChoiS - PKCS #11 wrapper library
 dev-libs/papi 5.3.0 5.4.0 5.5.1: Performance Application Programming Interface
@@ -7313,7 +7313,7 @@ dev-php/pecl-oauth 1.2.3-r5 2.0.2-r2 2.0.3: OAuth is an authorization protocol b
 dev-php/pecl-pam 1.0.3-r3: This extension provides PAM (Pluggable Authentication Modules) integration
 dev-php/pecl-propro 1.0.2-r1 1.0.2-r2 2.0.1-r1 2.1.0: A reusable property proxy API for PHP
 dev-php/pecl-ps 1.3.7-r1 1.3.7-r2 1.4.0 1.4.1: PHP extension for creating PostScript files
-dev-php/pecl-radius 1.3.0-r1 1.4.0_beta1-r2: Provides support for RADIUS authentication (RFC 2865) and accounting (RFC 2866)
+dev-php/pecl-radius 1.4.0_beta1-r2: Provides support for RADIUS authentication (RFC 2865) and accounting (RFC 2866)
 dev-php/pecl-raphf 1.1.2-r1 1.1.2-r2 2.0.0-r1 2.0.0-r2: A reusable, persistent handle and resource factory API
 dev-php/pecl-redis 3.1.6-r1 4.2.0 4.3.0: PHP extension for interfacing with Redis
 dev-php/pecl-rrd 1.1.3-r2 2.0.1-r3: RRDtool bindings for PHP
@@ -15475,7 +15475,7 @@ net-misc/linux-eoip 0.5: Linux support for proprietary MIkrotik EoIP protocol
 net-misc/linuxptp 1.8 2.0: The Linux Precision Time Protocol (PTP) implementation
 net-misc/liveice 2000530-r2: Live Source Client For IceCast
 net-misc/lksctp-tools 1.0.17 1.0.18-r1: Tools for Linux Kernel Stream Control Transmission Protocol implementation
-net-misc/lldpd 0.9.3-r1 1.0.1 1.0.1-r1 1.0.3: Implementation of IEEE 802.1ab (LLDP)
+net-misc/lldpd 1.0.3 1.0.4: Implementation of IEEE 802.1ab (LLDP)
 net-misc/mcproxy 1.1.1-r1: A multicast proxy for IGMP/MLD
 net-misc/megatools 1.9.98 1.10.2 1.10.2-r1: Command line tools and C library for accessing Mega cloud storage
 net-misc/memcached 1.5.14 1.5.16: High-performance, distributed memory object caching system
@@ -18501,7 +18501,7 @@ www-apps/gitea 1.8.0 1.8.2 1.8.3: A painless self-hosted Git service
 www-apps/gitit 0.12.1.1 0.12.1.1-r2 0.12.2 0.12.2.1: Wiki using happstack, git or darcs, and pandoc
 www-apps/grafana-bin 5.4.3-r1 5.4.4 6.1.6 6.2.5 6.3.2 6.3.3: Gorgeous metric viz, dashboards & editors for Graphite, InfluxDB & OpenTSDB
 www-apps/groupoffice 3.7.52 4.0.47 4.0.97 4.0.144 4.1.7: Group-Office is a powerful modular Intranet application framework
-www-apps/hiawatha-monitor 1.3-r1: Monitoring application for www-servers/hiawatha
+www-apps/hiawatha-monitor 1.6: Monitoring application for www-servers/hiawatha
 www-apps/hugo 0.46 0.48: A Fast and Flexible Static Site Generator built with love in Go
 www-apps/icingaweb2 2.6.2 2.6.3 2.7.0 2.7.1 9999: Icinga Web 2 - Frontend for icinga2
 www-apps/icingaweb2-module-director 1.6.2 9999: Icinga Web 2 plugin for configuration
