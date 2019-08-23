@@ -39,7 +39,7 @@ SLOT="0"
 KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 # -berkdb by default re bug 602682
 IUSE="-berkdb +caps dlz dnstap doc dnsrps fixed-rrset geoip gost gssapi
-json ldap libressl lmdb mysql odbc postgres python selinux ssl static-libs
+json ldap libressl lmdb mysql odbc postgres python selinux static-libs
 urandom xml +zlib"
 # sdb-ldap - patch broken
 # no PKCS11 currently as it requires OpenSSL to be patched, also see bug 409687
@@ -53,11 +53,8 @@ REQUIRED_USE="
 	python? ( ${PYTHON_REQUIRED_USE} )"
 # sdb-ldap? ( dlz )
 
-DEPEND="
-	ssl? (
-		!libressl? ( dev-libs/openssl:0[-bindist] )
-		libressl? ( dev-libs/libressl )
-	)
+DEPEND="!libressl? ( dev-libs/openssl:0[-bindist] )
+	libressl? ( dev-libs/libressl )
 	mysql? ( dev-db/mysql-connector-c:0= )
 	odbc? ( >=dev-db/unixODBC-2.2.6 )
 	ldap? ( net-nds/openldap )
@@ -154,7 +151,6 @@ src_configure() {
 		$(use_with postgres dlz-postgres)
 		$(use_with lmdb)
 		$(use_with python)
-		$(use_with ssl openssl "${EPREFIX}"/usr)
 		$(use_with xml libxml2)
 		$(use_with zlib)
 	)
