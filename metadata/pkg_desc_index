@@ -269,7 +269,7 @@ app-admin/pydf 12-r1: Enhanced df with colors
 app-admin/qpage 3.3: Sends messages to an alphanumeric pager via TAP protocol
 app-admin/qtpass 1.2.3: multi-platform GUI for pass, the standard unix password manager
 app-admin/quickswitch 1.05: Utility to switch network profiles on the fly
-app-admin/r10k 3.2.0 3.3.0: Puppet environment and module deployment
+app-admin/r10k 3.2.0 3.3.0 3.3.1: Puppet environment and module deployment
 app-admin/radmind 1.15.1: Command-line tools and server to remotely administer multiple Unix filesystems
 app-admin/ranpwd 1.2: Generate random passwords using the in-kernel cryptographically
 app-admin/rasdaemon 0.6.1-r1 0.6.2-r1 0.6.2-r3 0.6.2-r4: Reliability, Availability and Serviceability logging tool
