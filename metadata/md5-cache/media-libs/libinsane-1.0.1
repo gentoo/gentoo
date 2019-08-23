@@ -1,0 +1,15 @@
+BDEPEND=virtual/pkgconfig || ( dev-lang/vala:0.46 dev-lang/vala:0.44 dev-lang/vala:0.42 dev-lang/vala:0.40 dev-lang/vala:0.36 ) >=dev-util/meson-0.48.2 >=dev-util/ninja-1.7.2
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=media-gfx/sane-backends doc? ( app-doc/doxygen dev-util/gtk-doc ) test? ( dev-util/cunit dev-util/valgrind )
+DESCRIPTION=Crossplatform access to image scanners
+EAPI=7
+HOMEPAGE=https://gitlab.gnome.org/World/OpenPaperwork/libinsane
+IUSE=doc gtk-doc test
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-3+
+RDEPEND=media-gfx/sane-backends
+RESTRICT=test
+SLOT=0
+SRC_URI=https://gitlab.gnome.org/World/OpenPaperwork/libinsane/-/archive/1.0.1/libinsane-1.0.1.tar.gz
+_eclasses_=eutils	6e6c2737b59a4b982de6fb3ecefd87f8	meson	b5ee7a05833ab91225acf30ffdeed006	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	08e17157a6807add7db1f8d01e7e391f	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56	vala	682da46cf615b9f7a7d3680058139dcd
+_md5_=eeac614dfb8d191af0c0cd61fe7ebcda
