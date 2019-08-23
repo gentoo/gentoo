@@ -14090,7 +14090,7 @@ media-sound/mpd 0.21.10 0.21.11 0.21.12 0.21.13 0.21.14: The Music Player Daemon
 media-sound/mpdas 0.4.2: AudioScrobbler client for MPD written in C++
 media-sound/mpdscribble 0.22 9999: An MPD client that submits information to Audioscrobbler
 media-sound/mpfc 1.3.8.1-r2: Music Player For Console
-media-sound/mpg123 1.25.10-r1 1.25.11: a realtime MPEG 1.0/2.0/2.5 audio player for layers 1, 2 and 3
+media-sound/mpg123 1.25.10-r1 1.25.11 1.25.12: a realtime MPEG 1.0/2.0/2.5 audio player for layers 1, 2 and 3
 media-sound/mpg321 0.3.2: A realtime MPEG 1.0/2.0/2.5 audio player for layers 1, 2 and 3
 media-sound/mplay 0.80: A Curses front-end for mplayer
 media-sound/mps-youtube 0.2.7.1 0.2.8 9999: Terminal-based YouTube player and downloader
@@ -15047,7 +15047,7 @@ net-libs/gnutls 3.6.7 3.6.9: A TLS 1.2 and SSL 3.0 implementation for the GNU pr
 net-libs/google-cloud-cpp 0.2.0-r1 0.5.0 0.9.0 0.10.0: Google Cloud Client Library for C++
 net-libs/grpc 1.16.1 1.17.1 1.18.0 1.19.0 1.20.1-r1 1.21.1-r1 1.22.1 1.23.0: Modern open source high performance RPC framework
 net-libs/gsnmp 0.3.0: An SNMP library based on glib and gnet
-net-libs/gsoap 2.8.84 2.8.87: A cross-platform open source C and C++ SDK for SOAP/XML Web services
+net-libs/gsoap 2.8.84 2.8.87 2.8.91: A cross-platform open source C and C++ SDK for SOAP/XML Web services
 net-libs/gssdp 1.0.3: A GObject-based API for handling resource discovery and announcement over SSDP
 net-libs/gtk-vnc 0.9.0: VNC viewer widget for GTK
 net-libs/gupnp 1.0.3: An object-oriented framework for creating UPnP devs and control points
