@@ -2570,7 +2570,7 @@ app-text/sdcv 0.5.2: Console version of Stardict program
 app-text/sgml-common 0.6.3-r6: Base ISO character entities and utilities for SGML
 app-text/sgmltools-lite 3.0.3-r14: Python interface to SGML software in a DocBook/OpenJade env
 app-text/sgrep 1.94a: Use structural criteria to grep and index text, SGML, XML and HTML and filter
-app-text/sigil 0.9.8 0.9.13 0.9.16: Multi-platform WYSIWYG ebook editor for ePub format
+app-text/sigil 0.9.13 0.9.16 0.9.17: Multi-platform WYSIWYG ebook editor for ePub format
 app-text/silvercity 0.9.7-r1: A lexical analyser for many languages
 app-text/simple-fb2-reader 1.1.2: A simple gtk3 reader for fb2 ebooks
 app-text/sloccount 2.26-r3: Tools for counting Source Lines of Code (SLOC) for a large number of languages
