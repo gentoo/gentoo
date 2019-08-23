@@ -1,9 +1,9 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 
-inherit eutils flag-o-matic toolchain-funcs multilib multilib-minimal
+inherit flag-o-matic toolchain-funcs multilib multilib-minimal
 
 # openssl-1.0.2-patches-1.6 contain additional CVE patches
 # which got fixed with this release.
@@ -22,16 +22,16 @@ SRC_URI="mirror://openssl/source/${MY_P}.tar.gz
 
 LICENSE="openssl"
 SLOT="1.0.0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-linux"
 IUSE="+asm bindist gmp kerberos rfc3779 sctp cpu_flags_x86_sse2 sslv2 +sslv3 static-libs test +tls-heartbeat vanilla zlib"
 RESTRICT="!bindist? ( bindist )"
 
-RDEPEND=">=app-misc/c_rehash-1.7-r1
-	gmp? ( >=dev-libs/gmp-5.1.3-r1[static-libs(+)?,${MULTILIB_USEDEP}] )
-	zlib? ( >=sys-libs/zlib-1.2.8-r1[static-libs(+)?,${MULTILIB_USEDEP}] )
+RDEPEND="gmp? ( >=dev-libs/gmp-5.1.3-r1[static-libs(+)?,${MULTILIB_USEDEP}] )
 	kerberos? ( >=app-crypt/mit-krb5-1.11.4[${MULTILIB_USEDEP}] )
+	zlib? ( >=sys-libs/zlib-1.2.8-r1[static-libs(+)?,${MULTILIB_USEDEP}] )
 	!=dev-libs/openssl-1.0.2*:0"
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	>=dev-lang/perl-5
 	sctp? ( >=net-misc/lksctp-tools-1.0.12 )
 	test? (
@@ -100,7 +100,9 @@ src_prepare() {
 	rm -f Makefile
 
 	if ! use vanilla ; then
-		eapply "${WORKDIR}"/patch/*.patch
+		if [[ $(declare -p PATCHES 2>/dev/null) == "declare -a"* ]] ; then
+			[[ ${#PATCHES[@]} -gt 0 ]] && eapply "${PATCHES[@]}"
+		fi
 	fi
 
 	eapply_user
@@ -114,7 +116,7 @@ src_prepare() {
 		-e '/^MAKEDEPPROG/s:=.*:=$(CC):' \
 		-e $(has noman FEATURES \
 			&& echo '/^install:/s:install_docs::' \
-			|| echo '/^MANDIR=/s:=.*:='${EPREFIX%/}'/usr/share/man:') \
+			|| echo '/^MANDIR=/s:=.*:='${EPREFIX}'/usr/share/man:') \
 		Makefile.org \
 		|| die
 	# show the actual commands in the log
@@ -139,7 +141,7 @@ src_prepare() {
 	append-flags $(test-flags-CC -Wa,--noexecstack)
 	append-cppflags -DOPENSSL_NO_BUF_FREELISTS
 
-	sed -i '1s,^:$,#!'${EPREFIX%/}'/usr/bin/perl,' Configure #141906
+	sed -i '1s,^:$,#!'${EPREFIX}'/usr/bin/perl,' Configure #141906
 	# The config script does stupid stuff to prompt the user.  Kill it.
 	sed -i '/stty -icanon min 0 time 50; read waste/d' config || die
 	./config --test-sanity || die "I AM NOT SANE"
@@ -189,7 +191,9 @@ multilib_src_configure() {
 	[[ -z ${sslout} ]] && config="config"
 
 	# Fedora hobbled-EC needs 'no-ec2m', 'no-srp'
-	echoit \
+	# Make sure user flags don't get added *yet* to avoid duplicated
+	# flags.
+	CFLAGS= LDFLAGS= echoit \
 	./${config} \
 		${sslout} \
 		$(use cpu_flags_x86_sse2 || echo "no-sse2") \
@@ -211,24 +215,30 @@ multilib_src_configure() {
 		$(use_ssl sslv3 ssl3) \
 		$(use_ssl tls-heartbeat heartbeats) \
 		$(use_ssl zlib) \
-		--prefix="${EPREFIX%/}"/usr \
-		--openssldir="${EPREFIX%/}"${SSL_CNF_DIR} \
+		--prefix="${EPREFIX}"/usr \
+		--openssldir="${EPREFIX}"${SSL_CNF_DIR} \
 		--libdir=$(get_libdir) \
 		shared threads \
 		|| die
 
 	# Clean out hardcoded flags that openssl uses
-	local CFLAG=$(grep ^CFLAG= Makefile | LC_ALL=C sed \
+	local DEFAULT_CFLAGS=$(grep ^CFLAG= Makefile | LC_ALL=C sed \
 		-e 's:^CFLAG=::' \
-		-e 's:-fomit-frame-pointer ::g' \
-		-e 's:-O[0-9] ::g' \
-		-e 's:-march=[-a-z0-9]* ::g' \
-		-e 's:-mcpu=[-a-z0-9]* ::g' \
-		-e 's:-m[a-z0-9]* ::g' \
+		-e 's:\(^\| \)-fomit-frame-pointer::g' \
+		-e 's:\(^\| \)-O[^ ]*::g' \
+		-e 's:\(^\| \)-march=[^ ]*::g' \
+		-e 's:\(^\| \)-mcpu=[^ ]*::g' \
+		-e 's:\(^\| \)-m[^ ]*::g' \
+		-e 's:^ *::' \
+		-e 's: *$::' \
+		-e 's: \+: :g' \
+		-e 's:\\:\\\\:g'
 	)
+
+	# Now insert clean default flags with user flags
 	sed -i \
-		-e "/^CFLAG/s|=.*|=${CFLAG} ${CFLAGS}|" \
-		-e "/^SHARED_LDFLAGS=/s|$| ${LDFLAGS}|" \
+		-e "/^CFLAG/s|=.*|=${DEFAULT_CFLAGS} ${CFLAGS}|" \
+		-e "/^LDFLAGS=/s|=[[:space:]]*$|=${LDFLAGS}|" \
 		Makefile || die
 }
 

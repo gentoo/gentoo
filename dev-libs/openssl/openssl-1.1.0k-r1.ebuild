@@ -1,28 +1,28 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI="7"
 
 inherit flag-o-matic toolchain-funcs multilib multilib-minimal
 
 MY_P=${P/_/-}
 
 # This patch set is based on the following files from Fedora 31,
-# see https://src.fedoraproject.org/rpms/openssl/blob/f31/f/openssl.spec
+# see https://src.fedoraproject.org/rpms/openssl/blob/f28/f/openssl.spec
 # for more details:
 # - hobble-openssl (SOURCE1)
 # - ec_curve.c (SOURCE12)
 # - ectest.c (SOURCE13)
-# - openssl-1.1.1-ec-curves.patch (PATCH37) -- MODIFIED
-BINDIST_PATCH_SET="openssl-1.1.1c-bindist-1.0.tar.xz"
+# - openssl-1.1.0-ec-curves.patch (PATCH37) -- MODIFIED
+BINDIST_PATCH_SET="openssl-1.1.0k-bindist-1.0.tar.xz"
 
 DESCRIPTION="full-strength general purpose cryptography library (including SSL and TLS)"
 HOMEPAGE="https://www.openssl.org/"
-SRC_URI="mirror://openssl/source/${MY_P}.tar.gz"
+SRC_URI="mirror://openssl/source/${MY_P}.tar.gz
+	bindist? ( https://dev.gentoo.org/~whissi/dist/openssl/${BINDIST_PATCH_SET} )"
 
 LICENSE="openssl"
 SLOT="0/1.1" # .so version of libssl/libcrypto
-[[ "${PV}" = *_pre* ]] || \
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x86-linux"
 IUSE="+asm bindist elibc_musl rfc3779 sctp cpu_flags_x86_sse2 sslv3 static-libs test tls-heartbeat vanilla zlib"
 RESTRICT="!bindist? ( bindist )"
@@ -40,10 +40,10 @@ BDEPEND="
 PDEPEND="app-misc/ca-certificates"
 
 PATCHES=(
+	"${FILESDIR}"/${PN}-1.0.2a-x32-asm.patch #542618
 	"${FILESDIR}"/${PN}-1.1.0j-parallel_install_fix.patch #671602
+	"${FILESDIR}"/${PN}-1.1.0k-fix-test_fuzz.patch
 )
-
-SRC_URI+=" bindist? ( https://dev.gentoo.org/~whissi/dist/openssl/${BINDIST_PATCH_SET} )"
 
 S="${WORKDIR}/${MY_P}"
 
@@ -103,6 +103,9 @@ src_prepare() {
 		-e "/^DOCDIR/s@\$(BASENAME)@&-${PVR}@" \
 		Configurations/unix-Makefile.tmpl \
 		|| die
+
+	# show the actual commands in the log
+	sed -i '/^SET_X/s@=.*@=set -x@' Makefile.shared || die
 
 	# quiet out unknown driver argument warnings since openssl
 	# doesn't have well-split CFLAGS and we're making it even worse
@@ -173,7 +176,9 @@ multilib_src_configure() {
 	# 'srp' was restricted until early 2017 as well.
 	# "disable-deprecated" option breaks too many consumers.
 	# Don't set it without thorough revdeps testing.
-	echoit \
+	# Make sure user flags don't get added *yet* to avoid duplicated
+	# flags.
+	CFLAGS= LDFLAGS= echoit \
 	./${config} \
 		${sslout} \
 		$(use cpu_flags_x86_sse2 || echo "no-sse2") \
@@ -200,16 +205,20 @@ multilib_src_configure() {
 		|| die
 
 	# Clean out hardcoded flags that openssl uses
-	# Fix quoting for sed
 	local DEFAULT_CFLAGS=$(grep ^CFLAGS= Makefile | LC_ALL=C sed \
 		-e 's:^CFLAGS=::' \
-		-e 's:-fomit-frame-pointer ::g' \
-		-e 's:-O[0-9] ::g' \
-		-e 's:-march=[-a-z0-9]* ::g' \
-		-e 's:-mcpu=[-a-z0-9]* ::g' \
-		-e 's:-m[a-z0-9]* ::g' \
-		-e 's:\\:\\\\:g' \
+		-e 's:\(^\| \)-fomit-frame-pointer::g' \
+		-e 's:\(^\| \)-O[^ ]*::g' \
+		-e 's:\(^\| \)-march=[^ ]*::g' \
+		-e 's:\(^\| \)-mcpu=[^ ]*::g' \
+		-e 's:\(^\| \)-m[^ ]*::g' \
+		-e 's:^ *::' \
+		-e 's: *$::' \
+		-e 's: \+: :g' \
+		-e 's:\\:\\\\:g'
 	)
+
+	# Now insert clean default flags with user flags
 	sed -i \
 		-e "/^CFLAGS=/s|=.*|=${DEFAULT_CFLAGS} ${CFLAGS}|" \
 		-e "/^LDFLAGS=/s|=[[:space:]]*$|=${LDFLAGS}|" \
