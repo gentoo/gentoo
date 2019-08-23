@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=0
@@ -7,7 +7,7 @@ inherit font
 
 DESCRIPTION="TeX's Computer Modern Fonts for MathML"
 HOMEPAGE="http://www.mozilla.org/projects/mathml/fonts/"
-SRC_URI="http://www.mozilla.org/projects/mathml/fonts/bakoma/${PN}.zip"
+SRC_URI="https://dev.gentoo.org/~mgorny/dist/${P}.zip"
 
 LICENSE="bakoma"
 SLOT="0"
