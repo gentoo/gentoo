@@ -133,8 +133,11 @@ DEPEND="${COMMON_DEPEND}
 	static? ( sys-libs/ncurses[static-libs] )
 	test? (
 		acct-group/mysql acct-user/mysql
-		$(python_gen_any_dep 'dev-python/mysql-python[${PYTHON_USEDEP}]')
 		dev-perl/JSON
+		|| (
+			$(python_gen_any_dep 'dev-python/mysqlclient[${PYTHON_USEDEP}]')
+			$(python_gen_any_dep 'dev-python/mysql-python[${PYTHON_USEDEP}]')
+		)
 	)
 "
 RDEPEND="${COMMON_DEPEND}
@@ -153,7 +156,8 @@ RDEPEND="${COMMON_DEPEND}
 PDEPEND="perl? ( >=dev-perl/DBD-mysql-2.9004 )"
 
 python_check_deps() {
-	has_version "dev-python/mysql-python[${PYTHON_USEDEP}]"
+	has_version "dev-python/mysqlclient[${PYTHON_USEDEP}]" \
+		|| has_version "dev-python/mysql-python[${PYTHON_USEDEP}]"
 }
 
 mysql_init_vars() {
