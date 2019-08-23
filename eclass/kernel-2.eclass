@@ -1233,17 +1233,31 @@ unipatch() {
 			local GCC_MINOR_VER=$(gcc-minor-version)
 
 			# optimization patch for gcc < 8.X and kernel > 4.13
-			if [[ ${GCC_MAJOR_VER} -lt 8 ]] && [[ ${GCC_MAJOR_VER} -gt 4 ]]; then
-				if kernel_is ge 4 13 ; then
+			if kernel_is ge 4 13 ; then 
+				if [[ ${GCC_MAJOR_VER} -lt 8 ]] && [[ ${GCC_MAJOR_VER} -gt 4 ]]; then
 					UNIPATCH_DROP+=" 5011_enable-cpu-optimizations-for-gcc8.patch"
-				fi
-			# optimization patch for gcc >= 8 and kernel ge 4.13
-			elif [[ "${GCC_MAJOR_VER}" -ge 8 ]]; then
-				if kernel_is ge 4 13; then
+					UNIPATCH_DROP+=" 5012_enable-cpu-optimizations-for-gcc91.patch"
+				# optimization patch for gcc >= 8 and kernel ge 4.13
+				elif [[ "${GCC_MAJOR_VER}" -eq 8 ]]; then
 					# support old kernels for a period. For now, remove as all gcc versions required are masked
 					UNIPATCH_DROP+=" 5010_enable-additional-cpu-optimizations-for-gcc.patch"
 					UNIPATCH_DROP+=" 5010_enable-additional-cpu-optimizations-for-gcc-4.9.patch"
+					UNIPATCH_DROP+=" 5012_enable-cpu-optimizations-for-gcc91.patch"
+				elif [[ "${GCC_MAJOR_VER}" -eq 9 ]] && [[ ${GCC_MINOR_VER} -ge 1 ]]; then
+					UNIPATCH_DROP+=" 5010_enable-additional-cpu-optimizations-for-gcc.patch"
+					UNIPATCH_DROP+=" 5010_enable-additional-cpu-optimizations-for-gcc-4.9.patch"
+					UNIPATCH_DROP+=" 5011_enable-cpu-optimizations-for-gcc8.patch"
+				else
+					UNIPATCH_DROP+=" 5010_enable-additional-cpu-optimizations-for-gcc.patch"
+					UNIPATCH_DROP+=" 5010_enable-additional-cpu-optimizations-for-gcc-4.9.patch"
+					UNIPATCH_DROP+=" 5011_enable-cpu-optimizations-for-gcc8.patch"
+					UNIPATCH_DROP+=" 5012_enable-cpu-optimizations-for-gcc91.patch"
 				fi
+			else
+				UNIPATCH_DROP+=" 5010_enable-additional-cpu-optimizations-for-gcc.patch"
+				UNIPATCH_DROP+=" 5010_enable-additional-cpu-optimizations-for-gcc-4.9.patch"
+				UNIPATCH_DROP+=" 5011_enable-cpu-optimizations-for-gcc8.patch"
+				UNIPATCH_DROP+=" 5012_enable-cpu-optimizations-for-gcc91.patch"
 			fi
 		fi
 	done
