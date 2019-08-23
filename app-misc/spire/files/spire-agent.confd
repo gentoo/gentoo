@@ -1,0 +1,6 @@
+# log file for the spire agent.
+# The default is /var/log/spire/spire-agent.log
+#logfile=""
+#
+# Extra arguments to pass when starting the spire agent.
+#spire_agent_args=""
