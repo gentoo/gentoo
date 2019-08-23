@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<longdescription>
+		You play an Uplink Agent who makes a living by performing jobs for major corporations.
+		Your tasks involve hacking into rival computer systems, stealing research data,
+		sabotaging other companies, laundering money, erasing evidence, or framing innocent people.
+
+		You use the money you earn to upgrade your computer systems, and to buy new software and tools.
+		As your experience level increases you find more dangerous and profitable missions become available.
+
+		You can speculate on a fully working stock market (and even influence its outcome).
+		You can modify peoples academic or criminal records.
+		You can divert money from bank transfers into your own accounts.
+		You can even take part in the construction of the most deadly computer virus ever designed.
+	</longdescription>
+</pkgmetadata>
