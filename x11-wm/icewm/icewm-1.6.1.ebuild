@@ -3,12 +3,12 @@
 
 EAPI=7
 
-inherit autotools
+inherit autotools unpacker
 
 DESCRIPTION="Ice Window Manager with Themes"
 HOMEPAGE="https://ice-wm.org/ https://github.com/ice-wm/icewm"
 LICENSE="GPL-2"
-SRC_URI="https://github.com/ice-wm/icewm/releases/download/${PV}/${P}.tar.xz"
+SRC_URI="https://github.com/ice-wm/icewm/releases/download/${PV}/${P}.tar.lz"
 
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~sparc ~x86"
@@ -45,6 +45,7 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
+	$(unpacker_src_uri_depends)
 	gnome-base/librsvg
 	x11-base/xorg-proto
 	truetype? ( >=media-libs/freetype-2.0.9 )
@@ -52,6 +53,7 @@ DEPEND="
 
 BDEPEND="
 	app-text/asciidoc
+	virtual/pkgconfig
 	nls? ( >=sys-devel/gettext-0.19.6 )
 "
 
@@ -77,7 +79,6 @@ src_configure() {
 		--enable-gdk-pixbuf
 		--enable-logevents
 		--enable-xrandr
-		--enable-xrender
 		--with-cfgdir=/etc/icewm
 		--with-docdir=/usr/share/doc/${PF}/html
 		--with-icesound="${icesound}"
@@ -99,7 +100,7 @@ src_configure() {
 		)
 	fi
 
-	CXXFLAGS="${CXXFLAGS}" econf "${myconf[@]}"
+	econf "${myconf[@]}"
 
 	sed -i "s:/icewm-\$(VERSION)::" src/Makefile || die
 	sed -i "s:ungif:gif:" src/Makefile || die "libungif fix failed"
