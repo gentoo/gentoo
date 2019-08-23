@@ -3,10 +3,6 @@
 
 EAPI=6
 VALA_MIN_API_VERSION="0.40"
-# supposedly works with 0.46, but fails to compile due to libsoup-2.4.vapi
-# from libsoup-2.64 and even fails with vala:0.46 libsoup vapi copy as well
-# https://gitlab.gnome.org/GNOME/libsoup/commit/1c6f47df99cc5b2efe3d629c71c5d85a7871689c
-VALA_MAX_API_VERSION="0.44"
 
 inherit gnome.org gnome2-utils meson vala xdg
 
