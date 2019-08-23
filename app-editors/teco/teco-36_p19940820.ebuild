@@ -22,7 +22,7 @@ BDEPEND="virtual/pkgconfig"
 S="${WORKDIR}"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-double-free.diff
+	"${FILESDIR}"/${PN}-double-free.patch
 	"${FILESDIR}"/${PN}-gcc4.patch
 	"${FILESDIR}"/${PN}-warnings.patch
 )
