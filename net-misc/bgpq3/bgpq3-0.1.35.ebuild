@@ -30,6 +30,5 @@ src_prepare() {
 src_install() {
 	dobin bgpq3
 	doman bgpq3.8
-	dodoc CHANGES
-	dohtml *.html
+	dodoc CHANGES README.md *.html
 }
