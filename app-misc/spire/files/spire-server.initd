@@ -1,0 +1,12 @@
+#!/sbin/openrc-run
+# Copyright 2019 Sony Interactive Entertainment LLC
+# Distributed under the terms of the GNU General Public License v2
+
+name="spire server daemon"
+description="spire server"
+logfile="${logfile:-/var/log/spire/spire-server.log}"
+command=/opt/spire/spire-server
+command_args="run --logFile ${logfile} ${spire_server_args}"
+command_user=spire
+directory=/opt/spire
+supervisor=supervise-daemon

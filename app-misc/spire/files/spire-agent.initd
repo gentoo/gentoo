@@ -1,0 +1,12 @@
+#!/sbin/openrc-run
+# Copyright 2019 Sony Interactive Entertainment LLC
+# Distributed under the terms of the GNU General Public License v2
+
+name="spire agent daemon"
+description="spire agent"
+logfile="${logfile:-/var/log/spire/spire-agent.log}"
+command=/opt/spire/spire-agent
+command_args="run --logFile ${logfile} ${spire_agent_args}"
+command_user=spire
+directory=/opt/spire
+supervisor=supervise-daemon
