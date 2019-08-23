@@ -1,21 +1,20 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=7
 
 inherit elisp
 
-DESCRIPTION="Emacs mode for povray"
-HOMEPAGE="http://gitorious.org/pov-mode/"
-SRC_URI="http://gitorious.org/${PN}/${PN}/archive-tarball/v${PV} -> ${P}.tar.gz"
+DESCRIPTION="Major mode for Povray scene files"
+HOMEPAGE="https://github.com/emacsmirror/pov-mode"
+SRC_URI="https://github.com/emacsmirror/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="GPL-3 FDL-1.2"
+LICENSE="GPL-3+ FDL-1.2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-DEPEND="sys-apps/texinfo"
+BDEPEND="sys-apps/texinfo"
 
-S="${WORKDIR}/${PN}-${PN}"
 SITEFILE="50${PN}-gentoo.el"
 ELISP_REMOVE="${PN}-pkg.el ${PN}.info"
 ELISP_TEXINFO="info/${PN}.texi"
