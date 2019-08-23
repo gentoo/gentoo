@@ -14803,7 +14803,7 @@ net-dns/maradns 2.0.09-r2 2.0.14 2.0.16: A security-aware DNS server
 net-dns/mdns-repeater 20110921: Multicast DNS repeater
 net-dns/mydns 1.2.8.31-r1 1.2.8.31-r2: A DNS-Server which gets its data from a MySQL-/PostgreSQL-database
 net-dns/ndu 0.4-r4: DNS serial number incrementer and reverse zone builder
-net-dns/nsd 4.1.27 4.2.0 4.2.1 4.2.1-r1: An authoritative only, high performance, open source name server
+net-dns/nsd 4.1.27 4.2.1-r1 4.2.2: An authoritative only, high performance, open source name server
 net-dns/odsclient 1.03-r1: Client for the Open Domain Server's dynamic dns
 net-dns/opendnssec 1.3.18-r1 1.4.8.2 1.4.12-r1 2.0.1-r1 2.0.3-r1: An open-source turn-key solution for DNSSEC
 net-dns/openresolv 3.9.0: A framework for managing DNS information
@@ -15772,7 +15772,7 @@ net-print/c2esp 26 27: A CUPS filter for Kodak ESP printers
 net-print/cndrvcups-common-lb 3.60-r1: Common files for Canon drivers
 net-print/cndrvcups-lb 3.60-r2: Canon UFR II / LIPSLX Printer Driver for Linux
 net-print/cnijfilter2 5.20 5.40 5.50: IJ Printer Driver
-net-print/cups 2.2.11 2.2.12 2.3_rc1 9999: The Common Unix Printing System
+net-print/cups 2.2.11 2.2.12 2.3.0 9999: The Common Unix Printing System
 net-print/cups-bjnp 1.1 1.2.1 2.0: CUPS backend for the canon printers using the proprietary USB over IP BJNP protocol
 net-print/cups-filters 1.21.6 1.22.6 1.23.0 1.25.0 1.25.1 1.25.2 9999: Cups filters
 net-print/cups-pdf 2.6.1 3.0.0 3.0.1: Provides a virtual printer for CUPS to produce PDF files
@@ -17470,7 +17470,7 @@ sys-apps/syscriptor 1.5.15: display misc information about your hardware
 sys-apps/syslog-notify 0.2: Notifications for syslog entries via libnotify
 sys-apps/systemd 242-r6 243_rc2 9999: System and service manager for Linux
 sys-apps/systemd-readahead 216: Split of readahead systemd implementation
-sys-apps/sysvinit 2.93 2.94 2.95 2.95-r1: /sbin/init - parent of all processes
+sys-apps/sysvinit 2.93 2.94 2.95 2.95-r1 2.96_beta: /sbin/init - parent of all processes
 sys-apps/tas 1.5.2.180622: Supermicro Thin-Agent Service for monitoring through the BMC/IPMI
 sys-apps/tcp-wrappers 7.6.22-r1 7.6.28: TCP Wrappers
 sys-apps/texinfo 6.3 6.6-r1 6.6-r3: The GNU info program and utilities
