@@ -3,9 +3,9 @@ DEPEND=dev-util/confix >=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.
 DESCRIPTION=A POSIX to native Win32 Cross-Compiler Tool (requires Visual Studio)
 EAPI=6
 HOMEPAGE=https://github.com/haubi/parity
-IUSE=+vc_x86 +vc7_0 +vc7_1 +vc8_0 +vc9_0 +vc10_0 +vc11_0 +vc12_0 +vc14_0 +vc15_0 +vc16_2
+IUSE=+vc_x64 +vc_x86 vc7_0 vc7_1 vc8_0 vc9_0 +vc10_0 +vc11_0 +vc12_0 +vc14_0 +vc15_0 +vc16_2
 LICENSE=LGPL-3
 PROPERTIES=live
 SLOT=0
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	git-r3	562b380fc59ae6a8622171d0acb777d1	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
-_md5_=b7280d447e3af95509b08938eb89ce55
+_md5_=ace1f7aa503ac702901490efec3ac43c
