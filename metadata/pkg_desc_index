@@ -1094,7 +1094,7 @@ app-editors/e3 2.8 2.8.2: Very tiny editor in ASM with emacs, pico, wordstar, an
 app-editors/editra 0.7.20-r2: Multi-platform text editor supporting over 50 programming languages
 app-editors/ee 1.5.2: An easy to use text editor. A subset of aee
 app-editors/elvis 2.2.0-r6 2.2.0-r7: A vi/ex clone
-app-editors/emacs 18.59-r12 23.4-r18 24.5-r5 24.5-r7 25.3-r6 26.1-r3 26.2: The extensible, customizable, self-documenting real-time display editor
+app-editors/emacs 18.59-r12 23.4-r18 24.5-r5 24.5-r7 25.3-r6 26.1-r3 26.2 26.3_rc1: The extensible, customizable, self-documenting real-time display editor
 app-editors/emacs-vcs 26.2.90 26.2.9999 27.0.50_pre20180831 27.0.9999: The extensible, customizable, self-documenting real-time display editor
 app-editors/emact 2.58.0: EmACT, a fork of Conroy's MicroEmacs
 app-editors/ersatz-emacs 20060515: A very minimal imitation of the famous GNU Emacs editor
@@ -8489,7 +8489,7 @@ dev-python/pychart 1.39-r1: Python library for creating charts
 dev-python/pychecker 0.8.19-r1: Python source code checking tool
 dev-python/pychef 0.2.3: A Python API for interacting with a Chef server
 dev-python/pychm 0.8.4-r1: Python bindings for the chmlib library
-dev-python/pychroot 0.9.18 9999: a python library and cli tool that simplify chroot handling
+dev-python/pychroot 0.9.18 0.10.0 9999: a python library and cli tool that simplify chroot handling
 dev-python/pycipher 0.2-r1: A Python module that implements several well-known classical cipher algorithms
 dev-python/pyclamav 0.4.1-r2: Python binding for libclamav
 dev-python/pyclimate 1.2.2-r2: Climate Data Analysis Module for Python
@@ -17806,7 +17806,7 @@ sys-devel/make 4.2.1-r4: Standard tool to compile source trees
 sys-devel/multilib-gcc-wrapper 0-r2: Wrappers for gcc tools to be used on non-native CHOSTs
 sys-devel/native-cctools 4: Host OS native assembler as and static linker ld
 sys-devel/parity 1.2.4 1.2.5 1.2.6 9999: A POSIX to native Win32 Cross-Compiler Tool (requires Visual Studio)
-sys-devel/patch 2.7.6-r3 2.7.6-r4: Utility to apply diffs to files
+sys-devel/patch 2.7.6-r4: Utility to apply diffs to files
 sys-devel/pmake 1.111.3.1 1.111.3.3: BSD build tool to create programs in parallel. Debian's version of NetBSD's make
 sys-devel/prelink 20130503 20130503-r1 20151030 99999999: Modifies ELFs to avoid runtime symbol resolutions resulting in faster load times
 sys-devel/qconf 2.3 2.4: ./configure like generator for qmake-based projects
