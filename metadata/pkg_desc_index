@@ -1181,7 +1181,7 @@ app-emacs/blogmax 20110305 20170321: Blogging in Emacs
 app-emacs/bm 1.32_p20140214: Visible bookmarks in buffer
 app-emacs/bongo 20110621: Buffer-oriented media player for Emacs
 app-emacs/boxquote 1.23 2.1: Quote text with a semi-box
-app-emacs/browse-kill-ring 1.3c: An improved interface to kill-ring
+app-emacs/browse-kill-ring 1.3c 2.0.0: An improved interface to kill-ring
 app-emacs/bubblet 0.74-r1: A bubble-popping game
 app-emacs/buffer-extension 0.1: Some enhanced functions for buffer manipulate
 app-emacs/calfw 1.3: A calendar framework for Emacs
@@ -1253,7 +1253,7 @@ app-emacs/helm-system-packages 1.10.1: A Helm interface to the package manager o
 app-emacs/hexrgb 0_p957: Functions to manipulate colors, including RGB hex strings
 app-emacs/highline 7.2.2: Minor mode to highlight current line in buffer
 app-emacs/howm 1.4.3: Note-taking tool on Emacs
-app-emacs/htmlize 1.43 1.47: HTML-ize font-lock buffers in Emacs
+app-emacs/htmlize 1.47 1.54: HTML-ize font-lock buffers in Emacs
 app-emacs/httpd 1.1: A HTTP server embedded in the Emacs
 app-emacs/icicles 2013.04.23.23400 2018.02.13.23733: Minibuffer input completion and cycling
 app-emacs/identica-mode 1.1-r1: Identi.ca mode for Emacs
@@ -1326,7 +1326,7 @@ app-emacs/s 1.11.0 1.12.0: The long lost Emacs string manipulation library
 app-emacs/scala-mode 2.10.3: Scala mode for Emacs
 app-emacs/scheme-complete 0.8.10 0.8.11: Scheme tab-completion and word-completion for Emacs
 app-emacs/scim-bridge-el 0.8.2: a SCIM-Bridge client for Emacs
-app-emacs/scss-mode 20130215 20150107: Major mode for editing SCSS files in Emacs
+app-emacs/scss-mode 0.5.0_p20150107 0.5.0_p20180123: Major mode for editing SCSS files in Emacs
 app-emacs/semi 1.14.6-r2 1.14.7_p20190517: A library to provide MIME feature for GNU Emacs
 app-emacs/session 2.3a: When you start Emacs, Session restores various variables from your last session
 app-emacs/setnu 1.06: Display line numbers in Emacs buffers
@@ -16281,7 +16281,7 @@ sci-calculators/tilp2 1.18: Communication program for Texas Instruments calculat
 sci-calculators/transcalc 0.14-r2: Microwave and RF transmission line calculator
 sci-calculators/units 2.16 2.18 2.19: Unit conversion program
 sci-calculators/wcalc 2.5: A flexible command-line scientific calculator
-sci-chemistry/GromacsWrapper 0.7.0: Python framework for Gromacs
+sci-chemistry/GromacsWrapper 0.8.0: Python framework for Gromacs
 sci-chemistry/MDAnalysis 0.18.0: A python library to analyze and manipulate molecular dynamics trajectories
 sci-chemistry/ParmEd 2.7.3 3.0.3: Parameter/topology editor and molecular simulator
 sci-chemistry/apbs 1.4.1-r2: Evaluation of electrostatic properties of nanoscale biomolecular systems
@@ -16687,6 +16687,7 @@ sci-libs/netcdf-cxx 4.2-r300 4.2.1 4.2.1-r1 4.3.0: C++ library for netCDF
 sci-libs/netcdf-fortran 4.2 4.4.2 4.4.3: Scientific library and interface for array oriented data access
 sci-libs/nfft 3.3.2: library for nonequispaced discrete Fourier transformations
 sci-libs/nlopt 2.4.2-r1: Non-linear optimization library
+sci-libs/numkit 1.1.2: Numerical first aid kit (with numpy/scipy)
 sci-libs/o2scl 0.920: Object-oriented Scientific Computing Library
 sci-libs/oc 2.0: Network Data Access Protocol client C library
 sci-libs/oce 0.18.3-r1: Development platform for CAD/CAE, 3D surface/solid modeling and data exchange

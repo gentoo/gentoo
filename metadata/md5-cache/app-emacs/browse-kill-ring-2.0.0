@@ -1,0 +1,12 @@
+BDEPEND=>=virtual/emacs-23
+DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
+DESCRIPTION=An improved interface to kill-ring
+EAPI=7
+HOMEPAGE=https://www.emacswiki.org/emacs/BrowseKillRing https://github.com/browse-kill-ring/browse-kill-ring
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2+
+RDEPEND=>=virtual/emacs-23
+SLOT=0
+SRC_URI=https://github.com/browse-kill-ring/browse-kill-ring/archive/2.0.0.tar.gz -> browse-kill-ring-2.0.0.tar.gz
+_eclasses_=elisp	f8026e46da659669c11e50c306d1aeb8	elisp-common	23f47b2e1de7abf387105eddd1318738
+_md5_=e8cce377e266a6ecc29a5ea15aa18920
