@@ -15,15 +15,14 @@ fi
 
 LICENSE="GPL-3+"
 SLOT="0"
-IUSE="lz4 lzo selinux +xz +zlib zstd"
-REQUIRED_USE="|| ( lz4 lzo xz zlib zstd )"
+IUSE="lz4 lzo selinux +xz zstd"
 
 DEPEND="
+	sys-libs/zlib:=
 	lz4?     ( app-arch/lz4:= )
 	lzo?     ( dev-libs/lzo:= )
 	xz?      ( app-arch/xz-utils:= )
 	selinux? ( sys-libs/libselinux:= )
-	zlib?    ( sys-libs/zlib:= )
 	zstd?    ( app-arch/zstd:= )
 "
 RDEPEND="${DEPEND}"
@@ -39,7 +38,6 @@ src_configure() {
 		$(use_with lzo)
 		$(use_with selinux)
 		$(use_with xz)
-		$(use_with zlib gzip)
 		$(use_with zstd)
 	)
 	econf "${myconf[@]}"
