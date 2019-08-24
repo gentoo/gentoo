@@ -2424,6 +2424,7 @@ dev-libs/libevent:debug - Support runtime debug mode and malloc hooks (for progr
 dev-libs/libffi:pax_kernel - Use PaX emulated trampolines, for we can't use PROT_EXEC
 dev-libs/libflatarray:cuda - Enables plugins for NVIDIA GPUs (e.g. CUDAAllocator)
 dev-libs/libgcrypt:o-flag-munging - Enable O-flag mangling during build
+dev-libs/libgdata:crypt - Use app-crypt/gcr for keeping tokens and passwords in non-pageable memory for improved security
 dev-libs/libgdata:gnome-online-accounts - Enable net-libs/gnome-online-accounts support
 dev-libs/libgit2:gssapi - Enable GSSAPI support for SPNEGO auth
 dev-libs/libgit2:ssh - Enable SSH transport support
