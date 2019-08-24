@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -54,7 +54,7 @@ RDEPEND="
 		dev-libs/openssl:0=
 		dev-libs/zookeeper-c
 		kafka? ( dev-libs/librdkafka:= )
-		mysql? ( virtual/libmysqlclient )
+		mysql? ( dev-db/mysql-connector-c:= )
 	)
 
 	>=dev-libs/poco-1.9.0
@@ -84,7 +84,7 @@ DEPEND="${RDEPEND}
 		>=dev-libs/boost-1.65.0[static-libs]
 		dev-libs/openssl[static-libs]
 		dev-libs/zookeeper-c[static-libs]
-		virtual/libmysqlclient[static-libs]
+		dev-db/mysql-connector-c[static-libs]
 		kafka? ( dev-libs/librdkafka[static-libs] )
 	)
 
