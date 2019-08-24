@@ -58,7 +58,7 @@ COMMON_DEPEND=">=sys-apps/sed-4.0.5
 			>=net-libs/libnsl-1:=
 		)
 	)
-	mysql? ( virtual/libmysqlclient )
+	mysql? ( dev-db/mysql-connector-c:= )
 	postgres? ( dev-db/postgresql:= )
 	sasl? ( >=dev-libs/cyrus-sasl-2.1.26-r2 )
 	redis? ( dev-libs/hiredis )
