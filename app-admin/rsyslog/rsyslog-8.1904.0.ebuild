@@ -45,7 +45,7 @@ RDEPEND="
 	kubernetes? ( >=net-misc/curl-7.35.0 )
 	mdblookup? ( dev-libs/libmaxminddb:= )
 	mongodb? ( >=dev-libs/mongo-c-driver-1.1.10:= )
-	mysql? ( virtual/libmysqlclient:= )
+	mysql? ( dev-db/mysql-connector-c:= )
 	normalize? (
 		>=dev-libs/libee-0.4.0
 		>=dev-libs/liblognorm-2.0.3:=
