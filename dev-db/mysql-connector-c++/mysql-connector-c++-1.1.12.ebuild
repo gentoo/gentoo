@@ -15,7 +15,7 @@ SLOT="0/7"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="debug examples gcov libressl static-libs"
 
-DEPEND="virtual/libmysqlclient:=
+DEPEND="dev-db/mysql-connector-c:=
 	dev-libs/boost:=
 	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:0= )

@@ -47,7 +47,7 @@ DEPEND="
 		dev-libs/glib:2
 		virtual/libiconv
 	)
-	mysql? ( virtual/libmysqlclient )
+	mysql? ( dev-db/mysql-connector-c:= )
 	postgres? (
 		dev-db/postgresql:*
 		dev-libs/libpqxx

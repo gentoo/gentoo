@@ -22,7 +22,7 @@ RDEPEND="
 		!libressl? ( dev-libs/openssl:0= )
 		libressl? ( dev-libs/libressl:= )
 	)
-	mysql? ( virtual/libmysqlclient:= )
+	mysql? ( dev-db/mysql-connector-c:= )
 	postgres? ( dev-db/postgresql:= )
 	xml? ( dev-libs/libxml2:2 )
 "

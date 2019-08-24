@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS="amd64 arm ~arm64 ppc ppc64 sparc x86"
 IUSE="debug examples gcov static-libs"
 
-DEPEND="virtual/libmysqlclient:=
+DEPEND="dev-db/mysql-connector-c:=
 	dev-libs/boost:=
 	dev-libs/openssl:0=
 	!<dev-db/mysql-connector-c-6.1.8"
