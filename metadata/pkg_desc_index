@@ -2557,7 +2557,7 @@ app-text/recode 3.6_p20-r1 3.7_pre20140303: Convert files between various charac
 app-text/reed 5.4: This is a text pager (text file viewer), used to display etexts
 app-text/refbase 0.9.6_p20180223: Web-based solution for managing scientific literature, references and citations
 app-text/referencer 1.2.2-r1: Application to organise documents or references, and to generate BibTeX files
-app-text/restview 2.7.0 2.8.0 2.8.1: reStructuredText viewer
+app-text/restview 2.8.1 2.9.2: reStructuredText viewer
 app-text/rman 3.2-r1: PolyGlotMan man page translator AKA RosettaMan
 app-text/rnv 1.7.11-r1: A lightweight Relax NG Compact Syntax validator
 app-text/robodoc 4.99.43: Automating Software Documentation
@@ -8881,7 +8881,7 @@ dev-python/rax-default-network-flags-python-novaclient-ext 0.4.0: Disk Config ex
 dev-python/rax-scheduled-images-python-novaclient-ext 0.2.1 0.3.1: Adds backup-schedule extension support to python-novaclient
 dev-python/rdflib 4.2.1 4.2.2 4.2.2-r1: RDF library containing a triple store and parser/serializer
 dev-python/readlike 0.1.2 0.1.3: a python library similar to readline
-dev-python/readme_renderer 17.2: a library for rendering "readme" descriptions for Warehouse
+dev-python/readme_renderer 17.2 24.0: a library for rendering "readme" descriptions for Warehouse
 dev-python/rebulk 0.9.0 9999: Python library that performs advanced searches in strings
 dev-python/recommonmark 0.4.0 0.5.0_pre20180907 0.5.0_pre20181012 0.5.0_pre20181012-r1: Python docutils-compatibility bridge to CommonMark
 dev-python/reconfigure 0.1.79: An ORM for config files
@@ -12928,7 +12928,7 @@ media-gfx/birdfont 2.18.3: Font editor for the creation of vector graphics and e
 media-gfx/blender 2.79b-r1: 3D Creation/Animation/Publishing System
 media-gfx/cairosvg 1.0.22 2.0.3: CLI and library to export SVG to PDF, PostScript, and PNG
 media-gfx/cellwriter 1.3.5 1.3.6: Grid-entry natural handwriting input panel
-media-gfx/chafa 1.0.1: versatile and fast Unicode/ASCII/ANSI graphics renderer
+media-gfx/chafa 1.0.1 1.2.1: versatile and fast Unicode/ASCII/ANSI graphics renderer
 media-gfx/clockphoto 1.1 1.2: Adjusts photo timestamps based on clock photos.
 media-gfx/colorhug-client 0.2.8: Client tools for the ColorHug display colorimeter
 media-gfx/comix 4.0.4-r1: A GTK image viewer specifically designed to handle comic books
@@ -17419,7 +17419,7 @@ sys-apps/pkgcore 0.9.7 0.10.0 9999: a framework for package management
 sys-apps/pmount 0.9.99_alpha-r5: Policy based mounter that gives the ability to mount removable devices as a user
 sys-apps/pmount-gui 0_pre20130806: A simple graphical frontend for pmount
 sys-apps/policycoreutils 2.8-r1 2.9 9999: SELinux core utilities
-sys-apps/portage 2.3.66-r1 2.3.69 2.3.71 2.3.72 9999: Portage is the package management and distribution system for Gentoo
+sys-apps/portage 2.3.66-r1 2.3.69 2.3.71 2.3.72 2.3.73 9999: Portage is the package management and distribution system for Gentoo
 sys-apps/powerpc-utils 1.1.3.18-r3: PowerPC utilities including nvsetenv, and additional OldWorld apps
 sys-apps/prctl 1.6: Tool to query and modify process behavior
 sys-apps/preload 0.6.4-r3: Adaptive readahead daemon
