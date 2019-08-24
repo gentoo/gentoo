@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -18,7 +18,7 @@ REQUIRED_USE="?? ( embedded ssl )"
 IUSE="embedded test +ssl"
 
 RDEPEND=">=dev-perl/DBI-1.609.0
-	virtual/libmysqlclient:=
+	<dev-db/mysql-connector-c-8.0:0=
 	embedded? ( virtual/mysql[embedded] )
 "
 DEPEND="${RDEPEND}
