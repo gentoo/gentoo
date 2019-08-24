@@ -6,6 +6,7 @@
 	<name>Gentoo GNOME Desktop</name>
 </maintainer>
 <use>
+	<flag name="crypt">Use <pkg>app-crypt/gcr</pkg> for keeping tokens and passwords in non-pageable memory for improved security</flag>
 	<flag name="gnome-online-accounts">Enable <pkg>net-libs/gnome-online-accounts</pkg> support</flag>
 </use>
 </pkgmetadata>
