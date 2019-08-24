@@ -20,7 +20,9 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
 	media-libs/libcanberra"
-DEPEND="${PYTHON_DEPS}"
+DEPEND="${PYTHON_DEPS}
+	app-arch/unzip
+"
 
 S="${WORKDIR}/${PN}-${PCOMMIT}"
 
