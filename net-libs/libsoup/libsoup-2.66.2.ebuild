@@ -49,6 +49,7 @@ PATCHES=(
 	"${FILESDIR}"/disable-apache-tests.patch
 	# Fix libsoup-2.4.vapi to be compatible with vala:0.46 and onwards. Included in 2.67.2
 	"${FILESDIR}"/${PV}-vala-0.46-compat.patch
+	"${FILESDIR}"/${PV}-meson-ntlm_auth-fix.patch
 )
 
 src_prepare() {
