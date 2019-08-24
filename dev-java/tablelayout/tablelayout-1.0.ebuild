@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -7,8 +7,9 @@ JAVA_PKG_IUSE="doc source"
 inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Layout manager that makes creating user interfaces fast and easy"
-HOMEPAGE="https://tablelayout.dev.java.net/"
-SRC_URI="http://www.oracle.com/technetwork/java/${PN}.jar"
+HOMEPAGE="https://www.oracle.com/technetwork/java/tablelayout-141489.html"
+SRC_URI="https://www.oracle.com/technetwork/java/${PN}.jar -> ${P}.jar"
+
 LICENSE="LGPL-2.1"
 KEYWORDS="amd64 ~ppc64 x86"
 SLOT="0"
