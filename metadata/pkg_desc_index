@@ -4783,7 +4783,7 @@ dev-libs/double-conversion 3.1.4-r1: Binary-decimal and decimal-binary conversio
 dev-libs/eb 4.4.1-r1: EB is a C library and utilities for accessing CD-ROM books
 dev-libs/editline 1.16.0: line editing library for UNIX call compatible with the FSF readline
 dev-libs/eekboard 1.0.8_p20121001: An easy to use virtual keyboard toolkit
-dev-libs/efl 1.21.1-r3 1.22.2: Enlightenment Foundation Libraries all-in-one package
+dev-libs/efl 1.22.2 1.22.3: Enlightenment Foundation Libraries all-in-one package
 dev-libs/elfio 1.0.3-r1: ELF reader and producer implemented as a C++ library
 dev-libs/elfutils 0.176-r1 0.177: Libraries/utilities to handle ELF objects (drop in replacement for libelf)
 dev-libs/ell 0.9 0.20 0.21 9999: Embedded Linux Library provides core, low-level functionality for system daemons
@@ -8742,7 +8742,7 @@ dev-python/python-docs 2.7.14 3.4.5 3.4.6 3.5.4 3.6.3 3.6.4 3.7.0: HTML document
 dev-python/python-dsv 1.4.1-r2: Python module for importing and exporting DSV files
 dev-python/python-ebtables 0.2.0: Python bindings for ebtables
 dev-python/python-editor 0.4 1.0.3: Programmatically open an editor, capture the result.
-dev-python/python-efl 1.21.0 1.22.0: Python bindings for Enlightenment Foundation Libraries
+dev-python/python-efl 1.22.0: Python bindings for Enlightenment Foundation Libraries
 dev-python/python-engineio 1.7.0 2.2.0: Python implementation of the Engine.IO realtime server.
 dev-python/python-etcd 0.3.2 0.3.3 0.4.4 0.4.5-r1: A python client for etcd
 dev-python/python-ethtool 0.11-r1 0.14: Ethernet settings python bindings
@@ -17898,7 +17898,7 @@ sys-fs/atari-fdisk 0.7.1.5.4: create and edit the partition table of a disk part
 sys-fs/aufs-headers 4.1_p20170130 4.14_p20180709 4.14_p20190603: User space headers for aufs3
 sys-fs/aufs-util 4.1_p20170130 4.14_p20180709 4.14_p20190603: Utilities are always necessary for aufs
 sys-fs/autorun 3.17: auto cdrom mounter for the lazy user
-sys-fs/avfs 1.0.4 1.0.5 1.0.6 1.1.0: AVFS is a virtual filesystem that allows browsing of compressed files
+sys-fs/avfs 1.0.6 1.1.0 1.1.1: AVFS is a virtual filesystem that allows browsing of compressed files
 sys-fs/bashmount 3.2.0: Bash script that uses udisks to mount removable devices without GUI
 sys-fs/bcache-tools 1.0.5 1.0.8 1.0.8_p20140220-r1 9999: Tools for bcachefs
 sys-fs/bees 0.6.1 9999: Best-Effort Extent-Same, a btrfs dedup agent
@@ -19100,7 +19100,7 @@ x11-misc/sunflower 0.2_alpha59 0.3.61: Small and highly customizable twin-panel 
 x11-misc/superswitcher 0.6-r1: A more feature-full replacement of the Alt-Tab window switching behavior
 x11-misc/sux 1.0-r4: "su" wrapper which transfers X credentials
 x11-misc/sw-notify-send 1.2.1 9999: A system-wide variant of tinynotify-send
-x11-misc/sxhkd 0.5.9 0.6.0: Simple X hotkey daemon
+x11-misc/sxhkd 0.5.9 0.6.0 0.6.1: Simple X hotkey daemon
 x11-misc/synergy 1.9.1 2.0.0: Lets you easily share a single mouse and keyboard between multiple computers
 x11-misc/tabbed 0.6: Simple generic tabbed fronted to xembed aware applications
 x11-misc/tint2 16.2 16.6 16.6.1: tint2 is a lightweight panel/taskbar for Linux.
@@ -19551,13 +19551,13 @@ x11-wm/aewm++ 1.1.5-r2: A window manager with more modern features than aewm
 x11-wm/amiwm 0.21_p2: Windowmanager ala Amiga(R) Workbench(R)
 x11-wm/awesome 3.5.9-r2 4.2-r2 4.3 9999: A dynamic floating and tiling window manager
 x11-wm/blackbox 0.70.1-r1: A small, fast, full-featured window manager for X
-x11-wm/bspwm 0.9.5 0.9.7 0.9.7-r1: Tiling window manager based on binary space partitioning
+x11-wm/bspwm 0.9.7-r1 0.9.9: Tiling window manager based on binary space partitioning
 x11-wm/ctwm 4.0.2 4.0.3: A clean, light window manager
 x11-wm/cwm 5.6 9999: OpenBSD fork of calmwm, a clean and lightweight window manager
 x11-wm/dwm 6.1-r1 6.2 9999: a dynamic window manager for X11
 x11-wm/e16 1.0.19 1.0.20: Enlightenment Window Manager (E16)
 x11-wm/echinus 0.4.9: A window manager for X in the spirit of dwm
-x11-wm/enlightenment 0.22.4 0.22.4-r1: Enlightenment window manager
+x11-wm/enlightenment 0.22.4-r1: Enlightenment window manager
 x11-wm/evilwm 1.0.1-r1 1.1.1: A minimalist, no frills window manager for X
 x11-wm/fluxbox 1.3.7-r3 1.3.7-r4 9999: X11 window manager featuring tabs and an iconbar
 x11-wm/fvwm 2.6.5-r3 2.6.8-r2: An extremely powerful ICCCM-compliant multiple virtual desktop window manager
