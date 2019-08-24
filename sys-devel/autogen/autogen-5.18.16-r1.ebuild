@@ -43,6 +43,13 @@ src_configure() {
 	# suppress possibly incorrect -R flag
 	export ag_cv_test_ldflags=
 
+	# autogen requires run-time sanity of regex and string functions.
+	# Use defaults of linux-glibc until we need somethig more advanced.
+	if tc-is-cross-compiler ; then
+		export ag_cv_run_strcspn=no
+		export libopts_cv_with_libregex=yes
+	fi
+
 	econf $(use_enable static-libs static)
 }
 
