@@ -31,7 +31,7 @@ unset -f _ruby_set_globals
 
 RDEPEND="dev-libs/glib:2
 	hyperestraier? ( app-text/hyperestraier )
-	mysql? ( virtual/libmysqlclient )
+	mysql? ( dev-db/mysql-connector-c:= )
 	python? (
 		${PYTHON_DEPS}
 		dev-python/pygobject:2[${PYTHON_USEDEP}]
