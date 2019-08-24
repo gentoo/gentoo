@@ -15,7 +15,7 @@ KEYWORDS="amd64 x86"
 IUSE="aio mysql postgres test"
 
 RDEPEND="aio? ( dev-libs/libaio )
-	mysql? ( virtual/libmysqlclient )
+	mysql? ( dev-db/mysql-connector-c:= )
 	postgres? ( dev-db/postgresql:= )
 	dev-lang/luajit:="
 DEPEND="${RDEPEND}

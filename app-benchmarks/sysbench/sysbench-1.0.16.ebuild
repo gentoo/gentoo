@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="aio mysql postgres test"
 
 RDEPEND="aio? ( dev-libs/libaio )
-	mysql? ( virtual/libmysqlclient )
+	mysql? ( dev-db/mysql-connector-c:= )
 	postgres? ( dev-db/postgresql:= )
 	dev-lang/luajit:="
 DEPEND="${RDEPEND}
