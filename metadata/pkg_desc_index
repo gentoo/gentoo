@@ -9708,13 +9708,13 @@ dev-ros/xmlrpcpp 1.14.2 1.14.3 9999: C++ implementation of the XML-RPC protocol
 dev-ruby/GeoRuby 2.5.2: Ruby data holder for OGC Simple Features
 dev-ruby/abstract 1.0.0-r3: Library which enable you to define abstract method in Ruby
 dev-ruby/acme-client 2.0.2 2.0.3: A Ruby client for the letsencrypt's ACME protocol.
-dev-ruby/actioncable 5.1.7 5.2.3: Integrated WebSockets for Rails
+dev-ruby/actioncable 5.1.7 5.2.3 6.0.0: Integrated WebSockets for Rails
 dev-ruby/actionmailer 4.2.11.1 5.1.7 5.2.3: Framework for designing email-service layers
 dev-ruby/actionpack 4.2.11.1 5.1.7 5.2.3 6.0.0: Eases web-request routing, handling, and response
 dev-ruby/actionpack-action_caching 1.2.0: Action caching for Action Pack (removed from core in Rails 4.0)
 dev-ruby/actionpack-xml_parser 1.0.2 2.0.1: XML parameters parser for Action Pack (removed from core in Rails 4.0)
 dev-ruby/actionview 4.2.11.1 5.1.7 5.2.3 6.0.0: Simple, battle-tested conventions and helpers for building web pages
-dev-ruby/activejob 4.2.11.1 5.1.7 5.2.3: Job framework with pluggable queues
+dev-ruby/activejob 4.2.11.1 5.1.7 5.2.3 6.0.0: Job framework with pluggable queues
 dev-ruby/activeldap 4.0.6 5.2.3 5.2.4: ActiveLDAP provides an activerecord inspired object oriented interface to LDAP
 dev-ruby/activemodel 4.2.11.1 5.1.7 5.2.3 6.0.0: Toolkit for building modeling frameworks like Active Record and Active Resource
 dev-ruby/activemodel-serializers-xml 1.0.2: XML serialization for your Active Model objects and Active Record models
