@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -24,7 +24,7 @@ IUSE=""
 # Does not build with libmariadb
 RDEPEND="
 	dev-db/unixODBC[${MULTILIB_USEDEP}]
-	~virtual/libmysqlclient-18[${MULTILIB_USEDEP}]
+	<dev-db/mysql-connector-c-8.0:0=[${MULTILIB_USEDEP}]
 	!>=dev-db/mariadb-10.2.0[client-libs(+)]
 	!dev-db/mariadb-connector-c[mysqlcompat(-)]
 "
