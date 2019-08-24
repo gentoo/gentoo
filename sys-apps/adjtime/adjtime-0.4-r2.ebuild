@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
 DESCRIPTION="A perl script to adjust the clock tick of the hardware clock on the system board"
 HOMEPAGE="https://groups.yahoo.com/neo/groups/LinkStation_General/info"
-SRC_URI="http://www.gentoogeek.org/files/${PN}.zip"
+SRC_URI="http://www.gentoogeek.org/files/${PN}.zip -> ${P}.zip"
 
 LICENSE="all-rights-reserved"	#441922
 SLOT="0"
