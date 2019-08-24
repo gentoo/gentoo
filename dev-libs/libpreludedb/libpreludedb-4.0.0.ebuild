@@ -21,7 +21,7 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="~dev-libs/libprelude-${PV}
 	net-libs/gnutls:=
-	mysql? ( virtual/libmysqlclient )
+	mysql? ( dev-db/mysql-connector-c:= )
 	postgres? ( dev-db/postgresql:* )
 	python? ( ${PYTHON_DEPS} )
 	sqlite? ( dev-db/sqlite:3 )"
