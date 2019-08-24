@@ -13,4 +13,8 @@
 		<changelog>https://github.com/zerotier/ZeroTierOne/raw/master/RELEASE-NOTES.md</changelog>
 		<remote-id type="github">zerotier/ZeroTierOne</remote-id>
 	</upstream>
+<use>
+	<flag name="clang">Use Clang compiler instead of GCC</flag>
+	<flag name="neon">Enable ARM32 neon-salsa2012-asm code</flag>
+</use>
 </pkgmetadata>
