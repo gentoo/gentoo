@@ -168,8 +168,8 @@ eislocked() {
 	*)
 		# NB: 'no password' and 'locked' are indistinguishable
 		# but we also expire the account which is more clear
-		[[ $(getent shadow ftp | cut -d: -f2) == '!'* ]] &&
-			[[ $(getent shadow ftp | cut -d: -f8) == 1 ]]
+		[[ $(getent shadow "$1" | cut -d: -f2) == '!'* ]] &&
+			[[ $(getent shadow "$1" | cut -d: -f8) == 1 ]]
 		;;
 	esac
 }
