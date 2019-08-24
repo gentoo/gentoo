@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -26,7 +26,7 @@ DEPEND="dev-db/sqlite:3
 	=net-libs/nDPI-2.0
 	net-misc/curl
 	sys-libs/binutils-libs:=
-	virtual/libmysqlclient"
+	dev-db/mysql-connector-c:="
 RDEPEND="${DEPEND}
 	dev-db/redis"
 PATCHES=(
