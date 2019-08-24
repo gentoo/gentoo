@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -21,8 +21,8 @@ SLOT="0.4"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86"
 IUSE=""
 
-DEPEND="${DEPEND} virtual/libmysqlclient"
-RDEPEND="${RDEPEND} virtual/libmysqlclient:="
+DEPEND="${DEPEND} dev-db/mysql-connector-c"
+RDEPEND="${RDEPEND} dev-db/mysql-connector-c:="
 
 each_ruby_configure() {
 	${RUBY} -Cext/mysql2 extconf.rb --with-mysql-config "${EPREFIX}/usr/bin/mysqlconfig" || die
