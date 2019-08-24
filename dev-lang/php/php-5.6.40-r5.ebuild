@@ -88,8 +88,8 @@ COMMON_DEPEND="
 	libedit? ( || ( sys-freebsd/freebsd-lib dev-libs/libedit ) )
 	mssql? ( dev-db/freetds[mssql] )
 	libmysqlclient? (
-		mysql? ( virtual/libmysqlclient:= )
-		mysqli? ( virtual/libmysqlclient:= )
+		mysql? ( <dev-db/mysql-connector-c-8.0:0= )
+		mysqli? ( <dev-db/mysql-connector-c-8.0:0= )
 	)
 	nls? ( sys-devel/gettext )
 	oci8-instant-client? ( dev-db/oracle-instantclient-basic )
