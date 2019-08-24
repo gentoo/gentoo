@@ -51,6 +51,8 @@ src_test() {
 	if ${PKG_CONFIG} --exists Qt5Core && ! ${PKG_CONFIG} --exists Qt5Gui; then
 		ewarn "Found Qt5Core but not Qt5Gui; skipping tests"
 	else
+		# https://bugs.gentoo.org/687792
+		unset PKG_CONFIG
 		distutils-r1_src_test
 	fi
 }
