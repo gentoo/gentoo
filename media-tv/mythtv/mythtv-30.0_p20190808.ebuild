@@ -159,6 +159,7 @@ to journald via the console at the notice verbosity.
 MYTHTV_GROUPS="video,audio,tty,uucp"
 
 pkg_setup() {
+	keepdir /home/mythtv
 	python-single-r1_pkg_setup
 	enewuser mythtv -1 /bin/bash /home/mythtv ${MYTHTV_GROUPS}
 	usermod -a -G ${MYTHTV_GROUPS} mythtv
