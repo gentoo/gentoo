@@ -31,7 +31,6 @@ DEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-9999-prefix-darwin.patch
-	"${FILESDIR}"/${PN}-9999-prefix-solaris.patch
 )
 
 src_prepare() {
