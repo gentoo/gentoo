@@ -9710,15 +9710,15 @@ dev-ruby/abstract 1.0.0-r3: Library which enable you to define abstract method i
 dev-ruby/acme-client 2.0.2 2.0.3: A Ruby client for the letsencrypt's ACME protocol.
 dev-ruby/actioncable 5.1.7 5.2.3: Integrated WebSockets for Rails
 dev-ruby/actionmailer 4.2.11.1 5.1.7 5.2.3: Framework for designing email-service layers
-dev-ruby/actionpack 4.2.11.1 5.1.7 5.2.3: Eases web-request routing, handling, and response
+dev-ruby/actionpack 4.2.11.1 5.1.7 5.2.3 6.0.0: Eases web-request routing, handling, and response
 dev-ruby/actionpack-action_caching 1.2.0: Action caching for Action Pack (removed from core in Rails 4.0)
 dev-ruby/actionpack-xml_parser 1.0.2 2.0.1: XML parameters parser for Action Pack (removed from core in Rails 4.0)
-dev-ruby/actionview 4.2.11.1 5.1.7 5.2.3: Simple, battle-tested conventions and helpers for building web pages
+dev-ruby/actionview 4.2.11.1 5.1.7 5.2.3 6.0.0: Simple, battle-tested conventions and helpers for building web pages
 dev-ruby/activejob 4.2.11.1 5.1.7 5.2.3: Job framework with pluggable queues
 dev-ruby/activeldap 4.0.6 5.2.3 5.2.4: ActiveLDAP provides an activerecord inspired object oriented interface to LDAP
-dev-ruby/activemodel 4.2.11.1 5.1.7 5.2.3: Toolkit for building modeling frameworks like Active Record and Active Resource
+dev-ruby/activemodel 4.2.11.1 5.1.7 5.2.3 6.0.0: Toolkit for building modeling frameworks like Active Record and Active Resource
 dev-ruby/activemodel-serializers-xml 1.0.2: XML serialization for your Active Model objects and Active Record models
-dev-ruby/activerecord 4.2.11.1 5.1.7 5.2.3: Implements the ActiveRecord pattern (Fowler, PoEAA) for ORM
+dev-ruby/activerecord 4.2.11.1 5.1.7 5.2.3 6.0.0: Implements the ActiveRecord pattern (Fowler, PoEAA) for ORM
 dev-ruby/activestorage 5.2.3: Attach cloud and local files in Rails applications
 dev-ruby/activesupport 4.2.11.1 5.1.7 5.2.3 6.0.0: Utility Classes and Extension to the Standard Library
 dev-ruby/acts_as_list 0.9.17 0.9.18 0.9.19: Capabilities for sorting and reordering a number of objects in a list
@@ -10120,8 +10120,8 @@ dev-ruby/radius 0.7.5: Powerful tag-based template system
 dev-ruby/rails 4.2.11.1 5.1.7 5.2.3: ruby on rails is a web-application and persistance framework
 dev-ruby/rails-deprecated_sanitizer 1.0.3-r2: Deprecated sanitizer API extracted from Action View
 dev-ruby/rails-dom-testing 1.0.8-r1 2.0.3: Compare doms and assert certain elements exists in doms using Nokogiri
-dev-ruby/rails-html-sanitizer 1.0.4: Sanitize HTML fragments in Rails applications
-dev-ruby/railties 4.2.11.1 5.1.7 5.2.3: Tools for creating, working with, and running Rails applications
+dev-ruby/rails-html-sanitizer 1.0.4 1.2.0: Sanitize HTML fragments in Rails applications
+dev-ruby/railties 4.2.11.1 5.1.7 5.2.3 6.0.0: Tools for creating, working with, and running Rails applications
 dev-ruby/rainbow 1.1.4-r1 2.2.2 3.0.0: Colorize printed text on ANSI terminals
 dev-ruby/rake 12.3.1 12.3.2 12.3.3: Make-like scripting in Ruby
 dev-ruby/rake-compiler 1.0.7: Provide a standard and simplified way to build and package Ruby extensions
