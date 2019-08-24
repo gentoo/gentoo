@@ -63,11 +63,11 @@ RDEPEND="${COMMON_DEPEND}
 	ffmpeg? ( media-video/ffmpeg:0= )
 "
 DEPEND="${COMMON_DEPEND}
-	virtual/pkgconfig
 	gimp? ( dev-qt/linguist-tools )
 	krita? ( dev-qt/linguist-tools )
 	qt5? ( dev-qt/linguist-tools )
 "
+BDEPEND="virtual/pkgconfig"
 
 pkg_pretend() {
 	if use openmp ; then
