@@ -31,7 +31,7 @@ RDEPEND="
 		luajit? ( dev-lang/luajit:= )
 	)
 	lua-records? ( >=net-misc/curl-7.21.3 )
-	mysql? ( dev-db/mysql-connector-c )
+	mysql? ( dev-db/mysql-connector-c:= )
 	postgres? ( dev-db/postgresql:= )
 	ldap? ( >=net-nds/openldap-2.0.27-r4 app-crypt/mit-krb5 )
 	sqlite? ( dev-db/sqlite:3 )
