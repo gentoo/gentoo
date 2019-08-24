@@ -1,8 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit ltprune
+EAPI=7
 
 DESCRIPTION="AVFS is a virtual filesystem that allows browsing of compressed files"
 HOMEPAGE="https://sourceforge.net/projects/avf"
@@ -17,8 +16,8 @@ RDEPEND=">=sys-fs/fuse-2.4:0
 	sys-libs/zlib
 	app-arch/bzip2
 	lzma? ( app-arch/xz-utils )"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 src_configure() {
 	econf \
@@ -42,9 +41,9 @@ src_install() {
 	dosym ../../../$(get_libdir)/avfs/extfs/README /usr/share/doc/${PF}/README.extfs
 
 	docinto scripts
-	dodoc scripts/{avfscoda*,*pass}
+	dodoc scripts/*pass
 
-	prune_libtool_files
+	find "${ED}" -name "*.la" -delete || die
 }
 
 pkg_postinst() {

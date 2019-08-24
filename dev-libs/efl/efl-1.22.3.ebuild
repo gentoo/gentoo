@@ -1,9 +1,9 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit gnome2-utils pax-utils xdg-utils
+inherit pax-utils xdg-utils
 
 DESCRIPTION="Enlightenment Foundation Libraries all-in-one package"
 HOMEPAGE="https://www.enlightenment.org"
@@ -11,10 +11,11 @@ SRC_URI="https://download.enlightenment.org/rel/libs/${PN}/${P}.tar.xz"
 
 LICENSE="BSD-2 GPL-2 LGPL-2.1 ZLIB"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~ia64 ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
-IUSE="+bmp dds connman debug drm +eet examples fbcon +fontconfig fribidi gif gles2 glib gnutls gstreamer harfbuzz hyphen +ico ibus jpeg2k libressl libuv luajit neon nls opengl ssl pdf physics postscript +ppm +psd pulseaudio raw scim sdl sound static-libs svg +system-lz4 systemd tga tiff tslib unwind v4l valgrind vlc vnc wayland webp X xcf xim xine xpm xpresent zeroconf"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x64-solaris ~x86-solaris"
+IUSE="+bmp dds connman debug drm +eet elogind examples fbcon +fontconfig fribidi gif gles2 glib gnutls gstreamer harfbuzz hyphen +ico ibus jpeg2k libressl libuv luajit neon nls opengl ssl pdf physics postscript +ppm +psd pulseaudio raw scim sdl sound static-libs svg +system-lz4 systemd tga tiff tslib unwind v4l valgrind vlc vnc wayland webp X xcf xim xine xpm xpresent zeroconf"
 
 REQUIRED_USE="
+	?? ( elogind systemd )
 	?? ( gles2 opengl )
 	fbcon? ( !tslib )
 	gles2? (
@@ -36,7 +37,6 @@ RDEPEND="
 	media-libs/libpng:0=
 	sys-apps/dbus
 	sys-apps/util-linux
-	sys-libs/zlib:=
 	virtual/jpeg:0=
 	connman? ( net-misc/connman )
 	drm? (
@@ -45,6 +45,7 @@ RDEPEND="
 		x11-libs/libdrm
 		x11-libs/libxkbcommon
 	)
+	elogind? ( sys-auth/elogind )
 	fontconfig? ( media-libs/fontconfig )
 	fribidi? ( dev-libs/fribidi )
 	gif? ( media-libs/giflib:= )
@@ -61,7 +62,6 @@ RDEPEND="
 	libuv? ( dev-libs/libuv )
 	luajit? ( dev-lang/luajit:= )
 	!luajit? ( dev-lang/lua:* )
-	nls? ( sys-devel/gettext )
 	pdf? ( app-text/poppler:=[cxx] )
 	physics? ( sci-physics/bullet:= )
 	postscript? ( app-text/libspectre )
@@ -85,7 +85,7 @@ RDEPEND="
 		x11-libs/cairo
 	)
 	system-lz4? ( app-arch/lz4 )
-	systemd? ( sys-apps/systemd )
+	systemd? ( sys-apps/systemd:= )
 	tiff? ( media-libs/tiff:0= )
 	tslib? ( x11-libs/tslib:= )
 	unwind? ( sys-libs/libunwind )
@@ -128,14 +128,9 @@ RDEPEND="
 	zeroconf? ( net-dns/avahi )
 "
 
-DEPEND="
-	${RDEPEND}
-	virtual/pkgconfig
-"
-
-PATCHES=(
-	"${FILESDIR}/${P}-fix_evas_preload_segfault.patch"
-)
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig
+	nls? ( sys-devel/gettext )"
 
 src_prepare() {
 	default
@@ -145,25 +140,33 @@ src_prepare() {
 		sed -i -e 's:libunwind libunwind-generic:xxxxxxxxxxxxxxxx:' \
 		configure || die "Sedding configure file with unwind fix failed."
 	fi
-
-	xdg_environment_reset
 }
 
 src_configure() {
 	local myconf=(
-		--enable-cserve
+		--enable-cxx-bindings
 		--enable-image-loader-generic
 		--enable-image-loader-jpeg
 		--enable-image-loader-png
 		--enable-libeeze
 		--enable-libmount
+		--enable-quick-launch
+		--enable-threads
 		--enable-xinput22
 
+		--disable-cancel-ok
+		--disable-cocoa
+		--disable-csharp-beta
+		--disable-csharp-bindings
 		--disable-doc
+		--disable-ecore-buffer
+		--disable-ecore-drm
+		--disable-ecore-wayland
 		--disable-eglfs
+		--disable-g-main-loop
 		--disable-gesture
 		--disable-gstreamer
-		--disable-image-loader-tgv
+		--disable-pixman
 		--disable-tizen
 		--disable-wayland-ivi-shell
 
@@ -173,6 +176,7 @@ src_configure() {
 		$(use_enable drm)
 		$(use_enable drm elput)
 		$(use_enable eet image-loader-eet)
+		$(use_enable elogind)
 		$(use_enable examples always-build-examples)
 		$(use_enable fbcon fb)
 		$(use_enable fontconfig)
@@ -254,23 +258,24 @@ src_compile() {
 		pax-mark m src/bin/elua/.libs/elua
 	fi
 
-	V=1 emake || die "Compiling EFL failed."
+	V=1 emake
 }
 
 src_install() {
+	V=1 emake install DESTDIR="${D}"
 	einstalldocs
 
-	V=1 emake install DESTDIR="${D}" || die "Installing EFL files failed."
-
-	find "${D}" -name '*.la' -delete || die
+	if ! use static-libs ; then
+		find "${D}" -name '*.la' -delete || die
+	fi
 }
 
 pkg_postinst() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 	xdg_mimeinfo_database_update
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 	xdg_mimeinfo_database_update
 }
