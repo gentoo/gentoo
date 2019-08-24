@@ -133,6 +133,7 @@ src_install() {
 
 	emake \
 		DESTDIR="${D}" \
+		PREFIX="${EPREFIX}/usr" \
 		LIBDIR="${EPREFIX}"/$(get_libdir) \
 		SBINDIR="${EPREFIX}"/sbin \
 		CONFDIR="${EPREFIX}"/etc/iproute2 \
