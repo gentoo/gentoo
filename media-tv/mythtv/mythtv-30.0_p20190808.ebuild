@@ -34,6 +34,7 @@ REQUIRED_USE="
 "
 
 COMMON="
+	acct-user/mythtv
 	dev-libs/glib:2
 	dev-libs/lzo
 	dev-qt/qtcore:5
@@ -300,10 +301,9 @@ src_install() {
 	dodoc keys.txt
 
 	keepdir /etc/mythtv
-	chown -R mythtv "${ED}"/etc/mythtv
+	fowners -R mythtv /etc/mythtv
 	keepdir /var/log/mythtv
-	chown -R mythtv "${ED}"/var/log/mythtv
-	dodir /var/log/mythtv/old
+	fowners -R mythtv /var/log/mythtv
 
 	insinto /etc/logrotate.d
 	newins "${FILESDIR}"/mythtv.logrotate.d-r4 mythtv
@@ -346,9 +346,6 @@ src_install() {
 		while read file; do
 		chmod a+x "${file}"
 	done
-
-	# Remove empty dir
-	rmdir "${ED}"/var/log/mythtv/old
 }
 
 pkg_preinst() {
