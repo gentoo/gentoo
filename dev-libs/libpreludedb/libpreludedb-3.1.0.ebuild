@@ -22,7 +22,7 @@ RDEPEND="dev-libs/libgcrypt:0=
 	net-libs/gnutls:=
 	~dev-libs/libprelude-${PV}
 	python? ( ${PYTHON_DEPS} )
-	mysql? ( virtual/libmysqlclient )
+	mysql? ( dev-db/mysql-connector-c:= )
 	postgres? ( dev-db/postgresql:* )
 	sqlite? ( dev-db/sqlite:3 )"
 
