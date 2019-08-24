@@ -14,7 +14,7 @@ SLOT="0/3"
 KEYWORDS="alpha amd64 hppa ~mips ppc sparc x86 ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="doc"
 
-RDEPEND="virtual/libmysqlclient:="
+RDEPEND="dev-db/mysql-connector-c:="
 DEPEND="${RDEPEND}"
 DOCS=( CREDITS.txt HACKERS.txt Wishlist doc/ssqls-pretty )
 PATCHES=(
