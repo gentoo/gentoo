@@ -5157,7 +5157,7 @@ dev-libs/quazip 0.8.1: Simple C++ wrapper over Gilles Vollant's ZIP/UNZIP packag
 dev-libs/rapidjson 1.1.0 1.1.0-r1 9999: A fast JSON parser/generator for C++ with both SAX/DOM style API
 dev-libs/rapidxml 1.13 1.13-r1: Fast XML parser
 dev-libs/rasqal 0.9.33: Library that handles Resource Description Framework (RDF)
-dev-libs/re2 0.2016.05.01 0.2016.11.01-r1 0.2017.03.01 0.2018.04.01 0.2018.10.01: An efficient, principled regular expression library
+dev-libs/re2 0.2016.05.01 0.2016.11.01-r1 0.2017.03.01 0.2018.04.01 0.2018.10.01 0.2019.08.01: An efficient, principled regular expression library
 dev-libs/redland 1.0.17-r2: High-level interface for the Resource Description Framework
 dev-libs/redland-bindings 1.0.14.1-r2: Language bindings for Redland
 dev-libs/replicant 0.6.4 0.7.1 0.8.0 0.8.1: Hyperdex replicant support library
@@ -13236,11 +13236,11 @@ media-libs/graphene 1.8.6: A thin layer of types for graphic libraries
 media-libs/grilo 0.3.7 0.3.9: A framework for easy media discovery and browsing
 media-libs/gsound 1.0.2-r1: Thin GObject wrapper around the libcanberra sound event library
 media-libs/gst-plugins-bad 1.14.3: Less plugins for GStreamer
-media-libs/gst-plugins-base 1.14.4 1.14.4-r1: Basepack of plugins for gstreamer
+media-libs/gst-plugins-base 1.14.4 1.14.4-r1 1.14.5 1.14.5-r1: Basepack of plugins for gstreamer
 media-libs/gst-plugins-good 1.14.4: Basepack of plugins for GStreamer
 media-libs/gst-plugins-ugly 1.14.3: Basepack of plugins for gstreamer
 media-libs/gst-rtsp-server 1.14.2: A GStreamer based RTSP server
-media-libs/gstreamer 1.14.4: Open source multimedia framework
+media-libs/gstreamer 1.14.4 1.14.5: Open source multimedia framework
 media-libs/gstreamer-editing-services 1.14.3: SDK for making video editors and more
 media-libs/guilib 1.2.1 1.2.1-r1: Simple widget set for SDL
 media-libs/gupnp-dlna 0.10.5: Library providing DLNA-related functionality for MediaServers
@@ -13602,7 +13602,7 @@ media-plugins/gst-plugins-bluez 1.14.3: AVDTP source/sink and A2DP sink plugin f
 media-plugins/gst-plugins-bs2b 1.14.3: bs2b elements for Gstreamer
 media-plugins/gst-plugins-cairo 1.14.4: Video overlay plugin based on cairo for GStreamer
 media-plugins/gst-plugins-cdio 1.14.3: CD Audio Source (cdda) plugin for GStreamer
-media-plugins/gst-plugins-cdparanoia 1.14.4: CD Audio Source (cdda) plugin for GStreamer
+media-plugins/gst-plugins-cdparanoia 1.14.4 1.14.5: CD Audio Source (cdda) plugin for GStreamer
 media-plugins/gst-plugins-chromaprint 1.14.3: Calculate Chromaprint fingerprint from audio files for GStreamer
 media-plugins/gst-plugins-colormanagement 1.14.3: Color management correction GStreamer plugins
 media-plugins/gst-plugins-dash 1.14.3: MPEG-DASH plugin for GStreamer
@@ -13627,7 +13627,7 @@ media-plugins/gst-plugins-libde265 1.14.3: H.265 decoder plugin for GStreamer
 media-plugins/gst-plugins-libmms 1.14.3: Microsoft Multi Media Server source plugin for GStreamer
 media-plugins/gst-plugins-libnice 0.1.13-r100 0.1.15-r100: GStreamer plugin for ICE (RFC 5245) support
 media-plugins/gst-plugins-libpng 1.14.4: PNG image encoder/decoder plugin for GStreamer
-media-plugins/gst-plugins-libvisual 1.14.4: Visualization elements for GStreamer
+media-plugins/gst-plugins-libvisual 1.14.4 1.14.5: Visualization elements for GStreamer
 media-plugins/gst-plugins-lv2 1.14.3: Lv2 elements for Gstreamer
 media-plugins/gst-plugins-meta 1.14.3: Meta ebuild to pull in gst plugins for apps
 media-plugins/gst-plugins-modplug 1.14.3: MOD audio decoder plugin for GStreamer
@@ -13639,7 +13639,7 @@ media-plugins/gst-plugins-neon 1.14.3: HTTP client source plugin for GStreamer
 media-plugins/gst-plugins-ofa 1.14.3: MusicIP audio fingerprinting plugin for GStreamer
 media-plugins/gst-plugins-opencv 1.14.3: OpenCV elements for Gstreamer
 media-plugins/gst-plugins-openh264 1.14.3: H.264 encoder/decoder plugin for GStreamer.
-media-plugins/gst-plugins-opus 1.14.4-r1: Opus audio parser plugin for GStreamer
+media-plugins/gst-plugins-opus 1.14.4-r1 1.14.5: Opus audio parser plugin for GStreamer
 media-plugins/gst-plugins-oss 1.14.4: OSS (Open Sound System) support plugin for GStreamer
 media-plugins/gst-plugins-pulse 1.14.4: PulseAudio sound server plugin for GStreamer
 media-plugins/gst-plugins-raw1394 1.14.4: Fiwewire DV/HDV capture plugin for GStreamer
@@ -18031,7 +18031,7 @@ sys-kernel/dracut 044-r1 044-r3 045-r2 046-r1 047-r1 048 048-r1 049 049-r1 9999:
 sys-kernel/dracut-crypt-ssh 1.0.6-r1: early unlocking of encrypted systems via ssh for dracut
 sys-kernel/genkernel 3.4.52.3 3.4.52.4-r1 3.4.52.4-r2 3.4.52.4-r3 3.5.1.1 3.5.2.0-r1 3.5.2.1 3.5.2.2 3.5.2.3 3.5.2.4 3.5.2.5 3.5.3.2 3.5.3.3 4.0.0_beta14 9999: Gentoo automatic kernel building scripts
 sys-kernel/genkernel-next 69 70: Gentoo automatic kernel building scripts, reloaded
-sys-kernel/gentoo-sources 4.4.184 4.4.186 4.4.187 4.4.188 4.4.189 4.4.190 4.9.184 4.9.186 4.9.187 4.9.188 4.9.189 4.14.132 4.14.135 4.14.136 4.14.137 4.14.138 4.14.139 4.19.57 4.19.63 4.19.64 4.19.65 4.19.66 4.19.67 4.19.68 5.2.5 5.2.6 5.2.7 5.2.8 5.2.9 5.2.10: Full sources including the Gentoo patchset for the 5.2 kernel tree
+sys-kernel/gentoo-sources 4.4.184 4.4.186 4.4.187 4.4.188 4.4.189 4.4.190 4.9.184 4.9.186 4.9.187 4.9.188 4.9.189 4.9.190 4.14.132 4.14.135 4.14.136 4.14.137 4.14.138 4.14.139 4.14.140 4.19.57 4.19.63 4.19.64 4.19.65 4.19.66 4.19.67 4.19.68 5.2.5 5.2.6 5.2.7 5.2.8 5.2.9 5.2.10: Full sources including the Gentoo patchset for the 5.2 kernel tree
 sys-kernel/git-sources 5.3_rc1 5.3_rc2 5.3_rc3 5.3_rc4 5.3_rc5: The very latest -git version of the Linux kernel
 sys-kernel/kergen 0.1.4: Kernel config generator
 sys-kernel/kpatch 0.6.3 0.7.1 9999: Dynamic kernel patching for Linux
