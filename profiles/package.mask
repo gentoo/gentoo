@@ -317,10 +317,6 @@ dev-perl/File-Slurp-Unicode
 # Requires >=dev-lang/lua-5.2 which is masked
 >=app-admin/conky-1.11.4
 
-# Sobhan Mohammadpour <sobhan@gentoo.org> (2019-07-04)
-# Mask until further testing is done
-=dev-libs/libgdata-0.17.10
-
 # Michał Górny <mgorny@gentoo.org> (2019-07-04)
 # The core FreeBSD packages are outdated, and have not been subject
 # to FreeBSD erratas for quite some time.  As a result, at least some
