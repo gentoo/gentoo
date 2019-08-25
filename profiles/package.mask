@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2019-08-25)
+# Discontinued upstream in 2015, and not touched in Gentoo since.
+# Has series of build failures reported due to growing incompatibility
+# with new kernels.  Removal in 30 days.  Bug #677618.
+sys-cluster/open-mx
+
 # Brian Evans <grknight@gentoo.org> (2019-08-23)
 # These packages are incompatible with current versions of PHP (7 or higher)
 # They need a maintainer but no one has volunteered.
