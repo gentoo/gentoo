@@ -76,7 +76,7 @@ src_install() {
 	systemd_dounit external/opal-prd/opal-prd.service
 
 	if use doc; then
-
+		rm -r doc/_build/html/_sources || die
 		local HTML_DOCS=( doc/_build/html/. )
 	fi
 	einstalldocs
