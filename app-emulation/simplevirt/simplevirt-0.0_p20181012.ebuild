@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,8 +14,8 @@ EGO_VENDOR=(
 inherit linux-info golang-vcs-snapshot user
 
 EGO_PN="github.com/rafaelmartins/simplevirt"
-GIT_COMMIT="2427500bce5bf9b365dc601790704694cd6c772e"
-GIT_VERSION="0.0.24-2427"
+GIT_COMMIT="78d29d8fa11ce72af5f897430af7bb7d2947a32f"
+GIT_VERSION="0.0.26-78d2"
 ARCHIVE_URI="https://${EGO_PN}/archive/${GIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 
 DESCRIPTION="Simple virtual machine manager for Linux (QEMU/KVM)"
