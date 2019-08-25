@@ -1,0 +1,4 @@
+# /etc/conf.d/opal-prd: config file for /etc/init.d/opal-prd
+# see OPAL-PRD(8) 
+
+#OPAL_PRD_OPTS=""
