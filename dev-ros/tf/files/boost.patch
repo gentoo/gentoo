@@ -1,0 +1,28 @@
+From 2eed72cb7b63fc4ee98af695c625d9a741a09897 Mon Sep 17 00:00:00 2001
+From: Maarten de Vries <maarten@de-vri.es>
+Date: Thu, 17 Jan 2019 21:40:28 +0100
+Subject: [PATCH] Remove `signals` from find_package(Boost COMPONENTS ...)
+
+tf is using signals2, which is not the same library as signals.
+Additionally, signals2 has always been header only, and header only
+libraries must not be listed in find_package.
+
+Boost 1.69 removed the old signals library entirely, so the otherwise
+useless `COMPONENTS signals` actually breaks the build.
+---
+ tf/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tf/CMakeLists.txt b/tf/CMakeLists.txt
+index 04dcb4e8..b469f658 100644
+--- a/tf/CMakeLists.txt
++++ b/tf/CMakeLists.txt
+@@ -15,7 +15,7 @@ find_package(catkin REQUIRED COMPONENTS
+     std_msgs
+     tf2_ros
+ )
+-find_package(Boost REQUIRED COMPONENTS thread signals system)
++find_package(Boost REQUIRED COMPONENTS thread system)
+ 
+ catkin_python_setup()
+ 
