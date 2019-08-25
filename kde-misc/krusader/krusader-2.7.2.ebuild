@@ -30,6 +30,7 @@ COMMON_DEPEND="
 	$(add_frameworks_dep kio)
 	$(add_frameworks_dep kitemviews)
 	$(add_frameworks_dep kjobwidgets)
+	$(add_frameworks_dep knotifications)
 	$(add_frameworks_dep kparts)
 	$(add_frameworks_dep kservice)
 	$(add_frameworks_dep ktextwidgets)
@@ -47,7 +48,6 @@ COMMON_DEPEND="
 	sys-libs/zlib
 "
 DEPEND="${COMMON_DEPEND}
-	$(add_frameworks_dep knotifications)
 	$(add_qt_dep qtconcurrent)
 "
 RDEPEND="${COMMON_DEPEND}
