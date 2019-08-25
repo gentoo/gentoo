@@ -12,7 +12,7 @@ SRC_URI="ftp://ftp.denx.de/pub/u-boot/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 IUSE=""
 
 DEPEND="
@@ -31,7 +31,7 @@ src_compile() {
 		HOSTCC="$(tc-getCC)" \
 		HOSTCFLAGS="${CFLAGS} ${CPPFLAGS}"' $(HOSTCPPFLAGS)' \
 		HOSTLDFLAGS="${LDFLAGS}" \
-		defconfig
+		tools-only_defconfig
 
 	emake \
 		V=1 \
