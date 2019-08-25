@@ -19473,7 +19473,7 @@ x11-themes/gtk-engines-murrine 0.98.2-r1: Murrine GTK+2 Cairo Engine
 x11-themes/gtk-engines-nodoka 0.7.5: GTK+ engine and themes developed by the Fedora Project
 x11-themes/gtk-engines-qtpixmap 0.28-r2: Theme engine based on GTK pixmap engine using the Plasma color scheme
 x11-themes/gtk-engines-quartz 0.2: OSX GTK+ Theme Engine
-x11-themes/gtk-engines-rezlooks 0.6: Rezlooks GTK+ Engine
+x11-themes/gtk-engines-rezlooks 0.6 0.6-r1: Rezlooks GTK+ Engine
 x11-themes/gtk-engines-ubuntulooks 0.9.12-r3: A derivative of the standard Clearlooks GTK+ 2.x engine with more orange feel
 x11-themes/gtk-engines-unico 1.0.3_pre20121212 1.0.3_pre20140109: The Unico GTK+ 3.x theming engine
 x11-themes/gtk-engines-xfce 3.2.0-r201 3.2.0-r301: A port of Xfce engine to GTK+ 3.x
