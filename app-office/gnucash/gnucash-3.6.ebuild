@@ -122,6 +122,26 @@ src_test() {
 		   "${BUILD_DIR}"/common/test-core/ || die
 	fi
 
+	LOCALE_TESTS=
+	if type locale >/dev/null 2>&1; then
+		MY_LOCALES="$(locale -a)"
+		if [[ "${MY_LOCALES}" != *en_US* ||
+				"${MY_LOCALES}" != *en_GB* ||
+				"${MY_LOCALES}" != *fr_FR* ]] ; then
+			ewarn "Missing one or more of en_US, en_GB, or fr_FR locales."
+		else
+			LOCALE_TESTS=true
+		fi
+	else
+		ewarn "'locale' not found."
+	fi
+
+	if [[ ! ${LOCALE_TESTS} ]]; then
+		ewarn "Disabling test-qof and test-gnc-numeric."
+		echo 'set(CTEST_CUSTOM_TESTS_IGNORE test-qof test-gnc-numeric)' \
+			> "${BUILD_DIR}"/CTestCustom.cmake || die
+	fi
+
 	cd "${BUILD_DIR}" || die
 	XDG_DATA_HOME="${T}/$(whoami)" emake check
 }
