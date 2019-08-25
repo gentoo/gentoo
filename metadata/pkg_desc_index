@@ -9327,7 +9327,7 @@ dev-qt/qdbus 5.12.3 5.12.4: Interface to Qt applications communicating over D-Bu
 dev-qt/qdbusviewer 5.12.3 5.12.4: Graphical tool that lets you introspect D-Bus objects and messages
 dev-qt/qdoc 5.12.3 5.12.4: Qt documentation generator
 dev-qt/qt-creator 4.8.2 4.10.0_rc1 9999: Lightweight IDE for C++/QML development centering around Qt
-dev-qt/qt-docs 5.12.3_p201904161302: Qt5 documentation, for use with Qt Creator and other tools
+dev-qt/qt-docs 5.12.3_p201904161302 5.12.4_p201906140200: Qt5 documentation, for use with Qt Creator and other tools
 dev-qt/qt3d 5.12.3 5.12.4: 3D rendering module for the Qt5 framework
 dev-qt/qtbluetooth 5.12.3 5.12.4: Bluetooth support library for the Qt5 framework
 dev-qt/qtcharts 5.12.3 5.12.4: Chart component library for the Qt5 framework
