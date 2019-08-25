@@ -7,6 +7,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Michał Górny <mgorny@gentoo.org> (2019-08-25)
+# sys-cluster/open-mx is masked for removal.
+sys-cluster/openmpi openmpi_fabrics_open-mx
+
 # Kent Fredric <kentnl@gentoo.org> (2019-08-07)
 # Newer versions of nqp need newer versions of jdk to run on the jvm,
 # but these currently don't exist in gentoo. The USE flags have to be
