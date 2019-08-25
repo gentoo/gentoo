@@ -1,0 +1,20 @@
+#!/sbin/openrc-run
+# Copyright 2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+name="OPAL PRD daemon"
+description="Processor RunTime Diagnostics daemon"
+command=/usr/sbin/opal-prd
+command_args="${OPAL_PRD_OPTS}"
+command_background="true"
+pidfile="/run/${RC_SVCNAME}.pid"
+
+depend() {
+	need dev-mount sysfs
+	use logger
+	keyword -containers
+
+}
+
+required_dirs="/sys/firmware/devicetree/base/ibm,opal/diagnostics"
+required_files="/dev/opal-prd"
