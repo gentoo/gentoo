@@ -31,7 +31,7 @@ src_compile() {
 		HOSTCC="$(tc-getCC)" \
 		HOSTCFLAGS="${CFLAGS} ${CPPFLAGS}"' $(HOSTCPPFLAGS)' \
 		HOSTLDFLAGS="${LDFLAGS}" \
-		defconfig
+		tools-only_defconfig
 
 	emake \
 		V=1 \
