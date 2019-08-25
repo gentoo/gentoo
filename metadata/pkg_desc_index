@@ -436,7 +436,7 @@ app-backup/backupninja 1.0.1-r1: lightweight, extensible meta-backup system
 app-backup/backuppc 3.3.1-r5: High-performance backups to a server's disk
 app-backup/bacula 5.2.13-r7 9.0.8-r1 9.2.2-r2 9.4.1-r2 9.4.2-r1 9.4.3-r1 9.4.4-r1: Featureful client/server network backup suite
 app-backup/bareos 16.2.7-r1 17.2.6 17.2.7-r1 18.2.6: Featureful client/server network backup suite
-app-backup/borgbackup 1.1.8 1.1.9 1.1.10 9999: Deduplicating backup program with compression and authenticated encryption
+app-backup/borgbackup 1.1.8 1.1.9 1.1.10 1.1.10-r1 9999: Deduplicating backup program with compression and authenticated encryption
 app-backup/borgweb 0.2.0-r2 0.3.0: Browser-based user interface for BorgBackup
 app-backup/btrbk 0.24.0-r1 0.25.1-r1 0.26.0 0.26.1 0.27.0 0.27.1 0.27.1-r1 0.27.2 0.28.0 0.28.1 0.28.2 0.28.3 9999: Tool for creating snapshots and remote backups of btrfs subvolumes
 app-backup/bup 0.28.1 0.29.2: A highly efficient backup system based on the git packfile format
@@ -13233,7 +13233,7 @@ media-libs/gmmlib 18.3.0 18.4.1 19.1.2 19.2.1 19.2.3 9999: Intel Graphics Memory
 media-libs/gmtk 1.0.8 1.0.9: GTK+ widget and function libraries for gnome-mplayer
 media-libs/gnonlin 1.4.0-r1: Set of GStreamer elements to ease the creation of non-linear multimedia editors
 media-libs/graphene 1.8.6: A thin layer of types for graphic libraries
-media-libs/grilo 0.3.7: A framework for easy media discovery and browsing
+media-libs/grilo 0.3.7 0.3.9: A framework for easy media discovery and browsing
 media-libs/gsound 1.0.2-r1: Thin GObject wrapper around the libcanberra sound event library
 media-libs/gst-plugins-bad 1.14.3: Less plugins for GStreamer
 media-libs/gst-plugins-base 1.14.4 1.14.4-r1: Basepack of plugins for gstreamer
@@ -13594,7 +13594,7 @@ media-plugins/gmpc-mserver 0.20.0: This plugin allows you to play local files on
 media-plugins/gmpc-playlistsort 0.20.0: This plugin adds a dialog to sort the current playlist
 media-plugins/gmpc-shout 0.20.0: This plugin calls ogg123 and points it at mpd's shoutstream
 media-plugins/gmpc-tagedit 11.8.16: This plugin allows you to edit tags in your library
-media-plugins/grilo-plugins 0.3.8: A collection of plugins for the Grilo framework
+media-plugins/grilo-plugins 0.3.8 0.3.9: A collection of plugins for the Grilo framework
 media-plugins/gst-plugins-a52dec 1.14.3: ATSC A/52 audio decoder plugin for GStreamer
 media-plugins/gst-plugins-amr 1.14.3: AMRNB encoder/decoder and AMRWB decoder plugin for GStreamer
 media-plugins/gst-plugins-assrender 1.14.3: ASS/SSA rendering with effects support plugin for GStreamer
