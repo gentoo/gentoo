@@ -1,13 +1,14 @@
+BDEPEND=>=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DEFINED_PHASES=install postinst prepare
-DEPEND=>=x11-libs/gtk+-3.22:3 >=x11-themes/gtk-engines-murrine-0.90 dev-libs/glib:2 dev-ruby/sass:3.5 >=app-portage/elt-patches-20170815 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=>=x11-libs/gtk+-3.22:3 >=x11-themes/gtk-engines-murrine-0.90 dev-lang/sassc dev-libs/glib:2 dev-ruby/sass:3.5
 DESCRIPTION=The default theme from Xubuntu
-EAPI=6
+EAPI=7
 HOMEPAGE=http://shimmerproject.org/project/greybird/ https://github.com/shimmerproject/Greybird
-IUSE=ayatana gnome
+IUSE=ayatana gnome xfce
 KEYWORDS=~amd64 ~ppc ~ppc64 ~x86
 LICENSE=CC-BY-SA-3.0 GPL-2+
 RDEPEND=>=x11-libs/gtk+-3.22:3 >=x11-themes/gtk-engines-murrine-0.90
 SLOT=0
-SRC_URI=https://github.com/shimmerproject/Greybird/archive/v3.22.8.tar.gz -> greybird-3.22.8.tar.gz
+SRC_URI=https://github.com/shimmerproject/Greybird/archive/v3.22.10.tar.gz -> greybird-3.22.10.tar.gz
 _eclasses_=autotools	1bf086cdd7356f5c9a4acd9727bd2065	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
-_md5_=59ab552f878d3ba32ff581282e4e3396
+_md5_=c3c5e6cb0cf554515f24ad3eee3e1a73
