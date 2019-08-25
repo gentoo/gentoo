@@ -3,23 +3,20 @@
 
 EAPI=6
 
-# google{test,mock} version
-GV="1.8.0"
 PYTHON_COMPAT=( python3_{4,5,6} )
 
 inherit cmake-utils gnome2-utils python-single-r1 xdg-utils
 
 DESCRIPTION="A personal finance manager"
 HOMEPAGE="http://www.gnucash.org/"
-SRC_URI="https://github.com/Gnucash/${PN}/releases/download/${PV}/${P}.tar.bz2
-	https://github.com/google/googletest/archive/release-${GV}.tar.gz -> gtest-${GV}.tar.gz"
+SRC_URI="https://github.com/Gnucash/${PN}/releases/download/${PV}/${P}.tar.bz2"
 
 SLOT="0"
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 
 IUSE="aqbanking chipcard debug doc examples gnome-keyring +gui mysql nls ofx
-	  postgres python quotes -register2 sqlite"
+	  postgres python quotes -register2 sqlite test"
 
 REQUIRED_USE="
 	chipcard? ( aqbanking )
@@ -70,12 +67,12 @@ RDEPEND="
 "
 
 DEPEND="${RDEPEND}
-	~dev-cpp/gtest-${GV}
 	>=sys-devel/gettext-0.19.6
 	dev-lang/perl
 	dev-perl/XML-Parser
 	sys-devel/libtool
 	virtual/pkgconfig
+	test? ( >=dev-cpp/gtest-1.8.0 )
 "
 
 PDEPEND="doc? (
@@ -104,8 +101,6 @@ src_configure() {
 	fi
 
 	local mycmakeargs=(
-		-DGMOCK_ROOT="${WORKDIR}"/googletest-release-${GV}/googlemock
-		-DGTEST_ROOT="${WORKDIR}"/googletest-release-${GV}/googletest
 		# Disable fallback to guile-2.0
 		-DCMAKE_DISABLE_FIND_PACKAGE_GUILE2=ON
 		-DCOMPILE_GSCHEMAS=OFF
