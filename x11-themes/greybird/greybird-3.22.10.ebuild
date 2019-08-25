@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 inherit autotools
 
 MY_PN=${PN/g/G}
@@ -14,31 +14,32 @@ SRC_URI="https://github.com/shimmerproject/${MY_PN}/archive/v${PV}.tar.gz -> ${P
 LICENSE="CC-BY-SA-3.0 GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
-IUSE="ayatana gnome"
+IUSE="ayatana gnome xfce"
 
 RDEPEND="
 	>=x11-libs/gtk+-3.22:3
 	>=x11-themes/gtk-engines-murrine-0.90
 "
-DEPEND="${RDEPEND}
+DEPEND="
+	${RDEPEND}
+	dev-lang/sassc
 	dev-libs/glib:2
 	dev-ruby/sass:3.5
 "
-
 S=${WORKDIR}/${MY_PN}-${PV}
-#RESTRICT="binchecks strip"
 
 src_prepare() {
-	eapply_user
+	default
 	eautoreconf
 }
 
 src_install() {
-	emake DESTDIR="${D}" install
+	default
 
-	pushd "${ED}"usr/share/themes/${MY_PN} > /dev/null || die
+	pushd "${ED}"/usr/share/themes/${MY_PN} > /dev/null || die
 	use ayatana || rm -rf unity
 	use gnome || rm -rf metacity-1
+	use xfce || rm -rf xfce* xfwm4*
 	popd > /dev/null || die
 }
 
