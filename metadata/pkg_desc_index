@@ -9709,7 +9709,7 @@ dev-ruby/GeoRuby 2.5.2: Ruby data holder for OGC Simple Features
 dev-ruby/abstract 1.0.0-r3: Library which enable you to define abstract method in Ruby
 dev-ruby/acme-client 2.0.2 2.0.3: A Ruby client for the letsencrypt's ACME protocol.
 dev-ruby/actioncable 5.1.7 5.2.3 6.0.0: Integrated WebSockets for Rails
-dev-ruby/actionmailer 4.2.11.1 5.1.7 5.2.3: Framework for designing email-service layers
+dev-ruby/actionmailer 4.2.11.1 5.1.7 5.2.3 6.0.0: Framework for designing email-service layers
 dev-ruby/actionpack 4.2.11.1 5.1.7 5.2.3 6.0.0: Eases web-request routing, handling, and response
 dev-ruby/actionpack-action_caching 1.2.0: Action caching for Action Pack (removed from core in Rails 4.0)
 dev-ruby/actionpack-xml_parser 1.0.2 2.0.1: XML parameters parser for Action Pack (removed from core in Rails 4.0)
@@ -10377,7 +10377,7 @@ dev-ruby/webrobots 0.1.2-r1: A library to help write robots.txt compliant web ro
 dev-ruby/websocket 1.2.7 1.2.8: Universal Ruby library to handle WebSocket protocol
 dev-ruby/websocket-driver 0.6.5 0.7.0 0.7.1: A complete implementation of the WebSocket protocols
 dev-ruby/websocket-extensions 0.1.3 0.1.4: Generic extension manager for WebSocket connections
-dev-ruby/will_paginate 3.1.6 3.1.7: Most awesome pagination solution for Ruby
+dev-ruby/will_paginate 3.1.6 3.1.7 3.1.8: Most awesome pagination solution for Ruby
 dev-ruby/windows_error 0.1.2: reference for standard Windows API Error Codes
 dev-ruby/wirble 0.1.3-r4: Wirble is a set of enhancements for Irb
 dev-ruby/wisper 2.0.0: A micro library providing objects with Publish-Subscribe capabilities
