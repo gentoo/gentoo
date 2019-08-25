@@ -10875,7 +10875,7 @@ dev-util/patchutils 0.3.3 0.3.4: A collection of tools that operate on patch fil
 dev-util/patdiff 0.9.0: Colored patience diffs with word-level refinement
 dev-util/peg 0.1.15-r1 0.1.18: Recursive-descent parser generators for C
 dev-util/perf 4.14.33 4.14.33-r1 4.20.3 5.1.15: Userland tools for Linux Performance Counters
-dev-util/pkgcheck 0.5.4 0.6.0 9999: pkgcore-based QA utility
+dev-util/pkgcheck 0.5.4 0.6.0 0.6.1 9999: pkgcore-based QA utility
 dev-util/pkgconf 1.5.4 1.6.3 9999: pkg-config compatible replacement with no dependencies other than ANSI C89
 dev-util/pkgconfig 0.28-r2 0.28-r3 0.29.1 0.29.2 9999: Package config system that manages compile/link flags
 dev-util/pkgconfig-openbsd 20130507-r1 20130507-r2: A perl based version of pkg-config from OpenBSD
@@ -12460,7 +12460,7 @@ kde-misc/kdeconnect 1.3.4 1.3.5: Adds communication between KDE Plasma and your 
 kde-misc/kdiff3 1.8.1: Frontend to diff3 based on KDE Frameworks
 kde-misc/kdirstat 3.1.4: GUI equivalent to the du command based on KDE Frameworks
 kde-misc/kimtoy 1.92_pre20190225: An input method frontend for Plasma
-kde-misc/kio-gdrive 1.2.6 1.2.6-r1: KIO Slave for Google Drive service
+kde-misc/kio-gdrive 1.2.6 1.2.7: KIO Slave for Google Drive service
 kde-misc/kio-gopher 0.1.99-r1: Gopher Kioslave for Konqueror
 kde-misc/kio-locate 0.5.3-r2: Locate KIO slave
 kde-misc/kio-stash 1.0-r1: KIO Slave and daemon to stash discontinuous file selections
@@ -13472,9 +13472,9 @@ media-libs/osl 1.8.12 1.9.6 1.9.9 1.10.5: Advanced shading language for producti
 media-libs/oyranos 0.9.6-r1 9999: Colour management system allowing to share settings across apps and services
 media-libs/partio 1.1.0_p20170829 1.5.4 9999: Library for particle IO and manipulation
 media-libs/phat 0.4.1-r1: PHAT is a collection of GTK+ widgets geared toward pro-audio apps
-media-libs/phonon 4.10.2 4.10.3: KDE multimedia API
-media-libs/phonon-gstreamer 4.9.0-r3 4.9.1: Phonon GStreamer backend
-media-libs/phonon-vlc 0.10.2 0.10.3: Phonon VLC backend
+media-libs/phonon 4.10.2 4.10.3 4.10.90: KDE multimedia abstraction library
+media-libs/phonon-gstreamer 4.9.0-r3 4.9.1 4.9.90: GStreamer backend for the Phonon multimedia library
+media-libs/phonon-vlc 0.10.2 0.10.3 0.10.90: VLC backend for the Phonon multimedia library
 media-libs/plib 1.8.5-r1 1.8.5-r2: multimedia library used by many games
 media-libs/plotutils 2.6-r2: Powerful C/C++ function library for exporting 2-D vector graphics
 media-libs/pnglite 0.1.17: Small and simple library for loading and writing PNG images
@@ -14439,7 +14439,7 @@ media-video/vdr2jpeg 0.1.9-r1 0.2.0: Addon needed for XXV - WWW Admin for the Vi
 media-video/vdrsync 0.1.3_pre050322-r1: converting vdr-recordings to mpeg2, dvd or other similar formats
 media-video/vdrtools-genindex 0.1.3-r1: VDR: genindex Script
 media-video/videotrans 1.6.1-r1 1.6.1-r2: A package to convert movies to DVD format and to build DVDs with
-media-video/vlc 3.0.7.1 3.0.9999 9999: Media player and framework with support for most multimedia files and streaming
+media-video/vlc 3.0.7.1 3.0.8 3.0.9999 9999: Media player and framework with support for most multimedia files and streaming
 media-video/vobcopy 1.2.0: copies DVD .vob files to harddisk, decrypting them on the way
 media-video/vstrip 0.8f: A program to split non-css dvd vobs into individual chapters
 media-video/webcamoid 8.1.0: A full featured webcam capture application
