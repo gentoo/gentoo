@@ -27,6 +27,9 @@ CTARGET_sparc32="sparc-unknown-linux-gnu"
 # do NOT set CFLAGS_sparc64 here it'd break linux-headers for non-multilib
 # profiles
 
+LIBDIR_sparc32="lib"
+LIBDIR_sparc64="lib64"
+
 # Compiler flags
 CFLAGS="-O2 -mcpu=ultrasparc -pipe"
 CXXFLAGS="${CFLAGS}"
