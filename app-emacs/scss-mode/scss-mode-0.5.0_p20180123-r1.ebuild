@@ -5,7 +5,7 @@ EAPI=7
 
 inherit elisp
 
-COMMIT="b010d134f499c4b4ad33fe8a669a81e9a531b0b2"
+COMMIT="cf58dbec5394280503eb5502938f3b5445d1b53d"
 DESCRIPTION="Major mode for editing SCSS files in Emacs"
 HOMEPAGE="https://github.com/antonj/scss-mode"
 SRC_URI="https://github.com/antonj/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
