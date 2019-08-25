@@ -162,6 +162,10 @@ alsa_cards_wavefront
 # media-sound/fluidsynth isn't keyworded
 fluidsynth
 
+# Anthony G. Basile <blueness@gentoo.org> (2012-04-15)
+# Pulls in net-libs/axtls which is not keyworded for arch
+curl_ssl_axtls
+
 # Alexandre Rostovtsev <tetromino@gentoo.org> (2012-12-31)
 # net-misc/connman is not keyworded, bug 348308
 connman
