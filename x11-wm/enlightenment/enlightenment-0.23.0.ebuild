@@ -17,7 +17,7 @@ IUSE="acpi bluetooth connman doc geolocation nls packagekit pam systemd udisks w
 REQUIRED_USE="xwayland? ( wayland )"
 
 RDEPEND="
-	>=dev-libs/efl-1.22.3[eet]
+	>=dev-libs/efl-1.22.3[eet,X]
 	virtual/udev
 	x11-libs/libXext
 	x11-libs/libxcb
