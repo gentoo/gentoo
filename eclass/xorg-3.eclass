@@ -72,6 +72,7 @@ IUSE=""
 if [[ ${XORG_MODULE} == auto ]]; then
 	case ${CATEGORY} in
 		app-doc)             XORG_MODULE=doc/     ;;
+		media-fonts)         XORG_MODULE=font/    ;;
 		x11-apps|x11-wm)     XORG_MODULE=app/     ;;
 		x11-misc|x11-themes) XORG_MODULE=util/    ;;
 		x11-base)            XORG_MODULE=xserver/ ;;
@@ -140,6 +141,7 @@ if [[ ${XORG_STATIC} == yes \
 		&& ${CATEGORY} != app-doc \
 		&& ${CATEGORY} != x11-apps \
 		&& ${CATEGORY} != x11-drivers \
+		&& ${CATEGORY} != media-fonts \
 		&& ${PN} != util-macros \
 		&& ${PN} != xbitmaps \
 		&& ${PN} != xorg-cf-files \
