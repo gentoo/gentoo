@@ -3,5 +3,8 @@
 
 EAPI=7
 
+inherit acct-group
+
 DESCRIPTION="Mythtv mythbackend server/deamon group"
+
 ACCT_GROUP_ID=117

@@ -7,7 +7,7 @@ inherit acct-user
 
 DESCRIPTION="Mythtv mythbackend server/deamon user"
 ACCT_USER_ID=117
-ACCT_USER_GROUPS=( mythtv )
 ACCT_USER_GROUPS=( mythtv video audio tty )
 ACCT_USER_SHELL=/bin/bash
+
 acct-user_add_deps
