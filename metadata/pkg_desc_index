@@ -15571,7 +15571,7 @@ net-misc/rabbitmq-server 3.6.9 3.6.14 3.7.3-r1 3.7.9 3.7.10 3.7.11 3.7.13: Rabbi
 net-misc/radvd 2.14 2.17-r1 2.17-r2 2.18: Linux IPv6 Router Advertisement Daemon
 net-misc/rclone 1.45 1.47.0 9999: A program to sync files to and from various cloud storage providers
 net-misc/rdate 1.4-r3 1.4-r4: use TCP or UDP to retrieve the current time of another machine
-net-misc/rdesktop 1.8.4-r1 1.8.4-r2 1.8.6: A Remote Desktop Protocol Client
+net-misc/rdesktop 1.8.4-r1 1.8.4-r2 1.8.6 1.8.6-r1: A Remote Desktop Protocol Client
 net-misc/redir 3.2 3.3: Redir is a port redirector
 net-misc/remmina 1.2.0_rc24 1.2.31.3 1.3.3 1.3.4 1.3.5_p20190731: A GTK+ RDP, SPICE, VNC, XDMCP and SSH client
 net-misc/rinetd 0.62-r2: redirects TCP connections from one IP address and port to another
