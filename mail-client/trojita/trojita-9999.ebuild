@@ -58,7 +58,7 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		-DWITH_ABOOKADDRESSBOOK_PLUGIN=OFF
+		-DWITH_ABOOKADDRESSBOOK_PLUGIN=ON
 		-DWITH_AKONADIADDRESSBOOK_PLUGIN=$(usex addressbook)
 		-DWITH_CRYPTO_MESSAGES=$(usex crypt)
 		-DWITH_GPGMEPP=$(usex crypt)
