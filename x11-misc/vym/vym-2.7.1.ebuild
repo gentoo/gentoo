@@ -18,6 +18,7 @@ RDEPEND="
 	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5
 	dev-qt/qtprintsupport:5
+	dev-qt/qtscript:5
 	dev-qt/qtsvg:5
 	dev-qt/qtxml:5
 	dbus? ( dev-qt/qtdbus:5 )
