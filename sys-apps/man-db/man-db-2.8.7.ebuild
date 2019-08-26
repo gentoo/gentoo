@@ -1,9 +1,9 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit user eapi7-ver systemd
+inherit systemd
 
 DESCRIPTION="a man replacement that utilizes berkdb instead of flat files"
 HOMEPAGE="http://www.nongnu.org/man-db/"
@@ -29,8 +29,8 @@ CDEPEND="
 	seccomp? ( sys-libs/libseccomp )
 	zlib? ( sys-libs/zlib )
 "
-DEPEND="
-	${CDEPEND}
+DEPEND="${CDEPEND}"
+BDEPEND="
 	app-arch/xz-utils
 	virtual/pkgconfig
 	nls? (
@@ -40,15 +40,13 @@ DEPEND="
 "
 RDEPEND="
 	${CDEPEND}
+	acct-group/man
+	acct-user/man
 	selinux? ( sec-policy/selinux-mandb )
 "
 PDEPEND="manpager? ( app-text/manpager )"
 
 pkg_setup() {
-	# Create user now as Makefile in src_install does setuid/chown
-	enewgroup man 15
-	enewuser man 13 -1 /usr/share/man man
-
 	if (use gdbm && use berkdb) || (use !gdbm && use !berkdb) ; then #496150
 		ewarn "Defaulting to USE=gdbm due to ambiguous berkdb/gdbm USE flag settings"
 	fi
@@ -92,7 +90,7 @@ src_install() {
 }
 
 pkg_preinst() {
-	local cachedir="${EROOT}var/cache/man"
+	local cachedir="${EROOT}/var/cache/man"
 	# If the system was already exploited, and the attacker is hiding in the
 	# cachedir of the old man-db, let's wipe them out.
 	# see bug  #602588 comment 18
