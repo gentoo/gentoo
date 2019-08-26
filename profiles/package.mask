@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Ulrich Müller <ulm@gentoo.org> (2019-08-26)
+# A more recent version of thumbs.el is distributed
+# as part of GNU Emacs proper.
+# Masked for removal in 30 days, bug #692882.
+app-emacs/thumbs
+
 # Brian Evans <grknight@gentoo.org> (2019-08-26)
 # Deprecated virtual as it cannot solve the issue of ABI incompatibility
 # and rebuild consumers when provider changes
