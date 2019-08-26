@@ -1454,7 +1454,7 @@ app-emulation/runv 0.7.0: Hypervisor-based Runtime for OCI
 app-emulation/s6-overlay 1.18.1.3: an s6-based init system for containers
 app-emulation/sen 0.5.1 0.6.0 0.6.1: Terminal User Interface for docker engine
 app-emulation/simh 3.9.0-r1: a simulator for historical computers such as Vax, PDP-11 etc.)
-app-emulation/simplevirt 0.0_p20181011: Simple virtual machine manager for Linux (QEMU/KVM)
+app-emulation/simplevirt 0.0_p20181012: Simple virtual machine manager for Linux (QEMU/KVM)
 app-emulation/ski 1.3.2-r2 1.3.2-r3: ia64 instruction set simulator
 app-emulation/skopeo 0.1.37 0.1.38 0.1.39: Command line utility foroperations on container images and image repositories
 app-emulation/slirp4netns 0.3.1 0.3.2 0.4.0_beta2 0.4.0_beta3: User-mode networking for unprivileged network namespaces
@@ -12770,7 +12770,7 @@ media-fonts/font-schumacher-misc 1.1.2-r1: X.Org Schumacher fonts
 media-fonts/font-screen-cyrillic 1.0.4-r1: X.Org Screen cyrillic fonts
 media-fonts/font-sony-misc 1.0.3-r1: X.Org Sony fonts
 media-fonts/font-sun-misc 1.0.3-r1: X.Org Sun fonts
-media-fonts/font-util 1.3.1: X.Org font utilities
+media-fonts/font-util 1.3.1 1.3.2: X.Org font utilities
 media-fonts/font-winitzki-cyrillic 1.0.3-r1: X.Org Winitzki cyrillic font
 media-fonts/font-xfree86-type1 1.0.4-r1: X.Org XFree86 Type 1 font
 media-fonts/fontawesome 4.7.0 5.0.6 5.1.0 5.9.0 5.10.2: The iconic font
@@ -18695,7 +18695,7 @@ x11-apps/setxkbmap 1.3.1 1.3.2: Controls the keyboard layout of a running X serv
 x11-apps/showfont 1.0.4 1.0.5: font dumper for X font server
 x11-apps/smproxy 1.0.6: Session Manager Proxy
 x11-apps/transset 1.0.1 1.0.2: An utility for setting opacity property
-x11-apps/viewres 1.0.4 1.0.5: graphical class browser for Xt
+x11-apps/viewres 1.0.4 1.0.5 1.0.6: graphical class browser for Xt
 x11-apps/whyteboard 0.41.1: A simple image, PDF and postscript file annotator
 x11-apps/x11perf 1.6.1: X rendering operation stress test utility
 x11-apps/xauth 1.0.10 1.1 9999: X authority file utility
