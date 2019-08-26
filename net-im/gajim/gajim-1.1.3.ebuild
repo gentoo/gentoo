@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{5,6} )
 PYTHON_REQ_USE="sqlite,xml"
 DISTUTILS_SINGLE_IMPL=1
 
-inherit gnome2-utils distutils-r1 xdg-utils
+inherit distutils-r1 xdg-utils
 
 DESCRIPTION="Jabber client written in PyGTK"
 HOMEPAGE="https://www.gajim.org/"
@@ -67,12 +67,20 @@ RDEPEND="${COMMON_DEPEND}
 
 RESTRICT="test"
 
+src_install() {
+	distutils-r1_src_install
+
+	# avoid precompressed man pages
+	rm -r "${D}/usr/share/man"
+	doman data/*.1
+}
+
 pkg_postinst() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 	xdg_desktop_database_update
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 	xdg_desktop_database_update
 }
