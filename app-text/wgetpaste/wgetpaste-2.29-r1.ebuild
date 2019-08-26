@@ -15,6 +15,8 @@ IUSE="+ssl"
 DEPEND=""
 RDEPEND="net-misc/wget[ssl?]"
 
+PATCHES=( "${FILESDIR}/${P}-fix-bpaste.patch" )
+
 src_prepare() {
 	sed -i -e "s:/etc:\"${EPREFIX}\"/etc:g" wgetpaste || die
 	default

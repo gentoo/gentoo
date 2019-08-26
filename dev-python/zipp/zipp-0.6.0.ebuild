@@ -13,13 +13,15 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
 IUSE="doc test"
 
+RDEPEND="dev-python/more-itertools[${PYTHON_USEDEP}]"
 BDEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	>=dev-python/setuptools_scm-1.15.0[${PYTHON_USEDEP}]
 	test? (
+		${RDEPEND}
 		dev-python/contextlib2[${PYTHON_USEDEP}]
 		dev-python/pathlib2[${PYTHON_USEDEP}]
 		dev-python/pytest[${PYTHON_USEDEP}]
