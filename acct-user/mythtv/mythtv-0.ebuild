@@ -5,10 +5,9 @@ EAPI=7
 
 inherit acct-user
 
-DESCRIPTION="user for mythbackend server/deamon"
+DESCRIPTION="Mythtv mythbackend server/deamon user"
 ACCT_USER_ID=117
 ACCT_USER_GROUPS=( mythtv )
-# FIXME package acct-group/uucp is not in portage yet
-ACCT_USER_GROUPS=( video audio tty )
+ACCT_USER_GROUPS=( mythtv video audio tty )
 ACCT_USER_SHELL=/bin/bash
 acct-user_add_deps
