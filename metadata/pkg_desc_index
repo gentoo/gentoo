@@ -4914,7 +4914,7 @@ dev-libs/libelf 0.8.13-r2: A ELF object file access library
 dev-libs/liberasurecode 1.6.1: Erasure Code API library written in C with pluggable Erasure Code backends.
 dev-libs/libestr 0.1.10 0.1.11: Library for some string essentials
 dev-libs/libev 4.23 4.24 4.25: A high-performance event loop/event model with lots of feature
-dev-libs/libevdev 1.7.0 9999: Handler library for evdev events
+dev-libs/libevdev 1.7.0 1.8.0 9999: Handler library for evdev events
 dev-libs/libevent 2.1.8 2.1.11 2.1.9999 9999: Library to execute a function when a specific event occurs on a file descriptor
 dev-libs/libevocosm 3.3.1-r1: A C++ framework for evolutionary computing
 dev-libs/libexecinfo 1.1: A library for inspecting program's backtrace
@@ -4951,7 +4951,7 @@ dev-libs/libiconv 1.14-r1 1.15: GNU charset conversion library for libc which do
 dev-libs/libidmef 1.0.3-r1: Implementation of the IDMEF XML draft
 dev-libs/libindicate 12.10.1-r3: Library to raise flags on DBus for other components of the desktop
 dev-libs/libindicator 12.10.1-r201 12.10.1-r301: A set of symbols and convience functions that all indicators would like to use
-dev-libs/libinput 1.13.4 1.14.0: Library to handle input devices in Wayland
+dev-libs/libinput 1.13.4 1.14.0 1.14.1: Library to handle input devices in Wayland
 dev-libs/libintl 0.19.7 0.19.8.1 0.20.1: the GNU international library (split out of gettext)
 dev-libs/libisoburn 1.5.0: Creation/expansion of ISO-9660 filesystems on CD/DVD media supported by libburn
 dev-libs/libisofs 1.5.0: Open-source library for reading, mastering and writing optical discs
