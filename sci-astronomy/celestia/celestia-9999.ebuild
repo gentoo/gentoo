@@ -29,7 +29,7 @@ BDEPEND="
 "
 DEPEND="
 	>=dev-lang/lua-5.1:*
-	dev-libs/libfmt
+	dev-libs/libfmt:=
 	media-libs/glew:0
 	media-libs/libpng:0=
 	virtual/glu
