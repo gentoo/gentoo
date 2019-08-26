@@ -1174,7 +1174,7 @@ app-emacs/async 1.9.3: Simple library for asynchronous processing in Emacs
 app-emacs/atomic-chrome 2.0.0: Edit text area on Chrome with Emacs using Atomic Chrome
 app-emacs/auctex 11.92 12.1: Extensible package for writing and formatting TeX files in Emacs
 app-emacs/auto-complete 1.5.1-r1: Auto-complete package
-app-emacs/autoconf-mode 2.69: Emacs major modes for editing autoconf and autotest input
+app-emacs/autoconf-mode 2.69-r1: Emacs major modes for editing autoconf and autotest input
 app-emacs/basic-toolkit 0.3: Basic edit toolkit
 app-emacs/bbdb 2.35-r1 3.1.2: The Insidious Big Brother Database
 app-emacs/binclock 1.7-r1 1.11: Display the current time using a binary clock
@@ -4924,7 +4924,7 @@ dev-libs/libfastjson 0.99.8: Fork of the json-c library, which is optimized for 
 dev-libs/libffi 3.2.1 3.2.1-r1 3.2.1-r2 3.3_rc0: a portable, high level programming interface to various calling conventions
 dev-libs/libfilezilla 0.15.1 0.16.0 0.17.1 0.18.0 0.18.1: C++ library offering some basic functionality for platform-independent programs
 dev-libs/libflatarray 0.3.0: Struct of arrays library with object oriented interface for C++
-dev-libs/libfmt 4.1.0 5.1.0 5.2.0 5.2.1 5.3.0 9999: Small, safe and fast formatting library
+dev-libs/libfmt 4.1.0 5.1.0 5.2.0 5.2.1 5.3.0 6.0.0 9999: Small, safe and fast formatting library
 dev-libs/libfstrcmp 0.7: Make fuzzy comparisons of strings and byte arrays
 dev-libs/libg15 1.2.7-r1 9999: The libg15 library gives low-level access to the Logitech G15 keyboard
 dev-libs/libg15render 1.2-r2 9999: Small library for display text and graphics on a Logitech G15 keyboard
@@ -13553,7 +13553,7 @@ media-libs/webrtc-audio-processing 0.3.1: AudioProcessing library from the webrt
 media-libs/woff2 1.0.2-r1: Encode/decode WOFF2 font format
 media-libs/wxsvg 1.5.9 1.5.11: C++ library to create, manipulate and render SVG files
 media-libs/x264 0.0.20190214 9999: A free library for encoding X264/AVC streams
-media-libs/x265 2.8 2.9 3.0 3.1 9999: Library for encoding video streams into the H.265/HEVC format
+media-libs/x265 2.8 2.9 3.0 3.1 3.1.2 9999: Library for encoding video streams into the H.265/HEVC format
 media-libs/xine-lib 1.2.9-r2 1.2.9999: Core libraries for Xine movie player
 media-libs/xvid 1.3.5: High performance/quality MPEG-4 video de-/encoding solution
 media-libs/zimg 2.8 9999: Scaling, colorspace conversion, and dithering library
