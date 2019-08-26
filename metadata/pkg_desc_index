@@ -7382,7 +7382,7 @@ dev-php/symfony-process 3.4.29: Symfony Process Component
 dev-php/symfony-yaml 2.1.0: Symfony YAML Component
 dev-php/tcpdf 6.2.25 6.2.26: TCPDF is a FLOSS PHP class for generating PDF documents
 dev-php/theseer-tokenizer 1.1.0: Convert tokenized PHP source code into XML and other formats
-dev-php/twig 1.40.1 1.40.1-r1 1.42.2: PHP templating engine with syntax similar to Django
+dev-php/twig 1.40.1-r1 1.42.3: PHP templating engine with syntax similar to Django
 dev-php/webmozart-assert 1.2.0 1.4.0: Assertions to validate method input/output with nice error messages
 dev-php/xcache 3.2.0-r2: A fast and stable PHP opcode cacher
 dev-php/xdebug 2.5.3 2.5.5 2.6.1 2.7.0 2.7.2: A PHP debugging and profiling extension
