@@ -1,7 +1,8 @@
 --- a/Makefile
 +++ b/Makefile
-@@ -1,5 +1,6 @@
-+LIBS += -lncurses -lpthread
+@@ -1,5 +1,7 @@
++PKGCONFIG ?= pkg-config
++LIBS += $(shell $(PKGCONFIG) --libs ncurses) -lpthread
  all:
 -	g++ -O3 -Wall -o clockywock clockywock.cpp -lncurses -lpthread
 +	$(CXX) $(CXXFLAGS) $(LDFLAGS) -o clockywock clockywock.cpp $(LIBS)
