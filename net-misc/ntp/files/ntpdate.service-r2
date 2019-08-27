@@ -1,0 +1,14 @@
+[Unit]
+Description=Set time via NTP using ntpdate
+After=network-online.target nss-lookup.target
+Before=time-sync.target
+Wants=network-online.target time-sync.target
+Conflicts=systemd-timesyncd.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/sbin/ntpdate -b -u $SERVER
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
