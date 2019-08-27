@@ -30,6 +30,15 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2019-08-27)
+# Our version is seriously outdated and has numerous bugs reported,
+# including multilib-strict failures preventing it from being installed
+# on any modern system.  It has not been touched since 2016, and is
+# many releases behind upstream.  Furthermore, upstream has discontinued
+# it in favor of eeCodes.
+# Removal in 30 days.  Bug #628746.
+sci-libs/grib_api
+
+# Michał Górny <mgorny@gentoo.org> (2019-08-27)
 # Not touched since 2012.  Homepage gone, and no replacement found.
 # No reverse dependencies.
 # Removal in 30 days.  Bug #692796.
