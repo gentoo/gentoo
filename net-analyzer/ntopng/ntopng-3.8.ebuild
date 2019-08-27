@@ -27,7 +27,7 @@ DEPEND="dev-db/sqlite:3
 	>=net-libs/nDPI-2.4
 	net-misc/curl
 	sys-libs/binutils-libs
-	virtual/libmysqlclient"
+	dev-db/mysql-connector-c:="
 RDEPEND="${DEPEND}
 	dev-db/redis"
 PATCHES=(
