@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 inherit elisp autotools
 
@@ -15,15 +15,16 @@ KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris"
 IUSE="tex vm"
 RESTRICT="test" #631700
 
-DEPEND="tex? ( virtual/tex-base )
-	vm? ( app-emacs/vm )"
-RDEPEND="${DEPEND}"
+BDEPEND="vm? ( app-emacs/vm )"
+RDEPEND="${BDEPEND}
+	tex? ( virtual/tex-base )"
 
 SITEFILE="50${PN}-gentoo-${PV}.el"
 TEXMF="/usr/share/texmf-site"
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-no-init.patch
+	eapply "${FILESDIR}"/${P}-no-init.patch
+	eapply_user
 	eautoreconf
 }
 
