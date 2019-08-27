@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>sbraz@gentoo.org</email>
+		<name>Louis Sautier</name>
+	</maintainer>
+	<use>
+		<flag name="curl">Build check_docker which requires <pkg>net-misc/curl</pkg></flag>
+	</use>
+	<upstream>
+		<remote-id type="github">madrisan/nagios-plugins-linux</remote-id>
+		<bugs-to>https://github.com/madrisan/nagios-plugins-linux/issues</bugs-to>
+	</upstream>
+</pkgmetadata>
