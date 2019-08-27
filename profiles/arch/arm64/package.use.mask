@@ -333,9 +333,8 @@ media-sound/pulseaudio neon
 media-libs/vo-aacenc cpu_flags_arm_neon
 
 # Alexis Ballier <aballier@gentoo.org> (2017-06-16)
-# neon on pixman seems armv7 only, at least according to configure checks: it
-# aborts when neon is enabled.
-x11-libs/pixman neon
+# pixman's neon code is armv7 only.
+x11-libs/pixman cpu_flags_arm_neon neon
 
 # James Le Cuirot <chewi@gentoo.org> (2017-05-22)
 # Only available on some architectures.
