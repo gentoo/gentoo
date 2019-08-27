@@ -34,5 +34,5 @@ RDEPEND="
 	"
 src_prepare() {
 	echo 'find_library(DOSBOX_LIB NAMES dosbox_libretro${CMAKE_SHARED_LIBRARY_SUFFIX} PATH_SUFFIXES libretro)' > "${S}/Findlibretro-dosbox.cmake" || die
-	default
+	cmake-utils_src_prepare
 }
