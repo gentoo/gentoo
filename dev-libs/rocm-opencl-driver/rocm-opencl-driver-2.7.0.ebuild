@@ -28,6 +28,7 @@ DEPEND="${RDEPEND}"
 PATCHES=(
 	"${FILESDIR}/${PN}-2.6.0-install-correctly.patch"
 	"${FILESDIR}/${PN}-2.6.0-install-header.patch"
+	"${FILESDIR}/${PN}-2.7.0-libraries.patch"
 )
 
 src_prepare() {
