@@ -17997,7 +17997,7 @@ sys-fs/shake 1.0: Defragmenter that runs in userspace while the system is used
 sys-fs/simple-mtpfs 0.3.0: Simple MTP fuse filesystem driver
 sys-fs/snapraid 6.2 6.3 7.0 7.1 8.1 10.0 11.0-r1 11.2: a backup program for disk array for home media centers
 sys-fs/squashfs-tools 4.3-r2 4.3_p7 4.3_p11 4.3_p11-r1 4.3_p12 9999: tools to create and extract Squashfs filesystems
-sys-fs/squashfs-tools-ng 0.5 0.6 9999: A new set of tools for working with SquashFS images
+sys-fs/squashfs-tools-ng 0.5 0.6.1 9999: A new set of tools for working with SquashFS images
 sys-fs/squashfuse 0.1.100 0.1.103: FUSE filesystem to mount squashfs archives
 sys-fs/static-dev 0.1: A skeleton, statically managed /dev
 sys-fs/sysfsutils 2.1.0: System Utilities Based on Sysfs
