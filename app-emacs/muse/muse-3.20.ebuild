@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
@@ -9,14 +9,13 @@ DESCRIPTION="An authoring and publishing environment for Emacs"
 HOMEPAGE="http://mwolson.org/projects/EmacsMuse.html"
 SRC_URI="http://download.gna.org/muse-el/${P}.tar.gz"
 
-LICENSE="GPL-3 FDL-1.2 GPL-2 MIT"
+LICENSE="GPL-3+ FDL-1.2+ GPL-2 MIT"
 SLOT="0"
 KEYWORDS="amd64 ppc x86 ~x86-fbsd"
-IUSE="test"
+#IUSE="test"
 RESTRICT="test"					#426546
 
-DEPEND="test? ( app-emacs/htmlize )"
-RDEPEND=""
+#DEPEND="test? ( app-emacs/htmlize )"
 
 SITEFILE="50${PN}-gentoo.el"
 
