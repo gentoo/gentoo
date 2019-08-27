@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,12 +14,11 @@ SRC_URI="https://dev.gentoo.org/~reavertm/${MY_P}.tar.bz2"
 LICENSE="public-domain mpeg2enc"
 KEYWORDS="~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~x86"
 SLOT="0"
-IUSE="debug gif jpeg jpeg2k png qt5 sndfile tiff vorbis"
+IUSE="debug gif jpeg png qt5 sndfile tiff vorbis"
 
 RDEPEND="
 	gif? ( media-libs/giflib )
 	jpeg? ( virtual/jpeg:0= )
-	jpeg2k? ( media-libs/jasper )
 	png? ( media-libs/libpng:0= )
 	qt5? (
 		dev-qt/qtcore:5
@@ -52,7 +51,7 @@ src_configure() {
 		-DSIMAGE_EPS_SUPPORT=ON
 		-DSIMAGE_GDIPLUS_SUPPORT=OFF # Windows only
 		-DSIMAGE_GIF_SUPPORT=$(usex gif)
-		-DSIMAGE_JASPER_SUPPORT=$(usex jpeg2k)
+		-DSIMAGE_JASPER_SUPPORT=OFF
 		-DSIMAGE_JPEG_SUPPORT=$(usex jpeg)
 		-DSIMAGE_LIBSNDFILE_SUPPORT=$(usex sndfile)
 		-DSIMAGE_MPEG2ENC_SUPPORT=ON
