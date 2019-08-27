@@ -12123,7 +12123,7 @@ gui-libs/amtk 5.0.0: Actions, Menus and Toolbars Kit for GTK+ applications
 gui-libs/libhandy 0.0.9: Library with GTK widgets for mobile phones
 gui-libs/tepl 4.2.0: GtkSourceView-based text editors and IDE helper library
 gui-libs/wlroots 0.4.1 0.5.0 0.6.0 9999: Pluggable, composable, unopinionated modules for building a Wayland compositor
-gui-wm/sway 1.0 1.1.1 9999: i3-compatible Wayland window manager
+gui-wm/sway 1.0 1.1.1 1.2 9999: i3-compatible Wayland window manager
 java-virtuals/ejb-api 0: Virtual for Enterprise JavaBeans API (javax.ejb)
 java-virtuals/interceptor-api 0: Virtual for Interceptor API (javax.interceptor)
 java-virtuals/jms 1.1: Virtual for Java Message Service (JMS) API
