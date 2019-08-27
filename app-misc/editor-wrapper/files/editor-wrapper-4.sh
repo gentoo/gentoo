@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright 2009-2011 Gentoo Foundation
+# Copyright 2009-2011 Gentoo Authors
 # Distributed under the terms of the MIT/X11 license
 
 # Wrapper script, executes ${@VAR@} with arguments $@
