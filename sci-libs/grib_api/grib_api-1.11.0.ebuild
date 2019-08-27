@@ -21,13 +21,13 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 
-IUSE="doc examples fortran jasper jpeg2k netcdf openmp png python static-libs threads perl"
+IUSE="doc examples fortran jpeg2k netcdf openmp png python static-libs threads perl"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="
 	jpeg2k? (
-		jasper? ( media-libs/jasper:= )
-		!jasper? ( media-libs/openjpeg:0 )
+		media-libs/openjpeg:0
+		!!media-libs/jasper
 	)
 	netcdf? ( sci-libs/netcdf )
 	png? ( media-libs/libpng:0= )
