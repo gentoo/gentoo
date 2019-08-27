@@ -56,7 +56,10 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
-PATCHES=( "${FILESDIR}"/${P}-missing-header.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-missing-header.patch
+	"${FILESDIR}"/${P}-postgresql-9.12.patch
+)
 
 src_prepare() {
 	if ! use webkit; then
