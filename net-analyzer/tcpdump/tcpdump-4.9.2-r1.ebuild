@@ -2,25 +2,21 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit flag-o-matic toolchain-funcs user
+inherit autotools flag-o-matic toolchain-funcs user
 
 DESCRIPTION="A Tool for network monitoring and data acquisition"
-EGIT_REPO_URI="https://github.com/the-tcpdump-group/tcpdump"
 HOMEPAGE="
 	http://www.tcpdump.org/
-	${EGIT_REPO_URI}
+	https://github.com/the-tcpdump-group/tcpdump
+"
+SRC_URI="
+	http://www.tcpdump.org/release/${P}.tar.gz
 "
 
 LICENSE="BSD"
 SLOT="0"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 IUSE="+drop-root libressl smi ssl samba suid test"
-if [[ ${PV} == "9999" ]] ; then
-	inherit git-r3
-	KEYWORDS=""
-else
-	SRC_URI="https://github.com/the-${PN}-group/${PN}/archive/${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
-fi
 
 RDEPEND="
 	drop-root? ( sys-libs/libcap-ng )
@@ -39,6 +35,9 @@ DEPEND="
 		dev-lang/perl
 	)
 "
+PATCHES=(
+	"${FILESDIR}"/${PN}-4.9.2-includedir.patch
+)
 
 pkg_setup() {
 	if use drop-root || use suid; then
@@ -49,6 +48,10 @@ pkg_setup() {
 
 src_prepare() {
 	default
+
+	mv aclocal.m4 acinclude.m4 || die
+
+	eautoreconf
 
 	sed -i -e '/^eapon1/d;' tests/TESTLIST || die
 
