@@ -1,0 +1,24 @@
+From 88ac2b4a1386bc05f0e3965f31949039eaf4d3ff Mon Sep 17 00:00:00 2001
+From: Pino Toscano <pino@kde.org>
+Date: Sat, 25 May 2019 07:12:17 +0200
+Subject: cmake: find PostgreSQL 12
+
+---
+ cmake/modules/FindPostgreSQL.cmake | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/cmake/modules/FindPostgreSQL.cmake b/cmake/modules/FindPostgreSQL.cmake
+index 56e6e56..1579be0 100644
+--- a/cmake/modules/FindPostgreSQL.cmake
++++ b/cmake/modules/FindPostgreSQL.cmake
+@@ -86,7 +86,7 @@ set(PostgreSQL_LIBRARY_DIR_MESSAGE "Set the PostgreSQL_LIBRARY_DIR cmake cache e
+ set(PostgreSQL_ROOT_DIR_MESSAGE "Set the PostgreSQL_ROOT system variable to where PostgreSQL is found on the machine E.g C:/Program Files/PostgreSQL/8.4")
+ 
+ set(PostgreSQL_KNOWN_VERSIONS ${PostgreSQL_ADDITIONAL_VERSIONS}
+-    "11" "10" "9.6" "9.5" "9.4" "9.3" "9.2" "9.1" "9.0" "8.4" "8.3" "8.2" "8.1" "8.0")
++    "12" "11" "10" "9.6" "9.5" "9.4" "9.3" "9.2" "9.1" "9.0" "8.4" "8.3" "8.2" "8.1" "8.0")
+ 
+ # Define additional search paths for root directories.
+ foreach (suffix ${PostgreSQL_KNOWN_VERSIONS} )
+-- 
+cgit v1.1
