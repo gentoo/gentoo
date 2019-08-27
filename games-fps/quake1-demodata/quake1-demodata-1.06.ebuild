@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -17,7 +17,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="symlink"
 
-RDEPEND=""
+RDEPEND="symlink? ( !games-fps/quake1-data )"
 DEPEND="app-arch/lha
 	app-arch/unzip"
 
@@ -30,13 +30,6 @@ pkg_setup() {
 	if has_version "games-fps/quake1-data" ; then
 		ewarn "games-fps/quake1-data already includes the demo data,"
 		ewarn "so this installation is not very useful."
-		echo
-		if use symlink ; then
-			eerror "The symlink for the demo data conflicts with the cdinstall data"
-			die "Remove the 'symlink' USE flag for this package"
-		fi
-		ebeep
-		epause
 	fi
 }
 
