@@ -1,0 +1,19 @@
+--- a/third-party/zeromq-4.1.3/src/tcp_connecter.cpp
++++ b/third-party/zeromq-4.1.3/src/tcp_connecter.cpp
+@@ -31,6 +31,7 @@
+ 
+ #include <new>
+ #include <string>
++#include <algorithm>
+ 
+ #include "tcp_connecter.hpp"
+ #include "stream_engine.hpp"
+@@ -207,7 +208,7 @@
+         options.reconnect_ivl_max > options.reconnect_ivl)
+         //  Calculate the next interval
+         current_reconnect_ivl =
+-            min (current_reconnect_ivl * 2, options.reconnect_ivl_max);
++	  std::min(current_reconnect_ivl * 2, options.reconnect_ivl_max);
+     return interval;
+ }
+ 
