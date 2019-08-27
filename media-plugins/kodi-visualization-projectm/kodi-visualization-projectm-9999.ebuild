@@ -40,5 +40,5 @@ RDEPEND="
 src_prepare() {
 	# Delete bundled libprojectM
 	rm src/libprojectM -rf || die
-	default
+	cmake-utils_src_prepare
 }
