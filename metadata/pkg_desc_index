@@ -2985,7 +2985,7 @@ dev-ada/gnatcoll-core 2018 2018-r1 2019: GNAT Component Collection Core packages
 dev-ada/gnatcoll-db 2018 2018-r1: GNAT Component Collection
 dev-ada/gnatmem 2018 2019: Monitors dynamic allocation and deallocation activity in a program
 dev-ada/gnatsymbolize 2018 2019: Translates addresses into filename, line number, and function names
-dev-ada/gprbuild 2017-r1 2018-r3 2018-r4 2019: Multi-Language Management
+dev-ada/gprbuild 2017-r1 2019: Multi-Language Management
 dev-ada/gps 2017 2018-r1: The GNAT Programming Studio
 dev-ada/gps-bin 2016: The GNAT Programming Studio
 dev-ada/gtkada 2017 2018 2018-r1 2019: A complete Ada graphical toolkit
@@ -15773,7 +15773,7 @@ net-print/brlaser 4: Brother laser printer driver
 net-print/c2esp 26 27: A CUPS filter for Kodak ESP printers
 net-print/cndrvcups-common-lb 3.60-r1: Common files for Canon drivers
 net-print/cndrvcups-lb 3.60-r2: Canon UFR II / LIPSLX Printer Driver for Linux
-net-print/cnijfilter2 5.20 5.40 5.50: IJ Printer Driver
+net-print/cnijfilter2 5.20 5.40 5.50 5.70: IJ Printer Driver
 net-print/cups 2.2.11 2.2.12 2.3.0 9999: The Common Unix Printing System
 net-print/cups-bjnp 1.1 1.2.1 2.0: CUPS backend for the canon printers using the proprietary USB over IP BJNP protocol
 net-print/cups-filters 1.21.6 1.22.6 1.23.0 1.25.0 1.25.2 1.25.3 9999: Cups filters
