@@ -28,7 +28,8 @@ RDEPEND="dev-ada/gnatcoll-core[gnat_2016(-)?,gnat_2017(-)?,gnat_2018(-)?,gnat_20
 	)
 	${PYTHON_DEPS}"
 DEPEND="${RDEPEND}
-	dev-ada/gprbuild[gnat_2016(-)?,gnat_2017(-)?,gnat_2018(-)?,gnat_2019(-)?]"
+	dev-ada/gprbuild[gnat_2016(-)?,gnat_2017(-)?,gnat_2018(-)?]
+	dev-ada/gprbuild[gnat_2019(-)?]"
 
 REQUIRED_USE="gnatinspect? ( xref )
 	xref? ( sqlite )

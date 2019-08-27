@@ -22,7 +22,8 @@ RDEPEND="dev-ada/xmlada[gnat_2016(-)?,gnat_2017(-)?,gnat_2018(-)?,gnat_2019(-)?]
 DEPEND="${RDEPEND}
 	dev-ada/asis[gnat_2016(-)?]
 	dev-ada/asis[gnat_2017(-)?,gnat_2018(-)?,gnat_2019(-)?]
-	dev-ada/gprbuild[gnat_2016(-)?,gnat_2017(-)?,gnat_2018(-)?,gnat_2019(-)?]"
+	dev-ada/gprbuild[gnat_2016(-)?,gnat_2017(-)?,gnat_2018(-)?]
+	dev-ada/gprbuild[gnat_2019(-)?]"
 
 REQUIRED_USE="^^ ( gnat_2016 gnat_2017 gnat_2018 gnat_2019 )"
 
