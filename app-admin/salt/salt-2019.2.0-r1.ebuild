@@ -92,9 +92,11 @@ REQUIRED_USE="|| ( raet zeromq )"
 RESTRICT="x86? ( test )"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-2017.7.0-dont-realpath-tmpdir.patch"
-	"${FILESDIR}/${PN}-2019.2.0-tests.patch"
-	"${FILESDIR}/${PN}-2018.3.2-skip-zeromq-test-that-hangs.patch"
+	"${FILESDIR}/salt-2017.7.0-dont-realpath-tmpdir.patch"
+	"${FILESDIR}/salt-2019.2.0-tests.patch"
+	"${FILESDIR}/salt-2018.3.2-skip-zeromq-test-that-hangs.patch"
+	"${FILESDIR}/salt-2019.2.0-skip-tests-that-oom-machine.patch"
+	"${FILESDIR}/salt-2019.2.0-newer-deps.patch"
 )
 
 python_prepare() {
