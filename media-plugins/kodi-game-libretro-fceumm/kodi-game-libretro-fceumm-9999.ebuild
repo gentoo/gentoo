@@ -34,5 +34,5 @@ RDEPEND="
 	"
 src_prepare() {
 	echo 'find_library(FCEUMM_LIB NAMES fceumm_libretro${CMAKE_SHARED_LIBRARY_SUFFIX} PATH_SUFFIXES libretro)' > "${S}/Findlibretro-fceumm.cmake" || die
-	default
+	cmake-utils_src_prepare
 }
