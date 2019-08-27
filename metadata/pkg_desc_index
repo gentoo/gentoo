@@ -7824,7 +7824,7 @@ dev-python/flake8 2.1.0 2.2.5 2.5.4 3.5.0 3.6.0: A wrapper around PyFlakes, pep8
 dev-python/flake8-import-order 0.18: Flake8 plugin that checks import order against various Python Style Guides
 dev-python/flake8-polyfill 1.0.1: Polyfill package for Flake8 plugins
 dev-python/flaky 3.1.1 3.4.0 3.5.3: Plugin for nose or py.test that automatically reruns flaky tests
-dev-python/flask 0.12.2 1.0.2 9999: A microframework based on Werkzeug, Jinja2 and good intentions
+dev-python/flask 0.12.2 1.0.2 1.0.4 1.1.1 9999: A microframework based on Werkzeug, Jinja2 and good intentions
 dev-python/flask-admin 1.0.6 1.5.0 1.5.1: Simple and extensible admin interface framework for Flask
 dev-python/flask-api 1.0 1.1: Browsable web APIs for Flask
 dev-python/flask-appconfig 0.11.1-r1: Configures Flask applications in a canonical way
@@ -9248,7 +9248,7 @@ dev-python/websockify 0.8.0: WebSockets support for any application/server
 dev-python/webtest 2.0.21 2.0.29 2.0.29-r1: Helper to test WSGI applications
 dev-python/webut 0.1.0.2-r1: Miscellaneous utilities for nevow and twisted.web programming
 dev-python/wehjit 0.2.2-r1: A Python web-widget library
-dev-python/werkzeug 0.12.2 0.14.1 0.15.4: Collection of various utilities for WSGI applications
+dev-python/werkzeug 0.12.2 0.14.1 0.15.4 0.15.5: Collection of various utilities for WSGI applications
 dev-python/wheel 0.29.0 0.30.0 0.31.1 0.32.2 0.32.3 0.33.1: A built-package format for Python
 dev-python/whelk 2.7.1: Pretending python is a shell
 dev-python/whichcraft 0.4.1: This package provides cross-platform cross-python shutil.which functionality
@@ -13254,7 +13254,6 @@ media-libs/ilmbase 2.3.0: OpenEXR ILM Base libraries
 media-libs/imlib 1.9.15-r5: Image loading and rendering library
 media-libs/imlib2 1.5.1-r1: Version 2 of an advanced replacement library for libraries like libXpm
 media-libs/intel-mediasdk 18.3.0 18.4.1 9999: Intel Media SDK
-media-libs/jasper 2.0.14 2.0.16 9999: Implementation of the codec specified in the JPEG-2000 Part-1 standard
 media-libs/jbig2dec 0.14: A decoder implementation of the JBIG2 image compression format
 media-libs/jbig2enc 0.28-r1: JBIG2 Encoder and libs
 media-libs/jbigkit 2.1: data compression algorithm for bi-level high-resolution images
