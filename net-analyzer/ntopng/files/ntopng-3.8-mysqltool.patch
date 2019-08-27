@@ -1,0 +1,17 @@
+--- a/configure.seed
++++ b/configure.seed
+@@ -355,13 +355,7 @@
+  if test "x$ac_cv_prog_ac_ct_MARIADB" = "xmariadb_config"; then
+    MYSQLTOOL="mariadb_config"
+  else
+-   PATH=$PATH:/usr/local/mysql/bin
+-   AC_CHECK_TOOL(MYSQL, mysql_config)
+-   if test "x$ac_cv_prog_ac_ct_MYSQL" = "xmysql_config"; then
+-     MYSQLTOOL="mysql_config"
+-   else
+-     MYSQLTOOL=""
+-   fi
++   MYSQLTOOL="mysql_config"
+  fi
+ 
+ if test -n "$MYSQLTOOL"; then
