@@ -16,7 +16,7 @@ IUSE="fmv glew"
 RDEPEND="
 	dev-libs/glib:2
 	media-libs/libpng:0=
-	media-libs/libsdl2[opengl]
+	media-libs/libsdl2[opengl,X]
 	media-libs/openal
 	virtual/opengl
 	x11-libs/libdrm
@@ -37,6 +37,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.0.0-libmpeg2.patch
+	"${FILESDIR}"/${PN}-3.0.0-Xatom.h.patch
 )
 
 src_prepare() {

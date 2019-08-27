@@ -1,0 +1,25 @@
+From c4c267a90d412bc6d072615d38ce891325282b6d Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Tue, 27 Aug 2019 22:22:57 +0100
+Subject: [PATCH] Add missing X11/Xatom.h include
+
+It is sometimes (but not always?) included by SDL2.
+---
+ libfsemu/src/ml/x11.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/libfsemu/src/ml/x11.c b/libfsemu/src/ml/x11.c
+index c20073d3..4dc5487c 100644
+--- a/libfsemu/src/ml/x11.c
++++ b/libfsemu/src/ml/x11.c
+@@ -26,6 +26,7 @@ extern SDL_Window* g_fs_ml_window;
+ 
+ #include <X11/Xlib.h>
+ #include <X11/keysym.h>
++#include <X11/Xatom.h>
+ #ifdef USE_X11_XTEST
+ #include <X11/extensions/XTest.h>
+ #endif
+-- 
+2.21.0
+
