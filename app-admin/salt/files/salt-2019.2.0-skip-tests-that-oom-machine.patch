@@ -1,0 +1,20 @@
+diff --git a/tests/unit/modules/test_boto_apigateway.py b/tests/unit/modules/test_boto_apigateway.py
+index be26b3f093..ca971556d5 100644
+--- a/tests/unit/modules/test_boto_apigateway.py
++++ b/tests/unit/modules/test_boto_apigateway.py
+@@ -169,6 +169,7 @@ def _has_required_botocore():
+         return True
+ 
+ 
++@skipIf(True, "Causes machines to OOM")
+ class BotoApiGatewayTestCaseBase(TestCase, LoaderModuleMockMixin):
+     conn = None
+ 
+@@ -207,6 +208,7 @@ class BotoApiGatewayTestCaseBase(TestCase, LoaderModuleMockMixin):
+         self.addCleanup(delattr, self, 'conn')
+ 
+ 
++@skipIf(True, "Causes machines to OOM")
+ class BotoApiGatewayTestCaseMixin(object):
+     def _diff_list_dicts(self, listdict1, listdict2, sortkey):
+         '''
