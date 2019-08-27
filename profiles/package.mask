@@ -30,6 +30,13 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2019-08-27)
+# Discontinued upstream, in favor of Tokyo Tycoon.  Last release
+# in 2010.  Not touched by the Gentoo maintainer since 2010, with bugs
+# having to be addressed by other developers.
+# Removal in 30 days.  Bug #681044.
+net-misc/tokyotyrant
+
+# Michał Górny <mgorny@gentoo.org> (2019-08-27)
 # Live ebuild committed in Oct 2018, and not updated since.  Suffers
 # from numerous QA violations.  Never had a keyworded version.
 # Removal in 14 days.  Bug #692048.
