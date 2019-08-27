@@ -11,7 +11,7 @@ SRC_URI="https://github.com/emacs-php/apache-mode/archive/${PV}.tar.gz -> ${P}.t
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc ~x86"
 
 SITEFILE="50${PN}-gentoo.el"
 DOCS="README.org"
