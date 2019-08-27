@@ -7,7 +7,6 @@
 	</maintainer>
 	<use>
 		<flag name="designer">Install plugin for <pkg>dev-qt/designer</pkg></flag>
-		<flag name="gui">Install device preferences and backend settings GUI</flag>
 		<flag name="vlc">Install VLC Phonon backend</flag>
 	</use>
 </pkgmetadata>
