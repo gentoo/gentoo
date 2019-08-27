@@ -38,7 +38,7 @@ COMMON_DEPEND="
 	>=media-libs/alsa-lib-1.0.19:=
 	media-libs/fontconfig:=
 	media-libs/freetype:=
-	>=media-libs/harfbuzz-2.4.0:0=[icu(-)]
+	>=media-libs/harfbuzz-2.2.0:0=[icu(-)]
 	media-libs/libjpeg-turbo:=
 	media-libs/libpng:=
 	system-libvpx? ( media-libs/libvpx:=[postproc,svc] )
@@ -97,7 +97,7 @@ BDEPEND="
 		dev-lang/yasm
 	)
 	dev-lang/perl
-	dev-util/gn
+	<dev-util/gn-0.1583
 	dev-vcs/git
 	>=dev-util/gperf-3.0.3
 	>=dev-util/ninja-1.7.2
@@ -144,11 +144,21 @@ PATCHES=(
 	"${FILESDIR}/chromium-compiler-r10.patch"
 	"${FILESDIR}/chromium-widevine-r4.patch"
 	"${FILESDIR}/chromium-fix-char_traits.patch"
-	"${FILESDIR}/chromium-unbundle-zlib.patch"
-	"${FILESDIR}/chromium-77-fix-gn-gen.patch"
-	"${FILESDIR}/chromium-77-system-icu.patch"
-	"${FILESDIR}/chromium-77-clang.patch"
-	"${FILESDIR}/chromium-78-include.patch"
+	"${FILESDIR}/chromium-angle-inline.patch"
+	"${FILESDIR}/chromium-76-arm64-skia.patch"
+	"${FILESDIR}/chromium-76-quiche.patch"
+	"${FILESDIR}/chromium-76-no-cups.patch"
+	"${FILESDIR}/chromium-76-gcc-vulkan.patch"
+	"${FILESDIR}/chromium-76-gcc-private.patch"
+	"${FILESDIR}/chromium-76-gcc-noexcept.patch"
+	"${FILESDIR}/chromium-76-gcc-gl-init.patch"
+	"${FILESDIR}/chromium-76-gcc-blink-namespace1.patch"
+	"${FILESDIR}/chromium-76-gcc-blink-namespace2.patch"
+	"${FILESDIR}/chromium-76-gcc-blink-constexpr.patch"
+	"${FILESDIR}/chromium-76-gcc-uint32.patch"
+	"${FILESDIR}/chromium-76-gcc-ambiguous-nodestructor.patch"
+	"${FILESDIR}/chromium-76-gcc-include.patch"
+	"${FILESDIR}/chromium-76-gcc-pure-virtual.patch"
 )
 
 pre_build_checks() {
@@ -245,7 +255,6 @@ src_prepare() {
 		third_party/catapult/third_party/six
 		third_party/catapult/tracing/third_party/d3
 		third_party/catapult/tracing/third_party/gl-matrix
-		third_party/catapult/tracing/third_party/jpeg-js
 		third_party/catapult/tracing/third_party/jszip
 		third_party/catapult/tracing/third_party/mannwhitneyu
 		third_party/catapult/tracing/third_party/oboe
@@ -303,9 +312,7 @@ src_prepare() {
 		third_party/nasm
 		third_party/node
 		third_party/node/node_modules/polymer-bundler/lib/third_party/UglifyJS2
-		third_party/one_euro_filter
 		third_party/openscreen
-		third_party/openscreen/src/third_party/tinycbor/src/src
 		third_party/ots
 		third_party/pdfium
 		third_party/pdfium/third_party/agg23
@@ -321,7 +328,6 @@ src_prepare() {
 		third_party/pffft
 		third_party/ply
 		third_party/polymer
-		third_party/private-join-and-compute
 		third_party/protobuf
 		third_party/protobuf/third_party/six
 		third_party/pyjson5
@@ -344,7 +350,6 @@ src_prepare() {
 		third_party/swiftshader/third_party/llvm-7.0
 		third_party/swiftshader/third_party/llvm-subzero
 		third_party/swiftshader/third_party/subzero
-		third_party/swiftshader/third_party/SPIRV-Headers/include/spirv/unified1
 		third_party/unrar
 		third_party/usrsctp
 		third_party/vulkan
@@ -361,7 +366,6 @@ src_prepare() {
 		third_party/widevine
 		third_party/woff2
 		third_party/zlib/google
-		tools/grit/third_party/six
 		url/third_party/mozilla
 		v8/src/third_party/siphash
 		v8/src/third_party/valgrind
@@ -623,12 +627,6 @@ src_compile() {
 	use suid && eninja -C out/Release chrome_sandbox
 
 	pax-mark m out/Release/chrome
-
-	# Build manpage; bug #684550
-	sed -e 's|@@PACKAGE@@|chromium-browser|g;
-		s|@@MENUNAME@@|Chromium|g;' \
-		chrome/app/resources/manpage.1.in > \
-		out/Release/chromium-browser.1 || die
 }
 
 src_install() {
@@ -682,7 +680,7 @@ src_install() {
 
 	# Install icons and desktop entry.
 	local branding size
-	for size in 16 24 32 48 64 128 256 ; do
+	for size in 16 22 24 32 48 64 128 256 ; do
 		case ${size} in
 			16|32) branding="chrome/app/theme/default_100_percent/chromium" ;;
 				*) branding="chrome/app/theme/chromium" ;;
@@ -706,10 +704,6 @@ src_install() {
 	# Install GNOME default application entry (bug #303100).
 	insinto /usr/share/gnome-control-center/default-apps
 	newins "${FILESDIR}"/chromium-browser.xml chromium-browser.xml
-
-	# Install manpage; bug #684550
-	doman out/Release/chromium-browser.1
-	dosym chromium-browser.1 /usr/share/man/man1/chromium.1
 
 	readme.gentoo_create_doc
 }
