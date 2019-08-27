@@ -24,11 +24,6 @@ LICENSE="MIT"
 SLOT="0"
 IUSE="altivec cpu_flags_arm_iwmmxt cpu_flags_arm_iwmmxt2 cpu_flags_arm_neon loongson2f cpu_flags_x86_mmxext cpu_flags_x86_sse2 cpu_flags_x86_ssse3"
 
-src_unpack() {
-	default
-	[[ $PV = 9999* ]] && git-r3_src_unpack
-}
-
 multilib_src_configure() {
 	local openmp=disabled
 	tc-has-openmp && openmp=enabled
