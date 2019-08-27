@@ -1099,7 +1099,7 @@ app-editors/elvis 2.2.0-r6 2.2.0-r7: A vi/ex clone
 app-editors/emacs 18.59-r12 23.4-r18 24.5-r7 25.3-r6 26.1-r3 26.2 26.3_rc1: The extensible, customizable, self-documenting real-time display editor
 app-editors/emacs-vcs 26.2.90 26.2.9999 27.0.50_pre20180831 27.0.9999: The extensible, customizable, self-documenting real-time display editor
 app-editors/emact 2.58.0: EmACT, a fork of Conroy's MicroEmacs
-app-editors/ersatz-emacs 20060515: A very minimal imitation of the famous GNU Emacs editor
+app-editors/ersatz-emacs 20060515 20060515-r1: A very minimal imitation of the famous GNU Emacs editor
 app-editors/fe 2.0: A small and easy to use folding editor
 app-editors/focuswriter 1.7.2: Fullscreen and distraction-free word processor
 app-editors/fte 20110708-r1: Lightweight text-mode editor
@@ -1114,7 +1114,7 @@ app-editors/hexcurse 1.55 1.60.0: ncurses based hex editor
 app-editors/hexedit 1.2.13: View and edit files in hex or ASCII
 app-editors/hteditor 2.1.0 2.1.0-r1: A file viewer, editor and analyzer for text, binary, and executable files
 app-editors/jasspa-microemacs 20091011-r3: Jasspa Microemacs
-app-editors/jed 0.99.19: Console S-Lang-based editor
+app-editors/jed 0.99.19 0.99.19-r1: Console S-Lang-based editor
 app-editors/jedit 5.2.0-r1 5.4.0: Programmer's editor written in Java
 app-editors/jext 5.0-r2: A text editor written in Java
 app-editors/joe 4.2 4.3-r1 4.4 4.6: A free ASCII-Text Screen Editor for UNIX
