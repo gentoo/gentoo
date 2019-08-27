@@ -2,53 +2,46 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+MY_PV="${PV/_/-}"
 
-inherit cmake-utils git-r3 multilib toolchain-funcs wxwidgets
+inherit cmake-utils multilib wxwidgets
 
 DESCRIPTION="A PlayStation 2 emulator"
 HOMEPAGE="https://www.pcsx2.net"
-EGIT_REPO_URI="https://github.com/PCSX2/${PN}.git"
+SRC_URI="https://github.com/PCSX2/${PN}/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS=""
-IUSE=""
+KEYWORDS="-* ~amd64 ~x86"
 
 RDEPEND="
 	app-arch/bzip2[abi_x86_32(-)]
 	app-arch/xz-utils[abi_x86_32(-)]
 	dev-libs/libaio[abi_x86_32(-)]
-	dev-libs/libxml2:2[abi_x86_32(-)]
 	media-libs/alsa-lib[abi_x86_32(-)]
 	media-libs/libpng:=[abi_x86_32(-)]
-	media-libs/libsdl2[abi_x86_32(-),haptic,joystick,sound]
+	media-libs/libsdl[abi_x86_32(-),joystick,sound]
 	media-libs/libsoundtouch[abi_x86_32(-)]
 	media-libs/portaudio[abi_x86_32(-)]
-	net-libs/libpcap[abi_x86_32(-)]
 	sys-libs/zlib[abi_x86_32(-)]
-	virtual/libudev[abi_x86_32(-)]
 	virtual/opengl[abi_x86_32(-)]
 	x11-libs/gtk+:2[abi_x86_32(-)]
 	x11-libs/libICE[abi_x86_32(-)]
 	x11-libs/libX11[abi_x86_32(-)]
 	x11-libs/libXext[abi_x86_32(-)]
-	x11-libs/wxGTK:3.0-gtk3[abi_x86_32(-),-sdl,X]
+	x11-libs/wxGTK:3.0[abi_x86_32(-),X]
 "
-# Ensure no incompatible headers from eselect-opengl are installed, bug #510730
 DEPEND="${RDEPEND}
 	dev-cpp/pngpp
 	dev-cpp/sparsehash
 "
 
-pkg_setup() {
-	if [[ ${MERGE_TYPE} != binary && $(tc-getCC) == *gcc* ]]; then
-		# -mxsave flag is needed when GCC >= 8.2 is used
-		# https://bugs.gentoo.org/685156
-		if [[ $(gcc-major-version) -gt 8 || $(gcc-major-version) == 8 && $(gcc-minor-version) -ge 2 ]]; then
-			append-flags -mxsave
-		fi
-	fi
-}
+S="${WORKDIR}/${PN}-${MY_PV}"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-gcc5.patch
+	"${FILESDIR}"/${P}-xgetbv.patch
+)
 
 src_configure() {
 	multilib_toolchain_setup x86
@@ -76,21 +69,19 @@ src_configure() {
 		-DCMAKE_LIBRARY_PATH="/usr/$(get_libdir)/${PN}"
 		-DDOC_DIR=/usr/share/doc/"${PF}"
 		-DEGL_API=FALSE
-		-DGTK3_API=TRUE
+		-DGTK3_API=FALSE
 		-DPLUGIN_DIR="/usr/$(get_libdir)/${PN}"
 		# wxGTK must be built against same sdl version
-		-DSDL2_API=TRUE
+		-DSDL2_API=FALSE
+		-DWX28_API=FALSE
 	)
 
-	WX_GTK_VER="3.0-gtk3" setup-wxwidgets
+	WX_GTK_VER="3.0" setup-wxwidgets
 	cmake-utils_src_configure
 }
 
 src_install() {
-	# Upstream issues:
-	#  https://github.com/PCSX2/pcsx2/issues/417
-	#  https://github.com/PCSX2/pcsx2/issues/3077
-	QA_EXECSTACK="usr/bin/PCSX2"
+	# Upstream issue: https://github.com/PCSX2/pcsx2/issues/417
 	QA_TEXTRELS="usr/$(get_libdir)/pcsx2/* usr/bin/PCSX2"
 	cmake-utils_src_install
 }
