@@ -255,20 +255,10 @@ setup_target_flags() {
 			sparc64-*)
 				case $(get-flag mcpu) in
 				niagara[234])
-					if version_is_at_least 2.8 ; then
-						cpu="sparc64v2"
-					elif version_is_at_least 2.4 ; then
-						cpu="sparc64v"
-					elif version_is_at_least 2.2.3 ; then
-						cpu="sparc64b"
-					fi
+					cpu="sparc64v2"
 					;;
 				niagara)
-					if version_is_at_least 2.4 ; then
-						cpu="sparc64v"
-					elif version_is_at_least 2.2.3 ; then
-						cpu="sparc64b"
-					fi
+					cpu="sparc64v"
 					;;
 				ultrasparc3)
 					cpu="sparc64b"
@@ -284,24 +274,10 @@ setup_target_flags() {
 			sparc-*)
 				case $(get-flag mcpu) in
 				niagara[234])
-					if version_is_at_least 2.8 ; then
-						cpu="sparcv9v2"
-					elif version_is_at_least 2.4 ; then
-						cpu="sparcv9v"
-					elif version_is_at_least 2.2.3 ; then
-						cpu="sparcv9b"
-					else
-						cpu="sparcv9"
-					fi
+					cpu="sparcv9v2"
 					;;
 				niagara)
-					if version_is_at_least 2.4 ; then
-						cpu="sparcv9v"
-					elif version_is_at_least 2.2.3 ; then
-						cpu="sparcv9b"
-					else
-						cpu="sparcv9"
-					fi
+					cpu="sparcv9v"
 					;;
 				ultrasparc3)
 					cpu="sparcv9b"
@@ -395,25 +371,6 @@ want__thread() {
 	WANT__THREAD=$?
 
 	return ${WANT__THREAD}
-}
-
-use_multiarch() {
-	# Make sure binutils is new enough to support indirect functions,
-	# #336792. This funky sed supports gold and bfd linkers.
-	local bver nver
-	bver=$($(tc-getLD ${CTARGET}) -v | sed -n -r '1{s:[^0-9]*::;s:^([0-9.]*).*:\1:;p}')
-	case $(tc-arch ${CTARGET}) in
-	amd64|x86) nver="2.20" ;;
-	arm)       nver="2.22" ;;
-	hppa)      nver="2.23" ;;
-	ppc|ppc64) nver="2.20" ;;
-	# ifunc support was added in 2.23, but glibc also needs
-	# machinemode which is in 2.24.
-	s390)      nver="2.24" ;;
-	sparc)     nver="2.21" ;;
-	*)         return 1 ;;
-	esac
-	version_is_at_least ${nver} ${bver}
 }
 
 # Setup toolchain variables that had historically been defined in the
@@ -860,7 +817,6 @@ glibc_do_configure() {
 		--libexecdir='$(libdir)'/misc/glibc
 		--with-bugurl=https://bugs.gentoo.org/
 		--with-pkgversion="$(glibc_banner)"
-		$(use_multiarch || echo --disable-multi-arch)
 		$(use_enable systemtap)
 		$(use_enable nscd)
 		${EXTRA_ECONF}
