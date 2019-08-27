@@ -1558,7 +1558,7 @@ app-forensics/foremost 1.5.7-r3: A console program to recover files based on the
 app-forensics/galleta 20040505_p1: IE Cookie Parser
 app-forensics/honggfuzz 1.8 1.9: A general purpose fuzzer with feedback support
 app-forensics/libewf 20171104: Implementation of the EWF (SMART and EnCase) image format
-app-forensics/lynis 2.7.3: Security and system auditing tool
+app-forensics/lynis 2.7.5: Security and system auditing tool
 app-forensics/mac-robber 1.02: mac-robber is a digital forensics and incident response tool that collects data
 app-forensics/magicrescue 1.1.9: Find deleted files in block devices
 app-forensics/memdump 1.01-r1: Simple memory dumper for UNIX-Like systems
