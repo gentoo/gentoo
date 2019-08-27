@@ -18,7 +18,8 @@ KEYWORDS="~amd64 ~x86"
 IUSE="gnat_2016 gnat_2017 gnat_2018 +gnat_2019"
 
 RDEPEND=""
-DEPEND="dev-ada/gprbuild[gnat_2016(-)?,gnat_2017(-)?,gnat_2018(-)?,gnat_2019(-)?]
+DEPEND="dev-ada/gprbuild[gnat_2016(-)?,gnat_2017(-)?,gnat_2018(-)?]
+	dev-ada/gprbuild[gnat_2019(-)?]
 	sys-libs/binutils-libs"
 
 REQUIRED_USE="^^ ( gnat_2016 gnat_2017 gnat_2018 gnat_2019 )"
