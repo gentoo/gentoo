@@ -20,7 +20,7 @@ REQUIRED_USE="
 "
 
 RDEPEND="
-	>=dev-libs/libuv-1.30.1:=
+	>=dev-libs/libuv-1.31.0:=
 	>=net-dns/c-ares-1.15.0
 	>=net-libs/http-parser-2.8.0:=
 	>=net-libs/nghttp2-1.39.2
@@ -59,7 +59,6 @@ src_prepare() {
 
 	# make sure we use python2.* while using gyp
 	sed -i -e "s/python/${EPYTHON}/" deps/npm/node_modules/node-gyp/gyp/gyp || die
-	sed -i -e "s/|| 'python2'/|| '${EPYTHON}'/" deps/npm/node_modules/node-gyp/lib/configure.js || die
 
 	# less verbose install output (stating the same as portage, basically)
 	sed -i -e "/print/d" tools/install.py || die
