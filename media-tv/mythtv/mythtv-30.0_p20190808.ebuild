@@ -156,13 +156,11 @@ Note that the systemd unit now restarts by default and logs
 to journald via the console at the notice verbosity.
 "
 
-MYTHTV_GROUPS="video,audio,tty"
-
 pkg_setup() {
 	keepdir /home/mythtv
 	python-single-r1_pkg_setup
-	enewuser mythtv -1 /bin/bash /home/mythtv ${MYTHTV_GROUPS}
-#	usermod -a -G ${MYTHTV_GROUPS} mythtv
+	# Group membership is configured in acct-user/mythtv package
+	enewuser mythtv -1 /bin/bash /home/mythtv
 }
 
 src_prepare() {
