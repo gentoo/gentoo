@@ -684,12 +684,6 @@ dev-libs/cityhash
 dev-db/hyperdex
 
 # David Seifert <soap@gentoo.org> (2019-12-08)
-# Unmaintained, build hangs, tons of other build failures, missing
-# dependencies.  Bug #663794, #666916, #666922, #667062, #678068,
-# #681678, #684420, #694488. Removal in 30 days.
-dev-db/clickhouse
-
-# David Seifert <soap@gentoo.org> (2019-12-08)
 # No revdeps, py2 only, needs version bump, practically unmaintained
 # in Gentoo. Removal in 30 days.
 sci-chemistry/pymol-plugins-psico

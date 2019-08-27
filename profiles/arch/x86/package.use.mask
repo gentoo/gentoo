@@ -25,6 +25,10 @@ sys-block/fio -gnuplot
 # iasl is stable on x86
 sys-firmware/seabios -debug
 
+# Konstantin Ignatov <kpp+gentoo@qrator.net> (2019-09-08)
+# Unsupported by upstream (errors during configuration phase)
+dev-db/clickhouse kafka
+
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2019-08-28)
 # upstream provides docs and tools for tier-1 arches
 dev-lang/rust-bin -doc

@@ -1,0 +1,49 @@
+--- a/contrib/CMakeLists.txt
++++ b/contrib/CMakeLists.txt
+@@ -68,10 +68,10 @@
+     # TODO: make pull to Dead2/zlib-ng and remove:
+     # We should use same defines when including zlib.h as used when zlib compiled
+     target_compile_definitions (zlib PUBLIC ZLIB_COMPAT WITH_GZFILEOP)
+-    target_compile_definitions (zlibstatic PUBLIC ZLIB_COMPAT WITH_GZFILEOP)
++    # target_compile_definitions (zlibstatic PUBLIC ZLIB_COMPAT WITH_GZFILEOP) # ebuild: we don't have this target
+     if(CMAKE_SYSTEM_PROCESSOR MATCHES "x86_64" OR CMAKE_SYSTEM_PROCESSOR MATCHES "AMD64")
+        target_compile_definitions (zlib PUBLIC X86_64 UNALIGNED_OK)
+-       target_compile_definitions (zlibstatic PUBLIC X86_64 UNALIGNED_OK)
++       # target_compile_definitions (zlibstatic PUBLIC X86_64 UNALIGNED_OK) # ebuild: we don't have this target
+     endif ()
+
+     #set_target_properties(example PROPERTIES EXCLUDE_FROM_ALL 1)
+--- a/contrib/zlib-ng/CMakeLists.txt
++++ b/contrib/zlib-ng/CMakeLists.txt
+@@ -621,8 +621,8 @@
+
+ add_library(zlib SHARED ${ZLIB_SRCS} ${ZLIB_GZFILE_SRCS} ${ZLIB_ARCH_SRCS} ${ZLIB_ASMS} ${ZLIB_DLL_SRCS} ${ZLIB_PUBLIC_HDRS} ${ZLIB_PRIVATE_HDRS})
+ target_include_directories(zlib PUBLIC ${CMAKE_CURRENT_BINARY_DIR} ${CMAKE_CURRENT_SOURCE_DIR})
+-add_library(zlibstatic STATIC ${ZLIB_SRCS} ${ZLIB_GZFILE_SRCS} ${ZLIB_ARCH_SRCS} ${ZLIB_ASMS} ${ZLIB_PUBLIC_HDRS} ${ZLIB_PRIVATE_HDRS})
+-target_include_directories(zlibstatic PUBLIC ${CMAKE_CURRENT_BINARY_DIR} ${CMAKE_CURRENT_SOURCE_DIR})
++# add_library(zlibsctatic STATIC ${ZLIB_SRCS} ${ZLIB_GZFILE_SRCS} ${ZLIB_ARCH_SRCS} ${ZLIB_ASMS} ${ZLIB_PUBLIC_HDRS} ${ZLIB_PRIVATE_HDRS}) # ebuild: respect USE flags
++# target_include_directories(zlibstatic PUBLIC ${CMAKE_CURRENT_BINARY_DIR} ${CMAKE_CURRENT_SOURCE_DIR})
+
+ set_target_properties(zlib PROPERTIES DEFINE_SYMBOL ZLIB_DLL)
+ set_target_properties(zlib PROPERTIES SOVERSION 1)
+@@ -641,7 +641,7 @@
+
+ if(UNIX)
+     # On unix-like platforms the library is almost always called libz
+-    set_target_properties(zlib zlibstatic PROPERTIES OUTPUT_NAME z-ng) # ebuild: force library name
++    set_target_properties(zlib PROPERTIES OUTPUT_NAME z-ng) # ebuild: force library name, only shared
+     if(NOT APPLE)
+         set_target_properties(zlib PROPERTIES LINK_FLAGS "-Wl,--version-script,\"${CMAKE_CURRENT_SOURCE_DIR}/${LIBNAME2}.map\"")
+     endif()
+@@ -653,11 +653,8 @@
+     set_target_properties(zlib PROPERTIES SUFFIX "1.dll")
+ endif()
+
+-if(NOT SKIP_INSTALL_LIBRARIES AND NOT SKIP_INSTALL_ALL )
+-    install(TARGETS zlib zlibstatic
+-        RUNTIME DESTINATION "${INSTALL_BIN_DIR}"
+-        ARCHIVE DESTINATION "${INSTALL_LIB_DIR}"
+-        LIBRARY DESTINATION "${INSTALL_LIB_DIR}" )
++if(TRUE)
++    install(TARGETS zlib)
+ endif()

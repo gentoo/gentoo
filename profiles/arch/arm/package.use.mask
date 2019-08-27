@@ -22,6 +22,10 @@ sci-libs/pcl vtk
 # Neither sys-apps/bolt nor kde-plasma/plasma-thunderbolt are keyworded
 kde-plasma/plasma-meta thunderbolt
 
+# Konstantin Ignatov <kpp+gentoo@qrator.net> (2019-09-08)
+# Unsupported by upstream (errors during configuration phase)
+dev-db/clickhouse fastops kafka
+
 # Michał Górny <mgorny@gentoo.org> (2019-07-13)
 # app-forensics/libewf is not keyworded here.
 app-admin/testdisk ewf

@@ -1,0 +1,9 @@
+--- a/contrib/zlib-ng/CMakeLists.txt
++++ b/contrib/zlib-ng/CMakeLists.txt
+@@ -641,7 +641,7 @@
+
+     if(UNIX)
+         # On unix-like platforms the library is almost always called libz
+-        set_target_properties(${ZLIB_INSTALL_LIBRARIES} PROPERTIES OUTPUT_NAME z${SUFFIX})
++        set_target_properties(${ZLIB_INSTALL_LIBRARIES} PROPERTIES OUTPUT_NAME z-ng) # ebuild: force library name
+         if(NOT APPLE)

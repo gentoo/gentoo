@@ -1,0 +1,41 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -382,7 +382,7 @@
+ include (cmake/print_flags.cmake)
+
+ if (TARGET global-group)
+-    install (EXPORT global DESTINATION cmake)
++    # ebuild: don't install cmake files: install (EXPORT global DESTINATION cmake)
+ endif ()
+
+ add_subdirectory (contrib EXCLUDE_FROM_ALL)
+--- a/cmake/find/ccache.cmake
++++ b/cmake/find/ccache.cmake
+@@ -1,4 +1,4 @@
+-find_program (CCACHE_FOUND ccache)
++# ebuild: respect portage features: find_program (CCACHE_FOUND ccache)
+
+ if (CCACHE_FOUND AND NOT CMAKE_CXX_COMPILER_LAUNCHER MATCHES "ccache" AND NOT CMAKE_CXX_COMPILER MATCHES "ccache")
+    execute_process(COMMAND ${CCACHE_FOUND} "-V" OUTPUT_VARIABLE CCACHE_VERSION)
+--- a/cmake/find/zlib.cmake
++++ b/cmake/find/zlib.cmake
+@@ -29,7 +29,7 @@
+     set (ZLIB_INCLUDE_DIRS ${ZLIB_INCLUDE_DIR}) # for poco
+     set (ZLIB_INCLUDE_DIRECTORIES ${ZLIB_INCLUDE_DIR}) # for protobuf
+     set (ZLIB_FOUND 1) # for poco
+-    if (USE_STATIC_LIBRARIES)
++    if (MAKE_STATIC_LIBRARIES)  # ebuild: treat zlib-ng internal Clickhouse library
+         set (ZLIB_LIBRARIES zlibstatic CACHE INTERNAL "")
+     else ()
+         set (ZLIB_LIBRARIES zlib CACHE INTERNAL "")
+--- a/dbms/src/Common/new_delete.cpp
++++ b/dbms/src/Common/new_delete.cpp
+@@ -12,7 +12,7 @@
+ /// Replace default new/delete with memory tracking versions.
+ /// @sa https://en.cppreference.com/w/cpp/memory/new/operator_new
+ ///     https://en.cppreference.com/w/cpp/memory/new/operator_delete
+-#if !UNBUNDLED
++#if 0  // #if !UNBUNDLED // ebuild: always use proper allocator
+
+ namespace Memory
+ {

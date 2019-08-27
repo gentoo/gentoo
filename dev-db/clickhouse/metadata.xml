@@ -1,15 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="person">
+		<email>kpp+gentoo@qrator.net</email>
+		<name>Konstantin Ignatov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<upstream>
 		<remote-id type="github">yandex/Clickhouse</remote-id>
 	</upstream>
 	<use>
+		<flag name="base64">Enable base64 functions</flag>
+		<flag name="brotli">Build app-arch/brotli support</flag>
+		<flag name="capnp">Build dev-libs/capnproto format</flag>
 		<flag name="client">Build CLI client.</flag>
-		<flag name="server">Build server.</flag>
-		<flag name="kafka">Enables support for kafka consumer.</flag>
-		<flag name="mongodb">Enabled support for MongoDB-based dictionaries</flag>
+		<flag name="fastops">Enable experimental acceleration of bulk calls of certain math functions on AVX and AVX2 hardware</flag>
+		<flag name="hdfs3">Build HDFS files support</flag>
+		<flag name="hyperscan">Build dev-libs/hyperscan library suport</flag>
+		<flag name="json">Enable advanced JSON functions support</flag>
+		<flag name="kafka">Enables support for kafka consumer</flag>
+		<flag name="libcxx">Build with sys-libs/libcxx</flag>
+		<flag name="libunwind">Build and use unwind library for error handling</flag>
+		<flag name="llvm">Enable llvm-backed internal compiler</flag>
+		<flag name="mongodb">Build support for MongoDB-based dictionaries</flag>
+		<flag name="mysql">Build MySQL dictionaries support</flag>
+		<flag name="odbc">Build ODBC dictionaries and connectors</flag>
+		<flag name="orc">Build ORC format support</flag>
+		<flag name="parquet">Build Parquet format support</flag>
+		<flag name="protobuf">Build protobuf format support</flag>
+		<flag name="server">Build server</flag>
+		<flag name="s3">Build with AWS-S3 support</flag>
+		<flag name="split-binary">Link separate binaries for client and server and some tools instead of single binary</flag>
+		<flag name="tcmalloc">Build and use tcmalloc library for memory management</flag>
 		<flag name="tools">Build various tools, like benchmark, copier, etc.</flag>
 		<flag name="zookeeper">Enable support for clustering (based on Zookeeper).</flag>
 	</use>

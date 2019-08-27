@@ -1,6 +1,10 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Konstantin Ignatov <kpp+gentoo@qrator.net> (2019-09-08)
+# Unsupported by upstream (errors during configuration phase)
+dev-db/clickhouse kafka llvm
+
 # Fabian Groffen <grobian@gentoo.org> (2016-04-06)
 # dev-libs/re2 needs love, bug #563932
 app-misc/sphinx re2
