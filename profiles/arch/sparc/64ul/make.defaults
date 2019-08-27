@@ -1,9 +1,6 @@
 # Copyright 2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-ARCH="sparc64"
-ACCEPT_KEYWORDS="sparc"
-
 MULTILIB_ABIS="sparc64"
 DEFAULT_ABI="sparc64"
 ABI="${DEFAULT_ABI}"
