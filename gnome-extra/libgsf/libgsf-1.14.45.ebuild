@@ -13,7 +13,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x8
 IUSE="bzip2 gtk +introspection"
 
 RDEPEND="
-	>=dev-libs/glib-2.26:2
+	>=dev-libs/glib-2.34:2
 	>=dev-libs/libxml2-2.4.16:2
 	sys-libs/zlib
 	bzip2? ( app-arch/bzip2 )
