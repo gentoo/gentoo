@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2019-08-27)
+# Live ebuild committed in Oct 2018, and not updated since.  Suffers
+# from numerous QA violations.  Never had a keyworded version.
+# Removal in 14 days.  Bug #692048.
+net-misc/hblink
+
 # Ulrich Müller <ulm@gentoo.org> (2019-08-26)
 # A more recent version of thumbs.el is distributed
 # as part of GNU Emacs proper.
