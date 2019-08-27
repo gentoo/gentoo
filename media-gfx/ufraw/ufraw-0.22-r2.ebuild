@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="alpha amd64 arm ~arm64 ~hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~amd64-linux ~x86-linux ~x64-solaris ~x86-solaris"
-IUSE="contrast fits gimp gnome gtk jpeg2k openmp timezone"
+IUSE="contrast fits gimp gnome gtk openmp timezone"
 
 REQUIRED_USE="gimp? ( gtk )"
 
@@ -31,7 +31,6 @@ RDEPEND="
 		>=media-gfx/gtkimageview-1.5
 		>=x11-libs/gtk+-2.6:2
 	)
-	jpeg2k? ( media-libs/jasper:= )
 "
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
@@ -59,7 +58,7 @@ src_configure() {
 		$(use_with gimp) \
 		$(use_enable gnome mime) \
 		$(use_with gtk) \
-		$(use_enable jpeg2k jasper) \
+		--disable-jasper \
 		$(use_enable openmp) \
 		$(use_enable timezone dst-correction)
 }
