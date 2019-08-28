@@ -209,17 +209,16 @@ src_install() {
 
 	if use python; then
 		cd "${S}"/src/swig/python || die
-		insinto $(python_get_sitedir)
-		doins mlt.py
-		exeinto $(python_get_sitedir)
-		doexe _mlt.so
+		python_domodule mlt.py _mlt.so
+		chmod +x "${D}$(python_get_sitedir)/_mlt.so" || die
 		dodoc play.py
 		python_optimize
 	fi
 
 	if use ruby; then
 		cd "${S}"/src/swig/ruby || die
-		exeinto $("${EPREFIX}"/usr/bin/${USE_RUBY} -r rbconfig -e 'print RbConfig::CONFIG["sitearchdir"]')
+		local rubydir=$("${EPREFIX}"/usr/bin/${USE_RUBY} -r rbconfig -e 'print RbConfig::CONFIG["sitearchdir"]')
+		exeinto "${rubydir#${EPREFIX}}"
 		doexe mlt.so
 		dodoc play.rb thumbs.rb
 	fi
