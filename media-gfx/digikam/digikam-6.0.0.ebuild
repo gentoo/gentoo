@@ -20,7 +20,7 @@ DESCRIPTION="Digital photo management application"
 HOMEPAGE="https://www.digikam.org/"
 
 LICENSE="GPL-2"
-IUSE="addressbook calendar gphoto2 jpeg2k +lensfun libav marble mediaplayer mysql opengl openmp +panorama scanner semantic-desktop vkontakte webkit X"
+IUSE="addressbook calendar gphoto2 +lensfun libav marble mediaplayer mysql opengl openmp +panorama scanner semantic-desktop vkontakte webkit X"
 
 BDEPEND="
 	sys-devel/gettext
@@ -66,7 +66,6 @@ COMMON_DEPEND="
 	)
 	calendar? ( $(add_kdeapps_dep kcalcore) )
 	gphoto2? ( media-libs/libgphoto2:= )
-	jpeg2k? ( media-libs/jasper:= )
 	lensfun? ( media-libs/lensfun )
 	marble? (
 		$(add_frameworks_dep kbookmarks)
@@ -124,7 +123,7 @@ src_configure() {
 		-DENABLE_AKONADICONTACTSUPPORT=$(usex addressbook)
 		$(cmake-utils_use_find_package calendar KF5CalendarCore)
 		$(cmake-utils_use_find_package gphoto2 Gphoto2)
-		$(cmake-utils_use_find_package jpeg2k Jasper)
+		-DCMAKE_DISABLE_FIND_PACKAGE_Jasper=ON
 		$(cmake-utils_use_find_package lensfun LensFun)
 		$(cmake-utils_use_find_package marble Marble)
 		-DENABLE_MEDIAPLAYER=$(usex mediaplayer)
