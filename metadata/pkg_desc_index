@@ -2092,8 +2092,8 @@ app-misc/towitoko 2.0.7-r3: Driver for Towitoko smartcard readers
 app-misc/tpconfig 3.1.3-r2: Touchpad config for ALPS and Synaptics TPs. Controls tap/click behaviour
 app-misc/tpipe 1.6-r1: Command to duplicate standard input to more than one program
 app-misc/tprint 1.1.0-r1: Transparent Print Utility for terminals
-app-misc/tracker 2.1.8: A tagging metadata database, search tool and indexer
-app-misc/tracker-miners 2.1.6: Collection of data extractors for Tracker/Nepomuk
+app-misc/tracker 2.1.8 2.2.2: A tagging metadata database, search tool and indexer
+app-misc/tracker-miners 2.1.6 2.2.2: Collection of data extractors for Tracker/Nepomuk
 app-misc/trash-cli 0.12.9.14-r2 0.17.1.14_p20170816: Python scripts to manipulate trash cans via the command line
 app-misc/ttyload 0.5.3: color-coded graph of load averages over time
 app-misc/ttyrec 1.0.8-r2: ttyrec provides tools to record and replay a terminal session
