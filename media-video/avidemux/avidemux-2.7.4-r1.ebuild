@@ -84,6 +84,7 @@ src_configure() {
 		-DGETTEXT="$(usex nls)"
 		-DSDL="$(usex sdl)"
 		-DLibVA="$(usex vaapi)"
+		-DOPENGL="$(usex opengl)"
 		-DVDPAU="$(usex vdpau)"
 		-DXVIDEO="$(usex xv)"
 	)
