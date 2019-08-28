@@ -4,10 +4,6 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in use.mask
 
-# Hans de Graaff <graaff@gentoo.org> (2019-07-17)
-# Temporary mask for stable bug 688976
-ruby_targets_ruby25
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2018-11-17)
 # media-sound/audacious is not yet stabilised
 audacious
