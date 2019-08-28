@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -26,7 +26,7 @@ HOMEPAGE="http://www.gegl.org/"
 LICENSE="|| ( GPL-3 LGPL-3 )"
 SLOT="0.3"
 
-IUSE="cairo cpu_flags_x86_mmx cpu_flags_x86_sse debug ffmpeg +introspection jpeg jpeg2k lcms lensfun libav openexr png raw sdl svg test umfpack vala v4l webp"
+IUSE="cairo cpu_flags_x86_mmx cpu_flags_x86_sse debug ffmpeg +introspection jpeg lcms lensfun libav openexr png raw sdl svg test umfpack vala v4l webp"
 REQUIRED_USE="vala? ( introspection )"
 
 RDEPEND="
@@ -44,7 +44,6 @@ RDEPEND="
 	)
 	introspection? ( >=dev-libs/gobject-introspection-1.32 )
 	jpeg? ( virtual/jpeg:0= )
-	jpeg2k? ( >=media-libs/jasper-1.900.1:= )
 	lcms? ( >=media-libs/lcms-2.2:2 )
 	lensfun? ( >=media-libs/lensfun-0.2.5 )
 	openexr? ( media-libs/openexr )
@@ -148,7 +147,7 @@ src_configure() {
 		$(use_with ffmpeg libavformat) \
 		--without-graphviz \
 		$(use_with jpeg libjpeg) \
-		$(use_with jpeg2k jasper) \
+		--without-jasper \
 		$(use_with lcms) \
 		$(use_with lensfun) \
 		--without-lua \
