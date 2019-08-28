@@ -33,6 +33,7 @@ mail-client/claws-mail -litehtml
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2019-06-22)
 # openjfx is keyworded on amd64
 dev-java/openjdk:11 -javafx
+dev-java/openjdk:12 -javafx
 
 # Matt Turner <mattst88@gentoo.org> (2019-06-20)
 # dev-lang/spidermonkey:60[jit] fails to build on most platforms, but does
