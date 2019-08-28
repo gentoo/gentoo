@@ -56,5 +56,5 @@ src_test() {
 src_install() {
 	default
 
-	pax-mark m "${ED%/}"/usr/bin/${PN}
+	pax-mark m "${ED}"/usr/bin/${PN}
 }
