@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,7 +19,7 @@ else
 	KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos"
 fi
 
-IUSE="bzip2 cxx debug fpx imagemagick jbig jpeg jpeg2k lcms lzma modules openmp
+IUSE="bzip2 cxx debug fpx imagemagick jbig jpeg lcms lzma modules openmp
 	perl png postscript q16 q32 static-libs svg test threads tiff truetype
 	webp wmf X zlib"
 
@@ -29,7 +29,6 @@ RDEPEND="dev-libs/libltdl:0
 	imagemagick? ( !media-gfx/imagemagick )
 	jbig? ( media-libs/jbigkit )
 	jpeg? ( virtual/jpeg:0 )
-	jpeg2k? ( media-libs/jasper:= )
 	lcms? ( media-libs/lcms:2 )
 	lzma? ( app-arch/xz-utils )
 	perl? ( dev-lang/perl )
@@ -96,7 +95,7 @@ src_configure() {
 		$(use_with jbig)
 		$(use_with webp)
 		$(use_with jpeg)
-		$(use_with jpeg2k jp2)
+		--without-jp2
 		$(use_with lcms lcms2)
 		$(use_with lzma)
 		$(use_with png)
