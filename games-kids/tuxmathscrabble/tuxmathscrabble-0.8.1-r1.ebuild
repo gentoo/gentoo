@@ -49,8 +49,7 @@ src_prepare() {
 src_install() {
 	newbin ${PN}.py ${PN}
 
-	insinto $(python_get_sitedir)
-	doins -r ${MY_PN}
+	python_domodule ${MY_PN}
 
 	insinto /usr/share/${MY_PN}
 	doins -r .tms_config_master Font
