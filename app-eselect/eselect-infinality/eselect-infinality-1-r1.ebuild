@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ inherit vcs-snapshot readme.gentoo-r1
 
 DESCRIPTION="Eselect module to choose an infinality font configuration style"
 HOMEPAGE="https://github.com/yngwin/eselect-infinality"
-SRC_URI="${HOMEPAGE}/tarball/v${PV} -> ${P}.tar.gz"
+SRC_URI="https://github.com/yngwin/eselect-infinality/tarball/v${PV} -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
