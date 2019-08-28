@@ -1,0 +1,13 @@
+Index: image_view/CMakeLists.txt
+===================================================================
+--- image_view.orig/CMakeLists.txt
++++ image_view/CMakeLists.txt
+@@ -5,7 +5,7 @@ find_package(catkin REQUIRED COMPONENTS
+ generate_dynamic_reconfigure_options(cfg/ImageView.cfg)
+ 
+ catkin_package(CATKIN_DEPENDS dynamic_reconfigure)
+-find_package(Boost REQUIRED COMPONENTS signals thread)
++find_package(Boost REQUIRED COMPONENTS thread)
+ find_package(OpenCV REQUIRED)
+ 
+ include_directories(${Boost_INCLUDE_DIRS}
