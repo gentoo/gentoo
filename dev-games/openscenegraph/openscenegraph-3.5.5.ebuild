@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,7 +17,7 @@ LICENSE="wxWinLL-3 LGPL-2.1"
 SLOT="0/145" # NOTE: CHECK WHEN BUMPING! Subslot is SOVERSION
 KEYWORDS="amd64 ~hppa ~ia64 ppc ppc64 x86"
 IUSE="asio curl debug doc examples ffmpeg fltk fox gdal gif glut gstreamer gtk jpeg
-jpeg2k las libav lua openexr openinventor osgapps pdf png sdl sdl2 svg tiff
+las libav lua openexr openinventor osgapps pdf png sdl sdl2 svg tiff
 truetype vnc wxwidgets xine xrandr zlib"
 
 REQUIRED_USE="sdl2? ( sdl )"
@@ -49,7 +49,6 @@ RDEPEND="
 		media-libs/gst-plugins-base:1.0
 	)
 	jpeg? ( virtual/jpeg:0 )
-	jpeg2k? ( media-libs/jasper:= )
 	las? ( >=sci-geosciences/liblas-1.8.0 )
 	lua? ( >=dev-lang/lua-5.1.5:* )
 	openexr? (
@@ -112,7 +111,7 @@ src_configure() {
 		-DWITH_GLIB=$(usex gstreamer)
 		-DWITH_GtkGl=$(usex gtk)
 		-DWITH_JPEG=$(usex jpeg)
-		-DWITH_Jasper=$(usex jpeg2k)
+		-DWITH_Jasper=OFF
 		-DWITH_LIBLAS=$(usex las)
 		-DWITH_Lua=$(usex lua)
 		-DWITH_OpenEXR=$(usex openexr)

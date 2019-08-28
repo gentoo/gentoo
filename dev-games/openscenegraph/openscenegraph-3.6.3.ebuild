@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,7 +16,7 @@ LICENSE="wxWinLL-3 LGPL-2.1"
 SLOT="0/158" # NOTE: CHECK WHEN BUMPING! Subslot is SOVERSION
 KEYWORDS="~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~x86"
 IUSE="asio curl debug doc egl examples ffmpeg fltk fox gdal gif glut gstreamer gtk jpeg
-jpeg2k las libav lua openexr openinventor osgapps pdf png sdl sdl2 svg tiff
+las libav lua openexr openinventor osgapps pdf png sdl sdl2 svg tiff
 truetype vnc wxwidgets xrandr zlib"
 
 REQUIRED_USE="sdl2? ( sdl )"
@@ -49,7 +49,6 @@ RDEPEND="
 		media-libs/gst-plugins-base:1.0
 	)
 	jpeg? ( virtual/jpeg:0 )
-	jpeg2k? ( media-libs/jasper:= )
 	las? ( >=sci-geosciences/liblas-1.8.0 )
 	lua? ( >=dev-lang/lua-5.1.5:* )
 	openexr? (
@@ -114,7 +113,7 @@ src_configure() {
 		$(cmake-utils_use_find_package gstreamer GStreamer)
 		$(cmake-utils_use_find_package gtk GtkGl)
 		$(cmake-utils_use_find_package jpeg JPEG)
-		$(cmake-utils_use_find_package jpeg2k Jasper)
+		-DCMAKE_DISABLE_FIND_PACKAGE_Jasper=ON
 		$(cmake-utils_use_find_package las LIBLAS)
 		$(cmake-utils_use_find_package lua Lua51)
 		-DCMAKE_DISABLE_FIND_PACKAGE_Lua52=ON
