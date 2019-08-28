@@ -282,6 +282,7 @@ src_configure() {
 }
 
 src_install() {
+	acct-user_src_install
 	emake STRIP="true" INSTALL_ROOT="${D}" install
 	dodoc AUTHORS UPGRADING README
 	readme.gentoo_create_doc
@@ -346,10 +347,12 @@ src_install() {
 }
 
 pkg_preinst() {
+	acct-user_pkg_preinst
 	export CONFIG_PROTECT="${CONFIG_PROTECT} ${EROOT}/home/mythtv/"
 }
 
 pkg_postinst() {
+	acct-user_pkg_postinst
 	readme.gentoo_print_elog
 }
 
