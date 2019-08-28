@@ -16,10 +16,9 @@ SRC_URI="https://www.libraw.org/data/${MY_P}.tar.gz"
 LICENSE="LGPL-2.1 CDDL"
 SLOT="0/19" # subslot = libraw soname version
 KEYWORDS="alpha amd64 arm arm64 ~hppa ia64 ~mips ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux"
-IUSE="examples jpeg jpeg2k +lcms openmp"
+IUSE="examples jpeg +lcms openmp"
 
 RDEPEND="jpeg? ( >=virtual/jpeg-0-r2:0[${MULTILIB_USEDEP}] )
-	jpeg2k? ( >=media-libs/jasper-1.900.1-r6:=[${MULTILIB_USEDEP}] )
 	lcms? ( >=media-libs/lcms-2.5:2[${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
@@ -44,9 +43,9 @@ src_prepare() {
 multilib_src_configure() {
 	local myeconfargs=(
 		--disable-static
+		--disable-jasper
 		$(use_enable examples)
 		$(use_enable jpeg)
-		$(use_enable jpeg2k jasper)
 		$(use_enable lcms)
 		$(use_enable openmp)
 	)
