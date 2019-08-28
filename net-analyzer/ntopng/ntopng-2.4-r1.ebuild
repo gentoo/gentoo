@@ -74,7 +74,7 @@ src_install() {
 	newconfd "${FILESDIR}/ntopng.conf.d" ntopng
 
 	dodir "/var/lib/ntopng"
-	fowners ntopng "${EPREFIX}/var/lib/ntopng"
+	fowners ntopng "/var/lib/ntopng"
 }
 
 pkg_setup() {
