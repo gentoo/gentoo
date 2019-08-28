@@ -10,24 +10,24 @@ FORTRAN_NEEDED=lapack
 
 inherit distutils-r1 flag-o-matic fortran-2 multiprocessing toolchain-funcs
 
-DOC_PV="${PV}"
-DOC_P="${PN}-${DOC_PV}"
-
+DOC_PV="1.16.4"
 DESCRIPTION="Fast array and numerical python library"
 HOMEPAGE="https://www.numpy.org"
 SRC_URI="
 	mirror://pypi/${PN:0:1}/${PN}/${P}.zip
 	doc? (
-		https://docs.scipy.org/doc/${DOC_P}/${PN}-html-${DOC_PV}.zip
-		https://docs.scipy.org/doc/${DOC_P}/${PN}-ref-${DOC_PV}.pdf
-		https://docs.scipy.org/doc/${DOC_P}/${PN}-user-${DOC_PV}.pdf
+		https://numpy.org/doc/$(ver_cut 1-2 ${DOC_PV})/numpy-html.zip -> numpy-html-${DOC_PV}.zip
+		https://numpy.org/doc/$(ver_cut 1-2 ${DOC_PV})/numpy-ref.pdf -> numpy-ref-${DOC_PV}.pdf
+		https://numpy.org/doc/$(ver_cut 1-2 ${DOC_PV})/numpy-user.pdf -> numpy-user-${DOC_PV}.pdf
 	)"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 IUSE="doc lapack test"
+RESTRICT="!test? ( test )"
 
-RDEPEND="lapack? (
+RDEPEND="
+	lapack? (
 		virtual/cblas
 		virtual/lapack
 	)"
@@ -46,7 +46,7 @@ PATCHES=(
 src_unpack() {
 	default
 	if use doc; then
-		unzip -qo "${DISTDIR}"/${PN}-html-${DOC_PV}.zip -d html || die
+		unzip -qo "${DISTDIR}"/numpy-html-${DOC_PV}.zip -d html || die
 	fi
 }
 
@@ -109,6 +109,12 @@ python_prepare_all() {
 	# don't version f2py, we will handle it.
 	sed -i -e '/f2py_exe/s: + os\.path.*$::' numpy/f2py/setup.py || die
 
+	# disable fuzzed tests
+	find numpy/*/tests -name '*.py' -exec sed -i \
+		-e 's:def \(.*_fuzz\):def _\1:' {} + || die
+	# very memory- and disk-hungry
+	sed -i -e 's:test_large_zip:_&:' numpy/lib/tests/test_io.py || die
+
 	distutils-r1_python_prepare_all
 }
 
@@ -123,11 +129,12 @@ python_compile() {
 }
 
 python_test() {
-	distutils_install_for_testing --single-version-externally-managed --record "${TMPDIR}/record.txt" ${NUMPY_FCONFIG}
+	distutils_install_for_testing --single-version-externally-managed \
+		--record "${TMPDIR}/record.txt" ${NUMPY_FCONFIG}
 
 	cd "${TMPDIR}" || die
 
-	${EPYTHON} -c "
+	"${EPYTHON}" -c "
 import numpy, sys
 r = numpy.test(label='full', verbose=3)
 sys.exit(0 if r else 1)" || die "Tests fail with ${EPYTHON}"
