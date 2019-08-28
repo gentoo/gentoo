@@ -1,0 +1,17 @@
+Index: cv_bridge/CMakeLists.txt
+===================================================================
+--- cv_bridge.orig/CMakeLists.txt
++++ cv_bridge/CMakeLists.txt
+@@ -5,11 +5,7 @@ find_package(catkin REQUIRED COMPONENTS
+ 
+ if(NOT ANDROID)
+   find_package(PythonLibs)
+-  if(PYTHONLIBS_VERSION_STRING VERSION_LESS 3)
+-    find_package(Boost REQUIRED python)
+-  else()
+-    find_package(Boost REQUIRED python3)
+-  endif()
++  find_package(Boost REQUIRED python${PYTHON_VERSION_MAJOR}${PYTHON_VERSION_MINOR})
+ else()
+ find_package(Boost REQUIRED)
+ endif()
