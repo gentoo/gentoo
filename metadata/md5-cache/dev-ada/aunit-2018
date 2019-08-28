@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile install
-DEPEND=gnat_2016? ( dev-lang/gnat-gpl:4.9.4 ) gnat_2017? ( dev-lang/gnat-gpl:6.3.0 ) gnat_2018? ( dev-lang/gnat-gpl:7.3.1 ) dev-ada/gprbuild[gnat_2016=,gnat_2017=,gnat_2018=]
+DEPEND=gnat_2016? ( dev-lang/gnat-gpl:4.9.4 ) gnat_2017? ( dev-lang/gnat-gpl:6.3.0 ) gnat_2018? ( dev-lang/gnat-gpl:7.3.1 ) dev-ada/gprbuild[gnat_2016(-)?,gnat_2017(-)?,gnat_2018(-)?]
 DESCRIPTION=Ada unit testing framework
 EAPI=6
 HOMEPAGE=http://libre.adacore.com/tools/aunit/
@@ -11,4 +11,4 @@ REQUIRED_USE=^^ ( gnat_2016 gnat_2017 gnat_2018 )
 SLOT=0
 SRC_URI=http://mirrors.cdn.adacore.com/art/5b0819e0c7a447df26c27ab3 -> aunit-gpl-2018-src.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045
-_md5_=093d1fe8219caf1323b165587e167bf6
+_md5_=63f7880b6b0a4e36472a825ab0aef102
