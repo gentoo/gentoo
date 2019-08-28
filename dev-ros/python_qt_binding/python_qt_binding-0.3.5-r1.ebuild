@@ -18,3 +18,4 @@ RDEPEND="
 	dev-python/PyQt5[gui,widgets,${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}"
+PATCHES=( "${FILESDIR}/var.patch" )
