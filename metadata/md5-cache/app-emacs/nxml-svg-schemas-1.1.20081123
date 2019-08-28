@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
-DEPEND=app-text/trang >=virtual/emacs-23
+DEPEND=app-arch/unzip app-text/trang >=virtual/emacs-23
 DESCRIPTION=Extension for nxml-mode with SVG 1.1 schemas
 EAPI=4
 HOMEPAGE=http://www.w3.org/TR/SVG11/
@@ -9,4 +9,4 @@ RDEPEND=>=virtual/emacs-23
 SLOT=1.1
 SRC_URI=http://www.flameeyes.eu/gentoo-distfiles/w3c-svg-rng-1.1.20081123.zip
 _eclasses_=elisp	f8026e46da659669c11e50c306d1aeb8	elisp-common	23f47b2e1de7abf387105eddd1318738	epatch	a1bf4756dba418a7238f3be0cb010c54
-_md5_=4beb092b9449b517a8894a3ded799f47
+_md5_=ae44e986a887ae91347b7cd55fe3b8d2

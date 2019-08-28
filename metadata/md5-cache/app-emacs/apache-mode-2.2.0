@@ -3,10 +3,10 @@ DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
 DESCRIPTION=Major mode for editing Apache configuration files
 EAPI=7
 HOMEPAGE=https://github.com/emacs-php/apache-mode
-KEYWORDS=amd64 ~ppc ~x86
+KEYWORDS=amd64 ~ppc x86
 LICENSE=GPL-2+
 RDEPEND=>=virtual/emacs-23
 SLOT=0
 SRC_URI=https://github.com/emacs-php/apache-mode/archive/2.2.0.tar.gz -> apache-mode-2.2.0.tar.gz
 _eclasses_=elisp	f8026e46da659669c11e50c306d1aeb8	elisp-common	23f47b2e1de7abf387105eddd1318738
-_md5_=816533edce572af8a9e3d97b5cb8d471
+_md5_=9014031c259b08e4280c27eddfc7ae53

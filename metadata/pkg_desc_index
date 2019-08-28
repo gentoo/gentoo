@@ -1168,7 +1168,7 @@ app-editors/zile 2.3.24-r2 2.4.11 2.4.14: Zile is a small Emacs clone
 app-emacs/actionscript-mode 7.2.2_p20140605 7.2.2_p20180527: A major mode for GNU Emacs for editing Actionscript 3 files
 app-emacs/adaptive-wrap 0.5: Smart line-wrapping with wrap-prefix
 app-emacs/analog 1.9.99: Monitor lists of files or command output
-app-emacs/apache-mode 1.1 2.2.0: Major mode for editing Apache configuration files
+app-emacs/apache-mode 2.2.0: Major mode for editing Apache configuration files
 app-emacs/apel 10.8-r1 10.8_p20190407: A Portable Emacs Library is a library for making portable Emacs Lisp programs
 app-emacs/async 1.9.3: Simple library for asynchronous processing in Emacs
 app-emacs/atomic-chrome 2.0.0: Edit text area on Chrome with Emacs using Atomic Chrome
@@ -1176,7 +1176,7 @@ app-emacs/auctex 11.92 12.1: Extensible package for writing and formatting TeX f
 app-emacs/auto-complete 1.5.1-r1: Auto-complete package
 app-emacs/autoconf-mode 2.69-r1: Emacs major modes for editing autoconf and autotest input
 app-emacs/basic-toolkit 0.3: Basic edit toolkit
-app-emacs/bbdb 2.35-r1 3.1.2-r1: The Insidious Big Brother Database
+app-emacs/bbdb 3.1.2-r1: The Insidious Big Brother Database
 app-emacs/binclock 1.7-r1 1.11: Display the current time using a binary clock
 app-emacs/bison-mode 0.3: Emacs major mode for Bison, Yacc and Lex grammars
 app-emacs/blogmax 20110305 20170321: Blogging in Emacs
@@ -17549,7 +17549,7 @@ sys-auth/pam_p11 0.3.0: PAM module for authenticating against PKCS#11 tokens
 sys-auth/pam_passwdqc 1.0.5 1.3.0: Stub ebuild to help migrate to newer package name
 sys-auth/pam_radius 1.3.17-r1: PAM RADIUS authentication module
 sys-auth/pam_require 0.7: Allows you to require a special group or user to access a service
-sys-auth/pam_skey 1.1.5-r5 1.1.5-r6: PAM interface for the S/Key authentication system
+sys-auth/pam_skey 1.1.5-r6: PAM interface for the S/Key authentication system
 sys-auth/pam_smb 2.0.0_rc6-r1 2.0.0_rc6-r2: PAM module for authenticating against an SMB (such as the Win_x families) server
 sys-auth/pam_ssh 2.3: Uses ssh-agent to provide single sign-on
 sys-auth/pam_ssh_agent_auth 0.10.3 9999: Simple module to authenticate users against their ssh-agent keys

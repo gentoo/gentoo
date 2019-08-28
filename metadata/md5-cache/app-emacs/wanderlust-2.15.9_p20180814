@@ -10,4 +10,4 @@ RDEPEND=>=app-emacs/apel-10.6 app-emacs/flim app-emacs/semi bbdb? ( app-emacs/bb
 SLOT=0
 SRC_URI=https://github.com/wanderlust/wanderlust/archive/395826e99b84051396d503392f52462b6cb683a5.tar.gz -> wanderlust-2.15.9_p20180814-git.tar.gz
 _eclasses_=elisp	f8026e46da659669c11e50c306d1aeb8	elisp-common	23f47b2e1de7abf387105eddd1318738
-_md5_=4455ac7c0a7d3b3e7c5f55b112e8a62a
+_md5_=53d1699af8d77de085d5e7eac3257e2d
