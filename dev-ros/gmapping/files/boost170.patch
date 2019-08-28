@@ -1,0 +1,13 @@
+Index: gmapping/CMakeLists.txt
+===================================================================
+--- gmapping.orig/CMakeLists.txt
++++ gmapping/CMakeLists.txt
+@@ -3,7 +3,7 @@ project(gmapping)
+ 
+ find_package(catkin REQUIRED nav_msgs nodelet openslam_gmapping roscpp tf rosbag_storage)
+ 
+-find_package(Boost REQUIRED signals)
++find_package(Boost REQUIRED)
+ 
+ include_directories(${Boost_INCLUDE_DIRS} ${catkin_INCLUDE_DIRS})
+ 
