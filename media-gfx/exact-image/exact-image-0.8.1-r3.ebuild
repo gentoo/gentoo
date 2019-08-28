@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,13 +13,12 @@ SRC_URI="http://dl.exactcode.de/oss/${PN}/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="expat jpeg jpeg2k lua openexr php perl png python ruby swig tiff truetype X"
+IUSE="expat jpeg lua openexr php perl png python ruby swig tiff truetype X"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="x11-libs/agg[truetype]
 	sys-libs/zlib
 	expat? ( dev-libs/expat )
-	jpeg2k? ( media-libs/jasper )
 	jpeg? ( virtual/jpeg )
 	lua? ( dev-lang/lua )
 	openexr? ( media-libs/openexr )
@@ -91,7 +90,7 @@ src_configure() {
 		$(use_with tiff libtiff) \
 		$(use_with png libpng) \
 		--without-libungif \
-		$(use_with jpeg2k jasper) \
+		--without-jasper \
 		$(use_with openexr) \
 		$(use_with expat) \
 		--without-lcms \
