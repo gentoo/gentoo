@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,14 +11,13 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.xz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~sparc ~x86"
-IUSE="jpeg2k sasl xinetd"
+IUSE="sasl xinetd"
 
 RDEPEND="
 	media-libs/giflib:0=
 	media-libs/libpng:0=
 	virtual/jpeg:0
 	sys-libs/zlib
-	jpeg2k? ( media-libs/jasper:= )
 	sasl? ( dev-libs/cyrus-sasl )
 	xinetd? ( virtual/inetd )
 "
@@ -50,7 +49,7 @@ src_prepare() {
 
 src_configure() {
 	econf \
-		$(use_with jpeg2k jasper) \
+		--without-jasper \
 		$(use_with sasl sasl2) \
 		--with-cfgfile=/etc/ziproxy/ziproxy.conf
 }
@@ -65,8 +64,6 @@ src_install() {
 
 	newinitd "${FILESDIR}"/${PN}.initd-r1 ${PN}
 	newconfd "${FILESDIR}"/${PN}.confd ${PN}
-
-	use jpeg2k && dodoc JPEG2000.txt
 
 	insinto /etc
 	doins -r etc/ziproxy
