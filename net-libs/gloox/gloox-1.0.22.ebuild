@@ -16,8 +16,8 @@ IUSE="debug gnutls idn libressl ssl static-libs test zlib"
 DEPEND="idn? ( net-dns/libidn:= )
 	gnutls? ( net-libs/gnutls )
 	ssl? (
-		!libressl? ( dev-libs/openssl:0 )
-		libressl? ( dev-libs/libressl )
+		!libressl? ( dev-libs/openssl:0= )
+		libressl? ( dev-libs/libressl:0= )
 	)
 	zlib? ( sys-libs/zlib )"
 
