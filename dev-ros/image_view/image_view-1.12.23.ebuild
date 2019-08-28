@@ -29,6 +29,7 @@ RDEPEND="
 	dev-ros/stereo_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/sensor_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/std_srvs[${CATKIN_MESSAGES_CXX_USEDEP}]
+	dev-ros/dynamic_reconfigure[${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}"
 PATCHES=( "${FILESDIR}/boost170.patch" )
