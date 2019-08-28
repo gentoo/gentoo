@@ -280,7 +280,7 @@ app-admin/recursos 2.0-r1: Script to create html and text report about your syst
 app-admin/reportmagic 2.21: Makes usable statistics from your web site log file analysis
 app-admin/restart-services 0.14.1 0.14.2 0.14.4: Tool to manage OpenRC services that need to be restarted
 app-admin/rex 1.3.3 1.4.0-r1 1.4.1 1.5.0 1.6.0 9999: (R)?ex is a small script to ease the execution of remote commands
-app-admin/rsyslog 8.1904.0 8.1907.0: An enhanced multi-threaded syslogd with database support and more
+app-admin/rsyslog 8.1904.0-r1 8.1907.0-r1: An enhanced multi-threaded syslogd with database support and more
 app-admin/sagan 0.2.3 0.2.3-r1 1.0.0_rc3 1.0.0_rc3-r1: Sagan is a multi-threaded, real time system and event log monitoring system
 app-admin/sagan-rules 20130430 20140617 99999999: Rules for Sagan log analyzer
 app-admin/salt 2016.11.10 2017.7.8 2018.3.4 2019.2.0-r1: Salt is a remote execution and configuration manager
@@ -516,7 +516,7 @@ app-benchmarks/siege 4.0.4: A HTTP regression testing and benchmarking utility
 app-benchmarks/spew 1.0.8-r1: Measures I/O performance and/or generates I/O load
 app-benchmarks/stress 1.0.4-r2: A deliberately simple workload generator for POSIX systems
 app-benchmarks/stress-ng 0.10.00: Stress test for a computer system with various selectable ways
-app-benchmarks/sysbench 1.0.15 1.0.16 1.0.17 9999: System performance benchmark
+app-benchmarks/sysbench 1.0.15-r1 1.0.16-r1 1.0.17-r1 9999: System performance benchmark
 app-benchmarks/tiobench 0.4.2: Portable, robust, fully-threaded I/O benchmark program
 app-benchmarks/volanomark 2.5.0.9: Java server benchmark utility
 app-benchmarks/wrk 4.1.0-r1: A HTTP benchmarking tool
@@ -1683,7 +1683,7 @@ app-i18n/sunpinyin 2.0.4_pre20130108-r2 3.0.0_rc1: A Statistical Language Model 
 app-i18n/sunpinyin-data 20130220 20140820: Data sets for Sunpinyin
 app-i18n/tagainijisho 1.2.0_pre20180610092832 9999: Open-source Japanese dictionary and kanji lookup tool
 app-i18n/tegaki-zinnia-japanese 0.3: Handwriting model data of Japanese
-app-i18n/tomoe 0.6.0-r3: Japanese handwriting recognition engine
+app-i18n/tomoe 0.6.0-r4: Japanese handwriting recognition engine
 app-i18n/tomoe-gtk 0.6.0-r4: Tomoe GTK+ interface widget library
 app-i18n/transifex-client 0.12.4: A command line interface for Transifex
 app-i18n/translate-shell 0.9.6.10: Online command-line translator
@@ -1794,7 +1794,7 @@ app-metrics/bind_exporter 0.2.0_p20180307 0.2.0_p20190226: Prometheus exporter f
 app-metrics/blackbox_exporter 0.12.0 0.13.0 0.13.0-r1 0.14.0: Prometheus exporter for blackbox probing via HTTP, HTTPS, DNS, TCP and ICMP
 app-metrics/buildbot-prometheus 17.7.2-r2: A Prometheus metrics exporter for Buildbot
 app-metrics/burrow_exporter 0.0.6 0.0.6-r1: Prometheus exporter for Burrow
-app-metrics/collectd 5.8.1 5.9.1-r1: Collects system statistics and provides mechanisms to store the values
+app-metrics/collectd 5.8.1-r1 5.9.1-r2: Collects system statistics and provides mechanisms to store the values
 app-metrics/consul_exporter 0.4.0: Prometheus exporter for consul metrics
 app-metrics/elasticsearch_exporter 1.0.2 1.0.4_rc1 1.1.0_rc1 1.1.0: Elasticsearch stats exporter for Prometheus
 app-metrics/github-exporter 04 04-r1: Github statistics exporter for prometheus
@@ -3057,7 +3057,7 @@ dev-db/apgdiff 1.4 2.2.1 2.2.2 2.3 2.4: A simple PostgreSQL diff tool that is us
 dev-db/barman 2.1 2.3 2.4: Administration tool for disaster recovery of PostgreSQL servers
 dev-db/bucardo 5.4.1: An asynchronous PostgreSQL replication system
 dev-db/cdb 0.75-r4: Fast, reliable, simple package for creating and reading constant databases
-dev-db/clickhouse 18.6.0 18.10.3 18.12.17 19.5.3.8 19.9.5.36 19.13.1.11 19.13.1.11-r1: An OSS column-oriented database management system for real-time data analysis
+dev-db/clickhouse 18.6.0-r1 18.10.3-r1 18.12.17-r1 19.5.3.8-r1 19.9.5.36-r1 19.13.1.11-r2 19.13.1.11-r3: An OSS column-oriented database management system for real-time data analysis
 dev-db/cockroach 2.1.5 19.1.1: open source database for building cloud services
 dev-db/cpp-driver 2.9.0 2.11.0: DataStax C/C++ Driver for Cassandra
 dev-db/cppdb 0.3.1-r3: SQL connectivity library for platform and database independent connectivity
@@ -3091,12 +3091,12 @@ dev-db/mongodb 3.6.8 3.6.13 4.0.10 4.0.12: A high-performance, open source, sche
 dev-db/mtop 0.6.6-r3: Mysql top monitors a MySQL server
 dev-db/mycli 1.19.0 1.20.1 9999: CLI for MySQL Database with auto-completion and syntax highlighting
 dev-db/mydumper 0.9.3-r1 0.9.5 0.9.5-r1: A high-performance multi-threaded backup (and restore) toolset for MySQL
-dev-db/myodbc 5.3.9 5.3.10-r2 8.0.16 8.0.17: ODBC driver for MySQL
+dev-db/myodbc 5.3.9 5.3.10-r3 8.0.16 8.0.17: ODBC driver for MySQL
 dev-db/mysql 5.5.62 5.6.44-r1 5.6.45-r2 5.7.26-r1 5.7.27-r1 8.0.17: A fast, multi-threaded, multi-user SQL database server
-dev-db/mysql++ 2.3.2-r1 3.2.3 3.2.4 3.2.5: C++ API interface to the MySQL database
+dev-db/mysql++ 2.3.2-r1 3.2.3-r1 3.2.4 3.2.5: C++ API interface to the MySQL database
 dev-db/mysql-cluster 7.2.34 7.3.22 7.4.21: An enhanced, drop-in replacement for MySQL
 dev-db/mysql-connector-c 6.1.11-r2 8.0.17-r3: C client library for MariaDB/MySQL
-dev-db/mysql-connector-c++ 1.1.9 1.1.11 1.1.12 8.0.11 8.0.13 8.0.15: MySQL database connector for C++ (mimics JDBC 4.0 API)
+dev-db/mysql-connector-c++ 1.1.9-r1 1.1.11-r1 1.1.12-r1 8.0.11 8.0.13 8.0.15: MySQL database connector for C++ (mimics JDBC 4.0 API)
 dev-db/mysql-init-scripts 2.2-r3 2.2-r4 2.3 2.3-r1: Gentoo MySQL init scripts.
 dev-db/mysql-super-smack 1.3-r4: Benchmarking, stress testing, and load generation tool for MySQL & PostGreSQL
 dev-db/mysql-workbench 8.0.16 8.0.17: MySQL Workbench
@@ -4671,7 +4671,7 @@ dev-lang/parrot 7.1.0-r1 7.5.0-r1 7.11.0-r1 8.1.0-r1 8.1.0-r2: Virtual machine d
 dev-lang/pasm 1.7: A portable assembler for processors of the PowerPC family
 dev-lang/pcc 1.1.0-r1 9999: pcc portable c compiler
 dev-lang/perl 5.24.3-r1 5.24.4 5.26.2 5.28.2-r1 5.28.9999 5.30.0: Larry Wall's Practical Extraction and Report Language
-dev-lang/php 5.6.40-r5 7.1.31 7.2.21 7.3.8 7.4.0_beta1: The PHP language runtime engine
+dev-lang/php 5.6.40-r6 7.1.31 7.2.21 7.3.8 7.4.0_beta1: The PHP language runtime engine
 dev-lang/polyml 5.4.1 5.5.0 5.5.1 5.5.2 5.6 5.8: Poly/ML is a full implementation of Standard ML
 dev-lang/python 2.7.15 2.7.16 3.5.5 3.5.7 3.6.5 3.6.8 3.6.9 3.7.2 3.7.3 3.7.4-r1: An interpreted, interactive, object-oriented programming language
 dev-lang/python-exec 2.4.6 2.4.6-r1 9999: Python script wrapper
@@ -5007,7 +5007,7 @@ dev-libs/libplatform 2.0.1 2.1.0.1 2.1.0.1-r1 9999: Platform support library use
 dev-libs/libpo6 0.6.0 0.7.0 0.8.0: Hyperdex libpo6 support library
 dev-libs/libpqxx 6.4.5: Standard front-end for writing C++ programs that use PostgreSQL
 dev-libs/libprelude 3.0.0 3.1.0-r1 4.0.0 4.1.0: Prelude-SIEM Framework Library
-dev-libs/libpreludedb 3.0.0 3.1.0 4.0.0 4.1.0: Framework to easy access to the Prelude database
+dev-libs/libpreludedb 3.0.0-r1 3.1.0-r1 4.0.0-r1 4.1.0-r1: Framework to easy access to the Prelude database
 dev-libs/libproccpuinfo 0.0.8-r1: Architecture independent C API for reading /proc/cpuinfo
 dev-libs/libpthread-stubs 0.4-r1: Pthread functions stubs for platforms missing them
 dev-libs/libpwquality 1.4.0: Library for password quality checking and generating random passwords
@@ -5822,7 +5822,7 @@ dev-perl/Cwd-Guard 0.50.0: Temporary changing working directory (chdir)
 dev-perl/DBD-MariaDB 1.210.0: MariaDB and MySQL driver for the Perl5 Database Interface (DBI)
 dev-perl/DBD-Pg 3.5.3 3.6.2 3.7.0: PostgreSQL database driver for the DBI module
 dev-perl/DBD-SQLite 1.560.0 1.580.0: Self Contained RDBMS in a DBI Driver
-dev-perl/DBD-mysql 4.32.0-r2 4.37.0 4.41.0 4.41.0-r2 4.42.0 4.44.0: MySQL driver for the Perl5 Database Interface (DBI)
+dev-perl/DBD-mysql 4.32.0-r2 4.37.0 4.41.0 4.41.0-r2 4.42.0 4.44.0-r1: MySQL driver for the Perl5 Database Interface (DBI)
 dev-perl/DBI 1.637.0: Database independent interface for Perl
 dev-perl/DBI-Shell 11.950.0-r2: Interactive command shell for the DBI
 dev-perl/DBICx-TestDatabase 0.50.0: create a temporary database from a DBIx::Class::Schema
@@ -10028,7 +10028,7 @@ dev-ruby/multi_xml 0.6.0-r1: A generic swappable back-end for XML parsing
 dev-ruby/multipart-post 2.0.0-r1 2.1.0 2.1.1: Adds a streamy multipart form post capability to Net::HTTP
 dev-ruby/mustache 1.0.5 1.1.0: Mustache is a framework-agnostic way to render logic-free views
 dev-ruby/mustermann 1.0.3: A library implementing patterns that behave like regular expressions
-dev-ruby/mysql2 0.4.10 0.4.10-r1 0.5.1 0.5.2 0.5.2-r1: A modern, simple and very fast Mysql library for Ruby - binding to libmysql
+dev-ruby/mysql2 0.4.10-r1 0.4.10-r3 0.5.1-r1 0.5.2-r2 0.5.2-r3: A modern, simple and very fast Mysql library for Ruby - binding to libmysql
 dev-ruby/nagios 0.0.4-r1: Nagios-rb is a compact framework for writing Nagios plugins
 dev-ruby/nagios_analyzer 0.0.5-r1: A simple parser for Nagios status files
 dev-ruby/nanotest 0.9.4.1: Extremely mynymal test framework
@@ -12109,7 +12109,7 @@ gnustep-libs/netclasses 1.1.0: An asynchronous networking library for GNUstep
 gnustep-libs/pantomime 1.2.2 1.2.3 1.3.0: A set of Objective-C classes that model a mail system
 gnustep-libs/performance 0.5.0: Help improve the performance of GNUstep applications
 gnustep-libs/renaissance 0.9.0-r1: GNUstep Renaissance allows to describe user interfaces XML files
-gnustep-libs/sope 3.2.9 3.2.10 4.0.7: A set of frameworks forming a complete Web application server environment
+gnustep-libs/sope 3.2.9-r1 3.2.10-r1 4.0.7-r1: A set of frameworks forming a complete Web application server environment
 gnustep-libs/sqlclient 1.8.1-r1: GNUstep lightweight database abstraction layer
 gui-apps/grim 1.2.0 9999: Grab images from a Wayland compositor.
 gui-apps/mako 1.3 1.4 9999: A lightweight notification daemon for Wayland. Works on Sway.
@@ -12651,7 +12651,7 @@ mail-filter/sqlgrey 1.7.6-r2: SQLgrey is a postfix policy service implementing a
 mail-filter/tmda 1.1.12-r2: Python-based SPAM reduction system
 mail-mta/courier 1.0.5: An MTA designed specifically for maildirs
 mail-mta/esmtp 1.2 1.2-r1: User configurable relay-only Mail Transfer Agent with a sendmail-like syntax
-mail-mta/exim 4.92 4.92-r2 4.92.1: A highly configurable, drop-in replacement for sendmail
+mail-mta/exim 4.92-r3 4.92-r4 4.92.1-r1: A highly configurable, drop-in replacement for sendmail
 mail-mta/mini-qmail 1.06: a small null client that forwards mail via QMQP to a full qmail server
 mail-mta/msmtp 1.8.3 1.8.4 1.8.5 1.8.5-r1: An SMTP client and SMTP plugin for mail user agents such as Mutt
 mail-mta/netqmail 1.06-r2 1.06-r4 1.06-r5 1.06-r6: qmail -- a secure, reliable, efficient, simple message transfer agent
@@ -14620,7 +14620,7 @@ net-analyzer/nrpe 2.15-r3 3.2.1 3.2.1-r1: Nagios Remote Plugin Executor
 net-analyzer/nsat 1.5-r5: Network Security Analysis Tool, an application-level network security scanner
 net-analyzer/nsca 2.7.2-r103: Nagios Service Check Acceptor
 net-analyzer/nstats 0.4-r2: Displays statistics about ethernet traffic including protocol breakdown
-net-analyzer/ntopng 2.4 3.0-r3 3.8: Network traffic analyzer with web interface
+net-analyzer/ntopng 2.4-r1 3.0-r4 3.8: Network traffic analyzer with web interface
 net-analyzer/nttcp 1.47-r1 1.47-r3: tool to test TCP and UDP throughput
 net-analyzer/nuttcp 8.1.4: Network performance measurement tool
 net-analyzer/odhcploc 20111021: Open DHCP Locator
@@ -14729,7 +14729,7 @@ net-analyzer/wireshark 3.0.1 3.0.3 3.1.0 99999999: A network protocol analyzer f
 net-analyzer/xnetload 1.11.3-r1: displays a count and a graph of the traffic over a specified network connection
 net-analyzer/xprobe 0.3: Active OS fingerprinting tool - this is Xprobe2
 net-analyzer/yersinia 0.7.3 0.8.2: A framework for layer 2 attacks
-net-analyzer/zabbix 2.2.16 2.2.21 2.2.23 3.0.26 3.2.11 3.4.15 4.0.6 4.0.7 4.0.9 4.2.3: ZABBIX is software for monitoring of your applications, network and servers
+net-analyzer/zabbix 2.2.16-r1 2.2.21-r1 2.2.23-r1 3.0.26 3.2.11-r1 3.4.15 4.0.6 4.0.7 4.0.9 4.2.3: ZABBIX is software for monitoring of your applications, network and servers
 net-analyzer/zmap 2.1.1 9999: Fast network scanner designed for Internet-wide network surveys
 net-analyzer/zniper 1.0-r1: Displays and kill active TCP connections seen by the selected interface
 net-dialup/accel-ppp 1.11.1_p20170508 1.11.1_p20180320 1.11.9999 9999: High performance PPTP, PPPoE and L2TP server
