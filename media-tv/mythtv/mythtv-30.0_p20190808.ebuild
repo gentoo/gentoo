@@ -10,7 +10,7 @@ BACKPORTS="5cde0578d84926171b20c8f7e95a101e9b0b9457" # August 8, 2019
 MY_P=${P%_p*}
 MY_PV=${PV%_p*}
 
-inherit eutils flag-o-matic python-single-r1 qmake-utils user readme.gentoo-r1 systemd vcs-snapshot
+inherit eutils flag-o-matic python-single-r1 qmake-utils readme.gentoo-r1 systemd vcs-snapshot
 
 MYTHTV_BRANCH="fixes/${P%.*}"
 
@@ -157,10 +157,8 @@ to journald via the console at the notice verbosity.
 "
 
 pkg_setup() {
-	keepdir /home/mythtv
 	python-single-r1_pkg_setup
-	# Group membership is configured in acct-user/mythtv package
-	enewuser mythtv -1 /bin/bash /home/mythtv
+	# The acct-user/mythtv package creates/manages the user 'mythtv'
 }
 
 src_prepare() {
