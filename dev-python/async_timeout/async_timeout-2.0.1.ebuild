@@ -13,7 +13,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${MY_P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 S=${WORKDIR}/${MY_P}
@@ -21,6 +21,7 @@ S=${WORKDIR}/${MY_P}
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/setuptools_scm[${PYTHON_USEDEP}]
 	test? (
+		<dev-python/aiohttp-3.3[${PYTHON_USEDEP}]
 		dev-python/pytest[${PYTHON_USEDEP}]
 		<dev-python/pytest-aiohttp-0.3[${PYTHON_USEDEP}]
 	)"
