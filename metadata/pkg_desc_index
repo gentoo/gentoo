@@ -2980,9 +2980,9 @@ dev-ada/aunit 2018 2019: Ada unit testing framework
 dev-ada/aws 2017 2018 2018-r1 2019: A complete Web development framework
 dev-ada/gnat_util 2017 2017-r1 2018 2018-r1 2019: Provides access to GNAT compiler internals for AdaCore utilities
 dev-ada/gnatcoll 2017: GNAT Component Collection
-dev-ada/gnatcoll-bindings 2018 2018-r1 2019: GNAT Component Collection
-dev-ada/gnatcoll-core 2018 2018-r1 2019: GNAT Component Collection Core packages
-dev-ada/gnatcoll-db 2018 2018-r1: GNAT Component Collection
+dev-ada/gnatcoll-bindings 2018-r1 2019: GNAT Component Collection
+dev-ada/gnatcoll-core 2018-r1 2019: GNAT Component Collection Core packages
+dev-ada/gnatcoll-db 2018-r1: GNAT Component Collection
 dev-ada/gnatmem 2018 2019: Monitors dynamic allocation and deallocation activity in a program
 dev-ada/gnatsymbolize 2018 2019: Translates addresses into filename, line number, and function names
 dev-ada/gprbuild 2017-r1 2019: Multi-Language Management
@@ -2992,7 +2992,7 @@ dev-ada/gtkada 2017 2018 2018-r1 2019: A complete Ada graphical toolkit
 dev-ada/langkit 2017 2018 2019: A Python framework to generate language parsers
 dev-ada/libadalang 2017-r1 2018 2018-r1 2019: high performance semantic engine for the Ada programming language
 dev-ada/libadalang-tools 2018 2019: Libadalang-based tools: gnatpp, gnatmetric and gnatstub
-dev-ada/libgpr 2018 2018-r1 2019: Ada library to handle GPRbuild project files
+dev-ada/libgpr 2018-r1 2019: Ada library to handle GPRbuild project files
 dev-ada/xmlada 2018 2019: Set of modules that provide a simple manipulation of XML streams
 dev-cpp/ETL 0.04.15 0.04.15-r1: Multi-platform class and template library
 dev-cpp/aixlog 1.2.1 9999: Header-only C++ logging library
@@ -3110,7 +3110,7 @@ dev-db/oracle-instantclient-basic 11.2.0.3 11.2.0.4 12: Transition package movin
 dev-db/oracle-instantclient-jdbc 11.2.0.3 11.2.0.4 12: Transition package moving to single dev-db/oracle-instantclient package
 dev-db/oracle-instantclient-odbc 11.2.0.3 11.2.0.4 12: Transition package moving to single dev-db/oracle-instantclient package
 dev-db/oracle-instantclient-sqlplus 11.2.0.3 11.2.0.3-r1 11.2.0.4 12: Transition package moving to single dev-db/oracle-instantclient package
-dev-db/percona-server 5.7.26.29-r1: A fast, multi-threaded, multi-user SQL database server
+dev-db/percona-server 5.7.26.29-r1 5.7.27.30: A fast, multi-threaded, multi-user SQL database server
 dev-db/percona-toolkit 2.2.11 2.2.17 2.2.19 2.2.20 3.0.7 3.0.8 3.0.9 3.0.10 3.0.10-r1 3.0.11 3.0.12 3.0.13: Advanced command-line tools to perform a variety of MySQL and system tasks
 dev-db/percona-xtrabackup 2.4.13 2.4.15 8.0.6: Hot backup utility for MySQL based servers
 dev-db/percona-xtrabackup-bin 2.4.12 2.4.13: MySQL hot backup software. non-blocking backups for InnoDB/XtraDB databases
@@ -15932,6 +15932,7 @@ net-wireless/kismet-rest 2019.05.02 9999: Kismet REST Python API
 net-wireless/kismet-ubertooth 2017.03.2 9999: Provides basic bluetooth support in kismet
 net-wireless/kismetdb 2019.05.05 9999: Kismetdb database log helper library
 net-wireless/kismetmobiledashboard 1.5_beta1 9999: Mobile UI for kismet
+net-wireless/limesuite 19.04.0: Driver and GUI for LMS7002M-based SDR platforms
 net-wireless/linssid 3.6-r1: Graphical wireless scanning for Linux
 net-wireless/lorcon 0.0_p20150109 0.0_p20180409-r1 9999: A generic library for injecting 802.11 frames
 net-wireless/lorcon-old 9999: A generic library for injecting 802.11 frames
