@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ SRC_URI=""
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~x86-fbsd"
 IUSE=""
 
 DEPEND=""
@@ -23,6 +23,9 @@ RDEPEND="
 	!<dev-db/mysql-5.1
 	!<sys-apps/openrc-0.16.2
 	dev-db/mysql-connector-c
+	!prefix? (
+		acct-group/mysql acct-user/mysql
+	)
 	"
 # Need to set S due to PMS saying we need it existing, but no SRC_URI
 S=${WORKDIR}
@@ -33,13 +36,13 @@ src_install() {
 	# s6 init scripts
 	if use amd64 || use x86 ; then
 		newconfd "${FILESDIR}/conf.d-2.0" "mysql-s6"
-		newinitd "${FILESDIR}/init.d-s6-2.2" "mysql-s6"
+		newinitd "${FILESDIR}/init.d-s6-2.3" "mysql-s6"
 		s6_install_service mysql "${FILESDIR}/run-s6"
 		s6_install_service mysql/log "${FILESDIR}/log-s6"
 	fi
 
-	newinitd "${FILESDIR}/init.d-2.2" "mysql"
-	newinitd "${FILESDIR}/init.d-supervise" "mysql-supervise"
+	newinitd "${FILESDIR}/init.d-2.3" "mysql"
+	newinitd "${FILESDIR}/init.d-supervise-2.3" "mysql-supervise"
 
 	# systemd unit installation
 	exeinto /usr/libexec
@@ -49,7 +52,7 @@ src_install() {
 	dotmpfiles "${FILESDIR}/mysql.conf"
 
 	insinto /etc/logrotate.d
-	newins "${FILESDIR}/logrotate.mysql" "mysql"
+	newins "${FILESDIR}/logrotate.mysql-2.3" "mysql"
 }
 
 pkg_postinst() {
