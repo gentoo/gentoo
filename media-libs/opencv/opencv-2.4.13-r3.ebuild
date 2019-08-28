@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,7 +14,7 @@ SRC_URI="https://github.com/Itseez/opencv/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0/2.4"
 KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86 ~amd64-linux"
-IUSE="cuda +eigen examples ffmpeg gstreamer gtk ieee1394 jpeg jpeg2k libav opencl openexr opengl openmp pch png +python qt5 testprograms threads tiff v4l vtk xine"
+IUSE="cuda +eigen examples ffmpeg gstreamer gtk ieee1394 jpeg libav opencl openexr opengl openmp pch png +python qt5 testprograms threads tiff v4l vtk xine"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
@@ -43,7 +43,6 @@ RDEPEND="
 	)
 	java? ( >=virtual/jre-1.6:* )
 	jpeg? ( virtual/jpeg:0 )
-	jpeg2k? ( media-libs/jasper:= )
 	ieee1394? (
 		media-libs/libdc1394
 		sys-libs/libraw1394
@@ -122,7 +121,7 @@ src_configure() {
 		-DWITH_GTK=$(usex gtk)
 		-DWITH_IMAGEIO=OFF
 		-DWITH_IPP=OFF
-		-DWITH_JASPER=$(usex jpeg2k)
+		-DWITH_JASPER=OFF
 		-DWITH_JPEG=$(usex jpeg)
 		-DWITH_OPENEXR=$(usex openexr)
 		-DWITH_OPENGL=$(usex opengl)

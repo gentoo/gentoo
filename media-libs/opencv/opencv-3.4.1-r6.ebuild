@@ -25,7 +25,7 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
 LICENSE="BSD"
 SLOT="0/3.4.1" # subslot = libopencv* soname version
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux"
-IUSE="contrib contrib_cvv contrib_dnn contrib_hdf contrib_sfm contrib_xfeatures2d cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse3 cpu_flags_x86_ssse3 cpu_flags_x86_sse4_1 cpu_flags_x86_sse4_2 cpu_flags_x86_popcnt cpu_flags_x86_avx cpu_flags_x86_avx2 cpu_flags_x86_fma3 cuda debug dnn_samples +eigen examples ffmpeg gdal gflags glog gphoto2 gstreamer gtk ieee1394 jpeg jpeg2k lapack libav opencl openexr opengl openmp pch png +python qt5 tesseract testprograms threads tiff vaapi v4l vtk webp xine"
+IUSE="contrib contrib_cvv contrib_dnn contrib_hdf contrib_sfm contrib_xfeatures2d cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse3 cpu_flags_x86_ssse3 cpu_flags_x86_sse4_1 cpu_flags_x86_sse4_2 cpu_flags_x86_popcnt cpu_flags_x86_avx cpu_flags_x86_avx2 cpu_flags_x86_fma3 cuda debug dnn_samples +eigen examples ffmpeg gdal gflags glog gphoto2 gstreamer gtk ieee1394 jpeg lapack libav opencl openexr opengl openmp pch png +python qt5 tesseract testprograms threads tiff vaapi v4l vtk webp xine"
 # OpenGL needs gtk or Qt installed to activate, otherwise build system
 # will silently disable it Wwithout the user knowing, which defeats the
 # purpose of the opengl use flag.
@@ -78,7 +78,6 @@ RDEPEND="
 	)
 	java? ( >=virtual/jre-1.6:* )
 	jpeg? ( virtual/jpeg:0[${MULTILIB_USEDEP}] )
-	jpeg2k? ( media-libs/jasper:=[${MULTILIB_USEDEP}] )
 	lapack? ( virtual/lapack )
 	opencl? ( virtual/opencl[${MULTILIB_USEDEP}] )
 	openexr? ( media-libs/openexr[${MULTILIB_USEDEP}] )
@@ -295,7 +294,7 @@ multilib_src_configure() {
 		-DWITH_GTK=$(usex gtk)
 		-DWITH_GTK_2_X=$(usex gtk)
 		-DWITH_IPP=OFF
-		-DWITH_JASPER=$(usex jpeg2k)
+		-DWITH_JASPER=OFF
 		-DWITH_JPEG=$(usex jpeg)
 		-DWITH_WEBP=$(usex webp)
 		-DWITH_OPENEXR=$(usex openexr)
