@@ -664,6 +664,7 @@ media-libs/libglvnd
 # Java 9+ then install oracle-(jdk|jre)-bin or openjdk(-bin) directly.
 virtual/jdk:11
 virtual/jre:11
+virtual/jdk:12
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2017-10-18)
 # sys-devel/automake versions 1.4, 1.5, 1.6, 1.7, 1.8
