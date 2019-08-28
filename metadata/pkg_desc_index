@@ -282,7 +282,7 @@ app-admin/recursos 2.0-r1: Script to create html and text report about your syst
 app-admin/reportmagic 2.21: Makes usable statistics from your web site log file analysis
 app-admin/restart-services 0.14.1 0.14.2 0.14.4: Tool to manage OpenRC services that need to be restarted
 app-admin/rex 1.3.3 1.4.0-r1 1.4.1 1.5.0 1.6.0 9999: (R)?ex is a small script to ease the execution of remote commands
-app-admin/rsyslog 8.1904.0-r1 8.1907.0-r1: An enhanced multi-threaded syslogd with database support and more
+app-admin/rsyslog 8.1904.0-r1 8.1907.0-r1 8.1908.0: An enhanced multi-threaded syslogd with database support and more
 app-admin/sagan 0.2.3 0.2.3-r1 1.0.0_rc3 1.0.0_rc3-r1: Sagan is a multi-threaded, real time system and event log monitoring system
 app-admin/sagan-rules 20130430 20140617 99999999: Rules for Sagan log analyzer
 app-admin/salt 2016.11.10 2017.7.8 2018.3.4 2019.2.0-r1: Salt is a remote execution and configuration manager
@@ -7435,7 +7435,7 @@ dev-python/abstract_rendering 0.5.1: Rendering as a binning process
 dev-python/addons 0.7: Dynamically extend other objects (formerly ObjectRoles)
 dev-python/aiodns 1.1.1 1.2.0 2.0.0: Simple DNS resolver for asyncio
 dev-python/aioeventlet 0.5.1-r1: asyncio event loop scheduling callbacks in eventlet
-dev-python/aiohttp 2.3.10 3.0.6 3.3.0 3.4.4 3.5.4: http client/server for asyncio
+dev-python/aiohttp 2.3.10 3.5.4: http client/server for asyncio
 dev-python/aiohttp-cors 0.5.3 0.6.0: Implements CORS support for aiohttp asyncio-powered asynchronous HTTP server
 dev-python/aiohttp-jinja2 0.15.0: jinja2 template renderer for aiohttp.web
 dev-python/aiohttp-socks 0.2.2: SOCKS proxy connector for aiohttp
@@ -12772,7 +12772,7 @@ media-fonts/font-schumacher-misc 1.1.2-r1: X.Org Schumacher fonts
 media-fonts/font-screen-cyrillic 1.0.4-r1: X.Org Screen cyrillic fonts
 media-fonts/font-sony-misc 1.0.3-r1: X.Org Sony fonts
 media-fonts/font-sun-misc 1.0.3-r1: X.Org Sun fonts
-media-fonts/font-util 1.3.1 1.3.2: X.Org font utilities
+media-fonts/font-util 1.3.1 1.3.2-r1: X.Org font utilities
 media-fonts/font-winitzki-cyrillic 1.0.3-r1: X.Org Winitzki cyrillic font
 media-fonts/font-xfree86-type1 1.0.4-r1: X.Org XFree86 Type 1 font
 media-fonts/fontawesome 4.7.0 5.1.0 5.10.2: The iconic font
