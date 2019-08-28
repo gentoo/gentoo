@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,13 +16,13 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="+gnat_2016 gnat_2017 gnat_2018"
 
-RDEPEND="dev-ada/gnat_util[gnat_2016=,gnat_2017=]
+RDEPEND="dev-ada/gnat_util[gnat_2016(-)?,gnat_2017(-)?]
 	|| (
 		dev-ada/gnatcoll[gnat_2016=,gnat_2017=,projects,shared]
 		dev-ada/gnatcoll-core[gnat_2016=,gnat_2017=,shared]
 	)"
 DEPEND="${RDEPEND}
-	dev-ada/gprbuild[gnat_2016=,gnat_2017=]"
+	dev-ada/gprbuild[gnat_2016(-)?,gnat_2017(-)?]"
 
 REQUIRED_USE="^^ ( gnat_2016 gnat_2017 ) !gnat_2018"
 
