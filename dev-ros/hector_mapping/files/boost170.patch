@@ -1,0 +1,13 @@
+Index: hector_mapping/CMakeLists.txt
+===================================================================
+--- hector_mapping.orig/CMakeLists.txt
++++ hector_mapping/CMakeLists.txt
+@@ -7,7 +7,7 @@ project(hector_mapping)
+ find_package(catkin REQUIRED COMPONENTS roscpp nav_msgs visualization_msgs tf message_filters laser_geometry tf_conversions message_generation)
+ 
+ ## System dependencies are found with CMake's conventions
+-find_package(Boost REQUIRED COMPONENTS thread signals)
++find_package(Boost REQUIRED COMPONENTS thread)
+ include_directories(${Boost_INCLUDE_DIRS})
+ 
+ # Find Eigen3 (from http://wiki.ros.org/jade/Migration)
