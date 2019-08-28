@@ -25,7 +25,10 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
-	test? ( dev-python/numpy[${PYTHON_USEDEP}] )"
+	test? (
+		$(python_gen_cond_dep 'dev-python/numpy[${PYTHON_USEDEP}]' \
+			'python*')
+	)"
 
 SITEFILE=50cython-gentoo.el
 
