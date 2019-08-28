@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Bayesian logfile filter"
 HOMEPAGE="https://www.vanheusden.com/btail/"
-SRC_URI="${HOMEPAGE}/${P}.tgz"
+SRC_URI="https://www.vanheusden.com/btail/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
