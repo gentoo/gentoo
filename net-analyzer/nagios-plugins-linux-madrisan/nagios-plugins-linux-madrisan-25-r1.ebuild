@@ -25,7 +25,8 @@ S="${WORKDIR}/${MY_P}"
 src_prepare() {
 	default
 	# Avoid collision with net-analyzer/monitoring-plugins
-	sed -ri "s/check_(load|swap|users)/&_madrisan/" plugins/Makefile.am || die
+	# and net-analyzer/nagios-plugins
+	sed -ri "s/check_(load|swap|uptime|users)/&_madrisan/" plugins/Makefile.am || die
 	eautoreconf
 }
 
