@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_5,3_6,3_7} pypy{,3} )
+PYTHON_COMPAT=( python{2_7,3_5,3_6,3_7} pypy3 )
 
 inherit python-r1
 
@@ -13,5 +13,4 @@ KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 sparc x86 ~amd64-
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
-	$(python_gen_cond_dep 'dev-python/typing[${PYTHON_USEDEP}]' \
-	'python2*' pypy)"
+	$(python_gen_cond_dep 'dev-python/typing[${PYTHON_USEDEP}]' -2)"
