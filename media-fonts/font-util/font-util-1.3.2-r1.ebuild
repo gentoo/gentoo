@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 2005-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,4 +13,7 @@ IUSE=""
 RDEPEND=""
 DEPEND="${RDEPEND}"
 
-XORG_CONFIGURE_OPTIONS="--with-mapdir=${EPREFIX}/usr/share/fonts/util --with-fontrootdir=${EPREFIX}/usr/share/fonts"
+XORG_CONFIGURE_OPTIONS=(
+	--with-fontrootdir="${EPREFIX}/usr/share/fonts"
+	--with-mapdir="${EPREFIX}/usr/share/fonts/util"
+)
