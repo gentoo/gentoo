@@ -66,8 +66,8 @@ pkg_postinst() {
 
 	elog
 	elog "Sample configuration:"
-	elog "${EROOT%/}/usr/share/${MY_PN}"
+	elog "${EROOT}/usr/share/${MY_PN}"
 	elog
 	elog "The default pipeline configuration expects the configuration(s) to be found in:"
-	elog "${EROOT%/}/etc/logstash/conf.d/*.conf"
+	elog "${EROOT}/etc/logstash/conf.d/*.conf"
 }
