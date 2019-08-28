@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -16,8 +16,8 @@ if [ "${PV#9999}" != "${PV}" ] ; then
 	SRC_URI=""
 else
 	KEYWORDS="~amd64"
-	SRC_URI="https://github.com/introlab/rtabmap/archive/${PV}-melodic.tar.gz -> ${P}.tar.gz"
-	S="${WORKDIR}/${P}-melodic"
+	SRC_URI="https://github.com/introlab/rtabmap/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	S="${WORKDIR}/${P}"
 fi
 
 DESCRIPTION="Real-Time Appearance-Based Mapping (RGB-D Graph SLAM)"

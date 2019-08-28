@@ -1,0 +1,98 @@
+Index: libmavconn/src/tcp.cpp
+===================================================================
+--- libmavconn.orig/src/tcp.cpp
++++ libmavconn/src/tcp.cpp
+@@ -41,13 +41,19 @@ static bool resolve_address_tcp(io_servi
+ 	error_code ec;
+ 
+ 	tcp::resolver::query query(host, "");
+-	std::for_each(resolver.resolve(query, ec), tcp::resolver::iterator(),
+-			[&](const tcp::endpoint & q_ep) {
+-				ep = q_ep;
+-				ep.port(port);
+-				result = true;
+-				CONSOLE_BRIDGE_logDebug(PFXd "host %s resolved as %s", chan, host.c_str(), to_string_ss(ep).c_str());
+-			});
++
++	auto fn = [&](const tcp::endpoint & q_ep) {
++		ep = q_ep;
++		ep.port(port);
++		result = true;
++		CONSOLE_BRIDGE_logDebug(PFXd "host %s resolved as %s", chan, host.c_str(), to_string_ss(ep).c_str());
++	};
++
++#if BOOST_ASIO_VERSION >= 101200
++	for (auto q_ep : resolver.resolve(query, ec)) fn(q_ep);
++#else
++	std::for_each(resolver.resolve(query, ec), tcp::resolver::iterator(), fn);
++#endif
+ 
+ 	if (ec) {
+ 		CONSOLE_BRIDGE_logWarn(PFXd "resolve error: %s", chan, ec.message().c_str());
+@@ -112,7 +118,7 @@ void MAVConnTCPClient::client_connected(
+ 			server_channel, conn_id, to_string_ss(server_ep).c_str());
+ 
+ 	// start recv
+-	socket.get_io_service().post(std::bind(&MAVConnTCPClient::do_recv, shared_from_this()));
++	static_cast<boost::asio::io_service&>(socket.get_executor().context()).post(std::bind(&MAVConnTCPClient::do_recv, shared_from_this()));
+ }
+ 
+ MAVConnTCPClient::~MAVConnTCPClient()
+@@ -152,7 +158,7 @@ void MAVConnTCPClient::send_bytes(const
+ 
+ 		tx_q.emplace_back(bytes, length);
+ 	}
+-	socket.get_io_service().post(std::bind(&MAVConnTCPClient::do_send, shared_from_this(), true));
++	static_cast<boost::asio::io_service&>(socket.get_executor().context()).post(std::bind(&MAVConnTCPClient::do_send, shared_from_this(), true));
+ }
+ 
+ void MAVConnTCPClient::send_message(const mavlink_message_t *message)
+@@ -174,7 +180,7 @@ void MAVConnTCPClient::send_message(cons
+ 
+ 		tx_q.emplace_back(message);
+ 	}
+-	socket.get_io_service().post(std::bind(&MAVConnTCPClient::do_send, shared_from_this(), true));
++	static_cast<boost::asio::io_service&>(socket.get_executor().context()).post(std::bind(&MAVConnTCPClient::do_send, shared_from_this(), true));
+ }
+ 
+ void MAVConnTCPClient::send_message(const mavlink::Message &message)
+@@ -194,7 +200,7 @@ void MAVConnTCPClient::send_message(cons
+ 
+ 		tx_q.emplace_back(message, get_status_p(), sys_id, comp_id);
+ 	}
+-	socket.get_io_service().post(std::bind(&MAVConnTCPClient::do_send, shared_from_this(), true));
++	static_cast<boost::asio::io_service&>(socket.get_executor().context()).post(std::bind(&MAVConnTCPClient::do_send, shared_from_this(), true));
+ }
+ 
+ void MAVConnTCPClient::do_recv()
+Index: libmavconn/src/udp.cpp
+===================================================================
+--- libmavconn.orig/src/udp.cpp
++++ libmavconn/src/udp.cpp
+@@ -41,13 +41,19 @@ static bool resolve_address_udp(io_servi
+ 	error_code ec;
+ 
+ 	udp::resolver::query query(host, "");
+-	std::for_each(resolver.resolve(query, ec), udp::resolver::iterator(),
+-			[&](const udp::endpoint & q_ep) {
+-				ep = q_ep;
+-				ep.port(port);
+-				result = true;
+-				CONSOLE_BRIDGE_logDebug(PFXd "host %s resolved as %s", chan, host.c_str(), to_string_ss(ep).c_str());
+-			});
++
++	auto fn = [&](const udp::endpoint & q_ep) {
++		ep = q_ep;
++		ep.port(port);
++		result = true;
++		CONSOLE_BRIDGE_logDebug(PFXd "host %s resolved as %s", chan, host.c_str(), to_string_ss(ep).c_str());
++	};
++
++#if BOOST_ASIO_VERSION >= 101200
++	for (auto q_ep : resolver.resolve(query, ec)) fn(q_ep);
++#else
++	std::for_each(resolver.resolve(query, ec), udp::resolver::iterator(), fn);
++#endif
+ 
+ 	if (ec) {
+ 		CONSOLE_BRIDGE_logWarn(PFXd "resolve error: %s", chan, ec.message().c_str());
