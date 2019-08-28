@@ -12,4 +12,38 @@
   <upstream>
     <remote-id type="github">b5invis/iosevka</remote-id>
   </upstream>
+  <use>
+	<flag name="cc"> IosevkaCC family </flag>
+	<flag name="cc-slab"> IosevkaCC slab-serif family </flag>
+	<flag name="experimental-aile"> “Iosevka Aile” quasi-proportional family </flag>
+	<flag name="experimental-etoile"> “Iosevka Etoile” quasi-proportional slab-serif family </flag>
+	<flag name="experimental-extended"> “Iosevka Extended” monospace series – wider than regular Iosevka </flag>
+	<flag name="slab"> Iosevka slab-serif family </flag>
+	<flag name="ss01"> Iosevka with Andale Mono Style </flag>
+	<flag name="ss02"> Iosevka with Anonymous Pro Style</flag>
+	<flag name="ss03"> Iosevka with Consolas Style </flag>
+	<flag name="ss04"> Iosevka with Menlo Style </flag>
+	<flag name="ss05"> Iosevka with Fira Mono Style </flag>
+	<flag name="ss06"> Iosevka with Liberation Mono Style </flag>
+	<flag name="ss07"> Iosevka with Monaco Style </flag>
+	<flag name="ss08"> Iosevka with Pragmata Pro Style </flag>
+	<flag name="ss09"> Iosevka with Source Code Pro Style </flag>
+	<flag name="ss10"> Iosevka with Envy Code R Style </flag>
+	<flag name="ss11"> Iosevka with X Windows Fixed Style </flag>
+	<flag name="term"> Iosevka, no ligatures </flag>
+	<flag name="term-slab"> Iosevka, no ligatures, slab-serif </flag>
+	<flag name="term-ss01"> Iosevka with Andale Mono Style, no ligatures </flag>
+	<flag name="term-ss02"> Iosevka with Anonymous Pro Style, no ligatures </flag>
+	<flag name="term-ss03"> Iosevka with Consolas Style, no ligatures </flag>
+	<flag name="term-ss04"> Iosevka with Menlo Style, no ligatures </flag>
+	<flag name="term-ss05"> Iosevka with Fira Mono Style, no ligatures </flag>
+	<flag name="term-ss06"> Iosevka with Liberation Mono Style, no ligatures </flag>
+	<flag name="term-ss07"> Iosevka with Monaco Style, no ligatures </flag>
+	<flag name="term-ss08"> Iosevka with Pragmata Pro Style, no ligatures </flag>
+	<flag name="term-ss09"> Iosevka with Source Code Pro Style, no ligatures </flag>
+	<flag name="term-ss10"> Iosevka with Envy Code R Style, no ligatures </flag>
+	<flag name="term-ss11"> Iosevka with X Windows Fixed Style, no ligatures </flag>
+	<flag name="type"> Iosevka, mathematical symbol wider </flag>
+	<flag name="type-slab"> Iosevka, mathematical symbol wider, slab-serif </flag>
+  </use>
 </pkgmetadata>
