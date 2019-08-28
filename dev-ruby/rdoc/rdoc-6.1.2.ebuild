@@ -88,7 +88,7 @@ all_ruby_install() {
 }
 
 pkg_postinst() {
-	if [[ ! -n $(readlink "${ROOT}"usr/bin/rdoc) ]] ; then
+	if [[ ! -n $(readlink "${ROOT}"/usr/bin/rdoc) ]] ; then
 		eselect ruby set $(eselect --brief --colour=no ruby show | head -n1)
 	fi
 }
