@@ -29,7 +29,7 @@ src_compile() {
 }
 
 src_install() {
-	emake DESTDIR="${ED%/}/usr" INCDIR="${ED%/}/usr/share/include" LIBDIR="${ED%/}/usr/$(get_libdir)" install
+	emake DESTDIR="${ED}/usr" INCDIR="${ED}/usr/share/include" LIBDIR="${ED}/usr/$(get_libdir)" install
 
 	einstalldocs
 }
