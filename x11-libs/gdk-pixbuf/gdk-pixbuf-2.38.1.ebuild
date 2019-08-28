@@ -63,9 +63,9 @@ src_prepare() {
 multilib_src_configure() {
 	local emesonargs=(
 		-Dpng=true
-		-Djasper=false
 		$(meson_use tiff)
 		$(meson_use jpeg)
+		-Djasper=false
 		$(meson_use X x11)
 		-Dbuiltin_loaders=png
 		-Drelocatable=false
