@@ -24,3 +24,4 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	dev-ros/rostest"
+PATCHES=( "${FILESDIR}/boost170.patch" )
