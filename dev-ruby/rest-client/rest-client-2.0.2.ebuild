@@ -12,7 +12,7 @@ RUBY_FAKEGEM_EXTRADOC="history.md README.md"
 inherit ruby-fakegem
 
 DESCRIPTION="Simple Simple HTTP and REST client for Ruby"
-HOMEPAGE="https://github.com/archiloque/rest-client"
+HOMEPAGE="https://github.com/rest-client/rest-client"
 
 LICENSE="MIT"
 SLOT="2"
