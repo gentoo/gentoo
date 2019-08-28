@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 pypy )
+PYTHON_COMPAT=( python2_7 )
 
 inherit distutils-r1
 
@@ -20,11 +20,6 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 RDEPEND=""
 
 python_test() {
-	if [[ ${EPYTHON} == python2* || ${EPYTHON} == pypy ]]; then
-		cd "${S}"/python2 || die
-	else
-		cd "${S}"/src || die
-	fi
-
+	cd "${S}"/python2 || die
 	"${PYTHON}" test_typing.py || die "tests failed under ${EPYTHON}"
 }
