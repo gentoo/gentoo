@@ -26,3 +26,4 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	dev-cpp/eigen:3"
+PATCHES=( "${FILESDIR}/boost170.patch" )
