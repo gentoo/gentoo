@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -56,7 +56,7 @@ pkg_postinst() {
 		elog "https://www.elastic.co/guide/en/beats/libbeat/$(ver_cut 1-2)/upgrading.html"
 		elog ""
 		elog "The migration script:"
-		elog "${EROOT%/}/usr/share/filebeat/migrate_beat_config_1_x_to_5_0.py"
+		elog "${EROOT}/usr/share/filebeat/migrate_beat_config_1_x_to_5_0.py"
 		elog ""
 	fi
 
