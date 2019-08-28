@@ -3097,7 +3097,7 @@ dev-db/mysql++ 2.3.2-r1 3.2.3-r1 3.2.4 3.2.5: C++ API interface to the MySQL dat
 dev-db/mysql-cluster 7.2.34 7.3.22 7.4.21: An enhanced, drop-in replacement for MySQL
 dev-db/mysql-connector-c 6.1.11-r2 8.0.17-r3: C client library for MariaDB/MySQL
 dev-db/mysql-connector-c++ 1.1.9-r1 1.1.11-r1 1.1.12-r1 8.0.11 8.0.13 8.0.15: MySQL database connector for C++ (mimics JDBC 4.0 API)
-dev-db/mysql-init-scripts 2.2-r3 2.2-r4 2.3 2.3-r1 2.3-r2: Gentoo MySQL init scripts.
+dev-db/mysql-init-scripts 2.3-r3: Gentoo MySQL init scripts.
 dev-db/mysql-super-smack 1.3-r4: Benchmarking, stress testing, and load generation tool for MySQL & PostGreSQL
 dev-db/mysql-workbench 8.0.16 8.0.17: MySQL Workbench
 dev-db/mysqltuner 1.6.18 1.7.13 1.7.15: MySQLTuner is a high-performance MySQL tuning script
@@ -15961,14 +15961,14 @@ net-wireless/rtl_433 0.1_p20190709-r1 9999: Decode OOK modulated signals
 net-wireless/rtl_power_fftw 0.0_p20180528 9999: power spectrum for RTLSDR dongles
 net-wireless/sdrplay 2.13.1-r1: SDRplay API/HW driver for all RSPs
 net-wireless/soapy_power 1.6.1-r1 9999: Obtain power spectrum from SoapySDR devices
-net-wireless/soapybladerf 0.3.5_p20180908-r1 0.4.0 9999: Soapy SDR plugin for the Blade RF
+net-wireless/soapybladerf 0.4.1 9999: Soapy SDR plugin for the Blade RF
 net-wireless/soapyhackrf 0.3.3-r1 9999: SoapySDR HackRF module
-net-wireless/soapyplutosdr 0.0_p20180825-r1 0.1.0 9999: Soapy SDR plugin for the Pluto SDR
+net-wireless/soapyplutosdr 0.2.0 9999: Soapy SDR plugin for the Pluto SDR
 net-wireless/soapyremote 0.5.0 9999: Soapy SDR remote module
-net-wireless/soapyrtlsdr 0.2.5-r1 0.3.0 9999: SoapySDR RTL-SDR Support Module
-net-wireless/soapysdr 0.6.1-r1 0.7.0 9999: vendor and platform neutral SDR support library
+net-wireless/soapyrtlsdr 0.3.0 9999: SoapySDR RTL-SDR Support Module
+net-wireless/soapysdr 0.7.1 9999: vendor and platform neutral SDR support library
 net-wireless/soapysdrplay 0.1.0 0.2.0 9999: Soapy SDR plugin for SDRPlay
-net-wireless/soapyuhd 0.3.4-r1 9999: Soapy SDR plugins for UHD supported SDR devices
+net-wireless/soapyuhd 0.3.6 9999: Soapy SDR plugins for UHD supported SDR devices
 net-wireless/spectools 2011.08.1-r2 2011.08.1_p20140618-r1 2016.01.1 9999: Spectrum Analyzer for Meta-Geek Wi-Spy and GSG Ubertooth hardware
 net-wireless/ubertooth 2018.08.1 2018.12.1 9999: open source wireless development platform suitable for Bluetooth experimentation
 net-wireless/uhd 3.10.3.0 3.11.0.0 3.12.0.0 3.13.0.1 3.13.1.0 3.14.0.0: Universal Software Radio Peripheral (USRP) Hardware Driver
