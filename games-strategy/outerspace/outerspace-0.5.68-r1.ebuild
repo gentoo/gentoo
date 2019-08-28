@@ -35,8 +35,8 @@ python_install() {
 
 	# source tarball is missing files
 	# get them from ubuntu.deb
-	insinto "$(python_get_sitedir)"/ige/ospace/Rules
-	doins "${WORKDIR}"/usr/share/games/outerspace/libsrvr/ige/ospace/Rules/{Tech,techs}.spf
+	python_moduleinto ige.ospace.Rules
+	python_domodule "${WORKDIR}"/usr/share/games/outerspace/libsrvr/ige/ospace/Rules/{Tech,techs}.spf
 }
 
 src_prepare() {
