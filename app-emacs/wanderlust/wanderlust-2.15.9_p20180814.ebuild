@@ -8,7 +8,7 @@ inherit elisp
 DESCRIPTION="Yet Another Message Interface on Emacsen"
 HOMEPAGE="https://github.com/wanderlust/wanderlust"
 GITHUB_SHA1="395826e99b84051396d503392f52462b6cb683a5"
-SRC_URI="${HOMEPAGE}/archive/${GITHUB_SHA1}.tar.gz -> ${P}-git.tar.gz"
+SRC_URI="https://github.com/wanderlust/wanderlust/archive/${GITHUB_SHA1}.tar.gz -> ${P}-git.tar.gz"
 S="${WORKDIR}/${PN}-${GITHUB_SHA1}"
 
 LICENSE="GPL-2+"
