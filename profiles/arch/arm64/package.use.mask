@@ -79,12 +79,6 @@ virtual/ffmpeg -sdl
 # It builds OK but is not yet in ::gentoo. bug #678404
 kde-apps/cantor lua
 
-# Dirkjan Ochtman <djc@gentoo.org> (2018-09-29)
-# Upstream doesn't build docs for tier 2 and lower architectures.
-# Bug #660512.
-dev-lang/rust doc
-dev-lang/rust-bin doc
-
 # Virgil Dupras <vdupras@gentoo.org> (2018-09-06)
 # sci-electronics/ngspice not yet keyworded, bug #665416
 # sci-libs/opencascade not yet keyworded
