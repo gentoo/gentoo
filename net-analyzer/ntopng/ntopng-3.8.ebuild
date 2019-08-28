@@ -39,7 +39,7 @@ PATCHES=(
 
 src_prepare() {
 	default
-	sed -e "s/@VERSION@/${PV}/g" -e "s/@SHORT_VERSION@/${PV}/g" < "${S}/configure.seed" > "${S}/configure.ac" > configure.ac
+	sed -e "s/@VERSION@/${PV}.$(date +%y%m%d)/g" -e "s/@SHORT_VERSION@/${PV}/g" < "${S}/configure.seed" > "${S}/configure.ac" > configure.ac
 	eapply_user
 	eautoreconf
 }
