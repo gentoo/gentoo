@@ -296,7 +296,7 @@ src_install() {
 	# Set the correct libdir
 	sed \
 		-e "s@MY_LIBDIR@$(get_libdir)@" \
-		-i "${ED%/}"/etc/vbox/vbox.cfg || die "vbox.cfg sed failed"
+		-i "${ED}"/etc/vbox/vbox.cfg || die "vbox.cfg sed failed"
 
 	# Install the wrapper script
 	exeinto ${vbox_inst_path}
@@ -330,7 +330,7 @@ src_install() {
 	# VBoxSVC and VBoxManage need to be pax-marked (bug #403453)
 	# VBoxXPCOMIPCD (bug #524202)
 	for each in VBox{Headless,Manage,SVC,XPCOMIPCD} ; do
-		pax-mark -m "${ED%/}"${vbox_inst_path}/${each}
+		pax-mark -m "${ED}"${vbox_inst_path}/${each}
 	done
 
 	# Symlink binaries to the shipped wrapper
@@ -351,7 +351,7 @@ src_install() {
 	if ! use headless ; then
 		vbox_inst rdesktop-vrdp
 		vbox_inst VBoxSDL 4750
-		pax-mark -m "${ED%/}"${vbox_inst_path}/VBoxSDL
+		pax-mark -m "${ED}"${vbox_inst_path}/VBoxSDL
 
 		for each in vboxsdl VBoxSDL ; do
 			dosym ${vbox_inst_path}/VBox /usr/bin/${each}
@@ -361,12 +361,12 @@ src_install() {
 			vbox_inst VirtualBox
 			vbox_inst VirtualBoxVM 4750
 			for each in VirtualBox{,VM} ; do
-				pax-mark -m "${ED%/}"${vbox_inst_path}/${each}
+				pax-mark -m "${ED}"${vbox_inst_path}/${each}
 			done
 
 			if use opengl ; then
 				vbox_inst VBoxTestOGL
-				pax-mark -m "${ED%/}"${vbox_inst_path}/VBoxTestOGL
+				pax-mark -m "${ED}"${vbox_inst_path}/VBoxTestOGL
 			fi
 
 			for each in virtualbox{,vm} VirtualBox{,VM} ; do
@@ -409,8 +409,8 @@ src_install() {
 		doins -r sdk
 
 		if use java ; then
-			java-pkg_regjar "${ED%/}/${vbox_inst_path}/sdk/bindings/xpcom/java/vboxjxpcom.jar"
-			java-pkg_regso "${ED%/}/${vbox_inst_path}/libvboxjxpcom.so"
+			java-pkg_regjar "${ED}/${vbox_inst_path}/sdk/bindings/xpcom/java/vboxjxpcom.jar"
+			java-pkg_regso "${ED}/${vbox_inst_path}/libvboxjxpcom.so"
 		fi
 	fi
 
@@ -498,9 +498,9 @@ pkg_postinst() {
 		elog ""
 		elog "WARNING!"
 		elog "Without USE=udev, USB devices will likely not work in ${PN}."
-	elif [[ -e "${ROOT%/}/etc/udev/rules.d/10-virtualbox.rules" ]] ; then
+	elif [[ -e "${ROOT}/etc/udev/rules.d/10-virtualbox.rules" ]] ; then
 		elog ""
-		elog "Please remove \"${ROOT%/}/etc/udev/rules.d/10-virtualbox.rules\""
+		elog "Please remove \"${ROOT}/etc/udev/rules.d/10-virtualbox.rules\""
 		elog "or else USB in ${PN} won't work."
 	fi
 }
