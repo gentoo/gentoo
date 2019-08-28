@@ -23,6 +23,7 @@ acct-group/msmtpd 0: System group: msmtpd
 acct-group/murmur 0: System group: murmur
 acct-group/mysql 0: MySQL program group
 acct-group/nsd 0: System group: nsd
+acct-group/ntp 0: System group: ntp
 acct-group/pdnsd 0: System group: pdnsd
 acct-group/polkitd 0: System group: polkitd
 acct-group/qemu 0: System group: qemu
@@ -60,6 +61,7 @@ acct-user/msmtpd 0: user for msmtp daemon
 acct-user/murmur 0: user for murmur daemon
 acct-user/mysql 0: MySQL program user
 acct-user/nsd 0: user for nsd daemon
+acct-user/ntp 0: user for ntp daemon
 acct-user/pdnsd 0: user for pdns daemon
 acct-user/polkitd 0: System user: polkitd
 acct-user/postmaster 0: Postmaster user
@@ -5209,7 +5211,7 @@ dev-libs/unibilium 1.1.4 1.2.0 1.2.1 2.0.0: A very basic terminfo library
 dev-libs/unittest++ 1.6.1 2.0.0: A lightweight unit testing framework for C++
 dev-libs/univalue 1.0.2 1.0.3 1.0.4 9999: C++ universal value object and JSON library
 dev-libs/urdfdom 1.0.0-r1 1.0.3 9999: URDF (U-Robot Description Format) library
-dev-libs/urdfdom_headers 1.0.2 1.0.3 9999: URDF (U-Robot Description Format) headers
+dev-libs/urdfdom_headers 1.0.2 1.0.3 1.0.4 9999: URDF (U-Robot Description Format) headers
 dev-libs/uriparser 0.9.1 0.9.3: Uriparser is a strictly RFC 3986 compliant URI parsing library in C
 dev-libs/userspace-rcu 0.9.1 0.9.2 0.10.1 0.10.2 0.11.1: userspace RCU (read-copy-update) library
 dev-libs/ustr 1.0.4-r5 1.0.4-r7 1.0.4-r8: Low-overhead managed string library for C
@@ -7577,7 +7579,7 @@ dev-python/carrot 0.10.7-r1: AMQP Messaging Framework for Python
 dev-python/case 1.5.2-r1 1.5.3: Python unittest Utilities
 dev-python/castellan 0.12.2 0.17.0 1.2.2: Generic Key Manager interface for OpenStack
 dev-python/casuarius 1.1: Cython wrapper for the Cassowary incremental constraint solver
-dev-python/catkin_pkg 0.4.9 0.4.10 0.4.12 9999: Standalone Python library for the catkin package system
+dev-python/catkin_pkg 0.4.12 0.4.13 9999: Standalone Python library for the catkin package system
 dev-python/cbor 1.0.0: RFC 7049 - Concise Binary Object Representation
 dev-python/ccdproc 1.1.0 1.2.0: Astropy affiliated package for reducing optical/IR CCD data
 dev-python/cddb-py 1.4-r1: CDDB Module for Python
@@ -8933,7 +8935,7 @@ dev-python/ropeide 1.5.1-r2: Python refactoring IDE
 dev-python/ropemacs 0.8: Rope in Emacs
 dev-python/ropemode 0.2-r1 0.4: A helper for using rope refactoring library in IDEs
 dev-python/rosdistro 0.7.2 0.7.4 9999: Tools to work with catkinized rosdistro files
-dev-python/rospkg 1.1.4 1.1.7 1.1.9 9999: Standalone Python library for the ROS package system
+dev-python/rospkg 1.1.9 1.1.10 9999: Standalone Python library for the ROS package system
 dev-python/routes 2.4.1: A re-implementation of Rails routes system, mapping URLs to Controllers/Actions
 dev-python/rply 0.7.4 0.7.5 0.7.6: Pure python parser generator that also works with RPython
 dev-python/rpy 2.6.2 2.9.0: Python interface to the R Programming Language
@@ -9212,7 +9214,7 @@ dev-python/utmp 0.4: utmp/wtmp reader
 dev-python/uvloop 0.8.1 0.12.2 0.13.0: Ultra-fast implementation of asyncio event loop on top of libuv
 dev-python/vatnumber 1.1-r1: Module to validate VAT numbers
 dev-python/vcrpy 1.10.3 1.11.1 1.12.0: Automatically mock your HTTP interactions to simplify and speed up testing
-dev-python/vcstools 0.1.38 0.1.39 0.1.40 9999: Python library for interacting with various VCS systems
+dev-python/vcstools 0.1.40 0.1.42 9999: Python library for interacting with various VCS systems
 dev-python/vcversioner 2.16.0.0: Use version control tags to discover version numbers
 dev-python/vdirsyncer 0.16.3 0.16.4 0.16.6 0.16.7: Synchronize calendars and contacts
 dev-python/venusian 1.0 1.0_p20161030: A library for deferring decorator actions
@@ -9398,7 +9400,7 @@ dev-ros/camera_info_manager 1.11.7 1.11.8 1.11.9 1.11.10 1.11.11 1.11.12 1.11.13
 dev-ros/carrot_planner 1.16.1 1.16.2 9999: Attempts to find a legal place to put a carrot for the robot to follow
 dev-ros/class_loader 0.4.1-r1 9999: ROS-independent package for loading plugins
 dev-ros/clear_costmap_recovery 1.15.1-r1 1.15.2 1.16.0 1.16.1 1.16.2 9999: Recovery behavior that attempts to clear space by reverting the costmaps to the static map
-dev-ros/cmake_modules 0.4.0 0.4.1 9999: CMake Modules which are not distributed with CMake but are commonly used by ROS packages
+dev-ros/cmake_modules 0.4.0 0.4.1 0.4.2 9999: CMake Modules which are not distributed with CMake but are commonly used by ROS packages
 dev-ros/collada_parser 1.12.10-r3 1.12.12 9999: C++ parser for the Collada robot description format
 dev-ros/collada_urdf 1.12.10-r1 1.12.12 9999: Convert Unified Robot Description Format (URDF) documents into COLLADA documents
 dev-ros/combined_robot_hw 0.14.2 0.15.0 0.15.1 9999: Combined Robot HW class
@@ -9414,7 +9416,7 @@ dev-ros/controller_manager_tests 0.14.2 0.15.0 0.15.1 9999: Tests for the contro
 dev-ros/convex_decomposition 0.1.10 0.1.11 0.1.12 9999: Convex Decomposition Tool for Robot Model
 dev-ros/costmap_2d 1.16.1 1.16.2 9999: Creates a 2D costmap from sensor data
 dev-ros/cpp_common 0.6.7-r1 0.6.8 0.6.9 0.6.10 0.6.11 0.6.12 9999: C++ code for doing things that are not necessarily ROS related
-dev-ros/cv_bridge 1.12.5 1.12.7 1.12.8 1.13.0 9999: Converts between ROS Image messages and OpenCV images
+dev-ros/cv_bridge 1.13.0 9999: Converts between ROS Image messages and OpenCV images
 dev-ros/depth_image_proc 1.12.22-r1 1.12.23 9999: Nodelets for processing depth images such as those produced by OpenNI camera
 dev-ros/depthimage_to_laserscan 1.0.7-r2 9999: Converts a depth image to a laser scan for use with navigation and localization
 dev-ros/diagnostic_aggregator 1.9.2-r1 1.9.3 9999: Aggregates ROS diagnostics
@@ -9429,24 +9431,24 @@ dev-ros/eigen_conversions 1.11.9-r1 1.12.0 9999: Conversion functions between Ei
 dev-ros/eigen_stl_containers 0.1.4 0.1.5 0.1.6 0.1.7 0.1.8 9999: Provides a set of typedef's that allow using Eigen datatypes in STL containers
 dev-ros/fake_localization 1.15.2 1.16.0 1.16.1 1.16.2 9999: A ROS node that simply forwards odometry information
 dev-ros/filters 1.8.1-r1 9999: Standardized interface for processing data as a sequence of filters
-dev-ros/gazebo_dev 2.7.3 2.7.4 2.8.4 9999: Provides a cmake config for the default version of Gazebo for the ROS distribution.
-dev-ros/gazebo_msgs 2.6.2 2.7.3 2.7.4 2.8.4 9999: Message and service data structures for interacting with Gazebo from ROS
-dev-ros/gazebo_plugins 2.6.2 2.7.3 2.7.4 2.8.4 9999: Robot-independent Gazebo plugins for sensors, motors and dynamic reconfigurable components
-dev-ros/gazebo_ros 2.6.2 2.7.3 2.7.4 2.8.4 9999: ROS plugins that offer message and service publishers for interfacing with gazebo
-dev-ros/gazebo_ros_control 2.6.2-r1 2.7.3 2.7.4 2.8.4 9999: ROS control plugins for gazebo
-dev-ros/gencpp 0.5.5 0.6.0 9999: ROS C++ message definition and serialization generators
+dev-ros/gazebo_dev 2.7.3 2.7.4 2.8.4 2.8.5 9999: Provides a cmake config for the default version of Gazebo for the ROS distribution.
+dev-ros/gazebo_msgs 2.6.2 2.7.3 2.7.4 2.8.4 2.8.5 9999: Message and service data structures for interacting with Gazebo from ROS
+dev-ros/gazebo_plugins 2.6.2 2.7.3 2.7.4 2.8.4 2.8.5 9999: Robot-independent Gazebo plugins for sensors, motors and dynamic reconfigurable components
+dev-ros/gazebo_ros 2.6.2 2.7.3 2.7.4 2.8.4 2.8.5 9999: ROS plugins that offer message and service publishers for interfacing with gazebo
+dev-ros/gazebo_ros_control 2.6.2-r1 2.7.3 2.7.4 2.8.4 2.8.5 9999: ROS control plugins for gazebo
+dev-ros/gencpp 0.6.0 0.6.2 9999: ROS C++ message definition and serialization generators
 dev-ros/geneus 2.2.5 2.2.6 9999: EusLisp ROS message and service generators
-dev-ros/genlisp 0.4.16 9999: Common-Lisp ROS message and service generators
-dev-ros/genmsg 0.5.9 0.5.10 0.5.11 9999: Python library for generating ROS message and service data structures for various languages
+dev-ros/genlisp 0.4.16 0.4.17 9999: Common-Lisp ROS message and service generators
+dev-ros/genmsg 0.5.11 0.5.12 9999: Python library for generating ROS message and service data structures for various languages
 dev-ros/gennodejs 2.0.1 9999: Javascript ROS message and service generators
-dev-ros/genpy 0.6.7 9999: Python ROS message and service generators
+dev-ros/genpy 0.6.7 0.6.8 9999: Python ROS message and service generators
 dev-ros/geodesy 0.5.2 0.5.3 9999: Python and C++ interfaces for manipulating geodetic coordinates
 dev-ros/geographic_msgs 0.5.0 0.5.2 0.5.3 9999: ROS messages for Geographic Information Systems
 dev-ros/geometric_shapes 0.5.4 0.6.0 0.6.1 9999: Generic definitions of geometric shapes and bodies
 dev-ros/geometry_msgs 1.12.5 1.12.6 1.12.7 9999: Messages for common geometric primitives such as points, vectors, and poses
 dev-ros/global_planner 1.15.1-r1 1.15.2 1.16.0 1.16.1 1.16.2 9999: Path planner library and node
 dev-ros/gmapping 1.3.10 9999: ROS wrapper for OpenSlam's Gmapping
-dev-ros/hardware_interface 0.14.2 0.15.0 0.15.1 9999: Hardware Interface base class
+dev-ros/hardware_interface 0.15.1 9999: Hardware Interface base class
 dev-ros/hector_compressed_map_transport 0.3.5 9999: Means for transporting compressed map data through the use of image_transport
 dev-ros/hector_geotiff 0.3.5-r2 9999: Node to save occupancy grid map, robot trajectory and object of interest data to GeoTiff images
 dev-ros/hector_geotiff_plugins 0.3.5-r1 9999: Plugins that extend geotiff maps generated by hector_geotiff
@@ -9467,9 +9469,9 @@ dev-ros/image_proc 1.12.22-r1 1.12.23 9999: Single image rectification and color
 dev-ros/image_publisher 1.12.22-r1 1.12.23 9999: Publish an image stream from single image file or avi file.
 dev-ros/image_rotate 1.12.22-r1 1.12.23 9999: Rotates an image stream minimizing the angle between an arbitrary vector and the camera frame
 dev-ros/image_transport 1.11.13-r2 9999: Transparent support for transporting images in low-bandwidth compressed formats
-dev-ros/image_view 1.12.22-r1 1.12.23 9999: Simple viewer for ROS image topics
+dev-ros/image_view 1.12.23 9999: Simple viewer for ROS image topics
 dev-ros/imu_complementary_filter 1.1.5 1.2.0 1.2.1 9999: Fuses angular velocities, accelerations, and (optionally) magnetic readings from an IMU device
-dev-ros/imu_filter_madgwick 1.1.5-r1 1.2.0 1.2.1 9999: Fuses angular velocities, accelerations, and (optionally) magnetic readings from an IMU device
+dev-ros/imu_filter_madgwick 1.2.1 9999: Fuses angular velocities, accelerations, and (optionally) magnetic readings from an IMU device
 dev-ros/imu_processors 0.2.1 0.2.2 0.2.3 9999: Processors for sensor_msgs::Imu data
 dev-ros/imu_transformer 0.2.2-r1 0.2.3 9999: Node/nodelet combination to transform sensor_msgs::Imu data from one frame into another
 dev-ros/interactive_marker_tutorials 0.10.1 0.10.2 0.10.3 9999: Interactive marker tutorials
@@ -9532,11 +9534,11 @@ dev-ros/pr2_dashboard_aggregator 1.11.9 1.11.10 1.11.11 1.11.13 1.11.14 1.12.0 1
 dev-ros/pr2_description 1.12.0 1.12.1 1.12.2 1.12.3 1.12.4 9999: Description (mechanical, kinematic, visual, etc.) of the PR2 robot
 dev-ros/pr2_machine 1.11.9 1.11.10 1.11.11 1.11.13 1.11.14 1.12.0 1.12.1 1.12.2 1.12.3 1.12.4 9999: xxx.machine files that describe the different hosts a node can be spawned on
 dev-ros/pr2_msgs 1.12.0 1.12.1 1.12.2 1.12.3 1.12.4 9999: Messages for representing PR2 state, such as battery information and the PR2 fingertip sensors
-dev-ros/python_qt_binding 0.3.2 0.3.3 0.3.4 9999: Infrastructure for an integrated graphical user interface based on Qt
+dev-ros/python_qt_binding 0.3.4 0.3.5-r1 9999: Infrastructure for an integrated graphical user interface based on Qt
 dev-ros/qt_dotgraph 0.2.29 0.2.30 0.3.0 0.3.1 0.3.2 0.3.3 0.3.4 0.3.5 0.3.6 0.3.8 0.3.9 0.3.10 0.3.11 9999: Helpers to work with dot graphs
 dev-ros/qt_gui 0.3.4-r1 0.3.5 0.3.6 0.3.8 0.3.9 0.3.10 0.3.11 9999: ROS infrastructure for an integrated graphical user interface based on Qt
 dev-ros/qt_gui_app 0.2.29 0.2.30 0.3.0 0.3.1 0.3.2 0.3.3 0.3.4 0.3.5 0.3.6 0.3.8 0.3.9 0.3.10 0.3.11 9999: Main to start an instance of the integrated graphical user interface provided by qt_gui
-dev-ros/qt_gui_cpp 0.3.8-r1 0.3.9 0.3.10 0.3.11 9999: Foundation for C++-bindings for dev-ros/qt_gui and creates bindings for every generator available
+dev-ros/qt_gui_cpp 0.3.11 9999: Foundation for C++-bindings for dev-ros/qt_gui and creates bindings for every generator available
 dev-ros/qt_gui_py_common 0.2.29 0.2.30 0.3.0 0.3.1 0.3.2 0.3.3 0.3.4 0.3.5 0.3.6 0.3.8 0.3.9 0.3.10 0.3.11 9999: Common functionality for ROS RQT GUI plugins written in Python
 dev-ros/random_numbers 0.3.1 0.3.2 9999: Wrappers for generating floating point values, integers, quaternions using boost libraries
 dev-ros/realtime_tools 1.10.0 1.11.0 1.12.0 9999: Set of tools that can be used from a hard realtime thread, without breaking the realtime behavior
@@ -9588,7 +9590,7 @@ dev-ros/rosserial_client 0.7.7 0.8.0 9999: Generalized client side source for ro
 dev-ros/rosserial_embeddedlinux 0.7.1 0.7.2 0.7.3 0.7.4 0.7.5 0.7.6 0.7.7 0.8.0 9999: Libraries and examples for ROSserial usage on Embedded Linux Enviroments
 dev-ros/rosserial_msgs 0.7.6 0.7.7 0.8.0 9999: Messages for automatic topic configuration using rosserial
 dev-ros/rosserial_python 0.7.1 0.7.2 0.7.3 0.7.4 0.7.5 0.7.6 0.7.7 0.8.0 9999: A Python-based implementation of the ROS serial protocol
-dev-ros/rosserial_server 0.7.4 0.7.5 0.7.6 0.7.7 0.8.0 9999: C++ implementation of the rosserial server side
+dev-ros/rosserial_server 0.8.0 9999: C++ implementation of the rosserial server side
 dev-ros/rosserial_tivac 0.7.2 0.7.3 0.7.4 0.7.5 0.7.6 0.7.7 0.8.0 9999: Definitions for rosserial_client targets for TivaC Launchpad evaluation boards.
 dev-ros/rosserial_windows 0.7.1 0.7.2 0.7.3 0.7.4 0.7.5 0.7.6 0.7.7 0.8.0 9999: Libraries and examples for ROSserial usage on Windows Platforms
 dev-ros/rosserial_xbee 0.7.1 0.7.2 0.7.3 0.7.4 0.7.5 0.7.6 0.7.7 0.8.0 9999: Tools to do point to multipoint communication between rosserial nodes connected to an xbee
@@ -15520,7 +15522,7 @@ net-misc/nextcloud-client 2.5.2: Desktop Syncing Client for Nextcloud
 net-misc/ng-utils 0.6: A collection of small tools for accessing netgroup contents
 net-misc/nicstat 1.95: Network traffic statics utility for Solaris and Linux
 net-misc/npapi-sdk 0.27.2 9999: NPAPI headers bundle
-net-misc/ntp 4.2.8_p13 4.2.8_p13-r1: Network Time Protocol suite/programs
+net-misc/ntp 4.2.8_p13 4.2.8_p13-r1 4.2.8_p13-r2: Network Time Protocol suite/programs
 net-misc/ntpclient 2018.244 2018.244-r1: A NTP (RFC-1305 and RFC-4330) client for unix-alike systems
 net-misc/ntpsec 1.1.4 1.1.6 9999: The NTP reference implementation, refactored
 net-misc/nx 3.5.0.33 3.5.99.16 3.5.99.17 3.5.99.20: NX compression technology core libraries
@@ -16040,7 +16042,7 @@ ros-meta/desktop_full 1.4.0 1.4.1 9999: Metapackage for ROS complete desktop ins
 ros-meta/diagnostics 1.8.8 1.8.9 1.8.10 1.9.0 1.9.2 1.9.3 9999: Packages related to gathering, viewing, and analyzing diagnostics data from robots
 ros-meta/driver_common 1.6.8 9999: Classes and tools that are useful throughout the driver stacks
 ros-meta/executive_smach 2.0.0 2.0.1 9999: SMACH library and ROS SMACH integration packages
-ros-meta/gazebo_ros_pkgs 2.6.1 2.6.2 2.7.3 2.7.4 2.8.4 9999: Interface for using ROS with the gazebo simulator
+ros-meta/gazebo_ros_pkgs 2.6.1 2.6.2 2.7.3 2.7.4 2.8.4 2.8.5 9999: Interface for using ROS with the gazebo simulator
 ros-meta/geographic_info 0.4.0 0.5.0 0.5.2 0.5.3 9999: Geographic information metapackage
 ros-meta/geometry 1.11.7 1.11.8 1.11.9 1.12.0 9999: Common geometric calculations
 ros-meta/geometry2 0.6.2 0.6.3 0.6.5 9999: The second generation Transform Library in ros
@@ -16725,7 +16727,7 @@ sci-libs/qfits 6.2.0: ESO stand-alone C library offering easy access to FITS fil
 sci-libs/qrupdate 1.1.2-r1: Library for updating of QR and Cholesky decompositions
 sci-libs/rosetta-db 3.4: Essential database for rosetta
 sci-libs/rosetta-fragments 3.1-r1: Fragment library for rosetta
-sci-libs/rtabmap 0.14.0 0.17.1 0.18.1 9999: Real-Time Appearance-Based Mapping (RGB-D Graph SLAM)
+sci-libs/rtabmap 0.18.1 0.19.3 9999: Real-Time Appearance-Based Mapping (RGB-D Graph SLAM)
 sci-libs/scalapack 2.0.2-r1: Subset of LAPACK routines redesigned for heterogenous (MPI) computing
 sci-libs/scikits 0.1-r1 0.1-r2: Common files for python scikits
 sci-libs/scikits_image 0.13.0 0.13.0-r1: Image processing routines for SciPy

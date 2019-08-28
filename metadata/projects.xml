@@ -215,6 +215,10 @@
       <email>lordvan@gentoo.org</email>
       <name>Thomas Raschbacher</name>
     </member>
+    <member>
+      <email>mjo@gentoo.org</email>
+      <name>Michael Orlitzky</name>
+    </member>
   </project>
   <project>
     <email>apache-bugs@gentoo.org</email>
