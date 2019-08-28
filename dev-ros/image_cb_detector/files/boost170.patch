@@ -1,0 +1,13 @@
+Index: image_cb_detector/CMakeLists.txt
+===================================================================
+--- image_cb_detector.orig/CMakeLists.txt
++++ image_cb_detector/CMakeLists.txt
+@@ -1,7 +1,7 @@
+ cmake_minimum_required(VERSION 2.8.3)
+ project(image_cb_detector)
+ 
+-find_package(Boost REQUIRED thread signals)
++find_package(Boost REQUIRED thread)
+ find_package(catkin REQUIRED actionlib actionlib_msgs calibration_msgs cv_bridge genmsg geometry_msgs image_transport message_filters roscpp sensor_msgs std_msgs)
+ find_package(OpenCV REQUIRED)
+ 
