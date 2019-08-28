@@ -1,0 +1,71 @@
+diff -urpN a/src/Track.h b/src/Track.h
+--- a/src/Track.h	2019-05-04 13:38:57.000000000 +0300
++++ b/src/Track.h	2019-08-27 19:32:36.937551831 +0300
+@@ -53,10 +53,6 @@ using WaveTrackConstArray = std::vector
+ 
+ using NoteTrackConstArray = std::vector < std::shared_ptr< const NoteTrack > >;
+ 
+-#if defined(USE_MIDI)
+-class NoteTrack;
+-#endif
+-
+ class TrackList;
+ 
+ using ListOfTracks = std::list< std::shared_ptr< Track > >;
+@@ -74,9 +70,7 @@ enum class TrackKind
+ {
+    None,
+    Wave,
+-#if defined(USE_MIDI)
+    Note,
+-#endif
+    Label,
+    Time,
+    Audio,
+diff -urpN a/src/menus/FileMenus.cpp b/src/menus/FileMenus.cpp
+--- a/src/menus/FileMenus.cpp	2019-05-04 13:38:57.000000000 +0300
++++ b/src/menus/FileMenus.cpp	2019-08-27 19:32:36.939551720 +0300
+@@ -141,8 +141,6 @@ AudacityProject *DoImportMIDI(
+ }
+ #endif
+ 
+-#ifdef USE_MIDI
+-
+ // Menu handler functions
+ 
+ struct Handler : CommandHandlerObject {
+@@ -480,6 +478,7 @@ void OnImportLabels(const CommandContext
+    }
+ }
+ 
++#ifdef USE_MIDI
+ void OnImportMIDI(const CommandContext &context)
+ {
+    auto &project = context.project;
+@@ -496,7 +495,7 @@ void OnImportMIDI(const CommandContext &
+    if (!fileName.empty())
+       DoImportMIDI(&project, fileName);
+ }
+-#endif
++#endif // USE_MIDI
+ 
+ void OnImportRaw(const CommandContext &context)
+ {
+diff -urpN a/src/tracks/ui/TimeShiftHandle.cpp b/src/tracks/ui/TimeShiftHandle.cpp
+--- a/src/tracks/ui/TimeShiftHandle.cpp	2019-05-04 13:38:57.000000000 +0300
++++ b/src/tracks/ui/TimeShiftHandle.cpp	2019-08-27 19:32:36.940551665 +0300
+@@ -393,12 +393,12 @@ UIHandle::Result TimeShiftHandle::Click
+                ok = false;
+             else
+                captureClips = true;
+-         },
+ #ifdef USE_MIDI
++         },
+          [&](NoteTrack *) {
+             captureClips = true;
+-         }
+ #endif
++         }
+       );
+ 
+    if ( ! ok )
