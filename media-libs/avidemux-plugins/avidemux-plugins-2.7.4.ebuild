@@ -118,6 +118,7 @@ src_configure() {
 			-DJACK="$(usex jack)"
 			-DLAME="$(usex lame)"
 			-DNVENC="$(usex nvenc)"
+			-DOPENGL="$(usex opengl)"
 			-DOPUS="$(usex opus)"
 			-DOSS="$(usex oss)"
 			-DPULSEAUDIOSIMPLE="$(usex pulseaudio)"
