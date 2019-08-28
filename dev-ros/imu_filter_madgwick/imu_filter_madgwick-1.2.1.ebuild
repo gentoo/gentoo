@@ -31,3 +31,4 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	test? ( dev-ros/rosunit )
 "
+PATCHES=( "${FILESDIR}/boost_signals.patch" )
