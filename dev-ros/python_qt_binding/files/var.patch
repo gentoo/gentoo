@@ -1,0 +1,31 @@
+From 1b3000d2eccfad651b427de20028a4ca552e9ea7 Mon Sep 17 00:00:00 2001
+From: Hans Gaiser <h.gaiser@fizyr.com>
+Date: Mon, 29 Jul 2019 15:17:39 -0700
+Subject: [PATCH] Replace Qt variable in generated Makefile. (#64)
+
+* Replace Qt variable in generated Makefile.
+
+* use single quotes
+---
+ cmake/sip_configure.py | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/cmake/sip_configure.py b/cmake/sip_configure.py
+index 49eb866..ce084dd 100644
+--- a/cmake/sip_configure.py
++++ b/cmake/sip_configure.py
+@@ -145,5 +145,14 @@ def split_paths(paths):
+ else:
+     makefile.extra_cxxflags.append('-std=c++14')
+ 
++# Finalise the Makefile, preparing it to be saved to disk
++makefile.finalise()
++
++# Replace Qt variables from libraries
++libs = makefile.LIBS.as_list()
++for i in range(len(libs)):
++    libs[i] = libs[i].replace('$$[QT_INSTALL_LIBS]', config.build_macros()['LIBDIR_QT'])
++makefile.LIBS.set(libs)
++
+ # Generate the Makefile itself
+ makefile.generate()
