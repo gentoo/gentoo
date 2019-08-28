@@ -8,7 +8,7 @@ inherit elisp
 DESCRIPTION="A Portable Emacs Library is a library for making portable Emacs Lisp programs"
 HOMEPAGE="https://github.com/wanderlust/apel"
 GITHUB_SHA1="d146ddbf8818e81d3577d5eee7825d377bec0c73"
-SRC_URI="${HOMEPAGE}/archive/${GITHUB_SHA1}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/wanderlust/apel/archive/${GITHUB_SHA1}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
