@@ -137,6 +137,8 @@ DEPEND="${COMMON}
 	x11-base/xorg-proto
 "
 
+BDEPEND="virtual/pkgconfig"
+
 S="${WORKDIR}/${PF}/mythtv"
 
 DISABLE_AUTOFORMATTING="yes"
@@ -166,7 +168,7 @@ src_prepare() {
 
 	# Perl bits need to go into vender_perl and not site_perl
 	sed -e "s:pure_install:pure_install INSTALLDIRS=vendor:" \
-		-i "${S}"/bindings/perl/Makefile
+		-i "${S}"/bindings/perl/Makefile || die "Cannot convert site_perl to vendor_perl!"
 
 	# Fix up the version info since we are using the fixes/${PV} branch
 	echo "SOURCE_VERSION=\"v${MY_PV}\"" > "${S}"/VERSION
@@ -278,7 +280,7 @@ src_configure() {
 		--extra-cxxflags="${CXXFLAGS}" \
 		--extra-ldflags="${LDFLAGS}" \
 		--qmake=$(qt5_get_bindir)/qmake \
-		${myconf[@]} || die "configure died"
+		${myconf[@]}
 }
 
 src_install() {
@@ -315,7 +317,7 @@ src_install() {
 
 	# Install our mythfrontend wrapper which is similar to Mythbuntu's
 	if use wrapper; then
-		mv "${ED}/usr/bin/mythfrontend" "${ED}/usr/bin/mythfrontend.real"
+		mv "${ED}/usr/bin/mythfrontend" "${ED}/usr/bin/mythfrontend.real" || die "Failed to install mythfrontend.real"
 		newbin "${FILESDIR}"/mythfrontend.wrapper mythfrontend
 		newconfd "${FILESDIR}"/mythfrontend.conf mythfrontend
 	fi
@@ -332,7 +334,7 @@ src_install() {
 	# Make Python files executable
 	find "${ED}/usr/share/mythtv" -type f -name '*.py' | while read file; do
 		if [[ ! "${file##*/}" = "__init__.py" ]]; then
-			chmod a+x "${file}"
+			chmod a+x "${file}" || die "Failed to make python file $(basename ${file}) executable"
 		fi
 	done
 
