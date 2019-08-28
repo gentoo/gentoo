@@ -1,0 +1,7 @@
+--- a/makefile
++++ b/makefile
+@@ -1,2 +1 @@
+-g++:	qpress.cpp aio.cpp quicklz.c utilities.cpp
+-	g++ -O3 -o qpress qpress.cpp aio.cpp quicklz.c utilities.cpp -lpthread
+\ No newline at end of file
++qpress: aio.o quicklz.o utilities.o
