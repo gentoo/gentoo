@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit autotools toolchain-funcs flag-o-matic systemd
 
@@ -16,9 +16,7 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~m68k-mint"
 IUSE="caps debug ipv6 libressl openntpd parse-clocks readline samba selinux snmp ssl +threads vim-syntax zeroconf"
 
-CDEPEND="acct-group/ntp
-	acct-user/ntp
-	readline? ( >=sys-libs/readline-4.1:0= )
+COMMON_DEPEND="readline? ( >=sys-libs/readline-4.1:0= )
 	>=dev-libs/libevent-2.0.9:=[threads?]
 	kernel_linux? ( caps? ( sys-libs/libcap ) )
 	zeroconf? ( net-dns/avahi[mdnsresponder-compat] )
@@ -28,9 +26,13 @@ CDEPEND="acct-group/ntp
 		libressl? ( dev-libs/libressl:0= )
 	)
 	parse-clocks? ( net-misc/pps-tools )"
-DEPEND="${CDEPEND}
-	virtual/pkgconfig"
-RDEPEND="${CDEPEND}
+BDEPEND="virtual/pkgconfig
+	acct-group/ntp
+	acct-user/ntp"
+DEPEND="${COMMON_DEPEND}"
+RDEPEND="${COMMON_DEPEND}
+	acct-group/ntp
+	acct-user/ntp
 	selinux? ( sec-policy/selinux-ntp )
 	vim-syntax? ( app-vim/ntp-syntax )
 	!net-misc/ntpsec
@@ -89,14 +91,14 @@ src_install() {
 	default
 	# move ntpd/ntpdate to sbin #66671
 	dodir /usr/sbin
-	mv "${ED%/}"/usr/bin/{ntpd,ntpdate} "${ED%/}"/usr/sbin/ || die "move to sbin"
+	mv "${ED}"/usr/bin/{ntpd,ntpdate} "${ED}"/usr/sbin/ || die "move to sbin"
 
 	dodoc INSTALL WHERE-TO-START
 	doman "${WORKDIR}"/man/*.[58]
 
 	insinto /etc
 	doins "${FILESDIR}"/ntp.conf
-	use ipv6 || sed -i '/^restrict .*::1/d' "${ED%/}"/etc/ntp.conf #524726
+	use ipv6 || sed -i '/^restrict .*::1/d' "${ED}"/etc/ntp.conf #524726
 	newinitd "${FILESDIR}"/ntpd.rc-r1 ntpd
 	newconfd "${FILESDIR}"/ntpd.confd ntpd
 	newinitd "${FILESDIR}"/ntp-client.rc ntp-client
@@ -104,9 +106,9 @@ src_install() {
 	newinitd "${FILESDIR}"/sntp.rc sntp
 	newconfd "${FILESDIR}"/sntp.confd sntp
 	if ! use caps ; then
-		sed -i "s|-u ntp:ntp||" "${ED%/}"/etc/conf.d/ntpd || die
+		sed -i "s|-u ntp:ntp||" "${ED}"/etc/conf.d/ntpd || die
 	fi
-	sed -i "s:/usr/bin:/usr/sbin:" "${ED%/}"/etc/init.d/ntpd || die
+	sed -i "s:/usr/bin:/usr/sbin:" "${ED}"/etc/init.d/ntpd || die
 
 	keepdir /var/lib/ntp
 	use prefix || fowners ntp:ntp /var/lib/ntp
