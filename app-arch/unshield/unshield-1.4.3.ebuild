@@ -7,7 +7,7 @@ inherit cmake-utils
 
 DESCRIPTION="InstallShield CAB file extractor"
 HOMEPAGE="https://github.com/twogood/unshield"
-SRC_URI="${HOMEPAGE}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/twogood/unshield/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
