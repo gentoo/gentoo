@@ -6,8 +6,8 @@ EAPI=6
 inherit flag-o-matic linux-mod
 
 DESCRIPTION="IBM ThinkPad SMAPI BIOS driver"
-HOMEPAGE="https://github.com/evgeni/${PN}"
-SRC_URI="${HOMEPAGE}/releases/download/tp-smapi/${PV}/${P}.tgz"
+HOMEPAGE="https://github.com/evgeni/tp_smapi"
+SRC_URI="https://github.com/evgeni/tp_smapi/releases/download/tp-smapi/${PV}/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
