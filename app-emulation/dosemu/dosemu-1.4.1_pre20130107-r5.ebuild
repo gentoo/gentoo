@@ -39,6 +39,7 @@ RDEPEND="X? ( x11-libs/libX11
 	>=sys-libs/slang-1.4"
 
 DEPEND="${RDEPEND}
+	app-arch/unzip
 	X? ( x11-base/xorg-proto )
 	>=sys-devel/autoconf-2.57"
 
