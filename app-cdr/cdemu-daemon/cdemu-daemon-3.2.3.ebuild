@@ -33,10 +33,10 @@ pkg_postinst() {
 	elog "To automatically load the vhba module at boot time, edit your"
 	elog "/etc/conf.d/modules file."
 
-	if [[ -e "${ROOT}etc/conf.d/cdemud" ]]; then
+	if [[ -e "${ROOT}/etc/conf.d/cdemud" ]]; then
 		elog
 		elog "${PN} no longer installs an init.d service; instead, it is"
 		elog "automatically activated when needed via dbus."
-		elog "You can therefore remove ${ROOT%/}/etc/conf.d/cdemud"
+		elog "You can therefore remove ${ROOT}/etc/conf.d/cdemud"
 	fi
 }
