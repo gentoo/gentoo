@@ -3,14 +3,16 @@
 
 EAPI=7
 
-KEYWORDS="~amd64"
+EGIT_COMMIT="e217fdff82e0b1a6184a28c43043a4065083407f"
 DESCRIPTION="An OCI container runtime monitor"
 HOMEPAGE="https://github.com/containers/conmon"
+SRC_URI="https://github.com/containers/conmon/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+
 LICENSE="Apache-2.0"
 SLOT="0"
+KEYWORDS="~amd64"
 IUSE="systemd"
-EGIT_COMMIT="e217fdff82e0b1a6184a28c43043a4065083407f"
-SRC_URI="${HOMEPAGE}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+
 RDEPEND="dev-libs/glib:=
 	systemd? ( sys-apps/systemd:= )"
 DEPEND="${RDEPEND}"
