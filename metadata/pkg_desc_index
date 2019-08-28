@@ -10049,7 +10049,7 @@ dev-ruby/netrc 0.11.0: This library reads and writes .netrc files
 dev-ruby/network_interface 0.0.2: network_interface layer from metasploit pcaprub
 dev-ruby/nexpose 7.2.1: API client for Nexpose vulnerability managment product
 dev-ruby/niceogiri 1.1.2: Some wrappers around and helpers for XML manipulation using Nokogiri
-dev-ruby/nio4r 1.2.1-r1 2.3.1 2.4.0: A high performance selector API for monitoring IO objects
+dev-ruby/nio4r 1.2.1-r1 2.3.1 2.4.0 2.5.0: A high performance selector API for monitoring IO objects
 dev-ruby/nokogiri 1.8.4 1.10.4: Nokogiri is an HTML, XML, SAX, and Reader parser
 dev-ruby/nokogiri-diff 0.2.0-r2: Calculate the differences between two XML/HTML documents
 dev-ruby/nokogumbo 1.5.0 2.0.1: A Nokogiri interface to the Gumbo HTML5 parser
@@ -10372,7 +10372,7 @@ dev-ruby/virtus 1.0.5: Attributes on Steroids for Plain Old Ruby Objects
 dev-ruby/vlad 2.7.0: Pragmatic application deployment automation, without mercy
 dev-ruby/warden 1.2.8: General Rack Authentication Framework
 dev-ruby/web-console 2.3.0 3.7.0: A debugging tool for your Ruby on Rails applications
-dev-ruby/webmock 2.3.2 3.5.1 3.6.0 3.6.2: Allows stubbing HTTP requests and setting expectations on HTTP requests
+dev-ruby/webmock 2.3.2 3.5.1 3.6.0 3.6.2 3.7.0: Allows stubbing HTTP requests and setting expectations on HTTP requests
 dev-ruby/webrobots 0.1.2-r1: A library to help write robots.txt compliant web robots
 dev-ruby/websocket 1.2.7 1.2.8: Universal Ruby library to handle WebSocket protocol
 dev-ruby/websocket-driver 0.6.5 0.7.0 0.7.1: A complete implementation of the WebSocket protocols
@@ -12773,7 +12773,7 @@ media-fonts/font-sun-misc 1.0.3-r1: X.Org Sun fonts
 media-fonts/font-util 1.3.1 1.3.2: X.Org font utilities
 media-fonts/font-winitzki-cyrillic 1.0.3-r1: X.Org Winitzki cyrillic font
 media-fonts/font-xfree86-type1 1.0.4-r1: X.Org XFree86 Type 1 font
-media-fonts/fontawesome 4.7.0 5.0.6 5.1.0 5.9.0 5.10.2: The iconic font
+media-fonts/fontawesome 4.7.0 5.1.0 5.10.2: The iconic font
 media-fonts/free-bangla-font 0.2: Unicode compliant Open Type Bangla fonts
 media-fonts/freefont 20120503: OpenType and TrueType Unicode fonts from the Free UCS Outline Fonts Project
 media-fonts/freefonts 0.10-r3: A Collection of Free Type1 Fonts
