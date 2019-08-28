@@ -94,7 +94,7 @@ src_install() {
 
 	if use !gtk ; then
 		# lirc-setup requires gtk
-		rm "${ED%/}"/usr/bin/lirc-setup || die
+		rm "${ED}"/usr/bin/lirc-setup || die
 	fi
 
 	newinitd "${FILESDIR}"/lircd-0.8.6-r2 lircd
@@ -109,37 +109,37 @@ src_install() {
 	newconfd "${FILESDIR}"/irexec-confd irexec
 
 	keepdir /etc/lirc
-	if [[ -e "${ED%/}"/etc/lirc/lircd.conf ]]; then
-		newdoc "${ED%/}"/etc/lirc/lircd.conf lircd.conf.example
+	if [[ -e "${ED}"/etc/lirc/lircd.conf ]]; then
+		newdoc "${ED}"/etc/lirc/lircd.conf lircd.conf.example
 	fi
 
 	find "${ED}" -name '*.la' -delete || die
 
 	# Avoid QA notice
-	rm -d "${ED%/}"/var/run/lirc || die
-	rm -d "${ED%/}"/var/run || die
+	rm -d "${ED}"/var/run/lirc || die
+	rm -d "${ED}"/var/run || die
 }
 
 pkg_preinst() {
-	local dir="${EROOT%/}/etc/modprobe.d"
+	local dir="${EROOT}/etc/modprobe.d"
 	if [[ -a "${dir}"/lirc && ! -a "${dir}"/lirc.conf ]]; then
 		elog "Renaming ${dir}/lirc to lirc.conf"
 		mv -f "${dir}/lirc" "${dir}/lirc.conf" || die
 	fi
 
 	# copy the first file that can be found
-	if [[ -f "${EROOT%/}"/etc/lirc/lircd.conf ]]; then
-		cp "${EROOT%/}"/etc/lirc/lircd.conf "${T}"/lircd.conf || die
-	elif [[ -f "${EROOT%/}"/etc/lircd.conf ]]; then
-		cp "${EROOT%/}"/etc/lircd.conf "${T}"/lircd.conf || die
+	if [[ -f "${EROOT}"/etc/lirc/lircd.conf ]]; then
+		cp "${EROOT}"/etc/lirc/lircd.conf "${T}"/lircd.conf || die
+	elif [[ -f "${EROOT}"/etc/lircd.conf ]]; then
+		cp "${EROOT}"/etc/lircd.conf "${T}"/lircd.conf || die
 		MOVE_OLD_LIRCD_CONF=1
-	elif [[ -f "${ED%/}"/etc/lirc/lircd.conf ]]; then
-		cp "${ED%/}"/etc/lirc/lircd.conf "${T}"/lircd.conf || die
+	elif [[ -f "${ED}"/etc/lirc/lircd.conf ]]; then
+		cp "${ED}"/etc/lirc/lircd.conf "${T}"/lircd.conf || die
 	fi
 
 	# stop portage from touching the config file
-	if [[ -e "${ED%/}"/etc/lirc/lircd.conf ]]; then
-		rm -f "${ED%/}"/etc/lirc/lircd.conf || die
+	if [[ -e "${ED}"/etc/lirc/lircd.conf ]]; then
+		rm -f "${ED}"/etc/lirc/lircd.conf || die
 	fi
 }
 
@@ -148,13 +148,13 @@ pkg_postinst() {
 	# without portage knowing about it
 	# so it will not delete it on unmerge or ever touch it again
 	if [[ -e "${T}"/lircd.conf ]]; then
-		cp "${T}"/lircd.conf "${EROOT%/}"/etc/lirc/lircd.conf || die
+		cp "${T}"/lircd.conf "${EROOT}"/etc/lirc/lircd.conf || die
 		if [[ "$MOVE_OLD_LIRCD_CONF" = "1" ]]; then
 			elog "Moved /etc/lircd.conf to /etc/lirc/lircd.conf"
-			rm -f "${EROOT%/}"/etc/lircd.conf || die
+			rm -f "${EROOT}"/etc/lircd.conf || die
 		fi
 	fi
 
 	einfo "The new default location for lircd.conf is inside of"
-	einfo "${EROOT%/}/etc/lirc/ directory"
+	einfo "${EROOT}/etc/lirc/ directory"
 }
