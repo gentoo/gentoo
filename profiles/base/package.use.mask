@@ -136,10 +136,6 @@ media-libs/mesa libglvnd
 dev-java/openjdk:8 gentoo-vm
 dev-java/openjdk-bin:8 gentoo-vm
 
-# Sven Wegener <swegener@gentoo.org> (2019-01-18)
-# Waiting for >=dev-libs/libressl-2.7 to be unmasked.
->=net-libs/libvncserver-0.9.12 libressl
-
 # William Hubbs <williamh@gentoo.org> (2019-01-13)
 # For memtest86+ mask the floppy use flag since it requires grub:0 which
 # is being removed
@@ -179,10 +175,6 @@ dev-cpp/eigen test
 kde-apps/cantor julia
 sci-libs/ceres-solver sparse
 
-# Alon Bar-Lev <alonbl@gentoo.org> (2018-11-08)
-# Waiting for >=dev-libs/libressl-2.7 to be unmasked.
->=app-crypt/xca-2.1.0 libressl
-
 # Alfredo Tupone <tupone@gentoo.org> (2018-10-24)
 # jit brokes build of gnat-gpl
 dev-lang/gnat-gpl jit
@@ -192,10 +184,6 @@ dev-lang/gnat-gpl jit
 # be re-enabled with the 'server' USE flag, but this flag is hard
 # masked. bug #666619
 dev-python/paramiko server
-
-# Alon Bar-Lev <alonbl@gentoo.org> (2018-09-11)
-# Waiting for >=dev-libs/libressl-2.7 to be stablized.
->=dev-libs/opensc-0.18.0 libressl
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2018-08-03)
 # New and for Gentoo still quite experimental. You've been
