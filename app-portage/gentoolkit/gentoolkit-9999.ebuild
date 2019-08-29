@@ -43,8 +43,8 @@ pkg_preinst() {
 
 pkg_postinst() {
 	# Create cache directory for revdep-rebuild
-	mkdir -p -m 0755 "${EROOT%/}"/var/cache
-	mkdir -p -m 0700 "${EROOT%/}"/var/cache/revdep-rebuild
+	mkdir -p -m 0755 "${EROOT}"/var/cache
+	mkdir -p -m 0700 "${EROOT}"/var/cache/revdep-rebuild
 
 	if [[ ${SHOW_GENTOOKIT_DEV_DEPRECATED_MSG} ]]; then
 		elog "Starting with version 0.4.0, ebump, ekeyword and imlate are now"
