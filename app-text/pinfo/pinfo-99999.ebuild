@@ -6,7 +6,7 @@ inherit autotools flag-o-matic git-r3
 
 DESCRIPTION="Hypertext info and man viewer based on (n)curses"
 HOMEPAGE="https://github.com/baszoetekouw/pinfo"
-EGIT_REPO_URI="${HOMEPAGE}"
+EGIT_REPO_URI="https://github.com/baszoetekouw/pinfo.git"
 
 LICENSE="GPL-2"
 SLOT="0"
