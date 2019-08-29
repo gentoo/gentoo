@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -27,7 +27,7 @@ RESTRICT="binchecks strip"
 
 pkg_postinst() {
 	# Run for /lib/udev/hwdb.d/20-usb-media-players.hwdb
-	udevadm hwdb --update --root="${ROOT%/}"
+	udevadm hwdb --update --root="${ROOT}"
 	# https://cgit.freedesktop.org/systemd/systemd/commit/?id=1fab57c209035f7e66198343074e9cee06718bda
 	if [[ ${ROOT} != "" ]] && [[ ${ROOT} != "/" ]]; then
 		return 0
