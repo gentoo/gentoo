@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -35,8 +35,7 @@ src_compile() {
 
 src_install() {
 	newbin ${PN}.py ${PN}
-	insinto $(python_get_sitedir)
-	doins ${PN}_helper.py
+	python_domodule ${PN}_helper.py
 	insinto /usr/share/${PN}
 	doins ${PN}.grc
 	python_fix_shebang "${ED}"/usr/bin
