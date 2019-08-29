@@ -1,4 +1,5 @@
 DEFINED_PHASES=compile install postinst
+DEPEND=app-arch/unzip
 DESCRIPTION=Lets you easily embed LaTeX math in your own html pages, blogs, wikis, etc
 EAPI=5
 HOMEPAGE=http://www.forkosh.com/mathtex.html
@@ -9,4 +10,4 @@ RDEPEND=app-text/dvipng virtual/latex-base
 SLOT=0
 SRC_URI=mirror://gentoo/mathtex-1.04.zip
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56
-_md5_=281b388871719a289bde5719351fe907
+_md5_=8ce0f810325782c48905fcc7a93c7db4

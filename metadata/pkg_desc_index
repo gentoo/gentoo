@@ -1098,7 +1098,7 @@ app-editors/e3 2.8 2.8.2: Very tiny editor in ASM with emacs, pico, wordstar, an
 app-editors/editra 0.7.20-r2: Multi-platform text editor supporting over 50 programming languages
 app-editors/ee 1.5.2: An easy to use text editor. A subset of aee
 app-editors/elvis 2.2.0-r6 2.2.0-r7: A vi/ex clone
-app-editors/emacs 18.59-r12 23.4-r18 24.5-r7 25.3-r6 26.1-r3 26.2 26.3_rc1: The extensible, customizable, self-documenting real-time display editor
+app-editors/emacs 18.59-r12 23.4-r18 24.5-r7 25.3-r6 26.1-r3 26.2 26.3: The extensible, customizable, self-documenting real-time display editor
 app-editors/emacs-vcs 26.2.90 26.2.9999 27.0.50_pre20180831 27.0.9999: The extensible, customizable, self-documenting real-time display editor
 app-editors/emact 2.58.0: EmACT, a fork of Conroy's MicroEmacs
 app-editors/ersatz-emacs 20060515 20060515-r1: A very minimal imitation of the famous GNU Emacs editor
@@ -1223,7 +1223,7 @@ app-emacs/edit-list 0.3: Edit a single list
 app-emacs/edit-server 1.15: Service edit requests from a web browser for editing of textareas
 app-emacs/editorconfig-emacs 0.7.8-r1: EditorConfig plugin for emacs
 app-emacs/elib 1.0-r1: The Emacs Lisp Library
-app-emacs/elscreen 1.4.6-r1: Frame configuration management for GNU Emacs modelled after GNU Screen
+app-emacs/elscreen 1.4.6-r1 20180321: Frame configuration management for GNU Emacs modelled after GNU Screen
 app-emacs/emacs-common-gentoo 1.6-r1 1.6-r3: Common files needed by all GNU Emacs versions
 app-emacs/emacs-daemon 0.22: Gentoo support for Emacs running as a server in the background
 app-emacs/emacs-jabber 0.8.92: A Jabber client for Emacs
