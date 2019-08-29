@@ -215,9 +215,8 @@ python_install_all() {
 python_install() {
 	distutils-r1_python_install
 	# copy migration conf file (not coppied on install via setup.py script)
-	insopts -m 0644
-	insinto "$(python_get_sitedir)/neutron/db/migration/alembic_migrations/"
-	doins -r "neutron/db/migration/alembic_migrations/versions"
+	python_moduleinto neutron/db/migration/alembic_migrations
+	python_domodule "neutron/db/migration/alembic_migrations/versions"
 }
 
 pkg_postinst() {
