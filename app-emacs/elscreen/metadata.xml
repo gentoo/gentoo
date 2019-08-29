@@ -21,7 +21,7 @@
 </longdescription>
 <stabilize-allarches/>
 <use>
-  <flag name="wanderlust">Include support for <pkg>app-emacs/walderlust</pkg>
+  <flag name="wanderlust">Include support for <pkg>app-emacs/wanderlust</pkg>
   </flag>
 </use>
 </pkgmetadata>
