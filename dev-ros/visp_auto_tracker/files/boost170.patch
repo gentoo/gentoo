@@ -1,0 +1,13 @@
+Index: visp_auto_tracker/CMakeLists.txt
+===================================================================
+--- visp_auto_tracker.orig/CMakeLists.txt
++++ visp_auto_tracker/CMakeLists.txt
+@@ -36,7 +36,7 @@ find_package(catkin REQUIRED COMPONENTS
+ find_package(VISP)
+ 
+ find_package(Boost REQUIRED
+-  COMPONENTS filesystem system signals regex date_time program_options thread)
++  COMPONENTS filesystem system regex date_time program_options thread)
+ 
+ include_directories(
+   ${Boost_INCLUDE_DIRS}
