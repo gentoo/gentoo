@@ -96,10 +96,6 @@ app-text/ghostscript-gpl l10n_ja
 dev-java/openjdk-jre-bin:8 gentoo-vm
 dev-java/openjdk-jre-bin:11 gentoo-vm
 
-# Michał Górny <mgorny@gentoo.org> (2019-04-13)
-# net-libs/ftplib is slated for removal.
-app-cdr/xbiso ftp
-
 # Michał Górny <mgorny@gentoo.org> (2019-04-10)
 # media-sound/aacplusenc is slated for removal.
 media-video/h264enc aac
