@@ -4,6 +4,11 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
+# Kent Fredric <kentnl@gentoo.org> (2019-08-29)
+# Support for DBD-mysql to use mariadb is sketchy. Use DBD-MariaDB
+# instead if you can.
+dev-perl/DBD-mysql mariadb
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-08-16)
 # dev-libs/libical[glib] was not stable tested, bug #689434
 =dev-libs/libical-3.0.5 glib
