@@ -1,8 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-WANT_AUTOMAKE="1.10"
+
 inherit autotools eutils gnome2-utils
 
 DESCRIPTION="model-airplane flight simulation program"
