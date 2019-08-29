@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>bernardo@standard.ai</email>
+    <name>Bernardo Meurer</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Gentoo Proxy Maintainers Project</name>
+  </maintainer>
+  <longdescription lang="en">
+        Milksnake is an extension for setuptools that allows you to distribute
+        dynamic linked libraries in Python wheels in the most portable way
+        imaginable.
+
+        It gives you a hook to invoke your own build process and to then take
+        the resulting dynamic linked library.
+  </longdescription>
+  <upstream>
+    <remote-id type="github">getsentry/milksnake</remote-id>
+    <remote-id type="pypi">milksnake</remote-id>
+  </upstream>
+</pkgmetadata>
