@@ -1,8 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools eutils systemd
+
+inherit autotools eutils flag-o-matic systemd
 
 DESCRIPTION="server for atlantik games"
 HOMEPAGE="http://gtkatlantic.gradator.net/"
@@ -33,6 +34,7 @@ src_prepare() {
 }
 
 src_configure() {
+	append-cppflags -I"/usr/include/utf8cpp"
 	econf $(use_with systemd systemd-daemon)
 }
 
