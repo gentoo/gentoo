@@ -15,10 +15,9 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
 IUSE="bittorrent brotli bzip2 debug finger ftp gopher gpm guile idn ipv6
-	  javascript libressl lua +mouse nls nntp perl ruby samba ssl tre unicode X xml zlib"
+	javascript libressl lua +mouse nls nntp perl ruby samba ssl tre unicode X xml zlib"
 
-DEPEND="
-	${PYTHON_DEPS}
+RDEPEND="
 	brotli? ( app-arch/brotli )
 	bzip2? ( >=app-arch/bzip2-1.0.2 )
 	gpm? ( >=sys-libs/ncurses-5.2:0= >=sys-libs/gpm-1.20.0-r5 )
@@ -37,7 +36,8 @@ DEPEND="
 	X? ( x11-libs/libX11 x11-libs/libXt )
 	xml? ( >=dev-libs/expat-1.95.4 )
 	zlib? ( >=sys-libs/zlib-1.1.4 )"
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}
+	${PYTHON_DEPS}"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-parallel-make.patch
