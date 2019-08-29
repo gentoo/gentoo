@@ -82,7 +82,7 @@ src_install() {
 	if use examples; then
 		# examples/website is full of relative symlinks,
 		# deref them for copying, which dodoc doesn't do
-		cp -rL examples/website "${ED%/}"/usr/share/doc/${PF}/examples || die
+		cp -rL examples/website "${ED}"/usr/share/doc/${PF}/examples || die
 		docompress -x /usr/share/doc/${PF}/examples
 	fi
 }
