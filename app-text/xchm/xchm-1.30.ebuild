@@ -7,7 +7,7 @@ inherit wxwidgets xdg-utils
 
 DESCRIPTION="Utility for viewing Compiled HTML Help (CHM) files"
 HOMEPAGE="https://github.com/rzvncj/xCHM/"
-SRC_URI="${HOMEPAGE}releases/download/${PV}/${P}.tar.gz"
+SRC_URI="https://github.com/rzvncj/xCHM/releases/download/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

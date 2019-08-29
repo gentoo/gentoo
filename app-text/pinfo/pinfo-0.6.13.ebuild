@@ -6,7 +6,7 @@ inherit autotools flag-o-matic
 
 DESCRIPTION="Hypertext info and man viewer based on (n)curses"
 HOMEPAGE="https://github.com/baszoetekouw/pinfo"
-SRC_URI="${HOMEPAGE}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/baszoetekouw/pinfo/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
