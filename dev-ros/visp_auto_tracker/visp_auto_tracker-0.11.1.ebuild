@@ -1,10 +1,10 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 ROS_REPO_URI="https://github.com/lagadic/vision_visp"
 KEYWORDS="~amd64 ~arm"
-VER_PREFIX="jade-"
+VER_PREFIX="kinetic-"
 ROS_SUBDIR=${PN}
 
 inherit ros-catkin
@@ -28,5 +28,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 if [ "${PV#9999}" = "${PV}" ] ; then
-	S="${WORKDIR}/vision_visp-jade-${PV}/${ROS_SUBDIR}"
+	S="${WORKDIR}/vision_visp-kinetic-${PV}/${ROS_SUBDIR}"
 fi
+
+PATCHES=( "${FILESDIR}/boost170.patch" )
