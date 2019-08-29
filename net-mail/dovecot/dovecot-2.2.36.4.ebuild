@@ -5,12 +5,11 @@ EAPI=6
 
 # do not add a ssl USE flag.  ssl is mandatory
 SSL_DEPS_SKIP=1
-inherit autotools eapi7-ver ssl-cert systemd user
+inherit autotools eapi7-ver ssl-cert systemd user versionator
 
 MY_P="${P/_/.}"
-#MY_S="${PN}-ce-${PV}"
 major_minor="$(ver_cut 1-2)"
-sieve_version="0.5.6"
+sieve_version="0.4.24.2"
 if [[ ${PV} == *_rc* ]] ; then
 	rc_dir="rc/"
 else
@@ -18,30 +17,28 @@ else
 fi
 SRC_URI="https://dovecot.org/releases/${major_minor}/${rc_dir}${MY_P}.tar.gz
 	sieve? (
-	https://pigeonhole.dovecot.org/releases/${major_minor}/${rc_dir}${PN}-${major_minor}-pigeonhole-${sieve_version}.tar.gz
+	https://pigeonhole.dovecot.org/releases/${major_minor}/${PN}-${major_minor}-pigeonhole-${sieve_version}.tar.gz
 	)
 	managesieve? (
-	https://pigeonhole.dovecot.org/releases/${major_minor}/${rc_dir}${PN}-${major_minor}-pigeonhole-${sieve_version}.tar.gz
+	https://pigeonhole.dovecot.org/releases/${major_minor}/${PN}-${major_minor}-pigeonhole-${sieve_version}.tar.gz
 	) "
 DESCRIPTION="An IMAP and POP3 server written with security primarily in mind"
 HOMEPAGE="https://www.dovecot.org/"
 
 SLOT="0"
 LICENSE="LGPL-2.1 MIT"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86"
 
-IUSE_DOVECOT_AUTH="kerberos ldap lua mysql pam postgres sqlite vpopmail"
+IUSE_DOVECOT_AUTH="kerberos ldap mysql pam postgres sqlite vpopmail"
 IUSE_DOVECOT_COMPRESS="bzip2 lzma lz4 zlib"
-IUSE_DOVECOT_OTHER="argon2 caps doc ipv6 libressl lucene managesieve selinux sieve solr static-libs suid tcpd textcat"
+IUSE_DOVECOT_OTHER="caps doc ipv6 libressl lucene managesieve selinux sieve solr static-libs suid tcpd textcat"
 
 IUSE="${IUSE_DOVECOT_AUTH} ${IUSE_DOVECOT_STORAGE} ${IUSE_DOVECOT_COMPRESS} ${IUSE_DOVECOT_OTHER}"
 
-DEPEND="argon2? ( dev-libs/libsodium )
-	bzip2? ( app-arch/bzip2 )
+DEPEND="bzip2? ( app-arch/bzip2 )
 	caps? ( sys-libs/libcap )
 	kerberos? ( virtual/krb5 )
 	ldap? ( net-nds/openldap )
-	lua? ( dev-lang/lua:* )
 	lucene? ( >=dev-cpp/clucene-2.3 )
 	lzma? ( app-arch/xz-utils )
 	lz4? ( app-arch/lz4 )
@@ -53,7 +50,6 @@ DEPEND="argon2? ( dev-libs/libsodium )
 	sqlite? ( dev-db/sqlite:* )
 	!libressl? ( dev-libs/openssl:0 )
 	libressl? ( dev-libs/libressl )
-	suid? ( acct-group/mail )
 	tcpd? ( sys-apps/tcp-wrappers )
 	textcat? ( app-text/libexttextcat )
 	vpopmail? ( net-mail/vpopmail )
@@ -78,13 +74,16 @@ pkg_setup() {
 	enewuser dovecot 97 -1 /dev/null dovecot
 	# default login user
 	enewuser dovenull -1 -1 /dev/null
+	# add "mail" group for suid'ing. Better security isolation.
+	if use suid; then
+		enewgroup mail
+	fi
 }
 
 src_prepare() {
 	default
 	# bug 657108
 	elibtoolize
-	#eautoreconf
 }
 
 src_configure() {
@@ -96,20 +95,17 @@ src_configure() {
 
 	# turn valgrind tests off. Bug #340791
 	VALGRIND=no econf \
-		--with-rundir="${EPREFIX}/run/dovecot" \
 		--with-statedir="${EPREFIX}/var/lib/dovecot" \
+		--with-rundir="${EPREFIX}/run/dovecot" \
 		--with-moduledir="${EPREFIX}/usr/$(get_libdir)/dovecot" \
 		--without-stemmer \
 		--disable-rpath \
-		--without-libbsd \
 		--with-icu \
 		--with-ssl \
 		--with-systemdsystemunitdir="$(systemd_get_systemunitdir)" \
-		$( use_with argon2 sodium ) \
 		$( use_with bzip2 bzlib ) \
 		$( use_with caps libcap ) \
 		$( use_with kerberos gssapi ) \
-		$( use_with lua ) \
 		$( use_with ldap ) \
 		$( use_with lucene ) \
 		$( use_with lz4 ) \
@@ -133,7 +129,7 @@ src_configure() {
 		cd "../dovecot-${major_minor}-pigeonhole-${sieve_version}" || die "cd failed"
 		econf \
 			$( use_enable static-libs static ) \
-			--localstatedir="${EPREFIX%/}/var" \
+			--localstatedir="${EPREFIX}/var" \
 			--enable-shared \
 			--with-dovecot="${S}" \
 			$( use_with managesieve )
@@ -281,7 +277,7 @@ src_install () {
 pkg_postinst() {
 	# Let's not make a new certificate if we already have one
 	if ! [[ -e "${ROOT}"/etc/ssl/dovecot/server.pem && \
-		-e "${ROOT}"/etc/ssl/dovecot/server.key ]];	then
+	-e "${ROOT}"/etc/ssl/dovecot/server.key ]];	then
 		einfo "Creating SSL	certificate"
 		SSL_ORGANIZATION="${SSL_ORGANIZATION:-Dovecot IMAP Server}"
 		install_cert /etc/ssl/dovecot/server
