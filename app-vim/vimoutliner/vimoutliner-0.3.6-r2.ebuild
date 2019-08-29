@@ -9,7 +9,7 @@ inherit vim-plugin python-single-r1
 
 DESCRIPTION="vim plugin: easy and fast outlining"
 HOMEPAGE="https://github.com/vimoutliner/vimoutliner"
-SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.zip -> ${P}.zip"
+SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~x86"
 
