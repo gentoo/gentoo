@@ -2682,6 +2682,8 @@ dev-perl/DBD-MariaDB:mariadb - Use dev-db/mariadb-connector-c as the client libr
 dev-perl/DBD-MariaDB:mysql - Use dev-db/mysql-connector-c as the client library
 dev-perl/DBD-SQLite:system-sqlite - Use the system-wide dev-db/sqlite installation
 dev-perl/DBD-mysql:embedded - Support embedded server (libmysqld)
+dev-perl/DBD-mysql:mariadb - Use dev-db/mariadb-connector-c as the client library
+dev-perl/DBD-mysql:mysql - Use dev-db/mysql-connector-c as the client library
 dev-perl/DBD-mysql:ssl - Compile in support for SSL connections via libmysqlclient
 dev-perl/DBIx-Class:admin - Modules required for the DBIx::Class administrative library
 dev-perl/DBIx-Class:admin_script - Modules required for the CLI DBIx::Class interface dbicadmin
