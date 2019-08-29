@@ -242,8 +242,8 @@ python_install_all() {
 python_install() {
 	distutils-r1_python_install
 	# copy migration conf file (not coppied on install via setup.py script)
-	insinto "$(python_get_sitedir)/db/sqlalchemy/migrate_repo/"
-	doins "nova/db/sqlalchemy/migrate_repo/migrate.cfg"
+	python_moduleinto db/sqlalchemy/migrate_repo
+	python_domodule nova/db/sqlalchemy/migrate_repo/migrate.cfg
 }
 
 pkg_postinst() {
