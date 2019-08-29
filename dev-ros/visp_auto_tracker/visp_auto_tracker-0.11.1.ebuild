@@ -30,3 +30,5 @@ DEPEND="${RDEPEND}"
 if [ "${PV#9999}" = "${PV}" ] ; then
 	S="${WORKDIR}/vision_visp-kinetic-${PV}/${ROS_SUBDIR}"
 fi
+
+PATCHES=( "${FILESDIR}/boost170.patch" )
