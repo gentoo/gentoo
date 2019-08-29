@@ -12119,7 +12119,7 @@ gui-apps/slurp 1.2.0 9999: Select a region in a Wayland compositor and print it 
 gui-apps/swaybg 1.0 9999: A wallpaper utility for Wayland
 gui-apps/swayidle 1.2 1.3 1.5 9999: Idle management daemon for Wayland
 gui-apps/swaylock 1.3 1.4 9999: Screen locker for Wayland
-gui-apps/waybar 0.7.2 9999: Highly customizable Wayland bar for Sway and Wlroots based compositors.
+gui-apps/waybar 0.7.2-r1 9999: Highly customizable Wayland bar for Sway and Wlroots based compositors.
 gui-apps/wl-clipboard 1.0.0 9999: Wayland clipboard utilities
 gui-libs/amtk 5.0.0: Actions, Menus and Toolbars Kit for GTK+ applications
 gui-libs/libhandy 0.0.9: Library with GTK widgets for mobile phones
