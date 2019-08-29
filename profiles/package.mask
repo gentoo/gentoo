@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2019-08-29)
+# Added in 2012 and not touched since.  Fails multilib-strict.  Pending
+# version bump.  No reverse dependencies.
+# Removal in 30 days.  Bug #667064.
+net-misc/libss7
+
 # Stefan Strogin <steils@gentoo.org> (2019-08-29)
 # Obsolete. No reverse dependencies (games-rpg/eternal-lands no longer
 # depends on them).
