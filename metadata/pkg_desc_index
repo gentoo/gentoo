@@ -2980,17 +2980,17 @@ app-xemacs/zenirc 1.16 1.18: ZENIRC IRC Client
 dev-ada/asis 2016 2018 2019: To develop tools for Ada software
 dev-ada/aunit 2018 2019: Ada unit testing framework
 dev-ada/aws 2017 2018 2018-r1 2019: A complete Web development framework
-dev-ada/gnat_util 2017 2017-r1 2018 2018-r1 2019: Provides access to GNAT compiler internals for AdaCore utilities
+dev-ada/gnat_util 2017-r1 2018 2018-r1 2019: Provides access to GNAT compiler internals for AdaCore utilities
 dev-ada/gnatcoll 2017: GNAT Component Collection
 dev-ada/gnatcoll-bindings 2018-r1 2019: GNAT Component Collection
 dev-ada/gnatcoll-core 2018-r1 2019: GNAT Component Collection Core packages
 dev-ada/gnatcoll-db 2018-r1: GNAT Component Collection
-dev-ada/gnatmem 2018 2019: Monitors dynamic allocation and deallocation activity in a program
+dev-ada/gnatmem 2019: Monitors dynamic allocation and deallocation activity in a program
 dev-ada/gnatsymbolize 2018 2019: Translates addresses into filename, line number, and function names
 dev-ada/gprbuild 2017-r1 2019: Multi-Language Management
 dev-ada/gps 2017 2018-r1: The GNAT Programming Studio
 dev-ada/gps-bin 2016: The GNAT Programming Studio
-dev-ada/gtkada 2017 2018 2018-r1 2019: A complete Ada graphical toolkit
+dev-ada/gtkada 2017 2018-r1 2019: A complete Ada graphical toolkit
 dev-ada/langkit 2017 2018 2019: A Python framework to generate language parsers
 dev-ada/libadalang 2017-r1 2018 2018-r1 2019: high performance semantic engine for the Ada programming language
 dev-ada/libadalang-tools 2018 2019: Libadalang-based tools: gnatpp, gnatmetric and gnatstub
