@@ -167,8 +167,8 @@ src_install () {
 	# better:
 	if use suid;then
 		einfo "Changing perms to allow deliver to be suided"
-		fowners root:mail "${EPREFIX}/usr/libexec/dovecot/dovecot-lda"
-		fperms 4750 "${EPREFIX}/usr/libexec/dovecot/dovecot-lda"
+		fowners root:mail "/usr/libexec/dovecot/dovecot-lda"
+		fperms 4750 "/usr/libexec/dovecot/dovecot-lda"
 	fi
 
 	newinitd "${FILESDIR}"/dovecot.init-r6 dovecot
@@ -194,7 +194,7 @@ src_install () {
 	doins doc/example-config/*.{conf,ext}
 	insinto /etc/dovecot/conf.d
 	doins doc/example-config/conf.d/*.{conf,ext}
-	fperms 0600 "${EPREFIX}"/etc/dovecot/dovecot-{ldap,sql}.conf.ext
+	fperms 0600 /etc/dovecot/dovecot-{ldap,sql}.conf.ext
 	rm -f "${confd}/../README"
 
 	# .maildir is the Gentoo default
