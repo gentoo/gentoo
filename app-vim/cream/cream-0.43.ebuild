@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
@@ -14,10 +14,10 @@ DICT_ES="spa_3.0"
 DICT_DE="ger_2.0.1"
 
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz
-	l10n_de? ( ${HOMEPAGE}/cream-spell-dict-${DICT_DE}.zip )
-	l10n_en? ( ${HOMEPAGE}/cream-spell-dict-${DICT_EN}.zip )
-	l10n_es? ( ${HOMEPAGE}/cream-spell-dict-${DICT_ES}.zip )
-	l10n_fr? ( ${HOMEPAGE}/cream-spell-dict-${DICT_FR}.zip )"
+	l10n_de? ( http://cream.sourceforge.net/cream-spell-dict-${DICT_DE}.zip )
+	l10n_en? ( http://cream.sourceforge.net/cream-spell-dict-${DICT_EN}.zip )
+	l10n_es? ( http://cream.sourceforge.net/cream-spell-dict-${DICT_ES}.zip )
+	l10n_fr? ( http://cream.sourceforge.net/cream-spell-dict-${DICT_FR}.zip )"
 
 IUSE="l10n_de l10n_en l10n_fr l10n_es"
 LICENSE="GPL-2"
