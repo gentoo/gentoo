@@ -1,0 +1,13 @@
+BDEPEND=>=virtual/emacs-23
+DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
+DESCRIPTION=Popup window manager for Emacs
+EAPI=7
+HOMEPAGE=https://github.com/m2ym/popwin-el
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3+
+RDEPEND=>=virtual/emacs-23
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/m2ym/popwin-el/archive/v1.0.0.tar.gz -> popwin-1.0.0.tar.gz
+_eclasses_=elisp	f8026e46da659669c11e50c306d1aeb8	elisp-common	23f47b2e1de7abf387105eddd1318738
+_md5_=5c43cabeca2c46d5ddc270e090a292aa

@@ -1188,7 +1188,7 @@ app-emacs/boxquote 1.23 2.1: Quote text with a semi-box
 app-emacs/browse-kill-ring 1.3c 2.0.0: An improved interface to kill-ring
 app-emacs/bubblet 0.74-r1: A bubble-popping game
 app-emacs/buffer-extension 0.1: Some enhanced functions for buffer manipulate
-app-emacs/calfw 1.3: A calendar framework for Emacs
+app-emacs/calfw 1.3 1.6: A calendar framework for Emacs
 app-emacs/chess 2.0.4: A chess client and library for Emacs
 app-emacs/circe 1.3 2.7: A great IRC client for Emacs
 app-emacs/cldoc 1.16: Show Common Lisp operators and variables information in echo area
@@ -1304,7 +1304,7 @@ app-emacs/php-mode 1.19.1: GNU Emacs major mode for editing PHP code
 app-emacs/planner 3.42: Maintain a local Wiki using Emacs-friendly markup
 app-emacs/po-mode 0.19.3 0.19.4 0.19.8.1: Major mode for GNU gettext PO files
 app-emacs/popup 0.5.3: Visual popup interface library for Emacs
-app-emacs/popwin 0.6.2: Popup window manager for Emacs
+app-emacs/popwin 0.6.2 1.0.0: Popup window manager for Emacs
 app-emacs/pov-mode 3.3-r1: Major mode for Povray scene files
 app-emacs/proofgeneral 4.2: A generic interface for proof assistants
 app-emacs/protbuf 1.7-r1: Protect Emacs buffers from accidental killing
@@ -16401,7 +16401,7 @@ sci-electronics/freehdl 0.0.8: A free VHDL simulator
 sci-electronics/fritzing 0.9.2b-r2: Electronic Design Automation
 sci-electronics/gazebo 9.4.1 9.6.0 10.0.0 10.1.0: A 3D multiple robot simulator with dynamics
 sci-electronics/geda 1.9.2-r1: GPL Electronic Design Automation (gEDA):gaf core package
-sci-electronics/geda-suite 20110427 20171223: Metapackage for all components for a full-featured gEDA/gaf system
+sci-electronics/geda-suite 20171223: Metapackage for all components for a full-featured gEDA/gaf system
 sci-electronics/geda-xgsch2pcb 0.1.3-r3 0.1.3-r4: A graphical front-end for the gschem -> pcb workflow
 sci-electronics/gerbv 2.6.0 2.6.1: A RS-274X (Gerber) and NC drill (Excellon) file viewer
 sci-electronics/gnetman 0.0.1_pre20110124: A GNU Netlist Manipulation Library
@@ -16825,7 +16825,7 @@ sci-mathematics/msieve 1.51-r1 1.53-r1 9999: A C library implementing a suite of
 sci-mathematics/nauty 2.5.9 2.6.7: Computing automorphism groups of graphs and digraphs
 sci-mathematics/nestedsums 1.5.1: A GiNaC-based library for symbolic expansion of certain transcendental functions
 sci-mathematics/normaliz 2.12.2 3.1.1 3.1.3 3.3.0: Tool for computations in affine monoids and more
-sci-mathematics/num-utils 0.3 0.5-r1: A set of programs for dealing with numbers from the command line
+sci-mathematics/num-utils 0.5-r1: A set of programs for dealing with numbers from the command line
 sci-mathematics/nusmv 2.6.0: NuSMV: new symbolic model checker
 sci-mathematics/octave 4.2.2 4.4.0 4.4.1 5.1.0: High-level interactive language for numerical computations
 sci-mathematics/octave-epstk 2.4: Graphical output functions for Matlab and Octave
