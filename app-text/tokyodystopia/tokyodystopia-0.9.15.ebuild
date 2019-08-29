@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="A fulltext search engine for Tokyo Cabinet"
 HOMEPAGE="https://fallabs.com/tokyodystopia/"
-SRC_URI="${HOMEPAGE}${P}.tar.gz"
+SRC_URI="https://fallabs.com/tokyodystopia/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
