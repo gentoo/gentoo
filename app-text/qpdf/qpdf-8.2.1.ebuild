@@ -45,13 +45,13 @@ src_install() {
 	default
 
 	if ! use perl ; then
-		rm "${ED%/}"/usr/bin/fix-qdf || die
-		rm "${ED%/}"/usr/share/man/man1/fix-qdf.1 || die
+		rm "${ED}"/usr/bin/fix-qdf || die
+		rm "${ED}"/usr/share/man/man1/fix-qdf.1 || die
 	fi
 
 	if use examples ; then
 		dobin examples/build/.libs/*
 	fi
 
-	find "${ED}" -name '*.la' -exec rm -f {} +
+	find "${D}" -name '*.la' -delete || die
 }
