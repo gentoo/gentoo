@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,7 @@ DESCRIPTION="Bash Screenshot Information Tool"
 HOMEPAGE="https://github.com/KittyKatt/screenFetch"
 
 if [[ ${PV} == *9999 ]] ; then
-	EGIT_REPO_URI="${HOMEPAGE}.git"
+	EGIT_REPO_URI="https://github.com/KittyKatt/screenFetch.git"
 	inherit git-r3
 else
 	KEYWORDS="amd64 ~arm x86 ~x64-macos"
