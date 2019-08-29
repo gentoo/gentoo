@@ -4915,7 +4915,7 @@ dev-libs/libee 0.4.1: An Event Expression Library inspired by CEE
 dev-libs/libelf 0.8.13-r2: A ELF object file access library
 dev-libs/liberasurecode 1.6.1: Erasure Code API library written in C with pluggable Erasure Code backends.
 dev-libs/libestr 0.1.10 0.1.11: Library for some string essentials
-dev-libs/libev 4.23 4.24 4.25: A high-performance event loop/event model with lots of feature
+dev-libs/libev 4.23 4.24 4.25 4.27: A high-performance event loop/event model with lots of feature
 dev-libs/libevdev 1.7.0 1.8.0 9999: Handler library for evdev events
 dev-libs/libevent 2.1.8 2.1.11 2.1.9999 9999: Library to execute a function when a specific event occurs on a file descriptor
 dev-libs/libevocosm 3.3.1-r1: A C++ framework for evolutionary computing
@@ -15827,7 +15827,7 @@ net-proxy/privoxy 3.0.26 3.0.28: A web proxy with advanced filtering capabilitie
 net-proxy/ratproxy 1.58: A semi-automated, largely passive web application security audit tool
 net-proxy/redsocks 0.5 9999: Transparent redirector of any TCP connection to proxy
 net-proxy/rejik 3.2.10: A squid redirector used for blocking unwanted content
-net-proxy/shadowsocks-libev 3.2.5 3.3.0: A lightweight secured SOCKS5 proxy for embedded devices and low end boxes
+net-proxy/shadowsocks-libev 3.2.5 3.3.0 3.3.1: A lightweight secured SOCKS5 proxy for embedded devices and low end boxes
 net-proxy/squid 4.8: A full-featured web proxy cache
 net-proxy/squidguard 1.5_beta-r2: Combined filter, redirector and access controller plugin for Squid
 net-proxy/squirm 1.26-r1: A redirector for Squid
