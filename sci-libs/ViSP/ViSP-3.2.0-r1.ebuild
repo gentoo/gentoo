@@ -46,7 +46,7 @@ RDEPEND="${RDEPEND}
 REQUIRED_USE="motif? ( coin )"
 
 S="${WORKDIR}/visp-${PV}"
-PATCHES=( "${FILESDIR}/${PN}-3.0.1-opencv.patch" )
+PATCHES=( "${FILESDIR}/${PN}-3.2.0-ocv.patch" )
 
 src_configure() {
 	local mycmakeargs=(
