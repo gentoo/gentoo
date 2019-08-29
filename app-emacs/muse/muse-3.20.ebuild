@@ -1,12 +1,12 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=7
 
 inherit elisp
 
 DESCRIPTION="An authoring and publishing environment for Emacs"
-HOMEPAGE="http://mwolson.org/projects/EmacsMuse.html"
+HOMEPAGE="https://www.gnu.org/software/emacs-muse/"
 SRC_URI="http://download.gna.org/muse-el/${P}.tar.gz"
 
 LICENSE="GPL-3+ FDL-1.2+ GPL-2 MIT"
@@ -24,8 +24,8 @@ src_compile() {
 }
 
 src_install() {
-	elisp-install ${PN} lisp/*.el lisp/*.elc || die
-	elisp-site-file-install "${FILESDIR}/${SITEFILE}" || die
+	elisp-install ${PN} lisp/*.el lisp/*.elc
+	elisp-site-file-install "${FILESDIR}/${SITEFILE}"
 	doinfo texi/muse.info
 	dodoc AUTHORS NEWS README ChangeLog*
 	insinto /usr/share/doc/${PF}
