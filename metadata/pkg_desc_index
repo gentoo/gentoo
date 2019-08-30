@@ -9709,7 +9709,7 @@ dev-ros/xacro 1.13.2 1.13.3 9999: XML macro language
 dev-ros/xmlrpcpp 1.14.2 1.14.3 9999: C++ implementation of the XML-RPC protocol
 dev-ruby/GeoRuby 2.5.2: Ruby data holder for OGC Simple Features
 dev-ruby/abstract 1.0.0-r3: Library which enable you to define abstract method in Ruby
-dev-ruby/acme-client 2.0.2 2.0.3: A Ruby client for the letsencrypt's ACME protocol.
+dev-ruby/acme-client 2.0.2 2.0.3 2.0.4: A Ruby client for the letsencrypt's ACME protocol.
 dev-ruby/actioncable 5.1.7 5.2.3 6.0.0: Integrated WebSockets for Rails
 dev-ruby/actionmailer 4.2.11.1 5.1.7 5.2.3 6.0.0: Framework for designing email-service layers
 dev-ruby/actionpack 4.2.11.1 5.1.7 5.2.3 6.0.0: Eases web-request routing, handling, and response
@@ -9783,7 +9783,7 @@ dev-ruby/bundler-audit 0.6.0 0.6.1: Provides patch-level verification for Bundle
 dev-ruby/bunny 2.9.2 2.12.1 2.13.0 2.14.0 2.14.1 2.14.2: Another synchronous Ruby AMQP client
 dev-ruby/c21e 1.1.8 1.1.9 1.2.1: Run cross-platform executables
 dev-ruby/calendar_date_select 2.1.2: A popular and flexible JavaScript DatePicker for RubyOnRails
-dev-ruby/capistrano 2.15.5-r2 3.11.0: A distributed application deployment system
+dev-ruby/capistrano 2.15.5-r2 3.11.0 3.11.1: A distributed application deployment system
 dev-ruby/capistrano-stats 1.1.1: Official metrics to help the development direction of Capistrano
 dev-ruby/capybara 2.18.0 3.18.0 3.23.0 3.24.0 3.25.0 3.26.0 3.27.0 3.28.0: Capybara aims to simplify the process of integration testing Rack applications
 dev-ruby/certificate_authority 0.1.6-r2: Managing the core functions outlined in RFC-3280 for PKI
