@@ -1,17 +1,19 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit toolchain-funcs user
 
 DESCRIPTION="A daemon to serve the gopher protocol"
-HOMEPAGE="http://git.r-36.net/geomyidae/"
-SRC_URI="http://git.r-36.net/geomyidae/snapshot/${P}.tar.bz2"
+HOMEPAGE="http://r-36.net/scm/geomyidae/"
+SRC_URI="ftp://bitreich.org/releases/geomyidae/${PN}-v${PV}.tgz"
 
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
+
+S="${WORKDIR}/${PN}-v${PV}"
 
 pkg_setup(){
 	enewgroup gopherd
@@ -25,11 +27,8 @@ src_prepare() {
 		-e 's/@${CC}/${CC}/g' \
 		-e '/CFLAGS/s/-O. //' \
 		Makefile || die 'sed on Makefile failed'
-	# fix for correctly start/stop daemon
 	# fix path for pid file
 	sed -i \
-		-e 's:start-stop-daemon -Sb:start-stop-daemon -Sbm:' \
-		-e 's:start-stop-daemon -S -p:start-stop-daemon -K -p:' \
 		-e 's:/var/run:/run:g' \
 		rc.d/Gentoo.init.d || die
 
