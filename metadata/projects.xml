@@ -60,7 +60,7 @@
   </project>
   <project>
     <email>arm@gentoo.org</email>
-    <name>Gentoo Linux ARM Development</name>
+    <name>ARM Development</name>
     <url>https://wiki.gentoo.org/wiki/Project:ARM</url>
     <description>The ARM Development Project is devoted to keeping Gentoo in good shape on the ARM architecture.</description>
     <member>
@@ -121,7 +121,7 @@
   </project>
   <project>
     <email>arm64@gentoo.org</email>
-    <name>Gentoo Linux ARM64 development</name>
+    <name>ARM64 development</name>
     <url>https://wiki.gentoo.org/wiki/Project:ARM64</url>
     <description>The ARM64 project is devoted to getting and keeping Gentoo in good shape on the ARM AArch64 architecture.</description>
     <member>
@@ -183,7 +183,7 @@
   </project>
   <project>
     <email>alpha@gentoo.org</email>
-    <name>Gentoo Linux Alpha Development</name>
+    <name>Alpha Development</name>
     <url>https://wiki.gentoo.org/wiki/Project:Alpha</url>
     <description>The Gentoo/Alpha Arch Team is devoted to keeping Gentoo in good shape on the Alpha architecture.</description>
     <member>
@@ -316,7 +316,7 @@
   </project>
   <project>
     <email>base-system@gentoo.org</email>
-    <name>Gentoo Base System</name>
+    <name>Base System</name>
     <url>https://wiki.gentoo.org/wiki/Project:Base</url>
     <description>The Base System Project provides an umbrella project for keeping the system tools, libraries, compilers and layout consistent for all the various architectures under Gentoo Linux.</description>
     <subproject ref="amd64@gentoo.org"/>
@@ -468,7 +468,7 @@
   </project>
   <project>
     <email>catalyst@gentoo.org</email>
-    <name>Gentoo Catalyst Project</name>
+    <name>Catalyst Project</name>
     <url>https://wiki.gentoo.org/wiki/Project:Catalyst</url>
     <description>The Gentoo Catalyst Project develops and supports the Catalyst release building tool. Catalyst has been designed to be easy to use, customize, and maintain. It is also used in other Gentoo projects, such as GNAP.</description>
     <member>
@@ -625,7 +625,7 @@
   </project>
   <project>
     <email>comrel@gentoo.org</email>
-    <name>Gentoo Community Relations</name>
+    <name>Community Relations</name>
     <url>https://wiki.gentoo.org/wiki/Project:ComRel</url>
     <description>Community Relations handles many personnel-related tasks, solving conflicts and also ensuring that the Gentoo Code of Conduct and proper and professional behavior is followed across Gentoo's borders.</description>
     <subproject ref="undertakers@gentoo.org"/>
@@ -1435,7 +1435,7 @@
   </project>
   <project>
     <email>hppa@gentoo.org</email>
-    <name>Gentoo Linux HPPA Development</name>
+    <name>HPPA Development</name>
     <url>https://wiki.gentoo.org/wiki/Project:HPPA</url>
     <description>The Gentoo HPPA project is designed to bring the Gentoo GNU/Linux operating system to the HP Precision Architecture platforms. We aim to provide a usable computing environment for your various HPPA related endeavors.</description>
     <member>
@@ -1570,7 +1570,7 @@
   </project>
   <project>
     <email>ia64@gentoo.org</email>
-    <name>Gentoo Linux IA-64 Development</name>
+    <name>IA-64 Development</name>
     <url>https://wiki.gentoo.org/wiki/Project:IA-64</url>
     <description>The IA-64 Development Project is devoted to keeping Gentoo in good shape on the IA-64 architecture.</description>
     <member>
@@ -1993,7 +1993,7 @@
   </project>
   <project>
     <email>livecd@gentoo.org</email>
-    <name>Gentoo LiveCD Project</name>
+    <name>LiveCD Project</name>
     <url>https://wiki.gentoo.org/wiki/Project:LiveCD</url>
     <description>Maintains packages used in the creation of LiveCDs.</description>
     <member>
@@ -2031,7 +2031,7 @@
   </project>
   <project>
     <email>mips@gentoo.org</email>
-    <name>Gentoo Linux MIPS Development</name>
+    <name>MIPS Development</name>
     <url>https://wiki.gentoo.org/wiki/Project:MIPS</url>
     <description>Gentoo/MIPS is a port of the Gentoo GNU/Linux and the Gentoo Portage package management system to mips-based platforms.</description>
     <subproject ref="gentoo-yeeloong@gentoo.org"/>
@@ -2621,7 +2621,7 @@
   </project>
   <project>
     <email>ppc@gentoo.org</email>
-    <name>Gentoo Linux PowerPC Development</name>
+    <name>PowerPC Development</name>
     <url>https://wiki.gentoo.org/wiki/Project:PowerPC</url>
     <description>The PowerPC Development Project is devoted to keeping Gentoo in good shape on both 32-bit and 64-bit PowerPC architecture.</description>
     <member>
@@ -3115,7 +3115,7 @@
   </project>
   <project>
     <email>releng@gentoo.org</email>
-    <name>Gentoo Release Engineering</name>
+    <name>Release Engineering</name>
     <url>https://wiki.gentoo.org/wiki/Project:RelEng</url>
     <description>Release Engineering ("RelEng") is the official Gentoo project focused on coordinating and improving the creation of official media releases of Gentoo Linux and the associated tools used by the installation process.</description>
     <subproject ref="catalyst@gentoo.org"/>
@@ -3251,7 +3251,7 @@
   </project>
   <project>
     <email>s390@gentoo.org</email>
-    <name>Gentoo Linux s390 Development</name>
+    <name>s390 Development</name>
     <url>https://wiki.gentoo.org/wiki/Project:S390</url>
     <description>The s390 Development Project is devoted to keeping Gentoo in good shape on the s390 architecture.</description>
     <member>
@@ -3292,7 +3292,7 @@
   </project>
   <project>
     <email>sparc@gentoo.org</email>
-    <name>Gentoo Linux SPARC Development</name>
+    <name>SPARC Development</name>
     <url>https://wiki.gentoo.org/wiki/Project:SPARC</url>
     <description>Gentoo/SPARC is a Gentoo project designed to bring the Gentoo GNU/Linux operating system to the SPARC and UltraSPARC platforms. Gentoo/SPARC aims to provide a usable server and desktop environment for your various SPARC related endeavors.</description>
     <member>
@@ -3672,7 +3672,7 @@
   </project>
   <project>
     <email>toolchain@gentoo.org</email>
-    <name>Gentoo Toolchain Project</name>
+    <name>Toolchain Project</name>
     <url>https://wiki.gentoo.org/wiki/Project:Toolchain</url>
     <description>Manages gcc/binutils/glibc and other toolchain-related packages</description>
     <subproject ref="crossdev@gentoo.org"/>
@@ -3988,7 +3988,7 @@
   </project>
   <project>
     <email>x11@gentoo.org</email>
-    <name>Gentoo X11 Project</name>
+    <name>X11 Project</name>
     <url>https://wiki.gentoo.org/wiki/Project:X11</url>
     <description>The X11 project manages the X implementations and related packages in Portage.</description>
     <member>
