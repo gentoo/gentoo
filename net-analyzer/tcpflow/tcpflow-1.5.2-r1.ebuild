@@ -2,7 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit autotools flag-o-matic
+PYTHON_COMPAT=( python2_7 )
+inherit autotools flag-o-matic python-single-r1
 
 DESCRIPTION="A tool for monitoring, capturing and storing TCP connections flows"
 HOMEPAGE="https://github.com/simsong/tcpflow"
@@ -18,10 +19,12 @@ LICENSE="GPL-3"
 KEYWORDS="~amd64 ~arm ~ppc ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
 SLOT="0"
 IUSE="cairo test"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
+	${PYTHON_DEPS}
 	dev-db/sqlite
-	dev-lang/python:2.7=
 	dev-libs/boost:=
 	dev-libs/openssl:=
 	net-libs/http-parser:=
