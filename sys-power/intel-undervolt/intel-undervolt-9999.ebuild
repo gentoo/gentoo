@@ -41,21 +41,21 @@ src_configure() {
 }
 
 src_compile() {
-
 	tc-export CC
 
 	local myemakeargs=(
 		CC="${CC}"
 		CFLAGS="${CFLAGS}"
 	)
+
 	emake "${myemakeargs[@]}"
 }
 
 pkg_postinst() {
-for v in ${REPLACING_VERSIONS}; do
-	if [[ ${v} == 1.6 ]] ; then
-		elog "openrc service has been renamed to intel-undervolt-loop"
-		elog "please update your startup configuration"
-	fi
-done
+	for v in ${REPLACING_VERSIONS}; do
+		if [[ ${v} == 1.6 ]] ; then
+			elog "openrc service has been renamed to intel-undervolt-loop"
+			elog "please update your startup configuration"
+		fi
+	done
 }
