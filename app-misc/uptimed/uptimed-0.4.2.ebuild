@@ -1,9 +1,9 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit autotools ltprune user systemd
+inherit autotools systemd
 
 DESCRIPTION="System uptime record daemon that keeps track of your highest uptimes"
 HOMEPAGE="https://github.com/rpodgorny/uptimed/"
@@ -11,18 +11,18 @@ SRC_URI="https://github.com/rpodgorny/uptimed/archive/v${PV}.tar.gz -> ${P}.tar.
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 ~arm hppa ~mips ppc ppc64 sparc x86 ~x86-fbsd"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
 IUSE="static-libs"
 
-pkg_setup() {
-	enewgroup uptimed
-	enewuser uptimed -1 -1 -1 uptimed
-}
+RDEPEND="
+	acct-group/uptimed
+	acct-user/uptimed
+"
+DEPEND="${RDEPEND}"
+BDEPEND="${RDEPEND}"
 
 src_prepare() {
 	default
-	# respect DESTDIR
-	sed -i -e 's|-d \(/var/spool.*\)$|-d $(DESTDIR)\1|' Makefile.am || die
 	# fix configure.ac for >=automake-1.13 (bug #467582)
 	sed 's@AM_CONFIG_HEADER@AC_CONFIG_HEADERS@' -i configure.ac || die
 	eautoreconf
@@ -35,7 +35,7 @@ src_configure() {
 src_install() {
 	local DOCS=( ChangeLog README.md TODO AUTHORS CREDITS INSTALL.cgi sample-cgi/* )
 	default
-	prune_libtool_files --all
+	find "${ED}" -type f -name '*.la' -delete || die
 
 	local spooldir="/var/spool/${PN}"
 	keepdir ${spooldir}
