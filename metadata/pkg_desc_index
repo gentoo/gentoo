@@ -3319,7 +3319,6 @@ dev-games/quake4-sdk 1.4.2 1.4.2-r1: Quake4 SDK
 dev-games/simgear 2018.3.1 2018.3.2 9999: Development library for simulation games
 dev-games/t4k-common 0.1.1: A library of code shared between tuxmath and tuxtype
 dev-games/tiled 1.2.4: A general purpose tile map editor
-dev-games/vamos 0.7.1 0.8.2: An automotive simulation framework
 dev-games/wfmath 1.0.2: Worldforge math library
 dev-go/blackfriday 1.2_p20150720 1.4 9999: a markdown processor implemented in Go
 dev-go/cli 0_pre20160306: A small package for building command line apps in Go
@@ -8381,7 +8380,6 @@ dev-python/pep8 1.5.6 1.5.7 1.7.0 1.7.1: Python style guide checker
 dev-python/peppercorn 0.5 0.6: Convert a token stream into a web form data structure
 dev-python/pew 1.1.1: tool to manage multiple virtualenvs written in pure python
 dev-python/pexpect 4.2.1 4.6.0: Python module for spawning child apps and responding to expected patterns
-dev-python/pgmagick 0.6.7: Yet another boost.python based wrapper for GraphicsMagick
 dev-python/pgpdump 1.5: PGP packet parser library
 dev-python/pgspecial 1.11.5: Python implementation of postgres meta commands
 dev-python/phonenumbers 8.3.1: Python port of Google's libphonenumber
@@ -18157,7 +18155,7 @@ sys-power/bbswitch 0.8-r2 9999: Toggle discrete NVIDIA Optimus graphics card
 sys-power/cpupower 3.18 4.9.0-r1 4.13.0: Shows and sets processor power related values
 sys-power/hibernate-script 2.0-r6: Hibernate script supporting multiple suspend methods
 sys-power/iasl 20180810 20190215 20190703: Intel ACPI Source Language (ASL) compiler
-sys-power/intel-undervolt 1.6 9999: Intel CPU undervolting and throttling configuration tool
+sys-power/intel-undervolt 1.6 1.7 9999: Intel CPU undervolting and throttling configuration tool
 sys-power/ncpufreqd 2.4: Daemon controlling CPU speed and temperature
 sys-power/nut 2.7.4-r1 2.7.4-r2 2.7.4-r3: Network-UPS Tools
 sys-power/nvclock 0.8_p20110102-r2: NVIDIA Overclocking Utility
