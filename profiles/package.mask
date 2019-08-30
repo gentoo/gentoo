@@ -30,6 +30,14 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2019-08-30)
+# All current releases are incompatible with the current version
+# of mail-mta/opensmtpd.  Not touched by maintainer since 2016.  Some
+# USE flag combinations fail to build with other errors.  Needs porting
+# to new Python eclasses.
+# Removal in 30 days.  Bug #693128.
+mail-filter/opensmtpd-extras
+
+# Michał Górny <mgorny@gentoo.org> (2019-08-30)
 # Unmaintained.  EAPI=0.  HOMEPAGE and SRC_URI are gone.  Last release
 # in 2006.  Removal in 30 days.  Bug #680412.
 mail-filter/ask
