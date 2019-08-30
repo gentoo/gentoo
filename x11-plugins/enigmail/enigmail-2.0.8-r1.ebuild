@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -26,14 +26,12 @@ else
 	S="${WORKDIR}/${PN}"
 fi
 
-RDEPEND="|| (
-		( >=app-crypt/gnupg-2.0
-			|| (
-				app-crypt/pinentry[gtk(-)]
-				app-crypt/pinentry[qt5(-)]
-			)
+RDEPEND="
+	( >=app-crypt/gnupg-2.0
+		|| (
+			app-crypt/pinentry[gtk(-)]
+			app-crypt/pinentry[qt5(-)]
 		)
-		=app-crypt/gnupg-1.4*
 	)
 	!<mail-client/thunderbird-52.5.0
 	!<www-client/seamonkey-2.49.5.0_p0
