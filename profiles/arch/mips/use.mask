@@ -216,7 +216,6 @@ eds
 acpi
 afs
 apm
-directfb
 dvdr
 ibm
 ggi

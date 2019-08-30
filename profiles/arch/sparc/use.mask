@@ -168,7 +168,6 @@ redis
 
 # USE-flags from differents origins
 brltty
-directfb
 djbfft
 dvb
 java
