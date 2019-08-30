@@ -3,7 +3,7 @@
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2019-08-29)
 # PGO works on ppc64le
->=www-client/firefox-48 -pgo
+>=www-client/firefox-68 -pgo
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2019-08-14)
 # works on ppc64le
