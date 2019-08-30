@@ -161,6 +161,7 @@ to journald via the console at the notice verbosity.
 pkg_setup() {
 	python-single-r1_pkg_setup
 	# The acct-user/mythtv package creates/manages the user 'mythtv'
+	acct-user_src_install
 }
 
 src_prepare() {
