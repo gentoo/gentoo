@@ -1,7 +1,7 @@
 Title: Deprecation and removal of PHP 5.6
 Author: Brian Evans <grknight@gentoo.org>
 Posted: 2019-08-30
-Revision: 1
+Revision: 2
 News-Item-Format: 2.0
 Display-If-Installed: dev-lang/php:5.6
 Display-If-Installed: dev-php/haru
@@ -62,7 +62,7 @@ slots which are included as reminders to upgrade.
 Some packages do have replacements:
 dev-php/pecl-memcache can be replaced by dev-php/pecl-memcached with
   some small code modifications
-dev-php/pecl-mongo has been superceded by dev-php/mongodb
+dev-php/pecl-mongo has been superceded by dev-php/pecl-mongodb
 dev-php/pecl-libevent should be replaced by dev-php/pecl-event
   with code changes
 dev-php/PEAR-MDB2_Driver_mysql should be easily replaced by
