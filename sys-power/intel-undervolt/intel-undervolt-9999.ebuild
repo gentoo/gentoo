@@ -18,45 +18,44 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE=""
+IUSE="elogind"
 
-DEPEND=""
-RDEPEND=""
-BDEPEND=""
+DEPEND="elogind? ( sys-auth/elogind )"
+
+RDEPEND="${DEPEND}"
+
+BDEPEND="virtual/pkgconfig"
 
 CONFIG_CHECK="~INTEL_RAPL ~X86_MSR"
 
-src_prepare() {
-	# respect CC, CFLAGS and avoid calling pkg-config
-	sed -i \
-		-e 's/^CC=/CC?=/' \
-		-e 's/^CFLAGS=/CFLAGS?=/' \
-		-e '/^UNITDIR=/d' \
-		Makefile || die
+src_configure() {
+	local myconf=(
+		# it's a non-standard build system
+		$(usex elogind --enable-elogind '')
+		--enable-openrc
+		--enable-systemd
+		--unitdir="$(systemd_get_systemunitdir)"
+	)
 
-	default
+	econf "${myconf[@]}"
 }
 
 src_compile() {
 
 	tc-export CC
 
-	myemakeargs=(
-		BINDIR="${EPREFIX}"/usr/bin
-		SYSCONFDIR="${EPREFIX}"/etc
-		UNITDIR="$(systemd_get_systemunitdir)"
+	local myemakeargs=(
+		CC="${CC}"
+		CFLAGS="${CFLAGS}"
 	)
 	emake "${myemakeargs[@]}"
 }
 
-src_install() {
-	myemakeargs+=(
-		DESTDIR="${D}"
-	)
-	emake "${myemakeargs[@]}" install
-
-	newinitd "${FILESDIR}"/initd "${PN}"
-	newconfd "${FILESDIR}"/confd "${PN}"
-
-	einstalldocs
+pkg_postinst() {
+for v in ${REPLACING_VERSIONS}; do
+	if [[ ${v} == 1.6 ]] ; then
+		elog "openrc service has been renamed to intel-undervolt-loop"
+		elog "please update your startup configuration"
+	fi
+done
 }
