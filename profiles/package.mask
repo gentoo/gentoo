@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Ulrich Müller <ulm@gentoo.org> (2019-08-30)
+# Last visible upstream activity in 2013. Doesn't work with Emacs 24.3
+# or newer. Byte-compilation of newest upstream version 1.3.1 fails.
+# Masked for removal in 30 days, bug #693118.
+app-emacs/identica-mode
+
 # David Seifert <soap@gentoo.org> (2019-08-29)
 # Dead upstream, last commit over 10 years ago, no revdeps, EAPI=0,
 # Removal in 30 days.
