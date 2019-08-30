@@ -1,5 +1,5 @@
-DEFINED_PHASES=compile install unpack
-DEPEND==dev-lang/python-2*
+DEFINED_PHASES=compile install setup unpack
+DEPEND=|| ( >=dev-lang/python-2.7.5-r2:2.7 )
 DESCRIPTION=Kernel and mesa firmware for nouveau (video accel and pgraph)
 EAPI=5
 HOMEPAGE=https://nouveau.freedesktop.org/wiki/VideoAcceleration/
@@ -8,5 +8,5 @@ LICENSE=MIT NVIDIA-r2
 RESTRICT=bindist mirror
 SLOT=0
 SRC_URI=http://us.download.nvidia.com/XFree86/Linux-x86/325.15/NVIDIA-Linux-x86-325.15.run https://raw.github.com/imirkin/re-vp2/845a51ab607df85fc0ed01f0b5b6d57850e37662/extract_firmware.py -> nvidia_extract_firmware-325.15.py
-_eclasses_=unpacker	3cd8bad0d31e525cd26be1bfa4e61631
-_md5_=92df02691f7a26f65f8b05680698975c
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	1d91b03d42ab6308b5f4f6b598ed110e	preserve-libs	ef207dc62baddfddfd39a164d9797648	python-any-r1	b5f01473006ccc2cd78bc3dab20fced4	python-utils-r1	08e17157a6807add7db1f8d01e7e391f	toolchain-funcs	a3a237ef6c0c58546bf23b2c382f9e56	unpacker	3cd8bad0d31e525cd26be1bfa4e61631	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=4687bca05f5ccc132c83097722697871
