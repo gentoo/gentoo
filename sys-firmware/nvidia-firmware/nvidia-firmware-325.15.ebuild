@@ -3,7 +3,8 @@
 
 EAPI=5
 
-inherit unpacker
+PYTHON_COMPAT=( python2_7 )
+inherit python-any-r1 unpacker
 
 NV_URI="http://us.download.nvidia.com/XFree86/"
 X86_NV_PACKAGE="NVIDIA-Linux-x86-${PV}"
@@ -19,7 +20,7 @@ LICENSE="MIT NVIDIA-r2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-DEPEND="=dev-lang/python-2*"
+DEPEND="${PYTHON_DEPS}"
 RDEPEND=""
 
 RESTRICT="bindist mirror"
@@ -33,7 +34,7 @@ src_unpack() {
 }
 
 src_compile() {
-	python2 "${DISTDIR}"/nvidia_extract_firmware-${PV}.py || die "Extracting firmwares failed..."
+	"${PYTHON}" "${DISTDIR}"/nvidia_extract_firmware-${PV}.py || die "Extracting firmwares failed..."
 }
 
 src_install() {
