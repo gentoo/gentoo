@@ -212,7 +212,7 @@ mozconfig_init() {
 		if use clang ; then
 			# Nothing to do
 			:;
-		elif tc-ld-is-gold ; then
+		elif tc-ld-is-gold || use lto; then
 			append-ldflags -Wl,--no-keep-memory
 		else
 			append-ldflags -Wl,--no-keep-memory -Wl,--reduce-memory-overheads
@@ -234,7 +234,7 @@ mozconfig_init() {
 		if use clang ; then
 			# Nothing to do
 			:;
-		elif tc-ld-is-gold ; then
+		elif tc-ld-is-gold || use lto; then
 			append-ldflags -Wl,--no-keep-memory
 		else
 			append-ldflags -Wl,--no-keep-memory -Wl,--reduce-memory-overheads
