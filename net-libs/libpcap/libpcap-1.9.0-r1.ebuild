@@ -33,10 +33,10 @@ DEPEND="
 S=${WORKDIR}/${PN}-${P/_}
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.6.1-prefix-solaris.patch
 	"${FILESDIR}"/${PN}-1.8.1-darwin.patch
 	"${FILESDIR}"/${PN}-1.8.1-usbmon.patch
 	"${FILESDIR}"/${PN}-1.9.0-pcap-config-includedir.patch
+	"${FILESDIR}"/${PN}-1.9.0-os.patch
 )
 
 src_prepare() {
