@@ -13923,7 +13923,7 @@ media-sound/aumix 2.9.1: Aumix volume/mixer control program
 media-sound/awesfx 0.5.1e: AWE32 Sound Driver Utility Programs
 media-sound/aylet 0.5: Aylet plays music files in the .ay format
 media-sound/baudline 1.08-r1: A time-frequency browser designed for visualization of spectral domains
-media-sound/beets 1.4.8-r1: Media library management system for obsessive-compulsive music geeks
+media-sound/beets 1.4.8-r1 1.4.9: Media library management system for obsessive-compulsive music geeks
 media-sound/bempc 0.11_p20160207: Qt5 MPD client with experimental UI
 media-sound/bitmeter 1.2-r2: Diagnosis tool for JACK audio software
 media-sound/bladeenc 0.94.2-r1: An mp3 encoder
@@ -14813,7 +14813,7 @@ net-dns/nsd 4.1.27 4.2.1-r1 4.2.2: An authoritative only, high performance, open
 net-dns/odsclient 1.03-r1: Client for the Open Domain Server's dynamic dns
 net-dns/opendnssec 1.3.18-r1 1.4.8.2 1.4.12-r1 2.0.1-r1 2.0.3-r1: An open-source turn-key solution for DNSSEC
 net-dns/openresolv 3.9.0: A framework for managing DNS information
-net-dns/pdns 4.1.13 4.2.0_rc3: The PowerDNS Daemon
+net-dns/pdns 4.1.13 4.2.0: The PowerDNS Daemon
 net-dns/pdns-ldap-backend 0.2: Fork of the official but unmaintained LDAP backend
 net-dns/pdns-recursor 4.1.14 4.2.0: The PowerDNS Recursor
 net-dns/pdnsd 1.2.9a-r1 1.2.9a-r2: Proxy DNS server with permanent caching
