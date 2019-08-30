@@ -44,6 +44,7 @@ done
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
+REQUIRED_USE=${PYTHON_REQUIRED_USE}
 
 RDEPEND="
 	!app-office/openoffice
