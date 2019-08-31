@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201908-27">
+  <title>Nautilus: Security bypass</title>
+  <synopsis>A vulnerability in Nautilus may allow attackers to escape the
+    sandbox.
+  </synopsis>
+  <product type="ebuild">nautilus</product>
+  <announced>2019-08-31</announced>
+  <revised count="1">2019-08-31</revised>
+  <bug>692784</bug>
+  <access>local</access>
+  <affected>
+    <package name="gnome-base/nautilus" auto="yes" arch="*">
+      <unaffected range="ge">3.30.5-r1</unaffected>
+      <vulnerable range="lt">3.30.5-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Default file manager for the GNOME desktop</p>
+  </background>
+  <description>
+    <p>A vulnerability was discovered in Nautilus which allows an attacker to
+      escape the sandbox.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A local attacker could possibly bypass sandbox protection.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Nautilus users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=gnome-base/nautilus-3.30.5-r1"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-11461">CVE-2019-11461</uri>
+  </references>
+  <metadata tag="requester" timestamp="2019-08-26T21:48:06Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2019-08-31T15:00:33Z">b-man</metadata>
+</glsa>
