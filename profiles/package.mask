@@ -29,6 +29,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2019-08-31)
+# Unmaintained.  EAPI 0 ebuilds with multiple QA issues.  Last release
+# added in 2003.  Upstream removed all traces of it.
+# Removal in 30 days.  Bug #693186.
+www-apache/mod_pcgi2
+www-apps/pcgi
+
 # Michał Górny <mgorny@gentoo.org> (2019-08-30)
 # All current releases are incompatible with the current version
 # of mail-mta/opensmtpd.  Not touched by maintainer since 2016.  Some
