@@ -61,9 +61,10 @@ media-gfx/alembic arnold maya
 media-plugins/grilo-plugins chromaprint
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-02-16)
-# Unstable dependencies.
-media-gfx/digikam vkontakte
+# media-libs/opencv[contrib,contrib_dnn], net-libs/libmediawiki,
+# net-libs/libkvkontakte all not stable anywhere.
 kde-apps/kipi-plugins mediawiki vkontakte
+media-gfx/digikam dnn vkontakte
 
 # Brian Evans <grknight@gentoo.org> (2018-12-06)
 # Mask USE flag since argon2 dependency is not stable on most arches
