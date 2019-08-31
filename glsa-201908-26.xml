@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="201908-26">
+  <title>libofx: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in libofx, the worst of
+    which could result in the arbitrary execution of code.
+  </synopsis>
+  <product type="ebuild">libofx</product>
+  <announced>2019-08-31</announced>
+  <revised count="1">2019-08-31</revised>
+  <bug>631304</bug>
+  <bug>636062</bug>
+  <bug>662910</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-libs/libofx" auto="yes" arch="*">
+      <unaffected range="ge">0.9.14</unaffected>
+      <vulnerable range="lt">0.9.14</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>A library to support the Open Financial eXchange XML format</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in libofx. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to process a specially crafted
+      file using an application linked against libofx, possibly resulting in
+      execution of arbitrary code with the privileges of the process or a
+      Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All libofx users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-libs/libofx-0.9.14"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-14731">CVE-2017-14731</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-2816">CVE-2017-2816</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-2920">CVE-2017-2920</uri>
+  </references>
+  <metadata tag="requester" timestamp="2019-08-18T02:20:40Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2019-08-31T15:00:19Z">b-man</metadata>
+</glsa>
