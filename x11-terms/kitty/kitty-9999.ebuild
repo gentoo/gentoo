@@ -27,6 +27,7 @@ COMMON_DEPS="
 	>=media-libs/harfbuzz-1.5.0:=
 	sys-apps/dbus
 	sys-libs/zlib
+	media-libs/libcanberra
 	media-libs/libpng:0=
 	media-libs/freetype:2
 	media-libs/fontconfig
