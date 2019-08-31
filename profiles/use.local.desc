@@ -12,7 +12,6 @@ app-accessibility/brltty:pcm - support for sound card digital audio
 app-accessibility/brltty:speech - speech support
 app-accessibility/eflite:16k_voice - Use a higher-quality voice.
 app-accessibility/emacspeak:espeak - Adds support for the espeak tts engine
-app-accessibility/festival-it:mbrola - Adds support for mbrola voices
 app-accessibility/freetts:jsapi - build Java Speech API (JSAPI)
 app-accessibility/freetts:mbrola - Adds support for mbrola voices
 app-accessibility/orca:braille - Enable braille support
@@ -625,14 +624,6 @@ app-emulation/qemu:xattr - Add support for getting and setting POSIX extended at
 app-emulation/qemu:xen - Enables support for Xen backends
 app-emulation/qemu:xfs - Support xfsctl() notification and syncing for XFS backed virtual disks.
 app-emulation/qt-virt-manager:smartcard - Enable smartcard remoting using app-emulation/libcacard
-app-emulation/rkt:actool - Install the actool for ACI manipulation
-app-emulation/rkt:rkt_stage1_coreos - Download and use a prebuilt stage1.aci from CoreOS
-app-emulation/rkt:rkt_stage1_fly - Build stage1-fly.aci
-app-emulation/rkt:rkt_stage1_host - Assemble stage1.aci from host binaries
-app-emulation/rkt:rkt_stage1_kvm - This flag has been replaced by the rkt_stage1_kvm_* flags
-app-emulation/rkt:rkt_stage1_kvm_lkvm - Build stage1-kvm-lkvm.aci
-app-emulation/rkt:rkt_stage1_kvm_qemu - Build stage1-kvm-qemu.aci
-app-emulation/rkt:rkt_stage1_src - Build the stage1.aci from source
 app-emulation/runc:ambient - Enable support for ambient capabilities set (Requires Linux kernel 4.3 or later).
 app-emulation/runc:apparmor - Enable AppArmor support.
 app-emulation/runc:kmem - Enable Kernel Memory Accounting.
@@ -4730,7 +4721,6 @@ media-radio/ax25-tools:X - Enable some X based configuration tools.
 media-radio/fldigi:hamlib - Enables support by the Hamlib amateur radio rig control library to get/set frequency and mode of the ham radio in use
 media-radio/tucnak:hamlib - Enables support by the Hamlib amateur radio rig control library to get/set frequency and mode of the ham radio
 media-radio/unixcw:ncurses - Enables building the curses based morse code tutor program 'cwcp'.
-media-radio/xastir:festival - Enable text to speech synthesizer
 media-radio/xastir:gdal - Support for some further map formats
 media-radio/xastir:geotiff - Install geotiff support. Allows using USGS DRG topo maps or other types of geotiff mapes/images
 media-sound/abcde:aiff - Enable support for Audio Interchange File Format (AIFF) output encoding
