@@ -5,6 +5,10 @@
 		<email>onigino@protonmail.com</email>
 		<name>Gino McCarty</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>jano.vesely@gmail.com</email>
+		<name>Jan Vesely</name>
+	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
