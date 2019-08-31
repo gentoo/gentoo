@@ -476,11 +476,6 @@ app-emulation/rkt
 #     https://www.postgresql.org/developer/beta/
 dev-db/postgresql:12
 
-# Jonas Stein <jstein@gentoo.org> (2019-05-22)
-# Masked for removal after 2019-06-23. (bug #686260)
-# Wrong license, ships non-GPL image, maintainer needed.
-x11-plugins/gkrellflynn
-
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2019-05-11)
 # Perl 5.24 will be removed soon. Please upgrade.
 <dev-lang/perl-5.26.2
