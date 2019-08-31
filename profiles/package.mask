@@ -238,12 +238,6 @@ sci-mathematics/spass
 # Removal in 30 days.  Bug #691840.
 sys-apps/lomoco
 
-# Michał Górny <mgorny@gentoo.org> (2019-08-14)
-# Replaced by sys-freebsd/freebsd-ubin, therefore not installable
-# anymore.  All revdeps support the replacement.
-# Removal in 14 days.  Bug #688502.
-sys-process/fuser-bsd
-
 # Aaron Bauman <bman@gentoo.org> (2019-08-14)
 # open sec bug #622428, unmaintained
 # list includes rdeps. Removal in 30 days.
