@@ -6,7 +6,7 @@
 		<name>Tony Vroon</name>
 	</maintainer>
 	<use>
-		<flag name="amr">Inlcude AMR codec in the build</flag>
+		<flag name="amr">Include AMR codec in the build</flag>
 		<flag name="v4l2">Include Video4Linux v2 support in the build</flag>
 		<flag name="epoll">Use /dev/epoll ioqueue on Linux (experimental)</flag>
 		<flag name="g711">Include G.711 codecs in the build</flag>

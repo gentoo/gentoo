@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit autotools flag-o-matic
 
@@ -14,23 +14,23 @@ LICENSE="GPL-2"
 SLOT="0"
 CODEC_FLAGS="g711 g722 g7221 gsm ilbc speex l16"
 VIDEO_FLAGS="sdl ffmpeg v4l2 openh264 libyuv"
-SOUND_FLAGS="alsa oss portaudio"
+SOUND_FLAGS="alsa portaudio"
 IUSE="amr debug doc epoll examples ipv6 libressl opus resample silk ssl static-libs webrtc ${CODEC_FLAGS} ${VIDEO_FLAGS} ${SOUND_FLAGS}"
 
 PATCHES=(
-	"${FILESDIR}"/${P}-ssl-flipflop.patch
-	"${FILESDIR}"/${P}-libressl.patch
 )
 
 RDEPEND="alsa? ( media-libs/alsa-lib )
-	oss? ( media-libs/portaudio[oss] )
 	portaudio? ( media-libs/portaudio )
 
 	amr? ( media-libs/opencore-amr )
 	gsm? ( media-sound/gsm )
 	ilbc? ( dev-libs/ilbc-rfc3951 )
 	opus? ( media-libs/opus )
-	speex? ( media-libs/speexdsp )
+	speex? (
+		media-libs/speexdsp
+		media-libs/speex
+	 )
 
 	ffmpeg? ( virtual/ffmpeg:= )
 	sdl? ( media-libs/libsdl )
@@ -42,7 +42,7 @@ RDEPEND="alsa? ( media-libs/alsa-lib )
 		libressl? ( dev-libs/libressl:0= )
 	)
 
-	net-libs/libsrtp:0"
+	net-libs/libsrtp:="
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	!!media-plugins/mediastreamer-bcg729"
@@ -85,14 +85,13 @@ src_configure() {
 		$(use_enable resample libsamplerate) \
 		$(use_enable resample resample-dll) \
 		$(use_enable alsa sound) \
-		$(use_enable oss) \
 		$(use_with portaudio external-pa) \
 		$(use_enable portaudio ext-sound) \
 		$(use_enable amr opencore-amr) \
 		$(use_enable silk) \
 		$(use_enable opus) \
 		$(use_enable ssl) \
-		$(use_enable webrtc libwebrtc) \
+		$(usex webrtc '' --disable-libwebrtc) \
 		"${myconf[@]}"
 }
 
