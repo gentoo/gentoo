@@ -557,7 +557,6 @@ app-accessibility/festival-freebsoft-utils
 app-accessibility/festival-hts
 app-accessibility/festival-fi
 app-accessibility/festival-it
-app-accessibility/festival-ru
 
 # Michał Górny <mgorny@gentoo.org> (2019-04-18)
 # All current versions of SystemRescueCD contain vulnerable packages.
