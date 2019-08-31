@@ -141,6 +141,12 @@ src_install() {
 	# No INSTALL_OPTS used in install-commandmode, thankfully.
 	emake DESTDIR="${D}" install-commandmode
 
+	# The build system installs these directories, but portage assumes
+	# that the build system doesn't know what it's doing so we have to
+	# keepdir them, too. I guess you'll have to manually re-check the
+	# upstream build system forever to see if this is still necessary.
+	keepdir /var/lib/nagios{,/archives,/rw,/spool,/spool/checkresults}
+
 	if use web; then
 		# There is no way to install the CGIs unstripped from the
 		# top-level makefile, so descend into cgi/ here. The empty
