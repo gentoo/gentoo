@@ -9722,7 +9722,7 @@ dev-ruby/activerecord 4.2.11.1 5.1.7 5.2.3 6.0.0: Implements the ActiveRecord pa
 dev-ruby/activestorage 5.2.3 6.0.0: Attach cloud and local files in Rails applications
 dev-ruby/activesupport 4.2.11.1 5.1.7 5.2.3 6.0.0: Utility Classes and Extension to the Standard Library
 dev-ruby/acts_as_list 0.9.17 0.9.18 0.9.19: Capabilities for sorting and reordering a number of objects in a list
-dev-ruby/addressable 2.5.2 2.6.0: A replacement for the URI implementation that is part of Ruby's standard library
+dev-ruby/addressable 2.5.2 2.6.0 2.7.0: A replacement for the URI implementation that is part of Ruby's standard library
 dev-ruby/ae 1.8.2: Assertive Expressive is an assertions library designed for reuse
 dev-ruby/afm 0.2.2: A very simple library to read Adobe Font Metrics files
 dev-ruby/airbrussh 1.3.2 1.3.3: A replacement log formatter for SSHKit
@@ -15411,7 +15411,7 @@ net-misc/felix 2.5.1 3.1.0 3.1.3: Calico's per-host agent, responsible for progr
 net-misc/fmirror 0.8.4-r2: FTP mirror utility
 net-misc/freerdp 2.0.0_rc2-r1 2.0.0_rc4 9999: Free implementation of the Remote Desktop Protocol
 net-misc/gcap 0.1.1-r1: Command line tool for downloading Youtube closed captions
-net-misc/geoipupdate 2.3.1 3.1.0 3.1.1 4.0.3-r1: performs automatic updates of GeoIP2 and GeoIP Legacy binary databases
+net-misc/geoipupdate 2.3.1 3.1.0 3.1.1 4.0.3-r1 4.0.4: performs automatic updates of GeoIP2 and GeoIP Legacy binary databases
 net-misc/geomyidae 0.32.2 0.34: A daemon to serve the gopher protocol
 net-misc/gerbera 1.2.0-r1 1.3.1 1.3.2 9999: UPnP Media Server (Based on MediaTomb)
 net-misc/getdate 1.2-r1: Network Date/Time Query and Set Local Date/Time Utility
@@ -15483,7 +15483,7 @@ net-misc/lksctp-tools 1.0.17 1.0.18-r1: Tools for Linux Kernel Stream Control Tr
 net-misc/lldpd 1.0.3 1.0.4: Implementation of IEEE 802.1ab (LLDP)
 net-misc/mcproxy 1.1.1-r1: A multicast proxy for IGMP/MLD
 net-misc/megatools 1.9.98 1.10.2 1.10.2-r1: Command line tools and C library for accessing Mega cloud storage
-net-misc/memcached 1.5.14 1.5.16: High-performance, distributed memory object caching system
+net-misc/memcached 1.5.14 1.5.16 1.5.17: High-performance, distributed memory object caching system
 net-misc/mico 2.3.13-r13 2.3.13-r14 9999: A freely available and fully compliant implementation of the CORBA standard
 net-misc/midentd 2.3.1-r2: ident daemon with masquerading and fake replies support
 net-misc/mikutter 3.5.4-r1 3.8.6 9999: Simple, powerful and moeful twitter client
