@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -22,19 +22,31 @@ RDEPEND="${DEPEND}
 	|| ( net-analyzer/nagios-plugins net-analyzer/monitoring-plugins )
 	selinux? ( sec-policy/selinux-nagios )"
 
+PATCHES=( "${FILESDIR}/nrpe-3.2.1-eliminate-systemd-pid.patch" )
+
 pkg_setup() {
 	enewgroup nagios
-	enewuser nagios -1 /bin/bash /var/nagios/home nagios
+	enewuser nagios -1 -1 -1 nagios
 }
 
 src_configure() {
+	# The configure script tries to detect what OS, distribution, and
+	# init system you're running and changes the build/install process
+	# depending on what it comes up with. We specify fixed values
+	# because we don't want it guessing, for example, whether or not
+	# to install the tmpfiles.d entry based on whether or not systemd
+	# is currently running (OpenRC uses them too).
 	econf \
 		--libexecdir=/usr/$(get_libdir)/nagios/plugins \
-		--localstatedir=/var/nagios \
+		--localstatedir=/var/lib/nagios \
 		--sysconfdir=/etc/nagios \
 		--with-nrpe-user=nagios \
 		--with-nrpe-group=nagios \
 		--with-piddir=/run \
+		--with-opsys=unknown \
+		--with-dist-type=unknown \
+		--with-init-type=unknown \
+		--with-inetd-type=unknown \
 		$(use_enable command-args) \
 		$(use_enable ssl)
 }

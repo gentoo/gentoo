@@ -70,11 +70,9 @@ RDEPEND="${DEPEND}
 
 S="${WORKDIR}/${MY_P}"
 
-PATCHES=( "${FILESDIR}/${P}-no-zombie-processes.patch" )
-
 pkg_setup() {
 	enewgroup nagios
-	enewuser nagios -1 /bin/bash /var/nagios/home nagios
+	enewuser nagios -1 -1 -1 nagios
 }
 
 src_configure() {
@@ -98,7 +96,7 @@ src_configure() {
 	econf ${myconf} \
 		--prefix=/usr \
 		--bindir=/usr/sbin \
-		--localstatedir=/var/nagios \
+		--localstatedir=/var/lib/nagios \
 		--sysconfdir=/etc/nagios \
 		--libexecdir=/usr/$(get_libdir)/nagios/plugins \
 		--with-cgibindir=/usr/$(get_libdir)/nagios/cgi-bin \
@@ -142,6 +140,12 @@ src_install() {
 
 	# No INSTALL_OPTS used in install-commandmode, thankfully.
 	emake DESTDIR="${D}" install-commandmode
+
+	# The build system installs these directories, but portage assumes
+	# that the build system doesn't know what it's doing so we have to
+	# keepdir them, too. I guess you'll have to manually re-check the
+	# upstream build system forever to see if this is still necessary.
+	keepdir /var/lib/nagios{,/archives,/rw,/spool,/spool/checkresults}
 
 	if use web; then
 		# There is no way to install the CGIs unstripped from the
@@ -212,4 +216,17 @@ pkg_postinst() {
 	elog "filesystem. You can fix this by adding nagios into"
 	elog "the group wheel, but this is not recomended."
 	elog
+
+	if [ -n "${REPLACING_VERSIONS}" ]; then
+		ewarn "The local state directory for nagios has changed in v4.4.5,"
+		ewarn "from ${EROOT}var/nagios to ${EROOT}var/lib/nagios. If you"
+		ewarn "wish to migrate your state to the new location, first stop"
+		ewarn "nagios and then run"
+		ewarn ""
+		ewarn "  diff --recursive --brief ${EROOT}var/nagios ${EROOT}var/lib/nagios"
+		ewarn ""
+		ewarn "to identify any files that should be moved to the new"
+		ewarn "location. They can simply be moved with \"mv\" before"
+		ewarn "restarting nagios."
+	fi
 }
