@@ -9697,10 +9697,12 @@ dev-ruby/GeoRuby 2.5.2: Ruby data holder for OGC Simple Features
 dev-ruby/abstract 1.0.0-r3: Library which enable you to define abstract method in Ruby
 dev-ruby/acme-client 2.0.2 2.0.3 2.0.4: A Ruby client for the letsencrypt's ACME protocol.
 dev-ruby/actioncable 5.1.7 5.2.3 6.0.0: Integrated WebSockets for Rails
+dev-ruby/actionmailbox 6.0.0: Framework for designing email-service layers
 dev-ruby/actionmailer 4.2.11.1 5.1.7 5.2.3 6.0.0: Framework for designing email-service layers
 dev-ruby/actionpack 4.2.11.1 5.1.7 5.2.3 6.0.0: Eases web-request routing, handling, and response
 dev-ruby/actionpack-action_caching 1.2.0: Action caching for Action Pack (removed from core in Rails 4.0)
 dev-ruby/actionpack-xml_parser 1.0.2 2.0.1: XML parameters parser for Action Pack (removed from core in Rails 4.0)
+dev-ruby/actiontext 6.0.0: Edit and display rich text in Rails applications
 dev-ruby/actionview 4.2.11.1 5.1.7 5.2.3 6.0.0: Simple, battle-tested conventions and helpers for building web pages
 dev-ruby/activejob 4.2.11.1 5.1.7 5.2.3 6.0.0: Job framework with pluggable queues
 dev-ruby/activeldap 4.0.6 5.2.3 5.2.4: ActiveLDAP provides an activerecord inspired object oriented interface to LDAP
@@ -10107,7 +10109,7 @@ dev-ruby/rack-protection 1.5.5 2.0.5 2.0.7: This gem protects against typical we
 dev-ruby/rack-ssl 1.4.1: Force SSL/TLS in your app
 dev-ruby/rack-test 0.6.3 1.0.0 1.1.0: Rack::Test is a small, simple testing API for Rack apps
 dev-ruby/radius 0.7.5: Powerful tag-based template system
-dev-ruby/rails 4.2.11.1 5.1.7 5.2.3: ruby on rails is a web-application and persistance framework
+dev-ruby/rails 4.2.11.1 5.1.7 5.2.3 6.0.0: ruby on rails is a web-application and persistance framework
 dev-ruby/rails-deprecated_sanitizer 1.0.3-r2: Deprecated sanitizer API extracted from Action View
 dev-ruby/rails-dom-testing 1.0.8-r1 2.0.3: Compare doms and assert certain elements exists in doms using Nokogiri
 dev-ruby/rails-html-sanitizer 1.0.4 1.2.0: Sanitize HTML fragments in Rails applications
