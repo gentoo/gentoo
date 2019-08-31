@@ -401,11 +401,6 @@ dev-lang/php:7.4
 # Bug #635792
 dev-perl/libvorbis-perl
 
-# Kent Fredric <kentnl@gentoo.org> (2019-07-10)
-# Dead upstream, no remaining revdeps.
-# Masked for removal after 2019-08-09, bug #631300
-dev-perl/File-Slurp-Unicode
-
 # Robin H. Johnson <robbat2@gentoo.org> (2019-07-08)
 # Needs LOTS of testing, broke boot on my laptop in early attempts, maybe needs
 # matching genkernel work?
