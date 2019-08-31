@@ -2637,7 +2637,7 @@ app-text/zathura 0.4.3 9999: A highly customizable and functional document viewe
 app-text/zathura-cb 0.1.8 9999: Comic book plug-in for zathura with 7zip, rar, tar and zip support
 app-text/zathura-djvu 0.2.8 9999: DjVu plug-in for zathura
 app-text/zathura-meta 0: Meta package for app-text/zathura plugins
-app-text/zathura-pdf-mupdf 0.3.4 9999: PDF plug-in for zathura
+app-text/zathura-pdf-mupdf 0.3.4 0.3.5 9999: PDF plug-in for zathura
 app-text/zathura-pdf-poppler 0.2.9 9999: PDF plug-in for zathura
 app-text/zathura-ps 0.2.6 9999: PostScript plug-in for zathura
 app-vim/ackvim 1.0.9-r1: vim plugin: run ack from vim
