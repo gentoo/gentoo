@@ -365,13 +365,6 @@ net-p2p/multibit
 # Depends on >=virtual/{jdk,jre}-11 which is masked
 =www-servers/tomcat-9.0.22
 
-# Michał Górny <mgorny@gentoo.org> (30 Jul 2019)
-# Obsolete virtual that was created back when dev-python/dnspython
-# needed separate slots for py2 & py3.  The versions needing it are long
-# gone.  Replace all its uses with dev-python/dnspython.
-# Removal in 30 days.
-virtual/python-dnspython
-
 # Mart Raudsepp <leio@gentoo.org> (2019-07-28)
 # GNOME 3.33 development release packages
 >=dev-libs/vala-common-0.45
