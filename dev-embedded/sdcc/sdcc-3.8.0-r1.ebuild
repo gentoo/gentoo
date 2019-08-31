@@ -129,5 +129,5 @@ src_install() {
 	# a bunch of archives (*.a) are built & installed by gputils
 	# for PIC processors, but they do not work with standard `ar`
 	# & `scanelf` utils and they're not for the host.
-	dostrip "${D%/}"/usr/bin
+	dostrip /usr/bin
 }
