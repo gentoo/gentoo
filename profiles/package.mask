@@ -554,7 +554,6 @@ sys-fs/pytagsfs
 # festival and speech-tools update is WIP now, so postponing removal.
 app-accessibility/festival
 app-accessibility/festival-freebsoft-utils
-app-accessibility/festival-hts
 
 # Michał Górny <mgorny@gentoo.org> (2019-04-18)
 # All current versions of SystemRescueCD contain vulnerable packages.
