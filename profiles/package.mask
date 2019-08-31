@@ -353,14 +353,6 @@ sci-physics/meep
 # Masked for removal in 30 days, Bugs #641864, #647536, #688244
 x11-libs/guile-gtk
 
-# Michał Górny <mgorny@gentoo.org> (2019-08-01)
-# Discontinued upstream in July 2017.  Has irritating bugs, and is hard
-# to build from source (we have binary package only).  Upstream
-# recommends net-misc/electrum as a replacement.
-# See: https://multibit.org/blog/2017/07/26/multibit-shutdown.html
-# Removal in 30 days.  Bug #639530.
-net-p2p/multibit
-
 # Miroslav Šulc <fordfrog@gentoo.org> (2019-07-30)
 # Depends on >=virtual/{jdk,jre}-11 which is masked
 =www-servers/tomcat-9.0.22
