@@ -41,7 +41,10 @@ src_prepare() {
 }
 
 src_configure() {
-	use static && append-ldflags -static
+	if use static; then
+		append-flags -pthread
+		append-ldflags -static
+	fi
 
 	program_prefix=$(usex userland_GNU '' g)
 	local myeconfargs=(
