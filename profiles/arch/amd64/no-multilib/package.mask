@@ -21,7 +21,6 @@ mail-client/novell-groupwise-client
 # Mask packages that rely on amd64 multilib
 >=app-i18n/atokx3-3.0.0
 app-accessibility/mbrola
-app-accessibility/perlbox-voice
 app-arch/stuffit
 app-benchmarks/cpuburn
 app-editors/emacs:18
