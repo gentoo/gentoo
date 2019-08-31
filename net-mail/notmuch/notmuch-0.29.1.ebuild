@@ -131,7 +131,14 @@ src_prepare() {
 		append-cxxflags -g
 	fi
 
-	[[ ${CHOST} == *-solaris* ]] && append-ldflags -lnsl -lsocket
+	if [[ ${CHOST} == *-solaris* ]] ; then
+		append-ldflags -lnsl -lsocket   # non-autoconf configure
+		# disable gpgme test using too old gpg-key
+		sed -i \
+			-e '/GNUPGHOME=/d' \
+			-e '/SESSION_KEY =/c|| false ;' \
+			configure || die
+	fi
 }
 
 src_configure() {
