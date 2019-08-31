@@ -96,7 +96,7 @@ src_configure() {
 	econf ${myconf} \
 		--prefix=/usr \
 		--bindir=/usr/sbin \
-		--localstatedir=/var/nagios \
+		--localstatedir=/var/lib/nagios \
 		--sysconfdir=/etc/nagios \
 		--libexecdir=/usr/$(get_libdir)/nagios/plugins \
 		--with-cgibindir=/usr/$(get_libdir)/nagios/cgi-bin \
@@ -210,4 +210,17 @@ pkg_postinst() {
 	elog "filesystem. You can fix this by adding nagios into"
 	elog "the group wheel, but this is not recomended."
 	elog
+
+	if [ -n "${REPLACING_VERSIONS}" ]; then
+		ewarn "The local state directory for nagios has changed in v4.4.5,"
+		ewarn "from ${EROOT}var/nagios to ${EROOT}var/lib/nagios. If you"
+		ewarn "wish to migrate your state to the new location, first stop"
+		ewarn "nagios and then run"
+		ewarn ""
+		ewarn "  diff --recursive --brief ${EROOT}var/nagios ${EROOT}var/lib/nagios"
+		ewarn ""
+		ewarn "to identify any files that should be moved to the new"
+		ewarn "location. They can simply be moved with \"mv\" before"
+		ewarn "restarting nagios."
+	fi
 }
