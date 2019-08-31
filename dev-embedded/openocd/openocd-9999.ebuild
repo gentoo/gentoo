@@ -136,7 +136,7 @@ src_configure() {
 
 src_install() {
 	default
-	dostrip "${ED}"/usr/bin
+	dostrip /usr/bin
 	udev_dorules "${D}"/usr/share/${PN}/contrib/*.rules
 }
 
