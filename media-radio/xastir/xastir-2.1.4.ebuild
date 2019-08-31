@@ -14,7 +14,7 @@ SRC_URI="https://github.com/Xastir/Xastir/archive/Release-${PV}.tar.gz
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="festival geotiff +graphicsmagick"
+IUSE="geotiff +graphicsmagick"
 
 DEPEND=">=x11-libs/motif-2.3:0
 	x11-libs/libXt
@@ -29,8 +29,7 @@ DEPEND=">=x11-libs/motif-2.3:0
 	graphicsmagick? ( media-gfx/graphicsmagick:=[-q32] )
 	geotiff? ( sci-libs/proj
 		sci-libs/libgeotiff:=
-		media-libs/tiff:0 )
-	festival? ( app-accessibility/festival )"
+		media-libs/tiff:0 )"
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}"/${MY_P}
@@ -54,12 +53,12 @@ src_configure() {
 		--with-shapelib \
 		--with-dbfawk \
 		--without-ax25 \
+		--without-festival \
 		--without-gpsman \
 		$(use_with !graphicsmagick imagemagick) \
 		$(use_with graphicsmagick) \
 		$(use_with geotiff libproj) \
-		$(use_with geotiff) \
-		$(use_with festival)
+		$(use_with geotiff)
 }
 
 src_compile() {

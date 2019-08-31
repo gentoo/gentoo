@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="festival gdal geotiff +graphicsmagick"
+IUSE="gdal geotiff +graphicsmagick"
 
 DEPEND=">=x11-libs/motif-2.3:0
 	x11-libs/libXt
@@ -27,8 +27,7 @@ DEPEND=">=x11-libs/motif-2.3:0
 	geotiff? ( sci-libs/proj
 		sci-libs/libgeotiff
 		media-libs/tiff:0 )
-	gdal? ( sci-libs/gdal )
-	festival? ( app-accessibility/festival )"
+	gdal? ( sci-libs/gdal )"
 RDEPEND="${DEPEND}"
 
 src_prepare() {
@@ -58,13 +57,13 @@ src_configure() {
 		--with-shapelib \
 		--with-dbfawk \
 		--without-ax25 \
+		--without-festival \
 		--without-gpsman \
 		$(use_with !graphicsmagick imagemagick) \
 		$(use_with graphicsmagick) \
 		$(use_with geotiff libproj) \
 		$(use_with geotiff) \
-		$(use_with gdal) \
-		$(use_with festival)
+		$(use_with gdal)
 }
 
 src_compile() {
