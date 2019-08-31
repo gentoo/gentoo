@@ -3,6 +3,10 @@
 
 # This is a list of USE flags that should not be used on ia64.
 
+# Mattéo Rossillol‑‑Laruelle <beatussum@protonmail.com> (2019‑08‑31)
+# Dependency not keyworded (dev-libs/libindicate).
+ayatana
+
 # Michał Górny <mgorny@gentoo.org> (2018-07-16)
 # Python 3.7 support requires fresh versions of packages which are stuck
 # at keywordreqs.

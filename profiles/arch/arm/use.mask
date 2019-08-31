@@ -16,10 +16,6 @@ python_single_target_python3_7
 # No ACPI support on arm. Bug #657332
 acpi
 
-# Patrick Lauer <patrick@gentoo.org> (2015-04-28)
-# Dependencies not keyworded
-ayatana
-
 # Andrey Grozin <grozin@gentoo.org> (2014-05-16)
 # gcl keyworded ~arm, bug #509842
 -gcl
@@ -154,4 +150,3 @@ numa
 
 # toolkit for nvidia binary drivers
 cg
-
