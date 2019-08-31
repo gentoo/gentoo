@@ -10,19 +10,21 @@ inherit bash-completion-r1 mount-boot
 
 # Whenever you bump a GKPKG, check if you have to move
 # or add new patches!
+VERSION_BOOST="1.70.0"
 VERSION_BTRFS_PROGS="5.2.1"
 VERSION_BUSYBOX="1.31.0"
 VERSION_CRYPTSETUP="2.2.0"
 VERSION_DMRAID="1.0.0.rc16-3"
 VERSION_DROPBEAR="2019.78"
 VERSION_EUDEV="3.2.8"
+VERSION_EXPAT="2.2.7"
 VERSION_E2FSPROGS="1.45.3"
 VERSION_FUSE="2.9.9"
 VERSION_GPG="1.4.23"
 VERSION_ISCSI="2.0.875"
 VERSION_JSON_C="0.13.1"
 VERSION_LIBAIO="0.3.112"
-VERSION_LIBGCRYPT="1.8.4"
+VERSION_LIBGCRYPT="1.8.5"
 VERSION_LIBGPGERROR="1.36"
 VERSION_LVM="2.02.185"
 VERSION_LZO="2.10"
@@ -30,6 +32,7 @@ VERSION_MDADM="4.1"
 VERSION_MULTIPATH_TOOLS="0.8.0"
 VERSION_POPT="1.16"
 VERSION_STRACE="5.2"
+VERSION_THIN_PROVISIONING_TOOLS="0.8.5"
 VERSION_UNIONFS_FUSE="2.0"
 VERSION_USERSPACE_RCU="0.10.2"
 VERSION_UTIL_LINUX="2.34"
@@ -42,12 +45,14 @@ DM_HOME="https://people.redhat.com/~heinzm/sw/dmraid/src"
 BB_HOME="https://busybox.net/downloads"
 
 COMMON_URI="
+	mirror://sourceforge/boost/boost_${VERSION_BOOST//./_}.tar.bz2
 	mirror://kernel/linux/kernel/people/kdave/btrfs-progs/btrfs-progs-v${VERSION_BTRFS_PROGS}.tar.xz
 	https://www.busybox.net/downloads/busybox-${VERSION_BUSYBOX}.tar.bz2
 	mirror://kernel/linux/utils/cryptsetup/v$(ver_cut 1-2 ${VERSION_CRYPTSETUP})/cryptsetup-${VERSION_CRYPTSETUP}.tar.xz
 	https://people.redhat.com/~heinzm/sw/dmraid/src/dmraid-${VERSION_DMRAID}.tar.bz2
 	https://matt.ucc.asn.au/dropbear/releases/dropbear-${VERSION_DROPBEAR}.tar.bz2
 	https://dev.gentoo.org/~blueness/eudev/eudev-${VERSION_EUDEV}.tar.gz
+	https://github.com/libexpat/libexpat/releases/download/R_${VERSION_EXPAT//\./_}/expat-${VERSION_EXPAT}.tar.xz
 	mirror://kernel/linux/kernel/people/tytso/e2fsprogs/v${VERSION_E2FSPROGS}/e2fsprogs-${VERSION_E2FSPROGS}.tar.xz
 	https://github.com/libfuse/libfuse/releases/download/fuse-${VERSION_FUSE}/fuse-${VERSION_FUSE}.tar.gz
 	mirror://gnupg/gnupg/gnupg-${VERSION_GPG}.tar.bz2
@@ -62,6 +67,7 @@ COMMON_URI="
 	https://git.opensvc.com/?p=multipath-tools/.git;a=snapshot;h=${VERSION_MULTIPATH_TOOLS};sf=tgz -> multipath-tools-${VERSION_MULTIPATH_TOOLS}.tar.gz
 	http://ftp.rpm.org/mirror/popt/popt-${VERSION_POPT}.tar.gz
 	https://github.com/strace/strace/releases/download/v${VERSION_STRACE}/strace-${VERSION_STRACE}.tar.xz
+	https://github.com/jthornber/thin-provisioning-tools/archive/v${VERSION_THIN_PROVISIONING_TOOLS}.tar.gz -> thin-provisioning-tools-${VERSION_THIN_PROVISIONING_TOOLS}.tar.gz
 	https://github.com/rpodgorny/unionfs-fuse/archive/v${VERSION_UNIONFS_FUSE}.tar.gz -> unionfs-fuse-${VERSION_UNIONFS_FUSE}.tar.gz
 	https://lttng.org/files/urcu/userspace-rcu-${VERSION_USERSPACE_RCU}.tar.bz2
 	mirror://kernel/linux/utils/util-linux/v${VERSION_UTIL_LINUX:0:4}/util-linux-${VERSION_UTIL_LINUX}.tar.xz
@@ -140,12 +146,14 @@ src_prepare() {
 
 	# Update software.sh
 	sed -i \
+		-e "s:VERSION_BOOST:${VERSION_BOOST}:"\
 		-e "s:VERSION_BTRFS_PROGS:${VERSION_BTRFS_PROGS}:"\
 		-e "s:VERSION_BUSYBOX:${VERSION_BUSYBOX}:"\
 		-e "s:VERSION_CRYPTSETUP:${VERSION_CRYPTSETUP}:"\
 		-e "s:VERSION_DMRAID:${VERSION_DMRAID}:"\
 		-e "s:VERSION_DROPBEAR:${VERSION_DROPBEAR}:"\
 		-e "s:VERSION_EUDEV:${VERSION_EUDEV}:"\
+		-e "s:VERSION_EXPAT:${VERSION_EXPAT}:"\
 		-e "s:VERSION_E2FSPROGS:${VERSION_E2FSPROGS}:"\
 		-e "s:VERSION_FUSE:${VERSION_FUSE}:"\
 		-e "s:VERSION_GPG:${VERSION_GPG}:"\
@@ -160,6 +168,7 @@ src_prepare() {
 		-e "s:VERSION_MULTIPATH_TOOLS:${VERSION_MULTIPATH_TOOLS}:"\
 		-e "s:VERSION_POPT:${VERSION_POPT}:"\
 		-e "s:VERSION_STRACE:${VERSION_STRACE}:"\
+		-e "s:VERSION_THIN_PROVISIONING_TOOLS:${VERSION_THIN_PROVISIONING_TOOLS}:"\
 		-e "s:VERSION_UNIONFS_FUSE:${VERSION_UNIONFS_FUSE}:"\
 		-e "s:VERSION_USERSPACE_RCU:${VERSION_USERSPACE_RCU}:"\
 		-e "s:VERSION_UTIL_LINUX:${VERSION_UTIL_LINUX}:"\
