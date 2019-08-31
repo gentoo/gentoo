@@ -26,6 +26,10 @@
 -neon
 -armvfp
 
+# Mattéo Rossillol‑‑Laruelle <beatussum@protonmail.com> (2019‑08‑31)
+# Dependency not keyworded (dev-libs/libindicate).
+ayatana
+
 # Mart Raudsepp <leio@gentoo.org> (2019-01-07)
 # Does not work on arm64 until dev-lang/luajit-2.1
 # https://github.com/LuaJIT/LuaJIT/issues/26
