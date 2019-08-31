@@ -5055,7 +5055,7 @@ dev-libs/libvformat 1.13-r2: Library to read and write vcard files
 dev-libs/libvolume_id 0.81.1: Library to provide file system information
 dev-libs/libvterm 0.0_pre20160305 0.0_pre20171004 0.0_pre20181126: An abstract library implementation of a VT220/xterm/ECMA-48 terminal emulator
 dev-libs/libvterm-neovim 0.0_pre20150309 0.0_pre20150621: An abstract library implementation of a VT220/xterm/ECMA-48 terminal emulator
-dev-libs/libwacom 0.30 0.33: Library for identifying Wacom tablets and their model-specific features
+dev-libs/libwacom 0.30 0.33 1.0: Library for identifying Wacom tablets and their model-specific features
 dev-libs/libwapcaplet 0.4.1-r1: string internment library, written in C
 dev-libs/libwbxml 0.11.2: Library and tools to parse, encode and handle WBXML documents
 dev-libs/libx86 1.1-r4: A hardware-independent library for executing real-mode x86 code
@@ -18018,7 +18018,7 @@ sys-kernel/ck-sources 4.9.120 4.9.123 4.9.124 4.9.126 4.9.128 4.9.130 4.9.132 4.
 sys-kernel/cryptodev 1.9 9999: device that allows access to Linux kernel cryptographic drivers
 sys-kernel/dracut 044-r1 044-r3 045-r2 046-r1 047-r1 048 048-r1 049 049-r1 049-r2 9999: Generic initramfs generation tool
 sys-kernel/dracut-crypt-ssh 1.0.6-r1: early unlocking of encrypted systems via ssh for dracut
-sys-kernel/genkernel 3.4.52.3 3.4.52.4-r1 3.4.52.4-r2 3.4.52.4-r3 3.5.1.1 3.5.2.0-r1 3.5.2.1 3.5.2.2 3.5.2.3 3.5.2.4 3.5.2.5 3.5.3.2 3.5.3.3 4.0.0_beta14 9999: Gentoo automatic kernel building scripts
+sys-kernel/genkernel 3.4.52.3 3.4.52.4-r1 3.4.52.4-r2 3.4.52.4-r3 3.5.1.1 3.5.2.0-r1 3.5.2.1 3.5.2.2 3.5.2.3 3.5.2.4 3.5.2.5 3.5.3.2 3.5.3.3 4.0.0_beta15 9999: Gentoo automatic kernel building scripts
 sys-kernel/genkernel-next 69 70: Gentoo automatic kernel building scripts, reloaded
 sys-kernel/gentoo-sources 4.4.184 4.4.186 4.4.187 4.4.188 4.4.189 4.4.190 4.9.184 4.9.186 4.9.187 4.9.188 4.9.189 4.9.190 4.14.132 4.14.135 4.14.136 4.14.137 4.14.138 4.14.139 4.14.140 4.14.141 4.19.57 4.19.63 4.19.64 4.19.65 4.19.66 4.19.67 4.19.68 4.19.69 5.2.5 5.2.6 5.2.7 5.2.8 5.2.9 5.2.10 5.2.11: Full sources including the Gentoo patchset for the 5.2 kernel tree
 sys-kernel/git-sources 5.3_rc1 5.3_rc2 5.3_rc3 5.3_rc4 5.3_rc5 5.3_rc6: The very latest -git version of the Linux kernel
@@ -18997,7 +18997,7 @@ x11-misc/kapow 1.5.8 1.5.9: A punch clock program designed to easily keep track 
 x11-misc/kaqaz 1.2.0-r4: Modern note manager
 x11-misc/kbdd 0.7.1: Very simple layout switcher
 x11-misc/kdocker 5.0-r1 5.1 5.2: Helper to dock any application into the system tray
-x11-misc/kronometer 2.2.2 2.2.3: Stopwatch application
+x11-misc/kronometer 2.2.3: Stopwatch application
 x11-misc/ktsuss 2.1: Graphical version of su written in C and GTK+ 2
 x11-misc/libinput-gestures 2.40 2.41 9999: Actions gestures on your touchpad using libinput
 x11-misc/light-locker 1.8.0-r1 1.9.0-r2: A simple locker using lightdm
