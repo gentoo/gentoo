@@ -31,10 +31,6 @@
 <sys-freebsd/freebsd-sources-11.1_alpha
 >sys-freebsd/freebsd-sources-11.1.99
 
-# Alexis Ballier <aballier@gentoo.org> (2011-11-07)
-# It is in freebsd-ubin starting from FreeBSD 9.0
-sys-process/fuser-bsd
-
 # Alexis Ballier <aballier@gentoo.org> (2012-05-11)
 # freebsd-lib provides a utempter compatible interface starting from FreeBSD 9.0
 # via libulog.
