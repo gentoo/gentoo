@@ -18,6 +18,7 @@
 	</maintainer>
 	<use>
 		<flag name="gtk2">Enable support for GTK+2 instead of GTK+3</flag>
+		<flag name="nonfree">Enable non-free components</flag>
 	</use>
 	<upstream>
 		<bugs-to>https://forum.zdoom.org/viewforum.php?f=2</bugs-to>
