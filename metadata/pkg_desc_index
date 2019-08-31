@@ -18009,7 +18009,7 @@ sys-fs/tmsu 0.6.1 0.7.0: Files tagger and virtual tag-based filesystem
 sys-fs/traydevice 1.6.2-r1: A little desktop application displaying systray icon for UDisks
 sys-fs/treesize 0.54.1-r1: A disk consumption analyzing tool
 sys-fs/udev 236-r1 238 239 240-r2 240-r3 241_rc1 241_rc2 241 242 9999: Linux dynamic and persistent device naming support (aka userspace devfs)
-sys-fs/udev-init-scripts 32 33 9999: udev startup scripts for openrc
+sys-fs/udev-init-scripts 33 9999: udev startup scripts for openrc
 sys-fs/udftools 2.0-r2 2.1: Ben Fennema's tools for packet writing and the UDF filesystem
 sys-fs/udiskie 1.1.1 1.7.5 1.7.7: An automatic disk mounting service using udisks
 sys-fs/udisks 1.0.5-r3 2.8.2 2.8.3 2.8.4: Daemon providing interfaces to work with storage devices
