@@ -72,7 +72,7 @@ S="${WORKDIR}/${MY_P}"
 
 pkg_setup() {
 	enewgroup nagios
-	enewuser nagios -1 /bin/bash /var/nagios/home nagios
+	enewuser nagios -1 -1 -1 nagios
 }
 
 src_configure() {
