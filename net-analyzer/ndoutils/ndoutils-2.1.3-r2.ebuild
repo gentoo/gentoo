@@ -17,7 +17,7 @@ KEYWORDS="~amd64 ~ppc ~x86"
 DEPEND="dev-db/mysql-connector-c
 	dev-perl/DBD-mysql
 	dev-perl/DBI
-	>=net-analyzer/nagios-core-4"
+	>=net-analyzer/nagios-core-4.4.5"
 RDEPEND="${DEPEND}
 	virtual/mysql"
 
@@ -42,16 +42,16 @@ PATCHES=(
 
 src_configure() {
 	# The localstatedir is where our socket will be created by the
-	# nagios daemon, so we put it in /var/nagios where the "nagios" user
-	# will be able to write.
+	# nagios daemon, so we put it in /var/lib/nagios where the "nagios"
+	# user will be able to write.
 	#
 	# And normally, we would use /run for the pid file, but the daemon
-	# drops permissions before creating it, the the piddir also needs
+	# drops permissions before creating it, so the piddir also needs
 	# to be writable by the nagios user.
 	econf --enable-mysql \
-		  --localstatedir=/var/nagios \
+		  --localstatedir=/var/lib/nagios \
 		  --sysconfdir=/etc/nagios \
-		  --with-piddir=/var/nagios
+		  --with-piddir=/var/lib/nagios
 }
 
 src_compile() {
