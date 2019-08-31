@@ -31,7 +31,3 @@ x11-misc/gpaste gnome
 x11-terms/gnome-terminal gnome-shell
 x11-themes/zukitwo gnome-shell
 net-wireless/bluez user-session
-
-# Alex Brandt <alunduil@gentoo.org> (2015-09-06)
-# app-emulation/rkt[rkt_stage1_src] requires systemd which isn't available with selinux.
-app-emulation/rkt rkt_stage1_src
