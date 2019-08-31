@@ -25,13 +25,18 @@ RESTRICT="test"
 RDEPEND=">=virtual/udev-217
 	!<sys-apps/openrc-0.14"
 
+src_install() {
+	local -x SYSCONFDIR="${EPREFIX}/etc"
+	default
+}
+
 pkg_postinst() {
 	# Add udev and udev-trigger to the sysinit runlevel automatically.
 	for f in udev udev-trigger; do
-		if [[ -x ${ROOT%/}/etc/init.d/${f} &&
-			-d ${ROOT%/}/etc/runlevels/sysinit &&
-			! -L "${ROOT%/}/etc/runlevels/sysinit/${f}" ]]; then
-			ln -snf /etc/init.d/${f} "${ROOT%/}"/etc/runlevels/sysinit/${f}
+		if [[ -x "${EROOT}/etc/init.d/${f}" &&
+			-d "${EROOT}/etc/runlevels/sysinit" &&
+			! -L "${EROOT}/etc/runlevels/sysinit/${f}" ]]; then
+			ln -snf "${EPREFIX}/etc/init.d/${f}" "${EROOT}/etc/runlevels/sysinit/${f}"
 			ewarn "Adding ${f} to the sysinit runlevel"
 		fi
 	done
