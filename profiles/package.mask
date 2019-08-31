@@ -395,12 +395,6 @@ dev-lang/php:7.4
 # Masked for testing
 >=media-video/totem-3.32.1
 
-# Kent Fredric <kentnl@gentoo.org> (2019-07-14)
-# Broken since 2007, Upstream not seen since 2004.
-# Removal after 2019-08-16
-# Bug #635792
-dev-perl/libvorbis-perl
-
 # Robin H. Johnson <robbat2@gentoo.org> (2019-07-08)
 # Needs LOTS of testing, broke boot on my laptop in early attempts, maybe needs
 # matching genkernel work?
