@@ -1,3 +1,0 @@
-#!/bin/bash
-
-/usr/bin/java -jar /opt/MultiBit/multibit-exe.jar >/dev/null 2>&1 &
