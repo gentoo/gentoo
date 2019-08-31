@@ -2,14 +2,15 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>BM-2cTVBXjxdVtEQCycBQjMxszLsgTNVujvM5@bitmessage.ch</email>
+		<email>samuel.bauer@yahoo.fr</email>
 		<name>Samuel Bauer</name>
 	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
-	<longdescription>gtkdiskfree is a gtk extension to the cli tool df, does the same and more
+	<longdescription>
+		gtkdiskfree is a gtk extension to the cli tool df, does the same and more
 	</longdescription>
 	<use>
 		<flag name="gtk2">Support GTK+ 2.x instead of GTK+ 3.x</flag>
