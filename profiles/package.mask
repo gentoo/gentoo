@@ -459,11 +459,6 @@ dev-tex/quotchap
 # Depends on >=virtual/{jdk,jre}-11 which is masked
 =www-servers/tomcat-9.0.21
 
-# Zac Medico <zmedico@gentoo.org> (2019-05-31)
-# Upstream is dead and there are multiple security vulnerabilities.
-# Removal in 30 days. Bug #687100.
-app-emulation/rkt
-
 # Patrick Lauer <patrick@gentoo.org> (2019-05-23)
 # PostgreSQL beta and release candidate releases are pre-release testing
 # versions, not meant for production use. They are feature-frozen, and are
