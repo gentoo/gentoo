@@ -165,8 +165,6 @@ DEPEND="${CDEPEND}
 REQUIRED_USE="wifi? ( dbus )
 	pgo? ( lto )"
 
-REQUIRED_USE="wifi? ( dbus )"
-
 S="${WORKDIR}/${MOZ_P%b[0-9]*}"
 
 BUILD_OBJ_DIR="${S}/tbird"
