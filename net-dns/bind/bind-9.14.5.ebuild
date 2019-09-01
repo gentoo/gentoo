@@ -36,15 +36,16 @@ SRC_URI="https://downloads.isc.org/isc/bind9/${PV}/${P}.tar.gz
 
 LICENSE="Apache-2.0 BSD BSD-2 GPL-2 HPND ISC MPL-2.0"
 SLOT="0"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 # -berkdb by default re bug 602682
-IUSE="-berkdb +caps dlz dnstap doc dnsrps fixed-rrset geoip gost gssapi
+IUSE="-berkdb +caps dlz dnstap doc dnsrps fixed-rrset geoip geoip2 gssapi
 json ldap libressl lmdb mysql odbc postgres python selinux static-libs
 urandom xml +zlib"
 # sdb-ldap - patch broken
 # no PKCS11 currently as it requires OpenSSL to be patched, also see bug 409687
 
 REQUIRED_USE="
+	?? ( geoip geoip2 )
 	postgres? ( dlz )
 	berkdb? ( dlz )
 	mysql? ( dlz )
@@ -62,6 +63,7 @@ DEPEND="!libressl? ( dev-libs/openssl:0[-bindist] )
 	caps? ( >=sys-libs/libcap-2.1.0 )
 	xml? ( dev-libs/libxml2 )
 	geoip? ( >=dev-libs/geoip-1.4.6 )
+	geoip2? ( dev-libs/libmaxminddb )
 	gssapi? ( virtual/krb5 )
 	json? ( dev-libs/json-c:= )
 	lmdb? ( dev-db/lmdb )
@@ -156,6 +158,7 @@ src_configure() {
 	)
 
 	use geoip && myeconfargs+=( --with-geoip )
+	use geoip2 && myeconfargs+=( --with-geoip2 )
 
 	# bug #158664
 #	gcc-specs-ssp && replace-flags -O[23s] -O
@@ -207,14 +210,6 @@ src_install() {
 	newinitd "${FILESDIR}"/named.init-r13 named
 	newconfd "${FILESDIR}"/named.confd-r7 named
 
-	if use gost; then
-		sed -e 's/^OPENSSL_LIBGOST=${OPENSSL_LIBGOST:-0}$/OPENSSL_LIBGOST=${OPENSSL_LIBGOST:-1}/' \
-			-i "${ED}/etc/init.d/named" || die
-	else
-		sed -e 's/^OPENSSL_LIBGOST=${OPENSSL_LIBGOST:-1}$/OPENSSL_LIBGOST=${OPENSSL_LIBGOST:-0}/' \
-			-i "${ED}/etc/init.d/named" || die
-	fi
-
 	newenvd "${FILESDIR}"/10bind.env 10bind
 
 	# Let's get rid of those tools and their manpages since they're provided by bind-tools
@@ -224,8 +219,8 @@ src_install() {
 	rm -f "${ED}"/usr/sbin/{dig,host,nslookup,nsupdate} || die
 	for tool in dsfromkey importkey keyfromlabel keygen \
 	  revoke settime signzone verify; do
-		rm -f "${ED%/}"/usr/{,s}bin/dnssec-"${tool}" || die
-		rm -f "${ED%/}"/usr/share/man/man8/dnssec-"${tool}".8* || die
+		rm -f "${ED}"/usr/{,s}bin/dnssec-"${tool}" || die
+		rm -f "${ED}"/usr/share/man/man8/dnssec-"${tool}".8* || die
 	done
 
 	# bug 405251, library archives aren't properly handled by --enable/disable-static
@@ -337,13 +332,7 @@ pkg_config() {
 	mkdir -m 0755 -p ${CHROOT}/{dev,etc,var/log,run} || die
 	mkdir -m 0750 -p ${CHROOT}/etc/bind || die
 	mkdir -m 0770 -p ${CHROOT}/var/{bind,log/named} ${CHROOT}/run/named/ || die
-	# As of bind 9.8.0
-	if has_version net-dns/bind[gost]; then
-		mkdir -m 0755 -p ${CHROOT}/usr/$(get_libdir)/engines || die
-		if [ "$(get_libdir)" = "lib64" ]; then
-			ln -s lib64 ${CHROOT}/usr/lib || die
-		fi
-	fi
+
 	chown root:named \
 		${CHROOT} \
 		${CHROOT}/var/{bind,log/named} \
@@ -371,7 +360,11 @@ pkg_config() {
 	fi
 
 	if [ "${CHROOT_GEOIP:-0}" -eq 1 ]; then
-		mkdir -m 0755 -p ${CHROOT}/usr/share/GeoIP || die
+		if use geoip; then
+			mkdir -m 0755 -p ${CHROOT}/usr/share/GeoIP || die
+		elif use geoip2; then
+			mkdir -m 0755 -p ${CHROOT}/usr/share/GeoIP2 || die
+		fi
 	fi
 
 	elog "You may need to add the following line to your syslog-ng.conf:"
