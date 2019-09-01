@@ -2990,6 +2990,11 @@
       <role>Developer</role>
     </member>
     <member>
+      <email>dilfridge@gentoo.org</email>
+      <name>Andreas K. Hüttel</name>
+      <role>Developer</role>
+    </member>
+    <member>
       <email>mgorny@gentoo.org</email>
       <name>Michał Górny</name>
       <role>Deputy Lead</role>
@@ -3007,11 +3012,6 @@
     <member>
       <email>ulm@gentoo.org</email>
       <name>Ulrich Müller</name>
-      <role>Developer</role>
-    </member>
-    <member>
-      <email>williamh@gentoo.org</email>
-      <name>William Hubbs</name>
       <role>Developer</role>
     </member>
     <member>
