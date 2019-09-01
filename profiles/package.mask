@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2019-09-01)
+# Discontinued upstream.  Last release in 2003.  Replaced
+# by dev-embedded/urjtag.
+# Removal in 30 days.  Bug #693256.
+dev-embedded/jtag
+
 # Joonas Niilola <juippis@gentoo.org> (2019-08-31)
 # No maintainer and no one stepped in to take it after a mailing 
 # list announcement. Has QA issues and continuous CI issues. Removal 
