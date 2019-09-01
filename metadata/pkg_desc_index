@@ -12589,7 +12589,6 @@ mail-filter/MailScanner 4.84.5.2: Free Anti-Virus and Anti-Spam Filter
 mail-filter/afew 1.1.0 1.2.0 1.3.0: Initial tagging script for Notmuch
 mail-filter/amavisd-milter 1.5.0 1.5.0-r1 1.6.0 1.6.0-r1: sendmail milter for amavisd-new
 mail-filter/amavisd-new 2.11.1-r3 2.12.0: High-performance interface between the MTA and content checkers
-mail-filter/anubis 4.1.1 4.1.1-r1 4.2 4.2-r1: GNU Anubis is an outgoing mail processor
 mail-filter/ask 2.4.1 2.5.3: Active Spam Killer: A program to filter spam
 mail-filter/bmf 0.9.4-r2 0.9.4-r3: A fast and small Bayesian spam filter
 mail-filter/bogofilter 1.2.4-r2: Bayesian spam filter designed with fast algorithms, and tuned for speed
@@ -16631,7 +16630,6 @@ sci-libs/libccd 2.0 9999: Library for collision detection between two convex sha
 sci-libs/libcerf 1.5: Efficient and accurate implementation of complex error functions
 sci-libs/libcmatrix 3.11.0-r1: lite version of pNMRsim
 sci-libs/libcore 2.1.1-r1: Robust numerical and geometric computation library
-sci-libs/libctl 3.1 3.2: Guile-based library for scientific simulations
 sci-libs/libdap 3.18.1: Implementation of a C++ SDK for DAP 2.0 and 3.2
 sci-libs/libexcelformat 101016: reading, writing, and editing of XLS (BIFF8 format) files using C++
 sci-libs/libgenome 1.3-r1: Library for sci-biology/mauve
@@ -16780,7 +16778,6 @@ sci-mathematics/cvc3 2.4.1-r1: CVC3 is a theorem prover for Satisfiability Modul
 sci-mathematics/cvc4 1.6 1.7: automatic theorem prover for satisfiability modulo theories (SMT) problems
 sci-mathematics/dataplot 20090821 20131220: Program for scientific visualization and statistical analyis
 sci-mathematics/diagrtb 2.64: Calculation of some eigenvectors of a large real, symmetrical, matrix
-sci-mathematics/drgeo 1.1.0-r1: Interactive geometry package
 sci-mathematics/dunshire 0.1.1: Python library to solve linear games over symmetric cones
 sci-mathematics/e 1.5 1.6 1.8-r1: E is a theorem prover for full first-order logic with equality
 sci-mathematics/ent 101202: Pseudorandom number sequence test
@@ -16885,7 +16882,6 @@ sci-physics/geant 4.10.03-r1 4.10.05_p01: Toolkit for simulation of passage of p
 sci-physics/geant-data 4.10.03 4.10.05: Data files for Geant4 physical processes
 sci-physics/geant-vmc 4.3.6 4.3.6-r1 4.4.0 9999: Virtual Monte Carlo Geant4 implementation
 sci-physics/h2o-gtk 0.1-r1 9999: GTK+ UI for libh2o -- water & steam properties
-sci-physics/harminv 1.3.1-r1: Extraction of complex frequencies and amplitudes from time series
 sci-physics/hepmc 2.06.09-r1: Event Record for Monte Carlo Generators
 sci-physics/heppdt 3.04.01-r1: Data about each particle from the Review of Particle Properties
 sci-physics/herwig 6.5.21-r1: High Energy Physics Event Generator
@@ -16895,7 +16891,6 @@ sci-physics/lammps 20150210 20150515 20150515-r1 20150810 20151106 20151120 2015
 sci-physics/lhapdf 5.9.1 6.1.6: Les Houches Parton Density Function unified library
 sci-physics/lightspeed 1.2a-r3: OpenGL interactive relativistic simulator
 sci-physics/looptools 2.8 2.12 2.13: Tools for evaluation of scalar and tensor one-loop integrals
-sci-physics/meep 1.3: Simulation software to model electromagnetic systems
 sci-physics/paw 2.14.04-r4 2.14.04-r5: CERN's Physics Analysis Workstation data analysis program
 sci-physics/pythia 6.4.28 6.4.28-r1 8.1.86 8.1.86-r1 8.2.10 8.2.26: Lund Monte Carlo high-energy physics event generator
 sci-physics/qmeq 1.0: Quantum master equation package for Quantum dot transport calculations
@@ -18500,7 +18495,7 @@ www-apps/grafana-bin 5.4.3-r1 5.4.4 5.4.5 6.1.6 6.2.5 6.3.2 6.3.3 6.3.4: Gorgeou
 www-apps/groupoffice 3.7.52 4.0.47 4.0.97 4.0.144 4.1.7: Group-Office is a powerful modular Intranet application framework
 www-apps/hiawatha-monitor 1.6: Monitoring application for www-servers/hiawatha
 www-apps/hugo 0.46 0.48: A Fast and Flexible Static Site Generator built with love in Go
-www-apps/icingaweb2 2.6.2 2.6.3 2.7.0 2.7.1 9999: Icinga Web 2 - Frontend for icinga2
+www-apps/icingaweb2 2.6.3 2.7.1 9999: Icinga Web 2 - Frontend for icinga2
 www-apps/icingaweb2-module-director 1.6.2 9999: Icinga Web 2 plugin for configuration
 www-apps/icingaweb2-module-graphite 1.0.1-r1 9999: Icinga Web 2 plugin for Graphite
 www-apps/icingaweb2-module-pnp4nagios 1.0.1 9999: Icinga Web 2 plugin for pnp4nagios
@@ -18809,7 +18804,6 @@ x11-libs/gtkglext 1.2.0-r4: GL extensions for Gtk+ 2.0
 x11-libs/gtkhotkey 0.2.1-r1: Cross platform library for using desktop wide hotkeys
 x11-libs/gtkmathview 0.8.0-r3: Rendering engine for MathML documents
 x11-libs/gtksourceview 2.10.5-r3 3.24.11 4.2.0: A text widget implementing syntax highlighting and other features
-x11-libs/guile-gtk 2.1-r2 2.1-r3: GTK+ bindings for guile
 x11-libs/libFS 1.0.8: X.Org FS library
 x11-libs/libGLw 8.0.0: Mesa GLw library
 x11-libs/libICE 1.0.9-r2 1.0.10: X.Org Inter-Client Exchange library
