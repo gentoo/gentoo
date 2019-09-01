@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
 
-inherit toolchain-funcs user
+inherit toolchain-funcs
 
 DESCRIPTION="Inspire IRCd - The Stable, High-Performance Modular IRCd"
 HOMEPAGE="https://inspircd.github.com/"
@@ -12,48 +12,51 @@ SRC_URI="https://github.com/inspircd/inspircd/archive/v${PV}.tar.gz -> ${P}.tar.
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
-IUSE="geoip gnutls ipv6 ldap mysql pcre posix postgres sqlite ssl tre"
+IUSE="debug gnutls ldap maxminddb mbedtls mysql pcre postgres re2 regex-posix regex-stdlib sqlite ssl sslrehashsignal tre"
 
 RDEPEND="
+	acct-group/inspircd
+	acct-user/inspircd
 	dev-lang/perl
-	ssl? ( dev-libs/openssl:= )
-	geoip? ( dev-libs/geoip )
 	gnutls? ( net-libs/gnutls:= dev-libs/libgcrypt:0 )
 	ldap? ( net-nds/openldap )
+	maxminddb? ( dev-libs/libmaxminddb )
+	mbedtls? ( net-libs/mbedtls:= )
 	mysql? ( dev-db/mysql-connector-c:= )
-	postgres? ( dev-db/postgresql:= )
 	pcre? ( dev-libs/libpcre )
+	postgres? ( dev-db/postgresql:= )
+	re2? ( dev-libs/re2:= )
 	sqlite? ( >=dev-db/sqlite-3.0 )
+	ssl? ( dev-libs/openssl:= )
 	tre? ( dev-libs/tre )"
 DEPEND="${RDEPEND}"
 
 DOCS=( docs/. )
 PATCHES=( "${FILESDIR}"/${P}-fix-path-builds.patch )
 
-pkg_setup() {
-	enewgroup ${PN}
-	enewuser ${PN} -1 -1 -1 ${PN}
-}
-
 src_prepare() {
 	default
 
 	# Patch the inspircd launcher with the inspircd user
-	sed -i -e "s/@UID@/${PN}/" "${S}/make/template/${PN}" || die
+	sed -i -e "s/@UID@/${PN}/" "make/template/${PN}" || die
 }
 
 src_configure() {
 	local extras=""
 
-	use geoip && extras+="m_geoip.cpp,"
 	use gnutls && extras+="m_ssl_gnutls.cpp,"
-	use ldap && extras+="m_ldapauth.cpp,m_ldapoper.cpp,"
+	use ldap && extras+="m_ldap.cpp,"
+	use maxminddb && extras+="m_geo_maxmind.cpp,"
+	use mbedtls && extras+="m_ssl_mbedtls.cpp,"
 	use mysql && extras+="m_mysql.cpp,"
 	use pcre && extras+="m_regex_pcre.cpp,"
-	use posix && extras+="m_regex_posix.cpp,"
 	use postgres && extras+="m_pgsql.cpp,"
+	use re2 && extras+="m_regex_re2.cpp,"
+	use regex-posix && extras+="m_regex_posix.cpp,"
+	use regex-stdlib && extras+="m_regex_stdlib.cpp,"
 	use sqlite && extras+="m_sqlite3.cpp,"
 	use ssl && extras+="m_ssl_openssl.cpp,"
+	use sslrehashsignal && extras+="m_sslrehashsignal.cpp,"
 	use tre && extras+="m_regex_tre.cpp,"
 
 	# The first configuration run enables certain "extra" InspIRCd
@@ -63,26 +66,29 @@ src_configure() {
 	fi
 
 	local myconf=(
-		--with-cc="$(tc-getCXX)"
 		--disable-interactive
+		--disable-auto-extras
 		--prefix="/usr/$(get_libdir)/${PN}"
 		--config-dir="/etc/${PN}"
 		--data-dir="/var/lib/${PN}/data"
 		--log-dir="/var/log/${PN}"
 		--binary-dir="/usr/bin"
 		--module-dir="/usr/$(get_libdir)/${PN}/modules"
-		$(usex ipv6 '' '--disable-ipv6')
-		$(usex gnutls '--enable-gnutls' '')
-		$(usex ssl '--enable-openssl' ''))
-	./configure "${myconf[@]}"
+		--manual-dir="/usr/share/man")
+	CXX="$(tc-getCXX)" ./configure "${myconf[@]}"
 }
 
 src_compile() {
-	emake V=1 LDFLAGS="${LDFLAGS}" CXXFLAGS="${CXXFLAGS}"
+	emake LDFLAGS="${LDFLAGS}" CXXFLAGS="${CXXFLAGS}" $(usex debug 'INSPIRCD_DEBUG=2' '') INSPIRCD_VERBOSE=1
 }
 
 src_install() {
-	emake INSTUID=${PN} DESTDIR="${D%/}" install
+	emake DESTDIR="${D%/}" install
+
+	# Default is '0750', which causes init errors.
+	fperms 0755 /usr/bin/inspircd{,-genssl}
+	# Default is '0640', causing module load errors.
+	fperms -R 0755 "/usr/lib64/inspircd/modules/."
 
 	insinto "/usr/include/${PN}"
 	doins -r include/.
@@ -112,7 +118,11 @@ pkg_postinst() {
 			elog "Starting with 2.0.24-r1 the daemon is no longer started"
 			elog "with the --logfile option and you are thus expected to define"
 			elog "logging in the InspIRCd configuration file if you want it."
-			break
+		fi
+		if ver_test "${pv}" -lt "3.0.0"; then
+			elog "Version 3.0 is a major upgrade which contains breaking"
+			elog "changes.  You will need to update your configuration files."
+			elog "See: https://docs.inspircd.org/3/configuration-changes"
 		fi
 	done
 }
