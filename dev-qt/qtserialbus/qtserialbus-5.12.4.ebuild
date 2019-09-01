@@ -12,6 +12,10 @@ fi
 
 IUSE=""
 
+PATCHES+=(
+	"${FILESDIR}/${P}-canbus-missing-header-w-linux-headers.patch" # QTBUG-76957
+)
+
 DEPEND="
 	~dev-qt/qtcore-${PV}
 	~dev-qt/qtnetwork-${PV}
