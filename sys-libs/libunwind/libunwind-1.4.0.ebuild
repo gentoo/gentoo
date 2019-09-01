@@ -1,11 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 2005-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 MY_PV=${PV/_/-}
 MY_P=${PN}-${MY_PV}
-inherit autotools eutils flag-o-matic libtool multilib-minimal
+inherit autotools flag-o-matic libtool multilib-minimal
 
 DESCRIPTION="Portable and efficient API to determine the call-chain of a program"
 HOMEPAGE="https://savannah.nongnu.org/projects/libunwind"
@@ -53,13 +53,13 @@ src_prepare() {
 	default
 	chmod +x src/ia64/mk_cursor_i || die
 	# Since we have tests disabled via RESTRICT, disable building in the subdir
-	# entirely.  This worksaround some build errors too. #484846
+	# entirely.  This works around some build errors too. #484846
 	sed -i -e '/^SUBDIRS/s:tests::' Makefile.in || die
 
 	elibtoolize
 	eautoreconf
 
-	# Let's wait for proer fix upstream in https://github.com/libunwind/libunwind/issues/154
+	# Let's wait for proper fix upstream in https://github.com/libunwind/libunwind/issues/154
 	# Meanwhile workaround for gcc-10 with -fcommon, bug #706560
 	append-cflags -fcommon
 }
@@ -99,7 +99,5 @@ multilib_src_test() {
 
 multilib_src_install() {
 	default
-	# libunwind-ptrace.a (and libunwind-ptrace.h) is separate API and without
-	# shared library, so we keep it in any case
-	use static-libs || find "${ED}"usr '(' -name 'libunwind-generic.a' -o -name 'libunwind*.la' ')' -delete
+	use static-libs || find "${ED}"/usr -name 'libunwind*.la' -delete
 }
