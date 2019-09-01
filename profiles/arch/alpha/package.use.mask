@@ -121,10 +121,6 @@ dev-python/pyquery test
 # hardware that is "too slow".
 dev-python/attrs test
 
-# Tobias Klausmann <klausman@gentoo.org> (2016-01-22)
-# Requires guile2 which is keyworded nowhere
-media-sound/lilypond guile2
-
 # Tobias Klausmann <klausman@gentoo.org> (2016-11-15)
 # JITing for libpcre{,2} is not supported on Alpha
 dev-libs/libpcre jit
