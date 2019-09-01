@@ -149,7 +149,7 @@ yaml-rust-0.4.3
 
 inherit cargo
 
-DESCRIPTION="A cat(1) clone with wings"
+DESCRIPTION="cat(1) clone with syntax highlighting and Git integration"
 HOMEPAGE="https://github.com/sharkdp/bat"
 SRC_URI="https://github.com/sharkdp/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	$(cargo_crate_uris ${CRATES})"
