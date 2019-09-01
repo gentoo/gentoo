@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-<email>crossdev@gentoo.org</email>
-<name>Gentoo Crossdev Team</name>
-</maintainer>
-<maintainer type="project">
-<email>embedded@gentoo.org</email>
-<name>Embedded Gentoo</name>
-</maintainer>
+  <maintainer type="project">
+    <email>crossdev@gentoo.org</email>
+    <name>Gentoo Crossdev Team</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>embedded@gentoo.org</email>
+    <name>Embedded Gentoo</name>
+  </maintainer>
 </pkgmetadata>
