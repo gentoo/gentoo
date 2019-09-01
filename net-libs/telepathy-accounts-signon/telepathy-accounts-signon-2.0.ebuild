@@ -11,7 +11,7 @@ SRC_URI="https://gitlab.com/accounts-sso/${PN}/-/archive/2.0/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="~amd64 arm64 ~x86"
 IUSE=""
 
 BDEPEND=">=dev-util/meson-0.49.2"
