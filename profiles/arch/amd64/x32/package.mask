@@ -8,6 +8,7 @@ dev-libs/amdgpu-pro-opencl
 # Thomas Deutschmann <whissi@gentoo.org> (2018-10-23)
 # requires net-libs/nodejs
 >=www-client/firefox-63.0
+>=mail-client/thunderbird-68.0
 
 # Patrick McLean <chutzpah@gentoo.org> (2018-07-12)
 # requires nodejs
