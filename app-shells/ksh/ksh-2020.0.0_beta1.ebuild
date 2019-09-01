@@ -10,9 +10,7 @@ HOMEPAGE="https://github.com/att/ast"
 
 MY_PV="${PV/_/-}"
 MY_P="${PN}-${MY_PV}"
-SRC_URI="https://github.com/att/ast/releases/download/${MY_PV}/${MY_P}.tar.gz
-	https://github.com/att/ast/commit/db7fe39b744d071bb0428c91e2eb84877f068dac.patch -> ${MY_P}-solaris.patch
-	https://github.com/att/ast/commit/63e9edcb6084d4b164439065e2d71f3e900ec3c7.patch -> ${MY_P}-conftab.patch"
+SRC_URI="https://github.com/att/ast/releases/download/${MY_PV}/${MY_P}.tar.gz"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="CPL-1.0 EPL-1.0"
@@ -20,11 +18,6 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86"
 
 RDEPEND="!app-shells/pdksh"
-
-PATCHES=(
-	"${DISTDIR}"/${MY_P}.patch
-	"${DISTDIR}"/${MY_P}.patch
-)
 
 src_install() {
 	meson_src_install
