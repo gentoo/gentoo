@@ -15,7 +15,7 @@ HOMEPAGE="https://github.com/hsbt/minitest-power_assert"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 IUSE=""
 
 ruby_add_rdepend "
