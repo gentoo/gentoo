@@ -4684,7 +4684,7 @@ dev-lang/spark 2017 2018: Software development for high-reliability applications
 dev-lang/spidermonkey 1.7.0-r3 1.8.5-r6 1.8.5-r7 1.8.5-r9 17.0.0-r5 38.3.0 45.0.2 52.9.1_pre1 52.9.1_pre1-r1 60.5.2_p0-r2 60.5.2_p0-r3: Stand-alone JavaScript C++ library
 dev-lang/squirrel 3.1: A interpreted language mainly used for games
 dev-lang/srf 1.0-r2: The Simple Recursive Functions programming language
-dev-lang/swi-prolog 7.4.2 7.6.3 7.6.4 8.0.2 8.0.3 8.1.8 8.1.9 8.1.10: versatile implementation of the Prolog programming language
+dev-lang/swi-prolog 7.4.2 7.6.3 7.6.4 8.0.2 8.0.3 8.1.10 8.1.11: versatile implementation of the Prolog programming language
 dev-lang/swig 2.0.9 3.0.12 4.0.0: Simplified Wrapper and Interface Generator
 dev-lang/tcc 0.9.26-r3 0.9.27 9999: A very small C compiler for ix86/amd64
 dev-lang/tcl 8.5.17-r1 8.5.17-r100 8.5.17-r101 8.6.8 8.6.9: Tool Command Language
@@ -14654,7 +14654,7 @@ net-analyzer/rrdcollect 0.2.9: Read system statistical data and feed it to RRDto
 net-analyzer/rrdtool 1.6.0-r1 1.7.0 1.7.1 1.7.2: A system to store and display time-series data
 net-analyzer/rtpbreak 1.3a-r1: Analyze any RTP session through heuristics over UDP network traffic
 net-analyzer/sancp 1.6.1-r4: collect network traffic statistics and store them in pcap format
-net-analyzer/sarg 2.3.11-r1: Squid Analysis Report Generator
+net-analyzer/sarg 2.3.11-r1 2.3.11-r2: Squid Analysis Report Generator
 net-analyzer/sbd 1.37-r1: Netcat-clone, designed to be portable and offer strong encryption
 net-analyzer/scanlogd 2.2.7: a port scan detection tool
 net-analyzer/scanssh 2.1 2.1-r1: network scanner that gathers info on SSH protocols and versions
@@ -15661,7 +15661,7 @@ net-misc/x2goclient 4.1.2.1 4.1.2.1-r1: The X2Go Qt client
 net-misc/x2goserver 4.1.0.2 4.1.0.3: The X2Go server
 net-misc/yandex-disk 0.1.5.978_p1: CLI to access Yandex Disk file storage service
 net-misc/you-get 0.4.536 0.4.1270: utility to download media contents from the web
-net-misc/youtube-dl 2019.08.13 99999999: Download videos from YouTube.com (and more sites...)
+net-misc/youtube-dl 2019.08.13 2019.09.01 99999999: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.3.3 3.5.4 3.5.5 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/zerotier 1.2.12: A software-based managed Ethernet switch for planet Earth
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
