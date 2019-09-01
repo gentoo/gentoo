@@ -97,7 +97,6 @@ multilib_src_test() {
 	SANDBOX_ON=0 emake check
 }
 
-multilib_src_install() {
-	default
-	use static-libs || find "${ED}"/usr -name 'libunwind*.la' -delete
+multilib_src_install_all() {
+	find "${D}" -name "*.la" -type f -delete || die
 }
