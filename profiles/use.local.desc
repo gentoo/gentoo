@@ -4020,7 +4020,7 @@ mail-client/s-nail:kerberos - If network is enabled, this adds support for GSSAP
 mail-client/s-nail:net - Enable support for network protocols (POP, IMAP and SMTP). If you only need to send mail with the local Transport Agent, disabling this will get you support for only /usr/sbin/sendmail call.
 mail-client/s-nail:ssl - If network is enabled, this adds support for S/MIME and SSL/TLS-powered protocols through dev-libs/openssl.
 mail-client/sylpheed:oniguruma - Use dev-libs/oniguruma for regular expression
-mail-client/thunderbird:bindist - Disable official Firefox branding (icons, name) which are not binary-redistributable according to upstream.
+mail-client/thunderbird:bindist - Disable official Firefox/Thunderbird branding (icons, name) which are not binary-redistributable according to upstream.
 mail-client/thunderbird:clang - Use Clang compiler instead of GCC
 mail-client/thunderbird:custom-optimization - Build with user-specified compiler optimizations (-Os, -O0, -O1, -O2, -O3) from CFLAGS (unsupported)
 mail-client/thunderbird:eme-free - Disable EME (DRM plugin) cabability at build time
