@@ -43,7 +43,7 @@ sci-chemistry/burrow-owl
 sci-libs/starparse
 
 # Matt Turner <mattst88@gentoo.org> (2019-09-01)
-# Depends on dev-scheme/guile:12. Unpackaged versions from 2015.
+# Unmaintained, unpackaged versions from 2015. Incompatible with guile-2.2.
 # Removal in 30 days. # Bug #654654.
 games-strategy/liquidwar6
 
