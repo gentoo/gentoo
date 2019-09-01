@@ -75,7 +75,7 @@ DEPEND="!libressl? ( dev-libs/openssl:0[-bindist] )
 
 RDEPEND="${DEPEND}
 	selinux? ( sec-policy/selinux-bind )
-	|| ( sys-process/psmisc >=sys-freebsd/freebsd-ubin-9.0_rc sys-process/fuser-bsd )"
+	|| ( sys-process/psmisc >=sys-freebsd/freebsd-ubin-9.0_rc )"
 
 S="${WORKDIR}/${MY_P}"
 
