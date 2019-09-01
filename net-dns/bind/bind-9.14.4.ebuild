@@ -209,19 +209,19 @@ src_install() {
 
 	if use gost; then
 		sed -e 's/^OPENSSL_LIBGOST=${OPENSSL_LIBGOST:-0}$/OPENSSL_LIBGOST=${OPENSSL_LIBGOST:-1}/' \
-			-i "${ED%/}/etc/init.d/named" || die
+			-i "${ED}/etc/init.d/named" || die
 	else
 		sed -e 's/^OPENSSL_LIBGOST=${OPENSSL_LIBGOST:-1}$/OPENSSL_LIBGOST=${OPENSSL_LIBGOST:-0}/' \
-			-i "${ED%/}/etc/init.d/named" || die
+			-i "${ED}/etc/init.d/named" || die
 	fi
 
 	newenvd "${FILESDIR}"/10bind.env 10bind
 
 	# Let's get rid of those tools and their manpages since they're provided by bind-tools
-	rm -f "${ED%/}"/usr/share/man/man1/{dig,host,nslookup}.1* || die
-	rm -f "${ED%/}"/usr/share/man/man8/nsupdate.8* || die
-	rm -f "${ED%/}"/usr/bin/{dig,host,nslookup,nsupdate} || die
-	rm -f "${ED%/}"/usr/sbin/{dig,host,nslookup,nsupdate} || die
+	rm -f "${ED}"/usr/share/man/man1/{dig,host,nslookup}.1* || die
+	rm -f "${ED}"/usr/share/man/man8/nsupdate.8* || die
+	rm -f "${ED}"/usr/bin/{dig,host,nslookup,nsupdate} || die
+	rm -f "${ED}"/usr/sbin/{dig,host,nslookup,nsupdate} || die
 	for tool in dsfromkey importkey keyfromlabel keygen \
 	  revoke settime signzone verify; do
 		rm -f "${ED%/}"/usr/{,s}bin/dnssec-"${tool}" || die
@@ -242,16 +242,16 @@ src_install() {
 		}
 		python_foreach_impl install_python_tools
 
-		python_replicate_script "${ED%/}/usr/sbin/dnssec-checkds"
-		python_replicate_script "${ED%/}/usr/sbin/dnssec-coverage"
+		python_replicate_script "${ED}/usr/sbin/dnssec-checkds"
+		python_replicate_script "${ED}/usr/sbin/dnssec-coverage"
 	fi
 
 	# bug 450406
 	dosym named.cache /var/bind/root.cache
 
-	dosym /var/bind/pri /etc/bind/pri
-	dosym /var/bind/sec /etc/bind/sec
-	dosym /var/bind/dyn /etc/bind/dyn
+	dosym "${ED}"/var/bind/pri /etc/bind/pri
+	dosym "${ED}"/var/bind/sec /etc/bind/sec
+	dosym "${ED}"/var/bind/dyn /etc/bind/dyn
 	keepdir /var/bind/{pri,sec,dyn}
 
 	dodir /var/log/named
