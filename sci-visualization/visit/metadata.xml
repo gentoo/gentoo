@@ -17,7 +17,7 @@
       Adds support for reading .silo files.
     </flag>
      <flag name="xdmf2">
-      Support for xdmf2 formated data.
+      Support for xdmf2 formatted data.
     </flag>
   </use>
 </pkgmetadata>
