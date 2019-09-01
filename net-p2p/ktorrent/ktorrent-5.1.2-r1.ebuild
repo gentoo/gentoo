@@ -76,6 +76,8 @@ RDEPEND="${COMMON_DEPEND}
 	)
 "
 
+PATCHES=( "${FILESDIR}/${PN}-5.1.1-singlefile-torrent.patch" ) # git master
+
 src_configure() {
 	local mycmakeargs=(
 		-DENABLE_BWSCHEDULER_PLUGIN=$(usex bwscheduler)
