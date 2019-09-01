@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,7 +10,6 @@ else
 	inherit cmake-utils depend.apache eutils git-r3 systemd toolchain-funcs user wxwidgets
 	EGIT_REPO_URI="https://github.com/Icinga/icinga2.git"
 	EGIT_BRANCH="master"
-	KEYWORDS=""
 fi
 
 DESCRIPTION="Distributed, general purpose, network monitoring engine"
