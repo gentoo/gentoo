@@ -10,6 +10,7 @@ acct-group/gamestat 0: Group for shared high-score and game state files
 acct-group/gkrellmd 0: System group: gkrellmd
 acct-group/i2pd 0: Group for the system-wide net-vpn/i2pd server
 acct-group/input 0: System group: input
+acct-group/inspircd 0: System group: inspircd
 acct-group/kmem 0: System group: kmem
 acct-group/knot 0: System group: knot
 acct-group/kvm 0: System group: kvm
@@ -53,6 +54,7 @@ acct-user/dnscrypt-proxy 0: User for net-dns/dnscrypt-proxy
 acct-user/ftp 0: File Transfer Protocol server user
 acct-user/gkrellmd 0: user for gkrellm daemon
 acct-user/i2pd 0: User for the system-wide net-vpn/i2pd server
+acct-user/inspircd 0: User for InspIRCd server daemon
 acct-user/knot 0: User for knot DNS server
 acct-user/logstash 0: Logstash program user
 acct-user/mail 0: Mail program user
@@ -14968,7 +14970,7 @@ net-irc/emech 3.0.3-r1 3.0.99_p3: UNIX compatible IRC bot programmed in the C la
 net-irc/epic5 2.0.1: Epic5 IRC Client
 net-irc/hexchat 2.12.4-r2 2.14.1 2.14.2 9999: Graphical IRC client based on XChat
 net-irc/ii 1.7-r1 1.8 9999: A minimalist FIFO and filesystem-based IRC client
-net-irc/inspircd 2.0.25 2.0.27 3.2.0: Inspire IRCd - The Stable, High-Performance Modular IRCd
+net-irc/inspircd 2.0.25 2.0.28 3.2.0 3.3.0: Inspire IRCd - The Stable, High-Performance Modular IRCd
 net-irc/irc-server 2.11.1_p1-r4: RFC compliant IRC server
 net-irc/ircii 20110228 20111115 20170704 20190117: An IRC and ICB client that runs under most UNIX platforms
 net-irc/ircmap 0.99-r1: Scripts to treate diagrams of IRC networks using the LINKS command
