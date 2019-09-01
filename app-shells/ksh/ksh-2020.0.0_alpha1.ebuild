@@ -22,8 +22,8 @@ KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86"
 RDEPEND="!app-shells/pdksh"
 
 PATCHES=(
-	"${DISTDIR}"/${MY_P}.patch
-	"${DISTDIR}"/${MY_P}.patch
+	"${DISTDIR}"/${MY_P}-solaris.patch
+	"${DISTDIR}"/${MY_P}-conftab.patch
 )
 
 src_install() {
