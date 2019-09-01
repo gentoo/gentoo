@@ -5739,6 +5739,7 @@ net-dns/bind:dlz - Enables dynamic loaded zones, 3rd party extension
 net-dns/bind:dnsrps - Enable the DNS Response Policy Service (DNSRPS) API, a mechanism to allow an external response policy provider
 net-dns/bind:dnstap - Enables dnstap packet logging
 net-dns/bind:fixed-rrset - Enables fixed rrset-order option
+net-dns/bind:geoip2 - Enable GeoIP2 API from MaxMind
 net-dns/bind:gost - Enables gost OpenSSL engine support
 net-dns/bind:gssapi - Enable gssapi support
 net-dns/bind:json - Enable JSON statistics channel

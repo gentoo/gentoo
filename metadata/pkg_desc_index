@@ -11,6 +11,7 @@ acct-group/gkrellmd 0: System group: gkrellmd
 acct-group/i2pd 0: Group for the system-wide net-vpn/i2pd server
 acct-group/input 0: System group: input
 acct-group/kmem 0: System group: kmem
+acct-group/knot 0: System group: knot
 acct-group/kvm 0: System group: kvm
 acct-group/libvirt 0: System group: libvirt
 acct-group/logstash 0: Logstash program group
@@ -52,6 +53,7 @@ acct-user/dnscrypt-proxy 0: User for net-dns/dnscrypt-proxy
 acct-user/ftp 0: File Transfer Protocol server user
 acct-user/gkrellmd 0: user for gkrellm daemon
 acct-user/i2pd 0: User for the system-wide net-vpn/i2pd server
+acct-user/knot 0: User for knot DNS server
 acct-user/logstash 0: Logstash program user
 acct-user/mail 0: Mail program user
 acct-user/man 1: System user: man
@@ -14762,9 +14764,9 @@ net-dialup/wvdial 1.61: Excellent program to automatically configure PPP session
 net-dialup/xc 4.3.2-r3 4.3.2-r4: Modem dialout & serial terminal program
 net-dialup/xl2tpd 1.3.10 1.3.11 1.3.12 1.3.13: A modern version of the Layer 2 Tunneling Protocol (L2TP) daemon
 net-dns/avahi 0.6.32 0.7-r1 0.7-r2: System which facilitates service discovery on a local network
-net-dns/bind 9.14.4 9.15.2: Berkeley Internet Name Domain - Name Server
+net-dns/bind 9.14.4 9.14.5 9.15.2: Berkeley Internet Name Domain - Name Server
 net-dns/bind-dns-keygen 9.3.2.39-r1: A simple BIND key generator
-net-dns/bind-tools 9.14.4 9.15.2: bind tools: dig, nslookup, host, nsupdate, dnssec-keygen
+net-dns/bind-tools 9.14.4 9.14.5 9.15.2: bind tools: dig, nslookup, host, nsupdate, dnssec-keygen
 net-dns/c-ares 1.13.0 1.14.0 1.15.0: C library that resolves names asynchronously
 net-dns/coredns 1.3.0 1.3.1: A DNS server that chains middleware
 net-dns/ddclient 3.9.0-r2: Perl client used to update dynamic DNS entries
@@ -14789,7 +14791,7 @@ net-dns/getdns 1.5.1 1.5.2-r2: Modern asynchronous DNS API
 net-dns/hash-slinger 2.6-r1 2.7-r1: Various tools to generate special DNS records like SSHFP, TLSA, OPENPGPKEY, IPSECKEY
 net-dns/https_dns_proxy 9999: A lightweight DNS-over-HTTPS proxy.
 net-dns/idnkit 1.0-r2 2.3: Toolkit for Internationalized Domain Names (IDN)
-net-dns/knot 2.7.7 2.8.2: High-performance authoritative-only DNS server
+net-dns/knot 2.7.7 2.7.8 2.8.2 2.8.3: High-performance authoritative-only DNS server
 net-dns/ldns-utils 1.7.0-r1: Set of utilities to simplify various dns(sec) tasks
 net-dns/libidn 1.33-r2 1.33-r99 1.35: Internationalized Domain Names (IDN) implementation
 net-dns/libidn2 2.1.1a-r1 2.2.0 99999: An implementation of the IDNA2008 specifications (RFCs 5890, 5891, 5892, 5893)
@@ -18031,7 +18033,7 @@ sys-kernel/linux-docs 4.19: Developer documentation generated from the Linux ker
 sys-kernel/linux-firmware 20190603 20190815 99999999: Linux firmware files
 sys-kernel/linux-headers 3.18 4.4 4.9 4.13 4.14-r1 4.15-r1 4.16 4.16-r2 4.17 4.18 4.19 4.20 5.0 5.0-r1 5.1 5.2: Linux system headers
 sys-kernel/mips-sources 4.4.186 4.9.186 4.14.135 4.17.19 4.18.20: Linux-Mips GIT sources for MIPS-based machines, dated 20181112
-sys-kernel/pf-sources 5.1_p7 5.2_p1 5.2_p2 5.2_p3 5.2_p4 5.2_p5 5.2_p6: Linux kernel fork that includes the pf-kernel patchset and Gentoo's genpatches
+sys-kernel/pf-sources 5.1_p7 5.2_p1 5.2_p2 5.2_p3 5.2_p4 5.2_p5 5.2_p6 5.2_p7: Linux kernel fork that includes the pf-kernel patchset and Gentoo's genpatches
 sys-kernel/raspberrypi-image 4.14.98_p20190215 4.19.57_p20190709 9999: Raspberry Pi (all versions) kernel and modules
 sys-kernel/raspberrypi-sources 4.4.9999 4.9.9999 4.10.9999 4.11.9999 4.12.9999 4.13.9999 4.14.9999 4.19.9999: Raspberry PI kernel sources
 sys-kernel/rt-sources 3.18.123_p107 3.18.125_p108 3.18.129_p110 4.4.162_p175 4.4.164_p176 4.9.115_p93 4.9.146_p125 4.14.71_p44 4.14.78_p47 4.14.87_p49 4.16.18_p12 4.18.16_p9 4.19.5_p4 4.19.10_p8: Full Linux 4.19 kernel sources with the CONFIG_PREEMPT_RT patch
