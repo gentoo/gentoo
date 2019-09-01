@@ -30,6 +30,10 @@
 #--- END OF EXAMPLES ---
 
 # Matt Turner <mattst88@gentoo.org> (2019-09-01)
+# <dev-scheme/guile-2 is package.mask'd
+<media-sound/lilypond-2.19
+
+# Matt Turner <mattst88@gentoo.org> (2019-09-01)
 # dev-scheme/guile-gnome-platform depends on dev-scheme/guile:12. Its only
 # reverse dependency is sci-chemistry/burrow-owl, so include it. The others are
 # dependencies of sci-chemistry/burrow-owl as well, and it is their only
