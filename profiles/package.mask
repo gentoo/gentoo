@@ -30,6 +30,12 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2019-09-01)
+# Never keyworded on amd64 (and probably does not work on 64-bit
+# systems).  Last release from 2001.  Requires rare hardware.
+# Removal in 30 days.  Bug #693258.
+dev-games/flinker
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-01)
 # Last bumped in 2007.  The current version is known to be broken
 # on amd64.  The game has been discontinued, and then revived/forked
 # multiple times.  It is pending a version bump since at least 2011.
