@@ -30,6 +30,11 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2019-09-01)
+# Remnant of Half-Life server stuff that was removed back in 2005.
+# Removal in 30 days.  Bug #693260.
+dev-games/hlsdk
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-01)
 # Ancient, i386-only binary package.  Current version is a nightly
 # from 2006.  The package has had a release since, has found a new
 # upstream and has been forked multiple times as well.  Apparently
