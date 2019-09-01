@@ -393,10 +393,6 @@ dev-lang/vala:0.46
 dev-lang/php:7.4
 ~virtual/httpd-php-7.4
 
-# Lars Wendler <polynomial-c@gentoo.org> (2019-07-21)
-# Requires >=mail-client/thunderbird-68_beta1 which is not in the tree yet
->=x11-plugins/enigmail-2.1
-
 # Sobhan Mohammadpour <sobhan@gentoo.org> (2019-07-14)
 # Masked for testing
 >=media-video/totem-3.32.1
