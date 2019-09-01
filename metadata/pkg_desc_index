@@ -4803,7 +4803,7 @@ dev-libs/geoip 1.6.9-r1 1.6.10 1.6.11 1.6.12: GeoIP Legacy C API
 dev-libs/gf-complete 0.0.0 2.0.0: A Comprehensive Open Source Library for Galois Field Arithmetic
 dev-libs/gf2x 1.0-r1 1.1 1.2: C/C++ routines for fast arithmetic in GF(2)[x]
 dev-libs/girara 0.3.1 0.3.2 9999: UI library that focuses on simplicity and minimalism
-dev-libs/gjs 1.48.7 1.54.3: Javascript bindings for GNOME
+dev-libs/gjs 1.48.7 1.54.3 1.56.2: Javascript bindings for GNOME
 dev-libs/glib 2.58.3-r1 2.60.6: The GLib library of C routines
 dev-libs/gmime 2.6.23 3.2.3: Utilities for creating and parsing messages using MIME
 dev-libs/gmp 4.3.2-r1 6.1.2 6.1.2-r1: Library for arbitrary-precision arithmetic on different type of numbers
@@ -11977,7 +11977,7 @@ gnome-base/gnome-session 3.30.1-r1: Gnome session manager
 gnome-base/gnome-settings-daemon 3.30.2-r1: Gnome Settings Daemon
 gnome-base/gnome-shell 3.26.2-r4 3.30.2-r2: Provides core UI functions for the GNOME 3 desktop
 gnome-base/gnome-vfs 2.24.4-r5: Gnome Virtual Filesystem
-gnome-base/gsettings-desktop-schemas 3.24.1 3.28.1: Collection of GSettings schemas for GNOME desktop
+gnome-base/gsettings-desktop-schemas 3.24.1 3.28.1 3.32.0: Collection of GSettings schemas for GNOME desktop
 gnome-base/gvfs 1.32.2 1.38.3 1.40.2: Virtual filesystem implementation for GIO
 gnome-base/libbonobo 2.24.3-r1: GNOME CORBA framework
 gnome-base/libbonoboui 2.24.5-r1: User Interface part of libbonobo
