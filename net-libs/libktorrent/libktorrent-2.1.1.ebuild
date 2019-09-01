@@ -20,7 +20,6 @@ COMMON_DEPEND="
 	$(add_frameworks_dep karchive)
 	$(add_frameworks_dep kconfig)
 	$(add_frameworks_dep kcoreaddons)
-	$(add_frameworks_dep kcrash)
 	$(add_frameworks_dep ki18n)
 	$(add_frameworks_dep kio)
 	$(add_frameworks_dep solid)
@@ -36,6 +35,8 @@ DEPEND="${COMMON_DEPEND}
 RDEPEND="${COMMON_DEPEND}
 	!dev-libs/botan[gmp(-)]
 "
+
+PATCHES=( "${FILESDIR}/${PN}-2.1-unused-link.patch" ) # git master
 
 src_prepare() {
 	kde5_src_prepare
