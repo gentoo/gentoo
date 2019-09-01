@@ -1,0 +1,46 @@
+# HG changeset patch
+# User Emilio Cobos Álvarez <emilio@crisal.io>
+# Date 1559048542 0
+# Node ID 03fe96d5969ac6885ca539bf7759780ed75a1375
+# Parent  e6cf9d0df0793e7f76cb2877989fc5aeca98e530
+Bug 1554949 - Fix WebRTC build failure with newer linux kernel. r=dminor, a=RyanVM DONTBUILD
+
+Recent kernel commit[1] moved a bit the define for this constant. This revealed
+a missing include in WebRTC.
+
+I filed this upstream in:
+
+ * https://bugs.chromium.org/p/webrtc/issues/detail?id=10677
+
+And sent a patch in:
+
+ * https://webrtc-review.googlesource.com/c/src/+/138270
+
+[1]: https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=0768e17073dc5
+
+Differential Revision: https://phabricator.services.mozilla.com/D32809
+
+diff --git a/media/webrtc/trunk/webrtc/rtc_base/physicalsocketserver.cc b/media/webrtc/trunk/webrtc/rtc_base/physicalsocketserver.cc
+--- a/media/webrtc/trunk/webrtc/rtc_base/physicalsocketserver.cc
++++ b/media/webrtc/trunk/webrtc/rtc_base/physicalsocketserver.cc
+@@ -56,16 +56,19 @@
+ #if defined(WEBRTC_POSIX)
+ #include <netinet/tcp.h>  // for TCP_NODELAY
+ #define IP_MTU 14 // Until this is integrated from linux/in.h to netinet/in.h
+ typedef void* SockOptArg;
+ 
+ #endif  // WEBRTC_POSIX
+ 
+ #if defined(WEBRTC_POSIX) && !defined(WEBRTC_MAC) && !defined(WEBRTC_BSD) && !defined(__native_client__)
++#if defined(WEBRTC_LINUX)
++#include <linux/sockios.h>
++#endif
+ 
+ int64_t GetSocketRecvTimestamp(int socket) {
+   struct timeval tv_ioctl;
+   int ret = ioctl(socket, SIOCGSTAMP, &tv_ioctl);
+   if (ret != 0)
+     return -1;
+   int64_t timestamp =
+       rtc::kNumMicrosecsPerSec * static_cast<int64_t>(tv_ioctl.tv_sec) +
+
