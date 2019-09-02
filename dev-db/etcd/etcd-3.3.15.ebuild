@@ -5,7 +5,7 @@ EAPI=6
 
 inherit user systemd golang-vcs-snapshot
 
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 EGO_PN="github.com/coreos/etcd"
 GIT_COMMIT="94745a4"
 MY_PV="${PV/_rc/-rc.}"
