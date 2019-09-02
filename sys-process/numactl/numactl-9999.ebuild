@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit autotools toolchain-funcs multilib-minimal
 
@@ -41,7 +41,7 @@ multilib_src_compile() {
 
 multilib_src_test() {
 	if multilib_is_native_abi ; then
-		if [ -d /sys/devices/system/node ]; then
+		if [[ -d /sys/devices/system/node ]] ; then
 			einfo "The only generically safe test is regress2."
 			einfo "The other test cases require 2 NUMA nodes."
 			emake regress2
@@ -54,12 +54,12 @@ multilib_src_test() {
 multilib_src_install() {
 	emake DESTDIR="${D}" \
 		install$(multilib_is_native_abi || echo "-libLTLIBRARIES install-includeHEADERS")
-	find "${ED%/}"/usr/ -name libnuma.la -delete || die
+	find "${ED}"/usr/ -type f -name libnuma.la -delete || die
 }
 
 multilib_src_install_all() {
 	local DOCS=( README.md )
 	einstalldocs
 	# delete man pages provided by the man-pages package #238805
-	rm -r "${ED%/}"/usr/share/man/man[25] || die
+	rm -r "${ED}"/usr/share/man/man[25] || die
 }
