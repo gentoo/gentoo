@@ -138,6 +138,9 @@ src_install() {
 	mv "${ED}"/usr/sbin/rpc.statd "${ED}"/sbin/ || die
 
 	if use nfsv4 && use nfsidmap ; then
+		insinto /etc
+		doins support/nfsidmap/idmapd.conf
+
 		# Install a config file for idmappers in newer kernels. #415625
 		insinto /etc/request-key.d
 		echo 'create id_resolver * * /usr/sbin/nfsidmap -t 600 %k %d' > id_resolver.conf
