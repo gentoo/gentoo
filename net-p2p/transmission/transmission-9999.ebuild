@@ -1,9 +1,9 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit cmake-utils gnome2-utils readme.gentoo-r1 systemd xdg-utils
+inherit cmake-utils readme.gentoo-r1 systemd xdg-utils
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
@@ -24,6 +24,18 @@ SLOT="0"
 IUSE="ayatana gtk libressl lightweight nls mbedtls qt5 systemd test"
 RESTRICT="!test? ( test )"
 
+BDEPEND="
+	virtual/pkgconfig
+	nls? (
+		gtk? (
+			dev-util/intltool
+			sys-devel/gettext
+		)
+		qt5? (
+			dev-qt/linguist-tools:5
+		)
+	)
+"
 COMMON_DEPEND="
 	dev-libs/libb64:0=
 	>=dev-libs/libevent-2.0.10:=
@@ -36,6 +48,7 @@ COMMON_DEPEND="
 	>=net-libs/miniupnpc-1.7:=
 	>=net-misc/curl-7.16.3[ssl]
 	sys-libs/zlib:=
+	nls? ( virtual/libintl )
 	gtk? (
 		>=dev-libs/dbus-glib-0.100
 		>=dev-libs/glib-2.32:2
@@ -52,7 +65,6 @@ COMMON_DEPEND="
 	systemd? ( >=sys-apps/systemd-209:= )
 "
 DEPEND="${COMMON_DEPEND}
-	virtual/pkgconfig
 	nls? (
 		virtual/libintl
 		gtk? (
@@ -128,17 +140,17 @@ src_install() {
 	readme.gentoo_create_doc
 }
 
-pkg_preinst() {
-	gnome2_icon_savelist
-}
-
 pkg_postrm() {
-	xdg_desktop_database_update
-	gnome2_icon_cache_update
+	if use gtk || use qt5; then
+		xdg_desktop_database_update
+		xdg_icon_cache_update
+	fi
 }
 
 pkg_postinst() {
-	xdg_desktop_database_update
-	gnome2_icon_cache_update
+	if use gtk || use qt5; then
+		xdg_desktop_database_update
+		xdg_icon_cache_update
+	fi
 	readme.gentoo_print_elog
 }
