@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools toolchain-funcs multilib-minimal
+inherit autotools flag-o-matic toolchain-funcs multilib-minimal
 
 DESCRIPTION="Utilities and libraries for NUMA systems"
 HOMEPAGE="https://github.com/numactl/numactl"
@@ -26,6 +26,11 @@ PATCHES=(
 
 src_prepare() {
 	default
+
+	# lto not supported yet
+	# gcc-9 with -flto leads to link failures: #692254
+	filter-flags -flto*
+
 	eautoreconf
 	# We need to copy the sources or else tests will fail
 	multilib_copy_sources
