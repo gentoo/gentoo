@@ -29,6 +29,18 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2019-09-02)
+# gnome-vfs was deprecated along with GNOME 2.22 in favor of gvfs.
+# gnome-vfsmm provides C++ bindings for it, with last release in 2009
+# and only one reverse dependency.
+#
+# assogiate is the last revdep of gnome-vfsmm.  It was last bumped
+# in 2007, and the homepage is long gone (last seen ~2009).
+#
+# Removal in 30 days.  Bug #649000.
+dev-cpp/gnome-vfsmm
+gnome-extra/assogiate
+
 # Matt Turner <mattst88@gentoo.org> (2019-09-01)
 # <dev-scheme/guile-2 is package.mask'd
 <media-sound/lilypond-2.19
