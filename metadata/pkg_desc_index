@@ -15482,7 +15482,7 @@ net-misc/midentd 2.3.1-r2: ident daemon with masquerading and fake replies suppo
 net-misc/mikutter 3.5.4-r1 3.8.6 9999: Simple, powerful and moeful twitter client
 net-misc/minidlna 1.2.1-r1: DLNA/UPnP-AV compliant media server
 net-misc/minissdpd 1.5.20190210 1.5.20190824: MiniSSDP Daemon
-net-misc/miniupnpd 2.1.20190630 2.1.20190824: MiniUPnP IGD Daemon
+net-misc/miniupnpd 2.1.20190630 2.1.20190824 2.1.20190902: MiniUPnP IGD Daemon
 net-misc/mobile-broadband-provider-info 20190618: Database of mobile broadband service providers
 net-misc/modemmanager 1.8.2-r1 1.10.0: Modem and mobile broadband management libraries
 net-misc/monmotha 2.3.8-r1: MonMotha IPTables-based firewall script
