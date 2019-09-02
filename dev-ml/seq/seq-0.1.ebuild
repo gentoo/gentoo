@@ -12,7 +12,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND="dev-ml/ocamlbuild"
+DEPEND="dev-ml/findlib
+	dev-ml/ocamlbuild"
 RDEPEND="${DEPEND}"
 BDEPEND=""
 

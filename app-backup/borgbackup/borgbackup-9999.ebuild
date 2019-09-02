@@ -40,8 +40,15 @@ DEPEND="
 	${RDEPEND}
 "
 
+BDEPEND="dev-python/pkgconfig"
+
 python_prepare_all() {
 	# allow use of new (renamed) msgpack
 	sed -i "s|'msgpack-python.*',||g" setup.py || die
 	distutils-r1_python_prepare_all
+}
+
+src_install() {
+	distutils-r1_src_install
+	doman docs/man/*
 }

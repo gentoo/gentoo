@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,7 +10,7 @@ inherit eutils python-r1
 
 DESCRIPTION="A utility to find various forms of lint on a filesystem"
 HOMEPAGE="http://www.pixelbeat.org/fslint/"
-SRC_URI="${HOMEPAGE}${P}.tar.xz"
+SRC_URI="http://www.pixelbeat.org/fslint/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"

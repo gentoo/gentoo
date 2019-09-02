@@ -12,7 +12,7 @@ SRC_URI="http://www.ibiblio.org/pub/linux/apps/editors/tty/teco.tar.gz -> ${P}.t
 
 LICENSE="freedist"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~ppc x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris"
+KEYWORDS="alpha amd64 ~ppc x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris"
 IUSE="doc"
 
 RDEPEND="sys-libs/ncurses:0="
@@ -22,7 +22,7 @@ BDEPEND="virtual/pkgconfig"
 S="${WORKDIR}"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-double-free.diff
+	"${FILESDIR}"/${PN}-double-free.patch
 	"${FILESDIR}"/${PN}-gcc4.patch
 	"${FILESDIR}"/${PN}-warnings.patch
 )

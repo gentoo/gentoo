@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -21,6 +21,7 @@ RDEPEND="
 	sys-libs/zlib:=
 "
 DEPEND="${RDEPEND}
+	app-arch/unzip
 	>=gnustep-base/gnustep-make-2.6.0[native-exceptions]
 	sys-devel/gcc[objc]
 "

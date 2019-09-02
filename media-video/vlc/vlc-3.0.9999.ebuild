@@ -139,10 +139,10 @@ RDEPEND="
 	lua? ( >=dev-lang/lua-5.1:0= )
 	mad? ( media-libs/libmad )
 	matroska? (
-		dev-libs/libebml:=
+		>=dev-libs/libebml-1.3.6:=
 		media-libs/libmatroska:=
 	)
-	modplug? ( media-libs/libmodplug )
+	modplug? ( >=media-libs/libmodplug-0.8.9.0 )
 	mp3? ( media-sound/mpg123 )
 	mpeg? ( media-libs/libmpeg2 )
 	mtp? ( media-libs/libmtp:= )

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,7 +7,7 @@ inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="the nice editor, easy to use for the beginner and powerful for the wizard"
 HOMEPAGE="http://ne.di.unimi.it/"
-SRC_URI="${HOMEPAGE}/${P}.tar.gz"
+SRC_URI="http://ne.di.unimi.it/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

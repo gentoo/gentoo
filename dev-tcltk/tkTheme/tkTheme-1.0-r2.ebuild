@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
@@ -7,7 +7,7 @@ inherit autotools-utils  eutils toolchain-funcs
 
 DESCRIPTION="Tcl/Tk Theming library"
 HOMEPAGE="http://www.xmission.com/~georgeps/Tk_Theme/other/"
-SRC_URI="http://www.xmission.com/~georgeps/Tk_Theme/other/${PN}.tgz"
+SRC_URI="mirror://gentoo/${PN}.tgz -> ${P}.tgz"
 
 LICENSE="BSD"
 SLOT="0"

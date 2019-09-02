@@ -11,7 +11,7 @@ HOMEPAGE="https://git.gnome.org/browse/gdk-pixbuf"
 LICENSE="LGPL-2+"
 SLOT="2"
 KEYWORDS="alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 s390 ~sh ~sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="X gtk-doc +introspection jpeg jpeg2k tiff"
+IUSE="X gtk-doc +introspection jpeg tiff"
 
 # TODO: For windows/darwin support: shared-mime-info conditional, native_windows_loaders option review
 COMMON_DEPEND="
@@ -20,7 +20,6 @@ COMMON_DEPEND="
 	>=media-libs/libpng-1.4:0=[${MULTILIB_USEDEP}]
 	jpeg? ( virtual/jpeg:0=[${MULTILIB_USEDEP}] )
 	tiff? ( >=media-libs/tiff-3.9.2:0=[${MULTILIB_USEDEP}] )
-	jpeg2k? ( media-libs/jasper:=[${MULTILIB_USEDEP}] )
 	X? ( x11-libs/libX11[${MULTILIB_USEDEP}] )
 	introspection? ( >=dev-libs/gobject-introspection-1.54:= )
 "
@@ -66,7 +65,7 @@ multilib_src_configure() {
 		-Dpng=true
 		$(meson_use tiff)
 		$(meson_use jpeg)
-		$(meson_use jpeg2k jasper)
+		-Djasper=false
 		$(meson_use X x11)
 		-Dbuiltin_loaders=png
 		-Drelocatable=false

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -34,7 +34,7 @@ RDEPEND="${PYTHON_DEPS}
 	hackrf? ( net-libs/libhackrf:= )
 	iqbalance? ( net-wireless/gr-iqbal:=[${PYTHON_USEDEP}] )
 	mirisdr? ( net-libs/libmirisdr:= )
-	rtlsdr? ( >=net-wireless/rtl-sdr-0.5.3:= )
+	rtlsdr? ( >=net-wireless/rtl-sdr-0.5.4:= )
 	sdrplay? ( net-wireless/sdrplay )
 	soapy? ( net-wireless/soapysdr:= )
 	uhd? ( net-wireless/uhd:=[${PYTHON_USEDEP}] )"

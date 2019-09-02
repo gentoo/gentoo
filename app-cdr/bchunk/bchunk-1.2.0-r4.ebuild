@@ -5,7 +5,7 @@ EAPI="6"
 
 DESCRIPTION="Convert CD images from bin/cue to iso+wav/cdr"
 HOMEPAGE="http://he.fi/bchunk/"
-SRC_URI="${HOMEPAGE}${P}.tar.gz"
+SRC_URI="http://he.fi/bchunk/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"

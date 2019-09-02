@@ -51,7 +51,6 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${PN}-3.0.1-man-pages.patch"
-	"${FILESDIR}/${PN}-3.0.1-porttime.patch"
 )
 
 src_unpack() {

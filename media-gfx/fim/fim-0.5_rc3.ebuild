@@ -12,7 +12,7 @@ SRC_URI="http://download.savannah.gnu.org/releases/fbi-improved/${P/_rc/-rc}.tar
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
-IUSE="aalib bmp dia djvu exif fbcon gif graphicsmagick imagemagick jpeg jpeg2k pcx pdf png postscript readline sdl static svg tiff xfig"
+IUSE="aalib bmp dia djvu exif fbcon gif graphicsmagick imagemagick jpeg pcx pdf png postscript readline sdl static svg tiff xfig"
 
 RDEPEND="media-fonts/terminus-font
 	aalib? ( media-libs/aalib[slang] )
@@ -23,7 +23,6 @@ RDEPEND="media-fonts/terminus-font
 	graphicsmagick? ( media-gfx/graphicsmagick )
 	imagemagick? ( virtual/imagemagick-tools )
 	jpeg? ( virtual/jpeg:0 )
-	jpeg2k? ( media-libs/jasper:= )
 	pdf? ( >=app-text/poppler-0.31 )
 	png? ( media-libs/libpng:0= )
 	postscript? ( app-text/libspectre )
@@ -62,7 +61,6 @@ src_configure() {
 		$(use_enable graphicsmagick) \
 		$(use_enable imagemagick convert) \
 		$(use_enable jpeg) \
-		$(use_enable jpeg2k jasper) \
 		$(use_enable pcx) \
 		$(use_enable pdf poppler) \
 		$(use_enable png) \
@@ -75,6 +73,7 @@ src_configure() {
 		$(use_enable xfig) \
 		--disable-hardcoded-font \
 		--disable-imlib2 \
+		--disable-jasper \
 		--disable-matrices-rendering \
 		--disable-xcftopnm \
 		--enable-fimrc \

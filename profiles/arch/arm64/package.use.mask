@@ -79,12 +79,6 @@ virtual/ffmpeg -sdl
 # It builds OK but is not yet in ::gentoo. bug #678404
 kde-apps/cantor lua
 
-# Dirkjan Ochtman <djc@gentoo.org> (2018-09-29)
-# Upstream doesn't build docs for tier 2 and lower architectures.
-# Bug #660512.
-dev-lang/rust doc
-dev-lang/rust-bin doc
-
 # Virgil Dupras <vdupras@gentoo.org> (2018-09-06)
 # sci-electronics/ngspice not yet keyworded, bug #665416
 # sci-libs/opencascade not yet keyworded
@@ -333,9 +327,8 @@ media-sound/pulseaudio neon
 media-libs/vo-aacenc cpu_flags_arm_neon
 
 # Alexis Ballier <aballier@gentoo.org> (2017-06-16)
-# neon on pixman seems armv7 only, at least according to configure checks: it
-# aborts when neon is enabled.
-x11-libs/pixman neon
+# pixman's neon code is armv7 only.
+x11-libs/pixman cpu_flags_arm_neon neon
 
 # James Le Cuirot <chewi@gentoo.org> (2017-05-22)
 # Only available on some architectures.

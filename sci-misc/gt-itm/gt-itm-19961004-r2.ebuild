@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,9 +7,9 @@ inherit toolchain-funcs
 
 DESCRIPTION="Routines to generate / analyze graphs using models for internetwork topology"
 HOMEPAGE="http://www.cc.gatech.edu/fac/Ellen.Zegura/graphs.html
-		  http://www.isi.edu/nsnam/ns/ns-topogen.html#gt-itm"
-SRC_URI="http://www.cc.gatech.edu/fac/Ellen.Zegura/gt-itm/gt-itm.tar.gz
-		 http://www.isi.edu/nsnam/dist/sgb2ns.tar.gz"
+		http://www.isi.edu/nsnam/ns/ns-topogen.html#gt-itm"
+SRC_URI="http://www.cc.gatech.edu/fac/Ellen.Zegura/gt-itm/gt-itm.tar.gz -> ${P}.tar.gz
+		http://www.isi.edu/nsnam/dist/sgb2ns.tar.gz -> sgb2ns-${PV}.tar.gz"
 
 LICENSE="all-rights-reserved sgb2ns"
 SLOT="0"
@@ -27,12 +27,13 @@ PATCHES=( "${FILESDIR}"/${PN}-implicits.patch )
 DOCS=( README docs/. )
 
 src_unpack() {
-	unpack sgb2ns.tar.gz
+	unpack "sgb2ns-${PV}.tar.gz"
 
 	mkdir "$S" || die
 	cd "$S" || die
-	unpack gt-itm.tar.gz
+	unpack "${P}.tar.gz"
 }
+
 src_prepare() {
 	sed -ri -e '/^[[:alnum:]]+\.o:/d' \
 		-e 's|LIBS = -lm -lgb.*|LIBS = -lm -lgb|' \

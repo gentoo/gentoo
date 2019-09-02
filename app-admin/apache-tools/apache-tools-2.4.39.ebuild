@@ -90,7 +90,7 @@ src_install() {
 
 	# Providing compatiblity symlinks for #177697 (which we'll stop to install
 	# at some point).
-	pushd "${ED%/}"/usr/sbin >/dev/null || die
+	pushd "${ED}"/usr/sbin >/dev/null || die
 	local i
 	for i in *; do
 		dosym ${i} /usr/sbin/${i}2

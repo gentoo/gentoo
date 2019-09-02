@@ -41,8 +41,8 @@ RDEPEND=">=sys-libs/libsepol-${SEPOL_VER}:=[${MULTILIB_USEDEP}]
 	elibc_musl? ( sys-libs/fts-standalone )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
-	python? ( >=dev-lang/swig-2.0.9 )
-	ruby? ( >=dev-lang/swig-2.0.9 )"
+	python? ( <dev-lang/swig-4_pre )
+	ruby? ( <dev-lang/swig-4_pre )"
 
 src_prepare() {
 	eapply_user

@@ -167,10 +167,10 @@ src_install() {
 	local udev_rules_dir="/lib/udev/rules.d"
 	dodir ${udev_rules_dir}
 	echo 'KERNEL=="vboxguest", OWNER="vboxguest", GROUP="vboxguest", MODE="0660"' \
-		>> "${ED%/}/${udev_rules_dir}/60-virtualbox-guest-additions.rules" \
+		>> "${ED}/${udev_rules_dir}/60-virtualbox-guest-additions.rules" \
 		|| die
 	echo 'KERNEL=="vboxuser", OWNER="vboxguest", GROUP="vboxguest", MODE="0660"' \
-		>> "${ED%/}/${udev_rules_dir}/60-virtualbox-guest-additions.rules" \
+		>> "${ED}/${udev_rules_dir}/60-virtualbox-guest-additions.rules" \
 		|| die
 
 	# VBoxClient autostart file

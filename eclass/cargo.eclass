@@ -12,7 +12,12 @@
 if [[ -z ${_CARGO_ECLASS} ]]; then
 _CARGO_ECLASS=1
 
-CARGO_DEPEND="virtual/cargo"
+if [[ ${PV} == *9999* ]]; then
+	# we need at least this for cargo vendor subommand
+	CARGO_DEPEND=">=virtual/cargo-1.37.0"
+else
+	CARGO_DEPEND="virtual/cargo"
+fi
 
 case ${EAPI} in
 	6) DEPEND="${CARGO_DEPEND}";;
@@ -93,6 +98,26 @@ cargo_src_unpack() {
 				;;
 		esac
 	done
+
+	cargo_gen_config
+}
+
+# @FUNCTION: cargo_live_src_unpack
+# @DESCRIPTION:
+# Runs 'cargo fetch' and vendors downloaded crates for offline use, used in live ebuilds
+
+cargo_live_src_unpack() {
+	debug-print-function ${FUNCNAME} "$@"
+
+	[[ "${PV}" == *9999* ]] || die "${FUNCNAME} only allowed in live/9999 ebuilds"
+	[[ "${EBUILD_PHASE}" == unpack ]] || die "${FUNCNAME} only allowed in src_unpack"
+
+	mkdir -p "${S}" || die
+
+	pushd "${S}" > /dev/null || die
+	CARGO_HOME="${ECARGO_HOME}" cargo fetch || die
+	CARGO_HOME="${ECARGO_HOME}" cargo vendor "${ECARGO_VENDOR}" || die
+	popd > /dev/null || die
 
 	cargo_gen_config
 }

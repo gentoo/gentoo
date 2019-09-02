@@ -5,6 +5,6 @@ Exec=/usr/bin/thunderbird %u
 Icon=thunderbird-icon-unbranded
 Terminal=false
 Type=Application
-Categories=Office;Network;Email;
-MimeType=x-scheme-handler/mailto;
-StartupNotify=true
+Categories=Office;Email;
+MimeType=text/x-vcard;text/directory;application/mbox;message/rfc822;x-scheme-handler/mailto;
+

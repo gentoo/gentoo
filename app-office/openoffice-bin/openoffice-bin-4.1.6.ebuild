@@ -3,7 +3,9 @@
 
 EAPI="6"
 
-inherit eutils xdg-utils gnome2-utils pax-utils prefix rpm multilib
+PYTHON_COMPAT=( python2_7 )
+
+inherit eutils xdg-utils gnome2-utils pax-utils prefix python-single-r1 rpm multilib
 
 IUSE="gnome java"
 
@@ -42,6 +44,7 @@ done
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
+REQUIRED_USE=${PYTHON_REQUIRED_USE}
 
 RDEPEND="
 	!app-office/openoffice
@@ -49,7 +52,7 @@ RDEPEND="
 	app-arch/unzip
 	app-arch/zip
 	>=dev-lang/perl-5.0
-	dev-lang/python:2.7
+	${PYTHON_DEPS}
 	>=media-libs/freetype-2.1.10-r2
 	sys-libs/ncurses:5/5
 	x11-libs/libXaw
@@ -70,7 +73,6 @@ pkg_setup() {
 }
 
 src_unpack() {
-
 	unpack ${A}
 
 	cp "${FILESDIR}"/{50-${PN},wrapper.in} "${T}"
@@ -115,11 +117,9 @@ src_unpack() {
 
 		fi
 	done
-
 }
 
 src_install () {
-
 	INSTDIR="/usr/$(get_libdir)/${NM}"
 	dodir ${INSTDIR}
 	# mv "${WORKDIR}"/opt/${NM}/* "${ED}${INSTDIR}" || die
@@ -166,24 +166,18 @@ src_install () {
 }
 
 pkg_preinst() {
-
 	use gnome && gnome2_icon_savelist
-
 }
 
 pkg_postinst() {
-
 	xdg_desktop_database_update
 	xdg_mimeinfo_database_update
 	use gnome && gnome2_icon_cache_update
 
 	pax-mark -m "${EPREFIX}"/usr/$(get_libdir)/${NM}/program/soffice.bin
-
 }
 
 pkg_postrm() {
-
 	xdg_desktop_database_update
 	use gnome && gnome2_icon_cache_update
-
 }

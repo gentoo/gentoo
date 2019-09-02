@@ -241,13 +241,6 @@ python_install_all() {
 	rm -r "${ED}/usr/etc"
 }
 
-python_install() {
-	distutils-r1_python_install
-	# copy migration conf file (not coppied on install via setup.py script)
-	insinto "$(python_get_sitedir)/db/sqlalchemy/migrate_repo/"
-	doins "nova/db/sqlalchemy/migrate_repo/migrate.cfg"
-}
-
 pkg_postinst() {
 	if use iscsi ; then
 		elog "iscsid needs to be running if you want cinder to connect"

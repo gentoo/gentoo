@@ -7,6 +7,26 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Thomas Deutschmann <whissi88@gentoo.org> (2019-09-02)
+# PGO not yet supported for comm-central, #693160
+>=mail-client/thunderbird-68 pgo
+
+# Matt Turner <mattst88@gentoo.org> (2019-09-01)
+# <dev-scheme/guile-2 is package.mask'd
+www-client/elinks guile
+
+# Michał Górny <mgorny@gentoo.org> (2019-08-27)
+# sci-libs/grib_api is slated for removal.
+dev-lang/gdl grib
+
+# Michał Górny <mgorny@gentoo.org> (2019-08-27)
+# net-misc/tokyotyrant is slated for removal.
+app-metrics/collectd collectd_plugins_tokyotyrant
+
+# Michał Górny <mgorny@gentoo.org> (2019-08-25)
+# sys-cluster/open-mx is masked for removal.
+sys-cluster/openmpi openmpi_fabrics_open-mx
+
 # Kent Fredric <kentnl@gentoo.org> (2019-08-07)
 # Newer versions of nqp need newer versions of jdk to run on the jvm,
 # but these currently don't exist in gentoo. The USE flags have to be
@@ -62,12 +82,6 @@ games-emulation/vbam ffmpeg
 # bug #318841#c20.
 sys-kernel/linux-firmware unknown-license
 
-# Andreas K. Hüttel <dilfridge@gentoo.org> (2019-05-11)
-# app-accessibility/festival:
-# Outdated, EAPI=2, unmaintained, segfaults immediately.
-# See bug 634928 and bug 612980. Removal in 30 days.
-media-radio/xastir festival
-
 # Virgil Dupras <vdupras@gentoo.org> (2019-04-29)
 # Docs are temporarily broken. See bug #680014
 dev-python/pandas doc
@@ -83,10 +97,6 @@ app-text/ghostscript-gpl l10n_ja
 # Mask jre useflags for use as system java-vm until it's proven to work
 dev-java/openjdk-jre-bin:8 gentoo-vm
 dev-java/openjdk-jre-bin:11 gentoo-vm
-
-# Michał Górny <mgorny@gentoo.org> (2019-04-13)
-# net-libs/ftplib is slated for removal.
-app-cdr/xbiso ftp
 
 # Michał Górny <mgorny@gentoo.org> (2019-04-10)
 # media-sound/aacplusenc is slated for removal.
@@ -117,16 +127,15 @@ app-admin/conserver freeipmi
 
 # Matt Turner <mattst88@gentoo.org> (2019-03-03)
 # Mask for testing. Bug 606924
+# Jeroen Roovers <jer@gentoo.org> (2019-09-02)
+# Bug 692170
 media-libs/mesa libglvnd
+x11-drivers/nvidia-drivers libglvnd
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2019-01-17)
 # Mask openjdk:8 for use as system java-vm until it's proven to work
 dev-java/openjdk:8 gentoo-vm
 dev-java/openjdk-bin:8 gentoo-vm
-
-# Sven Wegener <swegener@gentoo.org> (2019-01-18)
-# Waiting for >=dev-libs/libressl-2.7 to be unmasked.
->=net-libs/libvncserver-0.9.12 libressl
 
 # William Hubbs <williamh@gentoo.org> (2019-01-13)
 # For memtest86+ mask the floppy use flag since it requires grub:0 which
@@ -167,10 +176,6 @@ dev-cpp/eigen test
 kde-apps/cantor julia
 sci-libs/ceres-solver sparse
 
-# Alon Bar-Lev <alonbl@gentoo.org> (2018-11-08)
-# Waiting for >=dev-libs/libressl-2.7 to be unmasked.
->=app-crypt/xca-2.1.0 libressl
-
 # Alfredo Tupone <tupone@gentoo.org> (2018-10-24)
 # jit brokes build of gnat-gpl
 dev-lang/gnat-gpl jit
@@ -180,10 +185,6 @@ dev-lang/gnat-gpl jit
 # be re-enabled with the 'server' USE flag, but this flag is hard
 # masked. bug #666619
 dev-python/paramiko server
-
-# Alon Bar-Lev <alonbl@gentoo.org> (2018-09-11)
-# Waiting for >=dev-libs/libressl-2.7 to be stablized.
->=dev-libs/opensc-0.18.0 libressl
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2018-08-03)
 # New and for Gentoo still quite experimental. You've been

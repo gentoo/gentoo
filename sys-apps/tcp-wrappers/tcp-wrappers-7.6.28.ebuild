@@ -25,6 +25,7 @@ S=${WORKDIR}/${MY_P}
 src_prepare() {
 	eapply $(sed -e 's:^:../debian/patches/:' ../debian/patches/series)
 	eapply "${FILESDIR}"/${PN}-7.6-redhat-bug11881.patch
+	eapply "${FILESDIR}"/${PN}-7.6.28-no-external-malloc.patch
 
 	eapply_user
 

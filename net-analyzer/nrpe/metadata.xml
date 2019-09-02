@@ -15,9 +15,6 @@
       Nagios/Icinga master. Make sure you understand the implications
       of this flag as it can be a security risk.
     </flag>
-    <flag name="minimal">
-      Only build the check plugins for Nagios/Icinga, and not the daemon.
-    </flag>
   </use>
   <upstream>
     <remote-id type="sourceforge">nagios</remote-id>

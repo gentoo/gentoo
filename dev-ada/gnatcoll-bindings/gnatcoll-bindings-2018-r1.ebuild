@@ -15,7 +15,7 @@ SRC_URI="http://mirrors.cdn.adacore.com/art/5b0ce9cfc7a4475261f97ca5
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="gnat_2016 gnat_2017 +gnat_2018 gnat_2019 gmp iconv python readline +shared
 	static-libs static-pic syslog"
 
@@ -24,7 +24,8 @@ RDEPEND="python? ( ${PYTHON_DEPS} )
 	dev-ada/gnatcoll-core[shared?,static-libs?,static-pic?]
 	gmp? ( dev-libs/gmp:* )"
 DEPEND="${RDEPEND}
-	dev-ada/gprbuild[gnat_2016(-)?,gnat_2017(-)?,gnat_2018(-)?,gnat_2019(-)?]"
+	dev-ada/gprbuild[gnat_2016(-)?,gnat_2017(-)?,gnat_2018(-)?]
+	dev-ada/gprbuild[gnat_2019(-)?]"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )
 	^^ ( gnat_2016 gnat_2017 gnat_2018 gnat_2019 )"

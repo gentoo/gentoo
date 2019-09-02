@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 inherit autotools toolchain-funcs
 
 if [[ ${PV} == "9999" ]] ; then
@@ -129,8 +129,5 @@ src_install() {
 	# a bunch of archives (*.a) are built & installed by gputils
 	# for PIC processors, but they do not work with standard `ar`
 	# & `scanelf` utils and they're not for the host.
-
-	# TODO: use dostrip from EAPI=7 when subversion gets EAPI=7
-	# in bug #678344:
-	#dostrip "${D%/}"/usr/bin
+	dostrip /usr/bin
 }

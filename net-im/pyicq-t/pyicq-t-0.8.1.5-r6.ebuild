@@ -48,7 +48,7 @@ src_install() {
 	newins config_example.xml ${PN}.xml
 	fperms 600 /etc/jabber/${PN}.xml
 	fowners jabber:jabber /etc/jabber/${PN}.xml
-	fperms 755 "$(python_get_sitedir)/${PN}/${PN}.py"
+	chmod 755 "${D}$(python_get_sitedir)/${PN}/${PN}.py" || die
 	sed -i \
 		-e "s:<spooldir>[^\<]*</spooldir>:<spooldir>/var/spool/jabber</spooldir>:" \
 		-e "s:<pid>[^\<]*</pid>:<pid>/var/run/jabber/${PN}.pid</pid>:" \

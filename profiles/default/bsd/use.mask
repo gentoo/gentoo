@@ -1,5 +1,5 @@
-# Copyright 1999-2018 Gentoo Authors.
-# Distributed under the terms of the GNU General Public License, v2
+# Copyright 1999-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
 
 # Mart Raudsepp <leio@gentoo.org>
 # net-misc/networkmanager not keyworded
@@ -15,7 +15,6 @@ alsa
 v4l
 libv4l
 fbcon
-directfb
 gpm
 lirc
 multilib
