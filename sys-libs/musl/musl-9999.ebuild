@@ -52,6 +52,12 @@ pkg_setup() {
 		*) die "Use sys-devel/crossdev to build a musl toolchain" ;;
 		esac
 	fi
+
+	# fix for #667126, copied from glibc ebuild
+	# make sure host make.conf doesn't pollute us
+	if is_crosscompile || tc-is-cross-compiler ; then
+		CHOST=${CTARGET} strip-unsupported-flags
+	fi
 }
 
 src_configure() {
