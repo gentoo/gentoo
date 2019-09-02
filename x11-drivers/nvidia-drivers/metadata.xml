@@ -14,11 +14,12 @@ You can use http://www.nvidia.com/Download/Find.aspx to figure out which branch
 best matches your hardware.
 </longdescription>
 <use>
+<flag name="X">Install the X.org driver, OpenGL libraries, XvMC libraries, and VDPAU libraries</flag>
 <flag name="compat">Install non-GLVND libGL for backwards compatibility</flag>
 <flag name="driver">Install the kernel driver module</flag>
-<flag name="X">Install the X.org driver, OpenGL libraries, XvMC libraries, and VDPAU libraries</flag>
 <flag name="gtk3">Install nvidia-settings with support for GTK+ 3</flag>
 <flag name="kms">Enable support for kernel mode setting (KMS)</flag>
+<flag name="libglvnd">Use <pkg>media-libs/libglvnd</pkg> for dispatch</flag>
 <flag name="tools">Install additional tools such as nvidia-settings</flag>
 <flag name="uvm">Install the Unified Memory kernel module (nvidia-uvm) for sharing memory between CPU and GPU in CUDA programs</flag>
 </use>

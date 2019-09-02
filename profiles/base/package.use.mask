@@ -127,7 +127,10 @@ app-admin/conserver freeipmi
 
 # Matt Turner <mattst88@gentoo.org> (2019-03-03)
 # Mask for testing. Bug 606924
+# Jeroen Roovers <jer@gentoo.org> (2019-09-02)
+# Bug 692170
 media-libs/mesa libglvnd
+x11-drivers/nvidia-drivers libglvnd
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2019-01-17)
 # Mask openjdk:8 for use as system java-vm until it's proven to work
