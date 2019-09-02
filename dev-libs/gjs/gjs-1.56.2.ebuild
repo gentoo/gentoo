@@ -45,8 +45,8 @@ src_configure() {
 		$(use_enable readline) \
 		$(use_with test dbus-tests) \
 		--disable-installed-tests \
-		--without-xvfb-tests
-		#$(use_with test xvfb-tests) # https://gitlab.gnome.org/GNOME/gjs/issues/280
+		--without-xvfb-tests # disables Makefile spawning Xvfb for us, as we do it ourselves:
+		# https://gitlab.gnome.org/GNOME/gjs/issues/280
 }
 
 src_install() {
