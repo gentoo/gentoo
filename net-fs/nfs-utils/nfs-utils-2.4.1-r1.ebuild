@@ -38,7 +38,7 @@ DEPEND="
 	libmount? ( sys-apps/util-linux )
 	nfsv4? (
 		dev-libs/libevent:=
-		>=sys-apps/keyutils-1.5.9
+		>=sys-apps/keyutils-1.5.9:=
 		kerberos? (
 			>=net-libs/libtirpc-0.2.4-r1[kerberos]
 			app-crypt/mit-krb5
