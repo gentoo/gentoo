@@ -24,7 +24,11 @@ SLOT="0"
 IUSE="ayatana gtk libressl lightweight nls mbedtls qt5 systemd test"
 RESTRICT="!test? ( test )"
 
-BDEPEND="
+ACCT_DEPEND="
+	acct-group/transmission
+	acct-user/transmission
+"
+BDEPEND="${ACCT_DEPEND}
 	virtual/pkgconfig
 	nls? (
 		gtk? (
@@ -77,7 +81,7 @@ DEPEND="${COMMON_DEPEND}
 	)
 "
 RDEPEND="${COMMON_DEPEND}
-	acct-user/transmission
+	${ACCT_DEPEND}
 "
 
 src_unpack() {
@@ -124,6 +128,9 @@ src_install() {
 
 	insinto /usr/lib/sysctl.d
 	doins "${FILESDIR}"/60-transmission.conf
+
+	diropts -o transmission -g transmission
+	keepdir /var/lib/transmission
 }
 
 pkg_postrm() {
