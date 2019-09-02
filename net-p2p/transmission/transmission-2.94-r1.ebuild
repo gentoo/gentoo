@@ -16,6 +16,10 @@ SLOT=0
 IUSE="ayatana gtk libressl lightweight systemd qt5 xfs"
 KEYWORDS="amd64 ~arm ~arm64 ~mips ppc ppc64 x86 ~x86-fbsd ~amd64-linux"
 
+ACCT_DEPEND="
+	acct-group/transmission
+	acct-user/transmission
+"
 COMMON_DEPEND=">=dev-libs/libevent-2.0.10:=
 	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:0= )
@@ -38,6 +42,7 @@ COMMON_DEPEND=">=dev-libs/libevent-2.0.10:=
 		)
 	systemd? ( >=sys-apps/systemd-209:= )"
 DEPEND="${COMMON_DEPEND}
+	${ACCT_DEPEND}
 	>=dev-libs/glib-2.32
 	dev-util/intltool
 	sys-devel/gettext
@@ -46,7 +51,7 @@ DEPEND="${COMMON_DEPEND}
 	qt5? ( dev-qt/linguist-tools:5 )
 	xfs? ( sys-fs/xfsprogs )"
 RDEPEND="${COMMON_DEPEND}
-	acct-user/transmission"
+	${ACCT_DEPEND}"
 
 REQUIRED_USE="ayatana? ( gtk )"
 
@@ -113,6 +118,9 @@ src_install() {
 	systemd_dounit daemon/transmission-daemon.service
 	systemd_install_serviced "${FILESDIR}"/transmission-daemon.service.conf
 
+	insinto /usr/lib/sysctl.d
+	doins "${FILESDIR}"/60-transmission.conf
+
 	if use qt5; then
 		pushd qt >/dev/null || die
 		emake INSTALL_ROOT="${ED%/}"/usr install
@@ -129,6 +137,9 @@ src_install() {
 		doins translations/*.qm
 		popd >/dev/null || die
 	fi
+
+	diropts -o transmission -g transmission
+	keepdir /var/lib/transmission
 }
 
 pkg_preinst() {
@@ -138,17 +149,6 @@ pkg_preinst() {
 pkg_postinst() {
 	xdg_desktop_database_update
 	gnome2_icon_cache_update
-
-	elog "If you use transmission-daemon, please, set 'rpc-username' and"
-	elog "'rpc-password' (in plain text, transmission-daemon will hash it on"
-	elog "start) in settings.json file located at /var/lib/transmission/config or"
-	elog "any other appropriate config directory."
-	elog
-	elog "Since µTP is enabled by default, transmission needs large kernel buffers for"
-	elog "the UDP socket. You can append following lines into /etc/sysctl.conf:"
-	elog " net.core.rmem_max = 4194304"
-	elog " net.core.wmem_max = 1048576"
-	elog "and run sysctl -p"
 }
 
 pkg_postrm() {
