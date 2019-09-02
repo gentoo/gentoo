@@ -1,67 +1,85 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-
-if [[ ${PV} = *9999 ]]; then
-	EGIT_REPO_URI="https://github.com/AravisProject/aravis.git"
-	inherit git-r3 autotools
-else
-	SRC_URI="mirror://gnome/sources/${PN}/$(ver_cut 1-2)/${P}.tar.xz"
-	KEYWORDS="~amd64"
-fi
+inherit meson xdg
 
 DESCRIPTION="Library for video acquisition using Genicam cameras"
-HOMEPAGE="https://wiki.gnome.org/Projects/Aravis"
+HOMEPAGE="https://github.com/AravisProject/aravis"
 
-LICENSE="LGPL-2.1"
-SLOT="0"
-IUSE="X gstreamer caps"
-
-GST_DEPEND="media-libs/gstreamer:1.0
-	media-libs/gst-plugins-base:1.0"
-
-RDEPEND=">=dev-libs/glib-2.26
-	dev-libs/libxml2
-	X? (
-		>=x11-libs/gtk+-3.12:3
-		${GST_DEPEND}
-		media-libs/gst-plugins-base:1.0
-		x11-libs/libnotify
-	)
-	caps? (
-		sys-libs/libcap-ng
-		sys-process/audit
-	)
-	gstreamer? ( ${GST_DEPEND} )"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig
-	dev-libs/gobject-introspection"
-
-if [[ ${PV} != *9999 ]]; then
-	DEPEND+=" dev-util/gtk-doc dev-util/intltool"
+if [[ ${PV} = 9999 ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/AravisProject/${PN}"
+else
+	MY_P="${PN^^}_${PV//./_}"
+	SRC_URI="https://github.com/AravisProject/${PN}/archive/${MY_P}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~amd64 ~x86"
 fi
 
-src_prepare() {
-	default
-	if [[ ${PV} = *9999 ]]; then
-		intltoolize || die
-		gtkdocize || die
-		eautoreconf
-	fi
-}
+LICENSE="LGPL-2"
+SLOT="0"
+# FIXME: As of right now tests are always built, once that changes a USE flag
+# should be added. c.f. https://github.com/AravisProject/aravis/issues/286
+IUSE="doc fast-heartbeat gstreamer introspection packet-socket usb X"
+
+GST_DEPEND="
+	media-libs/gstreamer:1.0
+	media-libs/gst-plugins-base:1.0
+"
+BDEPEND="
+	>=dev-util/meson-0.47.0
+	virtual/pkgconfig
+	doc? ( dev-util/gtk-doc )
+	introspection? ( dev-libs/gobject-introspection )
+"
+DEPEND="
+	>=dev-libs/glib-2.34
+	dev-libs/libxml2:=
+	sys-libs/zlib:=
+	gstreamer? ( ${GST_DEPEND} )
+	packet-socket? ( sys-process/audit )
+	usb? ( virtual/libusb:1 )
+	X? (
+		${GST_DEPEND}
+		>=x11-libs/gtk+-3.12:3
+		x11-libs/libnotify
+	)
+"
+RDEPEND="${DEPEND}"
+
+if [[ ${PV} != 9999 ]]; then
+	S="${WORKDIR}/${PN}-${MY_P}"
+fi
 
 src_configure() {
-	econf \
-		--disable-silent-rules \
-		--disable-static \
-		$(use_enable X viewer) \
-		$(use_enable gstreamer gst-plugin) \
-		$(use_enable caps packet-socket) \
-		--enable-introspection
+	local emesonargs=(
+		$(meson_use doc documentation)
+		$(meson_use fast-heartbeat)
+		$(meson_use gstreamer gst-plugin)
+		$(meson_use introspection)
+		$(meson_use packet-socket)
+		$(meson_use usb)
+		$(meson_use X viewer)
+	)
+	meson_src_configure
 }
 
 src_install() {
-	emake install DESTDIR="${D}" aravisdocdir="/usr/share/doc/${PF}"
-	find "${D}" -name '*.la' -delete
+	meson_src_install
+	# Aravis appends the major and min versions (but not the patch) to it's
+	# binaries and it's folder in /usr/share. Things then end up like
+	# `arv-tool-0.6`. We use this little hack to find out the version of the
+	# current build in a way that works even for a -9999 ebuild.
+	local install_pv="$(ls ${ED}/usr/share | grep aravis- | cut -f 2 -d '-')"
+	local install_p="${PN}-${install_pv}"
+
+	# Properly place icons
+	if use X; then
+		cp -r "${ED}/usr/share/${install_p}/icons" "${ED}/usr/share" || die "Failed to copy icons"
+	fi
+
+	# Symlink versioned binaries to non-versioned
+	dosym "arv-tool-${install_pv}" "usr/bin/arv-tool"
+	dosym "arv-fake-gv-camera-${install_pv}" "usr/bin/arv-fake-gv-camera"
+	use X && dosym "arv-viewer-${install_pv}" "usr/bin/arv-viewer"
 }
