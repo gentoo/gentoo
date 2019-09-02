@@ -1,0 +1,1497 @@
+diff --git a/.gitignore b/.gitignore
+index 567609b..ec2f521 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -1 +1,2 @@
++api/opencl/khronos/icd/
+ build/
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 63df360..b880a86 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -5,6 +5,9 @@ if (POLICY CMP0048)
+   set(PROJ_VERSION VERSION 1.5.0)
+ endif()
+ 
++# FIXME: Remove following line after enabling COMGR by default
++set(USE_COMGR_LIBRARY "no" CACHE STRING "Do not enable COMGR by default")
++
+ # Build ROCm-OpenCL with ccache if the package is present.
+ set(ROCM_OPENCL_CCACHE_BUILD OFF CACHE BOOL "Set to ON for a ccache enabled build")
+ if(ROCM_OPENCL_CCACHE_BUILD)
+@@ -14,140 +17,149 @@ if(ROCM_OPENCL_CCACHE_BUILD)
+   else()
+     message(FATAL_ERROR "Unable to find the program ccache. Set ROCM_OPENCL_CCACHE_BUILD to OFF")
+   endif()
+-  set(LLVM_CCACHE_BUILD ON CACHE BOOL "")
+-  set(ROCM_DEVICE_LIBS_CCACHE_BUILD ON CACHE BOOL "")
+-  set(ROCM_OPENCL_DRIVER_CCACHE_BUILD ON CACHE BOOL "")
++
++  # FIXME: Remove following if block after enabling COMGR by default
++  if (${USE_COMGR_LIBRARY} STREQUAL "no")
++    set(LLVM_CCACHE_BUILD ON CACHE BOOL "")
++    set(ROCM_DEVICE_LIBS_CCACHE_BUILD ON CACHE BOOL "")
++    set(ROCM_OPENCL_DRIVER_CCACHE_BUILD ON CACHE BOOL "")
++  endif() # if (${USE_COMGR_LIBRARY} STREQUAL "no")
+ endif()
+ 
+ project(OpenCL-ROCm)
+ 
+-# Add path for custom modules
+-set(CMAKE_MODULE_PATH
+-  ${CMAKE_MODULE_PATH}
+-  "${CMAKE_CURRENT_SOURCE_DIR}/cmake"
+-  "${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules"
+-  )
+-
+-set(LLVM_INCLUDE_TESTS OFF CACHE BOOL "")
+-set(LLVM_BUILD_TOOLS OFF CACHE BOOL "")
+-set(LLVM_INSTALL_TOOLCHAIN_ONLY ON CACHE BOOL "")
+-set(LLVM_TARGETS_TO_BUILD "AMDGPU" CACHE STRING "")
+-set(CLANG_ENABLE_ARCMT OFF CACHE BOOL "")
+-set(CLANG_ENABLE_STATIC_ANALYZER OFF CACHE BOOL "")
+-
+-# override default option value in library and driver
+-set(GENERIC_IS_ZERO ON CACHE BOOL ON FORCE)
+-
+-add_subdirectory(compiler/llvm EXCLUDE_FROM_ALL)
++set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_CURRENT_SOURCE_DIR}/cmake" "${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules")
++set(OPENCL_ICD_LOADER_HEADERS_DIR "${CMAKE_CURRENT_SOURCE_DIR}/api/opencl/khronos/headers/opencl2.2" CACHE PATH "")
+ 
+-find_package(LLVM REQUIRED CONFIG PATHS ${CMAKE_BINARY_DIR}/compiler/llvm NO_DEFAULT_PATH)
++find_package(ROCT REQUIRED)
++find_package(ROCR REQUIRED)
+ 
+-list(APPEND CMAKE_MODULE_PATH "${LLVM_CMAKE_DIR}")
+-include(AddLLVM)
++# FIXME: Remove following if block after enabling COMGR by default
++if (${USE_COMGR_LIBRARY} STREQUAL "no")
++  set(LLVM_INCLUDE_TESTS OFF CACHE BOOL "")
++  set(LLVM_BUILD_TOOLS OFF CACHE BOOL "")
++  set(LLVM_INSTALL_TOOLCHAIN_ONLY ON CACHE BOOL "")
++  set(LLVM_TARGETS_TO_BUILD "AMDGPU" CACHE STRING "")
++  set(CLANG_ENABLE_ARCMT OFF CACHE BOOL "")
++  set(CLANG_ENABLE_STATIC_ANALYZER OFF CACHE BOOL "")
++
++  # override default option value in library and driver
++  set(GENERIC_IS_ZERO ON CACHE BOOL ON FORCE)
++
++  add_subdirectory(compiler/llvm EXCLUDE_FROM_ALL)
++
++  find_package(LLVM REQUIRED CONFIG PATHS ${CMAKE_BINARY_DIR}/compiler/llvm NO_DEFAULT_PATH)
++
++  list(APPEND CMAKE_MODULE_PATH "${LLVM_CMAKE_DIR}")
++  include(AddLLVM)
++
++  add_definitions(${LLVM_DEFINITIONS})
++  # TODO: add find_package for Clang and lld, and also use LLVM/Clang variables got from their config
++  include_directories(${CMAKE_SOURCE_DIR}/compiler/llvm/tools/clang/include)
++  include_directories(${CMAKE_BINARY_DIR}/compiler/llvm/tools/clang/include)
++  include_directories(${CMAKE_SOURCE_DIR}/compiler/llvm/tools/lld/include)
++
++  # TODO: move AMDGPU.h header to include folder
++  include_directories(${CMAKE_SOURCE_DIR}/compiler/llvm/lib/Target/AMDGPU)
++  include_directories(${CMAKE_BINARY_DIR}/compiler/llvm/lib/Target/AMDGPU)
++
++  set(BUILD_HC_LIB OFF CACHE BOOL "")
++  set(ROCM_DEVICELIB_INCLUDE_TESTS OFF CACHE BOOL "")
++  set(AMDGCN_TARGETS_LIB_LIST "AMDGCN_LIB_TARGETS")
++  set(AMDGCN_TARGETS_LIB_DEPS "AMDGCN_DEP_TARGETS")
++  set(AMDGPU_TARGET_TRIPLE "amdgcn-amd-amdhsa")
++  add_subdirectory(library/amdgcn EXCLUDE_FROM_ALL)
++  add_subdirectory(compiler/driver EXCLUDE_FROM_ALL)
+ 
+-add_definitions(${LLVM_DEFINITIONS})
+-# TODO: add find_package for Clang and lld, and also use LLVM/Clang variables got from their config
+-include_directories(${CMAKE_SOURCE_DIR}/compiler/llvm/tools/clang/include)
+-include_directories(${CMAKE_BINARY_DIR}/compiler/llvm/tools/clang/include)
+-include_directories(${CMAKE_SOURCE_DIR}/compiler/llvm/tools/lld/include)
++  install(PROGRAMS $<TARGET_FILE:clang> $<TARGET_FILE:lld>
++          DESTINATION bin/x86_64
++          COMPONENT DEV)
+ 
+-# TODO: move AMDGPU.h header to include folder
+-include_directories(${CMAKE_SOURCE_DIR}/compiler/llvm/lib/Target/AMDGPU)
+-include_directories(${CMAKE_BINARY_DIR}/compiler/llvm/lib/Target/AMDGPU)
++  foreach(AMDGCN_LIB_TARGET ${AMDGCN_LIB_TARGETS})
++    get_target_property(lib_file_name ${AMDGCN_LIB_TARGET} ARCHIVE_OUTPUT_NAME)
++    get_target_property(lib_file_path ${AMDGCN_LIB_TARGET} ARCHIVE_OUTPUT_DIRECTORY)
++    install(FILES ${lib_file_path}/${lib_file_name}.amdgcn.bc
++          DESTINATION lib/x86_64/bitcode
++          COMPONENT DEV)
++  endforeach()
++endif() # if (${USE_COMGR_LIBRARY} STREQUAL "no")
+ 
+ if(${USE_COMGR_LIBRARY} MATCHES "yes")
+   set(COMGR_DYN_DLL "yes")
+-  add_definitions(-DCOMGR_DYN_DLL="yes")
+-  include_directories(${CMAKE_SOURCE_DIR}/compiler/llvm/include)
++  add_definitions(-DCOMGR_DYN_DLL)
+   add_definitions(-DUSE_COMGR_LIBRARY)
+-else()
+-  add_subdirectory(compiler/driver EXCLUDE_FROM_ALL)
+ endif()
+ 
+-set(BUILD_HC_LIB OFF CACHE BOOL "")
+-set(ROCM_DEVICELIB_INCLUDE_TESTS OFF CACHE BOOL "")
+-set(AMDGCN_TARGETS_LIB_LIST "AMDGCN_LIB_TARGETS")
+-set(AMDGCN_TARGETS_LIB_DEPS "AMDGCN_DEP_TARGETS")
+-set(AMDGPU_TARGET_TRIPLE "amdgcn-amd-amdhsa")
+-add_subdirectory(library/amdgcn EXCLUDE_FROM_ALL)
+-
++add_subdirectory(api/opencl/amdocl)
+ add_subdirectory(compiler/lib/loaders/elf/utils/libelf)
+-
+-find_package(ROCT REQUIRED)
+-find_package(ROCR REQUIRED)
+ add_subdirectory(runtime)
++add_subdirectory(tools/clinfo)
+ 
+-set(OPENCL_INCLUDE_DIRS
+-  ${CMAKE_SOURCE_DIR}/api/opencl/khronos/headers
+-  ${CMAKE_SOURCE_DIR}/api/opencl/khronos/headers/opencl2.2)
+-
+-add_subdirectory(api/opencl/amdocl)
++set(BUILD_SHARED_LIBS "Build shared libs" ON)
+ add_subdirectory(api/opencl/khronos/icd)
+ 
+-add_subdirectory(tools/clinfo)
++###--- Packaging ------------------------------------------------------------###
+ 
+-install(PROGRAMS $<TARGET_FILE:clang> $<TARGET_FILE:lld>
++# MAIN package
++install(PROGRAMS $<TARGET_FILE:clinfo>
+         DESTINATION bin/x86_64
+-        COMPONENT libraries)
+-
++        COMPONENT MAIN)
++install(PROGRAMS $<TARGET_FILE:amdocl64>
++        DESTINATION lib/x86_64
++        COMPONENT MAIN)
+ install(PROGRAMS $<TARGET_FILE:OpenCL>
+         DESTINATION lib/x86_64
+-        COMPONENT applications)
+-
+-install(PROGRAMS $<TARGET_LINKER_FILE:OpenCL>
++        COMPONENT MAIN)
++install(PROGRAMS $<TARGET_SONAME_FILE:OpenCL>
+         DESTINATION lib/x86_64
+-        COMPONENT libraries)
++        COMPONENT MAIN)
+ 
+-install(DIRECTORY
+-        "${CMAKE_CURRENT_SOURCE_DIR}/api/opencl/khronos/headers/opencl2.2/CL"
++# DEV package
++install(DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/api/opencl/khronos/headers/opencl2.2/CL"
+         DESTINATION include
+-        COMPONENT libraries
++        COMPONENT DEV
+         USE_SOURCE_PERMISSIONS
++        PATTERN cl_d3d10.h EXCLUDE
++        PATTERN cl_d3d11.h EXCLUDE
++        PATTERN cl_dx9_media_sharing.h EXCLUDE
+         PATTERN cl_egl.h EXCLUDE)
++install(PROGRAMS $<TARGET_LINKER_FILE:OpenCL>
++        DESTINATION lib/x86_64
++        COMPONENT DEV)
++
++# Generic CPACK variables
++set(CPACK_GENERATOR "DEB;RPM" CACHE STRING "Default packaging generators")
++
++set(CPACK_PACKAGE_CONTACT "Advanced Micro Devices Inc.")
++set(CPACK_PACKAGE_VENDOR "AMD")
++set(CPACK_PACKAGING_INSTALL_PREFIX "/opt/rocm/opencl")
++
++set(CPACK_PACKAGE_VERSION_MAJOR "1")
++set(CPACK_PACKAGE_VERSION_MINOR "2")
++set(CPACK_PACKAGE_VERSION_PATCH "0")
++
++# Debian CPACK variables
++set(CPACK_DEB_COMPONENT_INSTALL ON)
++
++set(CPACK_DEBIAN_MAIN_FILE_NAME "rocm-opencl-1.2.0.deb")
++set(CPACK_DEBIAN_MAIN_PACKAGE_NAME "rocm-opencl")
++set(CPACK_DEBIAN_MAIN_PACKAGE_CONTROL_EXTRA "${CMAKE_CURRENT_SOURCE_DIR}/DEB/postinst;${CMAKE_CURRENT_SOURCE_DIR}/DEB/prerm")
++
++set(CPACK_DEBIAN_DEV_FILE_NAME "rocm-opencl-dev-1.2.0.deb")
++set(CPACK_DEBIAN_DEV_PACKAGE_NAME "rocm-opencl-dev")
++set(CPACK_DEBIAN_DEV_PACKAGE_DEPENDS "rocm-opencl")
++
++# RPM CPACK variables
++set(CPACK_RPM_COMPONENT_INSTALL ON)
++
++set(CPACK_RPM_MAIN_FILE_NAME "rocm-opencl-1.2.0.rpm")
++set(CPACK_RPM_MAIN_PACKAGE_NAME "rocm-opencl")
++set(CPACK_RPM_MAIN_POST_INSTALL_SCRIPT_FILE "${CMAKE_CURRENT_SOURCE_DIR}/RPM/rpm_post")
++set(CPACK_RPM_MAIN_POST_UNINSTALL_SCRIPT_FILE "${CMAKE_CURRENT_SOURCE_DIR}/RPM/rpm_postun")
++
++set(CPACK_RPM_DEV_FILE_NAME "rocm-opencl-devel-1.2.0.rpm")
++set(CPACK_RPM_DEV_PACKAGE_NAME "rocm-opencl-devel")
++set(CPACK_RPM_DEV_PACKAGE_DEPENDS "rocm-opencl")
+ 
+-foreach(AMDGCN_LIB_TARGET ${AMDGCN_LIB_TARGETS})
+-  get_target_property(lib_file_name ${AMDGCN_LIB_TARGET} ARCHIVE_OUTPUT_NAME)
+-  get_target_property(lib_file_path ${AMDGCN_LIB_TARGET} ARCHIVE_OUTPUT_DIRECTORY)
+-  install(FILES ${lib_file_path}/${lib_file_name}.amdgcn.bc
+-        DESTINATION lib/x86_64/bitcode
+-        COMPONENT libraries)
+-endforeach()
+-
+-## CPack standard variables
+-set ( CPACK_PACKAGE_NAME "rocm-opencl" )
+-set ( CPACK_PACKAGE_FILE_NAME "rocm-opencl-1.2.0" )
+-set ( CPACK_PACKAGE_VENDOR "AMD" )
+-set ( CPACK_PACKAGE_VERSION_MAJOR "1" )
+-set ( CPACK_PACKAGE_VERSION_MINOR "2" )
+-set ( CPACK_PACKAGE_VERSION_PATCH "0" )
+-set ( CPACK_PACKAGE_CONTACT "Advanced Micro Devices Inc." )
+-set ( CPACK_DEBIAN_PACKAGE_HOMEPAGE "https://github.com/RadeonOpenCompute/ROCm-OpenCL-Runtime" )
+-
+-set ( CPACK_GENERATOR RPM DEB )
+-set ( CPACK_PACKAGING_INSTALL_PREFIX "/opt/rocm/opencl" )
+-
+-## Debian package values
+-
+-set ( CPACK_DEBIAN_PACKAGE_MAINTAINER "AMD" )
+-set ( CPACK_DEBIAN_PACKAGE_DEPENDS "" )
+-set ( CPACK_DEB_COMPONENT_INSTALL ON)
+-set ( CPACK_DEBIAN_applications_PACKAGE_NAME "rocm-opencl" )
+-set ( CPACK_DEBIAN_applications_FILE_NAME "rocm-opencl-1.2.0.deb" )
+-set ( CPACK_DEBIAN_libraries_PACKAGE_NAME "rocm-opencl-dev" )
+-set ( CPACK_DEBIAN_libraries_FILE_NAME "rocm-opencl-dev-1.2.0.deb" )
+-set ( CPACK_DEBIAN_libraries_PACKAGE_DEPENDS "rocm-opencl" )
+-set ( CPACK_DEBIAN_applications_PACKAGE_CONTROL_EXTRA "${CMAKE_CURRENT_SOURCE_DIR}/DEB/postinst;${CMAKE_CURRENT_SOURCE_DIR}/DEB/prerm" )
+-
+-## RPM package values
+-
+-set ( CPACK_RPM_COMPONENT_INSTALL ON)
+-set ( CPACK_RPM_applications_PACKAGE_NAME "rocm-opencl" )
+-set ( CPACK_RPM_applications_FILE_NAME "rocm-opencl-1.2.0.rpm" )
+-set ( CPACK_RPM_libraries_PACKAGE_NAME "rocm-opencl-devel" )
+-set ( CPACK_RPM_libraries_FILE_NAME "rocm-opencl-devel-1.2.0.rpm" )
+-set ( CPACK_RPM_libraries_PACKAGE_DEPENDS "rocm-opencl" )
+-set ( CPACK_RPM_applications_POST_INSTALL_SCRIPT_FILE "${CMAKE_CURRENT_SOURCE_DIR}/RPM/rpm_post" )
+-set ( CPACK_RPM_applications_POST_UNINSTALL_SCRIPT_FILE "${CMAKE_CURRENT_SOURCE_DIR}/RPM/rpm_postun" )
+-
+-set ( CPACK_COMPONENTS_ALL applications libraries )
+-include ( CPack )
++set(CPACK_COMPONENTS_ALL MAIN DEV)
++include(CPack)
+diff --git a/api/opencl/amdocl/CMakeLists.txt b/api/opencl/amdocl/CMakeLists.txt
+index 642ce8c..8ea8517 100644
+--- a/api/opencl/amdocl/CMakeLists.txt
++++ b/api/opencl/amdocl/CMakeLists.txt
+@@ -16,6 +16,11 @@ if(CMAKE_BUILD_TYPE MATCHES "^Debug$")
+   add_definitions(-DDEBUG)
+ endif()
+ 
++include_directories(${ROCR_INCLUDES})
++if (DEFINED LLVM_INCLUDES AND NOT ${LLVM_INCLUDES} STREQUAL "")
++  include_directories(${LLVM_INCLUDES})
++endif() # if (DEFINED LLVM_INCLUDES AND NOT ${LLVM_INCLUDES} STREQUAL "")
++
+ include_directories(${CMAKE_SOURCE_DIR}/runtime)
+ include_directories(${CMAKE_SOURCE_DIR}/api/opencl)
+ include_directories(${CMAKE_SOURCE_DIR}/api/opencl/khronos)
+@@ -77,4 +82,3 @@ if(${USE_COMGR_LIBRARY} MATCHES "yes")
+ else()
+   target_link_libraries(amdocl64 opencl_driver oclelf pthread dl ${ROCT_LIBRARIES} ${ROCR_LIBRARIES})
+ endif()
+-install(TARGETS amdocl64 LIBRARY DESTINATION lib/x86_64 COMPONENT applications)
+diff --git a/api/opencl/amdocl/cl_execute.cpp b/api/opencl/amdocl/cl_execute.cpp
+index 0336353..ee799e6 100644
+--- a/api/opencl/amdocl/cl_execute.cpp
++++ b/api/opencl/amdocl/cl_execute.cpp
+@@ -10,7 +10,7 @@
+ #include "platform/program.hpp"
+ #include "os/os.hpp"
+ 
+-#include <icd/icd_dispatch.h>
++#include <icd/loader/icd_dispatch.h>
+ 
+ /*! \addtogroup API
+  *  @{
+diff --git a/api/opencl/amdocl/cl_icd.cpp b/api/opencl/amdocl/cl_icd.cpp
+index 71b886c..7e4e317 100644
+--- a/api/opencl/amdocl/cl_icd.cpp
++++ b/api/opencl/amdocl/cl_icd.cpp
+@@ -10,7 +10,7 @@
+ #include "cl_d3d11_amd.hpp"
+ #endif  //_WIN32
+ 
+-#include <icd/icd_dispatch.h>
++#include <icd/loader/icd_dispatch.h>
+ 
+ #include <mutex>
+ 
+diff --git a/compiler/lib/utils/target_mappings.h b/compiler/lib/utils/target_mappings.h
+deleted file mode 100644
+index c57eea6..0000000
+--- a/compiler/lib/utils/target_mappings.h
++++ /dev/null
+@@ -1,18 +0,0 @@
+-//
+-// Copyright (c) 2011 Advanced Micro Devices, Inc. All rights reserved.
+-//
+-// This is a compatibility header file. Either define the version
+-// of the compiler library to use or include the version specific
+-// header file directly.
+-#ifndef TARGET_MAPPINGS_H_
+-#define TARGET_MAPPINGS_H_
+-
+-#include "v0_8/target_mappings.h"
+-
+-#define X86TargetMapping X86TargetMapping_0_8
+-#define X64TargetMapping X64TargetMapping_0_8
+-#define AMDILTargetMapping AMDILTargetMapping_0_8
+-#define HSAILTargetMapping HSAILTargetMapping_0_8
+-#define AMDIL64TargetMapping AMDIL64TargetMapping_0_8
+-#define HSAIL64TargetMapping HSAIL64TargetMapping_0_8
+-#endif // TARGET_MAPPINGS_H_
+diff --git a/compiler/lib/utils/v0_8/libUtils.cpp b/compiler/lib/utils/v0_8/libUtils.cpp
+deleted file mode 100644
+index 7836e21..0000000
+--- a/compiler/lib/utils/v0_8/libUtils.cpp
++++ /dev/null
+@@ -1,1141 +0,0 @@
+-//
+-// Copyright (c) 2011 Advanced Micro Devices, Inc. All rights reserved.
+-//
+-
+-#include "api/v0_8/aclValidation.h"
+-#include "libUtils.h"
+-#include "bif/bifbase.hpp"
+-#include "utils/target_mappings.h"
+-#include "utils/versions.hpp"
+-#include "utils/options.hpp"
+-#include <cstring>
+-#include "bif/bif.hpp"
+-extern aclBinary* constructBinary(size_t struct_version,
+-    const aclTargetInfo *target,
+-    const aclBinaryOptions *opts);
+-
+-static const std::string sgfx700 = "AMD:AMDGPU:7:0:0";
+-static const std::string sgfx701 = "AMD:AMDGPU:7:0:1";
+-static const std::string sgfx800 = "AMD:AMDGPU:8:0:0";
+-static const std::string sgfx801 = "AMD:AMDGPU:8:0:1";
+-static const std::string sgfx802 = "AMD:AMDGPU:8:0:2";
+-static const std::string sgfx803 = "AMD:AMDGPU:8:0:3";
+-static const std::string sgfx804 = "AMD:AMDGPU:8:0:4";
+-static const std::string sgfx810 = "AMD:AMDGPU:8:1:0";
+-static const std::string sgfx900 = "AMD:AMDGPU:9:0:0";
+-static const std::string sgfx901 = "AMD:AMDGPU:9:0:1";
+-static const std::string sgfx902 = "AMD:AMDGPU:9:0:2";
+-static const std::string sgfx903 = "AMD:AMDGPU:9:0:3";
+-static const std::string sgfx904 = "AMD:AMDGPU:9:0:4";
+-static const std::string sgfx905 = "AMD:AMDGPU:9:0:5";
+-static const std::string sgfx906 = "AMD:AMDGPU:9:0:6";
+-static const std::string sgfx907 = "AMD:AMDGPU:9:0:7";
+-
+-static const std::string legacyLibName = LINUX_ONLY("lib") "amdocl12cl" LP64_SWITCH(LINUX_SWITCH("32", ""), "64") LINUX_SWITCH(".so", ".dll");
+-
+-// Utility function to set a flag in option structure
+-// of the aclDevCaps.
+-void
+-setFlag(aclDevCaps *caps, compDeviceCaps option)
+-{
+-  assert((uint32_t)option < ((1 << FLAG_SHIFT_VALUE)  *FLAG_ARRAY_SIZE)
+-    && "The index passed in is outside of the range of valid values!");
+-  caps->flags[option >> FLAG_SHIFT_VALUE] |= FLAG_BITLOC(option);
+-}
+-
+-// Utility function to flip a flag in option structure
+-// of the aclDevCaps.
+-void
+-flipFlag(aclDevCaps *caps, compDeviceCaps option)
+-{
+-  assert((uint32_t)option < ((1 << FLAG_SHIFT_VALUE)  *FLAG_ARRAY_SIZE)
+-    && "The index passed in is outside of the range of valid values!");
+-  caps->flags[option >> FLAG_SHIFT_VALUE] ^= FLAG_BITLOC(option);
+-}
+-
+-// Utility function to clear a flag in option structure
+-// of the aclDevCaps.
+-void
+-clearFlag(aclDevCaps *caps, compDeviceCaps option)
+-{
+-  assert((uint32_t)option < ((1 << FLAG_SHIFT_VALUE)  *FLAG_ARRAY_SIZE)
+-    && "The index passed in is outside of the range of valid values!");
+-  caps->flags[option >> FLAG_SHIFT_VALUE] &= ~FLAG_BITLOC(option);
+-}
+-
+-// Utility function to check that a flag in option structure
+-// of the aclDevCaps is set.
+-bool
+-checkFlag(aclDevCaps *caps, compDeviceCaps option)
+-{
+-  assert((uint32_t)option < ((1 << FLAG_SHIFT_VALUE)  *FLAG_ARRAY_SIZE)
+-    && "The index passed in is outside of the range of valid values!");
+-  return ((uint32_t)(caps->flags[option >> FLAG_SHIFT_VALUE]
+-      & FLAG_BITLOC(option))) == (uint32_t)FLAG_BITLOC(option);
+-}
+-void setEncryptCaps(aclDevCaps_0_8 *ptr)
+-{
+-  clearFlag(ptr, capSaveSOURCE);
+-  clearFlag(ptr, capSaveLLVMIR);
+-  clearFlag(ptr, capSaveCG);
+-  clearFlag(ptr, capSaveSPIR);
+-  clearFlag(ptr, capSaveAMDIL);
+-  clearFlag(ptr, capSaveHSAIL);
+-  clearFlag(ptr, capSaveDISASM);
+-  clearFlag(ptr, capSaveAS);
+-  setFlag(ptr, capSaveEXE);
+-  setFlag(ptr, capEncrypted);
+-}
+-void setOptionCaps(amd::option::Options *opts, aclDevCaps_0_8 *ptr)
+-{
+-#define COND_SET_FLAG(A) \
+-      (((opts)->oVariables->Bin##A) ? setFlag(ptr, capSave##A) : clearFlag(ptr, capSave##A))
+-      COND_SET_FLAG(SOURCE);
+-      COND_SET_FLAG(LLVMIR);
+-      COND_SET_FLAG(CG);
+-      COND_SET_FLAG(DISASM);
+-      COND_SET_FLAG(AMDIL);
+-      COND_SET_FLAG(HSAIL);
+-      COND_SET_FLAG(AS);
+-      COND_SET_FLAG(SPIR);
+-      COND_SET_FLAG(EXE);
+-
+-#undef COND_SET_FLAG
+-}
+-
+-aclBIF *aclutGetBIF(aclBinary *binary)
+-{
+-  aclBIF *bif = NULL;
+-  if (binary->struct_size == sizeof(aclBinary_0_8)) {
+-    bif = reinterpret_cast<aclBinary_0_8*>(binary)->bin;
+-  } else if (binary->struct_size == sizeof(aclBinary_0_8_1)) {
+-    bif = reinterpret_cast<aclBinary_0_8_1*>(binary)->bin;
+-  } else {
+-    assert(!"Binary format not supported!");
+-    bif = reinterpret_cast<aclBinary*>(binary)->bin;
+-  }
+-  return bif;
+-}
+-
+-aclOptions *aclutGetOptions(aclBinary *binary)
+-{
+-  aclOptions *opt = NULL;
+-  if (binary->struct_size == sizeof(aclBinary_0_8)) {
+-    opt = reinterpret_cast<aclBinary_0_8*>(binary)->options;
+-  } else if (binary->struct_size == sizeof(aclBinary_0_8_1)) {
+-    opt = reinterpret_cast<aclBinary_0_8_1*>(binary)->options;
+-  } else {
+-    assert(!"Binary format not supported!");
+-    opt = binary->options;
+-  }
+-  return opt;
+-}
+-
+-aclBinaryOptions *aclutGetBinOpts(aclBinary *binary)
+-{
+-  aclBinaryOptions *opt = NULL;
+-  if (binary->struct_size == sizeof(aclBinary_0_8)) {
+-    opt = reinterpret_cast<aclBinaryOptions*>(
+-        &reinterpret_cast<aclBinary_0_8*>(binary)->binOpts);
+-  } else if (binary->struct_size == sizeof(aclBinary_0_8_1)) {
+-    opt = &reinterpret_cast<aclBinary_0_8_1*>(binary)->binOpts;
+-  } else {
+-    assert(!"Binary format not supported!");
+-    opt = &binary->binOpts;
+-  }
+-  return opt;
+-}
+-
+-aclTargetInfo *aclutGetTargetInfo(aclBinary *binary)
+-{
+-  aclTargetInfo *tgt = NULL;
+-  if (binary->struct_size == sizeof(aclBinary_0_8)) {
+-    tgt = &reinterpret_cast<aclBinary_0_8*>(binary)->target;
+-  } else if (binary->struct_size == sizeof(aclBinary_0_8_1)) {
+-    tgt = &reinterpret_cast<aclBinary_0_8_1*>(binary)->target;
+-  } else {
+-    assert(!"Binary format not supported!");
+-    tgt = &binary->target;
+-  }
+-  return tgt;
+-}
+-
+-aclDevCaps* aclutGetCaps(aclBinary *binary)
+-{
+-  aclDevCaps *caps = NULL;
+-  if (binary->struct_size == sizeof(aclBinary_0_8)) {
+-    caps = &reinterpret_cast<aclBinary_0_8*>(binary)->caps;
+-  } else if (binary->struct_size == sizeof(aclBinary_0_8_1)) {
+-    caps = &reinterpret_cast<aclBinary_0_8_1*>(binary)->caps;
+-  } else {
+-    assert(!"Binary format not supported!");
+-    caps = &binary->caps;
+-  }
+-  return caps;
+-}
+-// Helper function that returns the
+-// allocation function from the binary.
+-AllocFunc
+-aclutAlloc(const aclBinary *bin)
+-{
+-  size_t size = (bin ? bin->struct_size : 0);
+-  AllocFunc m = NULL;
+-  switch(size) {
+-    case 0:
+-    case sizeof(aclBinary_0_8):
+-      break;
+-    case sizeof(aclBinary_0_8_1):
+-      m = reinterpret_cast<const aclBinary_0_8_1*>(bin)->binOpts.alloc;
+-      break;
+-    default:
+-      assert(!"Found an unsupported binary!");
+-      m = bin->binOpts.alloc;
+-      break;
+-  }
+-  return (m) ? m : &::malloc;
+-}
+-
+-// Helper function that returns the
+-// allocation function from the compiler.
+-AllocFunc
+-aclutAlloc(const aclCompiler *bin)
+-{
+-  size_t size = (bin ? bin->struct_size : 0);
+-  AllocFunc m = NULL;
+-  switch(size) {
+-    case 0:
+-    case sizeof(aclCompilerHandle_0_8):
+-      break;
+-    case sizeof(aclCompilerHandle_0_8_1):
+-      m = reinterpret_cast<const aclCompilerHandle_0_8_1*>(bin)->alloc;
+-      break;
+-    default:
+-      assert(!"Found an unsupported compiler!");
+-      m = bin->alloc;
+-      break;
+-  }
+-  return (m) ? m : &::malloc;
+-}
+-
+-AllocFunc
+-aclutAlloc(const aclCompilerOptions *opts)
+-{
+-  size_t size = (opts ? opts->struct_size : 0);
+-  AllocFunc m = NULL;
+-  switch (size) {
+-    case 0:
+-    case sizeof(aclCompilerOptions_0_8):
+-      break;
+-    case sizeof(aclCompilerOptions_0_8_1):
+-      m = reinterpret_cast<const aclCompilerOptions_0_8_1*>(opts)->alloc;
+-      break;
+-    default:
+-      assert(!"Found an unsupported compiler options struct!");
+-      m = opts->alloc;
+-      break;
+-  }
+-  return (m) ? m : &::malloc;
+-}
+-
+-
+-// Helper function that returns the
+-// de-allocation function from the compiler.
+-FreeFunc
+-aclutFree(const aclCompiler *bin)
+-{
+-  size_t size = (bin ? bin->struct_size : 0);
+-  FreeFunc f = NULL;
+-  switch(size) {
+-    case 0:
+-    case sizeof(aclCompilerHandle_0_8):
+-      break;
+-    case sizeof(aclCompilerHandle_0_8_1):
+-      f = reinterpret_cast<const aclCompilerHandle_0_8_1*>(bin)->dealloc;
+-      break;
+-    default:
+-      assert(!"Found an unsupported compiler!");
+-      f = bin->dealloc;
+-      break;
+-  }
+-  return (f) ? f : &::free;
+-}
+-
+-// Helper function that returns the
+-// de-allocation function from the binary.
+-FreeFunc
+-aclutFree(const aclBinary *bin)
+-{
+-  size_t size = (bin ? bin->struct_size : 0);
+-  FreeFunc f = NULL;
+-  switch(size) {
+-    case 0:
+-    case sizeof(aclBinary_0_8):
+-      break;
+-    case sizeof(aclBinary_0_8_1):
+-      f = reinterpret_cast<const aclBinary_0_8_1*>(bin)->binOpts.dealloc;
+-      break;
+-    default:
+-      assert(!"Found an unsupported binary!");
+-      f = bin->binOpts.dealloc;
+-      break;
+-  }
+-  return (f) ? f : &::free;
+-}
+-
+-FreeFunc
+-aclutFree(const aclCompilerOptions *opts)
+-{
+-  size_t size = (opts ? opts->struct_size : 0);
+-  FreeFunc f = NULL;
+-  switch (size) {
+-    case 0:
+-    case sizeof(aclCompilerOptions_0_8):
+-      break;
+-    case sizeof(aclCompilerOptions_0_8_1):
+-      f = reinterpret_cast<const aclCompilerOptions_0_8_1*>(opts)->dealloc;
+-      break;
+-    default:
+-      assert(!"Found an unsupported compiler options struct!");
+-      f = opts->dealloc;
+-      break;
+-  }
+-  return (f) ? f : &::free;
+-}
+-
+-
+-void
+-aclutCopyBinOpts(aclBinaryOptions *dst, const aclBinaryOptions *src, bool is64)
+-{
+-  if (dst == src) return;
+-  aclBinaryOptions_0_8 *dst08;
+-  aclBinaryOptions_0_8_1 *dst081;
+-  const aclBinaryOptions_0_8 *src08;
+-  const aclBinaryOptions_0_8_1 *src081;
+-  dst08 = reinterpret_cast<aclBinaryOptions_0_8*>(dst);
+-  dst081 = reinterpret_cast<aclBinaryOptions_0_8_1*>(dst);
+-  src08 = reinterpret_cast<const aclBinaryOptions_0_8*>(src);
+-  src081 = reinterpret_cast<const aclBinaryOptions_0_8_1*>(src);
+-  unsigned size = (src ? src->struct_size : 0);
+-  switch (size) {
+-    case 0:
+-      switch (dst->struct_size) {
+-        case sizeof(aclBinary_0_8):
+-          dst08->elfclass = (is64) ? ELFCLASS64 : ELFCLASS32;
+-          dst08->bitness = ELFDATA2LSB;
+-          dst08->temp_file = "";
+-          dst08->kernelArgAlign = 4;
+-          break;
+-        case sizeof(aclBinary_0_8_1):
+-          dst081->elfclass = (is64) ? ELFCLASS64 : ELFCLASS32;
+-          dst081->bitness = ELFDATA2LSB;
+-          dst081->temp_file = "";
+-          dst081->kernelArgAlign = 4;
+-          dst081->alloc = &::malloc;
+-          dst081->dealloc = &::free;
+-          break;
+-        default:
+-          dst->elfclass = (is64) ? ELFCLASS64 : ELFCLASS32;
+-          dst->bitness = ELFDATA2LSB;
+-          dst->temp_file = "";
+-          dst->kernelArgAlign = 4;
+-          dst->alloc = &::malloc;
+-          dst->dealloc = &::free;
+-          break;
+-       }
+-      break;
+-    case sizeof(aclBinaryOptions_0_8):
+-      switch (dst->struct_size) {
+-        case sizeof(aclBinaryOptions_0_8):
+-          memcpy(dst08, src08, src08->struct_size);
+-          break;
+-        case sizeof(aclBinaryOptions_0_8_1):
+-          dst081->elfclass = src08->elfclass;
+-          dst081->bitness = src08->bitness;
+-          dst081->temp_file = src08->temp_file;
+-          dst081->kernelArgAlign = src08->kernelArgAlign;
+-          dst081->alloc = &::malloc;
+-          dst081->dealloc = &::free;
+-          break;
+-        default:
+-          assert(!"aclBinary format is not supported!");
+-          memcpy(dst, src08, src08->struct_size);
+-          if (!dst->alloc) dst->alloc = &::malloc;
+-          if (!dst->dealloc) dst->dealloc = &::free;
+-      }
+-      break;
+-    case sizeof(aclBinaryOptions_0_8_1):
+-      switch (dst->struct_size) {
+-        case sizeof(aclBinary_0_8):
+-          dst08->elfclass = src081->elfclass;
+-          dst08->bitness = src081->bitness;
+-          dst08->temp_file = src081->temp_file;
+-          dst08->kernelArgAlign = src081->kernelArgAlign;
+-          break;
+-        case sizeof(aclBinaryOptions_0_8_1):
+-          memcpy(dst081, src081, src081->struct_size);
+-          if (!dst->alloc) dst->alloc = &::malloc;
+-          if (!dst->dealloc) dst->dealloc = &::free;
+-          break;
+-        default:
+-          assert(!"aclBinary format is not supported!");
+-          memcpy(dst, src081, src081->struct_size);
+-          if (!dst->alloc) dst->alloc = &::malloc;
+-          if (!dst->dealloc) dst->dealloc = &::free;
+-      }
+-      break;
+-    default:
+-      assert(!"aclBinary format is not supported!");
+-      memcpy(dst, src, src->struct_size);
+-  }
+-}
+-
+-acl_error
+-aclutInsertKernelStatistics(aclCompiler *cl, aclBinary *bin)
+-{
+-    if (!aclValidateCompiler(cl, true)) {
+-        return ACL_INVALID_COMPILER;
+-    }
+-    if (!aclValidateBinary(bin)) {
+-        return ACL_INVALID_BINARY;
+-    }
+-    size_t len = 0;
+-    acl_error err = ACL_SUCCESS;
+-    const void *isa = aclExtractSection(cl, bin, &len, aclTEXT, &err);
+-    if (err != ACL_SUCCESS)
+-        return err;
+-    aclTargetInfo *tgtInfo = aclutGetTargetInfo(bin);
+-    const char* chipName = aclGetChip(*tgtInfo);
+-    unsigned family = getFamilyEnum(tgtInfo);
+-    unsigned chip = getChipEnum(tgtInfo);
+-    // Non-GPU devices have family_enum set to 1 and do not qualify. Need to update.
+-    if (family >= FAMILY_R600 &&
+-	    family <= FAMILY_CZ) {
+-	  aclKernelStats kstats = {0};
+-      aclGetKstatsSI(isa, kstats);
+-	  kstats.wavefrontsize = 64; // FIXME: Hardcoded for now.
+-	  const oclBIFSymbolStruct* symbol = findBIF30SymStruct(symKernelStats);
+-	  assert(symbol && "symbol not found");
+-	  std::string symName = std::string(symbol->str[PRE]) + std::string(symbol->str[POST]);
+-	  err = aclInsertSymbol(cl, bin, reinterpret_cast<void*>(&kstats), sizeof(kstats), aclKSTATS, symName.c_str());
+-    }
+-    return err;
+-}
+-
+-std::string aclutGetCodegenName(const aclTargetInfo &tgtInfo)
+-{
+-  assert(tgtInfo.arch_id <= aclLast && "Unknown device id!");
+-  const FamilyMapping *family = familySet + tgtInfo.arch_id;
+-  if (!family) return "";
+-
+-  assert((tgtInfo.chip_id) < family->children_size && "Unknown family id!");
+-  const TargetMapping *target = &family->target[tgtInfo.chip_id];
+-  return (target) ? target->codegen_name : "";
+-}
+-
+-void initElfDeviceCaps(aclBinary *elf)
+-{
+-  if (aclutGetCaps(elf)->encryptCode) {
+-    setEncryptCaps(aclutGetCaps(elf));
+-    return;
+-  }
+-  if (aclutGetOptions(elf)) {
+-    setOptionCaps(reinterpret_cast<amd::option::Options*>(
+-          aclutGetOptions(elf)), aclutGetCaps(elf));
+-  }
+-}
+-
+-const char *getDeviceName(const aclTargetInfo &target)
+-{
+-  if (target.chip_id) {
+-    return aclGetChip(target);
+-  } else if (target.arch_id) {
+-    return aclGetArchitecture(target);
+-  }
+-  return NULL;
+-}
+-
+-const TargetMapping& getTargetMapping(const aclTargetInfo &target)
+-{
+-  switch (target.arch_id) {
+-  default:
+-    break;
+-  case aclX64:
+-    return X64TargetMapping[target.chip_id];
+-    break;
+-  case aclX86:
+-    return X86TargetMapping[target.chip_id];
+-    break;
+-  case aclHSAIL:
+-    return HSAILTargetMapping[target.chip_id];
+-    break;
+-  case aclHSAIL64:
+-    return HSAIL64TargetMapping[target.chip_id];
+-    break;
+-  case aclAMDIL:
+-    return AMDILTargetMapping[target.chip_id];
+-    break;
+-  case aclAMDIL64:
+-    return AMDIL64TargetMapping[target.chip_id];
+-    break;
+-  };
+-  return UnknownTarget;
+-}
+-
+-bool isChipSupported(const aclTargetInfo& target)
+-{
+-  if (!isValidTarget(target)) {
+-    return false;
+-  }
+-  const TargetMapping& Mapping = getTargetMapping(target);
+-  if (Mapping.family_enum == FAMILY_UNKNOWN) {
+-    return false;
+-  }
+-  return Mapping.supported;
+-}
+-
+-/*! Function that returns the library type from the TargetMapping table for
+- *the specific target device id.
+- */
+-amd::LibrarySelector getLibraryType(const aclTargetInfo *target)
+-{
+-  const TargetMapping& Mapping = getTargetMapping(*target);
+-  return Mapping.lib;
+-}
+-
+-/*! Function that returns family_enum from the TargetMapping table for
+- *the specific target device id.
+- */
+-unsigned getFamilyEnum(const aclTargetInfo *target)
+-{
+-  const TargetMapping& Mapping = getTargetMapping(*target);
+-  return Mapping.family_enum;
+-}
+-
+-/*! Function that returns chip_enum from the TargetMapping table for
+- *the specific target device id.
+- */
+-unsigned getChipEnum(const aclTargetInfo *target)
+-{
+-  const TargetMapping& Mapping = getTargetMapping(*target);
+-  return Mapping.chip_enum;
+-}
+-
+-/*! Function that returns isa type name (compute capability) from
+- *the TargetMapping table for the specific target device id.
+- */
+-const std::string &getIsaTypeName(const aclTargetInfo *target)
+-{
+-  switch (getIsaType(target)) {
+-  default:  return sgfx700;
+-  case 700: return sgfx700;
+-  case 701: return sgfx701;
+-  case 800: return sgfx800;
+-  case 801: return sgfx801;
+-  case 802: return sgfx802;
+-  case 803: return sgfx803;
+-  case 804: return sgfx804;
+-  case 810: return sgfx810;
+-  case 900: return sgfx900;
+-  case 901: return sgfx901;
+-  case 902: return sgfx902;
+-  case 903: return sgfx903;
+-  case 904: return sgfx904;
+-  case 905: return sgfx905;
+-  case 906: return sgfx906;
+-  case 907: return sgfx907;
+-  }
+-}
+-
+-/*! Function that returns isa type (compute capability) from
+- *the TargetMapping table for the specific target device id.
+- */
+-int getIsaType(const aclTargetInfo *target)
+-{
+-  const TargetMapping& Mapping = getTargetMapping(*target);
+-  switch (Mapping.family_enum) {
+-    default: return 700;
+-    case FAMILY_KV:
+-      switch (Mapping.chip_enum) {
+-        default: return 700;
+-        case KV_SPECTRE_A0:
+-        case KV_SPOOKY_A0:
+-        case KB_KALINDI_A0:
+-        // ???
+-        case ML_GODAVARI_A0: return 700;
+-      }
+-    case FAMILY_CI:
+-      switch (Mapping.chip_enum) {
+-        default: return 700;
+-        case CI_BONAIRE_M_A0:
+-        case CI_BONAIRE_M_A1: return 700;
+-        case CI_HAWAII_P_A0: return 701;
+-        case CI_TIRAN_P_A0:
+-        case CI_MAUI_P_A0: return 700;
+-      }
+-    case FAMILY_VI:
+-      switch (Mapping.chip_enum) {
+-        default: return 800;
+-        case VI_TONGA_P_A0:
+-#if defined(BUILD_HSA_TARGET)
+-        return 802; // Special case - Boltzmann Tonga
+-          // Otherwise fall through
+-#endif
+-        case VI_ICELAND_M_A0: return 800;
+-        case VI_FIJI_P_A0:
+-        case VI_BAFFIN_M_A0:
+-        case VI_BAFFIN_M_A1:
+-        case VI_ELLESMERE_P_A0:
+-        case VI_ELLESMERE_P_A1:
+-        case VI_LEXA_V_A0:
+-        case VI_POLARIS22_P_A0:
+-#if defined(BUILD_HSA_TARGET)
+-        return 803; // Special case - Boltzmann FIJI, BAFFIN, ELLESMERE, LEXA
+-          // Otherwise fall through
+-#else
+-        return 804;
+-#endif
+-      }
+-    case FAMILY_CZ:
+-      switch (Mapping.chip_enum) {
+-        default: return 801;
+-        case CARRIZO_A0: return 801;
+-        case STONEY_A0:  return 810;
+-      }
+-    case FAMILY_AI:
+-      switch (Mapping.chip_enum) {
+-        default: return 900;
+-        case AI_GREENLAND_P_A0:
+-        case AI_GREENLAND_P_A1: return Mapping.xnack_supported ? 901 : 900;
+-        case AI_VEGA12_P_A0:    return Mapping.xnack_supported ? 905 : 904;
+-        case AI_VEGA20_P_A0:    return Mapping.xnack_supported ? 907 : 906;
+-      }
+-    case FAMILY_RV:
+-      switch (Mapping.chip_enum) {
+-        default: return 902;
+-        case RAVEN_A0:          return Mapping.xnack_supported ? 903 : 902;
+-      }
+-    }
+-}
+-
+-std::string getFeatureString(const aclTargetInfo& target, amd::option::Options *OptionsObj)
+-{
+-  std::string FeatureStr;
+-  if (isHSAILTarget(target)) {
+-    uint64_t y = aclGetChipOptions(target);
+-    FeatureStr += ((y & F_FP32_DENORMS) && !OptionsObj->oVariables->DenormsAreZero) ? '+' : '-';
+-    FeatureStr += "fp32-denormals";
+-
+-    for (uint64_t x = 0; y != 0; y >>= 1, ++x) {
+-      if ((1 << x) == F_FP32_DENORMS) {
+-        continue;
+-      }
+-      if (!FeatureStr.empty()) {
+-        FeatureStr += ',';
+-      }
+-      FeatureStr += ((y & 0x1) ? '+' : '-');
+-      FeatureStr += HSAILCodeGenFlagTable[x];
+-    }
+-  }
+-  return FeatureStr;
+-}
+-
+-void
+-appendLogToCL(aclCompiler *cl, const std::string &logStr)
+-{
+-  if (logStr.empty()) {
+-    return;
+-  }
+-  std::string log = logStr;
+-  if ('\n' != log[log.size()-1]) {
+-    log.append("\n");
+-  }
+-  unsigned size = cl->logSize + log.size();
+-  if (!size) {
+-    return;
+-  }
+-  char *tmpBuildLog = reinterpret_cast<char*>(aclutAlloc(cl)(size + 2));
+-  memset(tmpBuildLog, 0, size + 2);
+-  if (cl->logSize) {
+-    std::copy(cl->buildLog, cl->buildLog + cl->logSize, tmpBuildLog);
+-    std::copy(log.begin(), log.end(), tmpBuildLog + cl->logSize);
+-  } else {
+-    std::copy(log.begin(), log.end(), tmpBuildLog);
+-  }
+-  cl->logSize += (unsigned int)log.size();
+-  if (cl->buildLog) {
+-    aclutFree(cl)(cl->buildLog);
+-  }
+-  cl->buildLog = tmpBuildLog;
+-}
+-
+-static void
+-setElfTarget(bifbase *elfBin, const aclTargetInfo *tgtInfo)
+-{
+-  uint16_t elf_target = 0;
+-  switch (tgtInfo->arch_id) {
+-    default:
+-      assert(!"creating an elf for an invalid architecture!");
+-    case aclX86:
+-      elfBin->setTarget(EM_386, aclPlatformCompLib);
+-      break;
+-    case aclX64:
+-      elfBin->setTarget(EM_X86_64, aclPlatformCompLib);
+-      break;
+-    case aclHSAIL:
+-      elfBin->setTarget(EM_HSAIL, aclPlatformCompLib);
+-      break;
+-    case aclHSAIL64:
+-      elfBin->setTarget(EM_HSAIL_64, aclPlatformCompLib);
+-      break;
+-    case aclAMDIL:
+-      elfBin->setTarget(EM_AMDIL, aclPlatformCompLib);
+-      break;
+-    case aclAMDIL64:
+-      elfBin->setTarget(EM_AMDIL_64, aclPlatformCompLib);
+-      break;
+-  }
+-}
+-// FIXME: this needs to be moved into the BIF classes.
+-static void
+-convertBIF30MachineTo2X(bifbase *elfBin, const aclTargetInfo *tgtInfo)
+-{
+-  uint16_t machine = 0;
+-  uint32_t flags = 0;
+-  aclPlatform pform = aclPlatformLast;
+-  if (elfBin == NULL) return;
+-  elfBin->getTarget(machine, pform);
+-  assert(pform == aclPlatformCompLib
+-      && "Platform is specified incorrectly!");
+-  if (isCpuTarget(*tgtInfo)) {
+-    assert(!"Not implemented/supported family detected!");
+-    pform = aclPlatformCPU;
+-  } else if (isAMDILTarget(*tgtInfo)) {
+-    const char* chip = aclGetChip(*tgtInfo);
+-    for (unsigned x = 0, y = sizeof(calTargetMapping)/sizeof(calTargetMapping[0]);
+-        x < y; ++x) {
+-      if (!strcmp(chip, calTargetMapping[x])) {
+-        machine = x;
+-        break;
+-      }
+-    }
+-    pform = aclPlatformCAL;
+-  } else {
+-    assert(!"Not implemented/supported family detected!");
+-  }
+-  elfBin->setTarget(machine, pform);
+-}
+-// FIXME: This needs to be moved into the elf classes
+-static void
+-convertBIF2XMachineTo31(bifbase *elfBin)
+-{
+-  uint16_t machine = 0;
+-  aclPlatform pform = aclPlatformLast;
+-  if (elfBin == NULL) return;
+-  elfBin->getTarget(machine, pform);
+-  assert(pform != aclPlatformCompLib
+-      && "Platform is specified incorrectly!");
+-  if (pform == aclPlatformCPU) {
+-      uint16_t type;
+-      elfBin->getType(type);
+-    machine = (type == ELFCLASS32 ? EM_386 : EM_X86_64);
+-  } else if (pform == aclPlatformCAL) {
+-    machine = EM_AMDIL;
+-  } else {
+-    assert(!"Unknown platform found!");
+-  }
+-  pform = aclPlatformCompLib;
+-  elfBin->setTarget(machine, pform);
+-}
+-
+-static void
+-convertBIF2XMachineTo30(bifbase *elfBin)
+-{
+-  uint16_t machine = 0;
+-  aclPlatform pform = aclPlatformLast;
+-  if (elfBin == NULL) return;
+-  elfBin->getTarget(machine, pform);
+-  assert(pform != aclPlatformCompLib
+-      && "Platform is specified incorrectly!");
+-  if (pform == aclPlatformCPU) {
+-      uint16_t type;
+-      elfBin->getType(type);
+-    machine = (type == ELFCLASS32 ? EM_386 : EM_X86_64);
+-  } else if (pform == aclPlatformCAL) {
+-    machine = EM_AMDIL;
+-  } else {
+-    assert(!"Unknown platform found!");
+-  }
+-  pform = aclPlatformCompLib;
+-  elfBin->setTarget(machine, pform);
+-}
+-
+-static void
+-setElfFlags(bifbase *elfBin, const aclTargetInfo *tgtInfo)
+-{
+-  uint32_t flags = 0;
+-  elfBin->getFlags(flags);
+-  flags &= 0xFFFF0000;
+-  const FamilyMapping *family = familySet + tgtInfo->arch_id;
+-  flags = tgtInfo->chip_id & 0xFFFF;
+-  elfBin->setFlags(flags);
+-}
+-
+-static aclBinary*
+-cloneOclElfNoBIF(const aclBinary *src) {
+-  if (src == NULL) return NULL;
+-  if (src->struct_size == sizeof(aclBinary_0_8_1)) {
+-    aclBinary *dst = constructBinary(src->struct_size,
+-        aclutGetTargetInfo(const_cast<aclBinary*>(src)),
+-        aclutGetBinOpts(const_cast<aclBinary*>(src)));
+-    if (dst == NULL) {
+-      return NULL;
+-    }
+-    aclBinary_0_8_1 *dptr = reinterpret_cast<aclBinary_0_8_1*>(dst);
+-    const aclBinary_0_8_1 *sptr = reinterpret_cast<const aclBinary_0_8_1*>(src);
+-    dptr->target.struct_size = sizeof(aclTargetInfo_0_8);
+-    if (sptr->target.struct_size == sizeof(aclTargetInfo_0_8)) {
+-      memcpy(&dptr->target, &sptr->target, sptr->target.struct_size);
+-    } else {
+-      assert(!"Unsupported target info detected!");
+-    }
+-
+-    memcpy(&dptr->caps, &sptr->caps, sptr->caps.struct_size);
+-    assert(sizeof(aclDevCaps_0_8) == dptr->caps.struct_size);
+-    amd::option::Options *Opts = reinterpret_cast<amd::option::Options*>(
+-            aclutAlloc(src)(sizeof(amd::option::Options)));
+-    Opts = new (Opts) amd::option::Options;
+-    amd::option::Options *sOpts = reinterpret_cast<amd::option::Options*>(
+-        sptr->options);
+-    if (sOpts) {
+-      parseAllOptions(sOpts->origOptionStr, *Opts);
+-    }
+-    dptr->options = reinterpret_cast<aclOptions*>(Opts);
+-    dptr->bin = NULL;
+-    return dst;
+-  } else if (src->struct_size == sizeof(aclBinary_0_8)) {
+-    aclBinary *dst = constructBinary(src->struct_size,
+-        &src->target,
+-        &src->binOpts);
+-    if (dst == NULL) {
+-      return NULL;
+-    }
+-    aclBinary_0_8 *dptr = reinterpret_cast<aclBinary_0_8*>(dst);
+-    const aclBinary_0_8 *sptr = reinterpret_cast<const aclBinary_0_8*>(src);
+-    dptr->target.struct_size = sizeof(aclTargetInfo_0_8);
+-    if (sptr->target.struct_size == sizeof(aclTargetInfo_0_8)) {
+-      memcpy(&dptr->target, &sptr->target, sptr->target.struct_size);
+-    } else {
+-      assert(!"Unsupported target info detected!");
+-    }
+-
+-    memcpy(&dptr->caps, &sptr->caps, sptr->caps.struct_size);
+-    assert(sizeof(aclDevCaps_0_8) == dptr->caps.struct_size
+-        && "The caps struct is not version 0.7!");
+-    amd::option::Options *Opts = reinterpret_cast<amd::option::Options*>(
+-            aclutAlloc(src)(sizeof(amd::option::Options)));
+-    Opts = new (Opts) amd::option::Options;
+-    amd::option::Options *sOpts = reinterpret_cast<amd::option::Options*>(
+-        sptr->options);
+-    if (sOpts) {
+-      parseAllOptions(sOpts->origOptionStr, *Opts);
+-    }
+-    dptr->options = reinterpret_cast<aclOptions*>(Opts);
+-    dptr->bin = NULL;
+-    return dst;
+-  } else {
+-    assert(!"Elf version not supported!");
+-  }
+-  return NULL;
+-}
+-
+-// Create a copy of an ELF and duplicate all sections/symbols
+-// All sections are copied verbatim.
+-aclBinary*
+-createELFCopy(aclBinary *src) {
+-  aclBinary *dst = cloneOclElfNoBIF(src);
+-  if (dst != NULL) {
+-    bifbase *srcBin = reinterpret_cast<bifbase*>(aclutGetBIF(src));
+-    bifbase* dstBin = NULL;
+-    switch (srcBin->getVersion()) {
+-      default:
+-        assert(!"New/unknown version detected!");
+-        dstBin = reinterpret_cast<bifbase*>(aclutAlloc(src)(sizeof(bifbase)));
+-        dstBin = new (dstBin) bifbase(srcBin->getBase());
+-        break;
+-      case aclBIFVersion20:
+-        dstBin = reinterpret_cast<bifbase*>(aclutAlloc(src)(sizeof(bif20)));
+-        dstBin = new (dstBin) bif20(srcBin->get20()); break;
+-      case aclBIFVersion21:
+-        dstBin = reinterpret_cast<bifbase*>(aclutAlloc(src)(sizeof(bif21)));
+-        dstBin = new (dstBin) bif21(srcBin->get21()); break;
+-      case aclBIFVersion30:
+-        dstBin = reinterpret_cast<bifbase*>(aclutAlloc(src)(sizeof(bif30)));
+-        dstBin = new (dstBin) bif30(srcBin->get30()); break;
+-      case aclBIFVersion31:
+-        dstBin = reinterpret_cast<bifbase*>(aclutAlloc(src)(sizeof(bif31)));
+-        dstBin = new (dstBin) bif31(srcBin->get31()); break;
+-    }
+-    if (dstBin->hasError()) {
+-      aclBinaryFini(dst);
+-      return NULL;
+-    }
+-    dst->bin = reinterpret_cast<aclBIF*>(dstBin);
+-  }
+-  return dst;
+-}
+-
+-// Create a BIF2.1 elf from a BIF 2.0 elf.
+-// All sections are copied and then if
+-// CAL/DLL or JITBINARY sections are found,
+-// the type is set to EXEC.
+-aclBinary*
+-convertBIF20ToBIF21(aclBinary *src) {
+-  aclBinary *dst = cloneOclElfNoBIF(src);
+-  if (dst != NULL) {
+-    bifbase *srcBin = reinterpret_cast<bifbase*>(aclutGetBIF(src));
+-    assert(srcBin->get20() != NULL && "Passed in an invalid binary!");
+-    bif21 *dstBin = NULL;
+-    dstBin = reinterpret_cast<bif21*>(aclutAlloc(src)(sizeof(bif21)));
+-    dstBin = new (dstBin) bif21(srcBin->get20());
+-    if (dstBin->hasError()) {
+-      aclBinaryFini(dst);
+-      return NULL;
+-    }
+-    dst->bin = reinterpret_cast<aclBIF*>(dstBin);
+-  }
+-  return dst;
+-}
+-
+-// Create a BIF3.0 elf from a BIF 2.0 elf.
+-aclBinary*
+-convertBIF20ToBIF30(aclBinary *src) {
+-  aclBinary *dst = cloneOclElfNoBIF(src);
+-  if (dst != NULL) {
+-    bifbase *srcBin = reinterpret_cast<bifbase*>(aclutGetBIF(src));
+-    assert(srcBin->get20() != NULL && "Passed in an invalid binary!");
+-    bif30 *dstBin = NULL;
+-    dstBin = reinterpret_cast<bif30*>(aclutAlloc(src)(sizeof(bif30)));
+-    dstBin = new (dstBin) bif30(srcBin->get20());
+-    if (dstBin->hasError()) {
+-      aclBinaryFini(dst);
+-      return NULL;
+-    }
+-    dst->bin = reinterpret_cast<aclBIF*>(dstBin);
+-    convertBIF2XMachineTo30(dstBin);
+-  }
+-  return dst;
+-}
+-
+-// Create a BIF3.1 elf from a BIF 2.0 elf.
+-aclBinary*
+-convertBIF20ToBIF31(aclBinary *src) {
+-  aclBinary *dst = cloneOclElfNoBIF(src);
+-  if (dst != NULL) {
+-    bifbase *srcBin = reinterpret_cast<bifbase*>(aclutGetBIF(src));
+-    assert(srcBin->get20() != NULL && "Passed in an invalid binary!");
+-    bif31 *dstBin = NULL;
+-    dstBin = reinterpret_cast<bif31*>(aclutAlloc(src)(sizeof(bif31)));
+-    dstBin = new (dstBin) bif31(srcBin->get20());
+-    if (dstBin->hasError()) {
+-      aclBinaryFini(dst);
+-      return NULL;
+-    }
+-    dst->bin = reinterpret_cast<aclBIF*>(dstBin);
+-    convertBIF2XMachineTo31(dstBin);
+-  }
+-  return dst;
+-}
+-
+-// Create a BIF2.0 elf from a BIF 2.1 elf.
+-// All sections except for the COMMENT section is copied
+-// verbatim and the section is set to NONE.
+-aclBinary*
+-convertBIF21ToBIF20(aclBinary *src) {
+-  aclBinary *dst = cloneOclElfNoBIF(src);
+-  if (dst != NULL) {
+-    bifbase *srcBin = reinterpret_cast<bifbase*>(aclutGetBIF(src));
+-    assert(srcBin->get21() != NULL && "Passed in an invalid binary!");
+-    bif20 *dstBin = NULL;
+-    dstBin = reinterpret_cast<bif20*>(aclutAlloc(src)(sizeof(bif20)));
+-    dstBin = new (dstBin) bif20(srcBin->get21());
+-    if (dstBin->hasError()) {
+-      aclBinaryFini(dst);
+-      return NULL;
+-    }
+-    dst->bin = reinterpret_cast<aclBIF*>(dstBin);
+-  }
+-  return dst;
+-}
+-
+-// Create a BIF3.0 elf from a BIF 2.1 elf.
+-// See BIF spec for 2.1 to 3.0 conversion
+-// and also include the comment section.
+-aclBinary*
+-convertBIF21ToBIF30(aclBinary *src) {
+-  aclBinary *dst = cloneOclElfNoBIF(src);
+-  if (dst != NULL) {
+-    bifbase *srcBin = reinterpret_cast<bifbase*>(aclutGetBIF(src));
+-    assert(srcBin->get21() != NULL && "Passed in an invalid binary!");
+-    bif30 *dstBin = NULL;
+-    dstBin = reinterpret_cast<bif30*>(aclutAlloc(src)(sizeof(bif30)));
+-    dstBin = new (dstBin) bif30(srcBin->get21());
+-    if (dstBin->hasError()) {
+-      aclBinaryFini(dst);
+-      return NULL;
+-    }
+-    dst->bin = reinterpret_cast<aclBIF*>(dstBin);
+-    convertBIF2XMachineTo30(dstBin);
+-  }
+-  return dst;
+-}
+-
+-// Create a BIF3.1 elf from a BIF 2.1 elf.
+-// See BIF spec for 3.1 to 2.1 conversion.
+-aclBinary*
+-convertBIF21ToBIF31(aclBinary *src) {
+-  aclBinary *dst = cloneOclElfNoBIF(src);
+-  if (dst != NULL) {
+-    bifbase *srcBin = reinterpret_cast<bifbase*>(aclutGetBIF(src));
+-    assert(srcBin->get21() != NULL && "Passed in an invalid binary!");
+-    bif31 *dstBin = NULL;
+-    dstBin = reinterpret_cast<bif31*>(aclutAlloc(src)(sizeof(bif31)));
+-    dstBin = new (dstBin) bif31(srcBin->get21());
+-    if (dstBin->hasError()) {
+-      aclBinaryFini(dst);
+-      return NULL;
+-    }
+-    dst->bin = reinterpret_cast<aclBIF*>(dstBin);
+-    convertBIF2XMachineTo31(dstBin);
+-  }
+-  return dst;
+-}
+-
+-// Create a BIF2.0 elf from a BIF 3.0 elf.
+-// See BIF spec for 3.0 to 2.0 conversion.
+-aclBinary*
+-convertBIF30ToBIF20(aclBinary *src) {
+-  aclBinary *dst = cloneOclElfNoBIF(src);
+-  if (dst != NULL) {
+-    bifbase *srcBin = reinterpret_cast<bifbase*>(aclutGetBIF(src));
+-    assert(srcBin->get30() != NULL && "Passed in an invalid binary!");
+-    bif20 *dstBin = NULL;
+-    dstBin = reinterpret_cast<bif20*>(aclutAlloc(src)(sizeof(bif20)));
+-    dstBin = new (dstBin) bif20(srcBin->get30());
+-    if (dstBin->hasError()) {
+-      aclBinaryFini(dst);
+-      return NULL;
+-    }
+-    dst->bin = reinterpret_cast<aclBIF*>(dstBin);
+-  }
+-  return dst;
+-}
+-
+-// Create a BIF2.1 elf from a BIF 3.0 elf
+-// See BIF spec for 3.0 to 2.1 conversion
+-// but also include the COMMENT section.
+-aclBinary*
+-convertBIF30ToBIF21(aclBinary *src) {
+-  aclBinary *dst = cloneOclElfNoBIF(src);
+-  if (dst != NULL) {
+-    bifbase *srcBin = reinterpret_cast<bifbase*>(aclutGetBIF(src));
+-    assert(srcBin->get30() != NULL && "Passed in an invalid binary!");
+-    bif21 *dstBin = NULL;
+-    dstBin = reinterpret_cast<bif21*>(aclutAlloc(src)(sizeof(bif21)));
+-    dstBin = new (dstBin) bif21(srcBin->get30());
+-    if (dstBin->hasError()) {
+-      aclBinaryFini(dst);
+-      return NULL;
+-    }
+-    dst->bin = reinterpret_cast<aclBIF*>(dstBin);
+-  }
+-  return dst;
+-}
+-
+-// Create a BIF3.1 elf from a BIF 3.0 elf
+-// See BIF spec for 3.0 to 3.1 conversion.
+-aclBinary*
+-convertBIF30ToBIF31(aclBinary *src) {
+-  aclBinary *dst = cloneOclElfNoBIF(src);
+-  if (dst != NULL) {
+-    bifbase *srcBin = reinterpret_cast<bifbase*>(aclutGetBIF(src));
+-    assert(srcBin->get30() != NULL && "Passed in an invalid binary!");
+-    bif31 *dstBin = NULL;
+-    dstBin = reinterpret_cast<bif31*>(aclutAlloc(src)(sizeof(bif31)));
+-    dstBin = new (dstBin) bif31(srcBin->get30());
+-    if (dstBin->hasError()) {
+-      aclBinaryFini(dst);
+-      return NULL;
+-    }
+-    dst->bin = reinterpret_cast<aclBIF*>(dstBin);
+-  }
+-  return dst;
+-}
+-
+-// Create a BIF2.0 elf from a BIF 3.1 elf.
+-// See BIF spec for 3.1 to 2.0 conversion.
+-aclBinary*
+-convertBIF31ToBIF20(aclBinary *src) {
+-  aclBinary *dst = cloneOclElfNoBIF(src);
+-  if (dst != NULL) {
+-    bifbase *srcBin = reinterpret_cast<bifbase*>(aclutGetBIF(src));
+-    assert(srcBin->get31() != NULL && "Passed in an invalid binary!");
+-    bif20 *dstBin = NULL;
+-    dstBin = reinterpret_cast<bif20*>(aclutAlloc(src)(sizeof(bif20)));
+-    dstBin = new (dstBin) bif20(srcBin->get31());
+-    if (dstBin->hasError()) {
+-      aclBinaryFini(dst);
+-      return NULL;
+-    }
+-    dst->bin = reinterpret_cast<aclBIF*>(dstBin);
+-  }
+-  return dst;
+-}
+-
+-// Create a BIF2.1 elf from a BIF 3.1 elf
+-// See BIF spec for 3.1 to 2.1 conversion.
+-aclBinary*
+-convertBIF31ToBIF21(aclBinary *src) {
+-  aclBinary *dst = cloneOclElfNoBIF(src);
+-  if (dst != NULL) {
+-    bifbase *srcBin = reinterpret_cast<bifbase*>(aclutGetBIF(src));
+-    assert(srcBin->get31() != NULL && "Passed in an invalid binary!");
+-    bif21 *dstBin = NULL;
+-    dstBin = reinterpret_cast<bif21*>(aclutAlloc(src)(sizeof(bif21)));
+-    dstBin = new (dstBin) bif21(srcBin->get31());
+-    if (dstBin->hasError()) {
+-      aclBinaryFini(dst);
+-      return NULL;
+-    }
+-    dst->bin = reinterpret_cast<aclBIF*>(dstBin);
+-  }
+-  return dst;
+-}
+-
+-// Create a BIF3.1 elf from a BIF 3.0 elf
+-// See BIF spec for 3.0 to 3.1 conversion.
+-aclBinary*
+-convertBIF31ToBIF30(aclBinary *src) {
+-  aclBinary *dst = cloneOclElfNoBIF(src);
+-  if (dst != NULL) {
+-    bifbase *srcBin = reinterpret_cast<bifbase*>(aclutGetBIF(src));
+-    assert(srcBin->get31() != NULL && "Passed in an invalid binary!");
+-    bif30 *dstBin = NULL;
+-    dstBin = reinterpret_cast<bif30*>(aclutAlloc(src)(sizeof(bif30)));
+-    dstBin = new (dstBin) bif30(srcBin->get31());
+-    if (dstBin->hasError()) {
+-      aclBinaryFini(dst);
+-      return NULL;
+-    }
+-    dst->bin = reinterpret_cast<aclBIF*>(dstBin);
+-  }
+-  return dst;
+-}
+-
+-void dump(aclBinary *bin) {
+-  bifbase *elfBin = reinterpret_cast<bifbase*>(bin->bin);
+-  elfBin->dump();
+-}
+-
+-const std::string &getLegacyLibName() {
+-  return legacyLibName;
+-}

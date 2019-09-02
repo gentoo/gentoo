@@ -31,6 +31,8 @@ DEPEND="${RDEPEND}
 	dev-ml/findlib"
 
 PATCHES=(
+	"${FILESDIR}/${P}-update-to-master_a.patch"
+	"${FILESDIR}/${P}-update-to-master_b.patch"
 	"${FILESDIR}/${P}-unbundle-dependencies.patch"
 )
 

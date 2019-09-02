@@ -1,0 +1,1045 @@
+diff --git a/compiler/lib/utils/v0_8/target_mappings.h b/compiler/lib/utils/v0_8/target_mappings.h
+deleted file mode 100644
+index 1126dcd..0000000
+--- a/compiler/lib/utils/v0_8/target_mappings.h
++++ /dev/null
+@@ -1,306 +0,0 @@
+-//
+-// Copyright (c) 2011 Advanced Micro Devices, Inc. All rights reserved.
+-//
+-#ifndef _CL_UTILS_TARGET_MAPPINGS_0_8_H_
+-#define _CL_UTILS_TARGET_MAPPINGS_0_8_H_
+-#include "top.hpp"
+-#include "library.hpp"
+-#include "aclTypes.h"
+-#ifndef FAMILY_UNKNOWN
+-#define FAMILY_UNKNOWN 0
+-#endif
+-
+-#ifndef FAMILY_X86
+-#define FAMILY_X86 1
+-#endif
+-
+-#ifndef FAMILY_X64
+-#define FAMILY_X64 2
+-#endif
+-
+-#define ARRAY_SIZEOF(A) (sizeof(A)/sizeof(A[0]))
+-
+-typedef struct _target_mappings_rec {
+-  const char* family_name;
+-  const char* chip_name;
+-  const char* codegen_name;
+-  amd::LibrarySelector lib;
+-  unsigned chip_enum;
+-  uint64_t chip_options;
+-  bool supported; // a false value means this device is not supported.
+-  bool default_chip; // Chip to select if multiple chips with the same name exist.
+-  unsigned family_enum; // Only used for GPU devices currently, for CPU we should put features.
+-  bool xnack_supported; // XNACK support as per http://confluence.amd.com/pages/viewpage.action?spaceKey=ASLC&title=AMDGPU+Target+Names 
+-} TargetMapping;
+-
+-const TargetMapping UnknownTarget = { "UnknownFamily", "UnknownChip", "UnknownCodeGen",
+-  amd::LibraryUndefined, 0, 0, false, false, FAMILY_UNKNOWN, false};
+-const TargetMapping InvalidTarget = { NULL, NULL, NULL,
+-  amd::LibraryUndefined, 0, 0, false, false, FAMILY_UNKNOWN, false};
+-
+-typedef struct _family_map_rec {
+-  const TargetMapping*  target;
+-  const char* architecture;
+-  const char* triple;
+-  unsigned children_size;
+-} FamilyMapping;
+-const FamilyMapping UnknownFamily = { NULL, "UnknownFamily", "unknown", 0 };
+-const FamilyMapping InvalidFamily = { NULL, NULL, NULL, 0 };
+-typedef enum  {
+-  F_CPU_CMOV      =  1,
+-  F_CPU_POPCNT    =  2,
+-  F_CPU_MMX       =  3,
+-  F_CPU_SSE1      =  4,
+-  F_CPU_SSE2      =  5,
+-  F_CPU_SSE3      =  6,
+-  F_CPU_SSSE3     =  7,
+-  F_CPU_SSE41     =  8,
+-  F_CPU_SSE42     =  9,
+-  F_CPU_SSE4A     = 10,
+-  F_CPU_3DNow     = 11,
+-  F_CPU_3DNowA    = 12,
+-  F_CPU_64Bit     = 13,
+-  F_CPU_SBTMem    = 14,
+-  F_CPU_FUAMem    = 15,
+-  F_CPU_AVX       = 16,
+-  F_CPU_CLMUL     = 17,
+-  F_CPU_VUAMem    = 18,
+-  F_CPU_AES       = 19,
+-  F_CPU_CXCHG16B  = 20,
+-  F_CPU_AVX2      = 21,
+-  F_CPU_FMA3      = 22,
+-  F_CPU_FMA4      = 23,
+-  F_CPU_MOVBE     = 24,
+-  F_CPU_RDRAND    = 25,
+-  F_CPU_F16C      = 26,
+-  F_CPU_64BitMode = 27,
+-  F_CPU_LZCNT     = 28,
+-  F_CPU_BMI       = 29,
+-  F_CPU_BMI2      = 30, // LLVM 3.1 only
+-  F_CPU_LeaForSP  = 31, // LLVM 3.1 only
+-  F_CPU_FSGSBASE  = 32, // LLVM 3.1 only
+-  F_CPU_XOP       = 33, // LLVM 3.1 only
+-  F_CPU_ATOM      = 34, // LLVM 3.1 only
+-  F_CPU_LAST      = 35
+-} CPUCodeGenFlags;
+-
+-static const char* CPUCodeGenFlagTable[] =
+-{
+-  "cmov",
+-  "popcnt",
+-  "mmx",
+-  "sse",
+-  "sse2",
+-  "sse3",
+-  "ssse3",
+-  "sse41",
+-  "sse42",
+-  "sse4a",
+-  "3dnow",
+-  "3dnowa",
+-  "64bit",
+-  "slow-bt-mem",
+-  "fast-unaligned-mem",
+-  "avx",
+-  "clmul",
+-  "vector-unaligned-mem",
+-  "aes",
+-  "cmpxchg16b",
+-  "avx2",
+-  "fma3",
+-  "fma4",
+-  "movbe",
+-  "rdrand",
+-  "f16c",
+-  "fsgsbase",
+-  "lzcnt",
+-  "bmi",
+-  "bmi2",
+-  "lea-sp",
+-  "64bit-mode",
+-  "xop",
+-  "atom"
+-};
+-
+-typedef enum {
+-  // Bits for each feature.
+-  F_FP64              = 0x0001,
+-  F_BYTE_ADDRESSABLE  = 0x0002,
+-  F_BARRIER_DETECT    = 0x0004,
+-  F_IMAGES            = 0x0008,
+-  F_MULTI_UAV         = 0x0010,
+-  F_MACRO_DB          = 0x0020,
+-  F_NO_ALIAS          = 0x0040,
+-  F_NO_INLINE         = 0x0080,
+-  F_64BIT_PTR         = 0x0100,
+-  F_32ON64BIT_PTR     = 0x0200,
+-  F_DEBUG             = 0x0400,
+-  F_MWGS_256          = 0x0800,
+-  F_MWGS_128          = 0x1000,
+-  F_MWGS_64           = 0x2000,
+-  F_MWGS_32           = 0x4000,
+-  F_MWGS_16           = 0x8000,
+-  F_MD_30             = 0x10000,
+-  F_STACK_UAV         = 0x20000,
+-  F_MACRO_CALL        = 0x40000,
+-  // Bitmasks for each device type.
+-  F_RV7XX_BASE        = F_MACRO_DB|F_BARRIER_DETECT|F_MD_30,
+-  F_RV710             = F_RV7XX_BASE|F_MWGS_32,
+-  F_RV730             = F_RV7XX_BASE|F_MWGS_16,
+-  F_RV770             = F_RV7XX_BASE|F_MWGS_64|F_FP64,
+-  F_EG_BASE           = F_BYTE_ADDRESSABLE|F_IMAGES|F_MACRO_DB|F_MD_30,
+-  F_EG_EXT            = F_EG_BASE|F_FP64|F_MWGS_256,
+-  F_CEDAR             = F_EG_BASE|F_MWGS_128,
+-  F_REDWOOD           = F_EG_BASE|F_MWGS_256,
+-  F_JUNIPER           = F_EG_BASE|F_MWGS_256,
+-  F_NI_BASE           = F_EG_BASE|F_MWGS_256,
+-  F_NI_EXT            = F_NI_BASE|F_FP64,
+-  F_SI_BASE           = F_NI_EXT|F_STACK_UAV|F_MACRO_CALL,
+-  F_SI_64BIT_PTR      = F_SI_BASE|F_64BIT_PTR
+-} GPUCodeGenFlags;
+-
+-typedef enum {
+-  // Bits for each feature.
+-  F_FP32_DENORMS      = 0x0001,
+-  // Bitmasks for each device type.
+-  F_CI_BASE           = 0,
+-  F_VI_BASE           = F_CI_BASE | F_FP32_DENORMS,
+-  F_AI_BASE           = F_VI_BASE
+-} HSAILCodeGenFlags;
+-
+-static const char* GPUCodeGenFlagTable[] = {
+-  "fp64",
+-  "byte_addressable_store",
+-  "barrier_detect",
+-  "images",
+-  "multi_uav",
+-  "macrodb",
+-  "noalias",
+-  "no-inline",
+-  "64bitptr",
+-  "small-global-objects",
+-  "debug",
+-  "mwgs-3-256-1-1",
+-  "mwgs-3-128-1-1",
+-  "mwgs-3-64-1-1",
+-  "mwgs-3-32-1-1",
+-  "mwgs-3-16-1-1",
+-  "metadata30",
+-  "stack-uav",
+-  "macro-call"
+-};
+-
+-static const char* HSAILCodeGenFlagTable[] = {
+-  "fp32-denormals"
+-};
+-
+-static const char* calTargetMapping[] = {
+-      "RV600", "RV610", "RV630", "RV670",
+-      "RV770", "RV770", "RV710", "RV730",
+-      "Cypress", "Juniper", "Redwood", "Cedar",
+-      "WinterPark", "BeaverCreek", "Loveland",
+-      "Cayman", "Kauai", "Barts", "Turks", "Caicos",
+-      "Tahiti", "Pitcairn", "Capeverde",
+-      "Devastator", "Scrapper",
+-      "Oland", "Bonaire",
+-      "Spectre", "Spooky", "Kalindi",
+-      "Hainan", "Hawaii",
+-      "Iceland", "Tonga", "Mullins", "Fiji",
+-      "Carrizo", "Ellesmere", "Baffin",
+-      IF(IS_BRAHMA,"","gfx900"),
+-      "Stoney",
+-      "gfx804",
+-      IF(IS_BRAHMA,"","gfx901"),
+-      IF(IS_BRAHMA,"","gfx902"),
+-      IF(IS_BRAHMA,"","gfx903"),
+-      IF(IS_BRAHMA,"","gfx904"),
+-      IF(IS_BRAHMA,"","gfx905"),
+-      IF(IS_BRAHMA,"","gfx906"),
+-      IF(IS_BRAHMA,"","gfx907"),
+-};
+-
+-#include "utils/v0_8/target_mappings_amdil.h"
+-#include "utils/v0_8/target_mappings_hsail.h"
+-#include "utils/v0_8/target_mappings_x86.h"
+-#include "utils/v0_8/target_mappings_x64.h"
+-#include "utils/v0_8/target_mappings_amdil64.h"
+-#include "utils/v0_8/target_mappings_hsail64.h"
+-// FIXME: Add static asserts to make sure that all of the arrays for TargetMapping match the enum table.
+-
+-#define DATA_LAYOUT_64BIT "e-p:64:64:64-i1:8:8-i8:8:8-i16:16:16" \
+-                "-i32:32:32-i64:64:64-f32:32:32-f64:64:64-f80:32:32" \
+-                "-v16:16:16-v24:32:32-v32:32:32-v48:64:64-v64:64:64" \
+-                "-v96:128:128-v128:128:128-v192:256:256-v256:256:256" \
+-                "-v512:512:512-v1024:1024:1024-v2048:2048:2048-a0:0:64" \
+-                "-n32"
+-
+-#define DATA_LAYOUT_32BIT "e-p:32:32:32-i1:8:8-i8:8:8-i16:16:16" \
+-                "-i32:32:32-i64:64:64-f32:32:32-f64:64:64-f80:32:32" \
+-                "-v16:16:16-v24:32:32-v32:32:32-v48:64:64-v64:64:64" \
+-                "-v96:128:128-v128:128:128-v192:256:256-v256:256:256" \
+-                "-v512:512:512-v1024:1024:1024-v2048:2048:2048-a0:0:64" \
+-                "-n32"
+-
+-inline const char* getArchitecture(aclDevType arch_id)
+-{
+-  switch (arch_id) {
+-    case aclX86:
+-      return "x86";
+-    case aclAMDIL:
+-      return "amdil";
+-    case aclHSAIL:
+-      return "hsail";
+-    case aclX64:
+-      return "x86-64";
+-    case aclHSAIL64:
+-      return "hsail64";
+-    case aclAMDIL64:
+-      return "amdil64";
+-    default:
+-      return NULL;
+-  }
+-}
+-
+-inline const char* getTriple(aclDevType arch_id)
+-{
+-  switch (arch_id) {
+-    case aclX86:
+-#ifdef _WIN32
+-      return "i686-pc-mingw32-amdopencl";
+-#else
+-      return "i686-pc-linux-amdopencl";
+-#endif
+-    case aclAMDIL:
+-      return "amdil-pc-unknown-amdopencl";
+-    case aclHSAIL:
+-      return "hsail-pc-unknown-amdopencl";
+-    case aclX64:
+-#ifdef _WIN32
+-      return "x86_64-pc-mingw32-amdopencl";
+-#else
+-      return "x86_64-pc-linux-amdopencl";
+-#endif
+-    case aclHSAIL64:
+-      return "hsail64-pc-unknown-amdopencl";
+-    case aclAMDIL64:
+-      return "amdil64-pc-unknown-amdopencl";
+-    default:
+-      return NULL;
+-  }
+-}
+-
+-// The contents of this array has to match the sequence defined in
+-// aclDevType_0_8
+-static const FamilyMapping familySet[] =
+-{
+-  UnknownFamily,
+-  { (const TargetMapping*)&X86TargetMapping_0_8, getArchitecture(aclX86), getTriple(aclX86), ARRAY_SIZEOF(X86TargetMapping_0_8) },
+-  { (const TargetMapping*)&AMDILTargetMapping_0_8, getArchitecture(aclAMDIL), getTriple(aclAMDIL), ARRAY_SIZEOF(AMDILTargetMapping_0_8) },
+-  { (const TargetMapping*)&HSAILTargetMapping_0_8, getArchitecture(aclHSAIL), getTriple(aclHSAIL), ARRAY_SIZEOF(HSAILTargetMapping_0_8) },
+-  { (const TargetMapping*)&X64TargetMapping_0_8, getArchitecture(aclX64), getTriple(aclX64), ARRAY_SIZEOF(X64TargetMapping_0_8) },
+-  { (const TargetMapping*)&HSAIL64TargetMapping_0_8, getArchitecture(aclHSAIL64), getTriple(aclHSAIL64), ARRAY_SIZEOF(HSAIL64TargetMapping_0_8) },
+-  { (const TargetMapping*)&AMDIL64TargetMapping_0_8, getArchitecture(aclAMDIL64), getTriple(aclAMDIL64), ARRAY_SIZEOF(AMDIL64TargetMapping_0_8) },
+-  InvalidFamily
+-};
+-
+-#endif // _CL_UTILS_TARGET_MAPPINGS_0_8_H_
+diff --git a/compiler/lib/utils/v0_8/target_mappings_amdil.h b/compiler/lib/utils/v0_8/target_mappings_amdil.h
+deleted file mode 100644
+index ebb1b63..0000000
+--- a/compiler/lib/utils/v0_8/target_mappings_amdil.h
++++ /dev/null
+@@ -1,113 +0,0 @@
+-//
+-// Copyright (c) 2012 Advanced Micro Devices, Inc. All rights reserved.
+-//
+-#ifndef _CL_UTILS_TARGET_MAPPINGS_AMDIL_0_8_H_
+-#define _CL_UTILS_TARGET_MAPPINGS_AMDIL_0_8_H_
+-
+-#include "evergreen_id.h"
+-#include "r700id.h"
+-#include "tn_id.h"
+-#include "sumo_id.h"
+-#include "northernisland_id.h"
+-#include "si_id.h"
+-#include "kv_id.h"
+-#include "ci_id.h"
+-#include "vi_id.h"
+-#include "cz_id.h"
+-#include "ai_id.h"
+-#include "atiid.h"
+-
+-static const TargetMapping AMDILTargetMapping_0_8[] = {
+-  UnknownTarget,
+-  { "R7XX", "RV770", "rv770", amd::GPU_Library_7xx, WEKIVA_A11,    F_RV770, false, false, FAMILY_RV7XX },
+-  { "R7XX", "RV770", "rv770", amd::GPU_Library_7xx, WEKIVA_A12,    F_RV770, false, true , FAMILY_RV7XX },
+-  { "R7XX", "RV790", "rv770", amd::GPU_Library_7xx, WEKIVA_A21,    F_RV770, false, true , FAMILY_RV7XX },
+-  { "R7XX", "RV730", "rv730", amd::GPU_Library_7xx, MARIO_A11,     F_RV730, false, false, FAMILY_RV7XX },
+-  { "R7XX", "RV730", "rv730", amd::GPU_Library_7xx, MARIO_A12,     F_RV730, false, false, FAMILY_RV7XX },
+-  { "R7XX", "RV730", "rv730", amd::GPU_Library_7xx, MARIO_A13,     F_RV730, false, true , FAMILY_RV7XX },
+-  { "R7XX", "RV710", "rv710", amd::GPU_Library_7xx, LUIGI_A11,     F_RV710, false, false, FAMILY_RV7XX },
+-  { "R7XX", "RV710", "rv710", amd::GPU_Library_7xx, LUIGI_A12,     F_RV710, false, true , FAMILY_RV7XX },
+-  { "R7XX", "RV710", "rv710", amd::GPU_Library_7xx, LUIGI_APU_A11, F_RV710, false, false, FAMILY_RV7XX },
+-  { "R7XX", "RV740", "rv770", amd::GPU_Library_7xx, WALDEN_A11,    F_RV770, false, false, FAMILY_RV7XX },
+-  { "R7XX", "RV740", "rv770", amd::GPU_Library_7xx, WALDEN_A12,    F_RV770, false, true , FAMILY_RV7XX },
+-  { "Evergreen", "Cypress", "cypress", amd::GPU_Library_Evergreen, CYPRESS_A11, F_EG_EXT, false , false, FAMILY_EVERGREEN },
+-  { "Evergreen", "Cypress", "cypress", amd::GPU_Library_Evergreen, CYPRESS_A12, F_EG_EXT, false , true , FAMILY_EVERGREEN },
+-  { "Evergreen", "Juniper", "juniper", amd::GPU_Library_Evergreen, JUNIPER_A11, F_JUNIPER, false , false, FAMILY_EVERGREEN },
+-  { "Evergreen", "Juniper", "juniper", amd::GPU_Library_Evergreen, JUNIPER_A12, F_JUNIPER, false , true , FAMILY_EVERGREEN },
+-  { "Evergreen", "Redwood", "redwood", amd::GPU_Library_Evergreen, REDWOOD_A11, F_REDWOOD, false , false, FAMILY_EVERGREEN },
+-  { "Evergreen", "Redwood", "redwood", amd::GPU_Library_Evergreen, REDWOOD_A12, F_REDWOOD, false , true , FAMILY_EVERGREEN },
+-  { "Evergreen", "Cedar",   "cedar",   amd::GPU_Library_Evergreen, CEDAR_A11,   F_CEDAR, false , false, FAMILY_EVERGREEN },
+-  { "Evergreen", "Cedar",   "cedar",   amd::GPU_Library_Evergreen, CEDAR_A12,   F_CEDAR, false , true , FAMILY_EVERGREEN },
+-  { "NI", "Cayman", "cayman", amd::GPU_Library_Evergreen, NI_CAYMAN_P_A11,       F_NI_EXT,  false , true , FAMILY_NI },
+-  { "NI", "Barts",  "barts",  amd::GPU_Library_Evergreen, NI_BARTS_PM_A11,       F_NI_BASE, false , true , FAMILY_NI },
+-  { "NI", "Turks",  "turks",  amd::GPU_Library_Evergreen, NI_TURKS_M_A11,        F_NI_BASE, false , true , FAMILY_NI },
+-  { "NI", "Lombok", "turks",  amd::GPU_Library_Evergreen, NI_TURKS_LOMBOK_M_A11, F_NI_BASE, false , true , FAMILY_NI },
+-  { "NI", "Caicos", "caicos", amd::GPU_Library_Evergreen, NI_CAICOS_V_A11,       F_NI_BASE, false , true , FAMILY_NI },
+-  { "NI", "Kauai",  "kauai",  amd::GPU_Library_Evergreen, KAUAI_A11,             F_NI_BASE, false, false, FAMILY_NI },
+-  { "Sumo", "BeaverCreek", "redwood", amd::GPU_Library_Evergreen, SUPERSUMO_A0, F_REDWOOD, false , false, FAMILY_SUMO },
+-  { "Sumo", "BeaverCreek", "redwood", amd::GPU_Library_Evergreen, SUPERSUMO_B0, F_REDWOOD, false , true , FAMILY_SUMO },
+-  { "Sumo", "WinterPark",  "redwood", amd::GPU_Library_Evergreen,      SUMO_A0, F_REDWOOD, false , false, FAMILY_SUMO },
+-  { "Sumo", "WinterPark",  "redwood", amd::GPU_Library_Evergreen,      SUMO_B0, F_REDWOOD, false , true , FAMILY_SUMO },
+-  { "Sumo", "Loveland",    "cedar",   amd::GPU_Library_Evergreen,  WRESTLER_A0, F_REDWOOD, false , false, FAMILY_SUMO },
+-  { "Sumo", "Loveland",    "cedar",   amd::GPU_Library_Evergreen,  WRESTLER_A1, F_REDWOOD, false , false, FAMILY_SUMO },
+-  { "Sumo", "Loveland",    "cedar",   amd::GPU_Library_Evergreen,  WRESTLER_B0, F_REDWOOD, false , false, FAMILY_SUMO },
+-  { "Sumo", "Loveland",    "cedar",   amd::GPU_Library_Evergreen,  WRESTLER_C0, F_REDWOOD, false , true , FAMILY_SUMO },
+-  { "Sumo", "Bheem",       "cedar",   amd::GPU_Library_Evergreen,     BHEEM_A0, F_REDWOOD, false , true , FAMILY_SUMO },
+-  { "SI", "Tahiti",    "tahiti",   amd::GPU_Library_SI, SI_TAHITI_P_A11,    F_SI_BASE, true ,false, FAMILY_SI },
+-  { "SI", "Tahiti",    "tahiti",   amd::GPU_Library_SI, SI_TAHITI_P_A0,     F_SI_BASE, true ,false, FAMILY_SI },
+-  { "SI", "Tahiti",    "tahiti",   amd::GPU_Library_SI, SI_TAHITI_P_A21,    F_SI_BASE, true ,false, FAMILY_SI },
+-  { "SI", "Tahiti",    "tahiti",   amd::GPU_Library_SI, SI_TAHITI_P_B0,     F_SI_BASE, true ,false, FAMILY_SI },
+-  { "SI", "Tahiti",    "tahiti",   amd::GPU_Library_SI, SI_TAHITI_P_A22,    F_SI_BASE, true ,false, FAMILY_SI },
+-  { "SI", "Tahiti",    "tahiti",   amd::GPU_Library_SI, SI_TAHITI_P_B1,     F_SI_BASE, true , true, FAMILY_SI },
+-  { "SI", "Pitcairn",  "pitcairn",  amd::GPU_Library_SI, SI_PITCAIRN_PM_A11, F_SI_BASE, true ,false, FAMILY_SI },
+-  { "SI", "Pitcairn",  "pitcairn",  amd::GPU_Library_SI, SI_PITCAIRN_PM_A0,  F_SI_BASE, true ,false, FAMILY_SI },
+-  { "SI", "Pitcairn",  "pitcairn",  amd::GPU_Library_SI, SI_PITCAIRN_PM_A12, F_SI_BASE, true ,false, FAMILY_SI },
+-  { "SI", "Pitcairn",  "pitcairn",  amd::GPU_Library_SI, SI_PITCAIRN_PM_A1,  F_SI_BASE, true , true, FAMILY_SI },
+-  { "SI", "Capeverde", "capeverde",   amd::GPU_Library_SI, SI_CAPEVERDE_M_A11, F_SI_BASE, true ,false, FAMILY_SI },
+-  { "SI", "Capeverde", "capeverde",   amd::GPU_Library_SI, SI_CAPEVERDE_M_A0,  F_SI_BASE, true ,false, FAMILY_SI },
+-  { "SI", "Capeverde", "capeverde",   amd::GPU_Library_SI, SI_CAPEVERDE_M_A12, F_SI_BASE, true ,false, FAMILY_SI },
+-  { "SI", "Capeverde", "capeverde",   amd::GPU_Library_SI, SI_CAPEVERDE_M_A1,  F_SI_BASE, true , true, FAMILY_SI },
+-  { "TN", "Devastator", "trinity", amd::GPU_Library_Evergreen, TN_DEVASTATOR_M_A0,       F_NI_EXT, false, false, FAMILY_TN },
+-  { "TN", "Devastator", "trinity", amd::GPU_Library_Evergreen, TN_DEVASTATOR_M_A1,       F_NI_EXT, false, true,  FAMILY_TN },
+-  { "TN", "Devastator", "trinity", amd::GPU_Library_Evergreen, TN_DEVASTATOR_LITE_MV_A0, F_NI_EXT, false, false, FAMILY_TN },
+-  { "TN", "Devastator", "trinity", amd::GPU_Library_Evergreen, TN_DEVASTATOR_LITE_MV_A1, F_NI_EXT, false, false, FAMILY_TN },
+-  { "TN", "Devastator", "trinity", amd::GPU_Library_Evergreen, TN_DEVASTATOR_V_A0,       F_NI_EXT, false, false, FAMILY_TN },
+-  { "TN", "Devastator", "trinity", amd::GPU_Library_Evergreen, TN_DEVASTATOR_V_A1,       F_NI_EXT, false, false, FAMILY_TN },
+-  { "TN", "Scrapper",   "trinity", amd::GPU_Library_Evergreen, TN_SCRAPPER_V_A0,         F_NI_EXT, false, false, FAMILY_TN },
+-  { "TN", "Scrapper",   "trinity", amd::GPU_Library_Evergreen, TN_SCRAPPER_V_A1,         F_NI_EXT, false, true,  FAMILY_TN },
+-  { "TN", "Scrapper",   "trinity", amd::GPU_Library_Evergreen, TN_DVST_DUO_V_A0,         F_NI_EXT, false, false, FAMILY_TN },
+-  { "KV", "Spectre",    "spectre", amd::GPU_Library_CI,        KV_SPECTRE_A0,           F_SI_BASE, false, true, FAMILY_KV },
+-  { "KV", "Spooky",     "spooky",  amd::GPU_Library_CI,        KV_SPOOKY_A0,            F_SI_BASE, false, true, FAMILY_KV },
+-  { "KV", "Kalindi",    "kalindi", amd::GPU_Library_CI,        KB_KALINDI_A0,           F_SI_BASE, false, true, FAMILY_KV },
+-  { "CI", "Hawaii",     "hawaii",  amd::GPU_Library_CI,        CI_HAWAII_P_A0,          F_SI_BASE, false, true, FAMILY_CI },
+-  { "KV", "Mullins",    "mullins", amd::GPU_Library_CI,        ML_GODAVARI_A0,          F_SI_BASE, false, true, FAMILY_KV },
+-  { "SI", "Oland",      "oland",   amd::GPU_Library_SI,        SI_OLAND_M_A0,           F_SI_BASE, true, true, FAMILY_SI },
+-  { "CI", "Bonaire",    "bonaire", amd::GPU_Library_CI,        CI_BONAIRE_M_A0,         F_SI_BASE, false, false, FAMILY_CI },
+-  { "SI", "Hainan",     "hainan",  amd::GPU_Library_SI,        SI_HAINAN_V_A0,          F_SI_BASE, true, true, FAMILY_SI },
+-#ifndef OPENCL_MAINLINE
+-  { "CI", "Tiran",      "owls",    amd::GPU_Library_CI,        CI_TIRAN_P_A0,           F_SI_BASE, false, true, FAMILY_CI },
+-  { "CI", "Maui",       "eagle",   amd::GPU_Library_CI,        CI_MAUI_P_A0,            F_SI_BASE, false, true, FAMILY_CI },
+-#else
+-  UnknownTarget,
+-  UnknownTarget,
+-#endif
+-  { "CZ", "Carrizo",    "carrizo", amd::GPU_Library_CI,        CARRIZO_A0,               F_SI_BASE, false, true,  FAMILY_CZ },
+-  { "TN", "Devastator", "trinity", amd::GPU_Library_Evergreen, TN_DEVASTATOR_W_A0,       F_NI_EXT,  false, false, FAMILY_TN },
+-  { "TN", "Devastator", "trinity", amd::GPU_Library_Evergreen, TN_DEVASTATOR_W_A1,       F_NI_EXT,  false, false, FAMILY_TN },
+-  { "TN", "Scrapper",   "trinity", amd::GPU_Library_Evergreen, TN_SCRAPPER_LV_A0,        F_NI_EXT,  false, false, FAMILY_TN },
+-  { "TN", "Scrapper",   "trinity", amd::GPU_Library_Evergreen, TN_SCRAPPER_LV_A1,        F_NI_EXT,  false, false, FAMILY_TN },
+-
+-  { "VI", "Iceland",    "iceland", amd::GPU_Library_CI,        VI_ICELAND_M_A0,          F_SI_BASE, false, true, FAMILY_VI },
+-  { "VI", "Tonga",      "tonga",   amd::GPU_Library_CI,        VI_TONGA_P_A0,            F_SI_BASE, false, true, FAMILY_VI },
+-  { "CI", "Bonaire",    "bonaire", amd::GPU_Library_CI,        CI_BONAIRE_M_A1,          F_SI_BASE, false, true, FAMILY_CI },
+-  { "VI", "Fiji",       "fiji",    amd::GPU_Library_CI,        VI_FIJI_P_A0,             F_SI_BASE, false, true, FAMILY_VI },
+-  { "CZ", "Stoney",     "stoney",  amd::GPU_Library_CI,        STONEY_A0,                F_SI_BASE, false, true, FAMILY_CZ },
+-  { "VI", "Baffin",     "baffin",  amd::GPU_Library_CI,        VI_BAFFIN_M_A0,           F_SI_BASE, false, false, FAMILY_VI },
+-  { "VI", "Baffin",     "baffin",  amd::GPU_Library_CI,        VI_BAFFIN_M_A1,           F_SI_BASE, false, true, FAMILY_VI },
+-  { "VI", "Ellesmere",  "ellesmere", amd::GPU_Library_CI,      VI_ELLESMERE_P_A0,        F_SI_BASE, false, false, FAMILY_VI },
+-  { "VI", "Ellesmere",  "ellesmere", amd::GPU_Library_CI,      VI_ELLESMERE_P_A1,        F_SI_BASE, false, true, FAMILY_VI },
+-  { "VI", "gfx804",     "gfx804",    amd::GPU_Library_CI,      VI_LEXA_V_A0,             F_SI_BASE, false, true, FAMILY_VI },
+-  InvalidTarget
+-};
+-
+-#endif // _CL_UTILS_TARGET_MAPPINGS_AMDIL_0_8_H_
+diff --git a/compiler/lib/utils/v0_8/target_mappings_amdil64.h b/compiler/lib/utils/v0_8/target_mappings_amdil64.h
+deleted file mode 100644
+index 5a894f5..0000000
+--- a/compiler/lib/utils/v0_8/target_mappings_amdil64.h
++++ /dev/null
+@@ -1,59 +0,0 @@
+-//
+-// Copyright (c) 2012 Advanced Micro Devices, Inc. All rights reserved.
+-//
+-#ifndef _CL_UTILS_TARGET_MAPPINGS_AMDIL64_0_8_H_
+-#define _CL_UTILS_TARGET_MAPPINGS_AMDIL64_0_8_H_
+-
+-#include "si_id.h"
+-#include "kv_id.h"
+-#include "ci_id.h"
+-#include "vi_id.h"
+-#include "cz_id.h"
+-#include "atiid.h"
+-
+-static const TargetMapping AMDIL64TargetMapping_0_8[] = {
+-  UnknownTarget,
+-  { "SI", "Tahiti",    "tahiti",    amd::GPU64_Library_SI, SI_TAHITI_P_A11,    F_SI_64BIT_PTR, true,  false, FAMILY_SI },
+-  { "SI", "Tahiti",    "tahiti",    amd::GPU64_Library_SI, SI_TAHITI_P_A0,     F_SI_64BIT_PTR, true,  false, FAMILY_SI },
+-  { "SI", "Tahiti",    "tahiti",    amd::GPU64_Library_SI, SI_TAHITI_P_A21,    F_SI_64BIT_PTR, true,  false, FAMILY_SI },
+-  { "SI", "Tahiti",    "tahiti",    amd::GPU64_Library_SI, SI_TAHITI_P_B0,     F_SI_64BIT_PTR, true,  false, FAMILY_SI },
+-  { "SI", "Tahiti",    "tahiti",    amd::GPU64_Library_SI, SI_TAHITI_P_A22,    F_SI_64BIT_PTR, true,  false, FAMILY_SI },
+-  { "SI", "Tahiti",    "tahiti",    amd::GPU64_Library_SI, SI_TAHITI_P_B1,     F_SI_64BIT_PTR, true,  true,  FAMILY_SI },
+-  { "SI", "Pitcairn",  "pitcairn",  amd::GPU64_Library_SI, SI_PITCAIRN_PM_A11, F_SI_64BIT_PTR, true,  false, FAMILY_SI },
+-  { "SI", "Pitcairn",  "pitcairn",  amd::GPU64_Library_SI, SI_PITCAIRN_PM_A0,  F_SI_64BIT_PTR, true,  false, FAMILY_SI },
+-  { "SI", "Pitcairn",  "pitcairn",  amd::GPU64_Library_SI, SI_PITCAIRN_PM_A12, F_SI_64BIT_PTR, true,  false, FAMILY_SI },
+-  { "SI", "Pitcairn",  "pitcairn",  amd::GPU64_Library_SI, SI_PITCAIRN_PM_A1,  F_SI_64BIT_PTR, true,  true,  FAMILY_SI },
+-  { "SI", "Capeverde", "capeverde", amd::GPU64_Library_SI, SI_CAPEVERDE_M_A11, F_SI_64BIT_PTR, true,  false, FAMILY_SI },
+-  { "SI", "Capeverde", "capeverde", amd::GPU64_Library_SI, SI_CAPEVERDE_M_A0,  F_SI_64BIT_PTR, true,  false, FAMILY_SI },
+-  { "SI", "Capeverde", "capeverde", amd::GPU64_Library_SI, SI_CAPEVERDE_M_A12, F_SI_64BIT_PTR, true,  false, FAMILY_SI },
+-  { "SI", "Capeverde", "capeverde", amd::GPU64_Library_SI, SI_CAPEVERDE_M_A1,  F_SI_64BIT_PTR, true,  true,  FAMILY_SI },
+-  { "KV", "Spectre",   "spectre",   amd::GPU64_Library_CI, KV_SPECTRE_A0,      F_SI_64BIT_PTR, false, true,  FAMILY_KV },
+-  { "KV", "Spooky",    "spooky",    amd::GPU64_Library_CI, KV_SPOOKY_A0,       F_SI_64BIT_PTR, false, true,  FAMILY_KV },
+-  { "KV", "Kalindi",   "kalindi",   amd::GPU64_Library_CI, KB_KALINDI_A0,      F_SI_64BIT_PTR, false, true,  FAMILY_KV },
+-  { "CI", "Hawaii",    "hawaii",    amd::GPU64_Library_CI, CI_HAWAII_P_A0,     F_SI_64BIT_PTR, false, true,  FAMILY_CI },
+-  { "KV", "Mullins",   "mullins",   amd::GPU64_Library_CI, ML_GODAVARI_A0,     F_SI_64BIT_PTR, false, true,  FAMILY_KV },
+-  { "SI", "Oland",     "oland",     amd::GPU64_Library_SI, SI_OLAND_M_A0,      F_SI_64BIT_PTR, true,  true,  FAMILY_SI },
+-  { "CI", "Bonaire",   "bonaire",   amd::GPU64_Library_CI, CI_BONAIRE_M_A0,    F_SI_64BIT_PTR, false, false, FAMILY_CI },
+-  { "SI", "Hainan",    "hainan",    amd::GPU64_Library_SI, SI_HAINAN_V_A0,     F_SI_64BIT_PTR, true,  true,  FAMILY_SI },
+-#ifndef OPENCL_MAINLINE
+-  { "CI", "Tiran",     "owls",      amd::GPU64_Library_CI, CI_TIRAN_P_A0,      F_SI_64BIT_PTR, false, false, FAMILY_CI },
+-  { "CI", "Maui",      "eagle",     amd::GPU64_Library_CI, CI_MAUI_P_A0,       F_SI_64BIT_PTR, false, true,  FAMILY_CI },
+-#else
+-  UnknownTarget,
+-  UnknownTarget,
+-#endif
+-  { "CZ", "Carrizo",   "carrizo",   amd::GPU64_Library_CI, CARRIZO_A0,         F_SI_64BIT_PTR, false, true,  FAMILY_CZ },
+-  { "VI", "Iceland",    "iceland",  amd::GPU64_Library_CI, VI_ICELAND_M_A0,    F_SI_64BIT_PTR, false, true,  FAMILY_VI },
+-  { "VI", "Tonga",      "tonga",    amd::GPU64_Library_CI, VI_TONGA_P_A0,      F_SI_64BIT_PTR, false, true,  FAMILY_VI },
+-  { "CI", "Bonaire",   "bonaire",   amd::GPU64_Library_CI, CI_BONAIRE_M_A0,    F_SI_64BIT_PTR, false, true,  FAMILY_CI },
+-  { "VI", "Fiji",      "fiji",      amd::GPU64_Library_CI, VI_FIJI_P_A0,       F_SI_64BIT_PTR, false, true,  FAMILY_VI },
+-  { "CZ", "Stoney",    "stoney",    amd::GPU64_Library_CI, STONEY_A0,          F_SI_64BIT_PTR, false, true,  FAMILY_CZ },
+-  { "VI", "Baffin",    "baffin",    amd::GPU64_Library_CI, VI_BAFFIN_M_A0,     F_SI_64BIT_PTR, false, false, FAMILY_VI },
+-  { "VI", "Baffin",    "baffin",    amd::GPU64_Library_CI, VI_BAFFIN_M_A1,     F_SI_64BIT_PTR, false, true,  FAMILY_VI },
+-  { "VI", "Ellesmere", "ellesmere", amd::GPU64_Library_CI, VI_ELLESMERE_P_A0,  F_SI_64BIT_PTR, false, false, FAMILY_VI },
+-  { "VI", "Ellesmere", "ellesmere", amd::GPU64_Library_CI, VI_ELLESMERE_P_A1,  F_SI_64BIT_PTR, false, true,  FAMILY_VI },
+-  { "VI", "gfx804",    "gfx804",    amd::GPU64_Library_CI, VI_LEXA_V_A0,       F_SI_64BIT_PTR, false, true,  FAMILY_VI },
+-  InvalidTarget
+-};
+-
+-#endif // _CL_UTILS_TARGET_MAPPINGS_AMDIL64_0_8_H_
+diff --git a/compiler/lib/utils/v0_8/target_mappings_hsail.h b/compiler/lib/utils/v0_8/target_mappings_hsail.h
+deleted file mode 100644
+index e1c97f1..0000000
+--- a/compiler/lib/utils/v0_8/target_mappings_hsail.h
++++ /dev/null
+@@ -1,70 +0,0 @@
+-//
+-// Copyright (c) 2012 Advanced Micro Devices, Inc. All rights reserved.
+-//
+-#ifndef _CL_UTILS_TARGET_MAPPINGS_HSAIL_0_8_H_
+-#define _CL_UTILS_TARGET_MAPPINGS_HSAIL_0_8_H_
+-
+-#include "si_id.h"
+-#include "kv_id.h"
+-#include "ci_id.h"
+-#include "cz_id.h"
+-#include "ai_id.h"
+-#include "rv_id.h"
+-#include "atiid.h"
+-
+-static const TargetMapping HSAILTargetMapping_0_8[] = {
+-  UnknownTarget,
+-  { "KV", "Spectre",   "GFX7", amd::GPU_Library_HSAIL, KV_SPECTRE_A0,   F_CI_BASE, true, true,  FAMILY_KV, false },
+-  { "KV", "Spooky",    "GFX7", amd::GPU_Library_HSAIL, KV_SPOOKY_A0,    F_CI_BASE, true, true,  FAMILY_KV, false },
+-  { "KV", "Kalindi",   "GFX7", amd::GPU_Library_HSAIL, KB_KALINDI_A0,   F_CI_BASE, true, true,  FAMILY_KV, false },
+-  { "KV", "Mullins",   "GFX7", amd::GPU_Library_HSAIL, ML_GODAVARI_A0,  F_CI_BASE, true, true,  FAMILY_KV, false },
+-  { "CI", "Bonaire",   "GFX7", amd::GPU_Library_HSAIL, CI_BONAIRE_M_A0, F_CI_BASE, true, false, FAMILY_CI, false },
+-  { "CI", "Bonaire",   "GFX7", amd::GPU_Library_HSAIL, CI_BONAIRE_M_A1, F_CI_BASE, true, true,  FAMILY_CI, false },
+-  { "CI", "Hawaii",    "GFX7", amd::GPU_Library_HSAIL, CI_HAWAII_P_A0,  F_CI_BASE, true, true,  FAMILY_CI, false },
+-  { "VI", "Iceland",   "GFX8", amd::GPU_Library_HSAIL, VI_ICELAND_M_A0, F_VI_BASE, true, true,  FAMILY_VI, false },
+-  { "VI", "Tonga",     "GFX8", amd::GPU_Library_HSAIL, VI_TONGA_P_A0,   F_VI_BASE, true, true,  FAMILY_VI, false },
+-#ifndef OPENCL_MAINLINE
+-  { "CI", "Tiran",     "GFX7", amd::GPU_Library_HSAIL, CI_TIRAN_P_A0,   F_VI_BASE, true, true,  FAMILY_CI, false },
+-  { "CI", "Maui",      "GFX7", amd::GPU_Library_HSAIL, CI_MAUI_P_A0,    F_VI_BASE, true, true,  FAMILY_CI, false },
+-#else
+-  UnknownTarget,
+-  UnknownTarget,
+-#endif
+-  { "CZ", "Carrizo",   "GFX8", amd::GPU_Library_HSAIL, CARRIZO_A0,      F_VI_BASE, true, true,  FAMILY_CZ, false },
+-  { "VI", "Fiji",      "GFX8", amd::GPU_Library_HSAIL, VI_FIJI_P_A0,    F_VI_BASE, true, true,  FAMILY_VI, false },
+-  { "CZ", "Stoney",    "GFX8", amd::GPU_Library_HSAIL, STONEY_A0,       F_VI_BASE, true, true,  FAMILY_CZ, false },
+-  { "VI", "Baffin",    "GFX8", amd::GPU_Library_HSAIL, VI_BAFFIN_M_A0,  F_VI_BASE, true, false, FAMILY_VI, false },
+-  { "VI", "Baffin",    "GFX8", amd::GPU_Library_HSAIL, VI_BAFFIN_M_A1,  F_VI_BASE, true, true,  FAMILY_VI, false },
+-  { "VI", "Ellesmere", "GFX8", amd::GPU_Library_HSAIL, VI_ELLESMERE_P_A0, F_VI_BASE, true, false, FAMILY_VI, false },
+-  { "VI", "Ellesmere", "GFX8", amd::GPU_Library_HSAIL, VI_ELLESMERE_P_A1, F_VI_BASE, true, true,  FAMILY_VI, false },
+-#ifndef BRAHMA
+-  { "AI", "gfx900",    "GFX9", amd::GPU_Library_HSAIL, AI_GREENLAND_P_A0, F_AI_BASE, true, false,  FAMILY_AI },
+-  { "AI", "gfx900",    "GFX9", amd::GPU_Library_HSAIL, AI_GREENLAND_P_A1, F_AI_BASE, true, true,  FAMILY_AI },
+-#else
+-  UnknownTarget,
+-  UnknownTarget,
+-#endif
+-  { "VI", "gfx804",    "GFX8", amd::GPU_Library_HSAIL, VI_LEXA_V_A0,      F_VI_BASE, true, true,  FAMILY_VI },
+-#ifndef BRAHMA
+-  { "AI", "gfx901",    "GFX9", amd::GPU_Library_HSAIL, AI_GREENLAND_P_A0, F_AI_BASE, true, false,  FAMILY_AI ,true },
+-  { "AI", "gfx901",    "GFX9", amd::GPU_Library_HSAIL, AI_GREENLAND_P_A1, F_AI_BASE, true, true,  FAMILY_AI ,true },
+-  { "RV", "gfx902",    "GFX9",  amd::GPU_Library_HSAIL, RAVEN_A0,           F_AI_BASE, true, true,  FAMILY_RV, false },
+-  { "RV", "gfx903",    "GFX9",  amd::GPU_Library_HSAIL, RAVEN_A0,           F_AI_BASE, true, true,  FAMILY_RV, true },
+-  { "AI", "gfx904",    "GFX9",  amd::GPU_Library_HSAIL, AI_VEGA12_P_A0,     F_AI_BASE, true, true,  FAMILY_AI, false },
+-  { "AI", "gfx905",    "GFX9",  amd::GPU_Library_HSAIL, AI_VEGA12_P_A0,     F_AI_BASE, true, true,  FAMILY_AI, true },
+-  { "AI", "gfx906",    "GFX9",  amd::GPU_Library_HSAIL, AI_VEGA20_P_A0,     F_AI_BASE, true, true,  FAMILY_AI, false },
+-  { "AI", "gfx907",    "GFX9",  amd::GPU_Library_HSAIL, AI_VEGA20_P_A0,     F_AI_BASE, true, true,  FAMILY_AI, true },
+-#else
+-  UnknownTarget,
+-  UnknownTarget,
+-  UnknownTarget,
+-  UnknownTarget,
+-  UnknownTarget,
+-  UnknownTarget,
+-  UnknownTarget,
+-  UnknownTarget,
+-#endif
+-  InvalidTarget
+-};
+-
+-#endif // _CL_UTILS_TARGET_MAPPINGS_HSAIL_0_8_H_
+diff --git a/compiler/lib/utils/v0_8/target_mappings_hsail64.h b/compiler/lib/utils/v0_8/target_mappings_hsail64.h
+deleted file mode 100644
+index 0be0ce9..0000000
+--- a/compiler/lib/utils/v0_8/target_mappings_hsail64.h
++++ /dev/null
+@@ -1,69 +0,0 @@
+-//
+-// Copyright (c) 2012 Advanced Micro Devices, Inc. All rights reserved.
+-//
+-#ifndef _CL_UTILS_TARGET_MAPPINGS_HSAIL64_0_8_H_
+-#define _CL_UTILS_TARGET_MAPPINGS_HSAIL64_0_8_H_
+-
+-#include "si_id.h"
+-#include "kv_id.h"
+-#include "ci_id.h"
+-#include "ai_id.h"
+-#include "rv_id.h"
+-#include "atiid.h"
+-
+-static const TargetMapping HSAIL64TargetMapping_0_8[] = {
+-  UnknownTarget,
+-  { "KV", "Spectre",   "GFX7", amd::GPU_Library_HSAIL, KV_SPECTRE_A0,   F_CI_BASE, true, true,  FAMILY_KV, false },
+-  { "KV", "Spooky",    "GFX7", amd::GPU_Library_HSAIL, KV_SPOOKY_A0,    F_CI_BASE, true, true,  FAMILY_KV, false },
+-  { "KV", "Kalindi",   "GFX7", amd::GPU_Library_HSAIL, KB_KALINDI_A0,   F_CI_BASE, true, true,  FAMILY_KV, false },
+-  { "KV", "Mullins",   "GFX7", amd::GPU_Library_HSAIL, ML_GODAVARI_A0,  F_CI_BASE, true, true,  FAMILY_KV, false },
+-  { "CI", "Bonaire",   "GFX7", amd::GPU_Library_HSAIL, CI_BONAIRE_M_A0, F_CI_BASE, true, false, FAMILY_CI, false },
+-  { "CI", "Bonaire",   "GFX7", amd::GPU_Library_HSAIL, CI_BONAIRE_M_A1, F_CI_BASE, true, true,  FAMILY_CI, false },
+-  { "CI", "Hawaii",    "GFX7", amd::GPU_Library_HSAIL, CI_HAWAII_P_A0,  F_CI_BASE, true, true,  FAMILY_CI, false },
+-  { "VI", "Iceland",   "GFX8", amd::GPU_Library_HSAIL, VI_ICELAND_M_A0, F_VI_BASE, true, true,  FAMILY_VI, false },
+-  { "VI", "Tonga",     "GFX8", amd::GPU_Library_HSAIL, VI_TONGA_P_A0,   F_VI_BASE, true, true,  FAMILY_VI, false },
+-#ifndef OPENCL_MAINLINE
+-  { "CI", "Tiran",     "GFX7", amd::GPU_Library_HSAIL, CI_TIRAN_P_A0,   F_CI_BASE, true, true,  FAMILY_CI, false },
+-  { "CI", "Maui",      "GFX7", amd::GPU_Library_HSAIL, CI_MAUI_P_A0,    F_CI_BASE, true, true,  FAMILY_CI, false },
+-#else
+-  UnknownTarget,
+-  UnknownTarget,
+-#endif
+-  { "CZ", "Carrizo",   "GFX8", amd::GPU_Library_HSAIL, CARRIZO_A0,      F_VI_BASE, true, true,  FAMILY_CZ, false },
+-  { "VI", "Fiji",      "GFX8", amd::GPU_Library_HSAIL, VI_FIJI_P_A0,    F_VI_BASE, true, true,  FAMILY_VI, false },
+-  { "CZ", "Stoney",    "GFX8", amd::GPU_Library_HSAIL, STONEY_A0,       F_VI_BASE, true, true,  FAMILY_CZ, false },
+-  { "VI", "Baffin",    "GFX8", amd::GPU_Library_HSAIL, VI_BAFFIN_M_A0,  F_VI_BASE, true, false, FAMILY_VI, false },
+-  { "VI", "Baffin",    "GFX8", amd::GPU_Library_HSAIL, VI_BAFFIN_M_A1,  F_VI_BASE, true, true,  FAMILY_VI, false },
+-  { "VI", "Ellesmere", "GFX8", amd::GPU_Library_HSAIL, VI_ELLESMERE_P_A0, F_VI_BASE, true, false, FAMILY_VI, false },
+-  { "VI", "Ellesmere", "GFX8", amd::GPU_Library_HSAIL, VI_ELLESMERE_P_A1, F_VI_BASE, true, true,  FAMILY_VI, false },
+-#ifndef BRAHMA
+-  { "AI", "gfx900",    "GFX9", amd::GPU_Library_HSAIL, AI_GREENLAND_P_A0, F_AI_BASE, true, false,  FAMILY_AI, false },
+-  { "AI", "gfx900",    "GFX9", amd::GPU_Library_HSAIL, AI_GREENLAND_P_A1, F_AI_BASE, true, true,  FAMILY_AI, false },
+-#else
+-  UnknownTarget,
+-  UnknownTarget,
+-#endif
+-  { "VI", "gfx804",    "GFX8", amd::GPU_Library_HSAIL, VI_LEXA_V_A0,      F_VI_BASE, true, true,  FAMILY_VI, false },
+-#ifndef BRAHMA
+-  { "AI", "gfx901",    "GFX9",  amd::GPU_Library_HSAIL, AI_GREENLAND_P_A0,  F_AI_BASE, true, false,  FAMILY_AI, true },
+-  { "AI", "gfx901",    "GFX9",  amd::GPU_Library_HSAIL, AI_GREENLAND_P_A1,  F_AI_BASE, true, true,  FAMILY_AI, true },
+-  { "RV", "gfx902",    "GFX9",  amd::GPU_Library_HSAIL, RAVEN_A0,           F_AI_BASE, true, true,  FAMILY_RV, false },
+-  { "RV", "gfx903",    "GFX9",  amd::GPU_Library_HSAIL, RAVEN_A0,           F_AI_BASE, true, true,  FAMILY_RV, true },
+-  { "AI", "gfx904",    "GFX9",  amd::GPU_Library_HSAIL, AI_VEGA12_P_A0,     F_AI_BASE, true, true,  FAMILY_AI, false },
+-  { "AI", "gfx905",    "GFX9",  amd::GPU_Library_HSAIL, AI_VEGA12_P_A0,     F_AI_BASE, true, true,  FAMILY_AI, true },
+-  { "AI", "gfx906",    "GFX9",  amd::GPU_Library_HSAIL, AI_VEGA20_P_A0,     F_AI_BASE, true, true,  FAMILY_AI, false },
+-  { "AI", "gfx907",    "GFX9",  amd::GPU_Library_HSAIL, AI_VEGA20_P_A0,     F_AI_BASE, true, true,  FAMILY_AI, true },
+-#else
+-  UnknownTarget,
+-  UnknownTarget,
+-  UnknownTarget,
+-  UnknownTarget,
+-  UnknownTarget,
+-  UnknownTarget,
+-  UnknownTarget,
+-  UnknownTarget,
+-#endif
+-  InvalidTarget
+-};
+-
+-#endif // _CL_UTILS_TARGET_MAPPINGS_HSAIL64_0_8_H_
+diff --git a/compiler/lib/utils/v0_8/target_mappings_x64.h b/compiler/lib/utils/v0_8/target_mappings_x64.h
+deleted file mode 100644
+index ebe5a83..0000000
+--- a/compiler/lib/utils/v0_8/target_mappings_x64.h
++++ /dev/null
+@@ -1,46 +0,0 @@
+-//
+-// Copyright (c) 2012 Advanced Micro Devices, Inc. All rights reserved.
+-//
+-#ifndef _CL_UTILS_TARGET_MAPPINGS_X64_0_8_H_
+-#define _CL_UTILS_TARGET_MAPPINGS_X64_0_8_H_
+-
+-#define CPU_MAPPING_LIB(A, B, C, D, E) { #A, #B, #C, D, 0, E, LP64_SWITCH(false, true), LP64_SWITCH(false, true), FAMILY_X64}
+-#define CPU_MAPPING(A, B, C, D) CPU_MAPPING_LIB(A, B, C, amd::CPU64_Library_Generic, D)
+-#define NCPU_MAPPING_LIB(A, B, C, D, E) { #A, #B, #C, D, 0, E, false, false, FAMILY_X64}
+-#define NCPU_MAPPING(A, B, C, D) { #A, #B, #C, amd::CPU64_Library_Generic, 0, D, false, false, FAMILY_X64}
+-static const TargetMapping X64TargetMapping_0_8[] = {
+-  UnknownTarget,
+-  CPU_MAPPING(X64,         Generic,     generic, 0x1),
+-  CPU_MAPPING(NetBurst,    Prescott,    prescott, 0x1),
+-  CPU_MAPPING(Xeon,        Nocona,      nocona, 0x1),
+-  CPU_MAPPING(Core,        Core2,       core2, 0x1),
+-  CPU_MAPPING(Core,        Penryn,      penryn, 0x1),
+-  CPU_MAPPING(Nehalem,     Corei7,      corei7, 0x1),
+-  CPU_MAPPING(Nehalem,     Nehalem,     nehalem, 0x1),
+-  CPU_MAPPING(Nehalem,     Westmere,    westmere, 0x1),
+-  NCPU_MAPPING_LIB(SandyBridge, Corei7_AVX,  sandybridge, amd::CPU64_Library_AVX, 0x2 | 0x1),  // LLVM 2.9 only
+-  CPU_MAPPING_LIB(SandyBridge, Corei7_AVX,  corei7-avx, amd::CPU64_Library_AVX, 0x2 | 0x1),
+-  CPU_MAPPING(SandyBridge, IvyBridge,   core-avx-i, 0x2 | 0x1), // LLVM 3.0
+-  CPU_MAPPING(Haswell,     Haswell,     core-avx2, 0x4 | 0x2 | 0x1), // LLVM 3.0
+-  CPU_MAPPING(K8,          K8,          k8, 0x1),
+-  CPU_MAPPING(K8,          Opteron,     opteron, 0x1),
+-  CPU_MAPPING(K8,          Athlon64,    athlon64, 0x1),
+-  CPU_MAPPING(K8,          AthlonFX,    athlon-fx, 0x1),
+-  CPU_MAPPING(K8,          K8_SSE3,     k8-sse3, 0x1),
+-  CPU_MAPPING(K8,          Opteron_SSE3,opteron-sse3, 0x1),
+-  CPU_MAPPING(K8,          Athlon64SSE3,athlon64-sse3, 0x1),
+-  CPU_MAPPING(K10,         AMDFAM10,    amdfam10, 0x1),
+-  NCPU_MAPPING(K10,         Barcelona,  barcelona, 0x1),
+-  NCPU_MAPPING(K10,         Istanbul,    istanbul, 0x1),
+-  NCPU_MAPPING(K10,         Shanghai,    shanghai, 0x1),
+-  CPU_MAPPING(Family14h,   Bobcat, btver1, 0x1),
+-  CPU_MAPPING_LIB(Family15h, Bulldozer, bdver1, amd::CPU64_Library_FMA4, 0x8 | 0x1),
+-  CPU_MAPPING_LIB(Family15h, Piledriver, bdver2, amd::CPU64_Library_FMA4, 0x8 | 0x4 | 0x1),
+-  CPU_MAPPING(Atom, Atom, atom, 0x1),
+-  InvalidTarget
+-};
+-#undef CPU_MAPPING
+-#undef NCPU_MAPPING
+-#undef CPU_MAPPING_LIB
+-#undef NCPU_MAPPING_LIB
+-#endif // _CL_UTILS_TARGET_MAPPINGS_X64_0_8_H_
+diff --git a/compiler/lib/utils/v0_8/target_mappings_x86.h b/compiler/lib/utils/v0_8/target_mappings_x86.h
+deleted file mode 100644
+index 979c6e3..0000000
+--- a/compiler/lib/utils/v0_8/target_mappings_x86.h
++++ /dev/null
+@@ -1,73 +0,0 @@
+-//
+-// Copyright (c) 2012 Advanced Micro Devices, Inc. All rights reserved.
+-//
+-#ifndef _CL_UTILS_TARGET_MAPPINGS_X86_0_8_H_
+-#define _CL_UTILS_TARGET_MAPPINGS_X86_0_8_H_
+-#define CPU_MAPPING_LIB(A, B, C, D, E) { #A, #B, #C, D, 0, E, true, true, FAMILY_X86}
+-#define CPU_MAPPING(A, B, C, D) CPU_MAPPING_LIB(A, B, C, amd::CPU_Library_Generic, D)
+-#define NCPU_MAPPING_LIB(A, B, C, D, E) { #A, #B, #C, D, 0, E, false, false, FAMILY_X86}
+-#define NCPU_MAPPING(A, B, C, D) { #A, #B, #C, amd::CPU_Library_Generic, 0, D, false, false, FAMILY_X86}
+-static const TargetMapping X86TargetMapping_0_8[] = {
+-  UnknownTarget,
+-  CPU_MAPPING(X86,         Generic,     generic, 0),
+-  // This has to be specified manually since GCC defines i386 as a macro.
+-  { "X86", "i386", "i386", amd::CPU_Library_Generic, 0, 0, true, true, FAMILY_X86 },
+-  CPU_MAPPING(X86,         i486,        i486, 0),
+-  CPU_MAPPING(X86,         i586,        i586, 0),
+-  CPU_MAPPING(Pentium,     Pentium,     pentium, 0),
+-  CPU_MAPPING(Pentium_MMX, Pentium_MMX, pentium-mmx, 0),
+-  CPU_MAPPING(X86,         i686,        i686, 0),
+-  CPU_MAPPING(PentiumPro,  PentiumPro,  pentiumpro, 0),
+-  CPU_MAPPING(Pentium2,    Pentium2,    pentium2, 0),
+-  CPU_MAPPING(Pentium3,    Pentium3,    pentium3, 0),
+-  CPU_MAPPING(Pentium3m,   Pentium3m,   pentium3m, 0),
+-  CPU_MAPPING(Pentium_M,   Pentium_M,   pentium-m, 0x1),
+-  CPU_MAPPING(NetBurst,    Pentium4,    pentium4, 0x1),
+-  CPU_MAPPING(NetBurst,    Pentium4m,   pentium4m, 0x1),
+-  CPU_MAPPING(Pentium_M,   Yonah,       yonah, 0x1),
+-  CPU_MAPPING(Pentium4,    Prescott,    prescott, 0x1),
+-  CPU_MAPPING(Xeon,        Nocona,      nocona, 0x1),
+-  CPU_MAPPING(Core,        Core2,       core2, 0x1),
+-  CPU_MAPPING(Core,        Penryn,      penryn, 0x1),
+-  CPU_MAPPING(Nehalem,     Corei7,      corei7, 0x1), // Corei3 and Corei5 also
+-  CPU_MAPPING(Nehalem,     Nehalem,     nehalem, 0x1),
+-  CPU_MAPPING(Nehalem,     Westmere,    westmere, 0x1),
+-  NCPU_MAPPING_LIB(SandyBridge, Corei7_AVX,  sandybridge, amd::CPU64_Library_AVX, 0x2 | 0x1),  // LLVM 2.9 only
+-  CPU_MAPPING(SandyBridge, Corei7_AVX,  corei7-avx, 0x2 | 0x1), // LLVM 3.0 only
+-  CPU_MAPPING(SandyBridge, IvyBridge,   core-avx-i, 0x2 | 0x1), // LLVM 3.0 only
+-  CPU_MAPPING(Haswell,     Haswell,     core-avx2, 0x4 | 0x2 | 0x1), // LLVM 3.0 only
+-  CPU_MAPPING(K6,          K6,          k6, 0),
+-  CPU_MAPPING(K6,          K6_2,        k6-2, 0),
+-  CPU_MAPPING(K6,          K6_3,        k6-3, 0),
+-  CPU_MAPPING(K7,          Athlon,      athlon, 0),
+-  CPU_MAPPING(K7,          AthlonTBIRD, athlon-tbird, 0),
+-  CPU_MAPPING(K7,          Athlon4,     athlon-4, 0),
+-  CPU_MAPPING(K7,          AthlonXP,    athlon-xp, 0),
+-  CPU_MAPPING(K7,          AthlonMP,    athlon-mp, 0),
+-  CPU_MAPPING(K8,          K8,          k8, 0x1),
+-  CPU_MAPPING(K8,          Opteron,     opteron, 0x1),
+-  CPU_MAPPING(K8,          Athlon64,    athlon64, 0x1),
+-  CPU_MAPPING(K8,          AthlonFX,    athlon-fx, 0x1),
+-  CPU_MAPPING(K8,          K8_SSE3,     k8-sse3, 0x1),
+-  CPU_MAPPING(K8,          Opteron_SSE3,opteron-sse3, 0x1),
+-  CPU_MAPPING(K8,          Athlon64SSE3,athlon64-sse3, 0x1),
+-  CPU_MAPPING(K10,         AMDFAM10,    amdfam10, 0x1),
+-  NCPU_MAPPING(K10,        Barcelona,   barcelona, 0x1),
+-  NCPU_MAPPING(K10,        Istanbul,    istanbul, 0x1),
+-  NCPU_MAPPING(K10,        Shanghai,    shanghai, 0x1),
+-  CPU_MAPPING(Winchip,     Winchip_C6,  winchip-c6, 0),
+-  CPU_MAPPING(Winchip,     Winchip2,    winchip2, 0),
+-  CPU_MAPPING(Via,         C3,          c3, 0),
+-  CPU_MAPPING(Via,         C3_2,        c3-2, 0),
+-  CPU_MAPPING(Family14h,   Bobcat,      btver1, 0x1), // LLVM 3.1 only
+-  CPU_MAPPING_LIB(Family15h, Bulldozer, bdver1, amd::CPU_Library_FMA4, 0x8 | 0x1), // LLVM 3.1 only
+-  CPU_MAPPING_LIB(Family15h, Piledriver, bdver2, amd::CPU_Library_FMA4, 0x8 | 0x4 | 0x1), // LLVM 3.1 only
+-  CPU_MAPPING(Atom,        Atom,        atom, 0x1), // LLVM 3.1 only
+-  InvalidTarget
+-};
+-#undef CPU_MAPPING
+-#undef NCPU_MAPPING
+-#undef CPU_MAPPING_LIB
+-#undef NCPU_MAPPING_LIB
+-
+-#endif // _CL_UTILS_TARGET_MAPPINGS_X86_0_8_H_
+diff --git a/runtime/CMakeLists.txt b/runtime/CMakeLists.txt
+index 0a55cf5..2c9dfd6 100644
+--- a/runtime/CMakeLists.txt
++++ b/runtime/CMakeLists.txt
+@@ -8,13 +8,21 @@ if(CMAKE_BUILD_TYPE MATCHES "^Debug$")
+ endif()
+ 
+ include_directories(${ROCR_INCLUDES})
++if (DEFINED LLVM_INCLUDES AND NOT ${LLVM_INCLUDES} STREQUAL "")
++  include_directories(${LLVM_INCLUDES})
++endif() # if (DEFINED LLVM_INCLUDES AND NOT ${LLVM_INCLUDES} STREQUAL "")
+ 
+ include_directories(${CMAKE_SOURCE_DIR}/runtime)
+ include_directories(${CMAKE_SOURCE_DIR}/api/opencl)
+ include_directories(${CMAKE_SOURCE_DIR}/api/opencl/khronos)
+ include_directories(${CMAKE_SOURCE_DIR}/api/opencl/khronos/headers)
+ include_directories(${CMAKE_SOURCE_DIR}/api/opencl/khronos/headers/opencl2.2)
+-include_directories(${CMAKE_SOURCE_DIR}/compiler/llvm/include)
++
++# FIXME: Remove following if block after enabling COMGR by default
++if (${USE_COMGR_LIBRARY} STREQUAL "no")
++  include_directories(${CMAKE_SOURCE_DIR}/compiler/llvm/include)
++endif() # if (${USE_COMGR_LIBRARY} STREQUAL "no")
++
+ include_directories(${CMAKE_SOURCE_DIR}/compiler/driver/src)
+ include_directories(${CMAKE_SOURCE_DIR}/compiler/lib)
+ include_directories(${CMAKE_SOURCE_DIR}/compiler/lib/include)
+diff --git a/runtime/device/comgrctx.cpp b/runtime/device/comgrctx.cpp
+index 6edcfc1..51ffcbf 100644
+--- a/runtime/device/comgrctx.cpp
++++ b/runtime/device/comgrctx.cpp
+@@ -15,8 +15,8 @@ bool Comgr::LoadLib() {
+ #if defined(COMGR_DYN_DLL)
+   LogInfo("Loading COMGR library.");
+   static const char* ComgrLibName =
+-    LP64_SWITCH(WINDOWS_SWITCH("amdcomgr.dll", "libamdcomgr32.so"),
+-                WINDOWS_SWITCH("amdcomgr64.dll", "libamdcomgr64.so"));
++    LP64_SWITCH(WINDOWS_SWITCH("amdcomgr.dll", "libamd_comgr32.so"),
++                WINDOWS_SWITCH("amdcomgr64.dll", "libamd_comgr.so"));
+   cep_.handle = Os::loadLibrary(ComgrLibName);
+   if (nullptr == cep_.handle) {
+     return false;
+diff --git a/runtime/device/devprogram.cpp b/runtime/device/devprogram.cpp
+index c797f98..587e950 100644
+--- a/runtime/device/devprogram.cpp
++++ b/runtime/device/devprogram.cpp
+@@ -706,7 +706,7 @@ bool Program::compileImplLC(const std::string& sourceCode,
+   driverOptions.push_back("-amdgpu-prelink");
+ 
+   if (device().settings().lcWavefrontSize64_) {
+-     driverOptions.append(" -mwavefrontsize64");
++     driverOptions.push_back("-mwavefrontsize64");
+   }
+ 
+   // Iterate through each source code and dump it into tmp
+@@ -1547,7 +1547,7 @@ bool Program::linkImplLC(amd::option::Options* options) {
+ #endif
+ 
+   if (device().settings().lcWavefrontSize64_) {
+-     codegenOptions.append(" -mwavefrontsize64");
++     codegenOptions.push_back("-mwavefrontsize64");
+   }
+ 
+   // NOTE: The params is also used to identy cached code object. This parameter
+diff --git a/runtime/device/rocm/CMakeLists.txt b/runtime/device/rocm/CMakeLists.txt
+index 7dce5b9..5870b65 100644
+--- a/runtime/device/rocm/CMakeLists.txt
++++ b/runtime/device/rocm/CMakeLists.txt
+@@ -29,80 +29,83 @@ add_library(oclrocm OBJECT
+ )
+ set_target_properties(oclrocm PROPERTIES POSITION_INDEPENDENT_CODE ON)
+ 
+-# generating libraries.amdgcn.inc
+-file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/libraries.amdgcn.inc "// Automatically generated file; DO NOT EDIT.\n")
++# FIXME: Remove following if block after enabling COMGR by default
++if (${USE_COMGR_LIBRARY} STREQUAL "no")
++  # generating libraries.amdgcn.inc
++  file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/libraries.amdgcn.inc "// Automatically generated file; DO NOT EDIT.\n")
+ 
+-foreach(AMDGCN_LIB_TARGET ${AMDGCN_LIB_TARGETS})
+-  get_target_property(lib_file ${AMDGCN_LIB_TARGET} OUTPUT_NAME)
+-  get_target_property(lib_file_name ${AMDGCN_LIB_TARGET} ARCHIVE_OUTPUT_NAME)
+-  get_target_property(lib_file_path ${AMDGCN_LIB_TARGET} ARCHIVE_OUTPUT_DIRECTORY)
+-  set(bclib "${lib_file}")
+-  set(header "${lib_file_name}.${INC_SUFFIX}")
+-  set(symbol "${lib_file_name}_lib")
+-  add_custom_command(OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/${header}
+-    COMMAND bc2h ${bclib} ${CMAKE_CURRENT_BINARY_DIR}/${header} ${symbol}
+-    DEPENDS bc2h ${AMDGCN_LIB_TARGET}
+-    COMMENT "Generating ${header}"
+-  )
+-  set_property(DIRECTORY APPEND PROPERTY ADDITIONAL_MAKE_CLEAN_FILES ${CMAKE_CURRENT_BINARY_DIR}/${target}.inc)
++  foreach(AMDGCN_LIB_TARGET ${AMDGCN_LIB_TARGETS})
++    get_target_property(lib_file ${AMDGCN_LIB_TARGET} OUTPUT_NAME)
++    get_target_property(lib_file_name ${AMDGCN_LIB_TARGET} ARCHIVE_OUTPUT_NAME)
++    get_target_property(lib_file_path ${AMDGCN_LIB_TARGET} ARCHIVE_OUTPUT_DIRECTORY)
++    set(bclib "${lib_file}")
++    set(header "${lib_file_name}.${INC_SUFFIX}")
++    set(symbol "${lib_file_name}_lib")
++    add_custom_command(OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/${header}
++      COMMAND bc2h ${bclib} ${CMAKE_CURRENT_BINARY_DIR}/${header} ${symbol}
++      DEPENDS bc2h ${AMDGCN_LIB_TARGET}
++      COMMENT "Generating ${header}"
++    )
++    set_property(DIRECTORY APPEND PROPERTY ADDITIONAL_MAKE_CLEAN_FILES ${CMAKE_CURRENT_BINARY_DIR}/${target}.inc)
+ 
+-  add_custom_target(${header}_target ALL DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/${header})
+-  add_dependencies(oclrocm  ${header}_target)
++    add_custom_target(${header}_target ALL DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/${header})
++    add_dependencies(oclrocm  ${header}_target)
+ 
+-  file(APPEND ${CMAKE_CURRENT_BINARY_DIR}/libraries.amdgcn.inc "#include \"${header}\"\n")
+-endforeach()
++    file(APPEND ${CMAKE_CURRENT_BINARY_DIR}/libraries.amdgcn.inc "#include \"${header}\"\n")
++  endforeach()
+ 
+-# Generate function to select libraries for a given GFXIP number.
+-file(APPEND ${CMAKE_CURRENT_BINARY_DIR}/libraries.amdgcn.inc
+-  "static inline std::tuple<const char*, const void*, size_t> get_oclc_isa_version(uint gfxip) { \
+-   switch (gfxip) {\n")
+-foreach(AMDGCN_LIB_TARGET ${AMDGCN_LIB_TARGETS})
+-  if (${AMDGCN_LIB_TARGET} MATCHES "^oclc_isa_version_[0-9]+_lib$")
+-    string(REGEX REPLACE "^oclc_isa_version_([0-9]+)_lib$" "\\1" gfxip ${AMDGCN_LIB_TARGET})
+-    file(APPEND ${CMAKE_CURRENT_BINARY_DIR}/libraries.amdgcn.inc
+-      "case ${gfxip}: return std::make_tuple( \"oclc_isa_version_${gfxip}_lib.bc\","
+-                "  oclc_isa_version_${gfxip}_lib, oclc_isa_version_${gfxip}_lib_size); break;\n")
+-  endif()
+-endforeach()
+-file(APPEND ${CMAKE_CURRENT_BINARY_DIR}/libraries.amdgcn.inc
+-  "default: return std::make_tuple(\"\",(const void*)0,(size_t)0); }\n}\n")
++  # Generate function to select libraries for a given GFXIP number.
++  file(APPEND ${CMAKE_CURRENT_BINARY_DIR}/libraries.amdgcn.inc
++    "static inline std::tuple<const char*, const void*, size_t> get_oclc_isa_version(uint gfxip) { \
++     switch (gfxip) {\n")
++  foreach(AMDGCN_LIB_TARGET ${AMDGCN_LIB_TARGETS})
++    if (${AMDGCN_LIB_TARGET} MATCHES "^oclc_isa_version_[0-9]+_lib$")
++      string(REGEX REPLACE "^oclc_isa_version_([0-9]+)_lib$" "\\1" gfxip ${AMDGCN_LIB_TARGET})
++      file(APPEND ${CMAKE_CURRENT_BINARY_DIR}/libraries.amdgcn.inc
++        "case ${gfxip}: return std::make_tuple( \"oclc_isa_version_${gfxip}_lib.bc\","
++                  "  oclc_isa_version_${gfxip}_lib, oclc_isa_version_${gfxip}_lib_size); break;\n")
++    endif()
++  endforeach()
++  file(APPEND ${CMAKE_CURRENT_BINARY_DIR}/libraries.amdgcn.inc
++    "default: return std::make_tuple(\"\",(const void*)0,(size_t)0); }\n}\n")
+ 
+-foreach(AMDGCN_LIB_TARGET ${AMDGCN_LIB_TARGETS})
+-  if (${AMDGCN_LIB_TARGET} MATCHES "oclc_(.*)_on_lib")
+-    string(REGEX REPLACE "oclc_(.*)_on_lib" "\\1" function ${AMDGCN_LIB_TARGET})
+-    file(APPEND ${CMAKE_CURRENT_BINARY_DIR}/libraries.amdgcn.inc
+-      "static inline std::tuple<const char*,const void*,size_t>  get_oclc_${function}(bool on)"
+-                " { return std::make_tuple(  on ? \"oclc_${function}_on_lib.bc\" : \"oclc_${function}_off_lib.bc\","
+-                "  (const void*)(on ? oclc_${function}_on_lib : oclc_${function}_off_lib),"
+-                " on ? oclc_${function}_on_lib_size : oclc_${function}_off_lib_size);  }\n")
+-  endif()
+-endforeach()
++  foreach(AMDGCN_LIB_TARGET ${AMDGCN_LIB_TARGETS})
++    if (${AMDGCN_LIB_TARGET} MATCHES "oclc_(.*)_on_lib")
++      string(REGEX REPLACE "oclc_(.*)_on_lib" "\\1" function ${AMDGCN_LIB_TARGET})
++      file(APPEND ${CMAKE_CURRENT_BINARY_DIR}/libraries.amdgcn.inc
++        "static inline std::tuple<const char*,const void*,size_t>  get_oclc_${function}(bool on)"
++                  " { return std::make_tuple(  on ? \"oclc_${function}_on_lib.bc\" : \"oclc_${function}_off_lib.bc\","
++                  "  (const void*)(on ? oclc_${function}_on_lib : oclc_${function}_off_lib),"
++                  " on ? oclc_${function}_on_lib_size : oclc_${function}_off_lib_size);  }\n")
++    endif()
++  endforeach()
+ 
+-# generating opencl*.inc files
+-add_custom_command(OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/opencl1.2-c.amdgcn.pch
+-  COMMAND clang -cc1 -x cl-header -triple amdgcn-amd-amdhsa -Werror -O3 -DNDEBUG -cl-std=CL1.2 -emit-pch -o ${CMAKE_CURRENT_BINARY_DIR}/opencl1.2-c.amdgcn.pch < ${CMAKE_SOURCE_DIR}/compiler/llvm/tools/clang/lib/Headers/opencl-c.h
+-  DEPENDS clang ${CMAKE_SOURCE_DIR}/compiler/llvm/tools/clang/lib/Headers/opencl-c.h
+-  COMMENT "Generating opencl1.2-c.amdgcn.pch"
+-)
+-add_custom_command(OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/opencl1.2-c.amdgcn.inc
+-  COMMAND bc2h ${CMAKE_CURRENT_BINARY_DIR}/opencl1.2-c.amdgcn.pch ${CMAKE_CURRENT_BINARY_DIR}/opencl1.2-c.amdgcn.inc opencl1_2_c
+-  DEPENDS bc2h ${CMAKE_CURRENT_BINARY_DIR}/opencl1.2-c.amdgcn.pch
+-  COMMENT "Generating opencl1.2-c.amdgcn.inc"
+-)
+-set_property(DIRECTORY APPEND PROPERTY ADDITIONAL_MAKE_CLEAN_FILES ${CMAKE_CURRENT_BINARY_DIR}/opencl1.2-c.amdgcn.inc ${CMAKE_CURRENT_BINARY_DIR}/opencl1.2-c.amdgcn.pch)
+-add_custom_target(opencl1.2-c.amdgcn.inc_target ALL DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/opencl1.2-c.amdgcn.inc)
+-add_dependencies(oclrocm opencl1.2-c.amdgcn.inc_target)
++  # generating opencl*.inc files
++  add_custom_command(OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/opencl1.2-c.amdgcn.pch
++    COMMAND clang -cc1 -x cl-header -triple amdgcn-amd-amdhsa -Werror -O3 -DNDEBUG -cl-std=CL1.2 -emit-pch -o ${CMAKE_CURRENT_BINARY_DIR}/opencl1.2-c.amdgcn.pch < ${CMAKE_SOURCE_DIR}/compiler/llvm/tools/clang/lib/Headers/opencl-c.h
++    DEPENDS clang ${CMAKE_SOURCE_DIR}/compiler/llvm/tools/clang/lib/Headers/opencl-c.h
++    COMMENT "Generating opencl1.2-c.amdgcn.pch"
++  )
++  add_custom_command(OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/opencl1.2-c.amdgcn.inc
++    COMMAND bc2h ${CMAKE_CURRENT_BINARY_DIR}/opencl1.2-c.amdgcn.pch ${CMAKE_CURRENT_BINARY_DIR}/opencl1.2-c.amdgcn.inc opencl1_2_c
++    DEPENDS bc2h ${CMAKE_CURRENT_BINARY_DIR}/opencl1.2-c.amdgcn.pch
++    COMMENT "Generating opencl1.2-c.amdgcn.inc"
++  )
++  set_property(DIRECTORY APPEND PROPERTY ADDITIONAL_MAKE_CLEAN_FILES ${CMAKE_CURRENT_BINARY_DIR}/opencl1.2-c.amdgcn.inc ${CMAKE_CURRENT_BINARY_DIR}/opencl1.2-c.amdgcn.pch)
++  add_custom_target(opencl1.2-c.amdgcn.inc_target ALL DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/opencl1.2-c.amdgcn.inc)
++  add_dependencies(oclrocm opencl1.2-c.amdgcn.inc_target)
+ 
+-add_custom_command(OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/opencl2.0-c.amdgcn.pch
+-  COMMAND clang -cc1 -x cl-header -triple amdgcn-amd-amdhsa -Werror -O3 -DNDEBUG -cl-std=CL2.0 -emit-pch -o ${CMAKE_CURRENT_BINARY_DIR}/opencl2.0-c.amdgcn.pch < ${CMAKE_SOURCE_DIR}/compiler/llvm/tools/clang/lib/Headers/opencl-c.h
+-  DEPENDS clang ${CMAKE_SOURCE_DIR}/compiler/llvm/tools/clang/lib/Headers/opencl-c.h
+-  COMMENT "Generating opencl2.0-c.amdgcn.pch"
+-)
+-add_custom_command(OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/opencl2.0-c.amdgcn.inc
+-  COMMAND bc2h ${CMAKE_CURRENT_BINARY_DIR}/opencl2.0-c.amdgcn.pch ${CMAKE_CURRENT_BINARY_DIR}/opencl2.0-c.amdgcn.inc opencl2_0_c
+-  DEPENDS bc2h ${CMAKE_CURRENT_BINARY_DIR}/opencl2.0-c.amdgcn.pch
+-  COMMENT "Generating opencl2.0-c.amdgcn.inc"
+-)
+-set_property(DIRECTORY APPEND PROPERTY ADDITIONAL_MAKE_CLEAN_FILES ${CMAKE_CURRENT_BINARY_DIR}/opencl2.0-c.amdgcn.inc ${CMAKE_CURRENT_BINARY_DIR}/opencl2.0-c.amdgcn.pch)
+-add_custom_target(opencl2.0-c.amdgcn.inc_target ALL DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/opencl2.0-c.amdgcn.inc)
+-add_dependencies(oclrocm opencl2.0-c.amdgcn.inc_target)
++  add_custom_command(OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/opencl2.0-c.amdgcn.pch
++    COMMAND clang -cc1 -x cl-header -triple amdgcn-amd-amdhsa -Werror -O3 -DNDEBUG -cl-std=CL2.0 -emit-pch -o ${CMAKE_CURRENT_BINARY_DIR}/opencl2.0-c.amdgcn.pch < ${CMAKE_SOURCE_DIR}/compiler/llvm/tools/clang/lib/Headers/opencl-c.h
++    DEPENDS clang ${CMAKE_SOURCE_DIR}/compiler/llvm/tools/clang/lib/Headers/opencl-c.h
++    COMMENT "Generating opencl2.0-c.amdgcn.pch"
++  )
++  add_custom_command(OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/opencl2.0-c.amdgcn.inc
++    COMMAND bc2h ${CMAKE_CURRENT_BINARY_DIR}/opencl2.0-c.amdgcn.pch ${CMAKE_CURRENT_BINARY_DIR}/opencl2.0-c.amdgcn.inc opencl2_0_c
++    DEPENDS bc2h ${CMAKE_CURRENT_BINARY_DIR}/opencl2.0-c.amdgcn.pch
++    COMMENT "Generating opencl2.0-c.amdgcn.inc"
++  )
++  set_property(DIRECTORY APPEND PROPERTY ADDITIONAL_MAKE_CLEAN_FILES ${CMAKE_CURRENT_BINARY_DIR}/opencl2.0-c.amdgcn.inc ${CMAKE_CURRENT_BINARY_DIR}/opencl2.0-c.amdgcn.pch)
++  add_custom_target(opencl2.0-c.amdgcn.inc_target ALL DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/opencl2.0-c.amdgcn.inc)
++  add_dependencies(oclrocm opencl2.0-c.amdgcn.inc_target)
++endif() # if (${USE_COMGR_LIBRARY} STREQUAL "no")
+diff --git a/runtime/device/rocm/rocprogram.cpp b/runtime/device/rocm/rocprogram.cpp
+index 191e58c..0155dc2 100644
+--- a/runtime/device/rocm/rocprogram.cpp
++++ b/runtime/device/rocm/rocprogram.cpp
+@@ -9,9 +9,9 @@
+ #include "rockernel.hpp"
+ #if defined(WITH_LIGHTNING_COMPILER) || defined(USE_COMGR_LIBRARY)
+ #include <gelf.h>
+-#include "libraries.amdgcn.inc"
+ #ifndef USE_COMGR_LIBRARY
+ #include "driver/AmdCompiler.h"
++#include "libraries.amdgcn.inc"
+ #endif
+ #endif  // defined(WITH_LIGHTNING_COMPILER) || defined(USE_COMGR_LIBRARY)
+ 
+diff --git a/runtime/platform/object.hpp b/runtime/platform/object.hpp
+index 8ab1b68..e71948f 100644
+--- a/runtime/platform/object.hpp
++++ b/runtime/platform/object.hpp
+@@ -9,7 +9,6 @@
+ #include "os/alloc.hpp"
+ #include "thread/monitor.hpp"
+ #include "utils/util.hpp"
+-#include <icd/icd_dispatch.h>
+ 
+ 
+ #define KHR_CL_TYPES_DO(F)                                                                         \
+diff --git a/tools/clinfo/CMakeLists.txt b/tools/clinfo/CMakeLists.txt
+index 974a46f..f4b30b2 100644
+--- a/tools/clinfo/CMakeLists.txt
++++ b/tools/clinfo/CMakeLists.txt
+@@ -2,12 +2,10 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+ 
+ set (CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
+ 
+-include_directories(${OPENCL_INCLUDE_DIRS})
++include_directories(${OPENCL_ICD_LOADER_HEADERS_DIR})
+ 
+ add_definitions(-DHAVE_CL2_HPP)
+ 
+ add_executable(clinfo clinfo.cpp)
+ 
+ target_link_libraries(clinfo OpenCL)
+-
+-install(TARGETS clinfo DESTINATION bin)
