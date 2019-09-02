@@ -27,6 +27,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
+	$(vala_depend)
 	dev-util/gdbus-codegen
 	dev-util/glib-utils
 	dev-libs/check
@@ -39,7 +40,7 @@ RESTRICT="test"
 src_prepare() {
 	default
 
-	vala_src_prepare
+	vala_src_prepare --ignore-use
 
 	use doc || sed -e "/^subdir('docs')$/d" -i meson.build || die
 }
