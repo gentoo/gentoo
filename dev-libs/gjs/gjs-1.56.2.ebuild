@@ -44,8 +44,9 @@ src_configure() {
 		$(use_with gtk) \
 		$(use_enable readline) \
 		$(use_with test dbus-tests) \
-		$(use_with test xvfb-tests) \
-		--disable-installed-tests
+		--disable-installed-tests \
+		--without-xvfb-tests
+		#$(use_with test xvfb-tests) # https://gitlab.gnome.org/GNOME/gjs/issues/280
 }
 
 src_install() {
@@ -62,5 +63,5 @@ src_install() {
 }
 
 src_test() {
-	virtx default
+	virtx dbus-run-session emake check || die
 }
