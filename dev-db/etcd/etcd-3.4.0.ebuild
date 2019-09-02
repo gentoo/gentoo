@@ -6,8 +6,8 @@ EAPI=6
 inherit user systemd golang-vcs-snapshot
 
 KEYWORDS="~amd64"
-EGO_PN="github.com/coreos/etcd"
-GIT_COMMIT="5cf5d88"
+EGO_PN="go.etcd.io/etcd"
+GIT_COMMIT="898bd13"
 MY_PV="${PV/_rc/-rc.}"
 DESCRIPTION="Highly-available key value store for shared configuration and service discovery"
 HOMEPAGE="https://github.com/etcd-io/etcd"
@@ -73,6 +73,6 @@ src_install() {
 
 src_test() {
 	pushd src/${EGO_PN} || die
-	GO111MODULES=on ./test || die
+	GO111MODULES=off ./test || die
 	popd || die
 }

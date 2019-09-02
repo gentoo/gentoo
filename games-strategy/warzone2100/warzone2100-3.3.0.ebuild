@@ -4,17 +4,17 @@
 EAPI=7
 inherit autotools toolchain-funcs xdg
 
-MY_PV=$(ver_cut 1-2)
+MY_PV="$(ver_cut 1-2)"
 VIDEOS_PV=2.2
-VIDEOS_P=${PN}-videos-${VIDEOS_PV}.wz
+VIDEOS_P="${PN}-videos-${VIDEOS_PV}.wz"
 DESCRIPTION="3D real-time strategy game"
 HOMEPAGE="http://wz2100.net/"
-SRC_URI="mirror://sourceforge/warzone2100/${P}.tar.xz
+SRC_URI="mirror://sourceforge/warzone2100/${P}_src.tar.xz
 	videos? ( mirror://sourceforge/warzone2100/warzone2100/Videos/${VIDEOS_PV}/high-quality-en/sequences.wz -> ${VIDEOS_P} )"
 
 LICENSE="GPL-2+ CC-BY-SA-3.0 public-domain"
 SLOT="0"
-#[[ "${PV}" == *_beta* ]] || \
+[[ "${PV}" == *_beta* ]] || \
 KEYWORDS="~amd64 ~x86"
 # upstream requested debug support
 IUSE="debug nls videos"
@@ -63,10 +63,6 @@ BDEPEND="
 "
 
 S="${WORKDIR}/${PN}"
-
-PATCHES=(
-	"${FILESDIR}"/${PN}-3.3.0_beta1-gettext_version.patch
-)
 
 src_prepare() {
 	default
