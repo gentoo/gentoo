@@ -46,6 +46,10 @@ LICENSE="
 		gpl? ( GPL-3 )
 		!gpl? ( LGPL-3 )
 	)
+	libaribb24? (
+		gpl? ( GPL-3 )
+		!gpl? ( LGPL-3 )
+	)
 	encode? (
 		amrenc? (
 			gpl? ( GPL-3 )
@@ -290,6 +294,7 @@ GPL_REQUIRED_USE="
 	postproc? ( gpl )
 	frei0r? ( gpl )
 	cdio? ( gpl )
+	rubberband? ( gpl )
 	samba? ( gpl )
 	encode? (
 		x264? ( gpl )
@@ -364,6 +369,7 @@ multilib_src_configure() {
 	# Decoders
 	use amr && myconf+=( --enable-version3 )
 	use gmp && myconf+=( --enable-version3 )
+	use libaribb24 && myconf+=( --enable-version3 )
 	use fdk && use gpl && myconf+=( --enable-nonfree )
 
 	for i in "${ffuse[@]#+}" ; do

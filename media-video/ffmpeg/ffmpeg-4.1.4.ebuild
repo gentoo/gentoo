@@ -284,6 +284,7 @@ GPL_REQUIRED_USE="
 	postproc? ( gpl )
 	frei0r? ( gpl )
 	cdio? ( gpl )
+	rubberband? ( gpl )
 	samba? ( gpl )
 	encode? (
 		x264? ( gpl )
