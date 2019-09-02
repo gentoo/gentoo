@@ -9924,7 +9924,7 @@ dev-ruby/hpricot 0.8.6-r5: A fast and liberal HTML parser for Ruby
 dev-ruby/html2haml 2.2.0: Convert HTML and HTML+Erb to Haml
 dev-ruby/htmlentities 4.3.4: A simple library for encoding/decoding entities in (X)HTML documents
 dev-ruby/http 0.9.8-r2 3.3.0 4.0.5 4.1.0 4.1.1: An easy-to-use client library for making requests from Ruby
-dev-ruby/http-accept 2.1.0: Parse Accept and Accept-Language HTTP headers
+dev-ruby/http-accept 1.7.0 2.1.0 2.1.1: Parse Accept and Accept-Language HTTP headers
 dev-ruby/http-cookie 1.0.3: A ruby library to handle HTTP cookies
 dev-ruby/http-form_data 1.0.3 2.1.1: Utility-belt to build form data request bodies
 dev-ruby/http_parser_rb 0.6.0-r1: Simple callback-based HTTP request/response parser
