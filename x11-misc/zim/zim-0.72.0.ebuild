@@ -5,12 +5,12 @@ EAPI=7
 PYTHON_COMPAT=( python3_{5,6} )
 PYTHON_REQ_USE="sqlite"
 DISTUTILS_SINGLE_IMPL=1
-inherit xdg-utils distutils-r1 gnome2-utils virtualx
+inherit xdg-utils distutils-r1 virtualx
 
 DESCRIPTION="A desktop wiki"
 HOMEPAGE="
-	http://zim-wiki.org/
-	https://github.com/zim-desktop-wiki/
+	https://zim-wiki.org/
+	https://github.com/zim-desktop-wiki/zim-desktop-wiki
 "
 SRC_URI="https://github.com/${PN}-desktop-wiki/${PN}-desktop-wiki/archive/${PV/_/-}.tar.gz -> ${P}.tar.gz"
 
@@ -53,8 +53,8 @@ python_install() {
 }
 
 pkg_postinst() {
-	gnome2_icon_cache_update
 	xdg_desktop_database_update
+	xdg_icon_cache_update
 	xdg_mimeinfo_database_update
 	if ! has_version ${CATEGORY}/${PN}; then
 		elog "Please install these packages for additional functionality"
@@ -71,7 +71,7 @@ pkg_postinst() {
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
 	xdg_desktop_database_update
+	xdg_icon_cache_update
 	xdg_mimeinfo_database_update
 }
