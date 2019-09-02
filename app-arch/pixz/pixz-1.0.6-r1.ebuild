@@ -27,6 +27,10 @@ DEPEND="${RDEPEND}
 	static? ( ${LIB_DEPEND} )"
 [[ ${PV} == "9999" ]] && DEPEND+=" app-text/asciidoc"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-avoid-unaligned-accesses.patch
+)
+
 src_prepare() {
 	default
 	[[ ${PV} == "9999" ]] && eautoreconf
