@@ -1499,11 +1499,6 @@
       <role>Developer</role>
     </member>
     <member>
-      <email>quantumsummers@gentoo.org</email>
-      <name>Matt Summers</name>
-      <role>Documentation, Hardened sources</role>
-    </member>
-    <member>
       <email>williamh@gentoo.org</email>
       <name>William Hubbs</name>
       <role>PaX markings</role>
@@ -3905,10 +3900,6 @@
     <name>Website maintainers</name>
     <url>https://wiki.gentoo.org/wiki/Project:Website</url>
     <description>The website project maintains the Gentoo website and develops new sites for the community.</description>
-    <member>
-      <email>chrisadr@gentoo.org</email>
-      <name>Christopher Díaz Riveros</name>
-    </member>
     <member>
       <email>dilfridge@gentoo.org</email>
       <name>Andreas K. Hüttel</name>
