@@ -38,6 +38,7 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.3.3-libressl.patch
+	"${FILESDIR}"/${P}-without_zlib_build_fix.patch #693202
 )
 
 # Various test problems, starting with the fact that sandbox
