@@ -84,7 +84,7 @@ start() {
 	# Exportfs likes to hang if networking isn't working.
 	# If that's the case, then try to kill it so the
 	# bootup process can continue.
-	if grep -qs '^[[:space:]]*/' /etc/exports /etc/exports.d/*.exports ; then
+	if grep -qs '^[[:space:]]*"\?/' /etc/exports /etc/exports.d/*.exports ; then
 		ebegin "Exporting NFS directories"
 		${exportfs} -r &
 		waitfor_exportfs $!
