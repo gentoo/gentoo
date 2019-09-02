@@ -3060,7 +3060,7 @@ dev-db/cpp-driver 2.9.0 2.11.0: DataStax C/C++ Driver for Cassandra
 dev-db/cppdb 0.3.1-r3: SQL connectivity library for platform and database independent connectivity
 dev-db/datadraw 3.1.1: feature rich database generator for high performance C applications
 dev-db/db-je 3.3.75: A high performance, transactional storage engine written entirely in Java
-dev-db/etcd 3.3.13 3.3.14 3.3.15: Highly-available key value store for shared configuration and service discovery
+dev-db/etcd 3.3.15 3.4.0: Highly-available key value store for shared configuration and service discovery
 dev-db/firebird 3.0.4.33054.0: Relational database offering many ANSI SQL:2003 and some SQL:2008 features
 dev-db/freetds 1.00.558: Tabular Datastream Library
 dev-db/gigabase 3.83-r2: OO-DBMS with interfaces for C/C++/Java/PHP/Perl
@@ -11910,7 +11910,7 @@ games-strategy/uqm 0.7.0.1: The Ur-Quan Masters: Port of Star Control 2
 games-strategy/wargus 2.4.1: Warcraft II for the Stratagus game engine
 games-strategy/wargus-data 0-r1: Warcraft II data for wargus (needs DOS CD)
 games-strategy/warmux 11.04.1-r1: A free Worms clone
-games-strategy/warzone2100 3.2.3 3.3.0_beta1: 3D real-time strategy game
+games-strategy/warzone2100 3.2.3 3.3.0: 3D real-time strategy game
 games-strategy/wesnoth 1.14.7 1.15.1: Battle for Wesnoth - A fantasy turn-based strategy game
 games-strategy/widelands 0.20_rc1 0.20: A game similar to Settlers 2
 games-strategy/xbattleai 1.2.2-r2: A multi-player game of strategy and coordination
