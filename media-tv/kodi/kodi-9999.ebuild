@@ -64,7 +64,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	dbus? ( sys-apps/dbus )
 	dev-db/sqlite
 	dev-libs/expat
-	dev-libs/flatbuffers
+	>=dev-libs/flatbuffers-1.11.0
 	>=dev-libs/fribidi-0.19.7
 	cec? ( >=dev-libs/libcec-4.0[raspberry-pi?] )
 	dev-libs/libpcre[cxx]
