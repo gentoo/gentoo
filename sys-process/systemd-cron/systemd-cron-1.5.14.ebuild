@@ -1,9 +1,9 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-PYTHON_COMPAT=( pypy3 python3_{5,6} )
-inherit eutils python-single-r1 systemd
+EAPI=7
+PYTHON_COMPAT=( pypy3 python3_{5,6,7} )
+inherit python-single-r1 systemd
 
 DESCRIPTION="systemd units to create timers for cron directories and crontab"
 HOMEPAGE="https://github.com/systemd-cron/systemd-cron/"
@@ -11,14 +11,14 @@ SRC_URI="https://github.com/systemd-cron/${PN}/archive/v${PV}.tar.gz -> systemd-
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~sparc ~x86"
 IUSE="cron-boot etc-crontab-systemd minutely setgid test yearly"
 
 RDEPEND=">=sys-apps/systemd-217
-	     sys-apps/debianutils
-	     !etc-crontab-systemd? ( !sys-process/dcron )
-	     ${PYTHON_DEPS}
-		 sys-process/cronbase"
+	sys-apps/debianutils
+	!etc-crontab-systemd? ( !sys-process/dcron )
+	${PYTHON_DEPS}
+	sys-process/cronbase"
 
 DEPEND="sys-process/cronbase
 	test? ( sys-apps/man-db dev-python/pyflakes )"
@@ -46,7 +46,7 @@ src_prepare() {
 			"${S}/src/bin/systemd-crontab-generator.py" || die
 	fi
 
-	epatch_user
+	eapply_user
 }
 
 my_use_enable() {
@@ -63,7 +63,8 @@ src_configure() {
 		--confdir="${EPREFIX}/etc" \
 		--runparts="${EPREFIX}/bin/run-parts" \
 		--mandir="${EPREFIX}/usr/share/man" \
-		--unitdir="$(systemd_get_unitdir)" \
+		--unitdir="$(systemd_get_systemunitdir)" \
+		--generatordir="$(systemd_get_systemgeneratordir)" \
 		$(my_use_enable cron-boot boot) \
 		$(my_use_enable minutely) \
 		$(my_use_enable yearly) \
