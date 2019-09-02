@@ -5156,10 +5156,6 @@ media-video/ffdiaporama:texturemate - Install extra backgrounds
 media-video/ffmpeg:amr - Enables Adaptive Multi-Rate Audio support
 media-video/ffmpeg:amrenc - Enables Adaptive Multi-Rate Audio encoding support with media-libs/vo-amrwbenc.
 media-video/ffmpeg:appkit - Enables Apple AppKit framework
-media-video/ffmpeg:armv5te - Enables optimizations for armv5te processors.
-media-video/ffmpeg:armv6 - Enables optimizations for armv6 processors.
-media-video/ffmpeg:armv6t2 - Enables optimizations for armv6t2 processors.
-media-video/ffmpeg:armvfp - Enables VFP optimizations for ARM processors.
 media-video/ffmpeg:bluray - Enable playback of Blu-ray filesystems
 media-video/ffmpeg:bs2b - Enables media-libs/libbs2b based Bauer stereo-to-binaural filter.
 media-video/ffmpeg:cdio - Enables audio CD grabbing with dev-libs/libcdio.
@@ -5169,7 +5165,6 @@ media-video/ffmpeg:codec2 - Enables codec2 low bit rate speech codec support via
 media-video/ffmpeg:cpudetection - Enables runtime CPU detection (useful for bindist, compatibility on other CPUs)
 media-video/ffmpeg:cuda - Enables CUDA-based acceleration. Mostly used for specific filters.
 media-video/ffmpeg:dav1d - Enables AV1 decoding via media-libs/dav1d.
-media-video/ffmpeg:ebur128 - Enables EBU R128 loudness normalization filter via media-libs/libebur128
 media-video/ffmpeg:fdk - Use external fdk-aac library for AAC encoding
 media-video/ffmpeg:flite - Adds a text-to-speech filter based on app-accessibility/flite.
 media-video/ffmpeg:frei0r - Enable frei0r wrapping in libavfilter
@@ -5202,7 +5197,6 @@ media-video/ffmpeg:pic - Force shared libraries to be built as PIC (this is slow
 media-video/ffmpeg:postproc - Build and install libpostproc.
 media-video/ffmpeg:rubberband - Adds time-stretching and pitch-shifting audio filter based on media-libs/rubberband.
 media-video/ffmpeg:snappy - Enable app-arch/snappy support. Required for e.g. Vidvox Hap encoder.
-media-video/ffmpeg:sofalizer - Enables Sofalizer filter
 media-video/ffmpeg:srt - Enable support for Secure Reliable Transport (SRT) via net-libs/srt
 media-video/ffmpeg:ssh - Enable SSH/sftp support via net-libs/libssh.
 media-video/ffmpeg:twolame - Enables MP2 encoding via media-sound/twolame as an alternative to the internal encoder.
