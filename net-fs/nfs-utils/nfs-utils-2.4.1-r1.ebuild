@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools flag-o-matic multilib systemd
+inherit autotools flag-o-matic linux-info multilib systemd
 
 DESCRIPTION="NFS client and server daemons"
 HOMEPAGE="http://linux-nfs.org/"
@@ -38,7 +38,7 @@ DEPEND="
 	libmount? ( sys-apps/util-linux )
 	nfsv4? (
 		dev-libs/libevent:=
-		>=sys-apps/keyutils-1.5.9
+		>=sys-apps/keyutils-1.5.9:=
 		kerberos? (
 			>=net-libs/libtirpc-0.2.4-r1[kerberos]
 			app-crypt/mit-krb5
@@ -69,6 +69,16 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.3.4-no-werror.patch
 	"${FILESDIR}"/${P}-gssd-Look-in-lib32-for-gss-libs-aswell.patch
 )
+
+pkg_setup() {
+	linux-info_pkg_setup
+	if use nfsv4 && ! use nfsdcld && linux_config_exists && ! linux_chkconfig_present CRYPTO_MD5 ; then
+		ewarn "Your NFS server will be unable to track clients across server restarts!"
+		ewarn "Please enable the \"${HILITE}nfsdcld${NORMAL}\" USE flag to install the nfsdcltrack usermode"
+		ewarn "helper upcall program, or enable ${HILITE}CONFIG_CRYPTO_MD5${NORMAL} in your kernel to"
+		ewarn "support the legacy, in-kernel client tracker."
+	fi
+}
 
 src_prepare() {
 	default
@@ -128,6 +138,9 @@ src_install() {
 	mv "${ED}"/usr/sbin/rpc.statd "${ED}"/sbin/ || die
 
 	if use nfsv4 && use nfsidmap ; then
+		insinto /etc
+		doins support/nfsidmap/idmapd.conf
+
 		# Install a config file for idmappers in newer kernels. #415625
 		insinto /etc/request-key.d
 		echo 'create id_resolver * * /usr/sbin/nfsidmap -t 600 %k %d' > id_resolver.conf
@@ -177,12 +190,14 @@ pkg_postinst() {
 	done
 
 	if systemd_is_booted; then
-		if [[ ${REPLACING_VERSIONS} < 1.3.0 ]]; then
-			ewarn "We have switched to upstream systemd unit files. Since"
-			ewarn "they got renamed, you should probably enable the new ones."
-			ewarn "You can run 'equery files nfs-utils | grep systemd'"
-			ewarn "to know what services you need to enable now."
-		fi
+		for v in ${REPLACING_VERSIONS}; do
+			if ver_test "${v}" -lt 1.3.0; then
+				ewarn "We have switched to upstream systemd unit files. Since"
+				ewarn "they got renamed, you should probably enable the new ones."
+				ewarn "You can run 'equery files nfs-utils | grep systemd'"
+				ewarn "to know what services you need to enable now."
+			fi
+		done
 	else
 		ewarn "If you use OpenRC, the nfsmount service has been replaced with nfsclient."
 		ewarn "If you were using nfsmount, please add nfsclient and netmount to the"
