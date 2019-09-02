@@ -27,6 +27,8 @@ RDEPEND="
 S=${WORKDIR}/kudzu-${PV}
 
 src_prepare() {
+	sed -i -e 's/-fpic/-fPIC/g' Makefile || die
+
 	epatch \
 		"${FILESDIR}"/kudzu-${PV}-sbusfix.patch \
 		"${FILESDIR}"/kudzu-${PV}-sparc-keyboard.patch
