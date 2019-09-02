@@ -18492,7 +18492,7 @@ www-apps/drupal 7.67 8.6.16 8.7.5 8.7.6: PHP-based open-source platform and cont
 www-apps/dspam-web 3.10.1: Web based administration and user controls for dspam
 www-apps/gitea 1.8.0 1.8.2 1.8.3: A painless self-hosted Git service
 www-apps/gitit 0.12.1.1 0.12.1.1-r2 0.12.2 0.12.2.1: Wiki using happstack, git or darcs, and pandoc
-www-apps/grafana-bin 5.4.3-r1 5.4.4 5.4.5 6.1.6 6.2.5 6.3.2 6.3.3 6.3.4: Gorgeous metric viz, dashboards & editors for Graphite, InfluxDB & OpenTSDB
+www-apps/grafana-bin 5.4.3-r1 5.4.4 5.4.5 6.3.4 6.3.5: Gorgeous metric viz, dashboards & editors for Graphite, InfluxDB & OpenTSDB
 www-apps/groupoffice 3.7.52 4.0.47 4.0.97 4.0.144 4.1.7: Group-Office is a powerful modular Intranet application framework
 www-apps/hiawatha-monitor 1.6: Monitoring application for www-servers/hiawatha
 www-apps/hugo 0.46 0.48: A Fast and Flexible Static Site Generator built with love in Go
