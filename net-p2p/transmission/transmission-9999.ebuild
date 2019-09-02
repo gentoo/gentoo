@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils readme.gentoo-r1 systemd xdg-utils
+inherit cmake-utils systemd xdg-utils
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
@@ -114,21 +114,6 @@ src_configure() {
 	cmake-utils_src_configure
 }
 
-DISABLE_AUTOFORMATTING=1
-DOC_CONTENTS="\
-If you use transmission-daemon, please, set 'rpc-username' and
-'rpc-password' (in plain text, transmission-daemon will hash it on
-start) in settings.json file located at /var/lib/transmission/config or
-any other appropriate config directory.
-
-Since µTP is enabled by default, transmission needs large kernel buffers for
-the UDP socket. You can append following lines into /etc/sysctl.conf:
-
-net.core.rmem_max = 4194304
-net.core.wmem_max = 1048576
-
-and run sysctl -p"
-
 src_install() {
 	cmake-utils_src_install
 
@@ -137,7 +122,8 @@ src_install() {
 	systemd_dounit daemon/transmission-daemon.service
 	systemd_install_serviced "${FILESDIR}"/transmission-daemon.service.conf
 
-	readme.gentoo_create_doc
+	insinto /usr/lib/sysctl.d
+	doins "${FILESDIR}"/60-transmission.conf
 }
 
 pkg_postrm() {
@@ -152,5 +138,4 @@ pkg_postinst() {
 		xdg_desktop_database_update
 		xdg_icon_cache_update
 	fi
-	readme.gentoo_print_elog
 }
