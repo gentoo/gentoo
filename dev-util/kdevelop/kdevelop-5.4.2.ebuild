@@ -60,6 +60,7 @@ COMMON_DEPEND="
 	$(add_qt_dep qtwidgets)
 	$(add_qt_dep qtxml)
 	dev-libs/grantlee:5
+	>=dev-util/astyle-3.1:=
 	>=sys-devel/clang-3.8.0:=
 	gdbui? ( $(add_plasma_dep libksysguard) )
 	hex? ( app-editors/okteta:5 )
