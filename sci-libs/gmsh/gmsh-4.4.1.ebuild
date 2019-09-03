@@ -17,6 +17,8 @@ KEYWORDS="~amd64 ~x86"
 ## cgns is not compiling ATM, maybe fix cgns lib first
 IUSE="blas cgns examples jpeg lua med metis mpi netgen opencascade petsc png python X zlib"
 
+REQUIRED_USE="med? ( mpi )"
+
 RDEPEND="
 	virtual/fortran
 	X? ( x11-libs/fltk:1 )
