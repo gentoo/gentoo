@@ -1,0 +1,302 @@
+From 5f0a0d90fbfa5cd6e1bc89e4b92b5b376bf442fa Mon Sep 17 00:00:00 2001
+From: Rodrigo Saboya <saboya@gmail.com>
+Date: Tue, 13 Feb 2018 20:06:12 +0100
+Subject: [PATCH] alsa-mixer: add support for SteelSeries Arctis 5 and renamed
+ Arctis 7 files appropriately
+
+original-commit: 83675b3745c64bd738400eae44eb4daa195ed88a
+
+alsa-mixer: Update to support Arctis Pro Wireless headset
+
+The Arctis 7 configuration can be used as is - the ALSA PCM and mixer
+interfaces are the same.
+
+original-commit: fe6a9a8f59932f29cc77eac2a7e2c6bd07c8c7d0
+
+alsa-mixer: Add support for 2018 Arctis 7
+
+original-commit: 3454c19f3c277d5d0099f17e7ebf5d2005afa4b0
+---
+ src/Makefile.am                               | 11 +++++---
+ src/modules/alsa/alsa-mixer.c                 |  2 ++
+ .../steelseries-arctis-5-output-chat.conf     | 27 +++++++++++++++++++
+ .../steelseries-arctis-5-output-game.conf     | 27 +++++++++++++++++++
+ ...t.conf => steelseries-arctis-7-input.conf} |  3 ++-
+ ... => steelseries-arctis-7-output-mono.conf} | 10 +++----
+ ...> steelseries-arctis-7-output-stereo.conf} | 10 +++----
+ .../mixer/profile-sets/90-pulseaudio.rules    |  9 ++++++-
+ .../steelseries-arctis-5-usb-audio.conf       | 22 +++++++++++++++
+ ...nf => steelseries-arctis-7-usb-audio.conf} | 16 +++++------
+ 10 files changed, 113 insertions(+), 24 deletions(-)
+ create mode 100644 src/modules/alsa/mixer/paths/steelseries-arctis-5-output-chat.conf
+ create mode 100644 src/modules/alsa/mixer/paths/steelseries-arctis-5-output-game.conf
+ rename src/modules/alsa/mixer/paths/{steelseries-arctis-input.conf => steelseries-arctis-7-input.conf} (90%)
+ rename src/modules/alsa/mixer/paths/{steelseries-arctis-output-mono.conf => steelseries-arctis-7-output-mono.conf} (69%)
+ rename src/modules/alsa/mixer/paths/{steelseries-arctis-output-stereo.conf => steelseries-arctis-7-output-stereo.conf} (71%)
+ create mode 100644 src/modules/alsa/mixer/profile-sets/steelseries-arctis-5-usb-audio.conf
+ rename src/modules/alsa/mixer/profile-sets/{steelseries-arctis-usb-audio.conf => steelseries-arctis-7-usb-audio.conf} (68%)
+
+diff --git a/src/Makefile.am b/src/Makefile.am
+index f4464d253..6fbd70501 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -1320,7 +1320,8 @@ dist_alsaprofilesets_DATA = \
+ 		modules/alsa/mixer/profile-sets/native-instruments-korecontroller.conf \
+ 		modules/alsa/mixer/profile-sets/kinect-audio.conf \
+ 		modules/alsa/mixer/profile-sets/sb-omni-surround-5.1.conf \
+-		modules/alsa/mixer/profile-sets/steelseries-arctis-usb-audio.conf \
++		modules/alsa/mixer/profile-sets/steelseries-arctis-5-usb-audio.conf \
++		modules/alsa/mixer/profile-sets/steelseries-arctis-7-usb-audio.conf \
+ 		modules/alsa/mixer/profile-sets/dell-dock-tb16-usb-audio.conf
+ 
+ if HAVE_UDEV
+@@ -1364,9 +1365,11 @@ dist_alsapaths_DATA = \
+ 		modules/alsa/mixer/paths/hdmi-output-5.conf \
+ 		modules/alsa/mixer/paths/hdmi-output-6.conf \
+ 		modules/alsa/mixer/paths/hdmi-output-7.conf \
+-		modules/alsa/mixer/paths/steelseries-arctis-input.conf \
+-		modules/alsa/mixer/paths/steelseries-arctis-output-mono.conf \
+-		modules/alsa/mixer/paths/steelseries-arctis-output-stereo.conf
++		modules/alsa/mixer/paths/steelseries-arctis-5-output-chat.conf \
++		modules/alsa/mixer/paths/steelseries-arctis-5-output-game.conf \
++		modules/alsa/mixer/paths/steelseries-arctis-7-input.conf \
++		modules/alsa/mixer/paths/steelseries-arctis-7-output-mono.conf \
++		modules/alsa/mixer/paths/steelseries-arctis-7-output-stereo.conf
+ 
+ endif
+ 
+diff --git a/src/modules/alsa/alsa-mixer.c b/src/modules/alsa/alsa-mixer.c
+index a524d6d64..a07c43511 100644
+--- a/src/modules/alsa/alsa-mixer.c
++++ b/src/modules/alsa/alsa-mixer.c
+@@ -2545,6 +2545,8 @@ static int path_verify(pa_alsa_path *p) {
+         { "iec958-passthrough-output",  N_("Digital Passthrough (S/PDIF)") },
+         { "multichannel-input",         N_("Multichannel Input") },
+         { "multichannel-output",        N_("Multichannel Output") },
++        { "steelseries-arctis-5-output-game", N_("Game Output") },
++        { "steelseries-arctis-5-output-chat", N_("Chat Output") },
+     };
+ 
+     pa_alsa_element *e;
+diff --git a/src/modules/alsa/mixer/paths/steelseries-arctis-5-output-chat.conf b/src/modules/alsa/mixer/paths/steelseries-arctis-5-output-chat.conf
+new file mode 100644
+index 000000000..5842bfe84
+--- /dev/null
++++ b/src/modules/alsa/mixer/paths/steelseries-arctis-5-output-chat.conf
+@@ -0,0 +1,27 @@
++# This file is part of PulseAudio.
++#
++# PulseAudio is free software; you can redistribute it and/or modify
++# it under the terms of the GNU Lesser General Public License as
++# published by the Free Software Foundation; either version 2.1 of the
++# License, or (at your option) any later version.
++#
++# PulseAudio is distributed in the hope that it will be useful, but
++# WITHOUT ANY WARRANTY; without even the implied warranty of
++# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
++# General Public License for more details.
++#
++# You should have received a copy of the GNU Lesser General Public License
++# along with PulseAudio; if not, see <http://www.gnu.org/licenses/>.
++
++; Steelseries Arctis 5 USB headset stereo chat path. The headset has two
++; output devices. The first one is meant for voice audio, and the second
++; one meant for everything else. The purpose of this unusual design is to
++; provide separate volume controls for voice and other audio, which can be
++; useful in gaming.
++
++[General]
++priority = 50
++
++[Element Com Speaker]
++switch = mute
++volume = merge
+diff --git a/src/modules/alsa/mixer/paths/steelseries-arctis-5-output-game.conf b/src/modules/alsa/mixer/paths/steelseries-arctis-5-output-game.conf
+new file mode 100644
+index 000000000..b758a6fe4
+--- /dev/null
++++ b/src/modules/alsa/mixer/paths/steelseries-arctis-5-output-game.conf
+@@ -0,0 +1,27 @@
++# This file is part of PulseAudio.
++#
++# PulseAudio is free software; you can redistribute it and/or modify
++# it under the terms of the GNU Lesser General Public License as
++# published by the Free Software Foundation; either version 2.1 of the
++# License, or (at your option) any later version.
++#
++# PulseAudio is distributed in the hope that it will be useful, but
++# WITHOUT ANY WARRANTY; without even the implied warranty of
++# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
++# General Public License for more details.
++#
++# You should have received a copy of the GNU Lesser General Public License
++# along with PulseAudio; if not, see <http://www.gnu.org/licenses/>.
++
++; Steelseries Arctis 5 USB headset stereo game path. The headset has two
++; output devices. The first one is meant for voice audio, and the second
++; one meant for everything else. The purpose of this unusual design is to
++; provide separate volume controls for voice and other audio, which can be
++; useful in gaming.
++
++[General]
++priority = 99
++
++[Element PCM]
++switch = mute
++volume = merge
+diff --git a/src/modules/alsa/mixer/paths/steelseries-arctis-input.conf b/src/modules/alsa/mixer/paths/steelseries-arctis-7-input.conf
+similarity index 90%
+rename from src/modules/alsa/mixer/paths/steelseries-arctis-input.conf
+rename to src/modules/alsa/mixer/paths/steelseries-arctis-7-input.conf
+index f3115ba66..3fa36e938 100644
+--- a/src/modules/alsa/mixer/paths/steelseries-arctis-input.conf
++++ b/src/modules/alsa/mixer/paths/steelseries-arctis-7-input.conf
+@@ -13,7 +13,8 @@
+ # You should have received a copy of the GNU Lesser General Public License
+ # along with PulseAudio; if not, see <http://www.gnu.org/licenses/>.
+ 
+-; Steelseries Arctis 7 USB headset microphone path.
++; Steelseries Arctis 7 USB headset microphone path. Works also with Arctis Pro
++; Wireless.
+ 
+ [General]
+ description-key = analog-input-microphone-headset
+diff --git a/src/modules/alsa/mixer/paths/steelseries-arctis-output-mono.conf b/src/modules/alsa/mixer/paths/steelseries-arctis-7-output-mono.conf
+similarity index 69%
+rename from src/modules/alsa/mixer/paths/steelseries-arctis-output-mono.conf
+rename to src/modules/alsa/mixer/paths/steelseries-arctis-7-output-mono.conf
+index 679506185..d8b24a2fb 100644
+--- a/src/modules/alsa/mixer/paths/steelseries-arctis-output-mono.conf
++++ b/src/modules/alsa/mixer/paths/steelseries-arctis-7-output-mono.conf
+@@ -13,11 +13,11 @@
+ # You should have received a copy of the GNU Lesser General Public License
+ # along with PulseAudio; if not, see <http://www.gnu.org/licenses/>.
+ 
+-; Steelseries Arctis 7 USB headset mono output path. The headset has two
+-; output devices. The first one is mono, meant for voice audio, and the
+-; second one is stereo, meant for everything else. The purpose of this
+-; unusual design is to provide separate volume controls for voice and
+-; other audio, which can be useful in gaming.
++; Steelseries Arctis 7 USB headset mono output path. Works also with Arctis Pro
++; Wireless. The headset has two output devices. The first one is mono, meant
++; for voice audio, and the second one is stereo, meant for everything else. The
++; purpose of this unusual design is to provide separate volume controls for
++; voice and other audio, which can be useful in gaming.
+ 
+ [General]
+ description-key = analog-output-headphones-mono
+diff --git a/src/modules/alsa/mixer/paths/steelseries-arctis-output-stereo.conf b/src/modules/alsa/mixer/paths/steelseries-arctis-7-output-stereo.conf
+similarity index 71%
+rename from src/modules/alsa/mixer/paths/steelseries-arctis-output-stereo.conf
+rename to src/modules/alsa/mixer/paths/steelseries-arctis-7-output-stereo.conf
+index 4e10c8005..fcc58a033 100644
+--- a/src/modules/alsa/mixer/paths/steelseries-arctis-output-stereo.conf
++++ b/src/modules/alsa/mixer/paths/steelseries-arctis-7-output-stereo.conf
+@@ -13,11 +13,11 @@
+ # You should have received a copy of the GNU Lesser General Public License
+ # along with PulseAudio; if not, see <http://www.gnu.org/licenses/>.
+ 
+-; Steelseries Arctis 7 USB headset stereo output path. The headset has two
+-; output devices. The first one is mono, meant for voice audio, and the
+-; second one is stereo, meant for everything else. The purpose of this
+-; unusual design is to provide separate volume controls for voice and
+-; other audio, which can be useful in gaming.
++; Steelseries Arctis 7 USB headset stereo output path. Works also with Arctis
++; Pro Wireless. The headset has two output devices. The first one is mono,
++; meant for voice audio, and the second one is stereo, meant for everything
++; else. The purpose of this unusual design is to provide separate volume
++; controls for voice and other audio, which can be useful in gaming.
+ ;
+ ; This path doesn't provide hardware volume control, because the stereo
+ ; output is controlled by the PCM element with index 1, and currently
+diff --git a/src/modules/alsa/mixer/profile-sets/90-pulseaudio.rules b/src/modules/alsa/mixer/profile-sets/90-pulseaudio.rules
+index 264bfdb3f..dc3704ea9 100644
+--- a/src/modules/alsa/mixer/profile-sets/90-pulseaudio.rules
++++ b/src/modules/alsa/mixer/profile-sets/90-pulseaudio.rules
+@@ -105,6 +105,13 @@ ATTRS{idVendor}=="0763", ATTRS{idProduct}=="2012", ENV{PULSE_PROFILE_SET}="maudi
+ ATTRS{idVendor}=="045e", ATTRS{idProduct}=="02bb", ENV{PULSE_PROFILE_SET}="kinect-audio.conf"
+ ATTRS{idVendor}=="041e", ATTRS{idProduct}=="322c", ENV{PULSE_PROFILE_SET}="sb-omni-surround-5.1.conf"
+ ATTRS{idVendor}=="0bda", ATTRS{idProduct}=="4014", ENV{PULSE_PROFILE_SET}="dell-dock-tb16-usb-audio.conf"
+-ATTRS{idVendor}=="1038", ATTRS{idProduct}=="1260", ENV{PULSE_PROFILE_SET}="steelseries-arctis-usb-audio.conf"
++ATTRS{idVendor}=="1038", ATTRS{idProduct}=="1250", ENV{PULSE_PROFILE_SET}="steelseries-arctis-5-usb-audio.conf"
++
++# ID 1038:12ad is for the 2018 refresh of the Arctis 7.
++# ID 1038:1294 is for Arctis Pro Wireless (which works with the Arctis 7
++# configuration).
++ATTRS{idVendor}=="1038", ATTRS{idProduct}=="1260", ENV{PULSE_PROFILE_SET}="steelseries-arctis-7-usb-audio.conf"
++ATTRS{idVendor}=="1038", ATTRS{idProduct}=="12ad", ENV{PULSE_PROFILE_SET}="steelseries-arctis-7-usb-audio.conf"
++ATTRS{idVendor}=="1038", ATTRS{idProduct}=="1294", ENV{PULSE_PROFILE_SET}="steelseries-arctis-7-usb-audio.conf"
+ 
+ LABEL="pulseaudio_end"
+diff --git a/src/modules/alsa/mixer/profile-sets/steelseries-arctis-5-usb-audio.conf b/src/modules/alsa/mixer/profile-sets/steelseries-arctis-5-usb-audio.conf
+new file mode 100644
+index 000000000..fe353c38f
+--- /dev/null
++++ b/src/modules/alsa/mixer/profile-sets/steelseries-arctis-5-usb-audio.conf
+@@ -0,0 +1,22 @@
++[General]
++auto-profiles = yes
++
++[Mapping analog-chat]
++description = Chat
++device-strings = hw:%f,0,0
++channel-map = left,right
++paths-input = analog-input-mic
++paths-output = steelseries-arctis-5-output-chat
++
++[Mapping analog-game]
++description = Game
++device-strings = hw:%f,1,0
++channel-map = left,right
++paths-output = steelseries-arctis-5-output-game
++direction = output
++
++[Profile output:analog-chat+output:analog-game+input:analog-chat]
++output-mappings = analog-chat analog-game
++input-mappings = analog-chat
++priority = 5100
++skip-probe = yes
+diff --git a/src/modules/alsa/mixer/profile-sets/steelseries-arctis-usb-audio.conf b/src/modules/alsa/mixer/profile-sets/steelseries-arctis-7-usb-audio.conf
+similarity index 68%
+rename from src/modules/alsa/mixer/profile-sets/steelseries-arctis-usb-audio.conf
+rename to src/modules/alsa/mixer/profile-sets/steelseries-arctis-7-usb-audio.conf
+index d3563a160..e1394dcfc 100644
+--- a/src/modules/alsa/mixer/profile-sets/steelseries-arctis-usb-audio.conf
++++ b/src/modules/alsa/mixer/profile-sets/steelseries-arctis-7-usb-audio.conf
+@@ -13,11 +13,11 @@
+ # You should have received a copy of the GNU Lesser General Public License
+ # along with PulseAudio; if not, see <http://www.gnu.org/licenses/>.
+ 
+-; Steelseries Arctis 7 USB headset. The headset has a microphone and two output
+-; devices. The first output device is mono, meant for voice audio, and the
+-; second one is stereo, meant for everything else. The purpose of this unusual
+-; design is to provide separate volume controls for voice and other audio,
+-; which can be useful in gaming.
++; Steelseries Arctis 7 USB and Arctis Pro Wireless USB headset. These headsets 
++; have a microphone and two output devices. The first output device is mono, 
++; meant for voice audio, and the second one is stereo, meant for everything 
++; else. The purpose of this unusual design is to provide separate volume 
++; controls for voice and other audio, which can be useful in gaming.
+ ;
+ ; See default.conf for an explanation on the directives used here.
+ 
+@@ -27,13 +27,13 @@ auto-profiles = yes
+ [Mapping analog-mono]
+ device-strings = hw:%f,0,0
+ channel-map = mono
+-paths-output = steelseries-arctis-output-mono
+-paths-input = steelseries-arctis-input
++paths-output = steelseries-arctis-7-output-mono
++paths-input = steelseries-arctis-7-input
+ 
+ [Mapping analog-stereo]
+ device-strings = hw:%f,1,0
+ channel-map = left,right
+-paths-output = steelseries-arctis-output-stereo
++paths-output = steelseries-arctis-7-output-stereo
+ direction = output
+ 
+ [Profile output:analog-mono+output:analog-stereo+input:analog-mono]
+-- 
+2.21.0
+
