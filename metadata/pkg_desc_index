@@ -1179,7 +1179,7 @@ app-emacs/binclock 1.7-r1 1.11: Display the current time using a binary clock
 app-emacs/bison-mode 0.3: Emacs major mode for Bison, Yacc and Lex grammars
 app-emacs/blogmax 20110305 20170321: Blogging in Emacs
 app-emacs/bm 1.32_p20140214: Visible bookmarks in buffer
-app-emacs/bongo 20110621: Buffer-oriented media player for Emacs
+app-emacs/bongo 1.1: Buffer-oriented media player for Emacs
 app-emacs/boxquote 1.23 2.1: Quote text with a semi-box
 app-emacs/browse-kill-ring 1.3c 2.0.0: An improved interface to kill-ring
 app-emacs/bubblet 0.74-r1: A bubble-popping game
@@ -10640,7 +10640,7 @@ dev-util/cargo-tree 0.23.0 0.24.0 0.25.0 0.26.0: Cargo subcommand that visualize
 dev-util/catalyst 3.0.5 3.0.6 9999: Release metatool used for creating releases based on Gentoo Linux
 dev-util/catfish 1.4.7 1.4.8 1.4.8-r1 1.4.9: A frontend for find, (s)locate, doodle, tracker, beagle, strigi and pinot
 dev-util/catkin 0.7.14 0.7.17 9999: Cmake macros and associated python code used to build some parts of ROS
-dev-util/cbindgen 0.6.6 0.6.7 0.7.1 0.8.2 0.8.7 0.9.0: A tool for generating C bindings to Rust code
+dev-util/cbindgen 0.6.6 0.6.7 0.7.1 0.8.2 0.8.7 0.9.0 0.9.1: A tool for generating C bindings to Rust code
 dev-util/ccache 3.7.1 3.7.2 3.7.3: fast compiler cache
 dev-util/cccc 3.1.5-r1: Source metrics (line counts, complexity, etc) for Java and C++
 dev-util/ccglue 0.3.1 0.6.0: Produce cross-reference files from cscope and ctags for use with app-vim/cctree
