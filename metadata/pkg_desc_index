@@ -18585,7 +18585,7 @@ www-client/phantomjs 2.1.1 2.1.1-r1: A headless WebKit scriptable with a JavaScr
 www-client/pybugz 0.13 9999: Command line interface to (Gentoo) Bugzilla
 www-client/qutebrowser 1.6.3 1.7.0 9999: A keyboard-driven, vim-like browser based on PyQt5 and QtWebEngine
 www-client/ripe-atlas-cousteau 1.0.6 1.0.7 1.2: A Python wrapper around the RIPE Atlas API
-www-client/seamonkey 2.49.9.1_p0: Seamonkey Web Browser
+www-client/seamonkey 2.49.5_pre3 2.49.9.1_p0: Seamonkey Web Browser
 www-client/seamonkey-bin 2.48 2.49.1_rc2: Mozilla Application Suite - web browser, email, HTML editor, IRC
 www-client/surf 2.0 9999: a simple web browser based on WebKit/GTK+
 www-client/surfraw 2.3.0-r1 99999: A fast unix command line interface to WWW
