@@ -1350,7 +1350,7 @@ app-emacs/undo-tree 0.6.6: Undo trees and visualization
 app-emacs/uptimes 2.3-r2: Track and display emacs session uptimes
 app-emacs/vhdl-mode 3.34.2 3.35.1 3.38.1: VHDL-mode for Emacs
 app-emacs/visual-basic-mode 1.4.12: A mode for editing Visual Basic programs
-app-emacs/vm 8.1.2 8.2.0_beta-r1: The VM mail reader for Emacs
+app-emacs/vm 8.2.0_beta-r1: The VM mail reader for Emacs
 app-emacs/volume 1.0-r1: Tweak your sound card volume from Emacs
 app-emacs/w3mnav 0.5-r3: Add Info-like navigation keys to the emacs-w3m web browser
 app-emacs/wanderlust 2.15.9_p20180814 2.15.9_p20190623: Yet Another Message Interface on Emacsen
@@ -18191,7 +18191,7 @@ sys-process/minit 0.10-r1: a small yet feature-complete init
 sys-process/nmon 16g 16i 16j: Nigel's performance MONitor for CPU, memory, network, disks, etc...
 sys-process/numactl 2.0.11 2.0.12 2.0.13 9999: Utilities and libraries for NUMA systems
 sys-process/numad 0.5 0.5-r1 0.5-r2 0.5-r3 9999: The NUMA daemon that manages application locality
-sys-process/parallel 20190422 20190622 20190722: A shell tool for executing jobs in parallel locally or on remote machines
+sys-process/parallel 20190422 20190622 20190722 20190822: A shell tool for executing jobs in parallel locally or on remote machines
 sys-process/pidof-bsd 20050501-r4: pidof(1) utility for *BSD
 sys-process/pkill-darwin 1.0: pgrep(1) and pkill(1) for Darwin
 sys-process/prll 0.6.2 0.6.4: A utility for parallelizing execution of shell functions
