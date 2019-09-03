@@ -39,7 +39,7 @@ HOMEPAGE="https://www.mozilla.org/thunderbird"
 KEYWORDS="~amd64 ~ppc64 ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 SLOT="0"
 LICENSE="MPL-2.0 GPL-2 LGPL-2.1"
-IUSE="bindist clang cpu_flags_x86_avx2 dbus debug eme-free geckodriver
+IUSE="bindist clang cpu_flags_x86_avx2 dbus debug eme-free
 	+gmp-autoupdate hardened jack lightning lto neon pgo pulseaudio
 	 selinux startup-notification +system-av1 +system-harfbuzz +system-icu
 	+system-jpeg +system-libevent +system-sqlite +system-libvpx
@@ -378,6 +378,9 @@ src_configure() {
 				show_old_compiler_warning=1
 			fi
 
+			# Bug 689358
+			append-cxxflags -flto
+
 			if ! use cpu_flags_x86_avx2 ; then
 				local _gcc_version_with_ipa_cdtor_fix="8.3"
 				local _current_gcc_version="$(gcc-major-version).$(gcc-minor-version)"
@@ -526,8 +529,6 @@ src_configure() {
 
 	mozconfig_use_enable wifi necko-wifi
 
-	mozconfig_use_enable geckodriver
-
 	# enable JACK, bug 600002
 	mozconfig_use_enable jack
 
@@ -637,13 +638,6 @@ src_install() {
 	cd "${S}"
 	MOZ_MAKE_FLAGS="${MAKEOPTS}" SHELL="${SHELL:-${EPREFIX}/bin/bash}" MOZ_NOSPAM=1 \
 	DESTDIR="${D}" ./mach install || die
-
-	if use geckodriver ; then
-		cp "${BUILD_OBJ_DIR}"/dist/bin/geckodriver "${ED%/}"${MOZILLA_FIVE_HOME} || die
-		pax-mark m "${ED%/}"${MOZILLA_FIVE_HOME}/geckodriver
-
-		dosym ${MOZILLA_FIVE_HOME}/geckodriver /usr/bin/geckodriver
-	fi
 
 	# Install language packs
 	MOZ_INSTALL_L10N_XPIFILE="1" mozlinguas_src_install
