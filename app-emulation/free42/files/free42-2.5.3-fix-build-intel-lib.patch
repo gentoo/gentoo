@@ -1,0 +1,12 @@
+diff -Naur free42-nologo-2.5.3.orig/gtk/build-intel-lib.sh free42-nologo-2.5.3/gtk/build-intel-lib.sh
+--- free42-nologo-2.5.3.orig/gtk/build-intel-lib.sh	2019-09-01 17:44:47.000000000 +0200
++++ free42-nologo-2.5.3/gtk/build-intel-lib.sh	2019-09-03 23:58:30.604579443 +0200
+@@ -65,7 +65,7 @@
+ esac
+ 
+ cd LIBRARY
+-$MK $OS_ARG CC=$CC CALL_BY_REF=1 GLOBAL_RND=1 GLOBAL_FLAGS=1 UNCHANGED_BINARY_FLAGS=0 $ENDIAN_ARG
++$MK $OS_ARG A=a CC=$CC CALL_BY_REF=1 GLOBAL_RND=1 GLOBAL_FLAGS=1 UNCHANGED_BINARY_FLAGS=0 $ENDIAN_ARG
+ mv libbid.a ../../gcc111libbid.a
+ cd ../..
+ ( echo '#ifdef FREE42_FPTEST'; echo 'const char *readtest_lines[] = {'; tr -d '\r' < IntelRDFPMathLib20U1/TESTS/readtest.in | sed 's/^\(.*\)$/"\1",/'; echo '0 };'; echo '#endif' ) > readtest_lines.cc
