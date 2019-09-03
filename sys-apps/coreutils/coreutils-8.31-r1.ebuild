@@ -17,12 +17,12 @@ SRC_URI="mirror://gnu/${PN}/${P}.tar.xz
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sh ~sparc ~x86 ~x86-linux"
-IUSE="acl caps gmp hostname kill multicall nls selinux +split-usr static test userland_BSD vanilla xattr"
+IUSE="acl caps gmp hostname kill multicall nls selinux +split-usr static test vanilla xattr"
 
 LIB_DEPEND="acl? ( sys-apps/acl[static-libs] )
 	caps? ( sys-libs/libcap )
 	gmp? ( dev-libs/gmp:=[static-libs] )
-	xattr? ( !userland_BSD? ( sys-apps/attr[static-libs] ) )"
+	xattr? ( sys-apps/attr[static-libs] )"
 RDEPEND="!static? ( ${LIB_DEPEND//\[static-libs]} )
 	selinux? ( sys-libs/libselinux )
 	nls? ( virtual/libintl )"
@@ -32,9 +32,7 @@ DEPEND="${RDEPEND}
 	test? (
 		dev-lang/perl
 		dev-perl/Expect
-		!userland_BSD? (
-			dev-util/strace
-		)
+		dev-util/strace
 		${PYTHON_DEPS}
 		$(python_gen_any_dep 'dev-python/pyinotify[${PYTHON_USEDEP}]')
 	)"
@@ -104,7 +102,6 @@ src_configure() {
 	export gl_cv_func_mknod_works=yes #409919
 	use static && append-ldflags -static && sed -i '/elf_sys=yes/s:yes:no:' configure #321821
 	use selinux || export ac_cv_{header_selinux_{context,flash,selinux}_h,search_setfilecon}=no #301782
-	use userland_BSD && myconf+=( -program-prefix=g --program-transform-name=s/stat/nustat/ )
 	# kill/uptime - procps
 	# groups/su   - shadow
 	# hostname    - net-tools
@@ -156,37 +153,32 @@ src_install() {
 	insinto /etc
 	newins src/dircolors.hin DIR_COLORS
 
-	if [[ ${USERLAND} == "GNU" ]] ; then
-		if use split-usr ; then
-			cd "${ED%/}"/usr/bin || die
-			dodir /bin
-			# move critical binaries into /bin (required by FHS)
-			local fhs="cat chgrp chmod chown cp date dd df echo false ln ls
-			           mkdir mknod mv pwd rm rmdir stty sync true uname"
-			mv ${fhs} ../../bin/ || die "could not move fhs bins"
-			if use hostname; then
-				mv hostname ../../bin/ || die
-			fi
-			if use kill; then
-				mv kill ../../bin/ || die
-			fi
-			# move critical binaries into /bin (common scripts)
-			# Why are these required for booting?
-			local com="basename chroot cut dir dirname du env expr head mkfifo
-			           mktemp readlink seq sleep sort tail touch tr tty vdir wc yes"
-			mv ${com} ../../bin/ || die "could not move common bins"
-			# create a symlink for uname in /usr/bin/ since autotools require it
-			# Other than uname, we need to figure out why we are
-			# creating symlinks for these in /usr/bin instead of leaving
-			# the files there in the first place.
-			local x
-			for x in ${com} uname ; do
-				dosym ../../bin/${x} /usr/bin/${x}
-			done
+	if use split-usr ; then
+		cd "${ED%/}"/usr/bin || die
+		dodir /bin
+		# move critical binaries into /bin (required by FHS)
+		local fhs="cat chgrp chmod chown cp date dd df echo false ln ls
+		           mkdir mknod mv pwd rm rmdir stty sync true uname"
+		mv ${fhs} ../../bin/ || die "could not move fhs bins"
+		if use hostname; then
+			mv hostname ../../bin/ || die
 		fi
-	else
-		# For now, drop the man pages, collides with the ones of the system.
-		rm -rf "${ED%/}"/usr/share/man
+		if use kill; then
+			mv kill ../../bin/ || die
+		fi
+		# move critical binaries into /bin (common scripts)
+		# Why are these required for booting?
+		local com="basename chroot cut dir dirname du env expr head mkfifo
+		           mktemp readlink seq sleep sort tail touch tr tty vdir wc yes"
+		mv ${com} ../../bin/ || die "could not move common bins"
+		# create a symlink for uname in /usr/bin/ since autotools require it
+		# Other than uname, we need to figure out why we are
+		# creating symlinks for these in /usr/bin instead of leaving
+		# the files there in the first place.
+		local x
+		for x in ${com} uname ; do
+			dosym ../../bin/${x} /usr/bin/${x}
+		done
 	fi
 }
 
