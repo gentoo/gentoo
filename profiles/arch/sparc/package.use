@@ -6,3 +6,7 @@
 dev-ml/llvm-ocaml llvm_targets_AMDGPU
 sys-devel/clang llvm_targets_AMDGPU
 sys-devel/llvm llvm_targets_AMDGPU
+
+# Ben Kohler <bkohler@gentoo.org> (2019-09-03)
+# Enable SPARC OpenBoot support
+sys-boot/grub:2 grub_platforms_ieee1275
