@@ -1,0 +1,8 @@
+# Copyright 1999-2018 Gentoo Foundation.
+# Distributed under the terms of the GNU General Public License v2
+
+gnat_2016 - Compile with dev-lang/gnat-gpl-2016
+gnat_2017 - Compile with dev-lang/gnat-gpl-2017
+gnat_2018 - Compile with dev-lang/gnat-gpl-2018
+gnat_2019 - Compile with dev-lang/gnat-gpl-2019
+
