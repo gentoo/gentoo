@@ -18104,7 +18104,7 @@ sys-libs/lrmi 0.10-r1: library for calling real mode BIOS routines under Linux
 sys-libs/lwp 2.2 2.6-r1 2.8: Light-weight process library (used by Coda)
 sys-libs/mars 1.0.1: Multicore Application Runtime System
 sys-libs/mtdev 1.1.5: Multitouch Protocol Translation Library
-sys-libs/musl 1.1.20-r1 1.1.21 1.1.22 1.1.23 9999: Light, fast and simple C library focused on standards-conformance and safety
+sys-libs/musl 1.1.22 1.1.23 9999: Light, fast and simple C library focused on standards-conformance and safety
 sys-libs/musl-nscd 9999: musl-nscd is an implementation of the NSCD protocol for the musl libc
 sys-libs/native-uuid 1.0: .pc file for uuid
 sys-libs/ncurses 5.9-r101 6.1_p20181020 6.1_p20190609: console display library
