@@ -390,6 +390,9 @@ src_configure() {
 				show_old_compiler_warning=1
 			fi
 
+			# Bug 689358
+			append-cxxflags -flto
+
 			if ! use cpu_flags_x86_avx2 ; then
 				local _gcc_version_with_ipa_cdtor_fix="8.3"
 				local _current_gcc_version="$(gcc-major-version).$(gcc-minor-version)"
