@@ -5,8 +5,21 @@
 		<email>tamiko@gentoo.org</email>
 		<name>Matthias Maier</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>waebbl@gmail.com</email>
+		<name>Bernd Waibel</name>
+	</maintainer>
 	<maintainer type="project">
 		<email>sci@gentoo.org</email>
-		<name>Gentoo Science Project</name>
+		<description>Gentoo Science Project</description>
 	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<description>Gentoo Proxy Maintainers</description>
+	</maintainer>
+	<use>
+		<flag name="hdf5_16_api">
+			Use -DH5_USE_16_API to build the package against old 1.6 API of HDF5
+		</flag>
+	</use>
 </pkgmetadata>
