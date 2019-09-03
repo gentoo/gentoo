@@ -63,11 +63,11 @@ RDEPEND="${COMMON_DEPEND}
 	ffmpeg? ( media-video/ffmpeg:0= )
 "
 DEPEND="${COMMON_DEPEND}
-	virtual/pkgconfig
 	gimp? ( dev-qt/linguist-tools )
 	krita? ( dev-qt/linguist-tools )
 	qt5? ( dev-qt/linguist-tools )
 "
+BDEPEND="virtual/pkgconfig"
 
 pkg_pretend() {
 	if use openmp ; then
@@ -87,7 +87,7 @@ src_prepare() {
 	if use gimp || use krita || use qt5; then
 		sed -i '/CMAKE_CXX_FLAGS_RELEASE/d' gmic-qt/CMakeLists.txt || die
 		local S="${S}/gmic-qt"
-		PATCHES=( "${FILESDIR}"/${P}-qt-cmake.patch )
+		PATCHES=( "${FILESDIR}"/${PN}-2.6.7-qt-cmake.patch )
 		cmake-utils_src_prepare
 	fi
 }
