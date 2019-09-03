@@ -8929,7 +8929,7 @@ dev-python/ropemode 0.2-r1 0.4: A helper for using rope refactoring library in I
 dev-python/rosdistro 0.7.2 0.7.4 9999: Tools to work with catkinized rosdistro files
 dev-python/rospkg 1.1.9 1.1.10 9999: Standalone Python library for the ROS package system
 dev-python/routes 2.4.1: A re-implementation of Rails routes system, mapping URLs to Controllers/Actions
-dev-python/rply 0.7.4 0.7.5 0.7.6: Pure python parser generator that also works with RPython
+dev-python/rply 0.7.4 0.7.5 0.7.6 0.7.7: Pure python parser generator that also works with RPython
 dev-python/rpy 2.6.2 2.9.0: Python interface to the R Programming Language
 dev-python/rpyc 3.4.4 4.0.2: Remote Python Call (RPyC), a transparent and symmetric RPC library
 dev-python/rq 0.13.0 1.0: simple, lightweight library for creating and processing background jobs
